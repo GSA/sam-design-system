@@ -45,11 +45,13 @@
     "@ngrx/store": "6.1.2"
   },
   "devDependencies": {
+    "@angular-devkit/build-ng-packagr": "~0.12.0",
     "@angular/cli": "~7.2.2",
     "@angular/compiler-cli": "^7.0.0",
     "@angular/language-service": "^7.0.0",
     "@angular-devkit/build-angular": "~0.11.2",
     "@ngrx/store-devtools": "6.1.2",
+    "ng-packagr": "^4.2.0",
     "ngrx-store-freeze": "0.2.4",
     "@nrwl/schematics": "7.5.0",
     "jasmine-marbles": "0.4.0",
@@ -66,8 +68,14 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
+    "tsickle": ">=0.34.0",
+    "tslib": "^1.9.0",
     "tslint": "~5.11.0",
     "typescript": "~3.2.2",
-    "prettier": "1.15.2"
+    "prettier": "1.15.2",
+    "@nrwl/builders": "7.5.0",
+    "jest": "^23.0.0",
+    "@types/jest": "^23.0.0",
+    "jest-preset-angular": "6.0.1"
   }
 }
