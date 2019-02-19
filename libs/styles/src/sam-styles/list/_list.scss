@@ -1,0 +1,73 @@
+.sam.list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: li;
+}
+
+.sam.list li{
+  padding-bottom: 1rem;
+  //line-height: 1.4;
+  counter-increment: li;
+}
+
+.sam.list .bullet{
+  border: 1px solid #a5a5a5;
+  border-radius: 50px;
+  display: inline-block;
+  padding: .1em .55em 0;
+  text-align: center;
+  margin-left: -2.2em;
+  margin-right: 5px;
+}
+
+.sam.list li.decimal{
+  padding-left: 2.2em;
+}
+
+.sam.list li.decimal .bullet::before{
+  content: counter(li);
+  color: #757575;
+  font-size: .9em;
+}
+
+.sam.bulleted.list{
+  list-style: disc;
+  padding-left: 20px;
+}
+
+.sam.bulleted.list.decimal{
+  list-style: none;
+  padding-left: 0;
+  li::before {
+    content: counter(li);
+    display: inline-block;
+    margin-left: -1.5em;
+    margin-right: .5em;
+  }
+}
+
+.sam.horizontal.list{
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 576px) {
+  .sam.horizontal.list{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+
+// Columns
+@media (min-width: 576px) {
+  .sam.list.two.columns{
+    display: flex;
+    flex-wrap: wrap;
+    > * {
+      flex-basis: 46%;
+      padding-right: 2%;
+    }
+  }
+}

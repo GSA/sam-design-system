@@ -1,5 +1,5 @@
 {
-  "npmScope": "@sam-design-system",
+  "npmScope": "sam-design-system",
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": "*",
@@ -8,9 +8,6 @@
     "nx.json": "*"
   },
   "projects": {
-    "styles": {
-      "tags": ["styles"]
-    },
     "utils": {
       "tags": []
     },
@@ -27,6 +24,15 @@
       "tags": []
     },
     "components": {
+      "tags": []
+    },
+    "sam-design-system-site": {
+      "tags": []
+    },
+    "sam-design-system-site-e2e": {
+      "tags": []
+    },
+    "styles": {
       "tags": []
     }
   }

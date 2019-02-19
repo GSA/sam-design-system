@@ -1,0 +1,31 @@
+
+@mixin sam-typography-theme($theme) {
+  $foreground: map-get($map: $theme, $key: foreground);
+  
+  body{
+    color: sam-color($foreground, text);
+  }
+
+  a{
+    color: #0071bc;
+  }
+
+  h1.sam.heading,
+  h2.sam.heading,
+  h3.sam.heading,
+  h4.sam.heading{
+    color: sam-color($foreground, headers);
+  }
+
+  h1.sam.inverted.heading,
+  h2.sam.inverted.heading,
+  h3.sam.inverted.heading,
+  h4.sam.inverted.heading{
+    color: white;
+  }
+
+  h1.sam.heading.inverted .intro{
+    color: invert(sam-color($foreground, headers, .8));
+  }
+
+}

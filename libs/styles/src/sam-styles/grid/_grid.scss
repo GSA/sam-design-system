@@ -1,0 +1,16 @@
+/**********************************************
+                USWDS GRID 
+***********************************************/ 
+
+// Vendor -------------- //
+@import "~uswds/src/stylesheets/lib/bourbon";
+@import "~uswds/src/stylesheets/lib/neat";
+
+// Core -------------- //
+@import "~uswds/src/stylesheets/core/variables";
+
+// Override current variables values for grid only
+$small: new-breakpoint(min-width $small-screen $grid-columns-small);
+$medium: new-breakpoint(min-width $medium-screen $grid-columns-medium);
+$large: new-breakpoint(min-width $large-screen $grid-columns-large);
+@import "~uswds/src/stylesheets/core/grid";

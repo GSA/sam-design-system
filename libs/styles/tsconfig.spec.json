@@ -2,9 +2,8 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc/libs/styles",
-    "module": "commonjs",
-    "types": ["jest", "node"]
+    "types": ["jasmine", "node"]
   },
-
+  "files": ["src/test.ts"],
   "include": ["**/*.spec.ts", "**/*.d.ts"]
 }

@@ -1,0 +1,40 @@
+@import '../core/theming/palette';
+@import '../core/theming/theming';
+
+@mixin sam-expansion-panel-theme($theme) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .mat-expansion-panel {
+    //background: sam-color($background, accordion);
+    color: sam-color($foreground, text);
+  }
+
+  .mat-expansion-panel-body {
+    background: white;
+  }
+
+  .mat-action-row {
+    border-top-color: sam-color($foreground, divider);
+  }
+
+  .mat-expansion-panel-header{
+    color: sam-color($foreground, headers);
+  }
+
+  .mat-expansion-panel-header:focus, 
+  .mat-expansion-panel-header:hover {
+    background: sam-color($background, accordion-hover);
+  }
+  .mat-expansion-panel-header-title {
+    color: sam-color($foreground, text);
+  }
+
+  .mat-expansion-panel-header-description {
+    color: sam-color($foreground, light-text);
+  }
+
+  .mat-expansion-indicator::after {
+    color: sam-color($foreground, text);
+  }
+}

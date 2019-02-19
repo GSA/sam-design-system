@@ -1,0 +1,14 @@
+@import 'typography';
+
+// Includes all of the typographic styles.
+@mixin sam-typography($config: null) {
+  @if $config == null {
+    $config: sam-typography-config();
+  }
+
+  @include sam-base-typography($config);
+  @include sam-breadcrumbs-typography($config);
+  @include sam-table-typography($config);
+  @include sam-pagination-typography($config);
+  @include sam-tabs-typography($config);
+}

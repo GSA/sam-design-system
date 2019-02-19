@@ -1,0 +1,310 @@
+// General footer styles
+
+.usa-footer {
+  @include border-box-sizing;
+  @include typeset($theme-footer-font-family);
+  overflow: hidden;
+}
+
+.usa-footer-return-to-top {
+  @include u-padding-y(2.5);
+  line-height: line-height($theme-footer-font-family, 1);
+}
+
+.usa-footer-nav {
+  @include u-margin-x('auto');
+  @include u-padding-x(0);
+  border-bottom: 1px solid color('base-light');
+  max-width: units('desktop');
+
+  @include at-media('mobile-lg') {
+    @include add-responsive-site-margins;
+    border-bottom: none;
+  }
+}
+
+.usa-footer-primary-section {
+  background-color: color('base-lightest');
+}
+
+.usa-footer-primary-content {
+  line-height: line-height($theme-footer-font-family, 2);
+}
+
+.usa-footer-primary-link a,
+.usa-footer-secondary-link a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.usa-footer-primary-link {
+  @include u-padding-x($theme-site-margins-mobile-width);
+  @include u-padding-y(2);
+  @include u-text('ink', 'no-underline', 'bold');
+  display: block;
+
+  @include at-media('mobile-lg') {
+    @include u-padding-x(0);
+  }
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+.usa-footer-secondary-link {
+  line-height: line-height($theme-footer-font-family, 2);
+  margin: 0 0 0 units(1);
+  padding: 0;
+
+  & + .usa-footer-secondary-link {
+    padding-top: units(2);
+  }
+
+  @include at-media('mobile-lg') {
+    margin-left: 0;
+  }
+}
+
+.usa-footer-contact_info {
+  display: inline-block;
+  line-height: line-height($theme-footer-font-family, 2);
+
+  a {
+    @include u-text('ink', 'no-underline');
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  @include at-media('mobile-lg') {
+    @include u-flex('justify-end');
+    margin-top: units(1);
+  }
+}
+
+.usa-footer-primary-content {
+  border-top: 1px solid color('base-light');
+
+  @include at-media('mobile-lg') {
+    border: none;
+  }
+}
+
+.usa-sign_up-block {
+  padding-bottom: units(4);
+  padding-top: units(3);
+
+  .usa-label,
+  .usa-button {
+    margin-top: units(1.5);
+  }
+}
+
+.usa-sign_up-header {
+  @include h3;
+  margin: 0;
+}
+
+.usa-footer-secondary-section {
+  @include u-padding-y(2.5);
+  background-color: color('base-lighter');
+
+  a {
+    color: color('ink');
+  }
+}
+
+.usa-footer-logo {
+  @include u-margin-y(1);
+  @include at-media('mobile-lg') {
+    @include u-margin-y(0);
+    @include u-flex('align-center');
+  }
+}
+
+.usa-footer-logo-img {
+  max-width: units(10);
+}
+
+.usa-footer-logo-heading {
+  @include h3;
+  @include u-margin-y(1);
+  line-height: line-height('heading', 1);
+}
+
+.usa-footer-contact-links {
+  margin-top: units(3);
+
+  @include at-media('mobile-lg') {
+    margin-top: 0;
+    text-align: right;
+  }
+}
+
+.usa-footer-contact-heading {
+  @include h3;
+  margin-top: 0;
+
+  @include at-media('mobile-lg') {
+    @include u-margin-y(0.5);
+  }
+}
+
+.usa-footer-social-links {
+  line-height: line-height($theme-footer-font-family, 1);
+  padding-bottom: units(1);
+
+  a {
+    text-decoration: none;
+  }
+
+  @include at-media('mobile-lg') {
+    @include u-flex('justify-end');
+  }
+}
+
+.usa-social_link {
+  $background-height: units(3); // Height of icon within hit area.
+  @include u-square($size-touch-target);
+  background-position: center center;
+  background-size: auto $background-height;
+  background-color: color('black-transparent-10');
+  display: inline-block;
+
+  span {
+    @include sr-only();
+  }
+}
+
+.usa-link-facebook {
+  @extend .usa-social_link;
+  @include add-background-svg('social-icons/facebook25');
+}
+
+.usa-link-twitter {
+  @extend .usa-social_link;
+  @include add-background-svg('social-icons/twitter16');
+}
+
+.usa-link-youtube {
+  @extend .usa-social_link;
+  @include add-background-svg('social-icons/youtube15');
+}
+
+.usa-link-rss {
+  @extend .usa-social_link;
+  @include add-background-svg('social-icons/rss25');
+}
+
+.usa-footer-address {
+  @include at-media('mobile-lg') {
+    @include u-flex('justify-end');
+  }
+}
+
+// Slim footer styles
+
+.usa-footer-slim {
+  .usa-footer-nav {
+    @include at-media('desktop') {
+      @include u-padding-x(0);
+    }
+  }
+
+  .usa-footer-address {
+    @include u-padding-y(2);
+    @include u-padding-x($theme-site-margins-mobile-width);
+    @include at-media('mobile-lg') {
+      @include u-padding(0);
+    }
+  }
+
+  .usa-footer-logo {
+    @include u-flex('align-center');
+  }
+
+  .usa-footer-logo-img {
+    max-width: units(6);
+  }
+
+  .usa-footer-contact_info {
+    @include at-media('mobile-lg') {
+      @include u-padding-y(2);
+      margin-top: 0;
+    }
+  }
+}
+
+// Big footer styles
+
+.usa-footer-big {
+  .usa-footer-nav {
+    @include u-margin-x($theme-site-margins-mobile-width * -1);
+    @include at-media('mobile-lg') {
+      border-bottom: 1px solid color('base-light');
+      padding-top: units(4);
+    }
+    @include at-media('tablet') {
+      @include u-margin-x(0);
+      @include u-padding-x(0);
+      border-bottom: none;
+    }
+  }
+
+  .usa-footer-primary-link {
+    @include h4;
+    @include add-background-svg('arrow-down');
+    background-position: units(2) center;
+    background-size: units(1.5);
+    line-height: line-height('heading', 2);
+    margin: 0;
+    padding-left: units(4);
+
+    @include at-media('mobile-lg') {
+      @include u-padding-y(0);
+      background: none;
+      margin-bottom: units(1);
+      padding-left: 0;
+
+      &:hover {
+        cursor: auto;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .usa-footer-collapsible {
+    &.hidden {
+      .usa-unstyled-list {
+        display: none;
+      }
+
+      .usa-footer-primary-link {
+        @include add-background-svg('arrow-right');
+        cursor: pointer;
+
+        @include at-media('mobile-lg') {
+          background: none;
+          margin: 0;
+          padding-left: 0;
+        }
+      }
+    }
+
+    .usa-unstyled-list {
+      @include u-padding-x($theme-site-margins-mobile-width);
+      padding-bottom: units(2.5);
+
+      @include at-media('mobile-lg') {
+        @include u-padding-x(0);
+        padding-bottom: units(4);
+        padding-top: units(1.5);
+      }
+    }
+  }
+}

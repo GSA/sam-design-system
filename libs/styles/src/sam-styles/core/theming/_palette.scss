@@ -1,0 +1,83 @@
+
+// Colors come from https://designsystem.digital.gov/components/colors/
+
+$uswds-blue: (
+  500: #0071bc, //primary
+  700: #205493, //primary-darker
+  900: #112e51, //primary-darkest
+);
+
+$uswds-light-blue: (
+  100: #e1f3f8, //primary-alt-lightest
+  200: #9bdaf1, //primary-alt-light
+  400: #02bfe7, //primary-alt
+  500: #00a6d2, //primary-alt-dark
+  600: #046b99, //primary-alt-darkest
+);
+
+$uswds-cool-blue: ( 
+  100: #dce4ef, //cool-blue-lightest
+  300: #8ba6ca, //cool-blue-lighter
+  500: #4773aa, //cool-blue-light
+);
+
+$uswds-red: ( 
+  100: #f9dede, //secondary-lightest
+  200: #e59393, //secondary-light
+  400: #e31c3d, //secondary
+  500: #cd2026, //secondary-dark
+  600: #981b1e, //secondary-darkest
+);
+
+$uswds-yellow: ( 
+  100: #fff1d2, //gold-lightest
+  200: #fad980, //gold-lighter
+  300: #f9c642, //gold-light
+  400: #fdb81e, //gold
+);
+
+$uswds-green: ( 
+  100: #e7f4e4, //green-lightest
+  200: #94bfa2, //green-lighter
+  300: #4aa564, //green-light
+  400: #2e8540, //green
+);
+
+$uswds-purple: ( 
+  900: #4c2c92, //visited
+);
+
+$uswds-cool-gray: (
+  100: #f1f1f1, //gray-lightest
+  200: #d6d7d9, //gray-lighter
+  300: #aeb0b5, //gray-light
+  400: #5b616b, //gray
+  600: #323a45, //gray-dark
+  700: #212121, //base
+);
+
+$uswds-warm-gray: (
+  100: #e4e2e0, //gray-warm-light
+  500: #494440, //gray-warm-dark
+);
+
+// Foreground palette for light themes.
+$sam-theme-foreground: (
+  text:         map-get($map: $uswds-cool-gray, $key: 700),
+  light-text:   map-get($map: $uswds-cool-gray, $key: 300),
+  link:         map-get($map: $uswds-blue, $key: 500),
+  headers:      map-get($map: $uswds-cool-gray, $key: 600),
+  divider:      map-get($map: $uswds-cool-gray, $key: 200),
+);
+
+// Background palette for light themes.
+$sam-theme-background: (
+  accordion:         white,
+  accordion-hover:   map-get($map: $uswds-cool-gray, $key: 100),
+  sidenav:           white,
+  table:             white,
+  table-header:      map-get($map: $uswds-cool-gray, $key: 600),
+  tab-header:        map-get($map: $uswds-cool-gray, $key: 100),
+  progress-bar-background: map-get($map: $uswds-cool-gray, $key: 200),
+  progress-bar-fill: map-get($map: $uswds-green, $key: 400)
+);

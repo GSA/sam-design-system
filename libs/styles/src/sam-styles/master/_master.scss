@@ -1,0 +1,169 @@
+/*******************************
+        Master
+*******************************/
+/*-------------------
+       Class 
+--------------------*/
+$class: sam;
+
+/*----------------------
+        Debug
+-----------------------*/
+.#{$class}.master.debug{
+  border: 2px dashed black;
+}
+
+/*----------------------
+        Site
+-----------------------*/
+// html{
+//   font-size: 10px;
+//   -webkit-text-size-adjust: 100%;
+// }
+
+// body {
+//   font-family: $fontFamily;
+//   font-size: $fontSize;
+//   -webkit-font-smoothing: antialiased;
+//   -moz-osx-font-smoothing: grayscale;
+//   color: rgba(0,0,0,.7);
+//   line-height: 1.5em;
+//   text-rendering: optimizeLegibility;
+//   font-feature-settings: "pnum";
+//   font-variant-numeric: proportional-nums;
+//   overflow-x: hidden;
+// }
+
+// a {
+//     color: #0071bc;
+//     cursor: pointer;
+//     font-weight: 600;
+//     text-decoration: none;
+// }
+
+// a:hover{
+//   text-decoration: underline;
+// }
+
+// strong{
+//   font-weight: 600;
+// }
+
+// p{
+//   margin: 0 0 1em 0;
+// }
+
+// p.sam.paragraph.remove.margin{
+//   margin-bottom: 0;
+// }
+
+/*----------------------
+        Layout
+-----------------------*/
+// .#{$class}.master{
+//   display: grid;
+//   min-height: 100vh;
+// }
+
+.#{$class}.master > .header,
+.#{$class}.master > .footer{
+  background-color:#d6d7d9;
+  font-weight: 600;
+  padding: 1rem;
+}
+
+
+////////////////////////////////////////////////
+
+
+
+
+/*******************************
+          Master Page
+*******************************/
+
+.sam-ui.master-page{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content min-content 1fr min-content;
+  min-height: 100vh;
+  
+}
+
+/*--------------
+     Header
+---------------*/
+
+.master-page-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: .5em;
+  border-bottom: 1px solid #323a45;
+  border-bottom-color: #a6aeb9;
+
+  background: #e2e2e2; /* Old browsers */
+  background: -moz-linear-gradient(-45deg, #e2e2e2 0%, #ffffff 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, #e2e2e2 0%,#ffffff 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, #e2e2e2 0%,#ffffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+.master-page-logo img{
+  width: 183px;
+  margin: 5px 0px 0px;
+}
+
+.master-page-menu a{
+  display: inline-block;
+  padding: 12px 17px;
+}
+
+.master-page-menu a.current{
+  background-color: #f1f1f1;
+  border-radius: 50%;
+  color: #908787;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+
+/*--------------
+     Drawer
+---------------*/
+.master-page-drawer{
+  background: #323a45; /* Old browsers */
+  background: -moz-linear-gradient(top, #323a45 0%, #404c5a 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #323a45 0%,#404c5a 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #323a45 0%,#404c5a 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+.master-page-drawer .search-container{
+  margin: 15px;
+  position: relative;
+  .search{
+    margin-bottom: 0;
+  }
+}
+
+@media only screen and (min-width: 600px){
+  .master-page-drawer .search-container{
+    width: 590px;
+    margin: 1.5em auto;
+  }
+}
+
+/*--------------
+     Footer
+---------------*/
+.master-page-footer{
+  background-color: #d6d7d9;
+  padding: .5em;
+}
+
+
+/*--------------
+     Hacks
+---------------*/
+/* Move router outlet to the bottom */
+.sam-ui.master-page router-outlet{
+  grid-row: -1;
+}

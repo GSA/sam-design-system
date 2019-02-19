@@ -1,0 +1,65 @@
+sam-filter-drawer{
+	display: flex;
+}
+
+sam-filter-drawer .filters{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+sam-filter-drawer .options{
+	align-self: center;
+}
+
+sam-filter-drawer .options .sam.button{
+	margin: 15px 0px 0px 0px;
+	white-space: nowrap;
+}
+
+sam-filter-drawer-item{
+	display: block;
+	margin-right: 20px;
+}
+
+sam-filter-drawer-item:last-child{
+	margin-right: 0px;
+}
+
+sam-filter-drawer-item .title{
+	font-size: 13px;
+	text-transform: uppercase;
+}
+
+sam-filter-drawer-chip {
+	display: inline-block;
+  margin-bottom: 10px;
+}
+
+
+// sam-filter-drawer {
+// 	.sam {
+// 		display:inline-flex;
+
+// 		ul{
+// 			margin:0px 10px 20px 0;
+// 			padding:0px;
+	
+// 			li{
+// 				display:inline-block;
+// 				width: auto;
+// 				padding: 3px 10px 5px;
+// 				margin-right:5px;
+// 				border-radius:3px;
+// 				font-size:1.4rem;
+// 			}
+// 			li i{
+// 				margin-left:5px;
+// 				cursor: pointer;
+// 			}
+// 		}
+	
+// 		.options{
+// 			margin-top: 15px;
+// 		}
+// 	}
+// }

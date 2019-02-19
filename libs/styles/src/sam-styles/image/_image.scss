@@ -1,0 +1,38 @@
+.sam.image{
+  border: 1px solid #dcdcdc;
+  display: block;
+  height: 100px;
+  background-color: #fbf9f9;
+  border-radius: 2px;
+  margin-bottom: .3em;
+}
+
+.sam.image::before{
+  content: "IMG";
+  font-weight: 600;
+  color: #c5c5c5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+// With Caption
+.sam.image.caption{
+  position: relative;
+}
+
+.sam.image.caption::before{
+  height: 75%;
+}
+
+.sam.image.caption span{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #757575;
+  border-top: 1px solid #dcdcdc;
+}

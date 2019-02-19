@@ -1,0 +1,54 @@
+
+.mat-elevation-z4 {
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12); 
+}  
+
+@mixin sam-tabs-theme($theme) {
+  $primary: map-get($theme, primary);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  .mat-tab-nav-bar,
+  .mat-tab-header {
+    background-color: sam-color($background, tab-header);
+  }
+
+  .mat-tab-group-inverted-header {
+    .mat-tab-nav-bar,
+    .mat-tab-header {
+        background-color: sam-color($background, tab-header);
+    }
+  }
+
+  .mat-tab-label.mat-tab-label-active{
+      color: white;
+      background-color: #205593;
+      border: none;
+  }
+
+  .mat-tab-label, .mat-tab-link {
+    color: sam-color($foreground, text);
+
+    &.mat-tab-disabled {
+      color: sam-color($foreground, light-text);
+    }
+
+    sam-icon{
+        margin-right: 8px;
+    }
+  }
+}
+
+@mixin sam-tabs-typography($config) {
+  .mat-tab-group {
+    font-family: sam-font-family($config);
+  }
+
+  .mat-tab-label, .mat-tab-link {
+    font: {
+      family: sam-font-family($config);
+      size: sam-font-size($config, body);
+      weight: 600;
+    }
+  }
+}

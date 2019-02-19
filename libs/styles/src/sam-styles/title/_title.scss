@@ -1,0 +1,67 @@
+/**********************************************
+               Legacy
+***********************************************/ 
+/*
+  use .sam.heading  instead
+*/
+
+.sam.title{
+  font-weight: 600;
+  color: #16243A;
+  .normal{
+    font-weight: 400;
+  }
+}
+
+.sam.title .intro{
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-bottom: .5em;
+  font-size: .5em;
+  letter-spacing: -.6px;
+  //color: #696969;
+}
+
+h1.sam.title{
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 2.5885em;
+  //font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -.8px;
+}
+
+h2.sam.title{
+  font-size: 2em;
+  margin-top: 1.5em;
+  font-weight: 700;
+  margin-bottom: 0.7em;
+  letter-spacing: -.01em;
+}
+
+h3.sam.title{
+  font-size: 1.4em;
+  margin-top: 0;
+  margin-bottom: 0.6em;
+  //font-weight: 700;
+}
+
+h4.sam.title{
+  font-size: 1.2em;
+  margin-top: 0em;
+  margin-bottom: 0.5em;
+}
+
+// Weights
+.sam.title.normal{
+  font-weight: 400;
+}
+
+.sam.title.thin{
+  font-weight: 300;
+}
+
+// Aligned
+.sam.title.center.aligned{
+  text-align: center;
+}

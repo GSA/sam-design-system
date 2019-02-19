@@ -1,0 +1,140 @@
+
+@function sam-typography-level(
+  $font-size,
+  $line-height: $font-size,
+  $font-weight: 400,
+  $font-family: null,
+  $letter-spacing: null) {
+
+  @return (
+    font-size:        $font-size,
+    line-height:      $line-height,
+    font-weight:      $font-weight,
+    font-family:      $font-family,
+    letter-spacing:   $letter-spacing
+  );
+}
+
+// Defaults come from https://designsystem.digital.gov/components/typography/
+@function sam-typography-config(
+  $font-family:   '"Source Sans Pro", "Helvetica Neue", "Helvetica", sans-serif',
+  $heading-1:     sam-typography-level(38px, 42px, 700, null, -1px),
+  $heading-2:     sam-typography-level(32px, 41px, 700, null, -.8px),
+  $heading-3:     sam-typography-level(24px, 31px, 600),
+  $heading-4:     sam-typography-level(18px, 25px, 700),
+  $lead:          sam-typography-level(20px, 26px, 300, null, 0),
+  $body:          sam-typography-level(16px, 24px, 400),
+  $body-strong:   sam-typography-level(16px, 24px, 600),
+  $small:         sam-typography-level(15px, 22px, 400),
+  $button:        sam-typography-level(14px, 14px, 600),
+  $input:         sam-typography-level(inherit, 1.125, 400)
+) {
+
+  // Declare an initial map with all of the levels.
+  $config: (
+    heading-1:     $heading-1,
+    heading-2:     $heading-2,
+    heading-3:     $heading-3,
+    heading-4:     $heading-4,
+    lead:          $lead,
+    body:          $body,
+    body-strong:   $body-strong,
+    small:         $small,
+    button:        $button,
+    input:         $input
+  );
+
+  // Loop through the levels and set the `font-family` of the ones that don't have one to the base.
+  // Note that Sass can't modify maps in place, which means that we need to merge and re-assign.
+  @each $key, $level in $config {
+    @if map-get($level, font-family) == null {
+      $new-level: map-merge($level, (font-family: $font-family));
+      $config: map-merge($config, ($key: $new-level));
+    }
+  }
+
+  // Add the base font family to the config.
+  @return map-merge($config, (font-family: $font-family));
+}
+
+// Adds the base typography styles, based on a config.
+@mixin sam-base-typography($config, $selector: '.sam-typography') {
+  h1.sam.heading, .sam.h1, #{$selector} h1 {
+    @include sam-typography-level-to-styles($config, heading-1);
+    padding: 25px 0 20px;
+    margin: 0;
+    .intro{
+      @include sam-typography-level-to-styles($config, body);
+      letter-spacing: 0;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 5px;
+    }
+  }
+
+  h2.sam.heading, .sam.h2, #{$selector} h2 {
+    @include sam-typography-level-to-styles($config, heading-2);
+    padding: 20px 0 15px;
+    margin: 0;
+  }
+
+  h3.sam.heading, .sam.h3, #{$selector} h3 {
+    @include sam-typography-level-to-styles($config, heading-3);
+    padding: 15px 0 10px;
+    margin: 0;
+  }
+
+  h4.sam.heading, .sam.h4, #{$selector} h4 {
+    @include sam-typography-level-to-styles($config, heading-4);
+    padding: 10px 0 5px;
+    margin: 0;
+  }
+
+  .sam.lead{
+    @include sam-typography-level-to-styles($config, lead);
+    padding-bottom: 30px !important;
+    margin: 0;
+  }
+
+  html {
+    font-family: "Source Sans Pro";
+  }
+
+  body{
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  p{
+    @include sam-typography-level-to-styles($config, body);
+    padding-bottom: 15px !important;
+    margin: 0;
+  }
+
+  b,strong {
+    font-weight: 600;
+  }
+
+  a{
+    font-weight: 400;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  a:hover{
+    text-decoration: underline;
+  }
+
+  .sam.body, #{$selector} {
+    @include sam-typography-level-to-styles($config, body);
+
+    p {
+      margin: 0 0 12px;
+    }
+  }
+
+  .sam.small {
+    @include sam-typography-level-to-styles($config, small);
+  }
+}

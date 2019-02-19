@@ -1,0 +1,60 @@
+@import '../core/theming/palette';
+@import '../core/theming/theming';
+@import '../core/typography/typography-utils';
+
+@mixin sam-table-theme($theme) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .sam-table {
+    background: sam-color($background, table);
+  }
+
+  sam-row, sam-header-row, sam-footer-row, tr[sam-row],
+  th.sam-header-cell, td.sam-cell, td.sam-footer-cell {
+    border-bottom-color: sam-color($foreground, divider);
+  }
+
+  sam-header-row,
+  tr.sam-header-row{
+    background-color: sam-color($background, table-header);
+  }
+
+  .sam-header-cell {
+    color: white;
+  }
+
+  .sam-cell, .sam-footer-cell {
+    color: sam-color($foreground, text);
+  }
+
+  tr[sam-row]:nth-child(2n){
+    background-color: rgba(0,0,50,.02);
+  }
+
+  tr[sam-row]:hover{
+      background-color: rgba(220, 228, 238, 0.5);
+  }
+
+  // Overrides USWDS Button default style
+  .sam-sort-header-button:hover{
+    background-color: transparent;
+    color: white;
+  }
+}
+
+@mixin sam-table-typography($config) {
+  .sam-table {
+    font-family: sam-font-family($config);
+    line-height: sam-line-height($config, small);
+  }
+
+  .sam-header-cell {
+    font-size: sam-font-size($config, small);
+    font-weight: sam-font-weight($config, body-strong);
+  }
+
+  .sam-cell, .sam-footer-cell {
+    font-size: sam-font-size($config, small);
+  }
+}

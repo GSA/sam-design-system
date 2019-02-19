@@ -1,0 +1,16 @@
+@import "reset";
+
+// Core styles that can be used to apply sam.gov design treatments to any element.
+@import 'typography/all-typography';
+@import 'typography/theme';
+
+// Mixin that renders all of the core styles that are not theme-dependent.
+@mixin sam-core($typography-config: null) {
+  // @include sam-reset();
+  @include sam-typography($typography-config);
+}
+
+// Mixin that renders all of the core styles that depend on the theme.
+@mixin sam-core-theme($theme) {
+  @include sam-typography-theme($theme);
+}

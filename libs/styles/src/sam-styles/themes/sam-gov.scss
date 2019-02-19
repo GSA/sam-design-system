@@ -1,0 +1,29 @@
+// @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,600,600i,700,700i');
+
+// Include structure
+@import '../breadcrumbs/structure';
+@import '../menu/structure';
+@import '../table/structure';
+@import '../pagination/structure';
+@import '../sidenav/structure';
+@import '../expansion/expansion-panel';
+@import '../expansion/expansion-panel-header';
+@import '../grid/grid';
+@import '../filters/sam-filter-drawer';
+@import '../progress/structure';
+@import '../temp/temp';
+
+// Include theme
+@import '../core/theming/all-theme';
+
+// Include non-theme styles for core.
+@include sam-core();
+
+// Define a theme.
+$primary: sam-palette($uswds-blue, 700, 500, 900);
+$secondary:  sam-palette($uswds-light-blue, 500, 200, 600);
+
+$theme: sam-theme($primary, $secondary);
+
+// Include all theme styles for the components.
+@include sam-gov-theme($theme);

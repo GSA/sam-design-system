@@ -3,43 +3,6 @@
   "version": 1,
   "newProjectRoot": "",
   "projects": {
-    "styles": {
-      "root": "libs/styles",
-      "sourceRoot": "libs/styles/src",
-      "projectType": "library",
-      "prefix": "sam",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "libs/styles/tsconfig.lib.json",
-            "project": "libs/styles/ng-package.json"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/styles/tsconfig.lib.json",
-              "libs/styles/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/builders:jest",
-          "options": {
-            "jestConfig": "libs/styles/jest.config.js",
-            "tsConfig": "libs/styles/tsconfig.spec.json"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/schematics:component": {
-          "styleext": "scss"
-        }
-      }
-    },
     "utils": {
       "root": "libs/utils",
       "sourceRoot": "libs/utils/src",
@@ -267,6 +230,166 @@
           "styleext": "scss"
         }
       }
+    },
+    "sam-design-system-site": {
+      "root": "apps/sam-design-system-site/",
+      "sourceRoot": "apps/sam-design-system-site/src",
+      "projectType": "application",
+      "prefix": "sam",
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/sam-design-system-site",
+            "index": "apps/sam-design-system-site/src/index.html",
+            "main": "apps/sam-design-system-site/src/main.ts",
+            "polyfills": "apps/sam-design-system-site/src/polyfills.ts",
+            "tsConfig": "apps/sam-design-system-site/tsconfig.app.json",
+            "assets": [
+              "apps/sam-design-system-site/src/favicon.ico",
+              "apps/sam-design-system-site/src/assets"
+            ],
+            "styles": ["apps/sam-design-system-site/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/sam-design-system-site/src/environments/environment.ts",
+                  "with": "apps/sam-design-system-site/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "sam-design-system-site:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "sam-design-system-site:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "sam-design-system-site:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/sam-design-system-site/src/test.ts",
+            "polyfills": "apps/sam-design-system-site/src/polyfills.ts",
+            "tsConfig": "apps/sam-design-system-site/tsconfig.spec.json",
+            "karmaConfig": "apps/sam-design-system-site/karma.conf.js",
+            "styles": ["apps/sam-design-system-site/src/styles.scss"],
+            "scripts": [],
+            "assets": [
+              "apps/sam-design-system-site/src/favicon.ico",
+              "apps/sam-design-system-site/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/sam-design-system-site/tsconfig.app.json",
+              "apps/sam-design-system-site/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    },
+    "sam-design-system-site-e2e": {
+      "root": "apps/sam-design-system-site-e2e",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "apps/sam-design-system-site-e2e/protractor.conf.js",
+            "devServerTarget": "sam-design-system-site:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "sam-design-system-site:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/sam-design-system-site-e2e/tsconfig.e2e.json",
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    },
+    "styles": {
+      "root": "libs/styles",
+      "sourceRoot": "libs/styles/src",
+      "projectType": "library",
+      "prefix": "sam",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-webpack:webpack",
+          "options": {
+            "webpackConfig": "libs/styles/webpack.config.js"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/styles/src/test.ts",
+            "tsConfig": "libs/styles/tsconfig.spec.json",
+            "karmaConfig": "libs/styles/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/styles/tsconfig.lib.json",
+              "libs/styles/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {
@@ -285,5 +408,5 @@
       "style": "scss"
     }
   },
-  "defaultProject": "styles"
+  "defaultProject": "components"
 }

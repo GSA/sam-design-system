@@ -1,0 +1,13 @@
+.sam.progress .label {
+  font-weight: 600;
+}
+
+.sam.progress .bar .fill {
+  height: 1rem;
+  border-radius: 4px;
+}
+
+.sam.progress .bar .fill.animated {
+  transition: 0.4s linear;
+  transition-property: width;
+}

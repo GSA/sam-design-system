@@ -1,0 +1,32 @@
+// CARD
+// --------------------------------
+.sam.card-next{
+  background-color: white;
+  border-radius: 4px;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  
+  .header{
+    display: flex;
+    .sam.heading{
+      flex-grow: 1;
+      align-self: center;
+      padding: 0;
+    }
+    button{
+      font-size: 15px;
+      font-weight: 400;
+      margin: 0;
+      border: 1px solid #0071bc;
+      transition: background-color 0.3s ease;
+    }
+    button:hover{
+      color: white;
+      background-color: #0071bc;
+    }
+  }
+}
+.sam.card-next.raised{
+  border: 1px solid #979797;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+}

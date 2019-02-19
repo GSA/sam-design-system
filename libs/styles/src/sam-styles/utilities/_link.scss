@@ -1,0 +1,20 @@
+// LINK UTILITIES
+// --------------------------------
+.sam.link.arrow:hover{
+  text-decoration: none;
+}
+.sam.link.arrow::after{
+  content: " ";
+  opacity: 0;
+  margin-bottom: 2px;
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  vertical-align: middle;
+  background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform='translate(-280 -181)'%3E%3Cg transform='translate(290 191) rotate(90) translate(-10 -10)'%3E%3Ccircle cx='10' cy='10' r='10' fill='%23E31C3D'/%3E%3Cg transform='translate(4 4)' stroke='%23fff' stroke-linecap='square'%3E%3Cpath transform='translate(3.043 3.0094) scale(1 -1) translate(-3.043 -3.0094)' d='m0 0.30447l6.086 5.4098'/%3E%3Cpath transform='translate(8.9286 2.8571) scale(1 -1) translate(-8.9286 -2.8571)' d='m11.737-4.0541e-14l-5.6655 5.3571'/%3E%3Cpath transform='translate(6.0714 6.7857) scale(1 -1) translate(-6.0714 -6.7857)' d='m6.0714 1.0714v11.429'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
+  transition: all .2s ease-in;
+}
+.sam.link.arrow:hover::after{
+  opacity: 1;
+  transform: translateX(5px);
+}

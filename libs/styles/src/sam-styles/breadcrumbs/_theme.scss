@@ -1,0 +1,21 @@
+@import '../core/theming/theming';
+@import '../core/typography/typography-utils';
+
+$sam-breadcrumbs-font-size: 16px;
+$sam-breadcrumbs-font-weight: 600;
+
+@mixin sam-breadcrumbs-theme($theme) {
+  $foreground: map-get($map: $theme, $key: foreground);
+  
+  .sam.breadcrumbs li:not(:last-child)::after {
+    color: sam-color($foreground, divider);
+  }
+}
+
+@mixin sam-breadcrumbs-typography($config) {
+  .sam.breadcrumbs{
+    font-family: sam-font-family($config);
+    font-weight: $sam-breadcrumbs-font-weight;
+    font-size: $sam-breadcrumbs-font-size;
+  }
+}

@@ -1,0 +1,108 @@
+.sam-accordion {
+  margin: 0;
+  position: relative;
+  width: 80px;
+  min-height: 500px;
+}
+
+.sam-accordion dt[role="heading"]{
+  background-color: white;
+  width: 80px;
+}
+
+.sam-accordion-trigger {
+  background: none;
+  border: 0;
+  color: hsl(0, 0%, 13%);
+  display: block;
+  margin: 0px;
+  padding: 14px 0px;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 0px;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+}
+
+.sam-accordion-trigger:focus,
+.sam-accordion-trigger:hover {
+  color: hsl(0, 0%, 13%);
+  background-color: #f1f1f1;
+}
+
+.sam-accordion-trigger:hover {
+  border-top: 1px solid #f1f1f1;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.sam-accordion-trigger:focus{
+  outline-offset: -4px;
+  box-shadow: none;
+}
+
+.sam-accordion-trigger[aria-expanded="true"]{
+  background-color: #f1f1f1;
+  border-top: 1px solid #ccd6df;
+  border-bottom: 1px solid #ccd6df;
+}
+
+.sam-accordion dt:first-child .sam-accordion-trigger{
+  border-top: none;
+}
+
+.sam-accordion dt:last-of-type .sam-accordion-trigger{
+  border-bottom: none;
+}
+
+.sam-accordion-title {
+  display: block; /* For Edge bug https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/8295099/ */
+  pointer-events: none;
+}
+
+.sam-accordion-icon{
+  margin: 0px 0px 5px 0px;
+  display: block;
+  pointer-events: none;
+}
+
+.sam-accordion-panel {
+  margin: 0;
+  padding: 10px 15px;
+  position: absolute;
+  top: 0;
+  left: 80px;
+  width: 380px;
+  height: 100%;
+  overflow-y: auto;
+  background-color: #f1f1f1;
+  border-right: 1px solid #ccd6df;
+}
+
+/* width */
+.sam-accordion-panel::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+.sam-accordion-panel::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+/* Handle */
+.sam-accordion-panel::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius: 0px;
+}
+
+/* Handle on hover */
+.sam-accordion-panel::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+/* For Edge bug https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/4806035/ */
+.sam-accordion-panel[hidden] {
+  display: none;
+}

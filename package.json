@@ -42,7 +42,8 @@
     "@nrwl/nx": "7.5.0",
     "@ngrx/effects": "6.1.2",
     "@ngrx/router-store": "6.1.2",
-    "@ngrx/store": "6.1.2"
+    "@ngrx/store": "6.1.2",
+    "@gsa-sam/styles": "file:libs/styles"
   },
   "devDependencies": {
     "@angular-devkit/build-ng-packagr": "~0.12.0",
@@ -74,8 +75,8 @@
     "typescript": "~3.2.2",
     "prettier": "1.15.2",
     "@nrwl/builders": "7.5.0",
-    "jest": "^23.0.0",
-    "@types/jest": "^23.0.0",
-    "jest-preset-angular": "6.0.1"
+    "style-loader": "*",
+    "css-loader": "*",
+    "sass-loader": "*"
   }
 }

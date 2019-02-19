@@ -1,0 +1,90 @@
+.sam.label:not(.input){
+  background-color: #dce4ef;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 2px;
+  color: #212121;
+  margin-right: 5px;
+  display: inline-block;
+  box-shadow: 0px 0.8px 0.1px 0px rgba(0, 0, 0, 0.3);
+  width: auto;
+}
+
+.sam.label .sam.button{
+  font-size: 12px;
+  margin-right: 0;
+  margin-left: 5px;
+  padding: 0;
+}
+
+.sam.status.label{
+  font-size: 14px;
+  text-transform: uppercase;
+  background-color: transparent;
+  line-height: 20px;
+  box-shadow: none;
+  padding: 0px 5px 4px 0px;
+}
+
+.sam.status.label::before{
+  content: '';
+  display: inline-block;
+  border: 1px solid #5B616B;
+  background-color: #f1f1f1;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 5px;
+  vertical-align: bottom;
+}
+
+.sam.status.label.green::before{
+  border: 1px solid #2E8540;
+  background-color: #4AA564;
+}
+
+.sam.status.label.gray::before{
+  border: 1px solid #AEB0B5;
+  background-color: #E4E2E0;
+}
+
+.sam.status.label.dark.gray::before{
+  border: 1px solid #AEB0B5;
+  background-color: #5B616B !important;
+}
+
+.sam.status.label.yellow::before{
+  border: 1px solid #FDB81E;
+  background-color: #FAD980;
+}
+
+.sam.status.label.light.blue::before{
+  border: 1px solid #00A6D2;
+  background-color: #9BDAF1;
+}
+
+.sam.status.label.red::before{
+  border: 1px solid #981B1E;
+  background-color: #E59393;
+}
+
+// CIRCULAR
+.sam.circular.label{
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  line-height: 40px;
+  text-align: center;
+  padding: 0;
+}
+
+
+.sam.circular.label.red{
+  color: white;
+  background: #E31C3D;
+}

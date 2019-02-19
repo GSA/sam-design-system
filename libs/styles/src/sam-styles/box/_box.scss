@@ -1,0 +1,43 @@
+@import '../core/theming/theming';
+
+@mixin sam-box-theme($theme) {
+  .sam.box{
+    background-color: white;
+  }
+  .sam.box.primary{
+    background-color: #dce4ee;
+  }
+  .sam.box.secondary{
+    background-color: #f5f5f5;
+  }
+  .sam.box.outline{
+    background-color: white;
+  }
+}
+
+.sam.box{
+  padding: 1.5rem;
+  border-radius: 2px;
+}
+
+.sam.box.outline{
+  border: 1px solid #ccc;
+}
+
+// Titles
+.sam.box > .title:first-child{
+  margin-top: 0;
+}
+
+// Padded
+.sam.box.vertically.padded{
+  margin: 3rem 0;
+}
+
+// Angular Specific
+sam-box .sam.box{
+  height: calc(100% - 3rem);
+}
+.sam.box > sam-title:first-child .title{
+  margin-top: 0;
+}
