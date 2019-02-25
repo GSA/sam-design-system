@@ -106,7 +106,13 @@ $theme-font-definitions: (
   'source-sans-pro-plus': (
     name: 'Source Sans Pro Web',
     dir: 'source-sans-pro-plus',
-    stack: ('Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif),
+    stack: (
+      'Helvetica Neue',
+      'Helvetica',
+      'Roboto',
+      'Arial',
+      sans-serif
+    ),
     system-font: false,
     cap-height: 340px,
     generate: true,
@@ -120,7 +126,7 @@ $theme-font-definitions: (
       600: 'sourcesanspro-semibold-webfont',
       700: 'sourcesanspro-bold-webfont',
       800: false,
-      900: false,
+      900: false
     ),
     italic: (
       100: false,
@@ -131,8 +137,8 @@ $theme-font-definitions: (
       600: 'sourcesanspro-semibold-italic-webfont',
       700: false,
       800: false,
-      900: false,
-    ),
+      900: false
+    )
   )
 );
 
@@ -159,10 +165,10 @@ system:
 ----------------------------------------
 */
 
-$theme-font-mono:    false;
-$theme-font-sans:    'source-sans-pro-plus';
-$theme-font-serif:   'source-sans-pro-plus';
-$theme-font-cond:    false;
+$theme-font-mono: false;
+$theme-font-sans: 'source-sans-pro-plus';
+$theme-font-serif: 'source-sans-pro-plus';
+$theme-font-cond: false;
 
 /*
 ----------------------------------------
@@ -178,11 +184,11 @@ $theme-font-cond
 ----------------------------------------
 */
 
-$theme-font-ui:       $theme-font-sans;
-$theme-font-heading:  $theme-font-serif;
-$theme-font-body:     $theme-font-sans;
-$theme-font-code:     $theme-font-mono;
-$theme-font-alt:      $theme-font-serif;
+$theme-font-ui: $theme-font-sans;
+$theme-font-heading: $theme-font-serif;
+$theme-font-body: $theme-font-sans;
+$theme-font-code: $theme-font-mono;
+$theme-font-alt: $theme-font-serif;
 
 /*
 ----------------------------------------
@@ -195,15 +201,15 @@ values from the USWDS system type scale
 ----------------------------------------
 */
 
-$theme-type-scale-3xs:      2;
-$theme-type-scale-2xs:      3;
-$theme-type-scale-xs:       4;
-$theme-type-scale-sm:       5;
-$theme-type-scale-md:       6;
-$theme-type-scale-lg:       9;
-$theme-type-scale-xl:       12;
-$theme-type-scale-2xl:      14;
-$theme-type-scale-3xl:      15;
+$theme-type-scale-3xs: 2;
+$theme-type-scale-2xs: 3;
+$theme-type-scale-xs: 4;
+$theme-type-scale-sm: 5;
+$theme-type-scale-md: 6;
+$theme-type-scale-lg: 9;
+$theme-type-scale-xl: 12;
+$theme-type-scale-2xl: 14;
+$theme-type-scale-3xl: 15;
 
 /*
 ----------------------------------------
@@ -214,15 +220,15 @@ Or use `false` for unneeded weights.
 ----------------------------------------
 */
 
-$theme-output-all-weights:        false;
+$theme-output-all-weights: false;
 
-$theme-font-weight-thin:          false;
-$theme-font-weight-light:         300;
-$theme-font-weight-normal:        400;
-$theme-font-weight-medium:        false;
-$theme-font-weight-semibold:      false;
-$theme-font-weight-bold:          700;
-$theme-font-weight-heavy:         false;
+$theme-font-weight-thin: false;
+$theme-font-weight-light: 300;
+$theme-font-weight-normal: 400;
+$theme-font-weight-medium: false;
+$theme-font-weight-semibold: false;
+$theme-font-weight-bold: 700;
+$theme-font-weight-heavy: false;
 
 /*
 ----------------------------------------
@@ -281,32 +287,32 @@ none:    none
 */
 
 // Body settings are the equivalent of setting the <body> element
-$theme-body-font-family:           'body';
-$theme-body-font-size:             'sm';
-$theme-body-line-height:           5;
+$theme-body-font-family: 'body';
+$theme-body-font-size: 'sm';
+$theme-body-line-height: 5;
 
 // If true, explicitly style the <body> element with the base styles
-$theme-style-body-element:         false;
+$theme-style-body-element: false;
 
 // Headings
-$theme-h1-font-size:               '2xl';
-$theme-h2-font-size:               'xl';
-$theme-h3-font-size:               'lg';
-$theme-h4-font-size:               'sm';
-$theme-h5-font-size:               'xs';
-$theme-h6-font-size:               '3xs';
-$theme-heading-line-height:        2;
-$theme-small-font-size:            '2xs';
-$theme-title-font-size:            '3xl';
+$theme-h1-font-size: '2xl';
+$theme-h2-font-size: 'xl';
+$theme-h3-font-size: 'lg';
+$theme-h4-font-size: 'sm';
+$theme-h5-font-size: 'xs';
+$theme-h6-font-size: '3xs';
+$theme-heading-line-height: 2;
+$theme-small-font-size: '2xs';
+$theme-title-font-size: '3xl';
 
 // Text and prose
-$theme-text-measure-narrow:        1;
-$theme-text-measure:               3;
-$theme-text-measure-wide:          4;
-$theme-prose-font-family:          'body';
+$theme-text-measure-narrow: 1;
+$theme-text-measure: 3;
+$theme-text-measure-wide: 4;
+$theme-prose-font-family: 'body';
 
 // Lead text
-$theme-lead-font-family:           'heading';
-$theme-lead-font-size:             'lg';
-$theme-lead-line-height:           6;
-$theme-lead-measure:               5;
+$theme-lead-font-family: 'heading';
+$theme-lead-font-size: 'lg';
+$theme-lead-line-height: 6;
+$theme-lead-measure: 5;

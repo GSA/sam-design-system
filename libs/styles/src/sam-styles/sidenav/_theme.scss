@@ -5,9 +5,11 @@
   // We use invert() here to have the darken the background color expected to be used. If the
   // background is light, we use a dark backdrop. If the background is dark,
   // we use a light backdrop.
-  $sidenav-backdrop-color: invert(sam-color($background, sidenav, 0.6)) !default;
+  $sidenav-backdrop-color: invert(
+    sam-color($background, sidenav, 0.6)
+  ) !default;
   $sidenav-background-color: sam-color($background, sidenav) !default;
-  $sidenav-container-background-color:  sam-color($background, sidenav) !default;
+  $sidenav-container-background-color: sam-color($background, sidenav) !default;
   $sidenav-push-background-color: sam-color($background, sidenav) !default;
 
   .mat-sidenav-container {
@@ -29,4 +31,5 @@
   }
 }
 
-@mixin sam-sidenav-typography($config) { }
+@mixin sam-sidenav-typography($config) {
+}

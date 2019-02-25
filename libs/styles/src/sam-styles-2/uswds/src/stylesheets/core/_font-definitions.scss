@@ -2,13 +2,17 @@
 
 // FONTS
 
-$font-stack-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+$font-stack-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+  Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+  'Segoe UI Symbol';
 
 $font-stack-georgia: 'Georgia', 'Cambria', 'Times New Roman', 'Times', serif;
 
-$font-stack-helvetica: 'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif;
+$font-stack-helvetica: 'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial',
+  sans-serif;
 
-$font-stack-monospace: 'Bitstream Vera Sans Mono', 'Consolas', 'Courier', monospace;
+$font-stack-monospace: 'Bitstream Vera Sans Mono', 'Consolas', 'Courier',
+  monospace;
 
 $system-font-definitions: (
   'system': (
@@ -16,42 +20,42 @@ $system-font-definitions: (
     stack: $font-stack-system,
     system-font: true,
     cap-height: 362px,
-    generate: false,
+    generate: false
   ),
   'georgia': (
     name: 'Georgia',
     stack: $font-stack-georgia,
     system-font: true,
     cap-height: 346px,
-    generate: false,
+    generate: false
   ),
   'helvetica': (
     name: 'Helvetica',
     stack: $font-stack-helvetica,
     system-font: true,
     cap-height: 357px,
-    generate: false,
+    generate: false
   ),
   'tahoma': (
     name: 'Tahoma',
     stack: $font-stack-system,
     system-font: false,
     cap-height: 363px,
-    generate: false,
+    generate: false
   ),
   'verdana': (
     name: 'Verdana',
     stack: $font-stack-system,
     system-font: false,
     cap-height: 364px,
-    generate: false,
+    generate: false
   ),
   'open-sans': (
     name: 'Open Sans',
     stack: $font-stack-system,
     system-font: false,
     cap-height: 357px,
-    generate: false,
+    generate: false
   ),
   'merriweather': (
     name: 'Merriweather Web',
@@ -70,7 +74,7 @@ $system-font-definitions: (
       600: false,
       700: 'merriweather-bold-webfont',
       800: false,
-      900: false,
+      900: false
     ),
     italic: (
       100: false,
@@ -81,8 +85,8 @@ $system-font-definitions: (
       600: false,
       700: false,
       800: false,
-      900: false,
-    ),
+      900: false
+    )
   ),
   'roboto-mono': (
     name: 'Roboto Mono Web',
@@ -101,7 +105,7 @@ $system-font-definitions: (
       600: false,
       700: 'roboto-mono-v5-latin-700',
       800: false,
-      900: false,
+      900: false
     ),
     italic: (
       100: 'roboto-mono-v5-latin-100italic',
@@ -112,8 +116,8 @@ $system-font-definitions: (
       600: false,
       700: 'roboto-mono-v5-latin-700italic',
       800: false,
-      900: false,
-    ),
+      900: false
+    )
   ),
   'source-sans-pro': (
     name: 'Source Sans Pro Web',
@@ -132,7 +136,7 @@ $system-font-definitions: (
       600: false,
       700: 'sourcesanspro-bold-webfont',
       800: false,
-      900: false,
+      900: false
     ),
     italic: (
       100: false,
@@ -143,8 +147,8 @@ $system-font-definitions: (
       600: false,
       700: false,
       800: false,
-      900: false,
-    ),
+      900: false
+    )
   ),
   'public-sans': (
     name: 'Public Sans Web',
@@ -163,7 +167,7 @@ $system-font-definitions: (
       600: 'PublicSans-SemiBold',
       700: 'PublicSans-Bold',
       800: 'PublicSans-ExtraBold',
-      900: 'PublicSans-Black',
+      900: 'PublicSans-Black'
     ),
     italic: (
       100: 'PublicSans-ThinItalic',
@@ -174,7 +178,7 @@ $system-font-definitions: (
       600: 'PublicSans-SemiBoldItalic',
       700: 'PublicSans-BoldItalic',
       800: 'PublicSans-ExtraBoldItalic',
-      900: 'PublicSans-BlackItalic',
-    ),
-  ),
+      900: 'PublicSans-BlackItalic'
+    )
+  )
 );

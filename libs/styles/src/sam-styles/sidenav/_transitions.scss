@@ -3,7 +3,8 @@
 
 .mat-sidenav-transition {
   .mat-sidenav {
-    transition: transform $swift-ease-out-duration $swift-ease-out-timing-function;
+    transition: transform $swift-ease-out-duration
+      $swift-ease-out-timing-function;
   }
 
   .mat-sidenav-content {
@@ -15,6 +16,7 @@
   }
 
   .mat-sidenav-backdrop.mat-sidenav-shown {
-    transition: background-color $swift-ease-out-duration $swift-ease-out-timing-function;
+    transition: background-color $swift-ease-out-duration
+      $swift-ease-out-timing-function;
   }
 }

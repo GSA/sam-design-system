@@ -17,7 +17,7 @@
 
 .mat-expansion-panel-body {
   padding: 10px 24px 16px;
-  box-shadow: inset -1px 1px 2px 0px rgba(0,0,0,0.25);
+  box-shadow: inset -1px 1px 2px 0px rgba(0, 0, 0, 0.25);
 }
 
 .mat-action-row {
@@ -34,16 +34,20 @@
 }
 
 // Temporary fix
-.mat-expansion-panel-body #sam-autocomplete-results, 
+.mat-expansion-panel-body #sam-autocomplete-results,
 .mat-expansion-panel-body #sam-autocomplete-results-kv,
-.mat-expansion-panel-body .sam-autocomplete-no-results, 
+.mat-expansion-panel-body .sam-autocomplete-no-results,
 .mat-expansion-panel-body .results-list {
   position: static;
 }
-.mat-expansion-panel-body .sam-autocomplete-multiselect .sam-autocomplete-multiselect-input{
+.mat-expansion-panel-body
+  .sam-autocomplete-multiselect
+  .sam-autocomplete-multiselect-input {
   width: 150px;
 }
-.mat-expansion-panel-body .sam-autocomplete-multiselect ul.multiselect-parent-list{
+.mat-expansion-panel-body
+  .sam-autocomplete-multiselect
+  ul.multiselect-parent-list {
   position: static;
   width: 207px;
 }

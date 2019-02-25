@@ -161,10 +161,10 @@ system:
 ----------------------------------------
 */
 
-$theme-font-mono:   'roboto-mono' !default;
-$theme-font-sans:   'source-sans-pro' !default;
-$theme-font-serif:  'merriweather' !default;
-$theme-font-cond:   false !default;
+$theme-font-mono: 'roboto-mono' !default;
+$theme-font-sans: 'source-sans-pro' !default;
+$theme-font-serif: 'merriweather' !default;
+$theme-font-cond: false !default;
 
 /*
 ----------------------------------------
@@ -180,11 +180,11 @@ $theme-font-cond
 ----------------------------------------
 */
 
-$theme-font-ui:       $theme-font-sans !default;
-$theme-font-heading:  $theme-font-serif !default;
-$theme-font-body:     $theme-font-sans !default;
-$theme-font-code:     $theme-font-mono !default;
-$theme-font-alt:      $theme-font-serif !default;
+$theme-font-ui: $theme-font-sans !default;
+$theme-font-heading: $theme-font-serif !default;
+$theme-font-body: $theme-font-sans !default;
+$theme-font-code: $theme-font-mono !default;
+$theme-font-alt: $theme-font-serif !default;
 
 /*
 ----------------------------------------
@@ -197,15 +197,15 @@ values from the USWDS system type scale
 ----------------------------------------
 */
 
-$theme-type-scale-3xs:      2 !default;
-$theme-type-scale-2xs:      3 !default;
-$theme-type-scale-xs:       4 !default;
-$theme-type-scale-sm:       5 !default;
-$theme-type-scale-md:       6 !default;
-$theme-type-scale-lg:       9 !default;
-$theme-type-scale-xl:       12 !default;
-$theme-type-scale-2xl:      14 !default;
-$theme-type-scale-3xl:      15 !default;
+$theme-type-scale-3xs: 2 !default;
+$theme-type-scale-2xs: 3 !default;
+$theme-type-scale-xs: 4 !default;
+$theme-type-scale-sm: 5 !default;
+$theme-type-scale-md: 6 !default;
+$theme-type-scale-lg: 9 !default;
+$theme-type-scale-xl: 12 !default;
+$theme-type-scale-2xl: 14 !default;
+$theme-type-scale-3xl: 15 !default;
 
 /*
 ----------------------------------------
@@ -216,15 +216,15 @@ Or use `false` for unneeded weights.
 ----------------------------------------
 */
 
-$theme-output-all-weights:        false !default;
+$theme-output-all-weights: false !default;
 
-$theme-font-weight-thin:          false !default;
-$theme-font-weight-light:         300 !default;
-$theme-font-weight-normal:        400 !default;
-$theme-font-weight-medium:        false !default;
-$theme-font-weight-semibold:      false !default;
-$theme-font-weight-bold:          700 !default;
-$theme-font-weight-heavy:         false !default;
+$theme-font-weight-thin: false !default;
+$theme-font-weight-light: 300 !default;
+$theme-font-weight-normal: 400 !default;
+$theme-font-weight-medium: false !default;
+$theme-font-weight-semibold: false !default;
+$theme-font-weight-bold: 700 !default;
+$theme-font-weight-heavy: false !default;
 
 /*
 ----------------------------------------
@@ -283,32 +283,32 @@ none:    none
 */
 
 // Body settings are the equivalent of setting the <body> element
-$theme-body-font-family:           'body' !default;
-$theme-body-font-size:             'sm' !default;
-$theme-body-line-height:           5 !default;
+$theme-body-font-family: 'body' !default;
+$theme-body-font-size: 'sm' !default;
+$theme-body-line-height: 5 !default;
 
 // If true, explicitly style the <body> element with the base styles
-$theme-style-body-element:         false !default;
+$theme-style-body-element: false !default;
 
 // Headings
-$theme-h1-font-size:               '2xl' !default;
-$theme-h2-font-size:               'xl' !default;
-$theme-h3-font-size:               'lg' !default;
-$theme-h4-font-size:               'sm' !default;
-$theme-h5-font-size:               'xs' !default;
-$theme-h6-font-size:               '3xs' !default;
-$theme-heading-line-height:        2 !default;
-$theme-small-font-size:            '2xs' !default;
-$theme-title-font-size:            '3xl' !default;
+$theme-h1-font-size: '2xl' !default;
+$theme-h2-font-size: 'xl' !default;
+$theme-h3-font-size: 'lg' !default;
+$theme-h4-font-size: 'sm' !default;
+$theme-h5-font-size: 'xs' !default;
+$theme-h6-font-size: '3xs' !default;
+$theme-heading-line-height: 2 !default;
+$theme-small-font-size: '2xs' !default;
+$theme-title-font-size: '3xl' !default;
 
 // Text and prose
-$theme-text-measure-narrow:        1 !default;
-$theme-text-measure:               3 !default;
-$theme-text-measure-wide:          4 !default;
-$theme-prose-font-family:          'body' !default;
+$theme-text-measure-narrow: 1 !default;
+$theme-text-measure: 3 !default;
+$theme-text-measure-wide: 4 !default;
+$theme-prose-font-family: 'body' !default;
 
 // Lead text
-$theme-lead-font-family:           'heading' !default;
-$theme-lead-font-size:             'lg' !default;
-$theme-lead-line-height:           6 !default;
-$theme-lead-measure:               5 !default;
+$theme-lead-font-family: 'heading' !default;
+$theme-lead-font-size: 'lg' !default;
+$theme-lead-line-height: 6 !default;
+$theme-lead-measure: 5 !default;

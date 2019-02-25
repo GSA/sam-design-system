@@ -164,7 +164,10 @@ $input-state-border-width: 0.5;
     @include add-list-reset;
 
     li {
-      line-height: line-height($theme-form-font-family, $theme-input-line-height);
+      line-height: line-height(
+        $theme-form-font-family,
+        $theme-input-line-height
+      );
     }
   }
 }
@@ -228,7 +231,8 @@ $input-state-border-width: 0.5;
 }
 
 .usa-radio-input:checked + .usa-radio-label::before {
-  box-shadow: 0 0 0 units($box-input-border-width) color('primary'), inset 0 0 0 units($box-input-border-width) color('white');
+  box-shadow: 0 0 0 units($box-input-border-width) color('primary'),
+    inset 0 0 0 units($box-input-border-width) color('white');
 }
 
 .usa-checkbox-input:checked + .usa-checkbox-label::before,
@@ -332,7 +336,7 @@ $input-state-border-width: 0.5;
 
 .usa-memorable-date {
   display: flex;
-  [type=number] {
+  [type='number'] {
     -moz-appearance: textfield;
 
     &::-webkit-inner-spin-button {

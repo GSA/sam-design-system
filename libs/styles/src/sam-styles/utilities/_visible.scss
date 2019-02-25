@@ -1,12 +1,12 @@
 // VISIBILITY
 // --------------------------------
-.sam.visible.mobile.only{
-  @media (min-width: $medium-screen){
+.sam.visible.mobile.only {
+  @media (min-width: $medium-screen) {
     display: none;
   }
 }
-.sam.visible.tablet.up{
-  @media (max-width: $medium-screen){
+.sam.visible.tablet.up {
+  @media (max-width: $medium-screen) {
     display: none;
   }
 }

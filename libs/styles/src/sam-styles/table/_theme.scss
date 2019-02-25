@@ -10,13 +10,18 @@
     background: sam-color($background, table);
   }
 
-  sam-row, sam-header-row, sam-footer-row, tr[sam-row],
-  th.sam-header-cell, td.sam-cell, td.sam-footer-cell {
+  sam-row,
+  sam-header-row,
+  sam-footer-row,
+  tr[sam-row],
+  th.sam-header-cell,
+  td.sam-cell,
+  td.sam-footer-cell {
     border-bottom-color: sam-color($foreground, divider);
   }
 
   sam-header-row,
-  tr.sam-header-row{
+  tr.sam-header-row {
     background-color: sam-color($background, table-header);
   }
 
@@ -24,20 +29,21 @@
     color: white;
   }
 
-  .sam-cell, .sam-footer-cell {
+  .sam-cell,
+  .sam-footer-cell {
     color: sam-color($foreground, text);
   }
 
-  tr[sam-row]:nth-child(2n){
-    background-color: rgba(0,0,50,.02);
+  tr[sam-row]:nth-child(2n) {
+    background-color: rgba(0, 0, 50, 0.02);
   }
 
-  tr[sam-row]:hover{
-      background-color: rgba(220, 228, 238, 0.5);
+  tr[sam-row]:hover {
+    background-color: rgba(220, 228, 238, 0.5);
   }
 
   // Overrides USWDS Button default style
-  .sam-sort-header-button:hover{
+  .sam-sort-header-button:hover {
     background-color: transparent;
     color: white;
   }
@@ -54,7 +60,8 @@
     font-weight: sam-font-weight($config, body-strong);
   }
 
-  .sam-cell, .sam-footer-cell {
+  .sam-cell,
+  .sam-footer-cell {
     font-size: sam-font-size($config, small);
   }
 }

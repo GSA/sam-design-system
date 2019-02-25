@@ -1,11 +1,11 @@
-.sam-primary-button{
+.sam-primary-button {
   border: none;
   font: inherit;
   cursor: pointer;
   text-decoration: underline;
   display: inline;
 }
-.sam-primary-button:hover{
+.sam-primary-button:hover {
   background-color: #112e51;
 }
 .primary-model-body {
@@ -14,16 +14,16 @@
 
   display: block;
 
-  .sam-primary-title{
+  .sam-primary-title {
     display: flex;
   }
 
-  sam-icon{
+  sam-icon {
     color: white;
     margin-top: 12px;
     margin-right: 5px;
   }
-  h3{
+  h3 {
     color: white;
     margin-bottom: 10px;
     margin-top: 10px;
@@ -34,13 +34,13 @@
 body.modal-open {
   overflow: hidden;
 }
-.modal-dialog .usa-modal-content-btn-area{
-    padding-top: 20px !important;
+.modal-dialog .usa-modal-content-btn-area {
+  padding-top: 20px !important;
 }
 
 // Modal temp styles (sam-hierarchical-tree modal)
 
-.sam-hierarchical-tree-modal .modal-content{
+.sam-hierarchical-tree-modal .modal-content {
   max-width: 90%;
   max-height: 100%;
 }

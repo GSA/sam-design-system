@@ -109,6 +109,6 @@ $accordion-border: units(0.5) solid color('base-lightest');
   @include accordion-button-styles;
 }
 
-.usa-accordion-button[aria-expanded=false] {
+.usa-accordion-button[aria-expanded='false'] {
   @include accordion-button-unopened-styles;
 }

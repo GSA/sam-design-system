@@ -9,7 +9,7 @@ import { SamAlertComponent } from './alert.component';
 const defaultConfig = {
   description: 'i-am-a-description',
   title: 'i-am-a-title',
-  type: 'success',
+  type: 'success'
 };
 
 describe('The Sam Alert component', () => {
@@ -27,7 +27,6 @@ describe('The Sam Alert component', () => {
       component.toggleContent();
       expect(component.showMoreToggle).toBe(false);
       expect(component.showMoreLinkText).toBe('Show Details');
-
     });
 
     it('should trigger dismiss on timer', () => {
@@ -75,7 +74,7 @@ describe('The Sam Alert component', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [SamAlertComponent],
-        imports: [RouterTestingModule],
+        imports: [RouterTestingModule]
       });
 
       fixture = TestBed.createComponent(SamAlertComponent);
@@ -84,38 +83,30 @@ describe('The Sam Alert component', () => {
       component.title = defaultConfig.title;
       component.description = defaultConfig.description;
       fixture.detectChanges();
-
     });
 
     it('title + description check', () => {
       fixture.detectChanges();
       fixture.whenStable().then(() => {
         expect(
-          fixture.debugElement.query(
-            By.css('.usa-alert-heading')
-          )
-          .nativeElement.textContent.trim()
-        )
-        .toBe('i-am-a-title');
+          fixture.debugElement
+            .query(By.css('.usa-alert-heading'))
+            .nativeElement.textContent.trim()
+        ).toBe('i-am-a-title');
         expect(
-          fixture.debugElement.query(
-            By.css('.usa-alert-text')
-          )
-          .nativeElement.textContent.trim()
-        )
-        .toBe('i-am-a-description');
+          fixture.debugElement
+            .query(By.css('.usa-alert-text'))
+            .nativeElement.textContent.trim()
+        ).toBe('i-am-a-description');
       });
     });
     it('type check', () => {
       fixture.detectChanges();
       //fixture.whenStable().then(() => {
-        expect(
-          fixture.debugElement.query(
-            By.css('.usa-alert')
-          ).nativeElement.className
-        )
-        .toContain('usa-alert-success');
-    //  });
+      expect(
+        fixture.debugElement.query(By.css('.usa-alert')).nativeElement.className
+      ).toContain('usa-alert-success');
+      //  });
     });
   });
 });

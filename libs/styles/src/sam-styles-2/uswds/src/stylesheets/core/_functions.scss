@@ -8,11 +8,7 @@ Functions
 // here, before the rest of the system
 // variables are set
 
-$root-font-size: if(
-  $theme-respect-user-font-size,
-  100%,
-  $theme-root-font-size
-);
+$root-font-size: if($theme-respect-user-font-size, 100%, $theme-root-font-size);
 
 $root-font-size-equiv: if(
   $theme-respect-user-font-size,
@@ -121,8 +117,7 @@ Leaves bools as is
     @return quote($value);
   }
 
-  @if type-of($value) == 'number'
-    and index(('px', 'xl', 'xs'), unit($value)) {
+  @if type-of($value) == 'number' and index(('px', 'xl', 'xs'), unit($value)) {
     @return inspect($value);
   }
 
@@ -149,8 +144,7 @@ Remove a value from a list
   @for $i from 1 through length($list) {
     @if type-of(nth($list, $i)) == list and $recursive {
       $result: append($result, remove(nth($list, $i), $value, $recursive));
-    }
-    @else if nth($list, $i) != $value {
+    } @else if nth($list, $i) != $value {
       $result: append($result, nth($list, $i));
     }
   }
@@ -193,10 +187,7 @@ isReadable
     $key: '';
   }
 
-  @return (
-    slug: $key,
-    content: $values,
-  );
+  @return (slug: $key, content: $values);
 }
 
 /*
@@ -215,18 +206,11 @@ isReadable
   $l: length($values);
 
   @if $l == 1 or nth($values, $l) != isReadable {
-    @return (
-      slug: $values,
-      isReadable: true,
-    );
-  }
-  @else {
+    @return (slug: $values, isReadable: true);
+  } @else {
     $values: remove($values, isReadable);
 
-    @return (
-      slug: unquote(nth($values, 1)),
-      isReadable: true,
-    );
+    @return (slug: unquote(nth($values, 1)), isReadable: true);
   }
 }
 
@@ -268,11 +252,7 @@ into that single element.
     @return $value;
   }
 
-  $output: if(
-    length($value) == 1,
-    nth($value, 1),
-    $value
-  );
+  $output: if(length($value) == 1, nth($value, 1), $value);
 
   @return $output;
 }
@@ -301,8 +281,7 @@ of lists.
       @each $ii in $i {
         $output: append($output, $ii, comma);
       }
-    }
-    @else {
+    } @else {
       $output: append($output, $i, comma);
     }
   }
@@ -321,10 +300,7 @@ Return null if the value is null
 
 @function get-last($props) {
   $length: length($props);
-  $last: if($length == 0,
-    null,
-    nth($props, -1)
-  );
+  $last: if($length == 0, null, nth($props, -1));
 
   @return $last;
 }
@@ -374,7 +350,8 @@ the desired final units (currently rem)
 */
 
 @function spacing-multiple($unit) {
-  $grid-to-rem: ($system-spacing-grid-base * $unit) / $root-font-size-equiv * 1rem;
+  $grid-to-rem: ($system-spacing-grid-base * $unit) / $root-font-size-equiv *
+    1rem;
 
   @return $grid-to-rem;
 }
@@ -427,11 +404,7 @@ Get the cap height of a defined font
     @return false;
   }
 
-  @return map-deep-get(
-    $all-font-definitions,
-    $font,
-    'cap-height'
-  );
+  @return map-deep-get($all-font-definitions, $font, 'cap-height');
 }
 
 /*
@@ -544,7 +517,8 @@ a family and a line-height scale unit
 
   $this-cap: map-get($project-cap-heights, $family);
   $this-line-height: map-get($system-line-height, $scale);
-  $normalized-line-height: $this-line-height / ($system-base-cap-height / $this-cap);
+  $normalized-line-height: $this-line-height /
+    ($system-base-cap-height / $this-cap);
 
   @return $normalized-line-height;
 }
@@ -566,8 +540,8 @@ variable that is, itself, a list
 @function get-system-color(
   $color-family: false,
   $color-grade: false,
-  $color-variant: false) {
-
+  $color-variant: false
+) {
   // If the arg being passed to the fn
   // is a variable defined as a list,
   // $color-family will contain this
@@ -617,11 +591,7 @@ variable that is, itself, a list
     @return $output;
   }
 
-  $output: map-deep-get(
-    $system-colors,
-    $color-family,
-    $color-grade
-  );
+  $output: map-deep-get($system-colors, $color-family, $color-grade);
 
   @return $output;
 }
@@ -794,7 +764,7 @@ functions and mixins.
     @return map-get($our-extended-values, $quoted-value);
   }
 
-  @if not (type-of($value) == 'number' and not unitless($value)) {
+  @if not(type-of($value) == 'number' and not unitless($value)) {
     @error '`#{$value}` is not a valid `#{$property}` token. '
       + 'You should correct this. Standard `#{$property}` tokens: '
       + ' #{map-keys($our-standard-values)}';
@@ -873,8 +843,8 @@ Derive a color from a color triplet:
 @function advanced-color(
   $color-family: false,
   $color-grade: false,
-  $color-variant: false) {
-
+  $color-variant: false
+) {
   // Convert any arglists into lists
   $color-family: if(
     type-of($color-family) == 'arglist',
@@ -916,13 +886,14 @@ Derive a color from a color triplet:
   // default theme colors have no grade
   // ex: ('base')
   @if map-has-key($all-project-colors, $color-family) {
-    @if not map-has-key(map-get($all-project-colors, $color-family), $color-grade) {
+    @if not
+      map-has-key(map-get($all-project-colors, $color-family), $color-grade)
+    {
       @error '`#{$color-grade}` is not a valid grade of `#{$color-family}`. '
         + 'Valid grades: '
         + '#{map-keys(map-get($all-project-colors, $color-family))}';
     }
-  }
-  @else {
+  } @else {
     @error '`#{$color-family}` is not a valid theme family token. '
       + 'Valid family tokens: #{map-keys($all-project-colors)}';
   }
@@ -939,7 +910,8 @@ the desired final units (currently rem)
 */
 
 @function units($value) {
-  $converted: if(type-of($value) == 'string',
+  $converted: if(
+    type-of($value) == 'string',
     quote($value),
     number-to-token($value)
   );
@@ -995,8 +967,7 @@ border-radii
 @function border-radius($value) {
   @if map-has-key($all-border-radius, $value) {
     @return map-get($all-border-radius, $value);
-  }
-  @else {
+  } @else {
     @error '`#{$value}` is not a valid border radius token. '
       + 'Valid tokens: #{map-keys($all-border-radius)}';
   }
@@ -1170,7 +1141,7 @@ Get type scale value from a [family] and
   $this-scale: map-get($all-type-scale, $our-scale);
 
   @if not $force {
-    @if not ($this-scale and $this-cap) {
+    @if not($this-scale and $this-cap) {
       @error 'The scale `#{$our-scale}` is disabled '
         + 'in your project\'s theme settings. '
         + 'Set its value to `true` to use this family.';

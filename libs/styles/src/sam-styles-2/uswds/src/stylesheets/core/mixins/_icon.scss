@@ -10,8 +10,7 @@
     /* stylelint-disable block-closing-brace-newline-after, at-rule-empty-line-before */
     @if $direction == 'after' {
       margin-left: $margin;
-    }
-    @else {
+    } @else {
       margin-right: $margin;
     }
     /* stylelint-enable */
@@ -51,8 +50,7 @@
     /* stylelint-disable block-closing-brace-newline-after, at-rule-empty-line-before */
     @if $direction == 'after' {
       margin-left: units($margin);
-    }
-    @else {
+    } @else {
       margin-right: units($margin);
     }
     /* stylelint-enable */

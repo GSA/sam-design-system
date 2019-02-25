@@ -18,7 +18,8 @@
     visibility: hidden;
   }
 
-  &.mat-sidenav-opening, &.mat-sidenav-opened {
+  &.mat-sidenav-opening,
+  &.mat-sidenav-opened {
     transform: translate3d($open, 0, 0);
   }
 }
@@ -129,7 +130,8 @@
     }
   }
 
-  &.mat-sidenav-opening, &.mat-sidenav-opened {
+  &.mat-sidenav-opening,
+  &.mat-sidenav-opened {
     &:not(.mat-sidenav-side) {
       // The elevation of z-16 is noted in the design specifications.
       // See https://material.io/guidelines/patterns/navigation-drawer.html#
@@ -138,9 +140,8 @@
   }
 }
 
-@media (max-width: 600px){
-  sam-aside.mat-sidenav.mat-sidenav-over{
+@media (max-width: 600px) {
+  sam-aside.mat-sidenav.mat-sidenav-over {
     background-color: #f1f1f1;
   }
 }
-

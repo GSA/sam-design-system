@@ -25,8 +25,8 @@ Relative font and image file paths
 ----------------------------------------
 */
 
-$theme-font-path:   '../fonts';
-$theme-image-path:  '../img';
+$theme-font-path: '../fonts';
+$theme-image-path: '../img';
 
 /*
 ----------------------------------------
@@ -47,13 +47,13 @@ Namespace
 
 $theme-namespace: (
   'grid': (
-    namespace:  'grid-',
-    output:     true,
+    namespace: 'grid-',
+    output: true
   ),
   'utility': (
-    namespace:  'u-',
-    output:     false,
-  ),
+    namespace: 'u-',
+    output: false
+  )
 );
 
 /*
@@ -74,10 +74,10 @@ Focus styles
 ----------------------------------------
 */
 
-$theme-focus-color:  'blue-40v';
+$theme-focus-color: 'blue-40v';
 $theme-focus-offset: 0;
-$theme-focus-style:  solid;
-$theme-focus-width:  0.5;
+$theme-focus-style: solid;
+$theme-focus-width: 0.5;
 
 /*
 ----------------------------------------

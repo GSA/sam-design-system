@@ -9,20 +9,27 @@ sam-datatable {
   display: block;
 }
 
-table.sam-table{
+table.sam-table {
   width: 100%;
 }
 
-sam-header-row, tr[sam-header-row] {
+sam-header-row,
+tr[sam-header-row] {
   min-height: $sam-header-row-height;
 }
 
-sam-row, tr[sam-row], .sam-footer-row {
+sam-row,
+tr[sam-row],
+.sam-footer-row {
   padding: 4px 0px 4px 0px;
   min-height: $sam-row-height;
 }
 
-sam-row, tr[sam-row], sam-header-row, tr[sam-header-row], .sam-footer-row {
+sam-row,
+tr[sam-row],
+sam-header-row,
+tr[sam-header-row],
+.sam-footer-row {
   display: flex;
   // Define a border style, but then widths default to 3px. Reset them to 0px except the bottom
   // which should be 1px;
@@ -42,8 +49,11 @@ sam-row, tr[sam-row], sam-header-row, tr[sam-header-row], .sam-footer-row {
   }
 }
 
-sam-cell:first-child, sam-header-cell:first-child, .sam-footer-cell:first-child,
-td[sam-cell]:first-child, th[sam-header-cell]:first-child {
+sam-cell:first-child,
+sam-header-cell:first-child,
+.sam-footer-cell:first-child,
+td[sam-cell]:first-child,
+th[sam-header-cell]:first-child {
   padding-left: $sam-row-horizontal-padding;
 
   [dir='rtl'] & {
@@ -52,8 +62,11 @@ td[sam-cell]:first-child, th[sam-header-cell]:first-child {
   }
 }
 
-sam-cell:last-child, sam-header-cell:last-child, .sam-footer-cell:last-child,
-td[sam-cell]:last-child, th[sam-header-cell]:last-child {
+sam-cell:last-child,
+sam-header-cell:last-child,
+.sam-footer-cell:last-child,
+td[sam-cell]:last-child,
+th[sam-header-cell]:last-child {
   padding-right: $sam-row-horizontal-padding;
 
   [dir='rtl'] & {
@@ -62,8 +75,11 @@ td[sam-cell]:last-child, th[sam-header-cell]:last-child {
   }
 }
 
-sam-cell, sam-header-cell, .sam-footer-cell,
-td[sam-cell], th[sam-header-cell] {
+sam-cell,
+sam-header-cell,
+.sam-footer-cell,
+td[sam-cell],
+th[sam-header-cell] {
   flex: 1;
   display: flex;
   align-items: center;
@@ -73,126 +89,126 @@ td[sam-cell], th[sam-header-cell] {
   min-height: inherit;
 }
 
-sam-header-cell{
+sam-header-cell {
   overflow: visible;
 }
 /**
  * SORT
  */
- $sam-sort-header-arrow-margin: 6px;
- $sam-sort-header-arrow-container-size: 12px;
- $sam-sort-header-arrow-stem-size: 10px;
- $sam-sort-header-arrow-pointer-length: 6px;
- $sam-sort-header-arrow-thickness: 2px;
- $sam-sort-header-arrow-hint-opacity: 0.38;
+$sam-sort-header-arrow-margin: 6px;
+$sam-sort-header-arrow-container-size: 12px;
+$sam-sort-header-arrow-stem-size: 10px;
+$sam-sort-header-arrow-pointer-length: 6px;
+$sam-sort-header-arrow-thickness: 2px;
+$sam-sort-header-arrow-hint-opacity: 0.38;
 
- .sam-sort-header-container {
-   display: flex;
-   cursor: pointer;
-   align-items: center;
+.sam-sort-header-container {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
 
-   .sam-sort-header-disabled & {
-     cursor: default;
-   }
- }
+  .sam-sort-header-disabled & {
+    cursor: default;
+  }
+}
 
- .sam-sort-header-position-before {
-   flex-direction: row-reverse;
- }
+.sam-sort-header-position-before {
+  flex-direction: row-reverse;
+}
 
- .sam-sort-header-button {
-   border: none;
-   background: 0 0;
-   display: flex;
-   align-items: center;
-   padding: 0;
-   cursor: inherit;
-   outline: 0;
-   font: inherit;
-   color: currentColor;
-   min-width: 100px;
-   span.fa{
-     padding-left: 5px;
-    }
-    &:focus{
-      outline: 2px dotted #aeb0b5;
-      outline-offset: 3px;
-      box-shadow: none;
-    }
- }
+.sam-sort-header-button {
+  border: none;
+  background: 0 0;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  cursor: inherit;
+  outline: 0;
+  font: inherit;
+  color: currentColor;
+  min-width: 100px;
+  span.fa {
+    padding-left: 5px;
+  }
+  &:focus {
+    outline: 2px dotted #aeb0b5;
+    outline-offset: 3px;
+    box-shadow: none;
+  }
+}
 
- .sam-sort-header-arrow {
-   height: $sam-sort-header-arrow-container-size;
-   width: $sam-sort-header-arrow-container-size;
-   min-width: $sam-sort-header-arrow-container-size;
-   position: relative;
-   display: flex;
+.sam-sort-header-arrow {
+  height: $sam-sort-header-arrow-container-size;
+  width: $sam-sort-header-arrow-container-size;
+  min-width: $sam-sort-header-arrow-container-size;
+  position: relative;
+  display: flex;
 
-   &,
-   [dir='rtl'] .sam-sort-header-position-before & {
-     margin: 0 0 0 $sam-sort-header-arrow-margin;
-   }
+  &,
+  [dir='rtl'] .sam-sort-header-position-before & {
+    margin: 0 0 0 $sam-sort-header-arrow-margin;
+  }
 
-   .sam-sort-header-position-before &,
-   [dir='rtl'] & {
-     margin: 0 $sam-sort-header-arrow-margin 0 0;
-   }
- }
+  .sam-sort-header-position-before &,
+  [dir='rtl'] & {
+    margin: 0 $sam-sort-header-arrow-margin 0 0;
+  }
+}
 
- .sam-sort-header-stem {
-   background: currentColor;
-   height: $sam-sort-header-arrow-stem-size;
-   width: $sam-sort-header-arrow-thickness;
-   margin: auto;
-   display: flex;
-   align-items: center;
- }
+.sam-sort-header-stem {
+  background: currentColor;
+  height: $sam-sort-header-arrow-stem-size;
+  width: $sam-sort-header-arrow-thickness;
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
 
- .sam-sort-header-indicator {
-   width: 100%;
-   height: $sam-sort-header-arrow-thickness;
-   display: flex;
-   align-items: center;
-   position: absolute;
-   top: 0;
-   left: 0;
- }
+.sam-sort-header-indicator {
+  width: 100%;
+  height: $sam-sort-header-arrow-thickness;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 
- .sam-sort-header-pointer-middle {
-   margin: auto;
-   height: $sam-sort-header-arrow-thickness;
-   width: $sam-sort-header-arrow-thickness;
-   background: currentColor;
-   transform: rotate(45deg);
- }
+.sam-sort-header-pointer-middle {
+  margin: auto;
+  height: $sam-sort-header-arrow-thickness;
+  width: $sam-sort-header-arrow-thickness;
+  background: currentColor;
+  transform: rotate(45deg);
+}
 
- .sam-sort-header-pointer-left,
- .sam-sort-header-pointer-right {
-   background: currentColor;
-   width: $sam-sort-header-arrow-pointer-length;
-   height: $sam-sort-header-arrow-thickness;
-   position: absolute;
-   top: 0;
- }
+.sam-sort-header-pointer-left,
+.sam-sort-header-pointer-right {
+  background: currentColor;
+  width: $sam-sort-header-arrow-pointer-length;
+  height: $sam-sort-header-arrow-thickness;
+  position: absolute;
+  top: 0;
+}
 
- .sam-sort-header-pointer-left {
-   transform-origin: right;
-   left: 0;
- }
+.sam-sort-header-pointer-left {
+  transform-origin: right;
+  left: 0;
+}
 
- .sam-sort-header-pointer-right {
-   transform-origin: left;
-   right: 0;
- }
+.sam-sort-header-pointer-right {
+  transform-origin: left;
+  right: 0;
+}
 
- /**
+/**
  * sam-styles custom
  */
- .sam.large.table{
-   overflow-x: auto;
- }
+.sam.large.table {
+  overflow-x: auto;
+}
 
-.sam-datatable-horizontal{
+.sam-datatable-horizontal {
   overflow-x: auto;
 }
 .sam-datatable-horizontal::-webkit-scrollbar {

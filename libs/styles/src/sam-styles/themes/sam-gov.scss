@@ -21,7 +21,7 @@
 
 // Define a theme.
 $primary: sam-palette($uswds-blue, 700, 500, 900);
-$secondary:  sam-palette($uswds-light-blue, 500, 200, 600);
+$secondary: sam-palette($uswds-light-blue, 500, 200, 600);
 
 $theme: sam-theme($primary, $secondary);
 

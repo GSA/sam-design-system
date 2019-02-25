@@ -49,25 +49,25 @@ export class SamAlertComponent {
   @Output() toggle: EventEmitter<any> = new EventEmitter<any>();
 
   types: any = {
-    'error': { class: 'usa-alert-error', sr: 'error alert'},
-    'info': { class: 'usa-alert-info', sr: 'info alert'},
-    'success': { class: 'usa-alert-success', sr: 'success alert'},
-    'warning': { class: 'usa-alert-warning', sr: 'warning alert'},
+    error: { class: 'usa-alert-error', sr: 'error alert' },
+    info: { class: 'usa-alert-info', sr: 'info alert' },
+    success: { class: 'usa-alert-success', sr: 'success alert' },
+    warning: { class: 'usa-alert-warning', sr: 'warning alert' }
   };
   selectedType: string = this.types.success.class;
   showMoreLinkText = 'Show Details';
 
   public closeAlert() {
-      this.onDismissClick();
-   }
+    this.onDismissClick();
+  }
 
-   public toggleContent() {
-       this.showMoreToggle = !this.showMoreToggle;
-       this.showMoreLinkText = this.showMoreToggle ?
-         'Hide Details' :
-         'Show Details';
-       this.toggle.emit(this.showMoreToggle);
-   }
+  public toggleContent() {
+    this.showMoreToggle = !this.showMoreToggle;
+    this.showMoreLinkText = this.showMoreToggle
+      ? 'Hide Details'
+      : 'Show Details';
+    this.toggle.emit(this.showMoreToggle);
+  }
 
   ngOnInit() {
     if (!this.typeNotDefined()) {

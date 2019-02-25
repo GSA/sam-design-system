@@ -18,11 +18,11 @@
     border-top-color: sam-color($foreground, divider);
   }
 
-  .mat-expansion-panel-header{
+  .mat-expansion-panel-header {
     color: sam-color($foreground, headers);
   }
 
-  .mat-expansion-panel-header:focus, 
+  .mat-expansion-panel-header:focus,
   .mat-expansion-panel-header:hover {
     background: sam-color($background, accordion-hover);
   }

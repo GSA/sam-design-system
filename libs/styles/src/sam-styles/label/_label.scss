@@ -1,4 +1,4 @@
-.sam.label:not(.input){
+.sam.label:not(.input) {
   background-color: #dce4ef;
   white-space: nowrap;
   font-size: 13px;
@@ -12,14 +12,14 @@
   width: auto;
 }
 
-.sam.label .sam.button{
+.sam.label .sam.button {
   font-size: 12px;
   margin-right: 0;
   margin-left: 5px;
   padding: 0;
 }
 
-.sam.status.label{
+.sam.status.label {
   font-size: 14px;
   text-transform: uppercase;
   background-color: transparent;
@@ -28,10 +28,10 @@
   padding: 0px 5px 4px 0px;
 }
 
-.sam.status.label::before{
+.sam.status.label::before {
   content: '';
   display: inline-block;
-  border: 1px solid #5B616B;
+  border: 1px solid #5b616b;
   background-color: #f1f1f1;
   width: 20px;
   height: 20px;
@@ -40,38 +40,38 @@
   vertical-align: bottom;
 }
 
-.sam.status.label.green::before{
-  border: 1px solid #2E8540;
-  background-color: #4AA564;
+.sam.status.label.green::before {
+  border: 1px solid #2e8540;
+  background-color: #4aa564;
 }
 
-.sam.status.label.gray::before{
-  border: 1px solid #AEB0B5;
-  background-color: #E4E2E0;
+.sam.status.label.gray::before {
+  border: 1px solid #aeb0b5;
+  background-color: #e4e2e0;
 }
 
-.sam.status.label.dark.gray::before{
-  border: 1px solid #AEB0B5;
-  background-color: #5B616B !important;
+.sam.status.label.dark.gray::before {
+  border: 1px solid #aeb0b5;
+  background-color: #5b616b !important;
 }
 
-.sam.status.label.yellow::before{
-  border: 1px solid #FDB81E;
-  background-color: #FAD980;
+.sam.status.label.yellow::before {
+  border: 1px solid #fdb81e;
+  background-color: #fad980;
 }
 
-.sam.status.label.light.blue::before{
-  border: 1px solid #00A6D2;
-  background-color: #9BDAF1;
+.sam.status.label.light.blue::before {
+  border: 1px solid #00a6d2;
+  background-color: #9bdaf1;
 }
 
-.sam.status.label.red::before{
-  border: 1px solid #981B1E;
-  background-color: #E59393;
+.sam.status.label.red::before {
+  border: 1px solid #981b1e;
+  background-color: #e59393;
 }
 
 // CIRCULAR
-.sam.circular.label{
+.sam.circular.label {
   display: block;
   font-size: 24px;
   font-weight: 700;
@@ -83,8 +83,7 @@
   padding: 0;
 }
 
-
-.sam.circular.label.red{
+.sam.circular.label.red {
   color: white;
-  background: #E31C3D;
+  background: #e31c3d;
 }

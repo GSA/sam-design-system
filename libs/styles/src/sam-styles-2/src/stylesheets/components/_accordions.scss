@@ -5,7 +5,7 @@
   min-height: 500px;
 }
 
-.sam-accordion dt[role="heading"]{
+.sam-accordion dt[role='heading'] {
   background-color: white;
   width: 80px;
 }
@@ -38,22 +38,22 @@
   border-bottom: 1px solid #f1f1f1;
 }
 
-.sam-accordion-trigger:focus{
+.sam-accordion-trigger:focus {
   outline-offset: -4px;
   box-shadow: none;
 }
 
-.sam-accordion-trigger[aria-expanded="true"]{
+.sam-accordion-trigger[aria-expanded='true'] {
   background-color: #f1f1f1;
   border-top: 1px solid #ccd6df;
   border-bottom: 1px solid #ccd6df;
 }
 
-.sam-accordion dt:first-child .sam-accordion-trigger{
+.sam-accordion dt:first-child .sam-accordion-trigger {
   border-top: none;
 }
 
-.sam-accordion dt:last-of-type .sam-accordion-trigger{
+.sam-accordion dt:last-of-type .sam-accordion-trigger {
   border-bottom: none;
 }
 
@@ -62,7 +62,7 @@
   pointer-events: none;
 }
 
-.sam-accordion-icon{
+.sam-accordion-icon {
   margin: 0px 0px 5px 0px;
   display: block;
   pointer-events: none;
@@ -88,18 +88,18 @@
 
 /* Track */
 .sam-accordion-panel::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background: #f1f1f1;
 }
 
 /* Handle */
 .sam-accordion-panel::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: #888;
   border-radius: 0px;
 }
 
 /* Handle on hover */
 .sam-accordion-panel::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #555;
 }
 
 /* For Edge bug https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/4806035/ */

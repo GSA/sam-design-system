@@ -1,4 +1,4 @@
-.sam.breadcrumbs{
+.sam.breadcrumbs {
   display: flex;
   list-style: none;
   padding: 0;
@@ -6,6 +6,6 @@
 }
 
 .sam.breadcrumbs li:not(:last-child)::after {
-    content: '/';
-    padding: 0 .4em;
+  content: '/';
+  padding: 0 0.4em;
 }

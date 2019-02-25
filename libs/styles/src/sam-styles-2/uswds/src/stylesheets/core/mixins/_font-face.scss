@@ -1,11 +1,5 @@
-
 // Output the @font-face rule
-@mixin at-font-face(
-  $font-family,
-  $file-path,
-  $font-weight,
-  $font-style
-) {
+@mixin at-font-face($font-family, $file-path, $font-weight, $font-style) {
   $file-path: unquote($file-path);
 
   // TODO: If $theme-use-rails-pipeline use font-url() statements
@@ -16,8 +10,7 @@
     font-family: unquote($font-family);
     font-style: unquote($font-style);
     font-weight: $font-weight;
-    src:
-      url(#{$file-path}.eot?#iefix) format('embedded-opentype'),
+    src: url(#{$file-path}.eot?#iefix) format('embedded-opentype'),
       url(#{$file-path}.woff2) format('woff2'),
       url(#{$file-path}.woff) format('woff'),
       url(#{$file-path}.ttf) format('truetype');
@@ -25,7 +18,13 @@
 }
 
 // Loop through weights, then call at-font-face
-@mixin generate-font-face($font-type, $font-weights, $font-name, $dir, $font-style) {
+@mixin generate-font-face(
+  $font-type,
+  $font-weights,
+  $font-name,
+  $dir,
+  $font-style
+) {
   @each $weight, $filename in $font-type {
     @each $key, $outputweight in $font-weights {
       @if $outputweight == $weight and $filename {
@@ -57,7 +56,9 @@
     );
   }
 
-  @if $this-font-face and map-deep-get($all-font-definitions, $this-font-face, generate) {
+  @if $this-font-face and
+    map-deep-get($all-font-definitions, $this-font-face, generate)
+  {
     $this-font: map-get($all-font-definitions, $this-font-face);
     $font-name: map-get($this-font, name);
     $roman: map-get($this-font, roman);
@@ -65,11 +66,23 @@
     $dir: map-get($this-font, dir);
 
     @if $roman {
-      @include generate-font-face($roman, $these-weights, $font-name, $dir, normal);
+      @include generate-font-face(
+        $roman,
+        $these-weights,
+        $font-name,
+        $dir,
+        normal
+      );
     }
 
     @if $italic {
-      @include generate-font-face($italic, $these-weights, $font-name, $dir, italic);
+      @include generate-font-face(
+        $italic,
+        $these-weights,
+        $font-name,
+        $dir,
+        italic
+      );
     }
   }
 }

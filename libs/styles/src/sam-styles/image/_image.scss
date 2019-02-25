@@ -1,14 +1,14 @@
-.sam.image{
+.sam.image {
   border: 1px solid #dcdcdc;
   display: block;
   height: 100px;
   background-color: #fbf9f9;
   border-radius: 2px;
-  margin-bottom: .3em;
+  margin-bottom: 0.3em;
 }
 
-.sam.image::before{
-  content: "IMG";
+.sam.image::before {
+  content: 'IMG';
   font-weight: 600;
   color: #c5c5c5;
   display: flex;
@@ -18,15 +18,15 @@
 }
 
 // With Caption
-.sam.image.caption{
+.sam.image.caption {
   position: relative;
 }
 
-.sam.image.caption::before{
+.sam.image.caption::before {
   height: 75%;
 }
 
-.sam.image.caption span{
+.sam.image.caption span {
   position: absolute;
   bottom: 0;
   left: 0;

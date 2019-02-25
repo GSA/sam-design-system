@@ -53,7 +53,8 @@ $swift-ease-in: all $swift-ease-in-duration $swift-ease-in-timing-function !defa
 
 $swift-ease-in-out-duration: 500ms !default;
 $swift-ease-in-out-timing-function: $ease-in-out-curve-function !default;
-$swift-ease-in-out: all $swift-ease-in-out-duration $swift-ease-in-out-timing-function !default;
+$swift-ease-in-out: all $swift-ease-in-out-duration
+  $swift-ease-in-out-timing-function !default;
 
 $swift-linear-duration: 80ms !default;
 $swift-linear-timing-function: linear !default;

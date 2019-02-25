@@ -5,24 +5,22 @@
 /*----------------------
         Debug
 -----------------------*/
-.#{$class}.page.debug{
+.#{$class}.page.debug {
   border: 1px dashed red;
 }
 
-.sam.page{
+.sam.page {
   margin-left: 2rem;
   margin-right: 2rem;
 }
 
-.page-sidebar{
+.page-sidebar {
   display: grid;
   grid-auto-rows: min-content;
   grid-row-gap: 1em;
   font-size: 1.6rem;
 }
 
-.page-content{
+.page-content {
   margin-bottom: 2rem;
 }
-
-
