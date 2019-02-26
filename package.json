@@ -25,7 +25,7 @@
     "workspace-schematic": "./node_modules/.bin/nx workspace-schematic",
     "dep-graph": "./node_modules/.bin/nx dep-graph",
     "help": "./node_modules/.bin/nx help",
-    "federalist": "npm install --only=dev && ng build --project=sam-design-system-site"
+    "federalist": "npm install --only=dev && ng build --project=sam-design-system-site --prod --base-href=$BASEURL/"
   },
   "private": true,
   "dependencies": {
