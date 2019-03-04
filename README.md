@@ -2,6 +2,28 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) using [Nrwl Nx](https://nrwl.io/nx).
 
+## How To Work In This Structure
+To ensure your work follows the expected structure, ensure you are using the correct Angular CLI commands as you create new libraries, modules, and components.
+
+Most of the modules in this library are intended to be published and consumed by third parties, specifically in support of the GSA IAE Modernization project.
+
+The grouping folders under the libs folder divide libraries by scope. Packages that are intended to be published live under the packages folder. As other scopes are needed for internal development to house feature, utilities, or data-access modules for documentation or other purposes, new scope directories may be added.
+
+## Creating New Publishable Libraries
+New publishable libraries should only be created with consent from the team. These libraries should be created within the `libs/packages` directory. Each publishable package should provide the following tags:
+
+- scope:shared
+- platform:web
+- type:ui
+
+## Documentation Site Feature Modules
+Any updates to the documentation site should first be created as a library in the `libs/sam-design-system-site` directory. Depending on the type of library, create it in the appropriate subdirectory using the Angular CLI schematics to ensure consistency with the project's structure.
+
+All libraries should share the `scope:sam-design-system-site` and `platform:web` tags. Add whichever `type` tag of `ui, data-access, utility, or feature` that is appropriate.
+
+Finally, import the module into the `sam-design-system-site` and configure the application appropriately.
+
+
 ## Nrwl Extensions for Angular (Nx)
 
 <a href="https://nrwl.io/nx"><img src="https://preview.ibb.co/mW6sdw/nx_logo.png"></a>

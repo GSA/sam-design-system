@@ -9,31 +9,67 @@
   },
   "projects": {
     "utils": {
-      "tags": []
+      "tags": [
+        "scope:shared",
+        "platform:web",
+        "type:ui"
+      ]
     },
     "experimental": {
-      "tags": []
+      "tags": [
+        "scope:shared",
+        "platform:web",
+        "type:ui"
+      ]
     },
     "sam-formly": {
-      "tags": []
+      "tags": [
+        "scope:shared",
+        "platform:web",
+        "type:ui"
+      ]
     },
     "forms": {
-      "tags": []
+      "tags": [
+        "scope:shared",
+        "platform:web",
+        "type:ui"
+      ]
     },
     "patterns": {
-      "tags": []
+      "tags": [
+        "scope:shared",
+        "platform:web",
+        "type:ui"
+      ]
     },
     "components": {
-      "tags": []
+      "tags": [
+        "scope:shared",
+        "platform:web",
+        "type:ui"
+      ]
     },
     "sam-design-system-site": {
-      "tags": []
+      "tags": [
+        "scope:sam-design-system-site",
+        "platform:web",
+        "type:application"
+      ]
     },
     "sam-design-system-site-e2e": {
-      "tags": []
+      "tags": [
+        "scope:sam-design-system-site-e2e",
+        "platform:web",
+        "type:application"
+      ]
     },
     "styles": {
-      "tags": []
+      "tags": [
+        "scope:shared",
+        "platform:web",
+        "type:ui"
+      ]
     },
     "server": {
       "tags": [

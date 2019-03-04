@@ -6,7 +6,9 @@ export function multiSpaServer (routes, distDirectory) {
   const router = express.Router();
 
   routes.forEach((route => {
-    router.get(`${route.route}/*`, (req, res, next) => {
+    const uri = route === '' ? '*' : `${route.route}/*`;
+    router.get(uri, (req, res, next) => {
+      console.log(req.route.path);
         // Initialize file server
         const serveFile = serveStaticFiles(req, res);
   
