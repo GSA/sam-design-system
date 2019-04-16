@@ -13,13 +13,18 @@
     "lib": ["es2017", "dom"],
     "baseUrl": ".",
     "paths": {
-      "@sam-design-system/utils": ["libs/packages/utils/src/index.ts"],
-      "@sam-design-system/experimental": ["libs/packages/experimental/src/index.ts"],
-      "@sam-design-system/sam-formly": ["libs/packages/sam-formly/src/index.ts"],
-      "@sam-design-system/forms": ["libs/packages/forms/src/index.ts"],
-      "@sam-design-system/patterns": ["libs/packages/patterns/src/index.ts"],
-      "@sam-design-system/components": ["libs/packages/components/src/index.ts"],
-      "@sam-design-system/styles": ["libs/packages/styles"]
+      "@sam-design-system/experimental": [
+        "libs/packages/experimental/src/index.ts"
+      ],
+      "@sam-design-system/sam-formly": [
+        "libs/packages/sam-formly/src/index.ts"
+      ],
+      "@sam-design-system/components": [
+        "libs/packages/components/src/index.ts"
+      ],
+      "@sam-design-system/layouts": [
+        "libs/packages/layouts/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
