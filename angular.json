@@ -4,33 +4,33 @@
   "newProjectRoot": "",
   "projects": {
     "experimental": {
-      "root": "libs/experimental",
-      "sourceRoot": "libs/experimental/src",
+      "root": "libs/packages/experimental",
+      "sourceRoot": "libs/packages/experimental/src",
       "projectType": "library",
       "prefix": "iae",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "libs/experimental/tsconfig.lib.json",
-            "project": "libs/experimental/ng-package.json",
+            "tsConfig": "libs/packages/experimental/tsconfig.lib.json",
+            "project": "libs/packages/experimental/ng-package.json",
             "scripts": ""
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "libs/experimental/src/test.ts",
-            "tsConfig": "libs/experimental/tsconfig.spec.json",
-            "karmaConfig": "libs/experimental/karma.conf.js"
+            "main": "libs/packages/experimental/src/test.ts",
+            "tsConfig": "libs/packages/experimental/tsconfig.spec.json",
+            "karmaConfig": "libs/packages/experimental/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/experimental/tsconfig.lib.json",
-              "libs/experimental/tsconfig.spec.json"
+              "libs/packages/experimental/tsconfig.lib.json",
+              "libs/packages/experimental/tsconfig.spec.json"
             ],
             "exclude": ["**/node_modules/**"]
           }
@@ -43,32 +43,32 @@
       }
     },
     "sam-formly": {
-      "root": "libs/sam-formly",
-      "sourceRoot": "libs/sam-formly/src",
+      "root": "libs/packages/sam-formly",
+      "sourceRoot": "libs/packages/sam-formly/src",
       "projectType": "library",
       "prefix": "iae",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "libs/sam-formly/tsconfig.lib.json",
-            "project": "libs/sam-formly/ng-package.json"
+            "tsConfig": "libs/packages/sam-formly/tsconfig.lib.json",
+            "project": "libs/packages/sam-formly/ng-package.json"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "libs/sam-formly/src/test.ts",
-            "tsConfig": "libs/sam-formly/tsconfig.spec.json",
-            "karmaConfig": "libs/sam-formly/karma.conf.js"
+            "main": "libs/packages/sam-formly/src/test.ts",
+            "tsConfig": "libs/packages/sam-formly/tsconfig.spec.json",
+            "karmaConfig": "libs/packages/sam-formly/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/sam-formly/tsconfig.lib.json",
-              "libs/sam-formly/tsconfig.spec.json"
+              "libs/packages/sam-formly/tsconfig.lib.json",
+              "libs/packages/sam-formly/tsconfig.spec.json"
             ],
             "exclude": ["**/node_modules/**"]
           }
@@ -81,32 +81,32 @@
       }
     },
     "components": {
-      "root": "libs/components",
-      "sourceRoot": "libs/components/src",
+      "root": "libs/packages/components",
+      "sourceRoot": "libs/packages/components/src",
       "projectType": "library",
       "prefix": "iae",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "libs/components/tsconfig.lib.json",
-            "project": "libs/components/ng-package.json"
+            "tsConfig": "libs/packages/components/tsconfig.lib.json",
+            "project": "libs/packages/components/ng-package.json"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "libs/components/src/test.ts",
-            "tsConfig": "libs/components/tsconfig.spec.json",
-            "karmaConfig": "libs/components/karma.conf.js"
+            "main": "libs/packages/components/src/test.ts",
+            "tsConfig": "libs/packages/components/tsconfig.spec.json",
+            "karmaConfig": "libs/packages/components/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/components/tsconfig.lib.json",
-              "libs/components/tsconfig.spec.json"
+              "libs/packages/components/tsconfig.lib.json",
+              "libs/packages/components/tsconfig.spec.json"
             ],
             "exclude": ["**/node_modules/**"]
           }
