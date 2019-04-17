@@ -40,3 +40,5 @@ jobs:
       # - store_artifacts:
       #     path: test-app/coverage
       #     destination : code-coverage
+
+      # test run!
