@@ -1,5 +1,5 @@
 {
-  "name": "@gsa-sam/packages-experimental",
+  "name": "@gsa-sam/experimental",
   "version": "0.0.0",
   "repository": {
     "type": "git",
