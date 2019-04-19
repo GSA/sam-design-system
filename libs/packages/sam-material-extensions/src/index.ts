@@ -1,1 +1,1 @@
-export * from './lib/packages-sam-material-extensions.module';
+export * from './lib/public-api';

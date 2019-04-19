@@ -1,1 +1,1 @@
-export * from './lib/packages-layouts.module';
+export * from './lib/public-api';

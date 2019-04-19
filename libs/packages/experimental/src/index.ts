@@ -1,1 +1,1 @@
-export * from './lib/packages-experimental.module';
+export * from './lib/public-api';
