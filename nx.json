@@ -1,5 +1,5 @@
 {
-  "npmScope": "sam-design-system",
+  "npmScope": "gsa-sam",
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": "*",
