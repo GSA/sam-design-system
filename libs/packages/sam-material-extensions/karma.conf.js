@@ -10,7 +10,10 @@ module.exports = function(config) {
     ...baseConfig,
     coverageIstanbulReporter: {
       ...baseConfig.coverageIstanbulReporter,
-      dir: join(__dirname, '../../../coverage/libs/packages/experimental')
+      dir: join(
+        __dirname,
+        '../../../coverage/libs/packages/sam-material-extensions'
+      )
     }
   });
 };

@@ -8,16 +8,10 @@
     "nx.json": "*"
   },
   "projects": {
-    "experimental": {
-      "tags": ["scope:shared", "platform:web", "type:ui"]
-    },
     "sam-formly": {
       "tags": ["scope:shared", "platform:web", "type:ui"]
     },
     "components": {
-      "tags": ["scope:shared", "platform:web", "type:ui"]
-    },
-    "layouts": {
       "tags": ["scope:shared", "platform:web", "type:ui"]
     },
     "sam-design-system-site": {
@@ -33,6 +27,15 @@
         "platform:web",
         "type:application"
       ]
+    },
+    "sam-material-extensions": {
+      "tags": ["scope:shared", "platform:web", "type:ui"]
+    },
+    "layouts": {
+      "tags": ["scope:shared", "type:ui", "platform:web"]
+    },
+    "experimental": {
+      "tags": ["scope:shared", "platform:web", "type:ui"]
     }
   }
 }

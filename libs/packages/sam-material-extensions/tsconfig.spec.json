@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../../dist/out-tsc/libs/packages/experimental",
+    "outDir": "../../../dist/out-tsc/libs/packages/sam-material-extensions",
     "types": ["jasmine", "node"]
   },
   "files": ["src/test.ts"],
