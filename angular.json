@@ -7,7 +7,7 @@
       "root": "libs/packages/sam-formly",
       "sourceRoot": "libs/packages/sam-formly/src",
       "projectType": "library",
-      "prefix": "iae",
+      "prefix": "sds",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
@@ -45,7 +45,7 @@
       "root": "libs/packages/components",
       "sourceRoot": "libs/packages/components/src",
       "projectType": "library",
-      "prefix": "iae",
+      "prefix": "sds",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
