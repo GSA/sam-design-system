@@ -140,7 +140,7 @@ function bumpVersion (version, directory) {
 }
 
 function commitVersion (version, directory) {
-  execSync(`git add . && git commit -m "Update library to version ${version}"`, { cwd: directory, stdio: 'inherit' });
+  execSync(`git status`, { cwd: directory, stdio: 'inherit' });
 }
 
 
