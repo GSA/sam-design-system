@@ -127,14 +127,14 @@ function main (cliArgs, defaultCliOptions) {
   
   const projectInfo = getProjectInfo(options.projectName);
 
-  const nextVersion = bumpVersion(options.version, resolve(options.rootDir, projectInfo.root))
+  const nextVersion = bumpVersion(options.version, resolve(options.rootDir))
   commitVersion(nextVersion);
   
 }
 
 function bumpVersion (version, directory) {
   console.log('Bumping version...')
-  const versionNumber = execSync(`npm versasdfadsfion ${version}`, { cwd: directory, encoding: 'utf-8' });
+  const versionNumber = execSync(`npm version ${version}`, { cwd: directory, encoding: 'utf-8' });
   console.log(versionNumber)
   return versionNumber;
 }
