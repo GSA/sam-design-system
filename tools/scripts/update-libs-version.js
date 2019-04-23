@@ -58,7 +58,7 @@ function updatePackageVersion (packageJson, version) {
       break;
   }
 
-  clone.version = versionArray.join('.');
+  clone.version = process.env.npm_package_version;
 
   return clone;
 }
