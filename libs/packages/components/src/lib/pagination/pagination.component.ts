@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter,Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 
 @Component({
@@ -9,10 +9,12 @@ import { Component, OnInit, Input, EventEmitter,Output } from '@angular/core';
 export class PaginationComponent implements OnInit {
 
   constructor() { }
-  @Output() public pageChange = new EventEmitter<number>();
+  @Output() public pageChange = new EventEmitter<PageModel>();
 
+  page: PageModel = new PageModel();
   totalPages: number;
-  currentPage: number = 1;
+
+  pageItemCount: number;
   id: string;
   options: [{ label: '5', value: 5 },
     { label: '10', value: 10 },
@@ -23,27 +25,41 @@ export class PaginationComponent implements OnInit {
 
 
   previousPage() {
-    if (this.currentPage > 1) {
-      this.currentPage--;
-      //raise event
+    if (this.page.pageNumber > 1) {
+      this.page.pageNumber--;
+      this.pageChange.emit(this.page);
     }
   }
 
   nextPage() {
-    if (this.currentPage < this.totalPages) {
-      this.currentPage++;
-      //raise event
+    if (this.page.pageNumber < this.totalPages) {
+      this.page.pageNumber++;
+      this.pageChange.emit(this.page);
     }
   }
 
-  // pageChange() {
-
-
-  // }
+  valuechange(newValue) {
+    //mymodel = newValue;
+    console.log(newValue)
+  }
 
 
   ngOnInit() {
-
+    this.page.pageItemCount = 15;
+    this.page.pageNumber = 1;
   }
 
+}
+
+export class PageModel {
+
+  /**
+   * 
+   */
+  pageNumber: number;
+  
+  /**
+   * 
+   */
+  pageItemCount: number;
 }
