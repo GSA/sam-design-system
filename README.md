@@ -25,7 +25,17 @@ Finally, import the module into the `sam-design-system-site` and configure the a
 
 
 ## Releasing & Publishing
-Publishing happens in a few steps
+Publishing happens in a few steps. From a high level, 
+
+1. Update each project package.json with latest version number
+2. Run npm version to update parent package.json, commit changes, and tag
+3. Push changes to github.com and create a release
+4. Run github-release-notes to generate release notes
+5. For every publishable lib,
+     1. Build each library
+     2. Create a tarball of each built lib
+     3. Publish to github
+
 
 ### Run `npm publish <major | minor | patch>`
 This step updates the main package.json version in the root directory. It also runs through each library in the angular.json `projects` property and updates their package.json with the 
