@@ -37,7 +37,7 @@ function main () {
 }
 
 function getVersion (args) {
-  return args.version;
+  return args['lib-version'];
 }
 
 function updatePackageVersion (packageJson, version) {
