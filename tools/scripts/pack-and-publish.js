@@ -24,7 +24,7 @@ function main () {
 
     const tarBallPath = findTarball(distDir);
     if (tarBallPath) {
-      execSync(`npm publish ${tarBallPath} --dry-run`, { cwd: distDir, stdio: 'inherit' });
+      execSync(`npm publish ${tarBallPath}`, { cwd: distDir, stdio: 'inherit' });
     } else {
       const tarballError = new Error('No tarball found');
       tarballError.code = 1;
