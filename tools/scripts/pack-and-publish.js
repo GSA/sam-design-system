@@ -3,10 +3,13 @@ const readFileSync = require('fs').readFileSync;
 const readDirSync = require('fs').readdirSync;
 const execSync = require('child_process').execSync;
 const resolve = require('path').resolve;
+const parseArgs = require('minimist');
 
 main();
 
 function main () {
+  const args = parseArgs(process.argv.slice(2));
+  console.log(args);
   const rootDir = resolve(__dirname, '../../');
   const angularJsonPath = resolve(__dirname, '../../angular.json');
   
@@ -15,16 +18,22 @@ function main () {
   handleError(angularJsonError);
 
   const projectNames = Object.keys(angularJson.projects);
-  const libNames = projectNames.filter(name => angularJson.projects[name].projectType === 'library');
+  const libNames = projectNames.filter(name => {
+    const metadata = angularJson.projects[name];
+    // Returns true if lib is a library and uses the ng-packagr schematic (indicates intent to publish)
+    return metadata.projectType === 'library'
+      && metadata.architect.build.builder === '@angular-devkit/build-ng-packagr:build';
+  });
   
   libNames.forEach(lib => {
     const distDir = resolve(rootDir, `dist/libs/${lib}/`);
     execSync(`ng build ${lib}`, { stdio: 'inherit' });
     execSync(`npm pack`, { cwd: distDir, stdio: 'inherit' });
 
-    const tarBallPath = findTarball(distDir);
-    if (tarBallPath) {
-      execSync(`npm publish ${tarBallPath}`, { cwd: distDir, stdio: 'inherit' });
+    const tarballPath = findTarball(distDir);
+    if (tarballPath) {
+      const publishCmd = `npm publish ${tarballPath} ${args['dry-run'] ? '--dry-run' : ''}`;
+      execSync(publishCmd, { cwd: distDir, stdio: 'inherit' });
     } else {
       const tarballError = new Error('No tarball found');
       tarballError.code = 1;
