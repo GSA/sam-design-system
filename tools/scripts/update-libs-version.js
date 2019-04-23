@@ -2,12 +2,10 @@
 const readFileSync = require('fs').readFileSync;
 const writeFileSync = require('fs').writeFileSync;
 const resolve = require('path').resolve;
-const parseArgs = require('minimist');
 
 main();
 
 function main () {
-  const version = getVersion(parseArgs(process.argv.slice(2)));
   const rootDir = resolve(__dirname, '../../');
   const angularJsonPath = resolve(__dirname, '../../angular.json');
   
@@ -27,7 +25,7 @@ function main () {
     const { error: libPackageError, contents: libPackage } = loadJson(libPackagePath);
     handleError(libPackageError);
 
-    const updatedPackage = updatePackageVersion(libPackage, version);
+    const updatedPackage = updatePackageVersion(libPackage);
 
     console.log(`Writing version bump for ${lib} package...`);
     const { error, contents } = writeJson(libPackagePath, updatedPackage);
@@ -36,27 +34,8 @@ function main () {
   });
 }
 
-function getVersion (args) {
-  return args['lib-version'];
-}
-
-function updatePackageVersion (packageJson, version) {
+function updatePackageVersion (packageJson) {
   const clone = Object.assign({}, packageJson);
-  const versionArray = clone.version.split('.');
-
-  switch (version) {
-    case 'major':
-      versionArray[0]++;
-      break;
-    case 'minor':
-      versionArray[1]++;
-      break;
-    case 'patch':
-      versionArray[2]++;
-      break;
-    default:
-      break;
-  }
 
   clone.version = process.env.npm_package_version;
 
