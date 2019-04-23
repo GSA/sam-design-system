@@ -206,7 +206,7 @@
       "root": "libs/packages/sam-material-extensions",
       "sourceRoot": "libs/packages/sam-material-extensions/src",
       "projectType": "library",
-      "prefix": "sam-design-system",
+      "prefix": "sds",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
@@ -244,7 +244,7 @@
       "root": "libs/packages/layouts",
       "sourceRoot": "libs/packages/layouts/src",
       "projectType": "library",
-      "prefix": "sam-design-system",
+      "prefix": "sds",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
@@ -282,7 +282,7 @@
       "root": "libs/packages/experimental",
       "sourceRoot": "libs/packages/experimental/src",
       "projectType": "library",
-      "prefix": "sam-design-system",
+      "prefix": "sds",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
