@@ -1,6 +1,6 @@
 {
   "name": "sam-design-system",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -26,7 +26,7 @@
     "dep-graph": "./node_modules/.bin/nx dep-graph",
     "help": "./node_modules/.bin/nx help",
     "federalist": "npm install --only=dev && ng build --project=sam-design-system-site --prod --base-href=$BASEURL/",
-    "version": "node ./scripts/update-libs-version.js && git add ."
+    "version": "node ./tools/scripts/update-libs-version.js && git add ."
   },
   "private": true,
   "dependencies": {
