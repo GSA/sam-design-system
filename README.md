@@ -24,6 +24,28 @@ All libraries should share the `scope:sam-design-system-site` and `platform:web`
 Finally, import the module into the `sam-design-system-site` and configure the application appropriately.
 
 
+## Releasing & Publishing
+Publishing happens in a few steps
+
+### Run `npm publish <major | minor | patch>`
+This step updates the main package.json version in the root directory. It also runs through each library in the angular.json `projects` property and updates their package.json with the 
+version from the root package.json.
+
+Finally, this script git commits the changes and creates a tag with the version number.
+
+### Commit changes to github `git push origin master` && `git push --tags` 
+For now, this step must be run manually after the versions have been updated locally. This syncs the local changes with the remote repository.
+
+### Create release and release notes
+On Github, draft a new release and write release notes. Github-release-notes (gren) can be used to assist in this.
+
+### Ensure local is sync'd with remote release branch && `npm run publish:libs`
+Note: Run `npm run publish:libs -- --dry-run` to get a dry-run and not publish
+
+Since the tarballs for the published libraries will be generated from the source code on the local machine, it is imperative that the branch on your local machine is in sync with the approved release code before publishing the library.
+
+Once the local branch is in sync with the release branch, run the publish script. This finds each publishable library in the angular.json and publishes its code.
+
 ## Nrwl Extensions for Angular (Nx)
 
 <a href="https://nrwl.io/nx"><img src="https://preview.ibb.co/mW6sdw/nx_logo.png"></a>
