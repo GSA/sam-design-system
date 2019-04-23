@@ -2,27 +2,30 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 
 @Component({
-  selector: 'iae-pagination',
+  selector: 'sds-pagination',
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.scss']
 })
 export class PaginationComponent implements OnInit {
 
   constructor() { }
+
   @Output() public pageChange = new EventEmitter<PageModel>();
 
   page: PageModel = new PageModel();
+
   totalPages: number;
 
-  pageItemCount: number;
+  disabled: boolean;
+
   id: string;
+
   options: [{ label: '5', value: 5 },
     { label: '10', value: 10 },
     { label: '15', value: 15 },
     { label: '20', value: 20 },
     { label: '50', value: 50 },
     { label: '100', value: 100 }];
-
 
   previousPage() {
     if (this.page.pageNumber > 1) {
@@ -39,7 +42,9 @@ export class PaginationComponent implements OnInit {
   }
 
   valuechange(newValue) {
-    //mymodel = newValue;
+    if (newValue >= 1 && newValue <= this.totalPages) {
+      this.page.pageNumber = newValue;
+    }
     console.log(newValue)
   }
 
@@ -57,7 +62,7 @@ export class PageModel {
    * 
    */
   pageNumber: number;
-  
+
   /**
    * 
    */
