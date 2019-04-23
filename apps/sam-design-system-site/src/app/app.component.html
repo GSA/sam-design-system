@@ -1,19 +1,110 @@
-<div style="text-align:center">
-  <h1>Welcome to {{ title }}!</h1>
-  <img
-    width="300"
-    src="https://raw.githubusercontent.com/nrwl/nx/master/nx-logo.png"
-  />
-</div>
-
-<h2>This is an Angular CLI app built with Nrwl Nx!</h2>
-
-An open source toolkit for enterprise Angular applications. Nx is designed to
-help you create and build enterprise grade Angular applications. It provides an
-opinionated approach to application project structure and patterns.
-
-<h2>Quick Start & Documentation</h2>
-
-<a href="https://nrwl.io/nx"
-  >Watch a 5-minute video on how to get started with Nx.</a
->
+<!-- HEADER -->
+<div class="usa-overlay"></div>
+<header class="usa-header usa-header--extended" role="banner">
+  <div class="usa-navbar">
+    <div class="usa-logo" id="extended-logo">
+      <em class="usa-logo__text"
+        ><a href="/" title="Home" aria-label="Home">SAM.gov</a></em
+      >
+    </div>
+    <button class="usa-menu-btn">
+      <fa-layers [fixedWidth]="true" size="3x">
+        <fa-icon [icon]="['fas', 'square']" [classes]="['icon-square']"></fa-icon>
+        <fa-icon [icon]="['sam', 'bars']" [classes]="['icon-bars']" transform="shrink-6"></fa-icon>
+        <fa-layers-counter [classes]="['icon-layers-counter']"></fa-layers-counter>
+      </fa-layers>
+    </button>
+  </div>
+  <nav role="navigation" class="usa-nav">
+    <div class="usa-nav__inner">
+      <button class="usa-nav__close">
+        <fa-layers [fixedWidth]="true" size="2x">
+          <fa-icon [icon]="['fas', 'square']" [classes]="['icon-square']"></fa-icon>
+          <fa-icon [icon]="['sam', 'arrow-left']" [classes]="['icon-arrow-left']" transform="shrink-6"></fa-icon>
+        </fa-layers>
+      </button>
+      <ul class="usa-nav__primary usa-accordion">
+        <li class="usa-nav__primary-item">
+          <a class="usa-nav__link" href=""><span>Home</span></a>
+        </li>
+        <li class="usa-nav__primary-item">
+          <button
+            class="usa-accordion__button usa-nav__link"
+            aria-expanded="false"
+            aria-controls="extended-nav-section-one"
+          >
+            <span>Contracting</span>
+          </button>
+          <ul id="extended-nav-section-one" class="usa-nav__submenu">
+            <li class="usa-nav__submenu-item">
+              <a href="#">Page title</a>
+            </li>
+            <li class="usa-nav__submenu-item">
+              <a href="#">Page title</a>
+            </li>
+            <li class="usa-nav__submenu-item">
+              <a href="#">A very long page title that goes onto two lines</a>
+            </li>
+          </ul>
+        </li>
+        <li class="usa-nav__primary-item">
+          <button
+            class="usa-accordion__button usa-nav__link"
+            aria-expanded="false"
+            aria-controls="extended-nav-section-two"
+          >
+            <span>Federal Assistance</span>
+          </button>
+          <ul id="extended-nav-section-two" class="usa-nav__submenu">
+            <li class="usa-nav__submenu-item">
+              <a href="#">Page title</a>
+            </li>
+            <li class="usa-nav__submenu-item">
+              <a href="#">Page title</a>
+            </li>
+            <li class="usa-nav__submenu-item">
+              <a href="#">A very long page title that goes onto two lines</a>
+            </li>
+          </ul>
+        </li>
+        <li class="usa-nav__primary-item">
+          <a class="usa-nav__link" href=""><span>Search</span></a>
+        </li>
+        <li class="usa-nav__primary-item">
+          <a class="usa-nav__link" href=""><span>Help</span></a>
+        </li>
+      </ul>
+      <div class="usa-nav__secondary">
+        <ul class="usa-nav__secondary-links">
+          <li class="usa-nav__secondary-item">
+            <a href="">
+              <fa-icon [icon]="['fas', 'edit']"></fa-icon>
+              Request
+            </a>
+          </li>
+          <li class="usa-nav__secondary-item">
+            <a href="">
+              <fa-layers [fixedWidth]="true">
+                <fa-icon [icon]="['fas', 'comment']"></fa-icon>
+                <fa-layers-counter [classes]="['icon-layers-counter']"></fa-layers-counter>
+              </fa-layers>
+              Messages
+            </a>
+          </li>
+          <li class="usa-nav__secondary-item">
+            <a href="">
+              <fa-icon [icon]="['fas', 'th']"></fa-icon>
+              Workspace
+            </a>
+          </li>
+          <li class="usa-nav__secondary-item">
+            <a href="">
+              <fa-icon [icon]="['fas', 'sign-out-alt']"></fa-icon>
+              Sign Out
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
