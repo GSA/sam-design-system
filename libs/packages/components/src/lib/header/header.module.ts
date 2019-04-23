@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './header.component';
-import { TopBannerComponent } from '../top-banner/top-banner.component';
+import { FormsModule } from '@angular/forms';
+import { SdsHeaderComponent } from './header.component';
+import { RouterModule } from '@angular/router';
+import { SdsTopBannerComponent } from '../top-banner/top-banner.component';
 
 @NgModule({
-  declarations: [HeaderComponent, TopBannerComponent],
   imports: [
-    CommonModule
+    CommonModule, FormsModule, RouterModule
   ],
-  exports: [HeaderComponent]
+  declarations: [SdsHeaderComponent, SdsTopBannerComponent],
+  exports: [SdsHeaderComponent]
 })
-export class HeaderModule { }
+export class SdsHeaderModule { }

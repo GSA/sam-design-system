@@ -1,3 +1,64 @@
-<p>
-  header works!
-</p>
+<sds-top-banner></sds-top-banner>
+
+
+<header class="usa-header usa-header--extended" role="banner">
+  <div class="usa-navbar">
+    <div class="usa-logo" id="extended-logo">
+      <em class="usa-logo__text"><a [routerLink]="model.home.route" title="Home" aria-label="Home">{{model.home.text}}</a></em>
+    </div>
+    <button class="usa-menu-btn">
+      <span class="icon-layers icon-fw icon-3x">
+        <i class="fas icon-square"></i>
+        <i class="sam icon-bars" data-fa-transform="shrink-6"></i>
+        <span class="icon-layers-counter"></span>
+      </span>
+    </button>
+  </div>
+  <nav role="navigation" class="usa-nav">
+    <div class="usa-nav__inner">
+      <button class="usa-nav__close">
+        <span class="icon-layers icon-fw icon-2x">
+          <i class="fas icon-square"></i>
+          <i class="sam icon-arrow-left" data-fa-transform="shrink-6"></i>
+        </span>
+      </button>
+      <ul class="usa-nav__primary usa-accordion">
+        <li *ngFor="let link of model.navigationLinks" class="usa-nav__primary-item">
+          <ng-container [ngTemplateOutlet]="link.route ? linkTemplate : dropDownTemplate"
+            [ngTemplateOutletContext]="{$implicit:link}"></ng-container>
+        </li>
+      </ul>
+      <div class="usa-nav__secondary">
+        <ul class="usa-nav__secondary-links">
+          <li *ngFor="let link of model.secondaryLinks" class="usa-nav__secondary-item">
+            <a [routerLink]="[link.route]">
+              <span class="icon-layers icon-fw">
+                <i [attr.class]="link.imageClass"></i>
+                <span *ngIf="link.hasCounter" class="icon-layers-counter"></span>
+              </span>
+              {{link.text}}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<ng-template #linkTemplate let-link>
+  <a [attr.class]="link.selected ? 'usa-nav__link usa-current' : 'usa-nav__link'"
+    [routerLink]="[link.route]"><span>{{link.text}}</span></a>
+</ng-template>
+
+<ng-template #dropDownTemplate let-link>
+  <button
+    [attr.class]="link.selected ? 'usa-accordion__button usa-nav__link usa-current' : 'usa-accordion__button usa-nav__link'"
+    aria-expanded="false" [attr.aria-controls]="removeWhiteSpace(link.text)+'-section'">
+    <span>{{link.text}}</span>
+  </button>
+  <ul [attr.id]="removeWhiteSpace(link.text)+'-section'" class="usa-nav__submenu" hidden>
+    <li *ngFor="let childLink of link.children" class="usa-nav__submenu-item">
+      <a [routerLink]="[childLink.route]">{{childLink.text}}</a>
+    </li>
+  </ul>
+</ng-template>
