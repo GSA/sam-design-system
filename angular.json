@@ -315,6 +315,37 @@
           "styleext": "scss"
         }
       }
+    },
+    "sam-design-system": {
+      "root": "libs/sam-design-system",
+      "sourceRoot": "libs/sam-design-system/src",
+      "projectType": "library",
+      "prefix": "gsa-sam",
+      "architect": {
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/sam-design-system/src/test.ts",
+            "tsConfig": "libs/sam-design-system/tsconfig.spec.json",
+            "karmaConfig": "libs/sam-design-system/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/sam-design-system/tsconfig.lib.json",
+              "libs/sam-design-system/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {

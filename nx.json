@@ -36,6 +36,9 @@
     },
     "experimental": {
       "tags": ["scope:shared", "platform:web", "type:ui"]
+    },
+    "sam-design-system": {
+      "tags": []
     }
   }
 }

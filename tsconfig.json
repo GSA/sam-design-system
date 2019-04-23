@@ -22,12 +22,11 @@
       "@sam-design-system/sam-material-extensions": [
         "libs/packages/sam-material-extensions/src/index.ts"
       ],
-      "@sam-design-system/layouts": [
-        "libs/packages/layouts/src/index.ts"
-      ],
+      "@sam-design-system/layouts": ["libs/packages/layouts/src/index.ts"],
       "@sam-design-system/experimental": [
         "libs/packages/experimental/src/index.ts"
-      ]
+      ],
+      "@gsa-sam/sam-design-system": ["libs/sam-design-system/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
