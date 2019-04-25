@@ -26,8 +26,9 @@
     "dep-graph": "./node_modules/.bin/nx dep-graph",
     "help": "./node_modules/.bin/nx help",
     "federalist": "npm install --only=dev && ng build --project=sam-design-system-site --prod --base-href=$BASEURL/",
-    "version": "node ./tools/scripts/update-libs-version.js && git add .",
-    "publish:libs": "node ./tools/scripts/pack-and-publish.js"
+    "version": "node ./tools/scripts/update-libs-version.js && gren changelog && git add .",
+    "publish:libs": "node ./tools/scripts/pack-and-publish.js",
+    "release": "./node_modules/github-release-notes/bin/gren.js release"
   },
   "private": true,
   "dependencies": {
@@ -64,6 +65,7 @@
     "@types/node": "~8.9.4",
     "codelyzer": "~4.5.0",
     "css-loader": "*",
+    "github-release-notes": "^0.17.0",
     "jasmine-core": "~2.99.1",
     "jasmine-marbles": "0.4.0",
     "jasmine-spec-reporter": "~4.2.1",
