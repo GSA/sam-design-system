@@ -27,13 +27,13 @@
     "help": "./node_modules/.bin/nx help",
     "federalist": "npm install --only=dev && ng build --project=sam-design-system-site --prod --base-href=$BASEURL/",
     "version": "node ./tools/scripts/update-libs-version.js && git add .",
-    "postversion": "git push --tags",
-    "changelog": "gren changelog --override && git add . && git commit -m \"Add changelog\"",
+    "postversion": "git push && git push --tags",
+    "changelog": "gren changelog --override && git add . && git commit -m \"Add changelog\" && git push",
     "release-notes": "gren release",
     "publish:libs": "node ./tools/scripts/pack-and-publish.js",
     "release:patch": "npm version patch && npm run release-notes && npm run changelog",
-    "release:minor": "npm version minor && npm run changelog && npm run release-notes",
-    "release:major": "npm version major && npm run changelog && npm run release-notes"
+    "release:minor": "npm version minor && npm run release-notes && npm run changelog",
+    "release:major": "npm version major && npm run release-notes && npm run changelog"
   },
   "private": true,
   "dependencies": {
