@@ -31,7 +31,7 @@
     "changelog": "gren changelog --override && git add . && git commit -m \"Add changelog\"",
     "release-notes": "gren release",
     "publish:libs": "node ./tools/scripts/pack-and-publish.js",
-    "release:patch": "npm version patch && npm run changelog && npm run release-notes",
+    "release:patch": "npm version patch && npm run release-notes && npm run changelog",
     "release:minor": "npm version minor && npm run changelog && npm run release-notes",
     "release:major": "npm version major && npm run changelog && npm run release-notes"
   },
