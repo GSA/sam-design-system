@@ -3,5 +3,9 @@
   "compilerOptions": {
     "types": ["jasmine"]
   },
-  "include": ["**/*.ts"]
+  "include": ["**/*.ts",
+  "../../libs/component-sample/src/index.ts"
+  
+    
+  ]
 }

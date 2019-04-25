@@ -6,6 +6,7 @@ import { HeaderSampleModule } from './feature/header-sample/header-sample.module
 
 export const ROUTES: Routes = [
   { path: 'header', component: HeaderSampleComponent }
+  
 ];
 
 @NgModule({
