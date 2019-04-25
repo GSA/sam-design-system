@@ -5,5 +5,5 @@
     "types": []
   },
   "exclude": ["test.ts", "**/*.spec.ts"],
-  "include": ["**/*.ts","@gsa-sam/component-sample"]
+  "include": ["**/*.ts","../../libs/component-sample/src/index.ts"]
 }

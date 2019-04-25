@@ -4,7 +4,7 @@
     "types": ["jasmine"]
   },
   "include": ["**/*.ts",
-  "../../libs/component-sample/src/index.ts"
+  "@gsa-sam/component-sample"
   
     
   ]
