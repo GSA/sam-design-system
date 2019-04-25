@@ -28,7 +28,7 @@
     "federalist": "npm install --only=dev && ng build --project=sam-design-system-site --prod --base-href=$BASEURL/",
     "version": "node ./tools/scripts/update-libs-version.js && git add .",
     "postversion": "git push --tags",
-    "changelog": "gren changelog && git add . && git commit -m \"Add changelog\"",
+    "changelog": "gren changelog --override && git add . && git commit -m \"Add changelog\"",
     "release-notes": "gren release",
     "publish:libs": "node ./tools/scripts/pack-and-publish.js",
     "release:patch": "npm version patch && npm run changelog && npm run release-notes",
