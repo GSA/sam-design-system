@@ -9,14 +9,14 @@ import { PaginationSampleComponent } from './feature/pagination-sample/paginatio
 import { PaginationSampleModule } from './feature/pagination-sample/pagination-sample.module';
 
 export const ROUTES: Routes = [
-  { path: 'header', component: HeaderSampleComponent }//,
-  // { path: 'footer', component: FooterSampleComponent },
-  // { path: 'pagination', component: PaginationSampleComponent }
+  { path: 'header', component: HeaderSampleComponent },
+  { path: 'footer', component: FooterSampleComponent },
+  { path: 'pagination', component: PaginationSampleComponent }
 ];
 
 @NgModule({
   imports: [CommonModule, RouterModule.forChild(ROUTES), 
-    HeaderSampleModule//, FooterSampleModule, PaginationSampleModule
+    HeaderSampleModule, FooterSampleModule, PaginationSampleModule
   ],
   exports: [
     RouterModule

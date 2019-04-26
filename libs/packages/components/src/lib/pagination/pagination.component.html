@@ -1,16 +1,25 @@
 <button (click)="previousPage()">Previous Page</button>
-<input [ngModel]="mymodel" (ngModelChange)="valuechange($event)" type="number" min="1" [attr.max]="totalPages"
+<input [(ngModel)]="page.pageNumber" (ngModelChange)="valuechange($event)" type="number" min="1" [attr.max]="totalPages"
   aria-label="current page">
 <span> of </span>
 <span>{{totalPages}}</span>
 <button (click)="nextPage()">Next Page</button>
-<span> results per page</span>
+
 
 
 <label [attr.for]="id + '-select'">results per page</label>
-<select [attr.id]="id + '-select'" [(ngModel)]="pageSize" [disabled]="disabled">
-  <option *ngFor="let option of options" [attr.value]="option.value" [attr.label]="option.label"
-    [attr.disabled]="option.disabled" [attr.selected]="option.selected">
-    {{ option.label }}
+<select [attr.id]="id + '-select'">
+  <option *ngFor="let item of items" [ngValue]="item.value">
+    {{ item.label }}
   </option>
 </select>
+<select>
+  <option *ngFor="let item of items" [ngValue]="item">{{item.label}}</option>
+</select>
+<span>Stuff</span>
+<ul>
+  <li *ngFor="let x of items">{{x.label}}</li>
+</ul>
+<!-- <span>{{items[0].value}}</span> -->
+<!-- [disabled]="disabled" -->
+<!-- [attr.disabled]="option.disabled" [attr.selected]="option.selected" -->
