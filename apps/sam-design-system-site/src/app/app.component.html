@@ -1,4 +1,30 @@
-<a [routerLink]="['component/header']">Header</a>
-<a [routerLink]="['component/footer']">Footer</a>
-<a [routerLink]="['component/pagination']">Pagination</a>
-<router-outlet></router-outlet>
+<div class="grid-container margin-top-3">
+  <div class="grid-row grid-gap">
+    <aside class="desktop:grid-col-3">
+      <nav class="margin-bottom-2">
+        <ul class="usa-sidenav">
+          <li class="usa-sidenav__item">
+            <a [routerLink]="['component/header']" routerLinkActive="usa-current">
+              Header
+            </a>
+          </li>
+          <li class="usa-sidenav__item">
+            <a [routerLink]="['component/footer']" routerLinkActive="usa-current">
+              Footer
+            </a>
+          </li>
+          <li class="usa-sidenav__item">
+            <a [routerLink]="['component/pagination']" routerLinkActive="usa-current">
+              Pagination
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    <div class="desktop:grid-col-9">
+      <div class="border border-base-light">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>
