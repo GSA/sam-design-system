@@ -56,6 +56,28 @@ Since the tarballs for the published libraries will be generated from the source
 
 Once the local branch is in sync with the release branch, run the publish script. This finds each publishable library in the angular.json and publishes its code.
 
+## Helper Scripts
+You can now run `npm run release:patch`, `npm run release:minor`, or `npm run release:major`, but be careful. It will run the versioning script, add a commit and tag, push to github, run `gren` to generate a release on github with notes based on PRs, then run `gren` again to generate a changelog, commit it, and push it up to github.
+
+All that executes on whatever branch you are on, and when you run it, you want to be on master. If something happens, you'll have to manually rollback 3 commits, delete the git tag, and delete the release.
+
+Once all that is done, you still have to manually run the `npm run publish:libs` script to build, pack, and publish them to npmjs. If y'all are confident, you can also add `&& npm run publish:libs` onto the end of the `npm run release` script (for each type), and that will do everything in one step.
+
+`Note:` I'd recommend keeping them separate for awhile and getting the team comfortable with what's happening before you try that though.
+
+## gren (Github-release-notes)
+In order to run the above, you need to have `gren` installed and configured globally on your local machine. This requires add the npm package and also updating your path with an environment variable for gren to use. 
+
+The link to gren is [here](https://github.com/github-tools/github-release-notes). 
+
+There is some additional configuration required to make it work smoothly. 
+
+First, you will also need to create a personal access token with `repo` scope for your github account.
+
+Under the Github profile, go to Settings -> Developer Settings -> Personal Access Tokens -> Generate New Token and then provide that to the environment variable to use gren.
+
+Second, you need to add the repo information to package.json. This is already done on this project, but that keeps you from having to update `gren` with the repo info on each push.
+
 ## Nrwl Extensions for Angular (Nx)
 
 <a href="https://nrwl.io/nx"><img src="https://preview.ibb.co/mW6sdw/nx_logo.png"></a>
