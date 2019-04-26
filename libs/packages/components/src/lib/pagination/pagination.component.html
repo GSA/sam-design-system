@@ -9,16 +9,16 @@
 
 <label [attr.for]="id + '-select'">results per page</label>
 <select [attr.id]="id + '-select'">
-  <option *ngFor="let item of items" [ngValue]="item.value">
+  <option *ngFor="let item of options" [ngValue]="item.value">
     {{ item.label }}
   </option>
 </select>
 <select>
-  <option *ngFor="let item of items" [ngValue]="item">{{item.label}}</option>
+  <option *ngFor="let item of options" [ngValue]="item">{{item.label}}</option>
 </select>
 <span>Stuff</span>
 <ul>
-  <li *ngFor="let x of items">{{x.label}}</li>
+  <li *ngFor="let x of options">{{x.label}}</li>
 </ul>
 <!-- <span>{{items[0].value}}</span> -->
 <!-- [disabled]="disabled" -->
