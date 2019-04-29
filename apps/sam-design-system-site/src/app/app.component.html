@@ -18,13 +18,16 @@
               Pagination
             </a>
           </li>
+          <li class="usa-sidenav__item">
+            <a [routerLink]="['component/toolbar']" routerLinkActive="usa-current">
+              Toolbar
+            </a>
+          </li>
         </ul>
       </nav>
     </aside>
     <div class="desktop:grid-col-9">
-      <div class="border border-base-light">
-        <router-outlet></router-outlet>
-      </div>
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>
