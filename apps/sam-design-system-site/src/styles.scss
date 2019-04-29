@@ -59,3 +59,12 @@ $theme-font-path:   '~@gsa-sam/sam-styles/src/fonts';
 .sam-toolbar.sam-toolbar--expanded{
   width: auto;
 }
+
+.header-styles .icon-layers-counter{
+  height: 1em;
+  min-width: 1em;
+  right: 4px;
+}
+.header-styles .icon-square{
+  color: #70e17b;
+}
