@@ -1,0 +1,13 @@
+<sds-toolbar-header></sds-toolbar-header>
+<div
+  class="sam-toolbar__content"
+  role="region"
+  [@bodyExpansion]="{
+    value: _getExpandedState(),
+    params: { expandedWidth: expandedWidth }
+  }"
+  [attr.aria-labelledby]="_headerId"
+  [id]="_contentId"
+>
+  <ng-content></ng-content>
+</div>
