@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SdsHeaderComponent } from './header.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SdsTopBannerComponent } from '../top-banner/top-banner.component';
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 describe('SdsHeaderComponent', () => {
@@ -13,7 +13,7 @@ describe('SdsHeaderComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SdsHeaderComponent, SdsTopBannerComponent],
-      imports: [RouterTestingModule]
+      imports: [RouterTestingModule,FontAwesomeModule]
     })
       .compileComponents();
   }));
