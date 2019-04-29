@@ -4,10 +4,11 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { ROUTES } from './app.routes';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, RouterModule.forRoot(ROUTES), FormsModule
+  imports: [BrowserModule, BrowserAnimationsModule, RouterModule.forRoot(ROUTES), FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

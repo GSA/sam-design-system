@@ -1,0 +1,93 @@
+<sds-page>
+  <sds-page-options class="sam-page__options">
+    <sds-toolbar #toolbar="sdsToolbar">
+      <sds-accordion multi="true">
+        <sds-accordion-item>
+          <sds-accordion-item-header> Navigation </sds-accordion-item-header>
+          <nav>
+            <ul class="usa-sidenav">
+              <li class="usa-sidenav__item"><a href="">Parent link</a></li>
+              <li class="usa-sidenav__item">
+                <a href="" class="usa-current">Current page</a>
+                <ul class="usa-sidenav__sublist">
+                  <li class="usa-sidenav__item"><a href="">Child link</a></li>
+                  <li class="usa-sidenav__item"><a href="">Child link</a></li>
+                  <li class="usa-sidenav__item"><a href="">Child link</a></li>
+                  <li class="usa-sidenav__item"><a href="">Child link</a></li>
+                </ul>
+              </li>
+              <li class="usa-sidenav__item"><a href="">Parent link</a></li>
+            </ul>
+          </nav>
+        </sds-accordion-item>
+        <sds-accordion-item>
+          <sds-accordion-item-header> Filters </sds-accordion-item-header>
+          <sds-accordion multi="true" displayMode="basic">
+            <sds-accordion-item>
+              <sds-accordion-item-header>
+                Service Classifications
+              </sds-accordion-item-header>
+              <label class="usa-label" for="input-type-naics">NAICS</label>
+              <input
+                class="usa-input"
+                id="input-type-naics"
+                name="input-type-naics"
+                type="text"
+              />
+              <div class="selected-chips" style="margin-top: 5px;">
+                <span class="sam-tag sam-tag--chip">
+                  111140 -- Wheat Farming
+                  <button class="sam-tag__close">
+                    <span class="fas fa-times" aria-hidden="true"></span>
+                  </button>
+                </span>
+                <span class="sam-tag sam-tag--chip">
+                  212222 -- Silver Ore Mining
+                  <button class="sam-tag__close">
+                    <span class="fas fa-times" aria-hidden="true"></span>
+                  </button>
+                </span>
+                <span class="sam-tag sam-tag--chip">
+                  541850 -- Outdoor Advertising
+                  <button class="sam-tag__close">
+                    <span class="fas fa-times" aria-hidden="true"></span>
+                  </button>
+                </span>
+              </div>
+              <label class="usa-label" for="input-type-psc">PSC</label>
+              <input
+                class="usa-input"
+                id="input-type-psc"
+                name="input-type-psc"
+                type="text"
+              />
+            </sds-accordion-item>
+            <sds-accordion-item>
+              <sds-accordion-item-header>
+                Entity Name/UEI
+              </sds-accordion-item-header>
+              <label class="usa-label" for="input-type-entity">Name</label>
+              <input
+                class="usa-input"
+                id="input-type-entity"
+                name="input-type-entity"
+                type="text"
+              />
+            </sds-accordion-item>
+          </sds-accordion>
+        </sds-accordion-item>
+      </sds-accordion>
+    </sds-toolbar>
+    <div class="sam-example-pagination" [sdsToolbarExpand]="toolbar">
+      Showing 1 to 10 of 21 registrations
+    </div>
+  </sds-page-options>
+  <div class="sam-page__content" [sdsToolbarExpand]="toolbar">
+    <h3>Frontier Allied Partners, Inc</h3>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras laoreet
+      faucibus arcu id bibendum. Mauris eleifend massa purus, eu volutpat erat
+      placerat egestas.
+    </p>
+  </div>
+</sds-page>
