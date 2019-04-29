@@ -2,7 +2,7 @@
   <button
     class="sam-toolbar__toogle-btn"
     [attr.id]="toolbar._headerId"
-    [attr.tabindex]="disabled ? -1 : 0"
+    [attr.tabindex]="_disabled ? -1 : 0"
     [attr.aria-controls]="toolbar._contentId"
     [attr.aria-expanded]="_isExpanded"
     [attr.aria-disabled]="_disabled"
