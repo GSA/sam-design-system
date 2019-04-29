@@ -13,16 +13,16 @@ export class HeaderSampleComponent implements OnInit {
   }
   modelHeader = {
     secondaryLinks: [{
-      imageClass: 'fas icon-comment', text: 'Messages', route: '/', id: 'messages'
+      imageClassPrefix:'fas', imageClass: 'comment', text: 'Messages', route: '/', id: 'messages'
     },
     {
-      imageClass: 'fas icon-edit', text: 'Requests', route: '/', id: 'request'
+      imageClassPrefix:'fas',   imageClass: 'edit', text: 'Requests', route: '/', id: 'request', hasCounter:true
     },
     {
-      imageClass: 'fas icon-th', text: 'Workspace', route: '/', id: 'workspace'
+      imageClassPrefix:'fas',  imageClass: 'th', text: 'Workspace', route: '/', id: 'workspace'
     },
     {
-      imageClass: 'fas icon-sign-out-alt', text: 'Sign Out', route: '/', id: 'signOut'
+      imageClassPrefix:'fas',    imageClass: 'sign-out-alt', text: 'Sign Out', route: '/', id: 'signOut'
     }],
     navigationLinks: [
       { text: 'Search', route: '/patterns/page/angualr-header-footer-component', id: 'search' },

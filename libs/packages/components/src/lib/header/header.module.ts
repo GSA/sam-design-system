@@ -4,10 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { SdsHeaderComponent } from './header.component';
 import { RouterModule } from '@angular/router';
 import { SdsTopBannerComponent } from '../top-banner/top-banner.component';
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @NgModule({
   imports: [
-    CommonModule, FormsModule, RouterModule
+    CommonModule, FormsModule, RouterModule, FontAwesomeModule
   ],
   declarations: [SdsHeaderComponent, SdsTopBannerComponent],
   exports: [SdsHeaderComponent]

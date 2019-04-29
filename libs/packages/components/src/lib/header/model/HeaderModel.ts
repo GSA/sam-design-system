@@ -28,9 +28,9 @@ export class HeaderHome implements Selectable {
      */
     route: string;
 
-     /**
-     * Identifier for the item when search for selected 
-     */
+    /**
+    * Identifier for the item when search for selected 
+    */
     id: string;
 
     /**
@@ -83,7 +83,12 @@ export class HeaderSecondaryLink implements Selectable {
     route: string;
 
     /**
-     * Class or image 
+     * image class eg. fas
+     */
+    imageClassPrefix: string;
+
+    /**
+     * image class  
      */
     imageClass: string;
 
