@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { HeaderSampleComponent } from './header-sample.component';
+import { SdsHeaderModule } from '../../../../../packages/components/src/lib/header/header.module';
+import { RouterTestingModule } from '@angular/router/testing';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 describe('HeaderSampleComponent', () => {
   let component: HeaderSampleComponent;
@@ -8,9 +10,10 @@ describe('HeaderSampleComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderSampleComponent ]
+      declarations: [HeaderSampleComponent],
+      imports: [SdsHeaderModule, RouterTestingModule, FontAwesomeModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

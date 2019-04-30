@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { FooterSampleComponent } from './footer-sample.component';
+import { SdsFooterModule } from '../../../../../packages/components/src/lib/footer/footer.module';
+import { RouterTestingModule } from '@angular/router/testing';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 describe('FooterSampleComponent', () => {
   let component: FooterSampleComponent;
@@ -8,9 +10,10 @@ describe('FooterSampleComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FooterSampleComponent ]
+      declarations: [FooterSampleComponent],
+      imports: [SdsFooterModule, RouterTestingModule, FontAwesomeModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
