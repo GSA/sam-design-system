@@ -23,6 +23,23 @@ export class SdsHeaderComponent {
   }
 
   /**
+   * seeif any secondary link has a counter
+   */
+  hasCounter(): boolean {
+    let hasCounter = false;
+    if (this.model) {
+      if (this.model.secondaryLinks) {
+        this.model.secondaryLinks.forEach(function (item: HeaderSecondaryLink) {
+          if (item.hasCounter) {
+            hasCounter = true;
+          }
+        });
+      }
+    }
+    return hasCounter;
+  }
+
+  /**
    * Deselects previous seletion
    * @param id 
    */

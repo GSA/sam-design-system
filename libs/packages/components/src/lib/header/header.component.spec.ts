@@ -13,7 +13,7 @@ describe('SdsHeaderComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SdsHeaderComponent, SdsTopBannerComponent],
-      imports: [RouterTestingModule,FontAwesomeModule]
+      imports: [RouterTestingModule, FontAwesomeModule]
     })
       .compileComponents();
   }));
@@ -81,9 +81,10 @@ describe('SdsHeaderComponent', () => {
     expect(component.model.navigationLinks[0].children[0].selected).toBe(false);
   });
 
-
-
-
+  it('has counter ', () => {
+    expect(component.hasCounter()).toBe(false);
+    component.model.secondaryLinks[0].hasCounter = true;
+    expect(component.hasCounter()).toBe(true);
+  });
 
 });
-

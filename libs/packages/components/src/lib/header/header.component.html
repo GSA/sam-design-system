@@ -11,7 +11,7 @@
       <fa-layers [fixedWidth]="true" size="3x">
         <fa-icon [icon]="['fas', 'square']" [classes]="['icon-square']"></fa-icon>
         <fa-icon [icon]="['sam', 'bars']" [classes]="['icon-bars']" transform="shrink-6"></fa-icon>
-        <fa-layers-counter [classes]="['icon-layers-counter']"></fa-layers-counter>
+        <fa-layers-counter *ngIf="hasCounter()" [classes]="['icon-layers-counter']"></fa-layers-counter>
       </fa-layers>
     </button>
   </div>
