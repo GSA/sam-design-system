@@ -10,13 +10,16 @@ export class PaginationComponent implements OnInit {
 
   constructor(private change: ChangeDetectorRef) { }
 
-  @Output() public pageChange = new EventEmitter<PageModel>();
+  @Output()
+  pageChange = new EventEmitter<PageModel>();
 
+  @Input()
   page: PageModel = new PageModel();
 
-  totalPages: number = 10;
-
-  id: string;
+  /**
+    * 
+    */
+  id: string = "id"
 
   public options = [
     { label: '25', value: 25 },
@@ -32,7 +35,7 @@ export class PaginationComponent implements OnInit {
   }
 
   nextPage() {
-    if (this.page.pageNumber < this.totalPages) {
+    if (this.page.pageNumber < this.page.totalPages) {
       this.page.pageNumber++;
       this.pageChange.emit(this.page);
     }
@@ -41,10 +44,10 @@ export class PaginationComponent implements OnInit {
   valuechange(newValue) {
     if (newValue < 1) {
       newValue = 1;
-    } else if (newValue > this.totalPages) {
-      newValue = this.totalPages;
+    } else if (newValue > this.page.totalPages) {
+      newValue = this.page.totalPages;
     }
-    if (newValue >= 1 && newValue <= this.totalPages) {
+    if (newValue >= 1 && newValue <= this.page.totalPages) {
       this.page.pageNumber = newValue;
       this.pageChange.emit(this.page);
     }
@@ -54,10 +57,8 @@ export class PaginationComponent implements OnInit {
     this.pageChange.emit(this.page);
   }
 
-
   ngOnInit() {
-    this.page.pageSize = 25;
-    this.page.pageNumber = 1;
+
   }
 
 }
@@ -73,4 +74,9 @@ export class PageModel {
    * 
    */
   pageSize: number;
+
+  /**
+   * 
+   */
+  totalPages: number = 10;
 }

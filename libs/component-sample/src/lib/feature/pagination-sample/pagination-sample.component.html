@@ -1,1 +1,7 @@
-<sds-pagination (pageChange)="pageChange.next($event)"></sds-pagination>
+<div>
+    <sds-pagination [(page)]="page" (pageChange)="pageChange.next($event)"></sds-pagination>
+</div>
+<div>Page Content</div>
+<div>
+    <sds-pagination [(page)]="page" (pageChange)="pageChange.next($event)"></sds-pagination>
+</div>
