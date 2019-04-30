@@ -1,4 +1,4 @@
-export * from './accordion';
+export * from './accordion/accordion.module';
 export * from './icon';
-export * from './page';
-export * from './toolbar';
+export * from './page/page.module';
+export * from './toolbar/toolbar.module';
