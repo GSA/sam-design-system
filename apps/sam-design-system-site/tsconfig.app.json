@@ -4,6 +4,12 @@
     "outDir": "../../dist/out-tsc/apps/sam-design-system-site",
     "types": []
   },
-  "exclude": ["test.ts", "**/*.spec.ts"],
-  "include": ["**/*.ts","../../libs/component-sample/src/index.ts"]
+  "exclude": [
+    "test.ts",
+    "**/*.spec.ts"
+  ],
+  "include": [
+    "**/*.ts",
+    "../../libs/component-sample/src/index.ts"
+  ]
 }
