@@ -1,5 +1,5 @@
 <button (click)="previousPage()">Previous Page</button>
-<input [(ngModel)]="page.pageNumber" (ngModelChange)="valuechange($event)" type="number" min="1" [attr.max]="totalPages"
+<input [(ngModel)]="page.pageNumber" (ngModelChange)="valuechange($event)" type="number" min="1" [attr.max]="page.totalPages"
   aria-label="current page">
 <span> of </span>
 <span>{{page.totalPages}}</span>
