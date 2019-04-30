@@ -12,22 +12,17 @@ export class PaginationComponent implements OnInit {
 
   @Output() public pageChange = new EventEmitter<PageModel>();
 
-
   page: PageModel = new PageModel();
 
   totalPages: number = 10;
 
-  disabled: boolean;
-
   id: string;
 
-  public options: [
+  public options = [
     { label: '25', value: 25 },
     { label: '50', value: 50 },
     { label: '100', value: 100 }
   ];
-
-
 
   previousPage() {
     if (this.page.pageNumber > 1) {
@@ -51,10 +46,12 @@ export class PaginationComponent implements OnInit {
     }
     if (newValue >= 1 && newValue <= this.totalPages) {
       this.page.pageNumber = newValue;
-      this.change.detectChanges();
       this.pageChange.emit(this.page);
     }
-    //console.log(newValue);
+  }
+
+  onSelectChange() {
+    this.pageChange.emit(this.page);
   }
 
 
