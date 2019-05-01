@@ -3,80 +3,15 @@ $theme-font-path:   '~@gsa-sam/sam-styles/src/fonts';
 
 @import "~@gsa-sam/sam-styles/src/stylesheets/sam";
 
-// Add to sam-styles
-
-.sam-accordion,
-.sam-accordion__item {
-  display: block;
-}
-
-.sam-accordion__trigger{
-  cursor: pointer;
-}
-
-.sam-accordion__item{
-  overflow: hidden;
-}
-
-.sam-accordion__panel{
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-.sam-accordion__panel-body{
-  padding: 8px 5px;
-}
-
-.sam-accordion.sam-accordion--basic .sam-accordion__panel-body{
-  margin: 0px 5px;
-  padding: 1px 8px 10px;
-}
-
-.sam-toolbar{
-  overflow: hidden;
-  display: block;
-}
-
-.sam-toolbar__header{
-  display: block;
-}
-
-.sam-toolbar .sam-toolbar__content{
-  display: block !important;
-  overflow: hidden;
-}
-
-.sam-toolbar.sam-toolbar--expanded{
-  width: auto;
-}
-
-.usa-banner__header-flag{
-  width: 16px;
-  height: 11px;
-  background-image: url('#{$theme-image-path}/us_flag_small.png');
-  background-repeat: no-repeat;
-}
-
-.usa-banner__content .usa-banner__guidance .usa-banner__icon{
-  width: 40px;
-  height: 40px;
-  background-repeat: no-repeat;
-}
-
-.usa-banner__content .usa-banner__guidance:first-child .usa-banner__icon{
-  background-image: url('#{$theme-image-path}/icon-dot-gov.svg');
-}
-.usa-banner__content .usa-banner__guidance:last-child .usa-banner__icon{
-  background-image: url('#{$theme-image-path}/icon-https.svg');
-}
-
-// Demo only
+// Demo pages only
+// DO NOT REUSE
 
 .header-styles .icon-layers-counter{
   height: 1em;
   min-width: 1em;
   right: 4px;
 }
+
 .header-styles .icon-square{
   color: #70e17b;
 }
