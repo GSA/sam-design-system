@@ -3,8 +3,8 @@ $theme-font-path:   '~@gsa-sam/sam-styles/src/fonts';
 
 @import "~@gsa-sam/sam-styles/src/stylesheets/sam";
 
-// Classes that need to be  
-// added to SAM-Styles
+// Add to sam-styles
+
 .sam-accordion,
 .sam-accordion__item {
   display: block;
@@ -32,16 +32,6 @@ $theme-font-path:   '~@gsa-sam/sam-styles/src/fonts';
   padding: 1px 8px 10px;
 }
 
-
-.sam-page .sam-page__options {
-  display: flex;
-  position: relative;
-}
-
-.sam-example-pagination {
-  line-height: 45px;
-}
-
 .sam-toolbar{
   overflow: hidden;
   display: block;
@@ -60,6 +50,28 @@ $theme-font-path:   '~@gsa-sam/sam-styles/src/fonts';
   width: auto;
 }
 
+.usa-banner__header-flag{
+  width: 16px;
+  height: 11px;
+  background-image: url('#{$theme-image-path}/us_flag_small.png');
+  background-repeat: no-repeat;
+}
+
+.usa-banner__content .usa-banner__guidance .usa-banner__icon{
+  width: 40px;
+  height: 40px;
+  background-repeat: no-repeat;
+}
+
+.usa-banner__content .usa-banner__guidance:first-child .usa-banner__icon{
+  background-image: url('#{$theme-image-path}/icon-dot-gov.svg');
+}
+.usa-banner__content .usa-banner__guidance:last-child .usa-banner__icon{
+  background-image: url('#{$theme-image-path}/icon-https.svg');
+}
+
+// Demo only
+
 .header-styles .icon-layers-counter{
   height: 1em;
   min-width: 1em;
@@ -67,4 +79,8 @@ $theme-font-path:   '~@gsa-sam/sam-styles/src/fonts';
 }
 .header-styles .icon-square{
   color: #70e17b;
+}
+
+.sam-example-pagination {
+  line-height: 45px;
 }
