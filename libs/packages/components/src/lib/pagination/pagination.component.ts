@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, EventEmitter, Output, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
 
 
 @Component({
@@ -6,13 +6,24 @@ import { Component, OnInit, Input, EventEmitter, Output, ChangeDetectorRef } fro
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.scss']
 })
-export class PaginationComponent implements OnInit {
+export class PaginationComponent {
 
   constructor(private change: ChangeDetectorRef) { }
 
+  /**
+   * 
+   */
+  @ViewChild('currentPage') currentPageField: ElementRef;
+
+  /**
+   * 
+   */
   @Output()
   pageChange = new EventEmitter<PageModel>();
 
+  /**
+   * 
+   */
   @Input()
   page: PageModel = new PageModel();
 
@@ -21,12 +32,23 @@ export class PaginationComponent implements OnInit {
     */
   id: string = "id"
 
+  /**
+   * 
+   */
+  private previousNumber: number;
+
+  /**
+   * 
+   */
   public options = [
     { label: '25', value: 25 },
     { label: '50', value: 50 },
     { label: '100', value: 100 }
   ];
 
+  /**
+   * 
+   */
   previousPage() {
     if (this.page.pageNumber > 1) {
       this.page.pageNumber--;
@@ -34,6 +56,9 @@ export class PaginationComponent implements OnInit {
     }
   }
 
+  /**
+   * 
+   */
   nextPage() {
     if (this.page.pageNumber < this.page.totalPages) {
       this.page.pageNumber++;
@@ -41,30 +66,46 @@ export class PaginationComponent implements OnInit {
     }
   }
 
+  /**
+   * 
+   * @param newValue 
+   */
   valuechange(newValue) {
-    console.log('valuechange');
-    console.log(newValue);
-    if (newValue < 1) {
-      console.log('Below  1');
-      newValue = 1;
-    } else if (newValue > this.page.totalPages) {
-      console.log('Above Total');
-      newValue = this.page.totalPages;
+    if (newValue) {
+      if (newValue < 1) {
+        newValue = 1;
+        this.currentPageField.nativeElement.value = newValue;
+      } else if (newValue > this.page.totalPages) {
+        newValue = this.page.totalPages;
+        this.currentPageField.nativeElement.value = newValue;
+      }
+      if (newValue >= 1 && newValue <= this.page.totalPages) {
+        this.page.pageNumber = newValue;
+        this.pageChange.emit(this.page);
+        this.change.detectChanges();
+      }
+    } else {
+      if (this.page.pageNumber) {
+        this.previousNumber = this.page.pageNumber.valueOf();
+      }
     }
-    if (newValue >= 1 && newValue <= this.page.totalPages) {
-      console.log('Setting new')
-      this.page.pageNumber = newValue;
-      this.pageChange.emit(this.page);
+  }
+
+  /**
+   * 
+   */
+  currentPageFocusOut() {
+    if (this.currentPageField.nativeElement.value === '') {
+      this.currentPageField.nativeElement.value = this.page.pageNumber = this.previousNumber;
       this.change.detectChanges();
     }
   }
 
+  /**
+   * 
+   */
   onSelectChange() {
     this.pageChange.emit(this.page);
-  }
-
-  ngOnInit() {
-
   }
 
 }
@@ -84,5 +125,5 @@ export class PageModel {
   /**
    * 
    */
-  totalPages: number = 10;
+  totalPages: number;
 }
