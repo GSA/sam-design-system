@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
 
 
 @Component({
@@ -6,9 +6,21 @@ import { Component, Input, EventEmitter, Output, ChangeDetectorRef, ViewChild, E
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.scss']
 })
-export class PaginationComponent {
+export class PaginationComponent implements OnInit {
+
+  ngOnInit(): void {
+    this.maintainPreviousValue();
+  }
 
   constructor(private change: ChangeDetectorRef) { }
+
+
+  /**
+   * 
+   */
+  private maintainPreviousValue() {
+    this.previousNumber = this.page.pageNumber.valueOf();
+  }
 
   /**
    * 
@@ -37,6 +49,9 @@ export class PaginationComponent {
    */
   private previousNumber: number;
 
+
+  timeoutNumber: number;
+
   /**
    * 
    */
@@ -52,6 +67,7 @@ export class PaginationComponent {
   previousPage() {
     if (this.page.pageNumber > 1) {
       this.page.pageNumber--;
+      this.maintainPreviousValue();
       this.pageChange.emit(this.page);
     }
   }
@@ -62,6 +78,7 @@ export class PaginationComponent {
   nextPage() {
     if (this.page.pageNumber < this.page.totalPages) {
       this.page.pageNumber++;
+      this.maintainPreviousValue();
       this.pageChange.emit(this.page);
     }
   }
@@ -71,24 +88,28 @@ export class PaginationComponent {
    * @param newValue 
    */
   valuechange(newValue) {
-    if (newValue) {
-      if (newValue < 1) {
-        newValue = 1;
-        this.currentPageField.nativeElement.value = newValue;
-      } else if (newValue > this.page.totalPages) {
-        newValue = this.page.totalPages;
-        this.currentPageField.nativeElement.value = newValue;
+    window.clearTimeout(this.timeoutNumber);
+    this.timeoutNumber = window.setTimeout(() => {
+      if (newValue) {
+        if (newValue < 1) {
+          newValue = 1;
+          this.currentPageField.nativeElement.value = newValue;
+        } else if (newValue > this.page.totalPages) {
+          newValue = this.page.totalPages;
+          this.currentPageField.nativeElement.value = newValue;
+        }
+        if (newValue >= 1 && newValue <= this.page.totalPages) {
+          this.page.pageNumber = newValue;
+          this.maintainPreviousValue();
+          this.pageChange.emit(this.page);
+          this.change.detectChanges();
+        }
+      } else {
+        if (this.page.pageNumber) {
+          this.maintainPreviousValue();
+        }
       }
-      if (newValue >= 1 && newValue <= this.page.totalPages) {
-        this.page.pageNumber = newValue;
-        this.pageChange.emit(this.page);
-        this.change.detectChanges();
-      }
-    } else {
-      if (this.page.pageNumber) {
-        this.previousNumber = this.page.pageNumber.valueOf();
-      }
-    }
+    }, 500);
   }
 
   /**
