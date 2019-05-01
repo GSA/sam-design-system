@@ -4,8 +4,8 @@
 <span> of </span>
 <span>{{page.totalPages}}</span>
 <button (click)="nextPage()">Next Page</button>
-<label [attr.for]="page.id + '-select'">results per page</label>
-<select [attr.id]="page.id + '-select'" (change)="onSelectChange()" [(ngModel)]="page.pageSize">
+<label [attr.for]="id + '-select'">results per page</label>
+<select [attr.id]="id + '-select'" (change)="onSelectChange()" [(ngModel)]="page.pageSize">
   <option *ngFor="let item of options" [ngValue]="item.value">
     {{ item.label }}
   </option>
