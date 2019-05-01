@@ -42,14 +42,20 @@ export class PaginationComponent implements OnInit {
   }
 
   valuechange(newValue) {
+    console.log('valuechange');
+    console.log(newValue);
     if (newValue < 1) {
+      console.log('Below  1');
       newValue = 1;
     } else if (newValue > this.page.totalPages) {
+      console.log('Above Total');
       newValue = this.page.totalPages;
     }
     if (newValue >= 1 && newValue <= this.page.totalPages) {
+      console.log('Setting new')
       this.page.pageNumber = newValue;
       this.pageChange.emit(this.page);
+      this.change.detectChanges();
     }
   }
 
