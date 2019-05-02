@@ -43,7 +43,8 @@ function findPublishableLibs (angularJson) {
   const libNames = projectNames.filter(name => {
     const metadata = angularJson.projects[name];
     // Returns true if lib is a library and uses the ng-packagr schematic (indicates intent to publish)
-    return metadata.projectType === 'library'
+    return metadata.projectType === 'library' 
+      && metadata.architect.build 
       && metadata.architect.build.builder === '@angular-devkit/build-ng-packagr:build';
   });
 

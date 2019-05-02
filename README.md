@@ -37,7 +37,7 @@ Publishing happens in a few steps. From a high level,
      3. Publish to github
 
 
-### Run `npm publish <major | minor | patch>`
+### Run `npm version <major | minor | patch>`
 This step updates the main package.json version in the root directory. It also runs through each library in the angular.json `projects` property and updates their package.json with the 
 version from the root package.json.
 

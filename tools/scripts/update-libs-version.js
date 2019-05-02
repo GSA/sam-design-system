@@ -14,7 +14,7 @@ function main () {
   handleError(angularJsonError);
 
   const projectNames = Object.keys(angularJson.projects);
-  const libNames = projectNames.filter(name => angularJson.projects[name].projectType === 'library');
+  const libNames = projectNames.filter(name => angularJson.projects[name].projectType === 'library' && angularJson.projects[name].architect.build);
   
   console.log('Bumping lib versions...');
   libNames.forEach(lib => {
