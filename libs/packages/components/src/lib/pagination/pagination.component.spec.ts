@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { PaginationComponent } from './pagination.component';
 
@@ -22,6 +22,7 @@ describe('PaginationComponent', () => {
       pageSize: 25,
       totalPages: 10
     }
+    component.debounceTime = 0;
     fixture.detectChanges();
   });
 
@@ -46,16 +47,33 @@ describe('PaginationComponent', () => {
     expect(component.page.pageNumber).toBe(9);
   });
 
-  // valuechange(newValue) {
-  //   if (newValue < 1) {
-  //     newValue = 1;
-  //   } else if (newValue > this.page.totalPages) {
-  //     newValue = this.page.totalPages;
-  //   }
-  //   if (newValue >= 1 && newValue <= this.page.totalPages) {
-  //     this.page.pageNumber = newValue;
-  //     this.pageChange.emit(this.page);
-  //   }
-  // }
+  it('current page changed to empty', fakeAsync(() => {
+    expect(component.page.pageNumber).toBe(1);
+    component.valuechange(null);
+    tick(1);
+    expect(component.page.pageNumber).toBe(1);
+  }));
+
+
+  it('current page changed to zero', fakeAsync(() => {
+    expect(component.page.pageNumber).toBe(1);
+    component.valuechange(0);
+    tick(1);
+    expect(component.page.pageNumber).toBe(1);
+  }));
+
+
+  it('current page changed above max', fakeAsync(() => {
+
+    component.valuechange(11);
+    tick(1);
+    expect(component.page.pageNumber).toBe(10);
+  }));
+
+  it('current page changed within range', fakeAsync(() => {
+    component.valuechange(7);
+    tick(1);
+    expect(component.page.pageNumber).toBe(7);
+  }));
 
 });

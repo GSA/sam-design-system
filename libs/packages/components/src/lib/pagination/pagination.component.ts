@@ -92,7 +92,6 @@ export class PaginationComponent implements OnInit {
   valuechange(newValue) {
     window.clearTimeout(this.timeoutNumber);
     this.timeoutNumber = window.setTimeout(() => {
-      console.log(newValue);
       if (newValue || newValue === 0) {
         if (newValue < 1) {
           newValue = 1;
