@@ -39,6 +39,8 @@ export class PaginationComponent implements OnInit {
   @Input()
   page: PageModel = new PageModel();
 
+
+  debounceTime: number = 500;
   /**
     * 
     */
@@ -90,7 +92,8 @@ export class PaginationComponent implements OnInit {
   valuechange(newValue) {
     window.clearTimeout(this.timeoutNumber);
     this.timeoutNumber = window.setTimeout(() => {
-      if (newValue) {
+      console.log(newValue);
+      if (newValue || newValue === 0) {
         if (newValue < 1) {
           newValue = 1;
           this.currentPageField.nativeElement.value = newValue;
@@ -105,11 +108,12 @@ export class PaginationComponent implements OnInit {
           this.change.detectChanges();
         }
       } else {
+
         if (this.page.pageNumber) {
           this.maintainPreviousValue();
         }
       }
-    }, 500);
+    }, this.debounceTime);
   }
 
   /**
@@ -129,6 +133,20 @@ export class PaginationComponent implements OnInit {
     this.pageChange.emit(this.page);
   }
 
+}
+
+
+export class paginationConfiguration {
+
+  /**
+   * 
+   */
+  id: string;
+
+  /**
+   * 
+   */
+  debounceTime: number;
 }
 
 export class PageModel {
