@@ -40,7 +40,11 @@ export class PaginationComponent implements OnInit {
   page: PageModel = new PageModel();
 
 
+  /**
+   * 
+   */
   debounceTime: number = 500;
+
   /**
     * 
     */
@@ -52,6 +56,9 @@ export class PaginationComponent implements OnInit {
   private previousNumber: number;
 
 
+  /**
+   * 
+   */
   timeoutNumber: number;
 
   /**
@@ -89,17 +96,11 @@ export class PaginationComponent implements OnInit {
    * 
    * @param newValue 
    */
-  valuechange(newValue) {
+  valuechange(newValue?:number) {
     window.clearTimeout(this.timeoutNumber);
     this.timeoutNumber = window.setTimeout(() => {
       if (newValue || newValue === 0) {
-        if (newValue < 1) {
-          newValue = 1;
-          this.currentPageField.nativeElement.value = newValue;
-        } else if (newValue > this.page.totalPages) {
-          newValue = this.page.totalPages;
-          this.currentPageField.nativeElement.value = newValue;
-        }
+        newValue = this.handleInputOutsideBounds(newValue);
         if (newValue >= 1 && newValue <= this.page.totalPages) {
           this.page.pageNumber = newValue;
           this.maintainPreviousValue();
@@ -113,6 +114,22 @@ export class PaginationComponent implements OnInit {
         }
       }
     }, this.debounceTime);
+  }
+
+  /**
+   * 
+   * @param newValue handles
+   */
+  private handleInputOutsideBounds(newValue?:number) {
+    if (newValue < 1) {
+      newValue = 1;
+      this.currentPageField.nativeElement.value = newValue;
+    }
+    else if (newValue > this.page.totalPages) {
+      newValue = this.page.totalPages;
+      this.currentPageField.nativeElement.value = newValue;
+    }
+    return newValue;
   }
 
   /**
