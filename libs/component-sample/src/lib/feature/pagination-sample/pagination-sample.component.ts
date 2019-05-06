@@ -7,7 +7,13 @@ import { BehaviorSubject } from "rxjs";
 })
 export class PaginationSampleComponent implements OnInit {
 
-  public pageChange = new BehaviorSubject<object>(null);
+  page = {
+    pageNumber: 1,
+    pageSize: 25,
+    totalPages: 10
+  }
+
+  public pageChange = new BehaviorSubject<object>(this.page);
   constructor() { }
 
   ngOnInit() {
