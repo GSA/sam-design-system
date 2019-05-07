@@ -3,6 +3,56 @@ $theme-font-path:   '~@gsa-sam/sam-styles/src/fonts';
 
 @import "~@gsa-sam/sam-styles/src/stylesheets/sam";
 
+// Move to sam-styles
+
+.sds-pagination {
+  display: flex;
+}
+
+.sds-pagination .sds-pagination__controls{
+  display: flex;
+  align-items: center;
+  padding-top: 20px;
+  margin-right: 15px;
+}
+
+.sds-pagination button {
+  display: block;
+  background-color: #eff6fb;
+  border-radius: 50%;
+  border: none;
+  height: 45px;
+  width: 45px;
+  text-indent: -9999em;
+  margin: 0 15px;
+  position: relative;
+  &::after{
+    content: "";
+    position: absolute;
+    border: solid #0a3466;
+    border-width: 0 1px 1px 0;
+    width: 0.7rem;
+    height: 0.7rem;
+    top: 17px;
+    left: 16px;
+    transform: rotate(-45deg);
+  }
+  &:first-child::after {
+    left: 18px;
+    transform: rotate(135deg);
+  }
+}
+
+.sds-pagination .usa-label{
+  margin-top: 0;
+}
+
+.sds-pagination .sds-pagination__total{
+  strong{
+    color: #162e51;
+  }
+}
+
 // Demo pages only
 // DO NOT REUSE
 
