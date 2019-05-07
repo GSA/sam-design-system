@@ -1,12 +1,35 @@
-<button (click)="previousPage()">Previous Page</button>
-<input #currentPage (ngModelChange)="valuechange($event)" [(ngModel)]="page.pageNumber" type="number" min="1"
-  [(attr.max)]="page.totalPages" (focusout)="currentPageFocusOut()" aria-label="current page">
-<span> of </span>
-<span>{{page.totalPages}}</span>
-<button (click)="nextPage()">Next Page</button>
-<label [attr.for]="id + '-select'">results per page</label>
-<select [attr.id]="id + '-select'" (change)="onSelectChange()" [(ngModel)]="page.pageSize">
-  <option *ngFor="let item of options" [ngValue]="item.value">
-    {{ item.label }}
-  </option>
-</select>
+<div class="sds-pagination">
+  <div class="sds-pagination__controls">
+    <button (click)="previousPage()">Previous Page</button>
+    <input
+      class="usa-input height-4 width-6 text-center margin-right-1 margin-top-0"
+      #currentPage
+      (ngModelChange)="valuechange($event)"
+      [(ngModel)]="page.pageNumber"
+      type="number"
+      min="1"
+      [(attr.max)]="page.totalPages"
+      (focusout)="currentPageFocusOut()"
+      aria-label="current page"
+    />
+    <span class="sds-pagination__total">
+      of <strong>{{ page.totalPages }}</strong>
+    </span>
+    <button (click)="nextPage()">Next Page</button>
+  </div>
+  <div class="sds-pagination__results">
+    <label class="usa-label font-sans-2xs text-italic text-base" [attr.for]="id + '-select'"
+      >results per page</label
+    >
+    <select
+      class="usa-select"
+      [attr.id]="id + '-select'"
+      (change)="onSelectChange()"
+      [(ngModel)]="page.pageSize"
+    >
+      <option *ngFor="let item of options" [ngValue]="item.value">
+        {{ item.label }}
+      </option>
+    </select>
+  </div>
+</div>
