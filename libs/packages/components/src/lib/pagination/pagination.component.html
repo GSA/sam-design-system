@@ -2,7 +2,7 @@
   <div class="sds-pagination__controls">
     <button (click)="previousPage()">Previous Page</button>
     <input
-      class="usa-input height-4 width-6 text-center margin-right-1 margin-top-0"
+      class="usa-input height-4 width-6 text-center border-base-light"
       #currentPage
       (ngModelChange)="valuechange($event)"
       [(ngModel)]="page.pageNumber"
@@ -22,7 +22,7 @@
       >results per page</label
     >
     <select
-      class="usa-select"
+      class="usa-select border-base-light"
       [attr.id]="id + '-select'"
       (change)="onSelectChange()"
       [(ngModel)]="page.pageSize"
