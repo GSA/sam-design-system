@@ -27,8 +27,8 @@ import { SdsAccordionItemHeaderComponent } from "./accordion-item-header.compone
     }
   ],
   host: {
-    'class': 'sam-accordion',
-    '[class.sam-accordion--basic]': 'displayMode === "basic"',
+    'class': 'sds-accordion',
+    '[class.sds-accordion--basic]': 'displayMode === "basic"',
   }
 })
 export class SdsAccordionDirective extends CdkAccordion

@@ -45,8 +45,8 @@ let uniqueId = 0;
   outputs: ['opened', 'closed', 'expandedChange'],
   animations: [sdsExpansionAnimations.bodyExpansion],
   host: {
-    'class': 'sam-accordion__item',
-    '[class.sam-accordion__item--expanded]': 'expanded',
+    'class': 'sds-accordion__item',
+    '[class.sds-accordion__item--expanded]': 'expanded',
     '[class._sds-animation-noopable]': '_animationMode === "NoopAnimations"'
   }
 })
