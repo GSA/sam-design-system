@@ -22,6 +22,7 @@ describe('PaginationComponent', () => {
       pageSize: 25,
       totalPages: 10
     }
+    component.paginationConfiguration = { id: 'test' };
     component.debounceTime = 0;
     fixture.detectChanges();
   });
