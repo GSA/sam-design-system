@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
-
+import { PaginationConfigurationModel, PaginationModel } from './model/paginationModel';
 
 @Component({
   selector: 'sds-pagination',
@@ -16,53 +16,53 @@ export class PaginationComponent implements OnInit {
 
 
   /**
-   * 
+   * Stores the previous number. Used when focus out if field empty
    */
   private maintainPreviousValue() {
     this.previousNumber = this.page.pageNumber.valueOf();
   }
 
   /**
-   * 
+   * Input field for the current page
    */
   @ViewChild('currentPage') currentPageField: ElementRef;
 
   /**
-   * 
+   * Output of the page model object
    */
   @Output()
-  pageChange = new EventEmitter<PageModel>();
+  pageChange = new EventEmitter<PaginationModel>();
 
   /**
-   * 
+   * Pagination model
    */
   @Input()
-  page: PageModel = new PageModel();
+  page: PaginationModel = new PaginationModel();
+
+  /**
+   * configuration for the pagination
+   */
+  @Input()
+  paginationConfiguration: PaginationConfigurationModel;
 
 
   /**
-   * 
+   * debounce time for current page input
    */
   debounceTime: number = 500;
 
   /**
-    * 
-    */
-  id: string = "id"
-
-  /**
-   * 
+   * Stores the previous number
    */
   private previousNumber: number;
 
-
   /**
-   * 
+   * timeout id of the debounce time 
    */
   timeoutNumber: number;
 
   /**
-   * 
+   * Drop down options for page size
    */
   public options = [
     { label: '25', value: 25 },
@@ -71,7 +71,7 @@ export class PaginationComponent implements OnInit {
   ];
 
   /**
-   * 
+   * previous page lowers page number by one within range
    */
   previousPage() {
     if (this.page.pageNumber > 1) {
@@ -82,7 +82,7 @@ export class PaginationComponent implements OnInit {
   }
 
   /**
-   * 
+   * next page increase page number by one within range
    */
   nextPage() {
     if (this.page.pageNumber < this.page.totalPages) {
@@ -93,10 +93,10 @@ export class PaginationComponent implements OnInit {
   }
 
   /**
-   * 
+   * current page changes sets new value if within range
    * @param newValue 
    */
-  valuechange(newValue?:number) {
+  valuechange(newValue?: number) {
     window.clearTimeout(this.timeoutNumber);
     this.timeoutNumber = window.setTimeout(() => {
       if (newValue || newValue === 0) {
@@ -117,10 +117,10 @@ export class PaginationComponent implements OnInit {
   }
 
   /**
-   * 
+   * adjusts the value if not within the page limit above or below
    * @param newValue handles
    */
-  private handleInputOutsideBounds(newValue?:number) {
+  private handleInputOutsideBounds(newValue?: number) {
     if (newValue < 1) {
       newValue = 1;
       this.currentPageField.nativeElement.value = newValue;
@@ -133,7 +133,7 @@ export class PaginationComponent implements OnInit {
   }
 
   /**
-   * 
+   * current page focus out will replace with previous valid if empty
    */
   currentPageFocusOut() {
     if (this.currentPageField.nativeElement.value === '') {
@@ -143,42 +143,9 @@ export class PaginationComponent implements OnInit {
   }
 
   /**
-   * 
+   * page size selection change
    */
   onSelectChange() {
     this.pageChange.emit(this.page);
   }
-
-}
-
-
-export class paginationConfiguration {
-
-  /**
-   * 
-   */
-  id: string;
-
-  /**
-   * 
-   */
-  debounceTime: number;
-}
-
-export class PageModel {
-
-  /**
-   * 
-   */
-  pageNumber: number;
-
-  /**
-   * 
-   */
-  pageSize: number;
-
-  /**
-   * 
-   */
-  totalPages: number;
 }
