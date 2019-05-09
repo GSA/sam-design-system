@@ -19,7 +19,7 @@ import { SdsAccordionItemComponent } from "./accordion-item.component";
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    class: "sam-accordion__trigger",
+    class: "sds-accordion__trigger",
     role: "button",
     "[attr.id]": "accordionItem._headerId",
     "[attr.tabindex]": "disabled ? -1 : 0",

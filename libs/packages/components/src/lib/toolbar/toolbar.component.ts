@@ -14,8 +14,8 @@ let uniqueId = 0;
   templateUrl: "toolbar.component.html",
   animations: [sdsToolbarAnimations.bodyExpansion],
   host: {
-    class: "sam-toolbar",
-    "[class.sam-toolbar--expanded]": "expanded"
+    class: "sds-toolbar",
+    "[class.sds-toolbar--expanded]": "expanded"
   }
 })
 export class SdsToolbarComponent {
