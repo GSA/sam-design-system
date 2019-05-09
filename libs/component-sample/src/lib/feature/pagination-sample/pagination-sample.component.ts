@@ -13,6 +13,8 @@ export class PaginationSampleComponent implements OnInit {
     totalPages: 10
   }
 
+  top = { id: 'top' };
+  bottom = { id: 'bottom' };
   public pageChange = new BehaviorSubject<object>(this.page);
   constructor() { }
 

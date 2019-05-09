@@ -39,6 +39,9 @@ export class PaginationComponent implements OnInit {
   @Input()
   page: PaginationModel = new PaginationModel();
 
+  /**
+   * configuration for the pagination
+   */
   @Input()
   paginationConfiguration: PaginationConfigurationModel;
 
