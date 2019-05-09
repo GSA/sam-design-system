@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
-
+import { PaginationConfigurationModel, PaginationModel } from './model/paginationModel';
 
 @Component({
   selector: 'sds-pagination',
@@ -31,30 +31,27 @@ export class PaginationComponent implements OnInit {
    * Output of the page model object
    */
   @Output()
-  pageChange = new EventEmitter<PageModel>();
+  pageChange = new EventEmitter<PaginationModel>();
 
   /**
-   * 
+   * Pagination model
    */
   @Input()
-  page: PageModel = new PageModel();
+  page: PaginationModel = new PaginationModel();
+
+  @Input()
+  paginationConfiguration: PaginationConfigurationModel;
 
 
   /**
-   * 
+   * debounce time for current page input
    */
   debounceTime: number = 500;
 
   /**
-    * 
-    */
-  id: string = "id"
-
-  /**
-   * 
+   * Stores the previous number
    */
   private previousNumber: number;
-
 
   /**
    * timeout id of the debounce time 
@@ -148,37 +145,4 @@ export class PaginationComponent implements OnInit {
   onSelectChange() {
     this.pageChange.emit(this.page);
   }
-
-}
-
-
-export class paginationConfiguration {
-
-  /**
-   * used to distinguish fields
-   */
-  id: string;
-
-  /**
-   * debounce time
-   */
-  debounceTime: number;
-}
-
-export class PageModel {
-
-  /**
-   * current page number
-   */
-  pageNumber: number;
-
-  /**
-   * size of page ex 25, 50,100
-   */
-  pageSize: number;
-
-  /**
-   * total number of pages
-   */
-  totalPages: number;
 }
