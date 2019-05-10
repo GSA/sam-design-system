@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.2.1 (08/05/2019)
+
+#### closed
+
+- [**closed**] Fix icon import [#24](https://github.com/GSA/sam-design-system/pull/24)
+- [**closed**] Update to pagination UI [#23](https://github.com/GSA/sam-design-system/pull/23)
+
+---
+
 ## v0.1.0 (01/05/2019)
 
 #### bugfix

@@ -5,7 +5,7 @@ import { SdsToolbarComponent } from "./toolbar.component";
   selector: "sds-toolbar-header",
   templateUrl: "toolbar-header.component.html",
   host: {
-    class: "sam-toolbar__header"
+    class: "sds-toolbar__header"
   }
 })
 export class SdsToolbarHeaderComponent {

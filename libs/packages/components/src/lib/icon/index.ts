@@ -1,3 +1,5 @@
+import { IconDefinition } from '@fortawesome/fontawesome-common-types';
+
 // FontAwesome Icons
 import {
   faSquare,
