@@ -15,7 +15,7 @@ export class FooterSampleComponent implements OnInit {
   modelFooter = {
     footerLogo: {
       text: 'General Services Administration',
-      imageSourcePath: '/assets/sam-styles/img/logo-gsa.svg',
+      imageSourcePath: 'assets/sam-styles/img/logo-gsa.svg',
       imageAltText: 'GSA Logo'
     },
     linkSections: [
