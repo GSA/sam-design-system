@@ -12,8 +12,8 @@ const Hierarchical_Autocomplete_VALUE_ACCESSOR: any = {
 
 @Component({
   selector: 'sds-hierarchical-autocomplete',
-  templateUrl: './autocomplete.component.html',
-  styleUrls: ['./autocomplete.component.scss'],
+  templateUrl: './autocomplete-search.component.html',
+  styleUrls: ['./autocomplete-search.component.scss'],
   providers: [Hierarchical_Autocomplete_VALUE_ACCESSOR]
 })
 export class SamHierarchicalAutocompleteSearchComponent implements ControlValueAccessor {
