@@ -1,7 +1,6 @@
 import { Component, Input, ViewChild, TemplateRef, ElementRef, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl } from '@angular/forms';
 import { SamHiercarchicalServiceInterface } from '../hierarchical-interface';
-import { KeyHelper, KEYS } from '../../../utilities/key-helper/key-helper';
 import { HierarchicalTreeSelectedItemModel, TreeMode } from '../hierarchical-tree-selectedItem.model';
 import { SamHierarchicalAutocompleteConfiguration } from '../models/SamHierarchicalAutocompleteConfiguration';
 const Hierarchical_Autocomplete_VALUE_ACCESSOR: any = {

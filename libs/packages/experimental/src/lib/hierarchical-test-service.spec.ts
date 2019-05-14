@@ -2,7 +2,8 @@
 import { Observable } from 'rxjs';
 import { SamHiercarchicalServiceInterface, SamHiercarchicalServiceSearchItem, SamHiercarchicalServiceResult } from './hierarchical-interface';
 //import { Sort } from "../../components/data-table/sort.directive";
-import 'rxjs/add/observable/of';
+import 'rxjs-compat/add/observable/of';
+import { map } from 'rxjs/operators';
 
 export class HierarchicalDataService implements SamHiercarchicalServiceInterface {
 
@@ -22,10 +23,10 @@ export class HierarchicalDataService implements SamHiercarchicalServiceInterface
     let data = Observable.of(this.loadedData);
     let itemsOb: Observable<Object[]>;
     if (searchValue) {
-      itemsOb = data.map(items => items.filter(itm =>
+      itemsOb = data.pipe(map(items => items.filter(itm =>
         (itm.name.indexOf(searchValue) !== -1 ||
           itm.subtext.indexOf(searchValue) !== -1
-        )));
+        ))));
     } else {
       itemsOb = data;
     }
@@ -44,7 +45,7 @@ export class HierarchicalDataService implements SamHiercarchicalServiceInterface
 
   getHiercarchicalById(item: SamHiercarchicalServiceSearchItem): Observable<SamHiercarchicalServiceResult> {
     let itemIncrease = 15;
-    let temp = this.getSortedData(this.loadedData, item.sort);
+    let temp = this.getSortedData(this.loadedData);//, item.sort);
     let data = Observable.of(temp);
     let itemsOb: Observable<Object[]>;
     itemsOb = this.filterItemsByAllFields(item, itemsOb, data);
@@ -90,15 +91,16 @@ export class HierarchicalDataService implements SamHiercarchicalServiceInterface
     return itemsOb;
   }
 
-  private getSortedData(data: any[], sort: Sort): any[] {
-    if (!sort || (!sort.active || sort.direction === '')) { return data; }
-    return data.sort((a, b) => {
-      let propertyA = this.sortingDataAccessor(a, sort.active);
-      let propertyB = this.sortingDataAccessor(b, sort.active)
-      const valueA = isNaN(+propertyA) ? propertyA : +propertyA;
-      const valueB = isNaN(+propertyB) ? propertyB : +propertyB;
-      return (valueA < valueB ? -1 : 1) * (sort.direction === 'asc' ? 1 : -1);
-    });
+  private getSortedData(data: any[]): any[] {//, sort: Sort): any[] {
+    // if (!sort || (!sort.active || sort.direction === '')) { return data; }
+    return null;
+    //     return data.sort((a, b) => {
+    //     //  let propertyA = this.sortingDataAccessor(a, sort.active);
+    // //let propertyB = this.sortingDataAccessor(b, sort.active)
+    //       const valueA = isNaN(+propertyA) ? propertyA : +propertyA;
+    //       const valueB = isNaN(+propertyB) ? propertyB : +propertyB;
+    //       return (valueA < valueB ? -1 : 1) * (sort.direction === 'asc' ? 1 : -1);
+    //     });
   }
 
   private sortingDataAccessor(data: any, sortHeaderId: string) {
