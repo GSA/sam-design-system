@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'sds-top-banner',
-  templateUrl: './top-banner.component.html',
-  styleUrls: ['./top-banner.component.scss']
+  selector: 'sds-side-navigation',
+  templateUrl: './side-navigation.component.html',
+  styleUrls: ['./side-navigation.component.scss']
 })
 export class SdsSideNavigationComponent {
   
