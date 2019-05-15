@@ -3,7 +3,7 @@ export class SideNavigationModel {
     /**
      * 
      */
-    links: NavigationLink[];
+    navigationLinks: NavigationLink[];
 }
 
 
