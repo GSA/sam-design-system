@@ -1,3 +1,12 @@
+export class SideNavigationModel {
+
+    /**
+     * 
+     */
+    links: NavigationLink[];
+}
+
+
 export class NavigationLink implements Selectable {
     /**
      * Text to be displayed in the link or button

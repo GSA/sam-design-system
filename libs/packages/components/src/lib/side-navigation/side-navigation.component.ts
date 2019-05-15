@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { SideNavigationModel } from './model/side-navigation-model';
 
 @Component({
   selector: 'sds-side-navigation',
@@ -6,6 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./side-navigation.component.scss']
 })
 export class SdsSideNavigationComponent {
-  
+
+  /**
+   * Model used for the different display portions of the side navigation 
+   */
+  @Input() model: SideNavigationModel;
 
 }
