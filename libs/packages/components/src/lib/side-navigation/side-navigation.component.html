@@ -1,25 +1,26 @@
-<sds-accordion-item-header> Navigation </sds-accordion-item-header>
-<nav>
-    <ul class="usa-sidenav">
-        <li *ngFor="let link of model.navigationLinks" class="sidenav__item">
-            <ng-container [ngTemplateOutlet]="link.children ? linkTemplate : childTemplate"
-                [ngTemplateOutletContext]="{$implicit:link}"></ng-container>
-        </li>
+<sds-accordion-item>
+    <sds-accordion-item-header> Navigation </sds-accordion-item-header>
+    <nav>
+        <ul class="usa-sidenav">
+            <li *ngFor="let link of model.navigationLinks" class="sidenav__item">
+                <ng-container [ngTemplateOutlet]="link.children ? linkTemplate : childTemplate"
+                    [ngTemplateOutletContext]="{$implicit:link}"></ng-container>
+            </li>
 
 
-        <li class="usa-sidenav__item"><a href="">Parent link</a></li>
-        <li class="usa-sidenav__item">
-            <a href="" class="usa-current">Current page</a>
-            <ul class="usa-sidenav__sublist">
-                <li class="usa-sidenav__item"><a href="">Child link</a></li>
-                <li class="usa-sidenav__item"><a href="">Child link</a></li>
-                <li class="usa-sidenav__item"><a href="">Child link</a></li>
-                <li class="usa-sidenav__item"><a href="">Child link</a></li>
-            </ul>
-        </li>
-        <li class="usa-sidenav__item"><a href="">Parent link</a></li>
-    </ul>
-</nav>
+            <li class="usa-sidenav__item"><a href="">Parent link</a></li>
+            <li class="usa-sidenav__item">
+                <a href="" class="usa-current">Current page</a>
+                <ul class="usa-sidenav__sublist">
+                    <li class="usa-sidenav__item"><a href="">Child link</a></li>
+                    <li class="usa-sidenav__item"><a href="">Child link</a></li>
+                    <li class="usa-sidenav__item"><a href="">Child link</a></li>
+                    <li class="usa-sidenav__item"><a href="">Child link</a></li>
+                </ul>
+            </li>
+            <li class="usa-sidenav__item"><a href="">Parent link</a></li>
+        </ul>
+    </nav>
 </sds-accordion-item>
 
 

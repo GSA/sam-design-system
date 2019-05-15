@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import {
- SdsSideNavigationModule
+  SdsSideNavigationModule
 } from '@gsa-sam/components';
 
 import { SideNavigationSampleComponent } from './side-navigation-sample.component';
@@ -12,4 +12,4 @@ import { SideNavigationSampleComponent } from './side-navigation-sample.componen
   declarations: [SideNavigationSampleComponent],
   providers: []
 })
-export class SideNavigationSampleModule {}
+export class SideNavigationSampleModule { }

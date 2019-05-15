@@ -14,17 +14,19 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { sdsIcons } from '@gsa-sam/components';
 import { IconSampleModule } from './feature/icon-sample/icon-sample.module';
 import { IconSampleComponent } from './feature/icon-sample/icon-sample.component';
-
+import { SideNavigationSampleModule } from './feature/side-navigation-sample/side-navigation-sample.module';
+import { SideNavigationSampleComponent } from './feature/side-navigation-sample/side-navigation-sample.component';
 const appIcons = {
   // App Specific Icons
- };
+};
 
 export const ROUTES: Routes = [
   { path: 'header', component: HeaderSampleComponent },
   { path: 'footer', component: FooterSampleComponent },
   { path: 'pagination', component: PaginationSampleComponent },
   { path: 'toolbar', component: ToolbarSampleComponent },
-  { path: 'icon', component: IconSampleComponent }
+  { path: 'icon', component: IconSampleComponent },
+  { path: 'sideNav', component: SideNavigationSampleComponent }
 ];
 
 @NgModule({
@@ -36,7 +38,8 @@ export const ROUTES: Routes = [
     FooterSampleModule,
     PaginationSampleModule,
     ToolbarSampleModule,
-    IconSampleModule
+    IconSampleModule,
+    SideNavigationSampleModule
   ],
   exports: [RouterModule]
 })
