@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class SideNavigationSampleComponent implements OnInit {
   constructor() { }
-  modelHeader = {};
-  
+  model = { navigationLinks: [] };
+
   ngOnInit() { }
 }
