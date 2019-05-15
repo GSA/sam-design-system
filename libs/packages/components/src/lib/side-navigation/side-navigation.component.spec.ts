@@ -19,6 +19,7 @@ describe('SdsSideNavigationComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SdsSideNavigationComponent);
     component = fixture.componentInstance;
+    component.model = { navigationLinks: [] };
 
   });
 
