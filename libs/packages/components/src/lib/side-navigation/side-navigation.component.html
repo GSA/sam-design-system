@@ -3,23 +3,19 @@
     <nav>
         <ul class="usa-sidenav">
             <li *ngFor="let link of model.navigationLinks" class="sidenav__item">
-                <ng-container [ngTemplateOutlet]="link.children ?  childTemplate : linkTemplate"
-                    [ngTemplateOutletContext]="{$implicit:link}"></ng-container>
+                <ng-container [ngTemplateOutlet]="sideNavLinkTemplate" [ngTemplateOutletContext]="{$implicit:link}">
+                </ng-container>
             </li>
         </ul>
     </nav>
 </sds-accordion-item>
 
-<ng-template #linkTemplate let-link>
+<ng-template #sideNavLinkTemplate let-link>
     <a [attr.class]="link.selected ? ' usa-current' : ''" [routerLink]="[link.route]"><span>{{link.text}}</span></a>
-</ng-template>
-
-<ng-template #childTemplate let-link>
-    <a [attr.class]="link.selected ? ' usa-current' : ''" [routerLink]="[link.route]"><span>{{link.text}}</span></a>
-    <ul class="usa-sidenav__sublist">
+    <ul *ngIf="link.children" class="usa-sidenav__sublist">
         <li *ngFor="let link of link.children" class="sidenav__item">
-            <ng-container [ngTemplateOutlet]="link.children ?  childTemplate : linkTemplate"
-                [ngTemplateOutletContext]="{$implicit:link}"></ng-container>
+            <ng-container [ngTemplateOutlet]="sideNavLinkTemplate" [ngTemplateOutletContext]="{$implicit:link}">
+            </ng-container>
         </li>
     </ul>
 </ng-template>
