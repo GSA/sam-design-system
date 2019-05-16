@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit,ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'sds-side-navigation-sample',
@@ -15,7 +15,10 @@ export class SideNavigationSampleComponent implements AfterViewInit {
     navigationLinks: [{
       text: 'Parent 1', id: 'linkp1', children: [
         { text: 'Child 1 of Parent 1', route: '/', id: 'linkc1p1' },
-        { text: 'Child 2 of Parent 1', route: '/', id: 'linkc2p1' },
+        {
+          text: 'Child 2 of Parent 1', route: '/', id: 'linkc2p1', children: [
+            { text: 'Grandchild 1 of Child 2 of Parent 1', route: '/', id: 'linkgc1c2p1' }]
+        },
         { text: 'Child 3 of Parent 1', route: '/', id: 'linkc3p1' },
         {
           text: 'Child 4 of Parent 1', route: '/', id: 'linkc4p1'
@@ -37,7 +40,11 @@ export class SideNavigationSampleComponent implements AfterViewInit {
     },
     {
       text: 'Parent 2', id: 'linkp2', children: [
-        { text: 'Child 1 of Parent 2', route: '/', id: 'linkc1p2' },
+        { text: 'Child 1 of Parent 2', route: '/', id: 'linkc1p2',children:[
+
+          { text: 'Grandchild 1 Child 1 of Parent 2', route: '/', id: 'linkgc1c1p2' },
+        ]
+       },
         { text: 'Child 2 of Parent 2', route: '/', id: 'linkc2p2' },
         { text: 'Child 3 of Parent 2', route: '/', id: 'linkc3p2' },
         { text: 'Child 4 of Parent 2', route: '/', id: 'linkc4p2' }
