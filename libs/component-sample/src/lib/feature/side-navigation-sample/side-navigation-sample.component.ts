@@ -17,7 +17,16 @@ export class SideNavigationSampleComponent implements OnInit {
           text: 'Child 4 of Parent 1', route: '/', id: 'linkc4p1'
           , children: [
             { text: 'Grandchild 1 of Child 4 of Parent 1', route: '/', id: 'linkgc1c4p1' },
-            { text: 'Grandchild 2 of Child 4 of Parent 1', route: '/', id: 'linkgc2c4p1' }
+            {
+              text: 'Grandchild 2 of Child 4 of Parent 1', route: '/', id: 'linkgc2c4p1',
+              children: [
+                { text: ' Great 1 of Grandchild 2 of Child 4 of Parent 1', route: '/', id: 'linkg1gc1c4p1' },
+                {
+                  text: 'Great 2 of Grandchild 2 of Child 4 of Parent 1', route: '/', id: 'linkg2gc1c4p1'
+                  //, children: [{ text: 'Great 1 of  Great 1 of Grandchild 2 of Child 4 of Parent 1', route: '/', id: 'linkg1gc1c4p1' }]
+                },
+              ]
+            }
           ]
         }
       ]

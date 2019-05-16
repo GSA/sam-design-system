@@ -6,43 +6,20 @@
                 <ng-container [ngTemplateOutlet]="link.children ?  childTemplate : linkTemplate"
                     [ngTemplateOutletContext]="{$implicit:link}"></ng-container>
             </li>
-            <!-- <li class="usa-sidenav__item"><a href="">Parent link</a></li>
-            <li class="usa-sidenav__item">
-                <a href="" class="usa-current">Current page</a>
-                <ul class="usa-sidenav__sublist">
-                    <li class="usa-sidenav__item"><a href="">Child link</a></li>
-                    <li class="usa-sidenav__item"><a href="">Child link</a></li>
-                    <li class="usa-sidenav__item"><a href="">Child link</a></li>
-                    <li class="usa-sidenav__item"><a href="">Child link</a></li>
-                </ul>
-            </li>
-            <li class="usa-sidenav__item"><a href="">Parent link</a></li> -->
         </ul>
     </nav>
 </sds-accordion-item>
-
 
 <ng-template #linkTemplate let-link>
     <a [attr.class]="link.selected ? ' usa-current' : ''" [routerLink]="[link.route]"><span>{{link.text}}</span></a>
 </ng-template>
 
-
 <ng-template #childTemplate let-link>
     <a [attr.class]="link.selected ? ' usa-current' : ''" [routerLink]="[link.route]"><span>{{link.text}}</span></a>
     <ul class="usa-sidenav__sublist">
         <li *ngFor="let link of link.children" class="sidenav__item">
-            <!-- <ng-container [ngTemplateOutlet]="link.children ? linkTemplate : childTemplate"
-                [ngTemplateOutletContext]="{$implicit:link}"></ng-container> -->
-            <a [attr.class]="link.selected ? ' usa-current' : ''"
-                [routerLink]="[link.route]"><span>{{link.text}}</span></a>
-            <ul *ngIf="link.children" class="usa-sidenav__sublist">
-                <li *ngFor="let link of link.children" class="sidenav__item">
-                    <!-- <ng-container [ngTemplateOutlet]="link.children ? linkTemplate : childTemplate"
-                                [ngTemplateOutletContext]="{$implicit:link}"></ng-container> -->
-                    <a [attr.class]="link.selected ? ' usa-current' : ''"
-                        [routerLink]="[link.route]"><span>{{link.text}}</span></a>
-                </li>
-            </ul>
+            <ng-container [ngTemplateOutlet]="link.children ?  childTemplate : linkTemplate"
+                [ngTemplateOutletContext]="{$implicit:link}"></ng-container>
         </li>
     </ul>
 </ng-template>
