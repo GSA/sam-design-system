@@ -1,12 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit,ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'sds-side-navigation-sample',
   templateUrl: 'side-navigation-sample.component.html'
 })
 
-export class SideNavigationSampleComponent implements OnInit {
-  constructor() { }
+export class SideNavigationSampleComponent implements AfterViewInit {
+
+
+
+  @ViewChild('sideNav') sideNav;
+  constructor(private change: ChangeDetectorRef) { }
   model = {
     navigationLinks: [{
       text: 'Parent 1', id: 'linkp1', children: [
@@ -41,6 +45,28 @@ export class SideNavigationSampleComponent implements OnInit {
     }
     ]
   };
+  onSelectChange() {
+    this.sideNav.select(this.selectedId);
+  }
+  selectedId: string = 'linkp1';
 
-  ngOnInit() { }
+  options: any[] = [];
+
+
+  ngAfterViewInit(): void {
+    for (let i = 0; i < this.model.navigationLinks.length; i++) {
+      this.addToOptions(this.model.navigationLinks[i]);
+    }
+    this.sideNav.select(this.selectedId);
+    this.change.detectChanges();
+  }
+
+  addToOptions(item: any) {
+    this.options.push(item);
+    if (item.children) {
+      for (let i = 0; i < item.children.length; i++) {
+        this.addToOptions(item.children[i]);
+      }
+    }
+  }
 }
