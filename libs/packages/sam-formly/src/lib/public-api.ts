@@ -1,1 +1,1 @@
-export const test = true;
+export * from './formly/formly.module';
