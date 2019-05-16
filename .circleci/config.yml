@@ -19,4 +19,7 @@ jobs:
           paths:
             - node_modules
           key: v2-dependencies-{{ checksum "package-lock.json" }}
-      - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+      - run: npm run test -- --no-watch --no-progress --code-coverage --browsers=ChromeHeadlessCI
+      store_artifacts:
+          path: coverage
+          destination : code-coverage
