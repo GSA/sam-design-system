@@ -1,1 +1,9 @@
-<sds-side-navigation #sideNav [model]="model"></sds-side-navigation>
+<sds-page>
+    <sds-page-options class="sam-page__options">
+        <sds-toolbar #toolbar="sdsToolbar">
+            <sds-accordion multi="true">
+                <sds-side-navigation #sideNav [model]="model"></sds-side-navigation>
+            </sds-accordion>
+        </sds-toolbar>
+    </sds-page-options>
+</sds-page>
