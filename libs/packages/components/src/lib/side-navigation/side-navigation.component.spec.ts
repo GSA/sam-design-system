@@ -75,8 +75,6 @@ describe('SdsSideNavigationComponent', () => {
     expect(component.model.navigationLinks[0].children[1].children[0].selected).toBeFalsy();
   });
 
-
-  
   it('Select and deselect Item: First child with no children', () => {
     //Parent
     expect(component.model.navigationLinks[0].selected).toBeFalsy();
