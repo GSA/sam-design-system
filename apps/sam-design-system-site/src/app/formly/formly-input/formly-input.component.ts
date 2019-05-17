@@ -20,7 +20,20 @@ export class FormlyInputComponent implements OnInit {
       type: 'input',
       templateOptions: {
         label: 'Textarea with specified rows',
-        placeholder: 'This has 10 rows'
+        placeholder: 'This has 10 rows',
+        inputType: 'text',
+        inputStyle:'success'
+      },
+    },
+    {
+      key: 'text1',
+      type: 'input',
+      templateOptions: {
+        label: 'Textarea with specified rows',
+        placeholder: 'This has 10 rows',
+        inputType: 'number',
+        inputStyle:'error',
+        errorMessage: 'Helpful error message'
       },
     },
   ];
