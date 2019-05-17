@@ -8,7 +8,7 @@ import {
   // FormlyFieldTextArea,
   // FormlyFieldMultiCheckbox,
 } from './types/input';
-import { FormlyWrapperFormField } from './wrappers/form-field.wrapper';
+import { FormlyWrapperFormFieldComponent } from './wrappers/form-field.wrapper';
 
 export const FIELD_TYPE_COMPONENTS = [
   FormlyFieldInputComponent,
@@ -17,7 +17,7 @@ export const FIELD_TYPE_COMPONENTS = [
   // FormlyFieldSelect,
   // FormlyFieldTextArea,
   // FormlyFieldMultiCheckbox,
-  FormlyWrapperFormField,
+  FormlyWrapperFormFieldComponent,
 ];
 
 export const FORMLY_CONFIG: ConfigOption = {
@@ -54,6 +54,6 @@ export const FORMLY_CONFIG: ConfigOption = {
     // },
   ],
   wrappers: [
-    {name: 'form-field', component: FormlyWrapperFormField },
+    {name: 'form-field', component: FormlyWrapperFormFieldComponent },
   ],
 };

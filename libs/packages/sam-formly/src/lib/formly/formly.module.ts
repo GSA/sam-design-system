@@ -5,7 +5,6 @@ import { FormlyModule } from '@ngx-formly/core';
 import { FormlySelectModule } from '@ngx-formly/core/select';
 import { FIELD_TYPE_COMPONENTS, FORMLY_CONFIG } from './formly.config';
 
-
 @NgModule({
   declarations: [
     FIELD_TYPE_COMPONENTS,
