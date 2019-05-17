@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { SideNavigationModel, NavigationLink, Selectable } from './model/side-navigation-model';
+import { SideNavigationModel, NavigationLink } from './model/side-navigation-model';
 
 @Component({
   selector: 'sds-side-navigation',
@@ -14,18 +14,24 @@ export class SdsSideNavigationComponent {
   @Input() model: SideNavigationModel;
 
   /**
-   * Selects new item and deselects previous
+   * Selects new item and parents and deselects previous
    * @param id 
    */
   select(id: string) {
     this.deselect();
     for (let i = 0; i < this.model.navigationLinks.length; i++) {
       let item = this.model.navigationLinks[i];
-      this.checkItem(id, item, null);
+      this.selectItem(id, item, null);
     }
   }
 
-  private checkItem(id: string, item: NavigationLink, parent: NavigationLink) {
+  /**
+   * Selects item if matches passed in id and will select parent
+   * @param id 
+   * @param item 
+   * @param parent 
+   */
+  private selectItem(id: string, item: NavigationLink, parent: NavigationLink) {
     if (item.id === id) {
       item.selected = true;
       if (parent) {
@@ -35,7 +41,7 @@ export class SdsSideNavigationComponent {
       if (item.children) {
         for (let i = 0; i < item.children.length; i++) {
           let childItem = item.children[i];
-          this.checkItem(id, childItem, item);
+          this.selectItem(id, childItem, item);
         }
         if (item.selected) {
           if (parent) {
@@ -61,7 +67,7 @@ export class SdsSideNavigationComponent {
   }
 
   /**
-   * checks if item is selected and if selcted will check children
+   * checks if item is selected and if selcted will check children and will unselect
    */
   private deselectItem(item: NavigationLink) {
     if (item.selected) {
@@ -73,6 +79,4 @@ export class SdsSideNavigationComponent {
       }
     }
   }
-
-
 }
