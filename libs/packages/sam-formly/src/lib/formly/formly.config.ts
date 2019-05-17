@@ -1,17 +1,17 @@
     
 import { ConfigOption } from '@ngx-formly/core';
 import {
-  FormlyFieldInput,
+  FormlyFieldInputComponent,
   // FormlyFieldCheckbox,
   // FormlyFieldRadio,
   // FormlyFieldSelect,
   // FormlyFieldTextArea,
   // FormlyFieldMultiCheckbox,
-} from './types/types';
-import { FormlyWrapperFormField } from './wrappers/wrappers';
+} from './types/input';
+import { FormlyWrapperFormField } from './wrappers/form-field.wrapper';
 
 export const FIELD_TYPE_COMPONENTS = [
-    FormlyFieldInput,
+  FormlyFieldInputComponent,
   // FormlyFieldCheckbox,
   // FormlyFieldRadio,
   // FormlyFieldSelect,
@@ -24,7 +24,7 @@ export const FORMLY_CONFIG: ConfigOption = {
   types: [
     {
       name: 'input',
-      component: FormlyFieldInput,
+      component: FormlyFieldInputComponent,
       wrappers: ['form-field'],
     },
     // {

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 
 @Component({
-  selector: 'formly-field-input',
+  selector: 'sam-formly-field-input',
   template: `
     <input *ngIf="type !== 'number' else numberTmp" [type]="type" [formControl]="formControl" class="form-control" [formlyAttributes]="field" [class.is-invalid]="showError">
     <ng-template #numberTmp>
@@ -10,7 +10,7 @@ import { FieldType } from '@ngx-formly/core';
     </ng-template>
   `,
 })
-export class FormlyFieldInput extends FieldType {
+export class FormlyFieldInputComponent extends FieldType {
   get type() {
     return this.to.type || 'text';
   }
