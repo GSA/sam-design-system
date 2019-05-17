@@ -40,11 +40,12 @@ export class SideNavigationSampleComponent implements AfterViewInit {
     },
     {
       text: 'Parent 2', id: 'linkp2', children: [
-        { text: 'Child 1 of Parent 2', route: '/', id: 'linkc1p2',children:[
+        {
+          text: 'Child 1 of Parent 2', route: '/', id: 'linkc1p2', children: [
 
-          { text: 'Grandchild 1 Child 1 of Parent 2', route: '/', id: 'linkgc1c1p2' },
-        ]
-       },
+            { text: 'Grandchild 1 Child 1 of Parent 2', route: '/', id: 'linkgc1c1p2' },
+          ]
+        },
         { text: 'Child 2 of Parent 2', route: '/', id: 'linkc2p2' },
         { text: 'Child 3 of Parent 2', route: '/', id: 'linkc3p2' },
         { text: 'Child 4 of Parent 2', route: '/', id: 'linkc4p2' }
