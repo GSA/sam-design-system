@@ -38,11 +38,16 @@ export class FormlyInputComponent implements OnInit {
     },
   ];
   submit() {
-    alert(this.model);
+ 
+   
   }
   constructor() { }
 
-  ngOnInit() {
+ 
+  public ngOnInit() {
+    this.form.valueChanges.subscribe(res =>{
+      console.log(res, 'form value changes');
+    });
   }
 
 }
