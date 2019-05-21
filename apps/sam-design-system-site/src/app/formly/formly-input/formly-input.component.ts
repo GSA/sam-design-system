@@ -20,7 +20,7 @@ export class FormlyInputComponent implements OnInit {
       type: 'input',
       templateOptions: {
         label: 'Formly input type text',
-        placeholder: 'This has 10 rows',
+        placeholder: 'placeholder',
         inputType: 'text',
         min: 13,
         max: 40,
@@ -34,7 +34,7 @@ export class FormlyInputComponent implements OnInit {
       templateOptions: {
         required: true,
         label: 'Formly input type number with error style',
-        placeholder: 'This has 10 rows',
+        placeholder: 'placeholder',
         inputType: 'number',
         inputStyle:'error',
         errorMessage: 'Helpful error message'
@@ -61,14 +61,13 @@ export class FormlyInputComponent implements OnInit {
       type: 'select',
       templateOptions: {
         label: 'Formly select type without group',
-        placeholder: 'Select Multiple',
+        placeholder: 'Select without group',
         multiple: false,
         options: [
-          {label: 'Iron Man', value: 'iron_man'},
-          {label: 'Captain America', value: 'captain_america'},
-          {label: 'Black Widow', value: 'black_widow'},
-          {label: 'Hulk', value: 'hulk'},
-          {label: 'Captain Marvel', value: 'captain_marvel'},
+          {label: 'Option A', value: 'a'},
+          {label: 'Option B', value: 'b'}, 
+          {label: 'Option C', value: 'c'},
+          {label: 'Option C', value: 'd'},
         ],
       },
     }
