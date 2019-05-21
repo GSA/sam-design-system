@@ -5,8 +5,14 @@ import { Component, Input, ContentChild, TemplateRef } from '@angular/core';
   styleUrls: ['./search-result-list.component.scss']
 })
 export class SdsSearchResultListComponent {
-//Array
+
+  /**
+   * 
+   */
   @Input() model;
   
-  @ContentChild('resultContent') itemContentTmpl: TemplateRef<any>;
+  /**
+   * 
+   */
+  @ContentChild('resultContent') resultContentTemplate: TemplateRef<any>;
 }
