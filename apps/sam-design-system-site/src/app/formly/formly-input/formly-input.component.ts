@@ -19,9 +19,12 @@ export class FormlyInputComponent implements OnInit {
       key: 'text',
       type: 'input',
       templateOptions: {
-        label: 'Textarea with specified rows',
+        label: 'Formly input type text',
         placeholder: 'This has 10 rows',
         inputType: 'text',
+        min: 13,
+        max: 40,
+        required: true,
         inputStyle:'success'
       },
     },
@@ -29,7 +32,8 @@ export class FormlyInputComponent implements OnInit {
       key: 'text1',
       type: 'input',
       templateOptions: {
-        label: 'Textarea with specified rows',
+        required: true,
+        label: 'Formly input type number with error style',
         placeholder: 'This has 10 rows',
         inputType: 'number',
         inputStyle:'error',
@@ -40,7 +44,7 @@ export class FormlyInputComponent implements OnInit {
       key: 'drop-down',
       type: 'select',
       templateOptions: {
-        label: 'Drop down box',
+        label: 'Formly select type',
         placeholder: 'Select',
         multiple: false,  // can be true or false to select multiple options or single
         options: [
@@ -49,6 +53,22 @@ export class FormlyInputComponent implements OnInit {
           {label: 'Black Widow', value: 'black_widow', group: 'Female'},
           {label: 'Hulk', value: 'hulk', group: 'Male'},
           {label: 'Captain Marvel', value: 'captain_marvel', group: 'Female'},
+        ],
+      },
+    },
+    {
+      key: 'single-select',
+      type: 'select',
+      templateOptions: {
+        label: 'Formly select type without group',
+        placeholder: 'Select Multiple',
+        multiple: false,
+        options: [
+          {label: 'Iron Man', value: 'iron_man'},
+          {label: 'Captain America', value: 'captain_america'},
+          {label: 'Black Widow', value: 'black_widow'},
+          {label: 'Hulk', value: 'hulk'},
+          {label: 'Captain Marvel', value: 'captain_marvel'},
         ],
       },
     }
