@@ -3,6 +3,7 @@ import { ConfigOption } from '@ngx-formly/core';
 import { FormlyWrapperFormFieldComponent } from './wrappers/form-field.wrapper';
 import { FormlyFieldInputComponent } from './types/input';
 import { FormlyFieldSelectComponent } from './types/select';
+import { FormlyAccordianFormFieldComponent } from './wrappers/form-field.accordian';
 
 export const FIELD_TYPE_COMPONENTS = [
   FormlyFieldInputComponent,
@@ -12,6 +13,7 @@ export const FIELD_TYPE_COMPONENTS = [
   // FormlyFieldTextArea,
   // FormlyFieldMultiCheckbox,
   FormlyWrapperFormFieldComponent,
+  FormlyAccordianFormFieldComponent
 ];
 
 export const FORMLY_CONFIG: ConfigOption = {

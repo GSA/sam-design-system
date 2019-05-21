@@ -9,8 +9,8 @@ import { FieldWrapper } from '@ngx-formly/core';
     {{ to.label }}
     <span *ngIf="to.required && to.hideRequiredMarker !== true">*</span>
   </label>
-  <ng-template #fieldComponent></ng-template>
-  <div *ngIf="showError" class="usa-error-message" [style.display]="'block'">
+      <ng-template #fieldComponent></ng-template>
+      <div *ngIf="showError" class="usa-error-message" [style.display]="'block'">
     <formly-validation-message [field]="field"></formly-validation-message>
   </div>
   <small *ngIf="to.description" class="form-text text-muted">{{ to.description }}</small>
