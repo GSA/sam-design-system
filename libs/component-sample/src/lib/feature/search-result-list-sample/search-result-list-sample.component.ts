@@ -17,4 +17,6 @@ export class SearchResultListSampleComponent {
     { text: 'Fourth', id: 4 },
     { text: 'Fifth', id: 5 }
   ];
+
+  emptyItems =[];
 }
