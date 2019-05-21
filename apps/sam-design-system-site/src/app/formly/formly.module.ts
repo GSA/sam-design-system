@@ -11,7 +11,7 @@ import { FormlyModule } from '@ngx-formly/core';
         CommonModule,
         FormsModule,
         SdsFormlyModule,
-        FormlyModule,
+        FormlyModule.forRoot(),
         ReactiveFormsModule,
         RouterModule.forChild(FORMLY_ROUTES),
     ],

@@ -11,7 +11,7 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 export class FormlyInputComponent implements OnInit {
 
   form = new FormGroup({});
-  model: any = {};
+  model = { text: '', text1: '', select: ''};
   options: FormlyFormOptions = {};
 
   fields: FormlyFieldConfig[] = [
@@ -36,18 +36,30 @@ export class FormlyInputComponent implements OnInit {
         errorMessage: 'Helpful error message'
       },
     },
+    {
+      key: 'drop-down',
+      type: 'select',
+      templateOptions: {
+        label: 'Drop down box',
+        placeholder: 'Select',
+        multiple: false,  // can be true or false to select multiple options or single
+        options: [
+          {label: 'Iron Man', value: 'iron_man', group: 'Male'},
+          {label: 'Captain America', value: 'captain_america', group: 'Male'},
+          {label: 'Black Widow', value: 'black_widow', group: 'Female'},
+          {label: 'Hulk', value: 'hulk', group: 'Male'},
+          {label: 'Captain Marvel', value: 'captain_marvel', group: 'Female'},
+        ],
+      },
+    }
   ];
-  submit() {
- 
-   
+  submit(model) {
+    console.log(model);
   }
   constructor() { }
 
  
   public ngOnInit() {
-    this.form.valueChanges.subscribe(res =>{
-      console.log(res, 'form value changes');
-    });
   }
 
 }
