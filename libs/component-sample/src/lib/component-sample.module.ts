@@ -16,6 +16,8 @@ import { IconSampleModule } from './feature/icon-sample/icon-sample.module';
 import { IconSampleComponent } from './feature/icon-sample/icon-sample.component';
 import { SideNavigationSampleModule } from './feature/side-navigation-sample/side-navigation-sample.module';
 import { SideNavigationSampleComponent } from './feature/side-navigation-sample/side-navigation-sample.component';
+import { SearchResultListSampleComponent } from './feature/search-result-list-sample/search-result-list-sample.component';
+import { SearchResultListSampleModule } from './feature/search-result-list-sample/search-result-list-sample.module';
 const appIcons = {
   // App Specific Icons
 };
@@ -26,7 +28,8 @@ export const ROUTES: Routes = [
   { path: 'pagination', component: PaginationSampleComponent },
   { path: 'toolbar', component: ToolbarSampleComponent },
   { path: 'icon', component: IconSampleComponent },
-  { path: 'sideNav', component: SideNavigationSampleComponent }
+  { path: 'sideNav', component: SideNavigationSampleComponent },
+  { path: 'searchResultList', component: SearchResultListSampleComponent }
 ];
 
 @NgModule({
@@ -39,7 +42,8 @@ export const ROUTES: Routes = [
     PaginationSampleModule,
     ToolbarSampleModule,
     IconSampleModule,
-    SideNavigationSampleModule
+    SideNavigationSampleModule,
+    SearchResultListSampleModule
   ],
   exports: [RouterModule]
 })
