@@ -9,9 +9,9 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
   styleUrls: ['./formly-input.component.scss']
 })
 export class FormlyInputComponent implements OnInit {
-
+ results: any;
   form = new FormGroup({});
-  model = { text: '', text1: '', select: ''};
+  model = {};
   options: FormlyFormOptions = {};
 
   fields: FormlyFieldConfig[] = [
@@ -22,19 +22,20 @@ export class FormlyInputComponent implements OnInit {
         label: 'Formly input type text',
         placeholder: 'placeholder',
         inputType: 'text',
-        min: 13,
-        max: 40,
+       
         required: true,
         inputStyle:'success'
       },
     },
     {
-      key: 'text1',
+      key: 'number',
       type: 'input',
       templateOptions: {
         required: true,
-        label: 'Formly input type number with error style',
+        label: 'Formly input type number',
         placeholder: 'placeholder',
+        min: 13,
+        max: 40,
         inputType: 'number',
         inputStyle:'error',
         errorMessage: 'Helpful error message'
@@ -70,9 +71,23 @@ export class FormlyInputComponent implements OnInit {
           {label: 'Option C', value: 'd'},
         ],
       },
+    },
+    {
+      key: 'radio',
+      type: 'radio',
+      templateOptions: {
+        label: 'Formly Radio button type',
+        options: [
+          {label: 'Option A', value: 'a'},
+          {label: 'Option B', value: 'b'}, 
+          {label: 'Option C', value: 'c'},
+          {label: 'Option C', value: 'd'},
+        ],
+      },
     }
   ];
   submit(model) {
+    this.results = model;
     console.log(model);
   }
   constructor() { }

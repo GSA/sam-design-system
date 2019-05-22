@@ -3,17 +3,18 @@ import { ConfigOption } from '@ngx-formly/core';
 import { FormlyWrapperFormFieldComponent } from './wrappers/form-field.wrapper';
 import { FormlyFieldInputComponent } from './types/input';
 import { FormlyFieldSelectComponent } from './types/select';
-import { FormlyAccordianFormFieldComponent } from './wrappers/form-field.accordian';
+import { FormlyFieldRadioComponent } from './types/radio';
+// import { FormlyAccordianFormFieldComponent } from './wrappers/form-field.accordian';
 
 export const FIELD_TYPE_COMPONENTS = [
   FormlyFieldInputComponent,
   // FormlyFieldCheckbox,
-  // FormlyFieldRadio,
+   FormlyFieldRadioComponent,
   FormlyFieldSelectComponent,
   // FormlyFieldTextArea,
   // FormlyFieldMultiCheckbox,
   FormlyWrapperFormFieldComponent,
-  FormlyAccordianFormFieldComponent
+  // FormlyAccordianFormFieldComponent
 ];
 
 export const FORMLY_CONFIG: ConfigOption = {
@@ -28,11 +29,11 @@ export const FORMLY_CONFIG: ConfigOption = {
     //   component: FormlyFieldCheckbox,
     //   wrappers: ['form-field'],
     // },
-    // {
-    //   name: 'radio',
-    //   component: FormlyFieldRadio,
-    //   wrappers: ['form-field'],
-    // },
+    {
+      name: 'radio',
+      component: FormlyFieldRadioComponent,
+      wrappers: ['form-field'],
+    },
     {
       name: 'select',
       component: FormlyFieldSelectComponent,
