@@ -7,7 +7,7 @@ import { FormlyFieldRadioComponent } from './types/radio';
 import { FormlyFieldCheckboxComponent } from './types/checkbox';
 import { FormlyFieldMultiCheckboxComponent } from './types/multicheckbox';
 import { FormlyFieldTextAreaComponent } from './types/textarea';
-// import { FormlyAccordianFormFieldComponent } from './wrappers/form-field.accordian';
+ import { FormlyAccordianFormFieldComponent } from './wrappers/form-field.accordian';
 
 export const FIELD_TYPE_COMPONENTS = [
   FormlyFieldInputComponent,
@@ -17,7 +17,7 @@ export const FIELD_TYPE_COMPONENTS = [
   FormlyFieldTextAreaComponent,
    FormlyFieldMultiCheckboxComponent,
   FormlyWrapperFormFieldComponent,
-  // FormlyAccordianFormFieldComponent
+   FormlyAccordianFormFieldComponent
 ];
 
 export const FORMLY_CONFIG: ConfigOption = {
@@ -55,5 +55,6 @@ export const FORMLY_CONFIG: ConfigOption = {
   ],
   wrappers: [
     {name: 'form-field', component: FormlyWrapperFormFieldComponent },
+    {name: 'panel', component: FormlyAccordianFormFieldComponent },
   ],
 };

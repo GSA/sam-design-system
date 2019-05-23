@@ -126,8 +126,41 @@ export class FormlyInputComponent {
       },
     }
   ];
+
+  form1 = new FormGroup({});
+  model1: any = {};
+  options1: FormlyFormOptions = {};
+
+  fields1: FormlyFieldConfig[] = [
+    {
+      key: 'firstName',
+      type: 'input',
+      templateOptions: {
+        required: true,
+        type: 'text',
+        label: 'First Name',
+      },
+    },
+    {
+      key: 'testings',
+      wrappers: ['panel'],
+      templateOptions: { label: 'Testings' },
+      fieldGroup: [{
+        key: 'town',
+        type: 'input',
+        templateOptions: {
+          required: true,
+          type: 'text',
+          label: 'Town',
+        },
+      }],
+    },
+  ];
+
+
   submit(model) {
     this.results = model;
   }
+
 
 }
