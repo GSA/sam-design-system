@@ -1,0 +1,18 @@
+<ng-template>
+  <div
+    class="sds-menu-panel"
+    [ngClass]="_classList"
+    (keydown)="_handleKeydown($event)"
+    (click)="closed.emit('click')"
+    [@transformMenu]="_panelAnimationState"
+    (@transformMenu.start)="_onAnimationStart($event)"
+    (@transformMenu.done)="_onAnimationDone($event)"
+    tabindex="-1"
+    role="menu"
+  >
+    <div class="sds-menu-content">
+      <div class="sds-menu__title">Actions</div>
+      <ng-content></ng-content>
+    </div>
+  </div>
+</ng-template>

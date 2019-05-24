@@ -1,0 +1,73 @@
+<div class="sds-subheader">
+  <!-- Header -->
+  <div class="sds-subheader__title margin-right-4">
+    Nam varius consequat justo, in egestas lectus maximus vitae Maecenas mattis
+    molestie
+  </div>
+
+  <!-- Search -->
+  <form class="usa-search usa-search--small margin-right-6">
+    <div role="search">
+      <label class="usa-sr-only" for="search-field-small">Search</label>
+      <input
+        class="usa-input"
+        id="search-field-small"
+        type="search"
+        name="search"
+        placeholder="Enter your search term"
+      />
+      <button class="usa-button" type="submit">
+        <span class="usa-sr-only">Search</span>
+      </button>
+    </div>
+  </form>
+
+  <!-- Buttons -->
+  <button class="usa-button usa-button--secondary">Button</button>
+  <button class="usa-button usa-button--primary margin-right-5">Button</button>
+
+  <!-- Actions Menu -->
+  <button
+    class="usa-button usa-button--primary"
+    [sdsMenuTriggerFor]="menu"
+    style="padding-left: 19px; padding-right: 19px; border-radius: 50%;"
+  >
+    <fa-icon [icon]="['fas', 'ellipsis-v']"></fa-icon>
+  </button>
+  <sds-menu #menu="sdsMenu" xPosition="before" overlapTrigger="true">
+    <button sds-menu-item>
+      <fa-layers [fixedWidth]="true" size="2x" class="margin-right-05">
+        <fa-icon [icon]="['fas', 'circle']" class="text-base-lighter"></fa-icon>
+        <fa-icon
+          [icon]="['sam', 'bars']"
+          transform="shrink-8"
+          class="text-base"
+        ></fa-icon>
+      </fa-layers>
+      Download
+    </button>
+    <button sds-menu-item>
+      <fa-layers [fixedWidth]="true" size="2x" class="margin-right-05">
+        <fa-icon [icon]="['fas', 'circle']" class="text-base-lighter"></fa-icon>
+        <fa-icon
+          [icon]="['sam', 'bars']"
+          transform="shrink-8"
+          class="text-base"
+        ></fa-icon>
+      </fa-layers>
+      Follow
+    </button>
+    <button sds-menu-item>
+      <fa-layers [fixedWidth]="true" size="2x" class="margin-right-05">
+        <fa-icon [icon]="['fas', 'circle']" class="text-base-lighter"></fa-icon>
+        <fa-icon
+          [icon]="['sam', 'bars']"
+          transform="shrink-8"
+          class="text-base"
+        ></fa-icon>
+      </fa-layers>
+      Share
+    </button>
+    <button *ngFor="let item of extraItems" sds-menu-item>{{ item }}</button>
+  </sds-menu>
+</div>
