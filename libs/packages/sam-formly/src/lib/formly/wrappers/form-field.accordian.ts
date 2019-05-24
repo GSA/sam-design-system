@@ -5,12 +5,12 @@ import { FieldWrapper } from '@ngx-formly/core';
 @Component({
   selector: 'sam-formly-accordian-form-field',
   template: `
-  <div> Test
-  <details>
-  <summary>{{ to.label }}-1</summary>
-  <ng-container #fieldComponent></ng-container>
-</details>
-</div>
+  <sds-accordion multi="true" displayMode="basic">
+    <sds-accordion-item>
+      <sds-accordion-item-header> {{to.label}} </sds-accordion-item-header>
+      <ng-container #fieldComponent></ng-container>
+    </sds-accordion-item>
+  </sds-accordion>
   `,
 })
 export class FormlyAccordianFormFieldComponent extends FieldWrapper {
