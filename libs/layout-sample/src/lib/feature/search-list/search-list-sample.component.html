@@ -1,0 +1,37 @@
+<sds-page>
+    <sds-page-options class="sam-page__options">
+        <sds-toolbar #toolbar="sdsToolbar">
+            <sds-accordion multi="true">
+                <sds-side-navigation #sideNav [model]="sideNavModel"></sds-side-navigation>
+            </sds-accordion>
+        </sds-toolbar>
+    </sds-page-options>
+
+    <div [sdsToolbarExpand]="toolbar" class="sam-example-pagination">
+        <sds-pagination [paginationConfiguration]="top" [(page)]="page" (pageChange)="pageChange.next($event)">
+        </sds-pagination>
+
+        <label class="usa-label font-sans-2xs text-italic text-base" for="options">
+            Sort by
+        </label>
+        <select class="usa-select border-base-light maxw-card" id="options">
+            <option value="">Entity Name</option>
+            <option value="">Entity Status</option>
+            <option value="">Entity ID</option>
+            <option value="">Expiration Date</option>
+        </select>
+    </div>
+    <div>
+        <sds-search-result-list [model]="items">
+            <ng-template #resultContent let-item>
+                <div>
+                    <search-result-list-sample-data [model]="item"></search-result-list-sample-data>
+                </div>
+            </ng-template>
+        </sds-search-result-list>
+        <div>
+            <sds-pagination [paginationConfiguration]="bottom" [(page)]="page" (pageChange)="pageChange.next($event)">
+            </sds-pagination>
+        </div>
+    </div>
+</sds-page>
