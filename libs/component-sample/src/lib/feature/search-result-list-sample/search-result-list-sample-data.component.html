@@ -1,6 +1,55 @@
-<div>
-    <h2>{{model.text}} Enity</h2>
-    <div> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras laoreet faucibus arcu id bibendum. Mauris
-        eleifend massa purus, eu volutpat erat placerat egestas.
+<hr>
+<div class="grid-container entity">
+  <div class="grid-row">
+    <h2 class="tablet:grid-col entity-name">{{model.text}} Enity</h2>
+  </div>
+  <div class="grid-row grid-gap entity-content">
+    <div class="tablet:grid-col-3 entity-id"> Lorem ipsum dolor eleifend massa purus.
     </div>
+    <div class="tablet:grid-col-3 entity-address"> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </div>
+    <div class="tablet:grid-col-2 entity-status">
+      Status
+      <div class="entity-status__btn bg-gray-5 border-1px height-5 width-15">
+
+      </div>
+    </div>
+    <div class="tablet:grid-col-2 entity-expires">
+      Expires
+      <div class="entity-expires__btn bg-gray-5 border-1px height-5 width-15 text-middle">
+
+      </div>
+    </div>
+    <button class="entity-options bg-white border-0">
+      <svg width="90px" height="90px" viewBox="0 0 90 90" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+        <desc>Created with Lunacy</desc>
+        <defs>
+          <filter filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB" id="filter_1">
+            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+            <feOffset dx="0" dy="3" />
+            <feGaussianBlur stdDeviation="9" />
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1411765 0" />
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect0_dropShadow" />
+            <feBlend mode="normal" in="SourceGraphic" in2="effect0_dropShadow" result="shape" />
+          </filter>
+          <path d="M27 54C41.9117 54 54 41.9117 54 27C54 12.0883 41.9117 0 27 0C12.0883 0 0 12.0883 0 27C0 41.9117 12.0883 54 27 54Z" transform="translate(18 15)" id="path_1" />
+          <clipPath id="clip_1">
+            <use xlink:href="#path_1" />
+          </clipPath>
+        </defs>
+        <g filter="url(#filter_1)">
+          <g id="Oval-Copy-3">
+            <use stroke="none" fill="#FFFFFF" xlink:href="#path_1" />
+            <g clip-path="url(#clip_1)">
+              <use xlink:href="#path_1" fill="none" stroke="#979797" stroke-width="0.5" />
+            </g>
+          </g>
+        </g>
+        <path d="M2.5 5C3.88071 5 5 3.88071 5 2.5C5 1.11929 3.88071 0 2.5 0C1.11929 0 0 1.11929 0 2.5C0 3.88071 1.11929 5 2.5 5Z" transform="translate(43 38)" id="Oval" fill="#112F4E" stroke="none" />
+        <path d="M2.5 5C3.88071 5 5 3.88071 5 2.5C5 1.11929 3.88071 0 2.5 0C1.11929 0 0 1.11929 0 2.5C0 3.88071 1.11929 5 2.5 5Z" transform="translate(43 28)" id="Oval-Copy-4" fill="#112F4E" stroke="none" />
+        <path d="M2.5 5C3.88071 5 5 3.88071 5 2.5C5 1.11929 3.88071 0 2.5 0C1.11929 0 0 1.11929 0 2.5C0 3.88071 1.11929 5 2.5 5Z" transform="translate(43 48)" id="Oval-Copy-5" fill="#112F4E" stroke="none" />
+      </svg>
+    </button>
+  </div>
 </div>
