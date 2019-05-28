@@ -28,24 +28,21 @@ export class SearchListSampleComponent implements OnInit {
     pageSize: 25,
     totalPages: 0
   }
-
+  onSelectChange() {
+    this.updatePage();
+  }
   top = { id: 'top' };
   bottom = { id: 'bottom' };
   public pageChange = new BehaviorSubject<object>(this.page);
 
-  items = [
-    // { text: 'First', id: 1 },
-    // { text: 'Second', id: 2 },
-    // { text: 'Third', id: 3 },
-    // { text: 'Fourth', id: 4 },
-    // { text: 'Fifth', id: 5 }
-  ];
+  items = [];
+  public sortField = 'id';
 
 
 
 
   private updatePage() {
-    let result = this.searchListSampleService.getData({ 'page': this.page, sortField: '' });
+    let result = this.searchListSampleService.getData({ 'page': this.page, sortField: this.sortField });
     this.items = result.items;
     this.page.totalPages = Math.ceil(result.totalItems / this.page.pageSize);
   }

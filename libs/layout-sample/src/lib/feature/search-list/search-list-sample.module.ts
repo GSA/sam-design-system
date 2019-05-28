@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { SearchListSampleComponent } from './search-list-sample.component';
 import { SearchResultListSampleDataComponent } from '../../ui/search-result-list-sample-data/search-result-list-sample-data.component';
 import {
@@ -11,7 +12,7 @@ import { SearchListSampleService } from '../../data-access/search-list/search-li
 @NgModule({
   declarations: [SearchListSampleComponent, SearchResultListSampleDataComponent],
   imports: [
-    CommonModule,
+    CommonModule, FormsModule,
     PaginationModule, SdsPageModule, SdsSearchResultListModule,
     SdsToolbarModule, SdsSideNavigationModule, SdsAccordionModule
   ], exports: [SearchListSampleComponent], providers: [SearchListSampleService]

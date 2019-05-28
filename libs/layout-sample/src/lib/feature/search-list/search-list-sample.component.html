@@ -10,15 +10,13 @@
     <div [sdsToolbarExpand]="toolbar" class="sam-example-pagination">
         <sds-pagination [paginationConfiguration]="top" [(page)]="page" (pageChange)="pageChange.next($event)">
         </sds-pagination>
-
         <label class="usa-label font-sans-2xs text-italic text-base" for="options">
             Sort by
         </label>
-        <select class="usa-select border-base-light maxw-card" id="options">
-            <option value="">Entity Name</option>
-            <option value="">Entity Status</option>
-            <option value="">Entity ID</option>
-            <option value="">Expiration Date</option>
+        <select (change)="onSelectChange()" [(ngModel)]="sortField" class="usa-select border-base-light maxw-card"
+            id="options">
+            <option value="text">Title</option>
+            <option value="id" selected="true">Id</option>
         </select>
     </div>
     <div>

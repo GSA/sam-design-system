@@ -1,5 +1,5 @@
 import { SearchListSampleData } from './search-list-sample.data';
-export class SearchListSampleService {
+export class SearchListSampleService implements SearchList {
 
 
 
@@ -31,4 +31,8 @@ export class Search {
 export class Result {
     totalItems: number;
     items: any[];
+}
+export interface SearchList {
+
+    getData(search: Search): Result;
 }
