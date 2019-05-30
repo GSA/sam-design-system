@@ -2,38 +2,36 @@ import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from "rxjs";
 import { SearchListSampleService } from '../../data-access/search-list/search-list-sample.service';
 @Component({
-  selector: 'search-list-sample',
-  templateUrl: './search-list-sample.component.html',
-  styleUrls: ['./search-list-sample.component.scss']
+  selector: 'search-list-event-sample',
+  templateUrl: './search-list-event-sample.component.html',
+  styleUrls: ['./search-list-event-sample.component.scss']
 })
-export class SearchListSampleComponent implements OnInit {
+export class SearchListEventSampleComponent implements OnInit {
 
   constructor(private searchListSampleService: SearchListSampleService) { }
 
   ngOnInit() {
 
-    this.paginationChange.subscribe(
+    this.upadateChange.subscribe(
       value => {
-        this.updateContent();
+        this.updateContent(value);
       }
     );
-    this.updateContent();
+    this.updateContent({ 'page': this.page, sortField: this.sortField });
   }
-  sideNavModel = {
-    navigationLinks: []
-  }
-
   page = {
     pageNumber: 1,
     pageSize: 25,
     totalPages: 0
   }
-  onSelectChange() {
-    this.updateContent();
-  }
-  top = { id: 'top' };
-  bottom = { id: 'bottom' };
-  public paginationChange = new BehaviorSubject<object>(this.page);
+
+  public upadateChange = new BehaviorSubject<object>({
+    "page": {
+      pageNumber: 1,
+      pageSize: 25,
+      totalPages: 0
+    }, "sortField": 'id'
+  });
 
   items = [];
   public sortField = 'id';
@@ -41,7 +39,9 @@ export class SearchListSampleComponent implements OnInit {
 
 
 
-  private updateContent() {
+  private updateContent(item) {
+    this.page = item.page;
+    this.sortField = item.sortField;
     let result = this.searchListSampleService.getData({ 'page': this.page, sortField: this.sortField });
     this.items = result.items;
     this.page.totalPages = Math.ceil(result.totalItems / this.page.pageSize);

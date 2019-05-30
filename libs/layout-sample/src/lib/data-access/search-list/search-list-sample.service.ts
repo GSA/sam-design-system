@@ -4,17 +4,13 @@ export class SearchListSampleService implements SearchList {
 
 
     getData(search: Search): Result {
-        console.log(search);
         let start = search.page.pageNumber * search.page.pageSize - search.page.pageSize;
         let end = start + search.page.pageSize;
-        console.log(start + ' ' + end);
         return {
             items: SearchListSampleData.slice(start, end),
             totalItems: SearchListSampleData.length
         }
-
     }
-
 }
 
 export class Search {
