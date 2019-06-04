@@ -1,4 +1,5 @@
 import { SearchListSampleData } from './search-list-sample.data';
+
 export class SearchListSampleService implements SearchList {
 
 

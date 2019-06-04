@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { SearchListPageServiceComponent } from './search-list-page-service.component';
+import { SearchListLayoutComponent } from './search-list-layout.component';
 import { PaginationModule, SdsSearchResultListModule } from '@gsa-sam/components';
 
 @NgModule({
-  declarations: [SearchListPageServiceComponent],
+  declarations: [SearchListLayoutComponent],
   imports: [
     CommonModule, FormsModule,
     PaginationModule, SdsSearchResultListModule
-  ], exports: [SearchListPageServiceComponent]
+  ], exports: [SearchListLayoutComponent]
 })
 export class SearchListServiceModule { }

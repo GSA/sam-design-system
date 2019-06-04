@@ -1,7 +1,7 @@
-<search-list-page (update)="upadateChange.next($event)" [items]="items" [page]="page" >
+<search-list-layout [service]="searchListSampleService">
     <ng-template #resultContent let-item>
-        <div >
+        <div>
             <search-result-list-sample-data [model]="item"></search-result-list-sample-data>
         </div>
     </ng-template>
-</search-list-page>
+</search-list-layout>

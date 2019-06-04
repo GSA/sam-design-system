@@ -8,7 +8,7 @@
     </sds-page-options>
 
     <div [sdsToolbarExpand]="toolbar" class="sam-example-pagination">
-        <sds-pagination [paginationConfiguration]="top" [(page)]="page" (pageChange)="pageChange.next($event)">
+        <sds-pagination [paginationConfiguration]="top" [(page)]="page" (pageChange)="paginationChange.next($event)">
         </sds-pagination>
         <label class="usa-label font-sans-2xs text-italic text-base" for="options">
             Sort by
@@ -28,7 +28,8 @@
             </ng-template>
         </sds-search-result-list>
         <div>
-            <sds-pagination [paginationConfiguration]="bottom" [(page)]="page" (pageChange)="pageChange.next($event)">
+            <sds-pagination [paginationConfiguration]="bottom" [(page)]="page"
+                (pageChange)="paginationChange.next($event)">
             </sds-pagination>
         </div>
     </div>

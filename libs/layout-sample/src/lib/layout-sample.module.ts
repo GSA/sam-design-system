@@ -5,23 +5,19 @@ import { Routes, RouterModule } from '@angular/router';
 import { SearchListSampleModule } from './feature/search-list/search-list-sample.module';
 import { SearchListSampleComponent } from './feature/search-list/search-list-sample.component';
 
-import { SearchListEventSampleComponent } from './feature/search-list-event/search-list-event-sample.component';
-import { SearchListEventSampleModule } from './feature/search-list-event/search-list-event-sample.module';
 
-import { SearchListServiceSampleComponent } from './feature/search-list-service/search-list-service-sample.component';
-import { SearchListServiceSampleModule } from './feature/search-list-service/search-list-service-sample.module';
+import { SearchListLayoutSampleComponent } from './feature/search-list-layout/search-list-layout-sample.component';
+import { SearchListLayoutSampleModule } from './feature/search-list-layout/search-list-layout-sample.module';
 
 export const ROUTES: Routes = [
   { path: 'searchList', component: SearchListSampleComponent },
-  { path: 'searchListEvent', component: SearchListEventSampleComponent },
-  { path: 'searchListService', component: SearchListServiceSampleComponent }
-
+  { path: 'searchListService', component: SearchListLayoutSampleComponent }
 ];
 
 @NgModule({
   imports: [CommonModule,
-    SearchListSampleModule, SearchListEventSampleModule,
-    SearchListServiceSampleModule,
+    SearchListSampleModule,
+    SearchListLayoutSampleModule,
     RouterModule.forChild(ROUTES)]
 })
 export class LayoutSampleModule { }
