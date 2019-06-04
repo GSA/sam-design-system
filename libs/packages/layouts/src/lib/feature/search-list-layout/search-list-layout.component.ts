@@ -1,13 +1,12 @@
 import { Component, OnInit, Input, ContentChild, TemplateRef } from '@angular/core';
 import { BehaviorSubject } from "rxjs";
-import { SearchList, SearchListConfiguration } from './model/search-list-layout/search-list-layout.model';
+import { SearchList, SearchListConfiguration } from './model/search-list-layout.model';
 @Component({
   selector: 'search-list-layout',
   templateUrl: './search-list-layout.component.html',
   styleUrls: ['./search-list-layout.component.scss']
 })
 export class SearchListLayoutComponent implements OnInit {
-
 
   /**
   * Child Template to be used to display the data for each item in the list of items
@@ -27,7 +26,8 @@ export class SearchListLayoutComponent implements OnInit {
   configuration: SearchListConfiguration;
 
   ngOnInit() {
-
+    this.page.pageSize = this.configuration.pageSize;
+    this.sortField = this.configuration.defaultSortValue;
     this.paginationChange.subscribe(
       value => {
         this.updateContent();
@@ -83,7 +83,7 @@ export class SearchListLayoutComponent implements OnInit {
   /**
    * 
    */
-  public sortField = 'id';
+  public sortField = '';
 
 
 

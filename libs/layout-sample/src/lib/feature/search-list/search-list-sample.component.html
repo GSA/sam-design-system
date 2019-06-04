@@ -27,10 +27,7 @@
                 </div>
             </ng-template>
         </sds-search-result-list>
-        <div>
-            <sds-pagination [paginationConfiguration]="bottom" [(page)]="page"
-                (pageChange)="paginationChange.next($event)">
-            </sds-pagination>
-        </div>
+        <sds-pagination [paginationConfiguration]="bottom" [(page)]="page" (pageChange)="paginationChange.next($event)">
+        </sds-pagination>
     </div>
 </sds-page>

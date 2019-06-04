@@ -1,4 +1,4 @@
-<search-list-layout [service]="searchListSampleService">
+<search-list-layout [service]="searchListSampleService" [configuration]="configuration">
     <ng-template #resultContent let-item>
         <div>
             <search-result-list-sample-data [model]="item"></search-result-list-sample-data>
