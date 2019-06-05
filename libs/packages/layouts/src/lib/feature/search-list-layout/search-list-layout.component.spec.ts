@@ -1,17 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SearchListLayoutComponent } from './search-list-layout.component';
-
-import { RouterTestingModule } from '@angular/router/testing';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
-describe('SearchListSampleComponent', () => {
+import { PaginationModule, SdsSearchResultListModule } from '@gsa-sam/components';
+import { FormsModule } from '@angular/forms';
+describe('SearchListLayoutComponent', () => {
   let component: SearchListLayoutComponent;
   let fixture: ComponentFixture<SearchListLayoutComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SearchListLayoutComponent],
-      imports: [RouterTestingModule, FontAwesomeModule]
+      imports: [PaginationModule, SdsSearchResultListModule, FormsModule]
     })
       .compileComponents();
   }));
@@ -19,10 +17,10 @@ describe('SearchListSampleComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SearchListLayoutComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });
