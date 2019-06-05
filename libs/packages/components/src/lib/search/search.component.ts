@@ -53,32 +53,23 @@ export class SdsSearchComponent implements OnDestroy {
   /** Width of input */
   private _inputWidth: string;
 
-  /** Stream of input focus events  */
-  private _focusInput$ = new Subject<FocusOrigin>();
-
-  /** Stream of button focus events  */
-  private _focusButton$ = new Subject<FocusOrigin>();
-
   /** Stream of container width */
   private _containerWidth$ = new BehaviorSubject<number>(0);
-
+  
   /** Is there sufficent space for the search to expand */
   private _hasSpace: boolean;
-
-  /** Show/Hide Input and Label container */
-  private _showContainer = false;
-
+  
   /** Stream of expanded events */
   private expanded$ = new Subject<boolean>();
-
+  
   /** Stream of auto expanded events */
   private autoExpand$ = new Subject<boolean>();
-
+  
   /** Stream of text from input */
   private searchTerm$ = new Subject<string>();
-
+  
   private searchTermValue = '';
-
+  
   /** Initial Search State */
   private _initialSearchState: SearchState = {
     expanded: false,
@@ -87,6 +78,15 @@ export class SdsSearchComponent implements OnDestroy {
     focusOrigin: null,
     containerWidth: 0
   };
+  
+  /** Stream of input focus events  */
+  _focusInput$ = new Subject<FocusOrigin>();
+
+  /** Stream of button focus events  */
+  _focusButton$ = new Subject<FocusOrigin>();
+
+  /** Show/Hide Input and Label container */
+  _showContainer = false;
 
   /** Grab buttton element to set focus */
   @ViewChild('buttonEl', { read: ElementRef }) buttonEl: ElementRef;
