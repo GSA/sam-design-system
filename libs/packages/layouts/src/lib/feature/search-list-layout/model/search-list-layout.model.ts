@@ -1,12 +1,12 @@
 export class SearchParameters {
 
     /**
-     * 
+     * page  
      */
     page: Page;
 
     /**
-     * 
+     * Sort value
      */
     sortField: string
 
@@ -15,17 +15,17 @@ export class SearchParameters {
 export interface Page {
 
     /**
-     * 
+     * Page number
      */
     pageNumber: number;
 
     /**
-     * 
+     * Page size
      */
     pageSize: number;
 
     /**
-     * 
+     * Total number of pages
      */
     totalPages: number;
 
@@ -34,12 +34,12 @@ export interface Page {
 export class SearchResult {
 
     /**
-     * 
+     * Total number of items (beyond the page)
      */
     totalItems: number;
 
     /**
-     * 
+     * Items to be displayed
      */
     items: any[];
 }
@@ -49,7 +49,7 @@ export class SearchResult {
 export interface SearchList {
 
     /**
-     * 
+     * Method to get the takes it takes in the SearchParameters and returns SearchResult object
      * @param search 
      */
     getData(search: SearchParameters): SearchResult;
@@ -57,12 +57,12 @@ export interface SearchList {
 
 export class sortItem {
     /**
-     * 
+     * Text to be displayed
      */
     text: string;
 
     /**
-     * 
+     * Value of Item
      */
     value: string;
 }
@@ -70,19 +70,18 @@ export class sortItem {
 export class SearchListConfiguration {
 
     /**
-     * 
+     * List of sort by items
      */
     sortList: sortItem[];
 
     /**
-     * 
+     * default sort value
      */
     defaultSortValue: string;
 
     /**
-     * 
+     * Starting page size
      */
     pageSize: number = 25;
-
 
 }

@@ -14,7 +14,7 @@ export class SearchListLayoutComponent implements OnInit {
   @ContentChild('resultContent') resultContentTemplate: TemplateRef<any>;
 
   /**
-   * 
+   * Input service to be called when items change
    */
   @Input()
   service: SearchList;
@@ -35,7 +35,6 @@ export class SearchListLayoutComponent implements OnInit {
     );
     this.updateContent();
   }
-
 
   /**
    * 
@@ -61,12 +60,12 @@ export class SearchListLayoutComponent implements OnInit {
   }
 
   /**
-   * 
+   * Id of the top pagination control
    */
   top = { id: 'topPagination' };
 
   /**
-   * 
+   * Id of the bottom pagination control
    */
   bottom = { id: 'bottomPagination' };
 
@@ -84,8 +83,6 @@ export class SearchListLayoutComponent implements OnInit {
    * 
    */
   public sortField = '';
-
-
 
   /**
    * 
