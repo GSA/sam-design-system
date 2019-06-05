@@ -9,7 +9,7 @@ import { SearchListSampleService } from '../../data-access/search-list/search-li
 export class SearchListLayoutSampleComponent {
 
 
-  constructor(searchListSampleService: SearchListSampleService) { }
+  constructor(public searchListSampleService: SearchListSampleService) { }
   configuration = {
     defaultSortValue: 'id', pageSize: 25, sortList: [{
       text: 'Text',
