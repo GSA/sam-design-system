@@ -1,0 +1,20 @@
+<sds-pagination [paginationConfiguration]="top" [(page)]="page" (pageChange)="paginationChange.next($event)">
+</sds-pagination>
+<label class="usa-label font-sans-2xs text-italic text-base" for="options">
+    Sort by
+</label>
+<select (change)="onSelectChange()" [(ngModel)]="sortField" class="usa-select border-base-light maxw-card" id="options">
+  
+
+    <option *ngFor="let item of configuration.sortList" [ngValue]="item.value">
+        {{ item.text }}
+    </option>
+</select>
+<sds-search-result-list [model]="items">
+    <ng-template #resultContent let-item>
+        <ng-container *ngTemplateOutlet="resultContentTemplate, 
+                context: { $implicit: item }"></ng-container>
+    </ng-template>
+</sds-search-result-list>
+<sds-pagination [paginationConfiguration]="bottom" [(page)]="page" (pageChange)="paginationChange.next($event)">
+</sds-pagination>

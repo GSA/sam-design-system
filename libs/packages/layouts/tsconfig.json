@@ -3,5 +3,5 @@
   "compilerOptions": {
     "types": ["jasmine"]
   },
-  "include": ["**/*.ts"]
+  "include": ["**/*.ts", "src/lib/feature/search-list-layout/model/search-list-layout.model.ts"]
 }
