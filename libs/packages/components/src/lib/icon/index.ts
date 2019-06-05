@@ -29,4 +29,4 @@ import { samArrowLeft } from '@gsa-sam/sam-styles/src/js/icons/arrowLeft';
   samArrowLeft
 };
 
- export const sdsIcons = _icons; 
+ export const sdsIcons = _icons;
