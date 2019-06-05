@@ -11,8 +11,7 @@ import {
   TemplateRef,
   ViewChild,
   ViewEncapsulation,
-  OnInit,
-  ChangeDetectorRef
+  OnInit
 } from '@angular/core';
 import { AnimationEvent } from '@angular/animations';
 import {
@@ -49,6 +48,7 @@ export interface SdsMenuInterface<T = any> {
   focusFirstItem: (origin?: FocusOrigin) => void;
   setPositionClasses?: (x: MenuPositionX, y: MenuPositionY) => void;
   addItem?: (item: T) => void;
+  insertItem?: (item: T, index: number) => void;
   removeItem?: (item: T) => void;
 }
 
@@ -59,7 +59,9 @@ export interface SdsMenuInterface<T = any> {
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   animations: [sdsMenuAnimations.transformMenu],
-  providers: [{ provide: SDS_MENU_TOKEN, useExisting: SdsMenuComponent }]
+  providers: [
+    { provide: SDS_MENU_TOKEN, useExisting: SdsMenuComponent }
+  ]
 })
 export class SdsMenuComponent
   implements
@@ -151,7 +153,7 @@ export class SdsMenuComponent
   /** Event emitted when the menu is closed. */
   @Output() closed = new EventEmitter<void | 'click' | 'keydown' | 'tab'>();
 
-  constructor(private cd: ChangeDetectorRef, private _elementRef: ElementRef<HTMLElement>) {}
+  constructor(private _elementRef: ElementRef<HTMLElement>) {}
 
   ngOnInit() {
     this.setPositionClasses();
@@ -192,6 +194,13 @@ export class SdsMenuComponent
   addItem(item: SdsMenuItemComponent) {
     if (this._items.indexOf(item) === -1) {
       this._items.push(item);
+    }
+  }
+
+  /** Inserts a menu item at an index */
+  insertItem(item: SdsMenuItemComponent, index: number) {
+    if (this._items.indexOf(item) === -1 && index < this._items.length) {
+      this._items.splice(index, 0, item);
     }
   }
 

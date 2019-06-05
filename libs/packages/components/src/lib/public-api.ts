@@ -8,3 +8,6 @@ export * from './pagination/pagination.module';
 export * from './side-navigation/side-navigation.module';
 export * from './search-result-list/search-result-list.module';
 export * from './menu/menu.module';
+export * from './observers/observer.module';
+export * from './search/search.module';
+export * from './truncate-text/truncate.text.module';

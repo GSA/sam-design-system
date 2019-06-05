@@ -6,6 +6,28 @@ $theme-font-path:   '~@gsa-sam/sam-styles/src/fonts';
 
 // Demo pages only
 // DO NOT REUSE
+.usa-button--attached{
+  transition: border-radius 0.2s ease-in;
+  border-radius: 0px 0.3125rem 0.3125rem 0px; 
+}
+.sds-dialog-container {
+  display: block;
+  padding: 0px;
+  // border-radius: 4px;
+  box-sizing: border-box;
+  overflow: auto;
+  outline: 0;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  max-height: inherit;
+}
+
+.sds-dialog-container {
+  // box-shadow: 0 11px 15px -7px rgba(0,0,0,.2), 0 24px 38px 3px rgba(0,0,0,.14), 0 9px 46px 8px rgba(0,0,0,.12);
+  background: #fff;
+  color: rgba(0,0,0,.87);
+}
 
 .header-styles .icon-layers-counter{
   height: 1em;
@@ -22,6 +44,12 @@ $theme-font-path:   '~@gsa-sam/sam-styles/src/fonts';
 }
 
 // MOVE TO SAM-Styles
+.sds-button--circle{
+  padding-left: 19px;
+  padding-right: 19px;
+  border-radius: 50%;
+}
+
 .sds-subheader{
   display: flex; 
   align-items: center;
@@ -52,13 +80,27 @@ $theme-font-path:   '~@gsa-sam/sam-styles/src/fonts';
   padding-bottom: 14px;
 }
 
-.sds-menu__title{
-  font-size: 18px;
-  font-weight: 600;
-  color: #112e51;
-  padding: 0px 25px 8px;
+.sds-menu__header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 8px 5px 25px;
   margin-bottom: 3px;
   border-bottom: 1px solid #eae6e6;
+}
+
+.sds-menu__header-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2e2e2a;
+}
+
+.sds-menu__header .sds-menu__header-item{
+  padding: 5px 10px;
+  border-radius: 50%;
+  background-color: #c7c7c7;
+  border: none;
+  color: white;
 }
 
 .sds-menu-item {

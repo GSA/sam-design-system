@@ -6,11 +6,13 @@ import {
   Input,
   HostBinding,
   ChangeDetectionStrategy,
-  ViewEncapsulation
+  ViewEncapsulation,
+  Optional
 } from '@angular/core';
 import { FocusableOption, FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { SDS_MENU_TOKEN, SdsMenuInterface } from './menu.component';
+import { SdsMenuHeaderComponent } from './menu-header.component';
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -21,7 +23,7 @@ import { SDS_MENU_TOKEN, SdsMenuInterface } from './menu.component';
 })
 export class SdsMenuItemComponent implements FocusableOption, OnDestroy {
   /** Menu item class */
-  @HostBinding('class') class = 'sds-menu-item';
+  @HostBinding('class') class = this._getClass();
 
   /** ARIA role for the menu item. */
   @HostBinding('attr.role') @Input() role: 'menuitem' = 'menuitem';
@@ -45,18 +47,31 @@ export class SdsMenuItemComponent implements FocusableOption, OnDestroy {
     private _elementRef: ElementRef<HTMLElement>,
     private _focusMonitor: FocusMonitor,
     @Inject(SDS_MENU_TOKEN)
-    private _parentMenu: SdsMenuInterface<SdsMenuItemComponent>
+    private _parentMenu: SdsMenuInterface<SdsMenuItemComponent>,
+    @Optional() private _parentMenuHeader: SdsMenuHeaderComponent
   ) {
     // Start listening to focus changes
     _focusMonitor.monitor(this._elementRef, false);
-    // Add this menu item to its parent menu
-    _parentMenu.addItem(this);
+    // Add this menu item to its parent menu    
+    // If item its inside a header 
+    // add it as the first item in the list
+    if(_parentMenuHeader){
+      _parentMenu.insertItem(this, 0);
+    } else {
+      _parentMenu.addItem(this);
+    }
+  }
+
+  /** Get item class */
+  _getClass(): string{
+    return this._parentMenuHeader ? 'sds-menu__header-item' : 'sds-menu-item';
   }
 
   /** Focuses the menu item. */
   focus(origin: FocusOrigin = 'program'): void {
     this._focusMonitor.focusVia(this._elementRef.nativeElement, origin);
   }
+
   /** Stop listening to focus changes and remove item from parent */
   ngOnDestroy() {
     this._focusMonitor.stopMonitoring(this._elementRef);

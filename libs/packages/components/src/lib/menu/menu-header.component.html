@@ -1,0 +1,13 @@
+<div class="sds-menu__header">
+  <span class="sds-menu__header-title"> <ng-content></ng-content> </span>
+  <button
+    *ngIf="!hideClose"
+    aria-label="Close Menu"
+    sds-menu-item
+    role="button"
+  >
+  <fa-icon
+  [icon]="['fas', 'times']"
+></fa-icon>
+  </button>
+</div>
