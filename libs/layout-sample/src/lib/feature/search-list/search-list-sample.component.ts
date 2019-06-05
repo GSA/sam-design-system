@@ -8,7 +8,7 @@ import { SearchListSampleService } from '../../data-access/search-list/search-li
 })
 export class SearchListSampleComponent implements OnInit {
 
-  constructor(private searchListSampleService: SearchListSampleService) { }
+  constructor(searchListSampleService: SearchListSampleService) { }
 
   ngOnInit() {
 
