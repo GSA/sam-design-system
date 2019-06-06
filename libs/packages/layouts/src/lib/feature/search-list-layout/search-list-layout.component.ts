@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ContentChild, TemplateRef } from '@angular/core';
 import { BehaviorSubject } from "rxjs";
-import { SearchList, SearchListConfiguration } from './model/search-list-layout.model';
+import { SearchListInterface, SearchListConfiguration } from './model/search-list-layout.model';
 @Component({
   selector: 'search-list-layout',
   templateUrl: './search-list-layout.component.html',
@@ -17,7 +17,7 @@ export class SearchListLayoutComponent implements OnInit {
    * Input service to be called when items change
    */
   @Input()
-  service: SearchList;
+  service: SearchListInterface;
 
   /**
    * configuration
