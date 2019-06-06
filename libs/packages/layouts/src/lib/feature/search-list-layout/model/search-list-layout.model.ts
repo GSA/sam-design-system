@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 export class SearchParameters {
 
     /**
@@ -52,7 +53,7 @@ export interface SearchList {
      * Method to get the takes it takes in the SearchParameters and returns SearchResult object
      * @param search 
      */
-    getData(search: SearchParameters): SearchResult;
+    getData(search: SearchParameters): Observable<SearchResult>;
 }
 
 export class sortItem {

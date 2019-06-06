@@ -72,8 +72,10 @@ export class SearchListSampleComponent implements OnInit {
    * 
    */
   private updateContent() {
-    let result = this.searchListSampleService.getData({ 'page': this.page, sortField: this.sortField });
-    this.items = result.items;
-    this.page.totalPages = Math.ceil(result.totalItems / this.page.pageSize);
+    this.searchListSampleService.getData({ 'page': this.page, sortField: this.sortField }).subscribe(
+      (result) => {
+        this.items = result.items;
+        this.page.totalPages = Math.ceil(result.totalItems / this.page.pageSize);
+      });
   }
 }

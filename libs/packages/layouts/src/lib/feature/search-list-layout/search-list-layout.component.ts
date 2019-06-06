@@ -37,14 +37,7 @@ export class SearchListLayoutComponent implements OnInit {
   }
 
   /**
-   * 
-   */
-  sideNavModel = {
-    navigationLinks: []
-  }
-
-  /**
-   * 
+   * Default Page setttings
    */
   page = {
     pageNumber: 1,
@@ -53,7 +46,7 @@ export class SearchListLayoutComponent implements OnInit {
   }
 
   /**
-   * 
+   * Sorty by change event
    */
   onSelectChange() {
     this.updateContent();
@@ -70,12 +63,12 @@ export class SearchListLayoutComponent implements OnInit {
   bottom = { id: 'bottomPagination' };
 
   /**
-   * 
+   * Page event listener
    */
   public paginationChange = new BehaviorSubject<object>(this.page);
 
   /**
-   * 
+   * List of items to be displayed
    */
   items = [];
 
@@ -88,8 +81,11 @@ export class SearchListLayoutComponent implements OnInit {
    * 
    */
   private updateContent() {
-    let result = this.service.getData({ 'page': this.page, sortField: this.sortField });
-    this.items = result.items;
-    this.page.totalPages = Math.ceil(result.totalItems / this.page.pageSize);
+    this.service.getData({ 'page': this.page, sortField: this.sortField }).subscribe(
+      (result) => {
+        this.items = result.items;
+        this.page.totalPages = Math.ceil(result.totalItems / this.page.pageSize);
+      }
+    );
   }
 }
