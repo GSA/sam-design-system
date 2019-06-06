@@ -20,7 +20,7 @@ export class SearchListLayoutComponent implements OnInit {
   service: SearchList;
 
   /**
-   * 
+   * configuration
    */
   @Input()
   configuration: SearchListConfiguration;
@@ -29,11 +29,10 @@ export class SearchListLayoutComponent implements OnInit {
     this.page.pageSize = this.configuration.pageSize;
     this.sortField = this.configuration.defaultSortValue;
     this.paginationChange.subscribe(
-      value => {
+      () => {
         this.updateContent();
       }
     );
-    this.updateContent();
   }
 
   /**
@@ -73,12 +72,12 @@ export class SearchListLayoutComponent implements OnInit {
   items = [];
 
   /**
-   * 
+   * sort value 
    */
   public sortField = '';
 
   /**
-   * 
+   * calls service when updated
    */
   private updateContent() {
     this.service.getData({ 'page': this.page, sortField: this.sortField }).subscribe(
