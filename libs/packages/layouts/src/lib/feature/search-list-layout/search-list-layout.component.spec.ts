@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SearchListLayoutComponent } from './search-list-layout.component';
 import { PaginationModule, SdsSearchResultListModule } from '@gsa-sam/components';
 import { FormsModule } from '@angular/forms';
+import { SearchParameters, SearchResult, SearchListInterface } from './model/search-list-layout.model';
+import { of, Observable } from 'rxjs';
 describe('SearchListLayoutComponent', () => {
   let component: SearchListLayoutComponent;
   let fixture: ComponentFixture<SearchListLayoutComponent>;
@@ -17,6 +19,12 @@ describe('SearchListLayoutComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SearchListLayoutComponent);
     component = fixture.componentInstance;
+    component.configuration = {
+      sortList: [{ text: 'Id', value: 'id' }],
+      defaultSortValue: 'id',
+      pageSize: 25
+    };
+    component.service = new TestService();
   });
 
   it('should create', () => {
@@ -29,3 +37,13 @@ describe('SearchListLayoutComponent', () => {
 
 
 });
+
+class TestService implements SearchListInterface {
+  getData(search: SearchParameters): Observable<SearchResult> {
+    return of({
+      totalItems: 1,
+      items: [{ id: 1 }]
+    })
+  }
+
+}

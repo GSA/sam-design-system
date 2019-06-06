@@ -47,7 +47,7 @@ export class SearchResult {
 
 
 
-export interface SearchList {
+export interface SearchListInterface {
 
     /**
      * Method to get the takes it takes in the SearchParameters and returns SearchResult object
