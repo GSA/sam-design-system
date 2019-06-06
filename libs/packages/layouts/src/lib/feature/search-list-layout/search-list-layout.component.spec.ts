@@ -31,9 +31,10 @@ describe('SearchListLayoutComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  it('onSelectChange', () => {
+    component.onSelectChange();
+    expect(component.items.length).toBe(1);
+  });
 
 
 });
