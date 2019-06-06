@@ -1,6 +1,6 @@
 import { SearchListSampleData } from './search-list-sample.data';
-import { Observable } from 'rxjs';
-import 'rxjs/add/observable/of';
+import { Observable, of } from 'rxjs';
+
 
 export class SearchListSampleService implements SearchList {
 
@@ -9,7 +9,7 @@ export class SearchListSampleService implements SearchList {
     getData(search: Search): Observable<Result> {
         let start = search.page.pageNumber * search.page.pageSize - search.page.pageSize;
         let end = start + search.page.pageSize;
-        return Observable.of({
+        return of({
             items: SearchListSampleData.slice(start, end),
             totalItems: SearchListSampleData.length
         });
