@@ -4,8 +4,6 @@
     Sort by
 </label>
 <select (change)="onSelectChange()" [(ngModel)]="sortField" class="usa-select border-base-light maxw-card" id="options">
-  
-
     <option *ngFor="let item of configuration.sortList" [ngValue]="item.value">
         {{ item.text }}
     </option>
