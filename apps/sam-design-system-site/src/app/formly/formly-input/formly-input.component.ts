@@ -24,7 +24,6 @@ export class FormlyInputComponent {
          key: 'firstName',
           type: 'input',
           templateOptions: {
-            required: true,
             type: 'text',
             label: 'First Name',
           },
@@ -87,7 +86,6 @@ export class FormlyInputComponent {
         templateOptions: {
           label: 'Formly input type textarea',
           placeholder: 'placeholder',
-          required: true,
         },
       },
       {
