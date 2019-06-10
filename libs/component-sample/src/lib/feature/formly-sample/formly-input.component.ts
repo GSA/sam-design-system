@@ -136,6 +136,7 @@ export class FormlyInputComponent {
     },
   ];
 
+  // To display the selected model values
   submit(model) {
     this.results = model;
   }

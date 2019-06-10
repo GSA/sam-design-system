@@ -8,18 +8,22 @@ import {
   SdsAccordionModule,
 } from '@gsa-sam/components';
 
+// Validate the min length of the charecter
 export function minlengthValidationMessage(err, field) {
   return `Should have atleast ${field.templateOptions.minLength} characters`;
 }
 
+// Validate the max length of the charecter
 export function maxlengthValidationMessage(err, field) {
   return `This value should be less than ${field.templateOptions.maxLength} characters`;
 }
 
+// Validate the min value of the charecter
 export function minValidationMessage(err, field) {
   return `This value should be more than ${field.templateOptions.min}`;
 }
 
+// Validate the max value of the charecter
 export function maxValidationMessage(err, field) {
   return `This value should be less than ${field.templateOptions.max}`;
 }
