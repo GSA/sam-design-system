@@ -4,7 +4,7 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 
 @Component({
-  selector: 'sam-formly-input',
+  selector: 'gsa-sam-formly-input',
   templateUrl: './formly-input.component.html',
   styleUrls: ['./formly-input.component.scss']
 })
@@ -24,6 +24,7 @@ export class FormlyInputComponent {
          key: 'firstName',
           type: 'input',
           templateOptions: {
+            required: true,
             type: 'text',
             label: 'First Name',
           },
@@ -86,6 +87,7 @@ export class FormlyInputComponent {
         templateOptions: {
           label: 'Formly input type textarea',
           placeholder: 'placeholder',
+          required: true,
         },
       },
       {
