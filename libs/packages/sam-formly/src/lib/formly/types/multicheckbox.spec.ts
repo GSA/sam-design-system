@@ -76,7 +76,6 @@ describe('Formly Field multicheckbox Component', () => {
             const fixture = createTestComponent('<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'),
                 trigger = fixture.nativeElement.querySelector('usa-checkbox')
             const expectedValue = fixture.debugElement.query(By.css('.usa-checkbox')).componentInstance.field;
-              console.log(expectedValue);
             fixture.detectChanges();
             expect(expectedValue.templateOptions.options.length).toBe(3)
 

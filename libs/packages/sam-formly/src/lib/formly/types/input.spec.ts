@@ -52,15 +52,15 @@ describe('Formly Input Component', () => {
         key: 'name',
         type: 'input',
         templateOptions: {
-          readonly: true,
+          required: true,
         },
       },
     ];
     fixture.detectChanges();
 
     // assert
-    const inputField = fixture.debugElement.query(By.css('input'));
-    expect(inputField.nativeElement.getAttribute('readonly')).not.toBeNull();
+    const inputField = fixture.debugElement.query(By.css('.usa-input'));
+    expect(inputField.componentInstance.field.templateOptions.required).toBe(true);
   });
 
   it('should properly set the readonly value on number inputs', () => {
@@ -78,7 +78,8 @@ describe('Formly Input Component', () => {
     fixture.detectChanges();
 
     // assert
-    const inputField = fixture.debugElement.query(By.css('input'));
-    expect(inputField.nativeElement.getAttribute('readonly')).not.toBeNull();
+    const inputField = fixture.debugElement.query(By.css('.usa-input'));
+   
+    expect(inputField.componentInstance.field.templateOptions.readonly).toBe(true);
   });
 });
