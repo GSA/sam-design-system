@@ -2,7 +2,7 @@ import { Component, ViewChild, ViewContainerRef } from '@angular/core';
 import { FieldWrapper } from '@ngx-formly/core';
 
 @Component({
-  selector: 'sam-formly-wrapper-form-field',
+  selector: 'sds-formly-wrapper-form-field',
   template: `
   <div class="usa-form-group" [class.usa-form-group--error]="showError">
   <label class="usa-label" *ngIf="to.label && to.hideLabel !== true" [attr.for]="id">

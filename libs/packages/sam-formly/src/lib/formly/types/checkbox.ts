@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 
 @Component({
-  selector: 'formly-field-checkbox',
+  selector: 'sds-formly-field-checkbox',
   template: `
     <div class="usa-checkbox">
       <input class="usa-checkbox__input" type="checkbox"
