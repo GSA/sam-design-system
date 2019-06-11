@@ -135,12 +135,21 @@ export class SdsHeaderComponent {
    */
   linkClickEvent(link: INavigationLink) {
     this.linkEvent.emit(link);
+    return false;
   }
 
+  /**
+   * 
+   * @param link 
+   */
   isLinkInternal(link: INavigationLink) {
     return link.mode === NavigationMode.INTERNAL;
   }
 
+  /**
+   * 
+   * @param link 
+   */
   isLinkExternal(link: INavigationLink) {
     return link.mode === NavigationMode.EXTERNAL;
   }

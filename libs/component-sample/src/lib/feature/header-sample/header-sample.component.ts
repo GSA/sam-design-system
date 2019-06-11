@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject } from "rxjs";
 import { HeaderModel, NavigationMode } from '@gsa-sam/components'
 @Component({
   selector: 'gsa-sam-header-sample',
@@ -9,14 +10,27 @@ export class HeaderSampleComponent implements OnInit {
 
   constructor() { }
 
+
+  public linkEvent = new BehaviorSubject<object>(null);
+
+
+
   ngOnInit() {
+
+    this.linkEvent.subscribe(
+      value => {
+        console.log('Link Event Clicked Change');
+        console.log(value);
+      }
+    );
   }
+
   modelHeader: HeaderModel = {
     secondaryLinks: [{
-      imageClassPrefix: 'fas', imageClass: 'comment', text: 'Messages', route: '/', id: 'messages', mode: NavigationMode.INTERNAL
+      imageClassPrefix: 'fas', imageClass: 'comment', text: 'Messages', route: 'http://www.google.com', id: 'messages', mode: NavigationMode.EXTERNAL
     },
     {
-      imageClassPrefix: 'fas', imageClass: 'edit', text: 'Requests', route: '/', id: 'request', hasCounter: true, mode: NavigationMode.INTERNAL
+      imageClassPrefix: 'fas', imageClass: 'edit', text: 'Requests', route: '/', id: 'request', hasCounter: true, mode: NavigationMode.EVENT
     },
     {
       imageClassPrefix: 'fas', imageClass: 'th', text: 'Workspace', route: '/', id: 'workspace', mode: NavigationMode.INTERNAL
@@ -25,8 +39,8 @@ export class HeaderSampleComponent implements OnInit {
       imageClassPrefix: 'fas', imageClass: 'sign-out-alt', text: 'Sign Out', route: '/', id: 'signOut', mode: NavigationMode.INTERNAL
     }],
     navigationLinks: [
-      { text: 'Search', route: '/', id: 'search', mode: NavigationMode.INTERNAL },
-      { text: 'Databank', route: '/', id: 'databank', mode: NavigationMode.INTERNAL },
+      { text: 'Search', route: 'http://www.google.com', id: 'search', mode: NavigationMode.EXTERNAL },
+      { text: 'Databank', route: '/', id: 'databank', mode: NavigationMode.EVENT },
       { text: 'Data Services', route: '/', id: 'dataService', mode: NavigationMode.INTERNAL },
       { text: 'Help', route: '/', id: 'help', mode: NavigationMode.INTERNAL },
       {
