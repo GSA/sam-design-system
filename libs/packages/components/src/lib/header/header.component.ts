@@ -124,7 +124,7 @@ export class SdsHeaderComponent {
   }
 
   /**
-   * 
+   * event for event based
    */
   @Output()
   linkEvent = new EventEmitter<INavigationLink>();
@@ -139,7 +139,7 @@ export class SdsHeaderComponent {
   }
 
   /**
-   * 
+   * checks if link is internal
    * @param link 
    */
   isLinkInternal(link: INavigationLink) {
@@ -147,7 +147,7 @@ export class SdsHeaderComponent {
   }
 
   /**
-   * 
+   * checks if link is external
    * @param link 
    */
   isLinkExternal(link: INavigationLink) {
