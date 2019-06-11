@@ -3,8 +3,10 @@
 <header class="usa-header usa-header--extended" role="banner">
   <div class="usa-navbar">
     <div class="usa-logo" id="extended-logo">
-      <em class="usa-logo__text"><a [routerLink]="model.home.route" title="Home"
-          aria-label="Home">{{model.home.text}}</a></em>
+      <em class="usa-logo__text">
+        <ng-container [ngTemplateOutlet]="isLinkInternal(model.home) ? homeLinkRouteTemplate : homeLinkHREFTemplate"
+          [ngTemplateOutletContext]="{$implicit:model.home}"></ng-container>
+      </em>
     </div>
     <button class="usa-menu-btn" aria-label="Menu">
       <fa-layers [fixedWidth]="true" size="3x">
@@ -40,6 +42,15 @@
     </div>
   </nav>
 </header>
+<ng-template #homeLinkRouteTemplate let-home>
+  <a [routerLink]="home.route" title="Home" aria-label="Home">{{home.text}}</a>
+</ng-template>
+
+<ng-template #homeLinkHREFTemplate let-home>
+  <a [attr.href]="home.route" title="Home" aria-label="Home">{{home.text}}</a>
+</ng-template>
+
+
 
 <ng-template #secondaryRouteLinkTemplate let-link>
   <a [attr.id]="link.id" [routerLink]="[link.route]" [attr.class]="link.selected ? 'usa-current' :''">
