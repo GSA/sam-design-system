@@ -1,6 +1,5 @@
 <sds-top-banner></sds-top-banner>
 
-
 <header class="usa-header usa-header--extended" role="banner">
   <div class="usa-navbar">
     <div class="usa-logo" id="extended-logo">
@@ -47,6 +46,21 @@
 </header>
 
 <ng-template #linkTemplate let-link>
+  <ng-container [ngTemplateOutlet]="isLinkInternal(link)  ? linkRouteTemplate : linkHREFTemplate"
+    [ngTemplateOutletContext]="{$implicit:link}"></ng-container>
+</ng-template>
+
+<ng-template #linkRouteTemplate let-link>
+  <a [attr.class]="link.selected ? 'usa-nav__link usa-current' : 'usa-nav__link'"
+    [routerLink]="[link.route]"><span>{{link.text}}</span></a>
+</ng-template>
+
+<ng-template #linkHREFTemplate let-link>
+  <a [attr.class]="link.selected ? 'usa-nav__link usa-current' : 'usa-nav__link'" (click)="linkClickEvent(link)"
+    [attr.href]="[link.route]"><span>{{link.text}}</span></a>
+</ng-template>
+
+<ng-template #linkEventTemplate let-link>
   <a [attr.class]="link.selected ? 'usa-nav__link usa-current' : 'usa-nav__link'"
     [routerLink]="[link.route]"><span>{{link.text}}</span></a>
 </ng-template>

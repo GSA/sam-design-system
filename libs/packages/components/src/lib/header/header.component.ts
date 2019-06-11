@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { HeaderModel, Selectable, HeaderNavigationLink, HeaderSecondaryLink } from './model/HeaderModel';
-
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { HeaderModel, HeaderNavigationLink, HeaderSecondaryLink } from './model/HeaderModel';
+import { INavigationLink, NavigationMode, Selectable } from '../common-navigation-model/common-navigation-model';
 
 @Component({
   selector: 'sds-header',
@@ -121,5 +121,27 @@ export class SdsHeaderComponent {
       });
     }
     return toReturn;
+  }
+
+  /**
+   * 
+   */
+  @Output()
+  linkEvent = new EventEmitter<INavigationLink>();
+
+  /**
+   * Link clicked and emits the link data into an event
+   * @param link 
+   */
+  linkClickEvent(link: INavigationLink) {
+    this.linkEvent.emit(link);
+  }
+
+  isLinkInternal(link: INavigationLink) {
+    return link.mode === NavigationMode.INTERNAL;
+  }
+
+  isLinkExternal(link: INavigationLink) {
+    return link.mode === NavigationMode.EXTERNAL;
   }
 }

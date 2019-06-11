@@ -1,4 +1,6 @@
-export interface FooterModel {
+import { INavigationLink, NavigationMode } from '../../common-navigation-model/common-navigation-model';
+
+export class FooterModel {
 
     /**
      * List of sections and their links
@@ -11,7 +13,7 @@ export interface FooterModel {
     footerLogo: FooterLogo;
 }
 
-export interface FooterLinkSection {
+export class FooterLinkSection {
 
     /**
      * Title text for the section
@@ -24,7 +26,12 @@ export interface FooterLinkSection {
     links: FooterLink[];
 }
 
-export interface FooterLink {
+export class FooterLink implements INavigationLink {
+
+    /**
+      * Internal Angualr Routes, External HREF, EVENT: event on parent component
+      */
+    mode: NavigationMode;
 
     /**
      * Text to be displayed in the link
