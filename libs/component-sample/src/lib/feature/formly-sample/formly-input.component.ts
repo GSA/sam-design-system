@@ -4,7 +4,7 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 
 @Component({
-  selector: 'gsa-sam-formly-input',
+  selector: 'formly-input',
   templateUrl: './formly-input.component.html',
   styleUrls: ['./formly-input.component.scss']
 })
