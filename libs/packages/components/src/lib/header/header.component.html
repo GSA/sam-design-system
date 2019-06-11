@@ -42,7 +42,7 @@
 </header>
 
 <ng-template #secondaryRouteLinkTemplate let-link>
-  <a [routerLink]="[link.route]" [attr.class]="link.selected ? 'usa-current' :''">
+  <a [attr.id]="link.id" [routerLink]="[link.route]" [attr.class]="link.selected ? 'usa-current' :''">
     <ng-container [ngTemplateOutlet]="iconLinkTemplate" [ngTemplateOutletContext]="{$implicit:link}">
     </ng-container>
   </a>
@@ -50,7 +50,7 @@
 
 
 <ng-template #secondaryHREFLinkTemplate let-link>
-  <a [attr.href]="[link.route]" [attr.class]="link.selected ? 'usa-current' :''">
+  <a [attr.id]="link.id" [attr.href]="[link.route]" [attr.class]="link.selected ? 'usa-current' :''">
     <ng-container [ngTemplateOutlet]="iconLinkTemplate" [ngTemplateOutletContext]="{$implicit:link}">
     </ng-container>
   </a>
@@ -58,7 +58,8 @@
 
 
 <ng-template #secondaryEVENTLinkTemplate let-link>
-  <a (click)="linkClickEvent(link)" href="javascript:void(0)" [attr.class]="link.selected ? 'usa-current' :''">
+  <a [attr.id]="link.id" (click)="linkClickEvent(link)" href="javascript:void(0)"
+    [attr.class]="link.selected ? 'usa-current' :''">
     <ng-container [ngTemplateOutlet]="iconLinkTemplate" [ngTemplateOutletContext]="{$implicit:link}">
     </ng-container>
   </a>
@@ -80,29 +81,43 @@
 </ng-template>
 
 <ng-template #linkRouteTemplate let-link>
-  <a [attr.class]="link.selected ? 'usa-nav__link usa-current' : 'usa-nav__link'"
+  <a [attr.id]="link.id" [attr.class]="link.selected ? 'usa-nav__link usa-current' : 'usa-nav__link'"
     [routerLink]="[link.route]"><span>{{link.text}}</span></a>
 </ng-template>
 
 <ng-template #linkHREFTemplate let-link>
-  <a [attr.class]="link.selected ? 'usa-nav__link usa-current' : 'usa-nav__link'"
+  <a [attr.id]="link.id" [attr.class]="link.selected ? 'usa-nav__link usa-current' : 'usa-nav__link'"
     [attr.href]="[link.route]"><span>{{link.text}}</span></a>
 </ng-template>
 
 <ng-template #linkEventTemplate let-link>
-  <a [attr.class]="link.selected ? 'usa-nav__link usa-current' : 'usa-nav__link'" href="javascript:void(0)"
-    (click)="linkClickEvent(link)"><span>{{link.text}}</span></a>
+  <a [attr.id]="link.id" [attr.class]="link.selected ? 'usa-nav__link usa-current' : 'usa-nav__link'"
+    href="javascript:void(0)" (click)="linkClickEvent(link)"><span>{{link.text}}</span></a>
 </ng-template>
 
 <ng-template #dropDownTemplate let-link>
-  <button
+  <button [attr.id]="link.id"
     [attr.class]="link.selected ? 'usa-accordion__button usa-nav__link usa-current' : 'usa-accordion__button usa-nav__link'"
     aria-expanded="false" [attr.aria-controls]="removeWhiteSpace(link.text)+'-section'">
     <span>{{link.text}}</span>
   </button>
   <ul [attr.id]="removeWhiteSpace(link.text)+'-section'" class="usa-nav__submenu" hidden>
     <li *ngFor="let childLink of link.children" class="usa-nav__submenu-item">
-      <a [routerLink]="[childLink.route]">{{childLink.text}}</a>
+      <ng-container
+        [ngTemplateOutlet]="isLinkInternal(childLink)  ? dropDownRouteLinkTemplate : isLinkExternal(childLink)? dropDownHREFLinkTemplate : dropDownEVENTLinkTemplate "
+        [ngTemplateOutletContext]="{$implicit:childLink}"></ng-container>
     </li>
   </ul>
+</ng-template>
+
+<ng-template #dropDownRouteLinkTemplate let-childLink>
+  <a [routerLink]="[childLink.route]">{{childLink.text}}</a>
+</ng-template>
+
+<ng-template #dropDownHREFLinkTemplate let-childLink>
+  <a [attr.href]="[childLink.route]">{{childLink.text}}</a>
+</ng-template>
+
+<ng-template #dropDownEVENTLinkTemplate let-childLink>
+  <a href="javascript:void(0)" (click)="linkClickEvent(childLink)">{{childLink.text}}</a>
 </ng-template>

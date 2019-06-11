@@ -44,7 +44,7 @@ export class HeaderSampleComponent implements OnInit {
       { text: 'Data Services', route: '/', id: 'dataService', mode: NavigationMode.INTERNAL },
       { text: 'Help', route: '/', id: 'help', mode: NavigationMode.INTERNAL },
       {
-        text: 'Link 3', id: 'link3', mode: NavigationMode.INTERNAL, route: null, children: [
+        text: 'Link 3', id: 'link3', mode: NavigationMode.INTERNAL, route: undefined, children: [
           { text: 'Link 3 sub 1', route: '/', id: 'link3sub1', mode: NavigationMode.INTERNAL },
           { text: 'Link 3 sub 2', route: '/', id: 'link3sub2', mode: NavigationMode.INTERNAL },
           { text: 'Link 3 sub 3', route: '/', id: 'link3sub3', mode: NavigationMode.INTERNAL },
@@ -52,9 +52,9 @@ export class HeaderSampleComponent implements OnInit {
         ]
       },
       {
-        text: 'Link 4', id: 'link4', mode: NavigationMode.INTERNAL, route: null, children: [
-          { text: 'Link 4 sub 1', route: '/', id: 'link4sub1', mode: NavigationMode.INTERNAL },
-          { text: 'Link 4 sub 2', route: '/', id: 'link4sub2', mode: NavigationMode.INTERNAL },
+        text: 'Link 4', id: 'link4', mode: NavigationMode.INTERNAL, route: undefined, children: [
+          { text: 'Link 4 sub 1', route: 'http://www.google.com', id: 'link4sub1', mode: NavigationMode.EXTERNAL },
+          { text: 'Link 4 sub 2', route: '/', id: 'link4sub2', mode: NavigationMode.EVENT },
           { text: 'Link 4 sub 3', route: '/', id: 'link4sub3', mode: NavigationMode.INTERNAL },
           { text: 'Link 4 sub 4', route: '/', id: 'link4sub4', mode: NavigationMode.INTERNAL }
         ]
