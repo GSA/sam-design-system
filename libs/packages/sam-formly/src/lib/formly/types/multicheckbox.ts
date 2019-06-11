@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 
 @Component({
-  selector: 'sam-formly-field-multicheckbox',
+  selector: 'formly-field-multicheckbox',
   template: `
     <div>
       <div *ngFor="let option of to.options | formlySelectOptions:field | async; let i = index;" class="usa-checkbox"   >

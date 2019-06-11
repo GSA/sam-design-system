@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 
 @Component({
-  selector: 'sam-formly-field-input',
+  selector: 'formly-field-radio',
   template: `
   <div class="usa-radio">
       <div *ngFor="let option of to.options | formlySelectOptions:field | async; let i = index;">

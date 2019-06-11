@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 
 @Component({
-  selector: 'sam-formly-field-select',
+  selector: 'formly-field-select',
   template: `
     <select *ngIf="to.multiple; else singleSelect" 
       multiple
