@@ -4,6 +4,7 @@ import { SdsHeaderComponent } from './header.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SdsTopBannerComponent } from '../top-banner/top-banner.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NavigationMode } from '../common-navigation-model/common-navigation-model';
 
 
 describe('SdsHeaderComponent', () => {
@@ -22,10 +23,10 @@ describe('SdsHeaderComponent', () => {
     fixture = TestBed.createComponent(SdsHeaderComponent);
     component = fixture.componentInstance;
     component.model = {
-      home: { text: "", id: "home", route: '', selected: false },
+      home: { text: "", id: "home", route: '', selected: false, mode: NavigationMode.INTERNAL },
       navigationLinks:
-        [{ text: "", selected: false, route: "", children: [{ text: "", selected: false, route: "", children: [], id: "childLink" }], id: "navLink" }],
-      secondaryLinks: [{ text: "", selected: false, route: "", id: "secNavLink", hasCounter: false, imageClass: '', imageClassPrefix: '' }]
+        [{ text: "", selected: false, route: "", children: [{ text: "", selected: false, route: "", children: [], id: "childLink", mode: NavigationMode.INTERNAL }], id: "navLink", mode: NavigationMode.INTERNAL }],
+      secondaryLinks: [{ text: "", selected: false, route: "", id: "secNavLink", hasCounter: false, imageClass: '', imageClassPrefix: '', mode: NavigationMode.INTERNAL }]
     };
   });
 
