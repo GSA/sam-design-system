@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ContentChild, TemplateRef } from '@angular/core';
 import { BehaviorSubject } from "rxjs";
-import { SearchList, SearchListConfiguration } from './model/search-list-layout.model';
+import { SearchListInterface, SearchListConfiguration } from './model/search-list-layout.model';
 @Component({
   selector: 'search-list-layout',
   templateUrl: './search-list-layout.component.html',
@@ -14,13 +14,13 @@ export class SearchListLayoutComponent implements OnInit {
   @ContentChild('resultContent') resultContentTemplate: TemplateRef<any>;
 
   /**
-   * 
+   * Input service to be called when items change
    */
   @Input()
-  service: SearchList;
+  service: SearchListInterface;
 
   /**
-   * 
+   * configuration
    */
   @Input()
   configuration: SearchListConfiguration;
@@ -29,23 +29,14 @@ export class SearchListLayoutComponent implements OnInit {
     this.page.pageSize = this.configuration.pageSize;
     this.sortField = this.configuration.defaultSortValue;
     this.paginationChange.subscribe(
-      value => {
+      () => {
         this.updateContent();
       }
     );
-    this.updateContent();
-  }
-
-
-  /**
-   * 
-   */
-  sideNavModel = {
-    navigationLinks: []
   }
 
   /**
-   * 
+   * Default Page setttings
    */
   page = {
     pageNumber: 1,
@@ -54,45 +45,46 @@ export class SearchListLayoutComponent implements OnInit {
   }
 
   /**
-   * 
+   * Sorty by change event
    */
   onSelectChange() {
     this.updateContent();
   }
 
   /**
-   * 
+   * Id of the top pagination control
    */
   top = { id: 'topPagination' };
 
   /**
-   * 
+   * Id of the bottom pagination control
    */
   bottom = { id: 'bottomPagination' };
 
   /**
-   * 
+   * Page event listener
    */
   public paginationChange = new BehaviorSubject<object>(this.page);
 
   /**
-   * 
+   * List of items to be displayed
    */
   items = [];
 
   /**
-   * 
+   * sort value 
    */
   public sortField = '';
 
-
-
   /**
-   * 
+   * calls service when updated
    */
   private updateContent() {
-    let result = this.service.getData({ 'page': this.page, sortField: this.sortField });
-    this.items = result.items;
-    this.page.totalPages = Math.ceil(result.totalItems / this.page.pageSize);
+    this.service.getData({ 'page': this.page, sortField: this.sortField }).subscribe(
+      (result) => {
+        this.items = result.items;
+        this.page.totalPages = Math.ceil(result.totalItems / this.page.pageSize);
+      }
+    );
   }
 }

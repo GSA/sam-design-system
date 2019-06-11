@@ -9,7 +9,7 @@
 
     <div [sdsToolbarExpand]="toolbar" class="sam-example-pagination grid-row margin-left-6">
       <div class="tablet:grid-col">
-        <sds-pagination tablet:grid-col [paginationConfiguration]="top" [(page)]="page" (pageChange)="paginationChange.next($event)">
+        <sds-pagination [paginationConfiguration]="top" [(page)]="page" (pageChange)="paginationChange.next($event)">
         </sds-pagination>
       </div>
       <div class="tablet:grid-col-auto">
