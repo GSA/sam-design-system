@@ -5,12 +5,23 @@ import {
   Input,
   OnDestroy,
   AfterViewInit,
-  HostListener
+  HostListener,
+  Injector,
+  ViewContainerRef
 } from '@angular/core';
 import { coerceNumberProperty } from '@angular/cdk/coercion';
-import { ViewportRuler } from '@angular/cdk/overlay';
-import { Subscription } from 'rxjs';
+import {
+  ViewportRuler,
+  OverlayConfig,
+  Overlay,
+  OverlayRef,
+  ConnectedPosition
+} from '@angular/cdk/overlay';
+import { Subscription, merge } from 'rxjs';
 import { startWith } from 'rxjs/operators';
+import { PortalInjector, ComponentPortal } from '@angular/cdk/portal';
+import { SdsTruncatedTextContainerComponent } from './truncate-text-container.component';
+import { SDS_TRUNCATED_TEXT_DATA } from './truncates-text-base';
 
 @Directive({ selector: '[sdsTruncateTextByLine]' })
 export class SdsTruncateTextByLineDirective
@@ -28,6 +39,12 @@ export class SdsTruncateTextByLineDirective
   }
   private _textLinesLimit: number;
 
+  /** PortalOutlet */
+  private _overlayRef: OverlayRef | null = null;
+
+  /** Holds subscription to stream of overlay closing events */
+  private _closingActionsSubscription = Subscription.EMPTY;
+
   /** Holds initial text */
   private initialText: string;
 
@@ -37,14 +54,12 @@ export class SdsTruncateTextByLineDirective
   /** Approximated character width of the host text */
   private approximatedCharacterWidth: number;
 
-  @HostListener('click')
-  toggle(): void {
-    console.log(this.initialText);
-  }
-
   constructor(
+    private _overlay: Overlay,
+    private _injector: Injector,
     private _element: ElementRef,
-    private viewportRuler: ViewportRuler
+    private _viewportRuler: ViewportRuler,
+    private _viewContainerRef: ViewContainerRef
   ) {}
 
   ngOnInit() {
@@ -55,76 +70,138 @@ export class SdsTruncateTextByLineDirective
     const hostCloneEl = this._element.nativeElement.cloneNode() as HTMLElement;
 
     // Add 1 character to calculate character width
-    hostCloneEl.innerHTML = 'X';
+    hostCloneEl.innerHTML = 'x';
 
     // Render the clone to get character width
     this._element.nativeElement.parentElement.appendChild(hostCloneEl);
 
+    // Set the clone to inline to prevent cases where the clone
+    // expands to 100% width of the container
+    hostCloneEl.setAttribute('style', 'display: inline');
+    
     // These are close approximations that are used to better guess
-    // how many words fit in X number of lines
+    // how many characters fit in X number of lines
     this.approximatedCharacterWidth = hostCloneEl.offsetWidth;
 
     // Remove clone after calculations
     hostCloneEl.remove();
-
-    this._element.nativeElement.setAttribute('style', 'flex-grow: 1;');
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     // Update UI on window resizing
-    this.windowResize$ = this.viewportRuler
+    this.windowResize$ = this._viewportRuler
       .change(0)
       .pipe(startWith('Start'))
       .subscribe(() => this.updateUI());
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
+    this._overlayRef.dispose();
+    this._closingActionsSubscription.unsubscribe();
     this.windowResize$.unsubscribe();
   }
 
-  getHostWidth(): number {
+  /** Configures and creates the CDK overlay */
+  private _createOverlay() {
+    const overlayPositions: ConnectedPosition = {
+      originX: 'start',
+      originY: 'bottom',
+      overlayX: 'start',
+      overlayY: 'top'
+    };
+    const config = new OverlayConfig({
+      positionStrategy: this._overlay
+        .position()
+        .flexibleConnectedTo(this._element)
+        .withLockedPosition()
+        .withPositions([overlayPositions])
+        .withTransformOriginOn('.sds-truncate-text__container'),
+      hasBackdrop: true,
+      backdropClass: 'cdk-overlay-transparent-backdrop',
+      scrollStrategy: this._overlay.scrollStrategies.close()
+    });
+    return this._overlay.create(config);
+  }
+
+  /** Attach a ComponentPortal to the overlay **/
+  private _attachContainer(overlay: OverlayRef) {
+    const injector = new PortalInjector(
+      this._injector,
+      new WeakMap([[SDS_TRUNCATED_TEXT_DATA, { text: this.initialText }]])
+    );
+    const containerPortal = new ComponentPortal(
+      SdsTruncatedTextContainerComponent,
+      this._viewContainerRef,
+      injector
+    );
+    const containerRef = overlay.attach(containerPortal);
+
+    return containerRef.instance;
+  }
+
+  /** Returns a stream that emits whenever an action that should close the overlay occurs. */
+  private _overlayClosingActions() {
+    const backdrop = this._overlayRef.backdropClick();
+    const detachments = this._overlayRef.detachments();
+    return merge(backdrop, detachments);
+  }
+
+  /** Width of host element */
+  private _getHostWidth(): number {
     return this._element.nativeElement.offsetWidth;
   }
 
-  getWordsArray(): String[] {
-    return this.initialText.split(' ');
+  /** Approximated number of characters that are visible in the container */
+  private _getVisibleCharacters(): number {
+    return Math.floor(
+      (this._getHostWidth() / this.approximatedCharacterWidth) *
+        this.textLinesLimit
+    );
+  }
+
+  private _isNotLongEnough(): boolean {
+    return this._getVisibleCharacters() > this.initialText.length;
+  }
+
+  @HostListener('click')
+  openOverlay(): void {
+    // Exit if all text can be visible in container
+    if (this._isNotLongEnough()) return;
+
+    this._overlayRef = this._createOverlay();
+    const container = this._attachContainer(this._overlayRef);
+    this._closingActionsSubscription = this._overlayClosingActions().subscribe(
+      () => this.closeOverlay()
+    );
+    // Wait for the next event loop tick to start the animation
+    setTimeout(() => {
+      container.startAnimation();
+    });
   }
 
   updateUI() {
-    // Turn the text in to an array of words
-    // to facilitate adding '...' after the end of a word
-    const wordsArray = this.getWordsArray();
+    // Exit if all text can be visible in container
+    if (this._isNotLongEnough()) return;
 
-    // Approximated number of characters that are visible in the container
-    const approximatedVisibleCharacters = Math.floor(
-      (this.getHostWidth() / this.approximatedCharacterWidth) *
-        this.textLinesLimit
-    );
+    const wordCut = false;
+    const ellipsis = '...';
+    const limit = this._getVisibleCharacters() - ellipsis.length;
 
-    // console.log(
-    //   'Host Width: ' +
-    //     this.getHostWidth() +
-    //     '\n' +
-    //     'Approximated Visible Characters: ' +
-    //     approximatedVisibleCharacters +
-    //     '\n' +
-    //     'Approximated Character Width: ' +
-    //     this.approximatedCharacterWidth
-    // );
+    let visibleText = this.initialText.slice(0, limit);
 
-    let characterCount = 0;
-    for (let index = 0; index < wordsArray.length; index++) {
-      // Add a space between the words (+1)
-      characterCount += wordsArray[index].length + 1;
-      if (this.initialText.length < approximatedVisibleCharacters) {
-        break;
-      }
-      if (characterCount > approximatedVisibleCharacters) {
-        // Update host element content
-        this._element.nativeElement.innerText =
-          wordsArray.slice(0, index).join(' ') + '...';
-        break;
+    if (!wordCut) {
+      const isEndofWord = this.initialText.substr(limit, limit + 1) === ' ';
+      if (!isEndofWord) {
+        const previousWord = visibleText.lastIndexOf(' ');
+        visibleText = visibleText.slice(0, previousWord);
       }
     }
+
+    this._element.nativeElement.innerText = visibleText + ellipsis;
+  }
+
+  closeOverlay() {
+    this._closingActionsSubscription.unsubscribe();
+    this._overlayRef.detach();
   }
 }

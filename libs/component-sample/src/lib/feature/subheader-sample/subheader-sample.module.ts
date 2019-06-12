@@ -8,6 +8,7 @@ import {
   SdsTruncateModule
 } from '@gsa-sam/components';
 import { SubheaderSampleComponent } from './subheader-sample.component';
+import { A11yModule } from '@angular/cdk/a11y';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { SubheaderSampleComponent } from './subheader-sample.component';
     SdsMenuModule,
     SdsObserversModule,
     SdsSearchModule,
-    SdsTruncateModule
+    SdsTruncateModule,
+    A11yModule
   ],
   exports: [],
   declarations: [SubheaderSampleComponent]

@@ -5,15 +5,8 @@ import { Component } from '@angular/core';
   templateUrl: 'subheader-sample.component.html'
 })
 export class SubheaderSampleComponent {
-  searchExpanded: boolean;
-
-  constructor() {}
-
-  SearchExpanded() {
-    this.searchExpanded = true;
-  }
-
-  SearchCollapsed() {
-    this.searchExpanded = false;
+  log(value) {
+    console.log(value);
+    console.log(`%cLog: ${value}`, 'color: blue; font-weight: bold');
   }
 }

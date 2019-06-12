@@ -30,9 +30,6 @@ const animationBody = [
   )
 ];
 
-/**
- * Animations used by sdsSearch.
- */
 export const sdsSearchAnimations: {
   readonly searchInput: AnimationTriggerMetadata;
 } = {

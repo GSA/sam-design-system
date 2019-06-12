@@ -1,336 +1,320 @@
 import {
   Component,
-  Input,
-  Output,
-  EventEmitter,
-  ChangeDetectionStrategy,
-  HostBinding,
-  HostListener,
+  ViewChild,
   ElementRef,
   OnDestroy,
-  ViewChild
+  ChangeDetectorRef,
+  Output,
+  EventEmitter,
+  Input
 } from '@angular/core';
-import { FocusOrigin, FocusMonitor } from '@angular/cdk/a11y';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { Subject, BehaviorSubject, merge, Observable } from 'rxjs';
+import { Subject, merge, combineLatest, BehaviorSubject } from 'rxjs';
 import {
-  debounceTime,
-  filter,
   startWith,
   scan,
-  map,
-  distinctUntilChanged,
-  tap,
   pluck,
-  withLatestFrom,
+  map,
+  tap,
+  distinctUntilChanged,
+  debounceTime,
+  filter,
   shareReplay
 } from 'rxjs/operators';
-import { sdsSearchAnimations } from './search-animations';
+import { FocusMonitor } from '@angular/cdk/a11y';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { AnimationEvent } from '@angular/animations';
-import { ENTER, ESCAPE } from '@angular/cdk/keycodes';
 
-/** Minimum search width  */
-const SEARCH_WIDTH = 250;
-
-export interface SearchState {
-  expanded: boolean;
-  autoExpand: boolean;
-  focusElement: string | null;
-  focusOrigin: string | null;
-  containerWidth: number;
-}
+import { sdsSearchAnimations } from './search-animations';
 
 @Component({
   selector: 'sds-search',
   templateUrl: 'search.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [sdsSearchAnimations.searchInput]
 })
 export class SdsSearchComponent implements OnDestroy {
-  /** State of the search animation. */
-  private _state: 'void' | 'enter' | 'exit';
-
-  /** Width of input */
-  private _inputWidth: string;
-
-  /** Stream of container width */
-  private _containerWidth$ = new BehaviorSubject<number>(0);
-  
-  /** Is there sufficent space for the search to expand */
-  private _hasSpace: boolean;
-  
-  /** Stream of expanded events */
-  private expanded$ = new Subject<boolean>();
-  
-  /** Stream of auto expanded events */
-  private autoExpand$ = new Subject<boolean>();
-  
-  /** Stream of text from input */
-  private searchTerm$ = new Subject<string>();
-  
-  private searchTermValue = '';
-  
-  /** Initial Search State */
-  private _initialSearchState: SearchState = {
-    expanded: false,
-    autoExpand: false,
-    focusElement: null,
-    focusOrigin: null,
-    containerWidth: 0
-  };
-  
-  /** Stream of input focus events  */
-  _focusInput$ = new Subject<FocusOrigin>();
-
-  /** Stream of button focus events  */
-  _focusButton$ = new Subject<FocusOrigin>();
-
-  /** Show/Hide Input and Label container */
-  _showContainer = false;
-
-  /** Grab buttton element to set focus */
+  @ViewChild('inputEl', { read: ElementRef }) inputEl: ElementRef;
   @ViewChild('buttonEl', { read: ElementRef }) buttonEl: ElementRef;
+  @ViewChild('containerEl', { read: ElementRef }) containerEl: ElementRef;
 
-  /** Event emitted every time the search is expanded. */
-  @Output() expanded: EventEmitter<void> = new EventEmitter<void>();
-
-  /** Event emitted every time the Search is collapsed. */
-  @Output() collapsed: EventEmitter<void> = new EventEmitter<void>();
-
-  @HostBinding('style.flex-grow') _expandStyle: string;
-
-  /** Whether the Search is expanded. */
-  @Input()
-  get expand(): any {
-    return this._expand;
+  @Input('debug')
+  get debug() {
+    return this._debug;
   }
-  set expand(_expand: any) {
-    _expand = coerceBooleanProperty(_expand);
-    if (this._expand !== _expand) {
-      this._expand = _expand;
-      this.expanded$.next(_expand);
+  set debug(value: boolean) {
+    this._debug = coerceBooleanProperty(value);
+  }
+  private _debug = false;
+
+  @Input() parentSelector: string;
+
+  @Output() term = new EventEmitter<string>();
+
+  inputWidth: string;
+  inputContainer: boolean;
+  defaultInputWidth = 200;
+
+  searchTerm = '';
+  mode = 'collapsed';
+
+  /** Getter/Setter used to run change detection */
+  get animationState(): any {
+    return this._animationState;
+  }
+  set animationState(_animationState: any) {
+    if (this._animationState !== _animationState) {
+      this._animationState = _animationState;
     }
+    this.changeDetectorRef.detectChanges();
   }
-  private _expand: boolean;
+  _animationState;
 
-  /** Whether expand search if there is space available */
-  @Input()
-  get autoexpand(): any {
-    return this._autoexpand;
-  }
-  set autoexpand(autoexpand: any) {
-    autoexpand = coerceBooleanProperty(autoexpand);
-    if (this._autoexpand !== autoexpand) {
-      this._autoexpand = autoexpand;
-      this.autoExpand$.next(autoexpand);
-    }
-  }
-  private _autoexpand: boolean;
+  // == SOURCE OBSERVABLES ==================================================
+  onButtonClick$ = new Subject();
+  onTermChange$ = new Subject<any>();
+  onFocusChange$ = new Subject();
+  onKeyDownChange$ = new Subject<KeyboardEvent>();
+  onContainerWithChange$ = new BehaviorSubject<any>(undefined);
+  onAnimationDone$ = new Subject<AnimationEvent>();
 
   // === STATE OBSERVABLES ==================================================
-  private programmaticActionSubject = new Subject<any>();
-
-  private searchActions$ = merge(
-    this.autoExpand$.pipe(map(val => ({ autoExpand: val }))),
-    this.expanded$.pipe(map(val => ({ expanded: val }))),
-    this._focusInput$.pipe(
-      map(val => ({ focusElement: 'input', focusOrigin: val }))
+  /** Subject created to send actions to the state$ */
+  programmaticCommandSubject = new Subject();
+  actions$ = merge(
+    this.onButtonClick$.pipe(map(value => ({ mode: value }))),
+    this.onTermChange$.pipe(
+      // Filter 'Enter' and 'Escape' because these are handled by onKeyDownChange$
+      filter(event => event.key !== 'Enter' && event.key !== 'Escape'),
+      map(event => ({ term: event.target.value }))
     ),
-    this._focusButton$.pipe(
-      map(val => ({ focusElement: 'button', focusOrigin: val }))
-    ),
-    this._containerWidth$.pipe(map(val => ({ containerWidth: val }))),
-    this.programmaticActionSubject.asObservable()
+    this.onFocusChange$.pipe(map(value => ({ focus: value }))),
+    this.onKeyDownChange$.pipe(map(value => ({ keywordCommand: value.key }))),
+    this.onContainerWithChange$.pipe(map(width => ({ containerWidth: width }))),
+    this.programmaticCommandSubject.asObservable()
   );
 
-  private searchState$: Observable<SearchState> = this.searchActions$.pipe(
-    startWith(this._initialSearchState),
-    scan(
-      (searchState: SearchState, action): SearchState => ({
-        ...searchState,
-        ...action
-      })
-    )
+  state$ = this.actions$.pipe(
+    scan((searchState, action) => ({
+      ...searchState,
+      ...action
+    })),
+    tap(value => {
+      if (this.debug) {
+        console.log(`%c--> sds-search state:`, 'font-weight: bold');
+        console.log(value);
+      }
+    }),
+    shareReplay(1)
   );
 
   // == INTERMEDIATE OBSERVABLES ============================================
-
-  private expandedStream$ = this.searchState$.pipe(
-    pluck('expanded'),
+  mode$ = this.state$.pipe(
+    debounceTime(10),
+    pluck('mode'),
+    filter(value => value !== undefined),
     distinctUntilChanged()
   );
 
-  private autoExpandStream$ = this.searchState$.pipe(
-    pluck('autoExpand'),
+  term$ = this.state$.pipe(
+    pluck('term'),
+    filter(value => value !== undefined),
     distinctUntilChanged()
   );
 
-  private focusOrigin$ = this.searchState$.pipe(
-    pluck('focusOrigin'),
+  focus$ = this.state$.pipe(
+    pluck('focus'),
     distinctUntilChanged()
   );
 
-  private containerWidth$ = this.searchState$.pipe(
+  enter$ = this.state$.pipe(
+    pluck('keywordCommand'),
+    filter(value => value === 'Enter')
+  );
+
+  escape$ = this.state$.pipe(
+    pluck('keywordCommand'),
+    filter(value => value === 'Escape')
+  );
+
+  containerWidth$ = this.state$.pipe(
     pluck('containerWidth'),
-    distinctUntilChanged()
-  );
-
-  private expandedEvents$ = this.expandedStream$.pipe(
-    filter(val => val === true)
-  );
-
-  private collapsedEvents$ = this.expandedStream$.pipe(
-    filter(val => val === false)
+    filter(width => width !== undefined),
+    distinctUntilChanged(),
+    map((width: number) => ({
+      width: width,
+      hasSpace: this.calculateSpaceAvailable(width)
+    }))
   );
 
   // = SIDE EFFECTS =========================================================
-
-  // Search term value
-  private searchTermStream$ = this.searchTerm$.pipe(
-    filter(text => text.length > 2),
-    debounceTime(10),
-    distinctUntilChanged(),
-    tap(text => (this.searchTermValue = text))
-  );
-
-  // Expanded Events Side Effects
-  private expandedEventsSideEffects$ = this.expandedEvents$.pipe(
-    tap(() => {
-      this._showContainer = true;
-      this._state = 'enter';
-      this.expanded.emit();
+  animationDoneChange$ = combineLatest(
+    this.onAnimationDone$,
+    this.containerWidth$
+  ).pipe(
+    tap(([event, container]) => {
+      if (event.toState === 'enter' && !container.hasSpace) {
+        this.focusMonitor.focusVia(this.inputEl, 'program');
+      }
+      if (event.toState === 'exit') {
+        this.inputContainer = false;
+        this.focusMonitor.focusVia(this.buttonEl, 'program');
+      }
     })
   );
 
-  // Collapsed Events Side Effects
-  private collapsedEventsSideEffects$ = this.collapsedEvents$.pipe(
-    tap(() => {
-      this._state = 'exit';
-      this.collapsed.emit();
+  focusChange$ = combineLatest(this.focus$, this.containerWidth$).pipe(
+    tap(([focus, container]) => {
+      if (focus === null && !container.hasSpace) {
+        this.programmaticCommandSubject.next({ mode: 'collapsed' });
+      }
     })
   );
 
-  // Make container use all available space (flex-grow: '1')
-  private autoExpandSideEffects$ = this.autoExpandStream$.pipe(
-    tap(autoExpand => (this._expandStyle = autoExpand ? '1' : '0'))
+  enterPressed$ = this.enter$.pipe(
+    tap(() => {
+      this.programmaticCommandSubject.next({
+        mode: 'sending',
+        keywordCommand: null
+      });
+    })
   );
 
-  // Blur search when none of the search input elements its focused
-  private blur$ = this.focusOrigin$.pipe(
-    debounceTime(200), // check if current active item is not part of search inputs
-    filter(focusOrigin => focusOrigin === null),
-    map(focusOrigin => ({ focusElement: focusOrigin })),
-    tap(() => this.programmaticActionSubject.next({ focusElement: null })),
-    distinctUntilChanged()
+  escapePressed$ = combineLatest(this.escape$, this.containerWidth$).pipe(
+    tap(([_, container]) => {
+      if (!container.hasSpace) {
+        this.programmaticCommandSubject.next({
+          mode: 'collapsed',
+          keywordCommand: null
+        });
+      } else {
+        this.programmaticCommandSubject.next({ keywordCommand: null });
+      }
+    })
   );
 
-  // If there is a new container width or the search its expanded
-  // we need to set the text input to use all space available to the left
-  private setInputWidth$ = merge(
-    this.containerWidth$,
-    this.expandedEvents$
-  ).pipe(tap(() => this._setInputWidth()));
+  termChange$ = this.term$.pipe(
+    tap(term => {
+      this.searchTerm = <string>term;
+    })
+  );
 
-  // Collapse or Expand if its blur, autoexpand its set to true and there is
-  // appropiate space for the search component
-  private autoCollapse$ = merge(this.containerWidth$, this.blur$).pipe(
-    withLatestFrom(this.searchState$, (_, searchState) => ({
-      autoExpand: searchState.autoExpand,
-      containerWidth: searchState.containerWidth,
-      focusElement: searchState.focusElement
-    })),
-    filter(
-      ({ autoExpand, focusElement }) => autoExpand && focusElement === null
-    ),
-    tap(({ containerWidth }) => {
-      this.expand = containerWidth < SEARCH_WIDTH ? false : true;
+  modeChange$ = combineLatest(
+    this.mode$.pipe(startWith(this.mode)),
+    this.containerWidth$
+  ).pipe(
+    tap(([mode, container]) => {
+      this.mode =
+        mode === 'collapsed' && container.hasSpace ? 'search' : <string>mode;
+      switch (this.mode) {
+        case 'search':
+          this.calculateInputWidth(container.hasSpace);
+          this.animationState = 'enter';
+          this.inputContainer = true;
+          break;
+        case 'collapsed':
+          this.animationState = 'exit';
+          break;
+        case 'sending':
+          if (this.searchTerm !== '') {
+            this.term.emit(this.searchTerm);
+          }
+          this.programmaticCommandSubject.next({
+            mode: container.hasSpace ? 'search' : 'collapsed'
+          });
+          break;
+        default:
+          break;
+      }
     })
   );
 
   // == SUBSCRIPTION ========================================================
-
-  searchSubscription = merge(
-    this.searchTermStream$,
-    this.expandedEventsSideEffects$,
-    this.collapsedEventsSideEffects$,
-    this.autoExpandSideEffects$,
-    this.blur$,
-    this.autoCollapse$,
-    this.setInputWidth$
+  mainSubscription = merge(
+    this.modeChange$,
+    this.termChange$,
+    this.focusChange$,
+    this.animationDoneChange$,
+    this.enterPressed$,
+    this.escapePressed$,
   ).subscribe();
 
-  // =========================================================================
-
   constructor(
-    private _elementRef: ElementRef,
-    private _focusMonitor: FocusMonitor
+    private focusMonitor: FocusMonitor,
+    private changeDetectorRef: ChangeDetectorRef
   ) {}
 
   ngOnDestroy() {
-    this.searchSubscription.unsubscribe();
+    this.mainSubscription.unsubscribe();
   }
 
-  @HostListener('keydown', ['$event'])
-  _handleKeydown(event: KeyboardEvent) {
-    // tslint:disable-next-line: deprecation
-    const keyCode = event.keyCode;
-    switch (keyCode) {
-      case ENTER:
-        if (this.expand) {
-          this._sendSearchTerm();
-          event.preventDefault();
-        }
-      // tslint:disable-next-line: no-switch-case-fall-through
-      case ESCAPE:
-        if (this.expand && !this._hasSpace) {
-          this.expand = false;
-          this._focusMonitor.focusVia(this.buttonEl, 'program');
-        }
+  handleButtonClick(event) {
+    event.preventDefault();
+    switch (this.mode) {
+      case 'collapsed':
+        this.onButtonClick$.next('search');
+        break;
+      case 'search':
+        this.onButtonClick$.next('sending');
         break;
       default:
+        break;
     }
   }
 
-  _handleClick() {
-    this.expand ? this._sendSearchTerm() : (this.expand = true);
+  calculateSpaceAvailable(containerWidth: number): boolean {
+    return containerWidth >= this.defaultInputWidth;
   }
 
-  _setInputWidth(): void {
-    const padding = 20;
-    // TODO: Get button width from this.buttonEl
-    const buttonWidth = 43;
-    const nativeElement = this._elementRef.nativeElement;
-    const nativeElementParent = nativeElement.parentElement;
+  calculateInputWidth(hasSpace): void {
+    // Padding to the left of the search bar
+    let padding = 0;
+
+    // Maximun input width
+    const maxWidth = 500;
+
+    // Width of search button
+    const buttonWidth = this.buttonEl.nativeElement.offsetWidth;
+
+    // Search Component HTML Element
+    const nativeElement = this.containerEl.nativeElement;
+
+    // Search Container HTML Element
+    let nativeElementParent;
+    if (this.parentSelector) {
+      nativeElementParent = nativeElement.closest(this.parentSelector);
+    } else {
+      nativeElementParent = nativeElement.parentElement.parentElement;
+    }
+
+    // Use element's position relative to the viewport
+    // to calculate input width
+    //                _______________________
+    // Left Pos. -->  |            | Button |<-- Right Pos.
+    // Input Width -> ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+
+    let leftPosition: number;
+    // If there is enough space then use the search COMPONENT SPACE
+    // else use the search CONTAINER SPACE
+    if (hasSpace === true) {
+      // Search component Left Position
+      leftPosition = nativeElement.getBoundingClientRect().left;
+    } else {
+      padding = 20;
+      // Search container Left Position
+      leftPosition = nativeElementParent.getBoundingClientRect().left;
+    }
+    console.log(leftPosition);
+    // Because the search expands to the left,
+    // we use search component right position
     const rightPosition = nativeElement.getBoundingClientRect().right;
-    const leftPosition = nativeElementParent.getBoundingClientRect().left;
-    const inputWidth = Math.floor(
-      rightPosition - leftPosition - buttonWidth - padding
-    );
-    this._inputWidth = inputWidth + 'px';
-  }
 
-  _sendSearchTerm() {
-    console.log('Search for: ' + this.searchTermValue);
-  }
+    // Calculation start with right position because its always a higher number
+    const calculation = rightPosition - leftPosition - buttonWidth - padding;
+    // Round width
+    const inputWidth = Math.floor(calculation);
 
-  _containerWidthChanged(containerWidth) {
-    this._hasSpace = containerWidth > SEARCH_WIDTH ? true : false;
-    this._containerWidth$.next(containerWidth);
-  }
-
-  /** Callback when input animation its done */
-  _onAnimationDone(event: AnimationEvent) {
-    if (event.toState === 'enter' && !this._hasSpace) {
-      this._focusMonitor.focusVia(
-        // TODO: @ViewChild('inputEl') not working for hidden elments
-        // nativeElement > div[0] > div[0] > input[1]
-        this._elementRef.nativeElement.childNodes[0].childNodes[1]
-          .childNodes[1],
-        'program'
-      );
-    }
-    if (event.toState === 'exit') {
-      this._showContainer = false;
-    }
+    // Add pixel unit because this variable its a parameter
+    // for the search input animation
+    this.inputWidth =
+      inputWidth > maxWidth ? maxWidth + 'px' : inputWidth + 'px';
   }
 }

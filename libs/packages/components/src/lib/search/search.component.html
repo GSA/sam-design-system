@@ -1,31 +1,36 @@
 <div
+  #containerEl
+  cdkMonitorSubtreeFocus
+  (cdkFocusChange)="onFocusChange$.next($event)"
   class="display-flex flex-justify-end"
-  (sdsObserveWidth)="_containerWidthChanged($event)"
+  (sdsObserveWidth)="onContainerWithChange$.next($event)"
+  (keydown.enter)="onKeyDownChange$.next($event)"
+  (keydown.esc)="onKeyDownChange$.next($event)"
 >
-  <div *ngIf="_showContainer" class="position-relative">
+  <div *ngIf="inputContainer" class="position-relative">
     <label class="usa-sr-only" for="search-field">Search</label>
     <input
-      cdkMonitorElementFocus
-      (keyup)="searchTerm$.next($event.target.value)"
-      [value]="searchTermValue"
-      (cdkFocusChange)="_focusInput$.next($event)"
-      [@inputExpand]="{ value: _state, params: { inputWidth: _inputWidth } }"
-      (@inputExpand.done)="_onAnimationDone($event)"
+      #inputEl
+      (keyup)="onTermChange$.next($event)"
+      [value]="term$ | async"
+      [@inputExpand]="{
+        value: animationState,
+        params: { inputWidth: inputWidth }
+      }"
+      (@inputExpand.done)="onAnimationDone$.next($event)"
+      type="text"
       id="search-field"
-      class="usa-input position-absolute right-0"
-      style="height: 37px; max-width: none;"
-      type="search"
-      name="search"
+      class="usa-input position-absolute margin-top-0 right-0"
+      style="height: 37px; border-right: none; max-width: none;"
     />
   </div>
   <button
     #buttonEl
-    cdkMonitorElementFocus
-    (cdkFocusChange)="_focusButton$.next($event)"
+    type="button"
+    (click)="handleButtonClick($event)"
     class="usa-button usa-button--primary margin-right-0"
-    [class.usa-button--attached]="expand"
-    style="padding:10px 13px;"
-    (click)="_handleClick()"
+    [class.usa-button--attached]="inputContainer"
+    style="padding:10px 13px; width: 43px;"
   >
     <fa-icon [icon]="['fas', 'search']"></fa-icon>
     <span class="usa-sr-only">Search</span>

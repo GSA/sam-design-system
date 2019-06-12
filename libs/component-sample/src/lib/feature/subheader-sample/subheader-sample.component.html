@@ -1,72 +1,112 @@
-<div class="sds-subheader">
-  <!-- Header -->
-
-  <div
-    sdsTruncateTextByLine="2"
-    class="sds-subheader__title margin-right-4"
-    style="transition: opacity .5s; transition-timing-function: cubic-bezier(0, 0, 0.2, 1);"
-    [ngStyle]="{ opacity: searchExpanded ? '0' : '1' }"
-  >
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor a
-    enim ac molestie. Nam ut risus magna. Quisque at pulvinar sem, id dictum
-    ipsum. Nam commodo rhoncus mauris, id gravida lorem congue nec. Sed dictum,
-    tellus sed commodo sempertr
+<div #subheader class="sds-subheader grid-row flex-align-center">
+  <div class="tablet:grid-col-4">
+    <!-- =============== TITLE =============== -->
+    <!-- Set to 2 maximum number of text lines (sdsTruncateTextByLine) -->
+    <div class="sds-subheader__title margin-right-2" sdsTruncateTextByLine="2">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor a
+      enim ac molestie. Nam ut risus magna. Quisque at pulvinar sem, id dictum
+      ipsum. Nam commodo rhoncus mauris, id gravida lorem congue nec. Sed
+      dictum, tellus sed commodo sempertr
+    </div>
   </div>
-
-  <!-- Search -->
-  <sds-search
-    class="margin-right-5"
-    autoexpand="true"
-    (expanded)="SearchExpanded()"
-    (collapsed)="SearchCollapsed()"
-  ></sds-search>
-
-  <!-- Buttons -->
-  <button class="usa-button usa-button--secondary">Button</button>
-  <button class="usa-button usa-button--primary margin-right-5">Button</button>
-
-  <!-- Actions Menu -->
-  <button
-    class="usa-button usa-button--primary sds-button--circle"
-    [sdsMenuTriggerFor]="menu"
-  >
-    <fa-icon [icon]="['fas', 'ellipsis-v']"></fa-icon>
-    <span class="usa-sr-only">Toggle Actions Menu</span>
-  </button>
-  <sds-menu #menu="sdsMenu" xPosition="before" overlapTrigger="true">
-    <sds-menu-header>Actions</sds-menu-header>
-    <button sds-menu-item>
-      <fa-layers [fixedWidth]="true" size="2x" class="margin-right-05">
-        <fa-icon [icon]="['fas', 'circle']" class="text-base-lighter"></fa-icon>
-        <fa-icon
-          [icon]="['sam', 'bars']"
-          transform="shrink-8"
-          class="text-base"
-        ></fa-icon>
-      </fa-layers>
-      Download
-    </button>
-    <button sds-menu-item>
-      <fa-layers [fixedWidth]="true" size="2x" class="margin-right-05">
-        <fa-icon [icon]="['fas', 'circle']" class="text-base-lighter"></fa-icon>
-        <fa-icon
-          [icon]="['sam', 'bars']"
-          transform="shrink-8"
-          class="text-base"
-        ></fa-icon>
-      </fa-layers>
-      Follow
-    </button>
-    <button sds-menu-item>
-      <fa-layers [fixedWidth]="true" size="2x" class="margin-right-05">
-        <fa-icon [icon]="['fas', 'circle']" class="text-base-lighter"></fa-icon>
-        <fa-icon
-          [icon]="['sam', 'bars']"
-          transform="shrink-8"
-          class="text-base"
-        ></fa-icon>
-      </fa-layers>
-      Share
-    </button>
-  </sds-menu>
+  <div class="grid-col-fill">
+    <div class="grid-row">
+      <div class="grid-col-fill">
+        <div class="grid-row">
+          <div class="grid-col-auto tablet:order-2">
+            <!-- =============== PRIMARY/SECONDARY BUTTONS =============== -->
+            <div class="subheader__buttons display-flex">
+              <button class="usa-button usa-button--secondary">Button</button>
+              <button
+                class="usa-button usa-button--primary tablet:margin-right-3"
+              >
+                Button
+              </button>
+            </div>
+          </div>
+          <div class="grid-col-fill margin-right-2">
+            <!-- =============== SEARCH =============== -->
+            <sds-search
+              (term)="log($event)"
+              parentSelector=".sds-subheader"
+              debug="true"
+            ></sds-search>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="tablet:display-none">
+          <!-- =============== ACTIONS BUTTONS =============== -->
+          <button class="sds-icon-buttons">
+              <fa-icon [icon]="['sam', 'bars']" transform="shrink-6"></fa-icon>
+          </button>
+          <button class="sds-icon-buttons">
+              <fa-icon [icon]="['sam', 'bars']" transform="shrink-6"></fa-icon>
+          </button>
+          <button class="sds-icon-buttons">
+              <fa-icon [icon]="['sam', 'bars']" transform="shrink-6"></fa-icon>
+          </button>
+        </div>
+        <!-- =============== ACTIONS MENU =============== -->
+        <!-- Button that triggers menu (sdsMenuTriggerFor) -->
+        <div class="subheader__menu">
+          <button
+            class="usa-button usa-button--primary sds-button--circle"
+            [sdsMenuTriggerFor]="menu"
+          >
+            <fa-icon [icon]="['fas', 'ellipsis-v']"></fa-icon>
+            <span class="usa-sr-only">Toggle Actions Menu</span>
+          </button>
+          <!-- Menu content -->
+          <sds-menu #menu="sdsMenu" xPosition="before" overlapTrigger="true">
+            <!-- Menu header (optional) -->
+            <sds-menu-header>Actions</sds-menu-header>
+            <!-- Menu items -->
+            <button sds-menu-item>
+              <fa-layers [fixedWidth]="true" size="2x" class="margin-right-05">
+                <fa-icon
+                  [icon]="['fas', 'circle']"
+                  class="text-base-lighter"
+                ></fa-icon>
+                <fa-icon
+                  [icon]="['sam', 'bars']"
+                  transform="shrink-8"
+                  class="text-base"
+                ></fa-icon>
+              </fa-layers>
+              Download
+            </button>
+            <button sds-menu-item>
+              <fa-layers [fixedWidth]="true" size="2x" class="margin-right-05">
+                <fa-icon
+                  [icon]="['fas', 'circle']"
+                  class="text-base-lighter"
+                ></fa-icon>
+                <fa-icon
+                  [icon]="['sam', 'bars']"
+                  transform="shrink-8"
+                  class="text-base"
+                ></fa-icon>
+              </fa-layers>
+              Follow
+            </button>
+            <button sds-menu-item>
+              <fa-layers [fixedWidth]="true" size="2x" class="margin-right-05">
+                <fa-icon
+                  [icon]="['fas', 'circle']"
+                  class="text-base-lighter"
+                ></fa-icon>
+                <fa-icon
+                  [icon]="['sam', 'bars']"
+                  transform="shrink-8"
+                  class="text-base"
+                ></fa-icon>
+              </fa-layers>
+              Share
+            </button>
+          </sds-menu>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
