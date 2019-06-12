@@ -24,7 +24,7 @@
                   <ul class="usa-list usa-list--unstyled">
                     <li class="usa-footer__secondary-link" *ngFor="let link of section.links">
                       <ng-container
-                        [ngTemplateOutlet]="navigaitonHelper.isLinkInternal(link)  ? footerRouteLinkTemplate : navigaitonHelper.isLinkExternal(link)? footerHREFLinkTemplate : footerEVENTLinkTemplate "
+                        [ngTemplateOutlet]="navigationHelper.isLinkInternal(link)  ? footerRouteLinkTemplate : navigationHelper.isLinkExternal(link)? footerHREFLinkTemplate : footerEVENTLinkTemplate "
                         [ngTemplateOutletContext]="{$implicit:link}"></ng-container>
                     </li>
                   </ul>

@@ -12,7 +12,7 @@
 
 <ng-template #sideNavLinkTemplate let-link>
     <ng-container
-        [ngTemplateOutlet]="navigaitonHelper.isLinkInternal(link)  ? sideNavRouteLinkTemplate : navigaitonHelper.isLinkExternal(link) ? sideNavHREFLinkTemplate : sideNavEVENTLinkTemplate "
+        [ngTemplateOutlet]="navigationHelper.isLinkInternal(link)  ? sideNavRouteLinkTemplate : navigationHelper.isLinkExternal(link) ? sideNavHREFLinkTemplate : sideNavEVENTLinkTemplate "
         [ngTemplateOutletContext]="{$implicit:link}"></ng-container>
     <ul *ngIf="link.children" class="usa-sidenav__sublist">
         <li *ngFor="let link of link.children" class="sidenav__item">

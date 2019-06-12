@@ -1,5 +1,5 @@
 import { INavigationLink, NavigationMode } from './common-navigation-model';
-export class NavigaitonHelper {
+export class NavigationHelper {
 
     /**
      * checks if link is internal

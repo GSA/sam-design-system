@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FooterModel } from './model/FooterModel';
 import { INavigationLink, NavigationMode } from '../common-navigation/common-navigation-model';
-import { NavigaitonHelper } from '../common-navigation/navigation-helper';
+import { NavigationHelper } from '../common-navigation/navigation-helper';
 
 @Component({
   selector: 'sds-footer',
@@ -13,7 +13,7 @@ export class SdsFooterComponent {
   /**
    * Navigation helper
    */
-  navigaitonHelper = new NavigaitonHelper();
+  navigationHelper = new NavigationHelper();
 
   /**
    * Model used for the different display portions of the footer

@@ -4,7 +4,7 @@
   <div class="usa-navbar">
     <div class="usa-logo" id="extended-logo">
       <em class="usa-logo__text">
-        <ng-container [ngTemplateOutlet]="navigaitonHelper.isLinkInternal(model.home) ? homeLinkRouteTemplate : homeLinkHREFTemplate"
+        <ng-container [ngTemplateOutlet]="navigationHelper.isLinkInternal(model.home) ? homeLinkRouteTemplate : homeLinkHREFTemplate"
           [ngTemplateOutletContext]="{$implicit:model.home}"></ng-container>
       </em>
     </div>
@@ -34,7 +34,7 @@
         <ul class="usa-nav__secondary-links">
           <li *ngFor="let link of model.secondaryLinks" class="usa-nav__secondary-item">
             <ng-container
-              [ngTemplateOutlet]="navigaitonHelper.isLinkInternal(link)  ? secondaryRouteLinkTemplate : navigaitonHelper.isLinkExternal(link)? secondaryHREFLinkTemplate : secondaryEVENTLinkTemplate"
+              [ngTemplateOutlet]="navigationHelper.isLinkInternal(link)  ? secondaryRouteLinkTemplate : navigationHelper.isLinkExternal(link)? secondaryHREFLinkTemplate : secondaryEVENTLinkTemplate"
               [ngTemplateOutletContext]="{$implicit:link}"></ng-container>
           </li>
         </ul>
@@ -87,7 +87,7 @@
 
 <ng-template #linkTemplate let-link>
   <ng-container
-    [ngTemplateOutlet]="navigaitonHelper.isLinkInternal(link)  ? linkRouteTemplate : navigaitonHelper.isLinkExternal(link)? linkHREFTemplate : linkEventTemplate "
+    [ngTemplateOutlet]="navigationHelper.isLinkInternal(link)  ? linkRouteTemplate : navigationHelper.isLinkExternal(link)? linkHREFTemplate : linkEventTemplate "
     [ngTemplateOutletContext]="{$implicit:link}"></ng-container>
 </ng-template>
 
@@ -115,7 +115,7 @@
   <ul [attr.id]="removeWhiteSpace(link.text)+'-section'" class="usa-nav__submenu" hidden>
     <li *ngFor="let childLink of link.children" class="usa-nav__submenu-item">
       <ng-container
-        [ngTemplateOutlet]="navigaitonHelper.isLinkInternal(childLink)  ? dropDownRouteLinkTemplate : navigaitonHelper.isLinkExternal(childLink)? dropDownHREFLinkTemplate : dropDownEVENTLinkTemplate "
+        [ngTemplateOutlet]="navigationHelper.isLinkInternal(childLink)  ? dropDownRouteLinkTemplate : navigationHelper.isLinkExternal(childLink)? dropDownHREFLinkTemplate : dropDownEVENTLinkTemplate "
         [ngTemplateOutletContext]="{$implicit:childLink}"></ng-container>
     </li>
   </ul>
