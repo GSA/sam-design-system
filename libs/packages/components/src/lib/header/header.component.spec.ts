@@ -4,7 +4,7 @@ import { SdsHeaderComponent } from './header.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SdsTopBannerComponent } from '../top-banner/top-banner.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { NavigationMode } from '../common-navigation-model/common-navigation-model';
+import { NavigationMode } from '../common-navigation/common-navigation-model';
 
 
 describe('SdsHeaderComponent', () => {
@@ -86,6 +86,14 @@ describe('SdsHeaderComponent', () => {
     expect(component.hasCounter()).toBe(false);
     component.model.secondaryLinks[0].hasCounter = true;
     expect(component.hasCounter()).toBe(true);
+  });
+
+
+  it('event click', () => {
+    let navItem = { mode: NavigationMode.EVENT, text: 'test', route: '/' };
+    spyOn(component.linkEvent, 'emit');
+    component.linkClickEvent(navItem);
+    expect(component.linkEvent.emit).toHaveBeenCalledWith(navItem);
   });
 
 });

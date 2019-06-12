@@ -5,7 +5,7 @@ import { SdsAccordionModule } from '../accordion/accordion.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SideNavigationModel, NavigationLink } from './model/side-navigation-model';
-import { NavigationMode } from '../common-navigation-model/common-navigation-model';
+import { NavigationMode } from '../common-navigation/common-navigation-model';
 describe('SdsSideNavigationComponent', () => {
   let component: SdsSideNavigationComponent;
   let fixture: ComponentFixture<SdsSideNavigationComponent>;
@@ -169,7 +169,12 @@ describe('SdsSideNavigationComponent', () => {
     expect(component.model.navigationLinks[0].children[1].children[0].selected).toBeFalsy();
   });
 
-
+  it('event click', () => {
+    let navItem = { mode: NavigationMode.EVENT, text: 'test', route: '/' };
+    spyOn(component.linkEvent, 'emit');
+    component.linkClickEvent(navItem);
+    expect(component.linkEvent.emit).toHaveBeenCalledWith(navItem);
+  });
 
 });
 

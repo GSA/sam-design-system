@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { HeaderModel, HeaderNavigationLink, HeaderSecondaryLink } from './model/HeaderModel';
-import { INavigationLink, NavigationMode, Selectable } from '../common-navigation-model/common-navigation-model';
-import { NavigaitonHelper } from './../common-navigation-model/navigation-helper';
+import { INavigationLink, NavigationMode, Selectable } from '../common-navigation/common-navigation-model';
+import { NavigaitonHelper } from '../common-navigation/navigation-helper';
 @Component({
   selector: 'sds-header',
   templateUrl: './header.component.html',

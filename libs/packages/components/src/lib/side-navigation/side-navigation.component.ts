@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { SideNavigationModel, NavigationLink } from './model/side-navigation-model';
-import { INavigationLink, NavigationMode } from '../common-navigation-model/common-navigation-model';
-import { NavigaitonHelper } from './../common-navigation-model/navigation-helper';
+import { INavigationLink, NavigationMode } from '../common-navigation/common-navigation-model';
+import { NavigaitonHelper } from '../common-navigation/navigation-helper';
 
 @Component({
   selector: 'sds-side-navigation',
