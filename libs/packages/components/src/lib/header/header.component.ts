@@ -1,13 +1,18 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { HeaderModel, HeaderNavigationLink, HeaderSecondaryLink } from './model/HeaderModel';
 import { INavigationLink, NavigationMode, Selectable } from '../common-navigation-model/common-navigation-model';
-
+import { NavigaitonHelper } from './../common-navigation-model/navigation-helper';
 @Component({
   selector: 'sds-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
 export class SdsHeaderComponent {
+
+  /**
+  * Navigation helper
+  */
+  navigaitonHelper = new NavigaitonHelper();
 
   /**
    * Model used for the different display portions of the header 
@@ -138,19 +143,5 @@ export class SdsHeaderComponent {
     return false;
   }
 
-  /**
-   * checks if link is internal
-   * @param link 
-   */
-  isLinkInternal(link: INavigationLink) {
-    return link.mode === NavigationMode.INTERNAL;
-  }
 
-  /**
-   * checks if link is external
-   * @param link 
-   */
-  isLinkExternal(link: INavigationLink) {
-    return link.mode === NavigationMode.EXTERNAL;
-  }
 }

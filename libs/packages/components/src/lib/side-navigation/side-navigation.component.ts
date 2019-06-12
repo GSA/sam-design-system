@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { SideNavigationModel, NavigationLink } from './model/side-navigation-model';
 import { INavigationLink, NavigationMode } from '../common-navigation-model/common-navigation-model';
-
+import { NavigaitonHelper } from './../common-navigation-model/navigation-helper';
 
 @Component({
   selector: 'sds-side-navigation',
@@ -9,6 +9,11 @@ import { INavigationLink, NavigationMode } from '../common-navigation-model/comm
   styleUrls: ['./side-navigation.component.scss']
 })
 export class SdsSideNavigationComponent {
+
+  /**
+   * Navigation helper
+   */
+  navigaitonHelper = new NavigaitonHelper();
 
   /**
    * Model used for the different display portions of the side navigation 
@@ -97,19 +102,4 @@ export class SdsSideNavigationComponent {
     return false;
   }
 
-  /**
-   * checks if link is internal
-   * @param link 
-   */
-  isLinkInternal(link: INavigationLink) {
-    return link.mode === NavigationMode.INTERNAL;
-  }
-
-  /**
-   * checks if link is external
-   * @param link 
-   */
-  isLinkExternal(link: INavigationLink) {
-    return link.mode === NavigationMode.EXTERNAL;
-  }
 }
