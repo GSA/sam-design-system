@@ -23,7 +23,9 @@
                   <span class="usa-footer__primary-link">{{section.text}}</span>
                   <ul class="usa-list usa-list--unstyled">
                     <li class="usa-footer__secondary-link" *ngFor="let link of section.links">
-                      <a [routerLink]="[link.route]">{{link.text}}</a>
+                      <ng-container
+                        [ngTemplateOutlet]="navigationHelper.isLinkInternal(link)  ? footerRouteLinkTemplate : navigationHelper.isLinkExternal(link)? footerHREFLinkTemplate : footerEVENTLinkTemplate "
+                        [ngTemplateOutletContext]="{$implicit:link}"></ng-container>
                     </li>
                   </ul>
                 </section>
@@ -50,3 +52,15 @@
     </div>
   </div>
 </footer>
+
+<ng-template #footerRouteLinkTemplate let-link>
+  <a [routerLink]="[link.route]">{{link.text}}</a>
+</ng-template>
+
+<ng-template #footerHREFLinkTemplate let-link>
+  <a [attr.href]="[link.route]">{{link.text}}</a>
+</ng-template>
+
+<ng-template #footerEVENTLinkTemplate let-link>
+  <a href="javascript:void(0)" (click)="linkClickEvent(link)">{{link.text}}</a>
+</ng-template>

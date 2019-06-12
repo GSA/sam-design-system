@@ -1,35 +1,51 @@
-import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, ChangeDetectorRef, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { SideNavigationModel, NavigationMode } from '@gsa-sam/components'
+
+
+
 
 @Component({
   selector: 'sds-side-navigation-sample',
   templateUrl: 'side-navigation-sample.component.html'
 })
 
-export class SideNavigationSampleComponent implements AfterViewInit {
+export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
 
+  public linkEvent = new BehaviorSubject<object>(null);
+
+  ngOnInit() {
+
+    this.linkEvent.subscribe(
+      value => {
+        console.log('Link Event Clicked Change');
+        console.log(value);
+      }
+    );
+  }
 
 
   @ViewChild('sideNav') sideNav;
   constructor(private change: ChangeDetectorRef) { }
-  model = {
+  model: SideNavigationModel = {
     navigationLinks: [{
-      text: 'Parent 1', id: 'linkp1', children: [
-        { text: 'Child 1 of Parent 1', route: '/', id: 'linkc1p1' },
+      text: 'Parent 1', id: 'linkp1', route: '/', mode: NavigationMode.INTERNAL, children: [
+        { text: 'Child 1 of Parent 1', route: '/', id: 'linkc1p1', mode: NavigationMode.INTERNAL },
         {
-          text: 'Child 2 of Parent 1', route: '/', id: 'linkc2p1', children: [
-            { text: 'Grandchild 1 of Child 2 of Parent 1', route: '/', id: 'linkgc1c2p1' }]
+          text: 'Child 2 of Parent 1', route: '/', id: 'linkc2p1', mode: NavigationMode.INTERNAL, children: [
+            { text: 'Grandchild 1 of Child 2 of Parent 1', route: '/', id: 'linkgc1c2p1', mode: NavigationMode.INTERNAL }]
         },
-        { text: 'Child 3 of Parent 1', route: '/', id: 'linkc3p1' },
+        { text: 'Child 3 of Parent 1', route: '/', id: 'linkc3p1', mode: NavigationMode.INTERNAL },
         {
-          text: 'Child 4 of Parent 1', route: '/', id: 'linkc4p1'
+          text: 'Child 4 of Parent 1', route: '/', id: 'linkc4p1', mode: NavigationMode.INTERNAL
           , children: [
-            { text: 'Grandchild 1 of Child 4 of Parent 1', route: '/', id: 'linkgc1c4p1' },
+            { text: 'Grandchild 1 of Child 4 of Parent 1', route: '/', id: 'linkgc1c4p1', mode: NavigationMode.INTERNAL },
             {
-              text: 'Grandchild 2 of Child 4 of Parent 1', route: '/', id: 'linkgc2c4p1',
+              text: 'Grandchild 2 of Child 4 of Parent 1', route: '/', id: 'linkgc2c4p1', mode: NavigationMode.INTERNAL,
               children: [
-                { text: ' Great 1 of Grandchild 2 of Child 4 of Parent 1', route: '/', id: 'linkg1gc1c4p1' },
+                { text: ' Great 1 of Grandchild 2 of Child 4 of Parent 1', route: '/', id: 'linkg1gc1c4p1', mode: NavigationMode.INTERNAL },
                 {
-                  text: 'Great 2 of Grandchild 2 of Child 4 of Parent 1', route: '/', id: 'linkg2gc1c4p1'
+                  text: 'Great 2 of Grandchild 2 of Child 4 of Parent 1', route: '/', id: 'linkg2gc1c4p1', mode: NavigationMode.INTERNAL
                   //, children: [{ text: 'Great 1 of  Great 1 of Grandchild 2 of Child 4 of Parent 1', route: '/', id: 'linkg1gc1c4p1' }]
                 },
               ]
@@ -39,16 +55,16 @@ export class SideNavigationSampleComponent implements AfterViewInit {
       ]
     },
     {
-      text: 'Parent 2', id: 'linkp2', children: [
+      text: 'Parent 2', id: 'linkp2', route: '/', mode: NavigationMode.INTERNAL, children: [
         {
-          text: 'Child 1 of Parent 2', route: '/', id: 'linkc1p2', children: [
+          text: 'Child 1 of Parent 2', route: '/', id: 'linkc1p2', mode: NavigationMode.INTERNAL, children: [
 
-            { text: 'Grandchild 1 Child 1 of Parent 2', route: '/', id: 'linkgc1c1p2' },
+            { text: 'Grandchild 1 Child 1 of Parent 2', route: '/', id: 'linkgc1c1p2', mode: NavigationMode.INTERNAL },
           ]
         },
-        { text: 'Child 2 of Parent 2', route: '/', id: 'linkc2p2' },
-        { text: 'Child 3 of Parent 2', route: '/', id: 'linkc3p2' },
-        { text: 'Child 4 of Parent 2', route: '/', id: 'linkc4p2' }
+        { text: 'Child 2 of Parent 2', route: '/', id: 'linkc2p2', mode: NavigationMode.INTERNAL },
+        { text: 'Child 3 of Parent 2', route: '/', id: 'linkc3p2', mode: NavigationMode.INTERNAL },
+        { text: 'Child 4 of Parent 2', route: '/', id: 'linkc4p2', mode: NavigationMode.INTERNAL }
       ]
     }
     ]
