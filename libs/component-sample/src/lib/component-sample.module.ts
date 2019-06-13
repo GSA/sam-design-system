@@ -18,6 +18,10 @@ import { SideNavigationSampleModule } from './feature/side-navigation-sample/sid
 import { SideNavigationSampleComponent } from './feature/side-navigation-sample/side-navigation-sample.component';
 import { SearchResultListSampleComponent } from './feature/search-result-list-sample/search-result-list-sample.component';
 import { SearchResultListSampleModule } from './feature/search-result-list-sample/search-result-list-sample.module';
+import { SideMenuFiltersSampleModule } from './feature/side-menu-filters-sample/side-menu-filters-sample.module';
+import { SideMenuFiltersSampleComponent } from './feature/side-menu-filters-sample/side-menu-filters-sample.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormlyModule } from '@ngx-formly/core';
 
 const appIcons = {
   // App Specific Icons
@@ -30,6 +34,7 @@ export const ROUTES: Routes = [
   { path: 'toolbar', component: ToolbarSampleComponent },
   { path: 'icon', component: IconSampleComponent },
   { path: 'sideNav', component: SideNavigationSampleComponent },
+  { path: 'sideFilters', component: SideMenuFiltersSampleComponent },
   { path: 'searchResultList', component: SearchResultListSampleComponent },
 ];
 
@@ -38,12 +43,16 @@ export const ROUTES: Routes = [
     CommonModule,
     FontAwesomeModule,
     RouterModule.forChild(ROUTES),
+    FormsModule,
+    FormlyModule,
+    ReactiveFormsModule,
     HeaderSampleModule,
     FooterSampleModule,
     PaginationSampleModule,
     ToolbarSampleModule,
     IconSampleModule,
     SideNavigationSampleModule,
+    SideMenuFiltersSampleModule,
     SearchResultListSampleModule,
   ],
   exports: [RouterModule]
