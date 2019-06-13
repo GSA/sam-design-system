@@ -5,14 +5,5 @@
   },
   "include": ["**/*.ts",
   "@gsa-sam/component-sample"
-  ],
-  "paths": {
-    "sam-formly": [
-      "dist/sam-formly"
-    ],
-    "sam-formly/*": [
-      "dist/sam-formly/*"
-    ]
-  }
-
+  ]
 }
