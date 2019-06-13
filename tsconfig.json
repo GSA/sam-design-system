@@ -39,6 +39,9 @@
       ],
       "@gsa-sam/layout-sample": [
         "libs/layout-sample/src/index.ts"
+      ],
+      "@gsa-sam/sam-formly-sample": [
+        "libs/sam-formly-sample/src/index.ts"
       ]
     }
   },
