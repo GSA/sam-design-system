@@ -1,3 +1,5 @@
+import { INavigationLink, NavigationMode, Selectable } from '../../common-navigation/common-navigation-model';
+
 export class SideNavigationModel {
 
     /**
@@ -7,7 +9,13 @@ export class SideNavigationModel {
 }
 
 
-export class NavigationLink implements Selectable {
+export class NavigationLink implements Selectable, INavigationLink {
+
+    /**
+     * Internal Angualr Routes, External HREF, EVENT: event on parent component
+     */
+    mode: NavigationMode;
+
     /**
      * Text to be displayed in the link or button
      */
@@ -35,16 +43,5 @@ export class NavigationLink implements Selectable {
 }
 
 
-export interface Selectable {
-    /**
-     * Identifier for the item when search for selected 
-     */
-    id: string;
-
-    /**
-     * Status of if the item is selected 
-     */
-    selected?: boolean;
-}
 
 

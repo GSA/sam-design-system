@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { SideNavigationModel, NavigationLink } from './model/side-navigation-model';
+import { INavigationLink, NavigationMode } from '../common-navigation/common-navigation-model';
+import { NavigationHelper } from '../common-navigation/navigation-helper';
 
 @Component({
   selector: 'sds-side-navigation',
@@ -7,6 +9,11 @@ import { SideNavigationModel, NavigationLink } from './model/side-navigation-mod
   styleUrls: ['./side-navigation.component.scss']
 })
 export class SdsSideNavigationComponent {
+
+  /**
+   * Navigation helper
+   */
+  navigationHelper = new NavigationHelper();
 
   /**
    * Model used for the different display portions of the side navigation 
@@ -79,4 +86,20 @@ export class SdsSideNavigationComponent {
       }
     }
   }
+
+  /**
+   * event for event based
+   */
+  @Output()
+  linkEvent = new EventEmitter<INavigationLink>();
+
+  /**
+   * Link clicked and emits the link data into an event
+   * @param link 
+   */
+  linkClickEvent(link: INavigationLink) {
+    this.linkEvent.emit(link);
+    return false;
+  }
+
 }

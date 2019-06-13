@@ -5,19 +5,19 @@ import { SdsAccordionModule } from '../accordion/accordion.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SideNavigationModel, NavigationLink } from './model/side-navigation-model';
-
+import { NavigationMode } from '../common-navigation/common-navigation-model';
 describe('SdsSideNavigationComponent', () => {
   let component: SdsSideNavigationComponent;
   let fixture: ComponentFixture<SdsSideNavigationComponent>;
 
   let model: SideNavigationModel = {
     navigationLinks: [{
-      text: 'Parent 1', id: 'linkp1', route: '/', children: [
-        { text: 'Child 1 of Parent 1', route: '/', id: 'linkc1p1' },
+      text: 'Parent 1', id: 'linkp1', route: '/', mode: NavigationMode.INTERNAL, children: [
+        { text: 'Child 1 of Parent 1', route: '/', mode: NavigationMode.INTERNAL, id: 'linkc1p1' },
         {
-          text: 'Child 2 of Parent 1', route: '/', id: 'linkc2p1'
+          text: 'Child 2 of Parent 1', route: '/', mode: NavigationMode.INTERNAL, id: 'linkc2p1'
           , children: [
-            { text: 'Grandchild 1 of Child 2 of Parent 1', route: '/', id: 'linkgc1c2p1' }
+            { text: 'Grandchild 1 of Child 2 of Parent 1', route: '/', mode: NavigationMode.INTERNAL, id: 'linkgc1c2p1' }
           ]
         }
       ]
@@ -31,6 +31,7 @@ describe('SdsSideNavigationComponent', () => {
       imports: [RouterTestingModule, SdsAccordionModule, BrowserAnimationsModule]
     })
       .compileComponents();
+
   }));
 
   beforeEach(() => {
@@ -168,7 +169,12 @@ describe('SdsSideNavigationComponent', () => {
     expect(component.model.navigationLinks[0].children[1].children[0].selected).toBeFalsy();
   });
 
-
+  it('event click', () => {
+    let navItem = { mode: NavigationMode.EVENT, text: 'test', route: '/' };
+    spyOn(component.linkEvent, 'emit');
+    component.linkClickEvent(navItem);
+    expect(component.linkEvent.emit).toHaveBeenCalledWith(navItem);
+  });
 
 });
 
