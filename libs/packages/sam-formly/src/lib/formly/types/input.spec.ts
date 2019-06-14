@@ -66,7 +66,7 @@ describe('Formly Field input Component', () => {
             const expectedValue = fixture.debugElement.query(By.css('.usa-input')).componentInstance.field.templateOptions;
             fixture.detectChanges();
             const inputField = fixture.debugElement.query(By.css('.usa-input'));
-            expect(inputField.componentInstance.type).toBe('text');
+            expect(inputField.nativeElement.type).toBe('text');
             expect(inputField.componentInstance.field.templateOptions.required).toBe(true);
         });
 
@@ -78,7 +78,7 @@ describe('Formly Field input Component', () => {
                 templateOptions: {
                     label: 'Formly Input',
                     required: true,
-                    type: 'text',
+                    inputType: 'text',
                 }
 
             }];
@@ -88,7 +88,7 @@ describe('Formly Field input Component', () => {
             const expectedValue = fixture.debugElement.query(By.css('.usa-input')).componentInstance.field.templateOptions;
             fixture.detectChanges();
             const inputField = fixture.debugElement.query(By.css('.usa-input'));
-            expect(inputField.componentInstance.field.templateOptions.type).toBe('text');
+            expect(inputField.nativeElement.type).toBe('text');
         });
 
         it('input type should be number', () => {
@@ -99,7 +99,7 @@ describe('Formly Field input Component', () => {
                 templateOptions: {
                     label: 'Formly Input',
                     required: true,
-                    type: 'number',
+                    inputType: 'number',
                 }
 
             }];
@@ -109,7 +109,8 @@ describe('Formly Field input Component', () => {
             const expectedValue = fixture.debugElement.query(By.css('.usa-input')).componentInstance.field.templateOptions;
             fixture.detectChanges();
             const inputField = fixture.debugElement.query(By.css('.usa-input'));
-            expect(inputField.componentInstance.type).toBe('number');
+            console.log(inputField);
+            expect(inputField.nativeElement.type).toBe('number');
         });
 
 
