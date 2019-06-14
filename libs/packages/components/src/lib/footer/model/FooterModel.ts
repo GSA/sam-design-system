@@ -8,6 +8,12 @@ export class FooterModel {
    * List of sections and their links
    */
   linkSections: FooterLinkSection[];
+
+  /**
+   * Footer text and logo
+   */
+
+  footerLogo?: FooterLogo;
 }
 
 export class FooterLinkSection {
@@ -37,4 +43,24 @@ export class FooterLink implements INavigationLink {
    * Navigation Route
    */
   route: string;
+}
+
+export interface FooterLogo {
+  /**
+   * Text for the Header
+   */
+
+  text: string;
+
+  /**
+   * Image Source Path for the Image button
+   */
+
+  imageSourcePath: string;
+
+  /**
+   * Alt text for image
+   */
+
+  imageAltText: string;
 }
