@@ -1,85 +1,84 @@
-import { Component } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { FormlyFieldConfig, FormlyModule, FormlyFormOptions } from '@ngx-formly/core';
+import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { Component, ViewChild } from '@angular/core';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormlyModule, FormlyForm } from '@ngx-formly/core';
+import { FormlySelectModule } from '@ngx-formly/core/select';
 import { FormlyFieldInputComponent } from './input';
 
-@Component({
-  selector: 'formly-test',
-  template: `
-    <formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>
-  `,
-})
-class FormlyTestComponent {
-  form = new FormGroup({});
-  fields: FormlyFieldConfig[];
-  model: any;
-  options: FormlyFormOptions;
+const createTestComponent = (html: string) =>
+    createGenericTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;
+
+export function createGenericTestComponent<T>(html: string, type: { new(...args: any[]): T }): ComponentFixture<T> {
+    TestBed.overrideComponent(type, { set: { template: html } });
+    const fixture = TestBed.createComponent(type);
+    fixture.detectChanges();
+    return fixture as ComponentFixture<T>;
 }
 
-describe('Formly Input Component', () => {
-  let fixture: ComponentFixture<FormlyTestComponent>;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [FormlyTestComponent, FormlyFieldInputComponent],
-      imports: [
-        NoopAnimationsModule,
-        
-        ReactiveFormsModule,
-        FormlyModule.forRoot({
-          types: [
-            {
-              name: 'input',
-              component: FormlyFieldInputComponent,
-            },
-          ],
-        }),
-      ],
-    }).compileComponents();
-  });
+let testComponentInputs;
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(FormlyTestComponent);
-  });
+describe('Formly Field input Component', () => {
+    beforeEach(() => {
+        TestBed.configureTestingModule({
+            declarations: [TestComponent, FormlyFieldInputComponent],
+            imports: [
+                NoopAnimationsModule,
+                ReactiveFormsModule,
+                FormlySelectModule,
+                FormlyModule.forRoot({
+                    types: [
+                        {
+                            name: 'input',
+                            component: FormlyFieldInputComponent,
+                        },
+                    ],
+                }),
+            ],
+        });
+    });
 
-  it('should properly set the readonly value on text inputs', () => {
-    const componentInstance = fixture.componentInstance;
-    componentInstance.fields = [
-      {
-        key: 'name',
-        type: 'input',
-        templateOptions: {
-          required: true,
-        },
-      },
-    ];
-    fixture.detectChanges();
+    describe('input', () => {
+        beforeEach(() => {
+            testComponentInputs = {
+                form: new FormGroup({}),
+                options: {},
+                model: {},
+            };
+        });
 
-    // assert
-    const inputField = fixture.debugElement.query(By.css('.usa-input'));
-    expect(inputField.componentInstance.field.templateOptions.required).toBe(true);
-  });
+        it('should correctly bind to a static array of data', () => {
+            testComponentInputs.fields = [{
 
-  it('should properly set the readonly value on number inputs', () => {
-    const componentInstance = fixture.componentInstance;
-    componentInstance.fields = [
-      {
-        key: 'name',
-        type: 'input',
-        templateOptions: {
-          type: 'number',
-          readonly: true,
-        },
-      },
-    ];
-    fixture.detectChanges();
+                key: 'input-test',
+                type: 'input',
+                templateOptions: {
+                    label: 'Formly Input',
+                    required: true
+                }
 
-    // assert
-    const inputField = fixture.debugElement.query(By.css('.usa-input'));
-   
-    expect(inputField.componentInstance.field.templateOptions.readonly).toBe(true);
-  });
+            }];
+
+            const fixture = createTestComponent('<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'),
+                trigger = fixture.nativeElement.querySelector('usa-input')
+            const expectedValue = fixture.debugElement.query(By.css('.usa-input')).componentInstance.field.templateOptions;
+            fixture.detectChanges();
+            const inputField = fixture.debugElement.query(By.css('.usa-input'));
+            expect(inputField.componentInstance.field.templateOptions.required).toBe(true);
+        });
+
+    });
+
 });
+
+@Component({ selector: 'formly-form-input', template: '', entryComponents: [] })
+class TestComponent {
+    @ViewChild(FormlyForm) formlyForm: FormlyForm;
+
+    fields = testComponentInputs.fields;
+    form: FormGroup = testComponentInputs.form;
+    model = testComponentInputs.model || {};
+    options = testComponentInputs.options;
+}
