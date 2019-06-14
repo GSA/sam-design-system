@@ -5,12 +5,13 @@
         <div class="mobile-lg:grid-col-12 tablet:grid-col-4">
           <div class="usa-footer__logo grid-row mobile-lg:grid-gap-1 margin-top-3">
             <div class="mobile-lg:grid-col-3 mobile-lg:grid-offset-3 tablet:grid-offset-none tablet:grid-col-auto">
-              <img class="usa-footer__logo-img" [attr.src]="model.footerLogo.imageSourcePath"
-                [attr.alt]="model.footerLogo.imageAltText" />
+              <a class="usa-footer__logo-text" target="_blank" href="http://gsa.gov">
+                GSA.gov
+              </a>
             </div>
             <div class="mobile-lg:grid-col-4 tablet:grid-col-auto">
               <span class="usa-footer__logo-heading">
-                {{model.footerLogo.text}}
+                General Services Administration
               </span>
             </div>
           </div>
