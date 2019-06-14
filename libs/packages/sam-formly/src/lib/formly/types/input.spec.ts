@@ -66,6 +66,7 @@ describe('Formly Field input Component', () => {
             const expectedValue = fixture.debugElement.query(By.css('.usa-input')).componentInstance.field.templateOptions;
             fixture.detectChanges();
             const inputField = fixture.debugElement.query(By.css('.usa-input'));
+            expect(inputField.componentInstance.type).toBe('text');
             expect(inputField.componentInstance.field.templateOptions.required).toBe(true);
         });
 
@@ -108,7 +109,7 @@ describe('Formly Field input Component', () => {
             const expectedValue = fixture.debugElement.query(By.css('.usa-input')).componentInstance.field.templateOptions;
             fixture.detectChanges();
             const inputField = fixture.debugElement.query(By.css('.usa-input'));
-            expect(inputField.componentInstance.field.templateOptions.type).toBe('number');
+            expect(inputField.componentInstance.type).toBe('number');
         });
 
 
