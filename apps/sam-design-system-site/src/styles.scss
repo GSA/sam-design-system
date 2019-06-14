@@ -10,23 +10,6 @@ $theme-font-path:   '~@gsa-sam/sam-styles/src/fonts';
   transition: border-radius 0.2s ease-in;
   border-radius: 0px 0.3125rem 0.3125rem 0px; 
 }
-.sds-dialog-container {
-  display: block;
-  padding: 0px;
-  // border-radius: 4px;
-  box-sizing: border-box;
-  overflow: auto;
-  outline: 0;
-  width: 100%;
-  height: 100%;
-  min-height: inherit;
-  max-height: inherit;
-}
-
-.sds-dialog-container {
-  background: #fff;
-  color: rgba(0,0,0,.87);
-}
 
 .header-styles .icon-layers-counter{
   height: 1em;
@@ -49,8 +32,7 @@ $theme-font-path:   '~@gsa-sam/sam-styles/src/fonts';
   border-radius: 50%;
 }
 
-
-
+// Menu
 .sds-menu-panel {
   min-width: 215px;
   max-width: 280px;
@@ -104,8 +86,6 @@ $theme-font-path:   '~@gsa-sam/sam-styles/src/fonts';
   text-overflow: ellipsis;
   display: flex;
   align-items: center;
-  // line-height: 48px;
-  // height: 40px;
   padding: 6px 15px;
   text-align: left;
   text-decoration: none;
@@ -156,7 +136,6 @@ sds-search {
   margin-left: 10px;
 }
 
-
 .subheader__buttons{
   margin-bottom: 5px;
   @include at-media(tablet) {
@@ -176,7 +155,4 @@ sds-search {
     padding: 15px 20px;
     margin-top: 8px;
     color: #6b6b6b;
-}
-sds-truncated-text-container{
-  display: block;
 }

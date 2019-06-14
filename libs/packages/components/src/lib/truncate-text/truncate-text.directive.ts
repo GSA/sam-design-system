@@ -63,7 +63,6 @@ export class SdsTruncateTextByLineDirective
   ) {}
 
   ngOnInit() {
-    // Store initial text
     this.initialText = this._element.nativeElement.innerText.trim();
 
     // Clone element to facilitate calculations
@@ -88,7 +87,6 @@ export class SdsTruncateTextByLineDirective
   }
 
   ngAfterViewInit(): void {
-    // Update UI on window resizing
     this.windowResize$ = this._viewportRuler
       .change(0)
       .pipe(startWith('Start'))

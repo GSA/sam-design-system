@@ -51,12 +51,9 @@ export class SdsSearchComponent implements OnDestroy {
 
   inputWidth: string;
   inputContainer: boolean;
-  defaultInputWidth = 200;
-
-  searchTerm = '';
+  minimumInputWidth = 200;
   mode = 'collapsed';
 
-  /** Getter/Setter used to run change detection */
   get animationState(): any {
     return this._animationState;
   }
@@ -68,7 +65,6 @@ export class SdsSearchComponent implements OnDestroy {
   }
   _animationState;
 
-  // == SOURCE OBSERVABLES ==================================================
   onButtonClick$ = new Subject();
   onTermChange$ = new Subject<any>();
   onFocusChange$ = new Subject();
@@ -76,8 +72,6 @@ export class SdsSearchComponent implements OnDestroy {
   onContainerWithChange$ = new BehaviorSubject<any>(undefined);
   onAnimationDone$ = new Subject<AnimationEvent>();
 
-  // === STATE OBSERVABLES ==================================================
-  /** Subject created to send actions to the state$ */
   programmaticCommandSubject = new Subject();
   actions$ = merge(
     this.onButtonClick$.pipe(map(value => ({ mode: value }))),
@@ -106,7 +100,6 @@ export class SdsSearchComponent implements OnDestroy {
     shareReplay(1)
   );
 
-  // == INTERMEDIATE OBSERVABLES ============================================
   mode$ = this.state$.pipe(
     debounceTime(10),
     pluck('mode'),
@@ -125,14 +118,9 @@ export class SdsSearchComponent implements OnDestroy {
     distinctUntilChanged()
   );
 
-  enter$ = this.state$.pipe(
+  keywordCommand$ = this.state$.pipe(
     pluck('keywordCommand'),
-    filter(value => value === 'Enter')
-  );
-
-  escape$ = this.state$.pipe(
-    pluck('keywordCommand'),
-    filter(value => value === 'Escape')
+    distinctUntilChanged()
   );
 
   containerWidth$ = this.state$.pipe(
@@ -145,7 +133,6 @@ export class SdsSearchComponent implements OnDestroy {
     }))
   );
 
-  // = SIDE EFFECTS =========================================================
   animationDoneChange$ = combineLatest(
     this.onAnimationDone$,
     this.containerWidth$
@@ -169,53 +156,52 @@ export class SdsSearchComponent implements OnDestroy {
     })
   );
 
-  enterPressed$ = this.enter$.pipe(
-    tap(() => {
-      this.programmaticCommandSubject.next({
-        mode: 'sending',
-        keywordCommand: null
-      });
-    })
-  );
-
-  escapePressed$ = combineLatest(this.escape$, this.containerWidth$).pipe(
-    tap(([_, container]) => {
-      if (!container.hasSpace) {
-        this.programmaticCommandSubject.next({
-          mode: 'collapsed',
-          keywordCommand: null
-        });
-      } else {
-        this.programmaticCommandSubject.next({ keywordCommand: null });
+  keywordCommandPressed$ = combineLatest(
+    this.keywordCommand$,
+    this.containerWidth$
+  ).pipe(
+    tap(([key, container]) => {
+      switch (key) {
+        case 'Enter':
+          this.programmaticCommandSubject.next({
+            mode: 'sending',
+            keywordCommand: null
+          });
+          break;
+        case 'Escape':
+          if (!container.hasSpace) {
+            this.programmaticCommandSubject.next({
+              mode: 'collapsed',
+              keywordCommand: null
+            });
+          } else {
+            this.programmaticCommandSubject.next({ keywordCommand: null });
+          }
+          break;
       }
-    })
-  );
-
-  termChange$ = this.term$.pipe(
-    tap(term => {
-      this.searchTerm = <string>term;
     })
   );
 
   modeChange$ = combineLatest(
     this.mode$.pipe(startWith(this.mode)),
-    this.containerWidth$
+    this.containerWidth$,
+    this.term$.pipe(startWith(''))
   ).pipe(
-    tap(([mode, container]) => {
+    tap(([mode, container, searchTerm]) => {
       this.mode =
         mode === 'collapsed' && container.hasSpace ? 'search' : <string>mode;
       switch (this.mode) {
         case 'search':
           this.calculateInputWidth(container.hasSpace);
-          this.animationState = 'enter';
           this.inputContainer = true;
+          this.animationState = 'enter';
           break;
         case 'collapsed':
           this.animationState = 'exit';
           break;
         case 'sending':
-          if (this.searchTerm !== '') {
-            this.term.emit(this.searchTerm);
+          if (searchTerm !== '') {
+            this.term.emit(<string>searchTerm);
           }
           this.programmaticCommandSubject.next({
             mode: container.hasSpace ? 'search' : 'collapsed'
@@ -227,14 +213,11 @@ export class SdsSearchComponent implements OnDestroy {
     })
   );
 
-  // == SUBSCRIPTION ========================================================
   mainSubscription = merge(
     this.modeChange$,
-    this.termChange$,
     this.focusChange$,
     this.animationDoneChange$,
-    this.enterPressed$,
-    this.escapePressed$,
+    this.keywordCommandPressed$
   ).subscribe();
 
   constructor(
@@ -261,7 +244,7 @@ export class SdsSearchComponent implements OnDestroy {
   }
 
   calculateSpaceAvailable(containerWidth: number): boolean {
-    return containerWidth >= this.defaultInputWidth;
+    return containerWidth >= this.minimumInputWidth;
   }
 
   calculateInputWidth(hasSpace): void {
@@ -269,7 +252,7 @@ export class SdsSearchComponent implements OnDestroy {
     let padding = 0;
 
     // Maximun input width
-    const maxWidth = 500;
+    const maximumInputWidth = 500;
 
     // Width of search button
     const buttonWidth = this.buttonEl.nativeElement.offsetWidth;
@@ -278,12 +261,9 @@ export class SdsSearchComponent implements OnDestroy {
     const nativeElement = this.containerEl.nativeElement;
 
     // Search Container HTML Element
-    let nativeElementParent;
-    if (this.parentSelector) {
-      nativeElementParent = nativeElement.closest(this.parentSelector);
-    } else {
-      nativeElementParent = nativeElement.parentElement.parentElement;
-    }
+    const nativeElementParent = this.parentSelector
+      ? nativeElement.closest(this.parentSelector)
+      : nativeElement.parentElement.parentElement;
 
     // Use element's position relative to the viewport
     // to calculate input width
@@ -302,7 +282,7 @@ export class SdsSearchComponent implements OnDestroy {
       // Search container Left Position
       leftPosition = nativeElementParent.getBoundingClientRect().left;
     }
-    console.log(leftPosition);
+
     // Because the search expands to the left,
     // we use search component right position
     const rightPosition = nativeElement.getBoundingClientRect().right;
@@ -315,6 +295,8 @@ export class SdsSearchComponent implements OnDestroy {
     // Add pixel unit because this variable its a parameter
     // for the search input animation
     this.inputWidth =
-      inputWidth > maxWidth ? maxWidth + 'px' : inputWidth + 'px';
+      inputWidth > maximumInputWidth
+        ? maximumInputWidth + 'px'
+        : inputWidth + 'px';
   }
 }
