@@ -31,9 +31,7 @@
               "libs/packages/sam-formly/tsconfig.lib.json",
               "libs/packages/sam-formly/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       },
@@ -71,9 +69,7 @@
               "libs/packages/components/tsconfig.lib.json",
               "libs/packages/components/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       },
@@ -106,12 +102,8 @@
               "apps/sam-design-system-site/src/favicon.ico",
               "apps/sam-design-system-site/src/assets"
             ],
-            "styles": [
-              "apps/sam-design-system-site/src/styles.scss"
-            ],
-            "scripts": [
-              "node_modules/uswds/dist/js/uswds.min.js"
-            ]
+            "styles": ["apps/sam-design-system-site/src/styles.scss"],
+            "scripts": ["node_modules/uswds/dist/js/uswds.min.js"]
           },
           "configurations": {
             "production": {
@@ -164,9 +156,7 @@
             "polyfills": "apps/sam-design-system-site/src/polyfills.ts",
             "tsConfig": "apps/sam-design-system-site/tsconfig.spec.json",
             "karmaConfig": "apps/sam-design-system-site/karma.conf.js",
-            "styles": [
-              "apps/sam-design-system-site/src/styles.scss"
-            ],
+            "styles": ["apps/sam-design-system-site/src/styles.scss"],
             "scripts": [],
             "assets": [
               "apps/sam-design-system-site/src/favicon.ico",
@@ -181,9 +171,7 @@
               "apps/sam-design-system-site/tsconfig.app.json",
               "apps/sam-design-system-site/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -209,9 +197,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "apps/sam-design-system-site-e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -244,9 +230,7 @@
               "libs/packages/sam-material-extensions/tsconfig.lib.json",
               "libs/packages/sam-material-extensions/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       },
@@ -284,9 +268,7 @@
               "libs/packages/layouts/tsconfig.lib.json",
               "libs/packages/layouts/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       },
@@ -324,9 +306,7 @@
               "libs/packages/experimental/tsconfig.lib.json",
               "libs/packages/experimental/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       },
@@ -357,9 +337,38 @@
               "libs/component-sample/tsconfig.lib.json",
               "libs/component-sample/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "layout-sample": {
+      "root": "libs/layout-sample",
+      "sourceRoot": "libs/layout-sample/src",
+      "projectType": "library",
+      "prefix": "gsa-sam",
+      "architect": {
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/layout-sample/src/test.ts",
+            "tsConfig": "libs/layout-sample/tsconfig.spec.json",
+            "karmaConfig": "libs/layout-sample/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/layout-sample/tsconfig.lib.json",
+              "libs/layout-sample/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
           }
         }
       },

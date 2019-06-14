@@ -146,6 +146,7 @@ export class PaginationComponent implements OnInit {
    * page size selection change
    */
   onSelectChange() {
+    this.page.pageNumber = 1;
     this.pageChange.emit(this.page);
   }
 }

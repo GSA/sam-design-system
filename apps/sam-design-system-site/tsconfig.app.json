@@ -10,6 +10,7 @@
   ],
   "include": [
     "**/*.ts",
-    "../../libs/component-sample/src/index.ts"
+    "../../libs/component-sample/src/index.ts",
+    "../../libs/layout-sample/src/index.ts"
   ]
 }
