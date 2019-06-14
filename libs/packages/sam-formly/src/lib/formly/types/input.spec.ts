@@ -109,7 +109,6 @@ describe('Formly Field input Component', () => {
             const expectedValue = fixture.debugElement.query(By.css('.usa-input')).componentInstance.field.templateOptions;
             fixture.detectChanges();
             const inputField = fixture.debugElement.query(By.css('.usa-input'));
-            console.log(inputField);
             expect(inputField.nativeElement.type).toBe('number');
         });
 

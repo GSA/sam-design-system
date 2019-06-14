@@ -56,6 +56,6 @@ export const FORMLY_CONFIG: ConfigOption = {
   wrappers: [
     {name: 'form-field', component: FormlyWrapperFormFieldComponent },
     
-    {name: 'panel', component: FormlyAccordianFormFieldComponent },
+    {name: 'accordianwrapper', component: FormlyAccordianFormFieldComponent },
   ],
 };
