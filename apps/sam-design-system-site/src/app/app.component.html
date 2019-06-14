@@ -1,4 +1,4 @@
-<!-- <div class="grid-container margin-top-3">
+<div class="grid-container margin-top-3">
   <div class="grid-row grid-gap">
     <aside class="desktop:grid-col-3">
       <nav class="margin-bottom-2">
@@ -39,8 +39,13 @@
             </a>
           </li>
           <li class="usa-sidenav__item">
-            <a [routerLink]="['component/subheader']" routerLinkActive="usa-current">
-              Subheader
+            <a [routerLink]="['layout/searchList']" routerLinkActive="usa-current">
+              Search Result Layout Custom
+            </a>
+          </li>
+          <li class="usa-sidenav__item">
+            <a [routerLink]="['layout/searchListService']" routerLinkActive="usa-current">
+              Search Result Layout Component
             </a>
           </li>
         </ul>
@@ -50,8 +55,4 @@
       <router-outlet></router-outlet>
     </div>
   </div>
-</div> -->
-
-<div class="grid-container">
-  <router-outlet></router-outlet>
 </div>
