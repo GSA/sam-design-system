@@ -64,7 +64,7 @@ export class SdsMenuItemComponent implements FocusableOption, OnDestroy {
 
   /** Get item class */
   _getClass(): string{
-    return this._parentMenuHeader ? 'sds-menu__header-item' : 'sds-menu-item';
+    return this._parentMenuHeader ? 'sds-menu__header-button' : 'sds-menu__item';
   }
 
   /** Focuses the menu item. */

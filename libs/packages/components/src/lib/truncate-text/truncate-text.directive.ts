@@ -77,7 +77,7 @@ export class SdsTruncateTextByLineDirective
     // Set the clone to inline to prevent cases where the clone
     // expands to 100% width of the container
     hostCloneEl.setAttribute('style', 'display: inline');
-    
+
     // These are close approximations that are used to better guess
     // how many characters fit in X number of lines
     this.approximatedCharacterWidth = hostCloneEl.offsetWidth;
@@ -94,7 +94,9 @@ export class SdsTruncateTextByLineDirective
   }
 
   ngOnDestroy(): void {
-    this._overlayRef.dispose();
+    if (this._overlayRef) {
+      this._overlayRef.dispose();
+    }
     this._closingActionsSubscription.unsubscribe();
     this.windowResize$.unsubscribe();
   }
@@ -113,7 +115,7 @@ export class SdsTruncateTextByLineDirective
         .flexibleConnectedTo(this._element)
         .withLockedPosition()
         .withPositions([overlayPositions])
-        .withTransformOriginOn('.sds-truncate-text__container'),
+        .withTransformOriginOn('.sds-overlay'),
       hasBackdrop: true,
       backdropClass: 'cdk-overlay-transparent-backdrop',
       scrollStrategy: this._overlay.scrollStrategies.close()

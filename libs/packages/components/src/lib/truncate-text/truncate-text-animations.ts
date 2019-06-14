@@ -24,7 +24,7 @@ export const sdsTruncateTextAnimations: {
       'void => enter',
       group([
         query(
-          '.sds-truncate-text__container',
+          '.sds-overlay',
           animate(
             '100ms linear',
             style({

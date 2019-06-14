@@ -235,7 +235,7 @@ export class SdsMenuTriggerForDirective implements OnDestroy {
         .position()
         .flexibleConnectedTo(this._element)
         .withLockedPosition()
-        .withTransformOriginOn('.sds-menu-panel'),
+        .withTransformOriginOn('.sds-overlay'),
       hasBackdrop: true,
       backdropClass: 'cdk-overlay-transparent-backdrop',
       scrollStrategy: this._overlay.scrollStrategies.reposition()

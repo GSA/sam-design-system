@@ -24,7 +24,7 @@ export const sdsMenuAnimations: {
       'void => enter',
       group([
         query(
-          '.sds-menu-content',
+          '.sds-menu',
           animate(
             '100ms linear',
             style({

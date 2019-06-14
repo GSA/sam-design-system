@@ -106,7 +106,7 @@ describe('SdsMenu', () => {
     fixture.detectChanges();
 
     expect(
-      overlayContainerElement.querySelector('.sds-menu-panel')
+      overlayContainerElement.querySelector('.sds-overlay')
     ).toBeTruthy();
 
     fixture.componentInstance.trigger.closeMenu();
@@ -130,7 +130,7 @@ describe('SdsMenu', () => {
     fixture.detectChanges();
 
     expect(
-      overlayContainerElement.querySelector('.sds-menu-panel')
+      overlayContainerElement.querySelector('.sds-overlay')
     ).toBeTruthy();
 
     fixture.componentInstance.trigger.closeMenu();
@@ -154,7 +154,7 @@ describe('SdsMenu', () => {
     fixture.detectChanges();
 
     expect(
-      overlayContainerElement.querySelector('.sds-menu-panel')
+      overlayContainerElement.querySelector('.sds-overlay')
     ).toBeTruthy();
 
     fixture.componentInstance.trigger.closeMenu();
@@ -185,7 +185,7 @@ describe('SdsMenu', () => {
     flush();
 
     expect(
-      overlayContainerElement.querySelector('.sds-menu-panel').scrollTop
+      overlayContainerElement.querySelector('.sds-overlay').scrollTop
     ).toBe(0);
   }));
 
@@ -198,7 +198,7 @@ describe('SdsMenu', () => {
     fixture.detectChanges();
     fixture.componentInstance.trigger.openMenu();
 
-    const panel = overlayContainerElement.querySelector('.sds-menu-panel');
+    const panel = overlayContainerElement.querySelector('.sds-overlay');
     const event = createKeyboardEvent('keydown', ESCAPE);
 
     dispatchEvent(panel, event);
@@ -221,7 +221,7 @@ describe('SdsMenu', () => {
     fixture.detectChanges();
 
     const menuEl = fixture.debugElement.query(By.css('sds-menu')).nativeElement;
-    const panel = overlayContainerElement.querySelector('.sds-menu-panel')!;
+    const panel = overlayContainerElement.querySelector('.sds-overlay')!;
 
     expect(menuEl.classList).not.toContain('custom-one');
     expect(menuEl.classList).not.toContain('custom-two');
@@ -240,7 +240,7 @@ describe('SdsMenu', () => {
     fixture.componentInstance.trigger.openMenu();
     fixture.detectChanges();
 
-    const menuPanel = overlayContainerElement.querySelector('.sds-menu-panel');
+    const menuPanel = overlayContainerElement.querySelector('.sds-overlay');
 
     expect(menuPanel).toBeTruthy('Expected to find a menu panel.');
 
@@ -259,7 +259,7 @@ describe('SdsMenu', () => {
     fixture.detectChanges();
 
     const items = Array.from(
-      overlayContainerElement.querySelectorAll('.sds-menu-item')
+      overlayContainerElement.querySelectorAll('.sds-menu__item')
     );
 
     expect(items.length).toBeGreaterThan(0);
@@ -330,9 +330,9 @@ describe('SdsMenu', () => {
     fixture.componentInstance.triggerEl.nativeElement.click();
     fixture.detectChanges();
 
-    const panel = document.querySelector('.sds-menu-panel') as HTMLElement;
+    const panel = document.querySelector('.sds-overlay') as HTMLElement;
     const items: HTMLElement[] = Array.from(
-      panel.querySelectorAll('.sds-menu-panel [sds-menu-item]')
+      panel.querySelectorAll('.sds-overlay [sds-menu-item]')
     );
 
     items.forEach(item => patchElementFocus(item));
@@ -391,9 +391,9 @@ describe('SdsMenu', () => {
     fixture.componentInstance.trigger.openMenu();
     fixture.detectChanges();
 
-    const panel = overlayContainerElement.querySelector('.sds-menu-panel')!;
+    const panel = overlayContainerElement.querySelector('.sds-overlay')!;
     const items = Array.from(
-      panel.querySelectorAll('.sds-menu-item')
+      panel.querySelectorAll('.sds-menu__item')
     ) as HTMLElement[];
     items.forEach(patchElementFocus);
 
@@ -422,9 +422,9 @@ describe('SdsMenu', () => {
     fixture.componentInstance.trigger.openMenu();
     fixture.detectChanges();
 
-    const panel = overlayContainerElement.querySelector('.sds-menu-panel')!;
+    const panel = overlayContainerElement.querySelector('.sds-overlay')!;
     const items = Array.from(
-      panel.querySelectorAll('.sds-menu-item')
+      panel.querySelectorAll('.sds-menu__item')
     ) as HTMLElement[];
     items.forEach(patchElementFocus);
 
@@ -461,7 +461,7 @@ describe('SdsMenu', () => {
       fixture.detectChanges();
 
       const panel = overlayContainerElement.querySelector(
-        '.sds-menu-panel'
+        '.sds-overlay'
       ) as HTMLElement;
       expect(panel.classList).toContain('sds-menu-before');
       expect(panel.classList).not.toContain('sds-menu-after');
@@ -478,7 +478,7 @@ describe('SdsMenu', () => {
       fixture.detectChanges();
 
       const panel = overlayContainerElement.querySelector(
-        '.sds-menu-panel'
+        '.sds-overlay'
       ) as HTMLElement;
 
       expect(panel.classList).toContain('sds-menu-above');
@@ -506,7 +506,7 @@ describe('SdsMenu', () => {
       newFixture.componentInstance.trigger.openMenu();
       newFixture.detectChanges();
       const panel = overlayContainerElement.querySelector(
-        '.sds-menu-panel'
+        '.sds-overlay'
       ) as HTMLElement;
 
       expect(panel.classList).toContain('sds-menu-below');
@@ -524,7 +524,7 @@ describe('SdsMenu', () => {
       fixture.detectChanges();
 
       let panel = overlayContainerElement.querySelector(
-        '.sds-menu-panel'
+        '.sds-overlay'
       ) as HTMLElement;
       fixture.detectChanges();
       expect(Math.floor(panel.getBoundingClientRect().bottom)).toBe(
@@ -541,7 +541,7 @@ describe('SdsMenu', () => {
       fixture.componentInstance.trigger.openMenu();
       fixture.detectChanges();
       panel = overlayContainerElement.querySelector(
-        '.sds-menu-panel'
+        '.sds-overlay'
       ) as HTMLElement;
 
       expect(Math.floor(panel.getBoundingClientRect().top)).toBe(

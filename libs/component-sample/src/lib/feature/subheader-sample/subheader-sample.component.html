@@ -36,14 +36,14 @@
       <div>
         <div class="tablet:display-none">
           <!-- =============== ACTIONS BUTTONS =============== -->
-          <button class="sds-icon-buttons">
-              <fa-icon [icon]="['sam', 'bars']" transform="shrink-6"></fa-icon>
+          <button class="usa-button usa-button--base sds-button--circle">
+            <fa-icon [fixedWidth]="true"  [icon]="['sam', 'bars']"></fa-icon>
           </button>
-          <button class="sds-icon-buttons">
-              <fa-icon [icon]="['sam', 'bars']" transform="shrink-6"></fa-icon>
+          <button class="usa-button usa-button--base sds-button--circle">
+            <fa-icon [fixedWidth]="true"  [icon]="['sam', 'bars']"></fa-icon>
           </button>
-          <button class="sds-icon-buttons">
-              <fa-icon [icon]="['sam', 'bars']" transform="shrink-6"></fa-icon>
+          <button class="usa-button usa-button--base sds-button--circle">
+            <fa-icon [fixedWidth]="true"  [icon]="['sam', 'bars']"></fa-icon>
           </button>
         </div>
         <!-- =============== ACTIONS MENU =============== -->
@@ -53,7 +53,7 @@
             class="usa-button usa-button--primary sds-button--circle"
             [sdsMenuTriggerFor]="menu"
           >
-            <fa-icon [icon]="['fas', 'ellipsis-v']"></fa-icon>
+            <fa-icon [fixedWidth]="true" [icon]="['fas', 'ellipsis-v']"></fa-icon>
             <span class="usa-sr-only">Toggle Actions Menu</span>
           </button>
           <!-- Menu content -->
@@ -62,42 +62,45 @@
             <sds-menu-header>Actions</sds-menu-header>
             <!-- Menu items -->
             <button sds-menu-item>
-              <fa-layers [fixedWidth]="true" size="2x" class="margin-right-05">
+              <fa-layers [fixedWidth]="true" size="2x">
                 <fa-icon
                   [icon]="['fas', 'circle']"
+                  transform="left-3"
                   class="text-base-lighter"
                 ></fa-icon>
                 <fa-icon
                   [icon]="['sam', 'bars']"
-                  transform="shrink-8"
+                  transform="shrink-8 left-3"
                   class="text-base"
                 ></fa-icon>
               </fa-layers>
               Download
             </button>
             <button sds-menu-item>
-              <fa-layers [fixedWidth]="true" size="2x" class="margin-right-05">
+              <fa-layers [fixedWidth]="true" size="2x">
                 <fa-icon
                   [icon]="['fas', 'circle']"
+                  transform="left-3"
                   class="text-base-lighter"
                 ></fa-icon>
                 <fa-icon
                   [icon]="['sam', 'bars']"
-                  transform="shrink-8"
+                  transform="shrink-8 left-3"
                   class="text-base"
                 ></fa-icon>
               </fa-layers>
               Follow
             </button>
             <button sds-menu-item>
-              <fa-layers [fixedWidth]="true" size="2x" class="margin-right-05">
+              <fa-layers [fixedWidth]="true" size="2x">
                 <fa-icon
                   [icon]="['fas', 'circle']"
+                  transform="left-3"
                   class="text-base-lighter"
                 ></fa-icon>
                 <fa-icon
                   [icon]="['sam', 'bars']"
-                  transform="shrink-8"
+                  transform="shrink-8 left-3"
                   class="text-base"
                 ></fa-icon>
               </fa-layers>

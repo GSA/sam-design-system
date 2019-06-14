@@ -1,6 +1,6 @@
 <ng-template>
   <div
-    class="sds-menu-panel"
+    class="sds-overlay minw-menu maxw-mobile radius-overlay"
     [ngClass]="_classList"
     (keydown)="_handleKeydown($event)"
     (click)="closed.emit('click')"
@@ -10,7 +10,7 @@
     tabindex="-1"
     role="menu"
   >
-    <div class="sds-menu-content">
+    <div class="sds-menu">
       <ng-content></ng-content>
     </div>
   </div>

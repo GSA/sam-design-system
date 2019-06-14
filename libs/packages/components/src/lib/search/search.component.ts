@@ -6,7 +6,8 @@ import {
   ChangeDetectorRef,
   Output,
   EventEmitter,
-  Input
+  Input,
+  HostBinding
 } from '@angular/core';
 import { Subject, merge, combineLatest, BehaviorSubject } from 'rxjs';
 import {
@@ -35,6 +36,8 @@ export class SdsSearchComponent implements OnDestroy {
   @ViewChild('inputEl', { read: ElementRef }) inputEl: ElementRef;
   @ViewChild('buttonEl', { read: ElementRef }) buttonEl: ElementRef;
   @ViewChild('containerEl', { read: ElementRef }) containerEl: ElementRef;
+
+  @HostBinding('style.flex-grow') flexGrow = 1;
 
   @Input('debug')
   get debug() {
