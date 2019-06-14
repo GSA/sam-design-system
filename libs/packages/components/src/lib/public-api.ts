@@ -11,3 +11,7 @@ export * from './footer/model/FooterModel';
 export * from './header/model/HeaderModel';
 export * from './common-navigation/common-navigation-model';
 export * from './side-navigation/model/side-navigation-model';
+export * from './menu/menu.module';
+export * from './search/search.module';
+export * from './observers/observer.module';
+export * from './truncate-text/truncate.text.module';
