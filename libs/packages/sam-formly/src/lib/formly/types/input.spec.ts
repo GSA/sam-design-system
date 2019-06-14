@@ -69,6 +69,49 @@ describe('Formly Field input Component', () => {
             expect(inputField.componentInstance.field.templateOptions.required).toBe(true);
         });
 
+        it('input type should be text', () => {
+            testComponentInputs.fields = [{
+
+                key: 'input-test',
+                type: 'input',
+                templateOptions: {
+                    label: 'Formly Input',
+                    required: true,
+                    type: 'text',
+                }
+
+            }];
+
+            const fixture = createTestComponent('<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'),
+                trigger = fixture.nativeElement.querySelector('usa-input')
+            const expectedValue = fixture.debugElement.query(By.css('.usa-input')).componentInstance.field.templateOptions;
+            fixture.detectChanges();
+            const inputField = fixture.debugElement.query(By.css('.usa-input'));
+            expect(inputField.componentInstance.field.templateOptions.type).toBe('text');
+        });
+
+        it('input type should be number', () => {
+            testComponentInputs.fields = [{
+
+                key: 'input-test',
+                type: 'input',
+                templateOptions: {
+                    label: 'Formly Input',
+                    required: true,
+                    type: 'number',
+                }
+
+            }];
+
+            const fixture = createTestComponent('<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'),
+                trigger = fixture.nativeElement.querySelector('usa-input')
+            const expectedValue = fixture.debugElement.query(By.css('.usa-input')).componentInstance.field.templateOptions;
+            fixture.detectChanges();
+            const inputField = fixture.debugElement.query(By.css('.usa-input'));
+            expect(inputField.componentInstance.field.templateOptions.type).toBe('number');
+        });
+
+
     });
 
 });
