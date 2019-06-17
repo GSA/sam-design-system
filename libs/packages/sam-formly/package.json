@@ -8,6 +8,8 @@
   "homepage": "https://github.com/GSA/sam-design-system/tree/master/libs/packages/sam-formly",
   "peerDependencies": {
     "@angular/common": "^7.2.0",
-    "@angular/core": "^7.2.0"
+    "@angular/core": "^7.2.0",
+    "@ngx-formly/core": "0.0.0-FORMLY-VERSION",
+    "@gsa-sam/components": ">=0.2.1"
   }
 }
