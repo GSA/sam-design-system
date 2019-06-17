@@ -5,7 +5,7 @@ import { FieldType } from '@ngx-formly/core';
   selector: 'sds-formly-field-multicheckbox',
   template: `
     <div>
-      <div *ngFor="let option of to.options | formlySelectOptions:field | async; let i = index;" class="usa-checkbox"   >
+      <div *ngFor="let option of to.options | formlySelectOptions:field | async; let i = index;" class="usa-checkbox">
         <input type="checkbox"
           [id]="id + '_' + i"
           class="usa-checkbox__input"
@@ -20,6 +20,18 @@ import { FieldType } from '@ngx-formly/core';
         </label>
       </div>
     <div>
+
+    <span class="sds-tag sds-tag--chip">
+  Normal with close icon
+
+  <button class="sds-tag__close" aria-label="Close" (click)="onClose($event)">
+  
+    <fa-icon [icon]="['fas', 'square']"></fa-icon>
+  
+</button>
+
+
+</span>
   `,
 })
 export class FormlyFieldMultiCheckboxComponent extends FieldType {
@@ -39,5 +51,8 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType {
       this.formControl.patchValue({ ...this.formControl.value, [value]: checked });
     }
     this.formControl.markAsTouched();
+  }
+  onClose(ev){
+    console.log('closed');
   }
 }
