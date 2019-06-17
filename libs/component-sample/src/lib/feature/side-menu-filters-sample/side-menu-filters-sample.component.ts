@@ -19,123 +19,162 @@ export class SideMenuFiltersSampleComponent  {
   fields: FormlyFieldConfig[] = [
  
     {
-      key: 'filters',
+      key: 'searchKeyword',
       wrappers: ['panel'],
-      templateOptions: { label: 'Entity Name/UEI' },
+      templateOptions: { label: 'Search by Keyword' },
       fieldGroup:[{
-         key: 'firstName',
+         key: 'keyword',
           type: 'input',
           templateOptions: {
-            required: true,
             type: 'text',
-            label: 'First Name',
+            label: 'Keyword',
           },
         
       }]
     },
 
     {
-      key: 'testings',
+      key: 'searchEntity',
       wrappers: ['panel'],
-      templateOptions: { label: 'Service Classifications' },
+      templateOptions: { label: 'Search by Entity' },
       fieldGroup: [ 
         {
-        key: 'text',
+        key: 'legalBusinessName',
         type: 'input',
         templateOptions: {
-          label: 'Formly input type text',
-          placeholder: 'placeholder',
+          label: 'Legal Business Name',
+          placeholder: '',
           inputType: 'text',
-  
-          required: true,
-          inputStyle: 'success'
         },
       },
       {
-        key: 'number',
+        key: 'uniqueEntityIdSam',
         type: 'input',
         templateOptions: {
           required: true,
-          label: 'Formly input type number',
-          placeholder: 'placeholder',
+          label: 'Unique Entity ID (SAM)',
+          placeholder: '',
           min: 13,
           max: 40,
           inputType: 'number',
           inputStyle: 'error',
-          errorMessage: 'Helpful error message'
         },
       },
       {
-        key: 'drop-down',
-        type: 'select',
+        key: 'cageNcge',
+        type: 'input',
         templateOptions: {
-          label: 'Formly select type',
-          placeholder: 'Select',
-          multiple: false,  // can be true or false to select multiple options or single
-          options: [
-            { label: 'Shilpa', value: 'ys', group: 'Female' },
-            { label: 'Christy', value: 'ch', group: 'Female' },
-            { label: 'Carlos', value: 'cv', group: 'Male' },
-            { label: 'Rinu', value: 'rn', group: 'Male' },
-            { label: 'Thomas', value: 'tt', group: 'Male' },
-            { label: 'Sam', value: 'sam', group: 'Female' },
-            { label: 'David', value: 'dr', group: 'Male' },
-          ],
+          label: 'CAGE/NCGE',
+          placeholder: '',
+          inputType: 'text',
         },
       },
       {
-        key: 'text',
-        type: 'textarea',
+        key: 'uniqueEntityIdDuns',
+        type: 'input',
         templateOptions: {
-          label: 'Formly input type textarea',
-          placeholder: 'placeholder',
           required: true,
-        },
-      },
-      {
-        key: 'radio',
-        type: 'radio',
-        templateOptions: {
-          label: 'Formly Radio button type',
-          options: [
-            { label: 'Option A', value: 'a' },
-            { label: 'Option B', value: 'b' },
-            { label: 'Option C', value: 'c' },
-            { label: 'Option C', value: 'd' },
-          ],
-        },
-      },
-      {
-        key: 'checkbox',
-        type: 'checkbox',
-        templateOptions: {
-          label: 'Formly Checkbox',
-          option: { label: 'Option A', value: 'a' },
-        },
-      },
-      {
-        key: 'multi-checkbox',
-        type: 'multicheckbox',
-        templateOptions: {
-          label: 'Formly multi Select checkbox',
-          options: [
-            {
-              key: 'sports',
-              value: 'Sports'
-            },
-            {
-              key: 'movies',
-              value: 'Movies'
-            },
-            {
-              key: 'others',
-              value: 'Others'
-            }
-          ]
+          label: 'Unique Entity ID (DUNS)',
+          placeholder: '',
+          min: 13,
+          max: 40,
+          inputType: 'number',
+          inputStyle: 'error',
         },
       }
         ],
     },
+    {
+      key: 'status',
+      wrappers: ['panel'],
+      templateOptions: { label: 'Status' },
+      fieldGroup:[
+       {
+        key: 'statusCheckbox',
+        type: 'multicheckbox',
+        templateOptions: {
+          options: [
+            {
+              key: 'Active',
+              value: 'Active'
+            },
+            {
+              key: 'Draft',
+              value: 'Draft'
+            },
+            {
+              key: 'Expired',
+              value: 'Expired'
+            },
+            {
+              key: 'InProgress',
+              value: 'In Progress'
+            }
+          ]
+        },
+      }
+    ]
+    },
+    {
+      key: 'expirationDate',
+      wrappers: ['panel'],
+      templateOptions: { label: 'Expiration Date' },
+      fieldGroup:[
+       {
+        key: 'expirationDateOption',
+        type: 'radio',
+        templateOptions: {
+          options: [
+                  { label: '30 Days', value: '30' },
+            { label: '60 Days', value: '60' },
+            { label: '90 Days', value: '90' },
+          
+          ]
+        },
+      }
+    ]
+    },
+    {
+      key: 'addressUpdate',
+      wrappers: ['panel'],
+      templateOptions: { label: 'Address Update' },
+      fieldGroup:[
+       {
+        key: 'addressUpdateOption',
+        type: 'radio',
+        templateOptions: {
+          options: [
+                  { label: 'Update Required', value: 'adrupr' },
+            { label: 'Update Not Required', value: 'adrupn' },
+          
+          ]
+        },
+      }
+    ]
+    },
+    {
+      key: 'entityType',
+      wrappers: ['panel'],
+      templateOptions: { label: 'Entity Type' },
+      fieldGroup:[
+        {
+        key: 'entityType',
+        type: 'select',
+        templateOptions: {
+          label: 'Entity Type',
+          multiple: false, 
+          options: [
+            { label: 'Contract Opportunities', value: 'co' },
+            { label: 'Entity Information', value: 'ei' },
+            { label: 'Assitance Listings', value: 'al'},
+            { label: 'Contract Data', value: 'cd' },
+            { label: 'Federal Heirarchy', value: 'fh' },
+            { label: 'Wage Determination', value: 'wd' },
+          ],
+        },
+      },
+    ]
+    }
   ];
 
   // To display the selected model values
