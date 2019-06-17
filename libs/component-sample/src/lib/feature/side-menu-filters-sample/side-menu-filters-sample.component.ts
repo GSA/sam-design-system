@@ -20,7 +20,7 @@ export class SideMenuFiltersSampleComponent  {
  
     {
       key: 'searchKeyword',
-      wrappers: ['panel'],
+      wrappers: ['accordianwrapper'],
       templateOptions: { label: 'Search by Keyword' },
       fieldGroup:[{
          key: 'keyword',
@@ -35,7 +35,7 @@ export class SideMenuFiltersSampleComponent  {
 
     {
       key: 'searchEntity',
-      wrappers: ['panel'],
+      wrappers: ['accordianwrapper'],
       templateOptions: { label: 'Search by Entity' },
       fieldGroup: [ 
         {
@@ -86,7 +86,7 @@ export class SideMenuFiltersSampleComponent  {
     },
     {
       key: 'status',
-      wrappers: ['panel'],
+      wrappers: ['accordianwrapper'],
       templateOptions: { label: 'Status' },
       fieldGroup:[
        {
@@ -117,7 +117,7 @@ export class SideMenuFiltersSampleComponent  {
     },
     {
       key: 'expirationDate',
-      wrappers: ['panel'],
+      wrappers: ['accordianwrapper'],
       templateOptions: { label: 'Expiration Date' },
       fieldGroup:[
        {
@@ -136,7 +136,7 @@ export class SideMenuFiltersSampleComponent  {
     },
     {
       key: 'addressUpdate',
-      wrappers: ['panel'],
+      wrappers: ['accordianwrapper'],
       templateOptions: { label: 'Address Update' },
       fieldGroup:[
        {
@@ -154,7 +154,7 @@ export class SideMenuFiltersSampleComponent  {
     },
     {
       key: 'entityType',
-      wrappers: ['panel'],
+      wrappers: ['accordianwrapper'],
       templateOptions: { label: 'Entity Type' },
       fieldGroup:[
         {
@@ -176,9 +176,4 @@ export class SideMenuFiltersSampleComponent  {
     ]
     }
   ];
-
-  // To display the selected model values
-  submit(model) {
-    this.results = model;
-  }
 }
