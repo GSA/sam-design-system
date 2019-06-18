@@ -23,6 +23,8 @@ import { SideMenuFiltersSampleComponent } from './feature/side-menu-filters-samp
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
 
+import { SubheaderSampleComponent } from './feature/subheader-sample/subheader-sample.component';
+import { SubheaderSampleModule } from './feature/subheader-sample/subheader-sample.module';
 const appIcons = {
   // App Specific Icons
 };
@@ -36,6 +38,7 @@ export const ROUTES: Routes = [
   { path: 'sideNav', component: SideNavigationSampleComponent },
   { path: 'sideFilters', component: SideMenuFiltersSampleComponent },
   { path: 'searchResultList', component: SearchResultListSampleComponent },
+  { path: 'subheader', component: SubheaderSampleComponent }
 ];
 
 @NgModule({
@@ -54,6 +57,7 @@ export const ROUTES: Routes = [
     SideNavigationSampleModule,
     SideMenuFiltersSampleModule,
     SearchResultListSampleModule,
+    SubheaderSampleModule
   ],
   exports: [RouterModule]
 })
