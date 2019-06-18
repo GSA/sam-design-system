@@ -18,18 +18,9 @@ import { FieldType } from '@ngx-formly/core';
       {{ option.label }}
   </label>
 </div>
-
-<div *ngFor="let chip of selectedValues">
-  <span class="sds-tag sds-tag--chip"> {{chip}}
-      <button class="sds-tag__close" aria-label="Close" (click)="onClose(chip)">
-          <fa-icon [icon]="['fas', 'times']"></fa-icon>
-      </button>
-  </span>
-</div>
   `,
 })
 export class FormlyFieldMultiCheckboxComponent extends FieldType {
-  public selectedValues: string[] = [];
   defaultOptions = {
     templateOptions: {
       options: [],
@@ -37,11 +28,6 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType {
   };
 
   onChange(value: any, checked: boolean) {
-    if (checked) {
-      this.selectedValues.push(value);
-    } else {
-      this.removeElement(value);
-    }
     if (this.to.type === 'array') {
       this.formControl.patchValue(checked
         ? [...(this.formControl.value || []), value]
@@ -51,17 +37,5 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType {
       this.formControl.patchValue({ ...this.formControl.value, [value]: checked });
     }
     this.formControl.markAsTouched();
-  }
-
-  onClose(el) {
-    this.removeElement(el);
-    this.formControl.patchValue({ ...this.formControl.value, [el]: false });
-  }
-
-  removeElement(element) {
-    const index = this.selectedValues.indexOf(element);
-    if (index > -1) {
-      this.selectedValues.splice(index, 1);
-    }
   }
 }
