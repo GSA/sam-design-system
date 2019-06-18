@@ -1,7 +1,7 @@
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TestBed, ComponentFixture, async, fakeAsync, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Component, ViewChild, DebugElement } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule, FormlyForm } from '@ngx-formly/core';
@@ -29,6 +29,7 @@ describe('Formly Field multicheckbox Component', () => {
                 NoopAnimationsModule,
                 ReactiveFormsModule,
                 FormlySelectModule,
+                FontAwesomeModule,
                 FormlyModule.forRoot({
                     types: [
                         {
