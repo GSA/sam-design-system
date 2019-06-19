@@ -6,7 +6,11 @@ import {
   faEdit,
   faComment,
   faTh,
-  faSignOutAlt
+  faSignOutAlt,
+  faCircle,
+  faEllipsisV,
+  faTimes,
+  faSearch
 } from "@fortawesome/free-solid-svg-icons";
 
  // SDS Icons
@@ -20,6 +24,10 @@ import { samArrowLeft } from '@gsa-sam/sam-styles/src/js/icons/arrowLeft';
   faComment,
   faTh,
   faSignOutAlt,
+  faCircle,
+  faEllipsisV,
+  faTimes,
+  faSearch,
   // SDS Icons
   samBars,
   samArrowLeft

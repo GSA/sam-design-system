@@ -1,0 +1,38 @@
+<div
+  #containerEl
+  cdkMonitorSubtreeFocus
+  (cdkFocusChange)="onFocusChange$.next($event)"
+  class="display-flex flex-justify-end"
+  (sdsObserveWidth)="onContainerWithChange$.next($event)"
+  (keydown.enter)="onKeyDownChange$.next($event)"
+  (keydown.esc)="onKeyDownChange$.next($event)"
+>
+  <div *ngIf="inputContainer" class="position-relative">
+    <label class="usa-sr-only" for="search-field">Search</label>
+    <input
+      #inputEl
+      (keyup)="onTermChange$.next($event)"
+      [value]="term$ | async"
+      [@inputExpand]="{
+        value: animationState,
+        params: { inputWidth: inputWidth }
+      }"
+      (@inputExpand.done)="onAnimationDone$.next($event)"
+      type="text"
+      id="search-field"
+      class="usa-input position-absolute margin-top-0 right-0"
+      style="height: 37px; border-right: none; max-width: none;"
+    />
+  </div>
+  <button
+    #buttonEl
+    type="button"
+    (click)="handleButtonClick($event)"
+    class="usa-button usa-button--primary margin-right-0"
+    [class.sds-button--attached-left]="inputContainer"
+    style="padding:10px 13px; width: 43px;"
+  >
+    <fa-icon [icon]="['fas', 'search']"></fa-icon>
+    <span class="usa-sr-only">Search</span>
+  </button>
+</div>

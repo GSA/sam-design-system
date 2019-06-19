@@ -18,7 +18,8 @@ import { SideNavigationSampleModule } from './feature/side-navigation-sample/sid
 import { SideNavigationSampleComponent } from './feature/side-navigation-sample/side-navigation-sample.component';
 import { SearchResultListSampleComponent } from './feature/search-result-list-sample/search-result-list-sample.component';
 import { SearchResultListSampleModule } from './feature/search-result-list-sample/search-result-list-sample.module';
-
+import { SubheaderSampleComponent } from './feature/subheader-sample/subheader-sample.component';
+import { SubheaderSampleModule } from './feature/subheader-sample/subheader-sample.module';
 const appIcons = {
   // App Specific Icons
 };
@@ -31,6 +32,7 @@ export const ROUTES: Routes = [
   { path: 'icon', component: IconSampleComponent },
   { path: 'sideNav', component: SideNavigationSampleComponent },
   { path: 'searchResultList', component: SearchResultListSampleComponent },
+  { path: 'subheader', component: SubheaderSampleComponent }
 ];
 
 @NgModule({
@@ -45,6 +47,7 @@ export const ROUTES: Routes = [
     IconSampleModule,
     SideNavigationSampleModule,
     SearchResultListSampleModule,
+    SubheaderSampleModule
   ],
   exports: [RouterModule]
 })

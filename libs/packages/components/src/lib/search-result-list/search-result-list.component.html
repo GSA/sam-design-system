@@ -1,5 +1,5 @@
 <div *ngFor="let item of model">
-    <ng-container *ngTemplateOutlet="resultContentTemplate, 
+    <ng-container *ngTemplateOutlet="resultContentTemplate,
                    context: { $implicit: item }"></ng-container>
 </div>
 <div *ngIf="!model|| model.length===0">

@@ -18,7 +18,7 @@ export class FormlyInputComponent {
  
     {
       key: 'filters',
-      wrappers: ['panel'],
+      wrappers: ['accordianwrapper'],
       templateOptions: { label: 'Entity Name/UEI' },
       fieldGroup:[{
          key: 'firstName',
@@ -34,7 +34,7 @@ export class FormlyInputComponent {
 
     {
       key: 'testings',
-      wrappers: ['panel'],
+      wrappers: ['accordianwrapper'],
       templateOptions: { label: 'Service Classifications' },
       fieldGroup: [ 
         {

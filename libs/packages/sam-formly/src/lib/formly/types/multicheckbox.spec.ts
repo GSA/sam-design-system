@@ -2,7 +2,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TestBed, ComponentFixture, async, fakeAsync, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, DebugElement } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule, FormlyForm } from '@ngx-formly/core';
 import { FormlySelectModule } from '@ngx-formly/core/select';
@@ -79,6 +79,42 @@ describe('Formly Field multicheckbox Component', () => {
             fixture.detectChanges();
             expect(expectedValue.templateOptions.options.length).toBe(3)
 
+        });
+
+        it('on change array', () => {
+            testComponentInputs.fields = [   {
+                key: 'multi-checkbox',
+                type: 'multicheckbox',
+                templateOptions: {
+                  label: 'Formly multi Select checkbox',
+                  type: 'array',
+                  options: [
+                    {
+                      key: 'sports',
+                      value: 'Sports'
+                    },
+                    {
+                      key: 'movies',
+                      value: 'Movies'
+                    },
+                    {
+                      key: 'others',
+                      value: 'Others'
+                    }
+                  ]
+                },
+              }];
+
+            const fixture = createTestComponent('<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'),
+                trigger = fixture.nativeElement.querySelector('usa-checkbox')
+            const expectedValue = fixture.debugElement.query(By.css('.usa-checkbox')).componentInstance.field;
+            fixture.detectChanges();
+            const checkboxes = fixture.debugElement.queryAll(By.css('.usa-checkbox__input')) as DebugElement[];
+
+            checkboxes[0].nativeElement.click();
+            checkboxes[0].nativeElement.dispatchEvent(new Event('click'));
+            checkboxes[0].nativeElement.click();
+            checkboxes[0].nativeElement.dispatchEvent(new Event('click'));
         });
 
     });
