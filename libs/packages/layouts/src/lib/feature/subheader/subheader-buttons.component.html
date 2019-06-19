@@ -1,0 +1,7 @@
+<button
+  *ngFor="let button of model"
+  (click)="clicks.emit(button.id)"
+  class="usa-button {{ button.class }}"
+>
+  {{ button.text }}
+</button>
