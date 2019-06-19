@@ -7,7 +7,7 @@ import { FIELD_TYPE_COMPONENTS, FORMLY_CONFIG } from './formly.config';
 import {
   SdsAccordionModule,
 } from '@gsa-sam/components';
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 // Validate the min length of the charecter
 export function minlengthValidationMessage(err, field) {
   return `Should have atleast ${field.templateOptions.minLength} characters`;
@@ -36,6 +36,7 @@ export function maxValidationMessage(err, field) {
   imports: [
     CommonModule,
      SdsAccordionModule,
+     FontAwesomeModule,
     ReactiveFormsModule,
     FormlySelectModule,
     FormlyModule.forChild(FORMLY_CONFIG),
