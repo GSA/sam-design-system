@@ -40,6 +40,7 @@ export class SearchListSampleComponent implements OnInit {
    * 
    */
   onSelectChange() {
+    this.page.pageNumber = 1;
     this.updateContent();
   }
 
