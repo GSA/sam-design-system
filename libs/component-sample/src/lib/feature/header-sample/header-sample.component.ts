@@ -27,10 +27,10 @@ export class HeaderSampleComponent implements OnInit {
 
   modelHeader: HeaderModel = {
     secondaryLinks: [{
-      imageClassPrefix: 'fas', imageClass: 'comment', text: 'Messages', route: '/', id: 'messages', mode: NavigationMode.INTERNAL
+      imageClassPrefix: 'fas', imageClass: 'comment', text: 'Messages', route: 'http://www.google.com', id: 'messages', mode: NavigationMode.EXTERNAL
     },
     {
-      imageClassPrefix: 'fas', imageClass: 'edit', text: 'Requests', route: '/', id: 'request', hasCounter: true, mode: NavigationMode.INTERNAL
+      imageClassPrefix: 'fas', imageClass: 'edit', text: 'Requests', route: '/', id: 'request', hasCounter: true, mode: NavigationMode.EVENT
     },
     {
       imageClassPrefix: 'fas', imageClass: 'th', text: 'Workspace', route: '/', id: 'workspace', mode: NavigationMode.INTERNAL
