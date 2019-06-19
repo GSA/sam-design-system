@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.5.1 (18/06/2019)
+
+#### closed
+
+- [**closed**] Add grid container to subheader [#44](https://github.com/GSA/sam-design-system/pull/44)
+
+---
+
 ## v0.5.0 (18/06/2019)
 
 #### closed
