@@ -18,10 +18,10 @@ export class FooterSampleComponent implements OnInit {
         links: [
           {
             text: 'Explore Our Community',
-            route: 'http://www.google.com',
-            mode: NavigationMode.EXTERNAL
+            route: '/',
+            mode: NavigationMode.INTERNAL
           },
-          { text: 'Release Notes', route: '/', mode: NavigationMode.EVENT }
+          { text: 'Release Notes', route: '/', mode: NavigationMode.INTERNAL }
         ]
       },
       {

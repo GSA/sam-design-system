@@ -29,8 +29,8 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
   constructor(private change: ChangeDetectorRef) { }
   model: SideNavigationModel = {
     navigationLinks: [{
-      text: 'Parent 1', id: 'linkp1', route: 'http://www.google.com', mode: NavigationMode.EXTERNAL, children: [
-        { text: 'Child 1 of Parent 1', route: '/', id: 'linkc1p1', mode: NavigationMode.EVENT },
+      text: 'Parent 1', id: 'linkp1', route: '/', mode: NavigationMode.INTERNAL, children: [
+        { text: 'Child 1 of Parent 1', route: '/', id: 'linkc1p1', mode: NavigationMode.INTERNAL },
         {
           text: 'Child 2 of Parent 1', route: '/', id: 'linkc2p1', mode: NavigationMode.INTERNAL, children: [
             { text: 'Grandchild 1 of Child 2 of Parent 1', route: '/', id: 'linkgc1c2p1', mode: NavigationMode.INTERNAL }]
