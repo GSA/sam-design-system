@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.5.0 (18/06/2019)
+
+#### closed
+
+- [**closed**] Adding subheader layout component [#43](https://github.com/GSA/sam-design-system/pull/43)
+- [**closed**] Entity results list [#38](https://github.com/GSA/sam-design-system/pull/38)
+- [**closed**] Adds subheader component and sample page [#33](https://github.com/GSA/sam-design-system/pull/33)
+- [**closed**] IAE-19650 added sam-formly component [#34](https://github.com/GSA/sam-design-system/pull/34)
+
+---
+
 ## v0.2.1 (08/05/2019)
 
 #### closed
