@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SdsFormlyModule } from '../../../../../packages/sam-formly/src/lib/formly/formly.module';
 import { FormlyInputComponent } from './formly-input.component';
 import { FormlyModule } from '@ngx-formly/core';
+import { SdsFiltersModule } from '../../../../../packages/sam-formly/src/lib/formly-filters/sds-filters.module';
 @NgModule({
     declarations: [FormlyInputComponent],
     imports: [
         CommonModule,
         FormsModule,
-        SdsFormlyModule,
+        SdsFiltersModule,
         FormlyModule.forRoot(),
         ReactiveFormsModule
 
