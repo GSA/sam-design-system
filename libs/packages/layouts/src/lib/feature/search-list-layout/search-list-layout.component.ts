@@ -48,6 +48,7 @@ export class SearchListLayoutComponent implements OnInit {
    * Sorty by change event
    */
   onSelectChange() {
+    this.page.pageNumber = 1;
     this.updateContent();
   }
 

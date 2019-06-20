@@ -77,4 +77,22 @@ describe('PaginationComponent', () => {
     expect(component.page.pageNumber).toBe(7);
   }));
 
+
+  it('select change', () => {
+    spyOn(component.pageChange, 'emit');
+    component.onSelectChange();
+    expect(component.pageChange.emit).toHaveBeenCalledWith(component.page);
+  });
+
+
+  
+
+  // currentPageFocusOut() {
+  //   if (this.currentPageField.nativeElement.value === '') {
+  //     this.currentPageField.nativeElement.value = this.page.pageNumber = this.previousNumber;
+  //     this.change.detectChanges();
+  //   }
+  // }
+
+
 });
