@@ -1,10 +1,6 @@
+
 <sds-toolbar #toolbar="sdsToolbar">
-    <sds-accordion multi="true">
-        <sds-accordion-item>
-            <sds-accordion-item-header> Filters </sds-accordion-item-header>
-            <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
-        </sds-accordion-item>
-    </sds-accordion>
+    <sds-filters [form]="form" [fields]="fields" [model]="model"></sds-filters> 
 </sds-toolbar>
 <div class="sam-example-pagination" [sdsToolbarExpand]="toolbar">
     <label id="options">Side menu Items</label>

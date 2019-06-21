@@ -3,7 +3,7 @@ import {
   SdsAccordionModule, SdsToolbarModule, SdsPageModule,
   SdsSideNavigationModule
 } from '@gsa-sam/components';
-import { SdsFormlyModule } from '@gsa-sam/sam-formly'
+import { SdsFiltersModule } from '@gsa-sam/sam-formly';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -15,7 +15,7 @@ import { FormlyModule } from '@ngx-formly/core';
     SdsToolbarModule, SdsPageModule,
     CommonModule,
     FormsModule,
-    SdsFormlyModule,
+    SdsFiltersModule,
     FormlyModule.forRoot(),
     ReactiveFormsModule
   

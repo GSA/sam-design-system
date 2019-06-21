@@ -64,7 +64,7 @@ export class SideMenuFiltersSampleComponent  {
         key: 'cageNcge',
         type: 'input',
         templateOptions: {
-          label: 'CAGE/NCGE',
+          label: 'CAGE/NCAGE',
           placeholder: '',
           inputType: 'text',
         },
