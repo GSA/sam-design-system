@@ -12,21 +12,18 @@ import {
     template: `
     <sds-accordion multi="true">
         <sds-accordion-item>
-            <sds-accordion-item-header> {{accordionLable}} </sds-accordion-item-header>
+            <sds-accordion-item-header> {{accordionLabel}} </sds-accordion-item-header>
             <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
         </sds-accordion-item>
     </sds-accordion>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush
   })
-  export class SdsFiltersComponent implements OnChanges{
+  export class SdsFiltersComponent {
     @Input() public form: FormGroup;
     @Input() public fields: FormlyFieldConfig[];
     @Input() public model: any;
-    @Input() accordionLable: string = 'Filters';
+    @Input() accordionLabel: string = 'Filters';
 
-    public ngOnChanges () {
-    
-    }
   }
   
