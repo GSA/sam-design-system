@@ -9,12 +9,10 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 @Component({
   selector: 'sds-filters',
   template: `
-    <sds-accordion multi="true">
         <sds-accordion-item>
             <sds-accordion-item-header> {{accordionLabel}} </sds-accordion-item-header>
             <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
         </sds-accordion-item>
-    </sds-accordion>
     `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
