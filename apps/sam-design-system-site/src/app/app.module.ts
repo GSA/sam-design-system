@@ -8,7 +8,10 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, BrowserAnimationsModule, RouterModule.forRoot(ROUTES), FormsModule
+  imports: [BrowserModule,
+    BrowserAnimationsModule,
+    RouterModule.forRoot(ROUTES),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,7 +6,11 @@ import {
   faEdit,
   faComment,
   faTh,
-  faSignOutAlt
+  faSignOutAlt,
+  faCircle,
+  faEllipsisV,
+  faTimes,
+  faSearch
 } from "@fortawesome/free-solid-svg-icons";
 
  // SDS Icons
@@ -37,6 +41,10 @@ import { samPaperPlane } from '@gsa-sam/sam-styles/src/js/icons/paperPlane';
   faComment,
   faTh,
   faSignOutAlt,
+  faCircle,
+  faEllipsisV,
+  faTimes,
+  faSearch,
   // SDS Icons
   samBars,
   samArrowLeft,
