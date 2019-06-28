@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject } from 'rxjs';
 import { SearchListSampleService } from '../../data-access/search-list/search-list-sample.service';
 @Component({
   selector: 'search-list-sample',
@@ -7,76 +7,37 @@ import { SearchListSampleService } from '../../data-access/search-list/search-li
   styleUrls: ['./search-list-sample.component.scss']
 })
 export class SearchListSampleComponent implements OnInit {
+  sideNavModel = { navigationLinks: [] };
+  page = { pageNumber: 1, pageSize: 25, totalPages: 0 };
+  top = { id: 'top' };
+  bottom = { id: 'bottom' };
+  items = [];
 
-  constructor(public searchListSampleService: SearchListSampleService) { }
+  public paginationChange = new BehaviorSubject<object>(this.page);
+  public sortField = 'id';
+
+  constructor(public searchListSampleService: SearchListSampleService) {}
 
   ngOnInit() {
-
-    this.paginationChange.subscribe(
-      value => {
-        this.updateContent();
-      }
-    );
+    this.paginationChange.subscribe(() => {
+      this.updateContent();
+    });
     this.updateContent();
   }
 
-  /**
-   * 
-   */
-  sideNavModel = {
-    navigationLinks: []
+  private updateContent() {
+    this.searchListSampleService
+      .getData({ page: this.page, sortField: this.sortField })
+      .subscribe(result => {
+        this.items = result.items;
+        this.page.totalPages = Math.ceil(
+          result.totalItems / this.page.pageSize
+        );
+      });
   }
 
-  /**
-   * 
-   */
-  page = {
-    pageNumber: 1,
-    pageSize: 25,
-    totalPages: 0
-  }
-
-  /**
-   * 
-   */
   onSelectChange() {
     this.page.pageNumber = 1;
     this.updateContent();
-  }
-
-  /**
-   * 
-   */
-  top = { id: 'top' };
-
-  /**
-   * 
-   */
-  bottom = { id: 'bottom' };
-
-  /**
-   * 
-   */
-  public paginationChange = new BehaviorSubject<object>(this.page);
-
-  /**
-   * 
-   */
-  items = [];
-
-  /**
-   * 
-   */
-  public sortField = 'id';
-
-  /**
-   * 
-   */
-  private updateContent() {
-    this.searchListSampleService.getData({ 'page': this.page, sortField: this.sortField }).subscribe(
-      (result) => {
-        this.items = result.items;
-        this.page.totalPages = Math.ceil(result.totalItems / this.page.pageSize);
-      });
   }
 }
