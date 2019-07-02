@@ -9,12 +9,17 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
   templateUrl: 'side-menu-filters-sample.component.html'
 })
 
-export class SideMenuFiltersSampleComponent {
+export class SideMenuFiltersSampleComponent implements OnInit{
 
-  results: any;
+  results: any = {};
   form = new FormGroup({});
   model = {};
   options: FormlyFormOptions = {};
+    /**
+   * Event when something is checked/selected in the grid
+   */
+  public filterModel$ = new BehaviorSubject<object>(null);
+
 
   fields: FormlyFieldConfig[] = [
     {
@@ -175,4 +180,11 @@ export class SideMenuFiltersSampleComponent {
       ]
     }
   ];
+  public ngOnInit() {
+    this.filterModel$.subscribe(
+      res =>
+        this.results = res
+  );
+  }
+
 }

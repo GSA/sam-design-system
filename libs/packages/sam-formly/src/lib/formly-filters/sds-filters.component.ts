@@ -1,10 +1,14 @@
 import {
   Component,
   Input,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
+  Output,
+  EventEmitter,
+  OnChanges
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'sds-filters',
@@ -16,7 +20,7 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
     `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SdsFiltersComponent {
+export class SdsFiltersComponent implements OnChanges {
   /**
   * Pass in a Form Group for ReactiveForms Support
   */
@@ -36,5 +40,15 @@ export class SdsFiltersComponent {
   *  Accordion Label used to display the Accordion header text.
   */
   @Input() accordionLabel: string = 'Filters';
+
+    /**
+  *  Emit results when model updated
+  */
+  @Output() filterModel = new EventEmitter<object[]>();
+
+  // Emit the results on changes.
+  ngOnChanges(){
+    this.filterModel.emit(this.model);
+  }
 
 }
