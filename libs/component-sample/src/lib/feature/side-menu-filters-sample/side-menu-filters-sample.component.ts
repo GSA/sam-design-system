@@ -18,7 +18,7 @@ export class SideMenuFiltersSampleComponent implements OnInit{
     /**
    * Event when something is checked/selected in the grid
    */
-  public filterModel$ = new BehaviorSubject<object>(null);
+  public filterChange$ = new BehaviorSubject<object>(null);
 
 
   fields: FormlyFieldConfig[] = [
@@ -181,7 +181,7 @@ export class SideMenuFiltersSampleComponent implements OnInit{
     }
   ];
   public ngOnInit() {
-    this.filterModel$.subscribe(
+    this.filterChange$.subscribe(
       res =>
         this.results = res
   );

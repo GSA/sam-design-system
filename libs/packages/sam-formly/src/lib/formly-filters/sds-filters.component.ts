@@ -44,11 +44,11 @@ export class SdsFiltersComponent implements OnChanges {
     /**
   *  Emit results when model updated
   */
-  @Output() filterModel = new EventEmitter<object[]>();
+  @Output() filterChange = new EventEmitter<object[]>();
 
   // Emit the results on changes.
   ngOnChanges(){
-    this.filterModel.emit(this.model);
+    this.filterChange.emit(this.model);
   }
 
 }

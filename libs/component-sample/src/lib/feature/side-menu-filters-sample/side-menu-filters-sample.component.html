@@ -1,7 +1,5 @@
-
-
 <sds-toolbar #toolbar="sdsToolbar">
-    <sds-filters [form]="form" [fields]="fields" [model]="model" (filterModel)="filterModel$.next($event)"></sds-filters> 
+    <sds-filters [form]="form" [fields]="fields" [model]="model" (filterChange)="filterChange$.next($event)"></sds-filters> 
 </sds-toolbar>
 <div class="sam-example-pagination" [sdsToolbarExpand]="toolbar">
     <h4>Filter Model:</h4>
