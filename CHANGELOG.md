@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.5.3 (02/07/2019)
+
+#### closed
+
+- [**closed**] IAE-19418 filter output added [#50](https://github.com/GSA/sam-design-system/pull/50)
+- [**closed**] IAE-19418 sds-filters component added  [#46](https://github.com/GSA/sam-design-system/pull/46)
+- [**closed**] Clean up of search results layout custom page [#49](https://github.com/GSA/sam-design-system/pull/49)
+- [**closed**] Fix subheader title alignment [#47](https://github.com/GSA/sam-design-system/pull/47)
+- [**closed**] IAE-19417 for Formly filters with side menu [#42](https://github.com/GSA/sam-design-system/pull/42)
+- [**closed**] IAE-19416 Feedback  [#45](https://github.com/GSA/sam-design-system/pull/45)
+
+---
+
 ## v0.5.1 (18/06/2019)
 
 #### closed
