@@ -7,13 +7,21 @@ import { SearchResultListSampleDataComponentModule } from '../../ui/search-resul
 
 import { SearchListSampleService } from '../../data-access/search-list/search-list-sample.service';
 import { SearchListServiceModule } from '@sam-design-system/layouts';
-
+import {
+  SearchListComunicationService,
+  SdsPageModule,
+  SdsToolbarModule,
+  SdsAccordionModule
+} from '@gsa-sam/components';
+import { SdsFiltersModule } from '@gsa-sam/sam-formly';
 
 @NgModule({
   declarations: [SearchListLayoutSampleComponent],
   imports: [
     CommonModule, FormsModule, SearchResultListSampleDataComponentModule,
-    SearchListServiceModule
-  ], exports: [SearchListLayoutSampleComponent], providers: [SearchListSampleService]
+    SearchListServiceModule, SdsPageModule,
+    SdsToolbarModule, SdsAccordionModule, SdsFiltersModule
+  ], exports: [SearchListLayoutSampleComponent]
+  , providers: [SearchListSampleService, SearchListComunicationService]
 })
 export class SearchListLayoutSampleModule { }

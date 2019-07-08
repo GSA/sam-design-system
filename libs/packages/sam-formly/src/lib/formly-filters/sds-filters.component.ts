@@ -4,11 +4,12 @@ import {
   ChangeDetectionStrategy,
   Output,
   EventEmitter,
-  OnChanges
+  OnChanges,Optional
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { Observable } from 'rxjs';
+import { SearchListComunicationService } from '@gsa-sam/components';
 
 @Component({
   selector: 'sds-filters',
@@ -21,6 +22,9 @@ import { Observable } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SdsFiltersComponent implements OnChanges {
+
+  constructor(@Optional() private searchListComunicationService: SearchListComunicationService) { }
+
   /**
   * Pass in a Form Group for ReactiveForms Support
   */
@@ -30,7 +34,7 @@ export class SdsFiltersComponent implements OnChanges {
   *  Fields are used to configure the UI components 
   */
   @Input() public fields: FormlyFieldConfig[];
-  
+
   /**
   *  Model used to display the filter values.
   */
@@ -41,14 +45,18 @@ export class SdsFiltersComponent implements OnChanges {
   */
   @Input() accordionLabel: string = 'Filters';
 
-    /**
-  *  Emit results when model updated
-  */
+  /**
+*  Emit results when model updated
+*/
   @Output() filterChange = new EventEmitter<object[]>();
 
   // Emit the results on changes.
-  ngOnChanges(){
+  ngOnChanges() {
     this.filterChange.emit(this.model);
+    if (this.searchListComunicationService) {
+      console.log('SdsFiltersComponent Filter Next');
+      this.searchListComunicationService.filterChange.next(this.model);
+    }
   }
 
 }

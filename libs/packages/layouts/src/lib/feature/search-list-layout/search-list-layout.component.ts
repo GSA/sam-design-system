@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, ContentChild, TemplateRef } from '@angular/core';
+import { Component, OnInit, Input, ContentChild, TemplateRef, Optional } from '@angular/core';
 import { BehaviorSubject } from "rxjs";
 import { SearchListInterface, SearchListConfiguration } from './model/search-list-layout.model';
+import { SearchListComunicationService } from '@gsa-sam/components';
 @Component({
   selector: 'search-list-layout',
   templateUrl: './search-list-layout.component.html',
@@ -12,6 +13,8 @@ export class SearchListLayoutComponent implements OnInit {
   * Child Template to be used to display the data for each item in the list of items
   */
   @ContentChild('resultContent') resultContentTemplate: TemplateRef<any>;
+
+  constructor(@Optional() private searchListComunicationService: SearchListComunicationService) { }
 
   /**
    * Input service to be called when items change
@@ -25,6 +28,8 @@ export class SearchListLayoutComponent implements OnInit {
   @Input()
   configuration: SearchListConfiguration;
 
+  private filterData: any;
+
   ngOnInit() {
     this.page.pageSize = this.configuration.pageSize;
     this.sortField = this.configuration.defaultSortValue;
@@ -33,6 +38,16 @@ export class SearchListLayoutComponent implements OnInit {
         this.updateContent();
       }
     );
+    if (this.searchListComunicationService) {
+      this.searchListComunicationService.filterChange.subscribe(
+        (filter) => {
+          console.log('Search List Layout Component Filter Subscription');
+          this.filterData = filter;
+          this.updateContent();
+        }
+      )
+
+    }
   }
 
   /**
@@ -81,7 +96,7 @@ export class SearchListLayoutComponent implements OnInit {
    * calls service when updated
    */
   private updateContent() {
-    this.service.getData({ 'page': this.page, sortField: this.sortField }).subscribe(
+    this.service.getData({ 'page': this.page, sortField: this.sortField, filter: this.filterData }).subscribe(
       (result) => {
         this.items = result.items;
         this.page.totalPages = Math.ceil(result.totalItems / this.page.pageSize);

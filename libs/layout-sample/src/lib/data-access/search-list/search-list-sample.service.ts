@@ -1,12 +1,12 @@
 import { SearchListSampleData } from './search-list-sample.data';
 import { Observable, of } from 'rxjs';
 
-
-export class SearchListSampleService implements SearchList {
-
+import { SearchListInterface, SearchParameters, SearchResult } from '@sam-design-system/layouts';
 
 
-    getData(search: Search): Observable<Result> {
+export class SearchListSampleService implements SearchListInterface {
+    getData(search: SearchParameters): Observable<SearchResult> {
+        console.log(search);
         let start = search.page.pageNumber * search.page.pageSize - search.page.pageSize;
         let end = start + search.page.pageSize;
         return of({
@@ -14,24 +14,4 @@ export class SearchListSampleService implements SearchList {
             totalItems: SearchListSampleData.length
         });
     }
-}
-
-export class Search {
-    page = {
-        pageNumber: 1,
-        pageSize: 25,
-        totalPages: 0
-    };
-
-    sortField: string
-
-}
-
-export class Result {
-    totalItems: number;
-    items: any[];
-}
-export interface SearchList {
-
-    getData(search: Search): Observable<Result>;
 }

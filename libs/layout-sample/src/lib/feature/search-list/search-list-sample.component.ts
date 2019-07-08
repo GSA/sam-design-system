@@ -16,7 +16,7 @@ export class SearchListSampleComponent implements OnInit {
   public paginationChange = new BehaviorSubject<object>(this.page);
   public sortField = 'id';
 
-  constructor(public searchListSampleService: SearchListSampleService) {}
+  constructor(public searchListSampleService: SearchListSampleService) { }
 
   ngOnInit() {
     this.paginationChange.subscribe(() => {
@@ -27,7 +27,7 @@ export class SearchListSampleComponent implements OnInit {
 
   private updateContent() {
     this.searchListSampleService
-      .getData({ page: this.page, sortField: this.sortField })
+      .getData({ page: this.page, sortField: this.sortField, filter: null })
       .subscribe(result => {
         this.items = result.items;
         this.page.totalPages = Math.ceil(
