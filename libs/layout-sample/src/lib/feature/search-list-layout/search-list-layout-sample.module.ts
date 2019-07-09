@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchListLayoutSampleComponent } from './search-list-layout-sample.component';
 
 import { SearchResultListSampleDataComponentModule } from '../../ui/search-result-list-sample-data/search-list-event-sample.module';
@@ -15,12 +15,15 @@ import {
 } from '@gsa-sam/components';
 import { SdsFiltersModule } from '@gsa-sam/sam-formly';
 
+import { FormlyModule } from '@ngx-formly/core';
 @NgModule({
   declarations: [SearchListLayoutSampleComponent],
   imports: [
     CommonModule, FormsModule, SearchResultListSampleDataComponentModule,
     SearchListServiceModule, SdsPageModule,
-    SdsToolbarModule, SdsAccordionModule, SdsFiltersModule
+    SdsToolbarModule, SdsAccordionModule, SdsFiltersModule,
+    FormlyModule.forRoot(),
+    ReactiveFormsModule
   ], exports: [SearchListLayoutSampleComponent]
   , providers: [SearchListSampleService, SearchListComunicationService]
 })

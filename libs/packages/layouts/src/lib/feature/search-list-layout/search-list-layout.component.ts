@@ -39,10 +39,10 @@ export class SearchListLayoutComponent implements OnInit {
       }
     );
     if (this.searchListComunicationService) {
-      this.searchListComunicationService.filterChange.subscribe(
+      this.searchListComunicationService.filterUpdate.subscribe(
         (filter) => {
-          console.log('Search List Layout Component Filter Subscription');
           this.filterData = filter;
+          this.page.pageNumber = 1;
           this.updateContent();
         }
       )
