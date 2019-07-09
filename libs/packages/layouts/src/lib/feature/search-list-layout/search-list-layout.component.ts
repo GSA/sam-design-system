@@ -28,6 +28,9 @@ export class SearchListLayoutComponent implements OnInit {
   @Input()
   configuration: SearchListConfiguration;
 
+  /**
+   * Filter information
+   */
   private filterData: any;
 
   ngOnInit() {

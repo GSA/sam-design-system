@@ -1,9 +1,6 @@
 import { SearchListSampleData } from './search-list-sample.data';
 import { Observable, of } from 'rxjs';
-
 import { SearchListInterface, SearchParameters, SearchResult } from '@sam-design-system/layouts';
-import { isNgTemplate } from '@angular/compiler';
-
 
 export class SearchListSampleService implements SearchListInterface {
     getData(search: SearchParameters): Observable<SearchResult> {
