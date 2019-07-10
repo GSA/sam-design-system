@@ -1,4 +1,4 @@
-export class HierarchicalTreeSelectedItemModel {
+export class SDSSelectedItemModel {
 
     /**
      * Mode of the model either allows a single item or multiple items

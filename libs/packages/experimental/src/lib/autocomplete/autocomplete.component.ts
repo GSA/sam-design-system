@@ -5,7 +5,7 @@ import { HierarchicalTreeSelectedItemModel, TreeMode } from '../hierarchical-tre
 import { SamHierarchicalAutocompleteConfiguration } from '../models/SamHierarchicalAutocompleteConfiguration';
 const Hierarchical_Autocomplete_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => SamHierarchicalAutocompleteComponent),
+  useExisting: forwardRef(() => SDSAutocompleteComponent),
   multi: true
 };
 
@@ -15,7 +15,7 @@ const Hierarchical_Autocomplete_VALUE_ACCESSOR: any = {
   styleUrls: ['./autocomplete.component.scss'],
   providers: [Hierarchical_Autocomplete_VALUE_ACCESSOR]
 })
-export class SamHierarchicalAutocompleteComponent implements ControlValueAccessor {
+export class SDSAutocompleteComponent implements ControlValueAccessor {
   writeValue(obj: any): void {
     throw new Error("Method not implemented.");
   }  registerOnChange(fn: any): void {

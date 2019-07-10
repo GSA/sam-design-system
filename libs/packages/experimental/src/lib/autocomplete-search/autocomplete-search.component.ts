@@ -1,12 +1,12 @@
 import { Component, Input, ViewChild, TemplateRef, ElementRef, forwardRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl } from '@angular/forms';
-import { SamHiercarchicalServiceInterface } from '../hierarchical-interface';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { SDSHiercarchicalServiceInterface } from '../hierarchical-interface';
 import { KeyHelper, KEYS } from '../key-helper/key-helper';
-import { HierarchicalTreeSelectedItemModel, TreeMode } from '../hierarchical-tree-selectedItem.model';
-import { SamHierarchicalAutocompleteConfiguration } from '../models/SamHierarchicalAutocompleteConfiguration';
+import { SDSSelectedItemModel, TreeMode } from '../sds-selectedItem.model';
+import { SDSAutocompleteConfiguration } from '../autocomplete/models/SDSAutocompleteConfiguration';
 const Hierarchical_Autocomplete_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => SamHierarchicalAutocompleteSearchComponent),
+  useExisting: forwardRef(() => SDSAutocompleteSearchComponent),
   multi: true
 };
 
@@ -16,7 +16,7 @@ const Hierarchical_Autocomplete_VALUE_ACCESSOR: any = {
   styleUrls: ['./autocomplete-search.component.scss'],
   providers: [Hierarchical_Autocomplete_VALUE_ACCESSOR]
 })
-export class SamHierarchicalAutocompleteSearchComponent implements ControlValueAccessor {
+export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
 
   /**
    * Ul list of elements 
@@ -41,19 +41,19 @@ export class SamHierarchicalAutocompleteSearchComponent implements ControlValueA
   /**
    * The data model that has the selected item
    */
-  public model: HierarchicalTreeSelectedItemModel;
+  public model: SDSSelectedItemModel;
 
   /**
    * Configuration for the Autocomplete control 
    */
   @Input()
-  public configuration: SamHierarchicalAutocompleteConfiguration;
+  public configuration: SDSAutocompleteConfiguration;
 
   /**
    * Instance of the SamHiercarchicalServiceInterface provided
    */
   @Input()
-  public service: SamHiercarchicalServiceInterface;
+  public service: SDSHiercarchicalServiceInterface;
 
   /**
    * Timer id for the timer awaiting the service call for more typeing
@@ -366,8 +366,8 @@ export class SamHierarchicalAutocompleteSearchComponent implements ControlValueA
 
 
   writeValue(obj: any): void {
-    if (obj instanceof HierarchicalTreeSelectedItemModel) {
-      this.model = obj as HierarchicalTreeSelectedItemModel;
+    if (obj instanceof SDSSelectedItemModel) {
+      this.model = obj as SDSSelectedItemModel;
     }
   }
 

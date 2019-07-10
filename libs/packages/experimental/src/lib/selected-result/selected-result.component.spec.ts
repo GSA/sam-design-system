@@ -1,27 +1,27 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SamHierarchicalSelectedResultComponent } from './selected-result.component';
-import { HierarchicalTreeSelectedItemModel, TreeMode } from '../hierarchical-tree-selectedItem.model';
+import { SDSSelectedResultComponent } from './selected-result.component';
+import { SDSSelectedItemModel, TreeMode } from '../sds-selectedItem.model';
 import { By } from '@angular/platform-browser';
-import { SelectedResultConfiguration } from '../models/SamHierarchicalSelectedResultConfiguration';
+import { SDSSelectedResultConfiguration } from './models/SDSSelectedResultConfiguration';
 
 
 describe('SamHierarchicalSelectedResultComponent', () => {
-  let component: SamHierarchicalSelectedResultComponent;
-  let fixture: ComponentFixture<SamHierarchicalSelectedResultComponent>;
+  let component: SDSSelectedResultComponent;
+  let fixture: ComponentFixture<SDSSelectedResultComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [SamHierarchicalSelectedResultComponent]
+      declarations: [SDSSelectedResultComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SamHierarchicalSelectedResultComponent);
+    fixture = TestBed.createComponent(SDSSelectedResultComponent);
     component = fixture.componentInstance;
-    component.model = new HierarchicalTreeSelectedItemModel();
-    component.configuration = new SelectedResultConfiguration();
+    component.model = new SDSSelectedItemModel();
+    component.configuration = new SDSSelectedResultConfiguration();
     component.configuration.primaryKeyField = 'id';
     component.model.treeMode = TreeMode.SINGLE;
     component.configuration.primaryTextField = 'name';

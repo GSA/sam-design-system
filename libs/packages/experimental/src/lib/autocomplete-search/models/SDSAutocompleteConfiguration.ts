@@ -1,4 +1,4 @@
-export class SamHierarchicalAutocompleteConfiguration {
+export class SDSAutocompleteConfiguration {
 
   /**
    * sets the default debounce time to 250 milliseconds 

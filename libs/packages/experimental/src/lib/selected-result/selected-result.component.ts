@@ -4,7 +4,7 @@ import { SelectedResultConfiguration } from '../models/SamHierarchicalSelectedRe
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 const Hierarchical_SelectedResult_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => SamHierarchicalSelectedResultComponent),
+  useExisting: forwardRef(() => SDSSelectedResultComponent),
   multi: true
 };
 
@@ -14,7 +14,7 @@ const Hierarchical_SelectedResult_VALUE_ACCESSOR: any = {
   styleUrls: ['./selected-result.component.scss'],
   providers: [Hierarchical_SelectedResult_VALUE_ACCESSOR]
 })
-export class SamHierarchicalSelectedResultComponent implements ControlValueAccessor {
+export class SDSSelectedResultComponent implements ControlValueAccessor {
 
   /**
   * Allow to insert a customized template for suggestions to use
