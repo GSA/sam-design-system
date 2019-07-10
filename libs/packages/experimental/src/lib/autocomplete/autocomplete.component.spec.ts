@@ -1,6 +1,6 @@
 /* tslint:disable */
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
-import { SamHierarchicalAutocompleteComponent } from './autocomplete.component';
+import { SDSAutocompleteComponent } from './autocomplete.component';
 //import { SamHierarchicalAutocompleteConfiguration } from '../models/SamHierarchicalAutocompleteConfiguration';
 import { FormsModule } from '@angular/forms';
 //import { HierarchicalTreeSelectedItemModel, TreeMode } from '../hierarchical-tree-selectedItem.model';
@@ -9,20 +9,20 @@ import 'rxjs/add/observable/of';
 //import { HierarchicalDataService } from '../hierarchical-test-service.spec';
 
 
-describe('SamHierarchicalAutocompleteComponent', () => {
-  let component: SamHierarchicalAutocompleteComponent;
-  let fixture: ComponentFixture<SamHierarchicalAutocompleteComponent>;
+describe('SDSAutocompleteComponent', () => {
+  let component: SDSAutocompleteComponent;
+  let fixture: ComponentFixture<SDSAutocompleteComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [SamHierarchicalAutocompleteComponent],
+      declarations: [SDSAutocompleteComponent],
       imports: [FormsModule]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SamHierarchicalAutocompleteComponent);
+    fixture = TestBed.createComponent(SDSAutocompleteComponent);
     component = fixture.componentInstance;
 
     fixture.detectChanges();

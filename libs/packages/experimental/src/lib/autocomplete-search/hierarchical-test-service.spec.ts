@@ -1,11 +1,11 @@
 /* tslint:disable */
-import { Observable } from 'rxjs';
-import { SamHiercarchicalServiceInterface, SamHiercarchicalServiceSearchItem, SamHiercarchicalServiceResult } from './hierarchical-interface';
-//import { Sort } from "../../components/data-table/sort.directive";
+import { Observable, of } from 'rxjs';
+import { SDSAutocomplteServiceInterface, SDSHiercarchicalServiceResult } from './models/SDSAutocomplteServiceInterface';
+;
 import 'rxjs-compat/add/observable/of';
 import { map } from 'rxjs/operators';
 
-export class HierarchicalDataService implements SamHiercarchicalServiceInterface {
+export class HierarchicalDataService implements SDSAutocomplteServiceInterface {
 
   private loadedData;
   constructor() {
@@ -18,9 +18,9 @@ export class HierarchicalDataService implements SamHiercarchicalServiceInterface
     this.loadedData = data;
   }
 
-  getDataByText(currentItems: number, searchValue?: string): Observable<SamHiercarchicalServiceResult> {
+  getDataByText(currentItems: number, searchValue?: string): Observable<SDSHiercarchicalServiceResult> {
     let itemIncrease = 25;
-    let data = Observable.of(this.loadedData);
+    let data = of(this.loadedData);
     let itemsOb: Observable<Object[]>;
     if (searchValue) {
       itemsOb = data.pipe(map(items => items.filter(itm =>
@@ -40,29 +40,9 @@ export class HierarchicalDataService implements SamHiercarchicalServiceInterface
       items: subItemsitems,
       totalItems: totalItemCount
     };
-    return Observable.of(returnItem);
+    return of(returnItem);
   }
-
-  getHiercarchicalById(item: SamHiercarchicalServiceSearchItem): Observable<SamHiercarchicalServiceResult> {
-    let itemIncrease = 15;
-    let temp = this.getSortedData(this.loadedData);//, item.sort);
-    let data = Observable.of(temp);
-    let itemsOb: Observable<Object[]>;
-    itemsOb = this.filterItemsByAllFields(item, itemsOb, data);
-    let items: object[] = this.itemsListOutofObservable(itemsOb);
-    let totalItemCount = items.length;
-
-    let maxSectionPosition = this.getMaxSectionPosition(item.currentItemCount, itemIncrease, totalItemCount);
-    let subItemsitems = items.slice(item.currentItemCount, maxSectionPosition);
-
-    let returnItem = {
-      items: subItemsitems,
-      totalItems: totalItemCount
-    };
-    return Observable.of(returnItem);
-  }
-
-
+  
   private itemsListOutofObservable(itemsOb: any) {
     let items: object[];
     itemsOb.subscribe((result) => {
@@ -77,35 +57,6 @@ export class HierarchicalDataService implements SamHiercarchicalServiceInterface
       maxSectionPosition = totalItemCount;
     }
     return maxSectionPosition;
-  }
-
-  private filterItemsByAllFields(item: SamHiercarchicalServiceSearchItem, itemsOb: any, data: any) {
-    if (item.searchValue) {
-      itemsOb = data.map(items => items.filter(itm => itm.parentId === item.id &&
-        (itm.name.indexOf(item.searchValue) !== -1 ||
-          itm.subtext.indexOf(item.searchValue) !== -1)));
-    }
-    else {
-      itemsOb = data.map(items => items.filter(itm => itm.parentId === item.id));
-    }
-    return itemsOb;
-  }
-
-  private getSortedData(data: any[]): any[] {//, sort: Sort): any[] {
-    // if (!sort || (!sort.active || sort.direction === '')) { return data; }
-    return null;
-    //     return data.sort((a, b) => {
-    //     //  let propertyA = this.sortingDataAccessor(a, sort.active);
-    // //let propertyB = this.sortingDataAccessor(b, sort.active)
-    //       const valueA = isNaN(+propertyA) ? propertyA : +propertyA;
-    //       const valueB = isNaN(+propertyB) ? propertyB : +propertyB;
-    //       return (valueA < valueB ? -1 : 1) * (sort.direction === 'asc' ? 1 : -1);
-    //     });
-  }
-
-  private sortingDataAccessor(data: any, sortHeaderId: string) {
-    const value = (data as { [key: string]: any })[sortHeaderId];
-    return value;
   }
 
 }
