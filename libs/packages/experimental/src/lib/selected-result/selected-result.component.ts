@@ -1,6 +1,6 @@
 import { Component, Input, TemplateRef, forwardRef } from '@angular/core';
-import { HierarchicalTreeSelectedItemModel } from '../hierarchical-tree-selectedItem.model';
-import { SelectedResultConfiguration } from '../models/SamHierarchicalSelectedResultConfiguration';
+import { SDSSelectedItemModel } from '../sds-selectedItem.model';
+import { SDSSelectedResultConfiguration } from './models/SDSSelectedResultConfiguration';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 const Hierarchical_SelectedResult_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -24,13 +24,13 @@ export class SDSSelectedResultComponent implements ControlValueAccessor {
   /**
    * The data model that has the selected item
    */
-  public model: HierarchicalTreeSelectedItemModel;
+  public model: SDSSelectedItemModel;
 
   /**
   * Configuration for the Selected Results control 
   */
   @Input()
-  public configuration: SelectedResultConfiguration;
+  public configuration: SDSSelectedResultConfiguration;
 
   /**
    * Stored Event for ControlValueAccessor
@@ -58,8 +58,8 @@ export class SDSSelectedResultComponent implements ControlValueAccessor {
   }
 
   writeValue(obj: any): void {
-    if (obj instanceof HierarchicalTreeSelectedItemModel) {
-      this.model = obj as HierarchicalTreeSelectedItemModel;
+    if (obj instanceof SDSSelectedItemModel) {
+      this.model = obj as SDSSelectedItemModel;
     }
   }
 

@@ -1,9 +1,9 @@
 import { Component, Input, ViewChild, TemplateRef, ElementRef, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-import { SDSHiercarchicalServiceInterface } from '../hierarchical-interface';
+import { SDSAutocomplteServiceInterface } from './models/SDSAutocomplteServiceInterface';
 import { KeyHelper, KEYS } from '../key-helper/key-helper';
 import { SDSSelectedItemModel, TreeMode } from '../sds-selectedItem.model';
-import { SDSAutocompleteConfiguration } from '../autocomplete/models/SDSAutocompleteConfiguration';
+import { SDSAutocompleteConfiguration } from './models/SDSAutocompleteConfiguration';
 const Hierarchical_Autocomplete_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => SDSAutocompleteSearchComponent),
@@ -53,7 +53,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * Instance of the SamHiercarchicalServiceInterface provided
    */
   @Input()
-  public service: SDSHiercarchicalServiceInterface;
+  public service: SDSAutocomplteServiceInterface;
 
   /**
    * Timer id for the timer awaiting the service call for more typeing

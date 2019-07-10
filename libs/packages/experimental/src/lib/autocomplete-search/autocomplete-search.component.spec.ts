@@ -1,32 +1,32 @@
 /* tslint:disable */
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
-import { SamHierarchicalAutocompleteSearchComponent } from './autocomplete-search.component';
-import { SamHierarchicalAutocompleteConfiguration } from '../models/SamHierarchicalAutocompleteConfiguration';
+import { SDSAutocompleteSearchComponent } from './autocomplete-search.component';
+import { SDSAutocompleteConfiguration } from './models/SDSAutocompleteConfiguration';
 import { FormsModule } from '@angular/forms';
-import { HierarchicalTreeSelectedItemModel, TreeMode } from '../hierarchical-tree-selectedItem.model';
+import { SDSSelectedItemModel, TreeMode } from '../sds-selectedItem.model';
 import { By } from '@angular/platform-browser';
 import 'rxjs-compat/add/observable/of';
 import { HierarchicalDataService } from '../hierarchical-test-service.spec';
 
 
 describe('SamHierarchicalAutocompleteComponent', () => {
-  let component: SamHierarchicalAutocompleteSearchComponent;
-  let fixture: ComponentFixture<SamHierarchicalAutocompleteSearchComponent>;
+  let component: SDSAutocompleteSearchComponent;
+  let fixture: ComponentFixture<SDSAutocompleteSearchComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [SamHierarchicalAutocompleteSearchComponent],
+      declarations: [SDSAutocompleteSearchComponent],
       imports: [FormsModule]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SamHierarchicalAutocompleteSearchComponent);
+    fixture = TestBed.createComponent(SDSAutocompleteSearchComponent);
     component = fixture.componentInstance;
     component.service = new HierarchicalDataService();
-    component.model = new HierarchicalTreeSelectedItemModel();
-    component.configuration = new SamHierarchicalAutocompleteConfiguration();
+    component.model = new SDSSelectedItemModel();
+    component.configuration = new SDSAutocompleteConfiguration();
     component.configuration.id = 'autoId';
     component.configuration.primaryKeyField = 'id';
     component.model.treeMode = TreeMode.SINGLE;
