@@ -1,59 +1,59 @@
 <hr>
-<div class="grid-row text-secondary-vivid height-6">
-  <h2>{{model.text}} Enity: {{model.id}}</h2>
-</div>
-<div class="grid-row search-result">
-  <div class="tablet:grid-col-auto margin-y-2">
-    <span class="usa-tag usa-tag--big display-block text-ink border" style="background-color:#ebe3f9" >DUNS</span>
-    <span class="usa-tag usa-tag--big display-block margin-y-2 text-center text-ink bg-white border">SAM</span>
+<div class="grid-container padding-0 search-result__list">
+  <div class="grid-row text-secondary-vivid height-6">
+    <h2>{{model.text}} Enity: {{model.id}}</h2>
   </div>
-  <div class="tablet:grid-col-auto margin-y-2 line-height-mono-6">
-    Unique Entity ID: 902930291<br>
-    Unique Entity ID: 902930291<br>
-    CAGE/NCAGE: 0D203
-  </div>
-  <div class="tablet:grid-col-4 margin-2">
-    Purpose of Registration: Federal Assistance Awards & IGT
-    <div class="grid-row padding-1 radius-lg" style="background-color:#fef0c8;">
-      <div class="grid-col-auto width-2 height-4 text-white font-alt-xl bg-gold text-center radius-lg margin-y-1"><b>!</b></div>
-      <div class="grid-col margin-left-2">
-        <b><i>Adress Needs to be Updated</i></b><br>
-        33235 Kerluke Lake Apt. 937
-        Glen Burnie, MD 21061 United States
+
+  <div class="grid-row search-result">
+    <div class="tablet:grid-col-auto margin-y-2">
+      <span class="usa-tag sds-tag--info-purple display-block">DUNS</span>
+      <span class="usa-tag sds-tag--info-white display-block margin-y-2 text-center">SAM</span>
+    </div>
+    <div class="tablet:grid-col-auto margin-2 line-height-mono-6">
+      Unique Entity ID: 902930291<br>
+      Unique Entity ID: 902930291<br>
+      CAGE/NCAGE: 0D203
+    </div>
+    <div class="tablet:grid-col-4 margin-2">
+      Purpose of Registration: Federal Assistance Awards & IGT
+      <div class="sds-tag--alert">
+          <i class="sds fa-exclamation fa-2x"></i>
+          <span class="sds-tag--alert-content">
+          <b>
+            <i>Address Needs to be Updated</i>
+          </b><br>
+          5438 Kerluke Lake Apt. 937<br>
+          Glen Burnie, MD 21061 United States
+        </span>
       </div>
     </div>
-  </div>
-  <!-- buttons -->
-  <div class="tablet:grid-col-auto button-field">
-    <div class="button-content">
-      Status
-      <div class="button bg-gray-5 border-1px height-5 width-10">
-        <div class="entity-status__shape"></div>
-        <h3>Active</h3>
-      </div>
+    <!-- buttons -->
+
+    <div class="grid-col-auto margin-right-2">
+      <h1 class="sds-type--label-title">Status</h1>
+      <span class="sds-tag sds-tag--outline-green margin-top-1">Active</span>
     </div>
-    <div class="button-content">
-      Expiration Date
-      <div class="button bg-gray-5 border-1px height-5 width-15 text-middle">
-        <h3>Feb 20, 2019</h3>
-      </div>
+    <div class="grid-col-auto margin-x-2">
+      <h1 class="sds-type--label-title">Expiration Date</h1>
+      <span class="sds-tag sds-tag--alt margin-top-1">Feb 20, 2019</span>
     </div>
-  </div>
-  <!--options button-->
-  <div class="tablet:grid-col options">
-    <div class="entity-options__svg">
-      <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 38">
-        <defs>
-          <style>
-            .cls-1 {
-              fill: #979797;
-            }
-          </style>
-        </defs>
-        <title>ActionButtonIcon</title>
-        <path class="cls-1" d="M19,.25,19,0V.14l0,.11a18.75,18.75,0,0,0,0,37.5h0A18.75,18.75,0,0,1,19,.25ZM19,0h0Zm0,0h0V.14Zm0,0V.25h0a18.75,18.75,0,0,1,0,37.5h0A18.75,18.75,0,0,1,19,.25L19,0h0a19,19,0,0,0,0,38h0A19,19,0,0,0,19,0Zm0,.25h0a18.75,18.75,0,0,1,0,37.5h0A18.75,18.75,0,0,0,19,.25h0V0h0l0,.14Zm0,10a2,2,0,1,0-2-2A2,2,0,0,0,19,10.3ZM19,21a2,2,0,1,0-2-2A2,2,0,0,0,19,21Zm0,6.7a2,2,0,1,0,2,2A2,2,0,0,0,19,27.7Z"
-          transform="translate(0)" />
-      </svg>
+
+    <!--options button-->
+    <div class="tablet:grid-col options margin-2">
+      <div class="entity-options__svg">
+        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 38">
+          <defs>
+            <style>
+              .cls-1 {
+                fill: #979797;
+              }
+            </style>
+          </defs>
+          <title>ActionButtonIcon</title>
+          <path class="cls-1" d="M19,.25,19,0V.14l0,.11a18.75,18.75,0,0,0,0,37.5h0A18.75,18.75,0,0,1,19,.25ZM19,0h0Zm0,0h0V.14Zm0,0V.25h0a18.75,18.75,0,0,1,0,37.5h0A18.75,18.75,0,0,1,19,.25L19,0h0a19,19,0,0,0,0,38h0A19,19,0,0,0,19,0Zm0,.25h0a18.75,18.75,0,0,1,0,37.5h0A18.75,18.75,0,0,0,19,.25h0V0h0l0,.14Zm0,10a2,2,0,1,0-2-2A2,2,0,0,0,19,10.3ZM19,21a2,2,0,1,0-2-2A2,2,0,0,0,19,21Zm0,6.7a2,2,0,1,0,2,2A2,2,0,0,0,19,27.7Z"
+            transform="translate(0)" />
+        </svg>
+      </div>
     </div>
   </div>
 </div>
