@@ -1,8 +1,6 @@
 import { Component, Input, ViewChild, TemplateRef, ElementRef, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl } from '@angular/forms';
-import { SamHiercarchicalServiceInterface } from '../hierarchical-interface';
-import { HierarchicalTreeSelectedItemModel, TreeMode } from '../hierarchical-tree-selectedItem.model';
-import { SamHierarchicalAutocompleteConfiguration } from '../models/SamHierarchicalAutocompleteConfiguration';
+
 const Hierarchical_Autocomplete_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => SDSAutocompleteComponent),
@@ -10,7 +8,7 @@ const Hierarchical_Autocomplete_VALUE_ACCESSOR: any = {
 };
 
 @Component({
-  selector: 'sds-hierarchical-autocomplete',
+  selector: 'sds-autocomplete',
   templateUrl: './autocomplete.component.html',
   styleUrls: ['./autocomplete.component.scss'],
   providers: [Hierarchical_Autocomplete_VALUE_ACCESSOR]
