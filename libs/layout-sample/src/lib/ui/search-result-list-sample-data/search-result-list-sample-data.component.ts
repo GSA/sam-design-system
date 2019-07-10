@@ -11,4 +11,4 @@ export class SearchResultListSampleDataComponent {
 
   @Input() model;
 
-}
+};
