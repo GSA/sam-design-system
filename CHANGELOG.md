@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.5.4 (11/07/2019)
+
+#### closed
+
+- [**closed**] IAE-21714 Filter and Search List Communication [#51](https://github.com/GSA/sam-design-system/pull/51)
+- [**closed**] IAE-18673 Icons library [#27](https://github.com/GSA/sam-design-system/pull/27)
+- [**closed**] Entity list - IAE-19965 [#52](https://github.com/GSA/sam-design-system/pull/52)
+
+---
+
 ## v0.5.3 (02/07/2019)
 
 #### closed
