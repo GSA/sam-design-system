@@ -1,6 +1,8 @@
 import { Component, Input, ViewChild, TemplateRef, ElementRef, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl } from '@angular/forms';
-
+import { SDSSelectedItemModel, TreeMode } from '../selected-result/models/sds-selectedItem.model';
+import { SDSAutocomplteServiceInterface } from '../autocomplete-search/models/SDSAutocomplteServiceInterface';
+import { SDSAutocompletelConfiguration } from './models/SDSAutocompletelConfiguration.model';
 const Autocomplete_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => SDSAutocompleteComponent),
@@ -14,18 +16,66 @@ const Autocomplete_VALUE_ACCESSOR: any = {
   providers: [Autocomplete_VALUE_ACCESSOR]
 })
 export class SDSAutocompleteComponent implements ControlValueAccessor {
+
+
+  /**
+  * The data model that has the selected item
+  */
+  public model: SDSSelectedItemModel;
+
+
+  /**
+   * Stored Event for ControlValueAccessor
+   */
+  private onTouchedCallback: () => void = () => null;
+
+  /**
+   * Stored Event for ControlValueAccessor
+   */
+  public propogateChange: (_: any) => void = (_: any) => null;
+
+  public disabled: boolean;
+
+
+  /**
+ * Configuration for the control 
+ */
+  @Input()
+  public configuration: SDSAutocompletelConfiguration;
+
+  /**
+* Instance of the SamHiercarchicalServiceInterface provided
+*/
+  @Input()
+  public service: SDSAutocomplteServiceInterface;
+
   writeValue(obj: any): void {
-    throw new Error("Method not implemented.");
-  }  registerOnChange(fn: any): void {
-    throw new Error("Method not implemented.");
+    if (obj instanceof SDSSelectedItemModel) {
+      this.model = obj as SDSSelectedItemModel;
+    }
   }
+
+  registerOnChange(fn: any): void {
+    this.propogateChange = fn;
+  }
+
   registerOnTouched(fn: any): void {
-    throw new Error("Method not implemented.");
+    this.onTouchedCallback = fn;
   }
-  setDisabledState?(isDisabled: boolean): void {
-    throw new Error("Method not implemented.");
+
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
+
+  isSingleMode(): boolean {
+    if (this.model) {
+      return this.model.treeMode === TreeMode.SINGLE;
+    }
+    else {
+      return false;
+    }
   }
 
 
-  
+
 }

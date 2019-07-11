@@ -1,6 +1,8 @@
-export class SDSAutocompleteSearchConfiguration {
-
-  /**
+import { SDSSelectedResultConfiguration } from '../../selected-result/models/SDSSelectedResultConfiguration';
+import { SDSAutocompleteSearchConfiguration } from '../../autocomplete-search/models/SDSAutocompleteConfiguration';
+export class SDSAutocompletelConfiguration implements SDSSelectedResultConfiguration,SDSAutocompleteSearchConfiguration
+{
+/**
    * sets the default debounce time to 250 milliseconds 
    */
   constructor() {

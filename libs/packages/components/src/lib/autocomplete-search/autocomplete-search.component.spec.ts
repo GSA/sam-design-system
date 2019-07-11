@@ -9,7 +9,7 @@ import 'rxjs-compat/add/observable/of';
 import { AutoCompleteSampleDataService } from './autocomplete-seach-test-service.spec';
 
 
-describe('SamAutocompleteAutocompleteComponent', () => {
+describe('SamAutocompleteComponent', () => {
   let component: SDSAutocompleteSearchComponent;
   let fixture: ComponentFixture<SDSAutocompleteSearchComponent>;
 
