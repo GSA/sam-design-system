@@ -1,37 +1,25 @@
 import { SearchListSampleData } from './search-list-sample.data';
 import { Observable, of } from 'rxjs';
+import { SearchListInterface, SearchParameters, SearchResult } from '@sam-design-system/layouts';
 
-
-export class SearchListSampleService implements SearchList {
-
-
-
-    getData(search: Search): Observable<Result> {
+export class SearchListSampleService implements SearchListInterface {
+    getData(search: SearchParameters): Observable<SearchResult> {
+        let data = SearchListSampleData;
+        if (search.filter) {
+            let toReturn = [];
+            for (let i = 0; i < data.length; i++) {
+                let item = data[i];
+                if (item.text.toLowerCase().indexOf(search.filter.searchKeyword.keyword.toLowerCase()) !== -1) {
+                    toReturn.push(item);
+                }
+            }
+            data = toReturn;
+        }
         let start = search.page.pageNumber * search.page.pageSize - search.page.pageSize;
         let end = start + search.page.pageSize;
         return of({
-            items: SearchListSampleData.slice(start, end),
-            totalItems: SearchListSampleData.length
+            items: data.slice(start, end),
+            totalItems: data.length
         });
     }
-}
-
-export class Search {
-    page = {
-        pageNumber: 1,
-        pageSize: 25,
-        totalPages: 0
-    };
-
-    sortField: string
-
-}
-
-export class Result {
-    totalItems: number;
-    items: any[];
-}
-export interface SearchList {
-
-    getData(search: Search): Observable<Result>;
 }

@@ -1,7 +1,18 @@
-<search-list-layout [service]="searchListSampleService" [configuration]="configuration">
-    <ng-template #resultContent let-item>
-        <div>
-            <search-result-list-sample-data [model]="item"></search-result-list-sample-data>
-        </div>
-    </ng-template>
-</search-list-layout>
+<sds-page>
+    <!-- =============== PAGE OPTIONS =============== -->
+    <sds-page-options>
+        <!-- =============== TOOLBAR =============== -->
+        <sds-toolbar #toolbar="sdsToolbar" class="top-205">
+            <sds-filters [form]="form" [fields]="fields" [model]="model" ></sds-filters> 
+        </sds-toolbar>
+    </sds-page-options>
+    <div [sdsToolbarExpand]="toolbar">
+        <search-list-layout [service]="searchListSampleService" [configuration]="configuration">
+            <ng-template #resultContent let-item>
+                <div>
+                    <search-result-list-sample-data [model]="item"></search-result-list-sample-data>
+                </div>
+            </ng-template>
+        </search-list-layout>
+    </div>
+</sds-page>

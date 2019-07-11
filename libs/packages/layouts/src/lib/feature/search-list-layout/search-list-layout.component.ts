@@ -1,6 +1,8 @@
-import { Component, OnInit, Input, ContentChild, TemplateRef } from '@angular/core';
+import { Component, OnInit, Input, ContentChild, TemplateRef, Optional } from '@angular/core';
 import { BehaviorSubject } from "rxjs";
 import { SearchListInterface, SearchListConfiguration } from './model/search-list-layout.model';
+import { SDSFormlyUpdateComunicationService } from '@gsa-sam/sam-formly';
+
 @Component({
   selector: 'search-list-layout',
   templateUrl: './search-list-layout.component.html',
@@ -12,6 +14,8 @@ export class SearchListLayoutComponent implements OnInit {
   * Child Template to be used to display the data for each item in the list of items
   */
   @ContentChild('resultContent') resultContentTemplate: TemplateRef<any>;
+
+  constructor(@Optional() private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService) { }
 
   /**
    * Input service to be called when items change
@@ -25,6 +29,11 @@ export class SearchListLayoutComponent implements OnInit {
   @Input()
   configuration: SearchListConfiguration;
 
+  /**
+   * Filter information
+   */
+  private filterData: any;
+
   ngOnInit() {
     this.page.pageSize = this.configuration.pageSize;
     this.sortField = this.configuration.defaultSortValue;
@@ -33,6 +42,13 @@ export class SearchListLayoutComponent implements OnInit {
         this.updateContent();
       }
     );
+    if (this.formlyUpdateComunicationService) {
+      this.formlyUpdateComunicationService.filterUpdate.subscribe(
+        (filter) => {
+          this.updateFilter(filter);
+        }
+      )
+    }
   }
 
   /**
@@ -42,6 +58,16 @@ export class SearchListLayoutComponent implements OnInit {
     pageNumber: 1,
     pageSize: 25,
     totalPages: 0
+  }
+
+  /**
+   * updates the filter and set the page number to 1 and calls imported service
+   * @param filter 
+   */
+  public updateFilter(filter: any) {
+    this.filterData = filter;
+    this.page.pageNumber = 1;
+    this.updateContent();
   }
 
   /**
@@ -81,7 +107,7 @@ export class SearchListLayoutComponent implements OnInit {
    * calls service when updated
    */
   private updateContent() {
-    this.service.getData({ 'page': this.page, sortField: this.sortField }).subscribe(
+    this.service.getData({ 'page': this.page, sortField: this.sortField, filter: this.filterData }).subscribe(
       (result) => {
         this.items = result.items;
         this.page.totalPages = Math.ceil(result.totalItems / this.page.pageSize);

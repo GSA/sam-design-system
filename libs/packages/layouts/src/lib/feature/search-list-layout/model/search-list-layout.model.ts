@@ -11,6 +11,11 @@ export class SearchParameters {
      */
     sortField: string
 
+    /**
+     * filter data
+     */
+    filter: any;
+
 }
 
 export interface Page {
@@ -66,6 +71,8 @@ export class sortItem {
      * Value of Item
      */
     value: string;
+
+
 }
 
 export class SearchListConfiguration {
