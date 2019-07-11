@@ -6,7 +6,7 @@ import {
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { Subject } from 'rxjs';
-import { SearchListComunicationService } from '@gsa-sam/components';
+import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
 
 @Component({
   selector: 'sds-filters',
@@ -23,13 +23,13 @@ export class SdsFiltersComponent implements OnInit {
   ngOnInit(): void {
     this.modelChange.subscribe((change) => {
       this.filterChange.emit(change);
-      if (this.searchListComunicationService) {
-        this.searchListComunicationService.updateFilter(change);
+      if (this.formlyUpdateComunicationService) {
+        this.formlyUpdateComunicationService.updateFilter(change);
       }
     })
   }
 
-  constructor(@Optional() private searchListComunicationService: SearchListComunicationService) { }
+  constructor(@Optional() private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService) { }
 
   /**
    * Modeal update

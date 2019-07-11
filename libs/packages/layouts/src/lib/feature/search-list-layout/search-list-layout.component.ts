@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, ContentChild, TemplateRef, Optional } from '@angular/core';
 import { BehaviorSubject } from "rxjs";
 import { SearchListInterface, SearchListConfiguration } from './model/search-list-layout.model';
-import { SearchListComunicationService } from '@gsa-sam/components';
+import { SDSFormlyUpdateComunicationService } from '@gsa-sam/sam-formly';
+
 @Component({
   selector: 'search-list-layout',
   templateUrl: './search-list-layout.component.html',
@@ -14,7 +15,7 @@ export class SearchListLayoutComponent implements OnInit {
   */
   @ContentChild('resultContent') resultContentTemplate: TemplateRef<any>;
 
-  constructor(@Optional() private searchListComunicationService: SearchListComunicationService) { }
+  constructor(@Optional() private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService) { }
 
   /**
    * Input service to be called when items change
@@ -41,15 +42,12 @@ export class SearchListLayoutComponent implements OnInit {
         this.updateContent();
       }
     );
-    if (this.searchListComunicationService) {
-      this.searchListComunicationService.filterUpdate.subscribe(
+    if (this.formlyUpdateComunicationService) {
+      this.formlyUpdateComunicationService.filterUpdate.subscribe(
         (filter) => {
-          this.filterData = filter;
-          this.page.pageNumber = 1;
-          this.updateContent();
+          this.updateFilter(filter);
         }
       )
-
     }
   }
 
@@ -60,6 +58,16 @@ export class SearchListLayoutComponent implements OnInit {
     pageNumber: 1,
     pageSize: 25,
     totalPages: 0
+  }
+
+  /**
+   * updates the filter and set the page number to 1 and calls imported service
+   * @param filter 
+   */
+  public updateFilter(filter: any) {
+    this.filterData = filter;
+    this.page.pageNumber = 1;
+    this.updateContent();
   }
 
   /**

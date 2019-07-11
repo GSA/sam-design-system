@@ -8,12 +8,12 @@ import { SearchResultListSampleDataComponentModule } from '../../ui/search-resul
 import { SearchListSampleService } from '../../data-access/search-list/search-list-sample.service';
 import { SearchListServiceModule } from '@sam-design-system/layouts';
 import {
-  SearchListComunicationService,
+ 
   SdsPageModule,
   SdsToolbarModule,
   SdsAccordionModule
 } from '@gsa-sam/components';
-import { SdsFiltersModule } from '@gsa-sam/sam-formly';
+import { SdsFiltersModule,SDSFormlyUpdateComunicationService } from '@gsa-sam/sam-formly';
 
 import { FormlyModule } from '@ngx-formly/core';
 @NgModule({
@@ -25,6 +25,6 @@ import { FormlyModule } from '@ngx-formly/core';
     FormlyModule.forRoot(),
     ReactiveFormsModule
   ], exports: [SearchListLayoutSampleComponent]
-  , providers: [SearchListSampleService, SearchListComunicationService]
+  , providers: [SearchListSampleService, SDSFormlyUpdateComunicationService]
 })
 export class SearchListLayoutSampleModule { }

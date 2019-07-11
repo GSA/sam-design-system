@@ -15,4 +15,3 @@ export * from './menu/menu.module';
 export * from './search/search.module';
 export * from './observers/observer.module';
 export * from './truncate-text/truncate.text.module';
-export * from './search-result-list/service/search-list-comunication.service'

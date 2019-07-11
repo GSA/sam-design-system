@@ -1,5 +1,5 @@
 import { Subject } from 'rxjs';
-export class SearchListComunicationService {
+export class SDSFormlyUpdateComunicationService {
 
     /**
      * Filter update subject
