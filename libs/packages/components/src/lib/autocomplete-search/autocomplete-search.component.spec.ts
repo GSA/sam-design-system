@@ -6,10 +6,10 @@ import { FormsModule } from '@angular/forms';
 import { SDSSelectedItemModel, TreeMode } from '../selected-result/models/sds-selectedItem.model';
 import { By } from '@angular/platform-browser';
 import 'rxjs-compat/add/observable/of';
-import { HierarchicalDataService } from './hierarchical-test-service.spec';
+import { AutoCompleteSampleDataService } from './autocomplete-seach-test-service.spec';
 
 
-describe('SamHierarchicalAutocompleteComponent', () => {
+describe('SamAutocompleteAutocompleteComponent', () => {
   let component: SDSAutocompleteSearchComponent;
   let fixture: ComponentFixture<SDSAutocompleteSearchComponent>;
 
@@ -24,7 +24,7 @@ describe('SamHierarchicalAutocompleteComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SDSAutocompleteSearchComponent);
     component = fixture.componentInstance;
-    component.service = new HierarchicalDataService();
+    component.service = new AutoCompleteSampleDataService();
     component.model = new SDSSelectedItemModel();
     component.configuration = new SDSAutocompleteConfiguration();
     component.configuration.id = 'autoId';

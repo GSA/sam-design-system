@@ -6,7 +6,7 @@ import { By } from '@angular/platform-browser';
 import { SDSSelectedResultConfiguration } from './models/SDSSelectedResultConfiguration';
 
 
-describe('SamHierarchicalSelectedResultComponent', () => {
+describe('SDSSelectedResultComponent', () => {
   let component: SDSSelectedResultComponent;
   let fixture: ComponentFixture<SDSSelectedResultComponent>;
 

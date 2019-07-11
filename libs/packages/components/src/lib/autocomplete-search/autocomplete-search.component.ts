@@ -4,17 +4,17 @@ import { SDSAutocomplteServiceInterface } from './models/SDSAutocomplteServiceIn
 import { KeyHelper, KEYS } from '../key-helper/key-helper';
 import { SDSSelectedItemModel, TreeMode } from '../selected-result/models/sds-selectedItem.model';
 import { SDSAutocompleteConfiguration } from './models/SDSAutocompleteConfiguration';
-const Hierarchical_Autocomplete_VALUE_ACCESSOR: any = {
+const Autocomplete_Autocomplete_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => SDSAutocompleteSearchComponent),
   multi: true
 };
 
 @Component({
-  selector: 'sds-hierarchical-autocomplete',
+  selector: 'sds-search-autocomplete',
   templateUrl: './autocomplete-search.component.html',
   styleUrls: ['./autocomplete-search.component.scss'],
-  providers: [Hierarchical_Autocomplete_VALUE_ACCESSOR]
+  providers: [Autocomplete_Autocomplete_VALUE_ACCESSOR]
 })
 export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
 

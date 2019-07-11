@@ -2,7 +2,7 @@ import { Component, Input, TemplateRef, forwardRef } from '@angular/core';
 import { SDSSelectedItemModel } from './models/sds-selectedItem.model';
 import { SDSSelectedResultConfiguration } from './models/SDSSelectedResultConfiguration';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-const Hierarchical_SelectedResult_VALUE_ACCESSOR: any = {
+const SDS_SelectedResult_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => SDSSelectedResultComponent),
   multi: true
@@ -12,7 +12,7 @@ const Hierarchical_SelectedResult_VALUE_ACCESSOR: any = {
   selector: 'sds-selected-result',
   templateUrl: './selected-result.component.html',
   styleUrls: ['./selected-result.component.scss'],
-  providers: [Hierarchical_SelectedResult_VALUE_ACCESSOR]
+  providers: [SDS_SelectedResult_VALUE_ACCESSOR]
 })
 export class SDSSelectedResultComponent implements ControlValueAccessor {
 

@@ -1,7 +1,7 @@
 import { Component, Input, ViewChild, TemplateRef, ElementRef, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl } from '@angular/forms';
 
-const Hierarchical_Autocomplete_VALUE_ACCESSOR: any = {
+const Autocomplete_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => SDSAutocompleteComponent),
   multi: true
@@ -11,7 +11,7 @@ const Hierarchical_Autocomplete_VALUE_ACCESSOR: any = {
   selector: 'sds-autocomplete',
   templateUrl: './autocomplete.component.html',
   styleUrls: ['./autocomplete.component.scss'],
-  providers: [Hierarchical_Autocomplete_VALUE_ACCESSOR]
+  providers: [Autocomplete_VALUE_ACCESSOR]
 })
 export class SDSAutocompleteComponent implements ControlValueAccessor {
   writeValue(obj: any): void {

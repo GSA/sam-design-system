@@ -9,7 +9,7 @@ export class AutoCompleteSampleDataService implements SDSAutocomplteServiceInter
 
   private loadedData;
   constructor() {
-    const data = SampleHierarchicalData;
+    const data = SampleAutoCompleteData;
     for (let i = 0; i < data.length; i++) {
       let item = data[i];
       let results = data.filter(it => it.parentId === item.id);
@@ -61,7 +61,7 @@ export class AutoCompleteSampleDataService implements SDSAutocomplteServiceInter
 
 }
 
-export let SampleHierarchicalData = [
+export let SampleAutoCompleteData = [
   { 'id': '1', 'parentId': null, 'name': 'Level 1', 'subtext': 'id 1', 'type': 'Level 1' },
   { 'id': '2', 'parentId': '1', 'name': 'Level 2', 'subtext': 'id 2', 'type': 'Level 2' },
   { 'id': '3', 'parentId': '2', 'name': 'Level 3', 'subtext': 'id 3', 'type': 'Level 3' },
