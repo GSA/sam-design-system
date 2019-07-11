@@ -1,5 +1,5 @@
 import { Component, Input, TemplateRef, forwardRef } from '@angular/core';
-import { SDSSelectedItemModel } from '../sds-selectedItem.model';
+import { SDSSelectedItemModel } from './models/sds-selectedItem.model';
 import { SDSSelectedResultConfiguration } from './models/SDSSelectedResultConfiguration';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 const Hierarchical_SelectedResult_VALUE_ACCESSOR: any = {

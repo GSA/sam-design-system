@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SDSSelectedResultComponent } from './selected-result.component';
-import { SDSSelectedItemModel, TreeMode } from '../sds-selectedItem.model';
+import { SDSSelectedItemModel, TreeMode } from './models/sds-selectedItem.model';
 import { By } from '@angular/platform-browser';
 import { SDSSelectedResultConfiguration } from './models/SDSSelectedResultConfiguration';
 

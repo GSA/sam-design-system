@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core
 import { SDSAutocompleteSearchComponent } from './autocomplete-search.component';
 import { SDSAutocompleteConfiguration } from './models/SDSAutocompleteConfiguration';
 import { FormsModule } from '@angular/forms';
-import { SDSSelectedItemModel, TreeMode } from '../sds-selectedItem.model';
+import { SDSSelectedItemModel, TreeMode } from '../selected-result/models/sds-selectedItem.model';
 import { By } from '@angular/platform-browser';
 import 'rxjs-compat/add/observable/of';
 import { HierarchicalDataService } from './hierarchical-test-service.spec';

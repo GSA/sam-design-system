@@ -5,7 +5,7 @@ import { SDSAutocomplteServiceInterface, SDSHiercarchicalServiceResult } from '.
 import 'rxjs-compat/add/observable/of';
 import { map } from 'rxjs/operators';
 
-export class HierarchicalDataService implements SDSAutocomplteServiceInterface {
+export class AutoCompleteSampleDataService implements SDSAutocomplteServiceInterface {
 
   private loadedData;
   constructor() {

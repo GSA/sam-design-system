@@ -2,7 +2,7 @@ import { Component, Input, ViewChild, TemplateRef, ElementRef, forwardRef } from
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { SDSAutocomplteServiceInterface } from './models/SDSAutocomplteServiceInterface';
 import { KeyHelper, KEYS } from '../key-helper/key-helper';
-import { SDSSelectedItemModel, TreeMode } from '../sds-selectedItem.model';
+import { SDSSelectedItemModel, TreeMode } from '../selected-result/models/sds-selectedItem.model';
 import { SDSAutocompleteConfiguration } from './models/SDSAutocompleteConfiguration';
 const Hierarchical_Autocomplete_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
