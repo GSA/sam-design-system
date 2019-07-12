@@ -19,6 +19,16 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
 
 
   /**
+* Allow to insert a customized template for suggestions results
+*/
+  @Input() suggestionTemplate: TemplateRef<any>;
+
+  /**
+  * Allow to insert a customized template for selected items
+  */
+  @Input() selectedItemTemplate: TemplateRef<any>;
+
+  /**
   * The data model that has the selected item
   */
   public model: SDSSelectedItemModel;
