@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AutocompleteSampleComponent } from './autocomplete-sample.component';
-import { SdsFooterModule } from '../../../../../packages/components/src/lib/autocomplete/autocomplete.module';
+import { SdsAutocompleteModule } from '@gsa-sam/components';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -11,7 +11,7 @@ describe('AutocompleteSampleComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [AutocompleteSampleComponent],
-      imports: [SdsFooterModule, RouterTestingModule, FontAwesomeModule]
+      imports: [SdsAutocompleteModule, RouterTestingModule, FontAwesomeModule]
     })
       .compileComponents();
   }));

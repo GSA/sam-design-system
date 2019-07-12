@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AutocompleteSampleComponent } from './autocomplete-sample.component';
-import { SdsFooterModule } from '../../../../../packages/components/src/lib/footer/footer.module';
+import { SdsAutocompleteModule } from '@gsa-sam/components';
 @NgModule({
   declarations: [AutocompleteSampleComponent],
   imports: [
-    CommonModule, SdsFooterModule
+    CommonModule, SdsAutocompleteModule
   ], exports: [AutocompleteSampleComponent]
 })
 export class AutocompleteSampleModule { }
