@@ -75,7 +75,7 @@ export class AutocompleteSampleComponent implements OnInit {
 
 
     this.settings5.primaryKeyField = 'id';
-    this.settings5.id = 'autocomplete5 Disabled';
+    this.settings5.id = 'autocomplete5';
     this.settings5.labelText = 'Autocomplete 5 Disabled';
     this.settings5.primaryTextField = 'name';
     this.settings5.secondaryTextField = 'subtext';
