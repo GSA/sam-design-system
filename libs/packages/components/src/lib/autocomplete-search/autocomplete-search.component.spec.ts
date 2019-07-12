@@ -1,7 +1,7 @@
 /* tslint:disable */
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { SDSAutocompleteSearchComponent } from './autocomplete-search.component';
-import { SDSAutocompleteConfiguration } from './models/SDSAutocompleteConfiguration';
+import { SDSAutocompleteSearchConfiguration } from './models/SDSAutocompleteConfiguration';
 import { FormsModule } from '@angular/forms';
 import { SDSSelectedItemModel, TreeMode } from '../selected-result/models/sds-selectedItem.model';
 import { By } from '@angular/platform-browser';
@@ -26,7 +26,7 @@ describe('SamAutocompleteComponent', () => {
     component = fixture.componentInstance;
     component.service = new AutoCompleteSampleDataService();
     component.model = new SDSSelectedItemModel();
-    component.configuration = new SDSAutocompleteConfiguration();
+    component.configuration = new SDSAutocompleteSearchConfiguration();
     component.configuration.id = 'autoId';
     component.configuration.primaryKeyField = 'id';
     component.model.treeMode = TreeMode.SINGLE;

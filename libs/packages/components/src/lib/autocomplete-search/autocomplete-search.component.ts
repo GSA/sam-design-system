@@ -3,7 +3,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { SDSAutocomplteServiceInterface } from './models/SDSAutocomplteServiceInterface';
 import { KeyHelper, KEYS } from '../key-helper/key-helper';
 import { SDSSelectedItemModel, TreeMode } from '../selected-result/models/sds-selectedItem.model';
-import { SDSAutocompleteConfiguration } from './models/SDSAutocompleteConfiguration';
+import { SDSAutocompleteSearchConfiguration } from './models/SDSAutocompleteConfiguration';
 const Autocomplete_Autocomplete_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => SDSAutocompleteSearchComponent),
@@ -47,7 +47,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * Configuration for the Autocomplete control 
    */
   @Input()
-  public configuration: SDSAutocompleteConfiguration;
+  public configuration: SDSAutocompleteSearchConfiguration;
 
   /**
    * Instance of the SamHiercarchicalServiceInterface provided
