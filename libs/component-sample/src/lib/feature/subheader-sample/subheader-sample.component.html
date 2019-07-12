@@ -1,0 +1,23 @@
+<sds-subheader>
+  <!-- =============== TITLE =============== -->
+
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor a enim
+  ac molestie. Nam ut risus magna. Quisque at pulvinar sem, id dictum ipsum. Nam
+  commodo rhoncus mauris, id gravida lorem congue nec. Sed dictum, tellus sed
+  commodo sempertr
+
+  <!-- =============== PRIMARY/SECONDARY BUTTONS =============== -->
+  <sds-subheader-buttons
+    [model]="subheader.buttons"
+    (clicks)="log($event)"
+  ></sds-subheader-buttons>
+
+  <!-- =============== SEARCH =============== -->
+  <sds-subheader-search (searchTerm)="log($event)"> </sds-subheader-search>
+
+  <!-- =============== ACTIONS BUTTONS =============== -->
+  <sds-subheader-actions
+    [model]="subheader.actions"
+    (clicks)="log($event)"
+  ></sds-subheader-actions>
+</sds-subheader>

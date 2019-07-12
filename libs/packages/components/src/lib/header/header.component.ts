@@ -1,13 +1,18 @@
-import { Component, Input } from '@angular/core';
-import { HeaderModel, Selectable, HeaderNavigationLink, HeaderSecondaryLink } from './model/HeaderModel';
-
-
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { HeaderModel, HeaderNavigationLink, HeaderSecondaryLink } from './model/HeaderModel';
+import { INavigationLink, NavigationMode, Selectable } from '../common-navigation/common-navigation-model';
+import { NavigationHelper } from '../common-navigation/navigation-helper';
 @Component({
   selector: 'sds-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
 export class SdsHeaderComponent {
+
+  /**
+  * Navigation helper
+  */
+  navigationHelper = new NavigationHelper();
 
   /**
    * Model used for the different display portions of the header 
@@ -122,4 +127,21 @@ export class SdsHeaderComponent {
     }
     return toReturn;
   }
+
+  /**
+   * event for event based
+   */
+  @Output()
+  linkEvent = new EventEmitter<INavigationLink>();
+
+  /**
+   * Link clicked and emits the link data into an event
+   * @param link 
+   */
+  linkClickEvent(link: INavigationLink) {
+    this.linkEvent.emit(link);
+    return false;
+  }
+
+
 }

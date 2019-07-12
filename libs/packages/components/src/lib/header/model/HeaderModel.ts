@@ -1,3 +1,6 @@
+import { INavigationLink, NavigationMode, Selectable } from '../../common-navigation/common-navigation-model';
+
+
 export interface HeaderModel {
 
     /**
@@ -17,7 +20,13 @@ export interface HeaderModel {
 }
 
 
-export class HeaderHome implements Selectable {
+export class HeaderHome implements Selectable, INavigationLink {
+
+    /**
+     * Internal Angualr Routes, External HREF, EVENT: event on parent component
+    */
+    mode: NavigationMode;
+
     /**
      * Text for the Header
      */
@@ -36,13 +45,19 @@ export class HeaderHome implements Selectable {
     /**
      * Status of if the item is selected 
      */
-    selected: boolean;
+    selected?: boolean;
 }
 
 /**
  * 
  */
-export class HeaderNavigationLink implements Selectable {
+export class HeaderNavigationLink implements Selectable, INavigationLink {
+
+    /**
+     * Internal Angualr Routes, External HREF, EVENT: event on parent component
+     */
+    mode: NavigationMode;
+
     /**
      * Text to be displayed in the link or button
      */
@@ -56,7 +71,7 @@ export class HeaderNavigationLink implements Selectable {
     /**
      * List of child navigation items that will show when no route is provieded
      */
-    children: HeaderNavigationLink[];
+    children?: HeaderNavigationLink[];
 
     /**
      * Identifier for the item when search for selected 
@@ -66,11 +81,16 @@ export class HeaderNavigationLink implements Selectable {
     /**
      * Status of if the item is selected 
      */
-    selected: boolean;
+    selected?: boolean;
 }
 
 
-export class HeaderSecondaryLink implements Selectable {
+export class HeaderSecondaryLink implements Selectable, INavigationLink {
+
+    /**
+     * Internal Angualr Routes, External HREF, EVENT: event on parent component
+     */
+    mode: NavigationMode;
 
     /**
      * Text to be displayed in the link
@@ -95,7 +115,7 @@ export class HeaderSecondaryLink implements Selectable {
     /**
      * displays counter with image
      */
-    hasCounter: boolean;
+    hasCounter?: boolean;
 
     /**
      * Identifier for the item when search for selected 
@@ -105,17 +125,5 @@ export class HeaderSecondaryLink implements Selectable {
     /**
      * Status of if the item is selected 
      */
-    selected: boolean;
-}
-
-export interface Selectable {
-    /**
-     * Identifier for the item when search for selected 
-     */
-    id: string;
-
-    /**
-     * Status of if the item is selected 
-     */
-    selected: boolean;
+    selected?: boolean;
 }

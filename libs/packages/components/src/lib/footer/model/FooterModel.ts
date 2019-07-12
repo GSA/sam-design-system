@@ -1,58 +1,66 @@
-export interface FooterModel {
+import {
+  INavigationLink,
+  NavigationMode
+} from '../../common-navigation/common-navigation-model';
 
-    /**
-     * List of sections and their links
-     */
-    linkSections: FooterLinkSection[];
+export class FooterModel {
+  /**
+   * List of sections and their links
+   */
+  linkSections: FooterLinkSection[];
 
-    /**
-     * Footer text and logo
-     */
-    footerLogo: FooterLogo;
+  /**
+   * Footer text and logo
+   */
+
+  footerLogo?: FooterLogo;
 }
 
-export interface FooterLinkSection {
+export class FooterLinkSection {
+  /**
+   * Title text for the section
+   */
+  text: string;
 
-    /**
-     * Title text for the section
-     */
-    text: string;
-
-    /**
-     * Links in the section
-     */
-    links: FooterLink[];
+  /**
+   * Links in the section
+   */
+  links: FooterLink[];
 }
 
-export interface FooterLink {
+export class FooterLink implements INavigationLink {
+  /**
+   * Internal Angualr Routes, External HREF, EVENT: event on parent component
+   */
+  mode: NavigationMode;
 
-    /**
-     * Text to be displayed in the link
-     */
-    text: string;
+  /**
+   * Text to be displayed in the link
+   */
+  text: string;
 
-    /**
-     * Navigation Route 
-     */
-    route: string;
+  /**
+   * Navigation Route
+   */
+  route: string;
 }
 
 export interface FooterLogo {
+  /**
+   * Text for the Header
+   */
 
-    /**
-     * Text for the Header
-     */
-    text: string;
+  text: string;
 
-    /**
-     * Image Source Path for the Image button
-     */
-    imageSourcePath: string;
+  /**
+   * Image Source Path for the Image button
+   */
 
-    /**
-     * Alt text for image
-     */
-    imageAltText: string;
+  imageSourcePath: string;
+
+  /**
+   * Alt text for image
+   */
+
+  imageAltText: string;
 }
-
-

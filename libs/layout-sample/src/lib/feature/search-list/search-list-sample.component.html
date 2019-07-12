@@ -1,0 +1,63 @@
+<sds-page>
+  <!-- =============== PAGE OPTIONS =============== -->
+  <sds-page-options>
+    <!-- =============== TOOLBAR =============== -->
+    <sds-toolbar #toolbar="sdsToolbar" class="top-205">
+      <sds-accordion multi="true">
+        <sds-side-navigation
+          #sideNav
+          [model]="sideNavModel"
+        ></sds-side-navigation>
+      </sds-accordion>
+    </sds-toolbar>
+
+    <!-- =============== PAGINATION =============== -->
+    <sds-pagination
+      class="flex-fill"
+      [sdsToolbarExpand]="toolbar"
+      [paginationConfiguration]="top"
+      [(page)]="page"
+      (pageChange)="paginationChange.next($event)"
+    >
+    </sds-pagination>
+
+    <!-- =============== SORT =============== -->
+    <div>
+      <label
+        class="usa-label font-sans-2xs text-italic text-base margin-0"
+        for="options"
+      >
+        Sort by
+      </label>
+      <select
+        (change)="onSelectChange()"
+        [(ngModel)]="sortField"
+        class="usa-select border-base-light width-card"
+        id="options"
+      >
+        <option value="text">Title</option>
+        <option value="id" selected="true">Id</option>
+      </select>
+    </div>
+  </sds-page-options>
+
+  <!-- =============== PAGE CONTENT =============== -->
+  <div class="grid-row sds-page__content" [sdsToolbarExpand]="toolbar">
+    <!-- =============== RESULTS LIST =============== -->
+    <sds-search-result-list [model]="items">
+      <ng-template #resultContent let-item>
+        <search-result-list-sample-data
+          [model]="item"
+        ></search-result-list-sample-data>
+      </ng-template>
+    </sds-search-result-list>
+
+    <!-- =============== PAGINATION =============== -->
+    <sds-pagination
+      [paginationConfiguration]="bottom"
+      [(page)]="page"
+      (pageChange)="paginationChange.next($event)"
+    >
+    </sds-pagination>
+  </div>
+</sds-page>

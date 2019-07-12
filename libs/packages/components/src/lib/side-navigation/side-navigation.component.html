@@ -1,0 +1,36 @@
+<sds-accordion-item>
+    <sds-accordion-item-header> Navigation </sds-accordion-item-header>
+    <nav>
+        <ul class="usa-sidenav">
+            <li *ngFor="let link of model.navigationLinks" class="sidenav__item">
+                <ng-container [ngTemplateOutlet]="sideNavLinkTemplate" [ngTemplateOutletContext]="{$implicit:link}">
+                </ng-container>
+            </li>
+        </ul>
+    </nav>
+</sds-accordion-item>
+
+<ng-template #sideNavLinkTemplate let-link>
+    <ng-container
+        [ngTemplateOutlet]="navigationHelper.isLinkInternal(link)  ? sideNavRouteLinkTemplate : navigationHelper.isLinkExternal(link) ? sideNavHREFLinkTemplate : sideNavEVENTLinkTemplate "
+        [ngTemplateOutletContext]="{$implicit:link}"></ng-container>
+    <ul *ngIf="link.children" class="usa-sidenav__sublist">
+        <li *ngFor="let link of link.children" class="sidenav__item">
+            <ng-container [ngTemplateOutlet]="sideNavLinkTemplate" [ngTemplateOutletContext]="{$implicit:link}">
+            </ng-container>
+        </li>
+    </ul>
+</ng-template>
+
+<ng-template #sideNavRouteLinkTemplate let-link>
+    <a [attr.class]="link.selected ? ' usa-current' : ''" [routerLink]="[link.route]"><span>{{link.text}}</span></a>
+</ng-template>
+
+<ng-template #sideNavHREFLinkTemplate let-link>
+    <a [attr.class]="link.selected ? ' usa-current' : ''" [attr.href]="[link.route]"><span>{{link.text}}</span></a>
+</ng-template>
+
+<ng-template #sideNavEVENTLinkTemplate let-link>
+    <a [attr.class]="link.selected ? ' usa-current' : ''" href="javascript:void(0)"
+        (click)="linkClickEvent(link)"><span>{{link.text}}</span></a>
+</ng-template>

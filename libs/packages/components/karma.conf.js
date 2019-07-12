@@ -11,6 +11,9 @@ module.exports = function(config) {
     coverageIstanbulReporter: {
       ...baseConfig.coverageIstanbulReporter,
       dir: join(__dirname, '../../../coverage/libs/components')
-    }
+    },
+    files: [
+      "../../../node_modules/@angular/cdk/overlay-prebuilt.css"
+    ]
   });
 };

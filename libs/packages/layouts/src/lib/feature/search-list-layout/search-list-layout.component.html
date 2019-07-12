@@ -1,0 +1,26 @@
+<div class="grid-container">
+  <div class="grid-row">
+    <sds-pagination class="tablet:grid-col" [paginationConfiguration]="top" [(page)]="page" (pageChange)="paginationChange.next($event)">
+    </sds-pagination>
+    <div class="tablet:grid-col-auto">
+      <label class="usa-label font-sans-2xs text-italic text-base margin-0" for="options">
+        Sort by
+      </label>
+      <select (change)="onSelectChange()" [(ngModel)]="sortField" class="usa-select border-base-light width-card" id="options">
+        <option *ngFor="let item of configuration.sortList" [ngValue]="item.value">
+          {{ item.text }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="grid-row">
+    <sds-search-result-list [model]="items">
+      <ng-template #resultContent let-item>
+        <ng-container *ngTemplateOutlet="resultContentTemplate,
+                context: { $implicit: item }"></ng-container>
+      </ng-template>
+    </sds-search-result-list>
+    <sds-pagination [paginationConfiguration]="bottom" [(page)]="page" (pageChange)="paginationChange.next($event)">
+    </sds-pagination>
+  </div>
+</div>
