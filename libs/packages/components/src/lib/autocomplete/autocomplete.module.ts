@@ -12,4 +12,4 @@ import { SdsAutocompleteSearchModule } from '../autocomplete-search/autocomplete
   declarations: [SDSAutocompleteComponent],
   exports: [SDSAutocompleteComponent]
 })
-export class SdsFooterModule { }
+export class SdsAutocompleteModule { }
