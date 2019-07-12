@@ -3,11 +3,9 @@ import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core
 import { SDSAutocompleteComponent } from './autocomplete.component';
 import { AutoCompleteSampleDataService } from '../autocomplete-search/autocomplete-seach-test-service.spec';
 import { SDSAutocompletelConfiguration } from './models/SDSAutocompletelConfiguration.model';
-import { TreeMode, SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';
+import { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';
 import { FormsModule } from '@angular/forms';
-
-import { By } from '@angular/platform-browser';
-import 'rxjs/add/observable/of';
+import { TreeMode } from '../selected-result/models/sds-selected-item-model-helper';
 import { SdsSelectedResultsModule } from '../selected-result/selected-result.module';
 import { SdsAutocompleteSearchModule } from '../autocomplete-search/autocomplete-search.module';
 
@@ -32,7 +30,7 @@ describe('SDSAutocompleteComponent', () => {
     component.configuration = new SDSAutocompletelConfiguration();
     component.configuration.id = 'autoId';
     component.configuration.primaryKeyField = 'id';
-    component.model.treeMode = TreeMode.SINGLE;
+    component.configuration.treeMode = TreeMode.SINGLE;
     component.configuration.primaryTextField = 'name';
     component.configuration.secondaryTextField = 'subtext';
     component.configuration.debounceTime = 0;
@@ -43,7 +41,6 @@ describe('SDSAutocompleteComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
 
 });
 

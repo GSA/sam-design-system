@@ -42,7 +42,7 @@ export class AutocompleteSampleComponent implements OnInit {
     this.settings.primaryTextField = 'name';
     this.settings.secondaryTextField = 'subtext';
     this.settings.labelText = 'Autocomplete 1';
-
+    this.settings.treeMode = TreeMode.SINGLE;
     this.settings.autocompletePlaceHolderText = 'Enter text';
 
 
@@ -52,6 +52,7 @@ export class AutocompleteSampleComponent implements OnInit {
     this.settings2.labelText = 'Autocomplete 2';
     this.settings2.primaryTextField = 'name';
     this.settings2.secondaryTextField = 'subtext';
+    this.settings2.treeMode = TreeMode.SINGLE;
     this.settings2.autocompletePlaceHolderText = 'Enter text';
 
 
@@ -61,6 +62,7 @@ export class AutocompleteSampleComponent implements OnInit {
     this.settings3.labelText = 'Autocomplete 3';
     this.settings3.primaryTextField = 'name';
     this.settings3.secondaryTextField = 'subtext';
+    this.settings3.treeMode = TreeMode.MULTIPLE;
     this.settings3.autocompletePlaceHolderText = 'Enter text';
 
 
@@ -71,6 +73,7 @@ export class AutocompleteSampleComponent implements OnInit {
     this.settings4.primaryTextField = 'name';
     this.settings4.secondaryTextField = 'subtext';
     this.settings4.autocompletePlaceHolderText = 'Enter text';
+    this.settings4.treeMode = TreeMode.MULTIPLE;
     //this.settings4.minimumCharacterCountSearch = 3;
 
 
@@ -79,18 +82,15 @@ export class AutocompleteSampleComponent implements OnInit {
     this.settings5.labelText = 'Autocomplete 5 Disabled';
     this.settings5.primaryTextField = 'name';
     this.settings5.secondaryTextField = 'subtext';
+    this.settings5.treeMode = TreeMode.MULTIPLE;
     this.settings5.autocompletePlaceHolderText = 'Enter text';
 
 
 
-    this.model.treeMode = TreeMode.SINGLE;
-    this.model2.treeMode = TreeMode.SINGLE;
-    this.model3.treeMode = TreeMode.MULTIPLE;
-    this.model4.treeMode = TreeMode.MULTIPLE;
-    this.model5.treeMode = TreeMode.MULTIPLE;
 
-    this.model5.addItem(this.data[0], this.settings5.primaryKeyField);
-    this.model5.addItem(this.data[1], this.settings5.primaryKeyField);
+
+    this.model5.items.push(this.data[0]);
+    this.model5.items.push(this.data[1]);
 
 
   }

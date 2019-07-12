@@ -12,6 +12,7 @@ export * from './autocomplete-search/models/SDSAutocomplteServiceInterface';
 export * from './selected-result/selected-result.module';
 export * from './selected-result/models/sds-selectedItem.model';
 export * from './selected-result/models/SDSSelectedResultConfiguration';
+export * from './selected-result/models/sds-selected-item-model-helper';
 export * from './side-navigation/side-navigation.module';
 export * from './search-result-list/search-result-list.module';
 export * from './footer/model/FooterModel';

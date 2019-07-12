@@ -1,10 +1,11 @@
 import { SDSSelectedResultConfiguration } from '../../selected-result/models/SDSSelectedResultConfiguration';
 import { SDSAutocompleteSearchConfiguration } from '../../autocomplete-search/models/SDSAutocompleteConfiguration';
-export class SDSAutocompletelConfiguration implements SDSSelectedResultConfiguration,SDSAutocompleteSearchConfiguration
-{
-/**
-   * sets the default debounce time to 250 milliseconds 
-   */
+import { TreeMode } from '../../selected-result/models/sds-selected-item-model-helper';
+
+export class SDSAutocompletelConfiguration implements SDSSelectedResultConfiguration, SDSAutocompleteSearchConfiguration {
+  /**
+     * sets the default debounce time to 250 milliseconds 
+     */
   constructor() {
     this.debounceTime = 250;
     this.minimumCharacterCountSearch = 0;
@@ -50,5 +51,9 @@ export class SDSAutocompletelConfiguration implements SDSSelectedResultConfigura
    */
   public minimumCharacterCountSearch: number;
 
+  /**
+   * Mode of the model either allows a single item or multiple items
+   */
+  public treeMode:TreeMode = TreeMode.SINGLE;
 
 }

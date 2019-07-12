@@ -2,7 +2,8 @@ import { Component, Input, ViewChild, TemplateRef, ElementRef, forwardRef } from
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { SDSAutocomplteServiceInterface } from './models/SDSAutocomplteServiceInterface';
 import { KeyHelper, KEYS } from '../key-helper/key-helper';
-import { SDSSelectedItemModel, TreeMode } from '../selected-result/models/sds-selectedItem.model';
+import { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';
+import { TreeMode, SDSSelectedItemModelHelper } from '../selected-result/models/sds-selected-item-model-helper';
 import { SDSAutocompleteSearchConfiguration } from './models/SDSAutocompleteConfiguration';
 const Autocomplete_Autocomplete_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -138,13 +139,15 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * 
    */
   private focusRemoved() {
-    if (this.model.treeMode === TreeMode.SINGLE) {
-      if (this.model.getItems().length > 0) {
+
+
+    if (this.configuration.treeMode === TreeMode.SINGLE) {
+      if (this.model.items.length > 0) {
         if (this.inputValue.length === 0) {
-          this.model.clearItems();
+          SDSSelectedItemModelHelper.clearItems(this.model.items);
           this.propogateChange(this.model);
         } else {
-          this.inputValue = this.model.getItems()[0][this.configuration.primaryTextField];
+          this.inputValue = this.model.items[0][this.configuration.primaryTextField];
         }
       } else {
         this.inputValue = '';
@@ -197,7 +200,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * @param item 
    */
   public selectItem(item: object): void {
-    this.model.addItem(item, this.configuration.primaryKeyField);
+    SDSSelectedItemModelHelper.addItem(item, this.configuration.primaryKeyField, this.configuration.treeMode, this.model.items);
     this.propogateChange(this.model);
     let message = item[this.configuration.primaryTextField];
     this.inputValue = message;

@@ -2,6 +2,7 @@ import { Component, Input, TemplateRef, forwardRef } from '@angular/core';
 import { SDSSelectedItemModel } from './models/sds-selectedItem.model';
 import { SDSSelectedResultConfiguration } from './models/SDSSelectedResultConfiguration';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { SDSSelectedItemModelHelper } from './models/sds-selected-item-model-helper';
 const SDS_SelectedResult_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => SDSSelectedResultComponent),
@@ -25,6 +26,7 @@ export class SDSSelectedResultComponent implements ControlValueAccessor {
    * The data model that has the selected item
    */
   public model: SDSSelectedItemModel;
+
 
   /**
   * Configuration for the Selected Results control 
@@ -51,7 +53,7 @@ export class SDSSelectedResultComponent implements ControlValueAccessor {
    */
   removeItem(item: object) {
     if (!this.disabled) {
-      this.model.removeItem(item, this.configuration.primaryKeyField);
+      SDSSelectedItemModelHelper.removeItem(item, this.configuration.primaryKeyField, this.model.items);
       this.propogateChange(this.model);
       this.onTouchedCallback();
     }

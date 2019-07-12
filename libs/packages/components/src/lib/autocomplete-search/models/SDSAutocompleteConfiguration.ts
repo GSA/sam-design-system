@@ -1,3 +1,5 @@
+import { TreeMode } from '../../selected-result/models/sds-selected-item-model-helper';
+
 export class SDSAutocompleteSearchConfiguration {
 
   /**
@@ -48,5 +50,9 @@ export class SDSAutocompleteSearchConfiguration {
    */
   public minimumCharacterCountSearch: number;
 
+    /**
+     * Mode of the model either allows a single item or multiple items
+     */
+    public treeMode:TreeMode = TreeMode.SINGLE;
 
 }

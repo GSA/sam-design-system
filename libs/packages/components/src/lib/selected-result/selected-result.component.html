@@ -1,6 +1,6 @@
 <ul *ngIf="model" [attr.aria-label]="configuration.labelText +' results'" class="usa-unstyled-list resultsList"
   aria-relevant="additions" role="listbox" aria-live="polite">
-  <li role="option" *ngFor="let result of model.getItems(); let i = index">
+  <li role="option" *ngFor="let result of model.items; let i = index">
     <div [attr.class]="disabled?'selected-item selected-item-disabled' :'selected-item'">
       <ng-container *ngIf="itemTemplate" [ngTemplateOutlet]="itemTemplate"
         [ngTemplateOutletContext]="{$implicit:result}">

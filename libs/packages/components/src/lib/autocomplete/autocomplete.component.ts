@@ -1,8 +1,9 @@
 import { Component, Input, ViewChild, TemplateRef, ElementRef, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl } from '@angular/forms';
-import { SDSSelectedItemModel, TreeMode } from '../selected-result/models/sds-selectedItem.model';
+import { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';
 import { SDSAutocomplteServiceInterface } from '../autocomplete-search/models/SDSAutocomplteServiceInterface';
 import { SDSAutocompletelConfiguration } from './models/SDSAutocompletelConfiguration.model';
+import { TreeMode } from '../selected-result/models/sds-selected-item-model-helper';
 const Autocomplete_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => SDSAutocompleteComponent),
@@ -79,13 +80,10 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
 
   isSingleMode(): boolean {
     if (this.model) {
-      return this.model.treeMode === TreeMode.SINGLE;
+      return this.configuration.treeMode === TreeMode.SINGLE;
     }
     else {
       return false;
     }
   }
-
-
-
 }
