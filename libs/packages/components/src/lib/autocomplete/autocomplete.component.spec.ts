@@ -8,7 +8,8 @@ import { FormsModule } from '@angular/forms';
 
 import { By } from '@angular/platform-browser';
 import 'rxjs/add/observable/of';
-
+import { SdsSelectedResultsModule } from '../selected-result/selected-result.module';
+import { SdsAutocompleteSearchModule } from '../autocomplete-search/autocomplete-search.module';
 
 
 describe('SDSAutocompleteComponent', () => {
@@ -18,7 +19,7 @@ describe('SDSAutocompleteComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SDSAutocompleteComponent],
-      imports: [FormsModule]
+      imports: [FormsModule, SdsSelectedResultsModule, SdsAutocompleteSearchModule]
     })
       .compileComponents();
   }));
