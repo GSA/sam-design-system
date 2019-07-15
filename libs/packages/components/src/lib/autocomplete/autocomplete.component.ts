@@ -79,7 +79,7 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
   }
 
   isSingleMode(): boolean {
-    if (this.model) {
+    if (this.configuration) {
       return this.configuration.treeMode === TreeMode.SINGLE;
     }
     else {
