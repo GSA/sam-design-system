@@ -1,4 +1,4 @@
-<div sam-click-outside (clickOutside)="checkForFocus($event)" sam-tab-outside (tabOutside)="checkForFocus($event)">
+<div sds-click-outside (clickOutside)="checkForFocus($event)" sds-tab-outside (tabOutside)="checkForFocus($event)">
   <div class="input-container">
     <input [disabled]="disabled" class="sam input" #input [attr.id]="configuration.id" autocomplete="off" type="text" (focus)="inputFocusHandler()"
       (keyup)="onKeyup($event)" [(ngModel)]="inputValue" autocomplete="off" role="combobox" aria-autocomplete="list"

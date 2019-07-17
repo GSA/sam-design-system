@@ -23,3 +23,6 @@ export * from './menu/menu.module';
 export * from './search/search.module';
 export * from './observers/observer.module';
 export * from './truncate-text/truncate.text.module';
+
+export * from './tab-outside/taboutside.module';
+export * from './click-outside/click-outside.module';
