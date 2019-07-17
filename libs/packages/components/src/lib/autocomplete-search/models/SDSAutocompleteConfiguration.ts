@@ -1,4 +1,4 @@
-import { TreeMode } from '../../selected-result/models/sds-selected-item-model-helper';
+import { SelectionMode } from '../../selected-result/models/sds-selected-item-model-helper';
 
 export class SDSAutocompleteSearchConfiguration {
 
@@ -53,6 +53,6 @@ export class SDSAutocompleteSearchConfiguration {
     /**
      * Mode of the model either allows a single item or multiple items
      */
-    public treeMode:TreeMode = TreeMode.SINGLE;
+    public selectionMode:SelectionMode = SelectionMode.SINGLE;
 
 }

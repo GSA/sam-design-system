@@ -4,7 +4,7 @@ import { SDSAutocompleteSearchComponent } from './autocomplete-search.component'
 import { SDSAutocompleteSearchConfiguration } from './models/SDSAutocompleteConfiguration';
 import { FormsModule } from '@angular/forms';
 import { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';
-import { TreeMode } from '../selected-result/models/sds-selected-item-model-helper';
+import { SelectionMode } from '../selected-result/models/sds-selected-item-model-helper';
 import { By } from '@angular/platform-browser';
 import { AutoCompleteSampleDataService } from './autocomplete-seach-test-service.spec';
 
@@ -29,7 +29,7 @@ describe('SamAutocompleteComponent', () => {
     component.configuration = new SDSAutocompleteSearchConfiguration();
     component.configuration.id = 'autoId';
     component.configuration.primaryKeyField = 'id';
-    component.configuration.treeMode = TreeMode.SINGLE;
+    component.configuration.selectionMode = SelectionMode.SINGLE;
     component.configuration.primaryTextField = 'name';
     component.configuration.secondaryTextField = 'subtext';
     component.configuration.debounceTime = 0;

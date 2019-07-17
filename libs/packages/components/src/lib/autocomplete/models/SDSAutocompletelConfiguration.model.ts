@@ -1,6 +1,6 @@
 import { SDSSelectedResultConfiguration } from '../../selected-result/models/SDSSelectedResultConfiguration';
 import { SDSAutocompleteSearchConfiguration } from '../../autocomplete-search/models/SDSAutocompleteConfiguration';
-import { TreeMode } from '../../selected-result/models/sds-selected-item-model-helper';
+import { SelectionMode } from '../../selected-result/models/sds-selected-item-model-helper';
 
 export class SDSAutocompletelConfiguration implements SDSSelectedResultConfiguration, SDSAutocompleteSearchConfiguration {
   /**
@@ -54,6 +54,6 @@ export class SDSAutocompletelConfiguration implements SDSSelectedResultConfigura
   /**
    * Mode of the model either allows a single item or multiple items
    */
-  public treeMode:TreeMode = TreeMode.SINGLE;
+  public selectionMode:SelectionMode = SelectionMode.SINGLE;
 
 }

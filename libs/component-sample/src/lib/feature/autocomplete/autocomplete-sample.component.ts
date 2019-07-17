@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SDSAutocompletelConfiguration, SDSSelectedItemModel, TreeMode } from '@gsa-sam/components';
+import { SDSAutocompletelConfiguration, SDSSelectedItemModel, SelectionMode } from '@gsa-sam/components';
 import { SampleAutocompleteData } from './service/autocomplete-sample.data';
 import { AutocompleteSampleDataService } from './service/autocomplete-sample.service';
 
@@ -42,7 +42,7 @@ export class AutocompleteSampleComponent implements OnInit {
     this.settings.primaryTextField = 'name';
     this.settings.secondaryTextField = 'subtext';
     this.settings.labelText = 'Autocomplete 1';
-    this.settings.treeMode = TreeMode.SINGLE;
+    this.settings.selectionMode = SelectionMode.SINGLE;
     this.settings.autocompletePlaceHolderText = 'Enter text';
 
 
@@ -52,7 +52,7 @@ export class AutocompleteSampleComponent implements OnInit {
     this.settings2.labelText = 'Autocomplete 2';
     this.settings2.primaryTextField = 'name';
     this.settings2.secondaryTextField = 'subtext';
-    this.settings2.treeMode = TreeMode.SINGLE;
+    this.settings2.selectionMode = SelectionMode.SINGLE;
     this.settings2.autocompletePlaceHolderText = 'Enter text';
 
 
@@ -62,7 +62,7 @@ export class AutocompleteSampleComponent implements OnInit {
     this.settings3.labelText = 'Autocomplete 3';
     this.settings3.primaryTextField = 'name';
     this.settings3.secondaryTextField = 'subtext';
-    this.settings3.treeMode = TreeMode.MULTIPLE;
+    this.settings3.selectionMode = SelectionMode.MULTIPLE;
     this.settings3.autocompletePlaceHolderText = 'Enter text';
 
 
@@ -73,7 +73,7 @@ export class AutocompleteSampleComponent implements OnInit {
     this.settings4.primaryTextField = 'name';
     this.settings4.secondaryTextField = 'subtext';
     this.settings4.autocompletePlaceHolderText = 'Enter text';
-    this.settings4.treeMode = TreeMode.MULTIPLE;
+    this.settings4.selectionMode = SelectionMode.MULTIPLE;
     //this.settings4.minimumCharacterCountSearch = 3;
 
 
@@ -82,7 +82,7 @@ export class AutocompleteSampleComponent implements OnInit {
     this.settings5.labelText = 'Autocomplete 5 Disabled';
     this.settings5.primaryTextField = 'name';
     this.settings5.secondaryTextField = 'subtext';
-    this.settings5.treeMode = TreeMode.MULTIPLE;
+    this.settings5.selectionMode = SelectionMode.MULTIPLE;
     this.settings5.autocompletePlaceHolderText = 'Enter text';
 
 
