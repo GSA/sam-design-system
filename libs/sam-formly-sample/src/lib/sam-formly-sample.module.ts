@@ -3,14 +3,12 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { sdsIcons } from '@gsa-sam/components';
+import { sds } from '@gsa-sam/sam-styles/src/icons/';
+import { fas } from "@fortawesome/free-solid-svg-icons";
 import { FormlySampleModule } from './feature/formly-sample/formly.module';
 import { FormlyInputComponent } from './feature/formly-sample/formly-input.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
-const appIcons = {
-  // App Specific Icons
-};
 
 export const ROUTES: Routes = [
  
@@ -33,6 +31,6 @@ export const ROUTES: Routes = [
 })
 export class SamFormlySampleModule {
   constructor() {
-    library.add(sdsIcons, appIcons);
+    library.add(fas, sds);
   }
 }
