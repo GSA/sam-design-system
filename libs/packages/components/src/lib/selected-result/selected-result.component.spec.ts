@@ -79,4 +79,21 @@ describe('SDSSelectedResultComponent', () => {
     expect(list.nativeElement.children.length).toBe(1);
   });
 
+  it('should handle writeValue', () => {
+    component.model = null;
+    component.writeValue({});
+    expect(component.model).toBe(null);
+    let model = new SDSSelectedItemModel();
+    component.writeValue(model);
+    expect(component.model).toBe(model);
+  });
+
+  it('should handle disable', () => {
+    expect(component.disabled).toBeFalsy();
+    component.setDisabledState(true);
+    expect(component.disabled).toBeTruthy();
+    component.setDisabledState(false);
+    expect(component.disabled).toBeFalsy();
+  });
+
 });

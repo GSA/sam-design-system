@@ -43,13 +43,41 @@ describe('SDSAutocompleteComponent', () => {
   });
 
 
-  it('should hanldle modes', () => {
+  it('should handle modes', () => {
     expect(component.isSingleMode()).toBeTruthy();
     component.configuration.selectionMode = SelectionMode.MULTIPLE;
     expect(component.isSingleMode()).toBeFalsy();
     component.configuration = null;
     expect(component.isSingleMode()).toBeFalsy();
   });
+
+  it('should handle writeValue', () => {
+    component.model = null;
+    component.writeValue({});
+    expect(component.model).toBe(null);
+    let model = new SDSSelectedItemModel();
+    component.writeValue(model);
+    expect(component.model).toBe(model);
+  });
+
+  it('should handle disable', () => {
+    expect(component.disabled).toBeFalsy();
+    component.setDisabledState(true);
+    expect(component.disabled).toBeTruthy();
+    component.setDisabledState(false);
+    expect(component.disabled).toBeFalsy();
+  });
+
+
+
+  // registerOnChange(fn: any): void {
+  //   this.propogateChange = fn;
+  // }
+
+  // registerOnTouched(fn: any): void {
+  //   this.onTouchedCallback = fn;
+  // }
+
 
 
 });
