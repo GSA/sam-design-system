@@ -25,6 +25,8 @@ import { FormlyModule } from '@ngx-formly/core';
 
 import { SubheaderSampleComponent } from './feature/subheader-sample/subheader-sample.component';
 import { SubheaderSampleModule } from './feature/subheader-sample/subheader-sample.module';
+import { AutocompleteSampleModule } from './feature/autocomplete/autocomplete-sample.module';
+import { AutocompleteSampleComponent } from './feature/autocomplete/autocomplete-sample.component';
 const appIcons = {
   // App Specific Icons
 };
@@ -38,7 +40,8 @@ export const ROUTES: Routes = [
   { path: 'sideNav', component: SideNavigationSampleComponent },
   { path: 'sideFilters', component: SideMenuFiltersSampleComponent },
   { path: 'searchResultList', component: SearchResultListSampleComponent },
-  { path: 'subheader', component: SubheaderSampleComponent }
+  { path: 'subheader', component: SubheaderSampleComponent },
+  { path: 'autocomplete', component: AutocompleteSampleComponent }
 ];
 
 @NgModule({
@@ -57,7 +60,8 @@ export const ROUTES: Routes = [
     SideNavigationSampleModule,
     SideMenuFiltersSampleModule,
     SearchResultListSampleModule,
-    SubheaderSampleModule
+    SubheaderSampleModule, AutocompleteSampleModule
+
   ],
   exports: [RouterModule]
 })
