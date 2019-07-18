@@ -70,15 +70,17 @@ describe('SDSAutocompleteComponent', () => {
 
 
 
-  // registerOnChange(fn: any): void {
-  //   this.propogateChange = fn;
-  // }
+  it('should handle registerOnChange', () => {
+    let item = {};
+    component.registerOnChange(item);
+    expect(component.propogateChange).toBe(item);
+  });
 
-  // registerOnTouched(fn: any): void {
-  //   this.onTouchedCallback = fn;
-  // }
-
-
+  it('should handle registerOnTouched', () => {
+    let item = {};
+    component.registerOnTouched(item);
+    expect(component.onTouchedCallback).toBe(item);
+  });
 
 });
 

@@ -96,4 +96,16 @@ describe('SDSSelectedResultComponent', () => {
     expect(component.disabled).toBeFalsy();
   });
 
+  it('should handle registerOnChange', () => {
+    let item = {};
+    component.registerOnChange(item);
+    expect(component.propogateChange).toBe(item);
+  });
+
+  it('should handle registerOnTouched', () => {
+    let item = {};
+    component.registerOnTouched(item);
+    expect(component.onTouchedCallback).toBe(item);
+  });
+
 });

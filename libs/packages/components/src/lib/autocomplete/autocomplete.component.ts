@@ -38,7 +38,7 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
   /**
    * Stored Event for ControlValueAccessor
    */
-  private onTouchedCallback: () => void = () => null;
+  public onTouchedCallback: () => void = () => null;
 
   /**
    * Stored Event for ControlValueAccessor

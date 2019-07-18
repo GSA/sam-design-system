@@ -99,12 +99,12 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   /**
    * Stored Event for ControlValueAccessor
    */
-  private onTouchedCallback: () => void = () => null;
+  public onTouchedCallback: () => void = () => null;
 
   /**
    * Stored Event for ControlValueAccessor
    */
-  private propogateChange: (_: any) => void = (_: any) => null;
+  public propogateChange: (_: any) => void = (_: any) => null;
 
   @Input()
   public disabled: boolean;
