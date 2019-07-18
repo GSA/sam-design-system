@@ -28,6 +28,8 @@ import { SubheaderSampleComponent } from './feature/subheader-sample/subheader-s
 import { SubheaderSampleModule } from './feature/subheader-sample/subheader-sample.module';
 import { AutocompleteSampleModule } from './feature/autocomplete/autocomplete-sample.module';
 import { AutocompleteSampleComponent } from './feature/autocomplete/autocomplete-sample.component';
+import { DialogSampleModule } from './feature/dialog-sample/dialog-sample.module';
+import { DialogSampleComponent } from './feature/dialog-sample/dialog-sample.component';
 
 export const ROUTES: Routes = [
   { path: 'header', component: HeaderSampleComponent },
@@ -39,7 +41,8 @@ export const ROUTES: Routes = [
   { path: 'sideFilters', component: SideMenuFiltersSampleComponent },
   { path: 'searchResultList', component: SearchResultListSampleComponent },
   { path: 'subheader', component: SubheaderSampleComponent },
-  { path: 'autocomplete', component: AutocompleteSampleComponent }
+  { path: 'autocomplete', component: AutocompleteSampleComponent },
+  { path: 'dialog', component: DialogSampleComponent }
 ];
 
 @NgModule({
@@ -58,8 +61,9 @@ export const ROUTES: Routes = [
     SideNavigationSampleModule,
     SideMenuFiltersSampleModule,
     SearchResultListSampleModule,
-    SubheaderSampleModule, AutocompleteSampleModule
-
+    SubheaderSampleModule, 
+    AutocompleteSampleModule,
+    DialogSampleModule
   ],
   exports: [RouterModule]
 })
