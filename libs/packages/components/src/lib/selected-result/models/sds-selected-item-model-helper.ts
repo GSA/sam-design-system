@@ -2,7 +2,7 @@ export class SDSSelectedItemModelHelper {
 
     /**
       *  adds an item to the collection
-      * if tree mode is single it removes any existing items
+      * if selected mode is single it removes any existing items
       * also checks to see if that item already exists
       * keyfield is used to determine uniqueness of the item added
       * @param itemToAdd 
