@@ -1,0 +1,36 @@
+.selected-item{
+  border-radius: 2px;
+  background: #dce4ef;
+  display: inline-block;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  padding: 3px 8px;
+  margin-top: 4px;
+  width: calc(100% - 16px);
+  max-width: 46rem;
+  position: relative;
+}
+
+.selected-item-disabled{
+  background: #d6d7d9;
+  cursor: not-allowed;
+  border: 1px solid #aeb0b5;
+  color: #5b5b5b;
+}
+
+.header{
+  display: block;
+  font-weight: 600;
+}
+
+.close{
+  position: absolute;
+  top: 6px;
+  right: 6px;
+}
+
+.close-disabled{
+  color: #aeb0b5;
+  
+  border:hidden;
+}
