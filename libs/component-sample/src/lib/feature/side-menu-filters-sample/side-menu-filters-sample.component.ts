@@ -24,14 +24,15 @@ export class SideMenuFiltersSampleComponent implements OnInit{
   fields: FormlyFieldConfig[] = [
     {
       key: 'searchKeyword',
-      wrappers: ['accordianwrapper'],
-      templateOptions: { label: 'Search by Keyword' },
+      wrappers: ['filterwrapper'],
+      templateOptions: { label: 'Keyword' },
       fieldGroup: [{
         key: 'keyword',
         type: 'input',
         templateOptions: {
           type: 'text',
           label: 'Keyword',
+          hideLabel: true
         },
 
       }]
@@ -40,13 +41,13 @@ export class SideMenuFiltersSampleComponent implements OnInit{
     {
       key: 'searchEntity',
       wrappers: ['accordianwrapper'],
-      templateOptions: { label: 'Search by Entity' },
+      templateOptions: { label: 'Entity' },
       fieldGroup: [
         {
           key: 'legalBusinessName',
           type: 'input',
           templateOptions: {
-            label: 'Legal Business Name',
+            label: 'Entity Name',
             placeholder: '',
             inputType: 'text',
           },
