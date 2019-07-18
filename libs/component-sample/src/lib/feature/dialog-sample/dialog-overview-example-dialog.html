@@ -1,0 +1,9 @@
+<strong sds-dialog-title>Hello {{data.name}}</strong>
+<div sds-dialog-content>
+  <p>What's your favorite animal?</p>
+  <input [(ngModel)]="data.animal">
+</div>
+<div sds-dialog-actions>
+  <button (click)="onNoClick()">No Thanks</button>
+  <button [sds-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+</div>

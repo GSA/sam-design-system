@@ -1,0 +1,11 @@
+<strong>Passing Data</strong>
+<ol>
+  <li><input [(ngModel)]="name" placeholder="What's your name?" /></li>
+  <li><button (click)="openDialog()">Pick one</button></li>
+  <li *ngIf="animal">
+    You chose: <i>{{ animal }}</i>
+  </li>
+</ol>
+
+<strong class="display-block">Dialog opens Dialog</strong>
+<button (click)="openDialog2()">Open dialog</button>
