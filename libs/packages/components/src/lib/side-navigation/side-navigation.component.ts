@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, TemplateRef } from '@angular/core';
 import { SideNavigationModel, NavigationLink } from './model/side-navigation-model';
 import { INavigationLink, NavigationMode } from '../common-navigation/common-navigation-model';
 import { NavigationHelper } from '../common-navigation/navigation-helper';
@@ -9,6 +9,39 @@ import { NavigationHelper } from '../common-navigation/navigation-helper';
   styleUrls: ['./side-navigation.component.scss']
 })
 export class SdsSideNavigationComponent {
+
+
+
+  @ViewChild('sideNavRouteLinkTemplate')
+  private sideNavRouteLinkTemplate: TemplateRef<any>;
+  @ViewChild('sideNavLabelLinkTemplate')
+  private sideNavLabelLinkTemplate: TemplateRef<any>;
+  @ViewChild('sideNavHREFLinkTemplate')
+  private sideNavHREFLinkTemplate: TemplateRef<any>;
+  @ViewChild('sideNavEVENTLinkTemplate')
+  private sideNavEVENTLinkTemplate: TemplateRef<any>;
+
+  getItemTemplate(item: NavigationLink): TemplateRef<any> {
+    let ref = null;
+    switch (item.mode) {
+      case NavigationMode.EVENT:
+        ref = this.sideNavEVENTLinkTemplate;
+        break;
+      case NavigationMode.EXTERNAL:
+        ref = this.sideNavHREFLinkTemplate;
+        break;
+      case NavigationMode.INTERNAL:
+        ref = this.sideNavRouteLinkTemplate;
+        break;
+      case NavigationMode.LABEL:
+        ref = this.sideNavLabelLinkTemplate;
+        break;
+      default:
+        ref = null;
+        break;
+    }
+    return ref;
+  }
 
   /**
    * Navigation helper
