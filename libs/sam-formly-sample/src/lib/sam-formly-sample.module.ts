@@ -11,14 +11,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
 import { FilterWrapperComponent } from './feature/filter-wrapper/filter-wrapper.component';
 import { FilterWrapperSampleModule } from './feature/filter-wrapper/filter-wrapper.module';
-const appIcons = {
-  // App Specific Icons
-};
 
 export const ROUTES: Routes = [
- 
-  //{ path: 'footer', component: FooterSampleComponent },
-
   { path: 'formlyInput', component: FormlyInputComponent },
   {path: 'formlyFilters', component: FilterWrapperComponent}
 ];
