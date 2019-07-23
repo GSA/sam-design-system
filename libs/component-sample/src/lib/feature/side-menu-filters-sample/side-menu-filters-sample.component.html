@@ -3,5 +3,5 @@
 </sds-toolbar>
 <div class="sam-example-pagination" [sdsToolbarExpand]="toolbar">
     <h4>Filter Model:</h4>
-    <pre>{{results |json}}</pre>
+    <pre>{{results ? (results |json) : ''}}</pre>
 </div>

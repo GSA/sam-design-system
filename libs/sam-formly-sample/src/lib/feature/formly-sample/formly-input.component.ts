@@ -18,15 +18,15 @@ export class FormlyInputComponent {
  
     {
       key: 'filters',
-      wrappers: ['accordianwrapper'],
-      templateOptions: { label: 'Entity Name/UEI' },
+      wrappers: ['filterwrapper'],
+      templateOptions: { label: 'Keyword' },
       fieldGroup:[{
          key: 'firstName',
           type: 'input',
           templateOptions: {
             required: true,
             type: 'text',
-            label: 'First Name',
+           
           },
         
       }]
