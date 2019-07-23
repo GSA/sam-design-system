@@ -9,12 +9,12 @@ import { FormlySampleModule } from './feature/formly-sample/formly.module';
 import { FormlyInputComponent } from './feature/formly-sample/formly-input.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
+import { FilterWrapperComponent } from './feature/filter-wrapper/filter-wrapper.component';
+import { FilterWrapperSampleModule } from './feature/filter-wrapper/filter-wrapper.module';
 
 export const ROUTES: Routes = [
- 
-  //{ path: 'footer', component: FooterSampleComponent },
-
   { path: 'formlyInput', component: FormlyInputComponent },
+  {path: 'formlyFilters', component: FilterWrapperComponent}
 ];
 
 @NgModule({
@@ -26,6 +26,7 @@ export const ROUTES: Routes = [
     FontAwesomeModule,
     RouterModule.forChild(ROUTES),
     FormlySampleModule,
+    FilterWrapperSampleModule,
   ],
   exports: [RouterModule]
 })
