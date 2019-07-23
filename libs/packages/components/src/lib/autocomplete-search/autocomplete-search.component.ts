@@ -3,7 +3,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { SDSAutocomplteServiceInterface } from './models/SDSAutocomplteServiceInterface';
 import { KeyHelper, KEYS } from '../key-helper/key-helper';
 import { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';
-import { TreeMode, SDSSelectedItemModelHelper } from '../selected-result/models/sds-selected-item-model-helper';
+import { SelectionMode, SDSSelectedItemModelHelper } from '../selected-result/models/sds-selected-item-model-helper';
 import { SDSAutocompleteSearchConfiguration } from './models/SDSAutocompleteConfiguration';
 const Autocomplete_Autocomplete_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -99,12 +99,12 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   /**
    * Stored Event for ControlValueAccessor
    */
-  private onTouchedCallback: () => void = () => null;
+  public onTouchedCallback: () => void = () => null;
 
   /**
    * Stored Event for ControlValueAccessor
    */
-  private propogateChange: (_: any) => void = (_: any) => null;
+  public propogateChange: (_: any) => void = (_: any) => null;
 
   @Input()
   public disabled: boolean;
@@ -141,7 +141,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   private focusRemoved() {
 
 
-    if (this.configuration.treeMode === TreeMode.SINGLE) {
+    if (this.configuration.selectionMode === SelectionMode.SINGLE) {
       if (this.model.items.length > 0) {
         if (this.inputValue.length === 0) {
           SDSSelectedItemModelHelper.clearItems(this.model.items);
@@ -200,7 +200,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * @param item 
    */
   public selectItem(item: object): void {
-    SDSSelectedItemModelHelper.addItem(item, this.configuration.primaryKeyField, this.configuration.treeMode, this.model.items);
+    SDSSelectedItemModelHelper.addItem(item, this.configuration.primaryKeyField, this.configuration.selectionMode, this.model.items);
     this.propogateChange(this.model);
     let message = item[this.configuration.primaryTextField];
     this.inputValue = message;

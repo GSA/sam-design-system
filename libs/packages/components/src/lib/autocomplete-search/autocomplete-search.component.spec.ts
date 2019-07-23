@@ -4,7 +4,7 @@ import { SDSAutocompleteSearchComponent } from './autocomplete-search.component'
 import { SDSAutocompleteSearchConfiguration } from './models/SDSAutocompleteConfiguration';
 import { FormsModule } from '@angular/forms';
 import { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';
-import { TreeMode } from '../selected-result/models/sds-selected-item-model-helper';
+import { SelectionMode } from '../selected-result/models/sds-selected-item-model-helper';
 import { By } from '@angular/platform-browser';
 import { AutoCompleteSampleDataService } from './autocomplete-seach-test-service.spec';
 
@@ -29,7 +29,7 @@ describe('SamAutocompleteComponent', () => {
     component.configuration = new SDSAutocompleteSearchConfiguration();
     component.configuration.id = 'autoId';
     component.configuration.primaryKeyField = 'id';
-    component.configuration.treeMode = TreeMode.SINGLE;
+    component.configuration.selectionMode = SelectionMode.SINGLE;
     component.configuration.primaryTextField = 'name';
     component.configuration.secondaryTextField = 'subtext';
     component.configuration.debounceTime = 0;
@@ -324,6 +324,37 @@ describe('SamAutocompleteComponent', () => {
     const listAfter = fixture.debugElement.query(By.css('.autocomplete-result'));
     expect(listAfter).toBeFalsy();
   }));
+
+
+  it('should handle writeValue', () => {
+    component.model = null;
+    component.writeValue({});
+    expect(component.model).toBe(null);
+    let model = new SDSSelectedItemModel();
+    component.writeValue(model);
+    expect(component.model).toBe(model);
+  });
+
+  it('should handle disable', () => {
+    expect(component.disabled).toBeFalsy();
+    component.setDisabledState(true);
+    expect(component.disabled).toBeTruthy();
+    component.setDisabledState(false);
+    expect(component.disabled).toBeFalsy();
+  });
+
+
+  it('should handle registerOnChange', () => {
+    let item = {};
+    component.registerOnChange(item);
+    expect(component.propogateChange).toBe(item);
+  });
+
+  it('should handle registerOnTouched', () => {
+    let item = {};
+    component.registerOnTouched(item);
+    expect(component.onTouchedCallback).toBe(item);
+  });
 
 });
 

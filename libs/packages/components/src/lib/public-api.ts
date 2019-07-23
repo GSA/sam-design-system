@@ -1,5 +1,4 @@
 export * from './accordion/accordion.module';
-export * from './icon';
 export * from './page/page.module';
 export * from './toolbar/toolbar.module';
 export * from './header/header.module';
@@ -26,3 +25,7 @@ export * from './truncate-text/truncate.text.module';
 
 export * from './tab-outside/taboutside.module';
 export * from './click-outside/click-outside.module';
+
+export * from './dialog/dialog';
+export * from './dialog/dialog-ref';
+export * from './dialog/dialog.module';

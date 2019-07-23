@@ -2,17 +2,17 @@ export class SDSSelectedItemModelHelper {
 
     /**
       *  adds an item to the collection
-      * if tree mode is single it removes any existing items
+      * if selected mode is single it removes any existing items
       * also checks to see if that item already exists
       * keyfield is used to determine uniqueness of the item added
       * @param itemToAdd 
       * @param keyField 
-      * @param treeMode 
+      * @param selectionMode 
       * @param items 
       */
-    public static addItem(itemToAdd: object, keyField: string, treeMode: TreeMode, items: object[]) {
+    public static addItem(itemToAdd: object, keyField: string, selectionMode: SelectionMode, items: object[]) {
         if (!SDSSelectedItemModelHelper.contatinsItem(itemToAdd[keyField], keyField, items)) {
-            if (treeMode === TreeMode.SINGLE) {
+            if (selectionMode === SelectionMode.SINGLE) {
                 SDSSelectedItemModelHelper.clearItems(items);
             }
             items.push(itemToAdd);
@@ -24,12 +24,12 @@ export class SDSSelectedItemModelHelper {
      * keyfield is used to determine uniqueness of the item added
      * @param toAddItems 
      * @param keyField 
-     * @param treeMode 
+     * @param selectionMode 
      * @param items 
      */
-    public static addItems(toAddItems: object[], keyField: string, treeMode: TreeMode, items: object[]) {
+    public static addItems(toAddItems: object[], keyField: string, selectionMode: SelectionMode, items: object[]) {
         for (let i = 0; i < toAddItems.length; i++) {
-            SDSSelectedItemModelHelper.addItem(toAddItems[i], keyField, treeMode, items);
+            SDSSelectedItemModelHelper.addItem(toAddItems[i], keyField, selectionMode, items);
         }
     }
 
@@ -73,17 +73,17 @@ export class SDSSelectedItemModelHelper {
      * keyfield is used to determine uniqueness of the item added
      * @param selectedItems 
      * @param keyField 
-     * @param treeMode 
+     * @param selectionMode 
      * @param items 
      */
-    public static replaceItems(selectedItems: object[], keyField: string, treeMode: TreeMode, items: object[]) {
+    public static replaceItems(selectedItems: object[], keyField: string, selectionMode: SelectionMode, items: object[]) {
         //Clears Old List
         SDSSelectedItemModelHelper.clearItems(items);
         //Adds new List
-        SDSSelectedItemModelHelper.addItems(selectedItems, keyField, treeMode, items);
+        SDSSelectedItemModelHelper.addItems(selectedItems, keyField, selectionMode, items);
     }
 }
 
-export enum TreeMode {
+export enum SelectionMode {
     SINGLE, MULTIPLE
 }

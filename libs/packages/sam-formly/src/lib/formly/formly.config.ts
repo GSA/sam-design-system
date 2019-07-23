@@ -9,6 +9,7 @@ import { FormlyFieldMultiCheckboxComponent } from './types/multicheckbox';
 import { FormlyFieldTextAreaComponent } from './types/textarea';
 import { FormlyAccordianFormFieldComponent } from './wrappers/form-field.accordian';
 import { FormlyFieldAutoCompleteComponent } from './types/autocomplete';
+import { FormlyFormFieldFilterWrapperComponent } from './wrappers/form-field.filterwrapper';
 
 export const FIELD_TYPE_COMPONENTS = [
   FormlyFieldInputComponent,
@@ -19,7 +20,8 @@ export const FIELD_TYPE_COMPONENTS = [
   FormlyFieldMultiCheckboxComponent,
   FormlyWrapperFormFieldComponent,
   FormlyAccordianFormFieldComponent,
-  FormlyFieldAutoCompleteComponent
+  FormlyFieldAutoCompleteComponent,
+  FormlyFormFieldFilterWrapperComponent
 ];
 
 export const FORMLY_CONFIG: ConfigOption = {
@@ -64,5 +66,7 @@ export const FORMLY_CONFIG: ConfigOption = {
     { name: 'form-field', component: FormlyWrapperFormFieldComponent },
 
     { name: 'accordianwrapper', component: FormlyAccordianFormFieldComponent },
+    { name: 'filterwrapper', component: FormlyFormFieldFilterWrapperComponent },
   ],
+
 };

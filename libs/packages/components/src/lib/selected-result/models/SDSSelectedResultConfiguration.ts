@@ -1,4 +1,4 @@
-import { TreeMode } from './sds-selected-item-model-helper';
+import { SelectionMode } from './sds-selected-item-model-helper';
 
 export class SDSSelectedResultConfiguration {
 
@@ -25,5 +25,5 @@ export class SDSSelectedResultConfiguration {
   /**
    * Mode of the model either allows a single item or multiple items
    */
-  public treeMode: TreeMode = TreeMode.SINGLE;
+  public selectionMode: SelectionMode = SelectionMode.SINGLE;
 }

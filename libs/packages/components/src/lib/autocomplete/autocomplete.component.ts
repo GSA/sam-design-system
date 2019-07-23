@@ -3,7 +3,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl } from '@angular/f
 import { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';
 import { SDSAutocomplteServiceInterface } from '../autocomplete-search/models/SDSAutocomplteServiceInterface';
 import { SDSAutocompletelConfiguration } from './models/SDSAutocompletelConfiguration.model';
-import { TreeMode } from '../selected-result/models/sds-selected-item-model-helper';
+import { SelectionMode } from '../selected-result/models/sds-selected-item-model-helper';
 const Autocomplete_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => SDSAutocompleteComponent),
@@ -38,7 +38,7 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
   /**
    * Stored Event for ControlValueAccessor
    */
-  private onTouchedCallback: () => void = () => null;
+  public onTouchedCallback: () => void = () => null;
 
   /**
    * Stored Event for ControlValueAccessor
@@ -80,7 +80,7 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
 
   isSingleMode(): boolean {
     if (this.configuration) {
-      return this.configuration.treeMode === TreeMode.SINGLE;
+      return this.configuration.selectionMode === SelectionMode.SINGLE;
     }
     else {
       return false;
