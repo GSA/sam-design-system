@@ -1,7 +1,7 @@
-<sds-toolbar #toolbar="sdsToolbar">
+<div>
     <sds-filters [form]="form" [fields]="fields" [model]="model" (filterChange)="filterChange$.next($event)"></sds-filters> 
-</sds-toolbar>
-<div class="sam-example-pagination" [sdsToolbarExpand]="toolbar">
+</div>
+<div class="sam-example-pagination" >
     <h4>Filter Model:</h4>
     <pre>{{results ? (results |json) : ''}}</pre>
 </div>
