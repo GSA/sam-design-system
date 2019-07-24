@@ -12,35 +12,54 @@ export class SdsSideNavigationComponent {
 
 
 
+  /**
+   * Reference to the the Template used for internal links
+   */
   @ViewChild('sideNavRouteLinkTemplate')
   private sideNavRouteLinkTemplate: TemplateRef<any>;
+
+  /**
+   * Reference to the the Template used for side menu items that are a label
+   */
   @ViewChild('sideNavLabelLinkTemplate')
   private sideNavLabelLinkTemplate: TemplateRef<any>;
+
+  /**
+   * Reference to the the Template used for external href 
+   */
   @ViewChild('sideNavHREFLinkTemplate')
   private sideNavHREFLinkTemplate: TemplateRef<any>;
+
+  /**
+   * Reference to the the Template used for event response
+   */
   @ViewChild('sideNavEVENTLinkTemplate')
   private sideNavEVENTLinkTemplate: TemplateRef<any>;
 
+  /**
+   * Takes the navigation item and returns the template to be used
+   * @param item navigation item
+   */
   getItemTemplate(item: NavigationLink): TemplateRef<any> {
-    let ref = null;
+    let template = null;
     switch (item.mode) {
       case NavigationMode.EVENT:
-        ref = this.sideNavEVENTLinkTemplate;
+        template = this.sideNavEVENTLinkTemplate;
         break;
       case NavigationMode.EXTERNAL:
-        ref = this.sideNavHREFLinkTemplate;
+        template = this.sideNavHREFLinkTemplate;
         break;
       case NavigationMode.INTERNAL:
-        ref = this.sideNavRouteLinkTemplate;
+        template = this.sideNavRouteLinkTemplate;
         break;
       case NavigationMode.LABEL:
-        ref = this.sideNavLabelLinkTemplate;
+        template = this.sideNavLabelLinkTemplate;
         break;
       default:
-        ref = null;
+        template = null;
         break;
     }
-    return ref;
+    return template;
   }
 
   /**

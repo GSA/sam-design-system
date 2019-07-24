@@ -176,5 +176,19 @@ describe('SdsSideNavigationComponent', () => {
     expect(component.linkEvent.emit).toHaveBeenCalledWith(navItem);
   });
 
+  it('correct template', () => {
+    let link = new NavigationLink();
+    expect(component.getItemTemplate(link)).toBe(null);
+    link.mode = NavigationMode.EVENT;
+    expect(component.getItemTemplate(link)).not.toBeNull();
+    link.mode = NavigationMode.EXTERNAL;
+    expect(component.getItemTemplate(link)).not.toBeNull();
+    link.mode = NavigationMode.INTERNAL;
+    expect(component.getItemTemplate(link)).not.toBeNull();
+    link.mode = NavigationMode.LABEL;
+    expect(component.getItemTemplate(link)).not.toBeNull();
+
+  });
+
 });
 

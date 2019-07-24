@@ -27,7 +27,11 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
     this.activeRoute.queryParams.subscribe(queryParams => {
 
       console.log(queryParams.item);
-      this.pageHeader = queryParams.item;
+      if (queryParams.item) {
+        this.pageHeader = queryParams.item;
+      } else {
+        this.pageHeader = 'Unknown';
+      }
     });
 
 
