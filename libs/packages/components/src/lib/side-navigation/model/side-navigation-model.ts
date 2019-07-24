@@ -40,6 +40,15 @@ export class NavigationLink implements Selectable, INavigationLink {
      * Status of if the item is selected 
      */
     selected?: boolean;
+
+
+    /**
+     * 
+     */
+    queryParams?: {
+        [k: string]: any;
+    }
+
 }
 
 

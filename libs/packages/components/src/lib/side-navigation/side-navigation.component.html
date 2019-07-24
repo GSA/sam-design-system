@@ -22,7 +22,8 @@
 </ng-template>
 
 <ng-template #sideNavRouteLinkTemplate let-link>
-    <a [attr.class]="link.selected ? ' usa-current' : ''" [routerLink]="[link.route]"><span>{{link.text}}</span></a>
+    <a [attr.class]="link.selected ? ' usa-current' : ''" [routerLink]="[link.route]"
+        [queryParams]="link.queryParams"><span>{{link.text}}</span></a>
 </ng-template>
 
 <ng-template #sideNavHREFLinkTemplate let-link>

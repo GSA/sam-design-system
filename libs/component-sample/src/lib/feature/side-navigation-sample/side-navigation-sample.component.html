@@ -2,7 +2,8 @@
     <sds-page-options class="sam-page__options">
         <sds-toolbar #toolbar="sdsToolbar">
             <sds-accordion multi="true">
-                <sds-side-navigation #sideNav (linkEvent)="linkEvent.next($event)" [model]="model"></sds-side-navigation>
+                <sds-side-navigation #sideNav (linkEvent)="linkEvent.next($event)" [model]="model">
+                </sds-side-navigation>
             </sds-accordion>
         </sds-toolbar>
         <div class="sam-example-pagination" [sdsToolbarExpand]="toolbar">
@@ -15,5 +16,9 @@
                 {{ item.text }}
             </option>
         </select>
+
+        {{pageHeader}}
     </div>
+
+
 </sds-page>
