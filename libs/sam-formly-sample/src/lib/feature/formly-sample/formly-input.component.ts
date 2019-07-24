@@ -33,8 +33,8 @@ export class FormlyInputComponent implements OnInit{
             label: 'Auto Complete',
             service: this.service,
             configuration: this.settings,
-            Model: this.autocompleteModel,
-            ngModelChange: this.changes
+            model : this.autocompleteModel,
+            modelChange: this.changes
           },
       }]
     }
