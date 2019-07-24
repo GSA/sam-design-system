@@ -4,7 +4,7 @@ import { FieldWrapper } from '@ngx-formly/core';
 @Component({
   selector: 'sds-formly-wrapper-form-field',
   template: `
-  <div class="usa-form-group" [class.usa-form-group--error]="showError">
+  <div class="usa-form-group padding-top-1" [class.usa-form-group--error]="showError">
   <label class="usa-label" *ngIf="to.label && to.hideLabel !== true" [attr.for]="id">
     {{ to.label }}
     <span *ngIf="to.required && to.hideRequiredMarker !== true">*</span>
