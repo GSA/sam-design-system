@@ -23,7 +23,7 @@
       ],
       "@gsa-sam/components": [
         "dist/libs/components",
-        "libs/packages/components/src/index.ts"
+        //"libs/packages/components/src/index.ts"
       ],
       "@gsa-sam/sam-formly": [
         "dist/libs/sam-formly",

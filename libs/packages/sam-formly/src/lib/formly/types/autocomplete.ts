@@ -1,10 +1,24 @@
-import { Component } from '@angular/core';
+import {  Component,
+  ChangeDetectionStrategy,
+  ViewChild,
+  ChangeDetectorRef } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
+import { AbstractSdsFormly } from '../sds-formly';
+import { SDSAutocompleteComponent } from '@gsa-sam/components'
 
 @Component({
   selector: 'sds-formly-field-autocomplete',
   template: `
-  <input [class.usa-input--error]="showError" class="usa-input" [placeholder]="to.placeholder" name="input-success" [formlyAttributes]="field" [type]="to.inputType? to.inputType : 'text'" [formControl]="formControl">
+  <sds-autocomplete [formControl]="formControl"></sds-autocomplete>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FormlyFieldAutoCompleteComponent extends FieldType { }
+export class FormlyFieldAutoCompleteComponent extends AbstractSdsFormly {
+
+ @ViewChild(SDSAutocompleteComponent) public template: SDSAutocompleteComponent;
+
+  constructor (_cdr: ChangeDetectorRef) {
+    super();
+    this.cdr = _cdr;
+  }
+ }
