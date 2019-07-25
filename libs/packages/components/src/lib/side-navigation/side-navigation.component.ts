@@ -10,8 +10,6 @@ import { NavigationHelper } from '../common-navigation/navigation-helper';
 })
 export class SdsSideNavigationComponent {
 
-
-
   /**
    * Reference to the the Template used for internal links
    */
