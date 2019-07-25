@@ -1,10 +1,7 @@
 import { Component, ViewChild, AfterViewInit, ChangeDetectorRef, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { SideNavigationModel, NavigationMode } from '@gsa-sam/components'
+import { SideNavigationModel, NavigationMode, NavigationLink } from '@gsa-sam/components'
 import { ActivatedRoute } from '@angular/router';
-import { PathLocationStrategy } from '@angular/common';
-
-
 
 @Component({
   selector: 'sds-side-navigation-sample',
@@ -25,17 +22,19 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
       }
     );
     this.activeRoute.queryParams.subscribe(queryParams => {
-
-      console.log(queryParams.item);
       if (queryParams.item) {
         this.pageHeader = queryParams.item;
+        if (this.model.navigationLinks) {
+          this.findItemByQueryString(this.model.navigationLinks);
+          this.sideNav.select(this.selectedId);
+        }
       } else {
         this.pageHeader = 'Unknown';
       }
     });
 
-
   }
+
 
 
   @ViewChild('sideNav') sideNav;
@@ -82,6 +81,20 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
     }
     ]
   };
+  private findItemByQueryString(linkList: NavigationLink[]) {
+    for (let i = 0; i < linkList.length; i++) {
+      let item = linkList[i];
+      if (item.text.trim() === this.pageHeader.trim()) {
+        this.selectedId = item.id;
+      }
+      else {
+        if (item.children && item.children.length !== 0) {
+          this.findItemByQueryString(item.children)
+        }
+      }
+    }
+  }
+
   onSelectChange() {
     this.sideNav.select(this.selectedId);
   }
