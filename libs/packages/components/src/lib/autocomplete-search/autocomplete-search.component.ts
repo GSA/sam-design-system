@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, TemplateRef, ElementRef, forwardRef } from '@angular/core';
+import { Component, Input, ViewChild, TemplateRef, ElementRef, forwardRef, OnInit } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { SDSAutocomplteServiceInterface } from './models/SDSAutocomplteServiceInterface';
 import { KeyHelper, KEYS } from '../key-helper/key-helper';
@@ -17,7 +17,7 @@ const Autocomplete_Autocomplete_VALUE_ACCESSOR: any = {
   styleUrls: ['./autocomplete-search.component.scss'],
   providers: [Autocomplete_Autocomplete_VALUE_ACCESSOR]
 })
-export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
+export class SDSAutocompleteSearchComponent implements ControlValueAccessor, OnInit {
 
   /**
    * Ul list of elements 
@@ -167,15 +167,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   
   onModelChange(ev) {
      const searchString = this.inputValue || '';
-    this.service.getDataByText(0, searchString).subscribe(
-      (result) => {
-        this.results = result.items;
-        this.maxResults = result.totalItems;
-        this.highlightedIndex = 0;
-        this.setHighlightedItem(this.results[this.highlightedIndex]);
-        this.showResults = true;
-        this.addScreenReaderMessage(this.maxResults + ' ' + this.resultsAvailableMessage)
-      });
+     this.getResults(searchString);
   }
   /**
    * Key event

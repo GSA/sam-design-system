@@ -57,6 +57,7 @@ export class FormlyInputComponent implements OnInit{
     this.settings.labelText = 'Autocomplete 1';
     this.settings.selectionMode = SelectionMode.SINGLE;
     this.settings.autocompletePlaceHolderText = 'Enter text';
+    this.settings.debounceTime = 0;
   }
 
   // To display the selected model values
