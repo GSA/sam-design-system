@@ -190,5 +190,24 @@ describe('SdsSideNavigationComponent', () => {
 
   });
 
+  it('url builder', () => {
+    let link = new NavigationLink();
+    link.route = 'test';
+    expect(component.urlBuilder(link)).toBe(link.route);
+    link.queryParams = { 'item': '1' };
+    expect(component.urlBuilder(link)).toBe(link.route + '?item=1');
+    link.queryParams = { 'item': '1', 'item2': '2' };
+    expect(component.urlBuilder(link)).toBe(link.route + '?item=1&item2=2');
+    link.route = 'test?';
+    link.queryParams = { 'item': '1', 'item2': '2', 'item3': '3' };
+    expect(component.urlBuilder(link)).toBe(link.route + 'item=1&item2=2&item3=3');
+    link.route = 'test?x=r';
+    expect(component.urlBuilder(link)).toBe(link.route + '&item=1&item2=2&item3=3');
+    link.route = 'test';
+    link.queryParams = { 'item space': '1 space' };
+    expect(component.urlBuilder(link)).toBe(link.route + '?item%20space=1%20space');
+  });
+
+
 });
 

@@ -154,4 +154,34 @@ export class SdsSideNavigationComponent {
     return false;
   }
 
+  /**
+   * 
+   * @param item 
+   */
+  urlBuilder(item: NavigationLink) {
+    let url = item.route;
+    let queryParams = this.queryStringBuilder(item);
+    if (queryParams) {
+      if (url.indexOf('?') === -1) {
+        url += '?' + queryParams;
+      } else if (url.indexOf('?') === url.length - 1) {
+        url += queryParams;
+      } else {
+        url += '&' + queryParams;
+      }
+    }
+    return url;
+  }
+
+  /**
+   * 
+   * @param item 
+   */
+  private queryStringBuilder(item: NavigationLink) {
+    const ret = [];
+    for (let d in item.queryParams) {
+      ret.push(encodeURIComponent(d) + '=' + encodeURIComponent(item.queryParams[d]));
+    }
+    return ret.join('&');
+  }
 }
