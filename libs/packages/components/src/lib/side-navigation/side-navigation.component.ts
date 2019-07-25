@@ -155,7 +155,7 @@ export class SdsSideNavigationComponent {
   }
 
   /**
-   * 
+   * creates url from provided route and query params
    * @param item 
    */
   urlBuilder(item: NavigationLink) {
@@ -174,7 +174,7 @@ export class SdsSideNavigationComponent {
   }
 
   /**
-   * 
+   * creates query string
    * @param item 
    */
   private queryStringBuilder(item: NavigationLink) {
