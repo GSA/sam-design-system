@@ -17,7 +17,7 @@ const Autocomplete_Autocomplete_VALUE_ACCESSOR: any = {
   styleUrls: ['./autocomplete-search.component.scss'],
   providers: [Autocomplete_Autocomplete_VALUE_ACCESSOR]
 })
-export class SDSAutocompleteSearchComponent implements ControlValueAccessor, OnInit {
+export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
 
   /**
    * Ul list of elements 

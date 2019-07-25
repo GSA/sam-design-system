@@ -1,6 +1,6 @@
 <div sds-click-outside (clickOutside)="checkForFocus($event)" sds-tab-outside (tabOutside)="checkForFocus($event)">
   <div class="input-container">
-    <input [disabled]="disabled" class="sam input" #input [attr.id]="configuration.id" autocomplete="off" type="text" (focus)="inputFocusHandler()"
+    <input [disabled]="disabled" class="usa-input margin-bottom-2" #input [attr.id]="configuration.id" autocomplete="off" type="text" (focus)="inputFocusHandler()"
       (keyup)="onKeyup($event)" [(ngModel)]="inputValue" autocomplete="off" role="combobox" aria-autocomplete="list"
       (ngModelChange)="onModelChange($event)" aria-expanded="false" aria-haspopup="true" [attr.aria-owns]="configuration.id+ '-listbox'" [attr.placeholder]="configuration.autocompletePlaceHolderText">
     <ng-container *ngIf="!input.disabled">
@@ -12,7 +12,7 @@
     </ng-container>
   </div>
   <div>
-    <ul #resultsList *ngIf="showResults" [attr.id]="configuration.id+ '-listbox'" role="listbox" class="usa-unstyled-list autocomplete-result"
+    <ul #resultsList *ngIf="showResults" [attr.id]="configuration.id+ '-listbox'" role="listbox" class="usa-list usa-list--unstyled autocomplete-result"
       [attr.aria-label]="configuration.labelText" (scroll)="onScroll()">
       <ng-container *ngIf="(results && results.length > 0)">
         <li role="option" *ngFor="let result of results; let i = index" (mouseenter)="listItemHover(i)" [class]="result['highlighted']? 'selected-item':''"
