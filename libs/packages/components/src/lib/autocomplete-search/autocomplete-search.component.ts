@@ -162,9 +162,21 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    */
   inputFocusHandler(): void {
     this.getResults(this.inputValue || '');
-    this.onTouchedCallback();
+    this.onTouchedCallback(); 
   }
-
+  
+  onModelChange(ev) {
+     const searchString = this.inputValue || '';
+    this.service.getDataByText(0, searchString).subscribe(
+      (result) => {
+        this.results = result.items;
+        this.maxResults = result.totalItems;
+        this.highlightedIndex = 0;
+        this.setHighlightedItem(this.results[this.highlightedIndex]);
+        this.showResults = true;
+        this.addScreenReaderMessage(this.maxResults + ' ' + this.resultsAvailableMessage)
+      });
+  }
   /**
    * Key event
    * @param event 
@@ -253,7 +265,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * @param searchString 
    */
   private getResults(searchString: string): void {
-    if (searchString.length >= this.configuration.minimumCharacterCountSearch) {
+      if (searchString.length >= this.configuration.minimumCharacterCountSearch) {
       if (!this.matchPastSearchString(searchString) ||
         (this.matchPastSearchString(searchString) && !this.showResults)
         || this.matchPastSearchString('')) {
