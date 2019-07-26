@@ -4,6 +4,7 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { BehaviorSubject } from 'rxjs';
 import { AutocompleteSampleDataService } from './services/autocomplete-sample.service';
 import { SDSAutocompletelConfiguration, SDSSelectedItemModel, SelectionMode } from '@gsa-sam/components';
+import { SampleAutocompleteData } from './services/autocomplete-sample.data';
 
 
 @Component({
@@ -21,10 +22,14 @@ export class FormlyInputComponent implements OnInit {
   public settings1 = new SDSAutocompletelConfiguration();
   public settings2 = new SDSAutocompletelConfiguration();
   public autocompleteModel = new SDSSelectedItemModel();
-  
   public autocompleteModel1 = new SDSSelectedItemModel();
-  
   public autocompleteModel2 = new SDSSelectedItemModel();
+
+  public settings3 = new SDSAutocompletelConfiguration();
+  public autocompleteModel3 = new SDSSelectedItemModel();
+
+
+  private data = SampleAutocompleteData;
   
   public filterChange$ = new BehaviorSubject<object>(null);
   fields: FormlyFieldConfig[] = [
@@ -41,7 +46,8 @@ export class FormlyInputComponent implements OnInit {
           service: this.service,
           configuration: this.settings,
           model: this.autocompleteModel,
-          modelChange: this.changes
+          modelChange: this.changes,
+         
         },
       }]
     },
@@ -51,7 +57,20 @@ export class FormlyInputComponent implements OnInit {
       templateOptions: { label: 'Search' },
       fieldGroup: [
         {
-          key: 'level',
+          key: 'level2',
+          type: 'autocomplete',
+          templateOptions: {
+            label: 'Auto Complete with single',
+            service: this.service,
+            configuration: this.settings1,
+            model: this.autocompleteModel1,
+            modelChange: this.changes
+          },
+        },
+     
+
+        {
+          key: 'level2',
           type: 'autocomplete',
           templateOptions: {
             label: 'Auto Complete with multiselect',
@@ -61,15 +80,19 @@ export class FormlyInputComponent implements OnInit {
             modelChange: this.changes
           },
         },
+
         {
-          key: 'level',
+          key: 'level3',
           type: 'autocomplete',
           templateOptions: {
-            label: 'Auto Complete with single select',
+            label: 'Auto Complete with disable with pre populated value',
             service: this.service,
-            configuration: this.settings1,
-            model: this.autocompleteModel1,
-            modelChange: this.changes
+            configuration: this.settings3,
+            model: this.autocompleteModel3,
+            modelChange: this.changes,
+            disabled: true
+
+           
           },
         }
       ]
@@ -114,6 +137,18 @@ export class FormlyInputComponent implements OnInit {
     this.settings2.autocompletePlaceHolderText = 'Enter text';
     this.settings2.debounceTime = 0;
 
+
+    this.settings3.id = 'autocomplete1';
+    this.settings3.primaryKeyField = 'id';
+    this.settings3.primaryTextField = 'name';
+    this.settings3.secondaryTextField = 'subtext';
+    this.settings3.labelText = 'Autocomplete 1';
+    this.settings3.selectionMode = SelectionMode.MULTIPLE;
+    this.settings3.autocompletePlaceHolderText = 'Enter text';
+    this.settings3.debounceTime = 0;
+
+
+    this.autocompleteModel3.items.push(this.data[0]);
   }
 
   // To display the selected model values
