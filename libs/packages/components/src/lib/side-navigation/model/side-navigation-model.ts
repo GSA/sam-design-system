@@ -43,7 +43,8 @@ export class NavigationLink implements Selectable, INavigationLink {
 
 
     /**
-     * 
+     * Query string paramaters supporeted with external and internal links
+     * ex. { 'name': 'value',...}
      */
     queryParams?: {
         [k: string]: any;

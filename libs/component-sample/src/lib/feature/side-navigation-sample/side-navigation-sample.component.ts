@@ -21,17 +21,7 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
         console.log(value);
       }
     );
-    this.activeRoute.queryParams.subscribe(queryParams => {
-      if (queryParams.item) {
-        this.pageHeader = queryParams.item;
-        if (this.model.navigationLinks) {
-          this.findItemByQueryString(this.model.navigationLinks);
-          this.sideNav.select(this.selectedId);
-        }
-      } else {
-        this.pageHeader = 'Unknown';
-      }
-    });
+
 
   }
 
@@ -109,6 +99,19 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
     }
     this.sideNav.select(this.selectedId);
     this.change.detectChanges();
+
+    this.activeRoute.queryParams.subscribe(queryParams => {
+      if (queryParams.item) {
+        this.pageHeader = queryParams.item;
+        if (this.model.navigationLinks) {
+          this.findItemByQueryString(this.model.navigationLinks);
+          this.sideNav.select(this.selectedId);
+        }
+      } else {
+        this.pageHeader = 'Unknown';
+      }
+      this.change.detectChanges();
+    });
   }
 
   addToOptions(item: any) {
