@@ -1,16 +1,16 @@
 <ul *ngIf="model" [attr.aria-label]="configuration.labelText +' results'" class="usa-list usa-list--unstyled"
   aria-relevant="additions" role="listbox" aria-live="polite">
   <li role="option" *ngFor="let result of model.items; let i = index">
-    <div [attr.class]="disabled?'' :''">
+    <div>
       <ng-container *ngIf="itemTemplate" [ngTemplateOutlet]="itemTemplate" [ngTemplateOutletContext]="{$implicit:result}">
       </ng-container>
       <ng-container *ngIf="!itemTemplate">
-        <span class="sds-tag sds-tag--chip">
+        <span [attr.class]="disabled?'sds-tag sds-tag--chip selected-item-disabled' :'sds-tag sds-tag--chip' ">
           {{ result[configuration.primaryTextField] }}
           <ng-container *ngIf="configuration.secondaryTextField &&  result[configuration.secondaryTextField] ">
             <span>{{ result[configuration.secondaryTextField] }}</span>
           </ng-container>
-          <button class="sds-tag__close" [attr.class]="disabled?'sds-tag__close close-disabled' :'sds-tag__close' "
+          <button [attr.class]="disabled?'sds-tag__close selected-item-disabled' :'sds-tag__close' "
             (click)="removeItem(result)" (keyup.enter)="removeItem(result)" [attr.aria-label]="'Remove Item ' + result[configuration.primaryTextField]">
             <fa-icon [icon]="['fas', 'times']"></fa-icon>
           </button>

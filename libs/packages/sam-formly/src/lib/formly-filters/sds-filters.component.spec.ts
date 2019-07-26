@@ -167,7 +167,6 @@ describe('The Sam Filters Component', () => {
             const inputField = fixture.debugElement.query(By.css('.usa-input')) as DebugElement;
             inputField.nativeElement.value = '45466';
             inputField.nativeElement.dispatchEvent(new Event('input'));
-            console.log(inputField, 'invalid');
             expect(component.form.invalid).toBe(true);
         });
     });
