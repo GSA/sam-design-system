@@ -41,40 +41,40 @@ describe('SDSSelectedResultComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  xit('should be empty', () => {
+  it('should be empty', () => {
     fixture.detectChanges();
-    const list = fixture.debugElement.query(By.css('.resultsList'));
+    const list = fixture.debugElement.query(By.css('.usa-list'));
     expect(list.nativeElement.children.length).toBe(0);
   });
 
-  xit('should have an item', () => {
+  it('should have an item', () => {
     SDSSelectedItemModelHelper.addItem({ 'id': '1', 'parentId': null, 'name': 'Level 1', 'subtext': 'id 1', 'type': 'Level 1' }, 'id', SelectionMode.SINGLE, component.model.items);
     fixture.detectChanges();
-    const list = fixture.debugElement.query(By.css('.resultsList'));
+    const list = fixture.debugElement.query(By.css('.usa-list'));
     expect(list.nativeElement.children.length).toBe(1);
   });
 
 
-  xit('should have a single item based on mode', () => {
+  it('should have a single item based on mode', () => {
     SDSSelectedItemModelHelper.addItem({ 'id': '1', 'parentId': null, 'name': 'Level 1', 'subtext': 'id 1', 'type': 'Level 1' }, 'id', SelectionMode.SINGLE, component.model.items);
     SDSSelectedItemModelHelper.addItem({ 'id': '2', 'parentId': null, 'name': 'Level 2', 'subtext': 'id 2', 'type': 'Level 2' }, 'id', SelectionMode.SINGLE, component.model.items);
     fixture.detectChanges();
-    const list = fixture.debugElement.query(By.css('.resultsList'));
+    const list = fixture.debugElement.query(By.css('.usa-list'));
     expect(list.nativeElement.children.length).toBe(1);
   });
 
 
-  xit('should have an 2 items', () => {
+  it('should have an 2 items', () => {
     component.configuration.selectionMode = SelectionMode.MULTIPLE;
     SDSSelectedItemModelHelper.addItem({ 'id': '1', 'parentId': null, 'name': 'Level 1', 'subtext': 'id 1', 'type': 'Level 1' }, 'id', SelectionMode.MULTIPLE, component.model.items);
     SDSSelectedItemModelHelper.addItem({ 'id': '2', 'parentId': null, 'name': 'Level 2', 'subtext': 'id 2', 'type': 'Level 2' }, 'id', SelectionMode.MULTIPLE, component.model.items);
     fixture.detectChanges();
-    const list = fixture.debugElement.query(By.css('.resultsList'));
+    const list = fixture.debugElement.query(By.css('.usa-list'));
     expect(list.nativeElement.children.length).toBe(2);
   });
 
 
-  xit('Tests remove item', () => {
+  it('Tests remove item', () => {
     component.configuration.selectionMode = SelectionMode.MULTIPLE;
     let item2 = { 'id': '2', 'parentId': null, 'name': 'Level 2', 'subtext': 'id 2', 'type': 'Level 2' };
     SDSSelectedItemModelHelper.addItem({ 'id': '1', 'parentId': null, 'name': 'Level 1', 'subtext': 'id 1', 'type': 'Level 1' }, 'id', SelectionMode.MULTIPLE, component.model.items);
@@ -82,7 +82,7 @@ describe('SDSSelectedResultComponent', () => {
     fixture.detectChanges();
     component.removeItem(item2);
     fixture.detectChanges();
-    const list = fixture.debugElement.query(By.css('.resultsList'));
+    const list = fixture.debugElement.query(By.css('.usa-list'));
     expect(list.nativeElement.children.length).toBe(1);
   });
 
