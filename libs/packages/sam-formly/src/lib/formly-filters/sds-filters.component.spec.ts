@@ -38,7 +38,7 @@ describe('The Sam Filters Component', () => {
             component.fields = [
                 {
                     key: 'filters',
-                    wrappers: ['accordianwrapper'],
+                    wrappers: ['accordionwrapper'],
                     templateOptions: { label: 'Entity Name/UEI' },
                     fieldGroup: [{
                         key: 'uniqueId',
@@ -121,7 +121,7 @@ describe('The Sam Filters Component', () => {
             component.fields = [
                 {
                     key: 'filters',
-                    wrappers: ['accordianwrapper'],
+                    wrappers: ['accordionwrapper'],
                     templateOptions: { label: 'Entity Name/UEI' },
                     fieldGroup: [{
                         key: 'uniqueId',

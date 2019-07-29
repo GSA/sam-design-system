@@ -39,7 +39,7 @@ export class FilterWrapperComponent implements OnInit {
 
     {
       key: 'searchEntity',
-      wrappers: ['accordianwrapper'],
+      wrappers: ['accordionwrapper'],
       templateOptions: { label: 'Entity' },
       fieldGroup: [
         {
@@ -68,7 +68,7 @@ export class FilterWrapperComponent implements OnInit {
     },
     {
       key: 'entityStatus',
-      wrappers: ['accordianwrapper'],
+      wrappers: ['accordionwrapper'],
       templateOptions: { label: 'Entity Status' },
       fieldGroup: [
         {
@@ -109,7 +109,7 @@ export class FilterWrapperComponent implements OnInit {
     },
     {
       key: 'expirationDate',
-      wrappers: ['accordianwrapper'],
+      wrappers: ['accordionwrapper'],
       templateOptions: { label: 'Expiration Date' },
       fieldGroup: [
         {
@@ -154,24 +154,6 @@ export class FilterWrapperComponent implements OnInit {
         },
       ]
     },
-    // {
-    //   key: 'addressUpdate',
-    //   wrappers: ['accordianwrapper'],
-    //   templateOptions: { label: 'Address Update' },
-    //   fieldGroup: [
-    //     {
-    //       key: 'addressUpdateOption',
-    //       type: 'radio',
-    //       templateOptions: {
-    //         options: [
-    //           { label: 'Update Required', value: 'adrupr' },
-    //           { label: 'Update Not Required', value: 'adrupn' },
-
-    //         ]
-    //       },
-    //     }
-    //   ]
-    // },
     {
       key: 'entityType',
       wrappers: ['filterwrapper'],

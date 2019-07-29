@@ -55,7 +55,7 @@ export class FormlyInputComponent implements OnInit {
     },
     {
       key: 'filters',
-      wrappers: ['accordianwrapper'],
+      wrappers: ['accordionwrapper'],
       templateOptions: { label: 'Search' },
       fieldGroup: [
         {
