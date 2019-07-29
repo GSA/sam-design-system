@@ -48,21 +48,13 @@ export class AutocompleteSampleDataService implements SDSAutocomplteServiceInter
         if (maxSectionPosition > totalItemCount) {
             maxSectionPosition = totalItemCount;
         }
-        let subItemsitems = items.slice(currentItems, maxSectionPosition);
+        let selectedtems = items.slice(currentItems, maxSectionPosition);
 
         let returnItem = {
-            items: subItemsitems,
+            items: selectedtems,
             totalItems: totalItemCount
         };
         return of(returnItem);
 
     }
-
-
-
-
-
-
-
-
 }
