@@ -1,14 +1,11 @@
-<sds-accordion-item>
-    <sds-accordion-item-header> Navigation </sds-accordion-item-header>
-    <nav>
-        <ul class="usa-sidenav">
-            <li *ngFor="let link of model.navigationLinks" class="sidenav__item">
-                <ng-container [ngTemplateOutlet]="sideNavLinkTemplate" [ngTemplateOutletContext]="{$implicit:link}">
-                </ng-container>
-            </li>
-        </ul>
-    </nav>
-</sds-accordion-item>
+<nav>
+    <ul class="usa-sidenav">
+        <li *ngFor="let link of model.navigationLinks" class="sidenav__item">
+            <ng-container [ngTemplateOutlet]="sideNavLinkTemplate" [ngTemplateOutletContext]="{$implicit:link}">
+            </ng-container>
+        </li>
+    </ul>
+</nav>
 
 <ng-template #sideNavLinkTemplate let-link>
     <ng-container [ngTemplateOutlet]="getItemTemplate(link)" [ngTemplateOutletContext]="{$implicit:link}">

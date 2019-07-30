@@ -13,7 +13,7 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
 
   public pageHeader: string;
   public linkEvent = new BehaviorSubject<object>(null);
-
+  sideNavExpanded = true;
   ngOnInit() {
     this.linkEvent.subscribe(
       value => {
@@ -57,7 +57,7 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
       ]
     },
     {
-      text: 'Parent 2', id: 'linkp2', route: '/', mode: NavigationMode.INTERNAL, children: [
+      text: 'Parent 2', id: 'linkp2', route: '/', mode: NavigationMode.LABEL, children: [
         {
           text: 'Child 1 of Parent 2', route: '/', id: 'linkc1p2', mode: NavigationMode.INTERNAL, children: [
 
