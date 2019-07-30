@@ -1,7 +1,7 @@
 <div sds-click-outside (clickOutside)="checkForFocus($event)" sds-tab-outside (tabOutside)="checkForFocus($event)">
   <div class="input-container">
-    <input [disabled]="disabled" class="sam input" #input [attr.id]="configuration.id" autocomplete="off" type="text" (focus)="inputFocusHandler()"
-      (keyup)="onKeyup($event)" [(ngModel)]="inputValue" autocomplete="off" role="combobox" aria-autocomplete="list"
+    <input [disabled]="disabled" (ngModelChange)="textChange($event)" class="sam input" #input [attr.id]="configuration.id" autocomplete="off" type="text" (focus)="inputFocusHandler()"
+      (keydown)="onKeydown($event)" [(ngModel)]="inputValue" autocomplete="off" role="combobox" aria-autocomplete="list"
       aria-expanded="false" aria-haspopup="true" [attr.aria-owns]="configuration.id+ '-listbox'" [attr.placeholder]="configuration.autocompletePlaceHolderText">
     <ng-container *ngIf="!input.disabled">
       <span class="close">

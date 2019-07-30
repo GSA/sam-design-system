@@ -139,8 +139,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * 
    */
   private focusRemoved() {
-
-
     if (this.configuration.selectionMode === SelectionMode.SINGLE) {
       if (this.model.items.length > 0) {
         if (this.inputValue.length === 0) {
@@ -157,6 +155,12 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     }
   }
 
+
+  textChange(event) {
+    const searchString = event || '';
+    this.getResults(searchString);
+  }
+
   /**
    * Event method used when focus is gained to the input
    */
@@ -169,7 +173,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * Key event
    * @param event 
    */
-  onKeyup(event): void {
+  onKeydown(event): void {
     if (KeyHelper.is(KEYS.TAB, event)) {
       return;
     }
@@ -184,14 +188,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     }
     else if (KeyHelper.is(KEYS.ESC, event)) {
       this.clearAndHideResults();
-    }
-    else if (KeyHelper.is(KEYS.BACKSPACE, event) || KeyHelper.is(KEYS.DELETE, event)) {
-      const searchString = event.target.value || '';
-      this.getResults(searchString);
-    }
-    else {
-      const searchString = event.target.value || '';
-      this.getResults(searchString);
     }
   }
 
