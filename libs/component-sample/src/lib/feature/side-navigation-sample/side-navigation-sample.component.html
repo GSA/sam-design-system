@@ -2,13 +2,11 @@
     <sds-page-options class="sam-page__options">
         <sds-toolbar [expanded]="sideNavExpanded" #toolbar="sdsToolbar">
             <sds-accordion multi="true">
-                <sds-accordion-item>
+                <sds-accordion-item [expanded]="sideNavExpanded">
                     <sds-accordion-item-header> Navigation </sds-accordion-item-header>
                     <sds-side-navigation #sideNav (linkEvent)="linkEvent.next($event)" [model]="model">
                     </sds-side-navigation>
                 </sds-accordion-item>
-            </sds-accordion>
-            <sds-accordion multi="true">
             </sds-accordion>
         </sds-toolbar>
         <div class="sam-example-pagination" [sdsToolbarExpand]="toolbar">
