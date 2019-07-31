@@ -72,8 +72,8 @@ describe('SamAutocompleteComponent', () => {
   it('Should have results with minimumCharacterCountSearch', fakeAsync(() => {
     
     const event ='Level 7';
-    component.textChange(event);
     component.configuration.minimumCharacterCountSearch = 3;
+    component.textChange(event);
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
