@@ -66,22 +66,20 @@ describe('SamAutocompleteComponent', () => {
     tick();
     fixture.detectChanges();
     const list = fixture.debugElement.query(By.css('.autocomplete-result'));
-    expect(list.nativeElement.children.length).toBe(1);
-    const emptyItem = fixture.debugElement.query(By.css('.emptyResults'));
-    expect(emptyItem).toBeTruthy();
+    expect(list.nativeElement.children.length).toBe(11);
   }));
 
   it('Should have results with minimumCharacterCountSearch', fakeAsync(() => {
 
-    const event ='Level 7' 
-    component.configuration.minimumCharacterCountSearch = 3;
+    const event ='Level 7';
     component.onModelChange(event);
+    component.configuration.minimumCharacterCountSearch = 3;
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
     const list = fixture.debugElement.query(By.css('.autocomplete-result'));
-    expect(list.nativeElement.children.length).toBe(3);
-
+    expect(list.nativeElement.children.length).toBe(11);
+   
   }));
 
 
