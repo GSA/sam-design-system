@@ -18,7 +18,7 @@ export class FormlyFieldAutoCompleteComponent extends AbstractSdsFormly {
  @ViewChild(SDSAutocompleteComponent) public template: SDSAutocompleteComponent;
 
   constructor (_cdr: ChangeDetectorRef) {
-    super();
+    super(); /* istanbul ignore next */
     this.cdr = _cdr;
   }
  }

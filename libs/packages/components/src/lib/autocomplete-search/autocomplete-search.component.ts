@@ -155,6 +155,11 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     }
   }
 
+  textChange(event) {
+    const searchString = event || '';
+    this.getResults(searchString);
+ }
+
   /**
    * Event method used when focus is gained to the input
    */
@@ -163,10 +168,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     this.onTouchedCallback(); 
   }
   
-  onModelChange(ev) {
-     const searchString = this.inputValue || '';
-     this.getResults(searchString);
-  }
   /**
    * Key event
    * @param event 
@@ -247,7 +248,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * @param searchString 
    */
   private getResults(searchString: string): void {
-      if (searchString.length >= this.configuration.minimumCharacterCountSearch) {
+    if (searchString.length >= this.configuration.minimumCharacterCountSearch) {
       if (!this.matchPastSearchString(searchString) ||
         (this.matchPastSearchString(searchString) && !this.showResults)
         || this.matchPastSearchString('')) {

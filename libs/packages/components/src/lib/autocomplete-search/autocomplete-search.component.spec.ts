@@ -9,7 +9,7 @@ import { By } from '@angular/platform-browser';
 import { AutoCompleteSampleDataService } from './autocomplete-seach-test-service.spec';
 
 
-describe('SamAutocompleteComponent', () => {
+fdescribe('SamAutocompleteComponent', () => {
   let component: SDSAutocompleteSearchComponent;
   let fixture: ComponentFixture<SDSAutocompleteSearchComponent>;
 
@@ -61,7 +61,7 @@ describe('SamAutocompleteComponent', () => {
   it('Should have empty results with invalid search', fakeAsync(() => {
 
     const event = 'test search';
-    component.onModelChange(event);
+    component.textChange(event);
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
@@ -70,16 +70,15 @@ describe('SamAutocompleteComponent', () => {
   }));
 
   it('Should have results with minimumCharacterCountSearch', fakeAsync(() => {
-
+    
     const event ='Level 7';
-    component.onModelChange(event);
+    component.textChange(event);
     component.configuration.minimumCharacterCountSearch = 3;
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
     const list = fixture.debugElement.query(By.css('.autocomplete-result'));
     expect(list.nativeElement.children.length).toBe(11);
-   
   }));
 
 
@@ -88,7 +87,7 @@ describe('SamAutocompleteComponent', () => {
 
   it('Should have results key press', fakeAsync(() => {
     const event ='id';
-    component.onModelChange(event);
+    component.textChange(event);
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
@@ -194,7 +193,7 @@ describe('SamAutocompleteComponent', () => {
 
   it('Should have delete have results', fakeAsync(() => {
     const event = 'id' ;
-    component.onModelChange(event);
+    component.textChange(event);
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
