@@ -9,7 +9,7 @@ import { By } from '@angular/platform-browser';
 import { AutoCompleteSampleDataService } from './autocomplete-seach-test-service.spec';
 
 
-fdescribe('SamAutocompleteComponent', () => {
+describe('SamAutocompleteComponent', () => {
   let component: SDSAutocompleteSearchComponent;
   let fixture: ComponentFixture<SDSAutocompleteSearchComponent>;
 
@@ -66,7 +66,7 @@ fdescribe('SamAutocompleteComponent', () => {
     tick();
     fixture.detectChanges();
     const list = fixture.debugElement.query(By.css('.autocomplete-result'));
-    expect(list.nativeElement.children.length).toBe(11);
+    expect(list.nativeElement.children.length).toBe(1);
   }));
 
   it('Should have results with minimumCharacterCountSearch', fakeAsync(() => {
@@ -78,7 +78,7 @@ fdescribe('SamAutocompleteComponent', () => {
     tick();
     fixture.detectChanges();
     const list = fixture.debugElement.query(By.css('.autocomplete-result'));
-    expect(list.nativeElement.children.length).toBe(11);
+    expect(list.nativeElement.children.length).toBe(3);
   }));
 
 
