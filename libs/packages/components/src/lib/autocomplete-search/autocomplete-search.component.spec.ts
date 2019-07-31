@@ -60,11 +60,8 @@ describe('SamAutocompleteComponent', () => {
 
   it('Should have empty results with invalid search', fakeAsync(() => {
 
-    const event = {
-      "key": "Space",
-      "target": { "value": 'test search' }
-    }
-    component.onKeyup(event);
+    const event = 'test search';
+    component.textChange(event);
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
@@ -76,12 +73,9 @@ describe('SamAutocompleteComponent', () => {
 
   it('Should have results with minimumCharacterCountSearch', fakeAsync(() => {
 
-    const event = {
-      "key": "Space",
-      "target": { "value": 'Level 7' }
-    }
+    const event ='Level 7' 
     component.configuration.minimumCharacterCountSearch = 3;
-    component.onKeyup(event);
+    component.textChange(event);
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
@@ -95,11 +89,8 @@ describe('SamAutocompleteComponent', () => {
 
 
   it('Should have results key press', fakeAsync(() => {
-    const event = {
-      "key": "d",
-      "target": { "value": 'id' }
-    }
-    component.onKeyup(event);
+    const event ='id';
+    component.textChange(event);
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
@@ -116,7 +107,7 @@ describe('SamAutocompleteComponent', () => {
       "target": { "value": 'id' }
     }
     component.configuration.minimumCharacterCountSearch = 3;
-    component.onKeyup(event);
+    component.onKeydown(event);
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
@@ -145,7 +136,7 @@ describe('SamAutocompleteComponent', () => {
       "key": "Down",
       "target": { "value": 'id' }
     }
-    component.onKeyup(downEvent);
+    component.onKeydown(downEvent);
     tick();
     fixture.detectChanges()
     const list = fixture.debugElement.query(By.css('.autocomplete-result'));
@@ -155,7 +146,7 @@ describe('SamAutocompleteComponent', () => {
       "key": "Up",
       "target": { "value": 'id' }
     }
-    component.onKeyup(upEvent);
+    component.onKeydown(upEvent);
     tick();
     fixture.detectChanges();
     expect(component.results[0]['highlighted']).toBeTruthy();
@@ -172,7 +163,7 @@ describe('SamAutocompleteComponent', () => {
       "key": "Up",
       "target": { "value": 'id' }
     }
-    component.onKeyup(upEvent);
+    component.onKeydown(upEvent);
     tick();
     fixture.detectChanges();
     expect(component.results[0]['highlighted']).toBeTruthy();
@@ -195,7 +186,7 @@ describe('SamAutocompleteComponent', () => {
       "key": "Down",
       "target": { "value": 'id' }
     }
-    component.onKeyup(upEvent);
+    component.onKeydown(upEvent);
     tick();
     fixture.detectChanges();
 
@@ -204,11 +195,8 @@ describe('SamAutocompleteComponent', () => {
 
 
   it('Should have delete have results', fakeAsync(() => {
-    const event = {
-      "key": "Delete",
-      "target": { "value": 'id' }
-    }
-    component.onKeyup(event);
+    const event = 'id' ;
+    component.textChange(event);
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
@@ -216,36 +204,6 @@ describe('SamAutocompleteComponent', () => {
     expect(list.nativeElement.children.length).toBe(11);
     expect(component.results[0]['highlighted']).toBeTruthy();
   }));
-
-  it('Should have backspace have results', fakeAsync(() => {
-    component.configuration.secondaryTextField = undefined;
-    const event = {
-      "key": "Backspace",
-      "target": { "value": 'id' }
-    }
-    component.onKeyup(event);
-    fixture.detectChanges();
-    tick();
-    fixture.detectChanges();
-    const list = fixture.debugElement.query(By.css('.autocomplete-result'));
-    expect(list.nativeElement.children.length).toBe(11);
-    expect(component.results[0]['highlighted']).toBeTruthy();
-  }));
-
-  it('Should have results key press', fakeAsync(() => {
-    const event = {
-      "key": "d",
-      "target": { "value": 'id' }
-    }
-    component.onKeyup(event);
-    fixture.detectChanges();
-    tick();
-    fixture.detectChanges();
-    const list = fixture.debugElement.query(By.css('.autocomplete-result'));
-    expect(list.nativeElement.children.length).toBe(11);
-    expect(component.results[0]['highlighted']).toBeTruthy();
-  }));
-
 
   it('Should have results Escape press', fakeAsync(() => {
     component.inputFocusHandler();
@@ -257,7 +215,7 @@ describe('SamAutocompleteComponent', () => {
       "key": "Escape",
       "target": { "value": 'id' }
     }
-    component.onKeyup(event);
+    component.onKeydown(event);
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
@@ -288,7 +246,7 @@ describe('SamAutocompleteComponent', () => {
       "key": "Enter",
       "target": { "value": 'id' }
     }
-    component.onKeyup(event);
+    component.onKeydown(event);
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
