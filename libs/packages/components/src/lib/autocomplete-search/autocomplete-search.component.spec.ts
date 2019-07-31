@@ -67,6 +67,9 @@ describe('SamAutocompleteComponent', () => {
     fixture.detectChanges();
     const list = fixture.debugElement.query(By.css('.autocomplete-result'));
     expect(list.nativeElement.children.length).toBe(1);
+    const emptyItem = fixture.debugElement.query(By.css('.emptyResults'));
+    expect(emptyItem).toBeTruthy();
+
   }));
 
   it('Should have results with minimumCharacterCountSearch', fakeAsync(() => {
