@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, TemplateRef, ElementRef, forwardRef, OnInit } from '@angular/core';
+import { Component, Input, ViewChild, TemplateRef, ElementRef, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { SDSAutocomplteServiceInterface } from './models/SDSAutocomplteServiceInterface';
 import { KeyHelper, KEYS } from '../key-helper/key-helper';
