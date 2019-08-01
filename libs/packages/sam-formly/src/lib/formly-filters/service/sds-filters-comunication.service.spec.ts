@@ -1,15 +1,5 @@
-import { Subject } from 'rxjs';
 import { SDSFormlyUpdateComunicationService } from './sds-filters-comunication.service';
-
-import {
-    inject,
-    tick,
-    TestBed,
-    getTestBed,
-    async,
-    fakeAsync,
-    ComponentFixture
-} from '@angular/core/testing';
+import { fakeAsync } from '@angular/core/testing';
 
 describe('Service: SDSFormlyUpdateComunicationService', () => {
 
