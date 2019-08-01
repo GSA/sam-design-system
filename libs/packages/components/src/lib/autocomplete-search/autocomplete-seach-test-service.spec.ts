@@ -1,9 +1,9 @@
 /* tslint:disable */
 import { Observable, of } from 'rxjs';
-import { SDSAutocomplteServiceInterface, SDSHiercarchicalServiceResult } from './models/SDSAutocomplteServiceInterface';
+import { SDSAutocompleteServiceInterface, SDSHiercarchicalServiceResult } from './models/SDSAutocompleteServiceInterface';
 import { map } from 'rxjs/operators';
 
-export class AutoCompleteSampleDataService implements SDSAutocomplteServiceInterface {
+export class AutoCompleteSampleDataService implements SDSAutocompleteServiceInterface {
 
   private loadedData;
   constructor() {

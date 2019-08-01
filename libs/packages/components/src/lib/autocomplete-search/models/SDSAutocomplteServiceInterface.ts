@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-export interface SDSAutocomplteServiceInterface {
+export interface SDSAutocompleteServiceInterface {
     /**
      * 
      * @param searchValue 
