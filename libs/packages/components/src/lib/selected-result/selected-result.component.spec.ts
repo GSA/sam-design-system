@@ -43,14 +43,14 @@ describe('SDSSelectedResultComponent', () => {
 
   it('should be empty', () => {
     fixture.detectChanges();
-    const list = fixture.debugElement.query(By.css('.usa-list'));
+    const list = fixture.debugElement.query(By.css('.sds-autocomplete-selected'));
     expect(list.nativeElement.children.length).toBe(0);
   });
 
   it('should have an item', () => {
     SDSSelectedItemModelHelper.addItem({ 'id': '1', 'parentId': null, 'name': 'Level 1', 'subtext': 'id 1', 'type': 'Level 1' }, 'id', SelectionMode.SINGLE, component.model.items);
     fixture.detectChanges();
-    const list = fixture.debugElement.query(By.css('.usa-list'));
+    const list = fixture.debugElement.query(By.css('.sds-autocomplete-selected'));
     expect(list.nativeElement.children.length).toBe(1);
   });
 
@@ -59,7 +59,7 @@ describe('SDSSelectedResultComponent', () => {
     SDSSelectedItemModelHelper.addItem({ 'id': '1', 'parentId': null, 'name': 'Level 1', 'subtext': 'id 1', 'type': 'Level 1' }, 'id', SelectionMode.SINGLE, component.model.items);
     SDSSelectedItemModelHelper.addItem({ 'id': '2', 'parentId': null, 'name': 'Level 2', 'subtext': 'id 2', 'type': 'Level 2' }, 'id', SelectionMode.SINGLE, component.model.items);
     fixture.detectChanges();
-    const list = fixture.debugElement.query(By.css('.usa-list'));
+    const list = fixture.debugElement.query(By.css('.sds-autocomplete-selected'));
     expect(list.nativeElement.children.length).toBe(1);
   });
 
@@ -69,7 +69,7 @@ describe('SDSSelectedResultComponent', () => {
     SDSSelectedItemModelHelper.addItem({ 'id': '1', 'parentId': null, 'name': 'Level 1', 'subtext': 'id 1', 'type': 'Level 1' }, 'id', SelectionMode.MULTIPLE, component.model.items);
     SDSSelectedItemModelHelper.addItem({ 'id': '2', 'parentId': null, 'name': 'Level 2', 'subtext': 'id 2', 'type': 'Level 2' }, 'id', SelectionMode.MULTIPLE, component.model.items);
     fixture.detectChanges();
-    const list = fixture.debugElement.query(By.css('.usa-list'));
+    const list = fixture.debugElement.query(By.css('.sds-autocomplete-selected'));
     expect(list.nativeElement.children.length).toBe(2);
   });
 
@@ -82,7 +82,7 @@ describe('SDSSelectedResultComponent', () => {
     fixture.detectChanges();
     component.removeItem(item2);
     fixture.detectChanges();
-    const list = fixture.debugElement.query(By.css('.usa-list'));
+    const list = fixture.debugElement.query(By.css('.sds-autocomplete-selected'));
     expect(list.nativeElement.children.length).toBe(1);
   });
 
