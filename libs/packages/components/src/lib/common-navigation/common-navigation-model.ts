@@ -16,7 +16,7 @@ export interface INavigationLink {
 }
 
 export enum NavigationMode {
-    INTERNAL, EXTERNAL, EVENT
+    INTERNAL, EXTERNAL, EVENT, LABEL
 }
 
 export interface Selectable {

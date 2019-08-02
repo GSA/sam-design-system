@@ -24,18 +24,20 @@ export class SdsToolbarExpandDirective implements OnInit {
   }
   private _toolbar: SdsToolbarComponent;
 
-  constructor(private renderer: Renderer2, private _element: ElementRef) {}
+  constructor(private renderer: Renderer2, private _element: ElementRef) { }
   ngOnInit() {
+    this.setStyle(this.toolbar.expanded);
     this.toolbar.expandedChange.subscribe(value => {
-      if (value) {
-        this.renderer.setStyle(
-          this._element.nativeElement,
-          "margin-left",
-          `${this._expandedWidth}`
-        );
-      } else {
-        this.renderer.removeStyle(this._element.nativeElement, "margin-left");
-      }
+      this.setStyle(value);
     });
+  }
+
+  private setStyle(value: any) {
+    if (value) {
+      this.renderer.setStyle(this._element.nativeElement, "margin-left", `${this._expandedWidth}`);
+    }
+    else {
+      this.renderer.removeStyle(this._element.nativeElement, "margin-left");
+    }
   }
 }

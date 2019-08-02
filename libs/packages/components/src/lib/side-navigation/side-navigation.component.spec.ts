@@ -176,5 +176,38 @@ describe('SdsSideNavigationComponent', () => {
     expect(component.linkEvent.emit).toHaveBeenCalledWith(navItem);
   });
 
+  it('correct template', () => {
+    let link = new NavigationLink();
+    expect(component.getItemTemplate(link)).toBe(null);
+    link.mode = NavigationMode.EVENT;
+    expect(component.getItemTemplate(link)).not.toBeNull();
+    link.mode = NavigationMode.EXTERNAL;
+    expect(component.getItemTemplate(link)).not.toBeNull();
+    link.mode = NavigationMode.INTERNAL;
+    expect(component.getItemTemplate(link)).not.toBeNull();
+    link.mode = NavigationMode.LABEL;
+    expect(component.getItemTemplate(link)).not.toBeNull();
+
+  });
+
+  it('url builder', () => {
+    let link = new NavigationLink();
+    link.route = 'test';
+    expect(component.urlBuilder(link)).toBe(link.route);
+    link.queryParams = { 'item': '1' };
+    expect(component.urlBuilder(link)).toBe(link.route + '?item=1');
+    link.queryParams = { 'item': '1', 'item2': '2' };
+    expect(component.urlBuilder(link)).toBe(link.route + '?item=1&item2=2');
+    link.route = 'test?';
+    link.queryParams = { 'item': '1', 'item2': '2', 'item3': '3' };
+    expect(component.urlBuilder(link)).toBe(link.route + 'item=1&item2=2&item3=3');
+    link.route = 'test?x=r';
+    expect(component.urlBuilder(link)).toBe(link.route + '&item=1&item2=2&item3=3');
+    link.route = 'test';
+    link.queryParams = { 'item space': '1 space' };
+    expect(component.urlBuilder(link)).toBe(link.route + '?item%20space=1%20space');
+  });
+
+
 });
 
