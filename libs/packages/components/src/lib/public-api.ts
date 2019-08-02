@@ -4,7 +4,7 @@ export * from './toolbar/toolbar.module';
 export * from './header/header.module';
 export * from './footer/footer.module';
 export * from './pagination/pagination.module';
-
+export * from './autocomplete/autocomplete.component';
 export * from './autocomplete/autocomplete.module';
 export * from './autocomplete/models/SDSAutocompletelConfiguration.model';
 export * from './autocomplete-search/models/SDSAutocomplteServiceInterface';

@@ -2,7 +2,7 @@
   <div class="position-relative maxw-mobile-lg">
     <input [disabled]="disabled" (ngModelChange)="textChange($event)" class="usa-input" #input [attr.id]="configuration.id" autocomplete="off" type="text" (focus)="inputFocusHandler()"
       (keydown)="onKeydown($event)" [(ngModel)]="inputValue" autocomplete="off" role="combobox" aria-autocomplete="list"
-      aria-expanded="false" aria-haspopup="true" [attr.aria-owns]="configuration.id+ '-listbox'" [attr.placeholder]="configuration.autocompletePlaceHolderText">
+       aria-expanded="false" aria-haspopup="true" [attr.aria-owns]="configuration.id+ '-listbox'" [attr.placeholder]="configuration.autocompletePlaceHolderText">
     <ng-container *ngIf="!input.disabled">
       <span class="close">
         <span role="button" class="fa fa-close" aria-label="Clear input" aria-hidden="false" (click)="clearInput()"

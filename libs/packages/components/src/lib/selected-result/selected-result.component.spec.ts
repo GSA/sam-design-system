@@ -5,6 +5,10 @@ import { SDSSelectedItemModel } from './models/sds-selectedItem.model';
 import { SDSSelectedItemModelHelper, SelectionMode } from './models/sds-selected-item-model-helper';
 import { By } from '@angular/platform-browser';
 import { SDSSelectedResultConfiguration } from './models/SDSSelectedResultConfiguration';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 describe('SDSSelectedResultComponent', () => {
@@ -13,7 +17,10 @@ describe('SDSSelectedResultComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [SDSSelectedResultComponent]
+      declarations: [SDSSelectedResultComponent],
+      imports: [
+        CommonModule, FormsModule, RouterModule, FontAwesomeModule
+      ],
     })
       .compileComponents();
   }));

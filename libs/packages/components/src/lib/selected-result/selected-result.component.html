@@ -11,9 +11,6 @@
           <span class="secondary-value">{{ result[configuration.secondaryTextField] }}</span>
         </ng-container>
       </ng-container>
-      <span tabindex="0" role="button" [attr.class]="disabled?'close close-disabled fa fa-close' :'close fa fa-close' "
-        [attr.aria-label]="'Remove Item ' + result[configuration.primaryTextField]" aria-hidden="false" (click)="removeItem(result)" (keyup.enter)="removeItem(result)">
-      </span>
     </div>
   </li>
 </ul>

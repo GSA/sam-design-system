@@ -40,7 +40,7 @@ export class SideMenuFiltersSampleComponent implements OnInit{
 
     {
       key: 'searchEntity',
-      wrappers: ['accordianwrapper'],
+      wrappers: ['accordionwrapper'],
       templateOptions: { label: 'Entity' },
       fieldGroup: [
         {
@@ -91,7 +91,7 @@ export class SideMenuFiltersSampleComponent implements OnInit{
     },
     {
       key: 'status',
-      wrappers: ['accordianwrapper'],
+      wrappers: ['accordionwrapper'],
       templateOptions: { label: 'Status' },
       fieldGroup: [
         {
@@ -122,7 +122,7 @@ export class SideMenuFiltersSampleComponent implements OnInit{
     },
     {
       key: 'expirationDate',
-      wrappers: ['accordianwrapper'],
+      wrappers: ['accordionwrapper'],
       templateOptions: { label: 'Expiration Date' },
       fieldGroup: [
         {
@@ -141,7 +141,7 @@ export class SideMenuFiltersSampleComponent implements OnInit{
     },
     {
       key: 'addressUpdate',
-      wrappers: ['accordianwrapper'],
+      wrappers: ['accordionwrapper'],
       templateOptions: { label: 'Address Update' },
       fieldGroup: [
         {
@@ -159,7 +159,7 @@ export class SideMenuFiltersSampleComponent implements OnInit{
     },
     {
       key: 'entityType',
-      wrappers: ['accordianwrapper'],
+      wrappers: ['accordionwrapper'],
       templateOptions: { label: 'Entity Type' },
       fieldGroup: [
         {
