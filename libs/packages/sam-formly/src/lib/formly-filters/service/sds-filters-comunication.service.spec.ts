@@ -2,7 +2,6 @@ import { SDSFormlyUpdateComunicationService } from './sds-filters-comunication.s
 import { fakeAsync } from '@angular/core/testing';
 
 describe('Service: SDSFormlyUpdateComunicationService', () => {
-
     let service: SDSFormlyUpdateComunicationService;
     beforeEach(() => {
         service = new SDSFormlyUpdateComunicationService();
