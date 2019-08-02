@@ -1,7 +1,7 @@
 import { Component, Input, ViewChild, TemplateRef, ElementRef, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl } from '@angular/forms';
 import { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';
-import { SDSAutocomplteServiceInterface } from '../autocomplete-search/models/SDSAutocomplteServiceInterface';
+import { SDSAutocompleteServiceInterface } from '../autocomplete-search/models/SDSAutocompleteServiceInterface';
 import { SDSAutocompletelConfiguration } from './models/SDSAutocompletelConfiguration.model';
 import { SelectionMode } from '../selected-result/models/sds-selected-item-model-helper';
 const Autocomplete_VALUE_ACCESSOR: any = {
@@ -58,7 +58,7 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
 * Instance of the SamHiercarchicalServiceInterface provided
 */
   @Input()
-  public service: SDSAutocomplteServiceInterface;
+  public service: SDSAutocompleteServiceInterface;
 
   writeValue(obj: any): void {
     if (obj instanceof SDSSelectedItemModel) {

@@ -1,14 +1,14 @@
 /* tslint:disable */
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { SDSAutocomplteServiceInterface, SDSHiercarchicalServiceResult } from '@gsa-sam/components';
+import { SDSAutocompleteServiceInterface, SDSHiercarchicalServiceResult } from '@gsa-sam/components';
 import { map } from 'rxjs/operators';
 
 import { SampleAutocompleteData } from './autocomplete-sample.data';
 
 
 @Injectable()
-export class AutocompleteSampleDataService implements SDSAutocomplteServiceInterface {
+export class AutocompleteSampleDataService implements SDSAutocompleteServiceInterface {
 
     private loadedData;
     constructor() {
