@@ -155,20 +155,19 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     }
   }
 
-
   textChange(event) {
     const searchString = event || '';
     this.getResults(searchString);
-  }
+ }
 
   /**
    * Event method used when focus is gained to the input
    */
   inputFocusHandler(): void {
     this.getResults(this.inputValue || '');
-    this.onTouchedCallback();
+    this.onTouchedCallback(); 
   }
-
+  
   /**
    * Key event
    * @param event 

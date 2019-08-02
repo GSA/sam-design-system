@@ -5,7 +5,7 @@ import { FormlyModule } from '@ngx-formly/core';
 import { FormlySelectModule } from '@ngx-formly/core/select';
 import { FIELD_TYPE_COMPONENTS, FORMLY_CONFIG } from './formly.config';
 import {
-  SdsAccordionModule,
+  SdsAccordionModule, SdsAutocompleteModule
 } from '@gsa-sam/components';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 // Validate the min length of the charecter
@@ -36,6 +36,7 @@ export function maxValidationMessage(err, field) {
   imports: [
     CommonModule,
      SdsAccordionModule,
+     SdsAutocompleteModule,
      FontAwesomeModule,
     ReactiveFormsModule,
     FormlySelectModule,

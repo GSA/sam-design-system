@@ -65,23 +65,23 @@ describe('SamAutocompleteComponent', () => {
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
-    const list = fixture.debugElement.query(By.css('.autocomplete-result'));
+    const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
     expect(list.nativeElement.children.length).toBe(1);
     const emptyItem = fixture.debugElement.query(By.css('.emptyResults'));
     expect(emptyItem).toBeTruthy();
+
   }));
 
   it('Should have results with minimumCharacterCountSearch', fakeAsync(() => {
-
-    const event ='Level 7' 
+    
+    const event ='Level 7';
     component.configuration.minimumCharacterCountSearch = 3;
     component.textChange(event);
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
-    const list = fixture.debugElement.query(By.css('.autocomplete-result'));
+    const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
     expect(list.nativeElement.children.length).toBe(3);
-
   }));
 
 
@@ -94,7 +94,7 @@ describe('SamAutocompleteComponent', () => {
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
-    const list = fixture.debugElement.query(By.css('.autocomplete-result'));
+    const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
     expect(list.nativeElement.children.length).toBe(11);
     expect(component.results[0]['highlighted']).toBeTruthy();
   }));
@@ -111,7 +111,7 @@ describe('SamAutocompleteComponent', () => {
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
-    const list = fixture.debugElement.query(By.css('.autocomplete-result'));
+    const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
     expect(list).toBe(null);
   }));
 
@@ -122,7 +122,7 @@ describe('SamAutocompleteComponent', () => {
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
-    const list = fixture.debugElement.query(By.css('.autocomplete-result'));
+    const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
     expect(list.nativeElement.children.length).toBe(11);
     expect(component.results[0]['highlighted']).toBeTruthy();
   }));
@@ -139,7 +139,7 @@ describe('SamAutocompleteComponent', () => {
     component.onKeydown(downEvent);
     tick();
     fixture.detectChanges()
-    const list = fixture.debugElement.query(By.css('.autocomplete-result'));
+    const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
     expect(list.nativeElement.children.length).toBe(11);
     expect(component.results[1]['highlighted']).toBeTruthy();
     const upEvent = {
@@ -156,7 +156,7 @@ describe('SamAutocompleteComponent', () => {
     component.inputFocusHandler();
     tick();
     fixture.detectChanges();
-    const list = fixture.debugElement.query(By.css('.autocomplete-result'));
+    const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
     expect(list.nativeElement.children.length).toBe(11);
     expect(component.results[0]['highlighted']).toBeTruthy();
     const upEvent = {
@@ -175,7 +175,7 @@ describe('SamAutocompleteComponent', () => {
     tick();
     fixture.detectChanges();
 
-    const list = fixture.debugElement.query(By.css('.autocomplete-result'));
+    const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
     expect(list.nativeElement.children.length).toBe(11);
     expect(component.results[0]['highlighted']).toBeTruthy();
     component.listItemHover(component.results.length - 1);
@@ -200,7 +200,7 @@ describe('SamAutocompleteComponent', () => {
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
-    const list = fixture.debugElement.query(By.css('.autocomplete-result'));
+    const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
     expect(list.nativeElement.children.length).toBe(11);
     expect(component.results[0]['highlighted']).toBeTruthy();
   }));
@@ -209,7 +209,7 @@ describe('SamAutocompleteComponent', () => {
     component.inputFocusHandler();
     tick();
     fixture.detectChanges();
-    const listBefore = fixture.debugElement.query(By.css('.autocomplete-result'));
+    const listBefore = fixture.debugElement.query(By.css('.sds-autocomplete'));
     expect(listBefore.nativeElement.children.length).toBe(11);
     const event = {
       "key": "Escape",
@@ -219,7 +219,7 @@ describe('SamAutocompleteComponent', () => {
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
-    const listAfter = fixture.debugElement.query(By.css('.autocomplete-result'));
+    const listAfter = fixture.debugElement.query(By.css('.sds-autocomplete'));
     expect(listAfter).toBeFalsy();
 
   }));
@@ -229,7 +229,7 @@ describe('SamAutocompleteComponent', () => {
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
-    const list = fixture.debugElement.query(By.css('.autocomplete-result'));
+    const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
     expect(list.nativeElement.children.length).toBe(11);
     expect(component.results[0]['highlighted']).toBeTruthy();
   }));
@@ -239,7 +239,7 @@ describe('SamAutocompleteComponent', () => {
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
-    const list = fixture.debugElement.query(By.css('.autocomplete-result'));
+    const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
     expect(list.nativeElement.children.length).toBe(11);
     expect(component.results[0]['highlighted']).toBeTruthy();
     const event = {
@@ -259,7 +259,7 @@ describe('SamAutocompleteComponent', () => {
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
-    const list = fixture.debugElement.query(By.css('.autocomplete-result'));
+    const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
     expect(list.nativeElement.children.length).toBe(11);
     component.listItemHover(10);
     fixture.detectChanges();
@@ -273,13 +273,13 @@ describe('SamAutocompleteComponent', () => {
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
-    const list = fixture.debugElement.query(By.css('.autocomplete-result'));
+    const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
     expect(list.nativeElement.children.length).toBe(11);
     component.clearInput();
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
-    const listAfter = fixture.debugElement.query(By.css('.autocomplete-result'));
+    const listAfter = fixture.debugElement.query(By.css('.sds-autocomplete'));
     expect(listAfter).toBeFalsy();
   }));
 
