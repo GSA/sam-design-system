@@ -1,6 +1,6 @@
 import { Component, Input, ViewChild, TemplateRef, ElementRef, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-import { SDSAutocomplteServiceInterface } from './models/SDSAutocomplteServiceInterface';
+import { SDSAutocompleteServiceInterface } from './models/SDSAutocompleteServiceInterface';
 import { KeyHelper, KEYS } from '../key-helper/key-helper';
 import { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';
 import { SelectionMode, SDSSelectedItemModelHelper } from '../selected-result/models/sds-selected-item-model-helper';
@@ -54,7 +54,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * Instance of the SamHiercarchicalServiceInterface provided
    */
   @Input()
-  public service: SDSAutocomplteServiceInterface;
+  public service: SDSAutocompleteServiceInterface;
 
   /**
    * Timer id for the timer awaiting the service call for more typeing
@@ -155,20 +155,19 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     }
   }
 
-
   textChange(event) {
     const searchString = event || '';
     this.getResults(searchString);
-  }
+ }
 
   /**
    * Event method used when focus is gained to the input
    */
   inputFocusHandler(): void {
     this.getResults(this.inputValue || '');
-    this.onTouchedCallback();
+    this.onTouchedCallback(); 
   }
-
+  
   /**
    * Key event
    * @param event 

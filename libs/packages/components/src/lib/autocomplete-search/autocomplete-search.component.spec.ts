@@ -69,11 +69,12 @@ describe('SamAutocompleteComponent', () => {
     expect(list.nativeElement.children.length).toBe(1);
     const emptyItem = fixture.debugElement.query(By.css('.emptyResults'));
     expect(emptyItem).toBeTruthy();
+
   }));
 
   it('Should have results with minimumCharacterCountSearch', fakeAsync(() => {
-
-    const event ='Level 7' 
+    
+    const event ='Level 7';
     component.configuration.minimumCharacterCountSearch = 3;
     component.textChange(event);
     fixture.detectChanges();
@@ -81,7 +82,6 @@ describe('SamAutocompleteComponent', () => {
     fixture.detectChanges();
     const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
     expect(list.nativeElement.children.length).toBe(3);
-
   }));
 
 

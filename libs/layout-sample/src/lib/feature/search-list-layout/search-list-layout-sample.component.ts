@@ -32,7 +32,7 @@ export class SearchListLayoutSampleComponent {
   fields: FormlyFieldConfig[] = [
     {
       key: 'searchKeyword',
-      wrappers: ['accordianwrapper'],
+      wrappers: ['accordionwrapper'],
       templateOptions: { label: 'Search by Keyword' },
       fieldGroup: [{
         key: 'keyword',
@@ -47,7 +47,7 @@ export class SearchListLayoutSampleComponent {
 
     {
       key: 'searchEntity',
-      wrappers: ['accordianwrapper'],
+      wrappers: ['accordionwrapper'],
       templateOptions: { label: 'Search by Entity' },
       fieldGroup: [
         {
@@ -98,7 +98,7 @@ export class SearchListLayoutSampleComponent {
     },
     {
       key: 'status',
-      wrappers: ['accordianwrapper'],
+      wrappers: ['accordionwrapper'],
       templateOptions: { label: 'Status' },
       fieldGroup: [
         {
@@ -129,7 +129,7 @@ export class SearchListLayoutSampleComponent {
     },
     {
       key: 'expirationDate',
-      wrappers: ['accordianwrapper'],
+      wrappers: ['accordionwrapper'],
       templateOptions: { label: 'Expiration Date' },
       fieldGroup: [
         {
@@ -148,7 +148,7 @@ export class SearchListLayoutSampleComponent {
     },
     {
       key: 'addressUpdate',
-      wrappers: ['accordianwrapper'],
+      wrappers: ['accordionwrapper'],
       templateOptions: { label: 'Address Update' },
       fieldGroup: [
         {
@@ -166,7 +166,7 @@ export class SearchListLayoutSampleComponent {
     },
     {
       key: 'entityType',
-      wrappers: ['accordianwrapper'],
+      wrappers: ['accordionwrapper'],
       templateOptions: { label: 'Entity Type' },
       fieldGroup: [
         {

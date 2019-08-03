@@ -1,9 +1,7 @@
 import { Component, ViewChild, AfterViewInit, ChangeDetectorRef, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { SideNavigationModel, NavigationMode } from '@gsa-sam/components'
-
-
-
+import { SideNavigationModel, NavigationMode, NavigationLink } from '@gsa-sam/components'
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'sds-side-navigation-sample',
@@ -12,40 +10,44 @@ import { SideNavigationModel, NavigationMode } from '@gsa-sam/components'
 
 export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
 
+
+  public pageHeader: string;
   public linkEvent = new BehaviorSubject<object>(null);
-
+  sideNavExpanded = true;
   ngOnInit() {
-
     this.linkEvent.subscribe(
       value => {
         console.log('Link Event Clicked Change');
         console.log(value);
       }
     );
+
+
   }
 
 
+
   @ViewChild('sideNav') sideNav;
-  constructor(private change: ChangeDetectorRef) { }
+  constructor(private change: ChangeDetectorRef, private activeRoute: ActivatedRoute) { }
   model: SideNavigationModel = {
     navigationLinks: [{
-      text: 'Parent 1', id: 'linkp1', route: '/', mode: NavigationMode.INTERNAL, children: [
-        { text: 'Child 1 of Parent 1', route: '/', id: 'linkc1p1', mode: NavigationMode.INTERNAL },
+      text: 'Parent 1', id: 'linkp1', route: '/component/sideNav', queryParams: { 'item': 'Parent 1' }, mode: NavigationMode.INTERNAL, children: [
+        { text: 'Child 1 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Child 1 of Parent 1' }, id: 'linkc1p1', mode: NavigationMode.INTERNAL },
         {
-          text: 'Child 2 of Parent 1', route: '/', id: 'linkc2p1', mode: NavigationMode.INTERNAL, children: [
-            { text: 'Grandchild 1 of Child 2 of Parent 1', route: '/', id: 'linkgc1c2p1', mode: NavigationMode.INTERNAL }]
+          text: 'Child 2 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Child 2 of Parent 1' }, id: 'linkc2p1', mode: NavigationMode.INTERNAL, children: [
+            { text: 'Grandchild 1 of Child 2 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Grandchild 1 of Child 2 of Parent 1' }, id: 'linkgc1c2p1', mode: NavigationMode.INTERNAL }]
         },
-        { text: 'Child 3 of Parent 1', route: '/', id: 'linkc3p1', mode: NavigationMode.INTERNAL },
+        { text: 'Child 3 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Child 3 of Parent 1' }, id: 'linkc3p1', mode: NavigationMode.INTERNAL },
         {
-          text: 'Child 4 of Parent 1', route: '/', id: 'linkc4p1', mode: NavigationMode.INTERNAL
+          text: 'Child 4 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Child 4 of Parent 1' }, id: 'linkc4p1', mode: NavigationMode.INTERNAL
           , children: [
-            { text: 'Grandchild 1 of Child 4 of Parent 1', route: '/', id: 'linkgc1c4p1', mode: NavigationMode.INTERNAL },
+            { text: 'Grandchild 1 of Child 4 of Parent 1', queryParams: { 'item': 'Grandchild 1 of Child 4 of Parent 1' }, route: '/component/sideNav', id: 'linkgc1c4p1', mode: NavigationMode.INTERNAL },
             {
-              text: 'Grandchild 2 of Child 4 of Parent 1', route: '/', id: 'linkgc2c4p1', mode: NavigationMode.INTERNAL,
+              text: 'Grandchild 2 of Child 4 of Parent 1', queryParams: { 'item': 'Grandchild 2 of Child 4 of Parent 1' }, route: '/component/sideNav', id: 'linkgc2c4p1', mode: NavigationMode.INTERNAL,
               children: [
-                { text: ' Great 1 of Grandchild 2 of Child 4 of Parent 1', route: '/', id: 'linkg1gc1c4p1', mode: NavigationMode.INTERNAL },
+                { text: ' Great 1 of Grandchild 2 of Child 4 of Parent 1', queryParams: { 'item': 'Great 1 of Grandchild 2 of Child 4 of Parent 1' }, route: '/component/sideNav', id: 'linkg1gc1c4p1', mode: NavigationMode.INTERNAL },
                 {
-                  text: 'Great 2 of Grandchild 2 of Child 4 of Parent 1', route: '/', id: 'linkg2gc1c4p1', mode: NavigationMode.INTERNAL
+                  text: 'Great 2 of Grandchild 2 of Child 4 of Parent 1', queryParams: { 'item': 'Great 2 of Grandchild 2 of Child 4 of Parent 1' }, route: '/component/sideNav', id: 'linkg2gc1c4p1', mode: NavigationMode.INTERNAL
                   //, children: [{ text: 'Great 1 of  Great 1 of Grandchild 2 of Child 4 of Parent 1', route: '/', id: 'linkg1gc1c4p1' }]
                 },
               ]
@@ -55,7 +57,7 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
       ]
     },
     {
-      text: 'Parent 2', id: 'linkp2', route: '/', mode: NavigationMode.INTERNAL, children: [
+      text: 'Parent 2', id: 'linkp2', route: '/', mode: NavigationMode.LABEL, children: [
         {
           text: 'Child 1 of Parent 2', route: '/', id: 'linkc1p2', mode: NavigationMode.INTERNAL, children: [
 
@@ -69,6 +71,20 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
     }
     ]
   };
+  private findItemByQueryString(linkList: NavigationLink[]) {
+    for (let i = 0; i < linkList.length; i++) {
+      let item = linkList[i];
+      if (item.text.trim() === this.pageHeader.trim()) {
+        this.selectedId = item.id;
+      }
+      else {
+        if (item.children && item.children.length !== 0) {
+          this.findItemByQueryString(item.children)
+        }
+      }
+    }
+  }
+
   onSelectChange() {
     this.sideNav.select(this.selectedId);
   }
@@ -83,6 +99,19 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
     }
     this.sideNav.select(this.selectedId);
     this.change.detectChanges();
+
+    this.activeRoute.queryParams.subscribe(queryParams => {
+      if (queryParams.item) {
+        this.pageHeader = queryParams.item;
+        if (this.model.navigationLinks) {
+          this.findItemByQueryString(this.model.navigationLinks);
+          this.sideNav.select(this.selectedId);
+        }
+      } else {
+        this.pageHeader = 'Unknown';
+      }
+      this.change.detectChanges();
+    });
   }
 
   addToOptions(item: any) {
