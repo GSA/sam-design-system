@@ -6,10 +6,8 @@ import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
-  imports: [
-    CommonModule, FormsModule, RouterModule, FontAwesomeModule
-  ],
+  imports: [CommonModule, FormsModule, RouterModule, FontAwesomeModule],
   declarations: [SDSSelectedResultComponent],
   exports: [SDSSelectedResultComponent]
 })
-export class SdsSelectedResultsModule { }
+export class SdsSelectedResultsModule {}

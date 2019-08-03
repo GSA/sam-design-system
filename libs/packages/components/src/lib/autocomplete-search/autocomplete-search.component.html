@@ -4,9 +4,10 @@
       (keydown)="onKeydown($event)" [(ngModel)]="inputValue" autocomplete="off" role="combobox" aria-autocomplete="list"
        aria-expanded="false" aria-haspopup="true" [attr.aria-owns]="configuration.id+ '-listbox'" [attr.placeholder]="configuration.autocompletePlaceHolderText">
     <ng-container *ngIf="!input.disabled">
-      <span class="close">
-        <span role="button" class="fa fa-close" aria-label="Clear input" aria-hidden="false" (click)="clearInput()"
+      <span class="position-absolute right-105 top-1">
+        <span role="button" aria-label="Clear input" aria-hidden="false" (click)="clearInput()"
           (keyup.enter)="clearInput()">
+	  <fa-icon [icon]="['fas', 'times']" size="xs"></fa-icon> 
         </span>
       </span>
     </ng-container>
