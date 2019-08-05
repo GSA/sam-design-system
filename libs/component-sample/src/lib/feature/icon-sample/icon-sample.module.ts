@@ -6,6 +6,6 @@ import { IconSampleComponent } from './icon-sample.component';
   imports: [FontAwesomeModule],
   exports: [IconSampleComponent],
   declarations: [IconSampleComponent],
-  providers: [],
+  providers: []
 })
-export class IconSampleModule { }
+export class IconSampleModule {}

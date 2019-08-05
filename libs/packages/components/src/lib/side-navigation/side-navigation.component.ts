@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, TemplateRef } from '@angular/core';
 import { SideNavigationModel, NavigationLink } from './model/side-navigation-model';
 import { INavigationLink, NavigationMode } from '../common-navigation/common-navigation-model';
 import { NavigationHelper } from '../common-navigation/navigation-helper';
@@ -9,6 +9,56 @@ import { NavigationHelper } from '../common-navigation/navigation-helper';
   styleUrls: ['./side-navigation.component.scss']
 })
 export class SdsSideNavigationComponent {
+
+  /**
+   * Reference to the the Template used for internal links
+   */
+  @ViewChild('sideNavRouteLinkTemplate')
+  private sideNavRouteLinkTemplate: TemplateRef<any>;
+
+  /**
+   * Reference to the the Template used for side menu items that are a label
+   */
+  @ViewChild('sideNavLabelLinkTemplate')
+  private sideNavLabelLinkTemplate: TemplateRef<any>;
+
+  /**
+   * Reference to the the Template used for external href 
+   */
+  @ViewChild('sideNavHREFLinkTemplate')
+  private sideNavHREFLinkTemplate: TemplateRef<any>;
+
+  /**
+   * Reference to the the Template used for event response
+   */
+  @ViewChild('sideNavEVENTLinkTemplate')
+  private sideNavEVENTLinkTemplate: TemplateRef<any>;
+
+  /**
+   * Takes the navigation item and returns the template to be used
+   * @param item navigation item
+   */
+  getItemTemplate(item: NavigationLink): TemplateRef<any> {
+    let template = null;
+    switch (item.mode) {
+      case NavigationMode.EVENT:
+        template = this.sideNavEVENTLinkTemplate;
+        break;
+      case NavigationMode.EXTERNAL:
+        template = this.sideNavHREFLinkTemplate;
+        break;
+      case NavigationMode.INTERNAL:
+        template = this.sideNavRouteLinkTemplate;
+        break;
+      case NavigationMode.LABEL:
+        template = this.sideNavLabelLinkTemplate;
+        break;
+      default:
+        template = null;
+        break;
+    }
+    return template;
+  }
 
   /**
    * Navigation helper
@@ -102,4 +152,34 @@ export class SdsSideNavigationComponent {
     return false;
   }
 
+  /**
+   * creates url from provided route and query params
+   * @param item 
+   */
+  urlBuilder(item: NavigationLink) {
+    let url = item.route;
+    let queryParams = this.queryStringBuilder(item);
+    if (queryParams) {
+      if (url.indexOf('?') === -1) {
+        url += '?' + queryParams;
+      } else if (url.indexOf('?') === url.length - 1) {
+        url += queryParams;
+      } else {
+        url += '&' + queryParams;
+      }
+    }
+    return url;
+  }
+
+  /**
+   * creates query string
+   * @param item 
+   */
+  private queryStringBuilder(item: NavigationLink) {
+    const ret = [];
+    for (let d in item.queryParams) {
+      ret.push(encodeURIComponent(d) + '=' + encodeURIComponent(item.queryParams[d]));
+    }
+    return ret.join('&');
+  }
 }
