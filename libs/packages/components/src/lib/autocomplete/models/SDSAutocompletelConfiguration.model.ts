@@ -7,7 +7,7 @@ export class SDSAutocompletelConfiguration implements SDSSelectedResultConfigura
      * sets the default debounce time to 250 milliseconds 
      */
   constructor() {
-    this.debounceTime = 250;
+    this.debounceTime = 100;
     this.minimumCharacterCountSearch = 0;
   }
 

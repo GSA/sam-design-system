@@ -1,5 +1,28 @@
 # Changelog
 
+## v0.5.5 (08/08/2019)
+
+#### closed
+
+- [**closed**] styles update [#70](https://github.com/GSA/sam-design-system/pull/70)
+- [**closed**] styles version update [#69](https://github.com/GSA/sam-design-system/pull/69)
+- [**closed**] Fix build [#68](https://github.com/GSA/sam-design-system/pull/68)
+- [**closed**] Filter [#62](https://github.com/GSA/sam-design-system/pull/62)
+- [**closed**] Remove autocomplete styles [#65](https://github.com/GSA/sam-design-system/pull/65)
+- [**closed**] Autocomplete results icon [#64](https://github.com/GSA/sam-design-system/pull/64)
+- [**closed**] fixing spelling issue and update test coverage  [#61](https://github.com/GSA/sam-design-system/pull/61)
+- [**closed**] IAE-21640 side navigation enhancement [#57](https://github.com/GSA/sam-design-system/pull/57)
+- [**closed**] Filter auto [#59](https://github.com/GSA/sam-design-system/pull/59)
+- [**closed**] Fix autocomplete styles [#63](https://github.com/GSA/sam-design-system/pull/63)
+- [**closed**] Iae 21853 [#60](https://github.com/GSA/sam-design-system/pull/60)
+- [**closed**] Formly Filter wrapper added [#53](https://github.com/GSA/sam-design-system/pull/53)
+- [**closed**] PR for Filter wrap example added to design system [#56](https://github.com/GSA/sam-design-system/pull/56)
+- [**closed**] Add dialog component and sample page [#55](https://github.com/GSA/sam-design-system/pull/55)
+- [**closed**] Move Icon library to sam-styles [#54](https://github.com/GSA/sam-design-system/pull/54)
+- [**closed**] IAE-21644 Autocomplete Component  [#28](https://github.com/GSA/sam-design-system/pull/28)
+
+---
+
 ## v0.5.4 (11/07/2019)
 
 #### closed
