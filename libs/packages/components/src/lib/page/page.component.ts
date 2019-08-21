@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'sds-page',
   template: `
-    <div class="grid-container"><ng-content></ng-content></div>
+    <div class="grid-container padding-0"><ng-content></ng-content></div>
   `
 })
 export class SdsPageComponent implements OnInit {
