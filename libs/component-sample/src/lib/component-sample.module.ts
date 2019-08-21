@@ -73,6 +73,6 @@ export const ROUTES: Routes = [
 })
 export class ComponentSampleModule {
   constructor() {
-    library.add(fas, sds);
+    library.add(fas);
   }
 }

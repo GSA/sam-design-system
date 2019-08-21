@@ -1,7 +1,9 @@
 <div *ngFor="let item of model">
+    <hr *ngIf="divider" />
     <ng-container *ngTemplateOutlet="resultContentTemplate,
                    context: { $implicit: item }"></ng-container>
 </div>
+<hr *ngIf="divider" />
 <div *ngIf="!model|| model.length===0">
     No results found
 </div>
