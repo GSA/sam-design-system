@@ -7,9 +7,14 @@ import { Component, Input, ContentChild, TemplateRef } from '@angular/core';
 export class SdsSearchResultListComponent {
 
   /**
-   * List of items 
+   * List of items
    */
   @Input() model: any[];
+
+  /**
+   * List of items
+   */
+  @Input() divider = true;
 
   /**
    * Child Template to be used to display the data for each item in the list of items

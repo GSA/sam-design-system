@@ -61,7 +61,7 @@ export const ROUTES: Routes = [
     SideNavigationSampleModule,
     SideMenuFiltersSampleModule,
     SearchResultListSampleModule,
-    SubheaderSampleModule, 
+    SubheaderSampleModule,
     AutocompleteSampleModule,
     DialogSampleModule
   ],
@@ -69,6 +69,6 @@ export const ROUTES: Routes = [
 })
 export class ComponentSampleModule {
   constructor() {
-    library.add(fas, sds);
+    library.add(fas);
   }
 }

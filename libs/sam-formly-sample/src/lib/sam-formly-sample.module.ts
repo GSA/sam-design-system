@@ -32,6 +32,6 @@ export const ROUTES: Routes = [
 })
 export class SamFormlySampleModule {
   constructor() {
-    library.add(fas, sds);
+    library.add(fas);
   }
 }
