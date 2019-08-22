@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, TemplateRef, ElementRef, forwardRef } from '@angular/core';
+import { Component, Input, ViewChild, TemplateRef, ElementRef, forwardRef, ChangeDetectorRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { SDSAutocompleteServiceInterface } from './models/SDSAutocompleteServiceInterface';
 import { KeyHelper, KEYS } from '../key-helper/key-helper';
@@ -19,6 +19,7 @@ const Autocomplete_Autocomplete_VALUE_ACCESSOR: any = {
 })
 export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
 
+  constructor(private _changeDetectorRef: ChangeDetectorRef) {}
   /**
    * Ul list of elements 
    */
@@ -262,7 +263,8 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
               this.highlightedIndex = 0;
               this.setHighlightedItem(this.results[this.highlightedIndex]);
               this.showResults = true;
-              this.addScreenReaderMessage(this.maxResults + ' ' + this.resultsAvailableMessage)
+              this.addScreenReaderMessage(this.maxResults + ' ' + this.resultsAvailableMessage);
+              this._changeDetectorRef.markForCheck();
             });
         }, this.configuration.debounceTime);
       }
