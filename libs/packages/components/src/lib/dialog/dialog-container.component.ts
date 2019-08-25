@@ -39,14 +39,19 @@ export function throwSdsDialogContentAlreadyAttachedError() {
  */
 @Component({
   selector: 'sds-dialog-container',
-  template: `<ng-template cdkPortalOutlet></ng-template>`,
+  templateUrl: 'dialog-container.component.html',
   encapsulation: ViewEncapsulation.None,
   // Using OnPush for dialogs caused some G3 sync issues. Disabled until we can track them down.
   // tslint:disable-next-line:validate-decorators
   changeDetection: ChangeDetectionStrategy.Default,
   animations: [sdsDialogAnimations.dialogContainer],
+  // tslint:disable-next-line: use-host-property-decorator
   host: {
     'class': 'sds-dialog__container',
+    '[class.sds-dialog--alert]': '_config.alert',
+    '[class.sds-dialog--alert-error]':'_config.alert === "error"',
+    '[class.sds-dialog--alert-warning]':'_config.alert === "warning"',
+    '[class.sds-dialog--alert-info]':'_config.alert === "info"',
     'tabindex': '-1',
     'aria-modal': 'true',
     '[attr.id]': '_id',

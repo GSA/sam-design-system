@@ -103,4 +103,8 @@ export class SdsDialogConfig<D = any> {
    */
   closeOnNavigation? = true;
 
+  /**
+   * Wheter the dialog its an alert
+   */
+  alert?: 'warning' | 'info' | 'error';
 }

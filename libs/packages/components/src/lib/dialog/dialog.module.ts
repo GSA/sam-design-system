@@ -2,21 +2,27 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { SDS_DIALOG_SCROLL_STRATEGY_PROVIDER, SdsDialogService } from './dialog';
+import {
+  SDS_DIALOG_SCROLL_STRATEGY_PROVIDER,
+  SdsDialogService
+} from './dialog';
 import { SdsDialogContainerComponent } from './dialog-container.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   SdsDialogActionsDirective,
   SdsDialogCloseDirective,
   SdsDialogContentDirective,
-  SdsDialogTitleDirective
+  SdsDialogTitleDirective,
+  SdsDialogSubtitleDirective
 } from './dialog-content.directives';
 
 @NgModule({
-  imports: [CommonModule, OverlayModule, PortalModule],
+  imports: [CommonModule, OverlayModule, PortalModule, FontAwesomeModule],
   exports: [
     SdsDialogContainerComponent,
     SdsDialogCloseDirective,
     SdsDialogTitleDirective,
+    SdsDialogSubtitleDirective,
     SdsDialogContentDirective,
     SdsDialogActionsDirective
   ],
@@ -24,6 +30,7 @@ import {
     SdsDialogContainerComponent,
     SdsDialogCloseDirective,
     SdsDialogTitleDirective,
+    SdsDialogSubtitleDirective,
     SdsDialogActionsDirective,
     SdsDialogContentDirective
   ],
