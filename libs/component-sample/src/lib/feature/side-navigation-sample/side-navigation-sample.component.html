@@ -23,5 +23,8 @@
         <h1>{{pageHeader}}</h1>
       </div>
     </div>
+    <div class="grid-row">
+      <sds-footer [model]="modelFooter" (linkEvent)="linkEvent.next($event)"></sds-footer>
+    </div>
   </sds-page-options>
 </sds-page>
