@@ -1,7 +1,13 @@
-<sds-toolbar #toolbar="sdsToolbar">
-    <sds-filters [form]="form" [fields]="fields" [model]="model" (filterChange)="filterChange$.next($event)"></sds-filters> 
-</sds-toolbar>
-<div class="sam-example-pagination" [sdsToolbarExpand]="toolbar">
-    <h4>Filter Model:</h4>
-    <pre>{{results ? (results |json) : ''}}</pre>
+<div class="grid-row">
+  <div class="tablet:grid-col-auto">
+    <sds-toolbar #toolbar="sdsToolbar">
+      <sds-filters [form]="form" [fields]="fields" [model]="model" (filterChange)="filterChange$.next($event)"></sds-filters>
+    </sds-toolbar>
+  </div>
+  <div class="tablet:grid-col padding-left-2">
+    <div class="sam-example-pagination" [sdsToolbarExpand]="toolbar">
+      <h4>Filter Model:</h4>
+      <pre>{{results ? (results |json) : ''}}</pre>
+    </div>
+  </div>
 </div>
