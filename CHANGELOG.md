@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.5.6 (26/08/2019)
+
+#### closed
+
+- [**closed**] Update dialog component to support alerts UI [#77](https://github.com/GSA/sam-design-system/pull/77)
+- [**closed**] Ignore vscode editor files [#76](https://github.com/GSA/sam-design-system/pull/76)
+- [**closed**] IAE-22724 debounce time issue for formly autocomplete [#74](https://github.com/GSA/sam-design-system/pull/74)
+- [**closed**] hide top banner [#75](https://github.com/GSA/sam-design-system/pull/75)
+- [**closed**] Update sam-styles to 0.0.26 [#72](https://github.com/GSA/sam-design-system/pull/72)
+
+---
+
 ## v0.5.5 (08/08/2019)
 
 #### closed

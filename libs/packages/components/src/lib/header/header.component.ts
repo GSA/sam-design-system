@@ -15,6 +15,11 @@ export class SdsHeaderComponent {
   navigationHelper = new NavigationHelper();
 
   /**
+   * determines if the top banner is shown
+   */
+  @Input() showTopBanner: boolean = true;
+
+  /**
    * Model used for the different display portions of the header 
    */
   @Input() model: HeaderModel;

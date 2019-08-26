@@ -25,7 +25,7 @@ export class FormlyInputComponent implements OnInit {
   public autoCompleteSingleSelectSettings = new SDSAutocompletelConfiguration();
 
   public autoCompleteMultiSelectSettings = new SDSAutocompletelConfiguration();
-  public aautoCompleteMultiSelectModel = new SDSSelectedItemModel();
+  public autoCompleteMultiSelectModel = new SDSSelectedItemModel();
 
   public autoCompleteDisableSettings = new SDSAutocompletelConfiguration();
   public autoCompleteDisableModel = new SDSSelectedItemModel();
@@ -45,6 +45,7 @@ export class FormlyInputComponent implements OnInit {
         type: 'autocomplete',
         templateOptions: {
           label: 'Auto Complete',
+          hideLabel: true,
           service: this.service,
           configuration: this.settings,
           model: this.autocompleteModel,
@@ -78,7 +79,7 @@ export class FormlyInputComponent implements OnInit {
             label: 'Auto Complete with multiselect',
             service: this.service,
             configuration: this.autoCompleteMultiSelectSettings,
-            model: this.aautoCompleteMultiSelectModel,
+            model: this.autoCompleteMultiSelectModel,
             modelChange: this.changes
           },
         },
@@ -118,7 +119,7 @@ export class FormlyInputComponent implements OnInit {
     this.settings.labelText = 'Autocomplete 1';
     this.settings.selectionMode = SelectionMode.MULTIPLE;
     this.settings.autocompletePlaceHolderText = 'Enter text';
-    this.settings.debounceTime = 0;
+    this.settings.debounceTime = 350;
 
 
     this.autoCompleteSingleSelectSettings.id = 'autocomplete1';
@@ -128,8 +129,7 @@ export class FormlyInputComponent implements OnInit {
     this.autoCompleteSingleSelectSettings.labelText = 'Autocomplete 1';
     this.autoCompleteSingleSelectSettings.selectionMode = SelectionMode.SINGLE;
     this.autoCompleteSingleSelectSettings.autocompletePlaceHolderText = 'Enter text';
-    this.autoCompleteSingleSelectSettings.debounceTime = 0;
-
+  
     this.autoCompleteMultiSelectSettings.id = 'autocomplete1';
     this.autoCompleteMultiSelectSettings.primaryKeyField = 'id';
     this.autoCompleteMultiSelectSettings.primaryTextField = 'name';
@@ -137,8 +137,7 @@ export class FormlyInputComponent implements OnInit {
     this.autoCompleteMultiSelectSettings.labelText = 'Autocomplete 1';
     this.autoCompleteMultiSelectSettings.selectionMode = SelectionMode.MULTIPLE;
     this.autoCompleteMultiSelectSettings.autocompletePlaceHolderText = 'Enter text';
-    this.autoCompleteMultiSelectSettings.debounceTime = 0;
-
+  
 
     this.autoCompleteDisableSettings.id = 'autocomplete1';
     this.autoCompleteDisableSettings.primaryKeyField = 'id';
@@ -149,7 +148,7 @@ export class FormlyInputComponent implements OnInit {
     this.autoCompleteDisableSettings.autocompletePlaceHolderText = 'Enter text';
     this.autoCompleteDisableSettings.debounceTime = 0;
 
-    this.autoCompleteDisableModel = this.head(this.data)
+    this.autoCompleteDisableModel.items.push(this.head(this.data))
   }
 
    head(array) {

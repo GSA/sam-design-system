@@ -110,6 +110,28 @@ export class SdsDialogService implements OnDestroy {
   open<T, D = any, R = any>(componentOrTemplateRef: ComponentType<T> | TemplateRef<T>,
           config?: SdsDialogConfig<D>): SdsDialogRef<T, R> {
 
+    // Convenience widths names: small | medium | large
+    // added to help with standardization
+    if (config && config.width) {
+      switch (config.width) {
+        case 'small': {
+          config.width = '370px';
+          break;
+        }
+        case 'medium': {
+          config.width = '730px';
+          break;
+        }
+        case 'large': {
+          config.width = '960px';
+          break;
+        }
+        default: {
+          break;
+        }
+      }
+    }
+
     config = _applyConfigDefaults(config, this._defaultOptions || new SdsDialogConfig());
 
     if (config.id && this.getDialogById(config.id)) {

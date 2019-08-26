@@ -5,7 +5,9 @@ import { SdsDialogModule } from '@gsa-sam/components';
 import {
   DialogSampleComponent,
   DialogOverviewExampleDialog,
-  DialogOverviewExample2Dialog
+  NestedDialogComponent,
+  AlertComponent,
+  OfficialComponent
 } from './dialog-sample.component';
 
 @NgModule({
@@ -14,8 +16,15 @@ import {
   declarations: [
     DialogSampleComponent,
     DialogOverviewExampleDialog,
-    DialogOverviewExample2Dialog
+    NestedDialogComponent,
+    AlertComponent,
+    OfficialComponent
   ],
-  entryComponents: [DialogOverviewExampleDialog, DialogOverviewExample2Dialog]
+  entryComponents: [
+    DialogOverviewExampleDialog,
+    NestedDialogComponent,
+    AlertComponent,
+    OfficialComponent
+  ]
 })
 export class DialogSampleModule {}
