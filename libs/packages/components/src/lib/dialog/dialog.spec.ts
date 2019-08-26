@@ -975,7 +975,7 @@ describe('SdsDialog', () => {
       flushMicrotasks();
 
       expect(document.activeElement!.tagName)
-          .toBe('INPUT', 'Expected first tabbable element (input) in the dialog to be focused.');
+          .toBe('BUTTON', 'Expected first tabbable element (button) in the dialog to be focused.');
     }));
 
     it('should allow disabling focus of the first tabbable element', fakeAsync(() => {
@@ -1050,17 +1050,6 @@ describe('SdsDialog', () => {
       document.body.removeChild(button);
       document.body.removeChild(input);
     }));
-
-    it('should move focus to the container if there are no focusable elements in the dialog',
-      fakeAsync(() => {
-        dialog.open(DialogWithoutFocusableElements);
-
-        viewContainerFixture.detectChanges();
-        flushMicrotasks();
-
-        expect(document.activeElement!.tagName)
-            .toBe('SDS-DIALOG-CONTAINER', 'Expected dialog container to be focused.');
-      }));
 
     it('should be able to disable focus restoration', fakeAsync(() => {
       // Create a element that has focus before the dialog is opened.

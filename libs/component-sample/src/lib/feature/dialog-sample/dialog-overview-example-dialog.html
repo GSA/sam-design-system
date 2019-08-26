@@ -1,9 +1,22 @@
-<strong sds-dialog-title>Hello {{data.name}}</strong>
+<div sds-dialog-title>Save Entity as Draft?</div>
+<div sds-dialog-subtitle>
+  {{ data.name }} Do you want to save the entity as draft?
+</div>
 <div sds-dialog-content>
-  <p>What's your favorite animal?</p>
-  <input [(ngModel)]="data.animal">
+  <label class="usa-label" for="input-type-text">Entity Name</label>
+  <input
+    class="usa-input"
+    [(ngModel)]="data.animal"
+    id="input-type-text"
+    name="input-type-text"
+    type="text"
+  />
 </div>
 <div sds-dialog-actions>
-  <button (click)="onNoClick()">No Thanks</button>
-  <button [sds-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+  <button class="usa-button usa-button--base" (click)="onNoClick()">
+    Cancel
+  </button>
+  <button class="usa-button" [sds-dialog-close]="data.animal" cdkFocusInitial>
+    Save
+  </button>
 </div>
