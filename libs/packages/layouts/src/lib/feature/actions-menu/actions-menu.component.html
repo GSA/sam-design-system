@@ -1,0 +1,34 @@
+<!-- Button that triggers menu (sdsMenuTriggerFor) -->
+<button
+  class="usa-button usa-button--primary sds-button--circle"
+  [sdsMenuTriggerFor]="menu"
+>
+  <fa-icon [fixedWidth]="true" [icon]="['fas', 'ellipsis-v']"></fa-icon>
+  <span class="usa-sr-only">Toggle Actions Menu</span>
+</button>
+
+<!-- Menu content -->
+<sds-menu #menu="sdsMenu" xPosition="before" overlapTrigger="true">
+  <!-- Menu header (optional) -->
+  <sds-menu-header>Actions</sds-menu-header>
+  <!-- Menu items -->
+  <button
+    *ngFor="let button of model"
+    (click)="clicks.emit(button.id)"
+    sds-menu-item
+  >
+    <fa-layers [fixedWidth]="true" size="2x">
+      <fa-icon
+        [icon]="['fas', 'circle']"
+        transform="left-3"
+        class="text-base-lighter"
+      ></fa-icon>
+      <fa-icon
+        [icon]="['sds', button.icon]"
+        transform="shrink-8 left-3"
+        class="text-base"
+      ></fa-icon>
+    </fa-layers>
+    {{ button.text }}
+  </button>
+</sds-menu>

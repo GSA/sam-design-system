@@ -30,6 +30,8 @@ import { AutocompleteSampleModule } from './feature/autocomplete/autocomplete-sa
 import { AutocompleteSampleComponent } from './feature/autocomplete/autocomplete-sample.component';
 import { DialogSampleModule } from './feature/dialog-sample/dialog-sample.module';
 import { DialogSampleComponent } from './feature/dialog-sample/dialog-sample.component';
+import { ActionsMenuSampleComponent } from './feature/actions-menu-sample/actions-menu-sample.component';
+import { ActionsMenuSampleModule } from './feature/actions-menu-sample/actions-menu-sample.module';
 
 export const ROUTES: Routes = [
   { path: 'header', component: HeaderSampleComponent },
@@ -42,7 +44,8 @@ export const ROUTES: Routes = [
   { path: 'searchResultList', component: SearchResultListSampleComponent },
   { path: 'subheader', component: SubheaderSampleComponent },
   { path: 'autocomplete', component: AutocompleteSampleComponent },
-  { path: 'dialog', component: DialogSampleComponent }
+  { path: 'dialog', component: DialogSampleComponent },
+  { path: 'actions-menu', component: ActionsMenuSampleComponent}
 ];
 
 @NgModule({
@@ -61,9 +64,10 @@ export const ROUTES: Routes = [
     SideNavigationSampleModule,
     SideMenuFiltersSampleModule,
     SearchResultListSampleModule,
-    SubheaderSampleModule, 
+    SubheaderSampleModule,
     AutocompleteSampleModule,
-    DialogSampleModule
+    DialogSampleModule,
+    ActionsMenuSampleModule
   ],
   exports: [RouterModule]
 })
