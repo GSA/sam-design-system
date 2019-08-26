@@ -24,6 +24,6 @@ export const ROUTES: Routes = [
 })
 export class LayoutSampleModule {
   constructor() {
-    library.add(fas);
+    library.add(fas, sds);
   }
 }
