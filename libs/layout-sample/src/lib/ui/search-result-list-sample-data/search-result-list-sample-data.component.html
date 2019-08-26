@@ -3,16 +3,14 @@
   <!-- Item Heading -->
   <div class="grid-row">
     <div class="grid-col">
-      <div class="usa-link-wrapper padding-0">
-        <h2 class="margin-y-1">
-          <a href="#">
-            {{model.text}} Entity: {{model.id}}
-          </a>
-          <div class="action-menu-wrapper mobile-lg:display-block float-right">
-              <div class="action-menu-placeholder"><fa-icon [icon]="['fas', 'ellipsis-v']" size="1x"></fa-icon></div>
-          </div>
-        </h2>
-      </div>
+      <h2 class="margin-y-1">
+        <a class="usa-link" href="#">
+          {{model.text}} Entity: {{model.id}}
+        </a>
+        <div class="action-menu-wrapper mobile-lg:display-block float-right">
+            <div class="action-menu-placeholder"><fa-icon [icon]="['fas', 'ellipsis-v']" size="1x"></fa-icon></div>
+        </div>
+      </h2>
     </div>
   </div>
 
@@ -111,7 +109,7 @@
               <div class="grid-col">
                 <div class="grid-row">
                   <div class="grid-col-auto">
-                    <label class="usa-static--label">CAGE/NCAGE</label>
+                    <label class="usa-static--label">CAGE/NCAGE:</label>
                   </div>
                   <div class="grid-col-fill">
                     <p class="usa-static">0D203</p>
@@ -190,8 +188,8 @@
                 <div class="grid-row">
                   <div class="grid-col-fill">
                     <div class="sds-alert padding-05">
-                      <div class="warning-icon-placeholder">
-                        <fa-icon [icon]="['fas', 'exclamation']" size="1x"></fa-icon>
+                      <div class="warning-icon-placeholder sds-alert">
+                        <fa-icon [icon]="['sds', 'exclamation']" size="3x"></fa-icon>
                       </div>
                       <div class="sds-alert-content">
                         <p class="usa-static text-italic">Address Needs to be Updated</p>
