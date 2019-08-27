@@ -13,6 +13,7 @@ import {
   SdsSubheaderSearchComponent,
   SdsSubheaderButtonsComponent
 } from './subheader.component';
+import { SdsActionsMenuModule } from '../actions-menu/actions-menu.module';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import {
     SdsMenuModule,
     SdsObserversModule,
     SdsSearchModule,
-    SdsTruncateModule
+    SdsTruncateModule,
+    SdsActionsMenuModule
   ],
   exports: [
     SdsSubheaderComponent,

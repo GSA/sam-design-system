@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: 'subheader-sample.component.html'
 })
 export class SubheaderSampleComponent {
-  
+
   subheader = {
     buttons: [
       { id: 'FirstButton', text: 'Button', class: 'usa-button--secondary' },
