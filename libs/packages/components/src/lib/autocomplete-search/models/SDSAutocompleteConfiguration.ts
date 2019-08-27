@@ -50,9 +50,18 @@ export class SDSAutocompleteSearchConfiguration {
    */
   public minimumCharacterCountSearch: number;
 
-    /**
-     * Mode of the model either allows a single item or multiple items
-     */
-    public selectionMode:SelectionMode = SelectionMode.SINGLE;
+  /**
+   * Mode of the model either allows a single item or multiple items
+   */
+  public selectionMode: SelectionMode = SelectionMode.SINGLE;
 
+  /**
+   * Allows option to allow user text not in the standard results
+   */
+  public isFreeTextEnabled: boolean = false;
+
+  /**
+   * Text appeneded ad the end of free text
+   */
+  public freeTextSubtext: string = 'search';
 }
