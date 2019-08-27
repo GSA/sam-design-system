@@ -1,13 +1,14 @@
+<hr />
 <div class="result-item-wrapper">
 
   <!-- Item Heading -->
-  <div class="grid-row">
+  <div class="grid-row grid-gap">
     <div class="grid-col">
       <h2 class="margin-y-1">
         <a class="usa-link" href="#">
           {{model.text}} Entity: {{model.id}}
         </a>
-        <div class="action-menu-wrapper mobile-lg:display-block float-right">
+        <div class="action-menu-wrapper float-right">
             <div class="action-menu-placeholder"><fa-icon [icon]="['fas', 'ellipsis-v']" size="1x"></fa-icon></div>
         </div>
       </h2>
@@ -125,7 +126,7 @@
     </div>
 
     <!-- 2nd column -->
-    <div class="tablet:grid-col-5 grid-col-12">
+    <div class="tablet:grid-col-4 grid-col-12">
       <!-- Field Width -->
       <div class="grid-row">
 
@@ -144,7 +145,7 @@
                     <label class="usa-static--label">Purpose of Registration:</label>
                   </div>
                   <div class="grid-col-fill">
-                    <p class="usa-static">Federal Assistance Awards</p>
+                    <p class="usa-static">Federal Assistance Awards & IGT</p>
                   </div>
                 </div>
               </div>
@@ -187,12 +188,12 @@
               <div class="grid-col">
                 <div class="grid-row">
                   <div class="grid-col-fill">
-                    <div class="sds-alert padding-05">
+                    <div class="sds-alert margin-right-1 padding-05">
                       <div class="warning-icon-placeholder sds-alert">
                         <fa-icon [icon]="['sds', 'exclamation']" size="3x"></fa-icon>
                       </div>
                       <div class="sds-alert-content">
-                        <p class="usa-static text-italic">Address Needs to be Updated</p>
+                        <p class="usa-static text-italic">Address Update Available</p>
                         <span class="usa-static">
                           <div>123456 George Washington Boulevard, Suite 4a</div>
                           <div>Ashburn, VA 20147 United States</div>
@@ -210,41 +211,66 @@
       </div>
     </div>
 
-    <div class="tablet:grid-col-2 grid-col-12">
+    <div class="tablet:grid-col-4 grid-col-12">
+
       <!-- Horizontal Config -->
-      <div class="grid-row">
+      <div class="grid-row grid-gap-1">
 
-          <!-- Label/Value Wrapper -->
-          <div class="grid-col">
-            <div class="grid-row">
-              <div class="grid-col-12">
-                <label class="usa-static--label font-sans-3xs text-light text-italic">Status</label>
-              </div>
-              <div class="grid-col-12">
-                <span class="sds-tag sds-tag--outline-green">Active</span>
-              </div>
+        <!-- Label/Value Wrapper -->
+        <div class="tablet:grid-col-6 grid-col-4">
+          <div class="grid-row">
+            <div class="grid-col-12">
+              <label class="usa-static--label font-sans-3xs text-light text-italic">Status</label>
+            </div>
+            <div class="grid-col-12">
+              <span class="sds-tag sds-tag--static sds-tag--outline-green">Active</span>
             </div>
           </div>
-
-          <!-- Label/Value Wrapper -->
-          <div class="grid-col">
-            <div class="grid-row">
-              <div class="grid-col-12">
-                <label class="usa-static--label font-sans-3xs text-light text-italic">Expiration Date</label>
-              </div>
-              <div class="grid-col-12">
-                <span class="sds-tag sds-tag--alt">Feb 20, 2019</span>
-              </div>
-            </div>
-          </div>
-
         </div>
-    </div>
-    <div class="tablet:grid-col-1 mobile-lg:display-none action-menu-col">
-      <div class="action-menu-wrapper">
-          <div class="action-menu-placeholder"><fa-icon [icon]="['fas', 'ellipsis-v']" size="1x"></fa-icon></div>
+
+        <!-- Label/Value Wrapper -->
+        <div class="tablet:grid-col-6 grid-col-4">
+          <div class="grid-row">
+            <div class="grid-col-12">
+              <label class="usa-static--label font-sans-3xs text-light text-italic">Expiration Date</label>
+            </div>
+            <div class="grid-col-12">
+              <span class="sds-tag sds-tag--static sds-tag--alt">Feb 20, 2019</span>
+            </div>
+          </div>
+        </div>
+
       </div>
+
+      <div class="grid-row grid-gap-05 margin-top-2">
+        <div class="grid-col-auto">
+          <span class="sds-tag sds-tag--chip sds-tag--small">
+            TIN
+            <span class="sds-text-success">
+              <fa-icon [icon]="['fas', 'check']" size="1x"></fa-icon>
+            </span>
+          </span>
+        </div>
+        <div class="grid-col-auto">
+          <span class="sds-tag sds-tag--chip sds-tag--disabled sds-tag--small">
+            CAGE
+            <span class="sds-text-disabled">
+              <fa-icon [icon]="['fas', 'ellipsis-h']" size="1x"></fa-icon>
+            </span>
+          </span>
+        </div>
+        <div class="grid-col-auto">
+          <span class="sds-tag sds-tag--chip sds-tag--disabled sds-tag--small">
+            Notarized Letter
+            <span class="sds-text-disabled">
+              <fa-icon [icon]="['fas', 'times']" size="1x"></fa-icon>
+            </span>
+          </span>
+        </div>
+      </div>
+
     </div>
+
   </div>
 
 </div>
