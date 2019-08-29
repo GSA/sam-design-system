@@ -2,8 +2,7 @@ import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef, Input }
 
 @Component({
   selector: 'search-result-list-sample-data',
-  templateUrl: 'search-result-list-sample-data.component.html',
-  styleUrls: ['./searchlist-overrides.scss']
+  templateUrl: 'search-result-list-sample-data.component.html'
 })
 
 export class SearchResultListSampleDataComponent {
