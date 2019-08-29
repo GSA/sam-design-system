@@ -9,12 +9,20 @@ import { SearchResultListSampleComponent } from './search-result-list-sample.com
 import { SearchResultListSampleDataComponent } from './search-result-list-sample-data.component';
 import { SdsSearchResultListModule } from '@gsa-sam/components';
 import { SearchResultListSampleData2Component } from './search-result-list-sample-data2.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { sds } from '@gsa-sam/sam-styles/src/icons/';
+import { fas } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
-  imports: [SdsSideNavigationModule, SdsAccordionModule, CommonModule, FormsModule,
+  imports: [FontAwesomeModule, SdsSideNavigationModule, SdsAccordionModule, CommonModule, FormsModule,
     SdsToolbarModule, SdsPageModule, SdsSearchResultListModule],
   exports: [SearchResultListSampleComponent],
   declarations: [SearchResultListSampleComponent, SearchResultListSampleDataComponent, SearchResultListSampleData2Component],
   providers: []
 })
-export class SearchResultListSampleModule { }
+export class SearchResultListSampleModule {
+  constructor() {
+    library.add(fas, sds);
+  }
+}

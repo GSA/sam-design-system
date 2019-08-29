@@ -188,5 +188,5 @@ export class SearchListLayoutSampleComponent {
       ]
     }
   ];
-  
+
 }
