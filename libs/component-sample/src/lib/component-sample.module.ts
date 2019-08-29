@@ -12,7 +12,7 @@ import { ToolbarSampleModule } from './feature/toolbar-sample/toolbar-sample.mod
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { sds } from '@gsa-sam/sam-styles/src/icons/';
-import { fas } from "@fortawesome/free-solid-svg-icons";
+import { fas } from '@fortawesome/free-solid-svg-icons';
 import { IconSampleModule } from './feature/icon-sample/icon-sample.module';
 import { IconSampleComponent } from './feature/icon-sample/icon-sample.component';
 import { SideNavigationSampleModule } from './feature/side-navigation-sample/side-navigation-sample.module';

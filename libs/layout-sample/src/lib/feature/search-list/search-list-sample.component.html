@@ -11,33 +11,39 @@
       </sds-accordion>
     </sds-toolbar>
 
-    <!-- =============== PAGINATION =============== -->
-    <sds-pagination
-      class="flex-fill"
-      [sdsToolbarExpand]="toolbar"
-      [paginationConfiguration]="top"
-      [(page)]="page"
-      (pageChange)="paginationChange.next($event)"
-    >
-    </sds-pagination>
-
-    <!-- =============== SORT =============== -->
-    <div>
-      <label
-        class="usa-label font-sans-2xs text-italic text-base margin-0"
-        for="options"
-      >
-        Sort by
-      </label>
-      <select
-        (change)="onSelectChange()"
-        [(ngModel)]="sortField"
-        class="usa-select border-base-light width-card"
-        id="options"
-      >
-        <option value="text">Title</option>
-        <option value="id" selected="true">Id</option>
-      </select>
+    <div class="grid-col">
+      <div class="grid-row">
+        <div class="grid-col-auto">
+          <sds-pagination
+            class="flex-fill"
+            [sdsToolbarExpand]="toolbar"
+            [paginationConfiguration]="top"
+            [(page)]="page"
+            (pageChange)="paginationChange.next($event)"
+          >
+          </sds-pagination>
+        </div>
+        <div class="grid-col-fill"></div>
+        <div class="grid-col-auto float-right">
+          <div class="margin-left-1">
+            <label
+              class="usa-label font-sans-2xs text-italic text-base margin-0"
+              for="options"
+            >
+              Sort by
+            </label>
+            <select
+              (change)="onSelectChange()"
+              [(ngModel)]="sortField"
+              class="usa-select border-base-light width-card"
+              id="options"
+            >
+              <option value="text">Title</option>
+              <option value="id" selected="true">Id</option>
+            </select>
+          </div>
+        </div>
+      </div>
     </div>
   </sds-page-options>
 
