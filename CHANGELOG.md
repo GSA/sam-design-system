@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.6.0 (29/08/2019)
+
+#### closed
+
+- [**closed**] Results list update [#81](https://github.com/GSA/sam-design-system/pull/81)
+- [**closed**] Use action-menu inside subheader component [#79](https://github.com/GSA/sam-design-system/pull/79)
+- [**closed**] Add sds-actions-menu component and sample [#78](https://github.com/GSA/sam-design-system/pull/78)
+
+---
+
 ## v0.5.6 (26/08/2019)
 
 #### closed
