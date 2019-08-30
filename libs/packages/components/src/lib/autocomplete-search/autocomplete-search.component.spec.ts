@@ -73,8 +73,8 @@ describe('SamAutocompleteComponent', () => {
   }));
 
   it('Should have results with minimumCharacterCountSearch', fakeAsync(() => {
-    
-    const event ='Level 7';
+
+    const event = 'Level 7';
     component.configuration.minimumCharacterCountSearch = 3;
     component.textChange(event);
     fixture.detectChanges();
@@ -89,7 +89,7 @@ describe('SamAutocompleteComponent', () => {
 
 
   it('Should have results key press', fakeAsync(() => {
-    const event ='id';
+    const event = 'id';
     component.textChange(event);
     fixture.detectChanges();
     tick();
@@ -195,7 +195,7 @@ describe('SamAutocompleteComponent', () => {
 
 
   it('Should have delete have results', fakeAsync(() => {
-    const event = 'id' ;
+    const event = 'id';
     component.textChange(event);
     fixture.detectChanges();
     tick();
@@ -312,6 +312,15 @@ describe('SamAutocompleteComponent', () => {
     let item = {};
     component.registerOnTouched(item);
     expect(component.onTouchedCallback).toBe(item);
+  });
+
+  it('should free text be shown', () => {
+    let textValue = 'Some value';
+    expect(component.showFreeText()).toBeFalsy();
+    component.configuration.isFreeTextEnabled = true;
+    expect(component.showFreeText()).toBeFalsy();
+    component.inputValue = textValue;
+    expect(component.showFreeText()).toBeTruthy();
   });
 
 });

@@ -19,7 +19,7 @@ const Autocomplete_Autocomplete_VALUE_ACCESSOR: any = {
 })
 export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
 
-  constructor(private _changeDetectorRef: ChangeDetectorRef) {}
+  constructor(private _changeDetectorRef: ChangeDetectorRef) { }
   /**
    * Ul list of elements 
    */
@@ -159,16 +159,16 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   textChange(event) {
     const searchString = event || '';
     this.getResults(searchString);
- }
+  }
 
   /**
    * Event method used when focus is gained to the input
    */
   inputFocusHandler(): void {
     this.getResults(this.inputValue || '');
-    this.onTouchedCallback(); 
+    this.onTouchedCallback();
   }
-  
+
   /**
    * Key event
    * @param event 
@@ -244,6 +244,43 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     }
   }
 
+  showFreeText() {
+    if (this.configuration.isFreeTextEnabled) {
+      if (this.inputValue) {
+        if (this.inputValue.length !== 0) {
+          let foundItem = false;
+          if (this.results) {
+            for (var i = 0; i < this.results.length && !foundItem; i++) {
+              let item = this.results[i];
+              foundItem = item[this.configuration.primaryTextField] === this.inputValue;
+            }
+          }
+          if (this.model.items.length > 0 && !foundItem) {
+            for (var i = 0; i < this.model.items.length && !foundItem; i++) {
+              let item = this.model.items[i];
+              foundItem = item[this.configuration.primaryTextField] === this.inputValue;
+            }
+          }
+
+          return !foundItem;
+        } else {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    } else {
+      return this.configuration.isFreeTextEnabled;
+    }
+  }
+
+  private createFreeTextItem() {
+    let item = { 'type': 'custom' };
+    item[this.configuration.primaryTextField] = this.inputValue;
+    item[this.configuration.primaryKeyField] = this.inputValue;
+    return item;
+  }
+
   /**
    *  gets the inital results
    * @param searchString 
@@ -259,6 +296,9 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
           this.service.getDataByText(0, searchString).subscribe(
             (result) => {
               this.results = result.items;
+              if (this.showFreeText()) {
+                this.results.unshift(this.createFreeTextItem());
+              }
               this.maxResults = result.totalItems;
               this.highlightedIndex = 0;
               this.setHighlightedItem(this.results[this.highlightedIndex]);
