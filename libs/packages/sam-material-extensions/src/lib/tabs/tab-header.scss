@@ -1,0 +1,32 @@
+@import '../core/style/noop-animation';
+@import './tabs-common';
+
+@include paginated-tab-header;
+
+.mat-ink-bar {
+  @include ink-bar;
+}
+
+.mat-tab-labels {
+  @include paginated-tab-header-item-wrapper;
+}
+
+.mat-tab-label-container {
+  @include paginated-tab-header-container;
+}
+
+.mat-tab-list {
+  @include _noop-animation();
+}
+
+// Wraps each tab label
+.mat-tab-label {
+  @include tab-label;
+  position: relative;
+}
+
+@media ($mat-xsmall) {
+  .mat-tab-label {
+    min-width: 72px;
+  }
+}
