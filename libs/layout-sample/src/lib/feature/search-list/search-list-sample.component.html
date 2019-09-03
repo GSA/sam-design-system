@@ -2,68 +2,45 @@
   <!-- =============== PAGE OPTIONS =============== -->
   <sds-page-options>
     <!-- =============== TOOLBAR =============== -->
-    <sds-toolbar #toolbar="sdsToolbar" class="top-205">
+    <sds-toolbar #toolbar="sdsToolbar" class="gird-col-auto top-205">
       <sds-accordion multi="true">
-        <sds-side-navigation
-          #sideNav
-          [model]="sideNavModel"
-        ></sds-side-navigation>
+        <sds-side-navigation #sideNav [model]="sideNavModel"></sds-side-navigation>
       </sds-accordion>
     </sds-toolbar>
 
     <div class="grid-col">
       <div class="grid-row">
         <div class="grid-col-auto">
-          <sds-pagination
-            class="flex-fill"
-            [sdsToolbarExpand]="toolbar"
-            [paginationConfiguration]="top"
-            [(page)]="page"
-            (pageChange)="paginationChange.next($event)"
-          >
+          <sds-pagination class="flex-fill" [sdsToolbarExpand]="toolbar" [paginationConfiguration]="top" [(page)]="page" (pageChange)="paginationChange.next($event)">
           </sds-pagination>
         </div>
         <div class="grid-col-fill"></div>
         <div class="grid-col-auto float-right">
           <div class="margin-left-1">
-            <label
-              class="usa-label font-sans-2xs text-italic text-base margin-0"
-              for="options"
-            >
+            <label class="usa-label font-sans-2xs text-italic text-base margin-0" for="options">
               Sort by
             </label>
-            <select
-              (change)="onSelectChange()"
-              [(ngModel)]="sortField"
-              class="usa-select border-base-light"
-              id="options"
-            >
+            <select (change)="onSelectChange()" [(ngModel)]="sortField" class="usa-select border-base-light" id="options">
               <option value="text">Title</option>
               <option value="id" selected="true">Id</option>
             </select>
           </div>
         </div>
+        <!-- =============== PAGE CONTENT =============== -->
+        <div class="grid-row sds-page__content" [sdsToolbarExpand]="toolbar">
+          <!-- =============== RESULTS LIST =============== -->
+          <sds-search-result-list [model]="items">
+            <ng-template #resultContent let-item>
+              <search-result-list-sample-data [model]="item"></search-result-list-sample-data>
+            </ng-template>
+          </sds-search-result-list>
+
+          <!-- =============== PAGINATION =============== -->
+          <sds-pagination [paginationConfiguration]="bottom" [(page)]="page" (pageChange)="paginationChange.next($event)">
+          </sds-pagination>
+        </div>
+
       </div>
     </div>
   </sds-page-options>
-
-  <!-- =============== PAGE CONTENT =============== -->
-  <div class="grid-row sds-page__content" [sdsToolbarExpand]="toolbar">
-    <!-- =============== RESULTS LIST =============== -->
-    <sds-search-result-list [model]="items">
-      <ng-template #resultContent let-item>
-        <search-result-list-sample-data
-          [model]="item"
-        ></search-result-list-sample-data>
-      </ng-template>
-    </sds-search-result-list>
-
-    <!-- =============== PAGINATION =============== -->
-    <sds-pagination
-      [paginationConfiguration]="bottom"
-      [(page)]="page"
-      (pageChange)="paginationChange.next($event)"
-    >
-    </sds-pagination>
-  </div>
 </sds-page>
