@@ -121,20 +121,20 @@
     transition: none;
   }
 
-//   @include cdk-high-contrast {
-//     // Note that IE will render this in the same way, no
-//     // matter whether the theme is light or dark. This helps
-//     // with the readability of focused buttons.
-//     background-color: #fff;
-//   }
+  // @include cdk-high-contrast {
+  //   // Note that IE will render this in the same way, no
+  //   // matter whether the theme is light or dark. This helps
+  //   // with the readability of focused buttons.
+  //   background-color: #fff;
+  // }
 
-//   @include cdk-high-contrast(black-on-white) {
-//     // For the black-on-white high contrast mode, the browser will set this element
-//     // to white, making it blend in with the background, hence why we need to set
-//     // it explicitly to black.
-//     background-color: #000;
-//   }
-// }
+  // @include cdk-high-contrast(black-on-white) {
+  //   // For the black-on-white high contrast mode, the browser will set this element
+  //   // to white, making it blend in with the background, hence why we need to set
+  //   // it explicitly to black.
+  //   background-color: #000;
+  // }
+}
 
 // For round buttons, the ripple container should clip child ripples to a circle.
 .mat-button-ripple-round {
