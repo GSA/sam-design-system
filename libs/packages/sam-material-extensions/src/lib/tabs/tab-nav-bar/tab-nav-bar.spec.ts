@@ -1,6 +1,6 @@
 import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { Component, ViewChild, ViewChildren, QueryList } from '@angular/core';
-import { MAT_RIPPLE_GLOBAL_OPTIONS, RippleGlobalOptions } from '../core';
+import { MAT_RIPPLE_GLOBAL_OPTIONS, RippleGlobalOptions } from '../../core';
 import { By } from '@angular/platform-browser';
 import { dispatchFakeEvent, dispatchMouseEvent } from '../../cdk/testing';
 import { Direction, Directionality } from '@angular/cdk/bidi';
