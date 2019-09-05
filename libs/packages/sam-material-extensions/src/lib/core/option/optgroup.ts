@@ -30,7 +30,7 @@ let _uniqueOptgroupIdCounter = 0;
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   inputs: ['disabled'],
-  styleUrls: ['optgroup.css'],
+  styleUrls: ['optgroup.scss'],
   host: {
     'class': 'mat-optgroup',
     'role': 'group',

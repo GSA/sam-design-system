@@ -44,7 +44,7 @@ import {MatPaginatedTabHeader} from './paginated-tab-header';
   moduleId: module.id,
   selector: 'mat-tab-header',
   templateUrl: 'tab-header.html',
-  styleUrls: ['tab-header.css'],
+  styleUrls: ['tab-header.scss'],
   inputs: ['selectedIndex'],
   outputs: ['selectFocusedIndex', 'indexFocused'],
   encapsulation: ViewEncapsulation.None,

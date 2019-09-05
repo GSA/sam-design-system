@@ -40,7 +40,7 @@ export type MatPseudoCheckboxState = 'unchecked' | 'checked' | 'indeterminate';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'mat-pseudo-checkbox',
-  styleUrls: ['pseudo-checkbox.css'],
+  styleUrls: ['pseudo-checkbox.scss'],
   template: '',
   host: {
     'class': 'mat-pseudo-checkbox',

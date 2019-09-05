@@ -50,7 +50,7 @@ export function throwMatDialogContentAlreadyAttachedError() {
   moduleId: module.id,
   selector: 'mat-dialog-container',
   templateUrl: 'dialog-container.html',
-  styleUrls: ['dialog.css'],
+  styleUrls: ['dialog.scss'],
   encapsulation: ViewEncapsulation.None,
   // Using OnPush for dialogs caused some G3 sync issues. Disabled until we can track them down.
   // tslint:disable-next-line:validate-decorators

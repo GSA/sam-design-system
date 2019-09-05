@@ -59,7 +59,7 @@ import {startWith, takeUntil} from 'rxjs/operators';
   exportAs: 'matTabNavBar, matTabNav',
   inputs: ['color'],
   templateUrl: 'tab-nav-bar.html',
-  styleUrls: ['tab-nav-bar.css'],
+  styleUrls: ['tab-nav-bar.scss'],
   host: {
     'class': 'mat-tab-nav-bar mat-tab-header',
     '[class.mat-tab-header-pagination-controls-enabled]': '_showPaginationControls',

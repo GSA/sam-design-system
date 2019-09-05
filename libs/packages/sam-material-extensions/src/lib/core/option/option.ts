@@ -80,7 +80,7 @@ export const MAT_OPTION_PARENT_COMPONENT =
     '(keydown)': '_handleKeydown($event)',
     'class': 'mat-option',
   },
-  styleUrls: ['option.css'],
+  styleUrls: ['option.scss'],
   templateUrl: 'option.html',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,

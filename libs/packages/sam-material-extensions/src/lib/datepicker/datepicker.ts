@@ -90,7 +90,7 @@ const _MatDatepickerContentMixinBase: CanColorCtor & typeof MatDatepickerContent
   moduleId: module.id,
   selector: 'mat-datepicker-content',
   templateUrl: 'datepicker-content.html',
-  styleUrls: ['datepicker-content.css'],
+  styleUrls: ['datepicker-content.scss'],
   host: {
     'class': 'mat-datepicker-content',
     '[@transformPanel]': '"enter"',

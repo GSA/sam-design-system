@@ -72,7 +72,7 @@ const _MatButtonMixinBase: CanDisableRippleCtor & CanDisableCtor & CanColorCtor 
     '[class._mat-animation-noopable]': '_animationMode === "NoopAnimations"',
   },
   templateUrl: 'button.html',
-  styleUrls: ['button.css'],
+  styleUrls: ['button.scss'],
   inputs: ['disabled', 'disableRipple', 'color'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -159,7 +159,7 @@ export class MatButton extends _MatButtonMixinBase
   },
   inputs: ['disabled', 'disableRipple', 'color'],
   templateUrl: 'button.html',
-  styleUrls: ['button.css'],
+  styleUrls: ['button.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

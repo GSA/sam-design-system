@@ -106,7 +106,7 @@ export class MatTabBodyPortal extends CdkPortalOutlet implements OnInit, OnDestr
   moduleId: module.id,
   selector: 'mat-tab-body',
   templateUrl: 'tab-body.html',
-  styleUrls: ['tab-body.css'],
+  styleUrls: ['tab-body.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [matTabsAnimations.translateTab],

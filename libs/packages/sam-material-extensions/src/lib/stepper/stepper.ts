@@ -129,7 +129,7 @@ export class MatStepper extends CdkStepper implements AfterContentInit {
   selector: 'mat-horizontal-stepper',
   exportAs: 'matHorizontalStepper',
   templateUrl: 'stepper-horizontal.html',
-  styleUrls: ['stepper.css'],
+  styleUrls: ['stepper.scss'],
   inputs: ['selectedIndex'],
   host: {
     'class': 'mat-stepper-horizontal',
@@ -157,7 +157,7 @@ export class MatHorizontalStepper extends MatStepper {
   selector: 'mat-vertical-stepper',
   exportAs: 'matVerticalStepper',
   templateUrl: 'stepper-vertical.html',
-  styleUrls: ['stepper.css'],
+  styleUrls: ['stepper.scss'],
   inputs: ['selectedIndex'],
   host: {
     'class': 'mat-stepper-vertical',
