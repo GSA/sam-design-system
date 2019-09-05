@@ -1,5 +1,5 @@
 @import '../theming/theming';
-@import '../../../cdk/a11y/a11y';
+//@import '../../../cdk/a11y/a11y';
 
 $mat-ripple-color-opacity: 0.1;
 
@@ -28,9 +28,9 @@ $mat-ripple-color-opacity: 0.1;
     transform: scale(0);
 
     // In high contrast mode the ripple is opaque, causing it to obstruct the content.
-    @include cdk-high-contrast {
-      display: none;
-    }
+    // @include cdk-high-contrast {
+    //   display: none;
+    // }
   }
 }
 

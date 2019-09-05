@@ -1,5 +1,5 @@
 @import '../core/style/vendor-prefixes';
-@import '../../cdk/a11y/a11y';
+//@import '../../cdk/a11y/a11y';
 
 
 $mat-dialog-padding: 24px !default;
@@ -24,9 +24,9 @@ $mat-dialog-button-margin: 8px !default;
   min-height: inherit;
   max-height: inherit;
 
-  @include cdk-high-contrast {
-    outline: solid 1px;
-  }
+  // @include cdk-high-contrast {
+  //   outline: solid 1px;
+  // }
 }
 
 .mat-dialog-content {

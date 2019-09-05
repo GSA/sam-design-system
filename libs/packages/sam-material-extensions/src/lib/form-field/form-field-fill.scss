@@ -1,6 +1,6 @@
 @import '../core/style/variables';
 @import '../core/style/vendor-prefixes';
-@import '../../cdk/a11y/a11y';
+//@import '../../cdk/a11y/a11y';
 
 // Styles that only apply to the fill appearance of the form-field.
 
@@ -28,9 +28,9 @@ $mat-form-field-fill-subscript-padding:
     padding: $mat-form-field-fill-line-spacing $mat-form-field-fill-side-padding 0
              $mat-form-field-fill-side-padding;
 
-    @include cdk-high-contrast {
-      outline: solid 1px;
-    }
+    // @include cdk-high-contrast {
+    //   outline: solid 1px;
+    // }
   }
 
   .mat-form-field-underline::before {
@@ -46,10 +46,10 @@ $mat-form-field-fill-subscript-padding:
     bottom: 0;
     height: $mat-form-field-fill-underline-ripple-height;
 
-    @include cdk-high-contrast {
-      height: 0;
-      border-top: solid $mat-form-field-fill-underline-ripple-height;
-    }
+    // @include cdk-high-contrast {
+    //   height: 0;
+    //   border-top: solid $mat-form-field-fill-underline-ripple-height;
+    // }
   }
 
   // Note that we need this specific of a selector because we don't want
