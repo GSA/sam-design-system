@@ -9,7 +9,7 @@ import {
   RIGHT_ARROW,
   UP_ARROW,
 } from '@angular/cdk/keycodes';
-import {dispatchFakeEvent, dispatchKeyboardEvent} from '@angular/cdk/testing';
+import {dispatchFakeEvent, dispatchKeyboardEvent} from '../cdk/testing';
 import {Component, ViewChild} from '@angular/core';
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {MatNativeDateModule} from '../core';

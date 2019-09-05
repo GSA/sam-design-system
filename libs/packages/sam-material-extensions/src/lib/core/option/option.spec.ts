@@ -6,7 +6,7 @@ import {
   dispatchKeyboardEvent,
   createKeyboardEvent,
   dispatchEvent,
-} from '@angular/cdk/testing';
+} from '../cdk/testing';
 import {SPACE, ENTER} from '@angular/cdk/keycodes';
 import {MatOption, MatOptionModule} from './index';
 

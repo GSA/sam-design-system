@@ -1,11 +1,11 @@
 import {Directionality} from '@angular/cdk/bidi';
 import {ENTER, RIGHT_ARROW, SPACE} from '@angular/cdk/keycodes';
-import {MockNgZone} from '@angular/cdk/private/testing';
+import {MockNgZone} from '../cdk/private/testing';
 import {
   dispatchFakeEvent,
   dispatchKeyboardEvent,
   dispatchMouseEvent,
-} from '@angular/cdk/testing';
+} from '../cdk/testing';
 import {Component, NgZone} from '@angular/core';
 import {async, ComponentFixture, inject, TestBed} from '@angular/core/testing';
 import {DateAdapter, MatNativeDateModule} from '../core';

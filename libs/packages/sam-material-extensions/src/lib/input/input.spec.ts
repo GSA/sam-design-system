@@ -1,9 +1,9 @@
 import {Platform, PlatformModule} from '@angular/cdk/platform';
-import {wrappedErrorMessage, MockNgZone} from '@angular/cdk/private/testing';
+import {wrappedErrorMessage, MockNgZone} from '../cdk/private/testing';
 import {
   createFakeEvent,
   dispatchFakeEvent,
-} from '@angular/cdk/testing';
+} from '../cdk/testing';
 import {
   ChangeDetectionStrategy,
   Component,

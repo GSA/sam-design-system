@@ -8,7 +8,7 @@ import {
   dispatchFakeEvent,
   dispatchKeyboardEvent,
   dispatchMouseEvent,
-} from '@angular/cdk/testing';
+} from '../cdk/testing';
 import {Component, FactoryProvider, Type, ValueProvider, ViewChild} from '@angular/core';
 import {ComponentFixture, fakeAsync, flush, inject, TestBed, tick} from '@angular/core/testing';
 import {FormControl, FormsModule, NgModel, ReactiveFormsModule} from '@angular/forms';

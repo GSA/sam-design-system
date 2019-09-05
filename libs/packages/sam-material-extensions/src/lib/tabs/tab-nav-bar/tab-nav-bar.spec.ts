@@ -1,11 +1,11 @@
-import {async, ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
-import {Component, ViewChild, ViewChildren, QueryList} from '@angular/core';
-import {MAT_RIPPLE_GLOBAL_OPTIONS, RippleGlobalOptions} from '../core';
-import {By} from '@angular/platform-browser';
-import {dispatchFakeEvent, dispatchMouseEvent} from '@angular/cdk/testing';
-import {Direction, Directionality} from '@angular/cdk/bidi';
-import {Subject} from 'rxjs';
-import {MatTabLink, MatTabNav, MatTabsModule} from '../index';
+import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { Component, ViewChild, ViewChildren, QueryList } from '@angular/core';
+import { MAT_RIPPLE_GLOBAL_OPTIONS, RippleGlobalOptions } from '../core';
+import { By } from '@angular/platform-browser';
+import { dispatchFakeEvent, dispatchMouseEvent } from '../../cdk/testing';
+import { Direction, Directionality } from '@angular/cdk/bidi';
+import { Subject } from 'rxjs';
+import { MatTabLink, MatTabNav, MatTabsModule } from '../index';
 
 
 describe('MatTabNavBar', () => {
@@ -26,9 +26,11 @@ describe('MatTabNavBar', () => {
         TabBarWithInactiveTabsOnInit,
       ],
       providers: [
-        {provide: MAT_RIPPLE_GLOBAL_OPTIONS, useFactory: () => globalRippleOptions},
-        {provide: Directionality, useFactory: () =>
-            ({value: dir, change: dirChange.asObservable()})},
+        { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useFactory: () => globalRippleOptions },
+        {
+          provide: Directionality, useFactory: () =>
+            ({ value: dir, change: dirChange.asObservable() })
+        },
       ]
     });
 
@@ -228,11 +230,11 @@ describe('MatTabNavBar', () => {
   });
 
   it('should support the native tabindex attribute', () => {
-      const fixture = TestBed.createComponent(TabLinkWithNativeTabindexAttr);
+    const fixture = TestBed.createComponent(TabLinkWithNativeTabindexAttr);
     fixture.detectChanges();
 
     const tabLink = fixture.debugElement.query(By.directive(MatTabLink))
-        .injector.get<MatTabLink>(MatTabLink);
+      .injector.get<MatTabLink>(MatTabLink);
 
     expect(tabLink.tabIndex)
       .toBe(5, 'Expected the tabIndex to be set from the native tabindex attribute.');
@@ -243,7 +245,7 @@ describe('MatTabNavBar', () => {
     fixture.detectChanges();
 
     const tabLink = fixture.debugElement.query(By.directive(MatTabLink))
-        .injector.get<MatTabLink>(MatTabLink);
+      .injector.get<MatTabLink>(MatTabLink);
 
     expect(tabLink.tabIndex).toBe(0, 'Expected the tabIndex to be set to 0 by default.');
 
@@ -391,7 +393,7 @@ class TabLinkWithTabIndexBinding {
     </nav>
   `
 })
-class TabLinkWithNativeTabindexAttr {}
+class TabLinkWithNativeTabindexAttr { }
 
 
 @Component({

@@ -1,5 +1,5 @@
 import {mixinInitialized} from './initialized';
-import {HasInitialized} from '../core';
+import {HasInitialized} from '../../core';
 
 describe('MixinHasInitialized', () => {
   class EmptyClass { }
