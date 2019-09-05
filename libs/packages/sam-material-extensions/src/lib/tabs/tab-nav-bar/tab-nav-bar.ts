@@ -40,7 +40,7 @@ import {
   RippleRenderer,
   RippleTarget,
   ThemePalette,
-} from '../core';
+} from '../../core';
 import {coerceBooleanProperty} from '@angular/cdk/coercion';
 import {FocusMonitor, FocusableOption} from '@angular/cdk/a11y';
 import {ANIMATION_MODULE_TYPE} from '@angular/platform-browser/animations';
