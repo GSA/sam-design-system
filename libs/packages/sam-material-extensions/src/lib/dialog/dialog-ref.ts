@@ -122,7 +122,7 @@ export class MatDialogRef<T, R = any> {
       // timeout which will clean everything up if the animation hasn't fired within the specified
       // amount of time plus 100ms. We don't need to run this outside the NgZone, because for the
       // vast majority of cases the timeout will have been cleared before it has the chance to fire.
-      this._closeFallbackTimeout = setTimeout(() => {
+      this._closeFallbackTimeout = window.setTimeout(() => {
         this._overlayRef.dispose();
       }, event.totalTime + 100);
     });
