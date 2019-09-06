@@ -166,7 +166,8 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
           SDSSelectedItemModelHelper.clearItems(this.model.items);
           this.propogateChange(this.model);
         } else {
-          this.inputValue = this.model.items[0][this.configuration.primaryTextField];
+          this.inputValue = this.getObjectValue(this.model.items[0], this.configuration.primaryTextField);
+
         }
       } else {
         this.inputValue = '';
