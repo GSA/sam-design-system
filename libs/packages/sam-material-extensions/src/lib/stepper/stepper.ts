@@ -48,7 +48,7 @@ import {matStepperAnimations} from './stepper-animations';
 import {MatStepperIcon, MatStepperIconContext} from './stepper-icon';
 
 @Component({
-  moduleId: module.id,
+  
   selector: 'mat-step',
   templateUrl: 'step.html',
   providers: [{provide: ErrorStateMatcher, useExisting: MatStep}],
@@ -125,7 +125,7 @@ export class MatStepper extends CdkStepper implements AfterContentInit {
 }
 
 @Component({
-  moduleId: module.id,
+  
   selector: 'mat-horizontal-stepper',
   exportAs: 'matHorizontalStepper',
   templateUrl: 'stepper-horizontal.html',
@@ -153,7 +153,7 @@ export class MatHorizontalStepper extends MatStepper {
 }
 
 @Component({
-  moduleId: module.id,
+  
   selector: 'mat-vertical-stepper',
   exportAs: 'matVerticalStepper',
   templateUrl: 'stepper-vertical.html',

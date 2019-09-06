@@ -78,7 +78,7 @@ const _MatTabGroupMixinBase: CanColorCtor & CanDisableRippleCtor & typeof MatTab
  * See: https://material.io/design/components/tabs.html
  */
 @Component({
-  moduleId: module.id,
+  
   selector: 'mat-tab-group',
   exportAs: 'matTabGroup',
   templateUrl: 'tab-group.html',

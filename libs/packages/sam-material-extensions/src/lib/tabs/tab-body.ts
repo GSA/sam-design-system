@@ -103,7 +103,7 @@ export class MatTabBodyPortal extends CdkPortalOutlet implements OnInit, OnDestr
  * @docs-private
  */
 @Component({
-  moduleId: module.id,
+  
   selector: 'mat-tab-body',
   templateUrl: 'tab-body.html',
   styleUrls: ['tab-body.scss'],

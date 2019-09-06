@@ -54,7 +54,7 @@ import {startWith, takeUntil} from 'rxjs/operators';
  * Provides anchored navigation with animated ink bar.
  */
 @Component({
-  moduleId: module.id,
+  
   selector: '[mat-tab-nav-bar]',
   exportAs: 'matTabNavBar, matTabNav',
   inputs: ['color'],

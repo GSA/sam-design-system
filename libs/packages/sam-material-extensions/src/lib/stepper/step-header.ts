@@ -25,7 +25,7 @@ import {CdkStepHeader, StepState} from '@angular/cdk/stepper';
 
 
 @Component({
-  moduleId: module.id,
+  
   selector: 'mat-step-header',
   templateUrl: 'step-header.html',
   styleUrls: ['step-header.scss'],
