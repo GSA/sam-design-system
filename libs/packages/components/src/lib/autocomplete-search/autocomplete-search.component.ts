@@ -113,6 +113,26 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   private resultsAvailableMessage: string = ' results available. Use up and down arrows\
   to scroll through results. Hit enter to select.';
 
+  getObjectValue(resultItem: Object, field: string): string {
+    let value = '';
+    let current = resultItem;
+    let fieldSplit = field.split(',');
+    for (let i = 0; i < fieldSplit.length; i++) {
+      let fieldValue = fieldSplit[i];
+      let fieldPartSplit = fieldValue.split('.');
+      for (let j = 0; j < fieldPartSplit.length; j++) {
+        let fieldCheckValue = fieldPartSplit[j];
+        current = current[fieldCheckValue];
+      }
+    
+      value += current.toString() + ' ';
+      current = resultItem;
+    }
+    return value.trim();
+  }
+
+
+
   /**
    * Determines if the dropdown should be shown
    */
