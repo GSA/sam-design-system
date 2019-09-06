@@ -124,7 +124,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
         let fieldCheckValue = fieldPartSplit[j];
         current = current[fieldCheckValue];
       }
-    
+
       value += current.toString() + ' ';
       current = resultItem;
     }
@@ -185,7 +185,9 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * Event method used when focus is gained to the input
    */
   inputFocusHandler(): void {
-    this.getResults(this.inputValue || '');
+    if (this.configuration.focusInSearch) {
+      this.getResults(this.inputValue || '');
+    }
     this.onTouchedCallback();
   }
 
@@ -218,7 +220,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   public selectItem(item: object): void {
     SDSSelectedItemModelHelper.addItem(item, this.configuration.primaryKeyField, this.configuration.selectionMode, this.model.items);
     this.propogateChange(this.model);
-    let message = item[this.configuration.primaryTextField];
+    let message = this.getObjectValue(item, this.configuration.primaryTextField); // item[this.configuration.primaryTextField];
     this.inputValue = message;
     if (this.configuration.secondaryTextField && item[this.configuration.secondaryTextField]) {
       message += ': ' + item[this.configuration.secondaryTextField];

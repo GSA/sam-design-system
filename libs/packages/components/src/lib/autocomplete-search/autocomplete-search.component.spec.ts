@@ -117,7 +117,7 @@ describe('SamAutocompleteComponent', () => {
 
 
 
-  it('Should have reuslts on focus', fakeAsync(() => {
+  it('Should have results on focus', fakeAsync(() => {
     component.inputFocusHandler();
     fixture.detectChanges();
     tick();
@@ -125,6 +125,16 @@ describe('SamAutocompleteComponent', () => {
     const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
     expect(list.nativeElement.children.length).toBe(11);
     expect(component.results[0]['highlighted']).toBeTruthy();
+  }));
+
+  it('Should not have results on focus', fakeAsync(() => {
+    component.configuration.focusInSearch = false;
+    component.inputFocusHandler();
+    fixture.detectChanges();
+    tick();
+    fixture.detectChanges();
+    const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
+    expect(list).toBeNull();
   }));
 
   it('Select second item with down and up arrows', fakeAsync(() => {
