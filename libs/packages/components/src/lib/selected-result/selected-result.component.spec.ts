@@ -115,4 +115,15 @@ describe('SDSSelectedResultComponent', () => {
     expect(component.onTouchedCallback).toBe(item);
   });
 
+  it('should handle multi value and depth of values', () => {
+    let data = { 'level1': '1', 'sub': { 'level2': '2' } };
+    expect(component.getObjectValue(data, 'level1')).toBe('1');
+    expect(component.getObjectValue(data, 'sub.level2')).toBe('2');
+    expect(component.getObjectValue(data, 'level1,sub.level2')).toBe('1 2');
+    expect(component.getObjectValue(data, 'sub.level2,level1')).toBe('2 1');
+    let data2 = { 'level1': '1' };
+    expect(component.getObjectValue(data2, 'level1,sub.level2')).toBe('1');
+  });
+
+
 });

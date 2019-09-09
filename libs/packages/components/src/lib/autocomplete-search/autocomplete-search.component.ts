@@ -114,6 +114,35 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   to scroll through results. Hit enter to select.';
 
   /**
+   * Gets the string value from the specifed properties of an object
+   * @param object 
+   * @param propertyFields comma seperated list with periods depth of object
+   */
+  getObjectValue(object: Object, propertyFields: string): string {
+    let value = '';
+    let current = object;
+    let fieldSplit = propertyFields.split(',');
+    for (let i = 0; i < fieldSplit.length; i++) {
+      let fieldValue = fieldSplit[i];
+      let fieldPartSplit = fieldValue.split('.');
+      for (let j = 0; j < fieldPartSplit.length; j++) {
+        let fieldCheckValue = fieldPartSplit[j];
+        if (current) {
+          current = current[fieldCheckValue];
+        }
+      }
+
+      if (current) {
+        value += current.toString() + ' ';
+      }
+      current = object;
+    }
+    return value.trim();
+  }
+
+
+
+  /**
    * Determines if the dropdown should be shown
    */
   public showResults = false;
@@ -146,7 +175,8 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
           SDSSelectedItemModelHelper.clearItems(this.model.items);
           this.propogateChange(this.model);
         } else {
-          this.inputValue = this.model.items[0][this.configuration.primaryTextField];
+          this.inputValue = this.getObjectValue(this.model.items[0], this.configuration.primaryTextField);
+
         }
       } else {
         this.inputValue = '';
@@ -165,7 +195,9 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * Event method used when focus is gained to the input
    */
   inputFocusHandler(): void {
-    this.getResults(this.inputValue || '');
+    if (this.configuration.focusInSearch) {
+      this.getResults(this.inputValue || '');
+    }
     this.onTouchedCallback();
   }
 
@@ -198,7 +230,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   public selectItem(item: object): void {
     SDSSelectedItemModelHelper.addItem(item, this.configuration.primaryKeyField, this.configuration.selectionMode, this.model.items);
     this.propogateChange(this.model);
-    let message = item[this.configuration.primaryTextField];
+    let message = this.getObjectValue(item, this.configuration.primaryTextField);
     this.inputValue = message;
     if (this.configuration.secondaryTextField && item[this.configuration.secondaryTextField]) {
       message += ': ' + item[this.configuration.secondaryTextField];

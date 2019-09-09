@@ -66,4 +66,9 @@ export class SDSAutocompletelConfiguration implements SDSSelectedResultConfigura
    * Text appeneded ad the end of free text
    */
   public freeTextSubtext: string = 'search';
+
+  /**
+   * Focus into autocomplete search
+   */
+  public focusInSearch: boolean = true;
 }

@@ -26,7 +26,8 @@ export class SDSAutocompleteSearchConfiguration {
   public primaryKeyField: string;
 
   /**
-   *  Property from supplied model used for the top part of the basic template
+   *  Property from supplied model used for the top part of the basic template 
+   *  and the text for single selection
    */
   public primaryTextField: string;
 
@@ -64,4 +65,9 @@ export class SDSAutocompleteSearchConfiguration {
    * Text appeneded ad the end of free text
    */
   public freeTextSubtext: string = 'search';
+
+  /**
+   * Focus into autocomplete search
+   */
+  public focusInSearch: boolean = true;
 }

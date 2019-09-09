@@ -28,11 +28,12 @@
           </ng-container>
 
           <ng-container *ngIf="!itemTemplate">
-            <span class="display-block text-semibold">{{ result[configuration.primaryTextField] }}
+            <span class="display-block text-semibold">
+              {{ getObjectValue(result, configuration.primaryTextField) }}
               <span *ngIf="result.type === 'custom'">
                 - {{configuration.freeTextSubtext}}
               </span>
-            </span>         
+            </span>
             <ng-container *ngIf="configuration.secondaryTextField &&  result[configuration.secondaryTextField] ">
               <span class="description">{{ result[configuration.secondaryTextField] }}</span>
             </ng-container>

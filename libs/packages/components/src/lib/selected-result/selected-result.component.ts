@@ -76,4 +76,33 @@ export class SDSSelectedResultComponent implements ControlValueAccessor {
   setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
   }
+
+
+  /**
+   * Gets the string value from the specifed properties of an object
+   * @param object 
+   * @param propertyFields comma seperated list with periods depth of object
+   */
+  getObjectValue(object: Object, propertyFields: string): string {
+    let value = '';
+    let current = object;
+    let fieldSplit = propertyFields.split(',');
+    for (let i = 0; i < fieldSplit.length; i++) {
+      let fieldValue = fieldSplit[i];
+      let fieldPartSplit = fieldValue.split('.');
+      for (let j = 0; j < fieldPartSplit.length; j++) {
+        let fieldCheckValue = fieldPartSplit[j];
+        if (current) {
+          current = current[fieldCheckValue];
+        }
+      }
+
+      if (current) {
+        value += current.toString() + ' ';
+      }
+      current = object;
+    }
+    return value.trim();
+  }
+
 }
