@@ -114,14 +114,14 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   to scroll through results. Hit enter to select.';
 
   /**
-   * 
-   * @param resultItem 
-   * @param field 
+   * Gets the string value from the specifed properties of an object
+   * @param object 
+   * @param propertyFields comma seperated list with periods depth of object
    */
-  getObjectValue(resultItem: Object, field: string): string {
+  getObjectValue(object: Object, propertyFields: string): string {
     let value = '';
-    let current = resultItem;
-    let fieldSplit = field.split(',');
+    let current = object;
+    let fieldSplit = propertyFields.split(',');
     for (let i = 0; i < fieldSplit.length; i++) {
       let fieldValue = fieldSplit[i];
       let fieldPartSplit = fieldValue.split('.');
@@ -135,7 +135,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       if (current) {
         value += current.toString() + ' ';
       }
-      current = resultItem;
+      current = object;
     }
     return value.trim();
   }
@@ -230,7 +230,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   public selectItem(item: object): void {
     SDSSelectedItemModelHelper.addItem(item, this.configuration.primaryKeyField, this.configuration.selectionMode, this.model.items);
     this.propogateChange(this.model);
-    let message = this.getObjectValue(item, this.configuration.primaryTextField); // item[this.configuration.primaryTextField];
+    let message = this.getObjectValue(item, this.configuration.primaryTextField);
     this.inputValue = message;
     if (this.configuration.secondaryTextField && item[this.configuration.secondaryTextField]) {
       message += ': ' + item[this.configuration.secondaryTextField];

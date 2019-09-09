@@ -78,10 +78,15 @@ export class SDSSelectedResultComponent implements ControlValueAccessor {
   }
 
 
-  getObjectValue(resultItem: Object, field: string): string {
+  /**
+   * Gets the string value from the specifed properties of an object
+   * @param object 
+   * @param propertyFields comma seperated list with periods depth of object
+   */
+  getObjectValue(object: Object, propertyFields: string): string {
     let value = '';
-    let current = resultItem;
-    let fieldSplit = field.split(',');
+    let current = object;
+    let fieldSplit = propertyFields.split(',');
     for (let i = 0; i < fieldSplit.length; i++) {
       let fieldValue = fieldSplit[i];
       let fieldPartSplit = fieldValue.split('.');
@@ -95,7 +100,7 @@ export class SDSSelectedResultComponent implements ControlValueAccessor {
       if (current) {
         value += current.toString() + ' ';
       }
-      current = resultItem;
+      current = object;
     }
     return value.trim();
   }
