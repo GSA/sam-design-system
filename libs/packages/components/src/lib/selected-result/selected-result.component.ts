@@ -87,12 +87,17 @@ export class SDSSelectedResultComponent implements ControlValueAccessor {
       let fieldPartSplit = fieldValue.split('.');
       for (let j = 0; j < fieldPartSplit.length; j++) {
         let fieldCheckValue = fieldPartSplit[j];
-        current = current[fieldCheckValue];
+        if (current) {
+          current = current[fieldCheckValue];
+        }
       }
 
-      value += current.toString() + ' ';
+      if (current) {
+        value += current.toString() + ' ';
+      }
       current = resultItem;
     }
     return value.trim();
   }
+
 }
