@@ -113,6 +113,11 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   private resultsAvailableMessage: string = ' results available. Use up and down arrows\
   to scroll through results. Hit enter to select.';
 
+  /**
+   * 
+   * @param resultItem 
+   * @param field 
+   */
   getObjectValue(resultItem: Object, field: string): string {
     let value = '';
     let current = resultItem;
@@ -122,10 +127,14 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       let fieldPartSplit = fieldValue.split('.');
       for (let j = 0; j < fieldPartSplit.length; j++) {
         let fieldCheckValue = fieldPartSplit[j];
-        current = current[fieldCheckValue];
+        if (current) {
+          current = current[fieldCheckValue];
+        }
       }
 
-      value += current.toString() + ' ';
+      if (current) {
+        value += current.toString() + ' ';
+      }
       current = resultItem;
     }
     return value.trim();
