@@ -32,6 +32,8 @@ import { DialogSampleModule } from './feature/dialog-sample/dialog-sample.module
 import { DialogSampleComponent } from './feature/dialog-sample/dialog-sample.component';
 import { ActionsMenuSampleComponent } from './feature/actions-menu-sample/actions-menu-sample.component';
 import { ActionsMenuSampleModule } from './feature/actions-menu-sample/actions-menu-sample.module';
+import { DrawerSampleComponent } from './feature/drawer-sample/drawer-sample.component';
+import { DrawerSampleModule } from './feature/drawer-sample/drawer-sample.module';
 
 export const ROUTES: Routes = [
   { path: 'header', component: HeaderSampleComponent },
@@ -45,7 +47,8 @@ export const ROUTES: Routes = [
   { path: 'subheader', component: SubheaderSampleComponent },
   { path: 'autocomplete', component: AutocompleteSampleComponent },
   { path: 'dialog', component: DialogSampleComponent },
-  { path: 'actions-menu', component: ActionsMenuSampleComponent}
+  { path: 'actions-menu', component: ActionsMenuSampleComponent},
+  { path: 'drawer', component: DrawerSampleComponent}
 ];
 
 @NgModule({
@@ -67,7 +70,8 @@ export const ROUTES: Routes = [
     SubheaderSampleModule,
     AutocompleteSampleModule,
     DialogSampleModule,
-    ActionsMenuSampleModule
+    ActionsMenuSampleModule,
+    DrawerSampleModule
   ],
   exports: [RouterModule]
 })
