@@ -1,0 +1,31 @@
+
+.grayToLightBackgroundGradiate{
+    background-image: linear-gradient(to right,#D7D7D7, white);
+    height: 15px;
+    padding-top: 2.5px;
+    padding-bottom: 2.5px;
+    text-align:center;
+    margin:auto;
+    color:#888888;
+    font-size:15px;
+    font-weight:bold;
+    margin-top: 10px;
+}
+
+.lightToGrayBackgroundGradiate{
+
+    background-image: linear-gradient(to right,#F2F2F2,#D8D8D8);
+    height: 15px;
+    padding-top: 2.5px;
+    padding-bottom: 2.5px;
+    text-align:center;
+    margin:auto;
+    color:#888888;
+    font-size:15px;
+    font-weight:bold;
+    margin-top: 10px;
+}
+
+.autoLoading{
+    height: 60px;
+}
