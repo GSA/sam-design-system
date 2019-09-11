@@ -44,8 +44,16 @@
         <li class="emptyResults">No results found</li>
       </ng-container>
 
-      
-      <li class="autoLoading">
+
+      <li *ngIf="showLoad" class="autoLoading">
+        <div class="lightToGrayBackgroundGradiate">
+
+        </div>
+        <div class="grayToLightBackgroundGradiate">
+
+        </div>
+      </li>
+      <li  *ngIf="showLoad" class="autoLoading">
         <div class="lightToGrayBackgroundGradiate">
 
         </div>
