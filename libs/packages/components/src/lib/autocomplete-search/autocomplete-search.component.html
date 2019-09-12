@@ -43,6 +43,24 @@
       <ng-container *ngIf="(!results || results.length == 0)">
         <li class="emptyResults">No results found</li>
       </ng-container>
+
+
+      <li *ngIf="showLoad" class="autoLoading">
+        <div class="lightToGrayBackgroundGradiate">
+
+        </div>
+        <div class="grayToLightBackgroundGradiate">
+
+        </div>
+      </li>
+      <li  *ngIf="showLoad" class="autoLoading">
+        <div class="lightToGrayBackgroundGradiate">
+
+        </div>
+        <div class="grayToLightBackgroundGradiate">
+
+        </div>
+      </li>
     </ul>
     <ul #srOnly class="usa-sr-only" aria-live="assertive" aria-relevant="additions"></ul>
   </div>

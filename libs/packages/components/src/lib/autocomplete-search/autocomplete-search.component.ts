@@ -92,6 +92,8 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    */
   private HighlightedPropertyName = 'highlighted';
 
+  public showLoad: boolean = false;
+
   /**
    * Search string
    */
@@ -325,9 +327,11 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
         this.searchString = searchString;
         window.clearTimeout(this.timeoutNumber);
         this.timeoutNumber = window.setTimeout(() => {
+          this.showLoad = true;
           this.service.getDataByText(0, searchString).subscribe(
             (result) => {
               this.results = result.items;
+              this.showLoad = false;
               if (this.showFreeText()) {
                 this.results.unshift(this.createFreeTextItem());
               }
@@ -378,11 +382,13 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * gets more results based when scrolling and adds the items
    */
   private getAdditionalResults() {
+    this.showLoad = true;
     this.service.getDataByText(this.results.length, this.searchString).subscribe(
       (result) => {
         for (let i = 0; i < result.items.length; i++) {
           this.addResult(result.items[i]);
         }
+        this.showLoad = false;
         this.maxResults = result.totalItems;
       });
   }
