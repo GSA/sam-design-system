@@ -1,9 +1,10 @@
-<sds-page>
+<sds-page class="condensed">
+    <h2 class="usa-sr-only">Results List</h2>
     <!-- =============== PAGE OPTIONS =============== -->
     <sds-page-options>
         <!-- =============== TOOLBAR =============== -->
         <sds-toolbar #toolbar="sdsToolbar" class="top-205">
-            <sds-filters [form]="form" [fields]="fields" [model]="model" ></sds-filters> 
+            <sds-filters [form]="form" [fields]="fields" [model]="model" ></sds-filters>
         </sds-toolbar>
     </sds-page-options>
     <div [sdsToolbarExpand]="toolbar">

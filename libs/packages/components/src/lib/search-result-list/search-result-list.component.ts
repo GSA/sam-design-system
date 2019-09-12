@@ -12,7 +12,7 @@ export class SdsSearchResultListComponent {
   @Input() model: any[];
 
   /**
-   * List of items
+   * Show divider between results
    */
   @Input() divider = true;
 
