@@ -1,7 +1,7 @@
 @import '../core/style/variables';
 @import '../core/style/noop-animation';
 @import '../core/style/vendor-prefixes';
-//@import '../../cdk/a11y/a11y';
+@import '../cdk/a11y/a11y';
 
 $mat-tab-bar-height: 48px !default;
 $mat-tab-animation-duration: 500ms !default;
@@ -27,17 +27,17 @@ $mat-tab-animation-duration: 500ms !default;
       opacity: 1;
     }
 
-    // @include cdk-high-contrast {
-    //   outline: dotted 2px;
-    // }
+    @include cdk-high-contrast {
+      outline: dotted 2px;
+    }
   }
 
   &.mat-tab-disabled {
     cursor: default;
 
-    // @include cdk-high-contrast {
-    //   opacity: 0.5;
-    // }
+    @include cdk-high-contrast {
+      opacity: 0.5;
+    }
   }
 
   .mat-tab-label-content {
@@ -47,9 +47,9 @@ $mat-tab-animation-duration: 500ms !default;
     white-space: nowrap;
   }
 
-  // @include cdk-high-contrast {
-  //   opacity: 1;
-  // }
+  @include cdk-high-contrast {
+    opacity: 1;
+  }
 }
 
 // The ink bar that displays under the active tab label
@@ -67,10 +67,10 @@ $mat-tab-animation-duration: 500ms !default;
     top: 0;
   }
 
-  // @include cdk-high-contrast {
-  //   outline: solid $height;
-  //   height: 0;
-  // }
+  @include cdk-high-contrast {
+    outline: solid $height;
+    height: 0;
+  }
 }
 
 // Structural styles for a tab header. Used by both `mat-tab-header` and `mat-tab-nav-bar`.
