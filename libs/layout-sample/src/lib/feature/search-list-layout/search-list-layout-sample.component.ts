@@ -12,14 +12,26 @@ export class SearchListLayoutSampleComponent {
 
   constructor(public searchListSampleService: SearchListSampleService) { }
   configuration = {
-    defaultSortValue: 'id', pageSize: 25, sortList: [{
-      text: 'Text',
-      value: 'text'
-
+    defaultSortValue: 'expdate-desc', pageSize: 25, sortList: [{
+      text: 'Expiration Date (Earliest)',
+      value: 'expdate-desc'
     }, {
-      text: 'Id',
-      value: 'id'
-    }]
+      text: 'Expiration Date (Latest)',
+      value: 'expdate-asc'
+    }, {
+      text: 'Unique Entity ID (Ascending)',
+      value: 'uei-asc'
+    }, {
+      text: 'Unique Entity ID (Descending)',
+      value: 'uei-desc'
+    }, {
+      text: 'Title (A-Z)',
+      value: 'title-asc'
+    }, {
+      text: 'Title (Z-A)',
+      value: 'title-desc'
+    }
+  ]
   };
 
 
