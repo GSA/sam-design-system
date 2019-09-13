@@ -1,7 +1,7 @@
 @import '../style/menu-common';
 @import '../style/vendor-prefixes';
 @import '../style/layout-common';
-//@import '../../../cdk/a11y/a11y';
+@import '../../cdk/a11y/a11y';
 
 .mat-option {
   @include mat-menu-item-base();
