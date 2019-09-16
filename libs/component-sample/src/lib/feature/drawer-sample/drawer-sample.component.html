@@ -1,11 +1,26 @@
+<h4>Drawer Example with Default template</h4>
 <sds-drawer ></sds-drawer>
 
 <br/>
-<p>Drawer component with template</p>
+<h4>Drawer component with custom template</h4>
 <sds-drawer [contentTemplate]="temp"></sds-drawer>
 <div>
-    This is the content div from example, This div should push down when drawer is open
+   Content will be pushed when drawer is open
 </div>
 <ng-template #temp>
    custom content from template
+   <h1>Contract Opportunities</h1>
+   <p>Contracting organisation across the federal government post notice on proposed contract actions( value at more that $2500).
+     These procurement opportunities including solicitations, pre-solicitation, sole source justifications, and other notices.
+   </p>
+   <h4>Search tips</h4>
+   <ul>
+     <li>
+       Account are not required to view contact opportunities. Create an account to save search, add your entity to an 
+       opportunity's
+     </li>
+     <li>
+       Search by keyword, solicitation ID, or agency name. Use filters to narrow your resultss
+     </li>
+   </ul>
 </ng-template>

@@ -12,9 +12,11 @@ export const sdsDrawerAnimation: {
 } = {
     transformDrawer: trigger('transformDrawer', [
     state('open', style({
-      height: '100px',
+      margin:'0px',
       opacity: 1,
-      backgroundColor: 'white',
+      height: 'auto',
+      minHeight: '200px',
+      backgroundColor: '#eff6fb',
       transform: 'scale(1)'
 })),
     state('closed', style({
@@ -23,10 +25,10 @@ export const sdsDrawerAnimation: {
       transform: 'scale(1)'
     })),
     transition('open => closed', [
-      animate('300ms')
+      animate( '100ms linear',)
     ]),
     transition('closed => open', [
-      animate('300ms')
+      animate('100ms linear',)
     ]),
   ]),
 };

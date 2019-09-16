@@ -9,7 +9,8 @@ export class SubheaderSampleComponent {
   subheader = {
     buttons: [
       { id: 'FirstButton', text: 'Button', class: 'usa-button--secondary' },
-      { id: 'SecondButton', text: 'Button', class: 'usa-button--primary' }
+      { id: 'SecondButton', text: 'Button', class: 'usa-button--primary' },
+     
     ],
     actions: [
       { id: 'DownloadBtn', icon: 'bars', text: 'Download' },
