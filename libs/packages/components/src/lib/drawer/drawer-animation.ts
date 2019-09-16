@@ -12,9 +12,9 @@ export const sdsDrawerAnimation: {
 } = {
     transformDrawer: trigger('transformDrawer', [
     state('open', style({
-      height: '300px',
+      height: '100px',
       opacity: 1,
-      backgroundColor: 'gray',
+      backgroundColor: 'white',
       transform: 'scale(1)'
 })),
     state('closed', style({
