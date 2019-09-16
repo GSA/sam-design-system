@@ -1,1 +1,11 @@
 <sds-drawer title="testing"></sds-drawer>
+
+<br/>
+<p>Drawer component with template</p>
+<sds-drawer title="testing" [contentTemplate]="temp"></sds-drawer>
+<div>
+    This is the content div from example, This div should push down when drawer is open
+</div>
+<ng-template #temp>
+    content from template
+</ng-template>

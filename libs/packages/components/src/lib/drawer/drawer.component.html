@@ -1,7 +1,11 @@
-<!-- Button that triggers menu (sdsMenuTriggerFor) -->
-<button
-  class="usa-button usa-button sds-button--circle"
->
-<fa-icon [fixedWidth]="true" [icon]="['fas', 'arrow-up']"></fa-icon>
-<span class="usa-sr-only">Toggle Actions Menu</span>
+<button (click)="toggle()" class="usa-button usa-button sds-button--circle">
+  <fa-icon [fixedWidth]="true" [icon]="['fas', 'arrow-up']"></fa-icon>
 </button>
+<div [@transformDrawer]="isOpen ? 'open' : 'closed'" class="open-close-container">
+  <ng-container *ngIf="contentTemplate && isOpen" [ngTemplateOutlet]="contentTemplate">
+  </ng-container>
+
+  <ng-container *ngIf="!contentTemplate && isOpen">
+    Drawer content is displaying
+  </ng-container>
+</div>
