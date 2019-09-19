@@ -44,7 +44,7 @@ import {MatInputModule} from '../input/input-module';
 const VALID_REGEX = /valid/;
 let dir: {value: Direction, change: EventEmitter<Direction>};
 
-describe('MatStepper', () => {
+fdescribe('MatStepper', () => {
   beforeEach(() => {
     dir = {
       value: 'ltr',
