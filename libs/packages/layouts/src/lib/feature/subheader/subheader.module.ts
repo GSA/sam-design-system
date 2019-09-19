@@ -11,9 +11,11 @@ import {
   SdsSubheaderComponent,
   SdsSubheaderActionsComponent,
   SdsSubheaderSearchComponent,
-  SdsSubheaderButtonsComponent
+  SdsSubheaderButtonsComponent,
+  SdsSubheaderDrawerComponent
 } from './subheader.component';
 import { SdsActionsMenuModule } from '../actions-menu/actions-menu.module';
+import { SdsDrawerModule } from '@gsa-sam/components';
 
 @NgModule({
   imports: [
@@ -23,19 +25,22 @@ import { SdsActionsMenuModule } from '../actions-menu/actions-menu.module';
     SdsObserversModule,
     SdsSearchModule,
     SdsTruncateModule,
-    SdsActionsMenuModule
+    SdsActionsMenuModule,
+    SdsDrawerModule
   ],
   exports: [
     SdsSubheaderComponent,
     SdsSubheaderActionsComponent,
     SdsSubheaderSearchComponent,
-    SdsSubheaderButtonsComponent
+    SdsSubheaderButtonsComponent,
+    SdsSubheaderDrawerComponent
   ],
   declarations: [
     SdsSubheaderComponent,
     SdsSubheaderActionsComponent,
     SdsSubheaderSearchComponent,
-    SdsSubheaderButtonsComponent
+    SdsSubheaderButtonsComponent,
+    SdsSubheaderDrawerComponent
   ],
   providers: []
 })

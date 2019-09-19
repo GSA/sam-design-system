@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { SdsSubheaderModule } from '@sam-design-system/layouts';
 import { SubheaderSampleComponent } from './subheader-sample.component';
-import { SdsDrawerModule } from '@gsa-sam/components';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
-  imports: [SdsSubheaderModule, SdsDrawerModule],
+  imports: [SdsSubheaderModule, CommonModule],
   exports: [],
   declarations: [SubheaderSampleComponent]
 })

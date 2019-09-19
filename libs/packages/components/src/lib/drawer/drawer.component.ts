@@ -12,12 +12,13 @@ export class SdsDrawerComponent {
   * Allow to insert a customized template for suggestions to use
   */
  @Input() contentTemplate: TemplateRef<any>;
-
+ @Output() isDrawerOpen = new EventEmitter<boolean>();
  
   isOpen = false;
 
   toggle() {
     this.isOpen = !this.isOpen;
+    this.isDrawerOpen.emit(this.isOpen);
   }
   constructor() {}
 }

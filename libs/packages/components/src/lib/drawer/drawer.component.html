@@ -1,5 +1,5 @@
 <button (click)="toggle()" class="sds-button--circle usa-button--outline sds-button-min-height">
-  <fa-icon class="svg-icon" [icon]="isOpen ?['fas', 'arrow-up']: ['fas', 'arrow-down']"></fa-icon>
+  <fa-icon class="svg-icon" [icon]="isOpen ?['fas', 'arrow-down']: ['fas', 'arrow-up']"></fa-icon>
 </button>
 <div [@transformDrawer]="isOpen ? 'open' : 'closed'" class="open-close-container">
   <ng-container *ngIf="contentTemplate && isOpen" [ngTemplateOutlet]="contentTemplate">

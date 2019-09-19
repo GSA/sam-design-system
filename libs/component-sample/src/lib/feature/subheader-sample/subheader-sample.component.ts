@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'sds-subheader-sample',
-  templateUrl: 'subheader-sample.component.html'
+  templateUrl: 'subheader-sample.component.html',
+  styleUrls: ['./subheader-sample.component.scss'],
 })
 export class SubheaderSampleComponent {
 
+  public isDrawerOpen = false;
   subheader = {
     buttons: [
       { id: 'FirstButton', text: 'Button', class: 'usa-button--secondary' },
