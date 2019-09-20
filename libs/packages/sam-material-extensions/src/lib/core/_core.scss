@@ -22,7 +22,6 @@
 
 // Mixin that renders all of the core styles that depend on the theme.
 @mixin mat-core-theme($theme) {
-  @include mat-ripple-theme($theme);
   @include mat-option-theme($theme);
   @include mat-optgroup-theme($theme);
  
