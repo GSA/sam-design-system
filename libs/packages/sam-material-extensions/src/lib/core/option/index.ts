@@ -8,13 +8,12 @@
 
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MatPseudoCheckboxModule} from '../selection/index';
 import {MatOption} from './option';
 import {MatOptgroup} from './optgroup';
 
 
 @NgModule({
-  imports: [CommonModule, MatPseudoCheckboxModule],
+  imports: [CommonModule],
   exports: [MatOption, MatOptgroup],
   declarations: [MatOption, MatOptgroup]
 })

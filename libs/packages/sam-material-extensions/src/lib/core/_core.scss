@@ -25,7 +25,7 @@
   @include mat-ripple-theme($theme);
   @include mat-option-theme($theme);
   @include mat-optgroup-theme($theme);
-  @include mat-pseudo-checkbox-theme($theme);
+ 
 
   // Provides external CSS classes for each elevation value. Each CSS class is formatted as
   // `mat-elevation-z$zValue` where `$zValue` corresponds to the z-space to which the element is
