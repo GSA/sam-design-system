@@ -6,11 +6,11 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-export * from './animation/animation';
+
 export * from './common-behaviors/index';
 export * from './datetime/index';
 export * from './error/error-options';
-export * from './line/line';
+
 export * from './label/label-options';
 
 // TODO(devversion): remove this with v8
