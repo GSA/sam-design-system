@@ -169,26 +169,8 @@ $mat-form-field-default-infix-width: 180px !default;
   transform: scaleY(1.0001);
 }
 
-.mat-form-field-ripple {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  transform-origin: 50%;
-  transform: scaleX(0.5);
-  opacity: 0;
-  transition: background-color $swift-ease-in-duration $swift-ease-in-timing-function;
-}
 
-.mat-form-field.mat-focused,
-.mat-form-field.mat-form-field-invalid {
-  .mat-form-field-ripple {
-    opacity: 1;
-    transform: scaleX(1);
-    transition: transform 300ms $swift-ease-out-timing-function,
-                opacity 100ms $swift-ease-out-timing-function,
-                background-color 300ms $swift-ease-out-timing-function;
-  }
-}
+
 
 // Wrapper for the hints and error messages.
 .mat-form-field-subscript-wrapper {
@@ -229,9 +211,4 @@ $mat-form-field-default-infix-width: 180px !default;
   position: relative;
 }
 
-.mat-form-field._mat-animation-noopable {
-  .mat-form-field-label,
-  .mat-form-field-ripple {
-    transition: none;
-  }
-}
+

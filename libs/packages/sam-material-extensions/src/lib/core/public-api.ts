@@ -15,7 +15,6 @@ export * from './gestures/gesture-config';
 export * from './line/line';
 export * from './option/index';
 export * from './label/label-options';
-export * from './ripple/index';
 export * from './selection/index';
 
 // TODO(devversion): remove this with v8

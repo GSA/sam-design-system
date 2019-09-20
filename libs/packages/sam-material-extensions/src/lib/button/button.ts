@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {FocusMonitor, FocusableOption, FocusOrigin} from '@angular/cdk/a11y';
+import { FocusMonitor, FocusableOption, FocusOrigin } from '@angular/cdk/a11y';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -21,16 +21,12 @@ import {
 import {
   CanColor,
   CanDisable,
-  CanDisableRipple,
   CanColorCtor,
   CanDisableCtor,
-  CanDisableRippleCtor,
-  MatRipple,
   mixinColor,
-  mixinDisabled,
-  mixinDisableRipple,
+  mixinDisabled
 } from '../core';
-import {ANIMATION_MODULE_TYPE} from '@angular/platform-browser/animations';
+import { ANIMATION_MODULE_TYPE } from '@angular/platform-browser/animations';
 
 /** Default color palette for round buttons (mat-fab and mat-mini-fab) */
 const DEFAULT_ROUND_BUTTON_COLOR = 'accent';
@@ -52,17 +48,17 @@ const BUTTON_HOST_ATTRIBUTES = [
 // Boilerplate for applying mixins to MatButton.
 /** @docs-private */
 class MatButtonBase {
-  constructor(public _elementRef: ElementRef) {}
+  constructor(public _elementRef: ElementRef) { }
 }
 
-const _MatButtonMixinBase: CanDisableRippleCtor & CanDisableCtor & CanColorCtor &
-    typeof MatButtonBase = mixinColor(mixinDisabled(mixinDisableRipple(MatButtonBase)));
+const _MatButtonMixinBase: CanDisableCtor & CanColorCtor &
+  typeof MatButtonBase = mixinColor(mixinDisabled(MatButtonBase));
 
 /**
  * Material design button.
  */
 @Component({
-  
+
   selector: `button[mat-button], button[mat-raised-button], button[mat-icon-button],
              button[mat-fab], button[mat-mini-fab], button[mat-stroked-button],
              button[mat-flat-button]`,
@@ -73,12 +69,12 @@ const _MatButtonMixinBase: CanDisableRippleCtor & CanDisableCtor & CanColorCtor 
   },
   templateUrl: 'button.html',
   styleUrls: ['button.scss'],
-  inputs: ['disabled', 'disableRipple', 'color'],
+  inputs: ['disabled', 'color'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MatButton extends _MatButtonMixinBase
-    implements OnDestroy, CanDisable, CanColor, CanDisableRipple, FocusableOption {
+  implements OnDestroy, CanDisable, CanColor, FocusableOption {
 
   /** Whether the button is round. */
   readonly isRoundButton: boolean = this._hasHostAttributes('mat-fab', 'mat-mini-fab');
@@ -86,12 +82,11 @@ export class MatButton extends _MatButtonMixinBase
   /** Whether the button is icon button. */
   readonly isIconButton: boolean = this._hasHostAttributes('mat-icon-button');
 
-  /** Reference to the MatRipple instance of the button. */
-  @ViewChild(MatRipple) ripple: MatRipple;
+
 
   constructor(elementRef: ElementRef,
-              private _focusMonitor: FocusMonitor,
-              @Optional() @Inject(ANIMATION_MODULE_TYPE) public _animationMode: string) {
+    private _focusMonitor: FocusMonitor,
+    @Optional() @Inject(ANIMATION_MODULE_TYPE) public _animationMode: string) {
     super(elementRef);
 
     // For each of the variant selectors that is present in the button's host
@@ -129,10 +124,6 @@ export class MatButton extends _MatButtonMixinBase
     return this._elementRef.nativeElement;
   }
 
-  _isRippleDisabled() {
-    return this.disableRipple || this.disabled;
-  }
-
   /** Gets whether the button has one of the given attributes. */
   _hasHostAttributes(...attributes: string[]) {
     return attributes.some(attribute => this._getHostElement().hasAttribute(attribute));
@@ -143,7 +134,7 @@ export class MatButton extends _MatButtonMixinBase
  * Material design anchor button.
  */
 @Component({
-  
+
   selector: `a[mat-button], a[mat-raised-button], a[mat-icon-button], a[mat-fab],
              a[mat-mini-fab], a[mat-stroked-button], a[mat-flat-button]`,
   exportAs: 'matButton, matAnchor',
@@ -157,7 +148,7 @@ export class MatButton extends _MatButtonMixinBase
     '(click)': '_haltDisabledEvents($event)',
     '[class._mat-animation-noopable]': '_animationMode === "NoopAnimations"',
   },
-  inputs: ['disabled', 'disableRipple', 'color'],
+  inputs: ['disabled', 'color'],
   templateUrl: 'button.html',
   styleUrls: ['button.scss'],
   encapsulation: ViewEncapsulation.None,

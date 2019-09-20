@@ -2,7 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component, DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {MatButtonModule, MatButton} from './index';
-import {MatRipple, ThemePalette} from '../core';
+import {ThemePalette} from '../core';
 
 
 describe('MatButton', () => {
@@ -41,13 +41,6 @@ describe('MatButton', () => {
     expect(aDebugElement.nativeElement.classList).not.toContain('mat-accent');
   });
 
-  it('should expose the ripple instance', () => {
-    const fixture = TestBed.createComponent(TestApp);
-    fixture.detectChanges();
-
-    const button = fixture.debugElement.query(By.directive(MatButton)).componentInstance;
-    expect(button.ripple).toBeTruthy();
-  });
 
   it('should not clear previous defined classes', () => {
     let fixture = TestBed.createComponent(TestApp);
@@ -203,60 +196,7 @@ describe('MatButton', () => {
     });
   });
 
-  // Ripple tests.
-  describe('button ripples', () => {
-    let fixture: ComponentFixture<TestApp>;
-    let testComponent: TestApp;
-    let buttonDebugElement: DebugElement;
-    let buttonRippleDebugElement: DebugElement;
-    let buttonRippleInstance: MatRipple;
-    let anchorDebugElement: DebugElement;
-    let anchorRippleDebugElement: DebugElement;
-    let anchorRippleInstance: MatRipple;
 
-    beforeEach(() => {
-      fixture = TestBed.createComponent(TestApp);
-      fixture.detectChanges();
-
-      testComponent = fixture.componentInstance;
-
-      buttonDebugElement = fixture.debugElement.query(By.css('button[mat-button]'));
-      buttonRippleDebugElement = buttonDebugElement.query(By.directive(MatRipple));
-      buttonRippleInstance = buttonRippleDebugElement.injector.get<MatRipple>(MatRipple);
-
-      anchorDebugElement = fixture.debugElement.query(By.css('a[mat-button]'));
-      anchorRippleDebugElement = anchorDebugElement.query(By.directive(MatRipple));
-      anchorRippleInstance = anchorRippleDebugElement.injector.get<MatRipple>(MatRipple);
-    });
-
-    it('should disable the ripple if matRippleDisabled input is set', () => {
-      expect(buttonRippleInstance.disabled).toBeFalsy();
-
-      testComponent.rippleDisabled = true;
-      fixture.detectChanges();
-
-      expect(buttonRippleInstance.disabled).toBeTruthy();
-    });
-
-    it('should disable the ripple when the button is disabled', () => {
-      expect(buttonRippleInstance.disabled).toBeFalsy(
-        'Expected an enabled button[mat-button] to have an enabled ripple'
-      );
-      expect(anchorRippleInstance.disabled).toBeFalsy(
-        'Expected an enabled a[mat-button] to have an enabled ripple'
-      );
-
-      testComponent.isDisabled = true;
-      fixture.detectChanges();
-
-      expect(buttonRippleInstance.disabled).toBeTruthy(
-        'Expected a disabled button[mat-button] not to have an enabled ripple'
-      );
-      expect(anchorRippleInstance.disabled).toBeTruthy(
-        'Expected a disabled a[mat-button] not to have an enabled ripple'
-      );
-    });
-  });
 });
 
 /** Test component that contains an MatButton. */
@@ -264,7 +204,7 @@ describe('MatButton', () => {
   selector: 'test-app',
   template: `
     <button [tabIndex]="tabIndex" mat-button type="button" (click)="increment()"
-      [disabled]="isDisabled" [color]="buttonColor" [disableRipple]="rippleDisabled">
+      [disabled]="isDisabled" [color]="buttonColor" >
       Go
     </button>
     <a [tabIndex]="tabIndex" href="http://www.google.com" mat-button [disabled]="isDisabled"
@@ -278,7 +218,7 @@ describe('MatButton', () => {
 class TestApp {
   clickCount: number = 0;
   isDisabled: boolean = false;
-  rippleDisabled: boolean = false;
+ 
   buttonColor: ThemePalette;
   tabIndex: number;
 

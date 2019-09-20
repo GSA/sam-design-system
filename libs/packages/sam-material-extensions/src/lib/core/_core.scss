@@ -6,7 +6,7 @@
 
 // Core styles that can be used to apply material design treatments to any element.
 @import 'style/elevation';
-@import 'ripple/ripple';
+
 @import 'option/option-theme';
 @import 'option/optgroup-theme';
 @import 'selection/pseudo-checkbox/pseudo-checkbox-theme';
@@ -15,7 +15,6 @@
 // Mixin that renders all of the core styles that are not theme-dependent.
 @mixin mat-core($typography-config: null) {
   @include angular-material-typography($typography-config);
-  @include mat-ripple();
   @include cdk-a11y();
   @include cdk-overlay();
   @include cdk-text-field();
