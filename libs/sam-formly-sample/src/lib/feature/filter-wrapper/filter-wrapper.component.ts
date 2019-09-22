@@ -46,6 +46,7 @@ export class FilterWrapperComponent implements OnInit {
           key: 'legalBusinessName',
           type: 'input',
           templateOptions: {
+            tagText: 'SAM',
             label: 'Entity Name',
             placeholder: '',
             inputType: 'text',
@@ -55,7 +56,8 @@ export class FilterWrapperComponent implements OnInit {
           key: 'uniqueEntityIdSam',
           type: 'input',
           templateOptions: {
-            required: true,
+            tagText: 'DUNS',
+            tagColor: 'purple',
             label: 'Unique Entity ID (SAM)',
             placeholder: '',
             min: 13,
