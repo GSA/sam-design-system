@@ -7,7 +7,8 @@ import { FieldWrapper } from '@ngx-formly/core';
   <div class="usa-form-group" [class.usa-form-group--error]="showError">
   <label class="usa-label" *ngIf="to.label && to.hideLabel !== true" [attr.for]="id">
 
-  <span style="display:inline;" *ngIf="to.tagText" class="usa-tag usa-static--tag sds-tag--info-{{to.tagColor ? to.tagColor : 'white' }}">
+  <span style="display:inline;" *ngIf="to.tagText" class="usa-tag usa-static--tag"
+  [ngClass]="to.tagClass ? to.tagClass : 'sds-tag--info-white'">
   {{to.tagText}}</span> 
   <span>{{ to.label }}</span>
     <span *ngIf="to.required && to.hideRequiredMarker !== true">*</span>
