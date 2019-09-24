@@ -6,7 +6,6 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-export {MatCommonModule, MATERIAL_SANITY_CHECKS} from './common-module';
 export {CanDisable, CanDisableCtor, mixinDisabled} from './disabled';
 export {CanColor, CanColorCtor, mixinColor, ThemePalette} from './color';
 export {HasTabIndex, HasTabIndexCtor, mixinTabIndex} from './tabindex';

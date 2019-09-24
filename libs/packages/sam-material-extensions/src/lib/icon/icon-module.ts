@@ -6,14 +6,13 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {NgModule} from '@angular/core';
-import {MatCommonModule} from '../core';
-import {MatIcon} from './icon';
+import { NgModule } from '@angular/core';
+
+import { MatIcon } from './icon';
 
 
 @NgModule({
-  imports: [MatCommonModule],
-  exports: [MatIcon, MatCommonModule],
+  exports: [MatIcon],
   declarations: [MatIcon],
 })
-export class MatIconModule {}
+export class MatIconModule { }

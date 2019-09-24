@@ -10,7 +10,6 @@ import {OverlayModule} from '@angular/cdk/overlay';
 import {PortalModule} from '@angular/cdk/portal';
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {MatCommonModule} from '../core';
 import {MAT_DIALOG_SCROLL_STRATEGY_PROVIDER, MatDialog} from './dialog';
 import {MatDialogContainer} from './dialog-container';
 import {
@@ -25,16 +24,14 @@ import {
   imports: [
     CommonModule,
     OverlayModule,
-    PortalModule,
-    MatCommonModule,
+    PortalModule
   ],
   exports: [
     MatDialogContainer,
     MatDialogClose,
     MatDialogTitle,
     MatDialogContent,
-    MatDialogActions,
-    MatCommonModule,
+    MatDialogActions
   ],
   declarations: [
     MatDialogContainer,

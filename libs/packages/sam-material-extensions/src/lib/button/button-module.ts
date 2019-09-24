@@ -8,19 +8,16 @@
 
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {MatCommonModule} from '../core';
 import {MatAnchor, MatButton} from './button';
 
 
 @NgModule({
   imports: [
     CommonModule,
-    MatCommonModule,
   ],
   exports: [
     MatButton,
-    MatAnchor,
-    MatCommonModule,
+    MatAnchor   
   ],
   declarations: [
     MatButton,

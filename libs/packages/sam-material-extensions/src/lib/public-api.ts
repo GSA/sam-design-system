@@ -1,6 +1,5 @@
-export * from './packages-sam-material-extensions.module';
-export * from './input';
-export * from './form-field';
-export * from './datepicker';
-export * from './core'
+export * from './input/index';
+export * from './form-field/index';
+export * from './datepicker/index';
+export * from './core/index';
 
