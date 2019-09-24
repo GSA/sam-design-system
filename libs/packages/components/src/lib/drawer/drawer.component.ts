@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, TemplateRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, TemplateRef, ViewChild, ElementRef, AfterViewChecked, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { sdsDrawerAnimation } from '../drawer/drawer-animation';
 
 @Component({
@@ -12,13 +12,17 @@ export class SdsDrawerComponent {
   * Allow to insert a customized template for suggestions to use
   */
  @Input() contentTemplate: TemplateRef<any>;
- @Output() isDrawerOpen = new EventEmitter<boolean>();
+ @Output() isDrawerOpen = new EventEmitter<number>();
+ @ViewChild('drawer') drawer: ElementRef;
  
   isOpen = false;
 
   toggle() {
     this.isOpen = !this.isOpen;
-    this.isDrawerOpen.emit(this.isOpen);
+    setTimeout(() => {
+      this.cdRef.detectChanges();
+        this.isDrawerOpen.emit(this.drawer.nativeElement.offsetHeight);
+    }, 100);
   }
-  constructor() {}
+  constructor(private cdRef:ChangeDetectorRef) {}
 }

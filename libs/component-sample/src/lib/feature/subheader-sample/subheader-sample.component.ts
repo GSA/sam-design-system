@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class SubheaderSampleComponent {
 
-  public isDrawerOpen = false;
+  public isDrawerOpen = 0;
   subheader = {
     buttons: [
       { id: 'FirstButton', text: 'Button', class: 'usa-button--secondary' },

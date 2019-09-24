@@ -17,7 +17,7 @@ export const sdsDrawerAnimation: {
     minHeight: '200px',
     backgroundColor: '#eff6fb',
     position: 'absolute',
-    left: '-55%',
+    // left: '-55%',
     margin: '20px 0 0 0',
     width: '994px',
     transform: 'scale(1)'
