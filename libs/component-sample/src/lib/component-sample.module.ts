@@ -33,6 +33,8 @@ import { DialogSampleComponent } from './feature/dialog-sample/dialog-sample.com
 import { ActionsMenuSampleComponent } from './feature/actions-menu-sample/actions-menu-sample.component';
 import { ActionsMenuSampleModule } from './feature/actions-menu-sample/actions-menu-sample.module';
 
+import { DatepickerSampleComponent } from './feature/datepicker/datepicker.component';
+import { DatepickerSampleModule } from './feature/datepicker/datepicker.module';
 export const ROUTES: Routes = [
   { path: 'header', component: HeaderSampleComponent },
   { path: 'footer', component: FooterSampleComponent },
@@ -45,7 +47,8 @@ export const ROUTES: Routes = [
   { path: 'subheader', component: SubheaderSampleComponent },
   { path: 'autocomplete', component: AutocompleteSampleComponent },
   { path: 'dialog', component: DialogSampleComponent },
-  { path: 'actions-menu', component: ActionsMenuSampleComponent}
+  { path: 'actions-menu', component: ActionsMenuSampleComponent },
+  { path: 'datepicker', component: DatepickerSampleComponent }
 ];
 
 @NgModule({
@@ -67,7 +70,8 @@ export const ROUTES: Routes = [
     SubheaderSampleModule,
     AutocompleteSampleModule,
     DialogSampleModule,
-    ActionsMenuSampleModule
+    ActionsMenuSampleModule,
+    DatepickerSampleModule
   ],
   exports: [RouterModule]
 })
