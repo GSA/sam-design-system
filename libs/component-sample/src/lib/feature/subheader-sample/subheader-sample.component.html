@@ -15,14 +15,13 @@
 
     <!-- =============== ACTIONS BUTTONS =============== -->
     <sds-subheader-actions [model]="subheader.actions" (clicks)="log($event)"></sds-subheader-actions>
-    <!-- =============== DRAWER BUTTONS =============== -->
-    <sds-subheader-drawer-button (isDrawerOpen)="isDrawerOpen = $event" [drawerContentTemplate]="temp"></sds-subheader-drawer-button>
     <!-- =============== DRAWER CONTENT =============== -->
-    <sds-drawer-content [drawerContentTemplate]="temp" [isDrawerOpen]="isDrawerOpen"></sds-drawer-content>
+    <sds-subheader-drawer [drawerContentTemplate]="temp"></sds-subheader-drawer>
+   
   </sds-subheader>
 
   <ng-template #temp>
-    <div style="margin-top:-15px;">
+    <div style="margin-top:-15px; background-color: #eff6fb; padding:0 10px;">
       <p>Contract Opportunities</p>
       <p>Contracting organisation across the federal government post notice on proposed contract actions( value at more
         that $2500).

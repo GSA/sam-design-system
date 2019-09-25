@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter, Input, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, TemplateRef } from '@angular/core';
+import { SdsDrawerCommunicationService } from './drawer-communication.service';
 
 @Component({
   selector: 'sds-subheader',
@@ -38,17 +39,21 @@ export class SdsSubheaderActionsComponent {
 }
 
 @Component({
-  selector: 'sds-subheader-drawer-button',
+  selector: 'sds-subheader-drawer',
   templateUrl: 'subheader-drawer.component.html'
 })
-export class SdsSubheaderDrawerComponent {
+export class SdsSubheaderDrawerComponent implements OnInit{
   @Input() drawerContentTemplate: TemplateRef<any>;
   @Output() isDrawerOpen = new EventEmitter<boolean>();
   isOpen = false;
-  constructor() {}
+
+  constructor(public data : SdsDrawerCommunicationService) {}
   onDrawerOpenClose(ev) {
     this.isOpen = !this.isOpen;
-    this.isDrawerOpen.emit(this.isOpen)
+    this.data.onDrawerOpen(this.isOpen, this.drawerContentTemplate);
+  }
+  ngOnInit() {
+  
   }
 }
 
@@ -56,25 +61,13 @@ export class SdsSubheaderDrawerComponent {
   selector: 'sds-drawer-content',
   templateUrl: 'drawer.content.component.html'
 })
-export class SdsDrawerContentComponent {
-  @Input() drawerContentTemplate: TemplateRef<any>;
-  @Input() isDrawerOpen: boolean = false;
+export class SdsDrawerContentComponent implements OnInit{
+  drawerContentTemplate: TemplateRef<any>;
+  isDrawerOpen: boolean = false;
 
-}
-
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-
-@Injectable()
-export class DataService {
-
-  private messageSource = new BehaviorSubject('default message');
-  currentMessage = this.messageSource.asObservable();
-
-  constructor() { }
-
-  changeMessage(message: string) {
-    this.messageSource.next(message)
+  constructor(public data : SdsDrawerCommunicationService) {}
+  ngOnInit() {
+   this.data.contentTemplate.subscribe( temp => this.drawerContentTemplate = temp);
+   this.data.isDrawerOpen.subscribe( open => this.isDrawerOpen = open);
   }
-
 }
