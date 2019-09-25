@@ -67,7 +67,7 @@ export class SdsDrawerContentComponent implements OnInit{
 
   constructor(public data : SdsDrawerCommunicationService) {}
   ngOnInit() {
-   this.data.contentTemplate.subscribe( temp => this.drawerContentTemplate = temp);
+   this.data.contentTemplate.subscribe( template => this.drawerContentTemplate = template);
    this.data.isDrawerOpen.subscribe( open => this.isDrawerOpen = open);
   }
 }
