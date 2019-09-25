@@ -41,29 +41,31 @@ export class FilterWrapperComponent implements OnInit {
       key: 'searchEntity',
       wrappers: ['accordionwrapper'],
       templateOptions: { label: 'Entity' },
-      fieldGroup: [
-        {
-          key: 'legalBusinessName',
-          type: 'input',
-          templateOptions: {
-            label: 'Entity Name',
-            placeholder: '',
-            inputType: 'text',
-          },
-        },
+      fieldGroup: [       
         {
           key: 'uniqueEntityIdSam',
           type: 'input',
           templateOptions: {
-            required: true,
-            label: 'Unique Entity ID (SAM)',
+            tagText: 'DUNS',
+            tagClass: 'sds-tag--info-purple',
+            label: 'Unique Entity ID',
             placeholder: '',
             min: 13,
             max: 40,
             inputType: 'number',
             inputStyle: 'error',
           },
-        }
+        },
+        {
+          key: 'legalBusinessName',
+          type: 'input',
+          templateOptions: {
+            tagText: 'SAM',
+            label: 'Unique Entity ID',
+            placeholder: '',
+            inputType: 'text',
+          },
+        },
       ],
     },
     {

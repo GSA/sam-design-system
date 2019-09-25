@@ -11,9 +11,12 @@ import {
   SdsSubheaderComponent,
   SdsSubheaderActionsComponent,
   SdsSubheaderSearchComponent,
-  SdsSubheaderButtonsComponent
+  SdsSubheaderButtonsComponent,
+  SdsSubheaderDrawerComponent,
+  SdsDrawerContentComponent
 } from './subheader.component';
 import { SdsActionsMenuModule } from '../actions-menu/actions-menu.module';
+import { SdsDrawerCommunicationService } from './drawer-communication.service';
 
 @NgModule({
   imports: [
@@ -29,14 +32,19 @@ import { SdsActionsMenuModule } from '../actions-menu/actions-menu.module';
     SdsSubheaderComponent,
     SdsSubheaderActionsComponent,
     SdsSubheaderSearchComponent,
-    SdsSubheaderButtonsComponent
+    SdsSubheaderButtonsComponent,
+    SdsSubheaderDrawerComponent,
+    SdsDrawerContentComponent,
+    
   ],
   declarations: [
     SdsSubheaderComponent,
     SdsSubheaderActionsComponent,
     SdsSubheaderSearchComponent,
-    SdsSubheaderButtonsComponent
+    SdsSubheaderButtonsComponent,
+    SdsSubheaderDrawerComponent,
+    SdsDrawerContentComponent
   ],
-  providers: []
+  providers: [SdsDrawerCommunicationService]
 })
 export class SdsSubheaderModule {}
