@@ -20,8 +20,4 @@ export class SearchResultListSampleDataComponent {
     ]
   };
 
-  log(value) {
-    console.log(`%cLog: ${value}`, 'color: blue; font-weight: bold');
-  }
-
 }
