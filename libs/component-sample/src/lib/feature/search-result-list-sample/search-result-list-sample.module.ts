@@ -13,10 +13,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { sds } from '@gsa-sam/sam-styles/src/icons/';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import { SdsActionsMenuModule } from '@sam-design-system/layouts';
 
 @NgModule({
   imports: [FontAwesomeModule, SdsSideNavigationModule, SdsAccordionModule, CommonModule, FormsModule,
-    SdsToolbarModule, SdsPageModule, SdsSearchResultListModule],
+    SdsToolbarModule, SdsPageModule, SdsSearchResultListModule, SdsActionsMenuModule],
   exports: [SearchResultListSampleComponent],
   declarations: [SearchResultListSampleComponent, SearchResultListSampleDataComponent, SearchResultListSampleData2Component],
   providers: []

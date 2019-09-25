@@ -8,7 +8,7 @@
           {{model.text}} Entity: {{model.id}}
         </a>
         <div class="action-menu-wrapper float-right">
-            <div class="action-menu-placeholder"><fa-icon [icon]="['fas', 'ellipsis-v']" size="1x"></fa-icon></div>
+          <sds-actions-menu [model]="menu" (clicks)="log($event)"></sds-actions-menu>
         </div>
       </h3>
     </div>
@@ -190,17 +190,17 @@
               <div class="grid-col">
                 <div class="grid-row">
                   <div class="grid-col-fill">
-                    <div class="sds-alert sds-alert--small margin-right-1 padding-05">
-                      <div class="fa-alert-warning">
-                        <fa-icon [icon]="['sds', 'exclamation']" size="3x"></fa-icon>
-                      </div>
-                      <div class="sds-alert-content">
-                        <p class="usa-static text-italic">Address Update Available</p>
-                        <span class="usa-static">
-                          <div>123456 George Washington Boulevard, Suite 4a</div>
-                          <div>Ashburn, VA 20147 United States</div>
-                        </span>
-                      </div>
+                    <div class="sds-alert--block margin-right-1 padding-05">
+                        <div class="sds-alert--block-icon grid-col-auto">
+                          <fa-icon [icon]="['sds', 'exclamation']" size="3x"></fa-icon>
+                        </div>
+                        <div class="grid-col">
+                          <div class="usa-static-label text-italic">Address Update Available</div>
+                          <div class="usa-static">
+                            <div>123456 George Washington Boulevard, Suite 4a</div>
+                            <div>Ashburn, VA 20147 United States</div>
+                          </div>
+                        </div>
                     </div>
                   </div>
                 </div>

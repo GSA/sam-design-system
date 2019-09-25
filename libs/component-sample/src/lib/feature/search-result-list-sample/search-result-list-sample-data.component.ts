@@ -9,6 +9,19 @@ export class SearchResultListSampleDataComponent {
 
   constructor(private change: ChangeDetectorRef) { }
 
-@Input() model;
+  @Input() model;
+
+  menu = {
+    trigger: 'primary',
+    actions: [
+      { id: 'DownloadBtn', icon: 'bars', text: 'Download' },
+      { id: 'FollowBtn', icon: 'bars', text: 'Follow' },
+      { id: 'ShareBtn', icon: 'bars', text: 'Share' }
+    ]
+  };
+
+  log(value) {
+    console.log(`%cLog: ${value}`, 'color: blue; font-weight: bold');
+  }
 
 }
