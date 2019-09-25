@@ -47,7 +47,7 @@ export const ROUTES: Routes = [
   { path: 'subheader', component: SubheaderSampleComponent },
   { path: 'autocomplete', component: AutocompleteSampleComponent },
   { path: 'dialog', component: DialogSampleComponent },
-  { path: 'actions-menu', component: ActionsMenuSampleComponent},
+  { path: 'actions-menu', component: ActionsMenuSampleComponent },
   { path: 'datepicker', component: DatepickerSampleComponent }
 ];
 
