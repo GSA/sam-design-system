@@ -20,4 +20,8 @@ export class SearchResultListSampleDataComponent {
     ]
   };
 
+  log(value) {
+    console.log(`%cLog: ${value} clicked in result item ${this.model.id}`, 'color: blue; font-weight: bold');
+  }
+
 }
