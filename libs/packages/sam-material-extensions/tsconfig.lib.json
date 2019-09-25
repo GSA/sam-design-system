@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-	"outDir": "../../../dist/out-tsc/libs/packages/sam-material-extensions",
+	  "outDir": "../../../dist/out-tsc/libs/sam-material-extensions",
     "target": "es2015",
     "module": "es2015",
     "moduleResolution": "node",

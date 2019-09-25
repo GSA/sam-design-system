@@ -11,6 +11,7 @@
     "@angular/core": "^7.2.0",
     "@ngx-formly/core": "0.0.0-FORMLY-VERSION",
     "@gsa-sam/components": ">=0.2.1",
+    "@sam-design-system/sam-material-extensions": ">=0.6.0",
     "@fortawesome/angular-fontawesome": "^0.3.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.17",
     "@fortawesome/free-solid-svg-icons": "^5.8.1"

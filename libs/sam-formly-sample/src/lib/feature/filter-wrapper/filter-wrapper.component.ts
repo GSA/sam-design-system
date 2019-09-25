@@ -14,9 +14,9 @@ export class FilterWrapperComponent implements OnInit {
   form = new FormGroup({});
   model = {};
   options: FormlyFormOptions = {};
-    /**
-   * Event when something is checked/selected in the grid
-   */
+  /**
+ * Event when something is checked/selected in the grid
+ */
   public filterChange$ = new BehaviorSubject<object>(null);
 
 
@@ -104,7 +104,7 @@ export class FilterWrapperComponent implements OnInit {
             placeholder: '',
             inputType: 'text',
           },
-        },
+        }
       ]
     },
     {
@@ -113,19 +113,26 @@ export class FilterWrapperComponent implements OnInit {
       templateOptions: { label: 'Expiration Date' },
       fieldGroup: [
         {
+          key: 'entityDate',
+          type: 'datepicker',
+          templateOptions: {
+            label: 'Expiration Date',
+            startDate: new Date(2019,11,25),
+            minDate: new Date(2019,8,15),
+            maxDate: new Date(2020, 0, 1)
+          }
+        },
+        {
           key: 'expirationDateOption',
           type: 'radio',
           templateOptions: {
-            label:'Expiration Date',
+            label: 'Expiration Date',
             options: [
               { label: '30 Days', value: '30' },
               { label: '60 Days', value: '60' },
               { label: '90 Days', value: '90' },
-
             ]
           },
-
-          
         },
         {
           key: 'entityCheckbox',
@@ -207,7 +214,7 @@ export class FilterWrapperComponent implements OnInit {
     this.filterChange$.subscribe(
       res =>
         this.results = res
-  );
+    );
   }
 
 }
