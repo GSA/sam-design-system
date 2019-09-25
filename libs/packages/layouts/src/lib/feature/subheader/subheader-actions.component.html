@@ -3,7 +3,7 @@
   <button
     *ngFor="let button of model"
     (click)="clicks.emit(button.id)"
-    class="usa-button sds-button--circle"
+    class="usa-button usa-button--base ssds-button--circle"
   >
     <fa-icon [fixedWidth]="true" [icon]="['sds', button.icon]"></fa-icon>
   </button>

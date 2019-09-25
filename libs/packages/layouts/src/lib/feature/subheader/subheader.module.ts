@@ -16,7 +16,6 @@ import {
   SdsDrawerContentComponent
 } from './subheader.component';
 import { SdsActionsMenuModule } from '../actions-menu/actions-menu.module';
-import { SdsDrawerModule } from '@gsa-sam/components';
 
 @NgModule({
   imports: [
@@ -26,8 +25,7 @@ import { SdsDrawerModule } from '@gsa-sam/components';
     SdsObserversModule,
     SdsSearchModule,
     SdsTruncateModule,
-    SdsActionsMenuModule,
-    SdsDrawerModule
+    SdsActionsMenuModule
   ],
   exports: [
     SdsSubheaderComponent,

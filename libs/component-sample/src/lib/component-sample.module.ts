@@ -32,8 +32,6 @@ import { DialogSampleModule } from './feature/dialog-sample/dialog-sample.module
 import { DialogSampleComponent } from './feature/dialog-sample/dialog-sample.component';
 import { ActionsMenuSampleComponent } from './feature/actions-menu-sample/actions-menu-sample.component';
 import { ActionsMenuSampleModule } from './feature/actions-menu-sample/actions-menu-sample.module';
-import { DrawerSampleComponent } from './feature/drawer-sample/drawer-sample.component';
-import { DrawerSampleModule } from './feature/drawer-sample/drawer-sample.module';
 
 import { DatepickerSampleComponent } from './feature/datepicker/datepicker.component';
 import { DatepickerSampleModule } from './feature/datepicker/datepicker.module';
@@ -50,7 +48,6 @@ export const ROUTES: Routes = [
   { path: 'autocomplete', component: AutocompleteSampleComponent },
   { path: 'dialog', component: DialogSampleComponent },
   { path: 'actions-menu', component: ActionsMenuSampleComponent},
-  { path: 'drawer', component: DrawerSampleComponent}
   { path: 'actions-menu', component: ActionsMenuSampleComponent },
   { path: 'datepicker', component: DatepickerSampleComponent }
 ];
@@ -75,7 +72,6 @@ export const ROUTES: Routes = [
     AutocompleteSampleModule,
     DialogSampleModule,
     ActionsMenuSampleModule,
-    DrawerSampleModule,
     DatepickerSampleModule
   ],
   exports: [RouterModule]
