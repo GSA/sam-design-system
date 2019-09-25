@@ -38,11 +38,25 @@ export class SdsSubheaderActionsComponent {
 }
 
 @Component({
-  selector: 'sds-subheader-drawer',
+  selector: 'sds-subheader-drawer-button',
   templateUrl: 'subheader-drawer.component.html'
 })
 export class SdsSubheaderDrawerComponent {
   @Output() isDrawerOpen = new EventEmitter<boolean>();
-  @Input() contentTemplate: TemplateRef<any>;
+  isOpen = false;
   constructor() {}
+  onDrawerOpenClose(ev) {
+    this.isOpen = !this.isOpen;
+    this.isDrawerOpen.emit(this.isOpen)
+  }
+}
+
+@Component({
+  selector: 'sds-drawer-content',
+  templateUrl: 'drawer.content.component.html'
+})
+export class SdsDrawerContentComponent {
+  @Input() drawerContentTemplate: TemplateRef<any>;
+  @Input() isDrawerOpen: boolean = false;
+
 }

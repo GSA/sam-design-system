@@ -12,7 +12,8 @@ import {
   SdsSubheaderActionsComponent,
   SdsSubheaderSearchComponent,
   SdsSubheaderButtonsComponent,
-  SdsSubheaderDrawerComponent
+  SdsSubheaderDrawerComponent,
+  SdsDrawerContentComponent
 } from './subheader.component';
 import { SdsActionsMenuModule } from '../actions-menu/actions-menu.module';
 import { SdsDrawerModule } from '@gsa-sam/components';
@@ -33,14 +34,16 @@ import { SdsDrawerModule } from '@gsa-sam/components';
     SdsSubheaderActionsComponent,
     SdsSubheaderSearchComponent,
     SdsSubheaderButtonsComponent,
-    SdsSubheaderDrawerComponent
+    SdsSubheaderDrawerComponent,
+    SdsDrawerContentComponent
   ],
   declarations: [
     SdsSubheaderComponent,
     SdsSubheaderActionsComponent,
     SdsSubheaderSearchComponent,
     SdsSubheaderButtonsComponent,
-    SdsSubheaderDrawerComponent
+    SdsSubheaderDrawerComponent,
+    SdsDrawerContentComponent
   ],
   providers: []
 })

@@ -1,47 +1,46 @@
 <div class="container">
   <sds-subheader>
     <!-- =============== TITLE =============== -->
-  
-    <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor a enim
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor a enim
     ac molestie. Nam ut risus magna. Quisque at pulvinar sem, id dictum ipsum. Nam
     commodo rhoncus mauris, id gravida lorem congue nec. Sed dictum, tellus sed
-    commodo sempertr -->
-  
+    commodo sempertr
+
     <!-- =============== PRIMARY/SECONDARY BUTTONS =============== -->
-    <sds-subheader-buttons
-      [model]="subheader.buttons"
-      (clicks)="log($event)"
-    ></sds-subheader-buttons>
-  
+    <sds-subheader-buttons [model]="subheader.buttons" (clicks)="log($event)"></sds-subheader-buttons>
+
     <!-- =============== SEARCH =============== -->
     <sds-subheader-search (searchTerm)="log($event)"> </sds-subheader-search>
-  
+
     <!-- =============== ACTIONS BUTTONS =============== -->
-    <sds-subheader-actions
-      [model]="subheader.actions"
-      (clicks)="log($event)"
-    ></sds-subheader-actions>
-  
-    <sds-subheader-drawer [contentTemplate]="temp" (isDrawerOpen)="isDrawerOpen = $event"></sds-subheader-drawer>
+    <sds-subheader-actions [model]="subheader.actions" (clicks)="log($event)"></sds-subheader-actions>
+    <!-- =============== DRAWER BUTTONS =============== -->
+    <sds-subheader-drawer-button (isDrawerOpen)="isDrawerOpen = $event"></sds-subheader-drawer-button>
+    <!-- =============== DRAWER CONTENT =============== -->
+    <sds-drawer-content [drawerContentTemplate]="temp" [isDrawerOpen]="isDrawerOpen"></sds-drawer-content>
   </sds-subheader>
 
   <ng-template #temp>
-    <div style="width:1700px;">
-    <h1>Contract Opportunities</h1>
-  <p>Contracting organisation across the federal government post notice on proposed contract actions( value at more that $2500).
-    These procurement opportunities including solicitations, pre-solicitation, sole source justifications, and other notices.
-  </p>
-  <h4>Search tips</h4>
-  <ul>
-    <li>
-      Account are not required to view contact opportunities. Create an account to save search, add your entity to an 
-      opportunity's
-    </li>
-    <li>
-      Search by keyword, solicitation ID, or agency name. Use filters to narrow your resultss
-    </li>
-  </ul>
-</div>
- </ng-template>
+    <div style="margin-top:-15px;">
+      <p>Contract Opportunities</p>
+      <p>Contracting organisation across the federal government post notice on proposed contract actions( value at more
+        that $2500).
+        These procurement opportunities including solicitations, pre-solicitation, sole source justifications, and
+        other notices.
+      </p>
+      <h4>Search tips</h4>
+      <ul>
+        <li>
+          Account are not required to view contact opportunities. Create an account to save search, add your entity to
+          an
+          opportunity's
+        </li>
+        <li>
+          Search by keyword, solicitation ID, or agency name. Use filters to narrow your resultss
+        </li>
+      </ul>
+    </div>
+  </ng-template>
   <div class="testData" [ngStyle]="{'margin-top' : isDrawerOpen + 'px'}">testing data</div>
-  </div>
+</div>
