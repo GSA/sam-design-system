@@ -13,7 +13,13 @@ module.exports = function(config) {
       dir: join(
         __dirname,
         '../../../coverage/libs/packages/sam-material-extensions'
-      )
+      ),
+      files: [
+        "../../../node_modules/@angular/cdk/overlay-prebuilt.css"
+      ]
     }
   });
 };
+
+
+
