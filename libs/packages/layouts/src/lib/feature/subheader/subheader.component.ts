@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input, TemplateRef } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, TemplateRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'sds-subheader',
@@ -42,6 +42,7 @@ export class SdsSubheaderActionsComponent {
   templateUrl: 'subheader-drawer.component.html'
 })
 export class SdsSubheaderDrawerComponent {
+  @Input() drawerContentTemplate: TemplateRef<any>;
   @Output() isDrawerOpen = new EventEmitter<boolean>();
   isOpen = false;
   constructor() {}
@@ -58,5 +59,22 @@ export class SdsSubheaderDrawerComponent {
 export class SdsDrawerContentComponent {
   @Input() drawerContentTemplate: TemplateRef<any>;
   @Input() isDrawerOpen: boolean = false;
+
+}
+
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+
+@Injectable()
+export class DataService {
+
+  private messageSource = new BehaviorSubject('default message');
+  currentMessage = this.messageSource.asObservable();
+
+  constructor() { }
+
+  changeMessage(message: string) {
+    this.messageSource.next(message)
+  }
 
 }

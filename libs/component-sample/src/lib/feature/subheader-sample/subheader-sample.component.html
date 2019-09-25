@@ -16,7 +16,7 @@
     <!-- =============== ACTIONS BUTTONS =============== -->
     <sds-subheader-actions [model]="subheader.actions" (clicks)="log($event)"></sds-subheader-actions>
     <!-- =============== DRAWER BUTTONS =============== -->
-    <sds-subheader-drawer-button (isDrawerOpen)="isDrawerOpen = $event"></sds-subheader-drawer-button>
+    <sds-subheader-drawer-button (isDrawerOpen)="isDrawerOpen = $event" [drawerContentTemplate]="temp"></sds-subheader-drawer-button>
     <!-- =============== DRAWER CONTENT =============== -->
     <sds-drawer-content [drawerContentTemplate]="temp" [isDrawerOpen]="isDrawerOpen"></sds-drawer-content>
   </sds-subheader>
