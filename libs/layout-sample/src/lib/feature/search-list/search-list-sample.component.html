@@ -1,4 +1,4 @@
-<sds-page>
+<sds-page class="condensed">
   <!-- =============== PAGE OPTIONS =============== -->
   <sds-page-options>
     <!-- =============== TOOLBAR =============== -->
@@ -27,7 +27,7 @@
         <div class="grid-col-auto float-right">
           <div class="margin-left-1">
             <label
-              class="usa-label font-sans-2xs text-italic text-base margin-0"
+              class="usa-label font-sans-3xs text-italic text-base margin-0"
               for="options"
             >
               Sort by
@@ -35,7 +35,7 @@
             <select
               (change)="onSelectChange()"
               [(ngModel)]="sortField"
-              class="usa-select border-base-light"
+              class="usa-select usa-select--small border-base-light"
               id="options"
             >
               <option value="text">Title</option>

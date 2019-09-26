@@ -1,278 +1,278 @@
 <div class="result-item-wrapper">
 
-    <!-- Item Heading -->
-    <div class="grid-row grid-gap">
-      <div class="grid-col">
-        <h2 class="margin-y-1">
-          <a class="usa-link" href="#">
-            {{model.text}} Entity: {{model.id}}
-          </a>
-          <div class="action-menu-wrapper float-right">
-              <div class="action-menu-placeholder"><fa-icon [icon]="['fas', 'ellipsis-v']" size="1x"></fa-icon></div>
+  <!-- Item Heading -->
+  <div class="grid-row grid-gap">
+    <div class="grid-col">
+      <h3 class="font-sans-xs margin-y-0">
+        <a class="usa-link" href="#">
+          {{model.text}} Entity: {{model.id}}
+        </a>
+        <div class="action-menu-wrapper float-right">
+          <sds-actions-menu [model]="menu" (clicks)="log($event)"></sds-actions-menu>
+        </div>
+      </h3>
+    </div>
+  </div>
+
+  <!-- Item Data -->
+  <div class="grid-row grid-gap">
+
+    <!-- 1st column -->
+    <div class="tablet:grid-col-4 grid-col-12">
+      <!-- Field Width -->
+      <div class="grid-row">
+
+        <!-- Duns Field Start -->
+        <div class="grid-col-12">
+
+          <div class="usa-form-group-horizontal">
+
+            <!-- Horizontal Config -->
+            <div class="grid-row">
+
+              <!-- Tag -->
+              <div class="grid-col-auto">
+                <div class="grid-row">
+                  <div class="grid-col-auto">
+                    <div class="usa-tag sds-tag--info-purple usa-static--tag">DUNS</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Key/Value Wrapper -->
+              <div class="grid-col">
+                <div class="grid-row">
+                  <div class="grid-col-auto">
+                    <div class="usa-static--label">Unique Entity ID:</div>
+                  </div>
+                  <div class="grid-col-fill">
+                    <p class="usa-static">902930291</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
           </div>
-        </h2>
+        </div>
+
+        <!-- UEI Field Start -->
+        <div class="grid-col-12">
+
+          <div class="usa-form-group-horizontal">
+
+            <!-- Horizontal Config -->
+            <div class="grid-row">
+
+              <!-- Tag -->
+              <div class="grid-col-auto">
+                <div class="grid-row">
+                  <div class="grid-col-auto">
+                    <div class="usa-tag sds-tag--info-white usa-static--tag">SAM</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Key/Value Wrapper -->
+              <div class="grid-col">
+                <div class="grid-row">
+                  <div class="grid-col-auto">
+                    <div class="usa-static--label">Unique Entity ID:</div>
+                  </div>
+                  <div class="grid-col-fill">
+                    <p class="usa-static">1A23B45C67D89E</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Cage/NCAGE Field Start -->
+        <div class="grid-col-12">
+
+          <div class="usa-form-group-horizontal">
+
+            <!-- Horizontal Config -->
+            <div class="grid-row">
+
+              <!-- Tag -->
+              <div class="grid-col-auto">
+                <div class="grid-row">
+                  <div class="grid-col-auto">
+                    <div class="usa-static--tag display-none"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Key/Value Wrapper -->
+              <div class="grid-col">
+                <div class="grid-row">
+                  <div class="grid-col-auto">
+                    <div class="usa-static--label">CAGE/NCAGE:</div>
+                  </div>
+                  <div class="grid-col-fill">
+                    <p class="usa-static">0D203</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
-    <!-- Item Data -->
-    <div class="grid-row grid-gap">
+    <!-- 2nd column -->
+    <div class="tablet:grid-col-4 grid-col-12">
+      <!-- Field Width -->
+      <div class="grid-row">
 
-      <!-- 1st column -->
-      <div class="tablet:grid-col-4 grid-col-12">
-        <!-- Field Width -->
-        <div class="grid-row">
+        <!-- Purpose of Registration Field Start -->
+        <div class="grid-col-12">
 
-          <!-- Duns Field Start -->
-          <div class="grid-col-12">
+          <div class="usa-form-group">
 
-            <div class="usa-form-group-horizontal">
+            <!-- Horizontal Config -->
+            <div class="grid-row">
 
-              <!-- Horizontal Config -->
-              <div class="grid-row">
-
-                <!-- Tag -->
-                <div class="grid-col-auto">
-                  <div class="grid-row">
-                    <div class="grid-col-auto">
-                      <div class="usa-tag sds-tag--info-purple usa-static--tag">DUNS</div>
-                    </div>
+              <!-- Key/Value Wrapper -->
+              <div class="grid-col">
+                <div class="grid-row">
+                  <div class="grid-col-12">
+                    <div class="usa-static--label">Purpose of Registration:</div>
+                  </div>
+                  <div class="grid-col-fill">
+                    <p class="usa-static">Federal Assistance Awards & IGT</p>
                   </div>
                 </div>
-
-                <!-- Label/Value Wrapper -->
-                <div class="grid-col">
-                  <div class="grid-row">
-                    <div class="grid-col-auto">
-                      <label class="usa-static--label">Unique Entity ID:</label>
-                    </div>
-                    <div class="grid-col-fill">
-                      <p class="usa-static">902930291</p>
-                    </div>
-                  </div>
-                </div>
-
               </div>
+
             </div>
           </div>
-
-          <!-- UEI Field Start -->
-          <div class="grid-col-12">
-
-            <div class="usa-form-group-horizontal">
-
-              <!-- Horizontal Config -->
-              <div class="grid-row">
-
-                <!-- Tag -->
-                <div class="grid-col-auto">
-                  <div class="grid-row">
-                    <div class="grid-col-auto">
-                      <div class="usa-tag sds-tag--info-white usa-static--tag">SAM</div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Label/Value Wrapper -->
-                <div class="grid-col">
-                  <div class="grid-row">
-                    <div class="grid-col-auto">
-                      <label class="usa-static--label">Unique Entity ID:</label>
-                    </div>
-                    <div class="grid-col-fill">
-                      <p class="usa-static">123456789</p>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-          <!-- Cage/NCAGE Field Start -->
-          <div class="grid-col-12">
-
-            <div class="usa-form-group-horizontal">
-
-              <!-- Horizontal Config -->
-              <div class="grid-row">
-
-                <!-- Tag -->
-                <div class="grid-col-auto">
-                  <div class="grid-row">
-                    <div class="grid-col-auto">
-                      <div class="usa-static--tag display-none"></div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Label/Value Wrapper -->
-                <div class="grid-col">
-                  <div class="grid-row">
-                    <div class="grid-col-auto">
-                      <label class="usa-static--label">CAGE/NCAGE:</label>
-                    </div>
-                    <div class="grid-col-fill">
-                      <p class="usa-static">0D203</p>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
         </div>
-      </div>
 
-      <!-- 2nd column -->
-      <div class="tablet:grid-col-4 grid-col-12">
-        <!-- Field Width -->
-        <div class="grid-row">
+        <!-- Address Field Start -->
+        <div *ngIf="model.id!==3" class="grid-col-12">
 
-          <!-- Purpose of Registration Field Start -->
-          <div class="grid-col-12">
+          <div class="usa-form-group">
 
-            <div class="usa-form-group">
+            <!-- Horizontal Config -->
+            <div class="grid-row">
 
-              <!-- Horizontal Config -->
-              <div class="grid-row">
-
-                <!-- Label/Value Wrapper -->
-                <div class="grid-col">
-                  <div class="grid-row">
-                    <div class="grid-col-12">
-                      <label class="usa-static--label">Purpose of Registration:</label>
-                    </div>
-                    <div class="grid-col-fill">
-                      <p class="usa-static">Federal Assistance Awards & IGT</p>
-                    </div>
+              <!-- Key/Value Wrapper -->
+              <div class="grid-col">
+                <div class="grid-row">
+                  <div class="grid-col-12">
+                    <div class="usa-static--label">Physical Address:</div>
+                  </div>
+                  <div class="grid-col-fill">
+                    <p class="usa-static">123456 George Washington Boulevard, Suite 4a</p>
+                    <p class="usa-static">Ashburn, VA 20147 United States</p>
                   </div>
                 </div>
-
               </div>
+
             </div>
           </div>
+        </div>
 
-          <!-- Address Field Start -->
-          <div *ngIf="model.id!==3" class="grid-col-12">
+        <!-- Address Field Start -->
+        <div *ngIf="model.id===3" class="grid-col-12">
 
-            <div class="usa-form-group">
+          <div class="usa-form-group-horizontal">
 
-              <!-- Horizontal Config -->
-              <div class="grid-row">
+            <!-- Horizontal Config -->
+            <div class="grid-row">
 
-                <!-- Label/Value Wrapper -->
-                <div class="grid-col">
-                  <div class="grid-row">
-                    <div class="grid-col-12">
-                      <label class="usa-static--label">Address:</label>
-                    </div>
-                    <div class="grid-col-fill">
-                      <p class="usa-static">123456 George Washington Boulevard, Suite 4a</p>
-                      <p class="usa-static">Ashburn, VA 20147 United States</p>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-          <!-- Address Field Start -->
-          <div *ngIf="model.id===3" class="grid-col-12">
-
-            <div class="usa-form-group-horizontal">
-
-              <!-- Horizontal Config -->
-              <div class="grid-row">
-
-                <!-- Label/Value Wrapper -->
-                <div class="grid-col">
-                  <div class="grid-row">
-                    <div class="grid-col-fill">
-                      <div class="sds-alert margin-right-1 padding-05">
-                        <div class="warning-icon-placeholder sds-alert">
+              <!-- Key/Value Wrapper -->
+              <div class="grid-col">
+                <div class="grid-row">
+                  <div class="grid-col-fill">
+                    <div class="sds-alert--block margin-right-1 padding-05">
+                        <div class="sds-alert--block-icon grid-col-auto">
                           <fa-icon [icon]="['sds', 'exclamation']" size="3x"></fa-icon>
                         </div>
-                        <div class="sds-alert-content">
-                          <p class="usa-static text-italic">Address Update Available</p>
-                          <span class="usa-static">
+                        <div class="grid-col">
+                          <div class="usa-static-label text-italic">Address Update Available</div>
+                          <div class="usa-static">
                             <div>123456 George Washington Boulevard, Suite 4a</div>
                             <div>Ashburn, VA 20147 United States</div>
-                          </span>
+                          </div>
                         </div>
-                      </div>
                     </div>
                   </div>
                 </div>
-
               </div>
+
             </div>
           </div>
-
         </div>
+
+      </div>
+    </div>
+
+    <div class="tablet:grid-col-4 grid-col-12">
+
+      <!-- Horizontal Config -->
+      <div class="grid-row grid-gap-05">
+
+        <!-- Key/Value Wrapper -->
+        <div class="tablet:grid-col-6 grid-col-4">
+          <div class="grid-row">
+            <div class="grid-col-12">
+              <div class="usa-static--label font-sans-3xs text-light text-italic">Status</div>
+            </div>
+            <div class="grid-col-12">
+              <span class="sds-tag sds-tag--static sds-tag--outline-green border--hairline">Active</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Key/Value Wrapper -->
+        <div class="tablet:grid-col-6 grid-col-4">
+          <div class="grid-row">
+            <div class="grid-col-12">
+              <div class="usa-static--label font-sans-3xs text-light text-italic">Expiration Date</div>
+            </div>
+            <div class="grid-col-12">
+              <span class="sds-tag sds-tag--static sds-tag--alt border--hairline">Feb 20, 2019</span>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <div class="tablet:grid-col-4 grid-col-12">
-
-        <!-- Horizontal Config -->
-        <div class="grid-row grid-gap-1">
-
-          <!-- Label/Value Wrapper -->
-          <div class="tablet:grid-col-6 grid-col-4">
-            <div class="grid-row">
-              <div class="grid-col-12">
-                <label class="usa-static--label font-sans-3xs text-light text-italic">Status</label>
-              </div>
-              <div class="grid-col-12">
-                <span class="sds-tag sds-tag--static sds-tag--outline-green">Active</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Label/Value Wrapper -->
-          <div class="tablet:grid-col-6 grid-col-4">
-            <div class="grid-row">
-              <div class="grid-col-12">
-                <label class="usa-static--label font-sans-3xs text-light text-italic">Expiration Date</label>
-              </div>
-              <div class="grid-col-12">
-                <span class="sds-tag sds-tag--static sds-tag--alt">Feb 20, 2019</span>
-              </div>
-            </div>
-          </div>
-
+      <div class="grid-row grid-gap-05 margin-top-1">
+        <div class="grid-col-auto">
+          <span class="sds-tag sds-tag--chip sds-tag--small text-base-darker" title="TIN">
+            TIN
+            <span class="text-primary-dark">
+              <fa-icon [icon]="['fas', 'check']" size="sm"></fa-icon>
+            </span>
+          </span>
         </div>
-
-        <div class="grid-row grid-gap-05 margin-top-2">
-          <div class="grid-col-auto">
-            <span class="sds-tag sds-tag--chip sds-tag--small">
-              TIN
-              <span class="text-primary-dark">
-                <fa-icon [icon]="['fas', 'check']" size="1x"></fa-icon>
-              </span>
+        <div class="grid-col-auto">
+          <span class="sds-tag sds-tag--chip sds-tag--small sds-tag--light" title="CAGE Code">
+            CAGE
+            <span class="sds-text-disabled">
+              <fa-icon [icon]="['fas', 'ellipsis-h']" size="sm"></fa-icon>
             </span>
-          </div>
-          <div class="grid-col-auto">
-            <span class="sds-tag sds-tag--chip sds-tag--disabled sds-tag--small">
-              CAGE
-              <span class="sds-text-disabled">
-                <fa-icon [icon]="['fas', 'ellipsis-h']" size="1x"></fa-icon>
-              </span>
-            </span>
-          </div>
-          <div class="grid-col-auto">
-            <span class="sds-tag sds-tag--chip sds-tag--disabled sds-tag--small">
-              Notarized Letter
-              <span class="sds-text-disabled">
-                <fa-icon [icon]="['fas', 'times']" size="1x"></fa-icon>
-              </span>
-            </span>
-          </div>
+          </span>
         </div>
-
+        <div class="grid-col-auto">
+          <span class="sds-tag sds-tag--chip sds-tag--small sds-tag--light" title="Notarized Letter">
+            Notarized Letter
+            <span class="sds-text-disabled">
+              <fa-icon [icon]="['fas', 'question']" size="sm"></fa-icon>
+            </span>
+          </span>
+        </div>
       </div>
 
     </div>
 
   </div>
+
+</div>
