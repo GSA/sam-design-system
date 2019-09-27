@@ -1,28 +1,28 @@
 <sds-top-banner *ngIf="showTopBanner" ></sds-top-banner>
-
-<header class="usa-header usa-header--extended" role="banner">
+<div class="usa-overlay"></div>
+<header class="usa-header usa-header--extended">
   <div class="usa-navbar">
     <div class="usa-logo" id="extended-logo">
-      <em class="usa-logo__text">
-        <ng-container [ngTemplateOutlet]="navigationHelper.isLinkInternal(model.home) ? homeLinkRouteTemplate : homeLinkHREFTemplate"
+      <ng-container [ngTemplateOutlet]="navigationHelper.isLinkInternal(model.home) ? homeLinkRouteTemplate : homeLinkHREFTemplate"
           [ngTemplateOutletContext]="{$implicit:model.home}"></ng-container>
-      </em>
     </div>
-    <button class="usa-menu-btn" aria-label="Menu">
+    <button class="usa-menu-btn">
       <fa-layers [fixedWidth]="true" size="3x">
-        <fa-icon [icon]="['fas', 'square']" [classes]="['icon-square']"></fa-icon>
-        <fa-icon [icon]="['sam', 'bars']" [classes]="['icon-bars']" transform="shrink-6"></fa-icon>
+        <fa-icon [icon]="['fas', 'square']" [classes]="['text-primary']"></fa-icon>
+        <fa-icon [icon]="['sds', 'bars']" [classes]="['icon-bars']" transform="shrink-6"></fa-icon>
         <fa-layers-counter *ngIf="hasCounter()" [classes]="['icon-layers-counter']"></fa-layers-counter>
       </fa-layers>
+      <span class="usa-sr-only">Menu</span>
     </button>
   </div>
-  <nav role="navigation" class="usa-nav">
+  <nav aria-label="Primary navigation" class="usa-nav">
     <div class="usa-nav__inner">
-      <button class="usa-nav__close" aria-label="Close">
-        <fa-layers [fixedWidth]="true" size="2x">
-          <fa-icon [icon]="['fas', 'square']" [classes]="['icon-square']"></fa-icon>
-          <fa-icon [icon]="['sam', 'arrow-left']" [classes]="['icon-arrow-left']" transform="shrink-6"></fa-icon>
+      <button class="usa-nav__close">
+        <fa-layers [fixedWidth]="true" size="lg">
+          <fa-icon [icon]="['fas', 'circle']" [inverse]="true" transform="grow-2"></fa-icon>
+          <fa-icon [icon]="['fas', 'times']" transform="shrink-6"></fa-icon>
         </fa-layers>
+        <span class="usa-sr-only">Close</span>
       </button>
       <ul class="usa-nav__primary usa-accordion">
         <li *ngFor="let link of model.navigationLinks" class="usa-nav__primary-item">
@@ -43,11 +43,15 @@
   </nav>
 </header>
 <ng-template #homeLinkRouteTemplate let-home>
-  <a [routerLink]="home.route" title="Home" aria-label="Home">{{home.text}}</a>
+  <a [routerLink]="home.route" title="Home" aria-label="Home">
+    <img class="sds-header__logo" [src]="home.logo" [alt]="home.text" />
+  </a>
 </ng-template>
 
 <ng-template #homeLinkHREFTemplate let-home>
-  <a [attr.href]="home.route" title="Home" aria-label="Home">{{home.text}}</a>
+  <a [attr.href]="home.route" title="Home" aria-label="Home">
+    <img class="sds-header__logo" [src]="home.logo" [alt]="home.text" />
+  </a>
 </ng-template>
 
 
@@ -82,7 +86,7 @@
     <fa-icon [icon]="[link.imageClassPrefix, link.imageClass]"></fa-icon>
     <fa-layers-counter *ngIf="link.hasCounter" [classes]="['icon-layers-counter']"></fa-layers-counter>
   </fa-layers>
-  {{link.text}}
+  <span class="sds-nav__secondary-item-text">{{link.text}}</span>
 </ng-template>
 
 <ng-template #linkTemplate let-link>
