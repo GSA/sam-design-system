@@ -11,7 +11,7 @@
           <label class="usa-label font-sans-3xs text-italic text-base margin-top-1" for="options">
             Sort by
           </label>
-          <select (change)="onSelectChange()" [(ngModel)]="sortField" class="usa-select usa-select--small usa-min-width-160 border-base-light" id="options">
+          <select (change)="onSelectChange()" [(ngModel)]="sortField" class="usa-select usa-select--small sds-min-width-160 border-base-light" id="options">
             <option *ngFor="let item of configuration.sortList" [ngValue]="item.value">
               {{ item.text }}
             </option>
