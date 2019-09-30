@@ -33,23 +33,28 @@ export class HeaderHome implements Selectable, INavigationLink {
     text: string;
 
     /**
+     * Agency Logo for the Header
+     */
+    logo: string;
+
+    /**
      * Navigation Route for Home image button
      */
     route: string;
 
     /**
-    * Identifier for the item when search for selected 
+    * Identifier for the item when search for selected
     */
     id: string;
 
     /**
-     * Status of if the item is selected 
+     * Status of if the item is selected
      */
     selected?: boolean;
 }
 
 /**
- * 
+ *
  */
 export class HeaderNavigationLink implements Selectable, INavigationLink {
 
@@ -64,7 +69,7 @@ export class HeaderNavigationLink implements Selectable, INavigationLink {
     text: string;
 
     /**
-     * Navigation Route 
+     * Navigation Route
      */
     route: string;
 
@@ -74,12 +79,12 @@ export class HeaderNavigationLink implements Selectable, INavigationLink {
     children?: HeaderNavigationLink[];
 
     /**
-     * Identifier for the item when search for selected 
+     * Identifier for the item when search for selected
      */
     id: string;
 
     /**
-     * Status of if the item is selected 
+     * Status of if the item is selected
      */
     selected?: boolean;
 }
@@ -108,7 +113,7 @@ export class HeaderSecondaryLink implements Selectable, INavigationLink {
     imageClassPrefix: string;
 
     /**
-     * image class  
+     * image class
      */
     imageClass: string;
 
@@ -118,12 +123,12 @@ export class HeaderSecondaryLink implements Selectable, INavigationLink {
     hasCounter?: boolean;
 
     /**
-     * Identifier for the item when search for selected 
+     * Identifier for the item when search for selected
      */
     id: string;
 
     /**
-     * Status of if the item is selected 
+     * Status of if the item is selected
      */
     selected?: boolean;
 }
