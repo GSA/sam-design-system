@@ -1,23 +1,13 @@
 <div sds-click-outside (clickOutside)="checkForFocus($event)" sds-tab-outside (tabOutside)="checkForFocus($event)">
-  <div [attr.aria-label]="configuration.labelText" class="position-relative maxw-mobile-lg">
+  <div class="position-relative maxw-mobile-lg">
     <div role="combobox" [attr.id]="configuration.id+'-container'" [attr.aria-expanded]="showResults"
-      [attr.aria-owns]="configuration.id+ '-listbox'" aria-haspopup="listbox">
+      [attr.aria-owns]="showResults? configuration.id+ '-listbox' : undefined" aria-haspopup="listbox">
       <input [disabled]="disabled" (ngModelChange)="textChange($event)" class="usa-input" #input
         [attr.id]="configuration.id" type="text" (focus)="inputFocusHandler()" (keydown)="onKeydown($event)"
-        [(ngModel)]="inputValue" aria-autocomplete="both" [attr.placeholder]="configuration.autocompletePlaceHolderText"
+        [(ngModel)]="inputValue" aria-autocomplete="list" [attr.placeholder]="configuration.autocompletePlaceHolderText"
         [attr.aria-activedescendant]="showResults? configuration.id+'-resultItem-'+highlightedIndex :''"
         [attr.aria-controls]="showResults? configuration.id+ '-listbox' : undefined">
     </div>
-    <!-- <ng-container *ngIf="!input.disabled">
-      <span class="position-absolute right-105 top-1">
-        <span role="button" aria-label="Clear input" aria-hidden="false" (click)="clearInput()"
-          (keyup.enter)="clearInput()">
-          <fa-icon [icon]="['fas', 'times']" size="xs"></fa-icon>
-        </span>
-      </span>
-    </ng-container> -->
-    <!-- [attr.aria-describedby]="configuration.labelId" -->
-    <!-- [attr.hidden]="showResults ? undefined : true" -->
     <ul #resultsList *ngIf="showResults" [attr.id]="configuration.id+ '-listbox'" role="listbox"
       class="usa-list usa-list--unstyled sds-autocomplete" (scroll)="onScroll()">
       <ng-container *ngIf="(results && results.length > 0)">
@@ -66,7 +56,7 @@
       </ng-container>
     </ul>
 
-        <ng-container *ngIf="!input.disabled">
+    <ng-container *ngIf="!input.disabled">
       <span class="position-absolute right-105 top-1">
         <span role="button" aria-label="Clear input" aria-hidden="false" (click)="clearInput()"
           (keyup.enter)="clearInput()">
