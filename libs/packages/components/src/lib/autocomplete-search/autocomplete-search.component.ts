@@ -75,7 +75,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   /**
    * selected index
    */
-  private highlightedIndex: number = 0;
+  public highlightedIndex: number = 0;
 
   /**
    * highlighted object in drop down

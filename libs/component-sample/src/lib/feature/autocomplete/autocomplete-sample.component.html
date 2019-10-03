@@ -1,21 +1,21 @@
-<label for="autocomplete1">Single Select without template</label>
+<label id="auto1Label" for="autocomplete1">Single Select without template</label>
 <sds-autocomplete [service]="service" (ngModelChange)="changes($event)" [(ngModel)]="model" [configuration]="settings">
 </sds-autocomplete>
 
-<label for="autocomplete2">Single Select with template</label>
+<label id="auto2Label" for="autocomplete2">Single Select with template</label>
 <sds-autocomplete [service]="service" (ngModelChange)="changes($event)" [(ngModel)]="model2" [configuration]="settings2"
     [suggestionTemplate]="temp"></sds-autocomplete>
 
-<label for="autocomplete3">Multi Select without template</label>
+<label id="auto3Label" for="autocomplete3">Multi Select without template</label>
 <sds-autocomplete [service]="service" (ngModelChange)="changes($event)" [(ngModel)]="model3"
     [configuration]="settings3"></sds-autocomplete>
 
-<label for="autocomplete4">Multi Select with template</label>
+<label id="auto4Label" for="autocomplete4">Multi Select with template</label>
 <sds-autocomplete [service]="service" (ngModelChange)="changes($event)" [(ngModel)]="model4" [configuration]="settings4"
     [suggestionTemplate]="temp" [selectedItemTemplate]="temp"></sds-autocomplete>
 
 
-<label for="autocomplete5">Disabled</label>
+<label id="auto5Label" for="autocomplete5">Disabled</label>
 <sds-autocomplete [service]="service" [disabled]="true" [(ngModel)]="model5" [configuration]="settings5">
 </sds-autocomplete>
 
@@ -26,3 +26,39 @@
         {{item['name'] +': '+ item['subtext'] }}
     </span>
 </ng-template>
+
+
+<!-- 
+<div aria-label="Tag" role="combobox" aria-expanded="true" aria-owns="owned_listbox" aria-haspopup="listbox">
+    <input type="text" aria-autocomplete="list" aria-controls="owned_listbox" aria-activedescendant="selected_option">
+</div>
+<ul role="listbox" id="owned_listbox">
+    <li role="option">Zebra</li>
+    <li role="option" id="selected_option">Zoom</li>
+</ul> -->
+
+
+<!-- 
+<label id="ex2-label" class="combobox-label">
+    
+        Choice 2 Fruit or Vegetable
+      
+</label>
+<div class="combobox-wrapper">
+  <div role="combobox"
+     aria-expanded="false"
+     aria-owns="ex2-listbox"
+     aria-haspopup="listbox"
+     id="ex2-combobox">
+    <input type="text"
+         aria-autocomplete="list"
+         aria-controls="ex2-listbox"
+         aria-labelledby="ex2-label"
+         id="ex2-input">
+  </div>
+  <ul aria-labelledby="ex2-label"
+    role="listbox"
+    id="ex2-listbox"
+    class="listbox hidden">
+  </ul>
+</div> -->
