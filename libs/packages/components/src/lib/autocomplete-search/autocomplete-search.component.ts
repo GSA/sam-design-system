@@ -75,7 +75,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   /**
    * selected index
    */
-  private highlightedIndex: number = 0;
+  public highlightedIndex: number = 0;
 
   /**
    * highlighted object in drop down
@@ -445,7 +445,14 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
 
   writeValue(obj: any): void {
     if (obj instanceof SDSSelectedItemModel) {
-      this.model = obj as SDSSelectedItemModel;
+      this.model = obj as SDSSelectedItemModel;      
+      if (this.model.items.length === 0) {
+        this.inputValue = '';
+      } else {
+        if (this.configuration.selectionMode === SelectionMode.SINGLE) {
+          this.inputValue = this.getObjectValue(this.model.items[0], this.configuration.primaryTextField);
+        }
+      }
     }
   }
 

@@ -1,25 +1,18 @@
 <div sds-click-outside (clickOutside)="checkForFocus($event)" sds-tab-outside (tabOutside)="checkForFocus($event)">
   <div class="position-relative maxw-mobile-lg">
-    <input [disabled]="disabled" (ngModelChange)="textChange($event)" class="usa-input" #input
-      [attr.id]="configuration.id" autocomplete="off" type="text" (focus)="inputFocusHandler()"
-      (keydown)="onKeydown($event)" [(ngModel)]="inputValue" autocomplete="off" role="combobox" aria-autocomplete="list"
-      aria-expanded="false" aria-haspopup="true" [attr.aria-owns]="configuration.id+ '-listbox'"
-      [attr.placeholder]="configuration.autocompletePlaceHolderText">
-    <ng-container *ngIf="!input.disabled">
-      <span class="position-absolute right-105 top-1">
-        <span role="button" aria-label="Clear input" aria-hidden="false" (click)="clearInput()"
-          (keyup.enter)="clearInput()">
-          <fa-icon [icon]="['fas', 'times']" size="xs"></fa-icon>
-        </span>
-      </span>
-    </ng-container>
-  </div>
-  <div>
+    <div role="combobox" [attr.id]="configuration.id+'-container'" [attr.aria-expanded]="showResults"
+      [attr.aria-owns]="showResults? configuration.id+ '-listbox' : undefined" aria-haspopup="listbox">
+      <input [disabled]="disabled" (ngModelChange)="textChange($event)" class="usa-input" #input
+        [attr.id]="configuration.id" type="text" (focus)="inputFocusHandler()" (keydown)="onKeydown($event)"
+        [(ngModel)]="inputValue" aria-autocomplete="list" [attr.placeholder]="configuration.autocompletePlaceHolderText"
+        [attr.aria-activedescendant]="showResults? configuration.id+'-resultItem-'+highlightedIndex :''"
+        [attr.aria-controls]="showResults? configuration.id+ '-listbox' : undefined">
+    </div>
     <ul #resultsList *ngIf="showResults" [attr.id]="configuration.id+ '-listbox'" role="listbox"
-      class="usa-list usa-list--unstyled sds-autocomplete" [attr.aria-label]="configuration.labelText"
-      (scroll)="onScroll()">
+      class="usa-list usa-list--unstyled sds-autocomplete" (scroll)="onScroll()">
       <ng-container *ngIf="(results && results.length > 0)">
-        <li role="option" *ngFor="let result of results; let i = index" (mouseenter)="listItemHover(i)"
+        <li [attr.id]="configuration.id+'-resultItem-'+i" role="option" *ngFor="let result of results; let i = index"
+          (mouseenter)="listItemHover(i)"
           [class]="result['highlighted'] ? 'sds-autocomplete__item sds-autocomplete__item--selected' : 'sds-autocomplete__item' "
           (click)="selectItem(result)">
           <ng-container *ngIf="itemTemplate" [ngTemplateOutlet]="itemTemplate"
@@ -43,24 +36,33 @@
       <ng-container *ngIf="(!results || results.length == 0)">
         <li class="emptyResults">No results found</li>
       </ng-container>
+      <ng-container *ngIf="showLoad">
+        <li class="autoLoading">
+          <div class="lightToGrayBackgroundGradiate">
 
+          </div>
+          <div class="grayToLightBackgroundGradiate">
 
-      <li *ngIf="showLoad" class="autoLoading">
-        <div class="lightToGrayBackgroundGradiate">
+          </div>
+        </li>
+        <li class="autoLoading">
+          <div class="lightToGrayBackgroundGradiate">
 
-        </div>
-        <div class="grayToLightBackgroundGradiate">
+          </div>
+          <div class="grayToLightBackgroundGradiate">
 
-        </div>
-      </li>
-      <li  *ngIf="showLoad" class="autoLoading">
-        <div class="lightToGrayBackgroundGradiate">
-
-        </div>
-        <div class="grayToLightBackgroundGradiate">
-
-        </div>
-      </li>
+          </div>
+        </li>
+      </ng-container>
     </ul>
+
+    <ng-container *ngIf="!input.disabled">
+      <span class="position-absolute right-105 top-1">
+        <span role="button" aria-label="Clear input" aria-hidden="false" (click)="clearInput()"
+          (keyup.enter)="clearInput()">
+          <fa-icon [icon]="['fas', 'times']" size="xs"></fa-icon>
+        </span>
+      </span>
+    </ng-container>
     <ul #srOnly class="usa-sr-only" aria-live="assertive" aria-relevant="additions"></ul>
   </div>

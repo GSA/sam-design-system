@@ -46,7 +46,6 @@ export class AutocompleteSampleComponent implements OnInit {
     this.settings.autocompletePlaceHolderText = 'Enter text';
 
 
-
     this.settings2.primaryKeyField = 'id';
     this.settings2.id = 'autocomplete2';
     this.settings2.labelText = 'Autocomplete 2';
