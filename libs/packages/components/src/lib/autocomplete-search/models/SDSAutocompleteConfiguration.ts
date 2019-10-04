@@ -70,9 +70,4 @@ export class SDSAutocompleteSearchConfiguration {
    * Focus into autocomplete search
    */
   public focusInSearch: boolean = true;
-
-  /**
-   * Id of corresponding label
-   */
-  public labelId:string;
 }
