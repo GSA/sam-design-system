@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { HeaderModel, NavigationMode } from '@gsa-sam/components';
+import { LocationStrategy } from '@angular/common';
+
 @Component({
   selector: 'gsa-sam-header-sample',
   templateUrl: './header-sample.component.html',
   styleUrls: ['./header-sample.component.scss']
 })
 export class HeaderSampleComponent implements OnInit {
-  constructor() {}
+
+  constructor(private locationStrategy: LocationStrategy) {}
 
   public linkEvent = new BehaviorSubject<object>(null);
 
@@ -78,7 +81,7 @@ export class HeaderSampleComponent implements OnInit {
     ],
     home: {
       text: 'Logo',
-      logo: '/assets/img/logo-sam.svg',
+      logo: this.locationStrategy.getBaseHref() + 'assets/img/logo-sam.svg',
       route: '/',
       id: 'home',
       mode: NavigationMode.INTERNAL
