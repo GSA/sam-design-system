@@ -8,7 +8,11 @@ import {
   SdsAccordionModule, SdsAutocompleteModule
 } from '@gsa-sam/components';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MatDatepickerModule, MatInputModule, MatNativeDateModule } from '@sam-design-system/sam-material-extensions';
+import {
+  // MatDatepickerModule, 
+  MatInputModule
+  // , MatNativeDateModule 
+} from '@sam-design-system/sam-material-extensions';
 
 // Validate the min length of the charecter
 export function minlengthValidationMessage(err, field) {
@@ -38,11 +42,11 @@ export function maxValidationMessage(err, field) {
   imports: [
     CommonModule,
     SdsAccordionModule,
-    SdsAutocompleteModule, 
-     MatDatepickerModule,
+    SdsAutocompleteModule,
+    //  MatDatepickerModule,
     MatInputModule,
-    MatNativeDateModule,
-        FontAwesomeModule,
+    //  MatNativeDateModule,
+    FontAwesomeModule,
     ReactiveFormsModule,
     FormlySelectModule,
     FormlyModule.forChild(FORMLY_CONFIG),

@@ -1,5 +1,8 @@
-export * from './input/index';
-export * from './form-field/index';
-export * from './datepicker/index';
-export * from './core/index';
+
+//export * from './core/error/error-options';
+export * from './input/input';
+export * from './input/input-module';
+//export * from './form-field/index';
+//export * from './datepicker/index';
+
 
