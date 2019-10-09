@@ -114,6 +114,16 @@ export class FilterWrapperComponent implements OnInit {
       wrappers: ['accordionwrapper'],
       templateOptions: { label: 'Expiration Date' },
       fieldGroup: [
+        // {
+        //   key: 'entityDate',
+        //   type: 'datepicker',
+        //   templateOptions: {
+        //     label: 'Expiration Date',
+        //     startDate: new Date(2019,11,25),
+        //     minDate: new Date(2019,8,15),
+        //     maxDate: new Date(2020, 0, 1)
+        //   }
+        // },
         {
           key: 'expirationDateOption',
           type: 'radio',
