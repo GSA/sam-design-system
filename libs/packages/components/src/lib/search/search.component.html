@@ -1,38 +1,26 @@
-<div
-  #containerEl
-  cdkMonitorSubtreeFocus
-  (cdkFocusChange)="onFocusChange$.next($event)"
-  class="display-flex flex-justify-end"
-  (sdsObserveWidth)="onContainerWithChange$.next($event)"
-  (keydown.enter)="onKeyDownChange$.next($event)"
-  (keydown.esc)="onKeyDownChange$.next($event)"
->
-  <div *ngIf="inputContainer" class="position-relative">
-    <label class="usa-sr-only" for="search-field">Search</label>
+<form class="usa-search usa-search--small">
+  <div
+    role="search"
+    cdkMonitorSubtreeFocus
+    (cdkFocusChange)="focusChange($event)"
+  >
+    <label class="usa-sr-only" for="search-field-small"> Search </label>
     <input
       #inputEl
-      (keyup)="onTermChange$.next($event)"
-      [value]="term$ | async"
-      [@inputExpand]="{
-        value: animationState,
-        params: { inputWidth: inputWidth }
-      }"
-      (@inputExpand.done)="onAnimationDone$.next($event)"
-      type="text"
-      id="search-field"
-      class="usa-input position-absolute margin-top-0 right-0"
-      style="height: 37px; border-right: none; max-width: none;"
+      class="usa-input"
+      [ngClass]="inputClass"
+      id="search-field-small"
+      type="search"
+      name="search"
+      [placeholder]="placeholder"
     />
+    <button
+      #buttonEl
+      (click)="handleClick($event)"
+      class="usa-button"
+      type="submit"
+    >
+      <span class="usa-sr-only">Search</span>
+    </button>
   </div>
-  <button
-    #buttonEl
-    type="button"
-    (click)="handleButtonClick($event)"
-    class="usa-button usa-button--primary margin-right-0"
-    [class.sds-button--attached-left]="inputContainer"
-    style="padding:10px 13px; width: 43px;"
-  >
-    <fa-icon [icon]="['fas', 'search']"></fa-icon>
-    <span class="usa-sr-only">Search</span>
-  </button>
-</div>
+</form>
