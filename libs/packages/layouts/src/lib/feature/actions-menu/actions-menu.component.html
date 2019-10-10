@@ -17,18 +17,6 @@
     (click)="clicks.emit(button.id)"
     sds-menu-item
   >
-    <fa-layers [fixedWidth]="true" size="2x">
-      <fa-icon
-        [icon]="['fas', 'circle']"
-        transform="left-3"
-        class="text-base-lighter"
-      ></fa-icon>
-      <fa-icon
-        [icon]="['sds', button.icon]"
-        transform="shrink-8 left-3"
-        class="text-base"
-      ></fa-icon>
-    </fa-layers>
     {{ button.text }}
   </button>
 </sds-menu>
