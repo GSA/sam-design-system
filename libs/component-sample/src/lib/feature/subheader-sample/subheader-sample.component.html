@@ -1,45 +1,62 @@
-<div class="container">
-  <sds-subheader>
-    <!-- =============== TITLE =============== -->
+<sds-subheader>
+  <!-- =============== BACK BUTTON =============== -->
+  <button class="sds-button sds-button--circular">
+    <fa-icon [icon]="['fas', 'chevron-left']" [fixedWidth]="true"></fa-icon>
+  </button>
 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor a enim
-    ac molestie. Nam ut risus magna. Quisque at pulvinar sem, id dictum ipsum. Nam
-    commodo rhoncus mauris, id gravida lorem congue nec. Sed dictum, tellus sed
-    commodo sempertr
+  <!-- =============== TITLE =============== -->
+  <h1 class="font-heading-md text-semibold tablet-lg:width-mobile">
+    Title Here
+  </h1>
 
-    <!-- =============== PRIMARY/SECONDARY BUTTONS =============== -->
-    <sds-subheader-buttons [model]="subheader.buttons" (clicks)="log($event)"></sds-subheader-buttons>
+  <!-- =============== PRIMARY/SECONDARY BUTTONS =============== -->
+  <ng-container subheader-buttons-container>
+    <button class="usa-button usa-button--secondary">Button</button>
+    <button class="usa-button margin-top-05 tablet:margin-top-0">Button</button>
+  </ng-container>
 
-    <!-- =============== SEARCH =============== -->
-    <sds-subheader-search (searchTerm)="log($event)"> </sds-subheader-search>
+  <!-- =============== SEARCH =============== -->
+  <sds-search
+    (term)="log($event)"
+    parentSelector=".grid-row"
+    placeholder="Entity an entity ID, name, or keyword"
+    inputClass="width-card-lg widescreen:width-mobile display-none desktop-lg:display-inline-block"
+  >
+  </sds-search>
 
-    <!-- =============== ACTIONS BUTTONS =============== -->
-    <sds-subheader-actions [model]="subheader.actions" (clicks)="log($event)"></sds-subheader-actions>
-    <!-- =============== DRAWER CONTENT =============== -->
-    <sds-subheader-drawer [drawerContentTemplate]="contentTemplate"></sds-subheader-drawer>
-   
-  </sds-subheader>
+  <!-- =============== ACTIONS BUTTONS =============== -->
+  <sds-subheader-actions
+    [model]="subheader"
+    (clicks)="log($event)"
+  ></sds-subheader-actions>
 
-  <ng-template #contentTemplate>
-    <div class="bg-accent-cool-lighter padding-1">
-      <p>Contract Opportunities</p>
-      <p>Contracting organisation across the federal government post notice on proposed contract actions( value at more
-        that $2500).
-        These procurement opportunities including solicitations, pre-solicitation, sole source justifications, and
-        other notices.
-      </p>
-      <h4>Search tips</h4>
-      <ul>
-        <li>
-          Account are not required to view contact opportunities. Create an account to save search, add your entity to
-          an
-          opportunity's
-        </li>
-        <li>
-          Search by keyword, solicitation ID, or agency name. Use filters to narrow your resultss
-        </li>
-      </ul>
-    </div>
-  </ng-template>
-  <div>testing data</div>
-</div>
+  <!-- =============== DRAWER CONTENT =============== -->
+  <sds-subheader-drawer
+    [drawerContentTemplate]="contentTemplate"
+  ></sds-subheader-drawer>
+</sds-subheader>
+
+<ng-template #contentTemplate>
+  <div class="bg-accent-cool-lighter padding-1">
+    <p>Contract Opportunities</p>
+    <p>
+      Contracting organisation across the federal government post notice on
+      proposed contract actions( value at more that $2500). These procurement
+      opportunities including solicitations, pre-solicitation, sole source
+      justifications, and other notices.
+    </p>
+    <h4>Search tips</h4>
+    <ul>
+      <li>
+        Account are not required to view contact opportunities. Create an
+        account to save search, add your entity to an opportunity's
+      </li>
+      <li>
+        Search by keyword, solicitation ID, or agency name. Use filters to
+        narrow your resultss
+      </li>
+    </ul>
+  </div>
+</ng-template>
+
+<div>Testing data</div>
