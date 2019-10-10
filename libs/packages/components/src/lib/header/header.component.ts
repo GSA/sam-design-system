@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { HeaderModel, HeaderNavigationLink, HeaderSecondaryLink } from './model/HeaderModel';
 import { INavigationLink, NavigationMode, Selectable } from '../common-navigation/common-navigation-model';
 import { NavigationHelper } from '../common-navigation/navigation-helper';
@@ -9,6 +9,9 @@ import { NavigationHelper } from '../common-navigation/navigation-helper';
 })
 export class SdsHeaderComponent {
 
+  @ViewChild('usaNavOpen') openNavBtn: ElementRef;
+  @ViewChild('usaNavClose') closeNavBtn: ElementRef;
+  mobileNavActive = false;
   /**
   * Navigation helper
   */
@@ -20,13 +23,13 @@ export class SdsHeaderComponent {
   @Input() showTopBanner: boolean = true;
 
   /**
-   * Model used for the different display portions of the header 
+   * Model used for the different display portions of the header
    */
   @Input() model: HeaderModel;
 
   /**
    * Takes in a text string and removes all white space characters and returns the new string
-   * @param text 
+   * @param text
    */
   removeWhiteSpace(text: string) {
     return text.replace(/ /g, '');
@@ -51,7 +54,7 @@ export class SdsHeaderComponent {
 
   /**
    * Deselects previous seletion
-   * @param id 
+   * @param id
    */
   select(id: string) {
     this.deselect();
@@ -88,7 +91,7 @@ export class SdsHeaderComponent {
   }
 
   /**
-   * Finds the navigation element by id in the header model 
+   * Finds the navigation element by id in the header model
    * @param id of the navigation item
    */
   find(id: string): Selectable {
@@ -113,7 +116,7 @@ export class SdsHeaderComponent {
 
   /**
    * Searchs the items in the navigation links
-   * @param id 
+   * @param id
    */
   private findNavigationLinks(id: string, toReturn: Selectable): Selectable {
     if (this.model.navigationLinks) {
@@ -141,11 +144,43 @@ export class SdsHeaderComponent {
 
   /**
    * Link clicked and emits the link data into an event
-   * @param link 
+   * @param link
    */
   linkClickEvent(link: INavigationLink) {
     this.linkEvent.emit(link);
     return false;
+  }
+
+  // When the mobile nav is active, and the close box isn't visible,
+  // we know the user's viewport has been resized to be larger.
+  // Let's make the page state consistent by deactivating the mobile nav.
+  @HostListener('window:resize', ['$event'])
+  onBrowserResize(event) {
+    if (
+      this.mobileNavActive &&
+      this.closeNavBtn.nativeElement.getBoundingClientRect().width === 0
+    ) {
+      this.mobileNavActive = false;
+    }
+  }
+
+  openMobileNav() {
+    this.mobileNavActive = true;
+  }
+
+  closeMobileNav() {
+    this.mobileNavActive = false;
+    // The mobile nav was just deactivated, and focus was on the close
+    // button, which is no longer visible. We don't want the focus to
+    // disappear into the void, so focus on the menu button if it's
+    // visible (this may have been what the user was just focused on,
+    // if they triggered the mobile nav by mistake).
+    this.openNavBtn.nativeElement.focus();
+  }
+
+  // The mobile nav was just activated, so focus on the close button,
+  navAnimationEnd() {
+    this.closeNavBtn.nativeElement.focus();
   }
 
 

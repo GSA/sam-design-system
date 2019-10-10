@@ -5,6 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { SdsTopBannerComponent } from '../top-banner/top-banner.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NavigationMode } from '../common-navigation/common-navigation-model';
+import { A11yModule } from '@angular/cdk/a11y';
 
 
 describe('SdsHeaderComponent', () => {
@@ -14,7 +15,7 @@ describe('SdsHeaderComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SdsHeaderComponent, SdsTopBannerComponent],
-      imports: [RouterTestingModule, FontAwesomeModule]
+      imports: [RouterTestingModule, FontAwesomeModule, A11yModule]
     })
       .compileComponents();
   }));

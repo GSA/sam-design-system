@@ -1,6 +1,9 @@
 <div class="usa-banner">
   <div class="usa-accordion">
-    <header class="usa-banner__header">
+    <header
+      class="usa-banner__header"
+      [class.sam-banner__header--expanded]="showDetail"
+    >
       <div class="usa-banner__inner">
         <div class="grid-col-auto">
           <span class="usa-banner__header-flag"></span>
@@ -13,19 +16,28 @@
             Here’s how you know
           </p>
         </div>
-        <button class="usa-accordion__button usa-banner__button" aria-expanded="false" aria-controls="gov-banner">
+        <button
+          class="usa-accordion__button usa-banner__button"
+          (click)="toggleDetails()"
+          (blur)="closeDetail()"
+          [attr.aria-expanded]="showDetail"
+          aria-controls="gov-banner"
+        >
           <span class="usa-banner__button-text">Here’s how you know</span>
         </button>
       </div>
     </header>
-    <div class="usa-banner__content usa-accordion__content" id="gov-banner" hidden>
+    <div
+      class="usa-banner__content usa-accordion__content"
+      id="gov-banner"
+      [hidden]="!showDetail"
+    >
       <div class="grid-row grid-gap-lg">
         <div class="usa-banner__guidance tablet:grid-col-6">
           <span class="usa-banner__icon usa-media-block__img"></span>
           <div class="usa-media-block__body">
             <p>
-              <strong>The .gov means it’s official.</strong>
-              <br />
+              <strong>The .gov means it’s official.</strong> <br />
               Federal government websites often end in .gov or .mil. Before
               sharing sensitive information, make sure you’re on a federal
               government site.
@@ -36,8 +48,7 @@
           <span class="usa-banner__icon usa-media-block__img"></span>
           <div class="usa-media-block__body">
             <p>
-              <strong>The site is secure.</strong>
-              <br />
+              <strong>The site is secure.</strong> <br />
               The <strong>https://</strong> ensures that you are connecting to
               the official website and that any information you provide is
               encrypted and transmitted securely.
