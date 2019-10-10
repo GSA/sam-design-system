@@ -52,8 +52,8 @@ export class SdsMenuItemComponent implements FocusableOption, OnDestroy {
   ) {
     // Start listening to focus changes
     _focusMonitor.monitor(this._elementRef, false);
-    // Add this menu item to its parent menu    
-    // If item its inside a header 
+    // Add this menu item to its parent menu
+    // If item its inside a header
     // add it as the first item in the list
     if(_parentMenuHeader){
       _parentMenu.insertItem(this, 0);
@@ -64,7 +64,7 @@ export class SdsMenuItemComponent implements FocusableOption, OnDestroy {
 
   /** Get item class */
   _getClass(): string{
-    return this._parentMenuHeader ? 'sds-menu__header-button' : 'sds-menu__item';
+    return this._parentMenuHeader ? 'sds-button sds-button--circular' : 'sds-menu__item';
   }
 
   /** Focuses the menu item. */
