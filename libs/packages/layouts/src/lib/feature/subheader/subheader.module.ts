@@ -10,8 +10,6 @@ import {
 import {
   SdsSubheaderComponent,
   SdsSubheaderActionsComponent,
-  SdsSubheaderSearchComponent,
-  SdsSubheaderButtonsComponent,
   SdsSubheaderDrawerComponent,
   SdsDrawerContentComponent
 } from './subheader.component';
@@ -31,17 +29,13 @@ import { SdsDrawerCommunicationService } from './drawer-communication.service';
   exports: [
     SdsSubheaderComponent,
     SdsSubheaderActionsComponent,
-    SdsSubheaderSearchComponent,
-    SdsSubheaderButtonsComponent,
     SdsSubheaderDrawerComponent,
     SdsDrawerContentComponent,
-    
+
   ],
   declarations: [
     SdsSubheaderComponent,
     SdsSubheaderActionsComponent,
-    SdsSubheaderSearchComponent,
-    SdsSubheaderButtonsComponent,
     SdsSubheaderDrawerComponent,
     SdsDrawerContentComponent
   ],

@@ -1,3 +1,9 @@
-<button (click)="onDrawerOpenClose($event)"  class="usa-button sds-button--circle">
-    <fa-icon [fixedWidth]="true" [icon]="isOpen ?['fas', 'arrow-up']: ['fas', 'arrow-down']"></fa-icon>
-  </button>
+<button
+  (click)="onDrawerOpenClose($event)"
+  class="sds-button sds-button--circular margin-top-2px tablet:margin-top-0"
+>
+  <fa-icon
+    [fixedWidth]="true"
+    [icon]="isOpen ? ['fas', 'arrow-up'] : ['fas', 'arrow-down']"
+  ></fa-icon>
+</button>

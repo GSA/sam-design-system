@@ -1,43 +1,33 @@
-<div class="bg-base-lightest border-bottom border-base-light">
-    <div class="sds-subheader padding-y-2 grid-container grid-row flex-align-center">
-      <div class="tablet:grid-col-4">
-        <!-- =============== TITLE =============== -->
-        <!-- Set to 2 maximum number of text lines (sdsTruncateTextByLine) -->
-        <div class="sds-subheader__title font-sans-md text-semibold margin-right-2 cursor-pointer"
-          sdsTruncateTextByLine="2">
-          <ng-content></ng-content>
-        </div>
+<div class="sds-navbar border-bottom border-base-lighter">
+  <div class="sds-navbar__content">
+    <div class="grid-row">
+      <div
+        class="grid-col-12 tablet-lg:grid-col-auto display-flex flex-align-center margin-bottom-1 tablet-lg:margin-bottom-0"
+      >
+        <ng-content></ng-content>
       </div>
-      <div class="grid-col-fill">
-        <div class="grid-row">
-          <div class="grid-col-fill">
-            <div class="grid-row">
-              <div class="grid-col-auto tablet:order-2">
-                <!-- =============== PRIMARY/SECONDARY BUTTONS =============== -->
-                <div class="subheader__buttons display-flex">
-                  <ng-content select="sds-subheader-buttons"></ng-content>
-                </div>
-              </div>
-              <div class="grid-col-fill margin-right-2">
-                <!-- =============== SEARCH =============== -->
-                <ng-content select="sds-subheader-search"></ng-content>
-              </div>
-            </div>
+      <div class="grid-col-12 tablet-lg:grid-col-fill display-flex">
+        <div class="tablet-lg:order-1">
+          <!-- Buttons -->
+          <ng-content select="[subheader-buttons-container]"></ng-content>
+        </div>
+        <div class="flex-fill">
+          <!-- Search -->
+          <div class="margin-x-105 margin-top-05 tablet:margin-top-0">
+            <ng-content select="sds-search"></ng-content>
           </div>
-          <div>
-            <!-- =============== ACTIIONS MENU & BUTTONS =============== -->
-            <ng-content select="sds-subheader-actions"></ng-content>
-          </div>
-          <div>
-            <!-- =============== DRAWER BUTTON =============== -->
-            <ng-content select="sds-subheader-drawer"></ng-content>
-          </div>
+        </div>
+        <div class="tablet-lg:order-2 margin-left-2">
+          <!-- Actions Menu Trigger -->
+          <ng-content select="sds-subheader-actions"></ng-content>
+
+          <!-- Drawer Trigger -->
+          <ng-content select="sds-subheader-drawer"></ng-content>
         </div>
       </div>
     </div>
+  </div>
+</div>
 
-  </div>
-  <div>
-    <!-- =============== DRAWER CONTENT =============== -->
-    <sds-drawer-content></sds-drawer-content>
-  </div>
+<!-- =============== DRAWER CONTENT =============== -->
+<sds-drawer-content></sds-drawer-content>
