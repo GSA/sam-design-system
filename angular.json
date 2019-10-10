@@ -102,8 +102,7 @@
               "apps/sam-design-system-site/src/favicon.ico",
               "apps/sam-design-system-site/src/assets"
             ],
-            "styles": ["apps/sam-design-system-site/src/styles.scss"],
-            "scripts": ["node_modules/uswds/dist/js/uswds.min.js"]
+            "styles": ["apps/sam-design-system-site/src/styles.scss"]
           },
           "configurations": {
             "production": {
