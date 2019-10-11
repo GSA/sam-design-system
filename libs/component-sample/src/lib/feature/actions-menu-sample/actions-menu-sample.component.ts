@@ -8,11 +8,14 @@ export class ActionsMenuSampleComponent {
   constructor() {}
 
   menu = {
-    trigger: 'primary',
+    trigger: {
+      type: 'plain', // plain | primary
+      shadow: true
+    },
     actions: [
-      { id: 'DownloadBtn', icon: 'bars', text: 'Download' },
-      { id: 'FollowBtn', icon: 'bars', text: 'Follow' },
-      { id: 'ShareBtn', icon: 'bars', text: 'Share' }
+      { id: 'DownloadBtn', text: 'Download' },
+      { id: 'FollowBtn', text: 'Follow' },
+      { id: 'ShareBtn', text: 'Share' }
     ]
   };
 
