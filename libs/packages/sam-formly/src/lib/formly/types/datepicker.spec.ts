@@ -79,7 +79,7 @@ describe('Formly Field Datepicker Component', () => {
             fixture.detectChanges();
 
             //Selects start date 
-            let dateButton = fixture.nativeElement.nextSibling.querySelector('.mat-calendar-body-active');
+            let dateButton = fixture.nativeElement.parentNode.querySelector('.mat-calendar-body-active');
             dateButton.click();
             fixture.detectChanges();
             //Check the start the date is the selected date
