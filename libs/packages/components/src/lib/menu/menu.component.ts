@@ -45,6 +45,7 @@ export interface SdsMenuInterface<T = any> {
   templateRef: TemplateRef<any>;
   closed: EventEmitter<void | 'click' | 'keydown' | 'tab'>;
   parentMenu?: SdsMenuInterface;
+  size?: string;
   focusFirstItem: (origin?: FocusOrigin) => void;
   setPositionClasses?: (x: MenuPositionX, y: MenuPositionY) => void;
   addItem?: (item: T) => void;
@@ -95,6 +96,9 @@ export class SdsMenuComponent
 
   /** Grab the component template */
   @ViewChild(TemplateRef) templateRef: TemplateRef<any>;
+
+  /** Size */
+  @Input() size: string;
 
   /** Position of the menu in the X axis. */
   @Input()

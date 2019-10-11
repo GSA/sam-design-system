@@ -19,7 +19,7 @@ import { SdsMenuHeaderComponent } from './menu-header.component';
   selector: '[sds-menu-item]',
   template: '<ng-content></ng-content>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.None
 })
 export class SdsMenuItemComponent implements FocusableOption, OnDestroy {
   /** Menu item class */
@@ -55,7 +55,7 @@ export class SdsMenuItemComponent implements FocusableOption, OnDestroy {
     // Add this menu item to its parent menu
     // If item its inside a header
     // add it as the first item in the list
-    if(_parentMenuHeader){
+    if (_parentMenuHeader) {
       _parentMenu.insertItem(this, 0);
     } else {
       _parentMenu.addItem(this);
@@ -63,8 +63,12 @@ export class SdsMenuItemComponent implements FocusableOption, OnDestroy {
   }
 
   /** Get item class */
-  _getClass(): string{
-    return this._parentMenuHeader ? 'sds-button sds-button--circular' : 'sds-menu__item';
+  _getClass(): string {
+    const headerButtonSmall =
+      this._parentMenu.size === 'sm' ? 'sds-button--small' : '';
+    return this._parentMenuHeader
+      ? `sds-button sds-button--circular ${headerButtonSmall}`
+      : 'sds-menu__item';
   }
 
   /** Focuses the menu item. */
@@ -77,5 +81,4 @@ export class SdsMenuItemComponent implements FocusableOption, OnDestroy {
     this._focusMonitor.stopMonitoring(this._elementRef);
     this._parentMenu.removeItem(this);
   }
-
 }
