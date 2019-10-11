@@ -34,7 +34,7 @@ export type MenuPositionY = 'above' | 'below';
 
 /** Menu available sizes */
 // sm = 'small'
-export type MenuSizes = 'sm'
+export type MenuSizes = 'sm';
 
 /** Injection token used to provide the parent menu to menu items. */
 export const SDS_MENU_TOKEN = new InjectionToken<SdsMenuInterface>(
