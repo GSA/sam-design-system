@@ -57,7 +57,7 @@ describe('Formly Field Datepicker Component', () => {
             };
         });
 
-        it('should correctly bind to a static array of data', () => {
+        it('should open date picker and select value', () => {
             testComponentInputs.fields = [{
                 key: 'entityDate',
                 type: 'datepicker',
@@ -79,7 +79,7 @@ describe('Formly Field Datepicker Component', () => {
             fixture.detectChanges();
 
             //Selects start date 
-            let dateButton = fixture.nativeElement.parentNode.querySelector('.mat-calendar-body-active');
+            let dateButton = <HTMLButtonElement>document.querySelector('.mat-calendar-body-active');
             dateButton.click();
             fixture.detectChanges();
             //Check the start the date is the selected date
