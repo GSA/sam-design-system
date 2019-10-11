@@ -7,6 +7,9 @@ import { FIELD_TYPE_COMPONENTS, FORMLY_CONFIG } from './formly.config';
 import {
   SdsAccordionModule, SdsAutocompleteModule
 } from '@gsa-sam/components';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 // Validate the min length of the charecter
 export function minlengthValidationMessage(err, field) {
@@ -35,9 +38,12 @@ export function maxValidationMessage(err, field) {
   ],
   imports: [
     CommonModule,
-     SdsAccordionModule,
-     SdsAutocompleteModule,
-     FontAwesomeModule,
+    SdsAccordionModule,
+    SdsAutocompleteModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatInputModule,
+    FontAwesomeModule,
     ReactiveFormsModule,
     FormlySelectModule,
     FormlyModule.forChild(FORMLY_CONFIG),
@@ -50,6 +56,6 @@ export function maxValidationMessage(err, field) {
         { name: 'max', message: maxValidationMessage },
       ],
     })
-     ],
+  ],
 })
-export class SdsFormlyModule {}
+export class SdsFormlyModule { }

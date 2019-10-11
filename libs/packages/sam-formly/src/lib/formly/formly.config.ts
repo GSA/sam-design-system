@@ -10,7 +10,7 @@ import { FormlyFieldTextAreaComponent } from './types/textarea';
 import { FormlyAccordianFormFieldComponent } from './wrappers/form-field.accordian';
 import { FormlyFieldAutoCompleteComponent } from './types/autocomplete';
 import { FormlyFormFieldFilterWrapperComponent } from './wrappers/form-field.filterwrapper';
-
+import { FormlyFieldDatePickerComponent } from './types/datepicker';
 export const FIELD_TYPE_COMPONENTS = [
   FormlyFieldInputComponent,
   FormlyFieldCheckboxComponent,
@@ -21,6 +21,7 @@ export const FIELD_TYPE_COMPONENTS = [
   FormlyWrapperFormFieldComponent,
   FormlyAccordianFormFieldComponent,
   FormlyFieldAutoCompleteComponent,
+  FormlyFieldDatePickerComponent,
   FormlyFormFieldFilterWrapperComponent
 ];
 
@@ -60,7 +61,12 @@ export const FORMLY_CONFIG: ConfigOption = {
       name: 'autocomplete',
       component: FormlyFieldAutoCompleteComponent,
       wrappers: ['form-field'],
-    },
+    },  
+    {
+      name: 'datepicker',
+      component: FormlyFieldDatePickerComponent,
+      wrappers: ['form-field']
+    }
   ],
   wrappers: [
     { name: 'form-field', component: FormlyWrapperFormFieldComponent },
