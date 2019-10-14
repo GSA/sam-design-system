@@ -10,7 +10,7 @@
     tabindex="-1"
     role="menu"
   >
-    <div class="sds-menu">
+    <div class="sds-menu" [class.sds-menu--small]="size === 'sm'">
       <ng-content></ng-content>
     </div>
   </div>

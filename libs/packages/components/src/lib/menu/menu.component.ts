@@ -32,6 +32,10 @@ import { SdsMenuItemComponent } from './menu-item.component';
 export type MenuPositionX = 'before' | 'after';
 export type MenuPositionY = 'above' | 'below';
 
+/** Menu available sizes */
+// sm = 'small'
+export type MenuSizes = 'sm';
+
 /** Injection token used to provide the parent menu to menu items. */
 export const SDS_MENU_TOKEN = new InjectionToken<SdsMenuInterface>(
   'SDS_MENU_TOKEN'
@@ -45,6 +49,7 @@ export interface SdsMenuInterface<T = any> {
   templateRef: TemplateRef<any>;
   closed: EventEmitter<void | 'click' | 'keydown' | 'tab'>;
   parentMenu?: SdsMenuInterface;
+  size?: MenuSizes;
   focusFirstItem: (origin?: FocusOrigin) => void;
   setPositionClasses?: (x: MenuPositionX, y: MenuPositionY) => void;
   addItem?: (item: T) => void;
@@ -95,6 +100,13 @@ export class SdsMenuComponent
 
   /** Grab the component template */
   @ViewChild(TemplateRef) templateRef: TemplateRef<any>;
+
+  /**
+   * Size of menu component.
+   * Affects the font-size of the menu items and
+   * the size of the close button in the menu header
+   */
+  @Input() size: MenuSizes;
 
   /** Position of the menu in the X axis. */
   @Input()
