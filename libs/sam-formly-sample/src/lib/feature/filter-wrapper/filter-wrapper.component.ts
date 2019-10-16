@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { BehaviorSubject } from 'rxjs';
+
 
 
 @Component({
@@ -10,13 +11,16 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class FilterWrapperComponent implements OnInit {
 
+  constructor(private change: ChangeDetectorRef) {
+
+  }
   results: any = {};
   form = new FormGroup({});
   model = {};
   options: FormlyFormOptions = {};
-    /**
-   * Event when something is checked/selected in the grid
-   */
+  /**
+ * Event when something is checked/selected in the grid
+ */
   public filterChange$ = new BehaviorSubject<object>(null);
 
 
@@ -41,7 +45,7 @@ export class FilterWrapperComponent implements OnInit {
       key: 'searchEntity',
       wrappers: ['accordionwrapper'],
       templateOptions: { label: 'Entity' },
-      fieldGroup: [       
+      fieldGroup: [
         {
           key: 'uniqueEntityIdSam',
           type: 'input',
@@ -114,21 +118,53 @@ export class FilterWrapperComponent implements OnInit {
       wrappers: ['accordionwrapper'],
       templateOptions: { label: 'Expiration Date' },
       fieldGroup: [
+        // 
         {
-          key: 'entityDate',
-          type: 'datepicker',
-          templateOptions: {
-            label: 'Expiration Date',
-            startDate: new Date(2019,11,25),
-            minDate: new Date(2019,8,15),
-            maxDate: new Date(2020, 0, 1)
-          }
+          key: 'expirationDate',
+          wrappers: ['form-field'],
+          templateOptions: { label: 'Expiration Date' },
+          fieldGroup: [
+            {
+              key: 'entityDateStart',
+              type: 'datepicker',
+              templateOptions: {
+                label: 'From',
+                startDate: Date.now,
+                minDate: new Date(2019, 8, 15),
+              }, expressionProperties: {
+                'templateOptions.maxDate': (model: any, formState: any, field: FormlyFieldConfig) => {
+                  let date = null;
+                  if (model.entityDateEnd) {
+                    date = model.entityDateEnd;
+                  }
+                  return date;
+                },
+              }
+            },
+            {
+              key: 'entityDateEnd',
+              type: 'datepicker',
+              templateOptions: {
+                label: 'To',
+                startDate: Date.now,
+                maxDate: new Date(2020, 0, 1)
+              },
+              expressionProperties: {
+                'templateOptions.minDate': (model: any, formState: any, field: FormlyFieldConfig) => {
+                  let date = null;
+                  if (model.entityDateStart) {
+                    date = model.entityDateStart;
+                  }
+                  return date;
+                },
+              }
+            }]
         },
         {
           key: 'expirationDateOption',
           type: 'radio',
           templateOptions: {
-            label:'Expiration Date',
+            label: 'Expiration Date',
             options: [
               { label: '30 Days', value: '30' },
               { label: '60 Days', value: '60' },
@@ -136,8 +172,6 @@ export class FilterWrapperComponent implements OnInit {
 
             ]
           },
-
-          
         },
         {
           key: 'entityCheckbox',
@@ -217,9 +251,11 @@ export class FilterWrapperComponent implements OnInit {
   ];
   public ngOnInit() {
     this.filterChange$.subscribe(
-      res =>
-        this.results = res
-  );
+      res => {
+        this.results = res;
+        //  this.change.detectChanges();
+      }
+    );
   }
 
 }
