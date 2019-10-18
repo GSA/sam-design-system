@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { BehaviorSubject } from 'rxjs';
+import { maxDateValidator, minDateValidator } from '@gsa-sam/sam-formly';
 
 
 
@@ -139,7 +140,10 @@ export class FilterWrapperComponent implements OnInit {
                   }
                   return date;
                 },
+              }, validators: {
+                validation: [maxDateValidator, minDateValidator],
               }
+
             },
             {
               key: 'entityDateEnd',
@@ -157,6 +161,8 @@ export class FilterWrapperComponent implements OnInit {
                   }
                   return date;
                 },
+              }, validators: {
+                validation: [maxDateValidator, minDateValidator],
               }
             }]
         },

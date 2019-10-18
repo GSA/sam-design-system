@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FormlyModule } from '@ngx-formly/core';
+import { FormlyModule, FormlyFieldConfig } from '@ngx-formly/core';
+import { FormControl, ValidationErrors } from '@angular/forms';
 import { FormlySelectModule } from '@ngx-formly/core/select';
 import { FIELD_TYPE_COMPONENTS, FORMLY_CONFIG } from './formly.config';
 import {
@@ -27,10 +28,58 @@ export function minValidationMessage(err, field) {
   return `This value should be more than ${field.templateOptions.min}`;
 }
 
+export function minDateValidationMessage(err, field) {
+  let dt = field.templateOptions.minDate;
+  let dateFormat = (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
+  return `This value should be more than ${dateFormat}`;
+}
+
+export function maxDateValidationMessage(err, field) {
+  let dt = field.templateOptions.maxDate;
+  let dateFormat = (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
+  return `This value should be less than ${dateFormat}`;
+}
+
+
+
 // Validate the max value of the charecter
 export function maxValidationMessage(err, field) {
   return `This value should be less than ${field.templateOptions.max}`;
 }
+
+
+export function minDateValidator(control: FormControl, field: FormlyFieldConfig): ValidationErrors {
+  let toReturn = null;
+  console.log(control);
+  console.log(field);
+  let minDateField = field.templateOptions.minDate;
+  let value = control.value;
+  if (value && minDateField) {
+    if (value < minDateField)
+      toReturn = {
+        'minDate': true
+      };
+  }
+
+  return toReturn;
+}
+
+export function maxDateValidator(control: FormControl, field: FormlyFieldConfig): ValidationErrors {
+  let toReturn = null;
+  console.log(control);
+  console.log(field);
+  let maxDateField = field.templateOptions.maxDate;
+  let value = control.value;
+  if (value && maxDateField) {
+    if (value > maxDateField)
+      toReturn = {
+        'maxDate': true
+      };
+  }
+
+  return toReturn;
+}
+
 
 
 @NgModule({
@@ -55,8 +104,14 @@ export function maxValidationMessage(err, field) {
         { name: 'maxlength', message: maxlengthValidationMessage },
         { name: 'min', message: minValidationMessage },
         { name: 'max', message: maxValidationMessage },
+        { name: 'minDate', message: minDateValidationMessage },
+        { name: 'maxDate', message: maxDateValidationMessage },
       ],
+      validators: [
+        { name: 'minDate', validation: minDateValidator },
+        { name: 'maxDate', validation: maxDateValidator },
+      ]
     })
-  ],
+  ]
 })
 export class SdsFormlyModule { }
