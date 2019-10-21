@@ -132,18 +132,21 @@ export class FilterWrapperComponent implements OnInit {
                 label: 'From',
                 startDate: Date.now,
                 minDate: new Date(2019, 8, 15),
+
               }, expressionProperties: {
                 'templateOptions.maxDate': (model: any, formState: any, field: FormlyFieldConfig) => {
                   let date = null;
-                  if (model.entityDateEnd) {
+                  if (model.entityDateEnd && model.entityDateEnd instanceof Date) {
                     date = model.entityDateEnd;
                   }
                   return date;
                 },
               }, validators: {
                 validation: [maxDateValidator, minDateValidator],
+              },
+               modelOptions: {
+                updateOn: 'blur',
               }
-
             },
             {
               key: 'entityDateEnd',
@@ -153,10 +156,13 @@ export class FilterWrapperComponent implements OnInit {
                 startDate: Date.now,
                 maxDate: new Date(2020, 0, 1)
               },
+               modelOptions: {
+                updateOn: 'blur',
+              },
               expressionProperties: {
                 'templateOptions.minDate': (model: any, formState: any, field: FormlyFieldConfig) => {
                   let date = null;
-                  if (model.entityDateStart) {
+                  if (model.entityDateStart && model.entityDateStart instanceof Date) {
                     date = model.entityDateStart;
                   }
                   return date;
