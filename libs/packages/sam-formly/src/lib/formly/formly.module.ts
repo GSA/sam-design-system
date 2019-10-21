@@ -50,15 +50,18 @@ export function maxValidationMessage(err, field) {
 
 export function minDateValidator(control: FormControl, field: FormlyFieldConfig): ValidationErrors {
   let toReturn = null;
-  console.log(control);
-  console.log(field);
   let minDateField = field.templateOptions.minDate;
   let value = control.value;
   if (value && minDateField) {
-    if (value < minDateField)
-      toReturn = {
-        'minDate': true
-      };
+    if (value instanceof Date && minDateField instanceof Date) {
+      if (value < minDateField) {
+        console.log(minDateField);
+        console.log(value);
+        toReturn = {
+          'minDate': true
+        };
+      }
+    }
   }
 
   return toReturn;
@@ -66,15 +69,18 @@ export function minDateValidator(control: FormControl, field: FormlyFieldConfig)
 
 export function maxDateValidator(control: FormControl, field: FormlyFieldConfig): ValidationErrors {
   let toReturn = null;
-  console.log(control);
-  console.log(field);
   let maxDateField = field.templateOptions.maxDate;
   let value = control.value;
   if (value && maxDateField) {
-    if (value > maxDateField)
-      toReturn = {
-        'maxDate': true
-      };
+    if (value instanceof Date && maxDateField instanceof Date) {
+      if (value > maxDateField) {
+        console.log(maxDateField);
+        console.log(value);
+        toReturn = {
+          'maxDate': true
+        };
+      }
+    }
   }
 
   return toReturn;
