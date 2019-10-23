@@ -2,7 +2,8 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { BehaviorSubject } from 'rxjs';
-import { maxDateValidator, minDateValidator } from '@gsa-sam/sam-formly';
+import { maxDateValidator, minDateValidator, maxDateTemplateOptionExpression, minDateTemplateOptionExpression, maxDateRangeValidationMessage, minDateRangeValidationMessage } from '@gsa-sam/sam-formly';
+import { maxDateRangeValidator, minDateRangeValidator } from 'libs/packages/sam-formly/src/lib/formly/formly.validators';
 
 
 
@@ -140,9 +141,10 @@ export class FilterWrapperComponent implements OnInit {
                   }
                   return date;
                 },
-              }, validators: {
-                validation: [maxDateValidator, minDateValidator],
               }
+              // , validators: {
+              //   validation: [maxDateValidator, minDateValidator],
+              // }
 
             },
             {
@@ -165,6 +167,49 @@ export class FilterWrapperComponent implements OnInit {
                 validation: [maxDateValidator, minDateValidator],
               }
             }]
+        },
+
+        {
+          key: 'expirationDateRangeEx',
+          type: 'daterangepicker',
+          templateOptions: {
+            label: 'Expiration Date Range'
+          }
+          , expressionProperties: {
+            'templateOptions.fromMaxDate': maxDateTemplateOptionExpression,
+            'templateOptions.toMinDate': minDateTemplateOptionExpression
+          }
+          // , validators: {
+          //   validation: [maxDateRangeValidator, minDateRangeValidator],
+
+
+          // }, validation: {
+          //   show:true,
+            
+          // }
+
+
+          // , expressionProperties: {
+          //   'templateOptions.maxDate': function (model: any, formState: any, field: FormlyFieldConfig) {
+          //     let date = null;
+          //     if (model) {
+          //       console.log(model)
+          //       if (model.toDate) {
+          //         date = model.toDate;
+          //       }
+          //     }
+          //     return date;
+          //   }, 'templateOptions.minDate': function (model: any, formState: any, field: FormlyFieldConfig) {
+          //     let date = null;
+          //     if (model) {
+          //       console.log(model)
+          //       if (model.fromDate) {
+          //         date = model.fromDate;
+          //       }
+          //     }
+          //     return date;
+          //   },
+          // }
         },
         {
           key: 'expirationDateOption',

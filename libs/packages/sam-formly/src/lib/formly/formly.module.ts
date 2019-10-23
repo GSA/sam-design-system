@@ -11,7 +11,7 @@ import {
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
-
+import { maxDateValidator, minDateValidator, minDateRangeValidator, maxDateRangeValidator } from './formly.validators';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 // Validate the min length of the charecter
 export function minlengthValidationMessage(err, field) {
@@ -40,6 +40,18 @@ export function maxDateValidationMessage(err, field) {
   return `This value should be less than ${dateFormat}`;
 }
 
+export function minDateRangeValidationMessage(err, field) {
+  // let dt = field.templateOptions.minDate;
+  // let dateFormat = (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
+  return `This value should be more than from value`;
+}
+
+export function maxDateRangeValidationMessage(err, field) {
+  // let dt = field.templateOptions.maxDate;
+  // let dateFormat = (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
+  return `This value should be less than to value`;
+}
+
 
 
 // Validate the max value of the charecter
@@ -47,44 +59,9 @@ export function maxValidationMessage(err, field) {
   return `This value should be less than ${field.templateOptions.max}`;
 }
 
+export { maxDateValidator, minDateValidator, minDateRangeValidator, maxDateRangeValidator } from './formly.validators';
 
-export function minDateValidator(control: FormControl, field: FormlyFieldConfig): ValidationErrors {
-  let toReturn = null;
-  let minDateField = field.templateOptions.minDate;
-  let value = control.value;
-  if (value && minDateField) {
-    if (value instanceof Date && minDateField instanceof Date) {
-      if (value < minDateField) {
-        console.log(minDateField);
-        console.log(value);
-        toReturn = {
-          'minDate': true
-        };
-      }
-    }
-  }
-
-  return toReturn;
-}
-
-export function maxDateValidator(control: FormControl, field: FormlyFieldConfig): ValidationErrors {
-  let toReturn = null;
-  let maxDateField = field.templateOptions.maxDate;
-  let value = control.value;
-  if (value && maxDateField) {
-    if (value instanceof Date && maxDateField instanceof Date) {
-      if (value > maxDateField) {
-        console.log(maxDateField);
-        console.log(value);
-        toReturn = {
-          'maxDate': true
-        };
-      }
-    }
-  }
-
-  return toReturn;
-}
+export { maxDateTemplateOptionExpression, minDateTemplateOptionExpression } from './formly.config';
 
 
 
@@ -112,10 +89,14 @@ export function maxDateValidator(control: FormControl, field: FormlyFieldConfig)
         { name: 'max', message: maxValidationMessage },
         { name: 'minDate', message: minDateValidationMessage },
         { name: 'maxDate', message: maxDateValidationMessage },
+        { name: 'minDateRange', message: minDateRangeValidationMessage },
+        { name: 'maxDateRange', message: maxDateRangeValidationMessage },
       ],
       validators: [
         { name: 'minDate', validation: minDateValidator },
         { name: 'maxDate', validation: maxDateValidator },
+        { name: 'minDateRange', validation: minDateRangeValidator },
+        { name: 'maxDateRange', validation: maxDateRangeValidator },
       ]
     })
   ]
