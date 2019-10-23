@@ -87,17 +87,17 @@ export const FORMLY_CONFIG: ConfigOption = {
             // }
             templateOptions:{required:true},
             wrappers: ['form-field'],
-            validators: {
-              maxDate: {
-                expression: maxDateInline,
-                message: maxDateMessageInline,
-              },
+            // validators: {
+            //   maxDate: {
+            //     expression: maxDateInline,
+            //     message: maxDateMessageInline,
+            //   },
 
-              minDate: {
-                expression: minDateInline,
-                message: minDateMessageInline,
-              },
-            }
+            //   minDate: {
+            //     expression: minDateInline,
+            //     message: minDateMessageInline,
+            //   },
+            // }
             // validators: {
             //   validation: [maxDateRangeValidator, minDateRangeValidator],
             // }
@@ -109,17 +109,17 @@ export const FORMLY_CONFIG: ConfigOption = {
             // }
             templateOptions:{required:true},
             wrappers: ['form-field'],
-            validators: {
-              maxDate: {
-                expression: maxDateInline,
-                message: maxDateMessageInline,
-              },
+            // validators: {
+            //   maxDate: {
+            //     expression: maxDateInline,
+            //     message: maxDateMessageInline,
+            //   },
 
-              minDate: {
-                expression: minDateInline,
-                message: minDateMessageInline,
-              },
-            }
+            //   minDate: {
+            //     expression: minDateInline,
+            //     message: minDateMessageInline,
+            //   },
+            // }
           }
 
         ]

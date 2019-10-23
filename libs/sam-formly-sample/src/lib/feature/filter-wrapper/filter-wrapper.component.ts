@@ -4,7 +4,7 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { BehaviorSubject } from 'rxjs';
 import { maxDateValidator, minDateValidator, maxDateTemplateOptionExpression, minDateTemplateOptionExpression, maxDateRangeValidationMessage, minDateRangeValidationMessage } from '@gsa-sam/sam-formly';
 import { maxDateRangeValidator, minDateRangeValidator } from 'libs/packages/sam-formly/src/lib/formly/formly.validators';
-
+import { FormControl, ValidationErrors } from '@angular/forms';
 
 
 @Component({
@@ -178,6 +178,16 @@ export class FilterWrapperComponent implements OnInit {
           , expressionProperties: {
             'templateOptions.fromMaxDate': maxDateTemplateOptionExpression,
             'templateOptions.toMinDate': minDateTemplateOptionExpression
+          }, validators: {
+            maxDate: {
+              expression: maxDateInline,
+              message: maxDateMessageInline,
+            },
+
+            minDate: {
+              expression: minDateInline,
+              message: minDateMessageInline,
+            },
           }
           // , validators: {
           //   validation: [maxDateRangeValidator, minDateRangeValidator],
@@ -185,7 +195,7 @@ export class FilterWrapperComponent implements OnInit {
 
           // }, validation: {
           //   show:true,
-            
+
           // }
 
 
@@ -310,3 +320,43 @@ export class FilterWrapperComponent implements OnInit {
   }
 
 }
+
+
+export function minDateInline(control: FormControl, field: FormlyFieldConfig) {
+  let toReturn = true;
+  let minDateField = field.templateOptions.toMinDate;
+  let value = control.value;
+  if (value && minDateField) {
+    if (value instanceof Date && minDateField instanceof Date) {
+      if (value < minDateField) {
+        console.log(minDateField);
+        console.log(value);
+        toReturn = false;
+      }
+    }
+  }
+
+  return toReturn;
+}
+
+
+export function maxDateInline(control: FormControl, field: FormlyFieldConfig) {
+  let toReturn = true;
+  let maxDateField = field.templateOptions.fromMaxDate;
+  let value = control.value;
+  if (value && maxDateField) {
+    if (value instanceof Date && maxDateField instanceof Date) {
+      if (value > maxDateField) {
+        console.log(maxDateField);
+        console.log(value);
+        toReturn = false;
+      }
+    }
+  }
+
+  return toReturn;
+}
+
+
+export function maxDateMessageInline(error, field: FormlyFieldConfig) { 'Date off MAX' }
+export function minDateMessageInline(error, field: FormlyFieldConfig) { 'Date off MIN' }
