@@ -61,7 +61,7 @@ export function maxValidationMessage(err, field) {
 
 export { maxDateValidator, minDateValidator, minDateRangeValidator, maxDateRangeValidator } from './formly.validators';
 
-export { maxDateTemplateOptionExpression, minDateTemplateOptionExpression } from './formly.config';
+//export { maxDateTemplateOptionExpression, minDateTemplateOptionExpression } from './formly.config';
 
 
 

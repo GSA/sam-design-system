@@ -2,8 +2,8 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { BehaviorSubject } from 'rxjs';
-import { maxDateValidator, minDateValidator, maxDateTemplateOptionExpression, minDateTemplateOptionExpression, maxDateRangeValidationMessage, minDateRangeValidationMessage } from '@gsa-sam/sam-formly';
-import { maxDateRangeValidator, minDateRangeValidator } from 'libs/packages/sam-formly/src/lib/formly/formly.validators';
+import { maxDateValidator, minDateValidator } from '@gsa-sam/sam-formly';
+//import { maxDateRangeValidator, minDateRangeValidator } from 'libs/packages/sam-formly/src/lib/formly/formly.validators';
 import { FormControl, ValidationErrors } from '@angular/forms';
 
 
@@ -173,22 +173,25 @@ export class FilterWrapperComponent implements OnInit {
           key: 'expirationDateRangeEx',
           type: 'daterangepicker',
           templateOptions: {
-            label: 'Expiration Date Range'
+            label: 'Expiration Date Range',
+            minDate: new Date(2019, 9, 5),
+            maxDate: new Date(2019, 9, 25)
           }
-          , expressionProperties: {
-            'templateOptions.fromMaxDate': maxDateTemplateOptionExpression,
-            'templateOptions.toMinDate': minDateTemplateOptionExpression
-          }, validators: {
-            maxDate: {
-              expression: maxDateInline,
-              message: maxDateMessageInline,
-            },
+          // , expressionProperties: {
+          //   'templateOptions.maxDate': maxDateTemplateOptionExpression,
+          //   'templateOptions.minDate': minDateTemplateOptionExpression
+          // }
+          // }, validators: {
+          //   maxDate: {
+          //     expression: maxDateInline,
+          //     message: maxDateMessageInline,
+          //   },
 
-            minDate: {
-              expression: minDateInline,
-              message: minDateMessageInline,
-            },
-          }
+          //   minDate: {
+          //     expression: minDateInline,
+          //     message: minDateMessageInline,
+          //   },
+          // }
           // , validators: {
           //   validation: [maxDateRangeValidator, minDateRangeValidator],
 
