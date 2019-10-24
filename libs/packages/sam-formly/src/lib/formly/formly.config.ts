@@ -116,8 +116,7 @@ export const FORMLY_CONFIG: ConfigOption = {
     { name: 'filterwrapper', component: FormlyFormFieldFilterWrapperComponent },
   ],
 
-}
-  ;
+};
 
 
 
@@ -143,29 +142,24 @@ export function minDateFromDateRangePicker(model: any, formState: any, field: Fo
   if (field.parent.templateOptions.minDate) {
     date = new Date(field.parent.templateOptions.minDate.getTime());
   }
-
   return date;
 }
 
-
 export function maxDateToDateRangePicker(model: any, formState: any, field: FormlyFieldConfig) {
   let date = null;
-
-  //Setting a minumn date for the date range picker
+  //Setting a max date for the date range picker 
   if (field.parent.templateOptions.maxDate) {
     date = new Date(field.parent.templateOptions.maxDate.getTime());
   }
-
   return date;
 }
 
 export function maxDateFromDateRangePicker(model: any, formState: any, field: FormlyFieldConfig) {
   let date = null;
-  //Setting a minumn date for the date range picker
+  //Setting a max date for the date range picker
   if (field.parent.templateOptions.maxDate) {
     date = new Date(field.parent.templateOptions.maxDate);
   }
-
   if (model) {
     if (model.toDate) {
       date = model.toDate;
@@ -173,62 +167,3 @@ export function maxDateFromDateRangePicker(model: any, formState: any, field: Fo
   }
   return date;
 }
-
-// export function minDateTemplateOptionExpression(model: any, formState: any, field: FormlyFieldConfig) {
-//   let date = null;
-//   if (model) {
-//     if (model.fromDate) {
-//       date = model.fromDate;
-//     }
-//   }
-//   return date;
-// }
-
-// export function maxDateTemplateOptionExpression(model: any, formState: any, field: FormlyFieldConfig) {
-//   let date = null;
-//   if (model) {
-//     if (model.toDate) {
-//       date = model.toDate;
-//     }
-//   }
-//   return date;
-// }
-
-// export function minDateInline(control: FormControl, field: FormlyFieldConfig) {
-//   let toReturn = true;
-//   let minDateField = field.templateOptions.minDate;
-//   let value = control.value;
-//   if (value && minDateField) {
-//     if (value instanceof Date && minDateField instanceof Date) {
-//       if (value < minDateField) {
-//         console.log(minDateField);
-//         console.log(value);
-//         toReturn = false;
-//       }
-//     }
-//   }
-
-//   return toReturn;
-// }
-
-
-// export function maxDateInline(control: FormControl, field: FormlyFieldConfig) {
-//   let toReturn = true;
-//   let maxDateField = field.templateOptions.maxDate;
-//   let value = control.value;
-//   if (value && maxDateField) {
-//     if (value instanceof Date && maxDateField instanceof Date) {
-//       if (value > maxDateField) {
-//         console.log(maxDateField);
-//         console.log(value);
-//         toReturn = false;
-//       }
-//     }
-//   }
-
-//   return toReturn;
-// }
-
-
-// export function maxDateMessageInline(error, field: FormlyFieldConfig) { 'Date off MAX' }
-// export function minDateMessageInline(error, field: FormlyFieldConfig) { 'Date off MIN' }

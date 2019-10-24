@@ -11,7 +11,7 @@ import {
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
-import { maxDateValidator, minDateValidator, minDateRangeValidator, maxDateRangeValidator } from './formly.validators';
+import { maxDateValidator, minDateValidator } from './formly.validators';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 // Validate the min length of the charecter
 export function minlengthValidationMessage(err, field) {
@@ -59,10 +59,7 @@ export function maxValidationMessage(err, field) {
   return `This value should be less than ${field.templateOptions.max}`;
 }
 
-export { maxDateValidator, minDateValidator, minDateRangeValidator, maxDateRangeValidator } from './formly.validators';
-
-//export { maxDateTemplateOptionExpression, minDateTemplateOptionExpression } from './formly.config';
-
+export { maxDateValidator, minDateValidator } from './formly.validators';
 
 
 @NgModule({
@@ -94,9 +91,8 @@ export { maxDateValidator, minDateValidator, minDateRangeValidator, maxDateRange
       ],
       validators: [
         { name: 'minDate', validation: minDateValidator },
-        { name: 'maxDate', validation: maxDateValidator },
-        { name: 'minDateRange', validation: minDateRangeValidator },
-        { name: 'maxDateRange', validation: maxDateRangeValidator },
+        { name: 'maxDate', validation: maxDateValidator }
+     
       ]
     })
   ]
