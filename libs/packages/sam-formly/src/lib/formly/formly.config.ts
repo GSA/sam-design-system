@@ -28,7 +28,7 @@ export const FIELD_TYPE_COMPONENTS = [
   FormlyFieldDateRangePickerComponent,
   FormlyFormFieldFilterWrapperComponent
 ];
-import { maxDateRangeValidator, minDateRangeValidator } from './formly.validators';
+import { maxDateRangeValidator, minDateRangeValidator, maxDateValidator, minDateValidator } from './formly.validators';
 
 export const FORMLY_CONFIG: ConfigOption = {
   types: [
@@ -70,7 +70,12 @@ export const FORMLY_CONFIG: ConfigOption = {
     {
       name: 'datepicker',
       component: FormlyFieldDatePickerComponent,
-      wrappers: ['form-field']
+      wrappers: ['form-field'],
+      defaultOptions: {
+        validators: {
+          validation: [maxDateValidator, minDateValidator],
+        }
+      }
     },
     {
       name: 'daterangepicker',
@@ -82,45 +87,23 @@ export const FORMLY_CONFIG: ConfigOption = {
             type: 'datepicker',
             key: 'fromDate',
             templateOptions: {
-              required: true,
               label: 'From'
             },
             expressionProperties: {
               'templateOptions.minDate': minDateFromDateRangePicker,
               'templateOptions.maxDate': maxDateFromDateRangePicker,
             }
-            // validators: {
-            //   maxDate: {
-            //     expression: maxDateInline,
-            //     message: maxDateMessageInline,
-            //   },
-            //   minDate: {
-            //     expression: minDateInline,
-            //     message: minDateMessageInline,
-            //   },
-            // }
           },
           {
             type: 'datepicker',
             key: 'toDate',
             templateOptions: {
-              required: true,
               label: 'To'
             },
             expressionProperties: {
               'templateOptions.minDate': minDateToDateRangePicker,
               'templateOptions.maxDate': maxDateToDateRangePicker,
             }
-            // validators: {
-            //   maxDate: {
-            //     expression: maxDateInline,
-            //     message: maxDateMessageInline,
-            //   },
-            //   minDate: {
-            //     expression: minDateInline,
-            //     message: minDateMessageInline,
-            //   },
-            // },
           }
         ]
       }

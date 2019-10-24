@@ -19,8 +19,6 @@ import { FieldWrapper } from '@ngx-formly/core';
   </div>
   <small *ngIf="to.description" class="form-text text-muted">{{ to.description }}</small>
 </div>
-{{field|json}}
-{{to|json}}
   `,
 })
 export class FormlyWrapperFormFieldComponent extends FieldWrapper {

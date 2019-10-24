@@ -120,55 +120,15 @@ export class FilterWrapperComponent implements OnInit {
       wrappers: ['accordionwrapper'],
       templateOptions: { label: 'Expiration Date' },
       fieldGroup: [
-        // 
         {
           key: 'expirationDate',
-          wrappers: ['form-field'],
-          templateOptions: { label: 'Expiration Date' },
-          fieldGroup: [
-            {
-              key: 'entityDateStart',
-              type: 'datepicker',
-              templateOptions: {
-                label: 'From',
-                startDate: Date.now,
-                minDate: new Date(2019, 8, 15),
-              }, expressionProperties: {
-                'templateOptions.maxDate': (model: any, formState: any, field: FormlyFieldConfig) => {
-                  let date = null;
-                  if (model.entityDateEnd) {
-                    date = model.entityDateEnd;
-                  }
-                  return date;
-                },
-              }
-              // , validators: {
-              //   validation: [maxDateValidator, minDateValidator],
-              // }
-
-            },
-            {
-              key: 'entityDateEnd',
-              type: 'datepicker',
-              templateOptions: {
-                label: 'To',
-                startDate: Date.now,
-                maxDate: new Date(2020, 0, 1)
-              },
-              expressionProperties: {
-                'templateOptions.minDate': (model: any, formState: any, field: FormlyFieldConfig) => {
-                  let date = null;
-                  if (model.entityDateStart) {
-                    date = model.entityDateStart;
-                  }
-                  return date;
-                },
-              }, validators: {
-                validation: [maxDateValidator, minDateValidator],
-              }
-            }]
+          type: 'datepicker',
+          templateOptions: {
+            label: 'Expiration Date',
+            minDate: new Date(2019, 9, 5),
+            maxDate: new Date(2019, 9, 25)
+          }
         },
-
         {
           key: 'expirationDateRangeEx',
           type: 'daterangepicker',
@@ -177,52 +137,6 @@ export class FilterWrapperComponent implements OnInit {
             minDate: new Date(2019, 9, 5),
             maxDate: new Date(2019, 9, 25)
           }
-          // , expressionProperties: {
-          //   'templateOptions.maxDate': maxDateTemplateOptionExpression,
-          //   'templateOptions.minDate': minDateTemplateOptionExpression
-          // }
-          // }, validators: {
-          //   maxDate: {
-          //     expression: maxDateInline,
-          //     message: maxDateMessageInline,
-          //   },
-
-          //   minDate: {
-          //     expression: minDateInline,
-          //     message: minDateMessageInline,
-          //   },
-          // }
-          // , validators: {
-          //   validation: [maxDateRangeValidator, minDateRangeValidator],
-
-
-          // }, validation: {
-          //   show:true,
-
-          // }
-
-
-          // , expressionProperties: {
-          //   'templateOptions.maxDate': function (model: any, formState: any, field: FormlyFieldConfig) {
-          //     let date = null;
-          //     if (model) {
-          //       console.log(model)
-          //       if (model.toDate) {
-          //         date = model.toDate;
-          //       }
-          //     }
-          //     return date;
-          //   }, 'templateOptions.minDate': function (model: any, formState: any, field: FormlyFieldConfig) {
-          //     let date = null;
-          //     if (model) {
-          //       console.log(model)
-          //       if (model.fromDate) {
-          //         date = model.fromDate;
-          //       }
-          //     }
-          //     return date;
-          //   },
-          // }
         },
         {
           key: 'expirationDateOption',

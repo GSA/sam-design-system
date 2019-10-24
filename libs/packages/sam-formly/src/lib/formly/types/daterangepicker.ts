@@ -16,7 +16,6 @@ import { MatInput } from '@angular/material/input';
 <input [class.usa-input--error]="showError" [formControl]="formControl.get('toDate')" [formlyAttributes]="field" matInput [min]="to.toMinDate" [max]="to.toMaxDate"  [matDatepicker]="toDatePicker" placeholder="Choose a date">
 <mat-datepicker-toggle matSuffix [for]="toDatePicker"></mat-datepicker-toggle>
 <mat-datepicker  [startAt]="to.toStartDate"   #toDatePicker ></mat-datepicker>
-{{ to|json }}
   `,
 })
 export class FormlyFieldDateRangePickerComponent extends FieldType { }
