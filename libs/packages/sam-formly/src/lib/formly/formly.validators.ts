@@ -39,8 +39,6 @@ export function maxDateValidator(control: FormControl, field: FormlyFieldConfig)
     if (value && maxDateField) {
         if (value instanceof Date && maxDateField instanceof Date) {
             if (value > maxDateField) {
-                console.log(maxDateField);
-                console.log(value);
                 toReturn = {
                     'maxDate': true
                 };

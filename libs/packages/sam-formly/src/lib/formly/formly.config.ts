@@ -12,8 +12,8 @@ import { FormlyFieldAutoCompleteComponent } from './types/autocomplete';
 import { FormlyFormFieldFilterWrapperComponent } from './wrappers/form-field.filterwrapper';
 import { FormlyFieldDatePickerComponent } from './types/datepicker';
 
-import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
-import { FormControl, ValidationErrors } from '@angular/forms';
+import { FormlyFieldConfig } from '@ngx-formly/core';
+
 export const FIELD_TYPE_COMPONENTS = [
   FormlyFieldInputComponent,
   FormlyFieldCheckboxComponent,
@@ -79,7 +79,7 @@ export const FORMLY_CONFIG: ConfigOption = {
     {
       name: 'daterangepicker',
       extends: 'formly-group',
-      wrappers: ['form-field'],
+      wrappers: ['filterwrapper'],
       defaultOptions: {
         fieldGroup: [
           {
@@ -91,7 +91,7 @@ export const FORMLY_CONFIG: ConfigOption = {
             expressionProperties: {
               'templateOptions.minDate': minDateFromDateRangePicker,
               'templateOptions.maxDate': maxDateFromDateRangePicker,
-            }
+            },
           },
           {
             type: 'datepicker',
@@ -102,7 +102,7 @@ export const FORMLY_CONFIG: ConfigOption = {
             expressionProperties: {
               'templateOptions.minDate': minDateToDateRangePicker,
               'templateOptions.maxDate': maxDateToDateRangePicker,
-            }
+            },
           }
         ]
       }

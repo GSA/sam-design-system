@@ -31,28 +31,14 @@ export function minValidationMessage(err, field) {
 export function minDateValidationMessage(err, field) {
   let dt = field.templateOptions.minDate;
   let dateFormat = (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
-  return `This value should be more than ${dateFormat}`;
+  return `Date should be after ${dateFormat}`;
 }
 
 export function maxDateValidationMessage(err, field) {
   let dt = field.templateOptions.maxDate;
   let dateFormat = (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
-  return `This value should be less than ${dateFormat}`;
+  return `Date should be before ${dateFormat}`;
 }
-
-export function minDateRangeValidationMessage(err, field) {
-  // let dt = field.templateOptions.minDate;
-  // let dateFormat = (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
-  return `This value should be more than from value`;
-}
-
-export function maxDateRangeValidationMessage(err, field) {
-  // let dt = field.templateOptions.maxDate;
-  // let dateFormat = (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
-  return `This value should be less than to value`;
-}
-
-
 
 // Validate the max value of the charecter
 export function maxValidationMessage(err, field) {
@@ -85,14 +71,12 @@ export { maxDateValidator, minDateValidator } from './formly.validators';
         { name: 'min', message: minValidationMessage },
         { name: 'max', message: maxValidationMessage },
         { name: 'minDate', message: minDateValidationMessage },
-        { name: 'maxDate', message: maxDateValidationMessage },
-        { name: 'minDateRange', message: minDateRangeValidationMessage },
-        { name: 'maxDateRange', message: maxDateRangeValidationMessage },
+        { name: 'maxDate', message: maxDateValidationMessage }
+
       ],
       validators: [
         { name: 'minDate', validation: minDateValidator },
         { name: 'maxDate', validation: maxDateValidator }
-     
       ]
     })
   ]
