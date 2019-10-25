@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 
-import { MatDatepicker, MatDatepickerToggle } from '@angular/material/datepicker';
-import { MatInput } from '@angular/material/input';
-
 @Component({
   selector: 'sds-formly-field-datepicker',
   template: `
