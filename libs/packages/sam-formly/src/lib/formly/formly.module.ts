@@ -30,13 +30,13 @@ export function minValidationMessage(err, field) {
 export function minDateValidationMessage(err, field) {
   let dt = field.templateOptions.minDate;
   let dateFormat = (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
-  return `Date should be after ${dateFormat}`;
+  return `Date must be after ${dateFormat}`;
 }
 
 export function maxDateValidationMessage(err, field) {
   let dt = field.templateOptions.maxDate;
   let dateFormat = (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
-  return `Date should be before ${dateFormat}`;
+  return `Date must be before ${dateFormat}`;
 }
 
 
@@ -45,7 +45,7 @@ export function betweenDateValidationMessage(err, field) {
   let dateMaxFormat = (dtnmax.getMonth() + 1) + "/" + dtnmax.getDate() + "/" + dtnmax.getFullYear();
   let dtmin = field.templateOptions.minDate;
   let dateMinFormat = (dtmin.getMonth() + 1) + "/" + dtmin.getDate() + "/" + dtmin.getFullYear();
-  return `Date should be between ${dateMinFormat} and ${dateMaxFormat} `;
+  return `Date must be between ${dateMinFormat} and ${dateMaxFormat} `;
 }
 
 // Validate the max value of the charecter
