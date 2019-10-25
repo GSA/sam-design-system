@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { BehaviorSubject } from 'rxjs';
+import { maxDateValidator, minDateValidator } from '@gsa-sam/sam-formly';
+//import { maxDateRangeValidator, minDateRangeValidator } from 'libs/packages/sam-formly/src/lib/formly/formly.validators';
+import { FormControl, ValidationErrors } from '@angular/forms';
 
 
 @Component({
@@ -10,20 +13,23 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class FilterWrapperComponent implements OnInit {
 
+  constructor(private change: ChangeDetectorRef) {
+
+  }
   results: any = {};
   form = new FormGroup({});
   model = {};
   options: FormlyFormOptions = {};
-    /**
-   * Event when something is checked/selected in the grid
-   */
+  /**
+ * Event when something is checked/selected in the grid
+ */
   public filterChange$ = new BehaviorSubject<object>(null);
 
 
   fields: FormlyFieldConfig[] = [
     {
       key: 'searchKeyword',
-      wrappers: ['filterwrapper'],
+      wrappers: ['form-field'],
       templateOptions: { label: 'Keyword' },
       fieldGroup: [{
         key: 'keyword',
@@ -41,7 +47,7 @@ export class FilterWrapperComponent implements OnInit {
       key: 'searchEntity',
       wrappers: ['accordionwrapper'],
       templateOptions: { label: 'Entity' },
-      fieldGroup: [       
+      fieldGroup: [
         {
           key: 'uniqueEntityIdSam',
           type: 'input',
@@ -115,20 +121,51 @@ export class FilterWrapperComponent implements OnInit {
       templateOptions: { label: 'Expiration Date' },
       fieldGroup: [
         {
-          key: 'entityDate',
+          key: 'expirationDateOpen',
           type: 'datepicker',
           templateOptions: {
-            label: 'Expiration Date',
-            startDate: new Date(2019,11,25),
-            minDate: new Date(2019,8,15),
-            maxDate: new Date(2020, 0, 1)
+            label: 'Expiration Date (no validation)',
+          }
+        },
+        {
+          key: 'expirationDateMin',
+          type: 'datepicker',
+          templateOptions: {
+            label: 'Expiration Date (Min only Validation)',
+            minDate: new Date(2019, 9, 5)
+          }
+        },
+        {
+          key: 'expirationDatemax',
+          type: 'datepicker',
+          templateOptions: {
+            label: 'Expiration Date (Max only Validation)',
+            maxDate: new Date(2019, 9, 25)
+          }
+        },
+        {
+          key: 'expirationDateboth',
+          type: 'datepicker',
+          templateOptions: {
+            label: 'Expiration Date (Min and Max Validation)',
+            minDate: new Date(2019, 9, 5),
+            maxDate: new Date(2019, 9, 25)
+          }
+        },
+        {
+          key: 'expirationDateRangeEx',
+          type: 'daterangepicker',
+          templateOptions: {
+            label: 'Expiration Date Range',
+            minDate: new Date(2019, 9, 5),
+            maxDate: new Date(2019, 9, 25)
           }
         },
         {
           key: 'expirationDateOption',
           type: 'radio',
           templateOptions: {
-            label:'Expiration Date',
+            label: 'Expiration Date',
             options: [
               { label: '30 Days', value: '30' },
               { label: '60 Days', value: '60' },
@@ -136,8 +173,6 @@ export class FilterWrapperComponent implements OnInit {
 
             ]
           },
-
-          
         },
         {
           key: 'entityCheckbox',
@@ -217,9 +252,11 @@ export class FilterWrapperComponent implements OnInit {
   ];
   public ngOnInit() {
     this.filterChange$.subscribe(
-      res =>
-        this.results = res
-  );
+      res => {
+        this.results = res;
+        //  this.change.detectChanges();
+      }
+    );
   }
 
 }

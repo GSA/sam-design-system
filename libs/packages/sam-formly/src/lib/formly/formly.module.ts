@@ -10,6 +10,7 @@ import {
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
+import { maxDateValidator, minDateValidator } from './formly.validators';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 // Validate the min length of the charecter
 export function minlengthValidationMessage(err, field) {
@@ -26,10 +27,33 @@ export function minValidationMessage(err, field) {
   return `This value should be more than ${field.templateOptions.min}`;
 }
 
+export function minDateValidationMessage(err, field) {
+  let dt = field.templateOptions.minDate;
+  let dateFormat = (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
+  return `Date must be after ${dateFormat}`;
+}
+
+export function maxDateValidationMessage(err, field) {
+  let dt = field.templateOptions.maxDate;
+  let dateFormat = (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
+  return `Date must be before ${dateFormat}`;
+}
+
+
+export function betweenDateValidationMessage(err, field) {
+  let dtnmax = field.templateOptions.maxDate;
+  let dateMaxFormat = (dtnmax.getMonth() + 1) + "/" + dtnmax.getDate() + "/" + dtnmax.getFullYear();
+  let dtmin = field.templateOptions.minDate;
+  let dateMinFormat = (dtmin.getMonth() + 1) + "/" + dtmin.getDate() + "/" + dtmin.getFullYear();
+  return `Date must be between ${dateMinFormat} and ${dateMaxFormat} `;
+}
+
 // Validate the max value of the charecter
 export function maxValidationMessage(err, field) {
   return `This value should be less than ${field.templateOptions.max}`;
 }
+
+export { maxDateValidator, minDateValidator } from './formly.validators';
 
 
 @NgModule({
@@ -54,8 +78,15 @@ export function maxValidationMessage(err, field) {
         { name: 'maxlength', message: maxlengthValidationMessage },
         { name: 'min', message: minValidationMessage },
         { name: 'max', message: maxValidationMessage },
+        { name: 'minDate', message: minDateValidationMessage },
+        { name: 'maxDate', message: maxDateValidationMessage },
+        { name: 'betweenDate', message: betweenDateValidationMessage }
       ],
+      validators: [
+        { name: 'minDate', validation: minDateValidator },
+        { name: 'maxDate', validation: maxDateValidator }
+      ]
     })
-  ],
+  ]
 })
 export class SdsFormlyModule { }
