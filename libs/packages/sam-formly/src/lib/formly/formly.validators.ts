@@ -14,11 +14,15 @@ export function minDateValidator(control: FormControl, field: FormlyFieldConfig)
     if (value && minDateField) {
         if (value instanceof Date && minDateField instanceof Date) {
             if (value < minDateField) {
-                console.log(minDateField);
-                console.log(value);
-                toReturn = {
-                    'minDate': true
-                };
+                if (!field.templateOptions.maxDate && !(field.templateOptions.maxDate instanceof Date)) {
+                    toReturn = {
+                        'minDate': true
+                    };
+                } else {
+                    toReturn = {
+                        'betweenDate': true
+                    };
+                }
             }
         }
     }
@@ -39,9 +43,15 @@ export function maxDateValidator(control: FormControl, field: FormlyFieldConfig)
     if (value && maxDateField) {
         if (value instanceof Date && maxDateField instanceof Date) {
             if (value > maxDateField) {
-                toReturn = {
-                    'maxDate': true
-                };
+                if (!field.templateOptions.minDate && !(field.templateOptions.minDate instanceof Date)) {
+                    toReturn = {
+                        'maxDate': true
+                    };
+                } else {
+                    toReturn = {
+                        'betweenDate': true
+                    };
+                }
             }
         }
     }
