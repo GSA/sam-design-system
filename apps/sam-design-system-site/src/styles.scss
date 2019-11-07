@@ -109,10 +109,10 @@ $mat-sds-red: (
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $sds-mat-app-primary: mat-palette($mat-sds-green);
-$sds-mat-app-accent:  mat-palette($mat-blue, A200, A100, A400);
+$sds-mat-app-accent:  mat-palette($mat-sds-blue);
 
 // The warn palette is optional (defaults to red).
-$sds-mat-app-warn:    mat-palette($mat-red);
+$sds-mat-app-warn:    mat-palette($mat-sds-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $sds-mat-app-theme: mat-light-theme($sds-mat-app-primary, $sds-mat-app-accent, $sds-mat-app-warn);
