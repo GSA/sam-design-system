@@ -11,7 +11,7 @@ $mat-sds-green: (
   100: #e3f5e1, //primary-lighter
   200: #b4d0b9, //green-cool-20
   300: #86b98e, //green-cool-30
-  400: #70e17b, //primary-light b7f5bd
+  400: #70e17b, //primary
   500: #b7f5bd, //Material default -> sam-tyles primary-light color
   600: #21c834, // primary-vivid
   700: #00a91c, // primary-dark
@@ -165,4 +165,10 @@ $cdk-overlay-dark-backdrop-background: rgba(14, 52, 88, 0.7);
 sds-formly-field-datepicker > input {
   padding: 8px;
   margin-top: 8px !important;
+  border-color: black;
+  border-width: thin;
+}
+
+.mat-calendar-body-cell-content.mat-calendar-body-selected {
+  border: solid 1px #70e17b;
 }
