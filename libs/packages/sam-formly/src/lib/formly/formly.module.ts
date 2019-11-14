@@ -48,6 +48,10 @@ export function betweenDateValidationMessage(err, field) {
   return `Date must be between ${dateMinFormat} and ${dateMaxFormat} `;
 }
 
+export function invalidDateFormatValidationMessage(err, field) {
+  return `Date must be valid date format `;
+}
+
 // Validate the max value of the charecter
 export function maxValidationMessage(err, field) {
   return `This value should be less than ${field.templateOptions.max}`;
@@ -80,7 +84,8 @@ export { maxDateValidator, minDateValidator } from './formly.validators';
         { name: 'max', message: maxValidationMessage },
         { name: 'minDate', message: minDateValidationMessage },
         { name: 'maxDate', message: maxDateValidationMessage },
-        { name: 'betweenDate', message: betweenDateValidationMessage }
+        { name: 'betweenDate', message: betweenDateValidationMessage },
+        { name: 'matDatepickerParse', message: invalidDateFormatValidationMessage }// Comes from the datepicker
       ],
       validators: [
         { name: 'minDate', validation: minDateValidator },
