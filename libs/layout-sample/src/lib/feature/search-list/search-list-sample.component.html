@@ -2,17 +2,27 @@
   <!-- =============== PAGE OPTIONS =============== -->
   <sds-page-options>
     <!-- =============== TOOLBAR =============== -->
-    <sds-toolbar #toolbar="sdsToolbar" class="top-205">
+    <!-- <sds-toolbar #toolbar="sdsToolbar" class="top-205">
       <sds-accordion multi="true">
         <sds-side-navigation
           #sideNav
           [model]="sideNavModel"
         ></sds-side-navigation>
       </sds-accordion>
-    </sds-toolbar>
+    </sds-toolbar> -->
 
     <div class="grid-col">
       <div class="grid-row">
+        <div class="grid-col-auto">
+          <sds-toolbar #toolbar="sdsToolbar" class="top-205">
+            <sds-accordion multi="true">
+              <sds-side-navigation
+                #sideNav
+                [model]="sideNavModel"
+              ></sds-side-navigation>
+            </sds-accordion>
+          </sds-toolbar>
+        </div>
         <div class="grid-col-auto">
           <sds-pagination
             class="flex-fill"
