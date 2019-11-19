@@ -60,11 +60,10 @@ export class SdsToolbarComponent {
   private _disabled: boolean = false;
 
   /** Width of the toolbar when is expanded. */
-  @Input() expandedWidth: string = "300px";
+  // @Input() expandedWidth: string = "300px";
 
   // Elements that surround the toolbar need to make space for the expanded toolbar.
   // Adding 20 more pixes to provide padding
-  @Input() expandedSpace: string = "320px";
 
   /** Toggles the expanded state of the toolbar. */
   toggle() {
