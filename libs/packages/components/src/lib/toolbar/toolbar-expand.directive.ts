@@ -34,10 +34,10 @@ export class SdsToolbarExpandDirective implements OnInit {
 
   private setStyle(value: any) {
     if (value) {
-      this.renderer.setStyle(this._element.nativeElement, "margin-left", `${this._expandedWidth}`);
+      this.renderer.setStyle(this._element.nativeElement, `${this._expandedWidth}`);
     }
     else {
-      this.renderer.removeStyle(this._element.nativeElement, "margin-left");
+      this.renderer.removeStyle(this._element.nativeElement);
     }
   }
 }

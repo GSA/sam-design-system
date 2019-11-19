@@ -8,7 +8,7 @@
         </sds-toolbar>
       <!-- </sds-page-options> -->
       <div [sdsToolbarExpand]="toolbar" class="tablet:grid-col-fill">
-          <search-list-layout [service]="searchListSampleService" [configuration]="configuration">
+          <search-list-layout class="margin-left-0" [service]="searchListSampleService" [configuration]="configuration">
               <ng-template #resultContent let-item>
                   <div>
                       <search-result-list-sample-data [model]="item"></search-result-list-sample-data>
