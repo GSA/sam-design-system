@@ -1,67 +1,67 @@
-@import '~@angular/material/theming';
-// Plus imports for other components in your app.
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-@include mat-core();
-
-$mat-sds-green: (
-  50: #e8f5e9,
-  100: #c8e6c9,
-  200: #a5d6a7,
-  300: #81c784,
-  400: #66bb6a,
-  500: #4caf50, //Material default
-  600: #43a047,
-  700: #388e3c,
-  800: #2e7d32,
-  900: #1b5e20,
-  A100: #b9f6ca,
-  A200: #69f0ae,
-  A400: #00e676,
-  A700: #00c853,
-  contrast: (
-    50: $dark-primary-text,
-    100: $dark-primary-text,
-    200: $dark-primary-text,
-    300: $dark-primary-text,
-    400: $dark-primary-text,
-    500: $dark-primary-text,
-    600: $light-primary-text,
-    700: $light-primary-text,
-    800: $light-primary-text,
-    900: $light-primary-text,
-    A100: $dark-primary-text,
-    A200: $dark-primary-text,
-    A400: $dark-primary-text,
-    A700: $dark-primary-text,
-  )
-);
-
+// @import '~@angular/material/theming';
+// // Plus imports for other components in your app.
+//
+// // Include the common styles for Angular Material. We include this here so that you only
+// // have to load a single css file for Angular Material in your app.
+// // Be sure that you only ever include this mixin once!
+// @include mat-core();
+//
+// $mat-sds-green: (
+//   50: #e8f5e9,
+//   100: #c8e6c9,
+//   200: #a5d6a7,
+//   300: #81c784,
+//   400: #66bb6a,
+//   500: #4caf50, //Material default
+//   600: #43a047,
+//   700: #388e3c,
+//   800: #2e7d32,
+//   900: #1b5e20,
+//   A100: #b9f6ca,
+//   A200: #69f0ae,
+//   A400: #00e676,
+//   A700: #00c853,
+//   contrast: (
+//     50: $dark-primary-text,
+//     100: $dark-primary-text,
+//     200: $dark-primary-text,
+//     300: $dark-primary-text,
+//     400: $dark-primary-text,
+//     500: $dark-primary-text,
+//     600: $light-primary-text,
+//     700: $light-primary-text,
+//     800: $light-primary-text,
+//     900: $light-primary-text,
+//     A100: $dark-primary-text,
+//     A200: $dark-primary-text,
+//     A400: $dark-primary-text,
+//     A700: $dark-primary-text,
+//   )
+// );
+//
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$sds-mat-app-primary: mat-palette($mat-sds-green);
-$sds-mat-app-accent:  mat-palette($mat-blue, A200, A100, A400);
-
-// The warn palette is optional (defaults to red).
-$sds-mat-app-warn:    mat-palette($mat-red);
-
-// Create the theme object (a Sass map containing all of the palettes).
-$sds-mat-app-theme: mat-light-theme($sds-mat-app-primary, $sds-mat-app-accent, $sds-mat-app-warn);
-
+// $sds-mat-app-primary: mat-palette($mat-sds-green);
+// $sds-mat-app-accent:  mat-palette($mat-blue, A200, A100, A400);
+//
+// // The warn palette is optional (defaults to red).
+// $sds-mat-app-warn:    mat-palette($mat-red);
+//
+// // Create the theme object (a Sass map containing all of the palettes).
+// $sds-mat-app-theme: mat-light-theme($sds-mat-app-primary, $sds-mat-app-accent, $sds-mat-app-warn);
+//
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include angular-material-theme($sds-mat-app-theme);
+// @include angular-material-theme($sds-mat-app-theme);
 
 $theme-image-path: '~@gsa-sam/sam-styles/src/img';
 $theme-font-path: '~@gsa-sam/sam-styles/src/fonts';
 
 @import '~@gsa-sam/sam-styles/src/stylesheets/sam';
 
-// CDK Overlay
+//CDK Overlay
 @import '~@angular/cdk/overlay';
 $cdk-overlay-dark-backdrop-background: rgba(14, 52, 88, 0.7);
 @include cdk-overlay;
