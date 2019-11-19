@@ -18,6 +18,9 @@ export class SdsToolbarExpandDirective implements OnInit {
       return;
     }
     this._toolbar = toolbar;
+    /** Sets toolbar expanded width */
+
+    this._expandedWidth = this._toolbar.expandedSpace;
   }
   private _toolbar: SdsToolbarComponent;
 
