@@ -2,17 +2,18 @@
   <!-- =============== PAGE OPTIONS =============== -->
   <sds-page-options>
     <!-- =============== TOOLBAR =============== -->
-    <sds-toolbar #toolbar="sdsToolbar" class="top-205">
-      <sds-accordion multi="true">
-        <sds-side-navigation
-          #sideNav
-          [model]="sideNavModel"
-        ></sds-side-navigation>
-      </sds-accordion>
-    </sds-toolbar>
-
     <div class="grid-col">
       <div class="grid-row">
+        <div class="grid-col-auto">
+          <sds-toolbar #toolbar="sdsToolbar" class="top-205">
+            <sds-accordion multi="true">
+              <sds-side-navigation
+                #sideNav
+                [model]="sideNavModel"
+              ></sds-side-navigation>
+            </sds-accordion>
+          </sds-toolbar>
+        </div>
         <div class="grid-col-auto">
           <sds-pagination
             class="flex-fill"
@@ -45,10 +46,8 @@
         </div>
       </div>
     </div>
-  </sds-page-options>
-
   <!-- =============== PAGE CONTENT =============== -->
-  <div class="grid-row sds-page__content" [sdsToolbarExpand]="toolbar">
+  <div class="sds-page__content" [sdsToolbarExpand]="toolbar">
     <!-- =============== RESULTS LIST =============== -->
     <sds-search-result-list [model]="items">
       <ng-template #resultContent let-item>
@@ -66,4 +65,5 @@
     >
     </sds-pagination>
   </div>
+</sds-page-options>
 </sds-page>
