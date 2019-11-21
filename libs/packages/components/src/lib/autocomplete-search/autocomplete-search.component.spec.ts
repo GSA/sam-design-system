@@ -60,7 +60,12 @@ describe('SamAutocompleteComponent', () => {
 
   it('Should have empty results with invalid search', fakeAsync(() => {
 
-    const event = 'test search';
+    const event = {
+      preventDefault: ()=>{},
+      target: component.input.nativeElement
+    };
+    component.input.nativeElement.value = "test search";
+    component.input.nativeElement.focus();
     component.textChange(event);
     fixture.detectChanges();
     tick();
@@ -74,7 +79,12 @@ describe('SamAutocompleteComponent', () => {
 
   it('Should have results with minimumCharacterCountSearch', fakeAsync(() => {
 
-    const event = 'Level 7';
+    const event = {
+      preventDefault: ()=>{},
+      target: component.input.nativeElement
+    };
+    component.input.nativeElement.value = "Level 7";
+    component.input.nativeElement.focus();
     component.configuration.minimumCharacterCountSearch = 3;
     component.textChange(event);
     fixture.detectChanges();
@@ -89,7 +99,12 @@ describe('SamAutocompleteComponent', () => {
 
 
   it('Should have results key press', fakeAsync(() => {
-    const event = 'id';
+    const event = {
+      preventDefault: ()=>{},
+      target: component.input.nativeElement
+    };
+    component.input.nativeElement.value = "id";
+    component.input.nativeElement.focus();
     component.textChange(event);
     fixture.detectChanges();
     tick();
@@ -205,7 +220,12 @@ describe('SamAutocompleteComponent', () => {
 
 
   it('Should have delete have results', fakeAsync(() => {
-    const event = 'id';
+    const event = {
+      preventDefault: ()=>{},
+      target: component.input.nativeElement
+    };
+    component.input.nativeElement.value = "id";
+    component.input.nativeElement.focus();
     component.textChange(event);
     fixture.detectChanges();
     tick();

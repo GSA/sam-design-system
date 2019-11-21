@@ -2,11 +2,12 @@
   <div class="position-relative maxw-mobile-lg">
     <div role="combobox" [attr.id]="configuration.id+'-container'" [attr.aria-expanded]="showResults"
       [attr.aria-owns]="showResults? configuration.id+ '-listbox' : undefined" aria-haspopup="listbox">
-      <input [disabled]="disabled" (ngModelChange)="textChange($event)" class="usa-input" #input
+      <input [disabled]="disabled" (input)="textChange($event)" class="usa-input" #input
         [attr.id]="configuration.id" type="text" (focus)="inputFocusHandler()" (keydown)="onKeydown($event)"
         [(ngModel)]="inputValue" aria-autocomplete="list" [attr.placeholder]="configuration.autocompletePlaceHolderText"
         [attr.aria-activedescendant]="showResults? configuration.id+'-resultItem-'+highlightedIndex :''"
-        [attr.aria-controls]="showResults? configuration.id+ '-listbox' : undefined">
+        [attr.aria-controls]="showResults? configuration.id+ '-listbox' : undefined"
+        autocomplete="off">
     </div>
     <ul #resultsList *ngIf="showResults" [attr.id]="configuration.id+ '-listbox'" role="listbox"
       class="usa-list usa-list--unstyled sds-autocomplete" (scroll)="onScroll()">
@@ -58,7 +59,7 @@
 
     <ng-container *ngIf="!input.disabled">
       <span class="position-absolute right-105 top-1">
-        <span role="button" aria-label="Clear input" aria-hidden="false" (click)="clearInput()"
+        <span tabindex="0" role="button" aria-label="Clear input" aria-hidden="false" (click)="clearInput()"
           (keyup.enter)="clearInput()">
           <fa-icon [icon]="['fas', 'times']" size="xs"></fa-icon>
         </span>
