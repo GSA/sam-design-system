@@ -189,7 +189,13 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   }
 
   textChange(event) {
-    const searchString = event || '';
+    // ie 11 placeholders will incorrectly trigger input events (known bug)
+    // if input isn't active element then don't do anything
+    if (event.target != document.activeElement) {
+      event.preventDefault();
+      return;
+    }
+    const searchString = event.target.value || '';
     this.getResults(searchString);
   }
 
