@@ -1,7 +1,10 @@
 <sds-page>
     <sds-page-options>
         <sds-toolbar #toolbar="sdsToolbar" class="top-205">
-            <sds-filters [form]="form" [fields]="fields" [model]="model" (filterChange)="filterChange$.next($event)"></sds-filters>
+            <sds-accordion-item>
+                <sds-accordion-item-header> Filters </sds-accordion-item-header>
+                <sds-filters [form]="form" [fields]="fields" [model]="model" (filterChange)="filterChange$.next($event)"></sds-filters>
+            </sds-accordion-item>
         </sds-toolbar>
     </sds-page-options>
 </sds-page>
