@@ -13,7 +13,7 @@ import { FieldWrapper } from '@ngx-formly/core';
     <span *ngIf="to.required && to.hideRequiredMarker !== true">*</span>
   </label>  
 
-  <label *ngIf="to.hideLabel" class="usa-sr-only" [attr.for]="id">{{ to.label }}</label>
+  <label *ngIf="to.hideLabel" [style.display]="to.hideLabel ? 'none' : ''" [attr.for]="id">{{ to.label }}</label>
 
   <div *ngIf="showError" class="usa-error-message" [style.display]="'block'">
     <formly-validation-message [field]="field"></formly-validation-message>
@@ -25,7 +25,7 @@ import { FieldWrapper } from '@ngx-formly/core';
 })
 export class FormlyWrapperFormFieldComponent extends FieldWrapper {
 
-  // <label *ngIf="to.hideLabel" [style.display]="to.hideLabel ? 'none' : ''" [attr.for]="id">{{ to.label }}</label>
+  // <label *ngIf="to.hideLabel" [style.display]="to.hideLabel ? 'none' : ''" class="usa-sr-only" [attr.for]="id">{{ to.label }}</label>
 
   @ViewChild('fieldComponent', { read: ViewContainerRef }) fieldComponent!: ViewContainerRef;
 }

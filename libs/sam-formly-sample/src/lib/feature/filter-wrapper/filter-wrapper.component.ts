@@ -36,7 +36,7 @@ export class FilterWrapperComponent implements OnInit {
         type: 'input',
         templateOptions: {
           type: 'text',
-          label: 'Keyword',
+          label: 'Search Keyword',
           hideLabel: true
         },
 
