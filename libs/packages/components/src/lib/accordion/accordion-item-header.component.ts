@@ -18,6 +18,7 @@ import { SdsAccordionItemComponent } from "./accordion-item.component";
   templateUrl: "accordion-item-header.component.html",
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  inputs:['suppressAccordionIcon'],
   host: {
     class: "sds-accordion__trigger",
     role: "button",
@@ -32,7 +33,7 @@ import { SdsAccordionItemComponent } from "./accordion-item.component";
 })
 export class SdsAccordionItemHeaderComponent implements OnDestroy, FocusableOption {
   private _parentChangeSubscription = Subscription.EMPTY;
-
+  suppressAccordionIcon = true;
   constructor(
     @Host() public accordionItem: SdsAccordionItemComponent,
     private _element: ElementRef,

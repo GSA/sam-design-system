@@ -3,7 +3,7 @@
         <sds-toolbar [expanded]="sideNavExpanded" #toolbar="sdsToolbar">
             <sds-accordion multi="true">
                 <sds-accordion-item [expanded]="sideNavExpanded">
-                    <sds-accordion-item-header> Navigation </sds-accordion-item-header>
+                    <sds-accordion-item-header suppressAccordionIcon >Navigation</sds-accordion-item-header>
                     <sds-side-navigation #sideNav (linkEvent)="linkEvent.next($event)" [model]="model">
                     </sds-side-navigation>
                 </sds-accordion-item>
