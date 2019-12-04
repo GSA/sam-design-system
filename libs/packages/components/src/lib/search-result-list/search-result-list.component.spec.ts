@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SdsSearchResultListComponent } from './search-result-list.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 describe('SdsSearchResultListComponent', () => {
   let component: SdsSearchResultListComponent;
@@ -8,7 +9,7 @@ describe('SdsSearchResultListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SdsSearchResultListComponent],
-      imports: []
+      imports: [FontAwesomeModule]
     })
       .compileComponents();
   }));

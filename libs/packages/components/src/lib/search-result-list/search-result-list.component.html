@@ -7,11 +7,8 @@
 <div *ngIf="!model|| model.length===0">
     <div class="grid-row border border-base-lightest" style="background-color:#F7F9FA;">
       <div class="grid-col-auto">
-        <div class="width-15 margin-2 bg-base"></div>
-        <!-- <fa-layers [fixedWidth]="true" size="lg">
-          <fa-icon [icon]="['fas', 'circle']"></fa-icon>
-          <fa-icon [icon]="['fas', 'ellipsis-v']" transform="shrink-6"></fa-icon>
-        </fa-layers> -->
+        <div class="width-15 bg-base margin-y-4"></div>
+        <fa-icon [icon]="['fas', 'search']" size="7x" class="margin-x-4"></fa-icon>
       </div>
       <div class="grid-col-fill display-flex flex-column padding-y-1">
         <h1 class="margin-bottom-105 text-semibold">No matches found</h1>
