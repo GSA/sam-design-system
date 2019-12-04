@@ -1,19 +1,18 @@
 <ul *ngIf="model" [attr.aria-label]="configuration.labelText +' results'" class="usa-list usa-list--unstyled sds-autocomplete-selected" aria-relevant="additions" role="listbox" aria-live="polite">
     <li role="option" *ngFor="let result of model.items; let i = index">
-        <div [attr.class]=" disabled ? 'sds-autocomplete-selected__item sds-autocomplete-selected__item--disabled' :'sds-autocomplete-selected__item'">
+        <div [attr.class]=" disabled ? 'sds-tag sds-tag--chip sds-autocomplete-selected__item sds-autocomplete-selected__item--disabled' :'sds-tag sds-tag--chip sds-autocomplete-selected__item'">
             <ng-container *ngIf="itemTemplate" [ngTemplateOutlet]="itemTemplate" [ngTemplateOutletContext]="{$implicit:result}">
             </ng-container>
             <ng-container *ngIf="!itemTemplate">
-                <span class="display-block text-semibold"> {{ getObjectValue(result, configuration.primaryTextField) }}</span>
+                <span class="display-block text-semibold"> {{ getObjectValue(result, configuration.primaryTextField) }}
+                </span>
                 <ng-container *ngIf="configuration.secondaryTextField && result[configuration.secondaryTextField] ">
                     {{ result[configuration.secondaryTextField] }}
                 </ng-container>
             </ng-container>
-
-            <span tabindex="0" role="button" class="position-absolute right-1 top-2px" [class.text-base]="disabled" [attr.aria-label]="'Remove Item ' + result[configuration.primaryTextField]" aria-hidden="false" (click)="removeItem(result)" (keyup.enter)="removeItem(result)">
-	  <fa-icon [icon]="['fas', 'times']" size="sm"></fa-icon> 
-      </span>
-
+            <button [attr.aria-label]="'Remove Item ' + result[configuration.primaryTextField]" [class.text-base]="disabled" aria-hidden="false" class="sds-tag__close  position-absolute right-1 top-2px" (click)="removeItem(result)" (keyup.enter)="removeItem(result)">
+        <fa-icon [icon]="['fas', 'times']" size="sm"></fa-icon>
+      </button>
         </div>
     </li>
 </ul>
