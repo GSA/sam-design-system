@@ -5,5 +5,19 @@
 </div>
 <hr *ngIf="divider" class="thin" />
 <div *ngIf="!model|| model.length===0">
-    No results found
+    <div class="grid-row border border-base-lightest" style="background-color:#F7F9FA;">
+      <div class="grid-col-auto">
+        <div class="width-15 margin-2 bg-base"></div>
+        <!-- <fa-layers [fixedWidth]="true" size="lg">
+          <fa-icon [icon]="['fas', 'circle']"></fa-icon>
+          <fa-icon [icon]="['fas', 'ellipsis-v']" transform="shrink-6"></fa-icon>
+        </fa-layers> -->
+      </div>
+      <div class="grid-col-fill display-flex flex-column padding-y-1">
+        <h1 class="margin-bottom-105 text-semibold">No matches found</h1>
+        <p class="margin-y-0 font-sans-md">We couldn't find a match for your search criteria.</p>
+        <p class="margin-y-0 font-sans-md">Please try another search or go back to previous results.</p>
+        <button class="usa-button usa-button--secondary width-card margin-y-2">Go Back</button>
+      </div>
+    </div>
 </div>
