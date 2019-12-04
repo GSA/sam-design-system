@@ -7,6 +7,10 @@
                     <sds-side-navigation #sideNav (linkEvent)="linkEvent.next($event)" [model]="model">
                     </sds-side-navigation>
                 </sds-accordion-item>
+                <sds-accordion-item>
+                    <sds-accordion-item-header> Filters </sds-accordion-item-header>
+                    <sds-filters [form]="form" [fields]="fields" [model]="model1" (filterChange)="filterChange$.next($event)"></sds-filters>
+                </sds-accordion-item>
             </sds-accordion>
         </sds-toolbar>
         <div class="sam-example-pagination" [sdsToolbarExpand]="toolbar">
