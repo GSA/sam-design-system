@@ -21,8 +21,5 @@ import { FieldWrapper } from '@ngx-formly/core';
   `,
 })
 export class FormlyWrapperFormFieldComponent extends FieldWrapper {
-  // {{field.templateOptions.hasMultiControl |json}}
-  // <label *ngIf="to.hideLabel" [style.display]="to.hideLabel ? 'none' : ''" class="usa-sr-only" [attr.for]="id">{{ to.label }}</label>
-  const
   @ViewChild('fieldComponent', { read: ViewContainerRef }) fieldComponent!: ViewContainerRef;
 }
