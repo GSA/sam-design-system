@@ -30,14 +30,26 @@ export class FilterWrapperComponent implements OnInit {
     {
       key: 'searchKeyword',
       wrappers: ['form-field'],
-      templateOptions: { label: 'Keyword' },
+      templateOptions: {
+        label: 'Keyword',
+        ariaHidden: true
+      },
       fieldGroup: [{
         key: 'keyword',
         type: 'input',
         templateOptions: {
           type: 'text',
-          label: 'Keyword',
-          hideLabel: true
+          label: 'Search Keyword'        
+         },
+
+      },
+      {
+        key: 'keyword',
+        type: 'input',
+        templateOptions: {
+          type: 'text',
+          label: 'test Keyword',
+          labelClass:'usa-sr-only'
         },
 
       }]

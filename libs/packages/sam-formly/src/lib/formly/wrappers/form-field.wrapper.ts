@@ -5,7 +5,7 @@ import { FieldWrapper } from '@ngx-formly/core';
   selector: 'sds-formly-wrapper-form-field',
   template: `
 <div class="usa-form-group" [class.usa-form-group--error]="showError">
-  <label class="usa-label" *ngIf="to.label && to.hideLabel !== true" [attr.for]="id">
+  <label class="usa-label" [attr.for]="id" [ngClass]="to.labelClass">
   <span *ngIf="to.tagText" class="usa-tag"
   [ngClass]="to.tagClass ? to.tagClass : 'sds-tag--info-white'">
   {{to.tagText}}</span> 
