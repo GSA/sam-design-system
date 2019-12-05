@@ -23,7 +23,6 @@ import { SideMenuFiltersSampleModule } from './feature/side-menu-filters-sample/
 import { SideMenuFiltersSampleComponent } from './feature/side-menu-filters-sample/side-menu-filters-sample.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
-
 import { SubheaderSampleComponent } from './feature/subheader-sample/subheader-sample.component';
 import { SubheaderSampleModule } from './feature/subheader-sample/subheader-sample.module';
 import { AutocompleteSampleModule } from './feature/autocomplete/autocomplete-sample.module';
@@ -32,10 +31,10 @@ import { DialogSampleModule } from './feature/dialog-sample/dialog-sample.module
 import { DialogSampleComponent } from './feature/dialog-sample/dialog-sample.component';
 import { ActionsMenuSampleComponent } from './feature/actions-menu-sample/actions-menu-sample.component';
 import { ActionsMenuSampleModule } from './feature/actions-menu-sample/actions-menu-sample.module';
-
-
 import { SearchSampleModule } from './feature/search-sample/search-sample.module';
 import { SearchSampleComponent } from './feature/search-sample/search-sample.component';
+import { TextEditorSampleModule } from './feature/text-editor-sample/text-editor-sample.module';
+import { TextEditorSampleComponent} from './feature/text-editor-sample/text-editor-sample.component';
 export const ROUTES: Routes = [
   { path: 'header', component: HeaderSampleComponent },
   { path: 'footer', component: FooterSampleComponent },
@@ -49,7 +48,9 @@ export const ROUTES: Routes = [
   { path: 'autocomplete', component: AutocompleteSampleComponent },
   { path: 'dialog', component: DialogSampleComponent },
   { path: 'actions-menu', component: ActionsMenuSampleComponent },
-  { path: 'search', component: SearchSampleComponent }
+  { path: 'search', component: SearchSampleComponent },
+  { path: 'text-editor', component: TextEditorSampleComponent}
+
 ];
 
 @NgModule({
@@ -72,7 +73,8 @@ export const ROUTES: Routes = [
     AutocompleteSampleModule,
     DialogSampleModule,
     ActionsMenuSampleModule,
-    SearchSampleModule
+    SearchSampleModule,
+    TextEditorSampleModule
   ],
   exports: [RouterModule]
 })
