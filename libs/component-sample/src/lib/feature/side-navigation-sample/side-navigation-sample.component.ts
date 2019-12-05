@@ -16,7 +16,11 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
   results: any = {};
   form = new FormGroup({});
   model1 = {};
-  
+     /**
+   * Event when something is checked/selected in the grid
+   */
+  public filterChange$ = new BehaviorSubject<object>(null);
+
   fields: FormlyFieldConfig[] = [
     {
       key: 'searchKeyword',
@@ -190,7 +194,10 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
       }
     );
 
-
+    this.filterChange$.subscribe(
+      res =>
+        this.results = res
+  );
   }
 
 
