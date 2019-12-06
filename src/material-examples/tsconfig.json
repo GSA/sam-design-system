@@ -1,0 +1,18 @@
+// Configuration for IDEs only.
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    // Needed for Moment.js since it doesn't have a default export.
+    "allowSyntheticDefaultImports": true,
+    "rootDir": "..",
+    "baseUrl": ".",
+    "paths": {
+      "@angular/cdk/*": ["../cdk/*"],
+      "@angular/cdk-experimental/*": ["../cdk-experimental/*"],
+      "@angular/material/*": ["../material/*"],
+      "@angular/material-experimental/*": ["../material-experimental/*"],
+      "@angular/material-moment-adapter": ["../material-moment-adapter/public-api.ts"]
+    }
+  },
+  "include": ["./**/*.ts"]
+}

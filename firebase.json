@@ -1,0 +1,25 @@
+{
+  "hosting": {
+    "public": "dist/devapp-deploy",
+    "rewrites": [
+      {
+        "source": "/**/!(*.@(js|ts|html|css|json|svg|png|jpg|jpeg))",
+        "destination": "/index.html"
+      }
+    ],
+    "headers": [
+      {
+        "source": "*",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          }
+        ]
+      }
+    ],
+    "ignore": [
+      "firebase.json"
+    ]
+  }
+}

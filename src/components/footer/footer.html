@@ -1,0 +1,103 @@
+<footer class="usa-footer usa-footer--big" role="contentinfo">
+  <div class="usa-footer__primary-section">
+    <div class="grid-container">
+      <div class="grid-row grid-gap">
+        <div class="mobile-lg:grid-col-12 tablet:grid-col-4">
+          <div
+            class="usa-footer__logo grid-row mobile-lg:grid-gap-1 margin-top-3"
+          >
+            <div
+              class="mobile-lg:grid-col-3 mobile-lg:grid-offset-3 tablet:grid-offset-none tablet:grid-col-auto"
+            >
+              <img
+                *ngIf="model.footerLogo"
+                class="usa-footer__logo-img"
+                [attr.src]="model.footerLogo.imageSourcePath"
+                [attr.alt]="model.footerLogo.imageAltText"
+              />
+              <a
+                *ngIf="!model.footerLogo"
+                class="usa-footer__logo-text"
+                target="_blank"
+                href="http://gsa.gov"
+              >
+                GSA.gov
+              </a>
+            </div>
+            <div class="mobile-lg:grid-col-4 tablet:grid-col-auto">
+              <span class="usa-footer__logo-heading">
+                {{
+                  model.footerLogo?.text || 'General Services Administration'
+                }}
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="mobile-lg:grid-col-12 tablet:grid-col-8">
+          <nav class="usa-footer__nav">
+            <div class="grid-row grid-gap-4">
+              <div
+                class="mobile-lg:grid-col-12 desktop:grid-col-4"
+                *ngFor="let section of model.linkSections"
+              >
+                <section
+                  class="usa-footer__primary-content usa-footer__primary-content--collapsible"
+                >
+                  <span class="usa-footer__primary-link">{{
+                    section.text
+                  }}</span>
+                  <ul class="usa-list usa-list--unstyled">
+                    <li
+                      class="usa-footer__secondary-link"
+                      *ngFor="let link of section.links"
+                    >
+                      <ng-container
+                        [ngTemplateOutlet]="
+                          navigationHelper.isLinkInternal(link)
+                            ? footerRouteLinkTemplate
+                            : navigationHelper.isLinkExternal(link)
+                            ? footerHREFLinkTemplate
+                            : footerEVENTLinkTemplate
+                        "
+                        [ngTemplateOutletContext]="{ $implicit: link }"
+                      ></ng-container>
+                    </li>
+                  </ul>
+                </section>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="usa-footer__secondary-section">
+    <div class="grid-container">
+      <div class="grid-row">
+        <div class="grid-col-12">
+          <p class="font-body-2xs line-height-sans-4 margin-top-0">
+            This is a U.S. General Services Administration Federal Government
+            computer system that is
+            <strong>"FOR OFFICIAL USE ONLY."</strong> This system is subject to
+            monitoring. Individuals found performing unauthorized activities are
+            subject to disciplinary action including criminal prosecution.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<ng-template #footerRouteLinkTemplate let-link>
+  <a [routerLink]="[link.route]">{{ link.text }}</a>
+</ng-template>
+
+<ng-template #footerHREFLinkTemplate let-link>
+  <a [attr.href]="[link.route]">{{ link.text }}</a>
+</ng-template>
+
+<ng-template #footerEVENTLinkTemplate let-link>
+  <a href="javascript:void(0)" (click)="linkClickEvent(link)">{{
+    link.text
+  }}</a>
+</ng-template>

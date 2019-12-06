@@ -1,0 +1,28 @@
+package(default_visibility = ["//visibility:public"])
+
+load("//:packages.bzl", "ROLLUP_GLOBALS")
+load("//tools:defaults.bzl", "ng_module", "ng_package")
+
+exports_files(["mdc_require_config.js"])
+
+ng_module(
+    name = "material-experimental",
+    srcs = glob(
+        ["*.ts"],
+        exclude = ["**/*.spec.ts"],
+    ),
+    module_name = "@angular/material-experimental",
+    deps = [
+        "@npm//@angular/forms",
+    ],
+)
+
+ng_package(
+    name = "npm_package",
+    srcs = ["package.json"],
+    entry_point = ":public-api.ts",
+    globals = ROLLUP_GLOBALS,
+    # TODO(devversion): re-enable once we have set up the proper compiler for the ng_package
+    tags = ["manual"],
+    deps = [":material-experimental"],
+)

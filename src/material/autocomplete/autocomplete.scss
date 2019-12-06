@@ -1,0 +1,45 @@
+@import '../core/style/menu-common';
+@import '../../cdk/a11y/a11y';
+
+/**
+ * The max-height of the panel, currently matching mat-select value.
+ */
+$mat-autocomplete-panel-max-height: 256px !default;
+$mat-autocomplete-panel-border-radius: 4px !default;
+
+.mat-autocomplete-panel {
+  @include mat-menu-base();
+
+  visibility: hidden;
+  max-width: none;
+  max-height: $mat-autocomplete-panel-max-height;
+  position: relative;
+  width: 100%;
+  border-bottom-left-radius: $mat-autocomplete-panel-border-radius;
+  border-bottom-right-radius: $mat-autocomplete-panel-border-radius;
+
+  &.mat-autocomplete-visible {
+    visibility: visible;
+  }
+
+  &.mat-autocomplete-hidden {
+    visibility: hidden;
+  }
+
+  .mat-autocomplete-panel-above & {
+    border-radius: 0;
+    border-top-left-radius: $mat-autocomplete-panel-border-radius;
+    border-top-right-radius: $mat-autocomplete-panel-border-radius;
+  }
+
+  // We need to offset horizontal dividers by their height, because
+  // they throw off the keyboard navigation inside the panel.
+  .mat-divider-horizontal {
+    margin-top: -1px;
+  }
+
+  @include cdk-high-contrast {
+    outline: solid 1px;
+  }
+}
+
