@@ -164,8 +164,8 @@ def ng_web_test_suite(deps = [], static_css = [], bootstrap = [], tags = [], **k
     # reduces the amount of setup that is needed to create a test suite Bazel target. Note that the
     # prebuilt theme will be also added to CDK test suites but shouldn't affect anything.
     static_css = static_css + [
-        "//src/material/prebuilt-themes:indigo-pink",
-        "//src/material-experimental/mdc-theming:indigo_pink_prebuilt",
+        # "//src/material/prebuilt-themes:indigo-pink",
+        # "//src/material-experimental/mdc-theming:indigo_pink_prebuilt",
     ]
 
     # Workaround for https://github.com/bazelbuild/rules_typescript/issues/301

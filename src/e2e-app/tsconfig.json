@@ -5,14 +5,8 @@
     "rootDir": "..",
     "baseUrl": ".",
     "paths": {
-      "@angular/cdk/*": ["../cdk/*"],
-      "@angular/material/*": ["../material/*"],
-      "@angular/material-experimental/*": ["../material-experimental/*"],
-      "@angular/material-experimental": ["../material-experimental/"],
-      "@angular/cdk-experimental/*": ["../cdk-experimental/*"],
-      "@angular/cdk-experimental": ["../cdk-experimental/"],
-      "@angular/material-moment-adapter": ["../material-moment-adapter/"],
-      "@angular/material-examples": ["../material-examples/"]
+      "@gsa-sam/components/*": ["../components/*"],
+      "@gsa-sam/sds-examples": ["../examples/"]
     }
   },
   "include": ["./**/*.ts"]

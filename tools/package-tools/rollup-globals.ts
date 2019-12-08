@@ -32,26 +32,26 @@ function generateRollupEntryPointsSDS(packageName: string, entryPoints: string[]
 const componentsSecondaryEntryPoints = getSubdirectoryNames(join(buildConfig.packagesDir, 'components'));
 
 /** List of potential secondary entry-points for the cdk package. */
-const cdkSecondaryEntryPoints = getSubdirectoryNames(join(buildConfig.packagesDir, 'cdk'));
+// const cdkSecondaryEntryPoints = getSubdirectoryNames(join(buildConfig.packagesDir, 'cdk'));
 
 /** List of potential secondary entry-points for the material package. */
-const matSecondaryEntryPoints = getSubdirectoryNames(join(buildConfig.packagesDir, 'material'));
+// const matSecondaryEntryPoints = getSubdirectoryNames(join(buildConfig.packagesDir, 'material'));
 
 /** List of potential secondary entry-points for the google-maps package. */
-const googleMapsSecondaryEntryPoints =
-    getSubdirectoryNames(join(buildConfig.packagesDir, 'google-maps'));
+// const googleMapsSecondaryEntryPoints =
+//     getSubdirectoryNames(join(buildConfig.packagesDir, 'google-maps'));
 
 /** List of potential secondary entry-points for the cdk-experimental package. */
-const cdkExperimentalSecondaryEntryPoints =
-    getSubdirectoryNames(join(buildConfig.packagesDir, 'cdk-experimental'));
+// const cdkExperimentalSecondaryEntryPoints =
+//     getSubdirectoryNames(join(buildConfig.packagesDir, 'cdk-experimental'));
 
 /** List of potential secondary entry-points for the material-experimental package. */
-const materialExperimentalSecondaryEntryPoints =
-    getSubdirectoryNames(join(buildConfig.packagesDir, 'material-experimental'));
+// const materialExperimentalSecondaryEntryPoints =
+//     getSubdirectoryNames(join(buildConfig.packagesDir, 'material-experimental'));
 
 /** List of potential secondary entry points for the youtube-player package. */
-const youTubePlayerSecondaryEntryPoints =
-    getSubdirectoryNames(join(buildConfig.packagesDir, 'youtube-player'));
+// const youTubePlayerSecondaryEntryPoints =
+//     getSubdirectoryNames(join(buildConfig.packagesDir, 'youtube-player'));
 
 // SDS MODIFICATION
 /** Object with all cdk entry points in the format of Rollup globals. */
@@ -59,26 +59,26 @@ const rollupComponentsEntryPoints =
     generateRollupEntryPointsSDS('components', componentsSecondaryEntryPoints);
 
 /** Object with all cdk entry points in the format of Rollup globals. */
-const rollupCdkEntryPoints = generateRollupEntryPoints('cdk', cdkSecondaryEntryPoints);
+// const rollupCdkEntryPoints = generateRollupEntryPoints('cdk', cdkSecondaryEntryPoints);
 
 /** Object with all material entry points in the format of Rollup globals. */
-const rollupMatEntryPoints = generateRollupEntryPoints('material', matSecondaryEntryPoints);
+// const rollupMatEntryPoints = generateRollupEntryPoints('material', matSecondaryEntryPoints);
 
 /** Object with all google-maps entry points in the format of Rollup globals. */
-const rollupGoogleMapsEntryPoints =
-    generateRollupEntryPoints('google-maps', googleMapsSecondaryEntryPoints);
+// const rollupGoogleMapsEntryPoints =
+//     generateRollupEntryPoints('google-maps', googleMapsSecondaryEntryPoints);
 
 /** Object with all material-experimental entry points in the format of Rollup globals. */
-const rollupMaterialExperimentalEntryPoints =
-    generateRollupEntryPoints('material-experimental', materialExperimentalSecondaryEntryPoints);
+// const rollupMaterialExperimentalEntryPoints =
+//     generateRollupEntryPoints('material-experimental', materialExperimentalSecondaryEntryPoints);
 
 /** Object with all youtube-player entry points in the format of Rollup globals. */
-const rollupYouTubePlayerEntryPoints =
-    generateRollupEntryPoints('youtube-player', youTubePlayerSecondaryEntryPoints);
+// const rollupYouTubePlayerEntryPoints =
+//     generateRollupEntryPoints('youtube-player', youTubePlayerSecondaryEntryPoints);
 
 /** Object with all cdk-experimental entry points in the format of Rollup globals. */
-const rollupCdkExperimentalEntryPoints =
-    generateRollupEntryPoints('cdk-experimental', cdkExperimentalSecondaryEntryPoints);
+// const rollupCdkExperimentalEntryPoints =
+//     generateRollupEntryPoints('cdk-experimental', cdkExperimentalSecondaryEntryPoints);
 
 /** Map of globals that are used inside of the different packages. */
 export const rollupGlobals = {
@@ -150,12 +150,12 @@ export const rollupGlobals = {
   '@gsa-sam/components': 'sds.components',
 
   // Include secondary entry-points of the cdk and material packages
-  ...rollupCdkEntryPoints,
-  ...rollupMatEntryPoints,
-  ...rollupCdkExperimentalEntryPoints,
-  ...rollupMaterialExperimentalEntryPoints,
-  ...rollupYouTubePlayerEntryPoints,
-  ...rollupGoogleMapsEntryPoints,
+  // ...rollupCdkEntryPoints,
+  // ...rollupMatEntryPoints,
+  // ...rollupCdkExperimentalEntryPoints,
+  // ...rollupMaterialExperimentalEntryPoints,
+  // ...rollupYouTubePlayerEntryPoints,
+  // ...rollupGoogleMapsEntryPoints,
   // SDS MODIFICATION
   ...rollupComponentsEntryPoints,
 

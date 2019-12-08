@@ -14,7 +14,7 @@ ng_module(
     deps = [
         "//src/dev-app/footer",
         "//src/dev-app/dev-app",
-        "//src/material/core",
+        # "//src/material/core",
     ],
 )
 

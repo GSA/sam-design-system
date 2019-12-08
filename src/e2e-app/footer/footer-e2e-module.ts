@@ -7,14 +7,12 @@
  */
 
 import {NgModule} from '@angular/core';
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
+import {SdsFooterModule} from '@gsa-sam/components/footer';
 import {FooterE2E} from './footer-e2e';
 
 @NgModule({
   imports: [
-    MatButtonModule,
-    MatIconModule,
+    SdsFooterModule,
   ],
   declarations: [FooterE2E],
 })

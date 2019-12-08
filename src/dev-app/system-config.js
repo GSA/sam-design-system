@@ -33,13 +33,13 @@ var pathMapping = {};
 var packagesConfig = {};
 
 // Configure all primary entry-points.
-configureEntryPoint('material');
+// configureEntryPoint('material');
 configureSDSEntryPoint('components');
 
 // Configure all secondary entry-points.
-MATERIAL_PACKAGES.forEach(function(pkgName) {
-  configureEntryPoint('material', pkgName);
-});
+// MATERIAL_PACKAGES.forEach(function(pkgName) {
+//   configureEntryPoint('material', pkgName);
+// });
 
 COMPONENTS_PACKAGES.forEach(function(pkgName) {
   configureSDSEntryPoint('components', pkgName);

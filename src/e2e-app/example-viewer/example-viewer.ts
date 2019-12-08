@@ -8,7 +8,7 @@
 
 import {Component, ElementRef, Injector, Input, OnInit} from '@angular/core';
 import {createCustomElement} from '@angular/elements';
-import {EXAMPLE_COMPONENTS} from '@angular/material-examples';
+import {EXAMPLE_COMPONENTS} from '@gsa-sam/sds-examples';
 
 /** Loads an example component from `@angular/material-examples` */
 @Component({
