@@ -1,3 +1,12 @@
+# 1.0.0-beta.2 "Beta 2" (2019-12-08)
+
+### components
+
+|            |                       |
+| ---------- | --------------------- |
+| bug fix |  changelog generation script ([6464325](https://github.com/GSA/sam-design-system/commit/6464325)) |
+
+
 # 1.0.0-beta.1 "Beta 1" (2019-12-08)
 
 ### components
