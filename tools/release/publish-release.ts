@@ -82,6 +82,7 @@ class PublishReleaseTask extends BaseReleaseTask {
     // Branch that will be used to build the output for the release of the current version.
     const publishBranch = this.switchToPublishBranch(newVersion);
 
+    // SDS MODIFICATION
     // this._verifyLastCommitFromStagingScript();
     this.verifyLocalCommitsMatchUpstream(publishBranch);
 
