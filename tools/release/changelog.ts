@@ -135,7 +135,7 @@ function createChangelogWriterOptions(changelogPath: string) {
           // TODO(devversion): once we formalize the commit message format and
           // require specifying the "material" package explicitly, we can remove
           // the fallback to the "material" package.
-          const packageName = commit.package || 'material';
+          const packageName = commit.package || 'components';
           const type = getTypeOfCommitGroupDescription(group.title);
 
           if (!packageGroups[packageName]) {
