@@ -78,7 +78,7 @@ genrule(
     # data to the Bazel entry-point through environment variables.
     export _SOURCE_FILES="$(SRCS)"
     export _OUTPUT_FILE="$@"
-    export _BASE_DIR="$$(dirname $(location //src/material-examples:index.ts))"
+    export _BASE_DIR="$$(dirname $(location //src/examples:index.ts))"
 
     # Run the bazel entry-point for generating the example module.
     ./$(location //tools/example-module:bazel-bin)

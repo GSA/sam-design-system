@@ -47,6 +47,7 @@
     "@angular/core": "^8.2.2",
     "@angular/elements": "^8.2.2",
     "@angular/forms": "^8.2.2",
+    "@angular/material": "^8.2.3",
     "@angular/platform-browser": "^8.2.2",
     "@gsa-sam/sam-styles": "0.0.43",
     "@types/googlemaps": "^3.37.0",

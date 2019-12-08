@@ -7,14 +7,6 @@
     "rootDir": "..",
     "baseUrl": ".",
     "paths": {
-      "@angular/material/*": ["../material/*"],
-      "@angular/material-experimental/*": ["../material-experimental/*"],
-      "@angular/material-experimental": ["../material-experimental"],
-      "@angular/cdk-experimental/*": ["../cdk-experimental/*"],
-      "@angular/cdk-experimental": ["../cdk-experimental"],
-      "@angular/material-moment-adapter": ["../material-moment-adapter/public-api.ts"],
-      "@angular/google-maps": ["../google-maps"],
-      "@angular/material-examples": ["../../dist/packages/material-examples"],
       "@gsa-sam/components/*": ["../components/*"],
     }
   },

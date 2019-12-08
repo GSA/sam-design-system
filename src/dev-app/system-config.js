@@ -8,65 +8,14 @@
 
 // Note that this file isn't being transpiled so we need to keep it in ES5.
 
-var CDK_PACKAGES = [
-  'a11y',
-  'accordion',
-  'bidi',
-  'coercion',
-  'collections',
-  'drag-drop',
-  'keycodes',
-  'layout',
-  'observers',
-  'overlay',
-  'platform',
-  'portal',
-  'scrolling',
-  'stepper',
-  'table',
-  'text-field',
-  'tree',
-];
-
-var CDK_EXPERIMENTAL_PACKAGES = [
-  'dialog',
-  'popover-edit',
-  'scrolling',
-];
-
 var MATERIAL_PACKAGES = [
-  'autocomplete',  'badge',
-  'bottom-sheet',  'button',
-  'button-toggle', 'card',
-  'checkbox',      'chips',
-  'core',          'datepicker',
-  'dialog',        'divider',
-  'expansion',     'form-field',
-  'grid-list',     'icon',
-  'input',         'list',
-  'menu',          'paginator',
-  'progress-bar',  'progress-spinner',
-  'radio',         'select',
-  'sidenav',       'slide-toggle',
-  'slider',        'snack-bar',
-  'sort',          'stepper',
-  'table',         'tabs',
-  'toolbar',       'tooltip',
-  'tree',
-];
-
-var MATERIAL_EXPERIMENTAL_PACKAGES = [
-  'mdc-button',
-  'mdc-card',
-  'mdc-checkbox',
-  'mdc-chips',
-  'mdc-tabs',
-  'mdc-helpers',
-  'mdc-menu',
-  'mdc-radio',
-  'mdc-slide-toggle',
-  'mdc-slider',
-  'popover-edit',
+  'core',
+  'button',
+  'icon',
+  'divider',
+  'list',
+  'sidenav',
+  'toolbar',
 ];
 
 var COMPONENTS_PACKAGES = [
@@ -84,32 +33,17 @@ var pathMapping = {};
 var packagesConfig = {};
 
 // Configure all primary entry-points.
-// configureEntryPoint('cdk');
-// configureEntryPoint('cdk-experimental');
 configureEntryPoint('material');
-// configureEntryPoint('material-experimental');
-// configureEntryPoint('material-examples');
-// configureEntryPoint('material-moment-adapter');
 configureSDSEntryPoint('components');
 
 // Configure all secondary entry-points.
-// CDK_PACKAGES.forEach(function(pkgName) {
-//   configureEntryPoint('cdk', pkgName);
-// });
-// CDK_EXPERIMENTAL_PACKAGES.forEach(function(pkgName) {
-//   configureEntryPoint('cdk-experimental', pkgName);
-// });
-// MATERIAL_EXPERIMENTAL_PACKAGES.forEach(function(pkgName) {
-//   configureEntryPoint('material-experimental', pkgName);
-// });
 MATERIAL_PACKAGES.forEach(function(pkgName) {
   configureEntryPoint('material', pkgName);
 });
+
 COMPONENTS_PACKAGES.forEach(function(pkgName) {
   configureSDSEntryPoint('components', pkgName);
 });
-// configureEntryPoint('google-maps');
-// configureEntryPoint('youtube-player');
 
 /** Configures the specified package, its entry-point and its examples. */
 function configureEntryPoint(pkgName, entryPoint) {
@@ -121,6 +55,9 @@ function configureEntryPoint(pkgName, entryPoint) {
   packagesConfig[srcRunfilePath + '/' + name] =
       packagesConfig[srcRunfilePath + '/' + examplesName] = {main: 'index.js'};
 }
+
+console.log(pathMapping);
+console.log(packagesConfig);
 
 /** Configures the specified package, its entry-point and its examples. */
 function configureSDSEntryPoint(pkgName, entryPoint) {
@@ -140,42 +77,6 @@ var map = Object.assign({
 
   'rxjs': 'rxjs/bundles/rxjs.umd.min.js',
   'rxjs/operators': 'system-rxjs-operators.js',
-
-  // '@angular/cdk': '@angular/cdk/bundles/cdk.umd.js',
-  // '@angular/cdk/a11y': '@angular/cdk/bundles/cdk-a11y.umd.js',
-  // '@angular/cdk/overlay': '@angular/cdk/bundles/cdk-overlay.umd.js',
-
-  // MDC Web
-  '@material/animation': '@material/animation/dist/mdc.animation.js',
-  '@material/auto-init': '@material/auto-init/dist/mdc.autoInit.js',
-  '@material/base': '@material/base/dist/mdc.base.js',
-  '@material/checkbox': '@material/checkbox/dist/mdc.checkbox.js',
-  '@material/chips': '@material/chips/dist/mdc.chips.js',
-  '@material/dialog': '@material/dialog/dist/mdc.dialog.js',
-  '@material/dom': '@material/dom/dist/mdc.dom.js',
-  '@material/drawer': '@material/drawer/dist/mdc.drawer.js',
-  '@material/floating-label': '@material/floating-label/dist/mdc.floatingLabel.js',
-  '@material/form-field': '@material/form-field/dist/mdc.formField.js',
-  '@material/grid-list': '@material/grid-list/dist/mdc.gridList.js',
-  '@material/icon-button': '@material/icon-button/dist/mdc.iconButton.js',
-  '@material/line-ripple': '@material/line-ripple/dist/mdc.lineRipple.js',
-  '@material/linear-progress': '@material/linear-progress/dist/mdc.linearProgress.js',
-  '@material/list': '@material/list/dist/mdc.list.js',
-  '@material/menu': '@material/menu/dist/mdc.menu.js',
-  '@material/menu-surface': '@material/menu-surface/dist/mdc.menuSurface.js',
-  '@material/notched-outline': '@material/notched-outline/dist/mdc.notchedOutline.js',
-  '@material/radio': '@material/radio/dist/mdc.radio.js',
-  '@material/ripple': '@material/ripple/dist/mdc.ripple.js',
-  '@material/select': '@material/select/dist/mdc.select.js',
-  '@material/slider': '@material/slider/dist/mdc.slider.js',
-  '@material/snackbar': '@material/snackbar/dist/mdc.snackbar.js',
-  '@material/switch': '@material/switch/dist/mdc.switch.js',
-  '@material/tab': '@material/tab/dist/mdc.tab.js',
-  '@material/tab-bar': '@material/tab-bar/dist/mdc.tabBar.js',
-  '@material/tab-indicator': '@material/tab-indicator/dist/mdc.tabIndicator.js',
-  '@material/tab-scroller': '@material/tab-scroller/dist/mdc.tabScroller.js',
-  '@material/text-field': '@material/textfield/dist/mdc.textfield.js',
-  '@material/top-app-bar': '@material/top-app-bar/dist/mdc.topAppBar.js'
 }, pathMapping);
 
 var packages = Object.assign({
@@ -209,6 +110,15 @@ var packages = Object.assign({
   '@angular/cdk/bidi': {main: '../bundles/cdk-bidi.umd.js'},
   '@angular/cdk/portal': {main: '../bundles/cdk-portal.umd.js'},
   '@angular/cdk/observers': {main: '../bundles/cdk-observers.umd.js'},
+
+  // MATERIAL
+  '@angular/material/core': {main: '../bundles/material-core.umd.js'},
+  '@angular/material/button': {main: '../bundles/material-button.umd.js'},
+  '@angular/material/icon': {main: '../bundles/material-icon.umd.js'},
+  '@angular/material/divider': {main: '../bundles/material-divider.umd.js'},
+  '@angular/material/list': {main: '../bundles/material-list.umd.js'},
+  '@angular/material/sidenav': {main: '../bundles/material-sidenav.umd.js'},
+  '@angular/material/toolbar': {main: '../bundles/material-toolbar.umd.js'},
 }, packagesConfig);
 
 // Configure the base path and map the different node packages.

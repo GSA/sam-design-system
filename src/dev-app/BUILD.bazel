@@ -1,6 +1,6 @@
 package(default_visibility = ["//visibility:public"])
 
-load("@io_bazel_rules_sass//:defs.bzl", "sass_binary")
+load("@io_bazel_rules_sass//:defs.bzl", "sass_binary", "sass_library")
 load("//tools:defaults.bzl", "ng_module")
 load("//tools/dev-server:index.bzl", "dev_server")
 
@@ -18,18 +18,30 @@ ng_module(
     ],
 )
 
+sass_library(
+    name = "angular_material_theming",
+    srcs = [
+        "@npm//:node_modules/@angular/material/_theming.scss",
+    ]
+)
+
+sass_binary(
+    name = "material",
+    src = "material.scss",
+    include_paths = [
+        "external/npm/node_modules",
+    ],
+    deps = [
+        ":angular_material_theming",
+    ]
+)
+
 sass_binary(
     name = "theme",
     src = "theme.scss",
     include_paths = [
         "external/npm/node_modules",
-    ],
-    deps = [
-        "//src/material-experimental/mdc-theming:all_themes",
-        "//src/material-experimental/mdc-typography:all_typography",
-        "//src/material-experimental/popover-edit:popover_edit_scss_lib",
-        "//src/material/core:all_themes",
-    ],
+    ]
 )
 
 dev_server(
@@ -40,8 +52,12 @@ dev_server(
         "system-config.js",
         "system-rxjs-operators.js",
         ":theme",
-        "//src/dev-app/icon:icon_demo_assets",
+        ":material",
+        
+        # TODO: Only import fonts an images
+        "@npm//@gsa-sam/sam-styles:sam-styles__files",
 
+        # CDK
         "@npm//:node_modules/@angular/cdk/bundles/cdk.umd.js",
         "@npm//:node_modules/@angular/cdk/bundles/cdk-a11y.umd.js",
         "@npm//:node_modules/@angular/cdk/bundles/cdk-overlay.umd.js",
@@ -54,36 +70,15 @@ dev_server(
         "@npm//:node_modules/@angular/cdk/bundles/cdk-portal.umd.js",
         "@npm//:node_modules/@angular/cdk/bundles/cdk-observers.umd.js",
 
-        "@npm//:node_modules/@material/animation/dist/mdc.animation.js",
-        "@npm//:node_modules/@material/auto-init/dist/mdc.autoInit.js",
-        "@npm//:node_modules/@material/base/dist/mdc.base.js",
-        "@npm//:node_modules/@material/checkbox/dist/mdc.checkbox.js",
-        "@npm//:node_modules/@material/chips/dist/mdc.chips.js",
-        "@npm//:node_modules/@material/dialog/dist/mdc.dialog.js",
-        "@npm//:node_modules/@material/dom/dist/mdc.dom.js",
-        "@npm//:node_modules/@material/drawer/dist/mdc.drawer.js",
-        "@npm//:node_modules/@material/floating-label/dist/mdc.floatingLabel.js",
-        "@npm//:node_modules/@material/form-field/dist/mdc.formField.js",
-        "@npm//:node_modules/@material/grid-list/dist/mdc.gridList.js",
-        "@npm//:node_modules/@material/icon-button/dist/mdc.iconButton.js",
-        "@npm//:node_modules/@material/line-ripple/dist/mdc.lineRipple.js",
-        "@npm//:node_modules/@material/linear-progress/dist/mdc.linearProgress.js",
-        "@npm//:node_modules/@material/list/dist/mdc.list.js",
-        "@npm//:node_modules/@material/menu-surface/dist/mdc.menuSurface.js",
-        "@npm//:node_modules/@material/menu/dist/mdc.menu.js",
-        "@npm//:node_modules/@material/notched-outline/dist/mdc.notchedOutline.js",
-        "@npm//:node_modules/@material/radio/dist/mdc.radio.js",
-        "@npm//:node_modules/@material/ripple/dist/mdc.ripple.js",
-        "@npm//:node_modules/@material/select/dist/mdc.select.js",
-        "@npm//:node_modules/@material/slider/dist/mdc.slider.js",
-        "@npm//:node_modules/@material/snackbar/dist/mdc.snackbar.js",
-        "@npm//:node_modules/@material/switch/dist/mdc.switch.js",
-        "@npm//:node_modules/@material/tab-bar/dist/mdc.tabBar.js",
-        "@npm//:node_modules/@material/tab-indicator/dist/mdc.tabIndicator.js",
-        "@npm//:node_modules/@material/tab-scroller/dist/mdc.tabScroller.js",
-        "@npm//:node_modules/@material/tab/dist/mdc.tab.js",
-        "@npm//:node_modules/@material/textfield/dist/mdc.textfield.js",
-        "@npm//:node_modules/@material/top-app-bar/dist/mdc.topAppBar.js",
+        # MATERIAL
+        "@npm//:node_modules/@angular/material/bundles/material-core.umd.js",
+        "@npm//:node_modules/@angular/material/bundles/material-button.umd.js",
+        "@npm//:node_modules/@angular/material/bundles/material-icon.umd.js",
+        "@npm//:node_modules/@angular/material/bundles/material-divider.umd.js",
+        "@npm//:node_modules/@angular/material/bundles/material-list.umd.js",
+        "@npm//:node_modules/@angular/material/bundles/material-sidenav.umd.js",
+        "@npm//:node_modules/@angular/material/bundles/material-toolbar.umd.js",
+
         "@npm//:node_modules/@webcomponents/custom-elements/custom-elements.min.js",
 
         "@npm//:node_modules/core-js/client/core.js",
