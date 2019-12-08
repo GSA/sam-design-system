@@ -57,6 +57,7 @@ ng_module(
         "//src/material/sidenav",
         "//src/material/slide-toggle",
         "//src/material/tabs",
+        "//src/components/footer",
         "@npm//@angular/animations",
         "@npm//@angular/core",
         "@npm//@angular/elements",

@@ -30,9 +30,11 @@ import {BasicTabs} from '../tabs/tabs-e2e';
 import {ToolbarE2e} from '../toolbar/toolbar-e2e';
 import {VirtualScrollE2E} from '../virtual-scroll/virtual-scroll-e2e';
 import {Home} from './e2e-app-layout';
+import {FooterE2E} from '../footer/footer-e2e';
 
 export const E2E_APP_ROUTES: Routes = [
   {path: '', component: Home},
+  {path: 'footer', component: FooterE2E},
   {path: 'block-scroll-strategy', component: BlockScrollStrategyE2E},
   {path: 'button', component: ButtonE2E},
   {path: 'button-toggle', component: ButtonToggleE2e},

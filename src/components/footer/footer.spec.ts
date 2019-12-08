@@ -2,7 +2,7 @@
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { SdsFooter } from './footer';
 import { RouterTestingModule } from '@angular/router/testing';
-import { NavigationMode } from '../common-navigation/common-navigation-model';
+import { NavigationMode } from '@gsa-sam/components/core';
 
 
 describe('SdsFooter', () => {

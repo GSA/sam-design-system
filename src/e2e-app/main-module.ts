@@ -37,6 +37,7 @@ import {StepperE2eModule} from './stepper/stepper-e2e-module';
 import {TabsE2eModule} from './tabs/tabs-e2e-module';
 import {ToolbarE2eModule} from './toolbar/toolbar-e2e-module';
 import {VirtualScrollE2eModule} from './virtual-scroll/virtual-scroll-e2e-module';
+import {FooterE2eModule} from './footer/footer-e2e-module';
 
 @NgModule({
   imports: [
@@ -46,6 +47,7 @@ import {VirtualScrollE2eModule} from './virtual-scroll/virtual-scroll-e2e-module
     RouterModule.forRoot(E2E_APP_ROUTES),
 
     // E2E demos
+    FooterE2eModule,
     BlockScrollStrategyE2eModule,
     ButtonE2eModule,
     ButtonToggleE2eModule,

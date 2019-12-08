@@ -62,22 +62,6 @@ ng_web_test_suite(
     deps = [":unit_test_sources"],
 )
 
-ng_e2e_test_library(
-    name = "e2e_test_sources",
-    srcs = glob(["**/*.e2e.spec.ts"]),
-    deps = [
-        "//src/cdk/private/testing/e2e",
-    ],
-)
-
-e2e_test_suite(
-    name = "e2e_tests",
-    deps = [
-        ":e2e_test_sources",
-        "//src/cdk/private/testing/e2e",
-    ],
-)
-
 markdown_to_html(
     name = "overview",
     srcs = [":progress-bar.md"],
