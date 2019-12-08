@@ -91,6 +91,7 @@ export class GitClient {
   getShaOfRemoteTag(tagName: string): string {
     // We need to use the "^{}" suffix to instruct Git to deference the tag to
     // the actual commit. See: https://www.git-scm.com/docs/git-rev-parse
+    console.log(this.remoteGitUrl);
     return this._spawnGitProcess(['ls-remote', this.remoteGitUrl, '-t', `refs/tags/${tagName}^{}`])
         .stdout.split('\t')[0]
         .trim();
