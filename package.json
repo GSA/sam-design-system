@@ -23,7 +23,7 @@
     "test-firefox": "bazel test //src/... --test_tag_filters=-e2e,-browser:chromium-local --build_tag_filters=-browser:chromium-local --build_tests_only",
     "lint": "gulp lint && yarn -s bazel:format-lint",
     "e2e": "bazel test //src/... --test_tag_filters=e2e",
-    "deploy": "echo 'Not supported yet. Tracked with COMP-230'",
+    "deploy": "echo 'Not supported yet.",
     "webdriver-manager": "webdriver-manager",
     "breaking-changes": "ts-node --project scripts scripts/breaking-changes.ts",
     "gulp": "gulp",
