@@ -6,6 +6,7 @@ export type VersionType = 'major' | 'minor' | 'patch';
 export function getAllowedPublishBranches(version: Version): string[] {
   const versionType = getSemverVersionType(version);
   console.log(versionType);
+  console.log(version);
   if (versionType === 'major') {
     return ['master'];
   } else if (versionType === 'minor') {

@@ -68,7 +68,7 @@ class StageReleaseTask extends BaseReleaseTask {
   async run() {
     console.log();
     console.log(chalk.cyan('-----------------------------------------'));
-    console.log(chalk.cyan('  Angular Material stage release script'));
+    console.log(chalk.cyan('  Stage release script'));
     console.log(chalk.cyan('-----------------------------------------'));
     console.log();
 
