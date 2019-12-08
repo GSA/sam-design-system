@@ -13,11 +13,14 @@ Build examples module ✔︎
 Run dev app ✔︎
 `yarn dev-app`
 
-Stage release ✔︎
-`yarn stage-release`
-
 Build packages ✔︎
 `yarn build`
 
+Stage release ✔︎
+`yarn stage-release`
+
 Check release output of packages that will be published to npm ✔︎
 `yarn check-release-output`
+
+Publish release ✔︎
+`yarn publish-release`
