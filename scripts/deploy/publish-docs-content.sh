@@ -1,16 +1,16 @@
 #!/bin/bash
 
-# Publish material2 docs assets to the material2-docs-content repo
-# material.angular.io will pull from this assets repo to get the latest docs
+# Publish sds docs assets to the sds-docs-content repo
+# federalist site will pull from this assets repo to get the latest docs
 
 # The script should immediately exit if any command in the script fails.
 set -e
 
-cd "$(dirname $0)/../../"
+# cd "$(dirname $0)/../../"
 
-if [ -z ${MATERIAL2_BUILDS_TOKEN} ]; then
+if [ -z ${SDS_BUILDS_TOKEN} ]; then
   echo "Error: No access token for GitHub could be found." \
-       "Please set the environment variable 'MATERIAL2_BUILDS_TOKEN'."
+       "Please set the environment variable 'SDS_BUILDS_TOKEN'."
   exit 1
 fi
 
@@ -21,13 +21,13 @@ projectPath="$(pwd)"
 docsDistPath="${projectPath}/dist/docs"
 
 # Path to the cloned docs-content repository.
-docsContentPath="${projectPath}/tmp/material2-docs-content"
+docsContentPath="${projectPath}/tmp/sds-docs-content"
 
-# Path to the release output of the Bazel "@angular/material-examples" NPM package.
-examplesPackagePath="$(bazel info bazel-bin)/src/material-examples/npm_package"
+# Path to the release output of the Bazel "@gsa-sam/sds-examples" NPM package.
+examplesPackagePath="$(bazel info bazel-bin)/src/examples/npm_package"
 
-# Git clone URL for the material2-docs-content repository.
-docsContentRepoUrl="https://github.com/angular/material2-docs-content"
+# Git clone URL for the sds-docs-content repository.
+docsContentRepoUrl="https://github.com/GSA/sds-docs-content"
 
 # Current version of Angular Material from the package.json file
 buildVersion=$(node -pe "require('./package.json').version")
@@ -106,7 +106,7 @@ git config user.name "$commitAuthorName"
 git config user.email "$commitAuthorEmail"
 git config credential.helper "store --file=.git/credentials"
 
-echo "https://${MATERIAL2_BUILDS_TOKEN}:@github.com" > .git/credentials
+echo "https://${SDS_BUILDS_TOKEN}:@github.com" > .git/credentials
 
 echo "Credentials for docs-content repository are now set up. Publishing.."
 
