@@ -22,7 +22,7 @@ export function getAllowedPublishBranches(version: Version): string[] {
 /** Determines the type of the specified Semver version. */
 export function getSemverVersionType(version: Version): VersionType {
   if (version.prereleaseLabel === 'beta'){
-    return 'minor';
+    return 'patch';
   }
 
   if (version.minor === 0 && version.patch === 0) {
