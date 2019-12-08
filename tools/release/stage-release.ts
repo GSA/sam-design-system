@@ -50,7 +50,6 @@ class StageReleaseTask extends BaseReleaseTask {
   constructor(
       public projectDir: string, public repositoryOwner: string, public repositoryName: string) {
     super(new GitClient(projectDir, `https://github.com/${repositoryOwner}/${repositoryName}.git`));
-    console.log(repositoryOwner);
     this.packageJsonPath = join(projectDir, 'package.json');
     this.packageJson = JSON.parse(readFileSync(this.packageJsonPath, 'utf-8'));
     this.currentVersion = parseVersionName(this.packageJson.version)!;

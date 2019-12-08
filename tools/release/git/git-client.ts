@@ -28,7 +28,6 @@ export class GitClient {
 
   /** Gets the commit SHA for the specified remote repository branch. */
   getRemoteCommitSha(branchName: string): string {
-    console.log(this.remoteGitUrl);
     return this._spawnGitProcess(['ls-remote', this.remoteGitUrl, '-h', `refs/heads/${branchName}`])
         .stdout.split('\t')[0]
         .trim();
