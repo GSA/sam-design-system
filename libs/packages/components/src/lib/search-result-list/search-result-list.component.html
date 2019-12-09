@@ -5,10 +5,9 @@
 </div>
 <hr *ngIf="divider" class="thin" />
 <div *ngIf="!model|| model.length===0">
-    <div class="grid-row border border-base-lightest" style="background-color:#F7F9FA;">
-      <div class="grid-col-auto text-center margin-y-4 margin-x-3">
-        <div class="width-15 bg-base"></div>
-        <fa-icon [icon]="['sds', 'search']" [classes]="['icon-search']" size="6x"></fa-icon>
+    <div class="grid-row border-1px border-base-lighter" style="background-color:#F7F9FA;">
+      <div class="grid-col-auto text-center text-base margin-4">
+        <fa-icon [icon]="['sds', 'search']" [classes]="['search']" size="7x"></fa-icon>
       </div>
       <div class="grid-col-fill display-flex flex-column padding-y-1">
         <h1 class="margin-bottom-105 text-semibold">No matches found</h1>
