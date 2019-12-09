@@ -6,14 +6,14 @@
 <hr *ngIf="divider" class="thin" />
 <div *ngIf="!model|| model.length===0">
     <div class="grid-row border border-base-lightest" style="background-color:#F7F9FA;">
-      <div class="grid-col-auto">
-        <div class="width-15 bg-base margin-y-4"></div>
-        <fa-icon [icon]="['fas', 'search']" size="7x" class="margin-x-4"></fa-icon>
+      <div class="grid-col-auto text-center margin-y-4 margin-x-3">
+        <div class="width-15 bg-base"></div>
+        <fa-icon [icon]="['sds', 'search']" [classes]="['icon-search']" size="6x"></fa-icon>
       </div>
       <div class="grid-col-fill display-flex flex-column padding-y-1">
         <h1 class="margin-bottom-105 text-semibold">No matches found</h1>
-        <p class="margin-y-0 font-sans-md">We couldn't find a match for your search criteria.</p>
-        <p class="margin-y-0 font-sans-md">Please try another search or go back to previous results.</p>
+        <p class="margin-y-0 font-sans-lg">We couldn't find a match for your search criteria.</p>
+        <p class="margin-y-0 font-sans-lg">Please try another search or go back to previous results.</p>
         <button class="usa-button usa-button--secondary width-card margin-y-2">Go Back</button>
       </div>
     </div>
