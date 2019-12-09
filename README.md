@@ -24,3 +24,6 @@ Check release output of packages that will be published to npm ✔︎
 
 Publish release ✔︎
 `yarn publish-release`
+
+Publish docs content to repo ✔︎
+`./scripts/deploy/publish-docs-content.sh --no-build`
