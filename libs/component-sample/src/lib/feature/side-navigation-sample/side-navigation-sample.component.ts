@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'sds-side-navigation-sample',
   templateUrl: 'side-navigation-sample.component.html'
+  //inputs:'title'
 })
 
 export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
@@ -67,6 +68,18 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
         { text: 'Child 2 of Parent 2', route: '/', id: 'linkc2p2', mode: NavigationMode.INTERNAL },
         { text: 'Child 3 of Parent 2', route: '/', id: 'linkc3p2', mode: NavigationMode.INTERNAL },
         { text: 'Child 4 of Parent 2', route: '/', id: 'linkc4p2', mode: NavigationMode.INTERNAL }
+      ]
+    }
+    ]
+  };
+  model2: SideNavigationModel = {
+    navigationLinks: [{
+      text: 'Parent 1', id: 'linkp1', route: '/component/sideNav', queryParams: { 'item': 'Parent 1' }, mode: NavigationMode.INTERNAL, children: [
+        { text: 'Child 1 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Child 1 of Parent 1' }, id: 'linkc1p1', mode: NavigationMode.INTERNAL },
+        // {
+        //   text: 'Child 2 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Child 2 of Parent 1' }, id: 'linkc2p1', mode: NavigationMode.INTERNAL, children: [
+        //     { text: 'Grandchild 1 of Child 2 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Grandchild 1 of Child 2 of Parent 1' }, id: 'linkgc1c2p1', mode: NavigationMode.INTERNAL }]
+        // }
       ]
     }
     ]

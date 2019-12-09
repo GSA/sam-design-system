@@ -3,7 +3,7 @@
         <sds-toolbar [expanded]="sideNavExpanded" #toolbar="sdsToolbar">
             <sds-accordion multi="true">
                 <sds-accordion-item [expanded]="sideNavExpanded">
-                    <sds-accordion-item-header xsuppressAccordionIcon >NAvigation</sds-accordion-item-header>
+                    <sds-accordion-item-header>Navigation</sds-accordion-item-header>
                     <sds-side-navigation #sideNav (linkEvent)="linkEvent.next($event)" [model]="model">
                     </sds-side-navigation>
                 </sds-accordion-item>
@@ -22,4 +22,50 @@
 
         <h1>{{pageHeader}}</h1>
     </div>
+
+    
+        <h3>Accordion with title / no toggle</h3>
+        <sds-page-options class="sam-page__options">
+                <sds-toolbar [expanded]="sideNavExpanded" #toolbar="sdsToolbar">
+                    <sds-accordion multi="true">
+                        <sds-accordion-item [expanded]="sideNavExpanded">
+                                <h3 class="sds-accordion__title sds-accordion__trigger">Navigation</h3>
+                            <sds-side-navigation #sideNav (linkEvent)="linkEvent.next($event)" [model]="model2">
+                            </sds-side-navigation>
+                        </sds-accordion-item>
+                    </sds-accordion>
+                </sds-toolbar>
+                <div class="sam-example-pagination" [sdsToolbarExpand]="toolbar">
+                </div>
+            </sds-page-options>
+
+            <h3>Accordion with toggle / no title</h3>
+            <sds-page-options class="sam-page__options">
+                    <sds-toolbar [expanded]="sideNavExpanded" #toolbar="sdsToolbar">
+                        <sds-accordion multi="true">
+                            <sds-accordion-item [expanded]="sideNavExpanded">
+                                    <sds-accordion-item-header></sds-accordion-item-header>
+                                <sds-side-navigation #sideNav (linkEvent)="linkEvent.next($event)" [model]="model2">
+                                </sds-side-navigation>
+                            </sds-accordion-item>
+                        </sds-accordion>
+                    </sds-toolbar>
+                    <div class="sam-example-pagination" [sdsToolbarExpand]="toolbar">
+                    </div>
+                </sds-page-options>
+
+                <h3>Accordion without a title or toggle</h3>
+                <sds-page-options class="sam-page__options">
+                        <sds-toolbar [expanded]="sideNavExpanded" #toolbar="sdsToolbar">
+                            <sds-accordion multi="true">
+                                <sds-accordion-item [expanded]="sideNavExpanded">
+                                    <sds-side-navigation #sideNav (linkEvent)="linkEvent.next($event)" [model]="model2">
+                                    </sds-side-navigation>
+                                </sds-accordion-item>
+                            </sds-accordion>
+                        </sds-toolbar>
+                        <div class="sam-example-pagination" [sdsToolbarExpand]="toolbar">
+                        </div>
+                    </sds-page-options>
+                    <!-- suppressAccordionIcon -->
 </sds-page>
