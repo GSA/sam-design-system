@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/GSA/sam-design-system#readme",
   "peerDependencies": {
-    "@angular/cdk": "0.0.0-PLACEHOLDER",
+    "@angular/cdk": "0.0.0-NG",
     "@angular/core": "0.0.0-NG",
     "@angular/common": "0.0.0-NG"
   },

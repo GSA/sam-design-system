@@ -29,7 +29,7 @@ examplesPackagePath="$(bazel info bazel-bin)/src/examples/npm_package"
 # Git clone URL for the sds-docs-content repository.
 docsContentRepoUrl="https://github.com/GSA/sds-docs-content"
 
-# Current version of Angular Material from the package.json file
+# Current version of SDS from the package.json file
 buildVersion=$(node -pe "require('./package.json').version")
 
 # Name of the branch that is currently being deployed.
@@ -99,7 +99,9 @@ fi
 # Replace the version in every file recursively with a more specific version that also includes
 # the SHA of the current build job. Normally this "sed" call would just replace the version
 # placeholder, but the version placeholders have been replaced by "npm_package" already.
-sed -i "s/${buildVersion}/${buildVersionName}/g" $(find . -type f -not -path '*\/.*')
+echo ${buildVersion}
+echo ${buildVersionName}
+sed -i "" "s/${buildVersion}/${buildVersionName}/g" $(find . -type f -not -path '*\/.*')
 
 # Setup the Git configuration
 git config user.name "$commitAuthorName"
