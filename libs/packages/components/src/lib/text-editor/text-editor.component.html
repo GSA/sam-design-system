@@ -1,13 +1,6 @@
-<ckeditor
-[(ngModel)]="model.editorData"
-[data]="editorData" 
-(change)="onChange($event)"
->
+<ckeditor 
+[config]="{ toolbar: [ [ 'Bold', 'Italic' ] ] }">
 </ckeditor>
 
-<!-- 
 
-readOnly="false"
-
- -->
 

@@ -4,12 +4,17 @@ import { CKEditor4 } from 'ckeditor4-angular';
 @Component({
   selector: 'sds-text-editor',
   templateUrl: './text-editor.component.html',
+  inputs:['typeOfEditor']
 })
 export class SdsTextEditorComponent implements OnInit {
 
   @Input('editorData') ckEditorData: any;
 
-  constructor() { }
+
+  constructor() { 
+
+  }
+ 
   public editorData = '<p>Hello, world!</p>';
   public model = {
     editorData: '<p>Hello, world!</p>'
