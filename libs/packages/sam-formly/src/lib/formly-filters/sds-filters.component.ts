@@ -11,10 +11,7 @@ import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comuni
 @Component({
   selector: 'sds-filters',
   template: `
-        <sds-accordion-item>
-            <sds-accordion-item-header> {{accordionLabel}} </sds-accordion-item-header>
-            <formly-form [form]="form" (modelChange)="modelChange.next($event)" [fields]="fields" [model]="model"></formly-form>
-        </sds-accordion-item>
+      <formly-form [form]="form" (modelChange)="modelChange.next($event)" [fields]="fields" [model]="model"></formly-form>
     `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
