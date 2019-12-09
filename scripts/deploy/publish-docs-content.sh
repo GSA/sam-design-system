@@ -99,8 +99,6 @@ fi
 # Replace the version in every file recursively with a more specific version that also includes
 # the SHA of the current build job. Normally this "sed" call would just replace the version
 # placeholder, but the version placeholders have been replaced by "npm_package" already.
-echo ${buildVersion}
-echo ${buildVersionName}
 sed -i "" "s/${buildVersion}/${buildVersionName}/g" $(find . -type f -not -path '*\/.*')
 
 # Setup the Git configuration
