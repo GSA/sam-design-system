@@ -124,10 +124,6 @@ $sds-mat-app-theme: mat-light-theme($sds-mat-app-primary, $sds-mat-app-accent, $
 // that you are using.
 @include angular-material-theme($sds-mat-app-theme);
 
-.usa-input--error {
-    border-width: .1rem;
-}
-
 .mat-calendar-table-header {
   color: black !important;
 }
