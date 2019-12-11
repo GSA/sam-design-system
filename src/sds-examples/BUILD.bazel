@@ -6,7 +6,7 @@ load("//tools/highlight-files:index.bzl", "highlight_files")
 load("//tools/package-docs-content:index.bzl", "package_docs_content")
 
 EXAMPLE_PACKAGES = [
-    "//src/examples/components/footer",
+    "//src/sds-examples/components/footer",
 ]
 
 ng_module(
@@ -75,7 +75,7 @@ genrule(
     outs = ["example-module_generated.ts"],
     cmd = """
     # As a workaround for https://github.com/bazelbuild/rules_nodejs/issues/404, we pass the
-    # data to the Bazel entry-point through environment variables!.
+    # data to the Bazel entry-point through environment variables.
     export _SOURCE_FILES="$(SRCS)"
     export _OUTPUT_FILE="$@"
     export _BASE_DIR="$$(dirname $(location //src/examples:index.ts))"

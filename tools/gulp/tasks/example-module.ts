@@ -8,7 +8,7 @@ const {packagesDir} = buildConfig;
 
 // SDS MODIFICATION
 /** Path to find the examples */
-const examplesPath = path.join(packagesDir, 'examples');
+const examplesPath = path.join(packagesDir, 'sds-examples');
 
 /** Output path of the module that is being created */
 const outputModuleFilename = path.join(examplesPath, 'example-module.ts');
