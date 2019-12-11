@@ -23,7 +23,7 @@ Check release output of packages that will be published to npm ✔︎
 `yarn check-release-output`
 
 Build examples module ✔︎
-`bazel build src/examples:npm_package --config=release`
+`bazel build src/sds-examples:npm_package --config=release`
 
 Publish docs content to repo ✔︎
 `./scripts/deploy/publish-docs-content.sh --no-build`

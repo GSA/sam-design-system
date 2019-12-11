@@ -92,7 +92,7 @@ export class EntryPointGrouper implements Processor {
       const moduleInfo = getModulePackageInfo(doc);
 
       const packageName = moduleInfo.packageName;
-      const packageDisplayName = packageName === 'cdk' ? 'CDK' : 'Material';
+      const packageDisplayName = packageName === 'layouts' ? 'Layouts' : 'Components';
       // SDS MODIFICATION
       const moduleImportPath = `@gsa-sam/${packageName}/${moduleInfo.entryPointName}`;
       const entryPointName = packageName + '-' + moduleInfo.name;
