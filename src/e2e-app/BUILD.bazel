@@ -27,7 +27,7 @@ ng_module(
     ),
     deps = [
         "//src/components/footer",
-        "//src/examples:examples",
+        "//src/sds-examples:examples",
         "@npm//@angular/animations",
         "@npm//@angular/core",
         "@npm//@angular/elements",
