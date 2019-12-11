@@ -5,7 +5,7 @@
             </ng-container>
             <ng-container *ngIf="!itemTemplate">
                 <span class="display-block text-semibold"> {{ getObjectValue(result, configuration.primaryTextField) }}
-      </span>
+                </span>
                 <ng-container *ngIf="configuration.secondaryTextField && result[configuration.secondaryTextField] ">
                     {{ result[configuration.secondaryTextField] }}
                 </ng-container>

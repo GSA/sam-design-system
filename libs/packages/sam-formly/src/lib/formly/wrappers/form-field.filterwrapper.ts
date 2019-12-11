@@ -7,7 +7,7 @@ import { FieldWrapper } from '@ngx-formly/core';
   template: `
 
     <div  class="wrapper-body">
-      <div class="sds-accordion__trigger header-label"> {{to.label}} </div>
+      <div class="sds-accordion__trigger header-label" [attr.aria-hidden]="to.ariaHidden ? 'false' : 'true'"> {{to.label}} </div>
       <ng-container #fieldComponent></ng-container>
     </div>
   `,
