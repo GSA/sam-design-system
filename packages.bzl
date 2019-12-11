@@ -1,5 +1,10 @@
 # List of all components / subpackages.
 
+COMPONENTS_PACKAGES = [
+    "core",
+    'footer',
+]
+
 CDK_PACKAGES = [
     "a11y",
     "accordion",
@@ -145,6 +150,13 @@ ROLLUP_GLOBALS.update({
     for p in MATERIAL_PACKAGES
 })
 
+# SDS MODIFICATION
+# Rollup globals for components subpackages, e.g., {"@gsa-sam/components/footer": "sds.components.footer"}
+ROLLUP_GLOBALS.update({
+    "@gsa-sam/components/%s" % p: "sds.components.%s" % p
+    for p in COMPONENTS_PACKAGES
+})
+
 # Rollup globals for material experimental subpackages, e.g.,
 # {"@angular/material-experimental/list": "ng.materialExperimental.list"}
 ROLLUP_GLOBALS.update({
@@ -166,6 +178,11 @@ ROLLUP_GLOBALS.update({
 ROLLUP_GLOBALS.update({
     "@angular/material-examples/material/%s" % p: "ng.materialExamples.material.%s" % p
     for p in MATERIAL_PACKAGES
+})
+# SDS MODIFICATION
+ROLLUP_GLOBALS.update({
+    "@gsa-sam/sds-examples/components/%s" % p: "sds.sdsExamples.components.%s" % p
+    for p in COMPONENTS_PACKAGES
 })
 ROLLUP_GLOBALS.update({
     "@angular/material-examples/material-experimental/%s" % p: "ng.materialExamples.materialExperimental.%s" % p

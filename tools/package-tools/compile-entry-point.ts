@@ -63,7 +63,7 @@ function addImportAs(packageName: string, outputPath: string, secondaryEntryPoin
   const path = join(outputPath, secondaryEntryPoint);
   glob(join(path, '**/*.+(metadata.json)')).forEach(metadataPath => {
     let metadata = JSON.parse(readFileSync(metadataPath, 'utf-8'));
-    metadata[0]['importAs'] = `@angular/${packageName}/${secondaryEntryPoint}`;
+    metadata[0]['importAs'] = `@gsa-sam/${packageName}/${secondaryEntryPoint}`;
     writeFileSync(metadataPath, JSON.stringify(metadata), 'utf-8');
   });
 }

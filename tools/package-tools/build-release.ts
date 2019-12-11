@@ -25,7 +25,7 @@ export function composeRelease(buildPackage: BuildPackage) {
   const {name, sourceDir} = buildPackage;
   const packageOut = buildPackage.outputDir;
   const releasePath = join(outputDir, 'releases', name);
-  const importAsName = `@angular/${name}`;
+  const importAsName = `@gsa-sam/${name}`;
 
   inlinePackageMetadataFiles(packageOut);
 
