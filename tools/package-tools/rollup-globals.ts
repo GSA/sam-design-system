@@ -147,6 +147,7 @@ export const rollupGlobals = {
   '@angular/youtube-player': 'ng.youtubePlayer',
 
   // SDS MODIFICATION
+  '@gsa-sam/sds-examples': 'sds.sdsExamples',
   '@gsa-sam/components': 'sds.components',
 
   // Include secondary entry-points of the cdk and material packages
