@@ -1,3 +1,15 @@
+# 1.0.0-beta.5 "Beta 5" (2019-12-11)
+
+### components
+
+|            |                       |
+| ---------- | --------------------- |
+| bug fix |  example directory name ([832b516](https://github.com/GSA/sam-design-system/commit/832b516)) |
+| bug fix |  **build:** component global imports ([3d18ea4](https://github.com/GSA/sam-design-system/commit/3d18ea4)) |
+| bug fix |  **build:** match folder with component name ([5c08a51](https://github.com/GSA/sam-design-system/commit/5c08a51)) |
+| bug fix |  **build:** update examples folder name ([b144d32](https://github.com/GSA/sam-design-system/commit/b144d32)) |
+
+
 # 1.0.0-beta.4 "Beta 4" (2019-12-11)
 
 ### components
