@@ -34,13 +34,14 @@ export class PackageBundler {
     await this._bundlePrimaryEntryPoint();
   }
 
-  /** Bundles the primary entry-point w/ given entry file, e.g. @angular/cdk */
+  // SDS MODIFICATION
+  /** Bundles the primary entry-point w/ given entry file, e.g. @gsa-sam/components */
   private async _bundlePrimaryEntryPoint() {
     const packageName = this._buildPackage.name;
     return this._bundleEntryPoint({
       entryFile: this._buildPackage.entryFilePath,
       esm5EntryFile: join(this._buildPackage.esm5OutputDir, 'index.js'),
-      importName: `@angular/${packageName}`,
+      importName: `@gsa-sam/${packageName}`,
       moduleName: this._primaryAmdModuleName,
       esm2015Dest: join(bundlesDir, `${packageName}.js`),
       esm5Dest: join(bundlesDir, `${packageName}.es5.js`),
@@ -49,7 +50,7 @@ export class PackageBundler {
     });
   }
 
-  /** Bundles a single secondary entry-point w/ given entry file, e.g. @angular/cdk/a11y */
+  /** Bundles a single secondary entry-point w/ given entry file, e.g. @gsa-sam/components/footer */
   private async _bundleSecondaryEntryPoint(entryPointName: string) {
     const packageName = this._buildPackage.name;
     const entryFile = join(this._buildPackage.outputDir, entryPointName, 'index.js');
@@ -58,7 +59,7 @@ export class PackageBundler {
     return this._bundleEntryPoint({
       entryFile,
       esm5EntryFile,
-      importName: `@angular/${packageName}/${entryPointName}`,
+      importName: `@gsa-sam/${packageName}/${entryPointName}`,
       moduleName: this._getAmdModuleName(packageName, entryPointName),
       esm2015Dest: join(bundlesDir, `${packageName}`, `${entryPointName}.js`),
       esm5Dest: join(bundlesDir, `${packageName}`, `${entryPointName}.es5.js`),
@@ -160,10 +161,10 @@ export class PackageBundler {
       if (this._buildPackage.exportsSecondaryEntryPointsAtRoot &&
           config.moduleName === this._primaryAmdModuleName) {
 
-        const importRegex = new RegExp(`@angular/${this._buildPackage.name}/.+`);
+        const importRegex = new RegExp(`@gsa-sam/${this._buildPackage.name}/.+`);
         external = external.filter(e => !importRegex.test(e));
 
-        // Use the rollup-alias plugin to map imports of the form `@angular/material/button`
+        // Use the rollup-alias plugin to map imports of the form `@gsa-sam/components/footer`
         // to the actual file location so that rollup can resolve the imports (otherwise they
         // will be treated as external dependencies and not included in the bundle).
         bundleOptions.plugins.push(
@@ -177,14 +178,14 @@ export class PackageBundler {
   }
 
   /**
-   * Gets mapping of import aliases (e.g. `@angular/material/button`) to the path of the es5
+   * Gets mapping of import aliases (e.g. `@gsa-sam/components/footer`) to the path of the es5
    * bundle output.
    * @param bundleOutputDir Path to the bundle output directory.
    * @returns Map of alias to resolved path.
    */
   private _getResolvedSecondaryEntryPointImportPaths(bundleOutputDir: string) {
     return this._buildPackage.secondaryEntryPoints.reduce((map, p) => {
-      map[`@angular/${this._buildPackage.name}/${p}`] =
+      map[`@gsa-sam/${this._buildPackage.name}/${p}`] =
           join(dirname(bundleOutputDir), this._buildPackage.name, `${p}.es5.js`);
       return map;
     }, {} as {[key: string]: string});
@@ -195,13 +196,14 @@ export class PackageBundler {
    * to the module name format being used in "angular/angular".
    */
   private _getAmdModuleName(packageName: string, entryPointName?: string) {
-    // For example, the AMD module name for the "@angular/material-examples" package should be
-    // "ng.materialExamples". We camel-case the package name in case it contains dashes.
-    let amdModuleName = `ng.${dashCaseToCamelCase(packageName)}`;
+    // SDS MODIFICATION
+    // For example, the AMD module name for the "@gsa-sam/sds-examples" package should be
+    // "sds.sdsExamples". We camel-case the package name in case it contains dashes.
+    let amdModuleName = `sds.${dashCaseToCamelCase(packageName)}`;
 
     if (entryPointName) {
-      // For example, the "@angular/material/bottom-sheet" entry-point should be converted into
-      // the following AMD module name: "ng.material.bottomSheet". Similar to the package name,
+      // For example, the "@gsa-sam/components/footer" entry-point should be converted into
+      // the following AMD module name: "sds.components.footer". Similar to the package name,
       // the entry-point name needs to be camel-cased in case it contains dashes.
       amdModuleName += `.${dashCaseToCamelCase(entryPointName)}`;
     }
