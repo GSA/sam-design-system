@@ -1,3 +1,12 @@
+# 1.0.0-beta.4 "Beta 4" (2019-12-11)
+
+### components
+
+|            |                       |
+| ---------- | --------------------- |
+| bug fix |  **build:** entry point name bug ([38b7155](https://github.com/GSA/sam-design-system/commit/38b7155)) |
+
+
 # 1.0.0-beta.3 "Beta 3" (2019-12-11)
 
 ### components
