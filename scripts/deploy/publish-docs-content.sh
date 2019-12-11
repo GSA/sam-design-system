@@ -24,7 +24,7 @@ docsDistPath="${projectPath}/dist/docs"
 docsContentPath="${projectPath}/tmp/sds-docs-content"
 
 # Path to the release output of the Bazel "@gsa-sam/sds-examples" NPM package.
-examplesPackagePath="$(bazel info bazel-bin)/src/examples/npm_package"
+examplesPackagePath="$(bazel info bazel-bin)/src/sds-examples/npm_package"
 
 # Git clone URL for the sds-docs-content repository.
 docsContentRepoUrl="https://github.com/GSA/sds-docs-content"
