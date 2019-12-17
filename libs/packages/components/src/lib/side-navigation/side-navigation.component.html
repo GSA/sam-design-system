@@ -1,8 +1,12 @@
 <nav>
     <ul class="usa-sidenav">
         <li *ngFor="let link of model.navigationLinks" class="sidenav__item">
+            <div *ngIf="!link.showFunction || link.showFunction() " >
+                Should Show
+            </div>
             <ng-container [ngTemplateOutlet]="sideNavLinkTemplate" [ngTemplateOutletContext]="{$implicit:link}">
             </ng-container>
+           
         </li>
     </ul>
 </nav>
@@ -12,6 +16,9 @@
     </ng-container>
     <ul *ngIf="link.children" class="usa-sidenav__sublist">
         <li *ngFor="let link of link.children" class="sidenav__item">
+            <div *ngIf="!link.showFunction || link.showFunction() " >
+                Should Show
+            </div>
             <ng-container [ngTemplateOutlet]="sideNavLinkTemplate" [ngTemplateOutletContext]="{$implicit:link}">
             </ng-container>
         </li>

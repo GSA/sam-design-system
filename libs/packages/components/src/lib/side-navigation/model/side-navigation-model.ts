@@ -50,6 +50,8 @@ export class NavigationLink implements Selectable, INavigationLink {
         [k: string]: any;
     }
 
+    showFunction?:Function;
+
 }
 
 

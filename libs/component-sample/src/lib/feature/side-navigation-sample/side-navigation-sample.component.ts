@@ -11,14 +11,15 @@ import { FormGroup } from '@angular/forms';
 })
 
 export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
+  constructor(private change: ChangeDetectorRef, private activeRoute: ActivatedRoute) { }
 
 
   results: any = {};
   form = new FormGroup({});
   model1 = {};
-     /**
-   * Event when something is checked/selected in the grid
-   */
+  /**
+* Event when something is checked/selected in the grid
+*/
   public filterChange$ = new BehaviorSubject<object>(null);
 
   fields: FormlyFieldConfig[] = [
@@ -181,35 +182,28 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
       ]
     }
   ];
-  
+
 
   public pageHeader: string;
   public linkEvent = new BehaviorSubject<object>(null);
   sideNavExpanded = true;
-  ngOnInit() {
-    this.linkEvent.subscribe(
-      value => {
-        console.log('Link Event Clicked Change');
-        console.log(value);
-      }
-    );
-
-    this.filterChange$.subscribe(
-      res =>
-        this.results = res
-  );
-  }
-
-
-
+  // tslint:disable-next-line: member-ordering
+  showValue = true;
+  // tslint:disable-next-line: member-ordering
   @ViewChild('sideNav') sideNav;
-  constructor(private change: ChangeDetectorRef, private activeRoute: ActivatedRoute) { }
+  // tslint:disable-next-line: member-ordering
+
   model: SideNavigationModel = {
-    navigationLinks: [{
-      text: 'Parent 1', id: 'linkp1', route: '/component/sideNav', queryParams: { 'item': 'Parent 1' }, mode: NavigationMode.INTERNAL, children: [
+    navigationLinks: [
+      {
+      text: 'Parent 1', showFunction: function () {
+
+        return this.showValue;
+      }.bind(this), id: 'linkp1', route: '/component/sideNav', queryParams: { 'item': 'Parent 1' }, mode: NavigationMode.INTERNAL, children: [
         { text: 'Child 1 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Child 1 of Parent 1' }, id: 'linkc1p1', mode: NavigationMode.INTERNAL },
         {
-          text: 'Child 2 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Child 2 of Parent 1' }, id: 'linkc2p1', mode: NavigationMode.INTERNAL, children: [
+          text: 'Child 2 of Parent 1', //hide:true,
+          route: '/component/sideNav', queryParams: { 'item': 'Child 2 of Parent 1' }, id: 'linkc2p1', mode: NavigationMode.INTERNAL, children: [
             { text: 'Grandchild 1 of Child 2 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Grandchild 1 of Child 2 of Parent 1' }, id: 'linkgc1c2p1', mode: NavigationMode.INTERNAL }]
         },
         { text: 'Child 3 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Child 3 of Parent 1' }, id: 'linkc3p1', mode: NavigationMode.INTERNAL },
@@ -232,7 +226,7 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
       ]
     },
     {
-      text: 'Parent 2', id: 'linkp2', route: '/', mode: NavigationMode.LABEL, children: [
+      text: 'Parent 2', showFunction:this.showFunction.bind(this), id: 'linkp2', route: '/', mode: NavigationMode.LABEL, children: [
         {
           text: 'Child 1 of Parent 2', route: '/', id: 'linkc1p2', mode: NavigationMode.INTERNAL, children: [
 
@@ -246,9 +240,29 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
     }
     ]
   };
+  selectedId: string = 'linkp1';
+
+  options: any[] = [];
+  ngOnInit() {
+    this.linkEvent.subscribe(
+      value => {
+        console.log('Link Event Clicked Change');
+        console.log(value);
+      }
+    );
+
+    this.filterChange$.subscribe(
+      res =>
+        this.results = res
+    );
+  }
+
+  switchShowValue() {
+    this.showValue = !this.showValue;
+  }
   private findItemByQueryString(linkList: NavigationLink[]) {
     for (let i = 0; i < linkList.length; i++) {
-      let item = linkList[i];
+      const item = linkList[i];
       if (item.text.trim() === this.pageHeader.trim()) {
         this.selectedId = item.id;
       }
@@ -263,9 +277,10 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
   onSelectChange() {
     this.sideNav.select(this.selectedId);
   }
-  selectedId: string = 'linkp1';
 
-  options: any[] = [];
+  showFunction(){
+   return this.showValue;
+  }
 
 
   ngAfterViewInit(): void {
