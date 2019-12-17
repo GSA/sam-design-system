@@ -187,11 +187,11 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
   public pageHeader: string;
   public linkEvent = new BehaviorSubject<object>(null);
   sideNavExpanded = true;
-  // tslint:disable-next-line: member-ordering
+  
   showValue = true;
-  // tslint:disable-next-line: member-ordering
+  
   @ViewChild('sideNav') sideNav;
-  // tslint:disable-next-line: member-ordering
+  
 
   model: SideNavigationModel = {
     navigationLinks: [
