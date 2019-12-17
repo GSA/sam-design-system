@@ -1,2 +1,9 @@
-<sds-text-editor feature="basic"></sds-text-editor>
+<sds-text-editor 
+[Textdata]="sdsTextEditor"
+[ngModelData]="modelData"
+(TextEditorOnChange)="TxtEdtEventData($event)"
+(TextEditorDataChange)="TxtEdtDataChange($event)"
+(TextEditorOnFocus)="TxtEdtOnFocus($event)"
+(TextEditorOnBlur)="TxtEdtOnBlur($event)"
+></sds-text-editor>
 

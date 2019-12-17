@@ -1,5 +1,14 @@
 <ckeditor 
-[config]="{ toolbar: [ [ 'Bold', 'Italic' ] ] }">
+data = "{{TextEditordata}}"
+tagName = "textarea"
+readOnly = "{{readOnly}}"
+(change) = "onChange($event)"
+(focus) = "onFocusChange($event)"
+(blur) = "onBlurEvent($event)"
+[data] = "onDataChange($event)"
+[(ngModel)] = "ngModelData"
+[config]="{ toolbar: [ [ 'Bold', 'Italic' ] ] }"
+>
 </ckeditor>
 
 
