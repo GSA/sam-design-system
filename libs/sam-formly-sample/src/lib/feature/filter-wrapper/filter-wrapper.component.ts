@@ -31,7 +31,7 @@ export class FilterWrapperComponent implements OnInit {
       key: 'searchKeyword',
       wrappers: ['form-field'],
       templateOptions: {
-        label: 'Keyword',
+        label: 'Keyword (with lable)',
         ariaHidden: true
       },
       fieldGroup: [{
@@ -39,18 +39,8 @@ export class FilterWrapperComponent implements OnInit {
         type: 'input',
         templateOptions: {
           type: 'text',
-          label: 'Search Keyword'        
+          label: 'Keyword'        
          },
-
-      },
-      {
-        key: 'keyword',
-        type: 'input',
-        templateOptions: {
-          type: 'text',
-          label: 'test Keyword',
-          labelClass:'usa-sr-only'
-        },
 
       }]
     },
@@ -86,6 +76,27 @@ export class FilterWrapperComponent implements OnInit {
         },
       ],
     },
+
+    {
+      key: 'keyword',
+      wrappers: ['form-field'],
+      templateOptions: {
+        label: 'Search Keyword (without lable)',
+        ariaHidden: true
+      },
+      fieldGroup: [
+      {
+        key: 'keyword',
+        type: 'input',
+        templateOptions: {
+          type: 'text',
+          label: 'test Keyword',
+          labelClass:'usa-sr-only'
+        },
+
+      }]
+    },
+
     {
       key: 'entityStatus',
       wrappers: ['accordionwrapper'],
