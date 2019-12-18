@@ -1,10 +1,8 @@
 <div>
-
     <sds-accordion-item>
         <sds-accordion-item-header> Filters </sds-accordion-item-header>
         <sds-filters [form]="form" [fields]="fields" [model]="model" (filterChange)="filterChange$.next($event)"></sds-filters>
     </sds-accordion-item>
-
 </div>
 <div class="sam-example-pagination">
     <h4>Filter Model:</h4>

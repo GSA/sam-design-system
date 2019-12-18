@@ -31,7 +31,7 @@ export class FilterWrapperComponent implements OnInit {
       key: 'searchKeyword',
       wrappers: ['form-field'],
       templateOptions: {
-        label: 'Keyword (with lable)',
+        label: 'Keyword (with label)',
         ariaHidden: true
       },
       fieldGroup: [{
@@ -81,7 +81,7 @@ export class FilterWrapperComponent implements OnInit {
       key: 'keyword',
       wrappers: ['form-field'],
       templateOptions: {
-        label: 'Search Keyword (without lable)',
+        label: 'Search Keyword (without label)',
         ariaHidden: true
       },
       fieldGroup: [
