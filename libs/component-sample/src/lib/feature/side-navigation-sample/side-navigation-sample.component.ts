@@ -6,7 +6,6 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'sds-side-navigation-sample',
   templateUrl: 'side-navigation-sample.component.html'
-  //inputs:'title'
 })
 
 export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
