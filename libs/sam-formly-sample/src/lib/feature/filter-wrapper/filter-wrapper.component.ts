@@ -29,7 +29,7 @@ export class FilterWrapperComponent implements OnInit {
   fields: FormlyFieldConfig[] = [
     {
       key: 'searchKeyword',
-      wrappers: ['form-field'],
+      wrappers: ['filterwrapper'],
       templateOptions: {
         label: 'Keyword (with label)',
         ariaHidden: true
@@ -79,7 +79,7 @@ export class FilterWrapperComponent implements OnInit {
 
     {
       key: 'keyword',
-      wrappers: ['form-field'],
+      wrappers: ['filterwrapper'],
       templateOptions: {
         label: 'Search Keyword (without label)',
         ariaHidden: true
