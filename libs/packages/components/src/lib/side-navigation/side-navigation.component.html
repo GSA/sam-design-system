@@ -1,13 +1,11 @@
 <nav>
     <ul class="usa-sidenav">
-        <li *ngFor="let link of model.navigationLinks" class="sidenav__item">
-            <div *ngIf="!link.showFunction || link.showFunction() " >
-                Should Show
-            </div>
-            <ng-container [ngTemplateOutlet]="sideNavLinkTemplate" [ngTemplateOutletContext]="{$implicit:link}">
-            </ng-container>
-           
-        </li>
+        <ng-container *ngFor="let link of model.navigationLinks">
+            <li class="sidenav__item" *ngIf="!link.showFunction || link.showFunction() ">
+                <ng-container [ngTemplateOutlet]="sideNavLinkTemplate" [ngTemplateOutletContext]="{$implicit:link}">
+                </ng-container>
+            </li>
+        </ng-container>
     </ul>
 </nav>
 
@@ -15,13 +13,12 @@
     <ng-container [ngTemplateOutlet]="getItemTemplate(link)" [ngTemplateOutletContext]="{$implicit:link}">
     </ng-container>
     <ul *ngIf="link.children" class="usa-sidenav__sublist">
-        <li *ngFor="let link of link.children" class="sidenav__item">
-            <div *ngIf="!link.showFunction || link.showFunction() " >
-                Should Show
-            </div>
-            <ng-container [ngTemplateOutlet]="sideNavLinkTemplate" [ngTemplateOutletContext]="{$implicit:link}">
-            </ng-container>
-        </li>
+        <ng-container *ngFor="let link of link.children">
+            <li *ngIf="!link.showFunction || link.showFunction() " class="sidenav__item">
+                <ng-container [ngTemplateOutlet]="sideNavLinkTemplate" [ngTemplateOutletContext]="{$implicit:link}">
+                </ng-container>
+            </li>
+        </ng-container>
     </ul>
 </ng-template>
 

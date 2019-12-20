@@ -202,7 +202,7 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
       }.bind(this), id: 'linkp1', route: '/component/sideNav', queryParams: { 'item': 'Parent 1' }, mode: NavigationMode.INTERNAL, children: [
         { text: 'Child 1 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Child 1 of Parent 1' }, id: 'linkc1p1', mode: NavigationMode.INTERNAL },
         {
-          text: 'Child 2 of Parent 1', //hide:true,
+          text: 'Child 2 of Parent 1',
           route: '/component/sideNav', queryParams: { 'item': 'Child 2 of Parent 1' }, id: 'linkc2p1', mode: NavigationMode.INTERNAL, children: [
             { text: 'Grandchild 1 of Child 2 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Grandchild 1 of Child 2 of Parent 1' }, id: 'linkgc1c2p1', mode: NavigationMode.INTERNAL }]
         },
@@ -226,9 +226,9 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
       ]
     },
     {
-      text: 'Parent 2', showFunction:this.showFunction.bind(this), id: 'linkp2', route: '/', mode: NavigationMode.LABEL, children: [
+      text: 'Parent 2', id: 'linkp2', route: '/', mode: NavigationMode.LABEL, children: [
         {
-          text: 'Child 1 of Parent 2', route: '/', id: 'linkc1p2', mode: NavigationMode.INTERNAL, children: [
+          text: 'Child 1 of Parent 2',  showFunction:this.showFunction.bind(this), route: '/', id: 'linkc1p2', mode: NavigationMode.INTERNAL, children: [
 
             { text: 'Grandchild 1 Child 1 of Parent 2', route: '/', id: 'linkgc1c1p2', mode: NavigationMode.INTERNAL },
           ]
