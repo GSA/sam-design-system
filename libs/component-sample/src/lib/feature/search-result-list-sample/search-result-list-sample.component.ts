@@ -15,7 +15,7 @@ export class SearchResultListSampleComponent {
     { text: 'Second', id: 2 },
     { text: 'Third', id: 3 },
     { text: 'Fourth', id: 4 },
-    { text: 'Fifth', id: 5 }
+    { text: 'Fifth', id: 5 , isdupe:true}
   ];
 
   emptyItems =[];
