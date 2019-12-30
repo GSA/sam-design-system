@@ -8,6 +8,15 @@
   </sds-search-result-list>
   <br>
   <br>
+  <sds-search-result-list [model]="compare" [divider]=none>
+      <ng-template #resultContent let-item>
+          <div>
+              <search-result-list-sample-compare [model]="item"></search-result-list-sample-compare>
+          </div>
+      </ng-template>
+  </sds-search-result-list>
+  <br>
+  <br>
   <sds-search-result-list [model]="items">
       <ng-template #resultContent let-item>
           <div>

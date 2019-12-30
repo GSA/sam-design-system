@@ -15,8 +15,12 @@ export class SearchResultListSampleComponent {
     { text: 'Second', id: 2 },
     { text: 'Third', id: 3 },
     { text: 'Fourth', id: 4 },
-    { text: 'Fifth', id: 5 , isdupe:true}
+    { text: 'Fifth', id: 5 }
   ];
+  compare= [
+    { text: 'First', id: 1 },
+    { text: 'First compare', id: 2 , isCompare:true},
 
+  ];
   emptyItems =[];
 }

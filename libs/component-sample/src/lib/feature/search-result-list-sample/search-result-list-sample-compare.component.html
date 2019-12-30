@@ -1,14 +1,30 @@
-<div class="sds-result-item" >
+<div class="sds-result-item " [ngClass]="{'compare radius-lg
+ padding-left-105 padding-top-105 padding-bottom-105
+border-1px border-base-lighter bg-gray':model.isCompare}">
 
   <!-- Item Heading -->
   <div class="grid-row grid-gap">
     <div class="grid-col">
       <h3 class="font-sans-xs margin-y-0">
-        <a class="usa-link" href="#">
-          {{model.text}} Entity: {{model.id}}
-        </a>
+
+        <a *ngIf="!model.isCompare" class="usa-link" href="#">
+          {{model.text}} Entity: {{model.id}} 
+         </a>
+         <span *ngIf="model.isCompare" class="height-4">
+          <span class="float-left margin-right-1"><svg class="height-4" id="compare_icon"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 643.32"><defs><style>.cls-1{fill:#d8d8d8;}.cls-2{fill:#757575;}.cls-3{fill:#231f20;}.cls-4{fill-rule:evenodd;}</style></defs><title>Clock</title><path class="cls-1" d="M449.58,643.32H164.05a62.5,62.5,0,0,1-62.43-62.42H118a46.06,46.06,0,0,0,46,46H449.58a46.05,46.05,0,0,0,46-46V164.05a46.06,46.06,0,0,0-46-46V101.62A62.5,62.5,0,0,1,512,164.05V580.9A62.5,62.5,0,0,1,449.58,643.32Z"/><path class="cls-2" d="M401.5,595.25H116a62.5,62.5,0,0,1-62.43-62.42H70a46.06,46.06,0,0,0,46,46H401.5a46.07,46.07,0,0,0,46-46V116a46.07,46.07,0,0,0-46-46V53.56A62.5,62.5,0,0,1,463.94,116V532.83A62.5,62.5,0,0,1,401.5,595.25Z"/><path class="cls-3" d="M348,541.7H62.43A62.5,62.5,0,0,1,0,479.27V62.43A62.5,62.5,0,0,1,62.43,0H348a62.5,62.5,0,0,1,62.43,62.43V479.27A62.5,62.5,0,0,1,348,541.7ZM62.43,16.42a46.06,46.06,0,0,0-46,46V479.27a46.06,46.06,0,0,0,46,46H348a46.06,46.06,0,0,0,46-46V62.43a46.06,46.06,0,0,0-46-46Z"/><path class="cls-4" d="M205.19,138.25c-73.11,0-132.6,59.49-132.6,132.6s59.49,132.6,132.6,132.6,132.6-59.49,132.6-132.6-59.49-132.6-132.6-132.6m0,247A114.45,114.45,0,1,1,319.64,270.85,114.56,114.56,0,0,1,205.19,385.3"/><path class="cls-4" d="M273.61,269.08h-63V200.27a9.08,9.08,0,0,0-18.16,0v77.88a9.08,9.08,0,0,0,9.08,9.08h72.07a9.08,9.08,0,0,0,0-18.16"/></svg></span>
+          <span class="line-height-sans-6 border-base-lighter border-dashed border-bottom-1px border-top-0 border-x-0">{{model.text}} Entity: {{model.id}}</span> 
+         </span>
+
         <div class="action-menu float-right">
-          <sds-actions-menu [model]="menu" (clicks)="log($event)"></sds-actions-menu>
+
+          <sds-actions-menu *ngIf="!model.isCompare"
+          [model]="menu" (clicks)="log($event)"></sds-actions-menu>
+
+          <div *ngIf="model.isCompare" 
+            class='info-icon flex-row flex-align-center width-4 height-4 radius-pill
+            padding-left-105 padding-top-105 padding-bottom-105
+            border-2px border-base-dark margin-right-1'><div>i</div></div>
+
         </div>
       </h3>
     </div>
@@ -154,7 +170,7 @@
         </div>
 
         <!-- Address Field Start -->
-        <div *ngIf="model.id!==3" class="grid-col-12">
+        <div class="grid-col-12">
 
           <div class="sds-group">
 
@@ -168,40 +184,12 @@
                     <div class="sds-static--label">Physical Address:</div>
                   </div>
                   <div class="grid-col-fill">
-                    <p class="sds-static">123456 George Washington Boulevard, Suite 4a</p>
-                    <p class="sds-static">Ashburn, VA 20147 United States</p>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- Address Field Start -->
-        <div *ngIf="model.id===3" class="grid-col-12">
-
-          <div class="sds-group--horizontal">
-
-            <!-- Horizontal Config -->
-            <div class="grid-row">
-
-              <!-- Key/Value Wrapper -->
-              <div class="grid-col">
-                <div class="grid-row">
-                  <div class="grid-col-fill">
-                    <div class="sds-alert--block margin-right-1 padding-05">
-                        <div class="sds-alert--block-icon grid-col-auto">
-                          <fa-icon [icon]="['sds', 'exclamation']" size="3x"></fa-icon>
-                        </div>
-                        <div class="grid-col">
-                          <div class="sds-static">Physical Address Update Available</div>
-                          <div class="sds-static-label">
-                            <div>123456 George Washington Boulevard, Suite 4a</div>
-                            <div>Ashburn, VA 20147 United States</div>
-                          </div>
-                        </div>
-                    </div>
+                    <p class="sds-static"><span [ngClass]="{'border-base-lighter 
+                      border-dashed border-bottom-1px border-top-0 border-x-0':model.isCompare}"
+                    >123456 George Washington Boulevard, Suite 4a</span></p>
+                   <p class="sds-static"><span [ngClass]="{'border-base-lighter 
+                    border-dashed  border-bottom-1px border-top-0 border-x-0':model.isCompare}"
+                    >Ashburn, VA 20147 United States</span></p>
                   </div>
                 </div>
               </div>
