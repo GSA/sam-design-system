@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef, Input } from '@angular/core';
 
 @Component({
-  selector: 'search-result-list-sample-newentity',
-  templateUrl: './search-result-list-sample-newentity.component.html',
-  styleUrls: ['./search-result-list-sample-newentity.component.scss']
+  selector: 'search-result-list-sample-compare',
+  templateUrl: './search-result-list-sample-compare.component.html',
+  styleUrls: ['./search-result-list-sample-compare.component.scss']
 })
-export class SearchResultListSampleNewentityComponent {
+export class SearchResultListSampleCompareComponent {
 
   constructor(private change: ChangeDetectorRef) { }
 
