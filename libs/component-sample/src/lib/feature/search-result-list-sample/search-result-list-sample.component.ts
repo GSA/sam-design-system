@@ -19,7 +19,7 @@ export class SearchResultListSampleComponent {
   ];
   compare= [
     { text: 'First', id: 1 },
-    { text: 'First compare', id: 2 , isCompare:true},
+    { text: 'First compare', id: 2 , isNewentity:true},
 
   ];
   emptyItems =[];

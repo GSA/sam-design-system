@@ -1,0 +1,29 @@
+.popup__icon {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.popup__inner-icon {
+  margin: -8px -8px 4px 4px;
+}
+
+.popup__wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.popup__content {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.popup__wrapper:hover .popup__content {
+  z-index: 10;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.2s cubic-bezier(0.75, -0.02, 0.2, 0.97);
+}
+
+.popup__message {
+  text-align: center;
+}
