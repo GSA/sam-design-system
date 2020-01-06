@@ -14,13 +14,14 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { sds } from '@gsa-sam/sam-styles/src/icons/';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { SdsActionsMenuModule } from '@sam-design-system/layouts';
-import { SearchResultListSampleCompareComponent } from './search-result-list-sample-compare.component';
+import { SdsPopupModule} from '@sam-design-system/layouts';
+import { SearchResultListSampleNewentityComponent } from './search-result-list-sample-newentity.component';
 
 @NgModule({
   imports: [FontAwesomeModule, SdsSideNavigationModule, SdsAccordionModule, CommonModule, FormsModule,
-    SdsToolbarModule, SdsPageModule, SdsSearchResultListModule, SdsActionsMenuModule],
+    SdsToolbarModule, SdsPageModule, SdsSearchResultListModule, SdsActionsMenuModule, SdsPopupModule],
   exports: [SearchResultListSampleComponent],
-  declarations: [SearchResultListSampleComponent, SearchResultListSampleDataComponent, SearchResultListSampleData2Component, SearchResultListSampleCompareComponent],
+  declarations: [SearchResultListSampleComponent, SearchResultListSampleDataComponent, SearchResultListSampleData2Component, SearchResultListSampleNewentityComponent],
   providers: []
 })
 export class SearchResultListSampleModule {
