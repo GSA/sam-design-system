@@ -2,8 +2,7 @@ import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef, Input }
 
 @Component({
   selector: 'search-result-list-sample-compare',
-  templateUrl: './search-result-list-sample-compare.component.html',
-  styleUrls: ['./search-result-list-sample-compare.component.scss']
+  templateUrl: './search-result-list-sample-compare.component.html'
 })
 export class SearchResultListSampleCompareComponent {
 
