@@ -155,8 +155,14 @@
             "polyfills": "apps/sam-design-system-site/src/polyfills.ts",
             "tsConfig": "apps/sam-design-system-site/tsconfig.spec.json",
             "karmaConfig": "apps/sam-design-system-site/karma.conf.js",
-            "styles": ["apps/sam-design-system-site/src/styles.scss"],
-            "scripts": [],
+            "styles": [
+              "./libs/packages/components/src/lib/video-player/css/px-video.css",
+              "apps/sam-design-system-site/src/styles.scss"
+            ],
+            "scripts": [
+              "./libs/packages/components/src/lib/video-player/js/strings.js",
+              "./libs/packages/components/src/lib/video-player/js/px-video.js"
+            ],
             "assets": [
               "apps/sam-design-system-site/src/favicon.ico",
               "apps/sam-design-system-site/src/assets"
