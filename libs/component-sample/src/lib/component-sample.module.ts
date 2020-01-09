@@ -36,7 +36,12 @@ import { ActionsMenuSampleModule } from './feature/actions-menu-sample/actions-m
 
 import { SearchSampleModule } from './feature/search-sample/search-sample.module';
 import { SearchSampleComponent } from './feature/search-sample/search-sample.component';
+import { VideoPlayerSampleComponent } from './feature/video-player-sample/video-player-sample.component';
+import { VideoPlayerSampleModule } from './feature/video-player-sample/video-player-sample.module';
+
+
 export const ROUTES: Routes = [
+  { path: 'video-player', component: VideoPlayerSampleComponent },
   { path: 'header', component: HeaderSampleComponent },
   { path: 'footer', component: FooterSampleComponent },
   { path: 'pagination', component: PaginationSampleComponent },
@@ -72,7 +77,8 @@ export const ROUTES: Routes = [
     AutocompleteSampleModule,
     DialogSampleModule,
     ActionsMenuSampleModule,
-    SearchSampleModule
+    SearchSampleModule,
+    VideoPlayerSampleModule
   ],
   exports: [RouterModule]
 })
