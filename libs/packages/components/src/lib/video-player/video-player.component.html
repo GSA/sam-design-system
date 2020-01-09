@@ -1,11 +1,11 @@
-<div class="px-video-container" id="myvid">
+ <div class="px-video-container" id="{{myvid}}">
   <div class="px-video-img-captions-container">
       <div class="px-video-captions hide" aria-hidden="true"></div>
-      <video width="640" height="360"  controls>
-        <source src="{{vidioSource}}" type="video/mp4" />
-          <!-- <source src="http://www.html5videoplayer.net/videos/toystory.mp4" type="video/mp4" /> -->
+      <video width="{{videoWidth}}" height="{{videoHeight}}" poster="{{videoPoster}}" controls>
+        <source src="{{videoSource}}" type="video/mp4" />
+          <-- <source src="http://www.html5videoplayer.net/videos/toystory.mp4" type="video/mp4" /> -->
           <!-- <source src="./src/Volcano_Sample.webm" type="video/webm" /> -->
-          <track kind="captions" label="English captions" src="http://www.html5videoplayer.net/videos/toystory.mp4" srclang="en" default />
+          <track kind="captions" label="English captions" src="{{videoCaption}}" srclang="en" default />
           <div>
               <a href="http://www.html5videoplayer.net/videos/toystory.mp4">
                   <img src="http://images.crestock.com/150000-159999/151031-xs.jpg" width="640" height="360" alt="download video" />
@@ -15,3 +15,21 @@
   </div>
   <div class="px-video-controls"></div>
 </div>
+
+<!-- <div class="px-video-container" id="myvid">
+  <div class="px-video-img-captions-container">
+      <div class="px-video-captions hide" aria-hidden="true"></div>
+      <video width="640" height="360" poster="media/foo.jpg" controls>
+          <source src="foo.mp4" type="video/mp4" />
+          <source src="foo.webm" type="video/webm" />
+          <track kind="captions" label="English captions" src="media/foo.vtt" srclang="en" default />
+          <div>
+              <a href="foo.mp4">
+                  <img src="media/foo.jpg" width="640" height="360" alt="download video" />
+              </a>
+          </div>
+      </video>
+  </div>
+  <div class="px-video-controls"></div>
+</div> -->
+
