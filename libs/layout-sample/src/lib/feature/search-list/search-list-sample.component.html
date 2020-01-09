@@ -2,7 +2,7 @@
   <!-- =============== PAGE OPTIONS =============== -->
   <sds-page-options>
     <!-- =============== TOOLBAR =============== -->
-    <div class="grid-col">
+    <div class="grid-col-12">
       <div class="grid-row">
         <div class="grid-col-auto">
           <sds-toolbar #toolbar="sdsToolbar" class="top-205">
@@ -47,7 +47,7 @@
       </div>
     </div>
   <!-- =============== PAGE CONTENT =============== -->
-  <div class="sds-page__content" [sdsToolbarExpand]="toolbar">
+  <div class="grid-col-12 sds-page__content" [sdsToolbarExpand]="toolbar">
     <!-- =============== RESULTS LIST =============== -->
     <sds-search-result-list [model]="items">
       <ng-template #resultContent let-item>
