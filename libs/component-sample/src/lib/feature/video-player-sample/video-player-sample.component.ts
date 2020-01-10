@@ -18,7 +18,7 @@ export class VideoPlayerSampleComponent implements OnInit, AfterViewInit {
 	debug: string;
 	preload: string;
 
-  constructor() {
+  constructor(private window: Window) {
 
    }
 
