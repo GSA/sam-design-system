@@ -1,8 +1,12 @@
 <sds-page class="condensed">
-  <sds-search-result-list [model]="items" [divider]=none>
+  <sds-search-result-list [model]="items" [divider]=false>
       <ng-template #resultContent let-item>
           <div>
-              <search-result-list-sample-data [model]="item"></search-result-list-sample-data>
+            <hr class="thin" />
+              <search-result-list-sample-data [model]="item">
+                  <search-result-list-sample-data *ngIf="item.hasNewerData" [dualDisplay]="true" [model]="item"></search-result-list-sample-data>
+              </search-result-list-sample-data>
+            
           </div>
       </ng-template>
   </sds-search-result-list>
