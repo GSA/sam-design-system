@@ -3,13 +3,16 @@ import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { BehaviorSubject } from 'rxjs';
 import { maxDateValidator, minDateValidator } from '@gsa-sam/sam-formly';
+
 //import { maxDateRangeValidator, minDateRangeValidator } from 'libs/packages/sam-formly/src/lib/formly/formly.validators';
 import { FormControl, ValidationErrors } from '@angular/forms';
+import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 
 
 @Component({
-  selector: 'filter-wrapper',
+  selector: 'gsa-sam-filter-wrapper',
   templateUrl: './filter-wrapper.component.html',
+ 
 })
 export class FilterWrapperComponent implements OnInit {
 
@@ -18,7 +21,7 @@ export class FilterWrapperComponent implements OnInit {
   }
   results: any = {};
   form = new FormGroup({});
-  model = {};
+  model:any = {};
   options: FormlyFormOptions = {};
   /**
  * Event when something is checked/selected in the grid
@@ -270,6 +273,91 @@ export class FilterWrapperComponent implements OnInit {
             ]
           },
         },
+      ]
+    },
+    {
+      key: 'conditionalFilters',
+      wrappers: ['filterwrapper'],
+      templateOptions: { label: 'Conditional Filters' },
+      fieldGroup: [
+        {
+            key: 'firstInput',
+            type: 'input',
+            templateOptions: {
+              label: 'First Input',
+              placeholder: 'Type in here to further show the filters',
+            },
+          },
+          {
+            key: 'secondInput',
+            type: 'input',
+            hideExpression: (model) => !this.model.conditionalFilters.firstInput,
+            templateOptions: {
+              label: 'Second Input',
+            },      
+          },
+        ]
+    },
+    {
+      wrappers: ['filterwrapper'],
+      fieldGroup: [
+        {
+          key: 'check',
+          type: 'select',
+          templateOptions: {
+            label: 'Dropdown Selection',
+            options: [
+              {label:'Red', value:'red'},
+              {label:'Green', value:'green'},
+              {label:'Blue', value:'blue'},
+              {label:'Purple', value:'purple'},
+            ]
+          },
+        },
+        {
+          key: 'red',
+          type: 'radio',
+          hideExpression: (model) => this.model.check !== 'red',
+          templateOptions: {
+            label: 'Red',
+            options: [
+              {label: 'Red', value: 'radio'},
+            ]
+          }
+        },
+        {
+          key: 'green',
+          type: 'radio',
+          hideExpression: (model) => this.model.check !== 'green',
+          templateOptions: {
+            label: 'Green',
+            options: [
+              {label: 'Green', value: 'radio'},
+            ]
+          }
+        },
+        {
+          key: 'blue',
+          type: 'radio',
+          hideExpression: (model) => this.model.check !== 'blue',
+          templateOptions: {
+            label: 'Blue',
+            options: [
+              {label: 'Blue', value: 'radio'},
+            ]
+          }
+        },
+        {
+          key: 'purple',
+          type: 'radio',
+          hideExpression: (model) => this.model.check !== 'purple',
+          templateOptions: {
+            label: 'Purple',
+            options: [
+              {label: 'Purple', value: 'radio'},
+            ]
+          }
+        }
       ]
     }
   ];

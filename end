@@ -1,0 +1,404 @@
+[1mdiff --git a/apps/sam-design-system-site/src/app/app.component.html b/apps/sam-design-system-site/src/app/app.component.html[m
+[1mindex af07dc5..94f937b 100644[m
+[1m--- a/apps/sam-design-system-site/src/app/app.component.html[m
+[1m+++ b/apps/sam-design-system-site/src/app/app.component.html[m
+[36m@@ -92,6 +92,11 @@[m
+               Actions Menu[m
+             </a>[m
+           </li>[m
+[32m+[m[32m          <li class="usa-sidenav__item">[m
+[32m+[m[32m            <a [routerLink]="['formly/formlyForms']" routerLinkActive="usa-current">[m
+[32m+[m[32m              Formly Forms[m
+[32m+[m[32m            </a>[m
+[32m+[m[32m          </li>[m
+         </ul>[m
+       </nav>[m
+     </aside>[m
+[1mdiff --git a/libs/packages/sam-formly/src/lib/formly/formly.config.ts b/libs/packages/sam-formly/src/lib/formly/formly.config.ts[m
+[1mindex 65bdc37..99c7d5d 100755[m
+[1m--- a/libs/packages/sam-formly/src/lib/formly/formly.config.ts[m
+[1m+++ b/libs/packages/sam-formly/src/lib/formly/formly.config.ts[m
+[36m@@ -11,7 +11,6 @@[m [mimport { FormlyAccordianFormFieldComponent } from './wrappers/form-field.accordi[m
+ import { FormlyFieldAutoCompleteComponent } from './types/autocomplete';[m
+ import { FormlyFormFieldFilterWrapperComponent } from './wrappers/form-field.filterwrapper';[m
+ import { FormlyFieldDatePickerComponent } from './types/datepicker';[m
+[31m-[m
+ import { FormlyFieldConfig } from '@ngx-formly/core';[m
+ [m
+ export const FIELD_TYPE_COMPONENTS = [[m
+[36m@@ -25,7 +24,7 @@[m [mexport const FIELD_TYPE_COMPONENTS = [[m
+   FormlyAccordianFormFieldComponent,[m
+   FormlyFieldAutoCompleteComponent,[m
+   FormlyFieldDatePickerComponent,[m
+[31m-  FormlyFormFieldFilterWrapperComponent[m
+[32m+[m[32m  FormlyFormFieldFilterWrapperComponent,[m[41m[m
+ ];[m
+ import { maxDateValidator, minDateValidator } from './formly.validators';[m
+ [m
+[1mdiff --git a/libs/packages/sam-formly/src/lib/formly/formly.module.ts b/libs/packages/sam-formly/src/lib/formly/formly.module.ts[m
+[1mindex b6f1e81..0745897 100644[m
+[1m--- a/libs/packages/sam-formly/src/lib/formly/formly.module.ts[m
+[1m+++ b/libs/packages/sam-formly/src/lib/formly/formly.module.ts[m
+[36m@@ -11,7 +11,9 @@[m [mimport { MatNativeDateModule } from '@angular/material/core';[m
+ import { MatDatepickerModule } from '@angular/material/datepicker';[m
+ import { MatInputModule } from '@angular/material/input';[m
+ import { maxDateValidator, minDateValidator } from './formly.validators';[m
+[32m+[m[32mimport { AnimationWrapperComponent } from './wrappers/form-field.animation';[m
+ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';[m
+[32m+[m
+ // Validate the min length of the charecter[m
+ export function minlengthValidationMessage(err, field) {[m
+   return `Should have atleast ${field.templateOptions.minLength} characters`;[m
+[36m@@ -56,13 +58,20 @@[m [mexport function invalidDateFormatValidationMessage(err, field: FormlyFieldConfig[m
+ export function maxValidationMessage(err, field) {[m
+   return `This value should be less than ${field.templateOptions.max}`;[m
+ }[m
+[32m+[m[32mexport function animationExtension(field: FormlyFieldConfig) {[m
+[32m+[m[32m  if (field.wrappers && field.wrappers.includes('animation')) {[m
+[32m+[m[32m    return;[m
+[32m+[m[32m  }[m
+ [m
+[32m+[m[32m  field.wrappers = ['animation', ...(field.wrappers || [])];[m
+[32m+[m[32m}[m
+ export { maxDateValidator, minDateValidator } from './formly.validators';[m
+ [m
+ [m
+ @NgModule({[m
+   declarations: [[m
+     FIELD_TYPE_COMPONENTS,[m
+[32m+[m[32m    AnimationWrapperComponent,[m
+   ],[m
+   imports: [[m
+     CommonModule,[m
+[36m@@ -90,7 +99,13 @@[m [mexport { maxDateValidator, minDateValidator } from './formly.validators';[m
+       validators: [[m
+         { name: 'minDate', validation: minDateValidator },[m
+         { name: 'maxDate', validation: maxDateValidator }[m
+[31m-      ][m
+[32m+[m[32m      ],[m
+[32m+[m[32m      wrappers: [[m
+[32m+[m[32m        { name: 'animation', component: AnimationWrapperComponent },[m
+[32m+[m[32m      ],[m
+[32m+[m[32m      extensions: [[m
+[32m+[m[32m        { name: 'animation', extension: { onPopulate: animationExtension } },[m
+[32m+[m[32m      ],[m
+     })[m
+   ][m
+ })[m
+[1mdiff --git a/libs/sam-formly-sample/src/lib/feature/filter-wrapper/filter-wrapper.component.ts b/libs/sam-formly-sample/src/lib/feature/filter-wrapper/filter-wrapper.component.ts[m
+[1mindex 1f5a700..fd4fceb 100755[m
+[1m--- a/libs/sam-formly-sample/src/lib/feature/filter-wrapper/filter-wrapper.component.ts[m
+[1m+++ b/libs/sam-formly-sample/src/lib/feature/filter-wrapper/filter-wrapper.component.ts[m
+[36m@@ -3,13 +3,15 @@[m [mimport { FormGroup } from '@angular/forms';[m
+ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';[m
+ import { BehaviorSubject } from 'rxjs';[m
+ import { maxDateValidator, minDateValidator } from '@gsa-sam/sam-formly';[m
+[32m+[m[41m[m
+ //import { maxDateRangeValidator, minDateRangeValidator } from 'libs/packages/sam-formly/src/lib/formly/formly.validators';[m
+ import { FormControl, ValidationErrors } from '@angular/forms';[m
+ [m
+ [m
+ @Component({[m
+[31m-  selector: 'filter-wrapper',[m
+[32m+[m[32m  selector: 'gsa-sam-filter-wrapper',[m[41m[m
+   templateUrl: './filter-wrapper.component.html',[m
+[32m+[m[41m [m
+ })[m
+ export class FilterWrapperComponent implements OnInit {[m
+ [m
+[36m@@ -18,7 +20,7 @@[m [mexport class FilterWrapperComponent implements OnInit {[m
+   }[m
+   results: any = {};[m
+   form = new FormGroup({});[m
+[31m-  model = {};[m
+[32m+[m[32m  model:any = {};[m[41m[m
+   options: FormlyFormOptions = {};[m
+   /**[m
+  * Event when something is checked/selected in the grid[m
+[36m@@ -271,7 +273,30 @@[m [mexport class FilterWrapperComponent implements OnInit {[m
+           },[m
+         },[m
+       ][m
+[31m-    }[m
+[32m+[m[32m    },[m[41m[m
+[32m+[m[32m    {[m[41m[m
+[32m+[m[32m      key: 'conditionalFilters',[m[41m[m
+[32m+[m[32m      wrappers: ['filterwrapper'],[m[41m[m
+[32m+[m[32m      templateOptions: { label: 'Conditional Filters' },[m[41m[m
+[32m+[m[32m      fieldGroup: [[m[41m[m
+[32m+[m[32m    {[m[41m[m
+[32m+[m[32m        key: 'firstInput',[m[41m[m
+[32m+[m[32m        type: 'input',[m[41m[m
+[32m+[m[32m        templateOptions: {[m[41m[m
+[32m+[m[32m          label: 'First Input',[m[41m[m
+[32m+[m[32m          placeholder: 'Type in here to further show the filters',[m[41m[m
+[32m+[m[32m        },[m[41m[m
+[32m+[m[32m      },[m[41m[m
+[32m+[m[32m      {[m[41m[m
+[32m+[m[32m        key: 'secondInput',[m[41m[m
+[32m+[m[32m        type: 'input',[m[41m[m
+[32m+[m[32m        hideExpression: (model) => !this.model.conditionalFilters.firstInput,[m[41m[m
+[32m+[m[32m        templateOptions: {[m[41m[m
+[32m+[m[32m          label: 'Second Input',[m[41m[m
+[32m+[m[32m        },[m[41m[m
+[32m+[m[41m      [m
+[32m+[m[32m    }][m[41m[m
+[32m+[m[32m  },[m[41m[m
+   ];[m
+   public ngOnInit() {[m
+     this.filterChange$.subscribe([m
+[1mdiff --git a/libs/sam-formly-sample/src/lib/feature/formly-sample/formly-input.component.scss b/libs/sam-formly-sample/src/lib/feature/formly-sample/formly-input.component.scss[m
+[1mdeleted file mode 100755[m
+[1mindex e69de29..0000000[m
+[1mdiff --git a/libs/sam-formly-sample/src/lib/feature/formly-sample/formly-input.component.ts b/libs/sam-formly-sample/src/lib/feature/formly-sample/formly-input.component.ts[m
+[1mindex 99f999e..0826ef7 100755[m
+[1m--- a/libs/sam-formly-sample/src/lib/feature/formly-sample/formly-input.component.ts[m
+[1m+++ b/libs/sam-formly-sample/src/lib/feature/formly-sample/formly-input.component.ts[m
+[36m@@ -10,7 +10,6 @@[m [mimport { SampleAutocompleteData } from './services/autocomplete-sample.data';[m
+ @Component({[m
+   selector: 'formly-input',[m
+   templateUrl: './formly-input.component.html',[m
+[31m-  styleUrls: ['./formly-input.component.scss'],[m
+   providers: [AutocompleteSampleDataService][m
+ })[m
+ export class FormlyInputComponent implements OnInit {[m
+[1mdiff --git a/libs/sam-formly-sample/src/lib/sam-formly-sample.module.ts b/libs/sam-formly-sample/src/lib/sam-formly-sample.module.ts[m
+[1mindex a57993c..0592044 100644[m
+[1m--- a/libs/sam-formly-sample/src/lib/sam-formly-sample.module.ts[m
+[1m+++ b/libs/sam-formly-sample/src/lib/sam-formly-sample.module.ts[m
+[36m@@ -11,10 +11,13 @@[m [mimport { FormsModule, ReactiveFormsModule } from '@angular/forms';[m
+ import { FormlyModule } from '@ngx-formly/core';[m
+ import { FilterWrapperComponent } from './feature/filter-wrapper/filter-wrapper.component';[m
+ import { FilterWrapperSampleModule } from './feature/filter-wrapper/filter-wrapper.module';[m
+[32m+[m[32mimport { FormlyFormsComponent } from './feature/formly-forms/formly-forms.component';[m
+[32m+[m[32mimport { FormlyFormsModule } from './feature/formly-forms/formly-forms.module';[m
+ [m
+ export const ROUTES: Routes = [[m
+   { path: 'formlyInput', component: FormlyInputComponent },[m
+[31m-  {path: 'formlyFilters', component: FilterWrapperComponent}[m
+[32m+[m[32m  { path: 'formlyFilters', component: FilterWrapperComponent},[m
+[32m+[m[32m  { path: 'formlyForms', component: FormlyFormsComponent },[m
+ ];[m
+ [m
+ @NgModule({[m
+[36m@@ -26,6 +29,7 @@[m [mexport const ROUTES: Routes = [[m
+     FontAwesomeModule,[m
+     RouterModule.forChild(ROUTES),[m
+     FormlySampleModule,[m
+[32m+[m[32m    FormlyFormsModule,[m
+     FilterWrapperSampleModule,[m
+   ],[m
+   exports: [RouterModule][m
+[36m@@ -34,4 +38,4 @@[m [mexport class SamFormlySampleModule {[m
+   constructor() {[m
+     library.add(fas, sds);[m
+   }[m
+[31m-}[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/package-lock.json b/package-lock.json[m
+[1mindex 86a3ec2..3d05451 100644[m
+[1m--- a/package-lock.json[m
+[1m+++ b/package-lock.json[m
+[36m@@ -3030,9 +3030,9 @@[m
+       "integrity": "sha512-qDPt7q5bqS/OJDpKQdEfy2Pr37JwLVyt76H2whpr9V55atzNZgwdLMRhyGUssr87s7yUfqos2Q0ShlZAu0oqNw=="[m
+     },[m
+     "@gsa-sam/sam-styles": {[m
+[31m-      "version": "0.0.44",[m
+[31m-      "resolved": "https://registry.npmjs.org/@gsa-sam/sam-styles/-/sam-styles-0.0.44.tgz",[m
+[31m-      "integrity": "sha512-m8pD9MpurlNCUqj4FoThv6TJjYB9CUZvSKCfNoU0eRmgPcv8MbYnrRpTA3IVTIIieeJ3U4pXylDO1zV5ZjaeBw==",[m
+[32m+[m[32m      "version": "0.0.45",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/@gsa-sam/sam-styles/-/sam-styles-0.0.45.tgz",[m
+[32m+[m[32m      "integrity": "sha512-wTF03qCjSX5E5Ie9ORf83LeAWWR0Mtqjd0gmJ3O57Q6ECifo9fV/Dgwperlgi24CI175m8HtdL0veCRCj1TuVg==",[m
+       "requires": {[m
+         "@frctl/fractal": "^1.2.0",[m
+         "@frctl/mandelbrot": "^1.2.0",[m
+[36m@@ -3082,6 +3082,14 @@[m
+         "webpack-sources": "1.3.0"[m
+       }[m
+     },[m
+[32m+[m[32m    "@ngx-formly/bootstrap": {[m
+[32m+[m[32m      "version": "5.5.7",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/@ngx-formly/bootstrap/-/bootstrap-5.5.7.tgz",[m
+[32m+[m[32m      "integrity": "sha512-J79hN8o6EUze/4OO0wzeGxb7JlD38pJsPteJUC/8cCC8hVW3EYzGTQ4iXuvPuwPfs0ZqwVEZE+XS9qFiE0M3yA==",[m
+[32m+[m[32m      "requires": {[m
+[32m+[m[32m        "tslib": "^1.9.0"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+     "@ngx-formly/core": {[m
+       "version": "5.4.1",[m
+       "resolved": "https://registry.npmjs.org/@ngx-formly/core/-/core-5.4.1.tgz",[m
+[36m@@ -4681,9 +4689,9 @@[m
+       }[m
+     },[m
+     "@sinonjs/commons": {[m
+[31m-      "version": "1.6.0",[m
+[31m-      "resolved": "https://registry.npmjs.org/@sinonjs/commons/-/commons-1.6.0.tgz",[m
+[31m-      "integrity": "sha512-w4/WHG7C4WWFyE5geCieFJF6MZkbW4VAriol5KlmQXpAQdxvV0p26sqNZOW6Qyw6Y0l9K4g+cHvvczR2sEEpqg==",[m
+[32m+[m[32m      "version": "1.7.0",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/@sinonjs/commons/-/commons-1.7.0.tgz",[m
+[32m+[m[32m      "integrity": "sha512-qbk9AP+cZUsKdW1GJsBpxPKFmCJ0T8swwzVje3qFd+AkQb74Q/tiuzrdfFg8AD2g5HH/XbE/I8Uc1KYHVYWfhg==",[m
+       "requires": {[m
+         "type-detect": "4.0.8"[m
+       }[m
+[36m@@ -4735,9 +4743,9 @@[m
+       },[m
+       "dependencies": {[m
+         "core-js": {[m
+[31m-          "version": "3.4.8",[m
+[31m-          "resolved": "https://registry.npmjs.org/core-js/-/core-js-3.4.8.tgz",[m
+[31m-          "integrity": "sha512-b+BBmCZmVgho8KnBUOXpvlqEMguko+0P+kXCwD4vIprsXC6ht1qgPxtb1OK6XgSlrySF71wkwBQ0Hv695bk9gQ=="[m
+[32m+[m[32m          "version": "3.6.1",[m
+[32m+[m[32m          "resolved": "https://registry.npmjs.org/core-js/-/core-js-3.6.1.tgz",[m
+[32m+[m[32m          "integrity": "sha512-186WjSik2iTGfDjfdCZAxv2ormxtKgemjC3SI6PL31qOA0j5LhTDVjHChccoc7brwLvpvLPiMyRlcO88C4l1QQ=="[m
+         }[m
+       }[m
+     },[m
+[36m@@ -8378,14 +8386,14 @@[m
+       }[m
+     },[m
+     "dotnet-deps-parser": {[m
+[31m-      "version": "4.5.2",[m
+[31m-      "resolved": "https://registry.npmjs.org/dotnet-deps-parser/-/dotnet-deps-parser-4.5.2.tgz",[m
+[31m-      "integrity": "sha512-bk5Q1luEwQ10rrBwZbtTxUNadaLz2dM6xzOLoTK+oUBcaq6saCeELmkIgdG+Fwkn58XRgLQvOySVS0gp4OG6RA==",[m
+[32m+[m[32m      "version": "4.9.0",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/dotnet-deps-parser/-/dotnet-deps-parser-4.9.0.tgz",[m
+[32m+[m[32m      "integrity": "sha512-V0O+7pI7Ei+iL5Kgy6nYq1UTwzrpqci5K/zf8cXyP5RWBSQBUl/JOE9I67zLUkKiwOdfPhbMQgcRj/yGA+NL1A==",[m
+       "requires": {[m
+         "@types/xml2js": "0.4.3",[m
+         "lodash": "^4.17.11",[m
+         "source-map-support": "^0.5.7",[m
+[31m-        "tslib": "^1.9.3",[m
+[32m+[m[32m        "tslib": "^1.10.0",[m
+         "xml2js": "0.4.19"[m
+       }[m
+     },[m
+[36m@@ -8441,11 +8449,11 @@[m
+       }[m
+     },[m
+     "editions": {[m
+[31m-      "version": "2.2.0",[m
+[31m-      "resolved": "https://registry.npmjs.org/editions/-/editions-2.2.0.tgz",[m
+[31m-      "integrity": "sha512-RYg3iEA2BDLCNVe8PUkD+ox5vAKxB9XS/mAhx1bdxGCF0CpX077C0pyTA9t5D6idCYA3avl5/XDHKPsHFrygfw==",[m
+[32m+[m[32m      "version": "2.3.0",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/editions/-/editions-2.3.0.tgz",[m
+[32m+[m[32m      "integrity": "sha512-jeXYwHPKbitU1l14dWlsl5Nm+b1Hsm7VX73BsrQ4RVwEcAQQIPFHTZAbVtuIGxZBrpdT2FXd8lbtrNBrzZxIsA==",[m
+       "requires": {[m
+[31m-        "errlop": "^1.1.2",[m
+[32m+[m[32m        "errlop": "^2.0.0",[m
+         "semver": "^6.3.0"[m
+       },[m
+       "dependencies": {[m
+[36m@@ -8667,12 +8675,9 @@[m
+       "dev": true[m
+     },[m
+     "errlop": {[m
+[31m-      "version": "1.7.0",[m
+[31m-      "resolved": "https://registry.npmjs.org/errlop/-/errlop-1.7.0.tgz",[m
+[31m-      "integrity": "sha512-JisgQc08Ry4ZzN4cTYL7wdmLMoiwv97Kj/xSXObOE9Be+ZDxAewq0kKRqR5WFVUhglym3fQc++sZSMvdgLalBw==",[m
+[31m-      "requires": {[m
+[31m-        "editions": "^2.2.0"[m
+[31m-      }[m
+[32m+[m[32m      "version": "2.0.0",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/errlop/-/errlop-2.0.0.tgz",[m
+[32m+[m[32m      "integrity": "sha512-z00WIrQhtOMUnjdTG0O4f6hMG64EVccVDBy2WwgjcF8S4UB1exGYuc2OFwmdQmsJwLQVEIHWHPCz/omXXgAZHw=="[m
+     },[m
+     "errno": {[m
+       "version": "0.1.7",[m
+[36m@@ -11416,9 +11421,25 @@[m
+       "integrity": "sha1-k0EP0hsAlzUVH4howvJx80J+I/0="[m
+     },[m
+     "highlight.js": {[m
+[31m-      "version": "9.16.2",[m
+[31m-      "resolved": "https://registry.npmjs.org/highlight.js/-/highlight.js-9.16.2.tgz",[m
+[31m-      "integrity": "sha512-feMUrVLZvjy0oC7FVJQcSQRqbBq9kwqnYE4+Kj9ZjbHh3g+BisiPgF49NyQbVLNdrL/qqZr3Ca9yOKwgn2i/tw=="[m
+[32m+[m[32m      "version": "9.17.1",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/highlight.js/-/highlight.js-9.17.1.tgz",[m
+[32m+[m[32m      "integrity": "sha512-TA2/doAur5Ol8+iM3Ov7qy3jYcr/QiJ2eDTdRF4dfbjG7AaaB99J5G+zSl11ljbl6cIcahgPY6SKb3sC3EJ0fw==",[m
+[32m+[m[32m      "requires": {[m
+[32m+[m[32m        "handlebars": "^4.5.3"[m
+[32m+[m[32m      },[m
+[32m+[m[32m      "dependencies": {[m
+[32m+[m[32m        "handlebars": {[m
+[32m+[m[32m          "version": "4.5.3",[m
+[32m+[m[32m          "resolved": "https://registry.npmjs.org/handlebars/-/handlebars-4.5.3.tgz",[m
+[32m+[m[32m          "integrity": "sha512-3yPecJoJHK/4c6aZhSvxOyG4vJKDshV36VHp0iVCDVh7o9w2vwi3NSnL2MMPj3YdduqaBcu7cGbggJQM0br9xA==",[m
+[32m+[m[32m          "requires": {[m
+[32m+[m[32m            "neo-async": "^2.6.0",[m
+[32m+[m[32m            "optimist": "^0.6.1",[m
+[32m+[m[32m            "source-map": "^0.6.1",[m
+[32m+[m[32m            "uglify-js": "^3.1.4"[m
+[32m+[m[32m          }[m
+[32m+[m[32m        }[m
+[32m+[m[32m      }[m
+     },[m
+     "hmac-drbg": {[m
+       "version": "1.0.1",[m
+[36m@@ -15248,21 +15269,24 @@[m
+       "integrity": "sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ=="[m
+     },[m
+     "nise": {[m
+[31m-      "version": "1.5.2",[m
+[31m-      "resolved": "https://registry.npmjs.org/nise/-/nise-1.5.2.tgz",[m
+[31m-      "integrity": "sha512-/6RhOUlicRCbE9s+94qCUsyE+pKlVJ5AhIv+jEE7ESKwnbXqulKZ1FYU+XAtHHWE9TinYvAxDUJAb912PwPoWA==",[m
+[32m+[m[32m      "version": "1.5.3",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/nise/-/nise-1.5.3.tgz",[m
+[32m+[m[32m      "integrity": "sha512-Ymbac/94xeIrMf59REBPOv0thr+CJVFMhrlAkW/gjCIE58BGQdCj0x7KRCb3yz+Ga2Rz3E9XXSvUyyxqqhjQAQ==",[m
+       "requires": {[m
+         "@sinonjs/formatio": "^3.2.1",[m
+         "@sinonjs/text-encoding": "^0.7.1",[m
+         "just-extend": "^4.0.2",[m
+[31m-        "lolex": "^4.1.0",[m
+[32m+[m[32m        "lolex": "^5.0.1",[m
+         "path-to-regexp": "^1.7.0"[m
+       },[m
+       "dependencies": {[m
+         "lolex": {[m
+[31m-          "version": "4.2.0",[m
+[31m-          "resolved": "https://registry.npmjs.org/lolex/-/lolex-4.2.0.tgz",[m
+[31m-          "integrity": "sha512-gKO5uExCXvSm6zbF562EvM+rd1kQDnB9AZBbiQVzf1ZmdDpxUSvpnAaVOP83N/31mRK8Ml8/VE8DMvsAZQ+7wg=="[m
+[32m+[m[32m          "version": "5.1.2",[m
+[32m+[m[32m          "resolved": "https://registry.npmjs.org/lolex/-/lolex-5.1.2.tgz",[m
+[32m+[m[32m          "integrity": "sha512-h4hmjAvHTmd+25JSwrtTIuwbKdwg5NzZVRMLn9saij4SZaepCrTCxPr35H/3bjwfMJtN+t3CX8672UIkglz28A==",[m
+[32m+[m[32m          "requires": {[m
+[32m+[m[32m            "@sinonjs/commons": "^1.7.0"[m
+[32m+[m[32m          }[m
+         }[m
+       }[m
+     },[m
+[36m@@ -22611,9 +22635,9 @@[m
+       }[m
+     },[m
+     "snyk": {[m
+[31m-      "version": "1.258.1",[m
+[31m-      "resolved": "https://registry.npmjs.org/snyk/-/snyk-1.258.1.tgz",[m
+[31m-      "integrity": "sha512-+ofhHwi6L8sYEVrohNpYEWdKSa4mVGl8KXeKCfZhe5gERM2TBj9wlQZx7UKxsM9hjHv7iqeZlFp1HfPqcqtPhw==",[m
+[32m+[m[32m      "version": "1.266.0",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/snyk/-/snyk-1.266.0.tgz",[m
+[32m+[m[32m      "integrity": "sha512-JWrbaeC1/omAfE1/kYXKGb5Xzc7hOiKAt7wla+PlTDMs+nAMPvqNd8Bx2GVcCUl2KfoimzCmf2MsoChvvHXV3g==",[m
+       "requires": {[m
+         "@snyk/cli-interface": "2.3.0",[m
+         "@snyk/dep-graph": "1.13.1",[m
+[36m@@ -22644,14 +22668,14 @@[m
+         "snyk-gradle-plugin": "3.2.2",[m
+         "snyk-module": "1.9.1",[m
+         "snyk-mvn-plugin": "2.7.0",[m
+[31m-        "snyk-nodejs-lockfile-parser": "1.16.1",[m
+[31m-        "snyk-nuget-plugin": "1.13.1",[m
+[32m+[m[32m        "snyk-nodejs-lockfile-parser": "1.17.0",[m
+[32m+[m[32m        "snyk-nuget-plugin": "1.16.0",[m
+         "snyk-php-plugin": "1.7.0",[m
+         "snyk-policy": "1.13.5",[m
+[31m-        "snyk-python-plugin": "^1.14.0",[m
+[32m+[m[32m        "snyk-python-plugin": "1.16.0",[m
+         "snyk-resolve": "1.0.1",[m
+         "snyk-resolve-deps": "4.4.0",[m
+[31m-        "snyk-sbt-plugin": "2.9.1",[m
+[32m+[m[32m        "snyk-sbt-plugin": "2.9.2",[m
+         "snyk-tree": "^1.0.0",[m
+         "snyk-try-require": "1.3.1",[m
+         "source-map-support": "^0.5.11",[m
+[36m@@ -23104,25 +23128,33 @@[m
+       }[m
+     },[m
+     "snyk-nodejs-lockfile-p

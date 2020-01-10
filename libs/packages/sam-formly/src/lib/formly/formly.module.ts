@@ -11,7 +11,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { maxDateValidator, minDateValidator } from './formly.validators';
+import { AnimationWrapperComponent } from './wrappers/form-field.animation';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 // Validate the min length of the charecter
 export function minlengthValidationMessage(err, field) {
   return `Should have atleast ${field.templateOptions.minLength} characters`;
@@ -56,13 +58,20 @@ export function invalidDateFormatValidationMessage(err, field: FormlyFieldConfig
 export function maxValidationMessage(err, field) {
   return `This value should be less than ${field.templateOptions.max}`;
 }
+export function animationExtension(field: FormlyFieldConfig) {
+  if (field.wrappers && field.wrappers.includes('animation')) {
+    return;
+  }
 
+  field.wrappers = ['animation', ...(field.wrappers || [])];
+}
 export { maxDateValidator, minDateValidator } from './formly.validators';
 
 
 @NgModule({
   declarations: [
     FIELD_TYPE_COMPONENTS,
+    AnimationWrapperComponent,
   ],
   imports: [
     CommonModule,
@@ -90,7 +99,13 @@ export { maxDateValidator, minDateValidator } from './formly.validators';
       validators: [
         { name: 'minDate', validation: minDateValidator },
         { name: 'maxDate', validation: maxDateValidator }
-      ]
+      ],
+      wrappers: [
+        { name: 'animation', component: AnimationWrapperComponent },
+      ],
+      extensions: [
+        { name: 'animation', extension: { onPopulate: animationExtension } },
+      ],
     })
   ]
 })
