@@ -15,7 +15,8 @@ import { SdsAccordionItemComponent } from "./accordion-item.component";
 
 @Component({
   selector: "sds-accordion-item-header",
-  templateUrl: "accordion-item-header.component.html",
+  templateUrl: "./accordion-item-header.component.html",
+  styleUrls:['./accordion-item-header.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
@@ -32,7 +33,6 @@ import { SdsAccordionItemComponent } from "./accordion-item.component";
 })
 export class SdsAccordionItemHeaderComponent implements OnDestroy, FocusableOption {
   private _parentChangeSubscription = Subscription.EMPTY;
-
   constructor(
     @Host() public accordionItem: SdsAccordionItemComponent,
     private _element: ElementRef,
