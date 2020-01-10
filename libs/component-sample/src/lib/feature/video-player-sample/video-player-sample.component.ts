@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'gsa-sam-video-player-sample',
   templateUrl: './video-player-sample.component.html',
   styleUrls: ['./video-player-sample.component.scss']
 })
-export class VideoPlayerSampleComponent implements OnInit {
+export class VideoPlayerSampleComponent implements OnInit, AfterViewInit {
   source: string;
   height: string;
   width: string;
@@ -18,15 +18,21 @@ export class VideoPlayerSampleComponent implements OnInit {
 	debug: string;
 	preload: string;
 
-  constructor() { }
+  constructor() {
+
+   }
 
   ngOnInit() {
-    this.source = "http://www.html5videoplayer.net/videos/toystory.mp4";
+    this.source = "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4";
     this.height = "360";
     this.width = "640";
     this.id = "100";
     this.caption ="";
     this.poster = "";
+  }
+
+  ngAfterViewInit() {
+
   }
 
 }

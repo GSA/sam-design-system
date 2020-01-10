@@ -16,6 +16,7 @@ import { LocationStrategy, PathLocationStrategy } from '@angular/common';
   ],
   providers: [
     {provide: LocationStrategy, useClass: PathLocationStrategy},
+    {provide: Window}
   ],
   bootstrap: [AppComponent]
 })

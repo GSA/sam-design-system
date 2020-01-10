@@ -1,14 +1,14 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'sds-video-player',
   templateUrl: './video-player.component.html',
   styleUrls: ['./video-player.component.scss']
 })
-export class SdsVideoPlayerComponent implements OnInit {
+export class SdsVideoPlayerComponent implements OnInit, AfterViewInit {
 
   InitPxVideo: Object;
-
+  videoSource1: string
 
   @Input('videoSource') videoSource: string;
   @Input('videoHeight') videoHeight: string;
@@ -17,20 +17,18 @@ export class SdsVideoPlayerComponent implements OnInit {
   @Input('videoCaption') videoCaption: string;
   @Input('videoPoster') videoPoster: string;
 
-  constructor() {
+  constructor(private window: Window) {
+
+   }
+
+
+
+   ngAfterViewInit() {
 
    }
 
   ngOnInit() {
-    this.InitPxVideo = new Object();
-    this.InitPxVideo = {
-      "videoId": "myvid",
-      "captionsOnDefault": true,
-      "seekInterval": 20,
-      "videoTitle": "clips of stand-up comedy",
-      "debug": true
-    }
-    console.log(this.InitPxVideo);
+
   }
 
 
