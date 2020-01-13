@@ -4,7 +4,7 @@
           <div>
             <hr class="thin" />
               <search-result-list-sample-data [model]="item">
-                  <search-result-list-sample-data *ngIf="item.hasNewerData" [dualDisplay]="true" [model]="item"></search-result-list-sample-data>
+                  <dual-display *ngIf="item.hasNewerData"></dual-display>
               </search-result-list-sample-data>
             
           </div>
