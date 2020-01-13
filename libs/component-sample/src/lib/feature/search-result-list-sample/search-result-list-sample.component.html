@@ -1,8 +1,8 @@
 <sds-page class="condensed">
-  <sds-search-result-list [model]="items" [divider]=false>
+  <sds-search-result-list [model]="items" [divider]=true>
       <ng-template #resultContent let-item>
           <div>
-            <hr class="thin" />
+            <!-- <hr class="thin" /> -->
               <search-result-list-sample-data [model]="item">
                   <dual-display *ngIf="item.hasNewerData"></dual-display>
               </search-result-list-sample-data>
