@@ -16,6 +16,8 @@ export class SdsVideoPlayerComponent implements OnInit, AfterViewInit {
   @Input('videoPoster') videoPoster: string;
   @Input('videoSeekInterval') videoSeekInterval: number;
   @Input('videoDebug') videoDebug: boolean;
+  @Input('videoTitle') videoTitle: string;
+
 
   constructor() {
   }
@@ -25,7 +27,7 @@ export class SdsVideoPlayerComponent implements OnInit, AfterViewInit {
       videoId: this.videoPlayerId,
       captionsOnDefault: true,
       seekInterval: this.videoSeekInterval,
-      videoTitle: 'clips of stand-up',
+      videoTitle: this.videoTitle,
       debug: this.videoDebug
     });
   }

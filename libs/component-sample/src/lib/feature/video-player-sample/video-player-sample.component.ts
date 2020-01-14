@@ -16,9 +16,10 @@ export class VideoPlayerSampleComponent implements OnInit, AfterViewInit {
 	fallback: string;
 	seekInterval: number;
 	debug: boolean;
-	preload: string;
+  preload: string;
+  title: string;
 
-  constructor(private window: Window) {
+  constructor() {
 
    }
 
@@ -31,6 +32,7 @@ export class VideoPlayerSampleComponent implements OnInit, AfterViewInit {
     this.poster = "";
     this.seekInterval = 30;
     this.debug = true;
+    this.title = 'clips of stand-up Video';
   }
 
   ngAfterViewInit() {
