@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 @Component({
-  selector: 'gsa-sam-video-player-sample',
+  selector: "gsa-sam-video-player-sample",
   templateUrl: './video-player-sample.component.html',
   styleUrls: ['./video-player-sample.component.scss']
 })
@@ -15,7 +15,7 @@ export class VideoPlayerSampleComponent implements OnInit, AfterViewInit {
   id: string;
 	fallback: string;
 	seekInterval: number;
-	debug: string;
+	debug: boolean;
 	preload: string;
 
   constructor(private window: Window) {
@@ -29,6 +29,8 @@ export class VideoPlayerSampleComponent implements OnInit, AfterViewInit {
     this.id = "sampleVid1";
     this.caption ="";
     this.poster = "";
+    this.seekInterval = 30;
+    this.debug = true;
   }
 
   ngAfterViewInit() {

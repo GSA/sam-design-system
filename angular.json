@@ -102,7 +102,10 @@
               "apps/sam-design-system-site/src/favicon.ico",
               "apps/sam-design-system-site/src/assets"
             ],
-            "styles": ["apps/sam-design-system-site/src/styles.scss"]
+            "styles": [
+              "apps/sam-design-system-site/src/styles.scss",
+              "libs/packages/components/src/lib/video-player/css/px-video.css"
+            ]
           },
           "configurations": {
             "production": {
@@ -156,7 +159,6 @@
             "tsConfig": "apps/sam-design-system-site/tsconfig.spec.json",
             "karmaConfig": "apps/sam-design-system-site/karma.conf.js",
             "styles": [
-              "./libs/packages/components/src/lib/video-player/css/px-video.css",
               "apps/sam-design-system-site/src/styles.scss"
             ],
             "scripts": [
