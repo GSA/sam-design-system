@@ -1,4 +1,4 @@
- <div class="px-video-container" id="{{myvid}}">
+ <div class="px-video-container" [id]="videoPlayerId" [style.width.px]="videoWidth" >
   <div class="px-video-img-captions-container">
       <div class="px-video-captions hide" aria-hidden="true"></div>
       <video width="{{videoWidth}}" height="{{videoHeight}}" poster="{{videoPoster}}" controls>
@@ -8,7 +8,7 @@
           <track kind="captions" label="English captions" src="{{videoCaption}}" srclang="en" default />
           <div>
               <a href="{{videoSource}}">
-                  <img src="http://images.crestock.com/150000-159999/151031-xs.jpg" width="640" height="360" alt="download video" />
+                  <img src="http://images.crestock.com/150000-159999/151031-xs.jpg" width="{{videoWidth}}" height="{{videoHeight}}" alt="download video" />
               </a>
           </div>
       </video>

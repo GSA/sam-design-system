@@ -26,7 +26,7 @@ export class VideoPlayerSampleComponent implements OnInit, AfterViewInit {
     this.source = "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4";
     this.height = "360";
     this.width = "640";
-    this.id = "100";
+    this.id = "sampleVid1";
     this.caption ="";
     this.poster = "";
   }
