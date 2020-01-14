@@ -36,8 +36,8 @@ import { ActionsMenuSampleModule } from './feature/actions-menu-sample/actions-m
 
 import { SearchSampleModule } from './feature/search-sample/search-sample.module';
 import { SearchSampleComponent } from './feature/search-sample/search-sample.component';
-import { VideoPlayerSampleModule } from './feature/video-player-sample/video-player-sample.module';
 import { VideoPlayerSampleComponent } from './feature/video-player-sample/video-player-sample.component';
+import { VideoPlayerSampleModule } from './feature/video-player-sample/video-player-sample.module';
 
 
 export const ROUTES: Routes = [

@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 @Component({
-  selector: "gsa-sam-video-player-sample",
+  selector: 'gsa-sam-video-player-sample',
   templateUrl: './video-player-sample.component.html',
   styleUrls: ['./video-player-sample.component.scss']
 })
@@ -15,24 +15,20 @@ export class VideoPlayerSampleComponent implements OnInit, AfterViewInit {
   id: string;
 	fallback: string;
 	seekInterval: number;
-	debug: boolean;
-  preload: string;
-  title: string;
+	debug: string;
+	preload: string;
 
-  constructor() {
+  constructor(private window: Window) {
 
    }
 
   ngOnInit() {
-    this.source = "http://media.w3.org/2010/05/sintel/trailer.mp4";
+    this.source = "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4";
     this.height = "360";
     this.width = "640";
     this.id = "sampleVid1";
     this.caption ="";
-    this.poster = "https://images.all-free-download.com/images/graphiclarge/poppy_flower_nature_219157.jpg";
-    this.seekInterval = 30;
-    this.debug = true;
-    this.title = 'clips of stand-up Video';
+    this.poster = "";
   }
 
   ngAfterViewInit() {
