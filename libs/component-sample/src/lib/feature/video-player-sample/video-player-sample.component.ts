@@ -24,12 +24,12 @@ export class VideoPlayerSampleComponent implements OnInit, AfterViewInit {
    }
 
   ngOnInit() {
-    this.source = "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4";
+    this.source = "http://media.w3.org/2010/05/sintel/trailer.mp4";
     this.height = "360";
     this.width = "640";
     this.id = "sampleVid1";
     this.caption ="";
-    this.poster = "";
+    this.poster = "https://images.all-free-download.com/images/graphiclarge/poppy_flower_nature_219157.jpg";
     this.seekInterval = 30;
     this.debug = true;
     this.title = 'clips of stand-up Video';
