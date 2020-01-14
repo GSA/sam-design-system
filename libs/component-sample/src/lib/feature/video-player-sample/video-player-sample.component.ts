@@ -28,7 +28,7 @@ export class VideoPlayerSampleComponent implements OnInit, AfterViewInit {
     this.width = "640";
     this.id = "sampleVid1";
     this.caption ="";
-    this.poster = "";
+    this.poster = "http://www.kodaikanalholidays.com/img/packages/Ooty3Nights4DaysHolidayPackage.jpg";
   }
 
   ngAfterViewInit() {
