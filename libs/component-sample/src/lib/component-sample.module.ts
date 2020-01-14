@@ -23,6 +23,9 @@ import { SideMenuFiltersSampleModule } from './feature/side-menu-filters-sample/
 import { SideMenuFiltersSampleComponent } from './feature/side-menu-filters-sample/side-menu-filters-sample.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
+import { PopupSampleModule } from './feature/popup-sample/popup-sample.module';
+import { PopupSampleComponent } from './feature/popup-sample/popup-sample.component';
+
 
 import { SubheaderSampleComponent } from './feature/subheader-sample/subheader-sample.component';
 import { SubheaderSampleModule } from './feature/subheader-sample/subheader-sample.module';
@@ -42,6 +45,7 @@ export const ROUTES: Routes = [
   { path: 'pagination', component: PaginationSampleComponent },
   { path: 'toolbar', component: ToolbarSampleComponent },
   { path: 'icon', component: IconSampleComponent },
+  { path: 'popup', component: PopupSampleComponent },
   { path: 'sideNav', component: SideNavigationSampleComponent },
   { path: 'sideFilters', component: SideMenuFiltersSampleComponent },
   { path: 'searchResultList', component: SearchResultListSampleComponent },
@@ -65,6 +69,7 @@ export const ROUTES: Routes = [
     PaginationSampleModule,
     ToolbarSampleModule,
     IconSampleModule,
+    PopupSampleModule,
     SideNavigationSampleModule,
     SideMenuFiltersSampleModule,
     SearchResultListSampleModule,

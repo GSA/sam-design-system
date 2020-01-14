@@ -1,16 +1,19 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 
 @Component({
   selector: 'sds-popup',
-  templateUrl: './popup.component.html',
-  styleUrls:['./popup.component.scss']
+  templateUrl: './popup.component.html'
 })
-export class SdsPopupComponent  {
+export class SdsPopupComponent implements OnInit {
+
   @Input() model;
   @Input() size: string;
+  @Input('icon') faicon: string;
   @Output() clicks = new EventEmitter<string>();
   constructor() { }
 
+  ngOnInit() {
   
+  }
 
 }
