@@ -1,0 +1,17 @@
+
+<div class="grid-container">
+  <div class="tablet:grid-col-12">
+    <h1>{{ component | titlecase }}</h1>
+  </div>
+  <div class="grid-row border-bottom">
+    <div *ngIf="tabs.examples" class="tablet:grid-col-auto"><button class="usa-button radius-bottom-0" [routerLink]="['examples']" [routerLinkActive]="['usa-button--active']">Examples</button></div>
+    <div *ngIf="tabs.api" class="tablet:grid-col-auto"><button class="usa-button radius-bottom-0" [routerLink]="['api']" [routerLinkActive]="['usa-button--active']">API</button></div>
+    <div *ngIf="tabs.source" class="tablet:grid-col-auto"><button class="usa-button radius-bottom-0" [routerLink]="['source']" [routerLinkActive]="['usa-button--active']">Source</button></div>
+    <div *ngIf="tabs.template" class="tablet:grid-col-auto"><button class="usa-button radius-bottom-0" [routerLink]="['template']" [routerLinkActive]="['usa-button--active']">Template</button></div>
+  </div>
+  <div class="grid-row">
+    <div class="tablet:grid-col-12">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

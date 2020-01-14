@@ -146,6 +146,11 @@ $cdk-overlay-dark-backdrop-background: rgba(14, 52, 88, 0.7);
 
 // Demo pages only
 // DO NOT REUSE
+
+code::before, code::after {
+  content: '';
+}
+
 .header-styles .icon-layers-counter {
   height: 1em;
   min-width: 1em;
