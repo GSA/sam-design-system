@@ -4,7 +4,7 @@
 
 <div class="grid-row">
   <div class="grid-col flex-8">
-    <div class="usa-logo float-left">
+    <div class="usa-logo float-left margin-left-2">
       <img src="assets/img/logo-sam.svg" width="140" />
       <a href="/" title="Home" aria-label="Home">Design System Components</a>
     </div>
@@ -28,9 +28,8 @@
     <aside class="desktop:grid-col-3 border-base-light border-right-1px">
       <nav class="margin-bottom-2 margin-top-3">
         <ul class="usa-list usa-list--unstyled padding-y-05">
-          <li><a class="usa-link font-sans-sm" href="#">Overview</a></li>
-          <li><a class="usa-link font-sans-sm" href="#">Getting Started</a></li>
-          <li><a class="usa-link font-sans-sm" href="#">Contributing</a></li>
+          <li><a class="usa-link font-sans-sm" [routerLink]="['documentation/overview']" routerLinkActive="usa-current">Overview</a></li>
+          <li><a class="usa-link font-sans-sm" [routerLink]="['documentation/introduction']" routerLinkActive="usa-current">Getting Started</a></li>
           <li class="margin-y-2">
             <a class="nav-heading">Components</a>
             <ul class="usa-sidenav">
