@@ -1,10 +1,10 @@
 
 <div class="sds-popup">
-  <fa-icon [fixedWidth]="true" icon="{{faicon}}" size="2x"></fa-icon>
-  <div class="sds-popup__content">
+  <fa-icon [fixedWidth]="true" [icon]="faicon" [size]="iconsize"></fa-icon>
+  <div class="sds-popup__content shadow-3">
     <div class="display-flex flex-column flex-align-end margin-right-05">
       <div>
-        <fa-icon [fixedWidth]="true" [icon]="faicon" size="2x" class="popup__inner-icon"></fa-icon>
+        <fa-icon [fixedWidth]="true" [icon]="faicon" [size]="iconsize" class="popup__inner-icon"></fa-icon>
       </div>
     </div>
     <ng-content></ng-content>

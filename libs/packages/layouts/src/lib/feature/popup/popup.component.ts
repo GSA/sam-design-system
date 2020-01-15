@@ -6,14 +6,11 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 })
 export class SdsPopupComponent implements OnInit {
 
-  @Input() model;
-  @Input() size: string;
-  @Input('icon') faicon: string;
-  @Output() clicks = new EventEmitter<string>();
+  @Input() faicon: any = ['sds','information-circle'];
+  @Input() iconsize: string = '2x';
   constructor() { }
-
   ngOnInit() {
-  
+
   }
 
 }

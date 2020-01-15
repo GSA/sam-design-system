@@ -1,3 +1,28 @@
-<sds-popup 
-[icon]="faicon">
-Content</sds-popup>
+<hr class="thin">
+
+<div class="grid-container">
+  <div class="grid-row">
+    <div class="grid-col">Default icon</div>
+    <div class="grid-col">
+        <sds-popup>
+            <ul>
+              <li>Lorem ipsum sit amet</li>
+              <li>Lorem ipsum</li>
+            </ul>
+          </sds-popup>
+    </div>
+  </div>
+  <hr class="thin">
+  <div class="grid-row">
+    <div class="grid-col">Custom icon</div>
+    <div class="grid-col">
+        <sds-popup [faicon]="['fa', 'exclamation-triangle']" >
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras laoreet faucibus arcu id bibendum. Mauris eleifend massa purus, eu volutpat erat placerat egestas.</p>
+          </sds-popup>
+    </div>
+  </div>
+</div>
+
+
+
+
