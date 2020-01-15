@@ -2,6 +2,13 @@ import { Component, NgZone } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
+interface tabsDesc {
+  examples: boolean;
+  api: boolean;
+  source: boolean;
+  template: boolean;
+}
+
 @Component({
   selector: 'docs-component-wrapper',
   templateUrl: 'component-wrapper.component.html'
@@ -10,7 +17,12 @@ import { filter } from 'rxjs/operators';
 export class ComponentWrapperComponent {
   activeTab = 'examples';
   component: string;
-  tabs: Object = {};
+  tabs: tabsDesc = {
+    examples: false,
+    api: false,
+    source: false,
+    template: false
+  }
 
   constructor(public route: ActivatedRoute, private _router: Router, ngZone: NgZone) {
     this._router.events.pipe(

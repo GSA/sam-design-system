@@ -2,8 +2,17 @@ import {Component} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import apiDocs from 'libs/documentation/src/documentation';
 
+interface apiDesc {
+  sourceCode: string;
+  fileURI: string;
+}
+
 export function getSource(component) {
-  const api:any = Object;
+  const api:apiDesc = {
+    sourceCode: "",
+    fileURI: ""
+  };
+
   Object.values(apiDocs.components)
     .filter(entity => entity.name.toUpperCase().startsWith(`SDS${component}COMPONENT`))
     .forEach(entity => {
@@ -24,7 +33,7 @@ export function getSource(component) {
 })
 export class DocumentationSourcePage {
   component: string;
-  api: Object[];
+  api: apiDesc;
 
   sourceCode: string;
   language = 'javascript';
