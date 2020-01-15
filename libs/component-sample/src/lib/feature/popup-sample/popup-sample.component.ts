@@ -10,7 +10,6 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 export class PopupSampleComponent implements OnInit {
   faicon: string;
-  iconsize: string;
   constructor() { }
 
   ngOnInit() {

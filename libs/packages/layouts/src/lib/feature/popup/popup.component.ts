@@ -6,8 +6,8 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 })
 export class SdsPopupComponent implements OnInit {
 
-  @Input() faicon: any = ['sds','information-circle'];
-  @Input() iconsize: string = '2x';
+  @Input() faicon: any = ['sds', 'information-circle'];
+
   constructor() { }
   ngOnInit() {
 
