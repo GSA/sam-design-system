@@ -42,8 +42,8 @@
 }
 .px-video-img-captions-container {
   position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
+  /* padding-bottom: 56.25%;
+  height: 0; */
 }
 .px-video {
   position: absolute;

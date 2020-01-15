@@ -120,12 +120,12 @@ function InitPxVideo(options) {
   // launch fullscreen
   function launchFullScreen(elem) {
     if (!elem.fullscreenElement &&    // alternative standard method
-        !elem.mozFullScreenElement && !elem.webkitFullscreenElement && !elem.msFullscreenElement ) {  // current working methods        
+        !elem.mozFullScreenElement && !elem.webkitFullscreenElement && !elem.msFullscreenElement ) {  // current working methods
       var requestFullScreen = elem.requestFullscreen || elem.msRequestFullscreen || elem.mozRequestFullScreen || elem.webkitRequestFullscreen;
       requestFullScreen.call(elem);
     }
   }
- 
+
   // change styles of fullscreen accordingly
   function fullScreenStyles() {
     if (document.fullscreen || document.mozFullScreen || document.webkitIsFullScreen || document.msFullscreenElement) {
@@ -134,19 +134,19 @@ function InitPxVideo(options) {
       obj.container.setAttribute("style", "width: 100%; height: 100%;");
       obj.controls.className = "px-video-controls js-fullscreen-controls";
       obj.captionsContainer.className = "px-video-captions js-fullscreen-captions";
-      obj.movie.setAttribute('width', '100%'); 
-      obj.movie.setAttribute('height', '100%'); 
+      obj.movie.setAttribute('width', '100%');
+      obj.movie.setAttribute('height', '100%');
     } else {
       obj.fullScreenBtn.checked = false;
     // revert back to default styles
       // obj.container.setAttribute("style", "width:" + obj.movieWidth + "px");
-      obj.controls.className = "px-video-controls"; 
+      obj.controls.className = "px-video-controls";
       obj.captionsContainer.className = "px-video-captions";
-      obj.movie.setAttribute('width', obj.movieWidth); 
+      obj.movie.setAttribute('width', obj.movieWidth);
       obj.movie.setAttribute('height', obj.movieHeight);
     }
   }
- 
+
   // exit fullscreen
   function exitFullScreen() {
     // get appropriate vendor prefix and then call it with respect to the document
@@ -401,7 +401,7 @@ function InitPxVideo(options) {
       obj.movie.muted = true;
     }
   }, false);
- 
+
   obj.btnMute.onkeypress = function(e) {
     if(e.keyCode == 13){ // enter key
       e.preventDefault();
@@ -454,7 +454,7 @@ function InitPxVideo(options) {
   });
 
   // Toggle display of fullscreen button
-  obj.fullScreenBtn.addEventListener('click', function() { 
+  obj.fullScreenBtn.addEventListener('click', function() {
     if (this.checked) {
       launchFullScreen(obj.container);
     } else {
@@ -485,7 +485,7 @@ function InitPxVideo(options) {
   // ***
 
   // Toggle display of captions via captions button
-  obj.captionsBtn.addEventListener('click', function() { 
+  obj.captionsBtn.addEventListener('click', function() {
     if (this.checked) {
       obj.captionsContainer.className = "px-video-captions show";
     } else {
@@ -523,10 +523,10 @@ function InitPxVideo(options) {
   else {
 
     // Can't use native captioning in the follow browsers:
-    if ((obj.browserName==="IE" && obj.browserMajorVersion===10) || 
-        (obj.browserName==="IE" && obj.browserMajorVersion===11) || 
-        (obj.browserName==="Firefox" && obj.browserMajorVersion>=31) || 
-        (obj.browserName==="Chrome" && obj.browserMajorVersion===43) || 
+    if ((obj.browserName==="IE" && obj.browserMajorVersion===10) ||
+        (obj.browserName==="IE" && obj.browserMajorVersion===11) ||
+        (obj.browserName==="Firefox" && obj.browserMajorVersion>=31) ||
+        (obj.browserName==="Chrome" && obj.browserMajorVersion===43) ||
         (obj.browserName==="Safari" && obj.browserMajorVersion>=7)) {
       if (options.debug) {
         console.log("Detected browser unable to play HTML5 captions; using custom captions");
@@ -648,15 +648,15 @@ function InitPxVideo(options) {
   document.addEventListener("fullscreenchange", function () {
     fullScreenStyles();
   }, false);
-   
+
   document.addEventListener("mozfullscreenchange", function () {
     fullScreenStyles();
   }, false);
-   
+
   document.addEventListener("webkitfullscreenchange", function () {
     fullScreenStyles();
   }, false);
-   
+
   document.addEventListener("msfullscreenchange", function () {
     fullScreenStyles();
   }, false);

@@ -1,5 +1,5 @@
  <div class="px-video-container" [id]="videoPlayerId" [style.width.px]="videoWidth" >
-  <div class="px-video-img-captions-container">
+  <div class="px-video-img-captions-container" >
       <div class="px-video-captions hide" aria-hidden="true"></div>
       <video width="{{videoWidth}}" height="{{videoHeight}}" poster="{{videoPoster}}" controls>
         <source src="{{videoSource}}" type="video/mp4" />
@@ -13,7 +13,7 @@
           </div>
       </video>
   </div>
-  <div class="px-video-controls"></div>
+  <div class="px-video-controls" [style.width.px]="videoWidth"></div>
 </div>
 
 <!-- <div class="px-video-container" id="myvid">

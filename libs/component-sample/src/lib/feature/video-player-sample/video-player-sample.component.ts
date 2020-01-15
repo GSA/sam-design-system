@@ -27,7 +27,7 @@ export class VideoPlayerSampleComponent implements OnInit, AfterViewInit {
     this.height = "360";
     this.width = "640";
     this.id = "sampleVid1";
-    this.caption ="";
+    this.caption ="http://www.storiesinflight.com/js_videosub/jellies.srt";
     this.poster = "http://www.kodaikanalholidays.com/img/packages/Ooty3Nights4DaysHolidayPackage.jpg";
   }
 
