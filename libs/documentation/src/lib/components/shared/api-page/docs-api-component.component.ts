@@ -1,8 +1,20 @@
 import {Component, ChangeDetectionStrategy, Input} from '@angular/core';
 import apiDocs from 'libs/documentation/src/documentation';
 
+interface apiDesc {
+  inputs: any;
+  outputs: any;
+  methods: any;
+  properties: any;
+}
+
 export function getAPI(component) {
-  const api:any = Object;
+  const api:apiDesc = {
+    inputs: {},
+    outputs: {},
+    methods: {},
+    properties: {},
+  };
   Object.values(apiDocs.components)
     .filter(entity => entity.name.startsWith(`${component}`))
     .forEach(entity => {
@@ -32,7 +44,7 @@ export function getAPI(component) {
   ]
 })
 export class DocumentationAPIComponent {
-  api: Object[];
+  api: apiDesc;
   constructor() {}
 
   getArgs(method) {
