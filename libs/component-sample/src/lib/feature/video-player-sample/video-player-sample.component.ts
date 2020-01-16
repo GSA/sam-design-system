@@ -13,7 +13,7 @@ export class VideoPlayerSampleComponent implements OnInit, AfterViewInit {
   poster: string;
 	controls: string;
   id: string;
-	fallback: string;
+
 	seekInterval: number;
 	debug: boolean;
 	preload: string;
@@ -23,12 +23,12 @@ export class VideoPlayerSampleComponent implements OnInit, AfterViewInit {
    }
 
   ngOnInit() {
-    // this.source = "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4";
-    this.source = "./media/jellies.mp4";
+    // this.source = "https://thepaciellogroup.github.io/AT-browser-tests/video/ElephantsDream.mp4";
+    this.source = "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4";
     this.height = "360";
     this.width = "640";
     this.id = "sampleVid1";
-    this.caption ="http://www.storiesinflight.com/js_videosub/jellies.srt";
+    this.caption ="";
     this.poster = "http://www.kodaikanalholidays.com/img/packages/Ooty3Nights4DaysHolidayPackage.jpg";
     this.seekInterval = 20;
     this.debug = true;
