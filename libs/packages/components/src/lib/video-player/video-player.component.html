@@ -1,19 +1,20 @@
  <div class="px-video-container" [id]="videoPlayerId" [style.width.px]="videoWidth" >
   <div class="px-video-img-captions-container" >
       <div class="px-video-captions hide" aria-hidden="true"></div>
-      <video width="{{videoWidth}}" height="{{videoHeight}}" poster="{{videoPoster}}" controls>
-        <source src="{{videoSource}}" type="video/mp4" />
-           <!-- <source src="http://www.html5videoplayer.net/videos/toystory.mp4" type="video/mp4" /> --> -->
-          <!-- <source src="./src/Volcano_Sample.webm" type="video/webm" /> -->
-          <track kind="captions" label="English captions" src="./src/captionsVideo.vtt" srclang="en" default />
+      <video width="{{videoWidth}}" height="{{videoHeight}}" poster="{{videoPoster}}" controls preload="{{videoPreload}}">
+           <!-- if Safari/Chrome-->
+          <source src="{{videoSourceMp4}}" type="video/mp4" />
+          <!-- If Firefox/Opera/Chrome/IE -->
+          <source src="{{videoSourceWebm}}" type="video/webm" />
+          <track kind="subtitles" kind="captions" label="English captions" src="{{VvtFileURL}}" srclang="en" default />
           <div>
-              <a href="{{videoSource}}">
+              <a href="{{videoSourceMp4}}">
                   <img src="http://images.crestock.com/150000-159999/151031-xs.jpg" width="{{videoWidth}}" height="{{videoHeight}}" alt="download video" />
               </a>
           </div>
       </video>
   </div>
-  <div class="px-video-controls" [style.width.px]="videoWidth"></div>
+  <div class="px-video-controls"></div>
 </div>
 
 <!-- <div class="px-video-container" id="myvid">

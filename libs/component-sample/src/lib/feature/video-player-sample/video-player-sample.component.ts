@@ -1,12 +1,14 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'gsa-sam-video-player-sample',
   templateUrl: './video-player-sample.component.html',
   styleUrls: ['./video-player-sample.component.scss']
 })
-export class VideoPlayerSampleComponent implements OnInit, AfterViewInit {
-  source: string;
+
+export class VideoPlayerSampleComponent implements OnInit {
+  sourceWebm: string;
+  sourceMp4: string;
   height: string;
   width: string;
 	caption: string;
@@ -18,13 +20,14 @@ export class VideoPlayerSampleComponent implements OnInit, AfterViewInit {
 	debug: boolean;
 	preload: string;
 
-  constructor(private window: Window) {
+  constructor() {
 
    }
 
   ngOnInit() {
-    // this.source = "https://thepaciellogroup.github.io/AT-browser-tests/video/ElephantsDream.mp4";
-    this.source = "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4";
+    this.sourceWebm = "http://techslides.com/demos/sample-videos/small.webm";
+    // this.sourceMp4 = "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4";
+    this.sourceMp4 = "https://media.w3.org/2010/05/sintel/trailer.mp4";
     this.height = "360";
     this.width = "640";
     this.id = "sampleVid1";
@@ -32,10 +35,8 @@ export class VideoPlayerSampleComponent implements OnInit, AfterViewInit {
     this.poster = "http://www.kodaikanalholidays.com/img/packages/Ooty3Nights4DaysHolidayPackage.jpg";
     this.seekInterval = 20;
     this.debug = true;
+    this.preload = "none";
   }
 
-  ngAfterViewInit() {
-
-  }
 
 }

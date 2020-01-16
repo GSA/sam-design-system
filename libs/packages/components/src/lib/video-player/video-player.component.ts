@@ -7,8 +7,11 @@ import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 })
 export class SdsVideoPlayerComponent implements OnInit, AfterViewInit {
   videoSource1: string;
+  VvtFileURL: string;
+  title = 'Video Player';
 
-  @Input('videoSource') videoSource: string;
+  @Input('videoSourceWebm') videoSourceWebm: string;
+  @Input('videoSourceMp4') videoSourceMp4: string;
   @Input('videoHeight') videoHeight: string;
   @Input('videoWidth') videoWidth: string;
   @Input('videoPlayerId') videoPlayerId: string;
@@ -16,6 +19,8 @@ export class SdsVideoPlayerComponent implements OnInit, AfterViewInit {
   @Input('videoPoster') videoPoster: string;
   @Input('videoSeekInterval') videoSeekInterval: number;
   @Input('videoDebug') videoDebug: boolean;
+  @Input('videoPreload') videoPreload: string;
+
 
   constructor() {
   }
@@ -30,7 +35,9 @@ export class SdsVideoPlayerComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.VvtFileURL = '../../../../../../apps/sam-design-system-site/src/assets/src/captionsVideo.vtt';
+  }
 
   // Initialize
 }
