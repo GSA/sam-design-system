@@ -36,7 +36,8 @@ export class SdsVideoPlayerComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.VvtFileURL = '../../../../../../apps/sam-design-system-site/src/assets/src/captionsVideo.vtt';
+    // this.VvtFileURL = '../../../../../../apps/sam-design-system-site/src/assets/src/captionsVideo.vtt';
+    this.VvtFileURL = '';
   }
 
   // Initialize

@@ -25,7 +25,7 @@ export class VideoPlayerSampleComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.sourceWebm = "http://techslides.com/demos/sample-videos/small.webm";
+    // this.sourceWebm = "http://techslides.com/demos/sample-videos/small.webm";
     // this.sourceMp4 = "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4";
     this.sourceMp4 = "https://media.w3.org/2010/05/sintel/trailer.mp4";
     this.height = "360";
