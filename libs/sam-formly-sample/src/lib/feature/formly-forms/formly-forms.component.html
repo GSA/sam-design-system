@@ -1,12 +1,17 @@
 <div class="grid-container">
-  <div class="grid-row">
-    <div class="desktop:grid-col-6 tablet:grid-col-8 mobile:grid-col-12" >
+  <div class="grid-row grip-gap">
+    <div class="tablet:grid-col-6 mobile-lg:grid-col-12" >
       <form [formGroup]="form" (ngSubmit)="submit()">
         <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
       </form>
+      <!-- <div class="sds-link-wrapper"  id="divShow">
+        <p>
+          <a class="sds-link sds-color-text-hover" (click)="showExtension()"> Show Extension </a>
+        </p>
+      </div> -->
       <div class="sam-example-pagination">
         <h4>Filter Model:</h4>
       </div>
-      </div>
-     </div>
- </div>
+    </div>
+  </div>
+</div>

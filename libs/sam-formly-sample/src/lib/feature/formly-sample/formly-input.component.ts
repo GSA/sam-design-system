@@ -8,7 +8,7 @@ import { SampleAutocompleteData } from './services/autocomplete-sample.data';
 
 
 @Component({
-  selector: 'formly-input',
+  selector: 'sds-formly-input',
   templateUrl: './formly-input.component.html',
   providers: [AutocompleteSampleDataService]
 })

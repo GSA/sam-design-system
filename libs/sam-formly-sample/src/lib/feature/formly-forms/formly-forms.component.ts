@@ -1,21 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
+import { faClipboardCheck } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
-  selector: 'gsa-sam-formly-forms',
+  selector: 'sds-formly-forms',
   templateUrl: './formly-forms.component.html',
  
 })
 export class FormlyFormsComponent{
 
   form = new FormGroup({});
-
   model: any = {};
-
-  // options: FormlyFormOptions = {};
-
   fields: FormlyFieldConfig[] = [      
     {      
       fieldGroupClassName: 'grid-row',
@@ -232,7 +229,7 @@ export class FormlyFormsComponent{
       fieldGroupClassName: 'grid-row grid-gap-1',
       fieldGroup: [
         {
-          className: 'grid-col-3',
+          className: 'tablet:grid-col-3',
           type:'input',
           key: 'Code',
           templateOptions: {
@@ -244,7 +241,7 @@ export class FormlyFormsComponent{
           },
         },
         {
-          className: 'grid-col-6',
+          className: 'tablet:grid-col-6',
           type:'input',
           key: 'phone',
           templateOptions: {
@@ -256,23 +253,107 @@ export class FormlyFormsComponent{
           },
         },
         {
-          className: 'grid-col-3',
-          type:'input',
+          className: 'grid-col-6 tablet:grid-col-2 tablet:display-block mobile-lg:display-none' ,
+          type: 'input',
           key: 'extension',
           templateOptions: {
-            label:'Extension',
+            label: 'Extension 1',
             type: 'number',
             max: 99999,
             min: 0,
             pattern: '\\d{3}',
-          },
-        },        
+            placeholder: 'ex-1234'
+          }, 
+        },
+        {
+          className: 'grid-col-6 tablet:grid-col-2 display-block tablet:display-none' ,
+          type: 'input',
+          key: 'extension',
+          templateOptions: {
+            label: 'Extension 2',
+            type: 'number',
+            max: 99999,
+            min: 0,
+            pattern: '\\d{3}',
+            placeholder: 'ex-1234'
+          },         
+        },
+        // {
+        //   className: 'display-block grid-col-3',
+        //   key: 'show',
+        //   template: "<a class='usa-link' href='javascript:void(0)'>Show Extension</a>",
+        // },
+        // {
+        //   className: 'display-none mobile-lg:display-block grid-col-3',
+        //   type: 'input',
+        //   key: 'extension2',
+        //   templateOptions: {
+        //     label: 'Extension',
+        //     type: 'number',
+        //     max: 99999,
+        //     min: 0,
+        //     pattern: '\\d{3}',
+        //     placeholder: 'ex-1234'
+        //   },          
+        // }
+        // {
+        //   className: 'tablet:grid-col-3',
+        //   type:'input',
+        //   key: 'extension',
+        //   templateOptions: {
+        //     label:'Extension',
+        //     type: 'number',
+        //     max: 99999,
+        //     min: 0,
+        //     pattern: '\\d{3}',
+        //     placeholder: 'ex-1234',
+        //   },
+        //   hideExpression: function(){
+        //                                 if(window.window.innerWidth < 1225){
+        //                                   document.getElementById("divShow").style.display="block";
+        //                                   return true;
+        //                                   }
+        //                                 else {
+        //                                   document.getElementById("divShow").innerHTML="";
+        //                                   return false;}
+        //                                 },
+        // },
+        {      
+          fieldGroupClassName: 'grid-row',
+          fieldGroup: [
+            {
+              template: "<a class='usa-link' href='javascript:void(0)'>Some extension</a>"
+            },
+          ]
+        },
+        
+        // {
+        //   className: 'grid-col-3',
+        //   type:'input',
+        //   key: 'extension',
+        //   templateOptions: {
+        //     label:'Extension',
+        //     type: 'number',
+        //     max: 99999,
+        //     min: 0,
+        //     pattern: '\\d{3}',
+        //     placeholder: 'ex-1234',
+        //   },
+        //   hideExpression: (model) => !this.model.showExtensionInput,
+        // },
+             
       ]
     },
   ]
 
   submit() {
     alert(JSON.stringify(this.model));
+  }
+
+  showExtension()
+  {
+    document.getElementById("divShow").innerHTML="";
+    this.model.showExtensionInput="show";
   }
 
 }
