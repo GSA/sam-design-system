@@ -8,7 +8,6 @@ import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 export class SdsVideoPlayerComponent implements OnInit, AfterViewInit {
   videoSource1: string;
   VvtFileURL: string;
-  title = 'Video Player';
 
   @Input('videoSourceWebm') videoSourceWebm: string;
   @Input('videoSourceMp4') videoSourceMp4: string;
