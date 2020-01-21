@@ -246,6 +246,18 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
     }
     ]
   };
+  model2: SideNavigationModel = {
+    navigationLinks: [{
+      text: 'Parent 1', id: 'linkp1', route: '/component/sideNav', queryParams: { 'item': 'Parent 1' }, mode: NavigationMode.INTERNAL, children: [
+        { text: 'Child 1 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Child 1 of Parent 1' }, id: 'linkc1p1', mode: NavigationMode.INTERNAL },
+        // {
+        //   text: 'Child 2 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Child 2 of Parent 1' }, id: 'linkc2p1', mode: NavigationMode.INTERNAL, children: [
+        //     { text: 'Grandchild 1 of Child 2 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Grandchild 1 of Child 2 of Parent 1' }, id: 'linkgc1c2p1', mode: NavigationMode.INTERNAL }]
+        // }
+      ]
+    }
+    ]
+  };
   private findItemByQueryString(linkList: NavigationLink[]) {
     for (let i = 0; i < linkList.length; i++) {
       let item = linkList[i];
