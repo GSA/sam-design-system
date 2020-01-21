@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormlyConditionalComponent } from './formly-conditional.component';
-import { ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
 import { SdsFiltersModule } from '@sam-design-system/sam-formly';
 
@@ -11,7 +11,8 @@ import { SdsFiltersModule } from '@sam-design-system/sam-formly';
     CommonModule,
     SdsFiltersModule,
     ReactiveFormsModule,
-    FormlyModule.forRoot()
+    FormlyModule.forRoot(),
+    FormsModule,
   ]
 })
 export class FormlyConditionalModule { }

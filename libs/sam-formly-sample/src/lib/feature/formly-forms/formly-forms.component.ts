@@ -229,7 +229,7 @@ export class FormlyFormsComponent{
       fieldGroupClassName: 'grid-row grid-gap-1',
       fieldGroup: [
         {
-          className: 'tablet:grid-col-3',
+          className: 'grid-col-5 desktop:grid-col-4',
           type:'input',
           key: 'Code',
           templateOptions: {
@@ -241,7 +241,7 @@ export class FormlyFormsComponent{
           },
         },
         {
-          className: 'tablet:grid-col-6',
+          className: 'grid-col-7 desktop:grid-col-5',
           type:'input',
           key: 'phone',
           templateOptions: {
@@ -253,11 +253,11 @@ export class FormlyFormsComponent{
           },
         },
         {
-          className: 'grid-col-6 tablet:grid-col-2 tablet:display-block mobile-lg:display-none' ,
+          className: 'grid-col-2 desktop:grid-col-3 display-none desktop:display-inline-block' ,
           type: 'input',
           key: 'extension',
           templateOptions: {
-            label: 'Extension 1',
+            label: 'Extension1.0',
             type: 'number',
             max: 99999,
             min: 0,
@@ -265,12 +265,23 @@ export class FormlyFormsComponent{
             placeholder: 'ex-1234'
           }, 
         },
+      ]
+    },
+    {          
+      fieldGroupClassName: 'grid-row',
+      fieldGroup: [
         {
-          className: 'grid-col-6 tablet:grid-col-2 display-block tablet:display-none' ,
+          className: ' margin-top-1 grid-col-8 display-block desktop:display-none',
+          template: "<a class='usa-link' onclick='showExtension()' href='javascript:void(0);'>Show extension</a>",
+          key:'newlink',
+        },
+        {
+          className: 'grid-col-4 desktop:grid-col-3' ,
           type: 'input',
-          key: 'extension',
+          key: 'extension1',              
+          hideExpression: (model) => !this.model.showExtensionInput,
           templateOptions: {
-            label: 'Extension 2',
+            label: 'Extension2',
             type: 'number',
             max: 99999,
             min: 0,
@@ -278,6 +289,28 @@ export class FormlyFormsComponent{
             placeholder: 'ex-1234'
           },         
         },
+      ]
+    },
+        
+        // {
+        //   fieldGroupClassName: 'grid-row',
+        //   fieldGroup: [
+        //     {
+        //       className: 'grid-col-4 desktop:grid-col-3 desktop:display-none' ,
+        //       type: 'input',
+        //       key: 'extension1',              
+        //       hideExpression: 'model.showExt',
+        //       templateOptions: {
+        //         label: 'Extension',
+        //         type: 'number',
+        //         max: 99999,
+        //         min: 0,
+        //         pattern: '\\d{3}',
+        //         placeholder: 'ex-1234'
+        //       },         
+        //     },
+        //   ]
+        // },
         // {
         //   className: 'display-block grid-col-3',
         //   key: 'show',
@@ -318,14 +351,7 @@ export class FormlyFormsComponent{
         //                                   return false;}
         //                                 },
         // },
-        {      
-          fieldGroupClassName: 'grid-row',
-          fieldGroup: [
-            {
-              template: "<a class='usa-link' href='javascript:void(0)'>Some extension</a>"
-            },
-          ]
-        },
+        
         
         // {
         //   className: 'grid-col-3',
@@ -342,8 +368,7 @@ export class FormlyFormsComponent{
         //   hideExpression: (model) => !this.model.showExtensionInput,
         // },
              
-      ]
-    },
+     
   ]
 
   submit() {
@@ -352,8 +377,10 @@ export class FormlyFormsComponent{
 
   showExtension()
   {
-    document.getElementById("divShow").innerHTML="";
-    this.model.showExtensionInput="show";
+    alert("hi");
+    //this.model.showExtensionInput="show";
+  //  return false;
   }
+
 
 }
