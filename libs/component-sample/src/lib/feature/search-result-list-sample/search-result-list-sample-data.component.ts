@@ -10,7 +10,6 @@ export class SearchResultListSampleDataComponent {
   constructor(private change: ChangeDetectorRef) { }
 
   @Input() model;
-  @Input() dualDisplay;
 
   menu = {
     trigger: 'primary',
