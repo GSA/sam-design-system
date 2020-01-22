@@ -212,7 +212,6 @@ export class FormlyConditionalComponent implements OnInit {
           {
             key: 'sport',
             type: 'select',
-            //defaultValue: '1',
             templateOptions: {
               label: 'First Select',
               options: [
@@ -285,7 +284,7 @@ export class FormlyConditionalComponent implements OnInit {
         ]
       },
     ];
-
+    
     submit() {
       alert(JSON.stringify(this.model));
     }

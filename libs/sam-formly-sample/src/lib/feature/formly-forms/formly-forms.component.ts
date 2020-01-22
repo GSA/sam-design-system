@@ -253,11 +253,11 @@ export class FormlyFormsComponent{
           },
         },
         {
-          className: 'grid-col-2 desktop:grid-col-3 display-none desktop:display-inline-block' ,
+          className: 'margin-bottom-0 grid-col-2 desktop:grid-col-3 display-none desktop:display-inline-block' ,
           type: 'input',
           key: 'extension',
           templateOptions: {
-            label: 'Extension1.0',
+            label: 'Extension',
             type: 'number',
             max: 99999,
             min: 0,
@@ -267,119 +267,35 @@ export class FormlyFormsComponent{
         },
       ]
     },
-    {          
-      fieldGroupClassName: 'grid-row',
-      fieldGroup: [
-        {
-          className: ' margin-top-1 grid-col-8 display-block desktop:display-none',
-          template: "<a class='usa-link' onclick='showExtension()' href='javascript:void(0);'>Show extension</a>",
-          key:'newlink',
+    {
+      className: ' margin-top-(-1) grid-col-8 display-block desktop:display-none',
+      type: 'button',
+      hideExpression: (model) => this.model.showExtension,
+      templateOptions: {
+        text: 'Show Extension',
+        btnType: 'info',
+        onClick: ($event) => {$event.preventDefault(); this.model.showExtension='show'; return false;
         },
-        {
-          className: 'grid-col-4 desktop:grid-col-3' ,
+      },
+    },
+    {          
+          className: 'margin-top-(-1) grid-col-8 display-block desktop:display-none' ,
           type: 'input',
-          key: 'extension1',              
-          hideExpression: (model) => !this.model.showExtensionInput,
+          key: 'extension1',
+          hideExpression: (model) => !this.model.showExtension,
           templateOptions: {
-            label: 'Extension2',
+            label: 'Extension',
             type: 'number',
             max: 99999,
-            min: 0,
+            min : 0,
             pattern: '\\d{3}',
             placeholder: 'ex-1234'
           },         
         },
-      ]
-    },
-        
-        // {
-        //   fieldGroupClassName: 'grid-row',
-        //   fieldGroup: [
-        //     {
-        //       className: 'grid-col-4 desktop:grid-col-3 desktop:display-none' ,
-        //       type: 'input',
-        //       key: 'extension1',              
-        //       hideExpression: 'model.showExt',
-        //       templateOptions: {
-        //         label: 'Extension',
-        //         type: 'number',
-        //         max: 99999,
-        //         min: 0,
-        //         pattern: '\\d{3}',
-        //         placeholder: 'ex-1234'
-        //       },         
-        //     },
-        //   ]
-        // },
-        // {
-        //   className: 'display-block grid-col-3',
-        //   key: 'show',
-        //   template: "<a class='usa-link' href='javascript:void(0)'>Show Extension</a>",
-        // },
-        // {
-        //   className: 'display-none mobile-lg:display-block grid-col-3',
-        //   type: 'input',
-        //   key: 'extension2',
-        //   templateOptions: {
-        //     label: 'Extension',
-        //     type: 'number',
-        //     max: 99999,
-        //     min: 0,
-        //     pattern: '\\d{3}',
-        //     placeholder: 'ex-1234'
-        //   },          
-        // }
-        // {
-        //   className: 'tablet:grid-col-3',
-        //   type:'input',
-        //   key: 'extension',
-        //   templateOptions: {
-        //     label:'Extension',
-        //     type: 'number',
-        //     max: 99999,
-        //     min: 0,
-        //     pattern: '\\d{3}',
-        //     placeholder: 'ex-1234',
-        //   },
-        //   hideExpression: function(){
-        //                                 if(window.window.innerWidth < 1225){
-        //                                   document.getElementById("divShow").style.display="block";
-        //                                   return true;
-        //                                   }
-        //                                 else {
-        //                                   document.getElementById("divShow").innerHTML="";
-        //                                   return false;}
-        //                                 },
-        // },
-        
-        
-        // {
-        //   className: 'grid-col-3',
-        //   type:'input',
-        //   key: 'extension',
-        //   templateOptions: {
-        //     label:'Extension',
-        //     type: 'number',
-        //     max: 99999,
-        //     min: 0,
-        //     pattern: '\\d{3}',
-        //     placeholder: 'ex-1234',
-        //   },
-        //   hideExpression: (model) => !this.model.showExtensionInput,
-        // },
-             
-     
   ]
 
   submit() {
-    alert(JSON.stringify(this.model));
-  }
-
-  showExtension()
-  {
-    alert("hi");
-    //this.model.showExtensionInput="show";
-  //  return false;
+    //alert(JSON.stringify(this.model));
   }
 
 
