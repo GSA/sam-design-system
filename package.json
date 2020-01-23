@@ -59,6 +59,7 @@
     "core-js": "^2.5.4",
     "rxjs": "~6.3.3",
     "rxjs-compat": "~6.3.3",
+    "uswds": "^2.4.0",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

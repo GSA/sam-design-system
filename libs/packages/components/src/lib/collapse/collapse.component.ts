@@ -6,8 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./collapse.component.scss']
 })
 export class SdsCollapseComponent implements OnInit {
+  isCollapsed:boolean;
 
-  constructor() { }
+  constructor() {
+    this.isCollapsed = true;
+   }
 
   ngOnInit() {
   }

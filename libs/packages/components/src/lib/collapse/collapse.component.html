@@ -1,80 +1,16 @@
-<button class="usa-button ">Default</button>
-<div class="grid-row">
-  <div class="tablet:grid-col">
-      <h4>Trigger options</h4>
-      <button class="sds-button sds-button--circular sds-button--shadow">
-    <i class="sds fa-ellipsis fa-fw" data-fa-transform="grow-5"></i>
+<div class="text-align-center">
+  <button
+    class="usa-button usa-button--secondary"
+    type="button"
+    [attr.area-expanded]="!isCollapsed"
+    aria-expanded="true"
+    (click)="isCollapsed = !isCollapsed">
+    Default
   </button>
-
-      <button class="sds-button sds-button--primary sds-button--circular">
-    <i class="sds fa-ellipsis fa-fw" data-fa-transform="grow-5"></i>
-  </button>
-
-      <button class="sds-button sds-button--labeled-icon">
-    Actions
-    <span class="fa-layers fa-fw">
-      <i class="fas fa-circle"></i>
-      <i class="sds fa-ellipsis" data-fa-transform="shrink-6"></i>
-    </span>
-  </button>
-      <h4>Menu</h4>
-      <div class="sds-overlay minw-menu maxw-mobile radius-overlay">
-          <div class="sds-menu">
-              <div class="sds-menu__header">
-                  <span class="sds-menu__header-title">Actions</span>
-                  <button class="sds-button sds-button--circular" aria-label="Close Menu">
-          <i class="fas fa-fw fa-times"></i>
-        </button>
-              </div>
-              <button class="sds-menu__item">
-        Download
-      </button>
-              <button class="sds-menu__item">
-        Follow
-      </button>
-              <button class="sds-menu__item">
-        Edit
-      </button>
-          </div>
-      </div>
-  </div>
-  <div class="tablet:grid-col">
-      <h4>Trigger options (small)</h4>
-      <button class="sds-button sds-button--circular sds-button--small sds-button--shadow">
-    <i class="sds fa-ellipsis fa-fw" data-fa-transform="grow-5"></i>
-  </button>
-
-      <button class="sds-button sds-button--primary sds-button--circular sds-button--small">
-    <i class="sds fa-ellipsis fa-fw" data-fa-transform="grow-5"></i>
-  </button>
-
-      <button class="sds-button sds-button--labeled-icon sds-button--small">
-    Actions
-    <span class="fa-layers fa-fw">
-      <i class="fas fa-circle"></i>
-      <i class="sds fa-ellipsis" data-fa-transform="shrink-6"></i>
-    </span>
-  </button>
-      <h4>Menu (small)</h4>
-      <div class="sds-overlay minw-menu maxw-mobile radius-overlay">
-          <div class="sds-menu sds-menu--small">
-              <div class="sds-menu__header">
-                  <span class="sds-menu__header-title">Actions</span>
-                  <button class="sds-button sds-button--circular sds-button--small" aria-label="Close Menu">
-          <i class="fas fa-fw fa-times"></i>
-        </button>
-              </div>
-              <button class="sds-menu__item">
-        Download
-      </button>
-              <button class="sds-menu__item">
-        Follow
-      </button>
-              <button class="sds-menu__item">
-        Edit
-      </button>
-          </div>
-      </div>
+</div>
+<div *ngIf="!isCollapsed"
+    class="usa-footer__primary-section">
+  <div class="grid-container padding-2">
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
   </div>
 </div>
-
