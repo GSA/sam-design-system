@@ -10,6 +10,7 @@ export class CollapseSampleComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }
