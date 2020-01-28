@@ -13,6 +13,7 @@ export class FormlyFormsComponent{
 
   form = new FormGroup({});
   model: any = {};
+  options:any=null;
   fields: FormlyFieldConfig[] = [      
     {      
       fieldGroupClassName: 'grid-row',

@@ -53,14 +53,12 @@ export function createGenericTestComponent<T>(html: string, type: { new(...args:
                 };
             });
         it('should test click', () => {
-            const fixture = createTestComponent('<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'),
-                trigger = fixture.nativeElement.querySelector('usa-button--unstyled')
-                const buttonField: any = fixture.debugElement.query(By.css('.usa-button--unstyled'));
+            const fixture = createTestComponent('<formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>')
+                const buttonField: any = fixture.debugElement.query(By.css('.btn-info'));
+                console.log("buttonField",buttonField);
                 spyOn(buttonField, "onSelect");
                
                 expect(buttonField.onSelect).toHaveBeenCalled();
-
-                
             });
         });
 });
