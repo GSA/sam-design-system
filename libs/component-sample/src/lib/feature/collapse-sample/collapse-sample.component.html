@@ -1,5 +1,16 @@
-<sds-collapse
-[buttonLable]="buttonText"
-[collapseContent]="collapseContentInput"
-></sds-collapse
-  >
+  <button type="button"
+  sdsCollapse
+  class="usa-button text-center"
+  [attr.area-expanded]="!isCollapsedContent"
+  [attr.area-controls]="collapseID"
+  (click)="isCollapsedContent = !isCollapsedContent"
+  > {{buttonText}}
+  </button>
+
+  <div
+  sdsCollapse
+  id="{{collapseID}}"
+  [collapsed]="isCollapsedContent"
+   class="usa-accordion__content bg-base-lighter">
+     {{collapseContentInput}}
+  </div>

@@ -7,50 +7,32 @@ import { Directive, HostBinding, Input } from '@angular/core';
 })
 export class CollapseDirective {
 
-  @HostBinding('style.height')
-  private height:string;
-  // shown
-  // @HostBinding('class.display-block')
+  // @HostBinding('style.height')
+  // private height:string;
+  // // shown
+  // // @HostBinding('class.display-block')
   @HostBinding('attr.aria-expanded')
-  private isExpanded:boolean = true;
-  // hidden
-  @HostBinding('attr.aria-hidden')
-  private isCollapsed:boolean = false;
-  // stale state
-  @HostBinding('class.display-block')
-  private isCollapsing:boolean = false;
+  private isExpanded:boolean ;
+  // // hidden
+  // @HostBinding('attr.aria-hidden')
+  // private isCollapsed:boolean = false;
+  // // stale state
+  // @HostBinding('class.display-block')
+  // private isCollapsing:boolean = false;
 
-  @Input()
-  private set collapse(value:boolean) {
-      this.isExpanded = value;
-      this.toggle();
-  }
+  @Input('collapsed') collapsed: boolean;
 
-  private get collapse():boolean {
-      return this.isExpanded;
-  }
 
   constructor() {
   }
 
   toggle() {
     if (this.isExpanded) {
-        this.show();
+        this.isExpanded = false;
     } else {
-        this.hide();
+        this.isExpanded = false;
     }
 }
 
-hide(){
-    this.isCollapsing = false;
-    this.isCollapsed = true;
-    this.height = '0';
-}
-
-show() {
-    this.isCollapsing = true;
-    this.isCollapsed = false;
-    this.height = 'auto';
-}
 
 }
