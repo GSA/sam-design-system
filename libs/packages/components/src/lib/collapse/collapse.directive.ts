@@ -7,10 +7,6 @@ import { Directive, HostBinding, Input } from '@angular/core';
 })
 export class CollapseDirective {
 
-
-  @HostBinding('attr.aria-expanded')
-  private isExpanded:boolean ;
-
   @Input('collapsed') collapsed: boolean;
 
   constructor() {

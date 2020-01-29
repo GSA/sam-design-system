@@ -2,17 +2,17 @@
   <button type="button"
   class="usa-button text-center"
   [attr.area-expanded]="!isCollapsedContent"
-  [attr.area-controls]="collapseID"
+  area-controls="collapseID"
   (click)="isCollapsedContent = !isCollapsedContent"
-  > {{buttonText}}
+  > Show / Hide Content
   </button>
  </div>
 
 
-  <div
+<div
   sdsCollapse
-  id="{{collapseID}}"
+  id="collapseID"
   [collapsed]="isCollapsedContent"
    class="usa-accordion__content bg-base-lighter">
-     {{collapseContentInput}}
-  </div>
+   What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industrys standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book it has?
+</div>
