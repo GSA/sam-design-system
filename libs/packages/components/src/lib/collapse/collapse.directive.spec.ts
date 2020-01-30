@@ -1,5 +1,4 @@
 import { CollapseDirective } from "./collapse.directive";
-import { Directive } from '@angular/core';
 
 describe('CollapseDirective', ()=>{
   let directive: CollapseDirective;
