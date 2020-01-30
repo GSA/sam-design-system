@@ -28,6 +28,8 @@ describe('CollapseSampleComponent', () => {
 
   it('check directive value', () => {
       const fixture = TestBed.createComponent(CollapseSampleComponent);
+      component = fixture.componentInstance;
+      expect(component.isCollapsedContent).toBeTruthy();
       const directiveEl = fixture.debugElement.query(By.directive(CollapseDirective));
       expect(directiveEl).not.toBeNull();
       const directiveInstance = directiveEl.injector.get(CollapseDirective);
