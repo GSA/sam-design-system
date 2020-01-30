@@ -7,7 +7,7 @@ import { Directive, HostBinding, Input } from '@angular/core';
 })
 export class CollapseDirective {
 
-  @Input('sdsCollapse') collapsed: boolean;
+  @Input('sdsCollapse') collapsed: boolean = true;
 
   constructor() {
   }
