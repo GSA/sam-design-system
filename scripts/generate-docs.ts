@@ -1,14 +1,13 @@
-import * as glob from 'glob';
-import {ensureFileSync, writeFileSync} from 'fs-extra';
+const fs = require('fs-extra')
+const path = require("path");
+const argv = require('minimist')(process.argv.slice(2));
 
-/**
- * Extracts documentation from all ng-bootstrap sources to a single TS file
- * used by the demo application
- */
+const filename = argv['f'];
 
-const file = 'demo/src/api-docs.ts';
+const sourcejson = './libs/documentation/src/lib/apidoc/' + filename+ '/documentation.json';
+const output = 'libs/documentation/src/lib/apidoc/' + filename + '/' + filename + '.ts';
 
-const json = JSON.stringify(parseOutApiDocs(fileNames), null, 2);
+const json = fs.readFileSync(sourcejson, 'utf8');
 
-ensureFileSync(file);
-writeFileSync(file, `const API_DOCS = ${json};\n\nexport default API_DOCS;`);
+fs.ensureFileSync(output);
+fs.writeFileSync(output, `const ${filename.toUpperCase()} = ${json};\n\nexport default ${filename.toUpperCase()};`);

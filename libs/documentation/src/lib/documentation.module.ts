@@ -8,6 +8,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { sds } from '@gsa-sam/sam-styles/src/icons/';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { ROUTES as HEADER_ROUTES, HeaderModule } from './components/header/header.module';
+import { ROUTES as INPUT_ROUTES, InputModule } from './components/input/input.module';
 import { DocumentationSharedModule } from './shared';
 import { OverviewComponent } from './pages/overview/overview.component';
 
@@ -17,10 +18,11 @@ export const ROUTES: Routes = [
   { path: 'introduction', component: IntroductionComponent },
   { path: 'components', pathMatch: 'full', redirectTo: 'components/alert' },
   { path: 'components/header', children: HEADER_ROUTES },
+  { path: 'components/input', children: INPUT_ROUTES }
 ];
 
 @NgModule({
-  imports: [CommonModule, DocumentationSharedModule, RouterModule.forChild(ROUTES), HeaderModule, OverviewModule, IntroductionModule]
+  imports: [CommonModule, DocumentationSharedModule, RouterModule.forChild(ROUTES), HeaderModule, InputModule, OverviewModule, IntroductionModule]
 })
 export class DocumentationModule {
   constructor() {

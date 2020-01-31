@@ -1,5 +1,6 @@
-import {Component, ChangeDetectionStrategy, Input} from '@angular/core';
-import apiDocs from 'libs/documentation/src/documentation';
+import {Component, ChangeDetectionStrategy, Input, OnInit} from '@angular/core';
+import apis from 'libs/documentation/src/lib/apidoc';
+
 
 interface apiDesc {
   inputs: any;
@@ -8,21 +9,27 @@ interface apiDesc {
   properties: any;
 }
 
-export function getAPI(component) {
+export function getAPI(pkg, component) {
+
   const api:apiDesc = {
     inputs: {},
     outputs: {},
     methods: {},
     properties: {},
   };
-  Object.values(apiDocs.components)
-    .filter(entity => entity.name.startsWith(`${component}`))
+
+
+  Object.values(apis[pkg].components)
+    .filter((entity): entity is any => <any>entity)
+    .filter((entity): entity is any => entity.name.startsWith(`${component}`))
     .forEach(entity => {
       api.inputs = entity.inputsClass;
       api.outputs = entity.outputsClass;
       api.methods = entity.methodsClass;
       api.properties = entity.propertiesClass;
     });
+
+    console.log(api);
   return api;
 }
 
@@ -43,9 +50,18 @@ export function getAPI(component) {
     `
   ]
 })
-export class DocumentationAPIComponent {
+export class DocumentationAPIComponent implements OnInit {
   api: apiDesc;
+
   constructor() {}
+
+  @Input() component: string;
+
+  @Input() pkg: string;
+
+  ngOnInit(): void {
+    this.api = getAPI(this.pkg, this.component);
+  }
 
   getArgs(method) {
     const argString: String[] = [];
@@ -56,7 +72,4 @@ export class DocumentationAPIComponent {
     return argString.join(", ");
   }
 
-  @Input() set component(component: string) {
-    this.api = getAPI(component);
-  }
 }
