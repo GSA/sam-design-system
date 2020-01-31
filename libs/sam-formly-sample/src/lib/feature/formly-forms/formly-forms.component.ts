@@ -273,6 +273,7 @@ export class FormlyFormsComponent{
       type: 'button',
       hideExpression: (model) => this.model.showExtension,
       templateOptions: {
+        type: 'button',
         text: 'Show Extension',
         btnType: 'info',
         onClick: ($event) => {$event.preventDefault(); this.model.showExtension='show'; return false;
@@ -282,6 +283,7 @@ export class FormlyFormsComponent{
     {          
           className: 'margin-top-(-1) grid-col-8 display-block desktop:display-none' ,
           type: 'input',
+          id: 'showExtensionButton',
           key: 'extension1',
           hideExpression: (model) => !this.model.showExtension,
           templateOptions: {

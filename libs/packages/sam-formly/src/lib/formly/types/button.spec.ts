@@ -1,6 +1,4 @@
 
-//import { BrowserModule } from '@angular/platform-browser';
-//import { ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule, FormlyForm } from '@ngx-formly/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
@@ -53,14 +51,57 @@ export function createGenericTestComponent<T>(html: string, type: { new(...args:
                 };
             });
         it('should test click', () => {
-            const fixture = createTestComponent('<formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>')
-                const buttonField: any = fixture.debugElement.query(By.css('.btn-info'));
-                console.log("buttonField",buttonField);
-                spyOn(buttonField, "onSelect");
-               
-                expect(buttonField.onSelect).toHaveBeenCalled();
+            testComponentButtons.fields = [
+                {
+                  key: 'button-test',
+                  type: 'button',
+                  templateOptions: {
+                    text: 'Show Extension',
+                    btnType: 'info',
+                    onClick: $event => {
+                      this.model.showExtension = 'show';
+                    }
+                  }
+                }
+              ];
+            const fixture = createTestComponent(
+                '<formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>'),
+                trigger = fixture.nativeElement.querySelector('ng-star-inserted')
+                const buttonField: any = fixture.debugElement.query(By.css('.usa-button--unstyled'));
+
+                const spy = spyOn(buttonField.nativeElement, 'click');
+                buttonField.nativeElement.click();
+                fixture.detectChanges();
+                expect(spy).toHaveBeenCalled();
             });
+            
+
+        it('should test click worked', () => {
+            testComponentButtons.fields = [
+                {
+                  key: 'button-test',
+                  type: 'button',
+                  templateOptions: {
+                    text: 'Show Extension',
+                    btnType: 'info',
+                    onClick: $event => {
+                      this.model.showExtension = 'show';
+                    }
+                  }
+                }
+              ];
+            const fixture = createTestComponent(
+                '<formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>'),
+                trigger = fixture.nativeElement.querySelector('ng-star-inserted')
+                const buttonField: any = fixture.debugElement.query(By.css('.usa-button--unstyled'));
+
+                const spy = spyOn(buttonField.nativeElement, 'click');
+                buttonField.nativeElement.click();
+                buttonField.nativeElement.dispatchEvent(new Event('onClick'));
+            });
+            
         });
+
 });
 
 @Component({ selector: 'formly-form-button', template: '', entryComponents: [] })
