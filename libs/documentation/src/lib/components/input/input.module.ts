@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderBasic } from './demos/basic/header-basic.component';
+import { InputBasic } from './demos/basic/input-basic.component';
 import { DocumentationExamplesPage } from '../shared/examples-page/examples.component';
 import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 import { DocumentationComponentsSharedModule, DocumentationDemoList } from './../shared/index';
 import { ComponentWrapperComponent } from './../../shared/component-wrapper/component-wrapper.component';
-import { HeaderBasicModule } from './demos/basic/header-basic.module';
+import { InputBasicModule } from './demos/basic/input-basic.module';
 
 const DEMOS = {
   basic: {
-    title: 'Header',
-    type: HeaderBasic,
-    code: require('!!raw-loader!./demos/basic/header-basic.component').default,
-    markup: require('!!raw-loader!./demos/basic/header-basic.component.html').default
+    title: 'Input',
+    type: InputBasic,
+    code: require('!!raw-loader!./demos/basic/input-basic.component').default,
+    markup: require('!!raw-loader!./demos/basic/input-basic.component.html').default
   }
 };
 
@@ -22,8 +22,8 @@ export const ROUTES = [
   { path: '', pathMatch: 'full', redirectTo: 'examples' },
   {
     path: '',
+    data: { package: 'formly', component: 'FormlyFieldInputComponent' },
     component: ComponentWrapperComponent,
-    data: { package: 'components', component: 'SdsHeaderComponent' },
     children: [
       { path: 'examples', component: DocumentationExamplesPage },
       { path: 'api', component: DocumentationAPIPage },
@@ -37,11 +37,11 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    HeaderBasicModule
+    InputBasicModule
   ]
 })
-export class HeaderModule {
+export class InputModule {
   constructor(demoList: DocumentationDemoList) {
-    demoList.register('header', DEMOS);
+    demoList.register('input', DEMOS);
   }
 }
