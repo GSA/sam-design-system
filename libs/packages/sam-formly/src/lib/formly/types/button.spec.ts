@@ -1,7 +1,6 @@
 
 import { FormlyModule, FormlyForm } from '@ngx-formly/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
 import { FormlyFieldButtonComponent } from './button';
 import { Component, ViewChild } from '@angular/core';
 import { TestBed, ComponentFixture } from '@angular/core/testing';

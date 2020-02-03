@@ -27,7 +27,7 @@ export class FormlyFormsComponent{
       fieldGroupClassName: 'grid-row',
       fieldGroup: [
         {
-          className: 'grid-col-4',
+          className: 'grid-col-6',
           key: 'country',
           type: 'select',
           defaultValue: 'united_states',
