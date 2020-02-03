@@ -3,7 +3,7 @@
       <ng-template #resultContent let-item>
           <div>
               <search-result-list-sample-data [model]="item">
-                  <dual-display *ngIf="item.hasNewerData"></dual-display>
+                  <result-list-child *ngIf="item.hasNewerData"></result-list-child>
               </search-result-list-sample-data>
             
           </div>
