@@ -33,7 +33,7 @@ export class FormlyConditionalComponent implements OnInit {
         templateOptions: { label: 'Conditional Filters' },
         fieldGroup: [
             {
-              template: "<h4 class='margin-top-5 margin-bottom-1'>Dropdpwn Radio Selection :</h4><p class='margin-top-0'>Dropdown selection will reveal the respective Radio action.</p>",
+              template: "<h4 class='margin-top-5 margin-bottom-1'>Hide Input Field :</h4><p class='margin-top-0'>First Input value will reveal the second Input.</p>",
             },
             {
               key: 'firstInput',

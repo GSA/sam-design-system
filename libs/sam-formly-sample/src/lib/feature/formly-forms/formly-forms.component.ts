@@ -27,7 +27,7 @@ export class FormlyFormsComponent{
       fieldGroupClassName: 'grid-row',
       fieldGroup: [
         {
-          className: 'grid-col-6',
+          className: 'grid-col-4',
           key: 'country',
           type: 'select',
           defaultValue: 'united_states',
@@ -51,6 +51,7 @@ export class FormlyFormsComponent{
           templateOptions: {
             required: true,
             label: 'Street Address 1',
+            hideRequiredMarker: true,
           },
         },
       ]
@@ -78,6 +79,7 @@ export class FormlyFormsComponent{
           templateOptions: {
             required: true,
             label: 'City',
+            hideRequiredMarker: true,
           },
         },
         {
@@ -150,7 +152,7 @@ export class FormlyFormsComponent{
           key: 'province',
           hideExpression: (model) => this.model.country === 'united_states',
           templateOptions: {
-            label: 'Province',
+            label: 'State/Province',
             options: [
               { id: '1', label: 'Alberta', value: 'Alberta'},
               { id: '2', label: 'British Columbia', value: 'British Columbia'},
@@ -182,6 +184,7 @@ export class FormlyFormsComponent{
             maxLength: 5,
             min: 0,
             pattern: '\\d{5}',
+            hideRequiredMarker: true,
           },
         },
       ]
@@ -196,10 +199,11 @@ export class FormlyFormsComponent{
           hideExpression: (model) => this.model.country === 'united_states',
           templateOptions: {
             required: true,
-            label: 'Postal Code (+ 6)',
+            label: 'Postal Code',
             maxLength: 6,
             min: 0,
             pattern: '\\d{5}',
+            hideRequiredMarker: true,
           },
         },
       ]
@@ -213,7 +217,9 @@ export class FormlyFormsComponent{
           key: 'congressional_district',
           hideExpression: (model) => this.model.country === 'canada',
           templateOptions: {
+            required: true,
             label: 'Congressional District',
+            hideRequiredMarker: true,
           },
         },
       ]
