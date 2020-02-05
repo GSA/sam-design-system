@@ -35,7 +35,6 @@ export const FORMLY_CONFIG: ConfigOption = {
     {
       name: 'button',
       component: FormlyFieldButtonComponent,
-      wrappers: ['form-field'],
     },
     {
       name: 'input',

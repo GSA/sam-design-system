@@ -27,12 +27,13 @@ export class FormlyFormsComponent{
       fieldGroupClassName: 'grid-row',
       fieldGroup: [
         {
-          className: 'grid-col-4',
+          className: 'grid-col-7',
           key: 'country',
           type: 'select',
           defaultValue: 'united_states',
           templateOptions: {
             label: 'Country',
+            required: true,
             options: [
               { label: 'United States (USA)', value: 'united_states' },
               { label: 'Canada', value: 'canada' },
@@ -51,7 +52,6 @@ export class FormlyFormsComponent{
           templateOptions: {
             required: true,
             label: 'Street Address 1',
-            hideRequiredMarker: true,
           },
         },
       ]
@@ -64,7 +64,44 @@ export class FormlyFormsComponent{
           type: 'input',
           key: 'street2',
           templateOptions: {
-            label: 'Street Address 2 (Optional)',
+            label: 'Street Address 2',
+          },
+        },
+      ]
+    },
+    {      
+      fieldGroupClassName: 'grid-row',
+      fieldGroup: [
+        {
+          className: 'grid-col-4',
+          type: 'input',
+          key: 'zip',
+          hideExpression: (model) => this.model.country === 'canada',
+          templateOptions: {
+            required: true,
+            type: 'number',
+            label: 'ZIP Code (+ 4)',
+            maxLength: 5,
+            min: 0,
+            pattern: '\\d{5}',
+          },
+        },
+      ]
+    },
+    {      
+      fieldGroupClassName: 'grid-row',
+      fieldGroup: [
+        {
+          className: 'grid-col-4',
+          type: 'input',
+          key: 'postal',
+          hideExpression: (model) => this.model.country === 'united_states',
+          templateOptions: {
+            required: true,
+            label: 'Postal Code',
+            maxLength: 6,
+            min: 0,
+            pattern: '\\d{5}',
           },
         },
       ]
@@ -79,7 +116,6 @@ export class FormlyFormsComponent{
           templateOptions: {
             required: true,
             label: 'City',
-            hideRequiredMarker: true,
           },
         },
         {
@@ -90,6 +126,7 @@ export class FormlyFormsComponent{
           hideExpression: (model) => this.model.country === 'canada',
           templateOptions: {
             label: 'State',
+            required: true,
             options: [
               { id: '0', label: '--Select--', value: 'Select'},
               { id: '1', label: 'Alabama', value: 'Alabama' },
@@ -153,6 +190,7 @@ export class FormlyFormsComponent{
           hideExpression: (model) => this.model.country === 'united_states',
           templateOptions: {
             label: 'State/Province',
+            required: true,
             options: [
               { id: '1', label: 'Alberta', value: 'Alberta'},
               { id: '2', label: 'British Columbia', value: 'British Columbia'},
@@ -175,51 +213,11 @@ export class FormlyFormsComponent{
         {
           className: 'grid-col-4',
           type: 'input',
-          key: 'zip',
-          hideExpression: (model) => this.model.country === 'canada',
-          templateOptions: {
-            required: true,
-            type: 'number',
-            label: 'ZIP Code (+ 4)',
-            maxLength: 5,
-            min: 0,
-            pattern: '\\d{5}',
-            hideRequiredMarker: true,
-          },
-        },
-      ]
-    },
-    {      
-      fieldGroupClassName: 'grid-row',
-      fieldGroup: [
-        {
-          className: 'grid-col-4',
-          type: 'input',
-          key: 'postal',
-          hideExpression: (model) => this.model.country === 'united_states',
-          templateOptions: {
-            required: true,
-            label: 'Postal Code',
-            maxLength: 6,
-            min: 0,
-            pattern: '\\d{5}',
-            hideRequiredMarker: true,
-          },
-        },
-      ]
-    },
-    {      
-      fieldGroupClassName: 'grid-row',
-      fieldGroup: [
-        {
-          className: 'grid-col-4',
-          type: 'input',
           key: 'congressional_district',
           hideExpression: (model) => this.model.country === 'canada',
           templateOptions: {
             required: true,
             label: 'Congressional District',
-            hideRequiredMarker: true,
           },
         },
       ]
@@ -228,19 +226,20 @@ export class FormlyFormsComponent{
       fieldGroupClassName: 'grid-row',
       fieldGroup: [
         {
-          template:'<h3>Phone Number(optional)</h3> Your phone number is the primary number associated with your vendor'
+          template:'<h3>Phone Number</h3> Your phone number is the primary number associated with your vendor'
         },
       ]
     },
     {      
-      fieldGroupClassName: 'grid-row grid-gap-1',
+      fieldGroupClassName: 'grid-row grid-gap-2',
       fieldGroup: [
         {
-          className: 'grid-col-5 desktop:grid-col-4',
+          className: 'grid-col-4 desktop:grid-col-3',
           type:'input',
           key: 'Code',
           templateOptions: {
             label:'Country Code',
+            required: true,
             type: 'number',
             max: 99999,
             min: 0,
@@ -253,6 +252,7 @@ export class FormlyFormsComponent{
           key: 'phone',
           templateOptions: {
             label:'Phone',
+            required: true,
             type: 'number',
             max: 99999,
             min: 0,
@@ -260,7 +260,7 @@ export class FormlyFormsComponent{
           },
         },
         {
-          className: 'margin-bottom-0 grid-col-2 desktop:grid-col-3 display-none desktop:display-inline-block' ,
+          className: 'margin-bottom-0 grid-col-3 desktop:grid-col-4 display-none desktop:display-inline-block' ,
           type: 'input',
           key: 'extension',
           templateOptions: {
@@ -289,7 +289,6 @@ export class FormlyFormsComponent{
     {          
           className: 'margin-top-(-1) grid-col-8 display-block desktop:display-none' ,
           type: 'input',
-          id: 'showExtensionButton',
           key: 'extension1',
           hideExpression: (model) => !this.model.showExtension,
           templateOptions: {

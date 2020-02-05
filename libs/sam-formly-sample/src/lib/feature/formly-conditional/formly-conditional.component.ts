@@ -74,6 +74,7 @@ export class FormlyConditionalComponent implements OnInit {
             type: 'select',
             defaultValue: 'select',
             templateOptions: {
+              hideOptional: true,
               label: 'Dropdown Radio',
               options: [
                 {label:'- Select -', value:'select'},
