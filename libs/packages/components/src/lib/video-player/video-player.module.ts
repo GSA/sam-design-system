@@ -13,4 +13,4 @@ import { FormsModule } from '@angular/forms';
   ],
   providers: []
 })
-export class VideoPlayerModule { }
+export class SdsVideoPlayerModule { }

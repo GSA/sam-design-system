@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SdsVideoPlayerComponent } from './video-player.component';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
-import { VideoPlayerModule } from './video-player.module';
+import { SdsVideoPlayerModule } from './video-player.module';
 
 describe('VideoPlayerComponent', () => {
   let component: SdsVideoPlayerComponent;
@@ -11,8 +11,7 @@ describe('VideoPlayerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SdsVideoPlayerComponent ],
-      imports: [VideoPlayerModule]
+      declarations: [ SdsVideoPlayerComponent ]
     })
     .compileComponents();
   }));
@@ -20,15 +19,28 @@ describe('VideoPlayerComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SdsVideoPlayerComponent);
     component = fixture.componentInstance;
-    sourceMp4El = fixture.debugElement.query(By.css('input[type=videoSourceMp4]'));
-    fixture.detectChanges();
+    // sourceMp4El = fixture.debugElement.query(By.css('input[type=videoSourceMp4]'));
+    // fixture.detectChanges();
   });
 
   it('should create app for title', () =>{
     fixture = TestBed.createComponent(SdsVideoPlayerComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('Video Player');
   });
+
+  it('Check the input value for video player', () => {
+    expect(component.videoSourceWebm);
+    expect(component.videoSourceMp4);
+    expect(component.videoHeight);
+    expect(component.videoWidth);
+    expect(component.videoPlayerId);
+    expect(component.videoCaption);
+    expect(component.videoPoster);
+    expect(component.videoSeekInterval);
+    expect(component.videoDebug);
+    expect(component.videoPreload);
+  });
+
 
   // fit('check the Mp4 video file', () => {
   //   component.videoSourceMp4 = 'videoSourceMp4';
