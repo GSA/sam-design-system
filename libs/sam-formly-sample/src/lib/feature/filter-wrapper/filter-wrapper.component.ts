@@ -3,10 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { BehaviorSubject } from 'rxjs';
 import { maxDateValidator, minDateValidator } from '@gsa-sam/sam-formly';
-
-//import { maxDateRangeValidator, minDateRangeValidator } from 'libs/packages/sam-formly/src/lib/formly/formly.validators';
 import { FormControl, ValidationErrors } from '@angular/forms';
-//import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 
 
 @Component({
