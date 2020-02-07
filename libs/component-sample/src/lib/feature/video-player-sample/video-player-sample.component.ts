@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'gsa-sam-video-player-sample',
   templateUrl: './video-player-sample.component.html',
   styleUrls: ['./video-player-sample.component.scss']
 })
@@ -18,7 +17,8 @@ export class VideoPlayerSampleComponent implements OnInit {
 
 	seekInterval: number;
 	debug: boolean;
-	preload: string;
+  preload: string;
+  imageSrc: string;
 
   constructor() {
 
@@ -36,6 +36,7 @@ export class VideoPlayerSampleComponent implements OnInit {
     this.seekInterval = 20;
     this.debug = true;
     this.preload = "none";
+    this.imageSrc = "http://images.crestock.com/150000-159999/151031-xs.jpg";
   }
 
 
