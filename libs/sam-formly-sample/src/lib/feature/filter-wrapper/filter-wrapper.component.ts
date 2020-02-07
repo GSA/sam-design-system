@@ -3,13 +3,13 @@ import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { BehaviorSubject } from 'rxjs';
 import { maxDateValidator, minDateValidator } from '@gsa-sam/sam-formly';
-//import { maxDateRangeValidator, minDateRangeValidator } from 'libs/packages/sam-formly/src/lib/formly/formly.validators';
 import { FormControl, ValidationErrors } from '@angular/forms';
 
 
 @Component({
-  selector: 'filter-wrapper',
+  selector: 'sds-filter-wrapper',
   templateUrl: './filter-wrapper.component.html',
+ 
 })
 export class FilterWrapperComponent implements OnInit {
 
@@ -18,7 +18,7 @@ export class FilterWrapperComponent implements OnInit {
   }
   results: any = {};
   form = new FormGroup({});
-  model = {};
+  model:any = {};
   options: FormlyFormOptions = {};
   /**
  * Event when something is checked/selected in the grid
@@ -271,7 +271,7 @@ export class FilterWrapperComponent implements OnInit {
           },
         },
       ]
-    }
+    },
   ];
   public ngOnInit() {
     this.filterChange$.subscribe(

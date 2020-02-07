@@ -11,7 +11,7 @@ import { FormlyAccordianFormFieldComponent } from './wrappers/form-field.accordi
 import { FormlyFieldAutoCompleteComponent } from './types/autocomplete';
 import { FormlyFormFieldFilterWrapperComponent } from './wrappers/form-field.filterwrapper';
 import { FormlyFieldDatePickerComponent } from './types/datepicker';
-
+import { FormlyFieldButtonComponent } from './types/button';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
 export const FIELD_TYPE_COMPONENTS = [
@@ -25,12 +25,17 @@ export const FIELD_TYPE_COMPONENTS = [
   FormlyAccordianFormFieldComponent,
   FormlyFieldAutoCompleteComponent,
   FormlyFieldDatePickerComponent,
-  FormlyFormFieldFilterWrapperComponent
+  FormlyFormFieldFilterWrapperComponent,
+  FormlyFieldButtonComponent,
 ];
 import { maxDateValidator, minDateValidator } from './formly.validators';
 
 export const FORMLY_CONFIG: ConfigOption = {
   types: [
+    {
+      name: 'button',
+      component: FormlyFieldButtonComponent,
+    },
     {
       name: 'input',
       component: FormlyFieldInputComponent,
