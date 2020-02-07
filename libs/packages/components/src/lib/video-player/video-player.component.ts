@@ -23,6 +23,7 @@ export class SdsVideoPlayerComponent implements OnInit, AfterViewInit {
 
 
   constructor() {
+
   }
 
   ngAfterViewInit() {
@@ -36,6 +37,6 @@ export class SdsVideoPlayerComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.VvtFileURL = '';
+
   }
 }
