@@ -15,8 +15,7 @@ import { LocationStrategy, PathLocationStrategy } from '@angular/common';
     FormsModule
   ],
   providers: [
-    {provide: LocationStrategy, useClass: PathLocationStrategy},
-    {provide: Window}
+    {provide: LocationStrategy, useClass: PathLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })

@@ -243,7 +243,7 @@ function InitPxVideo(options) {
   if (obj.movieWidth < 360) {
     obj.movieWidth = 360;
   }
-  // obj.container.setAttribute("style", "width:" + obj.movieWidth + "px");
+  obj.container.setAttribute("style", "width:" + obj.movieWidth + "px");  // Uncomment by Hemal
 
   // Adjust layout per width of video - controls/mute offset
   obj.labelMute = document.getElementById("labelMute" + obj.randomNum);

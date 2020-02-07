@@ -103,8 +103,7 @@
               "apps/sam-design-system-site/src/assets"
             ],
             "styles": [
-              "apps/sam-design-system-site/src/styles.scss",
-              "libs/packages/components/src/lib/video-player/css/px-video.css"
+              "apps/sam-design-system-site/src/styles.scss"
             ]
           },
           "configurations": {
