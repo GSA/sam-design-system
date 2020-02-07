@@ -241,9 +241,8 @@ export class FormlyFormsComponent{
             label:'Country Code',
             required: true,
             type: 'number',
-            max: 99999,
-            min: 0,
             pattern: '\\d{3}',
+            placeholder: 'ex-123'
           },
         },
         {
@@ -254,9 +253,8 @@ export class FormlyFormsComponent{
             label:'Phone',
             required: true,
             type: 'number',
-            max: 99999,
-            min: 0,
             pattern: '\\d{9}',
+            placeholder: 'ex-123456789'
           },
         },
         {
@@ -266,10 +264,8 @@ export class FormlyFormsComponent{
           templateOptions: {
             label: 'Extension',
             type: 'number',
-            max: 99999,
-            min: 0,
             pattern: '\\d{3}',
-            placeholder: 'ex-1234'
+            placeholder: 'ex-123'
           }, 
         },
       ]
@@ -297,7 +293,7 @@ export class FormlyFormsComponent{
             max: 99999,
             min : 0,
             pattern: '\\d{3}',
-            placeholder: 'ex-1234'
+            placeholder: 'ex-123'
           },         
         },
   ]
