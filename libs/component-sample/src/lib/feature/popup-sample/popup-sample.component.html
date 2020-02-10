@@ -2,30 +2,11 @@
 
 <div class="grid-container">
   <div class="grid-row">
-    <div class="grid-col">
-      <h3>Default icon</h3> 
-    <br>
-    Hover over icon.
-    </div>
-    <div class="grid-col">
-      <sds-popup>
-        <ul>
-          <li>Lorem ipsum sit amet</li>
-          <li>Lorem ipsum</li>
-        </ul>
-      </sds-popup>
-    </div>
-  </div>
-  <hr class="thin">
-  <div class="grid-row">
-    <div class="grid-col">
-      <h3>Custom icon</h3> 
-    </div>
-    <div class="grid-col">
-      <sds-popup [faicon]="['fa', 'exclamation-triangle']">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras laoreet faucibus arcu id bibendum. Mauris
-          eleifend massa purus, eu volutpat erat placerat egestas.</p>
-      </sds-popup>
-    </div>
-  </div>
-</div>
+    <div class="grid-col" [sdsPopup]="'out'" [content]="'MyTemplate'" [direction]="'top'">
+    Hover over icon.</div>
+    <ng-template #Mytemplate>dashflkaj 
+      faskjd ha ksdjfh a</ng-template>
+<div class="grid-row">
+<!-- [template]='MyTemplate' -->
+
+

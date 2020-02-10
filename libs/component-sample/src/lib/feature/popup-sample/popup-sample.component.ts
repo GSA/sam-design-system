@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 
 @Component({
   selector: 'sds-popup-sample',
@@ -9,10 +9,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 
 export class PopupSampleComponent implements OnInit {
-  faicon: string;
   constructor() { }
 
   ngOnInit() {
-
   }
 }
