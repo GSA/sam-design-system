@@ -7,15 +7,15 @@ import { faClipboardCheck } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'sds-formly-forms',
   templateUrl: './formly-forms.component.html',
- 
+
 })
 export class FormlyFormsComponent{
 
   form = new FormGroup({});
   model: any = {};
   options:any=null;
-  fields: FormlyFieldConfig[] = [      
-    {      
+  fields: FormlyFieldConfig[] = [
+    {
       fieldGroupClassName: 'grid-row',
       fieldGroup: [
         {
@@ -23,7 +23,7 @@ export class FormlyFormsComponent{
         },
       ]
     },
-    {      
+    {
       fieldGroupClassName: 'grid-row',
       fieldGroup: [
         {
@@ -42,7 +42,7 @@ export class FormlyFormsComponent{
         },
       ]
     },
-    {      
+    {
       fieldGroupClassName: 'grid-row',
       fieldGroup: [
         {
@@ -56,7 +56,7 @@ export class FormlyFormsComponent{
         },
       ]
     },
-    {      
+    {
       fieldGroupClassName: 'grid-row ',
       fieldGroup: [
         {
@@ -69,7 +69,7 @@ export class FormlyFormsComponent{
         },
       ]
     },
-    {      
+    {
       fieldGroupClassName: 'grid-row',
       fieldGroup: [
         {
@@ -88,7 +88,7 @@ export class FormlyFormsComponent{
         },
       ]
     },
-    {      
+    {
       fieldGroupClassName: 'grid-row',
       fieldGroup: [
         {
@@ -207,7 +207,7 @@ export class FormlyFormsComponent{
         },
       ],
     },
-    {      
+    {
       fieldGroupClassName: 'grid-row',
       fieldGroup: [
         {
@@ -222,7 +222,7 @@ export class FormlyFormsComponent{
         },
       ]
     },
-    {      
+    {
       fieldGroupClassName: 'grid-row',
       fieldGroup: [
         {
@@ -230,7 +230,7 @@ export class FormlyFormsComponent{
         },
       ]
     },
-    {      
+    {
       fieldGroupClassName: 'grid-row grid-gap-2',
       fieldGroup: [
         {
@@ -266,7 +266,7 @@ export class FormlyFormsComponent{
             type: 'number',
             pattern: '\\d{3}',
             placeholder: 'ex-123'
-          }, 
+          },
         },
       ]
     },
@@ -282,7 +282,7 @@ export class FormlyFormsComponent{
         },
       },
     },
-    {          
+    {
           className: 'margin-top-(-1) grid-col-8 display-block desktop:display-none' ,
           type: 'input',
           key: 'extension1',
@@ -294,7 +294,7 @@ export class FormlyFormsComponent{
             min : 0,
             pattern: '\\d{3}',
             placeholder: 'ex-123'
-          },         
+          },
         },
   ]
 
