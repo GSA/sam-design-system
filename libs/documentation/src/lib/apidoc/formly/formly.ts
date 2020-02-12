@@ -226,7 +226,7 @@ const FORMLY = {
     "components": [
         {
             "name": "FormlyAccordianFormFieldComponent",
-            "id": "component-FormlyAccordianFormFieldComponent-a770840dcee7cdcc21f5533519d049bf",
+            "id": "component-FormlyAccordianFormFieldComponent-65b3c18a0c7472b4f7a0a62969da279a",
             "file": "libs/packages/sam-formly/src/lib/formly/wrappers/form-field.accordian.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -247,7 +247,7 @@ const FORMLY = {
                     "type": "ViewContainerRef",
                     "optional": false,
                     "description": "",
-                    "line": 17,
+                    "line": 21,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -262,10 +262,63 @@ const FORMLY = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild, ViewContainerRef } from '@angular/core';\r\nimport { FieldWrapper } from '@ngx-formly/core';\r\n\r\n@Component({\r\n  selector: 'sam-formly-accordian-form-field',\r\n  template: `\r\n  <sds-accordion multi=\"true\" displayMode=\"basic\">\r\n    <sds-accordion-item class=\"sds-accordion__panel\">\r\n      <sds-accordion-item-header> {{to.label}} </sds-accordion-item-header>\r\n      <ng-container #fieldComponent></ng-container>\r\n    </sds-accordion-item>\r\n  </sds-accordion>\r\n  `,\r\n})\r\nexport class FormlyAccordianFormFieldComponent extends FieldWrapper {\r\n  @ViewChild('fieldComponent', {read: ViewContainerRef}) fieldComponent: ViewContainerRef;\r\n}",
+            "sourceCode": "import { Component, ViewChild, ViewContainerRef } from '@angular/core';\r\nimport { FieldWrapper } from '@ngx-formly/core';\r\n\r\n/**\r\n * @param {string} [to.label] Text to be shown for the accordion label\r\n */\r\n\r\n@Component({\r\n  selector: 'sam-formly-accordian-form-field',\r\n  template: `\r\n  <sds-accordion multi=\"true\" displayMode=\"basic\">\r\n    <sds-accordion-item class=\"sds-accordion__panel\">\r\n      <sds-accordion-item-header> {{to.label}} </sds-accordion-item-header>\r\n      <ng-container #fieldComponent></ng-container>\r\n    </sds-accordion-item>\r\n  </sds-accordion>\r\n  `,\r\n})\r\nexport class FormlyAccordianFormFieldComponent extends FieldWrapper {\r\n  @ViewChild('fieldComponent', {read: ViewContainerRef}) fieldComponent: ViewContainerRef;\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
+            "jsdoctags": [
+                {
+                    "pos": 135,
+                    "end": 205,
+                    "flags": 0,
+                    "kind": 292,
+                    "atToken": {
+                        "pos": 135,
+                        "end": 136,
+                        "flags": 0,
+                        "kind": 57
+                    },
+                    "tagName": {
+                        "pos": 136,
+                        "end": 141,
+                        "flags": 0,
+                        "escapedText": "param"
+                    },
+                    "typeExpression": {
+                        "pos": 142,
+                        "end": 150,
+                        "flags": 0,
+                        "kind": 277,
+                        "type": {
+                            "pos": 143,
+                            "end": 149,
+                            "flags": 2097152,
+                            "kind": 137
+                        }
+                    },
+                    "name": {
+                        "pos": 152,
+                        "end": 160,
+                        "flags": 0,
+                        "kind": 145,
+                        "left": {
+                            "pos": 152,
+                            "end": 154,
+                            "flags": 0,
+                            "escapedText": "to"
+                        },
+                        "right": {
+                            "pos": 155,
+                            "end": 160,
+                            "flags": 0,
+                            "escapedText": "label"
+                        }
+                    },
+                    "isNameFirst": false,
+                    "isBracketed": true,
+                    "comment": "Text to be shown for the accordion label"
+                }
+            ],
             "extends": "FieldWrapper"
         },
         {
@@ -707,7 +760,7 @@ const FORMLY = {
         },
         {
             "name": "FormlyFormFieldFilterWrapperComponent",
-            "id": "component-FormlyFormFieldFilterWrapperComponent-3936474f776e13fe294c8e949a3f8a5a",
+            "id": "component-FormlyFormFieldFilterWrapperComponent-07c2063a68cbb056f4fdd475a930804c",
             "file": "libs/packages/sam-formly/src/lib/formly/wrappers/form-field.filterwrapper.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -728,7 +781,7 @@ const FORMLY = {
                     "type": "ViewContainerRef",
                     "optional": false,
                     "description": "",
-                    "line": 16,
+                    "line": 20,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -743,15 +796,56 @@ const FORMLY = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild, ViewContainerRef, OnInit } from '@angular/core';\r\nimport { FieldWrapper } from '@ngx-formly/core';\r\n\r\n@Component({\r\n  selector: 'sam-formly-filter-wrapper-form-field',\r\n  template: `\r\n\r\n    <div  class=\"wrapper-body\">\r\n      <div class=\"sds-accordion__trigger header-label\" [attr.aria-hidden]=\"to.ariaHidden ? 'false' : 'true'\"> {{to.label}} </div>\r\n      <ng-container #fieldComponent></ng-container>\r\n    </div>\r\n  `,\r\n})\r\nexport class FormlyFormFieldFilterWrapperComponent extends FieldWrapper {\r\n  @ViewChild('fieldComponent', {read: ViewContainerRef}) fieldComponent: ViewContainerRef;\r\n}\r\n",
+            "sourceCode": "import { Component, ViewChild, ViewContainerRef, OnInit } from '@angular/core';\r\nimport { FieldWrapper } from '@ngx-formly/core';\r\n\r\n/**\r\n * @param [to.ariaHidden] Hides accordion label\r\n */\r\n\r\n@Component({\r\n  selector: 'sam-formly-filter-wrapper-form-field',\r\n  template: `\r\n\r\n    <div  class=\"wrapper-body\">\r\n      <div class=\"sds-accordion__trigger header-label\" [attr.aria-hidden]=\"to.ariaHidden ? 'false' : 'true'\"> {{to.label}} </div>\r\n      <ng-container #fieldComponent></ng-container>\r\n    </div>\r\n  `,\r\n})\r\nexport class FormlyFormFieldFilterWrapperComponent extends FieldWrapper {\r\n  @ViewChild('fieldComponent', {read: ViewContainerRef}) fieldComponent: ViewContainerRef;\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
+            "jsdoctags": [
+                {
+                    "pos": 143,
+                    "end": 190,
+                    "flags": 0,
+                    "kind": 292,
+                    "atToken": {
+                        "pos": 143,
+                        "end": 144,
+                        "flags": 0,
+                        "kind": 57
+                    },
+                    "tagName": {
+                        "pos": 144,
+                        "end": 149,
+                        "flags": 0,
+                        "escapedText": "param"
+                    },
+                    "name": {
+                        "pos": 151,
+                        "end": 164,
+                        "flags": 0,
+                        "kind": 145,
+                        "left": {
+                            "pos": 151,
+                            "end": 153,
+                            "flags": 0,
+                            "escapedText": "to"
+                        },
+                        "right": {
+                            "pos": 154,
+                            "end": 164,
+                            "flags": 0,
+                            "escapedText": "ariaHidden"
+                        }
+                    },
+                    "isNameFirst": true,
+                    "isBracketed": true,
+                    "comment": "Hides accordion label"
+                }
+            ],
             "extends": "FieldWrapper"
         },
         {
             "name": "FormlyWrapperFormFieldComponent",
-            "id": "component-FormlyWrapperFormFieldComponent-5cc014538500981720925ac61f4b7653",
+            "id": "component-FormlyWrapperFormFieldComponent-b7e36cad84088952af15c66770364883",
             "file": "libs/packages/sam-formly/src/lib/formly/wrappers/form-field.wrapper.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -772,7 +866,7 @@ const FORMLY = {
                     "type": "ViewContainerRef",
                     "optional": false,
                     "description": "",
-                    "line": 24,
+                    "line": 37,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -787,10 +881,369 @@ const FORMLY = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild, ViewContainerRef } from '@angular/core';\r\nimport { FieldWrapper } from '@ngx-formly/core';\r\n\r\n@Component({\r\n  selector: 'sds-formly-wrapper-form-field',\r\n  template: `\r\n<div class=\"usa-form-group\" [class.usa-form-group--error]=\"showError\">\r\n  <label class=\"usa-label\" [attr.for]=\"id\" [ngClass]=\"to.labelClass\">\r\n  <span *ngIf=\"to.tagText\" class=\"usa-tag\"\r\n  [ngClass]=\"to.tagClass ? to.tagClass : 'sds-tag--info-white'\">\r\n  {{to.tagText}}</span> \r\n  <span>{{ to.label }}</span>\r\n    <span *ngIf=\"to.required && to.hideRequiredMarker !== true\">*</span>\r\n  </label>  \r\n  <div *ngIf=\"showError\" class=\"usa-error-message\" [style.display]=\"'block'\">\r\n    <formly-validation-message [field]=\"field\"></formly-validation-message>\r\n  </div>\r\n  <small *ngIf=\"to.description\" class=\"form-text text-muted\">{{ to.description }}</small>\r\n  <ng-template #fieldComponent></ng-template>\r\n</div>\r\n  `,\r\n})\r\nexport class FormlyWrapperFormFieldComponent extends FieldWrapper {\r\n  @ViewChild('fieldComponent', { read: ViewContainerRef }) fieldComponent!: ViewContainerRef;\r\n}\r\n",
+            "sourceCode": "import { Component, ViewChild, ViewContainerRef } from '@angular/core';\r\nimport { FieldWrapper } from '@ngx-formly/core';\r\n\r\n\r\n/**\r\n * @param {string} [to.tagClass] Class to be added to the tag (default: sds-tag--info-white)\r\n * @param {string} [to.tagText] Text to be shown inside the tag\r\n * @param {string} [to.labelClass] Class to be applied to the label\r\n * @param {string} [to.label] Text to be shown for the label\r\n * @param {string} [to.required] Makes the field required\r\n * @param {string} [to.hideRequiredMarker] Hides the required indicator\r\n * @param {string} [to.description] Add a description below the label\r\n */\r\n\r\n\r\n@Component({\r\n  selector: 'sds-formly-wrapper-form-field',\r\n  template: `\r\n<div class=\"usa-form-group\" [class.usa-form-group--error]=\"showError\">\r\n  <label class=\"usa-label\" [attr.for]=\"id\" [ngClass]=\"to.labelClass\">\r\n  <span *ngIf=\"to.tagText\" class=\"usa-tag\"\r\n  [ngClass]=\"to.tagClass ? to.tagClass : 'sds-tag--info-white'\">\r\n  {{to.tagText}}</span>\r\n  <span>{{ to.label }}</span>\r\n    <span *ngIf=\"to.required && to.hideRequiredMarker !== true\">*</span>\r\n  </label>\r\n  <div *ngIf=\"showError\" class=\"usa-error-message\" [style.display]=\"'block'\">\r\n    <formly-validation-message [field]=\"field\"></formly-validation-message>\r\n  </div>\r\n  <small *ngIf=\"to.description\" class=\"form-text text-muted\">{{ to.description }}</small>\r\n  <ng-template #fieldComponent></ng-template>\r\n</div>\r\n  `,\r\n})\r\n\r\nexport class FormlyWrapperFormFieldComponent extends FieldWrapper {\r\n  @ViewChild('fieldComponent', { read: ViewContainerRef }) fieldComponent!: ViewContainerRef;\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
+            "jsdoctags": [
+                {
+                    "pos": 135,
+                    "end": 229,
+                    "flags": 0,
+                    "kind": 292,
+                    "atToken": {
+                        "pos": 135,
+                        "end": 136,
+                        "flags": 0,
+                        "kind": 57
+                    },
+                    "tagName": {
+                        "pos": 136,
+                        "end": 141,
+                        "flags": 0,
+                        "escapedText": "param"
+                    },
+                    "typeExpression": {
+                        "pos": 142,
+                        "end": 150,
+                        "flags": 0,
+                        "kind": 277,
+                        "type": {
+                            "pos": 143,
+                            "end": 149,
+                            "flags": 2097152,
+                            "kind": 137
+                        }
+                    },
+                    "name": {
+                        "pos": 152,
+                        "end": 163,
+                        "flags": 0,
+                        "kind": 145,
+                        "left": {
+                            "pos": 152,
+                            "end": 154,
+                            "flags": 0,
+                            "escapedText": "to"
+                        },
+                        "right": {
+                            "pos": 155,
+                            "end": 163,
+                            "flags": 0,
+                            "escapedText": "tagClass"
+                        }
+                    },
+                    "isNameFirst": false,
+                    "isBracketed": true,
+                    "comment": "Class to be added to the tag (default: sds-tag--info-white)"
+                },
+                {
+                    "pos": 229,
+                    "end": 294,
+                    "flags": 0,
+                    "kind": 292,
+                    "atToken": {
+                        "pos": 229,
+                        "end": 230,
+                        "flags": 0,
+                        "kind": 57
+                    },
+                    "tagName": {
+                        "pos": 230,
+                        "end": 235,
+                        "flags": 0,
+                        "escapedText": "param"
+                    },
+                    "typeExpression": {
+                        "pos": 236,
+                        "end": 244,
+                        "flags": 0,
+                        "kind": 277,
+                        "type": {
+                            "pos": 237,
+                            "end": 243,
+                            "flags": 2097152,
+                            "kind": 137
+                        }
+                    },
+                    "name": {
+                        "pos": 246,
+                        "end": 256,
+                        "flags": 0,
+                        "kind": 145,
+                        "left": {
+                            "pos": 246,
+                            "end": 248,
+                            "flags": 0,
+                            "escapedText": "to"
+                        },
+                        "right": {
+                            "pos": 249,
+                            "end": 256,
+                            "flags": 0,
+                            "escapedText": "tagText"
+                        }
+                    },
+                    "isNameFirst": false,
+                    "isBracketed": true,
+                    "comment": "Text to be shown inside the tag"
+                },
+                {
+                    "pos": 294,
+                    "end": 363,
+                    "flags": 0,
+                    "kind": 292,
+                    "atToken": {
+                        "pos": 294,
+                        "end": 295,
+                        "flags": 0,
+                        "kind": 57
+                    },
+                    "tagName": {
+                        "pos": 295,
+                        "end": 300,
+                        "flags": 0,
+                        "escapedText": "param"
+                    },
+                    "typeExpression": {
+                        "pos": 301,
+                        "end": 309,
+                        "flags": 0,
+                        "kind": 277,
+                        "type": {
+                            "pos": 302,
+                            "end": 308,
+                            "flags": 2097152,
+                            "kind": 137
+                        }
+                    },
+                    "name": {
+                        "pos": 311,
+                        "end": 324,
+                        "flags": 0,
+                        "kind": 145,
+                        "left": {
+                            "pos": 311,
+                            "end": 313,
+                            "flags": 0,
+                            "escapedText": "to"
+                        },
+                        "right": {
+                            "pos": 314,
+                            "end": 324,
+                            "flags": 0,
+                            "escapedText": "labelClass"
+                        }
+                    },
+                    "isNameFirst": false,
+                    "isBracketed": true,
+                    "comment": "Class to be applied to the label"
+                },
+                {
+                    "pos": 363,
+                    "end": 425,
+                    "flags": 0,
+                    "kind": 292,
+                    "atToken": {
+                        "pos": 363,
+                        "end": 364,
+                        "flags": 0,
+                        "kind": 57
+                    },
+                    "tagName": {
+                        "pos": 364,
+                        "end": 369,
+                        "flags": 0,
+                        "escapedText": "param"
+                    },
+                    "typeExpression": {
+                        "pos": 370,
+                        "end": 378,
+                        "flags": 0,
+                        "kind": 277,
+                        "type": {
+                            "pos": 371,
+                            "end": 377,
+                            "flags": 2097152,
+                            "kind": 137
+                        }
+                    },
+                    "name": {
+                        "pos": 380,
+                        "end": 388,
+                        "flags": 0,
+                        "kind": 145,
+                        "left": {
+                            "pos": 380,
+                            "end": 382,
+                            "flags": 0,
+                            "escapedText": "to"
+                        },
+                        "right": {
+                            "pos": 383,
+                            "end": 388,
+                            "flags": 0,
+                            "escapedText": "label"
+                        }
+                    },
+                    "isNameFirst": false,
+                    "isBracketed": true,
+                    "comment": "Text to be shown for the label"
+                },
+                {
+                    "pos": 425,
+                    "end": 484,
+                    "flags": 0,
+                    "kind": 292,
+                    "atToken": {
+                        "pos": 425,
+                        "end": 426,
+                        "flags": 0,
+                        "kind": 57
+                    },
+                    "tagName": {
+                        "pos": 426,
+                        "end": 431,
+                        "flags": 0,
+                        "escapedText": "param"
+                    },
+                    "typeExpression": {
+                        "pos": 432,
+                        "end": 440,
+                        "flags": 0,
+                        "kind": 277,
+                        "type": {
+                            "pos": 433,
+                            "end": 439,
+                            "flags": 2097152,
+                            "kind": 137
+                        }
+                    },
+                    "name": {
+                        "pos": 442,
+                        "end": 453,
+                        "flags": 0,
+                        "kind": 145,
+                        "left": {
+                            "pos": 442,
+                            "end": 444,
+                            "flags": 0,
+                            "escapedText": "to"
+                        },
+                        "right": {
+                            "pos": 445,
+                            "end": 453,
+                            "flags": 0,
+                            "escapedText": "required"
+                        }
+                    },
+                    "isNameFirst": false,
+                    "isBracketed": true,
+                    "comment": "Makes the field required"
+                },
+                {
+                    "pos": 484,
+                    "end": 557,
+                    "flags": 0,
+                    "kind": 292,
+                    "atToken": {
+                        "pos": 484,
+                        "end": 485,
+                        "flags": 0,
+                        "kind": 57
+                    },
+                    "tagName": {
+                        "pos": 485,
+                        "end": 490,
+                        "flags": 0,
+                        "escapedText": "param"
+                    },
+                    "typeExpression": {
+                        "pos": 491,
+                        "end": 499,
+                        "flags": 0,
+                        "kind": 277,
+                        "type": {
+                            "pos": 492,
+                            "end": 498,
+                            "flags": 2097152,
+                            "kind": 137
+                        }
+                    },
+                    "name": {
+                        "pos": 501,
+                        "end": 522,
+                        "flags": 0,
+                        "kind": 145,
+                        "left": {
+                            "pos": 501,
+                            "end": 503,
+                            "flags": 0,
+                            "escapedText": "to"
+                        },
+                        "right": {
+                            "pos": 504,
+                            "end": 522,
+                            "flags": 0,
+                            "escapedText": "hideRequiredMarker"
+                        }
+                    },
+                    "isNameFirst": false,
+                    "isBracketed": true,
+                    "comment": "Hides the required indicator"
+                },
+                {
+                    "pos": 557,
+                    "end": 626,
+                    "flags": 0,
+                    "kind": 292,
+                    "atToken": {
+                        "pos": 557,
+                        "end": 558,
+                        "flags": 0,
+                        "kind": 57
+                    },
+                    "tagName": {
+                        "pos": 558,
+                        "end": 563,
+                        "flags": 0,
+                        "escapedText": "param"
+                    },
+                    "typeExpression": {
+                        "pos": 564,
+                        "end": 572,
+                        "flags": 0,
+                        "kind": 277,
+                        "type": {
+                            "pos": 565,
+                            "end": 571,
+                            "flags": 2097152,
+                            "kind": 137
+                        }
+                    },
+                    "name": {
+                        "pos": 574,
+                        "end": 588,
+                        "flags": 0,
+                        "kind": 145,
+                        "left": {
+                            "pos": 574,
+                            "end": 576,
+                            "flags": 0,
+                            "escapedText": "to"
+                        },
+                        "right": {
+                            "pos": 577,
+                            "end": 588,
+                            "flags": 0,
+                            "escapedText": "description"
+                        }
+                    },
+                    "isNameFirst": false,
+                    "isBracketed": true,
+                    "comment": "Add a description below the label"
+                }
+            ],
             "extends": "FieldWrapper"
         },
         {

@@ -146,7 +146,7 @@ export function minDateFromDateRangePicker(model: any, formState: any, field: Fo
 
 export function maxDateToDateRangePicker(model: any, formState: any, field: FormlyFieldConfig) {
   let date = null;
-  //Setting a max date for the date range picker 
+  //Setting a max date for the date range picker
   if (field.parent.templateOptions.maxDate) {
     date = new Date(field.parent.templateOptions.maxDate.getTime());
   }

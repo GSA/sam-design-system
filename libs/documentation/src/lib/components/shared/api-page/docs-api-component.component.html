@@ -1,4 +1,4 @@
-<table class="usa-table usa-table--borderless width-full">
+<table class="usa-table usa-table--borderless width-full" *ngIf="api.inputs.length">
   <caption><h2>Inputs</h2></caption>
   <thead class="usa-sr-only">
     <tr>
@@ -19,7 +19,7 @@
   </tbody>
 </table>
 
-<table class="usa-table usa-table--borderless width-full">
+<table class="usa-table usa-table--borderless width-full" *ngIf="api.outputs.length">
   <caption><h2>Outputs</h2></caption>
   <thead class="usa-sr-only">
     <tr>
@@ -40,7 +40,7 @@
   </tbody>
 </table>
 
-<table class="usa-table usa-table--borderless width-full">
+<table class="usa-table usa-table--borderless width-full" *ngIf="api.methods.length">
   <caption><h2>Methods</h2></caption>
   <thead class="usa-sr-only">
     <tr>
@@ -61,7 +61,7 @@
   </tbody>
 </table>
 
-<table class="usa-table usa-table--borderless width-full">
+<table class="usa-table usa-table--borderless width-full" *ngIf="api.properties.length">
   <caption><h2>Properties</h2></caption>
   <thead class="usa-sr-only">
     <tr>
@@ -77,6 +77,48 @@
       <td valign="top" class="api-content">
         <div [innerHTML]="property.description"></div>
         <p *ngIf="property.type"><span class="text-italic font-sans-3xs">Type: </span><code class="text-indigo bg-white margin-0" [innerHTML]="property.type"></code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<table class="usa-table usa-table--borderless width-full" *ngIf="wrappers.length">
+  <caption><h2>Wrappers</h2></caption>
+  <thead class="usa-sr-only">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let wrapper of wrappers">
+      <td scope="row" valign="top" class="api-label">
+        <p><code class="text-magenta bg-white" [innerHTML]="wrapper"></code></p>
+      </td>
+      <td valign="top" class="api-content">
+        <p class="margin-bottom-0"><span class="text-italic text-semibold font-sans-3xs">Template: </span></p>
+        <docs-highlight language="html" [sourceCode]="getWrapper(wrapper).template"></docs-highlight>
+
+        <table class="usa-table usa-table--borderless usa-table--row-borders--thin usa-table--thin width-full" *ngIf="wrappers.length">
+          <caption><p class="margin-bottom-0"><span class="text-italic text-semibold font-sans-3xs">Properties: </span></p></caption>
+          <thead>
+            <tr>
+              <th scope="col"><span class="text-normal font-sans-3xs">Name</span></th>
+              <th scope="col"><span class="text-normal font-sans-3xs">Description</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let tag of getTags(getWrapper(wrapper).jsdoctags)">
+              <td scope="row" valign="top" class="api-label">
+                <code class="text-magenta bg-white" [innerHTML]="tag.name"></code>
+              </td>
+              <td valign="top" class="api-content">
+                <code class="text-indigo bg-white" [innerHTML]="tag.comment"></code>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </td>
     </tr>
   </tbody>

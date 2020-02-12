@@ -2,6 +2,10 @@
 import { Component, ViewChild, ViewContainerRef, OnInit } from '@angular/core';
 import { FieldWrapper } from '@ngx-formly/core';
 
+/**
+ * @param [to.ariaHidden] Hides accordion label
+ */
+
 @Component({
   selector: 'sam-formly-filter-wrapper-form-field',
   template: `

@@ -2,6 +2,10 @@
 import { Component, ViewChild, ViewContainerRef } from '@angular/core';
 import { FieldWrapper } from '@ngx-formly/core';
 
+/**
+ * @param {string} [to.label] Text to be shown for the accordion label
+ */
+
 @Component({
   selector: 'sam-formly-accordian-form-field',
   template: `
