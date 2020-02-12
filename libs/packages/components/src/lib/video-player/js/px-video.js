@@ -1,11 +1,9 @@
 export function InitPxVideo(options) {
 
-  console.log('I am from component function');
-
 
   "use strict";
 
-console.log("Option Debug......."+options.videoTitle);
+// console.log("Option Debug......."+options.videoTitle);
 
 
   // Utilities for caption time codes
@@ -380,7 +378,7 @@ console.log("Option Debug......."+options.videoTitle);
 
   if (options.debug) {
 
-    console.log(obj.browserName + " " + obj.browserMajorVersion);
+    // console.log(obj.browserName + " " + obj.browserMajorVersion);
 
   }
 
@@ -428,7 +426,7 @@ console.log("Option Debug......."+options.videoTitle);
 
   if (options.debug) {
 
-    console.log("Inserting custom video controls");
+    // console.log("Inserting custom video controls");
 
   }
 
