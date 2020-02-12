@@ -159,11 +159,9 @@
             "karmaConfig": "apps/sam-design-system-site/karma.conf.js",
             "styles": [
               "apps/sam-design-system-site/src/styles.scss"
-              // "libs/packages/components/src/lib/video-player/css/px-video.css"
             ],
             "scripts": [
-              // "libs/packages/components/src/lib/video-player/js/px-video.js",
-              // "libs/packages/components/src/lib/video-player/js/strings.js"
+
             ],
             "assets": [
               "apps/sam-design-system-site/src/favicon.ico",

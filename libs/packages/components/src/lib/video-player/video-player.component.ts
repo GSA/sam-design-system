@@ -1,11 +1,13 @@
 import { Component, OnInit, Input, AfterViewInit, Inject, ElementRef, Renderer2 } from '@angular/core';
-import { InitPxVideo } from '../../../../../../apps/sam-design-system-site/src/assets/js/px-video';
-import { GLOBAL_STRINGS } from '../../../../../../apps/sam-design-system-site/src/assets/js/strings';
+import { InitPxVideo } from '../video-player/js/px-video';
+// import { GLOBAL_STRINGS } from '../../../../../../apps/sam-design-system-site/src/assets/js/strings';
+
+
 
 @Component({
   selector: 'sds-video-player',
-  templateUrl: './video-player.component.html'
-  // styleUrls: ['css/px-video.css']
+  templateUrl: './video-player.component.html',
+  styleUrls: ['./video-player.component.scss']
 })
 export class SdsVideoPlayerComponent implements OnInit, AfterViewInit {
   videoSource1: string;
@@ -46,22 +48,6 @@ export class SdsVideoPlayerComponent implements OnInit, AfterViewInit {
       videoTitle: 'clips of stand-up comedy',
       debug: true
     });
-
-  //  (window as any).InitPxVideo({
-  //     videoId: this.videoPlayerId,
-  //     captionsOnDefault: true,
-  //     seekInterval: this.videoSeekInterval,
-  //     videoTitle: 'clips of stand-up comedy',
-  //     debug: this.videoDebug
-  //   });
-
-    //  (document as any).InitPxVideo({
-    //   videoId: this.videoPlayerId,
-    //   captionsOnDefault: true,
-    //   seekInterval: this.videoSeekInterval,
-    //   videoTitle: 'clips of stand-up comedy',
-    //   debug: this.videoDebug
-    // });
   }
 
   constructor() {
