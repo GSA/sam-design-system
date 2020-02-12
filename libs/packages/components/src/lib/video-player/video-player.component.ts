@@ -1,13 +1,11 @@
-import { Component, OnInit, Input, AfterViewInit, Inject, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, ViewEncapsulation } from '@angular/core';
 import { InitPxVideo } from '../video-player/js/px-video';
-// import { GLOBAL_STRINGS } from '../../../../../../apps/sam-design-system-site/src/assets/js/strings';
-
-
 
 @Component({
   selector: 'sds-video-player',
   templateUrl: './video-player.component.html',
-  styleUrls: ['./video-player.component.scss']
+  styleUrls: ['./css/px-video.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class SdsVideoPlayerComponent implements OnInit, AfterViewInit {
   videoSource1: string;

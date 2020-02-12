@@ -87,7 +87,7 @@
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "minimist": "^1.2.0",
-    "ng-packagr": "^4.2.0",
+    "ng-packagr": "^4.7.1",
     "ngrx-store-freeze": "0.2.4",
     "prettier": "1.15.2",
     "protractor": "~5.4.0",
