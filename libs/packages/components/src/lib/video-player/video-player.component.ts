@@ -1,13 +1,17 @@
-import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, Inject, ElementRef, Renderer2 } from '@angular/core';
+import { InitPxVideo } from '../../../../../../apps/sam-design-system-site/src/assets/js/px-video';
+import { GLOBAL_STRINGS } from '../../../../../../apps/sam-design-system-site/src/assets/js/strings';
 
 @Component({
   selector: 'sds-video-player',
-  templateUrl: './video-player.component.html',
-  styleUrls: ['./video-player.component.scss']
+  templateUrl: './video-player.component.html'
+  // styleUrls: ['css/px-video.css']
 })
 export class SdsVideoPlayerComponent implements OnInit, AfterViewInit {
   videoSource1: string;
   VvtFileURL: string;
+  GLOBAL_STRINGS: any;
+
 
   @Input('videoSourceWebm') videoSourceWebm: string;
   @Input('videoSourceMp4') videoSourceMp4: string;
@@ -22,20 +26,47 @@ export class SdsVideoPlayerComponent implements OnInit, AfterViewInit {
   @Input('imageSrc') imageSrc: string;
 
 
-  constructor() {
 
-  }
 
   ngAfterViewInit() {
-    (window as any).InitPxVideo({
+ this.GLOBAL_STRINGS = {
+      PLAY: "Play",
+      PAUSE: "Pause",
+      TOGGLE_FULL_SCREEN: "Toggle full screen",
+      MUTE: "Mute",
+      RESTART: "Restart",
+      CAPTIONS: "Closed captions",
+      REWIND: "Rewind",
+      FORWARD: "Forward"
+    };
+    InitPxVideo({
       videoId: this.videoPlayerId,
       captionsOnDefault: true,
       seekInterval: this.videoSeekInterval,
       videoTitle: 'clips of stand-up comedy',
-      debug: this.videoDebug
+      debug: true
     });
+
+  //  (window as any).InitPxVideo({
+  //     videoId: this.videoPlayerId,
+  //     captionsOnDefault: true,
+  //     seekInterval: this.videoSeekInterval,
+  //     videoTitle: 'clips of stand-up comedy',
+  //     debug: this.videoDebug
+  //   });
+
+    //  (document as any).InitPxVideo({
+    //   videoId: this.videoPlayerId,
+    //   captionsOnDefault: true,
+    //   seekInterval: this.videoSeekInterval,
+    //   videoTitle: 'clips of stand-up comedy',
+    //   debug: this.videoDebug
+    // });
   }
 
+  constructor() {
+
+}
   ngOnInit() {
 
   }

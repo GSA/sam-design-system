@@ -1,5 +1,7 @@
 function InitPxVideo(options) {
 
+alert('Im loading from Component');
+
   "use strict";
 
   // Utilities for caption time codes

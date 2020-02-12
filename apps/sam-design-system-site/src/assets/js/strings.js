@@ -9,7 +9,7 @@
 //   FORWARD: "Forward"
 // };
 
-var GLOBAL_STRINGS = {
+export var GLOBAL_STRINGS = {
 
   PLAY: "Play",
 

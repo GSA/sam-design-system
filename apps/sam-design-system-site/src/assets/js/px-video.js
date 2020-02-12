@@ -1,9 +1,11 @@
-function InitPxVideo(options) {
+export function InitPxVideo(options) {
 
+  alert('I am from assets function');
 
 
   "use strict";
 
+console.log("Option Debug......."+options.videoTitle);
 
 
   // Utilities for caption time codes
@@ -1337,3 +1339,4 @@ function InitPxVideo(options) {
   }, false);
 
 };
+
