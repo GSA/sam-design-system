@@ -1,4 +1,4 @@
-import { FORMLY_CONFIG } from './../../../../../../packages/sam-formly/src/lib/formly/formly.config';
+import { FORMLY_CONFIG } from '@gsa-sam/sam-formly';
 import {Component, ChangeDetectionStrategy, Input, OnInit} from '@angular/core';
 import apis from 'libs/documentation/src/lib/apidoc';
 
@@ -106,6 +106,8 @@ export class DocumentationAPIComponent implements OnInit {
   @Input() pkg: string;
 
   ngOnInit(): void {
+    console.log('formly config --->' + FORMLY_CONFIG);
+
     this.api = getAPI(this.pkg, this.component);
 
     if(this.pkg === 'formly') {
