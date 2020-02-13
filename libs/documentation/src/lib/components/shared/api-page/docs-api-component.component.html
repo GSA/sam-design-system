@@ -100,7 +100,7 @@
         <p class="margin-bottom-0"><span class="text-italic text-semibold font-sans-3xs">Template: </span></p>
         <docs-highlight language="html" [sourceCode]="getWrapper(wrapper).template"></docs-highlight>
 
-        <table class="usa-table usa-table--borderless usa-table--row-borders--thin usa-table--thin width-full" *ngIf="wrappers.length">
+        <table class="usa-table usa-table--borderless usa-table--row-borders--thin usa-table--thin width-full" *ngIf="getTags(getWrapper(wrapper).jsdoctags).length">
           <caption><p class="margin-bottom-0"><span class="text-italic text-semibold font-sans-3xs">Properties: </span></p></caption>
           <thead>
             <tr>
