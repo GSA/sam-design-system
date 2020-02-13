@@ -11,6 +11,7 @@ interface apiDesc {
 }
 
 export function findComponentAPI(pkg, component) {
+  console.log('in get comp api');
   let target: any;
 
   Object.values(apis[pkg].components)
@@ -24,7 +25,7 @@ export function findComponentAPI(pkg, component) {
 }
 
 export function getAPI(pkg, component) {
-
+  console.log('in get api');
   const api:apiDesc = {
     inputs: {},
     outputs: {},
@@ -48,6 +49,7 @@ export function getAPI(pkg, component) {
 }
 
 export function getFormWrapper(component) {
+  console.log('in get form wrapper');
   let wrappers: string[];
 
   Object.values(FORMLY_CONFIG.types)
@@ -100,6 +102,7 @@ export class DocumentationAPIComponent implements OnInit {
   }
 
   getWrapper(wrapper) {
+    console.log('in wrapper');
     let wrapperComponentName: string;
 
     Object.values(FORMLY_CONFIG.wrappers)
@@ -120,6 +123,7 @@ export class DocumentationAPIComponent implements OnInit {
   }
 
   getTags(tags) {
+    console.log('in tags');
     const tagList: any[] = [];
 
     tags.forEach(tag => {
@@ -133,6 +137,7 @@ export class DocumentationAPIComponent implements OnInit {
   }
 
   getArgs(method) {
+    console.log('in args');
     const argString: String[] = [];
     method.args
     .forEach(argument => {
