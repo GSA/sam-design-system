@@ -106,7 +106,8 @@ export class DocumentationAPIComponent implements OnInit {
   @Input() pkg: string;
 
   ngOnInit(): void {
-    console.log('formly config --->' + FORMLY_CONFIG);
+    console.log('formly config --->');
+    console.log(FORMLY_CONFIG);
 
     this.api = getAPI(this.pkg, this.component);
 
