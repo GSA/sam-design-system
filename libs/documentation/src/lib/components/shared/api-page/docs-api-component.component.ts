@@ -11,7 +11,7 @@ interface apiDesc {
 }
 
 export function findComponentAPI(pkg, component) {
-  console.log('in get comp api');
+  console.log('in get comp api ' + pkg + ' - ' + component);
   let target: any;
 
 
@@ -24,9 +24,11 @@ export function findComponentAPI(pkg, component) {
   .filter((entity): entity is any => <any>entity)
   .filter((entity): entity is any => entity.name.startsWith(`${component}`))
   .forEach(entity => {
+    console.log(entity);
     target = entity;
   });
 
+  console.log(target);
   return target;
 }
 
@@ -43,6 +45,8 @@ export function getAPI(pkg, component) {
   };
 
   const entity:any = findComponentAPI(pkg, component);
+
+  console.log(entity);
 
   if(entity) {
     api.inputs = entity.inputsClass;
