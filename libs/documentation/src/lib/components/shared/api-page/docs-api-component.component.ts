@@ -14,6 +14,12 @@ export function findComponentAPI(pkg, component) {
   console.log('in get comp api');
   let target: any;
 
+
+  console.log('api ---->');
+  console.log(apis);
+  console.log('components ---->');
+  console.log(apis[pkg].components);
+
   Object.values(apis[pkg].components)
   .filter((entity): entity is any => <any>entity)
   .filter((entity): entity is any => entity.name.startsWith(`${component}`))
@@ -25,6 +31,8 @@ export function findComponentAPI(pkg, component) {
 }
 
 export function getAPI(pkg, component) {
+  console.log(pkg);
+  console.log(component);
   console.log('in get api');
   const api:apiDesc = {
     inputs: {},
