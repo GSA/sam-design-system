@@ -566,7 +566,7 @@ export function InitPxVideo(options) {
 
     if (options.debug) {
 
-      console.log("No caption track found.");
+      // console.log("No caption track found.");
 
     }
 

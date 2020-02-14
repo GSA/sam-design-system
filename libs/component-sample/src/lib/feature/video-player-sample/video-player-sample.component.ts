@@ -14,7 +14,6 @@ export class VideoPlayerSampleComponent implements OnInit {
   poster: string;
 	controls: string;
   id: string;
-
 	seekInterval: number;
 	debug: boolean;
   preload: string;
@@ -28,7 +27,7 @@ export class VideoPlayerSampleComponent implements OnInit {
     // this.sourceWebm = "http://techslides.com/demos/sample-videos/small.webm";
     // this.sourceMp4 = "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4";
     this.sourceMp4 = "https://media.w3.org/2010/05/sintel/trailer.mp4";
-    this.height = "360";
+    this.height = '360';
     this.width = "640";
     this.id = "sampleVid1";
     this.caption ="";
@@ -38,6 +37,4 @@ export class VideoPlayerSampleComponent implements OnInit {
     this.preload = "none";
     this.imageSrc = "http://images.crestock.com/150000-159999/151031-xs.jpg";
   }
-
-
 }

@@ -44,7 +44,11 @@ export class SdsVideoPlayerComponent implements OnInit, AfterViewInit {
       captionsOnDefault: true,
       seekInterval: this.videoSeekInterval,
       videoTitle: 'clips of stand-up comedy',
-      debug: true
+      debug: true,
+      width: this.videoWidth,
+      height: this.videoHeight,
+      poster: this.videoPoster,
+      src: this.videoSourceMp4
     });
   }
 

@@ -1,4 +1,4 @@
- <div class="px-video-container" [id]="videoPlayerId" [style.width.px]="videoWidth" >
+ <div class="px-video-container" id="{{videoPlayerId}}" [style.width.px]="videoWidth" >
   <div class="px-video-img-captions-container" >
       <div class="px-video-captions hide" aria-hidden="true"></div>
       <video width="{{videoWidth}}" height="{{videoHeight}}" poster="{{videoPoster}}" controls preload={{videoPreload}}>
@@ -7,7 +7,7 @@
           <!-- If Firefox/Opera/Chrome/IE -->
           <source src="{{videoSourceWebm}}" type="video/webm" />
           <iframe allowfullscreen="true"></iframe>
-          <track kind="subtitles" kind="captions" label="English captions" src="{{VvtFileURL}}" srclang="en" default />
+          <track kind="subtitles" kind="captions" label="English captions" src="{{videoCaption}}" srclang="en" default />
           <div>
               <a href="{{videoSourceMp4}}">
                   <img src="{{imageSrc}}" width="{{videoWidth}}" height="{{videoHeight}}" alt="download video" />
