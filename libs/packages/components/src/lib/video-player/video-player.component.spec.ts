@@ -2,9 +2,11 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SdsVideoPlayerComponent } from './video-player.component';
 import { By } from '@angular/platform-browser';
 import { InitPxVideo } from './js/px-video';
+import { Component } from '@angular/core';
 
-class intiPxVideoObj {
+class IntiPxVideoObj {
   InitPxVideo(options){
+
   }
 };
 
@@ -12,21 +14,20 @@ class intiPxVideoObj {
 describe('VideoPlayerComponent', () => {
   let component: SdsVideoPlayerComponent;
   let fixture: ComponentFixture<SdsVideoPlayerComponent>;
-
-  // beforeEach(inject(InitPxVideo({})));
-
+  let initPx: IntiPxVideoObj;
 
   beforeEach(async() => {
     TestBed.configureTestingModule({
       declarations: [ SdsVideoPlayerComponent ],
       providers: [
-        {provide: InitPxVideo, useClass: intiPxVideoObj}
+        {provide: InitPxVideo, useClass: IntiPxVideoObj}
       ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
+    initPx = new IntiPxVideoObj();
     fixture = TestBed.createComponent(SdsVideoPlayerComponent);
     component = fixture.componentInstance;
     component.videoWidth = '640';
@@ -35,8 +36,18 @@ describe('VideoPlayerComponent', () => {
     component.videoSourceMp4 = "https://media.w3.org/2010/05/sintel/trailer.mp4";
   });
 
-  it('Should get same video Height, Width, poster and Preload value  as an Input', ()=>{
 
+  it('InitVideo', ()=>{
+    expect(initPx.InitPxVideo({
+      videoId: component.videoPoster,
+      captionsOnDefault: true,
+      seekInterval: component.videoSeekInterval,
+      videoTitle: 'clips of stand-up comedy',
+      debug: true
+    }))
+  });
+
+  it('Should get same video Height, Width, poster and Preload value  as an Input', ()=>{
     component.videoPoster = "http://www.kodaikanalholidays.com/img/packages/Ooty3Nights4DaysHolidayPackage.jpg";
     component.videoPreload = 'none';
     component.ngOnInit();
@@ -97,5 +108,6 @@ describe('VideoPlayerComponent', () => {
     element.nativeElement.setAttribute('width', component.videoWidth);
     expect(element.nativeElement.getAttribute('width')).toBe(component.videoWidthEl);
   });
+
 
 });

@@ -32,6 +32,8 @@ export class SdsVideoPlayerComponent implements OnInit, AfterViewInit {
   @Input('videoDebug') videoDebug: boolean;
   @Input('videoPreload') videoPreload: string;
   @Input('imageSrc') imageSrc: string;
+  @Input('videoTitle') videoTitle: string;
+  @Input('captionOnDefault') captionOnDefault: boolean;
 
 
 
@@ -40,10 +42,10 @@ export class SdsVideoPlayerComponent implements OnInit, AfterViewInit {
 
     InitPxVideo({
       videoId: this.videoPlayerId,
-      captionsOnDefault: true,
+      captionsOnDefault: this.captionOnDefault,
       seekInterval: this.videoSeekInterval,
-      videoTitle: 'clips of stand-up comedy',
-      debug: true
+      videoTitle: this.videoTitle,
+      debug: this.videoDebug
     });
   }
 
