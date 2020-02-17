@@ -10,6 +10,14 @@ import { InitPxVideo } from '../video-player/js/px-video';
 export class SdsVideoPlayerComponent implements OnInit, AfterViewInit {
   videoSource1: string;
   VvtFileURL: string;
+  videoHeightEl: string;
+  videoWidthEl: string;
+  videoPosterEl: string;
+  videoPreloadEl: string;
+  videoSourceMp4El: string;
+  videoSourceWebmEl: string;
+  imageSrcEl: string;
+  videoIdEl: string;
   GLOBAL_STRINGS: any;
 
 
@@ -29,26 +37,13 @@ export class SdsVideoPlayerComponent implements OnInit, AfterViewInit {
 
 
   ngAfterViewInit() {
- this.GLOBAL_STRINGS = {
-      PLAY: "Play",
-      PAUSE: "Pause",
-      TOGGLE_FULL_SCREEN: "Toggle full screen",
-      MUTE: "Mute",
-      RESTART: "Restart",
-      CAPTIONS: "Closed captions",
-      REWIND: "Rewind",
-      FORWARD: "Forward"
-    };
+
     InitPxVideo({
       videoId: this.videoPlayerId,
       captionsOnDefault: true,
       seekInterval: this.videoSeekInterval,
       videoTitle: 'clips of stand-up comedy',
-      debug: true,
-      width: this.videoWidth,
-      height: this.videoHeight,
-      poster: this.videoPoster,
-      src: this.videoSourceMp4
+      debug: true
     });
   }
 
@@ -56,6 +51,13 @@ export class SdsVideoPlayerComponent implements OnInit, AfterViewInit {
 
 }
   ngOnInit() {
-
+    this.videoWidthEl = this.videoWidth;
+    this.videoHeightEl = this.videoHeight;
+    this.videoIdEl = this.videoPlayerId;
+    this.videoPosterEl = this.videoPoster;
+    this.videoPreloadEl = this.videoPreload;
+    this.videoSourceMp4El = this.videoSourceMp4;
+    this.videoSourceWebmEl = this.videoSourceWebm;
+    this.imageSrcEl = this.imageSrc;
   }
 }

@@ -300,7 +300,7 @@ export function InitPxVideo(options) {
 
 
 
-      obj.movie.setAttribute('width', obj.movieWidth);
+      obj.movie.setAttribute('width', obj.movieWidth + "px"); //px is added by Hemal
 
       obj.movie.setAttribute('height', obj.movieHeight);
 
@@ -502,7 +502,7 @@ export function InitPxVideo(options) {
 
   }
 
-  // obj.container.setAttribute("style", "width:" + obj.movieWidth + "px");
+  // obj.container.setAttribute("style", "width:" + obj.movieWidth + "px");   //Added by Hemal
 
 
 
