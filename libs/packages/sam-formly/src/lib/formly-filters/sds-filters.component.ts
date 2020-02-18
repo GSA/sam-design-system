@@ -21,6 +21,12 @@ export class SdsFiltersComponent implements OnInit {
    */
   private timeoutNumber: number;
 
+  /**
+   * debounce time for current page input
+   */
+  @Input() debounceTime = 150;
+
+
   ngOnInit(): void {
     this.modelChange.subscribe((change) => {
       window.clearTimeout(this.timeoutNumber);
@@ -29,7 +35,7 @@ export class SdsFiltersComponent implements OnInit {
       if (this.formlyUpdateComunicationService) {
         this.formlyUpdateComunicationService.updateFilter(change);
       }
-    }, 150);
+    }, this.debounceTime);
     })
   }
 
