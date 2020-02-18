@@ -24,7 +24,7 @@ export class SdsFiltersComponent implements OnInit {
   /**
    * debounce time for current page input
    */
-  @Input() debounceTime = 150;
+  @Input() debounceTime = 0;
 
 
   ngOnInit(): void {
