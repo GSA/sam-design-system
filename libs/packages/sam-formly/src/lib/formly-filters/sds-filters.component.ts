@@ -16,13 +16,20 @@ import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comuni
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SdsFiltersComponent implements OnInit {
+/**
+   * Timer id for the timer awaiting the service call for more typeing
+   */
+  private timeoutNumber: number;
 
   ngOnInit(): void {
     this.modelChange.subscribe((change) => {
+      window.clearTimeout(this.timeoutNumber);
+      this.timeoutNumber = window.setTimeout(() => {
       this.filterChange.emit(change);
       if (this.formlyUpdateComunicationService) {
         this.formlyUpdateComunicationService.updateFilter(change);
       }
+    }, 150);
     })
   }
 
