@@ -32,7 +32,8 @@ export class VideoPlayerSampleComponent implements OnInit {
     this.height = '360';
     this.width = "550";
     this.id = "sampleVid1";
-    this.caption ="";
+    this.caption = '';
+    // this.caption =" https://drive.google.com/open?id=1J7UFtefctgkMib7A4GTHTkU3CmRO0bkx";
     this.poster = "http://www.kodaikanalholidays.com/img/packages/Ooty3Nights4DaysHolidayPackage.jpg";
     this.seekInterval = 20;
     this.debug = true;

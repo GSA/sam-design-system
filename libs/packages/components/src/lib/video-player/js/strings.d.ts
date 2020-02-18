@@ -1,1 +1,1 @@
-export var GLOBAL_STRINGS: object;
+export var GLOBAL_STRINGS: any;

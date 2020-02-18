@@ -1,5 +1,10 @@
 export function InitPxVideo(options) {
 
+// Added for IE fullscreen Issue by
+
+  // var wscript = new ActiveXObject("Wscript.shell");
+  // wscript.SendKeys("{F11}");
+
 
   "use strict";
 
@@ -274,13 +279,14 @@ export function InitPxVideo(options) {
 
       obj.movie.setAttribute('height', '100%');
 
+
     } else {
 
       obj.fullScreenBtn.checked = false;
 
     // revert back to default styles
 
-      obj.container.setAttribute("style", "width:" + obj.movieWidth + "px");  // Added By Hemal
+      obj.container.setAttribute("style", "width:" + obj.movieWidth + "px");  // Added By
 
       obj.controls.className = "px-video-controls";
 
@@ -300,7 +306,7 @@ export function InitPxVideo(options) {
 
 
 
-      obj.movie.setAttribute('width', obj.movieWidth + "px"); //px is added by Hemal
+      obj.movie.setAttribute('width', obj.movieWidth + "px"); //px is added by
 
       obj.movie.setAttribute('height', obj.movieHeight);
 
@@ -502,7 +508,7 @@ export function InitPxVideo(options) {
 
   }
 
-  // obj.container.setAttribute("style", "width:" + obj.movieWidth + "px");   //Added by Hemal
+  obj.container.setAttribute("style", "width:" + obj.movieWidth + "px");   //Added by Hemal
 
 
 

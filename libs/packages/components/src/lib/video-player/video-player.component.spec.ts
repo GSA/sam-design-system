@@ -6,7 +6,6 @@ import { Component } from '@angular/core';
 
 class IntiPxVideoObj {
   InitPxVideo(options){
-
   }
 };
 
@@ -14,7 +13,6 @@ class IntiPxVideoObj {
 describe('VideoPlayerComponent', () => {
   let component: SdsVideoPlayerComponent;
   let fixture: ComponentFixture<SdsVideoPlayerComponent>;
-  let initPx: IntiPxVideoObj;
 
   beforeEach(async() => {
     TestBed.configureTestingModule({
@@ -27,24 +25,12 @@ describe('VideoPlayerComponent', () => {
   });
 
   beforeEach(() => {
-    initPx = new IntiPxVideoObj();
     fixture = TestBed.createComponent(SdsVideoPlayerComponent);
     component = fixture.componentInstance;
     component.videoWidth = '640';
     component.imageSrc = "http://images.crestock.com/150000-159999/151031-xs.jpg";
     component.videoHeight = '360';
     component.videoSourceMp4 = "https://media.w3.org/2010/05/sintel/trailer.mp4";
-  });
-
-
-  it('InitVideo', ()=>{
-    expect(initPx.InitPxVideo({
-      videoId: component.videoPoster,
-      captionsOnDefault: true,
-      seekInterval: component.videoSeekInterval,
-      videoTitle: 'clips of stand-up comedy',
-      debug: true
-    }))
   });
 
   it('Should get same video Height, Width, poster and Preload value  as an Input', ()=>{
@@ -73,7 +59,7 @@ describe('VideoPlayerComponent', () => {
     expect(element.nativeElement.getAttribute("id")).toBe(component.videoIdEl);
   });
 
-  it('Video Source should be get same value as Input value', ()=> {
+  it('Video and Source element should be get same value as Input value', ()=> {
 
     component.videoSourceWebm = "http://techslides.com/demos/sample-videos/small.webm";
     component.ngOnInit();
@@ -109,5 +95,11 @@ describe('VideoPlayerComponent', () => {
     expect(element.nativeElement.getAttribute('width')).toBe(component.videoWidthEl);
   });
 
+  xit('should accept track caption from input', ()=>{
+    component.ngOnInit();
+    const element = fixture.debugElement.query(By.css('track'));
+    element.nativeElement.setAttribute('src', component.videoCaption);
+    expect(element.nativeElement.getAttribute('src')).toBe(component.videoCaptionEl);
+  });
 
 });

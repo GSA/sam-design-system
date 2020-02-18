@@ -8,7 +8,6 @@ import { InitPxVideo } from '../video-player/js/px-video';
   encapsulation: ViewEncapsulation.None,
 })
 export class SdsVideoPlayerComponent implements OnInit, AfterViewInit {
-  videoSource1: string;
   VvtFileURL: string;
   videoHeightEl: string;
   videoWidthEl: string;
@@ -16,6 +15,7 @@ export class SdsVideoPlayerComponent implements OnInit, AfterViewInit {
   videoPreloadEl: string;
   videoSourceMp4El: string;
   videoSourceWebmEl: string;
+  videoCaptionEl: string;
   imageSrcEl: string;
   videoIdEl: string;
   GLOBAL_STRINGS: any;
@@ -39,6 +39,25 @@ export class SdsVideoPlayerComponent implements OnInit, AfterViewInit {
 
 
   ngAfterViewInit() {
+    this.GLOBAL_STRINGS = {
+
+      PLAY: "Play",
+
+      PAUSE: "Pause",
+
+      TOGGLE_FULL_SCREEN: "Toggle full screen",
+
+      MUTE: "Mute",
+
+      RESTART: "Restart",
+
+      CAPTIONS: "Closed captions",
+
+      REWIND: "Rewind",
+
+      FORWARD: "Forward"
+
+    };
 
     InitPxVideo({
       videoId: this.videoPlayerId,
@@ -61,5 +80,6 @@ export class SdsVideoPlayerComponent implements OnInit, AfterViewInit {
     this.videoSourceMp4El = this.videoSourceMp4;
     this.videoSourceWebmEl = this.videoSourceWebm;
     this.imageSrcEl = this.imageSrc;
+    this.videoCaptionEl = this.videoCaption;
   }
 }
