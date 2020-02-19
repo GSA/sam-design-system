@@ -20,22 +20,19 @@ export class SdsVideoPlayerComponent implements OnInit, AfterViewInit {
   videoIdEl: string;
   GLOBAL_STRINGS: any;
 
-
-  @Input('videoSourceWebm') videoSourceWebm: string;
-  @Input('videoSourceMp4') videoSourceMp4: string;
-  @Input('videoHeight') videoHeight: string;
-  @Input('videoWidth') videoWidth: string;
-  @Input('videoPlayerId') videoPlayerId: string;
-  @Input('videoCaption') videoCaption: string;
-  @Input('videoPoster') videoPoster: string;
-  @Input('videoSeekInterval') videoSeekInterval: number;
-  @Input('videoDebug') videoDebug: boolean;
-  @Input('videoPreload') videoPreload: string;
-  @Input('imageSrc') imageSrc: string;
-  @Input('videoTitle') videoTitle: string;
-  @Input('captionOnDefault') captionOnDefault: boolean;
-
-
+  @Input() videoSourceWebm: string;
+  @Input() videoSourceMp4: string;
+  @Input() videoHeight: string;
+  @Input() videoWidth: string;
+  @Input() videoPlayerId: string;
+  @Input() videoCaption: string;
+  @Input() videoPoster: string;
+  @Input() videoSeekInterval: number;
+  @Input() videoDebug: boolean;
+  @Input() videoPreload: string;
+  @Input() imageSrc: string;
+  @Input() videoTitle: string;
+  @Input() captionOnDefault: boolean;
 
 
   ngAfterViewInit() {
@@ -69,7 +66,6 @@ export class SdsVideoPlayerComponent implements OnInit, AfterViewInit {
   }
 
   constructor() {
-
 }
   ngOnInit() {
     this.videoWidthEl = this.videoWidth;
