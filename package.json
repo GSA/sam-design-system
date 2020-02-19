@@ -1,6 +1,6 @@
 {
   "name": "sam-design-system",
-  "version": "0.6.5",
+  "version": "0.6.6",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -54,7 +54,7 @@
     "@ngrx/effects": "6.1.2",
     "@ngrx/router-store": "6.1.2",
     "@ngrx/store": "6.1.2",
-    "@ngx-formly/core": "^5.4.1",
+    "@ngx-formly/core": "^5.5.11",
     "@nrwl/nx": "7.5.0",
     "core-js": "^2.5.4",
     "rxjs": "~6.3.3",
