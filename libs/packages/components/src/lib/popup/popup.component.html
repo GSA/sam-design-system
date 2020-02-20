@@ -1,16 +1,14 @@
 <div>
   <div class="sds-popup">
-  <div [innerHTML]="eleInnerContentEl"></div>
-  <div
-          class="sds-popup__content"
-              ngClass="{{sdsPopPositionEl}} , {{inOrOutPositionEl}}"
-          >
-            <span class="tooltip tooltip-left">
-              <span [innerHTML]="tooltipContentEl"></span>
-            </span>
-          </div>
-        </div>
-      </div>
+    <div [innerText]="eleInnerContentEl"></div>
+    <div class="sds-popup__content" ngClass="{{sdsPopPositionEl}} , {{inOrOutPositionEl}}">
+      <span class="tooltip tooltip-left">
+        <span [innerHTML]="tooltipContentEl"></span>
+      </span>
+    </div>
+  </div>
+</div>
+
 
 
 <!-- <div class="sds-navbar border-bottom border-base-lighter">

@@ -17,9 +17,9 @@ export class SdsPopupSampleComponent implements OnInit {
 
   ngOnInit() {
     this.sdsPopPosition = 'bottom-left';
-    this.tooltipContent = '<ul><li>One</li><li>Two</li><li>Three</li></ul>';
+    this.tooltipContent = '<ul><li>First Item</li><li>Second Item</li><li>Third Item</li></ul>';
     this.inOrOutPosition = 'out';
-    this.eleInnerContent = 'Content';
+    this.eleInnerContent = 'Tooltip here';
   }
 
 
