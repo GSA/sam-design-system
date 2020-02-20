@@ -36,8 +36,11 @@ import { SearchSampleModule } from './feature/search-sample/search-sample.module
 import { SearchSampleComponent } from './feature/search-sample/search-sample.component';
 import { CollapseSampleComponent } from './feature/collapse-sample/collapse-sample.component';
 import { CollapseSampleModule } from './feature/collapse-sample/collapse-sample.module';
+import { SdsPopupSampleComponent } from './feature/popup-sample/popup-sample.component';
+import { SdsPopupSampleModule } from './feature/popup-sample/popup-sample.module';
 
 export const ROUTES: Routes = [
+  { path: 'sds-popup', component: SdsPopupSampleComponent },
   { path: 'collapse', component: CollapseSampleComponent },
   { path: 'header', component: HeaderSampleComponent },
   { path: 'footer', component: FooterSampleComponent },
@@ -75,7 +78,8 @@ export const ROUTES: Routes = [
     DialogSampleModule,
     ActionsMenuSampleModule,
     SearchSampleModule,
-    CollapseSampleModule
+    CollapseSampleModule,
+    SdsPopupSampleModule
   ],
   exports: [RouterModule],
   declarations: []
