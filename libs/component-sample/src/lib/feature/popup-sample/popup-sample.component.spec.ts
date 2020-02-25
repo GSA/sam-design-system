@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SdsPopupSampleComponent } from './popup-sample.component';
+import {  PopupSampleComponent } from './popup-sample.component';
 
-describe('SdsPopupSampleComponent', () => {
-  let component: SdsPopupSampleComponent;
-  let fixture: ComponentFixture<SdsPopupSampleComponent>;
+describe('  PopupSampleComponent', () => {
+  let component:  PopupSampleComponent;
+  let fixture: ComponentFixture<  PopupSampleComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SdsPopupSampleComponent ]
+      declarations: [   PopupSampleComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SdsPopupSampleComponent);
+    fixture = TestBed.createComponent(  PopupSampleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,27 +1,26 @@
-import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit ,ViewEncapsulation, ViewChild, ElementRef } from '@angular/core';
+
 
 @Component({
   selector: 'gsa-sam-sds-popup-sample',
   templateUrl: './popup-sample.component.html',
-  styleUrls: ['./popup-sample.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./popup-sample.component.scss']
 })
-export class SdsPopupSampleComponent implements OnInit {
-  sdsPopPosition: string;
-  tooltipContent: string;
-  inOrOutPosition: string;
-  eleInnerContent: string;
+export class PopupSampleComponent implements OnInit {
+  // sdsPopPosition: string;
+  // tooltipContent: string;
+  // inOrOutPosition: string;
+  // eleInnerContent: string;
+  // popupDirective: string;
   constructor() {
 
-   }
-
-  ngOnInit() {
-    this.sdsPopPosition = 'bottom-left';
-    this.tooltipContent = '<ul><li>First Item</li><li>Second Item</li><li>Third Item</li></ul>';
-    this.inOrOutPosition = 'out';
-    this.eleInnerContent = 'Tooltip here';
   }
 
-
+  ngOnInit() {
+    // this.eleInnerContent='Inner content of tooltip';
+    // this.sdsPopPosition = 'left-middle';
+    // this.inOrOutPosition = 'out';
+    // this.tooltipContent = 'Inner content of tooltip';
+  }
 
 }

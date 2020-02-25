@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SdsPopupSampleComponent } from './popup-sample.component';
+import { PopupSampleComponent } from './popup-sample.component';
+// import { SdsPopupModule } from '../../../../../packages/components/src/lib/popup/popup.module';
 import { SdsPopupModule } from '@gsa-sam/components';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { IconSampleModule } from '../icon-sample/icon-sample.module';
+
 @NgModule({
-  declarations: [SdsPopupSampleComponent],
+  declarations: [PopupSampleComponent],
   imports: [
     CommonModule, SdsPopupModule, FontAwesomeModule, IconSampleModule
-  ],exports: [SdsPopupSampleComponent]
+  ],exports: [PopupSampleComponent]
 })
-export class SdsPopupSampleModule { }
+export class PopupSampleModule { }
