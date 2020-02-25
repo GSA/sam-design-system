@@ -9,19 +9,21 @@ export class SdsPopupDirective {
   @Input('sdsPopupDire') tooltipTitle: string;
   @Input() position: string;
   @Input() delay: string;
+  @Input() popupContent: string;
+  @Input() tooltipContent: HTMLElement;
   sdsPopupDire: HTMLElement;
   offset = 10;
 
   constructor(private el: ElementRef, private renderer: Renderer2) {
-    console.log((this.el.nativeElement).closest('sds-popup'));
-
     // el.nativeElement.addClass('sds-popup__content');
     // this.renderer.addClass(this.el.nativeElement, 'sds-popup__content');
     this.renderer.addClass(this.el.nativeElement, 'sds-popup__content.out.right-middle');
   }
 
 
+
   @HostListener('mouseenter') onMouseEnter() {
+    console.log(this.tooltipTitle);
     if (!this.sdsPopupDire) { this.show(); }
   }
 
@@ -33,7 +35,7 @@ export class SdsPopupDirective {
     this.create();
     this.setPosition();
     // this.renderer.addClass(this.sdsPopupDire, 'sds-tooltip-show');
-    console.log(this.sdsPopupDire);
+
   }
 
   hide() {
@@ -45,13 +47,21 @@ export class SdsPopupDirective {
   }
 
   create() {
-    this.sdsPopupDire = this.renderer.createElement('span');
 
-    this.renderer.appendChild(
+    var sdsPopupDiv = document.getElementsByClassName('sds-popup')[0];
+    var sdsPopupContent = sdsPopupDiv.getElementsByClassName('sds-popup__content')[0];
+    // const sdsPopupContent = this.el.nativeElement.closest('.sds-popup__content');
+    // this.sdsPopupDire = this.renderer.createElement('span');
+      this.sdsPopupDire = this.renderer.createElement('span');
+
+     this.renderer.appendChild(
       this.sdsPopupDire,
       this.renderer.createText(this.tooltipTitle) // textNode
     );
 
+      console.log(this.el.nativeElement.innerHtml);
+      console.log(this.sdsPopupDire);
+      console.log((this.el.nativeElement).closest('.sds-popup_content'));
     // this.renderer.appendChild(document.body, this.sdsPopupDire);
     this.renderer.appendChild(this.el.nativeElement, this.sdsPopupDire);
 
