@@ -8,10 +8,11 @@ import { Component, OnInit ,ViewEncapsulation, ViewChild, ElementRef } from '@an
 })
 export class PopupSampleComponent implements OnInit {
   // sdsPopPosition: string;
-  // tooltipContent: string;
+  tooltipContent: HTMLElement;
   // inOrOutPosition: string;
   // eleInnerContent: string;
   // popupDirective: string;
+  popuponright: string;
   constructor() {
 
   }
