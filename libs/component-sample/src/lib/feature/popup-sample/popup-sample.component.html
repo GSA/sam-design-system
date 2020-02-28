@@ -1,13 +1,9 @@
-<div
-sdsPopup
-position="bottom-center"
-place="out"
-aria-label="Div that displays a tooltip that hides when scrolled out of the container"
-className="tooltip,tooltip-left"
->
- <!-- Content Div -->
-<div>
-      <div>rich Content</div>
+<div sdsPopup position="bottom-center" place="out"
+  aria-label="Div that displays a tooltip that hides when scrolled out of the container"
+  className="tooltip,tooltip-left" (click)="onPopupClick()">
+  <!-- Content Div -->
+  <div>
+    <div>Tooltip for bottom Center</div>
   </div>
 
   <!-- Tooltip Div -->
@@ -19,71 +15,59 @@ className="tooltip,tooltip-left"
     </div>
   </div>
 </div><br><br>
-
-<div
-sdsPopup
-position="top-right"
+<div sdsPopup position="top-right"
 place="out"
 className="tooltip,tooltip-left"
-aria-label="Button that displays a tooltip that hides when scrolled out of the container"
-(click)="onPopupClick()"
->
-<button class="usa-button usa-button--base">
-  out top-right
-</button>
+  aria-label="Button that displays a tooltip that hides when scrolled out of the container"
+  (click)="onPopupClick()">
+  <button class="usa-button usa-button--base">
+    out top-right
+  </button>
   <!-- Content Div -->
   <div class="tooltipContent">
-         <div>Button Content</div>
-     </div>
+    <div>Button Content</div>
+  </div>
 </div><br><br>
-
 
 <div
 sdsPopup
 position="bottom-center"
 place="out"
+aria-label="Button that displays a tooltip that hides when scrolled out of the container"
 (click)="onPopupClick()"
 className="radius-md,shadow-2,margin-0,width-card-lg,bg-primary-lighter,text-left,padding-1,border"
-aria-label="Div that displays a tooltip that hides when scrolled out of the container"
 >
-  <div>      <div>rich Content</div>
-  </div>
+
+<div class="border-1px sds-popup padding-1 radius-md">Rich Content</div>
+
+<div class="tooltipContent">
+  <ul>
+    <li>One</li>
+    <li>Two</li>
+  </ul>
+</div>
+
+</div>
+
+<br><br>
+
+<div sdsPopup
+position="right-middle"
+place="out"
+className="tooltip,tooltip-left"
+ >
+    <div>Tooltip for Right Middle</div>
+
   <!-- Content Div -->
   <div class="tooltipContent">
-    <div>
-      <ul>
-      <li>First Item</li>
-      <li>Second Item</li>
-    </ul>
-  </div>
+     Right Middle
   </div>
 </div><br><br>
 
-<div>
+<div class="sds-card">
   <p>My Content start from here.</p>
   <div class="tablet:grid-col">
-    <div
-    sdsPopup
-    position="top-left"
-    place="in"
-    (click)="onPopupClick()"
-    className="radius-md,shadow-2,margin-0,width-card-lg,bg-primary-lighter,text-left,padding-1,border">
-    <div>
-      <li class="display-flex flex-column flex-align-center height-10.5 width-10">
-        <fa-icon [icon]="['sds', 'bell']" [classes]="['icon-bell']" size="2x"></fa-icon>
-        <p class="font-sans-3xs margin-y-auto">Bell</p>
-      </li>
-    </div>
-    <div class="tooltipContent">
-      <h4>tooltip content</h4>
-    </div>
-    </div>
-    <div class="float-right">
-      <div
-      sdsPopup
-      position="top-right"
-      place="in"
-      (click)="onPopupClick()"
+    <div sdsPopup position="top-left" place="in" (click)="onPopupClick()"
       className="radius-md,shadow-2,margin-0,width-card-lg,bg-primary-lighter,text-left,padding-1,border">
       <div>
         <li class="display-flex flex-column flex-align-center height-10.5 width-10">
@@ -94,405 +78,48 @@ aria-label="Div that displays a tooltip that hides when scrolled out of the cont
       <div class="tooltipContent">
         <h4>tooltip content</h4>
       </div>
+    </div>
+    <div class="float-right">
+      <div sdsPopup position="top-right" place="in" (click)="onPopupClick()"
+        className="radius-md,shadow-2,margin-0,width-card-lg,bg-primary-lighter,text-left,padding-1,border">
+        <div>
+          <li class="display-flex flex-column flex-align-center height-10.5 width-10">
+            <fa-icon [icon]="['sds', 'bell']" [classes]="['icon-bell']" size="2x"></fa-icon>
+            <p class="font-sans-3xs margin-y-auto">Bell</p>
+          </li>
+        </div>
+        <div class="tooltipContent">
+          <h4>tooltip content</h4>
+          <ul>
+            <li>Maryland</li>
+            <li>Dc</li>
+            <li>New Yark</li>
+          </ul>
+        </div>
       </div>
     </div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In neque nunc, auctor a cursus vitae, venenatis dapibus ex. Nam tristique aliquam efficitur. Aliquam sit amet sodales elit, accumsan lacinia nisi. Aliquam eu
-        mauris ut augue fringilla congue a eu ante. Donec maximus placerat convallis. Morbi eu tincidunt neque, vel porta nulla. Suspendisse venenatis augue eget massa ullamcorper, et fringilla ipsum lobortis. In hac habitasse
-        platea dictumst. Quisque et fringilla lacus, non consequat nulla.
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In neque nunc, auctor a cursus vitae, venenatis dapibus
+      ex. Nam tristique aliquam efficitur. Aliquam sit amet sodales elit, accumsan lacinia nisi. Aliquam eu
+      mauris ut augue fringilla congue a eu ante. Donec maximus placerat convallis. Morbi eu tincidunt neque, vel porta
+      nulla. Suspendisse venenatis augue eget massa ullamcorper, et fringilla ipsum lobortis. In hac habitasse
+      platea dictumst. Quisque et fringilla lacus, non consequat nulla.
     </p>
     <div class="text-center">
-      <div
-      sdsPopup
-      position="top-center"
-      place="in"
-      (click)="onPopupClick()"
-      className="radius-md,shadow-2,margin-0,width-card-lg,bg-primary-lighter,text-left,padding-1,border">
-      <p>
-        <li class="display-flex flex-column flex-align-center height-10.5 width-10">
-          <fa-icon [icon]="['sds', 'bell']" [classes]="['icon-bell']" size="2x"></fa-icon>
-          <p class="font-sans-3xs margin-y-auto">Bell</p>
-        </li>
-      </p>
-      <div class="tooltipContent">
-        <h4>tooltip content</h4>
-      </div>
-      </div>
-    </div>
-</div>
-
-</div>
-
-<!-- <div
-sdsPopup
-position="top-right"
-place="in"
-className="radius-lg,shadow-2,margin-y-neg-1x05,width-card-lg,bg-white,padding-left-1,padding-bottom-1,border"
->
-   Content Div --
-  <div class="">
-      <div class="grid-container margin-0">
-        <div class="tablet:grid-col-8">
-            <div class="sds-card">
-                <div class="sds-card__content">
-                    <div class="grid-container">
-                        <div class="grid-row">
-                            <div class="tablet:grid-col">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In neque nunc, auctor a cursus vitae, venenatis dapibus ex. Nam tristique aliquam efficitur. Aliquam sit amet sodales elit, accumsan lacinia nisi. Aliquam eu
-                                    mauris ut augue fringilla congue a eu ante. Donec maximus placerat convallis. Morbi eu tincidunt neque, vel porta nulla. Suspendisse venenatis augue eget massa ullamcorper, et fringilla ipsum lobortis. In hac habitasse
-                                    platea dictumst. Quisque et fringilla lacus, non consequat nulla.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-  </div>
-
-
-      <div class="tooltipContent">
-        <div class="tablet:grid-col-auto">
-            <div>
-                <div class="sds-alert--block">
-                    <div class="sds-alert--block-icon grid-col-auto">
-                        <i class="sds fa-exclamation-circle fa-2x"></i>
-                    </div>
-                    <div class="grid-col padding-y-2 padding-right-2">
-                        <label>Address Needs to be Updated</label>
-                        <span>600 14th St NW</span>
-                        <span>Washington, DC 20007</span>
-                    </div>
-                </div>
-
-            </div>
+      <div sdsPopup position="top-center" place="in" (click)="onPopupClick()"
+        className="radius-md,shadow-2,margin-0,width-card-lg,bg-primary-lighter,text-left,padding-1,border">
+        <p>
+          <li class="display-flex flex-column flex-align-center height-10.5 width-10">
+            <fa-icon [icon]="['sds', 'bell']" [classes]="['icon-bell']" size="2x"></fa-icon>
+            <p class="font-sans-3xs margin-y-auto">Bell</p>
+          </li>
+        </p>
+        <div class="tooltipContent">
+          <h4>tooltip content</h4>
+          <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In neque nunc, auctor a cursus vitae, venenatis dapibus
+            ex.
+          </div>
         </div>
       </div>
-
-</div> -->
-  <!-- <div>
-    <h4 class="margin-0">Lorem ipsum dolor</h4>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In neque nunc, auctor a cursus vitae,
-      venenatis dapibus ex.
-    </p>
-  </div>
-</div><br><br> -->
-
- -->
-<!-- <div sdsPopup>
-  <div>Bottom Content</div>
-  <div
-  class="sds-popup__content"
-  sdsPopupContent="tooltip for bottom"
-  position="bottom-center"
-  place="out"
-  >
-</div>
-</div><br><br> -
-
-<div class="tablet:grid-col-auto text-right sds-popup" sdsPopup>
-  <li class="display-flex flex-column flex-align-center height-10.5 width-10">
-    <fa-icon [icon]="['sds', 'bell']" [classes]="['icon-bell']" size="2x"></fa-icon>
-    <p class="font-sans-3xs margin-y-auto">Bell</p>
-  </li>
-  <div
-  class="sds-popup__content"
-      sdsPopupContent="tooltip for bottom"
-      position="bottom-right"
-      place="out"
-      >
-    </div>
-</div>
-
-  <div class="sds-navbar border-bottom border-base-lighter">
-  <div class="sds-navbar__content">
-      <div class="grid-row">
-          <div class="grid-col-4">
-            <div sdsPopup>
-              <div>Tooltip for Left top side</div>
-              <div
-              class="sds-popup__content"
-              sdsPopupContent="top-left"
-              position="top-left"
-              place="out"
-              >
-            </div>
-            </div><br><br>
-            <div sdsPopup>
-              <div>Tooltip for top center</div>
-              <div
-              class="sds-popup__content"
-              sdsPopupContent="top-center"
-              position="top-center"
-              place="out"
-              >
-            </div>
-            </div><br><br>
-            <div sdsPopup>
-              <div>Tooltip for top right</div>
-              <div
-              class="sds-popup__content"
-              sdsPopupContent="top-right"
-              position="top-right"
-              place="out"
-              >
-            </div>
-            </div><br><br>
-          </div>
-          <div class="grid-col-4">
-            <div sdsPopup>
-              <div>Tooltip for bottom Left side</div>
-              <div
-              class="sds-popup__content"
-              sdsPopupContent="bottom-left-tooltip"
-              position="bottom-left"
-              place="out"
-              >
-            </div>
-            </div><br><br>
-            <div sdsPopup>
-              <div>Tooltip for top center</div>
-              <div
-              class="sds-popup__content"
-              sdsPopupContent="bottom-center"
-              position="bottom-center"
-              place="out"
-              >
-            </div>
-            </div><br><br>
-            <div sdsPopup>
-              <div>Tooltip for bottom right</div>
-              <div
-              class="sds-popup__content"
-              sdsPopupContent="bottom-right"
-              position="bottom-right"
-              place="out"
-              >
-            </div>
-            </div><br><br>
-            </div>
-            <div class="grid-col-4">
-
-              <div sdsPopup>
-                <div>Tooltip for left middle</div>
-                <div
-                class="sds-popup__content"
-                sdsPopupContent="left-middle"
-                position="left-middle"
-                place="out"
-                >
-              </div>
-              </div><br><br>
-              <div sdsPopup>
-                <div>Tooltip for right middle</div>
-                <div
-                class="sds-popup__content"
-                sdsPopupContent="right-middle-tooltip"
-                position="right-middle"
-                place="out"
-                >
-              </div>
-              </div><br><br>
-          </div>
-</div>
-</div>
- <div sdsPopup>
-  <li class="display-flex flex-column flex-align-center height-10.5 width-10">
-    <fa-icon [icon]="['sds', 'bell']" [classes]="['icon-bell']" size="2x"></fa-icon>
-    <p class="font-sans-3xs margin-y-auto">Bell</p>
-  </li>
-  <div
-  class="sds-popup__content"
-
-  >
-      <div class="radius-lg shadow-2 margin-y-neg-1x05 width-card-lg bg-white padding-left-1 padding-bottom-1 border">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In neque nunc, auctor a cursus vitae,
-        venenatis dapibus ex.
-      </div>
-  </div>
-</div>
-
-
-
-
-
-  <!-- <div class="sds-navbar border-bottom border-base-lighter">
-    <div class="sds-navbar__content">
-        <div class="grid-container margin-0">
-            <div class="tablet:grid-col-8">
-
-                <div class="sds-card">
-                    <div class="sds-card__content">
-                        <div class="grid-container">
-                            <div class="grid-row">
-                                <div class="tablet:grid-col-auto sds-popup">
-                                    <i class="sds fa-bars fa-2x"></i>
-                                    <div class="sds-popup__content in top-left width-mobile margin-y-neg-2">
-                                        <div class="sds-alert--block">
-                                            <div class="sds-alert--block-icon grid-col-auto">
-                                                <i class="sds fa-exclamation-circle fa-2x"></i>
-                                            </div>
-                                            <div class="grid-col padding-y-2 padding-right-2">
-                                                <label>Address Needs to be Updated</label>
-                                                <span>600 14th St NW</span>
-                                                <span>Washington, DC 20007</span>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="tablet:grid-col text-center">
-                                    <div class="sds-popup">
-                                        <i class="sds fa-download fa-2x"></i>
-                                        <div class="sds-popup__content in top-center margin-bottom-neg-05">
-                                            <div class="radius-md shadow-2 margin-y-neg-205
-                        width-card-lg bg-base-lightest
-                        padding-x-1 padding-bottom-1 border">
-                                                <i class="sds fa-download fa-2x"></i>
-                                                <h4> Pop inside</h4>
-                                                <p>Lorem ipsum sit amet<br />Lorem ipsum</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tablet:grid-col-auto sds-popup text-left">
-                                    <i class="sds fa-information-circle fa-2x"></i>
-                                    <div class="sds-popup__content in top-right margin-bottom-neg-05">
-                                        <div class="radius-lg shadow-2 margin-y-neg-1x05 width-card-lg bg-white padding-left-1 padding-bottom-1 border">
-                                            <i class="sds fa-information-circle fa-2x float-right margin-1"></i>
-                                            <h4> Pop inside</h4>
-                                            <ul>
-                                                <li>Lorem ipsum sit amet</li>
-                                                <li>Lorem ipsum</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid-row">
-                                <div class="tablet:grid-col">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In neque nunc, auctor a cursus vitae, venenatis dapibus ex. Nam tristique aliquam efficitur. Aliquam sit amet sodales elit, accumsan lacinia nisi. Aliquam eu
-                                        mauris ut augue fringilla congue a eu ante. Donec maximus placerat convallis. Morbi eu tincidunt neque, vel porta nulla. Suspendisse venenatis augue eget massa ullamcorper, et fringilla ipsum lobortis. In hac habitasse
-                                        platea dictumst. Quisque et fringilla lacus, non consequat nulla.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="grid-row">
-                                <div class="tablet:grid-col-auto sds-popup">
-                                    <i class="sds fa-user-circle fa-2x"></i>
-                                    <div class="sds-popup__content in bottom-left  ">
-                                        <div class="sds-alert bg-base-lightest ">
-                                            <div class="sds-alert-icon">
-                                                <i class="fa fa-exclamation"></i>
-                                            </div>
-                                            <span>Review Required</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tablet:grid-col text-center">
-                                    <div class="sds-popup">
-                                        <i class="sds fa-new-note fa-2x"></i>
-                                        <div class="sds-popup__content in bottom-center">
-                                            <div class="radius-md shadow-2 margin-0 width-card-lg
-                       text-left bg-accent-cool padding-1 border">
-
-                                                <p>The First item</p>
-                                                <hr class="thin" />
-                                                <p>The Second item</p>
-                                                <hr class="thin" />
-                                                <p>Another item</p>
-                                                <hr class="thin" />
-                                                <p>One More item</p>
-                                                <hr class="thin" />
-                                                <p>The Last item</p>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tablet:grid-col-auto text-right sds-popup">
-                                  <li class="display-flex flex-column flex-align-center height-10.5 width-10">
-                                    <fa-icon [icon]="['sds', 'bell']" [classes]="['icon-bell']" size="2x"></fa-icon>
-                                    <p class="font-sans-3xs margin-y-auto">Bell</p>
-                                  </li>
-                                    <div class="sds-popup__content in bottom-right ">
-                                        <div class="radius-md shadow-2 margin-0 width-card-lg
-                      bg-primary-lighter text-left padding-1 border">
-                                            <h4 class="margin-0">Lorem ipsum dolor</h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In neque nunc, auctor a cursus vitae, venenatis dapibus ex.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
-<!-- ****************************************************** -->
-<!-- matTooltip="Tooltips in Angular">
-<button mat-raised-button
-        matTooltip="Tooltips in Angular">
-  Tooltip
-</button>
-Shilpa Yerram - QD2-C3:09 PM
- <button mat-raised-button #tooltip="matTooltip"
-          matTooltip="Info about the action"
-          [matTooltipPosition]="position.value"
-          matTooltipHideDelay="100000"
-          aria-label="Button that displays a tooltip that hides when scrolled out of the container"
-          class="example-button">
-    Action
-  </button> -->
-
-<!-- ************************************************* -->
-<!-- <div sdsPopup>
-  <div >Inner content of Element</div>
-    <div class="sds-popup__content left-middle out">
-      <div class="tooltip tooltip-left">
-       Tooltip content
-      </div>
-    </div>
-</div>
-<br><br> -->
-
-<!-- <div sdsPopup>
-  <a href="#">Link</a>
-  <div class="sds-popup__content right-middle out">
-    <div class="tooltip tooltip-left">
-     Tooltip content
     </div>
   </div>
-</div> -->
-
-<br><br>
-
-<!-- <div sdsPopup>
-  <li class="display-flex flex-column flex-align-center height-10.5 width-10">
-    <fa-icon [icon]="['sds', 'bell']" [classes]="['icon-bell']" size="2x"></fa-icon>
-    <p class="font-sans-3xs margin-y-auto">Bell</p>
-  </li>
-  <div class="sds-popup__content right-middle in">
-      <div class="radius-lg shadow-2 margin-y-neg-1x05 width-card-lg bg-white padding-left-1 padding-bottom-1 border">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In neque nunc, auctor a cursus vitae,
-        venenatis dapibus ex.
-      </div>
-  </div>
-</div> -->
-
-
-<!-- <div sdsPopupDire>
-  <div [innerHTML]="eleInnerContent"></div>
-    <div class="sds-popup__content"
-    ngClass="{{sdsPopPosition}}  {{inOrOutPosition}}">
-      <div class="tooltip tooltip-left">
-       Tooltip content
-      </div>
-    </div>
-</div> -->
-
-
-
-
+</div>
