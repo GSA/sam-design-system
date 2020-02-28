@@ -1,4 +1,4 @@
-<div class="grid-row" *ngIf="items?.length>0">
+<div class="grid-row" *ngIf="items?.length">
   <div class="grid-col">
     <div class="grid-row">
       <div class="grid-col-auto">
@@ -29,7 +29,7 @@
                 context: { $implicit: item }"></ng-container>
       </ng-template>
     </sds-search-result-list>
-    <sds-pagination *ngIf="items?.length>0" [paginationConfiguration]="bottom" [(page)]="page" (pageChange)="paginationChange.next($event)">
+    <sds-pagination *ngIf="items?.length" [paginationConfiguration]="bottom" [(page)]="page" (pageChange)="paginationChange.next($event)">
     </sds-pagination>
   </div>
 </div>
