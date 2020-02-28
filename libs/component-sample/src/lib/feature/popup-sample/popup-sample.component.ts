@@ -7,21 +7,19 @@ import { Component, OnInit ,ViewEncapsulation, ViewChild, ElementRef } from '@an
   styleUrls: ['./popup-sample.component.scss']
 })
 export class PopupSampleComponent implements OnInit {
-  // sdsPopPosition: string;
-  tooltipContent: HTMLElement;
-  // inOrOutPosition: string;
-  // eleInnerContent: string;
-  // popupDirective: string;
-  popuponright: string;
+  tooltipPosition: string;
+
   constructor() {
 
   }
 
+
   ngOnInit() {
-    // this.eleInnerContent='Inner content of tooltip';
-    // this.sdsPopPosition = 'left-middle';
-    // this.inOrOutPosition = 'out';
-    // this.tooltipContent = 'Inner content of tooltip';
+    this.tooltipPosition = "bottom-center";
+  }
+
+  onPopupClick(){
+
   }
 
 }

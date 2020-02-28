@@ -1,4 +1,4 @@
-import { Directive, Input, ElementRef, Renderer2, HostListener, OnInit, OnChanges, ViewChild, AfterContentInit, AfterViewInit } from '@angular/core';
+import { Directive, Input, ElementRef, Renderer2, HostListener, OnInit, OnChanges, ViewChild, AfterContentInit, AfterViewInit, ViewChildren } from '@angular/core';
 
 
 @Directive({
@@ -6,15 +6,22 @@ import { Directive, Input, ElementRef, Renderer2, HostListener, OnInit, OnChange
   exportAs: 'sdsPopup'
 })
 export class SdsPopupDirective implements OnInit, AfterViewInit{
-   position:string;
+  @Input() position:string;
    sdsPopupContent: string;
-   place: string;
+  @Input() place: string;
+  @Input() className: string;
+  getClassNameArray = [];
     mainContentDiv: HTMLElement;
     sdsPopupDire: HTMLElement;
-
+    tooltipContent: any;
+    tooltipConfig: HTMLElement;
+    sdsPopupDiv: HTMLElement;
 
   constructor(private el: ElementRef, private renderer: Renderer2) {
     this.renderer.addClass(this.el.nativeElement, 'sds-popup');
+    this.sdsPopupDiv = document.createElement('div');
+    this.renderer.addClass(this.sdsPopupDiv, 'sds-popup__content');
+    console.log(this.sdsPopupDiv);
   }
 
   ngOnInit(){
@@ -22,30 +29,37 @@ export class SdsPopupDirective implements OnInit, AfterViewInit{
   }
 
   ngAfterViewInit() {
-    this.mainContentDiv = this.el.nativeElement.querySelector('.sds-popup__content');
-    this.sdsPopupContent = this.mainContentDiv.getAttribute('sdsPopupContent');
-    this.position = this.mainContentDiv.getAttribute('position');
-    this.place = this.mainContentDiv.getAttribute('place');
+    this.tooltipConfig = this.el.nativeElement.querySelector('.tooltipContent');
+    this.renderer.addClass(this.sdsPopupDiv, this.place);
+    this.renderer.addClass(this.sdsPopupDiv, this.position);
+    this.renderer.appendChild(this.el.nativeElement, this.sdsPopupDiv);
+    this.renderer.appendChild(this.sdsPopupDiv, this.tooltipConfig);
+    const strinx = this.className.split(',');
+    console.log(strinx);
+    for(let i=0; i<strinx.length; i++){
+      this.renderer.addClass(this.tooltipConfig, strinx[i]);
+    }
  }
 
   @HostListener('mouseenter') onMouseEnter() {
-    this.show();
-    // if (!this.sdsPopupDire) { this.show(); }
+    this.renderer.appendChild(this.sdsPopupDiv, this.tooltipConfig);
   }
 
   @HostListener('mouseleave') onMouseLeave() {
-    if (this.sdsPopupDire) { this.hide(); }
+    if (this.sdsPopupDire) {
+      this.renderer.removeChild(document.body, this.sdsPopupDire);
+     }
   }
 
 
   // show() {
 
-  //   // this.renderer.appendChild(this.el.nativeElement, this.sdsPopupDire);
+  //   this.renderer.appendChild(this.el.nativeElement, this.sdsPopupDire);
   // }
 
   hide() {
     // this.renderer.removeClass(this.sdsPopupDire, 'sds-tooltip-show');
-    this.renderer.removeChild(document.body, this.sdsPopupDire);
+
     window.setTimeout(() => {
       // this.renderer.removeChild(document.body, this.sdsPopupDire);
       // this.sdsPopupDire = null;
@@ -53,14 +67,15 @@ export class SdsPopupDirective implements OnInit, AfterViewInit{
   }
 
   show() {
-    this.renderer.addClass(this.mainContentDiv, this.place);
-    this.renderer.addClass(this.mainContentDiv, this.position);
-    this.sdsPopupDire = this.renderer.createElement('div');
-    this.renderer.addClass(this.sdsPopupDire, 'tooltip');
-    this.renderer.addClass(this.sdsPopupDire, 'tooltip-left');
-    this.renderer.appendChild(
-      this.sdsPopupDire,
-      this.renderer.createText(this.sdsPopupContent)); // textNode
-      this.renderer.appendChild(this.mainContentDiv, this.sdsPopupDire);
+
+    // console.log(this.tooltipContent);
+    // this.renderer.appendChild(this.tooltipConfig.innerHTML, this.tooltipContent);
+    // this.sdsPopupDire = this.renderer.createElement('div');
+    // this.renderer.addClass(this.sdsPopupDire, 'tooltip');
+    // this.renderer.addClass(this.sdsPopupDire, 'tooltip-left');
+    // this.renderer.appendChild(
+    //   this.sdsPopupDire,
+    //   this.renderer.createText(this.sdsPopupContent)); // textNode
+      // this.renderer.appendChild(this.mainContentDiv, this.sdsPopupDire);
   }
 }
