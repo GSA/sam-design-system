@@ -27,6 +27,7 @@ export class SdsHeaderComponent {
    */
   @Input() model: HeaderModel;
 
+  @Input() topBannerDescription: string = '';
   /**
    * Takes in a text string and removes all white space characters and returns the new string
    * @param text
