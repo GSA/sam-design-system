@@ -1,1 +1,19 @@
+<div class="sds-feedback">
+  <button type="button" class="sds-feedback__button" [attr.aria-expanded]="!isCollapsedContent" aria-controls="collapseID" (click)="isCollapsedContent = !isCollapsedContent">
+    <fa-layers [fixedWidth]="true">
+      <fa-icon [icon]="['fas', 'arrow-down']" [sdsCollapse]="isCollapsedContent" class="sds-feedback__open"></fa-icon>
+      <fa-icon [icon]="['fas', 'arrow-up']" [sdsCollapse]="!isCollapsedContent" class="sds-feedback__closed"></fa-icon>
+      <!-- <fa-layers-counter [classes]="['icon-layers-counter']"></fa-layers-counter> -->
+    </fa-layers>
+    <span class="sds-feedback__title">Feedback</span>
+  </button>
+  <div id="collapseID" [sdsCollapse]="isCollapsedContent" class="sds-feedback__response">
+    <div class="tablet:width-tablet-lg padding-4 margin-auto">
+      <span class="sds-feedback__response-title">One Question </span>
+      <span class="sds-feedback__response-title-thin"> Survey</span>
+      <p class="sds-feedback__response-text">What changes or improvements would you suggest?</p>
+      <input class="sds-feedback__input" type="text">
+    </div>
+  </div>
+</div>
 <sds-footer [model]="modelFooter" (linkEvent)="linkEvent.next($event)"></sds-footer>
