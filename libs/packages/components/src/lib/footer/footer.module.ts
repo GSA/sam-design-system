@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SdsFooterComponent } from './footer.component';
 import { RouterModule } from '@angular/router';
-
-import { CollapseComponent } from '../../collapse.component';
 import { SdsCollapseModule } from '../../../../../../libs/packages/components/src/lib/collapse/collapse.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
