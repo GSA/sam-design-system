@@ -14,12 +14,14 @@ import { FilterWrapperSampleModule } from './feature/filter-wrapper/filter-wrapp
 import { FormlyFormsComponent } from './feature/formly-forms/formly-forms.component';
 import { FormlyFormsModule } from './feature/formly-forms/formly-forms.module';
 import { FormlyConditionalComponent } from './feature/formly-conditional/formly-conditional.component';
+import { FilterAlignSampleModule } from './feature/filter-align/filter-align.module';
 
 export const ROUTES: Routes = [
   { path: 'formlyInput', component: FormlyInputComponent },
-  { path: 'formlyFilters', component: FilterWrapperComponent},
+  { path: 'formlyFilters', component: FilterWrapperComponent },
   { path: 'formlyForms', component: FormlyFormsComponent },
-  { path: 'formlyConditional', component:FormlyConditionalComponent },
+  { path: 'formlyConditional', component: FormlyConditionalComponent },
+  { path: 'FilterAlign', component: FilterAlignSampleModule }
 ];
 
 @NgModule({
