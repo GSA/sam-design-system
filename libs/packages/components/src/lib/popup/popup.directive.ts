@@ -10,7 +10,6 @@ export class SdsPopupDirective implements AfterViewInit {
   @Input() place: string;
   @Input() className: string;
   getClassNameArray = [];
-  // sdsPopupDire: HTMLElement;
   tooltipContent: any;
   tooltipConfig: HTMLElement;
   sdsPopupDiv: HTMLElement;
