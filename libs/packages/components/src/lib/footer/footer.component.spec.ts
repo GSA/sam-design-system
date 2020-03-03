@@ -3,16 +3,16 @@ import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core
 import { SdsFooterComponent } from './footer.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NavigationMode } from '../common-navigation/common-navigation-model';
-import { SdsCollapseModule } from '././collapse/collapse.module';
+import { SdsCollapseModule } from '../collapse/collapse.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 describe('SdsFooterComponent', () => {
   let component: SdsFooterComponent;
   let fixture: ComponentFixture<SdsFooterComponent>;
-
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SdsFooterComponent],
-      imports: [RouterTestingModule]
+      imports: [RouterTestingModule, SdsCollapseModule, FontAwesomeModule]
     })
       .compileComponents();
   }));
