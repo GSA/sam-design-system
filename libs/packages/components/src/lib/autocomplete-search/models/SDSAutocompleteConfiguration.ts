@@ -70,4 +70,9 @@ export class SDSAutocompleteSearchConfiguration {
    * Focus into autocomplete search
    */
   public focusInSearch: boolean = true;
+
+  /**
+   * The aria-label for the auto-complete
+   */
+  public ariaLabelText: string = 'Auto Complete';
 }

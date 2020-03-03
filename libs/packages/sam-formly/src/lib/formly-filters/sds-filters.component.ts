@@ -28,15 +28,12 @@ export class SdsFiltersComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.modelChange.subscribe((change) => {
-      window.clearTimeout(this.timeoutNumber);
-      this.timeoutNumber = window.setTimeout(() => {
-      this.filterChange.emit(change);
+    this.form.valueChanges.subscribe(val => {
+      this.filterChange.emit(val);
       if (this.formlyUpdateComunicationService) {
-        this.formlyUpdateComunicationService.updateFilter(change);
+        this.formlyUpdateComunicationService.updateFilter(val);
       }
-    }, this.debounceTime);
-    })
+  })
   }
 
   constructor(@Optional() private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService) { }
