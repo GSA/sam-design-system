@@ -15,13 +15,14 @@ import { FormlyFormsComponent } from './feature/formly-forms/formly-forms.compon
 import { FormlyFormsModule } from './feature/formly-forms/formly-forms.module';
 import { FormlyConditionalComponent } from './feature/formly-conditional/formly-conditional.component';
 import { FilterAlignSampleModule } from './feature/filter-align/filter-align.module';
+import { FilterAlignComponent } from './feature/filter-align/filter-align.component';
 
 export const ROUTES: Routes = [
   { path: 'formlyInput', component: FormlyInputComponent },
   { path: 'formlyFilters', component: FilterWrapperComponent },
   { path: 'formlyForms', component: FormlyFormsComponent },
   { path: 'formlyConditional', component: FormlyConditionalComponent },
-  { path: 'FilterAlign', component: FilterAlignSampleModule }
+  { path: 'FilterAlign', component: FilterAlignComponent }
 ];
 
 @NgModule({
@@ -35,6 +36,7 @@ export const ROUTES: Routes = [
     FormlySampleModule,
     FormlyFormsModule,
     FilterWrapperSampleModule,
+    FilterAlignSampleModule
   ],
   exports: [RouterModule],
   declarations: [FormlyConditionalComponent]

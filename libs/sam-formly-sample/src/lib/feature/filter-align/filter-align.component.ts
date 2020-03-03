@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'sds-filter-align',
   templateUrl: './filter-align.component.html',
- 
+
 })
 export class FilterAlignComponent implements OnInit {
 
@@ -15,7 +15,7 @@ export class FilterAlignComponent implements OnInit {
   }
   results: any = {};
   form = new FormGroup({});
-  model:any = {};
+  model: any = {};
   options: FormlyFormOptions = {};
   /**
  * Event when something is checked/selected in the grid
@@ -26,21 +26,40 @@ export class FilterAlignComponent implements OnInit {
   fields: FormlyFieldConfig[] = [
     {
       key: 'searchKeyword',
-      wrappers: ['filterwrapper'],
+      wrappers: ['customwrapper'],
+      type: 'input',
       templateOptions: {
         label: 'Keyword (with label)',
-        ariaHidden: true
+       
       },
-      fieldGroup: [{
-        key: 'keyword',
-        type: 'input',
-        templateOptions: {
-          type: 'text',
-          label: 'Keyword'        
-         },
+    },
 
-      }]
-    }
+    // {
+    //   key: 'entityStatus',
+    //   wrappers: [ 'customwrapper'],
+    //   type: 'multicheckbox',
+    //   templateOptions: {
+    //     label: 'Entity Status',
+    //     options: [
+    //       {
+    //         key: 'Active',
+    //         value: 'Active'
+    //       },
+    //       {
+    //         key: 'Draft',
+    //         value: 'Draft'
+    //       },
+    //       {
+    //         key: 'Expired',
+    //         value: 'Expired'
+    //       },
+    //       {
+    //         key: 'InProgress',
+    //         value: 'In Progress'
+    //       }
+    //     ]
+    //   }
+    // },
   ];
   public ngOnInit() {
     this.filterChange$.subscribe(
