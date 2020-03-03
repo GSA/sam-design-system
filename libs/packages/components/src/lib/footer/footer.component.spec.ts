@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core
 import { SdsFooterComponent } from './footer.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NavigationMode } from '../common-navigation/common-navigation-model';
-
+import { SdsCollapseModule } from '././collapse/collapse.module.ts';
 
 describe('SdsFooterComponent', () => {
   let component: SdsFooterComponent;
@@ -33,4 +33,3 @@ describe('SdsFooterComponent', () => {
     expect(component.linkEvent.emit).toHaveBeenCalledWith(navItem);
   });
 });
-
