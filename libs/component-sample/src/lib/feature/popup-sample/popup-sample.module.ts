@@ -7,11 +7,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { sds } from '@gsa-sam/sam-styles/src/icons/';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import { IconSampleModule } from '../icon-sample/icon-sample.module';
 
 @NgModule({
   declarations: [PopupSampleComponent],
   imports: [
-    CommonModule, SdsPopupModule, FontAwesomeModule
+    CommonModule, SdsPopupModule, FontAwesomeModule, IconSampleModule
   ],exports: [PopupSampleComponent]
 })
 export class PopupSampleModule {

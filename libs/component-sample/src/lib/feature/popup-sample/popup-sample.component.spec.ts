@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import {  PopupSampleComponent } from './popup-sample.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 describe('  PopupSampleComponent', () => {
   let component:  PopupSampleComponent;
@@ -8,7 +9,8 @@ describe('  PopupSampleComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [   PopupSampleComponent ]
+      declarations: [   PopupSampleComponent ],
+      imports: [FontAwesomeModule]
     })
     .compileComponents();
   }));
