@@ -4,9 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { SdsFooterComponent } from './footer.component';
 import { RouterModule } from '@angular/router';
 
+import { CollapseComponent } from '../../collapse.component';
+import { SdsCollapseModule } from '../../../../../../libs/packages/components/src/lib/collapse/collapse.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 @NgModule({
   imports: [
-    CommonModule, FormsModule, RouterModule
+    CommonModule, FormsModule, RouterModule, SdsCollapseModule, FontAwesomeModule
   ],
   declarations: [SdsFooterComponent],
   exports: [SdsFooterComponent]
