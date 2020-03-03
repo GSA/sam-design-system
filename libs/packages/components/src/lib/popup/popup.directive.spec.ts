@@ -23,6 +23,9 @@ describe('PopupDirective', () => {
     TestBed.configureTestingModule({
       declarations:[SdsPopupDirective,
         TestPopupSampleComponent
+      ],
+      imports: [
+        FontAwesomeModule
       ]
     })
     .compileComponents();

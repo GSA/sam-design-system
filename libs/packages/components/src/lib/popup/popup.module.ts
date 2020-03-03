@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SdsPopupDirective } from './popup.directive';
 
+
 @NgModule({
   declarations: [SdsPopupDirective],
   imports: [

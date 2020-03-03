@@ -66,3 +66,62 @@ className="tooltip,tooltip-left"
      Right Middle
   </div>
 </div><br><br>
+<div class="sds-card">
+  <p>My Content start from here.</p>
+  <div class="tablet:grid-col">
+    <div sdsPopup position="top-left" place="in" (click)="onPopupClick()"
+      className="radius-md,shadow-2,margin-0,width-card-lg,bg-primary-lighter,text-left,padding-1,border">
+      <div>
+        <li class="display-flex flex-column flex-align-center height-10.5 width-10">
+          <fa-icon [icon]="['sds', 'bell']" [classes]="['icon-bell']" size="2x"></fa-icon>
+          <p class="font-sans-3xs margin-y-auto">Bell</p>
+        </li>
+      </div>
+      <div class="tooltipContent">
+        <h4>tooltip content</h4>
+      </div>
+    </div>
+    <div class="float-right">
+      <div sdsPopup position="top-right" place="in" (click)="onPopupClick()"
+        className="radius-md,shadow-2,margin-0,width-card-lg,bg-primary-lighter,text-left,padding-1,border">
+        <div>
+          <li class="display-flex flex-column flex-align-center height-10.5 width-10">
+            <fa-icon [icon]="['sds', 'bell']" [classes]="['icon-bell']" size="2x"></fa-icon>
+            <p class="font-sans-3xs margin-y-auto">Bell</p>
+          </li>
+        </div>
+        <div class="tooltipContent">
+          <h4>tooltip content</h4>
+          <ul>
+            <li>Maryland</li>
+            <li>Dc</li>
+            <li>New York</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In neque nunc, auctor a cursus vitae, venenatis dapibus
+      ex. Nam tristique aliquam efficitur. Aliquam sit amet sodales elit, accumsan lacinia nisi. Aliquam eu
+      mauris ut augue fringilla congue a eu ante. Donec maximus placerat convallis. Morbi eu tincidunt neque, vel porta
+      nulla. Suspendisse venenatis augue eget massa ullamcorper, et fringilla ipsum lobortis. In hac habitasse
+      platea dictumst. Quisque et fringilla lacus, non consequat nulla.
+    </p>
+    <div class="text-center">
+      <div sdsPopup position="top-center" place="in" (click)="onPopupClick()"
+        className="radius-md,shadow-2,margin-0,width-card-lg,bg-primary-lighter,text-left,padding-1,border">
+        <p>
+          <li class="display-flex flex-column flex-align-center height-10.5 width-10">
+            <fa-icon [icon]="['sds', 'bell']" [classes]="['icon-bell']" size="2x"></fa-icon>
+            <p class="font-sans-3xs margin-y-auto">Bell</p>
+          </li>
+        </p>
+        <div class="tooltipContent">
+          <h4>tooltip content</h4>
+          <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In neque nunc, auctor a cursus vitae, venenatis dapibus
+            ex.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
