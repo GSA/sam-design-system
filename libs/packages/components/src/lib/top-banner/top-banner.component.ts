@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'sds-top-banner',
@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class SdsTopBannerComponent {
   showDetail = false;
+  @Input() description = '';
 
   toggleDetails() {
     this.showDetail = !this.showDetail;

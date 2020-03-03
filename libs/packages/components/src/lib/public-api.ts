@@ -30,3 +30,4 @@ export * from './dialog/dialog';
 export * from './dialog/dialog-ref';
 export * from './dialog/dialog.module';
 export * from './popup/popup.module';
+export * from './collapse/collapse.module';
