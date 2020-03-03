@@ -1,4 +1,4 @@
-import { Directive, Input, ElementRef, Renderer2, HostListener, AfterViewInit } from '@angular/core';
+import { Directive, Input, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
 
 
 @Directive({
@@ -10,7 +10,7 @@ export class SdsPopupDirective implements AfterViewInit {
   @Input() place: string;
   @Input() className: string;
   getClassNameArray = [];
-  sdsPopupDire: HTMLElement;
+  // sdsPopupDire: HTMLElement;
   tooltipContent: any;
   tooltipConfig: HTMLElement;
   sdsPopupDiv: HTMLElement;
@@ -26,21 +26,11 @@ export class SdsPopupDirective implements AfterViewInit {
     this.tooltipConfig = this.el.nativeElement.querySelector('.tooltipContent');
     this.renderer.addClass(this.sdsPopupDiv, this.place);
     this.renderer.addClass(this.sdsPopupDiv, this.position);
-    this.renderer.appendChild(this.el.nativeElement, this.sdsPopupDiv);
     this.renderer.appendChild(this.sdsPopupDiv, this.tooltipConfig);
+    this.renderer.appendChild(this.el.nativeElement, this.sdsPopupDiv);
     const strinx = this.className.split(',');
     for (let i = 0; i < strinx.length; i++) {
       this.renderer.addClass(this.tooltipConfig, strinx[i]);
-    }
-  }
-
-  @HostListener('mouseenter') onMouseEnter() {
-    this.renderer.appendChild(this.sdsPopupDiv, this.tooltipConfig);
-  }
-
-  @HostListener('mouseleave') onMouseLeave() {
-    if (this.sdsPopupDire) {
-      this.renderer.removeChild(document.body, this.sdsPopupDire);
     }
   }
 }

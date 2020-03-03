@@ -16,7 +16,6 @@ module.exports = function(config) {
       "../../../node_modules/@angular/cdk/overlay-prebuilt.css"
     ],
   reporters: ['progress', 'kjhtml'],
-  port: 9876,
   colors: true,
   logLevel: config.LOG_INFO,
   autoWatch: true,

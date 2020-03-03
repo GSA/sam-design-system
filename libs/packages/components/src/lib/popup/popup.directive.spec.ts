@@ -11,70 +11,73 @@ import { from } from 'rxjs';
 // @Component({
 //   template: '<div sdsPopup></div>'
 // })
+@Component({
+  template: '<div sdsPopup position="bottom-center" place="out" aria-label="Div that displays a tooltip that hides when scrolled out of the container" className="tooltip,tooltip-left" (click)="onPopupClick()"></div>'
+})
+class TestPopupSampleComponent {
+  onPopupClick(){}
+}
 
 
 describe('PopupDirective', () => {
-  let component: PopupSampleComponent;
-  let fixture: ComponentFixture<PopupSampleComponent>;
-  let directiveEl: DebugElement;
+  let component: TestPopupSampleComponent;
+  let fixture: ComponentFixture<TestPopupSampleComponent>;
+  let de: DebugElement;
 
-  beforeEach(async(()=>{
-    // component = new PopupSampleComponent();
+  beforeEach(async()=>{
+    component = new TestPopupSampleComponent();
     TestBed.configureTestingModule({
       declarations:[SdsPopupDirective,
-        PopupSampleComponent
+        TestPopupSampleComponent
       ],imports : [
         IconSampleModule, FontAwesomeModule
       ]
     })
     .compileComponents();
-  }));
+  });
 
-
-  it('should be able to test popup directive', async(() => {
-    TestBed.overrideComponent(PopupSampleComponent, {
-      set: {
-        template: '<div sdsPopup></div>'
-      }
-    });
-  }));
-
-  it('Should apply class sds-popup on parent div', ()=>{
-    fixture = TestBed.createComponent(PopupSampleComponent);
+  beforeEach(()=>{
+    fixture = TestBed.createComponent(TestPopupSampleComponent);
     component = fixture.componentInstance;
-     directiveEl = fixture.debugElement.query(By.directive(SdsPopupDirective));
-    // expect(directiveEl.nativeElement.query(By.css('div'))).toContain('.sds-popup');
-    expect(directiveEl.classes['sds-popup']).toBeTruthy();
-    console.log(directiveEl.nativeElement);
+    de = fixture.debugElement.query(By.css('div'));
+  })
+
+  it('should must has sds popup content class', () => {
+    console.log(de.nativeElement.query(By.css('.tooltipContent')));
+     const sdsPopupDire = de.injector.get(SdsPopupDirective);
+     console.log(sdsPopupDire.sdsPopupDiv);
+    debugger;
+    expect(de.classes['sds-popup']).toBe(true);
   });
 
-  xit('should detect pop class', ()=> {
-    const directiveEl = fixture.debugElement.query(By.directive(SdsPopupDirective));
-    fixture.detectChanges();
-    console.log(directiveEl);
-    // console.log(de.injector.get(SdsPopupDirective));
-    //  expect(directiveEl.hasClass('sds-popup')).toBe(true);
+  it('should must has sds popup content class', () => {
+    expect(de.classes['sds-popup']).toBe(true);
   });
-  xit('hovering over input', () => {
-    directiveEl.triggerEventHandler('mouseover', null);
-    fixture.detectChanges();
-    expect(directiveEl.nativeElement.style.backgroundColor).toBe('blue');
 
-    directiveEl.triggerEventHandler('mouseout', null);
-    fixture.detectChanges();
-    expect(directiveEl.nativeElement.style.backgroundColor).toBe('inherit');
-});
+  it('Should check Click event on popup Content', ()=>{
+    de.triggerEventHandler('click', null);
+    expect(component.onPopupClick).toBeTruthy();
+  });
 
-  // it('should be able to test directive for popup', async(() => {
-  //   TestBed.overrideComponent(PopupSampleComponent, {
-  //     set: {
-  //       template: '<div sdsPopup></div>'
-  //     }
-  //   });
-  // }));
+  it('Should check sds popup Content for class', ()=>{
+    const placeValueEl = de.nativeElement.attributes[1].value;
+    const sdsPopupDire = fixture.debugElement.query(By.directive(SdsPopupDirective));
+    expect(placeValueEl).toBe(sdsPopupDire.attributes.className);
+  });
 
-  // it('should create an instance of Popup', () => {
-  //   const directive = new SdsPopupDirective();
-  //   expect(directive).toBeTruthy();
-  // });
+  it('Should check sds popup Content class for place', ()=>{
+    const placeValueEl = de.nativeElement.attributes[2].value;
+    const sdsPopupDire = fixture.debugElement.query(By.directive(SdsPopupDirective));
+    expect(placeValueEl).toBe(sdsPopupDire.attributes.place);
+  });
+
+  it('Should check sds popup Content class for position', ()=>{
+    const placeValueEl = de.nativeElement.attributes[3].value;
+    const sdsPopupDire = fixture.debugElement.query(By.directive(SdsPopupDirective));
+    expect(placeValueEl).toBe(sdsPopupDire.attributes.position);
+  });
+
+
+
+
 });
