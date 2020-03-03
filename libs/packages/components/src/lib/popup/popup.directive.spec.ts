@@ -2,8 +2,6 @@ import { SdsPopupDirective } from './popup.directive';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { Component, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-// import { IconSampleModule } from '../../../../../component-sample/src/lib/feature/icon-sample/icon-sample.module';
 
 @Component({
   template: '<div sdsPopup position="bottom-center" place="out" aria-label="Div that displays a tooltip that hides when scrolled out of the container" className="tooltip,tooltip-left" (click)="onPopupClick()"></div>'
@@ -23,9 +21,6 @@ describe('PopupDirective', () => {
     TestBed.configureTestingModule({
       declarations:[SdsPopupDirective,
         TestPopupSampleComponent
-      ],
-      imports: [
-        FontAwesomeModule
       ]
     })
     .compileComponents();
