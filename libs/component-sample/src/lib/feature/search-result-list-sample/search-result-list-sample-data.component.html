@@ -2,9 +2,9 @@
   <div [ngClass]="{'grid-row': displayAs == 'card'}">
     <!-- card layout for Icon -->
     <div *ngIf="displayAs == 'card'"
-      [ngClass]="{'grid-col-1 border-right padding-right-2 text-center' : displayAs == 'card'}">
+      [ngClass]="{'grid-col-1 border-right border-base-light padding-right-2 text-center' : displayAs == 'card'}">
       <span class="sds-text-disabled">
-        <fa-icon [icon]="['fas', 'question']" size="lg"></fa-icon>
+        <fa-icon [icon]="['sds', 'user']" [classes]="['icon-user']" size="2x"></fa-icon>
       </span>
     </div>
 
