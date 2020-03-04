@@ -2,10 +2,10 @@
   <sds-search-result-list [model]="items" [divider]=true>
       <ng-template #resultContent let-item>
           <div>
-              <search-result-list-sample-data [model]="item">
+              <search-result-list-sample-data [model]="item" [displayAs]="'card'">
                   <result-list-child *ngIf="item.hasNewerData"></result-list-child>
               </search-result-list-sample-data>
-            
+
           </div>
       </ng-template>
   </sds-search-result-list>

@@ -1,13 +1,15 @@
-<div class="sds-card">
-  <div class="grid-row">
-    <div class="grid-col-1">
+<div [ngClass]="{ 'sds-card' : displayAs == 'card' , 'sds-result-item' : displayAs != 'card'}">
+  <div [ngClass]="{'grid-row': displayAs == 'card'}">
+      <!-- card layout for Icon -->
+    <div *ngIf="displayAs == 'card'"
+    [ngClass]="{'grid-col-1 border-right padding-right-2 text-center' : displayAs == 'card'}">
       <span class="sds-text-disabled">
         <fa-icon [icon]="['fas', 'question']" size="lg"></fa-icon>
       </span>
     </div>
-    <div class="grid-col-11">
-      <!-- Item Heading -->
-     <!-- Item Heading -->
+
+    <div [ngClass]="{'grid-col-11 padding-left-2': displayAs == 'card'}">
+          <!-- Item Heading -->
     <div class="grid-row grid-gap">
       <div class="grid-col">
         <h3 class="font-sans-xs margin-y-0">
@@ -275,3 +277,4 @@
     </div>
   </div>
 </div>
+
