@@ -7,6 +7,7 @@ import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { Subject } from 'rxjs';
 import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
+import { pairwise } from 'rxjs/operators';
 
 @Component({
   selector: 'sds-filters',
@@ -28,12 +29,14 @@ export class SdsFiltersComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.form.valueChanges.subscribe(val => {
-      this.filterChange.emit(val);
+    this.form.valueChanges
+    .pipe(pairwise())
+    .subscribe(([prev, next]: [any, any]) => {
+      this.filterChange.emit(next);
       if (this.formlyUpdateComunicationService) {
-        this.formlyUpdateComunicationService.updateFilter(val);
+        this.formlyUpdateComunicationService.updateFilter(next);
       }
-  })
+    });
   }
 
   constructor(@Optional() private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService) { }
