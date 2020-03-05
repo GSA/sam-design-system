@@ -30,3 +30,5 @@ export * from './dialog/dialog';
 export * from './dialog/dialog-ref';
 export * from './dialog/dialog.module';
 export * from './collapse/collapse.module';
+export * from './text-ellipsis/ellipsis.module';
+export * from './read-more/readMoreModule';

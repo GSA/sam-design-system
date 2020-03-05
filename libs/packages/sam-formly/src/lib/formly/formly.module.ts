@@ -14,6 +14,7 @@ import { maxDateValidator, minDateValidator } from './formly.validators';
 import { AnimationWrapperComponent } from './wrappers/form-field.animation';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+
 // Validate the min length of the charecter
 export function minlengthValidationMessage(err, field) {
   return `Should have atleast ${field.templateOptions.minLength} characters`;

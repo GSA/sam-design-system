@@ -3,7 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { map, startWith, tap } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
-import { SDSAutocompletelConfiguration, SDSSelectedItemModel, SelectionMode } from '@gsa-sam/components';
+import { SDSAutocompletelConfiguration, SDSSelectedItemModel, SelectionMode,SdsEllipsisModule } from '@gsa-sam/components';
 
 interface Model {
   readonly player: string;

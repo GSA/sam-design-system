@@ -1,0 +1,38 @@
+<div class="grid-container">
+  <div class="grid-row grip-gap">
+    <div class="tablet:grid-col-9 grid-col-12" >
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
+      
+      </form>
+     
+
+      <div class="sam-example-pagination">
+        <h1>Ellipsis at the end of the line</h1>
+      </div>
+      <div *ngFor="let tag of tags" model="tags">
+
+      <div>
+        <h3>{{ tag.title }} </h3><small>{{ tag.date }}</small>
+      </div>
+    <div sdstextEllipsis>{{tag.description}}</div>
+    </div>
+    <div class="sam-example-pagination">
+      <h1>Ellipsis with read more</h1>
+    </div>
+      <div *ngFor="let tag of tags" model="tags">
+
+      <div>
+        <h3>{{ tag.title }} </h3><small>{{ tag.date }}</small>
+      </div>
+     
+        <sds-read-more [text]=tag.description>
+          
+       </sds-read-more>
+    
+     
+
+</div>
+    </div>
+  </div>
+</div>

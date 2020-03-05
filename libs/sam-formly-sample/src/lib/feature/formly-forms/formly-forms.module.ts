@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyFormsComponent } from './formly-forms.component';
 import { SdsFiltersModule } from '@gsa-sam/sam-formly';
+import { SdsEllipsisModule } from '@gsa-sam/components';
 
 @NgModule({
     declarations: [FormlyFormsComponent],
@@ -11,6 +12,7 @@ import { SdsFiltersModule } from '@gsa-sam/sam-formly';
         CommonModule,
         ReactiveFormsModule,
         SdsFiltersModule,
+        SdsEllipsisModule,
         FormsModule,
         FormlyModule.forRoot()
     ]
