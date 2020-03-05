@@ -1,4 +1,6 @@
-<sds-top-banner *ngIf="showTopBanner"></sds-top-banner>
+<sds-top-banner *ngIf="showTopBanner" 
+[description]="topBannerDescription"
+></sds-top-banner>
 <div
   class="usa-overlay"
   [class.is-visible]="mobileNavActive"

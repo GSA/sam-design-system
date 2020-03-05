@@ -32,11 +32,13 @@ import { DialogSampleModule } from './feature/dialog-sample/dialog-sample.module
 import { DialogSampleComponent } from './feature/dialog-sample/dialog-sample.component';
 import { ActionsMenuSampleComponent } from './feature/actions-menu-sample/actions-menu-sample.component';
 import { ActionsMenuSampleModule } from './feature/actions-menu-sample/actions-menu-sample.module';
-
-
 import { SearchSampleModule } from './feature/search-sample/search-sample.module';
 import { SearchSampleComponent } from './feature/search-sample/search-sample.component';
+import { CollapseSampleComponent } from './feature/collapse-sample/collapse-sample.component';
+import { CollapseSampleModule } from './feature/collapse-sample/collapse-sample.module';
+
 export const ROUTES: Routes = [
+  { path: 'collapse', component: CollapseSampleComponent },
   { path: 'header', component: HeaderSampleComponent },
   { path: 'footer', component: FooterSampleComponent },
   { path: 'pagination', component: PaginationSampleComponent },
@@ -72,9 +74,11 @@ export const ROUTES: Routes = [
     AutocompleteSampleModule,
     DialogSampleModule,
     ActionsMenuSampleModule,
-    SearchSampleModule
+    SearchSampleModule,
+    CollapseSampleModule
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  declarations: []
 })
 export class ComponentSampleModule {
   constructor() {

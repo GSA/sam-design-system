@@ -2,7 +2,7 @@
   <!-- =============== PAGE OPTIONS =============== -->
   <sds-page-options>
     <!-- =============== TOOLBAR =============== -->
-    <div class="grid-col">
+    <div class="grid-col-12">
       <div class="grid-row">
         <div class="grid-col-auto">
           <sds-toolbar #toolbar="sdsToolbar" class="top-205">
@@ -14,8 +14,8 @@
             </sds-accordion>
           </sds-toolbar>
         </div>
-        <div class="grid-col-auto">
-          <sds-pagination
+        <div class="grid-col-auto" *ngIf="items?.length"> 
+          <sds-pagination 
             class="flex-fill"
             [sdsToolbarExpand]="toolbar"
             [paginationConfiguration]="top"
@@ -25,7 +25,7 @@
           </sds-pagination>
         </div>
         <div class="grid-col-fill"></div>
-        <div class="grid-col-auto float-right">
+        <div class="grid-col-auto float-right"  *ngIf="items?.length">
           <div class="margin-left-1">
             <label
               class="usa-label font-sans-3xs text-italic text-base margin-0"
@@ -47,7 +47,7 @@
       </div>
     </div>
   <!-- =============== PAGE CONTENT =============== -->
-  <div class="sds-page__content" [sdsToolbarExpand]="toolbar">
+  <div class="grid-col-12 sds-page__content" [sdsToolbarExpand]="toolbar">
     <!-- =============== RESULTS LIST =============== -->
     <sds-search-result-list [model]="items">
       <ng-template #resultContent let-item>
@@ -58,7 +58,7 @@
     </sds-search-result-list>
 
     <!-- =============== PAGINATION =============== -->
-    <sds-pagination
+    <sds-pagination *ngIf="items?.length"
       [paginationConfiguration]="bottom"
       [(page)]="page"
       (pageChange)="paginationChange.next($event)"
