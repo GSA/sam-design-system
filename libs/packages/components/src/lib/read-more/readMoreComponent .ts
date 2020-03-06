@@ -54,7 +54,7 @@ export class SdsReadMoreComponent implements AfterViewInit {
         @Inject(PLATFORM_ID) private readonly platformId) {
     }
     @HostListener('window:resize')
-    private onWindowResize() {
+    public onWindowResize() {
       this.truncate();
     }
     ngAfterViewInit() {
