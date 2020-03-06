@@ -19,7 +19,7 @@ export class FormlyEllipsisComponent implements OnInit {
     "id": 2,
     "title": "NIA Extension for Hurricane Maria",
     "date": "Oct 7, 2019",
-    "description": "The expiration date for National Interest Action value 'Hurricane Maria 2017' has been extended to 10/15/2019 in FPDS Production. National Interest Action value 'Hurricane Maria 2017' (code H17M) is valid from 09/20/2017 to 10/15/2019."
+    "description": "The expiration date for National Interest Action value 'Hurricane Maria 2017' has been extended to 10/15/2019 in FPDS Production. National Interest is Action value 'Hurricane Maria 2017' (code H17M) is valid from 09/20/2017 to 10/15/2019."
   },
   {
     "id": 3,

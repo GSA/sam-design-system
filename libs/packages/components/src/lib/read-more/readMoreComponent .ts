@@ -15,13 +15,22 @@ import {
   @Component({
     selector: 'sds-read-more ',
     template: `
-        <div [innerHTML]="text" [class.collapsed]="isCollapsed" [style.height]="isCollapsed ? maxHeight+'px' : 'auto'">
+        <div [innerHTML]="text" [class.collapsed]="isCollapsed" [style.height]="isCollapsed ? maxHeight+'px' : 'auto'"> 
         </div>
-            <a *ngIf="isCollapsable" (click)="isCollapsed =! isCollapsed">...Read {{isCollapsed? 'more':'less'}}</a>
+        <span  *ngIf="isCollapsed">...</span>
+       
+        <div class="showReadMore"><a class="readLink" *ngIf="isCollapsable" (click)="isCollapsed =! isCollapsed">Read {{isCollapsed? 'more':'less'}}</a></div>
     `,
     styles: [`
         div.collapsed {
             overflow: hidden;
+            display: inline-block;
+        }
+        a.readLink{
+            color:blue;
+        }
+        div.showReadMore{
+            margin-top: 15px;
         }
     `]
 })
@@ -34,11 +43,11 @@ export class SdsReadMoreComponent implements AfterViewInit {
     @Input() text: string;
 
     //maximum height of the container
-    @Input() maxHeight: number = 60;
+    @Input() maxHeight = 60;
 
   
-    public isCollapsed: boolean = false;
-    public isCollapsable: boolean = false;
+    public isCollapsed = false;
+    public isCollapsable = false;
     private innerText: string;
 
     constructor(private elementRef: ElementRef,
@@ -46,7 +55,6 @@ export class SdsReadMoreComponent implements AfterViewInit {
     }
     @HostListener('window:resize')
     private onWindowResize() {
-       
       this.truncate();
     }
     ngAfterViewInit() {
@@ -59,14 +67,14 @@ export class SdsReadMoreComponent implements AfterViewInit {
         if (this.innerText === undefined) {
             this.innerText = this.el.innerText.trim();
           }
-        const text = this.innerText.split(' ');
+        const textContent = this.innerText.split(' ');
         this.el.style.maxHeight="60px";
 
-        let currentHeight = this.elementRef.nativeElement.getElementsByTagName('div')[0].offsetHeight;
-
-        if (text.length > 0 && currentHeight > this.maxHeight) {
+        const currentHeight = this.elementRef.nativeElement.getElementsByTagName('div')[0].offsetHeight;
+        if (textContent.length > 0 && currentHeight > this.maxHeight) {
             this.isCollapsed = true;
             this.isCollapsable = true;
         }
+       
     }
 }

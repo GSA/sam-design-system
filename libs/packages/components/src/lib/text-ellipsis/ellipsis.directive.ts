@@ -54,13 +54,8 @@ import {
   
       // truncate the text and append the ellipsis
       const text = this.innerText.split(' ');
-       //  this.el.style.height = "70px";
-         this.el.style.whiteSpace="nowrap";
-         this.el.style.overflow="hidden";
-     
-      // $(elm).appendTo(this.el);
-       //  while (text.length > 0 && this.el.scrollHeight > this.el.clientHeight) {
-        while (text.length > 0 && this.el.scrollWidth > this.el.clientWidth) {
+         this.el.style.height = "60px";
+         while (text.length > 0 && this.el.scrollHeight > this.el.clientHeight) {
         text.pop();
         this.el.innerHTML = `${text.join(' ')}…`;
        
