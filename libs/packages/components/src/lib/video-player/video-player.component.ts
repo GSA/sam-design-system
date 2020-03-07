@@ -1,6 +1,13 @@
 import { Component, OnInit, Input, AfterViewInit, ViewEncapsulation } from '@angular/core';
 import { InitPxVideo } from './js/px-video';
 
+export interface VPInterface{
+  videoHeightEl: string;
+  videoSeekInterval: number;
+  videoDebug: boolean;
+}
+
+
 @Component({
   selector: 'sds-video-player',
   templateUrl: './video-player.component.html',
@@ -8,54 +15,31 @@ import { InitPxVideo } from './js/px-video';
   encapsulation: ViewEncapsulation.None,
 })
 export class SdsVideoPlayerComponent implements OnInit, AfterViewInit {
-  VvtFileURL: string;
-  videoHeightEl: string;
-  videoWidthEl: string;
-  videoPosterEl: string;
-  videoPreloadEl: string;
-  videoSourceMp4El: string;
-  videoSourceWebmEl: string;
-  videoCaptionEl: string;
-  imageSrcEl: string;
-  videoIdEl: string;
-  GLOBAL_STRINGS: any;
-
-  @Input() videoSourceWebm: string;
-  @Input() videoSourceMp4: string;
-  @Input() videoHeight: string;
-  @Input() videoWidth: string;
+  @Input() videoSourceWebmEl: string;
+  @Input() videoSourceMp4El: string;
+  @Input() videoHeightEl: VPInterface;
+  @Input() videoWidthEl: string;
   @Input() videoPlayerId: string;
-  @Input() videoCaption: string;
-  @Input() videoPoster: string;
-  @Input() videoSeekInterval: number;
-  @Input() videoDebug: boolean;
-  @Input() videoPreload: string;
-  @Input() imageSrc: string;
-  @Input() videoTitle: string;
-  @Input() captionOnDefault: boolean;
+  @Input() videoCaptionEl: string;
+  @Input() videoPosterEl: string;
+  @Input() videoSeekInterval: VPInterface;
+  @Input() videoDebug: VPInterface;
+  @Input() videoPreloadEl: string;
 
+
+  ngOnInit(){}
 
   ngAfterViewInit() {
     InitPxVideo({
       videoId: this.videoPlayerId,
-      captionsOnDefault: this.captionOnDefault,
+      captionsOnDefault: true,
       seekInterval: this.videoSeekInterval,
-      videoTitle: this.videoTitle,
+      videoTitle: 'Video Player',
       debug: this.videoDebug
     });
+
   }
 
   constructor() {
 }
-  ngOnInit() {
-    this.videoWidthEl = this.videoWidth;
-    this.videoHeightEl = this.videoHeight;
-    this.videoIdEl = this.videoPlayerId;
-    this.videoPosterEl = this.videoPoster;
-    this.videoPreloadEl = this.videoPreload;
-    this.videoSourceMp4El = this.videoSourceMp4;
-    this.videoSourceWebmEl = this.videoSourceWebm;
-    this.imageSrcEl = this.imageSrc;
-    this.videoCaptionEl = this.videoCaption;
-  }
 }
