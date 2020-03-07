@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SdsVideoPlayerComponent } from './video-player.component';
 import { By } from '@angular/platform-browser';
 import { InitPxVideo } from './js/px-video';
-import { Component } from '@angular/core';
+
 
 class IntiPxVideoObj {
   InitPxVideo(options){

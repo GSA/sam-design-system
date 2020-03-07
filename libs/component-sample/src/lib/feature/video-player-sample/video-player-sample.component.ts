@@ -26,20 +26,16 @@ export class VideoPlayerSampleComponent implements OnInit {
    }
 
   ngOnInit() {
-    // this.sourceWebm = "http://techslides.com/demos/sample-videos/small.webm";
-    // this.sourceMp4 = "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4";
     this.sourceMp4 = "https://media.w3.org/2010/05/sintel/trailer.mp4";
     this.height = '360';
     this.width = "550";
     this.id = "sampleVid1";
     this.caption = '';
-    // this.caption =" https://drive.google.com/open?id=1J7UFtefctgkMib7A4GTHTkU3CmRO0bkx";
     this.poster = "http://www.kodaikanalholidays.com/img/packages/Ooty3Nights4DaysHolidayPackage.jpg";
     this.seekInterval = 20;
     this.debug = true;
     this.videoCaptionOnDefault = true;
     this.videoTitle = 'clips of stand-up comedy';
     this.preload = "none";
-    this.imageSrc = "http://images.crestock.com/150000-159999/151031-xs.jpg";
   }
 }

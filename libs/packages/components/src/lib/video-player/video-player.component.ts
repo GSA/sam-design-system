@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, AfterViewInit, ViewEncapsulation } from '@angular/core';
-import { InitPxVideo } from '../video-player/js/px-video';
+import { InitPxVideo } from './js/px-video';
 
 @Component({
   selector: 'sds-video-player',
@@ -36,26 +36,6 @@ export class SdsVideoPlayerComponent implements OnInit, AfterViewInit {
 
 
   ngAfterViewInit() {
-    this.GLOBAL_STRINGS = {
-
-      PLAY: "Play",
-
-      PAUSE: "Pause",
-
-      TOGGLE_FULL_SCREEN: "Toggle full screen",
-
-      MUTE: "Mute",
-
-      RESTART: "Restart",
-
-      CAPTIONS: "Closed captions",
-
-      REWIND: "Rewind",
-
-      FORWARD: "Forward"
-
-    };
-
     InitPxVideo({
       videoId: this.videoPlayerId,
       captionsOnDefault: this.captionOnDefault,
