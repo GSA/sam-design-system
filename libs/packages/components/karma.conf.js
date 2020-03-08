@@ -13,10 +13,7 @@ module.exports = function(config) {
       dir: join(__dirname, '../../../coverage/libs/components')
     },
     files: [
-      "../../../node_modules/@angular/cdk/overlay-prebuilt.css",
-      // '../components/src/lib/video-player/js/px-video-karma.js',
-      // '../components/src/lib/video-player/js/strings.js',
-      '../components/src/lib/video-player/css/px-video.css'
+      "../../../node_modules/@angular/cdk/overlay-prebuilt.css"
     ],
     reporters: ['progress', 'kjhtml'],
     port: 9876,
@@ -25,6 +22,5 @@ module.exports = function(config) {
     autoWatch: true,
     browsers: ['Chrome'],
     singleRun: false
-
   });
 };
