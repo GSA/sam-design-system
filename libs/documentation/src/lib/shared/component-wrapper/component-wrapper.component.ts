@@ -17,6 +17,7 @@ interface tabsDesc {
 export class ComponentWrapperComponent {
   activeTab = 'examples';
   component: string;
+  title: string;
   tabs: tabsDesc = {
     examples: false,
     api: false,
@@ -33,6 +34,7 @@ export class ComponentWrapperComponent {
 
       this.component = parentRoute.url[1].path;
       this.activeTab = tabRoute.url[0].path;
+      this.title = this.route.snapshot.data.title || this.component;
 
       parentRoute.routeConfig.children[1].children.forEach(element => {
         this.tabs[element.path] = true;

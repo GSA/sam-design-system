@@ -1,4 +1,4 @@
-{
+const FORMLY = {
     "pipes": [],
     "interfaces": [],
     "injectables": [
@@ -2614,4 +2614,6 @@
         "groupedEnumerations": {},
         "groupedTypeAliases": {}
     }
-}
+};
+
+export default FORMLY;

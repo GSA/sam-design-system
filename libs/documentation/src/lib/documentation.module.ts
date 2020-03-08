@@ -1,3 +1,4 @@
+
 import { IntroductionModule } from './pages/introduction/introduction.module';
 import { IntroductionComponent } from './pages/introduction/introduction.component';
 import { OverviewModule } from './pages/overview/overview.module';
@@ -9,6 +10,7 @@ import { sds } from '@gsa-sam/sam-styles/src/icons/';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { ROUTES as HEADER_ROUTES, HeaderModule } from './components/header/header.module';
 import { ROUTES as INPUT_ROUTES, InputModule } from './components/input/input.module';
+import { ROUTES as FORM_FIELD_ROUTES, FormFieldModule } from './components/form-field/form-field.module';
 import { DocumentationSharedModule } from './shared';
 import { OverviewComponent } from './pages/overview/overview.component';
 
@@ -18,11 +20,12 @@ export const ROUTES: Routes = [
   { path: 'introduction', component: IntroductionComponent },
   { path: 'components', pathMatch: 'full', redirectTo: 'components/alert' },
   { path: 'components/header', children: HEADER_ROUTES },
-  { path: 'components/input', children: INPUT_ROUTES }
+  { path: 'components/input', children: INPUT_ROUTES },
+  { path: 'components/form-field', children: FORM_FIELD_ROUTES }
 ];
 
 @NgModule({
-  imports: [CommonModule, DocumentationSharedModule, RouterModule.forChild(ROUTES), HeaderModule, InputModule, OverviewModule, IntroductionModule]
+  imports: [CommonModule, DocumentationSharedModule, RouterModule.forChild(ROUTES), HeaderModule, InputModule, FormFieldModule, OverviewModule, IntroductionModule]
 })
 export class DocumentationModule {
   constructor() {

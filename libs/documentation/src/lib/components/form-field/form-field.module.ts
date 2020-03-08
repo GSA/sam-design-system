@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderBasic } from './demos/basic/header-basic.component';
+import { FormFieldBasic } from './demos/basic/form-field-basic.component';
 import { DocumentationExamplesPage } from '../shared/examples-page/examples.component';
 import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
@@ -8,17 +8,17 @@ import { DocumentationTemplatePage } from '../shared/template-page/template.comp
 import {
   DocumentationComponentsSharedModule,
   DocumentationDemoList
-} from './../shared/index';
-import { ComponentWrapperComponent } from './../../shared/component-wrapper/component-wrapper.component';
-import { HeaderBasicModule } from './demos/basic/header-basic.module';
+} from '../shared/index';
+import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
+import { FormFieldBasicModule } from './demos/basic/form-field-basic.module';
 
 const DEMOS = {
-  basic: {
-    title: 'SAM Header',
-    type: HeaderBasic,
-    code: require('!!raw-loader!./demos/basic/header-basic.component'),
-    markup: require('!!raw-loader!./demos/basic/header-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/header/demos/basic'
+  formfield: {
+    title: 'Basic Form Field',
+    type: FormFieldBasic,
+    code: require('!!raw-loader!./demos/basic/form-field-basic.component'),
+    markup: require('!!raw-loader!./demos/basic/form-field-basic.component.html'),
+    path: 'libs/documentation/src/lib/components/form-field/demos/basic'
   }
 };
 
@@ -28,10 +28,12 @@ export const ROUTES = [
     path: '',
     component: ComponentWrapperComponent,
     data: {
+      title: "Form Field",
       items: [
         {
-          pkg: 'components',
-          component: 'SdsHeaderComponent'
+          pkg: 'formly',
+          wrappers: ['form-field'],
+          component: 'FormlyWrapperFormFieldComponent'
         }
       ]
     },
@@ -48,11 +50,11 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    HeaderBasicModule
+    FormFieldBasicModule
   ]
 })
-export class HeaderModule {
+export class FormFieldModule {
   constructor(demoList: DocumentationDemoList) {
-    demoList.register('header', DEMOS);
+    demoList.register('form-field', DEMOS);
   }
 }

@@ -1,3 +1,4 @@
+
 <table class="usa-table usa-table--borderless width-full" *ngIf="api.inputs.length">
   <caption><h2>Inputs</h2></caption>
   <thead class="usa-sr-only">
@@ -100,7 +101,7 @@
         <p class="margin-bottom-0"><span class="text-italic text-semibold font-sans-3xs">Template: </span></p>
         <docs-highlight language="html" [sourceCode]="getWrapper(wrapper).template"></docs-highlight>
 
-        <table class="usa-table usa-table--borderless usa-table--row-borders--thin usa-table--thin width-full" *ngIf="getTags(getWrapper(wrapper).jsdoctags).length">
+        <table class="usa-table usa-table--borderless usa-table--row-borders--thin usa-table--thin width-full">
           <caption><p class="margin-bottom-0"><span class="text-italic text-semibold font-sans-3xs">Properties: </span></p></caption>
           <thead>
             <tr>

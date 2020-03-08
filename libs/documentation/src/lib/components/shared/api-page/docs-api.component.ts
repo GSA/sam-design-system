@@ -4,15 +4,13 @@ import {ActivatedRoute} from '@angular/router';
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <docs-api-component [pkg]="package" [component]="component"></docs-api-component>
+    <docs-api-component  [type]="item.type" [wrappers]="item.wrappers" [pkg]="item.pkg" [component]="item.component" *ngFor="let item of items"></docs-api-component>
   `
 })
 export class DocumentationAPIPage {
-  component: string;
-  package: string;
+  items: any = [];
 
   constructor(route: ActivatedRoute) {
-    this.package = route.snapshot.parent.data.package || '';
-    this.component = route.snapshot.parent.data.component || '';
+    this.items = route.snapshot.parent.data.items || '';
   }
 }

@@ -1,4 +1,4 @@
-import { FORMLY_CONFIG } from '@gsa-sam/sam-formly';
+import { FORMLY_CONFIG, FORMLY_WRAPPERS } from '@gsa-sam/sam-formly';
 import {Component, ChangeDetectionStrategy, Input, OnInit} from '@angular/core';
 import apis from 'libs/documentation/src/lib/apidoc';
 
@@ -11,42 +11,29 @@ interface apiDesc {
 }
 
 export function findComponentAPI(pkg, component) {
-  console.log('in get comp api ' + pkg + ' - ' + component);
   let target: any;
-
-
-  console.log('api ---->');
-  console.log(apis);
-  console.log('components ---->');
-  console.log(apis[pkg].components);
 
   Object.values(apis[pkg].components)
   .filter((entity): entity is any => <any>entity)
   .filter((entity): entity is any => entity.name.startsWith(`${component}`))
   .forEach(entity => {
-    console.log(entity);
     target = entity;
   });
 
-  console.log(target);
   return target;
 }
 
 export function getAPI(pkg, component) {
-  console.log(pkg);
-  console.log(component);
-  console.log('in get api');
+
   const api:apiDesc = {
-    inputs: {},
-    outputs: {},
-    methods: {},
-    properties: {},
-    jsdoctags: {},
+    inputs: [],
+    outputs: [],
+    methods: [],
+    properties: [],
+    jsdoctags: [],
   };
 
   const entity:any = findComponentAPI(pkg, component);
-
-  console.log(entity);
 
   if(entity) {
     api.inputs = entity.inputsClass;
@@ -56,18 +43,15 @@ export function getAPI(pkg, component) {
     api.jsdoctags = entity.jsdoctags;
   }
 
-  console.log(api);
   return api;
 }
 
-export function getFormWrapper(component) {
-  console.log('in get form wrapper');
+export function getFormWrapper(name) {
   let wrappers: string[];
-
   Object.values(FORMLY_CONFIG.types)
     .filter(entity => {
-      if(entity && entity.component){
-        if(entity.component.name === component){
+      if(entity && entity.name){
+        if(entity.name === name){
           return entity;
         }
       }
@@ -97,40 +81,46 @@ export function getFormWrapper(component) {
 })
 export class DocumentationAPIComponent implements OnInit {
   api: apiDesc;
-  wrappers: string[] = [];
-
-  constructor() {}
+  formlyConfig: any;
 
   @Input() component: string;
 
+  @Input() type: string;
+
+  @Input() wrappers: string[];
+
   @Input() pkg: string;
 
-  ngOnInit(): void {
-    console.log('formly config --->');
-    console.log(FORMLY_CONFIG);
+  constructor() {}
 
+  ngOnInit(): void {
     this.api = getAPI(this.pkg, this.component);
 
     if(this.pkg === 'formly') {
-      this.wrappers = getFormWrapper(this.component);
+      if(this.type) {
+        this.wrappers = getFormWrapper(this.type);
+      }
+    }
+    else {
+      this.wrappers = [];
     }
   }
 
   getWrapper(wrapper) {
-    console.log('in wrapper');
     let wrapperComponentName: string;
 
-    Object.values(FORMLY_CONFIG.wrappers)
-      .filter(entity => {
-        if(entity && entity.name){
-          if(entity.name === wrapper){
-            return entity;
-          }
+    Object.values(FORMLY_WRAPPERS)
+    .filter((entity): entity is any => <any>entity)
+    .filter((entity): entity is any => {
+      if(entity && entity.name){
+        if(entity.name === wrapper){
+          return entity;
         }
-      })
-      .forEach(entity => {
-        wrapperComponentName = entity.component.name;
-      });
+      }
+    })
+    .forEach(entity => {
+      wrapperComponentName = entity.componentName;
+    });
 
     const component:any = findComponentAPI(this.pkg, wrapperComponentName);
 
@@ -138,7 +128,6 @@ export class DocumentationAPIComponent implements OnInit {
   }
 
   getTags(tags) {
-    console.log('in tags');
     const tagList: any[] = [];
 
     tags.forEach(tag => {
@@ -146,13 +135,11 @@ export class DocumentationAPIComponent implements OnInit {
         tagList.push({"name": tag.name.left.escapedText + "." + tag.name.right.escapedText, "comment":tag.comment})
       }
     })
-    console.log(tagList);
 
     return tagList;
   }
 
   getArgs(method) {
-    console.log('in args');
     const argString: String[] = [];
     method.args
     .forEach(argument => {
