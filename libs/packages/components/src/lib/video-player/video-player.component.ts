@@ -9,24 +9,30 @@ import { VPInterface } from './video-player';
   encapsulation: ViewEncapsulation.None
 })
 export class SdsVideoPlayerComponent implements OnInit, AfterViewInit {
+  @Input() VPConfigration: VPInterface;
 
-
-  @Input() videoSourceWebmEl: string;
-  @Input() videoSourceMp4El: string;
-  @Input() videoHeightEl: {type : number};
-  @Input() videoWidthEl: string;
-  @Input() videoPlayerId: string;
-  @Input() videoCaptionEl: string;
-  @Input() videoPosterEl: string;
-  @Input() videoSeekInterval: {type: number};
-  @Input() videoDebug: {type: boolean};
-  @Input() videoPreloadEl: {type: string};
-
+videoSourceWebmEl: string;
+videoSourceMp4El: string;
+videoPosterEl: string;
+videoWidthEl: string;
+videoHeightEl: string;
+videoPlayerId: string;
+videoCaptionEl: string;
+videoSeekInterval: number;
+videoDebug: boolean;
+videoPreloadEl: string;
 
   ngOnInit(){
-    // console.log(typeof this.videoSeekInterval);
-    // console.log(typeof this.videoDebug);
-    console.log(typeof this.videoHeightEl);
+      this.videoSourceWebmEl = this.VPConfigration[0].sourceWebm;
+      this.videoSourceMp4El = this.VPConfigration[0].sourceMp4;
+      this.videoPosterEl = this.VPConfigration[0].poster;
+      this.videoWidthEl = this.VPConfigration[0].width;
+      this.videoHeightEl = this.VPConfigration[0].height;
+      this.videoCaptionEl = this.VPConfigration[0].caption;
+      this.videoPlayerId = this.VPConfigration[0].id;
+      this.videoSeekInterval =  this.VPConfigration[0].seekInterval;
+      this.videoDebug = this.VPConfigration[0].debug;
+      this.videoPreloadEl = this.VPConfigration[0].preload;
   }
 
   ngAfterViewInit() {
@@ -37,9 +43,9 @@ export class SdsVideoPlayerComponent implements OnInit, AfterViewInit {
       videoTitle: 'Video Player',
       debug: this.videoDebug
     });
-
   }
 
   constructor() {
 }
+
 }

@@ -8,7 +8,7 @@ export function InitPxVideo(options) {
 
   "use strict";
 
-// console.log("Option Debug......."+options.videoTitle);
+// console.log("Option Debug......."+options.videoId);
 
 
   // Utilities for caption time codes
