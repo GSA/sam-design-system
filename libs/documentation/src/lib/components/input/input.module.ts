@@ -8,13 +8,23 @@ import { DocumentationTemplatePage } from '../shared/template-page/template.comp
 import { DocumentationComponentsSharedModule, DocumentationDemoList } from './../shared/index';
 import { ComponentWrapperComponent } from './../../shared/component-wrapper/component-wrapper.component';
 import { InputBasicModule } from './demos/basic/input-basic.module';
+import { InputOptionalModule } from './demos/optional/input-optional.module';
+import { InputOptional } from './demos/optional/input-optional.component';
 
 const DEMOS = {
   basic: {
-    title: 'Input',
+    title: 'Basic Form Input',
     type: InputBasic,
-    code: require('!!raw-loader!./demos/basic/input-basic.component').default,
-    markup: require('!!raw-loader!./demos/basic/input-basic.component.html').default
+    code: require('!!raw-loader!./demos/basic/input-basic.component'),
+    markup: require('!!raw-loader!./demos/basic/input-basic.component.html'),
+    path: 'libs/documentation/src/lib/components/input/demos/basic'
+  },
+  optional: {
+    title: 'Optional Form Input',
+    type: InputOptional,
+    code: require('!!raw-loader!./demos/optional/input-optional.component'),
+    markup: require('!!raw-loader!./demos/optional/input-optional.component.html'),
+    path: 'libs/documentation/src/lib/components/input/demos/optional'
   }
 };
 
@@ -22,7 +32,15 @@ export const ROUTES = [
   { path: '', pathMatch: 'full', redirectTo: 'examples' },
   {
     path: '',
-    data: { package: 'formly', component: 'FormlyFieldInputComponent' },
+    data: {
+      items: [
+        {
+          pkg: 'formly',
+          type: "input",
+          component: 'FormlyFieldInputComponent'
+        }
+      ]
+    },
     component: ComponentWrapperComponent,
     children: [
       { path: 'examples', component: DocumentationExamplesPage },
@@ -37,7 +55,8 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    InputBasicModule
+    InputBasicModule,
+    InputOptionalModule
   ]
 })
 export class InputModule {

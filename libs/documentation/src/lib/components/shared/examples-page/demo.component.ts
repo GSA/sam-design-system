@@ -11,21 +11,19 @@ export class NgbdWidgetDemoComponent {
   @Input() id: string;
   @Input() code: string;
   @Input() markup: string;
+  @Input() path: string;
   @Input() files: { name: string; source: string }[];
   @Input() showCode = false;
 
-  // get markupSnippet() { return Snippet({lang: 'html', code: this.markup}); }
-  // get codeSnippet() { return Snippet({lang: 'typescript', code: this.code}); }
-
-  // getFileSnippet({name, source}) {
-  //   return Snippet({code: source, lang: name.split('.').pop()});
-  // }
-
-  get hasManyFiles() {
-    return this.files && this.files.length > 5;
-  }
-
   constructor() {}
+
+  getGithubLink() {
+    const baseRepoURL = 'https://github.com/GSA/sam-design-system/tree/master/';
+    if(this.path){
+      return baseRepoURL + this.path;
+    }
+    return false;
+  }
 
   tabType(name: string) {
     const ext = name.split('.').pop();

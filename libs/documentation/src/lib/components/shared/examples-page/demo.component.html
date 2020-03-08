@@ -1,1 +1,26 @@
-<ng-content></ng-content>
+
+<div class="sds-card">
+
+  <div class="border-bottom margin-bottom-2">
+    <div class="grid-row">
+      <div class="grid-col flex-1">
+        <h3 class="margin-bottom-1">{{ demoTitle }}</h3>
+      </div>
+      <div class="grid-col flex-auto flex-align-end">
+        <button class="usa-button--unstyled text-ink margin-left-1 margin-top-2" [ngClass]="{ 'usa-button--active' : showCode }" (click)="showCode = !showCode"><fa-icon [icon]="['fas', 'code']" size="lg"></fa-icon></button>
+        <a class="text-ink usa-button--unstyled margin-left-1 margin-top-2" *ngIf="getGithubLink()" [attr.href]="getGithubLink()" target="_blank"><fa-icon [icon]="['fab', 'github']" size="lg"></fa-icon></a>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="showCode" class="padding-bottom-2 border-bottom margin-bottom-2">
+    <p class="margin-bottom-0"><code class="text-magenta bg-white">Source Code</code></p>
+    <ngx-prism [language]="'javascript'" [code]="code"></ngx-prism>
+
+    <p class="margin-bottom-0"><code class="text-magenta bg-white">Template Markup</code></p>
+    <ngx-prism [language]="'javascript'" [code]="markup"></ngx-prism>
+  </div>
+
+  <ng-content></ng-content>
+</div>
+<hr />

@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import apiDocs from 'libs/documentation/src/documentation';
+import apis from 'libs/documentation/src/lib/apidoc';
 
 interface apiDesc {
   sourceCode: string;
@@ -14,43 +14,57 @@ function baseName(path)
   return pathArr.join("/");
 }
 
-export function getSource(component) {
+
+export function getSource(pkg, component) {
   const api:apiDesc = {
     sourceCode: "",
     fileURI: ""
   };
-  Object.values(apiDocs.components)
-    .filter(entity => entity.name.toUpperCase().startsWith(`SDS${component}COMPONENT`))
-    .forEach(entity => {
-      api.sourceCode = entity.templateData;
-      api.fileURI = baseName(entity.file) + "/" + entity.templateUrl[0].replace('\.\/','');
+
+  Object.values(apis[pkg].components)
+  .filter((entity): entity is any => <any>entity)
+  .filter((entity): entity is any => entity.name.startsWith(`${component}`))
+  .forEach(entity => {
+      api.sourceCode = entity.templateData || entity.template;
+      if(entity.templateUrl.length) {
+        api.fileURI = baseName(entity.file) + "/" + entity.templateUrl[0].replace('\.\/','');
+      }
+      else if(entity.file) {
+        api.fileURI = entity.file;
+      }
     });
   return api;
 }
 
+
 @Component({
   template: `
-    <p class="margin-bottom-0"><span class="text-italic font-sans-3xs">Source: </span><code class="text-indigo bg-white margin-0" [innerHTML]="api.fileURI"></code></p>
-    <ngx-prism
-      [language] = "language"
-      [code] = "sourceCode"
-    ></ngx-prism>
+  <ng-container *ngFor="let item of items">
+    <ng-container *ngIf="item.sourceCode">
+      <p class="margin-bottom-0"><span class="text-italic font-sans-3xs">Source: </span>
+        <code *ngIf="item.fileURI" class="text-indigo bg-white margin-0" [innerHTML]="item.fileURI"></code>
+        <code *ngIf="!item.fileURI" class="text-indigo bg-white margin-0">Inline</code>
+      </p>
+      <ngx-prism
+        [language] = "language"
+        [code] = "item.sourceCode"
+      ></ngx-prism>
+    </ng-container>
+  </ng-container>
   `
 })
-export class DocumentationTemplatePage {
-  component: string;
-  api: apiDesc;
 
-  sourceCode: string;
-  language = 'html';
+export class DocumentationTemplatePage {
+  language = 'javascript';
+  items: any = [];
 
   constructor(route: ActivatedRoute) {
-    const componentName = (this.component =
-      route.parent.parent.snapshot.url[1].path);
-    if (componentName) {
-     this.component = componentName;
-     this.api = getSource(componentName.toUpperCase());
-     this.sourceCode = (this.api as any).sourceCode;
-    }
+    this.items = route.snapshot.parent.data.items || [];
+    this.items.forEach(item => {
+      if(item.component) {
+        item.sourceCode = (getSource(item.pkg, item.component).sourceCode as any);
+        item.fileURI = getSource(item.pkg, item.component).fileURI;
+      }
+    })
   }
 }

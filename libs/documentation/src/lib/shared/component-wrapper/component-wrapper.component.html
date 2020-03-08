@@ -1,7 +1,7 @@
 
 <div class="grid-container">
   <div class="tablet:grid-col-12">
-    <h1>{{ component | titlecase }}</h1>
+    <h1>{{ title | titlecase }}</h1>
   </div>
   <div class="grid-row border-bottom-2px border-base-light">
     <div *ngIf="tabs.examples" class="tablet:grid-col-auto"><button class="usa-button usa-button--base radius-bottom-0 margin-bottom-neg-2px" [routerLink]="['examples']" [routerLinkActive]="['usa-button--active']">Examples</button></div>
