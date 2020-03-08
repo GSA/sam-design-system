@@ -23,16 +23,18 @@ videoDebug: boolean;
 videoPreloadEl: string;
 
   ngOnInit(){
-      this.videoSourceWebmEl = this.VPConfigration[0].sourceWebm;
-      this.videoSourceMp4El = this.VPConfigration[0].sourceMp4;
-      this.videoPosterEl = this.VPConfigration[0].poster;
-      this.videoWidthEl = this.VPConfigration[0].width;
-      this.videoHeightEl = this.VPConfigration[0].height;
-      this.videoCaptionEl = this.VPConfigration[0].caption;
-      this.videoPlayerId = this.VPConfigration[0].id;
-      this.videoSeekInterval =  this.VPConfigration[0].seekInterval;
-      this.videoDebug = this.VPConfigration[0].debug;
-      this.videoPreloadEl = this.VPConfigration[0].preload;
+      console.log(this.VPConfigration);
+
+      this.videoSourceWebmEl = this.VPConfigration.sourceWebm;
+      this.videoSourceMp4El = this.VPConfigration.sourceMp4;
+      this.videoPosterEl = this.VPConfigration.poster;
+      this.videoWidthEl = this.VPConfigration.width;
+      this.videoHeightEl = this.VPConfigration.height;
+      this.videoCaptionEl = this.VPConfigration.caption;
+      this.videoPlayerId = this.VPConfigration.id;
+      this.videoSeekInterval =  this.VPConfigration.seekInterval;
+      this.videoDebug = this.VPConfigration.debug;
+      this.videoPreloadEl = this.VPConfigration.preload;
   }
 
   ngAfterViewInit() {
