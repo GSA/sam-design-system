@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { BehaviorSubject } from 'rxjs';
+import { sdsFormVariable } from '@sam-design-system/sam-formly';
 
 @Component({
   selector: 'sds-filter-align',
@@ -23,10 +24,14 @@ export class FilterAlignComponent implements OnInit {
   fields: FormlyFieldConfig[] = [
     {
       key: 'searchKeyword',
-      wrappers: ['accordionwrapper', 'form-field'],
+      // wrappers: ['group', ...sdsFormVariable],
+      wrappers: ['label','validation'],
       type: 'input',
       templateOptions: {
         label: 'Keyword (with label)',
+        description: 'testing multiple wrappers',
+        required: true,
+       // isAccordionFilter: true,
        // labelClass: 'usa-sr-only'
        
       },
@@ -43,33 +48,55 @@ export class FilterAlignComponent implements OnInit {
 
 
   customfields: FormlyFieldConfig[] = [
+
     {
-      key: 'entityStatus',
-      wrappers: [ 'customwrapper'],
-      type: 'multicheckbox',
-      templateOptions: {
-        label: 'Entity Status',
-        options: [
-          {
-            key: 'Active',
-            value: 'Active'
-          },
-          {
-            key: 'Draft',
-            value: 'Draft'
-          },
-          {
-            key: 'Expired',
-            value: 'Expired'
-          },
-          {
-            key: 'InProgress',
-            value: 'In Progress'
-          }
-        ]
-      }
+      key: 'filters',
+      wrappers: ['group', ...sdsFormVariable],
+      templateOptions: { 
+      label: 'Keyword',
+      isAccordionFilter: true
+    },
+      fieldGroup: [{
+        key: 'firstName',
+        type: 'input',
+        templateOptions: {
+          label: 'Auto Complete',
+          hideLabel: true,
+         
+        },
+      }]
     },
   ];
+
+  // customfields: FormlyFieldConfig[] = [
+  //   {
+  //     key: 'entityStatus',
+  //     wrappers: [ 'customwrapper'],
+  //     type: 'multicheckbox',
+  //     templateOptions: {
+  //       label: 'Entity Status',
+  //       options: [
+  //         {
+  //           key: 'Active',
+  //           value: 'Active'
+  //         },
+  //         {
+  //           key: 'Draft',
+  //           value: 'Draft'
+  //         },
+  //         {
+  //           key: 'Expired',
+  //           value: 'Expired'
+  //         },
+  //         {
+  //           key: 'InProgress',
+  //           value: 'In Progress'
+  //         }
+  //       ]
+  //     }
+  //   },
+  // ];
+  
   public ngOnInit() {
     this.filterChange$.subscribe(
       res => {

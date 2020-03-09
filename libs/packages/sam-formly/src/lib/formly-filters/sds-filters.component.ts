@@ -26,18 +26,6 @@ export class SdsFiltersComponent implements OnInit {
    */
   @Input() debounceTime = 0;
 
-
-  ngOnInit(): void {
-    this.form.valueChanges.subscribe(val => {
-      this.filterChange.emit(val);
-      if (this.formlyUpdateComunicationService) {
-        this.formlyUpdateComunicationService.updateFilter(val);
-      }
-  })
-  }
-
-  constructor(@Optional() private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService) { }
-
   /**
    * Modeal update
    */
@@ -67,5 +55,17 @@ export class SdsFiltersComponent implements OnInit {
    *  Emit results when model updated
    */
   @Output() filterChange = new EventEmitter<object[]>();
+
+  ngOnInit(): void {
+    this.form.valueChanges.subscribe(val => {
+      this.filterChange.emit(val);
+      if (this.formlyUpdateComunicationService) {
+        this.formlyUpdateComunicationService.updateFilter(val);
+      }
+  })
+  }
+
+  constructor(@Optional() private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService) { }
+
 
 }

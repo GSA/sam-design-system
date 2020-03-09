@@ -13,7 +13,7 @@ import { FormlyFormFieldFilterWrapperComponent } from './wrappers/form-field.fil
 import { FormlyFieldDatePickerComponent } from './types/datepicker';
 import { FormlyFieldButtonComponent } from './types/button';
 import { FormlyFieldConfig } from '@ngx-formly/core';
-import { FormlyCustomWrapperComponent} from './wrappers/custom-wrapper';
+import { FormlyCustomWrapperComponent } from './wrappers/custom-wrapper';
 
 export const FIELD_TYPE_COMPONENTS = [
   FormlyFieldInputComponent,
@@ -29,8 +29,18 @@ export const FIELD_TYPE_COMPONENTS = [
   FormlyFormFieldFilterWrapperComponent,
   FormlyFieldButtonComponent,
   FormlyCustomWrapperComponent,
+  FormlyLabelWrapperComponent,
+  FormlyDescriptionWrapperComponent,
+  FormlyValidationWrapperComponent,
+  FormlyGroupWrapperComponent
+
 ];
 import { maxDateValidator, minDateValidator } from './formly.validators';
+import { sdsGroupVariable, sdsFormVariable } from './sds-wrapper-variable';
+import { FormlyLabelWrapperComponent } from './wrappers/label.wrapper';
+import { FormlyDescriptionWrapperComponent } from './wrappers/description.wrapper';
+import { FormlyValidationWrapperComponent } from './wrappers/validation.wrapper';
+import { FormlyGroupWrapperComponent } from './wrappers/group.wrapper';
 
 export const FORMLY_CONFIG: ConfigOption = {
   types: [
@@ -41,7 +51,7 @@ export const FORMLY_CONFIG: ConfigOption = {
     {
       name: 'input',
       component: FormlyFieldInputComponent,
-      wrappers: ['form-field'],
+      wrappers: [...sdsFormVariable],
     },
     {
       name: 'checkbox',
@@ -117,10 +127,14 @@ export const FORMLY_CONFIG: ConfigOption = {
 
   ],
   wrappers: [
+    { name: 'label', component: FormlyLabelWrapperComponent },
+    { name: 'description', component: FormlyDescriptionWrapperComponent },
+    { name: 'validation', component: FormlyValidationWrapperComponent },
+    { name: 'group', component: FormlyGroupWrapperComponent },
     { name: 'form-field', component: FormlyWrapperFormFieldComponent },
     { name: 'accordionwrapper', component: FormlyAccordianFormFieldComponent },
     { name: 'filterwrapper', component: FormlyFormFieldFilterWrapperComponent },
-    {name : 'customwrapper', component: FormlyCustomWrapperComponent}
+    { name: 'customwrapper', component: FormlyCustomWrapperComponent }
   ],
 
 };
