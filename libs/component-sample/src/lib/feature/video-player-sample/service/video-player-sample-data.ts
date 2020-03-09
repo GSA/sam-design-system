@@ -6,7 +6,6 @@ export let VideoPlayerSampleData = [
       'width': '550',
       'caption':'',
       'poster':'http://www.kodaikanalholidays.com/img/packages/Ooty3Nights4DaysHolidayPackage.jpg',
-      'controls':'',
       'id': 'smapleId1',
       'seekInterval': 20,
       'debug': true,

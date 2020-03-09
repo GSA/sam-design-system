@@ -23,8 +23,6 @@ videoDebug: boolean;
 videoPreloadEl: string;
 
   ngOnInit(){
-      console.log(this.VPConfigration);
-
       this.videoSourceWebmEl = this.VPConfigration.sourceWebm;
       this.videoSourceMp4El = this.VPConfigration.sourceMp4;
       this.videoPosterEl = this.VPConfigration.poster;
