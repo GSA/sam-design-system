@@ -36,7 +36,7 @@ export const FIELD_TYPE_COMPONENTS = [
 
 ];
 import { maxDateValidator, minDateValidator } from './formly.validators';
-import { sdsGroupVariable, sdsFormVariable } from './sds-wrapper-variable';
+import { sdsGroupWrapper, sdsFieldWrapper } from './sds-wrapper-variable';
 import { FormlyLabelWrapperComponent } from './wrappers/label.wrapper';
 import { FormlyDescriptionWrapperComponent } from './wrappers/description.wrapper';
 import { FormlyValidationWrapperComponent } from './wrappers/validation.wrapper';
@@ -51,42 +51,42 @@ export const FORMLY_CONFIG: ConfigOption = {
     {
       name: 'input',
       component: FormlyFieldInputComponent,
-      wrappers: [...sdsFormVariable],
+      wrappers: [...sdsFieldWrapper],
     },
     {
       name: 'checkbox',
       component: FormlyFieldCheckboxComponent,
-      wrappers: ['form-field'],
+      wrappers: [...sdsFieldWrapper],
     },
     {
       name: 'radio',
       component: FormlyFieldRadioComponent,
-      wrappers: ['form-field'],
+      wrappers: [...sdsFieldWrapper],
     },
     {
       name: 'select',
       component: FormlyFieldSelectComponent,
-      wrappers: ['form-field'],
+      wrappers: [...sdsFieldWrapper],
     },
     {
       name: 'textarea',
       component: FormlyFieldTextAreaComponent,
-      wrappers: ['form-field'],
+      wrappers: [...sdsFieldWrapper],
     },
     {
       name: 'multicheckbox',
       component: FormlyFieldMultiCheckboxComponent,
-      wrappers: ['form-field'],
+      wrappers: [...sdsFieldWrapper],
     },
     {
       name: 'autocomplete',
       component: FormlyFieldAutoCompleteComponent,
-      wrappers: ['form-field'],
+      wrappers: [...sdsFieldWrapper],
     },
     {
       name: 'datepicker',
       component: FormlyFieldDatePickerComponent,
-      wrappers: ['form-field'],
+       wrappers: [...sdsFieldWrapper],
       defaultOptions: {
         validators: {
           validation: [maxDateValidator, minDateValidator],

@@ -1,5 +1,4 @@
- export let sdsGroupVariable = ['group']
-
- export let sdsFormVariable = ['label', 'description', 'validation']
+ export let sdsFieldWrapper = ['label', 'description', 'validation'];
+ export let sdsGroupWrapper = ['group', ...sdsFieldWrapper]
 
   

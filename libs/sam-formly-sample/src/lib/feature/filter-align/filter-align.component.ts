@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { BehaviorSubject } from 'rxjs';
-import { sdsFormVariable } from '@sam-design-system/sam-formly';
+import { sdsGroupWrapper } from '@sam-design-system/sam-formly';
 
 @Component({
   selector: 'sds-filter-align',
   templateUrl: './filter-align.component.html',
-
 })
 export class FilterAlignComponent implements OnInit {
 
@@ -24,7 +23,7 @@ export class FilterAlignComponent implements OnInit {
   fields: FormlyFieldConfig[] = [
     {
       key: 'searchKeyword',
-      // wrappers: ['group', ...sdsFormVariable],
+      // wrappers: ['group', ...sdsFieldWrapper],
       wrappers: ['label','validation'],
       type: 'input',
       templateOptions: {
@@ -51,7 +50,7 @@ export class FilterAlignComponent implements OnInit {
 
     {
       key: 'filters',
-      wrappers: ['group', ...sdsFormVariable],
+      wrappers: [ ...sdsGroupWrapper],
       templateOptions: { 
       label: 'Keyword',
       isAccordionFilter: true
