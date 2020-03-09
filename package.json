@@ -25,7 +25,7 @@
     "workspace-schematic": "./node_modules/.bin/nx workspace-schematic",
     "dep-graph": "./node_modules/.bin/nx dep-graph",
     "help": "./node_modules/.bin/nx help",
-    "federalist": "npm install --only=dev && ng build --project=sam-design-system-site --prod --base-href=$BASEURL/",
+    "federalist": "npm install --only=dev && npm run demo:docs && ng build --project=sam-design-system-site --prod --base-href=$BASEURL/",
     "version": "node ./tools/scripts/update-libs-version.js && git add .",
     "postversion": "git push && git push --tags",
     "changelog": "gren changelog --override && git add . && git commit -m \"Add changelog\" && git push",
@@ -37,6 +37,7 @@
     "demo:docs:components": "npx compodoc -p libs/packages/components/tsconfig.json -e json -d libs/documentation/src/lib/apidoc/components --minimal && node ./scripts/generate-docs.ts -f components",
     "demo:docs:formly": "npx compodoc -p libs/packages/sam-formly/tsconfig.json -e json -d libs/documentation/src/lib/apidoc/formly --minimal  && node ./scripts/generate-docs.ts -f formly",
     "demo:docs:layouts": "npx compodoc -p libs/packages/layouts/tsconfig.json -e json -d libs/documentation/src/lib/apidoc/layouts --minimal  && node ./scripts/generate-docs.ts -f layouts",
+    "demo:docs": "npm run demo:docs:components && npm run demo:docs:formly && npm run demo:docs:layouts",
     "compodocs": "npx compodoc -p libs/packages/components/tsconfig.json -s --minimal"
   },
   "private": true,
