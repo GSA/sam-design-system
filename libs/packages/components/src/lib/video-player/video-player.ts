@@ -5,7 +5,6 @@ export interface VPInterface{
   width: string;
  	caption: string;
   poster: string;
- 	controls: string;
   id: string;
  	seekInterval: number;
  	debug: boolean;

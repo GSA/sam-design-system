@@ -34,7 +34,6 @@ describe('VideoPlayerComponent', () => {
       'width': '550',
       'caption':'',
       'poster':'http://www.kodaikanalholidays.com/img/packages/Ooty3Nights4DaysHolidayPackage.jpg',
-      'controls':'',
       'id': 'smapleId1',
       'seekInterval': 20,
       'debug': true,
@@ -45,6 +44,7 @@ describe('VideoPlayerComponent', () => {
 
   it('Should get same video Height, Width, poster and Preload value  as an Input', ()=>{
     const element = fixture.debugElement.query(By.css('video'));
+    fixture.detectChanges();
     element.nativeElement.setAttribute('height', component.videoHeightEl);
     expect(element.nativeElement.getAttribute("height")).toBe(component.VPConfigration.height);
     element.nativeElement.setAttribute('width', component.videoWidthEl);
