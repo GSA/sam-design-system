@@ -4,7 +4,7 @@ import {
   EventEmitter, Optional, OnInit
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { FormlyFieldConfig } from '@ngx-formly/core';
+import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { Subject } from 'rxjs';
 import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
 import { pairwise } from 'rxjs/operators';
@@ -51,6 +51,12 @@ export class SdsFiltersComponent implements OnInit {
    *  Accordion Label used to display the Accordion header text.
    */
   @Input() accordionLabel: string = 'Filters';
+
+  /**
+   *  Options for the form.
+   */
+  @Input() public options: FormlyFormOptions = {};
+
 
   /**
    *  Emit results when model updated
