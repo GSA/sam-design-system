@@ -88,22 +88,6 @@
                   Input
                 </a>
               </li>
-              <li class="usa-sidenav__item">
-                <a href="#">
-                  Form Example
-                </a>
-              </li>
-              <li class="usa-sidenav__item">
-                <a href="#">
-                  Date Picker
-                </a>
-              </li>
-
-              <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/wrappers']" routerLinkActive="usa-current">
-                  Wrappers
-                </a>
-              </li>
             </ul>
           </li>
           <li class="margin-y-2">
@@ -127,6 +111,21 @@
             </ul>
           </li>
           <li class="margin-y-2">
+            <a class="nav-heading">Form Examples</a>
+            <ul class="usa-sidenav">
+              <li class="usa-sidenav__item">
+                <a [routerLink]="['formly/formlyForms']" routerLinkActive="usa-current">
+                  Formly Forms
+                </a>
+              </li>
+              <li class="usa-sidenav__item">
+                <a [routerLink]="['formly/formlyConditional']" routerLinkActive="usa-current">
+                  Formly Conditional
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="margin-y-2">
             <a class="nav-heading">Layout</a>
             <ul class="usa-sidenav">
               <li class="usa-sidenav__item">
@@ -145,16 +144,6 @@
                 </a>
               </li>
             </ul>
-          </li>
-          <li class="usa-sidenav__item">
-            <a [routerLink]="['formly/formlyForms']" routerLinkActive="usa-current">
-              Formly Forms
-            </a>
-          </li>
-          <li class="usa-sidenav__item">
-            <a [routerLink]="['formly/formlyConditional']" routerLinkActive="usa-current">
-              Formly Conditional
-            </a>
           </li>
         </ul>
       </nav>
