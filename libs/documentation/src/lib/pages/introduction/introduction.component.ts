@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-
+declare var require: any;
 @Component({
   templateUrl: './introduction.component.html'
 })

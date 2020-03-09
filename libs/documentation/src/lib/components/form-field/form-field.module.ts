@@ -12,6 +12,7 @@ import {
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { FormFieldBasicModule } from './demos/basic/form-field-basic.module';
 
+declare var require: any;
 const DEMOS = {
   formfield: {
     title: 'Basic Form Field',

@@ -11,6 +11,7 @@ import { InputBasicModule } from './demos/basic/input-basic.module';
 import { InputOptionalModule } from './demos/optional/input-optional.module';
 import { InputOptional } from './demos/optional/input-optional.component';
 
+declare var require: any;
 const DEMOS = {
   basic: {
     title: 'Basic Form Input',
