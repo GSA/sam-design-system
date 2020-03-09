@@ -7,6 +7,7 @@ import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { Subject } from 'rxjs';
 import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
+import { pairwise } from 'rxjs/operators';
 
 @Component({
   selector: 'sds-filters',

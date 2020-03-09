@@ -234,7 +234,7 @@ export class FormlyFormsComponent{
       fieldGroupClassName: 'grid-row grid-gap-2',
       fieldGroup: [
         {
-          className: 'grid-col-4 desktop:grid-col-3',
+          className: 'grid-col-12 tablet:grid-col-4 desktop:grid-col-3',
           type:'input',
           key: 'Code',
           templateOptions: {
@@ -246,7 +246,7 @@ export class FormlyFormsComponent{
           },
         },
         {
-          className: 'grid-col-7 desktop:grid-col-5',
+          className: 'grid-col-12 tablet:grid-col-7 desktop:grid-col-5',
           type:'input',
           key: 'phone',
           templateOptions: {
