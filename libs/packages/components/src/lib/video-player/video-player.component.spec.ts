@@ -77,7 +77,7 @@ describe('VideoPlayerComponent', () => {
     expect(element.nativeElement.getAttribute('width')).toBe(component.VPConfigration.width);
   });
 
-  xit('should accept track caption from input', ()=>{
+  it('should accept track caption from input', ()=>{
     const element = fixture.debugElement.query(By.css('track'));
     element.nativeElement.setAttribute('src', component.videoCaptionEl);
     expect(element.nativeElement.getAttribute('src')).toBe(component.VPConfigration.caption);
