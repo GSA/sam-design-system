@@ -149,6 +149,22 @@ $cdk-overlay-dark-backdrop-background: rgba(14, 52, 88, 0.7);
 // Demo pages only
 // DO NOT REUSE
 
+.usa-table--full-borderless tr, .usa-table--full-borderless td, .usa-table--full-borderless th {
+  border: 0;
+}
+
+.usa-table--row-borders--thin tr, .usa-table--row-borders--thin td, .usa-table--row-borders--thin th {
+  border-bottom: solid 1px #d9e8f6;
+}
+.usa-table--row-borders--thin th {
+  border-top: solid 1px #d9e8f6;
+}
+
+.usa-table--thin tr, .usa-table--thin td, .usa-table--thin th {
+  padding:0;
+  margin:0;
+}
+
 code::before, code::after {
   content: '';
 }
