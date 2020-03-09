@@ -19,11 +19,14 @@
       </td>
       <td valign="top" class="api-content">
         <div>Beta.SAM.gov common Angular components (e.g. accordion, modal dialog, tables, etc)</div>
-        <div class="text-italic font-sans-3xs margin-top-2">Depends on </div>
-        <div><code class="text-indigo bg-white margin-0">@gsa-sam/sam-styles</code></div>
-        <div><code class="text-indigo bg-white margin-0">@fortawesome/angular-fontawesome@^0.3.0</code></div>
-        <div><code class="text-indigo bg-white margin-0">@fortawesome/fontawesome-svg-core@^1.2.17</code></div>
-        <div><code class="text-indigo bg-white margin-0">@fortawesome/free-solid-svg-icons@^5.8.1</code></div>
+        <div *ngIf="packages.components.dependencies">
+          <div class="text-italic font-sans-3xs margin-top-2">Dependencies</div>
+          <div *ngFor="let item of packages.components.dependencies | keyvalue"><code class="text-indigo bg-white margin-0">{{item.key}}@{{item.value}}</code></div>
+        </div>
+        <div *ngIf="packages.components.peerDependencies">
+          <div class="text-italic font-sans-3xs margin-top-2">Peer Dependencies</div>
+          <div *ngFor="let item of packages.components.peerDependencies  | keyvalue"><code class="text-indigo bg-white margin-0">{{item.key}}@{{item.value}}</code></div>
+        </div>
       </td>
     </tr>
     <tr>
@@ -32,8 +35,14 @@
       </td>
       <td valign="top" class="api-content">
         <div>Beta.SAM.gov components that build the structure of the site (e.g. header, footer, sidenav, etc)</div>
-        <div class="text-italic font-sans-3xs margin-top-2">Depends on </div>
-        <div><code class="text-indigo bg-white margin-0">@gsa-sam/sam-styles</code></div>
+        <div *ngIf="packages.layouts.dependencies">
+          <div class="text-italic font-sans-3xs margin-top-2">Dependencies</div>
+          <div *ngFor="let item of packages.layouts.dependencies | keyvalue"><code class="text-indigo bg-white margin-0">{{item.key}}@{{item.value}}</code></div>
+        </div>
+        <div *ngIf="packages.layouts.peerDependencies">
+          <div class="text-italic font-sans-3xs margin-top-2">Peer Dependencies</div>
+          <div *ngFor="let item of packages.layouts.peerDependencies  | keyvalue"><code class="text-indigo bg-white margin-0">{{item.key}}@{{item.value}}</code></div>
+        </div>
       </td>
     </tr>
     <tr>
@@ -42,14 +51,14 @@
       </td>
       <td valign="top" class="api-content">
         <div>Beta.SAM.gov form elements based on ngx-formly (e.g. input, select, date picker, etc)</div>
-        <div class="text-italic font-sans-3xs margin-top-2">Depends on </div>
-        <div><code class="text-indigo bg-white margin-0">@gsa-sam/sam-styles</code></div>
-        <div><code class="text-indigo bg-white margin-0">@gsa-sam/components@^0.6.0</code></div>
-        <div><code class="text-indigo bg-white margin-0">@ngx-formly/core@5.4.1</code></div>
-        <div><code class="text-indigo bg-white margin-0">@angular/material@7.3.7</code></div>
-        <div><code class="text-indigo bg-white margin-0">@fortawesome/angular-fontawesome@^0.3.0</code></div>
-        <div><code class="text-indigo bg-white margin-0">@fortawesome/fontawesome-svg-core@^1.2.17</code></div>
-        <div><code class="text-indigo bg-white margin-0">@fortawesome/free-solid-svg-icons@^5.8.1</code></div>
+        <div *ngIf="packages.formly.dependencies">
+          <div class="text-italic font-sans-3xs margin-top-2">Dependencies</div>
+          <div *ngFor="let item of packages.formly.dependencies | keyvalue"><code class="text-indigo bg-white margin-0">{{item.key}}@{{item.value}}</code></div>
+        </div>
+        <div *ngIf="packages.formly.peerDependencies">
+          <div class="text-italic font-sans-3xs margin-top-2">Peer Dependencies</div>
+          <div *ngFor="let item of packages.formly.peerDependencies  | keyvalue"><code class="text-indigo bg-white margin-0">{{item.key}}@{{item.value}}</code></div>
+        </div>
       </td>
     </tr>
   </tbody>
