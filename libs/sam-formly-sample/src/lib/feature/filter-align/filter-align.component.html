@@ -8,3 +8,14 @@
     <h4>Filter Model:</h4>
     <pre>{{(results ) ? (results |json) : ''}}</pre>
 </div>
+
+<div>
+    <sds-accordion-item expanded="true">
+        <sds-accordion-item-header> Custom Filters </sds-accordion-item-header>
+        <sds-filters [form]="customform" [fields]="customfields" [model]="custommodel" (filterChange)="customfilterChange$.next($event)"></sds-filters>
+    </sds-accordion-item>
+</div>
+<div class="sam-example-pagination">
+    <h4>Filter Model:</h4>
+    <pre>{{(customresults ) ? (customresults |json) : ''}}</pre>
+</div>

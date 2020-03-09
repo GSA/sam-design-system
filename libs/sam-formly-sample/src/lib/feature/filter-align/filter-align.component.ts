@@ -17,55 +17,69 @@ export class FilterAlignComponent implements OnInit {
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
-  /**
- * Event when something is checked/selected in the grid
- */
   public filterChange$ = new BehaviorSubject<object>(null);
 
 
   fields: FormlyFieldConfig[] = [
     {
       key: 'searchKeyword',
-      wrappers: ['customwrapper'],
+      wrappers: ['accordionwrapper', 'form-field'],
       type: 'input',
       templateOptions: {
         label: 'Keyword (with label)',
+       // labelClass: 'usa-sr-only'
        
       },
     },
+  ];
+  
 
-    // {
-    //   key: 'entityStatus',
-    //   wrappers: [ 'customwrapper'],
-    //   type: 'multicheckbox',
-    //   templateOptions: {
-    //     label: 'Entity Status',
-    //     options: [
-    //       {
-    //         key: 'Active',
-    //         value: 'Active'
-    //       },
-    //       {
-    //         key: 'Draft',
-    //         value: 'Draft'
-    //       },
-    //       {
-    //         key: 'Expired',
-    //         value: 'Expired'
-    //       },
-    //       {
-    //         key: 'InProgress',
-    //         value: 'In Progress'
-    //       }
-    //     ]
-    //   }
-    // },
+  customresults: any = {};
+  customform = new FormGroup({});
+  custommodel: any = {};
+  customoptions: FormlyFormOptions = {};
+
+  public customfilterChange$ = new BehaviorSubject<object>(null);
+
+
+  customfields: FormlyFieldConfig[] = [
+    {
+      key: 'entityStatus',
+      wrappers: [ 'customwrapper'],
+      type: 'multicheckbox',
+      templateOptions: {
+        label: 'Entity Status',
+        options: [
+          {
+            key: 'Active',
+            value: 'Active'
+          },
+          {
+            key: 'Draft',
+            value: 'Draft'
+          },
+          {
+            key: 'Expired',
+            value: 'Expired'
+          },
+          {
+            key: 'InProgress',
+            value: 'In Progress'
+          }
+        ]
+      }
+    },
   ];
   public ngOnInit() {
     this.filterChange$.subscribe(
       res => {
         this.results = res;
-        //  this.change.detectChanges();
+      }
+    );
+
+    this.customfilterChange$.subscribe(
+      res => {
+        this.customresults = res;
       }
     );
   }
