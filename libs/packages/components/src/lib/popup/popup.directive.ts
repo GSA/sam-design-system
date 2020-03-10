@@ -3,7 +3,7 @@ import { Directive, Input, ElementRef, Renderer2, AfterViewInit } from '@angular
 @Directive({
   // tslint:disable-next-line: directive-selector
   selector: '[Popup]',
-  exportAs: 'Popup'
+  exportAs: '[Popup]'
 })
 
 export class SdsPopupDirective implements AfterViewInit {
