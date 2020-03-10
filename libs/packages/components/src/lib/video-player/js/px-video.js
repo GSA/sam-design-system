@@ -508,13 +508,13 @@ export function InitPxVideo(options) {
 
   }
 
-  obj.container.setAttribute("style", "width:" + obj.movieWidth + "px");   //Added by Hemal
+  obj.container.setAttribute("style", "width:" + obj.movieWidth + "px");   //Added by
 
 
 
   // Adjust layout per width of video - controls/mute offset
 
-  obj.labelMute = document.getElementById("labelMute" + obj.randomNum);
+  obj.labelMute = document.getElementById("labelMute" + obj.randomNum);``
 
   obj.labelMuteOffset = obj.movieWidth - 390;
 
