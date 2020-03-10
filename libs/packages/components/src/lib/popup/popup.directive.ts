@@ -5,20 +5,17 @@ import { Directive, Input, ElementRef, Renderer2, OnInit, AfterViewInit } from '
   selector: '[Popup]',
   exportAs: 'Popup'
 })
-export class SdsPopupDirective implements OnInit, AfterViewInit {
+export class SdsPopupDirective implements AfterViewInit {
   @Input() Popup: HTMLElement;
   @Input() position: string;
   @Input() placement: string;
   sdsPopupDiv: HTMLElement;
-
- ngOnInit(){}
 
   constructor(private el: ElementRef, private renderer: Renderer2) {
     this.renderer.addClass(this.el.nativeElement, 'sds-popup');
     this.sdsPopupDiv = document.createElement('div');
     this.renderer.addClass(this.sdsPopupDiv, 'sds-popup__content');
   }
-
 
   ngAfterViewInit() {
     this.renderer.appendChild(this.el.nativeElement, this.Popup);

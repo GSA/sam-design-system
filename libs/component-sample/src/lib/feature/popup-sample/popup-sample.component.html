@@ -1,20 +1,31 @@
-<div #tooltip>
+<div #tooltipID>
   <span>Tootltip content</span>
 </div>
 
-<div [Popup]='tooltip' position="top-center" placement="out">
+<div
+[Popup]='tooltipID'
+position="top-center"
+placement="out"
+aria-label="Tooltip that hides when scrolled out of the container"
+>
   <div class="tooltip tooltip-left">
-    <div>popup outside</div>
+    <div>popup outside click</div>
   </div>
 </div>
 <br><br>
+
 <div #tooltipbutton>
   <button class="usa-button usa-button--base">
     tooltip
   </button>
 </div>
 
-<div [Popup]='tooltipbutton' position="bottom-center" placement="out">
+<div
+[Popup]='tooltipbutton'
+position="bottom-center"
+placement="out"
+aria-label="Tooltip that hides when scrolled out of the container"
+>
   <div class="tooltip tooltip-left">
     <div>popup outside</div>
   </div>
