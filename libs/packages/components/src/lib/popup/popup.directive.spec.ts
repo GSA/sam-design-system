@@ -1,14 +1,14 @@
 import { SdsPopupDirective } from './popup.directive';
-import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { Component, DebugElement } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
-  template: '<div sdsPopup position="bottom-center" place="out" aria-label="Div that displays a tooltip that hides when scrolled out of the container" className="tooltip,tooltip-left" (click)="onPopupClick()"></div>'
+  template: '<div id="tooltipID"></div><div [Popup]="tooltipID" position="bottom-center" placement="out"></div>'
 })
+
 class TestPopupSampleComponent {
-  onPopupClick(){}
+
 }
 
 
@@ -22,8 +22,6 @@ describe('PopupDirective', () => {
     TestBed.configureTestingModule({
       declarations:[SdsPopupDirective,
         TestPopupSampleComponent
-      ],imports:[
-        FontAwesomeModule
       ]
     })
     .compileComponents();
@@ -36,30 +34,28 @@ describe('PopupDirective', () => {
   })
 
 
-  it('should must has sds popup content class', () => {
+  it('should must has sds popup class', () => {
     expect(de.classes['sds-popup']).toBe(true);
   });
 
-  it('Should check Click event on popup Content', ()=>{
-    de.triggerEventHandler('click', null);
-    expect(component.onPopupClick).toBeTruthy();
+  it('Should check placement on popup', ()=>{
+    const placeValueEl = de.nativeElement.attributes[0].value;
+    console.log(placeValueEl);
+    const sdsPopupDire = fixture.debugElement.query(By.directive(SdsPopupDirective));
+    console.log(sdsPopupDire.nativeElement);
+    expect(placeValueEl).toBe(sdsPopupDire.attributes.tooltipID);
   });
 
-  it('Should check sds popup Content for class', ()=>{
+  it('Should check placement on popup', ()=>{
     const placeValueEl = de.nativeElement.attributes[1].value;
     const sdsPopupDire = fixture.debugElement.query(By.directive(SdsPopupDirective));
-    expect(placeValueEl).toBe(sdsPopupDire.attributes.className);
+    expect(placeValueEl).toBe(sdsPopupDire.attributes.placement);
   });
 
-  it('Should check sds popup Content class for place', ()=>{
+  it('Should check position for popup', ()=>{
     const placeValueEl = de.nativeElement.attributes[2].value;
-    const sdsPopupDire = fixture.debugElement.query(By.directive(SdsPopupDirective));
-    expect(placeValueEl).toBe(sdsPopupDire.attributes.place);
-  });
-
-  it('Should check sds popup Content class for position', ()=>{
-    const placeValueEl = de.nativeElement.attributes[3].value;
     const sdsPopupDire = fixture.debugElement.query(By.directive(SdsPopupDirective));
     expect(placeValueEl).toBe(sdsPopupDire.attributes.position);
   });
+
 });
