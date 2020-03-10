@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { BehaviorSubject } from 'rxjs';
-import { sdsGroupWrapper } from '@sam-design-system/sam-formly';
+import { sdsGroupWrapper, sdsFieldWrapper } from '@sam-design-system/sam-formly';
 
 @Component({
   selector: 'sds-filter-align',
@@ -10,104 +10,99 @@ import { sdsGroupWrapper } from '@sam-design-system/sam-formly';
 })
 export class FilterAlignComponent implements OnInit {
 
-  constructor() {
+  constructor() { }
 
-  }
   results: any = {};
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
   public filterChange$ = new BehaviorSubject<object>(null);
-
-
   fields: FormlyFieldConfig[] = [
     {
       key: 'searchKeyword',
-      // wrappers: ['group', ...sdsFieldWrapper],
-      wrappers: ['label','validation'],
+      wrappers: ['label', 'validation'],
       type: 'input',
       templateOptions: {
         label: 'Keyword (with label)',
-        description: 'testing multiple wrappers',
+        description: 'custom wrappers without description',
         required: true,
-       // isAccordionFilter: true,
-       // labelClass: 'usa-sr-only'
-       
       },
     },
   ];
-  
 
-  customresults: any = {};
+
   customform = new FormGroup({});
-  custommodel: any = {};
-  customoptions: FormlyFormOptions = {};
-
-  public customfilterChange$ = new BehaviorSubject<object>(null);
-
 
   customfields: FormlyFieldConfig[] = [
-
     {
       key: 'filters',
-      wrappers: [ ...sdsGroupWrapper],
-      templateOptions: { 
-      label: 'Keyword',
-      isAccordionFilter: true
-    },
+      wrappers: [...sdsGroupWrapper],
+      templateOptions: {
+        label: 'Keyword',
+        isAccordionFilter: true,
+      },
       fieldGroup: [{
         key: 'firstName',
         type: 'input',
         templateOptions: {
-          label: 'Auto Complete',
+          label: 'Search',
           hideLabel: true,
-         
+
         },
       }]
     },
   ];
 
-  // customfields: FormlyFieldConfig[] = [
-  //   {
-  //     key: 'entityStatus',
-  //     wrappers: [ 'customwrapper'],
-  //     type: 'multicheckbox',
-  //     templateOptions: {
-  //       label: 'Entity Status',
-  //       options: [
-  //         {
-  //           key: 'Active',
-  //           value: 'Active'
-  //         },
-  //         {
-  //           key: 'Draft',
-  //           value: 'Draft'
-  //         },
-  //         {
-  //           key: 'Expired',
-  //           value: 'Expired'
-  //         },
-  //         {
-  //           key: 'InProgress',
-  //           value: 'In Progress'
-  //         }
-  //       ]
-  //     }
-  //   },
-  // ];
-  
+  accordionfields: FormlyFieldConfig[] = [
+    {
+      key: 'searchaccordion',
+      wrappers: [...sdsGroupWrapper],
+      type: 'input',
+      templateOptions: {
+        label: 'Keyword (without label)',
+        description: 'Group wrapper with accordion',
+        required: true,
+        labelClass: 'usa-sr-only',
+        isAccordionFilter: true
+      },
+    },
+  ];
+
+  accordionwithoutfields: FormlyFieldConfig[] = [
+    {
+      key: 'searchaccordion',
+      wrappers: [...sdsGroupWrapper],
+      type: 'input',
+      templateOptions: {
+        label: 'Keyword (with label)',
+        description: 'Group wrapper without accordion',
+        required: true,
+       
+        isAccordionFilter: false
+      },
+    },
+  ];
+
+
+  fieldWrapper: FormlyFieldConfig[] = [
+    {
+      key: 'fieldSearch',
+      wrappers: [...sdsFieldWrapper],
+      type: 'input',
+      templateOptions: {
+        label: 'Field Search',
+        description: 'Field wrapper without accordion',
+        required: true,
+        isAccordionFilter: false
+      },
+    },
+  ];
+
   public ngOnInit() {
     this.filterChange$.subscribe(
       res => {
         this.results = res;
       }
     );
-
-    this.customfilterChange$.subscribe(
-      res => {
-        this.customresults = res;
-      }
-    );
   }
-
 }

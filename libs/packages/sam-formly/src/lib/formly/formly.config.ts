@@ -1,4 +1,3 @@
-
 import { ConfigOption } from '@ngx-formly/core';
 import { FormlyWrapperFormFieldComponent } from './wrappers/form-field.wrapper';
 import { FormlyFieldInputComponent } from './types/input';
@@ -86,7 +85,7 @@ export const FORMLY_CONFIG: ConfigOption = {
     {
       name: 'datepicker',
       component: FormlyFieldDatePickerComponent,
-       wrappers: [...sdsFieldWrapper],
+      wrappers: [...sdsFieldWrapper],
       defaultOptions: {
         validators: {
           validation: [maxDateValidator, minDateValidator],
@@ -124,7 +123,6 @@ export const FORMLY_CONFIG: ConfigOption = {
         ]
       }
     },
-
   ],
   wrappers: [
     { name: 'label', component: FormlyLabelWrapperComponent },
@@ -138,9 +136,6 @@ export const FORMLY_CONFIG: ConfigOption = {
   ],
 
 };
-
-
-
 
 export function minDateToDateRangePicker(model: any, formState: any, field: FormlyFieldConfig) {
   let date = null;
