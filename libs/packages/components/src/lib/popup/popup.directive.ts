@@ -1,4 +1,4 @@
-import { Directive, Input, ElementRef, Renderer2, OnInit, AfterViewInit } from '@angular/core';
+import { Directive, Input, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
 
 @Directive({
   // tslint:disable-next-line: directive-selector
