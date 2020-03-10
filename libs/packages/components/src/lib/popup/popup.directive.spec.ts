@@ -4,7 +4,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 @Component({
-  template: '<div id="tooltipID"></div><div [Popup]="tooltipID" position="bottom-center" placement="out"></div>'
+  template: '<div [Popup] position="bottom-center" placement="out"></div>'
 })
 
 class TestPopupSampleComponent {
@@ -40,20 +40,12 @@ describe('PopupDirective', () => {
 
   it('Should check placement on popup', ()=>{
     const placeValueEl = de.nativeElement.attributes[0].value;
-    console.log(placeValueEl);
-    const sdsPopupDire = fixture.debugElement.query(By.directive(SdsPopupDirective));
-    console.log(sdsPopupDire.nativeElement);
-    expect(placeValueEl).toBe(sdsPopupDire.attributes.tooltipID);
-  });
-
-  it('Should check placement on popup', ()=>{
-    const placeValueEl = de.nativeElement.attributes[1].value;
     const sdsPopupDire = fixture.debugElement.query(By.directive(SdsPopupDirective));
     expect(placeValueEl).toBe(sdsPopupDire.attributes.placement);
   });
 
   it('Should check position for popup', ()=>{
-    const placeValueEl = de.nativeElement.attributes[2].value;
+    const placeValueEl = de.nativeElement.attributes[1].value;
     const sdsPopupDire = fixture.debugElement.query(By.directive(SdsPopupDirective));
     expect(placeValueEl).toBe(sdsPopupDire.attributes.position);
   });

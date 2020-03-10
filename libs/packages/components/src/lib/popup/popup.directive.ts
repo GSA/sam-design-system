@@ -5,6 +5,7 @@ import { Directive, Input, ElementRef, Renderer2, OnInit, AfterViewInit } from '
   selector: '[Popup]',
   exportAs: 'Popup'
 })
+
 export class SdsPopupDirective implements AfterViewInit {
   @Input() Popup: HTMLElement;
   @Input() position: string;
