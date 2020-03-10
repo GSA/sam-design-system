@@ -40,7 +40,7 @@ import { PopupSampleComponent } from './feature/popup-sample/popup-sample.compon
 import { PopupSampleModule } from './feature/popup-sample/popup-sample.module';
 
 export const ROUTES: Routes = [
-  { path: 'sds-popup', component: PopupSampleComponent },
+  { path: 'popup', component: PopupSampleComponent },
   { path: 'collapse', component: CollapseSampleComponent },
   { path: 'header', component: HeaderSampleComponent },
   { path: 'footer', component: FooterSampleComponent },
