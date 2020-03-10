@@ -3,7 +3,7 @@
 </div>
 
 <div
-[Popup]='tooltipID'
+[sdsPopup]='tooltipID'
 position="top-center"
 placement="out"
 aria-label="Tooltip that hides when scrolled out of the container"
@@ -21,7 +21,7 @@ aria-label="Tooltip that hides when scrolled out of the container"
 </div>
 
 <div
-[Popup]='tooltipbutton'
+[sdsPopup]='tooltipbutton'
 position="bottom-center"
 placement="out"
 aria-label="Tooltip that hides when scrolled out of the container"
@@ -38,7 +38,7 @@ aria-label="Tooltip that hides when scrolled out of the container"
 </div>
 
 <div
-[Popup]='tooltipRichcontent'
+[sdsPopup]='tooltipRichcontent'
 position="top-center"
 placement="out">
   <div class="sds-alert bg-base-lightest ">
@@ -58,7 +58,7 @@ placement="out">
         <fa-icon [icon]="['sds', 'new-version']" transform="grow-10"></fa-icon>
       </span>
     </div>
-      <div [Popup]='tooltipForIn' position="top-left" placement="in">
+      <div [sdsPopup]='tooltipForIn' position="top-left" placement="in">
         <div class="radius-lg shadow-2 margin-y-neg-1x05 width-card-lg bg-white padding-left-1 padding-bottom-1 border">
           <svg class="svg-inline--fa fa-information-circle fa-w-16 fa-2x float-right margin-1" aria-hidden="true" focusable="false" data-prefix="sds" data-icon="information-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256,512C114.8,512,0,397.2,0,256S114.8,0,256,0s256,114.8,256,256S397.2,512,256,512z M256,19.8c-130.2,0-236.2,106-236.2,236.2s106,236.2,236.2,236.2s236.2-106,236.2-236.2S386.2,19.8,256,19.8z M256,185.2c-6.6,0-12-1.9-16.2-5.7s-6.4-8.8-6.4-14.9c0-6.1,2.1-11.2,6.4-15.1c4.2-3.9,9.6-5.9,16.2-5.9c6.6,0,12,2,16.2,5.9s6.4,8.9,6.4,15.1c0,6.1-2.1,11.1-6.4,14.9C268,183.3,262.6,185.2,256,185.2z M237.6,368.4V212.5h36.5v155.9H237.6z"></path></svg><!-- <i class="sds fa-information-circle fa-2x float-right margin-1"></i> --><h4> Pop inside</h4>
           <ul>
@@ -73,7 +73,7 @@ placement="out">
             <fa-icon [icon]="['sds', 'new-version']" transform="grow-10"></fa-icon>
           </span>
         </div>
-          <div [Popup]='tooltipForRight' position="top-right" placement="in">
+          <div [sdsPopup]='tooltipForRight' position="top-right" placement="in">
             <div class="radius-lg shadow-2 margin-y-neg-1x05 width-card-lg bg-white padding-left-1 padding-bottom-1 border">
               <svg class="svg-inline--fa fa-information-circle fa-w-16 fa-2x float-right margin-1" aria-hidden="true" focusable="false" data-prefix="sds" data-icon="information-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256,512C114.8,512,0,397.2,0,256S114.8,0,256,0s256,114.8,256,256S397.2,512,256,512z M256,19.8c-130.2,0-236.2,106-236.2,236.2s106,236.2,236.2,236.2s236.2-106,236.2-236.2S386.2,19.8,256,19.8z M256,185.2c-6.6,0-12-1.9-16.2-5.7s-6.4-8.8-6.4-14.9c0-6.1,2.1-11.2,6.4-15.1c4.2-3.9,9.6-5.9,16.2-5.9c6.6,0,12,2,16.2,5.9s6.4,8.9,6.4,15.1c0,6.1-2.1,11.1-6.4,14.9C268,183.3,262.6,185.2,256,185.2z M237.6,368.4V212.5h36.5v155.9H237.6z"></path></svg><!-- <i class="sds fa-information-circle fa-2x float-right margin-1"></i> --><h4> Pop inside</h4>
               <ul>
@@ -98,7 +98,7 @@ placement="out">
             <fa-icon [icon]="['sds', 'new-version']" transform="grow-10"></fa-icon>
           </span>
         </div>
-          <div [Popup]='tooltipForCenter' position="bottom-center" placement="in">
+          <div [sdsPopup]='tooltipForCenter' position="bottom-center" placement="in">
             <div class="radius-lg shadow-2 margin-y-neg-1x05 width-card-lg bg-white padding-left-1 padding-bottom-1 border">
               <svg class="svg-inline--fa fa-information-circle fa-w-16 fa-2x float-right margin-1" aria-hidden="true" focusable="false" data-prefix="sds" data-icon="information-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256,512C114.8,512,0,397.2,0,256S114.8,0,256,0s256,114.8,256,256S397.2,512,256,512z M256,19.8c-130.2,0-236.2,106-236.2,236.2s106,236.2,236.2,236.2s236.2-106,236.2-236.2S386.2,19.8,256,19.8z M256,185.2c-6.6,0-12-1.9-16.2-5.7s-6.4-8.8-6.4-14.9c0-6.1,2.1-11.2,6.4-15.1c4.2-3.9,9.6-5.9,16.2-5.9c6.6,0,12,2,16.2,5.9s6.4,8.9,6.4,15.1c0,6.1-2.1,11.1-6.4,14.9C268,183.3,262.6,185.2,256,185.2z M237.6,368.4V212.5h36.5v155.9H237.6z"></path></svg><!-- <i class="sds fa-information-circle fa-2x float-right margin-1"></i> --><h4> Pop inside</h4>
               <ul>

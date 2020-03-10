@@ -4,7 +4,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 @Component({
-  template: '<div [Popup] position="bottom-center" placement="out"></div>'
+  template: '<div [sdsPopup] position="bottom-center" placement="out"></div>'
 })
 
 class TestPopupSampleComponent {
