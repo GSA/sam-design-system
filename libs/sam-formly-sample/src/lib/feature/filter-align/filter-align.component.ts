@@ -64,7 +64,6 @@ export class FilterAlignComponent implements OnInit {
       ]
     }];
 
-  
   sdsGroupWrapper: FormlyFieldConfig[] = [
     {
       key: 'searchKeyword',
@@ -81,22 +80,8 @@ export class FilterAlignComponent implements OnInit {
           label: 'Unique Entity ID',
           tagText: 'DUNS',
           tagClass: 'sds-tag--info-purple',
-         }
+        }
       }]
-    }];
-  
-    sdsFieldGroupWrapper: FormlyFieldConfig[] = [
-    {
-      key: 'searchaccordion',
-      wrappers: sdsFieldGroupWrapper,
-      type: 'input',
-      templateOptions: {
-        label: 'Keyword (with label)',
-        description: 'FieldGroup wrapper without accordion',
-        required: true,
-        isAccordionFilter: false,
-        labelClass: 'usa-sr-only',
-      }
     }];
 
   sdsFieldGroupWrapperAccordion: FormlyFieldConfig[] = [
@@ -111,6 +96,21 @@ export class FilterAlignComponent implements OnInit {
         isAccordionFilter: true
       },
     }];
+
+  sdsFieldGroupWrapper: FormlyFieldConfig[] = [
+    {
+      key: 'searchaccordion',
+      wrappers: sdsFieldGroupWrapper,
+      type: 'input',
+      templateOptions: {
+        label: 'Keyword (with label)',
+        description: 'FieldGroup wrapper without accordion',
+        required: true,
+        isAccordionFilter: false,
+        labelClass: 'usa-sr-only',
+      }
+    }];
+
 
   sdsFieldWrapper: FormlyFieldConfig[] = [
     {
