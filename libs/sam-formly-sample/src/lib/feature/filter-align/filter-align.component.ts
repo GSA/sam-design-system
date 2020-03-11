@@ -94,7 +94,8 @@ export class FilterAlignComponent implements OnInit {
         label: 'Keyword (with label)',
         description: 'FieldGroup wrapper without accordion',
         required: true,
-        isAccordionFilter: false
+        isAccordionFilter: false,
+        labelClass: 'usa-sr-only',
       }
     }];
 
@@ -107,7 +108,6 @@ export class FilterAlignComponent implements OnInit {
         label: 'Keyword',
         description: 'Field Group wrapper with accordion',
         required: true,
-        labelClass: 'usa-sr-only',
         isAccordionFilter: true
       },
     }];
