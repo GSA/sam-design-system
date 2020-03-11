@@ -16,8 +16,8 @@ import { FormlyFormsModule } from './feature/formly-forms/formly-forms.module';
 import { FormlyConditionalComponent } from './feature/formly-conditional/formly-conditional.component';
 import { FormlyEllipsisComponent } from './feature/formly-ellipsis/formly-ellipsis.component'
 import { FormlyEllipsisModule} from './feature/formly-ellipsis/formly-ellipsis.module'
-import { FormlyDialogComponent } from './feature/formly-dialog/formly-dialog.component'
-import { FormlyDialogModule} from './feature/formly-dialog/formly-dialog.module'
+//import { FormlyDialogComponent } from './feature/formly-dialog/formly-dialog.component'
+// import { FormlyDialogModule} from './feature/formly-dialog/formly-dialog.module'
 
 export const ROUTES: Routes = [
   { path: 'formlyInput', component: FormlyInputComponent },
@@ -25,7 +25,7 @@ export const ROUTES: Routes = [
   { path: 'formlyForms', component: FormlyFormsComponent },
   { path: 'formlyConditional', component: FormlyConditionalComponent },
   { path: 'formlyEllipsis', component: FormlyEllipsisComponent},
-  { path: 'formlyDialog', component: FormlyDialogComponent},
+  //{ path: 'formlyDialog', component: FormlyDialogComponent},
 ];
 
 @NgModule({
@@ -40,7 +40,7 @@ export const ROUTES: Routes = [
     FormlyFormsModule,
     FilterWrapperSampleModule,
     FormlyEllipsisModule,
-    FormlyDialogModule,
+    //FormlyDialogModule,
   ],
   exports: [RouterModule],
   declarations: [FormlyConditionalComponent]
