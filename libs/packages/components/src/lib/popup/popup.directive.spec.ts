@@ -33,17 +33,19 @@ describe('PopupDirective', () => {
     de = fixture.debugElement.query(By.css('div'));
   })
 
-
+// Check the class for sds-popup
   it('should must has sds popup class', () => {
     expect(de.classes['sds-popup']).toBe(true);
   });
 
+  //Check the placement value
   it('Should check placement on popup', ()=>{
     const placeValueEl = de.nativeElement.attributes[0].value;
     const sdsPopupDire = fixture.debugElement.query(By.directive(SdsPopupDirective));
     expect(placeValueEl).toBe(sdsPopupDire.attributes.placement);
   });
 
+  // Check the value of position
   it('Should check position for popup', ()=>{
     const placeValueEl = de.nativeElement.attributes[1].value;
     const sdsPopupDire = fixture.debugElement.query(By.directive(SdsPopupDirective));
