@@ -6,7 +6,6 @@
       
       </form> -->
      
-
       <div class="sam-example-pagination">
         <h1>Ellipsis at the end of the line</h1>
       </div>
@@ -15,8 +14,23 @@
       <div>
         <h3>{{ tag.title }} </h3><small>{{ tag.date }}</small>
       </div>
-    <div sdstextEllipsis>{{tag.description}}</div>
+    <div sdstextEllipsis textLinesLimit=1>{{tag.description}}</div>
     </div>
+    <div class="sam-example-pagination">
+      <h1>Ellipsis at the end of the line with overlay on click</h1>
+    </div>
+    <div *ngFor="let tag of tags" model="tags">
+
+    <div>
+      <h3>{{ tag.title }} </h3><small>{{ tag.date }}</small>
+    </div>
+    
+    <div sdsTruncateTextByLine textLinesLimitVal=2>But I need this directive in a package.
+      Does anyone know how I can do this But I need this directive in a package.
+      The expiration date for National Interest Action value 'Hurricane Maria 2017' has been extended to 10/15/2019 in FPDS Production
+    </div>
+    
+  </div>
     <div class="sam-example-pagination">
       <h1>Ellipsis with read more</h1>
     </div>
@@ -26,11 +40,10 @@
         <h3>{{ tag.title }} </h3><small>{{ tag.date }}</small>
       </div>
      
-        <sds-read-more [text]=tag.description>
+      <sds-read-more [text]=tag.description>
           
-       </sds-read-more>
-    
-     
+      </sds-read-more>  
+         
 
 </div>
     </div>

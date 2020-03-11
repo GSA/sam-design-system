@@ -22,19 +22,21 @@ import { startWith } from 'rxjs/operators';
 import { PortalInjector, ComponentPortal } from '@angular/cdk/portal';
 import { SdsTruncatedTextContainerComponent } from './truncate-text-container.component';
 import { SDS_TRUNCATED_TEXT_DATA } from './truncates-text-base';
+import { unsupported } from '@angular/compiler/src/render3/view/util';
 
 @Directive({ selector: '[sdsTruncateTextByLine]' })
 export class SdsTruncateTextByLineDirective
   implements OnInit, OnDestroy, AfterViewInit {
   /** Maximum lines of text limit */
   @Input('sdsTruncateTextByLine')
+  @Input() textLinesLimitVal: number;
   get textLinesLimit(): any {
-    return this._textLinesLimit;
+    return this.textLinesLimitVal;
   }
   set textLinesLimit(_textLinesLimit: any) {
     _textLinesLimit = coerceNumberProperty(_textLinesLimit);
-    if (this._textLinesLimit !== _textLinesLimit) {
-      this._textLinesLimit = _textLinesLimit;
+    if (this.textLinesLimitVal !== _textLinesLimit) {
+      this.textLinesLimitVal = _textLinesLimit;
     }
   }
   private _textLinesLimit: number;
@@ -64,7 +66,6 @@ export class SdsTruncateTextByLineDirective
 
   ngOnInit() {
     this.initialText = this._element.nativeElement.innerText.trim();
-
     // Clone element to facilitate calculations
     const hostCloneEl = this._element.nativeElement.cloneNode() as HTMLElement;
 
@@ -153,9 +154,10 @@ export class SdsTruncateTextByLineDirective
 
   /** Approximated number of characters that are visible in the container */
   private _getVisibleCharacters(): number {
+  
     return Math.floor(
       (this._getHostWidth() / this.approximatedCharacterWidth) *
-        this.textLinesLimit
+        this.textLinesLimitVal
     );
   }
 
@@ -188,7 +190,6 @@ export class SdsTruncateTextByLineDirective
     const limit = this._getVisibleCharacters() - ellipsis.length;
 
     let visibleText = this.initialText.slice(0, limit);
-
     if (!wordCut) {
       const isEndofWord = this.initialText.substr(limit, limit + 1) === ' ';
       if (!isEndofWord) {

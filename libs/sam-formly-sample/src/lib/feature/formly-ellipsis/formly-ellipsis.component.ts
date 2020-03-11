@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
+
 @Component({
   selector: 'sds-formly-ellipsis',
   templateUrl: './formly-ellipsis.component.html'
@@ -13,7 +14,7 @@ export class FormlyEllipsisComponent implements OnInit {
     "id": 1,
     "title": "Release Notes Posted",
     "date": "Nov 9, 2019",
-    "description": "The SAM.gov November 9, 2019 release notes are posted. Remember, you can find release notes for all SAM.gov software releases at SAM.gov."
+    "description": "The SAM.gov November 9, 2019 release notes are posted. Remember,  you can find release notes for all SAM.gov software releases at SAM.gov."
   },
   {
     "id": 2,

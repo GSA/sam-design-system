@@ -5,6 +5,7 @@ import { FormlyModule } from '@ngx-formly/core';
 import { FormlyFormsComponent } from './formly-forms.component';
 import { SdsFiltersModule } from '@gsa-sam/sam-formly';
 import { SdsEllipsisModule } from '@gsa-sam/components';
+import { SdsTruncateModule } from '@gsa-sam/components';
 
 @NgModule({
     declarations: [FormlyFormsComponent],
@@ -14,6 +15,7 @@ import { SdsEllipsisModule } from '@gsa-sam/components';
         SdsFiltersModule,
         SdsEllipsisModule,
         FormsModule,
+        SdsTruncateModule,
         FormlyModule.forRoot()
     ]
 })
