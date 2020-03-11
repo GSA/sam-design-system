@@ -4,13 +4,8 @@ import { Component, Input, ContentChild, TemplateRef, OnInit } from '@angular/co
   templateUrl: './search-result-list.component.html',
   styleUrls: ['./search-result-list.component.scss']
 })
-export class SdsSearchResultListComponent implements OnInit{
+export class SdsSearchResultListComponent {
 
-  @Input() displayAs: string;
-
-  ngOnInit() {
-    console.log(this.displayAs);
-  }
   /**
    * List of items
    */
