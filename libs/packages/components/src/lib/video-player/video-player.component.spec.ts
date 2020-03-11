@@ -2,7 +2,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SdsVideoPlayerComponent } from './video-player.component';
 import { By } from '@angular/platform-browser';
 import { InitPxVideo } from './js/px-video';
-import { Component } from '@angular/core';
 
 class IntiPxVideoObj {
   InitPxVideo(options){
@@ -95,7 +94,7 @@ describe('VideoPlayerComponent', () => {
     expect(element.nativeElement.getAttribute('width')).toBe(component.videoWidthEl);
   });
 
-  xit('should accept track caption from input', ()=>{
+  it('should accept track caption from input', ()=>{
     component.ngOnInit();
     const element = fixture.debugElement.query(By.css('track'));
     element.nativeElement.setAttribute('src', component.videoCaption);
