@@ -1,25 +1,34 @@
+<h3>Examples with Field Group</h3>
     <sds-accordion-item expanded="true" class="margin-bottom-1">
-        <sds-accordion-item-header> Sds Group Wrapper with isAccordionFilter and field group </sds-accordion-item-header>
-        <sds-filters [form]="customform" [fields]="customfields" [model]="model" ></sds-filters>
+        <sds-accordion-item-header>sds group wrapper with accordion </sds-accordion-item-header>
+        <sds-filters [form]="form" [fields]="sdsGroupWrapperAccordion" [model]="model" ></sds-filters>
     </sds-accordion-item>
 
     <sds-accordion-item expanded="true" class="margin-bottom-1">
-        <sds-accordion-item-header> Sds Group Wrapper without isAccordionFilter without field group </sds-accordion-item-header>
-        <sds-filters [form]="customform" [fields]="accordionwithoutfields" [model]="model" ></sds-filters>
+        <sds-accordion-item-header> sds group wrapper without accordion </sds-accordion-item-header>
+        <sds-filters [form]="form" [fields]="sdsGroupWrapper" [model]="model" ></sds-filters>
+    </sds-accordion-item>
+
+    <h3>Examples without Field Group</h3>
+
+    <sds-accordion-item expanded="true" class="margin-bottom-1">
+        <sds-accordion-item-header>sds field group wrapper with accordion</sds-accordion-item-header>
+        <sds-filters [form]="form" [fields]="sdsFieldGroupWrapperAccordion" [model]="model" ></sds-filters>
     </sds-accordion-item>
 
     <sds-accordion-item expanded="true" class="margin-bottom-1">
-        <sds-accordion-item-header> Sds Group Wrapper with isAccordionFilter without field group </sds-accordion-item-header>
-        <sds-filters [form]="customform" [fields]="accordionfields" [model]="model" ></sds-filters>
-    </sds-accordion-item>
-
-
-    <sds-accordion-item expanded="true" class="margin-bottom-1">
-        <sds-accordion-item-header> Sds Field Wrapper without isAccordionFilter without field group</sds-accordion-item-header>
-        <sds-filters [form]="customform" [fields]="fieldWrapper" [model]="model" ></sds-filters>
+        <sds-accordion-item-header> sds field group wrapper without Accordion</sds-accordion-item-header>
+        <sds-filters [form]="form" [fields]="sdsFieldGroupWrapper" [model]="model" ></sds-filters>
     </sds-accordion-item>
 
     <sds-accordion-item expanded="true" class="margin-bottom-1">
-        <sds-accordion-item-header>Custom wrappers: label, validation without field group</sds-accordion-item-header>
-        <sds-filters [form]="form" [fields]="fields" [model]="model" (filterChange)="filterChange$.next($event)"></sds-filters>
+        <sds-accordion-item-header> Sds Field Wrapper</sds-accordion-item-header>
+        <sds-filters [form]="form" [fields]="sdsFieldWrapper" [model]="model" ></sds-filters>
+    </sds-accordion-item>
+
+
+    <h3>Custom wrapper example</h3>
+    <sds-accordion-item expanded="true" class="margin-bottom-1">
+        <sds-accordion-item-header>Custom wrappers: label, validation </sds-accordion-item-header>
+        <sds-filters [form]="form" [fields]="customWrapper" [model]="model"></sds-filters>
     </sds-accordion-item>

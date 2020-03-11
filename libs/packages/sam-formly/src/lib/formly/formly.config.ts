@@ -35,7 +35,7 @@ export const FIELD_TYPE_COMPONENTS = [
 
 ];
 import { maxDateValidator, minDateValidator } from './formly.validators';
-import { sdsGroupWrapper, sdsFieldWrapper } from './sds-wrapper-variable';
+import { sdsFieldWrapper } from './sds-formly-options';
 import { FormlyLabelWrapperComponent } from './wrappers/label.wrapper';
 import { FormlyDescriptionWrapperComponent } from './wrappers/description.wrapper';
 import { FormlyValidationWrapperComponent } from './wrappers/validation.wrapper';
