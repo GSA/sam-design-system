@@ -1,11 +1,16 @@
-import { Component, Input, ContentChild, TemplateRef } from '@angular/core';
+import { Component, Input, ContentChild, TemplateRef, OnInit } from '@angular/core';
 @Component({
   selector: 'sds-search-result-list',
   templateUrl: './search-result-list.component.html',
   styleUrls: ['./search-result-list.component.scss']
 })
-export class SdsSearchResultListComponent {
+export class SdsSearchResultListComponent implements OnInit{
 
+  @Input() displayAs: string;
+
+  ngOnInit() {
+    console.log(this.displayAs);
+  }
   /**
    * List of items
    */

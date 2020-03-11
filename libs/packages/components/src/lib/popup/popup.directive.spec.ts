@@ -62,4 +62,5 @@ describe('PopupDirective', () => {
     const sdsPopupDire = fixture.debugElement.query(By.directive(SdsPopupDirective));
     expect(placeValueEl).toBe(sdsPopupDire.attributes.position);
   });
+
 });

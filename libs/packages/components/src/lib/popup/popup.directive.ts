@@ -1,18 +1,17 @@
-import { Directive, Input, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
+import { Directive, Input, ElementRef, Renderer2, AfterViewInit, OnInit } from '@angular/core';
 
 
 @Directive({
   selector: '[sdsPopup]',
   exportAs: 'sdsPopup'
 })
-export class SdsPopupDirective implements AfterViewInit {
+export class SdsPopupDirective implements AfterViewInit, OnInit {
+  @Input() Popup: HTMLElement;
   @Input() position: string;
-  @Input() place: string;
-  @Input() className: string;
-  getClassNameArray = [];
-  tooltipContent: any;
-  tooltipConfig: HTMLElement;
+  @Input() placement: string;
   sdsPopupDiv: HTMLElement;
+
+ ngOnInit(){}
 
   constructor(private el: ElementRef, private renderer: Renderer2) {
     this.renderer.addClass(this.el.nativeElement, 'sds-popup');
@@ -22,14 +21,10 @@ export class SdsPopupDirective implements AfterViewInit {
 
 
   ngAfterViewInit() {
-    this.tooltipConfig = this.el.nativeElement.querySelector('.tooltipContent');
-    this.renderer.addClass(this.sdsPopupDiv, this.place);
+    this.renderer.appendChild(this.el.nativeElement, this.Popup);
+    this.renderer.addClass(this.sdsPopupDiv, this.placement);
     this.renderer.addClass(this.sdsPopupDiv, this.position);
-    this.renderer.appendChild(this.sdsPopupDiv, this.tooltipConfig);
+    this.renderer.appendChild(this.sdsPopupDiv, this.el.nativeElement.children[0]);
     this.renderer.appendChild(this.el.nativeElement, this.sdsPopupDiv);
-    const strinx = this.className.split(',');
-    for (let i = 0; i < strinx.length; i++) {
-      this.renderer.addClass(this.tooltipConfig, strinx[i]);
-    }
   }
 }
