@@ -508,7 +508,7 @@ export function InitPxVideo(options) {
 
   }
 
-  obj.container.setAttribute("style", "width:" + obj.movieWidth + "px");   //Added by Hemal
+  // obj.container.setAttribute("style", "width:" + obj.movieWidth + "px");   //Added by Hemal
 
 
 

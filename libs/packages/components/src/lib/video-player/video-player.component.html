@@ -1,4 +1,5 @@
- <div class="px-video-container" id="{{videoIdEl}}" [style.width.px]="videoWidthEl" >
+<div class="px-video-container" id="{{videoPlayerId}}" [style.width.px]="videoWidthEl" >
+<div class="px-video-container" id="{{videoPlayerId}}" [style.width.px]="videoWidthEl" >
   <div class="px-video-img-captions-container" >
       <div class="px-video-captions hide" aria-hidden="true"></div>
       <video width="{{videoWidthEl}}" height="{{videoHeightEl}}" poster="{{videoPosterEl}}" controls preload={{videoPreloadEl}}>
@@ -6,15 +7,8 @@
           <source src="{{videoSourceMp4El}}" type="video/mp4" />
           <!-- If Firefox/Opera/Chrome/IE -->
           <source src="{{videoSourceWebmEl}}" type="video/webm" />
-
           <track kind="subtitles" kind="captions" label="English captions" src="{{videoCaptionEl}}" srclang="en" default />
-          <div>
-              <a href="{{videoSourceMp4El}}">
-                  <img src="{{imageSrcEl}}" width="{{videoWidthEl}}" height="{{videoHeightEl}}" alt="download video" />
-              </a>
-          </div>
       </video>
   </div>
   <div class="px-video-controls" [style.width.px]="videoWidthEl"></div>
 </div>
-

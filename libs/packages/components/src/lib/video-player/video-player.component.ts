@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, AfterViewInit, ViewEncapsulation } from '@angular/core';
-import { InitPxVideo } from '../video-player/js/px-video';
+import { InitPxVideo } from './js/px-video';
+import { VPInterface } from './video-player';
 
 @Component({
   selector: 'sds-video-player',
@@ -8,18 +9,19 @@ import { InitPxVideo } from '../video-player/js/px-video';
   encapsulation: ViewEncapsulation.None,
 })
 export class SdsVideoPlayerComponent implements OnInit, AfterViewInit {
-  public data = VideoPlayerSampleData[0];
+  @Input() VPConfigration: VPInterface;
 
-  this.videoSourceWebmEl = this.VPConfigration.sourceWebm;
-      this.videoSourceMp4El = this.VPConfigration.sourceMp4;
-      this.videoPosterEl = this.VPConfigration.poster;
-      this.videoWidthEl = this.VPConfigration.width;
-      this.videoHeightEl = this.VPConfigration.height;
-      this.videoCaptionEl = this.VPConfigration.caption;
-      this.videoPlayerId = this.VPConfigration.id;
-      this.videoSeekInterval =  this.VPConfigration.seekInterval;
-      videoDebugEl:boolean;
-      videoPreloadEl: string;
+videoSourceWebmEl: string;
+videoSourceMp4El: string;
+videoPosterEl: string;
+videoWidthEl: string;
+videoHeightEl: string;
+videoPlayerId: string;
+videoCaptionEl: string;
+videoSeekInterval: number;
+videoDebug: boolean;
+videoPreloadEl: string;
+
 
   ngOnInit(){
       this.videoSourceWebmEl = this.VPConfigration.sourceWebm;
