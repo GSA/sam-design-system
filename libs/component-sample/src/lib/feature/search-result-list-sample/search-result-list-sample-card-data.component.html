@@ -1,5 +1,10 @@
- <div class="sds-result-item">
-  <!-- Item Heading -->
+<div class="sds-card sds-card--vertical">
+
+  <div class="sds-card__title--vertical">
+    <fa-icon [icon]="['sds', 'bell']" [classes]="['icon-bell']" size="2x"></fa-icon>
+  </div>
+
+  <div class="sds-card__body sds-result-item">
 
     <div class="grid-row grid-gap">
       <div class="grid-col">
@@ -271,3 +276,4 @@
     </div>
     <ng-content></ng-content>
   </div>
+</div>
