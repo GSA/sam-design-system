@@ -1,7 +1,6 @@
 import { Component, ChangeDetectorRef, Input } from '@angular/core';
 
 @Component({
-  // tslint:disable-next-line: component-selector
   selector: 'search-result-list-sample-card-data',
   templateUrl: './search-result-list-sample-card-data.component.html'
 })
