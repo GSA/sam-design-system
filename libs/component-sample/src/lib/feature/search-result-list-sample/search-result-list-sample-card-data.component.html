@@ -1,7 +1,7 @@
 <div class="sds-card sds-card--vertical">
 
   <div class="sds-card__title--vertical">
-    <fa-icon [icon]="['sds', 'bell']" [classes]="['icon-bell']" size="2x"></fa-icon>
+    <fa-icon [icon]="[model.iconlib,model.icon]" [classes]="'icon-'+model.icon" size="2x"></fa-icon>
   </div>
 
   <div class="sds-card__body sds-result-item">
@@ -11,7 +11,7 @@
         <h3 class="font-sans-xs margin-y-0">
           <!-- title -->
           <a class="usa-link" href="#">
-            {{model.text}} Entity: {{model.id}}
+             {{model.text}} Entity: {{model.id}}
           </a>
         </h3>
       </div>
