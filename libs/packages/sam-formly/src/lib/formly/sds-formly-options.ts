@@ -1,6 +1,8 @@
 export let sdsFieldWrapper = ['label', 'description', 'validation'];
 export let sdsGroupWrapper = ['group']
 export let sdsFieldGroupWrapper = [...sdsGroupWrapper, ...sdsFieldWrapper];
+export let sdsWrappers = [...sdsGroupWrapper, ...sdsFieldWrapper];
+
 export class SdsFormlyOptions {
     /**
   * Used to add the tag text for the fields
@@ -25,5 +27,5 @@ export class SdsFormlyOptions {
     /**
     * Used to set the accordion behaviour for the filters
     */
-   public accordionFilter: boolean = false;
+   public accordionFilter = false;
 }

@@ -165,3 +165,36 @@ $cdk-overlay-dark-backdrop-background: rgba(14, 52, 88, 0.7);
 .usa-form-group--error {
   margin-left: -0.5rem !important;
 }
+
+
+
+
+/** MOVE TO SAM STYLES **/
+
+.sds-panel {
+  &.sds-panel--multiple {
+    .sds-panel__header {
+      padding: 6px 10px;
+    }
+
+    .sds-panel__body {
+      margin: 0 5px;
+      padding: 1px 8px 10px;
+      background-color: #fff;
+      box-shadow: inset 0 1px 3px 0 rgba(0,0,0,.5);
+    }
+  }
+
+  .sds-panel__header {
+    display: block;
+    pointer-events: none;
+    border: transparent 1px dashed;
+    border-radius: 2px;
+    outline: none;
+    font-weight: 600;
+    color: #0a3466;
+    font-size: 16px;
+  }
+
+
+}

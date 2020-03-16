@@ -1,34 +1,65 @@
-<h3>Examples with Field Group</h3>
-    <sds-accordion-item expanded="true" class="margin-bottom-1">
-        <sds-accordion-item-header>sds group wrapper with accordion </sds-accordion-item-header>
-        <sds-filters [form]="form" [fields]="sdsGroupWrapperAccordion" [model]="model" ></sds-filters>
-    </sds-accordion-item>
+<h1>Formly SDS-Filters Component</h1>
 
-    <sds-accordion-item expanded="true" class="margin-bottom-1">
-        <sds-accordion-item-header> sds group wrapper without accordion </sds-accordion-item-header>
-        <sds-filters [form]="form" [fields]="sdsGroupWrapper" [model]="model" ></sds-filters>
-    </sds-accordion-item>
+<h2>Form Controls</h2>
 
-    <h3>Examples without Field Group</h3>
+<div class="sds-card">
+  <h3>Input</h3>
+  <sds-filters [form]="form" [fields]="sdsInput" [model]="model" ></sds-filters>
+</div>
 
-    <sds-accordion-item expanded="true" class="margin-bottom-1">
-        <sds-accordion-item-header>sds field group wrapper with accordion</sds-accordion-item-header>
-        <sds-filters [form]="form" [fields]="sdsFieldGroupWrapperAccordion" [model]="model" ></sds-filters>
-    </sds-accordion-item>
+<div class="sds-card">
+  <h3>Select</h3>
+  <sds-filters [form]="form" [fields]="sdsSelect" [model]="model" ></sds-filters>
+</div>
 
-    <sds-accordion-item expanded="true" class="margin-bottom-1">
-        <sds-accordion-item-header> sds field group wrapper without Accordion</sds-accordion-item-header>
-        <sds-filters [form]="form" [fields]="sdsFieldGroupWrapper" [model]="model" ></sds-filters>
-    </sds-accordion-item>
+<div class="sds-card">
+  <h3>Checkbox</h3>
+  <sds-filters [form]="form" [fields]="sdsCheckbox" [model]="model" ></sds-filters>
+</div>
 
-    <sds-accordion-item expanded="true" class="margin-bottom-1">
-        <sds-accordion-item-header> Sds Field Wrapper</sds-accordion-item-header>
-        <sds-filters [form]="form" [fields]="sdsFieldWrapper" [model]="model" ></sds-filters>
-    </sds-accordion-item>
+<div class="sds-card">
+  <h3>Multi Checkbox</h3>
+  <sds-filters [form]="form" [fields]="sdsMultiCheckbox" [model]="model" ></sds-filters>
+</div>
 
+<div class="sds-card">
+  <h3>Radio</h3>
+  <sds-filters [form]="form" [fields]="sdsRadio" [model]="model" ></sds-filters>
+</div>
 
-    <h3>Custom wrapper example</h3>
-    <sds-accordion-item expanded="true" class="margin-bottom-1">
-        <sds-accordion-item-header>Custom wrappers: label, validation </sds-accordion-item-header>
-        <sds-filters [form]="form" [fields]="customWrapper" [model]="model"></sds-filters>
-    </sds-accordion-item>
+<div class="sds-card">
+  <h3>Textarea</h3>
+  <sds-filters [form]="form" [fields]="sdsTextarea" [model]="model" ></sds-filters>
+</div>
+
+<h2>Grouping</h2>
+
+  <h3>Multiple Form Controls</h3>
+    <div class="sds-card">
+      <h4>Default</h4>
+      <sds-accordion-item expanded="true" class="margin-bottom-1">
+        <sds-filters [form]="form" [fields]="sdsGroupDefaultMultipleControls" [model]="model" ></sds-filters>
+      </sds-accordion-item>
+    </div>
+
+    <div class="sds-card">
+      <h4>Accordion</h4>
+      <sds-accordion-item expanded="true" class="margin-bottom-1">
+        <sds-filters [form]="form" [fields]="sdsGroupAccordionMultipleControls" [model]="model" ></sds-filters>
+      </sds-accordion-item>
+    </div>
+
+  <h3>Single Form Control</h3>
+    <div class="sds-card">
+      <h4>Default</h4>
+      <sds-accordion-item expanded="true" class="margin-bottom-1">
+        <sds-filters [form]="form" [fields]="sdsGroupDefaultSingleControl" [model]="model" ></sds-filters>
+      </sds-accordion-item>
+    </div>
+
+    <div class="sds-card">
+      <h4>Accordion</h4>
+      <sds-accordion-item expanded="true" class="margin-bottom-1">
+        <sds-filters [form]="form" [fields]="sdsGroupAccordionSingleControl" [model]="model" ></sds-filters>
+      </sds-accordion-item>
+    </div>
