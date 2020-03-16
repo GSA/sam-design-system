@@ -1,4 +1,4 @@
-export let VideoPlayerSampleData = [
+export let VideoPlayerSampleData =
   {
     'sourceWebm': '',
     'sourceMp4': 'https://media.w3.org/2010/05/sintel/trailer.mp4',
@@ -11,4 +11,4 @@ export let VideoPlayerSampleData = [
     'debug': true,
     'preload': 'none'
 }
-]
+

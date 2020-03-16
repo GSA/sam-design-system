@@ -27,7 +27,7 @@ describe('VideoPlayerComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SdsVideoPlayerComponent);
     component = fixture.componentInstance;
-    component.VPConfigration = {
+    component.VPConfiguration = {
       'sourceWebm': '',
       'sourceMp4': 'https://media.w3.org/2010/05/sintel/trailer.mp4',
       'height': '345',
@@ -44,41 +44,41 @@ describe('VideoPlayerComponent', () => {
 
   it('Should get same video Height, Width, poster and Preload value  as an Input', ()=>{
     const element = fixture.debugElement.query(By.css('video'));
-    element.nativeElement.setAttribute('height', component.videoHeightEl);
-    expect(element.nativeElement.getAttribute("height")).toBe(component.VPConfigration.height);
-    element.nativeElement.setAttribute('width', component.videoWidthEl);
-    expect(element.nativeElement.getAttribute("width")).toBe(component.VPConfigration.width);
-    element.nativeElement.setAttribute('poster', component.videoPosterEl);
-    expect(element.nativeElement.getAttribute("poster")).toBe(component.VPConfigration.poster);
-    // element.nativeElement.setAttribute('preload', component.videoPreloadEl);
-    expect(element.nativeElement.getAttribute("preload")).toBe(component.VPConfigration.preload);
+    element.nativeElement.setAttribute('height', component.VPConfiguration.height);
+    expect(element.nativeElement.getAttribute("height")).toBe(component.VPConfiguration.height);
+    element.nativeElement.setAttribute('width', component.VPConfiguration.width);
+    expect(element.nativeElement.getAttribute("width")).toBe(component.VPConfiguration.width);
+    element.nativeElement.setAttribute('poster', component.VPConfiguration.poster);
+    expect(element.nativeElement.getAttribute("poster")).toBe(component.VPConfiguration.poster);
+    element.nativeElement.setAttribute('preload', component.VPConfiguration.preload);
+    expect(element.nativeElement.getAttribute("preload")).toBe(component.VPConfiguration.preload);
   });
 
   it('div main container Id and width should same as an Input value ', ()=>{
     const element = fixture.debugElement.query(By.css('div.px-video-container'));
-    element.nativeElement.setAttribute('width', component.videoWidthEl);
-    expect(element.nativeElement.getAttribute("width")).toBe(component.VPConfigration.width);
-    element.nativeElement.setAttribute('id', component.videoPlayerId);
-    expect(element.nativeElement.getAttribute("id")).toBe(component.VPConfigration.id);
+    element.nativeElement.setAttribute('width', component.VPConfiguration.width);
+    expect(element.nativeElement.getAttribute("width")).toBe(component.VPConfiguration.width);
+    element.nativeElement.setAttribute('id', component.VPConfiguration.id);
+    expect(element.nativeElement.getAttribute("id")).toBe(component.VPConfiguration.id);
   });
 
   it('Video and Source element should be get same value as Input value', ()=> {
     const element = fixture.debugElement.query(By.css('source'));
-    element.nativeElement.setAttribute('src', component.videoSourceMp4El);
-    expect(element.nativeElement.getAttribute('src')).toBe(component.VPConfigration.sourceMp4);
-    element.nativeElement.setAttribute('src', component.videoSourceWebmEl);
-    expect(element.nativeElement.getAttribute('src')).toBe(component.VPConfigration.sourceWebm);
+    element.nativeElement.setAttribute('src', component.VPConfiguration.sourceMp4);
+    expect(element.nativeElement.getAttribute('src')).toBe(component.VPConfiguration.sourceMp4);
+    element.nativeElement.setAttribute('src', component.VPConfiguration.sourceWebm);
+    expect(element.nativeElement.getAttribute('src')).toBe(component.VPConfiguration.sourceWebm);
   });
 
   it('should accept pxVideo width form Input', ()=>{
     const element = fixture.debugElement.query(By.css('.px-video-controls'));
-    element.nativeElement.setAttribute('width', component.videoWidthEl);
-    expect(element.nativeElement.getAttribute('width')).toBe(component.VPConfigration.width);
+    element.nativeElement.setAttribute('width', component.VPConfiguration.width);
+    expect(element.nativeElement.getAttribute('width')).toBe(component.VPConfiguration.width);
   });
 
   it('should accept track caption from input', ()=>{
     const element = fixture.debugElement.query(By.css('track'));
-    element.nativeElement.setAttribute('src', component.videoCaptionEl);
-    expect(element.nativeElement.getAttribute('src')).toBe(component.VPConfigration.caption);
+    element.nativeElement.setAttribute('src', component.VPConfiguration.caption);
+    expect(element.nativeElement.getAttribute('src')).toBe(component.VPConfiguration.caption);
   });
 });

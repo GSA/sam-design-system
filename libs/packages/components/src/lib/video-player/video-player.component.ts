@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, AfterViewInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, AfterViewInit, ViewEncapsulation } from '@angular/core';
 import { InitPxVideo } from './js/px-video';
 import { VPInterface } from './video-player';
 
@@ -6,43 +6,18 @@ import { VPInterface } from './video-player';
   selector: 'sds-video-player',
   templateUrl: './video-player.component.html',
   styleUrls: ['./css/px-video.css'],
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.None
 })
-export class SdsVideoPlayerComponent implements OnInit, AfterViewInit {
-  @Input() VPConfigration: VPInterface;
-
-videoSourceWebmEl: string;
-videoSourceMp4El: string;
-videoPosterEl: string;
-videoWidthEl: string;
-videoHeightEl: string;
-videoPlayerId: string;
-videoCaptionEl: string;
-videoSeekInterval: number;
-videoDebug: boolean;
-videoPreloadEl: string;
-
-
-  ngOnInit(){
-      this.videoSourceWebmEl = this.VPConfigration.sourceWebm;
-      this.videoSourceMp4El = this.VPConfigration.sourceMp4;
-      this.videoPosterEl = this.VPConfigration.poster;
-      this.videoWidthEl = this.VPConfigration.width;
-      this.videoHeightEl = this.VPConfigration.height;
-      this.videoCaptionEl = this.VPConfigration.caption;
-      this.videoPlayerId = this.VPConfigration.id;
-      this.videoSeekInterval =  this.VPConfigration.seekInterval;
-      this.videoDebug = this.VPConfigration.debug;
-      this.videoPreloadEl = this.VPConfigration.preload;
-  }
+export class SdsVideoPlayerComponent implements AfterViewInit {
+  @Input() VPConfiguration: VPInterface;
 
   ngAfterViewInit() {
     InitPxVideo({
-      videoId: this.videoPlayerId,
+      videoId: this.VPConfiguration.id,
       captionsOnDefault: true,
-      seekInterval: this.videoSeekInterval,
+      seekInterval: this.VPConfiguration.seekInterval,
       videoTitle: 'Video Player',
-      debug: this.videoDebug
+      debug: this.VPConfiguration.debug
     });
   }
 
