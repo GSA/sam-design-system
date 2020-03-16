@@ -90,7 +90,7 @@ private initialText: string;
 
        if (this.innerText.length > visibleCharsLimit) {
      const wordCut = false;
-     const ellipsis = '...';
+     const ellipsis = ' ...';
      const limit = visibleCharsLimit - ellipsis.length;
  
      let visibleText = this.innerText.slice(0, limit);

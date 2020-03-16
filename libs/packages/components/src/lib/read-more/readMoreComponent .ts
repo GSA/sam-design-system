@@ -17,7 +17,7 @@ import {
     template: `
         <div [innerHTML]="text" [class.collapsed]="isCollapsed" [style.height]="isCollapsed ? maxHeight+'px' : 'auto'"> 
         </div>
-         <span  *ngIf="isCollapsed">...</span>
+         <span  *ngIf="isCollapsed" class="spanEllipsis">...</span>
     
         <div class="showReadMore"><a class="readLink" *ngIf="isCollapsable" (click)="isCollapsed =! isCollapsed">Read {{isCollapsed? 'more':'less'}}</a></div>
     `,
@@ -32,6 +32,11 @@ import {
         }
         div.showReadMore{
             margin-top: 15px;
+        }
+        span.spanEllipsis{
+            top: -4px;
+            position: relative;
+            left: 3px;
         }
     `]
 })
