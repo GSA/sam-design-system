@@ -1,4 +1,4 @@
-import { Component, Input, ContentChild, TemplateRef, OnInit } from '@angular/core';
+import { Component, Input, ContentChild, TemplateRef} from '@angular/core';
 @Component({
   selector: 'sds-search-result-list',
   templateUrl: './search-result-list.component.html',
