@@ -2,4 +2,19 @@
   (term)="log($event)"
   placeholder="Entity an entity ID, name, or keyword"
 >
+</sds-search><br><br>
+
+<sds-search
+  [prefixOption]="'dropdown'"
+  [searchOptions]="searchOptions"
+  (term)="log($event)"
+  placeholder="Entity an entity ID, name, or keyword"
+>
+</sds-search><br><br>
+
+<sds-search
+  [prefixOption]="'input'"
+  (term)="log($event)"
+  placeholder="Entity an entity ID, name, or keyword"
+>
 </sds-search>

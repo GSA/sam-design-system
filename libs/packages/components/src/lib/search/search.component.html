@@ -4,6 +4,25 @@
     cdkMonitorSubtreeFocus
     (cdkFocusChange)="focusChange($event)"
   >
+  <div class="sds-search" *ngIf="prefixOption == 'dropdown'">
+      <label class="usa-sr-only" for="search-options">Select Here</label>
+      <select class="usa-select usa-select--inverse" name="options" id="search-options">
+        <option value="select">--Select--</option>
+        <option *ngFor="let option of searchOptions" value="{{option}}">{{option}}</option>
+      </select>
+  </div>
+  <div class="sds-search" *ngIf="prefixOption == 'input'">
+    <label class="usa-sr-only" for="search-prefix"> Search </label>
+    <input
+      class="usa-input"
+      [ngClass]="inputClass"
+      id="search-prefix"
+      type="search"
+      name="search"
+      [placeholder]=""
+    />
+  </div>
+
     <label class="usa-sr-only" for="search-field-small"> Search </label>
     <input
       #inputEl

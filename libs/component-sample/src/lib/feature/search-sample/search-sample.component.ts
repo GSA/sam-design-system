@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 export class SearchSampleComponent implements OnInit {
   constructor() {}
 
+  searchOptions = ['One', 'Two', 'Three'];
+
   ngOnInit() {}
 
   log(value) {

@@ -5,7 +5,8 @@ import {
   Output,
   EventEmitter,
   Input,
-  AfterViewInit
+  AfterViewInit,
+  OnInit
 } from '@angular/core';
 
 import { FocusMonitor } from '@angular/cdk/a11y';
@@ -15,10 +16,12 @@ import { ViewportRuler } from '@angular/cdk/overlay';
   selector: 'sds-search',
   templateUrl: 'search.component.html'
 })
-export class SdsSearchComponent implements AfterViewInit {
+export class SdsSearchComponent implements AfterViewInit, OnInit {
   @ViewChild('inputEl', { read: ElementRef }) inputEl: ElementRef;
   @ViewChild('buttonEl', { read: ElementRef }) buttonEl: ElementRef;
 
+  @Input() prefixOption: string;
+  @Input() searchOptions = [];
   @Input() placeholder: string;
   @Input() inputClass: string;
   @Input() parentSelector: string;
@@ -33,6 +36,11 @@ export class SdsSearchComponent implements AfterViewInit {
     private focusMonitor: FocusMonitor,
     private viewportRuler: ViewportRuler
   ) {}
+
+  ngOnInit() {
+    // console.log(this.options);
+
+  }
 
   ngAfterViewInit() {
     this.inputState.initial.visible = this.isInputVisible();
