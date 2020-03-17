@@ -1,6 +1,6 @@
 {
   "name": "sam-design-system",
-  "version": "0.6.5",
+  "version": "0.6.9",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -50,11 +50,11 @@
     "@fortawesome/angular-fontawesome": "^0.3.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.22",
     "@fortawesome/free-solid-svg-icons": "^5.10.2",
-    "@gsa-sam/sam-styles": "^0.0.51",
+    "@gsa-sam/sam-styles": "^0.0.55",
     "@ngrx/effects": "6.1.2",
     "@ngrx/router-store": "6.1.2",
     "@ngrx/store": "6.1.2",
-    "@ngx-formly/core": "^5.4.1",
+    "@ngx-formly/core": "^5.5.11",
     "@nrwl/nx": "7.5.0",
     "core-js": "^2.5.4",
     "rxjs": "~6.3.3",

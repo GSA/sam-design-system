@@ -171,14 +171,16 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * 
    */
   private focusRemoved() {
-    if (this.configuration.selectionMode === SelectionMode.SINGLE) {
-      if (this.model.items.length > 0) {
-        if (this.inputValue.length === 0) {
-          SDSSelectedItemModelHelper.clearItems(this.model.items);
-          this.propogateChange(this.model);
-        } else {
-          this.inputValue = this.getObjectValue(this.model.items[0], this.configuration.primaryTextField);
+    if (this.configuration) {
+      if (this.configuration.selectionMode === SelectionMode.SINGLE) {
+        if (this.model.items.length > 0) {
+          if (this.inputValue.length === 0) {
+            SDSSelectedItemModelHelper.clearItems(this.model.items);
+            this.propogateChange(this.model);
+          } else {
+            this.inputValue = this.getObjectValue(this.model.items[0], this.configuration.primaryTextField);
 
+          }
         }
       } else {
         this.inputValue = '';

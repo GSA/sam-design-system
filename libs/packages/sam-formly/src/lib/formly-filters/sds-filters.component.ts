@@ -7,6 +7,7 @@ import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { Subject } from 'rxjs';
 import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
+import { pairwise } from 'rxjs/operators';
 
 @Component({
   selector: 'sds-filters',
@@ -16,14 +17,26 @@ import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comuni
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SdsFiltersComponent implements OnInit {
+/**
+   * Timer id for the timer awaiting the service call for more typeing
+   */
+  private timeoutNumber: number;
+
+  /**
+   * debounce time for current page input
+   */
+  @Input() debounceTime = 0;
+
 
   ngOnInit(): void {
-    this.modelChange.subscribe((change) => {
-      this.filterChange.emit(change);
+    this.form.valueChanges
+    .pipe(pairwise())
+    .subscribe(([prev, next]: [any, any]) => {
+      this.filterChange.emit(next);
       if (this.formlyUpdateComunicationService) {
-        this.formlyUpdateComunicationService.updateFilter(change);
+        this.formlyUpdateComunicationService.updateFilter(next);
       }
-    })
+    });
   }
 
   constructor(@Optional() private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService) { }

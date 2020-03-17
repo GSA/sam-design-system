@@ -14,8 +14,8 @@
             </sds-accordion>
           </sds-toolbar>
         </div>
-        <div class="grid-col-auto">
-          <sds-pagination
+        <div class="grid-col-auto" *ngIf="items?.length"> 
+          <sds-pagination 
             class="flex-fill"
             [sdsToolbarExpand]="toolbar"
             [paginationConfiguration]="top"
@@ -25,7 +25,7 @@
           </sds-pagination>
         </div>
         <div class="grid-col-fill"></div>
-        <div class="grid-col-auto float-right">
+        <div class="grid-col-auto float-right"  *ngIf="items?.length">
           <div class="margin-left-1">
             <label
               class="usa-label font-sans-3xs text-italic text-base margin-0"
@@ -58,7 +58,7 @@
     </sds-search-result-list>
 
     <!-- =============== PAGINATION =============== -->
-    <sds-pagination
+    <sds-pagination *ngIf="items?.length"
       [paginationConfiguration]="bottom"
       [(page)]="page"
       (pageChange)="paginationChange.next($event)"
