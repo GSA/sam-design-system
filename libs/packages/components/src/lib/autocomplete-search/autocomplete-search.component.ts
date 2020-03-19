@@ -252,11 +252,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     this.propogateChange(this.model);
     let message = this.getObjectValue(item, this.configuration.primaryTextField);
     this.inputValue = message;
-    // if (this.configuration.secondaryTextField && item[this.configuration.secondaryTextField]) {
-    //   message += ': ' + item[this.configuration.secondaryTextField];
-    // }
-    //  message += ' selected';
-    // this.addScreenReaderMessage(message);
     this.focusRemoved();
     this.showResults = false;
   }
