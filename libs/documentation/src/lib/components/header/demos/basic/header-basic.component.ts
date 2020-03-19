@@ -4,7 +4,6 @@ import { HeaderModel, NavigationMode } from '@gsa-sam/components';
 import { LocationStrategy } from '@angular/common';
 
 @Component({
-  selector: 'sds-header-sample',
   templateUrl: './header-basic.component.html',
   styleUrls: ['./header-basic.component.scss']
 })

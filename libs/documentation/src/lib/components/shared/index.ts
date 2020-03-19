@@ -1,3 +1,4 @@
+import { MarkdownModule } from 'ngx-markdown';
 import { NgModule } from '@angular/core';
 import { DocumentationSourcePage } from './source-page/source.component';
 import { DocumentationTemplatePage } from './template-page/template.component';
@@ -16,7 +17,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 export * from './demo-list';
 
 @NgModule({
-  imports: [DocumentationSharedModule, PrismModule, FontAwesomeModule],
+  imports: [DocumentationSharedModule, PrismModule, FontAwesomeModule, MarkdownModule],
   declarations: [
     DocumentationExamplesPage, DocumentationAPIPage, DocumentationAPIComponent, DocumentationTemplatePage, DocumentationSourcePage, NgbdWidgetDemoComponent
   ],

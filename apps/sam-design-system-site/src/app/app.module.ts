@@ -10,6 +10,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { sds } from '@gsa-sam/sam-styles/src/icons/';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,7 +18,8 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
     BrowserAnimationsModule,
     FontAwesomeModule,
     RouterModule.forRoot(ROUTES),
-    FormsModule
+    FormsModule,
+    MarkdownModule.forRoot()
   ],
   providers: [
     {provide: LocationStrategy, useClass: PathLocationStrategy},

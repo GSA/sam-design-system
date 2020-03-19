@@ -21,6 +21,8 @@
     <ngx-prism [language]="'javascript'" [code]="markup"></ngx-prism>
   </div>
 
+  <markdown [data]="readme" (ready)="onReady()"></markdown>
+
   <ng-content></ng-content>
 
 </div>

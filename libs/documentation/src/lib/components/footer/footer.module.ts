@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderBasic } from './demos/basic/header-basic.component';
+import { FooterBasic } from './demos/basic/footer-basic.component';
 import { DocumentationExamplesPage } from '../shared/examples-page/examples.component';
 import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
@@ -10,17 +10,16 @@ import {
   DocumentationDemoList
 } from './../shared/index';
 import { ComponentWrapperComponent } from './../../shared/component-wrapper/component-wrapper.component';
-import { HeaderBasicModule } from './demos/basic/header-basic.module';
+import { FooterBasicModule } from './demos/basic/footer-basic.module';
 
 declare var require: any;
 const DEMOS = {
   basic: {
-    title: 'SAM Header',
-    type: HeaderBasic,
-    code: require('!!raw-loader!./demos/basic/header-basic.component'),
-    markup: require('!!raw-loader!./demos/basic/header-basic.component.html'),
-    readme: require('!!raw-loader!./demos/basic/readme.md'),
-    path: 'libs/documentation/src/lib/components/header/demos/basic'
+    title: 'SAM Footer',
+    type: FooterBasic,
+    code: require('!!raw-loader!./demos/basic/footer-basic.component'),
+    markup: require('!!raw-loader!./demos/basic/footer-basic.component.html'),
+    path: 'libs/documentation/src/lib/components/footer/demos/basic'
   }
 };
 
@@ -33,7 +32,7 @@ export const ROUTES = [
       items: [
         {
           pkg: 'components',
-          component: 'SdsHeaderComponent'
+          component: 'SdsFooterComponent'
         }
       ]
     },
@@ -50,11 +49,11 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    HeaderBasicModule
+    FooterBasicModule
   ]
 })
-export class HeaderModule {
+export class FooterModule {
   constructor(demoList: DocumentationDemoList) {
-    demoList.register('header', DEMOS);
+    demoList.register('footer', DEMOS);
   }
 }

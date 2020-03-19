@@ -105,6 +105,10 @@
             "styles": [
               "apps/sam-design-system-site/src/styles.scss",
               "libs/documentation/src/lib/components/shared/prism.css"
+            ],
+            "scripts": [
+              "node_modules/marked/lib/marked.js",
+              "node_modules/prismjs/prism.js"
             ]
           },
           "configurations": {

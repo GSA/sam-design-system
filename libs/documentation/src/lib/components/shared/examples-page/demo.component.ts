@@ -11,6 +11,7 @@ export class NgbdWidgetDemoComponent {
   @Input() id: string;
   @Input() code: string;
   @Input() markup: string;
+  @Input() readme: string;
   @Input() path: string;
   @Input() files: { name: string; source: string }[];
   @Input() showCode = false;

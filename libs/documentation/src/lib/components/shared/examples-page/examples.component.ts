@@ -11,6 +11,7 @@ import {DocumentationDemoList} from '../demo-list';
       [code]="demo.code"
       [markup]="demo.markup"
       [path]="demo.path"
+      [readme]="demo.readme"
       [component]="component"
       [files]="demo.files"
       [showCode]="demo.showCode"
