@@ -20,8 +20,7 @@ export class SdsSearchComponent implements AfterViewInit, OnInit {
   @ViewChild('inputEl', { read: ElementRef }) inputEl: ElementRef;
   @ViewChild('buttonEl', { read: ElementRef }) buttonEl: ElementRef;
 
-  @Input() prefixOption: string;
-  @Input() searchOptions = [];
+  @Input() searchConfiguration: any;
   @Input() placeholder: string;
   @Input() inputClass: string;
   @Input() parentSelector: string;

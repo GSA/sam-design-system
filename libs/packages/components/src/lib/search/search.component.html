@@ -4,14 +4,16 @@
     cdkMonitorSubtreeFocus
     (cdkFocusChange)="focusChange($event)"
   >
-  <div class="sds-search" *ngIf="prefixOption == 'dropdown'">
+  <div class="sds-search" *ngIf="searchConfiguration.searchConfiguration == 'dropdown'">
       <label class="usa-sr-only" for="search-options">Select Here</label>
-      <select class="usa-select usa-select--inverse" name="options" id="search-options">
+      <select class="usa-select " name="options" id="search-options"
+      [ngClass]="{'usa-select--inverse': 'searchConfiguration.selectInverse'}"
+      >
         <option value="select">--Select--</option>
-        <option *ngFor="let option of searchOptions" value="{{option}}">{{option}}</option>
+        <option *ngFor="let option of searchConfiguration.options" value="{{option}}">{{option}}</option>
       </select>
   </div>
-  <div class="sds-search" *ngIf="prefixOption == 'input'">
+  <div class="sds-search" *ngIf="searchConfiguration.searchConfiguration == 'input'">
     <label class="usa-sr-only" for="search-prefix"> Search </label>
     <input
       class="usa-input"

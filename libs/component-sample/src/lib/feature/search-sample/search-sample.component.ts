@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SdsSearchDataConfigurationData, SdsSearchDataConfigurationData1 } from './search-sample-data/search-sample-data';
 
 @Component({
   selector: 'sds-search-sample',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class SearchSampleComponent implements OnInit {
   constructor() {}
 
-  searchOptions = ['One', 'Two', 'Three'];
+  searchConfiguration = SdsSearchDataConfigurationData;
+  searchConfiguration1 = SdsSearchDataConfigurationData1;
+
 
   ngOnInit() {}
 

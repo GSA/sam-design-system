@@ -1,20 +1,14 @@
 <sds-search
+  [searchConfiguration]="searchConfiguration1"
   (term)="log($event)"
   placeholder="Entity an entity ID, name, or keyword"
 >
 </sds-search><br><br>
 
 <sds-search
-  [prefixOption]="'dropdown'"
-  [searchOptions]="searchOptions"
+  [searchConfiguration]="searchConfiguration"
   (term)="log($event)"
   placeholder="Entity an entity ID, name, or keyword"
 >
 </sds-search><br><br>
 
-<sds-search
-  [prefixOption]="'input'"
-  (term)="log($event)"
-  placeholder="Entity an entity ID, name, or keyword"
->
-</sds-search>
