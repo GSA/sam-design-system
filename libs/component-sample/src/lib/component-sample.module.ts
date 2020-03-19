@@ -37,9 +37,16 @@ import { SearchSampleComponent } from './feature/search-sample/search-sample.com
 import { CollapseSampleComponent } from './feature/collapse-sample/collapse-sample.component';
 import { CollapseSampleModule } from './feature/collapse-sample/collapse-sample.module';
 import { SearchResultCardSampleComponent } from './feature/search-result-list-sample/search-result-card-sample.component';
+import { VideoPlayerSampleComponent } from './feature/video-player-sample/video-player-sample.component';
+import { VideoPlayerSampleModule } from './feature/video-player-sample/video-player-sample.module';
+import { PopupSampleComponent } from './feature/popup-sample/popup-sample.component';
+import { PopupSampleModule } from './feature/popup-sample/popup-sample.module';
+
 
 
 export const ROUTES: Routes = [
+  { path: 'video-player', component: VideoPlayerSampleComponent },
+  { path: 'popup', component: PopupSampleComponent },
   { path: 'collapse', component: CollapseSampleComponent },
   { path: 'header', component: HeaderSampleComponent },
   { path: 'footer', component: FooterSampleComponent },
@@ -78,7 +85,9 @@ export const ROUTES: Routes = [
     DialogSampleModule,
     ActionsMenuSampleModule,
     SearchSampleModule,
-    CollapseSampleModule
+    CollapseSampleModule,
+    VideoPlayerSampleModule,
+    PopupSampleModule
   ],
   exports: [RouterModule],
   declarations: []
