@@ -1,16 +1,20 @@
+<div class=""
+[ngClass]="{'sds-search--big': searchConfiguration.searchBig  == true}"
+>
 <form class="usa-search usa-search--small">
   <div
     role="search"
+    class="search"
     cdkMonitorSubtreeFocus
     (cdkFocusChange)="focusChange($event)"
   >
   <div class="sds-search" *ngIf="searchConfiguration.searchConfiguration == 'dropdown'">
       <label class="usa-sr-only" for="search-options">Select Here</label>
       <select class="usa-select " name="options" id="search-options"
-      [ngClass]="{'usa-select--inverse': 'searchConfiguration.selectInverse'}"
+      [ngClass]="{'usa-select--inverse': searchConfiguration.selectInverse  == true}"
       >
         <option value="select">--Select--</option>
-        <option *ngFor="let option of searchConfiguration.options" value="{{option}}">{{option}}</option>
+        <option *ngFor="let option of searchConfiguration.options" value="{{option.option}}">{{option.option}}</option>
       </select>
   </div>
   <div class="sds-search" *ngIf="searchConfiguration.searchConfiguration == 'input'">
@@ -45,4 +49,4 @@
     </button>
   </div>
 </form>
-
+</div>

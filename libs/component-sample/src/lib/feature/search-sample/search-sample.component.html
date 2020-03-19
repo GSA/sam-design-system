@@ -1,4 +1,11 @@
 <sds-search
+  [searchConfiguration]="searchConfiguration"
+  (term)="log($event)"
+  placeholder="Entity an entity ID, name, or keyword"
+>
+</sds-search><br><br>
+
+<sds-search
   [searchConfiguration]="searchConfiguration1"
   (term)="log($event)"
   placeholder="Entity an entity ID, name, or keyword"
@@ -6,7 +13,25 @@
 </sds-search><br><br>
 
 <sds-search
-  [searchConfiguration]="searchConfiguration"
+  [searchConfiguration]="searchConfiguration2"
+  (term)="log($event)"
+  placeholder="Entity an entity ID, name, or keyword"
+>
+</sds-search><br><br>
+<sds-search
+  [searchConfiguration]="searchConfiguration3"
+  (term)="log($event)"
+  placeholder="Entity an entity ID, name, or keyword"
+>
+</sds-search><br><br>
+<sds-search
+  [searchConfiguration]="searchConfiguration4"
+  (term)="log($event)"
+  placeholder="Entity an entity ID, name, or keyword"
+>
+</sds-search><br><br>
+<sds-search
+  [searchConfiguration]="searchConfiguration5"
   (term)="log($event)"
   placeholder="Entity an entity ID, name, or keyword"
 >

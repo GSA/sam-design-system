@@ -11,6 +11,7 @@ import {
 
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { ViewportRuler } from '@angular/cdk/overlay';
+import { SearchConfigurationInterface } from './search-configuration.interface';
 
 @Component({
   selector: 'sds-search',
@@ -20,7 +21,7 @@ export class SdsSearchComponent implements AfterViewInit, OnInit {
   @ViewChild('inputEl', { read: ElementRef }) inputEl: ElementRef;
   @ViewChild('buttonEl', { read: ElementRef }) buttonEl: ElementRef;
 
-  @Input() searchConfiguration: any;
+  @Input() searchConfiguration: SearchConfigurationInterface;
   @Input() placeholder: string;
   @Input() inputClass: string;
   @Input() parentSelector: string;
@@ -37,7 +38,7 @@ export class SdsSearchComponent implements AfterViewInit, OnInit {
   ) {}
 
   ngOnInit() {
-    // console.log(this.options);
+    console.log(this.searchConfiguration.selectInverse);
 
   }
 
