@@ -9,7 +9,7 @@ import { By } from '@angular/platform-browser';
 import { AutoCompleteSampleDataService } from './autocomplete-seach-test-service.spec';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-fdescribe('SamAutocompleteComponent', () => {
+describe('SamAutocompleteComponent', () => {
   let component: SDSAutocompleteSearchComponent;
   let fixture: ComponentFixture<SDSAutocompleteSearchComponent>;
 
@@ -47,6 +47,14 @@ fdescribe('SamAutocompleteComponent', () => {
     expect(input).toBeDefined();
   });
 
+  it('Should check for focus', () => {
+    const event = {};
+    component.checkForFocus(event);
+    fixture.detectChanges();
+    expect(component.inputValue).toBe('');
+    expect(component.showResults).toBeFalsy();
+  });
+
   it('Should have an input id', () => {
     fixture.detectChanges();
     const input = fixture.debugElement.query(By.css('input'));
@@ -74,7 +82,6 @@ fdescribe('SamAutocompleteComponent', () => {
     expect(list.nativeElement.children.length).toBe(1);
     const emptyItem = fixture.debugElement.query(By.css('.emptyResults'));
     expect(emptyItem).toBeTruthy();
-
   }));
 
   it('Should have results with minimumCharacterCountSearch', fakeAsync(() => {
@@ -95,7 +102,21 @@ fdescribe('SamAutocompleteComponent', () => {
   }));
 
 
+  it('Should have results with input and free text search on', fakeAsync(() => {
+    component.inputValue = 'search text';
+    const event = {
+      "key": "Enter",
+      target: { "value": component.inputValue }
+    }
+    component.configuration.isFreeTextEnabled = true;
+    component.highlightedIndex = -1;
+    component.onKeydown(event);
+    fixture.detectChanges();
+    tick();
+    fixture.detectChanges();
+    expect(component.inputValue).toBe('search text');
 
+  }));
 
 
   it('Should have results key press', fakeAsync(() => {
@@ -114,7 +135,7 @@ fdescribe('SamAutocompleteComponent', () => {
     expect(component.results[0]['highlighted']).toBeTruthy();
   }));
 
-  xit('Should not highlight first result if free text is on', fakeAsync(() => {
+  it('Should not highlight first result if free text is on', fakeAsync(() => {
     const event = {
       preventDefault: ()=>{},
       target: component.input.nativeElement
@@ -128,7 +149,7 @@ fdescribe('SamAutocompleteComponent', () => {
     fixture.detectChanges();
     const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
     expect(list.nativeElement.children.length).toBe(11);
-    expect(component.results[0]['highlighted']).toBeTruthy();
+    expect(component.highlightedIndex).toBe(-1);
   }));
 
 
@@ -193,7 +214,7 @@ fdescribe('SamAutocompleteComponent', () => {
     expect(component.results[0]['highlighted']).toBeTruthy();
   }));
 
-  xit('Up arrow when on first item', fakeAsync(() => {
+  it('Up arrow when on first item', fakeAsync(() => {
     component.inputFocusHandler();
     tick();
     fixture.detectChanges();
@@ -202,12 +223,13 @@ fdescribe('SamAutocompleteComponent', () => {
     expect(component.results[0]['highlighted']).toBeTruthy();
     const upEvent = {
       "key": "Up",
-      "target": { "value": 'id' }
+      "target": { "value": 'id' },
+      "preventDefault": () => true
     }
     component.onKeydown(upEvent);
     tick();
     fixture.detectChanges();
-    expect(component.results[0]['highlighted']).toBeTruthy();
+    expect(component.results[0]['highlighted']).toBeFalsy();
   }));
 
 
