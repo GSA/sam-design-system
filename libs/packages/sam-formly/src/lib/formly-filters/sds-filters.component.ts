@@ -59,8 +59,8 @@ export class SdsFiltersComponent implements OnInit {
     this.form.valueChanges
       .pipe(pairwise())
       .subscribe(([prev, next]: [any, any]) => {
-        this.queryParams = this.getKeyValueFilters(next);
-        this.convertToParam(next) 
+       // this.queryParams = this.getKeyValueFilters(next);
+        this.queryParams = this.convertToParam(next) 
         this.router.navigate([], {
           relativeTo: this.route,
           queryParams: this.queryParams,
@@ -73,12 +73,45 @@ export class SdsFiltersComponent implements OnInit {
       });
   }
 
-  convertToParam(params) {
-    const queryString  = Object.keys(params).map((key) => {
-      return encodeURIComponent(key) + '=' + encodeURIComponent(params[key])
-  }).join('&');
-    console.log(queryString, 'queryString');
+  convertToParam(filters) {
+    const result = {};
+    for (const key in filters) {
+      if (filters.hasOwnProperty(key)) {
+        for (const subKey in filters[key]) {
+          if (filters[key].hasOwnProperty(subKey)) {
+            if (filters[key][subKey] === "") {
+              filters[key][subKey] = null;
+            }
+            result[key + "[" + subKey + "]"] = filters[key][subKey];
+          }
+        }
+      }
+    }
+    const query = [];
+    for (const key in result) {
+      if (result.hasOwnProperty(key)) {
+        if(result[key]) {
+        query.push(encodeURIComponent(key) + '=' + encodeURIComponent(result[key]));
+        }
+      }
+    }  
+     query.join('&');
+     console.log(query,'query')
+    return query;
   }
+
+//   var queryStringToJSON = function (url) {
+//     if (url === '')
+//        return '';
+//     var pairs = (url || location.search).slice(1).split('&');
+//     var result = {};
+//     for (var idx in pairs) {
+//     var pair = pairs[idx].split('=');
+//     if (!!pair[0])
+//         result[pair[0].toLowerCase()] = decodeURIComponent(pair[1] || '');
+//     }
+//    return result;
+// }
 
   getKeyValueFilters(filters) {
     // Hard coding approach + key value pair filters
@@ -109,8 +142,6 @@ export class SdsFiltersComponent implements OnInit {
         });
       }
     });
-    parameters['expirationDateRangeEx'] = null;
     return parameters;
   }
-  
 }
