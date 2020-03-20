@@ -1,30 +1,40 @@
-<div sdsPopup="Add description here" position="bottom-center" placement="out" aria-label="Tooltip that hides when scrolled out of the container">
-    Tooltip
-</div>
-<br><br>
+<div class="grid-container">
+<div class="grid-row">
+  <div class="tablet:grid-col">
+    <div sdsPopup="Add description here" position="top-center" placement="out" aria-label="Tooltip that hides when scrolled out of the container">
+      Tooltip for description
+  </div>
+  </div>
+  <div class="tablet:grid-col">
+    <div #tooltip>
+      <span>Tootltip content</span>
+    </div>
 
-<div #tooltip>
-  <span>Tootltip content</span>
-</div>
+    <div [sdsPopup]='tooltip' position="top-center" placement="out" aria-label="Tooltip that hides when scrolled out of the container">
+      <div class="tooltip tooltip-left">
+        <div>popup outside</div>
+      </div>
+    </div>
+  </div>
+  <div class="tablet:grid-col">
+    <div #tooltipbutton>
+      <button class="usa-button usa-button--base">
+        out bottom center
+      </button>
+    </div>
 
-<div [sdsPopup]='tooltip' position="top-center" placement="out" aria-label="Tooltip that hides when scrolled out of the container">
-  <div class="tooltip tooltip-left">
-    <div>popup outside</div>
+    <div [sdsPopup]='tooltipbutton' position="bottom-center" placement="out" aria-label="Tooltip that hides when scrolled out of the container">
+      <div class="tooltip tooltip-left">
+        <div>popup outside</div>
+      </div>
+    </div>
   </div>
 </div>
-<br><br>
-<div #tooltipbutton>
-  <button class="usa-button usa-button--base">
-    tooltip
-  </button>
-</div>
 
-<div [sdsPopup]='tooltipbutton' position="bottom-center" placement="out" aria-label="Tooltip that hides when scrolled out of the container">
-  <div class="tooltip tooltip-left">
-    <div>popup outside</div>
-  </div>
-</div>
-<br><br>
+<div>
+
+<div class="grid-row">
+  <div class="tablet:grid-col">
 <div #tooltipRichcontent>
   <span class="border-1px sds-popup padding-1 radius-md">
     rich content
@@ -44,7 +54,10 @@ aria-label="Tooltip that hides when scrolled out of the container"
     <span>Review Required</span>
     <p>Venenatis dapibus ex</p>
   </div>
-</div><br><br>
+</div>
+</div>
+</div>
+</div>
 <div class="sds-card padding-2">
   <p>My Content start from here.</p>
   <div class="grid-row">
@@ -106,3 +119,4 @@ aria-label="Tooltip that hides when scrolled out of the container"
       </div>
     </div>
   </div>
+
