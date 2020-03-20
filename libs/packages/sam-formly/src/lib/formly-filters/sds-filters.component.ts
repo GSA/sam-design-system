@@ -73,8 +73,8 @@ export class SdsFiltersComponent implements OnInit {
   }
 
   getKeyValueFilters(filters) {
+    // Hard coding approach + key value pair filters
     let parameters = {};
-    const status = [];
     for (const key in filters) {
       if (filters.hasOwnProperty(key)) {
         parameters = Object.assign(parameters, ...filters[key]);
@@ -91,14 +91,17 @@ export class SdsFiltersComponent implements OnInit {
           if (parameters[key][k] instanceof Date) {
             parameters[key][k] = parameters[key][k].toLocaleDateString();
             parameters = Object.assign(parameters, ...parameters[key]);
-          } else {
-            console.log(Object.keys(parameters[key]).filter(item => parameters[key][item]));
+          } else if (Array.isArray(parameters[key][k])) {
+            const result = parameters[key][k].map(item => item.name);
+            parameters[key] = result;
+          } else if (typeof (parameters[key][k]) === 'boolean') {
+            const status = Object.keys(parameters[key]).filter(item => parameters[key][item]);
+            parameters[key] = status;
           }
         });
-        parameters[key] = key.includes('Checkbox') ? status : null;
       }
     });
     return parameters;
   }
-
+  
 }

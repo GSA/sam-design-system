@@ -86,7 +86,7 @@ export class FilterWrapperComponent implements OnInit {
       },
       fieldGroup: [
       {
-        key: 'keyword',
+        key: 'searchkeyword',
         type: 'input',
         templateOptions: {
           type: 'text',
@@ -198,7 +198,7 @@ export class FilterWrapperComponent implements OnInit {
           },
         },
         {
-          key: 'entityCheckbox',
+          key: 'expirationDate_entityCheckbox',
           type: 'multicheckbox',
           templateOptions: {
             label: 'Entity Status',
