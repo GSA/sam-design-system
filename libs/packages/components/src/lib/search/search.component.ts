@@ -11,7 +11,7 @@ import {
 
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { ViewportRuler } from '@angular/cdk/overlay';
-import { SearchConfigurationInterface } from './searchConfiguration';
+import { SearchConfigurationInterface } from './searchConfigurationInterface';
 
 @Component({
   selector: 'sds-search',
@@ -20,6 +20,7 @@ import { SearchConfigurationInterface } from './searchConfiguration';
 export class SdsSearchComponent implements AfterViewInit, OnInit {
   @ViewChild('inputEl', { read: ElementRef }) inputEl: ElementRef;
   @ViewChild('buttonEl', { read: ElementRef }) buttonEl: ElementRef;
+  @ViewChild('selectEl', { read: ElementRef }) selectEl: ElementRef;
 
   @Input() searchConfiguration: SearchConfigurationInterface;
   @Input() placeholder: string;
@@ -38,6 +39,8 @@ export class SdsSearchComponent implements AfterViewInit, OnInit {
   ) {}
 
   ngOnInit() {
+  console.log(this.searchConfiguration);
+
   }
 
   ngAfterViewInit() {
@@ -54,8 +57,13 @@ export class SdsSearchComponent implements AfterViewInit, OnInit {
     if (!this.inputState.visible) {
       this.setInputVisibleStyles();
       this.focusMonitor.focusVia(this.inputEl, 'program');
-    } else if (this.inputEl.nativeElement.value) {
+    }
+    else if (this.inputEl.nativeElement.value && this.searchConfiguration.searchConfiguration == 'none') {
       this.term.emit(this.inputEl.nativeElement.value);
+    }
+    else if (this.inputEl.nativeElement.value && this.selectEl.nativeElement.value !== 'select'){
+      const searchCriteria = this.selectEl.nativeElement.value +" " +this.inputEl.nativeElement.value;
+      this.term.emit(searchCriteria);
     }
   }
 

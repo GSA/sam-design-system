@@ -12,6 +12,7 @@
       <label class="usa-sr-only" for="search-options">Select Here</label>
       <select class="usa-select " name="options" id="search-options"
       [ngClass]="{'usa-select--inverse': searchConfiguration.selectInverse  == true}"
+      #selectEl
       >
         <option value="select">--Select--</option>
         <option *ngFor="let option of searchConfiguration.options" value="{{option.option}}">{{option.option}}</option>
