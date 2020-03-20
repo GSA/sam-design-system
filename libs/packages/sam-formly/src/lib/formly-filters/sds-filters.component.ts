@@ -60,6 +60,7 @@ export class SdsFiltersComponent implements OnInit {
       .pipe(pairwise())
       .subscribe(([prev, next]: [any, any]) => {
         this.queryParams = this.getKeyValueFilters(next);
+        this.convertToParam(next) 
         this.router.navigate([], {
           relativeTo: this.route,
           queryParams: this.queryParams,
@@ -70,6 +71,13 @@ export class SdsFiltersComponent implements OnInit {
           this.formlyUpdateComunicationService.updateFilter(next);
         }
       });
+  }
+
+  convertToParam(params) {
+    const queryString  = Object.keys(params).map((key) => {
+      return encodeURIComponent(key) + '=' + encodeURIComponent(params[key])
+  }).join('&');
+    console.log(queryString, 'queryString');
   }
 
   getKeyValueFilters(filters) {
@@ -84,7 +92,7 @@ export class SdsFiltersComponent implements OnInit {
       if (parameters[key] === "") {
         parameters[key] = null;
       } else if (parameters[key] instanceof Date) {
-        parameters[key] = parameters[key].toLocaleDateString();
+       parameters[key] = parameters[key].toLocaleDateString();
       }
       else if (parameters[key] !== null && typeof (parameters[key]) === 'object') {
         Object.keys(parameters[key]).forEach(k => {
@@ -101,6 +109,7 @@ export class SdsFiltersComponent implements OnInit {
         });
       }
     });
+    parameters['expirationDateRangeEx'] = null;
     return parameters;
   }
   
