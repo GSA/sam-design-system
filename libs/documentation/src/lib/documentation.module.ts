@@ -9,13 +9,21 @@ import { sds } from '@gsa-sam/sam-styles/src/icons/';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { ROUTES as HEADER_ROUTES, HeaderModule } from './components/header/header.module';
 import { ROUTES as FOOTER_ROUTES, FooterModule } from './components/footer/footer.module';
+import { ROUTES as SUBHEADER_ROUTES, SubHeaderModule } from './components/subheader/subheader.module';
+
+/* Form Types */
 import { ROUTES as INPUT_ROUTES, InputModule } from './components/input/input.module';
-import { ROUTES as FORM_FIELD_ROUTES, FormFieldModule } from './components/form-field/form-field.module';
 import { ROUTES as TEXT_AREA_ROUTES, TextAreaModule } from './components/textarea/textarea.module';
 import { ROUTES as CHECKBOX_ROUTES, CheckboxModule } from './components/checkbox/checkbox.module';
 import { ROUTES as MULTI_CHECKBOX_ROUTES, MultiCheckboxModule } from './components/multicheckbox/multicheckbox.module';
 import { ROUTES as RADIO_ROUTES, RadioModule } from './components/radio/radio.module';
 import { ROUTES as SELECT_ROUTES, SelectModule } from './components/select/select.module';
+
+/* Form Wrappers */
+import { ROUTES as FORM_FIELD_ROUTES, FormFieldModule } from './components/form-field/form-field.module';
+import { ROUTES as FILTER_WRAPPER_ROUTES, FilterWrapperModule } from './components/filterwrapper/filterwrapper.module';
+import { ROUTES as ACCORDION_WRAPPER_ROUTES, AccordionWrapperModule } from './components/accordionwrapper/accordionwrapper.module';
+
 import { DocumentationSharedModule } from './shared';
 import { OverviewComponent } from './pages/overview/overview.component';
 
@@ -28,13 +36,16 @@ export const ROUTES: Routes = [
   { path: 'components', pathMatch: 'full', redirectTo: 'components/alert' },
   { path: 'components/header', children: HEADER_ROUTES },
   { path: 'components/footer', children: FOOTER_ROUTES },
+  { path: 'components/subheader', children: SUBHEADER_ROUTES },
   { path: 'components/input', children: INPUT_ROUTES },
-  { path: 'components/form-field', children: FORM_FIELD_ROUTES },
   { path: 'components/textarea', children: TEXT_AREA_ROUTES },
   { path: 'components/checkbox', children: CHECKBOX_ROUTES },
   { path: 'components/multicheckbox', children: MULTI_CHECKBOX_ROUTES },
   { path: 'components/radio', children: RADIO_ROUTES },
-  { path: 'components/select', children: SELECT_ROUTES }
+  { path: 'components/select', children: SELECT_ROUTES },
+  { path: 'components/form-field', children: FORM_FIELD_ROUTES },
+  { path: 'components/filterwrapper', children: FILTER_WRAPPER_ROUTES },
+  { path: 'components/accordionwrapper', children: ACCORDION_WRAPPER_ROUTES },
 ];
 
 @NgModule({
@@ -44,15 +55,18 @@ export const ROUTES: Routes = [
     RouterModule.forChild(ROUTES),
     HeaderModule,
     FooterModule,
+    SubHeaderModule,
     InputModule,
-    FormFieldModule,
     OverviewModule,
     IntroductionModule,
     TextAreaModule,
     CheckboxModule,
     MultiCheckboxModule,
     RadioModule,
-    SelectModule
+    SelectModule,
+    FormFieldModule,
+    FilterWrapperModule,
+    AccordionWrapperModule
   ]
 })
 export class DocumentationModule {
