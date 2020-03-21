@@ -30,6 +30,8 @@ export const ROUTES = [
     component: ComponentWrapperComponent,
     data: {
       title: "Form Field",
+      introducedVersion: '0.4.8',
+      deprecatedVersion: '0.7.11',
       items: [
         {
           pkg: 'formly',

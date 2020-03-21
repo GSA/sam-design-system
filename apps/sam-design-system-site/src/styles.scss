@@ -186,3 +186,11 @@ code::before, code::after {
 .usa-form-group--error {
   margin-left: -0.5rem !important;
 }
+
+
+/* Fixes to look at in Sam-Styles */
+
+.sds-tag[class*="sds-tag--outline"] {
+  width: auto !important;
+
+}

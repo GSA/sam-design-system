@@ -24,6 +24,8 @@ export class ComponentWrapperComponent {
     source: false,
     template: false
   }
+  introducedVersion: string;
+  deprecatedVersion: string;
 
   constructor(public route: ActivatedRoute, private _router: Router, ngZone: NgZone) {
     this._router.events.pipe(
@@ -35,6 +37,8 @@ export class ComponentWrapperComponent {
       this.component = parentRoute.url[1].path;
       this.activeTab = tabRoute.url[0].path;
       this.title = this.route.snapshot.data.title || this.component;
+      this.introducedVersion = this.route.snapshot.data.introducedVersion;
+      this.deprecatedVersion = this.route.snapshot.data.deprecatedVersion;
 
       parentRoute.routeConfig.children[1].children.forEach(element => {
         this.tabs[element.path] = true;
