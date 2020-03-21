@@ -5,7 +5,7 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './demo.component.html'
 })
-export class NgbdWidgetDemoComponent {
+export class DocumentationWidgetDemoComponent {
   @Input() demoTitle: string;
   @Input() component: string;
   @Input() id: string;
