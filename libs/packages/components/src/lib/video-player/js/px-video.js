@@ -241,6 +241,8 @@ export function InitPxVideo(options) {
 
   function launchFullScreen(elem) {
 
+
+
     if (!elem.fullscreenElement &&    // alternative standard method
 
         !elem.mozFullScreenElement && !elem.webkitFullscreenElement && !elem.msFullscreenElement ) {  // current working methods
@@ -1332,7 +1334,7 @@ export function InitPxVideo(options) {
 
 
 
-  document.addEventListener("msfullscreenchange", function () {
+  document.addEventListener("MSFullscreenChange", function () {
 
     fullScreenStyles();
 
