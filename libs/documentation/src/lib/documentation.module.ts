@@ -24,6 +24,10 @@ import { ROUTES as FORM_FIELD_ROUTES, FormFieldModule } from './components/form-
 import { ROUTES as FILTER_WRAPPER_ROUTES, FilterWrapperModule } from './components/filterwrapper/filterwrapper.module';
 import { ROUTES as ACCORDION_WRAPPER_ROUTES, AccordionWrapperModule } from './components/accordionwrapper/accordionwrapper.module';
 
+/* Utilities */
+import { ROUTES as ICONS_ROUTES, IconsModule } from './components/icons/icons.module';
+
+
 import { DocumentationSharedModule } from './shared';
 import { OverviewComponent } from './pages/overview/overview.component';
 
@@ -46,6 +50,7 @@ export const ROUTES: Routes = [
   { path: 'components/form-field', children: FORM_FIELD_ROUTES },
   { path: 'components/filterwrapper', children: FILTER_WRAPPER_ROUTES },
   { path: 'components/accordionwrapper', children: ACCORDION_WRAPPER_ROUTES },
+  { path: 'components/icons', children: ICONS_ROUTES },
 ];
 
 @NgModule({
@@ -66,7 +71,8 @@ export const ROUTES: Routes = [
     SelectModule,
     FormFieldModule,
     FilterWrapperModule,
-    AccordionWrapperModule
+    AccordionWrapperModule,
+    IconsModule
   ]
 })
 export class DocumentationModule {

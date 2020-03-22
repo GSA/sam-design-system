@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SubHeaderBasic } from './demos/basic/subheader-basic.component';
 import { DocumentationExamplesPage } from '../shared/examples-page/examples.component';
-import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 import {
