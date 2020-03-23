@@ -60,7 +60,7 @@ export class SdsFiltersComponent implements OnInit {
       .pipe(pairwise())
       .subscribe(([prev, next]: [any, any]) => {
        // this.queryParams = this.getKeyValueFilters(next);
-        this.queryParams = this.convertToParam(next) 
+        this.queryParams = this.convert1(next) 
         this.router.navigate([], {
           relativeTo: this.route,
           queryParams: this.queryParams,
@@ -73,8 +73,16 @@ export class SdsFiltersComponent implements OnInit {
       });
   }
 
-  convertToParam(filters) {
-    const result = {};
+  convert2(filters) {
+    const encodedUrl = encodeURIComponent(JSON.stringify(filters));
+    console.log(encodedUrl, 'url');
+    const decode = JSON.parse(decodeURIComponent(encodedUrl));
+    console.log(decode, 'decodedurl');
+    return encodedUrl;
+  }
+
+  convert1(filters){
+    const result = [];
     for (const key in filters) {
       if (filters.hasOwnProperty(key)) {
         for (const subKey in filters[key]) {
@@ -82,22 +90,52 @@ export class SdsFiltersComponent implements OnInit {
             if (filters[key][subKey] === "") {
               filters[key][subKey] = null;
             }
-            result[key + "[" + subKey + "]"] = filters[key][subKey];
+            if(filters[key][subKey]){
+              const value = `${key}[${subKey}]=${JSON.stringify(filters[key][subKey])}`;
+              result.push(value);
+            // result[key + "[" + subKey + "]"] = filters[key][subKey];
+            }
           }
         }
       }
     }
-    const query = [];
-    for (const key in result) {
-      if (result.hasOwnProperty(key)) {
-        if(result[key]) {
-        query.push(encodeURIComponent(key) + '=' + encodeURIComponent(result[key]));
+    console.log(result.join('&'), 'test')
+    return result.join('&');
+  }
+
+  convertToParam(params) {
+    const result = [];
+    if (Object.keys(params).length > 0) {
+      for (const key in params) {
+        if (params.hasOwnProperty(key)) {
+          const keyValue = params[key];
+          if (keyValue !== null) {
+            switch (keyValue.constructor.name) {
+              case 'Array':
+                if (keyValue.length > 0) {
+                  const joined_value = keyValue.join(',');
+                  result.push(`${encodeURIComponent(key)}=${encodeURIComponent(joined_value)}`);
+                }
+                break;
+              case 'Object':
+                (<any>Object).entries(keyValue).map(([k, v]: [string, any]) => {
+                  if (v) {
+                    result.push(`${k}=${JSON.stringify(v)}`);
+                  }
+                });
+                break;
+              default:
+                result.push(`${encodeURIComponent(key)}=${encodeURIComponent(keyValue)}`);
+            }
+          }
         }
       }
-    }  
-     query.join('&');
-     console.log(query,'query')
-    return query;
+      console.log(result.join('&'), 'results');
+      return result.join('&');
+      
+    } else {
+      return result;
+    }
   }
 
 //   var queryStringToJSON = function (url) {
