@@ -7,9 +7,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { sds } from '@gsa-sam/sam-styles/src/icons/';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+
+/* Layout / Components */
 import { ROUTES as HEADER_ROUTES, HeaderModule } from './components/header/header.module';
 import { ROUTES as FOOTER_ROUTES, FooterModule } from './components/footer/footer.module';
 import { ROUTES as SUBHEADER_ROUTES, SubHeaderModule } from './components/subheader/subheader.module';
+import { ROUTES as DIALOG_ROUTES, DialogModule } from './components/dialog/dialog.module';
 
 /* Form Types */
 import { ROUTES as INPUT_ROUTES, InputModule } from './components/input/input.module';
@@ -41,6 +44,7 @@ export const ROUTES: Routes = [
   { path: 'components/header', children: HEADER_ROUTES },
   { path: 'components/footer', children: FOOTER_ROUTES },
   { path: 'components/subheader', children: SUBHEADER_ROUTES },
+  { path: 'components/dialog', children: DIALOG_ROUTES },
   { path: 'components/input', children: INPUT_ROUTES },
   { path: 'components/textarea', children: TEXT_AREA_ROUTES },
   { path: 'components/checkbox', children: CHECKBOX_ROUTES },
@@ -61,6 +65,7 @@ export const ROUTES: Routes = [
     HeaderModule,
     FooterModule,
     SubHeaderModule,
+    DialogModule,
     InputModule,
     OverviewModule,
     IntroductionModule,

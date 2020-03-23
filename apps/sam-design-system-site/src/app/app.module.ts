@@ -17,7 +17,7 @@ import { MarkdownModule } from 'ngx-markdown';
   imports: [BrowserModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
-    RouterModule.forRoot(ROUTES),
+    RouterModule.forRoot(ROUTES, { scrollPositionRestoration: 'enabled' }),
     FormsModule,
     MarkdownModule.forRoot()
   ],
