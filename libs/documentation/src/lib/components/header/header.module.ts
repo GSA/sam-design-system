@@ -33,7 +33,8 @@ export const ROUTES = [
       items: [
         {
           pkg: 'components',
-          component: 'SdsHeaderComponent'
+          type: 'components',
+          name: 'SdsHeaderComponent'
         }
       ]
     },

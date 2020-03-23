@@ -7,15 +7,16 @@ interface apiDesc {
   fileURI: string;
 }
 
-export function getSource(pkg, component) {
+export function getSource(pkg, type, name) {
   const api:apiDesc = {
     sourceCode: "",
     fileURI: ""
   };
 
-  Object.values(apis[pkg].components)
+  console.log(apis[pkg][type]);
+  Object.values(apis[pkg][type])
   .filter((entity): entity is any => <any>entity)
-  .filter((entity): entity is any => entity.name.startsWith(`${component}`))
+  .filter((entity): entity is any => entity.name.startsWith(`${name}`))
   .forEach(entity => {
       api.sourceCode = entity.sourceCode;
       api.fileURI = entity.file;
@@ -43,9 +44,9 @@ export class DocumentationSourcePage {
   constructor(route: ActivatedRoute) {
     this.items = route.snapshot.parent.data.items || []
     this.items.forEach(item => {
-      if(item.component) {
-        item.sourceCode = (getSource(item.pkg, item.component).sourceCode as any);
-        item.fileURI = getSource(item.pkg, item.component).fileURI;
+      if(item.name) {
+        item.sourceCode = (getSource(item.pkg, item.type, item.name).sourceCode as any);
+        item.fileURI = getSource(item.pkg, item.type, item.name).fileURI;
       }
     })
   }

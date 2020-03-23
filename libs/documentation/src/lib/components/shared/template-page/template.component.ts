@@ -15,18 +15,18 @@ function baseName(path)
 }
 
 
-export function getSource(pkg, component) {
+export function getSource(pkg, type, name) {
   const api:apiDesc = {
     sourceCode: "",
     fileURI: ""
   };
 
-  Object.values(apis[pkg].components)
+  Object.values(apis[pkg][type])
   .filter((entity): entity is any => <any>entity)
-  .filter((entity): entity is any => entity.name.startsWith(`${component}`))
+  .filter((entity): entity is any => entity.name.startsWith(`${name}`))
   .forEach(entity => {
       api.sourceCode = entity.templateData || entity.template;
-      if(entity.templateUrl.length) {
+      if(entity.templateUrl && entity.templateUrl.length) {
         api.fileURI = baseName(entity.file) + "/" + entity.templateUrl[0].replace('\.\/','');
       }
       else if(entity.file) {
@@ -61,9 +61,9 @@ export class DocumentationTemplatePage {
   constructor(route: ActivatedRoute) {
     this.items = route.snapshot.parent.data.items || [];
     this.items.forEach(item => {
-      if(item.component) {
-        item.sourceCode = (getSource(item.pkg, item.component).sourceCode as any);
-        item.fileURI = getSource(item.pkg, item.component).fileURI;
+      if(item.name) {
+        item.sourceCode = (getSource(item.pkg, item.type, item.name).sourceCode as any);
+        item.fileURI = getSource(item.pkg, item.type, item.name).fileURI;
       }
     })
   }

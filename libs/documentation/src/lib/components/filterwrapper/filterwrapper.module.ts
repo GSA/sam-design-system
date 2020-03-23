@@ -33,8 +33,9 @@ export const ROUTES = [
       items: [
         {
           pkg: 'formly',
-          wrappers: ['filterwrapper'],
-          component: 'FormlyFormFieldFilterWrapperComponent'
+          type: 'components',
+          name: 'FormlyFormFieldFilterWrapperComponent',
+          wrappers: ['filterwrapper']
         }
       ]
     },

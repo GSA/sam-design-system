@@ -37,8 +37,9 @@ export const ROUTES = [
       items: [
         {
           pkg: 'formly',
-          type: "input",
-          component: 'FormlyFieldInputComponent'
+          type: 'components',
+          name: 'FormlyFieldInputComponent',
+          formType: 'input'
         }
       ]
     },

@@ -31,7 +31,8 @@ export const ROUTES = [
       items: [
         {
           pkg: 'layouts',
-          component: 'SdsSubheaderComponent'
+          type: 'components',
+          name: 'SdsSubheaderComponent'
         }
       ]
     },

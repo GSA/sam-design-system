@@ -1,25 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AccordionWrapperBasic } from './demos/basic/accordionwrapper-basic.component';
+import { CollapseBasic } from './demos/basic/collapse-basic.component';
 import { DocumentationExamplesPage } from '../shared/examples-page/examples.component';
 import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
-import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 import {
   DocumentationComponentsSharedModule,
   DocumentationDemoList
 } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
-import { AccordionWrapperBasicModule } from './demos/basic/accordionwrapper-basic.module';
+import { CollapseBasicModule } from './demos/basic/collapse-basic.module';
 
 declare var require: any;
 const DEMOS = {
-  formfield: {
-    title: 'Accordion Wrapper',
-    type: AccordionWrapperBasic,
-    code: require('!!raw-loader!./demos/basic/accordionwrapper-basic.component'),
-    markup: require('!!raw-loader!./demos/basic/accordionwrapper-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/accordionwrapper/demos/basic'
+  basic: {
+    title: 'Collapse',
+    type: CollapseBasic,
+    code: require('!!raw-loader!./demos/basic/collapse-basic.component'),
+    markup: require('!!raw-loader!./demos/basic/collapse-basic.component.html'),
+    path: 'libs/documentation/src/lib/components/collapse/demos/basic'
   }
 };
 
@@ -29,21 +28,18 @@ export const ROUTES = [
     path: '',
     component: ComponentWrapperComponent,
     data: {
-      title: "Accordion Wrapper",
       items: [
         {
-          pkg: 'formly',
-          type: 'components',
-          name: 'FormlyAccordianFormFieldComponent',
-          wrappers: ['accordionwrapper']
+          pkg: 'components',
+          type: 'directives',
+          name: 'CollapseDirective'
         }
       ]
     },
     children: [
       { path: 'examples', component: DocumentationExamplesPage },
       { path: 'api', component: DocumentationAPIPage },
-      { path: 'source', component: DocumentationSourcePage },
-      { path: 'template', component: DocumentationTemplatePage }
+      { path: 'source', component: DocumentationSourcePage }
     ]
   }
 ];
@@ -52,11 +48,11 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    AccordionWrapperBasicModule
+    CollapseBasicModule
   ]
 })
-export class AccordionWrapperModule {
+export class CollapseModule {
   constructor(demoList: DocumentationDemoList) {
-    demoList.register('accordionwrapper', DEMOS);
+    demoList.register('collapse', DEMOS);
   }
 }

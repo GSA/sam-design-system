@@ -10,12 +10,12 @@ interface apiDesc {
   jsdoctags: any;
 }
 
-export function findComponentAPI(pkg, component) {
+export function findComponentAPI(pkg, type, name) {
   let target: any;
 
-  Object.values(apis[pkg].components)
+  Object.values(apis[pkg][type])
   .filter((entity): entity is any => <any>entity)
-  .filter((entity): entity is any => entity.name.startsWith(`${component}`))
+  .filter((entity): entity is any => entity.name.startsWith(`${name}`))
   .forEach(entity => {
     target = entity;
   });
@@ -23,7 +23,7 @@ export function findComponentAPI(pkg, component) {
   return target;
 }
 
-export function getAPI(pkg, component) {
+export function getAPI(pkg, type, name) {
 
   const api:apiDesc = {
     inputs: [],
@@ -33,7 +33,7 @@ export function getAPI(pkg, component) {
     jsdoctags: [],
   };
 
-  const entity:any = findComponentAPI(pkg, component);
+  const entity:any = findComponentAPI(pkg, type, name);
 
   if(entity) {
     api.inputs = entity.inputsClass;
@@ -83,22 +83,25 @@ export class DocumentationAPIComponent implements OnInit {
   api: apiDesc;
   formlyConfig: any;
 
-  @Input() component: string;
+  @Input() pkg: string;
 
-  @Input() type: string;
+  @Input() type = 'components';
+
+  @Input() name: string;
+
+  @Input() formType: string;
 
   @Input() wrappers: string[];
 
-  @Input() pkg: string;
 
   constructor() {}
 
   ngOnInit(): void {
-    this.api = getAPI(this.pkg, this.component);
+    this.api = getAPI(this.pkg, this.type, this.name);
 
     if(this.pkg === 'formly') {
-      if(this.type) {
-        this.wrappers = getFormWrapper(this.type);
+      if(this.formType) {
+        this.wrappers = getFormWrapper(this.formType);
       }
     }
     else {
@@ -122,8 +125,7 @@ export class DocumentationAPIComponent implements OnInit {
       wrapperComponentName = entity.componentName;
     });
 
-    const component:any = findComponentAPI(this.pkg, wrapperComponentName);
-
+    const component:any = findComponentAPI(this.pkg, 'components', wrapperComponentName);
     return component;
   }
 

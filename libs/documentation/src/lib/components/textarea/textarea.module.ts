@@ -28,8 +28,9 @@ export const ROUTES = [
       items: [
         {
           pkg: 'formly',
-          type: "textarea",
-          component: 'FormlyFieldTextAreaComponent'
+          type: 'components',
+          name: 'FormlyFieldTextAreaComponent',
+          formType: 'textarea'
         }
       ]
     },

@@ -1,22 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SelectBasic } from './demos/basic/select-basic.component';
+import { PaginationBasic } from './demos/basic/pagination-basic.component';
 import { DocumentationExamplesPage } from '../shared/examples-page/examples.component';
 import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
-import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../shared/index';
+import {
+  DocumentationComponentsSharedModule,
+  DocumentationDemoList
+} from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
-import { SelectBasicModule } from './demos/basic/select-basic.module';
+import { PaginationBasicModule } from './demos/basic/pagination-basic.module';
 
 declare var require: any;
 const DEMOS = {
   basic: {
-    title: 'Basic Form Select',
-    type: SelectBasic,
-    code: require('!!raw-loader!./demos/basic/select-basic.component'),
-    markup: require('!!raw-loader!./demos/basic/select-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/select/demos/basic'
+    title: 'Pagination',
+    type: PaginationBasic,
+    code: require('!!raw-loader!./demos/basic/pagination-basic.component'),
+    markup: require('!!raw-loader!./demos/basic/pagination-basic.component.html'),
+    path: 'libs/documentation/src/lib/components/pagination/demos/basic'
   }
 };
 
@@ -24,22 +27,21 @@ export const ROUTES = [
   { path: '', pathMatch: 'full', redirectTo: 'examples' },
   {
     path: '',
+    component: ComponentWrapperComponent,
     data: {
       items: [
         {
-          pkg: 'formly',
+          pkg: 'components',
           type: 'components',
-          name: 'FormlyFieldSelectComponent',
-          formType: 'select'
+          name: 'PaginationComponent'
         }
       ]
     },
-    component: ComponentWrapperComponent,
     children: [
       { path: 'examples', component: DocumentationExamplesPage },
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
-      { path: 'template', component: DocumentationTemplatePage },
+      { path: 'template', component: DocumentationTemplatePage }
     ]
   }
 ];
@@ -48,11 +50,11 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    SelectBasicModule
+    PaginationBasicModule
   ]
 })
-export class SelectModule {
+export class PaginationModule {
   constructor(demoList: DocumentationDemoList) {
-    demoList.register('select', DEMOS);
+    demoList.register('pagination', DEMOS);
   }
 }

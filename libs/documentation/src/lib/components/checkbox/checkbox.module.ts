@@ -28,8 +28,9 @@ export const ROUTES = [
       items: [
         {
           pkg: 'formly',
-          type: "textarea",
-          component: 'FormlyFieldCheckboxComponent'
+          type: 'components',
+          name: 'FormlyFieldCheckboxComponent',
+          formType: 'checkbox',
         }
       ]
     },
