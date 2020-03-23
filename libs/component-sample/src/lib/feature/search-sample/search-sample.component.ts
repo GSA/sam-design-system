@@ -25,6 +25,7 @@ export class SearchSampleComponent implements OnInit {
   ngOnInit() {}
 
   log(value) {
+    console.log(value);
     console.log(`%cLog: ${value}`, 'color: blue; font-weight: bold');
   }
 }

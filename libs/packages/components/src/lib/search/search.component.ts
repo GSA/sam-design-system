@@ -26,7 +26,8 @@ export class SdsSearchComponent implements AfterViewInit, OnInit {
   @Input() placeholder: string;
   @Input() inputClass: string;
   @Input() parentSelector: string;
-  @Output() term = new EventEmitter<string>();
+  @Output() term = new EventEmitter<{}>();
+  formValue: object;
 
   inputState = {
     initial: { visible: undefined },
@@ -39,8 +40,6 @@ export class SdsSearchComponent implements AfterViewInit, OnInit {
   ) {}
 
   ngOnInit() {
-  console.log(this.searchConfiguration);
-
   }
 
   ngAfterViewInit() {
@@ -62,8 +61,8 @@ export class SdsSearchComponent implements AfterViewInit, OnInit {
       this.term.emit(this.inputEl.nativeElement.value);
     }
     else if (this.inputEl.nativeElement.value && this.selectEl.nativeElement.value !== 'select'){
-      const searchCriteria = this.selectEl.nativeElement.value +" " +this.inputEl.nativeElement.value;
-      this.term.emit(searchCriteria);
+      this.formValue = {selectValue: this.selectEl.nativeElement.value , inputValue :this.inputEl.nativeElement.value};
+      this.term.emit(this.formValue);
     }
   }
 
