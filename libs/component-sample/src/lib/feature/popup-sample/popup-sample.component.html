@@ -1,60 +1,166 @@
 <div class="grid-container">
+  <div class="grid-row">
+    <div class="tablet:grid-col-3">
+      <div sdsPopup="Add description here" position="top-center" placement="out" aria-label="Tooltip that hides when scrolled out of the container">
+        Tooltip for description
+    </div>
+    </div>
+  </div>
+  <br>
 <div class="grid-row">
-  <div class="tablet:grid-col">
-    <div sdsPopup="Add description here" position="top-center" placement="out" aria-label="Tooltip that hides when scrolled out of the container">
-      Tooltip for description
-  </div>
-  </div>
-  <div class="tablet:grid-col">
-    <div #tooltip>
-      <span>Tootltip content</span>
-    </div>
-
-    <div [sdsPopup]='tooltip' position="top-center" placement="out" aria-label="Tooltip that hides when scrolled out of the container">
-      <div class="tooltip tooltip-left">
-        <div>popup outside</div>
-      </div>
-    </div>
-  </div>
-  <div class="tablet:grid-col">
-    <div #tooltipbutton>
+  <div class="tablet:grid-col-3">
+    <div #tooltipoutTopLeft>
       <button class="usa-button usa-button--base">
-        out bottom center
+        Out top left
       </button>
     </div>
 
-    <div [sdsPopup]='tooltipbutton' position="bottom-center" placement="out" aria-label="Tooltip that hides when scrolled out of the container">
+    <div [sdsPopup]='tooltipoutTopLeft' position="top-left" placement="out" aria-label="Tooltip that hides when scrolled out of the container">
       <div class="tooltip tooltip-left">
-        <div>popup outside</div>
+        <div>Outside top left</div>
       </div>
     </div>
   </div>
-</div>
+  <div class="tablet:grid-col-3">
+    <button class="usa-button usa-button margin-0" #tooltipRightMiddle>
+        Out right middle
+    </button>
+    <div [sdsPopup]='tooltipRightMiddle' position="right-middle" placement="out" aria-label="Tooltip that hides when scrolled out of the container">
+      <span class="tooltip tooltip-left">
+        popup outside
+      </span>
+    </div>
+  </div>
 
+  <div class="tablet:grid-col">
+    <div #tooltipRich>
+      <span class="border-1px sds-popup padding-1 radius-md">
+        rich content
+      </span>
+    </div>
+
+    <div
+    [sdsPopup]='tooltipRich'
+    position="top-center"
+    placement="out"
+    aria-label="Tooltip that hides when scrolled out of the container"
+    >
+      <div class="sds-alert bg-base-lightest ">
+        <div class="sds-alert-icon">
+          <i class="fa fa-exclamation"></i>
+        </div>
+        <span>Review Required</span>
+        <p>Venenatis dapibus ex</p>
+      </div>
+    </div>
+  </div>
+  <div class="tablet:grid-col">
+    <div #tooltipRichcontent>
+      <span class="border-1px sds-popup padding-1 radius-md">
+        rich content
+      </span>
+    </div>
+
+    <div
+    [sdsPopup]='tooltipRichcontent'
+    position="bottom-center"
+    placement="out"
+    aria-label="Tooltip that hides when scrolled out of the container"
+    >
+    <div class="radius-md shadow-2 margin-0 width-card-lg
+    bg-primary-lighter text-left
+    padding-1 border">
+      <h4 class="margin-0">Lorem ipsum dolor</h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In neque nunc, auctor a cursus vitae,
+        venenatis dapibus ex.
+      </p>
+    </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="grid-row">
+  <div class="tablet:grid-col-3">
+    <div #tooltipoutTopRight>
+      <button class="usa-button usa-button--base">
+        Out top right
+      </button>
+    </div>
+
+    <div [sdsPopup]='tooltipoutTopRight' position="top-right" placement="out" aria-label="Tooltip that hides when scrolled out of the container">
+      <div class="tooltip tooltip-left">
+        <div>Outside top right</div>
+      </div>
+    </div>
+  </div>
+  <div class="tablet:grid-col-3">
+    <button class="usa-button usa-button margin-0" #tooltipLeftMiddle>
+        Out left middle
+    </button>
+    <div [sdsPopup]='tooltipLeftMiddle' position="left-middle" placement="out" aria-label="Tooltip that hides when scrolled out of the container">
+      <span class="tooltip tooltip-left">
+        left middle
+      </span>
+    </div>
+  </div>
+</div>
+<br>
+<div class="grid-row">
+  <div class="tablet:grid-col-3">
+    <div #tooltipBottomRight>
+      <button class="usa-button usa-button--base">
+        Out bottom right
+      </button>
+    </div>
+
+    <div [sdsPopup]='tooltipBottomRight' position="bottom-right" placement="out" aria-label="Tooltip that hides when scrolled out of the container">
+      <div class="tooltip tooltip-left">
+        <div>Outside bottom right</div>
+      </div>
+    </div>
+  </div>
+  <div class="tablet:grid-col-3">
+    <button class="usa-button usa-button margin-0" #tooltipTopCenter1>
+        Out top center side
+    </button>
+    <div [sdsPopup]='tooltipTopCenter1' position="top-center" placement="out" aria-label="Tooltip that hides when scrolled out of the container">
+      <span class="tooltip tooltip-left">
+        top center
+      </span>
+    </div>
+  </div>
+</div>
+<br>
+<div class="grid-row">
+  <div class="tablet:grid-col-3">
+    <div #tooltipBottomleft>
+      <button class="usa-button usa-button--base">
+        Out bottom right
+      </button>
+    </div>
+
+    <div [sdsPopup]='tooltipBottomleft' position="bottom-left" placement="out" aria-label="Tooltip that hides when scrolled out of the container">
+      <div class="tooltip tooltip-left">
+        <div>Outside bottom left</div>
+      </div>
+    </div>
+  </div>
+  <div class="tablet:grid-col-3">
+    <button class="usa-button usa-button margin-0" #tooltipTopCenter>
+        Out bottom center
+    </button>
+    <div [sdsPopup]='tooltipTopCenter' position="bottom-center" placement="out" aria-label="Tooltip that hides when scrolled out of the container">
+      <span class="tooltip tooltip-left">
+        bottom center
+      </span>
+    </div>
+  </div>
+</div>
 <div>
 
 <div class="grid-row">
   <div class="tablet:grid-col">
-<div #tooltipRichcontent>
-  <span class="border-1px sds-popup padding-1 radius-md">
-    rich content
-  </span>
-</div>
 
-<div
-[sdsPopup]='tooltipRichcontent'
-position="top-center"
-placement="out"
-aria-label="Tooltip that hides when scrolled out of the container"
->
-  <div class="sds-alert bg-base-lightest ">
-    <div class="sds-alert-icon">
-      <i class="fa fa-exclamation"></i>
-    </div>
-    <span>Review Required</span>
-    <p>Venenatis dapibus ex</p>
-  </div>
-</div>
 </div>
 </div>
 </div>
