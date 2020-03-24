@@ -138,92 +138,92 @@ export class FilterWrapperComponent implements OnInit {
         },
       ]
     },
-    // {
-    //   key: 'expirationDate',
-    //   wrappers: ['accordionwrapper'],
-    //   templateOptions: { label: 'Expiration Date' },
-    //   fieldGroup: [
-    //     {
-    //       key: 'expirationDateOpen',
-    //       type: 'datepicker',
-    //       templateOptions: {
-    //         label: 'Expiration Date (no validation)',
-    //       }
-    //     },
-    //     {
-    //       key: 'expirationDateMin',
-    //       type: 'datepicker',
-    //       templateOptions: {
-    //         label: 'Expiration Date (Min only Validation)',
-    //         minDate: new Date(2019, 9, 5)
-    //       }
-    //     },
-    //     {
-    //       key: 'expirationDatemax',
-    //       type: 'datepicker',
-    //       templateOptions: {
-    //         label: 'Expiration Date (Max only Validation)',
-    //         maxDate: new Date(2019, 9, 25)
-    //       }
-    //     },
-    //     {
-    //       key: 'expirationDateboth',
-    //       type: 'datepicker',
-    //       templateOptions: {
-    //         label: 'Expiration Date (Min and Max Validation)',
-    //         minDate: new Date(2019, 9, 5),
-    //         maxDate: new Date(2019, 9, 25)
-    //       }
-    //     },
-    //     {
-    //       key: 'expirationDateRangeEx',
-    //       type: 'daterangepicker',
-    //       templateOptions: {
-    //         label: 'Expiration Date Range',
-    //         minDate: new Date(2019, 9, 5),
-    //         maxDate: new Date(2019, 9, 25)
-    //       }
-    //     },
-    //     {
-    //       key: 'expirationDateOption',
-    //       type: 'radio',
-    //       templateOptions: {
-    //         label: 'Expiration Date',
-    //         options: [
-    //           { label: '30 Days', value: '30' },
-    //           { label: '60 Days', value: '60' },
-    //           { label: '90 Days', value: '90' },
+    {
+      key: 'expirationDate',
+      wrappers: ['accordionwrapper'],
+      templateOptions: { label: 'Expiration Date' },
+      fieldGroup: [
+        {
+          key: 'expirationDateOpen',
+          type: 'datepicker',
+          templateOptions: {
+            label: 'Expiration Date (no validation)',
+          }
+        },
+        {
+          key: 'expirationDateMin',
+          type: 'datepicker',
+          templateOptions: {
+            label: 'Expiration Date (Min only Validation)',
+            minDate: new Date(2019, 9, 5)
+          }
+        },
+        {
+          key: 'expirationDatemax',
+          type: 'datepicker',
+          templateOptions: {
+            label: 'Expiration Date (Max only Validation)',
+            maxDate: new Date(2019, 9, 25)
+          }
+        },
+        {
+          key: 'expirationDateboth',
+          type: 'datepicker',
+          templateOptions: {
+            label: 'Expiration Date (Min and Max Validation)',
+            minDate: new Date(2019, 9, 5),
+            maxDate: new Date(2019, 9, 25)
+          }
+        },
+        {
+          key: 'expirationDateRangeEx',
+          type: 'daterangepicker',
+          templateOptions: {
+            label: 'Expiration Date Range',
+            minDate: new Date(2019, 9, 5),
+            maxDate: new Date(2019, 9, 25)
+          }
+        },
+        {
+          key: 'expirationDateOption',
+          type: 'radio',
+          templateOptions: {
+            label: 'Expiration Date',
+            options: [
+              { label: '30 Days', value: '30' },
+              { label: '60 Days', value: '60' },
+              { label: '90 Days', value: '90' },
 
-    //         ]
-    //       },
-    //     },
-    //     {
-    //       key: 'expirationDate_entityCheckbox',
-    //       type: 'multicheckbox',
-    //       templateOptions: {
-    //         label: 'Entity Status',
-    //         options: [
-    //           {
-    //             key: 'Active',
-    //             value: 'Active'
-    //           },
-    //           {
-    //             key: 'Draft',
-    //             value: 'Draft'
-    //           },
-    //           {
-    //             key: 'Expired',
-    //             value: 'Expired'
-    //           },
-    //           {
-    //             key: 'InProgress',
-    //             value: 'In Progress'
-    //           }
-    //         ]
-    //       },
-    //     },
-    //   ]
-    // },
+            ]
+          },
+        },
+        {
+          key: 'expirationDate_entityCheckbox',
+          type: 'multicheckbox',
+          templateOptions: {
+            label: 'Entity Status',
+            options: [
+              {
+                key: 'Active',
+                value: 'Active'
+              },
+              {
+                key: 'Draft',
+                value: 'Draft'
+              },
+              {
+                key: 'Expired',
+                value: 'Expired'
+              },
+              {
+                key: 'InProgress',
+                value: 'In Progress'
+              }
+            ]
+          },
+        },
+      ]
+    },
     {
       key: 'entityType',
       wrappers: ['filterwrapper'],
