@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlySelectModule } from '@ngx-formly/core/select';
@@ -24,6 +24,7 @@ import { SdsFormlyModule } from '../formly/formly.module';
         FormlySelectModule,
         FormlyModule
     ],
-    exports: [SdsFiltersComponent]
+    exports: [SdsFiltersComponent],
+    providers: [DatePipe]
 })
 export class SdsFiltersModule { }

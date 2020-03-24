@@ -9,6 +9,7 @@ import { Subject } from 'rxjs';
 import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
 import { pairwise } from 'rxjs/operators';
 import { Router, ActivatedRoute } from '@angular/router';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'sds-filters',
   template: `
@@ -52,14 +53,16 @@ export class SdsFiltersComponent implements OnInit {
   label = [];
 
   constructor(@Optional() private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,
-    private router: Router, private route: ActivatedRoute) { }
+    private router: Router, private route: ActivatedRoute, public datepipe: DatePipe) { }
 
   ngOnInit(): void {
 
     this.route.queryParams.subscribe(params => {
+      console.log(params, 'array');
       for (const key in params) {
         if (key) {
           const arr = key.replace(']', '').split('[');
+          //console.log(arr, 'array');
           this.model[arr[0]] = { [arr[1]]: JSON.parse(params[key]) };;
         }
       }
@@ -95,9 +98,25 @@ export class SdsFiltersComponent implements OnInit {
               filters[key][subKey] = null;
             }
             if (filters[key][subKey]) {
-              // const value = `${key}[${subKey}]=${JSON.stringify(filters[key][subKey])}`;
-              // result.push(value);
-              result[key + "[" + subKey + "]"] = JSON.stringify(filters[key][subKey]);
+              const filterSubKey = filters[key][subKey];
+              if (filterSubKey.constructor.name == 'Object') {
+                for (const sKey in filterSubKey) {
+                  if (filterSubKey[sKey] instanceof Date) {
+                    if (filterSubKey[sKey])
+                      result[`${key}[${subKey}][${sKey}]`] = JSON.stringify(this.datepipe.transform(filters[key][subKey][sKey], 'MM/dd/yyyy'));
+                  } else {
+                    result[`${key}[${subKey}]`] = JSON.stringify(filters[key][subKey]);
+                  }
+                }
+              } else {
+                if (filters[key][subKey] instanceof Date) {
+                  result[`${key}[${subKey}]`] = JSON.stringify(this.datepipe.transform(filters[key][subKey], 'MM/dd/yyyy'));
+                } else {
+                  result[`${key}[${subKey}]`] = JSON.stringify(filters[key][subKey]);
+                }
+
+              }
+
             }
           }
         }
