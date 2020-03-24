@@ -13,8 +13,7 @@ module.exports = function(config) {
       dir: join(__dirname, '../../../coverage/libs/components')
     },
     files: [
-      "../../../node_modules/@angular/cdk/overlay-prebuilt.css",
-      "../../../node_modules/accessible-html5-video-player/js/px-video.d.ts"
+      "../../../node_modules/@angular/cdk/overlay-prebuilt.css"
     ]
   });
 };
