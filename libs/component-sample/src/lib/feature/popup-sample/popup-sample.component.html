@@ -135,7 +135,7 @@
   <div class="tablet:grid-col-3">
     <div #tooltipBottomleft>
       <button class="usa-button usa-button--base">
-        Out bottom right
+        Out bottom Left
       </button>
     </div>
 
@@ -165,16 +165,18 @@
 </div>
 </div>
 <div class="sds-card padding-2">
-  <p>My Content start from here.</p>
   <div class="grid-row">
   <div class="tablet:grid-col-4">
     <div #tooltipForInLeft>
-      <span class="">
-        <fa-icon [icon]="['sds', 'envelope']" [classes]="['icon-envelope']" size="2x"></fa-icon>
+      <span>
+        <fa-icon [icon]="['sds', 'bell']" [classes]="['icon-bell']" size="2x"></fa-icon>
       </span>
     </div>
       <div [sdsPopup]='tooltipForInLeft' class="width-mobile margin-y-neg-2" position="top-left" placement="in" aria-label="Tooltip that hides when scrolled out of the container">
         <div class="sds-alert--block">
+          <div class="sds-alert--block-icon grid-col-auto">
+            <fa-icon [icon]="['sds', 'envelope']" [classes]="['icon-envelope']" size="2x"></fa-icon>
+          </div>
           <div class="grid-col padding-y-2 padding-right-2">
               <label>Address Needs to be Updated</label>
               <span>600 14th St NW</span>
@@ -184,38 +186,38 @@
       </div>
       </div>
       <div class="tablet:grid-col-4">
-        <div class="">
-          <div #tooltipForCenter class="text-center">
+        <div class="text-center">
+          <div #tooltipForTopCenter class="">
             <span>
-              <fa-icon [icon]="['sds', 'new-version']" transform="grow-10"></fa-icon>
+              <fa-icon [icon]="['sds', 'book']" [classes]="['icon-book']" size="2x"></fa-icon>
             </span>
           </div>
-            <div [sdsPopup]='tooltipForCenter' position="bottom-center" placement="in" aria-label="Tooltip that hides when scrolled out of the container">
-              <div class="radius-lg shadow-2 margin-y-neg-1x05 width-card-lg bg-white padding-left-1 padding-bottom-1 border">
-                <svg class="svg-inline--fa fa-information-circle fa-w-16 fa-2x float-right margin-1" aria-hidden="true" focusable="false" data-prefix="sds" data-icon="information-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256,512C114.8,512,0,397.2,0,256S114.8,0,256,0s256,114.8,256,256S397.2,512,256,512z M256,19.8c-130.2,0-236.2,106-236.2,236.2s106,236.2,236.2,236.2s236.2-106,236.2-236.2S386.2,19.8,256,19.8z M256,185.2c-6.6,0-12-1.9-16.2-5.7s-6.4-8.8-6.4-14.9c0-6.1,2.1-11.2,6.4-15.1c4.2-3.9,9.6-5.9,16.2-5.9c6.6,0,12,2,16.2,5.9s6.4,8.9,6.4,15.1c0,6.1-2.1,11.1-6.4,14.9C268,183.3,262.6,185.2,256,185.2z M237.6,368.4V212.5h36.5v155.9H237.6z"></path></svg><!-- <i class="sds fa-information-circle fa-2x float-right margin-1"></i> --><h4> Pop inside</h4>
-                <ul>
-                  <li>Lorem ipsum sit amet</li>
-                  <li>Lorem ipsum</li>
-                </ul>
-              </div>
+            <div [sdsPopup]='tooltipForTopCenter' position="top-center" placement="in" aria-label="Tooltip that hides when scrolled out of the container">
+              <div class="radius-md shadow-2 margin-y-neg-205
+                        width-card-lg bg-base-lightest
+                        padding-x-1 padding-bottom-1 border">
+                        <fa-icon [icon]="['sds', 'book']" [classes]="['icon-book']" size="1x"></fa-icon>
+                                                <h4> Pop inside</h4>
+                                                <p>Lorem ipsum sit amet<br />Lorem ipsum</p>
+                                            </div>
             </div>
         </div>
       </div>
       <div class="tablet:grid-col-4">
         <div class="float-right">
           <div #tooltipForRight1 >
-            <span >
-              <fa-icon [icon]="['sds', 'new-version']" transform="grow-10"></fa-icon>
+            <span>
+              <fa-icon [icon]="['sds', 'calendar']" [classes]="['icon-calendar']" size="2x"></fa-icon>
             </span>
           </div>
-            <div [sdsPopup]='tooltipForRight1' position="top-right" placement="in" aria-label="Tooltip that hides when scrolled out of the container">
+            <div [sdsPopup]='tooltipForRight1' class="margin-bottom-neg-05" position="top-right" placement="in" aria-label="Tooltip that hides when scrolled out of the container">
               <div class="radius-lg shadow-2 margin-y-neg-1x05 width-card-lg bg-white padding-left-1 padding-bottom-1 border">
-                <svg class="svg-inline--fa fa-information-circle fa-w-16 fa-2x float-right margin-1" aria-hidden="true" focusable="false" data-prefix="sds" data-icon="information-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256,512C114.8,512,0,397.2,0,256S114.8,0,256,0s256,114.8,256,256S397.2,512,256,512z M256,19.8c-130.2,0-236.2,106-236.2,236.2s106,236.2,236.2,236.2s236.2-106,236.2-236.2S386.2,19.8,256,19.8z M256,185.2c-6.6,0-12-1.9-16.2-5.7s-6.4-8.8-6.4-14.9c0-6.1,2.1-11.2,6.4-15.1c4.2-3.9,9.6-5.9,16.2-5.9c6.6,0,12,2,16.2,5.9s6.4,8.9,6.4,15.1c0,6.1-2.1,11.1-6.4,14.9C268,183.3,262.6,185.2,256,185.2z M237.6,368.4V212.5h36.5v155.9H237.6z"></path></svg><!-- <i class="sds fa-information-circle fa-2x float-right margin-1"></i> --><h4> Pop inside</h4>
+                <h4> Pop inside</h4>
                 <ul>
-                  <li>Lorem ipsum sit amet</li>
-                  <li>Lorem ipsum</li>
+                    <li>Lorem ipsum sit amet</li>
+                    <li>Lorem ipsum</li>
                 </ul>
-              </div>
+            </div>
             </div>
         </div>
       </div>
@@ -226,23 +228,66 @@
       nulla. Suspendisse venenatis augue eget massa ullamcorper, et fringilla ipsum lobortis. In hac habitasse
       platea dictumst. Quisque et fringilla lacus, non consequat nulla.
     </p>
-    <div class="text-center">
-      <div class="">
-        <div #tooltipForCenter>
+    <br>
+    <div class="grid-row">
+      <div class="tablet:grid-col-4">
+        <div #tooltipForBottomLeft>
           <span>
-            <fa-icon [icon]="['sds', 'new-version']" transform="grow-10"></fa-icon>
+            <fa-icon [icon]="['sds', 'download']" [classes]="['icon-download']" size="2x"></fa-icon>
           </span>
         </div>
-          <div [sdsPopup]='tooltipForCenter' position="bottom-center" placement="in" aria-label="Tooltip that hides when scrolled out of the container">
-            <div class="radius-lg shadow-2 margin-y-neg-1x05 width-card-lg bg-white padding-left-1 padding-bottom-1 border">
-              <svg class="svg-inline--fa fa-information-circle fa-w-16 fa-2x float-right margin-1" aria-hidden="true" focusable="false" data-prefix="sds" data-icon="information-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256,512C114.8,512,0,397.2,0,256S114.8,0,256,0s256,114.8,256,256S397.2,512,256,512z M256,19.8c-130.2,0-236.2,106-236.2,236.2s106,236.2,236.2,236.2s236.2-106,236.2-236.2S386.2,19.8,256,19.8z M256,185.2c-6.6,0-12-1.9-16.2-5.7s-6.4-8.8-6.4-14.9c0-6.1,2.1-11.2,6.4-15.1c4.2-3.9,9.6-5.9,16.2-5.9c6.6,0,12,2,16.2,5.9s6.4,8.9,6.4,15.1c0,6.1-2.1,11.1-6.4,14.9C268,183.3,262.6,185.2,256,185.2z M237.6,368.4V212.5h36.5v155.9H237.6z"></path></svg><!-- <i class="sds fa-information-circle fa-2x float-right margin-1"></i> --><h4> Pop inside</h4>
-              <ul>
-                <li>Lorem ipsum sit amet</li>
-                <li>Lorem ipsum</li>
-              </ul>
+          <div [sdsPopup]='tooltipForBottomLeft' class="width-mobile margin-y-neg-2" position="bottom-left" placement="in" aria-label="Tooltip that hides when scrolled out of the container">
+            <div class="sds-alert bg-base-lightest ">
+              <div class="sds-alert-icon">
+                <fa-icon [icon]="['sds', 'download']" [classes]="['icon-download']" size="2x"></fa-icon>
+              </div>
+              <span>Review Required</span>
+          </div>
+          </div>
+          </div>
+          <div class="tablet:grid-col-4">
+            <div class="text-center">
+              <div #tooltipForBottomCenter class="">
+                <span>
+                  <fa-icon [icon]="['sds', 'envelope']" [classes]="['icon-envelope']" size="2x"></fa-icon>
+                </span>
+              </div>
+                <div [sdsPopup]='tooltipForBottomCenter' position="bottom-center" placement="in" aria-label="Tooltip that hides when scrolled out of the container">
+                  <div class="radius-md shadow-2 margin-0 width-card-lg
+                  text-left bg-accent-cool padding-1 border">
+
+                                           <p>The First item</p>
+                                           <hr class="thin" />
+                                           <p>The Second item</p>
+                                           <hr class="thin" />
+                                           <p>Another item</p>
+                                           <hr class="thin" />
+                                           <p>One More item</p>
+                                           <hr class="thin" />
+                                           <p>The Last item</p>
+
+                                       </div>
+                </div>
+            </div>
+          </div>
+          <div class="tablet:grid-col-4">
+            <div class="float-right">
+              <div #tooltipForBottomRight>
+                <span>
+                  <fa-icon [icon]="['sds', 'filter']" [classes]="['icon-filter']" size="2x"></fa-icon>
+                </span>
+              </div>
+                <div [sdsPopup]='tooltipForBottomRight' class="margin-bottom-neg-05" position="bottom-right" placement="in" aria-label="Tooltip that hides when scrolled out of the container">
+                  <div class="radius-md shadow-2 margin-0 width-card-lg
+                      bg-primary-lighter text-left
+                      padding-1 border">
+                                            <h4 class="margin-0">Lorem ipsum dolor</h4>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In neque nunc, auctor a cursus vitae, venenatis dapibus ex.
+                                            </p>
+                                        </div>
+                </div>
             </div>
           </div>
       </div>
-    </div>
   </div>
 
