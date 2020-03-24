@@ -1,7 +1,5 @@
 import { Component, Input, AfterViewInit, ViewEncapsulation } from '@angular/core';
-import GLOBAL_STRINGS from 'accessible-html5-video-player/js/strings.js'
-import * as InitPxVideo from 'accessible-html5-video-player/js/px-video.js';
-declare var InitPxVideo: any;
+import {InitPxVideo}  from 'accessible-html5-video-player/js/px-video.js';
 import { VPInterface } from './video-player';
 
 @Component({
