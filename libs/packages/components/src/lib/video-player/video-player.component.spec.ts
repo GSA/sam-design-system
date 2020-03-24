@@ -20,7 +20,7 @@ describe('VideoPlayerComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ SdsVideoPlayerComponent ],
       providers: [
-        {provide: InitPxVideo, useClass: IntiPxVideoObj}
+        {provide: InitPxVideo, useValue: new IntiPxVideoObj()}
       ]
     })
     .compileComponents();
