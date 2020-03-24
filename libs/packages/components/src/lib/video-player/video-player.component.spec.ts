@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SdsVideoPlayerComponent } from './video-player.component';
 import { By } from '@angular/platform-browser';
-import * as InitPxVideo from 'accessible-html5-video-player/js/px-video.js';
-declare var InitPxVideo: any;
+import { InitPxVideo } from 'accessible-html5-video-player/js/px-video.js';
+
 
 
 class IntiPxVideoObj {
