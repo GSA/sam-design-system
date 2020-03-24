@@ -8,7 +8,7 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 import { Subject } from 'rxjs';
 import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
 import { pairwise } from 'rxjs/operators';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, UrlSerializer, UrlTree, DefaultUrlSerializer } from '@angular/router';
 
 @Component({
   selector: 'sds-filters',
@@ -49,7 +49,7 @@ export class SdsFiltersComponent implements OnInit {
    */
   @Output() filterChange = new EventEmitter<object[]>();
 
-  private queryParams = {};
+  private queryParams = '';
 
   constructor(@Optional() private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,
     private router: Router, private route: ActivatedRoute) { }
@@ -59,13 +59,11 @@ export class SdsFiltersComponent implements OnInit {
     this.form.valueChanges
       .pipe(pairwise())
       .subscribe(([prev, next]: [any, any]) => {
-       // this.queryParams = this.getKeyValueFilters(next);
-        this.queryParams = this.convert1(next) 
-        this.router.navigate([], {
-          relativeTo: this.route,
-          queryParams: this.queryParams,
-          queryParamsHandling: 'merge',
-        });
+        // this.queryParams = this.getKeyValueFilters(next);
+
+        this.queryParams = this.convertToParam(next)
+        window.location.href = `${this.queryParams}`;
+       ;
         this.filterChange.emit(next);
         if (this.formlyUpdateComunicationService) {
           this.formlyUpdateComunicationService.updateFilter(next);
@@ -73,15 +71,7 @@ export class SdsFiltersComponent implements OnInit {
       });
   }
 
-  convert2(filters) {
-    const encodedUrl = encodeURIComponent(JSON.stringify(filters));
-    console.log(encodedUrl, 'url');
-    const decode = JSON.parse(decodeURIComponent(encodedUrl));
-    console.log(decode, 'decodedurl');
-    return encodedUrl;
-  }
-
-  convert1(filters){
+  convertToParam(filters) {
     const result = [];
     for (const key in filters) {
       if (filters.hasOwnProperty(key)) {
@@ -90,96 +80,44 @@ export class SdsFiltersComponent implements OnInit {
             if (filters[key][subKey] === "") {
               filters[key][subKey] = null;
             }
-            if(filters[key][subKey]){
+            if (filters[key][subKey]) {
               const value = `${key}[${subKey}]=${JSON.stringify(filters[key][subKey])}`;
               result.push(value);
-            // result[key + "[" + subKey + "]"] = filters[key][subKey];
+              // result[key + "[" + subKey + "]"] = filters[key][subKey];
             }
           }
         }
       }
     }
-    console.log(result.join('&'), 'test')
-    return result.join('&');
+    console.log(result.join('&'), 'url')
+    return '?'+result.join('&');
   }
 
-  convertToParam(params) {
-    const result = [];
-    if (Object.keys(params).length > 0) {
-      for (const key in params) {
-        if (params.hasOwnProperty(key)) {
-          const keyValue = params[key];
-          if (keyValue !== null) {
-            switch (keyValue.constructor.name) {
-              case 'Array':
-                if (keyValue.length > 0) {
-                  const joined_value = keyValue.join(',');
-                  result.push(`${encodeURIComponent(key)}=${encodeURIComponent(joined_value)}`);
-                }
-                break;
-              case 'Object':
-                (<any>Object).entries(keyValue).map(([k, v]: [string, any]) => {
-                  if (v) {
-                    result.push(`${k}=${JSON.stringify(v)}`);
-                  }
-                });
-                break;
-              default:
-                result.push(`${encodeURIComponent(key)}=${encodeURIComponent(keyValue)}`);
-            }
-          }
-        }
-      }
-      console.log(result.join('&'), 'results');
-      return result.join('&');
-      
-    } else {
-      return result;
-    }
+  //   var queryStringToJSON = function (url) {
+  //     if (url === '')
+  //        return '';
+  //     var pairs = (url || location.search).slice(1).split('&');
+  //     var result = {};
+  //     for (var idx in pairs) {
+  //     var pair = pairs[idx].split('=');
+  //     if (!!pair[0])
+  //         result[pair[0].toLowerCase()] = decodeURIComponent(pair[1] || '');
+  //     }
+  //    return result;
+  // }
+}
+
+
+export class CustomUrlSerializer implements UrlSerializer {
+  parse(url: any): UrlTree {
+      let dus = new DefaultUrlSerializer();
+      return dus.parse(url);
   }
 
-//   var queryStringToJSON = function (url) {
-//     if (url === '')
-//        return '';
-//     var pairs = (url || location.search).slice(1).split('&');
-//     var result = {};
-//     for (var idx in pairs) {
-//     var pair = pairs[idx].split('=');
-//     if (!!pair[0])
-//         result[pair[0].toLowerCase()] = decodeURIComponent(pair[1] || '');
-//     }
-//    return result;
-// }
-
-  getKeyValueFilters(filters) {
-    // Hard coding approach + key value pair filters
-    let parameters = {};
-    for (const key in filters) {
-      if (filters.hasOwnProperty(key)) {
-        parameters = Object.assign(parameters, ...filters[key]);
-      }
-    }
-    Object.keys(parameters).forEach(key => {
-      if (parameters[key] === "") {
-        parameters[key] = null;
-      } else if (parameters[key] instanceof Date) {
-       parameters[key] = parameters[key].toLocaleDateString();
-      }
-      else if (parameters[key] !== null && typeof (parameters[key]) === 'object') {
-        Object.keys(parameters[key]).forEach(k => {
-          if (parameters[key][k] instanceof Date) {
-            parameters[key][k] = parameters[key][k].toLocaleDateString();
-            parameters = Object.assign(parameters, ...parameters[key]);
-          } else if (Array.isArray(parameters[key][k])) {
-            const result = parameters[key][k].map(item => item.name);
-            parameters[key] = result;
-          } else if (typeof (parameters[key][k]) === 'boolean') {
-            const status = Object.keys(parameters[key]).filter(item => parameters[key][item]);
-            parameters[key] = status;
-          }
-        });
-      }
-    });
-    return parameters;
+  serialize(tree: UrlTree): any {
+      let dus = new DefaultUrlSerializer(),
+          path = dus.serialize(tree);
+      // use your regex to replace as per your requirement.
+      return path.replace(/%2/g,',');
   }
 }
