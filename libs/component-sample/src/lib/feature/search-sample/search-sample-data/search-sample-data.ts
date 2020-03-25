@@ -46,6 +46,7 @@ export let SdsSearchDataConfigurationData5 = {
   'selectInverse': true,
   'searchBig': true,
   'options' : [
+    {'id': 'default', 'option' : 'Default' },
     {'id': '1', 'option' : 'One'},
     {'id': '2', 'option' : 'Two'},
     {'id': '3', 'option' : 'Three'}
