@@ -35,9 +35,9 @@ export let SdsSearchDataConfigurationData4 = {
   'selectInverse': false,
   'searchBig' : true,
   'options' : [
-    {'id': '1', 'option' : 'One'},
-    {'id': '2', 'option' : 'Two'},
-    {'id': '3', 'option' : 'Three'}
+    {'id': '1', 'option' : 'Item A'},
+    {'id': '2', 'option' : 'Item B'},
+    {'id': '3', 'option' : 'Item C'}
   ]
 }
 
