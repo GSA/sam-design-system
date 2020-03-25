@@ -89,7 +89,7 @@ export class SdsFiltersComponent implements OnInit {
   }
 
   convertToParam(filters) {
-    const result = [];
+    const result = {};
     for (const key in filters) {
       if (filters.hasOwnProperty(key)) {
         for (const subKey in filters[key]) {
