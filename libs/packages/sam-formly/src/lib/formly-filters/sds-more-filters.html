@@ -1,0 +1,42 @@
+<div sds-dialog-title>Advanced Filters</div>
+
+<div sds-dialog-content>
+  <div  *ngFor="let field of data.fieldsToRender;">
+    <div *ngIf="field.fieldGroup && field.fieldGroup.length >1; else showSingleLevel">
+      <ul class="usa-list--unstyled">
+        <li>
+            <div class="usa-checkbox">
+                <input class="usa-checkbox__input" id="chk{{field.key}}" type="checkbox" name="chk{{field.key}}"  value="tru"   [(ngModel)]="!field.hide" (ngModelChange)="field.hide = !$event">
+                <label class="usa-checkbox__label" for="chk{{field.key}}">{{field.templateOptions.label}}</label>
+            </div>
+        </li>
+        <ul class="margin-left-4 usa-list--unstyled">
+      <div  *ngFor="let childField of field.fieldGroup;">
+        <li>
+          <div class="usa-checkbox">
+            <input class="usa-checkbox__input" type="checkbox" name="chk{{childField.key}}" value="truth" id="chk{{childField.key}}"   [(ngModel)]="!childField.hide" (ngModelChange)="childField.hide = !$event">
+            <label class="usa-checkbox__label" for="chk{{childField.key}}">{{childField.templateOptions.label}}</label>
+          </div>
+      </li>
+      </div>
+    </ul>
+  </ul>
+    </div>
+   <ng-template #showSingleLevel>
+    <div class="usa-checkbox">
+      <input class="usa-checkbox__input" type="checkbox" name="chk{{field.key}}" value="truth" id="chk{{field.key}}"   [(ngModel)]="!field.hide" (ngModelChange)="field.hide = !$event">
+      <label class="usa-checkbox__label" for="chk{{field.key}}">{{field.templateOptions.label}}</label>
+    </div>
+  </ng-template> 
+</div>
+ 
+  
+</div>
+<div sds-dialog-actions>
+  <button class="usa-button usa-button--base" (click)="onNoClick()">
+    Cancel
+  </button>
+  <button class="usa-button" [sds-dialog-close]="data">
+    Apply
+  </button>
+</div>

@@ -9,11 +9,15 @@ import {
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SdsFiltersComponent } from './sds-filters.component';
 import { SdsFormlyModule } from '../formly/formly.module';
-
+import { SdsDialogModule } from '@gsa-sam/components';
+import { SDS_DIALOG_SCROLL_STRATEGY_PROVIDER, SdsDialogService  } from '@gsa-sam/components';
+import{ DialogAdvancedFilterDialog } from './sds-filters.component';
 @NgModule({
     declarations: [
         SdsFiltersComponent,
+        DialogAdvancedFilterDialog
     ],
+    providers: [SdsDialogService, SDS_DIALOG_SCROLL_STRATEGY_PROVIDER],
     imports: [
         CommonModule,
         FormsModule,
@@ -22,8 +26,10 @@ import { SdsFormlyModule } from '../formly/formly.module';
         FontAwesomeModule,
         ReactiveFormsModule,
         FormlySelectModule,
-        FormlyModule
+        FormlyModule,
+        SdsDialogModule
     ],
-    exports: [SdsFiltersComponent]
+    exports: [SdsFiltersComponent],
+    entryComponents: [DialogAdvancedFilterDialog]
 })
 export class SdsFiltersModule { }

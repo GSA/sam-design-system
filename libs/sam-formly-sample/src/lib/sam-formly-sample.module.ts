@@ -14,12 +14,15 @@ import { FilterWrapperSampleModule } from './feature/filter-wrapper/filter-wrapp
 import { FormlyFormsComponent } from './feature/formly-forms/formly-forms.component';
 import { FormlyFormsModule } from './feature/formly-forms/formly-forms.module';
 import { FormlyConditionalComponent } from './feature/formly-conditional/formly-conditional.component';
+import { FormlyDialogComponent } from './feature/formly-dialog/formly-dialog.component';
+import {FormlyDialogModule} from './feature/formly-dialog/formly-dialog.module'
 
 export const ROUTES: Routes = [
   { path: 'formlyInput', component: FormlyInputComponent },
   { path: 'formlyFilters', component: FilterWrapperComponent},
   { path: 'formlyForms', component: FormlyFormsComponent },
-  { path: 'formlyConditional', component:FormlyConditionalComponent },
+  { path: 'formlyConditional', component: FormlyConditionalComponent },
+  { path: 'formlyDialog', component: FormlyDialogComponent},
 ];
 
 @NgModule({
@@ -33,6 +36,7 @@ export const ROUTES: Routes = [
     FormlySampleModule,
     FormlyFormsModule,
     FilterWrapperSampleModule,
+    FormlyDialogModule,
   ],
   exports: [RouterModule],
   declarations: [FormlyConditionalComponent]

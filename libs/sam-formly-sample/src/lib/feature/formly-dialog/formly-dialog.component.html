@@ -1,0 +1,16 @@
+<div class="grid-container">
+    <div class="grid-row grip-gap">
+      <div class="tablet:grid-col-4 grid-col-12" >
+            <div class="sam-example-pagination">
+                <h1>Dialog Filters</h1>
+                <div>
+                    <sds-accordion-item expanded="true">
+                        <sds-accordion-item-header> Filters </sds-accordion-item-header>
+                        <sds-filters [form]="form" [fields]="fields" [model]="model" (filterChange)="filterChange$.next($event)" showMoreFilters=true showResetAll=true></sds-filters>
+                    </sds-accordion-item>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  
