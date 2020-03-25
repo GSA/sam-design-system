@@ -14,7 +14,6 @@
       [ngClass]="{'usa-select--inverse': searchConfiguration.selectInverse  == true}"
       #selectEl
       >
-        <option value="select">--Select--</option>
         <option *ngFor="let option of searchConfiguration.options" value="{{option.option}}">{{option.option}}</option>
       </select>
   </div>
