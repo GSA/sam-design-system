@@ -1,11 +1,11 @@
-import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef, Input } from '@angular/core';
+import { Component, ChangeDetectorRef, Input } from '@angular/core';
 
 @Component({
-  selector: 'search-result-list-sample-data',
-  templateUrl: 'search-result-list-sample-data.component.html'
+  selector: 'search-result-list-sample-card-data',
+  templateUrl: './search-result-list-sample-card-data.component.html'
 })
+export class SearchResultListSampleCardDataComponent  {
 
-export class SearchResultListSampleDataComponent{
 
   constructor(private change: ChangeDetectorRef) { }
 
