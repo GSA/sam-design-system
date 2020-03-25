@@ -6,8 +6,8 @@ export let SdsSearchDataConfigurationData1 = {
   'searchConfiguration': 'dropdown',
   'selectInverse': false,
   'searchBig' : false,
+  'default': 'select',
   'options' : [
-    {'id': 'default', 'option' : 'Default' },
     {'id': '1', 'option' : 'One'},
     {'id': '2', 'option' : 'Two'},
     {'id': '3', 'option' : 'Three'}
@@ -45,8 +45,8 @@ export let SdsSearchDataConfigurationData5 = {
   'searchConfiguration': 'dropdown',
   'selectInverse': true,
   'searchBig': true,
+  'default': 'default',
   'options' : [
-    {'id': 'default', 'option' : 'Select' },
     {'id': '1', 'option' : 'One'},
     {'id': '2', 'option' : 'Two'},
     {'id': '3', 'option' : 'Three'}

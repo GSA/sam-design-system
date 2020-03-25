@@ -14,7 +14,9 @@
       [ngClass]="{'usa-select--inverse': searchConfiguration.selectInverse  == true}"
       #selectEl
       >
-        <option *ngFor="let option of searchConfiguration.options" value="{{option.option}}">{{option.option}}</option>
+        <option value="default" *ngIf="searchConfiguration.default">{{searchConfiguration.default}}</option>
+        <option *ngFor="let option of searchConfiguration.options; let i = index;"
+        id="{{option.id}}" value="{{option.option}}">{{option.option}}</option>
       </select>
   </div>
   <div class="sds-search" *ngIf="searchConfiguration.searchConfiguration == 'input'">

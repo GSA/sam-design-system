@@ -60,7 +60,7 @@ export class SdsSearchComponent implements AfterViewInit, OnInit {
     else if (this.inputEl.nativeElement.value && this.searchConfiguration.searchConfiguration == 'none') {
       this.term.emit(this.inputEl.nativeElement.value);
     }
-    else if (this.inputEl.nativeElement.value && this.selectEl.nativeElement.id !== 'default'){
+    else if (this.inputEl.nativeElement.value &&  this.selectEl.nativeElement.value !== 'default'){
       this.formValue = {selectValue: this.selectEl.nativeElement.value , inputValue :this.inputEl.nativeElement.value};
       this.term.emit(this.formValue);
     }
