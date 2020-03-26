@@ -91,7 +91,7 @@ export class SdsFiltersComponent implements OnInit {
   convertToParam(filters) {
     const encodedValues = qs.stringify(
      filters,
-      { encodeValuesOnly: true }
+      { skipNulls: true }
   );
   
  console.log(encodedValues, 'url');
