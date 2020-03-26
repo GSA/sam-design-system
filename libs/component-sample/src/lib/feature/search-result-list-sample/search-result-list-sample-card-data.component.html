@@ -1,21 +1,20 @@
- <div class="sds-result-item">
-  <!-- Item Heading -->
+<div class="sds-card sds-card--vertical">
+
+  <div class="sds-card__title--vertical">
+    <fa-icon [icon]="[model.iconlib,model.icon]" [classes]="'icon-'+model.icon" size="2x"></fa-icon>
+  </div>
+
+  <div class="sds-card__body sds-result-item">
 
     <div class="grid-row grid-gap">
       <div class="grid-col">
         <h3 class="font-sans-xs margin-y-0">
           <!-- title -->
           <a class="usa-link" href="#">
-            {{model.text}} Entity: {{model.id}}
+             {{model.text}} Entity: {{model.id}}
           </a>
         </h3>
       </div>
-      <!-- <div class="grid-col">
-        <div class="action-menu float-right">
-          <fa-icon [fixedWidth]="true" [icon]="['sds', 'information-circle']" size="2x"></fa-icon>
-        </div>
-      </div> -->
-
       <div class="grid-col">
         <div class="action-menu float-right">
           <!-- action menu -->
@@ -271,3 +270,4 @@
     </div>
     <ng-content></ng-content>
   </div>
+</div>

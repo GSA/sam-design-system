@@ -17,5 +17,6 @@ export class SearchResultListSampleComponent {
     { text: 'Fifth', id: 5 , hasNewerData:true},
 
   ];
+
   emptyItems = [];
 }

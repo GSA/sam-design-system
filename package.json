@@ -1,6 +1,6 @@
 {
   "name": "sam-design-system",
-  "version": "0.6.8",
+  "version": "0.6.10",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -50,7 +50,7 @@
     "@fortawesome/angular-fontawesome": "^0.3.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.22",
     "@fortawesome/free-solid-svg-icons": "^5.10.2",
-    "@gsa-sam/sam-styles": "^0.0.54",
+    "@gsa-sam/sam-styles": "^0.0.57",
     "@ngrx/effects": "6.1.2",
     "@ngrx/router-store": "6.1.2",
     "@ngrx/store": "6.1.2",

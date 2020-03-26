@@ -3,7 +3,7 @@
     <ng-container *ngTemplateOutlet="resultContentTemplate,
                    context: { $implicit: item }"></ng-container>
 </div>
-<hr *ngIf="divider" class="thin" />
+<hr *ngIf="divider && model?.length" class="thin" />
 <div *ngIf="!model|| model.length===0">
     <div class="grid-row border-1px border-base-lighter bg-base-lightest">
       <div class="grid-col-auto text-center text-base margin-4">

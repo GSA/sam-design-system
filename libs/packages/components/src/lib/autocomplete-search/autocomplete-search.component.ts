@@ -30,10 +30,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    */
   @ViewChild('input') input: ElementRef;
 
-  /**
-   * Screen read field
-   */
-  @ViewChild('srOnly') srOnly: ElementRef;
 
   /**
    * Allow to insert a customized template for suggestions to use
@@ -92,12 +88,19 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    */
   private HighlightedPropertyName = 'highlighted';
 
-  public showLoad: boolean = false;
+  public showLoad: boolean = true;
 
   /**
    * Search string
    */
   private searchString: string = null;
+
+  /**
+   * Message announced by screen readers when
+   * autocomplete results are updated or new item
+   * is highlighted
+   */
+  public srOnlyText: string;
 
   /**
    * Stored Event for ControlValueAccessor
@@ -179,7 +182,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
             this.propogateChange(this.model);
           } else {
             this.inputValue = this.getObjectValue(this.model.items[0], this.configuration.primaryTextField);
-
           }
         }
       } else {
@@ -223,13 +225,23 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       this.onArrowDown();
     }
     else if (KeyHelper.is(KEYS.UP, event)) {
+      event.preventDefault();
       this.onArrowUp();
     }
-    else if (KeyHelper.is(KEYS.ENTER, event)) {
+    else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex >= 0) {
       this.selectItem(this.highlightedItem);
     }
+    else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex < 0) {
+      const item = this.createFreeTextItem();
+      this.selectItem(item);
+    }
     else if (KeyHelper.is(KEYS.ESC, event)) {
-      this.clearAndHideResults();
+      if (this.showResults) {
+        this.clearAndHideResults();
+        if (event.stopPropagation) {
+          event.stopPropagation();
+        }
+      }
     }
   }
 
@@ -242,11 +254,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     this.propogateChange(this.model);
     let message = this.getObjectValue(item, this.configuration.primaryTextField);
     this.inputValue = message;
-    if (this.configuration.secondaryTextField && item[this.configuration.secondaryTextField]) {
-      message += ': ' + item[this.configuration.secondaryTextField];
-    }
-    message += ' selected';
-    this.addScreenReaderMessage(message);
     this.focusRemoved();
     this.showResults = false;
   }
@@ -265,10 +272,10 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    */
   private onArrowUp(): void {
     if (this.results && this.results.length > 0) {
-      if (this.highlightedIndex !== 0) {
+      if (this.highlightedIndex >= 0) {
         this.highlightedIndex--;
         this.setHighlightedItem(this.results[this.highlightedIndex]);
-        this.scrollSelectedItemToTop();
+        this.scrollSelectedItemIntoView();
       }
     }
   }
@@ -281,7 +288,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       if (this.highlightedIndex < this.results.length - 1) {
         this.highlightedIndex++;
         this.setHighlightedItem(this.results[this.highlightedIndex]);
-        this.scrollSelectedItemToTop();
+        this.scrollSelectedItemIntoView();
       }
     }
   }
@@ -340,12 +347,12 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
             (result) => {
               this.results = result.items;
               this.showLoad = false;
-              if (this.showFreeText()) {
-                this.results.unshift(this.createFreeTextItem());
-              }
               this.maxResults = result.totalItems;
-              this.highlightedIndex = 0;
-              this.setHighlightedItem(this.results[this.highlightedIndex]);
+
+              this.highlightedIndex = this.configuration.isFreeTextEnabled ? -1 : 0;
+              if (!this.configuration.isFreeTextEnabled) {
+                this.setHighlightedItem(this.results[this.highlightedIndex]);
+              }
               this.showResults = true;
               this.addScreenReaderMessage(this.maxResults + ' ' + this.resultsAvailableMessage);
               this._changeDetectorRef.markForCheck();
@@ -413,9 +420,11 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   /**
    * When paging up and down with arrow key it sets the highlighted item into view
    */
-  private scrollSelectedItemToTop() {
-    let selectedChild = this.resultsListElement.nativeElement.children[this.highlightedIndex];
-    this.resultsListElement.nativeElement.scrollTop = selectedChild.offsetTop;
+  private scrollSelectedItemIntoView() {
+    if (this.highlightedIndex >= 0) {
+      const selectedChild = this.resultsListElement.nativeElement.children[this.highlightedIndex];
+      selectedChild.scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'start'});
+    }
   }
 
   /**
@@ -427,12 +436,17 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       if (this.highlightedItem) {
         this.highlightedItem[this.HighlightedPropertyName] = false;
       }
-      this.highlightedItem = item;
-      this.highlightedItem[this.HighlightedPropertyName] = true;
-      let message = item[this.configuration.primaryTextField];
-      if (this.configuration.secondaryTextField && item[this.configuration.secondaryTextField]) {
-        message += ': ' + item[this.configuration.secondaryTextField]
-
+      let message = '';
+      if (item) {
+        this.highlightedItem = item;
+        this.highlightedItem[this.HighlightedPropertyName] = true;
+        message = item[this.configuration.primaryTextField];
+        if (this.configuration.secondaryTextField && item[this.configuration.secondaryTextField]) {
+          message += ': ' + item[this.configuration.secondaryTextField];
+        }
+      } else {
+        this.highlightedItem = undefined;
+        message = 'No item selected';
       }
       this.addScreenReaderMessage(message);
     }
@@ -443,17 +457,13 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * @param message 
    */
   private addScreenReaderMessage(message: string) {
-    const srResults: HTMLElement = document.createElement('li');
-    srResults.innerText = message;
-    if (this.srOnly && this.srOnly.nativeElement) {
-      this.srOnly.nativeElement.appendChild(srResults);
-    }
+    this.srOnlyText = message;
   }
 
 
   writeValue(obj: any): void {
     if (obj instanceof SDSSelectedItemModel) {
-      this.model = obj as SDSSelectedItemModel;      
+      this.model = obj as SDSSelectedItemModel;
       if (this.model.items.length === 0) {
         this.inputValue = '';
       } else {
