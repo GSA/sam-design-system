@@ -10,6 +10,7 @@ import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comuni
 import { pairwise } from 'rxjs/operators';
 import { Router, ActivatedRoute } from '@angular/router';
 import * as qs from 'qs';
+import { Location } from '@angular/common';
 @Component({
   selector: 'sds-filters',
   template: `
@@ -53,18 +54,18 @@ export class SdsFiltersComponent implements OnInit {
   label = [];
 
   constructor(@Optional() private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,
-    private router: Router, private route: ActivatedRoute) { }
+    private router: Router, private route: ActivatedRoute, private location: Location) { }
 
   ngOnInit(): void {
 
     // this.route.queryParams.subscribe(params => {
     //   console.log(params);
     //   for (const key in params) {
-    //     // if (key) {
+    //     if (key) {
     //     const arr = key.replace(']', '').split('[');
     //     //console.log(arr, 'array');
     //     this.model[arr[0]] = { [arr[1]]: JSON.parse(params[key]) };
-    //     // } 
+    //     } 
     //   }
     //   setTimeout(() => {
     //     this.form.patchValue({
@@ -75,13 +76,11 @@ export class SdsFiltersComponent implements OnInit {
     this.form.valueChanges
       .pipe(pairwise())
       .subscribe(([prev, next]: [any, any]) => {
-        console.log(this.form.value);
-        this.queryParams = this.convertToParam(next);
-        this.router.navigate([], {
-          relativeTo: this.route,
-          queryParams: this.queryParams,
-          queryParamsHandling: 'merge',
-        });
+        const params = this.convertToParam(next);
+        if(params) {
+        this.location.replaceState(`${this.router.url}?${params}`);
+        }
+        // this.router.navigateByUrl(`${this.router.url}${params}`)
         this.filterChange.emit(next);
         if (this.formlyUpdateComunicationService) {
           this.formlyUpdateComunicationService.updateFilter(next);
@@ -90,55 +89,10 @@ export class SdsFiltersComponent implements OnInit {
   }
   convertToParam(filters) {
     const encodedValues = qs.stringify(
-     filters,
+      filters,
       { skipNulls: true }
-  );
-  
- console.log(encodedValues, 'url');
- return encodedValues;
- }
-  // convertToParam1(filters) {
-  //   const result = {};
-  //   let isDateRange = false;
-  //   // tslint:disable-next-line:forin
-  //   for (const key in filters) {
-      
-  //     // tslint:disable-next-line:forin
-  //     for (const subKey in filters[key]) {
-  //       // if (filters[key].hasOwnProperty(subKey)) {
-  //       if (filters[key][subKey] === "") {
-  //         console.log('i am called');
-  //         filters[key][subKey] = null;
-  //       }
-  //       if (filters[key][subKey]) {
-  //         const filterSubKey = filters[key][subKey];
-  //         if (filterSubKey.constructor.name == 'Object') {
-  //           for (const sKey in filterSubKey) {
-  //             if (filterSubKey[sKey] instanceof Date || sKey.includes('Date')) {
-  //               isDateRange = true;
-  //               if (filterSubKey[sKey])
-  //                 result[`${key}[${subKey}][${sKey}]`] = JSON.stringify(this.datepipe.transform(filters[key][subKey][sKey], 'MM/dd/yyyy'));
-  //             } else {
-  //               result[`${key}[${subKey}]`] = JSON.stringify(filters[key][subKey]);
-  //             }
-  //           }
-  //           if (isDateRange) {
-  //             delete result[`${key}[${subKey}]`];
-  //           }
-  //         } else {
-  //           if (filters[key][subKey] instanceof Date) {
-  //             result[`${key}[${subKey}]`] = JSON.stringify(this.datepipe.transform(filters[key][subKey], 'MM/dd/yyyy'));
-  //           } else {
-  //             result[`${key}[${subKey}]`] = JSON.stringify(filters[key][subKey]);
-  //           }
-
-  //         }
-
-  //       }
-  //       // }
-  //     }
-  //     // }
-  //   }
-  //   return result;
-  // }
+    );
+    console.log(encodedValues, 'url');
+    return encodedValues;
+  }
 }
