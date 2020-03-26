@@ -843,7 +843,7 @@
         },
         {
             "name": "FormlyFormFieldFilterWrapperComponent",
-            "id": "component-FormlyFormFieldFilterWrapperComponent-07c2063a68cbb056f4fdd475a930804c",
+            "id": "component-FormlyFormFieldFilterWrapperComponent-83cc31d720c4117548df29ef24d914ba",
             "file": "libs/packages/sam-formly/src/lib/formly/wrappers/form-field.filterwrapper.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -853,7 +853,7 @@
             "selector": "sam-formly-filter-wrapper-form-field",
             "styleUrls": [],
             "styles": [],
-            "template": "\n<div  class=\"wrapper-body\">\n  <div class=\"sds-accordion__trigger header-label\" [attr.aria-hidden]=\"to.ariaHidden ? 'false' : 'true'\"> {{to.label}} </div>\n  <ng-container #fieldComponent></ng-container>\n</div>\n",
+            "template": "<div  class=\"wrapper-body\">\n  <div class=\"sds-accordion__trigger header-label\" [attr.aria-hidden]=\"to.ariaHidden ? 'false' : 'true'\"> {{to.label}} </div>\n  <ng-container #fieldComponent></ng-container>\n</div>\n",
             "templateUrl": [],
             "viewProviders": [],
             "inputsClass": [],
@@ -864,7 +864,7 @@
                     "type": "ViewContainerRef",
                     "optional": false,
                     "description": "",
-                    "line": 20,
+                    "line": 19,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -879,7 +879,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild, ViewContainerRef, OnInit } from '@angular/core';\r\nimport { FieldWrapper } from '@ngx-formly/core';\r\n\r\n/**\r\n * @param [to.ariaHidden] Hides accordion label\r\n */\r\n\r\n@Component({\r\n  selector: 'sam-formly-filter-wrapper-form-field',\r\n  template: `\r\n\r\n    <div  class=\"wrapper-body\">\r\n      <div class=\"sds-accordion__trigger header-label\" [attr.aria-hidden]=\"to.ariaHidden ? 'false' : 'true'\"> {{to.label}} </div>\r\n      <ng-container #fieldComponent></ng-container>\r\n    </div>\r\n  `,\r\n})\r\nexport class FormlyFormFieldFilterWrapperComponent extends FieldWrapper {\r\n  @ViewChild('fieldComponent', {read: ViewContainerRef}) fieldComponent: ViewContainerRef;\r\n}\r\n",
+            "sourceCode": "import { Component, ViewChild, ViewContainerRef, OnInit } from '@angular/core';\r\nimport { FieldWrapper } from '@ngx-formly/core';\r\n\r\n/**\r\n * @param [to.ariaHidden] Hides accordion label\r\n */\r\n\r\n@Component({\r\n  selector: 'sam-formly-filter-wrapper-form-field',\r\n  template: `\r\n    <div  class=\"wrapper-body\">\r\n      <div class=\"sds-accordion__trigger header-label\" [attr.aria-hidden]=\"to.ariaHidden ? 'false' : 'true'\"> {{to.label}} </div>\r\n      <ng-container #fieldComponent></ng-container>\r\n    </div>\r\n  `,\r\n})\r\nexport class FormlyFormFieldFilterWrapperComponent extends FieldWrapper {\r\n  @ViewChild('fieldComponent', {read: ViewContainerRef}) fieldComponent: ViewContainerRef;\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",

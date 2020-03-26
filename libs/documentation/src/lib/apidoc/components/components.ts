@@ -400,6 +400,88 @@ const COMPONENTS = {
             "indexSignatures": [],
             "kind": 150,
             "methods": []
+        },
+        {
+            "name": "VPInterface",
+            "id": "interface-VPInterface-1b055b2b41d7a86b1733dca0aa591614",
+            "file": "libs/packages/components/src/lib/video-player/video-player.ts",
+            "type": "interface",
+            "sourceCode": "export interface VPInterface{\r\n  sourceWebm: string;\r\n  sourceMp4: string;\r\n  height: string;\r\n  width: string;\r\n \tcaption: string;\r\n  poster: string;\r\n  id: string;\r\n \tseekInterval: number;\r\n \tdebug: boolean;\r\n  preload: string;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "caption",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 6
+                },
+                {
+                    "name": "debug",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                },
+                {
+                    "name": "height",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "id",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "poster",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 7
+                },
+                {
+                    "name": "preload",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                },
+                {
+                    "name": "seekInterval",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "sourceMp4",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "sourceWebm",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "width",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
         }
     ],
     "injectables": [
@@ -4992,6 +5074,89 @@ const COMPONENTS = {
             }
         },
         {
+            "name": "SdsPopupDirective",
+            "id": "directive-SdsPopupDirective-8fddb6001086097a3983772becea7e73",
+            "file": "libs/packages/components/src/lib/popup/popup.directive.ts",
+            "type": "directive",
+            "description": "",
+            "sourceCode": "import { Directive, Input, ElementRef, Renderer2, AfterViewInit, OnInit } from '@angular/core';\r\n\r\n\r\n@Directive({\r\n  selector: '[sdsPopup]',\r\n  exportAs: 'sdsPopup'\r\n})\r\nexport class SdsPopupDirective implements AfterViewInit {\r\n  @Input() sdsPopup: HTMLElement;\r\n  @Input() position: string;\r\n  @Input() placement: string;\r\n  sdsPopupDiv: HTMLElement;\r\n\r\n  constructor(private el: ElementRef, private renderer: Renderer2) {\r\n    this.renderer.addClass(this.el.nativeElement, 'sds-popup');\r\n    this.sdsPopupDiv = document.createElement('div');\r\n    this.renderer.addClass(this.sdsPopupDiv, 'sds-popup__content');\r\n  }\r\n\r\n\r\n  ngAfterViewInit() {\r\n    this.renderer.appendChild(this.el.nativeElement, this.sdsPopup);\r\n    this.renderer.addClass(this.sdsPopupDiv, this.placement);\r\n    this.renderer.addClass(this.sdsPopupDiv, this.position);\r\n    this.renderer.appendChild(this.sdsPopupDiv, this.el.nativeElement.children[0]);\r\n    this.renderer.appendChild(this.el.nativeElement, this.sdsPopupDiv);\r\n  }\r\n}\r\n",
+            "selector": "[sdsPopup]",
+            "providers": [],
+            "inputsClass": [
+                {
+                    "name": "placement",
+                    "line": 11,
+                    "type": "string"
+                },
+                {
+                    "name": "position",
+                    "line": 10,
+                    "type": "string"
+                },
+                {
+                    "name": "sdsPopup",
+                    "line": 9,
+                    "type": "HTMLElement"
+                }
+            ],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [
+                {
+                    "name": "sdsPopupDiv",
+                    "type": "HTMLElement",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 21
+                }
+            ],
+            "implements": [
+                "AfterViewInit"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "el",
+                        "type": "ElementRef"
+                    },
+                    {
+                        "name": "renderer",
+                        "type": "Renderer2"
+                    }
+                ],
+                "line": 12,
+                "jsdoctags": [
+                    {
+                        "name": "el",
+                        "type": "ElementRef",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "renderer",
+                        "type": "Renderer2",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
+        },
+        {
             "name": "SDSTabOutsideDirective",
             "id": "directive-SDSTabOutsideDirective-c7a3bf23d725d659c87c8ce6f48ad44e",
             "file": "libs/packages/components/src/lib/tab-outside/taboutside.directive.ts",
@@ -6495,7 +6660,7 @@ const COMPONENTS = {
         },
         {
             "name": "SDSAutocompleteSearchComponent",
-            "id": "component-SDSAutocompleteSearchComponent-1d368b57f2c07f0068d653efd1ec65a7",
+            "id": "component-SDSAutocompleteSearchComponent-93eb4dcd5297b4bfe5384e4f582e7021",
             "file": "libs/packages/components/src/lib/autocomplete-search/autocomplete-search.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -6519,24 +6684,24 @@ const COMPONENTS = {
                 {
                     "name": "configuration",
                     "description": "<p>Configuration for the Autocomplete control </p>\n",
-                    "line": 52,
+                    "line": 48,
                     "type": "SDSAutocompleteSearchConfiguration"
                 },
                 {
                     "name": "disabled",
-                    "line": 113,
+                    "line": 116,
                     "type": "boolean"
                 },
                 {
                     "name": "itemTemplate",
                     "description": "<p>Allow to insert a customized template for suggestions to use</p>\n",
-                    "line": 41,
+                    "line": 37,
                     "type": "TemplateRef<any>"
                 },
                 {
                     "name": "service",
                     "description": "<p>Instance of the SamHiercarchicalServiceInterface provided</p>\n",
-                    "line": 58,
+                    "line": 54,
                     "type": "SDSAutocompleteServiceInterface"
                 }
             ],
@@ -6548,7 +6713,7 @@ const COMPONENTS = {
                     "type": "number",
                     "optional": false,
                     "description": "<p>selected index</p>\n",
-                    "line": 78,
+                    "line": 74,
                     "modifierKind": [
                         114
                     ]
@@ -6558,7 +6723,7 @@ const COMPONENTS = {
                     "type": "object",
                     "optional": false,
                     "description": "<p>highlighted object in drop down</p>\n",
-                    "line": 83,
+                    "line": 79,
                     "modifierKind": [
                         112
                     ]
@@ -6569,7 +6734,7 @@ const COMPONENTS = {
                     "type": "string",
                     "optional": false,
                     "description": "<p>Proprty being set on the object is highlighted</p>\n",
-                    "line": 93,
+                    "line": 89,
                     "modifierKind": [
                         112
                     ]
@@ -6593,7 +6758,7 @@ const COMPONENTS = {
                     "type": "string",
                     "optional": false,
                     "description": "<p>value of the input field </p>\n",
-                    "line": 88,
+                    "line": 84,
                     "modifierKind": [
                         114
                     ]
@@ -6603,7 +6768,7 @@ const COMPONENTS = {
                     "type": "number",
                     "optional": false,
                     "description": "<p>max number of results to be shown</p>\n",
-                    "line": 73,
+                    "line": 69,
                     "modifierKind": [
                         112
                     ]
@@ -6613,7 +6778,7 @@ const COMPONENTS = {
                     "type": "SDSSelectedItemModel",
                     "optional": false,
                     "description": "<p>The data model that has the selected item</p>\n",
-                    "line": 46,
+                    "line": 42,
                     "modifierKind": [
                         114
                     ]
@@ -6624,7 +6789,7 @@ const COMPONENTS = {
                     "type": "function",
                     "optional": false,
                     "description": "<p>Stored Event for ControlValueAccessor</p>\n",
-                    "line": 105,
+                    "line": 108,
                     "modifierKind": [
                         114
                     ]
@@ -6635,7 +6800,7 @@ const COMPONENTS = {
                     "type": "function",
                     "optional": false,
                     "description": "<p>Stored Event for ControlValueAccessor</p>\n",
-                    "line": 110,
+                    "line": 113,
                     "modifierKind": [
                         114
                     ]
@@ -6645,7 +6810,7 @@ const COMPONENTS = {
                     "type": "object[]",
                     "optional": false,
                     "description": "<p>result set to be rendered</p>\n",
-                    "line": 68
+                    "line": 64
                 },
                 {
                     "name": "resultsAvailableMessage",
@@ -6653,7 +6818,7 @@ const COMPONENTS = {
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 115,
+                    "line": 118,
                     "modifierKind": [
                         112
                     ]
@@ -6677,18 +6842,18 @@ const COMPONENTS = {
                     "type": "string",
                     "optional": false,
                     "description": "<p>Search string</p>\n",
-                    "line": 100,
+                    "line": 96,
                     "modifierKind": [
                         112
                     ]
                 },
                 {
                     "name": "showLoad",
-                    "defaultValue": "false",
+                    "defaultValue": "true",
                     "type": "boolean",
                     "optional": false,
                     "description": "",
-                    "line": 95,
+                    "line": 91,
                     "modifierKind": [
                         114
                     ]
@@ -6699,22 +6864,19 @@ const COMPONENTS = {
                     "type": "",
                     "optional": false,
                     "description": "<p>Determines if the dropdown should be shown</p>\n",
-                    "line": 150,
+                    "line": 153,
                     "modifierKind": [
                         114
                     ]
                 },
                 {
-                    "name": "srOnly",
-                    "type": "ElementRef",
+                    "name": "srOnlyText",
+                    "type": "string",
                     "optional": false,
-                    "description": "<p>Screen read field</p>\n",
-                    "line": 36,
-                    "decorators": [
-                        {
-                            "name": "ViewChild",
-                            "stringifiedArguments": "'srOnly'"
-                        }
+                    "description": "<p>Message announced by screen readers when\nautocomplete results are updated or new item\nis highlighted</p>\n",
+                    "line": 103,
+                    "modifierKind": [
+                        114
                     ]
                 },
                 {
@@ -6722,7 +6884,7 @@ const COMPONENTS = {
                     "type": "number",
                     "optional": false,
                     "description": "<p>Timer id for the timer awaiting the service call for more typeing</p>\n",
-                    "line": 63,
+                    "line": 59,
                     "modifierKind": [
                         112
                     ]
@@ -6740,7 +6902,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 408,
+                    "line": 415,
                     "description": "<p>adds a single item to the list</p>\n",
                     "modifierKind": [
                         112
@@ -6748,15 +6910,15 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 11827,
-                                "end": 11831,
+                                "pos": 12016,
+                                "end": 12020,
                                 "flags": 0,
                                 "escapedText": "item"
                             },
                             "type": "object",
                             "tagName": {
-                                "pos": 11821,
-                                "end": 11826,
+                                "pos": 12010,
+                                "end": 12015,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -6775,7 +6937,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 445,
+                    "line": 459,
                     "description": "<p>Adds message to be read by screen reader</p>\n",
                     "modifierKind": [
                         112
@@ -6783,15 +6945,15 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 13064,
-                                "end": 13071,
+                                "pos": 13478,
+                                "end": 13485,
                                 "flags": 0,
                                 "escapedText": "message"
                             },
                             "type": "string",
                             "tagName": {
-                                "pos": 13058,
-                                "end": 13063,
+                                "pos": 13472,
+                                "end": 13477,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -6810,20 +6972,20 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 165,
+                    "line": 168,
                     "description": "",
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4308,
-                                "end": 4313,
+                                "pos": 4390,
+                                "end": 4395,
                                 "flags": 0,
                                 "escapedText": "event"
                             },
                             "type": "",
                             "tagName": {
-                                "pos": 4302,
-                                "end": 4307,
+                                "pos": 4384,
+                                "end": 4389,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -6837,7 +6999,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 257,
+                    "line": 264,
                     "description": "<p>clears the results and closes result drop down</p>\n",
                     "modifierKind": [
                         112
@@ -6849,7 +7011,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 155,
+                    "line": 158,
                     "description": "<p>Clears the input fields and value</p>\n",
                     "modifierKind": [
                         114
@@ -6861,7 +7023,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "{ 'type': string; }",
                     "typeParameters": [],
-                    "line": 319,
+                    "line": 326,
                     "modifierKind": [
                         112
                     ]
@@ -6872,7 +7034,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 173,
+                    "line": 176,
                     "description": "",
                     "modifierKind": [
                         112
@@ -6884,7 +7046,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 392,
+                    "line": 399,
                     "description": "<p>gets more results based when scrolling and adds the items</p>\n",
                     "modifierKind": [
                         112
@@ -6905,20 +7067,20 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 123,
+                    "line": 126,
                     "description": "<p>Gets the string value from the specifed properties of an object</p>\n",
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 3259,
-                                "end": 3265,
+                                "pos": 3341,
+                                "end": 3347,
                                 "flags": 0,
                                 "escapedText": "object"
                             },
                             "type": "Object",
                             "tagName": {
-                                "pos": 3253,
-                                "end": 3258,
+                                "pos": 3335,
+                                "end": 3340,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -6926,15 +7088,15 @@ const COMPONENTS = {
                         },
                         {
                             "name": {
-                                "pos": 3280,
-                                "end": 3294,
+                                "pos": 3362,
+                                "end": 3376,
                                 "flags": 0,
                                 "escapedText": "propertyFields"
                             },
                             "type": "string",
                             "tagName": {
-                                "pos": 3274,
-                                "end": 3279,
+                                "pos": 3356,
+                                "end": 3361,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -6953,7 +7115,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 330,
+                    "line": 337,
                     "description": "<p>gets the inital results</p>\n",
                     "modifierKind": [
                         112
@@ -6961,15 +7123,15 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 9046,
-                                "end": 9058,
+                                "pos": 9235,
+                                "end": 9247,
                                 "flags": 0,
                                 "escapedText": "searchString"
                             },
                             "type": "string",
                             "tagName": {
-                                "pos": 9040,
-                                "end": 9045,
+                                "pos": 9229,
+                                "end": 9234,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -6983,7 +7145,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 207,
+                    "line": 209,
                     "description": "<p>Event method used when focus is gained to the input</p>\n"
                 },
                 {
@@ -6997,20 +7159,20 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 370,
+                    "line": 377,
                     "description": "<p>highlights the index being hovered</p>\n",
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 10590,
-                                "end": 10595,
+                                "pos": 10779,
+                                "end": 10784,
                                 "flags": 0,
                                 "escapedText": "index"
                             },
                             "type": "number",
                             "tagName": {
-                                "pos": 10584,
-                                "end": 10589,
+                                "pos": 10773,
+                                "end": 10778,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -7029,7 +7191,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 362,
+                    "line": 369,
                     "description": "<p>Checks if the new search string matches the old search string</p>\n",
                     "modifierKind": [
                         112
@@ -7037,15 +7199,15 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 10396,
-                                "end": 10408,
+                                "pos": 10585,
+                                "end": 10597,
                                 "flags": 0,
                                 "escapedText": "searchString"
                             },
                             "type": "string",
                             "tagName": {
-                                "pos": 10390,
-                                "end": 10395,
+                                "pos": 10579,
+                                "end": 10584,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -7059,7 +7221,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 279,
+                    "line": 286,
                     "description": "<p>handles the arrow down key event</p>\n",
                     "modifierKind": [
                         112
@@ -7071,7 +7233,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 266,
+                    "line": 273,
                     "description": "<p>handles the arrow up key event</p>\n",
                     "modifierKind": [
                         112
@@ -7088,20 +7250,20 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 218,
+                    "line": 220,
                     "description": "<p>Key event</p>\n",
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5683,
-                                "end": 5688,
+                                "pos": 5763,
+                                "end": 5768,
                                 "flags": 0,
                                 "escapedText": "event"
                             },
                             "type": "",
                             "tagName": {
-                                "pos": 5677,
-                                "end": 5682,
+                                "pos": 5757,
+                                "end": 5762,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -7115,7 +7277,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 378,
+                    "line": 385,
                     "description": "<p>Scroll Event Handler (Calculates if mpre items should be asked for from service on scrolling down)</p>\n"
                 },
                 {
@@ -7129,7 +7291,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 467,
+                    "line": 477,
                     "jsdoctags": [
                         {
                             "name": "fn",
@@ -7151,7 +7313,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 471,
+                    "line": 481,
                     "jsdoctags": [
                         {
                             "name": "fn",
@@ -7163,12 +7325,12 @@ const COMPONENTS = {
                     ]
                 },
                 {
-                    "name": "scrollSelectedItemToTop",
+                    "name": "scrollSelectedItemIntoView",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 416,
+                    "line": 423,
                     "description": "<p>When paging up and down with arrow key it sets the highlighted item into view</p>\n",
                     "modifierKind": [
                         112
@@ -7185,7 +7347,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 240,
+                    "line": 252,
                     "description": "<p>selects the item adding it to the model and closes the results</p>\n",
                     "modifierKind": [
                         114
@@ -7193,15 +7355,15 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 6236,
-                                "end": 6240,
+                                "pos": 6666,
+                                "end": 6670,
                                 "flags": 0,
                                 "escapedText": "item"
                             },
                             "type": "object",
                             "tagName": {
-                                "pos": 6230,
-                                "end": 6235,
+                                "pos": 6660,
+                                "end": 6665,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -7220,7 +7382,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 475,
+                    "line": 485,
                     "jsdoctags": [
                         {
                             "name": "isDisabled",
@@ -7242,7 +7404,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 425,
+                    "line": 434,
                     "description": "<p>Sets the highlighted item by keyboard or mouseover</p>\n",
                     "modifierKind": [
                         112
@@ -7250,15 +7412,15 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 12361,
-                                "end": 12365,
+                                "pos": 12617,
+                                "end": 12621,
                                 "flags": 0,
                                 "escapedText": "item"
                             },
                             "type": "Object",
                             "tagName": {
-                                "pos": 12355,
-                                "end": 12360,
+                                "pos": 12611,
+                                "end": 12616,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -7272,7 +7434,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 289
+                    "line": 296
                 },
                 {
                     "name": "textChange",
@@ -7285,7 +7447,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 193,
+                    "line": 195,
                     "jsdoctags": [
                         {
                             "name": "event",
@@ -7307,7 +7469,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 454,
+                    "line": 464,
                     "jsdoctags": [
                         {
                             "name": "obj",
@@ -7324,7 +7486,7 @@ const COMPONENTS = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, Input, ViewChild, TemplateRef, ElementRef, forwardRef, ChangeDetectorRef } from '@angular/core';\r\nimport { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';\r\nimport { SDSAutocompleteServiceInterface } from './models/SDSAutocompleteServiceInterface';\r\nimport { KeyHelper, KEYS } from '../key-helper/key-helper';\r\nimport { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';\r\nimport { SelectionMode, SDSSelectedItemModelHelper } from '../selected-result/models/sds-selected-item-model-helper';\r\nimport { SDSAutocompleteSearchConfiguration } from './models/SDSAutocompleteConfiguration';\r\nconst Autocomplete_Autocomplete_VALUE_ACCESSOR: any = {\r\n  provide: NG_VALUE_ACCESSOR,\r\n  useExisting: forwardRef(() => SDSAutocompleteSearchComponent),\r\n  multi: true\r\n};\r\n\r\n@Component({\r\n  selector: 'sds-search-autocomplete',\r\n  templateUrl: './autocomplete-search.component.html',\r\n  styleUrls: ['./autocomplete-search.component.scss'],\r\n  providers: [Autocomplete_Autocomplete_VALUE_ACCESSOR]\r\n})\r\nexport class SDSAutocompleteSearchComponent implements ControlValueAccessor {\r\n\r\n  constructor(private _changeDetectorRef: ChangeDetectorRef) { }\r\n  /**\r\n   * Ul list of elements \r\n   */\r\n  @ViewChild('resultsList') resultsListElement: ElementRef;\r\n\r\n  /**\r\n   * input control \r\n   */\r\n  @ViewChild('input') input: ElementRef;\r\n\r\n  /**\r\n   * Screen read field\r\n   */\r\n  @ViewChild('srOnly') srOnly: ElementRef;\r\n\r\n  /**\r\n   * Allow to insert a customized template for suggestions to use\r\n   */\r\n  @Input() itemTemplate: TemplateRef<any>;\r\n\r\n  /**\r\n   * The data model that has the selected item\r\n   */\r\n  public model: SDSSelectedItemModel;\r\n\r\n  /**\r\n   * Configuration for the Autocomplete control \r\n   */\r\n  @Input()\r\n  public configuration: SDSAutocompleteSearchConfiguration;\r\n\r\n  /**\r\n   * Instance of the SamHiercarchicalServiceInterface provided\r\n   */\r\n  @Input()\r\n  public service: SDSAutocompleteServiceInterface;\r\n\r\n  /**\r\n   * Timer id for the timer awaiting the service call for more typeing\r\n   */\r\n  private timeoutNumber: number;\r\n\r\n  /**\r\n   *  result set to be rendered\r\n   */\r\n  results: object[];\r\n\r\n  /**\r\n   * max number of results to be shown\r\n   */\r\n  private maxResults: number;\r\n\r\n  /**\r\n   * selected index\r\n   */\r\n  public highlightedIndex: number = 0;\r\n\r\n  /**\r\n   * highlighted object in drop down\r\n   */\r\n  private highlightedItem: object;\r\n\r\n  /**\r\n   * value of the input field \r\n   */\r\n  public inputValue: string = '';\r\n\r\n  /**\r\n   * Proprty being set on the object is highlighted\r\n   */\r\n  private HighlightedPropertyName = 'highlighted';\r\n\r\n  public showLoad: boolean = false;\r\n\r\n  /**\r\n   * Search string\r\n   */\r\n  private searchString: string = null;\r\n\r\n  /**\r\n   * Stored Event for ControlValueAccessor\r\n   */\r\n  public onTouchedCallback: () => void = () => null;\r\n\r\n  /**\r\n   * Stored Event for ControlValueAccessor\r\n   */\r\n  public propogateChange: (_: any) => void = (_: any) => null;\r\n\r\n  @Input()\r\n  public disabled: boolean;\r\n\r\n  private resultsAvailableMessage: string = ' results available. Use up and down arrows\\\r\n  to scroll through results. Hit enter to select.';\r\n\r\n  /**\r\n   * Gets the string value from the specifed properties of an object\r\n   * @param object \r\n   * @param propertyFields comma seperated list with periods depth of object\r\n   */\r\n  getObjectValue(object: Object, propertyFields: string): string {\r\n    let value = '';\r\n    let current = object;\r\n    let fieldSplit = propertyFields.split(',');\r\n    for (let i = 0; i < fieldSplit.length; i++) {\r\n      let fieldValue = fieldSplit[i];\r\n      let fieldPartSplit = fieldValue.split('.');\r\n      for (let j = 0; j < fieldPartSplit.length; j++) {\r\n        let fieldCheckValue = fieldPartSplit[j];\r\n        if (current) {\r\n          current = current[fieldCheckValue];\r\n        }\r\n      }\r\n\r\n      if (current) {\r\n        value += current.toString() + ' ';\r\n      }\r\n      current = object;\r\n    }\r\n    return value.trim();\r\n  }\r\n\r\n\r\n\r\n  /**\r\n   * Determines if the dropdown should be shown\r\n   */\r\n  public showResults = false;\r\n\r\n  /**\r\n   * Clears the input fields and value\r\n   */\r\n  public clearInput(): void {\r\n    this.inputValue = '';\r\n    this.onTouchedCallback();\r\n    this.clearAndHideResults();\r\n  }\r\n\r\n  /**\r\n   * \r\n   * @param event \r\n   */\r\n  checkForFocus(event): void {\r\n    this.focusRemoved();\r\n    this.showResults = false;\r\n  }\r\n\r\n  /**\r\n   * \r\n   */\r\n  private focusRemoved() {\r\n    if (this.configuration) {\r\n      if (this.configuration.selectionMode === SelectionMode.SINGLE) {\r\n        if (this.model.items.length > 0) {\r\n          if (this.inputValue.length === 0) {\r\n            SDSSelectedItemModelHelper.clearItems(this.model.items);\r\n            this.propogateChange(this.model);\r\n          } else {\r\n            this.inputValue = this.getObjectValue(this.model.items[0], this.configuration.primaryTextField);\r\n\r\n          }\r\n        }\r\n      } else {\r\n        this.inputValue = '';\r\n      }\r\n    } else {\r\n      this.inputValue = '';\r\n    }\r\n  }\r\n\r\n  textChange(event) {\r\n    // ie 11 placeholders will incorrectly trigger input events (known bug)\r\n    // if input isn't active element then don't do anything\r\n    if (event.target != document.activeElement) {\r\n      event.preventDefault();\r\n      return;\r\n    }\r\n    const searchString = event.target.value || '';\r\n    this.getResults(searchString);\r\n  }\r\n\r\n  /**\r\n   * Event method used when focus is gained to the input\r\n   */\r\n  inputFocusHandler(): void {\r\n    if (this.configuration.focusInSearch) {\r\n      this.getResults(this.inputValue || '');\r\n    }\r\n    this.onTouchedCallback();\r\n  }\r\n\r\n  /**\r\n   * Key event\r\n   * @param event \r\n   */\r\n  onKeydown(event): void {\r\n    if (KeyHelper.is(KEYS.TAB, event)) {\r\n      return;\r\n    }\r\n    else if (KeyHelper.is(KEYS.DOWN, event)) {\r\n      this.onArrowDown();\r\n    }\r\n    else if (KeyHelper.is(KEYS.UP, event)) {\r\n      this.onArrowUp();\r\n    }\r\n    else if (KeyHelper.is(KEYS.ENTER, event)) {\r\n      this.selectItem(this.highlightedItem);\r\n    }\r\n    else if (KeyHelper.is(KEYS.ESC, event)) {\r\n      this.clearAndHideResults();\r\n    }\r\n  }\r\n\r\n  /**\r\n   * selects the item adding it to the model and closes the results\r\n   * @param item \r\n   */\r\n  public selectItem(item: object): void {\r\n    SDSSelectedItemModelHelper.addItem(item, this.configuration.primaryKeyField, this.configuration.selectionMode, this.model.items);\r\n    this.propogateChange(this.model);\r\n    let message = this.getObjectValue(item, this.configuration.primaryTextField);\r\n    this.inputValue = message;\r\n    if (this.configuration.secondaryTextField && item[this.configuration.secondaryTextField]) {\r\n      message += ': ' + item[this.configuration.secondaryTextField];\r\n    }\r\n    message += ' selected';\r\n    this.addScreenReaderMessage(message);\r\n    this.focusRemoved();\r\n    this.showResults = false;\r\n  }\r\n\r\n  /**\r\n   *  clears the results and closes result drop down\r\n   */\r\n  private clearAndHideResults(): void {\r\n    this.results = [];\r\n    this.showResults = false;\r\n    this.focusRemoved();\r\n  }\r\n\r\n  /**\r\n   *  handles the arrow up key event\r\n   */\r\n  private onArrowUp(): void {\r\n    if (this.results && this.results.length > 0) {\r\n      if (this.highlightedIndex !== 0) {\r\n        this.highlightedIndex--;\r\n        this.setHighlightedItem(this.results[this.highlightedIndex]);\r\n        this.scrollSelectedItemToTop();\r\n      }\r\n    }\r\n  }\r\n\r\n  /**\r\n   *  handles the arrow down key event\r\n   */\r\n  private onArrowDown(): void {\r\n    if (this.results && this.results.length > 0) {\r\n      if (this.highlightedIndex < this.results.length - 1) {\r\n        this.highlightedIndex++;\r\n        this.setHighlightedItem(this.results[this.highlightedIndex]);\r\n        this.scrollSelectedItemToTop();\r\n      }\r\n    }\r\n  }\r\n\r\n  showFreeText() {\r\n    if (this.configuration.isFreeTextEnabled) {\r\n      if (this.inputValue) {\r\n        if (this.inputValue.length !== 0) {\r\n          let foundItem = false;\r\n          if (this.results) {\r\n            for (var i = 0; i < this.results.length && !foundItem; i++) {\r\n              let item = this.results[i];\r\n              foundItem = item[this.configuration.primaryTextField] === this.inputValue;\r\n            }\r\n          }\r\n          if (this.model.items.length > 0 && !foundItem) {\r\n            for (var i = 0; i < this.model.items.length && !foundItem; i++) {\r\n              let item = this.model.items[i];\r\n              foundItem = item[this.configuration.primaryTextField] === this.inputValue;\r\n            }\r\n          }\r\n\r\n          return !foundItem;\r\n        } else {\r\n          return false;\r\n        }\r\n      } else {\r\n        return false;\r\n      }\r\n    } else {\r\n      return this.configuration.isFreeTextEnabled;\r\n    }\r\n  }\r\n\r\n  private createFreeTextItem() {\r\n    let item = { 'type': 'custom' };\r\n    item[this.configuration.primaryTextField] = this.inputValue;\r\n    item[this.configuration.primaryKeyField] = this.inputValue;\r\n    return item;\r\n  }\r\n\r\n  /**\r\n   *  gets the inital results\r\n   * @param searchString \r\n   */\r\n  private getResults(searchString: string): void {\r\n    if (searchString.length >= this.configuration.minimumCharacterCountSearch) {\r\n      if (!this.matchPastSearchString(searchString) ||\r\n        (this.matchPastSearchString(searchString) && !this.showResults)\r\n        || this.matchPastSearchString('')) {\r\n        this.searchString = searchString;\r\n        window.clearTimeout(this.timeoutNumber);\r\n        this.timeoutNumber = window.setTimeout(() => {\r\n          this.showLoad = true;\r\n          this.service.getDataByText(0, searchString).subscribe(\r\n            (result) => {\r\n              this.results = result.items;\r\n              this.showLoad = false;\r\n              if (this.showFreeText()) {\r\n                this.results.unshift(this.createFreeTextItem());\r\n              }\r\n              this.maxResults = result.totalItems;\r\n              this.highlightedIndex = 0;\r\n              this.setHighlightedItem(this.results[this.highlightedIndex]);\r\n              this.showResults = true;\r\n              this.addScreenReaderMessage(this.maxResults + ' ' + this.resultsAvailableMessage);\r\n              this._changeDetectorRef.markForCheck();\r\n            });\r\n        }, this.configuration.debounceTime);\r\n      }\r\n    }\r\n  }\r\n\r\n  /**\r\n   * Checks if the new search string matches the old search string\r\n   * @param searchString \r\n   */\r\n  private matchPastSearchString(searchString: string) {\r\n    return this.searchString === searchString;\r\n  }\r\n\r\n  /**\r\n   * highlights the index being hovered\r\n   * @param index \r\n   */\r\n  listItemHover(index: number): void {\r\n    this.highlightedIndex = index;\r\n    this.setHighlightedItem(this.results[this.highlightedIndex]);\r\n  }\r\n\r\n  /**\r\n   * Scroll Event Handler (Calculates if mpre items should be asked for from service on scrolling down)\r\n   */\r\n  onScroll() {\r\n    if (this.maxResults > this.results.length) {\r\n      let scrollAreaHeight = this.resultsListElement.nativeElement.offsetHeight;\r\n      let scrollTopPos = this.resultsListElement.nativeElement.scrollTop;\r\n      let scrollAreaMaxHeight = this.resultsListElement.nativeElement.scrollHeight;\r\n      if ((scrollTopPos + scrollAreaHeight * 2) >= scrollAreaMaxHeight) {\r\n        this.getAdditionalResults();\r\n      }\r\n    }\r\n  }\r\n\r\n  /**\r\n   * gets more results based when scrolling and adds the items\r\n   */\r\n  private getAdditionalResults() {\r\n    this.showLoad = true;\r\n    this.service.getDataByText(this.results.length, this.searchString).subscribe(\r\n      (result) => {\r\n        for (let i = 0; i < result.items.length; i++) {\r\n          this.addResult(result.items[i]);\r\n        }\r\n        this.showLoad = false;\r\n        this.maxResults = result.totalItems;\r\n      });\r\n  }\r\n\r\n  /**\r\n   * adds a single item to the list\r\n   * @param item \r\n   */\r\n  private addResult(item: object) {\r\n    //add check to make sure item does not exist\r\n    this.results.push(item);\r\n  }\r\n\r\n  /**\r\n   * When paging up and down with arrow key it sets the highlighted item into view\r\n   */\r\n  private scrollSelectedItemToTop() {\r\n    let selectedChild = this.resultsListElement.nativeElement.children[this.highlightedIndex];\r\n    this.resultsListElement.nativeElement.scrollTop = selectedChild.offsetTop;\r\n  }\r\n\r\n  /**\r\n   * Sets the highlighted item by keyboard or mouseover\r\n   * @param item \r\n   */\r\n  private setHighlightedItem(item: Object): void {\r\n    if (this.results && this.results.length > 0) {\r\n      if (this.highlightedItem) {\r\n        this.highlightedItem[this.HighlightedPropertyName] = false;\r\n      }\r\n      this.highlightedItem = item;\r\n      this.highlightedItem[this.HighlightedPropertyName] = true;\r\n      let message = item[this.configuration.primaryTextField];\r\n      if (this.configuration.secondaryTextField && item[this.configuration.secondaryTextField]) {\r\n        message += ': ' + item[this.configuration.secondaryTextField]\r\n\r\n      }\r\n      this.addScreenReaderMessage(message);\r\n    }\r\n  }\r\n\r\n  /**\r\n   * Adds message to be read by screen reader\r\n   * @param message \r\n   */\r\n  private addScreenReaderMessage(message: string) {\r\n    const srResults: HTMLElement = document.createElement('li');\r\n    srResults.innerText = message;\r\n    if (this.srOnly && this.srOnly.nativeElement) {\r\n      this.srOnly.nativeElement.appendChild(srResults);\r\n    }\r\n  }\r\n\r\n\r\n  writeValue(obj: any): void {\r\n    if (obj instanceof SDSSelectedItemModel) {\r\n      this.model = obj as SDSSelectedItemModel;      \r\n      if (this.model.items.length === 0) {\r\n        this.inputValue = '';\r\n      } else {\r\n        if (this.configuration.selectionMode === SelectionMode.SINGLE) {\r\n          this.inputValue = this.getObjectValue(this.model.items[0], this.configuration.primaryTextField);\r\n        }\r\n      }\r\n    }\r\n  }\r\n\r\n  registerOnChange(fn: any): void {\r\n    this.propogateChange = fn;\r\n  }\r\n\r\n  registerOnTouched(fn: any): void {\r\n    this.onTouchedCallback = fn;\r\n  }\r\n\r\n  setDisabledState(isDisabled: boolean): void {\r\n    this.disabled = isDisabled;\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, Input, ViewChild, TemplateRef, ElementRef, forwardRef, ChangeDetectorRef } from '@angular/core';\r\nimport { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';\r\nimport { SDSAutocompleteServiceInterface } from './models/SDSAutocompleteServiceInterface';\r\nimport { KeyHelper, KEYS } from '../key-helper/key-helper';\r\nimport { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';\r\nimport { SelectionMode, SDSSelectedItemModelHelper } from '../selected-result/models/sds-selected-item-model-helper';\r\nimport { SDSAutocompleteSearchConfiguration } from './models/SDSAutocompleteConfiguration';\r\nconst Autocomplete_Autocomplete_VALUE_ACCESSOR: any = {\r\n  provide: NG_VALUE_ACCESSOR,\r\n  useExisting: forwardRef(() => SDSAutocompleteSearchComponent),\r\n  multi: true\r\n};\r\n\r\n@Component({\r\n  selector: 'sds-search-autocomplete',\r\n  templateUrl: './autocomplete-search.component.html',\r\n  styleUrls: ['./autocomplete-search.component.scss'],\r\n  providers: [Autocomplete_Autocomplete_VALUE_ACCESSOR]\r\n})\r\nexport class SDSAutocompleteSearchComponent implements ControlValueAccessor {\r\n\r\n  constructor(private _changeDetectorRef: ChangeDetectorRef) { }\r\n  /**\r\n   * Ul list of elements \r\n   */\r\n  @ViewChild('resultsList') resultsListElement: ElementRef;\r\n\r\n  /**\r\n   * input control \r\n   */\r\n  @ViewChild('input') input: ElementRef;\r\n\r\n\r\n  /**\r\n   * Allow to insert a customized template for suggestions to use\r\n   */\r\n  @Input() itemTemplate: TemplateRef<any>;\r\n\r\n  /**\r\n   * The data model that has the selected item\r\n   */\r\n  public model: SDSSelectedItemModel;\r\n\r\n  /**\r\n   * Configuration for the Autocomplete control \r\n   */\r\n  @Input()\r\n  public configuration: SDSAutocompleteSearchConfiguration;\r\n\r\n  /**\r\n   * Instance of the SamHiercarchicalServiceInterface provided\r\n   */\r\n  @Input()\r\n  public service: SDSAutocompleteServiceInterface;\r\n\r\n  /**\r\n   * Timer id for the timer awaiting the service call for more typeing\r\n   */\r\n  private timeoutNumber: number;\r\n\r\n  /**\r\n   *  result set to be rendered\r\n   */\r\n  results: object[];\r\n\r\n  /**\r\n   * max number of results to be shown\r\n   */\r\n  private maxResults: number;\r\n\r\n  /**\r\n   * selected index\r\n   */\r\n  public highlightedIndex: number = 0;\r\n\r\n  /**\r\n   * highlighted object in drop down\r\n   */\r\n  private highlightedItem: object;\r\n\r\n  /**\r\n   * value of the input field \r\n   */\r\n  public inputValue: string = '';\r\n\r\n  /**\r\n   * Proprty being set on the object is highlighted\r\n   */\r\n  private HighlightedPropertyName = 'highlighted';\r\n\r\n  public showLoad: boolean = true;\r\n\r\n  /**\r\n   * Search string\r\n   */\r\n  private searchString: string = null;\r\n\r\n  /**\r\n   * Message announced by screen readers when\r\n   * autocomplete results are updated or new item\r\n   * is highlighted\r\n   */\r\n  public srOnlyText: string;\r\n\r\n  /**\r\n   * Stored Event for ControlValueAccessor\r\n   */\r\n  public onTouchedCallback: () => void = () => null;\r\n\r\n  /**\r\n   * Stored Event for ControlValueAccessor\r\n   */\r\n  public propogateChange: (_: any) => void = (_: any) => null;\r\n\r\n  @Input()\r\n  public disabled: boolean;\r\n\r\n  private resultsAvailableMessage: string = ' results available. Use up and down arrows\\\r\n  to scroll through results. Hit enter to select.';\r\n\r\n  /**\r\n   * Gets the string value from the specifed properties of an object\r\n   * @param object \r\n   * @param propertyFields comma seperated list with periods depth of object\r\n   */\r\n  getObjectValue(object: Object, propertyFields: string): string {\r\n    let value = '';\r\n    let current = object;\r\n    let fieldSplit = propertyFields.split(',');\r\n    for (let i = 0; i < fieldSplit.length; i++) {\r\n      let fieldValue = fieldSplit[i];\r\n      let fieldPartSplit = fieldValue.split('.');\r\n      for (let j = 0; j < fieldPartSplit.length; j++) {\r\n        let fieldCheckValue = fieldPartSplit[j];\r\n        if (current) {\r\n          current = current[fieldCheckValue];\r\n        }\r\n      }\r\n\r\n      if (current) {\r\n        value += current.toString() + ' ';\r\n      }\r\n      current = object;\r\n    }\r\n    return value.trim();\r\n  }\r\n\r\n\r\n\r\n  /**\r\n   * Determines if the dropdown should be shown\r\n   */\r\n  public showResults = false;\r\n\r\n  /**\r\n   * Clears the input fields and value\r\n   */\r\n  public clearInput(): void {\r\n    this.inputValue = '';\r\n    this.onTouchedCallback();\r\n    this.clearAndHideResults();\r\n  }\r\n\r\n  /**\r\n   * \r\n   * @param event \r\n   */\r\n  checkForFocus(event): void {\r\n    this.focusRemoved();\r\n    this.showResults = false;\r\n  }\r\n\r\n  /**\r\n   * \r\n   */\r\n  private focusRemoved() {\r\n    if (this.configuration) {\r\n      if (this.configuration.selectionMode === SelectionMode.SINGLE) {\r\n        if (this.model.items.length > 0) {\r\n          if (this.inputValue.length === 0) {\r\n            SDSSelectedItemModelHelper.clearItems(this.model.items);\r\n            this.propogateChange(this.model);\r\n          } else {\r\n            this.inputValue = this.getObjectValue(this.model.items[0], this.configuration.primaryTextField);\r\n          }\r\n        }\r\n      } else {\r\n        this.inputValue = '';\r\n      }\r\n    } else {\r\n      this.inputValue = '';\r\n    }\r\n  }\r\n\r\n  textChange(event) {\r\n    // ie 11 placeholders will incorrectly trigger input events (known bug)\r\n    // if input isn't active element then don't do anything\r\n    if (event.target != document.activeElement) {\r\n      event.preventDefault();\r\n      return;\r\n    }\r\n    const searchString = event.target.value || '';\r\n    this.getResults(searchString);\r\n  }\r\n\r\n  /**\r\n   * Event method used when focus is gained to the input\r\n   */\r\n  inputFocusHandler(): void {\r\n    if (this.configuration.focusInSearch) {\r\n      this.getResults(this.inputValue || '');\r\n    }\r\n    this.onTouchedCallback();\r\n  }\r\n\r\n  /**\r\n   * Key event\r\n   * @param event \r\n   */\r\n  onKeydown(event): void {\r\n    if (KeyHelper.is(KEYS.TAB, event)) {\r\n      return;\r\n    }\r\n    else if (KeyHelper.is(KEYS.DOWN, event)) {\r\n      this.onArrowDown();\r\n    }\r\n    else if (KeyHelper.is(KEYS.UP, event)) {\r\n      event.preventDefault();\r\n      this.onArrowUp();\r\n    }\r\n    else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex >= 0) {\r\n      this.selectItem(this.highlightedItem);\r\n    }\r\n    else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex < 0) {\r\n      const item = this.createFreeTextItem();\r\n      this.selectItem(item);\r\n    }\r\n    else if (KeyHelper.is(KEYS.ESC, event)) {\r\n      if (this.showResults) {\r\n        this.clearAndHideResults();\r\n        if (event.stopPropagation) {\r\n          event.stopPropagation();\r\n        }\r\n      }\r\n    }\r\n  }\r\n\r\n  /**\r\n   * selects the item adding it to the model and closes the results\r\n   * @param item \r\n   */\r\n  public selectItem(item: object): void {\r\n    SDSSelectedItemModelHelper.addItem(item, this.configuration.primaryKeyField, this.configuration.selectionMode, this.model.items);\r\n    this.propogateChange(this.model);\r\n    let message = this.getObjectValue(item, this.configuration.primaryTextField);\r\n    this.inputValue = message;\r\n    this.focusRemoved();\r\n    this.showResults = false;\r\n  }\r\n\r\n  /**\r\n   *  clears the results and closes result drop down\r\n   */\r\n  private clearAndHideResults(): void {\r\n    this.results = [];\r\n    this.showResults = false;\r\n    this.focusRemoved();\r\n  }\r\n\r\n  /**\r\n   *  handles the arrow up key event\r\n   */\r\n  private onArrowUp(): void {\r\n    if (this.results && this.results.length > 0) {\r\n      if (this.highlightedIndex >= 0) {\r\n        this.highlightedIndex--;\r\n        this.setHighlightedItem(this.results[this.highlightedIndex]);\r\n        this.scrollSelectedItemIntoView();\r\n      }\r\n    }\r\n  }\r\n\r\n  /**\r\n   *  handles the arrow down key event\r\n   */\r\n  private onArrowDown(): void {\r\n    if (this.results && this.results.length > 0) {\r\n      if (this.highlightedIndex < this.results.length - 1) {\r\n        this.highlightedIndex++;\r\n        this.setHighlightedItem(this.results[this.highlightedIndex]);\r\n        this.scrollSelectedItemIntoView();\r\n      }\r\n    }\r\n  }\r\n\r\n  showFreeText() {\r\n    if (this.configuration.isFreeTextEnabled) {\r\n      if (this.inputValue) {\r\n        if (this.inputValue.length !== 0) {\r\n          let foundItem = false;\r\n          if (this.results) {\r\n            for (var i = 0; i < this.results.length && !foundItem; i++) {\r\n              let item = this.results[i];\r\n              foundItem = item[this.configuration.primaryTextField] === this.inputValue;\r\n            }\r\n          }\r\n          if (this.model.items.length > 0 && !foundItem) {\r\n            for (var i = 0; i < this.model.items.length && !foundItem; i++) {\r\n              let item = this.model.items[i];\r\n              foundItem = item[this.configuration.primaryTextField] === this.inputValue;\r\n            }\r\n          }\r\n\r\n          return !foundItem;\r\n        } else {\r\n          return false;\r\n        }\r\n      } else {\r\n        return false;\r\n      }\r\n    } else {\r\n      return this.configuration.isFreeTextEnabled;\r\n    }\r\n  }\r\n\r\n  private createFreeTextItem() {\r\n    let item = { 'type': 'custom' };\r\n    item[this.configuration.primaryTextField] = this.inputValue;\r\n    item[this.configuration.primaryKeyField] = this.inputValue;\r\n    return item;\r\n  }\r\n\r\n  /**\r\n   *  gets the inital results\r\n   * @param searchString \r\n   */\r\n  private getResults(searchString: string): void {\r\n    if (searchString.length >= this.configuration.minimumCharacterCountSearch) {\r\n      if (!this.matchPastSearchString(searchString) ||\r\n        (this.matchPastSearchString(searchString) && !this.showResults)\r\n        || this.matchPastSearchString('')) {\r\n        this.searchString = searchString;\r\n        window.clearTimeout(this.timeoutNumber);\r\n        this.timeoutNumber = window.setTimeout(() => {\r\n          this.showLoad = true;\r\n          this.service.getDataByText(0, searchString).subscribe(\r\n            (result) => {\r\n              this.results = result.items;\r\n              this.showLoad = false;\r\n              this.maxResults = result.totalItems;\r\n\r\n              this.highlightedIndex = this.configuration.isFreeTextEnabled ? -1 : 0;\r\n              if (!this.configuration.isFreeTextEnabled) {\r\n                this.setHighlightedItem(this.results[this.highlightedIndex]);\r\n              }\r\n              this.showResults = true;\r\n              this.addScreenReaderMessage(this.maxResults + ' ' + this.resultsAvailableMessage);\r\n              this._changeDetectorRef.markForCheck();\r\n            });\r\n        }, this.configuration.debounceTime);\r\n      }\r\n    }\r\n  }\r\n\r\n  /**\r\n   * Checks if the new search string matches the old search string\r\n   * @param searchString \r\n   */\r\n  private matchPastSearchString(searchString: string) {\r\n    return this.searchString === searchString;\r\n  }\r\n\r\n  /**\r\n   * highlights the index being hovered\r\n   * @param index \r\n   */\r\n  listItemHover(index: number): void {\r\n    this.highlightedIndex = index;\r\n    this.setHighlightedItem(this.results[this.highlightedIndex]);\r\n  }\r\n\r\n  /**\r\n   * Scroll Event Handler (Calculates if mpre items should be asked for from service on scrolling down)\r\n   */\r\n  onScroll() {\r\n    if (this.maxResults > this.results.length) {\r\n      let scrollAreaHeight = this.resultsListElement.nativeElement.offsetHeight;\r\n      let scrollTopPos = this.resultsListElement.nativeElement.scrollTop;\r\n      let scrollAreaMaxHeight = this.resultsListElement.nativeElement.scrollHeight;\r\n      if ((scrollTopPos + scrollAreaHeight * 2) >= scrollAreaMaxHeight) {\r\n        this.getAdditionalResults();\r\n      }\r\n    }\r\n  }\r\n\r\n  /**\r\n   * gets more results based when scrolling and adds the items\r\n   */\r\n  private getAdditionalResults() {\r\n    this.showLoad = true;\r\n    this.service.getDataByText(this.results.length, this.searchString).subscribe(\r\n      (result) => {\r\n        for (let i = 0; i < result.items.length; i++) {\r\n          this.addResult(result.items[i]);\r\n        }\r\n        this.showLoad = false;\r\n        this.maxResults = result.totalItems;\r\n      });\r\n  }\r\n\r\n  /**\r\n   * adds a single item to the list\r\n   * @param item \r\n   */\r\n  private addResult(item: object) {\r\n    //add check to make sure item does not exist\r\n    this.results.push(item);\r\n  }\r\n\r\n  /**\r\n   * When paging up and down with arrow key it sets the highlighted item into view\r\n   */\r\n  private scrollSelectedItemIntoView() {\r\n    if (this.highlightedIndex >= 0) {\r\n      const selectedChild = this.resultsListElement.nativeElement.children[this.highlightedIndex];\r\n      selectedChild.scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'start'});\r\n    }\r\n  }\r\n\r\n  /**\r\n   * Sets the highlighted item by keyboard or mouseover\r\n   * @param item \r\n   */\r\n  private setHighlightedItem(item: Object): void {\r\n    if (this.results && this.results.length > 0) {\r\n      if (this.highlightedItem) {\r\n        this.highlightedItem[this.HighlightedPropertyName] = false;\r\n      }\r\n      let message = '';\r\n      if (item) {\r\n        this.highlightedItem = item;\r\n        this.highlightedItem[this.HighlightedPropertyName] = true;\r\n        message = item[this.configuration.primaryTextField];\r\n        if (this.configuration.secondaryTextField && item[this.configuration.secondaryTextField]) {\r\n          message += ': ' + item[this.configuration.secondaryTextField];\r\n        }\r\n      } else {\r\n        this.highlightedItem = undefined;\r\n        message = 'No item selected';\r\n      }\r\n      this.addScreenReaderMessage(message);\r\n    }\r\n  }\r\n\r\n  /**\r\n   * Adds message to be read by screen reader\r\n   * @param message \r\n   */\r\n  private addScreenReaderMessage(message: string) {\r\n    this.srOnlyText = message;\r\n  }\r\n\r\n\r\n  writeValue(obj: any): void {\r\n    if (obj instanceof SDSSelectedItemModel) {\r\n      this.model = obj as SDSSelectedItemModel;\r\n      if (this.model.items.length === 0) {\r\n        this.inputValue = '';\r\n      } else {\r\n        if (this.configuration.selectionMode === SelectionMode.SINGLE) {\r\n          this.inputValue = this.getObjectValue(this.model.items[0], this.configuration.primaryTextField);\r\n        }\r\n      }\r\n    }\r\n  }\r\n\r\n  registerOnChange(fn: any): void {\r\n    this.propogateChange = fn;\r\n  }\r\n\r\n  registerOnTouched(fn: any): void {\r\n    this.onTouchedCallback = fn;\r\n  }\r\n\r\n  setDisabledState(isDisabled: boolean): void {\r\n    this.disabled = isDisabled;\r\n  }\r\n}",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -7356,7 +7518,7 @@ const COMPONENTS = {
             "implements": [
                 "ControlValueAccessor"
             ],
-            "templateData": "<div sds-click-outside (clickOutside)=\"checkForFocus($event)\" sds-tab-outside (tabOutside)=\"checkForFocus($event)\">\r\n  <div class=\"maxw-mobile-lg\">\r\n    <div role=\"combobox\" [attr.id]=\"configuration.id+'-container'\" [attr.aria-expanded]=\"showResults\"\r\n      [attr.aria-owns]=\"showResults? configuration.id+ '-listbox' : undefined\" aria-haspopup=\"listbox\">\r\n      <input [disabled]=\"disabled\" (input)=\"textChange($event)\" class=\"usa-input\" #input  [attr.aria-label]=\"configuration.ariaLabelText\"\r\n        [attr.id]=\"configuration.id\" type=\"text\" (focus)=\"inputFocusHandler()\" (keydown)=\"onKeydown($event)\"\r\n        [(ngModel)]=\"inputValue\" aria-autocomplete=\"list\" [attr.placeholder]=\"configuration.autocompletePlaceHolderText\"\r\n        [attr.aria-activedescendant]=\"showResults? configuration.id+'-resultItem-'+highlightedIndex :''\"\r\n        [attr.aria-controls]=\"showResults? configuration.id+ '-listbox' : undefined\"\r\n        autocomplete=\"off\">\r\n    </div>\r\n    <ul #resultsList *ngIf=\"showResults\" [attr.id]=\"configuration.id+ '-listbox'\" role=\"listbox\"\r\n      class=\"usa-list usa-list--unstyled sds-autocomplete\" (scroll)=\"onScroll()\">\r\n      <ng-container *ngIf=\"(results && results.length > 0)\">\r\n        <li [attr.id]=\"configuration.id+'-resultItem-'+i\" role=\"option\" *ngFor=\"let result of results; let i = index\"\r\n          (mouseenter)=\"listItemHover(i)\"\r\n          [class]=\"result['highlighted'] ? 'sds-autocomplete__item sds-autocomplete__item--selected' : 'sds-autocomplete__item' \"\r\n          (click)=\"selectItem(result)\">\r\n          <ng-container *ngIf=\"itemTemplate\" [ngTemplateOutlet]=\"itemTemplate\"\r\n            [ngTemplateOutletContext]=\"{$implicit:result}\">\r\n\r\n          </ng-container>\r\n\r\n          <ng-container *ngIf=\"!itemTemplate\">\r\n            <span class=\"display-block text-semibold\">\r\n              {{ getObjectValue(result, configuration.primaryTextField) }}\r\n              <span *ngIf=\"result.type === 'custom'\">\r\n                - {{configuration.freeTextSubtext}}\r\n              </span>\r\n            </span>\r\n            <ng-container *ngIf=\"configuration.secondaryTextField &&  result[configuration.secondaryTextField] \">\r\n              <span class=\"description\">{{ result[configuration.secondaryTextField] }}</span>\r\n            </ng-container>\r\n          </ng-container>\r\n        </li>\r\n      </ng-container>\r\n      <ng-container *ngIf=\"(!results || results.length == 0)\">\r\n        <li class=\"emptyResults\">No results found</li>\r\n      </ng-container>\r\n      <ng-container *ngIf=\"showLoad\">\r\n        <li class=\"autoLoading\">\r\n          <div class=\"lightToGrayBackgroundGradiate\">\r\n\r\n          </div>\r\n          <div class=\"grayToLightBackgroundGradiate\">\r\n\r\n          </div>\r\n        </li>\r\n        <li class=\"autoLoading\">\r\n          <div class=\"lightToGrayBackgroundGradiate\">\r\n\r\n          </div>\r\n          <div class=\"grayToLightBackgroundGradiate\">\r\n\r\n          </div>\r\n        </li>\r\n      </ng-container>\r\n    </ul>\r\n\r\n    <ng-container *ngIf=\"!input.disabled\">\r\n      <span class=\"position-absolute right-105 top-1\">\r\n        <span tabindex=\"0\" role=\"button\" aria-label=\"Clear input\" aria-hidden=\"false\" (click)=\"clearInput()\"\r\n          (keyup.enter)=\"clearInput()\">\r\n          <fa-icon [icon]=\"['fas', 'times']\" size=\"xs\"></fa-icon>\r\n        </span>\r\n      </span>\r\n    </ng-container>\r\n    <ul #srOnly class=\"usa-sr-only\" aria-live=\"assertive\" aria-relevant=\"additions\"></ul>\r\n  </div>"
+            "templateData": "<div sds-click-outside (clickOutside)=\"checkForFocus($event)\" sds-tab-outside (tabOutside)=\"checkForFocus($event)\">\r\n  <div class=\"maxw-mobile-lg\">\r\n    <div role=\"combobox\" [attr.id]=\"configuration.id+'-container'\" [attr.aria-expanded]=\"showResults\"\r\n      [attr.aria-owns]=\"showResults? configuration.id+ '-listbox' : undefined\" aria-haspopup=\"listbox\">\r\n      <input [disabled]=\"disabled\" (input)=\"textChange($event)\" class=\"usa-input\" #input  [attr.aria-label]=\"configuration.ariaLabelText\"\r\n        [attr.id]=\"configuration.id\" type=\"text\" (focus)=\"inputFocusHandler()\" (keydown)=\"onKeydown($event)\"\r\n        [(ngModel)]=\"inputValue\" aria-autocomplete=\"list\" [attr.placeholder]=\"configuration.autocompletePlaceHolderText\"\r\n        [attr.aria-activedescendant]=\"showResults? configuration.id+'-resultItem-'+highlightedIndex :''\"\r\n        [attr.aria-controls]=\"showResults? configuration.id+ '-listbox' : undefined\"\r\n        autocomplete=\"off\">\r\n    </div>\r\n    <ul #resultsList *ngIf=\"showResults\" [attr.id]=\"configuration.id+ '-listbox'\" role=\"listbox\"\r\n      class=\"usa-list usa-list--unstyled sds-autocomplete\" (scroll)=\"onScroll()\">\r\n      <ng-container *ngIf=\"(results && results.length > 0)\">\r\n        <li [attr.id]=\"configuration.id+'-resultItem-'+i\" role=\"option\" *ngFor=\"let result of results; let i = index\"\r\n          (mouseenter)=\"listItemHover(i)\"\r\n          [class]=\"result['highlighted'] ? 'sds-autocomplete__item sds-autocomplete__item--selected' : 'sds-autocomplete__item' \"\r\n          (click)=\"selectItem(result)\">\r\n          <ng-container *ngIf=\"itemTemplate\" [ngTemplateOutlet]=\"itemTemplate\"\r\n            [ngTemplateOutletContext]=\"{$implicit:result}\">\r\n\r\n          </ng-container>\r\n\r\n          <ng-container *ngIf=\"!itemTemplate\">\r\n            <span class=\"display-block text-semibold\">\r\n              {{ getObjectValue(result, configuration.primaryTextField) }}\r\n              <span *ngIf=\"result.type === 'custom'\">\r\n                - {{configuration.freeTextSubtext}}\r\n              </span>\r\n            </span>\r\n            <ng-container *ngIf=\"configuration.secondaryTextField &&  result[configuration.secondaryTextField] \">\r\n              <span class=\"description\">{{ result[configuration.secondaryTextField] }}</span>\r\n            </ng-container>\r\n          </ng-container>\r\n        </li>\r\n      </ng-container>\r\n      <ng-container *ngIf=\"(!results || results.length == 0)\">\r\n        <li class=\"emptyResults\">No results found</li>\r\n      </ng-container>\r\n      <ng-container *ngIf=\"showLoad\">\r\n        <li class=\"autoLoading\">\r\n          <div class=\"lightToGrayBackgroundGradiate\">\r\n\r\n          </div>\r\n          <div class=\"grayToLightBackgroundGradiate\">\r\n\r\n          </div>\r\n        </li>\r\n        <li class=\"autoLoading\">\r\n          <div class=\"lightToGrayBackgroundGradiate\">\r\n\r\n          </div>\r\n          <div class=\"grayToLightBackgroundGradiate\">\r\n\r\n          </div>\r\n        </li>\r\n      </ng-container>\r\n    </ul>\r\n\r\n    <ng-container *ngIf=\"!input.disabled\">\r\n      <span class=\"position-absolute right-105 top-1\">\r\n        <span tabindex=\"0\" role=\"button\" aria-label=\"Clear input\" aria-hidden=\"false\" (click)=\"clearInput()\"\r\n          (keyup.enter)=\"clearInput()\">\r\n          <fa-icon [icon]=\"['fas', 'times']\" size=\"xs\"></fa-icon>\r\n        </span>\r\n      </span>\r\n    </ng-container>\r\n    <ul class=\"usa-sr-only\" aria-live=\"assertive\">\r\n      <li>{{srOnlyText}}</li>\r\n    </ul>\r\n  </div>"
         },
         {
             "name": "SdsDialogContainerComponent",
@@ -10455,6 +10617,70 @@ const COMPONENTS = {
                     }
                 ]
             }
+        },
+        {
+            "name": "SdsVideoPlayerComponent",
+            "id": "component-SdsVideoPlayerComponent-8e667943473066a0f90d059fdf101c13",
+            "file": "libs/packages/components/src/lib/video-player/video-player.component.ts",
+            "encapsulation": [
+                "ViewEncapsulation.None"
+            ],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "sds-video-player",
+            "styleUrls": [
+                "./css/px-video.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./video-player.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "VPConfiguration",
+                    "line": 12,
+                    "type": "VPInterface"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 14
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, Input, AfterViewInit, ViewEncapsulation } from '@angular/core';\r\nimport { InitPxVideo } from './js/px-video';\r\nimport { VPInterface } from './video-player';\r\n\r\n@Component({\r\n  selector: 'sds-video-player',\r\n  templateUrl: './video-player.component.html',\r\n  styleUrls: ['./css/px-video.css'],\r\n  encapsulation: ViewEncapsulation.None\r\n})\r\nexport class SdsVideoPlayerComponent implements AfterViewInit {\r\n  @Input() VPConfiguration: VPInterface;\r\n\r\n  ngAfterViewInit() {\r\n    InitPxVideo({\r\n      videoId: this.VPConfiguration.id,\r\n      captionsOnDefault: true,\r\n      seekInterval: this.VPConfiguration.seekInterval,\r\n      videoTitle: 'Video Player',\r\n      debug: this.VPConfiguration.debug\r\n    });\r\n  }\r\n\r\n  constructor() {\r\n}\r\n\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "\r\n@media only screen and (min-width: 620px) {\r\n\r\n  .custom-controls .transcript-link {\r\n\r\n    margin-top: -44px;\r\n\r\n  }\r\n\r\n}\r\n\r\n.transcript-single {\r\n\r\n  border-bottom: 2px solid black-thirty;\r\n\r\n}\r\n\r\n.transcript-single.hidden {\r\n\r\n  display: none;\r\n\r\n}\r\n\r\n.session--watch {\r\n\r\n  margin-bottom: HalfLineHeight;\r\n\r\n}\r\n\r\n.session--watch .button {\r\n\r\n  background: black-sixty;\r\n\r\n  margin-top: QuarterLineHeight;\r\n\r\n}\r\n\r\n.session--watch .button:hover,\r\n\r\n.session--watch .button:active,\r\n\r\n.session--watch .button:focus {\r\n\r\n  background: black-seventy;\r\n\r\n}\r\n\r\n.sr-only {\r\n\r\n  position: absolute !important;\r\n\r\n  clip: rect(1px, 1px, 1px, 1px);\r\n\r\n  padding: 0 !important;\r\n\r\n  border: 0 !important;\r\n\r\n  height: 1px !important;\r\n\r\n  width: 1px !important;\r\n\r\n  overflow: hidden;\r\n\r\n}\r\n\r\n.hide {\r\n\r\n  display: none;\r\n\r\n}\r\n\r\n.show-inline {\r\n\r\n  display: inline-block;\r\n\r\n}\r\n\r\n.px-video-container {\r\n\r\n  overflow: hidden;\r\n\r\n  min-width: 300px;\r\n\r\n}\r\n\r\n.px-video-img-captions-container {\r\n\r\n  position: relative;\r\n\r\n  /* padding-bottom: 56.25%;\r\n\r\n  height: 0; */\r\n\r\n}\r\n\r\n.px-video {\r\n\r\n  position: absolute;\r\n\r\n  top: 0;\r\n\r\n  left: 0;\r\n\r\n  margin-top: 0;\r\n\r\n  width: 100%;\r\n\r\n  height: 100%;\r\n\r\n}\r\n\r\n.px-video-img-captions-container * {\r\n\r\n  box-sizing: border-box;\r\n\r\n}\r\n\r\n.px-video-img-captions-container {\r\n\r\n  position: relative;\r\n\r\n}\r\n\r\n.px-video-wrapper {\r\n\r\n  position: relative;\r\n\r\n  padding-bottom: 56.25%;\r\n\r\n  height: 0;\r\n\r\n  z-index: 1;\r\n\r\n}\r\n\r\n.px-video {\r\n\r\n  position: absolute;\r\n\r\n  top: 0;\r\n\r\n  left: 0;\r\n\r\n  width: 100%;\r\n\r\n  height: 100%;\r\n\r\n}\r\n\r\n.progress-bar {\r\n\r\n  width: 85%;\r\n\r\n}\r\n\r\n@media only screen and (min-width: 480px) {\r\n\r\n  .progress-bar {\r\n\r\n    width: 89%;\r\n\r\n  }\r\n\r\n}\r\n\r\n@media only screen and (min-width: 970px) {\r\n\r\n  .progress-bar {\r\n\r\n    width: 95%;\r\n\r\n  }\r\n\r\n}\r\n\r\n@media only screen and (min-width: 1795px) {\r\n\r\n  .progress-bar {\r\n\r\n    width: 97.5%;\r\n\r\n  }\r\n\r\n}\r\n\r\n.px-video-controls {\r\n\r\n  margin-bottom: 10px;\r\n\r\n  margin-top: 10px;\r\n\r\n}\r\n\r\n.px-video-controls:after {\r\n\r\n  display: block;\r\n\r\n  font-size: 0;\r\n\r\n  content: \" \";\r\n\r\n  clear: both;\r\n\r\n  height: 0;\r\n\r\n  visibility: hidden;\r\n\r\n}\r\n\r\n.px-video-progress {\r\n\r\n  display: block;\r\n\r\n  width: 100%;\r\n\r\n  margin-bottom: 10px;\r\n\r\n  height: 10px;\r\n\r\n}\r\n\r\n.px-video-progress[value] {\r\n\r\n  -webkit-appearance: none;\r\n\r\n  border: none;\r\n\r\n}\r\n\r\n.px-video-progress[value]::-webkit-progress-bar {\r\n\r\n  background-color: #e6e6e6;\r\n\r\n}\r\n\r\n.px-video-progress[value]::-webkit-progress-value {\r\n\r\n  background-color: #009cdf;\r\n\r\n}\r\n\r\n.px-video-time {\r\n\r\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\r\n\r\n  float: right;\r\n\r\n  line-height: 30px;\r\n\r\n  margin-top: -30px;\r\n\r\n  font-size: 14px;\r\n\r\n}\r\n\r\n.px-video-captions {\r\n\r\n  box-sizing: border-box;\r\n\r\n  position: absolute;\r\n\r\n  /* top: 1px;  Added by Hemal */\r\n\r\n  left: 0;\r\n\r\n  width: 100%;\r\n\r\n  padding: 0.5em;\r\n\r\n  min-height: 2.5em;\r\n\r\n  background-color: #000;\r\n\r\n  color: #fff;\r\n\r\n  font-size: 1.1em;\r\n\r\n  text-align: center;\r\n\r\n  opacity: 0.75;\r\n\r\n  z-index: 2;\r\n\r\n}\r\n\r\n.px-video-playback-buttons {\r\n\r\n  float: left;\r\n\r\n  line-height: 20px;\r\n\r\n  min-width: 145px;\r\n\r\n}\r\n\r\n@media only screen and (min-width: 620px) {\r\n\r\n  .px-video-playback-buttons {\r\n\r\n    float: none;\r\n\r\n    left: 50%;\r\n\r\n    margin-left: -120px;\r\n\r\n    min-width: 200px;\r\n\r\n    position: absolute;\r\n\r\n    width: 200px;\r\n\r\n  }\r\n\r\n}\r\n\r\n.px-video-controls button {\r\n\r\n  border: 1px transparent solid;\r\n\r\n  background: transparent;\r\n\r\n  padding: 0;\r\n\r\n  margin: 0 5px;\r\n\r\n  width: 25px;\r\n\r\n  height: 25px;\r\n\r\n  overflow: hidden;\r\n\r\n  background: no-repeat url(\"../images/px-video-sprite.svg\");\r\n\r\n}\r\n\r\n@media only screen and (min-width: 620px) {\r\n\r\n  .px-video-controls button {\r\n\r\n    background-size: 150%;\r\n\r\n    width: 40px;\r\n\r\n    height: 40px;\r\n\r\n  }\r\n\r\n}\r\n\r\n\r\n\r\n.px-video-controls button:focus {\r\n\r\n  border: 1px #999 dotted;\r\n\r\n  outline: none;\r\n\r\n}\r\n\r\n.px-video-controls button {\r\n\r\n  cursor: pointer;\r\n\r\n}\r\n\r\n.px-video-controls button.px-video-restart {\r\n\r\n  background-position: -9px -331px;\r\n\r\n}\r\n\r\n.px-video-controls button.px-video-restart:hover,\r\n\r\n.px-video-controls button.px-video-restart:focus {\r\n\r\n  background-position: -9px -295px;\r\n\r\n}\r\n\r\n@media only screen and (min-width: 620px) {\r\n\r\n  .px-video-controls button.px-video-restart {\r\n\r\n    background-position: -9px -523px;\r\n\r\n  }\r\n\r\n}\r\n\r\n@media only screen and (min-width: 620px) {\r\n\r\n  .px-video-controls button.px-video-restart:hover,\r\n\r\n  .px-video-controls button.px-video-restart:focus {\r\n\r\n    background-position: -9px -466px;\r\n\r\n  }\r\n\r\n}\r\n\r\n.px-video-controls button.px-video-rewind {\r\n\r\n  background-position: -9px -187px;\r\n\r\n}\r\n\r\n.px-video-controls button.px-video-rewind:hover,\r\n\r\n.px-video-controls button.px-video-rewind:focus {\r\n\r\n  background-position: -9px -151px;\r\n\r\n}\r\n\r\n@media only screen and (min-width: 620px) {\r\n\r\n  .px-video-controls button.px-video-rewind {\r\n\r\n    background-position: -9px -295px;\r\n\r\n  }\r\n\r\n  .px-video-controls button.px-video-rewind:hover,\r\n\r\n  .px-video-controls button.px-video-rewind:focus {\r\n\r\n    background-position: -9px -238px;\r\n\r\n  }\r\n\r\n}\r\n\r\n.px-video-controls button.px-video-play {\r\n\r\n  background-position: -8px -43px;\r\n\r\n}\r\n\r\n.px-video-controls button.px-video-play:hover,\r\n\r\n.px-video-controls button.px-video-play:focus {\r\n\r\n  background-position: -8px -7px;\r\n\r\n}\r\n\r\n@media only screen and (min-width: 620px) {\r\n\r\n  .px-video-controls button.px-video-play {\r\n\r\n    background-position: -8px -67px;\r\n\r\n  }\r\n\r\n  .px-video-controls button.px-video-play:hover,\r\n\r\n  .px-video-controls button.px-video-play:focus {\r\n\r\n    background-position: -8px -10px;\r\n\r\n  }\r\n\r\n}\r\n\r\n.px-video-controls button.px-video-pause {\r\n\r\n  background-position: -9px -115px;\r\n\r\n}\r\n\r\n.px-video-controls button.px-video-pause:hover,\r\n\r\n.px-video-controls button.px-video-pause:focus {\r\n\r\n  background-position: -9px -79px;\r\n\r\n}\r\n\r\n@media only screen and (min-width: 620px) {\r\n\r\n  .px-video-controls button.px-video-pause {\r\n\r\n    background-position: -9px -182px;\r\n\r\n  }\r\n\r\n}\r\n\r\n@media only screen and (min-width: 620px) {\r\n\r\n  .px-video-controls button.px-video-pause:hover,\r\n\r\n  .px-video-controls button.px-video-pause:focus {\r\n\r\n    background-position: -9px -124px;\r\n\r\n  }\r\n\r\n}\r\n\r\n.px-video-controls button.px-video-forward {\r\n\r\n  background-position: -10px -259px;\r\n\r\n}\r\n\r\n.px-video-controls button.px-video-forward:hover,\r\n\r\n.px-video-controls button.px-video-forward:focus {\r\n\r\n  background-position: -10px -223px;\r\n\r\n}\r\n\r\n@media only screen and (min-width: 620px) {\r\n\r\n  .px-video-controls button.px-video-forward {\r\n\r\n    background-position: -10px -409px;\r\n\r\n  }\r\n\r\n  .px-video-controls button.px-video-forward:hover,\r\n\r\n  .px-video-controls button.px-video-forward:focus {\r\n\r\n    background-position: -10px -352px;\r\n\r\n  }\r\n\r\n}\r\n\r\n.px-video-fullscreen-btn-container {\r\n\r\n  float: left;\r\n\r\n  width: 25px;\r\n\r\n}\r\n\r\n.px-video-fullscreen-btn-container label {\r\n\r\n  display: inline-block;\r\n\r\n  width: 25px;\r\n\r\n  height: 20px;\r\n\r\n  margin-top: 3px;\r\n\r\n  margin-left: 1px;\r\n\r\n  background: no-repeat url(\"../images/px-video-sprite.svg\");\r\n\r\n  background-position: -6px -943px;\r\n\r\n}\r\n\r\n@media only screen and (min-width: 540px) {\r\n\r\n  .px-video-fullscreen-btn-container label {\r\n\r\n    margin-top: 5px;\r\n\r\n  }\r\n\r\n}\r\n\r\n\r\n\r\n.px-video-fullscreen-btn-container input[type=\"checkbox\"]:focus+label {\r\n\r\n  outline: 1px #999 dotted;\r\n\r\n  background-position: -6px -907px;\r\n\r\n}\r\n\r\n.px-video-fullscreen-btn-container input[type=\"checkbox\"]:hover+label {\r\n\r\n  background-position: -6px -907px;\r\n\r\n  cursor: pointer;\r\n\r\n}\r\n\r\n.px-video-fullscreen-btn-container input[type=\"checkbox\"]:focus+label {\r\n\r\n  outline: 1px #999 dotted;\r\n\r\n  background-position: -6px -907px;\r\n\r\n}\r\n\r\n.px-video-fullscreen-btn-container input[type=\"checkbox\"]:checked+label {\r\n\r\n  background-position: -6px -979px;\r\n\r\n}\r\n\r\n.px-video-fullscreen-btn-container input[type=\"checkbox\"]:checked:hover+label {\r\n\r\n  background-position: -6px -1015px;\r\n\r\n}\r\n\r\n.px-video-captions-btn-container {\r\n\r\n  float: left;\r\n\r\n}\r\n\r\n@media only screen and (min-width: 540px) {\r\n\r\n  .px-video-captions-btn-container {\r\n\r\n    clear: none;\r\n\r\n    margin-top: 1px;\r\n\r\n    margin-left: 10px;\r\n\r\n  }\r\n\r\n}\r\n\r\n.px-video-captions-btn-container label {\r\n\r\n  display: inline-block;\r\n\r\n  width: 25px;\r\n\r\n  height: 20px;\r\n\r\n  margin-top: 3px;\r\n\r\n  background: no-repeat url(\"../images/px-video-sprite.svg\");\r\n\r\n  background-position: -6px -835px;\r\n\r\n}\r\n\r\n@media only screen and (min-width: 540px) {\r\n\r\n  .px-video-captions-btn-container label {\r\n\r\n    margin-top: 4px;\r\n\r\n  }\r\n\r\n}\r\n\r\n.px-video-captions-btn-container input[type=\"checkbox\"]:focus+label {\r\n\r\n  outline: 1px #999 dotted;\r\n\r\n  background-position: -6px -799px;\r\n\r\n}\r\n\r\n.px-video-captions-btn-container input[type=\"checkbox\"]:hover+label {\r\n\r\n  background-position: -6px -799px;\r\n\r\n  cursor: pointer;\r\n\r\n}\r\n\r\n.px-video-captions-btn-container input[type=\"checkbox\"]:focus+label {\r\n\r\n  outline: 1px #999 dotted;\r\n\r\n  background-position: -6px -799px;\r\n\r\n}\r\n\r\n.px-video-captions-btn-container input[type=\"checkbox\"]:checked+label {\r\n\r\n  background-position: -6px -871px;\r\n\r\n}\r\n\r\n.px-video-volume-controls {\r\n\r\n  float: right;\r\n\r\n  overflow: hidden;\r\n\r\n  min-width: 133px;\r\n\r\n}\r\n\r\n@media only screen and (min-width: 540px) {\r\n\r\n  .px-video-volume-controls {\r\n\r\n    margin-top: 1px;\r\n\r\n  }\r\n\r\n}\r\n\r\n.px-video-mute-btn-container {\r\n\r\n  float: left;\r\n\r\n  width: 26px;\r\n\r\n}\r\n\r\n.px-video-mute-btn-container label {\r\n\r\n  display: inline-block;\r\n\r\n  width: 25px;\r\n\r\n  height: 20px;\r\n\r\n  margin-top: 3px;\r\n\r\n  background: no-repeat url(\"../images/px-video-sprite.svg\");\r\n\r\n  background-position: -6px -476px;\r\n\r\n}\r\n\r\n@media only screen and (min-width: 540px) {\r\n\r\n  .px-video-mute-btn-container label {\r\n\r\n    margin-top: 6px;\r\n\r\n  }\r\n\r\n}\r\n\r\n.px-video-mute-btn-container input[type=\"checkbox\"]:focus+label {\r\n\r\n  outline: 1px #999 dotted;\r\n\r\n  background-position: -6px -440px;\r\n\r\n}\r\n\r\n.px-video-mute-btn-container input[type=\"checkbox\"]:hover+label {\r\n\r\n  background-position: -6px -440px;\r\n\r\n  cursor: pointer;\r\n\r\n}\r\n\r\n.px-video-mute-btn-container input[type=\"checkbox\"]:focus+label {\r\n\r\n  outline: 1px #999 dotted;\r\n\r\n  background-position: -6px -440px;\r\n\r\n}\r\n\r\n.px-video-mute-btn-container input[type=\"checkbox\"]:checked+label {\r\n\r\n  background-position: -6px -692px;\r\n\r\n}\r\n\r\n.px-video-mute-btn-container input[type=\"checkbox\"]:checked:hover+label,\r\n\r\n.px-video-mute-btn-container input[type=\"checkbox\"]:checked:focus+label {\r\n\r\n  background-position: -6px -656px;\r\n\r\n}\r\n\r\n.px-video-volume-slider {\r\n\r\n  float: left;\r\n\r\n  width: 80px;\r\n\r\n}\r\n\r\n@media only screen and (min-width: 540px) {\r\n\r\n  .px-video-volume-slider {\r\n\r\n    width: 95px;\r\n\r\n  }\r\n\r\n}\r\n\r\n.px-video-controls input[type='range'] {\r\n\r\n  -webkit-appearance: none;\r\n\r\n  height: 6px;\r\n\r\n  width: 70px;\r\n\r\n  margin-top: 9px;\r\n\r\n  margin-right: 0;\r\n\r\n  margin-left: 5px;\r\n\r\n  background-color: #e6e6e6;\r\n\r\n  outline: none;\r\n\r\n}\r\n\r\n@media only screen and (min-width: 540px) {\r\n\r\n  .px-video-controls input[type='range'] {\r\n\r\n    margin-top: 12px;\r\n\r\n    width: 85px;\r\n\r\n  }\r\n\r\n}\r\n\r\n.px-video-controls input[type='range']:focus::-webkit-slider-thumb {\r\n\r\n  outline: 1px #999 dotted;\r\n\r\n}\r\n\r\n.px-video-controls input[type='range']::-moz-range-track {\r\n\r\n  -moz-appearance: none;\r\n\r\n  height: 6px;\r\n\r\n  background-color: #e6e6e6;\r\n\r\n  border: none;\r\n\r\n}\r\n\r\n.px-video-controls input[type='range']::-webkit-slider-thumb {\r\n\r\n  -webkit-appearance: none !important;\r\n\r\n  height: 10px;\r\n\r\n  width: 6px;\r\n\r\n  background-color: #666;\r\n\r\n}\r\n\r\n.px-video-controls input[type='range']::-moz-range-thumb {\r\n\r\n  background-color: #666;\r\n\r\n  border: none;\r\n\r\n  height: 12px;\r\n\r\n  width: 8px;\r\n\r\n}\r\n\r\n@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {\r\n\r\n  .px-video-controls input[type='range'] {\r\n\r\n    position: relative;\r\n\r\n    padding: 0;\r\n\r\n    height: 8px;\r\n\r\n    top: -3px;\r\n\r\n  }\r\n\r\n  .px-video-controls .px-video-time {\r\n\r\n    margin-top: 4px;\r\n\r\n  }\r\n\r\n  .px-video-controls .px-video-captions {\r\n\r\n    padding: 8px;\r\n\r\n    min-height: 36px;\r\n\r\n  }\r\n\r\n}\r\n\r\n.px-video-controls {\r\n\r\n  display: flex;\r\n\r\n  flex-direction: row;\r\n\r\n  flex-wrap: wrap;\r\n\r\n  justify-content: space-between;\r\n\r\n  align-items: center;\r\n\r\n  align-content: center;\r\n\r\n}\r\n\r\n.progress-bar {\r\n\r\n  flex-grow: 1;\r\n\r\n  width: 75%;\r\n\r\n}\r\n\r\n@media only screen and (min-width: 480px) {\r\n\r\n  .progress-bar {\r\n\r\n    width: 75%;\r\n\r\n  }\r\n\r\n}\r\n\r\n@media only screen and (min-width: 590px) {\r\n\r\n  .progress-bar {\r\n\r\n    width: 85%;\r\n\r\n  }\r\n\r\n}\r\n\r\n@media only screen and (min-width: 970px) {\r\n\r\n  .progress-bar {\r\n\r\n    width: 85%;\r\n\r\n  }\r\n\r\n}\r\n\r\n@media only screen and (min-width: 1795px) {\r\n\r\n  .progress-bar {\r\n\r\n    width: 85%;\r\n\r\n  }\r\n\r\n}\r\n\r\n.px-video-progress {\r\n\r\n  margin-top: 10px;\r\n\r\n  width: 100%;\r\n\r\n}\r\n\r\n.px-video-time {\r\n\r\n  flex-grow: 0;\r\n\r\n  flex-shrink: 0;\r\n\r\n  padding-left: 10px;\r\n\r\n  margin-top: 0;\r\n\r\n}\r\n\r\n.px-video-playback-buttons {\r\n\r\n  flex-grow: 1;\r\n\r\n  min-width: auto;\r\n\r\n}\r\n\r\n@media only screen and (min-width: 620px) {\r\n\r\n  .px-video-playback-buttons {\r\n\r\n    left: auto;\r\n\r\n    /* margin-left: auto; */\r\n\r\n    min-width: auto;\r\n\r\n    position: relative;\r\n\r\n    width: auto;\r\n\r\n    display: flex;\r\n\r\n    flex-direction: row;\r\n\r\n    flex-wrap: no-wrap;\r\n\r\n    justify-content: center;\r\n\r\n    align-items: center;\r\n\r\n    align-content: center;\r\n\r\n    padding-left: 96px;\r\n\r\n  }\r\n\r\n}\r\n\r\n@media only screen and (min-width: 620px) {\r\n\r\n  .has-captions .px-video-playback-buttons {\r\n\r\n    padding-left: 130px;\r\n\r\n  }\r\n\r\n}\r\n\r\n.px-video-controls button {\r\n\r\n  margin: 0 5px;\r\n\r\n}\r\n\r\n.px-video-volume-controls {\r\n\r\n  min-width: auto;\r\n\r\n}\r\n\r\n@media only screen and (min-width: 540px) {\r\n\r\n  .px-video-volume-controls {\r\n\r\n    margin-top: 0;\r\n\r\n  }\r\n}\r\n\r\n",
+                    "styleUrl": "./css/px-video.css"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 22
+            },
+            "implements": [
+                "AfterViewInit"
+            ],
+            "templateData": "<div class=\"px-video-container\" id=\"{{VPConfiguration.id}}\" [style.width.px]=\"VPConfiguration.width\" >\r\n  <div class=\"px-video-img-captions-container\" >\r\n      <div class=\"px-video-captions hide\" aria-hidden=\"true\"></div>\r\n      <video width=\"{{VPConfiguration.width}}\" height=\"{{VPConfiguration.height}}\" poster=\"{{VPConfiguration.poster}}\" controls preload={{VPConfiguration.preload}}>\r\n        <!-- if Safari/Chrome-->\r\n          <source src=\"{{VPConfiguration.sourceMp4}}\" type=\"video/mp4\" />\r\n          <!-- If Firefox/Opera/Chrome/IE -->\r\n          <source src=\"{{VPConfiguration.sourceWebm}}\" type=\"video/webm\" />\r\n          <track kind=\"subtitles\" kind=\"captions\" label=\"English captions\" src=\"{{VPConfiguration.caption}}\" srclang=\"en\" default />\r\n      </video>\r\n  </div>\r\n  <div class=\"px-video-controls\" [style.width.px]=\"VPConfiguration.width\"></div>\r\n</div>\r\n"
         }
     ],
     "modules": [
@@ -11000,6 +11226,43 @@ const COMPONENTS = {
             ]
         },
         {
+            "name": "SdsPopupModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "SdsPopupDirective"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "SdsPopupDirective"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
             "name": "SdsSearchModule",
             "children": [
                 {
@@ -11273,6 +11536,43 @@ const COMPONENTS = {
                     "elements": []
                 }
             ]
+        },
+        {
+            "name": "SdsVideoPlayerModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "SdsVideoPlayerComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "SdsVideoPlayerComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
         }
     ],
     "miscellaneous": {
@@ -11498,18 +11798,18 @@ const COMPONENTS = {
                 "name": "uniqueId",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/packages/components/src/lib/dialog/dialog-ref.ts",
+                "file": "libs/packages/components/src/lib/accordion/accordion-item.component.ts",
                 "type": "number",
-                "defaultValue": "0"
+                "defaultValue": "0",
+                "description": "<p>Counter for generating unique element ids. </p>\n"
             },
             {
                 "name": "uniqueId",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/packages/components/src/lib/accordion/accordion-item.component.ts",
+                "file": "libs/packages/components/src/lib/dialog/dialog-ref.ts",
                 "type": "number",
-                "defaultValue": "0",
-                "description": "<p>Counter for generating unique element ids. </p>\n"
+                "defaultValue": "0"
             },
             {
                 "name": "uniqueId",
@@ -12570,16 +12870,6 @@ const COMPONENTS = {
                     "defaultValue": "{\r\n  container: trigger('container', [\r\n    state(\r\n      'void',\r\n      style({\r\n        opacity: 0,\r\n        transform: 'scale(0.8)'\r\n      })\r\n    ),\r\n    transition(\r\n      'void => enter',\r\n      group([\r\n        query(\r\n          '.sds-overlay',\r\n          animate(\r\n            '100ms linear',\r\n            style({\r\n              opacity: 1\r\n            })\r\n          )\r\n        ),\r\n        animate(\r\n          '120ms cubic-bezier(0, 0, 0.2, 1)',\r\n          style({ transform: 'scale(1)' })\r\n        )\r\n      ])\r\n    ),\r\n    transition('* => void', animate('100ms 25ms linear', style({ opacity: 0 })))\r\n  ])\r\n}"
                 }
             ],
-            "libs/packages/components/src/lib/dialog/dialog-ref.ts": [
-                {
-                    "name": "uniqueId",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/dialog/dialog-ref.ts",
-                    "type": "number",
-                    "defaultValue": "0"
-                }
-            ],
             "libs/packages/components/src/lib/accordion/accordion-item.component.ts": [
                 {
                     "name": "uniqueId",
@@ -12589,6 +12879,16 @@ const COMPONENTS = {
                     "type": "number",
                     "defaultValue": "0",
                     "description": "<p>Counter for generating unique element ids. </p>\n"
+                }
+            ],
+            "libs/packages/components/src/lib/dialog/dialog-ref.ts": [
+                {
+                    "name": "uniqueId",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/packages/components/src/lib/dialog/dialog-ref.ts",
+                    "type": "number",
+                    "defaultValue": "0"
                 }
             ],
             "libs/packages/components/src/lib/toolbar/toolbar.component.ts": [
