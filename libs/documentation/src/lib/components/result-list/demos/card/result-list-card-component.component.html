@@ -1,11 +1,9 @@
-<sds-page class="condensed margin-bottom-0">
-  <sds-search-result-list [model]="items">
+<sds-page class="condensed">
+  <sds-search-result-list [model]="items" [divider]=false>
     <ng-template #resultContent let-item>
-      <ul class="usa-list usa-list--unstyled">
-        <li>
-          ID {{item.id}} - {{item.title}}
-        </li>
-      </ul>
+      <card-item-sample [model]="item">
+          <child-card-item-sample *ngIf="item.hasNewerData"></child-card-item-sample>
+      </card-item-sample>
     </ng-template>
   </sds-search-result-list>
 

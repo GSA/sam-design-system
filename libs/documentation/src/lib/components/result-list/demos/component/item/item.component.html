@@ -1,0 +1,273 @@
+ <div class="sds-result-item">
+  <!-- Item Heading -->
+
+    <div class="grid-row grid-gap">
+      <div class="grid-col">
+        <h3 class="font-sans-xs margin-y-0">
+          <!-- title -->
+          <a class="usa-link" href="#">
+            {{model.text}} Entity: {{model.id}}
+          </a>
+        </h3>
+      </div>
+      <!-- <div class="grid-col">
+        <div class="action-menu float-right">
+          <fa-icon [fixedWidth]="true" [icon]="['sds', 'information-circle']" size="2x"></fa-icon>
+        </div>
+      </div> -->
+
+      <div class="grid-col">
+        <div class="action-menu float-right">
+          <!-- action menu -->
+          <sds-actions-menu [model]="menu" (clicks)="log($event)"></sds-actions-menu>
+        </div>
+      </div>
+    </div>
+
+    <!-- Item Data -->
+    <div class="grid-row grid-gap">
+
+      <!-- 1st column -->
+      <div class="tablet:grid-col-4 grid-col-12">
+        <!-- Field Width -->
+        <div class="grid-row">
+
+          <!-- Duns Field Start -->
+          <div class="grid-col-12">
+
+            <div class="sds-group--horizontal">
+
+              <!-- Horizontal Config -->
+              <div class="grid-row">
+
+                <!-- Tag -->
+                <div class="grid-col-auto">
+                  <div class="grid-row">
+                    <div class="grid-col-auto">
+                      <div class="usa-tag sds-tag--info-purple sds-static--tag">DUNS</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Key/Value Wrapper -->
+                <div class="grid-col">
+                  <div class="grid-row">
+                    <div class="grid-col-auto">
+                      <div class="sds-static--label">Unique Entity ID:</div>
+                    </div>
+                    <div class="grid-col-fill">
+                      <p class="sds-static">902930291</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- UEI Field Start -->
+          <div class="grid-col-12">
+
+            <div class="sds-group--horizontal">
+
+              <!-- Horizontal Config -->
+              <div class="grid-row">
+
+                <!-- Tag -->
+                <div class="grid-col-auto">
+                  <div class="grid-row">
+                    <div class="grid-col-auto">
+                      <div class="usa-tag sds-tag--info-white sds-static--tag">SAM</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Key/Value Wrapper -->
+                <div class="grid-col">
+                  <div class="grid-row">
+                    <div class="grid-col-auto">
+                      <div class="sds-static--label">Unique Entity ID:</div>
+                    </div>
+                    <div class="grid-col-fill">
+                      <p class="sds-static">1A23B45C67D89E</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Cage/NCAGE Field Start -->
+          <div class="grid-col-12">
+
+            <div class="sds-group--horizontal">
+
+              <!-- Horizontal Config -->
+              <div class="grid-row">
+
+                <!-- Tag -->
+                <div class="grid-col-auto">
+                  <div class="grid-row">
+                    <div class="grid-col-auto">
+                      <div class="sds-static--tag display-none"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Key/Value Wrapper -->
+                <div class="grid-col">
+                  <div class="grid-row">
+                    <div class="grid-col-auto">
+                      <div class="sds-static--label">CAGE/NCAGE:</div>
+                    </div>
+                    <div class="grid-col-fill">
+                      <p class="sds-static">0D203</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 2nd column -->
+      <div class="tablet:grid-col-4 grid-col-12">
+        <!-- Field Width -->
+        <div class="grid-row">
+
+          <!-- Purpose of Registration Field Start -->
+          <div class="grid-col-12">
+
+            <div class="sds-group">
+
+              <!-- Horizontal Config -->
+              <div class="grid-row">
+
+                <!-- Key/Value Wrapper -->
+                <div class="grid-col">
+                  <div class="grid-row">
+                    <div class="grid-col-12">
+                      <div class="sds-static--label">Purpose of Registration:</div>
+                    </div>
+                    <div class="grid-col-12">
+                      <p class="sds-static">Federal Assistance Awards & IGT</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Address Field Start -->
+          <div *ngIf="model.id!==3" class="grid-col-12">
+
+            <div class="sds-group">
+
+              <!-- Horizontal Config -->
+              <div class="grid-row">
+
+                <!-- Key/Value Wrapper -->
+                <div class="grid-col">
+                  <div class="grid-row">
+                    <div class="grid-col-12">
+                      <div class="sds-static--label">Physical Address:</div>
+                    </div>
+                    <div class="grid-col-12">
+                      <p class="sds-static">123456 George Washington Boulevard, Suite 4a</p>
+                      <p class="sds-static">Ashburn, VA 20147 United States</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Address Field Start -->
+          <div *ngIf="model.id===3" class="grid-col-12">
+
+            <div class="sds-group--horizontal">
+
+              <!-- Horizontal Config -->
+              <div class="grid-row">
+
+                <!-- Key/Value Wrapper -->
+                <div class="grid-col">
+                  <div class="grid-row">
+                    <div class="grid-col-12">
+                      <div class="sds-alert--block margin-right-1 padding-05">
+                        <div class="sds-alert--block-icon grid-col-auto">
+                          <fa-icon [icon]="['sds', 'exclamation']" size="3x"></fa-icon>
+                        </div>
+                        <div class="grid-col">
+                          <div class="sds-static">Physical Address Update Available</div>
+                          <div class="sds-static-label">
+                            <div>123456 George Washington Boulevard, Suite 4a</div>
+                            <div>Ashburn, VA 20147 United States</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="tablet:grid-col-4 grid-col-12">
+
+        <!-- Horizontal Config -->
+        <div class="grid-row grid-gap-05">
+
+          <!-- Key/Value Wrapper -->
+          <div class="tablet:grid-col-6 grid-col-4">
+            <div class="grid-row">
+              <div class="grid-col-12">
+                <div class="sds-static--label font-sans-3xs text-light text-italic">Status</div>
+              </div>
+              <div class="grid-col-12">
+                <span class="sds-tag sds-tag--outline">
+                  <i class="sds-status sds-status--sm sds-status--green"></i>Active</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Key/Value Wrapper -->
+          <div class="tablet:grid-col-6 grid-col-4">
+            <div class="grid-row">
+              <div class="grid-col-12">
+                <div class="sds-static--label font-sans-3xs text-light text-italic">Expiration Date</div>
+              </div>
+              <div class="grid-col-12">
+                <span class="sds-tag sds-tag--outline flex-justify-center">Feb 20, 2019</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="grid-row grid-gap-05 margin-top-1">
+          <div class="grid-col-auto">
+            <span class="sds-tag sds-tag--chip sds-tag--small sds-tag--light" title="Notarized Letter">
+              Notarized Letter
+              <span class="sds-text-disabled">
+                <fa-icon [icon]="['fas', 'question']" size="sm"></fa-icon>
+              </span>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <ng-content></ng-content>
+  </div>
