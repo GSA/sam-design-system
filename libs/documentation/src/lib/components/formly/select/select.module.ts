@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SelectBasic } from './demos/basic/select-basic.component';
-import { DocumentationExamplesPage } from '../shared/examples-page/examples.component';
-import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
-import { DocumentationSourcePage } from '../shared/source-page/source.component';
-import { DocumentationTemplatePage } from '../shared/template-page/template.component';
-import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../shared/index';
-import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
+import { DocumentationExamplesPage } from '../../shared/examples-page/examples.component';
+import { DocumentationAPIPage } from '../../shared/api-page/docs-api.component';
+import { DocumentationSourcePage } from '../../shared/source-page/source.component';
+import { DocumentationTemplatePage } from '../../shared/template-page/template.component';
+import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../../shared/index';
+import { ComponentWrapperComponent } from '../../../shared/component-wrapper/component-wrapper.component';
 import { SelectBasicModule } from './demos/basic/select-basic.module';
 
 declare var require: any;

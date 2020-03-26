@@ -25,12 +25,12 @@ import { ROUTES as POPUP_ROUTES, PopupModule } from './components/popup/popup.mo
 
 
 /* Form Types */
-import { ROUTES as INPUT_ROUTES, InputModule } from './components/input/input.module';
-import { ROUTES as TEXT_AREA_ROUTES, TextAreaModule } from './components/textarea/textarea.module';
-import { ROUTES as CHECKBOX_ROUTES, CheckboxModule } from './components/checkbox/checkbox.module';
-import { ROUTES as MULTI_CHECKBOX_ROUTES, MultiCheckboxModule } from './components/multicheckbox/multicheckbox.module';
-import { ROUTES as RADIO_ROUTES, RadioModule } from './components/radio/radio.module';
-import { ROUTES as SELECT_ROUTES, SelectModule } from './components/select/select.module';
+import { ROUTES as INPUT_ROUTES, InputModule } from './components/formly/input/input.module';
+import { ROUTES as TEXT_AREA_ROUTES, TextAreaModule } from './components/formly/textarea/textarea.module';
+import { ROUTES as CHECKBOX_ROUTES, CheckboxModule } from './components/formly/checkbox/checkbox.module';
+import { ROUTES as MULTI_CHECKBOX_ROUTES, MultiCheckboxModule } from './components/formly/multicheckbox/multicheckbox.module';
+import { ROUTES as RADIO_ROUTES, RadioModule } from './components/formly/radio/radio.module';
+import { ROUTES as SELECT_ROUTES, SelectModule } from './components/formly/select/select.module';
 import { ROUTES as FORMLY_AUTOCOMPLETE_ROUTES, FormlyAutocompleteModule } from './components/formly/autocomplete/autocomplete.module';
 
 /* Form Wrappers */
