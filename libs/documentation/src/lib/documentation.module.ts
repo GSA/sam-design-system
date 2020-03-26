@@ -17,6 +17,7 @@ import { ROUTES as COLLAPSE_ROUTES, CollapseModule } from './components/collapse
 import { ROUTES as ACTIONS_ROUTES, ActionsModule } from './components/actions/actions.module';
 import { ROUTES as PAGINATION_ROUTES, PaginationModule } from './components/pagination/pagination.module';
 import { ROUTES as SIDE_NAVIGATION_ROUTES, SideNavigationModule } from './components/sidenavigation/sidenavigation.module';
+import { ROUTES as RESULT_LIST_ROUTES, ResultListModule } from './components/result-list/result-list.module';
 
 /* Form Types */
 import { ROUTES as INPUT_ROUTES, InputModule } from './components/input/input.module';
@@ -53,6 +54,7 @@ export const ROUTES: Routes = [
   { path: 'components/actions', children: ACTIONS_ROUTES },
   { path: 'components/pagination', children: PAGINATION_ROUTES },
   { path: 'components/sidenavigation', children: SIDE_NAVIGATION_ROUTES },
+  { path: 'components/result-list', children: RESULT_LIST_ROUTES },
   { path: 'components/input', children: INPUT_ROUTES },
   { path: 'components/textarea', children: TEXT_AREA_ROUTES },
   { path: 'components/checkbox', children: CHECKBOX_ROUTES },
@@ -78,6 +80,7 @@ export const ROUTES: Routes = [
     ActionsModule,
     PaginationModule,
     SideNavigationModule,
+    ResultListModule,
     InputModule,
     OverviewModule,
     IntroductionModule,
