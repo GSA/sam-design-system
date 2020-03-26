@@ -19,6 +19,7 @@ import { ROUTES as PAGINATION_ROUTES, PaginationModule } from './components/pagi
 import { ROUTES as SIDE_NAVIGATION_ROUTES, SideNavigationModule } from './components/sidenavigation/sidenavigation.module';
 import { ROUTES as RESULT_LIST_ROUTES, ResultListModule } from './components/result-list/result-list.module';
 import { ROUTES as SEARCH_ROUTES, SearchModule } from './components/search/search.module';
+import { ROUTES as AUTOCOMPLETE_ROUTES, AutocompleteModule } from './components/autocomplete/autocomplete.module';
 
 /* Form Types */
 import { ROUTES as INPUT_ROUTES, InputModule } from './components/input/input.module';
@@ -57,6 +58,7 @@ export const ROUTES: Routes = [
   { path: 'components/sidenavigation', children: SIDE_NAVIGATION_ROUTES },
   { path: 'components/result-list', children: RESULT_LIST_ROUTES },
   { path: 'components/search', children: SEARCH_ROUTES },
+  { path: 'components/autocomplete', children: AUTOCOMPLETE_ROUTES },
   { path: 'components/input', children: INPUT_ROUTES },
   { path: 'components/textarea', children: TEXT_AREA_ROUTES },
   { path: 'components/checkbox', children: CHECKBOX_ROUTES },
@@ -84,6 +86,7 @@ export const ROUTES: Routes = [
     SideNavigationModule,
     ResultListModule,
     SearchModule,
+    AutocompleteModule,
     InputModule,
     OverviewModule,
     IntroductionModule,
