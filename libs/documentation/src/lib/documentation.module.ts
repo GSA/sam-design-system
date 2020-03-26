@@ -32,6 +32,7 @@ import { ROUTES as MULTI_CHECKBOX_ROUTES, MultiCheckboxModule } from './componen
 import { ROUTES as RADIO_ROUTES, RadioModule } from './components/formly/radio/radio.module';
 import { ROUTES as SELECT_ROUTES, SelectModule } from './components/formly/select/select.module';
 import { ROUTES as FORMLY_AUTOCOMPLETE_ROUTES, FormlyAutocompleteModule } from './components/formly/autocomplete/autocomplete.module';
+import { ROUTES as FORMLY_DATEPICKER_ROUTES, FormlyDatepickerModule } from './components/formly/datepicker/datepicker.module';
 
 /* Form Wrappers */
 import { ROUTES as FORM_FIELD_ROUTES, FormFieldModule } from './components/form-field/form-field.module';
@@ -76,6 +77,7 @@ export const ROUTES: Routes = [
   { path: 'components/radio', children: RADIO_ROUTES },
   { path: 'components/select', children: SELECT_ROUTES },
   { path: 'components/formly-autocomplete', children: FORMLY_AUTOCOMPLETE_ROUTES },
+  { path: 'components/formly-datepicker', children: FORMLY_DATEPICKER_ROUTES },
 
   // Wrappers
   { path: 'components/form-field', children: FORM_FIELD_ROUTES },
@@ -113,6 +115,7 @@ export const ROUTES: Routes = [
     RadioModule,
     SelectModule,
     FormlyAutocompleteModule,
+    FormlyDatepickerModule,
     FormFieldModule,
     FilterWrapperModule,
     AccordionWrapperModule,
