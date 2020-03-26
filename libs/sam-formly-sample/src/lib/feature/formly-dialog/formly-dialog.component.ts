@@ -10,31 +10,6 @@ import {
 import { removeSummaryDuplicates } from '@angular/compiler';
 import { text } from '@angular/core/src/render3';
 import { _MatButtonMixinBase } from '@angular/material/button';
-  export interface DialogData {
-    keyword: boolean;
-    title: boolean;
-    currentDate: boolean;
-    publishDate: boolean;
-    lastModifiedDate: boolean;
-    FederalFilter: boolean;
-    noticeFilter: boolean;
-    ExpirationDateFilter: boolean;
-  }
-
-@Component({
-    selector: 'sds-dialog-sample-data',
-    templateUrl: 'formly-advanced-filters-dialog.html'
-  })
-  export class DialogAdvancedFilterDialog {
-    constructor(
-      public dialogRef: SdsDialogRef<DialogAdvancedFilterDialog>,
-      @Inject(SDS_DIALOG_DATA) public data: DialogData
-    ) {}
-  
-    onNoClick(): void {
-      this.dialogRef.close();
-    }
-  }
   @Component({
     selector: 'sds-formly-dialog',
     templateUrl: './formly-dialog.component.html'
@@ -43,15 +18,6 @@ export class FormlyDialogComponent implements OnInit {
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
-  keyword: boolean = true;
-  title: boolean = true;
-  currentDate: boolean = false;
-  publishDate: boolean = true;
-  lastModifiedDate: boolean = true;
-  FederalFilter: boolean = true;
-  titleText:"";
-  noticeFilter: boolean = false;
-  ExpirationDateFilter: boolean = true;
 
   public filterChange$ = new BehaviorSubject<object>(null);
   
@@ -60,16 +26,13 @@ export class FormlyDialogComponent implements OnInit {
     {
       type: 'input',
       key:'keywordFilter',
-      
       templateOptions: {
         label: 'Keyword',
-        model: this.model.keywordFilter
       },
       },
       {
         type: 'input',
         key:'titleFilter',
-       
         templateOptions: {
           type: 'input',
           label: 'Title',
@@ -83,7 +46,7 @@ export class FormlyDialogComponent implements OnInit {
             {
               key: 'currentDateFilter',
               type: 'datepicker',
-              hide: true,
+              hideExpression: true,
               templateOptions: {
                 label: 'Current Date',
               }
@@ -107,7 +70,7 @@ export class FormlyDialogComponent implements OnInit {
         {
           key: 'FederalOrganisations',
           wrappers: ['accordionwrapper'],
-          hide: true,
+          hideExpression: true,
           templateOptions: { label: 'Federal Organisations' },
           fieldGroup: [
             {
@@ -144,15 +107,15 @@ export class FormlyDialogComponent implements OnInit {
             },
           ]
         }
-        
   ]
 
   constructor(public dialog: SdsDialogService) {}
 
   ngOnInit() {
-    this.model.currentDate=false;
-    this.model.noticeFilter=false;
-    
+    if (localStorage.getItem("initialFields") === null) 
+    {
+      localStorage.setItem("initialFields", JSON.stringify(this.fields));
+    }
   }
 }
 

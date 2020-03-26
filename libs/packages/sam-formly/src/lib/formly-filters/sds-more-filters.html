@@ -1,21 +1,21 @@
 <div sds-dialog-title>Advanced Filters</div>
 
 <div sds-dialog-content>
-  <div  *ngFor="let field of data.fieldsToRender;">
+  <div  *ngFor="let field of data.fieldsToRender; let i = index">
     <div *ngIf="field.fieldGroup && field.fieldGroup.length >1; else showSingleLevel">
       <ul class="usa-list--unstyled">
         <li>
             <div class="usa-checkbox">
-                <input class="usa-checkbox__input" id="chk{{field.key}}" type="checkbox" name="chk{{field.key}}"  value="tru"   [(ngModel)]="!field.hide" (ngModelChange)="field.hide = !$event">
+                <input class="usa-checkbox__input" id="chk{{field.key}}" type="checkbox" name="chk{{field.key}}"  value="tru"    [(ngModel)]="!data.fieldToBind[i].value" (ngModelChange)="data.fieldToBind[i].value = !$event">
                 <label class="usa-checkbox__label" for="chk{{field.key}}">{{field.templateOptions.label}}</label>
             </div>
         </li>
         <ul class="margin-left-4 usa-list--unstyled">
-      <div  *ngFor="let childField of field.fieldGroup;">
+      <div  *ngFor="let childField of field.fieldGroup; let j = index">
         <li>
           <div class="usa-checkbox">
-            <input class="usa-checkbox__input" type="checkbox" name="chk{{childField.key}}" value="truth" id="chk{{childField.key}}"   [(ngModel)]="!childField.hide" (ngModelChange)="childField.hide = !$event">
-            <label class="usa-checkbox__label" for="chk{{childField.key}}">{{childField.templateOptions.label}}</label>
+            <input class="usa-checkbox__input" type="checkbox" name="chk{{childField.key}}" value="truth" id="chk{{childField.key}}"   [(ngModel)]="!data.fieldToBind[i].childFieldCollection[j].value" (ngModelChange)="data.fieldToBind[i].childFieldCollection[j].value = !$event">
+            <label class="usa-checkbox__label" for="chk{{childField.key}}">{{childField.templateOptions.label}}{{!data.fieldToBind[i].childFieldCollection[j].value}}</label>
           </div>
       </li>
       </div>
@@ -23,10 +23,18 @@
   </ul>
     </div>
    <ng-template #showSingleLevel>
+    <div *ngIf="i==0; else enabledCheckbox">
+      <div class="usa-checkbox">
+        <input class="usa-checkbox__input" type="checkbox" name="chk{{field.key}}" disabled value="truth" id="chk{{field.key}}"   [(ngModel)]="!data.fieldToBind[i].value" (ngModelChange)="data.fieldToBind[i].value = !$event"> 
+        <label class="usa-checkbox__label" for="chk{{field.key}}">{{field.templateOptions.label}}</label>
+      </div>
+    </div>
+    <ng-template #enabledCheckbox>
     <div class="usa-checkbox">
-      <input class="usa-checkbox__input" type="checkbox" name="chk{{field.key}}" value="truth" id="chk{{field.key}}"   [(ngModel)]="!field.hide" (ngModelChange)="field.hide = !$event">
+      <input class="usa-checkbox__input" type="checkbox" name="chk{{field.key}}" value="truth" id="chk{{field.key}}"   [(ngModel)]="!data.fieldToBind[i].value" (ngModelChange)="data.fieldToBind[i].value = !$event"> 
       <label class="usa-checkbox__label" for="chk{{field.key}}">{{field.templateOptions.label}}</label>
     </div>
+  </ng-template> 
   </ng-template> 
 </div>
  

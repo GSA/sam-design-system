@@ -13,24 +13,18 @@ import {
   SdsDialogRef,
   SDS_DIALOG_DATA
 } from '@gsa-sam/components';
-export interface DialogData {
-  keyword: boolean;
-  title: boolean;
-  currentDate: boolean;
-  publishDate: boolean;
-  lastModifiedDate: boolean;
-  FederalFilter: boolean;
-  noticeFilter: boolean;
-  ExpirationDateFilter: boolean;
-}
+import { analyzeAndValidateNgModules } from '@angular/compiler';
+
+
 @Component({
   selector: 'sds-dialog-sample-data',
   templateUrl: 'sds-more-filters.html'
 })
 export class DialogAdvancedFilterDialog {
+  
   constructor(
     public dialogRef: SdsDialogRef<DialogAdvancedFilterDialog>,
-    @Inject(SDS_DIALOG_DATA) public data: DialogData
+    @Inject(SDS_DIALOG_DATA) public data: any
   ) {}
 
   onNoClick(): void {
@@ -43,7 +37,7 @@ export class DialogAdvancedFilterDialog {
   template: `
       <formly-form [form]="form" (modelChange)="modelChange.next($event)" [fields]="fields" [model]="model"></formly-form><br/>
       <button type="button" *ngIf="showMoreFilters" (click)="openDialog()" class="usa-button--unstyled float-left">More Filters <fa-icon [icon]="['sds', 'filter']" [classes]="['icon-filter']" size="1x"></fa-icon> </button>
-      <button type="button" *ngIf="showResetAll" class="usa-button--unstyled float-right">Reset All  <svg class="svg-inline--fa fa-reset-filter fa-w-16 fa-1x" aria-hidden="true" focusable="false" data-prefix="sds" data-icon="reset-filter" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M511.92,177.87c-.32-4.68-9-115.19-130.7-158.71C300.42-10.66,122.15-25.7,25.84,130.8l-.47.76c-1.83,3.16-44.64,78-14.88,156C31,341.34,79,381.4,153.29,406.67a358.63,358.63,0,0,0,47.76,15.26q19.88,3.19,19.87,4.81V512L379.83,399.05,220.92,254.87V344.6c-16.63-4.72-37.69-9.09-37.88-9.17l-3.16-1.21c-51.61-17.37-83.95-42-96.11-73.28C67.38,218.8,91.13,173.55,93,170.21c86.65-139.93,254-81.41,261.29-78.75,69.47,24.85,78.75,83.1,79.67,90.68V476.75H512V180.39Z"></path></svg></button>
+      <button type="button" *ngIf="showResetAll" (click)="resetAll()" class="usa-button--unstyled float-right">Reset All  <svg class="svg-inline--fa fa-reset-filter fa-w-16 fa-1x" aria-hidden="true" focusable="false" data-prefix="sds" data-icon="reset-filter" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M511.92,177.87c-.32-4.68-9-115.19-130.7-158.71C300.42-10.66,122.15-25.7,25.84,130.8l-.47.76c-1.83,3.16-44.64,78-14.88,156C31,341.34,79,381.4,153.29,406.67a358.63,358.63,0,0,0,47.76,15.26q19.88,3.19,19.87,4.81V512L379.83,399.05,220.92,254.87V344.6c-16.63-4.72-37.69-9.09-37.88-9.17l-3.16-1.21c-51.61-17.37-83.95-42-96.11-73.28C67.38,218.8,91.13,173.55,93,170.21c86.65-139.93,254-81.41,261.29-78.75,69.47,24.85,78.75,83.1,79.67,90.68V476.75H512V180.39Z"></path></svg></button>
 
     `,
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -54,6 +48,9 @@ export class SdsFiltersComponent implements OnInit {
    */
   private timeoutNumber: number;
 
+  dialogData: any = [];
+  
+
   /**
    * debounce time for current page input
    */
@@ -61,6 +58,7 @@ export class SdsFiltersComponent implements OnInit {
 
 
   ngOnInit(): void {
+    
     this.form.valueChanges
     .pipe(pairwise())
     .subscribe(([prev, next]: [any, any]) => {
@@ -108,15 +106,54 @@ export class SdsFiltersComponent implements OnInit {
    */
   @Output() filterChange = new EventEmitter<object[]>();
 
+ 
   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogAdvancedFilterDialog, {
+   // this.dialogData=[];
+    this.fields.forEach(element => {
+      if(element.fieldGroup && element.fieldGroup.length > 1)
+      {
+        let chlidElements: any = [];
+          element.fieldGroup.forEach(childElement => {
+                chlidElements.push({"elementKey": childElement.key, "value": childElement.hideExpression === undefined ? false : true});
+            });
+            this.dialogData.push({"elementKey": element.key, "value": element.hideExpression === undefined ? false : true, "childFieldCollection": chlidElements});
+      }
+      else{
+        this.dialogData.push({"elementKey": element.key, "value": element.hideExpression === undefined ? false : true, "childFieldCollection": null});
+      }
+    });
+
+    let dialogRef = this.dialog.open(DialogAdvancedFilterDialog, {
       width: 'medium',
       maxHeight:'400px',
-      data: {fieldsToRender:this.fields }
+      data: {fieldsToRender:this.fields, fieldToBind: this.dialogData }
     });
 
     dialogRef.afterClosed().subscribe(result => {
+     
+      if(result){
+      this.fields.forEach(function(element,index) {
+        if(element.key === result.fieldToBind[index].elementKey)
+        {
+          element.hideExpression=result.fieldToBind[index].value;
+          if(element.fieldGroup && element.fieldGroup.length > 1)
+          {
+              element.fieldGroup.forEach(function(childElement,childIndex) {
+                if(childElement.key === result.fieldToBind[index].childFieldCollection[childIndex].elementKey){
+                    childElement.hideExpression=result.fieldToBind[index].childFieldCollection[childIndex].value;
+                }
+              });
+              
+            }
+        }
+      });
       result.fieldsToRender[0].focus=true;
+    }
     });
+  }
+
+  resetAll(): void {
+    this.fields= JSON.parse(localStorage.getItem("initialFields"));
+    this.model = null;
   }
 }
