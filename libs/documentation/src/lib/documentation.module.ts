@@ -31,6 +31,7 @@ import { ROUTES as CHECKBOX_ROUTES, CheckboxModule } from './components/checkbox
 import { ROUTES as MULTI_CHECKBOX_ROUTES, MultiCheckboxModule } from './components/multicheckbox/multicheckbox.module';
 import { ROUTES as RADIO_ROUTES, RadioModule } from './components/radio/radio.module';
 import { ROUTES as SELECT_ROUTES, SelectModule } from './components/select/select.module';
+import { ROUTES as FORMLY_AUTOCOMPLETE_ROUTES, FormlyAutocompleteModule } from './components/formly/autocomplete/autocomplete.module';
 
 /* Form Wrappers */
 import { ROUTES as FORM_FIELD_ROUTES, FormFieldModule } from './components/form-field/form-field.module';
@@ -50,6 +51,8 @@ export const ROUTES: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'components/header' },
   { path: 'overview', component: OverviewComponent },
   { path: 'introduction', component: IntroductionComponent },
+
+  // Components
   { path: 'components', pathMatch: 'full', redirectTo: 'components/alert' },
   { path: 'components/header', children: HEADER_ROUTES },
   { path: 'components/footer', children: FOOTER_ROUTES },
@@ -64,15 +67,22 @@ export const ROUTES: Routes = [
   { path: 'components/autocomplete', children: AUTOCOMPLETE_ROUTES },
   { path: 'components/video', children: VIDEO_ROUTES },
   { path: 'components/popup', children: POPUP_ROUTES },
+
+  // Formly
   { path: 'components/input', children: INPUT_ROUTES },
   { path: 'components/textarea', children: TEXT_AREA_ROUTES },
   { path: 'components/checkbox', children: CHECKBOX_ROUTES },
   { path: 'components/multicheckbox', children: MULTI_CHECKBOX_ROUTES },
   { path: 'components/radio', children: RADIO_ROUTES },
   { path: 'components/select', children: SELECT_ROUTES },
+  { path: 'components/formly-autocomplete', children: FORMLY_AUTOCOMPLETE_ROUTES },
+
+  // Wrappers
   { path: 'components/form-field', children: FORM_FIELD_ROUTES },
   { path: 'components/filterwrapper', children: FILTER_WRAPPER_ROUTES },
   { path: 'components/accordionwrapper', children: ACCORDION_WRAPPER_ROUTES },
+
+  // Icons
   { path: 'components/icons', children: ICONS_ROUTES },
 ];
 
@@ -102,6 +112,7 @@ export const ROUTES: Routes = [
     MultiCheckboxModule,
     RadioModule,
     SelectModule,
+    FormlyAutocompleteModule,
     FormFieldModule,
     FilterWrapperModule,
     AccordionWrapperModule,
