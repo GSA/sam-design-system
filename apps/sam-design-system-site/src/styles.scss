@@ -187,6 +187,16 @@ code::before, code::after {
   margin-left: -0.5rem !important;
 }
 
+// Fixes for Docs
+documentation-widget-demo sds-page {
+  min-height: auto !important;
+  margin-bottom:0 !important;
+}
+
+documentation-widget-demo > .sds-card {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
 
 /* Fixes to look at in Sam-Styles */
 
