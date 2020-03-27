@@ -15,7 +15,7 @@ import 'rxjs/add/operator/pairwise';
 @Component({
   selector: 'sds-filters',
   template: `
-      <formly-form [form]="form" (modelChange)="modelChange.next($event)" [fields]="fields" [model]="model"></formly-form>
+      <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
 
       {{convertedmodel |json}}
     `,
@@ -41,56 +41,55 @@ export class SdsFiltersComponent implements OnInit {
   /**
    *  Model used to display the filter values.
    */
-  @Input() public model: any;
+  @Input() public model: any = {};
 
   /**
    *  Emit results when model updated
    */
   @Output() filterChange = new EventEmitter<object[]>();
-
-
   /**
    * debounce time for current page input
    */
   @Input() debounceTime = 0;
-  private queryParams = {};
-  label = [];
-  convertedmodel: any ={};
-  constructor(@Optional() private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,private cdr: ChangeDetectorRef,
+ 
+  convertedmodel: any = {};
+  constructor(@Optional() private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService, private cdr: ChangeDetectorRef,
     private router: Router, private route: ActivatedRoute, private location: Location) { }
 
   ngOnInit(): void {
-    // this.route.queryParamMap.subscribe(params => {
-    //   const query = params.get("query");
-    //   this.model = this.convertToModel(query);
+    this.route.queryParams.subscribe(params => {
+     this.convertedmodel = qs.parse(qs.stringify(params));
+     if(this.convertedmodel === this.model){
+
+     }
+    //  this.model = {...qs.parse(qs.stringify(params))};
+  
+    });
+
+    // this.route.queryParams.subscribe(params => {
+    //   console.log(params);
+    //   for (const key in params) {
+    //     // if (key) {
+    //       const arr = key.replace(']', '').split('[');
+    //       //console.log(arr, 'array');
+    //       this.model[arr[0]] = { [arr[1]]: JSON.parse(params[key]) };
+    //     // } 
+    // }
     //   setTimeout(() => {
     //     this.form.patchValue({
     //       ...this.model
     //     })
-    //   })
+    //   });
     // });
-
-    this.route.queryParams.subscribe(params => {
-      // tslint:disable-next-line:forin
-     console.log( qs.stringify(params),'str');
-    console.log(qs.parse(qs.stringify(params)), 'model')
-    this.model = qs.parse(qs.stringify(params));
-    
-      setTimeout(() => {
-        this.form.patchValue({
-          ...this.model
-        })
-      });
-    });
-  
+   
     this.form.valueChanges
       .pipe(pairwise())
       .subscribe(([prev, next]: [any, any]) => {
+      
         const params = this.convertToParam(next);
-       // this.queryParams = this.convertToParam(next);
         this.router.navigate([], {
           relativeTo: this.route,
-          queryParams:  params,
+          queryParams: params,
           queryParamsHandling: 'merge',
         });
         this.filterChange.emit(next);
@@ -100,27 +99,22 @@ export class SdsFiltersComponent implements OnInit {
       });
   }
   convertToParam(filters) {
-   
     const encodedValues = qs.stringify(
       filters,
-      { skipNulls: true ,  encode: false}
+      { skipNulls: true, encode: false }
     );
-
-    const target = {};
+    const obj = {};
     encodedValues.split('&').forEach((pair) => {
-  if(pair !== '') {
-    const splitpair = pair.split('=');
-    const key = splitpair[0].charAt(0).toLowerCase() + splitpair[0].slice(1).split(' ').join('');
-    target[key] = splitpair[1];
+      if (pair !== '') {
+        const splitpair = pair.split('=');
+        obj[splitpair[0]] = splitpair[1];
+      }
+    });
+    return obj;
   }
-});
-
-   // const parse =qs.parse(encodedValues);
-    return target;
-  }
-  convertToModel(str){
+  convertToModel(str) {
     let obj = {};
-    obj= qs.parse(str);
+    obj = qs.parse(str);
     return obj;
   }
 }

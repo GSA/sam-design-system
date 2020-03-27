@@ -18,7 +18,11 @@ export class FilterWrapperComponent implements OnInit {
   }
   results: any = {};
   form = new FormGroup({});
-  model:any = {};
+  model:any = {
+    searchEntity:{
+      uniqueEntityIdSam: 20
+    }
+  };
   options: FormlyFormOptions = {};
   /**
  * Event when something is checked/selected in the grid
