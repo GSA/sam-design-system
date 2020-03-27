@@ -71,14 +71,11 @@ export class SdsFiltersComponent implements OnInit {
     // });
 
     this.route.queryParams.subscribe(params => {
-      console.log(params);
       // tslint:disable-next-line:forin
       for (const key in params) {
-        // if (key) {
-          const arr = key.replace(']', '').split('[');
-          //console.log(arr, 'array');
-          this.model[arr[0]] = { [arr[1]]: JSON.parse(params[key]) };
-        // } 
+         if (key) {
+       
+        } 
     }
       setTimeout(() => {
         this.form.patchValue({
