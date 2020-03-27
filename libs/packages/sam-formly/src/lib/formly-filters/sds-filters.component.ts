@@ -10,14 +10,13 @@ import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comuni
 import { pairwise } from 'rxjs/operators';
 import { Router, ActivatedRoute, NavigationEnd, NavigationStart } from '@angular/router';
 import * as qs from 'qs';
+import * as lodash from 'lodash';
 import { Location } from '@angular/common';
 import 'rxjs/add/operator/pairwise';
 @Component({
   selector: 'sds-filters',
   template: `
       <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
-
-      {{convertedmodel |json}}
     `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -58,30 +57,43 @@ export class SdsFiltersComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-     this.convertedmodel = qs.parse(qs.stringify(params));
-     if(this.convertedmodel === this.model){
-
-     }
-    //  this.model = {...qs.parse(qs.stringify(params))};
-  
+      this.convertedmodel = qs.parse(qs.stringify(params, { skipNulls: true, encode: false }));
+      const arraysEqual = lodash.isEqual(this.convertedmodel, this.model);
+      if (!arraysEqual) {
+        const obj = lodash.concat(this.convertedmodel, this.model);
+        this.model = { ...obj[1] };
+      }
     });
 
     // this.route.queryParams.subscribe(params => {
-    //   console.log(params);
-    //   for (const key in params) {
-    //     // if (key) {
-    //       const arr = key.replace(']', '').split('[');
-    //       //console.log(arr, 'array');
-    //       this.model[arr[0]] = { [arr[1]]: JSON.parse(params[key]) };
-    //     // } 
-    // }
+    //   let convertedmodel = {};
+    //   const getAllKeys = Object.keys(params);
+    //   // tslint:disable-next-line:forin
+    //   for (const key in this.model) {
+    //         getAllKeys.forEach(function(keyName) {
+    //           if (keyName.indexOf(key) !== -1) {
+    //             const str = `${[keyName]}:${params[keyName]}`;
+    //             const updatedParam = qs.parse(str);
+    //             console.log(updatedParam[key]);
+    //             convertedmodel = {
+    //               ...convertedmodel,
+    //               [key] : updatedParam[key]
+    //             };
+    //           } else {
+    //             convertedmodel = {
+    //               ...convertedmodel,
+    //               [key] : {}
+    //             };
+    //           }
+    //         })
+    //       }
+    //       console.log(convertedmodel);
     //   setTimeout(() => {
     //     this.form.patchValue({
-    //       ...this.model
-    //     })
+    //       ...convertedmodel
+    //     });
     //   });
     // });
-   
     this.form.valueChanges
       .pipe(pairwise())
       .subscribe(([prev, next]: [any, any]) => {
