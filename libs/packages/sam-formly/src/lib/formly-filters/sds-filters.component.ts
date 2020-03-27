@@ -72,11 +72,10 @@ export class SdsFiltersComponent implements OnInit {
 
     this.route.queryParams.subscribe(params => {
       // tslint:disable-next-line:forin
-      for (const key in params) {
-         if (key) {
-       
-        } 
-    }
+     console.log( qs.stringify(params),'str');
+    console.log(qs.parse(qs.stringify(params)), 'model')
+    this.model = qs.parse(qs.stringify(params));
+    
       setTimeout(() => {
         this.form.patchValue({
           ...this.model
@@ -115,11 +114,6 @@ export class SdsFiltersComponent implements OnInit {
     target[key] = splitpair[1];
   }
 });
-
-console.dir(target);
-    
-  
-
 
    // const parse =qs.parse(encodedValues);
     return target;
