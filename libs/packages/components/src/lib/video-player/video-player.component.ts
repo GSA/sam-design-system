@@ -1,6 +1,21 @@
 import { Component, Input, AfterViewInit, ViewEncapsulation } from '@angular/core';
-import { InitPxVideo } from 'accessible-html5-video-player/js/px-video.js';
+import { GLOBAL_STRINGS } from 'accessible-html5-video-player/js/strings.js';
+import * as InitPxVideo from 'accessible-html5-video-player/js/px-video.js';
 import { VPInterface } from './video-player';
+
+interface InitPxVideoConfig {
+  "videoId": string,
+  "captionsOnDefault": boolean,
+  "seekInterval": number,
+  "videoTitle": string,
+  "debug": boolean
+}
+
+declare const GLOBAL_STRINGS: any;
+
+declare class InitPxVideo {
+  constructor(config: InitPxVideoConfig);
+}
 
 @Component({
   selector: 'sds-video-player',
@@ -10,16 +25,18 @@ import { VPInterface } from './video-player';
 })
 export class SdsVideoPlayerComponent implements AfterViewInit {
   @Input() VPConfiguration: VPInterface;
-
+  private config: InitPxVideoConfig;
 
   ngAfterViewInit() {
-    InitPxVideo({
+    this.config = {
       videoId: this.VPConfiguration.id,
       captionsOnDefault: true,
       seekInterval: this.VPConfiguration.seekInterval,
       videoTitle: 'Video Player',
       debug: this.VPConfiguration.debug
-    });
+    }
+
+    new InitPxVideo(this.config);
   }
 
   constructor() {
