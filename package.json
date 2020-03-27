@@ -56,6 +56,7 @@
     "@ngrx/store": "6.1.2",
     "@ngx-formly/core": "^5.5.11",
     "@nrwl/nx": "7.5.0",
+    "accessible-html5-video-player": "^1.0.6",
     "core-js": "^2.5.4",
     "rxjs": "~6.3.3",
     "rxjs-compat": "~6.3.3",
