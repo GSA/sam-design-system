@@ -4,7 +4,7 @@ import { Component, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
 @Component({
-  template: '<div [sdsPopup] position="bottom-center" placement="out"></div>'
+  template: '<div id="popupDesc" sdsPopup="Add Description" position="bottom-center" placement="out"><div class="sds-popup__content"><div class="tooltip">Add Description</div></div></div><div id="sdsPopupDir" [sdsPopup] position="bottom-center" placement="out"></div>'
 })
 
 class TestPopupSampleComponent {
@@ -16,6 +16,7 @@ describe('PopupDirective', () => {
   let component: TestPopupSampleComponent;
   let fixture: ComponentFixture<TestPopupSampleComponent>;
   let de: DebugElement;
+  let popupDesc: DebugElement;
 
   beforeEach(async()=>{
     component = new TestPopupSampleComponent();
@@ -30,24 +31,44 @@ describe('PopupDirective', () => {
   beforeEach(()=>{
     fixture = TestBed.createComponent(TestPopupSampleComponent);
     component = fixture.componentInstance;
-    de = fixture.debugElement.query(By.css('div'));
+    popupDesc = fixture.debugElement.query(By.css('#popupDesc'));
+    de = fixture.debugElement.query(By.css('#sdsPopupDir'));
   })
 
-// Check the class for sds-popup
-  it('should must has sds popup class', () => {
-    expect(de.classes['sds-popup']).toBe(true);
+// Check the class for tooltip class
+  it('should check for the tooltip class as innerText', () => {
+    const sdsPopupDire = fixture.debugElement.query(By.directive(SdsPopupDirective));
+    const tooltipClass = fixture.debugElement.query(By.css('.tooltip'));
+    expect(tooltipClass.nativeElement.innerText).toContain(sdsPopupDire.attributes.sdsPopup);
   });
+// Check the Description position
+  it('should check for the tooltip class as innerText', () => {
+    const popupPlacement = popupDesc.nativeElement.attributes[1].value;
+    const sdsPopupDire = fixture.debugElement.query(By.directive(SdsPopupDirective));
+    expect(popupPlacement).toContain(sdsPopupDire.attributes.placement);
+  });
+
+// Check the Description placement
+  it('should check for the tooltip class as innerText', () => {
+    const popupPostion = popupDesc.nativeElement.attributes[2].value;
+    const sdsPopupDire = fixture.debugElement.query(By.directive(SdsPopupDirective));
+    expect(popupPostion).toContain(sdsPopupDire.attributes.position);
+  });
+// Check the class for sds-popup
+it('should must has sds popup class', () => {
+  expect(de.classes['sds-popup']).toBe(true);
+});
 
   //Check the placement value
   it('Should check placement on popup', ()=>{
-    const placeValueEl = de.nativeElement.attributes[0].value;
+    const placeValueEl = de.nativeElement.attributes[1].value;
     const sdsPopupDire = fixture.debugElement.query(By.directive(SdsPopupDirective));
     expect(placeValueEl).toBe(sdsPopupDire.attributes.placement);
   });
 
   // Check the value of position
   it('Should check position for popup', ()=>{
-    const placeValueEl = de.nativeElement.attributes[1].value;
+    const placeValueEl = de.nativeElement.attributes[2].value;
     const sdsPopupDire = fixture.debugElement.query(By.directive(SdsPopupDirective));
     expect(placeValueEl).toBe(sdsPopupDire.attributes.position);
   });

@@ -28,7 +28,6 @@ export class SdsPopupDirective implements AfterViewInit {
     } else {
       this.descDiv = document.createElement('div');
       this.renderer.addClass(this.descDiv, 'tooltip');
-      this.renderer.addClass(this.descDiv, 'tooltip-left');
       this.descDiv.innerText = this.sdsPopup;
       this.renderer.appendChild(this.sdsPopupDiv, this.descDiv);
       this.renderer.appendChild(this.el.nativeElement, this.sdsPopupDiv);
