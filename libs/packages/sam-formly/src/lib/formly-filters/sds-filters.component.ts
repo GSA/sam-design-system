@@ -1,38 +1,24 @@
 import {
-  Component,
-  Input,
-  Output,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  EventEmitter,
-  Optional,
-  OnInit
+  Component, Input, Output,
+  ChangeDetectionStrategy, ChangeDetectorRef,
+  EventEmitter, Optional, OnInit
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { Subject } from 'rxjs';
 import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
-import { pairwise } from 'rxjs/operators';
-import {
-  Router,
-  ActivatedRoute,
-  NavigationEnd,
-  NavigationStart
-} from '@angular/router';
+import { Router, ActivatedRoute, } from '@angular/router';
 import * as qs from 'qs';
+import * as lodash from 'lodash';
 import { Location } from '@angular/common';
-import 'rxjs/add/operator/pairwise';@Component({
+import 'rxjs/add/operator/pairwise';
+@Component({
   selector: 'sds-filters',
   template: `
-    <formly-form
-      [form]="form"
-      (modelChange)="modelChange.next($event)"
-      [fields]="fields"
-      [model]="model"
-    ></formly-form>
-  `,
-  changeDetection: ChangeDetectionStrategy.OnPush
+      <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
+
 export class SdsFiltersComponent implements OnInit {
   /**
    * Modeal update
@@ -63,23 +49,21 @@ export class SdsFiltersComponent implements OnInit {
    * debounce time for current page input
    */
   @Input() debounceTime = 0;
-  private queryParams = {};
-  label = [];
+ 
   constructor(
     @Optional()
     private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,
     private cdr: ChangeDetectorRef,
     private router: Router,
     private route: ActivatedRoute,
-    private location: Location
   ) {}
 
   ngOnInit(): void {
     const _isObj = (obj: any): boolean => typeof obj === 'object' && obj !== null;
     const _isEmpty = (obj: any): boolean => Object.keys(obj).length === 0;
     const overwrite = (baseObj: any, newObj: any) => {
-      let result = {};
-      for (let key in baseObj) {
+      const result = {};
+      for (const key in baseObj) {
         if (_isObj(baseObj[key])) {
           result[key] = overwrite(baseObj[key], newObj[key] || {});
         } else {
@@ -91,17 +75,15 @@ export class SdsFiltersComponent implements OnInit {
 
     this.route.queryParams.subscribe(params => {
       if (_isEmpty(this.form.getRawValue())) {
-        this.model = qs.parse(params);
+        this.model = this.convertToModel(params);
         this.form.patchValue({
           ...this.model
         });
       } else {
-        
         const updatedFormValue = overwrite(
           this.form.getRawValue(),
-          qs.parse(params)
+          this.convertToModel(params)
         );
-        console.log('updatedFormValue ===>', updatedFormValue);
         this.form.setValue(updatedFormValue);
       }
     });
@@ -131,23 +113,19 @@ export class SdsFiltersComponent implements OnInit {
     encodedValues.split('&').forEach(pair => {
       if (pair !== '') {
         const splitpair = pair.split('=');
-        const key =
-          splitpair[0].charAt(0).toLowerCase() +
-          splitpair[0]
-            .slice(1)
-            .split(' ')
-            .join('');
-        target[key] = splitpair[1];
+        target[ splitpair[0]] = splitpair[1];
       }
     });
-    // console.dir(target);
-    // const parse =qs.parse(encodedValues);
     return target;
   }
 
-  convertToModel(str) {
+  convertToModel(filters) {
     let obj = {};
-    obj = qs.parse(str);
+    const encodedValues = qs.stringify(filters, {
+      skipNulls: true,
+      encode: false
+    });
+    obj = qs.parse(encodedValues);
     return obj;
   }
 }
