@@ -7,11 +7,10 @@ import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { Subject } from 'rxjs';
 import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
+import { pairwise } from 'rxjs/operators';
 import { Router, ActivatedRoute, } from '@angular/router';
 import * as qs from 'qs';
-import * as lodash from 'lodash';
-import { Location } from '@angular/common';
-import 'rxjs/add/operator/pairwise';
+
 @Component({
   selector: 'sds-filters',
   template: `
