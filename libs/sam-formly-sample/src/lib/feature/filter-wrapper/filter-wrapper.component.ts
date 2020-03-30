@@ -9,7 +9,7 @@ import { FormControl, ValidationErrors } from '@angular/forms';
 @Component({
   selector: 'sds-filter-wrapper',
   templateUrl: './filter-wrapper.component.html',
- 
+
 })
 export class FilterWrapperComponent implements OnInit {
 
@@ -18,8 +18,8 @@ export class FilterWrapperComponent implements OnInit {
   }
   results: any = {};
   form = new FormGroup({});
-  model:any = {
-    searchEntity:{
+  model: any = {
+    searchEntity: {
       uniqueEntityIdSam: 20
     }
   };
@@ -43,8 +43,8 @@ export class FilterWrapperComponent implements OnInit {
         type: 'input',
         templateOptions: {
           type: 'text',
-          label: 'Keyword'        
-         },
+          label: 'Keyword'
+        },
 
       }]
     },
@@ -52,7 +52,10 @@ export class FilterWrapperComponent implements OnInit {
     {
       key: 'searchEntity',
       wrappers: ['accordionwrapper'],
-      templateOptions: { label: 'Entity' },
+      templateOptions: {
+        label: 'Entity',
+        expand: false,
+      },
       fieldGroup: [
         {
           key: 'uniqueEntityIdSam',
@@ -89,22 +92,26 @@ export class FilterWrapperComponent implements OnInit {
         ariaHidden: true
       },
       fieldGroup: [
-      {
-        key: 'keyword',
-        type: 'input',
-        templateOptions: {
-          type: 'text',
-          label: 'test Keyword',
-          labelClass:'usa-sr-only'
-        },
+        {
+          key: 'keyword',
+          type: 'input',
+          templateOptions: {
+            type: 'text',
+            label: 'test Keyword',
+            labelClass: 'usa-sr-only'
+          },
 
-      }]
+        }]
     },
 
     {
       key: 'entityStatus',
       wrappers: ['accordionwrapper'],
-      templateOptions: { label: 'Entity Status' },
+
+      templateOptions: {
+        label: 'Entity Status',
+        expand: true,
+      },
       fieldGroup: [
         {
           key: 'statusCheckbox',
