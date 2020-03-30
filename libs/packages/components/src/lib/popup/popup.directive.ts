@@ -1,11 +1,11 @@
-import { Directive, Input, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
+import { Directive, Input, ElementRef, Renderer2, AfterViewInit, OnInit } from '@angular/core';
 
 
 @Directive({
   selector: '[sdsPopup]',
   exportAs: 'sdsPopup'
 })
-export class SdsPopupDirective implements AfterViewInit {
+export class SdsPopupDirective implements OnInit {
   @Input() sdsPopup: HTMLElement;
   @Input() position: string;
   @Input() placement: string;
@@ -18,7 +18,7 @@ export class SdsPopupDirective implements AfterViewInit {
     this.renderer.addClass(this.sdsPopupDiv, 'sds-popup__content');
   }
 
-  ngAfterViewInit() {
+  ngOnInit() {
     this.renderer.addClass(this.sdsPopupDiv, this.placement);
     this.renderer.addClass(this.sdsPopupDiv, this.position);
     if(typeof(this.sdsPopup) !== 'string'){

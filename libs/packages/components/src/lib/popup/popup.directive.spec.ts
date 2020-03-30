@@ -8,7 +8,7 @@ import { By } from '@angular/platform-browser';
 })
 
 class TestPopupSampleComponent {
-  ngAfterViewInit(){
+  OnInit(){
 
   }
 }
@@ -39,22 +39,23 @@ describe('PopupDirective', () => {
 
 // Check the class for tooltip class
   it('should check for the tooltip class as innerText', () => {
-    component.ngAfterViewInit();
     const sdsPopupDire = fixture.debugElement.query(By.directive(SdsPopupDirective));
     const tooltipClass = fixture.debugElement.query(By.css('.tooltip'));
+    fixture.detectChanges();
     expect(tooltipClass.nativeElement.innerText).toContain(sdsPopupDire.attributes.sdsPopup);
   });
 // Check the Description position
   it('should check the tooltip description for placement', () => {
-    component.ngAfterViewInit();
-    const popupPlacement = popupDesc.nativeElement.attributes[1].value;
     const sdsPopupDire = fixture.debugElement.query(By.directive(SdsPopupDirective));
+    component.OnInit();
+    fixture.detectChanges();
+    const popupPlacement = popupDesc.nativeElement.attributes[1].value;
     expect(popupPlacement).toContain(sdsPopupDire.attributes.placement);
   });
 
 // Check the Description placement
   it('should check the tooltip description for position', () => {
-    component.ngAfterViewInit();
+    component.OnInit();
     const popupPostion = popupDesc.nativeElement.attributes[2].value;
     const sdsPopupDire = fixture.debugElement.query(By.directive(SdsPopupDirective));
     expect(popupPostion).toContain(sdsPopupDire.attributes.position);
@@ -66,7 +67,7 @@ it('should must has sds popup class', () => {
 
   //Check the placement value
   it('Should check placement on popup', ()=>{
-    component.ngAfterViewInit();
+    component.OnInit();
     const placeValueEl = de.nativeElement.attributes[1].value;
     const sdsPopupDire = fixture.debugElement.query(By.directive(SdsPopupDirective));
     expect(placeValueEl).toBe(sdsPopupDire.attributes.placement);
@@ -74,7 +75,7 @@ it('should must has sds popup class', () => {
 
   // Check the value of position
   it('Should check position for popup', ()=>{
-    component.ngAfterViewInit();
+    component.OnInit();
     const placeValueEl = de.nativeElement.attributes[2].value;
     const sdsPopupDire = fixture.debugElement.query(By.directive(SdsPopupDirective));
     expect(placeValueEl).toBe(sdsPopupDire.attributes.position);
