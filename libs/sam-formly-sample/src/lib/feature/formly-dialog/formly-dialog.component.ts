@@ -28,6 +28,7 @@ export class FormlyDialogComponent implements OnInit {
       key:'keywordFilter',
       templateOptions: {
         label: 'Keyword',
+        disableHide: true
       },
       },
       {
@@ -71,7 +72,7 @@ export class FormlyDialogComponent implements OnInit {
           key: 'FederalOrganisations',
           wrappers: ['accordionwrapper'],
           hideExpression: true,
-          templateOptions: { label: 'Federal Organisations' },
+          templateOptions: { label: 'Federal Organizations' },
           fieldGroup: [
             {
               key: 'FederalFilter',
@@ -112,6 +113,7 @@ export class FormlyDialogComponent implements OnInit {
   constructor(public dialog: SdsDialogService) {}
 
   ngOnInit() {
+   // localStorage.removeItem("initialFields");
     if (localStorage.getItem("initialFields") === null) 
     {
       localStorage.setItem("initialFields", JSON.stringify(this.fields));

@@ -20,25 +20,43 @@ import { analyzeAndValidateNgModules } from '@angular/compiler';
   selector: 'sds-dialog-sample-data',
   templateUrl: 'sds-more-filters.html'
 })
-export class DialogAdvancedFilterDialog {
+export class SdsAdvancedFilterDialog {
   
   constructor(
-    public dialogRef: SdsDialogRef<DialogAdvancedFilterDialog>,
+    public dialogRef: SdsDialogRef<SdsAdvancedFilterDialog>,
     @Inject(SDS_DIALOG_DATA) public data: any
   ) {}
 
   onNoClick(): void {
     this.dialogRef.close();
   }
+  changeSelection(event) {
+            let checkboxElement: HTMLInputElement;
+            checkboxElement = document.getElementById(event.target.id) as HTMLInputElement;
+
+            document.querySelectorAll("input[type='checkbox'][value="+event.target.id+"]").forEach(element => {
+              let childCheckboxElement: HTMLInputElement;
+              childCheckboxElement = document.getElementById(element.id) as HTMLInputElement;
+              childCheckboxElement.checked = checkboxElement.checked;
+              let evt = document.createEvent("HTMLEvents");
+              evt.initEvent("change", false, true);
+              childCheckboxElement.dispatchEvent(evt);
+            });
+  }
 }
 
 @Component({
   selector: 'sds-filters',
   template: `
-      <formly-form [form]="form" (modelChange)="modelChange.next($event)" [fields]="fields" [model]="model"></formly-form><br/>
-      <button type="button" *ngIf="showMoreFilters" (click)="openDialog()" class="usa-button--unstyled float-left">More Filters <fa-icon [icon]="['sds', 'filter']" [classes]="['icon-filter']" size="1x"></fa-icon> </button>
-      <button type="button" *ngIf="showResetAll" (click)="resetAll()" class="usa-button--unstyled float-right">Reset All  <svg class="svg-inline--fa fa-reset-filter fa-w-16 fa-1x" aria-hidden="true" focusable="false" data-prefix="sds" data-icon="reset-filter" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M511.92,177.87c-.32-4.68-9-115.19-130.7-158.71C300.42-10.66,122.15-25.7,25.84,130.8l-.47.76c-1.83,3.16-44.64,78-14.88,156C31,341.34,79,381.4,153.29,406.67a358.63,358.63,0,0,0,47.76,15.26q19.88,3.19,19.87,4.81V512L379.83,399.05,220.92,254.87V344.6c-16.63-4.72-37.69-9.09-37.88-9.17l-3.16-1.21c-51.61-17.37-83.95-42-96.11-73.28C67.38,218.8,91.13,173.55,93,170.21c86.65-139.93,254-81.41,261.29-78.75,69.47,24.85,78.75,83.1,79.67,90.68V476.75H512V180.39Z"></path></svg></button>
-
+      <formly-form [form]="form" (modelChange)="modelChange.next($event)" [fields]="fields" [model]="model"></formly-form>
+      <div class="grid-row">
+        <div class="grid-col">
+          <button type="button" *ngIf="showMoreFilters" (click)="openDialog()" class="usa-button--unstyled  float-left">More Filters <fa-icon [icon]="['sds', 'filter']" [classes]="['icon-filter']" size="1x"></fa-icon> </button>
+        </div>
+        <div class="grid-col float-right">
+          <button type="button" *ngIf="showResetAll" (click)="resetAll()" class="usa-button--unstyled float-right ">Reset All  <fa-icon [icon]="['sds', 'reset-filter']" [classes]="['icon-filter']" size="1x"></fa-icon></button>
+        </div>
+      </div>
     `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -108,52 +126,84 @@ export class SdsFiltersComponent implements OnInit {
 
  
   openDialog(): void {
-   // this.dialogData=[];
+    this.dialogData=[];
     this.fields.forEach(element => {
       if(element.fieldGroup && element.fieldGroup.length > 1)
       {
         let chlidElements: any = [];
           element.fieldGroup.forEach(childElement => {
-                chlidElements.push({"elementKey": childElement.key, "value": childElement.hideExpression === undefined ? false : true});
+                chlidElements.push({"elementKey": childElement.key, "value": childElement.hideExpression === undefined ? false : childElement.hideExpression});
             });
-            this.dialogData.push({"elementKey": element.key, "value": element.hideExpression === undefined ? false : true, "childFieldCollection": chlidElements});
+            this.dialogData.push({"elementKey": element.key, "value": element.hideExpression === undefined ? false : element.hideExpression, "childFieldCollection": chlidElements});
       }
       else{
-        this.dialogData.push({"elementKey": element.key, "value": element.hideExpression === undefined ? false : true, "childFieldCollection": null});
+        this.dialogData.push({"elementKey": element.key, "value": element.hideExpression === undefined ? false : element.hideExpression, "childFieldCollection": null});
       }
     });
-
-    let dialogRef = this.dialog.open(DialogAdvancedFilterDialog, {
+    let dialogRef = this.dialog.open(SdsAdvancedFilterDialog, {
       width: 'medium',
       maxHeight:'400px',
       data: {fieldsToRender:this.fields, fieldToBind: this.dialogData }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-     
-      if(result){
+      this.dialogData=[];
+      if(result)
+      {
       this.fields.forEach(function(element,index) {
         if(element.key === result.fieldToBind[index].elementKey)
         {
-          element.hideExpression=result.fieldToBind[index].value;
+          if((element.hideExpression === undefined ? false : element.hideExpression) !== result.fieldToBind[index].value)
+          {
+            element.model[element.key]=null;
+          }
+          element.hideExpression = result.fieldToBind[index].value;
+          
           if(element.fieldGroup && element.fieldGroup.length > 1)
           {
+            if(result.fieldToBind[index].value === true){
               element.fieldGroup.forEach(function(childElement,childIndex) {
+                    childElement.hideExpression=true;
+              });
+            } 
+            else
+            { 
+            element.fieldGroup.forEach(function(childElement,childIndex) {
                 if(childElement.key === result.fieldToBind[index].childFieldCollection[childIndex].elementKey){
+
+                  if((childElement.hideExpression === undefined ? false : childElement.hideExpression) !== result.fieldToBind[index].childFieldCollection[childIndex].value)
+                  {
+                    childElement.model[childElement.key]=null;
+                  }
                     childElement.hideExpression=result.fieldToBind[index].childFieldCollection[childIndex].value;
                 }
               });
+            }
               
             }
+            else if(element.fieldGroup)
+            {
+              element.fieldGroup.forEach(function(childElement,childIndex) {
+                if((element.hideExpression === undefined ? false : element.hideExpression) !== result.fieldToBind[index].value)
+                {
+                  childElement.model[childElement.key]=null;
+                }
+              });
+            }
+
         }
       });
       result.fieldsToRender[0].focus=true;
     }
+    
     });
   }
 
   resetAll(): void {
     this.fields= JSON.parse(localStorage.getItem("initialFields"));
     this.model = null;
+   
   }
+
+  
 }

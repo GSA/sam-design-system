@@ -11,11 +11,11 @@ import { SdsFiltersComponent } from './sds-filters.component';
 import { SdsFormlyModule } from '../formly/formly.module';
 import { SdsDialogModule } from '@gsa-sam/components';
 import { SDS_DIALOG_SCROLL_STRATEGY_PROVIDER, SdsDialogService  } from '@gsa-sam/components';
-import{ DialogAdvancedFilterDialog } from './sds-filters.component';
+import{ SdsAdvancedFilterDialog } from './sds-filters.component';
 @NgModule({
     declarations: [
         SdsFiltersComponent,
-        DialogAdvancedFilterDialog
+        SdsAdvancedFilterDialog
     ],
     providers: [SdsDialogService, SDS_DIALOG_SCROLL_STRATEGY_PROVIDER],
     imports: [
@@ -27,9 +27,9 @@ import{ DialogAdvancedFilterDialog } from './sds-filters.component';
         ReactiveFormsModule,
         FormlySelectModule,
         FormlyModule,
-        SdsDialogModule
+        SdsDialogModule,
     ],
     exports: [SdsFiltersComponent],
-    entryComponents: [DialogAdvancedFilterDialog]
+    entryComponents: [SdsAdvancedFilterDialog]
 })
 export class SdsFiltersModule { }

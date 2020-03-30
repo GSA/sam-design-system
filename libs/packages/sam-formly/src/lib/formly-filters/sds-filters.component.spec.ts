@@ -1,7 +1,9 @@
 
 import {
     TestBed,
-    ComponentFixture
+    ComponentFixture,
+    fakeAsync,
+    inject
 } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
 import { FormGroup } from '@angular/forms';
@@ -12,9 +14,23 @@ import { SdsFormlyModule } from '../formly/formly.module';
 import {
     SdsFiltersComponent
 } from './sds-filters.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DebugElement } from '@angular/core';
-
+import { BrowserAnimationsModule,NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { DebugElement,
+        ViewContainerRef,
+        Component, 
+        Directive,
+        TemplateRef,
+        ViewChild,
+        ChangeDetectionStrategy,
+        NgModule,
+ } from '@angular/core';
+import {
+    SdsDialogService,
+    SdsDialogRef,
+    SdsDialogModule
+  } from '@gsa-sam/components';
+  import {OverlayContainer, ScrollStrategy, Overlay} from '@angular/cdk/overlay';
+import { tick } from '@angular/core/src/render3';
 
 describe('The Sam Filters Component', () => {
 
@@ -170,4 +186,171 @@ describe('The Sam Filters Component', () => {
             expect(component.form.invalid).toBe(true);
         });
     });
+    describe('SdsDialog', () => {
+        let dialog: SdsDialogService;
+        let overlayContainerElement: HTMLElement;
+      
+        let testViewContainerRef: ViewContainerRef;
+        let viewContainerFixture: ComponentFixture<ComponentWithChildViewContainer>;
+
+        beforeEach(fakeAsync(() => {
+            TestBed.configureTestingModule({
+              imports: [SdsDialogModule, DialogTestModule],
+            });
+        
+            TestBed.compileComponents();
+          }));
+
+          beforeEach(inject([SdsDialogService, OverlayContainer],
+            (d: SdsDialogService, oc: OverlayContainer) => {
+              dialog = d;
+              overlayContainerElement = oc.getContainerElement();
+            }));
+        
+     
+
+        beforeEach(() => {
+            viewContainerFixture = TestBed.createComponent(ComponentWithChildViewContainer);
+        
+            viewContainerFixture.detectChanges();
+            testViewContainerRef = viewContainerFixture.componentInstance.childViewContainer;
+          });
+          it('should open a dialog with a template', () => {
+            const templateRefFixture = TestBed.createComponent(ComponentWithTemplateRef);
+            templateRefFixture.componentInstance.localValue = 'Bees';
+            templateRefFixture.detectChanges();
+        
+            const data = {value: 'Knees'};
+        
+            let dialogRef = dialog.open(templateRefFixture.componentInstance.templateRef, { data });
+        
+            viewContainerFixture.detectChanges();
+        
+            expect(overlayContainerElement.textContent).toContain('Cheese Bees Knees');
+            expect(templateRefFixture.componentInstance.dialogRef).toBe(dialogRef);
+        
+            viewContainerFixture.detectChanges();
+        
+            let dialogContainerElement = overlayContainerElement.querySelector('sds-dialog-container')!;
+            expect(dialogContainerElement.getAttribute('role')).toBe('dialog');
+        
+            dialogRef.close();
+          });
+
+    });
+
+    describe('reset all models', () => {
+        let component: SdsFiltersComponent;
+        let fixture: ComponentFixture<SdsFiltersComponent>;
+
+        beforeEach(() => {
+            TestBed.configureTestingModule({
+                imports: [
+                    CommonModule,
+                    BrowserAnimationsModule,
+                    SdsFormlyModule,
+                    SdsFiltersModule
+                ],
+
+            });
+
+            fixture = TestBed.createComponent(SdsFiltersComponent);
+            component = fixture.componentInstance;
+            component.fields = [
+                {
+                    key: 'filters',
+                    wrappers: ['accordionwrapper'],
+                    templateOptions: { label: 'Entity Name/UEI' },
+                    fieldGroup: [
+                        {
+                            key: 'uniqueId',
+                            type: 'input',
+                            templateOptions: {
+                                required: true,
+                                label: 'Formly input type number',
+                                placeholder: 'placeholder',
+                                inputType: 'number',
+                            },
+                        },
+                        {
+                        key: 'button-test',
+                        type: 'button',
+                        templateOptions: {
+                            text: 'Reset All',
+                            btnType: 'info',
+                            onClick: $event => {
+                                component.model= {filters: null }; }
+                        },
+                    }]
+                },
+            ];
+            component.form = new FormGroup({});
+
+        });
+        it('reset all should clear model', () => {
+            component.model = {filters: { uniqueId: '4' } };
+            fixture.detectChanges();
+
+            const inputField = fixture.debugElement.query(By.css('.usa-input')) as DebugElement;
+            const buttonField: DebugElement = fixture.debugElement.query(By.css('.usa-button--unstyled')) as DebugElement;
+
+
+            inputField.nativeElement.value = '4';
+            inputField.nativeElement.dispatchEvent(new Event('input'));
+            fixture.detectChanges();
+            buttonField.triggerEventHandler('click',null);
+            fixture.detectChanges();
+            expect(component.model.filters).toBeNull();
+
+        });
+    });
 });
+@Directive({selector: 'dir-with-view-container'})
+class DirectiveWithViewContainer {
+  constructor(public viewContainerRef: ViewContainerRef) { }
+}
+
+
+@Component({
+    selector: 'arbitrary-component-with-template-ref',
+    template: `<ng-template let-data let-dialogRef="dialogRef">
+        Cheese {{localValue}} {{data?.value}}{{setDialogRef(dialogRef)}}</ng-template>`,
+  })
+  class ComponentWithTemplateRef {
+    localValue: string;
+    dialogRef: SdsDialogRef<any>;
+  
+    @ViewChild(TemplateRef) templateRef: TemplateRef<any>;
+  
+    setDialogRef(dialogRef: SdsDialogRef<any>): string {
+      this.dialogRef = dialogRef;
+      return '';
+    }
+  }
+  @Component({
+    selector: 'arbitrary-component',
+    template: `<dir-with-view-container></dir-with-view-container>`,
+  })
+  class ComponentWithChildViewContainer {
+    @ViewChild(DirectiveWithViewContainer) childWithViewContainer: DirectiveWithViewContainer;
+  
+    get childViewContainer() {
+      return this.childWithViewContainer.viewContainerRef;
+    }
+  }
+  const TEST_DIRECTIVES = [
+    ComponentWithChildViewContainer,
+    ComponentWithTemplateRef,
+    DirectiveWithViewContainer
+  ];
+
+  @NgModule({
+    imports: [SdsDialogModule, NoopAnimationsModule],
+    exports: TEST_DIRECTIVES,
+    declarations: TEST_DIRECTIVES,
+    entryComponents: [
+        ComponentWithChildViewContainer,
+        ComponentWithTemplateRef
+    ],
+  })
+  class DialogTestModule { }
