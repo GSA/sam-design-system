@@ -42,14 +42,14 @@ describe('PopupDirective', () => {
     expect(tooltipClass.nativeElement.innerText).toContain(sdsPopupDire.attributes.sdsPopup);
   });
 // Check the Description position
-  it('should check for the tooltip class as innerText', () => {
+  it('should check the tooltip description for placement', () => {
     const popupPlacement = popupDesc.nativeElement.attributes[1].value;
     const sdsPopupDire = fixture.debugElement.query(By.directive(SdsPopupDirective));
     expect(popupPlacement).toContain(sdsPopupDire.attributes.placement);
   });
 
 // Check the Description placement
-  it('should check for the tooltip class as innerText', () => {
+  it('should check the tooltip description for position', () => {
     const popupPostion = popupDesc.nativeElement.attributes[2].value;
     const sdsPopupDire = fixture.debugElement.query(By.directive(SdsPopupDirective));
     expect(popupPostion).toContain(sdsPopupDire.attributes.position);
