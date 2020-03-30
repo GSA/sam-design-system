@@ -4,7 +4,7 @@ import {
   EventEmitter, Optional, OnInit
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { FormlyFieldConfig } from '@ngx-formly/core';
+import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { Subject } from 'rxjs';
 import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
 import { pairwise } from 'rxjs/operators';
@@ -14,7 +14,7 @@ import * as qs from 'qs';
 @Component({
   selector: 'sds-filters',
   template: `
-      <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>`,
+      <formly-form [form]="form" [fields]="fields" [options]="options" [model]="model"></formly-form>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
@@ -38,6 +38,11 @@ export class SdsFiltersComponent implements OnInit {
    *  Model used to display the filter values.
    */
   @Input() public model: any;
+
+  /**
+   *    Options for the form.
+   */
+  @Input() public options: FormlyFormOptions = {};
 
   /**
    *  Emit results when model updated

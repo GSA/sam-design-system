@@ -21,6 +21,6 @@ export class FormlyAccordianFormFieldComponent extends FieldWrapper {
   }
   modelHasValue() {
     const hasValue= qs.stringify(this.model, { skipNulls: true});
-    return hasValue? true : false;
+    return this.to.expand  ? true : hasValue ? true : false;
   }
 }
