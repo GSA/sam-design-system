@@ -71,13 +71,13 @@ export class SdsFiltersComponent implements OnInit {
       }
       return result;
     };
-
     this.route.queryParams.subscribe(params => {
       if (_isEmpty(this.form.getRawValue())) {
-        this.model = this.convertToModel(params);
+        const paramModel = this.convertToModel(params);
         this.form.patchValue({
-          ...this.model
+          ...this.model , ...paramModel
         });
+      
       } else {
         const updatedFormValue = overwrite(
           this.form.getRawValue(),
