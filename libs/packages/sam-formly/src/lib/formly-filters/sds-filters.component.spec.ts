@@ -6,7 +6,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { FormGroup } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-
+import { RouterTestingModule } from '@angular/router/testing';
 import { SdsFiltersModule } from './sds-filters.module';
 import { SdsFormlyModule } from '../formly/formly.module';
 import {
@@ -16,7 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DebugElement } from '@angular/core';
 
 
-xdescribe('The Sam Filters Component', () => {
+describe('The Sam Filters Component', () => {
 
     describe('rendered tests', () => {
         let component: SdsFiltersComponent;
@@ -27,6 +27,7 @@ xdescribe('The Sam Filters Component', () => {
                 imports: [
                     CommonModule,
                     BrowserAnimationsModule,
+                    RouterTestingModule.withRoutes([]),
                     SdsFormlyModule,
                     SdsFiltersModule
                 ],
@@ -70,7 +71,7 @@ xdescribe('The Sam Filters Component', () => {
             const inputField = fixture.debugElement.query(By.css('.usa-input'));
             expect(inputField.nativeElement.type).toBe('number');
         });
-        it('input value cannot be less than min', () => {
+        xit('input value cannot be less than min', () => {
             component.model = { test: null, filters: { uniqueId: 12 } };
             fixture.detectChanges();
             const inputField = fixture.debugElement.query(By.css('.usa-input')) as DebugElement;
@@ -79,7 +80,7 @@ xdescribe('The Sam Filters Component', () => {
             expect(inputField.nativeElement.value).toBe('12');
             expect(component.form.invalid).toBe(true);
         });
-        it('input value cannot be greter than max', () => {
+        xit('input value cannot be greter than max', () => {
             component.model = { test: null, filters: { uniqueId: 401 } };
             fixture.detectChanges();
             const inputField = fixture.debugElement.query(By.css('.usa-input')) as DebugElement;
@@ -88,7 +89,7 @@ xdescribe('The Sam Filters Component', () => {
             expect(inputField.nativeElement.value).toBe('401');
             expect(component.form.invalid).toBe(true);
         });
-        it('input value length should be between min length and max length', () => {
+        xit('input value length should be between min length and max length', () => {
             component.model = { test: null, filters: { uniqueId: 231 } };
             fixture.detectChanges();
             const inputField = fixture.debugElement.query(By.css('.usa-input')) as DebugElement;
@@ -110,8 +111,10 @@ xdescribe('The Sam Filters Component', () => {
                 imports: [
                     CommonModule,
                     BrowserAnimationsModule,
+                    RouterTestingModule.withRoutes([]),
                     SdsFormlyModule,
                     SdsFiltersModule
+                    
                 ],
 
             });
