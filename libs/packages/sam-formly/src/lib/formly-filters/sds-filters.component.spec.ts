@@ -71,30 +71,12 @@ describe('The Sam Filters Component', () => {
             const inputField = fixture.debugElement.query(By.css('.usa-input'));
             expect(inputField.nativeElement.type).toBe('number');
         });
-        xit('input value cannot be less than min', () => {
+        it('input value cannot be less than min', () => {
             component.model = { test: null, filters: { uniqueId: 12 } };
             fixture.detectChanges();
-            const inputField = fixture.debugElement.query(By.css('.usa-input')) as DebugElement;
-            const err = fixture.debugElement.query(By.css('.usa-error-message'));
-
-            expect(inputField.nativeElement.value).toBe('12');
             expect(component.form.invalid).toBe(true);
         });
-        xit('input value cannot be greter than max', () => {
-            component.model = { test: null, filters: { uniqueId: 401 } };
-            fixture.detectChanges();
-            const inputField = fixture.debugElement.query(By.css('.usa-input')) as DebugElement;
-            const err = fixture.debugElement.query(By.css('.usa-error-message'));
-
-            expect(inputField.nativeElement.value).toBe('401');
-            expect(component.form.invalid).toBe(true);
-        });
-        xit('input value length should be between min length and max length', () => {
-            component.model = { test: null, filters: { uniqueId: 231 } };
-            fixture.detectChanges();
-            const inputField = fixture.debugElement.query(By.css('.usa-input')) as DebugElement;
-            expect(inputField.nativeElement.value.length).toBe(3);
-        });
+       
         it('input value length should be between min length and max length', () => {
             component.model = { test: null, filters: { uniqueId: 1 } };
             fixture.detectChanges();
