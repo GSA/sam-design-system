@@ -50,7 +50,7 @@
     "@fortawesome/angular-fontawesome": "^0.3.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.22",
     "@fortawesome/free-solid-svg-icons": "^5.10.2",
-    "@gsa-sam/sam-styles": "^0.0.57",
+    "@gsa-sam/sam-styles": "0.0.58",
     "@ngrx/effects": "6.1.2",
     "@ngrx/router-store": "6.1.2",
     "@ngrx/store": "6.1.2",
@@ -59,6 +59,8 @@
     "core-js": "^2.5.4",
     "rxjs": "~6.3.3",
     "rxjs-compat": "~6.3.3",
+    "sam": "0.0.7",
+    "styles": "^0.2.1",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
