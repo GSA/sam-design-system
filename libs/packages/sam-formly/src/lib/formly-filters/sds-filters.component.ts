@@ -201,9 +201,7 @@ export class SdsFiltersComponent implements OnInit {
   }
 
   resetAll(): void {
-    this.fields= JSON.parse(localStorage.getItem("initialFields"));
     this.model = null;
-   
   }
 
   

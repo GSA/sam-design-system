@@ -336,6 +336,7 @@ describe('The Sam Filters Component', () => {
             inputField.nativeElement.dispatchEvent(new Event('input'));
             fixture.detectChanges();
             buttonField.triggerEventHandler('click',null);
+            spyOn(component, 'resetAll').and.callThrough();
             fixture.detectChanges();
             expect(component.model.filters).toBeNull();
 
