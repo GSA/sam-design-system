@@ -3,7 +3,8 @@ import {
     TestBed,
     ComponentFixture,
     fakeAsync,
-    inject
+    inject,
+    flush,
 } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
 import { FormGroup } from '@angular/forms';
@@ -237,6 +238,42 @@ describe('The Sam Filters Component', () => {
             dialogRef.close();
           });
 
+          it('should close the dialog when clicking on the close button', fakeAsync(() => {
+            const templateRefFixture = TestBed.createComponent(ComponentWithTemplateRef);
+            templateRefFixture.componentInstance.localValue = 'Bees';
+            templateRefFixture.detectChanges();
+        
+            const data = {value: 'Knees'};
+            let dialogRef = dialog.open(templateRefFixture.componentInstance.templateRef, { data });
+
+            viewContainerFixture.detectChanges();
+            expect(overlayContainerElement.querySelectorAll('.sds-dialog__container').length).toBe(1);
+    
+            (overlayContainerElement.querySelector('button[sds-dialog-close]') as HTMLElement).click();
+            viewContainerFixture.detectChanges();
+            flush();
+    
+            expect(overlayContainerElement.querySelectorAll('.sds-dialog__container').length).toBe(0);
+          }));
+
+          it('should close a dialog and get back a result', fakeAsync(() => {
+            const templateRefFixture = TestBed.createComponent(ComponentWithTemplateRef);
+            templateRefFixture.componentInstance.localValue = 'Bees';
+            templateRefFixture.detectChanges();
+        
+            const data = {value: 'Knees'};
+            let dialogRef = dialog.open(templateRefFixture.componentInstance.templateRef, { data });
+            let afterCloseCallback = jasmine.createSpy('afterClose callback');
+        
+            dialogRef.afterClosed().subscribe(afterCloseCallback);
+            dialogRef.close('Charmander');
+            viewContainerFixture.detectChanges();
+            flush();
+        
+            expect(afterCloseCallback).toHaveBeenCalledWith('Charmander');
+            expect(overlayContainerElement.querySelector('sds-dialog-container')).toBeNull();
+          }));
+
     });
 
     describe('reset all models', () => {
@@ -303,6 +340,8 @@ describe('The Sam Filters Component', () => {
             expect(component.model.filters).toBeNull();
 
         });
+
+        
     });
 });
 @Directive({selector: 'dir-with-view-container'})

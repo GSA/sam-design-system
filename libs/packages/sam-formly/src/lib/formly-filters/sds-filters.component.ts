@@ -111,6 +111,7 @@ export class SdsFiltersComponent implements OnInit {
   @Input() public model: any;
 
   /**
+   *  
    *  Accordion Label used to display the Accordion header text.
    */
   @Input() accordionLabel: string = 'Filters';
