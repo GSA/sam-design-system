@@ -6,14 +6,14 @@ import { ROUTES } from './app.routes';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
-import { ExternalLinkDirective } from './external-link.directive';
+import { SdsDirectivesModule } from '@gsa-sam/components';
 
 @NgModule({
-  declarations: [AppComponent, ExternalLinkDirective],
+  declarations: [AppComponent],
   imports: [BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(ROUTES),
-    FormsModule
+    FormsModule, SdsDirectivesModule
   ],
   providers: [
     {provide: LocationStrategy, useClass: PathLocationStrategy},
