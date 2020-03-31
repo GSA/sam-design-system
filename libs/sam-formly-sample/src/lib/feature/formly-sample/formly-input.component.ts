@@ -8,9 +8,8 @@ import { SampleAutocompleteData } from './services/autocomplete-sample.data';
 
 
 @Component({
-  selector: 'formly-input',
+  selector: 'sds-formly-input',
   templateUrl: './formly-input.component.html',
-  styleUrls: ['./formly-input.component.scss'],
   providers: [AutocompleteSampleDataService]
 })
 export class FormlyInputComponent implements OnInit {

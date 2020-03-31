@@ -47,6 +47,14 @@ describe('SamAutocompleteComponent', () => {
     expect(input).toBeDefined();
   });
 
+  it('Should check for focus', () => {
+    const event = {};
+    component.checkForFocus(event);
+    fixture.detectChanges();
+    expect(component.inputValue).toBe('');
+    expect(component.showResults).toBeFalsy();
+  });
+
   it('Should have an input id', () => {
     fixture.detectChanges();
     const input = fixture.debugElement.query(By.css('input'));
@@ -74,7 +82,6 @@ describe('SamAutocompleteComponent', () => {
     expect(list.nativeElement.children.length).toBe(1);
     const emptyItem = fixture.debugElement.query(By.css('.emptyResults'));
     expect(emptyItem).toBeTruthy();
-
   }));
 
   it('Should have results with minimumCharacterCountSearch', fakeAsync(() => {
@@ -95,7 +102,21 @@ describe('SamAutocompleteComponent', () => {
   }));
 
 
+  it('Should have results with input and free text search on', fakeAsync(() => {
+    component.inputValue = 'search text';
+    const event = {
+      "key": "Enter",
+      target: { "value": component.inputValue }
+    }
+    component.configuration.isFreeTextEnabled = true;
+    component.highlightedIndex = -1;
+    component.onKeydown(event);
+    fixture.detectChanges();
+    tick();
+    fixture.detectChanges();
+    expect(component.inputValue).toBe('search text');
 
+  }));
 
 
   it('Should have results key press', fakeAsync(() => {
@@ -114,6 +135,22 @@ describe('SamAutocompleteComponent', () => {
     expect(component.results[0]['highlighted']).toBeTruthy();
   }));
 
+  it('Should not highlight first result if free text is on', fakeAsync(() => {
+    const event = {
+      preventDefault: ()=>{},
+      target: component.input.nativeElement
+    };
+    component.configuration.isFreeTextEnabled = true;
+    component.input.nativeElement.value = "id";
+    component.input.nativeElement.focus();
+    component.textChange(event);
+    fixture.detectChanges();
+    tick();
+    fixture.detectChanges();
+    const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
+    expect(list.nativeElement.children.length).toBe(11);
+    expect(component.highlightedIndex).toBe(-1);
+  }));
 
 
   it('Should have empty results key press minimumCharacterCountSearch', fakeAsync(() => {
@@ -152,7 +189,7 @@ describe('SamAutocompleteComponent', () => {
     expect(list).toBeNull();
   }));
 
-  it('Select second item with down and up arrows', fakeAsync(() => {
+  xit('Select second item with down and up arrows', fakeAsync(() => {
     component.inputFocusHandler();
     fixture.detectChanges();
     tick();
@@ -186,12 +223,13 @@ describe('SamAutocompleteComponent', () => {
     expect(component.results[0]['highlighted']).toBeTruthy();
     const upEvent = {
       "key": "Up",
-      "target": { "value": 'id' }
+      "target": { "value": 'id' },
+      "preventDefault": () => true
     }
     component.onKeydown(upEvent);
     tick();
     fixture.detectChanges();
-    expect(component.results[0]['highlighted']).toBeTruthy();
+    expect(component.results[0]['highlighted']).toBeFalsy();
   }));
 
 
@@ -376,6 +414,13 @@ describe('SamAutocompleteComponent', () => {
   });
 
 
+  it('should have reference to resultslist element defined after results on focus are populated', fakeAsync(() => {
+    component.inputFocusHandler();
+    fixture.detectChanges();
+    tick();
+    fixture.detectChanges();
+
+    expect(component.resultsListElement).toBeDefined();
+  }));
 
 });
-

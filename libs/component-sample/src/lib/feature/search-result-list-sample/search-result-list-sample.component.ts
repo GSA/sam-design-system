@@ -2,21 +2,21 @@ import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef } from '
 
 @Component({
   selector: 'search-result-list-sample',
-  templateUrl: 'search-result-list-sample.component.html'
+  templateUrl: 'search-result-list-sample.component.html',
 })
 
 export class SearchResultListSampleComponent {
 
   constructor(private change: ChangeDetectorRef) { }
 
-
-  items= [
+  items = [
     { text: 'First', id: 1 },
     { text: 'Second', id: 2 },
     { text: 'Third', id: 3 },
     { text: 'Fourth', id: 4 },
-    { text: 'Fifth', id: 5 }
+    { text: 'Fifth', id: 5 , hasNewerData:true},
+
   ];
 
-  emptyItems =[];
+  emptyItems = [];
 }

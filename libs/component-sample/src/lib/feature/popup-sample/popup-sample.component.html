@@ -1,0 +1,103 @@
+ <div #tooltip>
+  <span>Tootltip content</span>
+</div>
+
+<div [sdsPopup]='tooltip' position="top-center" placement="out" aria-label="Tooltip that hides when scrolled out of the container">
+  <div class="tooltip tooltip-left">
+    <div>popup outside</div>
+  </div>
+</div>
+<br><br>
+<div #tooltipbutton>
+  <button class="usa-button usa-button--base">
+    tooltip
+  </button>
+</div>
+
+<div [sdsPopup]='tooltipbutton' position="bottom-center" placement="out" aria-label="Tooltip that hides when scrolled out of the container">
+  <div class="tooltip tooltip-left">
+    <div>popup outside</div>
+  </div>
+</div>
+<br><br>
+<div #tooltipRichcontent>
+  <span class="border-1px sds-popup padding-1 radius-md">
+    rich content
+  </span>
+</div>
+
+<div
+[sdsPopup]='tooltipRichcontent'
+position="top-center"
+placement="out"
+aria-label="Tooltip that hides when scrolled out of the container"
+>
+  <div class="sds-alert bg-base-lightest ">
+    <div class="sds-alert-icon">
+      <i class="fa fa-exclamation"></i>
+    </div>
+    <span>Review Required</span>
+    <p>Venenatis dapibus ex</p>
+  </div>
+</div><br><br>
+<div class="sds-card padding-2">
+  <p>My Content start from here.</p>
+  <div class="grid-row">
+  <div class="tablet:grid-col">
+    <div #tooltipForIn>
+      <span class="float-left">
+        <fa-icon [icon]="['sds', 'new-version']" transform="grow-10"></fa-icon>
+      </span>
+    </div>
+      <div [sdsPopup]='tooltipForIn' position="top-left" placement="in" aria-label="Tooltip that hides when scrolled out of the container">
+        <div class="radius-lg shadow-2 margin-y-neg-1x05 width-card-lg bg-white padding-left-1 padding-bottom-1 border">
+          <svg class="svg-inline--fa fa-information-circle fa-w-16 fa-2x float-right margin-1" aria-hidden="true" focusable="false" data-prefix="sds" data-icon="information-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256,512C114.8,512,0,397.2,0,256S114.8,0,256,0s256,114.8,256,256S397.2,512,256,512z M256,19.8c-130.2,0-236.2,106-236.2,236.2s106,236.2,236.2,236.2s236.2-106,236.2-236.2S386.2,19.8,256,19.8z M256,185.2c-6.6,0-12-1.9-16.2-5.7s-6.4-8.8-6.4-14.9c0-6.1,2.1-11.2,6.4-15.1c4.2-3.9,9.6-5.9,16.2-5.9c6.6,0,12,2,16.2,5.9s6.4,8.9,6.4,15.1c0,6.1-2.1,11.1-6.4,14.9C268,183.3,262.6,185.2,256,185.2z M237.6,368.4V212.5h36.5v155.9H237.6z"></path></svg><!-- <i class="sds fa-information-circle fa-2x float-right margin-1"></i> --><h4> Pop inside</h4>
+          <ul>
+            <li>Lorem ipsum sit amet</li>
+            <li>Lorem ipsum</li>
+          </ul>
+        </div>
+      </div>
+      <div class="float-right">
+        <div #tooltipForRight>
+          <span class="float-right">
+            <fa-icon [icon]="['sds', 'new-version']" transform="grow-10"></fa-icon>
+          </span>
+        </div>
+          <div [sdsPopup]='tooltipForRight' position="top-right" placement="in" aria-label="Tooltip that hides when scrolled out of the container">
+            <div class="radius-lg shadow-2 margin-y-neg-1x05 width-card-lg bg-white padding-left-1 padding-bottom-1 border">
+              <svg class="svg-inline--fa fa-information-circle fa-w-16 fa-2x float-right margin-1" aria-hidden="true" focusable="false" data-prefix="sds" data-icon="information-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256,512C114.8,512,0,397.2,0,256S114.8,0,256,0s256,114.8,256,256S397.2,512,256,512z M256,19.8c-130.2,0-236.2,106-236.2,236.2s106,236.2,236.2,236.2s236.2-106,236.2-236.2S386.2,19.8,256,19.8z M256,185.2c-6.6,0-12-1.9-16.2-5.7s-6.4-8.8-6.4-14.9c0-6.1,2.1-11.2,6.4-15.1c4.2-3.9,9.6-5.9,16.2-5.9c6.6,0,12,2,16.2,5.9s6.4,8.9,6.4,15.1c0,6.1-2.1,11.1-6.4,14.9C268,183.3,262.6,185.2,256,185.2z M237.6,368.4V212.5h36.5v155.9H237.6z"></path></svg><!-- <i class="sds fa-information-circle fa-2x float-right margin-1"></i> --><h4> Pop inside</h4>
+              <ul>
+                <li>Lorem ipsum sit amet</li>
+                <li>Lorem ipsum</li>
+              </ul>
+            </div>
+          </div>
+      </div>
+      </div>
+  </div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In neque nunc, auctor a cursus vitae, venenatis dapibus
+      ex. Nam tristique aliquam efficitur. Aliquam sit amet sodales elit, accumsan lacinia nisi. Aliquam eu
+      mauris ut augue fringilla congue a eu ante. Donec maximus placementrat convallis. Morbi eu tincidunt neque, vel porta
+      nulla. Suspendisse venenatis augue eget massa ullamcorper, et fringilla ipsum lobortis. In hac habitasse
+      platea dictumst. Quisque et fringilla lacus, non consequat nulla.
+    </p>
+    <div class="text-center">
+      <div class="">
+        <div #tooltipForCenter>
+          <span>
+            <fa-icon [icon]="['sds', 'new-version']" transform="grow-10"></fa-icon>
+          </span>
+        </div>
+          <div [sdsPopup]='tooltipForCenter' position="bottom-center" placement="in" aria-label="Tooltip that hides when scrolled out of the container">
+            <div class="radius-lg shadow-2 margin-y-neg-1x05 width-card-lg bg-white padding-left-1 padding-bottom-1 border">
+              <svg class="svg-inline--fa fa-information-circle fa-w-16 fa-2x float-right margin-1" aria-hidden="true" focusable="false" data-prefix="sds" data-icon="information-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256,512C114.8,512,0,397.2,0,256S114.8,0,256,0s256,114.8,256,256S397.2,512,256,512z M256,19.8c-130.2,0-236.2,106-236.2,236.2s106,236.2,236.2,236.2s236.2-106,236.2-236.2S386.2,19.8,256,19.8z M256,185.2c-6.6,0-12-1.9-16.2-5.7s-6.4-8.8-6.4-14.9c0-6.1,2.1-11.2,6.4-15.1c4.2-3.9,9.6-5.9,16.2-5.9c6.6,0,12,2,16.2,5.9s6.4,8.9,6.4,15.1c0,6.1-2.1,11.1-6.4,14.9C268,183.3,262.6,185.2,256,185.2z M237.6,368.4V212.5h36.5v155.9H237.6z"></path></svg><!-- <i class="sds fa-information-circle fa-2x float-right margin-1"></i> --><h4> Pop inside</h4>
+              <ul>
+                <li>Lorem ipsum sit amet</li>
+                <li>Lorem ipsum</li>
+              </ul>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>

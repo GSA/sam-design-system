@@ -4,6 +4,21 @@
       <nav class="margin-bottom-2">
         <ul class="usa-sidenav">
           <li class="usa-sidenav__item">
+            <a [routerLink]="['component/video-player']" routerLinkActive="usa-current">
+              Video-player
+            </a>
+          </li>
+          <li class="usa-sidenav__item">
+            <a [routerLink]="['component/popup']" routerLinkActive="usa-current">
+              Popup
+            </a>
+          </li>
+          <li class="usa-sidenav__item">
+            <a [routerLink]="['component/collapse']" routerLinkActive="usa-current">
+              Collapse
+            </a>
+          </li>
+          <li class="usa-sidenav__item">
             <a [routerLink]="['component/header']" routerLinkActive="usa-current">
               Header
             </a>
@@ -44,6 +59,11 @@
           <li class="usa-sidenav__item">
             <a [routerLink]="['component/searchResultList']" routerLinkActive="usa-current">
               Search Result List
+            </a>
+          </li>
+          <li class="usa-sidenav__item">
+            <a [routerLink]="['component/searchResultListCard']" routerLinkActive="usa-current">
+              Search Result List Card
             </a>
           </li>
           <li class="usa-sidenav__item">
@@ -90,6 +110,16 @@
           <li class="usa-sidenav__item">
             <a [routerLink]="['component/actions-menu']" routerLinkActive="usa-current">
               Actions Menu
+            </a>
+          </li>
+          <li class="usa-sidenav__item">
+            <a [routerLink]="['formly/formlyForms']" routerLinkActive="usa-current">
+              Formly Forms
+            </a>
+          </li>
+          <li class="usa-sidenav__item">
+            <a [routerLink]="['formly/formlyConditional']" routerLinkActive="usa-current">
+              Formly Conditional
             </a>
           </li>
         </ul>

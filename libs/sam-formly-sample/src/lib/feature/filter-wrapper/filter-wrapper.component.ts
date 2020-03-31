@@ -3,13 +3,13 @@ import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { BehaviorSubject } from 'rxjs';
 import { maxDateValidator, minDateValidator } from '@gsa-sam/sam-formly';
-//import { maxDateRangeValidator, minDateRangeValidator } from 'libs/packages/sam-formly/src/lib/formly/formly.validators';
 import { FormControl, ValidationErrors } from '@angular/forms';
 
 
 @Component({
-  selector: 'filter-wrapper',
+  selector: 'sds-filter-wrapper',
   templateUrl: './filter-wrapper.component.html',
+
 })
 export class FilterWrapperComponent implements OnInit {
 
@@ -18,7 +18,11 @@ export class FilterWrapperComponent implements OnInit {
   }
   results: any = {};
   form = new FormGroup({});
-  model = {};
+  model: any = {
+    searchEntity: {
+      uniqueEntityIdSam: 20
+    }
+  };
   options: FormlyFormOptions = {};
   /**
  * Event when something is checked/selected in the grid
@@ -29,9 +33,9 @@ export class FilterWrapperComponent implements OnInit {
   fields: FormlyFieldConfig[] = [
     {
       key: 'searchKeyword',
-      wrappers: ['form-field'],
+      wrappers: ['filterwrapper'],
       templateOptions: {
-        label: 'Keyword',
+        label: 'Keyword (with label)',
         ariaHidden: true
       },
       fieldGroup: [{
@@ -39,17 +43,7 @@ export class FilterWrapperComponent implements OnInit {
         type: 'input',
         templateOptions: {
           type: 'text',
-          label: 'Search Keyword'        
-         },
-
-      },
-      {
-        key: 'keyword',
-        type: 'input',
-        templateOptions: {
-          type: 'text',
-          label: 'test Keyword',
-          labelClass:'usa-sr-only'
+          label: 'Keyword'
         },
 
       }]
@@ -58,7 +52,10 @@ export class FilterWrapperComponent implements OnInit {
     {
       key: 'searchEntity',
       wrappers: ['accordionwrapper'],
-      templateOptions: { label: 'Entity' },
+      templateOptions: {
+        label: 'Entity',
+        expand: false,
+      },
       fieldGroup: [
         {
           key: 'uniqueEntityIdSam',
@@ -86,10 +83,35 @@ export class FilterWrapperComponent implements OnInit {
         },
       ],
     },
+
+    {
+      key: 'keyword',
+      wrappers: ['filterwrapper'],
+      templateOptions: {
+        label: 'Search Keyword (without label)',
+        ariaHidden: true
+      },
+      fieldGroup: [
+        {
+          key: 'keyword',
+          type: 'input',
+          templateOptions: {
+            type: 'text',
+            label: 'test Keyword',
+            labelClass: 'usa-sr-only'
+          },
+
+        }]
+    },
+
     {
       key: 'entityStatus',
       wrappers: ['accordionwrapper'],
-      templateOptions: { label: 'Entity Status' },
+
+      templateOptions: {
+        label: 'Entity Status',
+        expand: true,
+      },
       fieldGroup: [
         {
           key: 'statusCheckbox',
@@ -260,7 +282,7 @@ export class FilterWrapperComponent implements OnInit {
           },
         },
       ]
-    }
+    },
   ];
   public ngOnInit() {
     this.filterChange$.subscribe(

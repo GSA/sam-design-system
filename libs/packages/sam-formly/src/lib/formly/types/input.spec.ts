@@ -60,7 +60,6 @@ describe('Formly Field input Component', () => {
                 }
 
             }];
-
             const fixture = createTestComponent('<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'),
                 trigger = fixture.nativeElement.querySelector('usa-input')
             const expectedValue = fixture.debugElement.query(By.css('.usa-input')).componentInstance.field.templateOptions;
