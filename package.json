@@ -50,7 +50,7 @@
     "@fortawesome/angular-fontawesome": "^0.3.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.22",
     "@fortawesome/free-solid-svg-icons": "^5.10.2",
-    "@gsa-sam/sam-styles": "0.0.58",
+    "@gsa-sam/sam-styles": "^0.0.58",
     "@ngrx/effects": "6.1.2",
     "@ngrx/router-store": "6.1.2",
     "@ngrx/store": "6.1.2",
