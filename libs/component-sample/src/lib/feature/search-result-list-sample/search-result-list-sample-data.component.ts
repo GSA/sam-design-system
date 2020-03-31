@@ -5,7 +5,7 @@ import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef, Input }
   templateUrl: 'search-result-list-sample-data.component.html'
 })
 
-export class SearchResultListSampleDataComponent {
+export class SearchResultListSampleDataComponent{
 
   constructor(private change: ChangeDetectorRef) { }
 

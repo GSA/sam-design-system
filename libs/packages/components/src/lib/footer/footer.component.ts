@@ -19,6 +19,7 @@ export class SdsFooterComponent {
    * Model used for the different display portions of the footer
    */
   @Input() model: FooterModel;
+  @Input() isCollapsedContent: boolean = true;
 
   /**
    * event for event based
@@ -28,7 +29,7 @@ export class SdsFooterComponent {
 
   /**
    * Link clicked and emits the link data into an event
-   * @param link 
+   * @param link
    */
   linkClickEvent(link: INavigationLink) {
     this.linkEvent.emit(link);
