@@ -1,4 +1,4 @@
-import { Directive, Input, ElementRef, Renderer2, AfterViewInit, OnInit } from '@angular/core';
+import { Directive, Input, ElementRef, Renderer2, AfterViewInit, OnInit, Injector } from '@angular/core';
 
 
 @Directive({
@@ -12,13 +12,15 @@ export class SdsPopupDirective implements OnInit {
   sdsPopupDiv: HTMLElement;
   descDiv: HTMLElement;
 
-  constructor(private el: ElementRef, private renderer: Renderer2) {
+  constructor(private el: ElementRef, private renderer: Renderer2, private injector:Injector) {
+    this.renderer = injector.get(Renderer2);
     this.renderer.addClass(this.el.nativeElement, 'sds-popup');
-    this.sdsPopupDiv = document.createElement('div');
-    this.renderer.addClass(this.sdsPopupDiv, 'sds-popup__content');
   }
 
   ngOnInit() {
+    console.log('sdsdggfsgfdg');
+    this.sdsPopupDiv = document.createElement('div');
+    this.renderer.addClass(this.sdsPopupDiv, 'sds-popup__content');
     this.renderer.addClass(this.sdsPopupDiv, this.placement);
     this.renderer.addClass(this.sdsPopupDiv, this.position);
     if(typeof(this.sdsPopup) !== 'string'){
