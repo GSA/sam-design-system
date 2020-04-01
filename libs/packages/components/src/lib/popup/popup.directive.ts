@@ -18,7 +18,6 @@ export class SdsPopupDirective implements OnInit {
   }
 
   ngOnInit() {
-    console.log('Pop-up On init hook');
     this.sdsPopupDiv = document.createElement('div');
     this.renderer.addClass(this.sdsPopupDiv, 'sds-popup__content');
     this.renderer.addClass(this.sdsPopupDiv, this.placement);
