@@ -4,9 +4,10 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {ComponentWrapperComponent} from './component-wrapper/component-wrapper.component';
+import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, PrismModule],
+  imports: [CommonModule, RouterModule, PrismModule, MarkdownModule],
   exports: [
     CommonModule, RouterModule, ComponentWrapperComponent, HighlightComponent
   ],
