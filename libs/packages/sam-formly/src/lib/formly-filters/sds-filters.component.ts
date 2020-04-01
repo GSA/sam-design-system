@@ -94,6 +94,7 @@ export class SdsFiltersComponent implements OnInit {
    * Modeal update
    */
   modelChange = new Subject<any>();
+   dialogRef: any;
 
   /**
    * Pass in a Form Group for ReactiveForms Support
@@ -141,13 +142,13 @@ export class SdsFiltersComponent implements OnInit {
         this.dialogData.push({"elementKey": element.key, "value": element.hideExpression === undefined ? false : element.hideExpression, "childFieldCollection": null});
       }
     });
-    let dialogRef = this.dialog.open(SdsAdvancedFilterDialog, {
+     this.dialogRef = this.dialog.open(SdsAdvancedFilterDialog, {
       width: 'medium',
       maxHeight:'400px',
       data: {fieldsToRender:this.fields, fieldToBind: this.dialogData }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    this.dialogRef.afterClosed().subscribe(result => {
       this.dialogData=[];
       if(result)
       {

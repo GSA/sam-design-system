@@ -179,11 +179,82 @@ describe('The Sam Filters Component', () => {
         let testViewContainerRef: ViewContainerRef;
         let viewContainerFixture: ComponentFixture<ComponentWithChildViewContainer>;
 
+        let component: SdsFiltersComponent;
+        let fixture: ComponentFixture<SdsFiltersComponent>;
+
         beforeEach(fakeAsync(() => {
             TestBed.configureTestingModule({
-              imports: [SdsDialogModule, DialogTestModule],
+              imports: [SdsDialogModule, 
+                DialogTestModule,  
+                CommonModule,
+                BrowserAnimationsModule,
+                SdsFormlyModule,
+                SdsFiltersModule],
             });
         
+            fixture = TestBed.createComponent(SdsFiltersComponent);
+            component = fixture.componentInstance;
+            component.fields = [
+                {
+                    type: 'input',
+                    key:'keywordFilter',
+                    templateOptions: {
+                      label: 'Keyword',
+                      disableHide: true
+                    },
+                    },
+                    {
+                        key: 'expirationDate',
+                        wrappers: ['accordionwrapper'],
+                        templateOptions: { label: 'Date' },
+                        fieldGroup: [
+                          {
+                            key: 'currentDateFilter',
+                            type: 'datepicker',
+                            hideExpression: true,
+                            templateOptions: {
+                              label: 'Current Date',
+                            }
+                          },
+                          {
+                            key: 'publishDateFilter',
+                            type: 'datepicker',
+                            templateOptions: {
+                              label: 'Publish Date',
+                            }
+                          },
+                          {
+                            key: 'lastModifiedDateFilter',
+                            type: 'datepicker',
+                            templateOptions: {
+                              label: 'Last Modified Date',
+                            }
+                          },
+                        ]
+                      },
+                {
+                    key: 'filters',
+                    wrappers: ['accordionwrapper'],
+                    templateOptions: { label: 'Entity Name/UEI' },
+                    fieldGroup: [
+                        {
+                            key: 'uniqueId',
+                            type: 'input',
+                            templateOptions: {
+                                required: true,
+                                label: 'Formly input type number',
+                                placeholder: 'placeholder',
+                                inputType: 'number',
+                            },
+                        },
+                        
+                          
+                    ]
+                },
+                
+            ];
+            component.form = new FormGroup({});
+
             TestBed.compileComponents();
           }));
 
@@ -202,66 +273,75 @@ describe('The Sam Filters Component', () => {
             testViewContainerRef = viewContainerFixture.componentInstance.childViewContainer;
           });
           it('should open a dialog with a template', () => {
-            const templateRefFixture = TestBed.createComponent(ComponentWithTemplateRef);
-            templateRefFixture.componentInstance.localValue = 'Bees';
-            templateRefFixture.detectChanges();
         
-            const data = {value: 'Knees'};
-        
-            let dialogRef = dialog.open(templateRefFixture.componentInstance.templateRef, { data });
-        
-            viewContainerFixture.detectChanges();
-        
-            expect(overlayContainerElement.textContent).toContain('Cheese Bees Knees');
-            expect(templateRefFixture.componentInstance.dialogRef).toBe(dialogRef);
-        
-            viewContainerFixture.detectChanges();
-        
-            let dialogContainerElement = overlayContainerElement.querySelector('sds-dialog-container')!;
-            expect(dialogContainerElement.getAttribute('role')).toBe('dialog');
-        
-            dialogRef.close();
+            component.showMoreFilters=true;
+            fixture.detectChanges();
+            spyOn(component, 'openDialog').and.callThrough();
+           
+
+            let moreFiltersButton = fixture.debugElement.query(By.css('.usa-button--unstyled')) as DebugElement;
+            moreFiltersButton.nativeElement.click();
+            fixture.detectChanges();
+
+          
+
           });
 
-          it('should close the dialog when clicking on the close button', fakeAsync(() => {
-            const templateRefFixture = TestBed.createComponent(ComponentWithTemplateRef);
-            templateRefFixture.componentInstance.localValue = 'Bees';
-            templateRefFixture.detectChanges();
-        
-            const data = {value: 'Knees'};
-            let dialogRef = dialog.open(templateRefFixture.componentInstance.templateRef, { data });
+    //  it('should close a dialog and get back a result', fakeAsync(() => {
+    //     component.showMoreFilters=true;
+    //     fixture.detectChanges();
+    //     let val = spyOn(component, 'openDialog').and.callThrough();
+       
+       
+    //     let moreFiltersButton = fixture.debugElement.query(By.css('.usa-button--unstyled')) as DebugElement;
+    //     moreFiltersButton.nativeElement.click();
+    //     fixture.detectChanges();
 
-            viewContainerFixture.detectChanges();
-            expect(overlayContainerElement.querySelectorAll('.sds-dialog__container').length).toBe(1);
+    //     let data= {fieldsToRender: component.fields, fieldToBind: component.dialogData }
+    //     let afterCloseCallback = jasmine.createSpy('afterClose callback');
+    //     component.dialogRef.afterClosed().subscribe(afterCloseCallback);
+       
+    //     component.dialogRef.close(data);
+    //     fixture.detectChanges();
+    //     flush();
     
-            (overlayContainerElement.querySelector('button[sds-dialog-close]') as HTMLElement).click();
-            viewContainerFixture.detectChanges();
-            flush();
-    
-            expect(overlayContainerElement.querySelectorAll('.sds-dialog__container').length).toBe(0);
-          }));
+    //     expect(afterCloseCallback).toHaveBeenCalledWith(data);
+    //   //  expect(overlayContainerElement.querySelector('sds-dialog-container')).toBeNull();
 
-          it('should close a dialog and get back a result', fakeAsync(() => {
-            const templateRefFixture = TestBed.createComponent(ComponentWithTemplateRef);
-            templateRefFixture.componentInstance.localValue = 'Bees';
-            templateRefFixture.detectChanges();
+    //        }));
+
+
+
+
+        //   it('should close the dialog when clicking on the close button', fakeAsync(() => {
+        //       component.showMoreFilters=true;
+        //         fixture.detectChanges();
+        //         let val = spyOn(component, 'openDialog').and.callThrough();
+       
+       
+        //     let moreFiltersButton = fixture.debugElement.query(By.css('.usa-button--unstyled')) as DebugElement;
+        //     moreFiltersButton.nativeElement.click();
+        //     fixture.detectChanges();
         
-            const data = {value: 'Knees'};
-            let dialogRef = dialog.open(templateRefFixture.componentInstance.templateRef, { data });
-            let afterCloseCallback = jasmine.createSpy('afterClose callback');
+        //    // const data = {value: 'Knees'};
+        //   //  let dialogRef = dialog.open(templateRefFixture.componentInstance.templateRef, { data });
+
+        //   //  viewContainerFixture.detectChanges();
+        //   //console.log(component.dialogRef.componentInstance);
+        //     expect(component.dialogRef.componentInstance.length).toBe(1);
+    
+        //    // (overlayContainerElement.querySelector('button[sds-dialog-close]') as HTMLElement).click();
+        //  //   viewContainerFixture.detectChanges();
+        //  //   flush();
+    
+        //   //  expect(overlayContainerElement.querySelectorAll('.sds-dialog__container').length).toBe(0);
+        //   }));
+
         
-            dialogRef.afterClosed().subscribe(afterCloseCallback);
-            dialogRef.close('Charmander');
-            viewContainerFixture.detectChanges();
-            flush();
-        
-            expect(afterCloseCallback).toHaveBeenCalledWith('Charmander');
-            expect(overlayContainerElement.querySelector('sds-dialog-container')).toBeNull();
-          }));
 
     });
 
-    describe('reset all models', () => {
+    describe('reset model', () => {
         let component: SdsFiltersComponent;
         let fixture: ComponentFixture<SdsFiltersComponent>;
 
@@ -293,17 +373,8 @@ describe('The Sam Filters Component', () => {
                                 placeholder: 'placeholder',
                                 inputType: 'number',
                             },
-                        },
-                        {
-                        key: 'button-test',
-                        type: 'button',
-                        templateOptions: {
-                            text: 'Reset All',
-                            btnType: 'info',
-                            onClick: $event => {
-                                component.model= {filters: null }; }
-                        },
-                    }]
+                        }
+                    ]
                 },
             ];
             component.form = new FormGroup({});
@@ -311,19 +382,19 @@ describe('The Sam Filters Component', () => {
         });
         it('reset all should clear model', () => {
             component.model = {filters: { uniqueId: '4' } };
+            component.showResetAll=true;
             fixture.detectChanges();
-
+            spyOn(component, 'resetAll').and.callThrough();
             const inputField = fixture.debugElement.query(By.css('.usa-input')) as DebugElement;
-            const buttonField: DebugElement = fixture.debugElement.query(By.css('.usa-button--unstyled')) as DebugElement;
-
 
             inputField.nativeElement.value = '4';
             inputField.nativeElement.dispatchEvent(new Event('input'));
             fixture.detectChanges();
-            buttonField.triggerEventHandler('click',null);
-            spyOn(component, 'resetAll').and.callThrough();
+
+            let resetButton = fixture.debugElement.query(By.css('.usa-button--unstyled')) as DebugElement;
+            resetButton.nativeElement.click();
             fixture.detectChanges();
-            expect(component.model.filters).toBeNull();
+            expect(component.model).toBeNull();
 
         });
 
