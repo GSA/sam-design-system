@@ -2,6 +2,7 @@ import { SdsPopupDirective } from './popup.directive';
 import { TestBed, ComponentFixture, async } from '@angular/core/testing';
 import { Component, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { SdsPopupModule } from './popup.module';
 
 @Component({
   template: '<div id="popupDesc" sdsPopup="Add Description" position="bottom-center" placement="out"><div class="sds-popup__content"><div class="tooltip">Add Description</div></div></div><div id="sdsPopupDir" [sdsPopup] position="bottom-center" placement="out"></div>'
@@ -14,9 +15,11 @@ class TestPopupSampleComponent {
 }
 
 
-fdescribe('PopupDirective', () => {
+describe('PopupDirective', () => {
   let component: TestPopupSampleComponent;
   let fixture: ComponentFixture<TestPopupSampleComponent>;
+  let directiveFixture: ComponentFixture<SdsPopupDirective>;
+
   let de: DebugElement;
   let popupDesc: DebugElement;
 
@@ -25,15 +28,22 @@ fdescribe('PopupDirective', () => {
     TestBed.configureTestingModule({
       declarations:[SdsPopupDirective,
         TestPopupSampleComponent
+      ],
+      imports:[
+        SdsPopupModule
       ]
     })
     .compileComponents();
   }));
 
   beforeEach(()=>{
+
     fixture = TestBed.createComponent(TestPopupSampleComponent);
+    directiveFixture = TestBed.createComponent(SdsPopupDirective)
     component = fixture.componentInstance;
-    component.OnInit();
+    let test = directiveFixture.componentInstance;
+    test.ngOnInit();
+    console.log("before")
     popupDesc = fixture.debugElement.query(By.css('#popupDesc'));
     de = fixture.debugElement.query(By.css('#sdsPopupDir'));
   })
