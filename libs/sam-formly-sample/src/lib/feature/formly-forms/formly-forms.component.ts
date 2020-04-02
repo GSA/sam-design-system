@@ -2,20 +2,27 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { faClipboardCheck } from '@fortawesome/free-solid-svg-icons';
-
+import { SDSAutocompletelConfiguration, SDSSelectedItemModel } from '@gsa-sam/components';
+import { AcSample2Service } from './ac-sample2.service';
+import { AcSample1Service } from './ac-sample1.service';
 
 @Component({
   selector: 'sds-formly-forms',
   templateUrl: './formly-forms.component.html',
- 
+
 })
 export class FormlyFormsComponent{
 
   form = new FormGroup({});
   model: any = {};
   options:any=null;
-  fields: FormlyFieldConfig[] = [      
-    {      
+  acSample1Model = new SDSSelectedItemModel();
+  acSample2Model = new SDSSelectedItemModel();
+  acSample1Config = new SDSAutocompletelConfiguration();
+  acSample2Config = new SDSAutocompletelConfiguration();
+
+  fields: FormlyFieldConfig[] = [
+    {
       fieldGroupClassName: 'grid-row',
       fieldGroup: [
         {
@@ -23,7 +30,7 @@ export class FormlyFormsComponent{
         },
       ]
     },
-    {      
+    {
       fieldGroupClassName: 'grid-row',
       fieldGroup: [
         {
@@ -42,7 +49,7 @@ export class FormlyFormsComponent{
         },
       ]
     },
-    {      
+    {
       fieldGroupClassName: 'grid-row',
       fieldGroup: [
         {
@@ -56,7 +63,7 @@ export class FormlyFormsComponent{
         },
       ]
     },
-    {      
+    {
       fieldGroupClassName: 'grid-row ',
       fieldGroup: [
         {
@@ -69,7 +76,7 @@ export class FormlyFormsComponent{
         },
       ]
     },
-    {      
+    {
       fieldGroupClassName: 'grid-row',
       fieldGroup: [
         {
@@ -88,7 +95,7 @@ export class FormlyFormsComponent{
         },
       ]
     },
-    {      
+    {
       fieldGroupClassName: 'grid-row',
       fieldGroup: [
         {
@@ -207,7 +214,7 @@ export class FormlyFormsComponent{
         },
       ],
     },
-    {      
+    {
       fieldGroupClassName: 'grid-row',
       fieldGroup: [
         {
@@ -222,7 +229,7 @@ export class FormlyFormsComponent{
         },
       ]
     },
-    {      
+    {
       fieldGroupClassName: 'grid-row',
       fieldGroup: [
         {
@@ -230,7 +237,7 @@ export class FormlyFormsComponent{
         },
       ]
     },
-    {      
+    {
       fieldGroupClassName: 'grid-row grid-gap-2',
       fieldGroup: [
         {
@@ -266,7 +273,7 @@ export class FormlyFormsComponent{
             type: 'number',
             pattern: '\\d{3}',
             placeholder: 'ex-123'
-          }, 
+          },
         },
       ]
     },
@@ -282,7 +289,7 @@ export class FormlyFormsComponent{
         },
       },
     },
-    {          
+    {
           className: 'margin-top-(-1) grid-col-8 display-block desktop:display-none' ,
           type: 'input',
           key: 'extension1',
@@ -294,13 +301,61 @@ export class FormlyFormsComponent{
             min : 0,
             pattern: '\\d{3}',
             placeholder: 'ex-123'
-          },         
+          },
         },
+    {
+      className: 'margin-top-(-1) grid-col-8 display-block' ,
+      type: 'autocomplete',
+      key: 'acSample1',
+      templateOptions: {
+        label: 'Sample 1',
+        configuration: this.acSample1Config,
+        model: this.acSample1Model,
+        service: this.acSample1Service,
+      },
+      lifecycle: {
+        onChanges: (fieldConfig, config) => {
+          config.formControl.valueChanges.subscribe(value => {
+            const item = value.items[0];
+            this.acSample2Model.items = [ item ];
+          });
+        }
+      }
+    },
+    {
+      className: 'margin-top-(-1) grid-col-8 display-block' ,
+      type: 'autocomplete',
+      key: 'acSample2',
+      templateOptions: {
+        label: 'Sample 2',
+        configuration: this.acSample2Config,
+        model: this.acSample2Model,
+        service: this.acSample2Service,
+      },
+      lifecycle: {
+        onChanges: (fieldConfig, config) => {
+          config.formControl.valueChanges.subscribe(value => {
+            const item = value.items[0];
+            this.acSample1Model.items = [ item ];
+          });
+        }
+      }
+    }
   ]
+
+  constructor(private acSample1Service: AcSample1Service, private acSample2Service: AcSample2Service) {
+    this.acSample1Config.id = 'ac1';
+    this.acSample1Config.primaryKeyField = 'id';
+    this.acSample1Config.primaryTextField = 'name';
+    this.acSample2Config.id = 'ac2';
+    this.acSample2Config.primaryKeyField = 'id';
+    this.acSample2Config.primaryTextField = 'name';
+    // If you initalize the items, then the two onChanges callbacks work as expected
+    //this.acSample1Model.items[0] = { id: '1', name: 'one' };
+    //this.acSample2Model.items[0] = { id: '6', name: 'six' };
+  }
 
   submit() {
     //alert(JSON.stringify(this.model));
   }
-
-
 }
