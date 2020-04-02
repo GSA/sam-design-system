@@ -60,6 +60,14 @@ export class ExternalLinkDirective
     this.render(this.createIcon());
   }
 
+  private createIcon1 (): HTMLSpanElement {
+    const icon = this.renderer.createElement('span');
+    icon.classList.add('fa', 'fa-external-link', 'fa-sm');
+    icon.setAttribute('aria-hidden', true);
+
+    return icon;
+  }
+
   private createIcon (): HTMLSpanElement {
     const icon = this.renderer.createElement('img');
     icon.classList.add('sds-external-link');
