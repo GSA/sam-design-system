@@ -30,3 +30,5 @@ export * from './dialog/dialog.module';
 export * from './video-player/video-player.module';
 export * from './popup/popup.module';
 export * from './collapse/collapse.module';
+
+export * from './external-link/external-link.module';
