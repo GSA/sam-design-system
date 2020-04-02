@@ -167,6 +167,11 @@ $cdk-overlay-dark-backdrop-background: rgba(14, 52, 88, 0.7);
 }
 
 .sds-external-link{
-  width: 15px;
-  height: 15px;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+}
+
+.usa-list--unstyled>li{
+  white-space: pre;
 }
