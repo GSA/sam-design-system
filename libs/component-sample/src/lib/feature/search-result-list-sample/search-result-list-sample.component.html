@@ -42,7 +42,7 @@
   </sds-search-result-list>
   <br>
   <br>
-  <sds-search-result-list >
+  <sds-search-result-list [model]="errorItems">
       <ng-template #resultContent let-item>
           <div>
               {{item.text}}

@@ -6,12 +6,13 @@ import { SearchMessageInfoSampleData, SearchMessageInfoSampleIconData } from './
   templateUrl: 'search-result-list-sample.component.html',
 })
 
-export class SearchResultListSampleComponent implements OnInit{
+export class SearchResultListSampleComponent {
 
   constructor(private change: ChangeDetectorRef) { }
 
   public messageInfoData=SearchMessageInfoSampleData;
   public messageInfoIconData=SearchMessageInfoSampleIconData;
+
 
   items = [
     { text: 'First', id: 1 },
@@ -21,11 +22,10 @@ export class SearchResultListSampleComponent implements OnInit{
     { text: 'Fifth', id: 5 , hasNewerData:true},
 
   ];
+  errorItems = [
+    { error: 'error',  text: 'Invalid data'}
+  ];
 
   emptyItems = [];
 
-  ngOnInit(){
-    console.log(this.messageInfoData);
-
-  }
 }
