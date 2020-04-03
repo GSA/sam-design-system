@@ -5,15 +5,16 @@ import {
     fakeAsync,
     inject,
     flush,
+    discardPeriodicTasks,
 } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
-import { FormGroup } from '@angular/forms';
+import { FormGroup,FormsModule  } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SdsFiltersModule } from './sds-filters.module';
 import { SdsFormlyModule } from '../formly/formly.module';
 import {
-    SdsFiltersComponent
+    SdsFiltersComponent, SdsAdvancedFilterDialog
 } from './sds-filters.component';
 import { BrowserAnimationsModule,NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { DebugElement,
@@ -28,10 +29,14 @@ import { DebugElement,
 import {
     SdsDialogService,
     SdsDialogRef,
-    SdsDialogModule
+    SdsDialogModule,
+    SDS_DIALOG_DATA
   } from '@gsa-sam/components';
   import {OverlayContainer, ScrollStrategy, Overlay} from '@angular/cdk/overlay';
 import { tick } from '@angular/core/src/render3';
+import { of } from 'rxjs';
+import { CheckType } from '@angular/core/src/view';
+import { componentFactoryName } from '@angular/compiler';
 
 describe('The Sam Filters Component', () => {
 
@@ -181,6 +186,11 @@ describe('The Sam Filters Component', () => {
 
         let component: SdsFiltersComponent;
         let fixture: ComponentFixture<SdsFiltersComponent>;
+       
+let data: any;
+        const dialogMock = {
+            close: () => { }
+        };
 
         beforeEach(fakeAsync(() => {
             TestBed.configureTestingModule({
@@ -190,6 +200,9 @@ describe('The Sam Filters Component', () => {
                 BrowserAnimationsModule,
                 SdsFormlyModule,
                 SdsFiltersModule],
+                providers: [
+                     {provide: SdsDialogRef, useValue:[dialogMock]},
+                     {provide: SDS_DIALOG_DATA, useValue: [data]}]
             });
         
             fixture = TestBed.createComponent(SdsFiltersComponent);
@@ -254,6 +267,7 @@ describe('The Sam Filters Component', () => {
                 
             ];
             component.form = new FormGroup({});
+            data= {fieldsToRender: component.fields, fieldToBind: component.dialogData }
 
             TestBed.compileComponents();
           }));
@@ -286,58 +300,27 @@ describe('The Sam Filters Component', () => {
           
 
           });
-
-    //  it('should close a dialog and get back a result', fakeAsync(() => {
-    //     component.showMoreFilters=true;
-    //     fixture.detectChanges();
-    //     let val = spyOn(component, 'openDialog').and.callThrough();
+           it('should close the dialog when clicking on the close button', fakeAsync(() => {
+               
+            component.showMoreFilters=true;
+            fixture.detectChanges();
+            spyOn(component, 'openDialog').and.callThrough();
        
        
-    //     let moreFiltersButton = fixture.debugElement.query(By.css('.usa-button--unstyled')) as DebugElement;
-    //     moreFiltersButton.nativeElement.click();
-    //     fixture.detectChanges();
+            let moreFiltersButton = fixture.debugElement.query(By.css('.usa-button--unstyled')) as DebugElement;
+            moreFiltersButton.nativeElement.click();
+            fixture.detectChanges();
 
-    //     let data= {fieldsToRender: component.fields, fieldToBind: component.dialogData }
-    //     let afterCloseCallback = jasmine.createSpy('afterClose callback');
-    //     component.dialogRef.afterClosed().subscribe(afterCloseCallback);
-       
-    //     component.dialogRef.close(data);
-    //     fixture.detectChanges();
-    //     flush();
-    
-    //     expect(afterCloseCallback).toHaveBeenCalledWith(data);
-    //   //  expect(overlayContainerElement.querySelector('sds-dialog-container')).toBeNull();
+           
+           let fixtureDialog = TestBed.createComponent(SdsAdvancedFilterDialog);
+           let componentDialog = fixtureDialog.componentInstance;
 
-    //        }));
+            let spy = spyOn(component.dialogRef, 'close').and.callThrough();
+            const cancelButton = fixtureDialog.debugElement.nativeElement.querySelector('#cancelButton');
+            cancelButton.click();
+            fixtureDialog.detectChanges();
 
-
-
-
-        //   it('should close the dialog when clicking on the close button', fakeAsync(() => {
-        //       component.showMoreFilters=true;
-        //         fixture.detectChanges();
-        //         let val = spyOn(component, 'openDialog').and.callThrough();
-       
-       
-        //     let moreFiltersButton = fixture.debugElement.query(By.css('.usa-button--unstyled')) as DebugElement;
-        //     moreFiltersButton.nativeElement.click();
-        //     fixture.detectChanges();
-        
-        //    // const data = {value: 'Knees'};
-        //   //  let dialogRef = dialog.open(templateRefFixture.componentInstance.templateRef, { data });
-
-        //   //  viewContainerFixture.detectChanges();
-        //   //console.log(component.dialogRef.componentInstance);
-        //     expect(component.dialogRef.componentInstance.length).toBe(1);
-    
-        //    // (overlayContainerElement.querySelector('button[sds-dialog-close]') as HTMLElement).click();
-        //  //   viewContainerFixture.detectChanges();
-        //  //   flush();
-    
-        //   //  expect(overlayContainerElement.querySelectorAll('.sds-dialog__container').length).toBe(0);
-        //   }));
-
-        
+          }));
 
     });
 
@@ -400,6 +383,146 @@ describe('The Sam Filters Component', () => {
 
         
     });
+
+    describe('InformationDialog', () => {
+        let dialog: SdsDialogService;
+        let overlayContainerElement: HTMLElement;
+      
+        let noop: ComponentFixture<NoopComponent>;
+        let component: SdsFiltersComponent;
+        let dialogData2=[];
+        beforeEach(() => {
+          TestBed.configureTestingModule({
+            imports: [ DialogTestModule,  FormsModule, SdsFiltersModule
+                 ],
+            providers: [
+              { provide: OverlayContainer, useFactory: () => {
+                overlayContainerElement = document.createElement('div');
+                return { getContainerElement: () => overlayContainerElement };
+              }}
+            ]
+          });
+          let fixture = TestBed.createComponent(SdsFiltersComponent);
+          component = fixture.componentInstance;
+          component.fields = [
+            {
+                type: 'input',
+                key:'keywordFilter',
+                templateOptions: {
+                  label: 'Keyword',
+                  disableHide: true
+                },
+                },
+                {
+                    key: 'expirationDate',
+                    wrappers: ['accordionwrapper'],
+                    templateOptions: { label: 'Date' },
+                    fieldGroup: [
+                      {
+                        key: 'currentDateFilter',
+                        type: 'datepicker',
+                        hideExpression: true,
+                        templateOptions: {
+                          label: 'Current Date',
+                        }
+                      },
+                      {
+                        key: 'publishDateFilter',
+                        type: 'datepicker',
+                        templateOptions: {
+                          label: 'Publish Date',
+                        }
+                      },
+                      {
+                        key: 'lastModifiedDateFilter',
+                        type: 'datepicker',
+                        templateOptions: {
+                          label: 'Last Modified Date',
+                        }
+                      },
+                    ]
+                  },
+            {
+                key: 'filters',
+                wrappers: ['accordionwrapper'],
+                templateOptions: { label: 'Entity Name/UEI' },
+                fieldGroup: [
+                    {
+                        key: 'uniqueId',
+                        type: 'input',
+                        templateOptions: {
+                            required: true,
+                            label: 'Formly input type number',
+                            placeholder: 'placeholder',
+                            inputType: 'number',
+                        },
+                    },
+                    
+                      
+                ]
+            },
+            
+        ];
+        component.form = new FormGroup({});
+          dialog = TestBed.get(SdsDialogService);
+      
+          noop = TestBed.createComponent(NoopComponent);
+          
+          component.fields.forEach(element => {
+            if(element.fieldGroup && element.fieldGroup.length > 1)
+            {
+              let chlidElements: any = [];
+                element.fieldGroup.forEach(childElement => {
+                      chlidElements.push({"elementKey": childElement.key, "value": childElement.hideExpression === undefined ? false : childElement.hideExpression});
+                  });
+                  dialogData2.push({"elementKey": element.key, "value": element.hideExpression === undefined ? false : element.hideExpression, "childFieldCollection": chlidElements});
+            }
+            else{
+              dialogData2.push({"elementKey": element.key, "value": element.hideExpression === undefined ? false : element.hideExpression, "childFieldCollection": null});
+            }
+          });
+        });
+        var myObj = {
+            name: 'test',
+            getBoundingClientRect: function () {
+                return {top: 100}
+            }
+        }
+        it('should click the checkox and update the model', () => {
+
+          const config = {
+            data: {fieldsToRender: component.fields, fieldToBind: dialogData2}
+          };
+          dialog.open(SdsAdvancedFilterDialog, config);
+      
+          noop.detectChanges(); // Updates the dialog in the overlay
+      
+          let checkboxElement=overlayContainerElement.querySelector("#chkexpirationDate") as HTMLInputElement;
+          spyOn(document, "getElementById").and.callFake(function() {
+            return {
+                id: 'chkexpirationDate'
+            }
+        }); 
+        checkboxElement.click();
+        });
+
+
+        it('should close the dialog and return the result', fakeAsync(() => {
+
+            const config = {
+              data: {fieldsToRender: component.fields, fieldToBind: dialogData2}
+            };
+         
+          spyOn(component.dialog, 'open').and.returnValue({afterClosed: ()=> of(config.data)});
+          component.openDialog();
+          
+          }));
+      });
+
+
+
+
+
 });
 @Directive({selector: 'dir-with-view-container'})
 class DirectiveWithViewContainer {
@@ -434,19 +557,29 @@ class DirectiveWithViewContainer {
       return this.childWithViewContainer.viewContainerRef;
     }
   }
+
+
+  @Component({
+    template: ''
+  })
+  class NoopComponent {}
+
   const TEST_DIRECTIVES = [
     ComponentWithChildViewContainer,
     ComponentWithTemplateRef,
-    DirectiveWithViewContainer
+    DirectiveWithViewContainer,
+    NoopComponent,
+  
   ];
 
   @NgModule({
-    imports: [SdsDialogModule, NoopAnimationsModule],
+    imports: [SdsDialogModule, NoopAnimationsModule, FormsModule],
     exports: TEST_DIRECTIVES,
     declarations: TEST_DIRECTIVES,
     entryComponents: [
         ComponentWithChildViewContainer,
-        ComponentWithTemplateRef
+        ComponentWithTemplateRef,
+        SdsAdvancedFilterDialog,
     ],
   })
   class DialogTestModule { }

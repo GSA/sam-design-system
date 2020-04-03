@@ -35,10 +35,10 @@
   
 </div>
 <div sds-dialog-actions>
-  <button class="usa-button usa-button--base" (click)="onNoClick()">
+  <button class="usa-button usa-button--base" id="cancelButton" (click)="onNoClick()">
     Cancel
   </button>
-  <button class="usa-button" [sds-dialog-close]="data">
+  <button class="usa-button" id="applyButton" [sds-dialog-close]="data">
     Apply
   </button>
 </div>

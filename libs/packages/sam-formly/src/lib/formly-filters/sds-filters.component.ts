@@ -33,7 +33,7 @@ export class SdsAdvancedFilterDialog {
   changeSelection(event) {
             let checkboxElement: HTMLInputElement;
             checkboxElement = document.getElementById(event.target.id) as HTMLInputElement;
-
+         
             document.querySelectorAll("input[type='checkbox'][value="+event.target.id+"]").forEach(element => {
               let childCheckboxElement: HTMLInputElement;
               childCheckboxElement = document.getElementById(element.id) as HTMLInputElement;
