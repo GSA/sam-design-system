@@ -1,5 +1,7 @@
 export let SdsSearchDataConfigurationData = {
   'searchConfiguration': 'none',
+  'selectInverse': false,
+  'searchBig' : false
 }
 
 export let SdsSearchDataConfigurationData1 = {
