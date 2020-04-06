@@ -59,7 +59,7 @@ export function maxValidationMessage(err, field) {
   return `This value should be less than ${field.templateOptions.max}`;
 }
 export function animationExtension(field: FormlyFieldConfig) {
-  if (field.wrappers && field.wrappers.includes('animation')) {
+  if (field.wrappers && field.wrappers.indexOf('animation') > -1) {
     return;
   }
 

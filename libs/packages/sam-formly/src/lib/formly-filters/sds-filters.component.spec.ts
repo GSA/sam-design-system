@@ -196,7 +196,8 @@ let data: any;
                 imports: [SdsDialogModule, 	
                     DialogTestModule,  	
                     CommonModule,	
-                    BrowserAnimationsModule,	
+                    BrowserAnimationsModule,
+                    RouterTestingModule.withRoutes([]),	
                     SdsFormlyModule,	
                     SdsFiltersModule],	
                     providers: [	
@@ -323,6 +324,7 @@ let data: any;
                 imports: [
                     CommonModule,
                     BrowserAnimationsModule,
+                    RouterTestingModule.withRoutes([]),
                     SdsFormlyModule,
                     SdsFiltersModule
                 ],
@@ -383,7 +385,7 @@ let data: any;
         let dialogData2=[];	
         beforeEach(() => {	
           TestBed.configureTestingModule({	
-            imports: [ DialogTestModule,  FormsModule, SdsFiltersModule	
+            imports: [ DialogTestModule,  FormsModule, SdsFiltersModule, RouterTestingModule.withRoutes([]),
                  ],	
             providers: [	
               { provide: OverlayContainer, useFactory: () => {	
