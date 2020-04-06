@@ -25,6 +25,6 @@ export class SdsSearchResultListComponent implements AfterViewInit{
 
   ngAfterViewInit(){
     console.log(this.messageInfoData);
-    console.log(this.model);
+    console.log(this.model[0]);
   }
 }

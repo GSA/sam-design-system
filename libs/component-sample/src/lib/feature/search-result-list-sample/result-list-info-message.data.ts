@@ -3,18 +3,23 @@
 export let SearchMessageInfoSampleData =
   {
    'title': 'Welcome to GSA',
-   'message': 'we found your data.'
+   'message': 'We found your data.'
 }
 
 // Item with Error
 export let SearchMessageErrorSampleData =
   {
    'title': 'Invalid Data',
-   'message':'Mismatch your input data'
+   'message':"Your data doesn't match",
+   iconObject: {
+    'iconlib': 'sds',
+    'icon': 'bell',
+    'iconsize': '5x'
+  }
 }
 
 // Item is empty
-export let SearchMessageInfoSampleIconData =
+export let SearchMessageNoMatchFound =
 {
   'title': 'No matches found',
   'message': 'We could not find a match for your search criteria Please try another search or go back to previous results.',
