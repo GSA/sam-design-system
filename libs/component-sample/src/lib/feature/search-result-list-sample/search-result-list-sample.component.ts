@@ -21,10 +21,19 @@ export class SearchResultListSampleComponent {
     { text: 'Third', id: 3 },
     { text: 'Fourth', id: 4 },
     { text: 'Fifth', id: 5 , hasNewerData:true},
-
   ];
+
   errorItems = [
-    { error: 'error',  text: 'Invalid data'}
+     {
+      error: true,
+      title: 'Invalid Data',
+      message:"Your data doesn't match",
+      iconObject: {
+        'iconlib': 'sds',
+        'icon': 'bell',
+        'iconsize': '5x'
+      }
+    }
   ];
 
   emptyItems = [];
