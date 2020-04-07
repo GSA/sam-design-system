@@ -1,10 +1,10 @@
-import { Component, Input, ContentChild, TemplateRef, OnInit, AfterViewInit } from '@angular/core';
+import { Component, Input, ContentChild, TemplateRef } from '@angular/core';
 @Component({
   selector: 'sds-search-result-list',
   templateUrl: './search-result-list.component.html',
   styleUrls: ['./search-result-list.component.scss']
 })
-export class SdsSearchResultListComponent implements AfterViewInit{
+export class SdsSearchResultListComponent {
 
   @Input() messageInfoData: any;
 
@@ -23,8 +23,4 @@ export class SdsSearchResultListComponent implements AfterViewInit{
    */
   @ContentChild('resultContent') resultContentTemplate: TemplateRef<any>;
 
-  ngAfterViewInit(){
-    console.log(this.messageInfoData);
-    console.log(this.model[0]);
-  }
 }

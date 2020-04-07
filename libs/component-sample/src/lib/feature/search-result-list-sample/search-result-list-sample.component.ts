@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
-import { SearchMessageInfoSampleData, SearchMessageErrorSampleData, SearchMessageNoMatchFound } from './result-list-info-message.data';
+import { SearchMessageInfoSampleData, SearchMessageNoMatchFound } from './result-list-info-message.data';
 
 @Component({
   selector: 'search-result-list-sample',
@@ -11,7 +11,7 @@ export class SearchResultListSampleComponent {
   constructor(private change: ChangeDetectorRef) { }
 
   public messageInfoData=SearchMessageInfoSampleData;
-  public messageInfoError=SearchMessageErrorSampleData;
+  // public messageInfoError=SearchMessageErrorSampleData;
   public messageInfoNoMatchFound=SearchMessageNoMatchFound;
 
 
@@ -26,8 +26,8 @@ export class SearchResultListSampleComponent {
   errorItems = [
      {
       error: true,
-      title: 'Invalid Data',
-      message:"Your data doesn't match",
+      title: 'Error message title',
+      message:"Error message",
       iconObject: {
         'iconlib': 'sds',
         'icon': 'bell',
