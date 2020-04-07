@@ -59,7 +59,11 @@
           "options": {
             "main": "libs/packages/components/src/test.ts",
             "tsConfig": "libs/packages/components/tsconfig.spec.json",
-            "karmaConfig": "libs/packages/components/karma.conf.js"
+            "karmaConfig": "libs/packages/components/karma.conf.js",
+            "scripts": [
+              "node_modules/accessible-html5-video-player/js/px-video.js",
+              "node_modules/accessible-html5-video-player/js/strings.js"
+            ]
           }
         },
         "lint": {
@@ -108,7 +112,9 @@
             ],
             "scripts": [
               "node_modules/marked/lib/marked.js",
-              "node_modules/prismjs/prism.js"
+              "node_modules/prismjs/prism.js",
+              "node_modules/accessible-html5-video-player/js/px-video.js",
+              "node_modules/accessible-html5-video-player/js/strings.js"
             ]
           },
           "configurations": {
@@ -163,7 +169,8 @@
             "tsConfig": "apps/sam-design-system-site/tsconfig.spec.json",
             "karmaConfig": "apps/sam-design-system-site/karma.conf.js",
             "styles": ["apps/sam-design-system-site/src/styles.scss"],
-            "scripts": [],
+            "scripts": [
+            ],
             "assets": [
               "apps/sam-design-system-site/src/favicon.ico",
               "apps/sam-design-system-site/src/assets"
