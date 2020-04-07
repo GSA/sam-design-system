@@ -30,6 +30,12 @@ export const FIELD_TYPE_COMPONENTS = [
 ];
 import { maxDateValidator, minDateValidator } from './formly.validators';
 
+export const FORMLY_WRAPPERS: any = [
+  { name: 'form-field', component: FormlyWrapperFormFieldComponent, componentName: "FormlyWrapperFormFieldComponent" },
+  { name: 'accordionwrapper', component: FormlyAccordianFormFieldComponent, componentName: "FormlyAccordianFormFieldComponent" },
+  { name: 'filterwrapper', component: FormlyFormFieldFilterWrapperComponent, componentName: "FormlyFormFieldFilterWrapperComponent" }
+]
+
 export const FORMLY_CONFIG: ConfigOption = {
   types: [
     {
@@ -39,37 +45,37 @@ export const FORMLY_CONFIG: ConfigOption = {
     {
       name: 'input',
       component: FormlyFieldInputComponent,
-      wrappers: ['form-field'],
+      wrappers: ['form-field']
     },
     {
       name: 'checkbox',
       component: FormlyFieldCheckboxComponent,
-      wrappers: ['form-field'],
+      wrappers: ['form-field']
     },
     {
       name: 'radio',
       component: FormlyFieldRadioComponent,
-      wrappers: ['form-field'],
+      wrappers: ['form-field']
     },
     {
       name: 'select',
       component: FormlyFieldSelectComponent,
-      wrappers: ['form-field'],
+      wrappers: ['form-field']
     },
     {
       name: 'textarea',
       component: FormlyFieldTextAreaComponent,
-      wrappers: ['form-field'],
+      wrappers: ['form-field']
     },
     {
       name: 'multicheckbox',
       component: FormlyFieldMultiCheckboxComponent,
-      wrappers: ['form-field'],
+      wrappers: ['form-field']
     },
     {
       name: 'autocomplete',
       component: FormlyFieldAutoCompleteComponent,
-      wrappers: ['form-field'],
+      wrappers: ['form-field']
     },
     {
       name: 'datepicker',
@@ -77,7 +83,7 @@ export const FORMLY_CONFIG: ConfigOption = {
       wrappers: ['form-field'],
       defaultOptions: {
         validators: {
-          validation: [maxDateValidator, minDateValidator],
+          validation: [maxDateValidator, minDateValidator]
         }
       }
     },
@@ -95,8 +101,8 @@ export const FORMLY_CONFIG: ConfigOption = {
             },
             expressionProperties: {
               'templateOptions.minDate': minDateFromDateRangePicker,
-              'templateOptions.maxDate': maxDateFromDateRangePicker,
-            },
+              'templateOptions.maxDate': maxDateFromDateRangePicker
+            }
           },
           {
             type: 'datepicker',
@@ -106,24 +112,21 @@ export const FORMLY_CONFIG: ConfigOption = {
             },
             expressionProperties: {
               'templateOptions.minDate': minDateToDateRangePicker,
-              'templateOptions.maxDate': maxDateToDateRangePicker,
-            },
+              'templateOptions.maxDate': maxDateToDateRangePicker
+            }
           }
         ]
       }
-    },
-
+    }
   ],
   wrappers: [
     { name: 'form-field', component: FormlyWrapperFormFieldComponent },
     { name: 'accordionwrapper', component: FormlyAccordianFormFieldComponent },
-    { name: 'filterwrapper', component: FormlyFormFieldFilterWrapperComponent },
-  ],
-
+    { name: 'filterwrapper', component: FormlyFormFieldFilterWrapperComponent }
+  ]
+  // TODO: Figure out why this won't work in PROD mode ---
+  /// wrappers: FORMLY_WRAPPERS.map(({ name, component }) => ({name, component}))
 };
-
-
-
 
 export function minDateToDateRangePicker(model: any, formState: any, field: FormlyFieldConfig) {
   let date = null;
@@ -151,7 +154,7 @@ export function minDateFromDateRangePicker(model: any, formState: any, field: Fo
 
 export function maxDateToDateRangePicker(model: any, formState: any, field: FormlyFieldConfig) {
   let date = null;
-  //Setting a max date for the date range picker 
+  //Setting a max date for the date range picker
   if (field.parent.templateOptions.maxDate) {
     date = new Date(field.parent.templateOptions.maxDate.getTime());
   }
