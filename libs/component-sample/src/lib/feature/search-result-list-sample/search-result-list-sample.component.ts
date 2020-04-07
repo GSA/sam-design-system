@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
-import { SearchMessageInfoSampleData, SearchMessageNoMatchFound } from './result-list-info-message.data';
+import { SearchMessageInfoSampleData, SearchMessageEmptyData } from './result-list-info-message.data';
 
 @Component({
   selector: 'search-result-list-sample',
@@ -11,8 +11,7 @@ export class SearchResultListSampleComponent {
   constructor(private change: ChangeDetectorRef) { }
 
   public messageInfoData=SearchMessageInfoSampleData;
-  // public messageInfoError=SearchMessageErrorSampleData;
-  public messageInfoNoMatchFound=SearchMessageNoMatchFound;
+  public messageInfoEmptyData=SearchMessageEmptyData;
 
 
   items = [

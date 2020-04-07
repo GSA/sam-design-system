@@ -20,7 +20,7 @@
   </sds-search-result-list>
   <br>
   <br>
-  <sds-search-result-list [model]="emptyItems" [messageInfoData]="messageInfoNoMatchFound">
+  <sds-search-result-list [model]="emptyItems" [messageInfoData]="messageInfoEmptyData">
       <ng-template #resultContent let-item>
           <div>
               {{item.text}}

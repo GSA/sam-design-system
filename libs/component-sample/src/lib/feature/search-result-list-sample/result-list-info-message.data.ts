@@ -6,7 +6,7 @@ export let SearchMessageInfoSampleData =
 }
 
 // Item is empty
-export let SearchMessageNoMatchFound =
+export let SearchMessageEmptyData =
 {
   'title': 'Model with empty data',
   'message': 'We could not find a match for your search criteria Please try another search or go back to previous results.',
