@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { SearchMessageInfoSampleData, SearchMessageEmptyData } from './result-list-info-message.data';
+import { NavigationMode } from '@gsa-sam/components';
 
 @Component({
   selector: 'search-result-list-sample',
@@ -23,14 +24,29 @@ export class SearchResultListSampleComponent {
   ];
 
   errorItems = [
-     {
-      error: true,
-      title: 'Error message title',
-      message:"Error message",
-      iconObject: {
-        'iconlib': 'sds',
-        'icon': 'bell',
-        'iconsize': '5x'
+    {
+      "error": {
+        "title": "Bad Request",
+        "description": "There was an issue with the search request. If you continue to experience this issue, please contact the <a href='https://www.fsd.gov/'>Federal Service Desk</a>",
+        "icon": {
+          "name": "book",
+          "library": "sds",
+          "size": "6x"
+        },
+        "buttons": [
+          {
+            "text": "Go Back",
+            "className": "usa-button usa-button--primary",
+            "mode": NavigationMode.EVENT, // NavigationMode type (see: HeaderComponent)
+            "route": "goBack"
+          },
+          {
+            "text": "Start Over",
+            "className": "usa-button usa-button--base",
+            "mode": NavigationMode.EVENT, // NavigationMode type (see: HeaderComponent)
+            "route": "clearAll"
+          }
+        ]
       }
     }
   ];
