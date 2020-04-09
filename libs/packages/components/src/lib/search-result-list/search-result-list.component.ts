@@ -6,7 +6,7 @@ import { NavigationMode } from '@gsa-sam/components';
   templateUrl: './search-result-list.component.html',
   styleUrls: ['./search-result-list.component.scss']
 })
-export class SdsSearchResultListComponent implements AfterViewInit{
+export class SdsSearchResultListComponent {
 
   buttonText = true;
   startOverbutton = false;
@@ -34,8 +34,5 @@ export class SdsSearchResultListComponent implements AfterViewInit{
 
   }
 
-  ngAfterViewInit(){
-    const iconObject = this.model;
-  }
 
 }
