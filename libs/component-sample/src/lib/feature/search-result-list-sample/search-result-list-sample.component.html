@@ -11,7 +11,7 @@
   </sds-search-result-list>
   <br>
   <br>
-  <sds-search-result-list [model]="items" [messageInfoData]="messageInfoData">
+  <sds-search-result-list [model]="items">
       <ng-template #resultContent let-item>
           <div>
               <search-result-list-sample-data2 [model]="item"></search-result-list-sample-data2>
@@ -20,7 +20,7 @@
   </sds-search-result-list>
   <br>
   <br>
-  <sds-search-result-list [model]="emptyItems" [messageInfoData]="messageInfoEmptyData">
+  <sds-search-result-list [model]="emptyItems">
       <ng-template #resultContent let-item>
           <div>
               {{item.text}}

@@ -23,13 +23,14 @@ export class SearchResultListSampleComponent {
     { text: 'Fifth', id: 5 , hasNewerData:true},
   ];
 
-  errorItems = [
-    {
+  errorItems =
+    [
+      {
       "error": {
         "title": "Bad Request",
         "description": "There was an issue with the search request. If you continue to experience this issue, please contact the <a href='https://www.fsd.gov/'>Federal Service Desk</a>",
         "icon": {
-          "name": "book",
+          "name": "bell",
           "library": "sds",
           "size": "6x"
         },
@@ -49,8 +50,7 @@ export class SearchResultListSampleComponent {
         ]
       }
     }
-  ];
-
+  ]
   emptyItems = [];
 
 }

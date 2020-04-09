@@ -1,4 +1,5 @@
 import { Component, Input, ContentChild, TemplateRef, OnInit, AfterViewInit } from '@angular/core';
+import { NavigationMode } from '@gsa-sam/components';
 
 @Component({
   selector: 'sds-search-result-list',
@@ -28,9 +29,13 @@ export class SdsSearchResultListComponent implements AfterViewInit{
    */
   @ContentChild('resultContent') resultContentTemplate: TemplateRef<any>;
 
+
+  buttonClickEvent(EVENT: NavigationMode) {
+
+  }
+
   ngAfterViewInit(){
-    const iconObject = this.model[0];
-    console.log(iconObject);
+    const iconObject = this.model;
   }
 
 }

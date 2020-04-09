@@ -4,33 +4,10 @@
                    context: { $implicit: item }"></ng-container>
 </div>
 <hr *ngIf="divider && model?.length" class="thin" />
+
 <div *ngIf="model.length !== 0">
-  <div *ngIf="messageInfoData !== undefined">
-    <!-- // Model has not empty  -->
-    <div *ngIf="model[0].error !== 'error'">
-      <div class="grid-row border-1px border-base-lighter bg-base-lightest">
-        <div *ngIf="!messageInfoData.iconObject" class="grid-col-auto text-center text-base margin-4">
-          <fa-icon [icon]="['sds', 'search']" [classes]="['search']" size="7x"></fa-icon>
-        </div>
-        <div *ngIf="messageInfoData.iconObject" class="grid-col-auto text-center text-base margin-4">
-          <fa-icon [icon]="[messageInfoData.iconObject.iconlib,messageInfoData.iconObject.icon]"
-            [classes]="'icon-'+messageInfoData.iconObject.icon" [size]="[messageInfoData.iconObject.iconsize]">
-          </fa-icon>
-        </div>
-        <div class="grid-col-fill display-flex flex-column padding-y-1">
-          <h1 class="margin-bottom-105 text-semibold">{{messageInfoData.title}}</h1>
-          <p class="margin-y-0 font-sans-lg">{{messageInfoData.message}}</p>
-          <button class="usa-button usa-button--secondary width-card margin-y-2">Go Back</button>
-        </div>
-      </div>
-    </div>
-    <!-- Model with error -->
-  </div>
   <div *ngIf="model[0].error">
     <div class="grid-row border-1px border-base-lighter bg-base-lightest">
-      <!-- <div *ngIf="!model[0].iconObject" class="grid-col-auto text-center text-base margin-4">
-        <fa-icon [icon]="['sds', 'search']" [classes]="['search']" size="7x"></fa-icon>
-      </div> -->
       <div class="grid-col-auto text-center text-base margin-4">
         <fa-icon [icon]="[model[0].error.icon.library,model[0].error.icon.name]"
           [classes]="'icon-'+model[0].error.icon.name" [size]="[model[0].error.icon.size]">
@@ -38,21 +15,18 @@
       </div>
       <div class="grid-col-fill display-flex flex-column padding-y-1">
         <h1 class="margin-bottom-105 text-semibold">{{model[0].error.title}}</h1>
-        <p class="margin-y-0 font-sans-lg">{{model[0].error.description}}</p>
-
-          <div class="grid-row">
+        <p class="margin-y-0 font-sans-lg" innerHTML="{{model[0].error.description}}"></p>
+          <div class="grid-row margin-y-2">
             <div *ngFor="let buttonText of model[0].error.buttons">
             <div class="grid-col">
               <button
                 [routerLink]="buttonText.route"
+                (click)="buttonClickEvent($event)"
                 [class]="buttonText.className">
                 {{buttonText.text}}
               </button>
             </div>
           </div>
-          <!-- <div *ngIf=!startBoBackButton">
-          <button class="usa-button usa-button--secondary width-card margin-y-2">Start Over</button>
-        </div> -->
         </div>
       </div>
     </div>
@@ -61,18 +35,14 @@
 
 <!-- Model with empty Data -->
 <div *ngIf="model.length===0">
-  <div *ngIf="messageInfoData !== undefined">
+  <div>
     <div class="grid-row border-1px border-base-lighter bg-base-lightest">
-      <div *ngIf="!messageInfoData.iconObject" class="grid-col-auto text-center text-base margin-4">
+      <div  class="grid-col-auto text-center text-base margin-4">
         <fa-icon [icon]="['sds', 'search']" [classes]="['search']" size="7x"></fa-icon>
       </div>
-      <div *ngIf="messageInfoData.iconObject" class="grid-col-auto text-center text-base margin-4">
-        <fa-icon [icon]="[messageInfoData.iconObject.iconlib,messageInfoData.iconObject.icon]"
-          [classes]="'icon-'+messageInfoData.iconObject.icon" [size]="[messageInfoData.iconObject.iconsize]"></fa-icon>
-      </div>
       <div class="grid-col-fill display-flex flex-column padding-y-1">
-        <h1 class="margin-bottom-105 text-semibold">{{messageInfoData.title}}</h1>
-        <p class="margin-y-0 font-sans-lg">{{messageInfoData.message}}</p>
+        <h1 class="margin-bottom-105 text-semibold">Empty Data</h1>
+        <p class="margin-y-0 font-sans-lg">Your data is empty</p>
         <button class="usa-button usa-button--secondary width-card margin-y-2">Go Back</button>
       </div>
     </div>
