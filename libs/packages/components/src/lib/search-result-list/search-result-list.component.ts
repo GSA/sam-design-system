@@ -1,4 +1,4 @@
-import { Component, Input, ContentChild, TemplateRef, OnInit, AfterViewInit } from '@angular/core';
+import { Component, Input, ContentChild, TemplateRef } from '@angular/core';
 import { NavigationMode } from '@gsa-sam/components';
 
 @Component({
@@ -7,10 +7,6 @@ import { NavigationMode } from '@gsa-sam/components';
   styleUrls: ['./search-result-list.component.scss']
 })
 export class SdsSearchResultListComponent {
-
-  buttonText = true;
-  startOverbutton = false;
-  startBoBackButton = true;
 
   @Input() messageInfoData: any;
 
