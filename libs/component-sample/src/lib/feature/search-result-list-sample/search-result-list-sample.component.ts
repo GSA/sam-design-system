@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { SearchMessageInfoSampleData, SearchMessageEmptyData } from './result-list-info-message.data';
-import { NavigationMode } from '@gsa-sam/components';
 
 @Component({
   selector: 'search-result-list-sample',
@@ -36,15 +35,15 @@ export class SearchResultListSampleComponent {
         },
         "buttons": [
           {
+            id: 'back',
             "text": "Go Back",
             "className": "usa-button usa-button--primary",
-            "mode": NavigationMode.EVENT, // NavigationMode type (see: HeaderComponent)
             "route": "goBack"
           },
           {
+            id:'clear',
             "text": "Start Over",
             "className": "usa-button usa-button--base",
-            "mode": NavigationMode.EVENT, // NavigationMode type (see: HeaderComponent)
             "route": "clearAll"
           }
         ]
