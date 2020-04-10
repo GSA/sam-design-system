@@ -1,5 +1,5 @@
 <div sds-click-outside (clickOutside)="checkForFocus($event)" sds-tab-outside (tabOutside)="checkForFocus($event)">
-  <div class="maxw-mobile-lg">
+  <div class="maxw-mobile-lg position-relative">
     <div role="combobox" [attr.id]="configuration.id+'-container'" [attr.aria-expanded]="showResults"
       [attr.aria-owns]="showResults? configuration.id+ '-listbox' : undefined" aria-haspopup="listbox">
       <input [disabled]="disabled" (input)="textChange($event)" class="usa-input" #input  [attr.aria-label]="configuration.ariaLabelText"
