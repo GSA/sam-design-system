@@ -14,7 +14,8 @@ import * as qs from 'qs';
 @Component({
   selector: 'sds-filters',
   template: `
-      <formly-form [form]="form" [fields]="fields" [options]="options" [model]="model"></formly-form>`,
+      <formly-form [form]="form" [fields]="fields" [options]="options" [model]="model"></formly-form>
+      <button type="button" class="sds-button sds-button--primary" (click)="options.resetModel()">Reset</button>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
