@@ -3,44 +3,6 @@
   "version": 1,
   "newProjectRoot": "",
   "projects": {
-    "sam-formly": {
-      "root": "libs/packages/sam-formly",
-      "sourceRoot": "libs/packages/sam-formly/src",
-      "projectType": "library",
-      "prefix": "sds",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "libs/packages/sam-formly/tsconfig.lib.json",
-            "project": "libs/packages/sam-formly/ng-package.json"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/packages/sam-formly/src/test.ts",
-            "tsConfig": "libs/packages/sam-formly/tsconfig.spec.json",
-            "karmaConfig": "libs/packages/sam-formly/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/packages/sam-formly/tsconfig.lib.json",
-              "libs/packages/sam-formly/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/schematics:component": {
-          "styleext": "scss"
-        }
-      }
-    },
     "components": {
       "root": "libs/packages/components",
       "sourceRoot": "libs/packages/components/src",
@@ -72,6 +34,44 @@
             "tsConfig": [
               "libs/packages/components/tsconfig.lib.json",
               "libs/packages/components/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "sam-formly": {
+      "root": "libs/packages/sam-formly",
+      "sourceRoot": "libs/packages/sam-formly/src",
+      "projectType": "library",
+      "prefix": "sds",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/packages/sam-formly/tsconfig.lib.json",
+            "project": "libs/packages/sam-formly/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/packages/sam-formly/src/test.ts",
+            "tsConfig": "libs/packages/sam-formly/tsconfig.spec.json",
+            "karmaConfig": "libs/packages/sam-formly/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/packages/sam-formly/tsconfig.lib.json",
+              "libs/packages/sam-formly/tsconfig.spec.json"
             ],
             "exclude": ["**/node_modules/**"]
           }
