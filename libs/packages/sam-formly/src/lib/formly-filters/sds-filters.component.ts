@@ -15,7 +15,7 @@ import * as qs from 'qs';
   selector: 'sds-filters',
   template: `
       <formly-form [form]="form" [fields]="fields" [options]="options" [model]="model"></formly-form>
-      <button type="button" class="sds-button sds-button--primary" (click)="options.resetModel()">Clear All</button>`,
+      <button type="button" class="usa-button--unstyled" (click)="options.resetModel()">Reset All<fa-icon [icon]="['sds', 'reset-filter']" [classes]="['icon-filter']" size="1x"></fa-icon></button>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
