@@ -1,14 +1,48 @@
 <footer class="usa-footer usa-footer--big" role="contentinfo">
+
+  <div class="sds-feedback">
+    <button type="button" class="sds-feedback__button" [attr.aria-expanded]="!isCollapsedContent" aria-controls="collapseID" (click)="isCollapsedContent = !isCollapsedContent">
+      <fa-layers [fixedWidth]="true" size="2x">
+        <fa-icon [icon]="['fas', 'circle']" [sdsCollapse]="isCollapsedContent" class="text-base-light margin-auto"></fa-icon>
+        <fa-icon [icon]="['sds', 'arrow-up']" [sdsCollapse]="isCollapsedContent" transform="shrink-6"></fa-icon>
+        <fa-icon [icon]="['fas', 'circle']" [sdsCollapse]="!isCollapsedContent" class="text-primary margin-auto"></fa-icon>
+        <fa-icon [icon]="['sds', 'arrow-down']" [sdsCollapse]="!isCollapsedContent" transform="shrink-6"></fa-icon>
+      </fa-layers>
+      <span class="sds-feedback__title">Feedback</span>
+    </button>
+    <div id="collapseID" [sdsCollapse]="isCollapsedContent" class="sds-feedback__response">
+      <div class="tablet:width-tablet-lg padding-4 margin-auto">
+        <span class="sds-feedback__response-title">One Question </span>
+        <span class="sds-feedback__response-title-thin"> Survey</span>
+        <p class="sds-feedback__response-text">What changes or improvements would you suggest?</p>
+        <input class="sds-feedback__input" type="text">
+        <button class="usa-button usa-button--secondary margin-y-2 float-right">Submit</button>
+      </div>
+    </div>
+  </div>
+
   <div class="usa-footer__primary-section">
     <div class="grid-container">
       <div class="grid-row grid-gap">
         <div class="mobile-lg:grid-col-12 tablet:grid-col-4">
-          <div class="usa-footer__logo grid-row mobile-lg:grid-gap-1 margin-top-3">
-            <div class="mobile-lg:grid-col-3 mobile-lg:grid-offset-3 tablet:grid-offset-none tablet:grid-col-auto">
-              <img *ngIf="model.footerLogo" class="usa-footer__logo-img" [attr.src]="model.footerLogo.imageSourcePath"
-                [attr.alt]="model.footerLogo.imageAltText" />
-              <a *ngIf="!model.footerLogo" class="usa-footer__logo-text" target="_blank" href="http://gsa.gov"
-                hideIcon=true;>
+          <div
+            class="usa-footer__logo grid-row mobile-lg:grid-gap-1 margin-top-3"
+          >
+            <div
+              class="mobile-lg:grid-col-3 mobile-lg:grid-offset-3 tablet:grid-offset-none tablet:grid-col-auto"
+            >
+              <img
+                *ngIf="model.footerLogo"
+                class="usa-footer__logo-img"
+                [attr.src]="model.footerLogo.imageSourcePath"
+                [attr.alt]="model.footerLogo.imageAltText"
+              />
+              <a
+                *ngIf="!model.footerLogo"
+                class="usa-footer__logo-text"
+                target="_blank"
+                href="http://gsa.gov"
+              >
                 GSA.gov
               </a>
             </div>
@@ -21,59 +55,7 @@
             </div>
           </div>
         </div>
-
-        <nav _ngcontent-vyf-c2="" class="usa-footer__nav">
-          <div _ngcontent-vyf-c2="" class="grid-row grid-gap-4">
-            <div _ngcontent-vyf-c2="" class="mobile-lg:grid-col-12 desktop:grid-col-4">
-              <section _ngcontent-vyf-c2=""
-                class="usa-footer__primary-content usa-footer__primary-content--collapsible"><span _ngcontent-vyf-c2=""
-                  class="usa-footer__primary-link">About beta.SAM.gov</span>
-                <ul class="usa-list usa-list--unstyled">
-                  <li class="usa-footer__secondary-link">
-                    <a href="https://interact.gsa.gov/group/integrated-award-environment-iae-industry-community">Explore Our Community</a></li>
-                  <li class="usa-footer__secondary-link">
-                    <a href="https://beta.sam.gov/release-notes" [hideIcon]="true">Release Notes</a></li>
-                </ul>
-              </section>
-            </div>
-            <div _ngcontent-vyf-c2="" class="mobile-lg:grid-col-12 desktop:grid-col-4">
-              <section _ngcontent-vyf-c2=""
-                class="usa-footer__primary-content usa-footer__primary-content--collapsible"><span _ngcontent-vyf-c2=""
-                  class="usa-footer__primary-link">Our Partners</span>
-                <ul _ngcontent-vyf-c2="" class="usa-list usa-list--unstyled">
-
-                  <li _ngcontent-vyf-c2="" class="usa-footer__secondary-link">
-                    <a _ngcontent-vyf-c2="" ng-reflect-router-link="/" href="https://www.acquisition.gov/">Aquisition.gov</a></li>
-                  <li _ngcontent-vyf-c2="" class="usa-footer__secondary-link">
-                    <a _ngcontent-vyf-c2="" ng-reflect-router-link="/" href="https://www.usaspending.gov/">USASpending.gov</a></li>
-                  <li _ngcontent-vyf-c2="" class="usa-footer__secondary-link">
-                    <a _ngcontent-vyf-c2="" ng-reflect-router-link="/" href="https://www.grants.gov/">Grants.gov</a></li>
-                  <li _ngcontent-vyf-c2="" class="usa-footer__secondary-link">
-                    <a _ngcontent-vyf-c2="" ng-reflect-router-link="/" href="https://beta.sam.gov/help/partners">More Partners</a></li>
-                </ul>
-              </section>
-            </div>
-            <div _ngcontent-vyf-c2="" class="mobile-lg:grid-col-12 desktop:grid-col-4">
-              <section _ngcontent-vyf-c2=""
-                class="usa-footer__primary-content usa-footer__primary-content--collapsible"><span _ngcontent-vyf-c2=""
-                  class="usa-footer__primary-link">Customer Service</span>
-                <ul _ngcontent-vyf-c2="" class="usa-list usa-list--unstyled">
-
-                  <li _ngcontent-vyf-c2="" class="usa-footer__secondary-link">
-                    <a _ngcontent-vyf-c2="" ng-reflect-router-link="/" href="https://beta.sam.gov/help/new-to-sam" [hideIcon]="true">Learning Center</a></li>
-                  <li _ngcontent-vyf-c2="" class="usa-footer__secondary-link">
-                    <a _ngcontent-vyf-c2="" ng-reflect-router-link="/" href="https://fsd.gov/fsd-gov/home.do">Contact Federal Service Desk</a></li>
-                  <li _ngcontent-vyf-c2="" class="usa-footer__secondary-link">
-                    <a _ngcontent-vyf-c2="" ng-reflect-router-link="/" href="https://beta.sam.gov/help/resources" [hideIcon]="true">Resources</a></li>
-                  <li _ngcontent-vyf-c2="" class="usa-footer__secondary-link">
-                    <a _ngcontent-vyf-c2="" ng-reflect-router-link="/" href="https://www.gsa.gov/reference/freedom-of-information-act-foia">Freedom of Information Act</a></li>
-                </ul>
-              </section>
-            </div>
-          </div>
-        </nav>
-
-        <!-- <div class="mobile-lg:grid-col-12 tablet:grid-col-8">
+        <div class="mobile-lg:grid-col-12 tablet:grid-col-8">
           <nav class="usa-footer__nav">
             <div class="grid-row grid-gap-4">
               <div
@@ -107,7 +89,7 @@
               </div>
             </div>
           </nav>
-        </div> -->
+        </div>
       </div>
     </div>
   </div>
