@@ -27,13 +27,15 @@
         <h1>{{pageHeader}}</h1>
     </div>
 
-    
+
         <h3>Accordion with title / no toggle</h3>
         <sds-page-options class="sam-page__options">
                 <sds-toolbar [expanded]="sideNavExpanded" #toolbar="sdsToolbar">
                     <sds-accordion multi="true">
                         <sds-accordion-item [expanded]="sideNavExpanded">
-                                <h3 class="sds-accordion__title sds-accordion__trigger-off">Navigation</h3>
+                              <div class="sds-accordion__header">
+                                <h3 class="sds-accordion__title">Navigation</h3>
+                              </div>
                             <sds-side-navigation #sideNav (linkEvent)="linkEvent.next($event)" [model]="model2">
                             </sds-side-navigation>
                         </sds-accordion-item>
