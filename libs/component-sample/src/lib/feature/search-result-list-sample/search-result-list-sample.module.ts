@@ -15,13 +15,14 @@ import { sds } from '@gsa-sam/sam-styles/src/icons/';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { SdsActionsMenuModule } from '@sam-design-system/layouts';
 import { SdsResultListChildComponent } from './result-list-child.component';
-
+import { SearchResultCardSampleComponent } from './search-result-card-sample.component';
+import { SearchResultListSampleCardDataComponent } from './search-result-list-sample-card-data.component';
 
 @NgModule({
   imports: [FontAwesomeModule, SdsSideNavigationModule, SdsAccordionModule, CommonModule, FormsModule,
     SdsToolbarModule, SdsPageModule, SdsSearchResultListModule, SdsActionsMenuModule],
-  exports: [SearchResultListSampleComponent],
-  declarations: [SearchResultListSampleComponent, SearchResultListSampleDataComponent, SearchResultListSampleData2Component,SdsResultListChildComponent],
+  exports: [SearchResultListSampleComponent, SearchResultCardSampleComponent],
+  declarations: [SearchResultListSampleComponent, SearchResultListSampleDataComponent, SearchResultListSampleData2Component,SdsResultListChildComponent, SearchResultCardSampleComponent, SearchResultListSampleCardDataComponent],
   providers: []
 })
 export class SearchResultListSampleModule {

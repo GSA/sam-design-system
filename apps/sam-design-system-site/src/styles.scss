@@ -148,6 +148,27 @@ $cdk-overlay-dark-backdrop-background: rgba(14, 52, 88, 0.7);
 
 // Demo pages only
 // DO NOT REUSE
+
+.usa-table--full-borderless tr, .usa-table--full-borderless td, .usa-table--full-borderless th {
+  border: 0;
+}
+
+.usa-table--row-borders--thin tr, .usa-table--row-borders--thin td, .usa-table--row-borders--thin th {
+  border-bottom: solid 1px #d9e8f6;
+}
+.usa-table--row-borders--thin th {
+  border-top: solid 1px #d9e8f6;
+}
+
+.usa-table--thin tr, .usa-table--thin td, .usa-table--thin th {
+  padding:0;
+  margin:0;
+}
+
+code::before, code::after {
+  content: '';
+}
+
 .header-styles .icon-layers-counter {
   height: 1em;
   min-width: 1em;
@@ -174,4 +195,21 @@ $cdk-overlay-dark-backdrop-background: rgba(14, 52, 88, 0.7);
 
 .usa-list--unstyled>li{
   white-space: pre;
+}
+// Fixes for Docs
+documentation-widget-demo sds-page {
+  min-height: auto !important;
+  margin-bottom:0 !important;
+}
+
+documentation-widget-demo > .sds-card {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Fixes to look at in Sam-Styles */
+
+.sds-tag[class*="sds-tag--outline"] {
+  width: auto !important;
+
 }

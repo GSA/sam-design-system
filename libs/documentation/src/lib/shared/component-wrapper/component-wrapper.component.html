@@ -1,0 +1,26 @@
+
+<div class="grid-container">
+  <div class="tablet:grid-col-12">
+    <h1 class="line-height-sans-2">{{ title | titlecase }}
+      <span *ngIf="deprecatedVersion" class="sds-tag sds-tag--outline--warning float-right"><i class="sds-status sds-status--sm sds-status--warning"></i>Deprecated: {{ deprecatedVersion }}</span>
+      <span *ngIf="introducedVersion" class="sds-tag sds-tag--outline--info float-right"><i class="sds-status sds-status--sm sds-status--info"></i>Since: {{ introducedVersion }}</span>
+    </h1>
+    <markdown [data]="opening"></markdown>
+  </div>
+  <div class="grid-row border-bottom-2px border-base-light">
+    <div *ngIf="tabs.examples" class="tablet:grid-col-auto"><button class="usa-button usa-button--base radius-bottom-0 margin-bottom-neg-2px" [routerLink]="['examples']" [routerLinkActive]="['usa-button--active']">Examples</button></div>
+    <div *ngIf="tabs.api" class="tablet:grid-col-auto"><button class="usa-button usa-button--base radius-bottom-0 margin-bottom-neg-2px" [routerLink]="['api']" [routerLinkActive]="['usa-button--active']">API</button></div>
+    <div *ngIf="tabs.source" class="tablet:grid-col-auto"><button class="usa-button usa-button--base radius-bottom-0 margin-bottom-neg-2px" [routerLink]="['source']" [routerLinkActive]="['usa-button--active']">Source</button></div>
+    <div *ngIf="tabs.template" class="tablet:grid-col-auto"><button class="usa-button usa-button--base radius-bottom-0 margin-bottom-neg-2px" [routerLink]="['template']" [routerLinkActive]="['usa-button--active']">Template</button></div>
+  </div>
+  <div class="grid-row">
+    <div class="tablet:grid-col-12">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <div class="grid-row">
+    <div class="tablet:grid-col-12">
+      <markdown [data]="closing"></markdown>
+    </div>
+  </div>
+</div>
