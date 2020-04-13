@@ -1,5 +1,4 @@
 {
-  "experimentalDecorators": true,
 "extends": "../../tsconfig.json",
   "compilerOptions": {
     "types": ["jasmine", "node"],
