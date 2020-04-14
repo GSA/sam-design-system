@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, TemplateRef, ElementRef, forwardRef } from '@angular/core';
+import { Component, Input, ViewChild, TemplateRef, ElementRef, forwardRef, HostListener } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl } from '@angular/forms';
 import { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';
 import { SDSAutocompleteServiceInterface } from '../autocomplete-search/models/SDSAutocompleteServiceInterface';
@@ -38,7 +38,10 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
   /**
    * Stored Event for ControlValueAccessor
    */
-  public onTouchedCallback: () => void = () => null;
+  @HostListener('focusout')
+  public onTouchedCallback: () => void = () => {
+
+  };
 
   /**
    * Stored Event for ControlValueAccessor
@@ -49,7 +52,7 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
 
 
   /**
- * Configuration for the control 
+ * Configuration for the control
  */
   @Input()
   public configuration: SDSAutocompletelConfiguration;
