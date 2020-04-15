@@ -4,10 +4,8 @@
             <sds-accordion multi="true">
                 <sds-accordion-item [expanded]="sideNavExpanded">
                     <sds-accordion-item-header>
-                      <div class="sds-field sds-field--stacked">
-                        <div class="sds-field__name">Navigation</div>
-                        <div class="sds-field__value">Selected Category</div>
-                      </div>
+                        <div class="sds-accordion__item-header-title">Navigation</div>
+                        <div class="sds-accordion__item-header-subtitle">Selected Category</div>
                     </sds-accordion-item-header>
                     <sds-side-navigation #sideNav (linkEvent)="linkEvent.next($event)" [model]="model">
                     </sds-side-navigation>
@@ -38,8 +36,8 @@
                 <sds-toolbar [expanded]="sideNavExpanded" #toolbar="sdsToolbar">
                     <sds-accordion multi="true">
                         <sds-accordion-item [expanded]="sideNavExpanded">
-                              <div class="sds-accordion__header">
-                                <h3 class="sds-accordion__title">Navigation</h3>
+                              <div class="sds-accordion__item-header">
+                                <h3 class="sds-accordion__item-title">Navigation</h3>
                               </div>
                             <sds-side-navigation #sideNav (linkEvent)="linkEvent.next($event)" [model]="model2">
                             </sds-side-navigation>
