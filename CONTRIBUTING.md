@@ -199,7 +199,7 @@ The `pages` folder holds any informational pages like `introduction` or `overvie
 
 
 > ### Highlight
-> A component for displaying source code with `ngx-prism` on the demo card.
+> A component for displaying source code with `ngx-highlightjs` on the demo card.
 ><br/><br/>
 
 ### Documentation Module
