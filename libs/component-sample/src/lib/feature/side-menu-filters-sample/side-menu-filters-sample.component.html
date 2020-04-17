@@ -1,14 +1,21 @@
-<sds-page>
-    <sds-page-options>
-        <sds-toolbar #toolbar="sdsToolbar" class="top-205">
-            <sds-accordion-item>
-                <sds-accordion-item-header> Filters </sds-accordion-item-header>
-                <sds-filters [form]="form" [fields]="fields" [model]="model" (filterChange)="filterChange$.next($event)"></sds-filters>
-            </sds-accordion-item>
-        </sds-toolbar>
-    </sds-page-options>
-</sds-page>
-<div class="sam-example-pagination" [sdsToolbarExpand]="toolbar">
-    <h4>Filter Model:</h4>
-    <pre>{{results ? (results |json) : ''}}</pre>
-</div>
+<sds-page-options>
+  <div class="grid-col-auto">
+    <sds-accordion-item expanded="true">
+      <sds-accordion-item-header> Filters </sds-accordion-item-header>
+      <sds-filters [form]="sideMenuFiltersForm" [fields]="sideMenuFiltersFields" [model]="sideMenuFiltersModel"
+        (filterChange)="sideMenuFiltersChange$.next($event)" showMoreFilters=true showResetAll=true></sds-filters>
+    </sds-accordion-item>
+  </div>
+  <div class="sam-example-pagination grid-col-fill">
+    <div class="sds-card">
+      <div class="sds-card__header">Filter Model:</div>
+      <pre>{{sideMenuFiltersResults ? (sideMenuFiltersResults |json) : ''}}</pre>
+    </div>
+  </div>
+</sds-page-options>
+
+<h3>Toolbar Filters</h3>
+<sds-side-menu-filters-toolbar-sample></sds-side-menu-filters-toolbar-sample>
+
+<h3>Advanced Filters Dialog</h3>
+<sds-side-menu-filters-advanced-sample></sds-side-menu-filters-advanced-sample>
