@@ -187,6 +187,15 @@ code::before, code::after {
   margin-left: -0.5rem !important;
 }
 
+//@include usa-link;
+
+.sds-external-link{
+  position: relative;
+  top: 0.25em;
+  fill: rgb(0, 0, 238);
+  //@include usa-link;
+}
+
 // Fixes for Docs
 documentation-widget-demo sds-page {
   min-height: auto !important;
