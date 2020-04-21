@@ -1,8 +1,9 @@
 {
-    "extends": "./tsconfig.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc/apps/sam-design-system-site",
-    "types": []
+    "types": ["node"],
+    "typeRoots": ["node_modules/@types"]
   },
   "exclude": [
     "test.ts",
@@ -12,6 +13,7 @@
     "**/*.ts",
     "../../libs/component-sample/src/index.ts",
     "../../libs/layout-sample/src/index.ts",
-    "../../libs/sam-formly-sample/src/index.ts"
+    "../../libs/sam-formly-sample/src/index.ts",
+    "../../libs/documentation/src/index.ts"
   ]
 }

@@ -3,44 +3,6 @@
   "version": 1,
   "newProjectRoot": "",
   "projects": {
-    "sam-formly": {
-      "root": "libs/packages/sam-formly",
-      "sourceRoot": "libs/packages/sam-formly/src",
-      "projectType": "library",
-      "prefix": "sds",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "libs/packages/sam-formly/tsconfig.lib.json",
-            "project": "libs/packages/sam-formly/ng-package.json"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/packages/sam-formly/src/test.ts",
-            "tsConfig": "libs/packages/sam-formly/tsconfig.spec.json",
-            "karmaConfig": "libs/packages/sam-formly/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/packages/sam-formly/tsconfig.lib.json",
-              "libs/packages/sam-formly/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/schematics:component": {
-          "styleext": "scss"
-        }
-      }
-    },
     "components": {
       "root": "libs/packages/components",
       "sourceRoot": "libs/packages/components/src",
@@ -83,6 +45,44 @@
         }
       }
     },
+    "sam-formly": {
+      "root": "libs/packages/sam-formly",
+      "sourceRoot": "libs/packages/sam-formly/src",
+      "projectType": "library",
+      "prefix": "sds",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/packages/sam-formly/tsconfig.lib.json",
+            "project": "libs/packages/sam-formly/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/packages/sam-formly/src/test.ts",
+            "tsConfig": "libs/packages/sam-formly/tsconfig.spec.json",
+            "karmaConfig": "libs/packages/sam-formly/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/packages/sam-formly/tsconfig.lib.json",
+              "libs/packages/sam-formly/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
     "sam-design-system-site": {
       "root": "apps/sam-design-system-site/",
       "sourceRoot": "apps/sam-design-system-site/src",
@@ -106,11 +106,16 @@
               "apps/sam-design-system-site/src/favicon.ico",
               "apps/sam-design-system-site/src/assets"
             ],
+            "styles": [
+              "apps/sam-design-system-site/src/styles.scss",
+              "libs/documentation/src/lib/components/shared/prism.css"
+            ],
             "scripts": [
+              "node_modules/marked/lib/marked.js",
+              "node_modules/prismjs/prism.js",
               "node_modules/accessible-html5-video-player/js/px-video.js",
               "node_modules/accessible-html5-video-player/js/strings.js"
-            ],
-            "styles": ["apps/sam-design-system-site/src/styles.scss"]
+            ]
           },
           "configurations": {
             "production": {
@@ -375,6 +380,37 @@
             "tsConfig": [
               "libs/layout-sample/tsconfig.lib.json",
               "libs/layout-sample/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "documentation": {
+      "root": "libs/documentation",
+      "sourceRoot": "libs/documentation/src",
+      "projectType": "library",
+      "prefix": "gsa-sam",
+      "architect": {
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/documentation/src/test.ts",
+            "tsConfig": "libs/documentation/tsconfig.spec.json",
+            "karmaConfig": "libs/documentation/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/documentation/tsconfig.lib.json",
+              "libs/documentation/tsconfig.spec.json"
             ],
             "exclude": ["**/node_modules/**"]
           }

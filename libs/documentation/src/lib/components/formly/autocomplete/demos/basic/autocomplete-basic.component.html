@@ -1,0 +1,8 @@
+<form [formGroup]="form">
+  <sds-filters [form]="form" [fields]="fields" [model]="model" (filterChange)="filterChange$.next($event)"></sds-filters>
+</form>
+
+<div class="sam-example-pagination">
+    <h4>Filter Model:</h4>
+    <pre>{{ results ? (results |json) : ''}}</pre>
+</div>
