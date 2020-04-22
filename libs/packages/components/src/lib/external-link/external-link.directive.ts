@@ -8,7 +8,6 @@ import {
   ViewContainerRef,
   OnChanges
 } from '@angular/core';
-// import { faFortAwesome } from '@fortawesome/free-brands-svg-icons';
 import { faCoffee, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 @Directive({
