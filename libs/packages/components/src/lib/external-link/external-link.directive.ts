@@ -17,7 +17,7 @@ export class ExternalLinkDirective
   implements OnChanges {
     private vcRef: ViewContainerRef;
   @Input() href: string;
-  @Input() public hideIcon: boolean = true;
+  @Input() public hideIcon: boolean = false;
 
   private get hasExternalIcon (): boolean {
     return this.el.nativeElement
