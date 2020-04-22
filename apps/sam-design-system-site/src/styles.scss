@@ -188,14 +188,10 @@ code::before, code::after {
 }
 
 //@include usa-link;
-
 .sds-external-link{
-  position: relative;
-  top: 0.25em;
-  fill: rgb(0, 0, 238);
-  //@include usa-link;
+  color: #70e17b;
+  margin-left:2px;
 }
-
 // Fixes for Docs
 documentation-widget-demo sds-page {
   min-height: auto !important;

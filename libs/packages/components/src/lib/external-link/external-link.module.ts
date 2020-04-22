@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ExternalLinkDirective } from './external-link.directive';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FontAwesomeModule, FaIconComponent } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -9,6 +9,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   imports: [
     CommonModule, FontAwesomeModule
   ],
+  entryComponents: [ FaIconComponent ],
   exports: [ExternalLinkDirective]
 })
 export class SdsDirectivesModule { }
