@@ -1,6 +1,6 @@
 {
   "name": "@gsa-sam/components",
-  "version": "0.6.11",
+  "version": "0.6.12",
   "types": "../../../dist/out-tsc/libs/components/index.d.ts",
   "repository": {
     "type": "git",
