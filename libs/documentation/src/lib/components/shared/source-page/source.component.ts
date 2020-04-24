@@ -13,7 +13,6 @@ export function getSource(pkg, type, name) {
     fileURI: ""
   };
 
-  console.log(apis[pkg][type]);
   Object.values(apis[pkg][type])
   .filter((entity): entity is any => <any>entity)
   .filter((entity): entity is any => entity.name.startsWith(`${name}`))
