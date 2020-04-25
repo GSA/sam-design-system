@@ -1,28 +1,29 @@
 import {
-  Component, Input, Output,
-  ChangeDetectionStrategy, ChangeDetectorRef,
-  EventEmitter, Optional, OnInit
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  Optional
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
-import { Subject } from 'rxjs';
+
 import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
-import { pairwise } from 'rxjs/operators';
-import { Router, ActivatedRoute, } from '@angular/router';
-import * as qs from 'qs';
 
 @Component({
   selector: 'sds-filters',
   template: `
-      <formly-form [form]="form" [fields]="fields" [options]="options" [model]="model"></formly-form>`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    {{ model | json }}
+    <formly-form
+      [form]="form"
+      [fields]="fields"
+      [options]="options"
+      [model]="model"
+      (modelChange)="onModelChange($event)"
+    ></formly-form>
+  `
 })
-
-export class SdsFiltersComponent implements OnInit {
-  /**
-   * Modeal update
-   */
-  modelChange = new Subject<any>();
+export class SdsFiltersComponent {
 
   /**
    * Pass in a Form Group for ReactiveForms Support
@@ -47,30 +48,24 @@ export class SdsFiltersComponent implements OnInit {
   /**
    *  Emit results when model updated
    */
+  // TODO: check type -- Formly models are typically objects
   @Output() filterChange = new EventEmitter<object[]>();
 
   /**
    * debounce time for current page input
    */
+  // TODO: ensure no teams are using and remove
   @Input() debounceTime = 0;
- 
+
   constructor(
     @Optional()
-    private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,
-    private cdr: ChangeDetectorRef,
-    private router: Router,
-    private route: ActivatedRoute,
+    private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService
   ) {}
 
-  ngOnInit(): void {
-    this.form.valueChanges
-      .pipe(pairwise())
-      .subscribe(([prev, next]: [any, any]) => {
-         this.filterChange.emit(next);
-        if (this.formlyUpdateComunicationService) {
-          this.formlyUpdateComunicationService.updateFilter(next);
-        }
-      });
+  onModelChange(model: any) {
+    this.filterChange.emit(model);
+    if (this.formlyUpdateComunicationService) {
+      this.formlyUpdateComunicationService.updateFilter(model);
+    }
   }
-
 }

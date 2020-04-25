@@ -1,5 +1,4 @@
-
-import { ConfigOption } from '@ngx-formly/core';
+import { ConfigOption, FormlyFieldConfig } from '@ngx-formly/core';
 import { FormlyWrapperFormFieldComponent } from './wrappers/form-field.wrapper';
 import { FormlyFieldInputComponent } from './types/input';
 import { FormlyFieldSelectComponent } from './types/select';
@@ -12,7 +11,6 @@ import { FormlyFieldAutoCompleteComponent } from './types/autocomplete';
 import { FormlyFormFieldFilterWrapperComponent } from './wrappers/form-field.filterwrapper';
 import { FormlyFieldDatePickerComponent } from './types/datepicker';
 import { FormlyFieldButtonComponent } from './types/button';
-import { FormlyFieldConfig } from '@ngx-formly/core';
 
 export const FIELD_TYPE_COMPONENTS = [
   FormlyFieldInputComponent,
@@ -31,10 +29,22 @@ export const FIELD_TYPE_COMPONENTS = [
 import { maxDateValidator, minDateValidator } from './formly.validators';
 
 export const FORMLY_WRAPPERS: any = [
-  { name: 'form-field', component: FormlyWrapperFormFieldComponent, componentName: "FormlyWrapperFormFieldComponent" },
-  { name: 'accordionwrapper', component: FormlyAccordianFormFieldComponent, componentName: "FormlyAccordianFormFieldComponent" },
-  { name: 'filterwrapper', component: FormlyFormFieldFilterWrapperComponent, componentName: "FormlyFormFieldFilterWrapperComponent" }
-]
+  {
+    name: 'form-field',
+    component: FormlyWrapperFormFieldComponent,
+    componentName: 'FormlyWrapperFormFieldComponent'
+  },
+  {
+    name: 'accordionwrapper',
+    component: FormlyAccordianFormFieldComponent,
+    componentName: 'FormlyAccordianFormFieldComponent'
+  },
+  {
+    name: 'filterwrapper',
+    component: FormlyFormFieldFilterWrapperComponent,
+    componentName: 'FormlyFormFieldFilterWrapperComponent'
+  }
+];
 
 export const FORMLY_CONFIG: ConfigOption = {
   types: [

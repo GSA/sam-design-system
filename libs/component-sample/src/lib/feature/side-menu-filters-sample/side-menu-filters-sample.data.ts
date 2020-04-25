@@ -36,7 +36,6 @@ export var SIDE_MENU_FILTERS_SAMPLE_DATA: FormlyFieldConfig[] = [
         key: 'uniqueEntityIdSam',
         type: 'input',
         templateOptions: {
-          required: true,
           label: 'Unique Entity ID (SAM)',
           placeholder: '',
           min: 13,
@@ -58,7 +57,6 @@ export var SIDE_MENU_FILTERS_SAMPLE_DATA: FormlyFieldConfig[] = [
         key: 'uniqueEntityIdDuns',
         type: 'input',
         templateOptions: {
-          required: true,
           label: 'Unique Entity ID (DUNS)',
           placeholder: '',
           min: 13,
@@ -80,20 +78,20 @@ export var SIDE_MENU_FILTERS_SAMPLE_DATA: FormlyFieldConfig[] = [
         templateOptions: {
           options: [
             {
-              key: 'Active',
+              label: 'Active',
               value: 'Active'
             },
             {
-              key: 'Draft',
+              label: 'Draft',
               value: 'Draft'
             },
             {
-              key: 'Expired',
+              label: 'Expired',
               value: 'Expired'
             },
             {
-              key: 'InProgress',
-              value: 'In Progress'
+              value: 'InProgress',
+              label: 'In Progress'
             }
           ]
         }

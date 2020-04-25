@@ -1,19 +1,24 @@
 <div class="grid-row">
-
-<sds-accordion-item expanded="true">
-  <sds-accordion-item-header> Filters </sds-accordion-item-header>
-  <sds-filters [form]="form" [fields]="fields" [model]="model" [options]="options" (filterChange)="filterChange$.next($event)" showResetAll=true></sds-filters>
-    <div class="grid-row">
-      <div class="grid-col">
-        <button type="button" (click)="openDialog()" class="usa-button--unstyled">Advanced Filters</button>
-      </div>
-    </div>
-</sds-accordion-item>
-
+  <div class="grid-col-4">
+    <sds-accordion>
+      <sds-accordion-item expanded="true">
+        <sds-accordion-item-header> Filters </sds-accordion-item-header>
+        <form [formGroup]="form">
+          <sds-filters [form]="form" [fields]="fields" [model]="model"></sds-filters>
+        </form>
+        <div class="grid-row">
+          <div class="grid-col">
+            <button type="button" (click)="openDialog()" class="text-bold text-indent-1 usa-button--unstyled">Advanced
+              Filters</button>
+          </div>
+        </div>
+      </sds-accordion-item>
+    </sds-accordion>
+  </div>
   <div class="sam-example-pagination grid-col-fill">
     <div class="sds-card">
       <div class="sds-card__header">Filter Model:</div>
-      <pre>{{results ? (results |json) : ''}}</pre>
+      <pre *ngIf="model">{{ model |json }}</pre>
     </div>
   </div>
 </div>
