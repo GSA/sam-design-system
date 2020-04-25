@@ -5,9 +5,8 @@
 </form>
 <br />
 
-<pre>
-{{model |json}}
-</pre>
+<h4>Formly Model</h4>
+<pre>{{model |json}}</pre>
 
-
-<button (click)="options.resetModel()">Reset</button>
+<button class="margin-right-05" (click)="setModelVal();">Set Formly Model</button>
+<button class="margin-right-05" (click)="options.resetModel();">Reset</button>

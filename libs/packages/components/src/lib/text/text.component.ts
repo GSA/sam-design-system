@@ -1,7 +1,5 @@
-import { Component, forwardRef, ChangeDetectionStrategy, EventEmitter, Output } from '@angular/core';
+import { Component, forwardRef, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-
-const noop = () => {};
 
 @Component({
   selector: 'sds-text',
@@ -11,12 +9,12 @@ const noop = () => {};
       <button class="usa-button margin-left-05 display-inline-block" (click)="addItem(searchInput.value); searchInput.value=''">Add Item</button>
     </div>
 
-    <h4>Items Array</h4>
+    <h4>Component Items</h4>
     <pre>{{ items | json }}</pre>
 
     <hr />
 
-    <h4>Child Component</h4>
+    <h4>Child Component Items <small>(click to remove)</small></h4>
     <sds-text-child [(items)]="items" (itemsChange)="updateItems($event)"></sds-text-child>
   `,
   providers: [
@@ -26,7 +24,7 @@ const noop = () => {};
       multi: true
     }
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SdsTextComponent implements ControlValueAccessor {
 
@@ -35,6 +33,8 @@ export class SdsTextComponent implements ControlValueAccessor {
 
   private _onChange = (_: any) => { };
   private _onTouched = () => { };
+
+  constructor(private cd: ChangeDetectorRef) { }
 
   addItem(val) {
     if(this.multiple){
@@ -48,11 +48,24 @@ export class SdsTextComponent implements ControlValueAccessor {
   }
 
   updateModel() {
-    const model = [...this.items];
+    const model = this.getModel();
     this._onChange(model);
   }
 
-  writeValue(value: any) {}
+  getModel() {
+    return [...this.items];
+  }
+
+  writeValue(value: any) {
+    console.log(value);
+    if(value && value.length && this.items !== value) {
+      this.items = value;
+      this.cd.markForCheck();
+    } else {
+      this.items = [];
+      this.cd.markForCheck();
+    }
+  }
 
   registerOnChange(fn: any): void {
     this._onChange = fn;

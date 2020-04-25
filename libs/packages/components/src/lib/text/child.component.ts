@@ -13,6 +13,7 @@ export class SdsTextChildComponent  {
     @Input() items;
     @Output() itemsChange = new EventEmitter();
 
+    // Method to remove an item from the items array, emits an event that the parent component is listening for
     removeItem(index){
       this.items.splice(index, 1);
       this.itemsChange.emit(this.items);
