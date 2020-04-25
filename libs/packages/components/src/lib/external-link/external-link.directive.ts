@@ -54,6 +54,8 @@ export class ExternalLinkDirective
     const factory = this.cfr.resolveComponentFactory(FaIconComponent);
     const component = this.vc.createComponent(factory);
     this.renderer.addClass(component.location.nativeElement, 'sds-external-link');
+    this.renderer.addClass(component.location.nativeElement, 'usa-link');
+    this.renderer.addClass(component.location.nativeElement, 'margin-left-05');
     component.instance.iconProp = faExternalLinkAlt;
     component.instance.ngOnChanges({});
   }
