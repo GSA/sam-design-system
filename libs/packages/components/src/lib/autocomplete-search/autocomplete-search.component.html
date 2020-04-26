@@ -2,7 +2,7 @@
   <div class="maxw-mobile-lg position-relative">
     <div role="combobox" [attr.id]="configuration.id+'-container'" [attr.aria-expanded]="showResults"
       [attr.aria-owns]="showResults? configuration.id+ '-listbox' : undefined" aria-haspopup="listbox">
-      <input [disabled]="disabled" (input)="textChange($event)" class="usa-input" #input  [attr.aria-label]="configuration.ariaLabelText"
+      <input [disabled]="disabled" (input)="textChange($event)" class="usa-input padding-right-3" #input  [attr.aria-label]="configuration.ariaLabelText"
         [attr.id]="configuration.id" type="text" (focus)="inputFocusHandler()" (keydown)="onKeydown($event)"
         [(ngModel)]="inputValue" aria-autocomplete="list" [attr.placeholder]="configuration.autocompletePlaceHolderText"
         [attr.aria-activedescendant]="showResults? configuration.id+'-resultItem-'+highlightedIndex :''"

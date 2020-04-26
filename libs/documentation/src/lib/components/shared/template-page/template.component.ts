@@ -45,17 +45,13 @@ export function getSource(pkg, type, name) {
         <code *ngIf="item.fileURI" class="text-indigo bg-white margin-0" [innerHTML]="item.fileURI"></code>
         <code *ngIf="!item.fileURI" class="text-indigo bg-white margin-0">Inline</code>
       </p>
-      <ngx-prism
-        [language] = "language"
-        [code] = "item.sourceCode"
-      ></ngx-prism>
+      <pre class="highlight"><code [highlight]="item.sourceCode"></code></pre>
     </ng-container>
   </ng-container>
   `
 })
 
 export class DocumentationTemplatePage {
-  language = 'javascript';
   items: any = [];
 
   constructor(route: ActivatedRoute) {

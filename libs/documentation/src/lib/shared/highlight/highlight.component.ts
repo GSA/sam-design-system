@@ -4,16 +4,12 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
   selector: 'docs-highlight',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <ngx-prism
-      [language] = "language"
-      [code] = "sourceCode"
-    ></ngx-prism>
+    <pre class="highlight"><code [highlight]="sourceCode"></code></pre>
   `
 })
 export class HighlightComponent {
 
   @Input() sourceCode: string;
-  @Input() language = "javascript";
 
   constructor() { }
 
