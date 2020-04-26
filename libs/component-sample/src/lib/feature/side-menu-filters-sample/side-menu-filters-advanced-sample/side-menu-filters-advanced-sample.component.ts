@@ -8,7 +8,7 @@ import {
   SdsAdvancedFiltersService
 } from '@gsa-sam/sam-formly';
 
-import { SIDE_MENU_FILTERS_SAMPLE_DATA } from '../side-menu-filters-sample.data';
+import { SIDE_MENU_FILTERS_ADVANCED_SAMPLE_DATA } from '../side-menu-filters-sample.data';
 
 @Component({
   selector: 'sds-side-menu-filters-advanced-sample',
@@ -20,7 +20,7 @@ export class SideMenuFiltersAdvancedSampleComponent {
   form: FormGroup = new FormGroup({});
   model: object = {};
   options: FormlyFormOptions = {};
-  fields: FormlyFieldConfig[] = SIDE_MENU_FILTERS_SAMPLE_DATA;
+  fields: FormlyFieldConfig[] = SIDE_MENU_FILTERS_ADVANCED_SAMPLE_DATA;
 
   constructor(
     public dialog: SdsDialogService,

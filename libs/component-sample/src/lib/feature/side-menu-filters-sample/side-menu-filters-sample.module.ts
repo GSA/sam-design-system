@@ -30,9 +30,7 @@ import { SideMenuFiltersToolbarSampleComponent } from './side-menu-filters-toolb
     SdsFormlyDialogModule,
     FormsModule,
     ReactiveFormsModule,
-    FormlyModule.forRoot({
-      // extras: { immutable: true }
-    }),
+    FormlyModule.forRoot({}),
   ],
   exports: [SideMenuFiltersSampleComponent],
   declarations: [

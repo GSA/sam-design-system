@@ -13,7 +13,6 @@ import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comuni
 @Component({
   selector: 'sds-filters',
   template: `
-    {{ model | json }}
     <formly-form
       [form]="form"
       [fields]="fields"

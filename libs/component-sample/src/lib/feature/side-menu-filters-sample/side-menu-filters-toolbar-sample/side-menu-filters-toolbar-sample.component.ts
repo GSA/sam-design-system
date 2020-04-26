@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
-
-import { SIDE_MENU_FILTERS_SAMPLE_DATA } from '../side-menu-filters-sample.data';
 import { FormGroup } from '@angular/forms';
+
+import { SIDE_MENU_FILTERS_TOOLBAR_SAMPLE_DATA } from '../side-menu-filters-sample.data';
 
 @Component({
   selector: 'sds-side-menu-filters-toolbar-sample',
@@ -14,7 +14,7 @@ export class SideMenuFiltersToolbarSampleComponent implements OnInit {
   sideMenuFiltersToolbarForm = new FormGroup({});
   sideMenuFiltersToolbarModel = {};
   options: FormlyFormOptions = {};
-  sideMenuFiltersToolbarFields: FormlyFieldConfig[] = SIDE_MENU_FILTERS_SAMPLE_DATA;
+  sideMenuFiltersToolbarFields: FormlyFieldConfig[] = SIDE_MENU_FILTERS_TOOLBAR_SAMPLE_DATA;
 
   /**
    * Event when something is checked/selected in the grid
