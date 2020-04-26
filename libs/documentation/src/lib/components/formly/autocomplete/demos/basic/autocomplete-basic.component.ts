@@ -113,6 +113,6 @@ export class FormlyAutocompleteBasic implements OnInit {
     ];
 
     const newObjModel = new SDSSelectedItemModel(newModel);
-    this.form.get('filters.firstName').patchValue(newObjModel);
+    this.form.get('filters.firstName').patchValue(newObjModel.items);
   }
 }
