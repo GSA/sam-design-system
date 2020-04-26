@@ -6,8 +6,7 @@ import {
   ChangeDetectorRef,
   EventEmitter,
   Optional,
-  OnInit,
-  OnDestroy
+  OnInit
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
@@ -26,6 +25,7 @@ import { HostListener } from '@angular/core';
       [form]="form"
       [fields]="fields"
       [options]="options"
+      (modelChange)="modelChange.next($event)" 
       [model]="model"
     ></formly-form>
   `,
@@ -67,7 +67,10 @@ export class SdsFiltersComponent implements OnInit {
    */
   @Input() debounceTime = 0;
 
-  private storageList = [];
+  private timeoutNumber: number;
+
+  storageList = [];
+
   // routeTrigger = '';
   _isObj = (obj: any): boolean => typeof obj === 'object' && obj !== null;
   _isEmpty = (obj: any): boolean => Object.keys(obj).length === 0;
@@ -95,66 +98,81 @@ export class SdsFiltersComponent implements OnInit {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const ref = urlParams.get('ref');
+    // if(ref){
+    //   this.model = JSON.parse(localStorage.getItem(ref));
+    // } else  {
+    //   this.options.resetModel();
+    // }
     const updatedFormValue =
       ref == null
         ? this.options.resetModel()//this.nullify(this.form.value)
-        : this.checkStorageValue(ref);
-    console.log(updatedFormValue);
-    if (window.location.pathname.includes('formlyInput')) {
-      this.form.patchValue(updatedFormValue, { emitEvent: false });
-    } else {
-      this.form.setValue(updatedFormValue, { emitEvent: false });
-    }
+        : JSON.parse(localStorage.getItem(ref));
+      
+       this.model = {...updatedFormValue};
+
     this.filterChange.emit(updatedFormValue);
     if (this.formlyUpdateComunicationService) {
       this.formlyUpdateComunicationService.updateFilter(updatedFormValue);
     }
-  }
-  checkStorageValue(ref) {
-    const val = JSON.parse(localStorage.getItem(ref));
-    if (val) {
-      return val;
-    } else {
-      this.options.resetModel();
-      return this.model;
-    }
-  }
+   }
   ngOnInit(): void {
-    if (this._isEmpty(this.form.getRawValue())) {
+      if (this._isEmpty(this.form.getRawValue())) {
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
-      const initialRef = urlParams.get('ref');
+      const initialRef = urlParams.get('ref');   
       initialRef == null
         ? this.clearStorage()
         : ((this.model = JSON.parse(localStorage.getItem(initialRef))),
           setTimeout(() => {
-            this.form.patchValue(
-              {
-                ...this.model
-              },
-              { emitEvent: false }
-            );
+            // this.form.patchValue(
+            //   {
+            //     ...this.model
+            //   },
+            //   { emitEvent: false }
+            // );
           }));
     }
-    this.form.valueChanges
-      .pipe(pairwise())
-      .subscribe(([prev, next]: [any, any]) => {
-        const md5 = new Md5();
-        const hashCode = md5.appendStr(qs.stringify(next)).end();
-        this.router.navigate([], {
-          relativeTo: this.route,
-          queryParams: { ref: hashCode },
-          queryParamsHandling: 'merge'
-        });
-        this.addToStorageList(hashCode)
-        localStorage.setItem(hashCode.toString(), JSON.stringify(next));
-        this.filterChange.emit(next);
-        if (this.formlyUpdateComunicationService) {
-          this.formlyUpdateComunicationService.updateFilter(next);
-        }
+
+    this.modelChange.subscribe((change) => {
+      window.clearTimeout(this.timeoutNumber);
+      this.timeoutNumber = window.setTimeout(() => {
+      this.filterChange.emit(change);
+      const md5 = new Md5();
+      const hashCode = md5.appendStr(qs.stringify(change)).end();    
+      this.router.navigate([], {
+        relativeTo: this.route,
+        queryParams: { ref: hashCode },
+        queryParamsHandling: 'merge'
       });
+      this.addToStorageList(hashCode) 
+      localStorage.setItem(hashCode.toString(), JSON.stringify(change));
+      if (this.formlyUpdateComunicationService) {
+        this.formlyUpdateComunicationService.updateFilter(change);
+      }
+    }, 150);
+    })
+
+  
+
+    // this.form.valueChanges
+    //   .pipe(pairwise())
+    //   .subscribe(([prev, next]: [any, any]) => {
+    //     const md5 = new Md5();
+    //     const hashCode = md5.appendStr(qs.stringify(next)).end();         
+    //     this.router.navigate([], {
+    //       relativeTo: this.route,
+    //       queryParams: { ref: hashCode },
+    //       queryParamsHandling: 'merge'
+    //     });
+    //     this.addToStorageList(hashCode) 
+    //     localStorage.setItem(hashCode.toString(), JSON.stringify(next));
+    //     this.filterChange.emit(next);
+    //     if (this.formlyUpdateComunicationService) {
+    //       this.formlyUpdateComunicationService.updateFilter(next);
+    //     }
+    //   });
   }
- 
+
   addToStorageList(hashCode) {
     this.storageList.push(hashCode);
     localStorage.setItem('storageList', JSON.stringify(this.storageList));
