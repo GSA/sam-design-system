@@ -68,18 +68,17 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
    * Stored Event for ControlValueAccessor
    */
   @HostListener('focusout')
-  private _onTouched = () => { };
+  public onTouched = () => { };
 
   /**
    * Stored Event for ControlValueAccessor
    */
-  private _onChange = (_: any) => { };
+  public onChange = (_: any) => { };
 
   // ControlValueAccessor (and Formly) is trying to update the value of the FormControl (our custom component) programatically
   // If there is a value we will just overwrite items
   // If there is no value we reset the items array to be empty
   writeValue(value: any) {
-
     if (value instanceof SDSSelectedItemModel && value.items && value.items.length && this.model.items !== value.items) {
       this.model.items = [...value.items];
       this.cd.markForCheck();
@@ -88,7 +87,10 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
       this.model.items = value;
       this.cd.markForCheck();
     } else {
-      this.model.items = [];
+      if(!this.model || !(this.model instanceof SDSSelectedItemModel)) {
+        this.model = new SDSSelectedItemModel();
+      }
+      this.model.items = value && value.items ? value.items : [];
       this.cd.markForCheck();
     }
   }
@@ -101,7 +103,7 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
   // Helper method that gets a new instance of the model and notifies ControlValueAccessor that we have a new model for this FormControl (our custom component)
   updateModel() {
     const model = this.getModel();
-    this._onChange(model);
+    this.onChange(model);
   }
 
   // Helper method to return a new instance of an array that contains our items
@@ -111,12 +113,12 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
 
   // ControlValueAccessor hook that lets us call this._onChange(var) to let the form know our variable has changed (in this case model)
   registerOnChange(fn: any): void {
-    this._onChange = fn;
+    this.onChange = fn;
   }
 
   // ControlValueAccessor hook (not used)
   registerOnTouched(fn: any) {
-    this._onTouched = fn;
+    this.onTouched = fn;
   }
 
   setDisabledState(isDisabled: boolean): void {
