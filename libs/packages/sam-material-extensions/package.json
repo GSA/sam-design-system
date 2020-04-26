@@ -1,6 +1,6 @@
 {
   "name": "@gsa-sam/sam-material-extensions",
-  "version": "0.6.11",
+  "version": "0.6.12",
   "repository": {
     "type": "git",
     "url": "https://github.com/GSA/sam-design-system.git"

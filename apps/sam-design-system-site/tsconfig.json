@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.json",
+"extends": "../../tsconfig.json",
   "compilerOptions": {
     "types": ["jasmine", "node"],
     "typeRoots": ["node_modules/@types"]
