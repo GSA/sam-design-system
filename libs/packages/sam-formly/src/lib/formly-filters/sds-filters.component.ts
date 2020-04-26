@@ -31,7 +31,7 @@ import { HostListener } from '@angular/core';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SdsFiltersComponent implements OnInit, OnDestroy {
+export class SdsFiltersComponent implements OnInit {
   /**
    * Modeal update
    */
@@ -124,8 +124,9 @@ export class SdsFiltersComponent implements OnInit, OnDestroy {
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
       const initialRef = urlParams.get('ref');
-      if(initialRef){
-         (this.model = this.checkStorageValue(initialRef),
+      initialRef == null
+        ? this.clearStorage()
+        : ((this.model = JSON.parse(localStorage.getItem(initialRef))),
           setTimeout(() => {
             this.form.patchValue(
               {
@@ -134,12 +135,7 @@ export class SdsFiltersComponent implements OnInit, OnDestroy {
               { emitEvent: false }
             );
           }));
-      }
-      // initialRef == null
-      //   ? this.options.resetModel()
-      
     }
-
     this.form.valueChanges
       .pipe(pairwise())
       .subscribe(([prev, next]: [any, any]) => {
@@ -158,9 +154,7 @@ export class SdsFiltersComponent implements OnInit, OnDestroy {
         }
       });
   }
-  ngOnDestroy() {
-    this.clearStorage()
-  }
+ 
   addToStorageList(hashCode) {
     this.storageList.push(hashCode);
     localStorage.setItem('storageList', JSON.stringify(this.storageList));
