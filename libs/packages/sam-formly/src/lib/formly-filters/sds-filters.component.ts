@@ -6,7 +6,8 @@ import {
   ChangeDetectorRef,
   EventEmitter,
   Optional,
-  OnInit
+  OnInit,
+  OnDestroy
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
@@ -30,7 +31,7 @@ import { HostListener } from '@angular/core';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SdsFiltersComponent implements OnInit {
+export class SdsFiltersComponent implements OnInit, OnDestroy {
   /**
    * Modeal update
    */
@@ -66,6 +67,7 @@ export class SdsFiltersComponent implements OnInit {
    */
   @Input() debounceTime = 0;
 
+  private storageList = [];
   // routeTrigger = '';
   _isObj = (obj: any): boolean => typeof obj === 'object' && obj !== null;
   _isEmpty = (obj: any): boolean => Object.keys(obj).length === 0;
@@ -96,7 +98,7 @@ export class SdsFiltersComponent implements OnInit {
     const updatedFormValue =
       ref == null
         ? this.options.resetModel()//this.nullify(this.form.value)
-        : JSON.parse(localStorage.getItem(ref));
+        : this.checkStorageValue(ref);
     console.log(updatedFormValue);
     if (window.location.pathname.includes('formlyInput')) {
       this.form.patchValue(updatedFormValue, { emitEvent: false });
@@ -108,15 +110,22 @@ export class SdsFiltersComponent implements OnInit {
       this.formlyUpdateComunicationService.updateFilter(updatedFormValue);
     }
   }
-
+  checkStorageValue(ref) {
+    const val = JSON.parse(localStorage.getItem(ref));
+    if (val) {
+      return val;
+    } else {
+      this.options.resetModel();
+      return this.model;
+    }
+  }
   ngOnInit(): void {
     if (this._isEmpty(this.form.getRawValue())) {
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
       const initialRef = urlParams.get('ref');
-      initialRef == null
-        ? localStorage.clear()
-        : ((this.model = JSON.parse(localStorage.getItem(initialRef))),
+      if(initialRef){
+         (this.model = this.checkStorageValue(initialRef),
           setTimeout(() => {
             this.form.patchValue(
               {
@@ -125,23 +134,42 @@ export class SdsFiltersComponent implements OnInit {
               { emitEvent: false }
             );
           }));
+      }
+      // initialRef == null
+      //   ? this.options.resetModel()
+      
     }
 
     this.form.valueChanges
       .pipe(pairwise())
       .subscribe(([prev, next]: [any, any]) => {
         const md5 = new Md5();
-        const hashCode = md5.appendStr(qs.stringify(next)).end();         
+        const hashCode = md5.appendStr(qs.stringify(next)).end();
         this.router.navigate([], {
           relativeTo: this.route,
           queryParams: { ref: hashCode },
           queryParamsHandling: 'merge'
         });
+        this.addToStorageList(hashCode)
         localStorage.setItem(hashCode.toString(), JSON.stringify(next));
         this.filterChange.emit(next);
         if (this.formlyUpdateComunicationService) {
           this.formlyUpdateComunicationService.updateFilter(next);
         }
       });
+  }
+  ngOnDestroy() {
+    this.clearStorage()
+  }
+  addToStorageList(hashCode) {
+    this.storageList.push(hashCode);
+    localStorage.setItem('storageList', JSON.stringify(this.storageList));
+  }
+  clearStorage() {
+    const list = JSON.parse(localStorage.getItem('storageList'));
+    const unique = list.filter((item, i, ar) => ar.indexOf(item) === i);
+    unique.forEach(item => {
+      localStorage.removeItem(item);
+    });
   }
 }
