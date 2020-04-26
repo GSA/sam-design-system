@@ -73,4 +73,46 @@ export class FormlyAutocompleteBasic implements OnInit {
   public ngOnInit() {
     this.filterChange$.subscribe(res => (this.results = res));
   }
+
+  // Method to programatically set the FormControl value which gets converted to the items array through the writeValue method
+  setModelVal() {
+    this.form.get('filters.firstName').patchValue([
+      {
+        id: '3',
+        parentId: '2',
+        name: 'Level 3',
+        subtext: 'id 3',
+        type: 'Level 3',
+        childCount: 2,
+        highlighted: true
+      }
+    ]);
+  }
+
+  // Method to programatically set the FormControl value which gets converted to the items array through the writeValue method
+  setModelObj() {
+    const newModel = [
+      {
+        id: '3',
+        parentId: '2',
+        name: 'Level 3',
+        subtext: 'id 3',
+        type: 'Level 3',
+        childCount: 2,
+        highlighted: true
+      },
+      {
+        id: '42',
+        parentId: '41',
+        name: 'Level 6',
+        subtext: 'id 42',
+        type: 'Level 6',
+        childCount: 3,
+        highlighted: true
+      }
+    ];
+
+    const newObjModel = new SDSSelectedItemModel(newModel);
+    this.form.get('filters.firstName').patchValue(newObjModel);
+  }
 }

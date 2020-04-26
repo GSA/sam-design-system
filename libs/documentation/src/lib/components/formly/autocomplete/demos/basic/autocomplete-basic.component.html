@@ -1,8 +1,12 @@
+<h4>Custom text component inside formly</h4>
 <form [formGroup]="form">
-  <sds-filters [form]="form" [fields]="fields" [model]="model" (filterChange)="filterChange$.next($event)"></sds-filters>
+  <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
 </form>
+<br />
 
-<div class="sam-example-pagination">
-  <h4>Filter Model:</h4>
-  <pre>{{ results ? (results |json) : ''}}</pre>
-</div>
+<h4>Formly Model</h4>
+<pre>{{model |json}}</pre>
+
+<button class="margin-right-05" (click)="setModelVal();">Set Formly By Array</button>
+<button class="margin-right-05" (click)="setModelObj();">Set Formly By Object</button>
+<button class="margin-right-05" (click)="options.resetModel();">Reset</button>
