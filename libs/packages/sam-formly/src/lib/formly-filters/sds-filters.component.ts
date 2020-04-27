@@ -91,86 +91,69 @@ export class SdsFiltersComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) { 
+    //localStorage.clear();
+  }
 
   @HostListener('window:popstate', ['$event'])
   onpopstate(event) {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const ref = urlParams.get('ref');
-    // if(ref){
-    //   this.model = JSON.parse(localStorage.getItem(ref));
-    // } else  {
-    //   this.options.resetModel();
-    // }
-    const updatedFormValue =
-      ref == null
-        ? this.options.resetModel()//this.nullify(this.form.value)
-        : JSON.parse(localStorage.getItem(ref));
-      
-       this.model = {...updatedFormValue};
-
-    this.filterChange.emit(updatedFormValue);
-    if (this.formlyUpdateComunicationService) {
-      this.formlyUpdateComunicationService.updateFilter(updatedFormValue);
+    if (ref) {
+      const updatedFormValue = JSON.parse(localStorage.getItem(ref));
+      this.updateForm(updatedFormValue)
+      this.filterChange.emit(updatedFormValue);
+      if (this.formlyUpdateComunicationService) {
+        this.formlyUpdateComunicationService.updateFilter(updatedFormValue);
+      }
+    } else {
+      this.model = {};
+      this.filterChange.emit(this.model);
+      if (this.formlyUpdateComunicationService) {
+        this.formlyUpdateComunicationService.updateFilter(this.model);
+      }
     }
-   }
+  }
+
+  updateForm(updatedFormValue) {
+    if (window.location.pathname.includes('formlyInput')) {
+      this.form.patchValue(updatedFormValue, { emitEvent: false });
+    } else {
+      this.form.setValue(updatedFormValue, { emitEvent: false });
+    }
+  }
   ngOnInit(): void {
-      if (this._isEmpty(this.form.getRawValue())) {
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
-      const initialRef = urlParams.get('ref');   
-      initialRef == null
-        ? this.clearStorage()
-        : ((this.model = JSON.parse(localStorage.getItem(initialRef))),
-          setTimeout(() => {
-            // this.form.patchValue(
-            //   {
-            //     ...this.model
-            //   },
-            //   { emitEvent: false }
-            // );
-          }));
-    }
+      const initialRef = urlParams.get('ref');
+      if (initialRef) {
+        const updatedFormValue = JSON.parse(localStorage.getItem(initialRef));
+        setTimeout(() => {
+          this.model = {...this.model, ...updatedFormValue}
+        },0);
+      } else {
+       this.clearStorage();
+      }
 
     this.modelChange.subscribe((change) => {
       window.clearTimeout(this.timeoutNumber);
       this.timeoutNumber = window.setTimeout(() => {
-      this.filterChange.emit(change);
-      const md5 = new Md5();
-      const hashCode = md5.appendStr(qs.stringify(change)).end();    
-      this.router.navigate([], {
-        relativeTo: this.route,
-        queryParams: { ref: hashCode },
-        queryParamsHandling: 'merge'
-      });
-      this.addToStorageList(hashCode) 
-      localStorage.setItem(hashCode.toString(), JSON.stringify(change));
-      if (this.formlyUpdateComunicationService) {
-        this.formlyUpdateComunicationService.updateFilter(change);
-      }
-    }, 150);
+        this.filterChange.emit(change);
+        const md5 = new Md5();
+        const hashCode = md5.appendStr(qs.stringify(change)).end();
+        this.router.navigate([], {
+          relativeTo: this.route,
+          queryParams: { ref: hashCode },
+          queryParamsHandling: 'merge'
+        });
+        this.addToStorageList(hashCode)
+        localStorage.setItem(hashCode.toString(), JSON.stringify(change));
+        if (this.formlyUpdateComunicationService) {
+          this.formlyUpdateComunicationService.updateFilter(change);
+        }
+      }, 150);
     })
-
-  
-
-    // this.form.valueChanges
-    //   .pipe(pairwise())
-    //   .subscribe(([prev, next]: [any, any]) => {
-    //     const md5 = new Md5();
-    //     const hashCode = md5.appendStr(qs.stringify(next)).end();         
-    //     this.router.navigate([], {
-    //       relativeTo: this.route,
-    //       queryParams: { ref: hashCode },
-    //       queryParamsHandling: 'merge'
-    //     });
-    //     this.addToStorageList(hashCode) 
-    //     localStorage.setItem(hashCode.toString(), JSON.stringify(next));
-    //     this.filterChange.emit(next);
-    //     if (this.formlyUpdateComunicationService) {
-    //       this.formlyUpdateComunicationService.updateFilter(next);
-    //     }
-    //   });
   }
 
   addToStorageList(hashCode) {
