@@ -10,7 +10,7 @@ import { SdsSelectedResultsModule } from '../selected-result/selected-result.mod
 import { SdsAutocompleteSearchModule } from '../autocomplete-search/autocomplete-search.module';
 
 
-fdescribe('SDSAutocompleteComponent', () => {
+describe('SDSAutocompleteComponent', () => {
   let component: SDSAutocompleteComponent;
   let fixture: ComponentFixture<SDSAutocompleteComponent>;
 

@@ -12,7 +12,6 @@ import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { Subject } from 'rxjs';
 import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
-import { pairwise, filter } from 'rxjs/operators';
 import { Router, ActivatedRoute, NavigationStart } from '@angular/router';
 import * as qs from 'qs';
 import { Md5 } from 'ts-md5/dist/md5';
@@ -119,9 +118,9 @@ export class SdsFiltersComponent implements OnInit {
       updatedFormValue
     );
     this.form.setValue(updatedValue, { emitEvent: false });
-    this.filterChange.emit(updatedFormValue);
+    this.filterChange.emit([updatedValue]);
     if (this.formlyUpdateComunicationService) {
-      this.formlyUpdateComunicationService.updateFilter(updatedFormValue);
+      this.formlyUpdateComunicationService.updateFilter(updatedValue);
     }
   }
 
