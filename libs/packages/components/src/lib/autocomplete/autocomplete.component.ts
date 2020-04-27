@@ -18,6 +18,7 @@ import { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem
 import { SDSAutocompleteServiceInterface } from '../autocomplete-search/models/SDSAutocompleteServiceInterface';
 import { SDSAutocompletelConfiguration } from './models/SDSAutocompletelConfiguration.model';
 import { SelectionMode } from '../selected-result/models/sds-selected-item-model-helper';
+
 const Autocomplete_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => SDSAutocompleteComponent),
