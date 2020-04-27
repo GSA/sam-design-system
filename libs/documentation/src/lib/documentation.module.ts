@@ -23,7 +23,6 @@ import { ROUTES as AUTOCOMPLETE_ROUTES, AutocompleteModule } from './components/
 import { ROUTES as VIDEO_ROUTES, VideoModule } from './components/video/video.module';
 import { ROUTES as POPUP_ROUTES, PopupModule } from './components/popup/popup.module';
 
-
 /* Form Types */
 import { ROUTES as INPUT_ROUTES, InputModule } from './components/formly/input/input.module';
 import { ROUTES as TEXT_AREA_ROUTES, TextAreaModule } from './components/formly/textarea/textarea.module';
@@ -33,6 +32,7 @@ import { ROUTES as RADIO_ROUTES, RadioModule } from './components/formly/radio/r
 import { ROUTES as SELECT_ROUTES, SelectModule } from './components/formly/select/select.module';
 import { ROUTES as FORMLY_AUTOCOMPLETE_ROUTES, FormlyAutocompleteModule } from './components/formly/autocomplete/autocomplete.module';
 import { ROUTES as FORMLY_DATEPICKER_ROUTES, FormlyDatepickerModule } from './components/formly/datepicker/datepicker.module';
+import { ROUTES as TEXT_ROUTES, TextModule } from './components/text/text.module';
 
 /* Form Wrappers */
 import { ROUTES as FORM_FIELD_ROUTES, FormFieldModule } from './components/form-field/form-field.module';
@@ -78,6 +78,7 @@ export const ROUTES: Routes = [
   { path: 'components/select', children: SELECT_ROUTES },
   { path: 'components/formly-autocomplete', children: FORMLY_AUTOCOMPLETE_ROUTES },
   { path: 'components/formly-datepicker', children: FORMLY_DATEPICKER_ROUTES },
+  { path: 'components/text', children: TEXT_ROUTES },
 
   // Wrappers
   { path: 'components/form-field', children: FORM_FIELD_ROUTES },
@@ -116,6 +117,7 @@ export const ROUTES: Routes = [
     SelectModule,
     FormlyAutocompleteModule,
     FormlyDatepickerModule,
+    TextModule,
     FormFieldModule,
     FilterWrapperModule,
     AccordionWrapperModule,
