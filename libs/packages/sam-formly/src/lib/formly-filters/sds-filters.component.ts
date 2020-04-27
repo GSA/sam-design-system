@@ -68,7 +68,7 @@ export class SdsFiltersComponent implements OnInit {
 
   private timeoutNumber: number;
 
-  storageList = [];
+  sdsFilterHistory = [];
 
   _isObj = (obj: any): boolean => typeof obj === 'object' && obj !== null;
   _isEmpty = (obj: any): boolean => Object.keys(obj).length === 0;
@@ -158,13 +158,13 @@ export class SdsFiltersComponent implements OnInit {
   }
 
   addToStorageList(hashCode) {
-    const list = JSON.parse(localStorage.getItem('storageList'));
-    this.storageList = (list && list.length > 0) ? list : this.storageList
-    this.storageList.push(hashCode);
-    localStorage.setItem('storageList', JSON.stringify(this.storageList));
+    const list = JSON.parse(localStorage.getItem('sdsFilterHistory'));
+    this.sdsFilterHistory = (list && list.length > 0) ? list : this.sdsFilterHistory
+    this.sdsFilterHistory.push(hashCode);
+    localStorage.setItem('sdsFilterHistory', JSON.stringify(this.sdsFilterHistory));
   }
   clearStorage() {
-    const list = JSON.parse(localStorage.getItem('storageList'));
+    const list = JSON.parse(localStorage.getItem('sdsFilterHistory'));
     if (list && list.length > 0) {
       const unique = list.filter((item, i, ar) => ar.indexOf(item) === i);
       unique.forEach(item => {
