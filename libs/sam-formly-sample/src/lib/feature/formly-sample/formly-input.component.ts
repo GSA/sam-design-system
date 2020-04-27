@@ -23,25 +23,6 @@ export class FormlyInputComponent implements OnInit {
   
   public filterChange$ = new BehaviorSubject<object>(null);
   fields: FormlyFieldConfig[] = [
-
-    {
-      key: 'filter.autocomplete',
-      wrappers: ['accordionwrapper'],
-      templateOptions: { label: 'Keyword' },
-      fieldGroup: [{
-        key: 'firstName',
-        type: 'autocomplete',
-        templateOptions: {
-          label: 'Auto Complete',
-          hideLabel: true,
-          service: this.service,
-          configuration: this.settings,
-          model: this.autocompleteModel,
-          modelChange: this.changes,
-         
-        },
-      }]
-    },
     {
       key: 'filter.searchKeyword',
       wrappers: ['filterwrapper'],
@@ -215,6 +196,24 @@ export class FormlyInputComponent implements OnInit {
         },
     
       ]
+    },
+
+    {
+      key: 'filter.autocomplete',
+      wrappers: ['accordionwrapper'],
+      templateOptions: { label: 'Keyword' },
+      fieldGroup: [{
+        key: 'firstName',
+        type: 'autocomplete',
+        templateOptions: {
+          label: 'Auto Complete',
+          service: this.service,
+          configuration: this.settings,
+          model: this.autocompleteModel,
+          modelChange: this.changes,
+         
+        },
+      }]
     },
   ];
 
