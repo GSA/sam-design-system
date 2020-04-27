@@ -73,19 +73,19 @@ export class SdsFiltersComponent implements OnInit {
 
   _isObj = (obj: any): boolean => typeof obj === 'object' && obj !== null;
   _isEmpty = (obj: any): boolean => Object.keys(obj).length === 0;
-   overwrite = (baseObj: any, newObj: any) => {
-      let result = {};
-      for (let key in baseObj) {
-        if(Array.isArray(baseObj[key])) {
-         result[key] = newObj[key];
-        } else if (this._isObj(baseObj[key])) {
-          result[key] = this.overwrite(baseObj[key], newObj[key] || {});
-        } else {
-          result[key] = newObj[key] || null;
-        }
+  overwrite = (baseObj: any, newObj: any) => {
+    let result = {};
+    for (let key in baseObj) {
+      if (Array.isArray(baseObj[key])) {
+        result[key] = newObj[key];
+      } else if (this._isObj(baseObj[key])) {
+        result[key] = this.overwrite(baseObj[key], newObj[key] || {});
+      } else {
+        result[key] = newObj[key] || null;
       }
-      return result;
-    };
+    }
+    return result;
+  };
   nullify = (obj: any) => {
     for (let key in obj) {
       if (this._isObj(obj[key])) {
@@ -103,7 +103,7 @@ export class SdsFiltersComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   @HostListener('window:popstate', ['$event'])
   onpopstate(event) {
@@ -111,35 +111,34 @@ export class SdsFiltersComponent implements OnInit {
     const urlParams = new URLSearchParams(queryString);
     const ref = urlParams.get('ref');
     const updatedFormValue =
-            ref == null
-              ? this.nullify(this.form.value)
-              : JSON.parse(localStorage.getItem(ref));
+      ref == null
+        ? this.nullify(this.form.value)
+        : JSON.parse(localStorage.getItem(ref));
     const updatedValue = this.overwrite(
-                this.form.getRawValue(),
-                updatedFormValue
-              );
-      this.form.setValue(updatedValue, { emitEvent: false });
-      this.filterChange.emit(updatedFormValue);
-      if (this.formlyUpdateComunicationService) {
-        this.formlyUpdateComunicationService.updateFilter(updatedFormValue);
-      }
+      this.form.getRawValue(),
+      updatedFormValue
+    );
+    this.form.setValue(updatedValue, { emitEvent: false });
+    this.filterChange.emit(updatedFormValue);
+    if (this.formlyUpdateComunicationService) {
+      this.formlyUpdateComunicationService.updateFilter(updatedFormValue);
+    }
   }
 
   ngOnInit(): void {
-      const queryString = window.location.search;
-      const urlParams = new URLSearchParams(queryString);
-      const initialRef = urlParams.get('ref');
-      if (initialRef) {
-        const updatedFormValue = JSON.parse(localStorage.getItem(initialRef));
-        setTimeout(() => {
-          this.model = {...this.model, ...updatedFormValue}
-        },0);
-      } else {
-       this.clearStorage();
-      }
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const initialRef = urlParams.get('ref');
+    if (initialRef) {
+      const updatedFormValue = JSON.parse(localStorage.getItem(initialRef));
+      setTimeout(() => {
+        this.model = { ...this.model, ...updatedFormValue }
+      }, 0);
+    } else {
+      this.clearStorage();
+    }
 
     this.modelChange.subscribe((change) => {
-       const updatedValue = this.overwrite(this.form.getRawValue(), change);
       window.clearTimeout(this.timeoutNumber);
       this.timeoutNumber = window.setTimeout(() => {
         this.filterChange.emit(change);
@@ -161,18 +160,18 @@ export class SdsFiltersComponent implements OnInit {
 
   addToStorageList(hashCode) {
     const list = JSON.parse(localStorage.getItem('storageList'));
-    this.storageList = (list && list.length>0) ? list: this.storageList
+    this.storageList = (list && list.length > 0) ? list : this.storageList
     this.storageList.push(hashCode);
     localStorage.setItem('storageList', JSON.stringify(this.storageList));
   }
   clearStorage() {
     const list = JSON.parse(localStorage.getItem('storageList'));
-    if(list && list.length>0){
+    if (list && list.length > 0) {
       const unique = list.filter((item, i, ar) => ar.indexOf(item) === i);
       unique.forEach(item => {
         localStorage.removeItem(item);
       });
     }
-  
+
   }
 }
