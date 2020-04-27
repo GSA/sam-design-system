@@ -32,7 +32,7 @@ export class FilterWrapperComponent implements OnInit {
 
   fields: FormlyFieldConfig[] = [
     {
-      key: 'searchKeyword',
+      key: 'filter.searchKeyword',
       wrappers: ['filterwrapper'],
       templateOptions: {
         label: 'Keyword (with label)',
@@ -50,7 +50,7 @@ export class FilterWrapperComponent implements OnInit {
     },
 
     {
-      key: 'searchEntity',
+      key: 'filter.searchEntity',
       wrappers: ['accordionwrapper'],
       templateOptions: {
         label: 'Entity',
@@ -85,7 +85,7 @@ export class FilterWrapperComponent implements OnInit {
     },
 
     {
-      key: 'entityStatus',
+      key: 'filter.entityStatus',
       wrappers: ['accordionwrapper'],
 
       templateOptions: {
@@ -121,7 +121,7 @@ export class FilterWrapperComponent implements OnInit {
       ]
     },
     {
-      key: 'expirationDate',
+      key: 'filter.expirationDate',
       wrappers: ['accordionwrapper'],
       templateOptions: { label: 'Expiration Date' },
       fieldGroup: [
@@ -182,7 +182,7 @@ export class FilterWrapperComponent implements OnInit {
       ]
     },
     {
-      key: 'entityType',
+      key: 'filter.entityType',
       wrappers: ['filterwrapper'],
       templateOptions: { label: 'Entity Types' },
       fieldGroup: [
@@ -205,6 +205,9 @@ export class FilterWrapperComponent implements OnInit {
     
       ]
     },
+
+
+    
   ];
   public ngOnInit() {
     this.filterChange$.subscribe(

@@ -36,8 +36,8 @@ export class FormlyInputComponent implements OnInit {
   fields: FormlyFieldConfig[] = [
 
     {
-      key: 'filters',
-      wrappers: ['filterwrapper'],
+      key: 'filter.autocomplete',
+      wrappers: ['accordionwrapper'],
       templateOptions: { label: 'Keyword' },
       fieldGroup: [{
         key: 'firstName',
@@ -54,51 +54,179 @@ export class FormlyInputComponent implements OnInit {
       }]
     },
     {
-      key: 'filters',
+      key: 'filter.searchKeyword',
+      wrappers: ['filterwrapper'],
+      templateOptions: {
+        label: 'Keyword (with label)',
+        ariaHidden: true
+      },
+      fieldGroup: [{
+        key: 'keyword',
+        type: 'input',
+        templateOptions: {
+          type: 'text',
+          label: 'Keyword'
+        },
+
+      }]
+    },
+
+    {
+      key: 'filter.searchEntity',
       wrappers: ['accordionwrapper'],
-      templateOptions: { label: 'Search' },
+      templateOptions: {
+        label: 'Entity',
+        expand: false,
+      },
       fieldGroup: [
         {
-          key: 'level2',
-          type: 'autocomplete',
+          key: 'uniqueEntityIdSam',
+          type: 'input',
           templateOptions: {
-            label: 'Auto Complete with single',
-            service: this.service,
-            configuration: this.autoCompleteSingleSelectSettings,
-            model: this.autoCompleteSingleSelectModel,
-            modelChange: this.changes
+            tagText: 'DUNS',
+            tagClass: 'sds-tag--info-purple',
+            label: 'Unique Entity ID',
+            placeholder: '',
+            min: 13,
+            max: 40,
+            inputType: 'number',
+            inputStyle: 'error',
           },
         },
-     
-
         {
-          key: 'level2',
-          type: 'autocomplete',
+          key: 'legalBusinessName',
+          type: 'input',
           templateOptions: {
-            label: 'Auto Complete with multiselect',
-            service: this.service,
-            configuration: this.autoCompleteMultiSelectSettings,
-            model: this.autoCompleteMultiSelectModel,
-            modelChange: this.changes
+            tagText: 'SAM',
+            label: 'Unique Entity ID',
+            placeholder: '',
+            inputType: 'text',
           },
         },
+      ],
+    },
 
+    {
+      key: 'filter.entityStatus',
+      wrappers: ['accordionwrapper'],
+
+      templateOptions: {
+        label: 'Entity Status',
+        expand: true,
+      },
+      fieldGroup: [
         {
-          key: 'level3',
-          type: 'autocomplete',
+          key: 'statusCheckbox',
+          type: 'multicheckbox',
           templateOptions: {
-            label: 'Auto Complete with disable with pre populated value',
-            service: this.service,
-            configuration: this.autoCompleteDisableSettings,
-            model: this.autoCompleteDisableModel,
-            modelChange: this.changes,
-            disabled: true
-
-           
+            label: 'Status Select',
+            options: [
+              {
+                key: 'Active',
+                value: 'Active'
+              },
+              {
+                key: 'Draft',
+                value: 'Draft'
+              },
+              {
+                key: 'Expired',
+                value: 'Expired'
+              },
+              {
+                key: 'InProgress',
+                value: 'In Progress'
+              }
+            ]
           },
-        }
+        },
       ]
-    }
+    },
+    {
+      key: 'filter.expirationDate',
+      wrappers: ['accordionwrapper'],
+      templateOptions: { label: 'Expiration Date' },
+      fieldGroup: [
+        {
+          key: 'expirationDateOpen',
+          type: 'datepicker',
+          templateOptions: {
+            label: 'Expiration Date (no validation)',
+          }
+        },
+        {
+          key: 'expirationDateMin',
+          type: 'datepicker',
+          templateOptions: {
+            label: 'Expiration Date (Min only Validation)',
+            minDate: new Date(2019, 9, 5)
+          }
+        },
+        {
+          key: 'expirationDatemax',
+          type: 'datepicker',
+          templateOptions: {
+            label: 'Expiration Date (Max only Validation)',
+            maxDate: new Date(2019, 9, 25)
+          }
+        },
+        {
+          key: 'expirationDateboth',
+          type: 'datepicker',
+          templateOptions: {
+            label: 'Expiration Date (Min and Max Validation)',
+            minDate: new Date(2019, 9, 5),
+            maxDate: new Date(2019, 9, 25)
+          }
+        },
+        {
+          key: 'expirationDateRangeEx',
+          type: 'daterangepicker',
+          templateOptions: {
+            label: 'Expiration Date Range',
+            minDate: new Date(2019, 9, 5),
+            maxDate: new Date(2019, 9, 25)
+          }
+        },
+        {
+          key: 'expirationDateOption',
+          type: 'radio',
+          templateOptions: {
+            label: 'Expiration Date',
+            options: [
+              { label: '30 Days', value: '30' },
+              { label: '60 Days', value: '60' },
+              { label: '90 Days', value: '90' },
+
+            ]
+          },
+        },
+      ]
+    },
+    {
+      key: 'filter.entityType',
+      wrappers: ['filterwrapper'],
+      templateOptions: { label: 'Entity Types' },
+      fieldGroup: [
+        {
+          key: 'entityType',
+          type: 'select',
+          templateOptions: {
+            label: 'Type',
+            multiple: false,
+            options: [
+              { label: 'Contract Opportunities', value: 'co' },
+              { label: 'Entity Information', value: 'ei' },
+              { label: 'Assitance Listings', value: 'al' },
+              { label: 'Contract Data', value: 'cd' },
+              { label: 'Federal Heirarchy', value: 'fh' },
+              { label: 'Wage Determination', value: 'wd' },
+            ],
+          },
+        },
+    
+      ]
+    },
   ];
 
 
