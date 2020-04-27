@@ -32,7 +32,7 @@ export class FilterWrapperComponent implements OnInit {
 
   fields: FormlyFieldConfig[] = [
     {
-      key: 'searchKeyword',
+      key: 'filter.searchKeyword',
       wrappers: ['filterwrapper'],
       templateOptions: {
         label: 'Keyword (with label)',
@@ -50,7 +50,7 @@ export class FilterWrapperComponent implements OnInit {
     },
 
     {
-      key: 'searchEntity',
+      key: 'filter.searchEntity',
       wrappers: ['accordionwrapper'],
       templateOptions: {
         label: 'Entity',
@@ -85,27 +85,7 @@ export class FilterWrapperComponent implements OnInit {
     },
 
     {
-      key: 'keyword',
-      wrappers: ['filterwrapper'],
-      templateOptions: {
-        label: 'Search Keyword (without label)',
-        ariaHidden: true
-      },
-      fieldGroup: [
-        {
-          key: 'keyword',
-          type: 'input',
-          templateOptions: {
-            type: 'text',
-            label: 'test Keyword',
-            labelClass: 'usa-sr-only'
-          },
-
-        }]
-    },
-
-    {
-      key: 'entityStatus',
+      key: 'filter.entityStatus',
       wrappers: ['accordionwrapper'],
 
       templateOptions: {
@@ -138,19 +118,10 @@ export class FilterWrapperComponent implements OnInit {
             ]
           },
         },
-        {
-          key: 'entityName',
-          type: 'input',
-          templateOptions: {
-            label: 'Entity Name',
-            placeholder: '',
-            inputType: 'text',
-          },
-        },
       ]
     },
     {
-      key: 'expirationDate',
+      key: 'filter.expirationDate',
       wrappers: ['accordionwrapper'],
       templateOptions: { label: 'Expiration Date' },
       fieldGroup: [
@@ -208,35 +179,10 @@ export class FilterWrapperComponent implements OnInit {
             ]
           },
         },
-        {
-          key: 'entityCheckbox',
-          type: 'multicheckbox',
-          templateOptions: {
-            label: 'Entity Status',
-            options: [
-              {
-                key: 'Active',
-                value: 'Active'
-              },
-              {
-                key: 'Draft',
-                value: 'Draft'
-              },
-              {
-                key: 'Expired',
-                value: 'Expired'
-              },
-              {
-                key: 'InProgress',
-                value: 'In Progress'
-              }
-            ]
-          },
-        },
       ]
     },
     {
-      key: 'entityType',
+      key: 'filter.entityType',
       wrappers: ['filterwrapper'],
       templateOptions: { label: 'Entity Types' },
       fieldGroup: [
@@ -256,33 +202,12 @@ export class FilterWrapperComponent implements OnInit {
             ],
           },
         },
-        {
-          key: 'entityCheckbox',
-          type: 'multicheckbox',
-          templateOptions: {
-            label: 'Entity Status',
-            options: [
-              {
-                key: 'Active',
-                value: 'Active'
-              },
-              {
-                key: 'Draft',
-                value: 'Draft'
-              },
-              {
-                key: 'Expired',
-                value: 'Expired'
-              },
-              {
-                key: 'InProgress',
-                value: 'In Progress'
-              }
-            ]
-          },
-        },
+    
       ]
     },
+
+
+    
   ];
   public ngOnInit() {
     this.filterChange$.subscribe(

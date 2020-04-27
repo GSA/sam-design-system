@@ -4,11 +4,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormlyInputComponent } from './formly-input.component';
 import { FormlyModule } from '@ngx-formly/core';
 import { SdsFiltersModule } from '@gsa-sam/sam-formly';
+import { SdsAccordionModule } from '@gsa-sam/components';
 @NgModule({
     declarations: [FormlyInputComponent],
     imports: [
         CommonModule,
         FormsModule,
+        SdsAccordionModule,
         SdsFiltersModule,
         FormlyModule.forRoot(),
         ReactiveFormsModule
