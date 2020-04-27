@@ -14,7 +14,13 @@ import { SampleAutocompleteData } from './services/autocomplete-sample.data';
 export class FormlyInputComponent implements OnInit {
   results: any;
   form = new FormGroup({});
-  model = {};
+  model = {
+    filter :{
+      searchKeyword :{
+        keyword : 10
+      }
+    }
+  };
   options: FormlyFormOptions = {};
   public settings = new SDSAutocompletelConfiguration();
   public autocompleteModel = new SDSSelectedItemModel();

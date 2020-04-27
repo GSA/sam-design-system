@@ -69,21 +69,21 @@ export class SdsFiltersComponent implements OnInit {
 
   private timeoutNumber: number;
 
-  storageList = [];
-
+  private storageList = [];
+  private isInitialModel: boolean = false;
   // routeTrigger = '';
-  _isObj = (obj: any): boolean => typeof obj === 'object' && obj !== null;
-  _isEmpty = (obj: any): boolean => Object.keys(obj).length === 0;
-  nullify = (obj: any) => {
-    for (let key in obj) {
-      if (this._isObj(obj[key])) {
-        obj[key] = this.nullify(obj[key]);
-      } else {
-        obj[key] = null;
-      }
-    }
-    return obj;
-  };
+  // _isObj = (obj: any): boolean => typeof obj === 'object' && obj !== null;
+  // _isEmpty = (obj: any): boolean => Object.keys(obj).length === 0;
+  // nullify = (obj: any) => {
+  //   for (let key in obj) {
+  //     if (this._isObj(obj[key])) {
+  //       obj[key] = this.nullify(obj[key]);
+  //     } else {
+  //       obj[key] = null;
+  //     }
+  //   }
+  //   return obj;
+  // };
 
   constructor(
     @Optional()
@@ -91,9 +91,7 @@ export class SdsFiltersComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private router: Router,
     private route: ActivatedRoute
-  ) { 
-    //localStorage.clear();
-  }
+  ) {}
 
   @HostListener('window:popstate', ['$event'])
   onpopstate(event) {
@@ -102,14 +100,14 @@ export class SdsFiltersComponent implements OnInit {
     const ref = urlParams.get('ref');
     if (ref) {
       const updatedFormValue = JSON.parse(localStorage.getItem(ref));
-      this.updateForm(updatedFormValue)
+      this.form.patchValue(updatedFormValue, { emitEvent: false });
       this.filterChange.emit(updatedFormValue);
       if (this.formlyUpdateComunicationService) {
         this.formlyUpdateComunicationService.updateFilter(updatedFormValue);
       }
     } else {
-      this.model = {};
-      
+      this.options.resetModel();
+      this.isInitialModel = true;
       this.filterChange.emit(this.model);
       if (this.formlyUpdateComunicationService) {
         this.formlyUpdateComunicationService.updateFilter(this.model);
@@ -117,45 +115,42 @@ export class SdsFiltersComponent implements OnInit {
     }
   }
 
-  updateForm(updatedFormValue) {
-    this.form.setValue({ ...this.model, ...updatedFormValue });
-   // this.form.setValue(updatedFormValue, { emitEvent: false });
-    // if (window.location.pathname.includes('formlyInput')) {
-    //   this.form.patchValue(updatedFormValue, { emitEvent: false });
-    // } else {
-    //   this.form.setValue(updatedFormValue, { emitEvent: false });
-    // }
-  }
   ngOnInit(): void {
-      const queryString = window.location.search;
-      const urlParams = new URLSearchParams(queryString);
-      const initialRef = urlParams.get('ref');
-      if (initialRef) {
-        const updatedFormValue = JSON.parse(localStorage.getItem(initialRef));
-        setTimeout(() => {
-          this.model = {...this.model, ...updatedFormValue}
-        },0);
-      } else {
-       this.clearStorage();
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const initialRef = urlParams.get('ref');
+    if (initialRef) {
+      const updatedFormValue = JSON.parse(localStorage.getItem(initialRef));
+      if(updatedFormValue) {
+      setTimeout(() => {
+        this.model = { ...this.model, ...updatedFormValue }
+      }, 0); } else {
+        console.log(updatedFormValue, 'empty storage')
       }
+    } else {
+      this.clearStorage();
+    }
 
     this.modelChange.subscribe((change) => {
-      window.clearTimeout(this.timeoutNumber);
-      this.timeoutNumber = window.setTimeout(() => {
-        this.filterChange.emit(change);
-        const md5 = new Md5();
-        const hashCode = md5.appendStr(qs.stringify(change)).end();
-        this.router.navigate([], {
-          relativeTo: this.route,
-          queryParams: { ref: hashCode },
-          queryParamsHandling: 'merge'
-        });
-        this.addToStorageList(hashCode)
-        localStorage.setItem(hashCode.toString(), JSON.stringify(change));
-        if (this.formlyUpdateComunicationService) {
-          this.formlyUpdateComunicationService.updateFilter(change);
-        }
-      }, 150);
+      if (!this.isInitialModel) {
+        window.clearTimeout(this.timeoutNumber);
+        this.timeoutNumber = window.setTimeout(() => {
+          this.filterChange.emit(change);
+          const md5 = new Md5();
+          const hashCode = md5.appendStr(qs.stringify(change)).end();
+          this.router.navigate([], {
+            relativeTo: this.route,
+            queryParams: { ref: hashCode },
+            queryParamsHandling: 'merge'
+          });
+          this.addToStorageList(hashCode)
+          localStorage.setItem(hashCode.toString(), JSON.stringify(change));
+          if (this.formlyUpdateComunicationService) {
+            this.formlyUpdateComunicationService.updateFilter(change);
+          }
+        }, 150);
+      }
+      this.isInitialModel = false;
     })
   }
 
@@ -165,12 +160,12 @@ export class SdsFiltersComponent implements OnInit {
   }
   clearStorage() {
     const list = JSON.parse(localStorage.getItem('storageList'));
-    if(list.length > 0 ){
+    if (list.length > 0) {
       const unique = list.filter((item, i, ar) => ar.indexOf(item) === i);
       unique.forEach(item => {
         localStorage.removeItem(item);
       });
     }
-  
+
   }
 }
