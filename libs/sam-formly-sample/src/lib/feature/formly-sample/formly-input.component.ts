@@ -6,7 +6,6 @@ import { AutocompleteSampleDataService } from './services/autocomplete-sample.se
 import { SDSAutocompletelConfiguration, SDSSelectedItemModel, SelectionMode } from '@gsa-sam/components';
 import { SampleAutocompleteData } from './services/autocomplete-sample.data';
 
-
 @Component({
   selector: 'sds-formly-input',
   templateUrl: './formly-input.component.html',
@@ -19,16 +18,6 @@ export class FormlyInputComponent implements OnInit {
   options: FormlyFormOptions = {};
   public settings = new SDSAutocompletelConfiguration();
   public autocompleteModel = new SDSSelectedItemModel();
-
-  public autoCompleteSingleSelectModel= new SDSSelectedItemModel();
-  public autoCompleteSingleSelectSettings = new SDSAutocompletelConfiguration();
-
-  public autoCompleteMultiSelectSettings = new SDSAutocompletelConfiguration();
-  public autoCompleteMultiSelectModel = new SDSSelectedItemModel();
-
-  public autoCompleteDisableSettings = new SDSAutocompletelConfiguration();
-  public autoCompleteDisableModel = new SDSSelectedItemModel();
-
 
   private data = SampleAutocompleteData;
   
@@ -247,35 +236,6 @@ export class FormlyInputComponent implements OnInit {
     this.settings.selectionMode = SelectionMode.MULTIPLE;
     this.settings.autocompletePlaceHolderText = 'Enter text';
     this.settings.debounceTime = 350;
-
-
-    this.autoCompleteSingleSelectSettings.id = 'autocomplete1';
-    this.autoCompleteSingleSelectSettings.primaryKeyField = 'id';
-    this.autoCompleteSingleSelectSettings.primaryTextField = 'name';
-    this.autoCompleteSingleSelectSettings.secondaryTextField = 'subtext';
-    this.autoCompleteSingleSelectSettings.labelText = 'Autocomplete 1';
-    this.autoCompleteSingleSelectSettings.selectionMode = SelectionMode.SINGLE;
-    this.autoCompleteSingleSelectSettings.autocompletePlaceHolderText = 'Enter text';
-  
-    this.autoCompleteMultiSelectSettings.id = 'autocomplete1';
-    this.autoCompleteMultiSelectSettings.primaryKeyField = 'id';
-    this.autoCompleteMultiSelectSettings.primaryTextField = 'name';
-    this.autoCompleteMultiSelectSettings.secondaryTextField = 'subtext';
-    this.autoCompleteMultiSelectSettings.labelText = 'Autocomplete 1';
-    this.autoCompleteMultiSelectSettings.selectionMode = SelectionMode.MULTIPLE;
-    this.autoCompleteMultiSelectSettings.autocompletePlaceHolderText = 'Enter text';
-  
-
-    this.autoCompleteDisableSettings.id = 'autocomplete1';
-    this.autoCompleteDisableSettings.primaryKeyField = 'id';
-    this.autoCompleteDisableSettings.primaryTextField = 'name';
-    this.autoCompleteDisableSettings.secondaryTextField = 'subtext';
-    this.autoCompleteDisableSettings.labelText = 'Autocomplete 1';
-    this.autoCompleteDisableSettings.selectionMode = SelectionMode.MULTIPLE;
-    this.autoCompleteDisableSettings.autocompletePlaceHolderText = 'Enter text';
-    this.autoCompleteDisableSettings.debounceTime = 0;
-
-    this.autoCompleteDisableModel.items.push(this.head(this.data))
   }
 
    head(array) {
