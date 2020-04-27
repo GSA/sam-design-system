@@ -85,26 +85,6 @@ export class FilterWrapperComponent implements OnInit {
     },
 
     {
-      key: 'keyword',
-      wrappers: ['filterwrapper'],
-      templateOptions: {
-        label: 'Search Keyword (without label)',
-        ariaHidden: true
-      },
-      fieldGroup: [
-        {
-          key: 'keyword',
-          type: 'input',
-          templateOptions: {
-            type: 'text',
-            label: 'test Keyword',
-            labelClass: 'usa-sr-only'
-          },
-
-        }]
-    },
-
-    {
       key: 'entityStatus',
       wrappers: ['accordionwrapper'],
 
@@ -136,15 +116,6 @@ export class FilterWrapperComponent implements OnInit {
                 value: 'In Progress'
               }
             ]
-          },
-        },
-        {
-          key: 'entityName',
-          type: 'input',
-          templateOptions: {
-            label: 'Entity Name',
-            placeholder: '',
-            inputType: 'text',
           },
         },
       ]
@@ -208,31 +179,6 @@ export class FilterWrapperComponent implements OnInit {
             ]
           },
         },
-        {
-          key: 'entityCheckbox',
-          type: 'multicheckbox',
-          templateOptions: {
-            label: 'Entity Status',
-            options: [
-              {
-                key: 'Active',
-                value: 'Active'
-              },
-              {
-                key: 'Draft',
-                value: 'Draft'
-              },
-              {
-                key: 'Expired',
-                value: 'Expired'
-              },
-              {
-                key: 'InProgress',
-                value: 'In Progress'
-              }
-            ]
-          },
-        },
       ]
     },
     {
@@ -256,31 +202,7 @@ export class FilterWrapperComponent implements OnInit {
             ],
           },
         },
-        {
-          key: 'entityCheckbox',
-          type: 'multicheckbox',
-          templateOptions: {
-            label: 'Entity Status',
-            options: [
-              {
-                key: 'Active',
-                value: 'Active'
-              },
-              {
-                key: 'Draft',
-                value: 'Draft'
-              },
-              {
-                key: 'Expired',
-                value: 'Expired'
-              },
-              {
-                key: 'InProgress',
-                value: 'In Progress'
-              }
-            ]
-          },
-        },
+    
       ]
     },
   ];
