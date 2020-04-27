@@ -109,6 +109,7 @@ export class SdsFiltersComponent implements OnInit {
       }
     } else {
       this.model = {};
+      
       this.filterChange.emit(this.model);
       if (this.formlyUpdateComunicationService) {
         this.formlyUpdateComunicationService.updateFilter(this.model);
@@ -117,11 +118,13 @@ export class SdsFiltersComponent implements OnInit {
   }
 
   updateForm(updatedFormValue) {
-    if (window.location.pathname.includes('formlyInput')) {
-      this.form.patchValue(updatedFormValue, { emitEvent: false });
-    } else {
-      this.form.setValue(updatedFormValue, { emitEvent: false });
-    }
+    this.form.setValue({ ...this.model, ...updatedFormValue });
+   // this.form.setValue(updatedFormValue, { emitEvent: false });
+    // if (window.location.pathname.includes('formlyInput')) {
+    //   this.form.patchValue(updatedFormValue, { emitEvent: false });
+    // } else {
+    //   this.form.setValue(updatedFormValue, { emitEvent: false });
+    // }
   }
   ngOnInit(): void {
       const queryString = window.location.search;
@@ -162,9 +165,12 @@ export class SdsFiltersComponent implements OnInit {
   }
   clearStorage() {
     const list = JSON.parse(localStorage.getItem('storageList'));
-    const unique = list.filter((item, i, ar) => ar.indexOf(item) === i);
-    unique.forEach(item => {
-      localStorage.removeItem(item);
-    });
+    if(list.length > 0 ){
+      const unique = list.filter((item, i, ar) => ar.indexOf(item) === i);
+      unique.forEach(item => {
+        localStorage.removeItem(item);
+      });
+    }
+  
   }
 }
