@@ -33,3 +33,4 @@ export * from './popup/popup.module';
 export * from './collapse/collapse.module';
 export * from './text/text.component';
 export * from './text/text.module';
+export * from './search/search.component';

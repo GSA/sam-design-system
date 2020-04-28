@@ -19,6 +19,15 @@ export class TextBasic {
         placeholder: 'Acme Corporation',
         description: 'Enter the name of your entity.'
       }
+    },
+    {
+      key: 'title',
+      type: 'search',
+      templateOptions: {
+        label: 'Entity Name',
+        placeholder: 'Acme Corporation',
+        description: 'Enter the name of your entity.'
+      }
     }
   ];
 

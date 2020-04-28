@@ -31,6 +31,7 @@ export const FIELD_TYPE_COMPONENTS = [
   FormlyFieldTextComponent
 ];
 import { maxDateValidator, minDateValidator } from './formly.validators';
+import { FormlyFieldSearchComponent } from './types/search';
 
 
 export const FORMLY_WRAPPERS: any = [
@@ -125,7 +126,13 @@ export const FORMLY_CONFIG: ConfigOption = {
           }
         ]
       }
-    }
+    },
+    {
+      name: 'search',
+      component: FormlyFieldSearchComponent,
+      wrappers: ['form-field']
+    },
+
   ],
   wrappers: [
     { name: 'form-field', component: FormlyWrapperFormFieldComponent },
