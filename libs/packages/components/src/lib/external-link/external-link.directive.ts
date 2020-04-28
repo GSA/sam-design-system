@@ -47,9 +47,9 @@ export class ExternalLinkDirective
     component.instance.iconProp =  ['fas','external-link-alt'];
     const spanElement = document.createElement('span');
     spanElement.classList.add('margin-left-2px');
-    // const supElement = document.createElement('sup');
-    spanElement.appendChild(component.location.nativeElement);
-   // supElement.appendChild(supElement);
+    const supElement = document.createElement('sup');
+    supElement.appendChild(component.location.nativeElement);
+    spanElement.appendChild(supElement);
     this.el.nativeElement.appendChild(spanElement);
     component.instance.ngOnChanges({});
   }
