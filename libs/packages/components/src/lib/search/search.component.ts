@@ -37,7 +37,7 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
   @Input() parentSelector: string;
   @Input() isBigSearch : boolean =false;
 
-  model = {};
+  model:any ={};
   inputState = {
     initial: { visible: undefined },
     visible: undefined
