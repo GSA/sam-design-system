@@ -1,19 +1,24 @@
-<div class="grid-col padding-2">
-<h4>SDS Search</h4>
-<sds-search
-  [(ngModel)]="model"
-  [searchSettings]="searchSettings"
-  placeholder="Entity an entity ID, name, or keyword"
-></sds-search>
-</div>
-{{model |json}}
-<div class="grid-col padding-2">
-<h4>SDS Search Big</h4>
-<sds-search
-  [(ngModel)]="bigmodel"
-  [searchSettings]="bigSearchSettings"
-  placeholder="Entity an entity ID, name, or keyword"
-></sds-search>
+<div class="grid-row">
+  <div class="grid-col padding-2">
+    <h4>SDS Search</h4>
+    <sds-search [(ngModel)]="model" [searchSettings]="searchSettings" placeholder="Entity an entity ID, name, or keyword"></sds-search>
+
+    <h4>SDS Dropdown + Search Example</h4>
+    <sds-search [(ngModel)]="ddmodel" [searchSettings]="ddSearchSettings" placeholder="Entity an entity ID, name, or keyword"></sds-search>
+
+    <h4>SDS Inverse Dropdown + Search Example</h4>
+    <sds-search [(ngModel)]="invddmodel" [searchSettings]="invDDSearchSettings" placeholder="Entity an entity ID, name, or keyword"></sds-search>
+  </div>
+
+  <div class="grid-col padding-2">
+    <h4>SDS Search Big</h4>
+    <sds-search [(ngModel)]="bigmodel" [searchSettings]="bigSearchSettings" placeholder="Entity an entity ID, name, or keyword"></sds-search>
+
+    <h4>SDS Dropdown + Search Example</h4>
+    <sds-search [(ngModel)]="bigddmodel" [searchSettings]="bigddSearchSettings" placeholder="Entity an entity ID, name, or keyword"></sds-search>
+
+    <h4>SDS Inverse Dropdown + Search Example</h4>
+    <sds-search [(ngModel)]="biginvddmodel" [searchSettings]="biginvDDSearchSettings" placeholder="Entity an entity ID, name, or keyword"></sds-search>
+  </div>
 
 </div>
-{{bigmodel |json}}

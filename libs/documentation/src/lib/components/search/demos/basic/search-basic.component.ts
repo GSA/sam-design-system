@@ -4,11 +4,17 @@ import { Component } from '@angular/core';
   templateUrl: './search-basic.component.html'
 })
 export class SearchBasic {
-  model = {
-   searchText :'test',
-  // searchCategory: '2'
-  };
+  model = {};
+  ddmodel ={};
+  invddmodel ={}
+
+  bigmodel={}
+  bigddmodel ={};
+  biginvddmodel ={}
   searchSettings = {
+    textPlaceholder: 'type here',
+  }
+  ddSearchSettings ={
     dropDownPlaceholder: 'Select',
     textPlaceholder: 'type here',
     options : [
@@ -16,19 +22,44 @@ export class SearchBasic {
       {'value': '2', 'label' : 'Two'},
       {'value': '3', 'label' : 'Three'}
     ],
-   isDropDown: true,
-   isInverse: true
+    isDropDown : true
   }
 
-  bigSearchSettings = {
-    placeholder: 'select',
+  invDDSearchSettings ={
+    dropDownPlaceholder: 'Select',
+    textPlaceholder: 'type here',
     options : [
       {'value': '1', 'label' : 'One'},
       {'value': '2', 'label' : 'Two'},
       {'value': '3', 'label' : 'Three'}
     ],
+    isInverse : true
+  }
+
+  bigSearchSettings = {
+  isBigSearch: true,
+  }
+  bigddSearchSettings ={
+    dropDownPlaceholder: 'Select',
+    textPlaceholder: 'type here',
+    options : [
+      {'value': '1', 'label' : 'One'},
+      {'value': '2', 'label' : 'Two'},
+      {'value': '3', 'label' : 'Three'}
+    ],
+    isDropDown : true,
     isBigSearch: true,
   }
-  bigmodel:any;
 
+  biginvDDSearchSettings ={
+    dropDownPlaceholder: 'Select',
+    textPlaceholder: 'type here',
+    options : [
+      {'value': '1', 'label' : 'One'},
+      {'value': '2', 'label' : 'Two'},
+      {'value': '3', 'label' : 'Three'}
+    ],
+    isInverse : true,
+    isBigSearch: true,
+  }
 }

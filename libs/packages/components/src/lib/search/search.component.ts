@@ -14,7 +14,14 @@ import {
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { ViewportRuler } from '@angular/cdk/overlay';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-
+ export interface SearchSettings {
+  dropDownPlaceholder: String,
+  textPlaceholder: string,
+  options : any[],
+  isInverse : boolean ,
+  isBigSearch: boolean,
+  isDropDown: boolean
+ }
 @Component({
   selector: 'sds-search',
   templateUrl: 'search.component.html',
@@ -33,10 +40,10 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
   @ViewChild('selectEl', { read: ElementRef }) selectEl: ElementRef;
   @ViewChild('buttonEl', { read: ElementRef }) buttonEl: ElementRef;
 
-  @Input() placeholder: string;
+
   @Input() inputClass: string;
   @Input() parentSelector: string;
-  @Input() searchSettings: any = {};
+  @Input() searchSettings: SearchSettings;
 
   model: any = {};
   inputState = {
@@ -75,9 +82,7 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
   }
 
   writeValue(value: any) {
-
     if (value && this.model !== value) {
-      console.log(value, 'val')
       this.model = value;
       this.cd.markForCheck();
     } else {

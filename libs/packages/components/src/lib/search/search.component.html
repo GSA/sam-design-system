@@ -1,7 +1,7 @@
 <div [ngClass]="searchSettings.isBigSearch? 'sds-search--big': 'sds-search'">
     <form class="usa-search usa-search--small">
         <label class="usa-sr-only" for="search-options">Select Here</label>
-        <select *ngIf="searchSettings.isDropDown" [value]="model.searchCategory? model.searchCategory :''" #selectEl
+        <select *ngIf="(searchSettings.isDropDown|| searchSettings.isInverse)" [value]="model.searchCategory? model.searchCategory :''" #selectEl
         [ngClass]="searchSettings.isInverse? 'usa-select--inverse': 'usa-select'" name="search options" id="search-options">
             <option [value]=""> {{searchSettings.dropDownPlaceholder ? searchSettings.dropDownPlaceholder : 'Select'}}</option>
             <ng-container *ngFor="let item of searchSettings.options">
