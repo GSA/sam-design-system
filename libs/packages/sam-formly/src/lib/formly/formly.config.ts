@@ -28,7 +28,8 @@ export const FIELD_TYPE_COMPONENTS = [
   FormlyFieldDatePickerComponent,
   FormlyFormFieldFilterWrapperComponent,
   FormlyFieldButtonComponent,
-  FormlyFieldTextComponent
+  FormlyFieldTextComponent,
+  FormlyFieldSearchComponent
 ];
 import { maxDateValidator, minDateValidator } from './formly.validators';
 import { FormlyFieldSearchComponent } from './types/search';

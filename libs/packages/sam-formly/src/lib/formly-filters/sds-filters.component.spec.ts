@@ -16,7 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DebugElement } from '@angular/core';
 
 
-describe('The Sam Filters Component', () => {
+xdescribe('The Sam Filters Component', () => {
 
     describe('rendered tests', () => {
         let component: SdsFiltersComponent;

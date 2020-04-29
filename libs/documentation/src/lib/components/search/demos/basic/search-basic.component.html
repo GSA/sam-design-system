@@ -1,4 +1,6 @@
 <sds-search
-  (term)="log($event)"
+  [(ngModel)]="model"
   placeholder="Entity an entity ID, name, or keyword"
 ></sds-search>
+
+{{model |json}}

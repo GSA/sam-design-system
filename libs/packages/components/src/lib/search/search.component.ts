@@ -5,34 +5,49 @@ import {
   Output,
   EventEmitter,
   Input,
-  AfterViewInit
+  AfterViewInit,
+  forwardRef,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef
 } from '@angular/core';
 
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { ViewportRuler } from '@angular/cdk/overlay';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 @Component({
   selector: 'sds-search',
-  templateUrl: 'search.component.html'
+  templateUrl: 'search.component.html',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => SdsSearchComponent),
+      multi: true
+    }
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
+
 })
-export class SdsSearchComponent implements AfterViewInit {
+export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
   @ViewChild('inputEl', { read: ElementRef }) inputEl: ElementRef;
   @ViewChild('buttonEl', { read: ElementRef }) buttonEl: ElementRef;
 
   @Input() placeholder: string;
   @Input() inputClass: string;
   @Input() parentSelector: string;
-  @Output() term = new EventEmitter<string>();
 
+  model = {};
   inputState = {
     initial: { visible: undefined },
     visible: undefined
   };
+  private _onChange = (_: any) => { };
+  private _onTouched = () => { };
 
-  constructor(
+  constructor(private cd: ChangeDetectorRef,
     private focusMonitor: FocusMonitor,
     private viewportRuler: ViewportRuler
-  ) {}
+  ) { }
 
   ngAfterViewInit() {
     this.inputState.initial.visible = this.isInputVisible();
@@ -49,8 +64,27 @@ export class SdsSearchComponent implements AfterViewInit {
       this.setInputVisibleStyles();
       this.focusMonitor.focusVia(this.inputEl, 'program');
     } else if (this.inputEl.nativeElement.value) {
-      this.term.emit(this.inputEl.nativeElement.value);
+      this.model = { searchText: this.inputEl.nativeElement.value };
+      this._onChange(this.model);
     }
+  }
+
+  writeValue(value: any) {
+
+    if (value && this.model !== value) {
+      console.log(value, 'val')
+      this.model = value;
+      this.cd.markForCheck();
+    } else {
+      this.model = {};
+      this.cd.markForCheck();
+    }
+  }
+  registerOnTouched(fn: any) {
+    this._onTouched = fn;
+  }
+  registerOnChange(fn: any): void {
+    this._onChange = fn;
   }
 
   isInputVisible(): boolean {
