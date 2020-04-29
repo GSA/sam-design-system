@@ -1,12 +1,25 @@
-<div  [ngClass]="isBigSearch? 'sds-search--big': 'sds-search-small'">
-  <form class="usa-search usa-search--small">
-    <div role="search" cdkMonitorSubtreeFocus (cdkFocusChange)="focusChange($event)" class="search">
-      <label class="usa-sr-only" for="search-field"> Search </label>
-      <input #inputEl [value]="model.searchText? model.searchText :''" class="usa-input" [ngClass]="inputClass" id="search-field"
-        type="search" name="search" [placeholder]="placeholder" />
-      <button #buttonEl (click)="handleClick($event)" class="usa-button" type="submit">
-        <span class="usa-sr-only">Search</span>
-      </button>
-    </div>
-  </form>
+<div [ngClass]="searchSettings.isBigSearch? 'sds-search--big': 'sds-search'">
+    <form class="usa-search usa-search--small">
+        <label class="usa-sr-only" for="search-options">Select Here</label>
+        <select *ngIf="searchSettings.isDropDown" [value]="model.searchCategory? model.searchCategory :''" #selectEl
+        [ngClass]="searchSettings.isInverse? 'usa-select--inverse': 'usa-select'" name="search options" id="search-options">
+            <option [value]=""> {{searchSettings.dropDownPlaceholder ? searchSettings.dropDownPlaceholder : 'Select'}}</option>
+            <ng-container *ngFor="let item of searchSettings.options">
+              <optgroup *ngIf="item.group" label="{{item.label}}">
+                <option *ngFor="let child of item.group" [value]="child.value" [selected]="model.searchCategory == child.value" [disabled]="child.disabled">
+                  {{ child.label }}
+                </option>
+              </optgroup>
+              <option *ngIf="!item.group" [value]="item.value" [selected]="model.searchCategory == item.value" [disabled]="item.disabled">{{ item.label }}</option>
+            </ng-container>
+          </select>
+        <div role="search" class="search">
+            <label class="usa-sr-only" for="search-field"> Search </label>
+            <input #inputEl [value]="model.searchText? model.searchText :''" class="usa-input" [ngClass]="inputClass" id="search-field"
+           type="search" name="search" [placeholder]="searchSettings.textPlaceholder? searchSettings.textPlaceholder : 'type here'" />
+           <button #buttonEl (click)="handleClick($event)" class="usa-button" type="submit">
+              <span class="usa-sr-only">Search</span>
+            </button>
+        </div>
+    </form>
 </div>

@@ -30,14 +30,15 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 })
 export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
   @ViewChild('inputEl', { read: ElementRef }) inputEl: ElementRef;
+  @ViewChild('selectEl', { read: ElementRef }) selectEl: ElementRef;
   @ViewChild('buttonEl', { read: ElementRef }) buttonEl: ElementRef;
 
   @Input() placeholder: string;
   @Input() inputClass: string;
   @Input() parentSelector: string;
-  @Input() isBigSearch : boolean =false;
+  @Input() searchSettings: any = {};
 
-  model:any ={};
+  model: any = {};
   inputState = {
     initial: { visible: undefined },
     visible: undefined
@@ -65,7 +66,10 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
       this.setInputVisibleStyles();
       this.focusMonitor.focusVia(this.inputEl, 'program');
     } else if (this.inputEl.nativeElement.value) {
-      this.model = { searchText: this.inputEl.nativeElement.value };
+      this.model.searchText = this.inputEl.nativeElement.value;
+      if (this.searchSettings.isDropDown) {
+        this.model.searchCatergory = this.selectEl.nativeElement.value
+      }
       this._onChange(this.model);
     }
   }
