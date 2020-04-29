@@ -33,6 +33,7 @@ import { ROUTES as SELECT_ROUTES, SelectModule } from './components/formly/selec
 import { ROUTES as FORMLY_AUTOCOMPLETE_ROUTES, FormlyAutocompleteModule } from './components/formly/autocomplete/autocomplete.module';
 import { ROUTES as FORMLY_DATEPICKER_ROUTES, FormlyDatepickerModule } from './components/formly/datepicker/datepicker.module';
 import { ROUTES as TEXT_ROUTES, TextModule } from './components/text/text.module';
+import { ROUTES as SEARCH_FORMLY_ROUTES, FormlySearchModule } from './components/formly/search/search.module';
 
 /* Form Wrappers */
 import { ROUTES as FORM_FIELD_ROUTES, FormFieldModule } from './components/form-field/form-field.module';
@@ -79,6 +80,7 @@ export const ROUTES: Routes = [
   { path: 'components/formly-autocomplete', children: FORMLY_AUTOCOMPLETE_ROUTES },
   { path: 'components/formly-datepicker', children: FORMLY_DATEPICKER_ROUTES },
   { path: 'components/text', children: TEXT_ROUTES },
+  { path: 'components/search-formly', children: SEARCH_FORMLY_ROUTES },
 
   // Wrappers
   { path: 'components/form-field', children: FORM_FIELD_ROUTES },
@@ -117,6 +119,7 @@ export const ROUTES: Routes = [
     SelectModule,
     FormlyAutocompleteModule,
     FormlyDatepickerModule,
+    FormlySearchModule,
     TextModule,
     FormFieldModule,
     FilterWrapperModule,
