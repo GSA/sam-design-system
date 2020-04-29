@@ -17,7 +17,7 @@ import {  Component,
    @ViewChild(SdsSearchComponent) public template: SdsSearchComponent;
   
     constructor (_cdr: ChangeDetectorRef) {
-      super(); /* istanbul ignore next */
+      super();
       this.cdr = _cdr;
     }
    }
