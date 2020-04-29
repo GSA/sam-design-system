@@ -1,6 +1,18 @@
+<div class="grid-col padding-2">
+<h4>SDS Search</h4>
 <sds-search
   [(ngModel)]="model"
   placeholder="Entity an entity ID, name, or keyword"
 ></sds-search>
-
+</div>
 {{model |json}}
+<div class="grid-col padding-2">
+<h4>SDS Search Big</h4>
+<sds-search
+  [(ngModel)]="bigmodel"
+  [isBigSearch]="true"
+  placeholder="Entity an entity ID, name, or keyword"
+></sds-search>
+
+</div>
+{{bigmodel |json}}

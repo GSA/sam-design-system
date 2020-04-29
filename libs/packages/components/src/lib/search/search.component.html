@@ -1,28 +1,12 @@
-<form class="usa-search usa-search--small">
-  <div
-    role="search"
-    cdkMonitorSubtreeFocus
-    (cdkFocusChange)="focusChange($event)"
-  >
-    <label class="usa-sr-only" for="search-field-small"> Search </label>
-    <input
-      #inputEl
-      [value]="model.searchText? model.searchText :''"
-      class="usa-input"
-      [ngClass]="inputClass"
-      id="search-field-small"
-      type="search"
-      name="search"
-      [placeholder]="placeholder"
-    />
-    <button
-      #buttonEl
-      (click)="handleClick($event)"
-      class="usa-button"
-      type="submit"
-    >
-      <span class="usa-sr-only">Search</span>
-    </button>
-  </div>
-</form>
-
+<div  [ngClass]="isBigSearch? 'sds-search--big': 'sds-search-small'">
+  <form class="usa-search usa-search--small">
+    <div role="search" cdkMonitorSubtreeFocus (cdkFocusChange)="focusChange($event)" class="search">
+      <label class="usa-sr-only" for="search-field"> Search </label>
+      <input #inputEl [value]="model.searchText? model.searchText :''" class="usa-input" [ngClass]="inputClass" id="search-field"
+        type="search" name="search" [placeholder]="placeholder" />
+      <button #buttonEl (click)="handleClick($event)" class="usa-button" type="submit">
+        <span class="usa-sr-only">Search</span>
+      </button>
+    </div>
+  </form>
+</div>

@@ -8,4 +8,6 @@ export class SearchBasic {
    searchText :'test'
   };
 
+  bigmodel:any;
+
 }
