@@ -55,7 +55,7 @@ export const ROUTES = [
 
 @NgModule({
   imports: [
-    CommonModule,
+    CommonModule, 
     DocumentationComponentsSharedModule,
     SearchBasicModule,
     SearchOptionalModule
@@ -63,6 +63,6 @@ export const ROUTES = [
 })
 export class FormlySearchModule {
   constructor(demoList: DocumentationDemoList) {
-    demoList.register('search', DEMOS);
+    demoList.register('search-formly', DEMOS);
   }
 }
