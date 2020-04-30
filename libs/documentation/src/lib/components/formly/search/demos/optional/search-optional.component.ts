@@ -50,10 +50,12 @@ export class SearchOptional {
           key: 'invsearchmodel',
           type: 'search',
           templateOptions: {
-            label: 'Big Search with dropdown inverse',
+            label: 'Big Search with dropdown inverse',         
             searchSettings: {
+              placeholder: 'type here to search',
               size: 'large',
               dropdown: {
+                placeholder:' Select category',
                 inverse: true,
                 options: [
                   { label: '30 Days', value: '30' },

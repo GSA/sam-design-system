@@ -1,8 +1,8 @@
-<div [ngClass]="(searchSettings && searchSettings?.size === 'large')? 'sds-search--big': 'sds-search'">
+<div [ngClass]="(searchSettings && searchSettings?.size === 'large')? 'susa-search--big': 'sds-search'">
   <form class="usa-search usa-search--small">
     <label class="usa-sr-only" for="search-options">Select Here</label>
     <select *ngIf="(searchSettings?.dropdown||searchSettings.dropdown?.inverse)" [value]="model.searchCategory? model.searchCategory :''"
-      #selectEl [ngClass]="(searchSettings?.dropdown.inverse)? 'usa-select--inverse': 'usa-select'" name="search options"
+      #selectEl [ngClass]="(searchSettings?.dropdown.inverse)? 'sds-inverse': 'usa-select'" name="search options"
       id="search-options">
       <option [value]=""> {{searchSettings.dropdown.placeholder ? searchSettings.dropdown.placeholder : 'Select'}}</option>
       <ng-container *ngFor="let item of searchSettings.dropdown.options">
