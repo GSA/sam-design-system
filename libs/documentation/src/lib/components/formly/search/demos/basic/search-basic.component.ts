@@ -10,16 +10,61 @@ export class SearchBasic {
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
+ 
   fields: FormlyFieldConfig[] = [
     {
-      key: 'entity.title',
-      type: 'input',
+      key: 'filter',
       templateOptions: {
-        label: 'Entity Name',
-        placeholder: 'Acme Corporation',
-        description: 'Enter the name of your entity.',
-        required: true,
+        label: 'Keyword (with label)',
+        ariaHidden: true
       },
-    },
+      fieldGroup: [
+        {
+          key: 'searchmodel',
+          type: 'search',
+          templateOptions: {
+            label: 'Search',
+            searchSettings: {
+             
+            }
+          }
+        },
+
+        {
+          key: 'ddsearchmodel',
+          type: 'search',
+          templateOptions: {
+            label: 'Search with dropdown',
+            searchSettings: {
+              dropdown: {
+                options: [
+                  { label: '30 Days', value: '30' },
+                  { label: '60 Days', value: '60' },
+                  { label: '90 Days', value: '90' }
+                ]
+              }
+            }
+          }
+        },
+
+        {
+          key: 'invsearchmodel',
+          type: 'search',
+          templateOptions: {
+            label: 'Search with dropdown inverse',
+            searchSettings: {
+              dropdown: {
+                inverse: true,
+                options: [
+                  { label: '30 Days', value: '30' },
+                  { label: '60 Days', value: '60' },
+                  { label: '90 Days', value: '90' }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
   ];
 }

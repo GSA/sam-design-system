@@ -14,13 +14,16 @@ import {
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { ViewportRuler } from '@angular/cdk/overlay';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
- export interface SearchSettings {
-  dropDownPlaceholder: String,
-  textPlaceholder: string,
-  options : any[],
-  isInverse : boolean ,
-  isBigSearch: boolean,
-  isDropDown: boolean
+
+ export class SearchSettings {
+   public placeholder = 'Search';
+   public size: string;
+   public dropdown: any = {
+     placeholder : 'Select',
+     options: [],
+     inverse: false
+   }
+
  }
 @Component({
   selector: 'sds-search',
@@ -43,7 +46,7 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
 
   @Input() inputClass: string;
   @Input() parentSelector: string;
-  @Input() searchSettings: SearchSettings;
+  @Input() searchSettings: SearchSettings = new SearchSettings();
 
   model: any = {};
   inputState = {
@@ -74,7 +77,7 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
       this.focusMonitor.focusVia(this.inputEl, 'program');
     } else if (this.inputEl.nativeElement.value) {
       this.model.searchText = this.inputEl.nativeElement.value;
-      if (this.searchSettings.isDropDown) {
+      if (this.searchSettings.dropdown) {
         this.model.searchCatergory = this.selectEl.nativeElement.value
       }
       this._onChange(this.model);

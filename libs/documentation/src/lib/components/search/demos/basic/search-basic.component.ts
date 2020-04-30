@@ -5,61 +5,71 @@ import { Component } from '@angular/core';
 })
 export class SearchBasic {
   model = {};
-  ddmodel ={};
-  invddmodel ={}
+  ddmodel = {};
+  invddmodel = {}
 
-  bigmodel={}
-  bigddmodel ={};
-  biginvddmodel ={}
+  bigmodel = {}
+  bigddmodel = {};
+  biginvddmodel = {}
   searchSettings = {
-    textPlaceholder: 'type here',
+    placeholder: 'type here',
   }
-  ddSearchSettings ={
-    dropDownPlaceholder: 'Select',
-    textPlaceholder: 'type here',
-    options : [
-      {'value': '1', 'label' : 'One'},
-      {'value': '2', 'label' : 'Two'},
-      {'value': '3', 'label' : 'Three'}
-    ],
-    isDropDown : true
+  ddSearchSettings = {
+    placeholder: 'type here',
+    dropdown: {
+      placeholder: 'Select',
+      options: [
+        { 'value': '1', 'label': 'One' },
+        { 'value': '2', 'label': 'Two' },
+        { 'value': '3', 'label': 'Three' }
+      ],
+
+    },
   }
 
-  invDDSearchSettings ={
-    dropDownPlaceholder: 'Select',
-    textPlaceholder: 'type here',
-    options : [
-      {'value': '1', 'label' : 'One'},
-      {'value': '2', 'label' : 'Two'},
-      {'value': '3', 'label' : 'Three'}
-    ],
-    isInverse : true
+  invDDSearchSettings = {
+    placeholder: 'type here',
+    dropdown: {
+      placeholder: 'Select',
+      options: [
+        { 'value': '1', 'label': 'One' },
+        { 'value': '2', 'label': 'Two' },
+        { 'value': '3', 'label': 'Three' }
+      ],
+      inverse: true,
+    },
   }
 
   bigSearchSettings = {
-  isBigSearch: true,
+    size: 'large',
   }
-  bigddSearchSettings ={
-    dropDownPlaceholder: 'Select',
-    textPlaceholder: 'type here',
-    options : [
-      {'value': '1', 'label' : 'One'},
-      {'value': '2', 'label' : 'Two'},
-      {'value': '3', 'label' : 'Three'}
-    ],
-    isDropDown : true,
-    isBigSearch: true,
+  bigddSearchSettings = {
+    placeholder: 'type here',
+    size: 'large',
+    dropdown: {
+      placeholder: 'Select',
+      options: [
+        { 'value': '1', 'label': 'One' },
+        { 'value': '2', 'label': 'Two' },
+        { 'value': '3', 'label': 'Three' }
+      ]
+    }
   }
 
-  biginvDDSearchSettings ={
-    dropDownPlaceholder: 'Select',
-    textPlaceholder: 'type here',
-    options : [
-      {'value': '1', 'label' : 'One'},
-      {'value': '2', 'label' : 'Two'},
-      {'value': '3', 'label' : 'Three'}
-    ],
-    isInverse : true,
-    isBigSearch: true,
+  biginvDDSearchSettings = {
+
+    placeholder: 'type here',
+
+    dropdown: {
+      placeholder: 'Select',
+      options: [
+        { 'value': '1', 'label': 'One' },
+        { 'value': '2', 'label': 'Two' },
+        { 'value': '3', 'label': 'Three' }
+      ],
+      inverse: true,
+    },
+
+    size: 'large',
   }
 }
