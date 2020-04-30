@@ -28,7 +28,7 @@ fdescribe('SearchComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SdsSearchComponent);
     component = fixture.componentInstance;
-    component.isBigSearch =true;
+    component.searchSettings.size = 'large';
     fixture.detectChanges();
   });
 
