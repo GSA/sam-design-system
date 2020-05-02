@@ -12,7 +12,7 @@ class TestComponent {
   };
 }
 
-fdescribe('SearchComponent', () => {
+describe('SearchComponent', () => {
   let component: SdsSearchComponent;
   let fixture: ComponentFixture<SdsSearchComponent>;
 
@@ -27,16 +27,11 @@ fdescribe('SearchComponent', () => {
     fixture = TestBed.createComponent(SdsSearchComponent);
     component = fixture.componentInstance;
     component.searchSettings.size = 'large';
-    // component.model.searchText ='test';
-    // component.model.searchCategory ='30';
     fixture.detectChanges();
   });
 
   it('should be dropdown', () => {
-    //  const e = jasmine.createSpyObj('e', [ 'preventDefault' ]);
-
-    component.inputEl.nativeElement.value = 'test';
-    // component.selectEl.nativeElement.value = '30';
+   component.inputEl.nativeElement.value = 'test';
     component.searchSettings.dropdown.options = [
       { label: '30 Days', value: '30' },
       { label: '60 Days', value: '60' },
