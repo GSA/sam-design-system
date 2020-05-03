@@ -1,19 +1,99 @@
-<div *ngFor="let item of model">
-    <hr *ngIf="divider" class="thin" />
-    <ng-container *ngTemplateOutlet="resultContentTemplate,
-                   context: { $implicit: item }"></ng-container>
-</div>
-<hr *ngIf="divider && model?.length" class="thin" />
-<div *ngIf="!model|| model.length===0">
-    <div class="grid-row border-1px border-base-lighter bg-base-lightest">
-      <div class="grid-col-auto text-center text-base margin-4">
-        <fa-icon [icon]="['sds', 'search']" [classes]="['search']" size="7x"></fa-icon>
-      </div>
-      <div class="grid-col-fill display-flex flex-column padding-y-1">
-        <h1 class="margin-bottom-105 text-semibold">No matches found</h1>
-        <p class="margin-y-0 font-sans-lg">We couldn't find a match for your search criteria.</p>
-        <p class="margin-y-0 font-sans-lg">Please try another search or go back to previous results.</p>
-        <button class="usa-button usa-button--secondary width-card margin-y-2">Go Back</button>
-      </div>
+<!-- Error Messages -->
+
+<div *ngIf="model.error && !model.results && model.results !== 0">
+  <div class="grid-row border-1px border-base-lighter bg-base-lightest">
+    <div class="grid-col-auto text-center text-base margin-4">
+      <fa-icon
+        [icon]="['sds', 'search']"
+        [classes]="['search']"
+        size="7x"
+      ></fa-icon>
     </div>
+
+    <div class="grid-col-fill display-flex flex-column padding-y-1">
+      <h1 class="margin-bottom-105 text-semibold">Bad Request</h1>
+
+      <p class="margin-y-0 font-sans-lg">
+        There was an issue with the search request. If you <br />continue to
+        experience this issue please contact the <br />
+        <a href="https://www.fsd.gov/">Federal Service Desk</a>. Please try
+        another search <br />or go back to previous results.
+      </p>
+
+      <button class="usa-button usa-button--secondary width-card margin-y-2">
+        Go Back
+      </button>
+    </div>
+  </div>
 </div>
+
+<!-- Results -->
+
+<ng-container *ngIf="model.results && model.results.length!==0 && !model.error">
+  <div *ngFor="let item of model.results">
+    <hr *ngIf="divider" class="thin" />
+
+    <ng-container
+      *ngTemplateOutlet="resultContentTemplate; context: { $implicit: item }"
+    ></ng-container>
+  </div>
+
+  <hr *ngIf="divider && model.results.length" class="thin" />
+</ng-container>
+
+<!-- No matches found -->
+
+<div *ngIf="!model.error && (model.results && model.results.length === 0)">
+  <div class="grid-row border-1px border-base-lighter bg-base-lightest">
+    <div class="grid-col-auto text-center text-base margin-4">
+      <fa-icon
+        [icon]="['sds', 'search']"
+        [classes]="['search']"
+        size="7x"
+      ></fa-icon>
+    </div>
+
+    <div class="grid-col-fill display-flex flex-column padding-y-1">
+      <h1 class="margin-bottom-105 text-semibold">No matches found</h1>
+
+      <p class="margin-y-0 font-sans-lg">
+        We couldn't find a match for your search criteria.
+      </p>
+
+      <p class="margin-y-0 font-sans-lg">
+        Please try another search or go back to previous results.
+      </p>
+
+      <button class="usa-button usa-button--secondary width-card margin-y-2">
+        Go Back
+      </button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!model.error && (!model.results)" >
+  <div class="grid-row border-1px border-base-lighter bg-base-lightest">
+    <div class="grid-col-auto text-center text-base margin-4">
+      <fa-icon
+        [icon]="['sds', 'search']"
+        [classes]="['search']"
+        size="7x"
+      ></fa-icon>
+    </div>
+
+    <div class="grid-col-fill display-flex flex-column padding-y-1">
+      <h1 class="margin-bottom-105 text-semibold">No Search</h1>
+
+      <p class="margin-y-0 font-sans-lg">
+        No search criteria was found. Please try again. <br>
+        If you continue to have this problem, please contact <br>
+        Federal Service Desk.
+      </p>
+
+      <button class="usa-button usa-button--secondary width-card margin-y-2">
+        Go Back
+      </button>
+    </div>
+  </div>
+
+

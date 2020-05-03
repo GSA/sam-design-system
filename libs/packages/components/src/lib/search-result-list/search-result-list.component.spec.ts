@@ -11,13 +11,13 @@ describe('SdsSearchResultListComponent', () => {
       declarations: [SdsSearchResultListComponent],
       imports: [FontAwesomeModule]
     })
-      .compileComponents();
+      .compileComponents()
+      .then(() => {
+        fixture = TestBed.createComponent(SdsSearchResultListComponent);
+        component = fixture.componentInstance;
+      })
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(SdsSearchResultListComponent);
-    component = fixture.componentInstance;
-  });
 
   it('should create', () => {
     expect(component).toBeTruthy();

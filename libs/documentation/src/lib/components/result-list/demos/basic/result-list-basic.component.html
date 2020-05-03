@@ -8,9 +8,10 @@
       </ul>
     </ng-template>
   </sds-search-result-list>
-
   <hr class="margin-top-4" />
   <p>Apply different items to the example: </p>
   <button (click)="items=itemsDefault" class="usa-button usa-button--base" [ngClass]="{'usa-button--active' : items === itemsDefault}">5 Item List</button>
-  <button (click)="items=null" class="usa-button usa-button--base" [ngClass]="{'usa-button--active' : items === null}">Empty List</button>
+  <button (click)="items=emptyItems" class="usa-button usa-button--base" [ngClass]="{'usa-button--active' : items === emptyItems }">Empty List</button>
+  <button (click)="items=messages" class="usa-button usa-button--base" [ngClass]="{'usa-button--active' : items === messages }">Error</button>
+  <button (click)="items=noEntry" class="usa-button usa-button--base" [ngClass]="{'usa-button--active' : items === noEntry }">Default</button>
 </sds-page>
