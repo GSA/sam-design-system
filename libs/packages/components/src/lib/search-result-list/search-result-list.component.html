@@ -30,7 +30,7 @@
 <!-- Results -->
 
 <ng-container *ngIf="model.results && model.results.length!==0 && !model.error">
-  <div *ngFor="let item of model.results">
+  <div *ngFor="let item of model.results"  class="resultsTestClass">
     <hr *ngIf="divider" class="thin" />
 
     <ng-container
@@ -53,7 +53,7 @@
       ></fa-icon>
     </div>
 
-    <div class="grid-col-fill display-flex flex-column padding-y-1">
+    <div class="grid-col-fill display-flex flex-column padding-y-1 noMatch">
       <h1 class="margin-bottom-105 text-semibold">No matches found</h1>
 
       <p class="margin-y-0 font-sans-lg">
