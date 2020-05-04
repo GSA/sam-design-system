@@ -34,7 +34,6 @@ export class SideMenuFiltersAdvancedSampleComponent {
       fields: modalFields,
       originalFields: this.fields,
       originalModel: this.model,
-      cancel: 'Reset',
       submit: 'Update',
       title: 'Advanced Filters',
     };
