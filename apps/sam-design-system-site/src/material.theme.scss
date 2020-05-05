@@ -1,0 +1,135 @@
+/* autoprefixer grid: autoplace */
+
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+$mat-sds-green: (
+  50: #ecf3ec, //green-cool-5
+  100: #e3f5e1, //primary-lighter
+  200: #b4d0b9, //green-cool-20
+  300: #86b98e, //green-cool-30
+  400: #70e17b, //primary
+  500: #b7f5bd, //Material default -> sam-styles primary-light color
+  600: #21c834, // primary-vivid
+  700: #00a91c, // primary-dark
+  800: #008817, // primary-darker
+  900: #446443, // green-cool-60
+  A100: #b9f6ca,
+  A200: #69f0ae,
+  A400: #00e676,
+  A700: #00c853,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $dark-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $dark-primary-text,
+  )
+);
+
+$mat-sds-blue: (
+  50: #eff6fb, //accent-cool-lighter
+  100: #d9e8f6, //accent-cool-light
+  200: #aacdec, //accent-cool
+  300: #81aefc, //secondary-lighter
+  400: #5994f6, //secondary-light
+  500: #2672de, //Material default -> sam-tyles secondary color
+  600: #0050d8, // secondary-vivid
+  700: #1a4480, // secondary-dark
+  800: #162e51, // secondary-darker
+  900: #13171f, // blue-warm-90
+  A100: #b9eaf6,
+  A200: #69def0,
+  A400: #0095e6,
+  A700: #0061c8,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $dark-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $dark-primary-text,
+  )
+);
+
+$mat-sds-red: (
+  50: #f9eeee, //red-5v
+  100: #f8e1de, //red-10v
+  200: #fde0db, //red-vivid-10v
+  300: #fdb8ae, //error-lighter
+  400: #ff8d7b, //error-light
+  500: #fb5a47, //Material default -> sam-tyles error color
+  600: #e52207, // red-vivid-50v
+  700: #b51d09, // error-dark
+  800: #8b1303, // error-darker
+  900: #5c1111, // red-vivid-80v
+  A100: #f6b9b9,
+  A200: #f06969,
+  A400: #e60000,
+  A700: #c80000,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $dark-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $dark-primary-text,
+  )
+);
+
+
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$sds-mat-app-primary: mat-palette($mat-sds-green);
+$sds-mat-app-accent:  mat-palette($mat-sds-blue, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$sds-mat-app-warn:    mat-palette($mat-sds-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$sds-mat-app-theme: mat-light-theme($sds-mat-app-primary, $sds-mat-app-accent, $sds-mat-app-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($sds-mat-app-theme);
+
+.mat-calendar-table-header {
+  color: black !important;
+}
+
+.mat-calendar-body-cell-content.mat-calendar-body-selected {
+  border: solid 1px #70e17b;
+}

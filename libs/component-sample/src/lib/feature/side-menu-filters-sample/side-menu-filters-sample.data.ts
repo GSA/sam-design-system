@@ -228,6 +228,7 @@ export var SIDE_MENU_FILTERS_ADVANCED_SAMPLE_DATA: FormlyFieldConfig[] = [
     key: 'status',
     wrappers: ['accordionwrapper'],
     templateOptions: { label: 'Status' },
+    hide: true,
     fieldGroup: [
       {
         key: 'statusCheckbox',

@@ -9,7 +9,7 @@ export class SearchListSampleService implements SearchListInterface {
             let toReturn = [];
             for (let i = 0; i < data.length; i++) {
                 let item = data[i];
-                if (item.text.toLowerCase().indexOf(search.filter.searchKeyword.keyword.toLowerCase()) !== -1) {
+                if (search.filter.searchKeyword.keyword && item.text.toLowerCase().indexOf(search.filter.searchKeyword.keyword.toLowerCase()) !== -1) {
                     toReturn.push(item);
                 }
             }
