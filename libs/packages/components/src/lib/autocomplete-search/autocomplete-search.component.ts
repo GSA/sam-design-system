@@ -202,14 +202,14 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     return this.inputReadOnly ? false: true;
   }
   textChange(event) {
-      // ie 11 placeholders will incorrectly trigger input events (known bug)
-      // if input isn't active element then don't do anything
-      if (event.target != document.activeElement) {
-        event.preventDefault();
-        return;
-      }
-      const searchString = event.target.value || '';
-      this.getResults(searchString);
+    // ie 11 placeholders will incorrectly trigger input events (known bug)
+    // if input isn't active element then don't do anything
+    if (event.target != document.activeElement) {
+      event.preventDefault();
+      return;
+    }
+    const searchString = event.target.value || '';
+    this.getResults(searchString);
   }
 
   /**
