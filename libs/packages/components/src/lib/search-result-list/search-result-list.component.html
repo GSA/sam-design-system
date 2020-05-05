@@ -11,15 +11,12 @@
     </div>
 
     <div class="grid-col-fill display-flex flex-column padding-y-1">
-      <h1 class="margin-bottom-105 text-semibold">Bad Request</h1>
+      <h1 class="margin-bottom-105 text-semibold"
+        [innerHTML]="model.error.title">{{ model.error.title | json }}</h1>
 
-      <p class="margin-y-0 font-sans-lg">
-        There was an issue with the search request. If you <br />continue to
-        experience this issue please contact the <br />
-        <a href="https://www.fsd.gov/">Federal Service Desk</a>. Please try
-        another search <br />or go back to previous results.
+      <p class="margin-y-0 font-sans-lg" [innerHTML]="model.error.description">
+       {{ model.error.description | json }}
       </p>
-
       <button class="usa-button usa-button--secondary width-card margin-y-2">
         Go Back
       </button>
@@ -80,16 +77,13 @@
         size="7x"
       ></fa-icon>
     </div>
-
     <div class="grid-col-fill display-flex flex-column padding-y-1">
-      <h1 class="margin-bottom-105 text-semibold">No Search</h1>
+      <h1 class="margin-bottom-105 text-semibold"
+      [innerHTML]="model.emptySearch.title">{{ model.emptySearch.title | json }}</h1>
 
-      <p class="margin-y-0 font-sans-lg">
-        No search criteria was found. Please try again. <br>
-        If you continue to have this problem, please contact <br>
-        Federal Service Desk.
-      </p>
-
+     <p class="margin-y-0 font-sans-lg" [innerHTML]="model.emptySearch.description">
+       {{ model.emptySearch.description | json }}
+     </p>
       <button class="usa-button usa-button--secondary width-card margin-y-2">
         Go Back
       </button>

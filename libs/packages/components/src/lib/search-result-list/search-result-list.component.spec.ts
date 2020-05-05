@@ -52,16 +52,16 @@ describe('SdsSearchResultListComponent', () => {
 
   // No matches found
   it('should display no matches found message', async(() => {
-    component.model =  { "emptyItems" : {
+    component.model =  { emptyItems : {
       results: []
     }
   }
+
   fixture.detectChanges();
-  const noResults = component.model.emptyItems.results
+  const noResults = component.model.emptyItems
   console.log(noResults);
   expect(noResults).toBeTruthy("Not truthy");
   expect(noResults.length).toEqual(0);
-
 
   }))
 
@@ -81,7 +81,7 @@ describe('SdsSearchResultListComponent', () => {
 
     fixture.detectChanges();
     const errorMessage = component.model.error
-    console.log(errorMessage);
+    // console.log(errorMessage);
     expect(errorMessage).toBeTruthy('Not Truthy')
     expect(errorMessage.title).toContain('Bad Request');
 
@@ -96,7 +96,7 @@ describe('SdsSearchResultListComponent', () => {
 
     fixture.detectChanges();
     const defaultMessage = component.model.emptySearch
-    console.log(defaultMessage);
+    // console.log(defaultMessage);
     expect(defaultMessage).toBeTruthy();
     expect(defaultMessage).toContain('nothing');
 
