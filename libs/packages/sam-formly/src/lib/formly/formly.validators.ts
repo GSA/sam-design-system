@@ -46,7 +46,7 @@ export function minDateValidator(control: FormControl, field: FormlyFieldConfig)
       },
  */
 export function autocompleteRequired(control: FormControl): ValidationErrors {
-  return control.value && control.value.items && control.value.items.length ? { required: true } : null;
+  return control.value && control.value.items && control.value.length ? { required: true } : null;
 }
 
 /**

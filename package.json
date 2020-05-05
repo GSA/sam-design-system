@@ -1,6 +1,6 @@
 {
   "name": "sam-design-system",
-  "version": "0.6.12",
+  "version": "0.6.13",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -26,6 +26,7 @@
     "dep-graph": "./node_modules/.bin/nx dep-graph",
     "help": "./node_modules/.bin/nx help",
     "federalist": "npm install --only=dev && npm run demo:docs && ng build --project=sam-design-system-site --prod --base-href=$BASEURL/",
+    "circleci": "npm run test -- --no-watch --no-progress --code-coverage --browsers=ChromeHeadlessCI",
     "version": "node ./tools/scripts/update-libs-version.js && git add .",
     "postversion": "git push && git push --tags",
     "changelog": "gren changelog --override && git add . && git commit -m \"Add changelog\" && git push",
@@ -60,7 +61,7 @@
     "@ngrx/effects": "6.1.2",
     "@ngrx/router-store": "6.1.2",
     "@ngrx/store": "6.1.2",
-    "@ngx-formly/core": "^5.5.11",
+    "@ngx-formly/core": "^5.6.0",
     "@nrwl/nx": "7.5.0",
     "@types/qs": "^6.2.3",
     "accessible-html5-video-player": "^1.0.6",
@@ -69,6 +70,7 @@
     "ngx-highlightjs": "^3.0.3",
     "ngx-markdown": "^8.0.0",
     "qs": "^6.2.3",
+    "ts-md5": "^1.2.7",
     "rxjs": "~6.3.3",
     "rxjs-compat": "~6.3.3",
     "zone.js": "^0.8.26"
