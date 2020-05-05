@@ -4,14 +4,8 @@
       <sds-accordion-item expanded="true">
         <sds-accordion-item-header> Filters </sds-accordion-item-header>
         <form [formGroup]="form">
-          <sds-filters [form]="form" [fields]="fields" [model]="model"></sds-filters>
+          <sds-filters [form]="form" [fields]="fields" [model]="model" [advancedFilters]="true"></sds-filters>
         </form>
-        <div class="grid-row">
-          <div class="grid-col">
-            <button type="button" (click)="openDialog()" class="text-bold text-indent-1 usa-button--unstyled">Advanced
-              Filters</button>
-          </div>
-        </div>
       </sds-accordion-item>
     </sds-accordion>
   </div>

@@ -12,18 +12,10 @@ import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comuni
 
 @Component({
   selector: 'sds-filters',
-  template: `
-    <formly-form
-      [form]="form"
-      [fields]="fields"
-      [options]="options"
-      [model]="model"
-      (modelChange)="onModelChange($event)"
-    ></formly-form>
-  `
+  templateUrl: './sds-filters.component.html'
 })
-export class SdsFiltersComponent {
 
+export class SdsFiltersComponent {
   /**
    * Pass in a Form Group for ReactiveForms Support
    */
@@ -45,16 +37,22 @@ export class SdsFiltersComponent {
   @Input() public options: FormlyFormOptions = {};
 
   /**
-   *  Emit results when model updated
-   */
-  // TODO: check type -- Formly models are typically objects
-  @Output() filterChange = new EventEmitter<object[]>();
-
-  /**
    * debounce time for current page input
    */
   // TODO: ensure no teams are using and remove
   @Input() debounceTime = 0;
+
+
+  /**
+   * if advanced filters dialog should be displayed -- defaults to false
+   */
+  @Input() advancedFilters: boolean = false;
+
+  /**
+   *  Emit results when model updated
+   */
+  // TODO: check type -- Formly models are typically objects
+  @Output() filterChange = new EventEmitter<object[]>();
 
   constructor(
     @Optional()
