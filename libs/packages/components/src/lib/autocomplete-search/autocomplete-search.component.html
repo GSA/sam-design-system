@@ -1,23 +1,20 @@
 <div sds-click-outside (clickOutside)="checkForFocus($event)" sds-tab-outside (tabOutside)="checkForFocus($event)">
   <div class="maxw-mobile-lg position-relative">
-    <div role="combobox" [attr.id]="configuration.id+'-container'" [attr.aria-expanded]="showResults"
-      [attr.aria-owns]="showResults? configuration.id+ '-listbox' : undefined" aria-haspopup="listbox">
-      <input [disabled]="disabled" (input)="textChange($event)" class="usa-input padding-right-3" #input  [attr.aria-label]="configuration.ariaLabelText"
-        [attr.id]="configuration.id" type="text" (focus)="inputFocusHandler()" (keydown)="onKeydown($event)"
-        [(ngModel)]="inputValue" aria-autocomplete="list" [attr.placeholder]="configuration.autocompletePlaceHolderText"
+    <div role="combobox" [attr.id]="configuration.id+'-container'" [attr.aria-expanded]="showResults" [attr.aria-owns]="showResults? configuration.id+ '-listbox' : undefined"
+      aria-haspopup="listbox">
+      <input [disabled]="disabled" (input)="textChange($event)" class="usa-input padding-right-3" #input
+        [attr.aria-label]="configuration.ariaLabelText" [attr.id]="configuration.id" type="text" (focus)="inputFocusHandler()"
+        (keydown)="onKeydown($event)" [(ngModel)]="inputValue" aria-autocomplete="list" [attr.placeholder]="configuration.autocompletePlaceHolderText"
         [attr.aria-activedescendant]="showResults? configuration.id+'-resultItem-'+highlightedIndex :''"
-        [attr.aria-controls]="showResults? configuration.id+ '-listbox' : undefined"
-        autocomplete="off">
+        [attr.aria-controls]="showResults? configuration.id+ '-listbox' : undefined" autocomplete="off">
     </div>
-    <ul #resultsList *ngIf="showResults" [attr.id]="configuration.id+ '-listbox'" role="listbox"
-      class="usa-list usa-list--unstyled sds-autocomplete" (scroll)="onScroll()">
+    <ul #resultsList *ngIf="showResults" [attr.id]="configuration.id+ '-listbox'" role="listbox" class="usa-list usa-list--unstyled sds-autocomplete"
+      (scroll)="onScroll()">
       <ng-container *ngIf="(results && results.length > 0)">
         <li [attr.id]="configuration.id+'-resultItem-'+i" role="option" *ngFor="let result of results; let i = index"
-          (mouseenter)="listItemHover(i)"
-          [class]="result['highlighted'] ? 'sds-autocomplete__item sds-autocomplete__item--selected' : 'sds-autocomplete__item' "
+          (mouseenter)="listItemHover(i)" [class]="result['highlighted'] ? 'sds-autocomplete__item sds-autocomplete__item--selected' : 'sds-autocomplete__item' "
           (click)="selectItem(result)">
-          <ng-container *ngIf="itemTemplate" [ngTemplateOutlet]="itemTemplate"
-            [ngTemplateOutletContext]="{$implicit:result}">
+          <ng-container *ngIf="itemTemplate" [ngTemplateOutlet]="itemTemplate" [ngTemplateOutletContext]="{$implicit:result}">
 
           </ng-container>
 
@@ -62,6 +59,10 @@
         <span tabindex="0" role="button" aria-label="Clear input" aria-hidden="false" (click)="clearInput()"
           (keyup.enter)="clearInput()">
           <fa-icon [icon]="['fas', 'times']" size="xs"></fa-icon>
+        </span>
+        <span tabindex="1" role="button" aria-label="Clear input" aria-hidden="false" class="margin-left-1">
+          <fa-icon *ngIf="!showResults" (click)="inputFocusHandler()" [icon]="['fas', 'caret-down']" size="xs"></fa-icon>
+          <fa-icon *ngIf="showResults" (click)="checkForFocus()" [icon]="['fas', 'caret-up']" size="xs"></fa-icon>
         </span>
       </span>
     </ng-container>
