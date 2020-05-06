@@ -19,7 +19,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
    public placeholder = 'Search';
    public size: string;
    public dropdown: any = {
-     placeholder : 'Select',
+     placeholder : '-Select-',
      options: [],
      inverse: false
    }
@@ -35,7 +35,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
       multi: true
     }
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 
 })
 export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
@@ -75,7 +75,7 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
     if (!this.inputState.visible) {
       this.setInputVisibleStyles();
       this.focusMonitor.focusVia(this.inputEl, 'program');
-    } else if (this.inputEl.nativeElement.value) {
+    } else {
       this.model.searchText = this.inputEl.nativeElement.value;
       if (this.searchSettings.dropdown) {
         this.model.searchCatergory = this.selectEl.nativeElement.value
@@ -137,5 +137,9 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
       ? inputElement.closest(this.parentSelector).getBoundingClientRect().left
       : 0;
     return Math.floor(rightPosition - leftPosition);
+  }
+  getClass() {
+   const  cls= (this.searchSettings && this.searchSettings.size === 'large')? 'usa-search--big': 'usa-search--small';
+   return (this.searchSettings.dropdown && this.searchSettings.dropdown.inverse )? `${cls} sds-inverse` : cls;
   }
 }
