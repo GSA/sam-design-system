@@ -21,10 +21,13 @@ export class SdsAdvancedFiltersService {
           key: origField.key,
           defaultValue: !origField.hide,
           templateOptions: {
-            hideOptional: true,
-            label: origField.templateOptions.label
+            hideOptional: true
           }
         };
+
+        if (origField.templateOptions && origField.templateOptions.label) {
+          field.templateOptions.label = origField.templateOptions.label;
+        }
         fields.push(field);
       }
     });
@@ -36,9 +39,10 @@ export class SdsAdvancedFiltersService {
     const options = [];
     const defaultValue = [];
     origField.fieldGroup.forEach(field => {
+      const label = field.templateOptions && field.templateOptions.label ? field.templateOptions.label : null;
       const option = {
         key: field.key,
-        value: field.templateOptions['label']
+        value: label
       };
       options.push(option);
       if (!origField.hide && !field.hide) {
@@ -51,11 +55,14 @@ export class SdsAdvancedFiltersService {
       type: 'multicheckbox',
       templateOptions: {
         hideOptional: true,
-        label: origField.templateOptions.label,
         type: 'array',
         options: options
       }
     };
+
+    if (origField.templateOptions && origField.templateOptions.label) {
+      field.templateOptions.label = origField.templateOptions.label;
+    }
 
     if (!origField.hide) {
       field.defaultValue = defaultValue;
