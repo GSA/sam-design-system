@@ -12,7 +12,7 @@ class TestComponent {
   };
 }
 
-describe('SearchComponent', () => {
+fdescribe('SearchComponent', () => {
   let component: SdsSearchComponent;
   let fixture: ComponentFixture<SdsSearchComponent>;
 
@@ -70,13 +70,6 @@ describe('SearchComponent', () => {
     );
   });
 
-  it('should accept inputs and assign properties', () => {
-    component.setInputVisibleStyles();
-    expect(component.inputEl.nativeElement.style.display).toBe('block');
-    expect(component.inputEl.nativeElement.style.position).toBe('absolute');
-    expect(component.inputState.visible).toBeTruthy();
-  });
-
   it('should check for remove Input Visible', () => {
     component.removeInputVisibleStyles();
     expect(component.inputEl.nativeElement.style.display).toBe('');
@@ -95,15 +88,6 @@ describe('SearchComponent', () => {
     expect(component.inputEl.nativeElement.style.position).toBe('');
     expect(component.inputEl.nativeElement.style.left).toBe('');
     expect(component.inputEl.nativeElement.style.width).toBe('');
-    expect(component.inputState.visible).toBeTruthy();
-  });
-  it('Should visible false event', () => {
-    const e = jasmine.createSpyObj('e', ['preventDefault']);
-    component.inputState.visible = false;
-    component.handleClick(e);
-    fixture.detectChanges();
-    expect(component.inputEl.nativeElement.style.display).toBe('block');
-    expect(component.inputEl.nativeElement.style.position).toBe('absolute');
     expect(component.inputState.visible).toBeTruthy();
   });
 });
