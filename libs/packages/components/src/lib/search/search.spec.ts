@@ -12,7 +12,7 @@ class TestComponent {
   };
 }
 
-fdescribe('SearchComponent', () => {
+describe('SearchComponent', () => {
   let component: SdsSearchComponent;
   let fixture: ComponentFixture<SdsSearchComponent>;
 
