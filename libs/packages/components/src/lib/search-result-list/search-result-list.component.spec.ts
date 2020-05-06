@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
-describe('SdsSearchResultListComponent', () => {
+fdescribe('SdsSearchResultListComponent', () => {
   let component: SdsSearchResultListComponent;
   let fixture: ComponentFixture<SdsSearchResultListComponent>;
   let el: DebugElement;
@@ -52,13 +52,13 @@ describe('SdsSearchResultListComponent', () => {
 
   // No matches found
   it('should display no matches found message', async(() => {
-    component.model =  { emptyItems : {
-      results: []
-    }
+
+  component.model = {
+    results: [] = []
   }
 
   fixture.detectChanges();
-  const noResults = component.model.emptyItems
+  const noResults = component.model.results
   console.log(noResults);
   expect(noResults).toBeTruthy("Not truthy");
   expect(noResults.length).toEqual(0);
