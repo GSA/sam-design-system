@@ -18,6 +18,7 @@ import {
 import { SideMenuFiltersSampleComponent } from './side-menu-filters-sample.component';
 import { SideMenuFiltersAdvancedSampleComponent } from './side-menu-filters-advanced-sample/side-menu-filters-advanced-sample.component';
 import { SideMenuFiltersToolbarSampleComponent } from './side-menu-filters-toolbar-sample/side-menu-filters-toolbar-sample.component';
+import { SideMenuFiltersModelComponent } from './side-menu-filters-model/side-menu-filters-model.component';
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import { SideMenuFiltersToolbarSampleComponent } from './side-menu-filters-toolb
   declarations: [
     SideMenuFiltersSampleComponent,
     SideMenuFiltersAdvancedSampleComponent,
-    SideMenuFiltersToolbarSampleComponent
+    SideMenuFiltersToolbarSampleComponent,
+    SideMenuFiltersModelComponent
   ],
   providers: [SDSFormlyUpdateComunicationService]
 })

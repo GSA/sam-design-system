@@ -110,17 +110,17 @@ export class SdsFiltersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // const queryString = window.location.search;
-    // const urlParams = new URLSearchParams(queryString);
-    // const initialRef = urlParams.get('ref');
-    // if (initialRef) {
-    //   const updatedFormValue = JSON.parse(localStorage.getItem(initialRef));
-    //   setTimeout(() => {
-    //     this.model = { ...this.model, ...updatedFormValue }
-    //   }, 0);
-    // } else {
-    //   this.clearStorage();
-    // }
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const initialRef = urlParams.get('ref');
+    if (initialRef) {
+      const updatedFormValue = JSON.parse(localStorage.getItem(initialRef));
+      setTimeout(() => {
+        this.model = { ...this.model, ...updatedFormValue }
+      }, 0);
+    } else {
+      this.clearStorage();
+    }
   }
 
   onModelChange(model: any) {

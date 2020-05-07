@@ -6,13 +6,9 @@
         <sds-filters [form]="form" [fields]="fields" [model]="model" immutable></sds-filters>
       </form>
     </sds-accordion-item>
-
   </div>
   <div class="sam-example-pagination grid-col-fill">
-    <div class="sds-card">
-      <div class="sds-card__header">Filter Model:</div>
-      <pre>{{model ? (model |json) : ''}}</pre>
-    </div>
+    <gsa-sam-side-menu-filters-model [model]="model"></gsa-sam-side-menu-filters-model>
   </div>
 </sds-page-options>
 

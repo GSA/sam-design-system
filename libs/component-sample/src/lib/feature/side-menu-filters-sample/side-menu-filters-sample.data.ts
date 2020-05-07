@@ -157,6 +157,7 @@ export var SIDE_MENU_FILTERS_SAMPLE_DATA: FormlyFieldConfig[] = [
     ]
   }
 ];
+
 export var SIDE_MENU_FILTERS_ADVANCED_SAMPLE_DATA: FormlyFieldConfig[] = [
   {
     key: 'searchKeyword',
@@ -174,7 +175,6 @@ export var SIDE_MENU_FILTERS_ADVANCED_SAMPLE_DATA: FormlyFieldConfig[] = [
       }
     ]
   },
-
   {
     key: 'searchEntity',
     wrappers: ['accordionwrapper'],
@@ -315,6 +315,7 @@ export var SIDE_MENU_FILTERS_ADVANCED_SAMPLE_DATA: FormlyFieldConfig[] = [
     ]
   }
 ];
+
 export var SIDE_MENU_FILTERS_TOOLBAR_SAMPLE_DATA: FormlyFieldConfig[] = [
   {
     key: 'searchKeyword',
