@@ -31,16 +31,6 @@ import { HostListener } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SdsFiltersComponent implements OnInit {
-/**
-   * Timer id for the timer awaiting the service call for more typeing
-   */
-  private timeoutNumber: number;
-
-  /**
-   * debounce time for current page input
-   */
-  @Input() debounceTime = 0;
-
   /**
    * Modeal update
    */
@@ -71,6 +61,15 @@ export class SdsFiltersComponent implements OnInit {
    */
   @Output() filterChange = new EventEmitter<object[]>();
 
+  /**
+   * Timer id for the timer awaiting the service call for more typeing
+   */
+  private timeoutNumber: number;
+
+  /**
+   * debounce time for current page input
+   */
+  @Input() debounceTime = 0;
 
   sdsFilterHistory = [];
 

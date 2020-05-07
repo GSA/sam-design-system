@@ -1,12 +1,9 @@
 import { Component, ViewChild, ViewContainerRef, OnInit } from '@angular/core';
 import { FieldWrapper } from '@ngx-formly/core';
-
 @Component({
   selector: 'sam-formly-filter-wrapper-form-field',
   template: `
-
-    
-    <sds-accordion multi="true" displayMode="basic">
+  <sds-accordion multi="true" displayMode="basic">
     <sds-accordion-item class="sds-accordion__panel">
       <sds-accordion-item-header> {{to.label}} </sds-accordion-item-header>
       <div class="usa-form-group" [class.usa-form-group--error]="showError">
@@ -20,10 +17,9 @@ import { FieldWrapper } from '@ngx-formly/core';
       <div *ngIf="showError" class="usa-error-message" [style.display]="'block'">
         <formly-validation-message [field]="field"></formly-validation-message>
       </div>
-    </div>
- </sds-accordion-item>
+      </div>
+    </sds-accordion-item>
   </sds-accordion>
-  
   `,
 })
 export class FormlyCustomWrapperComponent extends FieldWrapper {

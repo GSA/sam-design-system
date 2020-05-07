@@ -85,7 +85,6 @@ export { maxDateValidator, minDateValidator } from './formly.validators';
     FontAwesomeModule,
     ReactiveFormsModule,
     FormlySelectModule,
-    
     FormlyModule.forChild(FORMLY_CONFIG),
     FormlyModule.forRoot({
       validationMessages: [

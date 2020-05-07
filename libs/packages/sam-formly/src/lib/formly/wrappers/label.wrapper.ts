@@ -1,7 +1,5 @@
-
 import { Component, ViewChild, ViewContainerRef, OnInit } from '@angular/core';
 import { FieldWrapper } from '@ngx-formly/core';
-
 @Component({
   template: `
     <div class="usa-form-group" [class.usa-form-group--error]="showError">
