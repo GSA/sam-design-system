@@ -18,14 +18,14 @@ import { SearchOptionalModule } from './demos/optional/search-optional.module';
 declare var require: any;
 const DEMOS = {
   basic: {
-    title: 'SAM Search',
+    title: 'Basic Search ',
     type: SearchBasic,
     code: require('!!raw-loader!./demos/basic/search-basic.component'),
     markup: require('!!raw-loader!./demos/basic/search-basic.component.html'),
     path: 'libs/documentation/src/lib/components/search/demos/basic'
   },
   optional: {
-    title: 'Optional SAM Search',
+    title: 'Search with Select Dropdown',
     type: SearchOptional,
     code: require('!!raw-loader!./demos/optional/search-optional.component'),
     markup: require('!!raw-loader!./demos/optional/search-optional.component.html'),
