@@ -1,0 +1,2042 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>sam-design-system documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">sam-design-system documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li>SdsDialogService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>libs/packages/components/src/lib/dialog/dialog.ts</code>
+        </p>
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Service to open modal dialogs.</p>
+
+            </p>
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#_afterAllClosedAtThisLevel">_afterAllClosedAtThisLevel</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#_afterOpenedAtThisLevel">_afterOpenedAtThisLevel</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_ariaHiddenElements">_ariaHiddenElements</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_openDialogsAtThisLevel">_openDialogsAtThisLevel</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_scrollStrategy">_scrollStrategy</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#afterAllClosed">afterAllClosed</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_attachDialogContainer">_attachDialogContainer</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_attachDialogContent">_attachDialogContent</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_closeDialogs">_closeDialogs</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_createInjector">_createInjector</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_createOverlay">_createOverlay</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_getOverlayConfig">_getOverlayConfig</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_hideNonDialogContentFromAssistiveTechnology">_hideNonDialogContentFromAssistiveTechnology</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_removeOpenDialog">_removeOpenDialog</a>
+                            </li>
+                            <li>
+                                <a href="#closeAll">closeAll</a>
+                            </li>
+                            <li>
+                                <a href="#getDialogById">getDialogById</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy">ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#open">open</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#openDialogs">openDialogs</a>
+                                </li>
+                                <li>
+                                    <a href="#afterOpened">afterOpened</a>
+                                </li>
+                                <li>
+                                    <a href="#_afterAllClosed">_afterAllClosed</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(_overlay: Overlay, _injector: <a href="https://angular.io/api/core/Injector" target="_blank">Injector</a>, _location: <a href="https://angular.io/api/common/Location" target="_blank">Location</a>, _defaultOptions: <a href="../classes/SdsDialogConfig.html">SdsDialogConfig</a>, scrollStrategy: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, _parentDialog: <a href="../injectables/SdsDialogService.html">SdsDialogService</a>, _overlayContainer: OverlayContainer)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">libs/packages/components/src/lib/dialog/dialog.ts:90</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_overlay</td>
+                                                  
+                                                        <td>
+                                                                    <code>Overlay</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_injector</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/Injector" target="_blank" >Injector</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_location</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/common/Location" target="_blank" >Location</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_defaultOptions</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../classes/SdsDialogConfig.html" target="_self" >SdsDialogConfig</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>scrollStrategy</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_parentDialog</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/SdsDialogService.html" target="_self" >SdsDialogService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_overlayContainer</td>
+                                                  
+                                                        <td>
+                                                                    <code>OverlayContainer</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_attachDialogContainer"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            _attachDialogContainer
+                        </b>
+                        <a href="#_attachDialogContainer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_attachDialogContainer(overlay: OverlayRef, config: <a href="../classes/SdsDialogConfig.html">SdsDialogConfig</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="225"
+                            class="link-to-prism">libs/packages/components/src/lib/dialog/dialog.ts:225</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Attaches an SdsDialogContainerComponent to a dialog&#39;s already-created overlay.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>overlay</td>
+                                    <td>
+                                            <code>OverlayRef</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Reference to the dialog&#39;s underlying overlay.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>config</td>
+                                    <td>
+                                                <code><a href="../classes/SdsDialogConfig.html" target="_self" >SdsDialogConfig</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The dialog configuration.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../components/SdsDialogContainerComponent.html" target="_self" >SdsDialogContainerComponent</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>A promise resolving to a ComponentRef for the attached container.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_attachDialogContent"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            _attachDialogContent
+                        </b>
+                        <a href="#_attachDialogContent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_attachDialogContent(componentOrTemplateRef: ComponentType<T> | TemplateRef<T>, dialogContainer: <a href="../components/SdsDialogContainerComponent.html">SdsDialogContainerComponent</a>, overlayRef: OverlayRef, config: <a href="../classes/SdsDialogConfig.html">SdsDialogConfig</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="246"
+                            class="link-to-prism">libs/packages/components/src/lib/dialog/dialog.ts:246</a></div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Type parameters :</b>
+                    <ul class="type-parameters">
+                        <li>T</li>
+                        <li>R</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Attaches the user-provided component to the already-created SdsDialogContainerComponent.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>componentOrTemplateRef</td>
+                                    <td>
+                                            <code>ComponentType&lt;T&gt; | TemplateRef&lt;T&gt;</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The type of component being loaded into the dialog,
+or a TemplateRef to instantiate as the content.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>dialogContainer</td>
+                                    <td>
+                                                <code><a href="../components/SdsDialogContainerComponent.html" target="_self" >SdsDialogContainerComponent</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Reference to the wrapping SdsDialogContainerComponent.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>overlayRef</td>
+                                    <td>
+                                            <code>OverlayRef</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Reference to the overlay in which the dialog resides.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>config</td>
+                                    <td>
+                                                <code><a href="../classes/SdsDialogConfig.html" target="_self" >SdsDialogConfig</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The dialog configuration.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/SdsDialogRef.html" target="_self" >SdsDialogRef&lt;T, R&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>A promise resolving to the SdsDialogRef that should be returned to the user.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_closeDialogs"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            _closeDialogs
+                        </b>
+                        <a href="#_closeDialogs"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_closeDialogs(dialogs: <a href="../classes/SdsDialogRef.html">SdsDialogRef<any>[]</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="373"
+                            class="link-to-prism">libs/packages/components/src/lib/dialog/dialog.ts:373</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Closes all of the dialogs in an array. </p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>dialogs</td>
+                                    <td>
+                                                <code><a href="../classes/SdsDialogRef.html" target="_self" >SdsDialogRef&lt;any&gt;[]</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_createInjector"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            _createInjector
+                        </b>
+                        <a href="#_createInjector"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_createInjector(config: <a href="../classes/SdsDialogConfig.html">SdsDialogConfig</a>, dialogRef: <a href="../classes/SdsDialogRef.html">SdsDialogRef<T></a>, dialogContainer: <a href="../components/SdsDialogContainerComponent.html">SdsDialogContainerComponent</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="292"
+                            class="link-to-prism">libs/packages/components/src/lib/dialog/dialog.ts:292</a></div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Type parameters :</b>
+                    <ul class="type-parameters">
+                        <li>T</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Creates a custom injector to be used inside the dialog. This allows a component loaded inside
+of a dialog to close itself and, optionally, to return a value.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>config</td>
+                                    <td>
+                                                <code><a href="../classes/SdsDialogConfig.html" target="_self" >SdsDialogConfig</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Config object that is used to construct the dialog.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>dialogRef</td>
+                                    <td>
+                                                <code><a href="../classes/SdsDialogRef.html" target="_self" >SdsDialogRef&lt;T&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Reference to the dialog.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>dialogContainer</td>
+                                    <td>
+                                                <code><a href="../components/SdsDialogContainerComponent.html" target="_self" >SdsDialogContainerComponent</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>PortalInjector</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The custom injector that can be used inside the dialog.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_createOverlay"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            _createOverlay
+                        </b>
+                        <a href="#_createOverlay"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_createOverlay(config: <a href="../classes/SdsDialogConfig.html">SdsDialogConfig</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="188"
+                            class="link-to-prism">libs/packages/components/src/lib/dialog/dialog.ts:188</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Creates the overlay into which the dialog will be loaded.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>config</td>
+                                    <td>
+                                                <code><a href="../classes/SdsDialogConfig.html" target="_self" >SdsDialogConfig</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The dialog configuration.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>OverlayRef</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>A promise resolving to the OverlayRef for the created overlay.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_getOverlayConfig"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            _getOverlayConfig
+                        </b>
+                        <a href="#_getOverlayConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_getOverlayConfig(dialogConfig: <a href="../classes/SdsDialogConfig.html">SdsDialogConfig</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="198"
+                            class="link-to-prism">libs/packages/components/src/lib/dialog/dialog.ts:198</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Creates an overlay config from a dialog config.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>dialogConfig</td>
+                                    <td>
+                                                <code><a href="../classes/SdsDialogConfig.html" target="_self" >SdsDialogConfig</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The dialog configuration.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>OverlayConfig</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The overlay configuration.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_hideNonDialogContentFromAssistiveTechnology"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            _hideNonDialogContentFromAssistiveTechnology
+                        </b>
+                        <a href="#_hideNonDialogContentFromAssistiveTechnology"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_hideNonDialogContentFromAssistiveTechnology()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="350"
+                            class="link-to-prism">libs/packages/components/src/lib/dialog/dialog.ts:350</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Hides all of the content that isn&#39;t an overlay from assistive technology.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_removeOpenDialog"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            _removeOpenDialog
+                        </b>
+                        <a href="#_removeOpenDialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_removeOpenDialog(dialogRef: <a href="../classes/SdsDialogRef.html">SdsDialogRef<any></a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="324"
+                            class="link-to-prism">libs/packages/components/src/lib/dialog/dialog.ts:324</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Removes a dialog from the array of open dialogs.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>dialogRef</td>
+                                    <td>
+                                                <code><a href="../classes/SdsDialogRef.html" target="_self" >SdsDialogRef&lt;any&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Dialog to be removed.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closeAll"></a>
+                    <span class="name">
+                        <b>
+                            closeAll
+                        </b>
+                        <a href="#closeAll"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>closeAll()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="163"
+                            class="link-to-prism">libs/packages/components/src/lib/dialog/dialog.ts:163</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Closes all of the currently-open dialogs.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDialogById"></a>
+                    <span class="name">
+                        <b>
+                            getDialogById
+                        </b>
+                        <a href="#getDialogById"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getDialogById(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="171"
+                            class="link-to-prism">libs/packages/components/src/lib/dialog/dialog.ts:171</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Finds an open dialog by its id.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>ID to use when looking up the dialog.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/SdsDialogRef.html" target="_self" >SdsDialogRef | undefined</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <b>
+                            ngOnDestroy
+                        </b>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="175"
+                            class="link-to-prism">libs/packages/components/src/lib/dialog/dialog.ts:175</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="open"></a>
+                    <span class="name">
+                        <b>
+                            open
+                        </b>
+                        <a href="#open"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>open(componentOrTemplateRef: ComponentType<T> | TemplateRef<T>, config?: <a href="../classes/SdsDialogConfig.html">SdsDialogConfig<D></a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="110"
+                            class="link-to-prism">libs/packages/components/src/lib/dialog/dialog.ts:110</a></div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Type parameters :</b>
+                    <ul class="type-parameters">
+                        <li>T</li>
+                        <li>D</li>
+                        <li>R</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Opens a modal dialog containing the given component.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>componentOrTemplateRef</td>
+                                    <td>
+                                            <code>ComponentType&lt;T&gt; | TemplateRef&lt;T&gt;</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Type of the component to load into the dialog,
+or a TemplateRef to instantiate as the dialog content.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>config</td>
+                                    <td>
+                                                <code><a href="../classes/SdsDialogConfig.html" target="_self" >SdsDialogConfig&lt;D&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                    <td>
+                                        <p>Extra configuration options.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/SdsDialogRef.html" target="_self" >SdsDialogRef&lt;T, R&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>Reference to the newly-opened dialog.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_afterAllClosedAtThisLevel"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                                <span class="modifier">Readonly</span>
+                            _afterAllClosedAtThisLevel</b>
+                            <a href="#_afterAllClosedAtThisLevel"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">libs/packages/components/src/lib/dialog/dialog.ts:64</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_afterOpenedAtThisLevel"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                                <span class="modifier">Readonly</span>
+                            _afterOpenedAtThisLevel</b>
+                            <a href="#_afterOpenedAtThisLevel"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new Subject&lt;SdsDialogRef&lt;any&gt;&gt;()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">libs/packages/components/src/lib/dialog/dialog.ts:65</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_ariaHiddenElements"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            _ariaHiddenElements</b>
+                            <a href="#_ariaHiddenElements"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new Map&lt;Element, string|null&gt;()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">libs/packages/components/src/lib/dialog/dialog.ts:66</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_openDialogsAtThisLevel"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            _openDialogsAtThisLevel</b>
+                            <a href="#_openDialogsAtThisLevel"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/SdsDialogRef.html" target="_self" >SdsDialogRef&lt;any&gt;[]</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">libs/packages/components/src/lib/dialog/dialog.ts:63</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_scrollStrategy"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            _scrollStrategy</b>
+                            <a href="#_scrollStrategy"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">libs/packages/components/src/lib/dialog/dialog.ts:67</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="afterAllClosed"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Readonly</span>
+                            afterAllClosed</b>
+                            <a href="#afterAllClosed"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Observable&lt;void&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>defer&lt;void&gt;(() &#x3D;&gt; this.openDialogs.length ?
+      this._afterAllClosed :
+      this._afterAllClosed.pipe(startWith(undefined)))</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">libs/packages/components/src/lib/dialog/dialog.ts:88</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Stream that emits when all open dialog have finished closing.
+Will emit on subscribe if there are no open dialogs to begin with.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="openDialogs"></a>
+                        <span class="name"><b>openDialogs</b><a href="#openDialogs"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>openDialogs()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">libs/packages/components/src/lib/dialog/dialog.ts:70</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Keeps track of the currently-open dialogs. </p>
+</div>
+
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="../classes/SdsDialogRef.html" target="_self" >SdsDialogRef[]</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="afterOpened"></a>
+                        <span class="name"><b>afterOpened</b><a href="#afterOpened"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>afterOpened()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">libs/packages/components/src/lib/dialog/dialog.ts:75</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Stream that emits when a dialog has been opened. </p>
+</div>
+
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="../classes/SdsDialogRef.html" target="_self" >Subject&lt;SdsDialogRef&lt;any&gt;&gt;</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_afterAllClosed"></a>
+                        <span class="name"><b>_afterAllClosed</b><a href="#_afterAllClosed"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>_afterAllClosed()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">libs/packages/components/src/lib/dialog/dialog.ts:79</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Directionality} from &#x27;@angular/cdk/bidi&#x27;;
+import {
+  Overlay,
+  OverlayConfig,
+  OverlayContainer,
+  OverlayRef,
+  ScrollStrategy,
+} from &#x27;@angular/cdk/overlay&#x27;;
+import {ComponentPortal, ComponentType, PortalInjector, TemplatePortal} from &#x27;@angular/cdk/portal&#x27;;
+import {Location} from &#x27;@angular/common&#x27;;
+import {
+  Inject,
+  Injectable,
+  InjectionToken,
+  Injector,
+  OnDestroy,
+  Optional,
+  SkipSelf,
+  TemplateRef,
+} from &#x27;@angular/core&#x27;;
+import {defer, Observable, of as observableOf, Subject} from &#x27;rxjs&#x27;;
+import {startWith} from &#x27;rxjs/operators&#x27;;
+import {SdsDialogConfig} from &#x27;./dialog-config&#x27;;
+import {SdsDialogContainerComponent} from &#x27;./dialog-container.component&#x27;;
+import {SdsDialogRef} from &#x27;./dialog-ref&#x27;;
+
+
+/** Injection token that can be used to access the data that was passed in to a dialog. */
+export const SDS_DIALOG_DATA &#x3D; new InjectionToken&lt;any&gt;(&#x27;SdsDialogData&#x27;);
+
+/** Injection token that can be used to specify default dialog options. */
+export const SDS_DIALOG_DEFAULT_OPTIONS &#x3D;
+    new InjectionToken&lt;SdsDialogConfig&gt;(&#x27;sds-dialog-default-options&#x27;);
+
+/** Injection token that determines the scroll handling while the dialog is open. */
+export const SDS_DIALOG_SCROLL_STRATEGY &#x3D;
+    new InjectionToken&lt;() &#x3D;&gt; ScrollStrategy&gt;(&#x27;sds-dialog-scroll-strategy&#x27;);
+
+/** @docs-private */
+export function SDS_DIALOG_SCROLL_STRATEGY_FACTORY(overlay: Overlay): () &#x3D;&gt; ScrollStrategy {
+  return () &#x3D;&gt; overlay.scrollStrategies.block();
+}
+
+/** @docs-private */
+export function SDS_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY(overlay: Overlay):
+  () &#x3D;&gt; ScrollStrategy {
+  return () &#x3D;&gt; overlay.scrollStrategies.block();
+}
+
+/** @docs-private */
+export const SDS_DIALOG_SCROLL_STRATEGY_PROVIDER &#x3D; {
+  provide: SDS_DIALOG_SCROLL_STRATEGY,
+  deps: [Overlay],
+  useFactory: SDS_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY,
+};
+
+
+/**
+ * Service to open modal dialogs.
+ */
+@Injectable()
+export class SdsDialogService implements OnDestroy {
+  private _openDialogsAtThisLevel: SdsDialogRef&lt;any&gt;[] &#x3D; [];
+  private readonly _afterAllClosedAtThisLevel &#x3D; new Subject&lt;void&gt;();
+  private readonly _afterOpenedAtThisLevel &#x3D; new Subject&lt;SdsDialogRef&lt;any&gt;&gt;();
+  private _ariaHiddenElements &#x3D; new Map&lt;Element, string|null&gt;();
+  private _scrollStrategy: () &#x3D;&gt; ScrollStrategy;
+
+  /** Keeps track of the currently-open dialogs. */
+  get openDialogs(): SdsDialogRef&lt;any&gt;[] {
+    return this._parentDialog ? this._parentDialog.openDialogs : this._openDialogsAtThisLevel;
+  }
+
+  /** Stream that emits when a dialog has been opened. */
+  get afterOpened(): Subject&lt;SdsDialogRef&lt;any&gt;&gt; {
+    return this._parentDialog ? this._parentDialog.afterOpened : this._afterOpenedAtThisLevel;
+  }
+
+  get _afterAllClosed(): Subject&lt;void&gt; {
+    const parent &#x3D; this._parentDialog;
+    return parent ? parent._afterAllClosed : this._afterAllClosedAtThisLevel;
+  }
+
+  /**
+   * Stream that emits when all open dialog have finished closing.
+   * Will emit on subscribe if there are no open dialogs to begin with.
+   */
+  readonly afterAllClosed: Observable&lt;void&gt; &#x3D; defer&lt;void&gt;(() &#x3D;&gt; this.openDialogs.length ?
+      this._afterAllClosed :
+      this._afterAllClosed.pipe(startWith(undefined)));
+
+  constructor(
+      private _overlay: Overlay,
+      private _injector: Injector,
+      @Optional() private _location: Location,
+      @Optional() @Inject(SDS_DIALOG_DEFAULT_OPTIONS) private _defaultOptions: SdsDialogConfig,
+      @Inject(SDS_DIALOG_SCROLL_STRATEGY) scrollStrategy: any,
+      @Optional() @SkipSelf() private _parentDialog: SdsDialogService,
+      private _overlayContainer: OverlayContainer) {
+    this._scrollStrategy &#x3D; scrollStrategy;
+  }
+
+  /**
+   * Opens a modal dialog containing the given component.
+   * @param componentOrTemplateRef Type of the component to load into the dialog,
+   *     or a TemplateRef to instantiate as the dialog content.
+   * @param config Extra configuration options.
+   * @returns Reference to the newly-opened dialog.
+   */
+  open&lt;T, D &#x3D; any, R &#x3D; any&gt;(componentOrTemplateRef: ComponentType&lt;T&gt; | TemplateRef&lt;T&gt;,
+          config?: SdsDialogConfig&lt;D&gt;): SdsDialogRef&lt;T, R&gt; {
+
+    // Convenience widths names: small | medium | large
+    // added to help with standardization
+    if (config &amp;&amp; config.width) {
+      switch (config.width) {
+        case &#x27;small&#x27;: {
+          config.width &#x3D; &#x27;370px&#x27;;
+          break;
+        }
+        case &#x27;medium&#x27;: {
+          config.width &#x3D; &#x27;730px&#x27;;
+          break;
+        }
+        case &#x27;large&#x27;: {
+          config.width &#x3D; &#x27;960px&#x27;;
+          break;
+        }
+        default: {
+          break;
+        }
+      }
+    }
+
+    config &#x3D; _applyConfigDefaults(config, this._defaultOptions || new SdsDialogConfig());
+
+    if (config.id &amp;&amp; this.getDialogById(config.id)) {
+      throw Error(&#x60;Dialog with id &quot;${config.id}&quot; exists already. The dialog id must be unique.&#x60;);
+    }
+
+    const overlayRef &#x3D; this._createOverlay(config);
+    const dialogContainer &#x3D; this._attachDialogContainer(overlayRef, config);
+    const dialogRef &#x3D; this._attachDialogContent&lt;T, R&gt;(componentOrTemplateRef,
+                                                      dialogContainer,
+                                                      overlayRef,
+                                                      config);
+
+    // If this is the first dialog that we&#x27;re opening, hide all the non-overlay content.
+    if (!this.openDialogs.length) {
+      this._hideNonDialogContentFromAssistiveTechnology();
+    }
+
+    this.openDialogs.push(dialogRef);
+    dialogRef.afterClosed().subscribe(() &#x3D;&gt; this._removeOpenDialog(dialogRef));
+    this.afterOpened.next(dialogRef);
+
+    return dialogRef;
+  }
+
+  /**
+   * Closes all of the currently-open dialogs.
+   */
+  closeAll(): void {
+    this._closeDialogs(this.openDialogs);
+  }
+
+  /**
+   * Finds an open dialog by its id.
+   * @param id ID to use when looking up the dialog.
+   */
+  getDialogById(id: string): SdsDialogRef&lt;any&gt; | undefined {
+    return this.openDialogs.find(dialog &#x3D;&gt; dialog.id &#x3D;&#x3D;&#x3D; id);
+  }
+
+  ngOnDestroy() {
+    // Only close the dialogs at this level on destroy
+    // since the parent service may still be active.
+    this._closeDialogs(this._openDialogsAtThisLevel);
+    this._afterAllClosedAtThisLevel.complete();
+    this._afterOpenedAtThisLevel.complete();
+  }
+
+  /**
+   * Creates the overlay into which the dialog will be loaded.
+   * @param config The dialog configuration.
+   * @returns A promise resolving to the OverlayRef for the created overlay.
+   */
+  private _createOverlay(config: SdsDialogConfig): OverlayRef {
+    const overlayConfig &#x3D; this._getOverlayConfig(config);
+    return this._overlay.create(overlayConfig);
+  }
+
+  /**
+   * Creates an overlay config from a dialog config.
+   * @param dialogConfig The dialog configuration.
+   * @returns The overlay configuration.
+   */
+  private _getOverlayConfig(dialogConfig: SdsDialogConfig): OverlayConfig {
+    const state &#x3D; new OverlayConfig({
+      positionStrategy: this._overlay.position().global(),
+      scrollStrategy: dialogConfig.scrollStrategy || this._scrollStrategy(),
+      panelClass: dialogConfig.panelClass,
+      hasBackdrop: dialogConfig.hasBackdrop,
+      direction: dialogConfig.direction,
+      minWidth: dialogConfig.minWidth,
+      minHeight: dialogConfig.minHeight,
+      maxWidth: dialogConfig.maxWidth,
+      maxHeight: dialogConfig.maxHeight,
+      disposeOnNavigation: dialogConfig.closeOnNavigation
+    });
+
+    if (dialogConfig.backdropClass) {
+      state.backdropClass &#x3D; dialogConfig.backdropClass;
+    }
+
+    return state;
+  }
+
+  /**
+   * Attaches an SdsDialogContainerComponent to a dialog&#x27;s already-created overlay.
+   * @param overlay Reference to the dialog&#x27;s underlying overlay.
+   * @param config The dialog configuration.
+   * @returns A promise resolving to a ComponentRef for the attached container.
+   */
+  private _attachDialogContainer(overlay: OverlayRef, config: SdsDialogConfig): SdsDialogContainerComponent {
+    const userInjector &#x3D; config &amp;&amp; config.viewContainerRef &amp;&amp; config.viewContainerRef.injector;
+    const injector &#x3D; new PortalInjector(userInjector || this._injector, new WeakMap([
+      [SdsDialogConfig, config]
+    ]));
+    const containerPortal &#x3D;
+        new ComponentPortal(SdsDialogContainerComponent, config.viewContainerRef, injector);
+    const containerRef &#x3D; overlay.attach&lt;SdsDialogContainerComponent&gt;(containerPortal);
+
+    return containerRef.instance;
+  }
+
+  /**
+   * Attaches the user-provided component to the already-created SdsDialogContainerComponent.
+   * @param componentOrTemplateRef The type of component being loaded into the dialog,
+   *     or a TemplateRef to instantiate as the content.
+   * @param dialogContainer Reference to the wrapping SdsDialogContainerComponent.
+   * @param overlayRef Reference to the overlay in which the dialog resides.
+   * @param config The dialog configuration.
+   * @returns A promise resolving to the SdsDialogRef that should be returned to the user.
+   */
+  private _attachDialogContent&lt;T, R&gt;(
+      componentOrTemplateRef: ComponentType&lt;T&gt; | TemplateRef&lt;T&gt;,
+      dialogContainer: SdsDialogContainerComponent,
+      overlayRef: OverlayRef,
+      config: SdsDialogConfig): SdsDialogRef&lt;T, R&gt; {
+
+    // Create a reference to the dialog we&#x27;re creating in order to give the user a handle
+    // to modify and close it.
+    const dialogRef &#x3D;
+        new SdsDialogRef&lt;T, R&gt;(overlayRef, dialogContainer, this._location, config.id);
+
+    // When the dialog backdrop is clicked, we want to close it.
+    if (config.hasBackdrop) {
+      overlayRef.backdropClick().subscribe(() &#x3D;&gt; {
+        if (!dialogRef.disableClose) {
+          dialogRef.close();
+        }
+      });
+    }
+
+    if (componentOrTemplateRef instanceof TemplateRef) {
+      dialogContainer.attachTemplatePortal(
+        new TemplatePortal&lt;T&gt;(componentOrTemplateRef, null!,
+          &lt;any&gt;{ $implicit: config.data, dialogRef }));
+    } else {
+      const injector &#x3D; this._createInjector&lt;T&gt;(config, dialogRef, dialogContainer);
+      const contentRef &#x3D; dialogContainer.attachComponentPortal&lt;T&gt;(
+          new ComponentPortal(componentOrTemplateRef, undefined, injector));
+      dialogRef.componentInstance &#x3D; contentRef.instance;
+    }
+
+    dialogRef
+      .updateSize(config.width, config.height)
+      .updatePosition(config.position);
+
+    return dialogRef;
+  }
+
+  /**
+   * Creates a custom injector to be used inside the dialog. This allows a component loaded inside
+   * of a dialog to close itself and, optionally, to return a value.
+   * @param config Config object that is used to construct the dialog.
+   * @param dialogRef Reference to the dialog.
+   * @param container Dialog container element that wraps all of the contents.
+   * @returns The custom injector that can be used inside the dialog.
+   */
+  private _createInjector&lt;T&gt;(
+      config: SdsDialogConfig,
+      dialogRef: SdsDialogRef&lt;T&gt;,
+      dialogContainer: SdsDialogContainerComponent): PortalInjector {
+
+    const userInjector &#x3D; config &amp;&amp; config.viewContainerRef &amp;&amp; config.viewContainerRef.injector;
+
+    // The SdsDialogContainerComponent is injected in the portal as the SdsDialogContainerComponent and the dialog&#x27;s
+    // content are created out of the same ViewContainerRef and as such, are siblings for injector
+    // purposes. To allow the hierarchy that is expected, the SdsDialogContainerComponent is explicitly
+    // added to the injection tokens.
+    const injectionTokens &#x3D; new WeakMap&lt;any, any&gt;([
+      [SdsDialogContainerComponent, dialogContainer],
+      [SDS_DIALOG_DATA, config.data],
+      [SdsDialogRef, dialogRef]
+    ]);
+
+    if (config.direction &amp;&amp;
+        (!userInjector || !userInjector.get&lt;Directionality | null&gt;(Directionality, null))) {
+      injectionTokens.set(Directionality, {
+        value: config.direction,
+        change: observableOf()
+      });
+    }
+
+    return new PortalInjector(userInjector || this._injector, injectionTokens);
+  }
+
+  /**
+   * Removes a dialog from the array of open dialogs.
+   * @param dialogRef Dialog to be removed.
+   */
+  private _removeOpenDialog(dialogRef: SdsDialogRef&lt;any&gt;) {
+    const index &#x3D; this.openDialogs.indexOf(dialogRef);
+
+    if (index &gt; -1) {
+      this.openDialogs.splice(index, 1);
+
+      // If all the dialogs were closed, remove/restore the &#x60;aria-hidden&#x60;
+      // to a the siblings and emit to the &#x60;afterAllClosed&#x60; stream.
+      if (!this.openDialogs.length) {
+        this._ariaHiddenElements.forEach((previousValue, element) &#x3D;&gt; {
+          if (previousValue) {
+            element.setAttribute(&#x27;aria-hidden&#x27;, previousValue);
+          } else {
+            element.removeAttribute(&#x27;aria-hidden&#x27;);
+          }
+        });
+
+        this._ariaHiddenElements.clear();
+        this._afterAllClosed.next();
+      }
+    }
+  }
+
+  /**
+   * Hides all of the content that isn&#x27;t an overlay from assistive technology.
+   */
+  private _hideNonDialogContentFromAssistiveTechnology() {
+    const overlayContainer &#x3D; this._overlayContainer.getContainerElement();
+
+    // Ensure that the overlay container is attached to the DOM.
+    if (overlayContainer.parentElement) {
+      const siblings &#x3D; overlayContainer.parentElement.children;
+
+      for (let i &#x3D; siblings.length - 1; i &gt; -1; i--) {
+        const sibling &#x3D; siblings[i];
+
+        if (sibling !&#x3D;&#x3D; overlayContainer &amp;&amp;
+          sibling.nodeName !&#x3D;&#x3D; &#x27;SCRIPT&#x27; &amp;&amp;
+          sibling.nodeName !&#x3D;&#x3D; &#x27;STYLE&#x27; &amp;&amp;
+          !sibling.hasAttribute(&#x27;aria-live&#x27;)) {
+
+          this._ariaHiddenElements.set(sibling, sibling.getAttribute(&#x27;aria-hidden&#x27;));
+          sibling.setAttribute(&#x27;aria-hidden&#x27;, &#x27;true&#x27;);
+        }
+      }
+    }
+  }
+
+  /** Closes all of the dialogs in an array. */
+  private _closeDialogs(dialogs: SdsDialogRef&lt;any&gt;[]) {
+    let i &#x3D; dialogs.length;
+
+    while (i--) {
+      // The &#x60;_openDialogs&#x60; property isn&#x27;t updated after close until the rxjs subscription
+      // runs on the next microtask, in addition to modifying the array as we&#x27;re going
+      // through it. We loop through all of them and call close without assuming that
+      // they&#x27;ll be removed from the list instantaneously.
+      dialogs[i].close();
+    }
+  }
+
+}
+
+/**
+ * Applies default options to the dialog config.
+ * @param config Config to be modified.
+ * @param defaultOptions Default options provided.
+ * @returns The new configuration object.
+ */
+function _applyConfigDefaults(
+    config?: SdsDialogConfig, defaultOptions?: SdsDialogConfig): SdsDialogConfig {
+  return {...defaultOptions, ...config};
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'SdsDialogService.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

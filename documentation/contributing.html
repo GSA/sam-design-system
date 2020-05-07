@@ -1,0 +1,369 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>sam-design-system documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	      <link rel="stylesheet" href="./styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="./" class="navbar-brand">sam-design-system documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<h1 id="contributing-to-samgov-design-system">Contributing to SAM.gov Design System</h1>
+<p>This document describes how to contribute and provide examples for new components.</p>
+<ul>
+<li><a href="#project-structure">Project Structure</a></li>
+<li><a href="#documentation">Documentation</a></li>
+<li><a href="#packages">Packages</a></li>
+<li><a href="#scripts">Scripts</a></li>
+<li><a href="#tools">Tools</a></li>
+<li><a href="#configuration">Configuration</a></li>
+</ul>
+<h2 id="project-structure">Project Structure</h2>
+<p>High level file structure and notable file locations.</p>
+<div><pre class="line-numbers"><code class="language-none">   sam-design-system
+   ├── apps
+   │   ├── sam-design-system-site-e2e
+   │   └── sam-design-system-site
+   ├── dist
+   ├── libs
+   │   ├── documentation
+   │   └── packages
+   ├── node_modules
+   ├── scripts
+   │   └── generate-docs.js
+   ├── tools
+   │   └── scripts
+   |       ├── pack-and-publish.js
+   │       └── update-libs-version.js
+   ├── angular.json
+   ├── CODEOWNERS
+   ├── jest.conf.js
+   ├── karma.conf.js
+   ├── nx.json
+   ├── package-lock.json
+   ├── package.json
+   ├── tsconfig.json
+   └── tslint.json</code></pre></div><h2 id="application">Application</h2>
+<p>The sample application in sam-design-system is a very basic angular application which consists of the header, side navigation, and a <code>router-outlet</code>. The documentation library is lazy loaded and rendered through the app component <code>router-outlet</code>.</p>
+<h2 id="documentation">Documentation</h2>
+<p>High level file structure for the documentation library.</p>
+<div><pre class="line-numbers"><code class="language-none">   documentation/src/lib
+   ├── apidoc
+   │   ├── sam-design-system-site-e2e
+   │   └── sam-design-system-site
+   ├── components
+   │   ├── example-component
+   |   |   ├── demos
+   |   |   |   ├── basic
+   |   |   |   |   ├── example-component-basic.component.html
+   |   |   |   |   ├── example-component-basic.component.scss
+   |   |   |   |   ├── example-component-basic.component.ts
+   |   |   |   |   ├── example-component-basic.module.ts
+   |   |   |   |   └── readme.md
+   |   |   |   └── advanced
+   |   |   |       ├── example-component-advanced.component.html
+   |   |   |       ├── example-component-advanced.component.scss
+   |   |   |       ├── example-component-advanced.component.ts
+   |   |   |       ├── example-component-advanced.module.ts
+   |   |   |       └── readme.md
+   |   |   ├── opening.md
+   |   |   ├── example-component.module.ts
+   |   |   └── closing.md
+   │   └── shared
+   ├── pages
+   │   ├── introduction
+   │   └── overview
+   ├── shared
+   │   ├── component-wrapper
+   │   ├── highlight
+   │   └── index.ts
+   └── documentation.module.js</code></pre></div><h3 id="apidoc">Apidoc</h3>
+<p>The <code>apidoc</code> folder contains the exported documentation of <code>compodoc</code> which is triggered from <code>npm run demo:docs</code> which is part of the federalist build process.</p>
+<ul>
+<li><code>components/components.ts</code> &rarr; Components documentation</li>
+<li><code>formly/formly.ts</code> &rarr; Formly compodoc documentation</li>
+<li><code>layouts/layouts.ts</code> &rarr; Layout compodoc documentation</li>
+<li><code>index.ts</code> &rarr; Combined export file for all compodoc documentation. Prefer to import this as opposed to individual files.</li>
+</ul>
+<h3 id="components">Components</h3>
+<p>The <code>components</code> folder contains all demonstrable components and a <code>shared</code> folder which contains helpers.</p>
+<blockquote>
+<h3 id="example-component-basic">Example Component (basic)</h3>
+<ul>
+<li><code>demos/basic/example-component-basic.component.html</code> &rarr; The html template file for the basic example.</li>
+<li><code>demos/basic/example-component-basic.component.scss</code> &rarr; The css file for the basic example.</li>
+<li><code>demos/basic/example-component-basic.component.ts</code> &rarr; The typescript component file for the basic example.</li>
+<li><code>demos/basic/example-component-basic.module.ts</code> &rarr; The typescript module file for the basic example.</li>
+<li><code>demos/basic/readme.md</code> &rarr; A description markdown file for the basic example. <code>(optional)</code></li>
+<li><code>opening.md</code> &rarr; A markdown file that is being ingested and passed through the route data <code>readme.opening</code> attribute to be shown between the title and the tab navigation. <code>(optional)</code></li>
+<li><code>example-component.module.ts</code> &rarr; The overall example-component module which is responsible for registering each <code>demo</code> example, providing the routing for each tab, and pulling in any markdown information. <code>(see below)</code></li>
+<li><code>closing.md</code> &rarr; A markdown file that is being ingested and passed through the route data <code>readme.closing</code> attribute to be shown beneath all of the demos. <code>(optional)</code></li>
+</ul>
+<br />
+
+<p><code>example-component.module.ts</code> <br />
+The customizable configurations contain comments below.</p>
+<div><pre class="line-numbers"><code class="language-js">import { NgModule } from &#39;&#64;angular/core&#39;;
+import { CommonModule } from &#39;&#64;angular/common&#39;;
+import { HeaderBasic } from &#39;./demos/basic/header-basic.component&#39;;
+import { DocumentationExamplesPage } from &#39;../shared/examples-page/examples.component&#39;;
+import { DocumentationAPIPage } from &#39;../shared/api-page/docs-api.component&#39;;
+import { DocumentationSourcePage } from &#39;../shared/source-page/source.component&#39;;
+import { DocumentationTemplatePage } from &#39;../shared/template-page/template.component&#39;;
+import {
+  DocumentationComponentsSharedModule,
+  DocumentationDemoList
+} from &#39;./../shared/index&#39;;
+import { ComponentWrapperComponent } from &#39;./../../shared/component-wrapper/component-wrapper.component&#39;;
+import { HeaderBasicModule } from &#39;./demos/basic/header-basic.module&#39;;
+
+export declare var require: any;
+
+export const opening = require(&#39;!!raw-loader!./opening.md&#39;); // load the content of the markdown in to a variable
+export const closing = require(&#39;!!raw-loader!./closing.md&#39;); // load the content of the markdown in to a variable
+
+const DEMOS = {
+  basic: {
+    title: &#39;SAM Header&#39;, // Provide a title for this demo
+    type: HeaderBasic, // Component to use for this demo
+    code: require(&#39;!!raw-loader!./demos/basic/header-basic.component&#39;), // Source Tab Content
+    markup: require(&#39;!!raw-loader!./demos/basic/header-basic.component.html&#39;), // Template Tab Content
+    readme: require(&#39;!!raw-loader!./demos/basic/readme.md&#39;), // Demo description markdown
+    path: &#39;libs/documentation/src/lib/components/header/demos/basic&#39; // Path to demo for the Github link
+  }
+};
+
+export const ROUTES = [
+  { path: &#39;&#39;, pathMatch: &#39;full&#39;, redirectTo: &#39;examples&#39; },
+  {
+    path: &#39;&#39;,
+    component: ComponentWrapperComponent,
+    data: {
+      readme: {
+        opening, // Opening section markdown (imported with require above)
+        closing  // Closing section markdown (imported with require above)
+      },
+      items: [ // Defines what documentation to display on the API tab, repeats if multiple are specified
+        {
+          pkg: &#39;components&#39;, // Package specifies which compodocs to use (/apidocs/components/components.ts)
+          type: &#39;components&#39;, // Within the compodocs, target the components section
+          name: &#39;SdsHeaderComponent&#39; // Show the SdsHeaderComponent object for API information
+        }
+      ]
+    },
+    children: [ // You can omit any tab sections by removing the child routes here
+      { path: &#39;examples&#39;, component: DocumentationExamplesPage },
+      { path: &#39;api&#39;, component: DocumentationAPIPage },
+      { path: &#39;source&#39;, component: DocumentationSourcePage },
+      { path: &#39;template&#39;, component: DocumentationTemplatePage }
+    ]
+  }
+];
+
+&#64;NgModule({
+  imports: [
+    CommonModule,
+    DocumentationComponentsSharedModule,
+    HeaderBasicModule // Import all of your demo modules here (basic, advanced, etc)
+  ]
+})
+export class HeaderModule {
+  constructor(demoList: DocumentationDemoList) {
+    demoList.register(&#39;header&#39;, DEMOS); // Register the component with the demo list (name must match the route name)
+  }
+}
+</code></pre></div><p><br/><br/></p>
+</blockquote>
+<blockquote>
+<h3 id="shared">Shared</h3>
+<p>The <code>shared</code> folder within components facilitates displaying the <code>examples</code>, <code>api</code>, <code>source</code>, and <code>template</code> page content.
+<br/><br/></p>
+</blockquote>
+<h3 id="pages">Pages</h3>
+<p>The <code>pages</code> folder holds any informational pages like <code>introduction</code> or <code>overview</code> that do not need to be part of the demo component structure.</p>
+<h3 id="shared-1">Shared</h3>
+<blockquote>
+<h3 id="component-wrapper">Component Wrapper</h3>
+<p>The overall component for each component. It is responsible for the following:</p>
+<ul>
+<li><code>title</code> &rarr; An optional attribute of the route data, if it&#39;s not provided it will default to the component name.</li>
+<li><code>introducedVersion</code> &rarr; An optional attribute of the route data which will show up at a chip to indicate what version the component was added to SDS.</li>
+<li><code>deprecatedVersion</code> &rarr; An optional attribute of the route data which will show up at a chip to indicate when the component was added to SDS</li>
+<li><code>opening</code> &rarr; A markdown string that is shown between the title and the tab navigation.</li>
+<li><code>closing</code> &rarr; A markdown string that is shown beneath all of the demos.</li>
+</ul>
+<p>If the demo component&#39;s module provides child routes for <code>examples</code>, <code>api</code>, <code>source</code>, or <code>template</code>, they will be displayed as tabs.
+<br/><br/></p>
+</blockquote>
+<blockquote>
+<h3 id="highlight">Highlight</h3>
+<p>A component for displaying source code with <code>ngx-prism</code> on the demo card.
+<br/><br/></p>
+</blockquote>
+<h3 id="documentation-module">Documentation Module</h3>
+<p>The overall library documentation module is where we register all of the example demo modules and routes.</p>
+<blockquote>
+<p><code>documentation.module.ts</code> <br />
+For each example, you must import your module and routes to the documentation module.</p>
+<div><pre class="line-numbers"><code class="language-js">import { IntroductionModule } from &#39;./pages/introduction/introduction.module&#39;;
+import { IntroductionComponent } from &#39;./pages/introduction/introduction.component&#39;;
+import { OverviewModule } from &#39;./pages/overview/overview.module&#39;;
+import { NgModule } from &#39;&#64;angular/core&#39;;
+import { CommonModule } from &#39;&#64;angular/common&#39;;
+import { RouterModule, Routes } from &#39;&#64;angular/router&#39;;
+import { library } from &#39;&#64;fortawesome/fontawesome-svg-core&#39;;
+import { sds } from &#39;&#64;gsa-sam/sam-styles/src/icons/&#39;;
+import { fas } from &#39;&#64;fortawesome/free-solid-svg-icons&#39;;
+import { DocumentationSharedModule } from &#39;./shared&#39;;
+import { OverviewComponent } from &#39;./pages/overview/overview.component&#39;;
+
+import { ROUTES as HEADER_ROUTES, HeaderModule } from &#39;./components/header/header.module&#39;; // Import your ROUTES and Module
+
+
+declare var require: any;
+
+export const ROUTES: Routes = [
+  { path: &#39;&#39;, pathMatch: &#39;full&#39;, redirectTo: &#39;components/header&#39; },
+  { path: &#39;overview&#39;, component: OverviewComponent },
+  { path: &#39;introduction&#39;, component: IntroductionComponent },
+  { path: &#39;components&#39;, pathMatch: &#39;full&#39;, redirectTo: &#39;components/alert&#39; },
+  { path: &#39;components/header&#39;, children: HEADER_ROUTES }, // Add your example component routes (the last segment should match the registered demo list name)
+
+];
+
+&#64;NgModule({
+  imports: [
+    CommonModule,
+    DocumentationSharedModule,
+    RouterModule.forChild(ROUTES),
+    HeaderModule, // Add your example component module to the imports array
+    OverviewModule,
+    IntroductionModule,
+  ]
+})
+export class DocumentationModule {
+  constructor() {
+    library.add(fas, sds);
+  }
+}
+</code></pre></div></blockquote>
+<h2 id="packages">Packages</h2>
+<div><pre class="line-numbers"><code class="language-none">   packages
+   ├── components
+   ├── experimental
+   ├── layouts
+   ├── sam-formly
+   └── sam-material-extension</code></pre></div><ul>
+<li><code>components</code> &rarr; Common components and directives</li>
+<li><code>experimental</code> &rarr; Experimental components [No Support Provided]</li>
+<li><code>layouts</code> &rarr; Layout components which orchestrate multiple common components together</li>
+<li><code>sam-formly</code> &rarr; Form controls and supporting components built on <code>ngx-formly</code></li>
+<li><code>sam-material-extension</code> &rarr; Angular Material related components</li>
+</ul>
+<h2 id="scripts">Scripts</h2>
+<ul>
+<li><code>generate-docs.js</code> &rarr; Automates creating <code>compodoc</code> documentation for a specific library and exports it for use in the documentation.</li>
+</ul>
+<h2 id="tools">Tools</h2>
+<ul>
+<li><code>pack-and-publsh.js</code> &rarr; Automates | <code>npm build</code> | <code>npm pack</code> | <code>npm publish</code> | process</li>
+<li><code>update-libs-version.js</code> &rarr; Automates bumping of libraries <code>package.json</code> version</li>
+</ul>
+<h2 id="configuration">Configuration</h2>
+<ul>
+<li><code>angular.json</code> &rarr; Angular CLI configuration</li>
+<li><code>CODEOWNERS</code> &rarr; Github pull request approvers</li>
+<li><code>jest.conf.js</code> &rarr; JEST testing framework configuration</li>
+<li><code>karma.conf.js</code> &rarr; Karma test runner framework configuration</li>
+<li><code>nx.json</code> &rarr; NX Workspace monorepo configuration and dependency tagging</li>
+<li><code>package-lock.json</code> &rarr; Pre-processsed project dependencies</li>
+<li><code>package.json</code> &rarr; Project version, dependencies, and scripts</li>
+<li><code>tsconfig.json</code> &rarr; Typescript configuration</li>
+<li><code>tslint.json</code> &rarr; Typescript linter configuration</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'contributing.html';
+       </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="./js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="./js/menu-wc.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

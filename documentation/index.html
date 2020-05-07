@@ -1,0 +1,172 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>sam-design-system documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	      <link rel="stylesheet" href="./styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="./" class="navbar-brand">sam-design-system documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<h1 id="samdesignsystem">SamDesignSystem</h1>
+<p>This project was generated with <a href="https://github.com/angular/angular-cli">Angular CLI</a> using <a href="https://nrwl.io/nx">Nrwl Nx</a>.</p>
+<h2 id="how-to-work-in-this-structure">How To Work In This Structure</h2>
+<p>To ensure your work follows the expected structure, ensure you are using the correct Angular CLI commands as you create new libraries, modules, and components.</p>
+<p>Most of the modules in this library are intended to be published and consumed by third parties, specifically in support of the GSA IAE Modernization project.</p>
+<p>The grouping folders under the libs folder divide libraries by scope. Packages that are intended to be published live under the packages folder. As other scopes are needed for internal development to house feature, utilities, or data-access modules for documentation or other purposes, new scope directories may be added.</p>
+<h2 id="creating-new-publishable-libraries">Creating New Publishable Libraries</h2>
+<p>New publishable libraries should only be created with consent from the team. These libraries should be created within the <code>libs/packages</code> directory. Each publishable package should provide the following tags:</p>
+<ul>
+<li>scope:shared</li>
+<li>platform:web</li>
+<li>type:ui</li>
+</ul>
+<h2 id="documentation-site-feature-modules">Documentation Site Feature Modules</h2>
+<p>Any updates to the documentation site should first be created as a library in the <code>libs/sam-design-system-site</code> directory. Depending on the type of library, create it in the appropriate subdirectory using the Angular CLI schematics to ensure consistency with the project&#39;s structure.</p>
+<p>All libraries should share the <code>scope:sam-design-system-site</code> and <code>platform:web</code> tags. Add whichever <code>type</code> tag of <code>ui, data-access, utility, or feature</code> that is appropriate.</p>
+<p>Finally, import the module into the <code>sam-design-system-site</code> and configure the application appropriately.</p>
+<h2 id="releasing--publishing">Releasing &amp; Publishing</h2>
+<p>Publishing happens in a few steps. From a high level, </p>
+<ol>
+<li>Update each project package.json with latest version number</li>
+<li>Run npm version to update parent package.json, commit changes, and tag</li>
+<li>Push changes to github.com and create a release</li>
+<li>Run github-release-notes to generate release notes</li>
+<li>For every publishable lib,<ol>
+<li>Build each library</li>
+<li>Create a tarball of each built lib</li>
+<li>Publish to github</li>
+</ol>
+</li>
+</ol>
+<h3 id="run-npm-version-major--minor--patch">Run <code>npm version &lt;major | minor | patch&gt;</code></h3>
+<p>This step updates the main package.json version in the root directory. It also runs through each library in the angular.json <code>projects</code> property and updates their package.json with the 
+version from the root package.json.</p>
+<p>Finally, this script git commits the changes and creates a tag with the version number.</p>
+<h3 id="commit-changes-to-github-git-push-origin-master--git-push---tags">Commit changes to github <code>git push origin master</code> &amp;&amp; <code>git push --tags</code></h3>
+<p>For now, this step must be run manually after the versions have been updated locally. This syncs the local changes with the remote repository.</p>
+<h3 id="create-release-and-release-notes">Create release and release notes</h3>
+<p>On Github, draft a new release and write release notes. Github-release-notes (gren) can be used to assist in this.</p>
+<h3 id="ensure-local-is-syncd-with-remote-release-branch--npm-run-publishlibs">Ensure local is sync&#39;d with remote release branch &amp;&amp; <code>npm run publish:libs</code></h3>
+<p>Note: Run <code>npm run publish:libs -- --dry-run</code> to get a dry-run and not publish</p>
+<p>Since the tarballs for the published libraries will be generated from the source code on the local machine, it is imperative that the branch on your local machine is in sync with the approved release code before publishing the library.</p>
+<p>Once the local branch is in sync with the release branch, run the publish script. This finds each publishable library in the angular.json and publishes its code.</p>
+<h2 id="helper-scripts">Helper Scripts</h2>
+<p>You can now run <code>npm run release:patch</code>, <code>npm run release:minor</code>, or <code>npm run release:major</code>, but be careful. It will run the versioning script, add a commit and tag, push to github, run <code>gren</code> to generate a release on github with notes based on PRs, then run <code>gren</code> again to generate a changelog, commit it, and push it up to github.</p>
+<p>All that executes on whatever branch you are on, and when you run it, you want to be on master. If something happens, you&#39;ll have to manually rollback 3 commits, delete the git tag, and delete the release.</p>
+<p>Once all that is done, you still have to manually run the <code>npm run publish:libs</code> script to build, pack, and publish them to npmjs. If y&#39;all are confident, you can also add <code>&amp;&amp; npm run publish:libs</code> onto the end of the <code>npm run release</code> script (for each type), and that will do everything in one step.</p>
+<p><code>Note:</code> I&#39;d recommend keeping them separate for awhile and getting the team comfortable with what&#39;s happening before you try that though.</p>
+<h2 id="gren-github-release-notes">gren (Github-release-notes)</h2>
+<p>In order to run the above, you need to have <code>gren</code> installed and configured globally on your local machine. This requires add the npm package and also updating your path with an environment variable for gren to use. </p>
+<p>The link to gren is <a href="https://github.com/github-tools/github-release-notes">here</a>. </p>
+<p>There is some additional configuration required to make it work smoothly. </p>
+<p>First, you will also need to create a personal access token with <code>repo</code> scope for your github account.</p>
+<p>Under the Github profile, go to Settings -&gt; Developer Settings -&gt; Personal Access Tokens -&gt; Generate New Token and then provide that to the environment variable to use gren.</p>
+<p>Second, you need to add the repo information to package.json. This is already done on this project, but that keeps you from having to update <code>gren</code> with the repo info on each push.</p>
+<h2 id="nrwl-extensions-for-angular-nx">Nrwl Extensions for Angular (Nx)</h2>
+<p><a href="https://nrwl.io/nx"><img src="https://preview.ibb.co/mW6sdw/nx_logo.png"></a></p>
+<p>Nx is an open source toolkit for enterprise Angular applications.</p>
+<p>Nx is designed to help you create and build enterprise grade Angular applications. It provides an opinionated approach to application project structure and patterns.</p>
+<h2 id="quick-start--documentation">Quick Start &amp; Documentation</h2>
+<p><a href="http://nrwl.io/nx">Watch a 5-minute video on how to get started with Nx.</a></p>
+<h2 id="generate-your-first-application">Generate your first application</h2>
+<p>Run <code>ng generate app myapp</code> to generate an application. When using Nx, you can create multiple applications and libraries in the same CLI workspace. Read more <a href="http://nrwl.io/nx">here</a>.</p>
+<h2 id="development-server">Development server</h2>
+<p>Run <code>ng serve --project=myapp</code> for a dev server. Navigate to <code>http://localhost:4200/</code>. The app will automatically reload if you change any of the source files.</p>
+<h2 id="code-scaffolding">Code scaffolding</h2>
+<p>Run <code>ng generate component component-name --project=myapp</code> to generate a new component. You can also use <code>ng generate directive|pipe|service|class|guard|interface|enum|module</code>.</p>
+<h2 id="build">Build</h2>
+<p>Run <code>ng build --project=myapp</code> to build the project. The build artifacts will be stored in the <code>dist/</code> directory. Use the <code>--prod</code> flag for a production build.</p>
+<h2 id="running-unit-tests">Running unit tests</h2>
+<p>Run <code>ng test</code> to execute the unit tests via <a href="https://karma-runner.github.io">Karma</a>.</p>
+<h2 id="running-end-to-end-tests">Running end-to-end tests</h2>
+<p>Run <code>ng e2e</code> to execute the end-to-end tests via <a href="http://www.protractortest.org/">Protractor</a>.
+Before running the tests make sure you are serving the app via <code>ng serve</code>.</p>
+<h2 id="further-help">Further help</h2>
+<p>To get more help on the Angular CLI use <code>ng help</code> or go check out the <a href="https://github.com/angular/angular-cli/blob/master/README.md">Angular CLI README</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+       </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="./js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="./js/menu-wc.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
