@@ -67,12 +67,6 @@ export class SdsFiltersComponent implements OnInit {
   @Input() public options: FormlyFormOptions = {};
 
   /**
-   *  Options for the form.
-   */
-  @Input() public options: FormlyFormOptions = {};
-
-
-  /**
    *  Emit results when model updated
    */
   @Output() filterChange = new EventEmitter<object[]>();

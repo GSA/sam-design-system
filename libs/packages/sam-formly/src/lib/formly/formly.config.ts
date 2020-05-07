@@ -32,7 +32,9 @@ export const FIELD_TYPE_COMPONENTS = [
   FormlyLabelWrapperComponent,
   FormlyDescriptionWrapperComponent,
   FormlyValidationWrapperComponent,
-  FormlyGroupWrapperComponent
+  FormlyFieldTextComponent,
+  FormlyGroupWrapperComponent,
+  FormlyFieldSearchComponent
 
 ];
 import { maxDateValidator, minDateValidator } from './formly.validators';
@@ -41,6 +43,7 @@ import { FormlyLabelWrapperComponent } from './wrappers/label.wrapper';
 import { FormlyDescriptionWrapperComponent } from './wrappers/description.wrapper';
 import { FormlyValidationWrapperComponent } from './wrappers/validation.wrapper';
 import { FormlyGroupWrapperComponent } from './wrappers/group.wrapper';
+import { FormlyFieldSearchComponent } from './types/search';
 
 
 export const FORMLY_WRAPPERS: any = [
