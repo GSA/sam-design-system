@@ -14,20 +14,19 @@
         item.label }}</option>
     </ng-container>
   </select>
-  <label *ngIf="!(searchSettings.dropdown && searchSettings.dropdown.inverse)" class="usa-sr-only" for="search-field">Search</label>
-  <input *ngIf="!(searchSettings.dropdown && searchSettings.dropdown.inverse)" #inputEl [value]="model.searchText? model.searchText :''"
-    [ngClass]="inputClass" id="search-field" type="search" name="search" [placeholder]="searchSettings.placeholder? searchSettings.placeholder : 'type here'" />
-  <button class="usa-button" type="submit" *ngIf="!(searchSettings.dropdown && searchSettings.dropdown.inverse)">
-    <span class="usa-sr-only">Search</span>
-  </button>
-
-  <div *ngIf="(searchSettings.dropdown && searchSettings.dropdown.inverse)" class="sds-inverse__search">
-    <label class="usa-sr-only" for="search-field">Search</label>
-    <input #inputEl [value]="model.searchText? model.searchText :''" [ngClass]="inputClass" id="search-field" type="search"
-      name="search" [placeholder]="searchSettings.placeholder? searchSettings.placeholder : 'type here'" />
-    <button class="usa-button" type="submit">
-      <span class="usa-sr-only">Search</span>
-    </button>
-  </div>
+  <ng-container *ngIf="(searchSettings.dropdown && searchSettings.dropdown.inverse); then inverseTemplate else inputTemplate">
+  </ng-container>
 </form>
 
+<ng-template #inputTemplate> <label class="usa-sr-only" for="search-field">Search</label>
+  <input #inputEl [value]="model.searchText? model.searchText :''" [ngClass]="inputClass" id="search-field" type="search"
+    name="search" [placeholder]="searchSettings.placeholder? searchSettings.placeholder : 'type here'" />
+  <button class="usa-button" type="submit">
+    <span class="usa-sr-only">Search</span>
+  </button>
+</ng-template>
+<ng-template #inverseTemplate>
+  <div class="sds-inverse__search">
+    <ng-container [ngTemplateOutlet]="inputTemplate"></ng-container>
+  </div>
+</ng-template>
