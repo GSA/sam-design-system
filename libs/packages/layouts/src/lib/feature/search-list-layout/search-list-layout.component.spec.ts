@@ -4,6 +4,7 @@ import { PaginationModule, SdsSearchResultListModule } from '@gsa-sam/components
 import { FormsModule } from '@angular/forms';
 import { SearchParameters, SearchResult, SearchListInterface } from './model/search-list-layout.model';
 import { of, Observable } from 'rxjs';
+import { RouterTestingModule } from '@angular/router/testing';
 describe('SearchListLayoutComponent', () => {
   let component: SearchListLayoutComponent;
   let fixture: ComponentFixture<SearchListLayoutComponent>;
@@ -11,7 +12,8 @@ describe('SearchListLayoutComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SearchListLayoutComponent],
-      imports: [PaginationModule, SdsSearchResultListModule, FormsModule]
+      imports: [PaginationModule, SdsSearchResultListModule, FormsModule,
+        RouterTestingModule.withRoutes([]),]
     })
       .compileComponents();
   }));

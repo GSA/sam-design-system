@@ -3,6 +3,48 @@
   "version": 1,
   "newProjectRoot": "",
   "projects": {
+    "components": {
+      "root": "libs/packages/components",
+      "sourceRoot": "libs/packages/components/src",
+      "projectType": "library",
+      "prefix": "sds",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/packages/components/tsconfig.lib.json",
+            "project": "libs/packages/components/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/packages/components/src/test.ts",
+            "tsConfig": "libs/packages/components/tsconfig.spec.json",
+            "karmaConfig": "libs/packages/components/karma.conf.js",
+            "scripts": [
+              "node_modules/accessible-html5-video-player/js/px-video.js",
+              "node_modules/accessible-html5-video-player/js/strings.js"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/packages/components/tsconfig.lib.json",
+              "libs/packages/components/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
     "sam-formly": {
       "root": "libs/packages/sam-formly",
       "sourceRoot": "libs/packages/sam-formly/src",
@@ -41,44 +83,6 @@
         }
       }
     },
-    "components": {
-      "root": "libs/packages/components",
-      "sourceRoot": "libs/packages/components/src",
-      "projectType": "library",
-      "prefix": "sds",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "libs/packages/components/tsconfig.lib.json",
-            "project": "libs/packages/components/ng-package.json"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/packages/components/src/test.ts",
-            "tsConfig": "libs/packages/components/tsconfig.spec.json",
-            "karmaConfig": "libs/packages/components/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/packages/components/tsconfig.lib.json",
-              "libs/packages/components/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/schematics:component": {
-          "styleext": "scss"
-        }
-      }
-    },
     "sam-design-system-site": {
       "root": "apps/sam-design-system-site/",
       "sourceRoot": "apps/sam-design-system-site/src",
@@ -102,7 +106,15 @@
               "apps/sam-design-system-site/src/favicon.ico",
               "apps/sam-design-system-site/src/assets"
             ],
-            "styles": ["apps/sam-design-system-site/src/styles.scss"]
+            "styles": [
+              "apps/sam-design-system-site/src/styles.scss",
+              "node_modules/highlight.js/styles/vs.css"
+            ],
+            "scripts": [
+              "node_modules/marked/lib/marked.js",
+              "node_modules/accessible-html5-video-player/js/px-video.js",
+              "node_modules/accessible-html5-video-player/js/strings.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -156,7 +168,8 @@
             "tsConfig": "apps/sam-design-system-site/tsconfig.spec.json",
             "karmaConfig": "apps/sam-design-system-site/karma.conf.js",
             "styles": ["apps/sam-design-system-site/src/styles.scss"],
-            "scripts": [],
+            "scripts": [
+            ],
             "assets": [
               "apps/sam-design-system-site/src/favicon.ico",
               "apps/sam-design-system-site/src/assets"
@@ -366,6 +379,37 @@
             "tsConfig": [
               "libs/layout-sample/tsconfig.lib.json",
               "libs/layout-sample/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "documentation": {
+      "root": "libs/documentation",
+      "sourceRoot": "libs/documentation/src",
+      "projectType": "library",
+      "prefix": "gsa-sam",
+      "architect": {
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/documentation/src/test.ts",
+            "tsConfig": "libs/documentation/tsconfig.spec.json",
+            "karmaConfig": "libs/documentation/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/documentation/tsconfig.lib.json",
+              "libs/documentation/tsconfig.spec.json"
             ],
             "exclude": ["**/node_modules/**"]
           }

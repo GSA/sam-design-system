@@ -11,6 +11,7 @@ import { FormlyFieldAutoCompleteComponent } from './types/autocomplete';
 import { FormlyFormFieldFilterWrapperComponent } from './wrappers/form-field.filterwrapper';
 import { FormlyFieldDatePickerComponent } from './types/datepicker';
 import { FormlyFieldButtonComponent } from './types/button';
+import { FormlyFieldTextComponent } from './types/text';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { FormlyCustomWrapperComponent } from './wrappers/custom-wrapper';
 
@@ -40,6 +41,13 @@ import { FormlyLabelWrapperComponent } from './wrappers/label.wrapper';
 import { FormlyDescriptionWrapperComponent } from './wrappers/description.wrapper';
 import { FormlyValidationWrapperComponent } from './wrappers/validation.wrapper';
 import { FormlyGroupWrapperComponent } from './wrappers/group.wrapper';
+\
+
+export const FORMLY_WRAPPERS: any = [
+  { name: 'form-field', component: FormlyWrapperFormFieldComponent, componentName: "FormlyWrapperFormFieldComponent" },
+  { name: 'accordionwrapper', component: FormlyAccordianFormFieldComponent, componentName: "FormlyAccordianFormFieldComponent" },
+  { name: 'filterwrapper', component: FormlyFormFieldFilterWrapperComponent, componentName: "FormlyFormFieldFilterWrapperComponent" }
+]
 
 export const FORMLY_CONFIG: ConfigOption = {
   types: [
@@ -50,6 +58,11 @@ export const FORMLY_CONFIG: ConfigOption = {
     {
       name: 'button',
       component: FormlyFieldButtonComponent,
+    },
+    {
+      name: 'customtext',
+      component: FormlyFieldTextComponent,
+      wrappers: ['form-field']
     },
     {
       name: 'input',
@@ -92,7 +105,7 @@ export const FORMLY_CONFIG: ConfigOption = {
       wrappers: sdsWrappers,
       defaultOptions: {
         validators: {
-          validation: [maxDateValidator, minDateValidator],
+          validation: [maxDateValidator, minDateValidator]
         }
       }
     },
@@ -110,8 +123,8 @@ export const FORMLY_CONFIG: ConfigOption = {
             },
             expressionProperties: {
               'templateOptions.minDate': minDateFromDateRangePicker,
-              'templateOptions.maxDate': maxDateFromDateRangePicker,
-            },
+              'templateOptions.maxDate': maxDateFromDateRangePicker
+            }
           },
           {
             type: 'datepicker',
@@ -121,12 +134,18 @@ export const FORMLY_CONFIG: ConfigOption = {
             },
             expressionProperties: {
               'templateOptions.minDate': minDateToDateRangePicker,
-              'templateOptions.maxDate': maxDateToDateRangePicker,
-            },
+              'templateOptions.maxDate': maxDateToDateRangePicker
+            }
           }
         ]
       }
     },
+    {
+      name: 'search',
+      component: FormlyFieldSearchComponent,
+      wrappers: sdsWrappers,
+    },
+
   ],
   wrappers: [
     { name: 'label', component: FormlyLabelWrapperComponent },

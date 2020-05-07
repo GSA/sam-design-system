@@ -52,12 +52,33 @@ describe('SDSAutocompleteComponent', () => {
   });
 
   it('should handle writeValue', () => {
-    component.model = null;
-    component.writeValue({});
-    expect(component.model).toBe(null);
-    let model = new SDSSelectedItemModel();
-    component.writeValue(model);
-    expect(component.model).toBe(model);
+
+    // Set by Array
+    const myItems = { test: '123' };
+    component.writeValue([myItems]);
+    expect(component.model.items[0]).toEqual(myItems);
+
+    // Set by empty Array
+    component.writeValue([]);
+    expect(component.model.items).toEqual([]);
+
+    // Set by Object
+    const myObjItems = new SDSSelectedItemModel([{ test: '123' }]);
+    component.writeValue(myObjItems);
+    expect(component.model.items[0]).toEqual(myItems);
+
+    // Set by empty Object
+    let myEmptyObjItems = new SDSSelectedItemModel();
+    component.writeValue(myEmptyObjItems);
+    expect(component.model.items).toEqual([]);
+
+    // Pass null
+    component.writeValue(null);
+    expect(component.model.items).toEqual([]);
+
+    // Pass empty string
+    component.writeValue("");
+    expect(component.model.items).toEqual([]);
   });
 
   it('should handle disable', () => {
@@ -73,14 +94,13 @@ describe('SDSAutocompleteComponent', () => {
   it('should handle registerOnChange', () => {
     let item = {};
     component.registerOnChange(item);
-    expect(component.propogateChange).toBe(item);
+    expect(component.onChange).toBe(item);
   });
 
   it('should handle registerOnTouched', () => {
     let item = {};
     component.registerOnTouched(item);
-    expect(component.onTouchedCallback).toBe(item);
+    expect(component.onTouched).toBe(item);
   });
 
 });
-

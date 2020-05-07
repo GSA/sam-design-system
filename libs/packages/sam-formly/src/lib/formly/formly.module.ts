@@ -5,7 +5,7 @@ import { FormlyModule, FormlyFieldConfig } from '@ngx-formly/core';
 import { FormlySelectModule } from '@ngx-formly/core/select';
 import { FIELD_TYPE_COMPONENTS, FORMLY_CONFIG } from './formly.config';
 import {
-  SdsAccordionModule, SdsAutocompleteModule
+  SdsAccordionModule, SdsAutocompleteModule, SdsTextModule, SdsSearchModule
 } from '@gsa-sam/components';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -30,23 +30,23 @@ export function minValidationMessage(err, field: FormlyFieldConfig) {
 }
 
 export function minDateValidationMessage(err, field: FormlyFieldConfig) {
-  let dt = field.templateOptions.minDate;
-  let dateFormat = (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
+  const dt = field.templateOptions.minDate;
+  const dateFormat = (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
   return `Date must be after ${dateFormat}`;
 }
 
 export function maxDateValidationMessage(err, field: FormlyFieldConfig) {
-  let dt = field.templateOptions.maxDate;
-  let dateFormat = (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
+  const dt = field.templateOptions.maxDate;
+  const dateFormat = (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
   return `Date must be before ${dateFormat}`;
 }
 
 
 export function betweenDateValidationMessage(err, field: FormlyFieldConfig) {
-  let dtnmax = field.templateOptions.maxDate;
-  let dateMaxFormat = (dtnmax.getMonth() + 1) + "/" + dtnmax.getDate() + "/" + dtnmax.getFullYear();
-  let dtmin = field.templateOptions.minDate;
-  let dateMinFormat = (dtmin.getMonth() + 1) + "/" + dtmin.getDate() + "/" + dtmin.getFullYear();
+  const dtnmax = field.templateOptions.maxDate;
+  const dateMaxFormat = (dtnmax.getMonth() + 1) + "/" + dtnmax.getDate() + "/" + dtnmax.getFullYear();
+  const dtmin = field.templateOptions.minDate;
+  const dateMinFormat = (dtmin.getMonth() + 1) + "/" + dtmin.getDate() + "/" + dtmin.getFullYear();
   return `Date must be between ${dateMinFormat} and ${dateMaxFormat} `;
 }
 
@@ -77,6 +77,8 @@ export { maxDateValidator, minDateValidator } from './formly.validators';
     CommonModule,
     SdsAccordionModule,
     SdsAutocompleteModule,
+    SdsSearchModule,
+    SdsTextModule,
     MatNativeDateModule,
     MatDatepickerModule,
     MatInputModule,
@@ -110,4 +112,4 @@ export { maxDateValidator, minDateValidator } from './formly.validators';
     })
   ]
 })
-export class SdsFormlyModule { }
+export class SdsFormlyModule {}

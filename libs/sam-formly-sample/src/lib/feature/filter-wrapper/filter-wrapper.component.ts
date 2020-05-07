@@ -9,7 +9,7 @@ import { FormControl, ValidationErrors } from '@angular/forms';
 @Component({
   selector: 'sds-filter-wrapper',
   templateUrl: './filter-wrapper.component.html',
- 
+
 })
 export class FilterWrapperComponent implements OnInit {
 
@@ -18,7 +18,11 @@ export class FilterWrapperComponent implements OnInit {
   }
   results: any = {};
   form = new FormGroup({});
-  model:any = {};
+  model: any = {
+    searchEntity: {
+      uniqueEntityIdSam: 20
+    }
+  };
   options: FormlyFormOptions = {};
   /**
  * Event when something is checked/selected in the grid
@@ -28,7 +32,7 @@ export class FilterWrapperComponent implements OnInit {
 
   fields: FormlyFieldConfig[] = [
     {
-      key: 'searchKeyword',
+      key: 'filter.searchKeyword',
       wrappers: ['filterwrapper'],
       templateOptions: {
         label: 'Keyword (with label)',
@@ -39,16 +43,19 @@ export class FilterWrapperComponent implements OnInit {
         type: 'input',
         templateOptions: {
           type: 'text',
-          label: 'Keyword'        
-         },
+          label: 'Keyword'
+        },
 
       }]
     },
 
     {
-      key: 'searchEntity',
+      key: 'filter.searchEntity',
       wrappers: ['accordionwrapper'],
-      templateOptions: { label: 'Entity' },
+      templateOptions: {
+        label: 'Entity',
+        expand: false,
+      },
       fieldGroup: [
         {
           key: 'uniqueEntityIdSam',
@@ -78,29 +85,13 @@ export class FilterWrapperComponent implements OnInit {
     },
 
     {
-      key: 'keyword',
-      wrappers: ['filterwrapper'],
-      templateOptions: {
-        label: 'Search Keyword (without label)',
-        ariaHidden: true
-      },
-      fieldGroup: [
-      {
-        key: 'keyword',
-        type: 'input',
-        templateOptions: {
-          type: 'text',
-          label: 'test Keyword',
-          labelClass:'usa-sr-only'
-        },
-
-      }]
-    },
-
-    {
-      key: 'entityStatus',
+      key: 'filter.entityStatus',
       wrappers: ['accordionwrapper'],
-      templateOptions: { label: 'Entity Status' },
+
+      templateOptions: {
+        label: 'Entity Status',
+        expand: true,
+      },
       fieldGroup: [
         {
           key: 'statusCheckbox',
@@ -127,19 +118,10 @@ export class FilterWrapperComponent implements OnInit {
             ]
           },
         },
-        {
-          key: 'entityName',
-          type: 'input',
-          templateOptions: {
-            label: 'Entity Name',
-            placeholder: '',
-            inputType: 'text',
-          },
-        },
       ]
     },
     {
-      key: 'expirationDate',
+      key: 'filter.expirationDate',
       wrappers: ['accordionwrapper'],
       templateOptions: { label: 'Expiration Date' },
       fieldGroup: [
@@ -197,35 +179,10 @@ export class FilterWrapperComponent implements OnInit {
             ]
           },
         },
-        {
-          key: 'entityCheckbox',
-          type: 'multicheckbox',
-          templateOptions: {
-            label: 'Entity Status',
-            options: [
-              {
-                key: 'Active',
-                value: 'Active'
-              },
-              {
-                key: 'Draft',
-                value: 'Draft'
-              },
-              {
-                key: 'Expired',
-                value: 'Expired'
-              },
-              {
-                key: 'InProgress',
-                value: 'In Progress'
-              }
-            ]
-          },
-        },
       ]
     },
     {
-      key: 'entityType',
+      key: 'filter.entityType',
       wrappers: ['filterwrapper'],
       templateOptions: { label: 'Entity Types' },
       fieldGroup: [
@@ -245,33 +202,12 @@ export class FilterWrapperComponent implements OnInit {
             ],
           },
         },
-        {
-          key: 'entityCheckbox',
-          type: 'multicheckbox',
-          templateOptions: {
-            label: 'Entity Status',
-            options: [
-              {
-                key: 'Active',
-                value: 'Active'
-              },
-              {
-                key: 'Draft',
-                value: 'Draft'
-              },
-              {
-                key: 'Expired',
-                value: 'Expired'
-              },
-              {
-                key: 'InProgress',
-                value: 'In Progress'
-              }
-            ]
-          },
-        },
+    
       ]
     },
+
+
+    
   ];
   public ngOnInit() {
     this.filterChange$.subscribe(

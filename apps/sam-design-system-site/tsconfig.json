@@ -1,7 +1,8 @@
 {
-  "extends": "../../tsconfig.json",
+"extends": "../../tsconfig.json",
   "compilerOptions": {
-    "types": ["jasmine"]
+    "types": ["jasmine", "node"],
+    "typeRoots": ["node_modules/@types"]
   },
   "include": ["**/*.ts",
   "@gsa-sam/component-sample"
