@@ -5,7 +5,7 @@ import { FormlyModule, FormlyFieldConfig } from '@ngx-formly/core';
 import { FormlySelectModule } from '@ngx-formly/core/select';
 import { FIELD_TYPE_COMPONENTS, FORMLY_CONFIG } from './formly.config';
 import {
-  SdsAccordionModule, SdsAutocompleteModule, SdsTextModule
+  SdsAccordionModule, SdsAutocompleteModule, SdsTextModule, SdsSearchModule
 } from '@gsa-sam/components';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -77,6 +77,7 @@ export { maxDateValidator, minDateValidator } from './formly.validators';
     CommonModule,
     SdsAccordionModule,
     SdsAutocompleteModule,
+    SdsSearchModule,
     SdsTextModule,
     MatNativeDateModule,
     MatDatepickerModule,

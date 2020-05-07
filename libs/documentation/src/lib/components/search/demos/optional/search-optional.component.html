@@ -1,0 +1,20 @@
+<div >
+
+  
+    <h4>Search with dropdown</h4>
+    <sds-search [(ngModel)]="ddmodel" [searchSettings]="ddSearchSettings" placeholder="Entity an entity ID, name, or keyword"></sds-search>
+     model-- {{invddmodel | json}}
+    
+    <h4>Search with Inverse dropdown</h4>
+    <sds-search [(ngModel)]="invddmodel" [searchSettings]="invDDSearchSettings" placeholder="Entity an entity ID, name, or keyword"></sds-search>
+    Inv model-- {{invddmodel | json}}
+   
+    <h4>Big Search with dropdown</h4>
+    <sds-search [(ngModel)]="bigddmodel" [searchSettings]="bigddSearchSettings" placeholder="Entity an entity ID, name, or keyword"></sds-search>
+    Big model-- {{bigddmodel |json}}
+    
+    <h4> Big Search with Inverse Dropdown</h4>
+    <sds-search [(ngModel)]="biginvddmodel" [searchSettings]="biginvDDSearchSettings" placeholder="Entity an entity ID, name, or keyword"></sds-search>
+  
+ Big inv model {{biginvddmodel | json}}
+</div>
