@@ -120,6 +120,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   private resultsAvailableMessage: string = ' results available. Use up and down arrows\
   to scroll through results. Hit enter to select.';
 
+  private index = 0;
   /**
    * Gets the string value from the specifed properties of an object
    * @param object 
@@ -194,7 +195,11 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     }
   }
 
+  onkeypress(ev) {
+    return this.configuration.inputReadOnly ? false: true;
+  }
   textChange(event) {
+    if (!this.configuration.isTagModeEnabled) {
     // ie 11 placeholders will incorrectly trigger input events (known bug)
     // if input isn't active element then don't do anything
     if (event.target != document.activeElement) {
@@ -204,16 +209,19 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     const searchString = event.target.value || '';
     this.getResults(searchString);
   }
+}
 
   /**
    * Event method used when focus is gained to the input
    */
   inputFocusHandler(): void {
+    if (!this.configuration.isTagModeEnabled) {
     if (this.configuration.focusInSearch) {
       this.getResults(this.inputValue || '');
     }
     this.onTouchedCallback();
   }
+}
 
   /**
    * Key event
@@ -231,7 +239,19 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       this.onArrowUp();
     }
     else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex >= 0) {
-      this.selectItem(this.highlightedItem);
+    if (this.configuration.isTagModeEnabled) {
+      const item = {id: this.index++, name: this.inputValue}
+      SDSSelectedItemModelHelper.addItem(
+        item,
+        this.configuration.primaryKeyField,
+        this.configuration.selectionMode,
+        this.model.items
+      );
+      this.propogateChange(this.model);
+      this.focusRemoved();
+    } else {
+    this.selectItem(this.highlightedItem);
+     }
     }
     else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex < 0) {
       const item = this.createFreeTextItem();
