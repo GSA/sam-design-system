@@ -87,7 +87,7 @@ export class AutocompleteSampleComponent implements OnInit {
 
 
 
-
+    this.model.items.push(this.data[0]);
     this.model5.items.push(this.data[0]);
     this.model5.items.push(this.data[1]);
     this.model3.items.push(this.data[0]);
