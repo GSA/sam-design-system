@@ -41,7 +41,7 @@ import { FormlyLabelWrapperComponent } from './wrappers/label.wrapper';
 import { FormlyDescriptionWrapperComponent } from './wrappers/description.wrapper';
 import { FormlyValidationWrapperComponent } from './wrappers/validation.wrapper';
 import { FormlyGroupWrapperComponent } from './wrappers/group.wrapper';
-\
+
 
 export const FORMLY_WRAPPERS: any = [
   { name: 'form-field', component: FormlyWrapperFormFieldComponent, componentName: "FormlyWrapperFormFieldComponent" },
