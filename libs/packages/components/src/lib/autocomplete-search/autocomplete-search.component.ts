@@ -101,6 +101,11 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * is highlighted
    */
   public srOnlyText: string;
+  
+  /**
+   * To make input readonly
+   */
+   @Input() public inputReadOnly = false;
 
   /**
    * Stored Event for ControlValueAccessor
@@ -111,6 +116,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * Stored Event for ControlValueAccessor
    */
   public propogateChange: (_: any) => void = (_: any) => null;
+
 
   @Input()
   public disabled: boolean;
@@ -192,6 +198,9 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     }
   }
 
+  onkeypress(ev) {
+    return this.inputReadOnly ? false: true;
+  }
   textChange(event) {
     // ie 11 placeholders will incorrectly trigger input events (known bug)
     // if input isn't active element then don't do anything
