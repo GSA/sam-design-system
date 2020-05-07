@@ -136,7 +136,7 @@ export class SdsFiltersComponent implements OnInit {
     } else {
       this.clearStorage();
     }
-
+    this.cdr.detectChanges();
     this.modelChange.subscribe((change) => {
       window.clearTimeout(this.timeoutNumber);
       this.timeoutNumber = window.setTimeout(() => {
