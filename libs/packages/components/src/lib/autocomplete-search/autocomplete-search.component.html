@@ -1,10 +1,11 @@
 <div sds-click-outside (clickOutside)="checkForFocus($event)" sds-tab-outside (tabOutside)="checkForFocus($event)">
   <div class="maxw-mobile-lg position-relative">
-    <div role="combobox" [attr.id]="configuration.id+'-container'" [attr.aria-expanded]="showResults" [attr.aria-owns]="showResults? configuration.id+ '-listbox' : undefined"
-      aria-haspopup="listbox">
-      <input [disabled]="disabled" (input)="textChange($event)" class="usa-input padding-right-3" #input
-        [attr.aria-label]="configuration.ariaLabelText" [attr.id]="configuration.id" type="text" (focus)="inputFocusHandler()"
-        (keydown)="onKeydown($event)" [(ngModel)]="inputValue" aria-autocomplete="list" [attr.placeholder]="configuration.autocompletePlaceHolderText"
+    <div role="combobox" [attr.id]="configuration.id+'-container'" [attr.aria-expanded]="showResults"
+      [attr.aria-owns]="showResults? configuration.id+ '-listbox' : undefined" aria-haspopup="listbox">
+      <input [disabled]="disabled" (keypress)="onkeypress($event)" (input)="textChange($event)" class="usa-input padding-right-3" #input
+      [attr.aria-label]="configuration.ariaLabelText"
+        [attr.id]="configuration.id" type="text" (focus)="inputFocusHandler()" (keydown)="onKeydown($event)"
+        [(ngModel)]="inputValue" aria-autocomplete="list" [attr.placeholder]="configuration.autocompletePlaceHolderText"
         [attr.aria-activedescendant]="showResults? configuration.id+'-resultItem-'+highlightedIndex :''"
         [attr.aria-controls]="showResults? configuration.id+ '-listbox' : undefined" autocomplete="off">
     </div>
@@ -62,7 +63,7 @@
         </span>
         <span *ngIf="!configuration.isTagModeEnabled" tabindex="1" role="button" aria-label="Clear input" aria-hidden="false" class="margin-left-1">
           <fa-icon *ngIf="!showResults" (click)="inputFocusHandler()" [icon]="['fas', 'caret-down']" size="xs"></fa-icon>
-          <fa-icon *ngIf="showResults" (click)="checkForFocus()" [icon]="['fas', 'caret-up']" size="xs"></fa-icon>
+          <fa-icon *ngIf="showResults" (click)="checkForFocus($event)" [icon]="['fas', 'caret-up']" size="xs"></fa-icon>
         </span>
       </span>
     </ng-container>
