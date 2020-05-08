@@ -103,6 +103,11 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * is highlighted
    */
   public srOnlyText: string;
+  
+  /**
+   * To make input readonly
+   */
+   @Input() public inputReadOnly = false;
 
   /**
    * Stored Event for ControlValueAccessor
@@ -113,6 +118,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * Stored Event for ControlValueAccessor
    */
   public propogateChange: (_: any) => void = (_: any) => null;
+
 
   @Input()
   public disabled: boolean;

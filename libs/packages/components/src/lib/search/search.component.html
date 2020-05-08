@@ -1,27 +1,32 @@
-<form class="usa-search usa-search--small">
-  <div
-    role="search"
-    cdkMonitorSubtreeFocus
-    (cdkFocusChange)="focusChange($event)"
-  >
-    <label class="usa-sr-only" for="search-field-small"> Search </label>
-    <input
-      #inputEl
-      class="usa-input"
-      [ngClass]="inputClass"
-      id="search-field-small"
-      type="search"
-      name="search"
-      [placeholder]="placeholder"
-    />
-    <button
-      #buttonEl
-      (click)="handleClick($event)"
-      class="usa-button"
-      type="submit"
-    >
-      <span class="usa-sr-only">Search</span>
-    </button>
-  </div>
+<form class="usa-form usa-search" [ngClass]="getClass()" role="search">
+  <label class="usa-sr-only" for="options">Dropdown label</label>
+  <select *ngIf="(searchSettings?.dropdown)" [value]="model.searchCategory? model.searchCategory :''" #selectEl name="search options"
+    class="usa-select" id="search-options">
+    <option [value]=""> {{searchSettings.dropdown.placeholder ? searchSettings.dropdown.placeholder : '-Select-'}}</option>
+    <ng-container *ngFor="let item of searchSettings.dropdown.options">
+      <optgroup *ngIf="item.group" label="{{item.label}}">
+        <option *ngFor="let child of item.group" [value]="child.value" [selected]="model.searchCategory == child.value"
+          [disabled]="child.disabled">
+          {{ child.label }}
+        </option>
+      </optgroup>
+      <option *ngIf="!item.group" [value]="item.value" [selected]="model.searchCategory == item.value" [disabled]="item.disabled">{{
+        item.label }}</option>
+    </ng-container>
+  </select>
+  <ng-container *ngIf="(searchSettings.dropdown && searchSettings.dropdown.inverse); then inverseTemplate else inputTemplate">
+  </ng-container>
 </form>
 
+<ng-template #inputTemplate> <label class="usa-sr-only" for="search-field">Search</label>
+  <input #inputEl [value]="model.searchText? model.searchText :''" [ngClass]="inputClass" id="search-field" type="search" class="usa-input"
+    name="search" [placeholder]="searchSettings.placeholder? searchSettings.placeholder : 'type here'" />
+  <button class="usa-button" type="submit"  (click)="handleClick($event)">
+    <span class="usa-sr-only">Search</span>
+  </button>
+</ng-template>
+<ng-template #inverseTemplate>
+  <div class="sds-inverse__search">
+    <ng-container [ngTemplateOutlet]="inputTemplate"></ng-container>
+  </div>
+</ng-template>

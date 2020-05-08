@@ -62,11 +62,14 @@ export class SdsFiltersComponent implements OnInit {
   @Output() filterChange = new EventEmitter<object[]>();
 
   /**
+   * Timer id for the timer awaiting the service call for more typeing
+   */
+  private timeoutNumber: number;
+
+  /**
    * debounce time for current page input
    */
   @Input() debounceTime = 0;
-
-  private timeoutNumber: number;
 
   sdsFilterHistory = [];
 
@@ -132,11 +135,16 @@ export class SdsFiltersComponent implements OnInit {
       const updatedFormValue = JSON.parse(localStorage.getItem(initialRef));
       setTimeout(() => {
         this.model = { ...this.model, ...updatedFormValue }
+        this.filterChange.emit([updatedFormValue]);
+        if (this.formlyUpdateComunicationService) {
+          this.formlyUpdateComunicationService.updateFilter(updatedFormValue);
+        }
+        this.cdr.detectChanges();
       }, 0);
     } else {
       this.clearStorage();
     }
-
+    this.cdr.detectChanges();
     this.modelChange.subscribe((change) => {
       window.clearTimeout(this.timeoutNumber);
       this.timeoutNumber = window.setTimeout(() => {

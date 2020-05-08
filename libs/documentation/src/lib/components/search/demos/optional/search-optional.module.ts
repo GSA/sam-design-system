@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SearchBasic } from './search-basic.component';
+import { SearchOptional } from './search-optional.component';
 import { SdsSearchModule } from '@gsa-sam/components';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [SearchBasic],
+  declarations: [SearchOptional],
   imports: [
     CommonModule,
     SdsSearchModule,
     FormsModule
   ],
-  exports: [SearchBasic],
-  bootstrap: [SearchBasic]
+  exports: [SearchOptional],
+  bootstrap: [SearchOptional]
 })
-export class SearchBasicModule {}
+export class SearchOptionalModule {}
