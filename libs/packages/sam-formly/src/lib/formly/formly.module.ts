@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FormlyModule, FormlyFieldConfig } from '@ngx-formly/core';
+import { FormlyModule, FormlyFieldConfig, ConfigOption } from '@ngx-formly/core';
 import { FormlySelectModule } from '@ngx-formly/core/select';
 import { FIELD_TYPE_COMPONENTS, FORMLY_CONFIG } from './formly.config';
 import {
@@ -111,4 +111,8 @@ export { maxDateValidator, minDateValidator } from './formly.validators';
     })
   ]
 })
-export class SdsFormlyModule {}
+export class SdsFormlyModule {
+  public static forChild(config: ConfigOption = {}): ModuleWithProviders[] {
+    return [{ ngModule: SdsFormlyModule, providers: [] }, FormlyModule.forChild(config)];
+  }
+}
