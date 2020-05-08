@@ -135,6 +135,10 @@ export class SdsFiltersComponent implements OnInit {
       const updatedFormValue = JSON.parse(localStorage.getItem(initialRef));
       setTimeout(() => {
         this.model = { ...this.model, ...updatedFormValue }
+        this.filterChange.emit([updatedFormValue]);
+        if (this.formlyUpdateComunicationService) {
+          this.formlyUpdateComunicationService.updateFilter(updatedFormValue);
+        }
       }, 0);
     } else {
       this.clearStorage();
