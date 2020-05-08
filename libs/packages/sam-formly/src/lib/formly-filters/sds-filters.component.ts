@@ -139,6 +139,7 @@ export class SdsFiltersComponent implements OnInit {
         if (this.formlyUpdateComunicationService) {
           this.formlyUpdateComunicationService.updateFilter(updatedFormValue);
         }
+        this.cdr.detectChanges();
       }, 0);
     } else {
       this.clearStorage();
