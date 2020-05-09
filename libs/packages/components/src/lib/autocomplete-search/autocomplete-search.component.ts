@@ -53,8 +53,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   @Input()
   public service: SDSAutocompleteServiceInterface;
 
-  @Input() addTags: any;
-
   /**
    * Timer id for the timer awaiting the service call for more typeing
    */
