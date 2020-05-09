@@ -244,7 +244,9 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     }
     else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex >= 0) {
     if (this.configuration.isTagModeEnabled) {
-      const item = {id: this.index++, name: this.inputValue}
+      const item = {};
+      item[this.configuration.primaryKeyField] = this.index++;
+      item[this.configuration.primaryTextField] = this.inputValue;
       SDSSelectedItemModelHelper.addItem(
         item,
         this.configuration.primaryKeyField,
