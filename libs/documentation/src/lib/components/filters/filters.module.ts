@@ -11,6 +11,8 @@ import {
 } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { FiltersBasicModule } from './demos/basic/filters-basic.module';
+import { FiltersOptional } from './demos/optional/filters-optional.component';
+import { FiltersOptionalModule } from './demos/optional/filters-optional.module';
 
 declare var require: any;
 const DEMOS = {
@@ -20,6 +22,13 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/basic/filters-basic.component'),
     markup: require('!!raw-loader!./demos/basic/filters-basic.component.html'),
     path: 'libs/documentation/src/lib/components/filters/demos/basic'
+  },
+  optional: {
+    title: 'Optional Filters',
+    type: FiltersOptional,
+    code: require('!!raw-loader!./demos/optional/filters-optional.component'),
+    markup: require('!!raw-loader!./demos/optional/filters-optional.component.html'),
+    path: 'libs/documentation/src/lib/components/filters/demos/optional'
   }
 };
 
@@ -50,7 +59,8 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    FiltersBasicModule
+    FiltersBasicModule,
+    FiltersOptionalModule
   ]
 })
 export class FiltersModule {
