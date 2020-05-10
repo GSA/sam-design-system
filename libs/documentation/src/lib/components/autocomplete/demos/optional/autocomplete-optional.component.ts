@@ -16,12 +16,14 @@ export class AutocompleteOptional implements OnInit {
   public settings3 = new SDSAutocompletelConfiguration();
   public settings4 = new SDSAutocompletelConfiguration();
   public settings5 = new SDSAutocompletelConfiguration();
+  public settings6 = new SDSAutocompletelConfiguration();
 
   public model = new SDSSelectedItemModel();
   public model2 = new SDSSelectedItemModel();
   public model3 = new SDSSelectedItemModel();
   public model4 = new SDSSelectedItemModel();
   public model5 = new SDSSelectedItemModel();
+  public model6 = new SDSSelectedItemModel();
 
 
   constructor(public service: AutocompleteSampleDataService) {
@@ -44,7 +46,7 @@ export class AutocompleteOptional implements OnInit {
     this.settings.selectionMode = SelectionMode.MULTIPLE;
     this.settings.autocompletePlaceHolderText = 'Enter text';
     this.settings.isFreeTextEnabled = true;
-    
+
     this.settings2.primaryKeyField = 'id';
     this.settings2.id = 'autocomplete2';
     this.settings2.labelText = 'Autocomplete 2';
@@ -61,8 +63,7 @@ export class AutocompleteOptional implements OnInit {
     this.settings3.secondaryTextField = 'subtext';
     this.settings3.selectionMode = SelectionMode.MULTIPLE;
     this.settings3.autocompletePlaceHolderText = 'Enter text';
-    this.settings3.isTagModeEnabled =true;
-
+    this.settings3.isTagModeEnabled = true;
 
     this.settings4.primaryKeyField = 'id';
     this.settings4.id = 'autocomplete4';
@@ -71,24 +72,31 @@ export class AutocompleteOptional implements OnInit {
     this.settings4.secondaryTextField = 'subtext';
     this.settings4.autocompletePlaceHolderText = 'Enter text';
     this.settings4.selectionMode = SelectionMode.MULTIPLE;
-    //this.settings4.minimumCharacterCountSearch = 3;
-
 
     this.settings5.primaryKeyField = 'id';
     this.settings5.id = 'autocomplete5';
-    this.settings5.labelText = 'Autocomplete 5 Disabled';
+    this.settings5.labelText = 'Autocomplete 5';
     this.settings5.primaryTextField = 'name';
     this.settings5.secondaryTextField = 'subtext';
     this.settings5.selectionMode = SelectionMode.MULTIPLE;
     this.settings5.autocompletePlaceHolderText = 'Enter text';
+    this.settings5.minimumCharacterCountSearch = 3;
+
+    this.settings6.primaryKeyField = 'id';
+    this.settings6.id = 'autocomplete6';
+    this.settings6.labelText = 'Autocomplete 6 Disabled';
+    this.settings6.primaryTextField = 'name';
+    this.settings6.secondaryTextField = 'subtext';
+    this.settings6.selectionMode = SelectionMode.MULTIPLE;
+    this.settings6.autocompletePlaceHolderText = 'Enter text';
 
 
 
-
+    this.model6.items.push(this.data[0]);
+    this.model6.items.push(this.data[1]);
 
     this.model5.items.push(this.data[0]);
     this.model5.items.push(this.data[1]);
-  
 
   }
 
