@@ -47,7 +47,7 @@ export class AdvancedFiltersComponent {
       originalFields: this.fields,
       originalModel: this.model,
       submit: 'Update',
-      title: 'Advanced Filters',
+      title: 'More Filters',
     };
 
     const dialogRef = this.dialog.open(SdsFormlyDialogComponent, {
