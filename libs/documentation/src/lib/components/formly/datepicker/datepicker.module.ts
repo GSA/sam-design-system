@@ -10,6 +10,7 @@ import { FormlyDatepickerBasicModule } from './demos/basic/datepicker-basic.modu
 import { FormlyDatepickerBasic } from './demos/basic/datepicker-basic.component';
 
 declare var require: any;
+export const closing = require('!!raw-loader!./closing.md');
 const DEMOS = {
   basic: {
     title: 'Basic Form Datepicker',
@@ -26,6 +27,9 @@ export const ROUTES = [
     path: '',
     data: {
       title: 'Datepicker',
+      readme: {
+        closing
+      },
       items: [
         {
           pkg: 'formly',

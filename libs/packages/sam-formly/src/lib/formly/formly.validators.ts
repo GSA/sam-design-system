@@ -3,9 +3,9 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 
 
 /**
- * 
- * @param control 
- * @param field 
+ *
+ * @param control
+ * @param field
  */
 export function minDateValidator(control: FormControl, field: FormlyFieldConfig): ValidationErrors {
     let toReturn = null;
@@ -30,11 +30,29 @@ export function minDateValidator(control: FormControl, field: FormlyFieldConfig)
     return toReturn;
 }
 
+/**
+ * Usage:
+ *  Override the required validator to allow autocompletes to behave more like
+ *  the other inputs regarding error messages
+ *
+ // In the formly config
+ {
+      type: 'autocomplete',
+      templateOptions: {
+        required: true,
+      },
+      validators: {
+        required: autocompleteRequired
+      },
+ */
+export function autocompleteRequired(control: FormControl): ValidationErrors {
+  return control.value && control.value.items && control.value.length ? { required: true } : null;
+}
 
 /**
- * 
- * @param control 
- * @param field 
+ *
+ * @param control
+ * @param field
  */
 export function maxDateValidator(control: FormControl, field: FormlyFieldConfig): ValidationErrors {
     let toReturn = null;

@@ -4,7 +4,15 @@ import { Component } from '@angular/core';
   templateUrl: './search-basic.component.html'
 })
 export class SearchBasic {
-  log(value) {
-    console.log(`%cLog: ${value}`, 'color: blue; font-weight: bold');
+  model = {};
+  bigmodel = {}
+
+  searchSettings = {
+    placeholder: 'type here',
   }
+
+  bigSearchSettings = {
+    size: 'large',
+  }
+
 }

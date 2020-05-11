@@ -1,6 +1,6 @@
 {
   "name": "@gsa-sam/sam-formly",
-  "version": "0.6.11",
+  "version": "0.6.13",
   "repository": {
     "type": "git",
     "url": "https://github.com/GSA/sam-design-system.git"
@@ -13,6 +13,7 @@
     "@gsa-sam/components": ">=0.2.1",
     "qs": "^6.2.3",
     "@types/qs": "^6.2.3",
+    "ts-md5": "^1.2.7",
     "@fortawesome/angular-fontawesome": "^0.3.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.17",
     "@fortawesome/free-solid-svg-icons": "^5.8.1",

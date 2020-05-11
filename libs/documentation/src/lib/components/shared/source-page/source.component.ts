@@ -13,7 +13,6 @@ export function getSource(pkg, type, name) {
     fileURI: ""
   };
 
-  console.log(apis[pkg][type]);
   Object.values(apis[pkg][type])
   .filter((entity): entity is any => <any>entity)
   .filter((entity): entity is any => entity.name.startsWith(`${name}`))
@@ -29,16 +28,12 @@ export function getSource(pkg, type, name) {
   <ng-container *ngFor="let item of items">
     <ng-container *ngIf="item.sourceCode">
       <p class="margin-bottom-0"><span class="text-italic font-sans-3xs">Source: </span><code class="text-indigo bg-white margin-0" [innerHTML]="item.fileURI"></code></p>
-      <ngx-prism
-        [language] = "language"
-        [code] = "item.sourceCode"
-      ></ngx-prism>
+      <pre class="highlight"><code [highlight]="item.sourceCode"></code></pre>
     </ng-container>
   </ng-container>
   `
 })
 export class DocumentationSourcePage {
-  language = 'javascript';
   items: any = [];
 
   constructor(route: ActivatedRoute) {
