@@ -234,6 +234,10 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   onKeydown(event): void {
     if (KeyHelper.is(KEYS.TAB, event)) {
       return;
+    } else if (KeyHelper.is(KEYS.BACKSPACE, event)) {
+      if(this.configuration.inputReadOnly){
+        event.preventDefault();
+      }
     }
     else if (KeyHelper.is(KEYS.DOWN, event)) {
       this.onArrowDown();
