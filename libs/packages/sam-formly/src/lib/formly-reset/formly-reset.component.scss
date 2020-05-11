@@ -1,0 +1,11 @@
+.usa-button--unstyled {
+  padding-right: 0;
+  width: initial;
+  padding-bottom: 0;
+  text-decoration: none;
+  &:hover, &:active {
+    background: initial;
+    color: initial;
+    text-decoration: underline;
+  }
+}

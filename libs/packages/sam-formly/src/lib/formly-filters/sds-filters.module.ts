@@ -7,8 +7,10 @@ import {
     SdsAccordionModule,
 } from '@gsa-sam/components';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { SdsFiltersComponent } from './sds-filters.component';
 import { SdsFormlyModule } from '../formly/formly.module';
+import { SdsFormlyResetModule } from '../formly-reset/formly-reset.module';
 
 @NgModule({
     declarations: [
@@ -19,6 +21,7 @@ import { SdsFormlyModule } from '../formly/formly.module';
         FormsModule,
         SdsAccordionModule,
         SdsFormlyModule,
+        SdsFormlyResetModule,
         FontAwesomeModule,
         ReactiveFormsModule,
         FormlySelectModule,

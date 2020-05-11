@@ -19,15 +19,8 @@ import { HostListener } from '@angular/core';
 
 @Component({
   selector: 'sds-filters',
-  template: `
-    <formly-form
-      [form]="form"
-      [fields]="fields"
-      [options]="options"
-      (modelChange)="modelChange.next($event)" 
-      [model]="model"
-    ></formly-form>
-  `,
+  templateUrl: './sds-filters.component.html',
+  styleUrls: ['./sds-filters.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SdsFiltersComponent implements OnInit {
@@ -55,6 +48,11 @@ export class SdsFiltersComponent implements OnInit {
    *    Options for the form.
    */
   @Input() public options: FormlyFormOptions = {};
+
+  /**
+   *   Display Reset All button that returns form fields to default states -- default false.
+   */
+  @Input() public resetAll: boolean = false;
 
   /**
    *  Emit results when model updated
