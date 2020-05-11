@@ -440,7 +440,6 @@ describe('SamAutocompleteComponent', () => {
 
   it('Should have input read only', fakeAsync(() => {
     component.configuration.inputReadOnly = true;
-   
     const event = {
       "key": "a",
     }
@@ -453,6 +452,26 @@ describe('SamAutocompleteComponent', () => {
     expect(input.nativeElement.value).toBe("");
   }));
 
+  it('Should not trigger backspace event input read only', fakeAsync(() => {
+    component.inputValue = 'Search';
+    component.configuration.inputReadOnly = true;
+    const event = {
+      "key": "Backspace",
+      preventDefault: ()=>{},
+      target: {
+        "value": component.inputValue,
+       
+      }
+    }
+    component.onKeydown(event);
+    fixture.detectChanges();
+    tick();
+    fixture.detectChanges();
+
+    console.log(event);
+    const input = fixture.debugElement.query(By.css('.usa-input'));
+    expect(input.nativeElement.value).toBe("Search");
+  }));
   it('Should have input not read only', fakeAsync(() => {
     component.inputValue = 'a';
    const event = {
