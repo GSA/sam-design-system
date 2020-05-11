@@ -9,7 +9,7 @@ import { By } from '@angular/platform-browser';
 import { AutoCompleteSampleDataService } from './autocomplete-seach-test-service.spec';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-fdescribe('SamAutocompleteComponent', () => {
+describe('SamAutocompleteComponent', () => {
   let component: SDSAutocompleteSearchComponent;
   let fixture: ComponentFixture<SDSAutocompleteSearchComponent>;
 
