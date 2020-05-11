@@ -31,3 +31,6 @@ export * from './external-link/external-link.module';
 export * from './video-player/video-player.module';
 export * from './popup/popup.module';
 export * from './collapse/collapse.module';
+export * from './text/text.component';
+export * from './text/text.module';
+export * from './search/search.component';

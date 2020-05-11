@@ -30,7 +30,7 @@ export class SdsVideoPlayerComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.config = {
       videoId: this.VPConfiguration.id,
-      captionsOnDefault: true,
+      captionsOnDefault: false,
       seekInterval: this.VPConfiguration.seekInterval,
       videoTitle: 'Video Player',
       debug: this.VPConfiguration.debug

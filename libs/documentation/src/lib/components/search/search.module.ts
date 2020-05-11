@@ -12,16 +12,26 @@ import {
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { SearchBasicModule } from './demos/basic/search-basic.module';
 import { SearchBasic } from './demos/basic/search-basic.component';
+import { SearchOptional } from './demos/optional/search-optional.component';
+import { SearchOptionalModule } from './demos/optional/search-optional.module';
 
 declare var require: any;
 const DEMOS = {
   basic: {
-    title: 'SAM Search',
+    title: 'Basic Search ',
     type: SearchBasic,
     code: require('!!raw-loader!./demos/basic/search-basic.component'),
     markup: require('!!raw-loader!./demos/basic/search-basic.component.html'),
     path: 'libs/documentation/src/lib/components/search/demos/basic'
+  },
+  optional: {
+    title: 'Search with Select Dropdown',
+    type: SearchOptional,
+    code: require('!!raw-loader!./demos/optional/search-optional.component'),
+    markup: require('!!raw-loader!./demos/optional/search-optional.component.html'),
+    path: 'libs/documentation/src/lib/components/search/demos/optional'
   }
+  
 };
 
 export const ROUTES = [
@@ -51,7 +61,8 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    SearchBasicModule
+    SearchBasicModule,
+    SearchOptionalModule
   ]
 })
 export class SearchModule {

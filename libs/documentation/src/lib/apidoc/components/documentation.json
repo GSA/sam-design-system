@@ -142,6 +142,53 @@
             "methods": []
         },
         {
+            "name": "InitPxVideoConfig",
+            "id": "interface-InitPxVideoConfig-f7322da02d1e2bd076eb1bdf5afbd29c",
+            "file": "libs/packages/components/src/lib/video-player/video-player.component.ts",
+            "type": "interface",
+            "sourceCode": "import { Component, Input, AfterViewInit, ViewEncapsulation } from '@angular/core';\r\nimport { GLOBAL_STRINGS } from 'accessible-html5-video-player/js/strings.js';\r\nimport * as InitPxVideo from 'accessible-html5-video-player/js/px-video.js';\r\nimport { VPInterface } from './video-player';\r\n\r\ninterface InitPxVideoConfig {\r\n  \"videoId\": string,\r\n  \"captionsOnDefault\": boolean,\r\n  \"seekInterval\": number,\r\n  \"videoTitle\": string,\r\n  \"debug\": boolean\r\n}\r\n\r\ndeclare const GLOBAL_STRINGS: any;\r\n\r\ndeclare class InitPxVideo {\r\n  constructor(config: InitPxVideoConfig);\r\n}\r\n\r\n@Component({\r\n  selector: 'sds-video-player',\r\n  templateUrl: './video-player.component.html',\r\n  styleUrls: ['./css/px-video.css'],\r\n  encapsulation: ViewEncapsulation.None\r\n})\r\nexport class SdsVideoPlayerComponent implements AfterViewInit {\r\n  @Input() VPConfiguration: VPInterface;\r\n  private config: InitPxVideoConfig;\r\n\r\n  ngAfterViewInit() {\r\n    this.config = {\r\n      videoId: this.VPConfiguration.id,\r\n      captionsOnDefault: false,\r\n      seekInterval: this.VPConfiguration.seekInterval,\r\n      videoTitle: 'Video Player',\r\n      debug: this.VPConfiguration.debug\r\n    }\r\n\r\n    new InitPxVideo(this.config);\r\n  }\r\n\r\n  constructor() {\r\n}\r\n\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "captionsOnDefault",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "debug",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                },
+                {
+                    "name": "seekInterval",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "videoId",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 7
+                },
+                {
+                    "name": "videoTitle",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
             "name": "SdsAccordionBase",
             "id": "interface-SdsAccordionBase-ca0e37bbf3f8daf884e5f76775977ee2",
             "file": "libs/packages/components/src/lib/accordion/accordion-base.ts",
@@ -4052,6 +4099,153 @@
             }
         },
         {
+            "name": "ExternalLinkDirective",
+            "id": "directive-ExternalLinkDirective-ab3a8a6fa01cc6d68e1eeb6bb759f2ef",
+            "file": "libs/packages/components/src/lib/external-link/external-link.directive.ts",
+            "type": "directive",
+            "description": "",
+            "sourceCode": "import {\r\n  Directive,\r\n  AfterViewChecked,\r\n  ElementRef,\r\n  Renderer2,\r\n  Input,\r\n  ComponentFactoryResolver,\r\n  ViewContainerRef,\r\n  OnChanges\r\n} from '@angular/core';\r\nimport { faCoffee, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';\r\nimport { FaIconComponent } from '@fortawesome/angular-fontawesome';\r\n@Directive({\r\n  selector: 'a[href]'\r\n})\r\nexport class ExternalLinkDirective\r\n  implements OnChanges {\r\n    private vcRef: ViewContainerRef;\r\n  @Input() href: string;\r\n  @Input() public hideIcon: boolean = false;\r\n\r\n  private get hasExternalIcon (): boolean {\r\n    return this.el.nativeElement\r\n      .querySelectorAll('.sds-external-link')\r\n      .length > 0;\r\n  }\r\n\r\n  private get canRenderIcon (): boolean {\r\n    return !(this.hasExternalIcon || this.hideIcon);\r\n  }\r\n\r\n  private get isExternalLink (): boolean {\r\n    return this.href.replace(/^https?:\\/\\//,'').replace(/^www\\./, '').split('/')[0] != location.hostname;\r\n  }\r\n\r\n  constructor (\r\n    private el: ElementRef,\r\n    private renderer: Renderer2, private cfr: ComponentFactoryResolver , private vc : ViewContainerRef) {\r\n      \r\n    }\r\n\r\n    public ngOnChanges () {\r\n    if (!this.isExternalLink){\r\n      return;\r\n    }\r\n    if (this.canRenderIcon) {\r\n      this.createIcon();\r\n    }\r\n  }\r\n\r\n  private createIcon () {\r\n    // tslint:disable-next-line:no-unused-expression\r\n    this.vc.constructor.name === \"ViewContainerRef_\";\r\n    const factory = this.cfr.resolveComponentFactory(FaIconComponent);\r\n    const component = this.vc.createComponent(factory);\r\n    this.renderer.addClass(component.location.nativeElement, 'sds-external-link');\r\n    component.instance.iconProp = faExternalLinkAlt;\r\n    component.instance.ngOnChanges({});\r\n  }\r\n}\r\n",
+            "selector": "a[href]",
+            "providers": [],
+            "inputsClass": [
+                {
+                    "name": "hideIcon",
+                    "defaultValue": "false",
+                    "line": 20,
+                    "type": "boolean"
+                },
+                {
+                    "name": "href",
+                    "line": 19,
+                    "type": "string"
+                }
+            ],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [
+                {
+                    "name": "vcRef",
+                    "type": "ViewContainerRef",
+                    "optional": false,
+                    "description": "",
+                    "line": 18,
+                    "modifierKind": [
+                        112
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "createIcon",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 51,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "ngOnChanges",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 42,
+                    "modifierKind": [
+                        114
+                    ]
+                }
+            ],
+            "implements": [
+                "OnChanges"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "el",
+                        "type": "ElementRef"
+                    },
+                    {
+                        "name": "renderer",
+                        "type": "Renderer2"
+                    },
+                    {
+                        "name": "cfr",
+                        "type": "ComponentFactoryResolver"
+                    },
+                    {
+                        "name": "vc",
+                        "type": "ViewContainerRef"
+                    }
+                ],
+                "line": 34,
+                "jsdoctags": [
+                    {
+                        "name": "el",
+                        "type": "ElementRef",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "renderer",
+                        "type": "Renderer2",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "cfr",
+                        "type": "ComponentFactoryResolver",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "vc",
+                        "type": "ViewContainerRef",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "accessors": {
+                "hasExternalIcon": {
+                    "name": "hasExternalIcon",
+                    "getSignature": {
+                        "name": "hasExternalIcon",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 22
+                    }
+                },
+                "canRenderIcon": {
+                    "name": "canRenderIcon",
+                    "getSignature": {
+                        "name": "canRenderIcon",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 28
+                    }
+                },
+                "isExternalLink": {
+                    "name": "isExternalLink",
+                    "getSignature": {
+                        "name": "isExternalLink",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 32
+                    }
+                }
+            }
+        },
+        {
             "name": "SdsAccordionDirective",
             "id": "directive-SdsAccordionDirective-ebdc530ce41c3a75d331ee42d0316dcd",
             "file": "libs/packages/components/src/lib/accordion/accordion.directive.ts",
@@ -6450,7 +6644,7 @@
         },
         {
             "name": "SDSAutocompleteComponent",
-            "id": "component-SDSAutocompleteComponent-deddfebee6444435ce7448f9715736cd",
+            "id": "component-SDSAutocompleteComponent-3127ac227ea47b1c4bd4689b786d157d",
             "file": "libs/packages/components/src/lib/autocomplete/autocomplete.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -6473,8 +6667,8 @@
             "inputsClass": [
                 {
                     "name": "configuration",
-                    "description": "<p>Configuration for the control </p>\n",
-                    "line": 55,
+                    "description": "<p>Configuration for the control</p>\n",
+                    "line": 58,
                     "type": "SDSAutocompletelConfiguration"
                 },
                 {
@@ -6486,7 +6680,7 @@
                 {
                     "name": "service",
                     "description": "<p>Instance of the SamHiercarchicalServiceInterface provided</p>\n",
-                    "line": 61,
+                    "line": 64,
                     "type": "SDSAutocompleteServiceInterface"
                 },
                 {
@@ -6503,7 +6697,7 @@
                     "type": "boolean",
                     "optional": false,
                     "description": "",
-                    "line": 48,
+                    "line": 51,
                     "modifierKind": [
                         114
                     ]
@@ -6519,23 +6713,12 @@
                     ]
                 },
                 {
-                    "name": "onTouchedCallback",
-                    "defaultValue": "() => {...}",
-                    "type": "function",
-                    "optional": false,
-                    "description": "<p>Stored Event for ControlValueAccessor</p>\n",
-                    "line": 41,
-                    "modifierKind": [
-                        114
-                    ]
-                },
-                {
                     "name": "propogateChange",
                     "defaultValue": "() => {...}",
                     "type": "function",
                     "optional": false,
                     "description": "<p>Stored Event for ControlValueAccessor</p>\n",
-                    "line": 46,
+                    "line": 49,
                     "modifierKind": [
                         114
                     ]
@@ -6548,7 +6731,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 81
+                    "line": 84
                 },
                 {
                     "name": "registerOnChange",
@@ -6561,7 +6744,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 69,
+                    "line": 72,
                     "jsdoctags": [
                         {
                             "name": "fn",
@@ -6583,7 +6766,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 73,
+                    "line": 76,
                     "jsdoctags": [
                         {
                             "name": "fn",
@@ -6605,7 +6788,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 77,
+                    "line": 80,
                     "jsdoctags": [
                         {
                             "name": "isDisabled",
@@ -6627,7 +6810,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 63,
+                    "line": 66,
                     "jsdoctags": [
                         {
                             "name": "obj",
@@ -6640,11 +6823,19 @@
                 }
             ],
             "hostBindings": [],
-            "hostListeners": [],
+            "hostListeners": [
+                {
+                    "name": "focusout",
+                    "args": [],
+                    "argsDecorator": [],
+                    "description": "<p>Stored Event for ControlValueAccessor</p>\n",
+                    "line": 42
+                }
+            ],
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, Input, ViewChild, TemplateRef, ElementRef, forwardRef } from '@angular/core';\r\nimport { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl } from '@angular/forms';\r\nimport { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';\r\nimport { SDSAutocompleteServiceInterface } from '../autocomplete-search/models/SDSAutocompleteServiceInterface';\r\nimport { SDSAutocompletelConfiguration } from './models/SDSAutocompletelConfiguration.model';\r\nimport { SelectionMode } from '../selected-result/models/sds-selected-item-model-helper';\r\nconst Autocomplete_VALUE_ACCESSOR: any = {\r\n  provide: NG_VALUE_ACCESSOR,\r\n  useExisting: forwardRef(() => SDSAutocompleteComponent),\r\n  multi: true\r\n};\r\n\r\n@Component({\r\n  selector: 'sds-autocomplete',\r\n  templateUrl: './autocomplete.component.html',\r\n  styleUrls: ['./autocomplete.component.scss'],\r\n  providers: [Autocomplete_VALUE_ACCESSOR]\r\n})\r\nexport class SDSAutocompleteComponent implements ControlValueAccessor {\r\n\r\n\r\n  /**\r\n* Allow to insert a customized template for suggestions results\r\n*/\r\n  @Input() suggestionTemplate: TemplateRef<any>;\r\n\r\n  /**\r\n  * Allow to insert a customized template for selected items\r\n  */\r\n  @Input() selectedItemTemplate: TemplateRef<any>;\r\n\r\n  /**\r\n  * The data model that has the selected item\r\n  */\r\n  public model: SDSSelectedItemModel;\r\n\r\n\r\n  /**\r\n   * Stored Event for ControlValueAccessor\r\n   */\r\n  public onTouchedCallback: () => void = () => null;\r\n\r\n  /**\r\n   * Stored Event for ControlValueAccessor\r\n   */\r\n  public propogateChange: (_: any) => void = (_: any) => null;\r\n\r\n  public disabled: boolean;\r\n\r\n\r\n  /**\r\n * Configuration for the control \r\n */\r\n  @Input()\r\n  public configuration: SDSAutocompletelConfiguration;\r\n\r\n  /**\r\n* Instance of the SamHiercarchicalServiceInterface provided\r\n*/\r\n  @Input()\r\n  public service: SDSAutocompleteServiceInterface;\r\n\r\n  writeValue(obj: any): void {\r\n    if (obj instanceof SDSSelectedItemModel) {\r\n      this.model = obj as SDSSelectedItemModel;\r\n    }\r\n  }\r\n\r\n  registerOnChange(fn: any): void {\r\n    this.propogateChange = fn;\r\n  }\r\n\r\n  registerOnTouched(fn: any): void {\r\n    this.onTouchedCallback = fn;\r\n  }\r\n\r\n  setDisabledState(isDisabled: boolean): void {\r\n    this.disabled = isDisabled;\r\n  }\r\n\r\n  isSingleMode(): boolean {\r\n    if (this.configuration) {\r\n      return this.configuration.selectionMode === SelectionMode.SINGLE;\r\n    }\r\n    else {\r\n      return false;\r\n    }\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, Input, ViewChild, TemplateRef, ElementRef, forwardRef, HostListener } from '@angular/core';\r\nimport { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl } from '@angular/forms';\r\nimport { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';\r\nimport { SDSAutocompleteServiceInterface } from '../autocomplete-search/models/SDSAutocompleteServiceInterface';\r\nimport { SDSAutocompletelConfiguration } from './models/SDSAutocompletelConfiguration.model';\r\nimport { SelectionMode } from '../selected-result/models/sds-selected-item-model-helper';\r\nconst Autocomplete_VALUE_ACCESSOR: any = {\r\n  provide: NG_VALUE_ACCESSOR,\r\n  useExisting: forwardRef(() => SDSAutocompleteComponent),\r\n  multi: true\r\n};\r\n\r\n@Component({\r\n  selector: 'sds-autocomplete',\r\n  templateUrl: './autocomplete.component.html',\r\n  styleUrls: ['./autocomplete.component.scss'],\r\n  providers: [Autocomplete_VALUE_ACCESSOR]\r\n})\r\nexport class SDSAutocompleteComponent implements ControlValueAccessor {\r\n\r\n\r\n  /**\r\n* Allow to insert a customized template for suggestions results\r\n*/\r\n  @Input() suggestionTemplate: TemplateRef<any>;\r\n\r\n  /**\r\n  * Allow to insert a customized template for selected items\r\n  */\r\n  @Input() selectedItemTemplate: TemplateRef<any>;\r\n\r\n  /**\r\n  * The data model that has the selected item\r\n  */\r\n  public model: SDSSelectedItemModel;\r\n\r\n\r\n  /**\r\n   * Stored Event for ControlValueAccessor\r\n   */\r\n  @HostListener('focusout')\r\n  public onTouchedCallback: () => void = () => {\r\n\r\n  };\r\n\r\n  /**\r\n   * Stored Event for ControlValueAccessor\r\n   */\r\n  public propogateChange: (_: any) => void = (_: any) => null;\r\n\r\n  public disabled: boolean;\r\n\r\n\r\n  /**\r\n * Configuration for the control\r\n */\r\n  @Input()\r\n  public configuration: SDSAutocompletelConfiguration;\r\n\r\n  /**\r\n* Instance of the SamHiercarchicalServiceInterface provided\r\n*/\r\n  @Input()\r\n  public service: SDSAutocompleteServiceInterface;\r\n\r\n  writeValue(obj: any): void {\r\n    if (obj instanceof SDSSelectedItemModel) {\r\n      this.model = obj as SDSSelectedItemModel;\r\n    }\r\n  }\r\n\r\n  registerOnChange(fn: any): void {\r\n    this.propogateChange = fn;\r\n  }\r\n\r\n  registerOnTouched(fn: any): void {\r\n    this.onTouchedCallback = fn;\r\n  }\r\n\r\n  setDisabledState(isDisabled: boolean): void {\r\n    this.disabled = isDisabled;\r\n  }\r\n\r\n  isSingleMode(): boolean {\r\n    if (this.configuration) {\r\n      return this.configuration.selectionMode === SelectionMode.SINGLE;\r\n    }\r\n    else {\r\n      return false;\r\n    }\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -7518,7 +7709,7 @@
             "implements": [
                 "ControlValueAccessor"
             ],
-            "templateData": "<div sds-click-outside (clickOutside)=\"checkForFocus($event)\" sds-tab-outside (tabOutside)=\"checkForFocus($event)\">\r\n  <div class=\"maxw-mobile-lg\">\r\n    <div role=\"combobox\" [attr.id]=\"configuration.id+'-container'\" [attr.aria-expanded]=\"showResults\"\r\n      [attr.aria-owns]=\"showResults? configuration.id+ '-listbox' : undefined\" aria-haspopup=\"listbox\">\r\n      <input [disabled]=\"disabled\" (input)=\"textChange($event)\" class=\"usa-input\" #input  [attr.aria-label]=\"configuration.ariaLabelText\"\r\n        [attr.id]=\"configuration.id\" type=\"text\" (focus)=\"inputFocusHandler()\" (keydown)=\"onKeydown($event)\"\r\n        [(ngModel)]=\"inputValue\" aria-autocomplete=\"list\" [attr.placeholder]=\"configuration.autocompletePlaceHolderText\"\r\n        [attr.aria-activedescendant]=\"showResults? configuration.id+'-resultItem-'+highlightedIndex :''\"\r\n        [attr.aria-controls]=\"showResults? configuration.id+ '-listbox' : undefined\"\r\n        autocomplete=\"off\">\r\n    </div>\r\n    <ul #resultsList *ngIf=\"showResults\" [attr.id]=\"configuration.id+ '-listbox'\" role=\"listbox\"\r\n      class=\"usa-list usa-list--unstyled sds-autocomplete\" (scroll)=\"onScroll()\">\r\n      <ng-container *ngIf=\"(results && results.length > 0)\">\r\n        <li [attr.id]=\"configuration.id+'-resultItem-'+i\" role=\"option\" *ngFor=\"let result of results; let i = index\"\r\n          (mouseenter)=\"listItemHover(i)\"\r\n          [class]=\"result['highlighted'] ? 'sds-autocomplete__item sds-autocomplete__item--selected' : 'sds-autocomplete__item' \"\r\n          (click)=\"selectItem(result)\">\r\n          <ng-container *ngIf=\"itemTemplate\" [ngTemplateOutlet]=\"itemTemplate\"\r\n            [ngTemplateOutletContext]=\"{$implicit:result}\">\r\n\r\n          </ng-container>\r\n\r\n          <ng-container *ngIf=\"!itemTemplate\">\r\n            <span class=\"display-block text-semibold\">\r\n              {{ getObjectValue(result, configuration.primaryTextField) }}\r\n              <span *ngIf=\"result.type === 'custom'\">\r\n                - {{configuration.freeTextSubtext}}\r\n              </span>\r\n            </span>\r\n            <ng-container *ngIf=\"configuration.secondaryTextField &&  result[configuration.secondaryTextField] \">\r\n              <span class=\"description\">{{ result[configuration.secondaryTextField] }}</span>\r\n            </ng-container>\r\n          </ng-container>\r\n        </li>\r\n      </ng-container>\r\n      <ng-container *ngIf=\"(!results || results.length == 0)\">\r\n        <li class=\"emptyResults\">No results found</li>\r\n      </ng-container>\r\n      <ng-container *ngIf=\"showLoad\">\r\n        <li class=\"autoLoading\">\r\n          <div class=\"lightToGrayBackgroundGradiate\">\r\n\r\n          </div>\r\n          <div class=\"grayToLightBackgroundGradiate\">\r\n\r\n          </div>\r\n        </li>\r\n        <li class=\"autoLoading\">\r\n          <div class=\"lightToGrayBackgroundGradiate\">\r\n\r\n          </div>\r\n          <div class=\"grayToLightBackgroundGradiate\">\r\n\r\n          </div>\r\n        </li>\r\n      </ng-container>\r\n    </ul>\r\n\r\n    <ng-container *ngIf=\"!input.disabled\">\r\n      <span class=\"position-absolute right-105 top-1\">\r\n        <span tabindex=\"0\" role=\"button\" aria-label=\"Clear input\" aria-hidden=\"false\" (click)=\"clearInput()\"\r\n          (keyup.enter)=\"clearInput()\">\r\n          <fa-icon [icon]=\"['fas', 'times']\" size=\"xs\"></fa-icon>\r\n        </span>\r\n      </span>\r\n    </ng-container>\r\n    <ul class=\"usa-sr-only\" aria-live=\"assertive\">\r\n      <li>{{srOnlyText}}</li>\r\n    </ul>\r\n  </div>"
+            "templateData": "<div sds-click-outside (clickOutside)=\"checkForFocus($event)\" sds-tab-outside (tabOutside)=\"checkForFocus($event)\">\r\n  <div class=\"maxw-mobile-lg position-relative\">\r\n    <div role=\"combobox\" [attr.id]=\"configuration.id+'-container'\" [attr.aria-expanded]=\"showResults\"\r\n      [attr.aria-owns]=\"showResults? configuration.id+ '-listbox' : undefined\" aria-haspopup=\"listbox\">\r\n      <input [disabled]=\"disabled\" (input)=\"textChange($event)\" class=\"usa-input padding-right-3\" #input  [attr.aria-label]=\"configuration.ariaLabelText\"\r\n        [attr.id]=\"configuration.id\" type=\"text\" (focus)=\"inputFocusHandler()\" (keydown)=\"onKeydown($event)\"\r\n        [(ngModel)]=\"inputValue\" aria-autocomplete=\"list\" [attr.placeholder]=\"configuration.autocompletePlaceHolderText\"\r\n        [attr.aria-activedescendant]=\"showResults? configuration.id+'-resultItem-'+highlightedIndex :''\"\r\n        [attr.aria-controls]=\"showResults? configuration.id+ '-listbox' : undefined\"\r\n        autocomplete=\"off\">\r\n    </div>\r\n    <ul #resultsList *ngIf=\"showResults\" [attr.id]=\"configuration.id+ '-listbox'\" role=\"listbox\"\r\n      class=\"usa-list usa-list--unstyled sds-autocomplete\" (scroll)=\"onScroll()\">\r\n      <ng-container *ngIf=\"(results && results.length > 0)\">\r\n        <li [attr.id]=\"configuration.id+'-resultItem-'+i\" role=\"option\" *ngFor=\"let result of results; let i = index\"\r\n          (mouseenter)=\"listItemHover(i)\"\r\n          [class]=\"result['highlighted'] ? 'sds-autocomplete__item sds-autocomplete__item--selected' : 'sds-autocomplete__item' \"\r\n          (click)=\"selectItem(result)\">\r\n          <ng-container *ngIf=\"itemTemplate\" [ngTemplateOutlet]=\"itemTemplate\"\r\n            [ngTemplateOutletContext]=\"{$implicit:result}\">\r\n\r\n          </ng-container>\r\n\r\n          <ng-container *ngIf=\"!itemTemplate\">\r\n            <span class=\"display-block text-semibold\">\r\n              {{ getObjectValue(result, configuration.primaryTextField) }}\r\n              <span *ngIf=\"result.type === 'custom'\">\r\n                - {{configuration.freeTextSubtext}}\r\n              </span>\r\n            </span>\r\n            <ng-container *ngIf=\"configuration.secondaryTextField &&  result[configuration.secondaryTextField] \">\r\n              <span class=\"description\">{{ result[configuration.secondaryTextField] }}</span>\r\n            </ng-container>\r\n          </ng-container>\r\n        </li>\r\n      </ng-container>\r\n      <ng-container *ngIf=\"(!results || results.length == 0)\">\r\n        <li class=\"emptyResults\">No results found</li>\r\n      </ng-container>\r\n      <ng-container *ngIf=\"showLoad\">\r\n        <li class=\"autoLoading\">\r\n          <div class=\"lightToGrayBackgroundGradiate\">\r\n\r\n          </div>\r\n          <div class=\"grayToLightBackgroundGradiate\">\r\n\r\n          </div>\r\n        </li>\r\n        <li class=\"autoLoading\">\r\n          <div class=\"lightToGrayBackgroundGradiate\">\r\n\r\n          </div>\r\n          <div class=\"grayToLightBackgroundGradiate\">\r\n\r\n          </div>\r\n        </li>\r\n      </ng-container>\r\n    </ul>\r\n\r\n    <ng-container *ngIf=\"!input.disabled\">\r\n      <span class=\"position-absolute right-105 top-1\">\r\n        <span tabindex=\"0\" role=\"button\" aria-label=\"Clear input\" aria-hidden=\"false\" (click)=\"clearInput()\"\r\n          (keyup.enter)=\"clearInput()\">\r\n          <fa-icon [icon]=\"['fas', 'times']\" size=\"xs\"></fa-icon>\r\n        </span>\r\n      </span>\r\n    </ng-container>\r\n    <ul class=\"usa-sr-only\" aria-live=\"assertive\">\r\n      <li>{{srOnlyText}}</li>\r\n    </ul>\r\n  </div>\r\n"
         },
         {
             "name": "SdsDialogContainerComponent",
@@ -10152,6 +10343,215 @@
             "templateData": "<nav>\r\n    <ul class=\"usa-sidenav\">\r\n        <li *ngFor=\"let link of model.navigationLinks\" class=\"sidenav__item\">\r\n            <ng-container [ngTemplateOutlet]=\"sideNavLinkTemplate\" [ngTemplateOutletContext]=\"{$implicit:link}\">\r\n            </ng-container>\r\n        </li>\r\n    </ul>\r\n</nav>\r\n\r\n<ng-template #sideNavLinkTemplate let-link>\r\n    <ng-container [ngTemplateOutlet]=\"getItemTemplate(link)\" [ngTemplateOutletContext]=\"{$implicit:link}\">\r\n    </ng-container>\r\n    <ul *ngIf=\"link.children\" class=\"usa-sidenav__sublist\">\r\n        <li *ngFor=\"let link of link.children\" class=\"sidenav__item\">\r\n            <ng-container [ngTemplateOutlet]=\"sideNavLinkTemplate\" [ngTemplateOutletContext]=\"{$implicit:link}\">\r\n            </ng-container>\r\n        </li>\r\n    </ul>\r\n</ng-template>\r\n\r\n<ng-template #sideNavRouteLinkTemplate let-link>\r\n    <a [attr.class]=\"link.selected ? ' usa-current' : ''\" [routerLink]=\"[link.route]\"\r\n        [queryParams]=\"link.queryParams\"><span>{{link.text}}</span></a>\r\n</ng-template>\r\n\r\n<ng-template #sideNavHREFLinkTemplate let-link>\r\n    <a [attr.class]=\"link.selected ? ' usa-current' : ''\" [attr.href]=\"urlBuilder(link)\"><span>{{link.text}}</span></a>\r\n</ng-template>\r\n\r\n<ng-template #sideNavLabelLinkTemplate let-link>\r\n    <span [attr.class]=\"link.selected ? ' usa-current' : ''\"><span>{{link.text}}</span></span>\r\n</ng-template>\r\n\r\n<ng-template #sideNavEVENTLinkTemplate let-link>\r\n    <a [attr.class]=\"link.selected ? ' usa-current' : ''\" href=\"javascript:void(0)\"\r\n        (click)=\"linkClickEvent(link)\"><span>{{link.text}}</span></a>\r\n</ng-template>"
         },
         {
+            "name": "SdsTextChildComponent",
+            "id": "component-SdsTextChildComponent-9aa77c11c4481a83421c0e121b9b5389",
+            "file": "libs/packages/components/src/lib/text/child.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "sds-text-child",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<span class=\"sds-tag sds-tag--chip\" *ngIf=\"inputtest\">\n{{inputtest}}\n</span>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "inputtest",
+                    "line": 13
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { Subject } from 'rxjs';\n\n@Component({\n  selector: 'sds-text-child',\n  template: `\n  <span class=\"sds-tag sds-tag--chip\" *ngIf=\"inputtest\">\n  {{inputtest}}\n  </span>\n  `\n})\nexport class SdsTextChildComponent  {\n    @Input() inputtest;\n}\n\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": ""
+        },
+        {
+            "name": "SdsTextComponent",
+            "id": "component-SdsTextComponent-ec5d86c0bc968e37b2a94f0a62def1b3",
+            "file": "libs/packages/components/src/lib/text/text.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [
+                {
+                    "name": "{\n    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => SdsTextComponent), multi: true\n}",
+                    "type": "component"
+                }
+            ],
+            "selector": "sds-text",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<input [(ngModel)]=\"value\" class=\"usa-input\" (blur)=\"onBlur()\"/> <br/>\n <sds-text-child [inputtest]=\"value\"></sds-text-child>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "innerValue",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 21,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "onChangeCallback",
+                    "type": "function",
+                    "optional": false,
+                    "description": "",
+                    "line": 24,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "onTouchedCallback",
+                    "type": "function",
+                    "optional": false,
+                    "description": "",
+                    "line": 23,
+                    "modifierKind": [
+                        112
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "onBlur",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 37
+                },
+                {
+                    "name": "registerOnChange",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "any"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 47,
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "registerOnTouched",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "any"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 51,
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "writeValue",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "any"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 41,
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, forwardRef } from '@angular/core';\nimport { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';\n\n\nconst noop = () => {};\n\n@Component({\n  selector: 'sds-text',\n  template: ` <input [(ngModel)]=\"value\" class=\"usa-input\" (blur)=\"onBlur()\"/>\n  <br/>\n  <sds-text-child [inputtest]=\"value\"></sds-text-child>`,\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => SdsTextComponent),\n      multi: true\n    }\n  ]\n})\nexport class SdsTextComponent implements ControlValueAccessor {\n   private innerValue;\n\n   private onTouchedCallback: () => {};\n   private onChangeCallback: (_: any) => {};\n\n   get value(): any {\n       return this.innerValue;\n   }\n\n   set value(v: any) {\n       if (v !== this.innerValue) {\n           this.innerValue = v;\n           this.onChangeCallback(v);\n       }\n   }\n\n   onBlur() {\n       this.onTouchedCallback();\n   }\n\n   writeValue(value: any) {\n       if (value !== this.innerValue) {\n           this.innerValue = value;\n       }\n   }\n\n   registerOnChange(fn: any) {\n       this.onChangeCallback = fn;\n   }\n\n   registerOnTouched(fn: any) {\n       this.onTouchedCallback = fn;\n   }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "implements": [
+                "ControlValueAccessor"
+            ],
+            "accessors": {
+                "value": {
+                    "name": "value",
+                    "setSignature": {
+                        "name": "value",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "v",
+                                "type": "any"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 30,
+                        "jsdoctags": [
+                            {
+                                "name": "v",
+                                "type": "any",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    },
+                    "getSignature": {
+                        "name": "value",
+                        "type": "any",
+                        "returnType": "any",
+                        "line": 26
+                    }
+                }
+            }
+        },
+        {
             "name": "SdsToolbarComponent",
             "id": "component-SdsToolbarComponent-f585a8739de458a2d25b6bbc810e6c82",
             "file": "libs/packages/components/src/lib/toolbar/toolbar.component.ts",
@@ -10620,7 +11020,7 @@
         },
         {
             "name": "SdsVideoPlayerComponent",
-            "id": "component-SdsVideoPlayerComponent-8e667943473066a0f90d059fdf101c13",
+            "id": "component-SdsVideoPlayerComponent-f7322da02d1e2bd076eb1bdf5afbd29c",
             "file": "libs/packages/components/src/lib/video-player/video-player.component.ts",
             "encapsulation": [
                 "ViewEncapsulation.None"
@@ -10641,12 +11041,23 @@
             "inputsClass": [
                 {
                     "name": "VPConfiguration",
-                    "line": 12,
+                    "line": 27,
                     "type": "VPInterface"
                 }
             ],
             "outputsClass": [],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "config",
+                    "type": "InitPxVideoConfig",
+                    "optional": false,
+                    "description": "",
+                    "line": 28,
+                    "modifierKind": [
+                        112
+                    ]
+                }
+            ],
             "methodsClass": [
                 {
                     "name": "ngAfterViewInit",
@@ -10654,7 +11065,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 14
+                    "line": 30
                 }
             ],
             "hostBindings": [],
@@ -10662,11 +11073,11 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, Input, AfterViewInit, ViewEncapsulation } from '@angular/core';\r\nimport { InitPxVideo } from './js/px-video';\r\nimport { VPInterface } from './video-player';\r\n\r\n@Component({\r\n  selector: 'sds-video-player',\r\n  templateUrl: './video-player.component.html',\r\n  styleUrls: ['./css/px-video.css'],\r\n  encapsulation: ViewEncapsulation.None\r\n})\r\nexport class SdsVideoPlayerComponent implements AfterViewInit {\r\n  @Input() VPConfiguration: VPInterface;\r\n\r\n  ngAfterViewInit() {\r\n    InitPxVideo({\r\n      videoId: this.VPConfiguration.id,\r\n      captionsOnDefault: true,\r\n      seekInterval: this.VPConfiguration.seekInterval,\r\n      videoTitle: 'Video Player',\r\n      debug: this.VPConfiguration.debug\r\n    });\r\n  }\r\n\r\n  constructor() {\r\n}\r\n\r\n}\r\n",
+            "sourceCode": "import { Component, Input, AfterViewInit, ViewEncapsulation } from '@angular/core';\r\nimport { GLOBAL_STRINGS } from 'accessible-html5-video-player/js/strings.js';\r\nimport * as InitPxVideo from 'accessible-html5-video-player/js/px-video.js';\r\nimport { VPInterface } from './video-player';\r\n\r\ninterface InitPxVideoConfig {\r\n  \"videoId\": string,\r\n  \"captionsOnDefault\": boolean,\r\n  \"seekInterval\": number,\r\n  \"videoTitle\": string,\r\n  \"debug\": boolean\r\n}\r\n\r\ndeclare const GLOBAL_STRINGS: any;\r\n\r\ndeclare class InitPxVideo {\r\n  constructor(config: InitPxVideoConfig);\r\n}\r\n\r\n@Component({\r\n  selector: 'sds-video-player',\r\n  templateUrl: './video-player.component.html',\r\n  styleUrls: ['./css/px-video.css'],\r\n  encapsulation: ViewEncapsulation.None\r\n})\r\nexport class SdsVideoPlayerComponent implements AfterViewInit {\r\n  @Input() VPConfiguration: VPInterface;\r\n  private config: InitPxVideoConfig;\r\n\r\n  ngAfterViewInit() {\r\n    this.config = {\r\n      videoId: this.VPConfiguration.id,\r\n      captionsOnDefault: false,\r\n      seekInterval: this.VPConfiguration.seekInterval,\r\n      videoTitle: 'Video Player',\r\n      debug: this.VPConfiguration.debug\r\n    }\r\n\r\n    new InitPxVideo(this.config);\r\n  }\r\n\r\n  constructor() {\r\n}\r\n\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "\r\n@media only screen and (min-width: 620px) {\r\n\r\n  .custom-controls .transcript-link {\r\n\r\n    margin-top: -44px;\r\n\r\n  }\r\n\r\n}\r\n\r\n.transcript-single {\r\n\r\n  border-bottom: 2px solid black-thirty;\r\n\r\n}\r\n\r\n.transcript-single.hidden {\r\n\r\n  display: none;\r\n\r\n}\r\n\r\n.session--watch {\r\n\r\n  margin-bottom: HalfLineHeight;\r\n\r\n}\r\n\r\n.session--watch .button {\r\n\r\n  background: black-sixty;\r\n\r\n  margin-top: QuarterLineHeight;\r\n\r\n}\r\n\r\n.session--watch .button:hover,\r\n\r\n.session--watch .button:active,\r\n\r\n.session--watch .button:focus {\r\n\r\n  background: black-seventy;\r\n\r\n}\r\n\r\n.sr-only {\r\n\r\n  position: absolute !important;\r\n\r\n  clip: rect(1px, 1px, 1px, 1px);\r\n\r\n  padding: 0 !important;\r\n\r\n  border: 0 !important;\r\n\r\n  height: 1px !important;\r\n\r\n  width: 1px !important;\r\n\r\n  overflow: hidden;\r\n\r\n}\r\n\r\n.hide {\r\n\r\n  display: none;\r\n\r\n}\r\n\r\n.show-inline {\r\n\r\n  display: inline-block;\r\n\r\n}\r\n\r\n.px-video-container {\r\n\r\n  overflow: hidden;\r\n\r\n  min-width: 300px;\r\n\r\n}\r\n\r\n.px-video-img-captions-container {\r\n\r\n  position: relative;\r\n\r\n  /* padding-bottom: 56.25%;\r\n\r\n  height: 0; */\r\n\r\n}\r\n\r\n.px-video {\r\n\r\n  position: absolute;\r\n\r\n  top: 0;\r\n\r\n  left: 0;\r\n\r\n  margin-top: 0;\r\n\r\n  width: 100%;\r\n\r\n  height: 100%;\r\n\r\n}\r\n\r\n.px-video-img-captions-container * {\r\n\r\n  box-sizing: border-box;\r\n\r\n}\r\n\r\n.px-video-img-captions-container {\r\n\r\n  position: relative;\r\n\r\n}\r\n\r\n.px-video-wrapper {\r\n\r\n  position: relative;\r\n\r\n  padding-bottom: 56.25%;\r\n\r\n  height: 0;\r\n\r\n  z-index: 1;\r\n\r\n}\r\n\r\n.px-video {\r\n\r\n  position: absolute;\r\n\r\n  top: 0;\r\n\r\n  left: 0;\r\n\r\n  width: 100%;\r\n\r\n  height: 100%;\r\n\r\n}\r\n\r\n.progress-bar {\r\n\r\n  width: 85%;\r\n\r\n}\r\n\r\n@media only screen and (min-width: 480px) {\r\n\r\n  .progress-bar {\r\n\r\n    width: 89%;\r\n\r\n  }\r\n\r\n}\r\n\r\n@media only screen and (min-width: 970px) {\r\n\r\n  .progress-bar {\r\n\r\n    width: 95%;\r\n\r\n  }\r\n\r\n}\r\n\r\n@media only screen and (min-width: 1795px) {\r\n\r\n  .progress-bar {\r\n\r\n    width: 97.5%;\r\n\r\n  }\r\n\r\n}\r\n\r\n.px-video-controls {\r\n\r\n  margin-bottom: 10px;\r\n\r\n  margin-top: 10px;\r\n\r\n}\r\n\r\n.px-video-controls:after {\r\n\r\n  display: block;\r\n\r\n  font-size: 0;\r\n\r\n  content: \" \";\r\n\r\n  clear: both;\r\n\r\n  height: 0;\r\n\r\n  visibility: hidden;\r\n\r\n}\r\n\r\n.px-video-progress {\r\n\r\n  display: block;\r\n\r\n  width: 100%;\r\n\r\n  margin-bottom: 10px;\r\n\r\n  height: 10px;\r\n\r\n}\r\n\r\n.px-video-progress[value] {\r\n\r\n  -webkit-appearance: none;\r\n\r\n  border: none;\r\n\r\n}\r\n\r\n.px-video-progress[value]::-webkit-progress-bar {\r\n\r\n  background-color: #e6e6e6;\r\n\r\n}\r\n\r\n.px-video-progress[value]::-webkit-progress-value {\r\n\r\n  background-color: #009cdf;\r\n\r\n}\r\n\r\n.px-video-time {\r\n\r\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\r\n\r\n  float: right;\r\n\r\n  line-height: 30px;\r\n\r\n  margin-top: -30px;\r\n\r\n  font-size: 14px;\r\n\r\n}\r\n\r\n.px-video-captions {\r\n\r\n  box-sizing: border-box;\r\n\r\n  position: absolute;\r\n\r\n  /* top: 1px;  Added by Hemal */\r\n\r\n  left: 0;\r\n\r\n  width: 100%;\r\n\r\n  padding: 0.5em;\r\n\r\n  min-height: 2.5em;\r\n\r\n  background-color: #000;\r\n\r\n  color: #fff;\r\n\r\n  font-size: 1.1em;\r\n\r\n  text-align: center;\r\n\r\n  opacity: 0.75;\r\n\r\n  z-index: 2;\r\n\r\n}\r\n\r\n.px-video-playback-buttons {\r\n\r\n  float: left;\r\n\r\n  line-height: 20px;\r\n\r\n  min-width: 145px;\r\n\r\n}\r\n\r\n@media only screen and (min-width: 620px) {\r\n\r\n  .px-video-playback-buttons {\r\n\r\n    float: none;\r\n\r\n    left: 50%;\r\n\r\n    margin-left: -120px;\r\n\r\n    min-width: 200px;\r\n\r\n    position: absolute;\r\n\r\n    width: 200px;\r\n\r\n  }\r\n\r\n}\r\n\r\n.px-video-controls button {\r\n\r\n  border: 1px transparent solid;\r\n\r\n  background: transparent;\r\n\r\n  padding: 0;\r\n\r\n  margin: 0 5px;\r\n\r\n  width: 25px;\r\n\r\n  height: 25px;\r\n\r\n  overflow: hidden;\r\n\r\n  background: no-repeat url(\"../images/px-video-sprite.svg\");\r\n\r\n}\r\n\r\n@media only screen and (min-width: 620px) {\r\n\r\n  .px-video-controls button {\r\n\r\n    background-size: 150%;\r\n\r\n    width: 40px;\r\n\r\n    height: 40px;\r\n\r\n  }\r\n\r\n}\r\n\r\n\r\n\r\n.px-video-controls button:focus {\r\n\r\n  border: 1px #999 dotted;\r\n\r\n  outline: none;\r\n\r\n}\r\n\r\n.px-video-controls button {\r\n\r\n  cursor: pointer;\r\n\r\n}\r\n\r\n.px-video-controls button.px-video-restart {\r\n\r\n  background-position: -9px -331px;\r\n\r\n}\r\n\r\n.px-video-controls button.px-video-restart:hover,\r\n\r\n.px-video-controls button.px-video-restart:focus {\r\n\r\n  background-position: -9px -295px;\r\n\r\n}\r\n\r\n@media only screen and (min-width: 620px) {\r\n\r\n  .px-video-controls button.px-video-restart {\r\n\r\n    background-position: -9px -523px;\r\n\r\n  }\r\n\r\n}\r\n\r\n@media only screen and (min-width: 620px) {\r\n\r\n  .px-video-controls button.px-video-restart:hover,\r\n\r\n  .px-video-controls button.px-video-restart:focus {\r\n\r\n    background-position: -9px -466px;\r\n\r\n  }\r\n\r\n}\r\n\r\n.px-video-controls button.px-video-rewind {\r\n\r\n  background-position: -9px -187px;\r\n\r\n}\r\n\r\n.px-video-controls button.px-video-rewind:hover,\r\n\r\n.px-video-controls button.px-video-rewind:focus {\r\n\r\n  background-position: -9px -151px;\r\n\r\n}\r\n\r\n@media only screen and (min-width: 620px) {\r\n\r\n  .px-video-controls button.px-video-rewind {\r\n\r\n    background-position: -9px -295px;\r\n\r\n  }\r\n\r\n  .px-video-controls button.px-video-rewind:hover,\r\n\r\n  .px-video-controls button.px-video-rewind:focus {\r\n\r\n    background-position: -9px -238px;\r\n\r\n  }\r\n\r\n}\r\n\r\n.px-video-controls button.px-video-play {\r\n\r\n  background-position: -8px -43px;\r\n\r\n}\r\n\r\n.px-video-controls button.px-video-play:hover,\r\n\r\n.px-video-controls button.px-video-play:focus {\r\n\r\n  background-position: -8px -7px;\r\n\r\n}\r\n\r\n@media only screen and (min-width: 620px) {\r\n\r\n  .px-video-controls button.px-video-play {\r\n\r\n    background-position: -8px -67px;\r\n\r\n  }\r\n\r\n  .px-video-controls button.px-video-play:hover,\r\n\r\n  .px-video-controls button.px-video-play:focus {\r\n\r\n    background-position: -8px -10px;\r\n\r\n  }\r\n\r\n}\r\n\r\n.px-video-controls button.px-video-pause {\r\n\r\n  background-position: -9px -115px;\r\n\r\n}\r\n\r\n.px-video-controls button.px-video-pause:hover,\r\n\r\n.px-video-controls button.px-video-pause:focus {\r\n\r\n  background-position: -9px -79px;\r\n\r\n}\r\n\r\n@media only screen and (min-width: 620px) {\r\n\r\n  .px-video-controls button.px-video-pause {\r\n\r\n    background-position: -9px -182px;\r\n\r\n  }\r\n\r\n}\r\n\r\n@media only screen and (min-width: 620px) {\r\n\r\n  .px-video-controls button.px-video-pause:hover,\r\n\r\n  .px-video-controls button.px-video-pause:focus {\r\n\r\n    background-position: -9px -124px;\r\n\r\n  }\r\n\r\n}\r\n\r\n.px-video-controls button.px-video-forward {\r\n\r\n  background-position: -10px -259px;\r\n\r\n}\r\n\r\n.px-video-controls button.px-video-forward:hover,\r\n\r\n.px-video-controls button.px-video-forward:focus {\r\n\r\n  background-position: -10px -223px;\r\n\r\n}\r\n\r\n@media only screen and (min-width: 620px) {\r\n\r\n  .px-video-controls button.px-video-forward {\r\n\r\n    background-position: -10px -409px;\r\n\r\n  }\r\n\r\n  .px-video-controls button.px-video-forward:hover,\r\n\r\n  .px-video-controls button.px-video-forward:focus {\r\n\r\n    background-position: -10px -352px;\r\n\r\n  }\r\n\r\n}\r\n\r\n.px-video-fullscreen-btn-container {\r\n\r\n  float: left;\r\n\r\n  width: 25px;\r\n\r\n}\r\n\r\n.px-video-fullscreen-btn-container label {\r\n\r\n  display: inline-block;\r\n\r\n  width: 25px;\r\n\r\n  height: 20px;\r\n\r\n  margin-top: 3px;\r\n\r\n  margin-left: 1px;\r\n\r\n  background: no-repeat url(\"../images/px-video-sprite.svg\");\r\n\r\n  background-position: -6px -943px;\r\n\r\n}\r\n\r\n@media only screen and (min-width: 540px) {\r\n\r\n  .px-video-fullscreen-btn-container label {\r\n\r\n    margin-top: 5px;\r\n\r\n  }\r\n\r\n}\r\n\r\n\r\n\r\n.px-video-fullscreen-btn-container input[type=\"checkbox\"]:focus+label {\r\n\r\n  outline: 1px #999 dotted;\r\n\r\n  background-position: -6px -907px;\r\n\r\n}\r\n\r\n.px-video-fullscreen-btn-container input[type=\"checkbox\"]:hover+label {\r\n\r\n  background-position: -6px -907px;\r\n\r\n  cursor: pointer;\r\n\r\n}\r\n\r\n.px-video-fullscreen-btn-container input[type=\"checkbox\"]:focus+label {\r\n\r\n  outline: 1px #999 dotted;\r\n\r\n  background-position: -6px -907px;\r\n\r\n}\r\n\r\n.px-video-fullscreen-btn-container input[type=\"checkbox\"]:checked+label {\r\n\r\n  background-position: -6px -979px;\r\n\r\n}\r\n\r\n.px-video-fullscreen-btn-container input[type=\"checkbox\"]:checked:hover+label {\r\n\r\n  background-position: -6px -1015px;\r\n\r\n}\r\n\r\n.px-video-captions-btn-container {\r\n\r\n  float: left;\r\n\r\n}\r\n\r\n@media only screen and (min-width: 540px) {\r\n\r\n  .px-video-captions-btn-container {\r\n\r\n    clear: none;\r\n\r\n    margin-top: 1px;\r\n\r\n    margin-left: 10px;\r\n\r\n  }\r\n\r\n}\r\n\r\n.px-video-captions-btn-container label {\r\n\r\n  display: inline-block;\r\n\r\n  width: 25px;\r\n\r\n  height: 20px;\r\n\r\n  margin-top: 3px;\r\n\r\n  background: no-repeat url(\"../images/px-video-sprite.svg\");\r\n\r\n  background-position: -6px -835px;\r\n\r\n}\r\n\r\n@media only screen and (min-width: 540px) {\r\n\r\n  .px-video-captions-btn-container label {\r\n\r\n    margin-top: 4px;\r\n\r\n  }\r\n\r\n}\r\n\r\n.px-video-captions-btn-container input[type=\"checkbox\"]:focus+label {\r\n\r\n  outline: 1px #999 dotted;\r\n\r\n  background-position: -6px -799px;\r\n\r\n}\r\n\r\n.px-video-captions-btn-container input[type=\"checkbox\"]:hover+label {\r\n\r\n  background-position: -6px -799px;\r\n\r\n  cursor: pointer;\r\n\r\n}\r\n\r\n.px-video-captions-btn-container input[type=\"checkbox\"]:focus+label {\r\n\r\n  outline: 1px #999 dotted;\r\n\r\n  background-position: -6px -799px;\r\n\r\n}\r\n\r\n.px-video-captions-btn-container input[type=\"checkbox\"]:checked+label {\r\n\r\n  background-position: -6px -871px;\r\n\r\n}\r\n\r\n.px-video-volume-controls {\r\n\r\n  float: right;\r\n\r\n  overflow: hidden;\r\n\r\n  min-width: 133px;\r\n\r\n}\r\n\r\n@media only screen and (min-width: 540px) {\r\n\r\n  .px-video-volume-controls {\r\n\r\n    margin-top: 1px;\r\n\r\n  }\r\n\r\n}\r\n\r\n.px-video-mute-btn-container {\r\n\r\n  float: left;\r\n\r\n  width: 26px;\r\n\r\n}\r\n\r\n.px-video-mute-btn-container label {\r\n\r\n  display: inline-block;\r\n\r\n  width: 25px;\r\n\r\n  height: 20px;\r\n\r\n  margin-top: 3px;\r\n\r\n  background: no-repeat url(\"../images/px-video-sprite.svg\");\r\n\r\n  background-position: -6px -476px;\r\n\r\n}\r\n\r\n@media only screen and (min-width: 540px) {\r\n\r\n  .px-video-mute-btn-container label {\r\n\r\n    margin-top: 6px;\r\n\r\n  }\r\n\r\n}\r\n\r\n.px-video-mute-btn-container input[type=\"checkbox\"]:focus+label {\r\n\r\n  outline: 1px #999 dotted;\r\n\r\n  background-position: -6px -440px;\r\n\r\n}\r\n\r\n.px-video-mute-btn-container input[type=\"checkbox\"]:hover+label {\r\n\r\n  background-position: -6px -440px;\r\n\r\n  cursor: pointer;\r\n\r\n}\r\n\r\n.px-video-mute-btn-container input[type=\"checkbox\"]:focus+label {\r\n\r\n  outline: 1px #999 dotted;\r\n\r\n  background-position: -6px -440px;\r\n\r\n}\r\n\r\n.px-video-mute-btn-container input[type=\"checkbox\"]:checked+label {\r\n\r\n  background-position: -6px -692px;\r\n\r\n}\r\n\r\n.px-video-mute-btn-container input[type=\"checkbox\"]:checked:hover+label,\r\n\r\n.px-video-mute-btn-container input[type=\"checkbox\"]:checked:focus+label {\r\n\r\n  background-position: -6px -656px;\r\n\r\n}\r\n\r\n.px-video-volume-slider {\r\n\r\n  float: left;\r\n\r\n  width: 80px;\r\n\r\n}\r\n\r\n@media only screen and (min-width: 540px) {\r\n\r\n  .px-video-volume-slider {\r\n\r\n    width: 95px;\r\n\r\n  }\r\n\r\n}\r\n\r\n.px-video-controls input[type='range'] {\r\n\r\n  -webkit-appearance: none;\r\n\r\n  height: 6px;\r\n\r\n  width: 70px;\r\n\r\n  margin-top: 9px;\r\n\r\n  margin-right: 0;\r\n\r\n  margin-left: 5px;\r\n\r\n  background-color: #e6e6e6;\r\n\r\n  outline: none;\r\n\r\n}\r\n\r\n@media only screen and (min-width: 540px) {\r\n\r\n  .px-video-controls input[type='range'] {\r\n\r\n    margin-top: 12px;\r\n\r\n    width: 85px;\r\n\r\n  }\r\n\r\n}\r\n\r\n.px-video-controls input[type='range']:focus::-webkit-slider-thumb {\r\n\r\n  outline: 1px #999 dotted;\r\n\r\n}\r\n\r\n.px-video-controls input[type='range']::-moz-range-track {\r\n\r\n  -moz-appearance: none;\r\n\r\n  height: 6px;\r\n\r\n  background-color: #e6e6e6;\r\n\r\n  border: none;\r\n\r\n}\r\n\r\n.px-video-controls input[type='range']::-webkit-slider-thumb {\r\n\r\n  -webkit-appearance: none !important;\r\n\r\n  height: 10px;\r\n\r\n  width: 6px;\r\n\r\n  background-color: #666;\r\n\r\n}\r\n\r\n.px-video-controls input[type='range']::-moz-range-thumb {\r\n\r\n  background-color: #666;\r\n\r\n  border: none;\r\n\r\n  height: 12px;\r\n\r\n  width: 8px;\r\n\r\n}\r\n\r\n@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {\r\n\r\n  .px-video-controls input[type='range'] {\r\n\r\n    position: relative;\r\n\r\n    padding: 0;\r\n\r\n    height: 8px;\r\n\r\n    top: -3px;\r\n\r\n  }\r\n\r\n  .px-video-controls .px-video-time {\r\n\r\n    margin-top: 4px;\r\n\r\n  }\r\n\r\n  .px-video-controls .px-video-captions {\r\n\r\n    padding: 8px;\r\n\r\n    min-height: 36px;\r\n\r\n  }\r\n\r\n}\r\n\r\n.px-video-controls {\r\n\r\n  display: flex;\r\n\r\n  flex-direction: row;\r\n\r\n  flex-wrap: wrap;\r\n\r\n  justify-content: space-between;\r\n\r\n  align-items: center;\r\n\r\n  align-content: center;\r\n\r\n}\r\n\r\n.progress-bar {\r\n\r\n  flex-grow: 1;\r\n\r\n  width: 75%;\r\n\r\n}\r\n\r\n@media only screen and (min-width: 480px) {\r\n\r\n  .progress-bar {\r\n\r\n    width: 75%;\r\n\r\n  }\r\n\r\n}\r\n\r\n@media only screen and (min-width: 590px) {\r\n\r\n  .progress-bar {\r\n\r\n    width: 85%;\r\n\r\n  }\r\n\r\n}\r\n\r\n@media only screen and (min-width: 970px) {\r\n\r\n  .progress-bar {\r\n\r\n    width: 85%;\r\n\r\n  }\r\n\r\n}\r\n\r\n@media only screen and (min-width: 1795px) {\r\n\r\n  .progress-bar {\r\n\r\n    width: 85%;\r\n\r\n  }\r\n\r\n}\r\n\r\n.px-video-progress {\r\n\r\n  margin-top: 10px;\r\n\r\n  width: 100%;\r\n\r\n}\r\n\r\n.px-video-time {\r\n\r\n  flex-grow: 0;\r\n\r\n  flex-shrink: 0;\r\n\r\n  padding-left: 10px;\r\n\r\n  margin-top: 0;\r\n\r\n}\r\n\r\n.px-video-playback-buttons {\r\n\r\n  flex-grow: 1;\r\n\r\n  min-width: auto;\r\n\r\n}\r\n\r\n@media only screen and (min-width: 620px) {\r\n\r\n  .px-video-playback-buttons {\r\n\r\n    left: auto;\r\n\r\n    /* margin-left: auto; */\r\n\r\n    min-width: auto;\r\n\r\n    position: relative;\r\n\r\n    width: auto;\r\n\r\n    display: flex;\r\n\r\n    flex-direction: row;\r\n\r\n    flex-wrap: no-wrap;\r\n\r\n    justify-content: center;\r\n\r\n    align-items: center;\r\n\r\n    align-content: center;\r\n\r\n    padding-left: 96px;\r\n\r\n  }\r\n\r\n}\r\n\r\n@media only screen and (min-width: 620px) {\r\n\r\n  .has-captions .px-video-playback-buttons {\r\n\r\n    padding-left: 130px;\r\n\r\n  }\r\n\r\n}\r\n\r\n.px-video-controls button {\r\n\r\n  margin: 0 5px;\r\n\r\n}\r\n\r\n.px-video-volume-controls {\r\n\r\n  min-width: auto;\r\n\r\n}\r\n\r\n@media only screen and (min-width: 540px) {\r\n\r\n  .px-video-volume-controls {\r\n\r\n    margin-top: 0;\r\n\r\n  }\r\n}\r\n\r\n",
+                    "data": "/* utilities */\r\n.pull-left {\r\n  float: left;\r\n}\r\n.sr-only {\r\n  position: absolute !important;\r\n  clip: rect(1px, 1px, 1px, 1px);\r\n  padding: 0 !important;\r\n  border: 0 !important;\r\n  height: 1px !important;\r\n  width: 1px !important;\r\n  overflow: hidden;\r\n}\r\n.hide {\r\n  display: none;\r\n}\r\n.show-inline {\r\n  display: inline-block;\r\n}\r\n\r\n/* containers */\r\n.px-video-img-captions-container * {\r\n  box-sizing: border-box;\r\n}\r\n\r\n.px-video-img-captions-container {\r\n  position: relative;\r\n}\r\n\r\n/* progress indicator */\r\n.px-video-progress {\r\n  width: 100%;\r\n  height: 10px;\r\n}\r\n.px-video-progress[value] {\r\n  /* Reset the default appearance */\r\n  -webkit-appearance: none;\r\n  border: none;\r\n}\r\n.px-video-progress[value]::-webkit-progress-bar {\r\n  background-color: #e6e6e6;\r\n}\r\n.px-video-progress[value]::-webkit-progress-value {\r\n  background-color: #009cdf;\r\n}\r\n\r\n/* time */\r\n.px-video-time {\r\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\r\n  float: right;\r\n  margin-top: 2px;\r\n  font-size: 14px;\r\n}\r\n\r\n/* caption area */\r\n.px-video-captions {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  width: 100%;\r\n  padding: 0.5em;\r\n  min-height: 2.5em;\r\n  background-color: #000;\r\n  color: #fff;\r\n  font-size: 1.1em;\r\n  text-align: center;\r\n  opacity: 0.75;\r\n}\r\n\r\n/* buttons */\r\n.px-video-controls button {\r\n  border: 1px #fff solid;\r\n  background: transparent;\r\n  padding: 0;\r\n  margin: 0 5px;\r\n  width: 25px;\r\n  height: 20px;\r\n  overflow: hidden;\r\n  background: no-repeat url(\"../images/px-video-sprite.svg\");\r\n}\r\n.px-video-controls button:focus {\r\n  border: 1px #999 dotted;\r\n  outline: none;\r\n}\r\n.px-video-controls button {\r\n  cursor: pointer;\r\n}\r\n\r\n/* restart button */\r\n.px-video-controls button.px-video-restart {\r\n  background-position: -6px -333px;\r\n  margin-left: 0;\r\n}\r\n.px-video-controls button.px-video-restart:hover,\r\n.px-video-controls button.px-video-restart:focus {\r\n  background-position: -6px -297px;\r\n}\r\n\r\n/* rewind button */\r\n.px-video-controls button.px-video-rewind {\r\n  background-position: -6px -189px;\r\n}\r\n.px-video-controls button.px-video-rewind:hover,\r\n.px-video-controls button.px-video-rewind:focus {\r\n  background-position: -6px -153px;\r\n}\r\n\r\n/* play button */\r\n.px-video-controls button.px-video-play {\r\n  background-position: -6px -45px;\r\n}\r\n.px-video-controls button.px-video-play:hover,\r\n.px-video-controls button.px-video-play:focus {\r\n  background-position: -6px -9px;\r\n}\r\n\r\n/* pause button */\r\n.px-video-controls button.px-video-pause {\r\n  background-position: -6px -117px;\r\n}\r\n.px-video-controls button.px-video-pause:hover,\r\n.px-video-controls button.px-video-pause:focus {\r\n  background-position: -6px -81px;\r\n}\r\n\r\n/* forward button */\r\n.px-video-controls button.px-video-forward {\r\n  background-position: -6px -261px;\r\n}\r\n.px-video-controls button.px-video-forward:hover,\r\n.px-video-controls button.px-video-forward:focus {\r\n  background-position: -6px -225px;\r\n}\r\n\r\n.px-video-fullscreen-btn-container label {\r\n  display: inline-block;\r\n  width: 25px;\r\n  height: 20px;\r\n  margin-left: 10px;\r\n  background: no-repeat url(\"../images/px-video-sprite.svg\");\r\n  background-position: -6px -907px;\r\n}\r\n.px-video-fullscreen-btn-container input[type=\"checkbox\"]:focus + label {\r\n  outline: 1px #999 dotted;\r\n  background-position: -6px -943px;\r\n}\r\n.px-video-fullscreen-btn-container input[type=\"checkbox\"]:hover + label {\r\n  background-position: -6px -943px;\r\n  cursor: pointer;\r\n}\r\n.px-video-fullscreen-btn-container input[type=\"checkbox\"]:focus + label {\r\n  outline: 1px #999 dotted;\r\n  background-position: -6px -943px;\r\n}\r\n.px-video-fullscreen-btn-container input[type=\"checkbox\"]:checked + label {\r\n  background-position: -6px -979px;\r\n}\r\n.px-video-fullscreen-btn-container\r\n  input[type=\"checkbox\"]:checked:hover\r\n  + label {\r\n  background-position: -6px -1015px;\r\n}\r\n\r\n/* captions button */\r\n.px-video-captions-btn-container label {\r\n  display: inline-block;\r\n  width: 25px;\r\n  height: 20px;\r\n  margin-left: 10px;\r\n  background: no-repeat url(\"../images/px-video-sprite.svg\");\r\n  background-position: -6px -835px;\r\n}\r\n.px-video-captions-btn-container input[type=\"checkbox\"]:focus + label {\r\n  outline: 1px #999 dotted;\r\n  background-position: -6px -799px;\r\n}\r\n.px-video-captions-btn-container input[type=\"checkbox\"]:hover + label {\r\n  background-position: -6px -799px;\r\n  cursor: pointer;\r\n}\r\n.px-video-captions-btn-container input[type=\"checkbox\"]:focus + label {\r\n  outline: 1px #999 dotted;\r\n  background-position: -6px -799px;\r\n}\r\n.px-video-captions-btn-container input[type=\"checkbox\"]:checked + label {\r\n  background-position: -6px -871px;\r\n}\r\n\r\n/* mute button */\r\n.px-video-mute-btn-container label {\r\n  display: inline-block;\r\n  width: 25px;\r\n  height: 20px;\r\n  margin-left: 240px;\r\n  margin-top: 2px;\r\n  background: no-repeat url(\"../images/px-video-sprite.svg\");\r\n  background-position: -6px -476px;\r\n}\r\n.px-video-mute-btn-container input[type=\"checkbox\"]:focus + label {\r\n  outline: 1px #999 dotted;\r\n  background-position: -6px -440px;\r\n}\r\n.px-video-mute-btn-container input[type=\"checkbox\"]:hover + label {\r\n  background-position: -6px -440px;\r\n  cursor: pointer;\r\n}\r\n.px-video-mute-btn-container input[type=\"checkbox\"]:focus + label {\r\n  outline: 1px #999 dotted;\r\n  background-position: -6px -440px;\r\n}\r\n/* checked state of mute button */\r\n.px-video-mute-btn-container input[type=\"checkbox\"]:checked + label {\r\n  background-position: -6px -692px;\r\n}\r\n.px-video-mute-btn-container input[type=\"checkbox\"]:checked:hover + label,\r\n.px-video-mute-btn-container input[type=\"checkbox\"]:checked:focus + label {\r\n  background-position: -6px -656px;\r\n}\r\n\r\n/* volume range input */\r\n.px-video-controls input[type=\"range\"] {\r\n  -webkit-appearance: none;\r\n  height: 6px;\r\n  width: 100px;\r\n  margin-top: 8px;\r\n  background-color: #e6e6e6;\r\n  outline: none;\r\n}\r\n.px-video-controls input[type=\"range\"]:focus::-webkit-slider-thumb {\r\n  outline: 1px #999 dotted;\r\n}\r\n.px-video-controls input[type=\"range\"]::-moz-range-track {\r\n  -moz-appearance: none;\r\n  height: 6px;\r\n  background-color: #e6e6e6;\r\n  border: none;\r\n}\r\n.px-video-controls input[type=\"range\"]::-webkit-slider-thumb {\r\n  -webkit-appearance: none !important;\r\n  height: 10px;\r\n  width: 6px;\r\n  background-color: #666;\r\n}\r\n.px-video-controls input[type=\"range\"]::-moz-range-thumb {\r\n  height: 12px;\r\n  width: 8px;\r\n  background-color: #666;\r\n}\r\n/* fixing display for IE10+ */\r\n@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {\r\n  .px-video-controls input[type=\"range\"] {\r\n    position: relative;\r\n    padding: 0;\r\n    height: 8px;\r\n    top: -3px;\r\n  }\r\n  .px-video-time {\r\n    margin-top: 4px;\r\n  }\r\n  .px-video-captions {\r\n    padding: 8px;\r\n    min-height: 36px;\r\n  }\r\n}\r\n\r\n.px-video-container {\r\n  position: relative;\r\n}\r\n.px-video-container.fullscreen {\r\n  position: fixed;\r\n  top: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  right: 0;\r\n  -webkit-cursor-visibility: auto-hide;\r\n}\r\n\r\n/* Fullscreen styles */\r\n\r\n/* style applied through js */\r\n.px-video-controls.js-fullscreen-controls {\r\n  position: absolute;\r\n  bottom: 0;\r\n  width: 100%;\r\n  z-index: 940;\r\n  background: white;\r\n}\r\n\r\n.px-video-captions.js-fullscreen-captions {\r\n  min-height: 3.5em;\r\n  font-size: 2.5em;\r\n  padding: 1em;\r\n}\r\n\r\n.px-timetip {\r\n  padding: 5px 10px;\r\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\r\n  font-size: 14px;\r\n  background: rgba(0, 0, 0, 0.83);\r\n  border-radius: 3px;\r\n  color: #fff;\r\n  width: auto;\r\n}\r\n.px-timetip:after {\r\n  top: 100%;\r\n  left: 50%;\r\n  border: solid transparent;\r\n  content: \" \";\r\n  height: 0;\r\n  width: 0;\r\n  position: absolute;\r\n  pointer-events: none;\r\n  border-color: rgba(43, 43, 43, 0);\r\n  border-top-color: #2b2b2b;\r\n  border-width: 10px;\r\n  margin-left: -10px;\r\n}\r\n",
                     "styleUrl": "./css/px-video.css"
                 }
             ],
@@ -10675,12 +11086,12 @@
                 "name": "constructor",
                 "description": "",
                 "args": [],
-                "line": 22
+                "line": 40
             },
             "implements": [
                 "AfterViewInit"
             ],
-            "templateData": "<div class=\"px-video-container\" id=\"{{VPConfiguration.id}}\" [style.width.px]=\"VPConfiguration.width\" >\r\n  <div class=\"px-video-img-captions-container\" >\r\n      <div class=\"px-video-captions hide\" aria-hidden=\"true\"></div>\r\n      <video width=\"{{VPConfiguration.width}}\" height=\"{{VPConfiguration.height}}\" poster=\"{{VPConfiguration.poster}}\" controls preload={{VPConfiguration.preload}}>\r\n        <!-- if Safari/Chrome-->\r\n          <source src=\"{{VPConfiguration.sourceMp4}}\" type=\"video/mp4\" />\r\n          <!-- If Firefox/Opera/Chrome/IE -->\r\n          <source src=\"{{VPConfiguration.sourceWebm}}\" type=\"video/webm\" />\r\n          <track kind=\"subtitles\" kind=\"captions\" label=\"English captions\" src=\"{{VPConfiguration.caption}}\" srclang=\"en\" default />\r\n      </video>\r\n  </div>\r\n  <div class=\"px-video-controls\" [style.width.px]=\"VPConfiguration.width\"></div>\r\n</div>\r\n"
+            "templateData": "<div class=\"px-video-container\" id=\"{{VPConfiguration.id}}\" [style.width.px]=\"VPConfiguration.width\" >\r\n  <div class=\"px-video-img-captions-container\" >\r\n      <div class=\"px-video-captions hide\" aria-hidden=\"true\"></div>\r\n      <video width=\"{{VPConfiguration.width}}\" height=\"{{VPConfiguration.height}}\" poster=\"{{VPConfiguration.poster}}\" controls preload={{VPConfiguration.preload}}>\r\n        <!-- if Safari/Chrome-->\r\n          <source src=\"{{VPConfiguration.sourceMp4}}\" type=\"video/mp4\" />\r\n          <!-- If Firefox/Opera/Chrome/IE -->\r\n          <source src=\"{{VPConfiguration.sourceWebm}}\" type=\"video/webm\" />\r\n          <track kind=\"subtitles\" kind=\"captions\" label=\"English captions\" src=\"{{VPConfiguration.caption}}\" srclang=\"en\" default />\r\n      </video>\r\n  </div>\r\n  <div class=\"px-video-controls\"></div>\r\n</div>\r\n"
         }
     ],
     "modules": [
@@ -10996,6 +11407,43 @@
                         },
                         {
                             "name": "SdsDialogTitleDirective"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "SdsDirectivesModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "ExternalLinkDirective"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "ExternalLinkDirective"
                         }
                     ]
                 },
@@ -11452,6 +11900,49 @@
             ]
         },
         {
+            "name": "SdsTextModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "SdsTextChildComponent"
+                        },
+                        {
+                            "name": "SdsTextComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "SdsTextChildComponent"
+                        },
+                        {
+                            "name": "SdsTextComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
             "name": "SdsToolbarModule",
             "children": [
                 {
@@ -11644,6 +12135,13 @@
                 "defaultValue": "{\r\n  enter: {\r\n    charCode: 0,\r\n    code: undefined,\r\n    key: 'Enter',\r\n    keyCode: 13,\r\n    keyIdentifier: undefined,\r\n    which: 13\r\n  },\r\n  up: {\r\n    charCode: 0,\r\n    code: undefined,\r\n    key: 'Up',\r\n    keyCode: 38,\r\n    keyIdentifier: undefined,\r\n    which: 38\r\n  },\r\n  down: {\r\n    charCode: 0,\r\n    code: undefined,\r\n    key: 'Down',\r\n    keyCode: 40,\r\n    keyIdentifier: undefined,\r\n    which: 40\r\n  },\r\n  left: {\r\n    charCode: 0,\r\n    code: undefined,\r\n    key: 'Left',\r\n    keyCode: 37,\r\n    keyIdentifier: undefined,\r\n    which: 37\r\n  },\r\n  right: {\r\n    charCode: 0,\r\n    code: undefined,\r\n    key: 'Right',\r\n    keyCode: 39,\r\n    keyIdentifier: undefined,\r\n    which: 39\r\n  },\r\n  tab: {\r\n    charCode: 0,\r\n    code: undefined,\r\n    key: 'Tab',\r\n    keyCode: 9,\r\n    keyIdentifier: undefined,\r\n    which: 9\r\n  },\r\n  esc: {\r\n    charCode: 0,\r\n    code: undefined,\r\n    key: 'Esc',\r\n    keyCode: 27,\r\n    keyIdentifier: undefined,\r\n    which: 27\r\n  },\r\n  space: {\r\n    charCode: 0,\r\n    code: undefined,\r\n    key: ' ',\r\n    keyCode: 32,\r\n    keyIdentifier: undefined,\r\n    which: 32\r\n  },\r\n  shift: {\r\n    charCode: 0,\r\n    code: undefined,\r\n    key: 'Shift',\r\n    keyCode: 16,\r\n    keyIdentifier: undefined,\r\n    which: 16\r\n  },\r\n  backspace: {\r\n    charCode: 0,\r\n    code: undefined,\r\n    key: 'Backspace',\r\n    keyCode: 8,\r\n    keyIdentifier: undefined,\r\n    which: 8\r\n  },\r\n  delete: {\r\n    charCode: 0,\r\n    code: undefined,\r\n    key: 'Delete',\r\n    keyCode: 46,\r\n    keyIdentifier: undefined,\r\n    which: 46\r\n  },\r\n  0: {\r\n    charCode: 0,\r\n    code: 'Digit0',\r\n    key: 0,\r\n    keyCode: 48,\r\n    keyIdentifier: 'U+0030',\r\n    which: 48\r\n  },\r\n  1: {\r\n    charCode: 0,\r\n    code: 'Digit1',\r\n    key: 1,\r\n    keyCode: 49,\r\n    keyIdentifier: 'U+0031',\r\n    which: 49\r\n  },\r\n  2: {\r\n    charCode: 0,\r\n    code: 'Digit2',\r\n    key: 2,\r\n    keyCode: 50,\r\n    keyIdentifier: 'U+0032',\r\n    which: 50\r\n  },\r\n  3: {\r\n    charCode: 0,\r\n    code: 'Digit3',\r\n    key: 3,\r\n    keyCode: 51,\r\n    keyIdentifier: 'U+0033',\r\n    which: 51\r\n  },\r\n  4: {\r\n    charCode: 0,\r\n    code: 'Digit4',\r\n    key: 4,\r\n    keyCode: 52,\r\n    keyIdentifier: 'U+0034',\r\n    which: 52\r\n  },\r\n  5: {\r\n    charCode: 0,\r\n    code: 'Digit5',\r\n    key: 5,\r\n    keyCode: 53,\r\n    keyIdentifier: 'U+0035',\r\n    which: 53\r\n  },\r\n  6: {\r\n    charCode: 0,\r\n    code: 'Digit6',\r\n    key: 6,\r\n    keyCode: 54,\r\n    keyIdentifier: 'U+0036',\r\n    which: 54\r\n  },\r\n  7: {\r\n    charCode: 0,\r\n    code: 'Digit7',\r\n    key: 7,\r\n    keyCode: 55,\r\n    keyIdentifier: 'U+0037',\r\n    which: 55\r\n  },\r\n  8: {\r\n    charCode: 0,\r\n    code: 'Digit8',\r\n    key: 8,\r\n    keyCode: 56,\r\n    keyIdentifier: 'U+0038',\r\n    which: 56\r\n  },\r\n  9: {\r\n    charCode: 0,\r\n    code: 'Digit9',\r\n    key: 9,\r\n    keyCode: 57,\r\n    keyIdentifier: 'U+0039',\r\n    which: 57\r\n  }\r\n}"
             },
             {
+                "name": "GLOBAL_STRINGS",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/packages/components/src/lib/video-player/video-player.component.ts",
+                "type": "any"
+            },
+            {
                 "name": "IEMocks",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -11658,6 +12156,14 @@
                 "file": "libs/packages/components/src/lib/key-helper/key-mocks.ts",
                 "type": "object",
                 "defaultValue": "{\r\n  ie: IEMocks,\r\n  edge: EdgeMocks,\r\n  default: ChromeFirefoxMocks,\r\n  safari: SafariMocks\r\n}"
+            },
+            {
+                "name": "noop",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/packages/components/src/lib/text/text.component.ts",
+                "type": "",
+                "defaultValue": "() => {}"
             },
             {
                 "name": "require",
@@ -11798,7 +12304,7 @@
                 "name": "uniqueId",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/packages/components/src/lib/accordion/accordion-item.component.ts",
+                "file": "libs/packages/components/src/lib/toolbar/toolbar.component.ts",
                 "type": "number",
                 "defaultValue": "0",
                 "description": "<p>Counter for generating unique element ids. </p>\n"
@@ -11815,7 +12321,7 @@
                 "name": "uniqueId",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/packages/components/src/lib/toolbar/toolbar.component.ts",
+                "file": "libs/packages/components/src/lib/accordion/accordion-item.component.ts",
                 "type": "number",
                 "defaultValue": "0",
                 "description": "<p>Counter for generating unique element ids. </p>\n"
@@ -12751,6 +13257,25 @@
                     "description": "<p>Counter used to generate unique IDs for dialog elements. </p>\n"
                 }
             ],
+            "libs/packages/components/src/lib/video-player/video-player.component.ts": [
+                {
+                    "name": "GLOBAL_STRINGS",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/packages/components/src/lib/video-player/video-player.component.ts",
+                    "type": "any"
+                }
+            ],
+            "libs/packages/components/src/lib/text/text.component.ts": [
+                {
+                    "name": "noop",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/packages/components/src/lib/text/text.component.ts",
+                    "type": "",
+                    "defaultValue": "() => {}"
+                }
+            ],
             "libs/packages/components/src/lib/accordion/accordion-base.ts": [
                 {
                     "name": "SDS_ACCORDION",
@@ -12870,12 +13395,12 @@
                     "defaultValue": "{\r\n  container: trigger('container', [\r\n    state(\r\n      'void',\r\n      style({\r\n        opacity: 0,\r\n        transform: 'scale(0.8)'\r\n      })\r\n    ),\r\n    transition(\r\n      'void => enter',\r\n      group([\r\n        query(\r\n          '.sds-overlay',\r\n          animate(\r\n            '100ms linear',\r\n            style({\r\n              opacity: 1\r\n            })\r\n          )\r\n        ),\r\n        animate(\r\n          '120ms cubic-bezier(0, 0, 0.2, 1)',\r\n          style({ transform: 'scale(1)' })\r\n        )\r\n      ])\r\n    ),\r\n    transition('* => void', animate('100ms 25ms linear', style({ opacity: 0 })))\r\n  ])\r\n}"
                 }
             ],
-            "libs/packages/components/src/lib/accordion/accordion-item.component.ts": [
+            "libs/packages/components/src/lib/toolbar/toolbar.component.ts": [
                 {
                     "name": "uniqueId",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/accordion/accordion-item.component.ts",
+                    "file": "libs/packages/components/src/lib/toolbar/toolbar.component.ts",
                     "type": "number",
                     "defaultValue": "0",
                     "description": "<p>Counter for generating unique element ids. </p>\n"
@@ -12891,12 +13416,12 @@
                     "defaultValue": "0"
                 }
             ],
-            "libs/packages/components/src/lib/toolbar/toolbar.component.ts": [
+            "libs/packages/components/src/lib/accordion/accordion-item.component.ts": [
                 {
                     "name": "uniqueId",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/toolbar/toolbar.component.ts",
+                    "file": "libs/packages/components/src/lib/accordion/accordion-item.component.ts",
                     "type": "number",
                     "defaultValue": "0",
                     "description": "<p>Counter for generating unique element ids. </p>\n"
