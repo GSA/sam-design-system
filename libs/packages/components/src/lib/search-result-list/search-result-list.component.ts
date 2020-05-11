@@ -9,7 +9,7 @@ export class SdsSearchResultListComponent {
   /**
    * List of items
    */
-  @Input() model: any[];
+  @Input() model: any;
 
   /**
    * Show divider between results
