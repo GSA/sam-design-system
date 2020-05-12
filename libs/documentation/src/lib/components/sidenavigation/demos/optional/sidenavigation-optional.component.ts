@@ -10,11 +10,12 @@ import { navigationConfig } from './navigate.config';
   templateUrl: 'sidenavigation-optional.component.html'
 })
 
-export class SideNavigationOptional  {
+export class SideNavigationOptional implements OnInit  {
   public navigationModel: SideNavigationModel = navigationConfig;
   form:FormGroup;
   filterModel: any;
-
+  results: any;
+  public filterChange$ = new BehaviorSubject<object>(null);
   fields: FormlyFieldConfig[] = [
     {
       key: 'filters',
@@ -59,5 +60,12 @@ export class SideNavigationOptional  {
       ]
     }
   ];
+  ngOnInit() {
+    
+    this.filterChange$.subscribe(
+      res =>
+        this.results = res
+  );
+  }
 
 }
