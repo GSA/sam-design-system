@@ -65,7 +65,7 @@
         </span>
         <span tabindex="1" role="button" aria-label="Clear input" aria-hidden="false" class="margin-left-1">
           <fa-icon *ngIf="!showResults" (click)="inputFocusHandler()" [icon]="['fas', 'caret-down']" size="xs"></fa-icon>
-          <fa-icon *ngIf="showResults" (click)="checkForFocus()" [icon]="['fas', 'caret-up']" size="xs"></fa-icon>
+          <fa-icon *ngIf="showResults" (click)="checkForFocus($event)" [icon]="['fas', 'caret-up']" size="xs"></fa-icon>
         </span>
       </span>
     </ng-container>

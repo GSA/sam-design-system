@@ -1,4 +1,3 @@
-
 import { ConfigOption } from '@ngx-formly/core';
 import { FormlyWrapperFormFieldComponent } from './wrappers/form-field.wrapper';
 import { FormlyFieldInputComponent } from './types/input';
@@ -14,6 +13,7 @@ import { FormlyFieldDatePickerComponent } from './types/datepicker';
 import { FormlyFieldButtonComponent } from './types/button';
 import { FormlyFieldTextComponent } from './types/text';
 import { FormlyFieldConfig } from '@ngx-formly/core';
+import { FormlyCustomWrapperComponent } from './wrappers/custom-wrapper';
 
 export const FIELD_TYPE_COMPONENTS = [
   FormlyFieldInputComponent,
@@ -28,10 +28,21 @@ export const FIELD_TYPE_COMPONENTS = [
   FormlyFieldDatePickerComponent,
   FormlyFormFieldFilterWrapperComponent,
   FormlyFieldButtonComponent,
+  FormlyCustomWrapperComponent,
+  FormlyLabelWrapperComponent,
+  FormlyDescriptionWrapperComponent,
+  FormlyValidationWrapperComponent,
   FormlyFieldTextComponent,
+  FormlyGroupWrapperComponent,
   FormlyFieldSearchComponent
+
 ];
 import { maxDateValidator, minDateValidator } from './formly.validators';
+import { sdsWrappers, sdsGroupWrapper } from './sds-formly-options';
+import { FormlyLabelWrapperComponent } from './wrappers/label.wrapper';
+import { FormlyDescriptionWrapperComponent } from './wrappers/description.wrapper';
+import { FormlyValidationWrapperComponent } from './wrappers/validation.wrapper';
+import { FormlyGroupWrapperComponent } from './wrappers/group.wrapper';
 import { FormlyFieldSearchComponent } from './types/search';
 
 
@@ -44,6 +55,10 @@ export const FORMLY_WRAPPERS: any = [
 export const FORMLY_CONFIG: ConfigOption = {
   types: [
     {
+      name: 'formly-group',
+      wrappers: sdsGroupWrapper
+    },
+    {
       name: 'button',
       component: FormlyFieldButtonComponent,
     },
@@ -55,42 +70,42 @@ export const FORMLY_CONFIG: ConfigOption = {
     {
       name: 'input',
       component: FormlyFieldInputComponent,
-      wrappers: ['form-field']
+      wrappers: sdsWrappers,
     },
     {
       name: 'checkbox',
       component: FormlyFieldCheckboxComponent,
-      wrappers: ['form-field']
+      wrappers: sdsWrappers,
     },
     {
       name: 'radio',
       component: FormlyFieldRadioComponent,
-      wrappers: ['form-field']
+      wrappers: sdsWrappers,
     },
     {
       name: 'select',
       component: FormlyFieldSelectComponent,
-      wrappers: ['form-field']
+      wrappers: sdsWrappers,
     },
     {
       name: 'textarea',
       component: FormlyFieldTextAreaComponent,
-      wrappers: ['form-field']
+      wrappers: sdsWrappers,
     },
     {
       name: 'multicheckbox',
       component: FormlyFieldMultiCheckboxComponent,
-      wrappers: ['form-field']
+      wrappers: sdsWrappers,
     },
     {
       name: 'autocomplete',
       component: FormlyFieldAutoCompleteComponent,
-      wrappers: ['form-field']
+      wrappers: sdsWrappers,
     },
     {
       name: 'datepicker',
       component: FormlyFieldDatePickerComponent,
-      wrappers: ['form-field'],
+      wrappers: sdsWrappers,
       defaultOptions: {
         validators: {
           validation: [maxDateValidator, minDateValidator]
@@ -100,7 +115,7 @@ export const FORMLY_CONFIG: ConfigOption = {
     {
       name: 'daterangepicker',
       extends: 'formly-group',
-      wrappers: ['filterwrapper'],
+      wrappers: sdsWrappers,
       defaultOptions: {
         fieldGroup: [
           {
@@ -131,17 +146,21 @@ export const FORMLY_CONFIG: ConfigOption = {
     {
       name: 'search',
       component: FormlyFieldSearchComponent,
-      wrappers: ['form-field']
+      wrappers: sdsWrappers,
     },
 
   ],
   wrappers: [
+    { name: 'label', component: FormlyLabelWrapperComponent },
+    { name: 'description', component: FormlyDescriptionWrapperComponent },
+    { name: 'validation', component: FormlyValidationWrapperComponent },
+    { name: 'group', component: FormlyGroupWrapperComponent },
     { name: 'form-field', component: FormlyWrapperFormFieldComponent },
     { name: 'accordionwrapper', component: FormlyAccordianFormFieldComponent },
-    { name: 'filterwrapper', component: FormlyFormFieldFilterWrapperComponent }
-  ]
-  // TODO: Figure out why this won't work in PROD mode ---
-  /// wrappers: FORMLY_WRAPPERS.map(({ name, component }) => ({name, component}))
+    { name: 'filterwrapper', component: FormlyFormFieldFilterWrapperComponent },
+    { name: 'customwrapper', component: FormlyCustomWrapperComponent }
+  ],
+
 };
 
 export function minDateToDateRangePicker(model: any, formState: any, field: FormlyFieldConfig) {
