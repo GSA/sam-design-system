@@ -12,7 +12,7 @@ import { FieldType } from '@ngx-formly/core';
         [formlyAttributes]="field">
       <label class="usa-checkbox__label" [for]="id">
         {{ to.label }}
-        <span *ngIf="to.required && to.hideRequiredMarker !== true">*</span>
+        <span *ngIf="!to.required && !to.hideOptional"> (Optional)</span>
       </label>
     </div>
   `,

@@ -5,7 +5,8 @@ import {
   EventEmitter,
   Optional,
   HostListener,
-  OnInit
+  OnInit,
+  ChangeDetectorRef
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
@@ -47,12 +48,12 @@ export class SdsFiltersComponent implements OnInit {
   @Input() advancedFilters: boolean = false;
 
   /**
-   *  Emit results when model updated
+   * Timer id for the timer awaiting the service call for more typeing
    */
+  private timeoutNumber: number;
+
   // TODO: check type -- Formly models are typically objects
   @Output() filterChange = new EventEmitter<object[]>();
-
-  private timeoutNumber: number;
 
   sdsFilterHistory = [];
 
@@ -85,6 +86,7 @@ export class SdsFiltersComponent implements OnInit {
   constructor(
     @Optional()
     private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,
+    private cdr: ChangeDetectorRef,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -117,6 +119,11 @@ export class SdsFiltersComponent implements OnInit {
       const updatedFormValue = JSON.parse(localStorage.getItem(initialRef));
       setTimeout(() => {
         this.model = { ...this.model, ...updatedFormValue }
+        this.filterChange.emit([updatedFormValue]);
+        if (this.formlyUpdateComunicationService) {
+          this.formlyUpdateComunicationService.updateFilter(updatedFormValue);
+        }
+        this.cdr.detectChanges();
       }, 0);
     } else {
       this.clearStorage();
