@@ -54,7 +54,12 @@ export class SdsFiltersComponent implements OnInit {
   /**
    *    Options for the form.
    */
-  @Input() public options: FormlyFormOptions = {};
+  @Input() public options: FormlyFormOptions;
+
+  /**
+   * To enable History Tracking
+   */
+  @Input() public isHistoryEnable: boolean = true;
 
   /**
    *  Emit results when model updated
@@ -128,36 +133,42 @@ export class SdsFiltersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const initialRef = urlParams.get('ref');
-    if (initialRef) {
-      const updatedFormValue = JSON.parse(localStorage.getItem(initialRef));
-      setTimeout(() => {
-        this.model = { ...this.model, ...updatedFormValue }
-        this.filterChange.emit([updatedFormValue]);
-        if (this.formlyUpdateComunicationService) {
-          this.formlyUpdateComunicationService.updateFilter(updatedFormValue);
-        }
-        this.cdr.detectChanges();
-      }, 0);
-    } else {
-      this.clearStorage();
+    if (this.isHistoryEnable) {
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const initialRef = urlParams.get('ref');
+      if (initialRef) {
+        const updatedFormValue = JSON.parse(localStorage.getItem(initialRef));
+        setTimeout(() => {
+          this.model = { ...this.model, ...updatedFormValue }
+          this.filterChange.emit([updatedFormValue]);
+          if (this.formlyUpdateComunicationService) {
+            this.formlyUpdateComunicationService.updateFilter(updatedFormValue);
+          }
+          this.cdr.detectChanges();
+        }, 0);
+      } else {
+       // this.options.resetModel(this.model)
+        console.log(this.model);
+       // this.clearStorage();
+      }
     }
     this.cdr.detectChanges();
     this.modelChange.subscribe((change) => {
       window.clearTimeout(this.timeoutNumber);
       this.timeoutNumber = window.setTimeout(() => {
+        if (this.isHistoryEnable) {
+          const md5 = new Md5();
+          const hashCode = md5.appendStr(qs.stringify(change)).end();
+          this.router.navigate([], {
+            relativeTo: this.route,
+            queryParams: { ref: hashCode },
+            queryParamsHandling: 'merge'
+          });
+          this.addToStorageList(hashCode)
+          localStorage.setItem(hashCode.toString(), JSON.stringify(change));
+        }
         this.filterChange.emit(change);
-        const md5 = new Md5();
-        const hashCode = md5.appendStr(qs.stringify(change)).end();
-        this.router.navigate([], {
-          relativeTo: this.route,
-          queryParams: { ref: hashCode },
-          queryParamsHandling: 'merge'
-        });
-        this.addToStorageList(hashCode)
-        localStorage.setItem(hashCode.toString(), JSON.stringify(change));
         if (this.formlyUpdateComunicationService) {
           this.formlyUpdateComunicationService.updateFilter(change);
         }
