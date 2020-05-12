@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import {
   SdsAccordionModule,
   SdsToolbarModule,
-  SdsPageModule,
   SdsSideNavigationModule
 } from '@gsa-sam/components';
 
@@ -20,7 +19,6 @@ import { FormlyModule } from '@ngx-formly/core';
     CommonModule,
     FormsModule,
     SdsToolbarModule,
-    SdsPageModule,
     SdsFiltersModule,
     FormlyModule.forRoot()
   ],
