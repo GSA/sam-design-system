@@ -43,8 +43,4 @@ describe('AdvancedFiltersComponent', () => {
   it('stub object and injected SdsAdvancedFiltersService should not be the same', () => {
     expect(advancedFiltersServiceStub === SdsAdvancedFiltersService).toBe(false);
   });
-
-  it('#openDialog() should open sdsFormlyDialogComponent', () => {
-    component.openDialog()
-  })
 });
