@@ -1,21 +1,17 @@
-import { Component, ViewChild, AfterViewInit, ChangeDetectorRef, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { SideNavigationModel, NavigationMode, NavigationLink } from '@gsa-sam/components'
-import { ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
+import { SideNavigationModel} from '@gsa-sam/components'
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { FormGroup } from '@angular/forms';
 import { navigationConfig } from './navigate.config';
-
 @Component({
   templateUrl: 'sidenavigation-optional.component.html'
 })
 
-export class SideNavigationOptional implements OnInit  {
+export class SideNavigationOptional  {
   public navigationModel: SideNavigationModel = navigationConfig;
   form:FormGroup;
   filterModel: any;
-  results: any;
-  public filterChange$ = new BehaviorSubject<object>(null);
+
   fields: FormlyFieldConfig[] = [
     {
       key: 'filters',
@@ -60,12 +56,4 @@ export class SideNavigationOptional implements OnInit  {
       ]
     }
   ];
-  ngOnInit() {
-    
-    this.filterChange$.subscribe(
-      res =>
-        this.results = res
-  );
-  }
-
 }
