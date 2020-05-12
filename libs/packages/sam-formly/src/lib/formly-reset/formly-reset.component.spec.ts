@@ -11,19 +11,21 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { SdsFormlyModule } from '../formly/formly.module';
+import { SdsFormlyResetComponent } from './formly-reset.component';
 
+let resetEl: HTMLElement;
 let model: any;
 let fields: FormlyFieldConfig[];
 let form: FormGroup;
 let options: FormlyFormOptions;
 
 describe('SDS Formly Reset', () => {
-  let component: TestComponent;
+  let testComp: TestComponent;
   let fixture: ComponentFixture<TestComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [TestComponent],
+      declarations: [SdsFormlyResetComponent, TestComponent],
       imports: [
         FontAwesomeModule,
         NoopAnimationsModule,
@@ -33,31 +35,33 @@ describe('SDS Formly Reset', () => {
       ]
     })
     .compileComponents();
-    }));
+  }));
 
   beforeEach(() => {
     form = new FormGroup({});
     options = {};
   });
 
-  it('should reset flat and nested form values to null if no values were set in model', () => {
+  it('should reset form values to null if no values were set in model when clicked', () => {
     fixture = TestBed.createComponent(TestComponent);
-    component = fixture.componentInstance;
+    testComp = fixture.componentInstance;
     fixture.detectChanges();
 
-    component.form.controls.flat.setValue('edit flat input');
-    component.form.get('nested.nestedInput').setValue('edit nested input');
+    testComp.form.controls.flat.setValue('edit flat input');
+    testComp.form.get('nested.nestedInput').setValue('edit nested input');
 
-    expect(component.model).toEqual({
+    expect(testComp.model).toEqual({
       flat: 'edit flat input',
       nested: { nestedInput: 'edit nested input' }
     });
 
-    component.options.resetModel();
-    expect(component.model).toEqual({ flat: null, nested: { nestedInput: null } });
+    resetEl = fixture.nativeElement.querySelector('.usa-button');
+    resetEl.click()
+
+    expect(testComp.model).toEqual({ flat: null, nested: { nestedInput: null } });
   });
 
-  it("should reset fields with defaultValue to null if value isn't set in model", () => {
+  it("should reset fields with defaultValue to null if value isn't set in model when clicked", () => {
     fields = [
       {
         key: 'flat',
@@ -77,38 +81,42 @@ describe('SDS Formly Reset', () => {
     ];
 
     fixture = TestBed.createComponent(TestComponent);
-    component = fixture.componentInstance;
+    testComp = fixture.componentInstance;
     fixture.detectChanges();
 
-    expect(component.model).toEqual({
+    expect(testComp.model).toEqual({
       flat: 'flat defaultValue',
       nested: { nestedInput: 'nested defaultValue' }
     });
 
-    options.resetModel();
-    expect(component.model).toEqual({ flat: null, nested: { nestedInput: null } });
+    resetEl = fixture.nativeElement.querySelector('.usa-button');
+    resetEl.click()
+
+    expect(testComp.model).toEqual({ flat: null, nested: { nestedInput: null } });
   });
 
-  it('should clone both flat and nested values from initial model during resetModel if values were set', () => {
+  it('should clone both flat and nested values from initial model during resetModel if values were set when clicked', () => {
     model = {
       flat: 'flat value set',
       nested: { nestedInput: 'nested value set' }
     };
 
     fixture = TestBed.createComponent(TestComponent);
-    component = fixture.componentInstance;
+    testComp = fixture.componentInstance;
     fixture.detectChanges();
 
     form.get('flat').setValue('edit flat input');
     form.get('nested.nestedInput').setValue('edit nested input');
 
-    expect(component.model).toEqual({
+    expect(testComp.model).toEqual({
       flat: 'edit flat input',
       nested: { nestedInput: 'edit nested input' }
     });
 
-    options.resetModel();
-    expect(component.model).toEqual({
+    resetEl = fixture.nativeElement.querySelector('.usa-button');
+    resetEl.click();
+
+    expect(testComp.model).toEqual({
       flat: 'flat value set',
       nested: { nestedInput: 'nested value set' }
     });
@@ -116,7 +124,11 @@ describe('SDS Formly Reset', () => {
 });
 
 @Component({
-  template: '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>',
+  template:`
+  <form [formGroup]="form">
+    <formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>
+    <sds-formly-reset [options]="options"></sds-formly-reset>
+  </form>`
 })
 
 class TestComponent {
@@ -140,52 +152,3 @@ class TestComponent {
   ];
   model = model || {};
 }
-
-// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-// import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
-// import { SdsFormlyResetComponent } from './formly-reset.component';
-// import { DebugElement, Component } from '@angular/core';
-// import { FormlyFormOptions } from '@ngx-formly/core';
-
-// describe('SdsFormlyResetComponent', () => {
-//   // let component: SdsFormlyResetComponent;
-//   // let buttonDe: DebugElement;
-//   // let options: { "_initialModel": { "searchEntity": { "uniqueEntityIdSam": 20 } }, "formState": {}, "_hiddenFieldsForCheck": [] }
-
-//   let testHost: TestHostComponent;
-//   let fixture: ComponentFixture<TestHostComponent>;
-//   let resetEl: HTMLElement;
-
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ SdsFormlyResetComponent, TestHostComponent ],
-//       // imports: [FontAwesomeModule]
-//     })
-//     .compileComponents();
-//   }));
-
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(TestHostComponent);
-//     testHost = fixture.componentInstance;
-//     // buttonDe = fixture.debugElement;
-//     resetEl = fixture.nativeElement.querySelector('.usa-button');
-//     fixture.detectChanges();
-//   });
-
-//   // it('should create', () => {
-//   //   expect(component).toBeTruthy();
-//   // });
-
-//   it('should contain Reset All button', () => {
-//     expect(resetEl.textContent).toContain('Reset All');
-//   });
-
-//   it('should reset to original options when clicked', () => {
-//     // buttonDe.triggerEventHandler('click', null);
-//     // fixture.detectChanges();
-//     resetEl.click()
-//     // expect(component.options).toBe(options);
-//     expect(testHost.model).toBe(null);
-//   })
-// });
