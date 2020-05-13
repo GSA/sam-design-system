@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SideNavigationModel} from '@gsa-sam/components'
-import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
+import { FormlyFieldConfig } from '@ngx-formly/core';
 import { FormGroup } from '@angular/forms';
 import { navigationConfig } from './navigate.config';
 @Component({
