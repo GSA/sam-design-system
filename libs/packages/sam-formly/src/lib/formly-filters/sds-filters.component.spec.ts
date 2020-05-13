@@ -1,10 +1,11 @@
-
 import {
     TestBed,
-    ComponentFixture
+    ComponentFixture,
+    fakeAsync,
+    tick
 } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SdsFiltersModule } from './sds-filters.module';
@@ -14,14 +15,18 @@ import {
 } from './sds-filters.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DebugElement } from '@angular/core';
-
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
+import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
 
 describe('The Sam Filters Component', () => {
 
     describe('rendered tests', () => {
         let component: SdsFiltersComponent;
         let fixture: ComponentFixture<SdsFiltersComponent>;
-
+        let router: any;
+        let location: Location; 
+    
         beforeEach(() => {
             TestBed.configureTestingModule({
                 imports: [
@@ -31,10 +36,13 @@ describe('The Sam Filters Component', () => {
                     SdsFormlyModule,
                     SdsFiltersModule
                 ],
-
+                providers: [SDSFormlyUpdateComunicationService]
             });
+            router = TestBed.get(Router);
+            location = TestBed.get(Location);
 
             fixture = TestBed.createComponent(SdsFiltersComponent);
+            router.initialNavigation();
             component = fixture.componentInstance;
             component.fields = [
                 {
@@ -82,6 +90,124 @@ describe('The Sam Filters Component', () => {
             fixture.detectChanges();
             expect(component.form.invalid).toBe(true);
         });
+
+        it('should route the navigation', fakeAsync(() => {
+            component.model = {
+                filter: {
+                    entityType: '30'
+                }
+            };
+            component.fields = [
+                {
+                    key: 'filter',
+                    wrappers: ['filterwrapper'],
+                    templateOptions: { label: 'Entity Types' },
+                    fieldGroup: [
+                        {
+                            key: 'entityType',
+                            type: 'radio',
+                            templateOptions: {
+                                label: 'Expiration Date',
+                                options: [
+                                    { label: '30 Days', value: '30' },
+                                    { label: '60 Days', value: '60' },
+                                    { label: '90 Days', value: '90' },
+
+                                ]
+                            },
+                        },
+
+                    ]
+                }];
+            fixture.detectChanges();
+            component.modelChange.next(component.model);
+            tick();
+            fixture.detectChanges();
+            expect(location.path()).toContain('/?ref=')
+        }));
+
+        it('should not change the route when history set to false', fakeAsync(() => {
+            component.model = {
+                filter: {
+                    entityType: '30'
+                }
+            };
+            component.fields = [
+                {
+                    key: 'filter',
+                    wrappers: ['filterwrapper'],
+                    templateOptions: { label: 'Entity Types' },
+                    fieldGroup: [
+                        {
+                            key: 'entityType',
+                            type: 'radio',
+                            templateOptions: {
+                                label: 'Expiration Date',
+                                options: [
+                                    { label: '30 Days', value: '30' },
+                                    { label: '60 Days', value: '60' },
+                                    { label: '90 Days', value: '90' },
+
+                                ]
+                            },
+                        },
+
+                    ]
+                }];
+            fixture.detectChanges();
+            component.isHistoryEnable = false;
+            component.modelChange.next(component.model);
+            tick();
+            fixture.detectChanges();
+            expect(location.path()).toBe('')
+        }));
+        it('should call coominication service', () => {
+            component.model = {
+                filter: {
+                    entityType: '30'
+                }
+            };
+            component.fields = [
+                {
+                    key: 'filter',
+                    wrappers: ['filterwrapper'],
+                    templateOptions: { label: 'Entity Types' },
+                    fieldGroup: [
+                        {
+                            key: 'entityType',
+                            type: 'radio',
+                            templateOptions: {
+                                label: 'Expiration Date',
+                                options: [
+                                    { label: '30 Days', value: '30' },
+                                    { label: '60 Days', value: '60' },
+                                    { label: '90 Days', value: '90' },
+
+                                ]
+                            },
+                        },
+
+                    ]
+                }];
+            const service = fixture.debugElement.injector.get(SDSFormlyUpdateComunicationService);
+            const serviceSpy = spyOn(service, 'updateFilter').and.callThrough(); // create spy
+            component.updateChange(component.model);
+            fixture.detectChanges();
+            expect(serviceSpy).toHaveBeenCalled();
+            expect(service.updateFilter).toHaveBeenCalled();
+        });
+
+        it('should update the form value to null values if ref param is empty when back button is pressed ', () => {
+            component.form = new FormGroup({
+                test: new FormControl(''),
+                filters: new FormControl('')
+            });
+            component.form.controls['test'].setValue('abc');
+            component.form.controls['filters'].setValue({'uniqueId': 1});
+             window.dispatchEvent(new Event('popstate'));
+             const obj = {test: null, filters: {uniqueId: null}};
+             expect(JSON.stringify(component.form.value)).toEqual(JSON.stringify(obj));
+           });
     });
 
     describe('validation tests', () => {
@@ -154,56 +280,6 @@ describe('The Sam Filters Component', () => {
             inputField.nativeElement.dispatchEvent(new Event('input'));
             expect(component.form.invalid).toBe(true);
         });
-    });
-
-
-
-    describe('History tests', () => {
-        let component: SdsFiltersComponent;
-        let fixture: ComponentFixture<SdsFiltersComponent>;
-
-        beforeEach(() => {
-            TestBed.configureTestingModule({
-                imports: [
-                    CommonModule,
-                    BrowserAnimationsModule,
-                    RouterTestingModule.withRoutes([]),
-                    SdsFormlyModule,
-                    SdsFiltersModule
-                ],
-
-            });
-
-            fixture = TestBed.createComponent(SdsFiltersComponent);
-            component = fixture.componentInstance;
-            component.fields = [
-                {
-                    key: 'filters',
-                    wrappers: ['accordionwrapper'],
-                    templateOptions: { label: 'Entity Name/UEI' },
-                    fieldGroup: [{
-                        key: 'uniqueId',
-                        type: 'input',
-                        templateOptions: {
-                            required: true,
-                            label: 'Formly input type number',
-                            placeholder: 'placeholder',
-                        },
-                    }]
-                },
-            ];
-            component.form = new FormGroup({});
-        });
-
-        it('input type should be text', () => {
-            fixture.detectChanges();
-            const input = fixture.debugElement.query(By.css('.usa-input'));
-            input.nativeElement.value ='test'
-            fixture.detectChanges();
-
-            expect(input.nativeElement.type).toBe('text');
-        });
-
     });
 
 });

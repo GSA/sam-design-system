@@ -66,16 +66,6 @@ export class SdsFiltersComponent implements OnInit {
    */
   @Output() filterChange = new EventEmitter<object[]>();
 
-  /**
-   * Timer id for the timer awaiting the service call for more typeing
-   */
-  private timeoutNumber: number;
-
-  /**
-   * debounce time for current page input
-   */
-  @Input() debounceTime = 0;
-
   sdsFilterHistory = [];
 
   _isObj = (obj: any): boolean => typeof obj === 'object' && obj !== null;
@@ -106,7 +96,7 @@ export class SdsFiltersComponent implements OnInit {
 
   constructor(
     @Optional()
-    private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,
+    public formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,
     private cdr: ChangeDetectorRef,
     private router: Router,
     private route: ActivatedRoute
@@ -126,7 +116,7 @@ export class SdsFiltersComponent implements OnInit {
       updatedFormValue
     );
     this.form.setValue(updatedValue, { emitEvent: false });
-    this.update(updatedFormValue);
+    this.updateChange(updatedFormValue);
   }
 
   ngOnInit(): void {
@@ -138,18 +128,16 @@ export class SdsFiltersComponent implements OnInit {
         const updatedFormValue = JSON.parse(localStorage.getItem(initialRef));
         setTimeout(() => {
           this.model = { ...this.model, ...updatedFormValue }
-          this.update(updatedFormValue);
+          this.updateChange(updatedFormValue);
           this.cdr.detectChanges();
         }, 0);
       } else {
-      this.update(this.model);
+      this.updateChange(this.model);
       this.clearStorage();
       }
     }
     this.cdr.detectChanges();
     this.modelChange.subscribe((change) => {
-      window.clearTimeout(this.timeoutNumber);
-      this.timeoutNumber = window.setTimeout(() => {
         if (this.isHistoryEnable) {
           const md5 = new Md5();
           const hashCode = md5.appendStr(qs.stringify(change)).end();
@@ -161,12 +149,11 @@ export class SdsFiltersComponent implements OnInit {
           this.addToStorageList(hashCode)
           localStorage.setItem(hashCode.toString(), JSON.stringify(change));
         }
-        this.update(change);
-      }, 150);
+        this.updateChange(change);
     })
   }
 
-  update(change) {
+  updateChange(change) {
     this.filterChange.emit(change);
     if (this.formlyUpdateComunicationService) {
       this.formlyUpdateComunicationService.updateFilter(change);
