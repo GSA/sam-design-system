@@ -4,6 +4,7 @@
   padding-bottom: 0;
   text-decoration: none;
   &:hover, &:active {
+    background: transparent;
     background: initial;
     color: initial;
     text-decoration: underline;
