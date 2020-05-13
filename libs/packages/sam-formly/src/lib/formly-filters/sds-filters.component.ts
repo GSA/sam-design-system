@@ -126,10 +126,7 @@ export class SdsFiltersComponent implements OnInit {
       updatedFormValue
     );
     this.form.setValue(updatedValue, { emitEvent: false });
-    this.filterChange.emit([updatedValue]);
-    if (this.formlyUpdateComunicationService) {
-      this.formlyUpdateComunicationService.updateFilter(updatedValue);
-    }
+    this.update(updatedFormValue);
   }
 
   ngOnInit(): void {
@@ -141,16 +138,12 @@ export class SdsFiltersComponent implements OnInit {
         const updatedFormValue = JSON.parse(localStorage.getItem(initialRef));
         setTimeout(() => {
           this.model = { ...this.model, ...updatedFormValue }
-          this.filterChange.emit([updatedFormValue]);
-          if (this.formlyUpdateComunicationService) {
-            this.formlyUpdateComunicationService.updateFilter(updatedFormValue);
-          }
+          this.update(updatedFormValue);
           this.cdr.detectChanges();
         }, 0);
       } else {
-       // this.options.resetModel(this.model)
-        console.log(this.model);
-       // this.clearStorage();
+      this.update(this.model);
+      this.clearStorage();
       }
     }
     this.cdr.detectChanges();
@@ -168,12 +161,16 @@ export class SdsFiltersComponent implements OnInit {
           this.addToStorageList(hashCode)
           localStorage.setItem(hashCode.toString(), JSON.stringify(change));
         }
-        this.filterChange.emit(change);
-        if (this.formlyUpdateComunicationService) {
-          this.formlyUpdateComunicationService.updateFilter(change);
-        }
+        this.update(change);
       }, 150);
     })
+  }
+
+  update(change) {
+    this.filterChange.emit(change);
+    if (this.formlyUpdateComunicationService) {
+      this.formlyUpdateComunicationService.updateFilter(change);
+    }
   }
 
   addToStorageList(hashCode) {
