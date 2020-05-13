@@ -1,5 +1,5 @@
 <!-- Error Messages -->
-<ng-template [ngIf]="model.error && !model.results" #access>
+<ng-template [ngIf]="!model.results">
   <div>
     <div class="grid-row border-1px border-base-lighter bg-base-lightest">
       <div class="grid-col-auto text-center text-base margin-4">
@@ -9,89 +9,64 @@
           size="7x"
         ></fa-icon>
       </div>
-
       <div class="grid-col-fill display-flex flex-column padding-y-1">
-        <h1 class="margin-bottom-105 text-semibold"
-          [innerHTML]="model.error.title">{{ model.error.title | json }}</h1>
-
-        <p class="margin-y-0 font-sans-lg" [innerHTML]="model.error.description">
-         {{ model.error.description | json }}
-        </p>
+      <h1 class="margin-bottom-105 text-semibold" [innerHTML]="data.title"></h1>
+      <p class="margin-y-0 font-sans-lg" [innerHTML]="data.message"></p>
         <button class="usa-button usa-button--secondary width-card margin-y-2">
-          Go Back
-        </button>
+        Go Back
+      </button>
       </div>
     </div>
   </div>
-  </ng-template>
+</ng-template>
 
-  <!-- Results -->
+<!-- Results -->
 
-  <ng-container *ngIf="model.results && model.results.length!==0 && !model.error">
-    <div *ngFor="let item of model.results"  class="resultsTestClass">
-      <hr *ngIf="divider" class="thin" />
+<ng-container *ngIf="model.results && model.results.length!==0 && !model.error" >
+  <div *ngFor="let item of model.results"  class="resultsTestClass">
+    <hr *ngIf="divider" class="thin" />
 
-      <ng-container
-        *ngTemplateOutlet="resultContentTemplate; context: { $implicit: item }"
-      ></ng-container>
-    </div>
-
-    <hr *ngIf="divider && model.results.length" class="thin" />
-  </ng-container>
-
-  <!-- No matches found -->
-  <ng-template [ngIf]="!model.error && (model.results && model.results.length === 0)">
-  <div >
-    <div class="grid-row border-1px border-base-lighter bg-base-lightest">
-      <div class="grid-col-auto text-center text-base margin-4">
-        <fa-icon
-          [icon]="['sds', 'search']"
-          [classes]="['search']"
-          size="7x"
-        ></fa-icon>
-      </div>
-
-      <div class="grid-col-fill display-flex flex-column padding-y-1 noMatch">
-        <h1 class="margin-bottom-105 text-semibold">No matches found</h1>
-
-        <p class="margin-y-0 font-sans-lg">
-          We couldn't find a match for your search criteria.
-        </p>
-
-        <p class="margin-y-0 font-sans-lg">
-          Please try another search or go back to previous results.
-        </p>
-
-        <button class="usa-button usa-button--secondary width-card margin-y-2">
-          Go Back
-        </button>
-      </div>
-    </div>
+    <ng-container
+      *ngTemplateOutlet="resultContentTemplate; context: { $implicit: item }"
+    ></ng-container>
   </div>
-  </ng-template>
 
-  <!-- Default -->
-  <ng-template [ngIf]="!model.error && (!model.results)" >
-  <div >
-    <div class="grid-row border-1px border-base-lighter bg-base-lightest">
-      <div class="grid-col-auto text-center text-base margin-4">
-        <fa-icon
-          [icon]="['sds', 'search']"
-          [classes]="['search']"
-          size="7x"
-        ></fa-icon>
-      </div>
-      <div class="grid-col-fill display-flex flex-column padding-y-1">
-        <h1 class="margin-bottom-105 text-semibold"
-        [innerHTML]="model.emptySearch.title">{{ model.emptySearch.title | json }}</h1>
+  <hr *ngIf="divider && model.results.length" class="thin" />
+</ng-container>
 
-       <p class="margin-y-0 font-sans-lg" [innerHTML]="model.emptySearch.description">
-         {{ model.emptySearch.description | json }}
-       </p>
-        <button class="usa-button usa-button--secondary width-card margin-y-2">
-          Go Back
-        </button>
-      </div>
+<!-- No matches found -->
+<ng-template [ngIf]="!model.error && (model.results && model.results.length === 0)">
+<div >
+  <div class="grid-row border-1px border-base-lighter bg-base-lightest">
+    <div class="grid-col-auto text-center text-base margin-4">
+      <fa-icon
+        [icon]="['sds', 'search']"
+        [classes]="['search']"
+        size="7x"
+      ></fa-icon>
     </div>
+
+    <div class="grid-col-fill display-flex flex-column padding-y-1 noMatch" >
+      <h1 class="margin-bottom-105 text-semibold">No matches found</h1>
+
+      <p class="margin-y-0 font-sans-lg">
+        We couldn't find a match for your search criteria.
+      </p>
+
+      <p class="margin-y-0 font-sans-lg">
+        Please try another search or go back to previous results.
+      </p>
+
+      <button class="usa-button usa-button--secondary width-card margin-y-2">
+        Go Back
+      </button>
+    </div>
+
+
+  </div>
+</div>
+</ng-template>
+
+
 
 
