@@ -76,7 +76,7 @@ describe('The Sam Filters Component', () => {
             fixture.detectChanges();
             expect(component.form.invalid).toBe(true);
         });
-       
+
         it('input value length should be between min length and max length', () => {
             component.model = { test: null, filters: { uniqueId: 1 } };
             fixture.detectChanges();
@@ -96,7 +96,7 @@ describe('The Sam Filters Component', () => {
                     RouterTestingModule.withRoutes([]),
                     SdsFormlyModule,
                     SdsFiltersModule
-                    
+
                 ],
 
             });
@@ -155,4 +155,55 @@ describe('The Sam Filters Component', () => {
             expect(component.form.invalid).toBe(true);
         });
     });
+
+
+
+    describe('History tests', () => {
+        let component: SdsFiltersComponent;
+        let fixture: ComponentFixture<SdsFiltersComponent>;
+
+        beforeEach(() => {
+            TestBed.configureTestingModule({
+                imports: [
+                    CommonModule,
+                    BrowserAnimationsModule,
+                    RouterTestingModule.withRoutes([]),
+                    SdsFormlyModule,
+                    SdsFiltersModule
+                ],
+
+            });
+
+            fixture = TestBed.createComponent(SdsFiltersComponent);
+            component = fixture.componentInstance;
+            component.fields = [
+                {
+                    key: 'filters',
+                    wrappers: ['accordionwrapper'],
+                    templateOptions: { label: 'Entity Name/UEI' },
+                    fieldGroup: [{
+                        key: 'uniqueId',
+                        type: 'input',
+                        templateOptions: {
+                            required: true,
+                            label: 'Formly input type number',
+                            placeholder: 'placeholder',
+                        },
+                    }]
+                },
+            ];
+            component.form = new FormGroup({});
+        });
+
+        it('input type should be text', () => {
+            fixture.detectChanges();
+            const input = fixture.debugElement.query(By.css('.usa-input'));
+            input.nativeElement.value ='test'
+            fixture.detectChanges();
+
+            expect(input.nativeElement.type).toBe('text');
+        });
+
+    });
+
 });
