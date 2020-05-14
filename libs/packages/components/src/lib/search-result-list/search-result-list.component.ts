@@ -4,7 +4,7 @@ import { Component, Input, ContentChild, TemplateRef, ViewChild, ElementRef, Ren
   templateUrl: './search-result-list.component.html',
   styleUrls: ['./search-result-list.component.scss']
 })
-export class SdsSearchResultListComponent implements OnInit, OnChanges {
+export class SdsSearchResultListComponent implements OnInit, OnChanges, AfterViewInit{
 
 constructor() {}
   /**
@@ -30,11 +30,16 @@ constructor() {}
 
   ngOnInit(): void {
     console.log(this.model)
-    // this.displayTemplate();
+    this.displayTemplate();
+
   }
 
   ngOnChanges(){
       this.displayTemplate()
+  }
+
+  ngAfterViewInit(){
+    // this.displayTemplate();
   }
 
   displayTemplate(){
@@ -45,14 +50,12 @@ constructor() {}
       this.data.title = this.model.emptySearch.title;
       this.data.message = this.model.emptySearch.description;
     } else {
-      this.data.title ='';
-      this.data.message ='';
+      // this.data.title ='';
+      // this.data.message ='';
+      return;
     }
     return;
   }
-
-
-
 
 
 }

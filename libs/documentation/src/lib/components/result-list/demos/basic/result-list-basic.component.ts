@@ -34,7 +34,7 @@ export class ResultListBasic {
   errorMessages: object = {
     error: {
       title: "Bad Request",
-      description: `There was an issue with the search request. If you continue to <br>
+      description: `There was an issue with the search request. If you continue to
                     experience this issue, please contact the <a href='https://www.fsd.gov/'>Federal Service Desk.</a>`,
       icon: {
         name: 'fa-alert-error',

@@ -1,4 +1,3 @@
-<!-- Error Messages -->
 <ng-template [ngIf]="!model.results">
   <div>
     <div class="grid-row border-1px border-base-lighter bg-base-lightest">
@@ -10,8 +9,8 @@
         ></fa-icon>
       </div>
       <div class="grid-col-fill display-flex flex-column padding-y-1">
-      <h1 class="margin-bottom-105 text-semibold" [innerHTML]="data.title"></h1>
-      <p class="margin-y-0 font-sans-lg" [innerHTML]="data.message"></p>
+      <h1 class="margin-bottom-105 text-semibold" [innerHTML]="data?.title"></h1>
+      <p class="margin-y-0 font-sans-lg" [innerHTML]="data?.message"></p>
         <button class="usa-button usa-button--secondary width-card margin-y-2">
         Go Back
       </button>
@@ -35,8 +34,7 @@
 </ng-container>
 
 <!-- No matches found -->
-<ng-template [ngIf]="!model.error && (model.results && model.results.length === 0)">
-<div >
+<div *ngIf="!model.error && (model.results && model.results.length === 0)">
   <div class="grid-row border-1px border-base-lighter bg-base-lightest">
     <div class="grid-col-auto text-center text-base margin-4">
       <fa-icon
@@ -61,11 +59,8 @@
         Go Back
       </button>
     </div>
-
-
   </div>
 </div>
-</ng-template>
 
 
 
