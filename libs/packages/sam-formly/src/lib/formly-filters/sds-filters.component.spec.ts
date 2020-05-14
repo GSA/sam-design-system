@@ -120,7 +120,7 @@ describe('The Sam Filters Component', () => {
                     ]
                 }];
             fixture.detectChanges();
-            component.modelChange.next(component.model);
+            component.onModelChange(component.model);
             tick();
             fixture.detectChanges();
             expect(location.path()).toContain('/?ref=')
@@ -156,7 +156,7 @@ describe('The Sam Filters Component', () => {
                 }];
             fixture.detectChanges();
             component.isHistoryEnable = false;
-            component.modelChange.next(component.model);
+            component.onModelChange(component.model);
             tick();
             fixture.detectChanges();
             expect(location.path()).toBe('')
@@ -221,8 +221,6 @@ describe('The Sam Filters Component', () => {
              expect(JSON.stringify(component.form.value)).toEqual(JSON.stringify(obj));
            });
     });
-    
-
     describe('validation tests', () => {
         let component: SdsFiltersComponent;
         let fixture: ComponentFixture<SdsFiltersComponent>;
