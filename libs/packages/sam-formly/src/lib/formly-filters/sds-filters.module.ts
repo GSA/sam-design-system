@@ -9,10 +9,12 @@ import {
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SdsFiltersComponent } from './sds-filters.component';
 import { SdsFormlyModule } from '../formly/formly.module';
+import { AdvancedFiltersComponent } from './advanced-filters/advanced-filters.component';
 
 @NgModule({
     declarations: [
         SdsFiltersComponent,
+        AdvancedFiltersComponent,
     ],
     imports: [
         CommonModule,

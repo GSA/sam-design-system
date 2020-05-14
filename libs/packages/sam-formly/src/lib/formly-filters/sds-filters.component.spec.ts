@@ -1,10 +1,11 @@
-
 import {
     TestBed,
-    ComponentFixture
+    ComponentFixture,
+    fakeAsync,
+    tick
 } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SdsFiltersModule } from './sds-filters.module';
@@ -14,14 +15,18 @@ import {
 } from './sds-filters.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DebugElement } from '@angular/core';
-
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
+import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
 
 describe('The Sam Filters Component', () => {
 
     describe('rendered tests', () => {
         let component: SdsFiltersComponent;
         let fixture: ComponentFixture<SdsFiltersComponent>;
-
+        let router: any;
+        let location: Location; 
+    
         beforeEach(() => {
             TestBed.configureTestingModule({
                 imports: [
@@ -31,10 +36,13 @@ describe('The Sam Filters Component', () => {
                     SdsFormlyModule,
                     SdsFiltersModule
                 ],
-
+                providers: [SDSFormlyUpdateComunicationService]
             });
+            router = TestBed.get(Router);
+            location = TestBed.get(Location);
 
             fixture = TestBed.createComponent(SdsFiltersComponent);
+            router.initialNavigation();
             component = fixture.componentInstance;
             component.fields = [
                 {
@@ -76,14 +84,143 @@ describe('The Sam Filters Component', () => {
             fixture.detectChanges();
             expect(component.form.invalid).toBe(true);
         });
-       
+
         it('input value length should be between min length and max length', () => {
             component.model = { test: null, filters: { uniqueId: 1 } };
             fixture.detectChanges();
             expect(component.form.invalid).toBe(true);
         });
-    });
 
+        it('should route the navigation', fakeAsync(() => {
+            component.model = {
+                filter: {
+                    entityType: '30'
+                }
+            };
+            component.fields = [
+                {
+                    key: 'filter',
+                    wrappers: ['filterwrapper'],
+                    templateOptions: { label: 'Entity Types' },
+                    fieldGroup: [
+                        {
+                            key: 'entityType',
+                            type: 'radio',
+                            templateOptions: {
+                                label: 'Expiration Date',
+                                options: [
+                                    { label: '30 Days', value: '30' },
+                                    { label: '60 Days', value: '60' },
+                                    { label: '90 Days', value: '90' },
+
+                                ]
+                            },
+                        },
+
+                    ]
+                }];
+            fixture.detectChanges();
+            component.onModelChange(component.model);
+            tick();
+            fixture.detectChanges();
+            expect(location.path()).toContain('/?ref=')
+        }));
+
+        it('should not change the route when history set to false', fakeAsync(() => {
+            component.model = {
+                filter: {
+                    entityType: '30'
+                }
+            };
+            component.fields = [
+                {
+                    key: 'filter',
+                    wrappers: ['filterwrapper'],
+                    templateOptions: { label: 'Entity Types' },
+                    fieldGroup: [
+                        {
+                            key: 'entityType',
+                            type: 'radio',
+                            templateOptions: {
+                                label: 'Expiration Date',
+                                options: [
+                                    { label: '30 Days', value: '30' },
+                                    { label: '60 Days', value: '60' },
+                                    { label: '90 Days', value: '90' },
+
+                                ]
+                            },
+                        },
+
+                    ]
+                }];
+            fixture.detectChanges();
+            component.isHistoryEnable = false;
+            component.onModelChange(component.model);
+            tick();
+            fixture.detectChanges();
+            expect(location.path()).toBe('')
+        }));
+        it('should call coominication service', () => {
+            component.model = {
+                filter: {
+                    entityType: '30'
+                }
+            };
+            component.fields = [
+                {
+                    key: 'filter',
+                    wrappers: ['filterwrapper'],
+                    templateOptions: { label: 'Entity Types' },
+                    fieldGroup: [
+                        {
+                            key: 'entityType',
+                            type: 'radio',
+                            templateOptions: {
+                                label: 'Expiration Date',
+                                options: [
+                                    { label: '30 Days', value: '30' },
+                                    { label: '60 Days', value: '60' },
+                                    { label: '90 Days', value: '90' },
+
+                                ]
+                            },
+                        },
+
+                    ]
+                }];
+            const service = fixture.debugElement.injector.get(SDSFormlyUpdateComunicationService);
+            const serviceSpy = spyOn(service, 'updateFilter').and.callThrough(); // create spy
+            component.updateChange(component.model);
+            fixture.detectChanges();
+            expect(serviceSpy).toHaveBeenCalled();
+            expect(service.updateFilter).toHaveBeenCalled();
+        });
+        it('should return new Object with some properties as null based on base Object', () => {
+            component.form = new FormGroup({
+                test: new FormControl(''),
+                filters: new FormControl(''),
+                searchEntity: new FormControl('')
+              });
+              component.form.controls['filters'].setValue([{ uniqueId: 1 }, { uniqueId: 1 }]);
+              const updateFormValue = { test: 'abc', filters: { uniqueId: 2 } };
+              const expectedOutput = {test: 'abc', filters: {uniqueId: 2}, searchEntity: null}
+              const result = component.overwrite(component.form.getRawValue(), updateFormValue);
+              console.log(result);
+              expect(JSON.stringify(result)).toEqual(JSON.stringify(expectedOutput));
+        });
+        it('should update the form value to null values if ref param is empty when back button is pressed ', () => {
+            component.form = new FormGroup({
+                test: new FormControl(''),
+                filters: new FormControl('')
+            });
+            component.form.controls['test'].setValue('abc');
+            component.form.controls['filters'].setValue({'uniqueId': 1});
+             window.dispatchEvent(new Event('popstate'));
+             const obj = {test: null, filters: {uniqueId: null}};
+             expect(JSON.stringify(component.form.value)).toEqual(JSON.stringify(obj));
+           });
+    });
     describe('validation tests', () => {
         let component: SdsFiltersComponent;
         let fixture: ComponentFixture<SdsFiltersComponent>;
@@ -96,7 +233,7 @@ describe('The Sam Filters Component', () => {
                     RouterTestingModule.withRoutes([]),
                     SdsFormlyModule,
                     SdsFiltersModule
-                    
+
                 ],
 
             });
@@ -155,4 +292,5 @@ describe('The Sam Filters Component', () => {
             expect(component.form.invalid).toBe(true);
         });
     });
+
 });
