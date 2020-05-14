@@ -1,0 +1,39 @@
+<div class="margin-bottom-3">
+    <h4 id="auto1Label">Autocomplete with free text Enabled</h4>
+    <sds-autocomplete [service]="service" (ngModelChange)="changes($event)" [(ngModel)]="model" [configuration]="settings">
+    </sds-autocomplete>
+</div>
+
+<div class="margin-bottom-4">
+    <h4 id="auto2Label">Autocomplete with dropdown input read only</h4>
+    <sds-autocomplete [service]="service" (ngModelChange)="changes($event)" [(ngModel)]="model2" [configuration]="settings2"
+        [suggestionTemplate]="temp"></sds-autocomplete>
+</div>
+<div class="margin-bottom-4">
+    <h4 id="auto3Label">Autocomplete with tag mode enable</h4>
+    <sds-autocomplete [service]="service" (ngModelChange)="changes($event)" [(ngModel)]="model3" [configuration]="settings3"></sds-autocomplete>
+
+    {{model3 |json}}
+</div>
+<div class="margin-bottom-4">
+    <h4 id="auto3Label" >Autocomplete with custom template</h4>
+    <sds-autocomplete [service]="service" (ngModelChange)="changes($event)" [(ngModel)]="model4" [configuration]="settings4"
+        [suggestionTemplate]="temp" [selectedItemTemplate]="temp"></sds-autocomplete>
+</div>
+<div class="margin-bottom-4">
+    <h4 id="auto3Label">Autocomplete with minimum charecter count</h4>
+    <sds-autocomplete [service]="service" [(ngModel)]="model5" [configuration]="settings5">
+    </sds-autocomplete>
+</div>
+
+<div>
+    <h4 id="auto6Label" >Autocomplete with disable</h4>
+    <sds-autocomplete [service]="service" [disabled]="true" [(ngModel)]="model6" [configuration]="settings6">
+    </sds-autocomplete>
+</div>
+<ng-template #temp let-item>
+    <span>
+        <span>Template</span>
+        {{item['name'] +': '+ item['subtext'] }}
+    </span>
+</ng-template>

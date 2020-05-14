@@ -75,4 +75,15 @@ export class SDSAutocompleteSearchConfiguration {
    * The aria-label for the auto-complete
    */
   public ariaLabelText: string = 'Auto Complete';
+
+  /**
+   * To enable the tag mode
+   */
+  public isTagModeEnabled: boolean =false;
+
+    /**
+   * To make input readonly
+   */
+  public inputReadOnly = false;
+
 }

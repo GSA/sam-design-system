@@ -11,6 +11,8 @@ import {
 } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { SideNavigationBasicModule } from './demos/basic/sidenavigation-basic.module';
+import { SideNavigationOptionalModule } from './demos/optional/sidenavigation-optional.module';
+import { SideNavigationOptional } from './demos/optional/sidenavigation-optional.component';
 
 declare var require: any;
 const DEMOS = {
@@ -20,7 +22,14 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/basic/sidenavigation-basic.component'),
     markup: require('!!raw-loader!./demos/basic/sidenavigation-basic.component.html'),
     path: 'libs/documentation/src/lib/components/sidenavigation/demos/basic'
-  }
+  },
+  optional: {
+    title: 'Optional Side Navigation',
+    type: SideNavigationOptional,
+    code: require('!!raw-loader!./demos/optional/sidenavigation-optional.component'),
+    markup: require('!!raw-loader!./demos/optional/sidenavigation-optional.component.html'),
+    path: 'libs/documentation/src/lib/components/sidenavigation/demos/optional'
+  },
 };
 
 export const ROUTES = [
@@ -50,7 +59,8 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    SideNavigationBasicModule
+    SideNavigationBasicModule,
+    SideNavigationOptionalModule
   ]
 })
 export class SideNavigationModule {
