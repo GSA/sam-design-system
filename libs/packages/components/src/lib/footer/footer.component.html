@@ -50,10 +50,10 @@
     </div>
   </div>
 
-  <div class="usa-footer__primary-section">
+  <div class="sds-footer__primary-section">
     <div class="grid-container">
       <div class="grid-row grid-gap">
-        <div class="mobile-lg:grid-col-12 tablet:grid-col-4">
+        <div class="mobile-lg:grid-col-12 tablet:grid-col-3">
           <div
             class="usa-footer__logo grid-row mobile-lg:grid-gap-1 margin-top-3"
           >
@@ -88,11 +88,12 @@
             -->
           </div>
         </div>
-        <div class="mobile-lg:grid-col-12 tablet:grid-col-8">
-          <nav class="usa-footer__nav">
-            <div class="grid-row grid-gap-4">
+
+        <div class="mobile-lg:grid-col-12 tablet:grid-col-12">
+          <nav class="usa-footer__primary-section">
+            <div class="grid-row grid-gap">
               <div
-                class="mobile-lg:grid-col-12 desktop:grid-col-4"
+                class="mobile-lg:grid-col-12 desktop:grid-col-3"
                 *ngFor="let section of model.linkSections"
               >
                 <section
@@ -127,7 +128,6 @@
     </div>
   </div>
 
-  <h1>Bottom</h1>
   <div class="usa-footer__secondary-section">
     <div class="grid-container">
       <div class="grid-row grid-gap">
