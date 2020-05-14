@@ -2,40 +2,26 @@ import {
   Component,
   Input,
   Output,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
   EventEmitter,
   Optional,
-  OnInit
+  HostListener,
+  OnInit,
+  ChangeDetectorRef
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
-import { Subject } from 'rxjs';
-import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
-import { Router, ActivatedRoute, NavigationStart } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import * as qs from 'qs';
 import { Md5 } from 'ts-md5/dist/md5';
-import { HostListener } from '@angular/core';
+
+import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
 
 @Component({
   selector: 'sds-filters',
-  template: `
-    <formly-form
-      [form]="form"
-      [fields]="fields"
-      [options]="options"
-      (modelChange)="modelChange.next($event)" 
-      [model]="model"
-    ></formly-form>
-  `,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  templateUrl: './sds-filters.component.html'
 })
-export class SdsFiltersComponent implements OnInit {
-  /**
-   * Modeal update
-   */
-  modelChange = new Subject<any>();
 
+export class SdsFiltersComponent implements OnInit {
   /**
    * Pass in a Form Group for ReactiveForms Support
    */
@@ -57,19 +43,17 @@ export class SdsFiltersComponent implements OnInit {
   @Input() public options: FormlyFormOptions = {};
 
   /**
-   *  Emit results when model updated
+   *  If advanced filters dialog should be displayed -- defaults to false
    */
-  @Output() filterChange = new EventEmitter<object[]>();
+  @Input() advancedFilters: boolean = false;
 
   /**
    * Timer id for the timer awaiting the service call for more typeing
    */
   private timeoutNumber: number;
 
-  /**
-   * debounce time for current page input
-   */
-  @Input() debounceTime = 0;
+  // TODO: check type -- Formly models are typically objects
+  @Output() filterChange = new EventEmitter<object[]>();
 
   sdsFilterHistory = [];
 
@@ -108,7 +92,7 @@ export class SdsFiltersComponent implements OnInit {
   ) { }
 
   @HostListener('window:popstate', ['$event'])
-  onpopstate(event) {
+  onpopstate() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const ref = urlParams.get('ref');
@@ -144,25 +128,25 @@ export class SdsFiltersComponent implements OnInit {
     } else {
       this.clearStorage();
     }
-    this.cdr.detectChanges();
-    this.modelChange.subscribe((change) => {
-      window.clearTimeout(this.timeoutNumber);
-      this.timeoutNumber = window.setTimeout(() => {
-        this.filterChange.emit(change);
-        const md5 = new Md5();
-        const hashCode = md5.appendStr(qs.stringify(change)).end();
-        this.router.navigate([], {
-          relativeTo: this.route,
-          queryParams: { ref: hashCode },
-          queryParamsHandling: 'merge'
-        });
-        this.addToStorageList(hashCode)
-        localStorage.setItem(hashCode.toString(), JSON.stringify(change));
-        if (this.formlyUpdateComunicationService) {
-          this.formlyUpdateComunicationService.updateFilter(change);
-        }
-      }, 150);
-    })
+  }
+
+  onModelChange(model: any) {
+    window.clearTimeout(this.timeoutNumber);
+    this.timeoutNumber = window.setTimeout(() => {
+      this.filterChange.emit(model);
+      const md5 = new Md5();
+      const hashCode = md5.appendStr(qs.stringify(model)).end();
+      this.router.navigate([], {
+        relativeTo: this.route,
+        queryParams: { ref: hashCode },
+        queryParamsHandling: 'merge'
+      });
+      this.addToStorageList(hashCode)
+      localStorage.setItem(hashCode.toString(), JSON.stringify(model));
+      if (this.formlyUpdateComunicationService) {
+        this.formlyUpdateComunicationService.updateFilter(model);
+      }
+    }, 150);
   }
 
   addToStorageList(hashCode) {
@@ -171,6 +155,7 @@ export class SdsFiltersComponent implements OnInit {
     this.sdsFilterHistory.push(hashCode);
     localStorage.setItem('sdsFilterHistory', JSON.stringify(this.sdsFilterHistory));
   }
+
   clearStorage() {
     const list = JSON.parse(localStorage.getItem('sdsFilterHistory'));
     if (list && list.length > 0) {
@@ -179,6 +164,5 @@ export class SdsFiltersComponent implements OnInit {
         localStorage.removeItem(item);
       });
     }
-
   }
 }

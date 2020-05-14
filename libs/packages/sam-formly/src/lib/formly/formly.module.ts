@@ -3,16 +3,17 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule, FormlyFieldConfig } from '@ngx-formly/core';
 import { FormlySelectModule } from '@ngx-formly/core/select';
-import { FIELD_TYPE_COMPONENTS, FORMLY_CONFIG } from './formly.config';
-import {
-  SdsAccordionModule, SdsAutocompleteModule, SdsTextModule, SdsSearchModule
-} from '@gsa-sam/components';
+import { MatInputModule } from '@angular/material/input';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatInputModule } from '@angular/material/input';
+import {
+  SdsAccordionModule, SdsAutocompleteModule, SdsDialogModule, SdsTextModule, SdsSearchModule
+} from '@gsa-sam/components';
+
+import { FIELD_TYPE_COMPONENTS, FORMLY_CONFIG } from './formly.config';
 import { maxDateValidator, minDateValidator } from './formly.validators';
 import { AnimationWrapperComponent } from './wrappers/form-field.animation';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 // Validate the min length of the charecter
 export function minlengthValidationMessage(err, field) {
@@ -77,6 +78,7 @@ export { maxDateValidator, minDateValidator } from './formly.validators';
     CommonModule,
     SdsAccordionModule,
     SdsAutocompleteModule,
+    SdsDialogModule,
     SdsSearchModule,
     SdsTextModule,
     MatNativeDateModule,
