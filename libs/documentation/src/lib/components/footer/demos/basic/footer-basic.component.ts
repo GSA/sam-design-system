@@ -13,14 +13,16 @@ export class FooterBasic implements OnInit {
   modelFooter: FooterModel = {
     linkSections: [
       {
-        text: 'About beta.SAM.gov',
+        text: 'Our Website',
         links: [
           {
             text: 'Explore Our Community',
             route: '/',
             mode: NavigationMode.INTERNAL
           },
-          { text: 'Release Notes', route: '/', mode: NavigationMode.INTERNAL }
+          { text: 'Release Notes', route: '/', mode: NavigationMode.INTERNAL },
+          { text: 'Alerts', route: '/', mode: NavigationMode.INTERNAL },
+          { text: 'News', route: '/', mode: NavigationMode.INTERNAL }
         ]
       },
       {
@@ -35,12 +37,11 @@ export class FooterBasic implements OnInit {
           { text: 'Grants.gov', route: '/', mode: NavigationMode.INTERNAL },
           { text: 'More Partners', route: '/', mode: NavigationMode.INTERNAL }
         ]
-      },
-      {
+      },   {
         text: 'Customer Service',
         links: [
           {
-            text: 'Learning Center',
+            text: 'Help',
             route: '/',
             mode: NavigationMode.INTERNAL
           },
@@ -49,12 +50,25 @@ export class FooterBasic implements OnInit {
             route: '/',
             mode: NavigationMode.INTERNAL
           },
-          { text: 'Resources', route: '/', mode: NavigationMode.INTERNAL },
+          { text: 'Our Community', route: '/', mode: NavigationMode.INTERNAL },
           {
-            text: 'Freedom of Information Act',
+            text: 'Policy',
             route: '/',
             mode: NavigationMode.INTERNAL
           }
+        ]
+      },
+      {
+        text: 'Policies',
+        links: [
+          {
+            text: 'Privacy Policy',
+            route: '/',
+            mode: NavigationMode.INTERNAL
+          },
+          { text: 'Disclaimers', route: '/', mode: NavigationMode.INTERNAL },
+          { text: 'Freedom of Informatiion Act', route: '/', mode: NavigationMode.INTERNAL },
+          { text: 'Accessibility', route: '/', mode: NavigationMode.INTERNAL }
         ]
       }
     ]

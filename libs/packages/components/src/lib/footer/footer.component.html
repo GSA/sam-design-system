@@ -1,22 +1,51 @@
 <footer class="usa-footer usa-footer--big" role="contentinfo">
-
   <div class="sds-feedback">
-    <button type="button" class="sds-feedback__button" [attr.aria-expanded]="!isCollapsedContent" aria-controls="collapseID" (click)="isCollapsedContent = !isCollapsedContent">
+    <button
+      type="button"
+      class="sds-feedback__button"
+      [attr.aria-expanded]="!isCollapsedContent"
+      aria-controls="collapseID"
+      (click)="isCollapsedContent = !isCollapsedContent"
+    >
       <fa-layers [fixedWidth]="true" size="2x">
-        <fa-icon [icon]="['fas', 'circle']" [sdsCollapse]="isCollapsedContent" class="text-base-light margin-auto"></fa-icon>
-        <fa-icon [icon]="['sds', 'arrow-up']" [sdsCollapse]="isCollapsedContent" transform="shrink-6"></fa-icon>
-        <fa-icon [icon]="['fas', 'circle']" [sdsCollapse]="!isCollapsedContent" class="text-primary margin-auto"></fa-icon>
-        <fa-icon [icon]="['sds', 'arrow-down']" [sdsCollapse]="!isCollapsedContent" transform="shrink-6"></fa-icon>
+        <fa-icon
+          [icon]="['fas', 'circle']"
+          [sdsCollapse]="isCollapsedContent"
+          class="text-base-light margin-auto"
+        ></fa-icon>
+        <fa-icon
+          [icon]="['sds', 'arrow-up']"
+          [sdsCollapse]="isCollapsedContent"
+          transform="shrink-6"
+        ></fa-icon>
+        <fa-icon
+          [icon]="['fas', 'circle']"
+          [sdsCollapse]="!isCollapsedContent"
+          class="text-primary margin-auto"
+        ></fa-icon>
+        <fa-icon
+          [icon]="['sds', 'arrow-down']"
+          [sdsCollapse]="!isCollapsedContent"
+          transform="shrink-6"
+        ></fa-icon>
       </fa-layers>
       <span class="sds-feedback__title">Feedback</span>
     </button>
-    <div id="collapseID" [sdsCollapse]="isCollapsedContent" class="sds-feedback__response">
+    <div
+      id="collapseID"
+      [sdsCollapse]="isCollapsedContent"
+      class="sds-feedback__response"
+    >
       <div class="tablet:width-tablet-lg padding-4 margin-auto">
         <span class="sds-feedback__response-title">One Question </span>
         <span class="sds-feedback__response-title-thin"> Survey</span>
-        <p class="sds-feedback__response-text">What changes or improvements would you suggest?</p>
-        <input class="sds-feedback__input" type="text">
-        <button class="usa-button usa-button--secondary margin-y-2 float-right">Submit</button>
+        <p class="sds-feedback__response-text">
+          What changes or improvements would you suggest?
+        </p>
+        <input class="sds-feedback__input" type="text" />
+        <button class="usa-button usa-button--secondary margin-y-2 float-right">
+          Submit
+        </button>
       </div>
     </div>
   </div>
@@ -37,22 +66,26 @@
                 [attr.src]="model.footerLogo.imageSourcePath"
                 [attr.alt]="model.footerLogo.imageAltText"
               />
-              <a
-                *ngIf="!model.footerLogo"
-                class="usa-footer__logo-text"
-                target="_blank"
-                href="http://gsa.gov"
-              >
-                GSA.gov
-              </a>
+              <!--
+                <a
+                  *ngIf="!model.footerLogo"
+                  class="usa-footer__logo-text"
+                  target="_blank"
+                  href="http://gsa.gov"
+                >
+                  GSA.gov
+                </a>
+              -->
             </div>
-            <div class="mobile-lg:grid-col-4 tablet:grid-col-auto">
-              <span class="usa-footer__logo-heading">
-                {{
-                  model.footerLogo?.text || 'General Services Administration'
-                }}
-              </span>
-            </div>
+            <!--
+              <div class="mobile-lg:grid-col-4 tablet:grid-col-auto">
+                   <span class="usa-footer__logo-heading">
+                  {{
+                    model.footerLogo?.text || 'General Services Administration'
+                  }}
+                </span>
+              </div>
+            -->
           </div>
         </div>
         <div class="mobile-lg:grid-col-12 tablet:grid-col-8">
@@ -93,17 +126,31 @@
       </div>
     </div>
   </div>
+
+  <h1>Bottom</h1>
   <div class="usa-footer__secondary-section">
     <div class="grid-container">
-      <div class="grid-row">
-        <div class="grid-col-12">
-          <p class="font-body-2xs line-height-sans-4 margin-top-0">
-            This is a U.S. General Services Administration Federal Government
-            computer system that is
-            <strong>"FOR OFFICIAL USE ONLY."</strong> This system is subject to
-            monitoring. Individuals found performing unauthorized activities are
-            subject to disciplinary action including criminal prosecution.
-          </p>
+      <div class="grid-row grid-gap">
+        <div
+          class="grid-col-12 mobile-lg:grid-col-6 tablet:grid-col-4 margin-bottom-4"
+        >
+          <div class="sds-footer__logo">
+            <a class="sds-footer__logo-link" href="">
+              <img src="" alt="" />
+            </a>
+            <h3 class="sds-footer__logo-heading">
+              General Services Administration
+            </h3>
+          </div>
+        </div>
+        <div
+          class="sds-footer__note grid-col-12 mobile-lg:grid-col-6 tablet:grid-col-8"
+        >
+          This is a U.S. General Services Administration Federal Government
+          computer system that is <strong>"FOR OFFICIAL USE ONLY."</strong> This
+          system is subject to monitoring. Individuals found performing
+          unauthorized activities are subject to disciplinary action including
+          criminal prosecution.
         </div>
       </div>
     </div>
