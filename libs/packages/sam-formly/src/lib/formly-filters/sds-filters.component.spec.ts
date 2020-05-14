@@ -196,7 +196,19 @@ describe('The Sam Filters Component', () => {
             expect(serviceSpy).toHaveBeenCalled();
             expect(service.updateFilter).toHaveBeenCalled();
         });
-
+        it('should return new Object with some properties as null based on base Object', () => {
+            component.form = new FormGroup({
+                test: new FormControl(''),
+                filters: new FormControl(''),
+                searchEntity: new FormControl('')
+              });
+              component.form.controls['filters'].setValue([{ uniqueId: 1 }, { uniqueId: 1 }]);
+              const updateFormValue = { test: 'abc', filters: { uniqueId: 2 } };
+              const expectedOutput = {test: 'abc', filters: {uniqueId: 2}, searchEntity: null}
+              const result = component.overwrite(component.form.getRawValue(), updateFormValue);
+              console.log(result);
+              expect(JSON.stringify(result)).toEqual(JSON.stringify(expectedOutput));
+        });
         it('should update the form value to null values if ref param is empty when back button is pressed ', () => {
             component.form = new FormGroup({
                 test: new FormControl(''),
@@ -209,6 +221,7 @@ describe('The Sam Filters Component', () => {
              expect(JSON.stringify(component.form.value)).toEqual(JSON.stringify(obj));
            });
     });
+    
 
     describe('validation tests', () => {
         let component: SdsFiltersComponent;
