@@ -423,4 +423,68 @@ describe('SamAutocompleteComponent', () => {
     expect(component.resultsListElement).toBeDefined();
   }));
 
+  it('Should have enable tag mode', fakeAsync(() => {
+    component.configuration.isTagModeEnabled = true;
+    component.inputValue = 'searchtext';
+    const event = {
+      "key": "Enter",
+      target: { "value": component.inputValue }
+    }
+    component.onKeydown(event);
+    fixture.detectChanges();
+    tick();
+    fixture.detectChanges();
+    expect(component.model.items.length).toBe(1);
+
+  }));
+
+  it('Should have input read only', fakeAsync(() => {
+    component.configuration.inputReadOnly = true;
+    const event = {
+      "key": "a",
+    }
+    component.onkeypress(event);
+    fixture.detectChanges();
+    tick();
+    fixture.detectChanges();
+    fixture.detectChanges();
+    const input = fixture.debugElement.query(By.css('.usa-input'));
+    expect(input.nativeElement.value).toBe("");
+  }));
+
+  it('Should not trigger backspace event input read only', fakeAsync(() => {
+    component.inputValue = 'Search';
+    component.configuration.inputReadOnly = true;
+    const event = {
+      "key": "Backspace",
+      preventDefault: ()=>{},
+      target: {
+        "value": component.inputValue,
+       
+      }
+    }
+    component.onKeydown(event);
+    fixture.detectChanges();
+    tick();
+    fixture.detectChanges();
+
+    console.log(event);
+    const input = fixture.debugElement.query(By.css('.usa-input'));
+    expect(input.nativeElement.value).toBe("Search");
+  }));
+  it('Should have input not read only', fakeAsync(() => {
+    component.inputValue = 'a';
+   const event = {
+      "key": "a",
+      target: { "value": component.inputValue }
+    }
+    component.onkeypress(event);
+    fixture.detectChanges();
+    tick();
+    fixture.detectChanges();
+    fixture.detectChanges();
+    const input = fixture.debugElement.query(By.css('.usa-input'));
+    expect(input.nativeElement.value).toBe("a");
+  }));
+
 });
