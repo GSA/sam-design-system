@@ -29,12 +29,16 @@ constructor() {}
   }
 
   ngOnInit(): void {
-    console.log(this.model)
+
+
     this.displayTemplate();
+
+
 
   }
 
   ngOnChanges(){
+
       this.displayTemplate()
   }
 
@@ -43,10 +47,11 @@ constructor() {}
   }
 
   displayTemplate(){
+    console.log(this.model)
     if(this.model.error){
       this.data.title = this.model.error.title;
       this.data.message = this.model.error.description;
-    } else if (!this.model.error){
+    } else if (this.model.emptySearch){
       this.data.title = this.model.emptySearch.title;
       this.data.message = this.model.emptySearch.description;
     } else {
