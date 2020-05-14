@@ -3,9 +3,8 @@ import { SdsSearchResultListComponent } from './search-result-list.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CommonModule } from '@angular/common';
 import { DebugElement } from '@angular/core';
-import { By } from '@angular/platform-browser';
 
-fdescribe('SdsSearchResultListComponent', () => {
+describe('SdsSearchResultListComponent', () => {
   let component: SdsSearchResultListComponent;
   let fixture: ComponentFixture<SdsSearchResultListComponent>;
   let el: DebugElement;
@@ -40,10 +39,10 @@ fdescribe('SdsSearchResultListComponent', () => {
       { title: 'Fifth', id: 5, hasNewerData: true }
     ] }
 
-   fixture.detectChanges();
-
+  fixture.detectChanges();
    const testResult = component.model.results[0];
    const testResults = component.model.results;
+   console.log(testResults)
    expect(testResult).toBeTruthy("Could not find");
    expect(testResults.length).toBeGreaterThan(0);
    expect(testResult.title).toEqual('First');
@@ -59,7 +58,6 @@ fdescribe('SdsSearchResultListComponent', () => {
 
   fixture.detectChanges();
   const noResults = component.model.results
-  console.log(noResults);
   expect(noResults).toBeTruthy("Not truthy");
   expect(noResults.length).toEqual(0);
 
@@ -81,7 +79,6 @@ fdescribe('SdsSearchResultListComponent', () => {
 
     fixture.detectChanges();
     const errorMessage = component.model.error
-    // console.log(errorMessage);
     expect(errorMessage).toBeTruthy('Not Truthy')
     expect(errorMessage.title).toContain('Bad Request');
 
@@ -96,7 +93,6 @@ fdescribe('SdsSearchResultListComponent', () => {
 
     fixture.detectChanges();
     const defaultMessage = component.model.emptySearch
-    // console.log(defaultMessage);
     expect(defaultMessage).toBeTruthy();
     expect(defaultMessage).toContain('nothing');
 
