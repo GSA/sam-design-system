@@ -95,7 +95,7 @@ export class SdsFiltersComponent implements OnInit {
     private route: ActivatedRoute
   ) { }
 
-  @HostListener('window:popstate', ['$event'])
+  @HostListener('window:popstate', [''])
   onpopstate() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
