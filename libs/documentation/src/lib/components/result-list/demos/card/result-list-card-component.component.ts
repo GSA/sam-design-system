@@ -15,9 +15,10 @@ export class ResultListCardComponent {
     { iconlib : 'sds', icon: 'download', text: 'Third', id: 3 },
     { iconlib : 'sds', icon: 'comment', text: 'Fourth', id: 4 },
     { iconlib : 'sds', icon: 'comment', text: 'Fifth', id: 5 , hasNewerData:true}
-  ];
-
+    ]
+  }
 
   items = this.itemsDefault;
+
 
 }
