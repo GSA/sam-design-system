@@ -23,10 +23,7 @@ export class SearchBasic {
           key: 'searchmodel',
           type: 'search',
           templateOptions: {
-            label: 'Search',
-            // searchSettings: {
-             
-            // }
+            label: 'Search'
           }
         },
 

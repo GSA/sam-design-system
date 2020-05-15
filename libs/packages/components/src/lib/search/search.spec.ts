@@ -12,7 +12,7 @@ class TestComponent {
   };
 }
 
-describe('SearchComponent', () => {
+fdescribe('SearchComponent', () => {
   let component: SdsSearchComponent;
   let fixture: ComponentFixture<SdsSearchComponent>;
 
@@ -31,7 +31,7 @@ describe('SearchComponent', () => {
   });
 
   it('should be dropdown', () => {
-   component.inputEl.nativeElement.value = 'test';
+    component.inputEl.nativeElement.value = 'test';
     component.searchSettings.dropdown.options = [
       { label: '30 Days', value: '30' },
       { label: '60 Days', value: '60' },
@@ -57,10 +57,12 @@ describe('SearchComponent', () => {
   });
 
   it('Should update the model value on click event', () => {
-    const e = jasmine.createSpyObj('e', ['preventDefault']);
-    component.inputEl.nativeElement.value = 'test';
-    component.handleClick(e);
-    expect(e.preventDefault).toHaveBeenCalled();
+    const event = {
+      preventDefault: () => {}
+    };
+    const input = fixture.debugElement.query(By.css('.usa-input'));
+    input.nativeElement.value = 'test';
+    component.handleClick(event);
     expect(component.model.searchText).toBe('test');
   });
 
