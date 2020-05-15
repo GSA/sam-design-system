@@ -29,14 +29,13 @@ export class SdsSearchResultListComponent
    */
   @ContentChild('resultContent') resultContentTemplate: TemplateRef<any>;
 
-  data = {
+  data: any = {
     title: '',
     message: ''
   };
 
   ngOnInit(): void {
     this.displayTemplate();
-    console.log(this.model)
   }
 
   ngOnChanges() {
