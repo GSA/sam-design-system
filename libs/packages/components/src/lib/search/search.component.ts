@@ -70,6 +70,13 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
     });
   }
 
+  hasDropdown() {
+    if (this.searchSettings && this.searchSettings.dropdown && this.searchSettings.dropdown.options && this.searchSettings.dropdown.options.length) {
+      return true;
+    } else {
+      return false;
+    }
+  }
   handleClick(event) {
     event.preventDefault();
     if (!this.inputState.visible) {

@@ -24,9 +24,9 @@ export class SearchBasic {
           type: 'search',
           templateOptions: {
             label: 'Search',
-            searchSettings: {
+            // searchSettings: {
              
-            }
+            // }
           }
         },
 
