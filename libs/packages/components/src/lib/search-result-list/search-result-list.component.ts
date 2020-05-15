@@ -36,6 +36,7 @@ export class SdsSearchResultListComponent
 
   ngOnInit(): void {
     this.displayTemplate();
+    console.log(this.model)
   }
 
   ngOnChanges() {
@@ -51,7 +52,9 @@ export class SdsSearchResultListComponent
     } else if (this.model.emptySearch) {
       this.data.title = this.model.emptySearch.title;
       this.data.message = this.model.emptySearch.description;
-    } else {
+    } else if (this.model.results.length === 0) {
+      this.data.title = this.model.noItems.title
+      this.data.message = this.model.noItems.description
       return;
     }
     return;

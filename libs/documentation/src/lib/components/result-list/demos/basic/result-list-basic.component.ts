@@ -22,7 +22,7 @@ export class ResultListBasic {
     emptySearch: {
       title: "No Search",
       description: `No Search criteria. Please try again
-                    If you continue to <br>have this problem, please contact the <a href='https://www.fsd.gov/'>Federal Service Desk.</a>`,
+                    If you continue to have this problem, please contact the <a href='https://www.fsd.gov/'>Federal Service Desk.</a>`,
       icon: {
         name: 'fa-alert-error',
         library: 'sds',
@@ -45,8 +45,18 @@ export class ResultListBasic {
   };
 
   emptyItems:object = {
-    results: [] = []
+    results: [] = [],
+    noItems: {
+      title: "No Matches Found",
+      description: `We couldn't find a match for your search criteria.
+      We couldn't find a match for your search criteria.`,
+      icon: {
+        name: 'fa-alert-error',
+        library: 'sds',
+        size: '6x'
+    }
   }
+}
 
   messages = this.errorMessages;
   items = this.itemsDefault;
