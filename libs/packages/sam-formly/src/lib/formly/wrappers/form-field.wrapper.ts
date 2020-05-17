@@ -1,7 +1,6 @@
 import { Component, ViewChild, ViewContainerRef } from '@angular/core';
 import { FieldWrapper } from '@ngx-formly/core';
 
-
 /**
  * @param {string} [to.tagClass] Class to be added to the tag (default: sds-tag--info-white)
  * @param {string} [to.tagText] Text to be shown inside the tag
@@ -10,6 +9,9 @@ import { FieldWrapper } from '@ngx-formly/core';
  * @param {string} [to.required] Makes the field required
  * @param {string} [to.hideRequiredMarker] Hides the required indicator
  * @param {string} [to.description] Add a description below the label
+ * @param {string} [to.hideOptional] Remove the optional text
+ * @param {string} [to.hideLabel] Hide the label
+ * 
  */
 
 
