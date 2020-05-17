@@ -40,9 +40,10 @@ export class SdsFiltersComponent implements OnInit {
   /**
    *    Options for the form.
    */
-  @Input() public options: FormlyFormOptions = {};
+  @Input() public options: FormlyFormOptions;
 
   /**
+   * To enable History Tracking
    *  If advanced filters dialog should be displayed -- defaults to false
    */
   @Input() advancedFilters: boolean = false;
@@ -50,8 +51,11 @@ export class SdsFiltersComponent implements OnInit {
   /**
    * Timer id for the timer awaiting the service call for more typeing
    */
-  private timeoutNumber: number;
+  @Input() public isHistoryEnable: boolean = true;
 
+  /**
+   *  Emit results when model updated
+   */
   // TODO: check type -- Formly models are typically objects
   @Output() filterChange = new EventEmitter<object[]>();
 
@@ -85,13 +89,13 @@ export class SdsFiltersComponent implements OnInit {
 
   constructor(
     @Optional()
-    private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,
+    public formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,
     private cdr: ChangeDetectorRef,
     private router: Router,
     private route: ActivatedRoute
   ) { }
 
-  @HostListener('window:popstate', ['$event'])
+  @HostListener('window:popstate', [''])
   onpopstate() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -105,48 +109,49 @@ export class SdsFiltersComponent implements OnInit {
       updatedFormValue
     );
     this.form.setValue(updatedValue, { emitEvent: false });
-    this.filterChange.emit([updatedValue]);
-    if (this.formlyUpdateComunicationService) {
-      this.formlyUpdateComunicationService.updateFilter(updatedValue);
-    }
+    this.updateChange(updatedFormValue);
   }
 
   ngOnInit(): void {
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const initialRef = urlParams.get('ref');
-    if (initialRef) {
-      const updatedFormValue = JSON.parse(localStorage.getItem(initialRef));
-      setTimeout(() => {
-        this.model = { ...this.model, ...updatedFormValue }
-        this.filterChange.emit([updatedFormValue]);
-        if (this.formlyUpdateComunicationService) {
-          this.formlyUpdateComunicationService.updateFilter(updatedFormValue);
-        }
-        this.cdr.detectChanges();
-      }, 0);
-    } else {
+    if (this.isHistoryEnable) {
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const initialRef = urlParams.get('ref');
+      if (initialRef) {
+        const updatedFormValue = JSON.parse(localStorage.getItem(initialRef));
+        setTimeout(() => {
+          this.model = { ...this.model, ...updatedFormValue }
+          this.updateChange(updatedFormValue);
+          this.cdr.detectChanges();
+        }, 0);
+      } else {
+      this.updateChange(this.model);
       this.clearStorage();
+      }
     }
+    this.cdr.detectChanges();
   }
 
-  onModelChange(model: any) {
-    window.clearTimeout(this.timeoutNumber);
-    this.timeoutNumber = window.setTimeout(() => {
-      this.filterChange.emit(model);
+  onModelChange(change: any) {
+    if (this.isHistoryEnable) {
       const md5 = new Md5();
-      const hashCode = md5.appendStr(qs.stringify(model)).end();
+      const hashCode = md5.appendStr(qs.stringify(change)).end();
       this.router.navigate([], {
         relativeTo: this.route,
         queryParams: { ref: hashCode },
         queryParamsHandling: 'merge'
       });
       this.addToStorageList(hashCode)
-      localStorage.setItem(hashCode.toString(), JSON.stringify(model));
-      if (this.formlyUpdateComunicationService) {
-        this.formlyUpdateComunicationService.updateFilter(model);
-      }
-    }, 150);
+      localStorage.setItem(hashCode.toString(), JSON.stringify(change));
+    }
+    this.updateChange(change);
+  }
+
+  updateChange(change) {
+    this.filterChange.emit(change);
+    if (this.formlyUpdateComunicationService) {
+      this.formlyUpdateComunicationService.updateFilter(change);
+    }
   }
 
   addToStorageList(hashCode) {
