@@ -3,34 +3,33 @@ import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-  templateUrl: './group-optional.component.html'
+  templateUrl: './group-panel.component.html'
 })
-
-export class GroupOptional {
+export class GroupPanel {
   form = new FormGroup({});
-  model: any = {};
+  panelModel: any = {};
   options: FormlyFormOptions = {};
-  fields: FormlyFieldConfig[] = [
+  panelFields: FormlyFieldConfig[] = [
     {
-      key: 'Input',
+      key: 'PanelInput',
       type: 'input',
       templateOptions: {
         label: 'Input',
-        group: 'accordion',
+        group: 'panel',
         placeholder: 'Placeholder',
         description: 'Description',
-        required: true,
-      },
-    },
+        required: true
+      }
+    }
   ];
 
-  multipleFormGroupModel:any ={};
+  multipleFormGroupModel: any = {};
   multipleFormGroupFields: FormlyFieldConfig[] = [
     {
       key: 'filters',
       templateOptions: {
         label: 'Entity Information',
-        group: 'accordion'
+        group: 'panel'
       },
       fieldGroup: [
         {

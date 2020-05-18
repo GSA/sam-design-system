@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GroupBasic } from './demos/basic/group-basic.component';
 import { DocumentationExamplesPage } from '../shared/examples-page/examples.component';
 import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
@@ -10,24 +9,25 @@ import {
   DocumentationDemoList
 } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
-import { GroupBasicModule } from './demos/basic/group-basic.module';
-import { GroupOptionalModule } from './demos/optional/group-optional.module';
-import { GroupOptional } from './demos/optional/group-optional.component';
+import { GroupPanelModule } from './demos/basic/group-panel.module';
+import { GroupAccordionModule } from './demos/optional/group-accordion.module';
+import { GroupAccordion } from './demos/optional/group-accordion.component';
+import { GroupPanel } from './demos/basic/group-panel.component';
 
 declare var require: any;
 const DEMOS = {
   formfield: {
-    title: 'Basic',
-    type: GroupBasic,
-    code: require('!!raw-loader!./demos/basic/group-basic.component'),
-    markup: require('!!raw-loader!./demos/basic/group-basic.component.html'),
+    title: 'Group with Panel',
+    type: GroupPanel,
+    code: require('!!raw-loader!./demos/basic/group-panel.component'),
+    markup: require('!!raw-loader!./demos/basic/group-panel.component.html'),
     path: 'libs/documentation/src/lib/components/group/demos/basic'
   },
   optionalformfield: {
-    title: 'Optional',
-    type: GroupOptional,
-    code: require('!!raw-loader!./demos/optional/group-optional.component'),
-    markup: require('!!raw-loader!./demos/optional/group-optional.component.html'),
+    title: 'Group with Accordion',
+    type: GroupAccordion,
+    code: require('!!raw-loader!./demos/optional/group-accordion.component'),
+    markup: require('!!raw-loader!./demos/optional/group-accordion.component.html'),
     path: 'libs/documentation/src/lib/components/group/demos/optional'
   }
 };
@@ -61,8 +61,8 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    GroupBasicModule,
-    GroupOptionalModule
+    GroupPanelModule,
+    GroupAccordionModule
   ]
 })
 export class GroupWrappersModule {
