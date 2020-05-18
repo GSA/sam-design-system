@@ -7,7 +7,6 @@ import { FieldWrapper } from '@ngx-formly/core';
  * @param {string} [to.labelClass] Class to be applied to the label
  * @param {string} [to.label] Text to be shown for the label
  * @param {string} [to.required] Makes the field required
- * @param {string} [to.hideRequiredMarker] Hides the required indicator
  * @param {string} [to.description] Add a description below the label
  * @param {string} [to.hideOptional] Remove the optional text
  * @param {string} [to.hideLabel] Hide the label
