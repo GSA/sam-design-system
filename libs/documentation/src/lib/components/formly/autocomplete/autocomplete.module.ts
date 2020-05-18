@@ -8,6 +8,8 @@ import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../.
 import { ComponentWrapperComponent } from '../../../shared/component-wrapper/component-wrapper.component';
 import { FormlyAutocompleteBasicModule } from './demos/basic/autocomplete-basic.module';
 import { FormlyAutocompleteBasic } from './demos/basic/autocomplete-basic.component';
+import { FormlyAutocompleteFreetextModule } from './demos/freetext/autocomplete-freetext.module';
+import { FormlyAutocompleteFreetext } from './demos/freetext/autocomplete-freetext.component';
 
 declare var require: any;
 const DEMOS = {
@@ -17,6 +19,13 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/basic/autocomplete-basic.component'),
     markup: require('!!raw-loader!./demos/basic/autocomplete-basic.component.html'),
     path: 'libs/documentation/src/lib/components/autocomplete/demos/basic'
+  },
+  freetext: {
+    title: 'Autocomplete with Free text enable',
+    type: FormlyAutocompleteFreetext,
+    code: require('!!raw-loader!./demos/freetext/autocomplete-freetext.component'),
+    markup: require('!!raw-loader!./demos/freetext/autocomplete-freetext.component.html'),
+    path: 'libs/documentation/src/lib/components/autocomplete/demos/freetext'
   }
 };
 
@@ -49,7 +58,8 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    FormlyAutocompleteBasicModule
+    FormlyAutocompleteBasicModule,
+    FormlyAutocompleteFreetextModule
   ]
 })
 export class FormlyAutocompleteModule {
