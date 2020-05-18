@@ -132,11 +132,13 @@ export class DocumentationAPIComponent implements OnInit {
   getTags(tags) {
     const tagList: any[] = [];
 
-    tags.forEach(tag => {
-      if(tag.name) {
-        tagList.push({"name": tag.name.left.escapedText + "." + tag.name.right.escapedText, "comment":tag.comment})
-      }
-    })
+    if(tags && tags.length) {
+      tags.forEach(tag => {
+        if(tag.name) {
+          tagList.push({"name": tag.name.left.escapedText + "." + tag.name.right.escapedText, "comment":tag.comment})
+        }
+      })
+    }
 
     return tagList;
   }
