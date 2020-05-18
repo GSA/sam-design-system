@@ -1,10 +1,10 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   templateUrl: './result-list-basic.component.html'
 })
 export class ResultListBasic {
-  constructor(private change: ChangeDetectorRef) {}
+  constructor() {}
 
   itemsDefault: object = {
     results: [] = [
@@ -20,12 +20,7 @@ export class ResultListBasic {
     emptySearch: {
       title: 'No Search',
       description: `No Search criteria. Please try again
-                    If you continue to have this problem, please contact the <a href='https://www.fsd.gov/'>Federal Service Desk.</a>`,
-      icon: {
-        name: 'fa-alert-error',
-        library: 'sds',
-        size: '6x'
-      }
+                    If you continue to have this problem, please contact the <a href='https://www.fsd.gov/'>Federal Service Desk.</a>`
     }
   };
 
@@ -33,12 +28,7 @@ export class ResultListBasic {
     error: {
       title: 'Bad Request',
       description: `There was an issue with the search request. If you continue to
-                    experience this issue, please contact the <a href='https://www.fsd.gov/'>Federal Service Desk.</a>`,
-      icon: {
-        name: 'fa-alert-error',
-        library: 'sds',
-        size: '6x'
-      }
+                    experience this issue, please contact the <a href='https://www.fsd.gov/'>Federal Service Desk.</a>`
     }
   };
 
@@ -47,12 +37,7 @@ export class ResultListBasic {
     noItems: {
       title: 'No Matches Found',
       description: `We couldn't find a match for your search criteria.
-      We couldn't find a match for your search criteria.`,
-      icon: {
-        name: 'fa-alert-error',
-        library: 'sds',
-        size: '6x'
-      }
+      We couldn't find a match for your search criteria.`
     }
   };
 

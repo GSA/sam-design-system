@@ -8,11 +8,9 @@ import {
 } from '@angular/core';
 @Component({
   selector: 'sds-search-result-list',
-  templateUrl: './search-result-list.component.html',
-  styleUrls: ['./search-result-list.component.scss']
+  templateUrl: './search-result-list.component.html'
 })
-export class SdsSearchResultListComponent
-  implements OnInit, OnChanges {
+export class SdsSearchResultListComponent implements OnInit, OnChanges {
   constructor() {}
   /**
    * List of items
@@ -34,15 +32,13 @@ export class SdsSearchResultListComponent
     message: ''
   };
 
-  ngOnInit(){
+  ngOnInit() {
     this.displayTemplate();
   }
 
   ngOnChanges() {
     this.displayTemplate();
   }
-
-
 
   displayTemplate() {
     if (this.model.error) {
@@ -53,7 +49,12 @@ export class SdsSearchResultListComponent
       this.data.message = this.model.emptySearch.description;
     } else if (this.model.results.length === 0) {
       this.data.title = this.model.noItems.title
+        ? this.model.noItems.title
+        : 'No Matches Found';
       this.data.message = this.model.noItems.description
+        ? this.model.noItems.description
+        : `We couldn't find a match for your search criteria.
+      We couldn't find a match for your search criteria.`;
       return;
     }
     return;
