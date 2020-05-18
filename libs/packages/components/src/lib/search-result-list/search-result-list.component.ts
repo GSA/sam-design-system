@@ -34,7 +34,7 @@ export class SdsSearchResultListComponent
     message: ''
   };
 
-  ngOnInit(): void {
+  ngOnInit(){
     this.displayTemplate();
   }
 

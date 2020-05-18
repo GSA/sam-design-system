@@ -42,7 +42,6 @@ describe('SdsSearchResultListComponent', () => {
   fixture.detectChanges();
    const testResult = component.model.results[0];
    const testResults = component.model.results;
-   console.log(testResults)
    expect(testResult).toBeTruthy("Could not find");
    expect(testResults.length).toBeGreaterThan(0);
    expect(testResult.title).toEqual('First');
@@ -53,11 +52,22 @@ describe('SdsSearchResultListComponent', () => {
   it('should display no matches found message', async(() => {
 
   component.model = {
-    results: [] = []
+    results: [] = [],
+    noItems: {
+      title: 'No Matches Found',
+      description: `We couldn't find a match for your search criteria.
+      We couldn't find a match for your search criteria.`,
+      icon: {
+        name: 'fa-alert-error',
+        library: 'sds',
+        size: '6x'
+      }
+    }
   }
 
   fixture.detectChanges();
-  const noResults = component.model.results
+  const noResults = component.model.results;
+  console.log(noResults);
   expect(noResults).toBeTruthy("Not truthy");
   expect(noResults.length).toEqual(0);
 
