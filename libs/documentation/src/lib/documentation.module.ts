@@ -40,6 +40,7 @@ import { ROUTES as SEARCH_FORMLY_ROUTES, FormlySearchModule } from './components
 import { ROUTES as FORM_FIELD_ROUTES, FormFieldModule } from './components/form-field/form-field.module';
 import { ROUTES as FILTER_WRAPPER_ROUTES, FilterWrapperModule } from './components/filterwrapper/filterwrapper.module';
 import { ROUTES as ACCORDION_WRAPPER_ROUTES, AccordionWrapperModule } from './components/accordionwrapper/accordionwrapper.module';
+import { ROUTES as ACCORDION_GROUP_ROUTES, GroupWrappersModule } from './components/groupwrappers/groupwrappers.module';
 
 /* Utilities */
 import { ROUTES as ICONS_ROUTES, IconsModule } from './components/icons/icons.module';
@@ -88,6 +89,7 @@ export const ROUTES: Routes = [
   { path: 'components/form-field', children: FORM_FIELD_ROUTES },
   { path: 'components/filterwrapper', children: FILTER_WRAPPER_ROUTES },
   { path: 'components/accordionwrapper', children: ACCORDION_WRAPPER_ROUTES },
+  { path: 'components/accordiongroup', children: ACCORDION_GROUP_ROUTES },
 
   // Icons
   { path: 'components/icons', children: ICONS_ROUTES },
@@ -127,6 +129,7 @@ export const ROUTES: Routes = [
     FormFieldModule,
     FilterWrapperModule,
     AccordionWrapperModule,
+    GroupWrappersModule,
     IconsModule
   ]
 })
