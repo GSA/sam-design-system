@@ -9,26 +9,26 @@ import {
   DocumentationDemoList
 } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
-import { GroupPanelModule } from './demos/basic/group-panel.module';
-import { GroupAccordionModule } from './demos/optional/group-accordion.module';
-import { GroupAccordion } from './demos/optional/group-accordion.component';
-import { GroupPanel } from './demos/basic/group-panel.component';
+import { GroupPanelModule } from './demos/panel/group-panel.module';
+import { GroupAccordionModule } from './demos/accordion/group-accordion.module';
+import { GroupAccordion } from './demos/accordion/group-accordion.component';
+import { GroupPanel } from './demos/panel/group-panel.component';
 
 declare var require: any;
 const DEMOS = {
   formfield: {
     title: 'Group with Panel',
     type: GroupPanel,
-    code: require('!!raw-loader!./demos/basic/group-panel.component'),
-    markup: require('!!raw-loader!./demos/basic/group-panel.component.html'),
-    path: 'libs/documentation/src/lib/components/group/demos/basic'
+    code: require('!!raw-loader!./demos/panel/group-panel.component'),
+    markup: require('!!raw-loader!./demos/panel/group-panel.component.html'),
+    path: 'libs/documentation/src/lib/components/group/demos/panel'
   },
   optionalformfield: {
     title: 'Group with Accordion',
     type: GroupAccordion,
-    code: require('!!raw-loader!./demos/optional/group-accordion.component'),
-    markup: require('!!raw-loader!./demos/optional/group-accordion.component.html'),
-    path: 'libs/documentation/src/lib/components/group/demos/optional'
+    code: require('!!raw-loader!./demos/accordion/group-accordion.component'),
+    markup: require('!!raw-loader!./demos/accordion/group-accordion.component.html'),
+    path: 'libs/documentation/src/lib/components/group/demos/accordion'
   }
 };
 
