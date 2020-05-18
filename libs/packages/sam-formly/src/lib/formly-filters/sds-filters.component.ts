@@ -18,8 +18,7 @@ import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comuni
 
 @Component({
   selector: 'sds-filters',
-  templateUrl: './sds-filters.component.html',
-  styleUrls: ['./sds-filters.component.scss']
+  templateUrl: './sds-filters.component.html'
 })
 
 export class SdsFiltersComponent implements OnInit {
