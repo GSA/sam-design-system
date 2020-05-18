@@ -43,11 +43,6 @@ export class SdsFiltersComponent implements OnInit {
   @Input() public options: FormlyFormOptions = {};
 
   /**
-   *   Display Reset All button that returns form fields to default states -- default false.
-   */
-  @Input() public resetAll: boolean = true;
-
-  /**
    *  Emit results when model updated
    * To enable History Tracking
    *  If advanced filters dialog should be displayed -- defaults to false
