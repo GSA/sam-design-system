@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AccordionGroupBasic } from './demos/basic/accordiongroup-basic.component';
+import { GroupBasic } from './demos/basic/group-basic.component';
 import { DocumentationExamplesPage } from '../shared/examples-page/examples.component';
 import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
@@ -10,16 +10,25 @@ import {
   DocumentationDemoList
 } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
-import { AccordionGroupBasicModule } from './demos/basic/accordiongroup-basic.module';
+import { GroupBasicModule } from './demos/basic/group-basic.module';
+import { GroupOptionalModule } from './demos/optional/group-optional.module';
+import { GroupOptional } from './demos/optional/group-optional.component';
 
 declare var require: any;
 const DEMOS = {
   formfield: {
-    title: 'Groups',
-    type: AccordionGroupBasic,
-    code: require('!!raw-loader!./demos/basic/accordiongroup-basic.component'),
-    markup: require('!!raw-loader!./demos/basic/accordiongroup-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/accordiongroup/demos/basic'
+    title: 'Basic',
+    type: GroupBasic,
+    code: require('!!raw-loader!./demos/basic/group-basic.component'),
+    markup: require('!!raw-loader!./demos/basic/group-basic.component.html'),
+    path: 'libs/documentation/src/lib/components/group/demos/basic'
+  },
+  optionalformfield: {
+    title: 'Optional',
+    type: GroupOptional,
+    code: require('!!raw-loader!./demos/optional/group-optional.component'),
+    markup: require('!!raw-loader!./demos/optional/group-optional.component.html'),
+    path: 'libs/documentation/src/lib/components/group/demos/optional'
   }
 };
 
@@ -35,7 +44,7 @@ export const ROUTES = [
           pkg: 'formly',
           type: 'components',
           name: 'FormlyAccordianFormFieldComponent',
-          wrappers: ['accordiongroup']
+          wrappers: ['group']
         }
       ]
     },
@@ -52,11 +61,12 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    AccordionGroupBasicModule
+    GroupBasicModule,
+    GroupOptionalModule
   ]
 })
 export class GroupWrappersModule {
   constructor(demoList: DocumentationDemoList) {
-    demoList.register('accordiongroup', DEMOS);
+    demoList.register('group', DEMOS);
   }
 }
