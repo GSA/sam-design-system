@@ -1,4 +1,11 @@
 <formly-form [form]="form" [fields]="fields" [options]="options" [model]="model" (modelChange)="onModelChange($event)">
 </formly-form>
-<sds-advanced-filters *ngIf="advancedFilters" [form]="form" [fields]="fields" [options]="options" [model]="model">
-</sds-advanced-filters>
+<div class="grid-row">
+  <div *ngIf="advancedFilters" class="grid-col">
+    <sds-advanced-filters [form]="form" [fields]="fields" [options]="options" [model]="model">
+    </sds-advanced-filters>
+  </div>
+  <div class="grid-col text-right">
+    <sds-formly-reset [options]="options"></sds-formly-reset>
+  </div>
+</div>

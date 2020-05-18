@@ -5,6 +5,8 @@ import { SdsDialogService } from '@gsa-sam/components';
 import { SdsAdvancedFiltersService } from './sds-advanced-filters.service';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 describe('AdvancedFiltersComponent', () => {
   let component: AdvancedFiltersComponent;
@@ -16,6 +18,10 @@ describe('AdvancedFiltersComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        NoopAnimationsModule,
+        FontAwesomeModule
+      ],
       declarations: [ AdvancedFiltersComponent ],
       providers: [ { provide: SdsDialogService, useValue: dialogServiceStub },
       {
