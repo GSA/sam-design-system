@@ -24,17 +24,43 @@ export class AccordionGroupBasic {
     },
   ];
 
-  accordionModel:any ={};
-  accordionFields: FormlyFieldConfig[] = [
+  multipleFormGroupModel:any ={};
+  multipleFormGroupFields: FormlyFieldConfig[] = [
     {
-      key: 'AccordionInput',
-      type: 'input',
+      key: 'filters',
       templateOptions: {
-        label: 'Accordion Input',
-        group: 'accordion',
-        placeholder: 'Placeholder',
-        description: 'Description',
+        label: 'Entity Information',
+        group: 'panel'
       },
-    },
+      fieldGroup: [
+        {
+          key: 'entity.type',
+          type: 'select',
+          templateOptions: {
+            label: 'Entity Type',
+            description: 'Select the entity type.',
+            required: true,
+            options: [
+              { label: 'Contract Opportunities', value: 'co' },
+              { label: 'Entity Information', value: 'ei' },
+              { label: 'Assistance Listings', value: 'al' },
+              { label: 'Contract Data', value: 'cd' },
+              { label: 'Federal Hierarchy', value: 'fh' },
+              { label: 'Wage Determination', value: 'wd' }
+            ]
+          }
+        },
+        {
+          key: 'multiple.default.entity.title',
+          type: 'input',
+          templateOptions: {
+            label: 'Entity Name',
+            placeholder: 'Acme Corporation',
+            description: 'Enter the name of your entity.',
+            required: true
+          }
+        }
+      ]
+    }
   ];
 }
