@@ -22,6 +22,7 @@ import { ROUTES as SEARCH_ROUTES, SearchModule } from './components/search/searc
 import { ROUTES as AUTOCOMPLETE_ROUTES, AutocompleteModule } from './components/autocomplete/autocomplete.module';
 import { ROUTES as VIDEO_ROUTES, VideoModule } from './components/video/video.module';
 import { ROUTES as POPUP_ROUTES, PopupModule } from './components/popup/popup.module';
+import { ROUTES as FILTERS_ROUTES, FiltersModule } from './components/filters/filters.module';
 
 /* Form Types */
 import { ROUTES as INPUT_ROUTES, InputModule } from './components/formly/input/input.module';
@@ -69,6 +70,7 @@ export const ROUTES: Routes = [
   { path: 'components/autocomplete', children: AUTOCOMPLETE_ROUTES },
   { path: 'components/video', children: VIDEO_ROUTES },
   { path: 'components/popup', children: POPUP_ROUTES },
+  { path: 'components/filters', children: FILTERS_ROUTES },
 
   // Formly
   { path: 'components/input', children: INPUT_ROUTES },
@@ -109,6 +111,7 @@ export const ROUTES: Routes = [
     AutocompleteModule,
     VideoModule,
     PopupModule,
+    FiltersModule,
     InputModule,
     OverviewModule,
     IntroductionModule,

@@ -1,5 +1,11 @@
-<formly-form [form]="form" [fields]="fields" [options]="options" (modelChange)="modelChange.next($event)"
-  [model]="model"></formly-form>
-<div *ngIf="resetAll" class="sds-filters__reset">
-  <sds-formly-reset [options]="options"></sds-formly-reset>
+<formly-form [form]="form" [fields]="fields" [options]="options" [model]="model" (modelChange)="onModelChange($event)">
+</formly-form>
+<div class="grid-row">
+  <div class="grid-col sds-filters__advanced">
+    <sds-advanced-filters *ngIf="advancedFilters" [form]="form" [fields]="fields" [options]="options" [model]="model">
+    </sds-advanced-filters>
+  </div>
+  <div class="grid-col sds-filters__reset">
+    <sds-formly-reset *ngIf="resetAll" [options]="options"></sds-formly-reset>
+  </div>
 </div>

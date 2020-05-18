@@ -1,19 +1,19 @@
-import { ConfigOption } from '@ngx-formly/core';
+import { ConfigOption, FormlyFieldConfig } from '@ngx-formly/core';
+
+import { FormlyCustomWrapperComponent } from './wrappers/custom-wrapper';
 import { FormlyWrapperFormFieldComponent } from './wrappers/form-field.wrapper';
+import { FormlyAccordianFormFieldComponent } from './wrappers/form-field.accordian';
+import { FormlyFormFieldFilterWrapperComponent } from './wrappers/form-field.filterwrapper';
 import { FormlyFieldInputComponent } from './types/input';
 import { FormlyFieldSelectComponent } from './types/select';
 import { FormlyFieldRadioComponent } from './types/radio';
 import { FormlyFieldCheckboxComponent } from './types/checkbox';
 import { FormlyFieldMultiCheckboxComponent } from './types/multicheckbox';
 import { FormlyFieldTextAreaComponent } from './types/textarea';
-import { FormlyAccordianFormFieldComponent } from './wrappers/form-field.accordian';
 import { FormlyFieldAutoCompleteComponent } from './types/autocomplete';
-import { FormlyFormFieldFilterWrapperComponent } from './wrappers/form-field.filterwrapper';
 import { FormlyFieldDatePickerComponent } from './types/datepicker';
 import { FormlyFieldButtonComponent } from './types/button';
 import { FormlyFieldTextComponent } from './types/text';
-import { FormlyFieldConfig } from '@ngx-formly/core';
-import { FormlyCustomWrapperComponent } from './wrappers/custom-wrapper';
 
 export const FIELD_TYPE_COMPONENTS = [
   FormlyFieldInputComponent,
@@ -45,12 +45,23 @@ import { FormlyValidationWrapperComponent } from './wrappers/validation.wrapper'
 import { FormlyGroupWrapperComponent } from './wrappers/group.wrapper';
 import { FormlyFieldSearchComponent } from './types/search';
 
-
 export const FORMLY_WRAPPERS: any = [
-  { name: 'form-field', component: FormlyWrapperFormFieldComponent, componentName: "FormlyWrapperFormFieldComponent" },
-  { name: 'accordionwrapper', component: FormlyAccordianFormFieldComponent, componentName: "FormlyAccordianFormFieldComponent" },
-  { name: 'filterwrapper', component: FormlyFormFieldFilterWrapperComponent, componentName: "FormlyFormFieldFilterWrapperComponent" }
-]
+  {
+    name: 'form-field',
+    component: FormlyWrapperFormFieldComponent,
+    componentName: 'FormlyWrapperFormFieldComponent'
+  },
+  {
+    name: 'accordionwrapper',
+    component: FormlyAccordianFormFieldComponent,
+    componentName: 'FormlyAccordianFormFieldComponent'
+  },
+  {
+    name: 'filterwrapper',
+    component: FormlyFormFieldFilterWrapperComponent,
+    componentName: 'FormlyFormFieldFilterWrapperComponent'
+  }
+];
 
 export const FORMLY_CONFIG: ConfigOption = {
   types: [

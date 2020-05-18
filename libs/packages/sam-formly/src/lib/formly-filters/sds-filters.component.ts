@@ -2,33 +2,27 @@ import {
   Component,
   Input,
   Output,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
   EventEmitter,
   Optional,
-  OnInit
+  HostListener,
+  OnInit,
+  ChangeDetectorRef
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
-import { Subject } from 'rxjs';
-import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
-import { Router, ActivatedRoute, NavigationStart } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import * as qs from 'qs';
 import { Md5 } from 'ts-md5/dist/md5';
-import { HostListener } from '@angular/core';
+
+import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
 
 @Component({
   selector: 'sds-filters',
   templateUrl: './sds-filters.component.html',
-  styleUrls: ['./sds-filters.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./sds-filters.component.scss']
 })
-export class SdsFiltersComponent implements OnInit {
-  /**
-   * Modeal update
-   */
-  modelChange = new Subject<any>();
 
+export class SdsFiltersComponent implements OnInit {
   /**
    * Pass in a Form Group for ReactiveForms Support
    */
@@ -52,22 +46,25 @@ export class SdsFiltersComponent implements OnInit {
   /**
    *   Display Reset All button that returns form fields to default states -- default false.
    */
-  @Input() public resetAll: boolean = false;
+  @Input() public resetAll: boolean = true;
 
   /**
    *  Emit results when model updated
+   * To enable History Tracking
+   *  If advanced filters dialog should be displayed -- defaults to false
    */
-  @Output() filterChange = new EventEmitter<object[]>();
+  @Input() advancedFilters: boolean = false;
 
   /**
    * Timer id for the timer awaiting the service call for more typeing
    */
-  private timeoutNumber: number;
+  @Input() public isHistoryEnable: boolean = true;
 
   /**
-   * debounce time for current page input
+   *  Emit results when model updated
    */
-  @Input() debounceTime = 0;
+  // TODO: check type -- Formly models are typically objects
+  @Output() filterChange = new EventEmitter<object[]>();
 
   sdsFilterHistory = [];
 
@@ -99,14 +96,14 @@ export class SdsFiltersComponent implements OnInit {
 
   constructor(
     @Optional()
-    private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,
+    public formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,
     private cdr: ChangeDetectorRef,
     private router: Router,
     private route: ActivatedRoute
   ) { }
 
-  @HostListener('window:popstate', ['$event'])
-  onpopstate(event) {
+  @HostListener('window:popstate', [''])
+  onpopstate() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const ref = urlParams.get('ref');
@@ -119,48 +116,49 @@ export class SdsFiltersComponent implements OnInit {
       updatedFormValue
     );
     this.form.setValue(updatedValue, { emitEvent: false });
-    this.filterChange.emit([updatedValue]);
-    if (this.formlyUpdateComunicationService) {
-      this.formlyUpdateComunicationService.updateFilter(updatedValue);
-    }
+    this.updateChange(updatedFormValue);
   }
 
   ngOnInit(): void {
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const initialRef = urlParams.get('ref');
-    if (initialRef) {
-      const updatedFormValue = JSON.parse(localStorage.getItem(initialRef));
-      setTimeout(() => {
-        this.model = { ...this.model, ...updatedFormValue }
-        this.filterChange.emit([updatedFormValue]);
-        if (this.formlyUpdateComunicationService) {
-          this.formlyUpdateComunicationService.updateFilter(updatedFormValue);
-        }
-        this.cdr.detectChanges();
-      }, 0);
-    } else {
+    if (this.isHistoryEnable) {
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const initialRef = urlParams.get('ref');
+      if (initialRef) {
+        const updatedFormValue = JSON.parse(localStorage.getItem(initialRef));
+        setTimeout(() => {
+          this.model = { ...this.model, ...updatedFormValue }
+          this.updateChange(updatedFormValue);
+          this.cdr.detectChanges();
+        }, 0);
+      } else {
+      this.updateChange(this.model);
       this.clearStorage();
+      }
     }
     this.cdr.detectChanges();
-    this.modelChange.subscribe((change) => {
-      window.clearTimeout(this.timeoutNumber);
-      this.timeoutNumber = window.setTimeout(() => {
-        this.filterChange.emit(change);
-        const md5 = new Md5();
-        const hashCode = md5.appendStr(qs.stringify(change)).end();
-        this.router.navigate([], {
-          relativeTo: this.route,
-          queryParams: { ref: hashCode },
-          queryParamsHandling: 'merge'
-        });
-        this.addToStorageList(hashCode)
-        localStorage.setItem(hashCode.toString(), JSON.stringify(change));
-        if (this.formlyUpdateComunicationService) {
-          this.formlyUpdateComunicationService.updateFilter(change);
-        }
-      }, 150);
-    })
+  }
+
+  onModelChange(change: any) {
+    if (this.isHistoryEnable) {
+      const md5 = new Md5();
+      const hashCode = md5.appendStr(qs.stringify(change)).end();
+      this.router.navigate([], {
+        relativeTo: this.route,
+        queryParams: { ref: hashCode },
+        queryParamsHandling: 'merge'
+      });
+      this.addToStorageList(hashCode)
+      localStorage.setItem(hashCode.toString(), JSON.stringify(change));
+    }
+    this.updateChange(change);
+  }
+
+  updateChange(change) {
+    this.filterChange.emit(change);
+    if (this.formlyUpdateComunicationService) {
+      this.formlyUpdateComunicationService.updateFilter(change);
+    }
   }
 
   addToStorageList(hashCode) {
@@ -169,6 +167,7 @@ export class SdsFiltersComponent implements OnInit {
     this.sdsFilterHistory.push(hashCode);
     localStorage.setItem('sdsFilterHistory', JSON.stringify(this.sdsFilterHistory));
   }
+
   clearStorage() {
     const list = JSON.parse(localStorage.getItem('sdsFilterHistory'));
     if (list && list.length > 0) {
@@ -177,6 +176,5 @@ export class SdsFiltersComponent implements OnInit {
         localStorage.removeItem(item);
       });
     }
-
   }
 }

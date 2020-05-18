@@ -1,7 +1,7 @@
 <div>
     <sds-accordion-item expanded="true">
         <sds-accordion-item-header> Filters </sds-accordion-item-header>
-        <sds-filters [resetAll]="true" [form]="form" [fields]="fields" [model]="model" (filterChange)="filterChange$.next($event)"></sds-filters>
+        <sds-filters [resetAll]="true" [form]="form" [fields]="fields" [isHistoryEnable]="true" [model]="model" (filterChange)="filterChange$.next($event)"></sds-filters>
     </sds-accordion-item>
 </div>
 <div class="sam-example-pagination">
