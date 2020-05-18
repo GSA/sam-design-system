@@ -1,13 +1,13 @@
-<div class="sds-toolbar__toggle">
-  <button
-    class="sds-toolbar__toogle-btn"
-    [attr.id]="toolbar._headerId"
-    [attr.tabindex]="_disabled ? -1 : 0"
-    [attr.aria-controls]="toolbar._contentId"
-    [attr.aria-expanded]="_isExpanded"
-    [attr.aria-disabled]="_disabled"
-    (click)="_toggle()"
-  >
+<button
+  class="sds-toolbar__toogle-btn"
+  [attr.id]="toolbar._headerId"
+  [attr.tabindex]="_disabled ? -1 : 0"
+  [attr.aria-controls]="toolbar._contentId"
+  [attr.aria-expanded]="_isExpanded"
+  [attr.aria-disabled]="_disabled"
+  (click)="_toggle()"
+>
+  <div class="sds-toolbar__toggle">
     <span class="usa-sr-only">Open/Close Toolbar</span>
-  </button>
-</div>
+  </div>
+</button>

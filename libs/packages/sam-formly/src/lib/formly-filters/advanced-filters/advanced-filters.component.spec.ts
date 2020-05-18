@@ -9,8 +9,9 @@ import { SdsDialogService } from '@gsa-sam/components';
 
 import { AdvancedFiltersComponent } from './advanced-filters.component';
 import { SdsAdvancedFiltersService } from './sds-advanced-filters.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-describe('ViewerComponent', () => {
+describe('Advanced Filteres Component', () => {
   let component: AdvancedFiltersComponent;
   let fixture: ComponentFixture<AdvancedFiltersComponent>;
   let modalServiceSpy: jasmine.SpyObj<SdsDialogService>;
@@ -27,6 +28,7 @@ describe('ViewerComponent', () => {
     );
     TestBed.configureTestingModule({
       declarations: [AdvancedFiltersComponent],
+      imports: [FontAwesomeModule],
       providers: [
         { provide: SdsDialogService, useValue: modalServiceSpy },
         {

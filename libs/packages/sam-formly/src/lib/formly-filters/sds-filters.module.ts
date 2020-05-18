@@ -7,8 +7,10 @@ import {
     SdsAccordionModule,
 } from '@gsa-sam/components';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { SdsFiltersComponent } from './sds-filters.component';
 import { SdsFormlyModule } from '../formly/formly.module';
+import { SdsFormlyResetModule } from '../formly-reset/formly-reset.module';
 import { AdvancedFiltersComponent } from './advanced-filters/advanced-filters.component';
 
 @NgModule({
@@ -21,6 +23,7 @@ import { AdvancedFiltersComponent } from './advanced-filters/advanced-filters.co
         FormsModule,
         SdsAccordionModule,
         SdsFormlyModule,
+        SdsFormlyResetModule,
         FontAwesomeModule,
         ReactiveFormsModule,
         FormlySelectModule,
