@@ -16,6 +16,8 @@ import { FormlyAutocompleteReadOnlyModule } from './demos/readonly/autocomplete-
 import { FormlyAutocompleteReadOnly } from './demos/readonly/autocomplete-readonly.component';
 import { FormlyAutocompleteMinCharecter } from './demos/mincharecter/autocomplete-mincharecter.component';
 import { FormlyAutocompleteMinCharecterModule } from './demos/mincharecter/autocomplete-mincharecter.module';
+import { FormlyAutocompleteDisable } from './demos/disable/autocomplete-disable.component';
+import { FormlyAutocompleteDisableModule } from './demos/disable/autocomplete-disable.module';
 
 declare var require: any;
 const DEMOS = {
@@ -54,6 +56,13 @@ const DEMOS = {
     markup: require('!!raw-loader!./demos/mincharecter/autocomplete-mincharecter.component.html'),
     path: 'libs/documentation/src/lib/components/autocomplete/demos/mincharecter'
   },
+  disable: {
+    title: 'Autocomplete with disable',
+    type: FormlyAutocompleteDisable,
+    code: require('!!raw-loader!./demos/disable/autocomplete-disable.component'),
+    markup: require('!!raw-loader!./demos/disable/autocomplete-disable.component.html'),
+    path: 'libs/documentation/src/lib/components/autocomplete/demos/disable'
+  },
 };
 
 export const ROUTES = [
@@ -89,7 +98,8 @@ export const ROUTES = [
     FormlyAutocompleteFreetextModule,
     FormlyAutocompleteTagModule,
     FormlyAutocompleteReadOnlyModule,
-    FormlyAutocompleteMinCharecterModule
+    FormlyAutocompleteMinCharecterModule,
+    FormlyAutocompleteDisableModule
   ]
 })
 export class FormlyAutocompleteModule {
