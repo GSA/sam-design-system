@@ -13,9 +13,18 @@ import { ComponentWrapperComponent } from '../../shared/component-wrapper/compon
 import { FiltersBasicModule } from './demos/basic/filters-basic.module';
 import { FiltersOptional } from './demos/optional/filters-optional.component';
 import { FiltersOptionalModule } from './demos/optional/filters-optional.module';
+import { FiltersConfig } from './demos/config/filters-config.component';
+import { FiltersConfigModule } from './demos/config/filters-config.module';
 
 declare var require: any;
 const DEMOS = {
+  config: {
+    title: 'Filters with field config',
+    type: FiltersConfig,
+    code: require('!!raw-loader!./demos/config/filters-config.component'),
+    markup: require('!!raw-loader!./demos/config/filters-config.component.html'),
+    path: 'libs/documentation/src/lib/components/filters/demos/config'
+  },
   basic: {
     title: 'Basic Filters',
     type: FiltersBasic,
@@ -60,7 +69,8 @@ export const ROUTES = [
     CommonModule,
     DocumentationComponentsSharedModule,
     FiltersBasicModule,
-    FiltersOptionalModule
+    FiltersOptionalModule,
+    FiltersConfigModule
   ]
 })
 export class FiltersModule {
