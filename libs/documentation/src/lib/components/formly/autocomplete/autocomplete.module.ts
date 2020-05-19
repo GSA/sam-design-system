@@ -14,6 +14,8 @@ import { FormlyAutocompleteTag } from './demos/tag/autocomplete-tag.component';
 import { FormlyAutocompleteTagModule } from './demos/tag/autocomplete-tag.module';
 import { FormlyAutocompleteReadOnlyModule } from './demos/readonly/autocomplete-readonly.module';
 import { FormlyAutocompleteReadOnly } from './demos/readonly/autocomplete-readonly.component';
+import { FormlyAutocompleteMinCharecter } from './demos/mincharecter/autocomplete-mincharecter.component';
+import { FormlyAutocompleteMinCharecterModule } from './demos/mincharecter/autocomplete-mincharecter.module';
 
 declare var require: any;
 const DEMOS = {
@@ -44,7 +46,14 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/readonly/autocomplete-readonly.component'),
     markup: require('!!raw-loader!./demos/readonly/autocomplete-readonly.component.html'),
     path: 'libs/documentation/src/lib/components/autocomplete/demos/readonly'
-  }
+  },
+  mincharecter: {
+    title: 'Autocomplete with Minimum charecter count',
+    type: FormlyAutocompleteMinCharecter,
+    code: require('!!raw-loader!./demos/mincharecter/autocomplete-mincharecter.component'),
+    markup: require('!!raw-loader!./demos/mincharecter/autocomplete-mincharecter.component.html'),
+    path: 'libs/documentation/src/lib/components/autocomplete/demos/mincharecter'
+  },
 };
 
 export const ROUTES = [
@@ -79,7 +88,8 @@ export const ROUTES = [
     FormlyAutocompleteBasicModule,
     FormlyAutocompleteFreetextModule,
     FormlyAutocompleteTagModule,
-    FormlyAutocompleteReadOnlyModule
+    FormlyAutocompleteReadOnlyModule,
+    FormlyAutocompleteMinCharecterModule
   ]
 })
 export class FormlyAutocompleteModule {
