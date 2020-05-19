@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
-import { BehaviorSubject } from 'rxjs';
 import { AutocompleteSampleDataService } from '../../services/autocomplete-sample.service';
 import {
   SDSAutocompletelConfiguration,
   SDSSelectedItemModel,
   SelectionMode
 } from '@gsa-sam/components';
-import { SampleAutocompleteData } from '../../services/autocomplete-sample.data';
 
 @Component({
   templateUrl: './autocomplete-readonly.component.html',
@@ -21,8 +19,6 @@ export class FormlyAutocompleteReadOnly  {
   options: FormlyFormOptions = {};
   public settings = new SDSAutocompletelConfiguration();
   public autocompleteModel = new SDSSelectedItemModel();
-  private data = SampleAutocompleteData;
-  public filterChange$ = new BehaviorSubject<object>(null);
   fields: FormlyFieldConfig[] = [
     {
       key: 'filters',

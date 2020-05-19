@@ -17,7 +17,11 @@ import { SampleAutocompleteData } from '../../services/autocomplete-sample.data'
 export class FormlyAutocompleteDisable {
   results: any;
   form = new FormGroup({});
-  model = { filters: { firstName: [] } };
+  model = {
+    filters: {
+      firstName: []
+    }
+  };
   options: FormlyFormOptions = {};
   public settings = new SDSAutocompletelConfiguration();
   public autocompleteModel = new SDSSelectedItemModel();
@@ -32,8 +36,10 @@ export class FormlyAutocompleteDisable {
         {
           key: 'firstName',
           type: 'autocomplete',
+        
           templateOptions: {
             label: 'Auto Complete',
+            disabled: true,
             hideLabel: true,
             service: this.service,
             configuration: this.settings,
@@ -56,7 +62,6 @@ export class FormlyAutocompleteDisable {
     this.settings.labelText = 'Autocomplete 1';
     this.settings.selectionMode = SelectionMode.MULTIPLE;
     this.settings.autocompletePlaceHolderText = 'Enter text';
-    this.settings.debounceTime = 250;
 
     this.model.filters.firstName.push(this.data[0]);
     this.model.filters.firstName.push(this.data[1]);
