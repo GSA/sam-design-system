@@ -8,6 +8,10 @@ import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../.
 import { ComponentWrapperComponent } from '../../../shared/component-wrapper/component-wrapper.component';
 import { FormlyDatepickerBasicModule } from './demos/basic/datepicker-basic.module';
 import { FormlyDatepickerBasic } from './demos/basic/datepicker-basic.component';
+import { FormlyDatepickerDateRange } from './demos/daterange/datepicker-daterange.component';
+import { FormlyDatepickerDateRangeModule } from './demos/daterange/datepicker-daterange.module';
+import { FormlyDatepickerValidation } from './demos/validation/datepicker-validation.component';
+import { FormlyDatepickerValidationModule } from './demos/validation/datepicker-validation.module';
 
 declare var require: any;
 export const closing = require('!!raw-loader!./closing.md');
@@ -18,6 +22,20 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/basic/datepicker-basic.component'),
     markup: require('!!raw-loader!./demos/basic/datepicker-basic.component.html'),
     path: 'libs/documentation/src/lib/components/datepicker/demos/basic'
+  },
+  daterange: {
+    title: 'Date Range picker with min,max values',
+    type: FormlyDatepickerDateRange,
+    code: require('!!raw-loader!./demos/daterange/datepicker-daterange.component'),
+    markup: require('!!raw-loader!./demos/daterange/datepicker-daterange.component.html'),
+    path: 'libs/documentation/src/lib/components/datepicker/demos/daterange'
+  },
+  validation: {
+    title: 'Date picker with validation',
+    type: FormlyDatepickerValidation,
+    code: require('!!raw-loader!./demos/daterange/datepicker-daterange.component'),
+    markup: require('!!raw-loader!./demos/daterange/datepicker-daterange.component.html'),
+    path: 'libs/documentation/src/lib/components/datepicker/demos/daterange'
   }
 };
 
@@ -53,7 +71,9 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    FormlyDatepickerBasicModule
+    FormlyDatepickerBasicModule,
+    FormlyDatepickerDateRangeModule,
+    FormlyDatepickerValidationModule
   ]
 })
 export class FormlyDatepickerModule {
