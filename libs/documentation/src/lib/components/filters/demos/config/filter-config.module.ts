@@ -1,6 +1,6 @@
 import { FormlyModule } from '@ngx-formly/core';
 import { NgModule } from '@angular/core';
-import { FormlyAutocompleteConfig } from './autocomplete-config.component';
+import { FiltersConfig } from './filter-config.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SdsFiltersModule } from '@gsa-sam/sam-formly';
@@ -13,8 +13,8 @@ import { SdsFiltersModule } from '@gsa-sam/sam-formly';
     FormsModule,
     FormlyModule.forRoot()
   ],
-  declarations: [FormlyAutocompleteConfig],
-  exports: [FormlyAutocompleteConfig],
-  bootstrap: [FormlyAutocompleteConfig]
+  declarations: [FiltersConfig],
+  exports: [FiltersConfig],
+  bootstrap: [FiltersConfig]
 })
-export class FormlyAutocompleteConfigModule {}
+export class FiltersConfigModule {}

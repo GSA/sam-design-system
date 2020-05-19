@@ -11,10 +11,10 @@ import {
 import { SampleAutocompleteData } from './services/autocomplete-sample.data';
 
 @Component({
-  templateUrl: './autocomplete-config.component.html',
- // providers: [AutocompleteSampleDataService]
+  templateUrl: './filter-config.component.html',
+  providers: [AutocompleteSampleDataService]
 })
-export class FormlyAutocompleteConfig implements OnInit {
+export class FiltersConfig implements OnInit {
   results: any;
   form = new FormGroup({});
   model = {};
@@ -25,23 +25,18 @@ export class FormlyAutocompleteConfig implements OnInit {
   public filterChange$ = new BehaviorSubject<object>(null);
   fields: FormlyFieldConfig[] = [
     {
-      key: 'filters',
-      wrappers: ['filterwrapper'],
-      templateOptions: { label: 'Keyword' },
-      fieldGroup: [
-        {
-          key: 'firstName',
-          type: 'autocomplete',
-          templateOptions: {
-            label: 'Auto Complete',
-            hideLabel: true,
-            service: this.service,
-            configuration: this.settings,
-            model: this.autocompleteModel,
-            modelChange: this.changes
-          }
-        }
-      ]
+      key: 'entity.title',
+      type: 'autocomplete',
+      templateOptions: {
+        label: 'Entity Name',
+        group: 'accordion',
+        placeholder: 'Acme Corporation',
+        description: 'Enter the name of your entity.',
+        service: this.service,
+        configuration: this.settings,
+        model: this.autocompleteModel,
+        modelChange: this.changes
+      }
     }
   ];
 
@@ -54,11 +49,11 @@ export class FormlyAutocompleteConfig implements OnInit {
   }
 
   setup() {
-    this.settings.id = 'autocomplete1';
+    this.settings.id = 'autocomplete';
     this.settings.primaryKeyField = 'id';
     this.settings.primaryTextField = 'name';
     this.settings.secondaryTextField = 'subtext';
-    this.settings.labelText = 'Autocomplete 1';
+    this.settings.labelText = 'Autocomplete';
     this.settings.selectionMode = SelectionMode.MULTIPLE;
     this.settings.autocompletePlaceHolderText = 'Enter text';
     this.settings.debounceTime = 350;
@@ -72,5 +67,4 @@ export class FormlyAutocompleteConfig implements OnInit {
   public ngOnInit() {
     this.filterChange$.subscribe(res => (this.results = res));
   }
-
 }
