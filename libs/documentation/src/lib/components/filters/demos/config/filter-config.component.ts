@@ -40,6 +40,102 @@ export class FiltersConfig implements OnInit {
     }
   ];
 
+  public opportunitiesFilters: FormlyFieldConfig[] = [
+    {
+      key: 'opportunitySearch',
+      templateOptions: { label: 'Opportunity Search...' ,},
+      fieldGroup: [
+        {
+          key: 'Authority',
+          wrappers: ['accordionwrapper'],
+          type: 'autocomplete',
+          templateOptions: {
+            label: ' authorityDictionaryService.authorityConfig.labelText',
+            type: 'autocomplete',
+            service: this.service,
+            configuration: this.settings,
+            model: this.changes
+          }
+        },
+        {
+          key: 'locationWrapper',
+          wrappers: ['accordionwrapper'],
+          templateOptions: { label: 'Location' },
+          fieldGroup: [
+            {
+              key: 'popZipCode',
+              type: 'input',
+              templateOptions: {
+                hideOptional: true,
+                type: 'autocomplete',
+                label: 'Place of Performance Zip Code',
+                placeholder: 'ex: 39059'
+              }
+            },
+            {
+              key: 'officeZipCode',
+              type: 'input',
+              templateOptions: {
+                hideOptional: true,
+                label: 'Office Zip Code',
+                placeholder: 'ex: 39059'
+              }
+            }
+          ]
+        },
+        {
+          key: 'typeOfNotice',
+          wrappers: ['accordionwrapper'],
+          type: 'autocomplete',
+          templateOptions: {
+            label: 'typeOfNoticeService.noticeTypeConfig.labelText',
+            type: 'autocomplete',
+            service: this.service,
+            configuration: this.settings,
+            model: this.changes
+          }
+        },
+        {
+          key: 'FederalOrgs',
+          wrappers: ['accordionwrapper'],
+          type: 'autocomplete',
+          templateOptions: {
+            label: 'FederalOrganizations',
+            type: 'autocomplete',
+            service: this.service,
+            configuration: this.settings,
+            model: this.changes
+          }
+        },
+      
+        {
+          key: 'setAsideFilter',
+          wrappers: ['accordionwrapper'],
+          type: 'autocomplete',
+          templateOptions: {
+            label: 'setAsideNoticeFilterService.setAsideFilterConfig.labelText',
+            type: 'autocomplete',
+            service: this.service,
+            configuration: this.settings,
+            model: this.changes
+          }
+        },
+        {
+          key: 'initiative',
+          wrappers: ['accordionwrapper'],
+          type: 'autocomplete',
+          templateOptions: {
+            label: 'this.initativeFilterService.config.labelText',
+            type: 'autocomplete',
+            service: this.service,
+            configuration: this.settings,
+            model: this.changes
+          }
+        }
+      ]
+    }
+  ];
+
   constructor(public service: AutocompleteSampleDataService) {
     this.setup();
   }
