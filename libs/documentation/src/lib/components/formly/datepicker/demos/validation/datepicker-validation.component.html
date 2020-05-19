@@ -1,7 +1,7 @@
 <div>
   <p>
-    <code>minDate: new Date(2019, 9, 5) </code> is used to set the min date
-    value for the picker
+    To set min date 2019 July 5th use
+    <code> minDate: new Date(2019, 6, 5) </code> for min date validation.
   </p>
   <form [formGroup]="form">
     <formly-form
@@ -16,8 +16,9 @@
 
 <div>
   <p>
-    <code>maxDate: new Date(2020, 11, 25) </code> is used to set the max date
-    value for the picker
+    To set max date 2020 December 25th use
+    <code> maxDate: new Date(2020, 11, 25) </code> for max date value for the
+    picker.
   </p>
   <form [formGroup]="form">
     <formly-form
@@ -32,8 +33,10 @@
 
 <div>
   <p>
-    <code>minDate: new Date(2019, 9, 5), maxDate: new Date(2020, 11, 25) </code>
-    are used to set the min, max date value for the picker
+    Example: To set 5th October 2019 as a min date and 15th November 2020 as max
+    date.
+    <code> minDate: new Date(2019, 9, 5),maxDate: new Date(2020, 10, 15),</code>
+    are used to set the min, max values for date validation.
   </p>
   <form [formGroup]="form">
     <formly-form
