@@ -9,6 +9,7 @@ import {
   SelectionMode
 } from '@gsa-sam/components';
 import { SampleAutocompleteData } from './services/autocomplete-sample.data';
+import { formlyFieldConfig } from './fields';
 
 @Component({
   templateUrl: './filter-config.component.html',
@@ -39,7 +40,8 @@ export class FiltersConfig implements OnInit {
       }
     }
   ];
-
+  formlyFieldConfig: FormlyFieldConfig[] = formlyFieldConfig
+  
   public opportunitiesFilters: FormlyFieldConfig[] = [
     {
       key: 'opportunitySearch',
