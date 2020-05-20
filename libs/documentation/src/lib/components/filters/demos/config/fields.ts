@@ -1,24 +1,101 @@
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
+// export let formlyFieldConfig1: FormlyFieldConfig[] = [
+//   {
+//     key: 'opportunitySearch',
+//     templateOptions: { label: 'Opportunity Search...' },
+//     fieldGroup: [
+//       {
+//         key: 'Authority',
+//         wrappers: ['accordionwrapper'],
+//         type: 'autocomplete',
+//         templateOptions: {
+//           label: 'authorityDictionaryService.authorityConfig.labelText',
+//           service: this.service,
+//           configuration: this.settings,
+//           model: this.changes
+//         }
+//       },
+//       {
+//         key: 'typeOfNotice',
+//         wrappers: ['accordionwrapper'],
+//         type: 'autocomplete',
+//         templateOptions: {
+//           label: 'typeOfNoticeService.noticeTypeConfig.labelText',
+//           type: 'autocomplete',
+//           service: this.service,
+//           configuration: this.settings,
+//           model: this.changes
+//         }
+//       },
+//       {
+//         key: 'FederalOrgs',
+//         wrappers: ['accordionwrapper'],
+//         type: 'autocomplete',
+//         templateOptions: {
+//           label: 'FederalOrganizations',
+//           type: 'autocomplete',
+//           service: this.service,
+//           configuration: this.settings,
+//           model: this.changes
+//         }
+//       },
+
+//       {
+//         key: 'setAsideFilter',
+//         wrappers: ['accordionwrapper'],
+//         type: 'autocomplete',
+//         templateOptions: {
+//           label: 'setAsideNoticeFilterService.setAsideFilterConfig.labelText',
+//           type: 'autocomplete',
+//           service: this.service,
+//           configuration: this.settings,
+//           model: this.changes
+//         }
+//       },
+//       {
+//         key: 'initiative',
+//         wrappers: ['accordionwrapper'],
+//         type: 'autocomplete',
+//         templateOptions: {
+//           label: 'this.initativeFilterService.config.labelText',
+//           type: 'autocomplete',
+//           service: this.service,
+//           configuration: this.settings,
+//           model: this.changes
+//         }
+//       }
+//     ]
+//   }
+// ];
+
+
+
 export let formlyFieldConfig: FormlyFieldConfig[] = [
   {
     key: 'keyword',
-    wrappers: ['accordionwrapper'],
     type: 'input',
+    defaultValue: 10,
     templateOptions: {
       type: 'text',
       label: 'Keyword',
-      labelClass: 'usa-sr-only'
+      expand: false,
+      labelClass: 'usa-sr-only',
+      group: 'accordion'
     }
   },
   {
     key: 'dateWrapper',
-    wrappers: ['accordionwrapper'],
-    templateOptions: { label: 'Date' },
+    templateOptions: {
+      label: 'Date',
+      group: 'accordion',
+      expand: true
+    },
     fieldGroup: [
       {
         key: 'modifiedDate',
         type: 'daterangepicker',
+
         templateOptions: {
           label: 'Modified Date'
         }
@@ -41,12 +118,14 @@ export let formlyFieldConfig: FormlyFieldConfig[] = [
   },
   {
     key: 'hierarchyWrapper',
-    wrappers: ['accordionwrapper'],
-    templateOptions: { label: 'Federal Organizations' },
+    templateOptions: { label: 'Federal Organizations',
+    group: 'accordion'
+   },
     fieldGroup: [
       {
         key: 'hierarchyOrganization',
         type: 'input',
+        defaultValue:'test',
         templateOptions: {
           hideLabel: true
         }
@@ -55,8 +134,9 @@ export let formlyFieldConfig: FormlyFieldConfig[] = [
   },
   {
     key: 'contractTypeWrapper',
-    wrappers: ['accordionwrapper'],
-    templateOptions: { label: 'Contract Type' },
+    templateOptions: { label: 'Contract Type',
+    group: 'accordion'
+   },
     fieldGroup: [
       {
         key: 'status',
@@ -92,8 +172,8 @@ export let formlyFieldConfig: FormlyFieldConfig[] = [
   },
   {
     key: 'entityWrapper',
-    wrappers: ['accordionwrapper'],
-    templateOptions: { label: 'Entity' },
+    templateOptions: { label: 'Entity',
+    group: 'accordion' },
     fieldGroup: [
       {
         key: 'legalBusinessName',
@@ -139,8 +219,8 @@ export let formlyFieldConfig: FormlyFieldConfig[] = [
   },
   {
     key: 'serviceClassificationsWrapper',
-    wrappers: ['accordionwrapper'],
-    templateOptions: { label: 'NAICS and Product Service Codes' },
+    templateOptions: { label: 'NAICS and Product Service Codes',
+    group: 'accordion' },
     fieldGroup: [
       {
         key: 'naicsCode',
@@ -160,8 +240,8 @@ export let formlyFieldConfig: FormlyFieldConfig[] = [
   },
   {
     key: 'setAsideWrapper',
-    wrappers: ['accordionwrapper'],
-    templateOptions: { label: 'Set Aside' },
+    templateOptions: { label: 'Set Aside' ,
+    group: 'accordion'},
     fieldGroup: [
       {
         key: 'setAside',
@@ -174,8 +254,9 @@ export let formlyFieldConfig: FormlyFieldConfig[] = [
   },
   {
     key: 'popWrapper',
-    wrappers: ['accordionwrapper'],
-    templateOptions: { label: 'Place of Performance' },
+
+    templateOptions: { label: 'Place of Performance',
+    group: 'accordion' },
     fieldGroup: [
       {
         key: 'popZipCode',
@@ -195,10 +276,10 @@ export let formlyFieldConfig: FormlyFieldConfig[] = [
   },
   {
     key: 'statusWrapper',
-    wrappers: ['accordionwrapper'],
     type: 'multicheckbox',
     templateOptions: {
       label: 'Status',
+      group: 'panel',
       labelClass: 'usa-sr-only',
       options: [
         {

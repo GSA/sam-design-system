@@ -18,13 +18,6 @@ import { FiltersConfigModule } from './demos/config/filter-config.module';
 
 declare var require: any;
 const DEMOS = {
-  config: {
-    title: 'Filters with field config',
-    type: FiltersConfig,
-    code: require('!!raw-loader!./demos/config/filter-config.component'),
-    markup: require('!!raw-loader!./demos/config/filter-config.component.html'),
-    path: 'libs/documentation/src/lib/components/filters/demos/config'
-  },
   basic: {
     title: 'Basic Filters',
     type: FiltersBasic,
@@ -38,7 +31,14 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/optional/filters-optional.component'),
     markup: require('!!raw-loader!./demos/optional/filters-optional.component.html'),
     path: 'libs/documentation/src/lib/components/filters/demos/optional'
-  }
+  },
+  config: {
+    title: 'Filters with different field config',
+    type: FiltersConfig,
+    code: require('!!raw-loader!./demos/config/filter-config.component'),
+    markup: require('!!raw-loader!./demos/config/filter-config.component.html'),
+    path: 'libs/documentation/src/lib/components/filters/demos/config'
+  },
 };
 
 export const ROUTES = [
