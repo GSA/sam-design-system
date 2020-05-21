@@ -115,7 +115,11 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * To make input readonly
    */
   @Input() public inputReadOnly = false;
-  items = [];
+
+   /**
+   * Used to store selected items
+   */
+  private items = [];
   /**
    * Stored Event for ControlValueAccessor
    */
@@ -255,12 +259,14 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       this.onArrowUp();
     } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex >= 0) {
       if (this.configuration.isTagModeEnabled) {
-        this.addItem();
+        const val = this.createFreeTextItem();
+        this.selectItem(val);
       } else {
         this.selectItem(this.highlightedItem);
       }
     } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex < 0) {
-      this.addItem();
+      const val = this.createFreeTextItem();
+      this.selectItem(val);
     } else if (KeyHelper.is(KEYS.ESC, event)) {
       if (this.showResults) {
         this.clearAndHideResults();
@@ -280,9 +286,12 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       item,
       this.configuration.primaryKeyField,
       this.configuration.selectionMode,
-      this.model.items
+      this.items
     );
-    this.propogateChange(this.model);
+    setTimeout(() => {
+      this.model.items = [...this.items];
+      this.propogateChange(this.model);
+    }, 0);
     let message = this.getObjectValue(
       item,
       this.configuration.primaryTextField
@@ -526,31 +535,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
         }
       }
     }
-  }
-  addItem() {
-    const val = this.createFreeTextItem();
-      SDSSelectedItemModelHelper.addItem(
-        val,
-        this.configuration.primaryKeyField,
-        this.configuration.selectionMode,
-        this.items
-      );
-      setTimeout(() => {
-        if(this.configuration.isFreeTextEnabled) {
-          this.model.items = Array.from(new Set([ ...this.model.items, ...this.items]));
-        } else {
-          this.model.items = [...this.items];
-        }
-        this.propogateChange(this.model);
-      }, 0)
-     
-      const message = this.getObjectValue(
-        val,
-        this.configuration.primaryTextField
-      );
-      this.inputValue = message;
-      this.focusRemoved();
-  
   }
 
   registerOnChange(fn: any): void {
