@@ -103,6 +103,9 @@ export class DocumentationAPIComponent implements OnInit {
       if(this.formType) {
         this.wrappers = getFormWrapper(this.formType);
       }
+      else {
+        this.wrappers = [];
+      }
     }
     else {
       this.wrappers = [];
