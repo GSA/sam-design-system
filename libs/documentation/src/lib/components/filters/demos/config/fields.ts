@@ -23,7 +23,7 @@ export let formlyFieldConfig: FormlyFieldConfig[] = [
     fieldGroup: [
       {
         key: 'modifiedDate',
-        type: 'daterangepicker',
+        type: 'datepicker',
 
         templateOptions: {
           label: 'Modified Date'
@@ -31,14 +31,14 @@ export let formlyFieldConfig: FormlyFieldConfig[] = [
       },
       {
         key: 'signedDate',
-        type: 'daterangepicker',
+        type: 'datepicker',
         templateOptions: {
           label: 'Signed Date'
         }
       },
       {
         key: 'effectiveDate',
-        type: 'daterangepicker',
+        type: 'datepicker',
         templateOptions: {
           label: 'Effective Date'
         }
