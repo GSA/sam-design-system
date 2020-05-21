@@ -539,7 +539,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     }
   }
   getClass() {
-    const isReadonly = true;
     return this.configuration.inputReadOnly &&
       this.configuration.selectionMode === SelectionMode.MULTIPLE
       ? 'hide-cursor'
