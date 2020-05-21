@@ -49,9 +49,9 @@ export const ROUTES = [
     data: {
       items: [
         {
-          pkg: 'components',
+          pkg: 'formly',
           type: 'components',
-          name: 'SdsFiltersContainerComponent'
+          name: 'SdsFiltersComponent'
         }
       ]
     },
