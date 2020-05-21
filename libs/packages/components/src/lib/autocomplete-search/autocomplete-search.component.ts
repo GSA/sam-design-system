@@ -119,7 +119,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    /**
    * Used to store selected items
    */
-  private items = [];
+   items = [];
   /**
    * Stored Event for ControlValueAccessor
    */
@@ -524,6 +524,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   writeValue(obj: any): void {
     if (obj instanceof SDSSelectedItemModel) {
       this.model = obj as SDSSelectedItemModel;
+      this._changeDetectorRef.markForCheck();
       if (this.model.items.length === 0) {
         this.inputValue = '';
       } else {
