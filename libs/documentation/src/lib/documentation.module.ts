@@ -48,6 +48,8 @@ import { ROUTES as ICONS_ROUTES, IconsModule } from './components/icons/icons.mo
 
 import { DocumentationSharedModule } from './shared';
 import { OverviewComponent } from './pages/overview/overview.component';
+import { ResultsLayoutModule } from './pages/layout/layout.module';
+import { ResultsLayoutComponent } from './pages/layout/layout.component';
 
 declare var require: any;
 
@@ -55,6 +57,7 @@ export const ROUTES: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'components/header' },
   { path: 'overview', component: OverviewComponent },
   { path: 'introduction', component: IntroductionComponent },
+  { path: 'layout', component: ResultsLayoutComponent },
 
   // Components
   { path: 'components', pathMatch: 'full', redirectTo: 'components/alert' },
@@ -117,6 +120,7 @@ export const ROUTES: Routes = [
     InputModule,
     OverviewModule,
     IntroductionModule,
+    ResultsLayoutModule,
     TextAreaModule,
     CheckboxModule,
     MultiCheckboxModule,
