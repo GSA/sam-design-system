@@ -3,6 +3,7 @@
     <sds-autocomplete [service]="service" (ngModelChange)="changes($event)" [(ngModel)]="model" [configuration]="settings">
     </sds-autocomplete>
 </div>
+{{model| json}}
 
 <div class="margin-bottom-4">
     <h4 id="auto1Label" for="autocomplete1">Basic Autocomplete with Multi Selection mode </h4>

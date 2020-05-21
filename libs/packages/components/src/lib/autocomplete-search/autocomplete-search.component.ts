@@ -288,6 +288,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       this.configuration.selectionMode,
       this.items
     );
+   
     setTimeout(() => {
       this.model.items = [...this.items];
       this.propogateChange(this.model);
