@@ -18,6 +18,8 @@ import { FormlyAutocompleteMinCharecter } from './demos/mincharecter/autocomplet
 import { FormlyAutocompleteMinCharecterModule } from './demos/mincharecter/autocomplete-mincharecter.module';
 import { FormlyAutocompleteDisable } from './demos/disable/autocomplete-disable.component';
 import { FormlyAutocompleteDisableModule } from './demos/disable/autocomplete-disable.module';
+import { FormlyAutocompleteValidationModule } from './demos/validation/autocomplete-validation.module';
+import { FormlyAutocompleteValidation } from './demos/validation/autocomplete-validation.component';
 
 declare var require: any;
 const DEMOS = {
@@ -63,6 +65,13 @@ const DEMOS = {
     markup: require('!!raw-loader!./demos/disable/autocomplete-disable.component.html'),
     path: 'libs/documentation/src/lib/components/autocomplete/demos/disable'
   },
+  validation: {
+    title: 'Autocomplete with validations',
+    type: FormlyAutocompleteValidation,
+    code: require('!!raw-loader!./demos/validation/autocomplete-validation.component'),
+    markup: require('!!raw-loader!./demos/validation/autocomplete-validation.component.html'),
+    path: 'libs/documentation/src/lib/components/autocomplete/demos/validation'
+  },
 };
 
 export const ROUTES = [
@@ -99,7 +108,8 @@ export const ROUTES = [
     FormlyAutocompleteTagModule,
     FormlyAutocompleteReadOnlyModule,
     FormlyAutocompleteMinCharecterModule,
-    FormlyAutocompleteDisableModule
+    FormlyAutocompleteDisableModule,
+    FormlyAutocompleteValidationModule
   ]
 })
 export class FormlyAutocompleteModule {
