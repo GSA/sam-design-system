@@ -19,7 +19,8 @@ export class FormlyAutocompleteDisable {
   form = new FormGroup({});
   model = {
     filters: {
-      firstName: []
+      agency: [],
+      items: []
     }
   };
   options: FormlyFormOptions = {};
@@ -27,6 +28,7 @@ export class FormlyAutocompleteDisable {
   public autocompleteModel = new SDSSelectedItemModel();
   private data = SampleAutocompleteData;
   public filterChange$ = new BehaviorSubject<object>(null);
+  public multipleSettings = new SDSAutocompletelConfiguration();
   fields: FormlyFieldConfig[] = [
     {
       key: 'filters',
@@ -34,15 +36,26 @@ export class FormlyAutocompleteDisable {
       templateOptions: { label: 'Keyword' },
       fieldGroup: [
         {
-          key: 'firstName',
+          key: 'items',
           type: 'autocomplete',
-        
+
           templateOptions: {
-            label: 'Auto Complete',
+            label: 'Auto Complete disable with single selection mode',
             disabled: true,
-            hideLabel: true,
+
             service: this.service,
             configuration: this.settings,
+            model: this.autocompleteModel
+          }
+        },
+        {
+          key: 'agency',
+          type: 'autocomplete',
+          templateOptions: {
+            label: 'Auto Complete disable with multiple selection mode',
+            disabled: true,
+            service: this.service,
+            configuration: this.multipleSettings,
             model: this.autocompleteModel
           }
         }
@@ -60,10 +73,20 @@ export class FormlyAutocompleteDisable {
     this.settings.primaryTextField = 'name';
     this.settings.secondaryTextField = 'subtext';
     this.settings.labelText = 'Autocomplete 1';
-    this.settings.selectionMode = SelectionMode.MULTIPLE;
+    this.settings.selectionMode = SelectionMode.SINGLE;
     this.settings.autocompletePlaceHolderText = 'Enter text';
 
-    this.model.filters.firstName.push(this.data[0]);
-    this.model.filters.firstName.push(this.data[1]);
+    this.model.filters.items.push(this.data[0]);
+
+    this.multipleSettings.id = 'autocomplete1';
+    this.multipleSettings.primaryKeyField = 'id';
+    this.multipleSettings.primaryTextField = 'name';
+    this.multipleSettings.secondaryTextField = 'subtext';
+    this.multipleSettings.labelText = 'Autocomplete 1';
+    this.multipleSettings.selectionMode = SelectionMode.MULTIPLE;
+    this.multipleSettings.autocompletePlaceHolderText = 'Enter text';
+
+    this.model.filters.agency.push(this.data[0]);
+    this.model.filters.agency.push(this.data[1]);
   }
 }

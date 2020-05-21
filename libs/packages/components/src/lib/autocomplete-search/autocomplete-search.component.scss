@@ -1,69 +1,107 @@
+.grayToLightBackgroundGradiate {
+  background: linear-gradient(to right, #c4c4c4, #f7f7f7);
+  background-size: 400% 400%;
+  height: 10px;
+  padding: 2.5px 0 2.5px 0;
+  text-align: center;
+  color: #888888;
+  font-size: 15px;
+  font-weight: bold;
+  margin: 7px 10px 0 10px;
 
-.grayToLightBackgroundGradiate{
-    background: linear-gradient(to right,#C4C4C4, #F7F7F7);
-    background-size: 400% 400%;
-    height: 10px;
-    padding: 2.5px 0 2.5px 0;
-    text-align:center;
-    color:#888888;
-    font-size:15px;
-    font-weight:bold;
-    margin: 7px 10px 0 10px;
+  -webkit-animation: gradiantShiftGray 5s ease infinite;
+  -moz-animation: gradiantShiftGray 5s ease infinite;
+  animation: gradiantShiftGray 5s ease infinite;
 
-    -webkit-animation: gradiantShiftGray 5s ease infinite ;
-    -moz-animation: gradiantShiftGray 5s ease infinite  ;
-    animation: gradiantShiftGray 5s ease infinite;
-
-    @-webkit-keyframes gradiantShiftGray {
-        0%{background-position:0% 50%}
-        50%{background-position:100% 50%}
-        100%{background-position:0% 50%}
+  @-webkit-keyframes gradiantShiftGray {
+    0% {
+      background-position: 0% 50%;
     }
-    @-moz-keyframes gradiantShiftGray {
-        0%{background-position:0% 50%}
-        50%{background-position:100% 50%}
-        100%{background-position:0% 50%}
+    50% {
+      background-position: 100% 50%;
     }
-    @keyframes gradiantShiftGray { 
-        0%{background-position:0% 50%}
-        50%{background-position:100% 50%}
-        100%{background-position:0% 50%}
+    100% {
+      background-position: 0% 50%;
     }
+  }
+  @-moz-keyframes gradiantShiftGray {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @keyframes gradiantShiftGray {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
 }
 
-.lightToGrayBackgroundGradiate{
+.lightToGrayBackgroundGradiate {
+  background: linear-gradient(to right, #f7f7f7, #c4c4c4);
+  background-size: 400% 400%;
+  height: 15px;
+  padding: 2.5px 0 2.5px 0;
+  text-align: center;
+  color: #888888;
+  font-size: 15px;
+  font-weight: bold;
+  margin: 10px 10px 0 10px;
 
-    background: linear-gradient(to right,#F7F7F7,#C4C4C4);
-    background-size: 400% 400%;
-    height: 15px;
-    padding: 2.5px 0 2.5px 0;
-    text-align:center;
-    color:#888888;
-    font-size:15px;
-    font-weight:bold;
-    margin: 10px 10px 0 10px;
+  -webkit-animation: gradiantShift 5s ease infinite;
+  -moz-animation: gradiantShift 5s ease infinite;
+  animation: gradiantShift 5s ease infinite;
 
-    -webkit-animation: gradiantShift 5s ease infinite ;
-    -moz-animation: gradiantShift 5s ease infinite  ;
-    animation: gradiantShift 5s ease infinite;
-
-    @-webkit-keyframes gradiantShift {
-        0%{background-position:0% 50%}
-        50%{background-position:100% 50%}
-        100%{background-position:0% 50%}
+  @-webkit-keyframes gradiantShift {
+    0% {
+      background-position: 0% 50%;
     }
-    @-moz-keyframes gradiantShift {
-        0%{background-position:0% 50%}
-        50%{background-position:100% 50%}
-        100%{background-position:0% 50%}
+    50% {
+      background-position: 100% 50%;
     }
-    @keyframes gradiantShift { 
-        0%{background-position:0% 50%}
-        50%{background-position:100% 50%}
-        100%{background-position:0% 50%}
+    100% {
+      background-position: 0% 50%;
     }
+  }
+  @-moz-keyframes gradiantShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @keyframes gradiantShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
 }
 
-.autoLoading{
-    height: 60px;
+.autoLoading {
+  height: 60px;
+}
+.hide-cursor {
+  color: transparent;
+  text-shadow: 0 0 0;
 }
