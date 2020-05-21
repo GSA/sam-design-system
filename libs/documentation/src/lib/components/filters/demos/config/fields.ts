@@ -9,7 +9,6 @@ export let formlyFieldConfig: FormlyFieldConfig[] = [
       type: 'text',
       label: 'Keyword',
       expand: false,
-      labelClass: 'usa-sr-only',
       group: 'accordion'
     }
   },
@@ -205,7 +204,6 @@ export let formlyFieldConfig: FormlyFieldConfig[] = [
     templateOptions: {
       label: 'Status',
       group: 'panel',
-      labelClass: 'usa-sr-only',
       options: [
         {
           key: 'Active',
