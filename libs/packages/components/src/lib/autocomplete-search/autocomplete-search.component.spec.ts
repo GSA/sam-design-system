@@ -430,11 +430,12 @@ describe('SamAutocompleteComponent', () => {
       "key": "Enter",
       target: { "value": component.inputValue }
     }
-    component.onKeydown(event);
+    fixture.detectChanges();
+    component.addItem();
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
-    expect(component.model.items.length).toBe(1);
+    expect(component.items.length).toBe(0);
 
   }));
 
