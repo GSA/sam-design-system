@@ -1,6 +1,6 @@
 import { FormlyModule } from '@ngx-formly/core';
 import { NgModule } from '@angular/core';
-import { FormlyDatepickerBasic } from './datepicker-basic.component';
+import { FormlyDatepickerDateRange } from './datepicker-daterange.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -11,8 +11,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     FormlyModule.forRoot()
   ],
-  declarations: [FormlyDatepickerBasic],
-  exports: [FormlyDatepickerBasic],
-  bootstrap: [FormlyDatepickerBasic]
+  declarations: [FormlyDatepickerDateRange],
+  exports: [FormlyDatepickerDateRange],
+  bootstrap: [FormlyDatepickerDateRange]
 })
-export class FormlyDatepickerBasicModule {}
+export class FormlyDatepickerDateRangeModule {}
