@@ -42,7 +42,6 @@ export class FormlyAutocompleteDisable {
           templateOptions: {
             label: 'Auto Complete disable with single selection mode',
             disabled: true,
-
             service: this.service,
             configuration: this.settings,
             model: this.autocompleteModel
