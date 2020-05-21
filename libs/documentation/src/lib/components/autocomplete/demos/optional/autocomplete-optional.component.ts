@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { SDSAutocompletelConfiguration, SDSSelectedItemModel, SelectionMode } from '@gsa-sam/components';
+import {
+  SDSAutocompletelConfiguration,
+  SDSSelectedItemModel,
+  SelectionMode
+} from '@gsa-sam/components';
 import { SampleAutocompleteData } from './service/autocomplete-sample.data';
 import { AutocompleteSampleDataService } from './service/autocomplete-sample.service';
 
@@ -9,7 +13,6 @@ import { AutocompleteSampleDataService } from './service/autocomplete-sample.ser
   providers: [AutocompleteSampleDataService]
 })
 export class AutocompleteOptional implements OnInit {
-
   private data = SampleAutocompleteData;
   public settings = new SDSAutocompletelConfiguration();
   public settings2 = new SDSAutocompletelConfiguration();
@@ -25,7 +28,6 @@ export class AutocompleteOptional implements OnInit {
   public model5 = new SDSSelectedItemModel();
   public model6 = new SDSSelectedItemModel();
 
-
   constructor(public service: AutocompleteSampleDataService) {
     this.setup();
   }
@@ -34,8 +36,7 @@ export class AutocompleteOptional implements OnInit {
     console.log(value);
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   setup() {
     this.settings.id = 'autocomplete1';
@@ -90,17 +91,9 @@ export class AutocompleteOptional implements OnInit {
     this.settings6.selectionMode = SelectionMode.SINGLE;
     this.settings6.autocompletePlaceHolderText = 'Enter text';
 
-
-
     this.model6.items.push(this.data[0]);
-    //this.model6.items.push(this.data[1]);
 
     this.model5.items.push(this.data[0]);
     this.model5.items.push(this.data[1]);
-
   }
-
-
-
-
 }

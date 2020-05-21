@@ -116,10 +116,10 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    */
   @Input() public inputReadOnly = false;
 
-   /**
+  /**
    * Used to store selected items
    */
-   items = [];
+  items = [];
   /**
    * Stored Event for ControlValueAccessor
    */
@@ -288,7 +288,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       this.configuration.selectionMode,
       this.items
     );
-   
+
     setTimeout(() => {
       this.model.items = [...this.items];
       this.propogateChange(this.model);
@@ -537,6 +537,13 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
         }
       }
     }
+  }
+  getClass() {
+    const isReadonly = true;
+    return this.configuration.inputReadOnly &&
+      this.configuration.selectionMode === SelectionMode.MULTIPLE
+      ? 'hide-cursor'
+      : '';
   }
 
   registerOnChange(fn: any): void {
