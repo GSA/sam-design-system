@@ -119,11 +119,9 @@ export let formlyFieldConfig: FormlyFieldConfig[] = [
           tagText: 'DUNS',
           tagClass: 'sds-tag--info-purple',
           label: 'Unique Entity ID',
-          placeholder: '',
           min: 13,
           max: 40,
           inputType: 'number',
-          inputStyle: 'error'
         }
       },
       {
@@ -132,7 +130,6 @@ export let formlyFieldConfig: FormlyFieldConfig[] = [
         templateOptions: {
           tagText: 'SAM',
           label: 'Unique Entity ID',
-          placeholder: '',
           inputType: 'text'
         }
       },
@@ -183,7 +180,6 @@ export let formlyFieldConfig: FormlyFieldConfig[] = [
   },
   {
     key: 'popWrapper',
-
     templateOptions: { label: 'Place of Performance',
     group: 'accordion' },
     fieldGroup: [
