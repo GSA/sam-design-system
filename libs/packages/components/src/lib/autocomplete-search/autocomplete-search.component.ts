@@ -529,22 +529,28 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   }
   addItem() {
     const val = this.createFreeTextItem();
-    if (this.configuration.selectionMode === SelectionMode.MULTIPLE) {
       SDSSelectedItemModelHelper.addItem(
         val,
         this.configuration.primaryKeyField,
         this.configuration.selectionMode,
         this.items
       );
-      this.model.items = [...this.items];
-      this.propogateChange(this.model);
+      setTimeout(() => {
+        if(this.configuration.isFreeTextEnabled) {
+          this.model.items = Array.from(new Set([ ...this.model.items, ...this.items]));
+        } else {
+          this.model.items = [...this.items];
+        }
+        this.propogateChange(this.model);
+      }, 0)
+     
       const message = this.getObjectValue(
         val,
         this.configuration.primaryTextField
       );
       this.inputValue = message;
       this.focusRemoved();
-    }
+  
   }
 
   registerOnChange(fn: any): void {

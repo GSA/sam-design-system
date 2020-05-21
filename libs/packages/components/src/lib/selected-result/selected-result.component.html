@@ -1,4 +1,4 @@
-<ul *ngIf="model" [attr.aria-label]="configuration.labelText +' results'" class="usa-list usa-list--unstyled sds-autocomplete-selected" aria-relevant="additions" role="listbox" aria-live="polite">
+<ul [attr.aria-label]="configuration.labelText +' results'" class="usa-list usa-list--unstyled sds-autocomplete-selected" aria-relevant="additions" role="listbox" aria-live="polite">
     <li role="option" *ngFor="let result of model.items; let i = index">
         <div [attr.class]=" disabled ? 'sds-tag sds-tag--chip sds-autocomplete-selected__item sds-autocomplete-selected__item--disabled' :'sds-tag sds-tag--chip sds-autocomplete-selected__item'">
             <ng-container *ngIf="itemTemplate" [ngTemplateOutlet]="itemTemplate" [ngTemplateOutletContext]="{$implicit:result}">
