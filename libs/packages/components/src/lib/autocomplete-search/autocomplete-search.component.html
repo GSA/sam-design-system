@@ -2,10 +2,10 @@
   <div class="maxw-mobile-lg position-relative">
     <div role="combobox" [attr.id]="configuration.id+'-container'" [attr.aria-expanded]="showResults" [attr.aria-owns]="showResults? configuration.id+ '-listbox' : undefined"
       aria-haspopup="listbox">
-      <input [disabled]="disabled" (keypress)="onkeypress($event)" (input)="textChange($event)" class="usa-input padding-right-3" [ngClass]="getClass()"
-        #input [attr.aria-label]="configuration.ariaLabelText" [attr.id]="configuration.id" type="text" (focus)="inputFocusHandler()" 
-        (keydown)="onKeydown($event)" [(ngModel)]="inputValue" aria-autocomplete="list" [attr.placeholder]="configuration.autocompletePlaceHolderText"
-        [attr.aria-activedescendant]="showResults? configuration.id+'-resultItem-'+highlightedIndex :''"
+      <input [disabled]="disabled" (keypress)="onkeypress($event)" (input)="textChange($event)" class="usa-input padding-right-3"
+        [ngClass]="getClass()" #input [attr.aria-label]="configuration.ariaLabelText" [attr.id]="configuration.id" type="text"
+        (focus)="inputFocusHandler()" (keydown)="onKeydown($event)" [(ngModel)]="inputValue" aria-autocomplete="list"
+        [attr.placeholder]="configuration.autocompletePlaceHolderText" [attr.aria-activedescendant]="showResults? configuration.id+'-resultItem-'+highlightedIndex :''"
         [attr.aria-controls]="showResults? configuration.id+ '-listbox' : undefined" autocomplete="off">
     </div>
     <ul #resultsList *ngIf="showResults" [attr.id]="configuration.id+ '-listbox'" role="listbox" class="usa-list usa-list--unstyled sds-autocomplete"
@@ -55,14 +55,15 @@
 
     <ng-container *ngIf="!input.disabled">
       <span class="position-absolute right-105 top-1 cursor-pointer">
-        <span *ngIf="(inputValue && !disabled)" tabindex="0" role="button" aria-label="Clear input" aria-hidden="false" (click)="clearInput()"
-          (keyup.enter)="clearInput()">
+        <span *ngIf="(inputValue && !disabled)" tabindex="0" role="button" aria-label="Clear input" aria-hidden="false"
+          (click)="clearInput()" (keyup.enter)="clearInput()">
           <fa-icon [icon]="['fas', 'times']" size="xs"></fa-icon>
         </span>
         <span *ngIf="!configuration.isTagModeEnabled" tabindex="1" role="button" aria-label="Clear input" aria-hidden="false"
           class="margin-left-1">
-          <fa-icon *ngIf="!showResults" (click)="inputFocusHandler()" [icon]="['fas', 'caret-down']" size="sm"></fa-icon>
-          <fa-icon *ngIf="showResults" (click)="checkForFocus($event)" [icon]="['fas', 'caret-up']" size="sm"></fa-icon>
+          <fa-icon *ngIf="(!showResults && !disabled)" (click)="inputFocusHandler()" [icon]="['fas', 'caret-down']"
+            size="sm"></fa-icon>
+          <fa-icon *ngIf="(showResults && !disabled)" (click)="checkForFocus($event)" [icon]="['fas', 'caret-up']" size="sm"></fa-icon>
         </span>
       </span>
     </ng-container>

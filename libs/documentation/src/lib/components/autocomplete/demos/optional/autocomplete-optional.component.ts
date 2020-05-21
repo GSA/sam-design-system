@@ -20,13 +20,14 @@ export class AutocompleteOptional implements OnInit {
   public settings4 = new SDSAutocompletelConfiguration();
   public settings5 = new SDSAutocompletelConfiguration();
   public settings6 = new SDSAutocompletelConfiguration();
-
+  public disableMSettings = new SDSAutocompletelConfiguration();
   public model = new SDSSelectedItemModel();
   public model2 = new SDSSelectedItemModel();
   public model3 = new SDSSelectedItemModel();
   public model4 = new SDSSelectedItemModel();
   public model5 = new SDSSelectedItemModel();
   public model6 = new SDSSelectedItemModel();
+  public disableMModel = new SDSSelectedItemModel();
 
   constructor(public service: AutocompleteSampleDataService) {
     this.setup();
@@ -91,7 +92,17 @@ export class AutocompleteOptional implements OnInit {
     this.settings6.selectionMode = SelectionMode.SINGLE;
     this.settings6.autocompletePlaceHolderText = 'Enter text';
 
+    this.disableMSettings.primaryKeyField = 'id';
+    this.disableMSettings.id = 'autocomplete6';
+    this.disableMSettings.labelText = 'Autocomplete 6 Disabled';
+    this.disableMSettings.primaryTextField = 'name';
+    this.disableMSettings.secondaryTextField = 'subtext';
+    this.disableMSettings.selectionMode = SelectionMode.MULTIPLE;
+    this.disableMSettings.autocompletePlaceHolderText = 'Enter text';
+
     this.model6.items.push(this.data[0]);
+    this.disableMModel.items.push(this.data[0]);
+    this.disableMModel.items.push(this.data[3]);
 
     this.model5.items.push(this.data[0]);
     this.model5.items.push(this.data[1]);
