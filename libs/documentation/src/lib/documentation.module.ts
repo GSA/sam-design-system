@@ -42,6 +42,7 @@ import { ROUTES as FILTER_WRAPPER_ROUTES, FilterWrapperModule } from './componen
 import { ROUTES as ACCORDION_WRAPPER_ROUTES, AccordionWrapperModule } from './components/accordionwrapper/accordionwrapper.module';
 import { ROUTES as GROUP_ROUTES, GroupWrappersModule } from './components/groupwrappers/groupwrappers.module';
 import { ROUTES as LABEL_ROUTES, LabelWrapperModule } from './components/labelwrapper/labelwrapper.module';
+import { ROUTES as DESCRIPTION_ROUTES, DescriptionWrapperModule } from './components/descriptionwrapper/descriptionwrapper.module';
 
 
 /* Utilities */
@@ -93,6 +94,7 @@ export const ROUTES: Routes = [
   { path: 'components/accordionwrapper', children: ACCORDION_WRAPPER_ROUTES },
   { path: 'components/group', children: GROUP_ROUTES },
   { path: 'components/label', children: LABEL_ROUTES },
+  { path: 'components/description', children: DESCRIPTION_ROUTES },
 
   // Icons
   { path: 'components/icons', children: ICONS_ROUTES },
@@ -134,6 +136,7 @@ export const ROUTES: Routes = [
     AccordionWrapperModule,
     GroupWrappersModule,
     LabelWrapperModule,
+    DescriptionWrapperModule,
     IconsModule
   ]
 })
