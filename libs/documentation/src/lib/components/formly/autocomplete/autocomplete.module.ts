@@ -14,8 +14,8 @@ import { FormlyAutocompleteTag } from './demos/tag/autocomplete-tag.component';
 import { FormlyAutocompleteTagModule } from './demos/tag/autocomplete-tag.module';
 import { FormlyAutocompleteReadOnlyModule } from './demos/readonly/autocomplete-readonly.module';
 import { FormlyAutocompleteReadOnly } from './demos/readonly/autocomplete-readonly.component';
-import { FormlyAutocompleteMinCharecter } from './demos/mincharecter/autocomplete-mincharecter.component';
-import { FormlyAutocompleteMinCharecterModule } from './demos/mincharecter/autocomplete-mincharecter.module';
+import { FormlyAutocompleteMinCharacter } from './demos/mincharacter/autocomplete-mincharacter.component';
+import { FormlyAutocompleteMinCharacterModule } from './demos/mincharacter/autocomplete-mincharacter.module';
 import { FormlyAutocompleteDisable } from './demos/disable/autocomplete-disable.component';
 import { FormlyAutocompleteDisableModule } from './demos/disable/autocomplete-disable.module';
 import { FormlyAutocompleteValidationModule } from './demos/validation/autocomplete-validation.module';
@@ -51,12 +51,12 @@ const DEMOS = {
     markup: require('!!raw-loader!./demos/readonly/autocomplete-readonly.component.html'),
     path: 'libs/documentation/src/lib/components/autocomplete/demos/readonly'
   },
-  mincharecter: {
-    title: 'Autocomplete with Minimum charecter count',
-    type: FormlyAutocompleteMinCharecter,
-    code: require('!!raw-loader!./demos/mincharecter/autocomplete-mincharecter.component'),
-    markup: require('!!raw-loader!./demos/mincharecter/autocomplete-mincharecter.component.html'),
-    path: 'libs/documentation/src/lib/components/autocomplete/demos/mincharecter'
+  mincharacter: {
+    title: 'Autocomplete with Minimum character count',
+    type: FormlyAutocompleteMinCharacter,
+    code: require('!!raw-loader!./demos/mincharacter/autocomplete-mincharacter.component'),
+    markup: require('!!raw-loader!./demos/mincharacter/autocomplete-mincharacter.component.html'),
+    path: 'libs/documentation/src/lib/components/autocomplete/demos/mincharacter'
   },
   disable: {
     title: 'Autocomplete with disable',
@@ -107,7 +107,7 @@ export const ROUTES = [
     FormlyAutocompleteFreetextModule,
     FormlyAutocompleteTagModule,
     FormlyAutocompleteReadOnlyModule,
-    FormlyAutocompleteMinCharecterModule,
+    FormlyAutocompleteMinCharacterModule,
     FormlyAutocompleteDisableModule,
     FormlyAutocompleteValidationModule
   ]

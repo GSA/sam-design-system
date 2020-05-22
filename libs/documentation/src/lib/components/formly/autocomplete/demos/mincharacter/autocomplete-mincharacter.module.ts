@@ -1,6 +1,6 @@
 import { FormlyModule } from '@ngx-formly/core';
 import { NgModule } from '@angular/core';
-import { FormlyAutocompleteMinCharecter} from './autocomplete-mincharecter.component';
+import { FormlyAutocompleteMinCharacter} from './autocomplete-mincharacter.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -11,8 +11,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     FormlyModule.forRoot()
   ],
-  declarations: [FormlyAutocompleteMinCharecter],
-  exports: [FormlyAutocompleteMinCharecter],
-  bootstrap: [FormlyAutocompleteMinCharecter]
+  declarations: [FormlyAutocompleteMinCharacter],
+  exports: [FormlyAutocompleteMinCharacter],
+  bootstrap: [FormlyAutocompleteMinCharacter]
 })
-export class FormlyAutocompleteMinCharecterModule {}
+export class FormlyAutocompleteMinCharacterModule {}

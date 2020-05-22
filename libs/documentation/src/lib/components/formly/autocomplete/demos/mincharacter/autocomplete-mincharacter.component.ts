@@ -8,10 +8,10 @@ import {
   SelectionMode
 } from '@gsa-sam/components';
 @Component({
-  templateUrl: './autocomplete-mincharecter.component.html',
+  templateUrl: './autocomplete-mincharacter.component.html',
   providers: [AutocompleteSampleDataService]
 })
-export class FormlyAutocompleteMinCharecter  {
+export class FormlyAutocompleteMinCharacter  {
   results: any;
   form = new FormGroup({});
   model = {};
