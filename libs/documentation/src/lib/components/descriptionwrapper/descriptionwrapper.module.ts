@@ -15,7 +15,7 @@ import { DescriptionWrapperBasicModule } from './demos/basic/descriptionwrapper-
 declare var require: any;
 const DEMOS = {
   formfield: {
-    title: 'Accordion Wrapper',
+    title: 'Description Wrapper',
     type: DescriptionWrapperBasic,
     code: require('!!raw-loader!./demos/basic/descriptionwrapper-basic.component'),
     markup: require('!!raw-loader!./demos/basic/descriptionwrapper-basic.component.html'),

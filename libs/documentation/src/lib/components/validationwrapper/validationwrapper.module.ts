@@ -15,7 +15,7 @@ import { ValidationWrapperBasicModule } from './demos/basic/validationwrapper-ba
 declare var require: any;
 const DEMOS = {
   formfield: {
-    title: 'Accordion Wrapper',
+    title: 'Validation Wrapper',
     type: ValidationWrapperBasic,
     code: require('!!raw-loader!./demos/basic/validationwrapper-basic.component'),
     markup: require('!!raw-loader!./demos/basic/validationwrapper-basic.component.html'),

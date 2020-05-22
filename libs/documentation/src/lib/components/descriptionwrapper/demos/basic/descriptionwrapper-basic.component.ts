@@ -19,17 +19,6 @@ export class DescriptionWrapperBasic {
         description: 'Input description',
         placeholder: 'Placeholder'
       },
-    },
-
-    {
-      wrappers: ['label','description'],
-      key: 'InputDescription',
-      type: 'input',
-      templateOptions: {
-        label: 'Input',
-        description: 'Input description',
-        placeholder: 'Placeholder'
-      },
-    },
+    }
   ];
 }

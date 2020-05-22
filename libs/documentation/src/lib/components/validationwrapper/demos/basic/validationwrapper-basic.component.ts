@@ -20,19 +20,5 @@ export class ValidationWrapperBasic {
         placeholder: 'Placeholder'
       },
     },
-
-    {
-      wrappers: ['label', 'description', 'validation'],
-      key: 'InputDescription',
-      type: 'input',
-
-      templateOptions: {
-        label: 'Input',
-        required: true,
-        description: 'Input description',
-        placeholder: 'Placeholder'
-
-      },
-    },
   ];
 }

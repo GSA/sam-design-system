@@ -15,7 +15,7 @@ import { LabelWrapperBasicModule } from './demos/basic/labelwrapper-basic.module
 declare var require: any;
 const DEMOS = {
   formfield: {
-    title: 'Accordion Wrapper',
+    title: 'Label Wrapper',
     type: LabelWrapperBasic,
     code: require('!!raw-loader!./demos/basic/labelwrapper-basic.component'),
     markup: require('!!raw-loader!./demos/basic/labelwrapper-basic.component.html'),
