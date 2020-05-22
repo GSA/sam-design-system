@@ -162,21 +162,6 @@ export class FiltersBasic implements OnInit {
     }
   ];
 
-  // Search
-  sdsSearch: FormlyFieldConfig[] = [
-    {
-      key: 'entity.search',
-      type: 'search',
-      templateOptions: {
-        label: 'Entity search',
-        searchSettings: {   
-          placeholder: 'type here to search'
-        }
-      }
-    }
-  ];
-    
-
   public ngOnInit() {
     this.filterChange$.subscribe(res => {
       this.results = res;
