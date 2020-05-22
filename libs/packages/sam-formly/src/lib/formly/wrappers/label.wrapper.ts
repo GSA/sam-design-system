@@ -1,5 +1,14 @@
 import { Component, ViewChild, ViewContainerRef, OnInit } from '@angular/core';
 import { FieldWrapper } from '@ngx-formly/core';
+
+/**
+ * @param {string} [to.tagClass] Class to be added to the tag (default: sds-tag--info-white)
+ * @param {string} [to.tagText] Text to be shown inside the tag
+ * @param {string} [to.label] Text to be shown for the label
+ * @param {string} [to.required] Makes the field required
+ * @param {string} [to.hideOptional] Remove the optional text
+ * 
+ */
 @Component({
   template: `
     <div class="usa-form-group" [class.usa-form-group--error]="showError">

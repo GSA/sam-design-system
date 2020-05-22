@@ -41,6 +41,9 @@ import { ROUTES as FORM_FIELD_ROUTES, FormFieldModule } from './components/form-
 import { ROUTES as FILTER_WRAPPER_ROUTES, FilterWrapperModule } from './components/filterwrapper/filterwrapper.module';
 import { ROUTES as ACCORDION_WRAPPER_ROUTES, AccordionWrapperModule } from './components/accordionwrapper/accordionwrapper.module';
 import { ROUTES as GROUP_ROUTES, GroupWrappersModule } from './components/groupwrappers/groupwrappers.module';
+import { ROUTES as LABEL_ROUTES, LabelWrapperModule } from './components/labelwrapper/labelwrapper.module';
+import { ROUTES as DESCRIPTION_ROUTES, DescriptionWrapperModule } from './components/descriptionwrapper/descriptionwrapper.module';
+import { ROUTES as VALIDATION_ROUTES, ValidationWrapperModule } from './components/validationwrapper/validationwrapper.module';
 
 /* Utilities */
 import { ROUTES as ICONS_ROUTES, IconsModule } from './components/icons/icons.module';
@@ -90,6 +93,9 @@ export const ROUTES: Routes = [
   { path: 'components/filterwrapper', children: FILTER_WRAPPER_ROUTES },
   { path: 'components/accordionwrapper', children: ACCORDION_WRAPPER_ROUTES },
   { path: 'components/group', children: GROUP_ROUTES },
+  { path: 'components/label', children: LABEL_ROUTES },
+  { path: 'components/description', children: DESCRIPTION_ROUTES },
+  { path: 'components/validation', children: VALIDATION_ROUTES },
 
   // Icons
   { path: 'components/icons', children: ICONS_ROUTES },
@@ -130,6 +136,9 @@ export const ROUTES: Routes = [
     FilterWrapperModule,
     AccordionWrapperModule,
     GroupWrappersModule,
+    LabelWrapperModule,
+    DescriptionWrapperModule,
+    ValidationWrapperModule,
     IconsModule
   ]
 })

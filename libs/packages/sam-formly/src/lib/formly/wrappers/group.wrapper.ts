@@ -3,7 +3,11 @@ import { FieldWrapper } from '@ngx-formly/core';
 import * as qs from 'qs';
 
 /**
- * @param {string} [to.expand] To expand the accordion
+ * @param {string} [to.group] used to set the wrapper tupe
+ * @param {string} [to.announceLabel] For screenreader
+ * @param {string} [to.label] Text to be shown for the label
+ * @param {string} [to.hideLabel] Hide the label
+ * 
  */
 @Component({
   template: `

@@ -1,5 +1,8 @@
 import { Component, ViewChild, ViewContainerRef, OnInit } from '@angular/core';
 import { FieldWrapper } from '@ngx-formly/core';
+/**
+ * @param {string} [to.required] Makes the field required
+ */
 @Component({
   template: `
     <ng-container #fieldComponent></ng-container>
