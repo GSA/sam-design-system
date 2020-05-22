@@ -1,10 +1,11 @@
 
 import { Component, ViewChild, ViewContainerRef } from '@angular/core';
-import { FieldWrapper, FormlyFieldConfig } from '@ngx-formly/core';
+import { FieldWrapper } from '@ngx-formly/core';
 import * as qs from 'qs';
 
 /**
- * @param {string} [to.label] Text to be shown for the accordion label
+ * @param {string} [to.expand] to expand the accordion
+ * 
  */
 
 @Component({
