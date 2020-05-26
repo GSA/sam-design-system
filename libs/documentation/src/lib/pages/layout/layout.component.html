@@ -21,7 +21,7 @@
                 <search-list-layout #resultList [service]="service" [configuration]="allDomainsListConfig">
                     <ng-template #resultContent let-item>
                         <div>
-                            <entity-result [model]="item"></entity-result>
+                            <result [model]="item"></result>
                         </div>
                     </ng-template>
                 </search-list-layout>

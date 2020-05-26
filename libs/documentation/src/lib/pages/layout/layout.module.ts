@@ -17,7 +17,7 @@ import {
   SdsFormlyModule
 } from '@gsa-sam/sam-formly';
 
-import { EntityResultModule } from './entity-result/entity-result.module';
+import { ResultModule } from './result/result.module';
 import { SearchListServiceModule } from '@sam-design-system/layouts';
 
 @NgModule({
@@ -30,7 +30,7 @@ import { SearchListServiceModule } from '@sam-design-system/layouts';
     SdsFiltersModule,
     SdsSearchResultListModule,
     SearchListServiceModule,
-    EntityResultModule
+    ResultModule
  ],
   exports: [ResultsLayoutComponent],
   declarations: [ResultsLayoutComponent],

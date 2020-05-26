@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { EntityResultComponent } from './entity-result.component';
+import { ResultComponent } from './result.component';
 
 @NgModule({
-  declarations: [EntityResultComponent],
+  declarations: [ResultComponent],
   imports: [
     CommonModule,
     RouterModule
   ],
-  exports: [EntityResultComponent]
+  exports: [ResultComponent]
 })
-export class EntityResultModule { }
+export class ResultModule { }
