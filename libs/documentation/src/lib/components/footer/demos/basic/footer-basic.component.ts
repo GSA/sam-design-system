@@ -16,7 +16,7 @@ export class FooterBasic implements OnInit {
         text: 'Our Website',
         links: [
           {
-            text: 'Explore Our Community',
+            text: 'About This Site',
             route: '/',
             mode: NavigationMode.INTERNAL
           },
