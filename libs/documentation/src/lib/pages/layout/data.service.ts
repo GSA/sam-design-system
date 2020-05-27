@@ -44,6 +44,24 @@ export class DataService {
         }
     }
 
+    // let data = SearchListSampleData;
+    // if (search.filter) {
+    //     let toReturn = [];
+    //     for (let i = 0; i < data.length; i++) {
+    //         let item = data[i];
+    //         if (search.filter.searchKeyword.keyword && item.text.toLowerCase().indexOf(search.filter.searchKeyword.keyword.toLowerCase()) !== -1) {
+    //             toReturn.push(item);
+    //         }
+    //     }
+    //     data = toReturn;
+    // }
+    // let start = search.page.pageNumber * search.page.pageSize - search.page.pageSize;
+    // let end = start + search.page.pageSize;
+    // return of({
+    //     items: data.slice(start, end),
+    //     totalItems: data.length
+    // });
+
     private sortItems(itemList: any[], search: SearchParameters) {
         let values = [];
         let lessValueExpress = -1;

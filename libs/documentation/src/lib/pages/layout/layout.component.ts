@@ -6,7 +6,10 @@ import { CdkAccordionItem } from '@angular/cdk/accordion';
 import { DataService } from './data.service';
 import { SideNavigationModel } from '@gsa-sam/components';
 import { navigationConfig } from './navigate.config';
-import { SearchListConfiguration, SearchParameters } from '@sam-design-system/layouts';
+import {
+  SearchListConfiguration,
+  SearchParameters
+} from '@sam-design-system/layouts';
 
 @Component({
   templateUrl: './layout.component.html'
@@ -21,7 +24,7 @@ export class ResultsLayoutComponent implements OnInit {
   filtersExpanded: boolean = true;
   @ViewChild('filtersAccordion')
   filtersAccordion: CdkAccordionItem;
-  searchParameters : SearchParameters; // = new SearchParameters();
+  searchParameters: SearchParameters; // = new SearchParameters();
   public filterChange$ = new BehaviorSubject<object>(null);
   allDomainsListConfig: SearchListConfiguration = {
     defaultSortValue: 'relevanceDescending',
@@ -238,29 +241,19 @@ export class ResultsLayoutComponent implements OnInit {
       pageNumber: 1,
       pageSize: 25,
       totalPages: 0
-    }
+    };
     this.filterChange$.subscribe(res => {
-    console.log(res, 'change')
-    this.searchParameters = {
-      filter: res,
-      page : page,
-      sortField : ''
-    }
-    debugger;
-    this.service.getData( this.searchParameters);
-     // this.resultList.getData(res) 
-    }
-    );
+      console.log(res, 'change');
+      this.searchParameters = {
+        filter: res,
+        page: page,
+        sortField: ''
+      };
+      debugger;
+      this.service.getData(this.searchParameters);
+      // this.resultList.getData(res)
+    });
   }
-
-  // private updateContent() {
-  //   this.service.getData({ 'page': this.page, sortField: this.sortField, filter: this.filterData }).subscribe(
-  //     (result) => {
-  //       this.items = result.items;
-  //       this.page.totalPages = Math.ceil(result.totalItems / this.page.pageSize);
-  //     }
-  //   );
-  // }
 
   ngAfterViewInit() {
     // this.service.getAllData();
