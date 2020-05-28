@@ -1,0 +1,34 @@
+import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
+@Component({
+  templateUrl: './templateoption-tags.component.html'
+})
+export class TemplateOptionsTags {
+  form = new FormGroup({});
+  model: any = {};
+  options: FormlyFormOptions = {};
+  fields: FormlyFieldConfig[] = [
+    {
+      key: 'entity',
+      type: 'input',
+      templateOptions: {
+        label: 'Entity',
+        tagText: 'SAM',
+      //  tagClass: 'sds-tag--info-purple'
+      }
+    }
+  ];
+
+  fieldsTagsColor: FormlyFieldConfig[] = [
+    {
+      key: 'entitytag',
+      type: 'input',
+      templateOptions: {
+        label: 'Entity',
+        tagText: 'DUNS',
+       tagClass: 'sds-tag--info-purple'
+      }
+    }
+  ];
+}
