@@ -28,7 +28,7 @@ export class FooterBasic implements OnInit {
       {
         text: 'Our Partners',
         links: [
-          { text: 'Acquisition.gov', route: '/', mode: NavigationMode.INTERNAL},
+          { text: 'Acquisition.gov', route: 'https://Acquisition.gov', mode: NavigationMode.EXTERNAL},
           {
             text: 'USASpending.gov',
             route: '/',

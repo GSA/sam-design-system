@@ -117,7 +117,7 @@
           class="grid-col-12 mobile-lg:grid-col-6 tablet:grid-col-4 margin-bottom-4"
         >
           <div class="sds-footer__logo">
-            <a class="sds-footer__logo-link" href="">
+            <a class="sds-footer__logo-link" >
               <img src="/assets/img/logo-gsa.svg" alt="" />
             </a>
             <h3 class="sds-footer__logo-heading">
@@ -144,7 +144,7 @@
 </ng-template>
 
 <ng-template #footerHREFLinkTemplate let-link>
-  <a [attr.href]="[link.route]">{{ link.text }}</a>
+  <a [href]="link.route">{{ link.text }}</a>
 </ng-template>
 
 <ng-template #footerEVENTLinkTemplate let-link>
