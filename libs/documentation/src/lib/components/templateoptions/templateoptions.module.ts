@@ -13,6 +13,8 @@ import { ComponentWrapperComponent } from '../../shared/component-wrapper/compon
 import { TemplateOptionsBasicModule } from './demos/basic/templateoptions-basic.module';
 import { TemplateOptionsTags } from './demos/tags/templateoption-tags.component';
 import { TemplateOptionsTagsModule } from './demos/tags/templateoption-tags.module';
+import { TemplateOptionsHideOptional } from './demos/hideOptional/templateoption-hideOptional.component';
+import { TemplateOptionsHideOptionalModule } from './demos/hideOptional/templateoption-hideOptional.module';
 
 declare var require: any;
 const DEMOS = {
@@ -29,7 +31,14 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/tags/templateoption-tags.component'),
     markup: require('!!raw-loader!./demos/tags/templateoption-tags.component.html'),
     path: 'libs/documentation/src/lib/components/templateoptions/demos/tags'
-  }
+  },
+  hideOptional: {
+    title: 'Template Options for hide optional text',
+    type: TemplateOptionsHideOptional,
+    code: require('!!raw-loader!./demos/hideOptional/templateoption-hideOptional.component'),
+    markup: require('!!raw-loader!./demos/hideOptional/templateoption-hideOptional.component.html'),
+    path: 'libs/documentation/src/lib/components/templateoptions/demos/hideOptional'
+  },
 };
 
 export const ROUTES = [
@@ -62,7 +71,8 @@ export const ROUTES = [
     CommonModule,
     DocumentationComponentsSharedModule,
     TemplateOptionsBasicModule,
-    TemplateOptionsTagsModule
+    TemplateOptionsTagsModule,
+    TemplateOptionsHideOptionalModule
   ]
 })
 export class TemplateOptionsModule {
