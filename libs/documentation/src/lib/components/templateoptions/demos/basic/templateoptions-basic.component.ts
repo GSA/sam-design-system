@@ -12,11 +12,14 @@ export class TemplateOptionsBasic {
   options: FormlyFormOptions = {};
   fields: FormlyFieldConfig[] = [
     {
-      wrappers: ['templateoptions'],
-      key: 'Input',
+    
+      key: 'Keyword',
       type: 'input',
+      modelOptions: {
+        updateOn: 'blur',
+      },
       templateOptions: {
-        label: 'Input',
+        label: 'Keyword',
         placeholder: 'Placeholder',
         description: 'Description',
         required: true,

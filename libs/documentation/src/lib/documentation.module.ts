@@ -97,7 +97,7 @@ export const ROUTES: Routes = [
   { path: 'components/label', children: LABEL_ROUTES },
   { path: 'components/description', children: DESCRIPTION_ROUTES },
   { path: 'components/validation', children: VALIDATION_ROUTES },
-  { path: 'components/templateoption', children: TEMPLATEOPTIONS_ROUTES },
+  { path: 'components/templateoptions', children: TEMPLATEOPTIONS_ROUTES },
 
   // Icons
   { path: 'components/icons', children: ICONS_ROUTES },
