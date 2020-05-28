@@ -43,9 +43,11 @@
           What changes or improvements would you suggest?
         </p>
         <input class="sds-feedback__input" type="text" />
+        <span class="clearfix">
         <button class="usa-button usa-button--secondary margin-y-2 float-right">
           Submit
         </button>
+      </span>
       </div>
     </div>
   </div>
@@ -84,9 +86,9 @@
                   <span class="usa-footer__primary-link">{{
                     section.text
                   }}</span>
-                  <ul class="usa-list usa-list--unstyled">
+                  <ul class="usa-list usa-list--unstyled overflow-x-visible">
                     <li
-                      class="usa-footer__secondary-link"
+                      class="usa-footer__secondary-link "
                       *ngFor="let link of section.links"
                     >
                       <ng-container

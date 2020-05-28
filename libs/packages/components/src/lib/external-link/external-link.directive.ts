@@ -22,10 +22,8 @@ export class ExternalLinkDirective
 
 
   private get isExternalLink (): boolean {
-    console.log(this.href)
-    let returnBool = this.href.replace(/^https?:\/\//,'').replace(/^www\./, '').split('/')[0] != location.hostname;
-    console.log(returnBool, this.href);
-    return returnBool
+    return this.href.replace(/^https?:\/\//,'').replace(/^www\./, '').split('/')[0] != location.hostname;
+
   }
 
   constructor (
@@ -36,6 +34,11 @@ export class ExternalLinkDirective
     @HostListener('click', ['$event'])
     click(event:Event){
       window.location.href = this.href;
+    }
+
+    @HostListener('mouseover', ['$event'])
+    mouseover(event:Event){
+      document.body.style.cursor = 'pointer';
     }
 
     public ngOnChanges () {
