@@ -13,7 +13,7 @@ import { ComponentWrapperComponent } from '../../shared/component-wrapper/compon
 import { TemplateOptionsBasicModule } from './demos/basic/templateoptions-basic.module';
 import { TemplateOptionsTags } from './demos/tags/templateoption-tags.component';
 import { TemplateOptionsTagsModule } from './demos/tags/templateoption-tags.module';
-import { TemplateOptionsHideOptional } from './demos/hideOptional/templateoption-hideOptional.component';
+import { TemplateOptionHideOptional } from './demos/hideOptional/templateoption-hideOptional.component';
 import { TemplateOptionsHideOptionalModule } from './demos/hideOptional/templateoption-hideOptional.module';
 import { TemplateOptionExpand } from './demos/expand/templateoption-expand.component';
 import { TemplateOptionsExpandModule } from './demos/expand/templateoption-expand.module';
@@ -36,7 +36,7 @@ const DEMOS = {
   },
   hideOptional: {
     title: 'Template Options for hide optional text',
-    type: TemplateOptionsHideOptional,
+    type: TemplateOptionHideOptional,
     code: require('!!raw-loader!./demos/hideOptional/templateoption-hideOptional.component'),
     markup: require('!!raw-loader!./demos/hideOptional/templateoption-hideOptional.component.html'),
     path: 'libs/documentation/src/lib/components/templateoptions/demos/hideOptional'

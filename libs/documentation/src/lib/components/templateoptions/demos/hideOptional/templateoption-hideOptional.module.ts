@@ -1,6 +1,6 @@
 import { FormlyModule } from '@ngx-formly/core';
 import { NgModule } from '@angular/core';
-import { TemplateOptionsHideOptional } from './templateoption-hideOptional.component';
+import { TemplateOptionHideOptional } from './templateoption-hideOptional.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -11,8 +11,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     FormlyModule.forRoot()
   ],
-  declarations: [TemplateOptionsHideOptional],
-  exports: [TemplateOptionsHideOptional],
-  bootstrap: [TemplateOptionsHideOptional]
+  declarations: [TemplateOptionHideOptional],
+  exports: [TemplateOptionHideOptional],
+  bootstrap: [TemplateOptionHideOptional]
 })
 export class TemplateOptionsHideOptionalModule {}

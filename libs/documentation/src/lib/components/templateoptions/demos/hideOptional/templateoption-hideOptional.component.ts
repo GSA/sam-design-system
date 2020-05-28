@@ -4,7 +4,7 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 @Component({
   templateUrl: './templateoption-hideOptional.component.html'
 })
-export class TemplateOptionsHideOptional {
+export class TemplateOptionHideOptional {
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
