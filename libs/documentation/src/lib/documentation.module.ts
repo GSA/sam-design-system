@@ -44,6 +44,7 @@ import { ROUTES as GROUP_ROUTES, GroupWrappersModule } from './components/groupw
 import { ROUTES as LABEL_ROUTES, LabelWrapperModule } from './components/labelwrapper/labelwrapper.module';
 import { ROUTES as DESCRIPTION_ROUTES, DescriptionWrapperModule } from './components/descriptionwrapper/descriptionwrapper.module';
 import { ROUTES as VALIDATION_ROUTES, ValidationWrapperModule } from './components/validationwrapper/validationwrapper.module';
+import { ROUTES as TEMPLATEOPTIONS_ROUTES, TemplateOptionsModule } from './components/templateoptions/templateoptions.module';
 
 /* Utilities */
 import { ROUTES as ICONS_ROUTES, IconsModule } from './components/icons/icons.module';
@@ -96,6 +97,7 @@ export const ROUTES: Routes = [
   { path: 'components/label', children: LABEL_ROUTES },
   { path: 'components/description', children: DESCRIPTION_ROUTES },
   { path: 'components/validation', children: VALIDATION_ROUTES },
+  { path: 'components/templateoption', children: TEMPLATEOPTIONS_ROUTES },
 
   // Icons
   { path: 'components/icons', children: ICONS_ROUTES },
@@ -139,6 +141,7 @@ export const ROUTES: Routes = [
     LabelWrapperModule,
     DescriptionWrapperModule,
     ValidationWrapperModule,
+    TemplateOptionsModule,
     IconsModule
   ]
 })
