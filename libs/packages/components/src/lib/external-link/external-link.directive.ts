@@ -19,14 +19,14 @@ export class ExternalLinkDirective
   @Input() href: string;
   @Input() public hideIcon: boolean = false;
 
- 
+
   private get isExternalLink (): boolean {
     return this.href.replace(/^https?:\/\//,'').replace(/^www\./, '').split('/')[0] != location.hostname;
   }
 
   constructor (
     private el: ElementRef,
-    private renderer: Renderer2, private cfr: ComponentFactoryResolver , private vc : ViewContainerRef) {   
+    private renderer: Renderer2, private cfr: ComponentFactoryResolver , private vc : ViewContainerRef) {
     }
 
     public ngOnChanges () {
@@ -35,10 +35,10 @@ export class ExternalLinkDirective
     }
     if (!this.hideIcon) {
       this.createIcon();
-      
+
     }
   }
- 
+
   private createIcon () {
     // tslint:disable-next-line:no-unused-expression
     this.vc.constructor.name === "ViewContainerRef_";
@@ -53,5 +53,5 @@ export class ExternalLinkDirective
     this.el.nativeElement.appendChild(spanElement);
     component.instance.ngOnChanges({});
   }
- 
+
 }
