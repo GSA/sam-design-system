@@ -23,20 +23,9 @@ import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/t
 
 @Component({
   template: `
-    <!-- <a id="blank"
-      target="_blank">
-      Blank
-      <span class="fa fa-external-link fa-sm"></span>
-    </a> -->
-
     <a id="test"
     href="google.com"
     >Google </a>
-    <!-- <a id="hidden"
-      target="hidden"
-      hideIcon="true">
-      Hidden
-    </a>  -->
   `
 })
 class TestComponent {
@@ -67,27 +56,8 @@ fdescribe('Sam External Link Directive', () => {
 
     fixture = TestBed.createComponent(TestComponent);
     component = fixture.componentInstance;
-    // fixture.detectChanges();
   });
 
-  // it('should add external link icon when none is present',
-  //   () => {
-  //   const cmp =
-  //     fixture.debugElement.query(By.css('#named'));
-
-  //   const icons = findIcons(cmp);
-
-  //   expect(icons.length).toBe(icons.length);
-  // });
-
-  // it('should not add icon if hideIcon is true', () => {
-  //   const cmp =
-  //     fixture.debugElement.query(By.css("#hidden"));
-
-  //   const icons = findIcons(cmp);
-
-  //   expect(icons.length).toBe(0);
-  // });
 
   it('should create component', () => {
     expect(component).toBeDefined();
@@ -100,7 +70,6 @@ fdescribe('Sam External Link Directive', () => {
     const icons = findIcons();
     console.log(icons)
     expect(icons.length).toEqual(1);
-
 
   })
 
