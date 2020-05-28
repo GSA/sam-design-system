@@ -15,6 +15,8 @@ import { TemplateOptionsTags } from './demos/tags/templateoption-tags.component'
 import { TemplateOptionsTagsModule } from './demos/tags/templateoption-tags.module';
 import { TemplateOptionsHideOptional } from './demos/hideOptional/templateoption-hideOptional.component';
 import { TemplateOptionsHideOptionalModule } from './demos/hideOptional/templateoption-hideOptional.module';
+import { TemplateOptionExpand } from './demos/expand/templateoption-expand.component';
+import { TemplateOptionsExpandModule } from './demos/expand/templateoption-expand.module';
 
 declare var require: any;
 const DEMOS = {
@@ -38,6 +40,13 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/hideOptional/templateoption-hideOptional.component'),
     markup: require('!!raw-loader!./demos/hideOptional/templateoption-hideOptional.component.html'),
     path: 'libs/documentation/src/lib/components/templateoptions/demos/hideOptional'
+  },
+  expand: {
+    title: 'Template Options for expand',
+    type: TemplateOptionExpand,
+    code: require('!!raw-loader!./demos/expand/templateoption-expand.component'),
+    markup: require('!!raw-loader!./demos/expand/templateoption-expand.component.html'),
+    path: 'libs/documentation/src/lib/components/templateoptions/demos/expand'
   },
 };
 
@@ -72,7 +81,8 @@ export const ROUTES = [
     DocumentationComponentsSharedModule,
     TemplateOptionsBasicModule,
     TemplateOptionsTagsModule,
-    TemplateOptionsHideOptionalModule
+    TemplateOptionsHideOptionalModule,
+    TemplateOptionsExpandModule
   ]
 })
 export class TemplateOptionsModule {
