@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { BehaviorSubject } from 'rxjs';
 import { FormGroup } from '@angular/forms';
@@ -14,16 +14,12 @@ import {
 @Component({
   templateUrl: './layout.component.html'
 })
-export class ResultsLayoutComponent implements OnInit {
+export class ResultsLayoutComponent implements AfterViewInit {
   public navigationModel: SideNavigationModel = navigationConfig;
-  domainLabel: string;
   @ViewChild('resultList') resultList;
-
   form = new FormGroup({});
   filterModel = {};
   filtersExpanded: boolean = true;
-  @ViewChild('filtersAccordion')
-  filtersAccordion: CdkAccordionItem;
   searchParameters: SearchParameters; // = new SearchParameters();
   public filterChange$ = new BehaviorSubject<object>(null);
   allDomainsListConfig: SearchListConfiguration = {
@@ -233,32 +229,10 @@ export class ResultsLayoutComponent implements OnInit {
     }
   ];
   constructor(public service: DataService) {}
-
-  ngOnInit() {
-    this.service.getAllData();
-    this.domainLabel = 'All Domains';
-    const page = {
-      pageNumber: 1,
-      pageSize: 25,
-      totalPages: 0
-    };
-    this.filterChange$.subscribe(res => {
-      console.log(res, 'change');
-      this.searchParameters = {
-        filter: res,
-        page: page,
-        sortField: ''
-      };
-      debugger;
-      this.service.getData(this.searchParameters);
-      // this.resultList.getData(res)
-    });
-  }
-
+  
   ngAfterViewInit() {
-    // this.service.getAllData();
-    // if (this.resultList) {
-    //   this.resultList.updateFilter(this.filterModel);
-    // }
+    this.filterChange$.subscribe(res => { 
+      this.resultList.updateFilter(res);
+    });
   }
 }

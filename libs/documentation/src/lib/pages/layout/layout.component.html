@@ -3,11 +3,11 @@
         <div class="grid-row">
             <sds-toolbar class="grid-col-12 tablet:grid-col-auto" #toolbar="sdsToolbar" [expanded]="true">
                 <sds-accordion>
-                    <sds-accordion-item #domainAccordion>
+                    <sds-accordion-item #domainAccordion [expanded]="!filtersExpanded">
                         <sds-accordion-item-header>
                             <span class="text-normal">Domain</span>
                         </sds-accordion-item-header>
-                       <sds-side-navigation #sideNav [model]="navigationModel"></sds-side-navigation>
+                        <sds-side-navigation #sideNav [model]="navigationModel"></sds-side-navigation>
                     </sds-accordion-item>
                     <sds-accordion-item #filtersAccordion [expanded]="filtersExpanded">
                         <sds-accordion-item-header>Filter By</sds-accordion-item-header>
@@ -21,7 +21,7 @@
                 <search-list-layout #resultList [service]="service" [configuration]="allDomainsListConfig">
                     <ng-template #resultContent let-item>
                         <div>
-                            <result [model]="item"></result>
+                            <result-item [model]="item"></result-item>
                         </div>
                     </ng-template>
                 </search-list-layout>
