@@ -42,7 +42,9 @@ export class ExternalLinkDirective implements OnChanges {
 
   @HostListener('mouseover', ['$event'])
   mouseover(event: Event) {
+    if(this.isExternalLink){
     document.body.style.cursor = 'pointer';
+    }
   }
 
   public ngOnChanges() {
