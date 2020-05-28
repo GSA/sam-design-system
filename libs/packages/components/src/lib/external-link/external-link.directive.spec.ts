@@ -1,16 +1,10 @@
 import {
   TestBed,
-  async,
-  fakeAsync,
-  tick,
   ComponentFixture} from '@angular/core/testing';
 
 import {
-  Component,
-  Output,
-  ViewChild,
-  EventEmitter,
-  DebugElement} from '@angular/core';
+  Component
+} from '@angular/core';
 import { By } from '@angular/platform-browser';
 
 // Load the implementations that should be tested
@@ -25,14 +19,17 @@ import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/t
   template: `
     <a id="test"
     href="google.com"
-    >Google </a>
+    >Google <i class="fas fa-external-link-alt fa-xs"></i></a>
+
+    <a id="test2"
+    >Not Google </a>
   `
 })
 class TestComponent {
   constructor(){}
 }
 
-fdescribe('Sam External Link Directive', () => {
+describe('Sam External Link Directive', () => {
   let directive: ExternalLinkDirective;
   let component: TestComponent;
   let fixture: ComponentFixture<TestComponent>;
@@ -69,8 +66,16 @@ fdescribe('Sam External Link Directive', () => {
     const cmp = fixture.debugElement.query(By.css('#test'));
     const icons = findIcons();
     console.log(icons)
-    expect(icons.length).toEqual(1);
+    expect(icons).toEqual([])
 
+  })
+
+  it('should not create an icon', () => {
+    fixture.detectChanges();
+    const cmp = fixture.debugElement.query(By.css('#test2'));
+    const icons = findIcons();
+    console.log(icons)
+    expect(icons.length).toEqual(0);
   })
 
 
