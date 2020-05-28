@@ -87,11 +87,8 @@
                   <span class="usa-footer__primary-link">{{
                     section.text
                   }}</span>
-                  <ul class="usa-list usa-list--unstyled text-no-wrap">
-                    <li
-                      class="usa-footer__secondary-link margin-0"
-                      *ngFor="let link of section.links"
-                    >
+                  <ul class="usa-list usa-list--unstyled ">
+                    <li *ngFor="let link of section.links">
                       <ng-container
                         [ngTemplateOutlet]="
                           navigationHelper.isLinkInternal(link)
@@ -143,11 +140,11 @@
 </footer>
 
 <ng-template #footerRouteLinkTemplate let-link>
-  <a [routerLink]="[link.route]">{{ link.text }}</a>
+  <a class="usa-link" [routerLink]="[link.route]">{{ link.text }}</a>
 </ng-template>
 
 <ng-template #footerHREFLinkTemplate let-link>
-  <a [href]="link.route">{{ link.text }}</a>
+  <a class="usa-link" [href]="link.route">{{ link.text }}</a>
 </ng-template>
 
 <ng-template #footerEVENTLinkTemplate let-link>
