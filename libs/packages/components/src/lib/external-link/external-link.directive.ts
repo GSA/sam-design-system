@@ -14,49 +14,52 @@ import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 @Directive({
   selector: 'a[href]'
 })
-export class ExternalLinkDirective
-  implements OnChanges {
-    private vcRef: ViewContainerRef;
+export class ExternalLinkDirective implements OnChanges {
+  private vcRef: ViewContainerRef;
   @Input() href: string;
   @Input() public hideIcon: boolean = false;
 
-
-  private get isExternalLink (): boolean {
-    return this.href.replace(/^https?:\/\//,'').replace(/^www\./, '').split('/')[0] != location.hostname;
-
+  private get isExternalLink(): boolean {
+    return (
+      this.href
+        .replace(/^https?:\/\//, '')
+        .replace(/^www\./, '')
+        .split('/')[0] != location.hostname
+    );
   }
 
-  constructor (
+  constructor(
     private el: ElementRef,
-    private renderer: Renderer2, private cfr: ComponentFactoryResolver , private vc : ViewContainerRef) {
-    }
+    private renderer: Renderer2,
+    private cfr: ComponentFactoryResolver,
+    private vc: ViewContainerRef
+  ) {}
 
-    @HostListener('click', ['$event'])
-    click(event:Event){
-      window.location.href = this.href;
-    }
+  @HostListener('click', ['$event'])
+  click(event: Event) {
+    window.location.href = this.href;
+  }
 
-    @HostListener('mouseover', ['$event'])
-    mouseover(event:Event){
-      document.body.style.cursor = 'pointer';
-    }
+  @HostListener('mouseover', ['$event'])
+  mouseover(event: Event) {
+    document.body.style.cursor = 'pointer';
+  }
 
-    public ngOnChanges () {
-    if (!this.isExternalLink){
+  public ngOnChanges() {
+    if (!this.isExternalLink) {
       return;
     }
     if (!this.hideIcon) {
       this.createIcon();
-
     }
   }
 
-  private createIcon () {
+  private createIcon() {
     // tslint:disable-next-line:no-unused-expression
-    this.vc.constructor.name === "ViewContainerRef_";
+    this.vc.constructor.name === 'ViewContainerRef_';
     const factory = this.cfr.resolveComponentFactory(FaIconComponent);
     const component = this.vc.createComponent(factory);
-    component.instance.iconProp =  ['fas','external-link-alt'];
+    component.instance.iconProp = ['fas', 'external-link-alt'];
     const spanElement = document.createElement('span');
     spanElement.classList.add('margin-left-2px');
     const supElement = document.createElement('sup');
@@ -65,5 +68,4 @@ export class ExternalLinkDirective
     this.el.nativeElement.appendChild(spanElement);
     component.instance.ngOnChanges({});
   }
-
 }

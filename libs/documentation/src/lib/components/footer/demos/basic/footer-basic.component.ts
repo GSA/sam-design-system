@@ -28,16 +28,25 @@ export class FooterBasic implements OnInit {
       {
         text: 'Our Partners',
         links: [
-          { text: 'Acquisition.gov', route: 'https://Acquisition.gov', mode: NavigationMode.EXTERNAL},
+          {
+            text: 'Acquisition.gov',
+            route: 'https://Acquisition.gov',
+            mode: NavigationMode.EXTERNAL
+          },
           {
             text: 'USASpending.gov',
             route: 'https://USASpending.gov',
             mode: NavigationMode.EXTERNAL
           },
-          { text: 'Grants.gov', route: 'https://Grants.gov', mode: NavigationMode.EXTERNAL },
+          {
+            text: 'Grants.gov',
+            route: 'https://Grants.gov',
+            mode: NavigationMode.EXTERNAL
+          },
           { text: 'More Partners', route: '/', mode: NavigationMode.INTERNAL }
         ]
-      },   {
+      },
+      {
         text: 'Customer Service',
         links: [
           {
@@ -50,7 +59,11 @@ export class FooterBasic implements OnInit {
             route: 'https://fsd.gov',
             mode: NavigationMode.EXTERNAL
           },
-          { text: 'Our Community', route: 'https://sam.gov', mode: NavigationMode.EXTERNAL },
+          {
+            text: 'Our Community',
+            route: 'https://sam.gov',
+            mode: NavigationMode.EXTERNAL
+          },
           {
             text: 'Policy',
             route: '/',
@@ -67,7 +80,11 @@ export class FooterBasic implements OnInit {
             mode: NavigationMode.INTERNAL
           },
           { text: 'Disclaimers', route: '/', mode: NavigationMode.INTERNAL },
-          { text: 'Freedom of Information Act', route: 'https://foia.gov', mode: NavigationMode.EXTERNAL },
+          {
+            text: 'Freedom of Information Act',
+            route: 'https://foia.gov',
+            mode: NavigationMode.EXTERNAL
+          },
           { text: 'Accessibility', route: '/', mode: NavigationMode.INTERNAL }
         ]
       }
