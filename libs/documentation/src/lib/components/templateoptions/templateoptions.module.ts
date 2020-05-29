@@ -37,7 +37,7 @@ const DEMOS = {
     path: 'libs/documentation/src/lib/components/templateoptions/demos/tags'
   },
   hideOptional: {
-    title: 'Template Options for hide optional text',
+    title: 'Template Options for hide (optional) text',
     type: TemplateOptionHideOptional,
     code: require('!!raw-loader!./demos/hideOptional/templateoption-hideOptional.component'),
     markup: require('!!raw-loader!./demos/hideOptional/templateoption-hideOptional.component.html'),
