@@ -12,7 +12,7 @@ import { FieldWrapper } from '@ngx-formly/core';
 @Component({
   template: `
     <div class="usa-form-group" [class.usa-form-group--error]="showError">
-      <label class="usa-label" [attr.for]="id" [ngClass]="{'usa-sr-only' : to.hideLabel || ((to.group==='panel' || to.group==='accordion') && field?.parent?.type!==
+      <label class="usa-label"  *ngIf="hasLabel()" [attr.for]="id" [ngClass]="{'usa-sr-only' : to.hideLabel || ((to.group==='panel' || to.group==='accordion') && field?.parent?.type!==
       'formly-group') }">
         <span *ngIf="to.tagText" class="usa-tag"  [ngClass]="to.tagClass ? to.tagClass : 'sds-tag--info-white'">{{to.tagText}}</span>
         <span>{{ to.label }}</span>
@@ -22,6 +22,14 @@ import { FieldWrapper } from '@ngx-formly/core';
     </div>
   `,
 })
-export class FormlyLabelWrapperComponent extends FieldWrapper {
+export class FormlyLabelWrapperComponent extends FieldWrapper  {
   @ViewChild('fieldComponent', {read: ViewContainerRef}) fieldComponent: ViewContainerRef;
+  hasLabel(){
+    if(this.to.label){
+      if(!((this.field.type === 'checkbox' || this.field.type ===  'multicheckbox' ) && this.field.templateOptions.group))
+      {
+        return true;
+      }
+    }
+  }
 }
