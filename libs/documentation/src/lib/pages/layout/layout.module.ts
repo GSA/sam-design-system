@@ -19,6 +19,7 @@ import {
 
 import { ResultModule } from './result/result.module';
 import { SearchListServiceModule } from '@sam-design-system/layouts';
+import { FilterService } from './filter.service';
 
 @NgModule({
   imports: [
@@ -34,6 +35,6 @@ import { SearchListServiceModule } from '@sam-design-system/layouts';
  ],
   exports: [ResultsLayoutComponent],
   declarations: [ResultsLayoutComponent],
-  providers: []
+  providers: [FilterService]
 })
 export class ResultsLayoutModule {}

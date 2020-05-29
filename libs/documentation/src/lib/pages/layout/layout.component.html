@@ -11,14 +11,14 @@
                     </sds-accordion-item>
                     <sds-accordion-item #filtersAccordion [expanded]="filtersExpanded">
                         <sds-accordion-item-header>Filter By</sds-accordion-item-header>
-                        <sds-filters [form]="form" [fields]="fields" [model]="filterModel" (filterChange)="filterChange$.next($event)">
+                        <sds-filters [options]="options" [form]="form" [fields]="fields" [model]="filterModel" (filterChange)="filterChange$.next($event)">
                         </sds-filters>
                     </sds-accordion-item>
                 </sds-accordion>
             </sds-toolbar>
 
             <div class="sds-page__content tablet:grid-col-fill margin-0">
-                <search-list-layout #resultList [service]="service" [configuration]="allDomainsListConfig">
+                <search-list-layout #resultList [service]="service" [configuration]="listConfig">
                     <ng-template #resultContent let-item>
                         <div>
                             <result-item [model]="item"></result-item>
