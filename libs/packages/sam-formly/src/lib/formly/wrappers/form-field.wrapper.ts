@@ -13,7 +13,6 @@ import { FieldWrapper } from '@ngx-formly/core';
  * 
  */
 
-
 @Component({
   selector: 'sds-formly-wrapper-form-field',
   template: `
