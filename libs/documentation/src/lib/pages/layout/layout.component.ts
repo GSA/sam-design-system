@@ -35,14 +35,12 @@ export class ResultsLayoutComponent implements AfterViewInit {
   public fields: FormlyFieldConfig[] = [
     {
       key: 'keyword',
-      wrappers: ['filterwrapper'],
       templateOptions: { label: 'Keyword' },
       type: 'input'
     },
     {
       key: 'searchEntity',
-      wrappers: ['accordionwrapper'],
-      templateOptions: { label: 'Entity' },
+      templateOptions: { label: 'Entity', group: 'accordion' },
       fieldGroup: [
         {
           key: 'legalBusinessName',
@@ -88,10 +86,11 @@ export class ResultsLayoutComponent implements AfterViewInit {
     },
     {
       key: 'purposeOfRegistration',
-      wrappers: ['accordionwrapper'],
+
       type: 'multicheckbox',
       templateOptions: {
         label: 'Purpose of Registration',
+        group: 'accordion',
         options: [
           {
             key: 'allawards',
@@ -110,10 +109,10 @@ export class ResultsLayoutComponent implements AfterViewInit {
     },
     {
       key: 'entityType',
-      wrappers: ['accordionwrapper'],
       type: 'input',
       templateOptions: {
-        label: 'Entity Type'
+        label: 'Entity Type',
+        group: 'accordion'
       }
     },
     {
@@ -126,9 +125,10 @@ export class ResultsLayoutComponent implements AfterViewInit {
     },
     {
       key: 'serviceClassifications',
-      wrappers: ['accordionwrapper'],
+
       templateOptions: {
-        label: 'NAICS and Product Service Codes'
+        label: 'NAICS and Product Service Codes',
+        group: 'accordion'
       },
       fieldGroup: [
         {
@@ -154,8 +154,7 @@ export class ResultsLayoutComponent implements AfterViewInit {
     },
     {
       key: 'location',
-      wrappers: ['accordionwrapper'],
-      templateOptions: { label: 'Location ' },
+      templateOptions: { label: 'Location', group: 'accordion' },
       fieldGroup: [
         {
           key: 'country',
@@ -206,8 +205,7 @@ export class ResultsLayoutComponent implements AfterViewInit {
     },
     {
       key: 'status',
-      wrappers: ['accordionwrapper'],
-      templateOptions: { label: 'Status' },
+      templateOptions: { label: 'Status', group: 'accordion' },
       fieldGroup: [
         {
           key: 'registrationStatus',
@@ -228,10 +226,10 @@ export class ResultsLayoutComponent implements AfterViewInit {
       ]
     }
   ];
-  constructor(public service: DataService) {}
-  
+  constructor(public service: DataService) { }
+
   ngAfterViewInit() {
-    this.filterChange$.subscribe(res => { 
+    this.filterChange$.subscribe(res => {
       this.resultList.updateFilter(res);
     });
   }
