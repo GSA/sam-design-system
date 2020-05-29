@@ -81,8 +81,8 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
     if (!this.inputState.visible) {
       this.setInputVisibleStyles();
       this.focusMonitor.focusVia(this.inputEl, 'program');
-    } else if (this.inputEl.nativeElement.value || this.selectEl.nativeElement.value) {
-      this.model.searchText = this.inputEl.nativeElement.value;
+    } else if (this.inputEl || this.selectEl) {
+      this.model.searchText = this.inputEl? this.inputEl.nativeElement.value : '';
       if (this.selectEl && this.selectEl.nativeElement.value) {
         this.model.searchCatergory = this.selectEl.nativeElement.value;
       }
