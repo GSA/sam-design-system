@@ -17,6 +17,8 @@ import { TemplateOptionHideOptional } from './demos/hideOptional/templateoption-
 import { TemplateOptionsHideOptionalModule } from './demos/hideOptional/templateoption-hideOptional.module';
 import { TemplateOptionExpand } from './demos/expand/templateoption-expand.component';
 import { TemplateOptionsExpandModule } from './demos/expand/templateoption-expand.module';
+import { TemplateOptionAnnounceLabel } from './demos/announceLabel/templateoption-announceLabel.component';
+import { TemplateOptionsAnnounceLabelModule } from './demos/announceLabel/templateoption-announceLabel.module';
 
 declare var require: any;
 const DEMOS = {
@@ -47,6 +49,13 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/expand/templateoption-expand.component'),
     markup: require('!!raw-loader!./demos/expand/templateoption-expand.component.html'),
     path: 'libs/documentation/src/lib/components/templateoptions/demos/expand'
+  },
+  announceLabel: {
+    title: 'Template Options for announce label for screen reader',
+    type: TemplateOptionAnnounceLabel,
+    code: require('!!raw-loader!./demos/announceLabel/templateoption-announceLabel.component'),
+    markup: require('!!raw-loader!./demos/announceLabel/templateoption-announceLabel.component.html'),
+    path: 'libs/documentation/src/lib/components/templateoptions/demos/announceLabel'
   },
 };
 
@@ -82,7 +91,8 @@ export const ROUTES = [
     TemplateOptionsBasicModule,
     TemplateOptionsTagsModule,
     TemplateOptionsHideOptionalModule,
-    TemplateOptionsExpandModule
+    TemplateOptionsExpandModule,
+    TemplateOptionsAnnounceLabelModule
   ]
 })
 export class TemplateOptionsModule {

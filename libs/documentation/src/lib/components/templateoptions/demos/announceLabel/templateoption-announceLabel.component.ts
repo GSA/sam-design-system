@@ -2,31 +2,20 @@ import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 @Component({
-  templateUrl: './templateoption-tags.component.html'
+  templateUrl: './templateoption-announceLabel.component.html'
 })
-export class TemplateOptionsTags {
+export class TemplateOptionAnnounceLabel {
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
   fields: FormlyFieldConfig[] = [
     {
-      key: 'entity',
+      key: 'Keyword',
       type: 'input',
       templateOptions: {
         label: 'Entity',
-        tagText: 'SAM'
-      }
-    }
-  ];
-
-  fieldsTagsColor: FormlyFieldConfig[] = [
-    {
-      key: 'entitytag',
-      type: 'input',
-      templateOptions: {
-        label: 'Entity',
-        tagText: 'DUNS',
-       tagClass: 'sds-tag--info-purple'
+        announceLabel: true
+     
       }
     }
   ];
