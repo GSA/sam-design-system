@@ -30,6 +30,9 @@ export const ROUTES = [
     path: '',
     component: ComponentWrapperComponent,
     data: {
+      readme: {
+        closing
+      },
       items: [
         {
           pkg: 'components',
