@@ -40,8 +40,10 @@ aria-label="Tooltip that hides when scrolled out of the container"
     <p>Venenatis dapibus ex</p>
   </div>
 </div><br><br>
-<div class="sds-card padding-2">
-  <p>My Content start from here.</p>
+<div class="sds-card sds-card--shadowed sds-card--bordered padding-2">
+  <div class="sds-card__header sds-card__header--base sds-card__header--left">
+    <h2 class="sds-card__title">My Content starts here. </h2>
+</div>
   <div class="grid-row">
   <div class="tablet:grid-col">
     <div #tooltipForIn>
@@ -76,15 +78,17 @@ aria-label="Tooltip that hides when scrolled out of the container"
       </div>
       </div>
   </div>
+  <div class="sds-card__content">
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In neque nunc, auctor a cursus vitae, venenatis dapibus
       ex. Nam tristique aliquam efficitur. Aliquam sit amet sodales elit, accumsan lacinia nisi. Aliquam eu
       mauris ut augue fringilla congue a eu ante. Donec maximus placementrat convallis. Morbi eu tincidunt neque, vel porta
       nulla. Suspendisse venenatis augue eget massa ullamcorper, et fringilla ipsum lobortis. In hac habitasse
       platea dictumst. Quisque et fringilla lacus, non consequat nulla.
     </p>
+  </div>
     <div class="text-center">
       <div class="">
-        <div #tooltipForCenter>
+        <div  #tooltipForCenter>
           <span>
             <fa-icon [icon]="['sds', 'new-version']" transform="grow-10"></fa-icon>
           </span>
