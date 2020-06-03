@@ -1,6 +1,6 @@
 <form class="usa-form usa-search" [ngClass]="getClass()" role="search">
   <label class="usa-sr-only" for="options">Dropdown label</label>
-  <select *ngIf="(searchSettings?.dropdown)" [value]="model.searchCategory? model.searchCategory :''" #selectEl name="search options"
+  <select *ngIf="hasDropdown()" [value]="model.searchCategory? model.searchCategory :''" #selectEl name="search options"
     class="usa-select" id="search-options">
     <option [value]=""> {{searchSettings.dropdown.placeholder ? searchSettings.dropdown.placeholder : '-Select-'}}</option>
     <ng-container *ngFor="let item of searchSettings.dropdown.options">

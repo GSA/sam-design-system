@@ -13,6 +13,7 @@ import { VideoBasicModule } from './demos/basic/video-basic.module';
 import { VideoBasic } from './demos/basic/video-basic.component';
 
 declare var require: any;
+export const closing = require('!!raw-loader!./closing.md');
 const DEMOS = {
   basic: {
     title: 'Video Player',
@@ -29,6 +30,9 @@ export const ROUTES = [
     path: '',
     component: ComponentWrapperComponent,
     data: {
+      readme: {
+        closing
+      },
       items: [
         {
           pkg: 'components',

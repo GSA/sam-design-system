@@ -4,8 +4,7 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
-  templateUrl: './filters-basic.component.html',
-  styleUrls: ['./filters-basic.component.scss']
+  templateUrl: './filters-basic.component.html'
 })
 export class FiltersBasic implements OnInit {
   constructor() {
@@ -137,20 +136,6 @@ export class FiltersBasic implements OnInit {
     }
   ];
 
-  // Textarea
-  sdsTextarea: FormlyFieldConfig[] = [
-    {
-      key: 'entity.description',
-      type: 'textarea',
-      templateOptions: {
-        label: 'Entity Description',
-        placeholder: 'Acme Corporation is a federal contractor.',
-        description: 'Enter the description for your entity.',
-        required: true
-      }
-    }
-  ];
-
   // DatePicker
   sdsDatePicker: FormlyFieldConfig[] = [
     {
@@ -176,21 +161,6 @@ export class FiltersBasic implements OnInit {
       }
     }
   ];
-
-  // Search
-  sdsSearch: FormlyFieldConfig[] = [
-    {
-      key: 'entity.search',
-      type: 'search',
-      templateOptions: {
-        label: 'Entity search',
-        searchSettings: {   
-          placeholder: 'type here to search'
-        }
-      }
-    }
-  ];
-    
 
   public ngOnInit() {
     this.filterChange$.subscribe(res => {

@@ -40,6 +40,11 @@ import { ROUTES as SEARCH_FORMLY_ROUTES, FormlySearchModule } from './components
 import { ROUTES as FORM_FIELD_ROUTES, FormFieldModule } from './components/form-field/form-field.module';
 import { ROUTES as FILTER_WRAPPER_ROUTES, FilterWrapperModule } from './components/filterwrapper/filterwrapper.module';
 import { ROUTES as ACCORDION_WRAPPER_ROUTES, AccordionWrapperModule } from './components/accordionwrapper/accordionwrapper.module';
+import { ROUTES as GROUP_ROUTES, GroupWrappersModule } from './components/groupwrappers/groupwrappers.module';
+import { ROUTES as LABEL_ROUTES, LabelWrapperModule } from './components/labelwrapper/labelwrapper.module';
+import { ROUTES as DESCRIPTION_ROUTES, DescriptionWrapperModule } from './components/descriptionwrapper/descriptionwrapper.module';
+import { ROUTES as VALIDATION_ROUTES, ValidationWrapperModule } from './components/validationwrapper/validationwrapper.module';
+import { ROUTES as TEMPLATEOPTIONS_ROUTES, TemplateOptionsModule } from './components/templateoptions/templateoptions.module';
 
 /* Utilities */
 import { ROUTES as ICONS_ROUTES, IconsModule } from './components/icons/icons.module';
@@ -47,6 +52,8 @@ import { ROUTES as ICONS_ROUTES, IconsModule } from './components/icons/icons.mo
 
 import { DocumentationSharedModule } from './shared';
 import { OverviewComponent } from './pages/overview/overview.component';
+import { ResultsLayoutModule } from './pages/layout/layout.module';
+import { ResultsLayoutComponent } from './pages/layout/layout.component';
 
 declare var require: any;
 
@@ -54,6 +61,7 @@ export const ROUTES: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'components/header' },
   { path: 'overview', component: OverviewComponent },
   { path: 'introduction', component: IntroductionComponent },
+  { path: 'layout', component: ResultsLayoutComponent },
 
   // Components
   { path: 'components', pathMatch: 'full', redirectTo: 'components/alert' },
@@ -88,6 +96,11 @@ export const ROUTES: Routes = [
   { path: 'components/form-field', children: FORM_FIELD_ROUTES },
   { path: 'components/filterwrapper', children: FILTER_WRAPPER_ROUTES },
   { path: 'components/accordionwrapper', children: ACCORDION_WRAPPER_ROUTES },
+  { path: 'components/group', children: GROUP_ROUTES },
+  { path: 'components/label', children: LABEL_ROUTES },
+  { path: 'components/description', children: DESCRIPTION_ROUTES },
+  { path: 'components/validation', children: VALIDATION_ROUTES },
+  { path: 'components/templateoptions', children: TEMPLATEOPTIONS_ROUTES },
 
   // Icons
   { path: 'components/icons', children: ICONS_ROUTES },
@@ -115,6 +128,7 @@ export const ROUTES: Routes = [
     InputModule,
     OverviewModule,
     IntroductionModule,
+    ResultsLayoutModule,
     TextAreaModule,
     CheckboxModule,
     MultiCheckboxModule,
@@ -127,6 +141,11 @@ export const ROUTES: Routes = [
     FormFieldModule,
     FilterWrapperModule,
     AccordionWrapperModule,
+    GroupWrappersModule,
+    LabelWrapperModule,
+    DescriptionWrapperModule,
+    ValidationWrapperModule,
+    TemplateOptionsModule,
     IconsModule
   ]
 })
