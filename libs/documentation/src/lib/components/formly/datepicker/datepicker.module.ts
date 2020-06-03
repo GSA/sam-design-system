@@ -21,21 +21,21 @@ const DEMOS = {
     type: FormlyDatepickerBasic,
     code: require('!!raw-loader!./demos/basic/datepicker-basic.component'),
     markup: require('!!raw-loader!./demos/basic/datepicker-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/datepicker/demos/basic'
+    path: 'libs/documentation/src/lib/components/formly/datepicker/demos/basic'
   },
   daterange: {
     title: 'Date Range picker with min,max values',
     type: FormlyDatepickerDateRange,
     code: require('!!raw-loader!./demos/daterange/datepicker-daterange.component'),
     markup: require('!!raw-loader!./demos/daterange/datepicker-daterange.component.html'),
-    path: 'libs/documentation/src/lib/components/datepicker/demos/daterange'
+    path: 'libs/documentation/src/lib/components/formly/datepicker/demos/daterange'
   },
   validation: {
     title: 'Date picker with validation',
     type: FormlyDatepickerValidation,
     code: require('!!raw-loader!./demos/daterange/datepicker-daterange.component'),
     markup: require('!!raw-loader!./demos/daterange/datepicker-daterange.component.html'),
-    path: 'libs/documentation/src/lib/components/datepicker/demos/daterange'
+    path: 'libs/documentation/src/lib/components/formly/datepicker/demos/daterange'
   }
 };
 

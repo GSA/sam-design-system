@@ -18,14 +18,14 @@ const DEMOS = {
     type: InputBasic,
     code: require('!!raw-loader!./demos/basic/input-basic.component'),
     markup: require('!!raw-loader!./demos/basic/input-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/input/demos/basic'
+    path: 'libs/documentation/src/lib/components/formly/input/demos/basic'
   },
   optional: {
     title: 'Optional Form Input',
     type: InputOptional,
     code: require('!!raw-loader!./demos/optional/input-optional.component'),
     markup: require('!!raw-loader!./demos/optional/input-optional.component.html'),
-    path: 'libs/documentation/src/lib/components/input/demos/optional'
+    path: 'libs/documentation/src/lib/components/formly/input/demos/optional'
   }
 };
 

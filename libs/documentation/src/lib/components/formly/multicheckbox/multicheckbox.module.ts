@@ -16,7 +16,7 @@ const DEMOS = {
     type: MultiCheckboxBasic,
     code: require('!!raw-loader!./demos/basic/multicheckbox-basic.component'),
     markup: require('!!raw-loader!./demos/basic/multicheckbox-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/multicheckbox/demos/basic'
+    path: 'libs/documentation/src/lib/components/formly/multicheckbox/demos/basic'
   }
 };
 

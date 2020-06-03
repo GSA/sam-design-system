@@ -16,7 +16,7 @@ const DEMOS = {
     type: RadioBasic,
     code: require('!!raw-loader!./demos/basic/radio-basic.component'),
     markup: require('!!raw-loader!./demos/basic/radio-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/radio/demos/basic'
+    path: 'libs/documentation/src/lib/components/formly/radio/demos/basic'
   }
 };
 
