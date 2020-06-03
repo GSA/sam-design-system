@@ -2,7 +2,7 @@
   <div class="sds-feedback">
     <button
       type="button"
-      class="sds-feedback__button"
+      class="sds-feedback__button simple-toggle"
       [attr.aria-expanded]="!isCollapsedContent"
       aria-controls="collapseID"
       (click)="isCollapsedContent = !isCollapsedContent"
@@ -43,18 +43,14 @@
           What changes or improvements would you suggest?
         </p>
         <input class="sds-feedback__input" type="text" />
-        <span class="clearfix">
-          <button
-            class="usa-button usa-button--secondary margin-y-2 float-right"
-          >
-            Submit
-          </button>
-        </span>
+        <p class="text-right">
+          <button class="usa-button usa-button--secondary">Submit</button>
+        </p>
       </div>
     </div>
   </div>
 
-  <div class="sds-footer__primary-section">
+  <div class="usa-footer__primary-section">
     <div class="grid-container">
       <div class="grid-row grid-gap">
         <div class="mobile-lg:grid-col-12 tablet:grid-col-3 ">
