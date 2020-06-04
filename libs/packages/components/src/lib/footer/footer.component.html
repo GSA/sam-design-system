@@ -70,20 +70,24 @@
           </div>
         </div>
 
-        <div class="mobile-lg:grid-col-12 tablet:grid-col-12 ">
-          <nav class="usa-footer__primary-section">
+        <!-- <div class="mobile-lg:grid-col-12 tablet:grid-col-12 "> -->
+          <div class="usa-footer__primary-section">
             <div class="grid-row grid-gap">
               <div
-                class="grid-col-12 mobile-lg:grid-col-3 tablet:grid-col-3 desktop:grid-col-3"
+                class="grid-col-6 mobile-lg:grid-col-3 "
                 *ngFor="let section of model.linkSections"
               >
                 <section
                   class="usa-footer__primary-content usa-footer__primary-content--collapsible"
                 >
-                  <span class="usa-footer__primary-link usa-link">{{
+                  <span class="usa-footer__primary-link usa-link ">{{
                     section.text
                   }}</span>
-                  <ul class="usa-list usa-list--unstyled ">
+
+                <!-- <nav class="sds-footer__nav--accordion"> -->
+                  <div class="sds-accordion usa-accordion">
+                  <ul class="usa-list usa-list--unstyled">
+
                     <li *ngFor="let link of section.links">
                       <ng-container
                         [ngTemplateOutlet]="
@@ -97,14 +101,16 @@
                       ></ng-container>
                     </li>
                   </ul>
+                </div>
+                <!-- </nav> -->
                 </section>
               </div>
             </div>
-          </nav>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  <!-- </div> -->
 
   <div class="usa-footer__secondary-section">
     <div class="grid-container">
