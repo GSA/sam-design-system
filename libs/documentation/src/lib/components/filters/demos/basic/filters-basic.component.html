@@ -1,34 +1,48 @@
-<div class="sds-card">
-  <h3>Input</h3>
-  <sds-filters [form]="form" [fields]="sdsInput" [model]="model" ></sds-filters>
+<div class="sds-card--shadowed sds-card--bordered margin-bottom-2">
+  <div class="sds-card__content">
+    <h3 class="sds-card__title">Input</h3>
+    <sds-filters [form]="form" [fields]="sdsInput" [model]="model" ></sds-filters>
+  </div>
 </div>
 
-<div class="sds-card">
-  <h3>Select</h3>
+<div class="sds-card--shadowed sds-card--bordered margin-bottom-2">
+  <div class="sds-card__content">
+  <h3 class="sds-card__title">Select</h3>
   <sds-filters [form]="form" [fields]="sdsSelect" [model]="model" ></sds-filters>
+  </div>
 </div>
 
-<div class="sds-card">
-  <h3>Checkbox</h3>
+<div class="sds-card--shadowed sds-card--bordered margin-bottom-2">
+  <div class="sds-card__content">
+  <h3 class="sds-card__title">Checkbox</h3>
   <sds-filters [form]="form" [fields]="sdsCheckbox" [model]="model" ></sds-filters>
 </div>
+</div>
 
-<div class="sds-card">
-  <h3>Multi Checkbox</h3>
+<div class="sds-card--shadowed sds-card--bordered margin-bottom-2">
+  <div class="sds-card__content">
+  <h3 class="sds-card__title">Multi Checkbox</h3>
   <sds-filters [form]="form" [fields]="sdsMultiCheckbox" [model]="model" ></sds-filters>
 </div>
+</div>
 
-<div class="sds-card">
-  <h3>Radio</h3>
+<div class="sds-card--shadowed sds-card--bordered margin-bottom-2">
+  <div class="sds-card__content">
+  <h3 class="sds-card__title">Radio</h3>
   <sds-filters [form]="form" [fields]="sdsRadio" [model]="model" ></sds-filters>
 </div>
-
-<div class="sds-card">
-    <h3>Date Picker</h3>
-    <sds-filters [form]="form" [fields]="sdsDatePicker" [model]="model" ></sds-filters>
 </div>
 
-<div class="sds-card">
-    <h3>Date Range Picker</h3>
+<div class="sds-card--shadowed sds-card--bordered margin-bottom-2">
+  <div class="sds-card__content">
+    <h3 class="sds-card__title">Date Picker</h3>
+    <sds-filters [form]="form" [fields]="sdsDatePicker" [model]="model" ></sds-filters>
+</div>
+</div>
+
+<div class="sds-card--shadowed sds-card--bordered margin-bottom-2">
+  <div class="sds-card__content">
+    <h3 class="sds-card__title">Date Range Picker</h3>
     <sds-filters [form]="form" [fields]="sdsDateRangePicker" [model]="model" ></sds-filters>
+</div>
 </div>
