@@ -40,9 +40,10 @@ export class SdsFiltersComponent implements OnInit {
   /**
    *    Options for the form.
    */
-  @Input() public options: FormlyFormOptions;
+  @Input() public options: FormlyFormOptions = {};
 
   /**
+   *  Emit results when model updated
    * To enable History Tracking
    *  If advanced filters dialog should be displayed -- defaults to false
    */

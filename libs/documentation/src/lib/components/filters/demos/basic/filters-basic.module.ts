@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FiltersBasic } from './filters-basic.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SdsFiltersModule } from '@sam-design-system/sam-formly';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';

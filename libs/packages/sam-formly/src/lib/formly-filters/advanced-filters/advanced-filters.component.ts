@@ -9,7 +9,8 @@ import { SdsFormlyDialogComponent } from '../../formly-dialog/formly-dialog.comp
 
 @Component({
   selector: 'sds-advanced-filters',
-  templateUrl: './advanced-filters.component.html'
+  templateUrl: './advanced-filters.component.html',
+  styleUrls: ['./advanced-filters.component.scss']
 })
 
 export class AdvancedFiltersComponent {

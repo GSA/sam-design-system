@@ -2,29 +2,24 @@ import {
   Component,
   ViewChild,
   ElementRef,
-  Output,
-  EventEmitter,
   Input,
   AfterViewInit,
   forwardRef,
   ChangeDetectionStrategy,
   ChangeDetectorRef
 } from '@angular/core';
-
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { ViewportRuler } from '@angular/cdk/overlay';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-
- export class SearchSettings {
-   public placeholder = 'Search';
-   public size: string;
-   public dropdown: any = {
-     placeholder : '-Select-',
-     options: [],
-     inverse: false
-   }
-
- }
+export class SearchSettings {
+  public placeholder = 'Search';
+  public size: string;
+  public dropdown: any = {
+    placeholder: '-Select-',
+    options: [],
+    inverse: false
+  };
+}
 @Component({
   selector: 'sds-search',
   templateUrl: 'search.component.html',
@@ -35,14 +30,12 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
       multi: true
     }
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
   @ViewChild('inputEl', { read: ElementRef }) inputEl: ElementRef;
   @ViewChild('selectEl', { read: ElementRef }) selectEl: ElementRef;
   @ViewChild('buttonEl', { read: ElementRef }) buttonEl: ElementRef;
-
 
   @Input() inputClass: string;
   @Input() parentSelector: string;
@@ -53,13 +46,14 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
     initial: { visible: undefined },
     visible: undefined
   };
-  private _onChange = (_: any) => { };
-  private _onTouched = () => { };
+  private _onChange = (_: any) => {};
+  private _onTouched = () => {};
 
-  constructor(private cd: ChangeDetectorRef,
+  constructor(
+    private cd: ChangeDetectorRef,
     private focusMonitor: FocusMonitor,
     private viewportRuler: ViewportRuler
-  ) { }
+  ) {}
 
   ngAfterViewInit() {
     this.inputState.initial.visible = this.isInputVisible();
@@ -70,15 +64,27 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
     });
   }
 
+  hasDropdown() {
+    if (
+      this.searchSettings &&
+      this.searchSettings.dropdown &&
+      this.searchSettings.dropdown.options &&
+      this.searchSettings.dropdown.options.length
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
   handleClick(event) {
     event.preventDefault();
     if (!this.inputState.visible) {
       this.setInputVisibleStyles();
       this.focusMonitor.focusVia(this.inputEl, 'program');
-    } else if(this.inputEl.nativeElement.value) {
-      this.model.searchText = this.inputEl.nativeElement.value;
-      if (this.searchSettings.dropdown) {
-        this.model.searchCatergory = this.selectEl.nativeElement.value
+    } else if (this.inputEl || this.selectEl) {
+      this.model.searchText = this.inputEl? this.inputEl.nativeElement.value : '';
+      if (this.selectEl && this.selectEl.nativeElement.value) {
+        this.model.searchCatergory = this.selectEl.nativeElement.value;
       }
       this._onChange(this.model);
     }
@@ -139,7 +145,12 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
     return Math.floor(rightPosition - leftPosition);
   }
   getClass() {
-   const  cls= (this.searchSettings && this.searchSettings.size === 'large')? 'usa-search--big': 'usa-search--small';
-   return (this.searchSettings.dropdown && this.searchSettings.dropdown.inverse )? `${cls} sds-inverse` : cls;
+    const cls =
+      this.searchSettings && this.searchSettings.size === 'large'
+        ? 'usa-search--big'
+        : 'usa-search--small';
+    return this.searchSettings.dropdown && this.searchSettings.dropdown.inverse
+      ? `${cls} sds-inverse`
+      : cls;
   }
 }

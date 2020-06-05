@@ -1,0 +1,12 @@
+.usa-button--unstyled {
+  padding-right: 0;
+  width: initial;
+  text-decoration: none;
+  font-weight: 600;
+  &:hover, &:active {
+    background: transparent;
+    background: initial;
+    color: initial;
+    text-decoration: underline;
+  }
+}
