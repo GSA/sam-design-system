@@ -1,10 +1,14 @@
-  <h3 >Multiple Form Controls</h3>
+<h3>Multiple Form Controls</h3>
 
-  <div class="sds-card  sds-card--shadowed sds-card--bordered margin-top-2">
-    <div class="sds-card__content">
+<div class="sds-card  sds-card--shadowed sds-card--bordered margin-top-2">
+  <div class="sds-card__content">
     <h4 class="sds-card__title">Default</h4>
     <sds-accordion-item expanded="true" class="margin-bottom-1">
-      <sds-filters [form]="form" [fields]="sdsGroupDefaultMultipleControls" [model]="model" ></sds-filters>
+      <sds-filters
+        [form]="form"
+        [fields]="sdsGroupDefaultMultipleControls"
+        [model]="model"
+      ></sds-filters>
     </sds-accordion-item>
   </div>
 </div>
@@ -13,17 +17,25 @@
   <div class="sds-card__content">
     <h4 class="sds-card__title">Accordion</h4>
     <sds-accordion-item expanded="true" class="margin-bottom-1">
-      <sds-filters [form]="form" [fields]="sdsGroupAccordionMultipleControls" [model]="model" ></sds-filters>
+      <sds-filters
+        [form]="form"
+        [fields]="sdsGroupAccordionMultipleControls"
+        [model]="model"
+      ></sds-filters>
     </sds-accordion-item>
   </div>
-  </div>
+</div>
 
 <h3>Single Form Control</h3>
 <div class="sds-card  sds-card--shadowed sds-card--bordered margin-top-2">
   <div class="sds-card__content">
     <h4 class="sds-card__title">Default</h4>
     <sds-accordion-item expanded="true" class="margin-bottom-1">
-      <sds-filters [form]="form" [fields]="sdsGroupDefaultSingleControl" [model]="model" ></sds-filters>
+      <sds-filters
+        [form]="form"
+        [fields]="sdsGroupDefaultSingleControl"
+        [model]="model"
+      ></sds-filters>
     </sds-accordion-item>
   </div>
 </div>
@@ -32,7 +44,11 @@
   <div class="sds-card__content">
     <h4 class="sds-card__title">Accordion</h4>
     <sds-accordion-item expanded="true" class="margin-bottom-1">
-      <sds-filters [form]="form" [fields]="sdsGroupAccordionSingleControl" [model]="model" ></sds-filters>
+      <sds-filters
+        [form]="form"
+        [fields]="sdsGroupAccordionSingleControl"
+        [model]="model"
+      ></sds-filters>
     </sds-accordion-item>
   </div>
 </div>
