@@ -10,9 +10,7 @@ import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/t
 
 @Component({
   template: `
-    <a id="test" href="google.com"
-      >Google <i class="fas fa-external-link-alt fa-xs"></i
-    ></a>
+    <a id="test" href="google.com">Google </a>
 
     <a id="test2">Not Google </a>
   `
