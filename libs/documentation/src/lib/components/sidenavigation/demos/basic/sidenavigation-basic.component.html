@@ -6,6 +6,7 @@
           <sds-accordion-item-header>
             <div>Navigation</div>
             <div>Selected Category</div>
+            <!-- Use string interpolation -->
           </sds-accordion-item-header>
           <sds-side-navigation #sideNav (linkEvent)="linkEvent.next($event)" [model]="model"></sds-side-navigation>
         </sds-accordion-item>
