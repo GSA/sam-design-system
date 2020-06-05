@@ -2,64 +2,83 @@
 
 <h2>Form Controls</h2>
 
-<div class="sds-card">
-  <h3>Input</h3>
+<div class="sds-card  sds-card--shadowed sds-card--bordered margin-top-2">
+  <div class="sds-card__content">
+  <h3 class="sds-card__title">Input</h3>
   <sds-filters [form]="form" [fields]="sdsInput" [model]="model" ></sds-filters>
 </div>
+</div>
 
-<div class="sds-card">
-  <h3>Select</h3>
+<div class="sds-card  sds-card--shadowed sds-card--bordered margin-top-2">
+  <div class="sds-card__content">
+  <h3 class="sds-card__title">Select</h3>
   <sds-filters [form]="form" [fields]="sdsSelect" [model]="model" ></sds-filters>
 </div>
+</div>
 
-<div class="sds-card">
-  <h3>Checkbox</h3>
+<div class="sds-card  sds-card--shadowed sds-card--bordered margin-top-2">
+  <div class="sds-card__content">
+  <h3 class="sds-card__title">Checkbox</h3>
   <sds-filters [form]="form" [fields]="sdsCheckbox" [model]="model" ></sds-filters>
 </div>
+</div>
 
-<div class="sds-card">
-  <h3>Multi Checkbox</h3>
+<div class="sds-card  sds-card--shadowed sds-card--bordered margin-top-2">
+  <div class="sds-card__content">
+  <h3 class="sds-card__title">Multi Checkbox</h3>
   <sds-filters [form]="form" [fields]="sdsMultiCheckbox" [model]="model" ></sds-filters>
 </div>
-
-<div class="sds-card">
-  <h3>Radio</h3>
+</div>
+<div class="sds-card  sds-card--shadowed sds-card--bordered margin-top-2">
+  <div class="sds-card__content">
+  <h3 class="sds-card__title">Radio</h3>
   <sds-filters [form]="form" [fields]="sdsRadio" [model]="model" ></sds-filters>
 </div>
+</div>
 
-<div class="sds-card">
-  <h3>Textarea</h3>
+<div class="sds-card  sds-card--shadowed sds-card--bordered margin-top-2">
+  <div class="sds-card__content">
+  <h3 class="sds-card__title">Textarea</h3>
   <sds-filters [form]="form" [fields]="sdsTextarea" [model]="model" ></sds-filters>
+</div>
 </div>
 
 <h2>Grouping</h2>
 
   <h3>Multiple Form Controls</h3>
-    <div class="sds-card">
-      <h4>Default</h4>
+  <div class="sds-card  sds-card--shadowed sds-card--bordered margin-top-2">
+    <div class="sds-card__content">
+      <h4 class="sds-card__title">Default</h4>
       <sds-accordion-item expanded="true" class="margin-bottom-1">
         <sds-filters [form]="form" [fields]="sdsGroupDefaultMultipleControls" [model]="model" ></sds-filters>
       </sds-accordion-item>
     </div>
+  </div>
 
-    <div class="sds-card">
-      <h4>Accordion</h4>
+  <div class="sds-card  sds-card--shadowed sds-card--bordered margin-top-2">
+    <div class="sds-card__content">
+      <h4 class="sds-card__title">Accordion</h4>
       <sds-accordion-item expanded="true" class="margin-bottom-1">
         <sds-filters [form]="form" [fields]="sdsGroupAccordionMultipleControls" [model]="model" ></sds-filters>
       </sds-accordion-item>
     </div>
+  </div>
 
   <h3>Single Form Control</h3>
-    <div class="sds-card">
-      <h4>Default</h4>
+  <div class="sds-card  sds-card--shadowed sds-card--bordered margin-top-2">
+    <div class="sds-card__content">
+      <h4 class="sds-card__title">Default</h4>
       <sds-accordion-item expanded="true" class="margin-bottom-1">
         <sds-filters [form]="form" [fields]="sdsGroupDefaultSingleControl" [model]="model" ></sds-filters>
       </sds-accordion-item>
     </div>
-
-    <div class="sds-card">
-      <h4>Accordion</h4>
+  </div>
+  <div class="sds-card  sds-card--shadowed sds-card--bordered margin-top-2 margin-bottom-1">
+    <div class="sds-card__content">
+      <h4 class="sds-card__title">Accordion</h4>
       <sds-accordion-item expanded="true" class="margin-bottom-1">
         <sds-filters [form]="form" [fields]="sdsGroupAccordionSingleControl" [model]="model" ></sds-filters>
       </sds-accordion-item>
     </div>
+  </div>
+
