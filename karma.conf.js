@@ -35,6 +35,6 @@ module.exports = () => {
         flags: ['--no-sandbox']
       }
     },
-    singleRun: false
+    singleRun: true
   };
 };
