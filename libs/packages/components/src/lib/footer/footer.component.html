@@ -53,7 +53,7 @@
   <div class="usa-footer__primary-section">
     <div class="grid-container">
       <div class="grid-row grid-gap">
-        <div class="mobile-lg:grid-col-12 tablet:grid-col-3 ">
+        <div class="mobile-lg:grid-col-6 tablet:grid-col-3 ">
           <div
             class="usa-footer__logo grid-row mobile-lg:grid-gap-1 margin-top-3"
           >
@@ -72,9 +72,11 @@
 
         <!-- <div class="mobile-lg:grid-col-12 tablet:grid-col-12 "> -->
           <div class="usa-footer__primary-section">
+            <div class="grid-container">
             <div class="grid-row grid-gap">
+              <nav class="usa-footer_nav"></nav>
               <div
-                class="grid-col-6 mobile-lg:grid-col-3 "
+                class="mobile-lg:grid-col-3 tablet:grid-col-3 desktop:grid-col-3"
                 *ngFor="let section of model.linkSections"
               >
                 <section
@@ -105,6 +107,41 @@
                 <!-- </nav> -->
                 </section>
               </div>
+
+
+            </div>
+              <nav class="sds-footer__nav--accordion grid-col mobile-md:grid-col">
+                <div class="sds-accordion usa-accordion">
+                 <div *ngFor="let section of model.linkSections">
+                  <h2 class="usa-accordion__heading sds-accordion__heading">
+                    <button class="usa-accordion__button usa-accordion__block"
+                    [attr.aria-expanded]="!isCollapsedContent"
+                    aria-controls="collapseID"
+                    (click)="isCollapsedContent = !isCollapsedContent"
+                    >
+                      {{ section.text }}
+                    </button>
+                  </h2>
+                  <ul class="sds-footer__nav--accordion-content" [hidden]="isCollapsedContent">
+                  <li *ngFor="let link of section.links">
+                    <ng-container
+                      [ngTemplateOutlet]="
+                        navigationHelper.isLinkInternal(link)
+                          ? footerRouteLinkTemplate
+                          : navigationHelper.isLinkExternal(link)
+                          ? footerHREFLinkTemplate
+                          : footerEVENTLinkTemplate
+                      "
+                      [ngTemplateOutletContext]="{ $implicit: link }"
+                    ></ng-container>
+                  </li>
+                </ul>
+
+                 </div>
+                </div>
+              </nav>
+
+
             </div>
           </div>
         </div>
