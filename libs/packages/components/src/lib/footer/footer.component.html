@@ -108,21 +108,38 @@
             </div>
           </div>
 
+          <!-- <div class="brands-name">
+            <div *ngFor="let data of ParentList; let $index=index;">
+                <div (click)="Collaps($index)">Item{{index + 1}}</div>
+                <div *ngIf="$index === expandedIndex">
+                    <div *ngFor="let data of ChildList;let i=index">
+                        <div class="row" style="margin-left:0px;margin-right:0px">
+                            <div class="col-sm-1">Sub-Item{{index + 1}}</div>
+                            <div class="col-sm-6" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>   -->
 
               <nav class="sds-footer__nav--accordion grid-col mobile-md:grid-col">
                 <div class="sds-accordion usa-accordion">
-                 <div *ngFor="let section of model.linkSections; let i = index"
+                 <div *ngFor="let section of model.linkSections; let $index = index"
                  >
                   <h2 class="usa-accordion__heading sds-accordion__heading">
                     <button class="usa-accordion__button usa-accordion__block"
-                    [attr.aria-expanded]="!isCollapsedContent"
-                    aria-controls="collapseID"
-                    (click)="isCollapsedContent = !isCollapsedContent"
+                    [attr.aria-expanded]="$index == expandedIndex"
+                    aria-controls="collapseMobileID"
+                    (click)="collapse($index)"
                     >
                       {{ section.text }}
                     </button>
+
                   </h2>
-                  <ul class="sds-footer__nav--accordion-content" [hidden]="isCollapsedContent">
+                  <div
+                  [sdsCollapse]="$index != expandedIndex"
+                  >
+                  <ul class="sds-footer__nav--accordion-content" [hidden]="$index != expandedIndex">
                   <li *ngFor="let link of section.links">
                     <ng-container
                       [ngTemplateOutlet]="
@@ -136,6 +153,7 @@
                     ></ng-container>
                   </li>
                 </ul>
+              </div>
 
                  </div>
                 </div>

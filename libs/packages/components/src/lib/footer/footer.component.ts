@@ -10,6 +10,7 @@ import { NavigationHelper } from '../common-navigation/navigation-helper';
 })
 export class SdsFooterComponent implements OnInit {
  public innerWidth: any;
+ public expandedIndex: number;
 
   /**
    * Navigation helper
@@ -21,6 +22,7 @@ export class SdsFooterComponent implements OnInit {
    */
   @Input() model: FooterModel;
   @Input() isCollapsedContent: boolean = true;
+  isCollapsedMobile: boolean = true;
 
   /**
    * event for event based
@@ -39,6 +41,7 @@ export class SdsFooterComponent implements OnInit {
 
   ngOnInit(){
     this.innerWidth = window.innerWidth;
+    this.expandedIndex = -1
   }
 
   @HostListener('window:resize', ['$event'])
@@ -46,5 +49,8 @@ export class SdsFooterComponent implements OnInit {
     this.innerWidth = window.innerWidth;
   }
 
+  collapse(index:number){
+    this.expandedIndex = index === this.expandedIndex ? 1 : index;
+  }
 
 }
