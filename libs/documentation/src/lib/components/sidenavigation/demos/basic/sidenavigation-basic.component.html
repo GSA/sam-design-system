@@ -5,7 +5,7 @@
         <sds-accordion-item [expanded]="sideNavExpanded">
           <sds-accordion-item-header>
             <div>Navigation</div>
-            <div>Selected Category</div>
+            <div>{{ pageHeader }}</div>
             <!-- Use string interpolation -->
           </sds-accordion-item-header>
           <sds-side-navigation #sideNav (linkEvent)="linkEvent.next($event)" [model]="model"></sds-side-navigation>
