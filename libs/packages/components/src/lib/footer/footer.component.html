@@ -71,17 +71,15 @@
         </div>
 
         <!-- <div class="mobile-lg:grid-col-12 tablet:grid-col-12 "> -->
-          <div class="usa-footer__primary-section">
-            <div class="grid-container">
+          <div class="usa-footer__primary-section" [hidden]="innerWidth < 480">
             <div class="grid-row grid-gap">
-              <nav class="usa-footer_nav"></nav>
               <div
-                class="mobile-lg:grid-col-3 tablet:grid-col-3 desktop:grid-col-3"
+                class="mobile-lg:grid-col-6 tablet:grid-col-3 desktop:grid-col-3"
                 *ngFor="let section of model.linkSections"
-              >
+                >
                 <section
                   class="usa-footer__primary-content usa-footer__primary-content--collapsible"
-                >
+                  >
                   <span class="usa-footer__primary-link usa-link ">{{
                     section.text
                   }}</span>
@@ -107,12 +105,14 @@
                 <!-- </nav> -->
                 </section>
               </div>
-
-
             </div>
+          </div>
+
+
               <nav class="sds-footer__nav--accordion grid-col mobile-md:grid-col">
                 <div class="sds-accordion usa-accordion">
-                 <div *ngFor="let section of model.linkSections">
+                 <div *ngFor="let section of model.linkSections; let i = index"
+                 >
                   <h2 class="usa-accordion__heading sds-accordion__heading">
                     <button class="usa-accordion__button usa-accordion__block"
                     [attr.aria-expanded]="!isCollapsedContent"
@@ -145,8 +145,8 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      <!-- </div>
+    </div> -->
   <!-- </div> -->
 
   <div class="usa-footer__secondary-section">
