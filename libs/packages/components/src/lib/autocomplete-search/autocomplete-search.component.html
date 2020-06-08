@@ -13,7 +13,7 @@
       <ng-container *ngIf="(results && results.length > 0)">
         <li [attr.id]="configuration.id+'-resultItem-'+i" role="option" *ngFor="let result of results; let i = index"
           (mouseenter)="listItemHover(i)" [class]="result['highlighted'] ? 'sds-autocomplete__item sds-autocomplete__item--selected' : 'sds-autocomplete__item' "
-          (click)="selectItem(result)">
+          (click)="addItem(result, $event)">
           <ng-container *ngIf="itemTemplate" [ngTemplateOutlet]="itemTemplate" [ngTemplateOutletContext]="{$implicit:result}">
           </ng-container>
 
