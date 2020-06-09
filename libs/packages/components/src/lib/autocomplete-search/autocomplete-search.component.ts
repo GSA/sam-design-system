@@ -143,6 +143,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * @param object
    * @param propertyFields comma seperated list with periods depth of object
    */
+
   getObjectValue(object: Object, propertyFields: string): string {
     let value = '';
     let current = object;
@@ -262,11 +263,13 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
         const val = this.createFreeTextItem();
         this.selectItem(val);
       } else {
-        this.selectItem(this.highlightedItem);
+          this.selectItem(this.highlightedItem);
       }
     } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex < 0) {
-      const val = this.createFreeTextItem();
-      this.selectItem(val);
+      if (this.configuration.isFreeTextEnabled) {
+        const val = this.createFreeTextItem();
+        this.selectItem(val);
+      }
     } else if (KeyHelper.is(KEYS.ESC, event)) {
       if (this.showResults) {
         this.clearAndHideResults();
@@ -275,6 +278,10 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
         }
       }
     }
+  }
+  updateItems() {
+    const model = [...this.model.items];
+    this.items = model;
   }
 
   /**
@@ -396,9 +403,10 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
             this.showLoad = false;
             this.maxResults = result.totalItems;
 
-            this.highlightedIndex = this.configuration.isFreeTextEnabled
-              ? -1
-              : 0;
+            this.highlightedIndex =
+              this.configuration.isFreeTextEnabled || this.maxResults == 0
+                ? -1
+                : 0;
             if (!this.configuration.isFreeTextEnabled) {
               this.setHighlightedItem(this.results[this.highlightedIndex]);
             }

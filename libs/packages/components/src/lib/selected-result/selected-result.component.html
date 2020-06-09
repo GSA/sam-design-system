@@ -10,7 +10,7 @@
                     {{ result[configuration.secondaryTextField] }}
                 </ng-container>
             </ng-container>
-            <button [attr.aria-label]="'Remove Item ' + getObjectValue(result, configuration.primaryTextField)" [class.text-base]="disabled" aria-hidden="false" class="sds-tag__close  position-absolute right-1 top-2px" (click)="removeItem(result)" (keyup.enter)="removeItem(result)">
+            <button *ngIf="!disabled" [attr.aria-label]="'Remove Item ' + getObjectValue(result, configuration.primaryTextField)" [class.text-base]="disabled" aria-hidden="false" class="sds-tag__close  position-absolute right-1 top-2px" (click)="removeItem(result)" (keyup.enter)="removeItem(result)">
         <fa-icon [icon]="['fas', 'times']" size="sm"></fa-icon>
       </button>
         </div>
