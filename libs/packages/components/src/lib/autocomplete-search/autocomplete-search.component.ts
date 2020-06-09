@@ -5,8 +5,7 @@ import {
   TemplateRef,
   ElementRef,
   forwardRef,
-  ChangeDetectorRef,
-  ChangeDetectionStrategy,
+  ChangeDetectorRef
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { SDSAutocompleteServiceInterface } from './models/SDSAutocompleteServiceInterface';
@@ -27,8 +26,7 @@ const Autocomplete_Autocomplete_VALUE_ACCESSOR: any = {
   selector: 'sds-search-autocomplete',
   templateUrl: './autocomplete-search.component.html',
   styleUrls: ['./autocomplete-search.component.scss'],
-  providers: [Autocomplete_Autocomplete_VALUE_ACCESSOR],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  providers: [Autocomplete_Autocomplete_VALUE_ACCESSOR]
 })
 export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
@@ -145,7 +143,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * @param object
    * @param propertyFields comma seperated list with periods depth of object
    */
-
 
   getObjectValue(object: Object, propertyFields: string): string {
     let value = '';
@@ -264,13 +261,17 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex >= 0) {
       if (this.configuration.isTagModeEnabled) {
         const val = this.createFreeTextItem();
-       this.selectItem(val);
+        this.selectItem(val);
       } else {
-       this.selectItem(this.highlightedItem);
+        if (this.configuration.isFreeTextEnabled) {
+          this.selectItem(this.highlightedItem);
+        }
       }
     } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex < 0) {
-      const val = this.createFreeTextItem();
-      this.selectItem(val);
+      if (this.configuration.isFreeTextEnabled) {
+        const val = this.createFreeTextItem();
+        this.selectItem(val);
+      }
     } else if (KeyHelper.is(KEYS.ESC, event)) {
       if (this.showResults) {
         this.clearAndHideResults();
@@ -280,10 +281,10 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       }
     }
   }
-updateItems(){
-  const model = [...this.model.items]
-  this.items = model;
-}
+  updateItems() {
+    const model = [...this.model.items];
+    this.items = model;
+  }
 
   /**
    * selects the item adding it to the model and closes the results
@@ -404,9 +405,10 @@ updateItems(){
             this.showLoad = false;
             this.maxResults = result.totalItems;
 
-            this.highlightedIndex = this.configuration.isFreeTextEnabled
-              ? -1
-              : 0;
+            this.highlightedIndex =
+              this.configuration.isFreeTextEnabled || this.maxResults == 0
+                ? -1
+                : 0;
             if (!this.configuration.isFreeTextEnabled) {
               this.setHighlightedItem(this.results[this.highlightedIndex]);
             }
