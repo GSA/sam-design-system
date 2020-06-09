@@ -45,7 +45,7 @@ export class SdsFooterComponent implements OnInit {
   }
 
   collapse(index:number){
-    this.expandedIndex = index === this.expandedIndex ? 1 : index;
+    this.expandedIndex = index === this.expandedIndex ? -1 : index;
   }
 
 }

@@ -98,7 +98,7 @@
                 </button>
               </h2>
               <div
-              [sdsCollapse]="$index != expandedIndex"
+              [sdsCollapse]="$index !== expandedIndex || $index == null"
               >
               <ul class="sds-footer__nav--accordion-content" [hidden]="$index != expandedIndex">
                 <li *ngFor="let link of section.links">
