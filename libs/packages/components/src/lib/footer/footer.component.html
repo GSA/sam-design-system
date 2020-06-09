@@ -50,122 +50,76 @@
     </div>
   </div>
 
-  <div class="usa-footer__primary-section">
-    <div class="grid-container">
-      <div class="grid-row grid-gap">
-        <div class="mobile-lg:grid-col-6 tablet:grid-col-3 ">
-          <div
-            class="usa-footer__logo grid-row mobile-lg:grid-gap-1 margin-top-3"
-          >
-            <div
-              class="mobile-lg:grid-col-3 mobile-lg:grid-offset-3 tablet:grid-offset-none tablet:grid-col-auto"
-            >
-              <img
-                *ngIf="model.footerLogo"
-                class="usa-footer__logo-img"
-                [attr.src]="model.footerLogo.imageSourcePath"
-                [attr.alt]="model.footerLogo.imageAltText"
-              />
-            </div>
-          </div>
-        </div>
 
-        <!-- <div class="mobile-lg:grid-col-12 tablet:grid-col-12 "> -->
-          <div class="usa-footer__primary-section" [hidden]="innerWidth < 480">
+        <div class="usa-footer__primary-section">
+          <div class="grid-container">
             <div class="grid-row grid-gap">
-              <div
-                class="mobile-lg:grid-col-6 tablet:grid-col-6 desktop:grid-col-3"
-                *ngFor="let section of model.linkSections"
-                >
-                <section
-                  class="usa-footer__primary-content usa-footer__primary-content--collapsible"
+              <div class="tablet:grid-col-12">
+                <nav class="usa-footer__nav">
+                  <div class="grid-row grid-gap-4"
                   >
-                  <span class="usa-footer__primary-link usa-link ">{{
-                    section.text
-                  }}</span>
-
-                <!-- <nav class="sds-footer__nav--accordion"> -->
-                  <div class="sds-accordion usa-accordion">
-                  <ul class="usa-list usa-list--unstyled">
-
-                    <li *ngFor="let link of section.links">
-                      <ng-container
-                        [ngTemplateOutlet]="
-                          navigationHelper.isLinkInternal(link)
-                            ? footerRouteLinkTemplate
-                            : navigationHelper.isLinkExternal(link)
-                            ? footerHREFLinkTemplate
-                            : footerEVENTLinkTemplate
-                        "
-                        [ngTemplateOutletContext]="{ $implicit: link }"
-                      ></ng-container>
-                    </li>
-                  </ul>
-                </div>
-                <!-- </nav> -->
-                </section>
-              </div>
-            </div>
-          </div>
-
-          <!-- <div class="brands-name">
-            <div *ngFor="let data of ParentList; let $index=index;">
-                <div (click)="Collaps($index)">Item{{index + 1}}</div>
-                <div *ngIf="$index === expandedIndex">
-                    <div *ngFor="let data of ChildList;let i=index">
-                        <div class="row" style="margin-left:0px;margin-right:0px">
-                            <div class="col-sm-1">Sub-Item{{index + 1}}</div>
-                            <div class="col-sm-6" style="width: 80%;"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>   -->
-
-              <nav class="sds-footer__nav--accordion grid-col mobile-md:grid-col">
-                <div class="sds-accordion usa-accordion">
-                 <div *ngFor="let section of model.linkSections; let $index = index"
-                 >
-                  <h2 class="usa-accordion__heading sds-accordion__heading">
-                    <button class="usa-accordion__button usa-accordion__block"
-                    [attr.aria-expanded]="$index == expandedIndex"
-                    aria-controls="collapseMobileID"
-                    (click)="collapse($index)"
+                    <div class="grid-col-6 tablet:grid-col-3"
+                    *ngFor="let section of model.linkSections"
                     >
-                      {{ section.text }}
-                    </button>
+                      <section class="usa-footer__primary-content usa-footer__primary-content--collapsible">
+                        <span class="usa-footer__primary-link">{{ section.text }}</span>
+                        <ul class="usa-list usa-list--unstyled">
 
-                  </h2>
-                  <div
-                  [sdsCollapse]="$index != expandedIndex"
-                  >
-                  <ul class="sds-footer__nav--accordion-content" [hidden]="$index != expandedIndex">
-                  <li *ngFor="let link of section.links">
-                    <ng-container
-                      [ngTemplateOutlet]="
-                        navigationHelper.isLinkInternal(link)
-                          ? footerRouteLinkTemplate
-                          : navigationHelper.isLinkExternal(link)
-                          ? footerHREFLinkTemplate
-                          : footerEVENTLinkTemplate
-                      "
-                      [ngTemplateOutletContext]="{ $implicit: link }"
-                    ></ng-container>
-                  </li>
-                </ul>
+                          <li *ngFor="let link of section.links">
+                            <ng-container
+                              [ngTemplateOutlet]="
+                                navigationHelper.isLinkInternal(link)
+                                  ? footerRouteLinkTemplate
+                                  : navigationHelper.isLinkExternal(link)
+                                  ? footerHREFLinkTemplate
+                                  : footerEVENTLinkTemplate
+                              "
+                              [ngTemplateOutletContext]="{ $implicit: link }"
+                            ></ng-container>
+                          </li>
+                        </ul>
+                      </section>
+                    </div>
+                  </div>
+                </nav>
               </div>
-
-                 </div>
-                </div>
-              </nav>
-
-
             </div>
           </div>
+
+          <nav class="sds-footer__nav--accordion">
+            <div class="sds-accordion usa-accordion"
+            *ngFor="let section of model.linkSections; let $index = index"
+            >
+              <h2 class="usa-accordion__heading sds-accordion__heading">
+                <button class="usa-accordion__button usa-accordion__block" [attr.aria-expanded]="$index == expandedIndex"
+                aria-controls="collapseMobileID"
+                (click)="collapse($index)">
+                  {{ section.text }}
+                </button>
+              </h2>
+              <div
+              [sdsCollapse]="$index != expandedIndex"
+              >
+              <ul class="sds-footer__nav--accordion-content" [hidden]="$index != expandedIndex">
+                <li *ngFor="let link of section.links">
+                  <ng-container
+                    [ngTemplateOutlet]="
+                      navigationHelper.isLinkInternal(link)
+                        ? footerRouteLinkTemplate
+                        : navigationHelper.isLinkExternal(link)
+                        ? footerHREFLinkTemplate
+                        : footerEVENTLinkTemplate
+                    "
+                    [ngTemplateOutletContext]="{ $implicit: link }"
+                  ></ng-container>
+                </li>
+              </ul>
+            </div>
+            </div>
+          </nav>
         </div>
-      <!-- </div>
-    </div> -->
-  <!-- </div> -->
+
+
 
   <div class="usa-footer__secondary-section">
     <div class="grid-container">

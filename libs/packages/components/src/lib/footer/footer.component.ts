@@ -44,11 +44,6 @@ export class SdsFooterComponent implements OnInit {
     this.expandedIndex = -1
   }
 
-  @HostListener('window:resize', ['$event'])
-  onResize(event) {
-    this.innerWidth = window.innerWidth;
-  }
-
   collapse(index:number){
     this.expandedIndex = index === this.expandedIndex ? 1 : index;
   }
