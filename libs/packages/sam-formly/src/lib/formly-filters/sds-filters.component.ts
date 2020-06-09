@@ -96,54 +96,39 @@ export class SdsFiltersComponent implements OnInit {
     private route: ActivatedRoute
   ) { }
 
-  @HostListener('window:popstate', [''])
-  onpopstate() {
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const ref = urlParams.get('ref');
-    const updatedFormValue =
-      ref == null
-        ? this.nullify(this.form.value)
-        : JSON.parse(localStorage.getItem(ref));
-    const updatedValue = this.overwrite(
-      this.form.getRawValue(),
-      updatedFormValue
-    );
-    this.form.setValue(updatedValue, { emitEvent: false });
-    this.updateChange(updatedFormValue);
-  }
-
   ngOnInit(): void {
     if (this.isHistoryEnable) {
-      const queryString = window.location.search;
-      const urlParams = new URLSearchParams(queryString);
-      const initialRef = urlParams.get('ref');
-      if (initialRef) {
-        const updatedFormValue = JSON.parse(localStorage.getItem(initialRef));
+    this.route.queryParams.subscribe(params => {
+      if (this._isEmpty(this.form.getRawValue())) {
+        const paramModel = this.convertToModel(params);
+        console.log('patch reload')
         setTimeout(() => {
-          this.model = { ...this.model, ...updatedFormValue }
-          this.updateChange(updatedFormValue);
+          this.model = { ...this.model, ...paramModel }
+          this.updateChange(paramModel);
           this.cdr.detectChanges();
         }, 0);
       } else {
-      this.updateChange(this.model);
-      this.clearStorage();
+        const updatedFormValue = this.overwrite(
+          this.form.getRawValue(),
+          this.convertToModel(params)
+        );
+        console.log('set reload')
+        this.form.setValue(updatedFormValue);
       }
+    });
+
     }
-    this.cdr.detectChanges();
   }
 
   onModelChange(change: any) {
     if (this.isHistoryEnable) {
-      const md5 = new Md5();
-      const hashCode = md5.appendStr(qs.stringify(change)).end();
+      const params = this.convertToParam(change);
       this.router.navigate([], {
         relativeTo: this.route,
-        queryParams: { ref: hashCode },
+        queryParams: params,
         queryParamsHandling: 'merge'
       });
-      this.addToStorageList(hashCode)
-      localStorage.setItem(hashCode.toString(), JSON.stringify(change));
+     
     }
     this.updateChange(change);
   }
@@ -155,20 +140,28 @@ export class SdsFiltersComponent implements OnInit {
     }
   }
 
-  addToStorageList(hashCode) {
-    const list = JSON.parse(localStorage.getItem('sdsFilterHistory'));
-    this.sdsFilterHistory = (list && list.length > 0) ? list : this.sdsFilterHistory
-    this.sdsFilterHistory.push(hashCode);
-    localStorage.setItem('sdsFilterHistory', JSON.stringify(this.sdsFilterHistory));
+  convertToParam(filters) {
+    const encodedValues = qs.stringify(filters, {
+      skipNulls: true,
+      encode: false
+    });
+    const target = {};
+    encodedValues.split('&').forEach(pair => {
+      if (pair !== '') {
+        const splitpair = pair.split('=');
+        target[ splitpair[0]] = splitpair[1];
+      }
+    });
+    return target;
   }
 
-  clearStorage() {
-    const list = JSON.parse(localStorage.getItem('sdsFilterHistory'));
-    if (list && list.length > 0) {
-      const unique = list.filter((item, i, ar) => ar.indexOf(item) === i);
-      unique.forEach(item => {
-        localStorage.removeItem(item);
-      });
-    }
+  convertToModel(filters) {
+    let obj = {};
+    const encodedValues = qs.stringify(filters, {
+      skipNulls: true,
+      encode: false
+    });
+    obj = qs.parse(encodedValues);
+    return obj;
   }
 }
