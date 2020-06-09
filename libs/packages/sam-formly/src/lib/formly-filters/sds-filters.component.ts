@@ -20,7 +20,6 @@ import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comuni
   selector: 'sds-filters',
   templateUrl: './sds-filters.component.html'
 })
-
 export class SdsFiltersComponent implements OnInit {
   /**
    * Pass in a Form Group for ReactiveForms Support
@@ -59,7 +58,9 @@ export class SdsFiltersComponent implements OnInit {
    */
   // TODO: check type -- Formly models are typically objects
   @Output() filterChange = new EventEmitter<object[]>();
+  public initialModel: any = {};
 
+  public isBrowserButtonPressed = false;
   sdsFilterHistory = [];
 
   _isObj = (obj: any): boolean => typeof obj === 'object' && obj !== null;
@@ -77,16 +78,6 @@ export class SdsFiltersComponent implements OnInit {
     }
     return result;
   };
-  nullify = (obj: any) => {
-    for (let key in obj) {
-      if (this._isObj(obj[key])) {
-        obj[key] = this.nullify(obj[key]);
-      } else {
-        obj[key] = null;
-      }
-    }
-    return obj;
-  };
 
   constructor(
     @Optional()
@@ -94,32 +85,37 @@ export class SdsFiltersComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private router: Router,
     private route: ActivatedRoute
-  ) { }
+  ) {}
 
   ngOnInit(): void {
+    this.initialModel = this.model;
     if (this.isHistoryEnable) {
-    this.route.queryParams.subscribe(params => {
-      if (this._isEmpty(this.form.getRawValue())) {
-        const paramModel = this.convertToModel(params);
-        console.log('patch reload')
-        setTimeout(() => {
-          this.model = { ...this.model, ...paramModel }
-          this.updateChange(paramModel);
-          this.cdr.detectChanges();
-        }, 0);
-      } else {
-        const updatedFormValue = this.overwrite(
-          this.form.getRawValue(),
-          this.convertToModel(params)
-        );
-        console.log('set reload')
-        this.form.setValue(updatedFormValue);
+      this.route.queryParams.subscribe(params => {
+        if(this._isEmpty(params)){}
+        else {
+        if (this._isEmpty(this.form.getRawValue())) {
+          const paramModel = this.convertToModel(params);
+          setTimeout(() => {
+            this.model = { ...this.model, ...paramModel };
+            this.updateChange(paramModel);
+            this.cdr.detectChanges();
+          }, 0);
+        } else {
+          const updatedFormValue = this.overwrite(
+            this.form.getRawValue(),
+            this.convertToModel(params)
+          );
+          this.form.setValue(updatedFormValue);
+        }
       }
-    });
-
+      });
+    
     }
   }
 
+  reset(model) {
+    this.options.resetModel(model);
+  }
   onModelChange(change: any) {
     if (this.isHistoryEnable) {
       const params = this.convertToParam(change);
@@ -128,7 +124,6 @@ export class SdsFiltersComponent implements OnInit {
         queryParams: params,
         queryParamsHandling: 'merge'
       });
-     
     }
     this.updateChange(change);
   }
@@ -149,7 +144,7 @@ export class SdsFiltersComponent implements OnInit {
     encodedValues.split('&').forEach(pair => {
       if (pair !== '') {
         const splitpair = pair.split('=');
-        target[ splitpair[0]] = splitpair[1];
+        target[splitpair[0]] = splitpair[1];
       }
     });
     return target;
