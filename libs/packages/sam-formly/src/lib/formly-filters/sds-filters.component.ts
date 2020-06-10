@@ -91,8 +91,6 @@ export class SdsFiltersComponent implements OnInit {
     this.initialModel = this.model;
     if (this.isHistoryEnable) {
       this.route.queryParams.subscribe(params => {
-        if(this._isEmpty(params)){}
-        else {
         if (this._isEmpty(this.form.getRawValue())) {
           const paramModel = this.convertToModel(params);
           setTimeout(() => {
@@ -107,9 +105,7 @@ export class SdsFiltersComponent implements OnInit {
           );
           this.form.setValue(updatedFormValue);
         }
-      }
       });
-    
     }
   }
 
