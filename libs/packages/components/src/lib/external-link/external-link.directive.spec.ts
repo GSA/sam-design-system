@@ -1,14 +1,13 @@
-import { TestBed, ComponentFixture } from '@angular/core/testing';
-
+import { TestBed, ComponentFixture, async, fakeAsync, flush, inject } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
-
 // Load the implementations that should be tested
 import { ExternalLinkDirective } from './external-link.directive';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
-import { RouterModule, Routes, ROUTES } from '@angular/router';
+import { Router, RouterOutlet, RouterOutlet } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { CommonModule, LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 
 @Component({
@@ -21,15 +20,6 @@ class TestComponent {
   constructor() {}
 }
 
-@Component({
-  template:`
-    <a id="test2" [routerLink]="'/TestRouterLink'">Not Google</a>
-    `
-})
-
-class TestRouterLink {
-  constructor() {}
-}
 
 describe('Sam External Link Directive', () => {
   let directive: ExternalLinkDirective;
@@ -74,39 +64,67 @@ describe('Sam External Link Directive', () => {
 
 });
 
+@Component({
+  template: ''
+})
+
+class MockComponent{
+
+}
+
+@Component({
+  template:`
+     <a id="test2" routerLink="/settings/{{collName}}/edit/{{item._id}}">link</a>
+    <router-outlet></router-outlet>
+    `
+})
+
+class TestRouterLinkComponent {
+  collName = 'testing';
+  item = {
+    _id: 1
+  };
+}
+
 fdescribe('Sam External Link Directive', () => {
-  let directive: ExternalLinkDirective;
-  let component: TestRouterLink;
-  let fixture: ComponentFixture<TestRouterLink>;
+  let component: TestRouterLinkComponent;
+  let fixture: ComponentFixture<TestRouterLinkComponent>;
+  let location: Location;
+  let router: Router;
 
 
-  function findIcons() {
-    return fixture.debugElement.queryAll(By.css('.margin-left-2px'));
-  }
-
-  beforeEach(() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [TestRouterLink, ExternalLinkDirective, FaIconComponent],
-    }).overrideModule(BrowserDynamicTestingModule, {
-      set: { entryComponents: [FaIconComponent] }
-    });
+      imports: [
+        CommonModule,
+        RouterTestingModule.withRoutes([
+         { path: 'settings/:collection/edit/:item', component: MockComponent }
+        ])
+      ],
+      providers: [Location, {provide: LocationStrategy, useClass: PathLocationStrategy}],
+      declarations: [TestRouterLinkComponent, MockComponent, ExternalLinkDirective],
+    }).compileComponents();
 
-    fixture = TestBed.createComponent(TestRouterLink);
-    component = fixture.componentInstance;
-  });
+
+    router = TestBed.get(Router);
+    location = TestBed.get(Location);
+    fixture = TestBed.createComponent(TestRouterLinkComponent);
+  }));
+
 
   it('should create component', () => {
     expect(component).toBeDefined();
   });
 
-  it('should not create an icon', () => {
 
+  it('should go to internal link', async((inject([Router, Location], (router: Router, location: Location) => {
+
+    let fixture = TestBed.createComponent(TestRouterLinkComponent);
     fixture.detectChanges();
-    const cmp = fixture.debugElement.query(By.css('#test2'));
-    const icons = findIcons();
-    console.log(icons);
-    expect(icons.length).toEqual(0);
-  });
+    const cmp = fixture.debugElement.query(By.css('a')).nativeElement.getAttribute('href');
+    expect(cmp).toEqual('/settings/testing/edit/1')
+
+  }))));
 
 
 });
