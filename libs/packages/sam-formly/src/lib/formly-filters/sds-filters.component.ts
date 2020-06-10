@@ -109,10 +109,8 @@ export class SdsFiltersComponent implements OnInit {
     }
   }
 
-  reset(model) {
-    this.options.resetModel(model);
-  }
   onModelChange(change: any) {
+    console.log(change,'change')
     if (this.isHistoryEnable) {
       const params = this.convertToParam(change);
       this.router.navigate([], {

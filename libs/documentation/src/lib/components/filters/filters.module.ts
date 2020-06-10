@@ -18,20 +18,20 @@ import { FiltersConfigModule } from './demos/config/filter-config.module';
 
 declare var require: any;
 const DEMOS = {
-  // basic: {
-  //   title: 'Basic Filters',
-  //   type: FiltersBasic,
-  //   code: require('!!raw-loader!./demos/basic/filters-basic.component'),
-  //   markup: require('!!raw-loader!./demos/basic/filters-basic.component.html'),
-  //   path: 'libs/documentation/src/lib/components/filters/demos/basic'
-  // },
-  // optional: {
-  //   title: 'Optional Filters',
-  //   type: FiltersOptional,
-  //   code: require('!!raw-loader!./demos/optional/filters-optional.component'),
-  //   markup: require('!!raw-loader!./demos/optional/filters-optional.component.html'),
-  //   path: 'libs/documentation/src/lib/components/filters/demos/optional'
-  // },
+  basic: {
+    title: 'Basic Filters',
+    type: FiltersBasic,
+    code: require('!!raw-loader!./demos/basic/filters-basic.component'),
+    markup: require('!!raw-loader!./demos/basic/filters-basic.component.html'),
+    path: 'libs/documentation/src/lib/components/filters/demos/basic'
+  },
+  optional: {
+    title: 'Optional Filters',
+    type: FiltersOptional,
+    code: require('!!raw-loader!./demos/optional/filters-optional.component'),
+    markup: require('!!raw-loader!./demos/optional/filters-optional.component.html'),
+    path: 'libs/documentation/src/lib/components/filters/demos/optional'
+  },
   config: {
     title: 'Filters with different field config',
     type: FiltersConfig,
