@@ -40,7 +40,6 @@ export class SdsFooterComponent implements OnInit {
   }
 
   ngOnInit(){
-    this.innerWidth = window.innerWidth;
     this.expandedIndex = -1
   }
 
