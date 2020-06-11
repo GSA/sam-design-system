@@ -1,15 +1,17 @@
-<div class="sds-card sds-card--vertical">
+<div class="sds-card  sds-card--shadowed sds-card--bordered sds-card--vertical margin-top-2 margin-bottom-2">
 
-  <div class="sds-card__title--vertical">
+<div class="sds-card-header">
+  <div class="sds-card__icon">
     <fa-icon [icon]="[model.iconlib,model.icon]" [classes]="'icon-'+model.icon" size="2x"></fa-icon>
   </div>
+</div>
 
-  <div class="sds-card__content sds-result-item">
+  <div class="sds-card__content ">
 
   <!-- Item Heading -->
   <div class="grid-row grid-gap">
     <div class="grid-col">
-      <h3 class="font-sans-xs margin-y-0">
+      <h3 class="font-sans-xs margin-y-0 sds-card__title">
         <!-- title -->
         <a class="usa-link" href="#">
           {{model.text}} Entity: {{model.id}}
