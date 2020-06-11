@@ -1,14 +1,9 @@
-import { TestBed, ComponentFixture, async, fakeAsync, flush, inject } from '@angular/core/testing';
+import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
-// Load the implementations that should be tested
 import { ExternalLinkDirective } from './external-link.directive';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-
-
-
 
 @Component({
   template: `
@@ -20,9 +15,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 })
 class TestComponent {
   constructor() {}
-  public name = location.hostname
+  public name = location.hostname;
 }
-
 
 describe('Sam External Link Directive', () => {
   let directive: ExternalLinkDirective;
@@ -33,11 +27,8 @@ describe('Sam External Link Directive', () => {
     return fixture.debugElement.queryAll(By.css('.margin-left-2px'));
   }
 
-
-
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports:[RouterTestingModule.withRoutes([])],
       declarations: [TestComponent, ExternalLinkDirective, FaIconComponent]
     }).overrideModule(BrowserDynamicTestingModule, {
       set: { entryComponents: [FaIconComponent] }
@@ -64,8 +55,4 @@ describe('Sam External Link Directive', () => {
     const icons = findIcons();
     expect(icons.length).toEqual(0);
   });
-
 });
-
-
-
