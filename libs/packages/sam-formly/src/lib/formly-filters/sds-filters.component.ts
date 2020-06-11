@@ -93,33 +93,37 @@ export class SdsFiltersComponent implements OnInit {
       this.route.queryParams.subscribe(params => {
         if (this._isEmpty(this.form.getRawValue())) {
           const paramModel = this.convertToModel(params);
-          setTimeout(() => {
-            this.model = { ...this.model, ...paramModel };
-            this.updateChange(paramModel);
-            this.cdr.detectChanges();
-          }, 0);
+          this.updateChange(paramModel);
+      
+         this.form.patchValue({
+          ...this.model , ...paramModel
+        });
+
         } else {
+          console.log(params,'change-track')
           const updatedFormValue = this.overwrite(
             this.form.getRawValue(),
             this.convertToModel(params)
           );
           this.form.setValue(updatedFormValue);
+          this.updateChange(updatedFormValue);
         }
       });
     }
+    this.cdr.detectChanges();
   }
 
   onModelChange(change: any) {
-    console.log(change,'change')
+  
     if (this.isHistoryEnable) {
       const params = this.convertToParam(change);
       this.router.navigate([], {
-        relativeTo: this.route,
         queryParams: params,
-        queryParamsHandling: 'merge'
       });
     }
+   
     this.updateChange(change);
+    this.cdr.detectChanges();
   }
 
   updateChange(change) {
@@ -134,14 +138,19 @@ export class SdsFiltersComponent implements OnInit {
       skipNulls: true,
       encode: false
     });
-    const target = {};
-    encodedValues.split('&').forEach(pair => {
-      if (pair !== '') {
-        const splitpair = pair.split('=');
-        target[splitpair[0]] = splitpair[1];
-      }
-    });
-    return target;
+
+    if (encodedValues) {
+      const target = {};
+      encodedValues.split('&').forEach(pair => {
+        if (pair !== '') {
+          const splitpair = pair.split('=');
+          target[splitpair[0]] = splitpair[1];
+        }
+      });
+      return target;
+    } else {
+      return '';
+    }
   }
 
   convertToModel(filters) {
