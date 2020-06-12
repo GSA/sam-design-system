@@ -129,7 +129,13 @@
         >
           <div class="sds-footer__logo">
             <a class="sds-footer__logo-link">
-              <img src="/assets/img/logo-gsa.svg" alt="GSA Logo"/>
+              <img
+                *ngIf="model.footerLogo"
+                class="usa-footer__logo-img"
+                [attr.src]="model.footerLogo.imageSourcePath.route"
+                [attr.alt]="model.footerLogo.imageAltText.text"
+              />
+              <!-- <img [src]="/assets/img/logo-gsa.svg" alt="GSA Logo"/> -->
             </a>
             <h3 class="sds-footer__logo-heading">
               General Services Administration
