@@ -88,15 +88,7 @@ export class FooterBasic implements OnInit {
           { text: 'Accessibility', route: '/', mode: NavigationMode.INTERNAL }
         ]
       }, 
-    ],
-    footerLogo: {
-      imageSourcePath: {
-        route: '/assets/img/logo-gsa.svg',
-      },
-      imageAltText: {
-        text: 'GSA Logo'
-      }
-    }
+    ]
   };
 
   ngOnInit() {
