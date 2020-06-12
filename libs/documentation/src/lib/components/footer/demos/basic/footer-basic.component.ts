@@ -92,7 +92,6 @@ export class FooterBasic implements OnInit {
     footerLogo: {
       imageSourcePath: {
         route: '/assets/img/logo-gsa.svg',
-        mode: NavigationMode.INTERNAL
       },
       imageAltText: {
         text: 'GSA Logo'
