@@ -129,9 +129,10 @@
         >
           <div class="sds-footer__logo">
               <img
+                *ngIf="model.footerLogo"
                 class="usa-footer__logo-img"
-                [attr.src]="model?.footerLogo.imageSourcePath"
-                [attr.alt]="model?.footerLogo.imageAltText"
+                [attr.src]="model.footerLogo.imageSourcePath"
+                [attr.alt]="model.footerLogo.imageAltText"
               />
            
             <h3 class="sds-footer__logo-heading">
