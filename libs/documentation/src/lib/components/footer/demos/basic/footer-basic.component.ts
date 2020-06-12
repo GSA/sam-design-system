@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FooterModel, NavigationMode } from '@gsa-sam/components';
 import { BehaviorSubject } from 'rxjs';
+import { LocationStrategy } from '@angular/common';
 
 @Component({
   templateUrl: './footer-basic.component.html',
@@ -87,8 +88,14 @@ export class FooterBasic implements OnInit {
           },
           { text: 'Accessibility', route: '/', mode: NavigationMode.INTERNAL }
         ]
-      }, 
-    ]
+      }
+    ],
+        footerLogo: {
+          text: 'Logo',
+          imageSourcePath: '/assets/img/logo-gsa.svg',
+          imageAltText: 'GSA Logo'
+        }
+
   };
 
   ngOnInit() {

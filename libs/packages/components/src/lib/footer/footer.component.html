@@ -128,9 +128,12 @@
           class="grid-col-12 mobile-lg:grid-col-6 tablet:grid-col-4 margin-bottom-4"
         >
           <div class="sds-footer__logo">
-            <a class="sds-footer__logo-link">
-              <img src="/assets/img/logo-gsa.svg" alt="" />
-            </a>
+              <img
+                class="usa-footer__logo-img"
+                [attr.src]="model?.footerLogo.imageSourcePath"
+                [attr.alt]="model?.footerLogo.imageAltText"
+              />
+           
             <h3 class="sds-footer__logo-heading">
               General Services Administration
             </h3>
