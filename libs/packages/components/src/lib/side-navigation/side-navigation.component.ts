@@ -182,4 +182,11 @@ export class SdsSideNavigationComponent {
     }
     return ret.join('&');
   }
+
+   openAdvancedFiltersDialog() {
+	    const dialogRef = this.dialog.open(AdvancedFiltersComponent, {
+	      width: 'medium',
+	      data: { title: "Advanced Filters", content: this.fields }
+	    });
+  }
 }
