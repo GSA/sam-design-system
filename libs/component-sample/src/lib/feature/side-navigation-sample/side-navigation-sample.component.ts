@@ -4,6 +4,7 @@ import { SideNavigationModel, NavigationMode, NavigationLink } from '@gsa-sam/co
 import { ActivatedRoute } from '@angular/router';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { FormGroup } from '@angular/forms';
+import { CdkAccordionItem } from '@angular/cdk/accordion';
 
 @Component({
   selector: 'sds-side-navigation-sample',
@@ -16,6 +17,14 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
   results: any = {};
   form = new FormGroup({});
   model1 = {};
+  navigationExpanded = true;
+  sideNavExpanded = true;
+  public pageHeader: string;
+  @ViewChild('navigationAccordion')
+  navigationAccordion: CdkAccordionItem;
+  @ViewChild('filtersAccordion')
+  filtersAccordion: CdkAccordionItem;
+  public linkEvent = new BehaviorSubject<object>(null);
      /**
    * Event when something is checked/selected in the grid
    */
@@ -183,9 +192,9 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
   ];
 
 
-  public pageHeader: string;
-  public linkEvent = new BehaviorSubject<object>(null);
-  sideNavExpanded = true;
+  // public pageHeader: string;
+  // public linkEvent = new BehaviorSubject<object>(null);
+  // sideNavExpanded = true;
   ngOnInit() {
     this.linkEvent.subscribe(
       value => {
@@ -281,6 +290,7 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
   options: any[] = [];
 
 
+
   ngAfterViewInit(): void {
     for (let i = 0; i < this.model.navigationLinks.length; i++) {
       this.addToOptions(this.model.navigationLinks[i]);
@@ -289,6 +299,7 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
     this.change.detectChanges();
 
     this.activeRoute.queryParams.subscribe(queryParams => {
+      console.log(queryParams)
       if (queryParams.item) {
         this.pageHeader = queryParams.item;
         if (this.model.navigationLinks) {
@@ -298,9 +309,16 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
       } else {
         this.pageHeader = 'Unknown';
       }
+      console.log(this.filtersAccordion.expanded)
+      if(!this.filtersAccordion.expanded) {
+        this.filtersAccordion.toggle();
+        this.navigationAccordion.toggle();
+      }
       this.change.detectChanges();
-    });
+    })
+
   }
+
 
   addToOptions(item: any) {
     this.options.push(item);
