@@ -5,10 +5,11 @@ import { SdsFooterComponent } from './footer.component';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SdsCollapseModule } from '../collapse/collapse.module';
+import { SdsDirectivesModule } from '../external-link/external-link.module';
 
 @NgModule({
   imports: [
-    CommonModule, FormsModule, RouterModule, SdsCollapseModule, FontAwesomeModule
+    CommonModule, FormsModule, RouterModule, SdsCollapseModule, FontAwesomeModule, SdsDirectivesModule
   ],
   declarations: [SdsFooterComponent],
   exports: [SdsFooterComponent]

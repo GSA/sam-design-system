@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FooterModel, NavigationMode } from '@gsa-sam/components';
 import { BehaviorSubject } from 'rxjs';
+import { LocationStrategy } from '@angular/common';
 
 @Component({
   templateUrl: './footer-basic.component.html',
@@ -13,26 +14,36 @@ export class FooterBasic implements OnInit {
   modelFooter: FooterModel = {
     linkSections: [
       {
-        text: 'About beta.SAM.gov',
+        text: 'Our Website',
         links: [
           {
-            text: 'Explore Our Community',
+            text: 'About This Site',
             route: '/',
             mode: NavigationMode.INTERNAL
           },
-          { text: 'Release Notes', route: '/', mode: NavigationMode.INTERNAL }
+          { text: 'Release Notes', route: '/', mode: NavigationMode.INTERNAL },
+          { text: 'Alerts', route: '/', mode: NavigationMode.INTERNAL },
+          { text: 'News', route: '/', mode: NavigationMode.INTERNAL }
         ]
       },
       {
         text: 'Our Partners',
         links: [
-          { text: 'Aquisition.gov', route: '/', mode: NavigationMode.INTERNAL },
+          {
+            text: 'Acquisition.gov',
+            route: 'https://Acquisition.gov',
+            mode: NavigationMode.EXTERNAL
+          },
           {
             text: 'USASpending.gov',
-            route: '/',
-            mode: NavigationMode.INTERNAL
+            route: 'https://USASpending.gov',
+            mode: NavigationMode.EXTERNAL
           },
-          { text: 'Grants.gov', route: '/', mode: NavigationMode.INTERNAL },
+          {
+            text: 'Grants.gov',
+            route: 'https://Grants.gov',
+            mode: NavigationMode.EXTERNAL
+          },
           { text: 'More Partners', route: '/', mode: NavigationMode.INTERNAL }
         ]
       },
@@ -40,24 +51,51 @@ export class FooterBasic implements OnInit {
         text: 'Customer Service',
         links: [
           {
-            text: 'Learning Center',
+            text: 'Help',
             route: '/',
             mode: NavigationMode.INTERNAL
           },
           {
             text: 'Contact Federal Service Desk',
-            route: '/',
-            mode: NavigationMode.INTERNAL
+            route: 'https://fsd.gov',
+            mode: NavigationMode.EXTERNAL
           },
-          { text: 'Resources', route: '/', mode: NavigationMode.INTERNAL },
           {
-            text: 'Freedom of Information Act',
+            text: 'Our Community',
+            route: 'https://sam.gov',
+            mode: NavigationMode.EXTERNAL
+          },
+          {
+            text: 'Policy',
             route: '/',
             mode: NavigationMode.INTERNAL
           }
         ]
+      },
+      {
+        text: 'Policies',
+        links: [
+          {
+            text: 'Privacy Policy',
+            route: '/',
+            mode: NavigationMode.INTERNAL
+          },
+          { text: 'Disclaimers', route: '/', mode: NavigationMode.INTERNAL },
+          {
+            text: 'Freedom of Information Act',
+            route: 'https://foia.gov',
+            mode: NavigationMode.EXTERNAL
+          },
+          { text: 'Accessibility', route: '/', mode: NavigationMode.INTERNAL }
+        ]
       }
-    ]
+    ],
+        footerLogo: {
+          text: 'Logo',
+          imageSourcePath: './assets/img/logo-gsa.svg',
+          imageAltText: 'GSA Logo'
+        }
+
   };
 
   ngOnInit() {
