@@ -92,7 +92,7 @@ export class FooterBasic implements OnInit {
     ],
         footerLogo: {
           text: 'Logo',
-          imageSourcePath: '/assets/img/logo-gsa.svg',
+          imageSourcePath: './assets/img/logo-gsa.svg',
           imageAltText: 'GSA Logo'
         }
 
