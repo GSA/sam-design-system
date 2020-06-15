@@ -23,7 +23,7 @@ export class SdsSideNavigationComponent {
   private sideNavLabelLinkTemplate: TemplateRef<any>;
 
   /**
-   * Reference to the the Template used for external href 
+   * Reference to the the Template used for external href
    */
   @ViewChild('sideNavHREFLinkTemplate')
   private sideNavHREFLinkTemplate: TemplateRef<any>;
@@ -66,13 +66,13 @@ export class SdsSideNavigationComponent {
   navigationHelper = new NavigationHelper();
 
   /**
-   * Model used for the different display portions of the side navigation 
+   * Model used for the different display portions of the side navigation
    */
   @Input() model: SideNavigationModel;
 
   /**
    * Selects new item and parents and deselects previous
-   * @param id 
+   * @param id
    */
   select(id: string) {
     this.deselect();
@@ -84,9 +84,9 @@ export class SdsSideNavigationComponent {
 
   /**
    * Selects item if matches passed in id and will select parent
-   * @param id 
-   * @param item 
-   * @param parent 
+   * @param id
+   * @param item
+   * @param parent
    */
   private selectItem(id: string, item: NavigationLink, parent: NavigationLink) {
     if (item.id === id) {
@@ -145,7 +145,7 @@ export class SdsSideNavigationComponent {
 
   /**
    * Link clicked and emits the link data into an event
-   * @param link 
+   * @param link
    */
   linkClickEvent(link: INavigationLink) {
     this.linkEvent.emit(link);
@@ -154,7 +154,7 @@ export class SdsSideNavigationComponent {
 
   /**
    * creates url from provided route and query params
-   * @param item 
+   * @param item
    */
   urlBuilder(item: NavigationLink) {
     let url = item.route;
@@ -173,7 +173,7 @@ export class SdsSideNavigationComponent {
 
   /**
    * creates query string
-   * @param item 
+   * @param item
    */
   private queryStringBuilder(item: NavigationLink) {
     const ret = [];
@@ -183,10 +183,4 @@ export class SdsSideNavigationComponent {
     return ret.join('&');
   }
 
-   openAdvancedFiltersDialog() {
-	    const dialogRef = this.dialog.open(AdvancedFiltersComponent, {
-	      width: 'medium',
-	      data: { title: "Advanced Filters", content: this.fields }
-	    });
-  }
 }
