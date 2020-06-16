@@ -4,7 +4,6 @@ import {
   Output,
   EventEmitter,
   Optional,
-  HostListener,
   OnInit,
   ChangeDetectorRef
 } from '@angular/core';
@@ -12,8 +11,6 @@ import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import * as qs from 'qs';
-import { Md5 } from 'ts-md5/dist/md5';
-
 import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
 
 @Component({
@@ -85,7 +82,7 @@ export class SdsFiltersComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.initialModel = this.model;
@@ -94,13 +91,13 @@ export class SdsFiltersComponent implements OnInit {
         if (this._isEmpty(this.form.getRawValue())) {
           const paramModel = this.convertToModel(params);
           this.updateChange(paramModel);
-      
-         this.form.patchValue({
-          ...this.model , ...paramModel
-        });
+          setTimeout(() => {
+            this.form.patchValue({
+              ...this.model, ...paramModel
+            }, { emitEvent: false })
+          });
 
         } else {
-          console.log(params,'change-track')
           const updatedFormValue = this.overwrite(
             this.form.getRawValue(),
             this.convertToModel(params)
@@ -114,14 +111,12 @@ export class SdsFiltersComponent implements OnInit {
   }
 
   onModelChange(change: any) {
-  
     if (this.isHistoryEnable) {
       const params = this.convertToParam(change);
       this.router.navigate([], {
         queryParams: params,
       });
     }
-   
     this.updateChange(change);
     this.cdr.detectChanges();
   }
@@ -138,7 +133,6 @@ export class SdsFiltersComponent implements OnInit {
       skipNulls: true,
       encode: false
     });
-
     if (encodedValues) {
       const target = {};
       encodedValues.split('&').forEach(pair => {
