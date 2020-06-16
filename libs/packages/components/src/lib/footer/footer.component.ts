@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, HostListener } from '@angular/core';
 import { FooterModel } from './model/FooterModel';
 import { INavigationLink, NavigationMode } from '../common-navigation/common-navigation-model';
 import { NavigationHelper } from '../common-navigation/navigation-helper';
@@ -8,7 +8,9 @@ import { NavigationHelper } from '../common-navigation/navigation-helper';
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
-export class SdsFooterComponent {
+export class SdsFooterComponent implements OnInit {
+ public innerWidth: any;
+ public expandedIndex: number;
 
   /**
    * Navigation helper
@@ -20,6 +22,7 @@ export class SdsFooterComponent {
    */
   @Input() model: FooterModel;
   @Input() isCollapsedContent: boolean = true;
+  isCollapsedMobile: boolean = true;
 
   /**
    * event for event based
@@ -35,4 +38,13 @@ export class SdsFooterComponent {
     this.linkEvent.emit(link);
     return false;
   }
+
+  ngOnInit(){
+    this.expandedIndex = -1
+  }
+
+  collapse(index:number){
+    this.expandedIndex = index === this.expandedIndex ? -1 : index;
+  }
+
 }

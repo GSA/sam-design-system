@@ -1,6 +1,6 @@
 {
   "name": "sam-design-system",
-  "version": "0.6.17",
+  "version": "0.6.18",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -25,7 +25,7 @@
     "workspace-schematic": "./node_modules/.bin/nx workspace-schematic",
     "dep-graph": "./node_modules/.bin/nx dep-graph",
     "help": "./node_modules/.bin/nx help",
-    "federalist": "npm install --only=dev && npm run demo:docs && ng build --project=sam-design-system-site --prod --base-href=$BASEURL/",
+    "federalist": "npm install --only=dev && npm run demo:docs && ng build --project=sam-design-system-site --prod --base-href=$BASEURL/ && npm run build:docs",
     "circleci": "npm run test -- --no-watch --no-progress --code-coverage --browsers=ChromeHeadlessCI",
     "version": "node ./tools/scripts/update-libs-version.js && git add .",
     "postversion": "git push && git push --tags",
@@ -39,6 +39,10 @@
     "demo:docs:formly": "npx compodoc -p libs/packages/sam-formly/tsconfig.json -e json -d libs/documentation/src/lib/apidoc/formly --minimal  && node ./scripts/generate-docs.ts -f formly",
     "demo:docs:layouts": "npx compodoc -p libs/packages/layouts/tsconfig.json -e json -d libs/documentation/src/lib/apidoc/layouts --minimal  && node ./scripts/generate-docs.ts -f layouts",
     "demo:docs": "npm run demo:docs:components && npm run demo:docs:formly && npm run demo:docs:layouts",
+    "build:docs:components": "npx compodoc -p libs/packages/components/tsconfig.json -n \"SAM.Gov Design System - Components\" --hideGenerator --disableCoverage -d dist/apps/sam-design-system-site/compodoc/components",
+    "build:docs:formly": "npx compodoc -p libs/packages/sam-formly/tsconfig.json -n \"SAM.Gov Design System - Formly\" --hideGenerator --disableCoverage -d dist/apps/sam-design-system-site/compodoc/formly",
+    "build:docs:layouts": "npx compodoc -p libs/packages/layouts/tsconfig.json -n \"SAM.Gov Design System - Layouts\" --hideGenerator --disableCoverage -d dist/apps/sam-design-system-site/compodoc/layouts",
+    "build:docs": "npm run build:docs:components && npm run build:docs:formly && npm run build:docs:layouts",
     "compodocs": "npx compodoc -p libs/packages/components/tsconfig.json -s --minimal"
   },
   "private": true,
