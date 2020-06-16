@@ -292,7 +292,9 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     const tempItem =  {};
     tempItem[this.configuration.primaryKeyField]= item[this.configuration.primaryKeyField];
     tempItem[this.configuration.primaryTextField]= item[this.configuration.primaryTextField];
+    if(this.configuration.secondaryTextField) {
     tempItem[this.configuration.secondaryTextField]= item[this.configuration.secondaryTextField];
+    }
     SDSSelectedItemModelHelper.addItem(
       tempItem,
       this.configuration.primaryKeyField,
