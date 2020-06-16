@@ -12,10 +12,8 @@
                 </sds-accordion-item>
                 <sds-accordion-item #filtersAccordion>
                     <sds-accordion-item-header> Filters </sds-accordion-item-header>
-                    <sds-filters [form]="form" [fields]="fields" [model]="model1" (filterChange)="filterChange$.next($event)">
+                    <sds-filters [form]="form" [fields]="fields" [model]="model1">
                     </sds-filters>
-                    <div class="grid-row margin-top-1">
-                    </div>
                 </sds-accordion-item>
             </sds-accordion>
         </sds-toolbar>

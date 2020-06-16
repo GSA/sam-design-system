@@ -2,7 +2,7 @@ import { Component, ViewChild, AfterViewInit, ChangeDetectorRef, OnInit } from '
 import { BehaviorSubject } from 'rxjs';
 import { SideNavigationModel, NavigationMode, NavigationLink } from '@gsa-sam/components'
 import { ActivatedRoute } from '@angular/router';
-import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
+import { FormlyFieldConfig } from '@ngx-formly/core';
 import { FormGroup } from '@angular/forms';
 import { CdkAccordionItem } from '@angular/cdk/accordion';
 
@@ -11,7 +11,7 @@ import { CdkAccordionItem } from '@angular/cdk/accordion';
   templateUrl: 'side-navigation-sample.component.html'
 })
 
-export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
+export class SideNavigationSampleComponent implements AfterViewInit {
 
 
   results: any = {};
@@ -192,22 +192,6 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
   ];
 
 
-  // public pageHeader: string;
-  // public linkEvent = new BehaviorSubject<object>(null);
-  // sideNavExpanded = true;
-  ngOnInit() {
-    this.linkEvent.subscribe(
-      value => {
-        console.log('Link Event Clicked Change');
-        console.log(value);
-      }
-    );
-
-    this.filterChange$.subscribe(
-      res =>
-        this.results = res
-  );
-  }
 
 
 
@@ -299,7 +283,6 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
     this.change.detectChanges();
 
     this.activeRoute.queryParams.subscribe(queryParams => {
-      console.log(queryParams)
       if (queryParams.item) {
         this.pageHeader = queryParams.item;
         if (this.model.navigationLinks) {
@@ -310,7 +293,6 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
       } else {
         this.pageHeader = 'Select by Domain';
       }
-      console.log(this.navigationAccordion.expanded)
       if(!this.filtersAccordion.expanded) {
         this.filtersAccordion.toggle();
         this.navigationAccordion.toggle();
