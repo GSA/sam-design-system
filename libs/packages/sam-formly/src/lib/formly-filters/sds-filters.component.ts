@@ -55,10 +55,6 @@ export class SdsFiltersComponent implements OnInit {
    */
   // TODO: check type -- Formly models are typically objects
   @Output() filterChange = new EventEmitter<object[]>();
-  public initialModel: any = {};
-
-  public isBrowserButtonPressed = false;
-  sdsFilterHistory = [];
 
   _isObj = (obj: any): boolean => typeof obj === 'object' && obj !== null;
   _isEmpty = (obj: any): boolean => Object.keys(obj).length === 0;
@@ -85,7 +81,6 @@ export class SdsFiltersComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.initialModel = this.model;
     if (this.isHistoryEnable) {
       this.route.queryParams.subscribe(params => {
         if (this._isEmpty(this.form.getRawValue())) {
