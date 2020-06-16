@@ -21,14 +21,14 @@ const DEMOS = {
     type: GroupPanel,
     code: require('!!raw-loader!./demos/panel/group-panel.component'),
     markup: require('!!raw-loader!./demos/panel/group-panel.component.html'),
-    path: 'libs/documentation/src/lib/components/group/demos/panel'
+    path: 'libs/documentation/src/lib/components/groupwrappers/demos/panel'
   },
   optionalformfield: {
     title: 'Group with Accordion',
     type: GroupAccordion,
     code: require('!!raw-loader!./demos/accordion/group-accordion.component'),
     markup: require('!!raw-loader!./demos/accordion/group-accordion.component.html'),
-    path: 'libs/documentation/src/lib/components/group/demos/accordion'
+    path: 'libs/documentation/src/lib/components/groupwrappers/demos/accordion'
   }
 };
 

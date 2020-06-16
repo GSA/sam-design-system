@@ -62,6 +62,7 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
   @Input()
   public service: SDSAutocompleteServiceInterface;
 
+  @ViewChild('autocomplete') autocomplete;
   constructor(private cd: ChangeDetectorRef) { }
 
   /**
@@ -97,6 +98,7 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
 
   // Method that is fired when the child component event notifies us that the items array has been modified within the child component
   updateItems($event) {
+    this.autocomplete.updateItems();
     this.updateModel();
   }
 

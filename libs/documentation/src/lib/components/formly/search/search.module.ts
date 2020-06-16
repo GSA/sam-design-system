@@ -25,7 +25,7 @@ const DEMOS = {
     type: SearchOptional,
     code: require('!!raw-loader!./demos/optional/search-optional.component'),
     markup: require('!!raw-loader!./demos/optional/search-optional.component.html'),
-    path: 'libs/documentation/src/lib/components/search/demos/optional'
+    path: 'libs/documentation/src/lib/components/formly/search/demos/optional'
   }
 };
 

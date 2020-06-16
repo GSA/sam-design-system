@@ -16,7 +16,7 @@ const DEMOS = {
     type: SelectBasic,
     code: require('!!raw-loader!./demos/basic/select-basic.component'),
     markup: require('!!raw-loader!./demos/basic/select-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/select/demos/basic'
+    path: 'libs/documentation/src/lib/components/formly/select/demos/basic'
   }
 };
 
