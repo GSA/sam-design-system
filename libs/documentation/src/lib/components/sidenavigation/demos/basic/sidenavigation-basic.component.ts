@@ -295,7 +295,7 @@ export class SideNavigationBasic implements AfterViewInit, OnInit {
           this.sideNav.select(this.selectedId);
         }
       } else {
-        this.pageHeader = 'Unknown';
+        this.pageHeader = 'Select by Domain';
       }
       this.change.detectChanges();
     });

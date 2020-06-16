@@ -305,11 +305,12 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
         if (this.model.navigationLinks) {
           this.findItemByQueryString(this.model.navigationLinks);
           this.sideNav.select(this.selectedId);
+          this.filtersAccordion.toggle();
         }
       } else {
-        this.pageHeader = 'Unknown';
+        this.pageHeader = 'Select by Domain';
       }
-      console.log(this.filtersAccordion.expanded)
+      console.log(this.navigationAccordion.expanded)
       if(!this.filtersAccordion.expanded) {
         this.filtersAccordion.toggle();
         this.navigationAccordion.toggle();
