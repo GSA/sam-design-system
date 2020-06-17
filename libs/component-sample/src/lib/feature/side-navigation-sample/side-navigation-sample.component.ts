@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewInit, ChangeDetectorRef, OnInit } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { SideNavigationModel, NavigationMode, NavigationLink } from '@gsa-sam/components'
 import { ActivatedRoute } from '@angular/router';
@@ -25,6 +25,7 @@ export class SideNavigationSampleComponent implements AfterViewInit {
   @ViewChild('filtersAccordion')
   filtersAccordion: CdkAccordionItem;
   public linkEvent = new BehaviorSubject<object>(null);
+  previousQueryItem: any;
      /**
    * Event when something is checked/selected in the grid
    */
@@ -217,7 +218,6 @@ export class SideNavigationSampleComponent implements AfterViewInit {
                 { text: ' Great 1 of Grandchild 2 of Child 4 of Parent 1', queryParams: { 'item': 'Great 1 of Grandchild 2 of Child 4 of Parent 1' }, route: '/component/sideNav', id: 'linkg1gc1c4p1', mode: NavigationMode.INTERNAL },
                 {
                   text: 'Great 2 of Grandchild 2 of Child 4 of Parent 1', queryParams: { 'item': 'Great 2 of Grandchild 2 of Child 4 of Parent 1' }, route: '/component/sideNav', id: 'linkg2gc1c4p1', mode: NavigationMode.INTERNAL
-                  //, children: [{ text: 'Great 1 of  Great 1 of Grandchild 2 of Child 4 of Parent 1', route: '/component/sideNav', id: 'linkg1gc1c4p1' }]
                 },
               ]
             }
@@ -244,10 +244,6 @@ export class SideNavigationSampleComponent implements AfterViewInit {
     navigationLinks: [{
       text: 'Parent 1', id: 'linkp1', route: '/component/sideNav', queryParams: { 'item': 'Parent 1' }, mode: NavigationMode.INTERNAL, children: [
         { text: 'Child 1 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Child 1 of Parent 1' }, id: 'linkc1p1', mode: NavigationMode.INTERNAL },
-        // {
-        //   text: 'Child 2 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Child 2 of Parent 1' }, id: 'linkc2p1', mode: NavigationMode.INTERNAL, children: [
-        //     { text: 'Grandchild 1 of Child 2 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Grandchild 1 of Child 2 of Parent 1' }, id: 'linkgc1c2p1', mode: NavigationMode.INTERNAL }]
-        // }
       ]
     }
     ]
@@ -283,19 +279,22 @@ export class SideNavigationSampleComponent implements AfterViewInit {
     this.change.detectChanges();
 
     this.activeRoute.queryParams.subscribe(queryParams => {
+      console.log(queryParams)
       if (queryParams.item) {
         this.pageHeader = queryParams.item;
         if (this.model.navigationLinks) {
           this.findItemByQueryString(this.model.navigationLinks);
           this.sideNav.select(this.selectedId);
-          this.filtersAccordion.toggle();
         }
       } else {
         this.pageHeader = 'Select by Domain';
       }
-      if(!this.filtersAccordion.expanded) {
-        this.filtersAccordion.toggle();
+      if(queryParams.item != this.previousQueryItem){
+        if(!this.filtersAccordion.expanded){
+          this.filtersAccordion.toggle();
+        }
         this.navigationAccordion.toggle();
+        this.previousQueryItem = queryParams.item;
       }
       this.change.detectChanges();
     })
