@@ -97,18 +97,12 @@ export class SdsFiltersComponent implements OnInit {
           });
 
         } else {
-          if(this._isEmpty(params)){
          
-            console.log('empty', this.model);
-          }
           const updatedFormValue = this.overwrite(
             this.form.getRawValue(),
             this.convertToModel(params)
           );
-
-          console.log(this.form.controls, 'controles')
           this.form.setValue(updatedFormValue);
-
           this.updateChange(updatedFormValue);
         }
       });
