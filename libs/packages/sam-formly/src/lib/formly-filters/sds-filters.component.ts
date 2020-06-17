@@ -70,7 +70,7 @@ export class SdsFiltersComponent implements OnInit {
       } else if (this._isObj(baseObj[key])) {
         result[key] = this.overwrite(baseObj[key], newObj[key] || {});
       } else {
-        result[key] = newObj[key] || null;
+        result[key] = newObj[key] || '';
       }
     }
     return result;
