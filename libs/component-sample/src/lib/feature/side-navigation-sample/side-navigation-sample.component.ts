@@ -279,7 +279,6 @@ export class SideNavigationSampleComponent implements AfterViewInit {
     this.change.detectChanges();
 
     this.activeRoute.queryParams.subscribe(queryParams => {
-      console.log(queryParams)
       if (queryParams.item) {
         this.pageHeader = queryParams.item;
         if (this.model.navigationLinks) {
