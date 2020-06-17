@@ -121,6 +121,7 @@ export class SdsFiltersComponent implements OnInit {
       const params = this.convertToParam(change);
       this.router.navigate([], {
         queryParams: params,
+         queryParamsHandling: 'merge'
       });
     }
     this.updateChange(change);
