@@ -59,10 +59,14 @@ export class SdsFiltersComponent implements OnInit {
   _isObj = (obj: any): boolean => typeof obj === 'object' && obj !== null;
   _isEmpty = (obj: any): boolean => Object.keys(obj).length === 0;
   overwrite = (baseObj: any, newObj: any) => {
-    let result = {};
-    for (let key in baseObj) {
+    const result = {};
+    for (const key in baseObj) {
       if (Array.isArray(baseObj[key])) {
+        if(newObj[key]){
         result[key] = newObj[key];
+      } else {
+        result[key] =[];
+      }
       } else if (this._isObj(baseObj[key])) {
         result[key] = this.overwrite(baseObj[key], newObj[key] || {});
       } else {
@@ -93,11 +97,18 @@ export class SdsFiltersComponent implements OnInit {
           });
 
         } else {
+          if(this._isEmpty(params)){
+         
+            console.log('empty', this.model);
+          }
           const updatedFormValue = this.overwrite(
             this.form.getRawValue(),
             this.convertToModel(params)
           );
+
+          console.log(this.form.controls, 'controles')
           this.form.setValue(updatedFormValue);
+
           this.updateChange(updatedFormValue);
         }
       });
