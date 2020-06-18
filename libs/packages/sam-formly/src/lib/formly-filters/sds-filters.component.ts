@@ -62,11 +62,9 @@ export class SdsFiltersComponent implements OnInit {
     const result = {};
     for (const key in baseObj) {
       if (Array.isArray(baseObj[key])) {
-        if(newObj[key]){
+       
         result[key] = newObj[key];
-      } else {
-        result[key] =[];
-      }
+      
       } else if (this._isObj(baseObj[key])) {
         result[key] = this.overwrite(baseObj[key], newObj[key] || {});
       } else {
