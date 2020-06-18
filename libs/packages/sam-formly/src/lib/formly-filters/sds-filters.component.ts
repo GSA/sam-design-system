@@ -50,9 +50,9 @@ export class SdsFiltersComponent implements OnInit {
    */
   @Input() public isHistoryEnable: boolean = true;
 
-   /**
-   * To get clean model without null and empty
-   */
+  /**
+  * To get clean model without null and empty
+  */
   @Input() public getCleanModel: boolean = false;
 
   /**
@@ -98,7 +98,7 @@ export class SdsFiltersComponent implements OnInit {
           });
 
         } else {
-         
+
           const updatedFormValue = this.overwrite(
             this.form.getRawValue(),
             this.convertToModel(params)
@@ -116,7 +116,7 @@ export class SdsFiltersComponent implements OnInit {
       const params = this.convertToParam(change);
       this.router.navigate([], {
         queryParams: params,
-         queryParamsHandling: 'merge'
+        queryParamsHandling: 'merge'
       });
     }
     this.updateChange(change);
@@ -124,7 +124,7 @@ export class SdsFiltersComponent implements OnInit {
   }
 
   updateChange(change) {
-   const updatedModel= this.getCleanModel ? this.convertToModel(change): change ;
+    const updatedModel = this.getCleanModel ? this.convertToModel(change) : change;
     this.filterChange.emit([updatedModel]);
     if (this.formlyUpdateComunicationService) {
       this.formlyUpdateComunicationService.updateFilter(updatedModel);
@@ -141,7 +141,7 @@ export class SdsFiltersComponent implements OnInit {
       encodedValues.split('&').forEach(pair => {
         if (pair !== '') {
           const splitpair = pair.split('=');
-          target[splitpair[0]] = splitpair[1];
+          target[splitpair[0]] = splitpair[1] === '' ? null : splitpair[1];
         }
       });
       return target;
