@@ -51,6 +51,11 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   public model: SDSSelectedItemModel;
 
   /**
+   * To set autocomplete used inside filter
+   */
+  @Input() public isFormlyType: boolean = false;
+
+  /**
    * Configuration for the Autocomplete control
    */
   @Input()
@@ -289,14 +294,18 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * @param item
    */
   public selectItem(item: object): void {
-    const tempItem =  {};
-    tempItem[this.configuration.primaryKeyField]= item[this.configuration.primaryKeyField];
-    tempItem[this.configuration.primaryTextField]= item[this.configuration.primaryTextField];
+    let filterItem =  {};
+    if(this.isFormlyType){
+      filterItem[this.configuration.primaryKeyField]= item[this.configuration.primaryKeyField];
+      filterItem[this.configuration.primaryTextField]= item[this.configuration.primaryTextField];
     if(this.configuration.secondaryTextField) {
-    tempItem[this.configuration.secondaryTextField]= item[this.configuration.secondaryTextField];
+      filterItem[this.configuration.secondaryTextField]= item[this.configuration.secondaryTextField];
     }
+  } else {
+    filterItem = item;
+  }
     SDSSelectedItemModelHelper.addItem(
-      tempItem,
+      filterItem,
       this.configuration.primaryKeyField,
       this.configuration.selectionMode,
       this.items

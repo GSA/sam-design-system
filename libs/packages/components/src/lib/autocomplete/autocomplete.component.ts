@@ -56,6 +56,12 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
   @Input()
   public configuration: SDSAutocompletelConfiguration;
 
+   /**
+   * To set autocomplete used inside filter
+   */
+  @Input()
+  public isFormlyType: boolean = false;
+
   /**
    * Instance of the SamHiercarchicalServiceInterface provided
    */
