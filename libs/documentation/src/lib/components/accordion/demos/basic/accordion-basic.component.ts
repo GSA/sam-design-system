@@ -5,4 +5,6 @@ import { Component } from '@angular/core';
 })
 export class AccordionBasic {
   first = true;
+  second = false;
+  third = false;
 }
