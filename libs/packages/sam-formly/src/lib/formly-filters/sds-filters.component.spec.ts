@@ -204,7 +204,7 @@ describe('The Sam Filters Component', () => {
               });
               component.form.controls['filters'].setValue([{ uniqueId: 1 }, { uniqueId: 1 }]);
               const updateFormValue = { test: 'abc', filters: { uniqueId: 2 } };
-              const expectedOutput = {test: 'abc', filters: {uniqueId: 2}, searchEntity: ''}
+              const expectedOutput = {test: 'abc', filters: {uniqueId: 2}, searchEntity: null}
               const result = component.overwrite(component.form.getRawValue(), updateFormValue);
               console.log(result);
               expect(JSON.stringify(result)).toEqual(JSON.stringify(expectedOutput));
