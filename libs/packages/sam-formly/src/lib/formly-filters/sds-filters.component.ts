@@ -91,14 +91,13 @@ export class SdsFiltersComponent implements OnInit {
         if (this._isEmpty(this.form.getRawValue())) {
           const paramModel = this.convertToModel(params);
           this.updateChange(paramModel);
-          setTimeout(() => {
+         setTimeout(() => {
             this.form.patchValue({
               ...this.model, ...paramModel
             }, { emitEvent: false })
           });
 
         } else {
-
           const updatedFormValue = this.overwrite(
             this.form.getRawValue(),
             this.convertToModel(params)
@@ -114,9 +113,9 @@ export class SdsFiltersComponent implements OnInit {
   onModelChange(change: any) {
     if (this.isHistoryEnable) {
       const params = this.convertToParam(change);
-      this.router.navigate([], {
-        queryParams: params,
-        queryParamsHandling: 'merge'
+      this.router.navigate(['.'], {
+        relativeTo: this.route,
+        queryParams: params
       });
     }
     this.updateChange(change);
