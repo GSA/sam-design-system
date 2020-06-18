@@ -50,6 +50,11 @@ export class SdsFiltersComponent implements OnInit {
    */
   @Input() public isHistoryEnable: boolean = true;
 
+   /**
+   * To get clean model without null and empty
+   */
+  @Input() public getCleanModel: boolean = false;
+
   /**
    *  Emit results when model updated
    */
@@ -119,9 +124,10 @@ export class SdsFiltersComponent implements OnInit {
   }
 
   updateChange(change) {
-    this.filterChange.emit(change);
+   const updatedModel= this.getCleanModel ? this.convertToModel(change): change ;
+    this.filterChange.emit([updatedModel]);
     if (this.formlyUpdateComunicationService) {
-      this.formlyUpdateComunicationService.updateFilter(change);
+      this.formlyUpdateComunicationService.updateFilter(updatedModel);
     }
   }
 
