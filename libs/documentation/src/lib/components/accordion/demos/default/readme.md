@@ -1,0 +1,1 @@
+The default accordion with the first item starting expanded.

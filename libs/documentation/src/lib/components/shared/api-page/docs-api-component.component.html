@@ -1,6 +1,7 @@
+<h2 *ngIf="name">{{name}}</h2>
 
 <table class="usa-table usa-table--borderless width-full" *ngIf="api.inputs.length">
-  <caption><h2>Inputs</h2></caption>
+  <caption><h3>Inputs</h3></caption>
   <thead class="usa-sr-only">
     <tr>
       <th scope="col">Name</th>
@@ -21,7 +22,7 @@
 </table>
 
 <table class="usa-table usa-table--borderless width-full" *ngIf="api.outputs.length">
-  <caption><h2>Outputs</h2></caption>
+  <caption><h3>Outputs</h3></caption>
   <thead class="usa-sr-only">
     <tr>
       <th scope="col">Name</th>
@@ -42,7 +43,7 @@
 </table>
 
 <table class="usa-table usa-table--borderless width-full" *ngIf="api.methods.length">
-  <caption><h2>Methods</h2></caption>
+  <caption><h3>Methods</h3></caption>
   <thead class="usa-sr-only">
     <tr>
       <th scope="col">Name</th>
@@ -63,7 +64,7 @@
 </table>
 
 <table class="usa-table usa-table--borderless width-full" *ngIf="api.properties.length">
-  <caption><h2>Properties</h2></caption>
+  <caption><h3>Properties</h3></caption>
   <thead class="usa-sr-only">
     <tr>
       <th scope="col">Name</th>
@@ -85,7 +86,7 @@
 
 
 <table class="usa-table usa-table--borderless width-full" *ngIf="wrappers.length">
-  <caption><h2>Wrappers</h2></caption>
+  <caption><h3>Wrappers</h3></caption>
   <thead class="usa-sr-only">
     <tr>
       <th scope="col">Name</th>

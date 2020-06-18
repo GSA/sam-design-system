@@ -1,0 +1,1 @@
+Accordion in <code>displayMode: basic</code> and <code>multi: true</code> with the first item starting open.

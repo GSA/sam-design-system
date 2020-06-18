@@ -23,6 +23,7 @@ import { ROUTES as AUTOCOMPLETE_ROUTES, AutocompleteModule } from './components/
 import { ROUTES as VIDEO_ROUTES, VideoModule } from './components/video/video.module';
 import { ROUTES as POPUP_ROUTES, PopupModule } from './components/popup/popup.module';
 import { ROUTES as FILTERS_ROUTES, FiltersModule } from './components/filters/filters.module';
+import { ROUTES as ACCORDION_ROUTES, AccordionModule } from './components/accordion/accordion.module';
 
 /* Form Types */
 import { ROUTES as INPUT_ROUTES, InputModule } from './components/formly/input/input.module';
@@ -79,6 +80,7 @@ export const ROUTES: Routes = [
   { path: 'components/video', children: VIDEO_ROUTES },
   { path: 'components/popup', children: POPUP_ROUTES },
   { path: 'components/filters', children: FILTERS_ROUTES },
+  { path: 'components/accordion', children: ACCORDION_ROUTES },
 
   // Formly
   { path: 'components/input', children: INPUT_ROUTES },
@@ -125,6 +127,7 @@ export const ROUTES: Routes = [
     VideoModule,
     PopupModule,
     FiltersModule,
+    AccordionModule,
     InputModule,
     OverviewModule,
     IntroductionModule,
