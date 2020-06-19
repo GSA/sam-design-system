@@ -87,6 +87,7 @@ export class SdsFiltersComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+   // this.fields = this.addOption();
     if (this.isHistoryEnable) {
       this.route.queryParams.subscribe(params => {
         if (this._isEmpty(this.form.getRawValue())) {
@@ -109,6 +110,35 @@ export class SdsFiltersComponent implements OnInit {
       });
     }
     this.cdr.detectChanges();
+  }
+ 
+  addOption() {
+    const updatedFields: FormlyFieldConfig[] = [];
+    this.fields.forEach(field => {
+      if(field){
+        if(field.fieldGroup) {
+          field.fieldGroup.forEach(subField => {
+            if(subField.type == 'input'){
+              field.modelOptions.updateOn = 'blur'
+            } else  if(subField.type == 'autocomplete'){
+              field.templateOptions.isFormlyType = true;
+            }
+
+          })
+        } else {
+          if(field.type == 'input'){
+            field.modelOptions.updateOn = 'blur'
+          } else  if(field.type == 'autocomplete'){
+            field.templateOptions.isFormlyType = true;
+          }
+
+        }
+      } 
+      updatedFields.push(field);
+    })
+
+    return updatedFields;
+
   }
 
   onModelChange(change: any) {
