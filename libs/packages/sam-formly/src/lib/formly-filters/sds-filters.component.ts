@@ -87,7 +87,7 @@ export class SdsFiltersComponent implements OnInit {
     private datePipe: DatePipe
   ) { }
 
-  @HostListener('window:popstate', [''])
+  @HostListener('window:popstate', ['$event'])
   onpopstate(event) {
     const queryString = window.location.search.substring(1);
     const params = this.getUrlParams(queryString);
