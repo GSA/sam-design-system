@@ -7,7 +7,7 @@
     </h1>
     <markdown [data]="opening"></markdown>
   </div>
-  <div class="grid-row border-bottom-2px border-base-light">
+  <div class="grid-row border-bottom-2px border-base-light sds-tabs">
     <div *ngIf="tabs.examples" class="tablet:grid-col-auto"><button class="usa-button usa-button--base radius-bottom-0 margin-bottom-neg-2px" [routerLink]="['examples']" [routerLinkActive]="['usa-button--active']">Examples</button></div>
     <div *ngIf="tabs.api" class="tablet:grid-col-auto"><button class="usa-button usa-button--base radius-bottom-0 margin-bottom-neg-2px" [routerLink]="['api']" [routerLinkActive]="['usa-button--active']">API</button></div>
     <div *ngIf="tabs.source" class="tablet:grid-col-auto"><button class="usa-button usa-button--base radius-bottom-0 margin-bottom-neg-2px" [routerLink]="['source']" [routerLinkActive]="['usa-button--active']">Source</button></div>
