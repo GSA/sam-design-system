@@ -122,10 +122,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   @Input() public inputReadOnly = false;
 
   /**
-   * Used to store selected items
-   */
-  items = [];
-  /**
    * Stored Event for ControlValueAccessor
    */
   public onTouchedCallback: () => void = () => null;
@@ -284,10 +280,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       }
     }
   }
-  updateItems() {
-    const model = [...this.model.items];
-    this.items = model;
-  }
 
   /**
    * selects the item adding it to the model and closes the results
@@ -308,13 +300,9 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       filterItem,
       this.configuration.primaryKeyField,
       this.configuration.selectionMode,
-      this.items
+      this.model
     );
-
-    setTimeout(() => {
-      this.model.items = [...this.items];
-      this.propogateChange(this.model);
-    }, 0);
+    this.propogateChange(this.model);
     let message = this.getObjectValue(
       item,
       this.configuration.primaryTextField

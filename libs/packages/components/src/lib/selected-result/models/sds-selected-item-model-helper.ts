@@ -1,3 +1,5 @@
+import { SDSSelectedItemModel } from './sds-selectedItem.model';
+
 export class SDSSelectedItemModelHelper {
 
     /**
@@ -10,12 +12,12 @@ export class SDSSelectedItemModelHelper {
       * @param selectionMode 
       * @param items 
       */
-    public static addItem(itemToAdd: object, keyField: string, selectionMode: SelectionMode, items: object[]) {
-        if (!SDSSelectedItemModelHelper.contatinsItem(itemToAdd[keyField], keyField, items)) {
+    public static addItem(itemToAdd: object, keyField: string, selectionMode: SelectionMode, model: SDSSelectedItemModel) {
+        if (!SDSSelectedItemModelHelper.contatinsItem(itemToAdd[keyField], keyField, model.items)) {
             if (selectionMode === SelectionMode.SINGLE) {
-                SDSSelectedItemModelHelper.clearItems(items);
+                SDSSelectedItemModelHelper.clearItems(model.items);
             }
-            items.push(itemToAdd);
+            model.items.push(itemToAdd);
         }
     }
 

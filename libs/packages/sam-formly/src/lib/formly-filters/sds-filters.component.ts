@@ -5,7 +5,8 @@ import {
   EventEmitter,
   Optional,
   OnInit,
-  ChangeDetectorRef
+  ChangeDetectorRef,
+  HostListener
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
@@ -86,59 +87,57 @@ export class SdsFiltersComponent implements OnInit {
     private datePipe: DatePipe
   ) { }
 
-  ngOnInit(): void {
-   // this.fields = this.addOption();
-    if (this.isHistoryEnable) {
-      this.route.queryParams.subscribe(params => {
-        if (this._isEmpty(this.form.getRawValue())) {
-          const paramModel = this.convertToModel(params);
-          this.updateChange(paramModel);
-         setTimeout(() => {
-            this.form.patchValue({
-              ...this.model, ...paramModel
-            }, { emitEvent: false })
-          });
-
-        } else {
-          const updatedFormValue = this.overwrite(
-            this.form.getRawValue(),
-            this.convertToModel(params)
-          );
-          this.form.setValue(updatedFormValue);
-          this.updateChange(updatedFormValue);
-        }
-      });
-    }
-    this.cdr.detectChanges();
+  @HostListener('window:popstate', [''])
+  onpopstate(event) {
+    const queryString = window.location.search.substring(1);
+    const params = this.getUrlParams(queryString);
+    const updatedFormValue = this.overwrite(
+      this.form.getRawValue(),
+      this.convertToModel(params)
+    );
+    this.form.setValue(updatedFormValue);
+    this.updateChange(updatedFormValue);
   }
- 
+  ngOnInit(): void {
+    if (this.isHistoryEnable) {
+
+      if (this._isEmpty(this.form.getRawValue())) {
+        const queryString = window.location.search.substring(1);
+        const params = this.getUrlParams(queryString);
+        const paramModel = this.convertToModel(params);
+        this.updateChange(paramModel);
+        setTimeout(() => {
+          this.form.patchValue({
+            ...this.model, ...paramModel
+          })
+        });
+      }
+    }
+  }
+
   addOption() {
     const updatedFields: FormlyFieldConfig[] = [];
     this.fields.forEach(field => {
-      if(field){
-        if(field.fieldGroup) {
+      if (field) {
+        if (field.fieldGroup) {
           field.fieldGroup.forEach(subField => {
-            if(subField.type == 'input'){
+            if (subField.type == 'input') {
               field.modelOptions.updateOn = 'blur'
-            } else  if(subField.type == 'autocomplete'){
+            } else if (subField.type == 'autocomplete') {
               field.templateOptions.isFormlyType = true;
             }
-
           })
         } else {
-          if(field.type == 'input'){
+          if (field.type == 'input') {
             field.modelOptions.updateOn = 'blur'
-          } else  if(field.type == 'autocomplete'){
+          } else if (field.type == 'autocomplete') {
             field.templateOptions.isFormlyType = true;
           }
-
         }
-      } 
+      }
       updatedFields.push(field);
     })
-
     return updatedFields;
-
   }
 
   onModelChange(change: any) {
@@ -150,9 +149,7 @@ export class SdsFiltersComponent implements OnInit {
       });
     }
     this.updateChange(change);
-    this.cdr.detectChanges();
   }
-
   updateChange(change) {
     const updatedModel = this.getCleanModel ? this.convertToModel(change) : change;
     this.filterChange.emit([updatedModel]);
@@ -164,30 +161,28 @@ export class SdsFiltersComponent implements OnInit {
   convertToParam(filters) {
     const encodedValues = qs.stringify(filters, {
       skipNulls: true,
-      encode: false
+      encode: false,
     });
     if (encodedValues) {
-      const target = {};
-      encodedValues.split('&').forEach(pair => {
-        if (pair !== '') {
-          const splitpair = pair.split('=');
-         const isDate=  this.isDate(splitpair[1]);
-         if(isDate){
-         splitpair[1] =  (this.datePipe.transform(splitpair[1], 'MM/dd/yyyy')).toString();
-         }
-      
-          target[splitpair[0]] = splitpair[1] === '' ? null : splitpair[1];
-        }
-      });
-      return target;
+      return this.getUrlParams(encodedValues);
     } else {
       return '';
     }
   }
-  isDate(_date){
-        const _regExp  = new RegExp('^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(.[0-9]+)?(Z)?$');
-        return _regExp.test(_date);
-    }
+  getUrlParams(queryString) {
+    const target = {};
+    queryString.split('&').forEach(pair => {
+      if (pair !== '') {
+        const splitpair = pair.split('=');
+        target[splitpair[0]] = ((splitpair[1] === '') || (splitpair[1] === 'false')) ? null : splitpair[1];
+      }
+    });
+    return target;
+  }
+  isDate(_date) {
+    const _regExp = new RegExp('^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(.[0-9]+)?(Z)?$');
+    return _regExp.test(_date);
+  }
   convertToModel(filters) {
     let obj = {};
     const encodedValues = qs.stringify(filters, {
