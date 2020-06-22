@@ -42,9 +42,9 @@ export class SDSSelectedItemModelHelper {
      * @param keyField 
      * @param items 
      */
-    public static removeItem(item: object, keyField: string, items: object[]) {
-        if (SDSSelectedItemModelHelper.containsItem(item[keyField], keyField, items)) {
-            items.splice(items.indexOf(item), 1)
+    public static removeItem(item: object, keyField: string, model: SDSSelectedItemModel) {
+        if (SDSSelectedItemModelHelper.containsItem(item[keyField], keyField, model.items)) {
+            model.items.splice(model.items.indexOf(item), 1)
         }
     }
 
