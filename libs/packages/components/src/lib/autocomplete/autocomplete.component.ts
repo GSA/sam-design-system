@@ -104,7 +104,6 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
 
   // Method that is fired when the child component event notifies us that the items array has been modified within the child component
   updateItems($event) {
-    this.autocomplete.updateItems();
     this.updateModel();
   }
 
