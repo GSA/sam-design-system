@@ -7,24 +7,38 @@
     </ul>
 </nav>
 
-<ng-template #sideNavLinkTemplate let-link>
-    <ng-container [ngTemplateOutlet]="getItemTemplate(link)" [ngTemplateOutletContext]="{$implicit:link}">
-    </ng-container>
-    <ul *ngIf="link.children" class="usa-sidenav__sublist">
-        <li *ngFor="let link of link.children" class="sidenav__item">
-            <ng-container [ngTemplateOutlet]="sideNavLinkTemplate" [ngTemplateOutletContext]="{$implicit:link}">
-            </ng-container>
-        </li>
-    </ul>
+<!--
+<sds-accordion-item #navigationAccordion [expanded]="navigationExpanded">
+  <sds-accordion-item-header>
+      <div class="sds-accordion__item-header-title">Navigation</div>
+      <div class="sds-accordion__item-header-subtitle">{{ pageHeader }}</div>
+  </sds-accordion-item-header>
+
+  <sds-side-navigation #sideNav  [model]="model">
+  </sds-side-navigation>
+</sds-accordion-item> -->
+
+  <ng-template #sideNavLinkTemplate let-link>
+      <ng-container [ngTemplateOutlet]="getItemTemplate(link)" [ngTemplateOutletContext]="{$implicit:link}">
+      </ng-container>
+      <ul *ngIf="link.children" class="usa-sidenav__sublist">
+          <li *ngFor="let link of link.children" class="sidenav__item">
+              <ng-container [ngTemplateOutlet]="sideNavLinkTemplate" [ngTemplateOutletContext]="{$implicit:link}">
+              </ng-container>
+          </li>
+      </ul>
 </ng-template>
+
+
+
 
 <ng-template #sideNavRouteLinkTemplate let-link>
     <a [attr.class]="link.selected ? ' usa-current' : ''" [routerLink]="[link.route]"
-        [queryParams]="link.queryParams"><span>{{link.text}}</span></a>
+        [queryParams]="link.queryParams" (click)="linkClickEvent(link)"><span>{{link.text}}</span></a>
 </ng-template>
 
 <ng-template #sideNavHREFLinkTemplate let-link>
-    <a [attr.class]="link.selected ? ' usa-current' : ''" [attr.href]="urlBuilder(link)"><span>{{link.text}}</span></a>
+    <a [attr.class]="link.selected ? ' usa-current' : ''" [attr.href]="urlBuilder(link)" (click)="linkClickEvent(link)"><span>{{link.text}}</span></a>
 </ng-template>
 
 <ng-template #sideNavLabelLinkTemplate let-link>

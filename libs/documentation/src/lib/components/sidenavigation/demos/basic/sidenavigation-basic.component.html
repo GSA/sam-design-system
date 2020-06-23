@@ -2,7 +2,7 @@
   <sds-page-options class="sam-page__options">
     <sds-toolbar [expanded]="sideNavExpanded" #toolbar="sdsToolbar">
       <sds-accordion multi="true">
-        <sds-accordion-item [expanded]="sideNavExpanded">
+        <sds-accordion-item #navigationAccordion [expanded]="sideNavExpanded">
           <sds-accordion-item-header>
             <div>Navigation</div>
             <div>{{ pageHeader }}</div>
@@ -10,7 +10,7 @@
           </sds-accordion-item-header>
           <sds-side-navigation #sideNav (linkEvent)="linkEvent.next($event)" [model]="model"></sds-side-navigation>
         </sds-accordion-item>
-        <sds-accordion-item>
+        <sds-accordion-item #filtersAccordion>
           <sds-accordion-item-header> Filters </sds-accordion-item-header>
           <sds-filters [form]="form" [fields]="fields" [model]="model1" (filterChange)="filterChange$.next($event)"></sds-filters>
         </sds-accordion-item>

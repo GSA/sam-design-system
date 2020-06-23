@@ -4,6 +4,7 @@ import { SideNavigationModel, NavigationMode, NavigationLink } from '@gsa-sam/co
 import { ActivatedRoute } from '@angular/router';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { FormGroup } from '@angular/forms';
+import { CdkAccordionItem } from '@angular/cdk/accordion';
 
 @Component({
   templateUrl: 'sidenavigation-basic.component.html'
@@ -16,6 +17,10 @@ export class SideNavigationBasic implements AfterViewInit, OnInit {
   results: any = {};
   form = new FormGroup({});
   model1 = {};
+  @ViewChild('navigationAccordion')
+  navigationAccordion: CdkAccordionItem;
+  @ViewChild('filtersAccordion')
+  filtersAccordion: CdkAccordionItem;
      /**
    * Event when something is checked/selected in the grid
    */
@@ -253,6 +258,11 @@ export class SideNavigationBasic implements AfterViewInit, OnInit {
       value => {
         console.log('Link Event Clicked Change');
         console.log(value);
+        if(!this.filtersAccordion.expanded){
+          this.filtersAccordion.toggle();
+        }
+        this.navigationAccordion.toggle();
+        console.log('should have tggled')
       }
     );
 

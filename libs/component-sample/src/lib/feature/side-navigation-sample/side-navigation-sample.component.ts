@@ -26,6 +26,8 @@ export class SideNavigationSampleComponent implements AfterViewInit {
   filtersAccordion: CdkAccordionItem;
   public linkEvent = new BehaviorSubject<object>(null);
   previousQueryItem: any;
+  newTemplate: any;
+
      /**
    * Event when something is checked/selected in the grid
    */
@@ -288,13 +290,6 @@ export class SideNavigationSampleComponent implements AfterViewInit {
       } else {
         this.pageHeader = 'Select by Domain';
       }
-      if(queryParams.item != this.previousQueryItem){
-        if(!this.filtersAccordion.expanded){
-          this.filtersAccordion.toggle();
-        }
-        this.navigationAccordion.toggle();
-        this.previousQueryItem = queryParams.item;
-      }
       this.change.detectChanges();
     })
 
@@ -309,4 +304,12 @@ export class SideNavigationSampleComponent implements AfterViewInit {
       }
     }
   }
-}
+
+  onLinkClick(){
+        if(!this.filtersAccordion.expanded){
+          this.filtersAccordion.toggle();
+        }
+        this.navigationAccordion.toggle();
+      }
+  }
+

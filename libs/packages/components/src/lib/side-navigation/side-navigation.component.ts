@@ -34,6 +34,7 @@ export class SdsSideNavigationComponent {
   @ViewChild('sideNavEVENTLinkTemplate')
   private sideNavEVENTLinkTemplate: TemplateRef<any>;
 
+
   /**
    * Takes the navigation item and returns the template to be used
    * @param item navigation item
