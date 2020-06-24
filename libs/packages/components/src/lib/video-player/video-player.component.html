@@ -1,7 +1,8 @@
 <div class="px-video-container" id="{{VPConfiguration.id}}" [style.width.px]="VPConfiguration.width" >
   <div class="px-video-img-captions-container" >
       <div class="px-video-captions hide" aria-hidden="true"></div>
-      <video width="{{VPConfiguration.width}}" height="{{VPConfiguration.height}}" poster="{{VPConfiguration.poster}}" controls preload={{VPConfiguration.preload}}>
+      <video width="{{VPConfiguration.width}}" height="{{VPConfiguration.height}}" poster="{{VPConfiguration.poster}}" controls preload={{VPConfiguration.preload}}
+      crossorigin="{{crossorigin}}">
         <!-- if Safari/Chrome-->
           <source src="{{VPConfiguration.sourceMp4}}" type="video/mp4" />
           <!-- If Firefox/Opera/Chrome/IE -->
