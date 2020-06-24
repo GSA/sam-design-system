@@ -26,7 +26,6 @@ declare class InitPxVideo {
 export class SdsVideoPlayerComponent implements AfterViewInit {
   @Input() VPConfiguration: VPInterface;
   private config: InitPxVideoConfig;
-  @Input() crossorigin: string = 'anonymous';
 
   ngAfterViewInit() {
     this.config = {
