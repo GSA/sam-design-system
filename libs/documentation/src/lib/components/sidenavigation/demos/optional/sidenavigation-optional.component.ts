@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
-import { SideNavigationModel} from '@gsa-sam/components'
+import { Component, ViewChild } from '@angular/core';
+import { SideNavigationModel, NavigationLink} from '@gsa-sam/components'
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { FormGroup } from '@angular/forms';
 import { navigationConfig } from './navigate.config';
+import { CdkAccordionItem } from '@angular/cdk/accordion';
 @Component({
   templateUrl: 'sidenavigation-optional.component.html'
 })
@@ -11,6 +12,15 @@ export class SideNavigationOptional  {
   public navigationModel: SideNavigationModel = navigationConfig;
   form:FormGroup;
   filterModel: any;
+
+  @ViewChild('navigationAccordion')
+  navigationAccordion: CdkAccordionItem;
+  @ViewChild('filtersAccordion')
+  filtersAccordion: CdkAccordionItem;
+  public pageHeader: string;
+  selectedId: string = 'all';
+
+
 
   fields: FormlyFieldConfig[] = [
     {
@@ -56,4 +66,25 @@ export class SideNavigationOptional  {
       ]
     }
   ];
+  onLinkClick(){
+    if(!this.filtersAccordion.expanded){
+      this.filtersAccordion.toggle();
+    }
+    this.navigationAccordion.toggle();
+  }
+
+  private findItemByQueryString(linkList: NavigationLink[]) {
+    for (let i = 0; i < linkList.length; i++) {
+      let item = linkList[i];
+      if (item.text.trim() === this.pageHeader.trim()) {
+        this.selectedId = item.id;
+      }
+      else {
+        if (item.children && item.children.length !== 0) {
+          this.findItemByQueryString(item.children)
+        }
+      }
+    }
+  }
+
 }

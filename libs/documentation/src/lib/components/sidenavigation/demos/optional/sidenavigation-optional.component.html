@@ -1,12 +1,13 @@
 <h4>Optional Demo</h4>
 
 <sds-toolbar class="tablet:grid-col-auto" #toolbar="sdsToolbar" [expanded]="true">
-  <sds-accordion>
-    <sds-accordion-item  [expanded]="false">
+  <sds-accordion multi="true">
+
+    <sds-accordion-item #navigationAccordion [expanded]="false">
       <sds-accordion-item-header>
-           <span class="text-normal">Select Domain</span> 
+           <span class="text-normal">{{ pageHeader }}{{ 'PH' }}</span>
       </sds-accordion-item-header>
-      <sds-side-navigation #sideNav [model]="navigationModel"></sds-side-navigation>
+      <sds-side-navigation #sideNav [model]="navigationModel" (linkEvent)="onLinkClick()"></sds-side-navigation>
     </sds-accordion-item>
     <sds-accordion-item #filtersAccordion>
       <sds-accordion-item-header>Filter By</sds-accordion-item-header>

@@ -25,8 +25,7 @@ export class SideNavigationSampleComponent implements AfterViewInit {
   @ViewChild('filtersAccordion')
   filtersAccordion: CdkAccordionItem;
   public linkEvent = new BehaviorSubject<object>(null);
-  previousQueryItem: any;
-  newTemplate: any;
+
 
      /**
    * Event when something is checked/selected in the grid
