@@ -1,0 +1,11 @@
+<h4>Custom field config component inside formly</h4>
+<p><code>expand: true, expand: false </code> are used to set the accordion expand property.
+   If expand is not set and if control has value by defaults the accordion is expanded.</p>
+<form [formGroup]="form">
+  <sds-filters [model]="model" [fields]="formlyFieldConfig" [form]="form" [advancedFilters]= "true"
+  (filterChange)="filterChange$.next($event)"></sds-filters> 
+</form>
+<br />
+
+<h4>Formly Model</h4>
+<pre>{{results |json}}</pre>

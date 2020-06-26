@@ -1,8 +1,8 @@
 <form [formGroup]="form">
-  <sds-filters [form]="form" [fields]="fields" [model]="model" (filterChange)="filterChange$.next($event)"></sds-filters>
+  <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
 </form>
 
 <div class="sam-example-pagination">
     <h4>Filter Model:</h4>
-    <pre>{{ results ? (results |json) : ''}}</pre>
+    <pre>{{ model ? (model |json) : ''}}</pre>
 </div>

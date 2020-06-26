@@ -15,17 +15,17 @@ import { FIELD_TYPE_COMPONENTS, FORMLY_CONFIG } from './formly.config';
 import { maxDateValidator, minDateValidator } from './formly.validators';
 import { AnimationWrapperComponent } from './wrappers/form-field.animation';
 
-// Validate the min length of the charecter
+// Validate the min length of the character
 export function minlengthValidationMessage(err, field) {
   return `Should have atleast ${field.templateOptions.minLength} characters`;
 }
 
-// Validate the max length of the charecter
+// Validate the max length of the character
 export function maxlengthValidationMessage(err, field) {
   return `This value should be less than ${field.templateOptions.maxLength} characters`;
 }
 
-// Validate the min value of the charecter
+// Validate the min value of the character
 export function minValidationMessage(err, field: FormlyFieldConfig) {
   return `This value should be more than ${field.templateOptions.min}`;
 }
@@ -55,7 +55,7 @@ export function invalidDateFormatValidationMessage(err, field: FormlyFieldConfig
   return `Valid date format required (ex: MM/DD/YYYY)`;
 }
 
-// Validate the max value of the charecter
+// Validate the max value of the character
 export function maxValidationMessage(err, field) {
   return `This value should be less than ${field.templateOptions.max}`;
 }

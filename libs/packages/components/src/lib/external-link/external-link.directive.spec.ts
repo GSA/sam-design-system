@@ -1,85 +1,58 @@
-import {
-  TestBed,
-  async,
-  fakeAsync,
-  tick, 
-  ComponentFixture} from '@angular/core/testing';
-
-import {
-  Component,
-  Output,
-  ViewChild,
-  EventEmitter, 
-  DebugElement} from '@angular/core';
+import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
-
-// Load the implementations that should be tested
-import {
- ExternalLinkDirective
-} from './external-link.directive';
-
+import { ExternalLinkDirective } from './external-link.directive';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 
 @Component({
   template: `
-    <a id="blank"
-      target="_blank">
-      Blank
-      <span class="fa fa-external-link fa-sm"></span>
-    </a>
-
-    <a id="named"
-      target="name">
-      Named
-    </a>
-
-    <a id="hidden"
-      target="hidden"
-      hideIcon="true">
-      Hidden
-    </a>
+    <a id="test" href="google.com">Google </a>
+    <a id="test" [hideIcon]="true" href="google.com">Google </a>
+    <a id="test2">Not Google </a>
+    <a id="test" href="{{name}}/settings/test123">Google </a>
   `
 })
-class TestComponent {}
+class TestComponent {
+  constructor() {}
+  public name = location.hostname;
+}
 
 describe('Sam External Link Directive', () => {
   let directive: ExternalLinkDirective;
   let component: TestComponent;
   let fixture: ComponentFixture<TestComponent>;
 
-  function findIcons (el) {
-    return el.queryAll(By.css('.fa-external-link'));
+  function findIcons() {
+    return fixture.debugElement.queryAll(By.css('.margin-left-2px'));
   }
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        TestComponent,
-        ExternalLinkDirective
-      ]
+      declarations: [TestComponent, ExternalLinkDirective, FaIconComponent]
+    }).overrideModule(BrowserDynamicTestingModule, {
+      set: { entryComponents: [FaIconComponent] }
     });
 
     fixture = TestBed.createComponent(TestComponent);
     component = fixture.componentInstance;
+  });
+
+  it('should create component', () => {
+    expect(component).toBeDefined();
+  });
+
+  it('should create one icon', () => {
     fixture.detectChanges();
+    const cmp = fixture.debugElement.query(By.css('#test'));
+    const icons = findIcons();
+    expect(icons).toEqual([]);
   });
 
-  it('should add external link icon when none is present',
-    () => {
-    const cmp =
-      fixture.debugElement.query(By.css('#named')); 
-
-    const icons = findIcons(cmp);
-
-    expect(icons.length).toBe(icons.length);
+  it('should not create an icon', () => {
+    fixture.detectChanges();
+    const cmp = fixture.debugElement.query(By.css('#test2'));
+    const icons = findIcons();
+    expect(icons.length).toEqual(0);
   });
-
-  it('should not add icon if hideIcon is true', () => {
-    const cmp =
-      fixture.debugElement.query(By.css("#hidden"));
-    
-    const icons = findIcons(cmp);
-
-    expect(icons.length).toBe(0);
-  });
-
 });

@@ -1,10 +1,12 @@
 <div>
 
   <h4>SDS Search</h4>
+
   <sds-search [(ngModel)]="model" [searchSettings]="searchSettings" placeholder="Entity an entity ID, name, or keyword"></sds-search>
   Model: {{model |json}}
 
   <h4>SDS Search Big</h4>
+  <p> <code> size: 'large'</code> is used for selecting big search mode.</p>
   <sds-search [(ngModel)]="bigmodel" [searchSettings]="bigSearchSettings" placeholder="Entity an entity ID, name, or keyword"></sds-search>
-  Big Model:  {{bigmodel | json}}
+  Big Model: {{bigmodel | json}}
 </div>

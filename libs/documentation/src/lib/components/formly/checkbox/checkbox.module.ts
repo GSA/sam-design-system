@@ -16,7 +16,7 @@ const DEMOS = {
     type: CheckboxBasic,
     code: require('!!raw-loader!./demos/basic/checkbox-basic.component'),
     markup: require('!!raw-loader!./demos/basic/checkbox-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/checkbox/demos/basic'
+    path: 'libs/documentation/src/lib/components/formly/checkbox/demos/basic'
   }
 };
 

@@ -1,0 +1,48 @@
+<div class="grid-row grid-gap">
+  <div class="grid-col-9">
+    <h3>
+      <a class="usa-link" [routerLink]="['/']"> {{ model.name }} </a>
+    </h3>
+    <div class="grid-row grid-gap">
+      <div class="grid-col-4">
+        <div class="sds-static--label">Unique Entity ID (DUNS)</div>
+        <div class="sds-static">{{ model.dunsNumber }}</div>
+      </div>
+      <div class="grid-col-8">
+        <div class="sds-static--label">CAGE Code</div>
+        <div class="sds-static">{{ model.cageCode }}</div>
+      </div>
+    </div>
+    <div class="grid-row grid-gap">
+      <div class="grid-col-12">
+        <div class="sds-static--label">Physical Address</div>
+        <div class="sds-static">
+          {{ model.address.streetAddress }}, {{ model.address.city }},
+          {{ model.address.state }} {{ model.address.zip }}
+          {{ model.address.country }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="grid-col-3">
+    <div class="grid-row">
+      <div class="grid-col-12">
+        <span class="sds-tag sds-tag--outline">Entity Registration</span>
+      </div>
+    </div>
+    <div class="grid-row">
+      <div class="grid-col-12">
+        <div class="sds-static--label">Expiration Date</div>
+        <div class="sds-static">
+          {{ model.registrationExpirationDate | date }}
+        </div>
+      </div>
+    </div>
+    <div class="grid-row">
+      <div class="grid-col-12">
+        <div class="sds-static--label">Purpose of Registration</div>
+        <div class="sds-static">{{ model.registrationPurpose }}</div>
+      </div>
+    </div>
+  </div>
+</div>

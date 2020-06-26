@@ -1,4 +1,6 @@
-<div class="sds-card">
+<div class="sds-card sds-card--shadowed sds-card--bordered">
   <div class="sds-card__header">Filter Model:</div>
-  <pre *ngIf="model">{{ model | json }}</pre>
+  <div class="sds-card__content">
+    <pre *ngIf="model">{{ model | json }}</pre>
+  </div>
 </div>
