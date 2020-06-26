@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
 export class ResultListBasic {
   constructor() {}
 
-  itemsDefault: object = {
+  demoModel: object = {
     results: [] = [
       { title: 'First', id: 1 },
       { title: 'Second', id: 2 },
@@ -16,43 +16,51 @@ export class ResultListBasic {
     ]
   };
 
+  demoNoResults = {
+      results: []
+  }
+
   demoInfoModel = {
     metadata: {
-      messages: {
-        type: 'info',
-        title: 'No Search',
-        description: `No Search criteria. Please try again
+      descriptions: [
+        {
+          type: 'info',
+          title: 'No Search',
+          message: `No Search criteria. Please try again
                       If you continue to have this problem, please contact the <a href='https://www.fsd.gov/'>Federal Service Desk.</a>`,
-        classes: 'usa-custom',
-        buttons: [
-          {
-            text: 'Go back',
-            classes: 'usa-button--secondary',
-            action: 'gobackbutton'
-          }
-        ]
-      },
+          classes: 'usa-custom',
+          buttons: [
+            {
+              text: 'Go back',
+              classes: 'usa-button--secondary',
+              action: 'gobackbutton'
+            }
+          ]
+        }
+      ]
     }
-  }
+  };
 
   demoErrorModel = {
     metadata: {
-      messages: {
-        type: 'error',
-        title: 'Error Title',
-        description: `There was an issue with the search request. If you continue to
-                         experience this issue, please contact the <a href='https://www.fsd.gov/'>Federal Service Desk.</a>`,
-        classes: 'usa-custom',
-        buttons: [
-          {
-            text: 'Go back',
-            classes: 'usa-button--secondary',
-            action: 'gobackbutton'
-          }
-        ]
-      },
+      descriptions: [
+        {
+          type: 'error',
+          title: 'Bad Request',
+          message: `There was an issue with the search request. If you continue to
+                            experience this issue, please contact the <a href='https://www.fsd.gov/'>Federal Service Desk.</a>`,
+          classes: 'usa-custom',
+          buttons: [
+            {
+              text: 'Go back',
+              classes: 'usa-button--secondary',
+              action: 'gobackbutton'
+            }
+          ]
+        }
+      ]
     }
-  }
+  };
 
   // noEntry: object = {
   //   emptySearch: {
