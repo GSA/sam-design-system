@@ -3,9 +3,9 @@
 <sds-toolbar class="tablet:grid-col-auto" #toolbar="sdsToolbar" [expanded]="true">
   <sds-accordion multi="true">
 
-    <sds-accordion-item #navigationAccordion [expanded]="false">
+    <sds-accordion-item #navigationAccordion [expanded]="true">
       <sds-accordion-item-header>
-           <span class="text-normal">{{ pageHeader }}{{ 'PH' }}</span>
+           <span class="text-normal">{{ pageHeader }}</span>
       </sds-accordion-item-header>
       <sds-side-navigation #sideNav [model]="navigationModel" (linkEvent)="onLinkClick()"></sds-side-navigation>
     </sds-accordion-item>
@@ -16,3 +16,4 @@
     </sds-accordion-item>
   </sds-accordion>
 </sds-toolbar>
+

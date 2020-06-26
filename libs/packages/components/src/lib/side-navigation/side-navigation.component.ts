@@ -69,7 +69,7 @@ export class SdsSideNavigationComponent {
   /**
    * Model used for the different display portions of the side navigation
    */
-  @Input() model: SideNavigationModel;
+   @Input() model: SideNavigationModel;
 
   /**
    * Selects new item and parents and deselects previous
