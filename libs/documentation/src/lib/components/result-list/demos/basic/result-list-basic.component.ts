@@ -16,31 +16,69 @@ export class ResultListBasic {
     ]
   };
 
-  noEntry: object = {
-    emptySearch: {
-      title: 'No Search',
-      description: `No Search criteria. Please try again
-                    If you continue to have this problem, please contact the <a href='https://www.fsd.gov/'>Federal Service Desk.</a>`
+  demoInfoModel = {
+    metadata: {
+      messages: {
+        type: 'info',
+        title: 'No Search',
+        description: `No Search criteria. Please try again
+                      If you continue to have this problem, please contact the <a href='https://www.fsd.gov/'>Federal Service Desk.</a>`,
+        classes: 'usa-custom',
+        buttons: [
+          {
+            text: 'Go back',
+            classes: 'usa-button--secondary',
+            action: 'gobackbutton'
+          }
+        ]
+      },
     }
-  };
+  }
 
-  errorMessages: object = {
-    error: {
-      title: 'Bad Request',
-      description: `There was an issue with the search request. If you continue to
-                    experience this issue, please contact the <a href='https://www.fsd.gov/'>Federal Service Desk.</a>`
+  demoErrorModel = {
+    metadata: {
+      messages: {
+        type: 'error',
+        title: 'Error Title',
+        description: `There was an issue with the search request. If you continue to
+                         experience this issue, please contact the <a href='https://www.fsd.gov/'>Federal Service Desk.</a>`,
+        classes: 'usa-custom',
+        buttons: [
+          {
+            text: 'Go back',
+            classes: 'usa-button--secondary',
+            action: 'gobackbutton'
+          }
+        ]
+      },
     }
-  };
+  }
 
-  emptyItems: object = {
-    results: [] = [],
-    noItems: {
-      title: 'No Matches Found',
-      description: `We couldn't find a match for your search criteria.
-      We couldn't find a match for your search criteria.`
-    }
-  };
+  // noEntry: object = {
+  //   emptySearch: {
+  //     title: 'No Search',
+  //     description: `No Search criteria. Please try again
+  //                   If you continue to have this problem, please contact the <a href='https://www.fsd.gov/'>Federal Service Desk.</a>`
+  //   }
+  // };
 
-  messages = this.errorMessages;
-  items = this.itemsDefault;
+  // errorMessages: object = {
+  //   error: {
+  //     title: 'Bad Request',
+  //     description: `There was an issue with the search request. If you continue to
+  //                   experience this issue, please contact the <a href='https://www.fsd.gov/'>Federal Service Desk.</a>`
+  //   }
+  // };
+
+  // emptyItems: object = {
+  //   results: [] = [],
+  //   noItems: {
+  //     title: 'No Matches Found',
+  //     description: `We couldn't find a match for your search criteria.
+  //     We couldn't find a match for your search criteria.`
+  //   }
+  // };
+
+  // messages = this.errorMessages;
+  // items = this.itemsDefault;
 }
