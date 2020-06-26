@@ -18,6 +18,7 @@ import { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem
 import { SDSAutocompleteServiceInterface } from '../autocomplete-search/models/SDSAutocompleteServiceInterface';
 import { SDSAutocompletelConfiguration } from './models/SDSAutocompletelConfiguration.model';
 import { SelectionMode } from '../selected-result/models/sds-selected-item-model-helper';
+import { SDSAutocompleteSearchComponent } from '../autocomplete-search/autocomplete-search.component';
 
 const Autocomplete_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -68,7 +69,7 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
   @Input()
   public service: SDSAutocompleteServiceInterface;
 
-  @ViewChild('autocomplete') autocomplete;
+  @ViewChild('autocompleteSearch') autocompleteSearch: SDSAutocompleteSearchComponent;
   constructor(private cd: ChangeDetectorRef) { }
 
   /**
@@ -138,5 +139,14 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
     } else {
       return false;
     }
+  }
+  addItem(item: object) {
+    this.autocompleteSearch.selectItem(item);
+  }
+
+  addItems(list: object[]) {
+    list.forEach(item => {
+      this.addItem(item);
+    })
   }
 }
