@@ -1,4 +1,4 @@
-<sds-search-autocomplete [disabled]="disabled" (ngModelChange)="updateItems($event)" #autocomplete
+<sds-search-autocomplete [disabled]="disabled" [essentialModelFields]="essentialModelFields" (ngModelChange)="updateItems($event)" #autocompleteSearch
     [service]="service" [(ngModel)]="model" [configuration]="configuration" [itemTemplate]="suggestionTemplate">
 </sds-search-autocomplete>
 <sds-selected-result (ngModelChange)="updateItems($event)" [disabled]="disabled" *ngIf="!isSingleMode()"

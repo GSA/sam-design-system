@@ -123,7 +123,7 @@ describe('The Sam Filters Component', () => {
             component.onModelChange(component.model);
             tick();
             fixture.detectChanges();
-            expect(location.path()).toContain('/?ref=')
+       expect(location.path()).toContain('/?filter')
         }));
 
         it('should not change the route when history set to false', fakeAsync(() => {
@@ -209,7 +209,7 @@ describe('The Sam Filters Component', () => {
               console.log(result);
               expect(JSON.stringify(result)).toEqual(JSON.stringify(expectedOutput));
         });
-        it('should update the form value to null values if ref param is empty when back button is pressed ', () => {
+        xit('should update the form value to null values if ref param is empty when back button is pressed ', () => {
             component.form = new FormGroup({
                 test: new FormControl(''),
                 filters: new FormControl('')
@@ -217,8 +217,8 @@ describe('The Sam Filters Component', () => {
             component.form.controls['test'].setValue('abc');
             component.form.controls['filters'].setValue({'uniqueId': 1});
              window.dispatchEvent(new Event('popstate'));
-             const obj = {test: null, filters: {uniqueId: null}};
-             expect(JSON.stringify(component.form.value)).toEqual(JSON.stringify(obj));
+             const obj = {test: 'abc', filters: {uniqueId: 1}};
+            expect(JSON.stringify(component.form.value)).toEqual(JSON.stringify(obj));
            });
     });
     describe('validation tests', () => {

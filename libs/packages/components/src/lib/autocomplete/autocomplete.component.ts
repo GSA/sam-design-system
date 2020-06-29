@@ -18,6 +18,7 @@ import { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem
 import { SDSAutocompleteServiceInterface } from '../autocomplete-search/models/SDSAutocompleteServiceInterface';
 import { SDSAutocompletelConfiguration } from './models/SDSAutocompletelConfiguration.model';
 import { SelectionMode } from '../selected-result/models/sds-selected-item-model-helper';
+import { SDSAutocompleteSearchComponent } from '../autocomplete-search/autocomplete-search.component';
 
 const Autocomplete_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -57,12 +58,18 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
   public configuration: SDSAutocompletelConfiguration;
 
   /**
+   * Model contain only the primary key, primary value, and secondary value.
+   */
+  @Input()
+  public essentialModelFields: boolean = false;
+
+  /**
    * Instance of the SamHiercarchicalServiceInterface provided
    */
   @Input()
   public service: SDSAutocompleteServiceInterface;
 
-  @ViewChild('autocomplete') autocomplete;
+  @ViewChild('autocompleteSearch') autocompleteSearch: SDSAutocompleteSearchComponent;
   constructor(private cd: ChangeDetectorRef) { }
 
   /**
@@ -98,7 +105,6 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
 
   // Method that is fired when the child component event notifies us that the items array has been modified within the child component
   updateItems($event) {
-    this.autocomplete.updateItems();
     this.updateModel();
   }
 
@@ -133,5 +139,14 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
     } else {
       return false;
     }
+  }
+  addItem(item: object) {
+    this.autocompleteSearch.selectItem(item);
+  }
+
+  addItems(list: object[]) {
+    list.forEach(item => {
+      this.addItem(item);
+    })
   }
 }

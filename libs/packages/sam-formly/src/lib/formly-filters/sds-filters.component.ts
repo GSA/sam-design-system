@@ -4,23 +4,20 @@ import {
   Output,
   EventEmitter,
   Optional,
-  HostListener,
   OnInit,
-  ChangeDetectorRef
+  ChangeDetectorRef,
+  HostListener
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import * as qs from 'qs';
-import { Md5 } from 'ts-md5/dist/md5';
-
 import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
-
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'sds-filters',
   templateUrl: './sds-filters.component.html'
 })
-
 export class SdsFiltersComponent implements OnInit {
   /**
    * Pass in a Form Group for ReactiveForms Support
@@ -55,20 +52,25 @@ export class SdsFiltersComponent implements OnInit {
   @Input() public isHistoryEnable: boolean = true;
 
   /**
+   * To get clean model without null and empty
+   */
+  @Input() public getCleanModel: boolean = false;
+
+  /**
    *  Emit results when model updated
    */
   // TODO: check type -- Formly models are typically objects
   @Output() filterChange = new EventEmitter<object[]>();
 
-  sdsFilterHistory = [];
-
   _isObj = (obj: any): boolean => typeof obj === 'object' && obj !== null;
   _isEmpty = (obj: any): boolean => Object.keys(obj).length === 0;
   overwrite = (baseObj: any, newObj: any) => {
-    let result = {};
-    for (let key in baseObj) {
+    const result = {};
+    for (const key in baseObj) {
       if (Array.isArray(baseObj[key])) {
-        result[key] = newObj[key];
+        result[key] = newObj[key] || null;
+      } else if (baseObj[key] instanceof Date) {
+        result[key] = newObj[key] === undefined ? null : new Date(newObj[key]);
       } else if (this._isObj(baseObj[key])) {
         result[key] = this.overwrite(baseObj[key], newObj[key] || {});
       } else {
@@ -77,98 +79,150 @@ export class SdsFiltersComponent implements OnInit {
     }
     return result;
   };
-  nullify = (obj: any) => {
-    for (let key in obj) {
-      if (this._isObj(obj[key])) {
-        obj[key] = this.nullify(obj[key]);
-      } else {
-        obj[key] = null;
-      }
-    }
-    return obj;
-  };
 
   constructor(
     @Optional()
     public formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,
     private cdr: ChangeDetectorRef,
     private router: Router,
-    private route: ActivatedRoute
-  ) { }
+    private route: ActivatedRoute,
+    private datePipe: DatePipe
+  ) {}
 
-  @HostListener('window:popstate', [''])
-  onpopstate() {
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const ref = urlParams.get('ref');
-    const updatedFormValue =
-      ref == null
-        ? this.nullify(this.form.value)
-        : JSON.parse(localStorage.getItem(ref));
-    const updatedValue = this.overwrite(
+  @HostListener('window:popstate', ['$event'])
+  onpopstate(event) {
+    const queryString = window.location.search.substring(1);
+    const params = this.getUrlParams(queryString);
+    const updatedFormValue = this.overwrite(
       this.form.getRawValue(),
-      updatedFormValue
+      this.convertToModel(params)
     );
-    this.form.setValue(updatedValue, { emitEvent: false });
+    this.form.setValue(updatedFormValue);
     this.updateChange(updatedFormValue);
   }
-
   ngOnInit(): void {
     if (this.isHistoryEnable) {
-      const queryString = window.location.search;
-      const urlParams = new URLSearchParams(queryString);
-      const initialRef = urlParams.get('ref');
-      if (initialRef) {
-        const updatedFormValue = JSON.parse(localStorage.getItem(initialRef));
+      if (this._isEmpty(this.form.getRawValue())) {
+        const queryString = window.location.search.substring(1);
+        const params = this.getUrlParams(queryString);
+        const paramModel = this.convertToModel(params);
+        this.updateChange(paramModel);
         setTimeout(() => {
-          this.model = { ...this.model, ...updatedFormValue }
-          this.updateChange(updatedFormValue);
-          this.cdr.detectChanges();
-        }, 0);
-      } else {
-      this.updateChange(this.model);
-      this.clearStorage();
+          this.form.patchValue({
+            ...this.model,
+            ...paramModel
+          });
+        });
       }
     }
-    this.cdr.detectChanges();
+  }
+
+  addOption() {
+    const updatedFields: FormlyFieldConfig[] = [];
+    this.fields.forEach(field => {
+      if (field) {
+        if (field.fieldGroup) {
+          field.fieldGroup.forEach(subField => {
+            if (subField.type == 'input') {
+              field.modelOptions.updateOn = 'blur';
+            } else if (subField.type == 'autocomplete') {
+              field.templateOptions.essentialModelFields = true;
+            }
+          });
+        } else {
+          if (field.type == 'input') {
+            field.modelOptions.updateOn = 'blur';
+          } else if (field.type == 'autocomplete') {
+            field.templateOptions.essentialModelFields = true;
+          }
+        }
+      }
+      updatedFields.push(field);
+    });
+    return updatedFields;
   }
 
   onModelChange(change: any) {
     if (this.isHistoryEnable) {
-      const md5 = new Md5();
-      const hashCode = md5.appendStr(qs.stringify(change)).end();
-      this.router.navigate([], {
+      const params = this.convertToParam(change);
+      this.router.navigate(['.'], {
         relativeTo: this.route,
-        queryParams: { ref: hashCode },
-        queryParamsHandling: 'merge'
+        queryParams: params
       });
-      this.addToStorageList(hashCode)
-      localStorage.setItem(hashCode.toString(), JSON.stringify(change));
     }
     this.updateChange(change);
   }
-
   updateChange(change) {
-    this.filterChange.emit(change);
+    const updatedModel = this.getCleanModel
+      ? this.convertToModel(change)
+      : change;
+    this.filterChange.emit([updatedModel]);
     if (this.formlyUpdateComunicationService) {
-      this.formlyUpdateComunicationService.updateFilter(change);
+      this.formlyUpdateComunicationService.updateFilter(updatedModel);
     }
   }
 
-  addToStorageList(hashCode) {
-    const list = JSON.parse(localStorage.getItem('sdsFilterHistory'));
-    this.sdsFilterHistory = (list && list.length > 0) ? list : this.sdsFilterHistory
-    this.sdsFilterHistory.push(hashCode);
-    localStorage.setItem('sdsFilterHistory', JSON.stringify(this.sdsFilterHistory));
+  convertToParam(filters) {
+    const encodedValues = qs.stringify(filters, {
+      skipNulls: true,
+      encode: false,
+      filter: this.shortFormatDate
+    });
+    if (encodedValues) {
+      return this.getUrlParams(encodedValues);
+    } else {
+      return '';
+    }
+  }
+  getUrlParams(queryString) {
+    const target = {};
+    queryString.split('&').forEach(pair => {
+      if (pair !== '') {
+        const splitpair = pair.split('=');
+        target[splitpair[0]] =
+          splitpair[1] === '' || splitpair[1] === 'false' ? null : splitpair[1];
+      }
+    });
+    return target;
   }
 
-  clearStorage() {
-    const list = JSON.parse(localStorage.getItem('sdsFilterHistory'));
-    if (list && list.length > 0) {
-      const unique = list.filter((item, i, ar) => ar.indexOf(item) === i);
-      unique.forEach(item => {
-        localStorage.removeItem(item);
-      });
+  shortFormatDate(prefix, value) {
+    const fixDigit = val => {
+      return val.toString().length === 1 ? '0' + val : val;
+    };
+    const getFormattedDate = date =>
+      `${fixDigit(
+        date.getMonth() + 1
+      )}/${date.getDate()}/${date.getFullYear()}`;
+    if (value instanceof Date) {
+      value = getFormattedDate(new Date(value));
     }
+    return value;
+  }
+
+  isDate(_date) {
+    const _regExp = new RegExp(
+      '^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(.[0-9]+)?(Z)?$'
+    );
+    return _regExp.test(_date);
+  }
+  convertToModel(filters) {
+    let obj = {};
+    const encodedValues = qs.stringify(filters, {
+      skipNulls: true,
+      encode: false,
+      filter: this.longFormatDate
+    });
+    obj = qs.parse(encodedValues);
+    return obj;
+  }
+
+  longFormatDate(prefix, value) {
+    const val = decodeURIComponent(value);
+    const isDate = /^(\d{1,2})[-\/](\d{1,2})[-\/](\d{4})$/.exec(val);
+    if (isDate) {
+      value = new Date(val).toISOString();
+    }
+    return value;
   }
 }
