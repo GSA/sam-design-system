@@ -52,8 +52,8 @@ export class SdsFiltersComponent implements OnInit {
   @Input() public isHistoryEnable: boolean = true;
 
   /**
-  * To get clean model without null and empty
-  */
+   * To get clean model without null and empty
+   */
   @Input() public getCleanModel: boolean = false;
 
   /**
@@ -69,6 +69,8 @@ export class SdsFiltersComponent implements OnInit {
     for (const key in baseObj) {
       if (Array.isArray(baseObj[key])) {
         result[key] = newObj[key] || null;
+      } else if (baseObj[key] instanceof Date) {
+        result[key] = newObj[key] === undefined ? null : new Date(newObj[key]);
       } else if (this._isObj(baseObj[key])) {
         result[key] = this.overwrite(baseObj[key], newObj[key] || {});
       } else {
@@ -85,7 +87,7 @@ export class SdsFiltersComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private datePipe: DatePipe
-  ) { }
+  ) {}
 
   @HostListener('window:popstate', ['$event'])
   onpopstate(event) {
@@ -100,7 +102,6 @@ export class SdsFiltersComponent implements OnInit {
   }
   ngOnInit(): void {
     if (this.isHistoryEnable) {
-
       if (this._isEmpty(this.form.getRawValue())) {
         const queryString = window.location.search.substring(1);
         const params = this.getUrlParams(queryString);
@@ -108,8 +109,9 @@ export class SdsFiltersComponent implements OnInit {
         this.updateChange(paramModel);
         setTimeout(() => {
           this.form.patchValue({
-            ...this.model, ...paramModel
-          })
+            ...this.model,
+            ...paramModel
+          });
         });
       }
     }
@@ -122,21 +124,21 @@ export class SdsFiltersComponent implements OnInit {
         if (field.fieldGroup) {
           field.fieldGroup.forEach(subField => {
             if (subField.type == 'input') {
-              field.modelOptions.updateOn = 'blur'
+              field.modelOptions.updateOn = 'blur';
             } else if (subField.type == 'autocomplete') {
               field.templateOptions.isFormlyType = true;
             }
-          })
+          });
         } else {
           if (field.type == 'input') {
-            field.modelOptions.updateOn = 'blur'
+            field.modelOptions.updateOn = 'blur';
           } else if (field.type == 'autocomplete') {
             field.templateOptions.isFormlyType = true;
           }
         }
       }
       updatedFields.push(field);
-    })
+    });
     return updatedFields;
   }
 
@@ -151,7 +153,9 @@ export class SdsFiltersComponent implements OnInit {
     this.updateChange(change);
   }
   updateChange(change) {
-    const updatedModel = this.getCleanModel ? this.convertToModel(change) : change;
+    const updatedModel = this.getCleanModel
+      ? this.convertToModel(change)
+      : change;
     this.filterChange.emit([updatedModel]);
     if (this.formlyUpdateComunicationService) {
       this.formlyUpdateComunicationService.updateFilter(updatedModel);
@@ -162,6 +166,7 @@ export class SdsFiltersComponent implements OnInit {
     const encodedValues = qs.stringify(filters, {
       skipNulls: true,
       encode: false,
+      filter: this.shortFormatDate
     });
     if (encodedValues) {
       return this.getUrlParams(encodedValues);
@@ -174,22 +179,50 @@ export class SdsFiltersComponent implements OnInit {
     queryString.split('&').forEach(pair => {
       if (pair !== '') {
         const splitpair = pair.split('=');
-        target[splitpair[0]] = ((splitpair[1] === '') || (splitpair[1] === 'false')) ? null : splitpair[1];
+        target[splitpair[0]] =
+          splitpair[1] === '' || splitpair[1] === 'false' ? null : splitpair[1];
       }
     });
     return target;
   }
+
+  shortFormatDate(prefix, value) {
+    const fixDigit = val => {
+      return val.toString().length === 1 ? '0' + val : val;
+    };
+    const getFormattedDate = date =>
+      `${fixDigit(
+        date.getMonth() + 1
+      )}/${date.getDate()}/${date.getFullYear()}`;
+    if (value instanceof Date) {
+      value = getFormattedDate(new Date(value));
+    }
+    return value;
+  }
+
   isDate(_date) {
-    const _regExp = new RegExp('^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(.[0-9]+)?(Z)?$');
+    const _regExp = new RegExp(
+      '^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(.[0-9]+)?(Z)?$'
+    );
     return _regExp.test(_date);
   }
   convertToModel(filters) {
     let obj = {};
     const encodedValues = qs.stringify(filters, {
       skipNulls: true,
-      encode: false
+      encode: false,
+      filter: this.longFormatDate
     });
     obj = qs.parse(encodedValues);
     return obj;
+  }
+
+  longFormatDate(prefix, value) {
+    const val = decodeURIComponent(value);
+    const isDate = /^(\d{1,2})[-\/](\d{1,2})[-\/](\d{4})$/.exec(val);
+    if (isDate) {
+      value = new Date(val).toISOString();
+    }
+    return value;
   }
 }
