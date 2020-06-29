@@ -57,11 +57,11 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
   @Input()
   public configuration: SDSAutocompletelConfiguration;
 
-   /**
-   * To set autocomplete used inside filter
+  /**
+   * Model contain only the primary key, primary value, and secondary value.
    */
   @Input()
-  public isFormlyType: boolean = false;
+  public essentialModelFields: boolean = false;
 
   /**
    * Instance of the SamHiercarchicalServiceInterface provided

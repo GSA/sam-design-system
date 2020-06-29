@@ -16,7 +16,7 @@ export class FormlyFieldAutoCompleteComponent extends AbstractSdsFormly {
  @ViewChild(SDSAutocompleteComponent) public template: SDSAutocompleteComponent;
  defaultOptions = {
   templateOptions: {
-    isFormlyType: true
+    essentialModelFields: true
   },
 };
   constructor (_cdr: ChangeDetectorRef) {

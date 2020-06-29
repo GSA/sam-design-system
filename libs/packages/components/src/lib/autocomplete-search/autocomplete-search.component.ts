@@ -51,9 +51,9 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   public model: SDSSelectedItemModel;
 
   /**
-   * To set autocomplete used inside filter
+   * Model contain only the primary key, primary value, and secondary value.
    */
-  @Input() public isFormlyType: boolean = false;
+  @Input() public essentialModelFields: boolean = false;
 
   /**
    * Configuration for the Autocomplete control
@@ -287,7 +287,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    */
   public selectItem(item: object): void {
     let filterItem =  {};
-    if(this.isFormlyType){
+    if(this.essentialModelFields){
       filterItem[this.configuration.primaryKeyField]= item[this.configuration.primaryKeyField];
       filterItem[this.configuration.primaryTextField]= item[this.configuration.primaryTextField];
     if(this.configuration.secondaryTextField) {

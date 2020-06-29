@@ -126,14 +126,14 @@ export class SdsFiltersComponent implements OnInit {
             if (subField.type == 'input') {
               field.modelOptions.updateOn = 'blur';
             } else if (subField.type == 'autocomplete') {
-              field.templateOptions.isFormlyType = true;
+              field.templateOptions.essentialModelFields = true;
             }
           });
         } else {
           if (field.type == 'input') {
             field.modelOptions.updateOn = 'blur';
           } else if (field.type == 'autocomplete') {
-            field.templateOptions.isFormlyType = true;
+            field.templateOptions.essentialModelFields = true;
           }
         }
       }
