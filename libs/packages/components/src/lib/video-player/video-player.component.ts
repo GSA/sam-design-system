@@ -27,7 +27,12 @@ export class SdsVideoPlayerComponent implements AfterViewInit {
   @Input() VPConfiguration: VPInterface;
   private config: InitPxVideoConfig;
 
+  @Input() crossorigin = "";
   ngAfterViewInit() {
+    if (this.crossorigin) {
+      const id = document.getElementById('videoPlayer');
+      id.setAttribute('crossorigin', this.crossorigin);
+    }
     this.config = {
       videoId: this.VPConfiguration.id,
       captionsOnDefault: false,
