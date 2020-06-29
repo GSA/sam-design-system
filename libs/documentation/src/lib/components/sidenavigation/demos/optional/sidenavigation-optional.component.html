@@ -3,12 +3,15 @@
 <sds-toolbar class="tablet:grid-col-auto" #toolbar="sdsToolbar" [expanded]="true">
   <sds-accordion multi="true">
 
-    <sds-accordion-item #navigationAccordion [expanded]="true">
+    <sds-accordion-item #navigationAccordion [expanded]="navigationExpanded">
       <sds-accordion-item-header>
-           <span class="text-normal">{{ pageHeader }}</span>
+        <div class="sds-accordion__item-header-title">Select Domain</div>
+        <span class="text-normal">{{ pageHeader }}</span>
       </sds-accordion-item-header>
-      <sds-side-navigation #sideNav [model]="navigationModel" (linkEvent)="onLinkClick()"></sds-side-navigation>
+      <sds-side-navigation #sideNav [model]="navigationModel" ></sds-side-navigation>
     </sds-accordion-item>
+    <!-- <sds-side-navigation #sideNav [model]="navigationModel" (linkEvent)="onLinkClick()"></sds-side-navigation>
+    </sds-accordion-item> -->
     <sds-accordion-item #filtersAccordion>
       <sds-accordion-item-header>Filter By</sds-accordion-item-header>
       <sds-filters [form]="form" [fields]="fields" [model]="filterModel">

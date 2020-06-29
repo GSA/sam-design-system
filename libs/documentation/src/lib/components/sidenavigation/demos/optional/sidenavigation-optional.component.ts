@@ -15,121 +15,52 @@ import { ActivatedRoute } from '@angular/router';
 export class SideNavigationOptional {
   public navigationModel: SideNavigationModel = {
     navigationLinks: [
-      {
-        id: 'all',
-        text: 'All Domains',
-        mode: NavigationMode.INTERNAL,
-        route: '/documentation/components/sidenavigation/examples'
-      },
-      {
-        id: 'opportunites',
-        text: 'Contract Opportunities',
-        mode: NavigationMode.INTERNAL,
-        route: '/documentation/components/sidenavigation/examples',
-        queryParams: { index: 'opportunities' }
-      },
-      {
-        id: 'contractData',
-        text: 'Contract Data',
-        mode: NavigationMode.INTERNAL,
-        route: '/documentation/components/sidenavigation/examples',
-        queryParams: { index: 'contractdata' }
-      },
-      {
-        id: 'federalAssistance',
-        text: 'Federal Assistance',
-        mode: NavigationMode.INTERNAL,
-        route: '/documentation/components/sidenavigation/examples',
-        children: [
-          {
-            id: 'assistancelist',
-            mode: NavigationMode.INTERNAL,
-            route: '/documentation/components/sidenavigation/examples',
-            queryParams: { index: 'assistancelist' },
-            text: 'Assistance Listings'
-          },
-          {
-            id: 'regionallocation',
-            mode: NavigationMode.INTERNAL,
-            route: '/documentation/components/sidenavigation/examples',
-            text: 'Regional Locations'
-          }
-        ]
-      },
-      {
-        id: 'entityInformation',
-        text: 'Entity Information',
-        route: '/',
-        queryParams: { index: 'entityinfo' },
-        mode: NavigationMode.INTERNAL,
-        children: [
-          {
-            id: 'registrations',
-            mode: NavigationMode.INTERNAL,
-            route: '/documentation/components/sidenavigation/examples',
-            queryParams: { index: 'registrations' },
-            text: 'Entity Registrations'
-          },
-          {
-            id: 'disasterResponse',
-            mode: NavigationMode.INTERNAL,
-            route: '/documentation/components/sidenavigation/examples',
-            queryParams: { index: 'disasterresponse' },
-            text: 'Disaster Response Registry'
-          },
-          {
-            id: 'exclusions',
-            mode: NavigationMode.INTERNAL,
-            route: '/documentation/components/sidenavigation/examples',
-            queryParams: { index: 'exclusions' },
-            text: 'Exclusions'
-          }
-        ]
-      },
-      {
-        id: 'federalHierarchy',
-        route: '/documentation/components/sidenavigation/examples',
-        mode: NavigationMode.INTERNAL,
-        text: 'Federal Hierarchy'
-      },
-      {
-        id: 'wageDeterminations',
-        route: '/documentation/components/sidenavigation/examples',
-        queryParams: { index: 'wdid' },
-        mode: NavigationMode.INTERNAL,
-        text: 'Wage Determinations',
-        children: [
-          {
-            id: 'searchWdByID',
-            mode: NavigationMode.INTERNAL,
-            route: '/documentation/components/sidenavigation/examples',
-            queryParams: { index: 'wdid' },
-            text: 'By Wage Determination ID'
-          },
-          {
-            id: 'dba',
-            mode: NavigationMode.INTERNAL,
-            route: '/documentation/components/sidenavigation/examples',
-            queryParams: { index: 'dba' },
-            text: 'Construction (DBA)'
-          },
-          {
-            id: 'sca',
-            mode: NavigationMode.INTERNAL,
-            route: '/documentation/components/sidenavigation/examples',
-            queryParams: { index: 'sca' },
-            text: 'Service Contracts (SCA)',
-            children: [
-              {
-                id: 'cba',
-                mode: NavigationMode.INTERNAL,
-                route: '/documentation/components/sidenavigation/examples',
-                text: 'Collective Bargaining Agreements'
-              }
-            ]
-          }
-        ]
-      }
+    {
+      text: 'Parent 1', id: 'linkp1', route: '/component/sideNav', queryParams: { 'item': 'Parent 1' }, mode: NavigationMode.INTERNAL, children: [
+        { text: 'Child 1 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Child 1 of Parent 1' }, id: 'linkc1p1', mode: NavigationMode.INTERNAL },
+        {
+          text: 'Child 2 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Child 2 of Parent 1' }, id: 'linkc2p1', mode: NavigationMode.INTERNAL, children: [
+            { text: 'Grandchild 1 of Child 2 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Grandchild 1 of Child 2 of Parent 1' }, id: 'linkgc1c2p1', mode: NavigationMode.INTERNAL }]
+        },
+        { text: 'Child 3 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Child 3 of Parent 1' }, id: 'linkc3p1', mode: NavigationMode.INTERNAL },
+        {
+          text: 'Child 4 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Child 4 of Parent 1' }, id: 'linkc4p1', mode: NavigationMode.INTERNAL
+          , children: [
+            { text: 'Grandchild 1 of Child 4 of Parent 1', queryParams: { 'item': 'Grandchild 1 of Child 4 of Parent 1' }, route: '/component/sideNav', id: 'linkgc1c4p1', mode: NavigationMode.INTERNAL },
+            {
+              text: 'Grandchild 2 of Child 4 of Parent 1', queryParams: { 'item': 'Grandchild 2 of Child 4 of Parent 1' }, route: '/component/sideNav', id: 'linkgc2c4p1', mode: NavigationMode.INTERNAL,
+              children: [
+                { text: ' Great 1 of Grandchild 2 of Child 4 of Parent 1', queryParams: { 'item': 'Great 1 of Grandchild 2 of Child 4 of Parent 1' }, route: '/component/sideNav', id: 'linkg1gc1c4p1', mode: NavigationMode.INTERNAL },
+                {
+                  text: 'Great 2 of Grandchild 2 of Child 4 of Parent 1', queryParams: { 'item': 'Great 2 of Grandchild 2 of Child 4 of Parent 1' }, route: '/component/sideNav', id: 'linkg2gc1c4p1', mode: NavigationMode.INTERNAL
+                },
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      text: 'Parent 2', id: 'linkp2', route: '/component/sideNav', queryParams: { 'item': 'Parent 2' }, mode: NavigationMode.INTERNAL, children: [
+        {
+          text: 'Child 1 of Parent 2', route: '/component/sideNav', queryParams: { 'item': 'Child 1 of Parent 2' }, id: 'linkc1p2', mode: NavigationMode.INTERNAL, children: [
+
+            { text: 'Grandchild 1 Child 1 of Parent 2', route: '/component/sideNav', queryParams: { 'item': 'Grandchild 1 Child 1 of Parent 2' }, id: 'linkgc1c1p2', mode: NavigationMode.INTERNAL },
+          ]
+        },
+        { text: 'Child 2 of Parent 2', route: '/component/sideNav', queryParams: { 'item': 'Child 2 of Parent 2' }, id: 'linkc2p2', mode: NavigationMode.INTERNAL },
+        { text: 'Child 3 of Parent 2', route: '/component/sideNav', queryParams: { 'item': 'Child 3 of Parent 2' }, id: 'linkc3p2', mode: NavigationMode.INTERNAL },
+        { text: 'Child 4 of Parent 2', route: '/component/sideNav', queryParams: { 'item': 'Child 4 of Parent 2' }, id: 'linkc4p2', mode: NavigationMode.INTERNAL }
+      ]
+    }
+    ]
+  };
+  model2: SideNavigationModel = {
+    navigationLinks: [{
+      text: 'Parent 1', id: 'linkp1', route: '/component/sideNav', queryParams: { 'item': 'Parent 1' }, mode: NavigationMode.INTERNAL, children: [
+        { text: 'Child 1 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Child 1 of Parent 1' }, id: 'linkc1p1', mode: NavigationMode.INTERNAL },
+      ]
+    }
     ]
   };
   form: FormGroup;
@@ -142,7 +73,8 @@ export class SideNavigationOptional {
   @ViewChild('sideNav') sideNav;
   public pageHeader: string;
   // selectedId: string = 'All Domains';
-
+  navigationExpanded = true;
+  sideNavExpanded = true;
   constructor(
     private activeRoute: ActivatedRoute,
     private change: ChangeDetectorRef
@@ -192,30 +124,6 @@ export class SideNavigationOptional {
     }
   ];
 
-  // ngAfterViewInit(): void {
-  //   this.activeRoute.queryParams.subscribe(queryParams => {
-  //     let selectionOptions = this.navigationModel.navigationLinks;
-  //     let queryMatcher = queryParams.index;
-
-  //     for (let i = 0; i < selectionOptions.length; i++) {
-  //       // this.addToOptions(selectionOptions[i])
-  //       // console.log(queryMatcher);
-  //       let modelId = selectionOptions[i].id;
-  //       console.log(queryMatcher)
-  //       let modelText = selectionOptions[i].text;
-  //       // console.log(this.navigationModel.navigationLinks)
-  //       const purpose = this.navigationModel.navigationLinks
-  //       .filter(item => item.id = item.id)
-  //       if (queryMatcher == modelId) {
-  //         let modelText = selectionOptions[i].text;
-  //         this.pageHeader = modelText;
-  //       } else {
-  //         this.pageHeader = 'Select by Domain';
-  //       }
-  //       this.change.detectChanges();
-  //     }
-  //   });
-  // }
   onSelectChange() {
     this.sideNav.select(this.selectedId);
   }
@@ -253,7 +161,7 @@ export class SideNavigationOptional {
           this.sideNav.select(this.selectedId);
         }
       } else {
-        this.pageHeader = 'Select by Domain';
+        this.pageHeader = 'All Domains';
       }
       this.change.detectChanges();
     })
@@ -272,10 +180,10 @@ export class SideNavigationOptional {
     }
   }
 
-  onLinkClick() {
-    if (!this.filtersAccordion.expanded) {
-      this.filtersAccordion.toggle();
-    }
-    this.navigationAccordion.toggle();
-  }
+  // onLinkClick() {
+  //   if (!this.filtersAccordion.expanded) {
+  //     this.filtersAccordion.toggle();
+  //   }
+  //   this.navigationAccordion.toggle();
+  // }
 }

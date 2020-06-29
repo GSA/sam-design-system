@@ -47,5 +47,5 @@
 
 <ng-template #sideNavEVENTLinkTemplate let-link>
     <a [attr.class]="link.selected ? ' usa-current' : ''" href="javascript:void(0)"
-        (click)="linkClickEvent(link)"><span>{{link.text}}</span></a>
+        (click)="linkClickEvent(link)"><span>{{link.text}}{{'Updated here'}}</span></a>
 </ng-template>
