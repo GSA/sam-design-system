@@ -28,7 +28,7 @@ export class SideNavigationSampleComponent implements AfterViewInit {
 
 
      /**
-   * Event when something is checked/selected in the grid
+   * Event when something is checked /selected in the grid
    */
   public filterChange$ = new BehaviorSubject<object>(null);
 

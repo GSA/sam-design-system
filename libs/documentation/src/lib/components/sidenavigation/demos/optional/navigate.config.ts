@@ -1,65 +1,46 @@
 import { SideNavigationModel, NavigationMode } from '@gsa-sam/components';
 
 export let navigationConfig: SideNavigationModel = {
-    navigationLinks: [
-        { id: 'all', text: 'All Domains', mode: NavigationMode.INTERNAL, route: '/documentation/components/sidenavigation/examples' },
-        { id: 'opportunites', text: 'Contract Opportunities', mode: NavigationMode.INTERNAL, route: '/documentation/components/sidenavigation/examples', queryParams: { 'index' : 'opportunities'}},
-        { id: 'contractData', text: 'Contract Data', mode: NavigationMode.INTERNAL, route: '/documentation/components/sidenavigation/examples', queryParams: { 'index' : 'contractdata'}},
-        {
-            id: 'federalAssistance', text: 'Federal Assistance', mode: NavigationMode.INTERNAL, route: '/documentation/components/sidenavigation/examples', children: [
+     navigationLinks: [
+    {
 
-                {
-                    id: 'assistancelist', mode: NavigationMode.INTERNAL,
-                    route: '/documentation/components/sidenavigation/examples', queryParams: { 'index' : 'assistancelist'}, text: 'Assistance Listings'
-                },
-                {
-                    id: 'regionallocation', mode: NavigationMode.INTERNAL,
-                    route: '/documentation/components/sidenavigation/examples', text: 'Regional Locations'
-                }
-            ]
-        },
+      text: 'All Domains', id: 'all', route: '/documentation/components/sidenavigation/examples', queryParams: { 'item': 'All Domains' }, mode: NavigationMode.INTERNAL, children: [
+        { text: 'Contract Opportunities', route: '/documentation/components/sidenavigation/examples', queryParams: { 'item': 'Contract Opportunities' }, id: 'linkc1p1', mode: NavigationMode.INTERNAL },
         {
-            id: 'entityInformation', text: 'Entity Information', route: '/', queryParams: { 'index' : 'entityinfo'}, mode: NavigationMode.INTERNAL, children: [
-                {
-                    id: 'registrations', mode: NavigationMode.INTERNAL,
-                    route: '/documentation/components/sidenavigation/examples', queryParams: { 'index' : 'registrations'}, text: 'Entity Registrations'
-                },
-                {
-                    id: 'disasterResponse', mode: NavigationMode.INTERNAL,
-                    route: '/documentation/components/sidenavigation/examples', queryParams: { 'index' : 'disasterresponse'}, text: 'Disaster Response Registry'
-                },
-                {
-                    id: 'exclusions', mode: NavigationMode.INTERNAL,
-                    route: '/documentation/components/sidenavigation/examples', queryParams: { 'index' : 'exclusions'}, text: 'Exclusions'
-                }
-            ]
+          text: 'Contract Data', route: '/documentation/components/sidenavigation/examples', queryParams: { 'item': 'Contract Data'}, id: 'linkc2p1', mode: NavigationMode.INTERNAL
         },
+        { text: 'Federal Assistance', route: '/documentation/components/sidenavigation/examples', queryParams: { 'item': 'Federal Assistance' }, id: 'linkc3p1', mode: NavigationMode.INTERNAL },
         {
-            id: 'federalHierarchy', route: '/documentation/components/sidenavigation/examples', mode: NavigationMode.INTERNAL,
-            text: 'Federal Hierarchy'
-        },
-        {
-            id: 'wageDeterminations', route: '/documentation/components/sidenavigation/examples', queryParams: { 'index' : 'wdid'}, mode: NavigationMode.INTERNAL,
-            text: 'Wage Determinations', children: [
+          text: 'Assistance Listings', route: '/documentation/components/sidenavigation/examples', queryParams: { 'item': 'Assistance Listings' }, id: 'linkc4p1', mode: NavigationMode.INTERNAL
+          , children: [
+            {
+              text: 'Regional Locations', queryParams: { 'item': 'Regional Locations' }, route: '/documentation/components/sidenavigation/examples', id: 'linkgc2c4p1', mode: NavigationMode.INTERNAL,
+              children: [
+                { text: 'Entity Information', queryParams: { 'item': 'Entity Information' }, route: '/documentation/components/sidenavigation/examples', id: 'linkg1gc1c4p1', mode: NavigationMode.INTERNAL },
                 {
-                    id: 'searchWdByID', mode: NavigationMode.INTERNAL,
-                    route: '/documentation/components/sidenavigation/examples', queryParams: { 'index' : 'wdid'}, text: 'By Wage Determination ID'
+                  text: 'Disaster Response Registry', queryParams: { 'item': 'Disaster Response Registry' }, route: '/documentation/components/sidenavigation/examples', id: 'linkg2gc1c4p1', mode: NavigationMode.INTERNAL
                 },
-                {
-                    id: 'dba', mode: NavigationMode.INTERNAL,
-                    route: '/documentation/components/sidenavigation/examples', queryParams: { 'index' : 'dba'}, text: 'Construction (DBA)'
-                },
-                {
-                    id: 'sca', mode: NavigationMode.INTERNAL,
-                    route: '/documentation/components/sidenavigation/examples', queryParams: { 'index' : 'sca'}, text: 'Service Contracts (SCA)', children: [
-                        {
-                            id: 'cba', mode: NavigationMode.INTERNAL,
-                            route: '/documentation/components/sidenavigation/examples', text: 'Collective Bargaining Agreements'
-                        }
-                    ]
-                }
-            ]
+              ]
+            }
+          ]
         }
+      ]
+    },
+    {
+      text: 'Exclusions', id: 'linkp2', route: '/documentation/components/sidenavigation/examples', queryParams: { 'item': 'Exclusions' }, mode: NavigationMode.INTERNAL, children: [
+        {
+          text: 'Federal Hierarchy', route: '/documentation/components/sidenavigation/examples', queryParams: { 'item': 'Federal Hierarchy' }, id: 'linkc1p2', mode: NavigationMode.INTERNAL, children: [
+
+            { text: 'Wage Determinations', route: '/documentation/components/sidenavigation/examples', queryParams: { 'item': 'Wage Determinations' }, id: 'linkgc1c1p2', mode: NavigationMode.INTERNAL },
+          ]
+        },
+        { text: 'By Wage Determination ID', route: '/documentation/components/sidenavigation/examples', queryParams: { 'item': 'By Wage Determination ID' }, id: 'linkc2p2', mode: NavigationMode.INTERNAL },
+        { text: 'Construction (DBA)', route: '/documentation/components/sidenavigation/examples', queryParams: { 'item': 'Construction (DBA)' }, id: 'linkc3p2', mode: NavigationMode.INTERNAL },
+        { text: 'Service Contracts (SCA)', route: '/documentation/components/sidenavigation/examples', queryParams: { 'item': 'Service Contracts (SCA)' }, id: 'linkc4p2', mode: NavigationMode.INTERNAL },
+         { text: 'Collective Bargaining Agreements', route: '/documentation/components/sidenavigation/examples', queryParams: { 'item': 'Collective Bargaining Agreements' }, id: 'linkc5p2', mode: NavigationMode.INTERNAL }
+
+      ]
+    }
     ]
 };
 

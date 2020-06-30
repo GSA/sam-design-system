@@ -8,10 +8,8 @@
         <div class="sds-accordion__item-header-title">Select Domain</div>
         <span class="text-normal">{{ pageHeader }}</span>
       </sds-accordion-item-header>
-      <sds-side-navigation #sideNav [model]="navigationModel" ></sds-side-navigation>
+      <sds-side-navigation #sideNav [model]="navigationModel" (linkEvent)="onLinkClick()"></sds-side-navigation>
     </sds-accordion-item>
-    <!-- <sds-side-navigation #sideNav [model]="navigationModel" (linkEvent)="onLinkClick()"></sds-side-navigation>
-    </sds-accordion-item> -->
     <sds-accordion-item #filtersAccordion>
       <sds-accordion-item-header>Filter By</sds-accordion-item-header>
       <sds-filters [form]="form" [fields]="fields" [model]="filterModel">
@@ -19,4 +17,3 @@
     </sds-accordion-item>
   </sds-accordion>
 </sds-toolbar>
-

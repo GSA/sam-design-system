@@ -1,51 +1,42 @@
 <nav>
-    <ul class="usa-sidenav">
-        <li *ngFor="let link of model.navigationLinks" class="sidenav__item">
-            <ng-container [ngTemplateOutlet]="sideNavLinkTemplate" [ngTemplateOutletContext]="{$implicit:link}">
-            </ng-container>
-        </li>
-    </ul>
+  <ul class="usa-sidenav">
+    <li *ngFor="let link of model.navigationLinks" class="sidenav__item">
+      <ng-container [ngTemplateOutlet]="sideNavLinkTemplate" [ngTemplateOutletContext]="{$implicit:link}">
+      </ng-container>
+    </li>
+  </ul>
 </nav>
 
 
-<!-- <sds-accordion-item #navigationAccordion [expanded]="navigationExpanded">
-  <sds-accordion-item-header>
-      <div class="sds-accordion__item-header-title">Navigation</div>
-      <div class="sds-accordion__item-header-subtitle">{{ pageHeader }}</div>
-  </sds-accordion-item-header>
-
-  <sds-side-navigation #sideNav  [model]="model">
-  </sds-side-navigation>
-</sds-accordion-item> -->
-
-  <ng-template #sideNavLinkTemplate let-link>
-      <ng-container [ngTemplateOutlet]="getItemTemplate(link)" [ngTemplateOutletContext]="{$implicit:link}">
+<ng-template #sideNavLinkTemplate let-link>
+  <ng-container [ngTemplateOutlet]="getItemTemplate(link)" [ngTemplateOutletContext]="{$implicit:link}">
+  </ng-container>
+  <ul *ngIf="link.children" class="usa-sidenav__sublist">
+    <li *ngFor="let link of link.children" class="sidenav__item">
+      <ng-container [ngTemplateOutlet]="sideNavLinkTemplate" [ngTemplateOutletContext]="{$implicit:link}">
       </ng-container>
-      <ul *ngIf="link.children" class="usa-sidenav__sublist">
-          <li *ngFor="let link of link.children" class="sidenav__item">
-              <ng-container [ngTemplateOutlet]="sideNavLinkTemplate" [ngTemplateOutletContext]="{$implicit:link}">
-              </ng-container>
-          </li>
-      </ul>
+    </li>
+  </ul>
 </ng-template>
 
 
 
 
 <ng-template #sideNavRouteLinkTemplate let-link>
-    <a [attr.class]="link.selected ? ' usa-current' : ''" [routerLink]="[link.route]"
-        [queryParams]="link.queryParams" (click)="linkClickEvent(link)"><span>{{link.text}}</span></a>
+  <a [attr.class]="link.selected ? ' usa-current' : ''" [routerLink]="[link.route]" [queryParams]="link.queryParams"
+    (click)="linkClickEvent(link)"><span>{{link.text}}</span></a>
 </ng-template>
 
 <ng-template #sideNavHREFLinkTemplate let-link>
-    <a [attr.class]="link.selected ? ' usa-current' : ''" [attr.href]="urlBuilder(link)" (click)="linkClickEvent(link)"><span>{{link.text}}</span></a>
+  <a [attr.class]="link.selected ? ' usa-current' : ''" [attr.href]="urlBuilder(link)"
+    (click)="linkClickEvent(link)"><span>{{link.text}}</span></a>
 </ng-template>
 
 <ng-template #sideNavLabelLinkTemplate let-link>
-    <span [attr.class]="link.selected ? ' usa-current' : ''"><span>{{link.text}}</span></span>
+  <span [attr.class]="link.selected ? ' usa-current' : ''"><span>{{link.text}}</span></span>
 </ng-template>
 
 <ng-template #sideNavEVENTLinkTemplate let-link>
-    <a [attr.class]="link.selected ? ' usa-current' : ''" href="javascript:void(0)"
-        (click)="linkClickEvent(link)"><span>{{link.text}}{{'Updated here'}}</span></a>
+  <a [attr.class]="link.selected ? ' usa-current' : ''" href="javascript:void(0)"
+    (click)="linkClickEvent(link)"><span>{{link.text}}{{'Updated here'}}</span></a>
 </ng-template>
