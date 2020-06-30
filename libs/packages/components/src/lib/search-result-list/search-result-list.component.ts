@@ -12,7 +12,7 @@ export class SdsSearchResultListComponent implements OnInit {
    /**
    * Model for search results
    */
-  @Input() model = new SearchModel() || [];
+  @Input() model;
 
   /**
    * Show divider between results
