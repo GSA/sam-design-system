@@ -94,14 +94,11 @@ export class SideNavigationOptional {
     for (let i = 0; i < this.navigationModel.navigationLinks.length; i++) {
       this.addToOptions(this.navigationModel.navigationLinks[i]);
     }
-    console.log(this.selectedId);
     this.sideNav.select(this.selectedId);
     this.change.detectChanges();
 
     this.activeRoute.queryParams.subscribe(queryParams => {
-      console.log(queryParams);
       if (queryParams.item) {
-        console.log(queryParams);
         this.pageHeader = queryParams.item;
         if (this.navigationModel.navigationLinks) {
           this.findItemByQueryString(this.navigationModel.navigationLinks);

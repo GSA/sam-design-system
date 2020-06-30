@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter, ViewChild, TemplateRef } from '
 import { SideNavigationModel, NavigationLink } from './model/side-navigation-model';
 import { INavigationLink, NavigationMode } from '../common-navigation/common-navigation-model';
 import { NavigationHelper } from '../common-navigation/navigation-helper';
+import { NgControl } from '@angular/forms';
 
 @Component({
   selector: 'sds-side-navigation',
@@ -39,6 +40,9 @@ export class SdsSideNavigationComponent {
    * Takes the navigation item and returns the template to be used
    * @param item navigation item
    */
+
+
+
   getItemTemplate(item: NavigationLink): TemplateRef<any> {
     let template = null;
     switch (item.mode) {
@@ -75,6 +79,9 @@ export class SdsSideNavigationComponent {
    * Selects new item and parents and deselects previous
    * @param id
    */
+
+   @Input() multi: boolean = true;
+
   select(id: string) {
     this.deselect();
     for (let i = 0; i < this.model.navigationLinks.length; i++) {
@@ -150,6 +157,7 @@ export class SdsSideNavigationComponent {
    */
   linkClickEvent(link: INavigationLink) {
     this.linkEvent.emit(link);
+    this.multi = true;
     return false;
   }
 
