@@ -16,6 +16,38 @@ export class ResultListBasic {
     { title: 'Fifth', id: 5 , hasNewerData:true},
   ];
 
-  items = this.itemsDefault;
+  errorModel = {};
+  
+  items = {
+    
+   results : this.itemsDefault
+  };
+
+  infoModel = {
+    metadata: {
+      messages: [
+        {
+          type: 'info',
+          title: 'No Search',
+          message: `No Search criteria. Please try again
+                      If you continue to have this problem, please contact the <a href='https://www.fsd.gov/'>Federal Service Desk.</a>`,
+          classes: 'usa-custom',
+          buttons: [
+            {
+              text: 'Go back',
+              classes: 'usa-button--secondary',
+              action: 'gobackbutton'
+            },
+            {
+              text: 'Go forward',
+              classes: 'usa-button usa-button--secondary width-card margin-y-2',
+              action: 'gobackbutton'
+            }
+          ]
+        }
+      ]
+    }
+  };
+  searchModel: any = {};
 
 }
