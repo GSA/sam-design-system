@@ -6,7 +6,7 @@
 </div>
 <hr *ngIf="divider && model?.results?.length" class="thin" />
 </ng-container>
-<!-- <ng-container *ngIf="(model == null || (!model?.metadata?.messages && model?.results?.length === 0))">
+<ng-container *ngIf="(model == null || (!model?.metadata?.messages && model?.results?.length === 0))">
     <div class="grid-row border-1px border-base-lighter bg-base-lightest">
       <div class="grid-col-auto text-center text-base margin-4">
         <fa-icon [icon]="['sds', 'search']" [classes]="['search']" size="7x"></fa-icon>
@@ -18,7 +18,7 @@
         <button class="usa-button usa-button--secondary width-card margin-y-2">Go Back</button>
       </div>
     </div>
-</ng-container> -->
+</ng-container>
 
 
   <ng-container *ngIf="model?.metadata?.messages" class="sds-card--shadowed sds-card--bordered margin-bottom-2">
