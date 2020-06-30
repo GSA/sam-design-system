@@ -19,9 +19,11 @@ export class FilterWrapperComponent implements OnInit {
   results: any = {};
   form = new FormGroup({});
   model: any = {
+    filter: {
     searchEntity: {
       uniqueEntityIdSam: 20
-    }
+    } 
+  }
   };
   options: FormlyFormOptions = {};
   /**

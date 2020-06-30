@@ -1,3 +1,5 @@
+import { SDSSelectedItemModel } from './sds-selectedItem.model';
+
 export class SDSSelectedItemModelHelper {
 
     /**
@@ -10,12 +12,12 @@ export class SDSSelectedItemModelHelper {
       * @param selectionMode 
       * @param items 
       */
-    public static addItem(itemToAdd: object, keyField: string, selectionMode: SelectionMode, items: object[]) {
-        if (!SDSSelectedItemModelHelper.contatinsItem(itemToAdd[keyField], keyField, items)) {
+    public static addItem(itemToAdd: object, keyField: string, selectionMode: SelectionMode, model: SDSSelectedItemModel) {
+        if (!SDSSelectedItemModelHelper.containsItem(itemToAdd[keyField], keyField, model.items)) {
             if (selectionMode === SelectionMode.SINGLE) {
-                SDSSelectedItemModelHelper.clearItems(items);
+                SDSSelectedItemModelHelper.clearItems(model.items);
             }
-            items.push(itemToAdd);
+            model.items.push(itemToAdd);
         }
     }
 
@@ -27,9 +29,9 @@ export class SDSSelectedItemModelHelper {
      * @param selectionMode 
      * @param items 
      */
-    public static addItems(toAddItems: object[], keyField: string, selectionMode: SelectionMode, items: object[]) {
+    public static addItems(toAddItems: object[], keyField: string, selectionMode: SelectionMode, model: SDSSelectedItemModel) {
         for (let i = 0; i < toAddItems.length; i++) {
-            SDSSelectedItemModelHelper.addItem(toAddItems[i], keyField, selectionMode, items);
+            SDSSelectedItemModelHelper.addItem(toAddItems[i], keyField, selectionMode, model);
         }
     }
 
@@ -40,9 +42,9 @@ export class SDSSelectedItemModelHelper {
      * @param keyField 
      * @param items 
      */
-    public static removeItem(item: object, keyField: string, items: object[]) {
-        if (SDSSelectedItemModelHelper.contatinsItem(item[keyField], keyField, items)) {
-            items.splice(items.indexOf(item), 1)
+    public static removeItem(item: object, keyField: string, model: SDSSelectedItemModel) {
+        if (SDSSelectedItemModelHelper.containsItem(item[keyField], keyField, model.items)) {
+            model.items.splice(model.items.indexOf(item), 1)
         }
     }
 
@@ -53,7 +55,7 @@ export class SDSSelectedItemModelHelper {
      * @param keyField 
      * @param items 
      */
-    public static contatinsItem(key: string, keyField: string, items: object[]): boolean {
+    public static containsItem(key: string, keyField: string, items: object[]): boolean {
         let item = items.find(o => o[keyField] === key);
         return item !== null && item !== undefined;
     }
@@ -76,11 +78,11 @@ export class SDSSelectedItemModelHelper {
      * @param selectionMode 
      * @param items 
      */
-    public static replaceItems(selectedItems: object[], keyField: string, selectionMode: SelectionMode, items: object[]) {
+    public static replaceItems(selectedItems: object[], keyField: string, selectionMode: SelectionMode, model: SDSSelectedItemModel) {
         //Clears Old List
-        SDSSelectedItemModelHelper.clearItems(items);
+        SDSSelectedItemModelHelper.clearItems(model.items);
         //Adds new List
-        SDSSelectedItemModelHelper.addItems(selectedItems, keyField, selectionMode, items);
+        SDSSelectedItemModelHelper.addItems(selectedItems, keyField, selectionMode, model);
     }
 }
 

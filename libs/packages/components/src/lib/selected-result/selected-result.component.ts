@@ -53,7 +53,7 @@ export class SDSSelectedResultComponent implements ControlValueAccessor {
    */
   removeItem(item: object) {
     if (!this.disabled) {
-      SDSSelectedItemModelHelper.removeItem(item, this.configuration.primaryKeyField, this.model.items);
+      SDSSelectedItemModelHelper.removeItem(item, this.configuration.primaryKeyField, this.model);
       this.propogateChange(this.model);
       this.onTouchedCallback();
     }

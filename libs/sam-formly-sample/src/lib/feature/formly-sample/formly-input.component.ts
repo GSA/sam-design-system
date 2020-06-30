@@ -207,7 +207,7 @@ export class FormlyInputComponent implements OnInit {
     {
       key: 'filter.autocomplete',
       wrappers: ['accordionwrapper'],
-      templateOptions: { label: 'Keyword' },
+      templateOptions: { label: 'Auto Complete' },
       fieldGroup: [{
         key: 'firstName',
         type: 'autocomplete',

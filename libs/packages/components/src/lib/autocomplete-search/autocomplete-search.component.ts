@@ -51,6 +51,11 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   public model: SDSSelectedItemModel;
 
   /**
+   * Model contain only the primary key, primary value, and secondary value.
+   */
+  @Input() public essentialModelFields: boolean = false;
+
+  /**
    * Configuration for the Autocomplete control
    */
   @Input()
@@ -116,10 +121,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    */
   @Input() public inputReadOnly = false;
 
-  /**
-   * Used to store selected items
-   */
-  items = [];
   /**
    * Stored Event for ControlValueAccessor
    */
@@ -279,27 +280,29 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       }
     }
   }
-  updateItems() {
-    const model = [...this.model.items];
-    this.items = model;
-  }
 
   /**
    * selects the item adding it to the model and closes the results
    * @param item
    */
   public selectItem(item: object): void {
+    let filterItem =  {};
+    if(this.essentialModelFields){
+      filterItem[this.configuration.primaryKeyField]= item[this.configuration.primaryKeyField];
+      filterItem[this.configuration.primaryTextField]= item[this.configuration.primaryTextField];
+    if(this.configuration.secondaryTextField) {
+      filterItem[this.configuration.secondaryTextField]= item[this.configuration.secondaryTextField];
+    }
+  } else {
+    filterItem = item;
+  }
     SDSSelectedItemModelHelper.addItem(
-      item,
+      filterItem,
       this.configuration.primaryKeyField,
       this.configuration.selectionMode,
-      this.items
+      this.model
     );
-
-    setTimeout(() => {
-      this.model.items = [...this.items];
-      this.propogateChange(this.model);
-    }, 0);
+    this.propogateChange(this.model);
     let message = this.getObjectValue(
       item,
       this.configuration.primaryTextField
