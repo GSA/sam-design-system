@@ -9,13 +9,10 @@ import { SearchModel } from './model/search-results.model';
 
 export class SdsSearchResultListComponent {
 
-  @Input() searchModel:SearchModel =new SearchModel();
-
-
-  /**
-   * List of items
+   /**
+   * Model for search results
    */
-  @Input() model: any[];
+  @Input() model:SearchModel;
 
   /**
    * Show divider between results
@@ -26,4 +23,5 @@ export class SdsSearchResultListComponent {
    * Child Template to be used to display the data for each item in the list of items
    */
   @ContentChild('resultContent') resultContentTemplate: TemplateRef<any>;
+
 }

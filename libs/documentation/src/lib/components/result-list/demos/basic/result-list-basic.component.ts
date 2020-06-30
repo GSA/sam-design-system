@@ -16,12 +16,31 @@ export class ResultListBasic {
     { title: 'Fifth', id: 5 , hasNewerData:true},
   ];
 
-  errorModel = {};
-  
   items = {
-    
-   results : this.itemsDefault
+    results : this.itemsDefault
+   };
+
+  errorModel = {
+    metadata: {
+      messages: [
+        {
+          type: 'error',
+          title: 'Error during the the api',
+          message: `Error Search criteria. Please try again
+                      If you continue to have this problem, please contact the <a href='https://www.fsd.gov/'>Federal Service Desk.</a>`,
+          buttons: [
+            {
+              text: 'Go back',
+              classes: 'usa-button--secondary',
+              action: 'gobackbutton'
+            },
+            
+          ]
+        }
+      ]
+    }
   };
+  
 
   infoModel = {
     metadata: {
@@ -48,6 +67,11 @@ export class ResultListBasic {
       ]
     }
   };
-  searchModel: any = {};
 
+  defaultModel = {
+    results : this.itemsDefault
+  }
+  emptyModel = {
+    results : []
+  }
 }
