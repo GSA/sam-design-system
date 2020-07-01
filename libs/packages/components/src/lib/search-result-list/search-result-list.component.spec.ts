@@ -9,6 +9,7 @@ describe('SdsSearchResultListComponent', () => {
   let component: SdsSearchResultListComponent;
   let fixture: ComponentFixture<SdsSearchResultListComponent>;
   let el: DebugElement;
+  let location: SpyLocation;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SdsSearchResultListComponent],
@@ -23,6 +24,7 @@ describe('SdsSearchResultListComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SdsSearchResultListComponent);
     component = fixture.componentInstance;
+    location = TestBed.get(Location);
     el = fixture.debugElement;
   });
 
@@ -60,4 +62,10 @@ describe('SdsSearchResultListComponent', () => {
     expect(component.updateModel.results.length).toBe(items.length);
   }));
 
+  it('should go back to previous page on go back button click', () => {
+    component.model =[];
+    spyOn(location, 'back');
+    component.goBack();
+    expect(location.back).toHaveBeenCalled();
+  });
 });
