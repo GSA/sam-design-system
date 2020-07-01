@@ -1,4 +1,4 @@
-import { Component, Input, ContentChild, TemplateRef, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, Input, ContentChild, TemplateRef } from '@angular/core';
 import { SearchModel } from './model/search-results.model';
 import {Location} from '@angular/common';
 @Component({
@@ -7,7 +7,7 @@ import {Location} from '@angular/common';
   styleUrls: ['./search-result-list.component.scss']
 })
 
-export class SdsSearchResultListComponent implements OnInit {
+export class SdsSearchResultListComponent  {
 
   updateModel : any;
 
@@ -17,7 +17,13 @@ export class SdsSearchResultListComponent implements OnInit {
   @Input('model')
   set model(value) 
   {
+    if(Array.isArray(value)) {
+      const items = value;
+      this.updateModel = new SearchModel();
+      this.updateModel.results = items;
+    } else {
     this.updateModel = value;
+    }
   }
 
   /**
@@ -32,13 +38,7 @@ export class SdsSearchResultListComponent implements OnInit {
    * Child Template to be used to display the data for each item in the list of items
    */
   @ContentChild('resultContent') resultContentTemplate: TemplateRef<any>;
-  ngOnInit() {
-    if(Array.isArray(this.model)) {
-      const items = this.model;
-      this.model = new SearchModel();
-      this.model.results = items;
-    }
-  }
+  
   goBack() {
     this._location.back();
   }

@@ -3,14 +3,19 @@ import { SdsSearchResultListComponent } from './search-result-list.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CommonModule } from '@angular/common';
 import { DebugElement } from '@angular/core';
-fdescribe('SdsSearchResultListComponent', () => {
+import { SpyLocation } from '@angular/common/testing';
+import {Location} from '@angular/common';
+describe('SdsSearchResultListComponent', () => {
   let component: SdsSearchResultListComponent;
   let fixture: ComponentFixture<SdsSearchResultListComponent>;
   let el: DebugElement;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SdsSearchResultListComponent],
-      imports: [FontAwesomeModule, CommonModule]
+      imports: [FontAwesomeModule, CommonModule],
+      providers:[
+        {provide: Location, useClass: SpyLocation}  
+      ]
     })
       .compileComponents();
   }));
@@ -33,8 +38,8 @@ fdescribe('SdsSearchResultListComponent', () => {
       { title: 'Fifth', id: 5 }
     ] }
   fixture.detectChanges();
-   const testResult = component.model.results[0];
-   const testResults = component.model.results;
+   const testResult = component.updateModel.results[0];
+   const testResults = component.updateModel.results;
    expect(testResult).toBeTruthy("Could not find");
    expect(testResults.length).toBeGreaterThan(0);
    expect(testResult.title).toEqual('First');
@@ -50,11 +55,9 @@ fdescribe('SdsSearchResultListComponent', () => {
       { title: 'Fifth', id: 5, hasNewerData: true }
     ];
     component.model = items;
-    component.ngOnInit();
-
     fixture.detectChanges();
     
-    expect(component.model.results.length).toBe(items.length);
+    expect(component.updateModel.results.length).toBe(items.length);
   }));
 
 });
