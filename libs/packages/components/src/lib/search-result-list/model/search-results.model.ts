@@ -17,5 +17,5 @@ export class SearchModel{
     id: string;
     text:string;
     classes: string;
-    action:any = new EventEmitter<string>();
+    action: any;
   } 

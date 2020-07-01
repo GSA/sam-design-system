@@ -20,6 +20,8 @@ export class ResultListBasic {
     results : this.itemsDefault
    };
 
+
+   
   errorModel = {
     results:[],
     metadata: {
@@ -31,9 +33,10 @@ export class ResultListBasic {
                       If you continue to have this problem, please contact the <a href='https://www.fsd.gov/'>Federal Service Desk.</a>`,
           buttons: [
             {
+              id: 'backward',
               text: 'Go back',
               classes: 'usa-button--secondary',
-              action: 'gobackbutton'
+              action: this.gobackbutton
             },
             
           ]
@@ -41,7 +44,7 @@ export class ResultListBasic {
       ]
     }
   };
-  
+
 
   infoModel = {
     results:[],
@@ -55,14 +58,16 @@ export class ResultListBasic {
           classes: 'usa-custom',
           buttons: [
             {
+              id: 'backward',
               text: 'Go back',
               classes: 'usa-button--secondary',
               action: 'gobackbutton'
             },
             {
+              id: 'forward',
               text: 'Go forward',
               classes: 'usa-button usa-button--secondary width-card margin-y-2',
-              action: 'gobackbutton'
+              action: this.gobackbutton
             }
           ]
         }
@@ -76,4 +81,11 @@ export class ResultListBasic {
   emptyModel = {
     results : []
   }
+  log(ev){
+    console.log(ev);
+  }
+  gobackbutton() { 
+    console.log('testteshvhjkl');
+  }
+ 
 }

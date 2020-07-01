@@ -1,46 +1,46 @@
-<ng-container *ngIf="model?.results?.length">
-<div *ngFor="let item of model.results">
+<ng-container *ngIf="updateModel?.results?.length">
+  <div *ngFor="let item of updateModel.results">
     <hr *ngIf="divider" class="thin" />
     <ng-container *ngTemplateOutlet="resultContentTemplate,
                    context: { $implicit: item }"></ng-container>
-</div>
-<hr *ngIf="divider && model?.results?.length" class="thin" />
+  </div>
+  <hr *ngIf="divider && updateModel?.results?.length" class="thin" />
 </ng-container>
-<ng-container *ngIf="(model == null || (!model?.metadata?.messages && model?.results?.length === 0))">
-    <div class="grid-row border-1px border-base-lighter bg-base-lightest">
-      <div class="grid-col-auto text-center text-base margin-4">
-        <fa-icon [icon]="['sds', 'search']" [classes]="['search']" size="7x"></fa-icon>
-      </div>
-      <div class="grid-col-fill display-flex flex-column padding-y-1">
-        <h1 class="margin-bottom-105 text-semibold">No matches found</h1>
-        <p class="margin-y-0 font-sans-lg">We couldn't find a match for your search criteria.</p>
-        <p class="margin-y-0 font-sans-lg">Please try another search or go back to previous results.</p>
-        <div class="margin-top-3">
-        <button class="usa-button  usa-button--secondary width-card margin-y-2">Go Back</button>
-      </div>
+<ng-container *ngIf="(updateModel == null || (!updateModel?.metadata?.messages && updateModel?.results?.length === 0))">
+  <div class="grid-row border-1px border-base-lighter bg-base-lightest">
+    <div class="grid-col-auto text-center text-base margin-4">
+      <fa-icon [icon]="['sds', 'search']" [classes]="['search']" size="7x"></fa-icon>
+    </div>
+    <div class="grid-col-fill display-flex flex-column padding-y-1">
+      <h1 class="margin-bottom-105 text-semibold">No matches found</h1>
+      <p class="margin-y-0 font-sans-lg">We couldn't find a match for your search criteria.</p>
+      <p class="margin-y-0 font-sans-lg">Please try another search or go back to previous results.</p>
+      <div class="margin-top-3">
+        <button class="usa-button  usa-button--secondary width-card margin-y-2" (click)="goBack()">Go Back</button>
       </div>
     </div>
+  </div>
 </ng-container>
+<ng-container *ngIf="updateModel?.metadata?.messages" class="sds-card--shadowed sds-card--bordered margin-bottom-2">
+  <div *ngFor="let msg of updateModel.metadata.messages" class="sds-card__content grid-row" [ngClass]="msg.classes ? msg.classes : 'border-1px border-base-lighter bg-base-lightest '">
+    <div class="grid-col-auto text-center text-base margin-4">
+      <fa-icon [icon]="(msg.type ==='error') ?  ['sds', 'alert-error'] : ['sds', 'information-circle']" [classes]="['search']"
+        size="5x"></fa-icon>
+    </div>
+    <div class="grid-col-fill display-flex flex-column padding-y-1">
+      <h1 class="margin-bottom-105 text-semibold">{{msg.title}}</h1>
+      <p class="margin-y-0 font-sans-lg" [innerHTML]="msg.message"></p>
+      <div class="margin-top-3">
+        <button *ngFor="let button of msg.buttons" class="usa-button  width-card" [ngClass]="button.classes ? button.classes : 'usa-button--secondary'"
+          (click)="clicks.emit(button.id)">
+          {{button.text}}
+        </button>
+        <button *ngFor="let button of msg.buttons" class="usa-button  width-card" [ngClass]="button.classes ? button.classes : 'usa-button--secondary'"
+          (click)="button.action()">
+         test
+        </button>
 
-
-  <ng-container *ngIf="model?.metadata?.messages" class="sds-card--shadowed sds-card--bordered margin-bottom-2">
-    <div *ngFor="let msg of model.metadata.messages" class="sds-card__content grid-row" [ngClass]="msg.classes ? msg.classes : 'border-1px border-base-lighter bg-base-lightest '">
-      <div class="grid-col-auto text-center text-base margin-4">
-        <fa-icon [icon]="(msg.type ==='error') ?  ['sds', 'alert-error'] : ['sds', 'information-circle']" [classes]="['search']"
-          size="5x"></fa-icon>
-      </div>
-      <div class="grid-col-fill display-flex flex-column padding-y-1">
-        <h1 class="margin-bottom-105 text-semibold">{{msg.title}}</h1>
-        <p class="margin-y-0 font-sans-lg" [innerHTML]="msg.message"></p>
-        <div class="margin-top-3">
-          <button *ngFor="let button of msg.buttons" class="usa-button  width-card" [ngClass]="button.classes ? button.classes : 'usa-button--secondary'"
-            (click)="button.action.emit(button.id)">
-            {{button.text}}
-          </button>
-        </div>
       </div>
     </div>
-  </ng-container>
-
-
-
+  </div>
+</ng-container>
