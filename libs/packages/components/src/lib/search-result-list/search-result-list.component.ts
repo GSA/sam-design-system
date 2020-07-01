@@ -25,8 +25,6 @@ export class SdsSearchResultListComponent implements OnInit {
    */
   @Input() divider = true;
 
-  @Output() clicks = new EventEmitter<string>();
-
   constructor(private _location: Location) 
   {}
 

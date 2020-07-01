@@ -61,7 +61,7 @@ export class ResultListBasic {
               id: 'backward',
               text: 'Go back',
               classes: 'usa-button--secondary',
-              action: 'gobackbutton'
+              action: this.gobackbutton
             },
             {
               id: 'forward',
@@ -80,9 +80,6 @@ export class ResultListBasic {
   }
   emptyModel = {
     results : []
-  }
-  log(ev){
-    console.log(ev);
   }
   gobackbutton() { 
     console.log('testteshvhjkl');
