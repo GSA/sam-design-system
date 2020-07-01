@@ -1,29 +1,27 @@
-import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import {
+  Component
+} from '@angular/core';
 
 @Component({
-  templateUrl: './result-list-basic.component.html',
+  templateUrl: './result-list-basic.component.html'
 })
-
 export class ResultListBasic {
-
-  constructor(private change: ChangeDetectorRef) { }
+  constructor() { }
 
   itemsDefault = [
     { title: 'First', id: 1 },
     { title: 'Second', id: 2 },
     { title: 'Third', id: 3 },
     { title: 'Fourth', id: 4 },
-    { title: 'Fifth', id: 5 , hasNewerData:true},
+    { title: 'Fifth', id: 5, hasNewerData: true }
   ];
 
   items = {
-    results : this.itemsDefault
-   };
+    results: this.itemsDefault
+  };
 
-
-   
   errorModel = {
-    results:[],
+    results: [],
     metadata: {
       messages: [
         {
@@ -35,19 +33,16 @@ export class ResultListBasic {
             {
               id: 'backward',
               text: 'Go back',
-              classes: 'usa-button--secondary',
               action: this.gobackbutton
-            },
-            
+            }
           ]
         }
       ]
     }
   };
 
-
   infoModel = {
-    results:[],
+    results: [],
     metadata: {
       messages: [
         {
@@ -76,13 +71,12 @@ export class ResultListBasic {
   };
 
   defaultModel = {
-    results : this.itemsDefault
-  }
+    results: this.itemsDefault
+  };
   emptyModel = {
-    results : []
-  }
-  gobackbutton() { 
+    results: []
+  };
+  gobackbutton() {
     console.log('testteshvhjkl');
   }
- 
 }
