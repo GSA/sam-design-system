@@ -21,6 +21,7 @@ export class ResultListBasic {
   };
 
   errorModel = {
+    results: [],
     metadata: {
       messages: [
         {
@@ -41,6 +42,7 @@ export class ResultListBasic {
   };
 
   infoModel = {
+    results: [],
     metadata: {
       messages: [
         {
