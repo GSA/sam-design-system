@@ -21,7 +21,6 @@ export class ResultListBasic {
   };
 
   errorModel = {
-    results: [],
     metadata: {
       messages: [
         {
@@ -42,7 +41,6 @@ export class ResultListBasic {
   };
 
   infoModel = {
-    results: [],
     metadata: {
       messages: [
         {
@@ -62,7 +60,6 @@ export class ResultListBasic {
               id: 'forward',
               text: 'Go forward',
               classes: 'usa-button usa-button--secondary width-card margin-y-2',
-              action: this.gobackbutton
             }
           ]
         }
@@ -77,6 +74,6 @@ export class ResultListBasic {
     results: []
   };
   gobackbutton() {
-    console.log('testteshvhjkl');
+    console.log('button click');
   }
 }

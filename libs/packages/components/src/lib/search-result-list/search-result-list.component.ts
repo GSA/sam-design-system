@@ -9,7 +9,7 @@ import {Location} from '@angular/common';
 
 export class SdsSearchResultListComponent  {
 
-  updateModel : any;
+  public updateModel = new SearchModel();;
 
    /**
    * Model for search results
