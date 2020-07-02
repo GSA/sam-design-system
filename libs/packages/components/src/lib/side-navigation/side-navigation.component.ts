@@ -80,7 +80,10 @@ export class SdsSideNavigationComponent {
    * @param id
    */
 
-   @Input() multi: boolean = true;
+   @Input() multi: boolean;
+   @Input() pageHeader: string;
+
+
 
   select(id: string) {
     this.deselect();

@@ -1,4 +1,5 @@
-<nav>
+<div class="text-normal">{{ pageHeader }}</div>
+  <nav>
   <ul class="usa-sidenav">
     <li *ngFor="let link of model.navigationLinks" class="sidenav__item">
       <ng-container [ngTemplateOutlet]="sideNavLinkTemplate" [ngTemplateOutletContext]="{$implicit:link}">
@@ -38,5 +39,5 @@
 
 <ng-template #sideNavEVENTLinkTemplate let-link>
   <a [attr.class]="link.selected ? ' usa-current' : ''" href="javascript:void(0)"
-    (click)="linkClickEvent(link)"><span>{{link.text}}{{'Updated here'}}</span></a>
+    (click)="linkClickEvent(link)"><span>{{link.text}}</span></a>
 </ng-template>

@@ -18,9 +18,11 @@ export class SideNavigationOptional {
   @ViewChild('filtersAccordion')
   filtersAccordion: CdkAccordionItem;
   @ViewChild('sideNav') sideNav;
+  @ViewChild('multiSelect') multiSelect: CdkAccordionItem;
   public pageHeader: string;
   navigationExpanded = true;
   sideNavExpanded = true;
+  multi: boolean;
   constructor(
     private activeRoute: ActivatedRoute,
     private change: ChangeDetectorRef
@@ -121,7 +123,7 @@ export class SideNavigationOptional {
   }
 
   onLinkClick() {
-    if (!this.filtersAccordion.expanded) {
+    if (this.filtersAccordion && !this.filtersAccordion.expanded) {
       this.filtersAccordion.toggle();
     }
     this.navigationAccordion.toggle();
