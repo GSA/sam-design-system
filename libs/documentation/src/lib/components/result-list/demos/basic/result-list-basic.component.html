@@ -1,4 +1,5 @@
 <sds-page class="condensed margin-bottom-0">
+    <div *ngIf="!cutsomTemplate">
   <sds-search-result-list [model]="items">
     <ng-template #resultContent let-item>
       <ul class="usa-list usa-list--unstyled">
@@ -6,18 +7,43 @@
       </ul>
     </ng-template>
   </sds-search-result-list>
+</div>
+<div *ngIf="cutsomTemplate">
+  <sds-search-result-list [model]="emptyModel" [cutsomTemplate]="temp" >
+    <ng-template #resultContent let-item>
+      <ul class="usa-list usa-list--unstyled">
+        <li>ID {{ item.id }} - {{ item.title }}</li>
+      </ul>
+    </ng-template>
+  </sds-search-result-list>
+</div>
   <hr class="margin-top-4" />
   <p>Apply different items to the example:</p>
- <button (click)="items = defaultModel" class="usa-button usa-button--base" [ngClass]="{ 'usa-button--active': items === defaultModel }">
+ <button (click)="onModelChange('default')" class="usa-button usa-button--base" [ngClass]="{ 'usa-button--active': items === defaultModel }">
     5 Item List
   </button>
-  <button (click)="items = emptyModel" class="usa-button usa-button--base" [ngClass]="{ 'usa-button--active': items === null }">
+  <button (click)="onModelChange('emptyModel')" class="usa-button usa-button--base" [ngClass]="{ 'usa-button--active': items === emptyModel }">
     Empty List
   </button>
-  <button (click)="items = errorModel" class="usa-button usa-button--base" [ngClass]="{ 'usa-button--active': items === errorModel }">
+  <button (click)="onModelChange('errorModel')" class="usa-button usa-button--base" [ngClass]="{ 'usa-button--active': items === errorModel }">
     Error
   </button>
-  <button (click)="items = infoModel" class="usa-button usa-button--base" [ngClass]="{ 'usa-button--active': items === infoModel }">
+  <button (click)="onModelChange('infoModel')" class="usa-button usa-button--base" [ngClass]="{ 'usa-button--active': items === infoModel }">
     Info
   </button>
+  <button (click)="cutsomTemplate = true" class="usa-button usa-button--base" [ngClass]="{ 'usa-button--active': cutsomTemplate === true }">
+  Template
+  </button>
 </sds-page>
+
+<ng-template #temp let-item>
+  <div class="grid-row border-1px border-base-lighter bg-base-lightest"> 
+    <div class="grid-col-fill display-flex flex-column padding-y-1">
+      <h1 class="margin-bottom-105 text-semibold">No results found</h1>
+      <p class="margin-y-0 font-sans-lg">We couldn't find a match for your search criteria.</p>
+      <p class="margin-y-0 font-sans-lg">Please try another search or go back to previous results.</p>
+      <div class="margin-top-3">
+        </div>
+    </div>
+  </div>
+</ng-template>
