@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SideNavigationOptional {
   public navigationModel: SideNavigationModel = navigationConfig;
-  form: FormGroup;
+  form = new FormGroup({});
   filterModel: any;
 
   @ViewChild('navigationAccordion')
