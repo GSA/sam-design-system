@@ -5,10 +5,9 @@ import {
 @Component({
   templateUrl: './result-list-basic.component.html'
 })
-
 export class ResultListBasic {
   constructor() { }
-  cutsomTemplate = false;
+
   itemsDefault = [
     { title: 'First', id: 1 },
     { title: 'Second', id: 2 },
@@ -70,38 +69,12 @@ export class ResultListBasic {
     }
   };
 
- 
-
   defaultModel = {
     results: this.itemsDefault
   };
   emptyModel = {
     results: []
   };
-  onModelChange(val) {
-    this.cutsomTemplate = false;
-    switch(val) { 
-      case 'errorModel': { 
-        this.items = this.errorModel;
-         break; 
-      } 
-      case 'emptyModel': { 
-        this.items = this.emptyModel;
-         break; 
-      } 
-      case 'infoModel': {
-        this.items = this.infoModel;
-        break; 
-      }
-      default: { 
-        this.items = this.defaultModel; 
-         break; 
-      } 
-   } 
-  
-
-   
-  }
   gobackbutton() {
     console.log('button click');
   }
