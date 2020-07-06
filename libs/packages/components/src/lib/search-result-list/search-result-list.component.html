@@ -7,10 +7,10 @@
   <hr *ngIf="divider && updateModel?.results?.length" class="thin" />
 </ng-container>
 
-<ng-container *ngIf="(cutsomTemplate && !(updateModel?.results?.length))" [ngTemplateOutlet]="cutsomTemplate" [ngTemplateOutletContext]="{$implicit:updateModel}">
+<ng-container *ngIf="(noResultsTemplate && !(updateModel?.results?.length))" [ngTemplateOutlet]="noResultsTemplate" [ngTemplateOutletContext]="{$implicit:updateModel}">
 </ng-container>
 
-<ng-container *ngIf="!cutsomTemplate">
+<ng-container *ngIf="!noResultsTemplate">
   <ng-container *ngIf="(updateModel == null || (!updateModel?.metadata?.messages && updateModel?.results?.length === 0))">
     <div class="sds-card sds-card--vertical sds-card--shadowed sds-card--bordered">
       <div class="sds-card__header">

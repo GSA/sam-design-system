@@ -13,7 +13,7 @@ export class SdsSearchResultListComponent  {
     /**
   * Allow to insert a customized template for no results to use
   */
- @Input() cutsomTemplate: TemplateRef<any>;
+ @Input() noResultsTemplate: TemplateRef<any>;
 
 
    /**
