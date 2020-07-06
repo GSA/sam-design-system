@@ -18,11 +18,9 @@ export class SideNavigationOptional {
   @ViewChild('filtersAccordion')
   filtersAccordion: CdkAccordionItem;
   @ViewChild('sideNav') sideNav;
-  @ViewChild('multiSelect') multiSelect: CdkAccordionItem;
   public selectByName: string;
   navigationExpanded = true;
   sideNavExpanded = true;
-  multi: boolean;
   constructor(
     private activeRoute: ActivatedRoute,
     private change: ChangeDetectorRef

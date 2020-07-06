@@ -2,7 +2,6 @@ import { Component, Input, Output, EventEmitter, ViewChild, TemplateRef } from '
 import { SideNavigationModel, NavigationLink } from './model/side-navigation-model';
 import { INavigationLink, NavigationMode } from '../common-navigation/common-navigation-model';
 import { NavigationHelper } from '../common-navigation/navigation-helper';
-import { NgControl } from '@angular/forms';
 
 @Component({
   selector: 'sds-side-navigation',
@@ -80,8 +79,6 @@ export class SdsSideNavigationComponent {
    * @param id
    */
 
-   @Input() multi: boolean;
-   @Input() selectByName: string;
 
 
 
@@ -153,14 +150,12 @@ export class SdsSideNavigationComponent {
    */
   @Output()
   linkEvent = new EventEmitter<INavigationLink>();
-
   /**
    * Link clicked and emits the link data into an event
    * @param link
    */
   linkClickEvent(link: INavigationLink) {
     this.linkEvent.emit(link);
-    this.multi = true;
     return false;
   }
 

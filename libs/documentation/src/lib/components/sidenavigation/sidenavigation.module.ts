@@ -16,15 +16,8 @@ import { SideNavigationOptional } from './demos/optional/sidenavigation-optional
 
 declare var require: any;
 const DEMOS = {
-  // basic: {
-  //   title: 'SAM Side Navigation',
-  //   type: SideNavigationBasic,
-  //   code: require('!!raw-loader!./demos/basic/sidenavigation-basic.component'),
-  //   markup: require('!!raw-loader!./demos/basic/sidenavigation-basic.component.html'),
-  //   path: 'libs/documentation/src/lib/components/sidenavigation/demos/basic'
-  // },
   optional: {
-    title: 'Optional Side Navigation',
+    title: 'Side Navigation',
     type: SideNavigationOptional,
     code: require('!!raw-loader!./demos/optional/sidenavigation-optional.component'),
     markup: require('!!raw-loader!./demos/optional/sidenavigation-optional.component.html'),
