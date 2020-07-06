@@ -10,10 +10,11 @@ import {Location} from '@angular/common';
 export class SdsSearchResultListComponent  {
 
   public updateModel = new SearchModel();
-  /**
+    /**
   * Allow to insert a customized template for no results to use
   */
  @Input() cutsomTemplate: TemplateRef<any>;
+
 
    /**
    * Model for search results

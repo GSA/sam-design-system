@@ -12,36 +12,37 @@
 
 <ng-container *ngIf="!cutsomTemplate">
   <ng-container *ngIf="(updateModel == null || (!updateModel?.metadata?.messages && updateModel?.results?.length === 0))">
-    <div class="grid-row border-1px border-base-lighter bg-base-lightest">
-      <div class="grid-col-auto text-center text-base margin-4">
+    <div class="sds-card sds-card--vertical sds-card--shadowed sds-card--bordered">
+      <div class="sds-card__header">
         <fa-icon [icon]="['sds', 'search']" [classes]="['search']" size="7x"></fa-icon>
       </div>
-      <div class="grid-col-fill display-flex flex-column padding-y-1">
-        <h1 class="margin-bottom-105 text-semibold">No matches found</h1>
-        <p class="margin-y-0 font-sans-lg">We couldn't find a match for your search criteria.</p>
-        <p class="margin-y-0 font-sans-lg">Please try another search or go back to previous results.</p>
+      <div class="sds-card__body margin-2">
+        <h1 class="sds-card__title">No matches found</h1>
+        <p>We couldn't find a match for your search criteria.</p>
+        <p>Please try another search or go back to previous results.</p>
         <div class="margin-top-3">
-          <button class="usa-button  usa-button--secondary width-card margin-y-2" (click)="goBack()">Go Back</button>
+          <button class="usa-button usa-button--outline" (click)="goBack()">Go Back</button>
         </div>
       </div>
     </div>
   </ng-container>
-  <ng-container *ngIf="updateModel?.metadata?.messages" class="sds-card--shadowed sds-card--bordered margin-bottom-2">
-    <div *ngFor="let msg of updateModel.metadata.messages" class="sds-card__content grid-row" [ngClass]="msg.classes ? msg.classes : 'border-1px border-base-lighter bg-base-lightest '">
-      <div class="grid-col-auto text-center text-base margin-4">
-        <fa-icon [icon]="(msg.type ==='error') ?  ['sds', 'alert-error'] : ['sds', 'information-circle']" [classes]="['search']"
+  <ng-container *ngIf="updateModel?.metadata?.messages">
+    <div *ngFor="let msg of updateModel.metadata.messages" class="sds-card sds-card--vertical sds-card--shadowed sds-card--bordered"
+      [ngClass]="msg.classes">
+      <div class="sds-card__header">
+        <fa-icon [icon]="(msg.type ==='error') ?  ['sds', 'alert-error'] : ['sds', 'information-circle']" class="sds-card__icon"
           size="5x"></fa-icon>
       </div>
-      <div class="grid-col-fill display-flex flex-column padding-y-1">
-        <h1 class="margin-bottom-105 text-semibold">{{msg.title}}</h1>
-        <p class="margin-y-0 font-sans-lg" [innerHTML]="msg.message"></p>
-        <div class="margin-top-3">
-          <button *ngFor="let button of msg.buttons" class="usa-button  width-card" [ngClass]="button.classes ? button.classes : 'usa-button--secondary'"
-            (click)="button.action ? button.action(): ''">
+      <div class="sds-card__body margin-2">
+        <h1 class="sds-card__title">{{msg.title}}</h1>
+        <p [innerHTML]="msg.message"></p>
+        <div class="sds-card__buttons">
+          <button *ngFor="let button of msg.buttons" class="usa-button" [ngClass]="button.classes ? button.classes : 'usa-button--outline'"
+            (click)="button.action()">
             {{button.text}}
           </button>
         </div>
       </div>
-    </div>
-  </ng-container>
+      </div>
+    </ng-container>
 </ng-container>
