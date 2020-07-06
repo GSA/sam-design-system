@@ -1,5 +1,4 @@
-<div class="text-normal">{{ pageHeader }}</div>
-  <nav>
+<nav>
   <ul class="usa-sidenav">
     <li *ngFor="let link of model.navigationLinks" class="sidenav__item">
       <ng-container [ngTemplateOutlet]="sideNavLinkTemplate" [ngTemplateOutletContext]="{$implicit:link}">

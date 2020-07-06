@@ -19,7 +19,7 @@ export class SideNavigationOptional {
   filtersAccordion: CdkAccordionItem;
   @ViewChild('sideNav') sideNav;
   @ViewChild('multiSelect') multiSelect: CdkAccordionItem;
-  public pageHeader: string;
+  public selectByName: string;
   navigationExpanded = true;
   sideNavExpanded = true;
   multi: boolean;
@@ -82,7 +82,7 @@ export class SideNavigationOptional {
   private findItemByQueryString(linkList: NavigationLink[]) {
     for (let i = 0; i < linkList.length; i++) {
       let item = linkList[i];
-      if (item.text.trim() === this.pageHeader.trim()) {
+      if (item.text.trim() === this.selectByName.trim()) {
         this.selectedId = item.id;
       } else {
         if (item.children && item.children.length !== 0) {
@@ -101,13 +101,13 @@ export class SideNavigationOptional {
 
     this.activeRoute.queryParams.subscribe(queryParams => {
       if (queryParams.item) {
-        this.pageHeader = queryParams.item;
+        this.selectByName = queryParams.item;
         if (this.navigationModel.navigationLinks) {
           this.findItemByQueryString(this.navigationModel.navigationLinks);
           this.sideNav.select(this.selectedId);
         }
       } else {
-        this.pageHeader = 'All Domains';
+        this.selectByName = 'All Domains';
       }
       this.change.detectChanges();
     });

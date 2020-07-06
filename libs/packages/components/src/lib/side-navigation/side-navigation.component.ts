@@ -81,7 +81,7 @@ export class SdsSideNavigationComponent {
    */
 
    @Input() multi: boolean;
-   @Input() pageHeader: string;
+   @Input() selectByName: string;
 
 
 
@@ -180,6 +180,7 @@ export class SdsSideNavigationComponent {
         url += '&' + queryParams;
       }
     }
+    console.log(url)
     return url;
   }
 
