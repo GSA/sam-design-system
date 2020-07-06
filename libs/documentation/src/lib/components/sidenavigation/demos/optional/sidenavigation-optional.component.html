@@ -6,7 +6,7 @@
     <sds-accordion-item #navigationAccordion [expanded]="navigationExpanded">
       <sds-accordion-item-header>
         <div class="sds-accordion__item-header-title">Select Domain</div>
-        <span class="text-normal">{{ selectByName }}</span>
+        <span class="text-normal">{{ selectedCategory }}</span>
       </sds-accordion-item-header>
       <sds-side-navigation #sideNav [model]="navigationModel"  (linkEvent)="onLinkClick()"></sds-side-navigation>
     </sds-accordion-item>

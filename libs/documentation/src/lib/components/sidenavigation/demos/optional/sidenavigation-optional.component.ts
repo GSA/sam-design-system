@@ -18,7 +18,7 @@ export class SideNavigationOptional {
   @ViewChild('filtersAccordion')
   filtersAccordion: CdkAccordionItem;
   @ViewChild('sideNav') sideNav;
-  public selectByName: string;
+  public selectedCategory: string;
   navigationExpanded = true;
   sideNavExpanded = true;
   constructor(
@@ -80,7 +80,7 @@ export class SideNavigationOptional {
   private findItemByQueryString(linkList: NavigationLink[]) {
     for (let i = 0; i < linkList.length; i++) {
       let item = linkList[i];
-      if (item.text.trim() === this.selectByName.trim()) {
+      if (item.text.trim() === this.selectedCategory.trim()) {
         this.selectedId = item.id;
       } else {
         if (item.children && item.children.length !== 0) {
@@ -99,13 +99,13 @@ export class SideNavigationOptional {
 
     this.activeRoute.queryParams.subscribe(queryParams => {
       if (queryParams.item) {
-        this.selectByName = queryParams.item;
+        this.selectedCategory = queryParams.item;
         if (this.navigationModel.navigationLinks) {
           this.findItemByQueryString(this.navigationModel.navigationLinks);
           this.sideNav.select(this.selectedId);
         }
       } else {
-        this.selectByName = 'All Domains';
+        this.selectedCategory = 'All Domains';
       }
       this.change.detectChanges();
     });
