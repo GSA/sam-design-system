@@ -277,7 +277,6 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
                     route: '/component/sideNav',
                     id: 'linkg2gc1c4p1',
                     mode: NavigationMode.INTERNAL
-                    //, children: [{ text: 'Great 1 of  Great 1 of Grandchild 2 of Child 4 of Parent 1', route: '/component/sideNav', id: 'linkg1gc1c4p1' }]
                   }
                 ]
               }
@@ -349,10 +348,6 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
             id: 'linkc1p1',
             mode: NavigationMode.INTERNAL
           }
-          // {
-          //   text: 'Child 2 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Child 2 of Parent 1' }, id: 'linkc2p1', mode: NavigationMode.INTERNAL, children: [
-          //     { text: 'Grandchild 1 of Child 2 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Grandchild 1 of Child 2 of Parent 1' }, id: 'linkgc1c2p1', mode: NavigationMode.INTERNAL }]
-          // }
         ]
       }
     ]
