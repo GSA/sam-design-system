@@ -3,7 +3,7 @@ import { FieldType } from '@ngx-formly/core';
 
 @Component({
   selector: 'sds-formly-field-multicheckbox',
-  templateUrl: 
+  templateUrl: './multicheckbox.html'
 //   template: `
 //   <div class="usa-checkbox">
 //     <div *ngFor="let option of to.options | formlySelectOptions:field | async; let i = index;">
