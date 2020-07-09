@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'sds-formly-field-multicheckbox',
@@ -40,5 +41,12 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType {
       this.formControl.patchValue({ ...this.formControl.value, [value]: checked });
     }
     this.formControl.markAsTouched();
+  }
+
+  onGroupChange(ev) {
+    const items: any [] = this.to.options;
+    items.forEach(x =>{
+      x.checked =ev.target.checked;
+    })
   }
 }
