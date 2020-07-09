@@ -84,7 +84,7 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
     } else if (this.inputEl || this.selectEl) {
       this.model.searchText = this.inputEl? this.inputEl.nativeElement.value : '';
       if (this.selectEl && this.selectEl.nativeElement.value) {
-        this.model.searchCatergory = this.selectEl.nativeElement.value;
+        this.model.searchCategory = this.selectEl.nativeElement.value;
       }
       this._onChange(this.model);
     }
