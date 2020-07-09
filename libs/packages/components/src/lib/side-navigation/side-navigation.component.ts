@@ -42,6 +42,7 @@ export class SdsSideNavigationComponent {
 
 
 
+
   getItemTemplate(item: NavigationLink): TemplateRef<any> {
     let template = null;
     switch (item.mode) {
