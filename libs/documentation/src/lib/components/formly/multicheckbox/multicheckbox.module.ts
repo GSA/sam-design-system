@@ -8,8 +8,8 @@ import { DocumentationTemplatePage } from '../../shared/template-page/template.c
 import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../../shared/index';
 import { ComponentWrapperComponent } from '../../../shared/component-wrapper/component-wrapper.component';
 import { MultiCheckboxBasicModule } from './demos/basic/multicheckbox-basic.module';
-import { MultiCheckboxSelectAll } from './demos/selectAll/multicheckbox-selectall.component';
-import { MultiCheckboxSelectAllModule } from './demos/selectAll/multicheckbox-selectall.module';
+import { MultiCheckboxSelectAll } from './demos/selectall/multicheckbox-selectall.component';
+import { MultiCheckboxSelectAllModule } from './demos/selectall/multicheckbox-selectall.module';
 
 declare var require: any;
 const DEMOS = {
