@@ -19,15 +19,14 @@ export class MultiCheckboxBasic {
         label: 'Socio-Economic Status',
         description: 'Select any socio-economic categories which reflect the current status of your entity',
         required: true,
-        // selectAllOption: true,
         options: [
           {
             key: 'vet',
-            value: 'Veteran Owned',
+            value: 'Veteran Owned'
           },
           {
             key: 'women',
-            value: 'Women Owned',
+            value: 'Women Owned'
           },
           {
             key: 'minority',

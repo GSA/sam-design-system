@@ -30,7 +30,7 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType {
     this.selectAllChecked = Object.values(this.formControl.value).filter(x => x === true).length > 0? true: false;
   }
 
-  onGroupChange(ev) {
+  onSelectAllChange(ev) {
     if (Array.isArray(this.field.templateOptions.options)) {
       this.field.templateOptions.options.map(option => {
         this.onChange(option.key, ev.target.checked)

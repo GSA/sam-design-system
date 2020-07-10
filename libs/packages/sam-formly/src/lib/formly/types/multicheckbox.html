@@ -10,7 +10,7 @@
             type="checkbox"
             [name]="id + '_name_' + i"
             value="value"
-            (change)="onGroupChange($event)"
+            (change)="onSelectAllChange($event)"
             [checked]="selectAllChecked"
           />
           <label class="usa-checkbox__label" [for]="id + '_Select'"
