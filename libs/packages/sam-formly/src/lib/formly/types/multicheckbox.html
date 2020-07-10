@@ -4,26 +4,19 @@
         <li>
             <div>
                 <input class="usa-checkbox__input" [id]="id + '_Select'" type="checkbox" [name]="id + '_name_' + i"
-                    value="value" (change)="onGroupChange($event)">
+                    value="value" (change)="onGroupChange($event)" [checked]= "selectAllOption">
                 <label class="usa-checkbox__label" [for]="id + '_Select'">{{to.label}}</label>
             </div>
         </li>
         <ul class="margin-left-4 usa-list--unstyled">
             <li>
-                <div *ngFor="let option of to.options; let i = index;">
-                    <input class="usa-checkbox__input" [id]="id + '_' + i" type="checkbox" [name]="id + '_name_' + i"
-                        [disabled]="option.disabled" [value]="option.value" [formlyAttributes]="field" 
-                        (change)="onChange(option.value, $event.target.checked)"
-                        [checked]="option.checked">
-                    <label class="usa-checkbox__label" [for]="id + '_' + i">{{i}}-{{ option.value |json }}</label>
-                </div>
-                <!-- <div *ngFor="let option of to.options | formlySelectOptions:field | async; let i = index;">
+                <div *ngFor="let option of to.options | formlySelectOptions:field | async; let i = index;">
                     <input class="usa-checkbox__input" [id]="id + '_' + i" type="checkbox" [name]="id + '_name_' + i"
                         [disabled]="option.disabled" [value]="option.value" [formlyAttributes]="field" 
                         (change)="onChange(option.value, $event.target.checked)"
                         [checked]="formControl.value && (this.to.type === 'array' ? formControl.value.includes(option.value) : formControl.value[option.value])">
-                    <label class="usa-checkbox__label" [for]="id + '_' + i">{{i}}-{{ option.label }}</label>
-                </div> -->
+                    <label class="usa-checkbox__label" [for]="id + '_' + i">{{ option.label }}</label>
+                </div>
             </li>
         </ul>
     </ul>
