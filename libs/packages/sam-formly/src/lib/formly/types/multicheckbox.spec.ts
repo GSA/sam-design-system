@@ -21,7 +21,7 @@ export function createGenericTestComponent<T>(html: string, type: { new(...args:
 
 let testComponentInputs;
 
-fdescribe('Formly Field multicheckbox Component', () => {
+describe('Formly Field multicheckbox Component', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             declarations: [TestComponent, FormlyFieldMultiCheckboxComponent],
