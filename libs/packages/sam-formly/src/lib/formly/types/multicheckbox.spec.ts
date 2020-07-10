@@ -7,6 +7,7 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule, FormlyForm } from '@ngx-formly/core';
 import { FormlySelectModule } from '@ngx-formly/core/select';
 import { FormlyFieldMultiCheckboxComponent } from './multicheckbox';
+import { SdsCollapseModule } from '@gsa-sam/components';
 
 const createTestComponent = (html: string) =>
     createGenericTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;
@@ -18,7 +19,6 @@ export function createGenericTestComponent<T>(html: string, type: { new(...args:
     return fixture as ComponentFixture<T>;
 }
 
-
 let testComponentInputs;
 
 describe('Formly Field multicheckbox Component', () => {
@@ -29,6 +29,7 @@ describe('Formly Field multicheckbox Component', () => {
                 NoopAnimationsModule,
                 ReactiveFormsModule,
                 FormlySelectModule,
+                SdsCollapseModule,
                 FontAwesomeModule,
                 FormlyModule.forRoot({
                     types: [
@@ -75,8 +76,8 @@ describe('Formly Field multicheckbox Component', () => {
               }];
 
             const fixture = createTestComponent('<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'),
-                trigger = fixture.nativeElement.querySelector('usa-checkbox')
-            const expectedValue = fixture.debugElement.query(By.css('.usa-checkbox')).componentInstance.field;
+                trigger = fixture.nativeElement.querySelector('usa-fieldset')
+            const expectedValue = fixture.debugElement.query(By.css('.usa-fieldset')).componentInstance.field;
             fixture.detectChanges();
             expect(expectedValue.templateOptions.options.length).toBe(3)
 
@@ -107,8 +108,8 @@ describe('Formly Field multicheckbox Component', () => {
               }];
 
             const fixture = createTestComponent('<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'),
-                trigger = fixture.nativeElement.querySelector('usa-checkbox')
-            const expectedValue = fixture.debugElement.query(By.css('.usa-checkbox')).componentInstance.field;
+                trigger = fixture.nativeElement.querySelector('usa-fieldset')
+            const expectedValue = fixture.debugElement.query(By.css('.usa-fieldset')).componentInstance.field;
             fixture.detectChanges();
             const checkboxes = fixture.debugElement.queryAll(By.css('.usa-checkbox__input')) as DebugElement[];
 
