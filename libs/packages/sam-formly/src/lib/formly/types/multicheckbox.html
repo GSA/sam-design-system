@@ -5,10 +5,21 @@
             <div>
                 <input class="usa-checkbox__input" [id]="id + '_Select'" type="checkbox" [name]="id + '_name_' + i"
                     value="value" (change)="onGroupChange($event)" [checked]= "selectAllOption">
-                <label class="usa-checkbox__label" [for]="id + '_Select'">{{to.label}}</label>
+                <label class="usa-checkbox__label" [for]="id + '_Select'">{{to.label}} 
+                    <span class="margin-right-2">
+                        <button type="button"
+                        class="sds-button sds-button--circular"
+                        [attr.aria-expanded]="!isCollapsedContent"
+                        aria-controls="collapseID"
+                        (click)="isCollapsedContent = !isCollapsedContent"
+                        >  <fa-icon [icon]="['fas', 'angle-down']" size="sm"></fa-icon>
+                        </button>
+                    </span>
+                </label>
             </div>
+          
         </li>
-        <ul class="margin-left-4 usa-list--unstyled">
+        <ul id="collapseID" [sdsCollapse]="isCollapsedContent" class="margin-left-4 usa-list--unstyled">
             <li>
                 <div *ngFor="let option of to.options | formlySelectOptions:field | async; let i = index;">
                     <input class="usa-checkbox__input" [id]="id + '_' + i" type="checkbox" [name]="id + '_name_' + i"

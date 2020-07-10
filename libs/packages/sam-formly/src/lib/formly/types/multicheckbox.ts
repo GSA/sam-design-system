@@ -29,6 +29,7 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType {
       options: [],
     },
   };
+  isCollapsedContent = false;
   selectAllOption: boolean;
   onChange(value: any, checked: boolean) {
     if (this.to.type === 'array') {
