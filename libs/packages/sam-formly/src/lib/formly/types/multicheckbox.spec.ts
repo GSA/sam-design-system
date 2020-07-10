@@ -21,7 +21,7 @@ export function createGenericTestComponent<T>(html: string, type: { new(...args:
 
 let testComponentInputs;
 
-describe('Formly Field multicheckbox Component', () => {
+fdescribe('Formly Field multicheckbox Component', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             declarations: [TestComponent, FormlyFieldMultiCheckboxComponent],
@@ -83,7 +83,7 @@ describe('Formly Field multicheckbox Component', () => {
 
         });
 
-        it('on change array', () => {
+        it('on change with selectAllOption enabled', () => {
             testComponentInputs.fields = [   {
                 key: 'multi-checkbox',
                 type: 'multicheckbox',
@@ -117,6 +117,80 @@ describe('Formly Field multicheckbox Component', () => {
             checkboxes[0].nativeElement.dispatchEvent(new Event('click'));
             checkboxes[0].nativeElement.click();
             checkboxes[0].nativeElement.dispatchEvent(new Event('click'));
+        });
+
+        it('should check the select all when option is seleceted', () => {
+            testComponentInputs.fields = [   {
+                key: 'multi-checkbox',
+                type: 'multicheckbox',
+                templateOptions: {
+                  label: 'Formly multi Select checkbox',
+                  selectAllOption: true,
+                  options: [
+                    {
+                      key: 'sports',
+                      value: 'Sports'
+                    },
+                    {
+                      key: 'movies',
+                      value: 'Movies'
+                    },
+                    {
+                      key: 'others',
+                      value: 'Others'
+                    }
+                  ]
+                },
+              }];
+
+            const fixture = createTestComponent('<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'),
+                trigger = fixture.nativeElement.querySelector('usa-fieldset')
+            const expectedValue = fixture.debugElement.query(By.css('.usa-fieldset')).componentInstance.field;
+            fixture.detectChanges();
+            const checkboxes = fixture.debugElement.queryAll(By.css('.usa-checkbox__input')) as DebugElement[];
+       
+            checkboxes[1].nativeElement.click();
+            checkboxes[1].nativeElement.dispatchEvent(new Event('click'));
+           fixture.detectChanges(); 
+           expect(checkboxes[0].nativeElement.checked).toBe(true);
+        });
+
+        it('on change group check', () => {
+            testComponentInputs.fields = [   {
+                key: 'multi-checkbox',
+                type: 'multicheckbox',
+                templateOptions: {
+                  label: 'Formly multi Select checkbox',
+                  selectAllOption: true,
+                  options: [
+                    {
+                      key: 'sports',
+                      value: 'Sports'
+                    },
+                    {
+                      key: 'movies',
+                      value: 'Movies'
+                    },
+                    {
+                      key: 'others',
+                      value: 'Others'
+                    }
+                  ]
+                },
+              }];
+
+            const fixture = createTestComponent('<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'),
+                trigger = fixture.nativeElement.querySelector('usa-fieldset')
+            const expectedValue = fixture.debugElement.query(By.css('.usa-fieldset')).componentInstance.field;
+            fixture.detectChanges();
+            const checkboxes = fixture.debugElement.queryAll(By.css('.usa-checkbox__input')) as DebugElement[];
+       
+            checkboxes[0].nativeElement.click();
+            checkboxes[0].nativeElement.dispatchEvent(new Event('click'));
+           fixture.detectChanges(); 
+           expect(checkboxes[1].nativeElement.checked).toBe(true);
+           expect(checkboxes[2].nativeElement.checked).toBe(true);
+           expect(checkboxes[3].nativeElement.checked).toBe(true);
         });
 
     });
