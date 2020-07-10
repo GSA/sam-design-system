@@ -8,6 +8,8 @@ import { DocumentationTemplatePage } from '../../shared/template-page/template.c
 import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../../shared/index';
 import { ComponentWrapperComponent } from '../../../shared/component-wrapper/component-wrapper.component';
 import { MultiCheckboxBasicModule } from './demos/basic/multicheckbox-basic.module';
+import { MultiCheckboxSelectAll } from './demos/selectAll/multicheckbox-selectall.component';
+import { MultiCheckboxSelectAllModule } from './demos/selectAll/multicheckbox-selectall.module';
 
 declare var require: any;
 const DEMOS = {
@@ -17,6 +19,13 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/basic/multicheckbox-basic.component'),
     markup: require('!!raw-loader!./demos/basic/multicheckbox-basic.component.html'),
     path: 'libs/documentation/src/lib/components/formly/multicheckbox/demos/basic'
+  },
+  selectall: {
+    title: 'Multi Checkbox with nesting',
+    type: MultiCheckboxSelectAll,
+    code: require('!!raw-loader!./demos/selectall/multicheckbox-selectall.component'),
+    markup: require('!!raw-loader!./demos/selectall/multicheckbox-selectall.component.html'),
+    path: 'libs/documentation/src/lib/components/formly/multicheckbox/demos/selectall'
   }
 };
 
@@ -48,7 +57,8 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    MultiCheckboxBasicModule
+    MultiCheckboxBasicModule,
+    MultiCheckboxSelectAllModule
   ]
 })
 export class MultiCheckboxModule {

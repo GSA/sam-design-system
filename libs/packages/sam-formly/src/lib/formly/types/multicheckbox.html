@@ -2,7 +2,7 @@
   <legend class="usa-sr-only">{{ to.label }}</legend>
   <ul class="usa-list--unstyled">
     <li>
-      <div class="grid-row">
+      <div class="grid-row" *ngIf="to.selectAllOption">
         <div>
           <input
             class="usa-checkbox__input"
