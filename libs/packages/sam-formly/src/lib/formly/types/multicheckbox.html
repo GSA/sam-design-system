@@ -25,6 +25,7 @@
             aria-controls="collapseID"
             (click)="isCollapsedContent = !isCollapsedContent"
           >
+            <span class="usa-sr-only">expand/collapsed</span>
             <fa-icon
               [icon]="
                 isCollapsedContent ? ['fas', 'angle-down'] : ['fas', 'angle-up']
