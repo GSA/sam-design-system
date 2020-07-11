@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { FieldType, FormlyTemplateOptions } from '@ngx-formly/core';
 
 @Component({
   selector: 'sds-formly-field-multicheckbox',
   templateUrl: './multicheckbox.html'
 })
-export class FormlyFieldMultiCheckboxComponent extends FieldType {
+export class FormlyFieldMultiCheckboxComponent extends FieldType implements OnInit {
   defaultOptions = {
     templateOptions: {
       options: [],
@@ -13,6 +13,10 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType {
   };
   isCollapsedContent = false;
   selectAllChecked: boolean;
+
+  ngOnInit() {
+    this.isSelectAllChecked();
+  }
   onChange(value: any, checked: boolean) {
     if (this.to.type === 'array') {
       this.formControl.patchValue(checked
@@ -26,8 +30,14 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType {
     this.formControl.markAsTouched();
   }
 
-  isSelectAllChecked(){
-    this.selectAllChecked = Object.values(this.formControl.value).filter(x => x === true).length > 0? true: false;
+  isSelectAllChecked() {
+    if (this.formControl && this.formControl.value) {
+      if (!(Array.isArray(this.formControl.value))) {
+        this.selectAllChecked = Object.values(this.formControl.value).filter(x => x === true).length > 0 ? true : false;
+      } else {
+        this.selectAllChecked = this.formControl.value.length > 0 ? true : false;
+      }
+    }
   }
 
   onSelectAllChange(ev) {
@@ -35,7 +45,6 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType {
       this.field.templateOptions.options.map(option => {
         this.onChange(option.key, ev.target.checked)
       })
-     
     }
   }
 }
