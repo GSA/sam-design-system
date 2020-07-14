@@ -1,6 +1,19 @@
-import { Component, Input, Output, EventEmitter, ViewChild, TemplateRef } from '@angular/core';
-import { SideNavigationModel, NavigationLink } from './model/side-navigation-model';
-import { INavigationLink, NavigationMode } from '../common-navigation/common-navigation-model';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ViewChild,
+  TemplateRef
+} from '@angular/core';
+import {
+  SideNavigationModel,
+  NavigationLink
+} from './model/side-navigation-model';
+import {
+  INavigationLink,
+  NavigationMode
+} from '../common-navigation/common-navigation-model';
 import { NavigationHelper } from '../common-navigation/navigation-helper';
 
 @Component({
@@ -9,7 +22,6 @@ import { NavigationHelper } from '../common-navigation/navigation-helper';
   styleUrls: ['./side-navigation.component.scss']
 })
 export class SdsSideNavigationComponent {
-
   /**
    * Reference to the the Template used for internal links
    */
@@ -34,14 +46,10 @@ export class SdsSideNavigationComponent {
   @ViewChild('sideNavEVENTLinkTemplate')
   private sideNavEVENTLinkTemplate: TemplateRef<any>;
 
-
   /**
    * Takes the navigation item and returns the template to be used
    * @param item navigation item
    */
-
-
-
 
   getItemTemplate(item: NavigationLink): TemplateRef<any> {
     let template = null;
@@ -73,15 +81,12 @@ export class SdsSideNavigationComponent {
   /**
    * Model used for the different display portions of the side navigation
    */
-   @Input() model: SideNavigationModel;
+  @Input() model: SideNavigationModel;
 
   /**
    * Selects new item and parents and deselects previous
    * @param id
    */
-
-
-
 
   select(id: string) {
     this.deselect();
@@ -118,7 +123,6 @@ export class SdsSideNavigationComponent {
     }
   }
 
-
   /**
    * Deselects all the items in the side navigation model
    */
@@ -150,13 +154,13 @@ export class SdsSideNavigationComponent {
    * event for event based
    */
   @Output()
-  linkEvent = new EventEmitter<INavigationLink>();
+  navigate = new EventEmitter<INavigationLink>();
   /**
    * Link clicked and emits the link data into an event
    * @param link
    */
-  linkClickEvent(link: INavigationLink) {
-    this.linkEvent.emit(link);
+  navigation(link: INavigationLink) {
+    this.navigate.emit(link);
     return false;
   }
 
@@ -176,7 +180,7 @@ export class SdsSideNavigationComponent {
         url += '&' + queryParams;
       }
     }
-    console.log(url)
+    console.log(url);
     return url;
   }
 
@@ -187,9 +191,10 @@ export class SdsSideNavigationComponent {
   private queryStringBuilder(item: NavigationLink) {
     const ret = [];
     for (let d in item.queryParams) {
-      ret.push(encodeURIComponent(d) + '=' + encodeURIComponent(item.queryParams[d]));
+      ret.push(
+        encodeURIComponent(d) + '=' + encodeURIComponent(item.queryParams[d])
+      );
     }
     return ret.join('&');
   }
-
 }

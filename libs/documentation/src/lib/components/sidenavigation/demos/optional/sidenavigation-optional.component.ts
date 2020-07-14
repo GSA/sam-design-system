@@ -19,8 +19,7 @@ export class SideNavigationOptional {
   filtersAccordion: CdkAccordionItem;
   @ViewChild('sideNav') sideNav;
   public selectedCategory: string;
-  navigationExpanded = true;
-  sideNavExpanded = true;
+
   constructor(
     private activeRoute: ActivatedRoute,
     private change: ChangeDetectorRef
@@ -53,20 +52,20 @@ export class SideNavigationOptional {
             description: 'Enter the name of your entity.',
             required: true
           }
-        },
-        {
-          key: 'expirationDateOption',
-          type: 'radio',
-          templateOptions: {
-            label: 'Expiration Date',
-            options: [
-              { label: '30 Days', value: '30' },
-              { label: '60 Days', value: '60' },
-              { label: '90 Days', value: '90' }
-            ]
-          }
         }
       ]
+    },
+    {
+      key: 'expirationDateOption',
+      type: 'radio',
+      templateOptions: {
+        label: 'Expiration Date',
+        options: [
+          { label: '30 Days', value: '30' },
+          { label: '60 Days', value: '60' },
+          { label: '90 Days', value: '90' }
+        ]
+      }
     }
   ];
 
@@ -120,10 +119,11 @@ export class SideNavigationOptional {
     }
   }
 
-  onLinkClick() {
-    if (this.filtersAccordion && !this.filtersAccordion.expanded) {
+  onNavigateLink() {
+    if (this.filtersAccordion && this.filtersAccordion.expanded) {
+      this.navigationAccordion.toggle();
+    } else if (this.navigationAccordion && this.navigationAccordion.expanded) {
       this.filtersAccordion.toggle();
     }
-    this.navigationAccordion.toggle();
   }
 }
