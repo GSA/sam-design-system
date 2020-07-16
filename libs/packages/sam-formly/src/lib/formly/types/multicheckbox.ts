@@ -10,10 +10,11 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType
   implements OnInit {
   defaultOptions = {
     templateOptions: {
-      options: []
+      options: [],
+      expandableOptions: false,
+      collapseContent: false
     }
   };
-  isCollapsedContent = false;
   allComplete: boolean;
   ariaChecked = '';
   ngOnInit() {

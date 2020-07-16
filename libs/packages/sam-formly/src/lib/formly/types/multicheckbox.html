@@ -20,18 +20,18 @@
             >{{ to.label }}
           </label>
         </div>
-        <div>
+        <div *ngIf="to.expandableOptions">
           <button
             type="button"
             class="sds-button padding-top-0"
-            [attr.aria-expanded]="!isCollapsedContent"
+            [attr.aria-expanded]="!to.collapseContent"
             aria-controls="collapseID"
-            (click)="isCollapsedContent = !isCollapsedContent"
+            (click)="to.collapseContent = !to.collapseContent"
           >
             <span class="usa-sr-only">expand/collapsed</span>
             <fa-icon
               [icon]="
-                isCollapsedContent ? ['fas', 'angle-down'] : ['fas', 'angle-up']
+                to.collapseContent ? ['fas', 'angle-down'] : ['fas', 'angle-up']
               "
               size="sm"
             ></fa-icon>
@@ -41,7 +41,7 @@
     </li>
     <ul
       id="collapseID"
-      [sdsCollapse]="isCollapsedContent"
+      [sdsCollapse]="to.collapseContent"
       class="margin-left-4 usa-list--unstyled"
     >
       <li>
