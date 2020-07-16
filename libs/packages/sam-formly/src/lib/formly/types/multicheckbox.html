@@ -20,7 +20,7 @@
         <div>
           <button
             type="button"
-            class="sds-button sds-button--circular"
+            class="sds-button padding-top-0"
             [attr.aria-expanded]="!isCollapsedContent"
             aria-controls="collapseID"
             (click)="isCollapsedContent = !isCollapsedContent"
@@ -64,9 +64,9 @@
                 : formControl.value[option.value])
             "
           />
-          <label class="usa-checkbox__label" [for]="id + '_' + i">{{
-            option.label
-          }}</label>
+          <label class="usa-checkbox__label" [for]="id + '_' + i"
+            >{{ option.label }}</label
+          >
         </div>
       </li>
     </ul>
