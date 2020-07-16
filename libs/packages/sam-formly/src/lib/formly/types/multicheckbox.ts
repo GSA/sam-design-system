@@ -61,13 +61,14 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType
   }
 
   _getAriaChecked(value) {
-    this.allComplete =
-      value === this.field.templateOptions.options.length ? true : false;
-
+    if (Array.isArray(this.field.templateOptions.options)) {
+      this.allComplete =
+        value === this.field.templateOptions.options.length ? true : false;
+    }
     if (value === 0) {
-      this.ariaChecked = 'true';
+      this.ariaChecked = 'false';
     } else {
-      this.ariaChecked = value > 0 && !this.allComplete ? 'mixed' : 'false';
+      this.ariaChecked = value > 0 && !this.allComplete ? 'mixed' : 'true';
     }
   }
 }
