@@ -5,15 +5,18 @@
       <div class="grid-row" *ngIf="to.selectAllOption">
         <div>
           <input
-            class="usa-checkbox__input"
             [id]="id + '_Select'"
             type="checkbox"
-            [name]="id + '_name_' + i"
+            class="usa-checkbox__input"
             value="value"
-            (change)="onSelectAllChange($event)"
-            [checked]="selectAllChecked"
+            [checked]="allComplete"
+            [attr.aria-checked]="ariaChecked"
+            (change)="setAll($event)"
           />
-          <label class="usa-checkbox__label" [for]="id + '_Select'"
+          <label
+            class="usa-checkbox__label"
+            [attr.aria-checked]="ariaChecked"
+            [for]="id + '_Select'"
             >{{ to.label }}
           </label>
         </div>
@@ -64,9 +67,9 @@
                 : formControl.value[option.value])
             "
           />
-          <label class="usa-checkbox__label" [for]="id + '_' + i">{{
-            option.label
-          }}</label>
+          <label class="usa-checkbox__label" [for]="id + '_' + i"
+            >{{ option.label }}</label
+          >
         </div>
       </li>
     </ul>
