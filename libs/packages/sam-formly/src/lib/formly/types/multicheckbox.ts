@@ -65,11 +65,10 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType
       this.allComplete =
         value === this.field.templateOptions.options.length ? true : false;
     }
-
     if (value === 0) {
-      this.ariaChecked = 'true';
+      this.ariaChecked = 'false';
     } else {
-      this.ariaChecked = value > 0 && !this.allComplete ? 'mixed' : 'false';
+      this.ariaChecked = value > 0 && !this.allComplete ? 'mixed' : 'true';
     }
   }
 }
