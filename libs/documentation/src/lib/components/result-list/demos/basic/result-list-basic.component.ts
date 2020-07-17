@@ -26,7 +26,7 @@ export class ResultListBasic {
       messages: [
         {
           type: 'error',
-          title: 'Error during the the api',
+          title: 'Error during the api',
           message: `Error Search criteria. Please try again
                       If you continue to have this problem, please contact the <a href='https://www.fsd.gov/'>Federal Service Desk.</a>`,
           buttons: [
