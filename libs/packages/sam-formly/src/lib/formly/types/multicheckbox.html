@@ -24,14 +24,14 @@
           <button
             type="button"
             class="sds-button padding-top-0"
-            [attr.aria-expanded]="!to.collapseContent"
+            [attr.aria-expanded]="!to.expandedOptions"
             aria-controls="collapseID"
-            (click)="to.collapseContent = !to.collapseContent"
+            (click)="to.expandedOptions = !to.expandedOptions"
           >
             <span class="usa-sr-only">expand/collapsed</span>
             <fa-icon
               [icon]="
-                to.collapseContent ? ['fas', 'angle-down'] : ['fas', 'angle-up']
+                to.expandedOptions ? ['fas', 'angle-down'] : ['fas', 'angle-up']
               "
               size="sm"
             ></fa-icon>
@@ -41,7 +41,7 @@
     </li>
     <ul
       id="collapseID"
-      [sdsCollapse]="to.collapseContent"
+      [sdsCollapse]="to.expandedOptions"
       class="margin-left-4 usa-list--unstyled"
     >
       <li>
