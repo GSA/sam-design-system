@@ -2,9 +2,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {
   TestBed,
   ComponentFixture,
-  async,
-  fakeAsync,
-  tick
+ 
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
