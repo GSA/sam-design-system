@@ -1,5 +1,5 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
-import { FieldType, FormlyTemplateOptions } from '@ngx-formly/core';
+import { Component, OnInit } from '@angular/core';
+import { FieldType } from '@ngx-formly/core';
 
 @Component({
   selector: 'sds-formly-field-multicheckbox',
