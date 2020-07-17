@@ -8,7 +8,7 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 export class MultiCheckboxExpandable {
   form = new FormGroup({});
   model: any = {};
-  isCollapseContent = false;
+  isexpandedOptions = false;
   options: FormlyFormOptions = {};
   fields: FormlyFieldConfig[] = [
     {
@@ -20,7 +20,7 @@ export class MultiCheckboxExpandable {
         required: true,
         selectAllOption: true,
         expandableOptions: true,
-        collapseContent: this.isCollapseContent,
+        expandedOptions: this.isexpandedOptions,
         options: [
           {
             key: 'AL',
@@ -87,7 +87,7 @@ export class MultiCheckboxExpandable {
     }
   ];
   onChange(ev) {
-    this.isCollapseContent = !this.isCollapseContent;
-    this.fields[0].templateOptions.collapseContent = this.isCollapseContent;
+    this.isexpandedOptions = !this.isexpandedOptions;
+    this.fields[0].templateOptions.expandedOptions = this.isexpandedOptions;
   }
 }

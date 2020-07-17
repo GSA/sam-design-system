@@ -12,7 +12,7 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType
     templateOptions: {
       options: [],
       expandableOptions: false,
-      collapseContent: false
+      expandedOptions: false
     }
   };
   allComplete: boolean;
