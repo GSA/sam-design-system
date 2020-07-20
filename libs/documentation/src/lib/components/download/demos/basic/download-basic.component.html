@@ -1,0 +1,89 @@
+<h3>Passing Data</h3>
+<ol>
+  <li class="margin-bottom-105">
+    <input
+      class="usa-input"
+      [(ngModel)]="name"
+      placeholder="What's your name?"
+    />
+  </li>
+  <li>
+    <button class="usa-button usa-button--base" (click)="openDownload()">
+      Pick one
+    </button>
+  </li>
+  <li *ngIf="animal">
+    Saved as: <i>{{ animal }}</i>
+  </li>
+</ol>
+
+<h3>Download opens Download</h3>
+<button class="usa-button usa-button--base" (click)="openNestedDownload()">
+  Open download
+</button>
+
+<h3>Alerts</h3>
+<!-- Error -->
+<button
+  class="usa-button usa-button--base"
+  (click)="
+    openAlert('Wrong Password', 'Warning Message here', 'error', 'small')
+  "
+>
+  Error (small)
+</button>
+<button
+  class="usa-button usa-button--base"
+  (click)="
+    openAlert('Wrong Password', 'Warning Message here', 'error', 'medium')
+  "
+>
+  Error (medium)
+</button>
+
+<!-- Warning -->
+<button
+  class="usa-button usa-button--base"
+  (click)="openAlert('Confirm Action', 'Warning Message', 'warning', 'small')"
+>
+  Warning (small)
+</button>
+<button
+  class="usa-button usa-button--base"
+  (click)="
+    openAlert(
+      'Confirm Action',
+      'Are you sure you wish to change to Unfollow',
+      'warning',
+      'medium'
+    )
+  "
+>
+  Warning (medium)
+</button>
+
+<!-- Info -->
+<button
+  class="usa-button usa-button--base"
+  (click)="openAlert('Open Link?', 'Info Message', 'info', 'small')"
+>
+  Info (small)
+</button>
+<button
+  class="usa-button usa-button--base"
+  (click)="
+    openAlert(
+      'Do you really wish to open the link?',
+      'Content of the modal window. This is second line modal window text ',
+      'info',
+      'medium'
+    )
+  "
+>
+  Info (medium)
+</button>
+
+<h3>Official</h3>
+<button class="usa-button usa-button--base" (click)="openOfficial()">
+  Policy
+</button>
