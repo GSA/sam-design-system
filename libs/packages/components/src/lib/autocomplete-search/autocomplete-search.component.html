@@ -85,8 +85,9 @@
             <ng-container *ngIf="result.elements">
               <ul class="usa-list usa-list--unstyled">
                 <li
+                  (mouseenter)="listItemHover(j)"
                   class="margin-2"
-                  *ngFor="let child of result.elements"
+                  *ngFor="let child of result.elements; let j = index"
                   (click)="selectItem(child)"
                 >
                   {{ getObjectValue(child, configuration.primaryTextField) }}
