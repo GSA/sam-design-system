@@ -14,9 +14,18 @@ import { AutocompleteBasicModule } from './demos/basic/autocomplete-basic.module
 import { AutocompleteBasic } from './demos/basic/autocomplete-basic.component';
 import { AutocompleteOptional } from './demos/optional/autocomplete-optional.component';
 import { AutocompleteOptionalModule } from './demos/optional/autocomplete-optional.module';
+import { AutocompleteGroup } from './demos/group/autocomplete-group.component';
+import { AutocompleteGroupModule } from './demos/group/autocomplete-group.module';
 
 declare var require: any;
 const DEMOS = {
+  group: {
+    title: 'Group Autocomplete',
+    type: AutocompleteGroup,
+    code: require('!!raw-loader!./demos/group/autocomplete-group.component'),
+    markup: require('!!raw-loader!./demos/group/autocomplete-group.component.html'),
+    path: 'libs/documentation/src/lib/components/autocomplete/demos/group'
+  },
   basic: {
     title: 'Basic Autocomplete',
     type: AutocompleteBasic,
@@ -60,6 +69,7 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
+    AutocompleteGroupModule,
     AutocompleteBasicModule,
     AutocompleteOptionalModule
   ]
