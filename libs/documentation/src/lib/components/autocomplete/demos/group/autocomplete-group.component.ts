@@ -28,7 +28,7 @@ export class AutocompleteGroup implements OnInit {
 
   setup() {
     this.settings.id = 'autocomplete1';
-    this.settings.primaryKeyField = 'code';
+    this.settings.primaryKeyField = 'element_id';
     this.settings.primaryTextField = 'value';
     // this.settings.secondaryTextField = 'subtext';
     this.settings.labelText = 'Autocomplete 1';
