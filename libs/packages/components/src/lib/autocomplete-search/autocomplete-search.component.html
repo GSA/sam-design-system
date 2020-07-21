@@ -51,7 +51,7 @@
           [attr.id]="configuration.id + '-resultItem-' + i"
           role="option"
           *ngFor="let result of results; let i = index"
-          (mouseenter)="listItemHover(i)"
+          (mouseenter)="listItemHover(i, 0)"
           (click)="selectItem(result)"
         >
           <ng-container
@@ -63,7 +63,7 @@
 
           <ng-container *ngIf="!itemTemplate">
             <span
-              class="display-block text-semibold bg-base-lighter
+              class="display-block text-semibold bg-base-lighter padding-1
             "
             >
               {{ getObjectValue(result, configuration.primaryTextField) }}
@@ -83,12 +83,16 @@
             </ng-container>
 
             <ng-container *ngIf="result.elements">
-              <ul class="usa-list usa-list--unstyled">
+              <ul class="usa-list usa-list--unstyled padding-2">
                 <li
-                  (mouseenter)="listItemHover(j)"
-                  class="margin-2"
+                  (mouseenter)="listItemHover(i, j)"
                   *ngFor="let child of result.elements; let j = index"
                   (click)="selectItem(child)"
+                  [class]="
+                    child['highlighted']
+                      ? 'sds-autocomplete__item sds-autocomplete__item--selected margin-bottom-1'
+                      : 'sds-autocomplete__item margin-1'
+                  "
                 >
                   {{ getObjectValue(child, configuration.primaryTextField) }}
                   <ng-container

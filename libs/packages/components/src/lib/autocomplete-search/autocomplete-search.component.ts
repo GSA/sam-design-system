@@ -264,7 +264,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
         const val = this.createFreeTextItem();
         this.selectItem(val);
       } else {
-          this.selectItem(this.highlightedItem);
+        this.selectItem(this.highlightedItem);
       }
     } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex < 0) {
       if (this.configuration.isFreeTextEnabled) {
@@ -286,16 +286,19 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * @param item
    */
   public selectItem(item: object): void {
-    let filterItem =  {};
-    if(this.essentialModelFields){
-      filterItem[this.configuration.primaryKeyField]= item[this.configuration.primaryKeyField];
-      filterItem[this.configuration.primaryTextField]= item[this.configuration.primaryTextField];
-    if(this.configuration.secondaryTextField) {
-      filterItem[this.configuration.secondaryTextField]= item[this.configuration.secondaryTextField];
+    let filterItem = {};
+    if (this.essentialModelFields) {
+      filterItem[this.configuration.primaryKeyField] =
+        item[this.configuration.primaryKeyField];
+      filterItem[this.configuration.primaryTextField] =
+        item[this.configuration.primaryTextField];
+      if (this.configuration.secondaryTextField) {
+        filterItem[this.configuration.secondaryTextField] =
+          item[this.configuration.secondaryTextField];
+      }
+    } else {
+      filterItem = item;
     }
-  } else {
-    filterItem = item;
-  }
     SDSSelectedItemModelHelper.addItem(
       filterItem,
       this.configuration.primaryKeyField,
@@ -436,9 +439,10 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * highlights the index being hovered
    * @param index
    */
-  listItemHover(index: number): void {
+  listItemHover(index: number, childIndex: number): void {
     this.highlightedIndex = index;
-    this.setHighlightedItem(this.results[this.highlightedIndex]);
+    this.setHighlightedItem(this.results[index].elements[childIndex]);
+    //this.setHighlightedItem(this.results[this.highlightedIndex]);
   }
 
   /**
