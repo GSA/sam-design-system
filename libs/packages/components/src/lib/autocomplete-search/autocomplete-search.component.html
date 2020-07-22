@@ -83,15 +83,15 @@
             </ng-container>
 
             <ng-container *ngIf="result.elements">
-              <ul class="usa-list usa-list--unstyled padding-2">
+              <ul class="usa-list usa-list--unstyled margin-2">
                 <li
                   (mouseenter)="listItemHover(i, j)"
                   *ngFor="let child of result.elements; let j = index"
                   (click)="selectItem(child)"
                   [class]="
                     child['highlighted']
-                      ? 'sds-autocomplete__item sds-autocomplete__item--selected margin-bottom-1'
-                      : 'sds-autocomplete__item margin-1'
+                      ? 'sds-autocomplete__item sds-autocomplete__item--selected'
+                      : 'sds-autocomplete__item'
                   "
                 >
                   {{ getObjectValue(child, configuration.primaryTextField) }}

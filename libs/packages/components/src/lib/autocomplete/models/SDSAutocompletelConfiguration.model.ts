@@ -2,10 +2,13 @@ import { SDSSelectedResultConfiguration } from '../../selected-result/models/SDS
 import { SDSAutocompleteSearchConfiguration } from '../../autocomplete-search/models/SDSAutocompleteConfiguration';
 import { SelectionMode } from '../../selected-result/models/sds-selected-item-model-helper';
 
-export class SDSAutocompletelConfiguration implements SDSSelectedResultConfiguration, SDSAutocompleteSearchConfiguration {
+export class SDSAutocompletelConfiguration
+  implements
+    SDSSelectedResultConfiguration,
+    SDSAutocompleteSearchConfiguration {
   /**
-     * sets the default debounce time to 250 milliseconds 
-     */
+   * sets the default debounce time to 250 milliseconds
+   */
   constructor() {
     this.debounceTime = 250;
     this.minimumCharacterCountSearch = 0;
@@ -56,7 +59,6 @@ export class SDSAutocompletelConfiguration implements SDSSelectedResultConfigura
    */
   public selectionMode: SelectionMode = SelectionMode.SINGLE;
 
-
   /**
    * Allows option to allow user text not in the standard results
    */
@@ -77,14 +79,23 @@ export class SDSAutocompletelConfiguration implements SDSSelectedResultConfigura
    */
   public ariaLabelText: string = 'Auto Complete';
 
-   /**
+  /**
    * To enable the tag mode
    */
-  public isTagModeEnabled: boolean =false;
+  public isTagModeEnabled: boolean = false;
 
-    /**
+  /**
    * To make input readonly
    */
   public inputReadOnly = false;
 
+  /**
+   * Name of the children filed
+   */
+  public groupByChild: string = 'elements';
+
+  /**
+   * To enable the Groupping mode
+   */
+  public isGroupingEnabled: boolean = false;
 }
