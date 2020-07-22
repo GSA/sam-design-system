@@ -92,7 +92,7 @@ export class SDSAutocompletelConfiguration
   /**
    * Name of the children filed
    */
-  public groupByChild: string = 'elements';
+  public groupByChild: string = 'children';
 
   /**
    * To enable the Groupping mode
