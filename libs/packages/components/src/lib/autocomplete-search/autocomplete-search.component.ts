@@ -441,7 +441,9 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    */
   listItemHover(index: number, childIndex: number): void {
     this.highlightedIndex = index;
-    this.setHighlightedItem(this.results[index].elements[childIndex]);
+    this.setHighlightedItem(
+      this.results[index][this.configuration.groupByChild][childIndex]
+    );
     //this.setHighlightedItem(this.results[this.highlightedIndex]);
   }
 
