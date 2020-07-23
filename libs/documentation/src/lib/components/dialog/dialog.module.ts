@@ -11,6 +11,7 @@ import {
 } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { DialogBasicModule } from './demos/basic/dialog-basic.module';
+import { SdsDownloadModalModule } from '../../../../../packages/layouts/src/lib/feature/download-modal/download-modal.module'
 
 declare var require: any;
 const DEMOS = {
@@ -50,7 +51,8 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    DialogBasicModule
+    DialogBasicModule,
+    SdsDownloadModalModule
   ]
 })
 export class DialogModule {
