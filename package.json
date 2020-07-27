@@ -39,7 +39,7 @@
     "demo:docs:formly": "npx compodoc -p libs/packages/sam-formly/tsconfig.json -e json -d libs/documentation/src/lib/apidoc/formly --minimal  && node ./scripts/generate-docs.ts -f formly",
     "demo:docs:layouts": "npx compodoc -p libs/packages/layouts/tsconfig.json -e json -d libs/documentation/src/lib/apidoc/layouts --minimal  && node ./scripts/generate-docs.ts -f layouts",
     "demo:docs:material": "npx compodoc -p libs/packages/sam-material-extensions/tsconfig.json -e json -d libs/documentation/src/lib/apidoc/material --minimal && node ./scripts/generate-docs.ts -f material",
-    "demo:docs": "npm run demo:docs:components && npm run demo:docs:formly && npm run demo:docs:layouts",
+    "demo:docs": "npm run demo:docs:components && npm run demo:docs:formly && npm run demo:docs:layouts && npm run demo:docs:material",
     "build:docs:components": "npx compodoc -p libs/packages/components/tsconfig.json -n \"SAM.Gov Design System - Components\" --hideGenerator --disableCoverage -d dist/apps/sam-design-system-site/compodoc/components",
     "build:docs:formly": "npx compodoc -p libs/packages/sam-formly/tsconfig.json -n \"SAM.Gov Design System - Formly\" --hideGenerator --disableCoverage -d dist/apps/sam-design-system-site/compodoc/formly",
     "build:docs:layouts": "npx compodoc -p libs/packages/layouts/tsconfig.json -n \"SAM.Gov Design System - Layouts\" --hideGenerator --disableCoverage -d dist/apps/sam-design-system-site/compodoc/layouts",

@@ -61,6 +61,22 @@
         </div>
       </td>
     </tr>
+    <tr>
+      <td scope="row" valign="top" class="api-label">
+        <p class="margin-top-0"><code class="bg-white"><a href="./compodoc/material" class="text-magenta" title="View Compodoc" target="_blank">@gsa-sam/sam-material-extensions</a></code></p>
+      </td>
+      <td valign="top" class="api-content">
+        <div>Beta.SAM.gov elements extending Angular Material CDK</div>
+        <div *ngIf="packages.material.dependencies">
+          <div class="text-italic font-sans-3xs margin-top-2">Dependencies</div>
+          <div *ngFor="let item of packages.material.dependencies | keyvalue"><code class="text-indigo bg-white margin-0">{{item.key}}@{{item.value}}</code></div>
+        </div>
+        <div *ngIf="packages.material.peerDependencies">
+          <div class="text-italic font-sans-3xs margin-top-2">Peer Dependencies</div>
+          <div *ngFor="let item of packages.material.peerDependencies  | keyvalue"><code class="text-indigo bg-white margin-0">{{item.key}}@{{item.value}}</code></div>
+        </div>
+      </td>
+    </tr>
   </tbody>
 </table>
 
