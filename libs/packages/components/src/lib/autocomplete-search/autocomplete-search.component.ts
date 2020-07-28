@@ -385,17 +385,8 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
 
   private onArrowGroupUp(): void {
     if (this.results && this.results.length > 0) {
-      if (this.highlightedIndex > 0) {
-        this.highlightedIndex--;
-        this.setHighlightedItem(this.results[this.highlightedIndex]);
-        this.scrollSelectedItemIntoView();
-      }
-    }
-
-    if (this.results && this.results.length > 0) {
-      if (this.highlightedIndex > 0) {
+      if (this.highlightedIndex >= 0) {
         if (this.highlightedChildIndex == 0) {
-          this.highlightedIndex--;
           this.highlightedChildIndex = this.results[this.highlightedIndex][
             this.configuration.groupByChild
           ].length;
