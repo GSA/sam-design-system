@@ -237,7 +237,7 @@ describe('SamAutocompleteComponent', () => {
     const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
     expect(list.nativeElement.children.length).toBe(11);
     expect(component.results[0]['highlighted']).toBeTruthy();
-    component.listItemHover(component.results.length - 1, 0);
+    component.listItemHover(component.results.length - 1);
     fixture.detectChanges();
     tick();
     expect(
@@ -324,7 +324,7 @@ describe('SamAutocompleteComponent', () => {
     fixture.detectChanges();
     const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
     expect(list.nativeElement.children.length).toBe(11);
-    component.listItemHover(10, 0);
+    component.listItemHover(10);
     fixture.detectChanges();
     tick();
     expect(component.results[10]['highlighted']).toBeTruthy();
