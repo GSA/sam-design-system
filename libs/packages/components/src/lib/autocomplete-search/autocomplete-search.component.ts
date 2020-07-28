@@ -387,13 +387,15 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     if (this.results && this.results.length > 0) {
       if (this.highlightedIndex >= 0) {
         if (this.highlightedChildIndex == 0) {
+          this.highlightedIndex == 0
+            ? this.highlightedIndex
+            : this.highlightedIndex--;
           this.highlightedChildIndex = this.results[this.highlightedIndex][
             this.configuration.groupByChild
           ].length;
         } else {
           this.highlightedChildIndex--;
         }
-
         this.setHighlightedItem(
           this.results[this.highlightedIndex][this.configuration.groupByChild][
             this.highlightedChildIndex
