@@ -379,6 +379,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
             this.highlightedChildIndex
           ]
         );
+        this.scrollSelectedItemIntoView();
       }
     }
   }
@@ -401,6 +402,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
             this.highlightedChildIndex
           ]
         );
+        this.scrollSelectedItemIntoView();
       }
     }
   }
@@ -553,14 +555,23 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    */
   private scrollSelectedItemIntoView() {
     if (this.highlightedIndex >= 0) {
-      const selectedChild = this.resultsListElement.nativeElement.children[
-        this.highlightedIndex
-      ];
-      selectedChild.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-        inline: 'start'
-      });
+      let selectedChild;
+      if (this.configuration.isGroupingEnabled) {
+        selectedChild = this.resultsListElement.nativeElement.children[
+          this.highlightedIndex
+        ].getElementsByTagName('ul')[0].children[this.highlightedChildIndex];
+      } else {
+        selectedChild = this.resultsListElement.nativeElement.children[
+          this.highlightedIndex
+        ];
+      }
+      if (selectedChild) {
+        selectedChild.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'start'
+        });
+      }
     }
   }
 
