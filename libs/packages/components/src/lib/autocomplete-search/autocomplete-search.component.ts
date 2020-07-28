@@ -88,6 +88,11 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   public highlightedIndex: number = 0;
 
   /**
+   * selected child index
+   */
+  public highlightedChildIndex: number = 0;
+
+  /**
    * highlighted object in drop down
    */
   private highlightedItem: object;
@@ -255,10 +260,15 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
         event.preventDefault();
       }
     } else if (KeyHelper.is(KEYS.DOWN, event)) {
-      this.onArrowDown();
+      this.configuration.isGroupingEnabled
+        ? this.onArrowGroupDown()
+        : this.onArrowDown();
     } else if (KeyHelper.is(KEYS.UP, event)) {
       event.preventDefault();
-      this.onArrowUp();
+
+      this.configuration.isGroupingEnabled
+        ? this.onArrowGroupUp()
+        : this.onArrowUp();
     } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex >= 0) {
       if (this.configuration.isTagModeEnabled) {
         const val = this.createFreeTextItem();
@@ -346,6 +356,58 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
         this.highlightedIndex++;
         this.setHighlightedItem(this.results[this.highlightedIndex]);
         this.scrollSelectedItemIntoView();
+      }
+    }
+  }
+
+  private onArrowGroupDown(): void {
+    if (this.results && this.results.length > 0) {
+      if (this.highlightedIndex < this.results.length - 1) {
+        if (
+          this.highlightedChildIndex ==
+          this.results[this.highlightedIndex][this.configuration.groupByChild]
+            .length
+        ) {
+          this.highlightedIndex++;
+          this.highlightedChildIndex = 0;
+        } else {
+          this.highlightedChildIndex++;
+        }
+
+        this.setHighlightedItem(
+          this.results[this.highlightedIndex][this.configuration.groupByChild][
+            this.highlightedChildIndex
+          ]
+        );
+      }
+    }
+  }
+
+  private onArrowGroupUp(): void {
+    if (this.results && this.results.length > 0) {
+      if (this.highlightedIndex > 0) {
+        this.highlightedIndex--;
+        this.setHighlightedItem(this.results[this.highlightedIndex]);
+        this.scrollSelectedItemIntoView();
+      }
+    }
+
+    if (this.results && this.results.length > 0) {
+      if (this.highlightedIndex > 0) {
+        if (this.highlightedChildIndex == 0) {
+          this.highlightedIndex--;
+          this.highlightedChildIndex = this.results[this.highlightedIndex][
+            this.configuration.groupByChild
+          ].length;
+        } else {
+          this.highlightedChildIndex--;
+        }
+
+        this.setHighlightedItem(
+          this.results[this.highlightedIndex][this.configuration.groupByChild][
+            this.highlightedChildIndex
+          ]
+        );
       }
     }
   }
@@ -439,14 +501,20 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * highlights the index being hovered
    * @param index
    */
-  listItemHover(index: number, childIndex: number): void {
+  listItemHover(index: number): void {
     this.highlightedIndex = index;
-    this.setHighlightedItem(
-      this.results[index][this.configuration.groupByChild][childIndex]
-    );
-    //this.setHighlightedItem(this.results[this.highlightedIndex]);
+    this.setHighlightedItem(this.results[this.highlightedIndex]);
   }
 
+  listChildItemHover(groupIndex: number, childIndex: number) {
+    this.highlightedIndex = groupIndex;
+    this.highlightedChildIndex = childIndex;
+    this.setHighlightedItem(
+      this.results[this.highlightedIndex][this.configuration.groupByChild][
+        this.highlightedChildIndex
+      ]
+    );
+  }
   /**
    * Scroll Event Handler (Calculates if mpre items should be asked for from service on scrolling down)
    */

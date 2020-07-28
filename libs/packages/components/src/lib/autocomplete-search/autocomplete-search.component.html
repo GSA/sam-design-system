@@ -51,10 +51,12 @@
           [attr.id]="configuration.id + '-resultItem-' + i"
           role="option"
           *ngFor="let result of results; let i = index"
-          (mouseenter)="listItemHover(i, 0)"
+          (mouseenter)="listItemHover(i)"
           (click)="selectItem(result)"
-          [ngClass]="
-            configuration.isGroupingEnabled ? '' : 'sds-autocomplete__item'
+          [class]="
+            result['highlighted'] && !configuration.isGroupingEnabled
+              ? 'sds-autocomplete__item sds-autocomplete__item--selected'
+              : 'sds-autocomplete__item'
           "
         >
           <ng-container
@@ -92,13 +94,17 @@
             <ng-container *ngIf="configuration.isGroupingEnabled">
               <ul class="usa-list usa-list--unstyled">
                 <li
-                  (mouseenter)="listItemHover(i, j)"
+                  (mouseenter)="listChildItemHover(i, j)"
                   *ngFor="
                     let child of result[configuration.groupByChild];
                     let j = index
                   "
                   (click)="selectItem(child)"
-                  class="margin-1 margin-left-3"
+                  [class]="
+                    child['highlighted']
+                      ? 'sds-autocomplete__item sds-autocomplete__item--selected'
+                      : 'sds-autocomplete__item'
+                  "
                 >
                   {{ getObjectValue(child, configuration.primaryTextField) }}
                   <ng-container
