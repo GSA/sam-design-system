@@ -76,6 +76,9 @@
                 let j = index
               "
               (click)="selectItem(child)"
+              [ngClass]="
+                child['highlighted'] ? 'sds-autocomplete__item--selected' : ''
+              "
             >
               <div>
                 {{ getObjectValue(child, configuration.primaryTextField) }}
