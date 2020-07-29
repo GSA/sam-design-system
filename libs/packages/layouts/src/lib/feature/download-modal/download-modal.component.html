@@ -1,11 +1,30 @@
-<div sds-dialog-title>Download Stuff</div>
-<div sds-dialog-subtitle>
-</div>
+<div sds-dialog-title>Download</div>
 <div sds-dialog-content>
+  <p>Choose from following download option. Lorem ipsum dolor sit amet, <br>
+  consecteur adipiscing elit, sed do eiusmod tempor incidunt.
+  </p>
+  <div>
+    <input type="checkbox" class="usa-checkbox__input"> <label class="usa-checkbox__label">
+      Download full record
+    </label>
+    <input type="checkbox" class="usa-checkbox__input"> <label class="usa-checkbox__label">
+      Download summary information only.
+    </label>
+    <input type="checkbox" class="usa-checkbox__input"> <label class="usa-checkbox__label">
+      Download FDPS records
+    </label>
+    <input type="checkbox" class="usa-checkbox__input"> <label class="usa-checkbox__label">
+      Download current record and all of its modifications.
+    </label>
+  </div>
+
+
   <formly-form
       [fields]="fields"
       [form]="form"
-      [model]="model">
+      [model]="model"
+      [options]="options"
+      >
     </formly-form>
 </div>
 <div sds-dialog-actions>
@@ -13,6 +32,6 @@
     Cancel
   </button>
   <button class="usa-button"  cdkFocusInitial>
-    Save
+    Submit
   </button>
 </div>

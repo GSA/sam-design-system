@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DownloadModalComponent } from './feature/download-modal/download-modal.component';
+// import { DownloadModalComponent } from './feature/download-modal/download-modal.component';
 
 @NgModule({
   imports: [CommonModule],
-  declarations: [DownloadModalComponent]
+  declarations: []
 })
 export class PackagesLayoutsModule {}

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SdsDialogService } from '@gsa-sam/components';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { FormlyFieldConfig } from '@ngx-formly/core';
+import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 
 @Component({
   selector: 'sds-download-modal',
@@ -11,7 +11,8 @@ export class SdsDownloadModalComponent implements OnInit {
   @Input() message: string;
   fields: FormlyFieldConfig[];
   model: any;
-  form: FormGroup
+  form: FormGroup;
+  options: FormlyFormOptions
   constructor(private dialogService: SdsDialogService) { }
 
   ngOnInit() {
@@ -21,14 +22,15 @@ export class SdsDownloadModalComponent implements OnInit {
     })
 
     this.model = {
-      id: 123,
+      id: 'file',
       name: 'Bazooka Joe',
-      dateOfBirth: '2001-01-01T05:00:00.000Z'
+      dateOfBirth: '2001-01-01T05:00:00.000Z',
+      options: 'multicheckbox'
     };
 
     this.fields = [
       {
-        key: 'id'
+        key: 'file'
       },
       {
         key: 'name',
@@ -46,7 +48,13 @@ export class SdsDownloadModalComponent implements OnInit {
           label: 'Date Of Birth',
         }
       },
+      {
+
+      }
     ];
+
+    this.options = {
+    }
 
   }
 
