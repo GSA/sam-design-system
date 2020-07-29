@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TableComponent } from './table.component';
+import { CdkTableModule } from '@angular/cdk/table';
+
+import { SdsTableComponent } from './table.component';
 
 @NgModule({
-  declarations: [TableComponent],
+  declarations: [SdsTableComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    CdkTableModule
   ],
-  exports: [TableComponent]
+  exports: [SdsTableComponent]
 })
-export class TableModule { }
+export class SdsTableModule { }

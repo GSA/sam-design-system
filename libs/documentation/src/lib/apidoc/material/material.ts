@@ -6,8 +6,8 @@ const MATERIAL = {
     "directives": [],
     "components": [
         {
-            "name": "TableComponent",
-            "id": "component-TableComponent-432a5d839d382196e5735da1101eae76",
+            "name": "SdsTableComponent",
+            "id": "component-SdsTableComponent-383a6339718ce6d83b1936f25e6a3f7c",
             "file": "libs/packages/sam-material-extensions/src/lib/table/table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -41,7 +41,7 @@ const MATERIAL = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'sds-table',\n  templateUrl: './table.component.html',\n  styleUrls: ['./table.component.scss']\n})\nexport class TableComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit() {\n  }\n\n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'sds-table',\n  templateUrl: './table.component.html',\n  styleUrls: ['./table.component.scss']\n})\nexport class SdsTableComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit() {\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -93,7 +93,7 @@ const MATERIAL = {
             ]
         },
         {
-            "name": "TableModule",
+            "name": "SdsTableModule",
             "children": [
                 {
                     "type": "providers",
@@ -103,7 +103,7 @@ const MATERIAL = {
                     "type": "declarations",
                     "elements": [
                         {
-                            "name": "TableComponent"
+                            "name": "SdsTableComponent"
                         }
                     ]
                 },
@@ -115,7 +115,7 @@ const MATERIAL = {
                     "type": "exports",
                     "elements": [
                         {
-                            "name": "TableComponent"
+                            "name": "SdsTableComponent"
                         }
                     ]
                 },

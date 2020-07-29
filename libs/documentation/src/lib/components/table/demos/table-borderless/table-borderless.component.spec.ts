@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SdsTableComponent } from './table.component';
+import { TableBorderlessComponent } from './table-borderless.component';
 
-describe('SdsTableComponent', () => {
-  let component: SdsTableComponent;
-  let fixture: ComponentFixture<SdsTableComponent>;
+describe('TableBorderlessComponent', () => {
+  let component: TableBorderlessComponent;
+  let fixture: ComponentFixture<TableBorderlessComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SdsTableComponent ]
+      declarations: [ TableBorderlessComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SdsTableComponent);
+    fixture = TestBed.createComponent(TableBorderlessComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

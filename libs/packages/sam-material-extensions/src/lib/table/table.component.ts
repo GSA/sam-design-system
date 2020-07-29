@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'sds-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent implements OnInit {
+export class SdsTableComponent {
+
+  @Input() dataSource;
+  @Input() columns: string[];
+  @Input() borderless?: boolean = false;
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
 }

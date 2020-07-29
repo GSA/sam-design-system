@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TableBasicComponent } from './demos/table-basic/table-basic.component';
+
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { DocumentationExamplesPage } from '../shared/examples-page/examples.component';
 import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../shared';
+import { TableBasicComponent } from './demos/table-basic/table-basic.component';
 import { TableBasicModule } from './demos/table-basic/table-basic.module';
+import { TableBorderlessComponent } from './demos/table-borderless/table-borderless.component';
+import { TableBorderlessModule } from './demos/table-borderless/table-borderless.module';
 
 export declare var require: any;
 
@@ -18,6 +21,13 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/table-basic/table-basic.component'), // Source Tab Content
     markup: require('!!raw-loader!./demos/table-basic/table-basic.component.html'), // Template Tab Content
     path: 'libs/documentation/src/lib/components/table/demos/table-basic' // Path to demo for the Github link
+  },
+  borderless: {
+    title: 'SAM Table Borderless', // Provide a title for this demo
+    type: TableBorderlessComponent, // Component to use for this demo
+    code: require('!!raw-loader!./demos/table-borderless/table-borderless.component'), // Source Tab Content
+    markup: require('!!raw-loader!./demos/table-borderless/table-borderless.component.html'), // Template Tab Content
+    path: 'libs/documentation/src/lib/components/table/demos/table-borderless' // Path to demo for the Github link
   }
  };
 
@@ -49,7 +59,8 @@ const DEMOS = {
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    TableBasicModule
+    TableBasicModule,
+    TableBorderlessModule
   ]
 })
 export class TableModule {

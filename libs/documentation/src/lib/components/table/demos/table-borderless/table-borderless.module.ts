@@ -1,17 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TableBorderlessComponent } from './table-borderless.component';
 import { SdsTableModule } from '../../../../../../../packages/sam-material-extensions/src/lib/table/table.module';
 
-import { TableBasicComponent } from './table-basic.component';
-
 @NgModule({
-  declarations: [TableBasicComponent],
+  declarations: [TableBorderlessComponent],
   imports: [
     CommonModule,
     SdsTableModule
   ],
-  exports: [TableBasicComponent],
-  bootstrap: [TableBasicComponent]
+  exports: [TableBorderlessComponent],
+  entryComponents: [TableBorderlessComponent]
 })
 
-export class TableBasicModule { }
+export class TableBorderlessModule { }
