@@ -50,77 +50,49 @@
         <li
           [attr.id]="configuration.id + '-resultItem-' + i"
           role="option"
+          class="sds-autocomplete__group"
           *ngFor="let result of results; let i = index"
           (mouseenter)="listItemHover(i)"
           (click)="selectItem(result)"
-          [class]="
-            result['highlighted'] && !configuration.isGroupingEnabled
-              ? 'sds-autocomplete__item sds-autocomplete__item--selected'
-              : 'sds-autocomplete__item'
-          "
         >
-          <ng-container
-            *ngIf="itemTemplate"
-            [ngTemplateOutlet]="itemTemplate"
-            [ngTemplateOutletContext]="{ $implicit: result }"
-          >
-          </ng-container>
-
-          <ng-container *ngIf="!itemTemplate">
-            <span
-              class="display-block text-semibold"
-              [ngClass]="
-                configuration.isGroupingEnabled
-                  ? 'bg-base-lighter padding-1'
-                  : ''
-              "
-            >
-              {{ getObjectValue(result, configuration.primaryTextField) }}
-              <span *ngIf="result.type === 'custom'">
-                - {{ configuration.freeTextSubtext }}
-              </span>
-            </span>
+          <div class="sds-autocomplete__item">
+            {{ getObjectValue(result, configuration.primaryTextField) }}
             <ng-container
               *ngIf="
                 configuration.secondaryTextField &&
                 result[configuration.secondaryTextField]
               "
             >
-              <span class="description">{{
-                result[configuration.secondaryTextField]
-              }}</span>
+              <div class="description">
+                {{ result[configuration.secondaryTextField] }}
+              </div>
             </ng-container>
+          </div>
 
-            <ng-container *ngIf="configuration.isGroupingEnabled">
-              <ul class="usa-list usa-list--unstyled">
-                <li
-                  (mouseenter)="listChildItemHover(i, j)"
-                  *ngFor="
-                    let child of result[configuration.groupByChild];
-                    let j = index
-                  "
-                  (click)="selectItem(child)"
-                  [class]="
-                    child['highlighted']
-                      ? 'sds-autocomplete__item sds-autocomplete__item--selected'
-                      : 'sds-autocomplete__item'
+          <ul>
+            <li
+              class="sds-autocomplete__item"
+              *ngFor="
+                let child of result[configuration.groupByChild];
+                let j = index
+              "
+              (click)="selectItem(child)"
+            >
+              <div>
+                {{ getObjectValue(child, configuration.primaryTextField) }}
+                <ng-container
+                  *ngIf="
+                    configuration.secondaryTextField &&
+                    result[configuration.secondaryTextField]
                   "
                 >
-                  {{ getObjectValue(child, configuration.primaryTextField) }}
-                  <ng-container
-                    *ngIf="
-                      configuration.secondaryTextField &&
-                      result[configuration.secondaryTextField]
-                    "
-                  >
-                    <span class="description">{{
-                      child[configuration.secondaryTextField]
-                    }}</span>
-                  </ng-container>
-                </li>
-              </ul>
-            </ng-container>
-          </ng-container>
+                  <div class="description">
+                    {{ child[configuration.secondaryTextField] }}
+                  </div>
+                </ng-container>
+              </div>
+            </li>
+          </ul>
         </li>
       </ng-container>
       <ng-container *ngIf="!results || results.length == 0">
