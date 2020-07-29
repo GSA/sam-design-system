@@ -1,10 +1,10 @@
 <ng-container *ngIf="updateModel?.results?.length">
   <div *ngFor="let item of updateModel.results">
-    <hr *ngIf="divider" class="thin" />
+    <hr *ngIf="divider" class="fine" />
     <ng-container *ngTemplateOutlet="resultContentTemplate,
                    context: { $implicit: item }"></ng-container>
   </div>
-  <hr *ngIf="divider && updateModel?.results?.length" class="thin" />
+  <hr *ngIf="divider && updateModel?.results?.length" class="fine" />
 </ng-container>
 <ng-container *ngIf="(updateModel == null || (!updateModel?.metadata?.messages && updateModel?.results?.length === 0))">
   <div class="sds-card sds-card--vertical sds-card--shadowed sds-card--bordered">
