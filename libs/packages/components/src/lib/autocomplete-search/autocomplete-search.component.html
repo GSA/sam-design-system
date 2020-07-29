@@ -54,7 +54,12 @@
           *ngFor="let result of results; let i = index"
           (click)="selectItem(result)"
         >
-          <div class="sds-autocomplete__item">
+          <div
+            class="sds-autocomplete__item"
+            [ngClass]="
+              result['highlighted'] ? 'sds-autocomplete__item--selected' : ''
+            "
+          >
             {{ getObjectValue(result, configuration.primaryTextField) }}
             <ng-container
               *ngIf="
