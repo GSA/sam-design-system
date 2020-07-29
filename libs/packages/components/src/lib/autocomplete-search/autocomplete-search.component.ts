@@ -90,7 +90,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   /**
    * selected child index
    */
-  public highlightedChildIndex;
+  public highlightedChildIndex = 0;
 
   /**
    * highlighted object in drop down
@@ -370,11 +370,10 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
         if (
           this.highlightedChildIndex ==
           this.results[this.highlightedIndex][this.configuration.groupByChild]
-            .length -
-            1
+            .length
         ) {
           this.highlightedIndex++;
-          this.highlightedChildIndex = null;
+          this.highlightedChildIndex = 0;
         } else {
           this.highlightedChildIndex++;
         }
