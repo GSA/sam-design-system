@@ -60,8 +60,7 @@
               result['highlighted'] ? 'sds-autocomplete__item--selected' : ''
             "
           >
-            {{ getObjectValue(result, configuration.primaryTextField) }} --
-            {{ i }}
+            {{ getObjectValue(result, configuration.primaryTextField) }}
             <ng-container
               *ngIf="
                 configuration.secondaryTextField &&
@@ -87,9 +86,7 @@
               "
             >
               <div>
-                {{ getObjectValue(child, configuration.primaryTextField) }} --{{
-                  i
-                }}--{{ j }}
+                {{ getObjectValue(child, configuration.primaryTextField) }}
                 <ng-container
                   *ngIf="
                     configuration.secondaryTextField &&
