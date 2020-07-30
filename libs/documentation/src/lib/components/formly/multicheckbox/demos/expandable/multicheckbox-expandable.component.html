@@ -1,0 +1,31 @@
+<div class="margin-2">
+  <p>
+    <code>expandableOptions: true </code>is used to show/hide expand/collapse
+    option icon
+  </p>
+
+  <p>
+    <code>expandedOptions: false </code>is used to show expand/collapse content
+  </p>
+
+  <input
+    class="usa-checkbox__input"
+    id="expandedOptions"
+    type="checkbox"
+    value="isexpandedOptions"
+    (change)="onChange($event)"
+    [checked]="isexpandedOptions"
+  />
+  <label class="usa-checkbox__label" for="expandedOptions"
+    >Collapse Content</label
+  >
+
+  <form [formGroup]="form">
+    <formly-form
+      [model]="model"
+      [fields]="fields"
+      [options]="options"
+      [form]="form"
+    ></formly-form>
+  </form>
+</div>
