@@ -4,9 +4,7 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 @Injectable({
   providedIn: 'root'
 })
-
 export class SdsAdvancedFiltersService {
-
   constructor() {}
 
   convertToCheckboxes(origFields: FormlyFieldConfig[]): FormlyFieldConfig[] {
@@ -39,7 +37,10 @@ export class SdsAdvancedFiltersService {
     const options = [];
     const defaultValue = [];
     origField.fieldGroup.forEach(field => {
-      const label = field.templateOptions && field.templateOptions.label ? field.templateOptions.label : null;
+      const label =
+        field.templateOptions && field.templateOptions.label
+          ? field.templateOptions.label
+          : null;
       const option = {
         key: field.key,
         value: label
@@ -70,9 +71,9 @@ export class SdsAdvancedFiltersService {
     return field;
   }
 
-  updateFields( selectedFields: object, fields: FormlyFieldConfig[], model: any) {
+  updateFields(selectedFields: any, fields: FormlyFieldConfig[], model: any) {
     fields.forEach((field: FormlyFieldConfig) => {
-      const key = field.key;
+      const key = field.key[0];
       const selectedField = selectedFields[key];
       if (field.fieldGroup && field.fieldGroup.length > 1) {
         const fieldModel = model[key];
@@ -87,7 +88,11 @@ export class SdsAdvancedFiltersService {
     };
   }
 
-  updateFieldGroup( parentField: FormlyFieldConfig, selectedFields: any, model: object) {
+  updateFieldGroup(
+    parentField: FormlyFieldConfig,
+    selectedFields: any,
+    model: object
+  ) {
     if (selectedFields && selectedFields.length) {
       parentField.hide = false;
       parentField.fieldGroup.forEach(field => {
@@ -113,7 +118,7 @@ export class SdsAdvancedFiltersService {
     } else {
       field.hide = true;
       field.templateOptions['required'] = false;
-      model[field.key] = null;
+      model[field.key[0]] = null;
     }
   }
 }
