@@ -16,6 +16,8 @@ import { ResultListComponent } from './demos/component/result-list-component.com
 import { ResultListComponentModule } from './demos/component/result-list-component.module';
 import { ResultListCardComponentModule } from './demos/card/result-list-card-component.module';
 import { ResultListCardComponent } from './demos/card/result-list-card-component.component';
+import { ResultListTemplate } from './demos/template/result-list-template.component';
+import { ResultListTemplateModule } from './demos/template/result-list-template.module';
 
 declare var require: any;
 const DEMOS = {
@@ -25,6 +27,13 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/basic/result-list-basic.component'),
     markup: require('!!raw-loader!./demos/basic/result-list-basic.component.html'),
     path: 'libs/documentation/src/lib/components/result-list/demos/basic'
+  },
+  template: {
+    title: 'Result List with custom template',
+    type: ResultListTemplate,
+    code: require('!!raw-loader!./demos/template/result-list-template.component'),
+    markup: require('!!raw-loader!./demos/template/result-list-template.component.html'),
+    path: 'libs/documentation/src/lib/components/result-list/demos/template'
   },
   component: {
     title: 'Result List with Component',
@@ -70,6 +79,7 @@ export const ROUTES = [
     CommonModule,
     DocumentationComponentsSharedModule,
     ResultListBasicModule,
+    ResultListTemplateModule,
     ResultListComponentModule,
     ResultListCardComponentModule
   ]

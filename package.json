@@ -74,9 +74,9 @@
     "ngx-highlightjs": "^3.0.3",
     "ngx-markdown": "^8.0.0",
     "qs": "^6.2.3",
-    "ts-md5": "^1.2.7",
     "rxjs": "~6.3.3",
     "rxjs-compat": "~6.3.3",
+    "ts-md5": "^1.2.7",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
