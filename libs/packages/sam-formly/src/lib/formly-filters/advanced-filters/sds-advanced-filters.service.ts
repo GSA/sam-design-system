@@ -71,13 +71,9 @@ export class SdsAdvancedFiltersService {
     return field;
   }
 
-  updateFields(
-    selectedFields: object,
-    fields: FormlyFieldConfig[],
-    model: any
-  ) {
+  updateFields(selectedFields: any, fields: FormlyFieldConfig[], model: any) {
     fields.forEach((field: FormlyFieldConfig) => {
-      const key = field.key;
+      const key = field.key[0];
       const selectedField = selectedFields[key];
       if (field.fieldGroup && field.fieldGroup.length > 1) {
         const fieldModel = model[key];
@@ -122,7 +118,7 @@ export class SdsAdvancedFiltersService {
     } else {
       field.hide = true;
       field.templateOptions['required'] = false;
-      model[field.key] = null;
+      model[field.key[0]] = null;
     }
   }
 }
