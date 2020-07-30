@@ -10,7 +10,9 @@ export class SdsTableComponent {
   @Input() dataSource;
   @Input() columns: string[];
   @Input() borderless?: boolean = false;
+  @Input() stickyHeader?: boolean = false
 
   constructor() { }
 
 }
+

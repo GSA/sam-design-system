@@ -1,13 +1,15 @@
-<table cdk-table [dataSource]="dataSource" class="sds-table" [ngClass]="{'sds-table--borderless': borderless}">
+<div class="sds-table__container" [ngClass]="{'sds-table__container--borderless': borderless}">
+  <table cdk-table [dataSource]="dataSource" class="sds-table">
 
-  <!-- Hero Name Column -->
-  <ng-container cdkColumnDef="{{column}}" *ngFor="let column of columns">
-    <th cdk-header-cell *cdkHeaderCellDef scope="col">{{column}}</th>
-    <td cdk-cell *cdkCellDef="let row">{{row[column]}}</td>
-    <!-- no footer -->
-  </ng-container>
+    <!-- Columns -->
+    <ng-container cdkColumnDef="{{column}}" *ngFor="let column of columns">
+      <th cdk-header-cell *cdkHeaderCellDef scope="col">{{column | titlecase}}</th>
+      <td cdk-cell *cdkCellDef="let row">{{row[column]}}</td>
+      <!-- no footer -->
+    </ng-container>
 
-  <!-- Header and Row Declarations -->
-  <tr cdk-header-row *cdkHeaderRowDef="columns"></tr>
-  <tr cdk-row *cdkRowDef="let row; columns: columns"></tr>
-</table>
+    <!-- Header and Row Declarations -->
+    <tr cdk-header-row *cdkHeaderRowDef="columns; sticky: stickyHeader" class="sds-table__head"></tr>
+    <tr cdk-row *cdkRowDef="let row; columns: columns"></tr>
+  </table>
+</div>

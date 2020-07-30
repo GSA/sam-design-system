@@ -1,0 +1,27 @@
+.sds-table {
+  width: 100%;
+  border-collapse: separate;
+  border: 0;
+  margin: 0;
+
+    tr.sds-table__head {
+      > th {
+        border-bottom: 1px solid #cac9c0;
+    }
+  }
+}
+
+:host {
+  height: inherit;
+  max-height: inherit;
+}
+
+.sds-table__container {
+  border: 1px solid #cac9c0;
+  height: inherit;
+  max-height: inherit;
+  overflow: auto;
+  &--borderless {
+    border: 0;
+  }
+}
