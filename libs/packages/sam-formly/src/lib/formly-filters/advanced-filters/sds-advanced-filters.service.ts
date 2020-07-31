@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
+interface StringArray {
+  [index: string]: string;
+}
 @Injectable({
   providedIn: 'root'
 })
-
 export class SdsAdvancedFiltersService {
-
   constructor() {}
 
   convertToCheckboxes(origFields: FormlyFieldConfig[]): FormlyFieldConfig[] {
@@ -39,7 +40,10 @@ export class SdsAdvancedFiltersService {
     const options = [];
     const defaultValue = [];
     origField.fieldGroup.forEach(field => {
-      const label = field.templateOptions && field.templateOptions.label ? field.templateOptions.label : null;
+      const label =
+        field.templateOptions && field.templateOptions.label
+          ? field.templateOptions.label
+          : null;
       const option = {
         key: field.key,
         value: label
@@ -52,7 +56,7 @@ export class SdsAdvancedFiltersService {
 
     const field: FormlyFieldConfig = {
       key: origField.key,
-      type: 'multicheckbox',    
+      type: 'multicheckbox',
       templateOptions: {
         hideOptional: true,
         selectAllOption: true,
@@ -71,9 +75,11 @@ export class SdsAdvancedFiltersService {
     return field;
   }
 
-  updateFields( selectedFields: object, fields: FormlyFieldConfig[], model: any) {
-    fields.forEach((field: FormlyFieldConfig) => {
+  updateFields(selectedFields: any, fields: FormlyFieldConfig[], model: any) {
+    fields.forEach((field: any) => {
       const key = field.key;
+
+      console.log(key, 'selected');
       const selectedField = selectedFields[key];
       if (field.fieldGroup && field.fieldGroup.length > 1) {
         const fieldModel = model[key];
@@ -88,7 +94,11 @@ export class SdsAdvancedFiltersService {
     };
   }
 
-  updateFieldGroup( parentField: FormlyFieldConfig, selectedFields: any, model: object) {
+  updateFieldGroup(
+    parentField: FormlyFieldConfig,
+    selectedFields: any,
+    model: object
+  ) {
     if (selectedFields && selectedFields.length) {
       parentField.hide = false;
       parentField.fieldGroup.forEach(field => {
@@ -104,11 +114,7 @@ export class SdsAdvancedFiltersService {
     }
   }
 
-  updateSingleField(
-    field: FormlyFieldConfig,
-    fieldSelected: boolean,
-    model: any
-  ) {
+  updateSingleField(field: any, fieldSelected: boolean, model: any) {
     if (fieldSelected) {
       field.hide = false;
     } else {
