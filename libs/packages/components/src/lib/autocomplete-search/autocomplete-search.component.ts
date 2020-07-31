@@ -390,13 +390,21 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
           this.highlightedChildIndex = this.results[this.highlightedIndex][
             this.configuration.groupByChild
           ].length;
-        } else {
+        } else if (
+          this.highlightedChildIndex !== 0 &&
+          this.highlightedIndex >= 0
+        ) {
           this.highlightedChildIndex--;
           this.setHighlightedItem(
             this.results[this.highlightedIndex][
               this.configuration.groupByChild
             ][this.highlightedChildIndex]
           );
+        } else if (
+          this.highlightedChildIndex === 0 &&
+          this.highlightedIndex === 0
+        ) {
+          this.setHighlightedItem(this.results[this.highlightedIndex]);
         }
         this.scrollSelectedItemIntoView();
       }
