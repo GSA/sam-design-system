@@ -500,20 +500,10 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * highlights the index being hovered
    * @param index
    */
-  listItemHover(index: number): void {
-    this.highlightedIndex = index;
-    this.setHighlightedItem(this.results[this.highlightedIndex]);
+  listItemHover(): void {
+    this.highlightedItem[this.HighlightedPropertyName] = false;
   }
 
-  listChildItemHover(groupIndex: number, childIndex: number) {
-    this.highlightedIndex = groupIndex;
-    this.highlightedChildIndex = childIndex;
-    this.setHighlightedItem(
-      this.results[this.highlightedIndex][this.configuration.groupByChild][
-        this.highlightedChildIndex
-      ]
-    );
-  }
   /**
    * Scroll Event Handler (Calculates if mpre items should be asked for from service on scrolling down)
    */
