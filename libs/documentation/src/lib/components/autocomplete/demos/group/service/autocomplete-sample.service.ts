@@ -7,7 +7,6 @@ import {
 } from '@gsa-sam/components';
 import { map } from 'rxjs/operators';
 
-import { SampleAutocompleteData } from './autocomplete-sample.data';
 import { GroupAutocompleteData } from './data';
 
 @Injectable()
