@@ -7,6 +7,7 @@ import {
 } from '@gsa-sam/components';
 import { map } from 'rxjs/operators';
 
+import { SampleAutocompleteData } from './autocomplete-sample.data';
 import { GroupAutocompleteData } from './data';
 
 @Injectable()
@@ -20,7 +21,7 @@ export class AutocompleteSampleDataService
       let results = data.filter(it => it.value === item.value);
       item['childCount'] = results.length;
     }
-    this.loadedData = GroupAutocompleteData;
+    this.loadedData = data;
   }
 
   getDataByText(
@@ -32,15 +33,20 @@ export class AutocompleteSampleDataService
     let itemsOb: Observable<Object[]>;
 
     if (searchValue) {
-      itemsOb = data.pipe(
-        map(items =>
-          items.filter(
-            itm =>
-              itm.value.indexOf(searchValue) !== -1 ||
-              itm.value.indexOf(searchValue) !== -1
-          )
-        )
-      );
+      console.log(this.loadedData);
+      const filteredData = [];
+      this.loadedData.forEach(item => {
+        console.log('item', item, searchValue);
+        const elements = item.elements.filter(i =>
+          i.value.includes(searchValue)
+        );
+        if (item.value.includes(searchValue) || elements.length > 0) {
+          filteredData.push({ ...item, elements });
+        }
+      });
+
+      console.log('filteredData ===>', filteredData);
+      itemsOb = of(filteredData);
     } else {
       itemsOb = data;
     }
