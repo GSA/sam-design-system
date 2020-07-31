@@ -53,9 +53,10 @@ export class SdsAdvancedFiltersService {
 
     const field: FormlyFieldConfig = {
       key: origField.key,
-      type: 'multicheckbox',
+      type: 'multicheckbox',    
       templateOptions: {
         hideOptional: true,
+        selectAllOption: true,
         type: 'array',
         options: options
       }
