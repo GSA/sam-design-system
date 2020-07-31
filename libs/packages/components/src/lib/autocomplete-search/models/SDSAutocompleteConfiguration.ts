@@ -94,4 +94,9 @@ export class SDSAutocompleteSearchConfiguration {
    * To enable the Grouping mode
    */
   public isGroupingEnabled: boolean = false;
+
+  /**
+   * To enable the Group item selectable
+   */
+  public isSelectableGroup: boolean = true;
 }

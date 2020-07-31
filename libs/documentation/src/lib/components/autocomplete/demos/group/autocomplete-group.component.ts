@@ -34,5 +34,6 @@ export class AutocompleteGroup implements OnInit {
     this.settings.autocompletePlaceHolderText = 'Enter text';
     this.settings.isGroupingEnabled = true;
     this.settings.groupByChild = 'elements';
+    this.settings.isSelectableGroup = false;
   }
 }
