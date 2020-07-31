@@ -7,10 +7,10 @@ import {
 import { AutocompleteSampleDataService } from './service/autocomplete-sample.service';
 
 @Component({
-  templateUrl: './autocomplete-group.component.html',
+  templateUrl: './autocomplete-selectgroup.component.html',
   providers: [AutocompleteSampleDataService]
 })
-export class AutocompleteGroup {
+export class AutocompleteSelectGroup {
   public settings = new SDSAutocompletelConfiguration();
   public model = new SDSSelectedItemModel();
 
@@ -31,5 +31,6 @@ export class AutocompleteGroup {
     this.settings.autocompletePlaceHolderText = 'Enter text';
     this.settings.isGroupingEnabled = true;
     this.settings.groupByChild = 'elements';
+    this.settings.isSelectableGroup = false;
   }
 }

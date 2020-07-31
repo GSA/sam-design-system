@@ -51,6 +51,11 @@
           [attr.id]="configuration.id + '-resultItem-' + i"
           role="option"
           class="sds-autocomplete__group"
+          [ngClass]="
+            configuration.isSelectableGroup
+              ? 'sds-autocomplete__group'
+              : 'sds-autocomplete__group--disabled'
+          "
           *ngFor="let result of results; let i = index"
           (click)="!configuration.isSelectableGroup ? '' : selectItem(result)"
           (mouseenter)="listItemHover()"
