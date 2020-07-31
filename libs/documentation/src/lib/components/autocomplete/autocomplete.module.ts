@@ -19,19 +19,19 @@ import { AutocompleteGroupModule } from './demos/group/autocomplete-group.module
 
 declare var require: any;
 const DEMOS = {
-  group: {
-    title: 'Group Autocomplete',
-    type: AutocompleteGroup,
-    code: require('!!raw-loader!./demos/group/autocomplete-group.component'),
-    markup: require('!!raw-loader!./demos/group/autocomplete-group.component.html'),
-    path: 'libs/documentation/src/lib/components/autocomplete/demos/group'
-  },
   basic: {
     title: 'Basic Autocomplete',
     type: AutocompleteBasic,
     code: require('!!raw-loader!./demos/basic/autocomplete-basic.component'),
     markup: require('!!raw-loader!./demos/basic/autocomplete-basic.component.html'),
     path: 'libs/documentation/src/lib/components/autocomplete/demos/basic'
+  },
+  group: {
+    title: 'Group Autocomplete',
+    type: AutocompleteGroup,
+    code: require('!!raw-loader!./demos/group/autocomplete-group.component'),
+    markup: require('!!raw-loader!./demos/group/autocomplete-group.component.html'),
+    path: 'libs/documentation/src/lib/components/autocomplete/demos/group'
   },
   optional: {
     title: 'Optional Autocomplete',
