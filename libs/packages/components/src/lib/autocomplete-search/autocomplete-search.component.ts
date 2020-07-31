@@ -369,7 +369,16 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
         if (this.highlightedChildIndex === childLength) {
           this.highlightedIndex++;
           this.highlightedChildIndex = 0;
-          this.setHighlightedItem(this.results[this.highlightedIndex]);
+          if (this.configuration.isSelectableGroup) {
+            this.setHighlightedItem(this.results[this.highlightedIndex]);
+          } else {
+            this.setHighlightedItem(
+              this.results[this.highlightedIndex][
+                this.configuration.groupByChild
+              ][this.highlightedChildIndex]
+            );
+            this.highlightedChildIndex++;
+          }
         } else {
           this.setHighlightedItem(
             this.results[this.highlightedIndex][
@@ -386,10 +395,19 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     if (this.results && this.results.length > 0) {
       if (this.highlightedIndex >= 0) {
         if (this.highlightedChildIndex === 0 && this.highlightedIndex !== 0) {
-          this.setHighlightedItem(this.results[this.highlightedIndex--]);
-          this.highlightedChildIndex = this.results[this.highlightedIndex][
-            this.configuration.groupByChild
-          ].length;
+          this.highlightedIndex--;
+          if (this.configuration.isSelectableGroup) {
+            this.setHighlightedItem(this.results[this.highlightedIndex]);
+          } else {
+            this.highlightedChildIndex = this.results[this.highlightedIndex][
+              this.configuration.groupByChild
+            ].length;
+            this.setHighlightedItem(
+              this.results[this.highlightedIndex][
+                this.configuration.groupByChild
+              ][this.highlightedChildIndex]
+            );
+          }
         } else if (
           this.highlightedChildIndex !== 0 &&
           this.highlightedIndex >= 0
@@ -404,7 +422,15 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
           this.highlightedChildIndex === 0 &&
           this.highlightedIndex === 0
         ) {
-          this.setHighlightedItem(this.results[this.highlightedIndex]);
+          if (this.configuration.isSelectableGroup) {
+            this.setHighlightedItem(this.results[this.highlightedIndex]);
+          } else {
+            this.setHighlightedItem(
+              this.results[this.highlightedIndex][
+                this.configuration.groupByChild
+              ][this.highlightedChildIndex]
+            );
+          }
         }
         this.scrollSelectedItemIntoView();
       }
