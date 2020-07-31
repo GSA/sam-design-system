@@ -91,7 +91,7 @@ export class SDSAutocompleteSearchConfiguration {
   public groupByChild: string = 'children';
 
   /**
-   * To enable the Groupping mode
+   * To enable the Grouping mode
    */
   public isGroupingEnabled: boolean = false;
 }

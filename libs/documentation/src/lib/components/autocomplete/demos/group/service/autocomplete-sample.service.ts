@@ -21,7 +21,7 @@ export class AutocompleteSampleDataService
       let results = data.filter(it => it.value === item.value);
       item['childCount'] = results.length;
     }
-    this.loadedData = data;
+    this.loadedData = GroupAutocompleteData;
   }
 
   getDataByText(

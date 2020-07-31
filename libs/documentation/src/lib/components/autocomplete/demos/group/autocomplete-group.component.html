@@ -1,8 +1,12 @@
 <div class="margin-bottom-4">
-  <h4 id="auto1Label" for="autocomplete1">Group Autocomplete</h4>
+  <h4 id="auto1Label" for="autocomplete1">Autocomplete with Group</h4>
   <p>
-    <code>this.settings.selectionMode = SelectionMode.SINGLE</code> is used to
-    set the selection mode of the autocomplete.
+    <code>this.settings.isGroupingEnabled = true</code> is used to set the
+    enable the grouping.
+  </p>
+  <p>
+    <code>this.settings.groupByChild = 'elements';</code> child property name
+    for grouping.
   </p>
   <sds-autocomplete
     [service]="service"
