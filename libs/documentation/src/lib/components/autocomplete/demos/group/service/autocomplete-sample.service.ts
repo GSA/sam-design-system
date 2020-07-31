@@ -32,10 +32,8 @@ export class AutocompleteSampleDataService
     let itemsOb: Observable<Object[]>;
 
     if (searchValue) {
-      console.log(this.loadedData);
       const filteredData = [];
       this.loadedData.forEach(item => {
-        console.log('item', item, searchValue);
         const elements = item.elements.filter(i =>
           i.value.includes(searchValue)
         );
@@ -44,7 +42,6 @@ export class AutocompleteSampleDataService
         }
       });
 
-      console.log('filteredData ===>', filteredData);
       itemsOb = of(filteredData);
     } else {
       itemsOb = data;
