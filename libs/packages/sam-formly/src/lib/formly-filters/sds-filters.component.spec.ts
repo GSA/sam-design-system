@@ -72,18 +72,18 @@ describe('The Sam Filters Component', () => {
       component.form = new FormGroup({});
     });
 
-    xit('input type should be text', () => {
+    it('input type should be text', () => {
       fixture.detectChanges();
       const inputField = fixture.debugElement.query(By.css('.usa-input'));
       expect(inputField.nativeElement.type).toBe('number');
     });
-    xit('input value cannot be less than min', () => {
+    it('input value cannot be less than min', () => {
       component.model = { test: null, filters: { uniqueId: 12 } };
       fixture.detectChanges();
       expect(component.form.invalid).toBe(true);
     });
 
-    xit('input value length should be between min length and max length', () => {
+    it('input value length should be between min length and max length', () => {
       component.model = { test: null, filters: { uniqueId: 1 } };
       fixture.detectChanges();
       expect(component.form.invalid).toBe(true);
@@ -216,7 +216,7 @@ describe('The Sam Filters Component', () => {
       console.log(result);
       expect(JSON.stringify(result)).toEqual(JSON.stringify(expectedOutput));
     });
-    xit('should update the form value to null values if ref param is empty when back button is pressed ', () => {
+    it('should update the form value to null values if ref param is empty when back button is pressed ', () => {
       component.form = new FormGroup({
         test: new FormControl(''),
         filters: new FormControl('')
@@ -224,7 +224,7 @@ describe('The Sam Filters Component', () => {
       component.form.controls['test'].setValue('abc');
       component.form.controls['filters'].setValue({ uniqueId: 1 });
       window.dispatchEvent(new Event('popstate'));
-      const obj = { test: 'abc', filters: { uniqueId: 1 } };
+      const obj = { test: null, filters: {} };
       expect(JSON.stringify(component.form.value)).toEqual(JSON.stringify(obj));
     });
   });
@@ -272,7 +272,7 @@ describe('The Sam Filters Component', () => {
       ];
       component.form = new FormGroup({});
     });
-    xit('validation value length should be between min length and max length', () => {
+    it('validation value length should be between min length and max length', () => {
       component.model = { filters: { uniqueId: '4' } };
       fixture.detectChanges();
 
@@ -280,15 +280,13 @@ describe('The Sam Filters Component', () => {
         By.css('.usa-input')
       ) as DebugElement;
       const err = fixture.debugElement.query(By.css('.usa-error-message'));
-
       inputField.nativeElement.value = '4';
       inputField.nativeElement.dispatchEvent(new Event('input'));
       fixture.detectChanges();
-
       expect(component.form.invalid).toBe(true);
     });
 
-    xit('value length should be between min length and max length', () => {
+    it('value length should be between min length and max length', () => {
       component.model = { test: null, filters: { uniqueId: '45466' } };
       fixture.detectChanges();
       const inputField = fixture.debugElement.query(

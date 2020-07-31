@@ -53,7 +53,7 @@ export class SdsAdvancedFiltersService {
 
     const field: FormlyFieldConfig = {
       key: origField.key,
-      type: 'multicheckbox',    
+      type: 'multicheckbox',
       templateOptions: {
         hideOptional: true,
         selectAllOption: true,
@@ -73,8 +73,8 @@ export class SdsAdvancedFiltersService {
   }
 
   updateFields(selectedFields: any, fields: FormlyFieldConfig[], model: any) {
-    fields.forEach((field: FormlyFieldConfig) => {
-      const key = field.key[0];
+    fields.forEach((field: any) => {
+      const key = field.key;
       const selectedField = selectedFields[key];
       if (field.fieldGroup && field.fieldGroup.length > 1) {
         const fieldModel = model[key];
@@ -109,17 +109,13 @@ export class SdsAdvancedFiltersService {
     }
   }
 
-  updateSingleField(
-    field: FormlyFieldConfig,
-    fieldSelected: boolean,
-    model: any
-  ) {
+  updateSingleField(field: any, fieldSelected: boolean, model: any) {
     if (fieldSelected) {
       field.hide = false;
     } else {
       field.hide = true;
       field.templateOptions['required'] = false;
-      model[field.key[0]] = null;
+      model[field.key] = null;
     }
   }
 }
