@@ -15,7 +15,7 @@ import { By } from '@angular/platform-browser';
 import { AutoCompleteSampleDataService } from './autocomplete-seach-test-service.spec';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-describe('SamAutocompleteComponent', () => {
+fdescribe('SamAutocompleteComponent', () => {
   let component: SDSAutocompleteSearchComponent;
   let fixture: ComponentFixture<SDSAutocompleteSearchComponent>;
 
@@ -88,20 +88,20 @@ describe('SamAutocompleteComponent', () => {
     //expect(emptyItem).toBeTruthy();
   }));
 
-  xit('Should have results with minimumCharacterCountSearch', fakeAsync(() => {
+  it('Should have results with minimumCharacterCountSearch', fakeAsync(() => {
     const event = {
       preventDefault: () => {},
       target: component.input.nativeElement
     };
-    component.input.nativeElement.value = 'Form';
+    component.input.nativeElement.value = 'R';
     component.input.nativeElement.focus();
-    component.configuration.minimumCharacterCountSearch = 3;
+    component.configuration.minimumCharacterCountSearch = 2;
     component.textChange(event);
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
     const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
-    expect(list.nativeElement.children.length).toBe(6);
+    expect(list.nativeElement.children.length).toBe(16);
   }));
 
   it('Should have results with input and free text search on', fakeAsync(() => {
@@ -119,26 +119,25 @@ describe('SamAutocompleteComponent', () => {
     expect(component.inputValue).toBe('search text');
   }));
 
-  xit('Should have results key press', fakeAsync(() => {
+  it('Should have results key press', fakeAsync(() => {
     const event = {
       preventDefault: () => {},
       target: component.input.nativeElement
     };
-    component.input.nativeElement.value = 'element_id';
+    component.input.nativeElement.value = 'Formu';
     component.input.nativeElement.focus();
     component.textChange(event);
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
     const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
-    expect(list.nativeElement.children.length).toBe(16);
-    expect(component.results[0]['highlighted']).toBeTruthy();
+    expect(list.nativeElement.children.length).toBe(1);
     component.onScroll();
     tick();
     fixture.detectChanges();
   }));
 
-  xit('Should not highlight first result if free text is on', fakeAsync(() => {
+  it('Should not highlight first result if free text is on', fakeAsync(() => {
     const event = {
       preventDefault: () => {},
       target: component.input.nativeElement
@@ -151,7 +150,7 @@ describe('SamAutocompleteComponent', () => {
     tick();
     fixture.detectChanges();
     const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
-    expect(list.nativeElement.children.length).toBe(16);
+    expect(list.nativeElement.children.length).toBe(1);
     expect(component.highlightedIndex).toBe(-1);
   }));
 
@@ -351,7 +350,7 @@ describe('SamAutocompleteComponent', () => {
    expect(component.results[1]['highlighted']).toBeFalsy();
   }));
 
- xit('Should have delete have results', fakeAsync(() => {
+ it('Should have delete have results', fakeAsync(() => {
    
     const event = {
       preventDefault: () => {},
@@ -364,8 +363,8 @@ describe('SamAutocompleteComponent', () => {
     tick();
     fixture.detectChanges();
     const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
-    expect(list.nativeElement.children.length).toBe(16);
-    expect(component.results[0]['highlighted']).toBeTruthy();
+    expect(list.nativeElement.children.length).toBe(1);
+    
   }));
 
   it('Should have results Escape press', fakeAsync(() => {

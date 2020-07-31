@@ -18,7 +18,7 @@ export class AutocompleteSampleDataService
     const data = GroupAutocompleteData; //SampleAutocompleteData;
     for (let i = 0; i < data.length; i++) {
       let item = data[i];
-      let results = data.filter(it => it.code === item.code);
+      let results = data.filter(it => it.value === item.value);
       item['childCount'] = results.length;
     }
     this.loadedData = data;
@@ -37,8 +37,8 @@ export class AutocompleteSampleDataService
         map(items =>
           items.filter(
             itm =>
-              itm.name.indexOf(searchValue) !== -1 ||
-              itm.subtext.indexOf(searchValue) !== -1
+              itm.value.indexOf(searchValue) !== -1 ||
+              itm.value.indexOf(searchValue) !== -1
           )
         )
       );
