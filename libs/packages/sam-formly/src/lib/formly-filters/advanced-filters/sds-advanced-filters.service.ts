@@ -78,8 +78,6 @@ export class SdsAdvancedFiltersService {
   updateFields(selectedFields: any, fields: FormlyFieldConfig[], model: any) {
     fields.forEach((field: any) => {
       const key = field.key;
-
-      console.log(key, 'selected');
       const selectedField = selectedFields[key];
       if (field.fieldGroup && field.fieldGroup.length > 1) {
         const fieldModel = model[key];
