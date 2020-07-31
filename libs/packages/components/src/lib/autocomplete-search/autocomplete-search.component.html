@@ -53,7 +53,7 @@
           [ngClass]="
             configuration.isSelectableGroup
               ? 'sds-autocomplete__group'
-              : 'sds-autocomplete__group--disabled'
+              : 'sds-autocomplete__group sds-autocomplete__group--disabled'
           "
           *ngFor="let result of results; let i = index"
           (click)="!configuration.isSelectableGroup ? '' : selectItem(result)"
