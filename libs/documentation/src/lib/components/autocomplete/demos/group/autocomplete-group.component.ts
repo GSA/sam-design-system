@@ -4,7 +4,6 @@ import {
   SDSSelectedItemModel,
   SelectionMode
 } from '@gsa-sam/components';
-import { SampleAutocompleteData } from './service/autocomplete-sample.data';
 import { AutocompleteSampleDataService } from './service/autocomplete-sample.service';
 
 @Component({
@@ -12,7 +11,6 @@ import { AutocompleteSampleDataService } from './service/autocomplete-sample.ser
   providers: [AutocompleteSampleDataService]
 })
 export class AutocompleteGroup implements OnInit {
-  private data = SampleAutocompleteData;
   public settings = new SDSAutocompletelConfiguration();
   public model = new SDSSelectedItemModel();
 
