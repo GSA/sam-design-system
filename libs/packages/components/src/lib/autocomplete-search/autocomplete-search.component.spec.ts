@@ -71,7 +71,7 @@ describe('SamAutocompleteComponent', () => {
     expect(component.resultsListElement).toBe(undefined);
   });
 
-  xit('Should have empty results with invalid search', fakeAsync(() => {
+  it('Should have empty results with invalid search', fakeAsync(() => {
     const event = {
       preventDefault: () => {},
       target: component.input.nativeElement
@@ -131,7 +131,7 @@ describe('SamAutocompleteComponent', () => {
     tick();
     fixture.detectChanges();
     const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
-    expect(list.nativeElement.children.length).toBe(1);
+    expect(list.nativeElement.children.length).toBe(2);
     component.onScroll();
     tick();
     fixture.detectChanges();

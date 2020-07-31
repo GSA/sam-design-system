@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   SDSAutocompletelConfiguration,
   SDSSelectedItemModel,
@@ -16,10 +16,6 @@ export class AutocompleteSelectGroup {
 
   constructor(public service: AutocompleteSampleDataService) {
     this.setup();
-  }
-
-  changes(value) {
-    console.log(value);
   }
 
   setup() {
