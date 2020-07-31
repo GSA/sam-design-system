@@ -2,15 +2,16 @@
 import { Observable, of } from 'rxjs';
 import { SDSAutocompleteServiceInterface, SDSHiercarchicalServiceResult } from './models/SDSAutocompleteServiceInterface';
 import { map } from 'rxjs/operators';
+import { GropupSampleAutocompleteData } from './autocomplete-sample.data';
 
 export class AutoCompleteSampleDataService implements SDSAutocompleteServiceInterface {
 
   private loadedData;
   constructor() {
-    const data = SampleAutoCompleteData;
+    const data = GropupSampleAutocompleteData;
     for (let i = 0; i < data.length; i++) {
       let item = data[i];
-      let results = data.filter(it => it.parentId === item.id);
+      let results = data.filter(it => it.element_id === item.element_id);
       item['childCount'] = results.length;
     }
     this.loadedData = data;
@@ -70,7 +71,18 @@ export let SampleAutoCompleteData = [
   { 'id': '8', 'parentId': '5', 'name': 'Level 6', 'subtext': 'id 8', 'type': 'Level 6' },
   { 'id': '9', 'parentId': '8', 'name': 'Level 7', 'subtext': 'id 9', 'type': 'Level 7' },
   { 'id': '10', 'parentId': '8', 'name': 'Level 7', 'subtext': 'id 10', 'type': 'Level 7' },
-  { 'id': '11', 'parentId': '5', 'name': 'Level 6', 'subtext': 'id 11', 'type': 'Level 6' }
+  { 'id': '11', 'parentId': '5', 'name': 'Level 6', 'subtext': 'id 11', 'type': 'Level 6' },
+  { 'id': '112', 'parentId': '10', 'name': 'Level 1', 'subtext': 'id 1', 'type': 'Level 1' },
+  { 'id': '12', 'parentId': '1', 'name': 'Level 2', 'subtext': 'id 2', 'type': 'Level 2' },
+  { 'id': '13', 'parentId': '2', 'name': 'Level 3', 'subtext': 'id 3', 'type': 'Level 3' },
+  { 'id': '14', 'parentId': '3', 'name': 'Level 4', 'subtext': 'id 4', 'type': 'Level 4' },
+  { 'id': '15', 'parentId': '4', 'name': 'Level 5', 'subtext': 'id 5', 'type': 'Level 5' },
+  { 'id': '16', 'parentId': '5', 'name': 'Level 6', 'subtext': 'id 6', 'type': 'Level 6' },
+  { 'id': '17', 'parentId': '6', 'name': 'Level 7', 'subtext': 'id 7', 'type': 'Level 7' },
+  { 'id': '18', 'parentId': '5', 'name': 'Level 6', 'subtext': 'id 8', 'type': 'Level 6' },
+  { 'id': '19', 'parentId': '8', 'name': 'Level 7', 'subtext': 'id 9', 'type': 'Level 7' },
+  { 'id': '110', 'parentId': '8', 'name': 'Level 7', 'subtext': 'id 10', 'type': 'Level 7' },
+  { 'id': '111', 'parentId': '5', 'name': 'Level 6', 'subtext': 'id 11', 'type': 'Level 6' }
 
 ];
 
