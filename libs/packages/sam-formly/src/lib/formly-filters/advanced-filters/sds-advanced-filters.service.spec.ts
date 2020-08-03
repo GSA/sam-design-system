@@ -84,6 +84,7 @@ describe('SdsAdvancedFiltersService', () => {
         hideOptional: true,
         label: 'Entity',
         type: 'array',
+        selectAllOption: true,
         options: [
           { key: 'legalBusinessName', value: 'Entity Name' },
           { key: 'uniqueEntityIdSam', value: 'Unique Entity ID (SAM)' }
@@ -98,6 +99,7 @@ describe('SdsAdvancedFiltersService', () => {
       templateOptions: {
         hideOptional: true,
         type: 'array',
+        selectAllOption: true,
         options: [
           { key: 'hideField1', value: null },
           { key: 'hideField2', value: null }

@@ -36,8 +36,7 @@ describe('Advanced Filteres Component', () => {
           useValue: advancedFiltersServiceSpy
         }
       ]
-    })
-      .compileComponents()
+    }).compileComponents();
   }));
 
   beforeEach(() => {
