@@ -8,7 +8,7 @@
         <div class="sds-accordion__item-header-title">Select Domain</div>
         <span class="text-normal">{{ selectedCategory }}</span>
       </sds-accordion-item-header>
-      <sds-side-navigation #sideNav [model]="navigationModel" (navigate)="onNavigateLink()"></sds-side-navigation>
+      <sds-side-navigation #sideNav [model]="navigationModel" (linkEvent)="onNavigateLink()"></sds-side-navigation>
     </sds-accordion-item>
     <sds-accordion-item #filtersAccordion [expanded]="true">
       <sds-accordion-item-header>Filter By</sds-accordion-item-header>

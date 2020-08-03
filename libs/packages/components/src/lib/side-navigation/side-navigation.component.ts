@@ -154,13 +154,13 @@ export class SdsSideNavigationComponent {
    * event for event based
    */
   @Output()
-  navigate = new EventEmitter<INavigationLink>();
+  linkEvent = new EventEmitter<INavigationLink>();
   /**
    * Link clicked and emits the link data into an event
    * @param link
    */
-  navigation(link: INavigationLink) {
-    this.navigate.emit(link);
+  linkClickEvent(link: INavigationLink) {
+    this.linkEvent.emit(link);
     return false;
   }
 
@@ -180,7 +180,6 @@ export class SdsSideNavigationComponent {
         url += '&' + queryParams;
       }
     }
-    console.log(url);
     return url;
   }
 

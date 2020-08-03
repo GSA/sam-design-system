@@ -24,12 +24,12 @@
 
 <ng-template #sideNavRouteLinkTemplate let-link>
   <a [attr.class]="link.selected ? ' usa-current' : ''" [routerLink]="[link.route]" [queryParams]="link.queryParams"
-    (click)="navigation(link)"><span>{{link.text}}</span></a>
+    (click)="linkClickEvent(link)"><span>{{link.text}}</span></a>
 </ng-template>
 
 <ng-template #sideNavHREFLinkTemplate let-link>
   <a [attr.class]="link.selected ? ' usa-current' : ''" [attr.href]="urlBuilder(link)"
-    (click)="navigation(link)"><span>{{link.text}}</span></a>
+    (click)="linkClickEvent(link)"><span>{{link.text}}</span></a>
 </ng-template>
 
 <ng-template #sideNavLabelLinkTemplate let-link>
@@ -38,5 +38,5 @@
 
 <ng-template #sideNavEVENTLinkTemplate let-link>
   <a [attr.class]="link.selected ? ' usa-current' : ''" href="javascript:void(0)"
-    (click)="navigation(link)"><span>{{link.text}}</span></a>
+    (click)="linkClickEvent(link)"><span>{{link.text}}</span></a>
 </ng-template>
