@@ -3,8 +3,7 @@ import { FieldType } from '@ngx-formly/core';
 
 @Component({
   selector: 'sds-formly-field-multicheckbox',
-  templateUrl: './multicheckbox.html',
-  styleUrls: ['./multicheckbox.scss']
+  templateUrl: './multicheckbox.html'
 })
 export class FormlyFieldMultiCheckboxComponent extends FieldType
   implements OnInit {
