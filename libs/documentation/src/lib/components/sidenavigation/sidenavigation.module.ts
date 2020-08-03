@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SideNavigationBasic } from './demos/basic/sidenavigation-basic.component';
 import { DocumentationExamplesPage } from '../shared/examples-page/examples.component';
 import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
@@ -10,7 +9,6 @@ import {
   DocumentationDemoList
 } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
-import { SideNavigationBasicModule } from './demos/basic/sidenavigation-basic.module';
 import { SideNavigationOptionalModule } from './demos/optional/sidenavigation-optional.module';
 import { SideNavigationOptional } from './demos/optional/sidenavigation-optional.component';
 
@@ -52,7 +50,6 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    SideNavigationBasicModule,
     SideNavigationOptionalModule
   ]
 })
