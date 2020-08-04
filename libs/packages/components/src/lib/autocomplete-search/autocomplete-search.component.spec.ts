@@ -344,10 +344,6 @@ describe('SamAutocompleteComponent', () => {
     fixture.detectChanges();
 
     expect(component.results[1]['highlighted']).toBeTruthy();
-    component.listItemHover();
-    tick();
-    fixture.detectChanges();
-    expect(component.results[1]['highlighted']).toBeFalsy();
   }));
 
   it('Should have delete have results', fakeAsync(() => {

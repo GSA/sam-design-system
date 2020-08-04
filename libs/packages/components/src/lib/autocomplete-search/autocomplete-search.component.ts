@@ -532,15 +532,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   private matchPastSearchString(searchString: string) {
     return this.searchString === searchString;
   }
-
-  /**
-   * highlights the index being hovered
-   * @param index
-   */
-  listItemHover(): void {
-    this.highlightedItem[this.HighlightedPropertyName] = false;
-  }
-
   /**
    * Scroll Event Handler (Calculates if mpre items should be asked for from service on scrolling down)
    */
