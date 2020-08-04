@@ -57,7 +57,6 @@
           "
           *ngFor="let result of results; let i = index"
           (click)="!configuration.isSelectableGroup ? '' : selectItem(result)"
-          (mouseenter)="listItemHover()"
         >
           <div
             class="sds-autocomplete__item"

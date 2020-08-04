@@ -367,35 +367,38 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
           this.configuration.groupByChild
         ].length;
         if (this.highlightedChildIndex === childLength) {
-          if (this.highlightedIndex === this.results.length - 1) {
+          this.highlightedIndex++;
+          this.highlightedChildIndex = 0;
+          if (this.configuration.isSelectableGroup) {
+            this.setHighlightedItem(this.results[this.highlightedIndex]);
+          } else {
             this.setHighlightedItem(
               this.results[this.highlightedIndex][
                 this.configuration.groupByChild
               ][this.highlightedChildIndex]
             );
-          } else {
-            this.highlightedIndex++;
-            this.highlightedChildIndex = 0;
-            if (this.configuration.isSelectableGroup) {
-              this.setHighlightedItem(this.results[this.highlightedIndex]);
-            } else {
-              this.setHighlightedItem(
-                this.results[this.highlightedIndex][
-                  this.configuration.groupByChild
-                ][this.highlightedChildIndex]
-              );
-              this.highlightedChildIndex++;
-            }
+            this.highlightedChildIndex++;
           }
         } else {
-          this.setHighlightedItem(
-            this.results[this.highlightedIndex][
-              this.configuration.groupByChild
-            ][this.highlightedChildIndex++]
-          );
+          if (
+            this.highlightedIndex == this.results.length - 1 &&
+            this.highlightedChildIndex == childLength - 1
+          ) {
+            this.setHighlightedItem(
+              this.results[this.highlightedIndex][
+                this.configuration.groupByChild
+              ][childLength - 1]
+            );
+          } else {
+            this.setHighlightedItem(
+              this.results[this.highlightedIndex][
+                this.configuration.groupByChild
+              ][this.highlightedChildIndex++]
+            );
+          }
         }
+        this.scrollSelectedItemIntoView();
       }
-      this.scrollSelectedItemIntoView();
     }
   }
 
