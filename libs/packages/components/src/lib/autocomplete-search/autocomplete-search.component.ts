@@ -336,6 +336,10 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     this.focusRemoved();
   }
 
+  openOptions() {
+    this.input.nativeElement.focus()
+  }
+
   /**
    *  handles the arrow up key event
    */
