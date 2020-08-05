@@ -3,20 +3,24 @@
   <p>Choose from following download option. Lorem ipsum dolor sit amet, <br>
   consecteur adipiscing elit, sed do eiusmod tempor incidunt.
   </p>
+<form >
   <formly-form
-      [fields]="fields"
-      [form]="form"
-      [model]="model"
-      [options]="options"
-      >
-    </formly-form>
+  [fields]="fields"
+  [form]="form"
+  [model]="model"
+  [options]="options"
+  >
+</formly-form>
+
+</form>
+
 
 </div>
 <div sds-dialog-actions>
   <button class="usa-button usa-button--base" >
     Cancel
   </button>
-  <button class="usa-button"  cdkFocusInitial>
+  <button class="usa-button" (click)="onSubmit()" cdkFocusInitial>
     Submit
   </button>
 </div>

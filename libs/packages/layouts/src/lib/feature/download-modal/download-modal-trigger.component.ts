@@ -16,15 +16,13 @@ export class SdsDownloadModalTriggerComponent implements OnInit {
 
   openModal(){
     let dialogRef = this.dialogService.open(SdsDownloadModalComponent);
-    // form = new FormGroup({});
-
 
 
     dialogRef.afterClosed().subscribe(res => {
       //Do something after close
+      console.log(res)
     })
-
-
   }
+
 
 }

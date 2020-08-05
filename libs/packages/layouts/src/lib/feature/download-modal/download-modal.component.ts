@@ -18,18 +18,26 @@ export class SdsDownloadModalComponent implements OnInit {
   ngOnInit() {
     this.form = new FormGroup({
       name: new FormControl('', Validators.required),
-      dateOfBirth: new FormControl('', Validators.required)
+      fullRecord: new FormControl(false, Validators.required),
+      summaryInfo: new FormControl(false, Validators.required),
+      caseRecords: new FormControl(false, Validators.required),
+      currentRecord: new FormControl(false, Validators.required),
+      savedSearch: new FormControl(false, Validators.required),
     });
 
     this.model = {
-      id: 'file',
-      name: 'FileType.csv',
-      options: 'multicheckbox'
+      name: '',
+      fullRecord: false,
+      summaryInfo: false,
+      caseRecords: false,
+      currentRecord: false,
+      savedSearch: true,
+
     };
 
     this.fields = [
       {
-        key: 'terms',
+        key: 'fullRecord',
         type: 'checkbox',
         templateOptions: {
           label: 'Download full record.',
@@ -37,7 +45,7 @@ export class SdsDownloadModalComponent implements OnInit {
         }
       },
       {
-        key: 'terms',
+        key: 'summaryInfo',
         type: 'checkbox',
         templateOptions: {
           label: 'Download summary information only.',
@@ -45,35 +53,20 @@ export class SdsDownloadModalComponent implements OnInit {
         }
       },
       {
-        key: 'terms',
+        key: 'caseRecords',
         type: 'checkbox',
         templateOptions: {
           label: 'Download FDPS case records.',
           required: true
         }
       },{
-        key: 'terms',
+        key: 'currentRecord',
         type: 'checkbox',
         templateOptions: {
           label: 'Download current record and all of its modification.',
           required: true
         }
       },
-      {
-        key: 'gender',
-        type: 'radio',
-        templateOptions: {
-          label: 'Select File Type',
-          // placeholder: 'Placeholder',
-          // description: 'Select File Type',
-          // options: [
-          //   { value: 1, label: 'Search Results' },
-          //   { value: 2, label: 'Search Results' },
-          //   { value: 3, label: 'WD Decision' },
-          // ],
-        },
-      },
-
       {
         key: 'name',
         type: 'input',
@@ -83,7 +76,7 @@ export class SdsDownloadModalComponent implements OnInit {
         }
       },
       {
-        key: 'terms',
+        key: 'savedSearch',
         type: 'checkbox',
         templateOptions: {
           label: 'Add to my Saved Searches.',
@@ -95,4 +88,8 @@ export class SdsDownloadModalComponent implements OnInit {
 
     this.options = {};
   }
+  onSubmit(){
+  console.log(this.model)
+  }
 }
+
