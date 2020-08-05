@@ -242,6 +242,8 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   inputFocusHandler(): void {
     if (!this.configuration.isTagModeEnabled) {
       if (this.configuration.focusInSearch) {
+        this.highlightedIndex= 0;
+        this.highlightedChildIndex = this.configuration.isSelectableGroup ? 0 : null;
         this.getResults(this.inputValue || '');
       }
       this.onTouchedCallback();
@@ -406,9 +408,12 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     if (this.results && this.results.length > 0) {
       if (this.highlightedIndex >= 0) {
         if (this.highlightedChildIndex === 0 && this.highlightedIndex !== 0) {
-          this.highlightedIndex--;
           if (this.configuration.isSelectableGroup) {
             this.setHighlightedItem(this.results[this.highlightedIndex]);
+              this.highlightedIndex--;
+              this.highlightedChildIndex = this.results[this.highlightedIndex][
+                this.configuration.groupByChild
+              ].length;
           } else {
             this.highlightedChildIndex = this.results[this.highlightedIndex][
               this.configuration.groupByChild
@@ -418,6 +423,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
                 this.configuration.groupByChild
               ][this.highlightedChildIndex]
             );
+           
           }
         } else if (
           this.highlightedChildIndex !== 0 &&
@@ -433,6 +439,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
           this.highlightedChildIndex === 0 &&
           this.highlightedIndex === 0
         ) {
+          console.log('child')
           if (this.configuration.isSelectableGroup) {
             this.setHighlightedItem(this.results[this.highlightedIndex]);
           } else {
