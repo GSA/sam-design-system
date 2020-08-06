@@ -57,7 +57,8 @@
               configuration.isGroupingEnabled,
             'sds-autocomplete__item': !configuration.isGroupingEnabled,
             'sds-autocomplete__item--selected':
-              result['highlighted'] && !configuration.isGroupingEnabled
+              result['highlighted'] && !configuration.isGroupingEnabled,
+            'sds-autocomplete__item--choosen': checkItemSelected(result)
           }"
           *ngFor="let result of results; let i = index"
           (click)="!configuration.isSelectableGroup ? '' : selectItem(result)"
@@ -96,6 +97,9 @@
             <ul class="usa-list usa-list--unstyled">
               <li
                 class="sds-autocomplete__item"
+                [ngClass]="{
+                  'sds-autocomplete__item--choosen': checkItemSelected(child)
+                }"
                 *ngFor="
                   let child of result[configuration.groupByChild];
                   let j = index
