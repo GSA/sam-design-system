@@ -443,7 +443,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
           this.highlightedChildIndex === 0 &&
           this.highlightedIndex === 0
         ) {
-          console.log('child')
           if (this.configuration.isSelectableGroup) {
             this.setHighlightedItem(this.results[this.highlightedIndex]);
           } else {
