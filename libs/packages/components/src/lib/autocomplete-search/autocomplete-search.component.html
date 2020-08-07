@@ -56,11 +56,9 @@
               !configuration.isSelectableGroup &&
               configuration.isGroupingEnabled,
             'sds-autocomplete__item': !configuration.isGroupingEnabled,
-            'sds-autocomplete__item--selected':
+            'sds-autocomplete__item--highlighted':
               result['highlighted'] && !configuration.isGroupingEnabled,
-            'sds-autocomplete__group--choosen':
-              checkItemSelected(result) && configuration.isGroupingEnabled,
-            'sds-autocomplete__item--choosen':
+            'sds-autocomplete__item--selected':
               checkItemSelected(result) && !configuration.isGroupingEnabled
           }"
           *ngFor="let result of results; let i = index"
@@ -76,8 +74,10 @@
             <div
               [ngClass]="{
                 'sds-autocomplete__item': configuration.isGroupingEnabled,
+                'sds-autocomplete__item--highlighted':
+                  configuration.isGroupingEnabled && result['highlighted'],
                 'sds-autocomplete__item--selected':
-                  configuration.isGroupingEnabled && result['highlighted']
+                  checkItemSelected(result) && configuration.isGroupingEnabled
               }"
             >
               <div
@@ -101,16 +101,14 @@
               <li
                 class="sds-autocomplete__item"
                 [ngClass]="{
-                  'sds-autocomplete__item--choosen': checkItemSelected(child)
+                  'sds-autocomplete__item--selected': checkItemSelected(child),
+                  'sds-autocomplete__item--highlighted': child['highlighted']
                 }"
                 *ngFor="
                   let child of result[configuration.groupByChild];
                   let j = index
                 "
                 (click)="selectItem(child)"
-                [ngClass]="
-                  child['highlighted'] ? 'sds-autocomplete__item--selected' : ''
-                "
               >
                 <div
                   [ngClass]="{
