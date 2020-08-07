@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SdsDialogService } from '@gsa-sam/components';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
@@ -8,6 +8,8 @@ import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
   templateUrl: './download-modal.component.html'
 })
 export class SdsDownloadModalComponent implements OnInit {
+  @Output() private onFormGroupChange = new EventEmitter<any>();
+
   @Input() message: string;
   fields: FormlyFieldConfig[];
   model: any;
@@ -23,6 +25,7 @@ export class SdsDownloadModalComponent implements OnInit {
       caseRecords: new FormControl(false, Validators.required),
       currentRecord: new FormControl(false, Validators.required),
       savedSearch: new FormControl(false, Validators.required),
+      fileType: new FormControl('', Validators.required)
     });
 
     this.model = {
@@ -32,6 +35,7 @@ export class SdsDownloadModalComponent implements OnInit {
       caseRecords: false,
       currentRecord: false,
       savedSearch: true,
+      fileType: ''
 
     };
 
@@ -68,6 +72,30 @@ export class SdsDownloadModalComponent implements OnInit {
         }
       },
       {
+        key: 'fileType',
+        type: 'radio',
+        templateOptions: {
+          label: 'Select File Type',
+          required: true,
+          options: [
+            {
+              key: 'csv',
+              value: 'CSV File'
+            },
+            {
+              key: 'pdf',
+              value: 'PDF File'
+            },
+            {
+              key: 'zip',
+              value: 'Zip File'
+            }
+          ]
+
+        }
+
+      },
+      {
         key: 'name',
         type: 'input',
         templateOptions: {
@@ -82,14 +110,14 @@ export class SdsDownloadModalComponent implements OnInit {
           label: 'Add to my Saved Searches.',
           required: false
         }
-      },
-      {}
+      }
     ];
 
     this.options = {};
   }
   onSubmit(){
   console.log(this.model)
+  this.onFormGroupChange.emit(this.model)
   }
 }
 
