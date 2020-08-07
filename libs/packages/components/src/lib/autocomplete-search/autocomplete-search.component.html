@@ -52,9 +52,6 @@
           role="option"
           [ngClass]="{
             'sds-autocomplete__group': configuration.isGroupingEnabled,
-            'sds-autocomplete__group--disabled':
-              !configuration.isSelectableGroup &&
-              configuration.isGroupingEnabled,
             'sds-autocomplete__item': !configuration.isGroupingEnabled,
             'sds-autocomplete__item--highlighted':
               result['highlighted'] && !configuration.isGroupingEnabled,
@@ -76,6 +73,9 @@
                 'sds-autocomplete__item': configuration.isGroupingEnabled,
                 'sds-autocomplete__item--highlighted':
                   configuration.isGroupingEnabled && result['highlighted'],
+                'sds-autocomplete__item--disabled':
+                  !configuration.isSelectableGroup &&
+                  configuration.isGroupingEnabled,
                 'sds-autocomplete__item--selected':
                   checkItemSelected(result) && configuration.isGroupingEnabled
               }"
