@@ -88,6 +88,11 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   public highlightedIndex: number = 0;
 
   /**
+   * selected child index
+   */
+  public highlightedChildIndex = 0;
+
+  /**
    * highlighted object in drop down
    */
   private highlightedItem: object;
@@ -237,6 +242,10 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   inputFocusHandler(): void {
     if (!this.configuration.isTagModeEnabled) {
       if (this.configuration.focusInSearch) {
+        this.highlightedIndex = 0;
+        this.highlightedChildIndex = this.configuration.isSelectableGroup
+          ? 0
+          : null;
         this.getResults(this.inputValue || '');
       }
       this.onTouchedCallback();
@@ -255,16 +264,21 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
         event.preventDefault();
       }
     } else if (KeyHelper.is(KEYS.DOWN, event)) {
-      this.onArrowDown();
+      this.configuration.isGroupingEnabled
+        ? this.onArrowGroupDown()
+        : this.onArrowDown();
     } else if (KeyHelper.is(KEYS.UP, event)) {
       event.preventDefault();
-      this.onArrowUp();
+
+      this.configuration.isGroupingEnabled
+        ? this.onArrowGroupUp()
+        : this.onArrowUp();
     } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex >= 0) {
       if (this.configuration.isTagModeEnabled) {
         const val = this.createFreeTextItem();
         this.selectItem(val);
       } else {
-          this.selectItem(this.highlightedItem);
+        this.selectItem(this.highlightedItem);
       }
     } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex < 0) {
       if (this.configuration.isFreeTextEnabled) {
@@ -286,16 +300,19 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * @param item
    */
   public selectItem(item: object): void {
-    let filterItem =  {};
-    if(this.essentialModelFields){
-      filterItem[this.configuration.primaryKeyField]= item[this.configuration.primaryKeyField];
-      filterItem[this.configuration.primaryTextField]= item[this.configuration.primaryTextField];
-    if(this.configuration.secondaryTextField) {
-      filterItem[this.configuration.secondaryTextField]= item[this.configuration.secondaryTextField];
+    let filterItem = {};
+    if (this.essentialModelFields) {
+      filterItem[this.configuration.primaryKeyField] =
+        item[this.configuration.primaryKeyField];
+      filterItem[this.configuration.primaryTextField] =
+        item[this.configuration.primaryTextField];
+      if (this.configuration.secondaryTextField) {
+        filterItem[this.configuration.secondaryTextField] =
+          item[this.configuration.secondaryTextField];
+      }
+    } else {
+      filterItem = item;
     }
-  } else {
-    filterItem = item;
-  }
     SDSSelectedItemModelHelper.addItem(
       filterItem,
       this.configuration.primaryKeyField,
@@ -321,6 +338,10 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     this.focusRemoved();
   }
 
+  openOptions() {
+    this.input.nativeElement.focus();
+  }
+
   /**
    *  handles the arrow up key event
    */
@@ -342,6 +363,97 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       if (this.highlightedIndex < this.results.length - 1) {
         this.highlightedIndex++;
         this.setHighlightedItem(this.results[this.highlightedIndex]);
+        this.scrollSelectedItemIntoView();
+      }
+    }
+  }
+
+  private onArrowGroupDown(): void {
+    if (this.results && this.results.length > 0) {
+      if (this.highlightedIndex <= this.results.length - 1) {
+        let childLength = this.results[this.highlightedIndex][
+          this.configuration.groupByChild
+        ].length;
+        if (this.highlightedChildIndex === childLength) {
+          this.highlightedIndex++;
+          this.highlightedChildIndex = 0;
+          if (this.configuration.isSelectableGroup) {
+            this.setHighlightedItem(this.results[this.highlightedIndex]);
+          } else {
+            this.setHighlightedItem(
+              this.results[this.highlightedIndex][
+                this.configuration.groupByChild
+              ][this.highlightedChildIndex]
+            );
+            this.highlightedChildIndex++;
+          }
+        } else {
+          if (
+            this.highlightedIndex == this.results.length - 1 &&
+            this.highlightedChildIndex == childLength - 1
+          ) {
+            this.setHighlightedItem(
+              this.results[this.highlightedIndex][
+                this.configuration.groupByChild
+              ][childLength - 1]
+            );
+          } else {
+            this.setHighlightedItem(
+              this.results[this.highlightedIndex][
+                this.configuration.groupByChild
+              ][this.highlightedChildIndex++]
+            );
+          }
+        }
+        this.scrollSelectedItemIntoView();
+      }
+    }
+  }
+
+  private onArrowGroupUp(): void {
+    if (this.results && this.results.length > 0) {
+      if (this.highlightedIndex >= 0) {
+        if (this.highlightedChildIndex === 0 && this.highlightedIndex !== 0) {
+          if (this.configuration.isSelectableGroup) {
+            this.setHighlightedItem(this.results[this.highlightedIndex]);
+            this.highlightedIndex--;
+            this.highlightedChildIndex = this.results[this.highlightedIndex][
+              this.configuration.groupByChild
+            ].length;
+          } else {
+            this.highlightedChildIndex = this.results[this.highlightedIndex][
+              this.configuration.groupByChild
+            ].length;
+            this.setHighlightedItem(
+              this.results[this.highlightedIndex][
+                this.configuration.groupByChild
+              ][this.highlightedChildIndex]
+            );
+          }
+        } else if (
+          this.highlightedChildIndex !== 0 &&
+          this.highlightedIndex >= 0
+        ) {
+          this.highlightedChildIndex--;
+          this.setHighlightedItem(
+            this.results[this.highlightedIndex][
+              this.configuration.groupByChild
+            ][this.highlightedChildIndex]
+          );
+        } else if (
+          this.highlightedChildIndex === 0 &&
+          this.highlightedIndex === 0
+        ) {
+          if (this.configuration.isSelectableGroup) {
+            this.setHighlightedItem(this.results[this.highlightedIndex]);
+          } else {
+            this.setHighlightedItem(
+              this.results[this.highlightedIndex][
+                this.configuration.groupByChild
+              ][this.highlightedChildIndex]
+            );
+          }
+        }
         this.scrollSelectedItemIntoView();
       }
     }
@@ -385,7 +497,18 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     item[this.configuration.primaryKeyField] = this.inputValue;
     return item;
   }
-
+  /**
+   *  return Item is already selected or not
+   * @param result
+   */
+  checkItemSelected(result: any) {
+    const selectedItem = this.model.items.filter(
+      item =>
+        item[this.configuration.primaryKeyField] ===
+        result[this.configuration.primaryKeyField]
+    );
+    return selectedItem.length > 0 ? true : false;
+  }
   /**
    *  gets the inital results
    * @param searchString
@@ -431,16 +554,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   private matchPastSearchString(searchString: string) {
     return this.searchString === searchString;
   }
-
-  /**
-   * highlights the index being hovered
-   * @param index
-   */
-  listItemHover(index: number): void {
-    this.highlightedIndex = index;
-    this.setHighlightedItem(this.results[this.highlightedIndex]);
-  }
-
   /**
    * Scroll Event Handler (Calculates if mpre items should be asked for from service on scrolling down)
    */
@@ -486,14 +599,23 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    */
   private scrollSelectedItemIntoView() {
     if (this.highlightedIndex >= 0) {
-      const selectedChild = this.resultsListElement.nativeElement.children[
-        this.highlightedIndex
-      ];
-      selectedChild.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-        inline: 'start'
-      });
+      let selectedChild;
+      if (this.configuration.isGroupingEnabled) {
+        selectedChild = this.resultsListElement.nativeElement.children[
+          this.highlightedIndex
+        ].getElementsByTagName('ul')[0].children[this.highlightedChildIndex];
+      } else {
+        selectedChild = this.resultsListElement.nativeElement.children[
+          this.highlightedIndex
+        ];
+      }
+      if (selectedChild) {
+        selectedChild.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'start'
+        });
+      }
     }
   }
 

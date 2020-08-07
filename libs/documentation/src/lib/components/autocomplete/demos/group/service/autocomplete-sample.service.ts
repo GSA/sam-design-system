@@ -1,20 +1,23 @@
 /* tslint:disable */
+import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import {
   SDSAutocompleteServiceInterface,
   SDSHiercarchicalServiceResult
-} from './models/SDSAutocompleteServiceInterface';
+} from '@gsa-sam/components';
 import { map } from 'rxjs/operators';
-import { GropupSampleAutocompleteData } from './autocomplete-sample.data';
 
-export class AutoCompleteSampleDataService
+import { GroupAutocompleteData } from './data';
+
+@Injectable()
+export class AutocompleteSampleDataService
   implements SDSAutocompleteServiceInterface {
   private loadedData;
   constructor() {
-    const data = GropupSampleAutocompleteData;
+    const data = GroupAutocompleteData; //SampleAutocompleteData;
     for (let i = 0; i < data.length; i++) {
       let item = data[i];
-      let results = data.filter(it => it.element_id === item.element_id);
+      let results = data.filter(it => it.value === item.value);
       item['childCount'] = results.length;
     }
     this.loadedData = data;
@@ -43,14 +46,17 @@ export class AutoCompleteSampleDataService
     } else {
       itemsOb = data;
     }
-    let items: object[] = this.itemsListOutofObservable(itemsOb);
+
+    let items: object[];
+    itemsOb.subscribe(result => {
+      items = result;
+    });
     let totalItemCount = items.length;
 
-    let maxSectionPosition = this.getMaxSectionPosition(
-      currentItems,
-      itemIncrease,
-      totalItemCount
-    );
+    let maxSectionPosition = currentItems + itemIncrease;
+    if (maxSectionPosition > totalItemCount) {
+      maxSectionPosition = totalItemCount;
+    }
     let subItemsitems = items.slice(currentItems, maxSectionPosition);
 
     let returnItem = {
@@ -58,25 +64,5 @@ export class AutoCompleteSampleDataService
       totalItems: totalItemCount
     };
     return of(returnItem);
-  }
-
-  private itemsListOutofObservable(itemsOb: any) {
-    let items: object[];
-    itemsOb.subscribe(result => {
-      items = result;
-    });
-    return items;
-  }
-
-  private getMaxSectionPosition(
-    currentItemCount: number,
-    itemIncrease: number,
-    totalItemCount: number
-  ) {
-    let maxSectionPosition = currentItemCount + itemIncrease;
-    if (maxSectionPosition > totalItemCount) {
-      maxSectionPosition = totalItemCount;
-    }
-    return maxSectionPosition;
   }
 }
