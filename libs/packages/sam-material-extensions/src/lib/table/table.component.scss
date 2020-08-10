@@ -4,9 +4,15 @@
   border: 0;
   margin: 0;
 
-    tr.sds-table__head {
-      > th {
-        border-bottom: 1px solid #cac9c0;
+  tr.sds-table__head {
+    > th {
+      border-bottom: 1px solid #cac9c0;
+    }
+  }
+  .usa-button--unstyled {
+    color: inherit;
+    fa-icon:not(.active) {
+      color: #C9C9C9;
     }
   }
 }

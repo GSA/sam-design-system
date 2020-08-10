@@ -2,10 +2,23 @@
   <table cdk-table [dataSource]="dataSource" class="sds-table">
 
     <!-- Columns -->
-    <ng-container cdkColumnDef="{{column}}" *ngFor="let column of columns">
-      <th cdk-header-cell *cdkHeaderCellDef scope="col">{{column | titlecase}}</th>
-      <td cdk-cell *cdkCellDef="let row">{{row[column]}}</td>
-      <!-- no footer -->
+    <ng-container cdkColumnDef="{{col}}" *ngFor="let col of columns">
+
+      <th cdk-header-cell *cdkHeaderCellDef scope="col">
+
+        <!-- sort header -->
+        <button *ngIf="sort" (click)="adjustSort(col)" class="usa-button--unstyled">
+          {{col | titlecase}}
+          <fa-icon *ngIf="sortDirection === 'desc' && sortKey === col" [ngClass]="{'active': sortKey === col}"
+            [icon]="['fas', 'caret-down']"></fa-icon>
+          <fa-icon *ngIf="sortKey !== col || sortDirection === 'asc' && sortKey === col"
+            [ngClass]="{'active': sortKey === col}" [icon]="['fas', 'caret-up']"></fa-icon>
+        </button>
+
+        <span *ngIf="!sort">{{col | titlecase}}</span>
+      </th>
+
+      <td cdk-cell *cdkCellDef="let row">{{row[col]}}</td>
     </ng-container>
 
     <!-- Header and Row Declarations -->
