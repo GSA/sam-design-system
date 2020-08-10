@@ -11,6 +11,8 @@ import { TableBasicComponent } from './demos/table-basic/table-basic.component';
 import { TableBasicModule } from './demos/table-basic/table-basic.module';
 import { TableBorderlessComponent } from './demos/table-borderless/table-borderless.component';
 import { TableBorderlessModule } from './demos/table-borderless/table-borderless.module';
+import { TableStickyHeaderModule } from './demos/table-sticky-header/table-sticky-header.module';
+import { TableStickyHeaderComponent } from './demos/table-sticky-header/table-sticky-header.component';
 
 export declare var require: any;
 
@@ -28,6 +30,13 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/table-borderless/table-borderless.component'), // Source Tab Content
     markup: require('!!raw-loader!./demos/table-borderless/table-borderless.component.html'), // Template Tab Content
     path: 'libs/documentation/src/lib/components/table/demos/table-borderless' // Path to demo for the Github link
+  },
+  stickyHeader: {
+    title: 'SAM Table Sticky Header', // Provide a title for this demo
+    type: TableStickyHeaderComponent, // Component to use for this demo
+    code: require('!!raw-loader!./demos/table-sticky-header/table-sticky-header.component'), // Source Tab Content
+    markup: require('!!raw-loader!./demos/table-sticky-header/table-sticky-header.component.html'), // Template Tab Content
+    path: 'libs/documentation/src/lib/components/table/demos/table-sticky-header' // Path to demo for the Github link
   }
  };
 
@@ -60,7 +69,8 @@ const DEMOS = {
     CommonModule,
     DocumentationComponentsSharedModule,
     TableBasicModule,
-    TableBorderlessModule
+    TableBorderlessModule,
+    TableStickyHeaderModule
   ]
 })
 export class TableModule {
