@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SdsDialogService } from '@gsa-sam/components';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
+import { DownloadService } from './download.service';
 
 @Component({
   selector: 'sds-download-modal',
@@ -15,7 +16,7 @@ export class SdsDownloadModalComponent implements OnInit {
   model: any;
   form: FormGroup;
   options: FormlyFormOptions;
-  constructor(private dialogService: SdsDialogService) {}
+  constructor(private dialogService: SdsDialogService, private downloads:DownloadService) {}
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -119,5 +120,22 @@ export class SdsDownloadModalComponent implements OnInit {
   console.log(this.model)
   this.onFormGroupChange.emit(this.model)
   }
+
+  onCancel(){
+
+    }
+
+    download(): void {
+      this.downloads
+        .download('/downloads/archive.zip')
+        .subscribe(blob => {
+          // const a = document.createElement('a')
+          // const objectUrl = URL.createObjectURL(blob)
+          // a.href = objectUrl
+          // a.download = 'archive.zip';
+          // a.click();
+          // URL.revokeObjectURL(objectUrl);
+        })
+    }
 }
 

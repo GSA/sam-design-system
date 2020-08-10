@@ -3,6 +3,24 @@
   <p>Choose from following download option. Lorem ipsum dolor sit amet, <br>
   consecteur adipiscing elit, sed do eiusmod tempor incidunt.
   </p>
+
+<!-- Testing download -->
+<a href="/downloads/archive.zip"
+  download="archive.zip">
+  archive.zip
+</a>
+
+<a href="/downloads/archive.csv"
+  download="archive.csv">
+  archive.csv
+</a>
+
+<a href="/downloads/archive.pdf"
+  download="archive.pdf">
+  archive.pdf
+</a>
+
+
 <form >
   <formly-form
   [fields]="fields"
@@ -17,7 +35,7 @@
 
 </div>
 <div sds-dialog-actions>
-  <button class="usa-button usa-button--base" >
+  <button class="usa-button usa-button--base" (click)="onCancel()">
     Cancel
   </button>
   <button class="usa-button" (click)="onSubmit()" cdkFocusInitial>
