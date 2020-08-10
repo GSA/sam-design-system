@@ -119,12 +119,52 @@
                   <ng-container
                     *ngIf="
                       configuration.secondaryTextField &&
-                      result[configuration.secondaryTextField]
+                      child[configuration.secondaryTextField]
                     "
                   >
                     <div>{{ child[configuration.secondaryTextField] }}</div>
                   </ng-container>
                 </div>
+
+                <ul
+                  class="usa-list usa-list--unstyled"
+                  *ngIf="child[configuration.groupByChild]?.length"
+                >
+                  <li
+                    class="sds-autocomplete__item"
+                    [ngClass]="{
+                      'sds-autocomplete__item--selected': checkItemSelected(
+                        child
+                      ),
+                      'sds-autocomplete__item--highlighted':
+                        child['highlighted']
+                    }"
+                    *ngFor="
+                      let subchild of child[configuration.groupByChild];
+                      let k = index
+                    "
+                    (click)="selectItem(subchild)"
+                  >
+                    <div
+                      [ngClass]="{
+                        'text-semibold': configuration.secondaryTextField
+                      }"
+                    >
+                      {{
+                        getObjectValue(subchild, configuration.primaryTextField)
+                      }}
+
+                      <div
+                        *ngIf="
+                          configuration.secondaryTextField &&
+                          subchild[configuration.secondaryTextField]
+                        "
+                      >
+                        {{ child[configuration.secondaryTextField] }}
+                      </div>
+                    </div>
+                  </li>
+                </ul>
               </li>
             </ul>
           </ng-container>
