@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SdsTableModule } from '@sam-design-system/sam-material-extensions';
+
 import { TableBorderlessComponent } from './table-borderless.component';
-import { SdsTableModule } from '../../../../../../../packages/sam-material-extensions/src/lib/table/table.module';
 
 @NgModule({
   declarations: [TableBorderlessComponent],

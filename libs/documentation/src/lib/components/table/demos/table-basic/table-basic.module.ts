@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SdsTableModule } from '../../../../../../../packages/sam-material-extensions/src/lib/table/table.module';
+import { SdsTableModule } from '@sam-design-system/sam-material-extensions';
 
 import { TableBasicComponent } from './table-basic.component';
 
