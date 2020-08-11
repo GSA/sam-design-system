@@ -1,14 +1,14 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { SdsDialogService } from '@gsa-sam/components';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
-import { DownloadService } from './download.service';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'sds-download-modal',
   templateUrl: './download-modal.component.html'
 })
-export class SdsDownloadModalComponent implements OnInit {
+export class SdsDownloadModalComponent implements OnInit, OnChanges{
   @Output() private onFormGroupChange = new EventEmitter<any>();
 
   @Input() message: string;
@@ -16,7 +16,10 @@ export class SdsDownloadModalComponent implements OnInit {
   model: any;
   form: FormGroup;
   options: FormlyFormOptions;
-  constructor(private dialogService: SdsDialogService, private downloads:DownloadService) {}
+  constructor(private dialogService: SdsDialogService) {}
+
+
+  // get diagnostics() {return JSON.stringify(this.model, null, 2);}
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -117,25 +120,53 @@ export class SdsDownloadModalComponent implements OnInit {
     this.options = {};
   }
   onSubmit(){
-  console.log(this.model)
-  this.onFormGroupChange.emit(this.model)
+    //console.log(this.model);
+    //this.onFormGroupChange.emit(this.model);
+
+    // this.httpclient.get(url of the actual file)
+    of('filecontent').subscribe(
+      fileContent => {
+        let fileMimeType = 'text/plain';
+
+        switch(this.model.fileType) {
+          case 'pdf':
+            fileMimeType = '/downloads/archive.pdf';
+            break;
+          case 'csv':
+            fileMimeType = '/downloads/archive.csv';
+          case 'zip':
+            fileMimeType = '/downloads/archive.zip';
+
+        }
+
+
+        const fileBlob = new Blob([fileContent], {type: fileMimeType});
+        const a = document.createElement('a');
+        a.download = name;
+        a.href = window.URL.createObjectURL(fileBlob);
+        a.click();
+      }
+    );
+  }
+
+  onSelectPredefined(event, name, fileType) {
+    event.preventDefault();
+    this.form.get('name').setValue(name);
+    this.form.get('fileType').setValue(fileType);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.onSelect()
+
+  }
+  onSelect() {
+    this.form.get('name').setValue(name);
+    this.form.get('options').setValue(name);
   }
 
   onCancel(){
-
+      this.form.reset()
     }
 
-    download(): void {
-      this.downloads
-        .download('/downloads/archive.zip')
-        .subscribe(blob => {
-          // const a = document.createElement('a')
-          // const objectUrl = URL.createObjectURL(blob)
-          // a.href = objectUrl
-          // a.download = 'archive.zip';
-          // a.click();
-          // URL.revokeObjectURL(objectUrl);
-        })
-    }
 }
 
