@@ -134,10 +134,10 @@
                     class="sds-autocomplete__item"
                     [ngClass]="{
                       'sds-autocomplete__item--selected': checkItemSelected(
-                        child
+                        subchild
                       ),
                       'sds-autocomplete__item--highlighted':
-                        child['highlighted']
+                        subchild['highlighted']
                     }"
                     *ngFor="
                       let subchild of child[configuration.groupByChild];
@@ -160,7 +160,7 @@
                           subchild[configuration.secondaryTextField]
                         "
                       >
-                        {{ child[configuration.secondaryTextField] }}
+                        {{ subchild[configuration.secondaryTextField] }}
                       </div>
                     </div>
                   </li>
