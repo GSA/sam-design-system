@@ -1,28 +1,47 @@
 <div class="sds-table__container" [ngClass]="{'sds-table__container--borderless': borderless}">
-  <table cdk-table [dataSource]="dataSource" class="sds-table">
+  <table cdk-table [dataSource]="dataSource" [multiTemplateDataRows]="expandableRows" class="sds-table">
 
     <!-- Columns -->
     <ng-container cdkColumnDef="{{col}}" *ngFor="let col of columns">
-
+      <!-- table header cells -->
       <th cdk-header-cell *cdkHeaderCellDef scope="col">
 
         <!-- sort header -->
         <button *ngIf="sort" (click)="adjustSort(col)" class="usa-button--unstyled">
-          {{col | titlecase}}
+          <!-- {{ col.header  || (col.primaryKey | titlecase)}} -->
+          {{ col | titlecase}}
           <fa-icon *ngIf="sortDirection === 'desc' && sortKey === col" [ngClass]="{'active': sortKey === col}"
             [icon]="['fas', 'caret-down']"></fa-icon>
           <fa-icon *ngIf="sortKey !== col || sortDirection === 'asc' && sortKey === col"
             [ngClass]="{'active': sortKey === col}" [icon]="['fas', 'caret-up']"></fa-icon>
         </button>
 
-        <span *ngIf="!sort">{{col | titlecase}}</span>
+        <!-- <span *ngIf="!sort">{{ col.header  || (col.primaryKey | titlecase)}}</span> -->
+        <span *ngIf="!sort">{{ col | titlecase}}</span>
       </th>
 
       <td cdk-cell *cdkCellDef="let row">{{row[col]}}</td>
     </ng-container>
 
+    <!-- Expandable detail row -->
+    <ng-container cdkColumnDef="expandedDetail">
+      <td cdk-cell *cdkCellDef="let row" [attr.colspan]="columns.length">
+        <div class="sds-table__detail" [@detailExpand]="row == expandedRow ? 'expanded' : 'collapsed'">
+             {{detailRow}}
+        </div>
+      </td>
+    </ng-container>
+
     <!-- Header and Row Declarations -->
-    <tr cdk-header-row *cdkHeaderRowDef="columns; sticky: stickyHeader" class="sds-table__head"></tr>
-    <tr cdk-row *cdkRowDef="let row; columns: columns"></tr>
+    <ng-container *ngIf="expandableRows">
+      <tr cdk-header-row *cdkHeaderRowDef="columns; sticky: stickyHeader" class="sds-table__head"></tr>
+      <tr cdk-row *cdkRowDef="let row; columns: columns" (click)="toggleRowExpansion(row)"></tr>
+      <tr cdk-row *cdkRowDef="let row; columns: ['expandedDetail']" class="sds-table__detail-row"></tr>
+    </ng-container>
+
+    <ng-container *ngIf="!detailRow">
+      <tr cdk-header-row *cdkHeaderRowDef="columns; sticky: stickyHeader" class="sds-table__head"></tr>
+      <tr cdk-row *cdkRowDef="let row; columns: columns"></tr>
+    </ng-container>
   </table>
 </div>

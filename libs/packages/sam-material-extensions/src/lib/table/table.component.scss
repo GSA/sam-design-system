@@ -6,7 +6,8 @@
 
   tr.sds-table__head {
     > th {
-      border-bottom: 1px solid #cac9c0;
+      border-bottom: 1px solid #C9C9C9;
+      background:  #F5F5F0;
     }
   }
   .usa-button--unstyled {
@@ -14,6 +15,20 @@
     fa-icon:not(.active) {
       color: #C9C9C9;
     }
+  }
+  tr.expanded {
+    td {
+      background: #E9F0FB;
+      border-top: 1px solid #C9C9C9;
+      border-bottom: 1px solid #C9C9C9;
+    }
+  }
+  &__detail-row {
+    height: 0;
+  }
+  &__detail {
+    overflow: hidden;
+    display: flex;
   }
 }
 
@@ -23,7 +38,7 @@
 }
 
 .sds-table__container {
-  border: 1px solid #cac9c0;
+  border: 1px solid #C9C9C9;
   height: inherit;
   max-height: inherit;
   overflow: auto;

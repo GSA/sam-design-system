@@ -15,10 +15,19 @@ import { TableStickyHeaderModule } from './demos/table-sticky-header/table-stick
 import { TableStickyHeaderComponent } from './demos/table-sticky-header/table-sticky-header.component';
 import { TableSortModule } from './demos/table-sort/table-sort.module';
 import { TableSortComponent } from './demos/table-sort/table-sort.component';
+import { TableExpandableRowModule } from './demos/table-expandable-row/table-expandable-row.module';
+import { TableExpandableRowComponent } from './demos/table-expandable-row/table-expandable-row.component';
 
 export declare var require: any;
 
 const DEMOS = {
+  expandableRow: {
+    title: 'SAM Expandable Row Table',
+    type: TableExpandableRowComponent,
+    code: require('!!raw-loader!./demos/table-expandable-row/table-expandable-row.component'),
+    markup: require('!!raw-loader!./demos/table-expandable-row/table-expandable-row.component.html'),
+    path: 'libs/documentation/src/lib/components/table/demos/table-expandable-row'
+  },
   basic: {
     title: 'SAM Table', // Title
     type: TableBasicComponent, // Component
@@ -80,7 +89,8 @@ const DEMOS = {
     TableBasicModule,
     TableBorderlessModule,
     TableStickyHeaderModule,
-    TableSortModule
+    TableSortModule,
+    TableExpandableRowModule
   ]
 })
 
