@@ -368,7 +368,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     }
   }
 
-  private getFlatElements() {
+  public getFlatElements() {
     const results = this.results;
     const flat = [];
     const flatten = (array: any) => {
@@ -398,7 +398,9 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   private onArrowGroupDown(): void {
     if (this.results && this.results.length > 0) {
       const flat = this.getFlatElements();
-      this.highlightedIndex++;
+      if (this.highlightedIndex < this.results.length - 1) {
+        this.highlightedIndex++;
+      }
       this.setHighlightedItem(flat[this.highlightedIndex]);
       this.scrollToSelectedItem();
     }
@@ -406,7 +408,9 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   private onArrowGroupUp(): void {
     if (this.results && this.results.length > 0) {
       const flat = this.getFlatElements();
-      this.highlightedIndex--;
+      if (this.highlightedIndex != 0) {
+        this.highlightedIndex--;
+      }
       this.setHighlightedItem(flat[this.highlightedIndex]);
       this.scrollToSelectedItem();
     }

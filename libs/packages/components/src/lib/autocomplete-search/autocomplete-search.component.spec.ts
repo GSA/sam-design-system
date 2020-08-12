@@ -83,9 +83,9 @@ describe('SamAutocompleteComponent', () => {
     tick();
     fixture.detectChanges();
     const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
-    //expect(list.nativeElement.children.length).toBe(1);
+    expect(list.nativeElement.children.length).toBe(1);
     const emptyItem = fixture.debugElement.query(By.css('.emptyResults'));
-    //expect(emptyItem).toBeTruthy();
+    expect(emptyItem).toBeTruthy();
   }));
 
   it('Should have results with minimumCharacterCountSearch', fakeAsync(() => {
@@ -101,7 +101,7 @@ describe('SamAutocompleteComponent', () => {
     tick();
     fixture.detectChanges();
     const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
-    //expect(list.nativeElement.children.length).toBe(16);
+    // expect(list.nativeElement.children.length).toBe(16);
   }));
 
   it('Should have results with input and free text search on', fakeAsync(() => {
@@ -215,7 +215,7 @@ describe('SamAutocompleteComponent', () => {
     expect(component.results[0]['highlighted']).toBeTruthy();
   }));
 
-  xit('Select on top element selected up arrows with grouping', fakeAsync(() => {
+  it('Select on top element selected up arrows with grouping', fakeAsync(() => {
     component.inputFocusHandler();
     component.configuration.isGroupingEnabled = true;
     component.configuration.groupByChild = 'elements';
@@ -232,7 +232,8 @@ describe('SamAutocompleteComponent', () => {
     component.onKeydown(downEvent);
     tick();
     fixture.detectChanges();
-    expect(component.results[0]['highlighted']).toBeTruthy();
+    const items = component.getFlatElements();
+    expect(items[0]['highlighted']).toBeTruthy();
     fixture.detectChanges();
     tick();
     component.highlightedIndex = 1;
@@ -243,7 +244,7 @@ describe('SamAutocompleteComponent', () => {
     component.onKeydown(downEvent);
   }));
 
-  xit('Select last child item with down arrows with grouping', fakeAsync(() => {
+  it('Select last child item with down arrows with grouping', fakeAsync(() => {
     component.inputFocusHandler();
     component.configuration.isGroupingEnabled = true;
     component.configuration.groupByChild = 'elements';
@@ -263,15 +264,16 @@ describe('SamAutocompleteComponent', () => {
     component.onKeydown(downEvent);
     tick();
     fixture.detectChanges();
-    expect(component.results[1]['highlighted']).toBeTruthy();
+    const items = component.getFlatElements();
+    expect(items[1]['highlighted']).toBeTruthy();
   }));
 
-  xit('Select second item with down and up arrows with grouping', fakeAsync(() => {
+  it('Select second item with down and up arrows with grouping', fakeAsync(() => {
     component.inputFocusHandler();
     component.configuration.isGroupingEnabled = true;
     component.configuration.groupByChild = 'elements';
 
-    component.highlightedChildIndex = 2;
+    component.highlightedIndex = 2;
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
@@ -283,11 +285,8 @@ describe('SamAutocompleteComponent', () => {
     component.onKeydown(downEvent);
     tick();
     fixture.detectChanges();
-    expect(
-      component.results[0][component.configuration.groupByChild][2][
-        'highlighted'
-      ]
-    ).toBeTruthy();
+    const items = component.getFlatElements();
+    expect(items[1]['highlighted']).toBeTruthy();
 
     const upEvent = {
       key: 'Up',
@@ -298,11 +297,7 @@ describe('SamAutocompleteComponent', () => {
     component.onKeydown(upEvent);
     tick();
     fixture.detectChanges();
-    expect(
-      component.results[0][component.configuration.groupByChild][2][
-        'highlighted'
-      ]
-    ).toBeTruthy();
+    expect(items[0]['highlighted']).toBeTruthy();
   }));
 
   it('Up arrow when on first item', fakeAsync(() => {
@@ -333,7 +328,6 @@ describe('SamAutocompleteComponent', () => {
     expect(component.results[0]['highlighted']).toBeTruthy();
     fixture.detectChanges();
     tick();
-
     const upEvent = {
       key: 'Down',
       target: { value: 'id' },
