@@ -264,15 +264,10 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
         event.preventDefault();
       }
     } else if (KeyHelper.is(KEYS.DOWN, event)) {
-      this.configuration.isGroupingEnabled
-        ? this.onArrowGroupDown()
-        : this.onArrowDown();
+      this.onArrowGroupDown();
     } else if (KeyHelper.is(KEYS.UP, event)) {
       event.preventDefault();
-
-      this.configuration.isGroupingEnabled
-        ? this.onArrowGroupUp()
-        : this.onArrowUp();
+      this.onArrowGroupUp();
     } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex >= 0) {
       if (this.configuration.isTagModeEnabled) {
         const val = this.createFreeTextItem();
@@ -342,32 +337,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     this.input.nativeElement.focus();
   }
 
-  /**
-   *  handles the arrow up key event
-   */
-  private onArrowUp(): void {
-    if (this.results && this.results.length > 0) {
-      if (this.highlightedIndex >= 0) {
-        this.highlightedIndex--;
-        this.setHighlightedItem(this.results[this.highlightedIndex]);
-        this.scrollSelectedItemIntoView();
-      }
-    }
-  }
-
-  /**
-   *  handles the arrow down key event
-   */
-  private onArrowDown(): void {
-    if (this.results && this.results.length > 0) {
-      if (this.highlightedIndex < this.results.length - 1) {
-        this.highlightedIndex++;
-        this.setHighlightedItem(this.results[this.highlightedIndex]);
-        this.scrollSelectedItemIntoView();
-      }
-    }
-  }
-
   public getFlatElements() {
     const results = this.results;
     const flat = [];
@@ -383,18 +352,26 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     flatten(results);
     return flat;
   }
+  /**
+   * When paging up and down with arrow key it sets the highlighted item into view
+   */
   private scrollToSelectedItem() {
     if (this.highlightedIndex >= 0) {
       let selectedChild;
       const dom = this.resultsListElement.nativeElement;
       selectedChild = dom.querySelector('.sds-autocomplete__item--highlighted');
-      selectedChild.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
-        inline: 'start'
-      });
+      if (selectedChild) {
+        selectedChild.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+          inline: 'start'
+        });
+      }
     }
   }
+  /**
+   *  handles the arrow down key event
+   */
   private onArrowGroupDown(): void {
     if (this.results && this.results.length > 0) {
       const flat = this.getFlatElements();
@@ -405,6 +382,9 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       this.scrollToSelectedItem();
     }
   }
+  /**
+   *  handles the arrow up key event
+   */
   private onArrowGroupUp(): void {
     if (this.results && this.results.length > 0) {
       const flat = this.getFlatElements();
@@ -548,31 +528,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   private addResult(item: object) {
     //add check to make sure item does not exist
     this.results.push(item);
-  }
-
-  /**
-   * When paging up and down with arrow key it sets the highlighted item into view
-   */
-  private scrollSelectedItemIntoView() {
-    if (this.highlightedIndex >= 0) {
-      let selectedChild;
-      if (this.configuration.isGroupingEnabled) {
-        selectedChild = this.resultsListElement.nativeElement.children[
-          this.highlightedIndex
-        ].getElementsByTagName('ul')[0].children[this.highlightedChildIndex];
-      } else {
-        selectedChild = this.resultsListElement.nativeElement.children[
-          this.highlightedIndex
-        ];
-      }
-      if (selectedChild) {
-        selectedChild.scrollIntoView({
-          behavior: 'smooth',
-          block: 'nearest',
-          inline: 'start'
-        });
-      }
-    }
   }
 
   /**
