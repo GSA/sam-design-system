@@ -1,5 +1,5 @@
 <div class="sds-table__container" [ngClass]="{'sds-table__container--borderless': borderless}">
-  <table cdk-table [dataSource]="dataSource" [multiTemplateDataRows]="expandableRows" class="sds-table">
+  <table cdk-table [dataSource]="dataSource" [multiTemplateDataRows]="expandableRows" [ngClass]="{'sds-table--expansion': expandableRows}" class="sds-table">
 
     <!-- Columns -->
     <ng-container cdkColumnDef="{{col}}" *ngFor="let col of columns">
@@ -25,23 +25,25 @@
 
     <!-- Expandable detail row -->
     <ng-container cdkColumnDef="expandedDetail">
-      <td cdk-cell *cdkCellDef="let row" [attr.colspan]="columns.length">
-        <div class="sds-table__detail" [@detailExpand]="row == expandedRow ? 'expanded' : 'collapsed'">
+      <td cdk-cell *cdkCellDef="let row" [attr.colspan]="columns.length" class="sds-table__detail">
+        <div>
              {{detailRow}}
         </div>
       </td>
     </ng-container>
 
-    <!-- Header and Row Declarations -->
+    <!-- Header and row declarations for expansion table-->
     <ng-container *ngIf="expandableRows">
       <tr cdk-header-row *cdkHeaderRowDef="columns; sticky: stickyHeader" class="sds-table__head"></tr>
-      <tr cdk-row *cdkRowDef="let row; columns: columns" (click)="toggleRowExpansion(row)"></tr>
-      <tr cdk-row *cdkRowDef="let row; columns: ['expandedDetail']" class="sds-table__detail-row"></tr>
+      <tr cdk-row *cdkRowDef="let row; columns: columns" (click)="toggleRowExpansion(row)" class="sds-table__row"
+        [ngClass]="{'sds-table__row--expanded': row === expandedRow}"></tr>
+      <tr cdk-row *cdkRowDef="let row; columns: ['expandedDetail']" class="sds-table__row--detail"></tr>
     </ng-container>
 
-    <ng-container *ngIf="!detailRow">
+    <!-- Header and row declarations for non-expandable tables-->
+    <ng-container *ngIf="!expandableRows">
       <tr cdk-header-row *cdkHeaderRowDef="columns; sticky: stickyHeader" class="sds-table__head"></tr>
-      <tr cdk-row *cdkRowDef="let row; columns: columns"></tr>
+      <tr cdk-row *cdkRowDef="let row; columns: columns" class="sds-table__row"></tr>
     </ng-container>
   </table>
 </div>

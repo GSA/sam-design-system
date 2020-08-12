@@ -10,25 +10,43 @@
       background:  #F5F5F0;
     }
   }
+
+  // sort button
   .usa-button--unstyled {
     color: inherit;
     fa-icon:not(.active) {
       color: #C9C9C9;
     }
   }
-  tr.expanded {
-    td {
-      background: #E9F0FB;
-      border-top: 1px solid #C9C9C9;
-      border-bottom: 1px solid #C9C9C9;
+
+  // expansion tables
+  &--expansion {
+    tr:nth-child(4n + 3) {
+      > * {
+        background: #F9F9F7;
+      }
     }
-  }
-  &__detail-row {
-    height: 0;
-  }
-  &__detail {
-    overflow: hidden;
-    display: flex;
+
+    // expansion row parent
+    .sds-table__row--expanded {
+      td {
+        background: #E9F0FB;
+        border-top: 1px solid #C9C9C9;
+      }
+      // expansion row when expanded
+      + .sds-table__row--detail {
+        display: table-row;
+      }
+    }
+
+    // expansion row when collapsed
+    .sds-table__row--detail {
+      display: none;
+      .sds-table__detail {
+        border-bottom: 1px solid #C9C9C9;
+        background: white;
+      }
+    }
   }
 }
 
