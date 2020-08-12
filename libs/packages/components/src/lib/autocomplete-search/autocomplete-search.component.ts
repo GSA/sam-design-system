@@ -383,11 +383,24 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     flatten(results);
     return flat;
   }
+  private scrollToSelectedItem() {
+    if (this.highlightedIndex >= 0) {
+      let selectedChild;
+      const dom = this.resultsListElement.nativeElement;
+      selectedChild = dom.querySelector('.sds-autocomplete__item--highlighted');
+      selectedChild.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+        inline: 'start'
+      });
+    }
+  }
   private onArrowGroupDown(): void {
     if (this.results && this.results.length > 0) {
       const flat = this.getFlatElements();
       this.highlightedIndex++;
       this.setHighlightedItem(flat[this.highlightedIndex]);
+      this.scrollToSelectedItem();
     }
   }
   private onArrowGroupUp(): void {
@@ -395,99 +408,9 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       const flat = this.getFlatElements();
       this.highlightedIndex--;
       this.setHighlightedItem(flat[this.highlightedIndex]);
+      this.scrollToSelectedItem();
     }
   }
-  private onArrowGroupDown1(): void {
-    if (this.results && this.results.length > 0) {
-      if (this.highlightedIndex <= this.results.length - 1) {
-        let childLength = this.results[this.highlightedIndex][
-          this.configuration.groupByChild
-        ].length;
-        if (this.highlightedChildIndex === childLength) {
-          this.highlightedIndex++;
-          this.highlightedChildIndex = 0;
-          if (this.configuration.isSelectableGroup) {
-            this.setHighlightedItem(this.results[this.highlightedIndex]);
-          } else {
-            this.setHighlightedItem(
-              this.results[this.highlightedIndex][
-                this.configuration.groupByChild
-              ][this.highlightedChildIndex]
-            );
-            this.highlightedChildIndex++;
-          }
-        } else {
-          if (
-            this.highlightedIndex == this.results.length - 1 &&
-            this.highlightedChildIndex == childLength - 1
-          ) {
-            this.setHighlightedItem(
-              this.results[this.highlightedIndex][
-                this.configuration.groupByChild
-              ][childLength - 1]
-            );
-          } else {
-            this.setHighlightedItem(
-              this.results[this.highlightedIndex][
-                this.configuration.groupByChild
-              ][this.highlightedChildIndex++]
-            );
-          }
-        }
-        this.scrollSelectedItemIntoView();
-      }
-    }
-  }
-
-  private onArrowGroupUp1(): void {
-    if (this.results && this.results.length > 0) {
-      if (this.highlightedIndex >= 0) {
-        if (this.highlightedChildIndex === 0 && this.highlightedIndex !== 0) {
-          if (this.configuration.isSelectableGroup) {
-            this.setHighlightedItem(this.results[this.highlightedIndex]);
-            this.highlightedIndex--;
-            this.highlightedChildIndex = this.results[this.highlightedIndex][
-              this.configuration.groupByChild
-            ].length;
-          } else {
-            this.highlightedChildIndex = this.results[this.highlightedIndex][
-              this.configuration.groupByChild
-            ].length;
-            this.setHighlightedItem(
-              this.results[this.highlightedIndex][
-                this.configuration.groupByChild
-              ][this.highlightedChildIndex]
-            );
-          }
-        } else if (
-          this.highlightedChildIndex !== 0 &&
-          this.highlightedIndex >= 0
-        ) {
-          this.highlightedChildIndex--;
-          this.setHighlightedItem(
-            this.results[this.highlightedIndex][
-              this.configuration.groupByChild
-            ][this.highlightedChildIndex]
-          );
-        } else if (
-          this.highlightedChildIndex === 0 &&
-          this.highlightedIndex === 0
-        ) {
-          if (this.configuration.isSelectableGroup) {
-            this.setHighlightedItem(this.results[this.highlightedIndex]);
-          } else {
-            this.setHighlightedItem(
-              this.results[this.highlightedIndex][
-                this.configuration.groupByChild
-              ][this.highlightedChildIndex]
-            );
-          }
-        }
-        this.scrollSelectedItemIntoView();
-      }
-    }
-  }
-
   showFreeText() {
     if (this.configuration.isFreeTextEnabled) {
       if (this.inputValue) {
