@@ -368,7 +368,36 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     }
   }
 
+  private getFlatElements() {
+    const results = this.results;
+    const flat = [];
+    const flatten = (array: any) => {
+      for (let i in array) {
+        const item = array[i];
+        flat.push(item);
+        if (item['elements'] && item['elements'].length) {
+          flatten(item['elements']);
+        }
+      }
+    };
+    flatten(results);
+    return flat;
+  }
   private onArrowGroupDown(): void {
+    if (this.results && this.results.length > 0) {
+      const flat = this.getFlatElements();
+      this.highlightedIndex++;
+      this.setHighlightedItem(flat[this.highlightedIndex]);
+    }
+  }
+  private onArrowGroupUp(): void {
+    if (this.results && this.results.length > 0) {
+      const flat = this.getFlatElements();
+      this.highlightedIndex--;
+      this.setHighlightedItem(flat[this.highlightedIndex]);
+    }
+  }
+  private onArrowGroupDown1(): void {
     if (this.results && this.results.length > 0) {
       if (this.highlightedIndex <= this.results.length - 1) {
         let childLength = this.results[this.highlightedIndex][
@@ -410,7 +439,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     }
   }
 
-  private onArrowGroupUp(): void {
+  private onArrowGroupUp1(): void {
     if (this.results && this.results.length > 0) {
       if (this.highlightedIndex >= 0) {
         if (this.highlightedChildIndex === 0 && this.highlightedIndex !== 0) {
