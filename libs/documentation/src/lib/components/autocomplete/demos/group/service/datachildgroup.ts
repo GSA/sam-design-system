@@ -16,21 +16,21 @@ export let GroupAutocompleteData = [
             elements: null,
             description: null,
             element_id: '00001002',
-            value: 'Formula Grants (Apportionments)'
+            value: 'Apportionments'
           },
           {
             code: 'A',
             elements: null,
             description: null,
             element_id: '00001003',
-            value: 'Formula Grants (Cooperative Agreements)'
+            value: 'Cooperative Agreements'
           },
           {
             code: 'A',
             elements: null,
             description: null,
             element_id: '0001004',
-            value: 'Formula Grants (Health Incentive Grants)'
+            value: 'Health Incentive Grants'
           }
         ]
       },
@@ -66,7 +66,29 @@ export let GroupAutocompleteData = [
     elements: [
       {
         code: 'B',
-        elements: null,
+        elements: [
+          {
+            code: 'B',
+            elements: null,
+            description: null,
+            element_id: '00003001',
+            value: 'Agreements'
+          },
+          {
+            code: 'B',
+            elements: null,
+            description: null,
+            element_id: '00003002',
+            value: 'Discretionary Grants'
+          },
+          {
+            code: 'B',
+            elements: null,
+            description: null,
+            element_id: '00003003',
+            value: 'Grants'
+          }
+        ],
         description: null,
         element_id: '0003001',
         value: 'Cooperative Agreements'
