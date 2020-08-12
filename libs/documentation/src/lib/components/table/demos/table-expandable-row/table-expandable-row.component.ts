@@ -5,8 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './table-expandable-row.component.html'
 })
 export class TableExpandableRowComponent {
-  detailRow = '<h1>TEST</h1>';
-  expandableRows = true;
+  columns = ['position', 'name', 'weight', 'symbol'];
   data = [
     { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
     { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
@@ -59,7 +58,6 @@ export class TableExpandableRowComponent {
     { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
     { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
   ];
-  columns = ['position', 'name', 'weight', 'symbol'];
 
   constructor() {}
 }

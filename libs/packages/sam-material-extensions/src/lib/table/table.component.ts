@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, TemplateRef } from '@angular/core';
 import * as _ from 'lodash';
 
 @Component({
@@ -8,19 +8,36 @@ import * as _ from 'lodash';
 })
 
 export class SdsTableComponent {
+
+  /**
+   * Data source for table
+   */
   @Input() dataSource: any[];
+
+  /**
+   * columns to display in header
+   */
   @Input() columns: string[];
+
+  /**
+   * template outlet for expandable detail
+   * all properties for the selected row will be available for use in the template after set using let-{new property name}
+   */
+  @Input() detailRow?: TemplateRef<any>;
+
   @Input() borderless?: boolean = false;
   @Input() stickyHeader?: boolean = false;
   @Input() sort?: boolean = false;
-  @Input() detailRow?: string;
-  @Input() expandableRows?: boolean = false;
 
-  // sort vars
+  /**
+   * sort vars
+   */
   sortKey: string;
   sortDirection: string = 'asc';
 
-  // expanded row vars
+  /**
+   * currently expanded row
+   */
   expandedRow: any | null;
 
   constructor() {}

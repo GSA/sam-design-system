@@ -1,5 +1,5 @@
 <div class="sds-table__container" [ngClass]="{'sds-table__container--borderless': borderless}">
-  <table cdk-table [dataSource]="dataSource" [multiTemplateDataRows]="expandableRows" [ngClass]="{'sds-table--expansion': expandableRows}" class="sds-table">
+  <table cdk-table [dataSource]="dataSource" [multiTemplateDataRows]="detailRow" [ngClass]="{'sds-table--expansion': detailRow}" class="sds-table">
 
     <!-- Columns -->
     <ng-container cdkColumnDef="{{col}}" *ngFor="let col of columns">
@@ -27,13 +27,14 @@
     <ng-container cdkColumnDef="expandedDetail">
       <td cdk-cell *cdkCellDef="let row" [attr.colspan]="columns.length" class="sds-table__detail">
         <div>
-             {{detailRow}}
+          <!-- display detailRow templateRef with all row data -->
+          <ng-container *ngTemplateOutlet="detailRow; context: row"></ng-container>
         </div>
       </td>
     </ng-container>
 
     <!-- Header and row declarations for expansion table-->
-    <ng-container *ngIf="expandableRows">
+    <ng-container *ngIf="detailRow">
       <tr cdk-header-row *cdkHeaderRowDef="columns; sticky: stickyHeader" class="sds-table__head"></tr>
       <tr cdk-row *cdkRowDef="let row; columns: columns" (click)="toggleRowExpansion(row)" class="sds-table__row"
         [ngClass]="{'sds-table__row--expanded': row === expandedRow}"></tr>
@@ -41,7 +42,7 @@
     </ng-container>
 
     <!-- Header and row declarations for non-expandable tables-->
-    <ng-container *ngIf="!expandableRows">
+    <ng-container *ngIf="!detailRow">
       <tr cdk-header-row *cdkHeaderRowDef="columns; sticky: stickyHeader" class="sds-table__head"></tr>
       <tr cdk-row *cdkRowDef="let row; columns: columns" class="sds-table__row"></tr>
     </ng-container>
