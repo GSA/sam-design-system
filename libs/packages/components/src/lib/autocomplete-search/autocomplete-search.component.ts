@@ -344,8 +344,11 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       for (let i in array) {
         const item = array[i];
         flat.push(item);
-        if (item['elements'] && item['elements'].length) {
-          flatten(item['elements']);
+        if (
+          item[this.configuration.groupByChild] &&
+          item[this.configuration.groupByChild].length
+        ) {
+          flatten(item[this.configuration.groupByChild]);
         }
       }
     };
