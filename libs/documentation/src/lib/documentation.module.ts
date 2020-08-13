@@ -13,6 +13,7 @@ import { ROUTES as HEADER_ROUTES, HeaderModule } from './components/header/heade
 import { ROUTES as FOOTER_ROUTES, FooterModule } from './components/footer/footer.module';
 import { ROUTES as SUBHEADER_ROUTES, SubHeaderModule } from './components/subheader/subheader.module';
 import { ROUTES as DIALOG_ROUTES, DialogModule } from './components/dialog/dialog.module';
+import { ROUTES as DOWNLOAD_ROUTES, DownloadModule } from './components/download/download.module';
 import { ROUTES as COLLAPSE_ROUTES, CollapseModule } from './components/collapse/collapse.module';
 import { ROUTES as ACTIONS_ROUTES, ActionsModule } from './components/actions/actions.module';
 import { ROUTES as PAGINATION_ROUTES, PaginationModule } from './components/pagination/pagination.module';
@@ -69,6 +70,7 @@ export const ROUTES: Routes = [
   { path: 'components/footer', children: FOOTER_ROUTES },
   { path: 'components/subheader', children: SUBHEADER_ROUTES },
   { path: 'components/dialog', children: DIALOG_ROUTES },
+  { path: 'components/download', children: DOWNLOAD_ROUTES },
   { path: 'components/collapse', children: COLLAPSE_ROUTES },
   { path: 'components/actions', children: ACTIONS_ROUTES },
   { path: 'components/pagination', children: PAGINATION_ROUTES },
@@ -115,6 +117,7 @@ export const ROUTES: Routes = [
     FooterModule,
     SubHeaderModule,
     DialogModule,
+    DownloadModule,
     CollapseModule,
     ActionsModule,
     PaginationModule,

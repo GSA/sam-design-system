@@ -10,7 +10,6 @@ import {
   AlertComponent,
   OfficialComponent
 } from './dialog-basic.component';
-import { SdsDownloadModalTriggerComponent } from 'libs/packages/layouts/src/lib/feature/download-modal/download-modal-trigger.component';
 import { SdsDownloadModalComponent } from 'libs/packages/layouts/src/lib/feature/download-modal/download-modal.component';
 
 @NgModule({
@@ -29,7 +28,6 @@ import { SdsDownloadModalComponent } from 'libs/packages/layouts/src/lib/feature
     NestedDialogComponent,
     AlertComponent,
     OfficialComponent,
-    SdsDownloadModalTriggerComponent,
     SdsDownloadModalComponent
   ]
 })

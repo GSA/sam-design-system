@@ -1,45 +1,16 @@
-<!-- <div>{{diagnostics}}</div> -->
 <div sds-dialog-title>Download</div>
 <div sds-dialog-content>
   <p>Choose from following download option. Lorem ipsum dolor sit amet, <br>
-  consecteur adipiscing elit, sed do eiusmod tempor incidunt.
+    consecteur adipiscing elit, sed do eiusmod tempor incidunt.
   </p>
 
-<!-- Testing download -->
-<a href="/downloads/archive.zip"
-  (click)="onSelectPredefined($event, 'archive.zip', 'zip')"
-  download="archive.zip">
-  archive.zip
-</a>
-
-<a href="/downloads/archive.csv"
-  (click)="onSelectPredefined($event, 'archive.csv', 'csv')"
-  download="archive.csv">
-  archive.csv
-</a>
-
-<a href="/downloads/archive.pdf"
-  (click)="onSelectPredefined($event, 'archive.pdf', 'pdf')"
-  download="archive.pdf">
-  archive.pdf
-</a>
-
-
-<form >
-  <formly-form
-  [fields]="fields"
-  [form]="form"
-  [model]="model"
-  [options]="options"
-  >
-</formly-form>
-
-</form>
+  <formly-form [fields]="fields" [model]="model">
+  </formly-form>
 
 
 </div>
 <div sds-dialog-actions>
-  <button class="usa-button usa-button--base" (click)="onCancel()">
+  <button class="usa-button usa-button--base">
     Cancel
   </button>
   <button class="usa-button" (click)="onSubmit()" cdkFocusInitial>
