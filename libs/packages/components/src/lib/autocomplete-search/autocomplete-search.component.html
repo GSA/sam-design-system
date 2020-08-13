@@ -97,15 +97,15 @@
               </ng-container>
             </div>
 
-            <ul class="usa-list usa-list--unstyled">
-              <!--
-                class="sds-autocomplete__item"
-                [ngClass]="{
-                  'sds-autocomplete__item--selected': checkItemSelected(child),
-                  'sds-autocomplete__item--highlighted': child['highlighted']
-                }"
-              -->
+            <ul
+              class="usa-list usa-list--unstyled"
+              #childrenList
+              [attr.id]="configuration.id + '-childrenlistbox-'"
+              role="listbox"
+            >
               <li
+                [attr.id]="configuration.id + '-childItem-' + j"
+                role="option"
                 [ngClass]="{
                   'sds-autocomplete__group':
                     child[configuration.groupByChild]?.length > 0,
@@ -113,9 +113,6 @@
                     !child[configuration.groupByChild]?.length > 0,
                   'sds-autocomplete__item--highlighted':
                     child['highlighted'] &&
-                    !child[configuration.groupByChild]?.length > 0,
-                  'sds-autocomplete__item--selected':
-                    checkItemSelected(result) &&
                     !child[configuration.groupByChild]?.length > 0
                 }"
                 *ngFor="
@@ -134,9 +131,7 @@
                     'sds-autocomplete__item--disabled':
                       !configuration.isSelectableGroup &&
                       child[configuration.groupByChild]?.length > 0,
-                    'sds-autocomplete__item--selected':
-                      checkItemSelected(result) &&
-                      child[configuration.groupByChild]?.length > 0
+                    'sds-autocomplete__item--selected': checkItemSelected(child)
                   }"
                 >
                   <div
@@ -156,8 +151,15 @@
                     {{ child[configuration.secondaryTextField] }}
                   </div>
                 </div>
-                <ul>
+                <ul
+                  class="usa-list usa-list--unstyled"
+                  #childrenItems
+                  [attr.id]="configuration.id + '-grandchildren-'"
+                  role="listbox"
+                >
                   <li
+                    [attr.id]="configuration.id + '-grandchildren-' + k"
+                    role="option"
                     class="sds-autocomplete__item"
                     [ngClass]="{
                       'sds-autocomplete__item--selected': checkItemSelected(
@@ -221,7 +223,6 @@
       <span class="position-absolute right-105 top-1 cursor-pointer">
         <span
           *ngIf="inputValue && !disabled"
-          tabindex="0"
           role="button"
           aria-label="Clear input"
           aria-hidden="false"
@@ -232,7 +233,6 @@
         </span>
         <span
           *ngIf="!configuration.isTagModeEnabled"
-          tabindex="1"
           role="button"
           aria-label="Clear input"
           aria-hidden="false"
