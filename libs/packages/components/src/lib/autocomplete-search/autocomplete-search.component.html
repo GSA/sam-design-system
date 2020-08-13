@@ -113,6 +113,9 @@
                     !child[configuration.groupByChild]?.length > 0,
                   'sds-autocomplete__item--highlighted':
                     child['highlighted'] &&
+                    !child[configuration.groupByChild]?.length > 0,
+                  'sds-autocomplete__item--selected':
+                    checkItemSelected(child) &&
                     !child[configuration.groupByChild]?.length > 0
                 }"
                 *ngFor="
@@ -131,7 +134,9 @@
                     'sds-autocomplete__item--disabled':
                       !configuration.isSelectableGroup &&
                       child[configuration.groupByChild]?.length > 0,
-                    'sds-autocomplete__item--selected': checkItemSelected(child)
+                    'sds-autocomplete__item--selected':
+                      checkItemSelected(child) &&
+                      child[configuration.groupByChild]?.length > 0
                   }"
                 >
                   <div
