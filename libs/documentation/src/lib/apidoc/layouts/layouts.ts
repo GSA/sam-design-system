@@ -354,6 +354,69 @@ const LAYOUTS = {
             "templateData": "<!-- Button that triggers menu (sdsMenuTriggerFor) -->\n<button\n  class=\"sds-button sds-button--circular\"\n  [class.sds-button--primary]=\"model.trigger.type === 'primary'\"\n  [class.sds-button--shadow]=\"model.trigger.shadow\"\n  [class.sds-button--small]=\"size === 'sm'\"\n  [sdsMenuTriggerFor]=\"menu\"\n>\n  <fa-icon\n    [fixedWidth]=\"true\"\n    [icon]=\"['sds', 'ellipsis']\"\n    transform=\"grow-5\"\n  ></fa-icon>\n  <span class=\"usa-sr-only\">Toggle Actions Menu</span>\n</button>\n\n<!-- Menu content -->\n<sds-menu\n  #menu=\"sdsMenu\"\n  [size]=\"size\"\n  xPosition=\"before\"\n  overlapTrigger=\"true\"\n>\n  <!-- Menu header (optional) -->\n  <sds-menu-header>Actions</sds-menu-header>\n  <!-- Menu items -->\n  <button\n    *ngFor=\"let button of model.actions\"\n    (click)=\"clicks.emit(button.id)\"\n    sds-menu-item\n  >\n    {{ button.text }}\n  </button>\n</sds-menu>\n"
         },
         {
+            "name": "SdsDownloadModalComponent",
+            "id": "component-SdsDownloadModalComponent-d0159959292d2fa3e99272be944b8e38",
+            "file": "libs/packages/layouts/src/lib/feature/download-modal/download-modal.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "sds-download-modal",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./download-modal.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "fields",
+                    "line": 13,
+                    "type": "FormlyFieldConfig[]"
+                },
+                {
+                    "name": "message",
+                    "line": 11,
+                    "type": "string"
+                },
+                {
+                    "name": "model",
+                    "line": 12,
+                    "type": "any"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onFormGroupChange",
+                    "defaultValue": "new EventEmitter<any>()",
+                    "line": 9,
+                    "type": "EventEmitter<any>"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "onSubmit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 15
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { FormlyFieldConfig } from '@ngx-formly/core';\n\n@Component({\n  selector: 'sds-download-modal',\n  templateUrl: './download-modal.component.html'\n})\nexport class SdsDownloadModalComponent {\n  @Output() onFormGroupChange: EventEmitter<any> = new EventEmitter<any>();\n\n  @Input() message: string;\n  @Input() model: any;\n  @Input() fields: FormlyFieldConfig[];\n\n  onSubmit() {\n    this.onFormGroupChange.emit(this.model);\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "templateData": "<div sds-dialog-title>Download</div>\n<div sds-dialog-content>\n  <p>Choose from following download option. Lorem ipsum dolor sit amet, <br>\n    consecteur adipiscing elit, sed do eiusmod tempor incidunt.\n  </p>\n\n  <formly-form [fields]=\"fields\" [model]=\"model\">\n  </formly-form>\n\n\n</div>\n<div sds-dialog-actions>\n  <button class=\"usa-button usa-button--base\">\n    Cancel\n  </button>\n  <button class=\"usa-button\" (click)=\"onSubmit()\" cdkFocusInitial>\n    Submit\n  </button>\n</div>\n"
+        },
+        {
             "name": "SdsDrawerContentComponent",
             "id": "component-SdsDrawerContentComponent-06e8be92f247b147e203e9e3ff211942",
             "file": "libs/packages/layouts/src/lib/feature/subheader/subheader.component.ts",
@@ -917,6 +980,43 @@ const LAYOUTS = {
                     "elements": [
                         {
                             "name": "SdsActionsMenuComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "SdsDownloadModalModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "SdsDownloadModalComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "SdsDownloadModalComponent"
                         }
                     ]
                 },

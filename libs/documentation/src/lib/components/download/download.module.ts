@@ -32,7 +32,7 @@ export const ROUTES = [
     data: {
       items: [
         {
-          pkg: 'components',
+          pkg: 'layouts',
           type: 'components',
           name: 'SdsDownloadModalComponent'
         }
