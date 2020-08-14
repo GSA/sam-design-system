@@ -5,9 +5,7 @@ import {
   SDSAutocompleteServiceInterface,
   SDSHiercarchicalServiceResult
 } from '@gsa-sam/components';
-import { map } from 'rxjs/operators';
-
-import { GroupAutocompleteData } from './data';
+import { GroupAutocompleteData } from './datachildgroup';
 
 @Injectable()
 export class AutocompleteSampleDataService

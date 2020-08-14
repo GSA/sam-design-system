@@ -1,13 +1,38 @@
+import { element } from '@angular/core/src/render3';
+
 export let GroupAutocompleteData = [
   {
     code: 'A',
     elements: [
       {
         code: 'A',
-        elements: null,
+
         description: null,
         element_id: '0001001',
-        value: 'Formula Grants'
+        value: 'Formula Grants',
+        elements: [
+          {
+            code: 'A',
+            elements: null,
+            description: null,
+            element_id: '00001002',
+            value: 'Apportionments'
+          },
+          {
+            code: 'A',
+            elements: null,
+            description: null,
+            element_id: '00001003',
+            value: 'Cooperative Agreements'
+          },
+          {
+            code: 'A',
+            elements: null,
+            description: null,
+            element_id: '0001004',
+            value: 'Health Incentive Grants'
+          }
+        ]
       },
       {
         code: 'A',
@@ -41,7 +66,29 @@ export let GroupAutocompleteData = [
     elements: [
       {
         code: 'B',
-        elements: null,
+        elements: [
+          {
+            code: 'B',
+            elements: null,
+            description: null,
+            element_id: '00003001',
+            value: 'Agreements'
+          },
+          {
+            code: 'B',
+            elements: null,
+            description: null,
+            element_id: '00003002',
+            value: 'Discretionary Grants'
+          },
+          {
+            code: 'B',
+            elements: null,
+            description: null,
+            element_id: '00003003',
+            value: 'Grants'
+          }
+        ],
         description: null,
         element_id: '0003001',
         value: 'Cooperative Agreements'

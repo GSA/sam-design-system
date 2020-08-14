@@ -264,15 +264,10 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
         event.preventDefault();
       }
     } else if (KeyHelper.is(KEYS.DOWN, event)) {
-      this.configuration.isGroupingEnabled
-        ? this.onArrowGroupDown()
-        : this.onArrowDown();
+      this.onArrowGroupDown();
     } else if (KeyHelper.is(KEYS.UP, event)) {
       event.preventDefault();
-
-      this.configuration.isGroupingEnabled
-        ? this.onArrowGroupUp()
-        : this.onArrowUp();
+      this.onArrowGroupUp();
     } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex >= 0) {
       if (this.configuration.isTagModeEnabled) {
         const val = this.createFreeTextItem();
@@ -342,123 +337,67 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     this.input.nativeElement.focus();
   }
 
+  public getFlatElements() {
+    const results = this.results;
+    const flat = [];
+    const flatten = (array: any) => {
+      for (let i in array) {
+        const item = array[i];
+        flat.push(item);
+        if (
+          item[this.configuration.groupByChild] &&
+          item[this.configuration.groupByChild].length
+        ) {
+          flatten(item[this.configuration.groupByChild]);
+        }
+      }
+    };
+    flatten(results);
+    return flat;
+  }
   /**
-   *  handles the arrow up key event
+   * When paging up and down with arrow key it sets the highlighted item into view
    */
-  private onArrowUp(): void {
-    if (this.results && this.results.length > 0) {
-      if (this.highlightedIndex >= 0) {
-        this.highlightedIndex--;
-        this.setHighlightedItem(this.results[this.highlightedIndex]);
-        this.scrollSelectedItemIntoView();
+  private scrollToSelectedItem() {
+    if (this.highlightedIndex >= 0) {
+      let selectedChild;
+      const dom = this.resultsListElement.nativeElement;
+      selectedChild = dom.querySelector('.sds-autocomplete__item--highlighted');
+      if (selectedChild) {
+        selectedChild.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+          inline: 'start'
+        });
       }
     }
   }
-
   /**
    *  handles the arrow down key event
    */
-  private onArrowDown(): void {
-    if (this.results && this.results.length > 0) {
-      if (this.highlightedIndex < this.results.length - 1) {
-        this.highlightedIndex++;
-        this.setHighlightedItem(this.results[this.highlightedIndex]);
-        this.scrollSelectedItemIntoView();
-      }
-    }
-  }
-
   private onArrowGroupDown(): void {
     if (this.results && this.results.length > 0) {
-      if (this.highlightedIndex <= this.results.length - 1) {
-        let childLength = this.results[this.highlightedIndex][
-          this.configuration.groupByChild
-        ].length;
-        if (this.highlightedChildIndex === childLength) {
-          this.highlightedIndex++;
-          this.highlightedChildIndex = 0;
-          if (this.configuration.isSelectableGroup) {
-            this.setHighlightedItem(this.results[this.highlightedIndex]);
-          } else {
-            this.setHighlightedItem(
-              this.results[this.highlightedIndex][
-                this.configuration.groupByChild
-              ][this.highlightedChildIndex]
-            );
-            this.highlightedChildIndex++;
-          }
-        } else {
-          if (
-            this.highlightedIndex == this.results.length - 1 &&
-            this.highlightedChildIndex == childLength - 1
-          ) {
-            this.setHighlightedItem(
-              this.results[this.highlightedIndex][
-                this.configuration.groupByChild
-              ][childLength - 1]
-            );
-          } else {
-            this.setHighlightedItem(
-              this.results[this.highlightedIndex][
-                this.configuration.groupByChild
-              ][this.highlightedChildIndex++]
-            );
-          }
-        }
-        this.scrollSelectedItemIntoView();
+      const flat = this.getFlatElements();
+      if (this.highlightedIndex < this.results.length - 1) {
+        this.highlightedIndex++;
       }
+      this.setHighlightedItem(flat[this.highlightedIndex]);
+      this.scrollToSelectedItem();
     }
   }
-
+  /**
+   *  handles the arrow up key event
+   */
   private onArrowGroupUp(): void {
     if (this.results && this.results.length > 0) {
-      if (this.highlightedIndex >= 0) {
-        if (this.highlightedChildIndex === 0 && this.highlightedIndex !== 0) {
-          if (this.configuration.isSelectableGroup) {
-            this.setHighlightedItem(this.results[this.highlightedIndex]);
-            this.highlightedIndex--;
-            this.highlightedChildIndex = this.results[this.highlightedIndex][
-              this.configuration.groupByChild
-            ].length;
-          } else {
-            this.highlightedChildIndex = this.results[this.highlightedIndex][
-              this.configuration.groupByChild
-            ].length;
-            this.setHighlightedItem(
-              this.results[this.highlightedIndex][
-                this.configuration.groupByChild
-              ][this.highlightedChildIndex]
-            );
-          }
-        } else if (
-          this.highlightedChildIndex !== 0 &&
-          this.highlightedIndex >= 0
-        ) {
-          this.highlightedChildIndex--;
-          this.setHighlightedItem(
-            this.results[this.highlightedIndex][
-              this.configuration.groupByChild
-            ][this.highlightedChildIndex]
-          );
-        } else if (
-          this.highlightedChildIndex === 0 &&
-          this.highlightedIndex === 0
-        ) {
-          if (this.configuration.isSelectableGroup) {
-            this.setHighlightedItem(this.results[this.highlightedIndex]);
-          } else {
-            this.setHighlightedItem(
-              this.results[this.highlightedIndex][
-                this.configuration.groupByChild
-              ][this.highlightedChildIndex]
-            );
-          }
-        }
-        this.scrollSelectedItemIntoView();
+      const flat = this.getFlatElements();
+      if (this.highlightedIndex != 0) {
+        this.highlightedIndex--;
       }
+      this.setHighlightedItem(flat[this.highlightedIndex]);
+      this.scrollToSelectedItem();
     }
   }
-
   showFreeText() {
     if (this.configuration.isFreeTextEnabled) {
       if (this.inputValue) {
@@ -592,31 +531,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   private addResult(item: object) {
     //add check to make sure item does not exist
     this.results.push(item);
-  }
-
-  /**
-   * When paging up and down with arrow key it sets the highlighted item into view
-   */
-  private scrollSelectedItemIntoView() {
-    if (this.highlightedIndex >= 0) {
-      let selectedChild;
-      if (this.configuration.isGroupingEnabled) {
-        selectedChild = this.resultsListElement.nativeElement.children[
-          this.highlightedIndex
-        ].getElementsByTagName('ul')[0].children[this.highlightedChildIndex];
-      } else {
-        selectedChild = this.resultsListElement.nativeElement.children[
-          this.highlightedIndex
-        ];
-      }
-      if (selectedChild) {
-        selectedChild.scrollIntoView({
-          behavior: 'smooth',
-          block: 'nearest',
-          inline: 'start'
-        });
-      }
-    }
   }
 
   /**
