@@ -31,7 +31,10 @@ export class TableBasicComponent {
       primaryKey: 'catchPhrase',
       header: 'Catch Phrase'
     },
-    { primaryKey: 'date' }
+    {
+      primaryKey: 'date',
+      alternativeKey: 'altDate'
+   }
   ];
 
   data = [
@@ -43,7 +46,7 @@ export class TableBasicComponent {
       gender: 'Male',
       catchPhrase: 'Reduced needs-based initiative',
       jobTitle: 'Software Test Engineer IV',
-      date: '2020-07-23'
+      altDate: '2020/07/23',
     },
     {
       id: 2,

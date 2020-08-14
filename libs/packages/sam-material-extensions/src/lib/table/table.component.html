@@ -19,7 +19,7 @@
         <span *ngIf="!sort">{{ col.header  || (col.primaryKey | titlecase)}}</span>
       </th>
 
-      <td cdk-cell *cdkCellDef="let row">{{row[col.primaryKey]}}</td>
+      <td cdk-cell *cdkCellDef="let row">{{row[col.primaryKey] || row[col.alternativeKey]}}</td>
     </ng-container>
 
     <!-- Expandable detail row -->

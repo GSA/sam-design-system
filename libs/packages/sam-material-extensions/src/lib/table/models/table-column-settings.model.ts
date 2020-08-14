@@ -1,7 +1,5 @@
 export class SdsTableColumnSettings {
   primaryKey: string;
-  alternativeKeys?: string[];
+  alternativeKey?: string[];
   header?: string;
-  format?: string;
-  sticky?: boolean = false;
 }
