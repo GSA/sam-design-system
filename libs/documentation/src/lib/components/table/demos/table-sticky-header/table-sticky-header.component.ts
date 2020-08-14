@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { SdsTableColumnSettings } from '@sam-design-system/sam-material-extensions';
 
 @Component({
   selector: 'gsa-sam-table-sticky-header',
   templateUrl: './table-sticky-header.component.html'
 })
 
-export class TableStickyHeaderComponent implements OnInit {
+export class TableStickyHeaderComponent {
 
   data = [
     { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
@@ -60,11 +61,10 @@ export class TableStickyHeaderComponent implements OnInit {
     { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
   ];
 
-  columns = ['position', 'name', 'weight', 'symbol'];
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  columns: SdsTableColumnSettings[] = [
+    { primaryKey: 'position' },
+    { primaryKey: 'name' },
+    { primaryKey: 'weight' },
+    { primaryKey: 'symbol' }
+  ];
 }

@@ -14,8 +14,15 @@
   // sort button
   .usa-button--unstyled {
     color: inherit;
+    white-space: nowrap;
     fa-icon:not(.active) {
       color: #C9C9C9;
+    }
+  }
+
+  .sds-table__row {
+    td.cdk-table-sticky:nth-child(1) {
+      border-right: 1px solid #C9C9C9;
     }
   }
 

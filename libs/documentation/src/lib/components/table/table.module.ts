@@ -17,17 +17,12 @@ import { TableSortModule } from './demos/table-sort/table-sort.module';
 import { TableSortComponent } from './demos/table-sort/table-sort.component';
 import { TableExpandableRowModule } from './demos/table-expandable-row/table-expandable-row.module';
 import { TableExpandableRowComponent } from './demos/table-expandable-row/table-expandable-row.component';
+import { TableStickyColumnModule } from './demos/table-sticky-column/table-sticky-column.module';
+import { TableStickyColumnComponent } from './demos/table-sticky-column/table-sticky-column.component';
 
 export declare var require: any;
 
 const DEMOS = {
-  expandableRow: {
-    title: 'SAM Expandable Row Table',
-    type: TableExpandableRowComponent,
-    code: require('!!raw-loader!./demos/table-expandable-row/table-expandable-row.component'),
-    markup: require('!!raw-loader!./demos/table-expandable-row/table-expandable-row.component.html'),
-    path: 'libs/documentation/src/lib/components/table/demos/table-expandable-row'
-  },
   basic: {
     title: 'SAM Table', // Title
     type: TableBasicComponent, // Component
@@ -49,6 +44,13 @@ const DEMOS = {
     markup: require('!!raw-loader!./demos/table-sticky-header/table-sticky-header.component.html'),
     path: 'libs/documentation/src/lib/components/table/demos/table-sticky-header'
   },
+  stickyColumn: {
+    title: 'SAM Table Sticky Header and Column',
+    type: TableStickyColumnComponent,
+    code: require('!!raw-loader!./demos/table-sticky-column/table-sticky-column.component'),
+    markup: require('!!raw-loader!./demos/table-sticky-column/table-sticky-column.component.html'),
+    path: 'libs/documentation/src/lib/components/table/demos/table-sticky-column'
+  },
   sort: {
     title: 'SAM Table Sort',
     type: TableSortComponent,
@@ -56,6 +58,13 @@ const DEMOS = {
     markup: require('!!raw-loader!./demos/table-sort/table-sort.component.html'),
     path: 'libs/documentation/src/lib/components/table/demos/table-sort'
   },
+  expandableRow: {
+    title: 'SAM Expandable Row Table',
+    type: TableExpandableRowComponent,
+    code: require('!!raw-loader!./demos/table-expandable-row/table-expandable-row.component'),
+    markup: require('!!raw-loader!./demos/table-expandable-row/table-expandable-row.component.html'),
+    path: 'libs/documentation/src/lib/components/table/demos/table-expandable-row'
+  }
  };
 
  export const ROUTES = [
@@ -90,6 +99,7 @@ const DEMOS = {
     TableBorderlessModule,
     TableStickyHeaderModule,
     TableSortModule,
+    TableStickyColumnModule,
     TableExpandableRowModule
   ]
 })

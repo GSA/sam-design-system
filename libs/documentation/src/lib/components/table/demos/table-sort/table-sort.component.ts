@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SdsTableColumnSettings } from '@sam-design-system/sam-material-extensions';
 
 @Component({
   selector: 'gsa-sam-table-sort',
@@ -62,6 +63,11 @@ export class TableSortComponent {
     { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
   ];
 
-  columns = ['position', 'name', 'weight', 'symbol'];
+  columns: SdsTableColumnSettings[] = [
+    { primaryKey: 'position' },
+    { primaryKey: 'name' },
+    { primaryKey: 'weight' },
+    { primaryKey: 'symbol' }
+  ];
 
 }

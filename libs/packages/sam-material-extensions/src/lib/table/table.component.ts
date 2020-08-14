@@ -1,5 +1,6 @@
-import { Component, Input, TemplateRef } from '@angular/core';
+import { Component, Input, TemplateRef, OnInit } from '@angular/core';
 import * as _ from 'lodash';
+import { SdsTableColumnSettings } from './models/table-column-settings.model';
 
 @Component({
   selector: 'sds-table',
@@ -7,7 +8,7 @@ import * as _ from 'lodash';
   styleUrls: ['./table.component.scss']
 })
 
-export class SdsTableComponent {
+export class SdsTableComponent implements OnInit {
 
   /**
    * Data source for table
@@ -16,8 +17,9 @@ export class SdsTableComponent {
 
   /**
    * columns to display in header
+   * {@link SdsTableColumnSettings}
    */
-  @Input() columns: string[];
+  @Input() columns: SdsTableColumnSettings[];
 
   /**
    * template outlet for expandable detail
@@ -25,8 +27,19 @@ export class SdsTableComponent {
    */
   @Input() detailRow?: TemplateRef<any>;
 
+  /**
+   * table without border
+   */
   @Input() borderless?: boolean = false;
+
+  /**
+   * Include sticky header row
+   */
   @Input() stickyHeader?: boolean = false;
+
+  /**
+   * sortable table
+   */
   @Input() sort?: boolean = false;
 
   /**
@@ -40,7 +53,18 @@ export class SdsTableComponent {
    */
   expandedRow: any | null;
 
+  /**
+   * column ids displayed
+   */
+  columnIds: string[] = [];
+
   constructor() {}
+
+  ngOnInit() {
+    this.columns.forEach(col => {
+      this.columnIds.push(col.primaryKey);
+    })
+  }
 
   toggleRowExpansion(row: any) {
     this.expandedRow = this.expandedRow === row ? null : row;
