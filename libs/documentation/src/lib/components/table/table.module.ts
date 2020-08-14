@@ -77,7 +77,7 @@ const DEMOS = {
         {
           pkg: 'material',
           type: 'components', // Within the compodocs, target the components section
-          name: 'TableComponent'
+          name: 'SdsTableComponent'
         }
       ]
     },
