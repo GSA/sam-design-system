@@ -6,7 +6,7 @@ import {
   ViewChild
 } from '@angular/core';
 import { MatSort } from '@angular/material';
-import * as _ from 'lodash';
+
 import { SdsTableColumnSettings } from './models/table-column-settings.model';
 
 @Component({
@@ -15,6 +15,7 @@ import { SdsTableColumnSettings } from './models/table-column-settings.model';
   styleUrls: ['./table.component.scss']
 })
 export class SdsTableComponent implements OnInit {
+  
   @ViewChild(MatSort) sort: MatSort;
 
   /**
@@ -86,24 +87,5 @@ export class SdsTableComponent implements OnInit {
 
   toggleRowExpansion(row: any) {
     this.expandedRow = this.expandedRow === row ? null : row;
-  }
-
-  adjustSort(col: string) {
-    if (this.sortKey === col) {
-      if (this.sortDirection === 'asc') {
-        this.sortDirection = 'desc';
-      } else {
-        this.sortDirection = 'asc';
-      }
-      return (this.dataSource = _.orderBy(
-        this.dataSource,
-        col,
-        this.sortDirection
-      ));
-    }
-
-    this.sortKey = col;
-    this.sortDirection = 'asc';
-    this.dataSource = _.orderBy(this.dataSource, col, this.sortDirection);
   }
 }
