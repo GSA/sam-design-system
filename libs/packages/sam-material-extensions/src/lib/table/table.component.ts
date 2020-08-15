@@ -1,4 +1,10 @@
-import { Component, Input, TemplateRef, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  Input,
+  TemplateRef,
+  OnInit,
+  ViewChild
+} from '@angular/core';
 import { MatSort } from '@angular/material';
 import * as _ from 'lodash';
 import { SdsTableColumnSettings } from './models/table-column-settings.model';
@@ -8,9 +14,7 @@ import { SdsTableColumnSettings } from './models/table-column-settings.model';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-
 export class SdsTableComponent implements OnInit {
-
   @ViewChild(MatSort) sort: MatSort;
 
   /**
@@ -61,7 +65,6 @@ export class SdsTableComponent implements OnInit {
    */
   columnIds: string[] = [];
 
-
   constructor() {}
 
   ngOnInit() {
@@ -70,9 +73,15 @@ export class SdsTableComponent implements OnInit {
     } else {
       this.sort.disabled = true;
     }
+
     this.columns.forEach(col => {
       this.columnIds.push(col.primaryKey);
-    })
+    });
+
+    // add blank column if expandable
+    if (this.detailRow) {
+      this.columnIds.push(' ');
+    }
   }
 
   toggleRowExpansion(row: any) {
@@ -86,7 +95,11 @@ export class SdsTableComponent implements OnInit {
       } else {
         this.sortDirection = 'asc';
       }
-      return this.dataSource = _.orderBy(this.dataSource, col, this.sortDirection);
+      return (this.dataSource = _.orderBy(
+        this.dataSource,
+        col,
+        this.sortDirection
+      ));
     }
 
     this.sortKey = col;

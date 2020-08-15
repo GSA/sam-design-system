@@ -1,20 +1,30 @@
 <div class="sds-table__container" [ngClass]="{'sds-table__container--borderless': borderless}">
-  <table mat-table [dataSource]="dataSource" matSort [multiTemplateDataRows]=detailRow [ngClass]="{'sds-table--expansion': detailRow}" class="sds-table">
+  <table mat-table [dataSource]="dataSource" matSort [multiTemplateDataRows]=detailRow
+    [ngClass]="{'sds-table--expansion': detailRow}" class="sds-table">
 
     <!-- Columns -->
-    <ng-container matColumnDef="{{col.primaryKey}}" *ngFor="let col of columns" [sticky]=col.sticky cssClassFriendlyName="test">
+    <ng-container matColumnDef="{{col.primaryKey}}" *ngFor="let col of columns" [sticky]=col.sticky>
 
       <!-- table header cells -->
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col">
         {{ col.header  || (col.primaryKey | titlecase)}}
       </th>
 
       <td mat-cell *matCellDef="let row">{{row[col.primaryKey] || row[col.alternativeKey]}}</td>
     </ng-container>
 
+    <!-- column for expandable icon -->
+    <ng-container matColumnDef=" " *ngIf="detailRow">
+      <th mat-header-cell *matHeaderCellDef scope="col"></th>
+      <td mat-cell *matCellDef="let row">
+        <fa-icon *ngIf="row !== expandedRow" [icon]="['fas', 'chevron-down']"></fa-icon>
+        <fa-icon *ngIf="row === expandedRow" [icon]="['fas', 'chevron-up']"></fa-icon>
+      </td>
+    </ng-container>
+
     <!-- Expandable detail row -->
     <ng-container matColumnDef="expandedDetail">
-      <td mat-cell *matCellDef="let row" [attr.colspan]="columns.length" class="sds-table__detail">
+      <td mat-cell *matCellDef="let row" [attr.colspan]="columnIds.length" class="sds-table__detail">
 
         <!-- display detailRow templateRef with all row data -->
         <ng-container *ngTemplateOutlet="detailRow; context: row"></ng-container>
