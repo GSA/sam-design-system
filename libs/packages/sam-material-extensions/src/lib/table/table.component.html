@@ -1,5 +1,6 @@
 <div class="sds-table__container" [ngClass]="{'sds-table__container--borderless': borderless}">
-  <table cdk-table [dataSource]="dataSource" [multiTemplateDataRows]="detailRow" [ngClass]="{'sds-table--expansion': detailRow}" class="sds-table">
+  <table cdk-table [dataSource]="dataSource" [multiTemplateDataRows]="detailRow"
+    [ngClass]="{'sds-table--expansion': detailRow}" class="sds-table">
 
     <!-- Columns -->
     <ng-container cdkColumnDef="{{col.primaryKey}}" [sticky]=col.sticky *ngFor="let col of columns">
@@ -10,8 +11,8 @@
         <!-- sort header button-->
         <button *ngIf="sort" (click)="adjustSort(col.primaryKey)" class="usa-button--unstyled">
           {{ col.header  || (col.primaryKey | titlecase)}}
-          <fa-icon *ngIf="sortDirection === 'desc' && sortKey === col.primaryKey" [ngClass]="{'active': sortKey === col.primaryKey}"
-            [icon]="['fas', 'caret-down']"></fa-icon>
+          <fa-icon *ngIf="sortDirection === 'desc' && sortKey === col.primaryKey"
+            [ngClass]="{'active': sortKey === col.primaryKey}" [icon]="['fas', 'caret-down']"></fa-icon>
           <fa-icon *ngIf="sortKey !== col.primaryKey || sortDirection === 'asc' && sortKey === col.primaryKey"
             [ngClass]="{'active': sortKey === col.primaryKey}" [icon]="['fas', 'caret-up']"></fa-icon>
         </button>
@@ -24,10 +25,19 @@
 
     <!-- Expandable detail row -->
     <ng-container cdkColumnDef="expandedDetail">
-      <td cdk-cell *cdkCellDef="let row" [attr.colspan]="columns.length" class="sds-table__detail">
+      <td cdk-cell *cdkCellDef="let row" [attr.colspan]="columnIds.length" class="sds-table__detail">
 
         <!-- display detailRow templateRef with all row data -->
         <ng-container *ngTemplateOutlet="detailRow; context: row"></ng-container>
+      </td>
+    </ng-container>
+
+    <!-- column for expandable icon -->
+    <ng-container cdkColumnDef=" " *ngIf="detailRow">
+      <th cdk-header-cell *cdkHeaderCellDef scope="col"></th>
+      <td cdk-cell *cdkCellDef="let row">
+        <fa-icon *ngIf="row !== expandedRow" [icon]="['fas', 'chevron-down']"></fa-icon>
+        <fa-icon *ngIf="row === expandedRow" [icon]="['fas', 'chevron-up']"></fa-icon>
       </td>
     </ng-container>
 

@@ -64,6 +64,11 @@ export class SdsTableComponent implements OnInit {
     this.columns.forEach(col => {
       this.columnIds.push(col.primaryKey);
     })
+
+    // add blank column if expandable
+    if (this.detailRow) {
+      this.columnIds.push(' ');
+    }
   }
 
   toggleRowExpansion(row: any) {
