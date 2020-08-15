@@ -1,11 +1,11 @@
 <div class="sds-table__container" [ngClass]="{'sds-table__container--borderless': borderless}">
-  <table mat-table [dataSource]="dataSource" matSort [matSortDisabled]="!sortTable" [multiTemplateDataRows]=detailRow [ngClass]="{'sds-table--expansion': detailRow}" class="sds-table">
+  <table mat-table [dataSource]="dataSource" matSort [multiTemplateDataRows]=detailRow [ngClass]="{'sds-table--expansion': detailRow}" class="sds-table">
 
     <!-- Columns -->
     <ng-container matColumnDef="{{col.primaryKey}}" *ngFor="let col of columns" [sticky]=col.sticky cssClassFriendlyName="test">
 
       <!-- table header cells -->
-      <th mat-header-cell *matHeaderCellDef>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
         {{ col.header  || (col.primaryKey | titlecase)}}
       </th>
 
