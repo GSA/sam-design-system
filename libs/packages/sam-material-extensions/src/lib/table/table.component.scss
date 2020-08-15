@@ -4,6 +4,13 @@
   border: 0;
   margin: 0;
 
+  tr {
+    th, td {
+      padding: 8px 16px;
+      color: inherit;
+      font-size: inherit;
+    }
+  }
   tr.sds-table__head {
     > th {
       border-bottom: 1px solid #C9C9C9;
@@ -11,17 +18,11 @@
     }
   }
 
-  // sort button
-  .usa-button--unstyled {
-    color: inherit;
-    white-space: nowrap;
-    fa-icon:not(.active) {
-      color: #C9C9C9;
-    }
-  }
-
   .sds-table__row {
-    td.cdk-table-sticky:nth-child(1) {
+    td {
+      border-bottom: 0;
+    }
+    .mat-table-sticky:first-child {
       border-right: 1px solid #C9C9C9;
     }
   }

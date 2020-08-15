@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SdsTableColumnSettings } from '@sam-design-system/sam-material-extensions';
+import { MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'gsa-sam-table-sticky-column',
@@ -8,7 +9,7 @@ import { SdsTableColumnSettings } from '@sam-design-system/sam-material-extensio
 
 export class TableStickyColumnComponent {
 
-  data = [{
+  data = new MatTableDataSource([{
     id: 1,
     firstName: "Stephen",
     lastName: "Slyford",
@@ -88,8 +89,8 @@ export class TableStickyColumnComponent {
     gender: "Female",
     catchPhrase: "Polarised client-server task-force",
     jobTitle: "Financial Advisor"
-  }];
-  
+  }]);
+
   columns: SdsTableColumnSettings[] = [
     {
       primaryKey: 'id',

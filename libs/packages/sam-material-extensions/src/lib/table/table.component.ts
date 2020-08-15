@@ -1,4 +1,5 @@
-import { Component, Input, TemplateRef, OnInit } from '@angular/core';
+import { Component, Input, TemplateRef, OnInit, ViewChild } from '@angular/core';
+import {MatSort, MatTableDataSource} from '@angular/material';
 import * as _ from 'lodash';
 import { SdsTableColumnSettings } from './models/table-column-settings.model';
 
@@ -10,10 +11,12 @@ import { SdsTableColumnSettings } from './models/table-column-settings.model';
 
 export class SdsTableComponent implements OnInit {
 
+  @ViewChild(MatSort) sort: MatSort;
+
   /**
    * Data source for table
    */
-  @Input() dataSource: any[];
+  @Input() dataSource;
 
   /**
    * columns to display in header
@@ -40,7 +43,7 @@ export class SdsTableComponent implements OnInit {
   /**
    * sortable table
    */
-  @Input() sort?: boolean = false;
+  @Input() sortTable?: boolean = false;
 
   /**
    * sort vars
@@ -58,9 +61,15 @@ export class SdsTableComponent implements OnInit {
    */
   columnIds: string[] = [];
 
+
   constructor() {}
 
   ngOnInit() {
+    if (this.sortTable) {
+      this.dataSource.sort = this.sort;
+    } else {
+      this.sort.disabled = true;
+    }
     this.columns.forEach(col => {
       this.columnIds.push(col.primaryKey);
     })

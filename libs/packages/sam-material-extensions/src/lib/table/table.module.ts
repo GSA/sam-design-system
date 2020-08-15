@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CdkTableModule } from '@angular/cdk/table';
+import {MatTableModule, MatSortModule } from '@angular/material';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { SdsTableComponent } from './table.component';
@@ -9,7 +9,8 @@ import { SdsTableComponent } from './table.component';
   declarations: [SdsTableComponent],
   imports: [
     CommonModule,
-    CdkTableModule,
+    MatSortModule,
+    MatTableModule,
     FontAwesomeModule
   ],
   exports: [SdsTableComponent]
