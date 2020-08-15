@@ -1,5 +1,5 @@
 import { Component, Input, TemplateRef, OnInit, ViewChild } from '@angular/core';
-import {MatSort, MatTableDataSource} from '@angular/material';
+import { MatSort } from '@angular/material';
 import * as _ from 'lodash';
 import { SdsTableColumnSettings } from './models/table-column-settings.model';
 
