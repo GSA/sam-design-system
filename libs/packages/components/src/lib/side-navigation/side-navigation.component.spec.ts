@@ -171,9 +171,9 @@ describe('SdsSideNavigationComponent', () => {
 
   it('event click', () => {
     let navItem = { mode: NavigationMode.EVENT, text: 'test', route: '/' };
-    spyOn(component.linkEvent, 'emit');
-    component.linkClickEvent(navItem);
-    expect(component.linkEvent.emit).toHaveBeenCalledWith(navItem);
+    spyOn(component.navigate, 'emit');
+    component.navigation(navItem);
+    expect(component.navigate.emit).toHaveBeenCalledWith(navItem);
   });
 
   it('correct template', () => {
