@@ -31,18 +31,14 @@
       </td>
     </ng-container>
 
-    <!-- Header and row declarations for expansion table-->
-    <ng-container *ngIf="detailRow">
-      <tr mat-header-row *matHeaderRowDef="columnIds; sticky: stickyHeader" class="sds-table__head"></tr>
-      <tr mat-row *matRowDef="let row; columns: columnIds" (click)="toggleRowExpansion(row)" class="sds-table__row"
-        [ngClass]="{'sds-table__row--expanded': row === expandedRow}"></tr>
-      <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="sds-table__row--detail"></tr>
-    </ng-container>
+    <!-- Header and row declarations -->
+    <tr mat-header-row *matHeaderRowDef="columnIds; sticky: stickyHeader" class="sds-table__head"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnIds" (click)="toggleRowExpansion(row)" class="sds-table__row"
+      [ngClass]="{'sds-table__row--expanded': row === expandedRow}"></tr>
 
-    <!-- Header and row declarations for non-expandable tables-->
-    <ng-container *ngIf="!detailRow">
-      <tr mat-header-row *matHeaderRowDef="columnIds; sticky: stickyHeader" class="sds-table__head"></tr>
-      <tr mat-row *matRowDef="let row; columns: columnIds" class="sds-table__row"></tr>
+    <!-- expansion row declaration -->
+    <ng-container *ngIf="detailRow">
+      <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="sds-table__row--detail"></tr>
     </ng-container>
   </table>
 </div>
