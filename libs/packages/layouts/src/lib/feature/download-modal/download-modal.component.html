@@ -4,13 +4,13 @@
     consecteur adipiscing elit, sed do eiusmod tempor incidunt.
   </p>
 
-  <formly-form [fields]="fields" [model]="model">
+  <formly-form [fields]="fields" [model]="model" [formGroup]="form">
   </formly-form>
 
 
 </div>
 <div sds-dialog-actions>
-  <button class="usa-button usa-button--base">
+  <button class="usa-button usa-button--base usa-cancel" (click)="cancel()">
     Cancel
   </button>
   <button class="usa-button usa-submit" (click)="onSubmit()" cdkFocusInitial>

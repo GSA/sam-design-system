@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { SdsDialogService } from '@gsa-sam/components';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'sds-download-display',
@@ -9,16 +9,15 @@ export class SdsDownloadDisplayComponent implements OnInit {
   @Input() message: string;
   updatedModel: any;
 
-  modelHandler(value){
+  modelHandler(value) {
     this.updatedModel = value;
   }
-  constructor(private dialogService: SdsDialogService) { }
+  constructor() {}
+  ngOnInit() {}
 
-  ngOnInit() {
-  }
+  form = new FormGroup({});
 
-
-  model:object = {
+  model: object = {
     name: '',
     fullRecord: false,
     summaryInfo: false,
@@ -52,7 +51,8 @@ export class SdsDownloadDisplayComponent implements OnInit {
         label: 'Download FDPS case records.',
         required: true
       }
-    },{
+    },
+    {
       key: 'currentRecord',
       type: 'checkbox',
       templateOptions: {
@@ -80,9 +80,7 @@ export class SdsDownloadDisplayComponent implements OnInit {
             value: 'Zip File'
           }
         ]
-
       }
-
     },
     {
       key: 'name',
@@ -101,6 +99,4 @@ export class SdsDownloadDisplayComponent implements OnInit {
       }
     }
   ];
-
-
 }

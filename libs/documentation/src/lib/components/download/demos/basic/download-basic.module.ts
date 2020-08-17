@@ -4,6 +4,7 @@ import { DownloadBasic } from './download-basic.component';
 import { FormsModule } from '@angular/forms';
 import { SdsDownloadModalModule } from 'libs/packages/layouts/src/lib/feature/download-modal/download-modal.module';
 import { SdsDownloadDisplayComponent } from './download-modal-display.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,7 @@ import { SdsDownloadDisplayComponent } from './download-modal-display.component'
     SdsDownloadDisplayComponent
   ],
   imports: [
-    CommonModule, FormsModule, SdsDownloadModalModule
+    CommonModule, FormsModule, SdsDownloadModalModule, MatDialogModule
   ],
   exports: [DownloadBasic, SdsDownloadDisplayComponent],
   entryComponents: [
