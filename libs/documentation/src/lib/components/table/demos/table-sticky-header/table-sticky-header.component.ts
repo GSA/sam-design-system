@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SdsTableColumnSettings } from '@sam-design-system/sam-material-extensions';
+import { SdsTableColumnSettings, SdsTableSettings } from '@sam-design-system/sam-material-extensions';
 
 @Component({
   selector: 'gsa-sam-table-sticky-header',
@@ -8,6 +8,11 @@ import { SdsTableColumnSettings } from '@sam-design-system/sam-material-extensio
 
 export class TableStickyHeaderComponent {
 
+  tableSettings: SdsTableSettings = {
+    caption: "Sticky Header Settings",
+    stickyHeader: true
+  };
+  
   data = [
     { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
     { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },

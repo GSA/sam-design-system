@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SdsTableColumnSettings } from '@sam-design-system/sam-material-extensions';
+import { SdsTableSettings, SdsTableColumnSettings } from '@sam-design-system/sam-material-extensions';
 
 @Component({
   selector: 'gsa-sam-table-basic',
@@ -7,6 +7,8 @@ import { SdsTableColumnSettings } from '@sam-design-system/sam-material-extensio
 })
 
 export class TableBasicComponent {
+
+  tableSettings: SdsTableSettings = {caption: "basic table"};
 
   columns: SdsTableColumnSettings[] = [
     {

@@ -1,6 +1,7 @@
-<div class="sds-table__container" [ngClass]="{'sds-table__container--borderless': borderless}">
+<div class="sds-table__container" [ngClass]="{'sds-table__container--borderless': settings.borderless}">
   <table mat-table [dataSource]="dataSource" matSort [multiTemplateDataRows]=detailRow
     [ngClass]="{'sds-table--expansion': detailRow}" class="sds-table">
+    <caption class="sr-only">{{settings.caption}}</caption>
 
     <!-- Columns -->
     <ng-container matColumnDef="{{col.primaryKey}}" *ngFor="let col of columns" [sticky]=col.sticky>
@@ -32,7 +33,7 @@
     </ng-container>
 
     <!-- Header and row declarations -->
-    <tr mat-header-row *matHeaderRowDef="columnIds; sticky: stickyHeader" class="sds-table__head"></tr>
+    <tr mat-header-row *matHeaderRowDef="columnIds; sticky: settings.stickyHeader" class="sds-table__head"></tr>
     <tr mat-row *matRowDef="let row; columns: columnIds" (click)="toggleRowExpansion(row)" class="sds-table__row"
       [ngClass]="{'sds-table__row--expanded': row === expandedRow}"></tr>
 

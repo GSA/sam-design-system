@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SdsTableColumnSettings } from '@sam-design-system/sam-material-extensions';
+import { SdsTableColumnSettings, SdsTableSettings } from '@sam-design-system/sam-material-extensions';
 
 @Component({
   selector: 'gsa-sam-table-sort',
@@ -8,7 +8,11 @@ import { SdsTableColumnSettings } from '@sam-design-system/sam-material-extensio
 
 export class TableSortComponent {
 
-  constructor() { }
+  tableSettings: SdsTableSettings = {
+    caption: "Sort Table",
+    sort: true,
+    stickyHeader: true
+  };
 
   data = [
     { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },

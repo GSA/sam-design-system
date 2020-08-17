@@ -1,11 +1,18 @@
 import { Component } from '@angular/core';
-import { SdsTableColumnSettings } from '@sam-design-system/sam-material-extensions';
+import { SdsTableColumnSettings, SdsTableSettings } from '@sam-design-system/sam-material-extensions';
 
 @Component({
   selector: 'gsa-sam-table-expandable-row',
   templateUrl: './table-expandable-row.component.html'
 })
 export class TableExpandableRowComponent {
+
+  tableSettings: SdsTableSettings = {
+    caption: "Expandable Row Table",
+    sort: true,
+    stickyHeader: true
+  };
+  
   columns: SdsTableColumnSettings[] = [
     { primaryKey: 'position' },
     { primaryKey: 'name' },

@@ -8,6 +8,7 @@ import {
 import { MatSort, MatTableDataSource } from '@angular/material';
 
 import { SdsTableColumnSettings } from './models/table-column-settings.model';
+import { SdsTableSettings } from './models/table-settings.model';
 
 @Component({
   selector: 'sds-table',
@@ -36,19 +37,10 @@ export class SdsTableComponent implements OnInit {
   @Input() detailRow?: TemplateRef<any>;
 
   /**
-   * table without border
-   */
-  @Input() borderless?: boolean = false;
-
-  /**
-   * Include sticky header row
-   */
-  @Input() stickyHeader?: boolean = false;
-
-  /**
-   * sortable table
-   */
-  @Input() sortTable?: boolean = false;
+   * table settings
+   * {@link SdsTableSettings}
+  */
+  @Input() settings: SdsTableSettings;
 
   /**
    * table MatTableDataSource data source based on Input data
@@ -74,13 +66,17 @@ export class SdsTableComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
+    // convert data to MatTableDataSource
     this.dataSource = new MatTableDataSource(this.data);
-    if (this.sortTable) {
+
+    // enable sort if set in settings
+    if (this.settings.sort) {
       this.dataSource.sort = this.sort;
     } else {
       this.sort.disabled = true;
     }
 
+    // get column primary keys
     this.columns.forEach(col => {
       this.columnIds.push(col.primaryKey);
     });
