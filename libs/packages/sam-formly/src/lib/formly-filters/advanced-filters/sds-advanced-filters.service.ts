@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
-interface StringArray {
-  [index: string]: string;
-}
 @Injectable({
   providedIn: 'root'
 })
