@@ -46,7 +46,7 @@
       class="usa-list usa-list--unstyled sds-autocomplete"
       (scroll)="onScroll()"
     >
-      <ng-container *ngIf="results && results.length > 0">
+      <ng-container *ngIf="results && results.length">
         <li
           [attr.id]="configuration.id + '-resultItem-' + i"
           role="option"
@@ -108,15 +108,15 @@
                 role="option"
                 [ngClass]="{
                   'sds-autocomplete__group':
-                    child[configuration.groupByChild]?.length > 0,
-                  'sds-autocomplete__item':
-                    !child[configuration.groupByChild]?.length > 0,
+                    child[configuration.groupByChild]?.length,
+                  'sds-autocomplete__item': !child[configuration.groupByChild]
+                    ?.length,
                   'sds-autocomplete__item--highlighted':
                     child['highlighted'] &&
-                    !child[configuration.groupByChild]?.length > 0,
+                    !child[configuration.groupByChild]?.length,
                   'sds-autocomplete__item--selected':
                     checkItemSelected(child) &&
-                    !child[configuration.groupByChild]?.length > 0
+                    !child[configuration.groupByChild]?.length
                 }"
                 *ngFor="
                   let child of result[configuration.groupByChild];
@@ -127,16 +127,16 @@
                 <div
                   [ngClass]="{
                     'sds-autocomplete__item':
-                      child[configuration.groupByChild]?.length > 0,
+                      child[configuration.groupByChild]?.length,
                     'sds-autocomplete__item--highlighted':
-                      child[configuration.groupByChild]?.length > 0 &&
+                      child[configuration.groupByChild]?.length &&
                       child['highlighted'],
                     'sds-autocomplete__item--disabled':
                       !configuration.isSelectableGroup &&
-                      child[configuration.groupByChild]?.length > 0,
+                      child[configuration.groupByChild]?.length,
                     'sds-autocomplete__item--selected':
                       checkItemSelected(child) &&
-                      child[configuration.groupByChild]?.length > 0
+                      child[configuration.groupByChild]?.length
                   }"
                 >
                   <div
