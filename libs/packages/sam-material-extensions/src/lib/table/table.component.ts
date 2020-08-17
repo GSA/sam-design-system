@@ -5,7 +5,7 @@ import {
   OnInit,
   ViewChild
 } from '@angular/core';
-import { MatSort } from '@angular/material';
+import { MatSort, MatTableDataSource } from '@angular/material';
 
 import { SdsTableColumnSettings } from './models/table-column-settings.model';
 
@@ -15,13 +15,13 @@ import { SdsTableColumnSettings } from './models/table-column-settings.model';
   styleUrls: ['./table.component.scss']
 })
 export class SdsTableComponent implements OnInit {
-  
+
   @ViewChild(MatSort) sort: MatSort;
 
   /**
-   * Data source for table
+   * Data for table
    */
-  @Input() dataSource;
+  @Input() data;
 
   /**
    * columns to display in header
@@ -51,6 +51,11 @@ export class SdsTableComponent implements OnInit {
   @Input() sortTable?: boolean = false;
 
   /**
+   * table MatTableDataSource data source based on Input data
+   */
+  dataSource: MatTableDataSource<any>;
+
+  /**
    * sort vars
    */
   sortKey: string;
@@ -69,6 +74,7 @@ export class SdsTableComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
+    this.dataSource = new MatTableDataSource(this.data);
     if (this.sortTable) {
       this.dataSource.sort = this.sort;
     } else {

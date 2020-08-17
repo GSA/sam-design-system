@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { SdsTableColumnSettings } from '@sam-design-system/sam-material-extensions';
-import { MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'gsa-sam-table-basic',
@@ -38,7 +37,7 @@ export class TableBasicComponent {
    }
   ];
 
-  data = new MatTableDataSource([
+  data = [
     {
       id: 1,
       firstName: 'Gregorius',
@@ -139,5 +138,5 @@ export class TableBasicComponent {
       jobTitle: 'Safety Technician II',
       date: '2019-12-13'
     }
-  ]);
+  ];
 }
