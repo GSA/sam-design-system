@@ -8,7 +8,6 @@ import { SdsTableColumnSettings, SdsTableSettings } from '@sam-design-system/sam
 export class TableStickyColumnComponent {
 
   tableSettings: SdsTableSettings = {
-    caption: "Sticky Column Settings",
     stickyHeader: true
   }
 

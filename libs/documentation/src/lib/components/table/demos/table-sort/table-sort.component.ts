@@ -9,7 +9,6 @@ import { SdsTableColumnSettings, SdsTableSettings } from '@sam-design-system/sam
 export class TableSortComponent {
 
   tableSettings: SdsTableSettings = {
-    caption: "Sort Table",
     sort: true,
     stickyHeader: true
   };

@@ -40,18 +40,12 @@ export class SdsTableComponent implements OnInit {
    * table settings
    * {@link SdsTableSettings}
   */
-  @Input() settings: SdsTableSettings;
+  @Input() settings?: SdsTableSettings;
 
   /**
    * table MatTableDataSource data source based on Input data
    */
   dataSource: MatTableDataSource<any>;
-
-  /**
-   * sort vars
-   */
-  sortKey: string;
-  sortDirection: string = 'asc';
 
   /**
    * currently expanded row
@@ -70,7 +64,7 @@ export class SdsTableComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.data);
 
     // enable sort if set in settings
-    if (this.settings.sort) {
+    if (this.settings && this.settings.sort) {
       this.dataSource.sort = this.sort;
     } else {
       this.sort.disabled = true;

@@ -8,11 +8,10 @@ import { SdsTableColumnSettings, SdsTableSettings } from '@sam-design-system/sam
 export class TableExpandableRowComponent {
 
   tableSettings: SdsTableSettings = {
-    caption: "Expandable Row Table",
     sort: true,
     stickyHeader: true
   };
-  
+
   columns: SdsTableColumnSettings[] = [
     { primaryKey: 'position' },
     { primaryKey: 'name' },

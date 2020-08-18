@@ -1,22 +1,33 @@
-<div class="sds-table__container" [ngClass]="{'sds-table__container--borderless': settings.borderless}">
-  <table mat-table [dataSource]="dataSource" matSort [multiTemplateDataRows]=detailRow
-    [ngClass]="{'sds-table--expansion': detailRow}" class="sds-table">
-    <caption class="sr-only">{{settings.caption}}</caption>
+<div class="sds-table__container" [ngClass]="{'sds-table__container--borderless': settings?.borderless}">
+    <table mat-table [dataSource]="dataSource" matSort [multiTemplateDataRows]=detailRow
+      [ngClass]="{'sds-table--expansion': detailRow}" class="sds-table">
 
     <!-- Columns -->
     <ng-container matColumnDef="{{col.primaryKey}}" *ngFor="let col of columns" [sticky]=col.sticky>
 
       <!-- table header cells -->
-      <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col">
-        {{ col.header  || (col.primaryKey | titlecase)}}
-      </th>
+      <ng-container *ngIf="settings?.sort">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col">
+          {{ col.header  || (col.primaryKey | titlecase)}}
+        </th>
+      </ng-container>
+      <ng-container *ngIf="!settings || !settings.sort">
+        <th mat-header-cell *matHeaderCellDef scope="col">
+          {{ col.header  || (col.primaryKey | titlecase)}}
+        </th>
+      </ng-container>
 
       <td mat-cell *matCellDef="let row">{{row[col.primaryKey] || row[col.alternativeKey]}}</td>
     </ng-container>
 
     <!-- column for expandable icon -->
     <ng-container matColumnDef=" " *ngIf="detailRow">
-      <th mat-header-cell *matHeaderCellDef scope="col"></th>
+      <th mat-header-cell *matHeaderCellDef scope="col" class="sds-table__expandable-col-header"></th>
+      <td mat-cell *matCellDef="let row">
+        <fa-icon *ngIf="row !== expandedRow" [icon]="['fas', 'chevron-down']"></fa-icon>
+        <fa-icon *ngIf="row === expandedRow" [icon]="['fas', 'chevron-up']"></fa-icon>
+      </td>
+      <th scope="col"></th>
       <td mat-cell *matCellDef="let row">
         <fa-icon *ngIf="row !== expandedRow" [icon]="['fas', 'chevron-down']"></fa-icon>
         <fa-icon *ngIf="row === expandedRow" [icon]="['fas', 'chevron-up']"></fa-icon>
@@ -33,7 +44,7 @@
     </ng-container>
 
     <!-- Header and row declarations -->
-    <tr mat-header-row *matHeaderRowDef="columnIds; sticky: settings.stickyHeader" class="sds-table__head"></tr>
+    <tr mat-header-row *matHeaderRowDef="columnIds; sticky: settings?.stickyHeader" class="sds-table__head"></tr>
     <tr mat-row *matRowDef="let row; columns: columnIds" (click)="toggleRowExpansion(row)" class="sds-table__row"
       [ngClass]="{'sds-table__row--expanded': row === expandedRow}"></tr>
 

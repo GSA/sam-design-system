@@ -1,9 +1,5 @@
 export class SdsTableSettings {
   /**
-   * table caption
-   */
-  caption: string;
-  /**
    * table without border
    */
   borderless?: boolean;

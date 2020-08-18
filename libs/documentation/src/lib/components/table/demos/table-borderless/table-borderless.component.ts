@@ -9,7 +9,6 @@ import { SdsTableColumnSettings, SdsTableSettings } from '@sam-design-system/sam
 export class TableBorderlessComponent {
 
   tableSettings: SdsTableSettings = {
-    caption: "Borderless Table",
     borderless: true
   };
 
