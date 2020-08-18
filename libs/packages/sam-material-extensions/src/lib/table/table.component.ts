@@ -75,9 +75,9 @@ export class SdsTableComponent implements OnInit {
       this.columnIds.push(col.primaryKey);
     });
 
-    // add blank column if expandable
+    // add column if expandable
     if (this.detailRow) {
-      this.columnIds.push(' ');
+      this.columnIds.push('sdsExpandableRow');
     }
   }
 

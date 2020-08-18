@@ -21,23 +21,22 @@
     </ng-container>
 
     <!-- column for expandable icon -->
-    <ng-container matColumnDef=" " *ngIf="detailRow">
-      <th mat-header-cell *matHeaderCellDef scope="col" class="sds-table__expandable-col-header"></th>
+    <ng-container matColumnDef="sdsExpandableRow" *ngIf="detailRow">
+      <th mat-header-cell *matHeaderCellDef scope="col" class="sds-table__expandable-col-header">
+        <span class="sr-only">More Information</span>
+      </th>
+
       <td mat-cell *matCellDef="let row">
-        <fa-icon *ngIf="row !== expandedRow" [icon]="['fas', 'chevron-down']"></fa-icon>
-        <fa-icon *ngIf="row === expandedRow" [icon]="['fas', 'chevron-up']"></fa-icon>
-      </td>
-      <th scope="col"></th>
-      <td mat-cell *matCellDef="let row">
-        <fa-icon *ngIf="row !== expandedRow" [icon]="['fas', 'chevron-down']"></fa-icon>
-        <fa-icon *ngIf="row === expandedRow" [icon]="['fas', 'chevron-up']"></fa-icon>
+        <button class="sds-button usa-button--unstyled" tabindex="0" aria-label="expand row">
+          <fa-icon *ngIf="row !== expandedRow" [icon]="['fas', 'chevron-down']"></fa-icon>
+          <fa-icon *ngIf="row === expandedRow" [icon]="['fas', 'chevron-up']"></fa-icon>
+        </button>
       </td>
     </ng-container>
 
     <!-- Expandable detail row -->
     <ng-container matColumnDef="expandedDetail">
-      <td mat-cell *matCellDef="let row" [attr.colspan]="columnIds.length" class="sds-table__detail">
-
+      <td mat-cell *matCellDef="let row;" [attr.colspan]="columnIds.length" class="sds-table__detail">
         <!-- display detailRow templateRef with all row data -->
         <ng-container *ngTemplateOutlet="detailRow; context: row"></ng-container>
       </td>
@@ -45,8 +44,8 @@
 
     <!-- Header and row declarations -->
     <tr mat-header-row *matHeaderRowDef="columnIds; sticky: settings?.stickyHeader" class="sds-table__head"></tr>
-    <tr mat-row *matRowDef="let row; columns: columnIds" (click)="toggleRowExpansion(row)" class="sds-table__row"
-      [ngClass]="{'sds-table__row--expanded': row === expandedRow}"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnIds" class="sds-table__row"
+      [ngClass]="{'sds-table__row--expanded': row === expandedRow}" (click)="toggleRowExpansion(row)"></tr>
 
     <!-- expansion row declaration -->
     <ng-container *ngIf="detailRow">
