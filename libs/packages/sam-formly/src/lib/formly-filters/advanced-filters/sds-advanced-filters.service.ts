@@ -4,9 +4,7 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 @Injectable({
   providedIn: 'root'
 })
-
 export class SdsAdvancedFiltersService {
-
   constructor() {}
 
   convertToCheckboxes(origFields: FormlyFieldConfig[]): FormlyFieldConfig[] {
@@ -39,7 +37,10 @@ export class SdsAdvancedFiltersService {
     const options = [];
     const defaultValue = [];
     origField.fieldGroup.forEach(field => {
-      const label = field.templateOptions && field.templateOptions.label ? field.templateOptions.label : null;
+      const label =
+        field.templateOptions && field.templateOptions.label
+          ? field.templateOptions.label
+          : null;
       const option = {
         key: field.key,
         value: label
@@ -55,6 +56,7 @@ export class SdsAdvancedFiltersService {
       type: 'multicheckbox',
       templateOptions: {
         hideOptional: true,
+        selectAllOption: true,
         type: 'array',
         options: options
       }
@@ -70,8 +72,8 @@ export class SdsAdvancedFiltersService {
     return field;
   }
 
-  updateFields( selectedFields: object, fields: FormlyFieldConfig[], model: any) {
-    fields.forEach((field: FormlyFieldConfig) => {
+  updateFields(selectedFields: any, fields: FormlyFieldConfig[], model: any) {
+    fields.forEach((field: any) => {
       const key = field.key;
       const selectedField = selectedFields[key];
       if (field.fieldGroup && field.fieldGroup.length > 1) {
@@ -87,7 +89,11 @@ export class SdsAdvancedFiltersService {
     };
   }
 
-  updateFieldGroup( parentField: FormlyFieldConfig, selectedFields: any, model: object) {
+  updateFieldGroup(
+    parentField: FormlyFieldConfig,
+    selectedFields: any,
+    model: object
+  ) {
     if (selectedFields && selectedFields.length) {
       parentField.hide = false;
       parentField.fieldGroup.forEach(field => {
@@ -103,11 +109,7 @@ export class SdsAdvancedFiltersService {
     }
   }
 
-  updateSingleField(
-    field: FormlyFieldConfig,
-    fieldSelected: boolean,
-    model: any
-  ) {
+  updateSingleField(field: any, fieldSelected: boolean, model: any) {
     if (fieldSelected) {
       field.hide = false;
     } else {

@@ -160,6 +160,7 @@ export class SdsFiltersComponent implements OnInit {
     if (this.formlyUpdateComunicationService) {
       this.formlyUpdateComunicationService.updateFilter(updatedModel);
     }
+    this.cdr.detectChanges();
   }
 
   convertToParam(filters) {

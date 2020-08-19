@@ -1,73 +1,265 @@
-<div sds-click-outside (clickOutside)="checkForFocus($event)" sds-tab-outside (tabOutside)="checkForFocus($event)">
+<div
+  sds-click-outside
+  (clickOutside)="checkForFocus($event)"
+  sds-tab-outside
+  (tabOutside)="checkForFocus($event)"
+>
   <div class="maxw-mobile-lg position-relative">
-    <div role="combobox" [attr.id]="configuration.id+'-container'" [attr.aria-expanded]="showResults" [attr.aria-owns]="showResults? configuration.id+ '-listbox' : undefined"
-      aria-haspopup="listbox">
-      <input [disabled]="disabled" (keypress)="onkeypress($event)" (input)="textChange($event)" class="usa-input padding-right-3"
-        [ngClass]="getClass()" #input [attr.aria-label]="configuration.ariaLabelText" [attr.id]="configuration.id" type="text"
-        (focus)="inputFocusHandler()" (keydown)="onKeydown($event)" [(ngModel)]="inputValue" aria-autocomplete="list"
-        [attr.placeholder]="configuration.autocompletePlaceHolderText" [attr.aria-activedescendant]="showResults? configuration.id+'-resultItem-'+highlightedIndex :''"
-        [attr.aria-controls]="showResults? configuration.id+ '-listbox' : undefined" autocomplete="off">
+    <div
+      role="combobox"
+      [attr.id]="configuration.id + '-container'"
+      [attr.aria-expanded]="showResults"
+      [attr.aria-owns]="showResults ? configuration.id + '-listbox' : undefined"
+      aria-haspopup="listbox"
+    >
+      <input
+        [disabled]="disabled"
+        (keypress)="onkeypress($event)"
+        (input)="textChange($event)"
+        class="usa-input padding-right-3"
+        [ngClass]="getClass()"
+        #input
+        [attr.aria-label]="configuration.ariaLabelText"
+        [attr.id]="configuration.id"
+        type="text"
+        (focus)="inputFocusHandler()"
+        (keydown)="onKeydown($event)"
+        [(ngModel)]="inputValue"
+        aria-autocomplete="list"
+        [attr.placeholder]="configuration.autocompletePlaceHolderText"
+        [attr.aria-activedescendant]="
+          showResults
+            ? configuration.id + '-resultItem-' + highlightedIndex
+            : ''
+        "
+        [attr.aria-controls]="
+          showResults ? configuration.id + '-listbox' : undefined
+        "
+        autocomplete="off"
+      />
     </div>
-    <ul #resultsList *ngIf="showResults" [attr.id]="configuration.id+ '-listbox'" role="listbox" class="usa-list usa-list--unstyled sds-autocomplete"
-      (scroll)="onScroll()">
-      <ng-container *ngIf="(results && results.length > 0)">
-        <li [attr.id]="configuration.id+'-resultItem-'+i" role="option" *ngFor="let result of results; let i = index"
-          (mouseenter)="listItemHover(i)" [class]="result['highlighted'] ? 'sds-autocomplete__item sds-autocomplete__item--selected' : 'sds-autocomplete__item' "
-          (click)="selectItem(result)">
-          <ng-container *ngIf="itemTemplate" [ngTemplateOutlet]="itemTemplate" [ngTemplateOutletContext]="{$implicit:result}">
+    <ul
+      #resultsList
+      *ngIf="showResults"
+      [attr.id]="configuration.id + '-listbox'"
+      role="listbox"
+      class="usa-list usa-list--unstyled sds-autocomplete"
+      (scroll)="onScroll()"
+    >
+      <ng-container *ngIf="results && results.length">
+        <li
+          [attr.id]="configuration.id + '-resultItem-' + i"
+          role="option"
+          [ngClass]="{
+            'sds-autocomplete__group': configuration.isGroupingEnabled,
+            'sds-autocomplete__item': !configuration.isGroupingEnabled,
+            'sds-autocomplete__item--highlighted':
+              result['highlighted'] && !configuration.isGroupingEnabled,
+            'sds-autocomplete__item--selected':
+              checkItemSelected(result) && !configuration.isGroupingEnabled
+          }"
+          *ngFor="let result of results; let i = index"
+          (click)="!configuration.isSelectableGroup ? '' : selectItem(result)"
+        >
+          <ng-container
+            *ngIf="itemTemplate"
+            [ngTemplateOutlet]="itemTemplate"
+            [ngTemplateOutletContext]="{ $implicit: result }"
+          >
           </ng-container>
-
           <ng-container *ngIf="!itemTemplate">
-            <span class="display-block text-semibold">
-              {{ getObjectValue(result, configuration.primaryTextField) }}
-              <span *ngIf="result.type === 'custom'">
-                - {{configuration.freeTextSubtext}}
-              </span>
-            </span>
-            <ng-container *ngIf="configuration.secondaryTextField &&  result[configuration.secondaryTextField] ">
-              <span class="description">{{ result[configuration.secondaryTextField] }}</span>
-            </ng-container>
+            <div
+              [ngClass]="{
+                'sds-autocomplete__item': configuration.isGroupingEnabled,
+                'sds-autocomplete__item--highlighted':
+                  configuration.isGroupingEnabled && result['highlighted'],
+                'sds-autocomplete__item--disabled':
+                  !configuration.isSelectableGroup &&
+                  configuration.isGroupingEnabled,
+                'sds-autocomplete__item--selected':
+                  checkItemSelected(result) && configuration.isGroupingEnabled
+              }"
+            >
+              <div
+                [ngClass]="{
+                  'text-semibold': configuration.secondaryTextField
+                }"
+              >
+                {{ getObjectValue(result, configuration.primaryTextField) }}
+              </div>
+              <ng-container
+                *ngIf="
+                  configuration.secondaryTextField &&
+                  result[configuration.secondaryTextField]
+                "
+              >
+                <div>{{ result[configuration.secondaryTextField] }}</div>
+              </ng-container>
+            </div>
+
+            <ul
+              class="usa-list usa-list--unstyled"
+              #childrenList
+              [attr.id]="configuration.id + '-childrenlistbox-'"
+              role="listbox"
+            >
+              <li
+                [attr.id]="configuration.id + '-childItem-' + j"
+                role="option"
+                [ngClass]="{
+                  'sds-autocomplete__group':
+                    child[configuration.groupByChild]?.length,
+                  'sds-autocomplete__item': !child[configuration.groupByChild]
+                    ?.length,
+                  'sds-autocomplete__item--highlighted':
+                    child['highlighted'] &&
+                    !child[configuration.groupByChild]?.length,
+                  'sds-autocomplete__item--selected':
+                    checkItemSelected(child) &&
+                    !child[configuration.groupByChild]?.length
+                }"
+                *ngFor="
+                  let child of result[configuration.groupByChild];
+                  let j = index
+                "
+                (click)="selectItem(child)"
+              >
+                <div
+                  [ngClass]="{
+                    'sds-autocomplete__item':
+                      child[configuration.groupByChild]?.length,
+                    'sds-autocomplete__item--highlighted':
+                      child[configuration.groupByChild]?.length &&
+                      child['highlighted'],
+                    'sds-autocomplete__item--disabled':
+                      !configuration.isSelectableGroup &&
+                      child[configuration.groupByChild]?.length,
+                    'sds-autocomplete__item--selected':
+                      checkItemSelected(child) &&
+                      child[configuration.groupByChild]?.length
+                  }"
+                >
+                  <div
+                    [ngClass]="{
+                      'text-semibold': configuration.secondaryTextField
+                    }"
+                  >
+                    {{ getObjectValue(child, configuration.primaryTextField) }}
+                  </div>
+
+                  <div
+                    *ngIf="
+                      configuration.secondaryTextField &&
+                      child[configuration.secondaryTextField]
+                    "
+                  >
+                    {{ child[configuration.secondaryTextField] }}
+                  </div>
+                </div>
+                <ul
+                  class="usa-list usa-list--unstyled"
+                  #childrenItems
+                  [attr.id]="configuration.id + '-grandchildren-'"
+                  role="listbox"
+                >
+                  <li
+                    [attr.id]="configuration.id + '-grandchildren-' + k"
+                    role="option"
+                    class="sds-autocomplete__item"
+                    [ngClass]="{
+                      'sds-autocomplete__item--selected': checkItemSelected(
+                        subchild
+                      ),
+                      'sds-autocomplete__item--highlighted':
+                        subchild['highlighted']
+                    }"
+                    *ngFor="
+                      let subchild of child[configuration.groupByChild];
+                      let k = index
+                    "
+                    (click)="selectItem(subchild)"
+                  >
+                    <div>
+                      <div
+                        [ngClass]="{
+                          'text-semibold': configuration.secondaryTextField
+                        }"
+                      >
+                        {{
+                          getObjectValue(
+                            subchild,
+                            configuration.primaryTextField
+                          )
+                        }}
+
+                        <div
+                          *ngIf="
+                            configuration.secondaryTextField &&
+                            subchild[configuration.secondaryTextField]
+                          "
+                        >
+                          {{ subchild[configuration.secondaryTextField] }}
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
           </ng-container>
         </li>
       </ng-container>
-      <ng-container *ngIf="(!results || results.length == 0)">
+      <ng-container *ngIf="!results || results.length == 0">
         <li class="emptyResults margin-1">No results found</li>
       </ng-container>
       <ng-container *ngIf="showLoad">
         <li class="autoLoading">
-          <div class="lightToGrayBackgroundGradiate">
-
-          </div>
-          <div class="grayToLightBackgroundGradiate">
-
-          </div>
+          <div class="lightToGrayBackgroundGradiate"></div>
+          <div class="grayToLightBackgroundGradiate"></div>
         </li>
         <li class="autoLoading">
-          <div class="lightToGrayBackgroundGradiate">
-
-          </div>
-          <div class="grayToLightBackgroundGradiate">
-
-          </div>
+          <div class="lightToGrayBackgroundGradiate"></div>
+          <div class="grayToLightBackgroundGradiate"></div>
         </li>
       </ng-container>
     </ul>
 
     <ng-container *ngIf="!input.disabled">
       <span class="position-absolute right-105 top-1 cursor-pointer">
-        <span *ngIf="(inputValue && !disabled)" tabindex="0" role="button" aria-label="Clear input" aria-hidden="false"
-          (click)="clearInput()" (keyup.enter)="clearInput()">
+        <span
+          *ngIf="inputValue && !disabled"
+          role="button"
+          aria-label="Clear input"
+          aria-hidden="false"
+          (click)="clearInput()"
+          (keyup.enter)="clearInput()"
+        >
           <fa-icon [icon]="['fas', 'times']" size="xs"></fa-icon>
         </span>
-        <span *ngIf="!configuration.isTagModeEnabled" tabindex="1" role="button" aria-label="Clear input" aria-hidden="false"
-          class="margin-left-1">
-          <fa-icon *ngIf="(!showResults && !disabled)" (click)="inputFocusHandler()" [icon]="['fas', 'caret-down']"
-            size="sm"></fa-icon>
-          <fa-icon *ngIf="(showResults && !disabled)" (click)="checkForFocus($event)" [icon]="['fas', 'caret-up']" size="sm"></fa-icon>
+        <span
+          *ngIf="!configuration.isTagModeEnabled"
+          role="button"
+          aria-label="Clear input"
+          aria-hidden="false"
+          class="margin-left-1"
+        >
+          <fa-icon
+            *ngIf="!showResults && !disabled"
+            (click)="openOptions()"
+            [icon]="['fas', 'caret-down']"
+            size="sm"
+          ></fa-icon>
+          <fa-icon
+            *ngIf="showResults && !disabled"
+            (click)="checkForFocus($event)"
+            [icon]="['fas', 'caret-up']"
+            size="sm"
+          ></fa-icon>
         </span>
       </span>
     </ng-container>
     <ul class="usa-sr-only" aria-live="assertive">
-      <li>{{srOnlyText}}</li>
+      <li>{{ srOnlyText }}</li>
     </ul>
   </div>
+</div>

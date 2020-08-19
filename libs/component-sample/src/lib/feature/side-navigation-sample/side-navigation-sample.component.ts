@@ -1,6 +1,16 @@
-import { Component, ViewChild, AfterViewInit, ChangeDetectorRef, OnInit } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  AfterViewInit,
+  ChangeDetectorRef,
+  OnInit
+} from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { SideNavigationModel, NavigationMode, NavigationLink } from '@gsa-sam/components'
+import {
+  SideNavigationModel,
+  NavigationMode,
+  NavigationLink
+} from '@gsa-sam/components';
 import { ActivatedRoute } from '@angular/router';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { FormGroup } from '@angular/forms';
@@ -9,14 +19,11 @@ import { FormGroup } from '@angular/forms';
   selector: 'sds-side-navigation-sample',
   templateUrl: 'side-navigation-sample.component.html'
 })
-
 export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
-
-
   results: any = {};
   form = new FormGroup({});
   model1 = {};
-     /**
+  /**
    * Event when something is checked/selected in the grid
    */
   public filterChange$ = new BehaviorSubject<object>(null);
@@ -26,16 +33,17 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
       key: 'searchKeyword',
       wrappers: ['filterwrapper'],
       templateOptions: { label: 'Keyword' },
-      fieldGroup: [{
-        key: 'keyword',
-        type: 'input',
-        templateOptions: {
-          type: 'text',
-          label: 'Keyword',
-          hideLabel: true
-        },
-
-      }]
+      fieldGroup: [
+        {
+          key: 'keyword',
+          type: 'input',
+          templateOptions: {
+            type: 'text',
+            label: 'Keyword',
+            hideLabel: true
+          }
+        }
+      ]
     },
 
     {
@@ -49,8 +57,8 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
           templateOptions: {
             label: 'Entity Name',
             placeholder: '',
-            inputType: 'text',
-          },
+            inputType: 'text'
+          }
         },
         {
           key: 'uniqueEntityIdSam',
@@ -62,8 +70,8 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
             min: 13,
             max: 40,
             inputType: 'number',
-            inputStyle: 'error',
-          },
+            inputStyle: 'error'
+          }
         },
         {
           key: 'cageNcge',
@@ -71,8 +79,8 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
           templateOptions: {
             label: 'CAGE/NCAGE',
             placeholder: '',
-            inputType: 'text',
-          },
+            inputType: 'text'
+          }
         },
         {
           key: 'uniqueEntityIdDuns',
@@ -84,10 +92,10 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
             min: 13,
             max: 40,
             inputType: 'number',
-            inputStyle: 'error',
-          },
+            inputStyle: 'error'
+          }
         }
-      ],
+      ]
     },
     {
       key: 'status',
@@ -116,7 +124,7 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
                 value: 'In Progress'
               }
             ]
-          },
+          }
         }
       ]
     },
@@ -132,10 +140,9 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
             options: [
               { label: '30 Days', value: '30' },
               { label: '60 Days', value: '60' },
-              { label: '90 Days', value: '90' },
-
+              { label: '90 Days', value: '90' }
             ]
-          },
+          }
         }
       ]
     },
@@ -150,10 +157,9 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
           templateOptions: {
             options: [
               { label: 'Update Required', value: 'adrupr' },
-              { label: 'Update Not Required', value: 'adrupn' },
-
+              { label: 'Update Not Required', value: 'adrupn' }
             ]
-          },
+          }
         }
       ]
     },
@@ -174,89 +180,176 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
               { label: 'Assitance Listings', value: 'al' },
               { label: 'Contract Data', value: 'cd' },
               { label: 'Federal Heirarchy', value: 'fh' },
-              { label: 'Wage Determination', value: 'wd' },
-            ],
-          },
-        },
+              { label: 'Wage Determination', value: 'wd' }
+            ]
+          }
+        }
       ]
     }
   ];
-
 
   public pageHeader: string;
   public linkEvent = new BehaviorSubject<object>(null);
   sideNavExpanded = true;
   ngOnInit() {
-    this.linkEvent.subscribe(
-      value => {
-        console.log('Link Event Clicked Change');
-        console.log(value);
-      }
-    );
-
-    this.filterChange$.subscribe(
-      res =>
-        this.results = res
-  );
+    this.filterChange$.subscribe(res => (this.results = res));
   }
 
-
-
   @ViewChild('sideNav') sideNav;
-  constructor(private change: ChangeDetectorRef, private activeRoute: ActivatedRoute) { }
+  constructor(
+    private change: ChangeDetectorRef,
+    private activeRoute: ActivatedRoute
+  ) {}
   model: SideNavigationModel = {
     navigationLinks: [
-    {
-      text: 'Parent 1', id: 'linkp1', route: '/component/sideNav', queryParams: { 'item': 'Parent 1' }, mode: NavigationMode.INTERNAL, children: [
-        { text: 'Child 1 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Child 1 of Parent 1' }, id: 'linkc1p1', mode: NavigationMode.INTERNAL },
-        {
-          text: 'Child 2 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Child 2 of Parent 1' }, id: 'linkc2p1', mode: NavigationMode.INTERNAL, children: [
-            { text: 'Grandchild 1 of Child 2 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Grandchild 1 of Child 2 of Parent 1' }, id: 'linkgc1c2p1', mode: NavigationMode.INTERNAL }]
-        },
-        { text: 'Child 3 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Child 3 of Parent 1' }, id: 'linkc3p1', mode: NavigationMode.INTERNAL },
-        {
-          text: 'Child 4 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Child 4 of Parent 1' }, id: 'linkc4p1', mode: NavigationMode.INTERNAL
-          , children: [
-            { text: 'Grandchild 1 of Child 4 of Parent 1', queryParams: { 'item': 'Grandchild 1 of Child 4 of Parent 1' }, route: '/component/sideNav', id: 'linkgc1c4p1', mode: NavigationMode.INTERNAL },
-            {
-              text: 'Grandchild 2 of Child 4 of Parent 1', queryParams: { 'item': 'Grandchild 2 of Child 4 of Parent 1' }, route: '/component/sideNav', id: 'linkgc2c4p1', mode: NavigationMode.INTERNAL,
-              children: [
-                { text: ' Great 1 of Grandchild 2 of Child 4 of Parent 1', queryParams: { 'item': 'Great 1 of Grandchild 2 of Child 4 of Parent 1' }, route: '/component/sideNav', id: 'linkg1gc1c4p1', mode: NavigationMode.INTERNAL },
-                {
-                  text: 'Great 2 of Grandchild 2 of Child 4 of Parent 1', queryParams: { 'item': 'Great 2 of Grandchild 2 of Child 4 of Parent 1' }, route: '/component/sideNav', id: 'linkg2gc1c4p1', mode: NavigationMode.INTERNAL
-                  //, children: [{ text: 'Great 1 of  Great 1 of Grandchild 2 of Child 4 of Parent 1', route: '/component/sideNav', id: 'linkg1gc1c4p1' }]
-                },
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      text: 'Parent 2', id: 'linkp2', route: '/component/sideNav', queryParams: { 'item': 'Parent 2' }, mode: NavigationMode.INTERNAL, children: [
-        {
-          text: 'Child 1 of Parent 2', route: '/component/sideNav', queryParams: { 'item': 'Child 1 of Parent 2' }, id: 'linkc1p2', mode: NavigationMode.INTERNAL, children: [
-
-            { text: 'Grandchild 1 Child 1 of Parent 2', route: '/component/sideNav', queryParams: { 'item': 'Grandchild 1 Child 1 of Parent 2' }, id: 'linkgc1c1p2', mode: NavigationMode.INTERNAL },
-          ]
-        },
-        { text: 'Child 2 of Parent 2', route: '/component/sideNav', queryParams: { 'item': 'Child 2 of Parent 2' }, id: 'linkc2p2', mode: NavigationMode.INTERNAL },
-        { text: 'Child 3 of Parent 2', route: '/component/sideNav', queryParams: { 'item': 'Child 3 of Parent 2' }, id: 'linkc3p2', mode: NavigationMode.INTERNAL },
-        { text: 'Child 4 of Parent 2', route: '/component/sideNav', queryParams: { 'item': 'Child 4 of Parent 2' }, id: 'linkc4p2', mode: NavigationMode.INTERNAL }
-      ]
-    }
+      {
+        text: 'Parent 1',
+        id: 'linkp1',
+        route: '/component/sideNav',
+        queryParams: { item: 'Parent 1' },
+        mode: NavigationMode.INTERNAL,
+        children: [
+          {
+            text: 'Child 1 of Parent 1',
+            route: '/component/sideNav',
+            queryParams: { item: 'Child 1 of Parent 1' },
+            id: 'linkc1p1',
+            mode: NavigationMode.INTERNAL
+          },
+          {
+            text: 'Child 2 of Parent 1',
+            route: '/component/sideNav',
+            queryParams: { item: 'Child 2 of Parent 1' },
+            id: 'linkc2p1',
+            mode: NavigationMode.INTERNAL,
+            children: [
+              {
+                text: 'Grandchild 1 of Child 2 of Parent 1',
+                route: '/component/sideNav',
+                queryParams: { item: 'Grandchild 1 of Child 2 of Parent 1' },
+                id: 'linkgc1c2p1',
+                mode: NavigationMode.INTERNAL
+              }
+            ]
+          },
+          {
+            text: 'Child 3 of Parent 1',
+            route: '/component/sideNav',
+            queryParams: { item: 'Child 3 of Parent 1' },
+            id: 'linkc3p1',
+            mode: NavigationMode.INTERNAL
+          },
+          {
+            text: 'Child 4 of Parent 1',
+            route: '/component/sideNav',
+            queryParams: { item: 'Child 4 of Parent 1' },
+            id: 'linkc4p1',
+            mode: NavigationMode.INTERNAL,
+            children: [
+              {
+                text: 'Grandchild 1 of Child 4 of Parent 1',
+                queryParams: { item: 'Grandchild 1 of Child 4 of Parent 1' },
+                route: '/component/sideNav',
+                id: 'linkgc1c4p1',
+                mode: NavigationMode.INTERNAL
+              },
+              {
+                text: 'Grandchild 2 of Child 4 of Parent 1',
+                queryParams: { item: 'Grandchild 2 of Child 4 of Parent 1' },
+                route: '/component/sideNav',
+                id: 'linkgc2c4p1',
+                mode: NavigationMode.INTERNAL,
+                children: [
+                  {
+                    text: ' Great 1 of Grandchild 2 of Child 4 of Parent 1',
+                    queryParams: {
+                      item: 'Great 1 of Grandchild 2 of Child 4 of Parent 1'
+                    },
+                    route: '/component/sideNav',
+                    id: 'linkg1gc1c4p1',
+                    mode: NavigationMode.INTERNAL
+                  },
+                  {
+                    text: 'Great 2 of Grandchild 2 of Child 4 of Parent 1',
+                    queryParams: {
+                      item: 'Great 2 of Grandchild 2 of Child 4 of Parent 1'
+                    },
+                    route: '/component/sideNav',
+                    id: 'linkg2gc1c4p1',
+                    mode: NavigationMode.INTERNAL
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        text: 'Parent 2',
+        id: 'linkp2',
+        route: '/component/sideNav',
+        queryParams: { item: 'Parent 2' },
+        mode: NavigationMode.INTERNAL,
+        children: [
+          {
+            text: 'Child 1 of Parent 2',
+            route: '/component/sideNav',
+            queryParams: { item: 'Child 1 of Parent 2' },
+            id: 'linkc1p2',
+            mode: NavigationMode.INTERNAL,
+            children: [
+              {
+                text: 'Grandchild 1 Child 1 of Parent 2',
+                route: '/component/sideNav',
+                queryParams: { item: 'Grandchild 1 Child 1 of Parent 2' },
+                id: 'linkgc1c1p2',
+                mode: NavigationMode.INTERNAL
+              }
+            ]
+          },
+          {
+            text: 'Child 2 of Parent 2',
+            route: '/component/sideNav',
+            queryParams: { item: 'Child 2 of Parent 2' },
+            id: 'linkc2p2',
+            mode: NavigationMode.INTERNAL
+          },
+          {
+            text: 'Child 3 of Parent 2',
+            route: '/component/sideNav',
+            queryParams: { item: 'Child 3 of Parent 2' },
+            id: 'linkc3p2',
+            mode: NavigationMode.INTERNAL
+          },
+          {
+            text: 'Child 4 of Parent 2',
+            route: '/component/sideNav',
+            queryParams: { item: 'Child 4 of Parent 2' },
+            id: 'linkc4p2',
+            mode: NavigationMode.INTERNAL
+          }
+        ]
+      }
     ]
   };
   model2: SideNavigationModel = {
-    navigationLinks: [{
-      text: 'Parent 1', id: 'linkp1', route: '/component/sideNav', queryParams: { 'item': 'Parent 1' }, mode: NavigationMode.INTERNAL, children: [
-        { text: 'Child 1 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Child 1 of Parent 1' }, id: 'linkc1p1', mode: NavigationMode.INTERNAL },
-        // {
-        //   text: 'Child 2 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Child 2 of Parent 1' }, id: 'linkc2p1', mode: NavigationMode.INTERNAL, children: [
-        //     { text: 'Grandchild 1 of Child 2 of Parent 1', route: '/component/sideNav', queryParams: { 'item': 'Grandchild 1 of Child 2 of Parent 1' }, id: 'linkgc1c2p1', mode: NavigationMode.INTERNAL }]
-        // }
-      ]
-    }
+    navigationLinks: [
+      {
+        text: 'Parent 1',
+        id: 'linkp1',
+        route: '/component/sideNav',
+        queryParams: { item: 'Parent 1' },
+        mode: NavigationMode.INTERNAL,
+        children: [
+          {
+            text: 'Child 1 of Parent 1',
+            route: '/component/sideNav',
+            queryParams: { item: 'Child 1 of Parent 1' },
+            id: 'linkc1p1',
+            mode: NavigationMode.INTERNAL
+          }
+        ]
+      }
     ]
   };
   private findItemByQueryString(linkList: NavigationLink[]) {
@@ -264,10 +357,9 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
       let item = linkList[i];
       if (item.text.trim() === this.pageHeader.trim()) {
         this.selectedId = item.id;
-      }
-      else {
+      } else {
         if (item.children && item.children.length !== 0) {
-          this.findItemByQueryString(item.children)
+          this.findItemByQueryString(item.children);
         }
       }
     }
@@ -279,7 +371,6 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
   selectedId: string = 'linkp1';
 
   options: any[] = [];
-
 
   ngAfterViewInit(): void {
     for (let i = 0; i < this.model.navigationLinks.length; i++) {

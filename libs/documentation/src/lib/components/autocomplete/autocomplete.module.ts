@@ -14,6 +14,10 @@ import { AutocompleteBasicModule } from './demos/basic/autocomplete-basic.module
 import { AutocompleteBasic } from './demos/basic/autocomplete-basic.component';
 import { AutocompleteOptional } from './demos/optional/autocomplete-optional.component';
 import { AutocompleteOptionalModule } from './demos/optional/autocomplete-optional.module';
+import { AutocompleteGroup } from './demos/group/autocomplete-group.component';
+import { AutocompleteGroupModule } from './demos/group/autocomplete-group.module';
+import { AutocompleteSelectGroup } from './demos/selectgroup/autocomplete-selectgroup.component';
+import { AutocompleteSelectGroupModule } from './demos/selectgroup/autocomplete-selectgroup.module';
 
 declare var require: any;
 const DEMOS = {
@@ -23,6 +27,20 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/basic/autocomplete-basic.component'),
     markup: require('!!raw-loader!./demos/basic/autocomplete-basic.component.html'),
     path: 'libs/documentation/src/lib/components/autocomplete/demos/basic'
+  },
+  group: {
+    title: 'Autocomplete with grouping',
+    type: AutocompleteGroup,
+    code: require('!!raw-loader!./demos/group/autocomplete-group.component'),
+    markup: require('!!raw-loader!./demos/group/autocomplete-group.component.html'),
+    path: 'libs/documentation/src/lib/components/autocomplete/demos/group'
+  },
+  selectgroup: {
+    title: 'Autocomplete Group as a label ',
+    type: AutocompleteSelectGroup,
+    code: require('!!raw-loader!./demos/selectgroup/autocomplete-selectgroup.component'),
+    markup: require('!!raw-loader!./demos/selectgroup/autocomplete-selectgroup.component.html'),
+    path: 'libs/documentation/src/lib/components/autocomplete/demos/selectgroup'
   },
   optional: {
     title: 'Optional Autocomplete',
@@ -60,6 +78,8 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
+    AutocompleteGroupModule,
+    AutocompleteSelectGroupModule,
     AutocompleteBasicModule,
     AutocompleteOptionalModule
   ]
