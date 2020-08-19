@@ -296,5 +296,42 @@ describe('The Sam Filters Component', () => {
       inputField.nativeElement.dispatchEvent(new Event('input'));
       expect(component.form.invalid).toBe(true);
     });
+
+    it('should change the hide value when model has value', () => {
+      component.fields = [
+        {
+          key: 'filters',
+          wrappers: ['accordionwrapper'],
+          templateOptions: { label: 'Entity Name/UEI' },
+          fieldGroup: [
+            {
+              key: 'uniqueId',
+              type: 'input',
+              hide: true,
+              templateOptions: {
+                required: true,
+                label: 'Formly input type number',
+                placeholder: 'placeholder',
+                minLength: 2,
+                maxLength: 4,
+                inputType: 'number'
+              },
+              validation: {
+                show: true
+              }
+            }
+          ]
+        }
+      ];
+      component.model = { test: null, filters: { uniqueId: '45466' } };
+      fixture.detectChanges();
+      const inputField = fixture.debugElement.query(
+        By.css('.usa-input')
+      ) as DebugElement;
+      component.ngOnInit();
+      fixture.detectChanges();
+
+      expect(component.fields[0].fieldGroup[0].hide).toBe(false);
+    });
   });
 });

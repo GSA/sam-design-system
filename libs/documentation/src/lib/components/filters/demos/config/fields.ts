@@ -4,7 +4,7 @@ export let formlyFieldConfig: FormlyFieldConfig[] = [
   {
     key: 'keyword',
     type: 'input',
-    defaultValue: 10,
+    hide: true,
     templateOptions: {
       type: 'text',
       label: 'Keyword',
@@ -46,14 +46,12 @@ export let formlyFieldConfig: FormlyFieldConfig[] = [
   },
   {
     key: 'hierarchyWrapper',
-    templateOptions: { label: 'Federal Organizations',
-    group: 'accordion'
-   },
+    templateOptions: { label: 'Federal Organizations', group: 'accordion' },
     fieldGroup: [
       {
         key: 'hierarchyOrganization',
         type: 'input',
-        defaultValue:'test',
+        defaultValue: 'test',
         templateOptions: {
           hideLabel: true
         }
@@ -62,9 +60,7 @@ export let formlyFieldConfig: FormlyFieldConfig[] = [
   },
   {
     key: 'contractTypeWrapper',
-    templateOptions: { label: 'Contract Type',
-    group: 'accordion'
-   },
+    templateOptions: { label: 'Contract Type', group: 'accordion' },
     fieldGroup: [
       {
         key: 'status',
@@ -100,8 +96,7 @@ export let formlyFieldConfig: FormlyFieldConfig[] = [
   },
   {
     key: 'entityWrapper',
-    templateOptions: { label: 'Entity',
-    group: 'accordion' },
+    templateOptions: { label: 'Entity', group: 'accordion' },
     fieldGroup: [
       {
         key: 'legalBusinessName',
@@ -120,7 +115,7 @@ export let formlyFieldConfig: FormlyFieldConfig[] = [
           label: 'Unique Entity ID',
           min: 13,
           max: 40,
-          inputType: 'number',
+          inputType: 'number'
         }
       },
       {
@@ -144,8 +139,10 @@ export let formlyFieldConfig: FormlyFieldConfig[] = [
   },
   {
     key: 'serviceClassificationsWrapper',
-    templateOptions: { label: 'NAICS and Product Service Codes',
-    group: 'accordion' },
+    templateOptions: {
+      label: 'NAICS and Product Service Codes',
+      group: 'accordion'
+    },
     fieldGroup: [
       {
         key: 'naicsCode',
@@ -165,8 +162,7 @@ export let formlyFieldConfig: FormlyFieldConfig[] = [
   },
   {
     key: 'setAsideWrapper',
-    templateOptions: { label: 'Set Aside' ,
-    group: 'accordion'},
+    templateOptions: { label: 'Set Aside', group: 'accordion' },
     fieldGroup: [
       {
         key: 'setAside',
@@ -179,8 +175,7 @@ export let formlyFieldConfig: FormlyFieldConfig[] = [
   },
   {
     key: 'popWrapper',
-    templateOptions: { label: 'Place of Performance',
-    group: 'accordion' },
+    templateOptions: { label: 'Place of Performance', group: 'accordion' },
     fieldGroup: [
       {
         key: 'popZipCode',
