@@ -5,14 +5,17 @@ import { Component } from '@angular/core';
 })
 export class SearchBasic {
   model = {};
-  bigmodel = {}
+  bigmodel = {};
 
   searchSettings = {
-    placeholder: 'type here',
-  }
+    placeholder: 'type here'
+  };
 
   bigSearchSettings = {
-    size: 'large',
-  }
+    size: 'large'
+  };
 
+  onsearchModelChanges() {
+    console.log(this.bigmodel, 'model changs');
+  }
 }
