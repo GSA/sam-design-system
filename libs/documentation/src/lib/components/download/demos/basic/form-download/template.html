@@ -1,1 +1,20 @@
-<sds-download-modal [model]="model" [fields]="fields" (onFormGroupChange)="modelHandler($event)"></sds-download-modal>
+<form>
+  <div sds-dialog-title>Download</div>
+  <div sds-dialog-content>
+    <p>Choose from following download option. Lorem ipsum dolor sit amet, <br>
+      consecteur adipiscing elit, sed do eiusmod tempor incidunt.
+    </p>
+
+
+
+
+  </div>
+  <div sds-dialog-actions>
+    <button class="usa-button usa-button--base usa-cancel" (click)="onNoClick()">
+      Cancel
+    </button>
+    <button class="usa-button usa-submit" cdkFocusInitial>
+      Submit
+    </button>
+  </div>
+</form>

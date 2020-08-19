@@ -1,19 +1,22 @@
-<div sds-dialog-title>Download</div>
-<div sds-dialog-content>
-  <p>Choose from following download option. Lorem ipsum dolor sit amet, <br>
-    consecteur adipiscing elit, sed do eiusmod tempor incidunt.
-  </p>
+<form (ngSubmit)="onSubmit()">
+  <div sds-dialog-title>Download</div>
+  <div sds-dialog-content>
+    <p>Choose from following download option. Lorem ipsum dolor sit amet, <br>
+      consecteur adipiscing elit, sed do eiusmod tempor incidunt.
+    </p>
 
-  <formly-form [fields]="fields" [model]="model" [formGroup]="form">
-  </formly-form>
+    <formly-form [fields]="fields" [model]="model" [formGroup]="form">
+    </formly-form>
 
 
-</div>
-<div sds-dialog-actions>
-  <button class="usa-button usa-button--base usa-cancel" (click)="cancel()">
-    Cancel
-  </button>
-  <button class="usa-button usa-submit" (click)="onSubmit()" cdkFocusInitial>
-    Submit
-  </button>
-</div>
+  </div>
+  <div sds-dialog-actions>
+    <button class="usa-button usa-button--base usa-cancel" (click)="cancel()">
+      Cancel
+    </button>
+    <button class="usa-button usa-submit" (click)="onSubmit()" cdkFocusInitial>
+      Submit
+    </button>
+  </div>
+</form>
+

@@ -11,7 +11,6 @@ import {
 } from '../shared';
 import { DownloadBasic } from './demos/basic/download-basic.component';
 import { DownloadBasicModule } from './demos/basic/download-basic.module';
-import { SdsDownloadDisplayComponent } from './demos/basic/download-modal-display.component';
 
 declare var require: any;
 const DEMOS = {
@@ -53,7 +52,7 @@ export const ROUTES = [
     DocumentationComponentsSharedModule,
     DownloadBasicModule
   ],
-  exports: [SdsDownloadDisplayComponent],
+  exports: [],
   declarations: []
 })
 export class DownloadModule {
