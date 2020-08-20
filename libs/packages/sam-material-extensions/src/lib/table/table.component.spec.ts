@@ -1,9 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { SdsTableComponent } from './table.component';
 import { MatTableDataSource, MatTableModule, MatSortModule } from '@angular/material';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Component, ViewChild } from '@angular/core';
+
+import { SdsTableComponent } from './table.component';
 
 let data: any[] = [{
   id: 1,
@@ -78,7 +78,6 @@ describe('SdsTableComponent', () => {
 
 });
 
-
 @Component({
   template: `
     <ng-template #detailRow>
@@ -86,6 +85,7 @@ describe('SdsTableComponent', () => {
     </ng-template>
     <sds-table [data]="data" [columns]="columns" [detailRow]="detailRow"></sds-table>`
 })
+
 class WrapperComponent {
   @ViewChild(SdsTableComponent) tableComponentRef: SdsTableComponent;
   columns = columns;
@@ -98,27 +98,41 @@ describe('SdsTableComponent with expandable rows', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SdsTableComponent, WrapperComponent ],
       imports: [
         MatTableModule,
         FontAwesomeModule,
         MatSortModule
       ],
+      declarations: [ SdsTableComponent, WrapperComponent ],
     })
     .compileComponents();
   }));
+
   beforeEach(() => {
     fixture = TestBed.createComponent(WrapperComponent);
-
     const wrapperComponent = fixture.debugElement.componentInstance;
     comp = wrapperComponent.tableComponentRef; // SdsTableComponent
     fixture.detectChanges();
   });
+
   it('should create the app', () => {
     expect(comp).toBeDefined();
   });
 
   it('should add an additional column sdsExpandableRow if detailRow is set', () => {
     expect(comp.columnIds.length).toEqual(columns.length + 1)
+  });
+
+  it('should initially have no rows expanded', () => {
+    expect(comp.expandedRow).toBeNull();
+  });
+
+  it('should set expanded row to clicked row when no row is expanded and null when clicked row is already expanded', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    const button = compiled.querySelectorAll('button');
+    button[0].click();
+    expect(comp.expandedRow).toEqual(comp.data[0]);
+    button[0].click();
+    expect(comp.expandedRow).toBeNull();
   });
 });

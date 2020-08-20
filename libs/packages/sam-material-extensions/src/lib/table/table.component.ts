@@ -50,7 +50,7 @@ export class SdsTableComponent implements OnInit {
   /**
    * currently expanded row
    */
-  expandedRow: any | null;
+  expandedRow: any | null = null;
 
   /**
    * column ids displayed
