@@ -110,7 +110,9 @@ export class FiltersHideExpression implements OnInit {
           this.model &&
           this.model.location &&
           this.model.location.country &&
-          this.model.location.state &&
+          (this.model.location.state ||
+            (this.model.location.province &&
+              this.model.location.country == 'CA')) &&
           this.model.location.city
         );
       }
