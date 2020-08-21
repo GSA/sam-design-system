@@ -73,11 +73,8 @@ export class FiltersHideExpression implements OnInit {
         if (this.model && this.model.location && this.model.location.country) {
           if (this.model.location.country != 'CA') {
             return false;
-          } else if (
-            this.model.location.country == 'CA' &&
-            this.model.location.province
-          )
-            return this.model.location.country != 'CA';
+          } else if (this.model.location.country == 'CA')
+            return this.model.location.country == 'CA';
         }
         return true;
       }
@@ -94,7 +91,9 @@ export class FiltersHideExpression implements OnInit {
           this.model &&
           this.model.location &&
           this.model.location.country &&
-          this.model.location.state
+          (this.model.location.state ||
+            (this.model.location.province &&
+              this.model.location.country == 'CA'))
         );
       }
     },
