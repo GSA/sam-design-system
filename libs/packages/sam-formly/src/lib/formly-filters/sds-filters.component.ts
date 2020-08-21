@@ -142,31 +142,6 @@ export class SdsFiltersComponent implements OnInit {
     });
   }
 
-  addOption() {
-    const updatedFields: FormlyFieldConfig[] = [];
-    this.fields.forEach(field => {
-      if (field) {
-        if (field.fieldGroup) {
-          field.fieldGroup.forEach(subField => {
-            if (subField.type == 'input') {
-              field.modelOptions.updateOn = 'blur';
-            } else if (subField.type == 'autocomplete') {
-              field.templateOptions.essentialModelFields = true;
-            }
-          });
-        } else {
-          if (field.type == 'input') {
-            field.modelOptions.updateOn = 'blur';
-          } else if (field.type == 'autocomplete') {
-            field.templateOptions.essentialModelFields = true;
-          }
-        }
-      }
-      updatedFields.push(field);
-    });
-    return updatedFields;
-  }
-
   onModelChange(change: any) {
     if (this.isHistoryEnable) {
       const params = this.convertToParam(change);
