@@ -35,11 +35,11 @@ export class FiltersHideExpression implements OnInit {
       }
     },
     {
-      key: 'location.provision',
+      key: 'location.province',
       type: 'select',
       templateOptions: {
-        label: 'Select provision',
-        description: 'Select provision.',
+        label: 'Select province',
+        description: 'Select province.',
         required: true,
         options: [
           { label: 'Manitoba', value: 'MB' },
@@ -75,7 +75,7 @@ export class FiltersHideExpression implements OnInit {
             return false;
           } else if (
             this.model.location.country == 'CA' &&
-            this.model.location.provision
+            this.model.location.province
           )
             return this.model.location.country != 'CA';
         }
