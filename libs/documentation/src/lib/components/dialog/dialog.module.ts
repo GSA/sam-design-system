@@ -11,8 +11,6 @@ import {
 } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { DialogBasicModule } from './demos/basic/dialog-basic.module';
-import { DownloadComponent } from './demos/download/download.component';
-import { DownloadModule } from './demos/download/download.module';
 
 declare var require: any;
 const DEMOS = {
@@ -22,13 +20,6 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/basic/dialog-basic.component'),
     markup: require('!!raw-loader!./demos/basic/dialog-basic.component.html'),
     path: 'libs/documentation/src/lib/components/dialog/demos/basic'
-  },
-  op: {
-    title: 'Download Modal Dialog',
-    type: DownloadComponent,
-    code: require('!!raw-loader!./demos/download/download.component'),
-    markup: require('!!raw-loader!./demos/download/download.component.html'),
-    path: 'libs/documentation/src/lib/components/dialog/demos/download'
   }
 };
 
