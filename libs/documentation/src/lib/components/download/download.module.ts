@@ -10,7 +10,7 @@ import {
   DocumentationDemoList
 } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
-import { DialogBasicModule } from './demos/basic/dialog-basic.module';
+``;
 import { DownloadComponent } from './demos/download/download.component';
 import { DownloadBasicModule } from './demos/download/download.module';
 
