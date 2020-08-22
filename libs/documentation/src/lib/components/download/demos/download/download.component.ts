@@ -6,11 +6,14 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 })
 export class DownloadComponent {
   configurations = {
-    //title: 'Download Dialog',
-    infoMessage: ' Choose from the following'
+    title: 'Download Dialog',
+    buttonText: 'Download',
+    submitButtonText: 'Download',
+    infoMessage: ``
   };
 
   updatedModel: any = {};
+  model: any = { fileType: 'CSV' };
 
   onDownloadModelChange(value) {
     this.updatedModel = value;
@@ -59,7 +62,6 @@ export class DownloadComponent {
       key: 'fileName',
       type: 'input',
       templateOptions: {
-        required: true,
         label: 'Name'
       }
     },

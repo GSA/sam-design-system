@@ -24,28 +24,28 @@ export class SdsDownloadDialogComponent implements OnInit {
   public ngOnInit() {
     this.fields = this.data.fields;
     this.configurations = this.data.configurations;
-    this.configurations.title = this.data.configurations.title
-      ? this.data.configurations.title
-      : 'Download';
-    this.configurations.submitBtnText = this.data.configurations.submitBtnText
-      ? this.data.configurations.submitBtnText
-      : 'Submit';
-    this.configurations.cancelBtnText = this.configurations.cancelBtnText
-      ? this.configurations.cancelBtnText
+    this.configurations.title = this.data.configurations.title;
+    this.configurations.submitButtonText = this.data.configurations.submitButtonText;
+    this.configurations.cancelButtonText = this.configurations.cancelButtonText
+      ? this.configurations.cancelButtonText
       : 'Cancel';
 
     this.form = this.data.form ? this.data.form : new FormGroup({});
-    this.model = this.data.model ? this.data.model : {};
+    this.model = this.data.originalModel ? this.data.originalModel : {};
     this.options = this.data.options ? this.data.options : {};
   }
 
   onSubmit() {
+    console.log(this.model, 'model');
+    console.log(this.data.originalModel, ' original model');
     if (this.form.valid) {
       this.dialogRef.close(this.model);
     }
   }
 
   onCancel() {
+    console.log(this.model, 'model');
+    console.log(this.data.originalModel, ' original model');
     this.dialogRef.close();
   }
 }
