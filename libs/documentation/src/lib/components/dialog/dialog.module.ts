@@ -50,8 +50,7 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    DialogBasicModule,
-    DownloadModule
+    DialogBasicModule
   ]
 })
 export class DialogModule {
