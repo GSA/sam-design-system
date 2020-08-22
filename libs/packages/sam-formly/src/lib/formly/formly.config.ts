@@ -18,6 +18,7 @@ import { FormlyFieldTextComponent } from './types/text';
 export const FIELD_TYPE_COMPONENTS = [
   FormlyFieldInputComponent,
   FormlyFieldCheckboxComponent,
+  FormlyFieldFileInfoComponent,
   FormlyFieldRadioComponent,
   FormlyFieldSelectComponent,
   FormlyFieldTextAreaComponent,
@@ -43,6 +44,7 @@ import { FormlyDescriptionWrapperComponent } from './wrappers/description.wrappe
 import { FormlyValidationWrapperComponent } from './wrappers/validation.wrapper';
 import { FormlyGroupWrapperComponent } from './wrappers/group.wrapper';
 import { FormlyFieldSearchComponent } from './types/search';
+import { FormlyFieldFileInfoComponent } from './types/fileinfo';
 
 export const FORMLY_WRAPPERS: any = [
   {
@@ -112,6 +114,11 @@ export const FORMLY_CONFIG: ConfigOption = {
     {
       name: 'checkbox',
       component: FormlyFieldCheckboxComponent,
+      wrappers: sdsWrappers
+    },
+    {
+      name: 'fileinfo',
+      component: FormlyFieldFileInfoComponent,
       wrappers: sdsWrappers
     },
     {

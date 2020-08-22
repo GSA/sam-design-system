@@ -45,7 +45,7 @@ export class DownloadComponent {
     },
     {
       key: 'fileType',
-      type: 'radio',
+      type: 'fileinfo',
       templateOptions: {
         label: 'Select file type',
         options: [
