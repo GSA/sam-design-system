@@ -1,6 +1,10 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <div *ngIf="data.title" sds-dialog-title>{{ data.title }}</div>
-  <div *ngIf="data.subtitle" sds-dialog-subtitle>{{ data.subtitle }}</div>
+  <div *ngIf="configurations.title" sds-dialog-title>
+    {{ configurations.title }}
+  </div>
+  <div *ngIf="configurations.infoMessage" sds-dialog-subtitle>
+    {{ configurations.infoMessage }}
+  </div>
   <div sds-dialog-content>
     <formly-form
       [form]="form"
@@ -15,8 +19,10 @@
       (click)="onCancel()"
       type="button"
     >
-      {{ cancel }}
+      {{ configurations.cancelBtnText }}
     </button>
-    <button class="usa-button" type="submit">{{ submit }}</button>
+    <button class="usa-button" type="submit">
+      {{ configurations.submitBtnText }}
+    </button>
   </div>
 </form>

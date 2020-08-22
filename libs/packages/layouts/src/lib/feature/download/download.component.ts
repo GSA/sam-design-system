@@ -1,26 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SdsDialogService } from '@gsa-sam/components';
 import { SdsDownloadDialogComponent } from '../download-dialog/download-dialog.component';
+import { FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
   selector: 'sds-download',
-  templateUrl: './download.component.html',
-  styleUrls: ['./download.component.scss']
+  templateUrl: './download.component.html'
 })
 export class SdsDownloadComponent implements OnInit {
   constructor(public dialog: SdsDialogService) {}
-  modalFields: any;
-  fields;
-  model;
+  @Input() configurations: any = {};
+  model: any = {};
+  @Input() fields: FormlyFieldConfig[];
+  @Output() onDownloadModelChange = new EventEmitter<object>();
 
   ngOnInit() {}
   openDialog(): void {
     const data: any = {
-      fields: this.modalFields,
-      originalFields: this.fields,
-      originalModel: this.model,
-      submit: 'Update',
-      title: 'More Filters'
+      fields: this.fields,
+      model: this.model,
+      configurations: this.configurations
     };
 
     const dialogRef = this.dialog.open(SdsDownloadDialogComponent, {
@@ -30,8 +29,7 @@ export class SdsDownloadComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.fields = result.fields;
-        this.model = result.model;
+        this.onDownloadModelChange.emit(result);
       }
     });
   }
