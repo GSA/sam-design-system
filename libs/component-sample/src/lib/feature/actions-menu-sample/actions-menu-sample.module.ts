@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { ActionsMenuSampleComponent } from './actions-menu-sample.component';
-import { SdsActionsMenuModule } from '@sam-design-system/layouts';
+import { SdsActionsMenuModule } from '@gsa-sam/layouts';
 
 @NgModule({
   imports: [SdsActionsMenuModule],

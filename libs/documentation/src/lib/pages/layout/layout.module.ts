@@ -18,16 +18,16 @@ import {
 } from '@gsa-sam/sam-formly';
 
 import { ResultModule } from './result/result.module';
-import { SearchListServiceModule } from '@sam-design-system/layouts';
+import { SearchListServiceModule } from '@gsa-sam/layouts';
 import { FilterService } from './filter.service';
 
 @NgModule({
   imports: [
-    CommonModule, 
-    FontAwesomeModule, 
-    SdsToolbarModule, 
-    SdsAccordionModule, 
-    SdsSideNavigationModule, 
+    CommonModule,
+    FontAwesomeModule,
+    SdsToolbarModule,
+    SdsAccordionModule,
+    SdsSideNavigationModule,
     SdsFiltersModule,
     SdsSearchResultListModule,
     SearchListServiceModule,

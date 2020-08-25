@@ -13,7 +13,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { sds } from '@gsa-sam/sam-styles/src/icons/';
 import { fas } from '@fortawesome/free-solid-svg-icons';
-import { SdsActionsMenuModule } from '@sam-design-system/layouts';
+import { SdsActionsMenuModule } from '@gsa-sam/layouts';
 import { SdsResultListChildComponent } from './result-list-child.component';
 import { SearchResultCardSampleComponent } from './search-result-card-sample.component';
 import { SearchResultListSampleCardDataComponent } from './search-result-list-sample-card-data.component';

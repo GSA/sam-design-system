@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 import { DataService } from './data.service';
 import { SideNavigationModel } from '@gsa-sam/components';
 import { navigationConfig } from './navigate.config';
-import { SearchListConfiguration } from '@sam-design-system/layouts';
+import { SearchListConfiguration } from '@gsa-sam/layouts';
 import { FilterService } from './filter.service';
 @Component({
   templateUrl: './layout.component.html'

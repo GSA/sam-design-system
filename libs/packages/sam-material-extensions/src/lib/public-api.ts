@@ -1,1 +1,1 @@
-export * from './packages-sam-material-extensions.module';
+export * from './accordion/accordion.module';

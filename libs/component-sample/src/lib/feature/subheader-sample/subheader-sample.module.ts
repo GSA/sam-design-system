@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { SdsSubheaderModule } from '@sam-design-system/layouts';
+import { SdsSubheaderModule } from '@gsa-sam/layouts';
 import { SubheaderSampleComponent } from './subheader-sample.component';
 import { SdsSearchModule } from '@gsa-sam/components';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';

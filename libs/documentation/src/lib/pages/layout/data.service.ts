@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { registrationData } from './search-data';
-import { SearchParameters, SearchResult } from '@sam-design-system/layouts';
+import { SearchParameters, SearchResult } from '@gsa-sam/layouts';
 @Injectable({ providedIn: 'root' })
 export class DataService {
   private data: any[];

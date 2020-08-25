@@ -1,6 +1,6 @@
 import { SearchListSampleData } from './search-list-sample.data';
 import { Observable, of } from 'rxjs';
-import { SearchListInterface, SearchParameters, SearchResult } from '@sam-design-system/layouts';
+import { SearchListInterface, SearchParameters, SearchResult } from '@gsa-sam/layouts';
 
 export class SearchListSampleService implements SearchListInterface {
     getData(search: SearchParameters): Observable<SearchResult> {

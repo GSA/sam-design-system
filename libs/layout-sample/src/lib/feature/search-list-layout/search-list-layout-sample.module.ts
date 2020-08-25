@@ -6,9 +6,9 @@ import { SearchListLayoutSampleComponent } from './search-list-layout-sample.com
 import { SearchResultListSampleDataComponentModule } from '../../ui/search-result-list-sample-data/search-list-event-sample.module';
 
 import { SearchListSampleService } from '../../data-access/search-list/search-list-sample.service';
-import { SearchListServiceModule } from '@sam-design-system/layouts';
+import { SearchListServiceModule } from '@gsa-sam/layouts';
 import {
- 
+
   SdsPageModule,
   SdsToolbarModule,
   SdsAccordionModule
