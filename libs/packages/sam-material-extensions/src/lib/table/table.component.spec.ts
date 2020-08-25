@@ -6,7 +6,7 @@ import { By } from '@angular/platform-browser';
 
 import { SdsTableComponent } from './table.component';
 
-let data: any[] = [{
+const data: any[] = [{
   id: 1,
   firstName: "Abagail",
   lastName: "Podd"
@@ -18,7 +18,7 @@ let data: any[] = [{
   firstName: "Tymothy"
 }];
 
-let columns = [
+const columns = [
   {
     primaryKey: 'id'
   },
