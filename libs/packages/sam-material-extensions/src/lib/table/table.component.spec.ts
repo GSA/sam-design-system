@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatTableDataSource, MatTableModule, MatSortModule } from '@angular/material';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Component, ViewChild } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 import { SdsTableComponent } from './table.component';
 
@@ -64,6 +65,18 @@ describe('SdsTableComponent', () => {
     expect(comp.dataSource instanceof MatTableDataSource).toBeTruthy();
   });
 
+  // styles
+  it('should not have a border if settings.borderless is true', () => {
+    const cont = fixture.debugElement.query(By.css('div.sds-table__container'));
+    expect(cont.classes["sds-table__container--borderless"]).toBeFalsy();
+    comp.settings = {
+      borderless: true
+    };
+    fixture.detectChanges();
+    expect(cont.classes["sds-table__container--borderless"]).toBeTruthy();
+  });
+
+  // sorting
   it('should disable sort if settings are undefined or settingss.sort is false', () => {
     expect(comp.sort.disabled).toEqual(true);
   });
@@ -78,6 +91,7 @@ describe('SdsTableComponent', () => {
 
 });
 
+// detail rows
 @Component({
   template: `
     <ng-template #detailRow>
