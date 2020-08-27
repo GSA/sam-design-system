@@ -45,11 +45,8 @@ export class AdvancedFiltersComponent {
 
     const data: SdsFormlyDialogData = {
       fields: modalFields,
-      originalFields: this.fields,
-      originalModel: this.model,
       submit: 'Update',
-      title: 'More Filters',
-      isAdvanceFilter: true
+      title: 'More Filters'
     };
 
     const dialogRef = this.dialog.open(SdsFormlyDialogComponent, {
@@ -59,8 +56,14 @@ export class AdvancedFiltersComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.fields = result.fields;
-        this.model = result.model;
+        const response = this.advancedFiltersService.updateFields(
+          result,
+          this.fields,
+          this.model
+        );
+
+        this.fields = response.fields;
+        this.model = response.model;
       }
     });
   }

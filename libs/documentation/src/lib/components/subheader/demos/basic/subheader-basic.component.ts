@@ -91,12 +91,6 @@ export class SubHeaderBasic {
   ];
   model: any = { fileType: 'CSV' };
   form: FormGroup;
-  configurations = {
-    title: 'Download Dialog',
-    buttonText: 'Download',
-    submitButtonText: 'Download',
-    infoMessage: ``
-  };
   options: FormlyFormOptions;
   downloadResponse = {};
 
@@ -108,9 +102,7 @@ export class SubHeaderBasic {
         model: this.model,
         submit: 'Download',
         title: 'Download',
-        options: this.options,
-        originalFields: this.fields,
-        originalModel: this.model
+        options: this.options
       };
 
       const dialogRef = this.dialog.open(SdsFormlyDialogComponent, {

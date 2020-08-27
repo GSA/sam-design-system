@@ -50,8 +50,9 @@ describe('Advanced Filteres Component', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should open popup and close popup', fakeAsync(() => {
+  xit('should open popup and close popup', fakeAsync(() => {
     component.openDialog();
+    fixture.detectChanges();
     expect(advancedFiltersService.convertToCheckboxes).toHaveBeenCalled();
 
     expect(modalServiceSpy.open).toHaveBeenCalled();
