@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { FormlyFieldConfig } from '@ngx-formly/core';
+import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
+import {
+  SdsFormlyDialogData,
+  SdsFormlyDialogComponent
+} from '@sam-design-system/sam-formly';
+import { SdsDialogService } from '@gsa-sam/components';
 
 @Component({
   templateUrl: 'download.component.html'
@@ -14,7 +19,7 @@ export class DownloadComponent {
 
   updatedModel: any = {};
   model: any = { fileType: 'CSV' };
-
+  options: FormlyFormOptions;
   onDownloadModelChange(value) {
     this.updatedModel = value;
   }
@@ -78,4 +83,27 @@ export class DownloadComponent {
       }
     }
   ];
+  constructor(public dialog: SdsDialogService) {}
+  openDialog() {
+    const data: SdsFormlyDialogData = {
+      fields: this.fields,
+      model: this.model,
+      submit: 'Download',
+      title: 'Download',
+      options: this.options
+      // originalFields: this.fields,
+      // originalModel: this.model
+    };
+
+    const dialogRef = this.dialog.open(SdsFormlyDialogComponent, {
+      width: 'medium',
+      data: data
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.updatedModel = result;
+      }
+    });
+  }
 }

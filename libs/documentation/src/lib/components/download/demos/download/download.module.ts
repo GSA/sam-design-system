@@ -1,11 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DownloadComponent } from './download.component';
-import { SdsDownloadModule } from '@gsa-sam/layouts';
-//'../../../../../../../packages/layouts/src/lib/feature/download/download.module';
+import { FormlyModule } from '@ngx-formly/core';
+import {
+  SdsFormlyModule,
+  SdsFormlyDialogModule
+} from '@sam-design-system/sam-formly';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SdsDialogModule } from '@gsa-sam/components';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 @NgModule({
   declarations: [DownloadComponent],
-  imports: [CommonModule, SdsDownloadModule],
+  imports: [
+    CommonModule,
+    FontAwesomeModule,
+    SdsFormlyDialogModule,
+    SdsDialogModule,
+    ReactiveFormsModule,
+    SdsFormlyModule,
+    FormlyModule
+  ],
   exports: [DownloadComponent],
   bootstrap: [DownloadComponent]
 })

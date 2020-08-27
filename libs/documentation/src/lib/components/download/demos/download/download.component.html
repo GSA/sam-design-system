@@ -1,9 +1,11 @@
-<sds-download
-  [configurations]="configurations"
-  [fields]="fields"
-  [model]="model"
-  (onDownloadModelChange)="onDownloadModelChange($event)"
-></sds-download>
+<button
+  type="button"
+  (click)="openDialog()"
+  class="usa-button usa-button--unstyled"
+>
+  Download
+</button>
+
 <pre>
   {{ updatedModel | json }}
 </pre>

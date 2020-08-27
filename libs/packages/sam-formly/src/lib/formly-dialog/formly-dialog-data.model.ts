@@ -3,8 +3,8 @@ import { FormGroup } from '@angular/forms';
 
 export interface SdsFormlyDialogData {
   fields: FormlyFieldConfig[];
-  originalFields: FormlyFieldConfig[];
-  originalModel: any;
+  originalFields?: FormlyFieldConfig[];
+  originalModel?: any;
   cancel?: string;
   form?: FormGroup;
   model?: object;

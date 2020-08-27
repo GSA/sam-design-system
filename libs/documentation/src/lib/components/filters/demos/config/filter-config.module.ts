@@ -5,8 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   SdsFiltersModule,
-  SdsFormlyDialogModule,
-  SdsFormlyModalModule
+  SdsFormlyDialogModule
 } from '@sam-design-system/sam-formly';
 
 @NgModule({
@@ -16,7 +15,6 @@ import {
     FormsModule,
     SdsFiltersModule,
     SdsFormlyDialogModule,
-    SdsFormlyModalModule,
     FormlyModule.forRoot()
   ],
   declarations: [FiltersConfig],
