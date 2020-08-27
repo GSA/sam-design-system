@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-//import { MatTableModule, MatSortModule } from '@angular/material';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { SdsAccordionComponent } from './accordion.component';
@@ -10,6 +10,7 @@ import { SdsAccordionComponent } from './accordion.component';
   declarations: [SdsAccordionComponent],
   imports: [
     CommonModule,
+    MatExpansionModule,
     FontAwesomeModule
   ],
   exports: [SdsAccordionComponent]

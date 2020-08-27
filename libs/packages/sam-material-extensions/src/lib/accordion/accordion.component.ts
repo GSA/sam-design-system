@@ -5,7 +5,8 @@ import {
   OnInit,
   ViewChild
 } from '@angular/core';
-//import { MatSort, MatTableDataSource } from '@angular/material';
+
+import {MatAccordion} from '@angular/material/expansion';
 
 @Component({
   selector: 'sds-accordion-next',
@@ -13,6 +14,8 @@ import {
   styleUrls: ['./accordion.component.scss']
 })
 export class SdsAccordionComponent {
+
+  @ViewChild(MatAccordion) accordion: MatAccordion;
 
   // @ViewChild(MatSort) sort: MatSort;
 

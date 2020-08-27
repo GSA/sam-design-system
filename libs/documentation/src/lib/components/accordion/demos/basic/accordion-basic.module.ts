@@ -3,9 +3,6 @@ import { CommonModule } from '@angular/common';
 import { AccordionBasic } from './accordion-basic.component';
 import { SdsAccordionModule } from '@gsa-sam/sam-material-extensions';
 
-
-
-
 @NgModule({
   declarations: [AccordionBasic],
   imports: [
@@ -16,3 +13,4 @@ import { SdsAccordionModule } from '@gsa-sam/sam-material-extensions';
   bootstrap: [AccordionBasic]
 })
 export class AccordionBasicModule {}
+
