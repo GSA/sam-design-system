@@ -11,6 +11,8 @@ import {
 } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { DialogBasicModule } from './demos/basic/dialog-basic.module';
+import { FormlyDialogModule } from './demos/formly-modal/formly-modal.module';
+import { FormlyDialog } from './demos/formly-modal/formly-modal.component';
 
 declare var require: any;
 const DEMOS = {
@@ -20,6 +22,13 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/basic/dialog-basic.component'),
     markup: require('!!raw-loader!./demos/basic/dialog-basic.component.html'),
     path: 'libs/documentation/src/lib/components/dialog/demos/basic'
+  },
+  formly: {
+    title: 'Modal Dialog with Formly',
+    type: FormlyDialog,
+    code: require('!!raw-loader!./demos/formly-modal/formly-modal.component'),
+    markup: require('!!raw-loader!./demos/formly-modal/formly-modal.component.html'),
+    path: 'libs/documentation/src/lib/components/dialog/demos/formly-modal'
   }
 };
 
@@ -50,7 +59,8 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    DialogBasicModule
+    DialogBasicModule,
+    FormlyDialogModule
   ]
 })
 export class DialogModule {
