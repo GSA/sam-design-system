@@ -10,7 +10,6 @@ import { SdsAdvancedFiltersService } from '../formly-filters/advanced-filters/sd
   selector: 'sds-formly-dialog',
   templateUrl: './formly-dialog.component.html'
 })
-
 export class SdsFormlyDialogComponent implements OnInit {
   form: FormGroup;
   model: any;
@@ -18,6 +17,7 @@ export class SdsFormlyDialogComponent implements OnInit {
   fields: FormlyFieldConfig[];
   cancel: string;
   submit: string;
+  isAdvanceFilter: boolean = false;
 
   constructor(
     public advancedFiltersService: SdsAdvancedFiltersService,
@@ -32,16 +32,31 @@ export class SdsFormlyDialogComponent implements OnInit {
     this.options = this.data.options ? this.data.options : {};
     this.cancel = this.data.cancel ? this.data.cancel : 'Cancel';
     this.submit = this.data.submit ? this.data.submit : 'Submit';
+    this.isAdvanceFilter = this.data.isAdvanceFilter
+      ? this.data.isAdvanceFilter
+      : false;
   }
 
   onSubmit() {
     if (this.form.valid) {
-      const results = this.advancedFiltersService.updateFields(this.model, this.data.originalFields, this.data.originalModel);
-      this.dialogRef.close(results);
+      let results = {};
+      if (this.isAdvanceFilter) {
+        results = this.advancedFiltersService.updateFields(
+          this.model,
+          this.data.originalFields,
+          this.data.originalModel
+        );
+      } else {
+        results = { ...this.model };
+      }
+      this.dialogRef.close(this.model);
     }
   }
 
   onCancel() {
+    if (!this.isAdvanceFilter) {
+      this.options.resetModel();
+    }
     this.dialogRef.close();
   }
 }

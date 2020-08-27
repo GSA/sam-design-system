@@ -6,7 +6,10 @@ import {
   SdsDialogRef,
   SDS_DIALOG_DATA
 } from '@gsa-sam/components';
-import { SdsFormlyModalComponent } from '@sam-design-system/sam-formly';
+import {
+  SdsFormlyDialogComponent,
+  SdsFormlyDialogData
+} from '@sam-design-system/sam-formly';
 
 @Component({
   templateUrl: './subheader-basic.component.html',
@@ -100,15 +103,17 @@ export class SubHeaderBasic {
   constructor(public dialog: SdsDialogService) {}
   onActionMenuItem(btnId) {
     if (btnId == 'DownloadBtn') {
-      const data: any = {
+      const data: SdsFormlyDialogData = {
         fields: this.fields,
         model: this.model,
         submit: 'Download',
         title: 'Download',
-        options: this.options
+        options: this.options,
+        originalFields: this.fields,
+        originalModel: this.model
       };
 
-      const dialogRef = this.dialog.open(SdsFormlyModalComponent, {
+      const dialogRef = this.dialog.open(SdsFormlyDialogComponent, {
         width: 'medium',
         data: data
       });
