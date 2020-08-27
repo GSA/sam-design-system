@@ -7,12 +7,18 @@ import {
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SdsSearchModule, SdsDialogModule } from '@gsa-sam/components';
-import {
-  SdsFormlyDialogModule,
-  SdsFormlyModule
-} from '@sam-design-system/sam-formly';
+// import {
+//   SdsFormlyDialogModule,
+//   SdsFormlyModule,
+//   SdsFormlyModalModule
+// } from '@sam-design-system/sam-formly';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
+import {
+  SdsFormlyModule,
+  SdsFormlyModalModule,
+  SdsFormlyDialogModule
+} from '@sam-design-system/sam-formly';
 
 @NgModule({
   imports: [
@@ -22,6 +28,7 @@ import { FormlyModule } from '@ngx-formly/core';
     SdsSearchModule,
     SdsDownloadModule,
     SdsFormlyDialogModule,
+    SdsFormlyModalModule,
     SdsDialogModule,
     ReactiveFormsModule,
     SdsFormlyModule,
