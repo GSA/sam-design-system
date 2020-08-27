@@ -22,6 +22,8 @@ import { TableStickyColumnComponent } from './demos/table-sticky-column/table-st
 
 export declare var require: any;
 
+export const opening = require('!!raw-loader!./opening.md');
+
 const DEMOS = {
   basic: {
     title: 'SAM Table', // Title
@@ -73,6 +75,9 @@ const DEMOS = {
     path: '',
     component: ComponentWrapperComponent,
     data: {
+      readme: {
+        opening
+      },
       items: [ // Defines what documentation to display on the API tab
         {
           pkg: 'material',
