@@ -34,9 +34,26 @@ const MOCK_COLUMNS: SdsTableColumnSettings[] = [
   },
   {
     primaryKey: 'firstName',
-    header: "First Name"
+    header: 'First Name'
   }
 ];
+
+// detail rows
+@Component({
+  template: `
+    <ng-template #detailRow> <span>Test Expanded Component</span> </ng-template>
+    <sds-table
+      [data]="data"
+      [columns]="columns"
+      [detailRow]="detailRow"
+    ></sds-table>
+  `
+})
+class WrapperComponent {
+  @ViewChild(SdsTableComponent) tableComponentRef: SdsTableComponent;
+  columns = MOCK_COLUMNS;
+  data = MOCK_DATA;
+}
 
 describe('SdsTableComponent', () => {
   let component: SdsTableComponent;
@@ -96,7 +113,9 @@ describe('SdsTableComponent', () => {
       const nativeEl = tableDe.nativeElement;
       const headerCell = nativeEl.querySelectorAll('th')[0];
       const pipe = new TitleCasePipe();
-      expect(headerCell.innerText).toEqual(pipe.transform(MOCK_COLUMNS[0].primaryKey));
+      expect(headerCell.innerText).toEqual(
+        pipe.transform(MOCK_COLUMNS[0].primaryKey)
+      );
     });
 
     // border by default
@@ -265,23 +284,4 @@ describe('SdsTableComponent', () => {
       expect(component.expandedRow).toBeNull();
     });
   });
-
-  // detail rows
-  @Component({
-    template: `
-      <ng-template #detailRow>
-        <span>Test Expanded Component</span>
-      </ng-template>
-      <sds-table
-        [data]="data"
-        [columns]="columns"
-        [detailRow]="detailRow"
-      ></sds-table>
-    `
-  })
-  class WrapperComponent {
-    @ViewChild(SdsTableComponent) tableComponentRef: SdsTableComponent;
-    columns = MOCK_COLUMNS;
-    data = MOCK_DATA;
-  }
 });

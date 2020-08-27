@@ -10,5 +10,5 @@ export class SdsTableColumnSettings {
   /**
    * Column sticks to left side of table on horizontal scroll
    */
-  sticky?: boolean = false;
+  sticky? = false;
 }
