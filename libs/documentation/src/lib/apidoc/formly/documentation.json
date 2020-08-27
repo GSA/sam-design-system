@@ -3,10 +3,10 @@
     "interfaces": [
         {
             "name": "SdsFormlyDialogData",
-            "id": "interface-SdsFormlyDialogData-146ea3894bee4d8c8403b2781ece4802",
+            "id": "interface-SdsFormlyDialogData-eb18fa3af06795f8df3123cef4c4a842",
             "file": "libs/packages/sam-formly/src/lib/formly-dialog/formly-dialog-data.model.ts",
             "type": "interface",
-            "sourceCode": "import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';\nimport { FormGroup } from '@angular/forms';\n\nexport interface SdsFormlyDialogData {\n  fields: FormlyFieldConfig[];\n  originalFields: FormlyFieldConfig[];\n  originalModel: any;\n  cancel?: string;\n  form?: FormGroup;\n  model?: object;\n  options?: FormlyFormOptions;\n  submit?: string;\n  subtitle?: string;\n  title?: string;\n}\n",
+            "sourceCode": "import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';\nimport { FormGroup } from '@angular/forms';\n\nexport interface SdsFormlyDialogData {\n  fields: FormlyFieldConfig[];\n  originalFields?: FormlyFieldConfig[];\n  originalModel?: any;\n  cancel?: string;\n  form?: FormGroup;\n  model?: object;\n  options?: FormlyFormOptions;\n  submit?: string;\n  subtitle?: string;\n  title?: string;\n  isAdvanceFilter?: boolean;\n}\n",
             "properties": [
                 {
                     "name": "cancel",
@@ -30,6 +30,13 @@
                     "line": 9
                 },
                 {
+                    "name": "isAdvanceFilter",
+                    "type": "boolean",
+                    "optional": true,
+                    "description": "",
+                    "line": 15
+                },
+                {
                     "name": "model",
                     "type": "object",
                     "optional": true,
@@ -46,14 +53,14 @@
                 {
                     "name": "originalFields",
                     "type": "FormlyFieldConfig[]",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 6
                 },
                 {
                     "name": "originalModel",
                     "type": "any",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 7
                 },
@@ -502,7 +509,7 @@
     "components": [
         {
             "name": "AdvancedFiltersComponent",
-            "id": "component-AdvancedFiltersComponent-61a7d98f3a645e5b034837bc20493b48",
+            "id": "component-AdvancedFiltersComponent-62821476c638fba091de735f726aaf06",
             "file": "libs/packages/sam-formly/src/lib/formly-filters/advanced-filters/advanced-filters.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -522,26 +529,26 @@
                 {
                     "name": "fields",
                     "description": "<p>Fields are used to configure the UI components</p>\n",
-                    "line": 26,
+                    "line": 24,
                     "type": "FormlyFieldConfig[]"
                 },
                 {
                     "name": "form",
                     "description": "<p>Pass in a Form Group for ReactiveForms Support</p>\n",
-                    "line": 21,
+                    "line": 19,
                     "type": "FormGroup"
                 },
                 {
                     "name": "model",
                     "description": "<p>Model used to display the filter values.</p>\n",
-                    "line": 31,
+                    "line": 29,
                     "type": "any"
                 },
                 {
                     "name": "options",
                     "defaultValue": "{}",
                     "description": "<p>Options for the form.</p>\n",
-                    "line": 36,
+                    "line": 34,
                     "type": "FormlyFormOptions"
                 }
             ],
@@ -552,7 +559,7 @@
                     "type": "SdsDialogService",
                     "optional": false,
                     "description": "",
-                    "line": 39,
+                    "line": 37,
                     "modifierKind": [
                         114
                     ]
@@ -565,7 +572,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 43
+                    "line": 41
                 }
             ],
             "hostBindings": [],
@@ -573,7 +580,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component,Input } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { SdsDialogService } from '@gsa-sam/components';\nimport { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';\n\nimport { SdsAdvancedFiltersService } from './sds-advanced-filters.service';\nimport { SdsFormlyDialogData } from '../../formly-dialog/formly-dialog-data.model';\nimport { SdsFormlyDialogComponent } from '../../formly-dialog/formly-dialog.component';\n\n@Component({\n  selector: 'sds-advanced-filters',\n  templateUrl: './advanced-filters.component.html',\n  styleUrls: ['./advanced-filters.component.scss']\n})\n\nexport class AdvancedFiltersComponent {\n\n    /**\n   * Pass in a Form Group for ReactiveForms Support\n   */\n  @Input() public form: FormGroup;\n\n  /**\n   *  Fields are used to configure the UI components\n   */\n  @Input() public fields: FormlyFieldConfig[];\n\n  /**\n   *  Model used to display the filter values.\n   */\n  @Input() public model: any;\n\n  /**\n   *    Options for the form.\n   */\n  @Input() public options: FormlyFormOptions = {};\n\n  constructor(\n    public dialog: SdsDialogService,\n    private advancedFiltersService: SdsAdvancedFiltersService\n    ) { }\n\n  openDialog(): void {\n    const modalFields: FormlyFieldConfig[] = this.advancedFiltersService.convertToCheckboxes(this.fields);\n\n    const data: SdsFormlyDialogData = {\n      fields: modalFields,\n      originalFields: this.fields,\n      originalModel: this.model,\n      submit: 'Update',\n      title: 'More Filters',\n    };\n\n    const dialogRef = this.dialog.open(SdsFormlyDialogComponent, {\n      width: 'medium',\n      data: data\n    });\n\n    dialogRef.afterClosed().subscribe(result => {\n      if (result) {\n        this.fields = result.fields;\n        this.model = result.model;\n      }\n    });\n  }\n\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { SdsDialogService } from '@gsa-sam/components';\nimport { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';\n\nimport { SdsAdvancedFiltersService } from './sds-advanced-filters.service';\nimport { SdsFormlyDialogData } from '../../formly-dialog/formly-dialog-data.model';\nimport { SdsFormlyDialogComponent } from '../../formly-dialog/formly-dialog.component';\n\n@Component({\n  selector: 'sds-advanced-filters',\n  templateUrl: './advanced-filters.component.html',\n  styleUrls: ['./advanced-filters.component.scss']\n})\nexport class AdvancedFiltersComponent {\n  /**\n   * Pass in a Form Group for ReactiveForms Support\n   */\n  @Input() public form: FormGroup;\n\n  /**\n   *  Fields are used to configure the UI components\n   */\n  @Input() public fields: FormlyFieldConfig[];\n\n  /**\n   *  Model used to display the filter values.\n   */\n  @Input() public model: any;\n\n  /**\n   *    Options for the form.\n   */\n  @Input() public options: FormlyFormOptions = {};\n\n  constructor(\n    public dialog: SdsDialogService,\n    private advancedFiltersService: SdsAdvancedFiltersService\n  ) {}\n\n  openDialog(): void {\n    const modalFields: FormlyFieldConfig[] = this.advancedFiltersService.convertToCheckboxes(\n      this.fields\n    );\n\n    const data: SdsFormlyDialogData = {\n      fields: modalFields,\n      originalFields: this.fields,\n      originalModel: this.model,\n      submit: 'Update',\n      title: 'More Filters',\n      isAdvanceFilter: true\n    };\n\n    const dialogRef = this.dialog.open(SdsFormlyDialogComponent, {\n      width: 'medium',\n      data: data\n    });\n\n    dialogRef.afterClosed().subscribe(result => {\n      if (result) {\n        this.fields = result.fields;\n        this.model = result.model;\n      }\n    });\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -595,7 +602,7 @@
                         "type": "SdsAdvancedFiltersService"
                     }
                 ],
-                "line": 36,
+                "line": 34,
                 "jsdoctags": [
                     {
                         "name": "dialog",
@@ -3516,7 +3523,7 @@
         },
         {
             "name": "SdsFormlyDialogComponent",
-            "id": "component-SdsFormlyDialogComponent-37d1448d76ab4d6f70ab13b9d1ab702f",
+            "id": "component-SdsFormlyDialogComponent-7dc472a9484e9cb178d6d50432101160",
             "file": "libs/packages/sam-formly/src/lib/formly-dialog/formly-dialog.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3548,7 +3555,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 19
+                    "line": 18
                 },
                 {
                     "name": "data",
@@ -3581,35 +3588,43 @@
                     "type": "FormlyFieldConfig[]",
                     "optional": false,
                     "description": "",
-                    "line": 18
+                    "line": 17
                 },
                 {
                     "name": "form",
                     "type": "FormGroup",
                     "optional": false,
                     "description": "",
-                    "line": 15
+                    "line": 14
+                },
+                {
+                    "name": "isAdvanceFilter",
+                    "defaultValue": "false",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 20
                 },
                 {
                     "name": "model",
                     "type": "any",
                     "optional": false,
                     "description": "",
-                    "line": 16
+                    "line": 15
                 },
                 {
                     "name": "options",
                     "type": "FormlyFormOptions",
                     "optional": false,
                     "description": "",
-                    "line": 17
+                    "line": 16
                 },
                 {
                     "name": "submit",
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 20
+                    "line": 19
                 }
             ],
             "methodsClass": [
@@ -3630,7 +3645,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 44
+                    "line": 56
                 },
                 {
                     "name": "onSubmit",
@@ -3638,7 +3653,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 37
+                    "line": 40
                 }
             ],
             "hostBindings": [],
@@ -3646,7 +3661,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, Inject, OnInit } from '@angular/core';\nimport { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';\nimport { FormGroup } from '@angular/forms';\nimport { SdsDialogRef, SDS_DIALOG_DATA } from '@gsa-sam/components';\n\nimport { SdsFormlyDialogData } from './formly-dialog-data.model';\nimport { SdsAdvancedFiltersService } from '../formly-filters/advanced-filters/sds-advanced-filters.service';\n\n@Component({\n  selector: 'sds-formly-dialog',\n  templateUrl: './formly-dialog.component.html'\n})\n\nexport class SdsFormlyDialogComponent implements OnInit {\n  form: FormGroup;\n  model: any;\n  options: FormlyFormOptions;\n  fields: FormlyFieldConfig[];\n  cancel: string;\n  submit: string;\n\n  constructor(\n    public advancedFiltersService: SdsAdvancedFiltersService,\n    public dialogRef: SdsDialogRef<SdsFormlyDialogComponent>,\n    @Inject(SDS_DIALOG_DATA) public data: SdsFormlyDialogData\n  ) {}\n\n  public ngOnInit() {\n    this.fields = this.data.fields;\n    this.form = this.data.form ? this.data.form : new FormGroup({});\n    this.model = this.data.model ? this.data.model : {};\n    this.options = this.data.options ? this.data.options : {};\n    this.cancel = this.data.cancel ? this.data.cancel : 'Cancel';\n    this.submit = this.data.submit ? this.data.submit : 'Submit';\n  }\n\n  onSubmit() {\n    if (this.form.valid) {\n      const results = this.advancedFiltersService.updateFields(this.model, this.data.originalFields, this.data.originalModel);\n      this.dialogRef.close(results);\n    }\n  }\n\n  onCancel() {\n    this.dialogRef.close();\n  }\n}\n",
+            "sourceCode": "import { Component, Inject, OnInit } from '@angular/core';\nimport { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';\nimport { FormGroup } from '@angular/forms';\nimport { SdsDialogRef, SDS_DIALOG_DATA } from '@gsa-sam/components';\n\nimport { SdsFormlyDialogData } from './formly-dialog-data.model';\nimport { SdsAdvancedFiltersService } from '../formly-filters/advanced-filters/sds-advanced-filters.service';\n\n@Component({\n  selector: 'sds-formly-dialog',\n  templateUrl: './formly-dialog.component.html'\n})\nexport class SdsFormlyDialogComponent implements OnInit {\n  form: FormGroup;\n  model: any;\n  options: FormlyFormOptions;\n  fields: FormlyFieldConfig[];\n  cancel: string;\n  submit: string;\n  isAdvanceFilter: boolean = false;\n\n  constructor(\n    public advancedFiltersService: SdsAdvancedFiltersService,\n    public dialogRef: SdsDialogRef<SdsFormlyDialogComponent>,\n    @Inject(SDS_DIALOG_DATA) public data: SdsFormlyDialogData\n  ) {}\n\n  public ngOnInit() {\n    this.fields = this.data.fields;\n    this.form = this.data.form ? this.data.form : new FormGroup({});\n    this.model = this.data.model ? this.data.model : {};\n    this.options = this.data.options ? this.data.options : {};\n    this.cancel = this.data.cancel ? this.data.cancel : 'Cancel';\n    this.submit = this.data.submit ? this.data.submit : 'Submit';\n    this.isAdvanceFilter = this.data.isAdvanceFilter\n      ? this.data.isAdvanceFilter\n      : false;\n  }\n\n  onSubmit() {\n    if (this.form.valid) {\n      let results = {};\n      if (this.isAdvanceFilter) {\n        results = this.advancedFiltersService.updateFields(\n          this.model,\n          this.data.originalFields,\n          this.data.originalModel\n        );\n      } else {\n        results = { ...this.model };\n      }\n      this.dialogRef.close(this.model);\n    }\n  }\n\n  onCancel() {\n    if (!this.isAdvanceFilter) {\n      this.options.resetModel();\n    }\n    this.dialogRef.close();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
