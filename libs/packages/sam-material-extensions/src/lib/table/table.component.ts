@@ -81,6 +81,7 @@ export class SdsTableComponent implements OnInit {
     }
   }
 
+  // toggle clicked row's detail row
   toggleRowExpansion(row: any) {
     this.expandedRow = this.expandedRow === row ? null : row;
   }
