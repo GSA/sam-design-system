@@ -13,7 +13,18 @@ export class FormlyDialog {
   updatedModel: any = {};
   model: any = {};
   options: FormlyFormOptions;
-  fields: FormlyFieldConfig[] = [];
+  fields: FormlyFieldConfig[] = [
+    {
+      key: 'entity.title',
+      type: 'input',
+      templateOptions: {
+        label: 'Entity Name',
+        placeholder: 'Acme Corporation',
+        description: 'Enter the name of your entity.',
+        required: true
+      }
+    }
+  ];
 
   constructor(public dialog: SdsDialogService) {}
   openDialog() {
