@@ -1,21 +1,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, ViewChild, DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TitleCasePipe } from '@angular/common';
 import {
   MatTableDataSource,
   MatTableModule,
   MatSortModule
 } from '@angular/material';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { Component, ViewChild, DebugElement } from '@angular/core';
-import { By } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SdsTableComponent } from './table.component';
+import { SdsTableColumnSettings } from './models/table-column-settings.model';
 
 const MOCK_DATA: any[] = [
   {
     id: 2,
-    firstName: 'Tymothy',
-    lastName: 'Podd'
+    firstName: 'Tymothy'
   },
   {
     id: 1,
@@ -27,12 +28,13 @@ const MOCK_DATA: any[] = [
   }
 ];
 
-const MOCK_COLUMNS = [
+const MOCK_COLUMNS: SdsTableColumnSettings[] = [
   {
     primaryKey: 'id'
   },
   {
-    primaryKey: 'firstName'
+    primaryKey: 'firstName',
+    header: "First Name"
   }
 ];
 
@@ -83,32 +85,86 @@ describe('SdsTableComponent', () => {
       expect(component.sort.disabled).toEqual(true);
     });
 
+    // column headings
+    it('should set th to equal column.header if defined', () => {
+      const nativeEl = tableDe.nativeElement;
+      const headerCell = nativeEl.querySelectorAll('th')[1];
+      expect(headerCell.innerText).toEqual(MOCK_COLUMNS[1].header);
+    });
+
+    it('should set th to column.primaryKey value titleCased if column.header is not defined', () => {
+      const nativeEl = tableDe.nativeElement;
+      const headerCell = nativeEl.querySelectorAll('th')[0];
+      const pipe = new TitleCasePipe();
+      expect(headerCell.innerText).toEqual(pipe.transform(MOCK_COLUMNS[0].primaryKey));
+    });
+
+    // border by default
     it('should have borders', () => {
       const cont = tableDe.query(By.css('div.sds-table__container'));
       expect(cont.classes['sds-table__container--borderless']).toBeFalsy();
-    })
+    });
+
+    // sticky header not set
+    it('should not have a sticky header', () => {
+      const nativeEl = tableDe.nativeElement;
+      const headerCell = nativeEl.querySelectorAll('th')[0];
+      expect(headerCell.offsetTop).toEqual(0);
+    });
+
+    // sticky columns
+    it('should not have a sticky first column by column.sticky is not set', () => {
+      const nativeEl = tableDe.nativeElement;
+      const dataCell = nativeEl.querySelectorAll('td')[0];
+      expect(dataCell.offsetLeft).toEqual(0);
+    });
+
+    it('should have a sticky first column by column.sticky is set', () => {
+      component.columns[0].sticky = true;
+      fixture.detectChanges();
+
+      const nativeEl = tableDe.nativeElement;
+      const dataCell = nativeEl.querySelectorAll('td')[0];
+      expect(dataCell.offsetLeft).toBeGreaterThan(0);
+    });
   });
 
-  // borderless
-  describe('without borders', () => {
+  describe('with settings configured', () => {
     beforeEach(() => {
       fixture = TestBed.createComponent(SdsTableComponent);
 
       component = fixture.componentInstance;
       component.data = MOCK_DATA;
       component.columns = MOCK_COLUMNS;
-      component.settings = {
-        borderless: true
-      };
 
       tableDe = fixture.debugElement;
 
       fixture.detectChanges();
     });
 
+    // borderless
     it('should not have a border if settings.borderless is true', () => {
+      component.settings = {
+        borderless: true
+      };
+
+      fixture.detectChanges();
+
       const cont = tableDe.query(By.css('div.sds-table__container'));
       expect(cont.classes['sds-table__container--borderless']).toBeTruthy();
+    });
+
+    // sticky header
+    it('should have a sticky header if settings.stickyHeader is true', () => {
+      component.settings = {
+        stickyHeader: true
+      };
+
+      fixture.detectChanges();
+
+      const nativeEl = tableDe.nativeElement;
+      const headerCell = nativeEl.querySelectorAll('th')[0];
+      expect(headerCell.offsetTop).toBeGreaterThan(0);
     });
   });
 

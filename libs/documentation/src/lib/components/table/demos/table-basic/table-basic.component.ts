@@ -32,8 +32,7 @@ export class TableBasicComponent {
       header: 'Catch Phrase'
     },
     {
-      primaryKey: 'date',
-      alternativeKey: 'altDate'
+      primaryKey: 'date'
    }
   ];
 
@@ -46,7 +45,7 @@ export class TableBasicComponent {
       gender: 'Male',
       catchPhrase: 'Reduced needs-based initiative',
       jobTitle: 'Software Test Engineer IV',
-      altDate: '2020/07/23',
+      date: '2020-07-23',
     },
     {
       id: 2,
