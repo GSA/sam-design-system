@@ -13,6 +13,8 @@ import { ComponentWrapperComponent } from '../../shared/component-wrapper/compon
 import { DialogBasicModule } from './demos/basic/dialog-basic.module';
 import { FormlyDialogModule } from './demos/formly-modal/formly-modal.module';
 import { FormlyDialog } from './demos/formly-modal/formly-modal.component';
+import { DownloadComponent } from './demos/download/download.component';
+import { DownloadModule } from './demos/download/download.module';
 
 declare var require: any;
 const DEMOS = {
@@ -29,6 +31,13 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/formly-modal/formly-modal.component'),
     markup: require('!!raw-loader!./demos/formly-modal/formly-modal.component.html'),
     path: 'libs/documentation/src/lib/components/dialog/demos/formly-modal'
+  },
+  download: {
+    title: 'Download Modal Dialog',
+    type: DownloadComponent,
+    code: require('!!raw-loader!./demos/download/download.component'),
+    markup: require('!!raw-loader!./demos/download/download.component.html'),
+    path: 'libs/documentation/src/lib/components/dialog/demos/download'
   }
 };
 
@@ -60,7 +69,8 @@ export const ROUTES = [
     CommonModule,
     DocumentationComponentsSharedModule,
     DialogBasicModule,
-    FormlyDialogModule
+    FormlyDialogModule,
+    DownloadModule
   ]
 })
 export class DialogModule {
