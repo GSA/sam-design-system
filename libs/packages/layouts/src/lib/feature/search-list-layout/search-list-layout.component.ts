@@ -13,7 +13,7 @@ export class SearchListLayoutComponent implements OnInit {
   /**
   * Child Template to be used to display the data for each item in the list of items
   */
-  @ContentChild('resultContent') resultContentTemplate: TemplateRef<any>;
+  @ContentChild('resultContent', {static: false}) resultContentTemplate: TemplateRef<any>;
 
   constructor(@Optional() private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService) { }
 
