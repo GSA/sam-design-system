@@ -33,7 +33,7 @@
 </ng-template>
 
 <ng-template #sideNavLabelLinkTemplate let-link>
-  <span [attr.class]="link.selected ? ' usa-current' : ''"><span>{{link.text}}</span></span>
+  <a [attr.class]="link.selected ? ' usa-current' : ''"><span>{{link.text}}</span></a>
 </ng-template>
 
 <ng-template #sideNavEVENTLinkTemplate let-link>
