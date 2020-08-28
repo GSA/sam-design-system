@@ -4,7 +4,7 @@ import { FieldType } from '@ngx-formly/core';
 export abstract class AbstractSdsFormly extends FieldType implements DoCheck {
 
   public cdr: ChangeDetectorRef;
-  public template: any;
+  public template: any = {};
 
   public ngDoCheck () {
     this.setProperties(
@@ -16,7 +16,7 @@ export abstract class AbstractSdsFormly extends FieldType implements DoCheck {
   public setProperties (component: any, configuration: any) {
     Object.keys(configuration).forEach(
       key => {
-        component[key] = configuration[key];
+        this.template[key] = configuration[key];
       }
     );
     if ((<any>this).template.control) {
