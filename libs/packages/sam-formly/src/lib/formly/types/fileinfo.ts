@@ -4,7 +4,7 @@ import { FieldType } from '@ngx-formly/core';
 @Component({
   selector: 'sds-formly-field-file',
   template: `
-    <div class="grid-row grid-gap padding-1">
+    <div class="grid-row grid-gap margin-top-1">
       <div
         *ngFor="
           let option of (to.options | formlySelectOptions: field | async);
@@ -30,8 +30,11 @@ import { FieldType } from '@ngx-formly/core';
             <div class="sds-card__header sds-card__header--center">
               <h3 class="sds-card__title ">{{ option.label }}</h3>
             </div>
-            <div class="sds-card__body sds-card__header--center">
-              <span class="usa-tag padding-left-05">{{ option.value }}</span>
+            <div class="sds-card__body sds-card__header--center ">
+              <span
+                class="bg-base-light padding-1 padding-left-2 padding-right-2"
+                >{{ option.value }}</span
+              >
             </div>
           </label>
         </div>
@@ -49,6 +52,7 @@ import { FieldType } from '@ngx-formly/core';
 })
 export class FormlyFieldFileInfoComponent extends FieldType {
   isSelected: boolean = false;
+  description: string = '';
   defaultOptions = {
     templateOptions: {
       options: []

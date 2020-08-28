@@ -10,15 +10,8 @@ import { SdsDialogService } from '@gsa-sam/components';
   templateUrl: 'download.component.html'
 })
 export class DownloadComponent {
-  configurations = {
-    title: 'Download Dialog',
-    buttonText: 'Download',
-    submitButtonText: 'Download',
-    infoMessage: ``
-  };
-
   updatedModel: any = {};
-  model: any = { fileType: 'CSV' };
+  model: any = { fileType: 'CSV', fileName: 'test.csv' };
   options: FormlyFormOptions;
   onDownloadModelChange(value) {
     this.updatedModel = value;
@@ -26,29 +19,42 @@ export class DownloadComponent {
 
   fields: FormlyFieldConfig[] = [
     {
-      key: 'options',
-      type: 'multicheckbox',
+      key: 'download',
+      type: 'radio',
       templateOptions: {
-        label: 'Choose options',
-        selectAllOption: true,
+        hideOptional: true,
         options: [
           {
-            value: 'Download Full record',
-            key: 'dfr'
+            value: 'Single Details',
+            key: 'sd'
           },
           {
-            value: 'Download summary information only',
-            key: 'dsi'
-          },
-          {
-            value: 'Download FDPS case record',
-            key: 'dfc'
-          },
-          {
-            value: 'Download current record and all of its modifications',
-            key: 'dcr'
+            value: 'Contract Family Details',
+            key: 'cfd'
           }
         ]
+      }
+    },
+    {
+      key: 'mode',
+      type: 'radio',
+
+      templateOptions: {
+        hideOptional: true,
+        class: 'margin-left-2',
+        options: [
+          {
+            value: 'Modifications',
+            key: 'mod'
+          }
+        ]
+      },
+      hideExpression: () => {
+        return !(
+          this.model &&
+          this.model.download &&
+          this.model.download == 'cfd'
+        );
       }
     },
     {
@@ -56,10 +62,12 @@ export class DownloadComponent {
       type: 'fileinfo',
       templateOptions: {
         label: 'Select file type',
+        hideOptional: true,
         options: [
-          { value: 'Search Results', key: 'CSV' },
-          { value: 'Search Results', key: 'PDF' },
-          { value: 'WD Decision', key: 'ZIP' }
+          { value: 'Default', key: 'CSV', description: '-Limited to 5000' },
+          { value: 'Full', key: 'ZIP', description: '-Limited to 10,000' },
+          { value: 'Case', key: 'PDF', description: '-Limited to 8000' },
+          { value: 'All', key: 'XLS', description: '-Limited to 45000' }
         ]
       }
     },
@@ -67,7 +75,8 @@ export class DownloadComponent {
       key: 'fileName',
       type: 'input',
       templateOptions: {
-        label: 'Name'
+        label: 'Name',
+        required: true
       }
     },
     {
@@ -90,9 +99,9 @@ export class DownloadComponent {
       model: this.model,
       submit: 'Download',
       title: 'Download',
-      options: this.options
-      // originalFields: this.fields,
-      // originalModel: this.model
+      options: this.options,
+      subtitle:
+        'Choose from the following download option.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt'
     };
 
     const dialogRef = this.dialog.open(SdsFormlyDialogComponent, {
