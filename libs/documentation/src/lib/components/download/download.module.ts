@@ -12,9 +12,18 @@ import { ComponentWrapperComponent } from '../../shared/component-wrapper/compon
 ``;
 import { DownloadComponent } from './demos/download/download.component';
 import { DownloadBasicModule } from './demos/download/download.module';
+import { FormlyDialog } from './demos/formly-modal/formly-modal.component';
+import { FormlyDialogModule } from './demos/formly-modal/formly-modal.module';
 
 declare var require: any;
 const DEMOS = {
+  formly: {
+    title: 'Modal Dialog with Formly',
+    type: FormlyDialog,
+    code: require('!!raw-loader!./demos/formly-modal/formly-modal.component'),
+    markup: require('!!raw-loader!./demos/formly-modal/formly-modal.component.html'),
+    path: 'libs/documentation/src/lib/components/dialog/demos/formly-modal'
+  },
   basic: {
     title: 'Download Modal Dialog',
     type: DownloadComponent,
@@ -51,7 +60,8 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    DownloadBasicModule
+    DownloadBasicModule,
+    FormlyDialogModule
   ]
 })
 export class DownloadModule {
