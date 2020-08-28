@@ -1,19 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
-import { BehaviorSubject } from 'rxjs';
 
 @Component({
   templateUrl: './filters-hideexpression.component.html'
 })
-export class FiltersHideExpression implements OnInit {
+export class FiltersHideExpression  {
   constructor() {}
 
-  results: any = {};
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
-  public filterChange$ = new BehaviorSubject<object>(null);
 
   // Select
   sdsSelect: FormlyFieldConfig[] = [
@@ -57,7 +54,7 @@ export class FiltersHideExpression implements OnInit {
       },
       hideExpression: () => {
         if (this.model && this.model.location && this.model.location.country) {
-          return this.model.location.country != 'CA';
+          return this.model.location.country !== 'CA';
         }
         return true;
       }
@@ -71,10 +68,7 @@ export class FiltersHideExpression implements OnInit {
       },
       hideExpression: () => {
         if (this.model && this.model.location && this.model.location.country) {
-          if (this.model.location.country != 'CA') {
-            return false;
-          } else if (this.model.location.country == 'CA')
-            return this.model.location.country == 'CA';
+          return this.model.location.country === 'CA';
         }
         return true;
       }
@@ -93,7 +87,7 @@ export class FiltersHideExpression implements OnInit {
           this.model.location.country &&
           (this.model.location.state ||
             (this.model.location.province &&
-              this.model.location.country == 'CA'))
+              this.model.location.country === 'CA'))
         );
       }
     },
@@ -112,16 +106,11 @@ export class FiltersHideExpression implements OnInit {
           this.model.location.country &&
           (this.model.location.state ||
             (this.model.location.province &&
-              this.model.location.country == 'CA')) &&
+              this.model.location.country === 'CA')) &&
           this.model.location.city
         );
       }
     }
   ];
 
-  public ngOnInit() {
-    this.filterChange$.subscribe(res => {
-      this.results = res;
-    });
-  }
 }

@@ -333,5 +333,27 @@ describe('The Sam Filters Component', () => {
 
       expect(component.fields[0].fieldGroup[0].hide).toBe(false);
     });
+    it('should change the hide value when model has value', () => {
+      component.fields = [
+        {
+          key: 'filters',
+          type: 'input',
+          hide: true,
+          templateOptions: {
+            label: 'State',
+            description: 'State'
+          }
+        }
+      ];
+      component.model = { filters:  '45466'  };
+      fixture.detectChanges();
+      const inputField = fixture.debugElement.query(
+        By.css('.usa-input')
+      ) as DebugElement;
+      component.ngOnInit();
+      fixture.detectChanges();
+console.log(component.fields, 'shilpa')
+      expect(component.fields[0].hide).toBe(false);
+    });
   });
 });
