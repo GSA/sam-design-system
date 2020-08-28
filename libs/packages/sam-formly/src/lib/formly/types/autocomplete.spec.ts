@@ -99,7 +99,7 @@ describe('Formly Field Select Component', () => {
 
 @Component({ selector: 'formly-form-test', template: '', entryComponents: [] })
 class TestComponent {
-  @ViewChild(FormlyForm) formlyForm: FormlyForm;
+  @ViewChild(FormlyForm, {static: false}) formlyForm: FormlyForm;
 
   fields = testAutocompleteComponent.fields;
   form: FormGroup = testAutocompleteComponent.form;

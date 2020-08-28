@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef, Input } from '@angular/core';
+import { Component, ChangeDetectorRef, Input } from '@angular/core';
 
 @Component({
   selector: 'search-result-list-sample-data',

@@ -17,7 +17,7 @@ import { SdsTableSettings } from './models/table-settings.model';
 })
 export class SdsTableComponent implements OnInit {
 
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatSort, {static: false}) sort: MatSort;
 
   /**
    * Data for table

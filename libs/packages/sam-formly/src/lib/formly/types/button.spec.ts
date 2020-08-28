@@ -105,7 +105,7 @@ export function createGenericTestComponent<T>(html: string, type: { new(...args:
 
 @Component({ selector: 'formly-form-button', template: '', entryComponents: [] })
 class TestComponent {
-    @ViewChild(FormlyForm) formlyForm: FormlyForm;
+    @ViewChild(FormlyForm, {static: false}) formlyForm: FormlyForm;
 
     fields = testComponentButtons.fields;
     form: FormGroup = testComponentButtons.form;

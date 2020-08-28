@@ -1399,7 +1399,7 @@ class ComponentWithOnPushViewContainer {
   template: `<dir-with-view-container></dir-with-view-container>`,
 })
 class ComponentWithChildViewContainer {
-  @ViewChild(DirectiveWithViewContainer) childWithViewContainer: DirectiveWithViewContainer;
+  @ViewChild(DirectiveWithViewContainer, {static: false}) childWithViewContainer: DirectiveWithViewContainer;
 
   get childViewContainer() {
     return this.childWithViewContainer.viewContainerRef;
@@ -1415,7 +1415,7 @@ class ComponentWithTemplateRef {
   localValue: string;
   dialogRef: SdsDialogRef<any>;
 
-  @ViewChild(TemplateRef) templateRef: TemplateRef<any>;
+  @ViewChild(TemplateRef, {static: false}) templateRef: TemplateRef<any>;
 
   setDialogRef(dialogRef: SdsDialogRef<any>): string {
     this.dialogRef = dialogRef;
@@ -1466,7 +1466,7 @@ class ContentElementDialog {}
   `
 })
 class ComponentWithContentElementTemplateRef {
-  @ViewChild(TemplateRef) templateRef: TemplateRef<any>;
+  @ViewChild(TemplateRef, {static: false}) templateRef: TemplateRef<any>;
 }
 
 @Component({

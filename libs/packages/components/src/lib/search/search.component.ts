@@ -33,9 +33,9 @@ export class SearchSettings {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
-  @ViewChild('inputEl', { read: ElementRef }) inputEl: ElementRef;
-  @ViewChild('selectEl', { read: ElementRef }) selectEl: ElementRef;
-  @ViewChild('buttonEl', { read: ElementRef }) buttonEl: ElementRef;
+  @ViewChild('inputEl', { read: ElementRef, static: false}) inputEl: ElementRef;
+  @ViewChild('selectEl', { read: ElementRef, static: false }) selectEl: ElementRef;
+  @ViewChild('buttonEl', { read: ElementRef, static: false }) buttonEl: ElementRef;
 
   @Input() inputClass: string;
   @Input() parentSelector: string;

@@ -99,7 +99,7 @@ export class SdsMenuComponent
   _panelAnimationState: 'void' | 'enter' = 'void';
 
   /** Grab the component template */
-  @ViewChild(TemplateRef) templateRef: TemplateRef<any>;
+  @ViewChild(TemplateRef, {static: false}) templateRef: TemplateRef<any>;
 
   /**
    * Size of menu component.

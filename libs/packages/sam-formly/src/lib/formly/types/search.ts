@@ -13,9 +13,9 @@ import {  Component,
     changeDetection: ChangeDetectionStrategy.OnPush
   })
   export class FormlyFieldSearchComponent extends AbstractSdsFormly {
-  
-   @ViewChild(SdsSearchComponent) public template: SdsSearchComponent;
-  
+
+   @ViewChild(SdsSearchComponent, {static: false}) public template: SdsSearchComponent;
+
     constructor (_cdr: ChangeDetectorRef) {
       super();
       this.cdr = _cdr;

@@ -20,7 +20,7 @@ click outside target content
 })
 class TestComponent {
     @Output() action: EventEmitter<any> = new EventEmitter<any>();
-    @ViewChild('var') var;
+    @ViewChild('var', {static: false}) var;
     tabOutsideHandler() {
         this.action.emit(true);
     }

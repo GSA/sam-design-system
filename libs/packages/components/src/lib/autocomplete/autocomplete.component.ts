@@ -69,7 +69,7 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
   @Input()
   public service: SDSAutocompleteServiceInterface;
 
-  @ViewChild('autocompleteSearch') autocompleteSearch: SDSAutocompleteSearchComponent;
+  @ViewChild('autocompleteSearch', {static: false}) autocompleteSearch: SDSAutocompleteSearchComponent;
   constructor(private cd: ChangeDetectorRef) { }
 
   /**

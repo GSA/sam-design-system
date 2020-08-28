@@ -195,7 +195,7 @@ export class SideNavigationSampleComponent implements AfterViewInit, OnInit {
     this.filterChange$.subscribe(res => (this.results = res));
   }
 
-  @ViewChild('sideNav') sideNav;
+  @ViewChild('sideNav', {static: false}) sideNav;
   constructor(
     private change: ChangeDetectorRef,
     private activeRoute: ActivatedRoute

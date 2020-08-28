@@ -50,7 +50,7 @@ const MOCK_COLUMNS: SdsTableColumnSettings[] = [
   `
 })
 class WrapperComponent {
-  @ViewChild(SdsTableComponent) tableComponentRef: SdsTableComponent;
+  @ViewChild(SdsTableComponent, {static: false}) tableComponentRef: SdsTableComponent;
   columns = MOCK_COLUMNS;
   data = MOCK_DATA;
 }

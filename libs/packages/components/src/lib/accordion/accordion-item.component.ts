@@ -67,10 +67,10 @@ export class SdsAccordionItemComponent extends CdkAccordionItem
   accordion: SdsAccordionBase;
 
   /** Content that will be rendered lazily. */
-  @ContentChild(SdsAccordionItemContentDirective) _lazyContent: SdsAccordionItemContentDirective;
+  @ContentChild(SdsAccordionItemContentDirective, {static: false}) _lazyContent: SdsAccordionItemContentDirective;
 
   /** Element containing the accordion item's user-provided content. */
-  @ViewChild('body') _body: ElementRef<HTMLElement>;
+  @ViewChild('body', {static: false}) _body: ElementRef<HTMLElement>;
 
   /** Portal holding the user's content. */
   _portal: TemplatePortal;
