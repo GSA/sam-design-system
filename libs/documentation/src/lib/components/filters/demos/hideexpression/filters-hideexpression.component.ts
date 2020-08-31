@@ -36,7 +36,11 @@ export class FiltersHideExpression {
       lifecycle: {
         onChanges: function(form, field) {
           field.formControl.valueChanges.subscribe(v => {
-            console.log(field, this.model, 'test');
+            Object.keys(form['controls'].location['controls']).forEach(key => {
+              if (key !== 'country') {
+                form['controls'].location['controls'][key].setValue('');
+              }
+            });
           });
         }
       }

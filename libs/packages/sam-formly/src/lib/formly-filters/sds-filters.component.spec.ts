@@ -345,14 +345,13 @@ describe('The Sam Filters Component', () => {
           }
         }
       ];
-      component.model = { filters:  '45466'  };
+      component.model = { filters: '45466' };
       fixture.detectChanges();
       const inputField = fixture.debugElement.query(
         By.css('.usa-input')
       ) as DebugElement;
       component.ngOnInit();
       fixture.detectChanges();
-console.log(component.fields, 'shilpa')
       expect(component.fields[0].hide).toBe(false);
     });
   });

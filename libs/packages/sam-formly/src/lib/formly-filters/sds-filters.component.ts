@@ -117,7 +117,9 @@ export class SdsFiltersComponent implements OnInit {
       }
     }
   }
-
+  /**
+   * This is for getting the model which has a value.
+   */
   checkForHide() {
     let fieldWithValue = this.convertToParam(this.model);
     let keys = [];
