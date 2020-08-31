@@ -10,7 +10,6 @@ import { SdsAdvancedFiltersService } from '../formly-filters/advanced-filters/sd
   selector: 'sds-formly-dialog',
   templateUrl: './formly-dialog.component.html'
 })
-
 export class SdsFormlyDialogComponent implements OnInit {
   form: FormGroup;
   model: any;
@@ -36,12 +35,12 @@ export class SdsFormlyDialogComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-      const results = this.advancedFiltersService.updateFields(this.model, this.data.originalFields, this.data.originalModel);
-      this.dialogRef.close(results);
+      this.dialogRef.close(this.model);
     }
   }
 
   onCancel() {
+    this.options.resetModel();
     this.dialogRef.close();
   }
 }
