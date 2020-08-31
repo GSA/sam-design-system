@@ -328,7 +328,6 @@ describe('The Sam Filters Component', () => {
       const inputField = fixture.debugElement.query(
         By.css('.usa-input')
       ) as DebugElement;
-      component.ngOnInit();
       fixture.detectChanges();
 
       expect(component.fields[0].fieldGroup[0].hide).toBe(false);

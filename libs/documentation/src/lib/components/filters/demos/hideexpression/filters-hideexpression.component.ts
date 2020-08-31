@@ -7,15 +7,10 @@ import { BehaviorSubject } from 'rxjs';
   templateUrl: './filters-hideexpression.component.html'
 })
 export class FiltersHideExpression {
-  constructor() {}
-
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
 
-  public onFiltersChange$ = new BehaviorSubject<object>(null);
-
-  // Select
   sdsSelect: FormlyFieldConfig[] = [
     {
       key: 'location.country',
@@ -126,10 +121,6 @@ export class FiltersHideExpression {
       }
     }
   ];
-  onModelChange(ev) {
-    console.log(ev, 'change');
-  }
-
   updateModel() {
     this.model = {
       location: {
@@ -144,23 +135,4 @@ export class FiltersHideExpression {
       }
     };
   }
-  // public ngOnInit() {
-  //   this.onFiltersChange$.subscribe((res: any) => {
-  //     console.log(res, 'mod');
-
-  //     this.model = {
-  //       location: {
-  //         state: '',
-  //         province: '',
-  //         street: '',
-  //         city: '',
-  //         country:
-  //           res && res[0].location && res[0].location.country
-  //             ? res[0].location.country
-  //             : ''
-  //       }
-  //     };
-  //     console.log(this.model, 'modnext');
-  //   });
-  // }
 }
