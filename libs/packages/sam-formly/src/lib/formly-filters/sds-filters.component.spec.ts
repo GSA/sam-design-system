@@ -325,11 +325,6 @@ describe('The Sam Filters Component', () => {
       ];
       component.model = { test: null, filters: { uniqueId: '45466' } };
       fixture.detectChanges();
-      const inputField = fixture.debugElement.query(
-        By.css('.usa-input')
-      ) as DebugElement;
-      fixture.detectChanges();
-
       expect(component.fields[0].fieldGroup[0].hide).toBe(false);
     });
     it('should change the hide value when model has value', () => {
@@ -345,10 +340,6 @@ describe('The Sam Filters Component', () => {
         }
       ];
       component.model = { filters: '45466' };
-      fixture.detectChanges();
-      const inputField = fixture.debugElement.query(
-        By.css('.usa-input')
-      ) as DebugElement;
       fixture.detectChanges();
       expect(component.fields[0].hide).toBe(false);
     });
