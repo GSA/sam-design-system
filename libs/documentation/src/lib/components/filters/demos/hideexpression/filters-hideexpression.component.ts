@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
-import { BehaviorSubject } from 'rxjs';
 
 @Component({
   templateUrl: './filters-hideexpression.component.html'
