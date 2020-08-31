@@ -114,6 +114,7 @@ import {
 } from './components/formly/search/search.module';
 
 /* Form Wrappers */
+
 import {
   ROUTES as FORM_FIELD_ROUTES,
   FormFieldModule
@@ -146,6 +147,10 @@ import {
   ROUTES as TEMPLATEOPTIONS_ROUTES,
   TemplateOptionsModule
 } from './components/templateoptions/templateoptions.module';
+import {
+  ROUTES as TABLE_ROUTES,
+  TableModule
+} from './components/table/table.module';
 
 /* Utilities */
 import {
@@ -209,6 +214,9 @@ export const ROUTES: Routes = [
   { path: 'components/validation', children: VALIDATION_ROUTES },
   { path: 'components/templateoptions', children: TEMPLATEOPTIONS_ROUTES },
 
+  // Material
+  { path: 'components/table', children: TABLE_ROUTES },
+
   // Icons
   { path: 'components/icons', children: ICONS_ROUTES }
 ];
@@ -254,6 +262,7 @@ export const ROUTES: Routes = [
     DescriptionWrapperModule,
     ValidationWrapperModule,
     TemplateOptionsModule,
+    TableModule,
     IconsModule
   ]
 })
