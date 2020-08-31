@@ -1,16 +1,19 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   templateUrl: './filters-hideexpression.component.html'
 })
-export class FiltersHideExpression  {
+export class FiltersHideExpression {
   constructor() {}
 
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
+
+  public onFiltersChange$ = new BehaviorSubject<object>(null);
 
   // Select
   sdsSelect: FormlyFieldConfig[] = [
@@ -29,6 +32,13 @@ export class FiltersHideExpression  {
           { label: 'United Kingdom', value: 'UK' },
           { label: 'Australia', value: 'AUS' }
         ]
+      },
+      lifecycle: {
+        onChanges: function(form, field) {
+          field.formControl.valueChanges.subscribe(v => {
+            console.log(field, this.model, 'test');
+          });
+        }
       }
     },
     {
@@ -112,5 +122,41 @@ export class FiltersHideExpression  {
       }
     }
   ];
+  onModelChange(ev) {
+    console.log(ev, 'change');
+  }
 
+  updateModel() {
+    this.model = {
+      location: {
+        state: '',
+        province: '',
+        street: '',
+        city: '',
+        country:
+          this.model && this.model.location && this.model.location.country
+            ? this.model.location.country
+            : ''
+      }
+    };
+  }
+  // public ngOnInit() {
+  //   this.onFiltersChange$.subscribe((res: any) => {
+  //     console.log(res, 'mod');
+
+  //     this.model = {
+  //       location: {
+  //         state: '',
+  //         province: '',
+  //         street: '',
+  //         city: '',
+  //         country:
+  //           res && res[0].location && res[0].location.country
+  //             ? res[0].location.country
+  //             : ''
+  //       }
+  //     };
+  //     console.log(this.model, 'modnext');
+  //   });
+  // }
 }
