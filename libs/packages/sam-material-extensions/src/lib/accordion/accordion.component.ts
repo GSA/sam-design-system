@@ -3,19 +3,49 @@ import {
   Input,
   TemplateRef,
   OnInit,
-  ViewChild
+  AfterContentInit,
+  ViewChild,
+  Directive,
+  ContentChild,
+  QueryList,
+  ContentChildren
 } from '@angular/core';
 
 import {MatAccordion} from '@angular/material/expansion';
+
+@Component({
+  selector: 'sds-accordion-item',
+  template: `
+    <mat-expansion-panel [(expanded)]="expanded">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <ng-content select="[sds-accordion-title]"></ng-content>
+        </mat-panel-title>
+        <span class="sds-expansion-indicator" [ngClass]="{'sds-expansion-indicator--expanded' : expanded}"></span>
+      </mat-expansion-panel-header>
+      <ng-content select="[sds-accordion-content]"></ng-content>
+    </mat-expansion-panel>
+  `,
+  styleUrls: ['./accordion-item.component.scss']
+})
+export class SdsAccordionItemComponent {
+  @Input() id!: string;
+  expanded = true;
+}
+
+
 
 @Component({
   selector: 'sds-accordion-next',
   templateUrl: './accordion.component.html',
   styleUrls: ['./accordion.component.scss']
 })
-export class SdsAccordionComponent {
+export class SdsAccordionComponent implements AfterContentInit {
 
   @ViewChild(MatAccordion) accordion: MatAccordion;
+
+  //@ContentChild(SdsAccordionItemDirective) accordionItem!: SdsAccordionItemDirective;
+  @ContentChildren(SdsAccordionItemComponent, {descendants: true}) accordionItems!: QueryList<SdsAccordionItemComponent>;
 
   // @ViewChild(MatSort) sort: MatSort;
 
@@ -59,27 +89,10 @@ export class SdsAccordionComponent {
 
   // constructor() {}
 
-  // ngOnInit() {
-  //   // convert data to MatTableDataSource
-  //   this.dataSource = new MatTableDataSource(this.data);
 
-  //   // enable sort if set in settings
-  //   if (this.settings && this.settings.sort) {
-  //     this.dataSource.sort = this.sort;
-  //   } else {
-  //     this.sort.disabled = true;
-  //   }
-
-  //   // get column primary keys
-  //   this.columns.forEach(col => {
-  //     this.columnIds.push(col.primaryKey);
-  //   });
-
-  //   // add column if expandable
-  //   if (this.detailRow) {
-  //     this.columnIds.push('sdsExpandableRow');
-  //   }
-  // }
+  ngAfterContentInit() {
+    console.log(this.accordionItems);
+  }
 
   // toggleRowExpansion(row: any) {
   //   this.expandedRow = this.expandedRow === row ? null : row;
