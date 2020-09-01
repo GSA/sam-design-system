@@ -647,7 +647,7 @@ const LAYOUTS = {
         },
         {
             "name": "SearchListLayoutComponent",
-            "id": "component-SearchListLayoutComponent-2300dad616bf084c0833f63ba5506ba3",
+            "id": "component-SearchListLayoutComponent-3b84f452739b507241558ad0cc3d384f",
             "file": "libs/packages/layouts/src/lib/feature/search-list-layout/search-list-layout.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -733,7 +733,7 @@ const LAYOUTS = {
                     "decorators": [
                         {
                             "name": "ContentChild",
-                            "stringifiedArguments": "'resultContent'"
+                            "stringifiedArguments": "'resultContent', {static: false}"
                         }
                     ]
                 },
@@ -806,15 +806,15 @@ const LAYOUTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 1693,
-                                "end": 1699,
+                                "pos": 1710,
+                                "end": 1716,
                                 "flags": 0,
                                 "escapedText": "filter"
                             },
                             "type": "any",
                             "tagName": {
-                                "pos": 1687,
-                                "end": 1692,
+                                "pos": 1704,
+                                "end": 1709,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -828,7 +828,7 @@ const LAYOUTS = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit, Input, ContentChild, TemplateRef, Optional } from '@angular/core';\nimport { BehaviorSubject } from \"rxjs\";\nimport { SearchListInterface, SearchListConfiguration } from './model/search-list-layout.model';\nimport { SDSFormlyUpdateComunicationService } from '@gsa-sam/sam-formly';\n\n@Component({\n  selector: 'search-list-layout',\n  templateUrl: './search-list-layout.component.html',\n  styleUrls: ['./search-list-layout.component.scss']\n})\nexport class SearchListLayoutComponent implements OnInit {\n\n  /**\n  * Child Template to be used to display the data for each item in the list of items\n  */\n  @ContentChild('resultContent') resultContentTemplate: TemplateRef<any>;\n\n  constructor(@Optional() private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService) { }\n\n  /**\n   * Input service to be called when items change\n   */\n  @Input()\n  service: SearchListInterface;\n\n  /**\n   * configuration\n   */\n  @Input()\n  configuration: SearchListConfiguration;\n\n  /**\n   * Filter information\n   */\n  private filterData: any;\n\n  ngOnInit() {\n    this.page.pageSize = this.configuration.pageSize;\n    this.sortField = this.configuration.defaultSortValue;\n    this.paginationChange.subscribe(\n      () => {\n        this.updateContent();\n      }\n    );\n    if (this.formlyUpdateComunicationService) {\n      this.formlyUpdateComunicationService.filterUpdate.subscribe(\n        (filter) => {\n          this.updateFilter(filter);\n        }\n      )\n    }\n  }\n\n  /**\n   * Default Page setttings\n   */\n  page = {\n    pageNumber: 1,\n    pageSize: 25,\n    totalPages: 0\n  }\n\n  /**\n   * updates the filter and set the page number to 1 and calls imported service\n   * @param filter \n   */\n  public updateFilter(filter: any) {\n    this.filterData = filter;\n    this.page.pageNumber = 1;\n    this.updateContent();\n  }\n\n  /**\n   * Sorty by change event\n   */\n  onSelectChange() {\n    this.page.pageNumber = 1;\n    this.updateContent();\n  }\n\n  /**\n   * Id of the top pagination control\n   */\n  top = { id: 'topPagination' };\n\n  /**\n   * Id of the bottom pagination control\n   */\n  bottom = { id: 'bottomPagination' };\n\n  /**\n   * Page event listener\n   */\n  public paginationChange = new BehaviorSubject<object>(this.page);\n\n  /**\n   * List of items to be displayed\n   */\n  items = [];\n\n  /**\n   * sort value \n   */\n  public sortField = '';\n\n  /**\n   * calls service when updated\n   */\n  private updateContent() {\n    this.service.getData({ 'page': this.page, sortField: this.sortField, filter: this.filterData }).subscribe(\n      (result) => {\n        this.items = result.items;\n        this.page.totalPages = Math.ceil(result.totalItems / this.page.pageSize);\n      }\n    );\n  }\n}\n",
+            "sourceCode": "import { Component, OnInit, Input, ContentChild, TemplateRef, Optional } from '@angular/core';\nimport { BehaviorSubject } from \"rxjs\";\nimport { SearchListInterface, SearchListConfiguration } from './model/search-list-layout.model';\nimport { SDSFormlyUpdateComunicationService } from '@gsa-sam/sam-formly';\n\n@Component({\n  selector: 'search-list-layout',\n  templateUrl: './search-list-layout.component.html',\n  styleUrls: ['./search-list-layout.component.scss']\n})\nexport class SearchListLayoutComponent implements OnInit {\n\n  /**\n  * Child Template to be used to display the data for each item in the list of items\n  */\n  @ContentChild('resultContent', {static: false}) resultContentTemplate: TemplateRef<any>;\n\n  constructor(@Optional() private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService) { }\n\n  /**\n   * Input service to be called when items change\n   */\n  @Input()\n  service: SearchListInterface;\n\n  /**\n   * configuration\n   */\n  @Input()\n  configuration: SearchListConfiguration;\n\n  /**\n   * Filter information\n   */\n  private filterData: any;\n\n  ngOnInit() {\n    this.page.pageSize = this.configuration.pageSize;\n    this.sortField = this.configuration.defaultSortValue;\n    this.paginationChange.subscribe(\n      () => {\n        this.updateContent();\n      }\n    );\n    if (this.formlyUpdateComunicationService) {\n      this.formlyUpdateComunicationService.filterUpdate.subscribe(\n        (filter) => {\n          this.updateFilter(filter);\n        }\n      )\n    }\n  }\n\n  /**\n   * Default Page setttings\n   */\n  page = {\n    pageNumber: 1,\n    pageSize: 25,\n    totalPages: 0\n  }\n\n  /**\n   * updates the filter and set the page number to 1 and calls imported service\n   * @param filter \n   */\n  public updateFilter(filter: any) {\n    this.filterData = filter;\n    this.page.pageNumber = 1;\n    this.updateContent();\n  }\n\n  /**\n   * Sorty by change event\n   */\n  onSelectChange() {\n    this.page.pageNumber = 1;\n    this.updateContent();\n  }\n\n  /**\n   * Id of the top pagination control\n   */\n  top = { id: 'topPagination' };\n\n  /**\n   * Id of the bottom pagination control\n   */\n  bottom = { id: 'bottomPagination' };\n\n  /**\n   * Page event listener\n   */\n  public paginationChange = new BehaviorSubject<object>(this.page);\n\n  /**\n   * List of items to be displayed\n   */\n  items = [];\n\n  /**\n   * sort value \n   */\n  public sortField = '';\n\n  /**\n   * calls service when updated\n   */\n  private updateContent() {\n    this.service.getData({ 'page': this.page, sortField: this.sortField, filter: this.filterData }).subscribe(\n      (result) => {\n        this.items = result.items;\n        this.page.totalPages = Math.ceil(result.totalItems / this.page.pageSize);\n      }\n    );\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {

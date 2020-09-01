@@ -81,7 +81,7 @@
     "components": [
         {
             "name": "SdsTableComponent",
-            "id": "component-SdsTableComponent-4f77025cf418065f398ea65ac0f64a5b",
+            "id": "component-SdsTableComponent-6466a84a71684fb0c329cdcac1c068c1",
             "file": "libs/packages/sam-material-extensions/src/lib/table/table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -156,7 +156,7 @@
                     "decorators": [
                         {
                             "name": "ViewChild",
-                            "stringifiedArguments": "MatSort"
+                            "stringifiedArguments": "MatSort, {static: true}"
                         }
                     ]
                 }
@@ -198,7 +198,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import {\n  Component,\n  Input,\n  TemplateRef,\n  OnInit,\n  ViewChild\n} from '@angular/core';\nimport { MatSort, MatTableDataSource } from '@angular/material';\n\nimport { SdsTableColumnSettings } from './models/table-column-settings.model';\nimport { SdsTableSettings } from './models/table-settings.model';\n\n@Component({\n  selector: 'sds-table',\n  templateUrl: './table.component.html',\n  styleUrls: ['./table.component.scss']\n})\nexport class SdsTableComponent implements OnInit {\n\n  @ViewChild(MatSort) sort: MatSort;\n\n  /**\n   * Data for table\n   */\n  @Input() data;\n\n  /**\n   * columns to display in header\n   * {@link SdsTableColumnSettings}\n   */\n  @Input() columns: SdsTableColumnSettings[];\n\n  /**\n   * template outlet for expandable detail\n   * all properties for the selected row will be available for use in the template after set using let-{new property name}\n   */\n  @Input() detailRow?: TemplateRef<any>;\n\n  /**\n   * table settings\n   * {@link SdsTableSettings}\n  */\n  @Input() settings?: SdsTableSettings;\n\n  /**\n   * table MatTableDataSource data source based on Input data\n   */\n  dataSource: MatTableDataSource<any>;\n\n  /**\n   * currently expanded row\n   */\n  expandedRow: any | null = null;\n\n  /**\n   * column ids displayed\n   */\n  columnIds: string[] = [];\n\n  constructor() {}\n\n  ngOnInit() {\n    // convert data to MatTableDataSource\n    this.dataSource = new MatTableDataSource(this.data);\n\n    // enable sort if set in settings\n    if (this.settings && this.settings.sort) {\n      this.dataSource.sort = this.sort;\n    } else {\n      this.sort.disabled = true;\n    }\n\n    // get column primary keys\n    this.columns.forEach(col => {\n      this.columnIds.push(col.primaryKey);\n    });\n\n    // add column if expandable\n    if (this.detailRow) {\n      this.columnIds.push('sdsExpandableRow');\n    }\n  }\n\n  // toggle clicked row's detail row\n  toggleRowExpansion(row: any) {\n    this.expandedRow = this.expandedRow === row ? null : row;\n  }\n}\n",
+            "sourceCode": "import {\n  Component,\n  Input,\n  TemplateRef,\n  OnInit,\n  ViewChild\n} from '@angular/core';\nimport { MatSort, MatTableDataSource } from '@angular/material';\n\nimport { SdsTableColumnSettings } from './models/table-column-settings.model';\nimport { SdsTableSettings } from './models/table-settings.model';\n\n@Component({\n  selector: 'sds-table',\n  templateUrl: './table.component.html',\n  styleUrls: ['./table.component.scss']\n})\nexport class SdsTableComponent implements OnInit {\n\n  @ViewChild(MatSort, {static: true}) sort: MatSort;\n\n  /**\n   * Data for table\n   */\n  @Input() data;\n\n  /**\n   * columns to display in header\n   * {@link SdsTableColumnSettings}\n   */\n  @Input() columns: SdsTableColumnSettings[];\n\n  /**\n   * template outlet for expandable detail\n   * all properties for the selected row will be available for use in the template after set using let-{new property name}\n   */\n  @Input() detailRow?: TemplateRef<any>;\n\n  /**\n   * table settings\n   * {@link SdsTableSettings}\n  */\n  @Input() settings?: SdsTableSettings;\n\n  /**\n   * table MatTableDataSource data source based on Input data\n   */\n  dataSource: MatTableDataSource<any>;\n\n  /**\n   * currently expanded row\n   */\n  expandedRow: any | null = null;\n\n  /**\n   * column ids displayed\n   */\n  columnIds: string[] = [];\n\n  constructor() {}\n\n  ngOnInit() {\n    // convert data to MatTableDataSource\n    this.dataSource = new MatTableDataSource(this.data);\n\n    // enable sort if set in settings\n    if (this.settings && this.settings.sort) {\n      this.dataSource.sort = this.sort;\n    } else {\n      this.sort.disabled = true;\n    }\n\n    // get column primary keys\n    this.columns.forEach(col => {\n      this.columnIds.push(col.primaryKey);\n    });\n\n    // add column if expandable\n    if (this.detailRow) {\n      this.columnIds.push('sdsExpandableRow');\n    }\n  }\n\n  // toggle clicked row's detail row\n  toggleRowExpansion(row: any) {\n    this.expandedRow = this.expandedRow === row ? null : row;\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {

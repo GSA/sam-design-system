@@ -3,17 +3,17 @@ const FORMLY = {
     "interfaces": [
         {
             "name": "SdsFormlyDialogData",
-            "id": "interface-SdsFormlyDialogData-eb18fa3af06795f8df3123cef4c4a842",
+            "id": "interface-SdsFormlyDialogData-c33267e3d4a142af0eed7189ff39fc24",
             "file": "libs/packages/sam-formly/src/lib/formly-dialog/formly-dialog-data.model.ts",
             "type": "interface",
-            "sourceCode": "import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';\nimport { FormGroup } from '@angular/forms';\n\nexport interface SdsFormlyDialogData {\n  fields: FormlyFieldConfig[];\n  originalFields?: FormlyFieldConfig[];\n  originalModel?: any;\n  cancel?: string;\n  form?: FormGroup;\n  model?: object;\n  options?: FormlyFormOptions;\n  submit?: string;\n  subtitle?: string;\n  title?: string;\n  isAdvanceFilter?: boolean;\n}\n",
+            "sourceCode": "import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';\nimport { FormGroup } from '@angular/forms';\n\nexport interface SdsFormlyDialogData {\n  fields: FormlyFieldConfig[];\n  cancel?: string;\n  form?: FormGroup;\n  model?: object;\n  options?: FormlyFormOptions;\n  submit?: string;\n  subtitle?: string;\n  title?: string;\n}\n",
             "properties": [
                 {
                     "name": "cancel",
                     "type": "string",
                     "optional": true,
                     "description": "",
-                    "line": 8
+                    "line": 6
                 },
                 {
                     "name": "fields",
@@ -27,63 +27,42 @@ const FORMLY = {
                     "type": "FormGroup",
                     "optional": true,
                     "description": "",
-                    "line": 9
-                },
-                {
-                    "name": "isAdvanceFilter",
-                    "type": "boolean",
-                    "optional": true,
-                    "description": "",
-                    "line": 15
+                    "line": 7
                 },
                 {
                     "name": "model",
                     "type": "object",
                     "optional": true,
                     "description": "",
-                    "line": 10
+                    "line": 8
                 },
                 {
                     "name": "options",
                     "type": "FormlyFormOptions",
                     "optional": true,
                     "description": "",
-                    "line": 11
-                },
-                {
-                    "name": "originalFields",
-                    "type": "FormlyFieldConfig[]",
-                    "optional": true,
-                    "description": "",
-                    "line": 6
-                },
-                {
-                    "name": "originalModel",
-                    "type": "any",
-                    "optional": true,
-                    "description": "",
-                    "line": 7
+                    "line": 9
                 },
                 {
                     "name": "submit",
                     "type": "string",
                     "optional": true,
                     "description": "",
-                    "line": 12
+                    "line": 10
                 },
                 {
                     "name": "subtitle",
                     "type": "string",
                     "optional": true,
                     "description": "",
-                    "line": 13
+                    "line": 11
                 },
                 {
                     "name": "title",
                     "type": "string",
                     "optional": true,
                     "description": "",
-                    "line": 14
+                    "line": 12
                 }
             ],
             "indexSignatures": [],
@@ -352,10 +331,10 @@ const FORMLY = {
     "classes": [
         {
             "name": "AbstractSdsFormly",
-            "id": "class-AbstractSdsFormly-0addd0eb5e60cad293dc58c80dbf4d05",
+            "id": "class-AbstractSdsFormly-c018a13b19c49a21ec24c775ed7a1da0",
             "file": "libs/packages/sam-formly/src/lib/formly/sds-formly.ts",
             "type": "class",
-            "sourceCode": "import { ChangeDetectorRef, DoCheck } from '@angular/core';\nimport { FieldType } from '@ngx-formly/core';\n\nexport abstract class AbstractSdsFormly extends FieldType implements DoCheck {\n\n  public cdr: ChangeDetectorRef;\n  public template: any;\n\n  public ngDoCheck () {\n    this.setProperties(\n      this.template,\n      (<any>this).field.templateOptions\n    );\n  }\n\n  public setProperties (component: any, configuration: any) {\n    Object.keys(configuration).forEach(\n      key => {\n        component[key] = configuration[key];\n      }\n    );\n    if ((<any>this).template.control) {\n      (<any>this).template.control = (<any>this).formControl;\n    }\n    this.cdr.detectChanges();\n  }\n}\n",
+            "sourceCode": "import { ChangeDetectorRef, DoCheck } from '@angular/core';\nimport { FieldType } from '@ngx-formly/core';\n\nexport abstract class AbstractSdsFormly extends FieldType implements DoCheck {\n\n  public cdr: ChangeDetectorRef;\n  public template: any = {};\n\n  public ngDoCheck () {\n    this.setProperties(\n      this.template,\n      (<any>this).field.templateOptions\n    );\n  }\n\n  public setProperties (component: any, configuration: any) {\n    Object.keys(configuration).forEach(\n      key => {\n        this.template[key] = configuration[key];\n      }\n    );\n    if ((<any>this).template.control) {\n      (<any>this).template.control = (<any>this).formControl;\n    }\n    this.cdr.detectChanges();\n  }\n}\n",
             "properties": [
                 {
                     "name": "cdr",
@@ -369,6 +348,7 @@ const FORMLY = {
                 },
                 {
                     "name": "template",
+                    "defaultValue": "{}",
                     "type": "any",
                     "optional": false,
                     "description": "",
@@ -509,7 +489,7 @@ const FORMLY = {
     "components": [
         {
             "name": "AdvancedFiltersComponent",
-            "id": "component-AdvancedFiltersComponent-62821476c638fba091de735f726aaf06",
+            "id": "component-AdvancedFiltersComponent-6041e8973e9768f5f8ef999fcf9f8dc8",
             "file": "libs/packages/sam-formly/src/lib/formly-filters/advanced-filters/advanced-filters.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -580,7 +560,7 @@ const FORMLY = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { SdsDialogService } from '@gsa-sam/components';\nimport { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';\n\nimport { SdsAdvancedFiltersService } from './sds-advanced-filters.service';\nimport { SdsFormlyDialogData } from '../../formly-dialog/formly-dialog-data.model';\nimport { SdsFormlyDialogComponent } from '../../formly-dialog/formly-dialog.component';\n\n@Component({\n  selector: 'sds-advanced-filters',\n  templateUrl: './advanced-filters.component.html',\n  styleUrls: ['./advanced-filters.component.scss']\n})\nexport class AdvancedFiltersComponent {\n  /**\n   * Pass in a Form Group for ReactiveForms Support\n   */\n  @Input() public form: FormGroup;\n\n  /**\n   *  Fields are used to configure the UI components\n   */\n  @Input() public fields: FormlyFieldConfig[];\n\n  /**\n   *  Model used to display the filter values.\n   */\n  @Input() public model: any;\n\n  /**\n   *    Options for the form.\n   */\n  @Input() public options: FormlyFormOptions = {};\n\n  constructor(\n    public dialog: SdsDialogService,\n    private advancedFiltersService: SdsAdvancedFiltersService\n  ) {}\n\n  openDialog(): void {\n    const modalFields: FormlyFieldConfig[] = this.advancedFiltersService.convertToCheckboxes(\n      this.fields\n    );\n\n    const data: SdsFormlyDialogData = {\n      fields: modalFields,\n      originalFields: this.fields,\n      originalModel: this.model,\n      submit: 'Update',\n      title: 'More Filters',\n      isAdvanceFilter: true\n    };\n\n    const dialogRef = this.dialog.open(SdsFormlyDialogComponent, {\n      width: 'medium',\n      data: data\n    });\n\n    dialogRef.afterClosed().subscribe(result => {\n      if (result) {\n        this.fields = result.fields;\n        this.model = result.model;\n      }\n    });\n  }\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { SdsDialogService } from '@gsa-sam/components';\nimport { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';\n\nimport { SdsAdvancedFiltersService } from './sds-advanced-filters.service';\nimport { SdsFormlyDialogData } from '../../formly-dialog/formly-dialog-data.model';\nimport { SdsFormlyDialogComponent } from '../../formly-dialog/formly-dialog.component';\n\n@Component({\n  selector: 'sds-advanced-filters',\n  templateUrl: './advanced-filters.component.html',\n  styleUrls: ['./advanced-filters.component.scss']\n})\nexport class AdvancedFiltersComponent {\n  /**\n   * Pass in a Form Group for ReactiveForms Support\n   */\n  @Input() public form: FormGroup;\n\n  /**\n   *  Fields are used to configure the UI components\n   */\n  @Input() public fields: FormlyFieldConfig[];\n\n  /**\n   *  Model used to display the filter values.\n   */\n  @Input() public model: any;\n\n  /**\n   *    Options for the form.\n   */\n  @Input() public options: FormlyFormOptions = {};\n\n  constructor(\n    public dialog: SdsDialogService,\n    private advancedFiltersService: SdsAdvancedFiltersService\n  ) {}\n\n  openDialog(): void {\n    const modalFields: FormlyFieldConfig[] = this.advancedFiltersService.convertToCheckboxes(\n      this.fields\n    );\n\n    const data: SdsFormlyDialogData = {\n      fields: modalFields,\n      submit: 'Update',\n      title: 'More Filters'\n    };\n\n    const dialogRef = this.dialog.open(SdsFormlyDialogComponent, {\n      width: 'medium',\n      data: data\n    });\n\n    dialogRef.afterClosed().subscribe(result => {\n      if (result) {\n        const response = this.advancedFiltersService.updateFields(\n          result,\n          this.fields,\n          this.model\n        );\n\n        this.fields = response.fields;\n        this.model = response.model;\n      }\n    });\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -654,7 +634,7 @@ const FORMLY = {
         },
         {
             "name": "FormlyAccordianFormFieldComponent",
-            "id": "component-FormlyAccordianFormFieldComponent-73231dafde99a174c37db0eb5c477b35",
+            "id": "component-FormlyAccordianFormFieldComponent-92865fd56605fb1f880f2f1400056e0e",
             "file": "libs/packages/sam-formly/src/lib/formly/wrappers/form-field.accordian.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -679,7 +659,7 @@ const FORMLY = {
                     "decorators": [
                         {
                             "name": "ViewChild",
-                            "stringifiedArguments": "'fieldComponent', {read: ViewContainerRef}"
+                            "stringifiedArguments": "'fieldComponent', {read: ViewContainerRef, static: false}"
                         }
                     ]
                 }
@@ -699,7 +679,7 @@ const FORMLY = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild, ViewContainerRef } from '@angular/core';\nimport { FieldWrapper } from '@ngx-formly/core';\nimport * as qs from 'qs';\n\n/**\n * @param {string} [to.expand] to expand the accordion\n * \n */\n\n@Component({\n  selector: 'sam-formly-accordian-form-field',\n  template: `\n    <sds-accordion multi=\"true\" displayMode=\"basic\">\n      <sds-accordion-item\n        class=\"sds-accordion__panel\"\n        [expanded]=\"modelHasValue()\"\n      >\n        <sds-accordion-item-header> {{ to.label }} </sds-accordion-item-header>\n        <ng-container #fieldComponent></ng-container>\n      </sds-accordion-item>\n    </sds-accordion>\n  `\n})\nexport class FormlyAccordianFormFieldComponent extends FieldWrapper {\n  @ViewChild('fieldComponent', { read: ViewContainerRef })\n  fieldComponent: ViewContainerRef;\n  constructor() {\n    super();\n  }\n  modelHasValue() {\n    if (this.to.hasOwnProperty('expand')) {\n      return this.to.expand;\n    } else {\n      const hasValue =\n        this.formControl.value instanceof Object\n          ? qs.stringify(this.formControl.value, { skipNulls: true })\n          : this.formControl.value;\n      return hasValue ? true : false;\n    }\n  }\n}\n",
+            "sourceCode": "import { Component, ViewChild, ViewContainerRef } from '@angular/core';\nimport { FieldWrapper } from '@ngx-formly/core';\nimport * as qs from 'qs';\n\n/**\n * @param {string} [to.expand] to expand the accordion\n * \n */\n\n@Component({\n  selector: 'sam-formly-accordian-form-field',\n  template: `\n    <sds-accordion multi=\"true\" displayMode=\"basic\">\n      <sds-accordion-item\n        class=\"sds-accordion__panel\"\n        [expanded]=\"modelHasValue()\"\n      >\n        <sds-accordion-item-header> {{ to.label }} </sds-accordion-item-header>\n        <ng-container #fieldComponent></ng-container>\n      </sds-accordion-item>\n    </sds-accordion>\n  `\n})\nexport class FormlyAccordianFormFieldComponent extends FieldWrapper {\n  @ViewChild('fieldComponent', { read: ViewContainerRef, static: false })\n  fieldComponent: ViewContainerRef;\n  constructor() {\n    super();\n  }\n  modelHasValue() {\n    if (this.to.hasOwnProperty('expand')) {\n      return this.to.expand;\n    } else {\n      const hasValue =\n        this.formControl.value instanceof Object\n          ? qs.stringify(this.formControl.value, { skipNulls: true })\n          : this.formControl.value;\n      return hasValue ? true : false;\n    }\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -766,7 +746,7 @@ const FORMLY = {
         },
         {
             "name": "FormlyCustomWrapperComponent",
-            "id": "component-FormlyCustomWrapperComponent-3998af0d210d8046b7c4ac3c7a648945",
+            "id": "component-FormlyCustomWrapperComponent-5fb8eb420eb58bce388456a5598214f0",
             "file": "libs/packages/sam-formly/src/lib/formly/wrappers/custom-wrapper.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -791,7 +771,7 @@ const FORMLY = {
                     "decorators": [
                         {
                             "name": "ViewChild",
-                            "stringifiedArguments": "'fieldComponent', {read: ViewContainerRef}"
+                            "stringifiedArguments": "'fieldComponent', {read: ViewContainerRef, static: false}"
                         }
                     ]
                 }
@@ -802,7 +782,7 @@ const FORMLY = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild, ViewContainerRef, OnInit } from '@angular/core';\nimport { FieldWrapper } from '@ngx-formly/core';\n@Component({\n  selector: 'sam-formly-filter-wrapper-form-field',\n  template: `\n  <sds-accordion multi=\"true\" displayMode=\"basic\">\n    <sds-accordion-item class=\"sds-accordion__panel\">\n      <sds-accordion-item-header> {{to.label}} </sds-accordion-item-header>\n      <div class=\"usa-form-group\" [class.usa-form-group--error]=\"showError\">\n      <label class=\"usa-label\" *ngIf=\"to.label && to.hideLabel !== true\" [attr.for]=\"id\" [ngClass]=\"to.labelClass\">\n        <span *ngIf=\"to.tagText\" class=\"usa-tag\"  [ngClass]=\"to.tagClass ? to.tagClass : 'sds-tag--info-white'\">{{to.tagText}}</span> \n        <span>{{ to.label }}</span>\n        <span *ngIf=\"!to.required && !to.hideOptional\"> (Optional)</span>\n      </label>  \n      <small *ngIf=\"to.description\" class=\"form-text text-muted\">{{ to.description }}</small>\n      <ng-template #fieldComponent></ng-template>\n      <div *ngIf=\"showError\" class=\"usa-error-message\" [style.display]=\"'block'\">\n        <formly-validation-message [field]=\"field\"></formly-validation-message>\n      </div>\n      </div>\n    </sds-accordion-item>\n  </sds-accordion>\n  `,\n})\nexport class FormlyCustomWrapperComponent extends FieldWrapper {\n  @ViewChild('fieldComponent', {read: ViewContainerRef}) fieldComponent: ViewContainerRef;\n}\n",
+            "sourceCode": "import { Component, ViewChild, ViewContainerRef, OnInit } from '@angular/core';\nimport { FieldWrapper } from '@ngx-formly/core';\n@Component({\n  selector: 'sam-formly-filter-wrapper-form-field',\n  template: `\n  <sds-accordion multi=\"true\" displayMode=\"basic\">\n    <sds-accordion-item class=\"sds-accordion__panel\">\n      <sds-accordion-item-header> {{to.label}} </sds-accordion-item-header>\n      <div class=\"usa-form-group\" [class.usa-form-group--error]=\"showError\">\n      <label class=\"usa-label\" *ngIf=\"to.label && to.hideLabel !== true\" [attr.for]=\"id\" [ngClass]=\"to.labelClass\">\n        <span *ngIf=\"to.tagText\" class=\"usa-tag\"  [ngClass]=\"to.tagClass ? to.tagClass : 'sds-tag--info-white'\">{{to.tagText}}</span> \n        <span>{{ to.label }}</span>\n        <span *ngIf=\"!to.required && !to.hideOptional\"> (Optional)</span>\n      </label>  \n      <small *ngIf=\"to.description\" class=\"form-text text-muted\">{{ to.description }}</small>\n      <ng-template #fieldComponent></ng-template>\n      <div *ngIf=\"showError\" class=\"usa-error-message\" [style.display]=\"'block'\">\n        <formly-validation-message [field]=\"field\"></formly-validation-message>\n      </div>\n      </div>\n    </sds-accordion-item>\n  </sds-accordion>\n  `,\n})\nexport class FormlyCustomWrapperComponent extends FieldWrapper {\n  @ViewChild('fieldComponent', {read: ViewContainerRef, static: false}) fieldComponent: ViewContainerRef;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -810,7 +790,7 @@ const FORMLY = {
         },
         {
             "name": "FormlyDescriptionWrapperComponent",
-            "id": "component-FormlyDescriptionWrapperComponent-0d144c4c0c60d2ecbcac9f71e7738988",
+            "id": "component-FormlyDescriptionWrapperComponent-72ea728d0807d511ef7903d31ca4357a",
             "file": "libs/packages/sam-formly/src/lib/formly/wrappers/description.wrapper.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -834,7 +814,7 @@ const FORMLY = {
                     "decorators": [
                         {
                             "name": "ViewChild",
-                            "stringifiedArguments": "'fieldComponent', {read: ViewContainerRef}"
+                            "stringifiedArguments": "'fieldComponent', {read: ViewContainerRef, static: false}"
                         }
                     ]
                 }
@@ -845,7 +825,7 @@ const FORMLY = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild, ViewContainerRef, OnInit } from '@angular/core';\nimport { FieldWrapper } from '@ngx-formly/core';\n/**\n * @param {string} [to.description] Add a description below the label\n * \n */\n@Component({\n  template: `\n    <div>\n      <small *ngIf=\"to.description\" class=\"form-text text-muted\">{{ to.description }}</small>\n      <ng-container #fieldComponent></ng-container>\n    </div>\n  `,\n})\nexport class FormlyDescriptionWrapperComponent extends FieldWrapper {\n  @ViewChild('fieldComponent', {read: ViewContainerRef}) fieldComponent: ViewContainerRef;\n}\n",
+            "sourceCode": "import { Component, ViewChild, ViewContainerRef, OnInit } from '@angular/core';\nimport { FieldWrapper } from '@ngx-formly/core';\n/**\n * @param {string} [to.description] Add a description below the label\n * \n */\n@Component({\n  template: `\n    <div>\n      <small *ngIf=\"to.description\" class=\"form-text text-muted\">{{ to.description }}</small>\n      <ng-container #fieldComponent></ng-container>\n    </div>\n  `,\n})\nexport class FormlyDescriptionWrapperComponent extends FieldWrapper {\n  @ViewChild('fieldComponent', {read: ViewContainerRef, static: false}) fieldComponent: ViewContainerRef;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -906,7 +886,7 @@ const FORMLY = {
         },
         {
             "name": "FormlyFieldAutoCompleteComponent",
-            "id": "component-FormlyFieldAutoCompleteComponent-c36a5fb988dc59440004d7721b904c52",
+            "id": "component-FormlyFieldAutoCompleteComponent-6a17acf161acb47816c11c06b5ca9c63",
             "file": "libs/packages/sam-formly/src/lib/formly/types/autocomplete.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -940,7 +920,7 @@ const FORMLY = {
                     "decorators": [
                         {
                             "name": "ViewChild",
-                            "stringifiedArguments": "SDSAutocompleteComponent"
+                            "stringifiedArguments": "SDSAutocompleteComponent, {static: true}"
                         }
                     ],
                     "modifierKind": [
@@ -962,6 +942,7 @@ const FORMLY = {
                 },
                 {
                     "name": "template",
+                    "defaultValue": "{}",
                     "type": "any",
                     "optional": false,
                     "description": "",
@@ -1034,7 +1015,7 @@ const FORMLY = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import {  Component,\n  ChangeDetectionStrategy,\n  ViewChild,\n  ChangeDetectorRef} from '@angular/core';\nimport { AbstractSdsFormly } from '../sds-formly';\nimport { SDSAutocompleteComponent } from '@gsa-sam/components'\n\n@Component({\n  selector: 'sds-formly-field-autocomplete',\n  template: `\n  <sds-autocomplete [formControl]=\"formControl\"></sds-autocomplete>\n  `,\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class FormlyFieldAutoCompleteComponent extends AbstractSdsFormly {\n @ViewChild(SDSAutocompleteComponent) public template: SDSAutocompleteComponent;\n defaultOptions = {\n  templateOptions: {\n    essentialModelFields: true\n  },\n};\n  constructor (_cdr: ChangeDetectorRef) {\n    super(); /* istanbul ignore next */\n    this.cdr = _cdr;\n  } \n }\n",
+            "sourceCode": "import {  Component,\n  ChangeDetectionStrategy,\n  ViewChild,\n  ChangeDetectorRef} from '@angular/core';\nimport { AbstractSdsFormly } from '../sds-formly';\nimport { SDSAutocompleteComponent } from '@gsa-sam/components'\n\n@Component({\n  selector: 'sds-formly-field-autocomplete',\n  template: `\n  <sds-autocomplete [formControl]=\"formControl\"></sds-autocomplete>\n  `,\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class FormlyFieldAutoCompleteComponent extends AbstractSdsFormly {\n @ViewChild(SDSAutocompleteComponent, {static: true}) public template: SDSAutocompleteComponent;\n defaultOptions = {\n  templateOptions: {\n    essentialModelFields: true\n  },\n};\n  constructor (_cdr: ChangeDetectorRef) {\n    super(); /* istanbul ignore next */\n    this.cdr = _cdr;\n  }\n }\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -1184,7 +1165,7 @@ const FORMLY = {
         },
         {
             "name": "FormlyFieldFileInfoComponent",
-            "id": "component-FormlyFieldFileInfoComponent-4875ef16d6ef382b02675db8c74c2c29",
+            "id": "component-FormlyFieldFileInfoComponent-90d5ac89f3086cea12f38fd5bedd4eaa",
             "file": "libs/packages/sam-formly/src/lib/formly/types/fileinfo.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1196,7 +1177,7 @@ const FORMLY = {
             "styles": [
                 "\n      .sds-card-selected {\n        border-color: #2672de !important;\n        border-width: 2px !important;\n      }\n    "
             ],
-            "template": "<div class=\"grid-row grid-gap padding-1\">\n  <div\n    *ngFor=\"\n      let option of (to.options | formlySelectOptions: field | async);\n      let i = index\n    \"\n  >\n    <div\n      class=\"sds-card mobile-lg:grid-col\"\n      [ngClass]=\"{ 'sds-card-selected': formControl.value == option.value }\"\n    >\n      <input\n        type=\"radio\"\n        [id]=\"id + '_' + i\"\n        class=\"usa-sr-only usa-radio__input\"\n        [name]=\"id\"\n        [class.usa-input--error]=\"showError\"\n        [attr.value]=\"option.value\"\n        [value]=\"option.value\"\n        [formControl]=\"formControl\"\n        [formlyAttributes]=\"field\"\n      />\n      <label [for]=\"id + '_' + i\">\n        <div class=\"sds-card__header sds-card__header--center\">\n          <h3 class=\"sds-card__title \">{{ option.label }}</h3>\n        </div>\n        <div class=\"sds-card__body sds-card__header--center\">\n          <span class=\"usa-tag padding-left-05\">{{ option.value }}</span>\n        </div>\n      </label>\n    </div>\n  </div>\n</div>\n",
+            "template": "<div class=\"grid-row grid-gap margin-top-1\">\n  <div\n    *ngFor=\"\n      let option of (to.options | formlySelectOptions: field | async);\n      let i = index\n    \"\n  >\n    <div\n      class=\"sds-card mobile-lg:grid-col\"\n      [ngClass]=\"{ 'sds-card-selected': formControl.value == option.value }\"\n    >\n      <input\n        type=\"radio\"\n        [id]=\"id + '_' + i\"\n        class=\"usa-sr-only usa-radio__input\"\n        [name]=\"id\"\n        [class.usa-input--error]=\"showError\"\n        [attr.value]=\"option.value\"\n        [value]=\"option.value\"\n        [formControl]=\"formControl\"\n        [formlyAttributes]=\"field\"\n      />\n      <label [for]=\"id + '_' + i\">\n        <div class=\"sds-card__header sds-card__header--center\">\n          <h3 class=\"sds-card__title \">{{ option.label }}</h3>\n        </div>\n        <div class=\"sds-card__body sds-card__header--center \">\n          <span\n            class=\"bg-base-light padding-1 padding-left-2 padding-right-2\"\n            >{{ option.value }}</span\n          >\n        </div>\n      </label>\n    </div>\n  </div>\n</div>\n",
             "templateUrl": [],
             "viewProviders": [],
             "inputsClass": [],
@@ -1208,7 +1189,15 @@ const FORMLY = {
                     "type": "object",
                     "optional": false,
                     "description": "",
-                    "line": 52
+                    "line": 56
+                },
+                {
+                    "name": "description",
+                    "defaultValue": "''",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 55
                 },
                 {
                     "name": "isSelected",
@@ -1216,7 +1205,7 @@ const FORMLY = {
                     "type": "boolean",
                     "optional": false,
                     "description": "",
-                    "line": 51
+                    "line": 54
                 }
             ],
             "methodsClass": [],
@@ -1225,7 +1214,7 @@ const FORMLY = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { FieldType } from '@ngx-formly/core';\n\n@Component({\n  selector: 'sds-formly-field-file',\n  template: `\n    <div class=\"grid-row grid-gap padding-1\">\n      <div\n        *ngFor=\"\n          let option of (to.options | formlySelectOptions: field | async);\n          let i = index\n        \"\n      >\n        <div\n          class=\"sds-card mobile-lg:grid-col\"\n          [ngClass]=\"{ 'sds-card-selected': formControl.value == option.value }\"\n        >\n          <input\n            type=\"radio\"\n            [id]=\"id + '_' + i\"\n            class=\"usa-sr-only usa-radio__input\"\n            [name]=\"id\"\n            [class.usa-input--error]=\"showError\"\n            [attr.value]=\"option.value\"\n            [value]=\"option.value\"\n            [formControl]=\"formControl\"\n            [formlyAttributes]=\"field\"\n          />\n          <label [for]=\"id + '_' + i\">\n            <div class=\"sds-card__header sds-card__header--center\">\n              <h3 class=\"sds-card__title \">{{ option.label }}</h3>\n            </div>\n            <div class=\"sds-card__body sds-card__header--center\">\n              <span class=\"usa-tag padding-left-05\">{{ option.value }}</span>\n            </div>\n          </label>\n        </div>\n      </div>\n    </div>\n  `,\n  styles: [\n    `\n      .sds-card-selected {\n        border-color: #2672de !important;\n        border-width: 2px !important;\n      }\n    `\n  ]\n})\nexport class FormlyFieldFileInfoComponent extends FieldType {\n  isSelected: boolean = false;\n  defaultOptions = {\n    templateOptions: {\n      options: []\n    }\n  };\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { FieldType } from '@ngx-formly/core';\n\n@Component({\n  selector: 'sds-formly-field-file',\n  template: `\n    <div class=\"grid-row grid-gap margin-top-1\">\n      <div\n        *ngFor=\"\n          let option of (to.options | formlySelectOptions: field | async);\n          let i = index\n        \"\n      >\n        <div\n          class=\"sds-card mobile-lg:grid-col\"\n          [ngClass]=\"{ 'sds-card-selected': formControl.value == option.value }\"\n        >\n          <input\n            type=\"radio\"\n            [id]=\"id + '_' + i\"\n            class=\"usa-sr-only usa-radio__input\"\n            [name]=\"id\"\n            [class.usa-input--error]=\"showError\"\n            [attr.value]=\"option.value\"\n            [value]=\"option.value\"\n            [formControl]=\"formControl\"\n            [formlyAttributes]=\"field\"\n          />\n          <label [for]=\"id + '_' + i\">\n            <div class=\"sds-card__header sds-card__header--center\">\n              <h3 class=\"sds-card__title \">{{ option.label }}</h3>\n            </div>\n            <div class=\"sds-card__body sds-card__header--center \">\n              <span\n                class=\"bg-base-light padding-1 padding-left-2 padding-right-2\"\n                >{{ option.value }}</span\n              >\n            </div>\n          </label>\n        </div>\n      </div>\n    </div>\n  `,\n  styles: [\n    `\n      .sds-card-selected {\n        border-color: #2672de !important;\n        border-width: 2px !important;\n      }\n    `\n  ]\n})\nexport class FormlyFieldFileInfoComponent extends FieldType {\n  isSelected: boolean = false;\n  description: string = '';\n  defaultOptions = {\n    templateOptions: {\n      options: []\n    }\n  };\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "\n      .sds-card-selected {\n        border-color: #2672de !important;\n        border-width: 2px !important;\n      }\n    \n",
@@ -1455,7 +1444,7 @@ const FORMLY = {
         },
         {
             "name": "FormlyFieldSearchComponent",
-            "id": "component-FormlyFieldSearchComponent-eecd6098b89099eb94e2b649dd691cfe",
+            "id": "component-FormlyFieldSearchComponent-b6229b2ddf512f9417d6b9f6f3374e79",
             "file": "libs/packages/sam-formly/src/lib/formly/types/search.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -1481,7 +1470,7 @@ const FORMLY = {
                     "decorators": [
                         {
                             "name": "ViewChild",
-                            "stringifiedArguments": "SdsSearchComponent"
+                            "stringifiedArguments": "SdsSearchComponent, {static: false}"
                         }
                     ],
                     "modifierKind": [
@@ -1503,6 +1492,7 @@ const FORMLY = {
                 },
                 {
                     "name": "template",
+                    "defaultValue": "{}",
                     "type": "any",
                     "optional": false,
                     "description": "",
@@ -1575,7 +1565,7 @@ const FORMLY = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import {  Component,\n    ChangeDetectionStrategy,\n    ViewChild,\n    ChangeDetectorRef } from '@angular/core';\n  import { AbstractSdsFormly } from '../sds-formly';\n  import { SdsSearchComponent } from '@gsa-sam/components'\n  \n  @Component({\n    selector: 'sds-formly-field-search',\n    template: `\n    <sds-search [formControl]=\"formControl\"></sds-search>\n    `,\n    changeDetection: ChangeDetectionStrategy.OnPush\n  })\n  export class FormlyFieldSearchComponent extends AbstractSdsFormly {\n  \n   @ViewChild(SdsSearchComponent) public template: SdsSearchComponent;\n  \n    constructor (_cdr: ChangeDetectorRef) {\n      super();\n      this.cdr = _cdr;\n    }\n   }\n  ",
+            "sourceCode": "import {  Component,\n    ChangeDetectionStrategy,\n    ViewChild,\n    ChangeDetectorRef } from '@angular/core';\n  import { AbstractSdsFormly } from '../sds-formly';\n  import { SdsSearchComponent } from '@gsa-sam/components'\n  \n  @Component({\n    selector: 'sds-formly-field-search',\n    template: `\n    <sds-search [formControl]=\"formControl\"></sds-search>\n    `,\n    changeDetection: ChangeDetectionStrategy.OnPush\n  })\n  export class FormlyFieldSearchComponent extends AbstractSdsFormly {\n\n   @ViewChild(SdsSearchComponent, {static: false}) public template: SdsSearchComponent;\n\n    constructor (_cdr: ChangeDetectorRef) {\n      super();\n      this.cdr = _cdr;\n    }\n   }\n  ",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -1681,7 +1671,7 @@ const FORMLY = {
         },
         {
             "name": "FormlyFieldTextComponent",
-            "id": "component-FormlyFieldTextComponent-2cea369d0ddf2c40fd9b4173b7ac0a51",
+            "id": "component-FormlyFieldTextComponent-ddf5eb3a329af9a45a431045d07ed8d1",
             "file": "libs/packages/sam-formly/src/lib/formly/types/text.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -1707,7 +1697,7 @@ const FORMLY = {
                     "decorators": [
                         {
                             "name": "ViewChild",
-                            "stringifiedArguments": "SdsTextComponent"
+                            "stringifiedArguments": "SdsTextComponent, {static: false}"
                         }
                     ],
                     "modifierKind": [
@@ -1729,6 +1719,7 @@ const FORMLY = {
                 },
                 {
                     "name": "template",
+                    "defaultValue": "{}",
                     "type": "any",
                     "optional": false,
                     "description": "",
@@ -1801,7 +1792,7 @@ const FORMLY = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import {  Component,\n  ChangeDetectionStrategy,\n  ViewChild,\n  ChangeDetectorRef } from '@angular/core';\nimport { FieldType } from '@ngx-formly/core';\nimport { AbstractSdsFormly } from '../sds-formly';\nimport { SdsTextComponent } from '@gsa-sam/components'\n\n@Component({\n  selector: 'sds-formly-field-text',\n  template: `\n  <sds-text [formControl]=\"formControl\"></sds-text>\n  `,\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class FormlyFieldTextComponent extends AbstractSdsFormly {\n\n @ViewChild(SdsTextComponent) public template: SdsTextComponent;\n\n  constructor (_cdr: ChangeDetectorRef) {\n    super(); /* istanbul ignore next */\n    this.cdr = _cdr;\n  }\n }\n",
+            "sourceCode": "import {  Component,\n  ChangeDetectionStrategy,\n  ViewChild,\n  ChangeDetectorRef } from '@angular/core';\nimport { FieldType } from '@ngx-formly/core';\nimport { AbstractSdsFormly } from '../sds-formly';\nimport { SdsTextComponent } from '@gsa-sam/components'\n\n@Component({\n  selector: 'sds-formly-field-text',\n  template: `\n  <sds-text [formControl]=\"formControl\"></sds-text>\n  `,\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class FormlyFieldTextComponent extends AbstractSdsFormly {\n\n @ViewChild(SdsTextComponent, {static: false}) public template: SdsTextComponent;\n\n  constructor (_cdr: ChangeDetectorRef) {\n    super(); /* istanbul ignore next */\n    this.cdr = _cdr;\n  }\n }\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -1829,7 +1820,7 @@ const FORMLY = {
         },
         {
             "name": "FormlyFormFieldFilterWrapperComponent",
-            "id": "component-FormlyFormFieldFilterWrapperComponent-a83a8b0d6805e9f1795477da603e3812",
+            "id": "component-FormlyFormFieldFilterWrapperComponent-573dd22ff024bd0f87653aa50e283e86",
             "file": "libs/packages/sam-formly/src/lib/formly/wrappers/form-field.filterwrapper.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1854,7 +1845,7 @@ const FORMLY = {
                     "decorators": [
                         {
                             "name": "ViewChild",
-                            "stringifiedArguments": "'fieldComponent', {read: ViewContainerRef}"
+                            "stringifiedArguments": "'fieldComponent', {read: ViewContainerRef, static: false}"
                         }
                     ]
                 }
@@ -1865,7 +1856,7 @@ const FORMLY = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild, ViewContainerRef, OnInit } from '@angular/core';\nimport { FieldWrapper } from '@ngx-formly/core';\n\n/**\n * @param {string} [to.ariaHidden] Hide the label\n * @param {string} [to.label] Text to be shown for the label\n */\n@Component({\n  selector: 'sam-formly-filter-wrapper-form-field',\n  template: `\n    <div  class=\"wrapper-body\">\n      <div class=\"sds-accordion__trigger header-label\" [attr.aria-hidden]=\"to.ariaHidden ? 'false' : 'true'\"> {{to.label}} </div>\n      <ng-container #fieldComponent></ng-container>\n    </div>\n  `,\n})\nexport class FormlyFormFieldFilterWrapperComponent extends FieldWrapper {\n  @ViewChild('fieldComponent', { read: ViewContainerRef }) fieldComponent: ViewContainerRef;\n}\n",
+            "sourceCode": "import { Component, ViewChild, ViewContainerRef, OnInit } from '@angular/core';\nimport { FieldWrapper } from '@ngx-formly/core';\n\n/**\n * @param {string} [to.ariaHidden] Hide the label\n * @param {string} [to.label] Text to be shown for the label\n */\n@Component({\n  selector: 'sam-formly-filter-wrapper-form-field',\n  template: `\n    <div  class=\"wrapper-body\">\n      <div class=\"sds-accordion__trigger header-label\" [attr.aria-hidden]=\"to.ariaHidden ? 'false' : 'true'\"> {{to.label}} </div>\n      <ng-container #fieldComponent></ng-container>\n    </div>\n  `,\n})\nexport class FormlyFormFieldFilterWrapperComponent extends FieldWrapper {\n  @ViewChild('fieldComponent', { read: ViewContainerRef, static: false }) fieldComponent: ViewContainerRef;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -1977,7 +1968,7 @@ const FORMLY = {
         },
         {
             "name": "FormlyGroupWrapperComponent",
-            "id": "component-FormlyGroupWrapperComponent-1466e008b6be951b7f970c9631c486aa",
+            "id": "component-FormlyGroupWrapperComponent-d72b37800e01c43f915a722df56e56cb",
             "file": "libs/packages/sam-formly/src/lib/formly/wrappers/group.wrapper.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2001,7 +1992,7 @@ const FORMLY = {
                     "decorators": [
                         {
                             "name": "ViewChild",
-                            "stringifiedArguments": "'fieldComponent', {read: ViewContainerRef}"
+                            "stringifiedArguments": "'fieldComponent', {read: ViewContainerRef, static: false}"
                         }
                     ]
                 }
@@ -2021,7 +2012,7 @@ const FORMLY = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild, ViewContainerRef } from '@angular/core';\nimport { FieldWrapper } from '@ngx-formly/core';\nimport * as qs from 'qs';\n\n/**\n * @param {string} [to.group] used to set the wrapper tupe\n * @param {string} [to.announceLabel] For screenreader\n * @param {string} [to.label] Text to be shown for the label\n * @param {string} [to.hideLabel] Hide the label\n * \n */\n@Component({\n  template: `\n    <ng-container [ngSwitch]=\"to.group\">\n      <ng-container *ngSwitchCase=\"'accordion'\">\n        <sds-accordion multi=\"true\" displayMode=\"basic\">\n          <sds-accordion-item\n            class=\"sds-accordion__panel\"\n            [expanded]=\"modelHasValue()\"\n          >\n            <sds-accordion-item-header>\n              <span\n                *ngIf=\"!to.hideLabel\"\n                [attr.aria-hidden]=\"!to.announceLabel ? undefined : 'true'\"\n              >\n                {{ to.label }}\n              </span>\n            </sds-accordion-item-header>\n            <ng-container #fieldComponent></ng-container>\n          </sds-accordion-item>\n        </sds-accordion>\n      </ng-container>\n      <ng-container *ngSwitchCase=\"'panel'\">\n        <div\n          class=\"sds-panel\"\n          [ngClass]=\"{ 'sds-panel--multiple': field?.fieldGroup?.length }\"\n        >\n          <div\n            class=\"sds-panel__header\"\n            *ngIf=\"!to.hideLabel\"\n            [attr.aria-hidden]=\"!to.announceLabel ? undefined : 'true'\"\n          >\n            {{ to.label }}\n          </div>\n          <div class=\"sds-panel__body\">\n            <ng-container #fieldComponent></ng-container>\n          </div>\n        </div>\n      </ng-container>\n      <ng-container *ngSwitchDefault>\n        <ng-container #fieldComponent></ng-container>\n      </ng-container>\n    </ng-container>\n  `\n})\nexport class FormlyGroupWrapperComponent extends FieldWrapper {\n  @ViewChild('fieldComponent', { read: ViewContainerRef })\n  fieldComponent: ViewContainerRef;\n  constructor() {\n    super();\n  }\n  modelHasValue() {\n    if (this.to.hasOwnProperty('expand')) {\n      return this.to.expand;\n    } else {\n      const hasValue =\n        this.formControl.value instanceof Object\n          ? qs.stringify(this.formControl.value, { skipNulls: true })\n          : this.formControl.value;\n      return hasValue ? true : false;\n    }\n  }\n}\n",
+            "sourceCode": "import { Component, ViewChild, ViewContainerRef } from '@angular/core';\nimport { FieldWrapper } from '@ngx-formly/core';\nimport * as qs from 'qs';\n\n/**\n * @param {string} [to.group] used to set the wrapper tupe\n * @param {string} [to.announceLabel] For screenreader\n * @param {string} [to.label] Text to be shown for the label\n * @param {string} [to.hideLabel] Hide the label\n * \n */\n@Component({\n  template: `\n    <ng-container [ngSwitch]=\"to.group\">\n      <ng-container *ngSwitchCase=\"'accordion'\">\n        <sds-accordion multi=\"true\" displayMode=\"basic\">\n          <sds-accordion-item\n            class=\"sds-accordion__panel\"\n            [expanded]=\"modelHasValue()\"\n          >\n            <sds-accordion-item-header>\n              <span\n                *ngIf=\"!to.hideLabel\"\n                [attr.aria-hidden]=\"!to.announceLabel ? undefined : 'true'\"\n              >\n                {{ to.label }}\n              </span>\n            </sds-accordion-item-header>\n            <ng-container #fieldComponent></ng-container>\n          </sds-accordion-item>\n        </sds-accordion>\n      </ng-container>\n      <ng-container *ngSwitchCase=\"'panel'\">\n        <div\n          class=\"sds-panel\"\n          [ngClass]=\"{ 'sds-panel--multiple': field?.fieldGroup?.length }\"\n        >\n          <div\n            class=\"sds-panel__header\"\n            *ngIf=\"!to.hideLabel\"\n            [attr.aria-hidden]=\"!to.announceLabel ? undefined : 'true'\"\n          >\n            {{ to.label }}\n          </div>\n          <div class=\"sds-panel__body\">\n            <ng-container #fieldComponent></ng-container>\n          </div>\n        </div>\n      </ng-container>\n      <ng-container *ngSwitchDefault>\n        <ng-container #fieldComponent></ng-container>\n      </ng-container>\n    </ng-container>\n  `\n})\nexport class FormlyGroupWrapperComponent extends FieldWrapper {\n  @ViewChild('fieldComponent', { read: ViewContainerRef, static: false })\n  fieldComponent: ViewContainerRef;\n  constructor() {\n    super();\n  }\n  modelHasValue() {\n    if (this.to.hasOwnProperty('expand')) {\n      return this.to.expand;\n    } else {\n      const hasValue =\n        this.formControl.value instanceof Object\n          ? qs.stringify(this.formControl.value, { skipNulls: true })\n          : this.formControl.value;\n      return hasValue ? true : false;\n    }\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -2241,7 +2232,7 @@ const FORMLY = {
         },
         {
             "name": "FormlyLabelWrapperComponent",
-            "id": "component-FormlyLabelWrapperComponent-0e2eac3e419967be45b8e8d1430dcde2",
+            "id": "component-FormlyLabelWrapperComponent-aaae733a895cb054044049489bcdc7dc",
             "file": "libs/packages/sam-formly/src/lib/formly/wrappers/label.wrapper.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2265,7 +2256,7 @@ const FORMLY = {
                     "decorators": [
                         {
                             "name": "ViewChild",
-                            "stringifiedArguments": "'fieldComponent', {read: ViewContainerRef}"
+                            "stringifiedArguments": "'fieldComponent', {read: ViewContainerRef, static: false}"
                         }
                     ]
                 }
@@ -2285,7 +2276,7 @@ const FORMLY = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild, ViewContainerRef, OnInit } from '@angular/core';\nimport { FieldWrapper } from '@ngx-formly/core';\n\n/**\n * @param {string} [to.tagClass] Class to be added to the tag (default: sds-tag--info-white)\n * @param {string} [to.tagText] Text to be shown inside the tag\n * @param {string} [to.label] Text to be shown for the label\n * @param {string} [to.required] Makes the field required\n * @param {string} [to.hideOptional] Remove the optional text\n *\n */\n@Component({\n  template: `\n    <div class=\"usa-form-group\" [class.usa-form-group--error]=\"showError\">\n      <label class=\"usa-label\" *ngIf=\"hasLabel()\" [attr.for]=\"id\" [ngClass]=\"{'usa-sr-only' : to.hideLabel || ((to.group==='panel' || to.group==='accordion') && field?.parent?.type!==\n      'formly-group') }\">\n        <span *ngIf=\"to.tagText\" class=\"usa-tag\"  [ngClass]=\"to.tagClass ? to.tagClass : 'sds-tag--info-white'\">{{to.tagText}}</span>\n        <span>{{ to.label }}</span>\n        <span *ngIf=\"!to.required && !to.hideOptional\"> (Optional)</span>\n      </label>\n      <ng-container #fieldComponent></ng-container>\n    </div>\n  `,\n})\nexport class FormlyLabelWrapperComponent extends FieldWrapper {\n  @ViewChild('fieldComponent', {read: ViewContainerRef}) fieldComponent: ViewContainerRef;\n  hasLabel(){\n    if(this.to.label){\n      if(!(this.field.type === 'checkbox' || this.field.type ===  'multicheckbox'))\n      {\n        return true;\n      }\n    }\n  }\n\n}\n",
+            "sourceCode": "import { Component, ViewChild, ViewContainerRef, OnInit } from '@angular/core';\nimport { FieldWrapper } from '@ngx-formly/core';\n\n/**\n * @param {string} [to.tagClass] Class to be added to the tag (default: sds-tag--info-white)\n * @param {string} [to.tagText] Text to be shown inside the tag\n * @param {string} [to.label] Text to be shown for the label\n * @param {string} [to.required] Makes the field required\n * @param {string} [to.hideOptional] Remove the optional text\n *\n */\n@Component({\n  template: `\n    <div class=\"usa-form-group\" [class.usa-form-group--error]=\"showError\">\n      <label class=\"usa-label\" *ngIf=\"hasLabel()\" [attr.for]=\"id\" [ngClass]=\"{'usa-sr-only' : to.hideLabel || ((to.group==='panel' || to.group==='accordion') && field?.parent?.type!==\n      'formly-group') }\">\n        <span *ngIf=\"to.tagText\" class=\"usa-tag\"  [ngClass]=\"to.tagClass ? to.tagClass : 'sds-tag--info-white'\">{{to.tagText}}</span>\n        <span>{{ to.label }}</span>\n        <span *ngIf=\"!to.required && !to.hideOptional\"> (Optional)</span>\n      </label>\n      <ng-container #fieldComponent></ng-container>\n    </div>\n  `,\n})\nexport class FormlyLabelWrapperComponent extends FieldWrapper {\n  @ViewChild('fieldComponent', {read: ViewContainerRef, static: false}) fieldComponent: ViewContainerRef;\n  hasLabel(){\n    if(this.to.label){\n      if(!(this.field.type === 'checkbox' || this.field.type ===  'multicheckbox'))\n      {\n        return true;\n      }\n    }\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -2550,7 +2541,7 @@ const FORMLY = {
         },
         {
             "name": "FormlyValidationWrapperComponent",
-            "id": "component-FormlyValidationWrapperComponent-7bb5b5cdb1385e21a129599323f0af99",
+            "id": "component-FormlyValidationWrapperComponent-18300b9f6c63a522dd7207aa4f0d303b",
             "file": "libs/packages/sam-formly/src/lib/formly/wrappers/validation.wrapper.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2574,7 +2565,7 @@ const FORMLY = {
                     "decorators": [
                         {
                             "name": "ViewChild",
-                            "stringifiedArguments": "'fieldComponent', {read: ViewContainerRef}"
+                            "stringifiedArguments": "'fieldComponent', {read: ViewContainerRef, static: false}"
                         }
                     ]
                 }
@@ -2585,7 +2576,7 @@ const FORMLY = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild, ViewContainerRef, OnInit } from '@angular/core';\nimport { FieldWrapper } from '@ngx-formly/core';\n/**\n * @param {string} [to.required] Makes the field required\n */\n@Component({\n  template: `\n    <ng-container #fieldComponent></ng-container>\n    <div *ngIf=\"showError\" class=\"usa-error-message\" [style.display]=\"'block'\">\n      <formly-validation-message [field]=\"field\"></formly-validation-message>\n    </div>\n  `,\n})\nexport class FormlyValidationWrapperComponent extends FieldWrapper {\n  @ViewChild('fieldComponent', {read: ViewContainerRef}) fieldComponent: ViewContainerRef;\n}\n",
+            "sourceCode": "import { Component, ViewChild, ViewContainerRef, OnInit } from '@angular/core';\nimport { FieldWrapper } from '@ngx-formly/core';\n/**\n * @param {string} [to.required] Makes the field required\n */\n@Component({\n  template: `\n    <ng-container #fieldComponent></ng-container>\n    <div *ngIf=\"showError\" class=\"usa-error-message\" [style.display]=\"'block'\">\n      <formly-validation-message [field]=\"field\"></formly-validation-message>\n    </div>\n  `,\n})\nexport class FormlyValidationWrapperComponent extends FieldWrapper {\n  @ViewChild('fieldComponent', {read: ViewContainerRef, static: false}) fieldComponent: ViewContainerRef;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -2646,7 +2637,7 @@ const FORMLY = {
         },
         {
             "name": "FormlyWrapperFormFieldComponent",
-            "id": "component-FormlyWrapperFormFieldComponent-653d62d97daa0526e1a6617022b69048",
+            "id": "component-FormlyWrapperFormFieldComponent-fee0cb460a29970da688db094c977401",
             "file": "libs/packages/sam-formly/src/lib/formly/wrappers/form-field.wrapper.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2671,7 +2662,7 @@ const FORMLY = {
                     "decorators": [
                         {
                             "name": "ViewChild",
-                            "stringifiedArguments": "'fieldComponent', {read: ViewContainerRef}"
+                            "stringifiedArguments": "'fieldComponent', {read: ViewContainerRef, static: false}"
                         }
                     ]
                 }
@@ -2682,7 +2673,7 @@ const FORMLY = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild, ViewContainerRef } from '@angular/core';\nimport { FieldWrapper } from '@ngx-formly/core';\n\n/**\n * @param {string} [to.tagClass] Class to be added to the tag (default: sds-tag--info-white)\n * @param {string} [to.tagText] Text to be shown inside the tag\n * @param {string} [to.labelClass] Class to be applied to the label\n * @param {string} [to.label] Text to be shown for the label\n * @param {string} [to.required] Makes the field required\n * @param {string} [to.description] Add a description below the label\n * @param {string} [to.hideOptional] Remove the optional text\n * @param {string} [to.hideLabel] Hide the label\n * \n */\n\n@Component({\n  selector: 'sds-formly-wrapper-form-field',\n  template: `\n<div class=\"usa-form-group\" [class.usa-form-group--error]=\"showError\">\n  <label class=\"usa-label\" *ngIf=\"to.label && to.hideLabel !== true\" [attr.for]=\"id\" [ngClass]=\"to.labelClass\">\n    <span *ngIf=\"to.tagText\" class=\"usa-tag\"  [ngClass]=\"to.tagClass ? to.tagClass : 'sds-tag--info-white'\">{{to.tagText}}</span>\n    <span>{{ to.label }}</span>\n    <span *ngIf=\"!to.required && !to.hideOptional\"> (Optional)</span>\n  </label>\n  <small *ngIf=\"to.description\" class=\"form-text text-muted\">{{ to.description }}</small>\n  <ng-template #fieldComponent></ng-template>\n  <div *ngIf=\"showError\" class=\"usa-error-message\" [style.display]=\"'block'\">\n    <formly-validation-message [field]=\"field\"></formly-validation-message>\n  </div>\n</div>\n  `,\n})\n\nexport class FormlyWrapperFormFieldComponent extends FieldWrapper {\n  @ViewChild('fieldComponent', { read: ViewContainerRef }) fieldComponent!: ViewContainerRef;\n}\n",
+            "sourceCode": "import { Component, ViewChild, ViewContainerRef } from '@angular/core';\nimport { FieldWrapper } from '@ngx-formly/core';\n\n/**\n * @param {string} [to.tagClass] Class to be added to the tag (default: sds-tag--info-white)\n * @param {string} [to.tagText] Text to be shown inside the tag\n * @param {string} [to.labelClass] Class to be applied to the label\n * @param {string} [to.label] Text to be shown for the label\n * @param {string} [to.required] Makes the field required\n * @param {string} [to.description] Add a description below the label\n * @param {string} [to.hideOptional] Remove the optional text\n * @param {string} [to.hideLabel] Hide the label\n * \n */\n\n@Component({\n  selector: 'sds-formly-wrapper-form-field',\n  template: `\n<div class=\"usa-form-group\" [class.usa-form-group--error]=\"showError\">\n  <label class=\"usa-label\" *ngIf=\"to.label && to.hideLabel !== true\" [attr.for]=\"id\" [ngClass]=\"to.labelClass\">\n    <span *ngIf=\"to.tagText\" class=\"usa-tag\"  [ngClass]=\"to.tagClass ? to.tagClass : 'sds-tag--info-white'\">{{to.tagText}}</span>\n    <span>{{ to.label }}</span>\n    <span *ngIf=\"!to.required && !to.hideOptional\"> (Optional)</span>\n  </label>\n  <small *ngIf=\"to.description\" class=\"form-text text-muted\">{{ to.description }}</small>\n  <ng-template #fieldComponent></ng-template>\n  <div *ngIf=\"showError\" class=\"usa-error-message\" [style.display]=\"'block'\">\n    <formly-validation-message [field]=\"field\"></formly-validation-message>\n  </div>\n</div>\n  `,\n})\n\nexport class FormlyWrapperFormFieldComponent extends FieldWrapper {\n  @ViewChild('fieldComponent', { read: ViewContainerRef, static: false }) fieldComponent!: ViewContainerRef;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -3100,7 +3091,7 @@ const FORMLY = {
         },
         {
             "name": "SdsFiltersComponent",
-            "id": "component-SdsFiltersComponent-3691aaef00a4236310d30b5dad75fcae",
+            "id": "component-SdsFiltersComponent-4ab676634d6d0ce4e019f98e974e1da0",
             "file": "libs/packages/sam-formly/src/lib/formly-filters/sds-filters.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3215,12 +3206,13 @@ const FORMLY = {
             ],
             "methodsClass": [
                 {
-                    "name": "addOption",
+                    "name": "checkForHide",
                     "args": [],
                     "optional": false,
-                    "returnType": "{}",
+                    "returnType": "void",
                     "typeParameters": [],
-                    "line": 120
+                    "line": 123,
+                    "description": "<p>This is for getting the model which has a value.</p>\n"
                 },
                 {
                     "name": "convertToModel",
@@ -3233,7 +3225,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "{}",
                     "typeParameters": [],
-                    "line": 210,
+                    "line": 213,
                     "jsdoctags": [
                         {
                             "name": "filters",
@@ -3255,7 +3247,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "{}",
                     "typeParameters": [],
-                    "line": 166,
+                    "line": 169,
                     "jsdoctags": [
                         {
                             "name": "filters",
@@ -3277,7 +3269,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "{}",
                     "typeParameters": [],
-                    "line": 178,
+                    "line": 181,
                     "jsdoctags": [
                         {
                             "name": "queryString",
@@ -3299,7 +3291,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 204,
+                    "line": 207,
                     "jsdoctags": [
                         {
                             "name": "_date",
@@ -3325,7 +3317,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 221,
+                    "line": 224,
                     "jsdoctags": [
                         {
                             "name": "prefix",
@@ -3362,7 +3354,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 145,
+                    "line": 147,
                     "jsdoctags": [
                         {
                             "name": "change",
@@ -3388,7 +3380,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 190,
+                    "line": 193,
                     "jsdoctags": [
                         {
                             "name": "prefix",
@@ -3417,7 +3409,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 155,
+                    "line": 158,
                     "jsdoctags": [
                         {
                             "name": "change",
@@ -3448,7 +3440,7 @@ const FORMLY = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import {\n  Component,\n  Input,\n  Output,\n  EventEmitter,\n  Optional,\n  OnInit,\n  ChangeDetectorRef,\n  HostListener\n} from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';\nimport { Router, ActivatedRoute } from '@angular/router';\nimport * as qs from 'qs';\nimport { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';\nimport { DatePipe } from '@angular/common';\n@Component({\n  selector: 'sds-filters',\n  templateUrl: './sds-filters.component.html'\n})\nexport class SdsFiltersComponent implements OnInit {\n  /**\n   * Pass in a Form Group for ReactiveForms Support\n   */\n  @Input() public form: FormGroup;\n\n  /**\n   *  Fields are used to configure the UI components\n   */\n  @Input() public fields: FormlyFieldConfig[];\n\n  /**\n   *  Model used to display the filter values.\n   */\n  @Input() public model: any;\n\n  /**\n   *    Options for the form.\n   */\n  @Input() public options: FormlyFormOptions = {};\n\n  /**\n   *  Emit results when model updated\n   * To enable History Tracking\n   *  If advanced filters dialog should be displayed -- defaults to false\n   */\n  @Input() advancedFilters: boolean = false;\n\n  /**\n   * Timer id for the timer awaiting the service call for more typeing\n   */\n  @Input() public isHistoryEnable: boolean = true;\n\n  /**\n   * To get clean model without null and empty\n   */\n  @Input() public getCleanModel: boolean = false;\n\n  /**\n   *  Emit results when model updated\n   */\n  // TODO: check type -- Formly models are typically objects\n  @Output() filterChange = new EventEmitter<object[]>();\n\n  _isObj = (obj: any): boolean => typeof obj === 'object' && obj !== null;\n  _isEmpty = (obj: any): boolean => Object.keys(obj).length === 0;\n  overwrite = (baseObj: any, newObj: any) => {\n    const result = {};\n    for (const key in baseObj) {\n      if (Array.isArray(baseObj[key])) {\n        result[key] = newObj[key] || null;\n      } else if (baseObj[key] instanceof Date) {\n        result[key] = newObj[key] === undefined ? null : new Date(newObj[key]);\n      } else if (this._isObj(baseObj[key])) {\n        result[key] = this.overwrite(baseObj[key], newObj[key] || {});\n      } else {\n        result[key] = newObj[key] || null;\n      }\n    }\n    return result;\n  };\n\n  constructor(\n    @Optional()\n    public formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,\n    private cdr: ChangeDetectorRef,\n    private router: Router,\n    private route: ActivatedRoute,\n    private datePipe: DatePipe\n  ) {}\n\n  @HostListener('window:popstate', ['$event'])\n  onpopstate(event) {\n    const queryString = window.location.search.substring(1);\n    const params = this.getUrlParams(queryString);\n    const updatedFormValue = this.overwrite(\n      this.form.getRawValue(),\n      this.convertToModel(params)\n    );\n    this.form.setValue(updatedFormValue);\n    this.updateChange(updatedFormValue);\n  }\n  ngOnInit(): void {\n    if (this.isHistoryEnable) {\n      if (this._isEmpty(this.form.getRawValue())) {\n        const queryString = window.location.search.substring(1);\n        const params = this.getUrlParams(queryString);\n        const paramModel = this.convertToModel(params);\n        this.updateChange(paramModel);\n        setTimeout(() => {\n          this.form.patchValue({\n            ...this.model,\n            ...paramModel\n          });\n        });\n      }\n    }\n  }\n\n  addOption() {\n    const updatedFields: FormlyFieldConfig[] = [];\n    this.fields.forEach(field => {\n      if (field) {\n        if (field.fieldGroup) {\n          field.fieldGroup.forEach(subField => {\n            if (subField.type == 'input') {\n              field.modelOptions.updateOn = 'blur';\n            } else if (subField.type == 'autocomplete') {\n              field.templateOptions.essentialModelFields = true;\n            }\n          });\n        } else {\n          if (field.type == 'input') {\n            field.modelOptions.updateOn = 'blur';\n          } else if (field.type == 'autocomplete') {\n            field.templateOptions.essentialModelFields = true;\n          }\n        }\n      }\n      updatedFields.push(field);\n    });\n    return updatedFields;\n  }\n\n  onModelChange(change: any) {\n    if (this.isHistoryEnable) {\n      const params = this.convertToParam(change);\n      this.router.navigate(['.'], {\n        relativeTo: this.route,\n        queryParams: params\n      });\n    }\n    this.updateChange(change);\n  }\n  updateChange(change) {\n    const updatedModel = this.getCleanModel\n      ? this.convertToModel(change)\n      : change;\n    this.filterChange.emit([updatedModel]);\n    if (this.formlyUpdateComunicationService) {\n      this.formlyUpdateComunicationService.updateFilter(updatedModel);\n    }\n    this.cdr.detectChanges();\n  }\n\n  convertToParam(filters) {\n    const encodedValues = qs.stringify(filters, {\n      skipNulls: true,\n      encode: false,\n      filter: this.shortFormatDate\n    });\n    if (encodedValues) {\n      return this.getUrlParams(encodedValues);\n    } else {\n      return '';\n    }\n  }\n  getUrlParams(queryString) {\n    const target = {};\n    queryString.split('&').forEach(pair => {\n      if (pair !== '') {\n        const splitpair = pair.split('=');\n        target[splitpair[0]] =\n          splitpair[1] === '' || splitpair[1] === 'false' ? null : splitpair[1];\n      }\n    });\n    return target;\n  }\n\n  shortFormatDate(prefix, value) {\n    const fixDigit = val => {\n      return val.toString().length === 1 ? '0' + val : val;\n    };\n    const getFormattedDate = date =>\n      `${fixDigit(\n        date.getMonth() + 1\n      )}/${date.getDate()}/${date.getFullYear()}`;\n    if (value instanceof Date) {\n      value = getFormattedDate(new Date(value));\n    }\n    return value;\n  }\n\n  isDate(_date) {\n    const _regExp = new RegExp(\n      '^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(.[0-9]+)?(Z)?$'\n    );\n    return _regExp.test(_date);\n  }\n  convertToModel(filters) {\n    let obj = {};\n    const encodedValues = qs.stringify(filters, {\n      skipNulls: true,\n      encode: false,\n      filter: this.longFormatDate\n    });\n    obj = qs.parse(encodedValues);\n    return obj;\n  }\n\n  longFormatDate(prefix, value) {\n    const val = decodeURIComponent(value);\n    const isDate = /^(\\d{1,2})[-\\/](\\d{1,2})[-\\/](\\d{4})$/.exec(val);\n    if (isDate) {\n      value = new Date(val).toISOString();\n    }\n    return value;\n  }\n}\n",
+            "sourceCode": "import {\n  Component,\n  Input,\n  Output,\n  EventEmitter,\n  Optional,\n  OnInit,\n  ChangeDetectorRef,\n  HostListener\n} from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';\nimport { Router, ActivatedRoute } from '@angular/router';\nimport * as qs from 'qs';\nimport { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';\nimport { DatePipe } from '@angular/common';\n@Component({\n  selector: 'sds-filters',\n  templateUrl: './sds-filters.component.html'\n})\nexport class SdsFiltersComponent implements OnInit {\n  /**\n   * Pass in a Form Group for ReactiveForms Support\n   */\n  @Input() public form: FormGroup;\n\n  /**\n   *  Fields are used to configure the UI components\n   */\n  @Input() public fields: FormlyFieldConfig[];\n\n  /**\n   *  Model used to display the filter values.\n   */\n  @Input() public model: any;\n\n  /**\n   *    Options for the form.\n   */\n  @Input() public options: FormlyFormOptions = {};\n\n  /**\n   *  Emit results when model updated\n   * To enable History Tracking\n   *  If advanced filters dialog should be displayed -- defaults to false\n   */\n  @Input() advancedFilters: boolean = false;\n\n  /**\n   * Timer id for the timer awaiting the service call for more typeing\n   */\n  @Input() public isHistoryEnable: boolean = true;\n\n  /**\n   * To get clean model without null and empty\n   */\n  @Input() public getCleanModel: boolean = false;\n\n  /**\n   *  Emit results when model updated\n   */\n  // TODO: check type -- Formly models are typically objects\n  @Output() filterChange = new EventEmitter<object[]>();\n\n  _isObj = (obj: any): boolean => typeof obj === 'object' && obj !== null;\n  _isEmpty = (obj: any): boolean => Object.keys(obj).length === 0;\n  overwrite = (baseObj: any, newObj: any) => {\n    const result = {};\n    for (const key in baseObj) {\n      if (Array.isArray(baseObj[key])) {\n        result[key] = newObj[key] || null;\n      } else if (baseObj[key] instanceof Date) {\n        result[key] = newObj[key] === undefined ? null : new Date(newObj[key]);\n      } else if (this._isObj(baseObj[key])) {\n        result[key] = this.overwrite(baseObj[key], newObj[key] || {});\n      } else {\n        result[key] = newObj[key] || null;\n      }\n    }\n    return result;\n  };\n\n  constructor(\n    @Optional()\n    public formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,\n    private cdr: ChangeDetectorRef,\n    private router: Router,\n    private route: ActivatedRoute,\n    private datePipe: DatePipe\n  ) {}\n\n  @HostListener('window:popstate', ['$event'])\n  onpopstate(event) {\n    const queryString = window.location.search.substring(1);\n    const params = this.getUrlParams(queryString);\n    const updatedFormValue = this.overwrite(\n      this.form.getRawValue(),\n      this.convertToModel(params)\n    );\n    this.form.setValue(updatedFormValue);\n    this.updateChange(updatedFormValue);\n  }\n  ngOnInit(): void {\n    if (this.isHistoryEnable) {\n      if (this._isEmpty(this.form.getRawValue())) {\n        const queryString = window.location.search.substring(1);\n        const params = this.getUrlParams(queryString);\n        const paramModel = this.convertToModel(params);\n        this.updateChange(paramModel);\n        this.checkForHide();\n        setTimeout(() => {\n          this.form.patchValue({\n            ...this.model,\n            ...paramModel\n          });\n        });\n      }\n    }\n  }\n  /**\n   * This is for getting the model which has a value.\n   */\n  checkForHide() {\n    let fieldWithValue = this.convertToParam(this.model);\n    let keys = [];\n    Object.keys(fieldWithValue).map(key => {\n      keys.push(key.replace(/\\[/g, '.').replace(/\\]/g, ''));\n    });\n    keys.forEach(key => {\n      const [lastKey] = key.split('.').slice(-1);\n      this.fields.forEach(field => {\n        if (key.includes(field.key)) {\n          let hiddenField;\n          if (field.fieldGroup) {\n            hiddenField = field.fieldGroup.find(item => item.key === lastKey);\n          } else {\n            hiddenField = field;\n          }\n          if (hiddenField.hide) {\n            hiddenField.hide = false;\n          }\n        }\n      });\n    });\n  }\n\n  onModelChange(change: any) {\n    if (this.isHistoryEnable) {\n      const params = this.convertToParam(change);\n      this.router.navigate(['.'], {\n        relativeTo: this.route,\n        queryParams: params,\n        queryParamsHandling: 'merge'\n      });\n    }\n    this.updateChange(change);\n  }\n  updateChange(change) {\n    const updatedModel = this.getCleanModel\n      ? this.convertToModel(change)\n      : change;\n    this.filterChange.emit([updatedModel]);\n    if (this.formlyUpdateComunicationService) {\n      this.formlyUpdateComunicationService.updateFilter(updatedModel);\n    }\n    this.cdr.detectChanges();\n  }\n\n  convertToParam(filters) {\n    const encodedValues = qs.stringify(filters, {\n      skipNulls: true,\n      encode: false,\n      filter: this.shortFormatDate\n    });\n    if (encodedValues) {\n      return this.getUrlParams(encodedValues);\n    } else {\n      return '';\n    }\n  }\n  getUrlParams(queryString) {\n    const target = {};\n    queryString.split('&').forEach(pair => {\n      if (pair !== '') {\n        const splitpair = pair.split('=');\n        target[splitpair[0]] =\n          splitpair[1] === '' || splitpair[1] === 'false' ? null : splitpair[1];\n      }\n    });\n    return target;\n  }\n\n  shortFormatDate(prefix, value) {\n    const fixDigit = val => {\n      return val.toString().length === 1 ? '0' + val : val;\n    };\n    const getFormattedDate = date =>\n      `${fixDigit(\n        date.getMonth() + 1\n      )}/${date.getDate()}/${date.getFullYear()}`;\n    if (value instanceof Date) {\n      value = getFormattedDate(new Date(value));\n    }\n    return value;\n  }\n\n  isDate(_date) {\n    const _regExp = new RegExp(\n      '^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(.[0-9]+)?(Z)?$'\n    );\n    return _regExp.test(_date);\n  }\n  convertToModel(filters) {\n    let obj = {};\n    const encodedValues = qs.stringify(filters, {\n      skipNulls: true,\n      encode: false,\n      filter: this.longFormatDate\n    });\n    obj = qs.parse(encodedValues);\n    return obj;\n  }\n\n  longFormatDate(prefix, value) {\n    const val = decodeURIComponent(value);\n    const isDate = /^(\\d{1,2})[-\\/](\\d{1,2})[-\\/](\\d{4})$/.exec(val);\n    if (isDate) {\n      value = new Date(val).toISOString();\n    }\n    return value;\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -3523,7 +3515,7 @@ const FORMLY = {
         },
         {
             "name": "SdsFormlyDialogComponent",
-            "id": "component-SdsFormlyDialogComponent-7dc472a9484e9cb178d6d50432101160",
+            "id": "component-SdsFormlyDialogComponent-22c521175e06cc88f656cb62a82ceebe",
             "file": "libs/packages/sam-formly/src/lib/formly-dialog/formly-dialog.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3545,7 +3537,7 @@ const FORMLY = {
                     "type": "SdsAdvancedFiltersService",
                     "optional": false,
                     "description": "",
-                    "line": 23,
+                    "line": 22,
                     "modifierKind": [
                         114
                     ]
@@ -3562,7 +3554,7 @@ const FORMLY = {
                     "type": "SdsFormlyDialogData",
                     "optional": false,
                     "description": "",
-                    "line": 25,
+                    "line": 24,
                     "decorators": [
                         {
                             "name": "Inject",
@@ -3578,7 +3570,7 @@ const FORMLY = {
                     "type": "SdsDialogRef<SdsFormlyDialogComponent>",
                     "optional": false,
                     "description": "",
-                    "line": 24,
+                    "line": 23,
                     "modifierKind": [
                         114
                     ]
@@ -3596,14 +3588,6 @@ const FORMLY = {
                     "optional": false,
                     "description": "",
                     "line": 14
-                },
-                {
-                    "name": "isAdvanceFilter",
-                    "defaultValue": "false",
-                    "type": "boolean",
-                    "optional": false,
-                    "description": "",
-                    "line": 20
                 },
                 {
                     "name": "model",
@@ -3634,7 +3618,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 28,
+                    "line": 27,
                     "modifierKind": [
                         114
                     ]
@@ -3645,7 +3629,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 56
+                    "line": 42
                 },
                 {
                     "name": "onSubmit",
@@ -3653,7 +3637,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 40
+                    "line": 36
                 }
             ],
             "hostBindings": [],
@@ -3661,7 +3645,7 @@ const FORMLY = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, Inject, OnInit } from '@angular/core';\nimport { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';\nimport { FormGroup } from '@angular/forms';\nimport { SdsDialogRef, SDS_DIALOG_DATA } from '@gsa-sam/components';\n\nimport { SdsFormlyDialogData } from './formly-dialog-data.model';\nimport { SdsAdvancedFiltersService } from '../formly-filters/advanced-filters/sds-advanced-filters.service';\n\n@Component({\n  selector: 'sds-formly-dialog',\n  templateUrl: './formly-dialog.component.html'\n})\nexport class SdsFormlyDialogComponent implements OnInit {\n  form: FormGroup;\n  model: any;\n  options: FormlyFormOptions;\n  fields: FormlyFieldConfig[];\n  cancel: string;\n  submit: string;\n  isAdvanceFilter: boolean = false;\n\n  constructor(\n    public advancedFiltersService: SdsAdvancedFiltersService,\n    public dialogRef: SdsDialogRef<SdsFormlyDialogComponent>,\n    @Inject(SDS_DIALOG_DATA) public data: SdsFormlyDialogData\n  ) {}\n\n  public ngOnInit() {\n    this.fields = this.data.fields;\n    this.form = this.data.form ? this.data.form : new FormGroup({});\n    this.model = this.data.model ? this.data.model : {};\n    this.options = this.data.options ? this.data.options : {};\n    this.cancel = this.data.cancel ? this.data.cancel : 'Cancel';\n    this.submit = this.data.submit ? this.data.submit : 'Submit';\n    this.isAdvanceFilter = this.data.isAdvanceFilter\n      ? this.data.isAdvanceFilter\n      : false;\n  }\n\n  onSubmit() {\n    if (this.form.valid) {\n      let results = {};\n      if (this.isAdvanceFilter) {\n        results = this.advancedFiltersService.updateFields(\n          this.model,\n          this.data.originalFields,\n          this.data.originalModel\n        );\n      } else {\n        results = { ...this.model };\n      }\n      this.dialogRef.close(this.model);\n    }\n  }\n\n  onCancel() {\n    if (!this.isAdvanceFilter) {\n      this.options.resetModel();\n    }\n    this.dialogRef.close();\n  }\n}\n",
+            "sourceCode": "import { Component, Inject, OnInit } from '@angular/core';\nimport { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';\nimport { FormGroup } from '@angular/forms';\nimport { SdsDialogRef, SDS_DIALOG_DATA } from '@gsa-sam/components';\n\nimport { SdsFormlyDialogData } from './formly-dialog-data.model';\nimport { SdsAdvancedFiltersService } from '../formly-filters/advanced-filters/sds-advanced-filters.service';\n\n@Component({\n  selector: 'sds-formly-dialog',\n  templateUrl: './formly-dialog.component.html'\n})\nexport class SdsFormlyDialogComponent implements OnInit {\n  form: FormGroup;\n  model: any;\n  options: FormlyFormOptions;\n  fields: FormlyFieldConfig[];\n  cancel: string;\n  submit: string;\n\n  constructor(\n    public advancedFiltersService: SdsAdvancedFiltersService,\n    public dialogRef: SdsDialogRef<SdsFormlyDialogComponent>,\n    @Inject(SDS_DIALOG_DATA) public data: SdsFormlyDialogData\n  ) {}\n\n  public ngOnInit() {\n    this.fields = this.data.fields;\n    this.form = this.data.form ? this.data.form : new FormGroup({});\n    this.model = this.data.model ? this.data.model : {};\n    this.options = this.data.options ? this.data.options : {};\n    this.cancel = this.data.cancel ? this.data.cancel : 'Cancel';\n    this.submit = this.data.submit ? this.data.submit : 'Submit';\n  }\n\n  onSubmit() {\n    if (this.form.valid) {\n      this.dialogRef.close(this.model);\n    }\n  }\n\n  onCancel() {\n    this.options.resetModel();\n    this.dialogRef.close();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -3682,7 +3666,7 @@ const FORMLY = {
                         "type": "SdsFormlyDialogData"
                     }
                 ],
-                "line": 20,
+                "line": 19,
                 "jsdoctags": [
                     {
                         "name": "advancedFiltersService",
