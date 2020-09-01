@@ -12,7 +12,6 @@
   "include": [
     "**/*.ts",
     "../../libs/component-sample/src/index.ts",
-    "../../libs/layout-sample/src/index.ts",
     "../../libs/sam-formly-sample/src/index.ts",
     "../../libs/documentation/src/index.ts"
   ]

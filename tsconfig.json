@@ -36,7 +36,6 @@
         "libs/packages/experimental/src/index.ts"
       ],
       "@gsa-sam/component-sample": ["libs/component-sample/src/index.ts"],
-      "@gsa-sam/layout-sample": ["libs/layout-sample/src/index.ts"],
       "@gsa-sam/sam-formly-sample": ["libs/sam-formly-sample/src/index.ts"],
       "@gsa-sam/documentation": ["libs/documentation/src/index.ts"]
     }
