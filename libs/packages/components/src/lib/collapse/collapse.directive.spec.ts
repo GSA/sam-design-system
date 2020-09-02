@@ -1,33 +1,45 @@
 import { CollapseDirective } from "./collapse.directive";
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { CollapseSampleComponent } from '../../../../../component-sample/src/lib/feature/collapse-sample/collapse-sample.component';
+import { async, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { Component } from '@angular/core';
 
+@Component({
+  template: `
+   <div class="text-center">
+  <button type="button"
+  class="usa-button text-center"
+  [attr.aria-expanded]="!isCollapsedContent"
+  aria-controls="collapseID"
+  (click)="isCollapsedContent = !isCollapsedContent"
+  > Show / Hide Content
+  </button>
+ </div>
+<p
+  id="collapseID"
+  [sdsCollapse]="isCollapsedContent"
+   class="bg-base-lighter margin-top-1 padding-2">
+   What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing.
+</p>`
+})
+class TestComponent {
+  public isCollapsedContent:boolean = true;
+}
 
 
 describe('CollapseSampleComponent', () => {
-  let component: CollapseSampleComponent;
+  let component: TestComponent;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
 
-    component = new CollapseSampleComponent();
 
     TestBed.configureTestingModule({
-      declarations: [ CollapseDirective, CollapseSampleComponent]
+      declarations: [ CollapseDirective, TestComponent]
     })
     .compileComponents();
-  }));
-
-   it('should be able to test directive', async(() => {
-    TestBed.overrideComponent(CollapseSampleComponent, {
-      set: {
-        template: '<div sdsCollapse></div>'
-      }
-    });
-  }));
+  });
 
   it('check directive value', () => {
-      const fixture = TestBed.createComponent(CollapseSampleComponent);
+      const fixture = TestBed.createComponent(TestComponent);
       component = fixture.componentInstance;
       expect(component.isCollapsedContent).toBeTruthy();
       const directiveEl = fixture.debugElement.query(By.directive(CollapseDirective));
