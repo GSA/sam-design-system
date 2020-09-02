@@ -5,9 +5,9 @@
   </button>
 
   <!-- =============== TITLE =============== -->
-  <h1 class="font-heading-md text-semibold tablet-lg:width-mobile">
-    Title Here
-  </h1>
+  <span class="sds-navbar__title">
+    Title here
+  </span>
 
   <!-- =============== PRIMARY/SECONDARY BUTTONS =============== -->
   <ng-container subheader-buttons-container>
@@ -27,7 +27,7 @@
   <!-- =============== ACTIONS BUTTONS =============== -->
   <sds-subheader-actions
     [model]="subheader"
-    (clicks)="log($event)"
+    (clicks)="onActionMenuItem($event)"
   ></sds-subheader-actions>
 
   <!-- =============== DRAWER CONTENT =============== -->
@@ -59,3 +59,6 @@
   </div>
 </ng-template>
 
+<pre>
+  {{ downloadResponse | json }}
+</pre>

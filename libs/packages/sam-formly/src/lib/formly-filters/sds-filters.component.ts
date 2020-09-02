@@ -107,6 +107,7 @@ export class SdsFiltersComponent implements OnInit {
         const params = this.getUrlParams(queryString);
         const paramModel = this.convertToModel(params);
         this.updateChange(paramModel);
+        this.checkForHide();
         setTimeout(() => {
           this.form.patchValue({
             ...this.model,
@@ -116,30 +117,31 @@ export class SdsFiltersComponent implements OnInit {
       }
     }
   }
-
-  addOption() {
-    const updatedFields: FormlyFieldConfig[] = [];
-    this.fields.forEach(field => {
-      if (field) {
-        if (field.fieldGroup) {
-          field.fieldGroup.forEach(subField => {
-            if (subField.type == 'input') {
-              field.modelOptions.updateOn = 'blur';
-            } else if (subField.type == 'autocomplete') {
-              field.templateOptions.essentialModelFields = true;
-            }
-          });
-        } else {
-          if (field.type == 'input') {
-            field.modelOptions.updateOn = 'blur';
-          } else if (field.type == 'autocomplete') {
-            field.templateOptions.essentialModelFields = true;
+  /**
+   * This is for getting the model which has a value.
+   */
+  checkForHide() {
+    let fieldWithValue = this.convertToParam(this.model);
+    let keys = [];
+    Object.keys(fieldWithValue).map(key => {
+      keys.push(key.replace(/\[/g, '.').replace(/\]/g, ''));
+    });
+    keys.forEach(key => {
+      const [lastKey] = key.split('.').slice(-1);
+      this.fields.forEach(field => {
+        if (key.includes(field.key)) {
+          let hiddenField;
+          if (field.fieldGroup) {
+            hiddenField = field.fieldGroup.find(item => item.key === lastKey);
+          } else {
+            hiddenField = field;
+          }
+          if (hiddenField.hide) {
+            hiddenField.hide = false;
           }
         }
-      }
-      updatedFields.push(field);
+      });
     });
-    return updatedFields;
   }
 
   onModelChange(change: any) {
@@ -147,7 +149,8 @@ export class SdsFiltersComponent implements OnInit {
       const params = this.convertToParam(change);
       this.router.navigate(['.'], {
         relativeTo: this.route,
-        queryParams: params
+        queryParams: params,
+        queryParamsHandling: 'merge'
       });
     }
     this.updateChange(change);
