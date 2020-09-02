@@ -4,5 +4,8 @@
     "types": ["jasmine", "node"],
     "typeRoots": ["node_modules/@types"]
   },
-  "include": ["**/*.ts"]
+  "include": ["**/*.ts"],
+  "paths": {
+    "@gsa-sam/documentation": ["libs/documentation/src/index.ts"]
+  }
 }

@@ -3,7 +3,8 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc/apps/sam-design-system-site",
     "types": ["node"],
-    "typeRoots": ["node_modules/@types"]
+    "typeRoots": ["node_modules/@types"],
+    "module": "esnext"
   },
   "exclude": [
     "test.ts",

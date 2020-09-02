@@ -369,10 +369,10 @@
     "packageManager": "npm"
   },
   "schematics": {
-    "@nrwl/schematics:application": {
+    "@nrwl/angular:application": {
       "style": "scss"
     },
-    "@nrwl/schematics:library": {
+    "@nrwl/angular:library": {
       "style": "scss"
     }
   },
