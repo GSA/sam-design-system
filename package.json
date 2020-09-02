@@ -89,7 +89,7 @@
     "@compodoc/compodoc": "^1.1.11",
     "@ngrx/store-devtools": "6.1.2",
     "@nrwl/builders": "7.5.0",
-    "@nrwl/schematics": "7.5.0",
+    "@nrwl/schematics": "^8.4.8",
     "@types/express": "4.16.0",
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
