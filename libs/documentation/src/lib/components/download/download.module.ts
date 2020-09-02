@@ -22,14 +22,14 @@ const DEMOS = {
     type: FormlyDialog,
     code: require('!!raw-loader!./demos/formly-modal/formly-modal.component'),
     markup: require('!!raw-loader!./demos/formly-modal/formly-modal.component.html'),
-    path: 'libs/documentation/src/lib/components/dialog/demos/formly-modal'
+    path: 'libs/documentation/src/lib/components/download/demos/formly-modal'
   },
   basic: {
     title: 'Download Modal Dialog',
     type: DownloadComponent,
     code: require('!!raw-loader!./demos/download/download.component'),
     markup: require('!!raw-loader!./demos/download/download.component.html'),
-    path: 'libs/documentation/src/lib/components/dialog/demos/download'
+    path: 'libs/documentation/src/lib/components/download/demos/download'
   }
 };
 
@@ -41,9 +41,9 @@ export const ROUTES = [
     data: {
       items: [
         {
-          pkg: 'layouts',
+          pkg: 'formly',
           type: 'components',
-          name: 'SdsDialogContainerComponent'
+          name: 'SdsFormlyDialogComponent'
         }
       ]
     },
