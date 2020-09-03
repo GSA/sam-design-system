@@ -67,7 +67,7 @@
     "@ngrx/effects": "8.6.0",
     "@ngrx/router-store": "8.6.0",
     "@ngrx/store": "8.6.0",
-    "@ngx-formly/core": "^5.6.0",
+    "@ngx-formly/core": "^5.10.0",
     "@nrwl/nx": "7.5.0",
     "@types/qs": "^6.2.3",
     "accessible-html5-video-player": "^1.0.6",
