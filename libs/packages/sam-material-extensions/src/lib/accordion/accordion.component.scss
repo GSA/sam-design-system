@@ -10,26 +10,29 @@
       @include u-font('sans', 'xs');
       @include u-text('semibold');
     }
+    .mat-accordion {
+      .mat-expansion-panel {
+        @include u-border('base-light');
+        @include u-border-top(0);
+        @include u-border-right('1px');
+        @include u-border-bottom('1px');
+        @include u-border-left('1px');
 
-    .mat-accordion .mat-expansion-panel:first-of-type {
-      @include u-border-top('1px');
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-    }
+        &:first-of-type {
+          @include u-border-top('1px');
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+        }
 
-    .mat-accordion .mat-expansion-panel:last-of-type {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-    }
+        &:last-of-type {
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+        }
 
-    .mat-expansion-panel {
-      @include u-border('1px');
-      @include u-border('base-light');
-      @include u-border-top(0);
-
-      .mat-expanded {
-        sds-accordion-title {
-          @include u-text('secondary-dark');
+        .mat-expanded {
+          sds-accordion-title {
+            @include u-text('secondary-dark');
+          }
         }
       }
     }
