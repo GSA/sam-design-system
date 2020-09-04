@@ -128,14 +128,23 @@ describe('SdsTableComponent', () => {
     it('should not have a sticky header', () => {
       const nativeEl = tableDe.nativeElement;
       const headerCell = nativeEl.querySelectorAll('th')[0];
-      expect(headerCell.style.position).not.toEqual("sticky");
+      expect(headerCell.offsetTop).toEqual(0);
     });
 
     // sticky columns
-    it('should not have a sticky first column', () => {
+    it('should not have a sticky first column by column.sticky is not set', () => {
       const nativeEl = tableDe.nativeElement;
       const dataCell = nativeEl.querySelectorAll('td')[0];
-      expect(dataCell.style.position).not.toEqual("sticky");
+      expect(dataCell.offsetLeft).toEqual(0);
+    });
+
+    it('should have a sticky first column by column.sticky is set', () => {
+      component.columns[0].sticky = true;
+      fixture.detectChanges();
+
+      const nativeEl = tableDe.nativeElement;
+      const dataCell = nativeEl.querySelectorAll('td')[0];
+      expect(dataCell.offsetLeft).toBeGreaterThan(0);
     });
   });
 
@@ -174,16 +183,7 @@ describe('SdsTableComponent', () => {
 
       const nativeEl = tableDe.nativeElement;
       const headerCell = nativeEl.querySelectorAll('th')[0];
-      expect(headerCell.style.position).toEqual("sticky");
-    });
-
-    it('should have a sticky first column if column.sticky is true', () => {
-      component.columns[0].sticky = true;
-      fixture.detectChanges();
-
-      const nativeEl = tableDe.nativeElement;
-      const dataCell = nativeEl.querySelectorAll('td')[0];
-      expect(dataCell.style.position).toEqual("sticky");
+      expect(headerCell.offsetTop).toBeGreaterThan(0);
     });
   });
 
