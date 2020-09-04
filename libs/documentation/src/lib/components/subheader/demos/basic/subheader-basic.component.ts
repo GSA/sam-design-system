@@ -9,7 +9,7 @@ import {
 import {
   SdsFormlyDialogComponent,
   SdsFormlyDialogData
-} from '@sam-design-system/sam-formly';
+} from '@gsa-sam/sam-formly';
 
 @Component({
   templateUrl: './subheader-basic.component.html',

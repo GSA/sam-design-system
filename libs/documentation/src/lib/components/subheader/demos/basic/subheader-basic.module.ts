@@ -10,7 +10,7 @@ import { FormlyModule } from '@ngx-formly/core';
 import {
   SdsFormlyModule,
   SdsFormlyDialogModule
-} from '@sam-design-system/sam-formly';
+} from '@gsa-sam/sam-formly';
 
 @NgModule({
   imports: [

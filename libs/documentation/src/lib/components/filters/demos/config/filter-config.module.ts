@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   SdsFiltersModule,
   SdsFormlyDialogModule
-} from '@sam-design-system/sam-formly';
+} from '@gsa-sam/sam-formly';
 
 @NgModule({
   imports: [

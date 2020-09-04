@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SdsTableColumnSettings, SdsTableSettings } from '@sam-design-system/sam-material-extensions';
+import { SdsTableColumnSettings, SdsTableSettings } from '@gsa-sam/sam-material-extensions';
 
 @Component({
   selector: 'gsa-sam-table-borderless',

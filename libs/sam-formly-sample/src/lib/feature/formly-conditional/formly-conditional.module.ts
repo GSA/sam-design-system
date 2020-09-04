@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormlyConditionalComponent } from './formly-conditional.component';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
-import { SdsFiltersModule } from '@sam-design-system/sam-formly';
+import { SdsFiltersModule } from '@gsa-sam/sam-formly';
 
 @NgModule({
   declarations: [FormlyConditionalComponent],
