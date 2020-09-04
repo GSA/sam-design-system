@@ -18,18 +18,6 @@
       <nav class="float-right">
         <ul class="usa-nav__primary usa-accordion">
           <li class="usa-nav__primary-item">
-            <a
-              class="usa-link margin-top-105 font-sans-2xs"
-              href="javascript:none;"
-              (click)="legacy = !legacy"
-              >{{
-                !legacy
-                  ? 'Switch to Legacy Version'
-                  : 'Switch to Current Version'
-              }}</a
-            >
-          </li>
-          <li class="usa-nav__primary-item">
             <a target="_blank" href="https://github.com/GSA/sam-design-system">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +45,6 @@
   <div class="grid-row grid-gap">
     <aside class="desktop:grid-col-3 border-base-light border-right-1px">
       <nav class="margin-bottom-2 margin-top-3">
-        <div *ngIf="!legacy; else: legacyMenu">
           <ul class="usa-list usa-list--unstyled padding-y-05">
             <li>
               <a
@@ -353,27 +340,6 @@
               </ul>
             </li>
             <li class="margin-y-2">
-              <a class="nav-heading">Form Examples</a>
-              <ul class="usa-sidenav">
-                <li class="usa-sidenav__item">
-                  <a
-                    [routerLink]="['formly/formlyForms']"
-                    routerLinkActive="usa-current"
-                  >
-                    Formly Forms
-                  </a>
-                </li>
-                <li class="usa-sidenav__item">
-                  <a
-                    [routerLink]="['formly/formlyConditional']"
-                    routerLinkActive="usa-current"
-                  >
-                    Formly Conditional
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="margin-y-2">
               <a class="nav-heading">Layout</a>
               <ul class="usa-sidenav">
                 <li class="usa-sidenav__item">
@@ -423,198 +389,24 @@
                 </li>
               </ul>
             </li>
+            <li class="margin-y-2">
+              <a class="nav-heading">Form Examples</a>
+              <ul class="usa-sidenav">
+                <li class="usa-sidenav__item">
+                  <a [routerLink]="['documentation/pages/formly-form']" routerLinkActive="usa-current">
+                    Formly Forms
+                  </a>
+                </li>
+                <li class="usa-sidenav__item">
+                  <a [routerLink]="['documentation/pages/formly-conditional']" routerLinkActive="usa-current">
+                    Formly Conditional
+                  </a>
+                </li>
+              </ul>
+            </li>
           </ul>
-        </div>
       </nav>
     </aside>
     <div class="desktop:grid-col-9"><router-outlet></router-outlet></div>
   </div>
 </div>
-
-<ng-template #legacyMenu>
-  <ul class="usa-list usa-list--unstyled padding-y-05">
-    <li class="margin-y-2">
-      <a class="nav-heading">Components</a>
-      <ul class="usa-sidenav">
-        <li class="usa-sidenav__item">
-          <a
-            [routerLink]="['component/video-player']"
-            routerLinkActive="usa-current"
-          >
-            Video-player
-          </a>
-        </li>
-        <li class="usa-sidenav__item">
-          <a [routerLink]="['component/popup']" routerLinkActive="usa-current">
-            Popup
-          </a>
-        </li>
-        <li class="usa-sidenav__item">
-          <a
-            [routerLink]="['component/collapse']"
-            routerLinkActive="usa-current"
-          >
-            Collapse
-          </a>
-        </li>
-        <li class="usa-sidenav__item">
-          <a [routerLink]="['component/header']" routerLinkActive="usa-current">
-            Header
-          </a>
-        </li>
-        <li class="usa-sidenav__item">
-          <a [routerLink]="['component/footer']" routerLinkActive="usa-current">
-            Footer
-          </a>
-        </li>
-        <li class="usa-sidenav__item">
-          <a
-            [routerLink]="['component/pagination']"
-            routerLinkActive="usa-current"
-          >
-            Pagination
-          </a>
-        </li>
-        <li class="usa-sidenav__item">
-          <a
-            [routerLink]="['component/toolbar']"
-            routerLinkActive="usa-current"
-          >
-            Toolbar
-          </a>
-        </li>
-        <li class="usa-sidenav__item">
-          <a [routerLink]="['component/icon']" routerLinkActive="usa-current">
-            Icon
-          </a>
-        </li>
-
-        <li class="usa-sidenav__item">
-          <a
-            [routerLink]="['component/sideNav']"
-            routerLinkActive="usa-current"
-          >
-            Side-Menu Navigation
-          </a>
-        </li>
-
-        <li class="usa-sidenav__item">
-          <a
-            [routerLink]="['component/sideFilters']"
-            routerLinkActive="usa-current"
-          >
-            Side-Menu Filters
-          </a>
-        </li>
-
-        <li class="usa-sidenav__item">
-          <a
-            [routerLink]="['component/searchResultList']"
-            routerLinkActive="usa-current"
-          >
-            Search Result List
-          </a>
-        </li>
-        <li class="usa-sidenav__item">
-          <a
-            [routerLink]="['component/searchResultListCard']"
-            routerLinkActive="usa-current"
-          >
-            Search Result List Card
-          </a>
-        </li>
-        <li class="usa-sidenav__item">
-          <a
-            [routerLink]="['layout/searchList']"
-            routerLinkActive="usa-current"
-          >
-            Search Result Layout Custom
-          </a>
-        </li>
-        <li class="usa-sidenav__item">
-          <a
-            [routerLink]="['layout/searchListService']"
-            routerLinkActive="usa-current"
-          >
-            Search Result Layout Component
-          </a>
-        </li>
-        <li class="usa-sidenav__item">
-          <a
-            [routerLink]="['formly/formlyInput']"
-            routerLinkActive="usa-current"
-          >
-            Formly Autocomplete
-          </a>
-        </li>
-        <li class="usa-sidenav__item">
-          <a
-            [routerLink]="['formly/formlyFilters']"
-            routerLinkActive="usa-current"
-          >
-            Formly Filters
-          </a>
-        </li>
-
-        <li class="usa-sidenav__item">
-          <a
-            [routerLink]="['component/subheader']"
-            routerLinkActive="usa-current"
-          >
-            Subheader
-          </a>
-        </li>
-        <li class="usa-sidenav__item">
-          <a [routerLink]="['component/search']" routerLinkActive="usa-current">
-            Search
-          </a>
-        </li>
-        <li class="usa-sidenav__item">
-          <a
-            [routerLink]="['component/autocomplete']"
-            routerLinkActive="usa-current"
-          >
-            Autocomplete
-          </a>
-        </li>
-        <li class="usa-sidenav__item">
-          <a [routerLink]="['component/dialog']" routerLinkActive="usa-current">
-            Dialog
-          </a>
-        </li>
-        <li class="usa-sidenav__item">
-          <a
-            [routerLink]="['component/actions-menu']"
-            routerLinkActive="usa-current"
-          >
-            Actions Menu
-          </a>
-        </li>
-        <li class="usa-sidenav__item">
-          <a
-            [routerLink]="['formly/formlyForms']"
-            routerLinkActive="usa-current"
-          >
-            Formly Forms
-          </a>
-        </li>
-        <li class="usa-sidenav__item">
-          <a
-            [routerLink]="['formly/formlyConditional']"
-            routerLinkActive="usa-current"
-          >
-            Formly Conditional
-          </a>
-        </li>
-        <li class="usa-sidenav__item">
-          <a
-            [routerLink]="['formly/FilterAlign']"
-            routerLinkActive="usa-current"
-          >
-            Formly Examples
-          </a>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</ng-template>
