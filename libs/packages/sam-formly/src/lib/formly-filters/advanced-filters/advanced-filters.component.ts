@@ -1,4 +1,4 @@
-import { Component,Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { SdsDialogService } from '@gsa-sam/components';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
@@ -12,10 +12,8 @@ import { SdsFormlyDialogComponent } from '../../formly-dialog/formly-dialog.comp
   templateUrl: './advanced-filters.component.html',
   styleUrls: ['./advanced-filters.component.scss']
 })
-
 export class AdvancedFiltersComponent {
-
-    /**
+  /**
    * Pass in a Form Group for ReactiveForms Support
    */
   @Input() public form: FormGroup;
@@ -38,17 +36,17 @@ export class AdvancedFiltersComponent {
   constructor(
     public dialog: SdsDialogService,
     private advancedFiltersService: SdsAdvancedFiltersService
-    ) { }
+  ) {}
 
   openDialog(): void {
-    const modalFields: FormlyFieldConfig[] = this.advancedFiltersService.convertToCheckboxes(this.fields);
+    const modalFields: FormlyFieldConfig[] = this.advancedFiltersService.convertToCheckboxes(
+      this.fields
+    );
 
     const data: SdsFormlyDialogData = {
       fields: modalFields,
-      originalFields: this.fields,
-      originalModel: this.model,
       submit: 'Update',
-      title: 'More Filters',
+      title: 'More Filters'
     };
 
     const dialogRef = this.dialog.open(SdsFormlyDialogComponent, {
@@ -58,10 +56,15 @@ export class AdvancedFiltersComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.fields = result.fields;
-        this.model = result.model;
+        const response = this.advancedFiltersService.updateFields(
+          result,
+          this.fields,
+          this.model
+        );
+
+        this.fields = response.fields;
+        this.model = response.model;
       }
     });
   }
-
 }
