@@ -118,7 +118,7 @@ describe('Formly Field input Component', () => {
 
 @Component({ selector: 'formly-form-input', template: '', entryComponents: [] })
 class TestComponent {
-    @ViewChild(FormlyForm, {static: false}) formlyForm: FormlyForm;
+    @ViewChild(FormlyForm) formlyForm: FormlyForm;
 
     fields = testComponentInputs.fields;
     form: FormGroup = testComponentInputs.form;

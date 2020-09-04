@@ -14,7 +14,7 @@ import {  Component,
   })
   export class FormlyFieldSearchComponent extends AbstractSdsFormly {
 
-   @ViewChild(SdsSearchComponent, {static: false}) public template: SdsSearchComponent;
+   @ViewChild(SdsSearchComponent) public template: SdsSearchComponent;
 
     constructor (_cdr: ChangeDetectorRef) {
       super();

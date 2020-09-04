@@ -9,8 +9,8 @@ import { NavigationHelper } from '../common-navigation/navigation-helper';
 })
 export class SdsHeaderComponent {
 
-  @ViewChild('usaNavOpen', {static: false}) openNavBtn: ElementRef;
-  @ViewChild('usaNavClose', {static: false}) closeNavBtn: ElementRef;
+  @ViewChild('usaNavOpen') openNavBtn: ElementRef;
+  @ViewChild('usaNavClose') closeNavBtn: ElementRef;
   mobileNavActive = false;
   /**
   * Navigation helper

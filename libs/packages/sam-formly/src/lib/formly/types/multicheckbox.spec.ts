@@ -239,7 +239,7 @@ describe('Formly Field multicheckbox Component', () => {
   entryComponents: []
 })
 class TestComponent {
-  @ViewChild(FormlyForm, {static: false}) formlyForm: FormlyForm;
+  @ViewChild(FormlyForm) formlyForm: FormlyForm;
 
   fields = testComponentInputs.fields;
   form: FormGroup = testComponentInputs.form;

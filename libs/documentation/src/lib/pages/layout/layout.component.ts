@@ -10,7 +10,7 @@ import { FilterService } from './filter.service';
   templateUrl: './layout.component.html'
 })
 export class ResultsLayoutComponent implements AfterViewInit, OnInit {
-  @ViewChild('resultList', {static: false}) resultList;
+  @ViewChild('resultList') resultList;
 
   fields: FormlyFieldConfig[] = [];
   form;

@@ -1,6 +1,8 @@
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { FormGroup } from '@angular/forms';
+import { Injectable } from "@angular/core";
  
+@Injectable()
 export class FilterService {
 
   public model = {};

@@ -13,11 +13,11 @@ export class SideNavigationOptional {
   form = new FormGroup({});
   filterModel: any;
 
-  @ViewChild('navigationAccordion', {static: false})
+  @ViewChild('navigationAccordion')
   navigationAccordion: CdkAccordionItem;
-  @ViewChild('filtersAccordion', {static: false})
+  @ViewChild('filtersAccordion')
   filtersAccordion: CdkAccordionItem;
-  @ViewChild('sideNav', {static: false}) sideNav;
+  @ViewChild('sideNav') sideNav;
   public selectedCategory: string;
 
   constructor(

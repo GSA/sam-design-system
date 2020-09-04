@@ -33,12 +33,12 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   /**
    * Ul list of elements
    */
-  @ViewChild('resultsList', {static: false}) resultsListElement: ElementRef;
+  @ViewChild('resultsList') resultsListElement: ElementRef;
 
   /**
    * input control
    */
-  @ViewChild('input', {static: false}) input: ElementRef;
+  @ViewChild('input') input: ElementRef;
 
   /**
    * Allow to insert a customized template for suggestions to use

@@ -1,7 +1,9 @@
 import { SearchListSampleData } from './search-list-sample.data';
 import { Observable, of } from 'rxjs';
 import { SearchListInterface, SearchParameters, SearchResult } from '@sam-design-system/layouts';
+import { Injectable } from "@angular/core";
 
+@Injectable()
 export class SearchListSampleService implements SearchListInterface {
     getData(search: SearchParameters): Observable<SearchResult> {
         let data = SearchListSampleData;
