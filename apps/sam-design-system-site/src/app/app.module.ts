@@ -11,7 +11,6 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { sds } from '@gsa-sam/sam-styles/src/icons/';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { MarkdownModule } from 'ngx-markdown';
-import { StoreModule } from '@ngrx/store';
 
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import xml from 'highlight.js/lib/languages/xml';
@@ -33,7 +32,6 @@ export function hljsLanguages() {
     BrowserAnimationsModule,
     FontAwesomeModule,
     RouterModule.forRoot(ROUTES, { scrollPositionRestoration: 'enabled' }),
-    StoreModule.forRoot({}),
     FormsModule,
     MarkdownModule.forRoot()
   ],
