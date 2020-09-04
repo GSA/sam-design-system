@@ -162,6 +162,10 @@ import { DocumentationSharedModule } from './shared';
 import { OverviewComponent } from './pages/overview/overview.component';
 import { ResultsLayoutModule } from './pages/layout/layout.module';
 import { ResultsLayoutComponent } from './pages/layout/layout.component';
+import { FormlyFormsModule } from './pages/formly-forms/formly-forms.module';
+import { FormlyFormsComponent } from './pages/formly-forms/formly-forms.component';
+import { FormlyConditionalModule } from './pages/formly-conditional/formly-conditional.module';
+import { FormlyConditionalComponent } from './pages/formly-conditional/formly-conditional.component';
 
 declare var require: any;
 
@@ -214,6 +218,11 @@ export const ROUTES: Routes = [
   { path: 'components/validation', children: VALIDATION_ROUTES },
   { path: 'components/templateoptions', children: TEMPLATEOPTIONS_ROUTES },
 
+  // Form Examples
+  { path: 'pages', pathMatch: 'full', redirectTo: 'pages/formly-form' },
+  { path: 'pages/formly-form', component: FormlyFormsComponent},
+  { path: 'pages/formly-conditional', component: FormlyConditionalComponent},
+
   // Material
   { path: 'components/table', children: TABLE_ROUTES },
 
@@ -263,7 +272,9 @@ export const ROUTES: Routes = [
     ValidationWrapperModule,
     TemplateOptionsModule,
     TableModule,
-    IconsModule
+    IconsModule,
+    FormlyFormsModule,
+    FormlyConditionalModule
   ]
 })
 export class DocumentationModule {

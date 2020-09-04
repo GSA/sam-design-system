@@ -328,68 +328,6 @@
         }
       }
     },
-    "component-sample": {
-      "root": "libs/component-sample",
-      "sourceRoot": "libs/component-sample/src",
-      "projectType": "library",
-      "prefix": "gsa-sam",
-      "architect": {
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/component-sample/src/test.ts",
-            "tsConfig": "libs/component-sample/tsconfig.spec.json",
-            "karmaConfig": "libs/component-sample/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/component-sample/tsconfig.lib.json",
-              "libs/component-sample/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/schematics:component": {
-          "styleext": "scss"
-        }
-      }
-    },
-    "layout-sample": {
-      "root": "libs/layout-sample",
-      "sourceRoot": "libs/layout-sample/src",
-      "projectType": "library",
-      "prefix": "gsa-sam",
-      "architect": {
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/layout-sample/src/test.ts",
-            "tsConfig": "libs/layout-sample/tsconfig.spec.json",
-            "karmaConfig": "libs/layout-sample/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/layout-sample/tsconfig.lib.json",
-              "libs/layout-sample/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/schematics:component": {
-          "styleext": "scss"
-        }
-      }
-    },
     "documentation": {
       "root": "libs/documentation",
       "sourceRoot": "libs/documentation/src",
