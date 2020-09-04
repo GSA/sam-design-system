@@ -8,93 +8,93 @@ import {
   Directive,
   ContentChild,
   QueryList,
-  ContentChildren
+  ContentChildren,
+  ElementRef
 } from '@angular/core';
 
 import {MatAccordion} from '@angular/material/expansion';
 
+
+@Directive({selector: 'sds-accordion-title'})
+export class SdsAccordionTitleDirective {}
+
+@Directive({selector: 'sds-accordion-content'})
+export class SdsAccordionContentDirective {}
+
 @Component({
   selector: 'sds-accordion-item',
   template: `
-    <mat-expansion-panel [(expanded)]="expanded">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <ng-content select="[sds-accordion-title]"></ng-content>
-        </mat-panel-title>
-        <span class="sds-expansion-indicator" [ngClass]="{'sds-expansion-indicator--expanded' : expanded}"></span>
-      </mat-expansion-panel-header>
-      <ng-content select="[sds-accordion-content]"></ng-content>
-    </mat-expansion-panel>
-  `,
-  styleUrls: ['./accordion-item.component.scss']
+    <ng-template #itemTitleTemplate>
+      <ng-content #title select="sds-accordion-title"></ng-content>
+    </ng-template>
+
+    <ng-template #itemContentTemplate>
+      <ng-content #content select="sds-accordion-content"></ng-content>
+    </ng-template>
+  `
 })
 export class SdsAccordionItemComponent {
-  @Input() id!: string;
-  expanded = true;
+
+  @ViewChild('itemTitleTemplate') itemTitleTemplate: TemplateRef<any>;
+  @ViewChild('itemContentTemplate') itemContentTemplate: TemplateRef<any>;
+
+  @Input() expanded = false;
+
+  @Input() disabled = false;
+
+  /** Toggles the expanded state of the expansion panel. */
+  toggle(): void {
+    this.expanded = !this.expanded;
+  }
+
+  /** Sets the expanded state of the expansion panel to false. */
+  close(): void {
+    this.expanded = false;
+  }
+
+  /** Sets the expanded state of the expansion panel to true. */
+  open(): void {
+    this.expanded = true;
+  }
+
+  /** Toggles the disabled state of the expansion panel. */
+  toggleDisabled(): void {
+    this.disabled = !this.disabled;
+    if(this.disabled) {
+      this.expanded = false;
+    }
+  }
+
 }
-
-
 
 @Component({
   selector: 'sds-accordion-next',
   templateUrl: './accordion.component.html',
   styleUrls: ['./accordion.component.scss']
 })
-export class SdsAccordionComponent implements AfterContentInit {
+export class SdsAccordionComponent {
 
   @ViewChild(MatAccordion) accordion: MatAccordion;
 
-  //@ContentChild(SdsAccordionItemDirective) accordionItem!: SdsAccordionItemDirective;
-  @ContentChildren(SdsAccordionItemComponent, {descendants: true}) accordionItems!: QueryList<SdsAccordionItemComponent>;
+  @ContentChildren(SdsAccordionItemComponent) accordionItems!: QueryList<SdsAccordionItemComponent>;
 
-  // @ViewChild(MatSort) sort: MatSort;
+  @Input() multi = false;
 
-  // /**
-  //  * Data for table
-  //  */
-  // @Input() data;
+  @Input() displayMode = 'flat';
 
-  // /**
-  //  * columns to display in header
-  //  * {@link SdsTableColumnSettings}
-  //  */
-  // @Input() columns: SdsTableColumnSettings[];
-
-  // /**
-  //  * template outlet for expandable detail
-  //  * all properties for the selected row will be available for use in the template after set using let-{new property name}
-  //  */
-  // @Input() detailRow?: TemplateRef<any>;
-
-  // /**
-  //  * table settings
-  //  * {@link SdsTableSettings}
-  // */
-  // @Input() settings?: SdsTableSettings;
-
-  // /**
-  //  * table MatTableDataSource data source based on Input data
-  //  */
-  // dataSource: MatTableDataSource<any>;
-
-  // /**
-  //  * currently expanded row
-  //  */
-  // expandedRow: any | null = null;
-
-  // /**
-  //  * column ids displayed
-  //  */
-  // columnIds: string[] = [];
-
-  // constructor() {}
-
-
-  ngAfterContentInit() {
-    console.log(this.accordionItems);
+  /** Opens all accordion items. */
+  openAll(): void {
+    this.accordion.openAll();
   }
 
-  // toggleRowExpansion(row: any) {
-  //   this.expandedRow = this.expandedRow === row ? null : row;
-  // }
+  /** Closes all accordion items. */
+  closeAll(): void {
+    this.accordion.closeAll();
+  }
+
+  /** Toggles the multi state of the accordion. */
+  toggleMulti(): void {
+    this.multi = !this.multi;
+  }
+
 }

@@ -1,5 +1,39 @@
-mat-panel-title {
-  line-height:25px;
+@import "~@gsa-sam/sam-styles/src/stylesheets/theme/_styles";
+@import "~uswds/src/stylesheets/packages/_required";
+
+
+
+
+::ng-deep {
+  sds-accordion-next {
+    sds-accordion-title {
+      @include u-font('sans', 'xs');
+      @include u-text('semibold');
+    }
+
+    .mat-accordion .mat-expansion-panel:first-of-type {
+      @include u-border-top('1px');
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+    .mat-accordion .mat-expansion-panel:last-of-type {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .mat-expansion-panel {
+      @include u-border('1px');
+      @include u-border('base-light');
+      @include u-border-top(0);
+
+      .mat-expanded {
+        sds-accordion-title {
+          @include u-text('secondary-dark');
+        }
+      }
+    }
+  }
 }
 
 .sds-expansion-indicator {
@@ -47,4 +81,19 @@ mat-panel-title {
   &.sds-expansion-indicator--expanded::before {
     content: none;
   }
+}
+
+
+// Material overrides
+
+.mat-expansion-panel .mat-expansion-panel-header.cdk-keyboard-focused:not([aria-disabled=true]), .mat-expansion-panel .mat-expansion-panel-header.cdk-program-focused:not([aria-disabled=true]), .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:hover:not([aria-disabled=true]) {
+  @include u-bg('accent-cool-light')
+}
+
+.mat-expansion-panel {
+  box-shadow: none;
+}
+
+mat-panel-title {
+  line-height:25px;
 }
