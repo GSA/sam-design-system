@@ -29,6 +29,26 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
     ]
   };
 
+  /* Sort config change demo */
+  defaultListConfig: SearchListConfiguration = {
+    defaultSortValue: 'legalBusinessName',
+    pageSize: 25,
+    sortList: [
+      { text: 'Entity Name', value: 'legalBusinessName' },
+      { text: 'Status', value: 'registrationStatus' }
+    ]
+  };
+
+  updatedListConfig: SearchListConfiguration = {
+    defaultSortValue: 'cageCode',
+    pageSize: 25,
+    sortList: [
+      { text: 'Entity Name', value: 'legalBusinessName' },
+      { text: 'Cage Code', value: 'cageCode' },
+      { text: 'Status', value: 'registrationStatus' }
+    ]
+  };
+
   constructor(
     public service: DataService,
     public filterService: FilterService
@@ -43,5 +63,15 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
     this.filterChange$.subscribe(res => {
       this.resultList.updateFilter(res);
     });
+  }
+
+  updateConfig(update: boolean) {
+    if(update) {
+      this.listConfig = { ...this.updatedListConfig };
+    }
+    else {
+      this.listConfig = { ...this.defaultListConfig };
+    }
+
   }
 }

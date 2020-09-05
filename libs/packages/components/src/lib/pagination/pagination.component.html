@@ -4,7 +4,7 @@
     <label class="usa-label font-sans-3xs margin-top-1 text-italic text-base usa-sr-only"
       [attr.for]="paginationConfiguration.id + '-currentPage'">Current Page</label>
     <input [attr.id]="paginationConfiguration.id +'-currentPage'"
-      class="usa-input usa-input-sm font-sans-3xs text-center border-base-light" #currentPage
+      class="usa-input usa-input--small font-sans-3xs text-center border-base-light" #currentPage
       (ngModelChange)="valuechange($event)" [(ngModel)]="page.pageNumber" type="number" min="1"
       [(attr.max)]="page.totalPages" (focusout)="currentPageFocusOut()" aria-label="current page" [ngStyle]="{'width': (20 + page.totalPages.toString().length * 10) +'px'}" />
     <span class="sds-pagination__total">

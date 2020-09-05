@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ContentChild, TemplateRef, Optional } from '@angular/core';
+import { Component, OnInit, Input, ContentChild, TemplateRef, Optional, OnChanges, SimpleChanges } from '@angular/core';
 import { BehaviorSubject } from "rxjs";
 import { SearchListInterface, SearchListConfiguration } from './model/search-list-layout.model';
 import { SDSFormlyUpdateComunicationService } from '@gsa-sam/sam-formly';
@@ -8,7 +8,7 @@ import { SDSFormlyUpdateComunicationService } from '@gsa-sam/sam-formly';
   templateUrl: './search-list-layout.component.html',
   styleUrls: ['./search-list-layout.component.scss']
 })
-export class SearchListLayoutComponent implements OnInit {
+export class SearchListLayoutComponent implements OnInit, OnChanges {
 
   /**
   * Child Template to be used to display the data for each item in the list of items
@@ -28,6 +28,14 @@ export class SearchListLayoutComponent implements OnInit {
    */
   @Input()
   configuration: SearchListConfiguration;
+
+  ngOnChanges(changes: SimpleChanges) {
+    if(changes.configuration.currentValue) {
+      this.configuration = changes.configuration.currentValue;
+      this.sortField = this.configuration.defaultSortValue;
+      this.onSelectChange();
+    }
+  }
 
   /**
    * Filter information
