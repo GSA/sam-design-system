@@ -86,6 +86,9 @@
   }
 }
 
+.mat-expansion-panel-header[aria-disabled=true] .sds-expansion-indicator {
+  opacity: 0.26;
+}
 
 // Material overrides
 

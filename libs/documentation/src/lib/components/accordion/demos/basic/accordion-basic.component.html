@@ -1,4 +1,4 @@
-<sds-accordion-next #sdsAccordionDemo>
+<sds-accordion-next [(multi)]="multi" #sdsAccordionDemo>
   <sds-accordion-item #first>
     <sds-accordion-title>Chief Financial Officers Council Grants Training</sds-accordion-title>
     <sds-accordion-content>Basic knowledge training modules on grants and cooperative agreements for Federal officials.</sds-accordion-content>
@@ -18,14 +18,18 @@
 </sds-accordion-next>
 
 
+
+
 <hr class="margin-top-4" />
-<p>Accordion Item Controls:</p>
+<h3>Accordion Item Controls:</h3>
 <button (click)="open()" class="usa-button usa-button--base">Open First Item</button>
 <button (click)="close()" class="usa-button usa-button--base">Close First Item</button>
 <button (click)="toggle()" class="usa-button usa-button--base">Toggle First Item</button>
 <button (click)="toggleDisabled()" class="usa-button usa-button--base">Toggle Disabled Item</button>
 
-<p>Accordion Controls:</p>
-<button (click)="openAll()" class="usa-button usa-button--base">Open All Items</button>
-<button (click)="closeAll()" class="usa-button usa-button--base">Close All Items</button>
-<button (click)="toggleMulti()" class="usa-button usa-button--base">Toggle Accordion Multiple Mode</button>
+<h3>Accordion Controls:</h3>
+<p>To expand or collapse all accordion items, multi must be set to true. <code>multi: {{multi}}</code></p>
+<button (click)="toggleMulti()" class="usa-button usa-button--base">Toggle Multi Mode</button>
+<button (click)="openAll()" class="usa-button usa-button--base" [disabled]="!multi">Open All Items</button>
+<button (click)="closeAll()" class="usa-button usa-button--base" [disabled]="!multi">Close All Items</button>
+

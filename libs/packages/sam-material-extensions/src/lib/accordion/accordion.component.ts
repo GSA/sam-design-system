@@ -2,14 +2,12 @@ import {
   Component,
   Input,
   TemplateRef,
-  OnInit,
-  AfterContentInit,
   ViewChild,
   Directive,
-  ContentChild,
   QueryList,
   ContentChildren,
-  ElementRef
+  Output,
+  EventEmitter
 } from '@angular/core';
 
 import {MatAccordion} from '@angular/material/expansion';
@@ -80,6 +78,8 @@ export class SdsAccordionComponent {
 
   @Input() multi = false;
 
+  @Output() multiChange:EventEmitter<boolean> = new EventEmitter<boolean>();
+
   @Input() displayMode = 'flat';
 
   /** Opens all accordion items. */
@@ -95,6 +95,8 @@ export class SdsAccordionComponent {
   /** Toggles the multi state of the accordion. */
   toggleMulti(): void {
     this.multi = !this.multi;
+    this.accordion.closeAll();
+    this.multiChange.emit(this.multi);
   }
 
 }
