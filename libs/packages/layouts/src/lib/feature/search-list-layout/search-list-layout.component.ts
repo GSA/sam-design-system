@@ -34,6 +34,11 @@ export class SearchListLayoutComponent implements OnInit {
    */
   private filterData: any;
 
+  /**
+   * Total number of items
+   */
+  totalItems: number;
+
   ngOnInit() {
     this.page.pageSize = this.configuration.pageSize;
     this.sortField = this.configuration.defaultSortValue;
@@ -62,7 +67,7 @@ export class SearchListLayoutComponent implements OnInit {
 
   /**
    * updates the filter and set the page number to 1 and calls imported service
-   * @param filter 
+   * @param filter
    */
   public updateFilter(filter: any) {
     this.filterData = filter;
@@ -99,7 +104,7 @@ export class SearchListLayoutComponent implements OnInit {
   items = [];
 
   /**
-   * sort value 
+   * sort value
    */
   public sortField = '';
 
@@ -111,6 +116,7 @@ export class SearchListLayoutComponent implements OnInit {
       (result) => {
         this.items = result.items;
         this.page.totalPages = Math.ceil(result.totalItems / this.page.pageSize);
+        this.totalItems = result.totalItems;
       }
     );
   }
