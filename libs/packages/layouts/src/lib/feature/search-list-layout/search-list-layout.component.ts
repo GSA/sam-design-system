@@ -46,7 +46,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   /**
    * flag to wait for filters before doing updates
    */
-  private filtersLoaded = false;
+  filtersLoaded = false;
 
   /**
    * Total number of items
