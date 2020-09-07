@@ -1,16 +1,13 @@
 import {
   Directive,
-  AfterViewChecked,
   ElementRef,
   Renderer2,
   Input,
   ComponentFactoryResolver,
   ViewContainerRef,
   OnChanges,
-  HostListener,
   HostBinding
 } from '@angular/core';
-import { faCoffee, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 @Directive({
   selector: 'a[href]'
