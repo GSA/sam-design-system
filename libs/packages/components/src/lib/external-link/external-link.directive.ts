@@ -7,7 +7,8 @@ import {
   ComponentFactoryResolver,
   ViewContainerRef,
   OnChanges,
-  HostListener
+  HostListener,
+  HostBinding
 } from '@angular/core';
 import { faCoffee, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
@@ -16,15 +17,18 @@ import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 })
 export class ExternalLinkDirective implements OnChanges {
   private vcRef: ViewContainerRef;
+
+  @HostBinding('attr.href')
   @Input() href: string;
-  @Input() public hideIcon: boolean = false;
+
+  @Input() public hideIcon = false;
 
   private get isExternalLink(): boolean {
     return (
       this.href
         .replace(/^https?:\/\//, '')
         .replace(/^www\./, '')
-        .split('/')[0] != location.hostname
+        .split('/')[0] !== location.hostname
     );
   }
 
@@ -35,18 +39,13 @@ export class ExternalLinkDirective implements OnChanges {
     private vc: ViewContainerRef
   ) {}
 
-  @HostListener('click', ['$event'])
-  click(event: Event) {
-    window.location.href = this.href;
-  }
-
-
   public ngOnChanges() {
     if (!this.isExternalLink) {
       return;
     }
     if (!this.hideIcon) {
       this.createIcon();
+      this.renderer.setAttribute(this.el.nativeElement, "target", "_blank");
     }
   }
 
