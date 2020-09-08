@@ -3,11 +3,8 @@ import { Component, ViewChild, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TitleCasePipe } from '@angular/common';
-import {
-  MatTableDataSource,
-  MatTableModule,
-  MatSortModule
-} from '@angular/material';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { SdsTableComponent } from './table.component';
