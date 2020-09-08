@@ -6899,7 +6899,7 @@
         },
         {
             "name": "SDSAutocompleteComponent",
-            "id": "component-SDSAutocompleteComponent-053b37575e490557550989d3249ed473",
+            "id": "component-SDSAutocompleteComponent-457e1a4a3f0a6f2b1e3a0d94506689e3",
             "file": "libs/packages/components/src/lib/autocomplete/autocomplete.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -7193,7 +7193,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import {\n  Component,\n  Input,\n  ViewChild,\n  TemplateRef,\n  ElementRef,\n  forwardRef,\n  HostListener,\n  ChangeDetectorRef,\n  ChangeDetectionStrategy\n} from '@angular/core';\nimport {\n  NG_VALUE_ACCESSOR,\n  ControlValueAccessor,\n  FormControl\n} from '@angular/forms';\nimport { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';\nimport { SDSAutocompleteServiceInterface } from '../autocomplete-search/models/SDSAutocompleteServiceInterface';\nimport { SDSAutocompletelConfiguration } from './models/SDSAutocompletelConfiguration.model';\nimport { SelectionMode } from '../selected-result/models/sds-selected-item-model-helper';\nimport { SDSAutocompleteSearchComponent } from '../autocomplete-search/autocomplete-search.component';\n\nconst Autocomplete_VALUE_ACCESSOR: any = {\n  provide: NG_VALUE_ACCESSOR,\n  useExisting: forwardRef(() => SDSAutocompleteComponent),\n  multi: true\n};\n\n@Component({\n  selector: 'sds-autocomplete',\n  templateUrl: './autocomplete.component.html',\n  styleUrls: ['./autocomplete.component.scss'],\n  providers: [Autocomplete_VALUE_ACCESSOR],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class SDSAutocompleteComponent implements ControlValueAccessor {\n  /**\n   * Allow to insert a customized template for suggestions results\n   */\n  @Input() suggestionTemplate: TemplateRef<any>;\n\n  /**\n   * Allow to insert a customized template for selected items\n   */\n  @Input() selectedItemTemplate: TemplateRef<any>;\n\n  /**\n   * The data model that has the selected item\n   */\n  public model: SDSSelectedItemModel;\n\n  public disabled: boolean;\n\n  /**\n   * Configuration for the control\n   */\n  @Input()\n  public configuration: SDSAutocompletelConfiguration;\n\n  /**\n   * Model contain only the primary key, primary value, and secondary value.\n   */\n  @Input()\n  public essentialModelFields: boolean = false;\n\n  /**\n   * Instance of the SamHiercarchicalServiceInterface provided\n   */\n  @Input()\n  public service: SDSAutocompleteServiceInterface;\n\n  @ViewChild('autocompleteSearch') autocompleteSearch: SDSAutocompleteSearchComponent;\n  constructor(private cd: ChangeDetectorRef) { }\n\n  /**\n   * Stored Event for ControlValueAccessor\n   */\n  @HostListener('focusout')\n  public onTouched = () => { };\n\n  /**\n   * Stored Event for ControlValueAccessor\n   */\n  public onChange = (_: any) => { };\n\n  // ControlValueAccessor (and Formly) is trying to update the value of the FormControl (our custom component) programatically\n  // If there is a value we will just overwrite items\n  // If there is no value we reset the items array to be empty\n  writeValue(value: any) {\n    if (value instanceof SDSSelectedItemModel && value.items && value.items.length && this.model.items !== value.items) {\n      this.model.items = [...value.items];\n      this.cd.markForCheck();\n    }\n    else if(value && value.length && this.model.items !== value) {\n      this.model.items = value;\n      this.cd.markForCheck();\n    } else {\n      if(!this.model || !(this.model instanceof SDSSelectedItemModel)) {\n        this.model = new SDSSelectedItemModel();\n      }\n      this.model.items = value && value.items ? value.items : [];\n      this.cd.markForCheck();\n    }\n  }\n\n  // Method that is fired when the child component event notifies us that the items array has been modified within the child component\n  updateItems($event) {\n    this.updateModel();\n  }\n\n  // Helper method that gets a new instance of the model and notifies ControlValueAccessor that we have a new model for this FormControl (our custom component)\n  updateModel() {\n    const model = this.getModel();\n    this.onChange(model);\n  }\n\n  // Helper method to return a new instance of an array that contains our items\n  getModel() {\n    return [...this.model.items];\n  }\n\n  // ControlValueAccessor hook that lets us call this._onChange(var) to let the form know our variable has changed (in this case model)\n  registerOnChange(fn: any): void {\n    this.onChange = fn;\n  }\n\n  // ControlValueAccessor hook (not used)\n  registerOnTouched(fn: any) {\n    this.onTouched = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n  }\n\n  isSingleMode(): boolean {\n    if (this.configuration) {\n      return this.configuration.selectionMode === SelectionMode.SINGLE;\n    } else {\n      return false;\n    }\n  }\n  addItem(item: object) {\n    this.autocompleteSearch.selectItem(item);\n  }\n\n  addItems(list: object[]) {\n    list.forEach(item => {\n      this.addItem(item);\n    })\n  }\n}",
+            "sourceCode": "import {\n  Component,\n  Input,\n  ViewChild,\n  TemplateRef,\n  ElementRef,\n  forwardRef,\n  HostListener,\n  ChangeDetectorRef,\n  ChangeDetectionStrategy\n} from '@angular/core';\nimport {\n  NG_VALUE_ACCESSOR,\n  ControlValueAccessor,\n  FormControl\n} from '@angular/forms';\nimport { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';\nimport { SDSAutocompleteServiceInterface } from '../autocomplete-search/models/SDSAutocompleteServiceInterface';\nimport { SDSAutocompletelConfiguration } from './models/SDSAutocompletelConfiguration.model';\nimport { SelectionMode } from '../selected-result/models/sds-selected-item-model-helper';\nimport { SDSAutocompleteSearchComponent } from '../autocomplete-search/autocomplete-search.component';\n\nconst Autocomplete_VALUE_ACCESSOR: any = {\n  provide: NG_VALUE_ACCESSOR,\n  useExisting: forwardRef(() => SDSAutocompleteComponent),\n  multi: true\n};\n\n@Component({\n  selector: 'sds-autocomplete',\n  templateUrl: './autocomplete.component.html',\n  styleUrls: ['./autocomplete.component.scss'],\n  providers: [Autocomplete_VALUE_ACCESSOR],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class SDSAutocompleteComponent implements ControlValueAccessor {\n  /**\n   * Allow to insert a customized template for suggestions results\n   */\n  @Input() suggestionTemplate: TemplateRef<any>;\n\n  /**\n   * Allow to insert a customized template for selected items\n   */\n  @Input() selectedItemTemplate: TemplateRef<any>;\n\n  /**\n   * The data model that has the selected item\n   */\n  public model: SDSSelectedItemModel;\n\n  public disabled: boolean;\n\n  /**\n   * Configuration for the control\n   */\n  @Input()\n  public configuration: SDSAutocompletelConfiguration;\n\n  /**\n   * Model contain only the primary key, primary value, and secondary value.\n   */\n  @Input()\n  public essentialModelFields: boolean = false;\n\n  /**\n   * Instance of the SamHiercarchicalServiceInterface provided\n   */\n  @Input()\n  public service: SDSAutocompleteServiceInterface;\n\n  @ViewChild('autocompleteSearch') autocompleteSearch: SDSAutocompleteSearchComponent;\n  constructor(private cd: ChangeDetectorRef) { }\n\n  /**\n   * Stored Event for ControlValueAccessor\n   */\n  @HostListener('focusout')\n  public onTouched = () => { };\n\n  /**\n   * Stored Event for ControlValueAccessor\n   */\n  public onChange = (_: any) => { };\n\n  // ControlValueAccessor (and Formly) is trying to update the value of the FormControl (our custom component) programatically\n  // If there is a value we will just overwrite items\n  // If there is no value we reset the items array to be empty\n  writeValue(value: any) {\n    if (value instanceof SDSSelectedItemModel && value.items && value.items.length && this.model.items !== value.items) {\n      this.model.items = [...value.items];\n      this.cd.markForCheck();\n    }\n    else if(value && value.length && this.model.items !== value) {\n      this.model.items = value;\n      this.cd.markForCheck();\n    } else {\n      if(!this.model || !(this.model instanceof SDSSelectedItemModel)) {\n        this.model = new SDSSelectedItemModel();\n      }\n      this.model.items = value && value.items ? value.items : [];\n      this.cd.markForCheck();\n    }\n  }\n\n  // Method that is fired when the child component event notifies us that the items array has been modified within the child component\n  updateItems($event) {\n    this.updateModel();\n  }\n\n  // Helper method that gets a new instance of the model and notifies ControlValueAccessor that we have a new model for this FormControl (our custom component)\n  updateModel() {\n    const model = this.getModel();\n    this.onChange(model);\n  }\n\n  // Helper method to return a new instance of an array that contains our items\n  getModel() {\n    return [...this.model.items];\n  }\n\n  // ControlValueAccessor hook that lets us call this._onChange(var) to let the form know our variable has changed (in this case model)\n  registerOnChange(fn: any): void {\n    this.onChange = fn;\n  }\n\n  // ControlValueAccessor hook (not used)\n  registerOnTouched(fn: any) {\n    this.onTouched = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n  }\n\n  isSingleMode(): boolean {\n    if (this.configuration) {\n      return this.configuration.selectionMode === SelectionMode.SINGLE;\n    } else {\n      return false;\n    }\n  }\n  addItem(item: object) {\n    this.autocompleteSearch.selectItem(item);\n  }\n\n  addItems(list: object[]) {\n    list.forEach(item => {\n      this.addItem(item);\n    })\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -8175,7 +8175,7 @@
         },
         {
             "name": "SdsDialogContainerComponent",
-            "id": "component-SdsDialogContainerComponent-91bd96f8c86f08efeb7f772bd349f2ab",
+            "id": "component-SdsDialogContainerComponent-a05b8685fd1944ba9478aac52b438e18",
             "file": "libs/packages/components/src/lib/dialog/dialog-container.component.ts",
             "changeDetection": "ChangeDetectionStrategy.Default",
             "encapsulation": [
@@ -8259,7 +8259,7 @@
                     "decorators": [
                         {
                             "name": "ViewChild",
-                            "stringifiedArguments": "CdkPortalOutlet"
+                            "stringifiedArguments": "CdkPortalOutlet, {static: true}"
                         }
                     ]
                 },
@@ -8382,15 +8382,15 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 3455,
-                                "end": 3461,
+                                "pos": 3471,
+                                "end": 3477,
                                 "flags": 0,
                                 "escapedText": "portal"
                             },
                             "type": "ComponentPortal<T>",
                             "tagName": {
-                                "pos": 3449,
-                                "end": 3454,
+                                "pos": 3465,
+                                "end": 3470,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -8416,15 +8416,15 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 3881,
-                                "end": 3887,
+                                "pos": 3897,
+                                "end": 3903,
                                 "flags": 0,
                                 "escapedText": "portal"
                             },
                             "type": "TemplatePortal<C>",
                             "tagName": {
-                                "pos": 3875,
-                                "end": 3880,
+                                "pos": 3891,
+                                "end": 3896,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -8438,7 +8438,7 @@
             "description": "<p>Internal component that wraps user-provided dialog content.</p>\n",
             "rawdescription": "Internal component that wraps user-provided dialog content.",
             "type": "component",
-            "sourceCode": "import {\n  Component,\n  ComponentRef,\n  ElementRef,\n  EmbeddedViewRef,\n  EventEmitter,\n  Inject,\n  Optional,\n  ChangeDetectorRef,\n  ViewChild,\n  ViewEncapsulation,\n  ChangeDetectionStrategy,\n} from '@angular/core';\nimport {DOCUMENT} from '@angular/common';\nimport {AnimationEvent} from '@angular/animations';\nimport {sdsDialogAnimations} from './dialog-animations';\nimport {\n  BasePortalOutlet,\n  ComponentPortal,\n  CdkPortalOutlet,\n  TemplatePortal\n} from '@angular/cdk/portal';\nimport {FocusTrap, FocusTrapFactory} from '@angular/cdk/a11y';\nimport {SdsDialogConfig} from './dialog-config';\n\n\n/**\n * Throws an exception for the case when a ComponentPortal is\n * attached to a DomPortalOutlet without an origin.\n * @docs-private\n */\nexport function throwSdsDialogContentAlreadyAttachedError() {\n  throw Error('Attempting to attach dialog content after content is already attached');\n}\n\n/**\n * Internal component that wraps user-provided dialog content.\n * @docs-private\n */\n@Component({\n  selector: 'sds-dialog-container',\n  templateUrl: 'dialog-container.component.html',\n  encapsulation: ViewEncapsulation.None,\n  // Using OnPush for dialogs caused some G3 sync issues. Disabled until we can track them down.\n  // tslint:disable-next-line:validate-decorators\n  changeDetection: ChangeDetectionStrategy.Default,\n  animations: [sdsDialogAnimations.dialogContainer],\n  // tslint:disable-next-line: use-host-property-decorator\n  host: {\n    'class': 'sds-dialog__container',\n    '[class.sds-dialog--alert]': '_config.alert',\n    '[class.sds-dialog--alert-error]':'_config.alert === \"error\"',\n    '[class.sds-dialog--alert-warning]':'_config.alert === \"warning\"',\n    '[class.sds-dialog--alert-info]':'_config.alert === \"info\"',\n    'tabindex': '-1',\n    'aria-modal': 'true',\n    '[attr.id]': '_id',\n    '[attr.role]': '_config.role',\n    '[attr.aria-labelledby]': '_config.ariaLabel ? null : _ariaLabelledBy',\n    '[attr.aria-label]': '_config.ariaLabel',\n    '[attr.aria-describedby]': '_config.ariaDescribedBy || null',\n    '[@dialogContainer]': '_state',\n    '(@dialogContainer.start)': '_onAnimationStart($event)',\n    '(@dialogContainer.done)': '_onAnimationDone($event)',\n  },\n})\nexport class SdsDialogContainerComponent extends BasePortalOutlet {\n  /** The portal outlet inside of this container into which the dialog content will be loaded. */\n  @ViewChild(CdkPortalOutlet) _portalOutlet: CdkPortalOutlet;\n\n  /** The class that traps and manages focus within the dialog. */\n  private _focusTrap: FocusTrap;\n\n  /** Element that was focused before the dialog was opened. Save this to restore upon close. */\n  private _elementFocusedBeforeDialogWasOpened: HTMLElement | null = null;\n\n  /** State of the dialog animation. */\n  _state: 'void' | 'enter' | 'exit' = 'enter';\n\n  /** Emits when an animation state changes. */\n  _animationStateChanged = new EventEmitter<AnimationEvent>();\n\n  /** ID of the element that should be considered as the dialog's label. */\n  _ariaLabelledBy: string | null = null;\n\n  /** ID for the container DOM element. */\n  _id: string;\n\n  constructor(\n    private _elementRef: ElementRef,\n    private _focusTrapFactory: FocusTrapFactory,\n    private _changeDetectorRef: ChangeDetectorRef,\n    @Optional() @Inject(DOCUMENT) private _document: any,\n    /** The dialog configuration. */\n    public _config: SdsDialogConfig) {\n\n    super();\n  }\n\n  /**\n   * Attach a ComponentPortal as content to this dialog container.\n   * @param portal Portal to be attached as the dialog content.\n   */\n  attachComponentPortal<T>(portal: ComponentPortal<T>): ComponentRef<T> {\n    if (this._portalOutlet.hasAttached()) {\n      throwSdsDialogContentAlreadyAttachedError();\n    }\n\n    this._savePreviouslyFocusedElement();\n    return this._portalOutlet.attachComponentPortal(portal);\n  }\n\n  /**\n   * Attach a TemplatePortal as content to this dialog container.\n   * @param portal Portal to be attached as the dialog content.\n   */\n  attachTemplatePortal<C>(portal: TemplatePortal<C>): EmbeddedViewRef<C> {\n    if (this._portalOutlet.hasAttached()) {\n      throwSdsDialogContentAlreadyAttachedError();\n    }\n\n    this._savePreviouslyFocusedElement();\n    return this._portalOutlet.attachTemplatePortal(portal);\n  }\n\n  /** Moves the focus inside the focus trap. */\n  private _trapFocus() {\n    if (!this._focusTrap) {\n      this._focusTrap = this._focusTrapFactory.create(this._elementRef.nativeElement);\n    }\n\n    // If were to attempt to focus immediately, then the content of the dialog would not yet be\n    // ready in instances where change detection has to run first. To deal with this, we simply\n    // wait for the microtask queue to be empty.\n    if (this._config.autoFocus) {\n      this._focusTrap.focusInitialElementWhenReady();\n    }\n  }\n\n  /** Restores focus to the element that was focused before the dialog opened. */\n  private _restoreFocus() {\n    const toFocus = this._elementFocusedBeforeDialogWasOpened;\n\n    // We need the extra check, because IE can set the `activeElement` to null in some cases.\n    if (this._config.restoreFocus && toFocus && typeof toFocus.focus === 'function') {\n      toFocus.focus();\n    }\n\n    if (this._focusTrap) {\n      this._focusTrap.destroy();\n    }\n  }\n\n  /** Saves a reference to the element that was focused before the dialog was opened. */\n  private _savePreviouslyFocusedElement() {\n    if (this._document) {\n      this._elementFocusedBeforeDialogWasOpened = this._document.activeElement as HTMLElement;\n\n      // Note that there is no focus method when rendering on the server.\n      if (this._elementRef.nativeElement.focus) {\n        // Move focus onto the dialog immediately in order to prevent the user from accidentally\n        // opening multiple dialogs at the same time. Needs to be async, because the element\n        // may not be focusable immediately.\n        Promise.resolve().then(() => this._elementRef.nativeElement.focus());\n      }\n    }\n  }\n\n  /** Callback, invoked whenever an animation on the host completes. */\n  _onAnimationDone(event: AnimationEvent) {\n    if (event.toState === 'enter') {\n      this._trapFocus();\n    } else if (event.toState === 'exit') {\n      this._restoreFocus();\n    }\n\n    this._animationStateChanged.emit(event);\n  }\n\n  /** Callback, invoked when an animation on the host starts. */\n  _onAnimationStart(event: AnimationEvent) {\n    this._animationStateChanged.emit(event);\n  }\n\n  /** Starts the dialog exit animation. */\n  _startExitAnimation(): void {\n    this._state = 'exit';\n\n    // Mark the container for check so it can react if the\n    // view container is using OnPush change detection.\n    this._changeDetectorRef.markForCheck();\n  }\n}\n",
+            "sourceCode": "import {\n  Component,\n  ComponentRef,\n  ElementRef,\n  EmbeddedViewRef,\n  EventEmitter,\n  Inject,\n  Optional,\n  ChangeDetectorRef,\n  ViewChild,\n  ViewEncapsulation,\n  ChangeDetectionStrategy,\n} from '@angular/core';\nimport {DOCUMENT} from '@angular/common';\nimport {AnimationEvent} from '@angular/animations';\nimport {sdsDialogAnimations} from './dialog-animations';\nimport {\n  BasePortalOutlet,\n  ComponentPortal,\n  CdkPortalOutlet,\n  TemplatePortal\n} from '@angular/cdk/portal';\nimport {FocusTrap, FocusTrapFactory} from '@angular/cdk/a11y';\nimport {SdsDialogConfig} from './dialog-config';\n\n\n/**\n * Throws an exception for the case when a ComponentPortal is\n * attached to a DomPortalOutlet without an origin.\n * @docs-private\n */\nexport function throwSdsDialogContentAlreadyAttachedError() {\n  throw Error('Attempting to attach dialog content after content is already attached');\n}\n\n/**\n * Internal component that wraps user-provided dialog content.\n * @docs-private\n */\n@Component({\n  selector: 'sds-dialog-container',\n  templateUrl: 'dialog-container.component.html',\n  encapsulation: ViewEncapsulation.None,\n  // Using OnPush for dialogs caused some G3 sync issues. Disabled until we can track them down.\n  // tslint:disable-next-line:validate-decorators\n  changeDetection: ChangeDetectionStrategy.Default,\n  animations: [sdsDialogAnimations.dialogContainer],\n  // tslint:disable-next-line: use-host-property-decorator\n  host: {\n    'class': 'sds-dialog__container',\n    '[class.sds-dialog--alert]': '_config.alert',\n    '[class.sds-dialog--alert-error]':'_config.alert === \"error\"',\n    '[class.sds-dialog--alert-warning]':'_config.alert === \"warning\"',\n    '[class.sds-dialog--alert-info]':'_config.alert === \"info\"',\n    'tabindex': '-1',\n    'aria-modal': 'true',\n    '[attr.id]': '_id',\n    '[attr.role]': '_config.role',\n    '[attr.aria-labelledby]': '_config.ariaLabel ? null : _ariaLabelledBy',\n    '[attr.aria-label]': '_config.ariaLabel',\n    '[attr.aria-describedby]': '_config.ariaDescribedBy || null',\n    '[@dialogContainer]': '_state',\n    '(@dialogContainer.start)': '_onAnimationStart($event)',\n    '(@dialogContainer.done)': '_onAnimationDone($event)',\n  },\n})\nexport class SdsDialogContainerComponent extends BasePortalOutlet {\n  /** The portal outlet inside of this container into which the dialog content will be loaded. */\n  @ViewChild(CdkPortalOutlet, {static: true}) _portalOutlet: CdkPortalOutlet;\n\n  /** The class that traps and manages focus within the dialog. */\n  private _focusTrap: FocusTrap;\n\n  /** Element that was focused before the dialog was opened. Save this to restore upon close. */\n  private _elementFocusedBeforeDialogWasOpened: HTMLElement | null = null;\n\n  /** State of the dialog animation. */\n  _state: 'void' | 'enter' | 'exit' = 'enter';\n\n  /** Emits when an animation state changes. */\n  _animationStateChanged = new EventEmitter<AnimationEvent>();\n\n  /** ID of the element that should be considered as the dialog's label. */\n  _ariaLabelledBy: string | null = null;\n\n  /** ID for the container DOM element. */\n  _id: string;\n\n  constructor(\n    private _elementRef: ElementRef,\n    private _focusTrapFactory: FocusTrapFactory,\n    private _changeDetectorRef: ChangeDetectorRef,\n    @Optional() @Inject(DOCUMENT) private _document: any,\n    /** The dialog configuration. */\n    public _config: SdsDialogConfig) {\n\n    super();\n  }\n\n  /**\n   * Attach a ComponentPortal as content to this dialog container.\n   * @param portal Portal to be attached as the dialog content.\n   */\n  attachComponentPortal<T>(portal: ComponentPortal<T>): ComponentRef<T> {\n    if (this._portalOutlet.hasAttached()) {\n      throwSdsDialogContentAlreadyAttachedError();\n    }\n\n    this._savePreviouslyFocusedElement();\n    return this._portalOutlet.attachComponentPortal(portal);\n  }\n\n  /**\n   * Attach a TemplatePortal as content to this dialog container.\n   * @param portal Portal to be attached as the dialog content.\n   */\n  attachTemplatePortal<C>(portal: TemplatePortal<C>): EmbeddedViewRef<C> {\n    if (this._portalOutlet.hasAttached()) {\n      throwSdsDialogContentAlreadyAttachedError();\n    }\n\n    this._savePreviouslyFocusedElement();\n    return this._portalOutlet.attachTemplatePortal(portal);\n  }\n\n  /** Moves the focus inside the focus trap. */\n  private _trapFocus() {\n    if (!this._focusTrap) {\n      this._focusTrap = this._focusTrapFactory.create(this._elementRef.nativeElement);\n    }\n\n    // If were to attempt to focus immediately, then the content of the dialog would not yet be\n    // ready in instances where change detection has to run first. To deal with this, we simply\n    // wait for the microtask queue to be empty.\n    if (this._config.autoFocus) {\n      this._focusTrap.focusInitialElementWhenReady();\n    }\n  }\n\n  /** Restores focus to the element that was focused before the dialog opened. */\n  private _restoreFocus() {\n    const toFocus = this._elementFocusedBeforeDialogWasOpened;\n\n    // We need the extra check, because IE can set the `activeElement` to null in some cases.\n    if (this._config.restoreFocus && toFocus && typeof toFocus.focus === 'function') {\n      toFocus.focus();\n    }\n\n    if (this._focusTrap) {\n      this._focusTrap.destroy();\n    }\n  }\n\n  /** Saves a reference to the element that was focused before the dialog was opened. */\n  private _savePreviouslyFocusedElement() {\n    if (this._document) {\n      this._elementFocusedBeforeDialogWasOpened = this._document.activeElement as HTMLElement;\n\n      // Note that there is no focus method when rendering on the server.\n      if (this._elementRef.nativeElement.focus) {\n        // Move focus onto the dialog immediately in order to prevent the user from accidentally\n        // opening multiple dialogs at the same time. Needs to be async, because the element\n        // may not be focusable immediately.\n        Promise.resolve().then(() => this._elementRef.nativeElement.focus());\n      }\n    }\n  }\n\n  /** Callback, invoked whenever an animation on the host completes. */\n  _onAnimationDone(event: AnimationEvent) {\n    if (event.toState === 'enter') {\n      this._trapFocus();\n    } else if (event.toState === 'exit') {\n      this._restoreFocus();\n    }\n\n    this._animationStateChanged.emit(event);\n  }\n\n  /** Callback, invoked when an animation on the host starts. */\n  _onAnimationStart(event: AnimationEvent) {\n    this._animationStateChanged.emit(event);\n  }\n\n  /** Starts the dialog exit animation. */\n  _startExitAnimation(): void {\n    this._state = 'exit';\n\n    // Mark the container for check so it can react if the\n    // view container is using OnPush change detection.\n    this._changeDetectorRef.markForCheck();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -10270,7 +10270,7 @@
         },
         {
             "name": "SdsSearchResultListComponent",
-            "id": "component-SdsSearchResultListComponent-5922e60dc72936db209d4eeb92435c75",
+            "id": "component-SdsSearchResultListComponent-96ba4a558824be8484d1e003563e25e6",
             "file": "libs/packages/components/src/lib/search-result-list/search-result-list.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -10347,7 +10347,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, Input, ContentChild, TemplateRef } from '@angular/core';\nimport { SearchModel } from './model/search-results.model';\nimport {Location} from '@angular/common';\n@Component({\n  selector: 'sds-search-result-list',\n  templateUrl: './search-result-list.component.html',\n  styleUrls: ['./search-result-list.component.scss']\n})\n\nexport class SdsSearchResultListComponent  {\n\n  public updateModel = new SearchModel();\n    /**\n  * Allow to insert a customized template for no results to use\n  */\n @Input() noResultsTemplate: TemplateRef<any>;\n\n\n   /**\n   * Model for search results\n   */\n  @Input('model')\n  set model(value) \n  {\n    if(Array.isArray(value)) {\n      const items = value;\n      this.updateModel = new SearchModel();\n      this.updateModel.results = items;\n    } else {\n    this.updateModel = value;\n    }\n  }\n\n  /**\n   * Show divider between results\n   */\n  @Input() divider = true;\n\n  constructor(private _location: Location) \n  {}\n\n  /**\n   * Child Template to be used to display the data for each item in the list of items\n   */\n  @ContentChild('resultContent') resultContentTemplate: TemplateRef<any>;\n  \n  goBack() {\n    this._location.back();\n  }\n}\n",
+            "sourceCode": "import { Component, Input, ContentChild, TemplateRef } from '@angular/core';\nimport { SearchModel } from './model/search-results.model';\nimport {Location} from '@angular/common';\n@Component({\n  selector: 'sds-search-result-list',\n  templateUrl: './search-result-list.component.html',\n  styleUrls: ['./search-result-list.component.scss']\n})\n\nexport class SdsSearchResultListComponent  {\n\n  public updateModel = new SearchModel();\n    /**\n  * Allow to insert a customized template for no results to use\n  */\n @Input() noResultsTemplate: TemplateRef<any>;\n\n\n   /**\n   * Model for search results\n   */\n  @Input('model')\n  set model(value) \n  {\n    if(Array.isArray(value)) {\n      const items = value;\n      this.updateModel = new SearchModel();\n      this.updateModel.results = items;\n    } else {\n    this.updateModel = value;\n    }\n  }\n\n  /**\n   * Show divider between results\n   */\n  @Input() divider = true;\n\n  constructor(private _location: Location) \n  {}\n\n  /**\n   * Child Template to be used to display the data for each item in the list of items\n   */\n  @ContentChild('resultContent') resultContentTemplate: TemplateRef<any>;\n\n  goBack() {\n    this._location.back();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -13355,48 +13355,6 @@
                 ]
             },
             {
-                "name": "createTouchEvent",
-                "file": "libs/packages/components/src/lib/testing/event-objects.ts",
-                "ctype": "miscellaneous",
-                "subtype": "function",
-                "description": "<p>Creates a browser TouchEvent with the specified pointer coordinates. </p>\n",
-                "args": [
-                    {
-                        "name": "type"
-                    },
-                    {
-                        "name": "pageX",
-                        "type": "number"
-                    },
-                    {
-                        "name": "pageY",
-                        "type": "number"
-                    }
-                ],
-                "jsdoctags": [
-                    {
-                        "name": "type",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    },
-                    {
-                        "name": "pageX",
-                        "type": "number",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    },
-                    {
-                        "name": "pageY",
-                        "type": "number",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
-            },
-            {
                 "name": "dispatchEvent",
                 "file": "libs/packages/components/src/lib/testing/dispatch-events.ts",
                 "ctype": "miscellaneous",
@@ -13576,57 +13534,6 @@
                     {
                         "name": "event",
                         "type": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
-            },
-            {
-                "name": "dispatchTouchEvent",
-                "file": "libs/packages/components/src/lib/testing/dispatch-events.ts",
-                "ctype": "miscellaneous",
-                "subtype": "function",
-                "description": "<p>Shorthand to dispatch a touch event on the specified coordinates. </p>\n",
-                "args": [
-                    {
-                        "name": "node"
-                    },
-                    {
-                        "name": "type"
-                    },
-                    {
-                        "name": "x",
-                        "type": "number"
-                    },
-                    {
-                        "name": "y",
-                        "type": "number"
-                    }
-                ],
-                "jsdoctags": [
-                    {
-                        "name": "node",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    },
-                    {
-                        "name": "type",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    },
-                    {
-                        "name": "x",
-                        "type": "number",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    },
-                    {
-                        "name": "y",
-                        "type": "number",
                         "tagName": {
                             "text": "param"
                         }
@@ -14499,48 +14406,6 @@
                             }
                         }
                     ]
-                },
-                {
-                    "name": "createTouchEvent",
-                    "file": "libs/packages/components/src/lib/testing/event-objects.ts",
-                    "ctype": "miscellaneous",
-                    "subtype": "function",
-                    "description": "<p>Creates a browser TouchEvent with the specified pointer coordinates. </p>\n",
-                    "args": [
-                        {
-                            "name": "type"
-                        },
-                        {
-                            "name": "pageX",
-                            "type": "number"
-                        },
-                        {
-                            "name": "pageY",
-                            "type": "number"
-                        }
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "type",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "pageX",
-                            "type": "number",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "pageY",
-                            "type": "number",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
                 }
             ],
             "libs/packages/components/src/lib/testing/dispatch-events.ts": [
@@ -14724,57 +14589,6 @@
                         {
                             "name": "event",
                             "type": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "dispatchTouchEvent",
-                    "file": "libs/packages/components/src/lib/testing/dispatch-events.ts",
-                    "ctype": "miscellaneous",
-                    "subtype": "function",
-                    "description": "<p>Shorthand to dispatch a touch event on the specified coordinates. </p>\n",
-                    "args": [
-                        {
-                            "name": "node"
-                        },
-                        {
-                            "name": "type"
-                        },
-                        {
-                            "name": "x",
-                            "type": "number"
-                        },
-                        {
-                            "name": "y",
-                            "type": "number"
-                        }
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "node",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "type",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "x",
-                            "type": "number",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "y",
-                            "type": "number",
                             "tagName": {
                                 "text": "param"
                             }
