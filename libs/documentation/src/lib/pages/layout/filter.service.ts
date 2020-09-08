@@ -1,7 +1,16 @@
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { FormGroup } from '@angular/forms';
- 
+import { AutocompleteSampleDataService } from './services/autocomplete-sample.service';
+import {
+  SelectionMode, SDSSelectedItemModel, SDSAutocompletelConfiguration
+} from '@gsa-sam/components';
+import { Injectable } from '@angular/core';
+
+@Injectable()
 export class FilterService {
+
+  public settings = new SDSAutocompletelConfiguration();
+  public autocompleteModel = new SDSSelectedItemModel();
 
   public model = {};
   public form = new FormGroup({});
@@ -21,6 +30,7 @@ export class FilterService {
           type: 'input',
           templateOptions: {
             type: 'text',
+            hideOptional: true,
             label: 'Entity Name'
           }
         },
@@ -31,6 +41,7 @@ export class FilterService {
             tagText: 'DUNS',
             tagClass: 'sds-tag--info-purple',
             label: 'Unique Entity ID',
+            hideOptional: true,
             placeholder: '',
             min: 13,
             max: 40,
@@ -44,6 +55,7 @@ export class FilterService {
           templateOptions: {
             tagText: 'SAM',
             label: 'Unique Entity ID',
+            hideOptional: true,
             placeholder: '',
             inputType: 'text'
           }
@@ -53,6 +65,7 @@ export class FilterService {
           type: 'input',
           templateOptions: {
             type: 'text',
+            hideOptional: true,
             label: 'CAGE / NCAGE'
           }
         }
@@ -150,11 +163,14 @@ export class FilterService {
         },
         {
           key: 'state',
-          type: 'input',
+          type: 'autocomplete',
           templateOptions: {
-            type: 'text',
+            label: 'State / Province',
             hideOptional: true,
-            label: 'State / Province'
+            service: this.service,
+            configuration: this.settings,
+            model: this.autocompleteModel,
+            modelChange: this.changes
           }
         },
         {
@@ -200,6 +216,25 @@ export class FilterService {
       ]
     }
   ];
- 
-  
+
+
+  constructor(public service: AutocompleteSampleDataService) {
+    this.setup();
+  }
+
+
+  changes(value) {
+    console.log(value);
+  }
+
+  setup() {
+    this.settings.id = 'autocomplete1';
+    this.settings.primaryKeyField = 'id';
+    this.settings.primaryTextField = 'name';
+    this.settings.secondaryTextField = 'subtext';
+    this.settings.labelText = 'Autocomplete 1';
+    this.settings.selectionMode = SelectionMode.MULTIPLE;
+    this.settings.autocompletePlaceHolderText = 'Enter text';
+    this.settings.debounceTime = 350;
+  }
 }

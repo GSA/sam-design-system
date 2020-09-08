@@ -20,14 +20,15 @@ import {
 import { ResultModule } from './result/result.module';
 import { SearchListServiceModule } from '@sam-design-system/layouts';
 import { FilterService } from './filter.service';
+import { AutocompleteSampleDataService } from './services/autocomplete-sample.service';
 
 @NgModule({
   imports: [
-    CommonModule, 
-    FontAwesomeModule, 
-    SdsToolbarModule, 
-    SdsAccordionModule, 
-    SdsSideNavigationModule, 
+    CommonModule,
+    FontAwesomeModule,
+    SdsToolbarModule,
+    SdsAccordionModule,
+    SdsSideNavigationModule,
     SdsFiltersModule,
     SdsSearchResultListModule,
     SearchListServiceModule,
@@ -35,6 +36,6 @@ import { FilterService } from './filter.service';
  ],
   exports: [ResultsLayoutComponent],
   declarations: [ResultsLayoutComponent],
-  providers: [FilterService]
+  providers: [FilterService, AutocompleteSampleDataService]
 })
 export class ResultsLayoutModule {}
