@@ -10,8 +10,7 @@ import { TableBorderlessComponent } from './table-borderless.component';
     CommonModule,
     SdsTableModule
   ],
-  exports: [TableBorderlessComponent],
-  entryComponents: [TableBorderlessComponent]
+  exports: [TableBorderlessComponent]
 })
 
 export class TableBorderlessModule { }

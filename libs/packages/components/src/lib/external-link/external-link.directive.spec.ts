@@ -29,8 +29,6 @@ describe('Sam External Link Directive', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [TestComponent, ExternalLinkDirective, FaIconComponent]
-    }).overrideModule(BrowserDynamicTestingModule, {
-      set: { entryComponents: [FaIconComponent] }
     });
 
     fixture = TestBed.createComponent(TestComponent);

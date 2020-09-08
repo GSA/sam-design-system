@@ -73,7 +73,7 @@ export function createGenericTestComponent<T>(html: string, type: { new(...args:
                 fixture.detectChanges();
                 expect(spy).toHaveBeenCalled();
             });
-            
+
 
         it('should test click worked', () => {
             testComponentButtons.fields = [
@@ -98,12 +98,12 @@ export function createGenericTestComponent<T>(html: string, type: { new(...args:
                 buttonField.nativeElement.click();
                 buttonField.nativeElement.dispatchEvent(new Event('onClick'));
             });
-            
+
         });
 
 });
 
-@Component({ selector: 'formly-form-button', template: '', entryComponents: [] })
+@Component({ selector: 'formly-form-button', template: '' })
 class TestComponent {
     @ViewChild(FormlyForm) formlyForm: FormlyForm;
 

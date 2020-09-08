@@ -78,7 +78,7 @@ describe('Formly Field Datepicker Component', () => {
             dateOpen.click();
             fixture.detectChanges();
 
-            //Selects start date 
+            //Selects start date
             let dateButton = <HTMLButtonElement>document.querySelector('.mat-calendar-body-active');
             dateButton.click();
             fixture.detectChanges();
@@ -90,7 +90,7 @@ describe('Formly Field Datepicker Component', () => {
 
 });
 
-@Component({ selector: 'formly-form-test', template: '', entryComponents: [] })
+@Component({ selector: 'formly-form-test', template: '' })
 class TestComponent {
     @ViewChild(FormlyForm) formlyForm: FormlyForm;
 

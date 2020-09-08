@@ -9,7 +9,6 @@ import { FontAwesomeModule, FaIconComponent } from '@fortawesome/angular-fontawe
   imports: [
     CommonModule, FontAwesomeModule
   ],
-  entryComponents: [ FaIconComponent ],
   exports: [ExternalLinkDirective]
 })
 export class SdsDirectivesModule { }

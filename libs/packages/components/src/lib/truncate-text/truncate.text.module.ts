@@ -10,7 +10,6 @@ import { SdsTruncatedTextContainerComponent } from './truncate-text-container.co
     SdsTruncateTextByLineDirective,
     SdsTruncatedTextContainerComponent
   ],
-  providers: [],
-  entryComponents: [SdsTruncatedTextContainerComponent]
+  providers: []
 })
 export class SdsTruncateModule {}

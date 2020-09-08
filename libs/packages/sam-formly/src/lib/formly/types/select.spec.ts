@@ -17,7 +17,7 @@ const createTestComponent = (html: string) =>
     fixture.detectChanges();
     return fixture as ComponentFixture<T>;
   }
-  
+
 let testComponentInputs;
 
 describe('Formly Field Select Component', () => {
@@ -67,9 +67,9 @@ describe('Formly Field Select Component', () => {
         const fixture = createTestComponent('<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'),
         trigger = fixture.nativeElement.querySelector('usa-select')
 
-     
+
       fixture.detectChanges();
-  
+
      expect(fixture.debugElement.queryAll(By.css('option')).length).toEqual(3);
     });
 
@@ -93,7 +93,7 @@ describe('Formly Field Select Component', () => {
       const fixture = createTestComponent('<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'),
         trigger = fixture.debugElement.query(By.css('option')).nativeElement;
 
-      
+
       fixture.detectChanges();
 
      expect(fixture.debugElement.queryAll(By.css('option')).length).toEqual(3);
@@ -103,7 +103,7 @@ describe('Formly Field Select Component', () => {
 
 });
 
-@Component({ selector: 'formly-form-test', template: '', entryComponents: [] })
+@Component({ selector: 'formly-form-test', template: '' })
 class TestComponent {
   @ViewChild(FormlyForm) formlyForm: FormlyForm;
 

@@ -76,7 +76,7 @@ describe('Formly Field checkbox Component', () => {
 
 });
 
-@Component({ selector: 'formly-form-test', template: '', entryComponents: [] })
+@Component({ selector: 'formly-form-test', template: '' })
 class TestComponent {
     @ViewChild(FormlyForm) formlyForm: FormlyForm;
 

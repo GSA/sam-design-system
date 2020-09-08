@@ -2,7 +2,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {
   TestBed,
   ComponentFixture,
- 
+
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -235,8 +235,7 @@ describe('Formly Field multicheckbox Component', () => {
 
 @Component({
   selector: 'formly-form-multicheckbox',
-  template: '',
-  entryComponents: []
+  template: ''
 })
 class TestComponent {
   @ViewChild(FormlyForm) formlyForm: FormlyForm;

@@ -20,12 +20,6 @@ import {
     NestedDialogComponent,
     AlertComponent,
     OfficialComponent
-  ],
-  entryComponents: [
-    DialogOverviewExampleDialog,
-    NestedDialogComponent,
-    AlertComponent,
-    OfficialComponent
   ]
 })
 export class DialogBasicModule {}
