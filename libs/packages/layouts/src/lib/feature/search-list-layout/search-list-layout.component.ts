@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ContentChild, TemplateRef, Optional, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, ContentChild, TemplateRef, Optional, OnChanges, SimpleChanges, OnInit } from '@angular/core';
 import { BehaviorSubject } from "rxjs";
 import { SearchListInterface, SearchListConfiguration } from './model/search-list-layout.model';
 import { SDSFormlyUpdateComunicationService } from '@gsa-sam/sam-formly';
@@ -8,7 +8,7 @@ import { SDSFormlyUpdateComunicationService } from '@gsa-sam/sam-formly';
   templateUrl: './search-list-layout.component.html',
   styleUrls: ['./search-list-layout.component.scss']
 })
-export class SearchListLayoutComponent implements OnInit, OnChanges {
+export class SearchListLayoutComponent implements OnChanges, OnInit {
 
   /**
   * Child Template to be used to display the data for each item in the list of items
@@ -42,6 +42,12 @@ export class SearchListLayoutComponent implements OnInit, OnChanges {
    */
   private filterData: any;
 
+
+  /**
+   * flag to wait for filters before doing updates
+   */
+  filtersLoaded = false;
+
   /**
    * Total number of items
    */
@@ -64,6 +70,7 @@ export class SearchListLayoutComponent implements OnInit, OnChanges {
     }
   }
 
+
   /**
    * Default Page setttings
    */
@@ -80,6 +87,7 @@ export class SearchListLayoutComponent implements OnInit, OnChanges {
   public updateFilter(filter: any) {
     this.filterData = filter;
     this.page.pageNumber = 1;
+    this.filtersLoaded = true;
     this.updateContent();
   }
 
@@ -120,12 +128,16 @@ export class SearchListLayoutComponent implements OnInit, OnChanges {
    * calls service when updated
    */
   private updateContent() {
-    this.service.getData({ 'page': this.page, sortField: this.sortField, filter: this.filterData }).subscribe(
-      (result) => {
-        this.items = result.items;
-        this.page.totalPages = Math.ceil(result.totalItems / this.page.pageSize);
-        this.totalItems = result.totalItems;
-      }
-    );
+    if(this.filtersLoaded) {
+      setTimeout(() => {
+        this.service.getData({ 'page': this.page, sortField: this.sortField, filter: this.filterData }).subscribe(
+          (result) => {
+            this.items = result.items;
+            this.page.totalPages = Math.ceil(result.totalItems / this.page.pageSize);
+            this.totalItems = result.totalItems;
+          }
+        );
+      });
+    }
   }
 }
