@@ -25,7 +25,10 @@ import {
   ROUTES as DIALOG_ROUTES,
   DialogModule
 } from './components/dialog/dialog.module';
-
+import {
+  ROUTES as ACCORDION_ROUTES,
+  AccordionModule
+} from './components/accordion/accordion.module';
 import {
   ROUTES as DOWNLOAD_ROUTES,
   DownloadModule
@@ -192,6 +195,7 @@ export const ROUTES: Routes = [
   { path: 'components/video', children: VIDEO_ROUTES },
   { path: 'components/popup', children: POPUP_ROUTES },
   { path: 'components/filters', children: FILTERS_ROUTES },
+  { path: 'components/accordion', children: ACCORDION_ROUTES },
 
   // Formly
   { path: 'components/input', children: INPUT_ROUTES },
@@ -250,6 +254,7 @@ export const ROUTES: Routes = [
     VideoModule,
     PopupModule,
     FiltersModule,
+    AccordionModule,
     InputModule,
     OverviewModule,
     IntroductionModule,

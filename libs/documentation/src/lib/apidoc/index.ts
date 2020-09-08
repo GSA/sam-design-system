@@ -6,6 +6,6 @@ import { default as MATERIAL } from './material/material';
 export { default as COMPONENTS } from './components/components';
 export { default as LAYOUTS } from './layouts/layouts';
 export { default as FORMLY } from './formly/formly';
-export  { default as MATERIAL } from './material/material';
+export { default as MATERIAL } from './material/material';
 
 export default { components: COMPONENTS, formly: FORMLY, layouts: LAYOUTS, material: MATERIAL };

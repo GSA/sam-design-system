@@ -3,7 +3,7 @@ import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import {
   SdsFormlyDialogData,
   SdsFormlyDialogComponent
-} from '@sam-design-system/sam-formly';
+} from '@gsa-sam/sam-formly';
 import { SdsDialogService } from '@gsa-sam/components';
 
 @Component({

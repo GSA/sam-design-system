@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SdsSearchResultListModule } from '@gsa-sam/components';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { SdsActionsMenuModule } from '@sam-design-system/layouts';
+import { SdsActionsMenuModule } from '@gsa-sam/layouts';
 import { ResultListCardComponent } from './result-list-card-component.component';
 import { ResultListCardItemSampleComponent } from './card-item/card-item.component';
 import { ResultListCardItemChildSampleComponent } from './card-item/child-card-item/child-card-item.component';

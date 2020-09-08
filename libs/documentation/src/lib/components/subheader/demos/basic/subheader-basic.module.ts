@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { SubHeaderBasic } from './subheader-basic.component';
-import { SdsSubheaderModule } from '@sam-design-system/layouts';
+import { SdsSubheaderModule } from '@gsa-sam/layouts';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SdsSearchModule, SdsDialogModule } from '@gsa-sam/components';
@@ -10,7 +10,7 @@ import { FormlyModule } from '@ngx-formly/core';
 import {
   SdsFormlyModule,
   SdsFormlyDialogModule
-} from '@sam-design-system/sam-formly';
+} from '@gsa-sam/sam-formly';
 
 @NgModule({
   imports: [
