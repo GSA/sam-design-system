@@ -1,29 +1,17 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { SdsVideoPlayerComponent } from './video-player.component';
 import { By } from '@angular/platform-browser';
-import { InitPxVideo } from 'accessible-html5-video-player/js/px-video.js';
-
-
-class IntiPxVideoObj {
-  InitPxVideo(options){
-  }
-};
-
-
 
 describe('VideoPlayerComponent', () => {
   let component: SdsVideoPlayerComponent;
   let fixture: ComponentFixture<SdsVideoPlayerComponent>;
 
-  beforeEach(async() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SdsVideoPlayerComponent ],
-      providers: [
-        {provide: InitPxVideo, useClass: new IntiPxVideoObj()}
-      ]
+      declarations: [ SdsVideoPlayerComponent ]
     })
     .compileComponents();
-  });
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SdsVideoPlayerComponent);
@@ -43,7 +31,7 @@ describe('VideoPlayerComponent', () => {
     fixture.detectChanges();
   });
 
-  it('Should get same video Height, Width, poster and Preload value  as an Input', ()=>{
+  it('should get same video Height, Width, poster and Preload value  as an Input', () => {
     const element = fixture.debugElement.query(By.css('video'));
     element.nativeElement.setAttribute('height', component.VPConfiguration.height);
     expect(element.nativeElement.getAttribute("height")).toBe(component.VPConfiguration.height);
