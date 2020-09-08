@@ -90,12 +90,14 @@ export class FooterBasic implements OnInit {
         ]
       }
     ],
-        footerLogo: {
-          text: 'Logo',
-          imageSourcePath: './assets/img/logo-gsa.svg',
-          imageAltText: 'GSA Logo'
-        }
-
+    footerLogo: {
+      text: 'Logo',
+      imageSourcePath: './assets/img/logo-gsa.svg',
+      imageAltText: 'GSA Logo',
+      href: "https://www.gsa.gov",
+      agencyName: "General Services Administration"
+    },
+    disclaimer: `This is a U.S. General Services Administration Federal Government computer system that is <strong>"FOR OFFICIAL USE ONLY."</strong> This system is subject to monitoring. Individuals found performing unauthorized activities are subject to disciplinary action including criminal prosecution.`
   };
 
   ngOnInit() {

@@ -5,6 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { NavigationMode } from '../common-navigation/common-navigation-model';
 import { SdsCollapseModule } from '../collapse/collapse.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SdsAccordionModule } from '@gsa-sam/sam-material-extensions';
 
 describe('SdsFooterComponent', () => {
   let component: SdsFooterComponent;
@@ -12,7 +13,7 @@ describe('SdsFooterComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SdsFooterComponent],
-      imports: [RouterTestingModule, SdsCollapseModule, FontAwesomeModule]
+      imports: [RouterTestingModule, SdsCollapseModule, FontAwesomeModule, SdsAccordionModule]
     })
       .compileComponents();
   }));
