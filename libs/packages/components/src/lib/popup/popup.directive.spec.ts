@@ -13,12 +13,10 @@ class TestPopupSampleComponent {
 
 
 describe('PopupDirective', () => {
-  let component: TestPopupSampleComponent;
   let fixture: ComponentFixture<TestPopupSampleComponent>;
   let de: DebugElement;
 
   beforeEach(async()=>{
-    component = new TestPopupSampleComponent();
     TestBed.configureTestingModule({
       declarations:[SdsPopupDirective,
         TestPopupSampleComponent
@@ -29,7 +27,6 @@ describe('PopupDirective', () => {
 
   beforeEach(()=>{
     fixture = TestBed.createComponent(TestPopupSampleComponent);
-    component = fixture.componentInstance;
     de = fixture.debugElement.query(By.css('div'));
   })
 
@@ -40,14 +37,14 @@ describe('PopupDirective', () => {
 
   //Check the placement value
   it('Should check placement on popup', ()=>{
-    const placeValueEl = de.nativeElement.attributes[0].value;
+    const positionValueEl = de.nativeElement.attributes['placement'].value;
     const sdsPopupDire = fixture.debugElement.query(By.directive(SdsPopupDirective));
-    expect(placeValueEl).toBe(sdsPopupDire.attributes.placement);
+    expect(positionValueEl).toBe(sdsPopupDire.attributes.placement);
   });
 
   // Check the value of position
   it('Should check position for popup', ()=>{
-    const placeValueEl = de.nativeElement.attributes[1].value;
+    const placeValueEl = de.nativeElement.attributes['position'].value;
     const sdsPopupDire = fixture.debugElement.query(By.directive(SdsPopupDirective));
     expect(placeValueEl).toBe(sdsPopupDire.attributes.position);
   });
