@@ -20,6 +20,7 @@ import {
 import { ResultModule } from './result/result.module';
 import { SearchListServiceModule } from '@gsa-sam/layouts';
 import { FilterService } from './filter.service';
+import { AutocompleteSampleDataService } from './services/autocomplete-sample.service';
 
 @NgModule({
   imports: [
@@ -35,6 +36,6 @@ import { FilterService } from './filter.service';
  ],
   exports: [ResultsLayoutComponent],
   declarations: [ResultsLayoutComponent],
-  providers: [FilterService]
+  providers: [FilterService, AutocompleteSampleDataService]
 })
 export class ResultsLayoutModule {}
