@@ -19,12 +19,11 @@ class TestComponent {
 }
 
 describe('Sam External Link Directive', () => {
-  let directive: ExternalLinkDirective;
   let component: TestComponent;
   let fixture: ComponentFixture<TestComponent>;
 
-  function findIcons() {
-    return fixture.debugElement.queryAll(By.css('.margin-left-2px'));
+  function findIcons(deElem) {
+    return deElem.queryAll(By.css('fa-icon'));
   }
 
   beforeEach(() => {
@@ -45,14 +44,14 @@ describe('Sam External Link Directive', () => {
   it('should create one icon', () => {
     fixture.detectChanges();
     const cmp = fixture.debugElement.query(By.css('#test'));
-    const icons = findIcons();
-    expect(icons).toEqual([]);
+    const icons = findIcons(cmp);
+    expect(icons.length).toEqual(1);
   });
 
   it('should not create an icon', () => {
     fixture.detectChanges();
     const cmp = fixture.debugElement.query(By.css('#test2'));
-    const icons = findIcons();
+    const icons = findIcons(cmp);
     expect(icons.length).toEqual(0);
   });
 });
