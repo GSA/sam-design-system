@@ -27,7 +27,7 @@ export let navigationConfig: SideNavigationModel = {
       ]
     },
     {
-      text: 'Exclusions', id: 'linkp2', route: '/documentation/components/sidenavigation/examples', queryParams: { 'item': 'Exclusions' }, mode: NavigationMode.INTERNAL, children: [
+      text: 'Exclusions', id: 'linkp2', route: '/documentation/components/sidenavigation/examples', queryParams: { 'item': 'Exclusions' }, mode: NavigationMode.LABEL, children: [
         {
           text: 'Federal Hierarchy', route: '/documentation/components/sidenavigation/examples', queryParams: { 'item': 'Federal Hierarchy' }, id: 'linkc1p2', mode: NavigationMode.INTERNAL, children: [
 
