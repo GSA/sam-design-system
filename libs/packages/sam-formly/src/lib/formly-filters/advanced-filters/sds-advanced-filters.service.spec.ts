@@ -8,7 +8,7 @@ describe('SdsAdvancedFiltersService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({ providers: [SdsAdvancedFiltersService] });
-    service = TestBed.get(SdsAdvancedFiltersService);
+    service = TestBed.inject(SdsAdvancedFiltersService);
   });
 
   const fields: FormlyFieldConfig[] = [
@@ -190,9 +190,6 @@ describe('SdsAdvancedFiltersService', () => {
   ];
 
   it('should be created', () => {
-    const service: SdsAdvancedFiltersService = TestBed.get(
-      SdsAdvancedFiltersService
-    );
     expect(service).toBeTruthy();
   });
 

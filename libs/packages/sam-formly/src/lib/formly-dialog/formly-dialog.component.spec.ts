@@ -2,11 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
 import { FormGroup, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
-import {
-  SdsDialogRef,
-  SDS_DIALOG_DATA,
-  SdsDialogService
-} from '@gsa-sam/components';
+import { SdsDialogRef, SDS_DIALOG_DATA  } from '@gsa-sam/components';
 
 import { SdsFormlyDialogComponent } from './formly-dialog.component';
 import { SdsFormlyModule } from '../formly/formly.module';
@@ -15,7 +11,6 @@ import { SdsAdvancedFiltersService } from '../formly-filters/advanced-filters/sd
 describe('SdsFormlyDialogComponent', () => {
   let component: SdsFormlyDialogComponent;
   let fixture: ComponentFixture<SdsFormlyDialogComponent>;
-  let dialogRef: SdsDialogService;
   let advancedFiltersService: SdsAdvancedFiltersService;
 
   beforeEach(async(() => {
@@ -46,8 +41,7 @@ describe('SdsFormlyDialogComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SdsFormlyDialogComponent);
     component = fixture.componentInstance;
-    dialogRef = TestBed.get(SdsDialogRef);
-    advancedFiltersService = TestBed.get(SdsAdvancedFiltersService);
+    advancedFiltersService = TestBed.inject(SdsAdvancedFiltersService);
     fixture.detectChanges();
   });
 
@@ -135,7 +129,6 @@ describe('SdsFormlyDialogComponent', () => {
       '.usa-button[type="submit"]'
     );
     submitBtn.click();
-    // expect(advancedFiltersService.updateFields).toHaveBeenCalled();
     expect(component.dialogRef.close).toHaveBeenCalled();
   });
 

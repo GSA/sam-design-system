@@ -2,14 +2,12 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SdsSearchResultListComponent } from './search-result-list.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CommonModule } from '@angular/common';
-import { DebugElement } from '@angular/core';
 import { SpyLocation } from '@angular/common/testing';
 import {Location} from '@angular/common';
 describe('SdsSearchResultListComponent', () => {
   let component: SdsSearchResultListComponent;
   let fixture: ComponentFixture<SdsSearchResultListComponent>;
-  let el: DebugElement;
-  let location: SpyLocation;
+  let location: Location;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SdsSearchResultListComponent],
@@ -24,8 +22,7 @@ describe('SdsSearchResultListComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SdsSearchResultListComponent);
     component = fixture.componentInstance;
-    location = TestBed.get(Location);
-    el = fixture.debugElement;
+    location = TestBed.inject(Location);
   });
 
   it('should create', () => {

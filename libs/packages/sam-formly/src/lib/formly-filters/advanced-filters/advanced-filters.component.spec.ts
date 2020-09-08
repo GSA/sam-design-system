@@ -1,8 +1,7 @@
 import {
   async,
   ComponentFixture,
-  TestBed,
-  fakeAsync
+  TestBed
 } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { SdsDialogService } from '@gsa-sam/components';
@@ -18,7 +17,6 @@ describe('Advanced Filteres Component', () => {
   let dialogRefSpyObj = jasmine.createSpyObj({
     afterClosed: of({})
   });
-  let advancedFiltersService: SdsAdvancedFiltersService;
 
   beforeEach(async(() => {
     modalServiceSpy = jasmine.createSpyObj('modalService', ['open']);
@@ -42,7 +40,6 @@ describe('Advanced Filteres Component', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AdvancedFiltersComponent);
     component = fixture.componentInstance;
-    advancedFiltersService = TestBed.get(SdsAdvancedFiltersService);
     modalServiceSpy.open.and.returnValue(dialogRefSpyObj);
   });
 
