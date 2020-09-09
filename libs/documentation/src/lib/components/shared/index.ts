@@ -8,8 +8,7 @@ import { DocumentationExamplesPage } from './examples-page/examples.component';
 import { DocumentationAPIPage } from './api-page/docs-api.component';
 import { DocumentationAPIComponent } from './api-page/docs-api-component.component';
 import { DocumentationWidgetDemoComponent } from './examples-page/demo.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { sds } from '@gsa-sam/sam-styles/src/icons/';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
@@ -26,7 +25,9 @@ export * from './demo-list';
   ]
 })
 export class DocumentationComponentsSharedModule {
-  constructor() {
-    library.add(fas, fab, sds);
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fas);
+    library.addIconPacks(fab);
+    library.addIconPacks(sds);
   }
 }
