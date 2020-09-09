@@ -4,9 +4,6 @@ import { OverviewModule } from './pages/overview/overview.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { sds } from '@gsa-sam/sam-styles/src/icons/';
-import { fas } from '@fortawesome/free-solid-svg-icons';
 
 /* Layout / Components */
 import {
@@ -278,7 +275,5 @@ export const ROUTES: Routes = [
   ]
 })
 export class DocumentationModule {
-  constructor() {
-    library.add(fas, sds);
-  }
+  constructor() {}
 }
