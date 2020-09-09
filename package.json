@@ -45,8 +45,7 @@
     "build:docs:layouts": "npx compodoc -p libs/packages/layouts/tsconfig.json -n \"SAM.Gov Design System - Layouts\" --hideGenerator --disableCoverage -d dist/apps/sam-design-system-site/compodoc/layouts",
     "build:docs:material": "npx compodoc -p libs/packages/sam-material-extensions/tsconfig.json -n \"SAM.Gov Design System - Material\" --hideGenerator --disableCoverage -d dist/apps/sam-design-system-site/compodoc/sam-material-extensions",
     "build:docs": "npm run build:docs:components && npm run build:docs:formly && npm run build:docs:layouts && npm run build:docs:material",
-    "compodocs": "npx compodoc -p libs/packages/components/tsconfig.json -s --minimal",
-    "postinstall": "ngcc"
+    "compodocs": "npx compodoc -p libs/packages/components/tsconfig.json -s --minimal"
   },
   "private": true,
   "dependencies": {
