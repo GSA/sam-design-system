@@ -71,7 +71,7 @@
     "core-js": "^2.5.4",
     "lodash-es": "^4.17.15",
     "ngx-highlightjs": "^3.0.3",
-    "ngx-markdown": "^8.0.0",
+    "ngx-markdown": "^9.1.1",
     "qs": "^6.2.3",
     "rxjs": "~6.6.2",
     "ts-md5": "^1.2.7",
