@@ -36,6 +36,7 @@ import {
 import { SdsDialogRef } from './dialog-ref';
 import { SdsDialogModule } from './dialog.module';
 import { Subject } from 'rxjs';
+import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
 
 
 describe('SdsDialog', () => {
@@ -50,7 +51,7 @@ describe('SdsDialog', () => {
 
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
-      imports: [SdsDialogModule, DialogTestModule],
+      imports: [SdsDialogModule, DialogTestModule, FontAwesomeTestingModule],
       providers: [
         {provide: Location, useClass: SpyLocation},
         {provide: ScrollDispatcher, useFactory: () => ({
@@ -1205,7 +1206,7 @@ describe('SdsDialog with a parent SdsDialog', () => {
 
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
-      imports: [SdsDialogModule, DialogTestModule],
+      imports: [SdsDialogModule, DialogTestModule, FontAwesomeTestingModule],
       declarations: [ComponentThatProvidesSdsDialog],
       providers: [
         {provide: OverlayContainer, useFactory: () => {
@@ -1313,7 +1314,7 @@ describe('SdsDialog with default options', () => {
     };
 
     TestBed.configureTestingModule({
-      imports: [SdsDialogModule, DialogTestModule],
+      imports: [SdsDialogModule, DialogTestModule,  FontAwesomeTestingModule],
       providers: [
         {provide: SDS_DIALOG_DEFAULT_OPTIONS, useValue: defaultConfig},
       ],
@@ -1501,7 +1502,7 @@ const TEST_DIRECTIVES = [
 ];
 
 @NgModule({
-  imports: [SdsDialogModule, NoopAnimationsModule],
+  imports: [SdsDialogModule, NoopAnimationsModule,  FontAwesomeTestingModule],
   exports: TEST_DIRECTIVES,
   declarations: TEST_DIRECTIVES
 })

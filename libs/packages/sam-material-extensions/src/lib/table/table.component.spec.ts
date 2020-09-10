@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TitleCasePipe } from '@angular/common';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
 
 import { SdsTableComponent } from './table.component';
 import { SdsTableColumnSettings } from './models/table-column-settings.model';
@@ -62,7 +62,7 @@ describe('SdsTableComponent', () => {
       declarations: [SdsTableComponent, WrapperComponent],
       imports: [
         MatTableModule,
-        FontAwesomeModule,
+        FontAwesomeTestingModule,
         MatSortModule,
         BrowserAnimationsModule
       ]

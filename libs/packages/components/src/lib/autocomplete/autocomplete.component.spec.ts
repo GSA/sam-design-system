@@ -5,6 +5,7 @@ import { AutoCompleteSampleDataService } from '../autocomplete-search/autocomple
 import { SDSAutocompletelConfiguration } from './models/SDSAutocompletelConfiguration.model';
 import { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';
 import { FormsModule } from '@angular/forms';
+import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
 import { SelectionMode } from '../selected-result/models/sds-selected-item-model-helper';
 import { SdsSelectedResultsModule } from '../selected-result/selected-result.module';
 import { SdsAutocompleteSearchModule } from '../autocomplete-search/autocomplete-search.module';
@@ -17,7 +18,7 @@ describe('SDSAutocompleteComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SDSAutocompleteComponent],
-      imports: [FormsModule, SdsSelectedResultsModule, SdsAutocompleteSearchModule]
+      imports: [FormsModule, SdsSelectedResultsModule, SdsAutocompleteSearchModule, FontAwesomeTestingModule]
     })
       .compileComponents();
   }));

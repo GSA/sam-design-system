@@ -7,6 +7,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { FormGroup, FormControl } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SdsFiltersModule } from './sds-filters.module';
 import { SdsFormlyModule } from '../formly/formly.module';
@@ -29,6 +30,7 @@ describe('The Sam Filters Component', () => {
         imports: [
           CommonModule,
           BrowserAnimationsModule,
+          FontAwesomeTestingModule,
           RouterTestingModule.withRoutes([]),
           SdsFormlyModule,
           SdsFiltersModule
@@ -237,6 +239,7 @@ describe('The Sam Filters Component', () => {
         imports: [
           CommonModule,
           BrowserAnimationsModule,
+          FontAwesomeTestingModule,
           RouterTestingModule.withRoutes([]),
           SdsFormlyModule,
           SdsFiltersModule

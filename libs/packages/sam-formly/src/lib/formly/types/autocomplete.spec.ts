@@ -1,11 +1,10 @@
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { TestBed, ComponentFixture, async, fakeAsync, tick } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { Component, ViewChild, DebugElement } from '@angular/core';
+import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { Component, ViewChild } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule, FormlyForm } from '@ngx-formly/core';
 import { FormlyFieldAutoCompleteComponent } from './autocomplete';
-import { of as observableOf } from 'rxjs';
+import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
 import { SDSAutocompletelConfiguration, SDSSelectedItemModel, SelectionMode, SdsAutocompleteModule } from '@gsa-sam/components';
 import { AutocompleteSampleDataService } from '../services/autocomplete-sample.service';
 
@@ -28,6 +27,7 @@ describe('Formly Field Select Component', () => {
       imports: [
         NoopAnimationsModule,
         ReactiveFormsModule,
+        FontAwesomeTestingModule,
         SdsAutocompleteModule,
         FormlyModule.forRoot({
           types: [
