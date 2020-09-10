@@ -1,6 +1,7 @@
-import { ChangeDetectorRef, DoCheck } from '@angular/core';
+import { ChangeDetectorRef, DoCheck, Directive } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 
+@Directive()
 export abstract class AbstractSdsFormly extends FieldType implements DoCheck {
 
   public cdr: ChangeDetectorRef;
