@@ -58,11 +58,12 @@ export function createGenericTestComponent<T>(html: string, type: { new(...args:
                     text: 'Show Extension',
                     btnType: 'info',
                     onClick: $event => {
-                      this.model.showExtension = 'show';
+                      testComponentButtons.model.showExtension = 'show';
                     }
                   }
                 }
               ];
+
             const fixture = createTestComponent(
                 '<formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>'),
                 trigger = fixture.nativeElement.querySelector('ng-star-inserted')
@@ -73,32 +74,6 @@ export function createGenericTestComponent<T>(html: string, type: { new(...args:
                 fixture.detectChanges();
                 expect(spy).toHaveBeenCalled();
             });
-
-
-        it('should test click worked', () => {
-            testComponentButtons.fields = [
-                {
-                  key: 'button-test',
-                  type: 'button',
-                  templateOptions: {
-                    text: 'Show Extension',
-                    btnType: 'info',
-                    onClick: $event => {
-                      this.model.showExtension = 'show';
-                    }
-                  }
-                }
-              ];
-            const fixture = createTestComponent(
-                '<formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>'),
-                trigger = fixture.nativeElement.querySelector('ng-star-inserted')
-                const buttonField: any = fixture.debugElement.query(By.css('.usa-button--unstyled'));
-
-                const spy = spyOn(buttonField.nativeElement, 'click');
-                buttonField.nativeElement.click();
-                buttonField.nativeElement.dispatchEvent(new Event('onClick'));
-            });
-
         });
 
 });

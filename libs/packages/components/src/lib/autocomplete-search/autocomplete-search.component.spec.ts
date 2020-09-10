@@ -6,6 +6,7 @@ import {
   fakeAsync,
   tick
 } from '@angular/core/testing';
+import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
 import { SDSAutocompleteSearchComponent } from './autocomplete-search.component';
 import { SDSAutocompleteSearchConfiguration } from './models/SDSAutocompleteConfiguration';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +14,6 @@ import { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem
 import { SelectionMode } from '../selected-result/models/sds-selected-item-model-helper';
 import { By } from '@angular/platform-browser';
 import { AutoCompleteSampleDataService } from './autocomplete-seach-test-service.spec';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 describe('SamAutocompleteComponent', () => {
   let component: SDSAutocompleteSearchComponent;
@@ -22,7 +22,7 @@ describe('SamAutocompleteComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SDSAutocompleteSearchComponent],
-      imports: [FormsModule, FontAwesomeModule]
+      imports: [FormsModule, FontAwesomeTestingModule]
     }).compileComponents();
   }));
 
@@ -86,21 +86,6 @@ describe('SamAutocompleteComponent', () => {
     expect(list.nativeElement.children.length).toBe(1);
     const emptyItem = fixture.debugElement.query(By.css('.emptyResults'));
     expect(emptyItem).toBeTruthy();
-  }));
-
-  it('Should have results with minimumCharacterCountSearch', fakeAsync(() => {
-    const event = {
-      preventDefault: () => {},
-      target: component.input.nativeElement
-    };
-    component.input.nativeElement.value = 'R';
-    component.input.nativeElement.focus();
-    component.configuration.minimumCharacterCountSearch = 2;
-    component.textChange(event);
-    fixture.detectChanges();
-    tick();
-    fixture.detectChanges();
-    const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
   }));
 
   it('Should have results with input and free text search on', fakeAsync(() => {

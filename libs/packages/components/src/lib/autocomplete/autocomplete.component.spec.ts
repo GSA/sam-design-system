@@ -1,5 +1,6 @@
 /* tslint:disable */
-import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
 import { SDSAutocompleteComponent } from './autocomplete.component';
 import { AutoCompleteSampleDataService } from '../autocomplete-search/autocomplete-seach-test-service.spec';
 import { SDSAutocompletelConfiguration } from './models/SDSAutocompletelConfiguration.model';
@@ -17,7 +18,12 @@ describe('SDSAutocompleteComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SDSAutocompleteComponent],
-      imports: [FormsModule, SdsSelectedResultsModule, SdsAutocompleteSearchModule]
+      imports: [
+        FormsModule,
+        FontAwesomeTestingModule,
+        SdsSelectedResultsModule,
+        SdsAutocompleteSearchModule
+      ]
     })
       .compileComponents();
   }));

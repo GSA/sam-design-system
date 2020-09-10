@@ -23,6 +23,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {Location} from '@angular/common';
 import {SpyLocation} from '@angular/common/testing';
 import {Directionality} from '@angular/cdk/bidi';
+import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
 import {SdsDialogContainerComponent} from './dialog-container.component';
 import {OverlayContainer, ScrollStrategy, Overlay} from '@angular/cdk/overlay';
 import {ScrollDispatcher} from '@angular/cdk/scrolling';
@@ -50,7 +51,11 @@ describe('SdsDialog', () => {
 
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
-      imports: [SdsDialogModule, DialogTestModule],
+      imports: [
+        SdsDialogModule,
+        DialogTestModule,
+        FontAwesomeTestingModule
+      ],
       providers: [
         {provide: Location, useClass: SpyLocation},
         {provide: ScrollDispatcher, useFactory: () => ({
@@ -1205,7 +1210,7 @@ describe('SdsDialog with a parent SdsDialog', () => {
 
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
-      imports: [SdsDialogModule, DialogTestModule],
+      imports: [SdsDialogModule, DialogTestModule, FontAwesomeTestingModule],
       declarations: [ComponentThatProvidesSdsDialog],
       providers: [
         {provide: OverlayContainer, useFactory: () => {
@@ -1313,7 +1318,11 @@ describe('SdsDialog with default options', () => {
     };
 
     TestBed.configureTestingModule({
-      imports: [SdsDialogModule, DialogTestModule],
+      imports: [
+        SdsDialogModule,
+        DialogTestModule,
+        FontAwesomeTestingModule
+      ],
       providers: [
         {provide: SDS_DIALOG_DEFAULT_OPTIONS, useValue: defaultConfig},
       ],

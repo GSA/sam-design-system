@@ -1,5 +1,6 @@
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { TestBed, ComponentFixture, async, fakeAsync, tick } from '@angular/core/testing';
+import { TestBed, ComponentFixture, async } from '@angular/core/testing';
+import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
 import { By } from '@angular/platform-browser';
 import { Component, ViewChild } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -28,6 +29,7 @@ describe('Formly Field Select Component', () => {
         NoopAnimationsModule,
         ReactiveFormsModule,
         FormlySelectModule,
+        FontAwesomeTestingModule,
         FormlyModule.forRoot({
           types: [
             {

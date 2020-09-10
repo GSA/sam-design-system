@@ -8,7 +8,7 @@ import { SDSSelectedResultConfiguration } from './models/SDSSelectedResultConfig
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
 
 
 describe('SDSSelectedResultComponent', () => {
@@ -19,7 +19,7 @@ describe('SDSSelectedResultComponent', () => {
     TestBed.configureTestingModule({
       declarations: [SDSSelectedResultComponent],
       imports: [
-        CommonModule, FormsModule, RouterModule, FontAwesomeModule
+        CommonModule, FormsModule, RouterModule, FontAwesomeTestingModule
       ],
     })
       .compileComponents();
