@@ -129,16 +129,36 @@ describe('SdsTableComponent', () => {
     });
 
     // sticky columns
-    it('should not have a sticky first column by column.sticky is not set', () => {
+    it('should not have a sticky first column', () => {
       const nativeEl = tableDe.nativeElement;
       const dataCell = nativeEl.querySelectorAll('td')[0];
       expect(dataCell.offsetLeft).toEqual(0);
     });
+  });
 
-    it('should have a sticky first column by column.sticky is set', () => {
-      component.columns[0].sticky = true;
+  describe('with sticky column set', () => {
+    beforeEach(() => {
+      fixture = TestBed.createComponent(SdsTableComponent);
+
+      component = fixture.componentInstance;
+      component.data = MOCK_DATA;
+      component.columns = [
+        {
+          primaryKey: 'id',
+          sticky: true
+        },
+        {
+          primaryKey: 'firstName',
+          header: 'First Name'
+        }
+      ]
+
+      tableDe = fixture.debugElement;
+
       fixture.detectChanges();
+    });
 
+    it('should have a sticky first column', () => {
       const nativeEl = tableDe.nativeElement;
       const dataCell = nativeEl.querySelectorAll('td')[0];
       expect(dataCell.offsetLeft).toBeGreaterThan(0);
@@ -213,9 +233,7 @@ describe('SdsTableComponent', () => {
 
     it('should sort in asc order on first click', () => {
       const nativeEl = tableDe.nativeElement;
-      const button = nativeEl.querySelectorAll(
-        'button.mat-sort-header-button'
-      )[0];
+      const button = nativeEl.querySelectorAll('.mat-sort-header')[0];
 
       button.click();
 
@@ -225,9 +243,7 @@ describe('SdsTableComponent', () => {
 
     it('should sort in desc order on second click of same sort header', () => {
       const nativeEl = tableDe.nativeElement;
-      const button = nativeEl.querySelectorAll(
-        'button.mat-sort-header-button'
-      )[0];
+      const button = nativeEl.querySelectorAll('.mat-sort-header')[0];
 
       button.click();
       button.click();
@@ -238,9 +254,7 @@ describe('SdsTableComponent', () => {
 
     it('should not be sorted on third click of same sort header', () => {
       const nativeEl = tableDe.nativeElement;
-      const button = nativeEl.querySelectorAll(
-        'button.mat-sort-header-button'
-      )[0];
+      const button = nativeEl.querySelectorAll('.mat-sort-header')[0];
 
       button.click();
       button.click();
