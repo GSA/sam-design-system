@@ -5,13 +5,7 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 
 describe('SdsAdvancedFiltersService', () => {
   let service: SdsAdvancedFiltersService;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({ providers: [SdsAdvancedFiltersService] });
-    service = TestBed.inject(SdsAdvancedFiltersService);
-  });
-
-  const fields: FormlyFieldConfig[] = [
+  const originalFields: FormlyFieldConfig[] = [
     {
       key: 'searchKeyword',
       wrappers: ['filterwrapper'],
@@ -189,16 +183,27 @@ describe('SdsAdvancedFiltersService', () => {
     }
   ];
 
+  beforeEach(() => {
+    TestBed.configureTestingModule({ providers: [SdsAdvancedFiltersService] });
+    service = TestBed.inject(SdsAdvancedFiltersService);
+  });
+
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
   it('should be able to convert a Formly form fields to checkboxes', () => {
-    expect(service.convertToCheckboxes(fields)).toEqual(checkboxFields);
+    const convertedFields = service.convertToCheckboxes(originalFields);
+    expect(convertedFields).toEqual(checkboxFields);
   });
 
   it('should update filters based on selected filter options', () => {
-    const results = {
+    const results = service.updateFields(
+      advancedFilterModel,
+      originalFields,
+      model
+    );
+    expect(results).toEqual({
       fields: updatedFields,
       model: {
         searchEntity: {
@@ -210,9 +215,6 @@ describe('SdsAdvancedFiltersService', () => {
           hideField2: null
         }
       }
-    };
-    expect(service.updateFields(advancedFilterModel, fields, model)).toEqual(
-      results
-    );
+    });
   });
 });
