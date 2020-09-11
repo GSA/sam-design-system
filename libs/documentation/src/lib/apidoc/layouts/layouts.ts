@@ -647,7 +647,7 @@ const LAYOUTS = {
         },
         {
             "name": "SearchListLayoutComponent",
-            "id": "component-SearchListLayoutComponent-2300dad616bf084c0833f63ba5506ba3",
+            "id": "component-SearchListLayoutComponent-f9d4f44936edd016f4d8fc4401c080b9",
             "file": "libs/packages/layouts/src/lib/feature/search-list-layout/search-list-layout.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -685,17 +685,25 @@ const LAYOUTS = {
                     "type": "object",
                     "optional": false,
                     "description": "<p>Id of the bottom pagination control</p>\n",
-                    "line": 89
+                    "line": 110
                 },
                 {
                     "name": "filterData",
                     "type": "any",
                     "optional": false,
                     "description": "<p>Filter information</p>\n",
-                    "line": 35,
+                    "line": 43,
                     "modifierKind": [
                         112
                     ]
+                },
+                {
+                    "name": "filtersLoaded",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "<p>flag to wait for filters before doing updates</p>\n",
+                    "line": 49
                 },
                 {
                     "name": "items",
@@ -703,7 +711,7 @@ const LAYOUTS = {
                     "type": "[]",
                     "optional": false,
                     "description": "<p>List of items to be displayed</p>\n",
-                    "line": 99
+                    "line": 120
                 },
                 {
                     "name": "page",
@@ -711,7 +719,7 @@ const LAYOUTS = {
                     "type": "object",
                     "optional": false,
                     "description": "<p>Default Page setttings</p>\n",
-                    "line": 57
+                    "line": 77
                 },
                 {
                     "name": "paginationChange",
@@ -719,7 +727,7 @@ const LAYOUTS = {
                     "type": "",
                     "optional": false,
                     "description": "<p>Page event listener</p>\n",
-                    "line": 94,
+                    "line": 115,
                     "modifierKind": [
                         114
                     ]
@@ -733,7 +741,7 @@ const LAYOUTS = {
                     "decorators": [
                         {
                             "name": "ContentChild",
-                            "stringifiedArguments": "'resultContent'"
+                            "stringifiedArguments": "'resultContent', {}"
                         }
                     ]
                 },
@@ -742,8 +750,8 @@ const LAYOUTS = {
                     "defaultValue": "''",
                     "type": "string",
                     "optional": false,
-                    "description": "<p>sort value </p>\n",
-                    "line": 104,
+                    "description": "<p>sort value</p>\n",
+                    "line": 125,
                     "modifierKind": [
                         114
                     ]
@@ -754,17 +762,46 @@ const LAYOUTS = {
                     "type": "object",
                     "optional": false,
                     "description": "<p>Id of the top pagination control</p>\n",
-                    "line": 84
+                    "line": 105
+                },
+                {
+                    "name": "totalItems",
+                    "type": "number",
+                    "optional": false,
+                    "description": "<p>Total number of items</p>\n",
+                    "line": 54
                 }
             ],
             "methodsClass": [
+                {
+                    "name": "ngOnChanges",
+                    "args": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 32,
+                    "jsdoctags": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
                 {
                     "name": "ngOnInit",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 37
+                    "line": 56
                 },
                 {
                     "name": "onSelectChange",
@@ -772,7 +809,7 @@ const LAYOUTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 76,
+                    "line": 97,
                     "description": "<p>Sorty by change event</p>\n"
                 },
                 {
@@ -781,7 +818,7 @@ const LAYOUTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 109,
+                    "line": 130,
                     "description": "<p>calls service when updated</p>\n",
                     "modifierKind": [
                         112
@@ -798,7 +835,7 @@ const LAYOUTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 67,
+                    "line": 87,
                     "description": "<p>updates the filter and set the page number to 1 and calls imported service</p>\n",
                     "modifierKind": [
                         114
@@ -806,15 +843,15 @@ const LAYOUTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 1693,
-                                "end": 1699,
+                                "pos": 2163,
+                                "end": 2169,
                                 "flags": 0,
                                 "escapedText": "filter"
                             },
                             "type": "any",
                             "tagName": {
-                                "pos": 1687,
-                                "end": 1692,
+                                "pos": 2157,
+                                "end": 2162,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -828,7 +865,7 @@ const LAYOUTS = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit, Input, ContentChild, TemplateRef, Optional } from '@angular/core';\nimport { BehaviorSubject } from \"rxjs\";\nimport { SearchListInterface, SearchListConfiguration } from './model/search-list-layout.model';\nimport { SDSFormlyUpdateComunicationService } from '@gsa-sam/sam-formly';\n\n@Component({\n  selector: 'search-list-layout',\n  templateUrl: './search-list-layout.component.html',\n  styleUrls: ['./search-list-layout.component.scss']\n})\nexport class SearchListLayoutComponent implements OnInit {\n\n  /**\n  * Child Template to be used to display the data for each item in the list of items\n  */\n  @ContentChild('resultContent') resultContentTemplate: TemplateRef<any>;\n\n  constructor(@Optional() private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService) { }\n\n  /**\n   * Input service to be called when items change\n   */\n  @Input()\n  service: SearchListInterface;\n\n  /**\n   * configuration\n   */\n  @Input()\n  configuration: SearchListConfiguration;\n\n  /**\n   * Filter information\n   */\n  private filterData: any;\n\n  ngOnInit() {\n    this.page.pageSize = this.configuration.pageSize;\n    this.sortField = this.configuration.defaultSortValue;\n    this.paginationChange.subscribe(\n      () => {\n        this.updateContent();\n      }\n    );\n    if (this.formlyUpdateComunicationService) {\n      this.formlyUpdateComunicationService.filterUpdate.subscribe(\n        (filter) => {\n          this.updateFilter(filter);\n        }\n      )\n    }\n  }\n\n  /**\n   * Default Page setttings\n   */\n  page = {\n    pageNumber: 1,\n    pageSize: 25,\n    totalPages: 0\n  }\n\n  /**\n   * updates the filter and set the page number to 1 and calls imported service\n   * @param filter \n   */\n  public updateFilter(filter: any) {\n    this.filterData = filter;\n    this.page.pageNumber = 1;\n    this.updateContent();\n  }\n\n  /**\n   * Sorty by change event\n   */\n  onSelectChange() {\n    this.page.pageNumber = 1;\n    this.updateContent();\n  }\n\n  /**\n   * Id of the top pagination control\n   */\n  top = { id: 'topPagination' };\n\n  /**\n   * Id of the bottom pagination control\n   */\n  bottom = { id: 'bottomPagination' };\n\n  /**\n   * Page event listener\n   */\n  public paginationChange = new BehaviorSubject<object>(this.page);\n\n  /**\n   * List of items to be displayed\n   */\n  items = [];\n\n  /**\n   * sort value \n   */\n  public sortField = '';\n\n  /**\n   * calls service when updated\n   */\n  private updateContent() {\n    this.service.getData({ 'page': this.page, sortField: this.sortField, filter: this.filterData }).subscribe(\n      (result) => {\n        this.items = result.items;\n        this.page.totalPages = Math.ceil(result.totalItems / this.page.pageSize);\n      }\n    );\n  }\n}\n",
+            "sourceCode": "import { Component, Input, ContentChild, TemplateRef, Optional, OnChanges, SimpleChanges, OnInit } from '@angular/core';\nimport { BehaviorSubject } from \"rxjs\";\nimport { SearchListInterface, SearchListConfiguration } from './model/search-list-layout.model';\nimport { SDSFormlyUpdateComunicationService } from '@gsa-sam/sam-formly';\n\n@Component({\n  selector: 'search-list-layout',\n  templateUrl: './search-list-layout.component.html',\n  styleUrls: ['./search-list-layout.component.scss']\n})\nexport class SearchListLayoutComponent implements OnChanges, OnInit {\n\n  /**\n  * Child Template to be used to display the data for each item in the list of items\n  */\n  @ContentChild('resultContent', /* TODO: add static flag */ {}) resultContentTemplate: TemplateRef<any>;\n\n  constructor(@Optional() private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService) { }\n\n  /**\n   * Input service to be called when items change\n   */\n  @Input()\n  service: SearchListInterface;\n\n  /**\n   * configuration\n   */\n  @Input()\n  configuration: SearchListConfiguration;\n\n  ngOnChanges(changes: SimpleChanges) {\n    if(changes.configuration.currentValue) {\n      this.configuration = changes.configuration.currentValue;\n      this.sortField = this.configuration.defaultSortValue;\n      this.onSelectChange();\n    }\n  }\n\n  /**\n   * Filter information\n   */\n  private filterData: any;\n\n\n  /**\n   * flag to wait for filters before doing updates\n   */\n  filtersLoaded = false;\n\n  /**\n   * Total number of items\n   */\n  totalItems: number;\n\n  ngOnInit() {\n    this.page.pageSize = this.configuration.pageSize;\n    this.sortField = this.configuration.defaultSortValue;\n    this.paginationChange.subscribe(\n      () => {\n        this.updateContent();\n      }\n    );\n    if (this.formlyUpdateComunicationService) {\n      this.formlyUpdateComunicationService.filterUpdate.subscribe(\n        (filter) => {\n          this.updateFilter(filter);\n        }\n      )\n    }\n  }\n\n\n  /**\n   * Default Page setttings\n   */\n  page = {\n    pageNumber: 1,\n    pageSize: 25,\n    totalPages: 0\n  }\n\n  /**\n   * updates the filter and set the page number to 1 and calls imported service\n   * @param filter\n   */\n  public updateFilter(filter: any) {\n    this.filterData = filter;\n    this.page.pageNumber = 1;\n    this.filtersLoaded = true;\n    this.updateContent();\n  }\n\n  /**\n   * Sorty by change event\n   */\n  onSelectChange() {\n    this.page.pageNumber = 1;\n    this.updateContent();\n  }\n\n  /**\n   * Id of the top pagination control\n   */\n  top = { id: 'topPagination' };\n\n  /**\n   * Id of the bottom pagination control\n   */\n  bottom = { id: 'bottomPagination' };\n\n  /**\n   * Page event listener\n   */\n  public paginationChange = new BehaviorSubject<object>(this.page);\n\n  /**\n   * List of items to be displayed\n   */\n  items = [];\n\n  /**\n   * sort value\n   */\n  public sortField = '';\n\n  /**\n   * calls service when updated\n   */\n  private updateContent() {\n    if(this.filtersLoaded) {\n      setTimeout(() => {\n        this.service.getData({ 'page': this.page, sortField: this.sortField, filter: this.filterData }).subscribe(\n          (result) => {\n            this.items = result.items;\n            this.page.totalPages = Math.ceil(result.totalItems / this.page.pageSize);\n            this.totalItems = result.totalItems;\n          }\n        );\n      });\n    }\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -858,9 +895,10 @@ const LAYOUTS = {
                 ]
             },
             "implements": [
+                "OnChanges",
                 "OnInit"
             ],
-            "templateData": "<div class=\"grid-row\" *ngIf=\"items?.length\">\n  <div class=\"grid-col\">\n    <div class=\"grid-row\">\n      <div class=\"grid-col-auto\">\n        <sds-pagination class=\"tablet:grid-col\" [paginationConfiguration]=\"top\" [(page)]=\"page\" (pageChange)=\"paginationChange.next($event)\">\n        </sds-pagination>\n      </div>\n      <div class=\"grid-col-fill\"></div>\n      <div class=\"grid-col-auto float-right\">\n        <div class=\"margin-left-1\">\n          <label class=\"usa-label font-sans-3xs text-italic text-base margin-top-1\" for=\"options\">\n            Sort by\n          </label>\n          <select (change)=\"onSelectChange()\" [(ngModel)]=\"sortField\" class=\"usa-select usa-select--small sds-min-width-160 border-base-light\" id=\"options\">\n            <option *ngFor=\"let item of configuration.sortList\" [ngValue]=\"item.value\">\n              {{ item.text }}\n            </option>\n          </select>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"grid-row\">\n  <div class=\"grid-col-12\">\n    <sds-search-result-list [model]=\"items\">\n      <ng-template #resultContent let-item>\n        <ng-container *ngTemplateOutlet=\"resultContentTemplate,\n                context: { $implicit: item }\"></ng-container>\n      </ng-template>\n    </sds-search-result-list>\n    <sds-pagination *ngIf=\"items?.length\" [paginationConfiguration]=\"bottom\" [(page)]=\"page\" (pageChange)=\"paginationChange.next($event)\">\n    </sds-pagination>\n  </div>\n</div>\n"
+            "templateData": "<div class=\"grid-row\" *ngIf=\"items?.length\">\n  <div class=\"grid-col\">\n    <div class=\"grid-row\">\n      <div class=\"grid-col-auto\">\n        <sds-pagination class=\"tablet:grid-col\" [paginationConfiguration]=\"top\" [(page)]=\"page\" (pageChange)=\"paginationChange.next($event)\" displayMode='results' [totalItems]=\"totalItems\"></sds-pagination>\n      </div>\n      <div class=\"grid-col-fill\"></div>\n      <div class=\"grid-col-auto float-right\">\n        <div class=\"margin-left-1\">\n          <label class=\"usa-label font-sans-3xs text-italic text-base margin-top-1\" for=\"options\">\n            Sort by\n          </label>\n          <select (change)=\"onSelectChange()\" [(ngModel)]=\"sortField\" class=\"usa-select usa-select--small sds-min-width-160 border-base-light\" id=\"options\">\n            <option *ngFor=\"let item of configuration.sortList\" [ngValue]=\"item.value\">\n              {{ item.text }}\n            </option>\n          </select>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"grid-row\">\n  <div class=\"grid-col-12\">\n    <sds-search-result-list [model]=\"items\">\n      <ng-template #resultContent let-item>\n        <ng-container *ngTemplateOutlet=\"resultContentTemplate,\n                context: { $implicit: item }\"></ng-container>\n      </ng-template>\n    </sds-search-result-list>\n    <sds-pagination *ngIf=\"items?.length\" [paginationConfiguration]=\"bottom\" [(page)]=\"page\" (pageChange)=\"paginationChange.next($event)\"></sds-pagination>\n  </div>\n</div>\n"
         }
     ],
     "modules": [

@@ -45,10 +45,10 @@ export class ComponentWrapperComponent {
 
       if(this.route.snapshot.data.readme) {
         if(this.route.snapshot.data.readme.opening) {
-          this.opening = this.route.snapshot.data.readme.opening;
+          this.opening = this.route.snapshot.data.readme.opening['default'];
         }
         if(this.route.snapshot.data.readme.closing) {
-          this.closing = this.route.snapshot.data.readme.closing;
+          this.closing = this.route.snapshot.data.readme.closing['default'];
         }
       }
 
