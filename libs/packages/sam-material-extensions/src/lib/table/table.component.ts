@@ -5,7 +5,8 @@ import {
   OnInit,
   ViewChild
 } from '@angular/core';
-import { MatSort, MatTableDataSource } from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
 import { SdsTableColumnSettings } from './models/table-column-settings.model';
 import { SdsTableSettings } from './models/table-settings.model';
