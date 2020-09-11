@@ -13,17 +13,6 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { MarkdownModule } from 'ngx-markdown';
 
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
-import xml from 'highlight.js/lib/languages/xml';
-import scss from 'highlight.js/lib/languages/scss';
-import typescript from 'highlight.js/lib/languages/typescript';
-
-export function hljsLanguages() {
-  return [
-    { name: 'typescript', func: typescript },
-    { name: 'scss', func: scss },
-    { name: 'xml', func: xml }
-  ];
-}
 
 @NgModule({
   declarations: [AppComponent],
@@ -38,11 +27,17 @@ export function hljsLanguages() {
   providers: [
     { provide: LocationStrategy, useClass: PathLocationStrategy },
     {
-    provide: HIGHLIGHT_OPTIONS,
-    useValue: {
-      languages: hljsLanguages,
+      provide: HIGHLIGHT_OPTIONS,
+      useValue: {
+        coreLibraryLoader: () => import('highlight.js/lib/highlight'),
+        languages: {
+          typescript: () => import('highlight.js/lib/languages/typescript'),
+          scss: () => import('highlight.js/lib/languages/scss'),
+          xml: () => import('highlight.js/lib/languages/xml')
+        }
+      }
     }
-  }],
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
