@@ -71,7 +71,7 @@ describe('Formly Field Select Component', () => {
 
 @Component({ selector: 'formly-form-test', template: '', entryComponents: [] })
 class TestComponent {
-  @ViewChild(FormlyForm) formlyForm: FormlyForm;
+  @ViewChild(FormlyForm, /* TODO: add static flag */ {}) formlyForm: FormlyForm;
 
   fields = testSearchComponent.fields;
   form: FormGroup = testSearchComponent.form;

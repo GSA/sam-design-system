@@ -13,7 +13,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   /**
   * Child Template to be used to display the data for each item in the list of items
   */
-  @ContentChild('resultContent') resultContentTemplate: TemplateRef<any>;
+  @ContentChild('resultContent', /* TODO: add static flag */ {}) resultContentTemplate: TemplateRef<any>;
 
   constructor(@Optional() private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService) { }
 

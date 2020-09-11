@@ -33,8 +33,8 @@ export class SdsAccordionContentDirective {}
 })
 export class SdsAccordionItemComponent {
 
-  @ViewChild('itemTitleTemplate') itemTitleTemplate: TemplateRef<any>;
-  @ViewChild('itemContentTemplate') itemContentTemplate: TemplateRef<any>;
+  @ViewChild('itemTitleTemplate', { static: true }) itemTitleTemplate: TemplateRef<any>;
+  @ViewChild('itemContentTemplate', { static: true }) itemContentTemplate: TemplateRef<any>;
 
   @Input() expanded = false;
 
@@ -72,7 +72,7 @@ export class SdsAccordionItemComponent {
 })
 export class SdsAccordionComponent {
 
-  @ViewChild(MatAccordion) accordion: MatAccordion;
+  @ViewChild(MatAccordion, { static: true }) accordion: MatAccordion;
 
   @ContentChildren(SdsAccordionItemComponent) accordionItems!: QueryList<SdsAccordionItemComponent>;
 

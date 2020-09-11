@@ -5,9 +5,9 @@ import { Component, ViewChild } from '@angular/core';
 })
 export class AccordionBasic {
 
-  @ViewChild('sdsAccordionDemo') sdsAccordionDemo;
-  @ViewChild('first') firstItem;
-  @ViewChild('third') thirdItem;
+  @ViewChild('sdsAccordionDemo', { static: true }) sdsAccordionDemo;
+  @ViewChild('first', { static: true }) firstItem;
+  @ViewChild('third', { static: true }) thirdItem;
 
   multi = false;
 

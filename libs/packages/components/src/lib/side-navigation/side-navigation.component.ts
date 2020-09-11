@@ -25,25 +25,25 @@ export class SdsSideNavigationComponent {
   /**
    * Reference to the the Template used for internal links
    */
-  @ViewChild('sideNavRouteLinkTemplate')
+  @ViewChild('sideNavRouteLinkTemplate', { static: true })
   private sideNavRouteLinkTemplate: TemplateRef<any>;
 
   /**
    * Reference to the the Template used for side menu items that are a label
    */
-  @ViewChild('sideNavLabelLinkTemplate')
+  @ViewChild('sideNavLabelLinkTemplate', { static: true })
   private sideNavLabelLinkTemplate: TemplateRef<any>;
 
   /**
    * Reference to the the Template used for external href
    */
-  @ViewChild('sideNavHREFLinkTemplate')
+  @ViewChild('sideNavHREFLinkTemplate', { static: true })
   private sideNavHREFLinkTemplate: TemplateRef<any>;
 
   /**
    * Reference to the the Template used for event response
    */
-  @ViewChild('sideNavEVENTLinkTemplate')
+  @ViewChild('sideNavEVENTLinkTemplate', { static: true })
   private sideNavEVENTLinkTemplate: TemplateRef<any>;
 
   /**

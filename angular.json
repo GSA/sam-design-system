@@ -168,8 +168,7 @@
             "tsConfig": "apps/sam-design-system-site/tsconfig.spec.json",
             "karmaConfig": "apps/sam-design-system-site/karma.conf.js",
             "styles": ["apps/sam-design-system-site/src/styles.scss"],
-            "scripts": [
-            ],
+            "scripts": [],
             "assets": [
               "apps/sam-design-system-site/src/favicon.ico",
               "apps/sam-design-system-site/src/assets"
@@ -365,15 +364,22 @@
       "typescriptMismatch": false,
       "versionMismatch": false
     },
-    "defaultCollection": "@nrwl/schematics",
+    "defaultCollection": "@nrwl/angular",
     "packageManager": "npm"
   },
   "schematics": {
     "@nrwl/schematics:application": {
-      "style": "scss"
+      "style": "scss",
+      "unitTestRunner": "karma",
+      "e2eTestRunner": "protractor"
     },
     "@nrwl/schematics:library": {
-      "style": "scss"
+      "style": "scss",
+      "unitTestRunner": "karma",
+      "framework": "angular"
+    },
+    "@nrwl/schematics:node-application": {
+      "framework": "express"
     }
   },
   "defaultProject": "sam-design-system-site"

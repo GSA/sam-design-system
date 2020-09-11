@@ -132,7 +132,7 @@ describe('SDS Formly Reset', () => {
 })
 
 class TestComponent {
-  @ViewChild(FormlyForm) formlyForm: FormlyForm;
+  @ViewChild(FormlyForm, /* TODO: add static flag */ {}) formlyForm: FormlyForm;
   form = form;
   options = options;
   fields = fields || [

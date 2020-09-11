@@ -34,8 +34,8 @@ import { SdsAccordionComponent, SdsAccordionItemComponent, SdsAccordionTitleDire
   `
 })
 class WrapperComponent {
-  @ViewChild(SdsAccordionComponent) accordionComponentRef: SdsAccordionComponent;
-  @ViewChild('first') firstItem;
+  @ViewChild(SdsAccordionComponent, /* TODO: add static flag */ {}) accordionComponentRef: SdsAccordionComponent;
+  @ViewChild('first', /* TODO: add static flag */ {}) firstItem;
 
   multi = false;
 

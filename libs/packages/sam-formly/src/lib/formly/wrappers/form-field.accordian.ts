@@ -22,7 +22,7 @@ import * as qs from 'qs';
   `
 })
 export class FormlyAccordianFormFieldComponent extends FieldWrapper {
-  @ViewChild('fieldComponent', { read: ViewContainerRef })
+  @ViewChild('fieldComponent', { read: ViewContainerRef, static: true })
   fieldComponent: ViewContainerRef;
   constructor() {
     super();

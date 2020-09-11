@@ -42,7 +42,7 @@ export class SdsSearchResultListComponent  {
   /**
    * Child Template to be used to display the data for each item in the list of items
    */
-  @ContentChild('resultContent') resultContentTemplate: TemplateRef<any>;
+  @ContentChild('resultContent', /* TODO: add static flag */ {}) resultContentTemplate: TemplateRef<any>;
   
   goBack() {
     this._location.back();
