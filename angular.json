@@ -365,7 +365,8 @@
       "versionMismatch": false
     },
     "defaultCollection": "@nrwl/angular",
-    "packageManager": "npm"
+    "packageManager": "npm",
+    "analytics": false
   },
   "schematics": {
     "@nrwl/schematics:application": {
