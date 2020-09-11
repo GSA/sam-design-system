@@ -3,11 +3,8 @@ import { Component, ViewChild, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TitleCasePipe } from '@angular/common';
-import {
-  MatTableDataSource,
-  MatTableModule,
-  MatSortModule
-} from '@angular/material';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { SdsTableComponent } from './table.component';
@@ -50,7 +47,7 @@ const MOCK_COLUMNS: SdsTableColumnSettings[] = [
   `
 })
 class WrapperComponent {
-  @ViewChild(SdsTableComponent, /* TODO: add static flag */ {}) tableComponentRef: SdsTableComponent;
+  @ViewChild(SdsTableComponent, {static: true}) tableComponentRef: SdsTableComponent;
   columns = MOCK_COLUMNS;
   data = MOCK_DATA;
 }

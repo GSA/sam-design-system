@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import {
   MatExpansionModule
-} from '@angular/material';
+} from '@angular/material/expansion';
 import { SdsAccordionComponent, SdsAccordionItemComponent, SdsAccordionTitleDirective, SdsAccordionContentDirective } from './accordion.component';
 
 
@@ -34,8 +34,8 @@ import { SdsAccordionComponent, SdsAccordionItemComponent, SdsAccordionTitleDire
   `
 })
 class WrapperComponent {
-  @ViewChild(SdsAccordionComponent, /* TODO: add static flag */ {}) accordionComponentRef: SdsAccordionComponent;
-  @ViewChild('first', /* TODO: add static flag */ {}) firstItem;
+  @ViewChild(SdsAccordionComponent, {static: true}) accordionComponentRef: SdsAccordionComponent;
+  @ViewChild('first', {static: true }) firstItem;
 
   multi = false;
 

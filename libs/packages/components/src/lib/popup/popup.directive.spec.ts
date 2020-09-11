@@ -40,14 +40,14 @@ describe('PopupDirective', () => {
 
   //Check the placement value
   it('Should check placement on popup', ()=>{
-    const placeValueEl = de.nativeElement.attributes[0].value;
+    const placeValueEl = de.nativeElement.attributes['placement'].value;
     const sdsPopupDire = fixture.debugElement.query(By.directive(SdsPopupDirective));
     expect(placeValueEl).toBe(sdsPopupDire.attributes.placement);
   });
 
   // Check the value of position
   it('Should check position for popup', ()=>{
-    const placeValueEl = de.nativeElement.attributes[1].value;
+    const placeValueEl = de.nativeElement.attributes['position'].value;
     const sdsPopupDire = fixture.debugElement.query(By.directive(SdsPopupDirective));
     expect(placeValueEl).toBe(sdsPopupDire.attributes.position);
   });
