@@ -1,3 +1,13 @@
-<div style="margin: 10px; max-height: 300px;">
-  <sds-table [data]="data" [columns]="columns"></sds-table>
-</div>
+<sds-table [data]="data" class="display-block maxh-mobile overflow-auto margin-2">
+
+  <sds-table-columns>
+    <ng-container sdsColumnDef="id">
+      <th *sdsHeaderCellDef>ID</th>
+      <td *sdsCellDef="let element">{{element.id}}</td>
+    </ng-container>
+  </sds-table-columns>
+
+  <sds-header-row [displayedColumns]="displayedColumns" [sticky]="true"></sds-header-row>
+  <sds-row [displayedColumns]="displayedColumns"></sds-row>
+</sds-table>
+
