@@ -13316,48 +13316,6 @@ const COMPONENTS = {
                 ]
             },
             {
-                "name": "createTouchEvent",
-                "file": "libs/packages/components/src/lib/testing/event-objects.ts",
-                "ctype": "miscellaneous",
-                "subtype": "function",
-                "description": "<p>Creates a browser TouchEvent with the specified pointer coordinates. </p>\n",
-                "args": [
-                    {
-                        "name": "type"
-                    },
-                    {
-                        "name": "pageX",
-                        "type": "number"
-                    },
-                    {
-                        "name": "pageY",
-                        "type": "number"
-                    }
-                ],
-                "jsdoctags": [
-                    {
-                        "name": "type",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    },
-                    {
-                        "name": "pageX",
-                        "type": "number",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    },
-                    {
-                        "name": "pageY",
-                        "type": "number",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
-            },
-            {
                 "name": "dispatchEvent",
                 "file": "libs/packages/components/src/lib/testing/dispatch-events.ts",
                 "ctype": "miscellaneous",
@@ -13537,57 +13495,6 @@ const COMPONENTS = {
                     {
                         "name": "event",
                         "type": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
-            },
-            {
-                "name": "dispatchTouchEvent",
-                "file": "libs/packages/components/src/lib/testing/dispatch-events.ts",
-                "ctype": "miscellaneous",
-                "subtype": "function",
-                "description": "<p>Shorthand to dispatch a touch event on the specified coordinates. </p>\n",
-                "args": [
-                    {
-                        "name": "node"
-                    },
-                    {
-                        "name": "type"
-                    },
-                    {
-                        "name": "x",
-                        "type": "number"
-                    },
-                    {
-                        "name": "y",
-                        "type": "number"
-                    }
-                ],
-                "jsdoctags": [
-                    {
-                        "name": "node",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    },
-                    {
-                        "name": "type",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    },
-                    {
-                        "name": "x",
-                        "type": "number",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    },
-                    {
-                        "name": "y",
-                        "type": "number",
                         "tagName": {
                             "text": "param"
                         }
@@ -14469,48 +14376,6 @@ const COMPONENTS = {
                             }
                         }
                     ]
-                },
-                {
-                    "name": "createTouchEvent",
-                    "file": "libs/packages/components/src/lib/testing/event-objects.ts",
-                    "ctype": "miscellaneous",
-                    "subtype": "function",
-                    "description": "<p>Creates a browser TouchEvent with the specified pointer coordinates. </p>\n",
-                    "args": [
-                        {
-                            "name": "type"
-                        },
-                        {
-                            "name": "pageX",
-                            "type": "number"
-                        },
-                        {
-                            "name": "pageY",
-                            "type": "number"
-                        }
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "type",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "pageX",
-                            "type": "number",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "pageY",
-                            "type": "number",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
                 }
             ],
             "libs/packages/components/src/lib/testing/dispatch-events.ts": [
@@ -14694,57 +14559,6 @@ const COMPONENTS = {
                         {
                             "name": "event",
                             "type": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "dispatchTouchEvent",
-                    "file": "libs/packages/components/src/lib/testing/dispatch-events.ts",
-                    "ctype": "miscellaneous",
-                    "subtype": "function",
-                    "description": "<p>Shorthand to dispatch a touch event on the specified coordinates. </p>\n",
-                    "args": [
-                        {
-                            "name": "node"
-                        },
-                        {
-                            "name": "type"
-                        },
-                        {
-                            "name": "x",
-                            "type": "number"
-                        },
-                        {
-                            "name": "y",
-                            "type": "number"
-                        }
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "node",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "type",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "x",
-                            "type": "number",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "y",
-                            "type": "number",
                             "tagName": {
                                 "text": "param"
                             }
