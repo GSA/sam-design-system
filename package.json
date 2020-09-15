@@ -47,7 +47,7 @@
     "build:docs": "npm run build:docs:components && npm run build:docs:formly && npm run build:docs:layouts && npm run build:docs:material",
     "compodocs": "npx compodoc -p libs/packages/components/tsconfig.json -s --minimal",
     "nx": "nx",
-    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
+    "postinstall": "ngcc"
   },
   "private": true,
   "dependencies": {
