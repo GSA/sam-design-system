@@ -10,19 +10,7 @@ import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontaweso
 import { sds } from '@gsa-sam/sam-styles/src/icons/';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { MarkdownModule } from 'ngx-markdown';
-
-import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
-import xml from 'highlight.js/lib/languages/xml';
-import scss from 'highlight.js/lib/languages/scss';
-import typescript from 'highlight.js/lib/languages/typescript';
-
-export function hljsLanguages() {
-  return [
-    { name: 'typescript', func: typescript },
-    { name: 'scss', func: scss },
-    { name: 'xml', func: xml }
-  ];
-}
+import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,16 +20,18 @@ export function hljsLanguages() {
     FontAwesomeModule,
     RouterModule.forRoot(ROUTES, { scrollPositionRestoration: 'enabled' }),
     FormsModule,
+    HighlightModule,
     MarkdownModule.forRoot()
   ],
   providers: [
     { provide: LocationStrategy, useClass: PathLocationStrategy },
     {
-    provide: HIGHLIGHT_OPTIONS,
-    useValue: {
-      languages: hljsLanguages,
+      provide: HIGHLIGHT_OPTIONS,
+      useValue: {
+        fullLibraryLoader: () => import('highlight.js'),
+      }
     }
-  }],
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
