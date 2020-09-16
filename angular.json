@@ -414,16 +414,23 @@
     "warnings": {
       "versionMismatch": false
     },
-    "defaultCollection": "@nrwl/schematics",
+    "defaultCollection": "@nrwl/angular",
     "packageManager": "npm",
     "analytics": false
   },
   "schematics": {
     "@nrwl/schematics:application": {
-      "style": "scss"
+      "style": "scss",
+      "unitTestRunner": "karma",
+      "e2eTestRunner": "protractor"
     },
     "@nrwl/schematics:library": {
-      "style": "scss"
+      "style": "scss",
+      "unitTestRunner": "karma",
+      "framework": "angular"
+    },
+    "@nrwl/schematics:node-application": {
+      "framework": "express"
     }
   },
   "defaultProject": "sam-design-system-site"

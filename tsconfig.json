@@ -36,7 +36,8 @@
         "libs/packages/experimental/src/index.ts"
       ],
       "@gsa-sam/documentation": ["libs/documentation/src/index.ts"]
-    }
+    },
+    "rootDir": "."
   },
   "exclude": ["node_modules", "tmp"]
 }
