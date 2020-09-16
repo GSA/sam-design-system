@@ -131,6 +131,9 @@
               "node_modules/accessible-html5-video-player/js/strings.js"
             ]
           },
+          "allowedCommonJsDependencies": [
+            "highlight.js"
+          ],
           "configurations": {
             "production": {
               "fileReplacements": [
