@@ -11,8 +11,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { sds } from '@gsa-sam/sam-styles/src/icons/';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { MarkdownModule } from 'ngx-markdown';
-
-import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
+import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +21,7 @@ import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
     FontAwesomeModule,
     RouterModule.forRoot(ROUTES, { scrollPositionRestoration: 'enabled' }),
     FormsModule,
+    HighlightModule,
     MarkdownModule.forRoot()
   ],
   providers: [
@@ -29,12 +29,7 @@ import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
     {
       provide: HIGHLIGHT_OPTIONS,
       useValue: {
-        coreLibraryLoader: () => import('highlight.js/lib/highlight'),
-        languages: {
-          typescript: () => import('highlight.js/lib/languages/typescript'),
-          scss: () => import('highlight.js/lib/languages/scss'),
-          xml: () => import('highlight.js/lib/languages/xml')
-        }
+        fullLibraryLoader: () => import('highlight.js'),
       }
     }
   ],
