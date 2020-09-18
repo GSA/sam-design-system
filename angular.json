@@ -10,7 +10,7 @@
       "prefix": "sds",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
           "options": {
             "tsConfig": "libs/packages/components/tsconfig.lib.json",
             "project": "libs/packages/components/ng-package.json"
@@ -40,9 +40,7 @@
               "libs/packages/components/tsconfig.lib.json",
               "libs/packages/components/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/packages/components/**/*"]
           }
         }
       },
@@ -59,7 +57,7 @@
       "prefix": "sds",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
           "options": {
             "tsConfig": "libs/packages/sam-formly/tsconfig.lib.json",
             "project": "libs/packages/sam-formly/ng-package.json"
@@ -85,9 +83,7 @@
               "libs/packages/sam-formly/tsconfig.lib.json",
               "libs/packages/sam-formly/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/packages/sam-formly/**/*"]
           }
         }
       },
@@ -207,7 +203,8 @@
               "apps/sam-design-system-site/tsconfig.spec.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "!apps/sam-design-system-site/**/*"
             ]
           }
         }
@@ -235,7 +232,8 @@
           "options": {
             "tsConfig": "apps/sam-design-system-site-e2e/tsconfig.e2e.json",
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "!apps/sam-design-system-site-e2e/**/*"
             ]
           }
         }
@@ -248,7 +246,7 @@
       "prefix": "sds",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
           "options": {
             "tsConfig": "libs/packages/sam-material-extensions/tsconfig.lib.json",
             "project": "libs/packages/sam-material-extensions/ng-package.json"
@@ -275,7 +273,8 @@
               "libs/packages/sam-material-extensions/tsconfig.spec.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "!libs/packages/sam-material-extensions/**/*"
             ]
           }
         }
@@ -293,7 +292,7 @@
       "prefix": "sds",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
           "options": {
             "tsConfig": "libs/packages/layouts/tsconfig.lib.json",
             "project": "libs/packages/layouts/ng-package.json"
@@ -319,9 +318,7 @@
               "libs/packages/layouts/tsconfig.lib.json",
               "libs/packages/layouts/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/packages/layouts/**/*"]
           }
         }
       },
@@ -338,7 +335,7 @@
       "prefix": "sds",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
           "options": {
             "tsConfig": "libs/packages/experimental/tsconfig.lib.json",
             "project": "libs/packages/experimental/ng-package.json"
@@ -365,7 +362,8 @@
               "libs/packages/experimental/tsconfig.spec.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "!libs/packages/experimental/**/*"
             ]
           }
         }
@@ -397,9 +395,7 @@
               "libs/documentation/tsconfig.lib.json",
               "libs/documentation/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/documentation/**/*"]
           }
         }
       },

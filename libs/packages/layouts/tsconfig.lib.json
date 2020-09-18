@@ -21,5 +21,9 @@
     "strictInjectionParameters": true,
     "enableResourceInlining": true
   },
-  "exclude": ["src/test.ts", "**/*.spec.ts"]
+  "exclude": ["src/test.ts", "**/*.spec.ts"],
+  "include": [
+    "**/*.ts",
+    "src/lib/feature/search-list-layout/model/search-list-layout.model.ts"
+  ]
 }

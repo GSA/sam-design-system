@@ -3,5 +3,8 @@
   "rules": {
     "directive-selector": [true, "attribute", "sam-design-system", "camelCase"],
     "component-selector": [true, "element", "sam-design-system", "kebab-case"]
+  },
+  "linterOptions": {
+    "exclude": ["!**/*"]
   }
 }
