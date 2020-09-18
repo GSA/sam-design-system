@@ -122,6 +122,6 @@
     "typescript": "~3.8.3"
   },
   "config": {
-    "unsafe-perm":true
+    "unsafe-perm": true
   }
 }
