@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "nx": "nx",
+    "nx": "node --max_old_space_size=8000 ./node_modules/.bin/nx",
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
@@ -24,7 +24,7 @@
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
     "circleci": "npm run test -- --no-watch --no-progress --code-coverage --browsers=ChromeHeadlessCI",
-    "federalist": "npm i @nrwl/cli && nx build sam-design-system-site --prod --baseHref=$BASEURL/",
+    "federalist": "nx build sam-design-system-site --prod --deployUrl=$BASEURL/",
     "help": "nx help",
     "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
   },
