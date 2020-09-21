@@ -25,7 +25,7 @@
     "workspace-schematic": "./node_modules/.bin/nx workspace-schematic",
     "dep-graph": "./node_modules/.bin/nx dep-graph",
     "help": "./node_modules/.bin/nx help",
-    "federalist": "npm run demo:docs && nx build --project=sam-design-system-site --prod --base-href=$BASEURL/ && npm run build:docs",
+    "federalist": "npm install --only=dev && npm run demo:docs && ./node_modules/.bin/nx build --project=sam-design-system-site --prod --base-href=$BASEURL/ && npm run build:docs",
     "circleci": "npm run test -- --no-watch --no-progress --code-coverage --browsers=ChromeHeadlessCI",
     "version": "node ./tools/scripts/update-libs-version.js && git add .",
     "postversion": "git push && git push --tags",
@@ -46,8 +46,7 @@
     "build:docs:material": "npx compodoc -p libs/packages/sam-material-extensions/tsconfig.json -n \"SAM.Gov Design System - Material\" --hideGenerator --disableCoverage -d dist/apps/sam-design-system-site/compodoc/sam-material-extensions",
     "build:docs": "npm run build:docs:components && npm run build:docs:formly && npm run build:docs:layouts && npm run build:docs:material",
     "compodocs": "npx compodoc -p libs/packages/components/tsconfig.json -s --minimal",
-    "nx": "nx",
-    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
+    "nx": "nx"
   },
   "private": true,
   "dependencies": {
