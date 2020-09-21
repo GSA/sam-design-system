@@ -126,7 +126,7 @@
               "node_modules/accessible-html5-video-player/js/px-video.js",
               "node_modules/accessible-html5-video-player/js/strings.js"
             ],
-            "allowedCommonJsDependencies": ["highlight.js"]
+            "allowedCommonJsDependencies": ["highlight.js", "qs"]
           },
           "configurations": {
             "production": {
