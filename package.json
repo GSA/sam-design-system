@@ -24,10 +24,22 @@
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
     "circleci": "npm run test -- --no-watch --no-progress --code-coverage --browsers=ChromeHeadlessCI",
-    "help": "nx help"
+    "help": "nx help",
+    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
   },
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "@angular/animations": "^10.0.0",
+    "@angular/common": "^10.0.0",
+    "@angular/compiler": "^10.0.0",
+    "@angular/core": "^10.0.0",
+    "@angular/forms": "^10.0.0",
+    "@angular/platform-browser": "^10.0.0",
+    "@angular/platform-browser-dynamic": "^10.0.0",
+    "@angular/router": "^10.0.0",
+    "rxjs": "~6.5.5",
+    "zone.js": "^0.10.2"
+  },
   "devDependencies": {
     "@nrwl/angular": "^10.2.1",
     "@nrwl/workspace": "10.2.1",
@@ -37,6 +49,20 @@
     "prettier": "2.0.4",
     "ts-node": "~7.0.0",
     "tslint": "~6.0.0",
-    "typescript": "~3.9.3"
+    "typescript": "~3.9.3",
+    "@angular/compiler-cli": "^10.0.0",
+    "@angular/language-service": "^10.0.0",
+    "@angular-devkit/build-angular": "~0.1000.0",
+    "codelyzer": "~5.0.1",
+    "karma": "~4.0.0",
+    "karma-chrome-launcher": "~2.2.0",
+    "karma-coverage-istanbul-reporter": "~2.0.1",
+    "karma-jasmine": "~1.1.2",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "jasmine-core": "~2.99.1",
+    "jasmine-spec-reporter": "~4.2.1",
+    "@types/jasmine": "~2.8.8",
+    "protractor": "~5.4.0",
+    "@types/jasminewd2": "~2.0.3"
   }
 }

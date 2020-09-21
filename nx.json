@@ -21,5 +21,13 @@
       }
     }
   },
-  "projects": {}
+  "projects": {
+    "sam-design-system-site": {
+      "tags": []
+    },
+    "sam-design-system-site-e2e": {
+      "tags": [],
+      "implicitDependencies": ["sam-design-system-site"]
+    }
+  }
 }
