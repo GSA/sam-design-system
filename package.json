@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "nx",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "./node_modules/.bin/nx build",
     "test": "ng test",
     "lint": "./node_modules/.bin/nx workspace-lint && ng lint",
     "e2e": "ng e2e",
@@ -25,7 +25,7 @@
     "workspace-schematic": "./node_modules/.bin/nx workspace-schematic",
     "dep-graph": "./node_modules/.bin/nx dep-graph",
     "help": "./node_modules/.bin/nx help",
-    "federalist": "npm run demo:docs && npx ng build --project=sam-design-system-site --prod --base-href=$BASEURL/ && npm run build:docs",
+    "federalist": "npm run demo:docs && nx build --project=sam-design-system-site --prod --base-href=$BASEURL/ && npm run build:docs",
     "circleci": "npm run test -- --no-watch --no-progress --code-coverage --browsers=ChromeHeadlessCI",
     "version": "node ./tools/scripts/update-libs-version.js && git add .",
     "postversion": "git push && git push --tags",
@@ -47,7 +47,7 @@
     "build:docs": "npm run build:docs:components && npm run build:docs:formly && npm run build:docs:layouts && npm run build:docs:material",
     "compodocs": "npx compodoc -p libs/packages/components/tsconfig.json -s --minimal",
     "nx": "nx",
-    "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
+    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
   },
   "private": true,
   "dependencies": {
@@ -116,6 +116,5 @@
     "ts-node": "~7.0.0",
     "tslint": "~6.1.0",
     "typescript": "~4.0.2"
-  },
-  "postinstall": "ngcc --properties es2015 browser module main --async false"
+  }
 }

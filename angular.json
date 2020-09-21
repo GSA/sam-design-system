@@ -45,7 +45,7 @@
         }
       },
       "schematics": {
-        "@nrwl/schematics:component": {
+        "@nrwl/angular:component": {
           "styleext": "scss"
         }
       }
@@ -88,7 +88,7 @@
         }
       },
       "schematics": {
-        "@nrwl/schematics:component": {
+        "@nrwl/angular:component": {
           "styleext": "scss"
         }
       }
@@ -99,7 +99,7 @@
       "projectType": "application",
       "prefix": "sds",
       "schematics": {
-        "@nrwl/schematics:component": {
+        "@schematics/angular:component": {
           "style": "scss"
         }
       },
@@ -126,9 +126,7 @@
               "node_modules/accessible-html5-video-player/js/px-video.js",
               "node_modules/accessible-html5-video-player/js/strings.js"
             ],
-            "allowedCommonJsDependencies": [
-              "highlight.js"
-            ]
+            "allowedCommonJsDependencies": ["highlight.js"]
           },
           "configurations": {
             "production": {
@@ -280,7 +278,7 @@
         }
       },
       "schematics": {
-        "@nrwl/schematics:component": {
+        "@nrwl/angular:component": {
           "styleext": "scss"
         }
       }
@@ -323,7 +321,7 @@
         }
       },
       "schematics": {
-        "@nrwl/schematics:component": {
+        "@nrwl/angular:component": {
           "styleext": "scss"
         }
       }
@@ -369,7 +367,7 @@
         }
       },
       "schematics": {
-        "@nrwl/schematics:component": {
+        "@nrwl/angular:component": {
           "styleext": "scss"
         }
       }
@@ -400,7 +398,7 @@
         }
       },
       "schematics": {
-        "@nrwl/schematics:component": {
+        "@nrwl/angular:component": {
           "styleext": "scss"
         }
       }
@@ -415,18 +413,15 @@
     "analytics": false
   },
   "schematics": {
-    "@nrwl/schematics:application": {
+    "@nrwl/angular:application": {
       "style": "scss",
       "unitTestRunner": "karma",
       "e2eTestRunner": "protractor"
     },
-    "@nrwl/schematics:library": {
+    "@nrwl/angular:library": {
       "style": "scss",
       "unitTestRunner": "karma",
       "framework": "angular"
-    },
-    "@nrwl/schematics:node-application": {
-      "framework": "express"
     }
   },
   "defaultProject": "sam-design-system-site"
