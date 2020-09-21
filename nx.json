@@ -1,44 +1,25 @@
 {
   "npmScope": "gsa-sam",
+  "affected": {
+    "defaultBase": "master"
+  },
   "implicitDependencies": {
-    "angular.json": "*",
-    "package.json": "*",
-    "tsconfig.json": "*",
+    "workspace.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.base.json": "*",
     "tslint.json": "*",
     "nx.json": "*"
   },
-  "projects": {
-    "sam-formly": {
-      "tags": ["scope:shared", "platform:web", "type:ui"]
-    },
-    "components": {
-      "tags": ["scope:shared", "platform:web", "type:ui"]
-    },
-    "sam-design-system-site": {
-      "tags": [
-        "scope:sam-design-system-site",
-        "platform:web",
-        "type:application"
-      ]
-    },
-    "sam-design-system-site-e2e": {
-      "tags": [
-        "scope:sam-design-system-site-e2e",
-        "platform:web",
-        "type:application"
-      ]
-    },
-    "sam-material-extensions": {
-      "tags": ["scope:shared", "platform:web", "type:ui"]
-    },
-    "layouts": {
-      "tags": ["scope:shared", "type:ui", "platform:web"]
-    },
-    "experimental": {
-      "tags": ["scope:shared", "platform:web", "type:ui"]
-    },
-    "documentation": {
-      "tags": []
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
     }
-  }
+  },
+  "projects": {}
 }

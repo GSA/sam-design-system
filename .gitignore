@@ -4,7 +4,6 @@
 /dist
 /tmp
 /out-tsc
-/_site
 
 # dependencies
 /node_modules
@@ -19,7 +18,11 @@
 *.sublime-workspace
 
 # IDE - VSCode
-.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
 # misc
 /.sass-cache
@@ -30,7 +33,6 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
-/documentation
 
 # System Files
 .DS_Store
