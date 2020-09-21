@@ -25,7 +25,7 @@
     "workspace-schematic": "./node_modules/.bin/nx workspace-schematic",
     "dep-graph": "./node_modules/.bin/nx dep-graph",
     "help": "./node_modules/.bin/nx help",
-    "federalist": "npm install --only=dev && npm run demo:docs && ./node_modules/.bin/nx build --project=sam-design-system-site --prod --base-href=$BASEURL/ && npm run build:docs",
+    "federalist": " npm run demo:docs && ./node_modules/.bin/nx build sam-design-system-site --prod --deployUrl=$BASEURL/ && npm run build:docs",
     "circleci": "npm run test -- --no-watch --no-progress --code-coverage --browsers=ChromeHeadlessCI",
     "version": "node ./tools/scripts/update-libs-version.js && git add .",
     "postversion": "git push && git push --tags",
