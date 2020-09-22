@@ -1,39 +1,86 @@
+@import './material-theme';
+//global styles below
 
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
-@import '~@angular/material/theming';
-// Plus imports for other components in your app.
+$theme-image-path: '~@gsa-sam/sam-styles/src/img';
+$theme-font-path: '~@gsa-sam/sam-styles/src/fonts';
 
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-@include mat-core();
+@import '~@gsa-sam/sam-styles/src/stylesheets/sam';
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$sam-design-system-site-primary: mat-palette($mat-indigo);
-$sam-design-system-site-accent: mat-palette($mat-pink, A200, A100, A400);
+//CDK Overlay
+@import '~@angular/cdk/overlay';
+$cdk-overlay-dark-backdrop-background: rgba(14, 52, 88, 0.7);
+@include cdk-overlay;
 
-// The warn palette is optional (defaults to red).
-$sam-design-system-site-warn: mat-palette($mat-red);
+// Demo pages only
+// DO NOT REUSE
 
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-$sam-design-system-site-theme: mat-light-theme((
-  color: (
-    primary: $sam-design-system-site-primary,
-    accent: $sam-design-system-site-accent,
-    warn: $sam-design-system-site-warn,
-  )
-));
+.usa-table--full-borderless tr, .usa-table--full-borderless td, .usa-table--full-borderless th {
+  border: 0;
+}
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include angular-material-theme($sam-design-system-site-theme);
+.usa-table--row-borders--thin tr, .usa-table--row-borders--thin td, .usa-table--row-borders--thin th {
+  border-bottom: solid 1px #d9e8f6;
+}
+.usa-table--row-borders--thin th {
+  border-top: solid 1px #d9e8f6;
+}
 
-/* You can add global styles to this file, and also import other style files */
+.usa-table--thin tr, .usa-table--thin td, .usa-table--thin th {
+  padding:0;
+  margin:0;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+code::before, code::after {
+  content: '';
+}
+
+.header-styles .icon-layers-counter {
+  height: 1em;
+  min-width: 1em;
+  right: 4px;
+}
+
+.header-styles .icon-square {
+  color: #70e17b;
+}
+
+.sam-example-pagination {
+  line-height: 45px;
+}
+
+.usa-form-group--error {
+  margin-left: -0.5rem !important;
+}
+
+// Fixes for Docs
+
+pre[class*="highlight"] {
+  padding: 1em;
+  margin: .5em 0;
+  overflow: auto;
+  border: 1px solid #dddddd;
+  background-color: white;
+
+  code {
+    background-color: white;
+  }
+}
+
+documentation-widget-demo sds-page {
+  min-height: auto !important;
+  margin-bottom:0 !important;
+}
+
+.sds-tabs .usa-button {
+  margin-bottom: -2px;
+  margin-top: 0;
+}
+/* Fixes to look at in Sam-Styles */
+
+.sds-tag[class*="sds-tag--outline"] {
+  width: auto !important;
+
+}
+ code {
+   color: #e02b70;
+ }
