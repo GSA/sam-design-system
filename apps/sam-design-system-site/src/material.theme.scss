@@ -1,5 +1,5 @@
-/* autoprefixer grid: autoplace */
-
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
 @import '~@angular/material/theming';
 // Plus imports for other components in your app.
 
@@ -107,25 +107,31 @@ $mat-sds-red: (
   )
 );
 
-
-
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$sds-mat-app-primary: mat-palette($mat-sds-green);
-$sds-mat-app-accent:  mat-palette($mat-sds-blue, A200, A100, A400);
+$sam-design-system-site-primary: mat-palette($mat-sds-green);
+$sam-design-system-site-accent: mat-palette($mat-sds-blue, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$sds-mat-app-warn:    mat-palette($mat-sds-red);
+$sam-design-system-site-warn: mat-palette($mat-sds-red);
 
-// Create the theme object (a Sass map containing all of the palettes).
-$sds-mat-app-theme: mat-light-theme($sds-mat-app-primary, $sds-mat-app-accent, $sds-mat-app-warn);
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$sam-design-system-site-theme: mat-light-theme((
+  color: (
+    primary: $sam-design-system-site-primary,
+    accent: $sam-design-system-site-accent,
+    warn: $sam-design-system-site-warn,
+  )
+));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include angular-material-theme($sds-mat-app-theme);
+@include angular-material-theme($sam-design-system-site-theme);
 
+/* You can add global styles to this file, and also import other style files */
 .mat-calendar-table-header {
   color: black !important;
 }
