@@ -11,7 +11,7 @@ import { SdsAdvancedFiltersService } from '../formly-filters/advanced-filters/sd
   templateUrl: './formly-dialog.component.html'
 })
 export class SdsFormlyDialogComponent implements OnInit {
-  dataModel: any = {};
+  dialogModel: any = {};
   form: FormGroup;
   model: any;
   options: FormlyFormOptions;
@@ -19,13 +19,13 @@ export class SdsFormlyDialogComponent implements OnInit {
   cancel: string;
   submit: string;
   hasToggle: boolean = true;
-  toggleLabel = 'Toggle History';
-  toggleChecked = false;
+  toggleLabel: string = '';
+  toggleChecked;
 
   constructor(
     public advancedFiltersService: SdsAdvancedFiltersService,
     public dialogRef: SdsDialogRef<SdsFormlyDialogComponent>,
-    @Inject(SDS_DIALOG_DATA) public data: SdsFormlyDialogData
+    @Inject(SDS_DIALOG_DATA) public data: any
   ) { }
 
   public ngOnInit() {
@@ -35,13 +35,15 @@ export class SdsFormlyDialogComponent implements OnInit {
     this.options = this.data.options ? this.data.options : {};
     this.cancel = this.data.cancel ? this.data.cancel : 'Cancel';
     this.submit = this.data.submit ? this.data.submit : 'Submit';
+    this.toggleLabel = (this.data.toggleModel && this.data.toggleModel.lable) ? this.data.toggleModel.lable : '';
+    this.toggleChecked = (this.data.toggleModel && this.data.toggleModel.defaultValue) ? this.data.toggleModel.defaultValue : false;
   }
 
   onSubmit() {
     if (this.form.valid) {
-      this.dataModel.model = this.model;
-      this.dataModel.toggleChecked = this.toggleChecked;
-      this.dialogRef.close(this.dataModel);
+      this.dialogModel.model = this.model;
+      this.dialogModel.toggleChecked = this.toggleChecked;
+      this.dialogRef.close(this.dialogModel);
     }
   }
   toggleChanged(ev) {

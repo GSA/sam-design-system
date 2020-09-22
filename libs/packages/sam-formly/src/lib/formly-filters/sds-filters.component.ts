@@ -57,6 +57,8 @@ export class SdsFiltersComponent implements OnInit {
    */
   @Input() public getCleanModel: boolean = false;
 
+  @Input() public toggleModel: object = {};
+
   /**
    *  Emit results when model updated
    */

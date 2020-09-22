@@ -22,7 +22,7 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
   public filterChange$ = new BehaviorSubject<object>(null);
   public navigationModel: SideNavigationModel = navigationConfig;
   public toggleModel = {
-    defaultValue: true,
+    defaultValue: false,
     lable: 'Enable history data'
   }
   listConfig: SearchListConfiguration = {

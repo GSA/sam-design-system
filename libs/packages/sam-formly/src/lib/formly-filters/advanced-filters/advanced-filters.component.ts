@@ -28,6 +28,8 @@ export class AdvancedFiltersComponent {
    */
   @Input() public model: any;
 
+  @Input() public toggleModel: object = {}
+
   /**
    *    Options for the form.
    */
@@ -44,10 +46,11 @@ export class AdvancedFiltersComponent {
       this.fields
     );
 
-    const data: SdsFormlyDialogData = {
+    const data: any = {
       fields: modalFields,
       submit: 'Update',
-      title: 'More Filters'
+      title: 'More Filters',
+      toggleModel: this.toggleModel
     };
 
     const dialogRef = this.dialog.open(SdsFormlyDialogComponent, {
