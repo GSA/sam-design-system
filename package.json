@@ -4,8 +4,9 @@
   "license": "MIT",
   "scripts": {
     "ng": "nx",
+    "nx": "nx",
     "start": "ng serve",
-    "build": "./node_modules/.bin/nx build",
+    "build": "npx ng build",
     "test": "ng test",
     "lint": "./node_modules/.bin/nx workspace-lint && ng lint",
     "e2e": "ng e2e",
@@ -25,7 +26,7 @@
     "workspace-schematic": "./node_modules/.bin/nx workspace-schematic",
     "dep-graph": "./node_modules/.bin/nx dep-graph",
     "help": "./node_modules/.bin/nx help",
-    "federalist": "npm install nx && npm run demo:docs && nx build sam-design-system-site --prod --deployUrl=$BASEURL/ && npm run build:docs",
+    "federalist": "npm run demo:docs && npm run build -- --prod --base-href=$BASEURL/ && npm run build:docs",
     "circleci": "npm run test -- --no-watch --no-progress --code-coverage --browsers=ChromeHeadlessCI",
     "version": "node ./tools/scripts/update-libs-version.js && git add .",
     "postversion": "git push && git push --tags",
@@ -46,14 +47,17 @@
     "build:docs:material": "npx compodoc -p libs/packages/sam-material-extensions/tsconfig.json -n \"SAM.Gov Design System - Material\" --hideGenerator --disableCoverage -d dist/apps/sam-design-system-site/compodoc/sam-material-extensions",
     "build:docs": "npm run build:docs:components && npm run build:docs:formly && npm run build:docs:layouts && npm run build:docs:material",
     "compodocs": "npx compodoc -p libs/packages/components/tsconfig.json -s --minimal",
-    "nx": "nx"
+    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
   },
   "private": true,
   "dependencies": {
+    "@angular-devkit/build-angular": "^0.1001.2",
     "@angular/animations": "^10.1.1",
     "@angular/cdk": "^10.2.0",
+    "@angular/cli": "^10.1.2",
     "@angular/common": "^10.1.1",
     "@angular/compiler": "^10.1.1",
+    "@angular/compiler-cli": "^10.1.2",
     "@angular/core": "^10.1.1",
     "@angular/forms": "^10.1.1",
     "@angular/material": "^10.2.0",
@@ -78,13 +82,11 @@
     "rxjs": "~6.6.2",
     "ts-md5": "^1.2.7",
     "tslib": "^2.0.0",
+    "typescript": "^4.0.3",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.1001.0",
     "@angular-devkit/build-ng-packagr": "~0.1001.0",
-    "@angular/cli": "~10.1.0",
-    "@angular/compiler-cli": "^10.1.1",
     "@angular/language-service": "^10.1.1",
     "@ngrx/schematics": "10.0.0",
     "@nrwl/workspace": "10.2.1",
@@ -112,7 +114,6 @@
     "sass-loader": "^7.3.1",
     "style-loader": "^1.0.0",
     "ts-node": "~7.0.0",
-    "tslint": "~6.1.0",
-    "typescript": "~4.0.2"
+    "tslint": "~6.1.0"
   }
 }
