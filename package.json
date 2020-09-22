@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "nx",
-    "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
+    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
     "nx": "nx",
     "start": "ng serve",
     "build": "npx ng build",
@@ -32,27 +32,29 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^10.0.0",
+    "@angular/cli": "^10.1.2",
     "@angular/common": "^10.0.0",
     "@angular/compiler": "^10.0.0",
+    "@angular/compiler-cli": "^10.1.2",
     "@angular/core": "^10.0.0",
     "@angular/forms": "^10.0.0",
     "@angular/platform-browser": "^10.0.0",
     "@angular/platform-browser-dynamic": "^10.0.0",
     "@angular/router": "^10.0.0",
-    "@nrwl/workspace": "^10.2.1",
+    "@nrwl/angular": "^10.2.1",
     "rxjs": "~6.5.5",
+    "tslib": "^2.0.1",
+    "typescript": "^3.9.7",
     "zone.js": "^0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1000.0",
-    "@angular/cli": "~10.0.0",
-    "@angular/compiler-cli": "^10.0.0",
     "@angular/language-service": "^10.0.0",
-    "@nrwl/angular": "^10.2.1",
+    "@nrwl/workspace": "^10.2.1",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
-    "codelyzer": "~5.0.1",
+    "codelyzer": "^6.0.0",
     "dotenv": "6.2.0",
     "eslint": "6.8.0",
     "jasmine-core": "~2.99.1",
@@ -65,7 +67,6 @@
     "prettier": "2.0.4",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
-    "tslint": "~6.0.0",
-    "typescript": "~3.9.3"
+    "tslint": "~6.0.0"
   }
 }
