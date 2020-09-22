@@ -74,7 +74,6 @@
     "@nrwl/angular": "10.2.1",
     "@types/qs": "^6.2.3",
     "accessible-html5-video-player": "^1.0.6",
-    "core-js": "^2.5.4",
     "lodash-es": "^4.17.15",
     "ngx-highlightjs": "^4.1.1",
     "ngx-markdown": "^10.1.1",
