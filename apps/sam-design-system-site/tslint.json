@@ -1,8 +1,8 @@
 {
   "extends": "../../tslint.json",
   "rules": {
-    "directive-selector": [true, "attribute", "gsaSam", "camelCase"],
-    "component-selector": [true, "element", "gsa-sam", "kebab-case"]
+    "directive-selector": [true, "attribute", "sds", "camelCase"],
+    "component-selector": [true, "element", "sds", "kebab-case"]
   },
   "linterOptions": {
     "exclude": ["!**/*"]
