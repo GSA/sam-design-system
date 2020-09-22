@@ -24,6 +24,7 @@
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
     "circleci": "npm run test -- --no-watch --no-progress --code-coverage --browsers=ChromeHeadlessCI",
+    "federalist": "npm run build -- --prod",
     "help": "nx help"
   },
   "private": true,
