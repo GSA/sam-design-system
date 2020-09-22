@@ -31,7 +31,6 @@ High level file structure and notable file locations.
    │       └── update-libs-version.js
    ├── angular.json
    ├── CODEOWNERS
-   ├── jest.conf.js
    ├── karma.conf.js
    ├── nx.json
    ├── package-lock.json
@@ -279,7 +278,6 @@ The overall library documentation module is where we register all of the example
 ## Configuration
 - `angular.json` &rarr; Angular CLI configuration
 - `CODEOWNERS` &rarr; Github pull request approvers
-- `jest.conf.js` &rarr; JEST testing framework configuration
 - `karma.conf.js` &rarr; Karma test runner framework configuration
 - `nx.json` &rarr; NX Workspace monorepo configuration and dependency tagging
 - `package-lock.json` &rarr; Pre-processsed project dependencies
