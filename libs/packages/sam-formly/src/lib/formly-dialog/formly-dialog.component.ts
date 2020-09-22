@@ -11,18 +11,22 @@ import { SdsAdvancedFiltersService } from '../formly-filters/advanced-filters/sd
   templateUrl: './formly-dialog.component.html'
 })
 export class SdsFormlyDialogComponent implements OnInit {
+  dataModel: any = {};
   form: FormGroup;
   model: any;
   options: FormlyFormOptions;
   fields: FormlyFieldConfig[];
   cancel: string;
   submit: string;
+  hasToggle: boolean = true;
+  toggleLabel = 'Toggle History';
+  toggleChecked = false;
 
   constructor(
     public advancedFiltersService: SdsAdvancedFiltersService,
     public dialogRef: SdsDialogRef<SdsFormlyDialogComponent>,
     @Inject(SDS_DIALOG_DATA) public data: SdsFormlyDialogData
-  ) {}
+  ) { }
 
   public ngOnInit() {
     this.fields = this.data.fields;
@@ -35,10 +39,14 @@ export class SdsFormlyDialogComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-      this.dialogRef.close(this.model);
+      this.dataModel.model = this.model;
+      this.dataModel.toggleChecked = this.toggleChecked;
+      this.dialogRef.close(this.dataModel);
     }
   }
-
+  toggleChanged(ev) {
+    this.toggleChecked = ev.target.checked;
+  }
   onCancel() {
     this.options.resetModel();
     this.dialogRef.close();

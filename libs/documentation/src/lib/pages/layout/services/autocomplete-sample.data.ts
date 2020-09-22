@@ -239,3 +239,40 @@ export let SampleAutocompleteData = [
     id: 'WY'
   }
 ];
+
+export let IndiaStates = [
+
+  {
+    name: 'Andhra Pradesh',
+    id: 'AP'
+  },
+  {
+    name: 'Arunachal Pradesh',
+    id: 'AR'
+  },
+  {
+    name: 'Assam',
+    id: 'AS'
+  },
+  {
+    name: 'Bihar',
+    id: 'BR'
+  },
+  {
+    name: 'Chhattisgarh',
+    id: 'CG'
+  },
+  {
+    name: 'Goa',
+    id: 'GA'
+  },
+  {
+    name: 'Gujarat',
+    id: 'GJ'
+  },
+  {
+    name: 'Haryana',
+    id: 'HR'
+  }
+];
+

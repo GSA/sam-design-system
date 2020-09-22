@@ -6,6 +6,7 @@ import { SideNavigationModel } from '@gsa-sam/components';
 import { navigationConfig } from './navigate.config';
 import { SearchListConfiguration } from '@gsa-sam/layouts';
 import { FilterService } from './filter.service';
+import { AutocompleteSampleDataService } from './services/autocomplete-sample.service';
 @Component({
   templateUrl: './layout.component.html'
 })
@@ -17,9 +18,13 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
   filterModel = {};
   options;
   filtersExpanded: boolean = true;
+  public historyToggleChange$ = new BehaviorSubject<object>(null);
   public filterChange$ = new BehaviorSubject<object>(null);
   public navigationModel: SideNavigationModel = navigationConfig;
-
+  public toggleModel = {
+    defaultValue: true,
+    lable: 'Enable history data'
+  }
   listConfig: SearchListConfiguration = {
     defaultSortValue: 'legalBusinessName',
     pageSize: 25,
@@ -51,8 +56,9 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
 
   constructor(
     public service: DataService,
-    public filterService: FilterService
-  ) {}
+    public filterService: FilterService,
+    public autocompleteSampleDataService: AutocompleteSampleDataService
+  ) { }
   ngOnInit() {
     this.fields = this.filterService.fields;
     this.filterModel = this.filterService.model;
@@ -63,15 +69,17 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
     this.filterChange$.subscribe(res => {
       this.resultList.updateFilter(res);
     });
+    this.historyToggleChange$.subscribe(value => {
+      this.autocompleteSampleDataService.setArrayReference(value);
+      console.log(value, 'history toggle');
+    });
   }
 
   updateConfig(update: boolean) {
-    if(update) {
+    if (update) {
       this.listConfig = { ...this.updatedListConfig };
-    }
-    else {
+    } else {
       this.listConfig = { ...this.defaultListConfig };
     }
-
   }
 }

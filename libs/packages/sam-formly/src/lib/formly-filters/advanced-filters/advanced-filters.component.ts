@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { SdsDialogService } from '@gsa-sam/components';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
@@ -32,11 +32,12 @@ export class AdvancedFiltersComponent {
    *    Options for the form.
    */
   @Input() public options: FormlyFormOptions = {};
+  @Output() toggleChange = new EventEmitter<boolean>();
 
   constructor(
     public dialog: SdsDialogService,
     private advancedFiltersService: SdsAdvancedFiltersService
-  ) {}
+  ) { }
 
   openDialog(): void {
     const modalFields: FormlyFieldConfig[] = this.advancedFiltersService.convertToCheckboxes(
@@ -54,16 +55,17 @@ export class AdvancedFiltersComponent {
       data: data
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result: any) => {
       if (result) {
         const response = this.advancedFiltersService.updateFields(
-          result,
+          result.model,
           this.fields,
           this.model
         );
 
         this.fields = response.fields;
         this.model = response.model;
+        this.toggleChange.emit(result.toggleChecked);
       }
     });
   }

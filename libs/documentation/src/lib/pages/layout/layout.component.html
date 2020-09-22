@@ -1,39 +1,46 @@
-<div aria-level="1" aria-role="heading" class="h1 text-ink line-height-sans-2 margin-y-3">Search List Layout</div>
+<div aria-level="1" aria-role="heading" class="h1 text-ink line-height-sans-2 margin-y-3">
+  Search List Layout
+</div>
 <div class="margin-y-2">
-  <button class="usa-button" (click)="updateConfig(false)">Default Sort Config</button>
-  <button class="usa-button" (click)="updateConfig(true)">Update Sort Config</button>
+  <button class="usa-button" (click)="updateConfig(false)">
+    Default Sort Config
+  </button>
+  <button class="usa-button" (click)="updateConfig(true)">
+    Update Sort Config
+  </button>
   <hr />
 </div>
 
 <div class="sds-page condensed margin-top-2">
-    <div class="grid-container">
-        <div class="grid-row">
-            <sds-toolbar class="grid-col-12 tablet:grid-col-auto" #toolbar="sdsToolbar" [expanded]="true">
-                <sds-accordion>
-                    <sds-accordion-item #domainAccordion [expanded]="!filtersExpanded">
-                        <sds-accordion-item-header>
-                            <span class="text-normal">Domain</span>
-                        </sds-accordion-item-header>
-                        <sds-side-navigation #sideNav [model]="navigationModel"></sds-side-navigation>
-                    </sds-accordion-item>
-                    <sds-accordion-item #filtersAccordion [expanded]="filtersExpanded">
-                        <sds-accordion-item-header>Filter By</sds-accordion-item-header>
-                        <sds-filters [options]="options" [form]="form" [fields]="fields" [model]="filterModel" (filterChange)="filterChange$.next($event)">
-                        </sds-filters>
-                    </sds-accordion-item>
-                </sds-accordion>
-            </sds-toolbar>
+  <div class="grid-container">
+    <div class="grid-row">
+      <sds-toolbar class="grid-col-12 tablet:grid-col-auto" #toolbar="sdsToolbar" [expanded]="true">
+        <sds-accordion>
+          <sds-accordion-item #domainAccordion [expanded]="!filtersExpanded">
+            <sds-accordion-item-header>
+              <span class="text-normal">Domain</span>
+            </sds-accordion-item-header>
+            <sds-side-navigation #sideNav [model]="navigationModel"></sds-side-navigation>
+          </sds-accordion-item>
+          <sds-accordion-item #filtersAccordion [expanded]="filtersExpanded">
+            <sds-accordion-item-header>Filter By</sds-accordion-item-header>
+            <sds-filters [advancedFilters]="true" [options]="options" [form]="form" [fields]="fields"
+              [model]="filterModel" (filterChange)="filterChange$.next($event)"
+              (historyToggleChange)="historyToggleChange$.next($event)">
+            </sds-filters>
+          </sds-accordion-item>
+        </sds-accordion>
+      </sds-toolbar>
 
-            <div class="sds-page__content tablet:grid-col-fill">
-                <search-list-layout #resultList [service]="service" [configuration]="listConfig">
-                    <ng-template #resultContent let-item>
-                        <div>
-                            <result-item [model]="item"></result-item>
-                        </div>
-                    </ng-template>
-                </search-list-layout>
+      <div class="sds-page__content tablet:grid-col-fill">
+        <search-list-layout #resultList [service]="service" [configuration]="listConfig">
+          <ng-template #resultContent let-item>
+            <div>
+              <result-item [model]="item"></result-item>
             </div>
-        </div>
+          </ng-template>
+        </search-list-layout>
+      </div>
     </div>
+  </div>
 </div>
-

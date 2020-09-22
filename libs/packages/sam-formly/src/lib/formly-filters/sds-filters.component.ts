@@ -14,6 +14,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import * as qs from 'qs';
 import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
 import { DatePipe } from '@angular/common';
+import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'sds-filters',
   templateUrl: './sds-filters.component.html'
@@ -62,6 +63,10 @@ export class SdsFiltersComponent implements OnInit {
   // TODO: check type -- Formly models are typically objects
   @Output() filterChange = new EventEmitter<object[]>();
 
+  @Output() historyToggleChange = new EventEmitter<object>();
+
+  public toggleChange$ = new BehaviorSubject<object>(null);
+
   _isObj = (obj: any): boolean => typeof obj === 'object' && obj !== null;
   _isEmpty = (obj: any): boolean => Object.keys(obj).length === 0;
   overwrite = (baseObj: any, newObj: any) => {
@@ -87,7 +92,7 @@ export class SdsFiltersComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private datePipe: DatePipe
-  ) {}
+  ) { }
 
   @HostListener('window:popstate', ['$event'])
   onpopstate(event) {
@@ -101,6 +106,9 @@ export class SdsFiltersComponent implements OnInit {
     this.updateChange(updatedFormValue);
   }
   ngOnInit(): void {
+    this.toggleChange$.subscribe(res => {
+      this.historyToggleChange.emit(res);
+    });
     if (this.isHistoryEnable) {
       if (this._isEmpty(this.form.getRawValue())) {
         const queryString = window.location.search.substring(1);
