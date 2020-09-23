@@ -135,7 +135,7 @@
       "projectType": "library",
       "root": "libs/documentation",
       "sourceRoot": "libs/documentation/src",
-      "prefix": "gsa-sam",
+      "prefix": "docs",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
