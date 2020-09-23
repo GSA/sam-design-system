@@ -1,14 +1,17 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "rootDir": ".",
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es5",
-    "module": "es2020",
+    "target": "es2015",
+    "module": "esnext",
     "typeRoots": ["node_modules/@types"],
     "lib": ["es2017", "dom"],
     "baseUrl": ".",
@@ -36,8 +39,7 @@
         "libs/packages/experimental/src/index.ts"
       ],
       "@gsa-sam/documentation": ["libs/documentation/src/index.ts"]
-    },
-    "rootDir": "."
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

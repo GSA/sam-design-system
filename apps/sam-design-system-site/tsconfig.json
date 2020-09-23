@@ -1,11 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
-  "compilerOptions": {
-    "types": ["jasmine", "node"],
-    "typeRoots": ["node_modules/@types"]
-  },
-  "include": [],
   "files": [],
+  "include": [],
   "references": [
     {
       "path": "./tsconfig.app.json"

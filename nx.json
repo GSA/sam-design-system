@@ -2,7 +2,10 @@
   "npmScope": "gsa-sam",
   "implicitDependencies": {
     "angular.json": "*",
-    "package.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
     "tslint.json": "*",
     "nx.json": "*",
     "tsconfig.base.json": "*"
