@@ -49,7 +49,6 @@
     "compodocs": "npx compodoc -p libs/packages/components/tsconfig.json -s --minimal",
     "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
   },
-  "private": true,
   "dependencies": {
     "@angular-devkit/build-angular": "^0.1001.2",
     "@angular/animations": "^10.1.1",
