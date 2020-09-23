@@ -1,120 +1,50 @@
-<header class="flex">
-  <img
-    alt="Nx logo"
-    width="75"
-    src="https://nx.dev/assets/images/nx-logo-white.svg"
-  />
-  <h1>Welcome to {{ title }}!</h1>
+<a class="usa-skipnav" href="#main-content">Skip to main content</a>
+
+<header class="usa-header usa-header--basic border-base-light border-bottom-1px">
+  <div class="grid-row">
+    <div class="grid-col flex-8">
+      <div class="usa-logo float-left margin-left-2">
+        <a href="/" title="Home" aria-label="Home"><img alt="SAM logo" src="assets/img/logo-sam.svg" width="140" /></a>
+        <a href="/" title="Home" aria-label="Home" class="title-text">Design System Components</a>
+      </div>
+    </div>
+    <div class="grid-col flex-4">
+      <nav class="float-right">
+        <ul class="usa-nav__primary usa-accordion">
+          <li class="usa-nav__primary-item">
+            <a target="_blank" href="https://github.com/GSA/sam-design-system">
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32" viewBox="0 0 32 32"
+                style="fill:#000000;">
+                <path fill-rule="evenodd"
+                  d="M 16 4 C 9.371094 4 4 9.371094 4 16 C 4 21.300781 7.4375 25.800781 12.207031 27.386719 C 12.808594 27.496094 13.027344 27.128906 13.027344 26.808594 C 13.027344 26.523438 13.015625 25.769531 13.011719 24.769531 C 9.671875 25.492188 8.96875 23.160156 8.96875 23.160156 C 8.421875 21.773438 7.636719 21.402344 7.636719 21.402344 C 6.546875 20.660156 7.71875 20.675781 7.71875 20.675781 C 8.921875 20.761719 9.554688 21.910156 9.554688 21.910156 C 10.625 23.746094 12.363281 23.214844 13.046875 22.910156 C 13.15625 22.132813 13.46875 21.605469 13.808594 21.304688 C 11.144531 21.003906 8.34375 19.972656 8.34375 15.375 C 8.34375 14.0625 8.8125 12.992188 9.578125 12.152344 C 9.457031 11.851563 9.042969 10.628906 9.695313 8.976563 C 9.695313 8.976563 10.703125 8.65625 12.996094 10.207031 C 13.953125 9.941406 14.980469 9.808594 16 9.804688 C 17.019531 9.808594 18.046875 9.941406 19.003906 10.207031 C 21.296875 8.65625 22.300781 8.976563 22.300781 8.976563 C 22.957031 10.628906 22.546875 11.851563 22.421875 12.152344 C 23.191406 12.992188 23.652344 14.0625 23.652344 15.375 C 23.652344 19.984375 20.847656 20.996094 18.175781 21.296875 C 18.605469 21.664063 18.988281 22.398438 18.988281 23.515625 C 18.988281 25.121094 18.976563 26.414063 18.976563 26.808594 C 18.976563 27.128906 19.191406 27.503906 19.800781 27.386719 C 24.566406 25.796875 28 21.300781 28 16 C 28 9.371094 22.628906 4 16 4 Z">
+                </path>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
 </header>
 <main>
-  <h2>Resources &amp; Tools</h2>
-  <p>
-    Thank you for using and showing some ♥ for Nx.
-  </p>
-  <div class="flex github-star-container">
-    <a
-      href="https://github.com/nrwl/nx"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      If you like Nx, please give it a star:
-      <div class="github-star-badge">
-        <svg
-          class="material-icons"
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-        >
-          <path d="M0 0h24v24H0z" fill="none" />
-          <path
-            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-          />
-        </svg>
-        Star
+  <div class="grid-container margin-x-0 padding-x-0">
+    <div class="grid-row grid-gap">
+      <aside class="desktop:grid-col-3 border-base-light border-right-1px">
+        <nav class="margin-bottom-2 margin-top-3">
+            <ul class="usa-list usa-list--unstyled padding-y-05">
+              <li>
+                <a class="usa-link font-sans-sm"
+                  [routerLink]="['documentation/overview']"
+                  routerLinkActive="usa-current"
+                  >Overview
+                </a>
+              </li>
+            </ul>
+        </nav>
+      </aside>
+      <div class="desktop:grid-col-9">
+        <router-outlet></router-outlet>
       </div>
-    </a>
+    </div>
   </div>
-  <p>
-    Here are some links to help you get started.
-  </p>
-  <ul class="resources">
-    <li class="col-span-2">
-      <a
-        class="resource flex"
-        href="https://connect.nrwl.io/app/courses/nx-workspaces/intro"
-      >
-        Nx video course
-      </a>
-    </li>
-    <li class="col-span-2">
-      <a
-        class="resource flex"
-        href="https://nx.dev/angular/getting-started/what-is-nx"
-      >
-        Nx video tutorial
-      </a>
-    </li>
-    <li class="col-span-2">
-      <a
-        class="resource flex"
-        href="https://nx.dev/angular/tutorial/01-create-application"
-      >
-        Interactive tutorial
-      </a>
-    </li>
-    <li class="col-span-2">
-      <a class="resource flex" href="https://nx.app/">
-        <svg
-          width="36"
-          height="36"
-          viewBox="0 0 120 120"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M120 15V30C103.44 30 90 43.44 90 60C90 76.56 76.56 90 60 90C43.44 90 30 103.44 30 120H15C6.72 120 0 113.28 0 105V15C0 6.72 6.72 0 15 0H105C113.28 0 120 6.72 120 15Z"
-            fill="#0E2039"
-          />
-          <path
-            d="M120 30V105C120 113.28 113.28 120 105 120H30C30 103.44 43.44 90 60 90C76.56 90 90 76.56 90 60C90 43.44 103.44 30 120 30Z"
-            fill="white"
-          />
-        </svg>
-        <span class="gutter-left">Nx Cloud</span>
-      </a>
-    </li>
-  </ul>
-  <h2>Next Steps</h2>
-  <p>Here are some things you can do with Nx.</p>
-  <details open>
-    <summary>Add UI library</summary>
-    <pre>
-# Generate UI lib
-ng g @nrwl/angular:lib ui
-
-# Add a component
-ng g @nrwl/angular:component xyz --project ui</pre
-    >
-  </details>
-  <details>
-    <summary>View dependency graph</summary>
-    <pre>nx dep-graph</pre>
-  </details>
-  <details>
-    <summary>Run affected commands</summary>
-    <pre>
-# see what's been affected by changes
-ng affected:dep-graph
-
-# run tests for current changes
-ng affected:test
-
-# run e2e tests for current changes
-ng affected:e2e
-</pre
-    >
-  </details>
 </main>
-
-<router-outlet></router-outlet>
