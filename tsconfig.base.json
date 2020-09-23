@@ -15,7 +15,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@gsa-sam/documentation": ["libs/documentation/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

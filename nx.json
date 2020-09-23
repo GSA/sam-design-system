@@ -28,6 +28,9 @@
     "sam-design-system-site-e2e": {
       "tags": [],
       "implicitDependencies": ["sam-design-system-site"]
+    },
+    "documentation": {
+      "tags": []
     }
   }
 }
