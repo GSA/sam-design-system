@@ -164,8 +164,6 @@ import { FormlyFormsComponent } from './pages/formly-forms/formly-forms.componen
 import { FormlyConditionalModule } from './pages/formly-conditional/formly-conditional.module';
 import { FormlyConditionalComponent } from './pages/formly-conditional/formly-conditional.component';
 
-declare var require: any;
-
 export const ROUTES: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'components/header' },
   { path: 'overview', component: OverviewComponent },

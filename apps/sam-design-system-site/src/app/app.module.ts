@@ -11,6 +11,7 @@ import { sds } from '@gsa-sam/sam-styles/src/icons/';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { MarkdownModule } from 'ngx-markdown';
 import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
+import { DocumentationModule } from '@gsa-sam/documentation';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +19,7 @@ import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
     BrowserModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
+    DocumentationModule,
     RouterModule.forRoot(ROUTES, { scrollPositionRestoration: 'enabled' }),
     FormsModule,
     HighlightModule,
