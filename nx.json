@@ -31,6 +31,9 @@
     },
     "documentation": {
       "tags": []
+    },
+    "sam-material-extensions": {
+      "tags": ["scope:shared", "platform:web", "type:ui"]
     }
   }
 }
