@@ -18,14 +18,12 @@ export class SdsFormlyDialogComponent implements OnInit {
   fields: FormlyFieldConfig[];
   cancel: string;
   submit: string;
-  hasToggle: boolean = true;
-  toggleLabel: string = '';
-  toggleChecked;
+
 
   constructor(
     public advancedFiltersService: SdsAdvancedFiltersService,
     public dialogRef: SdsDialogRef<SdsFormlyDialogComponent>,
-    @Inject(SDS_DIALOG_DATA) public data: any
+    @Inject(SDS_DIALOG_DATA) public data: SdsFormlyDialogData
   ) { }
 
   public ngOnInit() {
@@ -35,20 +33,15 @@ export class SdsFormlyDialogComponent implements OnInit {
     this.options = this.data.options ? this.data.options : {};
     this.cancel = this.data.cancel ? this.data.cancel : 'Cancel';
     this.submit = this.data.submit ? this.data.submit : 'Submit';
-    this.toggleLabel = (this.data.toggleModel && this.data.toggleModel.lable) ? this.data.toggleModel.lable : '';
-    this.toggleChecked = (this.data.toggleModel && this.data.toggleModel.defaultValue) ? this.data.toggleModel.defaultValue : false;
   }
 
   onSubmit() {
     if (this.form.valid) {
-      this.dialogModel.model = this.model;
-      this.dialogModel.toggleChecked = this.toggleChecked;
-      this.dialogRef.close(this.dialogModel);
+      // this.dialogModel.model = this.model;
+      this.dialogRef.close(this.model);
     }
   }
-  toggleChanged(ev) {
-    this.toggleChecked = ev.target.checked;
-  }
+
   onCancel() {
     this.options.resetModel();
     this.dialogRef.close();

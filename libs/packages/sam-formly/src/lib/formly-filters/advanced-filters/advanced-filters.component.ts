@@ -2,7 +2,6 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { SdsDialogService } from '@gsa-sam/components';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
-
 import { SdsAdvancedFiltersService } from './sds-advanced-filters.service';
 import { SdsFormlyDialogData } from '../../formly-dialog/formly-dialog-data.model';
 import { SdsFormlyDialogComponent } from '../../formly-dialog/formly-dialog.component';
@@ -28,7 +27,7 @@ export class AdvancedFiltersComponent {
    */
   @Input() public model: any;
 
-  @Input() public toggleModel: object = {}
+  @Input() public toggleModel: any = {}
 
   /**
    *    Options for the form.
@@ -42,15 +41,26 @@ export class AdvancedFiltersComponent {
   ) { }
 
   openDialog(): void {
+    const historyToggleField = [{
+      key: 'historyToggle',
+      type: 'checkbox',
+      templateOptions: {
+        hideOptional: true,
+        label: this.toggleModel.lable,
+        description: this.toggleModel.description,
+      },
+    }];
+    this.fields = Object.keys(this.toggleModel).length === 0 ? this.fields :
+      (this.model.hasOwnProperty('historyToggle') ? this.fields : [...historyToggleField, ...this.fields]);
+
     const modalFields: FormlyFieldConfig[] = this.advancedFiltersService.convertToCheckboxes(
       this.fields
     );
 
-    const data: any = {
+    const data: SdsFormlyDialogData = {
       fields: modalFields,
       submit: 'Update',
       title: 'More Filters',
-      toggleModel: this.toggleModel
     };
 
     const dialogRef = this.dialog.open(SdsFormlyDialogComponent, {
@@ -58,17 +68,19 @@ export class AdvancedFiltersComponent {
       data: data
     });
 
-    dialogRef.afterClosed().subscribe((result: any) => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         const response = this.advancedFiltersService.updateFields(
-          result.model,
+          result,
           this.fields,
           this.model
         );
 
         this.fields = response.fields;
         this.model = response.model;
-        this.toggleChange.emit(result.toggleChecked);
+        if (Object.keys(this.toggleModel).length === 0) {
+          this.toggleChange.emit(result['historyToggle']);
+        }
       }
     });
   }

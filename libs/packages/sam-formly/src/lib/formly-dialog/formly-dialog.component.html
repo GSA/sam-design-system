@@ -1,13 +1,7 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <div *ngIf="data.title" sds-dialog-title>{{ data.title }}</div>
   <div *ngIf="data.subtitle" sds-dialog-subtitle>{{ data.subtitle }}</div>
-  <div class="float-right">
-    <div *ngIf="toggleLabel" class="usa-checkbox ">
-      <input class="usa-checkbox__input" id="truth" type="checkbox" name="historical-toggle"
-        (change)="toggleChanged($event)" [checked]="toggleChecked" />
-      <label class="usa-checkbox__label" for="truth"> {{ toggleLabel }}</label>
-    </div>
-  </div>
+
 
   <div sds-dialog-content>
     <formly-form [form]="form" [fields]="fields" [options]="options" [model]="model"></formly-form>
