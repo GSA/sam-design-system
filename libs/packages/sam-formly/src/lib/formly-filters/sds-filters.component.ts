@@ -113,6 +113,7 @@ export class SdsFiltersComponent implements OnInit {
             ...paramModel
           });
         });
+        this.cdr.detectChanges();
       }
     }
   }
