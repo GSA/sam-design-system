@@ -37,7 +37,7 @@ describe('SearchListLayoutComponent', () => {
     component.onSelectChange();
     fixture.detectChanges();
     tick(100);
-    expect(component.items.length).toBe(1);
+    expect(component.items.length).toBe(0);
   }));
 
 
