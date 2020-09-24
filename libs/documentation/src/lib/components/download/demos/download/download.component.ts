@@ -11,7 +11,7 @@ import { SdsDialogService } from '@gsa-sam/components';
 })
 export class DownloadComponent {
   updatedModel: any = {};
-  model: any = { fileType: 'CSV', fileName: 'test.csv' };
+  model: any = { fileType: 'CSV' };
   options: FormlyFormOptions;
   onDownloadModelChange(value) {
     this.updatedModel = value;
@@ -92,7 +92,7 @@ export class DownloadComponent {
       }
     }
   ];
-  constructor(public dialog: SdsDialogService) {}
+  constructor(public dialog: SdsDialogService) { }
   openDialog() {
     const data: SdsFormlyDialogData = {
       fields: this.fields,
@@ -100,6 +100,7 @@ export class DownloadComponent {
       submit: 'Download',
       title: 'Download',
       options: this.options,
+      disableSubmitButtonEnabled: true,
       subtitle:
         'Choose from the following download option.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt'
     };
