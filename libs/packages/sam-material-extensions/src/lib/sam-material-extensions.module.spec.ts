@@ -1,10 +1,10 @@
 import { waitForAsync, TestBed } from '@angular/core/testing';
-import { DocumentationModule } from './documentation.module';
+import { SamMaterialExtensionsModule } from './sam-material-extensions.module';
 
 describe('DocumentationModule', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [DocumentationModule],
+      imports: [SamMaterialExtensionsModule],
     }).compileComponents();
   }));
 
@@ -13,6 +13,6 @@ describe('DocumentationModule', () => {
   // NB: This particular test does not do anything useful.
   //     It does NOT check for correct instantiation of the module.
   it('should have a module definition', () => {
-    expect(DocumentationModule).toBeDefined();
+    expect(SamMaterialExtensionsModule).toBeDefined();
   });
 });
