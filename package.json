@@ -49,6 +49,7 @@
     "@angular/platform-browser-dynamic": "^10.0.0",
     "@angular/router": "^10.0.0",
     "@compodoc/compodoc": "^1.1.11",
+    "@fortawesome/angular-fontawesome": "^0.7.0",
     "@gsa-sam/sam-styles": "0.0.83",
     "@nrwl/angular": "^10.2.1",
     "fs-extra": "^9.0.1",
