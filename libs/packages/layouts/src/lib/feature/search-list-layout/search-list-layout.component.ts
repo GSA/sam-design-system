@@ -30,23 +30,16 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   configuration: SearchListConfiguration;
 
   ngOnChanges(changes: SimpleChanges) {
-    if(changes.configuration.currentValue) {
+    if (changes.configuration.currentValue) {
       this.configuration = changes.configuration.currentValue;
       this.sortField = this.configuration.defaultSortValue;
       this.onSelectChange();
     }
   }
-
   /**
    * Filter information
    */
   private filterData: any;
-
-
-  /**
-   * flag to wait for filters before doing updates
-   */
-  filtersLoaded = false;
 
   /**
    * Total number of items
@@ -87,7 +80,6 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   public updateFilter(filter: any) {
     this.filterData = filter;
     this.page.pageNumber = 1;
-    this.filtersLoaded = true;
     this.updateContent();
   }
 
@@ -128,7 +120,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
    * calls service when updated
    */
   private updateContent() {
-    if(this.filtersLoaded) {
+    if (this.filterData) {
       setTimeout(() => {
         this.service.getData({ 'page': this.page, sortField: this.sortField, filter: this.filterData }).subscribe(
           (result) => {

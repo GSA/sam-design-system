@@ -87,7 +87,7 @@ export class SdsFiltersComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private datePipe: DatePipe
-  ) {}
+  ) { }
 
   @HostListener('window:popstate', ['$event'])
   onpopstate(event) {
@@ -106,7 +106,6 @@ export class SdsFiltersComponent implements OnInit {
         const queryString = window.location.search.substring(1);
         const params = this.getUrlParams(queryString);
         const paramModel = this.convertToModel(params);
-        this.updateChange(paramModel);
         this.checkForHide();
         setTimeout(() => {
           this.form.patchValue({
