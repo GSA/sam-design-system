@@ -1,11 +1,26 @@
 <sds-table [data]="data" class="display-block maxh-mobile overflow-auto margin-2">
 
-  <sds-table-columns>
-    <ng-container sdsColumnDef="id">
-      <th *sdsHeaderCellDef>ID</th>
-      <td *sdsCellDef="let element">{{element.id}}</td>
-    </ng-container>
-  </sds-table-columns>
+
+  <sds-table-column sdsColumnName="id">
+    <ng-template #sdsHeaderCell>ID</ng-template>
+    <ng-template #sdsCell let-element="element">{{ element.id }}</ng-template>
+  </sds-table-column>
+  <sds-table-column sdsColumnName="firstName">
+    <ng-template #sdsHeaderCell>First</ng-template>
+    <ng-template #sdsCell let-element="element">{{ element.firstName }}</ng-template>
+  </sds-table-column>
+  <sds-table-column sdsColumnName="lastName">
+    <ng-template #sdsHeaderCell>Last</ng-template>
+    <ng-template #sdsCell let-element="element">{{ element.lastName }}</ng-template>
+  </sds-table-column>
+  <sds-table-column sdsColumnName="email">
+    <ng-template #sdsHeaderCell>Email</ng-template>
+    <ng-template #sdsCell let-element="element"><a href="javascript:void;">{{ element.email }}</a></ng-template>
+  </sds-table-column>
+  <sds-table-column sdsColumnName="date">
+    <ng-template #sdsHeaderCell>Date</ng-template>
+    <ng-template #sdsCell let-element="element">{{ element.date }}</ng-template>
+  </sds-table-column>
 
   <sds-header-row [displayedColumns]="displayedColumns" [sticky]="true"></sds-header-row>
   <sds-row [displayedColumns]="displayedColumns"></sds-row>

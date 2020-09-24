@@ -3,16 +3,16 @@ import { CommonModule } from '@angular/common';
 import {MatTableModule, MatSortModule } from '@angular/material';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import { SdsTableComponent, SdsTableColumnsComponent, SdsTableRowComponent, SdsTableHeaderRowComponent, SdsHeaderCellDef, SdsCellDef, SdsColumnDef } from './table.component';
+import { SdsTableComponent, SdsTableRowComponent, SdsTableHeaderRowComponent, SdsHeaderCellDef, SdsCellDef, SdsColumnDef, SdsTableColumnDefComponent, SdsTableCellDirective, SdsTableHeaderCellDirective } from './table.component';
 
 @NgModule({
-  declarations: [SdsTableComponent, SdsTableColumnsComponent, SdsTableRowComponent, SdsTableHeaderRowComponent, SdsHeaderCellDef, SdsCellDef, SdsColumnDef],
+  declarations: [SdsTableComponent, SdsTableRowComponent, SdsTableHeaderRowComponent, SdsHeaderCellDef, SdsCellDef, SdsColumnDef, SdsTableColumnDefComponent, SdsTableCellDirective, SdsTableHeaderCellDirective],
   imports: [
     CommonModule,
     MatSortModule,
     MatTableModule,
     FontAwesomeModule
   ],
-  exports: [SdsTableComponent, SdsTableColumnsComponent, SdsTableRowComponent, SdsTableHeaderRowComponent, SdsHeaderCellDef, SdsCellDef, SdsColumnDef]
+  exports: [SdsTableComponent, SdsTableRowComponent, SdsTableHeaderRowComponent, SdsHeaderCellDef, SdsCellDef, SdsColumnDef, SdsTableColumnDefComponent, SdsTableCellDirective, SdsTableHeaderCellDirective]
 })
 export class SdsTableModule { }

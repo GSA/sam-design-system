@@ -1,8 +1,15 @@
+
 <table mat-table [dataSource]="data" class="width-full mat-elevation-z8">
 
+  <ng-container *ngFor="let sdsColumnItem of sdsColumnItems">
+    <ng-container matColumnDef="{{sdsColumnItem.sdsColumnName}}">
+      <th mat-header-cell *matHeaderCellDef> <ng-container *ngTemplateOutlet="sdsColumnItem.columnHeaderCell"></ng-container> </th>
+      <td mat-cell *matCellDef="let element"> <ng-container *ngTemplateOutlet="sdsColumnItem.columnCell; context: {element : element}"></ng-container> </td>
+    </ng-container>
+  </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="headerRowConfig.displayedColumns; sticky: headerRowConfig.sticky"></tr>
   <tr mat-row *matRowDef="let row; columns: rowConfig.displayedColumns;"></tr>
-
 </table>
+
 

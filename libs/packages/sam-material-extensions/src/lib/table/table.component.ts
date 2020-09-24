@@ -76,13 +76,40 @@ export class SdsColumnDef extends MatColumnDef {
   _name: string;
 
 }
+
+@Directive({selector: 'sds-table-headercell'})
+export class SdsTableHeaderCellDirective {}
+
+@Directive({selector: 'sds-table-cell'})
+export class SdsTableCellDirective {}
+
 @Component({
-  selector: 'sds-table-columns',
+  selector: 'sds-table-column',
   template: `
-    <ng-content></ng-content>
+    <ng-template #columnHeaderCell let-element="element">
+      <ng-container *ngTemplateOutlet="headerCellTemplate; context: {element : element}"></ng-container>
+    </ng-template>
+
+    <ng-template #columnCell let-element="element">
+      <ng-container *ngTemplateOutlet="cellTemplate; context: {element : element}"></ng-container>
+    </ng-template>
   `
 })
-export class SdsTableColumnsComponent {}
+export class SdsTableColumnDefComponent implements AfterContentInit {
+
+  @ViewChild('columnHeaderCell') columnHeaderCell: TemplateRef<any>;
+  @ViewChild('columnCell') columnCell: TemplateRef<any>;
+  @ContentChild('sdsHeaderCell', {read: TemplateRef}) headerCellTemplate!: TemplateRef<any>;
+  @ContentChild('sdsCell', {read: TemplateRef}) cellTemplate!: TemplateRef<any>;
+
+  @Input() sdsColumnName;
+
+  ngAfterContentInit() {
+    console.log(this.cellTemplate);
+
+  }
+}
+
 
 @Component({
   selector: 'sds-table',
@@ -93,7 +120,7 @@ export class SdsTableComponent implements OnInit, AfterContentInit {
 
   @ContentChild(SdsTableRowComponent) sdsTableRowComponent: SdsTableRowComponent;
   @ContentChild(SdsTableHeaderRowComponent) sdsTableHeaderRowComponent: SdsTableHeaderRowComponent;
-  @ContentChildren(SdsTableColumnComponent) sdsColumnItems!: QueryList<SdsTableColumnComponent>;
+  @ContentChildren(SdsTableColumnDefComponent, { descendants: true }) sdsColumnItems!: QueryList<SdsTableColumnDefComponent>;
 
 
   /**
@@ -109,6 +136,7 @@ export class SdsTableComponent implements OnInit, AfterContentInit {
   ngOnInit() {}
 
   ngAfterContentInit() {
+    console.log(this.sdsColumnItems);
     this.rowConfig.displayedColumns = this.sdsTableRowComponent.displayedColumns;
     this.headerRowConfig.displayedColumns = this.sdsTableHeaderRowComponent.displayedColumns;
     this.headerRowConfig.sticky = this.sdsTableHeaderRowComponent.sticky;
