@@ -1,6 +1,5 @@
 <sds-table [data]="data" class="display-block maxh-mobile overflow-auto margin-2">
 
-
   <sds-table-column sdsColumnName="id">
     <ng-template #sdsHeaderCell>ID</ng-template>
     <ng-template #sdsCell let-element="element">{{ element.id }}</ng-template>
@@ -15,12 +14,28 @@
   </sds-table-column>
   <sds-table-column sdsColumnName="email">
     <ng-template #sdsHeaderCell>Email</ng-template>
-    <ng-template #sdsCell let-element="element"><a href="javascript:void;">{{ element.email }}</a></ng-template>
+    <ng-template #sdsCell let-element="element"><a href="javascript:void();" class="usa-link">{{ element.email }}</a></ng-template>
   </sds-table-column>
   <sds-table-column sdsColumnName="date">
     <ng-template #sdsHeaderCell>Date</ng-template>
-    <ng-template #sdsCell let-element="element">{{ element.date }}</ng-template>
+    <ng-template #sdsCell let-element="element">{{ element.date | date:'longDate' }}</ng-template>
   </sds-table-column>
+  <sds-table-column sdsColumnName="tags">
+    <ng-template #sdsHeaderCell>Tags</ng-template>
+    <ng-template #sdsCell let-element="element">
+      <ul class="usa-list usa-list--unstyled">
+        <li *ngFor="let tag of element.tags">
+          <fa-icon [icon]="['fas', 'circle']" size="sm" [class]="tag.className"></fa-icon>
+          {{ tag.label }}
+        </li>
+      </ul>
+    </ng-template>
+  </sds-table-column>
+  <sds-table-column sdsColumnName="actions">
+    <ng-template #sdsHeaderCell>Actions</ng-template>
+    <ng-template #sdsCell let-element="element"><a href="#" (click)="edit(element); false;" class="usa-link">Edit</a></ng-template>
+  </sds-table-column>
+
 
   <sds-header-row [displayedColumns]="displayedColumns" [sticky]="true"></sds-header-row>
   <sds-row [displayedColumns]="displayedColumns"></sds-row>

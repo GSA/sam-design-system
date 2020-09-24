@@ -7,7 +7,7 @@ import { SdsTableColumnSettings } from '@gsa-sam/sam-material-extensions';
 
 export class TableBasicComponent {
 
-  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'date'];
+  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'date', 'tags', 'actions'];
 
   data = [
     {
@@ -19,6 +19,9 @@ export class TableBasicComponent {
       catchPhrase: 'Reduced needs-based initiative',
       jobTitle: 'Software Test Engineer IV',
       date: '2020-07-23',
+      tags: [
+        { className: "text-info-dark", label: "Submitted" }
+      ]
     },
     {
       id: 2,
@@ -28,7 +31,11 @@ export class TableBasicComponent {
       gender: 'Female',
       catchPhrase: 'Upgradable homogeneous productivity',
       jobTitle: 'GIS Technical Architect',
-      date: '2020-04-11'
+      date: '2020-04-11',
+      tags: [
+        { className: "text-error", label: "Expired" },
+        { className: "text-warning-darker", label: "Deactivated" }
+      ]
     },
     {
       id: 3,
@@ -38,7 +45,10 @@ export class TableBasicComponent {
       gender: 'Male',
       catchPhrase: 'Team-oriented optimizing complexity',
       jobTitle: 'Media Manager IV',
-      date: '2020-04-22'
+      date: '2020-04-22',
+      tags: [
+        { className: "text-info", label: "Draft" }
+      ]
     },
     {
       id: 4,
@@ -48,7 +58,10 @@ export class TableBasicComponent {
       gender: 'Male',
       catchPhrase: 'Synergized 3rd generation projection',
       jobTitle: 'Account Coordinator',
-      date: '2019-11-02'
+      date: '2019-11-02',
+      tags: [
+        { className: "text-success", label: "Active" }
+      ]
     },
     {
       id: 5,
@@ -58,7 +71,10 @@ export class TableBasicComponent {
       gender: 'Female',
       catchPhrase: 'Organized local challenge',
       jobTitle: 'Financial Analyst',
-      date: '2020-04-15'
+      date: '2020-04-15',
+      tags: [
+        { className: "text-default", label: "Default" }
+      ]
     },
     {
       id: 6,
@@ -68,7 +84,10 @@ export class TableBasicComponent {
       gender: 'Male',
       catchPhrase: 'Horizontal grid-enabled productivity',
       jobTitle: 'Clinical Specialist',
-      date: '2020-04-17'
+      date: '2020-04-17',
+      tags: [
+        { className: "text-error", label: "Expired" }
+      ]
     },
     {
       id: 7,
@@ -78,7 +97,11 @@ export class TableBasicComponent {
       gender: 'Male',
       catchPhrase: 'Extended client-server conglomeration',
       jobTitle: 'Biostatistician II',
-      date: '2019-11-13'
+      date: '2019-11-13',
+      tags: [
+        { className: "text-info", label: "Draft" },
+        { className: "text-warning-light", label: "In Progress" }
+      ]
     },
     {
       id: 8,
@@ -88,7 +111,10 @@ export class TableBasicComponent {
       gender: 'Female',
       catchPhrase: 'Team-oriented client-server task-force',
       jobTitle: 'Engineer II',
-      date: '2020-01-09'
+      date: '2020-01-09',
+      tags: [
+        { className: "text-success", label: "Active" }
+      ]
     },
     {
       id: 9,
@@ -98,7 +124,10 @@ export class TableBasicComponent {
       gender: 'Female',
       catchPhrase: 'Sharable explicit Graphical User Interface',
       jobTitle: 'Associate Professor',
-      date: '2020-02-20'
+      date: '2020-02-20',
+      tags: [
+        { className: "text-info", label: "Draft" }
+      ]
     },
     {
       id: 10,
@@ -108,7 +137,14 @@ export class TableBasicComponent {
       gender: 'Female',
       catchPhrase: 'Profound explicit approach',
       jobTitle: 'Safety Technician II',
-      date: '2019-12-13'
+      date: '2019-12-13',
+      tags: [
+        { className: "text-error", label: "Expired" }
+      ]
     }
   ];
+
+  edit(element) {
+    console.log(element, "Called actions with element: ");
+  }
 }
