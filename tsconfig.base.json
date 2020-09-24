@@ -16,10 +16,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@gsa-sam/documentation": ["libs/documentation/src/index.ts"],
       "@gsa-sam/sam-material-extensions": [
         "libs/packages/sam-material-extensions/src/index.ts"
-      ]
+      ],
+      "@gsa-sam/documentation": ["libs/documentation/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

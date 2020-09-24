@@ -29,11 +29,11 @@
       "tags": [],
       "implicitDependencies": ["sam-design-system-site"]
     },
-    "documentation": {
-      "tags": []
-    },
     "sam-material-extensions": {
       "tags": ["scope:shared", "platform:web", "type:ui"]
+    },
+    "documentation": {
+      "tags": []
     }
   }
 }

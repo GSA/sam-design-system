@@ -28,23 +28,6 @@
 </header>
 <main>
   <div class="grid-container margin-x-0 padding-x-0">
-    <div class="grid-row grid-gap">
-      <aside class="desktop:grid-col-3 border-base-light border-right-1px">
-        <nav class="margin-bottom-2 margin-top-3">
-            <ul class="usa-list usa-list--unstyled padding-y-05">
-              <li>
-                <a class="usa-link font-sans-sm"
-                  [routerLink]="['/overview']"
-                  routerLinkActive="usa-current"
-                  >Overview
-                </a>
-              </li>
-            </ul>
-        </nav>
-      </aside>
-      <div class="desktop:grid-col-9">
-        <router-outlet></router-outlet>
-      </div>
-    </div>
+    <docs-documentation></docs-documentation>
   </div>
 </main>
