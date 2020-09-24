@@ -1,1 +1,57 @@
-<p>table works!</p>
+<div class="sds-table__container" [ngClass]="{'sds-table__container--borderless': settings?.borderless}">
+  <table mat-table [dataSource]="dataSource" matSort [multiTemplateDataRows]=detailRow
+    [ngClass]="{'sds-table--expansion': detailRow}" class="sds-table">
+
+  <!-- Columns -->
+  <ng-container matColumnDef="{{col.primaryKey}}" *ngFor="let col of columns" [sticky]=col.sticky>
+
+    <!-- table header cells -->
+    <ng-container *ngIf="settings?.sort">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col" [ngClass]="{'sds-table__heading--sticky': col.sticky}">
+        {{ col.header  || (col.primaryKey | titlecase)}}
+      </th>
+    </ng-container>
+    <ng-container *ngIf="!settings || !settings.sort">
+      <th mat-header-cell *matHeaderCellDef scope="col" [ngClass]="{'sds-table__heading--sticky': col.sticky}">
+        {{ col.header  || (col.primaryKey | titlecase)}}
+      </th>
+    </ng-container>
+
+    <td mat-cell *matCellDef="let row" [ngClass]="{'sds-table__cell--sticky': col.sticky}">
+      {{ row[col.primaryKey] }}
+    </td>
+  </ng-container>
+
+  <!-- column for expandable icon -->
+  <ng-container matColumnDef="sdsExpandableRow" *ngIf="detailRow">
+    <th mat-header-cell *matHeaderCellDef scope="col" class="sds-table__heading--detail">
+      <span class="sr-only">More Information</span>
+    </th>
+
+    <td mat-cell *matCellDef="let row">
+      <button class="sds-button usa-button--unstyled" tabindex="0" aria-label="expand row">
+        <fa-icon *ngIf="row !== expandedRow" [icon]="['fas', 'chevron-down']"></fa-icon>
+        <fa-icon *ngIf="row === expandedRow" [icon]="['fas', 'chevron-up']"></fa-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <!-- Expandable detail row -->
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let row;" [attr.colspan]="columnIds.length" class="sds-table__cell--detail">
+      <!-- display detailRow templateRef with all row data -->
+      <ng-container *ngTemplateOutlet="detailRow; context: row"></ng-container>
+    </td>
+  </ng-container>
+
+  <!-- Header and row declarations -->
+  <tr mat-header-row *matHeaderRowDef="columnIds; sticky: settings?.stickyHeader"></tr>
+  <tr mat-row *matRowDef="let row; columns: columnIds" class="sds-table__row"
+    [ngClass]="{'sds-table__row--expanded': row === expandedRow}" (click)="toggleRowExpansion(row)"></tr>
+
+  <!-- expansion row declaration -->
+  <ng-container *ngIf="detailRow">
+    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="sds-table__row--detail"></tr>
+  </ng-container>
+</table>
+</div>

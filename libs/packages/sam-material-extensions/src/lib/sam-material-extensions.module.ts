@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TableComponent } from './table/table.component';
+import { SdsTableComponent } from './table/table.component';
 
 @NgModule({
   imports: [CommonModule],
-  declarations: [TableComponent],
-  exports: [TableComponent],
+  declarations: [SdsTableComponent],
+  exports: [SdsTableComponent]
 })
 export class SamMaterialExtensionsModule {}

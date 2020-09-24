@@ -50,6 +50,8 @@
     "@angular/router": "^10.0.0",
     "@compodoc/compodoc": "^1.1.11",
     "@fortawesome/angular-fontawesome": "^0.7.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.28",
+    "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@gsa-sam/sam-styles": "0.0.83",
     "@nrwl/angular": "^10.2.1",
     "fs-extra": "^9.0.1",
