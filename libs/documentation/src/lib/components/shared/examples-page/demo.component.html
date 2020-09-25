@@ -1,0 +1,32 @@
+
+<div class="sds-card sds-card--shadowed sds-card--bordered margin-top-2 margin-bottom-4">
+
+  <div class="sds-card__header sds-card__header--accent-cool sds-card__header--flex">
+
+      <h2 class="sds-card__title">{{ demoTitle }}</h2>
+
+      <div class="sds-card__buttons">
+        <button class="usa-button--unstyled text-ink margin-left-1 cursor-pointer" [ngClass]="{ 'usa-button--active' : showCode }" (click)="showCode = !showCode"><fa-icon [icon]="['fas', 'code']"></fa-icon></button>
+        <a class="text-ink usa-button--unstyled margin-left-1" *ngIf="getGithubLink()" [attr.href]="getGithubLink()" target="_blank"><fa-icon [icon]="['fab', 'github']"></fa-icon></a>
+      </div>
+
+  </div>
+
+  <div class="sds-card__body">
+
+    <div *ngIf="showCode" class="padding-bottom-2 border-bottom margin-bottom-2">
+      <p class="margin-bottom-0"><code class="text-magenta bg-white">Source Code</code></p>
+      <pre class="highlight"><code [highlight]="code"></code></pre>
+
+      <p class="margin-bottom-0"><code class="text-magenta bg-white">Template Markup</code></p>
+      <pre class="highlight"><code [highlight]="markup"></code></pre>
+    </div>
+
+    <markdown [data]="readme"></markdown>
+
+    <ng-content></ng-content>
+
+  </div>
+
+</div>
+

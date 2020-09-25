@@ -25,8 +25,14 @@
               "apps/sam-design-system-site/src/favicon.ico",
               "apps/sam-design-system-site/src/assets"
             ],
-            "styles": ["apps/sam-design-system-site/src/styles.scss"],
-            "scripts": []
+            "styles": [
+              "apps/sam-design-system-site/src/styles.scss",
+              "node_modules/highlight.js/styles/vs.css"
+            ],
+            "scripts": ["node_modules/marked/lib/marked.js"],
+            "allowedCommonJsDependencies": [
+              "highlight.js"
+            ]
           },
           "configurations": {
             "production": {
