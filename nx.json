@@ -37,6 +37,15 @@
     },
     "sam-formly": {
       "tags": ["scope:shared", "platform:web", "type:ui"]
+    },
+    "components": {
+      "tags": ["scope:shared", "platform:web", "type:ui"]
+    },
+    "experimental": {
+      "tags": ["scope:shared", "platform:web", "type:ui"]
+    },
+    "layouts": {
+      "tags": ["scope:shared", "platform:web", "type:ui"]
     }
   }
 }

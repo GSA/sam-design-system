@@ -243,6 +243,138 @@
           "style": "scss"
         }
       }
+    },
+    "components": {
+      "projectType": "library",
+      "root": "libs/packages/components",
+      "sourceRoot": "libs/packages/components/src",
+      "prefix": "sds",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/packages/components/tsconfig.lib.json",
+            "project": "libs/packages/components/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/packages/components/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/packages/components/tsconfig.lib.json",
+              "libs/packages/components/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/packages/components/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/packages/components/src/test.ts",
+            "tsConfig": "libs/packages/components/tsconfig.spec.json",
+            "karmaConfig": "libs/packages/components/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "experimental": {
+      "projectType": "library",
+      "root": "libs/packages/experimental",
+      "sourceRoot": "libs/packages/experimental/src",
+      "prefix": "gsa-sam",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/packages/experimental/tsconfig.lib.json",
+            "project": "libs/packages/experimental/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/packages/experimental/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/packages/experimental/tsconfig.lib.json",
+              "libs/packages/experimental/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/packages/experimental/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/packages/experimental/src/test.ts",
+            "tsConfig": "libs/packages/experimental/tsconfig.spec.json",
+            "karmaConfig": "libs/packages/experimental/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "layouts": {
+      "projectType": "library",
+      "root": "libs/packages/layouts",
+      "sourceRoot": "libs/packages/layouts/src",
+      "prefix": "sds",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/packages/layouts/tsconfig.lib.json",
+            "project": "libs/packages/layouts/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/packages/layouts/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/packages/layouts/tsconfig.lib.json",
+              "libs/packages/layouts/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/packages/layouts/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/packages/layouts/src/test.ts",
+            "tsConfig": "libs/packages/layouts/tsconfig.spec.json",
+            "karmaConfig": "libs/packages/layouts/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {
