@@ -78,9 +78,10 @@ export class AdvancedFiltersComponent {
 
         this.fields = response.fields;
         this.model = response.model;
-        if (Object.keys(this.toggleModel).length === 0) {
-          this.toggleChange.emit(result['historyToggle']);
-        }
+        // if (Object.keys(this.toggleModel).length === 0) {
+        this.toggleChange.emit(result['historyToggle']);
+        console.log('test', result['historyToggle'])
+        // }
       }
     });
   }
