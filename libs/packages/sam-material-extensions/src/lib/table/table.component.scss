@@ -2,3 +2,34 @@
   height: inherit;
   max-height: inherit;
 }
+
+::ng-deep {
+
+  /* move to sam-styles */
+  .sds-table {
+    tfoot {
+      th {
+        font-weight: 600;
+        background-color: #f5f5f0;
+
+        border-top-color: #cac9c0;
+        border-top-width: 1px;
+        border-top-style: solid;
+        border-left:0;
+        border-right:0;
+        border-bottom:0;
+      }
+    }
+    .example-element-detail {
+      overflow: hidden;
+      display: flex;
+    }
+
+    tr.example-detail-row {
+      height: 0;
+    }
+  }
+
+
+
+}
