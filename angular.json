@@ -30,9 +30,7 @@
               "node_modules/highlight.js/styles/vs.css"
             ],
             "scripts": ["node_modules/marked/lib/marked.js"],
-            "allowedCommonJsDependencies": [
-              "highlight.js"
-            ]
+            "allowedCommonJsDependencies": ["highlight.js"]
           },
           "configurations": {
             "production": {
@@ -192,10 +190,51 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "libs/documentation/tsconfig.lib.json"
-            ],
+            "tsConfig": ["libs/documentation/tsconfig.lib.json"],
             "exclude": ["**/node_modules/**", "!libs/documentation/**/*"]
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "sam-formly": {
+      "projectType": "library",
+      "root": "libs/packages/sam-formly",
+      "sourceRoot": "libs/packages/sam-formly/src",
+      "prefix": "sds",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/packages/sam-formly/tsconfig.lib.json",
+            "project": "libs/packages/sam-formly/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/packages/sam-formly/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/packages/sam-formly/tsconfig.lib.json",
+              "libs/packages/sam-formly/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/packages/sam-formly/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/packages/sam-formly/src/test.ts",
+            "tsConfig": "libs/packages/sam-formly/tsconfig.spec.json",
+            "karmaConfig": "libs/packages/sam-formly/karma.conf.js"
           }
         }
       },
