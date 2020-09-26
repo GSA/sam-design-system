@@ -7,9 +7,16 @@ import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../shared';
-import { TableBasicComponent } from './demos/table-basic/table-basic.component';
-import { TableBasicModule } from './demos/table-basic/table-basic.module';
-
+import { TableBasicComponent } from './demos/basic/basic.component';
+import { TableBasicModule } from './demos/basic/basic.module';
+import { TableBorderlessComponent } from './demos/borderless/borderless.component';
+import { TableBorderlessModule } from './demos/borderless/borderless.module';
+import { TableSortComponent } from './demos/sort/sort.component';
+import { TableSortModule } from './demos/sort/sort.module';
+import { TableStickyComponent } from './demos/sticky/sticky.component';
+import { TableStickyModule } from './demos/sticky/sticky.module';
+import { TableFullComponent } from './demos/full/full.component';
+import { TableFullModule } from './demos/full/full.module';
 
 export declare var require: any;
 
@@ -17,12 +24,40 @@ export const opening = require('!!raw-loader!./opening.md');
 
 const DEMOS = {
   basic: {
-    title: 'SAM Table', // Title
+    title: 'Basic', // Title
     type: TableBasicComponent, // Component
-    code: require('!!raw-loader!./demos/table-basic/table-basic.component'), // Source Tab Content
-    markup: require('!!raw-loader!./demos/table-basic/table-basic.component.html'), // Template Tab Content
-    path: 'libs/documentation/src/lib/components/table/demos/table-basic' // Path to demo for the Github link
-  }
+    code: require('!!raw-loader!./demos/basic/basic.component'), // Source Tab Content
+    markup: require('!!raw-loader!./demos/basic/basic.component.html'), // Template Tab Content
+    path: 'libs/documentation/src/lib/components/table/demos/basic' // Path to demo for the Github link
+  },
+  borderless: {
+    title: 'Borderless', // Title
+    type: TableBorderlessComponent, // Component
+    code: require('!!raw-loader!./demos/borderless/borderless.component'), // Source Tab Content
+    markup: require('!!raw-loader!./demos/borderless/borderless.component.html'), // Template Tab Content
+    path: 'libs/documentation/src/lib/components/table/demos/borderless' // Path to demo for the Github link
+  },
+  sort: {
+    title: 'Sorting', // Title
+    type: TableSortComponent, // Component
+    code: require('!!raw-loader!./demos/sort/sort.component'), // Source Tab Content
+    markup: require('!!raw-loader!./demos/sort/sort.component.html'), // Template Tab Content
+    path: 'libs/documentation/src/lib/components/table/demos/sort' // Path to demo for the Github link
+  },
+  sticky: {
+    title: 'Sticky Header, Footer, or Columns', // Title
+    type: TableStickyComponent, // Component
+    code: require('!!raw-loader!./demos/sticky/sticky.component'), // Source Tab Content
+    markup: require('!!raw-loader!./demos/sticky/sticky.component.html'), // Template Tab Content
+    path: 'libs/documentation/src/lib/components/table/demos/sticky' // Path to demo for the Github link
+  },
+  full: {
+    title: 'Kitchen Sink', // Title
+    type: TableFullComponent, // Component
+    code: require('!!raw-loader!./demos/full/full.component'), // Source Tab Content
+    markup: require('!!raw-loader!./demos/full/full.component.html'), // Template Tab Content
+    path: 'libs/documentation/src/lib/components/table/demos/full' // Path to demo for the Github link
+  },
  };
 
  export const ROUTES = [
@@ -56,7 +91,11 @@ const DEMOS = {
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    TableBasicModule
+    TableBasicModule,
+    TableBorderlessModule,
+    TableSortModule,
+    TableStickyModule,
+    TableFullModule
   ]
 })
 

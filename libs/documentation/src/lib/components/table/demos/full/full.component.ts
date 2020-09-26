@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { SdsTableColumnSettings } from '@gsa-sam/sam-material-extensions';
 
 @Component({
-  templateUrl: './table-basic.component.html'
+  templateUrl: './full.component.html'
 })
 
-export class TableBasicComponent {
+export class TableFullComponent {
 
   rowEdit: any;
 

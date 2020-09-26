@@ -179,27 +179,34 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
   constructor() {}
 
   ngOnInit() {
-    console.log(this.data);
     this.dataSource = new MatTableDataSource(this.data);
   }
 
   ngAfterContentInit() {
-    this.rowConfig.displayedColumns = this.sdsTableRowComponent.displayedColumns;
-    this.headerRowConfig.displayedColumns = this.sdsTableHeaderRowComponent.displayedColumns;
-    this.headerRowConfig.sticky = this.sdsTableHeaderRowComponent.sticky;
-    this.footerRowConfig.displayedColumns = this.sdsTableFooterRowComponent.displayedColumns;
-    this.footerRowConfig.sticky = this.sdsTableFooterRowComponent.sticky;
 
+    if(this.sdsTableRowComponent) {
+      this.rowConfig.displayedColumns = this.sdsTableRowComponent.displayedColumns;
+    }
+
+    if(this.sdsTableHeaderRowComponent) {
+      this.headerRowConfig.displayedColumns = this.sdsTableHeaderRowComponent.displayedColumns;
+      this.headerRowConfig.sticky = this.sdsTableHeaderRowComponent.sticky;
+    }
+
+    if(this.sdsTableFooterRowComponent) {
+      this.footerRowConfig.displayedColumns = this.sdsTableFooterRowComponent.displayedColumns;
+      this.footerRowConfig.sticky = this.sdsTableFooterRowComponent.sticky;
+    }
 
     if(this.expansion) {
       const expandedIndicator = "expandedIndicator";
-      if(!this.rowConfig.displayedColumns.includes(expandedIndicator)){
+      if(this.rowConfig.displayedColumns && !this.rowConfig.displayedColumns.includes(expandedIndicator)){
         this.rowConfig.displayedColumns.push('expandedIndicator');
       }
-      if(!this.headerRowConfig.displayedColumns.includes(expandedIndicator)){
+      if(this.headerRowConfig.displayedColumns && !this.headerRowConfig.displayedColumns.includes(expandedIndicator)){
         this.headerRowConfig.displayedColumns.push('expandedIndicator');
       }
-      if(!this.footerRowConfig.displayedColumns.includes(expandedIndicator)){
+      if(this.footerRowConfig.displayedColumns && !this.footerRowConfig.displayedColumns.includes(expandedIndicator)){
         this.footerRowConfig.displayedColumns.push('expandedIndicator');
       }
     }
@@ -207,15 +214,9 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
   }
 
   ngAfterViewInit() {
-
-
-
     if(this.sort) {
       this.dataSource.sort = this.matSort;
     }
-    console.log(this.borderless, "borderless: ");
-    console.log(this.sort, "sort: ");
-    console.log(this.expansion, "expansion: ");
   }
 
 }

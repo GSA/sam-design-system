@@ -1,0 +1,32 @@
+<sds-table [data]="data">
+
+  <sds-table-column sdsColumnName="id">
+    <ng-template #sdsHeaderCell>ID</ng-template>
+    <ng-template #sdsCell let-element="element">{{ element.id }}</ng-template>
+  </sds-table-column>
+  <sds-table-column sdsColumnName="firstName">
+    <ng-template #sdsHeaderCell>First</ng-template>
+    <ng-template #sdsCell let-element="element">{{ element.firstName }}</ng-template>
+  </sds-table-column>
+  <sds-table-column sdsColumnName="lastName">
+    <ng-template #sdsHeaderCell>Last</ng-template>
+    <ng-template #sdsCell let-element="element">{{ element.lastName }}</ng-template>
+  </sds-table-column>
+  <sds-table-column sdsColumnName="email">
+    <ng-template #sdsHeaderCell>Email</ng-template>
+    <ng-template #sdsCell let-element="element"><a href="https://beta.sam.gov" (click)="$event.stopPropagation()" class="usa-link">{{ element.email }}</a></ng-template>
+  </sds-table-column>
+  <sds-table-column sdsColumnName="requests">
+    <ng-template #sdsHeaderCell>Requests</ng-template>
+    <ng-template #sdsCell let-element="element">{{ element.requests }}</ng-template>
+  </sds-table-column>
+  <sds-table-column sdsColumnName="date">
+    <ng-template #sdsHeaderCell>Date</ng-template>
+    <ng-template #sdsCell let-element="element">{{ element.date | date }}</ng-template>
+  </sds-table-column>
+
+  <sds-header-row [displayedColumns]="displayedColumns"></sds-header-row>
+  <sds-row [displayedColumns]="displayedColumns"></sds-row>
+
+</sds-table>
+
