@@ -189,9 +189,27 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
     this.headerRowConfig.sticky = this.sdsTableHeaderRowComponent.sticky;
     this.footerRowConfig.displayedColumns = this.sdsTableFooterRowComponent.displayedColumns;
     this.footerRowConfig.sticky = this.sdsTableFooterRowComponent.sticky;
+
+
+    if(this.expansion) {
+      const expandedIndicator = "expandedIndicator";
+      if(!this.rowConfig.displayedColumns.includes(expandedIndicator)){
+        this.rowConfig.displayedColumns.push('expandedIndicator');
+      }
+      if(!this.headerRowConfig.displayedColumns.includes(expandedIndicator)){
+        this.headerRowConfig.displayedColumns.push('expandedIndicator');
+      }
+      if(!this.footerRowConfig.displayedColumns.includes(expandedIndicator)){
+        this.footerRowConfig.displayedColumns.push('expandedIndicator');
+      }
+    }
+
   }
 
   ngAfterViewInit() {
+
+
+
     if(this.sort) {
       this.dataSource.sort = this.matSort;
     }

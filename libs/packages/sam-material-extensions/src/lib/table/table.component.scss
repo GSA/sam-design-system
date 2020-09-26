@@ -20,13 +20,31 @@
         border-bottom:0;
       }
     }
-    .example-element-detail {
+
+    .sds-table__cell__expanded-wrapper {
       overflow: hidden;
       display: flex;
     }
 
-    tr.example-detail-row {
+    tr.sds-table__row--detail {
       height: 0;
+      display: table-row;
+    }
+
+    td.sds-table__cell--detail {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    &.sds-table--expansion {
+      tr.sds-table__row {
+        cursor: pointer;
+      }
+
+      tr.sds-table__row--expanded td {
+        font-weight: normal;
+        border-top:0;
+      }
     }
   }
 
