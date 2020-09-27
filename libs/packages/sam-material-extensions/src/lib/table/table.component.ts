@@ -37,6 +37,7 @@ export interface SdsFooterRowConfig extends SdsRowConfig {
 })
 export class SdsTableRowComponent {
   @Input() displayedColumns: Array<string>;
+  @Input() expandOnClick = false;
 }
 
 @Component({
@@ -184,9 +185,7 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
 
   ngAfterContentInit() {
 
-    if(this.sdsTableRowComponent) {
-      this.rowConfig.displayedColumns = this.sdsTableRowComponent.displayedColumns;
-    }
+    this.rowConfig.displayedColumns = this.sdsTableRowComponent.displayedColumns;
 
     if(this.sdsTableHeaderRowComponent) {
       this.headerRowConfig.displayedColumns = this.sdsTableHeaderRowComponent.displayedColumns;
@@ -202,12 +201,6 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
       const expandedIndicator = "expandedIndicator";
       if(this.rowConfig.displayedColumns && !this.rowConfig.displayedColumns.includes(expandedIndicator)){
         this.rowConfig.displayedColumns.push('expandedIndicator');
-      }
-      if(this.headerRowConfig.displayedColumns && !this.headerRowConfig.displayedColumns.includes(expandedIndicator)){
-        this.headerRowConfig.displayedColumns.push('expandedIndicator');
-      }
-      if(this.footerRowConfig.displayedColumns && !this.footerRowConfig.displayedColumns.includes(expandedIndicator)){
-        this.footerRowConfig.displayedColumns.push('expandedIndicator');
       }
     }
 
