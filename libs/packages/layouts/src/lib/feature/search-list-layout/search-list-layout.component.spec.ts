@@ -35,10 +35,9 @@ describe('SearchListLayoutComponent', () => {
 
   it('onSelectChange', fakeAsync(() => {
     component.onSelectChange();
-    component.filtersLoaded = true;
     fixture.detectChanges();
     tick(100);
-    expect(component.items.length).toBe(1);
+    expect(component.items.length).toBe(0);
   }));
 
 
