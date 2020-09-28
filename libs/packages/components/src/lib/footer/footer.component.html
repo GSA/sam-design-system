@@ -51,7 +51,7 @@
   </div>
 
   <div class="usa-footer__primary-section">
-    <div class="grid-container margin-x-0 mobile-lg:margin-x-auto padding-x-0 mobile-lg:padding-x-auto">
+    <div class="grid-container margin-x-0 mobile-lg:margin-x-auto padding-x-0 mobile-lg:padding-x-auto display-none tablet:display-block">
       <div class="grid-row grid-gap-0 mobile-lg:grid-gap">
         <div class="tablet:grid-col-12">
           <nav class="usa-footer__nav margin-x-0 mobile-lg:margin-x-2 padding-x-0 mobile-lg:padding-x-2">
@@ -80,7 +80,7 @@
         </div>
       </div>
     </div>
-    <nav class="sds-footer__nav--accordion">
+    <nav class="sds-footer__nav--accordion display-block tablet:display-none">
       <sds-accordion-next [multi]="true">
         <sds-accordion-item *ngFor="let section of model.linkSections; let $index = index">
           <sds-accordion-title>{{ section.text }}</sds-accordion-title>
