@@ -8,7 +8,7 @@
     <button class="usa-button usa-button--base" (click)="onCancel()" type="button">
       {{cancel}}
     </button>
-    <button class="usa-button" type="submit">
+    <button class="usa-button" [disabled]="disableSubmitButton ? !form.valid  : disableSubmitButton" type="submit">
       {{submit}}
     </button>
   </div>
