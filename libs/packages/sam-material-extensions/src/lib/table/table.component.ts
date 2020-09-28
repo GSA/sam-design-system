@@ -19,6 +19,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 
 export interface SdsRowConfig {
   displayedColumns?: string[];
+  expandOnClick?: boolean;
 }
 
 export interface SdsHeaderRowConfig extends SdsRowConfig {
@@ -186,6 +187,7 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
   ngAfterContentInit() {
 
     this.rowConfig.displayedColumns = this.sdsTableRowComponent.displayedColumns;
+    this.rowConfig.expandOnClick = this.sdsTableRowComponent.expandOnClick;
 
     if(this.sdsTableHeaderRowComponent) {
       this.headerRowConfig.displayedColumns = this.sdsTableHeaderRowComponent.displayedColumns;
@@ -203,7 +205,6 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
         this.rowConfig.displayedColumns.push('expandedIndicator');
       }
     }
-
   }
 
   ngAfterViewInit() {
