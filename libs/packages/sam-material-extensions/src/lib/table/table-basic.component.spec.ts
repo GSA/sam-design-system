@@ -157,81 +157,35 @@ const MOCK_DATA = [
 
 @Component({
   template: `
-  <sds-table [data]="data" [borderless]="borderlessToggle" [expansion]="expansionToggle" [sort]="sortToggle" class="maxh-mobile overflow-auto">
+  <sds-table [data]="data" expansion="false">
 
-    <sds-table-column sdsColumnName="id" sticky="true">
+    <sds-table-column sdsColumnName="id">
       <ng-template #sdsHeaderCell>ID</ng-template>
       <ng-template #sdsCell let-element="element">{{ element.id }}</ng-template>
-      <ng-template #sdsFooterCell>Total</ng-template>
     </sds-table-column>
     <sds-table-column sdsColumnName="firstName">
       <ng-template #sdsHeaderCell>First</ng-template>
       <ng-template #sdsCell let-element="element">{{ element.firstName }}</ng-template>
-      <ng-template #sdsFooterCell></ng-template>
     </sds-table-column>
     <sds-table-column sdsColumnName="lastName">
       <ng-template #sdsHeaderCell>Last</ng-template>
       <ng-template #sdsCell let-element="element">{{ element.lastName }}</ng-template>
-      <ng-template #sdsFooterCell></ng-template>
     </sds-table-column>
     <sds-table-column sdsColumnName="email">
       <ng-template #sdsHeaderCell>Email</ng-template>
       <ng-template #sdsCell let-element="element"><a href="https://beta.sam.gov" (click)="$event.stopPropagation()" class="usa-link">{{ element.email }}</a></ng-template>
-      <ng-template #sdsFooterCell></ng-template>
     </sds-table-column>
     <sds-table-column sdsColumnName="requests">
       <ng-template #sdsHeaderCell>Requests</ng-template>
       <ng-template #sdsCell let-element="element">{{ element.requests }}</ng-template>
-      <ng-template #sdsFooterCell>{{ getTotalRequests() }}</ng-template>
     </sds-table-column>
     <sds-table-column sdsColumnName="date">
       <ng-template #sdsHeaderCell>Date</ng-template>
       <ng-template #sdsCell let-element="element">{{ element.date | date }}</ng-template>
-      <ng-template #sdsFooterCell></ng-template>
-    </sds-table-column>
-    <sds-table-column sdsColumnName="tags">
-      <ng-template #sdsHeaderCell>Tags</ng-template>
-      <ng-template #sdsCell let-element="element">
-        <ul class="usa-list usa-list--unstyled">
-          <li *ngFor="let tag of element.tags">
-            <fa-icon [icon]="['fas', 'circle']" size="sm" [class]="tag.className"></fa-icon>
-            {{ tag.label }}
-          </li>
-        </ul>
-      </ng-template>
-      <ng-template #sdsFooterCell></ng-template>
-    </sds-table-column>
-    <sds-table-column sdsColumnName="actions" stickyEnd="true">
-      <ng-template #sdsHeaderCell>Actions</ng-template>
-      <ng-template #sdsCell let-element="element"><a href="#" (click)="edit(element); $event.stopPropagation(); false;" class="usa-link">Edit</a></ng-template>
-      <ng-template #sdsFooterCell></ng-template>
     </sds-table-column>
 
-    <sds-table-column sdsColumnName="expandedDetail" sdsExpandedTemplate="true">
-      <ng-template #sdsHeaderCell></ng-template>
-      <ng-template #sdsCell let-element="element">
-        <div class="grid-row width-full padding-3">
-          <div class="grid-col-6">
-            <div class="sds-field">
-              <div class="sds-field__name">Catch Phrase:</div>
-              <div class="sds-field__value">{{element.catchPhrase}}</div>
-            </div>
-          </div>
-          <div class="grid-col-6">
-            <div class="sds-field">
-              <div class="sds-field__name">Job Title:</div>
-              <div class="sds-field__value">{{element.jobTitle}}</div>
-            </div>
-          </div>
-        </div>
-      </ng-template>
-      <ng-template #sdsFooterCell></ng-template>
-    </sds-table-column>
+    <sds-row [displayedColumns]="displayedColumns"></sds-row>
 
-
-    <sds-header-row [displayedColumns]="displayedColumns" [sticky]="true"></sds-header-row>
-    <sds-row [displayedColumns]="displayedColumns" [expandOnClick]="false"></sds-row>
-    <sds-footer-row [displayedColumns]="displayedColumns" [sticky]="true"></sds-footer-row>
   </sds-table>
   `
 })
@@ -239,9 +193,8 @@ class WrapperComponent {
   @ViewChild(SdsTableComponent) sdsTableComponentRef: SdsTableComponent;
   @ViewChild(SdsTableRowComponent) sdsTableRowComponentRef: SdsTableRowComponent;
   @ViewChild(SdsTableHeaderRowComponent) sdsTableHeaderRowComponent: SdsTableHeaderRowComponent;
-  @ViewChild(SdsTableFooterRowComponent) sdsTableFooterRowComponent: SdsTableFooterRowComponent;
 
-  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'requests', 'date', 'tags', 'actions'];
+  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'requests', 'date'];
 
   data = MOCK_DATA;
 
@@ -249,14 +202,10 @@ class WrapperComponent {
   expansionToggle = true;
   borderlessToggle = false;
 
-  getTotalRequests() {
-    return this.data.map(t => t.requests).reduce((acc, value) => acc + value, 0);
-  }
-
 }
 
 
-describe('SdsTableComponent Full', () => {
+describe('SdsTableComponent Basic', () => {
   let component: SdsTableComponent;
   let fixture: ComponentFixture<WrapperComponent>;
   let tableDe: DebugElement;
@@ -288,13 +237,6 @@ describe('SdsTableComponent Full', () => {
     it('should create', async(() => {
       expect(component).toBeTruthy();
     }));
-
-    it('check after content init', async(() => {
-      component.ngAfterContentInit();
-      fixture.detectChanges();
-      expect(component).toBeTruthy();
-    }));
-
 
   });
 });

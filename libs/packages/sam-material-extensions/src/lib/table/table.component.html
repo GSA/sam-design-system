@@ -1,57 +1,67 @@
-<div class="sds-table__container" [ngClass]="{'sds-table__container--borderless': settings?.borderless}">
-    <table mat-table [dataSource]="dataSource" matSort [multiTemplateDataRows]=detailRow
-      [ngClass]="{'sds-table--expansion': detailRow}" class="sds-table">
+<div class="sds-table__container" [ngClass]="{ 'sds-table__container--borderless': borderless }">
+  <table mat-table [dataSource]="dataSource" class="sds-table width-full mat-elevation-z8" matSort multiTemplateDataRows [ngClass]="{ 'sds-table--expansion': expansion }">
 
-    <!-- Columns -->
-    <ng-container matColumnDef="{{col.primaryKey}}" *ngFor="let col of columns" [sticky]=col.sticky>
+    <ng-container *ngFor="let sdsColumnItem of sdsColumnItems">
+      <ng-container *ngIf="!sdsColumnItem.sdsExpandedTemplate" matColumnDef="{{sdsColumnItem.sdsColumnName}}" [sticky]="sdsColumnItem.sticky" [stickyEnd]="sdsColumnItem.stickyEnd">
+        <ng-container *ngIf="sort">
+          <th mat-header-cell *matHeaderCellDef scope="col" mat-sort-header><ng-container *ngTemplateOutlet="sdsColumnItem.columnHeaderCell"></ng-container></th>
+        </ng-container>
+        <ng-container *ngIf="!sort">
+          <th mat-header-cell *matHeaderCellDef scope="col"><ng-container *ngTemplateOutlet="sdsColumnItem.columnHeaderCell"></ng-container></th>
+        </ng-container>
+        <td mat-cell *matCellDef="let element"><ng-container *ngTemplateOutlet="sdsColumnItem.columnCell; context: {element : element}"></ng-container></td>
+        <ng-container *ngIf="sdsColumnItem.footerCellTemplate" >
+          <th mat-footer-cell *matFooterCellDef scope="col"><ng-container *ngTemplateOutlet="sdsColumnItem.columnFooterCell"></ng-container></th>
+        </ng-container>
+        <ng-container *ngIf="!sdsColumnItem.footerCellTemplate" >
+          <td mat-footer-cell *matFooterCellDef scope="col"></td>
+        </ng-container>
 
-      <!-- table header cells -->
-      <ng-container *ngIf="settings?.sort">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col" [ngClass]="{'sds-table__heading--sticky': col.sticky}">
-          {{ col.header  || (col.primaryKey | titlecase)}}
-        </th>
       </ng-container>
-      <ng-container *ngIf="!settings || !settings.sort">
-        <th mat-header-cell *matHeaderCellDef scope="col" [ngClass]="{'sds-table__heading--sticky': col.sticky}">
-          {{ col.header  || (col.primaryKey | titlecase)}}
-        </th>
+    </ng-container>
+
+    <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+    <ng-container *ngIf="expansion">
+      <ng-container *ngFor="let sdsColumnItem of sdsColumnItems">
+        <ng-container *ngIf="sdsColumnItem.sdsExpandedTemplate"  matColumnDef="{{sdsColumnItem.sdsColumnName}}">
+          <td mat-cell *matCellDef="let element" [attr.colspan]="rowConfig.displayedColumns.length" class="sds-table__cell--detail">
+            <div class="sds-table__cell__expanded-wrapper" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+              <ng-container *ngTemplateOutlet="sdsColumnItem.columnCell; context: {element : element}"></ng-container>
+            </div>
+          </td>
+        </ng-container>
       </ng-container>
-
-      <td mat-cell *matCellDef="let row" [ngClass]="{'sds-table__cell--sticky': col.sticky}">
-        {{ row[col.primaryKey] }}
-      </td>
     </ng-container>
 
-    <!-- column for expandable icon -->
-    <ng-container matColumnDef="sdsExpandableRow" *ngIf="detailRow">
-      <th mat-header-cell *matHeaderCellDef scope="col" class="sds-table__heading--detail">
-        <span class="sr-only">More Information</span>
-      </th>
-
-      <td mat-cell *matCellDef="let row">
-        <button class="sds-button usa-button--unstyled" tabindex="0" aria-label="expand row">
-          <fa-icon *ngIf="row !== expandedRow" [icon]="['fas', 'chevron-down']"></fa-icon>
-          <fa-icon *ngIf="row === expandedRow" [icon]="['fas', 'chevron-up']"></fa-icon>
-        </button>
+    <ng-container *ngIf="expansion" matColumnDef="expandedIndicator">
+      <td mat-header-cell *matHeaderCellDef></td>
+      <td mat-cell *matCellDef="let element"
+        class="cursor-pointer"
+        (click)="!rowConfig.expandOnClick ? (expandedElement = expandedElement === element ? null : element) : false"
+      >
+        <fa-icon *ngIf="element == expandedElement" [icon]="['fas', 'chevron-down']" size="sm"></fa-icon>
+        <fa-icon *ngIf="element != expandedElement" [icon]="['fas', 'chevron-up']" size="sm"></fa-icon>
       </td>
+      <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
 
-    <!-- Expandable detail row -->
-    <ng-container matColumnDef="expandedDetail">
-      <td mat-cell *matCellDef="let row;" [attr.colspan]="columnIds.length" class="sds-table__cell--detail">
-        <!-- display detailRow templateRef with all row data -->
-        <ng-container *ngTemplateOutlet="detailRow; context: row"></ng-container>
-      </td>
+    <ng-container *ngIf="headerRowConfig && headerRowConfig.displayedColumns">
+      <tr mat-header-row *matHeaderRowDef="headerRowConfig.displayedColumns; sticky: headerRowConfig.sticky"></tr>
     </ng-container>
 
-    <!-- Header and row declarations -->
-    <tr mat-header-row *matHeaderRowDef="columnIds; sticky: settings?.stickyHeader"></tr>
-    <tr mat-row *matRowDef="let row; columns: columnIds" class="sds-table__row"
-      [ngClass]="{'sds-table__row--expanded': row === expandedRow}" (click)="toggleRowExpansion(row)"></tr>
+    <tr mat-row *matRowDef="let row; columns: rowConfig.displayedColumns;"
+      class="sds-table__row"
+      [ngClass]="{ 'cursor-pointer': rowConfig.expandOnClick, 'sds-table__row--expanded': expandedElement == row }"
+      (click)="rowConfig.expandOnClick ? (expandedElement = expandedElement === row ? null : row) : false"
+    ></tr>
 
-    <!-- expansion row declaration -->
-    <ng-container *ngIf="detailRow">
+    <ng-container *ngIf="expansion">
       <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="sds-table__row--detail"></tr>
     </ng-container>
+
+    <ng-container *ngIf="footerRowConfig && footerRowConfig.displayedColumns">
+      <tr mat-footer-row *matFooterRowDef="footerRowConfig.displayedColumns; sticky: footerRowConfig.sticky"></tr>
+    </ng-container>
+
   </table>
 </div>
