@@ -3,32 +3,32 @@
   <sds-table-column sdsColumnName="id" sticky="true">
     <ng-template #sdsHeaderCell>ID</ng-template>
     <ng-template #sdsCell let-element="element">{{ element.id }}</ng-template>
-    <ng-template #sdsFooterCell>Total</ng-template>
+    <ng-template #sdsFooterCell colspan="4">Total</ng-template>
   </sds-table-column>
   <sds-table-column sdsColumnName="firstName">
     <ng-template #sdsHeaderCell>First</ng-template>
     <ng-template #sdsCell let-element="element">{{ element.firstName }}</ng-template>
-    <ng-template #sdsFooterCell></ng-template>
+
   </sds-table-column>
   <sds-table-column sdsColumnName="lastName">
     <ng-template #sdsHeaderCell>Last</ng-template>
     <ng-template #sdsCell let-element="element">{{ element.lastName }}</ng-template>
-    <ng-template #sdsFooterCell></ng-template>
+
   </sds-table-column>
   <sds-table-column sdsColumnName="email">
     <ng-template #sdsHeaderCell>Email</ng-template>
     <ng-template #sdsCell let-element="element"><a href="https://beta.sam.gov" (click)="$event.stopPropagation()" class="usa-link">{{ element.email }}</a></ng-template>
-    <ng-template #sdsFooterCell></ng-template>
+
   </sds-table-column>
   <sds-table-column sdsColumnName="requests">
     <ng-template #sdsHeaderCell>Requests</ng-template>
     <ng-template #sdsCell let-element="element">{{ element.requests }}</ng-template>
-    <ng-template #sdsFooterCell>{{ getTotalRequests() }}</ng-template>
+    <ng-template #sdsFooterCell colspan="4">{{ getTotalRequests() }}</ng-template>
   </sds-table-column>
   <sds-table-column sdsColumnName="date">
     <ng-template #sdsHeaderCell>Date</ng-template>
     <ng-template #sdsCell let-element="element">{{ element.date | date }}</ng-template>
-    <ng-template #sdsFooterCell></ng-template>
+
   </sds-table-column>
   <sds-table-column sdsColumnName="tags">
     <ng-template #sdsHeaderCell>Tags</ng-template>
@@ -40,12 +40,12 @@
         </li>
       </ul>
     </ng-template>
-    <ng-template #sdsFooterCell></ng-template>
+
   </sds-table-column>
   <sds-table-column sdsColumnName="actions" stickyEnd="true">
     <ng-template #sdsHeaderCell>Actions</ng-template>
     <ng-template #sdsCell let-element="element"><a href="#" (click)="edit(element); $event.stopPropagation(); false;" class="usa-link">Edit</a></ng-template>
-    <ng-template #sdsFooterCell></ng-template>
+
   </sds-table-column>
 
   <sds-table-column sdsColumnName="expandedDetail" sdsExpandedTemplate="true">
@@ -66,7 +66,7 @@
         </div>
       </div>
     </ng-template>
-    <ng-template #sdsFooterCell></ng-template>
+
   </sds-table-column>
 
 

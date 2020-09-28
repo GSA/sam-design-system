@@ -1,14 +1,9 @@
-:host {
-  height: inherit;
-  max-height: inherit;
-}
-
 ::ng-deep {
 
   /* move to sam-styles */
   .sds-table {
     tfoot {
-      th {
+      th, td {
         font-weight: 600;
         background-color: #f5f5f0;
 
@@ -20,7 +15,19 @@
         border-bottom:0;
       }
     }
+    thead {
+      th, td {
+        font-weight: 600;
+        background-color: #f5f5f0;
 
+        border-bottom-color: #cac9c0;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-left:0;
+        border-right:0;
+        border-top:0;
+      }
+    }
     .sds-table__cell__expanded-wrapper {
       overflow: hidden;
       display: flex;
