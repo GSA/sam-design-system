@@ -2,7 +2,8 @@
   <div class="grid-col">
     <div class="grid-row">
       <div class="grid-col-auto">
-        <sds-pagination class="tablet:grid-col" [paginationConfiguration]="top" [(page)]="page" (pageChange)="paginationChange.next($event)" displayMode='results' [totalItems]="totalItems"></sds-pagination>
+        <sds-pagination class="tablet:grid-col" [paginationConfiguration]="top" [(page)]="page" (pageChange)="paginationChange.next($event)">
+        </sds-pagination>
       </div>
       <div class="grid-col-fill"></div>
       <div class="grid-col-auto float-right">
@@ -28,6 +29,7 @@
                 context: { $implicit: item }"></ng-container>
       </ng-template>
     </sds-search-result-list>
-    <sds-pagination *ngIf="items?.length" [paginationConfiguration]="bottom" [(page)]="page" (pageChange)="paginationChange.next($event)"></sds-pagination>
+    <sds-pagination *ngIf="items?.length" [paginationConfiguration]="bottom" [(page)]="page" (pageChange)="paginationChange.next($event)">
+    </sds-pagination>
   </div>
 </div>

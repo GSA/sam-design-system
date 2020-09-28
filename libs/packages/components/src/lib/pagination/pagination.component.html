@@ -1,12 +1,12 @@
-<div class="sds-pagination" *ngIf="displayMode === 'default'">
+<div class="sds-pagination">
   <div class="sds-pagination__controls">
     <button [attr.id]="paginationConfiguration.id +'-previousPage'" (click)="previousPage()">Previous Page</button>
     <label class="usa-label font-sans-3xs margin-top-1 text-italic text-base usa-sr-only"
       [attr.for]="paginationConfiguration.id + '-currentPage'">Current Page</label>
     <input [attr.id]="paginationConfiguration.id +'-currentPage'"
-      class="usa-input usa-input--small font-sans-3xs text-center border-base-light" #currentPage
+      class="usa-input height-3 width-4 line-height-05 font-sans-3xs text-center border-base-light" #currentPage
       (ngModelChange)="valuechange($event)" [(ngModel)]="page.pageNumber" type="number" min="1"
-      [(attr.max)]="page.totalPages" (focusout)="currentPageFocusOut()" aria-label="current page" [ngStyle]="{'width': (20 + page.totalPages.toString().length * 10) +'px'}" />
+      [(attr.max)]="page.totalPages" (focusout)="currentPageFocusOut()" aria-label="current page" />
     <span class="sds-pagination__total">
       of <strong>{{ page.totalPages }}</strong>
     </span>
@@ -22,8 +22,4 @@
       </option>
     </select>
   </div>
-</div>
-
-<div class="sds-pagination padding-top-3" *ngIf="totalItems && displayMode === 'results'">
-  <div class="text-semibold font-sans-3xs margin-top-3">Showing {{page.pageNumber}} - {{page.totalPages}} of {{totalItems | number:'1.0':'en-US'}} search results</div>
 </div>

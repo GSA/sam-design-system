@@ -1,9 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
 import { PaginationConfigurationModel, PaginationModel } from './model/paginationModel';
 
-/** pagination display modes. */
-export type PaginationDisplayMode = 'default' | 'results';
-
 @Component({
   selector: 'sds-pagination',
   templateUrl: './pagination.component.html',
@@ -48,19 +45,6 @@ export class PaginationComponent implements OnInit {
   @Input()
   paginationConfiguration: PaginationConfigurationModel;
 
-  /**
-   * displayMode = 'default' | 'results';
-   */
-  @Input()
-  displayMode: PaginationDisplayMode = 'default';
-
-    /**
-   * totalItems for display on results view;
-   */
-  @Input()
-  totalItems?: number = 0;
-
-
 
   /**
    * debounce time for current page input
@@ -73,7 +57,7 @@ export class PaginationComponent implements OnInit {
   private previousNumber: number;
 
   /**
-   * timeout id of the debounce time
+   * timeout id of the debounce time 
    */
   timeoutNumber: number;
 
@@ -110,7 +94,7 @@ export class PaginationComponent implements OnInit {
 
   /**
    * current page changes sets new value if within range
-   * @param newValue
+   * @param newValue 
    */
   valuechange(newValue?: number) {
     window.clearTimeout(this.timeoutNumber);
