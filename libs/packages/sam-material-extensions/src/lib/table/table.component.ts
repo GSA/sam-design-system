@@ -8,11 +8,13 @@ import {
   QueryList,
   ViewChild,
   TemplateRef,
-  Directive
+  Directive,
+  SimpleChanges,
+  OnChanges
 } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { AfterViewInit } from '@angular/core';
-import {MatTableDataSource} from '@angular/material/table';
+import {MatTableDataSource, MatTable} from '@angular/material/table';
 import {coerceBooleanProperty} from '@angular/cdk/coercion';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
@@ -122,15 +124,7 @@ export class SdsTableColumnDefComponent implements AfterContentInit {
     ]),
   ]
 })
-export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewInit {
-
-  dataSource: MatTableDataSource<any>;
-
-  @ContentChild(SdsTableRowComponent) sdsTableRowComponent: SdsTableRowComponent;
-  @ContentChild(SdsTableHeaderRowComponent) sdsTableHeaderRowComponent: SdsTableHeaderRowComponent;
-  @ContentChild(SdsTableFooterRowComponent) sdsTableFooterRowComponent: SdsTableFooterRowComponent;
-  @ContentChildren(SdsTableColumnDefComponent, { descendants: true }) sdsColumnItems!: QueryList<SdsTableColumnDefComponent>;
-  @ViewChild(MatSort) matSort: MatSort;
+export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewInit, OnChanges {
 
   /**
    * Data for table
@@ -174,11 +168,29 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
   }
   private _expansion = false;
 
+  dataSource: MatTableDataSource<any>;
+
+  @ViewChild(MatTable) table: MatTable<any>;
+  @ContentChild(SdsTableRowComponent) sdsTableRowComponent: SdsTableRowComponent;
+  @ContentChild(SdsTableHeaderRowComponent) sdsTableHeaderRowComponent: SdsTableHeaderRowComponent;
+  @ContentChild(SdsTableFooterRowComponent) sdsTableFooterRowComponent: SdsTableFooterRowComponent;
+  @ContentChildren(SdsTableColumnDefComponent, { descendants: true }) sdsColumnItems!: QueryList<SdsTableColumnDefComponent>;
+  @ViewChild(MatSort) matSort: MatSort;
+
   rowConfig = {} as SdsRowConfig;
   headerRowConfig = {} as SdsHeaderRowConfig;
   footerRowConfig = {} as SdsFooterRowConfig;
 
   constructor() {}
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.data.currentValue) {
+      this.dataSource = new MatTableDataSource(changes.data.currentValue);
+      if(this.sort) {
+        this.dataSource.sort = this.matSort;
+      }
+    }
+  }
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource(this.data);

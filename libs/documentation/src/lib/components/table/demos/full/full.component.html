@@ -1,4 +1,4 @@
-<sds-table [data]="data" expansion sort class="maxh-mobile overflow-auto">
+<sds-table [data]="data" expansion sort class="maxh-tablet overflow-auto">
 
   <sds-table-column sdsColumnName="id" sticky="true">
     <ng-template #sdsHeaderCell>ID</ng-template>
@@ -74,6 +74,23 @@
   <sds-row [displayedColumns]="displayedColumns" [expandOnClick]="false"></sds-row>
   <sds-footer-row [displayedColumns]="displayedColumns" [sticky]="true"></sds-footer-row>
 </sds-table>
+
+<div>
+  <hr class="margin-top-4" />
+  <p>Change number of rows:</p>
+  <button (click)="sliceData(0,5)" class="usa-button usa-button--base">
+    5 rows
+  </button>
+  <button (click)="sliceData(0,25)" class="usa-button usa-button--base">
+    25 rows
+  </button>
+  <button (click)="sliceData(0,100)" class="usa-button usa-button--base">
+    100 rows
+  </button>
+  <button (click)="sliceData(0,250)" class="usa-button usa-button--base">
+    250 rows
+  </button>
+</div>
 
 <div class="margin-2" *ngIf="rowEdit">
   Edit Data:
