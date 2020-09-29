@@ -20,8 +20,6 @@ import { TableFullModule } from './demos/full/full.module';
 
 export declare var require: any;
 
-export const opening = require('!!raw-loader!./opening.md');
-
 const DEMOS = {
   basic: {
     title: 'Basic', // Title
@@ -58,16 +56,15 @@ const DEMOS = {
     markup: require('!!raw-loader!./demos/full/full.component.html'), // Template Tab Content
     path: 'libs/documentation/src/lib/components/table/demos/full' // Path to demo for the Github link
   },
- };
+};
 
- export const ROUTES = [
+export const ROUTES = [
   { path: '', pathMatch: 'full', redirectTo: 'examples' },
   {
     path: '',
     component: ComponentWrapperComponent,
     data: {
       readme: {
-        opening
       },
       items: [ // Defines what documentation to display on the API tab
         {
@@ -84,7 +81,7 @@ const DEMOS = {
       { path: 'template', component: DocumentationTemplatePage }
     ]
   }
- ];
+];
 
 @NgModule({
   declarations: [],
