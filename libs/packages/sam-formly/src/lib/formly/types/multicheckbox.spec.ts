@@ -9,125 +9,125 @@ import { FormlySelectModule } from '@ngx-formly/core/select';
 import { FormlyFieldMultiCheckboxComponent } from './multicheckbox';
 
 const createTestComponent = (html: string) =>
-    createGenericTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;
+  createGenericTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;
 
 export function createGenericTestComponent<T>(html: string, type: { new(...args: any[]): T }): ComponentFixture<T> {
-    TestBed.overrideComponent(type, { set: { template: html } });
-    const fixture = TestBed.createComponent(type);
-    fixture.detectChanges();
-    return fixture as ComponentFixture<T>;
+  TestBed.overrideComponent(type, { set: { template: html } });
+  const fixture = TestBed.createComponent(type);
+  fixture.detectChanges();
+  return fixture as ComponentFixture<T>;
 }
 
 
 let testComponentInputs;
 
 describe('Formly Field multicheckbox Component', () => {
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [TestComponent, FormlyFieldMultiCheckboxComponent],
+      imports: [
+        NoopAnimationsModule,
+        ReactiveFormsModule,
+        FormlySelectModule,
+        FontAwesomeModule,
+        FormlyModule.forRoot({
+          types: [
+            {
+              name: 'multicheckbox',
+              component: FormlyFieldMultiCheckboxComponent,
+            },
+          ],
+        }),
+      ],
+    });
+  });
+
+  describe('options', () => {
     beforeEach(() => {
-        TestBed.configureTestingModule({
-            declarations: [TestComponent, FormlyFieldMultiCheckboxComponent],
-            imports: [
-                NoopAnimationsModule,
-                ReactiveFormsModule,
-                FormlySelectModule,
-                FontAwesomeModule,
-                FormlyModule.forRoot({
-                    types: [
-                        {
-                            name: 'multicheckbox',
-                            component: FormlyFieldMultiCheckboxComponent,
-                        },
-                    ],
-                }),
-            ],
-        });
+      testComponentInputs = {
+        form: new FormGroup({}),
+        options: {},
+        model: {},
+      };
     });
 
-    describe('options', () => {
-        beforeEach(() => {
-            testComponentInputs = {
-                form: new FormGroup({}),
-                options: {},
-                model: {},
-            };
-        });
+    it('should bind to a static array of data', () => {
+      testComponentInputs.fields = [{
+        key: 'multi-checkbox',
+        type: 'multicheckbox',
+        templateOptions: {
+          label: 'Formly multi Select checkbox',
+          options: [
+            {
+              key: 'sports',
+              value: 'Sports'
+            },
+            {
+              key: 'movies',
+              value: 'Movies'
+            },
+            {
+              key: 'others',
+              value: 'Others'
+            }
+          ]
+        },
+      }];
 
-        it('should bind to a static array of data', () => {
-            testComponentInputs.fields = [   {
-                key: 'multi-checkbox',
-                type: 'multicheckbox',
-                templateOptions: {
-                  label: 'Formly multi Select checkbox',
-                  options: [
-                    {
-                      key: 'sports',
-                      value: 'Sports'
-                    },
-                    {
-                      key: 'movies',
-                      value: 'Movies'
-                    },
-                    {
-                      key: 'others',
-                      value: 'Others'
-                    }
-                  ]
-                },
-              }];
-
-            const fixture = createTestComponent('<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'),
-                trigger = fixture.nativeElement.querySelector('usa-checkbox')
-            const expectedValue = fixture.debugElement.query(By.css('.usa-checkbox')).componentInstance.field;
-            fixture.detectChanges();
-            expect(expectedValue.templateOptions.options.length).toBe(3)
-
-        });
-
-        it('on change array', () => {
-            testComponentInputs.fields = [   {
-                key: 'multi-checkbox',
-                type: 'multicheckbox',
-                templateOptions: {
-                  label: 'Formly multi Select checkbox',
-                  type: 'array',
-                  options: [
-                    {
-                      key: 'sports',
-                      value: 'Sports'
-                    },
-                    {
-                      key: 'movies',
-                      value: 'Movies'
-                    },
-                    {
-                      key: 'others',
-                      value: 'Others'
-                    }
-                  ]
-                },
-              }];
-
-            const fixture = createTestComponent('<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'),
-                trigger = fixture.nativeElement.querySelector('usa-checkbox')
-            const expectedValue = fixture.debugElement.query(By.css('.usa-checkbox')).componentInstance.field;
-            fixture.detectChanges();
-            const checkboxes = fixture.debugElement.queryAll(By.css('.usa-checkbox__input')) as DebugElement[];
-
-            checkboxes[0].nativeElement.click();
-            checkboxes[0].nativeElement.dispatchEvent(new Event('click'));
-            checkboxes[0].nativeElement.click();
-            checkboxes[0].nativeElement.dispatchEvent(new Event('click'));
-        });
+      const fixture = createTestComponent('<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'),
+        trigger = fixture.nativeElement.querySelector('usa-checkbox')
+      const expectedValue = fixture.debugElement.query(By.css('.usa-checkbox')).componentInstance.field;
+      fixture.detectChanges();
+      expect(expectedValue.templateOptions.options.length).toBe(3)
 
     });
+
+    it('on change array', () => {
+      testComponentInputs.fields = [{
+        key: 'multi-checkbox',
+        type: 'multicheckbox',
+        templateOptions: {
+          label: 'Formly multi Select checkbox',
+          type: 'array',
+          options: [
+            {
+              key: 'sports',
+              value: 'Sports'
+            },
+            {
+              key: 'movies',
+              value: 'Movies'
+            },
+            {
+              key: 'others',
+              value: 'Others'
+            }
+          ]
+        },
+      }];
+
+      const fixture = createTestComponent('<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'),
+        trigger = fixture.nativeElement.querySelector('usa-checkbox')
+      const expectedValue = fixture.debugElement.query(By.css('.usa-checkbox')).componentInstance.field;
+      fixture.detectChanges();
+      const checkboxes = fixture.debugElement.queryAll(By.css('.usa-checkbox__input')) as DebugElement[];
+
+      checkboxes[0].nativeElement.click();
+      checkboxes[0].nativeElement.dispatchEvent(new Event('click'));
+      checkboxes[0].nativeElement.click();
+      checkboxes[0].nativeElement.dispatchEvent(new Event('click'));
+    });
+
+  });
 
 });
 
 @Component({ selector: 'formly-form-multicheckbox', template: '', entryComponents: [] })
 class TestComponent {
-    @ViewChild(FormlyForm) formlyForm: FormlyForm;
+  @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;
 
-    fields = testComponentInputs.fields;
-    form: FormGroup = testComponentInputs.form;
-    model = testComponentInputs.model || {};
-    options = testComponentInputs.options;
+  fields = testComponentInputs.fields;
+  form: FormGroup = testComponentInputs.form;
+  model = testComponentInputs.model || {};
+  options = testComponentInputs.options;
 }

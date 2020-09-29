@@ -11,13 +11,13 @@ import { of as observableOf } from 'rxjs';
 const createTestComponent = (html: string) =>
   createGenericTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;
 
-  export function createGenericTestComponent<T>(html: string, type: {new (...args: any[]): T}): ComponentFixture<T> {
-    TestBed.overrideComponent(type, {set: {template: html}});
-    const fixture = TestBed.createComponent(type);
-    fixture.detectChanges();
-    return fixture as ComponentFixture<T>;
-  }
-  
+export function createGenericTestComponent<T>(html: string, type: { new(...args: any[]): T }): ComponentFixture<T> {
+  TestBed.overrideComponent(type, { set: { template: html } });
+  const fixture = TestBed.createComponent(type);
+  fixture.detectChanges();
+  return fixture as ComponentFixture<T>;
+}
+
 let testComponentInputs;
 
 describe('Formly Field Select Component', () => {
@@ -57,27 +57,27 @@ describe('Formly Field Select Component', () => {
           options: [
             { id: '1', name: 'Soccer' },
             { id: '2', name: 'Basketball' },
-            { id: {test: 'A'}, name: 'Not Soccer or Basketball' },
+            { id: { test: 'A' }, name: 'Not Soccer or Basketball' },
           ],
           valueProp: 'id',
           labelProp: 'name',
         },
       }];
 
-        const fixture = createTestComponent('<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'),
+      const fixture = createTestComponent('<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'),
         trigger = fixture.nativeElement.querySelector('usa-select')
 
-     
+
       fixture.detectChanges();
-  
-     expect(fixture.debugElement.queryAll(By.css('option')).length).toEqual(3);
+
+      expect(fixture.debugElement.queryAll(By.css('option')).length).toEqual(3);
     });
 
     it('should correctly bind to an Observable', async(() => {
       const sports$ = observableOf([
         { id: '1', name: 'Soccer' },
         { id: '2', name: 'Basketball' },
-        { id: {test: 'A'}, name: 'Not Soccer or Basketball' },
+        { id: { test: 'A' }, name: 'Not Soccer or Basketball' },
       ]);
 
       testComponentInputs.fields = [{
@@ -93,10 +93,10 @@ describe('Formly Field Select Component', () => {
       const fixture = createTestComponent('<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'),
         trigger = fixture.debugElement.query(By.css('option')).nativeElement;
 
-      
+
       fixture.detectChanges();
 
-     expect(fixture.debugElement.queryAll(By.css('option')).length).toEqual(3);
+      expect(fixture.debugElement.queryAll(By.css('option')).length).toEqual(3);
     }));
 
   });
@@ -105,7 +105,7 @@ describe('Formly Field Select Component', () => {
 
 @Component({ selector: 'formly-form-test', template: '', entryComponents: [] })
 class TestComponent {
-  @ViewChild(FormlyForm) formlyForm: FormlyForm;
+  @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;
 
   fields = testComponentInputs.fields;
   form: FormGroup = testComponentInputs.form;

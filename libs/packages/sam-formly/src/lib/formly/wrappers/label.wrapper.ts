@@ -23,11 +23,10 @@ import { FieldWrapper } from '@ngx-formly/core';
   `,
 })
 export class FormlyLabelWrapperComponent extends FieldWrapper {
-  @ViewChild('fieldComponent', { read: ViewContainerRef }) fieldComponent: ViewContainerRef;
-  hasLabel(){
-    if(this.to.label){
-      if(!(this.field.type === 'checkbox' || this.field.type ===  'multicheckbox'))
-      {
+  @ViewChild('fieldComponent', { read: ViewContainerRef }, { static: false }) fieldComponent: ViewContainerRef;
+  hasLabel() {
+    if (this.to.label) {
+      if (!(this.field.type === 'checkbox' || this.field.type === 'multicheckbox')) {
         return true;
       }
     }

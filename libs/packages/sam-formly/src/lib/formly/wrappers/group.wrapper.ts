@@ -54,7 +54,7 @@ import * as qs from 'qs';
   `
 })
 export class FormlyGroupWrapperComponent extends FieldWrapper {
-  @ViewChild('fieldComponent', { read: ViewContainerRef })
+  @ViewChild('fieldComponent', { read: ViewContainerRef }, { static: false })
   fieldComponent: ViewContainerRef;
   constructor() {
     super();

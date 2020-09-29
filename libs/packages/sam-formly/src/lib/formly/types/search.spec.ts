@@ -46,7 +46,7 @@ describe('Formly Field Select Component', () => {
         form: new FormGroup({}),
         model: {
           "firstName": {
-             "searchText": "test",
+            "searchText": "test",
           }
         },
       };
@@ -71,7 +71,7 @@ describe('Formly Field Select Component', () => {
 
 @Component({ selector: 'formly-form-test', template: '', entryComponents: [] })
 class TestComponent {
-  @ViewChild(FormlyForm) formlyForm: FormlyForm;
+  @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;
 
   fields = testSearchComponent.fields;
   form: FormGroup = testSearchComponent.form;

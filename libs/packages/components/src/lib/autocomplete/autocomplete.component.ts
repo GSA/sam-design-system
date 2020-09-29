@@ -69,7 +69,7 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
   @Input()
   public service: SDSAutocompleteServiceInterface;
 
-  @ViewChild('autocompleteSearch') autocompleteSearch: SDSAutocompleteSearchComponent;
+  @ViewChild('autocompleteSearch', { static: false }) autocompleteSearch: SDSAutocompleteSearchComponent;
   constructor(private cd: ChangeDetectorRef) { }
 
   /**
@@ -91,11 +91,11 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
       this.model.items = [...value.items];
       this.cd.markForCheck();
     }
-    else if(value && value.length && this.model.items !== value) {
+    else if (value && value.length && this.model.items !== value) {
       this.model.items = value;
       this.cd.markForCheck();
     } else {
-      if(!this.model || !(this.model instanceof SDSSelectedItemModel)) {
+      if (!this.model || !(this.model instanceof SDSSelectedItemModel)) {
         this.model = new SDSSelectedItemModel();
       }
       this.model.items = value && value.items ? value.items : [];

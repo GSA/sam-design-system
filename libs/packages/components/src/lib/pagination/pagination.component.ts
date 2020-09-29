@@ -25,7 +25,7 @@ export class PaginationComponent implements OnInit {
   /**
    * Input field for the current page
    */
-  @ViewChild('currentPage') currentPageField: ElementRef;
+  @ViewChild('currentPage', { static: false }) currentPageField: ElementRef;
 
   /**
    * Output of the page model object

@@ -71,7 +71,7 @@ export class SdsAccordionItemComponent extends CdkAccordionItem
 
   /** Element containing the accordion item's user-provided content. */
   // @ViewChild('body') _body: ElementRef<HTMLElement>;
-  @ViewChild('body') _body: ElementRef<HTMLElement>;
+  @ViewChild('body', { static: false }) _body: ElementRef<HTMLElement>;
 
   /** Portal holding the user's content. */
   _portal: TemplatePortal;

@@ -33,9 +33,9 @@ export class SearchSettings {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
-  @ViewChild('inputEl', { read: ElementRef }) inputEl: ElementRef;
-  @ViewChild('selectEl', { read: ElementRef }) selectEl: ElementRef;
-  @ViewChild('buttonEl', { read: ElementRef }) buttonEl: ElementRef;
+  @ViewChild('inputEl', { read: ElementRef }, { static: false }) inputEl: ElementRef;
+  @ViewChild('selectEl', { read: ElementRef }, { static: false }) selectEl: ElementRef;
+  @ViewChild('buttonEl', { read: ElementRef }, { static: false }) buttonEl: ElementRef;
 
   @Input() inputClass: string;
   @Input() parentSelector: string;
@@ -46,14 +46,14 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
     initial: { visible: undefined },
     visible: undefined
   };
-  private _onChange = (_: any) => {};
-  private _onTouched = () => {};
+  private _onChange = (_: any) => { };
+  private _onTouched = () => { };
 
   constructor(
     private cd: ChangeDetectorRef,
     private focusMonitor: FocusMonitor,
     private viewportRuler: ViewportRuler
-  ) {}
+  ) { }
 
   ngAfterViewInit() {
     this.inputState.initial.visible = this.isInputVisible();
@@ -82,7 +82,7 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
       this.setInputVisibleStyles();
       this.focusMonitor.focusVia(this.inputEl, 'program');
     } else if (this.inputEl || this.selectEl) {
-      this.model.searchText = this.inputEl? this.inputEl.nativeElement.value : '';
+      this.model.searchText = this.inputEl ? this.inputEl.nativeElement.value : '';
       if (this.selectEl && this.selectEl.nativeElement.value) {
         this.model.searchCategory = this.selectEl.nativeElement.value;
       }
