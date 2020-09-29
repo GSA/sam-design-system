@@ -7,18 +7,16 @@ import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../shared';
-import { TableBasicComponent } from './demos/table-basic/table-basic.component';
-import { TableBasicModule } from './demos/table-basic/table-basic.module';
-import { TableBorderlessComponent } from './demos/table-borderless/table-borderless.component';
-import { TableBorderlessModule } from './demos/table-borderless/table-borderless.module';
-import { TableStickyHeaderModule } from './demos/table-sticky-header/table-sticky-header.module';
-import { TableStickyHeaderComponent } from './demos/table-sticky-header/table-sticky-header.component';
-import { TableSortModule } from './demos/table-sort/table-sort.module';
-import { TableSortComponent } from './demos/table-sort/table-sort.component';
-import { TableExpandableRowModule } from './demos/table-expandable-row/table-expandable-row.module';
-import { TableExpandableRowComponent } from './demos/table-expandable-row/table-expandable-row.component';
-import { TableStickyColumnModule } from './demos/table-sticky-column/table-sticky-column.module';
-import { TableStickyColumnComponent } from './demos/table-sticky-column/table-sticky-column.component';
+import { TableBasicComponent } from './demos/basic/basic.component';
+import { TableBasicModule } from './demos/basic/basic.module';
+import { TableBorderlessComponent } from './demos/borderless/borderless.component';
+import { TableBorderlessModule } from './demos/borderless/borderless.module';
+import { TableSortComponent } from './demos/sort/sort.component';
+import { TableSortModule } from './demos/sort/sort.module';
+import { TableStickyComponent } from './demos/sticky/sticky.component';
+import { TableStickyModule } from './demos/sticky/sticky.module';
+import { TableFullComponent } from './demos/full/full.component';
+import { TableFullModule } from './demos/full/full.module';
 
 export declare var require: any;
 
@@ -26,47 +24,40 @@ export const opening = require('!!raw-loader!./opening.md');
 
 const DEMOS = {
   basic: {
-    title: 'SAM Table', // Title
+    title: 'Basic', // Title
     type: TableBasicComponent, // Component
-    code: require('!!raw-loader!./demos/table-basic/table-basic.component'), // Source Tab Content
-    markup: require('!!raw-loader!./demos/table-basic/table-basic.component.html'), // Template Tab Content
-    path: 'libs/documentation/src/lib/components/table/demos/table-basic' // Path to demo for the Github link
+    code: require('!!raw-loader!./demos/basic/basic.component'), // Source Tab Content
+    markup: require('!!raw-loader!./demos/basic/basic.component.html'), // Template Tab Content
+    path: 'libs/documentation/src/lib/components/table/demos/basic' // Path to demo for the Github link
   },
   borderless: {
-    title: 'SAM Table Borderless',
-    type: TableBorderlessComponent,
-    code: require('!!raw-loader!./demos/table-borderless/table-borderless.component'),
-    markup: require('!!raw-loader!./demos/table-borderless/table-borderless.component.html'),
-    path: 'libs/documentation/src/lib/components/table/demos/table-borderless'
-  },
-  stickyHeader: {
-    title: 'SAM Table Sticky Header',
-    type: TableStickyHeaderComponent,
-    code: require('!!raw-loader!./demos/table-sticky-header/table-sticky-header.component'),
-    markup: require('!!raw-loader!./demos/table-sticky-header/table-sticky-header.component.html'),
-    path: 'libs/documentation/src/lib/components/table/demos/table-sticky-header'
-  },
-  stickyColumn: {
-    title: 'SAM Table Sticky Header and Column',
-    type: TableStickyColumnComponent,
-    code: require('!!raw-loader!./demos/table-sticky-column/table-sticky-column.component'),
-    markup: require('!!raw-loader!./demos/table-sticky-column/table-sticky-column.component.html'),
-    path: 'libs/documentation/src/lib/components/table/demos/table-sticky-column'
+    title: 'Borderless', // Title
+    type: TableBorderlessComponent, // Component
+    code: require('!!raw-loader!./demos/borderless/borderless.component'), // Source Tab Content
+    markup: require('!!raw-loader!./demos/borderless/borderless.component.html'), // Template Tab Content
+    path: 'libs/documentation/src/lib/components/table/demos/borderless' // Path to demo for the Github link
   },
   sort: {
-    title: 'SAM Table Sort',
-    type: TableSortComponent,
-    code: require('!!raw-loader!./demos/table-sort/table-sort.component'),
-    markup: require('!!raw-loader!./demos/table-sort/table-sort.component.html'),
-    path: 'libs/documentation/src/lib/components/table/demos/table-sort'
+    title: 'Sorting', // Title
+    type: TableSortComponent, // Component
+    code: require('!!raw-loader!./demos/sort/sort.component'), // Source Tab Content
+    markup: require('!!raw-loader!./demos/sort/sort.component.html'), // Template Tab Content
+    path: 'libs/documentation/src/lib/components/table/demos/sort' // Path to demo for the Github link
   },
-  expandableRow: {
-    title: 'SAM Expandable Row Table',
-    type: TableExpandableRowComponent,
-    code: require('!!raw-loader!./demos/table-expandable-row/table-expandable-row.component'),
-    markup: require('!!raw-loader!./demos/table-expandable-row/table-expandable-row.component.html'),
-    path: 'libs/documentation/src/lib/components/table/demos/table-expandable-row'
-  }
+  sticky: {
+    title: 'Sticky Header, Footer, or Columns', // Title
+    type: TableStickyComponent, // Component
+    code: require('!!raw-loader!./demos/sticky/sticky.component'), // Source Tab Content
+    markup: require('!!raw-loader!./demos/sticky/sticky.component.html'), // Template Tab Content
+    path: 'libs/documentation/src/lib/components/table/demos/sticky' // Path to demo for the Github link
+  },
+  full: {
+    title: 'Kitchen Sink', // Title
+    type: TableFullComponent, // Component
+    code: require('!!raw-loader!./demos/full/full.component'), // Source Tab Content
+    markup: require('!!raw-loader!./demos/full/full.component.html'), // Template Tab Content
+    path: 'libs/documentation/src/lib/components/table/demos/full' // Path to demo for the Github link
+  },
  };
 
  export const ROUTES = [
@@ -102,10 +93,9 @@ const DEMOS = {
     DocumentationComponentsSharedModule,
     TableBasicModule,
     TableBorderlessModule,
-    TableStickyHeaderModule,
     TableSortModule,
-    TableStickyColumnModule,
-    TableExpandableRowModule
+    TableStickyModule,
+    TableFullModule
   ]
 })
 
