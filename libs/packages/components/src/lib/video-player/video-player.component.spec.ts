@@ -3,18 +3,15 @@ import { SdsVideoPlayerComponent } from './video-player.component';
 import { By } from '@angular/platform-browser';
 import { InitPxVideo } from 'accessible-html5-video-player/js/px-video.js';
 
-
 class IntiPxVideoObj {
   InitPxVideo(options) {
   }
 };
 
-
-
 xdescribe('VideoPlayerComponent', () => {
   let component: SdsVideoPlayerComponent;
   let fixture: ComponentFixture<SdsVideoPlayerComponent>;
-
+  //let de: DebugElement = new DebugElement();
   beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [SdsVideoPlayerComponent],

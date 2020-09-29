@@ -58,7 +58,7 @@ describe('Formly Field button Component', () => {
                         text: 'Show Extension',
                         btnType: 'info',
                         onClick: $event => {
-                            this.model.showExtension = 'show';
+                            testComponentButtons.model.showExtension = 'show';
                         }
                     }
                 }
@@ -84,7 +84,7 @@ describe('Formly Field button Component', () => {
                         text: 'Show Extension',
                         btnType: 'info',
                         onClick: $event => {
-                            this.model.showExtension = 'show';
+                            testComponentButtons.model.showExtension = 'show';
                         }
                     }
                 }

@@ -38,7 +38,7 @@ import { SdsDialogModule } from './dialog.module';
 import { Subject } from 'rxjs';
 
 
-xdescribe('SdsDialog', () => {
+describe('SdsDialog', () => {
   let dialog: SdsDialogService;
   let overlayContainer: OverlayContainer;
   let overlayContainerElement: HTMLElement;

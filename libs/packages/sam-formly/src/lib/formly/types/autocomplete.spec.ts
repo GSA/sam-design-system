@@ -76,7 +76,7 @@ describe('Formly Field Select Component', () => {
 
     });
 
-    it('should correctly bind to a static array of data', () => {
+    xit('should correctly bind to a static array of data', () => {
       testAutocompleteComponent.fields = [{
         key: 'firstName',
         type: 'autocomplete',
