@@ -12,9 +12,9 @@ import {
 } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { AfterViewInit } from '@angular/core';
-import {MatTableDataSource} from '@angular/material/table';
-import {coerceBooleanProperty} from '@angular/cdk/coercion';
-import {animate, state, style, transition, trigger} from '@angular/animations';
+import { MatTableDataSource } from '@angular/material/table';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 
 export interface SdsRowConfig {
@@ -63,14 +63,14 @@ export class SdsTableFooterRowComponent {
   @Input() sticky: boolean;
 }
 
-@Directive({selector: 'sds-table-headercell'})
-export class SdsTableHeaderCellDirective {}
+@Directive({ selector: 'sds-table-headercell' })
+export class SdsTableHeaderCellDirective { }
 
-@Directive({selector: 'sds-table-cell'})
-export class SdsTableCellDirective {}
+@Directive({ selector: 'sds-table-cell' })
+export class SdsTableCellDirective { }
 
-@Directive({selector: 'sds-table-footercell'})
-export class SdsTableFooterCellDirective {}
+@Directive({ selector: 'sds-table-footercell' })
+export class SdsTableFooterCellDirective { }
 
 @Component({
   selector: 'sds-table-column',
@@ -94,9 +94,9 @@ export class SdsTableColumnDefComponent implements AfterContentInit {
   @ViewChild('columnCell') columnCell: TemplateRef<any>;
   @ViewChild('columnFooterCell') columnFooterCell: TemplateRef<any>;
 
-  @ContentChild('sdsHeaderCell', {read: TemplateRef}) headerCellTemplate!: TemplateRef<any>;
-  @ContentChild('sdsCell', {read: TemplateRef}) cellTemplate!: TemplateRef<any>;
-  @ContentChild('sdsFooterCell', {read: TemplateRef}) footerCellTemplate!: TemplateRef<any>;
+  @ContentChild('sdsHeaderCell', { read: TemplateRef }) headerCellTemplate!: TemplateRef<any>;
+  @ContentChild('sdsCell', { read: TemplateRef }) cellTemplate!: TemplateRef<any>;
+  @ContentChild('sdsFooterCell', { read: TemplateRef }) footerCellTemplate!: TemplateRef<any>;
 
   @Input() sdsColumnName;
 
@@ -106,7 +106,7 @@ export class SdsTableColumnDefComponent implements AfterContentInit {
 
   @Input() sdsExpandedTemplate = false;
 
-  ngAfterContentInit() {}
+  ngAfterContentInit() { }
 }
 
 
@@ -116,8 +116,8 @@ export class SdsTableColumnDefComponent implements AfterContentInit {
   styleUrls: ['./table.component.scss'],
   animations: [
     trigger('detailExpand', [
-      state('collapsed', style({height: '0px', minHeight: '0'})),
-      state('expanded', style({height: '*'})),
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
       transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
     ]),
   ]
@@ -125,6 +125,7 @@ export class SdsTableColumnDefComponent implements AfterContentInit {
 export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewInit {
 
   dataSource: MatTableDataSource<any>;
+  expandedElement: any;
 
   @ContentChild(SdsTableRowComponent) sdsTableRowComponent: SdsTableRowComponent;
   @ContentChild(SdsTableHeaderRowComponent) sdsTableHeaderRowComponent: SdsTableHeaderRowComponent;
@@ -162,9 +163,9 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
   }
   private _sort = false;
 
-    /**
-   * Sorting table
-   */
+  /**
+ * Sorting table
+ */
   @Input()
   set expansion(expansion: boolean) {
     this._expansion = coerceBooleanProperty(expansion);
@@ -178,7 +179,7 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
   headerRowConfig = {} as SdsHeaderRowConfig;
   footerRowConfig = {} as SdsFooterRowConfig;
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource(this.data);
@@ -189,26 +190,26 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
     this.rowConfig.displayedColumns = this.sdsTableRowComponent.displayedColumns;
     this.rowConfig.expandOnClick = this.sdsTableRowComponent.expandOnClick;
 
-    if(this.sdsTableHeaderRowComponent) {
+    if (this.sdsTableHeaderRowComponent) {
       this.headerRowConfig.displayedColumns = this.sdsTableHeaderRowComponent.displayedColumns;
       this.headerRowConfig.sticky = this.sdsTableHeaderRowComponent.sticky;
     }
 
-    if(this.sdsTableFooterRowComponent) {
+    if (this.sdsTableFooterRowComponent) {
       this.footerRowConfig.displayedColumns = this.sdsTableFooterRowComponent.displayedColumns;
       this.footerRowConfig.sticky = this.sdsTableFooterRowComponent.sticky;
     }
 
-    if(this.expansion) {
+    if (this.expansion) {
       const expandedIndicator = "expandedIndicator";
-      if(this.rowConfig.displayedColumns && !this.rowConfig.displayedColumns.includes(expandedIndicator)){
+      if (this.rowConfig.displayedColumns && !this.rowConfig.displayedColumns.includes(expandedIndicator)) {
         this.rowConfig.displayedColumns.push('expandedIndicator');
       }
     }
   }
 
   ngAfterViewInit() {
-    if(this.sort) {
+    if (this.sort) {
       this.dataSource.sort = this.matSort;
     }
   }
