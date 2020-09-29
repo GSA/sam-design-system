@@ -1,9 +1,0 @@
-<!-- all properties from selected item will be available but need to be set using let-{new property name} -->
-<ng-template #detailRow let-element="name">
-  <span>More details about {{ element }}...</span>
-</ng-template>
-
-<div style="margin: 10px; max-height: 300px;">
-  <sds-table [data]="data" [columns]="columns" [detailRow]="detailRow" [settings]="tableSettings"></sds-table>
-</div>
-

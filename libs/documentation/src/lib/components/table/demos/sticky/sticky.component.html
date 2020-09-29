@@ -1,0 +1,44 @@
+<sds-table [data]="data" class="display-block maxh-mobile maxw-tablet overflow-auto">
+
+  <sds-table-column sdsColumnName="id" sticky="true">
+    <ng-template #sdsHeaderCell>ID</ng-template>
+    <ng-template #sdsCell let-element="element">{{ element.id }}</ng-template>
+    <ng-template #sdsFooterCell>ID</ng-template>
+  </sds-table-column>
+  <sds-table-column sdsColumnName="firstName">
+    <ng-template #sdsHeaderCell>First</ng-template>
+    <ng-template #sdsCell let-element="element">{{ element.firstName }}</ng-template>
+    <ng-template #sdsFooterCell>First</ng-template>
+  </sds-table-column>
+  <sds-table-column sdsColumnName="lastName">
+    <ng-template #sdsHeaderCell>Last</ng-template>
+    <ng-template #sdsCell let-element="element">{{ element.lastName }}</ng-template>
+    <ng-template #sdsFooterCell>Last</ng-template>
+  </sds-table-column>
+  <sds-table-column sdsColumnName="email">
+    <ng-template #sdsHeaderCell>Email</ng-template>
+    <ng-template #sdsCell let-element="element"><a href="https://beta.sam.gov" (click)="$event.stopPropagation()" class="usa-link">{{ element.email }}</a></ng-template>
+    <ng-template #sdsFooterCell>Email</ng-template>
+  </sds-table-column>
+  <sds-table-column sdsColumnName="requests">
+    <ng-template #sdsHeaderCell>Requests</ng-template>
+    <ng-template #sdsCell let-element="element">{{ element.requests }}</ng-template>
+    <ng-template #sdsFooterCell>Requests</ng-template>
+  </sds-table-column>
+  <sds-table-column sdsColumnName="jobTitle">
+    <ng-template #sdsHeaderCell>Job Title</ng-template>
+    <ng-template #sdsCell let-element="element">{{ element.jobTitle }}</ng-template>
+    <ng-template #sdsFooterCell>Job Title</ng-template>
+  </sds-table-column>
+  <sds-table-column sdsColumnName="date" stickyEnd="true">
+    <ng-template #sdsHeaderCell>Date</ng-template>
+    <ng-template #sdsCell let-element="element">{{ element.date | date }}</ng-template>
+    <ng-template #sdsFooterCell>Date</ng-template>
+  </sds-table-column>
+
+  <sds-header-row [displayedColumns]="displayedColumns" [sticky]="true"></sds-header-row>
+  <sds-row [displayedColumns]="displayedColumns"></sds-row>
+  <sds-footer-row [displayedColumns]="displayedColumns" [sticky]="true"></sds-footer-row>
+
+</sds-table>
+
