@@ -94,10 +94,10 @@ export class SubHeaderBasic {
   options: FormlyFormOptions;
   downloadResponse = {};
 
-  constructor(public dialog: SdsDialogService) {}
+  constructor(public dialog: SdsDialogService) { }
   onActionMenuItem(btnId) {
     if (btnId == 'DownloadBtn') {
-      const data: SdsFormlyDialogData = {
+      const data: any = {
         fields: this.fields,
         model: this.model,
         submit: 'Download',

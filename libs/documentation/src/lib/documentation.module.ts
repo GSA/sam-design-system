@@ -7,7 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { sds } from '@gsa-sam/sam-styles/src/icons/';
 import { fas } from '@fortawesome/free-solid-svg-icons';
-
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 /* Layout / Components */
 import {
   ROUTES as HEADER_ROUTES,
@@ -224,8 +224,8 @@ export const ROUTES: Routes = [
 
   // Form Examples
   { path: 'pages', pathMatch: 'full', redirectTo: 'pages/formly-form' },
-  { path: 'pages/formly-form', component: FormlyFormsComponent},
-  { path: 'pages/formly-conditional', component: FormlyConditionalComponent},
+  { path: 'pages/formly-form', component: FormlyFormsComponent },
+  { path: 'pages/formly-conditional', component: FormlyConditionalComponent },
 
   // Material
   { path: 'components/table', children: TABLE_ROUTES },
@@ -283,7 +283,8 @@ export const ROUTES: Routes = [
   ]
 })
 export class DocumentationModule {
-  constructor() {
-    library.add(fas, sds);
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fas, sds);
+    // library.add(fas, sds);
   }
 }

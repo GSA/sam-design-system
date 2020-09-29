@@ -70,7 +70,7 @@ export class SdsAdvancedFiltersService {
     return field;
   }
 
-  updateFields(selectedFields: object, fields: FormlyFieldConfig[], model: any) {
+  updateFields(selectedFields: any, fields: FormlyFieldConfig[], model: any) {
     fields.forEach((field: FormlyFieldConfig) => {
       const key = field.key;
       const selectedField = selectedFields[key];
