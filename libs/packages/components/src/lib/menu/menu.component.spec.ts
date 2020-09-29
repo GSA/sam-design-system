@@ -574,7 +574,7 @@ class SimpleMenuComponent {
   @ViewChild(SdsMenuTriggerForDirective, { static: false }) trigger: SdsMenuTriggerForDirective;
   @ViewChild('triggerEl', { static: false }) triggerEl: ElementRef<HTMLElement>;
   @ViewChild(SdsMenuComponent, { static: false }) menu: SdsMenuComponent;
-  @ViewChildren(SdsMenuItemComponent, { static: false }) items: QueryList<SdsMenuItemComponent>;
+  @ViewChildren(SdsMenuItemComponent) items: QueryList<SdsMenuItemComponent>;
   extraItems: string[] = [];
   closeCallback = jasmine.createSpy('menu closed callback');
   panelClass: string;

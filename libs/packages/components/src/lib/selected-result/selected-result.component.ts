@@ -3,6 +3,9 @@ import { SDSSelectedItemModel } from './models/sds-selectedItem.model';
 import { SDSSelectedResultConfiguration } from './models/SDSSelectedResultConfiguration';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { SDSSelectedItemModelHelper } from './models/sds-selected-item-model-helper';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { sds } from '@gsa-sam/sam-styles/src/icons/';
 const SDS_SelectedResult_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => SDSSelectedResultComponent),
@@ -16,6 +19,9 @@ const SDS_SelectedResult_VALUE_ACCESSOR: any = {
   providers: [SDS_SelectedResult_VALUE_ACCESSOR]
 })
 export class SDSSelectedResultComponent implements ControlValueAccessor {
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fas, sds);
+  }
 
   /**
   * Allow to insert a customized template for suggestions to use

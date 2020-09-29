@@ -72,7 +72,7 @@
     "@types/qs": "^6.9.5",
     "accessible-html5-video-player": "^1.0.6",
     "chalk": "^4.1.0",
-    "core-js": "^3.6.5",
+    "core-js": "^2.6.11",
     "lodash-es": "^4.17.15",
     "ngx-highlightjs": "^4.1.1",
     "ngx-markdown": "^10.1.1",

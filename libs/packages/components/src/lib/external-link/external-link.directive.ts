@@ -9,7 +9,7 @@ import {
   OnChanges,
   HostListener
 } from '@angular/core';
-import { faCoffee, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome'; import { fas } from '@fortawesome/free-solid-svg-icons'; import { sds } from '@gsa-sam/sam-styles/src/icons/';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 @Directive({
   selector: 'a[href]'
@@ -32,8 +32,11 @@ export class ExternalLinkDirective implements OnChanges {
     private el: ElementRef,
     private renderer: Renderer2,
     private cfr: ComponentFactoryResolver,
-    private vc: ViewContainerRef
-  ) {}
+    private vc: ViewContainerRef,
+    library: FaIconLibrary
+  ) {
+    library.addIconPacks(fas, sds);
+  }
 
   @HostListener('click', ['$event'])
   click(event: Event) {
