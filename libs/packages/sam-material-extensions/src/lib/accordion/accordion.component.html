@@ -1,0 +1,13 @@
+<mat-accordion [displayMode]="displayMode" [multi]="multi">
+  <ng-container *ngFor="let accordionItem of accordionItems">
+      <mat-expansion-panel [(expanded)]="accordionItem.expanded" [disabled]="accordionItem.disabled">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <ng-container *ngTemplateOutlet="accordionItem.itemTitleTemplate"></ng-container>
+          </mat-panel-title>
+          <span class="sds-expansion-indicator" [ngClass]="{'sds-expansion-indicator--expanded' : accordionItem.expanded}"></span>
+        </mat-expansion-panel-header>
+        <ng-container *ngTemplateOutlet="accordionItem.itemContentTemplate"></ng-container>
+      </mat-expansion-panel>
+  </ng-container>
+</mat-accordion>
