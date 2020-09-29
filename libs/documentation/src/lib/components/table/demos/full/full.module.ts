@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SdsTableModule } from '@gsa-sam/sam-material-extensions';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TableFullComponent } from './full.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -10,7 +11,8 @@ import { TableFullComponent } from './full.component';
   imports: [
     CommonModule,
     SdsTableModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    HttpClientModule
   ],
   exports: [TableFullComponent],
   bootstrap: [TableFullComponent]
