@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import tableDataFull from './data';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   templateUrl: './full.component.html',
@@ -8,7 +9,7 @@ import tableDataFull from './data';
 
 export class TableFullComponent {
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.sliceData(0,10);
   }
 
@@ -20,6 +21,12 @@ export class TableFullComponent {
 
   sliceData(start, end) {
     this.data = tableDataFull.slice(start,end);
+  }
+
+  getAsyncData() {
+    this.http.get<any>('https://my.api.mockaroo.com/table_data?key=824f5960').subscribe(response => {
+      this.data = response;
+    });
   }
 
   getTotalRequests() {
