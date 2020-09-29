@@ -7,7 +7,7 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 
 export class SdsAdvancedFiltersService {
 
-  constructor() {}
+  constructor() { }
 
   convertToCheckboxes(origFields: FormlyFieldConfig[]): FormlyFieldConfig[] {
     const fields: FormlyFieldConfig[] = [];
@@ -70,7 +70,7 @@ export class SdsAdvancedFiltersService {
     return field;
   }
 
-  updateFields( selectedFields: object, fields: FormlyFieldConfig[], model: any) {
+  updateFields(selectedFields: object, fields: FormlyFieldConfig[], model: any) {
     fields.forEach((field: FormlyFieldConfig) => {
       const key = field.key;
       const selectedField = selectedFields[key];
@@ -87,7 +87,7 @@ export class SdsAdvancedFiltersService {
     };
   }
 
-  updateFieldGroup( parentField: FormlyFieldConfig, selectedFields: any, model: object) {
+  updateFieldGroup(parentField: FormlyFieldConfig, selectedFields: any, model: object) {
     if (selectedFields && selectedFields.length) {
       parentField.hide = false;
       parentField.fieldGroup.forEach(field => {
@@ -106,7 +106,7 @@ export class SdsAdvancedFiltersService {
   updateSingleField(
     field: FormlyFieldConfig,
     fieldSelected: boolean,
-    model: any
+    model
   ) {
     if (fieldSelected) {
       field.hide = false;
