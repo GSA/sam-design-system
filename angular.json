@@ -53,7 +53,8 @@
         "build": {
           "builder": "@nrwl/angular:package",
           "outputs": [
-            "sam-material-extensions/components"
+            "sam-material-extensions",
+            "components"
           ],
           "options": {
             "tsConfig": "libs/packages/components/tsconfig.lib.json",
