@@ -11,6 +11,9 @@
       "architect": {
         "build": {
           "builder": "@nrwl/angular:package",
+          "outputs": [
+            "dist/libs/sam-material-extensions"
+          ],
           "options": {
             "tsConfig": "libs/packages/sam-material-extensions/tsconfig.lib.json",
             "project": "libs/packages/sam-material-extensions/ng-package.json"
@@ -53,8 +56,7 @@
         "build": {
           "builder": "@nrwl/angular:package",
           "outputs": [
-            "sam-material-extensions",
-            "components"
+            "dist/libs/components"
           ],
           "options": {
             "tsConfig": "libs/packages/components/tsconfig.lib.json",
@@ -101,6 +103,9 @@
       "architect": {
         "build": {
           "builder": "@nrwl/angular:package",
+          "outputs": [
+            "dist/libs/sam-formly"
+          ],
           "options": {
             "tsConfig": "libs/packages/sam-formly/tsconfig.lib.json",
             "project": "libs/packages/sam-formly/ng-package.json"
@@ -116,6 +121,9 @@
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
+          "outputs": [
+            "dist/libs/sam-formly"
+          ],
           "options": {
             "tsConfig": [
               "libs/packages/sam-formly/tsconfig.lib.json",
@@ -280,6 +288,9 @@
       "architect": {
         "build": {
           "builder": "@nrwl/angular:package",
+          "outputs": [
+            "dist/libs/layouts"
+          ],
           "options": {
             "tsConfig": "libs/packages/layouts/tsconfig.lib.json",
             "project": "libs/packages/layouts/ng-package.json"
@@ -321,6 +332,9 @@
       "architect": {
         "build": {
           "builder": "@nrwl/angular:package",
+          "outputs": [
+            "dist/libs/experimental"
+          ],
           "options": {
             "tsConfig": "libs/packages/experimental/tsconfig.lib.json",
             "project": "libs/packages/experimental/ng-package.json"
