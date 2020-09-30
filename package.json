@@ -95,6 +95,7 @@
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
     "@types/jest": "^23.0.0",
+    "ngx-toastr": "^10.2.0",
     "@types/node": "^8.10.59",
     "codelyzer": "~4.5.0",
     "css-loader": "^3.2.0",
