@@ -70,7 +70,7 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
   @Input()
   public service: SDSAutocompleteServiceInterface;
 
-  @ViewChild('autocompleteSearch') autocompleteSearch: SDSAutocompleteSearchComponent;
+  @ViewChild('autocompleteSearch', { static: true }) autocompleteSearch: SDSAutocompleteSearchComponent;
   constructor(private cd: ChangeDetectorRef, library: FaIconLibrary) { library.addIconPacks(fas, sds); }
 
   /**

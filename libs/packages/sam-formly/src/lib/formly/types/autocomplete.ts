@@ -15,7 +15,7 @@ import { SDSAutocompleteComponent } from '@gsa-sam/components'
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormlyFieldAutoCompleteComponent extends AbstractSdsFormly {
-  @ViewChild(SDSAutocompleteComponent, { static: false }) public template: SDSAutocompleteComponent;
+  @ViewChild(SDSAutocompleteComponent, { static: true }) public template: SDSAutocompleteComponent;
   defaultOptions = {
     templateOptions: {
       essentialModelFields: true
