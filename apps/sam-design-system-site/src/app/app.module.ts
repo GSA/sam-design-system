@@ -11,7 +11,8 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { sds } from '@gsa-sam/sam-styles/src/icons/';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { MarkdownModule } from 'ngx-markdown';
-
+import { Toast, ToastrModule } from 'ngx-toastr';
+import {SdsToastComponent} from 'libs/packages/components/src/lib/toast/toast-single.component';
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import xml from 'highlight.js/lib/languages/xml';
 import scss from 'highlight.js/lib/languages/scss';
@@ -26,14 +27,17 @@ export function hljsLanguages() {
 }
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent,SdsToastComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
     RouterModule.forRoot(ROUTES, { scrollPositionRestoration: 'enabled' }),
     FormsModule,
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
+    ToastrModule.forRoot({
+      toastComponent : SdsToastComponent,
+    })
   ],
   providers: [
     { provide: LocationStrategy, useClass: PathLocationStrategy },
@@ -43,6 +47,7 @@ export function hljsLanguages() {
       languages: hljsLanguages,
     }
   }],
+  entryComponents: [SdsToastComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {
