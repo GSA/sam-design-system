@@ -73,7 +73,6 @@
     "@nrwl/angular": "^10.2.1",
     "@types/qs": "^6.9.5",
     "accessible-html5-video-player": "^1.0.6",
-    "core-js": "^2.6.11",
     "fs-extra": "^9.0.1",
     "minimist": "^1.2.5",
     "ngx-highlightjs": "^4.1.1",
