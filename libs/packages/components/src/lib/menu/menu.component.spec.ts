@@ -574,7 +574,7 @@ class SimpleMenuComponent {
   @ViewChild(SdsMenuTriggerForDirective) trigger: SdsMenuTriggerForDirective;
   @ViewChild('triggerEl') triggerEl: ElementRef<HTMLElement>;
   @ViewChild(SdsMenuComponent) menu: SdsMenuComponent;
-  @ViewChildren(SdsMenuItemComponent, {static: false}) items: QueryList<SdsMenuItemComponent>;
+  @ViewChildren(SdsMenuItemComponent) items: QueryList<SdsMenuItemComponent>;
   extraItems: string[] = [];
   closeCallback = jasmine.createSpy('menu closed callback');
   panelClass: string;
@@ -584,7 +584,7 @@ class SimpleMenuComponent {
   selector: 'sds-fake-icon',
   template: '<ng-content></ng-content>'
 })
-class FakeIconComponent {}
+class FakeIconComponent { }
 
 @Component({
   template: `

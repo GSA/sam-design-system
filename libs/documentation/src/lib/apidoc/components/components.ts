@@ -44,31 +44,45 @@ const COMPONENTS = {
         },
         {
             "name": "FooterLogo",
-            "id": "interface-FooterLogo-8351bbc206ff7dcca88f5b1b636b3881",
+            "id": "interface-FooterLogo-2660820e6e513bebd14f868c57cea68e",
             "file": "libs/packages/components/src/lib/footer/model/FooterModel.ts",
             "type": "interface",
-            "sourceCode": "import {\n  INavigationLink,\n  NavigationMode\n} from '../../common-navigation/common-navigation-model';\n\nexport class FooterModel {\n  /**\n   * List of sections and their links\n   */\n  linkSections: FooterLinkSection[];\n\n  /**\n   * Footer text and logo\n   */\n\n  footerLogo?: FooterLogo;\n}\n\nexport class FooterLinkSection {\n  /**\n   * Title text for the section\n   */\n  text: string;\n\n  /**\n   * Links in the section\n   */\n  links: FooterLink[];\n}\n\nexport class FooterLink implements INavigationLink {\n  /**\n   * Internal Angualr Routes, External HREF, EVENT: event on parent component\n   */\n  mode: NavigationMode;\n\n  /**\n   * Text to be displayed in the link\n   */\n  text: string;\n\n  /**\n   * Navigation Route\n   */\n  route: string;\n}\n\nexport interface FooterLogo {\n  /**\n   * Text for the Header\n   */\n\n  text: string;\n\n  /**\n   * Image Source Path for the Image button\n   */\n\n  imageSourcePath: string;\n\n  /**\n   * Alt text for image\n   */\n\n  imageAltText: string;\n}\n",
+            "sourceCode": "import {\n  INavigationLink,\n  NavigationMode\n} from '../../common-navigation/common-navigation-model';\n\nexport class FooterModel {\n  /**\n   * List of sections and their links\n   */\n  linkSections: FooterLinkSection[];\n\n  /**\n   * Footer text and logo\n   */\n\n  footerLogo?: FooterLogo;\n\n  /**\n   * Footer disclaimer\n   */\n\n  disclaimer?: string;\n\n}\n\nexport class FooterLinkSection {\n  /**\n   * Title text for the section\n   */\n  text: string;\n\n  /**\n   * Links in the section\n   */\n  links: FooterLink[];\n}\n\nexport class FooterLink implements INavigationLink {\n  /**\n   * Internal Angualr Routes, External HREF, EVENT: event on parent component\n   */\n  mode: NavigationMode;\n\n  /**\n   * Text to be displayed in the link\n   */\n  text: string;\n\n  /**\n   * Navigation Route\n   */\n  route: string;\n}\n\nexport interface FooterLogo {\n  /**\n   * Text for the Header\n   */\n\n  text: string;\n\n  /**\n   * Image Source Path for the Image button\n   */\n\n  imageSourcePath: string;\n\n  /**\n   * Alt text for image\n   */\n\n  imageAltText: string;\n\n  /**\n   * link for logo image\n   */\n\n  href?: string;\n\n  /**\n   * agency name adjacent to logo\n   */\n\n  agencyName?: string;\n\n}\n",
             "properties": [
+                {
+                    "name": "agencyName",
+                    "type": "string",
+                    "optional": true,
+                    "description": "<p>agency name adjacent to logo</p>\n",
+                    "line": 84
+                },
+                {
+                    "name": "href",
+                    "type": "string",
+                    "optional": true,
+                    "description": "<p>link for logo image</p>\n",
+                    "line": 78
+                },
                 {
                     "name": "imageAltText",
                     "type": "string",
                     "optional": false,
                     "description": "<p>Alt text for image</p>\n",
-                    "line": 65
+                    "line": 72
                 },
                 {
                     "name": "imageSourcePath",
                     "type": "string",
                     "optional": false,
                     "description": "<p>Image Source Path for the Image button</p>\n",
-                    "line": 59
+                    "line": 66
                 },
                 {
                     "name": "text",
                     "type": "string",
                     "optional": false,
                     "description": "<p>Text for the Header</p>\n",
-                    "line": 53
+                    "line": 60
                 }
             ],
             "indexSignatures": [],
@@ -1300,31 +1314,31 @@ const COMPONENTS = {
         },
         {
             "name": "FooterLink",
-            "id": "class-FooterLink-8351bbc206ff7dcca88f5b1b636b3881",
+            "id": "class-FooterLink-2660820e6e513bebd14f868c57cea68e",
             "file": "libs/packages/components/src/lib/footer/model/FooterModel.ts",
             "type": "class",
-            "sourceCode": "import {\n  INavigationLink,\n  NavigationMode\n} from '../../common-navigation/common-navigation-model';\n\nexport class FooterModel {\n  /**\n   * List of sections and their links\n   */\n  linkSections: FooterLinkSection[];\n\n  /**\n   * Footer text and logo\n   */\n\n  footerLogo?: FooterLogo;\n}\n\nexport class FooterLinkSection {\n  /**\n   * Title text for the section\n   */\n  text: string;\n\n  /**\n   * Links in the section\n   */\n  links: FooterLink[];\n}\n\nexport class FooterLink implements INavigationLink {\n  /**\n   * Internal Angualr Routes, External HREF, EVENT: event on parent component\n   */\n  mode: NavigationMode;\n\n  /**\n   * Text to be displayed in the link\n   */\n  text: string;\n\n  /**\n   * Navigation Route\n   */\n  route: string;\n}\n\nexport interface FooterLogo {\n  /**\n   * Text for the Header\n   */\n\n  text: string;\n\n  /**\n   * Image Source Path for the Image button\n   */\n\n  imageSourcePath: string;\n\n  /**\n   * Alt text for image\n   */\n\n  imageAltText: string;\n}\n",
+            "sourceCode": "import {\n  INavigationLink,\n  NavigationMode\n} from '../../common-navigation/common-navigation-model';\n\nexport class FooterModel {\n  /**\n   * List of sections and their links\n   */\n  linkSections: FooterLinkSection[];\n\n  /**\n   * Footer text and logo\n   */\n\n  footerLogo?: FooterLogo;\n\n  /**\n   * Footer disclaimer\n   */\n\n  disclaimer?: string;\n\n}\n\nexport class FooterLinkSection {\n  /**\n   * Title text for the section\n   */\n  text: string;\n\n  /**\n   * Links in the section\n   */\n  links: FooterLink[];\n}\n\nexport class FooterLink implements INavigationLink {\n  /**\n   * Internal Angualr Routes, External HREF, EVENT: event on parent component\n   */\n  mode: NavigationMode;\n\n  /**\n   * Text to be displayed in the link\n   */\n  text: string;\n\n  /**\n   * Navigation Route\n   */\n  route: string;\n}\n\nexport interface FooterLogo {\n  /**\n   * Text for the Header\n   */\n\n  text: string;\n\n  /**\n   * Image Source Path for the Image button\n   */\n\n  imageSourcePath: string;\n\n  /**\n   * Alt text for image\n   */\n\n  imageAltText: string;\n\n  /**\n   * link for logo image\n   */\n\n  href?: string;\n\n  /**\n   * agency name adjacent to logo\n   */\n\n  agencyName?: string;\n\n}\n",
             "properties": [
                 {
                     "name": "mode",
                     "type": "NavigationMode",
                     "optional": false,
                     "description": "<p>Internal Angualr Routes, External HREF, EVENT: event on parent component</p>\n",
-                    "line": 35
+                    "line": 42
                 },
                 {
                     "name": "route",
                     "type": "string",
                     "optional": false,
                     "description": "<p>Navigation Route</p>\n",
-                    "line": 45
+                    "line": 52
                 },
                 {
                     "name": "text",
                     "type": "string",
                     "optional": false,
                     "description": "<p>Text to be displayed in the link</p>\n",
-                    "line": 40
+                    "line": 47
                 }
             ],
             "methods": [],
@@ -1339,24 +1353,24 @@ const COMPONENTS = {
         },
         {
             "name": "FooterLinkSection",
-            "id": "class-FooterLinkSection-8351bbc206ff7dcca88f5b1b636b3881",
+            "id": "class-FooterLinkSection-2660820e6e513bebd14f868c57cea68e",
             "file": "libs/packages/components/src/lib/footer/model/FooterModel.ts",
             "type": "class",
-            "sourceCode": "import {\n  INavigationLink,\n  NavigationMode\n} from '../../common-navigation/common-navigation-model';\n\nexport class FooterModel {\n  /**\n   * List of sections and their links\n   */\n  linkSections: FooterLinkSection[];\n\n  /**\n   * Footer text and logo\n   */\n\n  footerLogo?: FooterLogo;\n}\n\nexport class FooterLinkSection {\n  /**\n   * Title text for the section\n   */\n  text: string;\n\n  /**\n   * Links in the section\n   */\n  links: FooterLink[];\n}\n\nexport class FooterLink implements INavigationLink {\n  /**\n   * Internal Angualr Routes, External HREF, EVENT: event on parent component\n   */\n  mode: NavigationMode;\n\n  /**\n   * Text to be displayed in the link\n   */\n  text: string;\n\n  /**\n   * Navigation Route\n   */\n  route: string;\n}\n\nexport interface FooterLogo {\n  /**\n   * Text for the Header\n   */\n\n  text: string;\n\n  /**\n   * Image Source Path for the Image button\n   */\n\n  imageSourcePath: string;\n\n  /**\n   * Alt text for image\n   */\n\n  imageAltText: string;\n}\n",
+            "sourceCode": "import {\n  INavigationLink,\n  NavigationMode\n} from '../../common-navigation/common-navigation-model';\n\nexport class FooterModel {\n  /**\n   * List of sections and their links\n   */\n  linkSections: FooterLinkSection[];\n\n  /**\n   * Footer text and logo\n   */\n\n  footerLogo?: FooterLogo;\n\n  /**\n   * Footer disclaimer\n   */\n\n  disclaimer?: string;\n\n}\n\nexport class FooterLinkSection {\n  /**\n   * Title text for the section\n   */\n  text: string;\n\n  /**\n   * Links in the section\n   */\n  links: FooterLink[];\n}\n\nexport class FooterLink implements INavigationLink {\n  /**\n   * Internal Angualr Routes, External HREF, EVENT: event on parent component\n   */\n  mode: NavigationMode;\n\n  /**\n   * Text to be displayed in the link\n   */\n  text: string;\n\n  /**\n   * Navigation Route\n   */\n  route: string;\n}\n\nexport interface FooterLogo {\n  /**\n   * Text for the Header\n   */\n\n  text: string;\n\n  /**\n   * Image Source Path for the Image button\n   */\n\n  imageSourcePath: string;\n\n  /**\n   * Alt text for image\n   */\n\n  imageAltText: string;\n\n  /**\n   * link for logo image\n   */\n\n  href?: string;\n\n  /**\n   * agency name adjacent to logo\n   */\n\n  agencyName?: string;\n\n}\n",
             "properties": [
                 {
                     "name": "links",
                     "type": "FooterLink[]",
                     "optional": false,
                     "description": "<p>Links in the section</p>\n",
-                    "line": 28
+                    "line": 35
                 },
                 {
                     "name": "text",
                     "type": "string",
                     "optional": false,
                     "description": "<p>Title text for the section</p>\n",
-                    "line": 23
+                    "line": 30
                 }
             ],
             "methods": [],
@@ -1368,11 +1382,18 @@ const COMPONENTS = {
         },
         {
             "name": "FooterModel",
-            "id": "class-FooterModel-8351bbc206ff7dcca88f5b1b636b3881",
+            "id": "class-FooterModel-2660820e6e513bebd14f868c57cea68e",
             "file": "libs/packages/components/src/lib/footer/model/FooterModel.ts",
             "type": "class",
-            "sourceCode": "import {\n  INavigationLink,\n  NavigationMode\n} from '../../common-navigation/common-navigation-model';\n\nexport class FooterModel {\n  /**\n   * List of sections and their links\n   */\n  linkSections: FooterLinkSection[];\n\n  /**\n   * Footer text and logo\n   */\n\n  footerLogo?: FooterLogo;\n}\n\nexport class FooterLinkSection {\n  /**\n   * Title text for the section\n   */\n  text: string;\n\n  /**\n   * Links in the section\n   */\n  links: FooterLink[];\n}\n\nexport class FooterLink implements INavigationLink {\n  /**\n   * Internal Angualr Routes, External HREF, EVENT: event on parent component\n   */\n  mode: NavigationMode;\n\n  /**\n   * Text to be displayed in the link\n   */\n  text: string;\n\n  /**\n   * Navigation Route\n   */\n  route: string;\n}\n\nexport interface FooterLogo {\n  /**\n   * Text for the Header\n   */\n\n  text: string;\n\n  /**\n   * Image Source Path for the Image button\n   */\n\n  imageSourcePath: string;\n\n  /**\n   * Alt text for image\n   */\n\n  imageAltText: string;\n}\n",
+            "sourceCode": "import {\n  INavigationLink,\n  NavigationMode\n} from '../../common-navigation/common-navigation-model';\n\nexport class FooterModel {\n  /**\n   * List of sections and their links\n   */\n  linkSections: FooterLinkSection[];\n\n  /**\n   * Footer text and logo\n   */\n\n  footerLogo?: FooterLogo;\n\n  /**\n   * Footer disclaimer\n   */\n\n  disclaimer?: string;\n\n}\n\nexport class FooterLinkSection {\n  /**\n   * Title text for the section\n   */\n  text: string;\n\n  /**\n   * Links in the section\n   */\n  links: FooterLink[];\n}\n\nexport class FooterLink implements INavigationLink {\n  /**\n   * Internal Angualr Routes, External HREF, EVENT: event on parent component\n   */\n  mode: NavigationMode;\n\n  /**\n   * Text to be displayed in the link\n   */\n  text: string;\n\n  /**\n   * Navigation Route\n   */\n  route: string;\n}\n\nexport interface FooterLogo {\n  /**\n   * Text for the Header\n   */\n\n  text: string;\n\n  /**\n   * Image Source Path for the Image button\n   */\n\n  imageSourcePath: string;\n\n  /**\n   * Alt text for image\n   */\n\n  imageAltText: string;\n\n  /**\n   * link for logo image\n   */\n\n  href?: string;\n\n  /**\n   * agency name adjacent to logo\n   */\n\n  agencyName?: string;\n\n}\n",
             "properties": [
+                {
+                    "name": "disclaimer",
+                    "type": "string",
+                    "optional": true,
+                    "description": "<p>Footer disclaimer</p>\n",
+                    "line": 22
+                },
                 {
                     "name": "footerLogo",
                     "type": "FooterLogo",
@@ -4359,11 +4380,11 @@ const COMPONENTS = {
         },
         {
             "name": "ExternalLinkDirective",
-            "id": "directive-ExternalLinkDirective-63ecc2c5ceba4acee303f0d8146a6ecc",
+            "id": "directive-ExternalLinkDirective-50005c335a8ba4b9f431f59c731aa2b6",
             "file": "libs/packages/components/src/lib/external-link/external-link.directive.ts",
             "type": "directive",
             "description": "",
-            "sourceCode": "import {\n  Directive,\n  AfterViewChecked,\n  ElementRef,\n  Renderer2,\n  Input,\n  ComponentFactoryResolver,\n  ViewContainerRef,\n  OnChanges,\n  HostListener\n} from '@angular/core';\nimport { faCoffee, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';\nimport { FaIconComponent } from '@fortawesome/angular-fontawesome';\n@Directive({\n  selector: 'a[href]'\n})\nexport class ExternalLinkDirective implements OnChanges {\n  private vcRef: ViewContainerRef;\n  @Input() href: string;\n  @Input() public hideIcon: boolean = false;\n\n  private get isExternalLink(): boolean {\n    return (\n      this.href\n        .replace(/^https?:\\/\\//, '')\n        .replace(/^www\\./, '')\n        .split('/')[0] != location.hostname\n    );\n  }\n\n  constructor(\n    private el: ElementRef,\n    private renderer: Renderer2,\n    private cfr: ComponentFactoryResolver,\n    private vc: ViewContainerRef\n  ) {}\n\n  @HostListener('click', ['$event'])\n  click(event: Event) {\n    window.location.href = this.href;\n  }\n\n\n  public ngOnChanges() {\n    if (!this.isExternalLink) {\n      return;\n    }\n    if (!this.hideIcon) {\n      this.createIcon();\n    }\n  }\n\n  private createIcon() {\n    // tslint:disable-next-line:no-unused-expression\n    this.vc.constructor.name === 'ViewContainerRef_';\n    const factory = this.cfr.resolveComponentFactory(FaIconComponent);\n    const component = this.vc.createComponent(factory);\n    component.instance.iconProp = ['fas', 'external-link-alt'];\n    const spanElement = document.createElement('span');\n    spanElement.classList.add('margin-left-2px');\n    const supElement = document.createElement('sup');\n    supElement.appendChild(component.location.nativeElement);\n    spanElement.appendChild(supElement);\n    this.el.nativeElement.appendChild(spanElement);\n    component.instance.ngOnChanges({});\n  }\n}\n",
+            "sourceCode": "import {\n  Directive,\n  AfterViewChecked,\n  ElementRef,\n  Renderer2,\n  Input,\n  ComponentFactoryResolver,\n  ViewContainerRef,\n  OnChanges,\n  HostListener\n} from '@angular/core';\nimport { faCoffee, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';\nimport { FaIconComponent } from '@fortawesome/angular-fontawesome';\n@Directive({\n  selector: 'a[href]'\n})\nexport class ExternalLinkDirective implements OnChanges {\n  private vcRef: ViewContainerRef;\n  @Input() href: string;\n  @Input() public hideIcon: boolean = false;\n\n  private get isExternalLink(): boolean {\n    return (\n      this.href\n        .replace(/^https?:\\/\\//, '')\n        .replace(/^www\\./, '')\n        .split('/')[0] != location.hostname\n    );\n  }\n\n  constructor(\n    private el: ElementRef,\n    private renderer: Renderer2,\n    private cfr: ComponentFactoryResolver,\n    private vc: ViewContainerRef\n  ) {}\n\n  @HostListener('click', ['$event'])\n  click(event: Event) {\n    window.location.href = this.href;\n  }\n\n\n  public ngOnChanges() {\n    if (!this.isExternalLink) {\n      return;\n    }\n    if (!this.hideIcon) {\n      this.createIcon();\n    }\n  }\n\n  private createIcon() {\n    // tslint:disable-next-line:no-unused-expression\n    this.vc.constructor.name === 'ViewContainerRef_';\n    const factory = this.cfr.resolveComponentFactory(FaIconComponent);\n    const component = this.vc.createComponent(factory);\n    component.instance.icon = ['fas', 'external-link-alt'];\n    const spanElement = document.createElement('span');\n    spanElement.classList.add('margin-left-2px');\n    const supElement = document.createElement('sup');\n    supElement.appendChild(component.location.nativeElement);\n    spanElement.appendChild(supElement);\n    this.el.nativeElement.appendChild(spanElement);\n    component.instance.ngOnChanges({});\n  }\n}\n",
             "selector": "a[href]",
             "providers": [],
             "inputsClass": [
@@ -6112,7 +6133,7 @@ const COMPONENTS = {
     "components": [
         {
             "name": "PaginationComponent",
-            "id": "component-PaginationComponent-192096590a3fa1708b9b7bac4c3324f5",
+            "id": "component-PaginationComponent-dd448884e637d16139d35dd83ab0fe40",
             "file": "libs/packages/components/src/lib/pagination/pagination.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -6130,17 +6151,31 @@ const COMPONENTS = {
             "viewProviders": [],
             "inputsClass": [
                 {
+                    "name": "displayMode",
+                    "defaultValue": "'default'",
+                    "description": "<p>displayMode = &#39;default&#39; | &#39;results&#39;;</p>\n",
+                    "line": 55,
+                    "type": "PaginationDisplayMode"
+                },
+                {
                     "name": "page",
                     "defaultValue": "new PaginationModel()",
                     "description": "<p>Pagination model</p>\n",
-                    "line": 40,
+                    "line": 43,
                     "type": "PaginationModel"
                 },
                 {
                     "name": "paginationConfiguration",
                     "description": "<p>configuration for the pagination</p>\n",
-                    "line": 46,
+                    "line": 49,
                     "type": "PaginationConfigurationModel"
+                },
+                {
+                    "name": "totalItems",
+                    "defaultValue": "0",
+                    "description": "<p>totalItems for display on results view;</p>\n",
+                    "line": 61,
+                    "type": "number"
                 }
             ],
             "outputsClass": [
@@ -6148,7 +6183,7 @@ const COMPONENTS = {
                     "name": "pageChange",
                     "defaultValue": "new EventEmitter<PaginationModel>()",
                     "description": "<p>Output of the page model object</p>\n",
-                    "line": 34,
+                    "line": 37,
                     "type": "EventEmitter"
                 }
             ],
@@ -6158,7 +6193,7 @@ const COMPONENTS = {
                     "type": "ElementRef",
                     "optional": false,
                     "description": "<p>Input field for the current page</p>\n",
-                    "line": 28,
+                    "line": 31,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -6172,7 +6207,7 @@ const COMPONENTS = {
                     "type": "number",
                     "optional": false,
                     "description": "<p>debounce time for current page input</p>\n",
-                    "line": 52
+                    "line": 68
                 },
                 {
                     "name": "options",
@@ -6180,7 +6215,7 @@ const COMPONENTS = {
                     "type": "[]",
                     "optional": false,
                     "description": "<p>Drop down options for page size</p>\n",
-                    "line": 67,
+                    "line": 83,
                     "modifierKind": [
                         114
                     ]
@@ -6190,7 +6225,7 @@ const COMPONENTS = {
                     "type": "number",
                     "optional": false,
                     "description": "<p>Stores the previous number</p>\n",
-                    "line": 57,
+                    "line": 73,
                     "modifierKind": [
                         112
                     ]
@@ -6199,8 +6234,8 @@ const COMPONENTS = {
                     "name": "timeoutNumber",
                     "type": "number",
                     "optional": false,
-                    "description": "<p>timeout id of the debounce time </p>\n",
-                    "line": 62
+                    "description": "<p>timeout id of the debounce time</p>\n",
+                    "line": 78
                 }
             ],
             "methodsClass": [
@@ -6210,7 +6245,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 138,
+                    "line": 154,
                     "description": "<p>current page focus out will replace with previous valid if empty</p>\n"
                 },
                 {
@@ -6225,7 +6260,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "number",
                     "typeParameters": [],
-                    "line": 123,
+                    "line": 139,
                     "description": "<p>adjusts the value if not within the page limit above or below</p>\n",
                     "modifierKind": [
                         112
@@ -6233,16 +6268,16 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 2832,
-                                "end": 2840,
+                                "pos": 3138,
+                                "end": 3146,
                                 "flags": 0,
                                 "escapedText": "newValue"
                             },
                             "type": "number",
                             "optional": true,
                             "tagName": {
-                                "pos": 2826,
-                                "end": 2831,
+                                "pos": 3132,
+                                "end": 3137,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -6256,7 +6291,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 21,
+                    "line": 24,
                     "description": "<p>Stores the previous number. Used when focus out if field empty</p>\n",
                     "modifierKind": [
                         112
@@ -6268,7 +6303,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 87,
+                    "line": 103,
                     "description": "<p>next page increase page number by one within range</p>\n"
                 },
                 {
@@ -6277,7 +6312,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 11
+                    "line": 14
                 },
                 {
                     "name": "onSelectChange",
@@ -6285,7 +6320,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 148,
+                    "line": 164,
                     "description": "<p>page size selection change</p>\n"
                 },
                 {
@@ -6294,7 +6329,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 76,
+                    "line": 92,
                     "description": "<p>previous page lowers page number by one within range</p>\n"
                 },
                 {
@@ -6309,21 +6344,21 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 99,
+                    "line": 115,
                     "description": "<p>current page changes sets new value if within range</p>\n",
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 2118,
-                                "end": 2126,
+                                "pos": 2425,
+                                "end": 2433,
                                 "flags": 0,
                                 "escapedText": "newValue"
                             },
                             "type": "number",
                             "optional": true,
                             "tagName": {
-                                "pos": 2112,
-                                "end": 2117,
+                                "pos": 2419,
+                                "end": 2424,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -6337,11 +6372,11 @@ const COMPONENTS = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit, Input, EventEmitter, Output, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';\nimport { PaginationConfigurationModel, PaginationModel } from './model/paginationModel';\n\n@Component({\n  selector: 'sds-pagination',\n  templateUrl: './pagination.component.html',\n  styleUrls: ['./pagination.component.scss']\n})\nexport class PaginationComponent implements OnInit {\n\n  ngOnInit(): void {\n    this.maintainPreviousValue();\n  }\n\n  constructor(private change: ChangeDetectorRef) { }\n\n\n  /**\n   * Stores the previous number. Used when focus out if field empty\n   */\n  private maintainPreviousValue() {\n    this.previousNumber = this.page.pageNumber.valueOf();\n  }\n\n  /**\n   * Input field for the current page\n   */\n  @ViewChild('currentPage') currentPageField: ElementRef;\n\n  /**\n   * Output of the page model object\n   */\n  @Output()\n  pageChange = new EventEmitter<PaginationModel>();\n\n  /**\n   * Pagination model\n   */\n  @Input()\n  page: PaginationModel = new PaginationModel();\n\n  /**\n   * configuration for the pagination\n   */\n  @Input()\n  paginationConfiguration: PaginationConfigurationModel;\n\n\n  /**\n   * debounce time for current page input\n   */\n  debounceTime: number = 500;\n\n  /**\n   * Stores the previous number\n   */\n  private previousNumber: number;\n\n  /**\n   * timeout id of the debounce time \n   */\n  timeoutNumber: number;\n\n  /**\n   * Drop down options for page size\n   */\n  public options = [\n    { label: '25', value: 25 },\n    { label: '50', value: 50 },\n    { label: '100', value: 100 }\n  ];\n\n  /**\n   * previous page lowers page number by one within range\n   */\n  previousPage() {\n    if (this.page.pageNumber > 1) {\n      this.page.pageNumber--;\n      this.maintainPreviousValue();\n      this.pageChange.emit(this.page);\n    }\n  }\n\n  /**\n   * next page increase page number by one within range\n   */\n  nextPage() {\n    if (this.page.pageNumber < this.page.totalPages) {\n      this.page.pageNumber++;\n      this.maintainPreviousValue();\n      this.pageChange.emit(this.page);\n    }\n  }\n\n  /**\n   * current page changes sets new value if within range\n   * @param newValue \n   */\n  valuechange(newValue?: number) {\n    window.clearTimeout(this.timeoutNumber);\n    this.timeoutNumber = window.setTimeout(() => {\n      if (newValue || newValue === 0) {\n        newValue = this.handleInputOutsideBounds(newValue);\n        if (newValue >= 1 && newValue <= this.page.totalPages) {\n          this.page.pageNumber = newValue;\n          this.maintainPreviousValue();\n          this.pageChange.emit(this.page);\n          this.change.detectChanges();\n        }\n      } else {\n\n        if (this.page.pageNumber) {\n          this.maintainPreviousValue();\n        }\n      }\n    }, this.debounceTime);\n  }\n\n  /**\n   * adjusts the value if not within the page limit above or below\n   * @param newValue handles\n   */\n  private handleInputOutsideBounds(newValue?: number) {\n    if (newValue < 1) {\n      newValue = 1;\n      this.currentPageField.nativeElement.value = newValue;\n    }\n    else if (newValue > this.page.totalPages) {\n      newValue = this.page.totalPages;\n      this.currentPageField.nativeElement.value = newValue;\n    }\n    return newValue;\n  }\n\n  /**\n   * current page focus out will replace with previous valid if empty\n   */\n  currentPageFocusOut() {\n    if (this.currentPageField.nativeElement.value === '') {\n      this.currentPageField.nativeElement.value = this.page.pageNumber = this.previousNumber;\n      this.change.detectChanges();\n    }\n  }\n\n  /**\n   * page size selection change\n   */\n  onSelectChange() {\n    this.page.pageNumber = 1;\n    this.pageChange.emit(this.page);\n  }\n}\n",
+            "sourceCode": "import { Component, OnInit, Input, EventEmitter, Output, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';\nimport { PaginationConfigurationModel, PaginationModel } from './model/paginationModel';\n\n/** pagination display modes. */\nexport type PaginationDisplayMode = 'default' | 'results';\n\n@Component({\n  selector: 'sds-pagination',\n  templateUrl: './pagination.component.html',\n  styleUrls: ['./pagination.component.scss']\n})\nexport class PaginationComponent implements OnInit {\n\n  ngOnInit(): void {\n    this.maintainPreviousValue();\n  }\n\n  constructor(private change: ChangeDetectorRef) { }\n\n\n  /**\n   * Stores the previous number. Used when focus out if field empty\n   */\n  private maintainPreviousValue() {\n    this.previousNumber = this.page.pageNumber.valueOf();\n  }\n\n  /**\n   * Input field for the current page\n   */\n  @ViewChild('currentPage') currentPageField: ElementRef;\n\n  /**\n   * Output of the page model object\n   */\n  @Output()\n  pageChange = new EventEmitter<PaginationModel>();\n\n  /**\n   * Pagination model\n   */\n  @Input()\n  page: PaginationModel = new PaginationModel();\n\n  /**\n   * configuration for the pagination\n   */\n  @Input()\n  paginationConfiguration: PaginationConfigurationModel;\n\n  /**\n   * displayMode = 'default' | 'results';\n   */\n  @Input()\n  displayMode: PaginationDisplayMode = 'default';\n\n    /**\n   * totalItems for display on results view;\n   */\n  @Input()\n  totalItems?: number = 0;\n\n\n\n  /**\n   * debounce time for current page input\n   */\n  debounceTime: number = 500;\n\n  /**\n   * Stores the previous number\n   */\n  private previousNumber: number;\n\n  /**\n   * timeout id of the debounce time\n   */\n  timeoutNumber: number;\n\n  /**\n   * Drop down options for page size\n   */\n  public options = [\n    { label: '25', value: 25 },\n    { label: '50', value: 50 },\n    { label: '100', value: 100 }\n  ];\n\n  /**\n   * previous page lowers page number by one within range\n   */\n  previousPage() {\n    if (this.page.pageNumber > 1) {\n      this.page.pageNumber--;\n      this.maintainPreviousValue();\n      this.pageChange.emit(this.page);\n    }\n  }\n\n  /**\n   * next page increase page number by one within range\n   */\n  nextPage() {\n    if (this.page.pageNumber < this.page.totalPages) {\n      this.page.pageNumber++;\n      this.maintainPreviousValue();\n      this.pageChange.emit(this.page);\n    }\n  }\n\n  /**\n   * current page changes sets new value if within range\n   * @param newValue\n   */\n  valuechange(newValue?: number) {\n    window.clearTimeout(this.timeoutNumber);\n    this.timeoutNumber = window.setTimeout(() => {\n      if (newValue || newValue === 0) {\n        newValue = this.handleInputOutsideBounds(newValue);\n        if (newValue >= 1 && newValue <= this.page.totalPages) {\n          this.page.pageNumber = newValue;\n          this.maintainPreviousValue();\n          this.pageChange.emit(this.page);\n          this.change.detectChanges();\n        }\n      } else {\n\n        if (this.page.pageNumber) {\n          this.maintainPreviousValue();\n        }\n      }\n    }, this.debounceTime);\n  }\n\n  /**\n   * adjusts the value if not within the page limit above or below\n   * @param newValue handles\n   */\n  private handleInputOutsideBounds(newValue?: number) {\n    if (newValue < 1) {\n      newValue = 1;\n      this.currentPageField.nativeElement.value = newValue;\n    }\n    else if (newValue > this.page.totalPages) {\n      newValue = this.page.totalPages;\n      this.currentPageField.nativeElement.value = newValue;\n    }\n    return newValue;\n  }\n\n  /**\n   * current page focus out will replace with previous valid if empty\n   */\n  currentPageFocusOut() {\n    if (this.currentPageField.nativeElement.value === '') {\n      this.currentPageField.nativeElement.value = this.page.pageNumber = this.previousNumber;\n      this.change.detectChanges();\n    }\n  }\n\n  /**\n   * page size selection change\n   */\n  onSelectChange() {\n    this.page.pageNumber = 1;\n    this.pageChange.emit(this.page);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "/* Hide HTML5 Up and Down arrows. */\ninput[type=number]::-webkit-inner-spin-button, \ninput[type=number]::-webkit-outer-spin-button { \n  -webkit-appearance: none; \n  margin: 0; \n}\n \ninput[type=\"number\"] {\n    -moz-appearance: textfield;\n}",
+                    "data": "/* Hide HTML5 Up and Down arrows. */\ninput[type=number]::-webkit-inner-spin-button,\ninput[type=number]::-webkit-outer-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n\ninput[type=\"number\"] {\n    -moz-appearance: textfield;\n}\n\n",
                     "styleUrl": "./pagination.component.scss"
                 }
             ],
@@ -6355,7 +6390,7 @@ const COMPONENTS = {
                         "type": "ChangeDetectorRef"
                     }
                 ],
-                "line": 13,
+                "line": 16,
                 "jsdoctags": [
                     {
                         "name": "change",
@@ -6369,7 +6404,7 @@ const COMPONENTS = {
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"sds-pagination\">\n  <div class=\"sds-pagination__controls\">\n    <button [attr.id]=\"paginationConfiguration.id +'-previousPage'\" (click)=\"previousPage()\">Previous Page</button>\n    <label class=\"usa-label font-sans-3xs margin-top-1 text-italic text-base usa-sr-only\"\n      [attr.for]=\"paginationConfiguration.id + '-currentPage'\">Current Page</label>\n    <input [attr.id]=\"paginationConfiguration.id +'-currentPage'\"\n      class=\"usa-input height-3 width-4 line-height-05 font-sans-3xs text-center border-base-light\" #currentPage\n      (ngModelChange)=\"valuechange($event)\" [(ngModel)]=\"page.pageNumber\" type=\"number\" min=\"1\"\n      [(attr.max)]=\"page.totalPages\" (focusout)=\"currentPageFocusOut()\" aria-label=\"current page\" />\n    <span class=\"sds-pagination__total\">\n      of <strong>{{ page.totalPages }}</strong>\n    </span>\n    <button [attr.id]=\"paginationConfiguration.id +'-nextPage'\" (click)=\"nextPage()\">Next Page</button>\n  </div>\n  <div class=\"sds-pagination__results\">\n    <label class=\"usa-label font-sans-3xs text-italic text-base\"\n      [attr.for]=\"paginationConfiguration.id + '-select'\">Results per page</label>\n    <select class=\"usa-select usa-select--small border-base-light\" [attr.id]=\"paginationConfiguration.id + '-select'\"\n      (change)=\"onSelectChange()\" [(ngModel)]=\"page.pageSize\">\n      <option *ngFor=\"let item of options\" [ngValue]=\"item.value\">\n        {{ item.label }}\n      </option>\n    </select>\n  </div>\n</div>\n"
+            "templateData": "<div class=\"sds-pagination\" *ngIf=\"displayMode === 'default'\">\n  <div class=\"sds-pagination__controls\">\n    <button [attr.id]=\"paginationConfiguration.id +'-previousPage'\" (click)=\"previousPage()\">Previous Page</button>\n    <label class=\"usa-label font-sans-3xs margin-top-1 text-italic text-base usa-sr-only\"\n      [attr.for]=\"paginationConfiguration.id + '-currentPage'\">Current Page</label>\n    <input [attr.id]=\"paginationConfiguration.id +'-currentPage'\"\n      class=\"usa-input usa-input--small font-sans-3xs text-center border-base-light\" #currentPage\n      (ngModelChange)=\"valuechange($event)\" [(ngModel)]=\"page.pageNumber\" type=\"number\" min=\"1\"\n      [(attr.max)]=\"page.totalPages\" (focusout)=\"currentPageFocusOut()\" aria-label=\"current page\" [ngStyle]=\"{'width': (20 + page.totalPages.toString().length * 10) +'px'}\" />\n    <span class=\"sds-pagination__total\">\n      of <strong>{{ page.totalPages }}</strong>\n    </span>\n    <button [attr.id]=\"paginationConfiguration.id +'-nextPage'\" (click)=\"nextPage()\">Next Page</button>\n  </div>\n  <div class=\"sds-pagination__results\">\n    <label class=\"usa-label font-sans-3xs text-italic text-base\"\n      [attr.for]=\"paginationConfiguration.id + '-select'\">Results per page</label>\n    <select class=\"usa-select usa-select--small border-base-light\" [attr.id]=\"paginationConfiguration.id + '-select'\"\n      (change)=\"onSelectChange()\" [(ngModel)]=\"page.pageSize\">\n      <option *ngFor=\"let item of options\" [ngValue]=\"item.value\">\n        {{ item.label }}\n      </option>\n    </select>\n  </div>\n</div>\n\n<div class=\"sds-pagination padding-top-3\" *ngIf=\"totalItems && displayMode === 'results'\">\n  <div class=\"text-semibold font-sans-3xs margin-top-3\">Showing {{(page.pageNumber-1)*page.pageSize+1 | number:'1.0':'en-US'}} - {{((page.pageNumber-1)*page.pageSize+page.pageSize) > totalItems ? (totalItems | number:'1.0':'en-US') : ((page.pageNumber-1)*page.pageSize+page.pageSize | number:'1.0':'en-US') }} of {{totalItems | number:'1.0':'en-US'}} search results</div>\n</div>\n"
         },
         {
             "name": "SdsAccordionItemComponent",
@@ -8175,7 +8210,7 @@ const COMPONENTS = {
         },
         {
             "name": "SdsDialogContainerComponent",
-            "id": "component-SdsDialogContainerComponent-91bd96f8c86f08efeb7f772bd349f2ab",
+            "id": "component-SdsDialogContainerComponent-a05b8685fd1944ba9478aac52b438e18",
             "file": "libs/packages/components/src/lib/dialog/dialog-container.component.ts",
             "changeDetection": "ChangeDetectionStrategy.Default",
             "encapsulation": [
@@ -8259,7 +8294,7 @@ const COMPONENTS = {
                     "decorators": [
                         {
                             "name": "ViewChild",
-                            "stringifiedArguments": "CdkPortalOutlet"
+                            "stringifiedArguments": "CdkPortalOutlet, {static: true}"
                         }
                     ]
                 },
@@ -8382,15 +8417,15 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 3455,
-                                "end": 3461,
+                                "pos": 3471,
+                                "end": 3477,
                                 "flags": 0,
                                 "escapedText": "portal"
                             },
                             "type": "ComponentPortal<T>",
                             "tagName": {
-                                "pos": 3449,
-                                "end": 3454,
+                                "pos": 3465,
+                                "end": 3470,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -8416,15 +8451,15 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 3881,
-                                "end": 3887,
+                                "pos": 3897,
+                                "end": 3903,
                                 "flags": 0,
                                 "escapedText": "portal"
                             },
                             "type": "TemplatePortal<C>",
                             "tagName": {
-                                "pos": 3875,
-                                "end": 3880,
+                                "pos": 3891,
+                                "end": 3896,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -8438,7 +8473,7 @@ const COMPONENTS = {
             "description": "<p>Internal component that wraps user-provided dialog content.</p>\n",
             "rawdescription": "Internal component that wraps user-provided dialog content.",
             "type": "component",
-            "sourceCode": "import {\n  Component,\n  ComponentRef,\n  ElementRef,\n  EmbeddedViewRef,\n  EventEmitter,\n  Inject,\n  Optional,\n  ChangeDetectorRef,\n  ViewChild,\n  ViewEncapsulation,\n  ChangeDetectionStrategy,\n} from '@angular/core';\nimport {DOCUMENT} from '@angular/common';\nimport {AnimationEvent} from '@angular/animations';\nimport {sdsDialogAnimations} from './dialog-animations';\nimport {\n  BasePortalOutlet,\n  ComponentPortal,\n  CdkPortalOutlet,\n  TemplatePortal\n} from '@angular/cdk/portal';\nimport {FocusTrap, FocusTrapFactory} from '@angular/cdk/a11y';\nimport {SdsDialogConfig} from './dialog-config';\n\n\n/**\n * Throws an exception for the case when a ComponentPortal is\n * attached to a DomPortalOutlet without an origin.\n * @docs-private\n */\nexport function throwSdsDialogContentAlreadyAttachedError() {\n  throw Error('Attempting to attach dialog content after content is already attached');\n}\n\n/**\n * Internal component that wraps user-provided dialog content.\n * @docs-private\n */\n@Component({\n  selector: 'sds-dialog-container',\n  templateUrl: 'dialog-container.component.html',\n  encapsulation: ViewEncapsulation.None,\n  // Using OnPush for dialogs caused some G3 sync issues. Disabled until we can track them down.\n  // tslint:disable-next-line:validate-decorators\n  changeDetection: ChangeDetectionStrategy.Default,\n  animations: [sdsDialogAnimations.dialogContainer],\n  // tslint:disable-next-line: use-host-property-decorator\n  host: {\n    'class': 'sds-dialog__container',\n    '[class.sds-dialog--alert]': '_config.alert',\n    '[class.sds-dialog--alert-error]':'_config.alert === \"error\"',\n    '[class.sds-dialog--alert-warning]':'_config.alert === \"warning\"',\n    '[class.sds-dialog--alert-info]':'_config.alert === \"info\"',\n    'tabindex': '-1',\n    'aria-modal': 'true',\n    '[attr.id]': '_id',\n    '[attr.role]': '_config.role',\n    '[attr.aria-labelledby]': '_config.ariaLabel ? null : _ariaLabelledBy',\n    '[attr.aria-label]': '_config.ariaLabel',\n    '[attr.aria-describedby]': '_config.ariaDescribedBy || null',\n    '[@dialogContainer]': '_state',\n    '(@dialogContainer.start)': '_onAnimationStart($event)',\n    '(@dialogContainer.done)': '_onAnimationDone($event)',\n  },\n})\nexport class SdsDialogContainerComponent extends BasePortalOutlet {\n  /** The portal outlet inside of this container into which the dialog content will be loaded. */\n  @ViewChild(CdkPortalOutlet) _portalOutlet: CdkPortalOutlet;\n\n  /** The class that traps and manages focus within the dialog. */\n  private _focusTrap: FocusTrap;\n\n  /** Element that was focused before the dialog was opened. Save this to restore upon close. */\n  private _elementFocusedBeforeDialogWasOpened: HTMLElement | null = null;\n\n  /** State of the dialog animation. */\n  _state: 'void' | 'enter' | 'exit' = 'enter';\n\n  /** Emits when an animation state changes. */\n  _animationStateChanged = new EventEmitter<AnimationEvent>();\n\n  /** ID of the element that should be considered as the dialog's label. */\n  _ariaLabelledBy: string | null = null;\n\n  /** ID for the container DOM element. */\n  _id: string;\n\n  constructor(\n    private _elementRef: ElementRef,\n    private _focusTrapFactory: FocusTrapFactory,\n    private _changeDetectorRef: ChangeDetectorRef,\n    @Optional() @Inject(DOCUMENT) private _document: any,\n    /** The dialog configuration. */\n    public _config: SdsDialogConfig) {\n\n    super();\n  }\n\n  /**\n   * Attach a ComponentPortal as content to this dialog container.\n   * @param portal Portal to be attached as the dialog content.\n   */\n  attachComponentPortal<T>(portal: ComponentPortal<T>): ComponentRef<T> {\n    if (this._portalOutlet.hasAttached()) {\n      throwSdsDialogContentAlreadyAttachedError();\n    }\n\n    this._savePreviouslyFocusedElement();\n    return this._portalOutlet.attachComponentPortal(portal);\n  }\n\n  /**\n   * Attach a TemplatePortal as content to this dialog container.\n   * @param portal Portal to be attached as the dialog content.\n   */\n  attachTemplatePortal<C>(portal: TemplatePortal<C>): EmbeddedViewRef<C> {\n    if (this._portalOutlet.hasAttached()) {\n      throwSdsDialogContentAlreadyAttachedError();\n    }\n\n    this._savePreviouslyFocusedElement();\n    return this._portalOutlet.attachTemplatePortal(portal);\n  }\n\n  /** Moves the focus inside the focus trap. */\n  private _trapFocus() {\n    if (!this._focusTrap) {\n      this._focusTrap = this._focusTrapFactory.create(this._elementRef.nativeElement);\n    }\n\n    // If were to attempt to focus immediately, then the content of the dialog would not yet be\n    // ready in instances where change detection has to run first. To deal with this, we simply\n    // wait for the microtask queue to be empty.\n    if (this._config.autoFocus) {\n      this._focusTrap.focusInitialElementWhenReady();\n    }\n  }\n\n  /** Restores focus to the element that was focused before the dialog opened. */\n  private _restoreFocus() {\n    const toFocus = this._elementFocusedBeforeDialogWasOpened;\n\n    // We need the extra check, because IE can set the `activeElement` to null in some cases.\n    if (this._config.restoreFocus && toFocus && typeof toFocus.focus === 'function') {\n      toFocus.focus();\n    }\n\n    if (this._focusTrap) {\n      this._focusTrap.destroy();\n    }\n  }\n\n  /** Saves a reference to the element that was focused before the dialog was opened. */\n  private _savePreviouslyFocusedElement() {\n    if (this._document) {\n      this._elementFocusedBeforeDialogWasOpened = this._document.activeElement as HTMLElement;\n\n      // Note that there is no focus method when rendering on the server.\n      if (this._elementRef.nativeElement.focus) {\n        // Move focus onto the dialog immediately in order to prevent the user from accidentally\n        // opening multiple dialogs at the same time. Needs to be async, because the element\n        // may not be focusable immediately.\n        Promise.resolve().then(() => this._elementRef.nativeElement.focus());\n      }\n    }\n  }\n\n  /** Callback, invoked whenever an animation on the host completes. */\n  _onAnimationDone(event: AnimationEvent) {\n    if (event.toState === 'enter') {\n      this._trapFocus();\n    } else if (event.toState === 'exit') {\n      this._restoreFocus();\n    }\n\n    this._animationStateChanged.emit(event);\n  }\n\n  /** Callback, invoked when an animation on the host starts. */\n  _onAnimationStart(event: AnimationEvent) {\n    this._animationStateChanged.emit(event);\n  }\n\n  /** Starts the dialog exit animation. */\n  _startExitAnimation(): void {\n    this._state = 'exit';\n\n    // Mark the container for check so it can react if the\n    // view container is using OnPush change detection.\n    this._changeDetectorRef.markForCheck();\n  }\n}\n",
+            "sourceCode": "import {\n  Component,\n  ComponentRef,\n  ElementRef,\n  EmbeddedViewRef,\n  EventEmitter,\n  Inject,\n  Optional,\n  ChangeDetectorRef,\n  ViewChild,\n  ViewEncapsulation,\n  ChangeDetectionStrategy,\n} from '@angular/core';\nimport {DOCUMENT} from '@angular/common';\nimport {AnimationEvent} from '@angular/animations';\nimport {sdsDialogAnimations} from './dialog-animations';\nimport {\n  BasePortalOutlet,\n  ComponentPortal,\n  CdkPortalOutlet,\n  TemplatePortal\n} from '@angular/cdk/portal';\nimport {FocusTrap, FocusTrapFactory} from '@angular/cdk/a11y';\nimport {SdsDialogConfig} from './dialog-config';\n\n\n/**\n * Throws an exception for the case when a ComponentPortal is\n * attached to a DomPortalOutlet without an origin.\n * @docs-private\n */\nexport function throwSdsDialogContentAlreadyAttachedError() {\n  throw Error('Attempting to attach dialog content after content is already attached');\n}\n\n/**\n * Internal component that wraps user-provided dialog content.\n * @docs-private\n */\n@Component({\n  selector: 'sds-dialog-container',\n  templateUrl: 'dialog-container.component.html',\n  encapsulation: ViewEncapsulation.None,\n  // Using OnPush for dialogs caused some G3 sync issues. Disabled until we can track them down.\n  // tslint:disable-next-line:validate-decorators\n  changeDetection: ChangeDetectionStrategy.Default,\n  animations: [sdsDialogAnimations.dialogContainer],\n  // tslint:disable-next-line: use-host-property-decorator\n  host: {\n    'class': 'sds-dialog__container',\n    '[class.sds-dialog--alert]': '_config.alert',\n    '[class.sds-dialog--alert-error]':'_config.alert === \"error\"',\n    '[class.sds-dialog--alert-warning]':'_config.alert === \"warning\"',\n    '[class.sds-dialog--alert-info]':'_config.alert === \"info\"',\n    'tabindex': '-1',\n    'aria-modal': 'true',\n    '[attr.id]': '_id',\n    '[attr.role]': '_config.role',\n    '[attr.aria-labelledby]': '_config.ariaLabel ? null : _ariaLabelledBy',\n    '[attr.aria-label]': '_config.ariaLabel',\n    '[attr.aria-describedby]': '_config.ariaDescribedBy || null',\n    '[@dialogContainer]': '_state',\n    '(@dialogContainer.start)': '_onAnimationStart($event)',\n    '(@dialogContainer.done)': '_onAnimationDone($event)',\n  },\n})\nexport class SdsDialogContainerComponent extends BasePortalOutlet {\n  /** The portal outlet inside of this container into which the dialog content will be loaded. */\n  @ViewChild(CdkPortalOutlet, {static: true}) _portalOutlet: CdkPortalOutlet;\n\n  /** The class that traps and manages focus within the dialog. */\n  private _focusTrap: FocusTrap;\n\n  /** Element that was focused before the dialog was opened. Save this to restore upon close. */\n  private _elementFocusedBeforeDialogWasOpened: HTMLElement | null = null;\n\n  /** State of the dialog animation. */\n  _state: 'void' | 'enter' | 'exit' = 'enter';\n\n  /** Emits when an animation state changes. */\n  _animationStateChanged = new EventEmitter<AnimationEvent>();\n\n  /** ID of the element that should be considered as the dialog's label. */\n  _ariaLabelledBy: string | null = null;\n\n  /** ID for the container DOM element. */\n  _id: string;\n\n  constructor(\n    private _elementRef: ElementRef,\n    private _focusTrapFactory: FocusTrapFactory,\n    private _changeDetectorRef: ChangeDetectorRef,\n    @Optional() @Inject(DOCUMENT) private _document: any,\n    /** The dialog configuration. */\n    public _config: SdsDialogConfig) {\n\n    super();\n  }\n\n  /**\n   * Attach a ComponentPortal as content to this dialog container.\n   * @param portal Portal to be attached as the dialog content.\n   */\n  attachComponentPortal<T>(portal: ComponentPortal<T>): ComponentRef<T> {\n    if (this._portalOutlet.hasAttached()) {\n      throwSdsDialogContentAlreadyAttachedError();\n    }\n\n    this._savePreviouslyFocusedElement();\n    return this._portalOutlet.attachComponentPortal(portal);\n  }\n\n  /**\n   * Attach a TemplatePortal as content to this dialog container.\n   * @param portal Portal to be attached as the dialog content.\n   */\n  attachTemplatePortal<C>(portal: TemplatePortal<C>): EmbeddedViewRef<C> {\n    if (this._portalOutlet.hasAttached()) {\n      throwSdsDialogContentAlreadyAttachedError();\n    }\n\n    this._savePreviouslyFocusedElement();\n    return this._portalOutlet.attachTemplatePortal(portal);\n  }\n\n  /** Moves the focus inside the focus trap. */\n  private _trapFocus() {\n    if (!this._focusTrap) {\n      this._focusTrap = this._focusTrapFactory.create(this._elementRef.nativeElement);\n    }\n\n    // If were to attempt to focus immediately, then the content of the dialog would not yet be\n    // ready in instances where change detection has to run first. To deal with this, we simply\n    // wait for the microtask queue to be empty.\n    if (this._config.autoFocus) {\n      this._focusTrap.focusInitialElementWhenReady();\n    }\n  }\n\n  /** Restores focus to the element that was focused before the dialog opened. */\n  private _restoreFocus() {\n    const toFocus = this._elementFocusedBeforeDialogWasOpened;\n\n    // We need the extra check, because IE can set the `activeElement` to null in some cases.\n    if (this._config.restoreFocus && toFocus && typeof toFocus.focus === 'function') {\n      toFocus.focus();\n    }\n\n    if (this._focusTrap) {\n      this._focusTrap.destroy();\n    }\n  }\n\n  /** Saves a reference to the element that was focused before the dialog was opened. */\n  private _savePreviouslyFocusedElement() {\n    if (this._document) {\n      this._elementFocusedBeforeDialogWasOpened = this._document.activeElement as HTMLElement;\n\n      // Note that there is no focus method when rendering on the server.\n      if (this._elementRef.nativeElement.focus) {\n        // Move focus onto the dialog immediately in order to prevent the user from accidentally\n        // opening multiple dialogs at the same time. Needs to be async, because the element\n        // may not be focusable immediately.\n        Promise.resolve().then(() => this._elementRef.nativeElement.focus());\n      }\n    }\n  }\n\n  /** Callback, invoked whenever an animation on the host completes. */\n  _onAnimationDone(event: AnimationEvent) {\n    if (event.toState === 'enter') {\n      this._trapFocus();\n    } else if (event.toState === 'exit') {\n      this._restoreFocus();\n    }\n\n    this._animationStateChanged.emit(event);\n  }\n\n  /** Callback, invoked when an animation on the host starts. */\n  _onAnimationStart(event: AnimationEvent) {\n    this._animationStateChanged.emit(event);\n  }\n\n  /** Starts the dialog exit animation. */\n  _startExitAnimation(): void {\n    this._state = 'exit';\n\n    // Mark the container for check so it can react if the\n    // view container is using OnPush change detection.\n    this._changeDetectorRef.markForCheck();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -8532,7 +8567,7 @@ const COMPONENTS = {
         },
         {
             "name": "SdsFooterComponent",
-            "id": "component-SdsFooterComponent-1edbc97398e39648f3615062e33f1b44",
+            "id": "component-SdsFooterComponent-d56ce812a19d6c6bda3ce4dd24181b43",
             "file": "libs/packages/components/src/lib/footer/footer.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -8552,13 +8587,12 @@ const COMPONENTS = {
                 {
                     "name": "isCollapsedContent",
                     "defaultValue": "true",
-                    "line": 24,
-                    "type": "boolean"
+                    "line": 22
                 },
                 {
                     "name": "model",
                     "description": "<p>Model used for the different display portions of the footer</p>\n",
-                    "line": 23,
+                    "line": 21,
                     "type": "FooterModel"
                 }
             ],
@@ -8567,71 +8601,21 @@ const COMPONENTS = {
                     "name": "linkEvent",
                     "defaultValue": "new EventEmitter<INavigationLink>()",
                     "description": "<p>event for event based</p>\n",
-                    "line": 31,
+                    "line": 28,
                     "type": "EventEmitter"
                 }
             ],
             "propertiesClass": [
-                {
-                    "name": "expandedIndex",
-                    "type": "number",
-                    "optional": false,
-                    "description": "",
-                    "line": 13,
-                    "modifierKind": [
-                        114
-                    ]
-                },
-                {
-                    "name": "innerWidth",
-                    "type": "any",
-                    "optional": false,
-                    "description": "",
-                    "line": 12,
-                    "modifierKind": [
-                        114
-                    ]
-                },
-                {
-                    "name": "isCollapsedMobile",
-                    "defaultValue": "true",
-                    "type": "boolean",
-                    "optional": false,
-                    "description": "",
-                    "line": 25
-                },
                 {
                     "name": "navigationHelper",
                     "defaultValue": "new NavigationHelper()",
                     "type": "",
                     "optional": false,
                     "description": "<p>Navigation helper</p>\n",
-                    "line": 18
+                    "line": 16
                 }
             ],
             "methodsClass": [
-                {
-                    "name": "collapse",
-                    "args": [
-                        {
-                            "name": "index",
-                            "type": "number"
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 46,
-                    "jsdoctags": [
-                        {
-                            "name": "index",
-                            "type": "number",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
                 {
                     "name": "linkClickEvent",
                     "args": [
@@ -8643,34 +8627,26 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 37,
+                    "line": 34,
                     "description": "<p>Link clicked and emits the link data into an event</p>\n",
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 1002,
-                                "end": 1006,
+                                "pos": 844,
+                                "end": 848,
                                 "flags": 0,
                                 "escapedText": "link"
                             },
                             "type": "INavigationLink",
                             "tagName": {
-                                "pos": 996,
-                                "end": 1001,
+                                "pos": 838,
+                                "end": 843,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
                             "comment": ""
                         }
                     ]
-                },
-                {
-                    "name": "ngOnInit",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 42
                 }
             ],
             "hostBindings": [],
@@ -8678,7 +8654,7 @@ const COMPONENTS = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter, OnInit, HostListener } from '@angular/core';\nimport { FooterModel } from './model/FooterModel';\nimport { INavigationLink, NavigationMode } from '../common-navigation/common-navigation-model';\nimport { NavigationHelper } from '../common-navigation/navigation-helper';\n\n@Component({\n  selector: 'sds-footer',\n  templateUrl: './footer.component.html',\n  styleUrls: ['./footer.component.scss']\n})\nexport class SdsFooterComponent implements OnInit {\n public innerWidth: any;\n public expandedIndex: number;\n\n  /**\n   * Navigation helper\n   */\n  navigationHelper = new NavigationHelper();\n\n  /**\n   * Model used for the different display portions of the footer\n   */\n  @Input() model: FooterModel;\n  @Input() isCollapsedContent: boolean = true;\n  isCollapsedMobile: boolean = true;\n\n  /**\n   * event for event based\n   */\n  @Output()\n  linkEvent = new EventEmitter<INavigationLink>();\n\n  /**\n   * Link clicked and emits the link data into an event\n   * @param link\n   */\n  linkClickEvent(link: INavigationLink) {\n    this.linkEvent.emit(link);\n    return false;\n  }\n\n  ngOnInit(){\n    this.expandedIndex = -1\n  }\n\n  collapse(index:number){\n    this.expandedIndex = index === this.expandedIndex ? -1 : index;\n  }\n\n}\n",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { FooterModel } from './model/FooterModel';\nimport { INavigationLink } from '../common-navigation/common-navigation-model';\nimport { NavigationHelper } from '../common-navigation/navigation-helper';\n\n@Component({\n  selector: 'sds-footer',\n  templateUrl: './footer.component.html',\n  styleUrls: ['./footer.component.scss']\n})\nexport class SdsFooterComponent {\n\n  /**\n   * Navigation helper\n   */\n  navigationHelper = new NavigationHelper();\n\n  /**\n   * Model used for the different display portions of the footer\n   */\n  @Input() model: FooterModel;\n  @Input() isCollapsedContent = true;\n\n  /**\n   * event for event based\n   */\n  @Output()\n  linkEvent = new EventEmitter<INavigationLink>();\n\n  /**\n   * Link clicked and emits the link data into an event\n   * @param link\n   */\n  linkClickEvent(link: INavigationLink) {\n    this.linkEvent.emit(link);\n    return false;\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -8687,10 +8663,7 @@ const COMPONENTS = {
                 }
             ],
             "stylesData": "",
-            "implements": [
-                "OnInit"
-            ],
-            "templateData": "<footer class=\"usa-footer usa-footer--big\" role=\"contentinfo\">\n  <div class=\"sds-feedback\">\n    <button\n      type=\"button\"\n      class=\"sds-feedback__button simple-toggle\"\n      [attr.aria-expanded]=\"!isCollapsedContent\"\n      aria-controls=\"collapseID\"\n      (click)=\"isCollapsedContent = !isCollapsedContent\"\n    >\n      <fa-layers [fixedWidth]=\"true\" size=\"2x\">\n        <fa-icon\n          [icon]=\"['fas', 'circle']\"\n          [sdsCollapse]=\"isCollapsedContent\"\n          class=\"text-base-light margin-auto\"\n        ></fa-icon>\n        <fa-icon\n          [icon]=\"['sds', 'arrow-up']\"\n          [sdsCollapse]=\"isCollapsedContent\"\n          transform=\"shrink-6\"\n        ></fa-icon>\n        <fa-icon\n          [icon]=\"['fas', 'circle']\"\n          [sdsCollapse]=\"!isCollapsedContent\"\n          class=\"text-primary margin-auto\"\n        ></fa-icon>\n        <fa-icon\n          [icon]=\"['sds', 'arrow-down']\"\n          [sdsCollapse]=\"!isCollapsedContent\"\n          transform=\"shrink-6\"\n        ></fa-icon>\n      </fa-layers>\n      <span class=\"sds-feedback__title\">Feedback</span>\n    </button>\n    <div\n      id=\"collapseID\"\n      [sdsCollapse]=\"isCollapsedContent\"\n      class=\"sds-feedback__response\"\n    >\n      <div class=\"tablet:width-tablet-lg padding-4 margin-auto\">\n        <span class=\"sds-feedback__response-title\">One Question </span>\n        <span class=\"sds-feedback__response-title-thin\"> Survey</span>\n        <p class=\"sds-feedback__response-text\">\n          What changes or improvements would you suggest?\n        </p>\n        <input class=\"sds-feedback__input\" type=\"text\" />\n        <p class=\"text-right\">\n          <button class=\"usa-button usa-button--secondary\">Submit</button>\n        </p>\n      </div>\n    </div>\n  </div>\n\n\n        <div class=\"usa-footer__primary-section\">\n          <div class=\"grid-container\">\n            <div class=\"grid-row grid-gap\">\n              <div class=\"tablet:grid-col-12\">\n                <nav class=\"usa-footer__nav\">\n                  <div class=\"grid-row grid-gap-4\"\n                  >\n                    <div class=\"grid-col-6 tablet:grid-col-3\"\n                    *ngFor=\"let section of model.linkSections\"\n                    >\n                      <section class=\"usa-footer__primary-content usa-footer__primary-content--collapsible\">\n                        <span class=\"usa-footer__primary-link\">{{ section.text }}</span>\n                        <ul class=\"usa-list usa-list--unstyled\">\n\n                          <li *ngFor=\"let link of section.links\">\n                            <ng-container\n                              [ngTemplateOutlet]=\"\n                                navigationHelper.isLinkInternal(link)\n                                  ? footerRouteLinkTemplate\n                                  : navigationHelper.isLinkExternal(link)\n                                  ? footerHREFLinkTemplate\n                                  : footerEVENTLinkTemplate\n                              \"\n                              [ngTemplateOutletContext]=\"{ $implicit: link }\"\n                            ></ng-container>\n                          </li>\n                        </ul>\n                      </section>\n                    </div>\n                  </div>\n                </nav>\n              </div>\n            </div>\n          </div>\n\n          <nav class=\"sds-footer__nav--accordion\">\n            <div class=\"sds-accordion usa-accordion\"\n            *ngFor=\"let section of model.linkSections; let $index = index\"\n            >\n              <h2 class=\"usa-accordion__heading sds-accordion__heading\">\n                <button class=\"usa-accordion__button usa-accordion__block\" [attr.aria-expanded]=\"$index == expandedIndex\"\n                aria-controls=\"collapseMobileID\"\n                (click)=\"collapse($index)\">\n                  {{ section.text }}\n                </button>\n              </h2>\n              <div\n              [sdsCollapse]=\"$index !== expandedIndex || $index == null\"\n              >\n              <ul class=\"sds-footer__nav--accordion-content\" [hidden]=\"$index != expandedIndex\">\n                <li *ngFor=\"let link of section.links\">\n                  <ng-container\n                    [ngTemplateOutlet]=\"\n                      navigationHelper.isLinkInternal(link)\n                        ? footerRouteLinkTemplate\n                        : navigationHelper.isLinkExternal(link)\n                        ? footerHREFLinkTemplate\n                        : footerEVENTLinkTemplate\n                    \"\n                    [ngTemplateOutletContext]=\"{ $implicit: link }\"\n                  ></ng-container>\n                </li>\n              </ul>\n            </div>\n            </div>\n          </nav>\n        </div>\n\n\n\n  <div class=\"usa-footer__secondary-section\">\n    <div class=\"grid-container\">\n      <div class=\"grid-row grid-gap\">\n        <div\n          class=\"grid-col-12 mobile-lg:grid-col-6 tablet:grid-col-4 margin-bottom-4\"\n        >\n          <div class=\"sds-footer__logo\">\n              <img\n                *ngIf=\"model.footerLogo\"\n                class=\"usa-footer__logo-img\"\n                [attr.src]=\"model.footerLogo.imageSourcePath\"\n                [attr.alt]=\"model.footerLogo.imageAltText\"\n              />\n           \n            <h3 class=\"sds-footer__logo-heading\">\n              General Services Administration\n            </h3>\n          </div>\n        </div>\n        <div\n          class=\"sds-footer__note grid-col-12 mobile-lg:grid-col-6 tablet:grid-col-8\"\n        >\n          This is a U.S. General Services Administration Federal Government\n          computer system that is <strong>\"FOR OFFICIAL USE ONLY.\"</strong> This\n          system is subject to monitoring. Individuals found performing\n          unauthorized activities are subject to disciplinary action including\n          criminal prosecution.\n        </div>\n      </div>\n    </div>\n  </div>\n</footer>\n\n<ng-template #footerRouteLinkTemplate let-link>\n  <a class=\"usa-link\" [routerLink]=\"[link.route]\">{{ link.text }}</a>\n</ng-template>\n\n<ng-template #footerHREFLinkTemplate let-link>\n  <a class=\"usa-link\" [href]=\"link.route\">{{ link.text }}</a>\n</ng-template>\n\n<ng-template #footerEVENTLinkTemplate let-link>\n  <a href=\"javascript:void(0)\" (click)=\"linkClickEvent(link)\">{{\n    link.text\n  }}</a>\n</ng-template>"
+            "templateData": "<footer class=\"usa-footer\" role=\"contentinfo\">\n  <div class=\"sds-feedback\">\n    <button\n      type=\"button\"\n      class=\"sds-feedback__button simple-toggle\"\n      [attr.aria-expanded]=\"!isCollapsedContent\"\n      aria-controls=\"collapseID\"\n      (click)=\"isCollapsedContent = !isCollapsedContent\"\n    >\n      <fa-layers [fixedWidth]=\"true\" size=\"2x\">\n        <fa-icon\n          [icon]=\"['fas', 'circle']\"\n          [sdsCollapse]=\"isCollapsedContent\"\n          class=\"text-base-light margin-auto\"\n        ></fa-icon>\n        <fa-icon\n          [icon]=\"['sds', 'arrow-up']\"\n          [sdsCollapse]=\"isCollapsedContent\"\n          transform=\"shrink-6\"\n        ></fa-icon>\n        <fa-icon\n          [icon]=\"['fas', 'circle']\"\n          [sdsCollapse]=\"!isCollapsedContent\"\n          class=\"text-primary margin-auto\"\n        ></fa-icon>\n        <fa-icon\n          [icon]=\"['sds', 'arrow-down']\"\n          [sdsCollapse]=\"!isCollapsedContent\"\n          transform=\"shrink-6\"\n        ></fa-icon>\n      </fa-layers>\n      <span class=\"sds-feedback__title\">Feedback</span>\n    </button>\n    <div\n      id=\"collapseID\"\n      [sdsCollapse]=\"isCollapsedContent\"\n      class=\"sds-feedback__response\"\n    >\n      <div class=\"tablet:width-tablet-lg padding-4 margin-auto\">\n        <span class=\"sds-feedback__response-title\">One Question </span>\n        <span class=\"sds-feedback__response-title-thin\"> Survey</span>\n        <p class=\"sds-feedback__response-text\">\n          What changes or improvements would you suggest?\n        </p>\n        <input class=\"sds-feedback__input\" type=\"text\" />\n        <p class=\"text-right\">\n          <button class=\"usa-button usa-button--secondary\">Submit</button>\n        </p>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"usa-footer__primary-section\">\n    <div class=\"grid-container margin-x-0 mobile-lg:margin-x-auto padding-x-0 mobile-lg:padding-x-auto display-none tablet:display-block\">\n      <div class=\"grid-row grid-gap-0 mobile-lg:grid-gap\">\n        <div class=\"tablet:grid-col-12\">\n          <nav class=\"usa-footer__nav margin-x-0 mobile-lg:margin-x-2 padding-x-0 mobile-lg:padding-x-2\">\n            <div class=\"grid-row grid-gap-0 mobile-lg:grid-gap-4\">\n              <div class=\"mobile-lg:grid-col-6 desktop:grid-col-3\" *ngFor=\"let section of model.linkSections\">\n                <section class=\"usa-footer__primary-content usa-footer__primary-content--collapsible\">\n                  <h4 class=\"usa-footer__primary-link\">{{ section.text }}</h4>\n                  <ul class=\"usa-list usa-list--unstyled\">\n                    <li class=\"usa-footer__secondary-link\" *ngFor=\"let link of section.links\">\n                      <ng-container\n                        [ngTemplateOutlet]=\"\n                          navigationHelper.isLinkInternal(link)\n                            ? footerRouteLinkTemplate\n                            : navigationHelper.isLinkExternal(link)\n                            ? footerHREFLinkTemplate\n                            : footerEVENTLinkTemplate\n                        \"\n                        [ngTemplateOutletContext]=\"{ $implicit: link }\"\n                      ></ng-container>\n                    </li>\n                  </ul>\n                </section>\n              </div>\n            </div>\n          </nav>\n        </div>\n      </div>\n    </div>\n    <nav class=\"sds-footer__nav--accordion display-block tablet:display-none\">\n      <sds-accordion-next [multi]=\"true\">\n        <sds-accordion-item *ngFor=\"let section of model.linkSections; let $index = index\">\n          <sds-accordion-title>{{ section.text }}</sds-accordion-title>\n          <sds-accordion-content>\n            <ul class=\"usa-list usa-list--unstyled padding-y-1\">\n              <li class=\"usa-footer__secondary-link\" *ngFor=\"let link of section.links\">\n                <ng-container\n                  [ngTemplateOutlet]=\"\n                    navigationHelper.isLinkInternal(link)\n                      ? footerRouteLinkTemplate\n                      : navigationHelper.isLinkExternal(link)\n                      ? footerHREFLinkTemplate\n                      : footerEVENTLinkTemplate\n                  \"\n                  [ngTemplateOutletContext]=\"{ $implicit: link }\"\n                ></ng-container>\n              </li>\n            </ul>\n          </sds-accordion-content>\n        </sds-accordion-item>\n      </sds-accordion-next>\n    </nav>\n  </div>\n  <div class=\"usa-footer__secondary-section\">\n    <div class=\"grid-container\">\n      <div class=\"grid-row grid-gap\">\n        <div class=\"grid-col-12 mobile-lg:grid-col-6 tablet:grid-col-4 margin-bottom-4\">\n          <div class=\"sds-footer__logo\">\n            <a class=\"sds-footer__logo-link\" [attr.href]=\"model.footerLogo.href\">\n              <img\n                *ngIf=\"model.footerLogo\"\n                class=\"usa-footer__logo-img\"\n                [attr.src]=\"model.footerLogo.imageSourcePath\"\n                [attr.alt]=\"model.footerLogo.imageAltText\"\n              />\n            </a>\n            <h3 class=\"sds-footer__logo-heading\">\n              {{model.footerLogo.agencyName}}\n            </h3>\n          </div>\n        </div>\n        <div class=\"sds-footer__note grid-col-12 mobile-lg:grid-col-6 tablet:grid-col-8\" [innerHTML]=\"model.disclaimer\"></div>\n      </div>\n    </div>\n  </div>\n</footer>\n\n<ng-template #footerRouteLinkTemplate let-link>\n  <a class=\"usa-link\" [routerLink]=\"[link.route]\">{{ link.text }}</a>\n</ng-template>\n\n<ng-template #footerHREFLinkTemplate let-link>\n  <a class=\"usa-link\" [href]=\"link.route\">{{ link.text }}</a>\n</ng-template>\n\n<ng-template #footerEVENTLinkTemplate let-link>\n  <a href=\"javascript:void(0)\" (click)=\"linkClickEvent(link)\">{{\n    link.text\n  }}</a>\n</ng-template>\n"
         },
         {
             "name": "SdsHeaderComponent",
@@ -11893,7 +11866,7 @@ const COMPONENTS = {
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "/* utilities */\n.pull-left {\n  float: left;\n}\n.sr-only {\n  position: absolute !important;\n  clip: rect(1px, 1px, 1px, 1px);\n  padding: 0 !important;\n  border: 0 !important;\n  height: 1px !important;\n  width: 1px !important;\n  overflow: hidden;\n}\n.hide {\n  display: none;\n}\n.show-inline {\n  display: inline-block;\n}\n\n/* containers */\n.px-video-img-captions-container * {\n  box-sizing: border-box;\n}\n\n.px-video-img-captions-container {\n  position: relative;\n}\n\n/* progress indicator */\n.px-video-progress {\n  width: 100%;\n  height: 10px;\n}\n.px-video-progress[value] {\n  /* Reset the default appearance */\n  -webkit-appearance: none;\n  border: none;\n}\n.px-video-progress[value]::-webkit-progress-bar {\n  background-color: #e6e6e6;\n}\n.px-video-progress[value]::-webkit-progress-value {\n  background-color: #009cdf;\n}\n\n/* time */\n.px-video-time {\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  float: right;\n  margin-top: 2px;\n  font-size: 14px;\n}\n\n/* caption area */\n.px-video-captions {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  padding: 0.5em;\n  min-height: 2.5em;\n  background-color: #000;\n  color: #fff;\n  font-size: 1.1em;\n  text-align: center;\n  opacity: 0.75;\n}\n\n/* buttons */\n.px-video-controls button {\n  border: 1px #fff solid;\n  background: transparent;\n  padding: 0;\n  margin: 0 5px;\n  width: 25px;\n  height: 20px;\n  overflow: hidden;\n  background: no-repeat url(\"/assets/img/px-video-sprite.svg\");\n}\n.px-video-controls button:focus {\n  border: 1px #999 dotted;\n  outline: none;\n}\n.px-video-controls button {\n  cursor: pointer;\n}\n\n/* restart button */\n.px-video-controls button.px-video-restart {\n  background-position: -6px -333px;\n  margin-left: 0;\n}\n.px-video-controls button.px-video-restart:hover,\n.px-video-controls button.px-video-restart:focus {\n  background-position: -6px -297px;\n}\n\n/* rewind button */\n.px-video-controls button.px-video-rewind {\n  background-position: -6px -189px;\n}\n.px-video-controls button.px-video-rewind:hover,\n.px-video-controls button.px-video-rewind:focus {\n  background-position: -6px -153px;\n}\n\n/* play button */\n.px-video-controls button.px-video-play {\n  background-position: -6px -45px;\n}\n.px-video-controls button.px-video-play:hover,\n.px-video-controls button.px-video-play:focus {\n  background-position: -6px -9px;\n}\n\n/* pause button */\n.px-video-controls button.px-video-pause {\n  background-position: -6px -117px;\n}\n.px-video-controls button.px-video-pause:hover,\n.px-video-controls button.px-video-pause:focus {\n  background-position: -6px -81px;\n}\n\n/* forward button */\n.px-video-controls button.px-video-forward {\n  background-position: -6px -261px;\n}\n.px-video-controls button.px-video-forward:hover,\n.px-video-controls button.px-video-forward:focus {\n  background-position: -6px -225px;\n}\n\n.px-video-fullscreen-btn-container label {\n  display: inline-block;\n  width: 25px;\n  height: 20px;\n  margin-left: 10px;\n  background: no-repeat url(\"/assets/img/px-video-sprite.svg\");\n  background-position: -6px -907px;\n}\n.px-video-fullscreen-btn-container input[type=\"checkbox\"]:focus + label {\n  outline: 1px #999 dotted;\n  background-position: -6px -943px;\n}\n.px-video-fullscreen-btn-container input[type=\"checkbox\"]:hover + label {\n  background-position: -6px -943px;\n  cursor: pointer;\n}\n.px-video-fullscreen-btn-container input[type=\"checkbox\"]:focus + label {\n  outline: 1px #999 dotted;\n  background-position: -6px -943px;\n}\n.px-video-fullscreen-btn-container input[type=\"checkbox\"]:checked + label {\n  background-position: -6px -979px;\n}\n.px-video-fullscreen-btn-container\n  input[type=\"checkbox\"]:checked:hover\n  + label {\n  background-position: -6px -1015px;\n}\n\n/* captions button */\n.px-video-captions-btn-container label {\n  display: inline-block;\n  width: 25px;\n  height: 20px;\n  margin-left: 10px;\n  background: no-repeat url(\"/assets/img/px-video-sprite.svg\");\n  background-position: -6px -835px;\n}\n.px-video-captions-btn-container input[type=\"checkbox\"]:focus + label {\n  outline: 1px #999 dotted;\n  background-position: -6px -799px;\n}\n.px-video-captions-btn-container input[type=\"checkbox\"]:hover + label {\n  background-position: -6px -799px;\n  cursor: pointer;\n}\n.px-video-captions-btn-container input[type=\"checkbox\"]:focus + label {\n  outline: 1px #999 dotted;\n  background-position: -6px -799px;\n}\n.px-video-captions-btn-container input[type=\"checkbox\"]:checked + label {\n  background-position: -6px -871px;\n}\n\n/* mute button */\n.px-video-mute-btn-container label {\n  display: inline-block;\n  width: 25px;\n  height: 20px;\n  margin-left: 240px;\n  margin-top: 2px;\n  background: no-repeat url(\"/assets/img/px-video-sprite.svg\");\n  background-position: -6px -476px;\n}\n.px-video-mute-btn-container input[type=\"checkbox\"]:focus + label {\n  outline: 1px #999 dotted;\n  background-position: -6px -440px;\n}\n.px-video-mute-btn-container input[type=\"checkbox\"]:hover + label {\n  background-position: -6px -440px;\n  cursor: pointer;\n}\n.px-video-mute-btn-container input[type=\"checkbox\"]:focus + label {\n  outline: 1px #999 dotted;\n  background-position: -6px -440px;\n}\n/* checked state of mute button */\n.px-video-mute-btn-container input[type=\"checkbox\"]:checked + label {\n  background-position: -6px -692px;\n}\n.px-video-mute-btn-container input[type=\"checkbox\"]:checked:hover + label,\n.px-video-mute-btn-container input[type=\"checkbox\"]:checked:focus + label {\n  background-position: -6px -656px;\n}\n\n/* volume range input */\n.px-video-controls input[type=\"range\"] {\n  -webkit-appearance: none;\n  height: 6px;\n  width: 100px;\n  margin-top: 8px;\n  background-color: #e6e6e6;\n  outline: none;\n}\n.px-video-controls input[type=\"range\"]:focus::-webkit-slider-thumb {\n  outline: 1px #999 dotted;\n}\n.px-video-controls input[type=\"range\"]::-moz-range-track {\n  -moz-appearance: none;\n  height: 6px;\n  background-color: #e6e6e6;\n  border: none;\n}\n.px-video-controls input[type=\"range\"]::-webkit-slider-thumb {\n  -webkit-appearance: none !important;\n  height: 10px;\n  width: 6px;\n  background-color: #666;\n}\n.px-video-controls input[type=\"range\"]::-moz-range-thumb {\n  height: 12px;\n  width: 8px;\n  background-color: #666;\n}\n/* fixing display for IE10+ */\n@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {\n  .px-video-controls input[type=\"range\"] {\n    position: relative;\n    padding: 0;\n    height: 8px;\n    top: -3px;\n  }\n  .px-video-time {\n    margin-top: 4px;\n  }\n  .px-video-captions {\n    padding: 8px;\n    min-height: 36px;\n  }\n}\n\n.px-video-container {\n  position: relative;\n}\n.px-video-container.fullscreen {\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  -webkit-cursor-visibility: auto-hide;\n}\n\n/* Fullscreen styles */\n\n/* style applied through js */\n.px-video-controls.js-fullscreen-controls {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  z-index: 940;\n  background: white;\n}\n\n.px-video-captions.js-fullscreen-captions {\n  min-height: 3.5em;\n  font-size: 2.5em;\n  padding: 1em;\n}\n\n.px-timetip {\n  padding: 5px 10px;\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  font-size: 14px;\n  background: rgba(0, 0, 0, 0.83);\n  border-radius: 3px;\n  color: #fff;\n  width: auto;\n}\n.px-timetip:after {\n  top: 100%;\n  left: 50%;\n  border: solid transparent;\n  content: \" \";\n  height: 0;\n  width: 0;\n  position: absolute;\n  pointer-events: none;\n  border-color: rgba(43, 43, 43, 0);\n  border-top-color: #2b2b2b;\n  border-width: 10px;\n  margin-left: -10px;\n}\n",
+                    "data": "/* utilities */\n.pull-left {\n  float: left;\n}\n.sr-only {\n  position: absolute !important;\n  clip: rect(1px, 1px, 1px, 1px);\n  padding: 0 !important;\n  border: 0 !important;\n  height: 1px !important;\n  width: 1px !important;\n  overflow: hidden;\n}\n.hide {\n  display: none;\n}\n.show-inline {\n  display: inline-block;\n}\n\n/* containers */\n.px-video-img-captions-container * {\n  box-sizing: border-box;\n}\n\n.px-video-img-captions-container {\n  position: relative;\n}\n\n/* progress indicator */\n.px-video-progress {\n  width: 100%;\n  height: 10px;\n}\n.px-video-progress[value] {\n  /* Reset the default appearance */\n  -webkit-appearance: none;\n  border: none;\n}\n.px-video-progress[value]::-webkit-progress-bar {\n  background-color: #e6e6e6;\n}\n.px-video-progress[value]::-webkit-progress-value {\n  background-color: #009cdf;\n}\n\n/* time */\n.px-video-time {\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  float: right;\n  margin-top: 2px;\n  font-size: 14px;\n}\n\n/* caption area */\n.px-video-captions {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  padding: 0.5em;\n  min-height: 2.5em;\n  background-color: #000;\n  color: #fff;\n  font-size: 1.1em;\n  text-align: center;\n  opacity: 0.75;\n}\n\n/* buttons */\n.px-video-controls button {\n  border: 1px #fff solid;\n  background: transparent;\n  padding: 0;\n  margin: 0 5px;\n  width: 25px;\n  height: 20px;\n  overflow: hidden;\n  background: no-repeat url(\"./px-video-sprite.svg\");\n}\n.px-video-controls button:focus {\n  border: 1px #999 dotted;\n  outline: none;\n}\n.px-video-controls button {\n  cursor: pointer;\n}\n\n/* restart button */\n.px-video-controls button.px-video-restart {\n  background-position: -6px -333px;\n  margin-left: 0;\n}\n.px-video-controls button.px-video-restart:hover,\n.px-video-controls button.px-video-restart:focus {\n  background-position: -6px -297px;\n}\n\n/* rewind button */\n.px-video-controls button.px-video-rewind {\n  background-position: -6px -189px;\n}\n.px-video-controls button.px-video-rewind:hover,\n.px-video-controls button.px-video-rewind:focus {\n  background-position: -6px -153px;\n}\n\n/* play button */\n.px-video-controls button.px-video-play {\n  background-position: -6px -45px;\n}\n.px-video-controls button.px-video-play:hover,\n.px-video-controls button.px-video-play:focus {\n  background-position: -6px -9px;\n}\n\n/* pause button */\n.px-video-controls button.px-video-pause {\n  background-position: -6px -117px;\n}\n.px-video-controls button.px-video-pause:hover,\n.px-video-controls button.px-video-pause:focus {\n  background-position: -6px -81px;\n}\n\n/* forward button */\n.px-video-controls button.px-video-forward {\n  background-position: -6px -261px;\n}\n.px-video-controls button.px-video-forward:hover,\n.px-video-controls button.px-video-forward:focus {\n  background-position: -6px -225px;\n}\n\n.px-video-fullscreen-btn-container label {\n  display: inline-block;\n  width: 25px;\n  height: 20px;\n  margin-left: 10px;\n  background: no-repeat url(\"/assets/img/px-video-sprite.svg\");\n  background-position: -6px -907px;\n}\n.px-video-fullscreen-btn-container input[type=\"checkbox\"]:focus + label {\n  outline: 1px #999 dotted;\n  background-position: -6px -943px;\n}\n.px-video-fullscreen-btn-container input[type=\"checkbox\"]:hover + label {\n  background-position: -6px -943px;\n  cursor: pointer;\n}\n.px-video-fullscreen-btn-container input[type=\"checkbox\"]:focus + label {\n  outline: 1px #999 dotted;\n  background-position: -6px -943px;\n}\n.px-video-fullscreen-btn-container input[type=\"checkbox\"]:checked + label {\n  background-position: -6px -979px;\n}\n.px-video-fullscreen-btn-container\n  input[type=\"checkbox\"]:checked:hover\n  + label {\n  background-position: -6px -1015px;\n}\n\n/* captions button */\n.px-video-captions-btn-container label {\n  display: inline-block;\n  width: 25px;\n  height: 20px;\n  margin-left: 10px;\n  background: no-repeat url(\"/assets/img/px-video-sprite.svg\");\n  background-position: -6px -835px;\n}\n.px-video-captions-btn-container input[type=\"checkbox\"]:focus + label {\n  outline: 1px #999 dotted;\n  background-position: -6px -799px;\n}\n.px-video-captions-btn-container input[type=\"checkbox\"]:hover + label {\n  background-position: -6px -799px;\n  cursor: pointer;\n}\n.px-video-captions-btn-container input[type=\"checkbox\"]:focus + label {\n  outline: 1px #999 dotted;\n  background-position: -6px -799px;\n}\n.px-video-captions-btn-container input[type=\"checkbox\"]:checked + label {\n  background-position: -6px -871px;\n}\n\n/* mute button */\n.px-video-mute-btn-container label {\n  display: inline-block;\n  width: 25px;\n  height: 20px;\n  margin-left: 240px;\n  margin-top: 2px;\n  background: no-repeat url(\"/assets/img/px-video-sprite.svg\");\n  background-position: -6px -476px;\n}\n.px-video-mute-btn-container input[type=\"checkbox\"]:focus + label {\n  outline: 1px #999 dotted;\n  background-position: -6px -440px;\n}\n.px-video-mute-btn-container input[type=\"checkbox\"]:hover + label {\n  background-position: -6px -440px;\n  cursor: pointer;\n}\n.px-video-mute-btn-container input[type=\"checkbox\"]:focus + label {\n  outline: 1px #999 dotted;\n  background-position: -6px -440px;\n}\n/* checked state of mute button */\n.px-video-mute-btn-container input[type=\"checkbox\"]:checked + label {\n  background-position: -6px -692px;\n}\n.px-video-mute-btn-container input[type=\"checkbox\"]:checked:hover + label,\n.px-video-mute-btn-container input[type=\"checkbox\"]:checked:focus + label {\n  background-position: -6px -656px;\n}\n\n/* volume range input */\n.px-video-controls input[type=\"range\"] {\n  -webkit-appearance: none;\n  height: 6px;\n  width: 100px;\n  margin-top: 8px;\n  background-color: #e6e6e6;\n  outline: none;\n}\n.px-video-controls input[type=\"range\"]:focus::-webkit-slider-thumb {\n  outline: 1px #999 dotted;\n}\n.px-video-controls input[type=\"range\"]::-moz-range-track {\n  -moz-appearance: none;\n  height: 6px;\n  background-color: #e6e6e6;\n  border: none;\n}\n.px-video-controls input[type=\"range\"]::-webkit-slider-thumb {\n  -webkit-appearance: none !important;\n  height: 10px;\n  width: 6px;\n  background-color: #666;\n}\n.px-video-controls input[type=\"range\"]::-moz-range-thumb {\n  height: 12px;\n  width: 8px;\n  background-color: #666;\n}\n/* fixing display for IE10+ */\n@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {\n  .px-video-controls input[type=\"range\"] {\n    position: relative;\n    padding: 0;\n    height: 8px;\n    top: -3px;\n  }\n  .px-video-time {\n    margin-top: 4px;\n  }\n  .px-video-captions {\n    padding: 8px;\n    min-height: 36px;\n  }\n}\n\n.px-video-container {\n  position: relative;\n}\n.px-video-container.fullscreen {\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  -webkit-cursor-visibility: auto-hide;\n}\n\n/* Fullscreen styles */\n\n/* style applied through js */\n.px-video-controls.js-fullscreen-controls {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  z-index: 940;\n  background: white;\n}\n\n.px-video-captions.js-fullscreen-captions {\n  min-height: 3.5em;\n  font-size: 2.5em;\n  padding: 1em;\n}\n\n.px-timetip {\n  padding: 5px 10px;\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  font-size: 14px;\n  background: rgba(0, 0, 0, 0.83);\n  border-radius: 3px;\n  color: #fff;\n  width: auto;\n}\n.px-timetip:after {\n  top: 100%;\n  left: 50%;\n  border: solid transparent;\n  content: \" \";\n  height: 0;\n  width: 0;\n  position: absolute;\n  pointer-events: none;\n  border-color: rgba(43, 43, 43, 0);\n  border-top-color: #2b2b2b;\n  border-width: 10px;\n  margin-left: -10px;\n}\n",
                     "styleUrl": "./css/px-video.css"
                 }
             ],
@@ -12291,6 +12264,9 @@ const COMPONENTS = {
                 {
                     "type": "imports",
                     "elements": [
+                        {
+                            "name": "SdsAccordionModule"
+                        },
                         {
                             "name": "SdsCollapseModule"
                         },
@@ -13789,6 +13765,15 @@ const COMPONENTS = {
                 "kind": 177
             },
             {
+                "name": "PaginationDisplayMode",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"default\" | \"results\"",
+                "file": "libs/packages/components/src/lib/pagination/pagination.component.ts",
+                "description": "<p>pagination display modes. </p>\n",
+                "kind": 168
+            },
+            {
                 "name": "SdsAccordionDisplayMode",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
@@ -15040,6 +15025,17 @@ const COMPONENTS = {
                     "file": "libs/packages/components/src/lib/menu/menu.component.ts",
                     "description": "<p>Menu available sizes </p>\n",
                     "kind": 177
+                }
+            ],
+            "libs/packages/components/src/lib/pagination/pagination.component.ts": [
+                {
+                    "name": "PaginationDisplayMode",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"default\" | \"results\"",
+                    "file": "libs/packages/components/src/lib/pagination/pagination.component.ts",
+                    "description": "<p>pagination display modes. </p>\n",
+                    "kind": 168
                 }
             ],
             "libs/packages/components/src/lib/accordion/accordion-base.ts": [

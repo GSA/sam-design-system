@@ -2,6 +2,7 @@ import { Component, Input, ContentChild, TemplateRef, Optional, OnChanges, Simpl
 import { BehaviorSubject } from "rxjs";
 import { SearchListInterface, SearchListConfiguration } from './model/search-list-layout.model';
 import { SDSFormlyUpdateComunicationService } from '@gsa-sam/sam-formly';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome'; import { fas } from '@fortawesome/free-solid-svg-icons'; import { sds } from '@gsa-sam/sam-styles/src/icons/';
 
 @Component({
   selector: 'search-list-layout',
@@ -15,7 +16,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   */
   @ContentChild('resultContent') resultContentTemplate: TemplateRef<any>;
 
-  constructor(@Optional() private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService) { }
+  constructor(@Optional() private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService, library: FaIconLibrary) { library.addIconPacks(fas, sds); }
 
   /**
    * Input service to be called when items change
