@@ -37,6 +37,12 @@
     "experimental": {
       "tags": ["scope:shared", "platform:web", "type:ui"]
     },
+    "component-sample": {
+      "tags": []
+    },
+    "layout-sample": {
+      "tags": []
+    },
     "documentation": {
       "tags": []
     }

@@ -1,0 +1,20 @@
+<sds-page class="condensed">
+    <h2 class="usa-sr-only">Results List</h2>
+    <!-- =============== PAGE OPTIONS =============== -->
+    <sds-page-options>
+        <!-- =============== TOOLBAR =============== -->
+        <sds-toolbar #toolbar="sdsToolbar" class="tablet:grid-col-auto top-205">
+            <sds-filters [form]="form" [fields]="fields" [model]="model" ></sds-filters>
+        </sds-toolbar>
+      <!-- </sds-page-options> -->
+      <div [sdsToolbarExpand]="toolbar" class="tablet:grid-col-fill">
+          <search-list-layout class="margin-left-0" [service]="searchListSampleService" [configuration]="configuration">
+              <ng-template #resultContent let-item>
+                  <div>
+                      <search-result-list-sample-data [model]="item"></search-result-list-sample-data>
+                  </div>
+              </ng-template>
+          </search-list-layout>
+      </div>
+    </sds-page-options>
+</sds-page>

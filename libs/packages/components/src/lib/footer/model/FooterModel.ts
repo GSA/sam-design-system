@@ -14,13 +14,6 @@ export class FooterModel {
    */
 
   footerLogo?: FooterLogo;
-
-  /**
-   * Footer disclaimer
-   */
-
-  disclaimer?: string;
-
 }
 
 export class FooterLinkSection {
@@ -70,17 +63,4 @@ export interface FooterLogo {
    */
 
   imageAltText: string;
-
-  /**
-   * link for logo image
-   */
-
-  href?: string;
-
-  /**
-   * agency name adjacent to logo
-   */
-
-  agencyName?: string;
-
 }

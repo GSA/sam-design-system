@@ -57,16 +57,16 @@ describe('SdsAdvancedFiltersService', () => {
           key: 'hideField1',
           type: 'input',
           templateOptions: {
-            inputType: 'text'
+            inputType: 'text',
           }
         },
         {
           key: 'hideField2',
           type: 'input',
           templateOptions: {
-            inputType: 'text'
+            inputType: 'text',
           }
-        }
+        },
       ]
     }
   ];
@@ -84,7 +84,6 @@ describe('SdsAdvancedFiltersService', () => {
         hideOptional: true,
         label: 'Entity',
         type: 'array',
-        selectAllOption: true,
         options: [
           { key: 'legalBusinessName', value: 'Entity Name' },
           { key: 'uniqueEntityIdSam', value: 'Unique Entity ID (SAM)' }
@@ -99,13 +98,12 @@ describe('SdsAdvancedFiltersService', () => {
       templateOptions: {
         hideOptional: true,
         type: 'array',
-        selectAllOption: true,
         options: [
           { key: 'hideField1', value: null },
           { key: 'hideField2', value: null }
         ]
-      }
-    }
+      },
+    },
   ];
 
   const model = {
@@ -159,7 +157,7 @@ describe('SdsAdvancedFiltersService', () => {
             inputType: 'number',
             inputStyle: 'error'
           }
-        }
+        },
       ]
     },
     {
@@ -184,7 +182,7 @@ describe('SdsAdvancedFiltersService', () => {
             inputType: 'text',
             required: false
           }
-        }
+        },
       ]
     }
   ];

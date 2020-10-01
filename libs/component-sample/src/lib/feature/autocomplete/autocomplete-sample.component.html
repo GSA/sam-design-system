@@ -1,0 +1,28 @@
+<label id="auto1Label" for="autocomplete1">Single Select without template</label>
+<sds-autocomplete [service]="service" (ngModelChange)="changes($event)" [(ngModel)]="model" [configuration]="settings">
+</sds-autocomplete>
+
+<label id="auto2Label" for="autocomplete2">Single Select with template</label>
+<sds-autocomplete [service]="service" (ngModelChange)="changes($event)" [(ngModel)]="model2" [configuration]="settings2"
+    [suggestionTemplate]="temp"></sds-autocomplete>
+
+<label id="auto3Label" for="autocomplete3">Multi Select without template</label>
+<sds-autocomplete [service]="service" (ngModelChange)="changes($event)" [(ngModel)]="model3"
+    [configuration]="settings3"></sds-autocomplete>
+
+<label id="auto4Label" for="autocomplete4">Multi Select with template</label>
+<sds-autocomplete [service]="service" (ngModelChange)="changes($event)" [(ngModel)]="model4" [configuration]="settings4"
+    [suggestionTemplate]="temp" [selectedItemTemplate]="temp"></sds-autocomplete>
+
+
+<label id="auto5Label" for="autocomplete5">Disabled</label>
+<sds-autocomplete [service]="service" [disabled]="true" [(ngModel)]="model5" [configuration]="settings5">
+</sds-autocomplete>
+
+
+<ng-template #temp let-item>
+    <span>
+        <span>Template</span>
+        {{item['name'] +': '+ item['subtext'] }}
+    </span>
+</ng-template>

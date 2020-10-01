@@ -6,11 +6,10 @@ import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SdsCollapseModule } from '../collapse/collapse.module';
 import { SdsDirectivesModule } from '../external-link/external-link.module';
-import { SdsAccordionModule } from '@gsa-sam/sam-material-extensions';
 
 @NgModule({
   imports: [
-    CommonModule, FormsModule, RouterModule, SdsCollapseModule, FontAwesomeModule, SdsDirectivesModule, SdsAccordionModule
+    CommonModule, FormsModule, RouterModule, SdsCollapseModule, FontAwesomeModule, SdsDirectivesModule
   ],
   declarations: [SdsFooterComponent],
   exports: [SdsFooterComponent]

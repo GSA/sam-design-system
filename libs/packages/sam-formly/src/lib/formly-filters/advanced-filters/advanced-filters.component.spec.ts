@@ -36,7 +36,8 @@ describe('Advanced Filteres Component', () => {
           useValue: advancedFiltersServiceSpy
         }
       ]
-    }).compileComponents();
+    })
+      .compileComponents()
   }));
 
   beforeEach(() => {
@@ -46,17 +47,15 @@ describe('Advanced Filteres Component', () => {
     modalServiceSpy.open.and.returnValue(dialogRefSpyObj);
   });
 
-  afterEach(() => {
-    fixture.destroy();
-  });
-
   it('should create component', () => {
     expect(component).toBeTruthy();
   });
 
-  xit('should open popup and close popup', () => {
+  it('should open popup and close popup', fakeAsync(() => {
     component.openDialog();
-    fixture.detectChanges();
+    expect(advancedFiltersService.convertToCheckboxes).toHaveBeenCalled();
+
+    expect(modalServiceSpy.open).toHaveBeenCalled();
     expect(dialogRefSpyObj.afterClosed).toHaveBeenCalled();
-  });
+  }));
 });

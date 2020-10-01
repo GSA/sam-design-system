@@ -2,11 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
 import { FormGroup, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
-import {
-  SdsDialogRef,
-  SDS_DIALOG_DATA,
-  SdsDialogService
-} from '@gsa-sam/components';
+import { SdsDialogRef, SDS_DIALOG_DATA, SdsDialogService } from '@gsa-sam/components';
 
 import { SdsFormlyDialogComponent } from './formly-dialog.component';
 import { SdsFormlyModule } from '../formly/formly.module';
@@ -19,10 +15,7 @@ describe('SdsFormlyDialogComponent', () => {
   let advancedFiltersService: SdsAdvancedFiltersService;
 
   beforeEach(async(() => {
-    const advancedFiltersServiceSpy = jasmine.createSpyObj(
-      'SdsAdvancedFiltersService',
-      ['updateFields']
-    );
+    const advancedFiltersServiceSpy = jasmine.createSpyObj('SdsAdvancedFiltersService', ['updateFields']);
     const dialogSpy = jasmine.createSpyObj('SdsDialogRef', ['close']);
     TestBed.configureTestingModule({
       declarations: [SdsFormlyDialogComponent],
@@ -35,10 +28,7 @@ describe('SdsFormlyDialogComponent', () => {
       providers: [
         { provide: SDS_DIALOG_DATA, useValue: {} },
         { provide: SdsDialogRef, useValue: dialogSpy },
-        {
-          provide: SdsAdvancedFiltersService,
-          useValue: advancedFiltersServiceSpy
-        }
+        { provide: SdsAdvancedFiltersService, useValue: advancedFiltersServiceSpy}
       ]
     }).compileComponents();
   }));
@@ -47,7 +37,7 @@ describe('SdsFormlyDialogComponent', () => {
     fixture = TestBed.createComponent(SdsFormlyDialogComponent);
     component = fixture.componentInstance;
     dialogRef = TestBed.get(SdsDialogRef);
-    advancedFiltersService = TestBed.get(SdsAdvancedFiltersService);
+    advancedFiltersService = TestBed.get(SdsAdvancedFiltersService)
     fixture.detectChanges();
   });
 
@@ -57,23 +47,23 @@ describe('SdsFormlyDialogComponent', () => {
 
   it('should inherit form, model, options, cancel and submit from data if available', () => {
     const initForm: FormGroup = new FormGroup({
-      testControl: new FormControl('')
+      testControl: new FormControl(''),
     });
-    const initModel = { testControl: '' };
+    const initModel = {testControl: ''};
     const initData = {
       fields: [],
       originalFields: [],
       originalModel: [],
-      cancel: 'Reset',
+      cancel: "Reset",
       form: initForm,
       model: initModel,
       options: {
         formState: {
-          disabled: true
+          disabled: true,
         }
       },
-      submit: 'Save'
-    };
+      submit: "Save"
+    }
 
     component.data = initData;
     component.ngOnInit();
@@ -85,13 +75,12 @@ describe('SdsFormlyDialogComponent', () => {
     expect(component.cancel).toEqual(initData.cancel);
   });
 
-  it("should have default values for form, model, options, cancel and submit if values aren't provided in this.data", () => {
+  it('should have default values for form, model, options, cancel and submit if values aren\'t provided in this.data', () => {
     const initData = {
       fields: [],
       originalFields: [],
       originalModel: [],
-      isAdvanceFilter: true
-    };
+    }
 
     component.data = initData;
     component.ngOnInit();
@@ -106,46 +95,36 @@ describe('SdsFormlyDialogComponent', () => {
 
   it('should call onCancel() when Cancel button is clicked', async(() => {
     spyOn(component, 'onCancel');
-    const closeBtn: HTMLElement = fixture.nativeElement.querySelector(
-      '.usa-button[type="button"]'
-    );
+    const closeBtn: HTMLElement = fixture.nativeElement.querySelector('.usa-button[type="button"]');
     closeBtn.click();
     expect(component.onCancel).toHaveBeenCalled();
   }));
 
   it('should call onSubmit() when Submit button is clicked', async(() => {
     spyOn(component, 'onSubmit');
-    const submitBtn: HTMLElement = fixture.nativeElement.querySelector(
-      '.usa-button[type="submit"]'
-    );
+    const submitBtn: HTMLElement = fixture.nativeElement.querySelector('.usa-button[type="submit"]');
     submitBtn.click();
     expect(component.onSubmit).toHaveBeenCalled();
   }));
 
   it('should close when cancel button is clicked', () => {
-    const closeBtn: HTMLElement = fixture.nativeElement.querySelector(
-      '.usa-button[type="button"]'
-    );
+    const closeBtn: HTMLElement = fixture.nativeElement.querySelector('.usa-button[type="button"]');
     closeBtn.click();
     expect(component.dialogRef.close).toHaveBeenCalled();
-  });
+  })
 
   it('should close with results when form is valid submit button is clicked', () => {
-    const submitBtn: HTMLElement = fixture.nativeElement.querySelector(
-      '.usa-button[type="submit"]'
-    );
+    const submitBtn: HTMLElement = fixture.nativeElement.querySelector('.usa-button[type="submit"]');
     submitBtn.click();
-    // expect(advancedFiltersService.updateFields).toHaveBeenCalled();
+    expect(advancedFiltersService.updateFields).toHaveBeenCalled();
     expect(component.dialogRef.close).toHaveBeenCalled();
-  });
+  })
 
   it('should not close when form is invalid and submit button is clicked', () => {
-    component.form.setErrors({ invalid: true });
-    const submitBtn: HTMLElement = fixture.nativeElement.querySelector(
-      '.usa-button[type="submit"]'
-    );
+    component.form.setErrors({invalid: true})
+    const submitBtn: HTMLElement = fixture.nativeElement.querySelector('.usa-button[type="submit"]');
     submitBtn.click();
-    expect(advancedFiltersService.updateFields).toHaveBeenCalledTimes(0);
+    expect(advancedFiltersService.updateFields).toHaveBeenCalledTimes(0)
     expect(component.dialogRef.close).toHaveBeenCalledTimes(0);
-  });
+  })
 });

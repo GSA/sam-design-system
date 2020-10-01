@@ -2,7 +2,10 @@
 "extends": "../../tsconfig.json",
   "compilerOptions": {
     "types": ["jasmine", "node"],
-    "typeRoots": ["node_modules/@types"]
+    "typeRoots": ["node_modules/@types"],
+    "module": "esnext",
   },
-  "include": ["**/*.ts"]
+  "include": ["**/*.ts",
+  "@gsa-sam/component-sample"
+  ]
 }

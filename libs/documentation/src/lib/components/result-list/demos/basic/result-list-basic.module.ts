@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SdsSearchResultListModule } from '@gsa-sam/components';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { SdsActionsMenuModule } from '@gsa-sam/layouts';
+import { SdsActionsMenuModule } from '@sam-design-system/layouts';
 import { ResultListBasic } from './result-list-basic.component';
 
 @NgModule({

@@ -15,8 +15,6 @@ import { FiltersOptional } from './demos/optional/filters-optional.component';
 import { FiltersOptionalModule } from './demos/optional/filters-optional.module';
 import { FiltersConfig } from './demos/config/filter-config.component';
 import { FiltersConfigModule } from './demos/config/filter-config.module';
-import { FiltersHideExpressionModule } from './demos/hideexpression/filters-hideexpression.module';
-import { FiltersHideExpression } from './demos/hideexpression/filters-hideexpression.component';
 
 declare var require: any;
 const DEMOS = {
@@ -34,20 +32,13 @@ const DEMOS = {
     markup: require('!!raw-loader!./demos/optional/filters-optional.component.html'),
     path: 'libs/documentation/src/lib/components/filters/demos/optional'
   },
-  hideexpression: {
-    title: 'Filters Hide expression',
-    type: FiltersHideExpression,
-    code: require('!!raw-loader!./demos/hideexpression/filters-hideexpression.component'),
-    markup: require('!!raw-loader!./demos/hideexpression/filters-hideexpression.component.html'),
-    path: 'libs/documentation/src/lib/components/filters/demos/hideexpression'
-  },
   config: {
     title: 'Filters with different field config',
     type: FiltersConfig,
     code: require('!!raw-loader!./demos/config/filter-config.component'),
     markup: require('!!raw-loader!./demos/config/filter-config.component.html'),
     path: 'libs/documentation/src/lib/components/filters/demos/config'
-  }
+  },
 };
 
 export const ROUTES = [
@@ -79,8 +70,7 @@ export const ROUTES = [
     DocumentationComponentsSharedModule,
     FiltersBasicModule,
     FiltersOptionalModule,
-    FiltersConfigModule,
-    FiltersHideExpressionModule
+    FiltersConfigModule
   ]
 })
 export class FiltersModule {

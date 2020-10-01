@@ -87,7 +87,7 @@ export class SdsFiltersComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private datePipe: DatePipe
-  ) { }
+  ) {}
 
   @HostListener('window:popstate', ['$event'])
   onpopstate(event) {
@@ -106,42 +106,40 @@ export class SdsFiltersComponent implements OnInit {
         const queryString = window.location.search.substring(1);
         const params = this.getUrlParams(queryString);
         const paramModel = this.convertToModel(params);
-        this.checkForHide();
+        this.updateChange(paramModel);
         setTimeout(() => {
           this.form.patchValue({
             ...this.model,
             ...paramModel
           });
         });
-        this.cdr.detectChanges();
       }
     }
   }
-  /**
-   * This is for getting the model which has a value.
-   */
-  checkForHide() {
-    let fieldWithValue = this.convertToParam(this.model);
-    let keys = [];
-    Object.keys(fieldWithValue).map(key => {
-      keys.push(key.replace(/\[/g, '.').replace(/\]/g, ''));
-    });
-    keys.forEach(key => {
-      const [lastKey] = key.split('.').slice(-1);
-      this.fields.forEach(field => {
-        if (key.includes(field.key)) {
-          let hiddenField;
-          if (field.fieldGroup) {
-            hiddenField = field.fieldGroup.find(item => item.key === lastKey);
-          } else {
-            hiddenField = field;
-          }
-          if (hiddenField.hide) {
-            hiddenField.hide = false;
+
+  addOption() {
+    const updatedFields: FormlyFieldConfig[] = [];
+    this.fields.forEach(field => {
+      if (field) {
+        if (field.fieldGroup) {
+          field.fieldGroup.forEach(subField => {
+            if (subField.type == 'input') {
+              field.modelOptions.updateOn = 'blur';
+            } else if (subField.type == 'autocomplete') {
+              field.templateOptions.essentialModelFields = true;
+            }
+          });
+        } else {
+          if (field.type == 'input') {
+            field.modelOptions.updateOn = 'blur';
+          } else if (field.type == 'autocomplete') {
+            field.templateOptions.essentialModelFields = true;
           }
         }
-      });
+      }
+      updatedFields.push(field);
     });
+    return updatedFields;
   }
 
   onModelChange(change: any) {
@@ -149,8 +147,7 @@ export class SdsFiltersComponent implements OnInit {
       const params = this.convertToParam(change);
       this.router.navigate(['.'], {
         relativeTo: this.route,
-        queryParams: params,
-        queryParamsHandling: 'merge'
+        queryParams: params
       });
     }
     this.updateChange(change);
@@ -163,7 +160,6 @@ export class SdsFiltersComponent implements OnInit {
     if (this.formlyUpdateComunicationService) {
       this.formlyUpdateComunicationService.updateFilter(updatedModel);
     }
-    this.cdr.detectChanges();
   }
 
   convertToParam(filters) {

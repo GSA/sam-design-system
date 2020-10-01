@@ -1,0 +1,34 @@
+<div class="grid-row">
+  <div class="grid-col-auto">
+    <sds-toolbar #toolbar="sdsToolbar" class="top-205">
+      <sds-accordion-item>
+        <sds-accordion-item-header> Filters </sds-accordion-item-header>
+        <sds-filters
+          [form]="sideMenuFiltersToolbarForm"
+          immutable
+          [fields]="sideMenuFiltersToolbarFields"
+          [model]="sideMenuFiltersToolbarModel"
+          (filterChange)="sideMenuFiltersToolbarChange$.next($event)"
+        >
+        </sds-filters>
+      </sds-accordion-item>
+    </sds-toolbar>
+  </div>
+  <div
+    class="sam-example-pagination grid-col-fill"
+    [sdsToolbarExpand]="toolbar"
+  >
+    <div class="sds-card  sds-card--shadowed sds-card--bordered">
+      <div class="sds-card__header">Filter Model:</div>
+      <div class="sds-card__content">
+        <pre>
+          {{
+            sideMenuFiltersToolbarResults
+              ? (sideMenuFiltersToolbarResults | json)
+              : ''
+          }}</pre
+        >
+      </div>
+    </div>
+  </div>
+</div>

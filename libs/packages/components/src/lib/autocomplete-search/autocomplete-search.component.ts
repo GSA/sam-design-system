@@ -33,7 +33,8 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   /**
    * Ul list of elements
    */
-  @ViewChild('resultsList') resultsListElement: ElementRef;
+  // @ViewChild('resultsList') resultsListElement: ElementRef;
+  @ViewChild('resultList') resultsListElement: ElementRef;
 
   /**
    * input control
@@ -86,11 +87,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * selected index
    */
   public highlightedIndex: number = 0;
-
-  /**
-   * selected child index
-   */
-  public highlightedChildIndex = 0;
 
   /**
    * highlighted object in drop down
@@ -242,10 +238,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   inputFocusHandler(): void {
     if (!this.configuration.isTagModeEnabled) {
       if (this.configuration.focusInSearch) {
-        this.highlightedIndex = 0;
-        this.highlightedChildIndex = this.configuration.isSelectableGroup
-          ? 0
-          : null;
         this.getResults(this.inputValue || '');
       }
       this.onTouchedCallback();
@@ -264,16 +256,16 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
         event.preventDefault();
       }
     } else if (KeyHelper.is(KEYS.DOWN, event)) {
-      this.onArrowGroupDown();
+      this.onArrowDown();
     } else if (KeyHelper.is(KEYS.UP, event)) {
       event.preventDefault();
-      this.onArrowGroupUp();
+      this.onArrowUp();
     } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex >= 0) {
       if (this.configuration.isTagModeEnabled) {
         const val = this.createFreeTextItem();
         this.selectItem(val);
       } else {
-        this.selectItem(this.highlightedItem);
+          this.selectItem(this.highlightedItem);
       }
     } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex < 0) {
       if (this.configuration.isFreeTextEnabled) {
@@ -295,19 +287,16 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * @param item
    */
   public selectItem(item: object): void {
-    let filterItem = {};
-    if (this.essentialModelFields) {
-      filterItem[this.configuration.primaryKeyField] =
-        item[this.configuration.primaryKeyField];
-      filterItem[this.configuration.primaryTextField] =
-        item[this.configuration.primaryTextField];
-      if (this.configuration.secondaryTextField) {
-        filterItem[this.configuration.secondaryTextField] =
-          item[this.configuration.secondaryTextField];
-      }
-    } else {
-      filterItem = item;
+    let filterItem =  {};
+    if(this.essentialModelFields){
+      filterItem[this.configuration.primaryKeyField]= item[this.configuration.primaryKeyField];
+      filterItem[this.configuration.primaryTextField]= item[this.configuration.primaryTextField];
+    if(this.configuration.secondaryTextField) {
+      filterItem[this.configuration.secondaryTextField]= item[this.configuration.secondaryTextField];
     }
+  } else {
+    filterItem = item;
+  }
     SDSSelectedItemModelHelper.addItem(
       filterItem,
       this.configuration.primaryKeyField,
@@ -333,71 +322,32 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     this.focusRemoved();
   }
 
-  openOptions() {
-    this.input.nativeElement.focus();
-  }
-
-  public getFlatElements() {
-    const results = this.results;
-    const flat = [];
-    const flatten = (array: any) => {
-      for (let i in array) {
-        const item = array[i];
-        flat.push(item);
-        if (
-          item[this.configuration.groupByChild] &&
-          item[this.configuration.groupByChild].length
-        ) {
-          flatten(item[this.configuration.groupByChild]);
-        }
-      }
-    };
-    flatten(results);
-    return flat;
-  }
-  /**
-   * When paging up and down with arrow key it sets the highlighted item into view
-   */
-  private scrollToSelectedItem() {
-    if (this.highlightedIndex >= 0) {
-      let selectedChild;
-      const dom = this.resultsListElement.nativeElement;
-      selectedChild = dom.querySelector('.sds-autocomplete__item--highlighted');
-      if (selectedChild) {
-        selectedChild.scrollIntoView({
-          behavior: 'smooth',
-          block: 'center',
-          inline: 'start'
-        });
-      }
-    }
-  }
-  /**
-   *  handles the arrow down key event
-   */
-  private onArrowGroupDown(): void {
-    if (this.results && this.results.length > 0) {
-      const flat = this.getFlatElements();
-      if (this.highlightedIndex < this.results.length - 1) {
-        this.highlightedIndex++;
-      }
-      this.setHighlightedItem(flat[this.highlightedIndex]);
-      this.scrollToSelectedItem();
-    }
-  }
   /**
    *  handles the arrow up key event
    */
-  private onArrowGroupUp(): void {
+  private onArrowUp(): void {
     if (this.results && this.results.length > 0) {
-      const flat = this.getFlatElements();
-      if (this.highlightedIndex != 0) {
+      if (this.highlightedIndex >= 0) {
         this.highlightedIndex--;
+        this.setHighlightedItem(this.results[this.highlightedIndex]);
+        this.scrollSelectedItemIntoView();
       }
-      this.setHighlightedItem(flat[this.highlightedIndex]);
-      this.scrollToSelectedItem();
     }
   }
+
+  /**
+   *  handles the arrow down key event
+   */
+  private onArrowDown(): void {
+    if (this.results && this.results.length > 0) {
+      if (this.highlightedIndex < this.results.length - 1) {
+        this.highlightedIndex++;
+        this.setHighlightedItem(this.results[this.highlightedIndex]);
+        this.scrollSelectedItemIntoView();
+      }
+    }
+  }
+
   showFreeText() {
     if (this.configuration.isFreeTextEnabled) {
       if (this.inputValue) {
@@ -436,18 +386,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     item[this.configuration.primaryKeyField] = this.inputValue;
     return item;
   }
-  /**
-   *  return Item is already selected or not
-   * @param result
-   */
-  checkItemSelected(result: any) {
-    const selectedItem = this.model.items.filter(
-      item =>
-        item[this.configuration.primaryKeyField] ===
-        result[this.configuration.primaryKeyField]
-    );
-    return selectedItem.length > 0 ? true : false;
-  }
+
   /**
    *  gets the inital results
    * @param searchString
@@ -493,6 +432,16 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   private matchPastSearchString(searchString: string) {
     return this.searchString === searchString;
   }
+
+  /**
+   * highlights the index being hovered
+   * @param index
+   */
+  listItemHover(index: number): void {
+    this.highlightedIndex = index;
+    this.setHighlightedItem(this.results[this.highlightedIndex]);
+  }
+
   /**
    * Scroll Event Handler (Calculates if mpre items should be asked for from service on scrolling down)
    */
@@ -531,6 +480,22 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   private addResult(item: object) {
     //add check to make sure item does not exist
     this.results.push(item);
+  }
+
+  /**
+   * When paging up and down with arrow key it sets the highlighted item into view
+   */
+  private scrollSelectedItemIntoView() {
+    if (this.highlightedIndex >= 0) {
+      const selectedChild = this.resultsListElement.nativeElement.children[
+        this.highlightedIndex
+      ];
+      selectedChild.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'start'
+      });
+    }
   }
 
   /**

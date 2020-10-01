@@ -1,0 +1,19 @@
+<sds-page-options>
+  <div class="grid-col-4">
+    <sds-accordion-item expanded="true">
+      <sds-accordion-item-header> Filters </sds-accordion-item-header>
+      <form [formGroup]="form">
+        <sds-filters [form]="form" [fields]="fields" [model]="model" immutable></sds-filters>
+      </form>
+    </sds-accordion-item>
+  </div>
+  <div class="sam-example-pagination grid-col-fill">
+    <gsa-sam-side-menu-filters-model [model]="model"></gsa-sam-side-menu-filters-model>
+  </div>
+</sds-page-options>
+
+<h3>Toolbar Filters</h3>
+<sds-side-menu-filters-toolbar-sample></sds-side-menu-filters-toolbar-sample>
+
+<h3>Advanced Filters Dialog</h3>
+<sds-side-menu-filters-advanced-sample></sds-side-menu-filters-advanced-sample>

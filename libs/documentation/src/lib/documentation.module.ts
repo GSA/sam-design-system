@@ -4,171 +4,56 @@ import { OverviewModule } from './pages/overview/overview.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { library } from '@fortawesome/fontawesome-svg-core';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { sds } from '@gsa-sam/sam-styles/src/icons/';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 
 /* Layout / Components */
-import {
-  ROUTES as HEADER_ROUTES,
-  HeaderModule
-} from './components/header/header.module';
-import {
-  ROUTES as FOOTER_ROUTES,
-  FooterModule
-} from './components/footer/footer.module';
-import {
-  ROUTES as SUBHEADER_ROUTES,
-  SubHeaderModule
-} from './components/subheader/subheader.module';
-import {
-  ROUTES as DIALOG_ROUTES,
-  DialogModule
-} from './components/dialog/dialog.module';
-import {
-  ROUTES as ACCORDION_ROUTES,
-  AccordionModule
-} from './components/accordion/accordion.module';
-import {
-  ROUTES as DOWNLOAD_ROUTES,
-  DownloadModule
-} from './components/download/download.module';
-import {
-  ROUTES as COLLAPSE_ROUTES,
-  CollapseModule
-} from './components/collapse/collapse.module';
-import {
-  ROUTES as ACTIONS_ROUTES,
-  ActionsModule
-} from './components/actions/actions.module';
-import {
-  ROUTES as PAGINATION_ROUTES,
-  PaginationModule
-} from './components/pagination/pagination.module';
-import {
-  ROUTES as SIDE_NAVIGATION_ROUTES,
-  SideNavigationModule
-} from './components/sidenavigation/sidenavigation.module';
-import {
-  ROUTES as RESULT_LIST_ROUTES,
-  ResultListModule
-} from './components/result-list/result-list.module';
-import {
-  ROUTES as SEARCH_ROUTES,
-  SearchModule
-} from './components/search/search.module';
-import {
-  ROUTES as AUTOCOMPLETE_ROUTES,
-  AutocompleteModule
-} from './components/autocomplete/autocomplete.module';
-import {
-  ROUTES as VIDEO_ROUTES,
-  VideoModule
-} from './components/video/video.module';
-import {
-  ROUTES as POPUP_ROUTES,
-  PopupModule
-} from './components/popup/popup.module';
-import {
-  ROUTES as FILTERS_ROUTES,
-  FiltersModule
-} from './components/filters/filters.module';
+import { ROUTES as HEADER_ROUTES, HeaderModule } from './components/header/header.module';
+import { ROUTES as FOOTER_ROUTES, FooterModule } from './components/footer/footer.module';
+import { ROUTES as SUBHEADER_ROUTES, SubHeaderModule } from './components/subheader/subheader.module';
+import { ROUTES as DIALOG_ROUTES, DialogModule } from './components/dialog/dialog.module';
+import { ROUTES as COLLAPSE_ROUTES, CollapseModule } from './components/collapse/collapse.module';
+import { ROUTES as ACTIONS_ROUTES, ActionsModule } from './components/actions/actions.module';
+import { ROUTES as PAGINATION_ROUTES, PaginationModule } from './components/pagination/pagination.module';
+import { ROUTES as SIDE_NAVIGATION_ROUTES, SideNavigationModule } from './components/sidenavigation/sidenavigation.module';
+import { ROUTES as RESULT_LIST_ROUTES, ResultListModule } from './components/result-list/result-list.module';
+import { ROUTES as SEARCH_ROUTES, SearchModule } from './components/search/search.module';
+import { ROUTES as AUTOCOMPLETE_ROUTES, AutocompleteModule } from './components/autocomplete/autocomplete.module';
+import { ROUTES as VIDEO_ROUTES, VideoModule } from './components/video/video.module';
+import { ROUTES as POPUP_ROUTES, PopupModule } from './components/popup/popup.module';
+import { ROUTES as FILTERS_ROUTES, FiltersModule } from './components/filters/filters.module';
 
 /* Form Types */
-import {
-  ROUTES as INPUT_ROUTES,
-  InputModule
-} from './components/formly/input/input.module';
-import {
-  ROUTES as TEXT_AREA_ROUTES,
-  TextAreaModule
-} from './components/formly/textarea/textarea.module';
-import {
-  ROUTES as CHECKBOX_ROUTES,
-  CheckboxModule
-} from './components/formly/checkbox/checkbox.module';
-import {
-  ROUTES as MULTI_CHECKBOX_ROUTES,
-  MultiCheckboxModule
-} from './components/formly/multicheckbox/multicheckbox.module';
-import {
-  ROUTES as RADIO_ROUTES,
-  RadioModule
-} from './components/formly/radio/radio.module';
-import {
-  ROUTES as SELECT_ROUTES,
-  SelectModule
-} from './components/formly/select/select.module';
-import {
-  ROUTES as FORMLY_AUTOCOMPLETE_ROUTES,
-  FormlyAutocompleteModule
-} from './components/formly/autocomplete/autocomplete.module';
-import {
-  ROUTES as FORMLY_DATEPICKER_ROUTES,
-  FormlyDatepickerModule
-} from './components/formly/datepicker/datepicker.module';
-import {
-  ROUTES as TEXT_ROUTES,
-  TextModule
-} from './components/text/text.module';
-import {
-  ROUTES as SEARCH_FORMLY_ROUTES,
-  FormlySearchModule
-} from './components/formly/search/search.module';
+import { ROUTES as INPUT_ROUTES, InputModule } from './components/formly/input/input.module';
+import { ROUTES as TEXT_AREA_ROUTES, TextAreaModule } from './components/formly/textarea/textarea.module';
+import { ROUTES as CHECKBOX_ROUTES, CheckboxModule } from './components/formly/checkbox/checkbox.module';
+import { ROUTES as MULTI_CHECKBOX_ROUTES, MultiCheckboxModule } from './components/formly/multicheckbox/multicheckbox.module';
+import { ROUTES as RADIO_ROUTES, RadioModule } from './components/formly/radio/radio.module';
+import { ROUTES as SELECT_ROUTES, SelectModule } from './components/formly/select/select.module';
+import { ROUTES as FORMLY_AUTOCOMPLETE_ROUTES, FormlyAutocompleteModule } from './components/formly/autocomplete/autocomplete.module';
+import { ROUTES as FORMLY_DATEPICKER_ROUTES, FormlyDatepickerModule } from './components/formly/datepicker/datepicker.module';
+import { ROUTES as TEXT_ROUTES, TextModule } from './components/text/text.module';
+import { ROUTES as SEARCH_FORMLY_ROUTES, FormlySearchModule } from './components/formly/search/search.module';
 
 /* Form Wrappers */
-
-import {
-  ROUTES as FORM_FIELD_ROUTES,
-  FormFieldModule
-} from './components/form-field/form-field.module';
-import {
-  ROUTES as FILTER_WRAPPER_ROUTES,
-  FilterWrapperModule
-} from './components/filterwrapper/filterwrapper.module';
-import {
-  ROUTES as ACCORDION_WRAPPER_ROUTES,
-  AccordionWrapperModule
-} from './components/accordionwrapper/accordionwrapper.module';
-import {
-  ROUTES as GROUP_ROUTES,
-  GroupWrappersModule
-} from './components/groupwrappers/groupwrappers.module';
-import {
-  ROUTES as LABEL_ROUTES,
-  LabelWrapperModule
-} from './components/labelwrapper/labelwrapper.module';
-import {
-  ROUTES as DESCRIPTION_ROUTES,
-  DescriptionWrapperModule
-} from './components/descriptionwrapper/descriptionwrapper.module';
-import {
-  ROUTES as VALIDATION_ROUTES,
-  ValidationWrapperModule
-} from './components/validationwrapper/validationwrapper.module';
-import {
-  ROUTES as TEMPLATEOPTIONS_ROUTES,
-  TemplateOptionsModule
-} from './components/templateoptions/templateoptions.module';
-import {
-  ROUTES as TABLE_ROUTES,
-  TableModule
-} from './components/table/table.module';
+import { ROUTES as FORM_FIELD_ROUTES, FormFieldModule } from './components/form-field/form-field.module';
+import { ROUTES as FILTER_WRAPPER_ROUTES, FilterWrapperModule } from './components/filterwrapper/filterwrapper.module';
+import { ROUTES as ACCORDION_WRAPPER_ROUTES, AccordionWrapperModule } from './components/accordionwrapper/accordionwrapper.module';
+import { ROUTES as GROUP_ROUTES, GroupWrappersModule } from './components/groupwrappers/groupwrappers.module';
+import { ROUTES as LABEL_ROUTES, LabelWrapperModule } from './components/labelwrapper/labelwrapper.module';
+import { ROUTES as DESCRIPTION_ROUTES, DescriptionWrapperModule } from './components/descriptionwrapper/descriptionwrapper.module';
+import { ROUTES as VALIDATION_ROUTES, ValidationWrapperModule } from './components/validationwrapper/validationwrapper.module';
+import { ROUTES as TEMPLATEOPTIONS_ROUTES, TemplateOptionsModule } from './components/templateoptions/templateoptions.module';
 
 /* Utilities */
-import {
-  ROUTES as ICONS_ROUTES,
-  IconsModule
-} from './components/icons/icons.module';
+import { ROUTES as ICONS_ROUTES, IconsModule } from './components/icons/icons.module';
+
 
 import { DocumentationSharedModule } from './shared';
 import { OverviewComponent } from './pages/overview/overview.component';
 import { ResultsLayoutModule } from './pages/layout/layout.module';
 import { ResultsLayoutComponent } from './pages/layout/layout.component';
-import { FormlyFormsModule } from './pages/formly-forms/formly-forms.module';
-import { FormlyFormsComponent } from './pages/formly-forms/formly-forms.component';
-import { FormlyConditionalModule } from './pages/formly-conditional/formly-conditional.module';
-import { FormlyConditionalComponent } from './pages/formly-conditional/formly-conditional.component';
 
 declare var require: any;
 
@@ -184,7 +69,6 @@ export const ROUTES: Routes = [
   { path: 'components/footer', children: FOOTER_ROUTES },
   { path: 'components/subheader', children: SUBHEADER_ROUTES },
   { path: 'components/dialog', children: DIALOG_ROUTES },
-  { path: 'components/download', children: DOWNLOAD_ROUTES },
   { path: 'components/collapse', children: COLLAPSE_ROUTES },
   { path: 'components/actions', children: ACTIONS_ROUTES },
   { path: 'components/pagination', children: PAGINATION_ROUTES },
@@ -195,7 +79,6 @@ export const ROUTES: Routes = [
   { path: 'components/video', children: VIDEO_ROUTES },
   { path: 'components/popup', children: POPUP_ROUTES },
   { path: 'components/filters', children: FILTERS_ROUTES },
-  { path: 'components/accordion', children: ACCORDION_ROUTES },
 
   // Formly
   { path: 'components/input', children: INPUT_ROUTES },
@@ -204,10 +87,7 @@ export const ROUTES: Routes = [
   { path: 'components/multicheckbox', children: MULTI_CHECKBOX_ROUTES },
   { path: 'components/radio', children: RADIO_ROUTES },
   { path: 'components/select', children: SELECT_ROUTES },
-  {
-    path: 'components/formly-autocomplete',
-    children: FORMLY_AUTOCOMPLETE_ROUTES
-  },
+  { path: 'components/formly-autocomplete', children: FORMLY_AUTOCOMPLETE_ROUTES },
   { path: 'components/formly-datepicker', children: FORMLY_DATEPICKER_ROUTES },
   { path: 'components/text', children: TEXT_ROUTES },
   { path: 'components/search-formly', children: SEARCH_FORMLY_ROUTES },
@@ -222,16 +102,8 @@ export const ROUTES: Routes = [
   { path: 'components/validation', children: VALIDATION_ROUTES },
   { path: 'components/templateoptions', children: TEMPLATEOPTIONS_ROUTES },
 
-  // Form Examples
-  { path: 'pages', pathMatch: 'full', redirectTo: 'pages/formly-form' },
-  { path: 'pages/formly-form', component: FormlyFormsComponent},
-  { path: 'pages/formly-conditional', component: FormlyConditionalComponent},
-
-  // Material
-  { path: 'components/table', children: TABLE_ROUTES },
-
   // Icons
-  { path: 'components/icons', children: ICONS_ROUTES }
+  { path: 'components/icons', children: ICONS_ROUTES },
 ];
 
 @NgModule({
@@ -244,7 +116,6 @@ export const ROUTES: Routes = [
     SubHeaderModule,
     DialogModule,
     CollapseModule,
-    DownloadModule,
     ActionsModule,
     PaginationModule,
     SideNavigationModule,
@@ -254,7 +125,6 @@ export const ROUTES: Routes = [
     VideoModule,
     PopupModule,
     FiltersModule,
-    AccordionModule,
     InputModule,
     OverviewModule,
     IntroductionModule,
@@ -276,14 +146,12 @@ export const ROUTES: Routes = [
     DescriptionWrapperModule,
     ValidationWrapperModule,
     TemplateOptionsModule,
-    TableModule,
-    IconsModule,
-    FormlyFormsModule,
-    FormlyConditionalModule
+    IconsModule
   ]
 })
 export class DocumentationModule {
-  constructor() {
-    library.add(fas, sds);
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fas, sds);
   }
 }
+

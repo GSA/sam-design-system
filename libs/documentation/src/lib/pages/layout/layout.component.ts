@@ -4,13 +4,15 @@ import { BehaviorSubject } from 'rxjs';
 import { DataService } from './data.service';
 import { SideNavigationModel } from '@gsa-sam/components';
 import { navigationConfig } from './navigate.config';
-import { SearchListConfiguration } from '@gsa-sam/layouts';
+import { SearchListConfiguration } from '@sam-design-system/layouts';
 import { FilterService } from './filter.service';
 @Component({
   templateUrl: './layout.component.html'
 })
 export class ResultsLayoutComponent implements AfterViewInit, OnInit {
+  // @ViewChild('resultList') resultList;
   @ViewChild('resultList') resultList;
+
 
   fields: FormlyFieldConfig[] = [];
   form;
@@ -29,26 +31,6 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
     ]
   };
 
-  /* Sort config change demo */
-  defaultListConfig: SearchListConfiguration = {
-    defaultSortValue: 'legalBusinessName',
-    pageSize: 25,
-    sortList: [
-      { text: 'Entity Name', value: 'legalBusinessName' },
-      { text: 'Status', value: 'registrationStatus' }
-    ]
-  };
-
-  updatedListConfig: SearchListConfiguration = {
-    defaultSortValue: 'cageCode',
-    pageSize: 25,
-    sortList: [
-      { text: 'Entity Name', value: 'legalBusinessName' },
-      { text: 'Cage Code', value: 'cageCode' },
-      { text: 'Status', value: 'registrationStatus' }
-    ]
-  };
-
   constructor(
     public service: DataService,
     public filterService: FilterService
@@ -63,15 +45,5 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
     this.filterChange$.subscribe(res => {
       this.resultList.updateFilter(res);
     });
-  }
-
-  updateConfig(update: boolean) {
-    if(update) {
-      this.listConfig = { ...this.updatedListConfig };
-    }
-    else {
-      this.listConfig = { ...this.defaultListConfig };
-    }
-
   }
 }

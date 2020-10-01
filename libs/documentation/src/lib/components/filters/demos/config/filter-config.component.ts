@@ -10,9 +10,7 @@ import { BehaviorSubject } from 'rxjs';
 export class FiltersConfig implements OnInit {
   results: any;
   form = new FormGroup({});
-  model = {
-    keyword: 20
-  };
+  model = {};
   public filterChange$ = new BehaviorSubject<object>(null);
 
   formlyFieldConfig: FormlyFieldConfig[] = formlyFieldConfig;

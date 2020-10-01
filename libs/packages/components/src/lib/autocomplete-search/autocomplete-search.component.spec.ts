@@ -1,11 +1,5 @@
 /* tslint:disable */
-import {
-  async,
-  ComponentFixture,
-  TestBed,
-  fakeAsync,
-  tick
-} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { SDSAutocompleteSearchComponent } from './autocomplete-search.component';
 import { SDSAutocompleteSearchConfiguration } from './models/SDSAutocompleteConfiguration';
 import { FormsModule } from '@angular/forms';
@@ -23,7 +17,8 @@ describe('SamAutocompleteComponent', () => {
     TestBed.configureTestingModule({
       declarations: [SDSAutocompleteSearchComponent],
       imports: [FormsModule, FontAwesomeModule]
-    }).compileComponents();
+    })
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -33,10 +28,10 @@ describe('SamAutocompleteComponent', () => {
     component.model = new SDSSelectedItemModel();
     component.configuration = new SDSAutocompleteSearchConfiguration();
     component.configuration.id = 'autoId';
-    component.configuration.primaryKeyField = 'element_id';
+    component.configuration.primaryKeyField = 'id';
     component.configuration.selectionMode = SelectionMode.SINGLE;
-    component.configuration.primaryTextField = 'value';
-    component.configuration.secondaryTextField = 'description';
+    component.configuration.primaryTextField = 'name';
+    component.configuration.secondaryTextField = 'subtext';
     component.configuration.debounceTime = 0;
     component.configuration.autocompletePlaceHolderText = '';
     fixture.detectChanges();
@@ -72,11 +67,12 @@ describe('SamAutocompleteComponent', () => {
   });
 
   it('Should have empty results with invalid search', fakeAsync(() => {
+
     const event = {
-      preventDefault: () => {},
+      preventDefault: ()=>{},
       target: component.input.nativeElement
     };
-    component.input.nativeElement.value = 'search';
+    component.input.nativeElement.value = "test search";
     component.input.nativeElement.focus();
     component.textChange(event);
     fixture.detectChanges();
@@ -89,26 +85,29 @@ describe('SamAutocompleteComponent', () => {
   }));
 
   it('Should have results with minimumCharacterCountSearch', fakeAsync(() => {
+
     const event = {
-      preventDefault: () => {},
+      preventDefault: ()=>{},
       target: component.input.nativeElement
     };
-    component.input.nativeElement.value = 'R';
+    component.input.nativeElement.value = "Level 7";
     component.input.nativeElement.focus();
-    component.configuration.minimumCharacterCountSearch = 2;
+    component.configuration.minimumCharacterCountSearch = 3;
     component.textChange(event);
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
     const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
+    expect(list.nativeElement.children.length).toBe(3);
   }));
+
 
   it('Should have results with input and free text search on', fakeAsync(() => {
     component.inputValue = 'search text';
     const event = {
-      key: 'Enter',
-      target: { value: component.inputValue }
-    };
+      "key": "Enter",
+      target: { "value": component.inputValue }
+    }
     component.configuration.isFreeTextEnabled = true;
     component.highlightedIndex = -1;
     component.onKeydown(event);
@@ -116,48 +115,49 @@ describe('SamAutocompleteComponent', () => {
     tick();
     fixture.detectChanges();
     expect(component.inputValue).toBe('search text');
+
   }));
+
 
   it('Should have results key press', fakeAsync(() => {
     const event = {
-      preventDefault: () => {},
+      preventDefault: ()=>{},
       target: component.input.nativeElement
     };
-    component.input.nativeElement.value = 'Formu';
+    component.input.nativeElement.value = "id";
     component.input.nativeElement.focus();
     component.textChange(event);
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
     const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
-    expect(list.nativeElement.children.length).toBe(2);
-    component.onScroll();
-    tick();
-    fixture.detectChanges();
+    expect(list.nativeElement.children.length).toBe(11);
+    expect(component.results[0]['highlighted']).toBeTruthy();
   }));
 
   it('Should not highlight first result if free text is on', fakeAsync(() => {
     const event = {
-      preventDefault: () => {},
+      preventDefault: ()=>{},
       target: component.input.nativeElement
     };
     component.configuration.isFreeTextEnabled = true;
-    component.input.nativeElement.value = 'id';
+    component.input.nativeElement.value = "id";
     component.input.nativeElement.focus();
     component.textChange(event);
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
     const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
-    expect(list.nativeElement.children.length).toBe(1);
+    expect(list.nativeElement.children.length).toBe(11);
     expect(component.highlightedIndex).toBe(-1);
   }));
 
+
   it('Should have empty results key press minimumCharacterCountSearch', fakeAsync(() => {
     const event = {
-      key: 'd',
-      target: { value: 'id' }
-    };
+      "key": "d",
+      "target": { "value": 'id' }
+    }
     component.configuration.minimumCharacterCountSearch = 3;
     component.onKeydown(event);
     fixture.detectChanges();
@@ -167,13 +167,15 @@ describe('SamAutocompleteComponent', () => {
     expect(list).toBe(null);
   }));
 
+
+
   it('Should have results on focus', fakeAsync(() => {
     component.inputFocusHandler();
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
     const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
-    expect(list.nativeElement.children.length).toBe(16);
+    expect(list.nativeElement.children.length).toBe(11);
     expect(component.results[0]['highlighted']).toBeTruthy();
   }));
 
@@ -187,118 +189,29 @@ describe('SamAutocompleteComponent', () => {
     expect(list).toBeNull();
   }));
 
-  it('Select second item with down and up arrows', fakeAsync(() => {
+  xit('Select second item with down and up arrows', fakeAsync(() => {
     component.inputFocusHandler();
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
     const downEvent = {
-      key: 'Down',
-      target: { value: 'id' },
-      preventDefault: jasmine.createSpy()
-    };
+      "key": "Down",
+      "target": { "value": 'id' }
+    }
     component.onKeydown(downEvent);
     tick();
-    fixture.detectChanges();
+    fixture.detectChanges()
     const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
-    const items = component.getFlatElements();
-    expect(list.nativeElement.children.length).toBe(16);
-    expect(items[1]['highlighted']).toBeTruthy();
+    expect(list.nativeElement.children.length).toBe(11);
+    expect(component.results[1]['highlighted']).toBeTruthy();
     const upEvent = {
-      key: 'Up',
-      target: { value: 'id' },
-      preventDefault: jasmine.createSpy()
-    };
+      "key": "Up",
+      "target": { "value": 'id' }
+    }
     component.onKeydown(upEvent);
     tick();
     fixture.detectChanges();
-
-    expect(items[0]['highlighted']).toBeTruthy();
-  }));
-
-  it('Select on top element selected up arrows with grouping', fakeAsync(() => {
-    component.inputFocusHandler();
-    component.configuration.isGroupingEnabled = true;
-    component.configuration.groupByChild = 'elements';
-    component.highlightedIndex = 0;
-    component.highlightedChildIndex = 0;
-    fixture.detectChanges();
-    tick();
-    fixture.detectChanges();
-    const downEvent = {
-      key: 'Up',
-      target: { value: 'id' },
-      preventDefault: jasmine.createSpy()
-    };
-    component.onKeydown(downEvent);
-    tick();
-    fixture.detectChanges();
-    const items = component.getFlatElements();
-    expect(items[0]['highlighted']).toBeTruthy();
-    fixture.detectChanges();
-    tick();
-    component.highlightedIndex = 1;
-    component.highlightedChildIndex = 0;
-    fixture.detectChanges();
-    tick();
-    fixture.detectChanges();
-    component.onKeydown(downEvent);
-  }));
-
-  it('Select last child item with down arrows with grouping', fakeAsync(() => {
-    component.inputFocusHandler();
-    component.configuration.isGroupingEnabled = true;
-    component.configuration.groupByChild = 'elements';
-    tick();
-    fixture.detectChanges();
-    component.highlightedIndex = 0;
-    component.highlightedChildIndex = 4;
-
-    fixture.detectChanges();
-    tick();
-    fixture.detectChanges();
-    const downEvent = {
-      key: 'Down',
-      target: { value: 'id' },
-      preventDefault: jasmine.createSpy()
-    };
-    component.onKeydown(downEvent);
-    tick();
-    fixture.detectChanges();
-    const items = component.getFlatElements();
-    expect(items[1]['highlighted']).toBeTruthy();
-  }));
-
-  it('Select second item with down and up arrows with grouping', fakeAsync(() => {
-    component.inputFocusHandler();
-    component.configuration.isGroupingEnabled = true;
-    component.configuration.groupByChild = 'elements';
-
-    component.highlightedIndex = 2;
-    fixture.detectChanges();
-    tick();
-    fixture.detectChanges();
-    const downEvent = {
-      key: 'Down',
-      target: { value: 'id' },
-      preventDefault: jasmine.createSpy()
-    };
-    component.onKeydown(downEvent);
-    tick();
-    fixture.detectChanges();
-    const items = component.getFlatElements();
-    expect(items[1]['highlighted']).toBeTruthy();
-
-    const upEvent = {
-      key: 'Up',
-      target: { value: 'id' },
-      preventDefault: jasmine.createSpy()
-    };
-    component.highlightedChildIndex = 3;
-    component.onKeydown(upEvent);
-    tick();
-    fixture.detectChanges();
-    expect(items[0]['highlighted']).toBeTruthy();
+    expect(component.results[0]['highlighted']).toBeTruthy();
   }));
 
   it('Up arrow when on first item', fakeAsync(() => {
@@ -306,19 +219,19 @@ describe('SamAutocompleteComponent', () => {
     tick();
     fixture.detectChanges();
     const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
-    expect(list.nativeElement.children.length).toBe(16);
-    const items = component.getFlatElements();
-    expect(items[0]['highlighted']).toBeTruthy();
+    expect(list.nativeElement.children.length).toBe(11);
+    expect(component.results[0]['highlighted']).toBeTruthy();
     const upEvent = {
-      key: 'Up',
-      target: { value: 'id' },
-      preventDefault: () => true
-    };
+      "key": "Up",
+      "target": { "value": 'id' },
+      "preventDefault": () => true
+    }
     component.onKeydown(upEvent);
     tick();
     fixture.detectChanges();
-    expect(items[2]['highlighted']).toBeFalsy();
+    expect(component.results[0]['highlighted']).toBeFalsy();
   }));
+
 
   it('Down arrow when on over lists item', fakeAsync(() => {
     component.inputFocusHandler();
@@ -326,35 +239,38 @@ describe('SamAutocompleteComponent', () => {
     fixture.detectChanges();
 
     const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
-    expect(list.nativeElement.children.length).toBe(16);
+    expect(list.nativeElement.children.length).toBe(11);
     expect(component.results[0]['highlighted']).toBeTruthy();
+    component.listItemHover(component.results.length - 1);
     fixture.detectChanges();
     tick();
+    expect(component.results[component.results.length - 1]['highlighted']).toBeTruthy();
     const upEvent = {
-      key: 'Down',
-      target: { value: 'id' },
-      preventDefault: jasmine.createSpy()
-    };
+      "key": "Down",
+      "target": { "value": 'id' }
+    }
     component.onKeydown(upEvent);
     tick();
     fixture.detectChanges();
-    const items = component.getFlatElements();
-    expect(items[1]['highlighted']).toBeTruthy();
+
+    expect(component.results[10]['highlighted']).toBeTruthy();
   }));
+
 
   it('Should have delete have results', fakeAsync(() => {
     const event = {
-      preventDefault: () => {},
+      preventDefault: ()=>{},
       target: component.input.nativeElement
     };
-    component.input.nativeElement.value = 'id';
+    component.input.nativeElement.value = "id";
     component.input.nativeElement.focus();
     component.textChange(event);
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
     const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
-    expect(list.nativeElement.children.length).toBe(1);
+    expect(list.nativeElement.children.length).toBe(11);
+    expect(component.results[0]['highlighted']).toBeTruthy();
   }));
 
   it('Should have results Escape press', fakeAsync(() => {
@@ -362,17 +278,18 @@ describe('SamAutocompleteComponent', () => {
     tick();
     fixture.detectChanges();
     const listBefore = fixture.debugElement.query(By.css('.sds-autocomplete'));
-    expect(listBefore.nativeElement.children.length).toBe(16);
+    expect(listBefore.nativeElement.children.length).toBe(11);
     const event = {
-      key: 'Escape',
-      target: { value: 'id' }
-    };
+      "key": "Escape",
+      "target": { "value": 'id' }
+    }
     component.onKeydown(event);
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
     const listAfter = fixture.debugElement.query(By.css('.sds-autocomplete'));
     expect(listAfter).toBeFalsy();
+
   }));
 
   it('Should have reuslts on focus', fakeAsync(() => {
@@ -381,7 +298,7 @@ describe('SamAutocompleteComponent', () => {
     tick();
     fixture.detectChanges();
     const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
-    expect(list.nativeElement.children.length).toBe(16);
+    expect(list.nativeElement.children.length).toBe(11);
     expect(component.results[0]['highlighted']).toBeTruthy();
   }));
 
@@ -391,12 +308,12 @@ describe('SamAutocompleteComponent', () => {
     tick();
     fixture.detectChanges();
     const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
-    expect(list.nativeElement.children.length).toBe(16);
+    expect(list.nativeElement.children.length).toBe(11);
     expect(component.results[0]['highlighted']).toBeTruthy();
     const event = {
-      key: 'Enter',
-      target: { value: 'id' }
-    };
+      "key": "Enter",
+      "target": { "value": 'id' }
+    }
     component.onKeydown(event);
     fixture.detectChanges();
     tick();
@@ -404,25 +321,20 @@ describe('SamAutocompleteComponent', () => {
     expect(component.model.items.length).toBe(1);
   }));
 
-  it('Should return only essentialModelFields', fakeAsync(() => {
-    component.essentialModelFields = true;
+
+  it('hover over item is highlighted', fakeAsync(() => {
     component.inputFocusHandler();
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
     const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
-    const event = {
-      key: 'Enter',
-      target: { value: 'id' }
-    };
-    component.onKeydown(event);
+    expect(list.nativeElement.children.length).toBe(11);
+    component.listItemHover(10);
     fixture.detectChanges();
     tick();
-    fixture.detectChanges();
-    expect(component.model.items.length).toBe(1);
-
-    expect(Object.keys(component.model.items[0]).length).toBe(3);
+    expect(component.results[10]['highlighted']).toBeTruthy();
   }));
+
 
   it('clearInput and results closed', fakeAsync(() => {
     component.inputFocusHandler();
@@ -430,7 +342,7 @@ describe('SamAutocompleteComponent', () => {
     tick();
     fixture.detectChanges();
     const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
-    expect(list.nativeElement.children.length).toBe(16);
+    expect(list.nativeElement.children.length).toBe(11);
     component.clearInput();
     fixture.detectChanges();
     tick();
@@ -439,6 +351,7 @@ describe('SamAutocompleteComponent', () => {
     expect(listAfter).toBeFalsy();
   }));
 
+
   it('should handle writeValue', () => {
     component.model = null;
     component.writeValue({});
@@ -446,19 +359,17 @@ describe('SamAutocompleteComponent', () => {
     let model = new SDSSelectedItemModel();
     component.writeValue(model);
     expect(component.model).toBe(model);
-    expect(component.inputValue).toBe('');
+    expect(component.inputValue).toBe("");
     model = new SDSSelectedItemModel();
-    model.items = [
-      {
-        id: 'aaa',
-        value: 'bbb'
-      }
-    ];
+    model.items = [{
+      id: 'aaa',
+      value: 'bbb'
+    }];
     component.configuration.selectionMode = SelectionMode.SINGLE;
-    component.configuration.primaryTextField = 'value';
+    component.configuration.primaryTextField = "value"
     component.writeValue(model);
     expect(component.model).toBe(model);
-    expect(component.inputValue).toBe('bbb');
+    expect(component.inputValue).toBe("bbb");
   });
 
   it('should handle disable', () => {
@@ -468,6 +379,7 @@ describe('SamAutocompleteComponent', () => {
     component.setDisabledState(false);
     expect(component.disabled).toBeFalsy();
   });
+
 
   it('should handle registerOnChange', () => {
     let item = {};
@@ -490,15 +402,17 @@ describe('SamAutocompleteComponent', () => {
     expect(component.showFreeText()).toBeTruthy();
   });
 
+
   it('should handle multi value and depth of values', () => {
-    let data = { level1: '1', sub: { level2: '2' } };
+    let data = { 'level1': '1', 'sub': { 'level2': '2' } };
     expect(component.getObjectValue(data, 'level1')).toBe('1');
     expect(component.getObjectValue(data, 'sub.level2')).toBe('2');
     expect(component.getObjectValue(data, 'level1,sub.level2')).toBe('1 2');
     expect(component.getObjectValue(data, 'sub.level2,level1')).toBe('2 1');
-    let data2 = { level1: '1' };
+    let data2 = { 'level1': '1' };
     expect(component.getObjectValue(data2, 'level1,sub.level2')).toBe('1');
   });
+
 
   it('should have reference to resultslist element defined after results on focus are populated', fakeAsync(() => {
     component.inputFocusHandler();
@@ -513,40 +427,42 @@ describe('SamAutocompleteComponent', () => {
     component.configuration.isTagModeEnabled = true;
     component.inputValue = 'searchtext';
     const event = {
-      key: 'Enter',
-      target: { value: component.inputValue }
-    };
+      "key": "Enter",
+      target: { "value": component.inputValue }
+    }
     component.onKeydown(event);
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
     expect(component.model.items.length).toBe(1);
+
   }));
 
   it('Should have input read only', fakeAsync(() => {
     component.configuration.inputReadOnly = true;
     const event = {
-      key: 'a'
-    };
+      "key": "a",
+    }
     component.onkeypress(event);
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
     fixture.detectChanges();
     const input = fixture.debugElement.query(By.css('.usa-input'));
-    expect(input.nativeElement.value).toBe('');
+    expect(input.nativeElement.value).toBe("");
   }));
 
   it('Should not trigger backspace event input read only', fakeAsync(() => {
     component.inputValue = 'Search';
     component.configuration.inputReadOnly = true;
     const event = {
-      key: 'Backspace',
-      preventDefault: () => {},
+      "key": "Backspace",
+      preventDefault: ()=>{},
       target: {
-        value: component.inputValue
+        "value": component.inputValue,
+       
       }
-    };
+    }
     component.onKeydown(event);
     fixture.detectChanges();
     tick();
@@ -554,20 +470,21 @@ describe('SamAutocompleteComponent', () => {
 
     console.log(event);
     const input = fixture.debugElement.query(By.css('.usa-input'));
-    expect(input.nativeElement.value).toBe('Search');
+    expect(input.nativeElement.value).toBe("Search");
   }));
   it('Should have input not read only', fakeAsync(() => {
     component.inputValue = 'a';
-    const event = {
-      key: 'a',
-      target: { value: component.inputValue }
-    };
+   const event = {
+      "key": "a",
+      target: { "value": component.inputValue }
+    }
     component.onkeypress(event);
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
     fixture.detectChanges();
     const input = fixture.debugElement.query(By.css('.usa-input'));
-    expect(input.nativeElement.value).toBe('a');
+    expect(input.nativeElement.value).toBe("a");
   }));
+
 });

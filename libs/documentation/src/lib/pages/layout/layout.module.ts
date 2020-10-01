@@ -18,17 +18,16 @@ import {
 } from '@gsa-sam/sam-formly';
 
 import { ResultModule } from './result/result.module';
-import { SearchListServiceModule } from '@gsa-sam/layouts';
+import { SearchListServiceModule } from '@sam-design-system/layouts';
 import { FilterService } from './filter.service';
-import { AutocompleteSampleDataService } from './services/autocomplete-sample.service';
 
 @NgModule({
   imports: [
-    CommonModule,
-    FontAwesomeModule,
-    SdsToolbarModule,
-    SdsAccordionModule,
-    SdsSideNavigationModule,
+    CommonModule, 
+    FontAwesomeModule, 
+    SdsToolbarModule, 
+    SdsAccordionModule, 
+    SdsSideNavigationModule, 
     SdsFiltersModule,
     SdsSearchResultListModule,
     SearchListServiceModule,
@@ -36,6 +35,6 @@ import { AutocompleteSampleDataService } from './services/autocomplete-sample.se
  ],
   exports: [ResultsLayoutComponent],
   declarations: [ResultsLayoutComponent],
-  providers: [FilterService, AutocompleteSampleDataService]
+  providers: [FilterService]
 })
 export class ResultsLayoutModule {}

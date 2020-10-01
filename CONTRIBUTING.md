@@ -215,7 +215,7 @@ The overall library documentation module is where we register all of the example
 > import { NgModule } from '@angular/core';
 > import { CommonModule } from '@angular/common';
 > import { RouterModule, Routes } from '@angular/router';
-> import { library } from '@fortawesome/fontawesome-svg-core';
+> import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 > import { sds } from '@gsa-sam/sam-styles/src/icons/';
 > import { fas } from '@fortawesome/free-solid-svg-icons';
 > import { DocumentationSharedModule } from './shared';
@@ -246,8 +246,9 @@ The overall library documentation module is where we register all of the example
 >   ]
 > })
 > export class DocumentationModule {
->   constructor() {
->     library.add(fas, sds);
+>   constructor(library: FaIcFaIconLibraryonL) {
+>     library.addIconPacks(fas);
+>     library.addIcons(sds);
 >   }
 > }
 >
