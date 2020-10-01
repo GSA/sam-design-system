@@ -1,8 +1,16 @@
 {
-"extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "types": ["jasmine", "node"],
-    "typeRoots": ["node_modules/@types"]
+    "types": [
+      "jasmine",
+      "node"
+    ],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "module": "esnext",
   },
-  "include": ["**/*.ts"]
+  "include": [
+    "**/*.ts"
+  ]
 }

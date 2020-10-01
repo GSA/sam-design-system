@@ -9,10 +9,18 @@
   },
   "projects": {
     "sam-formly": {
-      "tags": ["scope:shared", "platform:web", "type:ui"]
+      "tags": [
+        "scope:shared",
+        "platform:web",
+        "type:ui"
+      ]
     },
     "components": {
-      "tags": ["scope:shared", "platform:web", "type:ui"]
+      "tags": [
+        "scope:shared",
+        "platform:web",
+        "type:ui"
+      ]
     },
     "sam-design-system-site": {
       "tags": [
@@ -29,13 +37,25 @@
       ]
     },
     "sam-material-extensions": {
-      "tags": ["scope:shared", "platform:web", "type:ui"]
+      "tags": [
+        "scope:shared",
+        "platform:web",
+        "type:ui"
+      ]
     },
     "layouts": {
-      "tags": ["scope:shared", "type:ui", "platform:web"]
+      "tags": [
+        "scope:shared",
+        "type:ui",
+        "platform:web"
+      ]
     },
     "experimental": {
-      "tags": ["scope:shared", "platform:web", "type:ui"]
+      "tags": [
+        "scope:shared",
+        "platform:web",
+        "type:ui"
+      ]
     },
     "documentation": {
       "tags": []

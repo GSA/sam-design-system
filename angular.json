@@ -14,6 +14,11 @@
           "options": {
             "tsConfig": "libs/packages/sam-material-extensions/tsconfig.lib.json",
             "project": "libs/packages/sam-material-extensions/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/packages/sam-material-extensions/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -31,7 +36,9 @@
               "libs/packages/sam-material-extensions/tsconfig.lib.json",
               "libs/packages/sam-material-extensions/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       },
@@ -52,6 +59,11 @@
           "options": {
             "tsConfig": "libs/packages/components/tsconfig.lib.json",
             "project": "libs/packages/components/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/packages/components/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -73,7 +85,9 @@
               "libs/packages/components/tsconfig.lib.json",
               "libs/packages/components/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       },
@@ -94,6 +108,11 @@
           "options": {
             "tsConfig": "libs/packages/sam-formly/tsconfig.lib.json",
             "project": "libs/packages/sam-formly/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/packages/sam-formly/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -111,7 +130,9 @@
               "libs/packages/sam-formly/tsconfig.lib.json",
               "libs/packages/sam-formly/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       },
@@ -135,6 +156,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/apps/sam-design-system-site",
             "index": "apps/sam-design-system-site/src/index.html",
             "main": "apps/sam-design-system-site/src/main.ts",
@@ -176,6 +198,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -205,7 +231,9 @@
             "polyfills": "apps/sam-design-system-site/src/polyfills.ts",
             "tsConfig": "apps/sam-design-system-site/tsconfig.spec.json",
             "karmaConfig": "apps/sam-design-system-site/karma.conf.js",
-            "styles": ["apps/sam-design-system-site/src/styles.scss"],
+            "styles": [
+              "apps/sam-design-system-site/src/styles.scss"
+            ],
             "scripts": [],
             "assets": [
               "apps/sam-design-system-site/src/favicon.ico",
@@ -220,7 +248,9 @@
               "apps/sam-design-system-site/tsconfig.app.json",
               "apps/sam-design-system-site/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
@@ -246,12 +276,13 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "apps/sam-design-system-site-e2e/tsconfig.e2e.json",
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
     },
-
     "layouts": {
       "root": "libs/packages/layouts",
       "sourceRoot": "libs/packages/layouts/src",
@@ -263,6 +294,11 @@
           "options": {
             "tsConfig": "libs/packages/layouts/tsconfig.lib.json",
             "project": "libs/packages/layouts/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/packages/layouts/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -280,7 +316,9 @@
               "libs/packages/layouts/tsconfig.lib.json",
               "libs/packages/layouts/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       },
@@ -301,6 +339,11 @@
           "options": {
             "tsConfig": "libs/packages/experimental/tsconfig.lib.json",
             "project": "libs/packages/experimental/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/packages/experimental/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -318,7 +361,9 @@
               "libs/packages/experimental/tsconfig.lib.json",
               "libs/packages/experimental/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       },
@@ -349,7 +394,9 @@
               "libs/documentation/tsconfig.lib.json",
               "libs/documentation/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       },
