@@ -46,7 +46,7 @@ export const ROUTES = [
     data: {
       title: 'Datepicker',
       readme: {
-        closing
+        // closing
       },
       items: [
         {

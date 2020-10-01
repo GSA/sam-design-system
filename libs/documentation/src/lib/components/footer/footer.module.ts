@@ -34,8 +34,8 @@ export const ROUTES = [
     component: ComponentWrapperComponent,
     data: {
       readme: {
-        opening,
-        closing
+        // opening,
+        // closing
       },
       items: [
         {
