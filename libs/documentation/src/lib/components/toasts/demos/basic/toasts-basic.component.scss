@@ -43,9 +43,13 @@
     left: 64px;
   }
   @media all and (max-width: 480px) {
+    .sds-toast .sds-toast__content {
+      width: 100%;
+  }
     .toast-bottom-left {
-    bottom: 25px;
-    left: 25px;
+    bottom: 24px;
+    left: 24px;
+    right: 24px;
     }
   }
   .toast-container {
@@ -94,9 +98,9 @@
     }
   }
   //TODELETE
-    .sds-toast .sds-toast__content {
-      margin-left: 0px;
-  }
+  .sds-toast .sds-toast__content {
+    margin: 0px;
+}
     
   .sds-toast__content{
     background-color: white;
