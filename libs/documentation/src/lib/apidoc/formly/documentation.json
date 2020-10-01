@@ -3090,7 +3090,7 @@
         },
         {
             "name": "SdsFiltersComponent",
-            "id": "component-SdsFiltersComponent-0751337d34fd75d303609191ae261751",
+            "id": "component-SdsFiltersComponent-d527319fbf15dcee62056ab8a632cfeb",
             "file": "libs/packages/sam-formly/src/lib/formly-filters/sds-filters.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3109,46 +3109,46 @@
                     "name": "advancedFilters",
                     "defaultValue": "false",
                     "description": "<p>Emit results when model updated\nTo enable History Tracking\nIf advanced filters dialog should be displayed -- defaults to false</p>\n",
-                    "line": 47,
+                    "line": 49,
                     "type": "boolean"
                 },
                 {
                     "name": "fields",
                     "description": "<p>Fields are used to configure the UI components</p>\n",
-                    "line": 30,
+                    "line": 32,
                     "type": "FormlyFieldConfig[]"
                 },
                 {
                     "name": "form",
                     "description": "<p>Pass in a Form Group for ReactiveForms Support</p>\n",
-                    "line": 25,
+                    "line": 27,
                     "type": "FormGroup"
                 },
                 {
                     "name": "getCleanModel",
                     "defaultValue": "false",
                     "description": "<p>To get clean model without null and empty</p>\n",
-                    "line": 57,
+                    "line": 59,
                     "type": "boolean"
                 },
                 {
                     "name": "isHistoryEnable",
                     "defaultValue": "true",
                     "description": "<p>Timer id for the timer awaiting the service call for more typeing</p>\n",
-                    "line": 52,
+                    "line": 54,
                     "type": "boolean"
                 },
                 {
                     "name": "model",
                     "description": "<p>Model used to display the filter values.</p>\n",
-                    "line": 35,
+                    "line": 37,
                     "type": "any"
                 },
                 {
                     "name": "options",
                     "defaultValue": "{}",
                     "description": "<p>Options for the form.</p>\n",
-                    "line": 40,
+                    "line": 42,
                     "type": "FormlyFormOptions"
                 }
             ],
@@ -3157,7 +3157,7 @@
                     "name": "filterChange",
                     "defaultValue": "new EventEmitter<object[]>()",
                     "description": "<p>Emit results when model updated</p>\n",
-                    "line": 63,
+                    "line": 65,
                     "type": "EventEmitter"
                 }
             ],
@@ -3168,7 +3168,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 66
+                    "line": 68
                 },
                 {
                     "name": "_isObj",
@@ -3176,14 +3176,14 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 65
+                    "line": 67
                 },
                 {
                     "name": "formlyUpdateComunicationService",
                     "type": "SDSFormlyUpdateComunicationService",
                     "optional": false,
                     "description": "",
-                    "line": 85,
+                    "line": 87,
                     "decorators": [
                         {
                             "name": "Optional",
@@ -3200,7 +3200,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 67
+                    "line": 69
                 }
             ],
             "methodsClass": [
@@ -3210,7 +3210,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 123,
+                    "line": 127,
                     "description": "<p>This is for getting the model which has a value.</p>\n"
                 },
                 {
@@ -3224,7 +3224,7 @@
                     "optional": false,
                     "returnType": "{}",
                     "typeParameters": [],
-                    "line": 213,
+                    "line": 217,
                     "jsdoctags": [
                         {
                             "name": "filters",
@@ -3246,7 +3246,7 @@
                     "optional": false,
                     "returnType": "{}",
                     "typeParameters": [],
-                    "line": 169,
+                    "line": 173,
                     "jsdoctags": [
                         {
                             "name": "filters",
@@ -3268,7 +3268,7 @@
                     "optional": false,
                     "returnType": "{}",
                     "typeParameters": [],
-                    "line": 181,
+                    "line": 185,
                     "jsdoctags": [
                         {
                             "name": "queryString",
@@ -3290,7 +3290,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 207,
+                    "line": 211,
                     "jsdoctags": [
                         {
                             "name": "_date",
@@ -3316,7 +3316,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 224,
+                    "line": 228,
                     "jsdoctags": [
                         {
                             "name": "prefix",
@@ -3340,7 +3340,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 103
+                    "line": 107
                 },
                 {
                     "name": "onModelChange",
@@ -3353,7 +3353,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 147,
+                    "line": 151,
                     "jsdoctags": [
                         {
                             "name": "change",
@@ -3379,7 +3379,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 193,
+                    "line": 197,
                     "jsdoctags": [
                         {
                             "name": "prefix",
@@ -3408,7 +3408,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 158,
+                    "line": 162,
                     "jsdoctags": [
                         {
                             "name": "change",
@@ -3433,13 +3433,13 @@
                     "argsDecorator": [
                         "$event"
                     ],
-                    "line": 93
+                    "line": 97
                 }
             ],
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import {\n  Component,\n  Input,\n  Output,\n  EventEmitter,\n  Optional,\n  OnInit,\n  ChangeDetectorRef,\n  HostListener\n} from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';\nimport { Router, ActivatedRoute } from '@angular/router';\nimport * as qs from 'qs';\nimport { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';\nimport { DatePipe } from '@angular/common';\n@Component({\n  selector: 'sds-filters',\n  templateUrl: './sds-filters.component.html'\n})\nexport class SdsFiltersComponent implements OnInit {\n  /**\n   * Pass in a Form Group for ReactiveForms Support\n   */\n  @Input() public form: FormGroup;\n\n  /**\n   *  Fields are used to configure the UI components\n   */\n  @Input() public fields: FormlyFieldConfig[];\n\n  /**\n   *  Model used to display the filter values.\n   */\n  @Input() public model: any;\n\n  /**\n   *    Options for the form.\n   */\n  @Input() public options: FormlyFormOptions = {};\n\n  /**\n   *  Emit results when model updated\n   * To enable History Tracking\n   *  If advanced filters dialog should be displayed -- defaults to false\n   */\n  @Input() advancedFilters: boolean = false;\n\n  /**\n   * Timer id for the timer awaiting the service call for more typeing\n   */\n  @Input() public isHistoryEnable: boolean = true;\n\n  /**\n   * To get clean model without null and empty\n   */\n  @Input() public getCleanModel: boolean = false;\n\n  /**\n   *  Emit results when model updated\n   */\n  // TODO: check type -- Formly models are typically objects\n  @Output() filterChange = new EventEmitter<object[]>();\n\n  _isObj = (obj: any): boolean => typeof obj === 'object' && obj !== null;\n  _isEmpty = (obj: any): boolean => Object.keys(obj).length === 0;\n  overwrite = (baseObj: any, newObj: any) => {\n    const result = {};\n    for (const key in baseObj) {\n      if (Array.isArray(baseObj[key])) {\n        result[key] = newObj[key] || null;\n      } else if (baseObj[key] instanceof Date) {\n        result[key] = newObj[key] === undefined ? null : new Date(newObj[key]);\n      } else if (this._isObj(baseObj[key])) {\n        result[key] = this.overwrite(baseObj[key], newObj[key] || {});\n      } else {\n        result[key] = newObj[key] || null;\n      }\n    }\n    return result;\n  };\n\n  constructor(\n    @Optional()\n    public formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,\n    private cdr: ChangeDetectorRef,\n    private router: Router,\n    private route: ActivatedRoute,\n    private datePipe: DatePipe\n  ) { }\n\n  @HostListener('window:popstate', ['$event'])\n  onpopstate(event) {\n    const queryString = window.location.search.substring(1);\n    const params = this.getUrlParams(queryString);\n    const updatedFormValue = this.overwrite(\n      this.form.getRawValue(),\n      this.convertToModel(params)\n    );\n    this.form.setValue(updatedFormValue);\n    this.updateChange(updatedFormValue);\n  }\n  ngOnInit(): void {\n    if (this.isHistoryEnable) {\n      if (this._isEmpty(this.form.getRawValue())) {\n        const queryString = window.location.search.substring(1);\n        const params = this.getUrlParams(queryString);\n        const paramModel = this.convertToModel(params);\n        this.checkForHide();\n        setTimeout(() => {\n          this.form.patchValue({\n            ...this.model,\n            ...paramModel\n          });\n        });\n        this.cdr.detectChanges();\n      }\n    }\n  }\n  /**\n   * This is for getting the model which has a value.\n   */\n  checkForHide() {\n    let fieldWithValue = this.convertToParam(this.model);\n    let keys = [];\n    Object.keys(fieldWithValue).map(key => {\n      keys.push(key.replace(/\\[/g, '.').replace(/\\]/g, ''));\n    });\n    keys.forEach(key => {\n      const [lastKey] = key.split('.').slice(-1);\n      this.fields.forEach(field => {\n        if (key.includes(field.key)) {\n          let hiddenField;\n          if (field.fieldGroup) {\n            hiddenField = field.fieldGroup.find(item => item.key === lastKey);\n          } else {\n            hiddenField = field;\n          }\n          if (hiddenField.hide) {\n            hiddenField.hide = false;\n          }\n        }\n      });\n    });\n  }\n\n  onModelChange(change: any) {\n    if (this.isHistoryEnable) {\n      const params = this.convertToParam(change);\n      this.router.navigate(['.'], {\n        relativeTo: this.route,\n        queryParams: params,\n        queryParamsHandling: 'merge'\n      });\n    }\n    this.updateChange(change);\n  }\n  updateChange(change) {\n    const updatedModel = this.getCleanModel\n      ? this.convertToModel(change)\n      : change;\n    this.filterChange.emit([updatedModel]);\n    if (this.formlyUpdateComunicationService) {\n      this.formlyUpdateComunicationService.updateFilter(updatedModel);\n    }\n    this.cdr.detectChanges();\n  }\n\n  convertToParam(filters) {\n    const encodedValues = qs.stringify(filters, {\n      skipNulls: true,\n      encode: false,\n      filter: this.shortFormatDate\n    });\n    if (encodedValues) {\n      return this.getUrlParams(encodedValues);\n    } else {\n      return '';\n    }\n  }\n  getUrlParams(queryString) {\n    const target = {};\n    queryString.split('&').forEach(pair => {\n      if (pair !== '') {\n        const splitpair = pair.split('=');\n        target[splitpair[0]] =\n          splitpair[1] === '' || splitpair[1] === 'false' ? null : splitpair[1];\n      }\n    });\n    return target;\n  }\n\n  shortFormatDate(prefix, value) {\n    const fixDigit = val => {\n      return val.toString().length === 1 ? '0' + val : val;\n    };\n    const getFormattedDate = date =>\n      `${fixDigit(\n        date.getMonth() + 1\n      )}/${date.getDate()}/${date.getFullYear()}`;\n    if (value instanceof Date) {\n      value = getFormattedDate(new Date(value));\n    }\n    return value;\n  }\n\n  isDate(_date) {\n    const _regExp = new RegExp(\n      '^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(.[0-9]+)?(Z)?$'\n    );\n    return _regExp.test(_date);\n  }\n  convertToModel(filters) {\n    let obj = {};\n    const encodedValues = qs.stringify(filters, {\n      skipNulls: true,\n      encode: false,\n      filter: this.longFormatDate\n    });\n    obj = qs.parse(encodedValues);\n    return obj;\n  }\n\n  longFormatDate(prefix, value) {\n    const val = decodeURIComponent(value);\n    const isDate = /^(\\d{1,2})[-\\/](\\d{1,2})[-\\/](\\d{4})$/.exec(val);\n    if (isDate) {\n      value = new Date(val).toISOString();\n    }\n    return value;\n  }\n}\n",
+            "sourceCode": "import {\n  Component,\n  Input,\n  Output,\n  EventEmitter,\n  Optional,\n  OnInit,\n  ChangeDetectorRef,\n  HostListener\n} from '@angular/core';\nimport { FaIconLibrary } from '@fortawesome/angular-fontawesome'; import { fas } from '@fortawesome/free-solid-svg-icons'; import { sds } from '@gsa-sam/sam-styles/src/icons/';\n\nimport { FormGroup } from '@angular/forms';\nimport { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';\nimport { Router, ActivatedRoute } from '@angular/router';\nimport * as qs from 'qs';\nimport { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';\nimport { DatePipe } from '@angular/common';\n@Component({\n  selector: 'sds-filters',\n  templateUrl: './sds-filters.component.html'\n})\nexport class SdsFiltersComponent implements OnInit {\n  /**\n   * Pass in a Form Group for ReactiveForms Support\n   */\n  @Input() public form: FormGroup;\n\n  /**\n   *  Fields are used to configure the UI components\n   */\n  @Input() public fields: FormlyFieldConfig[];\n\n  /**\n   *  Model used to display the filter values.\n   */\n  @Input() public model: any;\n\n  /**\n   *    Options for the form.\n   */\n  @Input() public options: FormlyFormOptions = {};\n\n  /**\n   *  Emit results when model updated\n   * To enable History Tracking\n   *  If advanced filters dialog should be displayed -- defaults to false\n   */\n  @Input() advancedFilters: boolean = false;\n\n  /**\n   * Timer id for the timer awaiting the service call for more typeing\n   */\n  @Input() public isHistoryEnable: boolean = true;\n\n  /**\n   * To get clean model without null and empty\n   */\n  @Input() public getCleanModel: boolean = false;\n\n  /**\n   *  Emit results when model updated\n   */\n  // TODO: check type -- Formly models are typically objects\n  @Output() filterChange = new EventEmitter<object[]>();\n\n  _isObj = (obj: any): boolean => typeof obj === 'object' && obj !== null;\n  _isEmpty = (obj: any): boolean => Object.keys(obj).length === 0;\n  overwrite = (baseObj: any, newObj: any) => {\n    const result = {};\n    for (const key in baseObj) {\n      if (Array.isArray(baseObj[key])) {\n        result[key] = newObj[key] || null;\n      } else if (baseObj[key] instanceof Date) {\n        result[key] = newObj[key] === undefined ? null : new Date(newObj[key]);\n      } else if (this._isObj(baseObj[key])) {\n        result[key] = this.overwrite(baseObj[key], newObj[key] || {});\n      } else {\n        result[key] = newObj[key] || null;\n      }\n    }\n    return result;\n  };\n\n  constructor(\n    @Optional()\n    public formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,\n    private cdr: ChangeDetectorRef,\n    private router: Router,\n    private route: ActivatedRoute,\n    private datePipe: DatePipe, library: FaIconLibrary\n\n  ) { library.addIconPacks(fas, sds); }\n\n\n  @HostListener('window:popstate', ['$event'])\n  onpopstate(event) {\n    const queryString = window.location.search.substring(1);\n    const params = this.getUrlParams(queryString);\n    const updatedFormValue = this.overwrite(\n      this.form.getRawValue(),\n      this.convertToModel(params)\n    );\n    this.form.setValue(updatedFormValue);\n    this.updateChange(updatedFormValue);\n  }\n  ngOnInit(): void {\n    if (this.isHistoryEnable) {\n      if (this._isEmpty(this.form.getRawValue())) {\n        const queryString = window.location.search.substring(1);\n        const params = this.getUrlParams(queryString);\n        const paramModel = this.convertToModel(params);\n        this.checkForHide();\n        setTimeout(() => {\n          this.form.patchValue({\n            ...this.model,\n            ...paramModel\n          });\n        });\n        this.cdr.detectChanges();\n      }\n    }\n  }\n  /**\n   * This is for getting the model which has a value.\n   */\n  checkForHide() {\n    let fieldWithValue = this.convertToParam(this.model);\n    let keys = [];\n    Object.keys(fieldWithValue).map(key => {\n      keys.push(key.replace(/\\[/g, '.').replace(/\\]/g, ''));\n    });\n    keys.forEach(key => {\n      const [lastKey] = key.split('.').slice(-1);\n      this.fields.forEach(field => {\n        if (key.includes(field.key)) {\n          let hiddenField;\n          if (field.fieldGroup) {\n            hiddenField = field.fieldGroup.find(item => item.key === lastKey);\n          } else {\n            hiddenField = field;\n          }\n          if (hiddenField.hide) {\n            hiddenField.hide = false;\n          }\n        }\n      });\n    });\n  }\n\n  onModelChange(change: any) {\n    if (this.isHistoryEnable) {\n      const params = this.convertToParam(change);\n      this.router.navigate(['.'], {\n        relativeTo: this.route,\n        queryParams: params,\n        queryParamsHandling: 'merge'\n      });\n    }\n    this.updateChange(change);\n  }\n  updateChange(change) {\n    const updatedModel = this.getCleanModel\n      ? this.convertToModel(change)\n      : change;\n    this.filterChange.emit([updatedModel]);\n    if (this.formlyUpdateComunicationService) {\n      this.formlyUpdateComunicationService.updateFilter(updatedModel);\n    }\n    this.cdr.detectChanges();\n  }\n\n  convertToParam(filters) {\n    const encodedValues = qs.stringify(filters, {\n      skipNulls: true,\n      encode: false,\n      filter: this.shortFormatDate\n    });\n    if (encodedValues) {\n      return this.getUrlParams(encodedValues);\n    } else {\n      return '';\n    }\n  }\n  getUrlParams(queryString) {\n    const target = {};\n    queryString.split('&').forEach(pair => {\n      if (pair !== '') {\n        const splitpair = pair.split('=');\n        target[splitpair[0]] =\n          splitpair[1] === '' || splitpair[1] === 'false' ? null : splitpair[1];\n      }\n    });\n    return target;\n  }\n\n  shortFormatDate(prefix, value) {\n    const fixDigit = val => {\n      return val.toString().length === 1 ? '0' + val : val;\n    };\n    const getFormattedDate = date =>\n      `${fixDigit(\n        date.getMonth() + 1\n      )}/${date.getDate()}/${date.getFullYear()}`;\n    if (value instanceof Date) {\n      value = getFormattedDate(new Date(value));\n    }\n    return value;\n  }\n\n  isDate(_date) {\n    const _regExp = new RegExp(\n      '^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(.[0-9]+)?(Z)?$'\n    );\n    return _regExp.test(_date);\n  }\n  convertToModel(filters) {\n    let obj = {};\n    const encodedValues = qs.stringify(filters, {\n      skipNulls: true,\n      encode: false,\n      filter: this.longFormatDate\n    });\n    obj = qs.parse(encodedValues);\n    return obj;\n  }\n\n  longFormatDate(prefix, value) {\n    const val = decodeURIComponent(value);\n    const isDate = /^(\\d{1,2})[-\\/](\\d{1,2})[-\\/](\\d{4})$/.exec(val);\n    if (isDate) {\n      value = new Date(val).toISOString();\n    }\n    return value;\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -3466,9 +3466,13 @@
                     {
                         "name": "datePipe",
                         "type": "DatePipe"
+                    },
+                    {
+                        "name": "library",
+                        "type": "FaIconLibrary"
                     }
                 ],
-                "line": 81,
+                "line": 83,
                 "jsdoctags": [
                     {
                         "name": "formlyUpdateComunicationService",
@@ -3501,6 +3505,13 @@
                     {
                         "name": "datePipe",
                         "type": "DatePipe",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "library",
+                        "type": "FaIconLibrary",
                         "tagName": {
                             "text": "param"
                         }
@@ -3704,7 +3715,7 @@
         },
         {
             "name": "SdsFormlyResetComponent",
-            "id": "component-SdsFormlyResetComponent-c9d9536a075c3b35316903331e27aa33",
+            "id": "component-SdsFormlyResetComponent-3c271329f8b49add08c4c767b109e17b",
             "file": "libs/packages/sam-formly/src/lib/formly-reset/formly-reset.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3725,13 +3736,13 @@
                     "name": "classes",
                     "defaultValue": "['usa-button', 'usa-button--unstyled']",
                     "description": "<p>Pass in classes for reset button -- default .usa-button .usa-button--unstyled</p>\n",
-                    "line": 19,
+                    "line": 20,
                     "type": "string[]"
                 },
                 {
                     "name": "options",
                     "description": "<p>Formly form options</p>\n",
-                    "line": 14,
+                    "line": 15,
                     "type": "FormlyFormOptions"
                 }
             ],
@@ -3744,7 +3755,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 21
+                    "line": 23
                 }
             ],
             "hostBindings": [],
@@ -3752,7 +3763,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { FormlyFormOptions } from '@ngx-formly/core';\n\n@Component({\n  selector: 'sds-formly-reset',\n  templateUrl: './formly-reset.component.html',\n  styleUrls: ['./formly-reset.component.scss']\n})\nexport class SdsFormlyResetComponent {\n\n  /**\n   * Formly form options\n   */\n  @Input() options: FormlyFormOptions;\n\n  /**\n   * Pass in classes for reset button -- default .usa-button .usa-button--unstyled\n   */\n  @Input() classes: string[] = ['usa-button', 'usa-button--unstyled'];\n\n  resetAll() {\n    this.options.resetModel();\n  }\n\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { FormlyFormOptions } from '@ngx-formly/core';\nimport { FaIconLibrary } from '@fortawesome/angular-fontawesome'; import { fas } from '@fortawesome/free-solid-svg-icons'; import { sds } from '@gsa-sam/sam-styles/src/icons/';\n\n@Component({\n  selector: 'sds-formly-reset',\n  templateUrl: './formly-reset.component.html',\n  styleUrls: ['./formly-reset.component.scss']\n})\nexport class SdsFormlyResetComponent {\n\n  /**\n   * Formly form options\n   */\n  @Input() options: FormlyFormOptions;\n\n  /**\n   * Pass in classes for reset button -- default .usa-button .usa-button--unstyled\n   */\n  @Input() classes: string[] = ['usa-button', 'usa-button--unstyled'];\n\n  constructor(library: FaIconLibrary) { library.addIconPacks(fas, sds); }\n  resetAll() {\n    this.options.resetModel();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -3761,6 +3772,26 @@
                 }
             ],
             "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "library",
+                        "type": "FaIconLibrary"
+                    }
+                ],
+                "line": 20,
+                "jsdoctags": [
+                    {
+                        "name": "library",
+                        "type": "FaIconLibrary",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
             "templateData": "<button (click)=\"resetAll()\" [ngClass]=\"classes\">\n  Reset All\n  <fa-icon [icon]=\"['sds', 'reset']\" [classes]=\"['icon-reset']\"></fa-icon>\n</button>\n"
         }
     ],

@@ -647,7 +647,7 @@ const LAYOUTS = {
         },
         {
             "name": "SearchListLayoutComponent",
-            "id": "component-SearchListLayoutComponent-c1a25dfbfc7e13e3868296ddb886cc5f",
+            "id": "component-SearchListLayoutComponent-1527274652d0dd4e816e4afea76e3873",
             "file": "libs/packages/layouts/src/lib/feature/search-list-layout/search-list-layout.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -667,13 +667,13 @@ const LAYOUTS = {
                 {
                     "name": "configuration",
                     "description": "<p>configuration</p>\n",
-                    "line": 30,
+                    "line": 31,
                     "type": "SearchListConfiguration"
                 },
                 {
                     "name": "service",
                     "description": "<p>Input service to be called when items change</p>\n",
-                    "line": 24,
+                    "line": 25,
                     "type": "SearchListInterface"
                 }
             ],
@@ -685,14 +685,14 @@ const LAYOUTS = {
                     "type": "object",
                     "optional": false,
                     "description": "<p>Id of the bottom pagination control</p>\n",
-                    "line": 102
+                    "line": 103
                 },
                 {
                     "name": "filterData",
                     "type": "any",
                     "optional": false,
                     "description": "<p>Filter information</p>\n",
-                    "line": 42,
+                    "line": 43,
                     "modifierKind": [
                         112
                     ]
@@ -703,7 +703,7 @@ const LAYOUTS = {
                     "type": "[]",
                     "optional": false,
                     "description": "<p>List of items to be displayed</p>\n",
-                    "line": 112
+                    "line": 113
                 },
                 {
                     "name": "page",
@@ -711,7 +711,7 @@ const LAYOUTS = {
                     "type": "object",
                     "optional": false,
                     "description": "<p>Default Page setttings</p>\n",
-                    "line": 70
+                    "line": 71
                 },
                 {
                     "name": "paginationChange",
@@ -719,7 +719,7 @@ const LAYOUTS = {
                     "type": "",
                     "optional": false,
                     "description": "<p>Page event listener</p>\n",
-                    "line": 107,
+                    "line": 108,
                     "modifierKind": [
                         114
                     ]
@@ -729,7 +729,7 @@ const LAYOUTS = {
                     "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "<p>Child Template to be used to display the data for each item in the list of items</p>\n",
-                    "line": 16,
+                    "line": 17,
                     "decorators": [
                         {
                             "name": "ContentChild",
@@ -743,7 +743,7 @@ const LAYOUTS = {
                     "type": "string",
                     "optional": false,
                     "description": "<p>sort value</p>\n",
-                    "line": 117,
+                    "line": 118,
                     "modifierKind": [
                         114
                     ]
@@ -754,14 +754,14 @@ const LAYOUTS = {
                     "type": "object",
                     "optional": false,
                     "description": "<p>Id of the top pagination control</p>\n",
-                    "line": 97
+                    "line": 98
                 },
                 {
                     "name": "totalItems",
                     "type": "number",
                     "optional": false,
                     "description": "<p>Total number of items</p>\n",
-                    "line": 47
+                    "line": 48
                 }
             ],
             "methodsClass": [
@@ -776,7 +776,7 @@ const LAYOUTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 32,
+                    "line": 33,
                     "jsdoctags": [
                         {
                             "name": "changes",
@@ -793,7 +793,7 @@ const LAYOUTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 49
+                    "line": 50
                 },
                 {
                     "name": "onSelectChange",
@@ -801,7 +801,7 @@ const LAYOUTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 89,
+                    "line": 90,
                     "description": "<p>Sorty by change event</p>\n"
                 },
                 {
@@ -810,7 +810,7 @@ const LAYOUTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 122,
+                    "line": 123,
                     "description": "<p>calls service when updated</p>\n",
                     "modifierKind": [
                         112
@@ -827,7 +827,7 @@ const LAYOUTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 80,
+                    "line": 81,
                     "description": "<p>updates the filter and set the page number to 1 and calls imported service</p>\n",
                     "modifierKind": [
                         114
@@ -835,15 +835,15 @@ const LAYOUTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 2041,
-                                "end": 2047,
+                                "pos": 2274,
+                                "end": 2280,
                                 "flags": 0,
                                 "escapedText": "filter"
                             },
                             "type": "any",
                             "tagName": {
-                                "pos": 2035,
-                                "end": 2040,
+                                "pos": 2268,
+                                "end": 2273,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -857,7 +857,7 @@ const LAYOUTS = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, Input, ContentChild, TemplateRef, Optional, OnChanges, SimpleChanges, OnInit } from '@angular/core';\nimport { BehaviorSubject } from \"rxjs\";\nimport { SearchListInterface, SearchListConfiguration } from './model/search-list-layout.model';\nimport { SDSFormlyUpdateComunicationService } from '@gsa-sam/sam-formly';\n\n@Component({\n  selector: 'search-list-layout',\n  templateUrl: './search-list-layout.component.html',\n  styleUrls: ['./search-list-layout.component.scss']\n})\nexport class SearchListLayoutComponent implements OnChanges, OnInit {\n\n  /**\n  * Child Template to be used to display the data for each item in the list of items\n  */\n  @ContentChild('resultContent') resultContentTemplate: TemplateRef<any>;\n\n  constructor(@Optional() private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService) { }\n\n  /**\n   * Input service to be called when items change\n   */\n  @Input()\n  service: SearchListInterface;\n\n  /**\n   * configuration\n   */\n  @Input()\n  configuration: SearchListConfiguration;\n\n  ngOnChanges(changes: SimpleChanges) {\n    if (changes.configuration.currentValue) {\n      this.configuration = changes.configuration.currentValue;\n      this.sortField = this.configuration.defaultSortValue;\n      this.onSelectChange();\n    }\n  }\n  /**\n   * Filter information\n   */\n  private filterData: any;\n\n  /**\n   * Total number of items\n   */\n  totalItems: number;\n\n  ngOnInit() {\n    this.page.pageSize = this.configuration.pageSize;\n    this.sortField = this.configuration.defaultSortValue;\n    this.paginationChange.subscribe(\n      () => {\n        this.updateContent();\n      }\n    );\n    if (this.formlyUpdateComunicationService) {\n      this.formlyUpdateComunicationService.filterUpdate.subscribe(\n        (filter) => {\n          this.updateFilter(filter);\n        }\n      )\n    }\n  }\n\n\n  /**\n   * Default Page setttings\n   */\n  page = {\n    pageNumber: 1,\n    pageSize: 25,\n    totalPages: 0\n  }\n\n  /**\n   * updates the filter and set the page number to 1 and calls imported service\n   * @param filter\n   */\n  public updateFilter(filter: any) {\n    this.filterData = filter;\n    this.page.pageNumber = 1;\n    this.updateContent();\n  }\n\n  /**\n   * Sorty by change event\n   */\n  onSelectChange() {\n    this.page.pageNumber = 1;\n    this.updateContent();\n  }\n\n  /**\n   * Id of the top pagination control\n   */\n  top = { id: 'topPagination' };\n\n  /**\n   * Id of the bottom pagination control\n   */\n  bottom = { id: 'bottomPagination' };\n\n  /**\n   * Page event listener\n   */\n  public paginationChange = new BehaviorSubject<object>(this.page);\n\n  /**\n   * List of items to be displayed\n   */\n  items = [];\n\n  /**\n   * sort value\n   */\n  public sortField = '';\n\n  /**\n   * calls service when updated\n   */\n  private updateContent() {\n    if (this.filterData) {\n      setTimeout(() => {\n        this.service.getData({ 'page': this.page, sortField: this.sortField, filter: this.filterData }).subscribe(\n          (result) => {\n            this.items = result.items;\n            this.page.totalPages = Math.ceil(result.totalItems / this.page.pageSize);\n            this.totalItems = result.totalItems;\n          }\n        );\n      });\n    }\n  }\n}\n",
+            "sourceCode": "import { Component, Input, ContentChild, TemplateRef, Optional, OnChanges, SimpleChanges, OnInit } from '@angular/core';\nimport { BehaviorSubject } from \"rxjs\";\nimport { SearchListInterface, SearchListConfiguration } from './model/search-list-layout.model';\nimport { SDSFormlyUpdateComunicationService } from '@gsa-sam/sam-formly';\nimport { FaIconLibrary } from '@fortawesome/angular-fontawesome'; import { fas } from '@fortawesome/free-solid-svg-icons'; import { sds } from '@gsa-sam/sam-styles/src/icons/';\n\n@Component({\n  selector: 'search-list-layout',\n  templateUrl: './search-list-layout.component.html',\n  styleUrls: ['./search-list-layout.component.scss']\n})\nexport class SearchListLayoutComponent implements OnChanges, OnInit {\n\n  /**\n  * Child Template to be used to display the data for each item in the list of items\n  */\n  @ContentChild('resultContent') resultContentTemplate: TemplateRef<any>;\n\n  constructor(@Optional() private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService, library: FaIconLibrary) { library.addIconPacks(fas, sds); }\n\n  /**\n   * Input service to be called when items change\n   */\n  @Input()\n  service: SearchListInterface;\n\n  /**\n   * configuration\n   */\n  @Input()\n  configuration: SearchListConfiguration;\n\n  ngOnChanges(changes: SimpleChanges) {\n    if (changes.configuration.currentValue) {\n      this.configuration = changes.configuration.currentValue;\n      this.sortField = this.configuration.defaultSortValue;\n      this.onSelectChange();\n    }\n  }\n  /**\n   * Filter information\n   */\n  private filterData: any;\n\n  /**\n   * Total number of items\n   */\n  totalItems: number;\n\n  ngOnInit() {\n    this.page.pageSize = this.configuration.pageSize;\n    this.sortField = this.configuration.defaultSortValue;\n    this.paginationChange.subscribe(\n      () => {\n        this.updateContent();\n      }\n    );\n    if (this.formlyUpdateComunicationService) {\n      this.formlyUpdateComunicationService.filterUpdate.subscribe(\n        (filter) => {\n          this.updateFilter(filter);\n        }\n      )\n    }\n  }\n\n\n  /**\n   * Default Page setttings\n   */\n  page = {\n    pageNumber: 1,\n    pageSize: 25,\n    totalPages: 0\n  }\n\n  /**\n   * updates the filter and set the page number to 1 and calls imported service\n   * @param filter\n   */\n  public updateFilter(filter: any) {\n    this.filterData = filter;\n    this.page.pageNumber = 1;\n    this.updateContent();\n  }\n\n  /**\n   * Sorty by change event\n   */\n  onSelectChange() {\n    this.page.pageNumber = 1;\n    this.updateContent();\n  }\n\n  /**\n   * Id of the top pagination control\n   */\n  top = { id: 'topPagination' };\n\n  /**\n   * Id of the bottom pagination control\n   */\n  bottom = { id: 'bottomPagination' };\n\n  /**\n   * Page event listener\n   */\n  public paginationChange = new BehaviorSubject<object>(this.page);\n\n  /**\n   * List of items to be displayed\n   */\n  items = [];\n\n  /**\n   * sort value\n   */\n  public sortField = '';\n\n  /**\n   * calls service when updated\n   */\n  private updateContent() {\n    if (this.filterData) {\n      setTimeout(() => {\n        this.service.getData({ 'page': this.page, sortField: this.sortField, filter: this.filterData }).subscribe(\n          (result) => {\n            this.items = result.items;\n            this.page.totalPages = Math.ceil(result.totalItems / this.page.pageSize);\n            this.totalItems = result.totalItems;\n          }\n        );\n      });\n    }\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -873,13 +873,24 @@ const LAYOUTS = {
                     {
                         "name": "formlyUpdateComunicationService",
                         "type": "SDSFormlyUpdateComunicationService"
+                    },
+                    {
+                        "name": "library",
+                        "type": "FaIconLibrary"
                     }
                 ],
-                "line": 16,
+                "line": 17,
                 "jsdoctags": [
                     {
                         "name": "formlyUpdateComunicationService",
                         "type": "SDSFormlyUpdateComunicationService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "library",
+                        "type": "FaIconLibrary",
                         "tagName": {
                             "text": "param"
                         }
