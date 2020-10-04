@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import tableDataFull from './data';
+import tableDataFull from '../data';
 import { HttpClient } from '@angular/common/http';
 
 @Component({

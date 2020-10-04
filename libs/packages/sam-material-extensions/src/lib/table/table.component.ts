@@ -12,9 +12,10 @@ import {
   SimpleChanges,
   OnChanges
 } from '@angular/core';
-import { MatSort } from '@angular/material/sort';
 import { AfterViewInit } from '@angular/core';
 import {MatTableDataSource, MatTable} from '@angular/material/table';
+import {MatSort} from '@angular/material/sort';
+import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import {coerceBooleanProperty} from '@angular/cdk/coercion';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
@@ -150,6 +151,21 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
 
   @Input() sort = 'false';
 
+
+  /**
+   * Pagination table
+   */
+  @Input()
+  set pagination(pagination: boolean) {
+    this._pagination = coerceBooleanProperty(pagination);
+  }
+  get pagination() {
+    return this._pagination;
+  }
+  private _pagination = false;
+
+
+
   /**
    * Expansion table
    */
@@ -170,10 +186,12 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
   @ContentChild(SdsTableFooterRowComponent) sdsTableFooterRowComponent: SdsTableFooterRowComponent;
   @ContentChildren(SdsTableColumnDefComponent, { descendants: true }) sdsColumnItems!: QueryList<SdsTableColumnDefComponent>;
   @ViewChild(MatSort) matSort: MatSort;
+  @ViewChild(MatPaginator) matPaginator: MatPaginator;
 
   rowConfig = {} as SdsRowConfig;
   headerRowConfig = {} as SdsHeaderRowConfig;
   footerRowConfig = {} as SdsFooterRowConfig;
+  pageEvent: PageEvent;
 
   constructor() {}
 
@@ -182,6 +200,9 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
       this.dataSource = new MatTableDataSource(changes.data.currentValue);
       if(this.sort === 'true' || this.sort === '' || this.isArray(this.sort)) {
         this.dataSource.sort = this.matSort;
+      }
+      if(this.pagination) {
+        this.dataSource.paginator = this.matPaginator;
       }
     }
   }
@@ -217,6 +238,11 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
     if(this.sort === 'true' || this.sort === '' || this.isArray(this.sort)) {
       this.dataSource.sort = this.matSort;
     }
+    if(this.pagination) {
+      this.dataSource.paginator = this.matPaginator;
+    }
+
+    console.log(this.matPaginator);
   }
 
   typeOf(value) {

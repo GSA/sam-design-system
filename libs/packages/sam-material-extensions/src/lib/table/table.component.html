@@ -63,4 +63,18 @@
     </ng-container>
 
   </table>
+
+  <ng-container *ngIf="pagination">
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons (page)="pageEvent = $event"></mat-paginator>
+  </ng-container>
+
 </div>
+
+
+<div *ngIf="pagination && pageEvent">
+  <h5>Page Change Event Properties</h5>
+  <div>List length: {{pageEvent.length}}</div>
+  <div>Page size: {{pageEvent.pageSize}}</div>
+  <div>Page index: {{pageEvent.pageIndex}}</div>
+</div>
+
