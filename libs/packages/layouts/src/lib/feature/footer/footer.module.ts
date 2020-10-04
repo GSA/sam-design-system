@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { SdsFooterComponent } from './footer.component';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { SdsCollapseModule } from '../collapse/collapse.module';
-import { SdsDirectivesModule } from '../external-link/external-link.module';
+import { SdsCollapseModule } from '@gsa-sam/components';
+import { SdsDirectivesModule } from '@gsa-sam/components';
 import { SdsAccordionModule } from '@gsa-sam/sam-material-extensions';
 
 @NgModule({
