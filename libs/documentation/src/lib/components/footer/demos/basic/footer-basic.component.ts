@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FooterModel, NavigationMode } from '@gsa-sam/components';
+import { NavigationMode } from '@gsa-sam/components';
+import { FooterModel } from '@gsa-sam/layouts';
 import { BehaviorSubject } from 'rxjs';
 import { LocationStrategy } from '@angular/common';
 
