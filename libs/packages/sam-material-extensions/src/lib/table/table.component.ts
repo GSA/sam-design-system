@@ -10,7 +10,8 @@ import {
   TemplateRef,
   Directive,
   SimpleChanges,
-  OnChanges
+  OnChanges,
+  ChangeDetectorRef
 } from '@angular/core';
 import { AfterViewInit } from '@angular/core';
 import {MatTableDataSource, MatTable} from '@angular/material/table';
@@ -18,6 +19,7 @@ import {MatSort} from '@angular/material/sort';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import {coerceBooleanProperty} from '@angular/cdk/coercion';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 
 export interface SdsRowConfig {
@@ -165,7 +167,6 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
   private _pagination = false;
 
 
-
   /**
    * Expansion table
    */
@@ -193,7 +194,15 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
   footerRowConfig = {} as SdsFooterRowConfig;
   pageEvent: PageEvent;
 
-  constructor() {}
+  /* sds pagination */
+  top = { id: 'top' };
+  bottom = { id: 'bottom' };
+  page: any;
+  public pageChange = new BehaviorSubject<object>(this.page);
+  showPagination = false;
+  totalItems: number;
+
+  constructor(private changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.data.currentValue) {
@@ -203,6 +212,7 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
       }
       if(this.pagination) {
         this.dataSource.paginator = this.matPaginator;
+        this.updateSdsPagination();
       }
     }
   }
@@ -240,9 +250,29 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
     }
     if(this.pagination) {
       this.dataSource.paginator = this.matPaginator;
+      this.dataSource.paginator.initialized.subscribe(
+        value => {
+          setTimeout(() => {
+            this.page = {
+              pageNumber: this.dataSource.paginator.pageIndex + 1,
+              pageSize: this.dataSource.paginator.pageSize,
+              totalPages: this.dataSource.paginator.getNumberOfPages()
+            }
+            this.totalItems = this.dataSource.data.length;
+            this.showPagination = true;
+            this.changeDetectorRef.detectChanges();
+          });
+        }
+      );
+
+      this.pageChange.subscribe(
+        value => {
+          this.updateSdsPagination();
+        }
+      );
+      this.changeDetectorRef.detectChanges();
     }
 
-    console.log(this.matPaginator);
   }
 
   typeOf(value) {
@@ -251,6 +281,16 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
 
   isArray(obj : any ) {
     return Array.isArray(obj)
+  }
+
+  updateSdsPagination() {
+    if(this.page) {
+      this.dataSource.paginator.pageIndex = this.page.pageNumber - 1;
+      this.dataSource.paginator._changePageSize(this.page.pageSize);
+      this.page.totalPages = Math.ceil(this.dataSource.data.length / this.page.pageSize);
+      this.totalItems = this.dataSource.data.length;
+      this.changeDetectorRef.detectChanges();
+    }
   }
 
 }

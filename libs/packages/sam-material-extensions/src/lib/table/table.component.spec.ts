@@ -4,9 +4,12 @@ import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatTableModule,
-  MatSortModule
+  MatSortModule,
+  MatPaginatorModule
 } from '@angular/material';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PaginationModule } from '@gsa-sam/components';
+
 
 import { SdsTableComponent, SdsTableRowComponent, SdsTableHeaderRowComponent, SdsTableFooterRowComponent, SdsTableColumnDefComponent, SdsTableCellDirective, SdsTableHeaderCellDirective, SdsTableFooterCellDirective } from './table.component';
 
@@ -157,7 +160,7 @@ const MOCK_DATA = [
 
 @Component({
   template: `
-  <sds-table [data]="data" [borderless]="borderlessToggle" [expansion]="expansionToggle" sort class="maxh-mobile overflow-auto">
+  <sds-table [data]="data" [borderless]="borderlessToggle" [expansion]="expansionToggle" sort pagination class="maxh-mobile overflow-auto">
 
     <sds-table-column sdsColumnName="id" sticky="true">
       <ng-template #sdsHeaderCell>ID</ng-template>
@@ -268,7 +271,9 @@ describe('SdsTableComponent Full', () => {
         MatTableModule,
         FontAwesomeModule,
         MatSortModule,
-        BrowserAnimationsModule
+        MatPaginatorModule,
+        BrowserAnimationsModule,
+        PaginationModule
       ]
     }).compileComponents();
   }));
@@ -296,6 +301,17 @@ describe('SdsTableComponent Full', () => {
       component.ngAfterContentInit();
       fixture.detectChanges();
       expect(component).toBeTruthy();
+    }));
+
+    it('should update pagination', async(() => {
+      component.page = {
+        pageNumber: 1,
+        pageSize: 5,
+        totalPages: 0
+      }
+      component.updateSdsPagination();
+      fixture.detectChanges();
+      expect(component.page.totalPages).toBe(2);
     }));
 
 

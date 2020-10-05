@@ -1,3 +1,7 @@
+<div class="margin-y-05" *ngIf="pagination && showPagination">
+  <sds-pagination [displayMode]="'results'" [paginationConfiguration]="top" [(page)]="page" [totalItems]="totalItems"></sds-pagination>
+</div>
+
 <div class="sds-table__container" [ngClass]="{ 'sds-table__container--borderless': borderless }">
   <table mat-table [dataSource]="dataSource" class="sds-table width-full mat-elevation-z8" matSort multiTemplateDataRows [ngClass]="{ 'sds-table--expansion': expansion }">
 
@@ -64,17 +68,14 @@
 
   </table>
 
-  <ng-container *ngIf="pagination">
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons (page)="pageEvent = $event"></mat-paginator>
-  </ng-container>
-
+  <div [hidden]="true">
+    <ng-container *ngIf="pagination">
+      <mat-paginator [pageSizeOptions]="[25, 50, 100]" showFirstLastButtons (page)="pageEvent = $event"></mat-paginator>
+    </ng-container>
+  </div>
 </div>
 
-
-<div *ngIf="pagination && pageEvent">
-  <h5>Page Change Event Properties</h5>
-  <div>List length: {{pageEvent.length}}</div>
-  <div>Page size: {{pageEvent.pageSize}}</div>
-  <div>Page index: {{pageEvent.pageIndex}}</div>
+<div *ngIf="pagination && showPagination">
+  <sds-pagination [paginationConfiguration]="bottom" [(page)]="page" (pageChange)="pageChange.next($event)" (initialized)="pageChange.next($event)"></sds-pagination>
 </div>
 
