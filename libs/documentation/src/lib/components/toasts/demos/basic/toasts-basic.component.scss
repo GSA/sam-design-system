@@ -98,10 +98,29 @@
     }
   }
   //TODELETE
+  //gud
   .sds-toast .sds-toast__content {
     margin: 0px;
 }
-    
+    //gud
   .sds-toast__content{
     background-color: white;
   }
+  .toast-info .sds-toast__content {
+    border-width: 2px;
+    border-style: solid;
+    border-color: #5994f6;
+    border-style: solid;
+  }
+  .toast-success .sds-toast__content {
+    border-width: 2px;
+    border-style: solid;
+    border-color: #00a91c;
+    border-style: solid;
+  }
+  .toast-success .sds-toast__content__icon {
+    color: #00a91c;
+}
+.toast-info .sds-toast__content__icon {
+  color: #5994f6;
+}

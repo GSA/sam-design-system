@@ -1,5 +1,5 @@
 import { Component ,ViewEncapsulation } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
+import { ToastrService,GlobalConfig } from 'ngx-toastr';
 
 @Component({
   templateUrl: './toasts-basic.component.html',
@@ -7,13 +7,25 @@ import { ToastrService } from 'ngx-toastr';
   encapsulation: ViewEncapsulation.None
 })
 export class ToastsBasic {
-  constructor(private toastr: ToastrService) {}
+  options: GlobalConfig;
+
+
+  constructor(private toastr: ToastrService) {
+    this.options = this.toastr.toastrConfig;
+    
+  }
  
   showInfo() {
-    this.toastr.info('Hello world!', 'alert-info', {timeOut:6000,positionClass:"toast-bottom-left"} );
+    
+    this.toastr.info('Hello world!', '' ,{ toastClass:'alert-info'});
   }
   showSuccess() {
-    this.toastr.success('Account request successfully submitted!', 'check-circle', {timeOut: 6000,positionClass:"toast-bottom-left"});
+    this.toastr.success('Account request successfully submitted!', "", {toastClass:'check-circle'});
   }
-
+  clear(){
+    this.toastr.clear();
+  }
+  fixNumber(field: keyof GlobalConfig): void {
+    (this.options as any)[field] = Number(this.options[field]) as any;
+  }
 }
