@@ -8,17 +8,17 @@ import {
     trigger
   } from '@angular/animations';
   import { Component } from '@angular/core';
-  
+
   import { Toast, ToastrService, ToastPackage } from 'ngx-toastr';
   import { sds } from '@gsa-sam/sam-styles/src/icons/';
-  
+
   @Component({
     selector: 'sds-toast',
     styles: [`
     :host {
       position: relative;
     }
-    
+
   `],
   templateUrl: './toast-single.component.html',
   animations: [
@@ -60,19 +60,25 @@ import {
   export class SdsToastComponent extends Toast {
     // constructor is only necessary when not using AoT
     toastType = "";
-  
+
     constructor(
       protected toastrService: ToastrService,
       public toastPackage: ToastPackage
     ) {
       super(toastrService, toastPackage);
-  
     }
-  
+
     action(event: Event) {
       event.stopPropagation();
       this.toastPackage.triggerAction();
       return false;
     }
+
+    getIcon(toastType) {
+      switch (toastType) {
+        case "toast-success": return 'check-circle';
+        case "toast-info": return 'alert-info';
+        default: return 'alert-info';
+      }
+    }
   }
-  

@@ -12,15 +12,15 @@ export class ToastsBasic {
 
   constructor(private toastr: ToastrService) {
     this.options = this.toastr.toastrConfig;
-    
+
   }
- 
+
   showInfo() {
-    
-    this.toastr.info('Hello world!', '' ,{ toastClass:'alert-info'});
+
+    this.toastr.info('Hello world!');
   }
   showSuccess() {
-    this.toastr.success('Account request successfully submitted!', "", {toastClass:'check-circle'});
+    this.toastr.success('Account request successfully submitted!');
   }
   clear(){
     this.toastr.clear();
