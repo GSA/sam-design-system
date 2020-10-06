@@ -314,6 +314,13 @@ describe('SdsTableComponent Full', () => {
       expect(component.page.totalPages).toBe(2);
     }));
 
+    it('default string sort should return lowercase', async(() => {
+      expect(component.defaultSort(component.data[0], 'firstName')).toBe('gregorius');
+    }));
+
+    it('default number sort should return lowercase', async(() => {
+      expect(component.defaultSort(component.data[0], 'requests')).toBe(1);
+    }));
 
   });
 });

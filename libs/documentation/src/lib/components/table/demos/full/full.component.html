@@ -1,4 +1,4 @@
-<sds-table [data]="data" expansion sort pagination class="maxh-tablet overflow-auto">
+<sds-table [data]="data" expansion pagination sort [sortFn]="customSort" class="maxh-tablet overflow-auto">
 
   <sds-table-column sdsColumnName="id" sticky="true">
     <ng-template #sdsHeaderCell>ID</ng-template>

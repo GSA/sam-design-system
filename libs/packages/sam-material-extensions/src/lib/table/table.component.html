@@ -7,12 +7,14 @@
 
     <ng-container *ngFor="let sdsColumnItem of sdsColumnItems">
       <ng-container *ngIf="!sdsColumnItem.sdsExpandedTemplate" matColumnDef="{{sdsColumnItem.sdsColumnName}}" [sticky]="sdsColumnItem.sticky" [stickyEnd]="sdsColumnItem.stickyEnd">
-        <ng-container *ngIf="(sort==='true' || sort==='') || ((typeOf(sort) === 'object') && isArray(sort) && sort.includes(sdsColumnItem.sdsColumnName))">
+        <ng-container *ngIf="(sort==='true' || sort==='') || ((typeOf(sort) === 'object') && isArray(sort) && sort.includes(sdsColumnItem.sdsColumnName)) else basicColumn">
           <th mat-header-cell *matHeaderCellDef scope="col" mat-sort-header><ng-container *ngTemplateOutlet="sdsColumnItem.columnHeaderCell"></ng-container></th>
         </ng-container>
-        <ng-container *ngIf="(sort==='false') || ((typeOf(sort) === 'object') && isArray(sort) && !sort.includes(sdsColumnItem.sdsColumnName))">
-          <th mat-header-cell *matHeaderCellDef scope="col"><ng-container *ngTemplateOutlet="sdsColumnItem.columnHeaderCell"></ng-container></th>
-        </ng-container>
+        <ng-template #basicColumn>
+          <ng-container>
+            <th mat-header-cell *matHeaderCellDef scope="col"><ng-container *ngTemplateOutlet="sdsColumnItem.columnHeaderCell"></ng-container></th>
+          </ng-container>
+        </ng-template>
         <td mat-cell *matCellDef="let element"><ng-container *ngTemplateOutlet="sdsColumnItem.columnCell; context: {element : element}"></ng-container></td>
         <ng-container *ngIf="sdsColumnItem.footerCellTemplate" >
           <th mat-footer-cell *matFooterCellDef scope="col"><ng-container *ngTemplateOutlet="sdsColumnItem.columnFooterCell"></ng-container></th>

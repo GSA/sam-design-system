@@ -37,4 +37,18 @@ export class TableFullComponent {
     console.log(element, "Called actions with element: ");
     this.rowEdit = element;
   }
+
+  customSort(data, sortHeaderId) {
+    switch (sortHeaderId) {
+      case 'tags': return  data.tags[0].label;
+      default: {
+        if (typeof data[sortHeaderId] === 'string') {
+          return data[sortHeaderId].toLocaleLowerCase();
+        }
+
+        return data[sortHeaderId];
+      }
+    }
+  };
+
 }

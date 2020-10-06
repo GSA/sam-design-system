@@ -153,6 +153,12 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
 
   @Input() sort = 'false';
 
+  /**
+   * Sorting function override
+   */
+
+  @Input() sortFn: any;
+
 
   /**
    * Pagination table
@@ -180,6 +186,7 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
   private _expansion = false;
 
   dataSource: MatTableDataSource<any>;
+  expandedElement: any;
 
   @ViewChild(MatTable) table: MatTable<any>;
   @ContentChild(SdsTableRowComponent) sdsTableRowComponent: SdsTableRowComponent;
@@ -208,6 +215,7 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
     if (changes.data.currentValue) {
       this.dataSource = new MatTableDataSource(changes.data.currentValue);
       if(this.sort === 'true' || this.sort === '' || this.isArray(this.sort)) {
+        this.dataSource.sortingDataAccessor = this.sortFn ? this.sortFn : this.defaultSort;
         this.dataSource.sort = this.matSort;
       }
       if(this.pagination) {
@@ -246,6 +254,7 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
 
   ngAfterViewInit() {
     if(this.sort === 'true' || this.sort === '' || this.isArray(this.sort)) {
+      this.dataSource.sortingDataAccessor = this.sortFn ? this.sortFn : this.defaultSort;
       this.dataSource.sort = this.matSort;
     }
     if(this.pagination) {
@@ -292,5 +301,13 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
       this.changeDetectorRef.detectChanges();
     }
   }
+
+  defaultSort(data, sortHeaderId) {
+    if (typeof data[sortHeaderId] === 'string') {
+      return data[sortHeaderId].toLocaleLowerCase();
+    }
+
+    return data[sortHeaderId];
+  };
 
 }
