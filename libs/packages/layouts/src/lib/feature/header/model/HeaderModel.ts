@@ -1,4 +1,4 @@
-import { INavigationLink, NavigationMode, Selectable } from '../../common-navigation/common-navigation-model';
+import { INavigationLink, NavigationMode, Selectable } from '@gsa-sam/components';
 
 
 export interface HeaderModel {

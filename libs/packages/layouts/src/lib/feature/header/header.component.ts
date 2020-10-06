@@ -1,7 +1,9 @@
 import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { HeaderModel, HeaderNavigationLink, HeaderSecondaryLink } from './model/HeaderModel';
-import { INavigationLink, NavigationMode, Selectable } from '../common-navigation/common-navigation-model';
-import { NavigationHelper } from '../common-navigation/navigation-helper';
+import { INavigationLink, NavigationMode, Selectable } from '@gsa-sam/components';
+import { NavigationHelper } from '@gsa-sam/components';
+
+
 @Component({
   selector: 'sds-header',
   templateUrl: './header.component.html',
@@ -20,14 +22,20 @@ export class SdsHeaderComponent {
   /**
    * determines if the top banner is shown
    */
-  @Input() showTopBanner: boolean = true;
+  @Input() showTopBanner = true;
 
   /**
    * Model used for the different display portions of the header
    */
   @Input() model: HeaderModel;
 
-  @Input() topBannerDescription: string = '';
+  @Input() topBannerDescription = '';
+
+  /**
+   * event for event based
+   */
+  @Output()
+  linkEvent = new EventEmitter<INavigationLink>();
   /**
    * Takes in a text string and removes all white space characters and returns the new string
    * @param text
@@ -59,7 +67,7 @@ export class SdsHeaderComponent {
    */
   select(id: string) {
     this.deselect();
-    let item = this.find(id);
+    const item = this.find(id);
     if (item) {
       item.selected = true;
     }
@@ -136,12 +144,6 @@ export class SdsHeaderComponent {
     }
     return toReturn;
   }
-
-  /**
-   * event for event based
-   */
-  @Output()
-  linkEvent = new EventEmitter<INavigationLink>();
 
   /**
    * Link clicked and emits the link data into an event
