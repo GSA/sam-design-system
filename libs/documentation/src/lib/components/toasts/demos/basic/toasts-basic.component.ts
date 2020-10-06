@@ -17,10 +17,16 @@ export class ToastsBasic {
  
   showInfo() {
     
-    this.toastr.info('Hello world!', '' ,{ toastClass:'alert-info'});
+    this.toastr.info('Your information will be saved before leaving editor view', "");
   }
   showSuccess() {
-    this.toastr.success('Account request successfully submitted!', "", {toastClass:'check-circle'});
+    this.toastr.success('Account request successfully submitted', "");
+  }
+  showWarning() {
+    this.toastr.warning('Something requires your attention', "");
+  }
+  showError() {
+    this.toastr.error('Something went wrong', "");
   }
   clear(){
     this.toastr.clear();

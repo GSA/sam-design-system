@@ -1,7 +1,7 @@
 <div ng-non-bindable class="sds-toast">
     <div class="sds-toast__content">
         <div class="sds-toast__content__icon">
-            <fa-icon [icon]="['sds', options.toastClass]"  size="2x"></fa-icon>
+            <fa-icon [icon]="['sds', getIcon(toastPackage.toastType)]"  size="2x"></fa-icon>
         </div>
         <span class="sds-toast__content__text">{{message}}</span>
         <div *ngIf="!options.closeButton" class="sds-toast__content__close" (click)="remove()">

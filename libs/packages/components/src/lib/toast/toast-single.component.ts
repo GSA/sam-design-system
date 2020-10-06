@@ -58,9 +58,7 @@ import {
     preserveWhitespaces: false,
   })
   export class SdsToastComponent extends Toast {
-    // constructor is only necessary when not using AoT
-    toastType = "";
-  
+
     constructor(
       protected toastrService: ToastrService,
       public toastPackage: ToastPackage
@@ -73,6 +71,16 @@ import {
       event.stopPropagation();
       this.toastPackage.triggerAction();
       return false;
+    }
+
+      getIcon(toastType) {
+      switch (toastType) {
+        case "toast-success": return 'check-circle';
+        case "toast-info": return 'alert-info';
+        case "toast-warning": return 'alert-warning';
+        case "toast-error": return 'alert-error';
+        default: return 'alert-info';
+      }
     }
   }
   
