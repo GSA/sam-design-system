@@ -157,7 +157,7 @@ const MOCK_DATA = [
 
 @Component({
   template: `
-  <sds-table [data]="data" [borderless]="borderlessToggle" [expansion]="expansionToggle" [sort]="sortToggle" class="maxh-mobile overflow-auto">
+  <sds-table [data]="data" [borderless]="borderlessToggle" [expansion]="expansionToggle" sort class="maxh-mobile overflow-auto">
 
     <sds-table-column sdsColumnName="id" sticky="true">
       <ng-template #sdsHeaderCell>ID</ng-template>
@@ -245,7 +245,6 @@ class WrapperComponent {
 
   data = MOCK_DATA;
 
-  sortToggle = true;
   expansionToggle = true;
   borderlessToggle = false;
 
@@ -287,6 +286,10 @@ describe('SdsTableComponent Full', () => {
 
     it('should create', async(() => {
       expect(component).toBeTruthy();
+    }));
+
+    it('isArray should return true', async(() => {
+      expect(component.isArray(['test'])).toBeTruthy();
     }));
 
     it('check after content init', async(() => {

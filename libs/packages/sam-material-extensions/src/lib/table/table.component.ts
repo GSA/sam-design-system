@@ -147,17 +147,11 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
   /**
    * Sorting table
    */
-  @Input()
-  set sort(sort: boolean) {
-    this._sort = coerceBooleanProperty(sort);
-  }
-  get sort() {
-    return this._sort;
-  }
-  private _sort = false;
 
-    /**
-   * Sorting table
+  @Input() sort = 'false';
+
+  /**
+   * Expansion table
    */
   @Input()
   set expansion(expansion: boolean) {
@@ -186,7 +180,7 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
   ngOnChanges(changes: SimpleChanges) {
     if (changes.data.currentValue) {
       this.dataSource = new MatTableDataSource(changes.data.currentValue);
-      if(this.sort) {
+      if(this.sort === 'true' || this.sort === '' || this.isArray(this.sort)) {
         this.dataSource.sort = this.matSort;
       }
     }
@@ -220,9 +214,17 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
   }
 
   ngAfterViewInit() {
-    if(this.sort) {
+    if(this.sort === 'true' || this.sort === '' || this.isArray(this.sort)) {
       this.dataSource.sort = this.matSort;
     }
+  }
+
+  typeOf(value) {
+    return typeof value;
+  }
+
+  isArray(obj : any ) {
+    return Array.isArray(obj)
   }
 
 }
