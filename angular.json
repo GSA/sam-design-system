@@ -3,44 +3,6 @@
   "version": 1,
   "newProjectRoot": "",
   "projects": {
-    "sam-material-extensions": {
-      "root": "libs/packages/sam-material-extensions",
-      "sourceRoot": "libs/packages/sam-material-extensions/src",
-      "projectType": "library",
-      "prefix": "sds",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "libs/packages/sam-material-extensions/tsconfig.lib.json",
-            "project": "libs/packages/sam-material-extensions/ng-package.json"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/packages/sam-material-extensions/src/test.ts",
-            "tsConfig": "libs/packages/sam-material-extensions/tsconfig.spec.json",
-            "karmaConfig": "libs/packages/sam-material-extensions/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/packages/sam-material-extensions/tsconfig.lib.json",
-              "libs/packages/sam-material-extensions/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/schematics:component": {
-          "styleext": "scss"
-        }
-      }
-    },
     "components": {
       "root": "libs/packages/components",
       "sourceRoot": "libs/packages/components/src",
@@ -83,6 +45,44 @@
         }
       }
     },
+    "sam-material-extensions": {
+      "root": "libs/packages/sam-material-extensions",
+      "sourceRoot": "libs/packages/sam-material-extensions/src",
+      "projectType": "library",
+      "prefix": "sds",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/packages/sam-material-extensions/tsconfig.lib.json",
+            "project": "libs/packages/sam-material-extensions/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/packages/sam-material-extensions/src/test.ts",
+            "tsConfig": "libs/packages/sam-material-extensions/tsconfig.spec.json",
+            "karmaConfig": "libs/packages/sam-material-extensions/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/packages/sam-material-extensions/tsconfig.lib.json",
+              "libs/packages/sam-material-extensions/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
     "sam-formly": {
       "root": "libs/packages/sam-formly",
       "sourceRoot": "libs/packages/sam-formly/src",
@@ -110,6 +110,44 @@
             "tsConfig": [
               "libs/packages/sam-formly/tsconfig.lib.json",
               "libs/packages/sam-formly/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "layouts": {
+      "root": "libs/packages/layouts",
+      "sourceRoot": "libs/packages/layouts/src",
+      "projectType": "library",
+      "prefix": "sds",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/packages/layouts/tsconfig.lib.json",
+            "project": "libs/packages/layouts/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/packages/layouts/src/test.ts",
+            "tsConfig": "libs/packages/layouts/tsconfig.spec.json",
+            "karmaConfig": "libs/packages/layouts/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/packages/layouts/tsconfig.lib.json",
+              "libs/packages/layouts/tsconfig.spec.json"
             ],
             "exclude": ["**/node_modules/**"]
           }
@@ -248,45 +286,6 @@
             "tsConfig": "apps/sam-design-system-site-e2e/tsconfig.e2e.json",
             "exclude": ["**/node_modules/**"]
           }
-        }
-      }
-    },
-
-    "layouts": {
-      "root": "libs/packages/layouts",
-      "sourceRoot": "libs/packages/layouts/src",
-      "projectType": "library",
-      "prefix": "sds",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "libs/packages/layouts/tsconfig.lib.json",
-            "project": "libs/packages/layouts/ng-package.json"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/packages/layouts/src/test.ts",
-            "tsConfig": "libs/packages/layouts/tsconfig.spec.json",
-            "karmaConfig": "libs/packages/layouts/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/packages/layouts/tsconfig.lib.json",
-              "libs/packages/layouts/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/schematics:component": {
-          "styleext": "scss"
         }
       }
     },

@@ -4,11 +4,13 @@ import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatTableModule,
-  MatSortModule
+  MatSortModule,
+  MatPaginatorModule
 } from '@angular/material';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { SdsTableComponent, SdsTableRowComponent, SdsTableHeaderRowComponent, SdsTableFooterRowComponent, SdsTableColumnDefComponent, SdsTableCellDirective, SdsTableHeaderCellDirective, SdsTableFooterCellDirective } from './table.component';
+import { PaginationModule } from '@gsa-sam/components';
 
 const MOCK_DATA = [
   {
@@ -218,7 +220,9 @@ describe('SdsTableComponent Basic', () => {
         MatTableModule,
         FontAwesomeModule,
         MatSortModule,
-        BrowserAnimationsModule
+        MatPaginatorModule,
+        BrowserAnimationsModule,
+        PaginationModule
       ]
     }).compileComponents();
   }));
