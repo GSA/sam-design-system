@@ -204,7 +204,7 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
   /* sds pagination */
   top = { id: 'top' };
   bottom = { id: 'bottom' };
-  page: any;
+  page: any = {};
   public pageChange = new BehaviorSubject<object>(this.page);
   showPagination = false;
   totalItems: number;
