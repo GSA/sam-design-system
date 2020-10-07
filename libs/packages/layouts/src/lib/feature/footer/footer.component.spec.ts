@@ -2,8 +2,8 @@
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { SdsFooterComponent } from './footer.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { NavigationMode } from '../common-navigation/common-navigation-model';
-import { SdsCollapseModule } from '../collapse/collapse.module';
+import { NavigationMode } from '@gsa-sam/components';
+import { SdsCollapseModule } from '@gsa-sam/components';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 describe('SdsFooterComponent', () => {

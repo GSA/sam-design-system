@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnInit, HostListener } from '@angular/core';
 import { FooterModel } from './model/FooterModel';
-import { INavigationLink, NavigationMode } from '../common-navigation/common-navigation-model';
-import { NavigationHelper } from '../common-navigation/navigation-helper';
+import { INavigationLink } from '@gsa-sam/components';
+import { NavigationHelper } from '@gsa-sam/components';
 
 @Component({
   selector: 'sds-footer',
@@ -9,8 +9,8 @@ import { NavigationHelper } from '../common-navigation/navigation-helper';
   styleUrls: ['./footer.component.scss']
 })
 export class SdsFooterComponent implements OnInit {
- public innerWidth: any;
- public expandedIndex: number;
+  public innerWidth: any;
+  public expandedIndex: number;
 
   /**
    * Navigation helper
@@ -39,11 +39,11 @@ export class SdsFooterComponent implements OnInit {
     return false;
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.expandedIndex = -1
   }
 
-  collapse(index:number){
+  collapse(index: number) {
     this.expandedIndex = index === this.expandedIndex ? -1 : index;
   }
 

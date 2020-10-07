@@ -2,7 +2,8 @@
   <div class="grid-col">
     <div class="grid-row">
       <div class="grid-col-auto">
-        <sds-pagination class="tablet:grid-col" [paginationConfiguration]="top" [(page)]="page" (pageChange)="paginationChange.next($event)">
+        <sds-pagination class="tablet:grid-col display-block margin-top-3 padding-top-3" [paginationConfiguration]="top"
+          [(page)]="page" (pageChange)="paginationChange.next($event)" displayMode='results' [totalItems]="totalItems">
         </sds-pagination>
       </div>
       <div class="grid-col-fill"></div>
@@ -11,7 +12,8 @@
           <label class="usa-label font-sans-3xs text-italic text-base margin-top-1" for="options">
             Sort by
           </label>
-          <select (change)="onSelectChange()" [(ngModel)]="sortField" class="usa-select usa-select--small sds-min-width-160 border-base-light" id="options">
+          <select (change)="onSelectChange()" [(ngModel)]="sortField"
+            class="usa-select usa-select--small sds-min-width-160 border-base-light" id="options">
             <option *ngFor="let item of configuration.sortList" [ngValue]="item.value">
               {{ item.text }}
             </option>
@@ -29,7 +31,8 @@
                 context: { $implicit: item }"></ng-container>
       </ng-template>
     </sds-search-result-list>
-    <sds-pagination *ngIf="items?.length" [paginationConfiguration]="bottom" [(page)]="page" (pageChange)="paginationChange.next($event)">
+    <sds-pagination *ngIf="items?.length" [paginationConfiguration]="bottom" [(page)]="page"
+      (pageChange)="paginationChange.next($event)">
     </sds-pagination>
   </div>
 </div>

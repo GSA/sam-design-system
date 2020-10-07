@@ -1,7 +1,4 @@
-import {
-  INavigationLink,
-  NavigationMode
-} from '../../common-navigation/common-navigation-model';
+import { INavigationLink, NavigationMode } from '@gsa-sam/components';
 
 export class FooterModel {
   /**
