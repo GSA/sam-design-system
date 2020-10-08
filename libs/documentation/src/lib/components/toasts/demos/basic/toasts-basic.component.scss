@@ -118,9 +118,27 @@
     border-color: #00a91c;
     border-style: solid;
   }
+  .toast-error .sds-toast__content {
+    border-width: 2px;
+    border-style: solid;
+    border-color: #fb5a47;
+    border-style: solid;
+  }
+  .toast-warning .sds-toast__content {
+    border-width: 2px;
+    border-style: solid;
+    border-color: #ffbe2e;
+    border-style: solid;
+  }
   .toast-success .sds-toast__content__icon {
     color: #00a91c;
 }
 .toast-info .sds-toast__content__icon {
   color: #5994f6;
+}
+.toast-warning .sds-toast__content__icon {
+  color: #ffbe2e;
+}
+.toast-error .sds-toast__content__icon {
+color: #fb5a47;
 }

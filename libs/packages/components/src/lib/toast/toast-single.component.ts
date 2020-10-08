@@ -73,7 +73,7 @@ import {
       return false;
     }
 
-      getIcon(toastType) {
+    getIcon(toastType) {
       switch (toastType) {
         case "toast-success": return 'check-circle';
         case "toast-info": return 'alert-info';

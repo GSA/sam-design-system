@@ -74,7 +74,7 @@ describe('SdsAccordionComponent', () => {
       expect(component).toBeTruthy();
     }));
 
-    it('should have 4 items', () => {
+    it('should have sd items', () => {
       expect(component.accordionItems.length).toEqual(4);
     });
 
