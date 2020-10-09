@@ -10,6 +10,7 @@ import {
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { ToastsBasicModule } from './demos/basic/toasts-basic.module';
 import { ToastsBasic } from './demos/basic/toasts-basic.component';
+import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 
 declare var require: any;
 const DEMOS = {
@@ -31,15 +32,16 @@ export const ROUTES = [
       items: [
         {
           pkg: 'components',
-          type: 'directives',
-          name: 'SdsToastsDirective'
+          type: 'components',
+          name: 'SdsToastComponent'
         }
       ]
     },
     children: [
       { path: 'examples', component: DocumentationExamplesPage },
       { path: 'api', component: DocumentationAPIPage },
-      { path: 'source', component: DocumentationSourcePage }
+      { path: 'source', component: DocumentationSourcePage },
+      { path: 'template', component: DocumentationTemplatePage }
     ]
   }
 ];

@@ -67,6 +67,7 @@ describe('Component: SdsToastComponent', () => {
     });
 
    
+  
 
     function initMockProviders(): void {
         toastPackageMock = {
