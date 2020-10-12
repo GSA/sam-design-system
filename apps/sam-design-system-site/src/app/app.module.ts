@@ -38,6 +38,7 @@ export function hljsLanguages() {
     ToastrModule.forRoot({
       toastComponent : SdsToastComponent,
       timeOut:6000,
+      toastClass:"sds-toast",
       positionClass:"toast-bottom-left"
     })
   ],

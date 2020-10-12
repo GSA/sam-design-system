@@ -12,7 +12,12 @@ export class ToastsBasic {
 
   constructor(private toastr: ToastrService) {
     this.options = this.toastr.toastrConfig;
-    
+    this.options.iconClasses = {
+      error: 'sds-toast--error',
+      info: 'sds-toast--info',
+      success: 'sds-toast--success',
+      warning: 'sds-toast--warning',
+    };
   }
  
   showInfo() {

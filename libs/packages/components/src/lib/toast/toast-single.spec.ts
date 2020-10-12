@@ -72,7 +72,7 @@ describe('Component: SdsToastComponent', () => {
     function initMockProviders(): void {
         toastPackageMock = {
             toastId: 1,
-            toastType: "toast-success",
+            toastType: "sds-toast--success",
             afterActivate: jasmine.createSpy('afterActivate'),
             config: { toastClass: 'custom-toast' },
             message: 'test message',
