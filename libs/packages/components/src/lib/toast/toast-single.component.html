@@ -1,5 +1,5 @@
 
-    <div class="sds-toast__content" role="alert" aria-live="polite">
+    <div class="sds-toast__content" role="alert" aria-live="polite" [attr.aria-labelledby]="getToastSr(toastPackage.toastType)">
         <div class="sds-toast__content__icon">
             <fa-icon [icon]="['sds', getIcon(toastPackage.toastType)]"  size="2x"></fa-icon>
         </div>

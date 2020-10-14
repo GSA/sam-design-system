@@ -64,5 +64,15 @@ import {
         default: return 'alert-info';
       }
     }
+    getToastSr(toastType) {
+      switch (toastType) {
+        case "sds-toast--success": return 'Success';
+        case "sds-toast--info": return 'Info';
+        case "sds-toast--warning": return 'Warning';
+        case "sds-toast--error": return 'Error';
+        default: return 'Info';
+      }
+    }
+
   }
   
