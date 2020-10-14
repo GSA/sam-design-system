@@ -3,13 +3,14 @@ import { Component, ViewChild, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
-  MatTableModule
-} from '@angular/material/table';
-
+  MatTableModule,
+  MatSortModule,
+  MatPaginatorModule
+} from '@angular/material';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { SdsTableComponent, SdsTableRowComponent, SdsTableHeaderRowComponent, SdsTableFooterRowComponent, SdsTableColumnDefComponent, SdsTableCellDirective, SdsTableHeaderCellDirective, SdsTableFooterCellDirective } from './table.component';
-import { MatSortModule } from '@angular/material/sort';
+import { PaginationModule } from '@gsa-sam/components';
 
 const MOCK_DATA = [
   {
@@ -206,7 +207,7 @@ class WrapperComponent {
 }
 
 
-xdescribe('SdsTableComponent Basic', () => {
+describe('SdsTableComponent Basic', () => {
   let component: SdsTableComponent;
   let fixture: ComponentFixture<WrapperComponent>;
   let tableDe: DebugElement;
@@ -219,12 +220,14 @@ xdescribe('SdsTableComponent Basic', () => {
         MatTableModule,
         FontAwesomeModule,
         MatSortModule,
-        BrowserAnimationsModule
+        MatPaginatorModule,
+        BrowserAnimationsModule,
+        PaginationModule
       ]
     }).compileComponents();
   }));
 
-  xdescribe('Table Component', () => {
+  describe('Table Component', () => {
     beforeEach(() => {
       fixture = TestBed.createComponent(WrapperComponent);
       const wrapperComponent = fixture.debugElement.componentInstance;

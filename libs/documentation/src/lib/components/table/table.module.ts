@@ -17,6 +17,8 @@ import { TableStickyComponent } from './demos/sticky/sticky.component';
 import { TableStickyModule } from './demos/sticky/sticky.module';
 import { TableFullComponent } from './demos/full/full.component';
 import { TableFullModule } from './demos/full/full.module';
+import { TablePaginationComponent } from './demos/pagination/pagination.component';
+import { TablePaginationModule } from './demos/pagination/pagination.module';
 
 export declare var require: any;
 
@@ -43,6 +45,13 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/sort/sort.component'), // Source Tab Content
     markup: require('!!raw-loader!./demos/sort/sort.component.html'), // Template Tab Content
     path: 'libs/documentation/src/lib/components/table/demos/sort' // Path to demo for the Github link
+  },
+  pagination: {
+    title: 'Pagination', // Title
+    type: TablePaginationComponent, // Component
+    code: require('!!raw-loader!./demos/pagination/pagination.component'), // Source Tab Content
+    markup: require('!!raw-loader!./demos/pagination/pagination.component.html'), // Template Tab Content
+    path: 'libs/documentation/src/lib/components/table/demos/pagination' // Path to demo for the Github link
   },
   sticky: {
     title: 'Sticky Header, Footer, or Columns', // Title
@@ -95,7 +104,8 @@ const DEMOS = {
     TableBorderlessModule,
     TableSortModule,
     TableStickyModule,
-    TableFullModule
+    TableFullModule,
+    TablePaginationModule
   ]
 })
 

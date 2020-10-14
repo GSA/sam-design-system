@@ -3,12 +3,15 @@ import { Component, ViewChild, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
-  MatTableModule
-} from '@angular/material/table';
+  MatTableModule,
+  MatSortModule,
+  MatPaginatorModule
+} from '@angular/material';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PaginationModule } from '@gsa-sam/components';
+
 
 import { SdsTableComponent, SdsTableRowComponent, SdsTableHeaderRowComponent, SdsTableFooterRowComponent, SdsTableColumnDefComponent, SdsTableCellDirective, SdsTableHeaderCellDirective, SdsTableFooterCellDirective } from './table.component';
-import { MatSortModule } from '@angular/material/sort';
 
 const MOCK_DATA = [
   {
@@ -157,7 +160,7 @@ const MOCK_DATA = [
 
 @Component({
   template: `
-  <sds-table [data]="data" [borderless]="borderlessToggle" [expansion]="expansionToggle" [sort]="sortToggle" class="maxh-mobile overflow-auto">
+  <sds-table [data]="data" [borderless]="borderlessToggle" [expansion]="expansionToggle" sort pagination class="maxh-mobile overflow-auto">
 
     <sds-table-column sdsColumnName="id" sticky="true">
       <ng-template #sdsHeaderCell>ID</ng-template>
@@ -245,7 +248,6 @@ class WrapperComponent {
 
   data = MOCK_DATA;
 
-  sortToggle = true;
   expansionToggle = true;
   borderlessToggle = false;
 
@@ -269,12 +271,14 @@ describe('SdsTableComponent Full', () => {
         MatTableModule,
         FontAwesomeModule,
         MatSortModule,
-        BrowserAnimationsModule
+        MatPaginatorModule,
+        BrowserAnimationsModule,
+        PaginationModule
       ]
     }).compileComponents();
   }));
 
-  xdescribe('Table Component', () => {
+  describe('Table Component', () => {
     beforeEach(() => {
       fixture = TestBed.createComponent(WrapperComponent);
       const wrapperComponent = fixture.debugElement.componentInstance;
@@ -289,12 +293,34 @@ describe('SdsTableComponent Full', () => {
       expect(component).toBeTruthy();
     }));
 
+    it('isArray should return true', async(() => {
+      expect(component.isArray(['test'])).toBeTruthy();
+    }));
+
     it('check after content init', async(() => {
       component.ngAfterContentInit();
       fixture.detectChanges();
       expect(component).toBeTruthy();
     }));
 
+    it('should update pagination', async(() => {
+      component.page = {
+        pageNumber: 1,
+        pageSize: 5,
+        totalPages: 0
+      }
+      component.updateSdsPagination();
+      fixture.detectChanges();
+      expect(component.page.totalPages).toBe(2);
+    }));
+
+    it('default string sort should return lowercase', async(() => {
+      expect(component.defaultSort(component.data[0], 'firstName')).toBe('gregorius');
+    }));
+
+    it('default number sort should return lowercase', async(() => {
+      expect(component.defaultSort(component.data[0], 'requests')).toBe(1);
+    }));
 
   });
 });

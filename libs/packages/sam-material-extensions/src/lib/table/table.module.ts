@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatTableModule } from '@angular/material/table';
+import {MatTableModule, MatSortModule, MatPaginatorModule } from '@angular/material';
+
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { SdsTableComponent, SdsTableRowComponent, SdsTableHeaderRowComponent, SdsTableFooterRowComponent, SdsTableColumnDefComponent, SdsTableCellDirective, SdsTableHeaderCellDirective, SdsTableFooterCellDirective } from './table.component';
-import { MatSortModule } from '@angular/material/sort';
+
+import { PaginationModule } from '@gsa-sam/components';
 
 @NgModule({
   declarations: [SdsTableComponent, SdsTableRowComponent, SdsTableHeaderRowComponent, SdsTableFooterRowComponent, SdsTableColumnDefComponent, SdsTableCellDirective, SdsTableHeaderCellDirective, SdsTableFooterCellDirective],
@@ -12,7 +14,9 @@ import { MatSortModule } from '@angular/material/sort';
     CommonModule,
     MatSortModule,
     MatTableModule,
-    FontAwesomeModule
+    MatPaginatorModule,
+    FontAwesomeModule,
+    PaginationModule
   ],
   exports: [SdsTableComponent, SdsTableRowComponent, SdsTableHeaderRowComponent, SdsTableFooterRowComponent, SdsTableColumnDefComponent, SdsTableCellDirective, SdsTableHeaderCellDirective, SdsTableFooterCellDirective]
 })

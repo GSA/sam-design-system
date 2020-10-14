@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { HeaderBasic } from './header-basic.component';
-import { SdsHeaderModule } from '@gsa-sam/components';
+import { SdsHeaderModule } from '@gsa-sam/layouts';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
