@@ -20,7 +20,7 @@ export function createGenericTestComponent<T>(html: string, type: { new(...args:
 
 let testSearchComponent;
 
-describe('Formly search Component', () => {
+describe('Formly Field Select Component', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [TestComponent, FormlyFieldSearchComponent],
@@ -71,7 +71,7 @@ describe('Formly search Component', () => {
 
 @Component({ selector: 'formly-form-test', template: '', entryComponents: [] })
 class TestComponent {
-  @ViewChild(FormlyForm) formlyForm: FormlyForm;
+  @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;
 
   fields = testSearchComponent.fields;
   form: FormGroup = testSearchComponent.form;

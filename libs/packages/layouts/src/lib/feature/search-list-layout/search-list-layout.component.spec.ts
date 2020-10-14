@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SearchListLayoutComponent } from './search-list-layout.component';
 import { PaginationModule, SdsSearchResultListModule } from '@gsa-sam/components';
 import { FormsModule } from '@angular/forms';
@@ -33,12 +33,10 @@ describe('SearchListLayoutComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('onSelectChange', fakeAsync(() => {
+  it('onSelectChange', () => {
     component.onSelectChange();
-    fixture.detectChanges();
-    tick(100);
-    expect(component.items.length).toBe(0);
-  }));
+    expect(component.items.length).toBe(1);
+  });
 
 
 });

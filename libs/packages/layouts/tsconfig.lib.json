@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../../dist/out-tsc/libs/packages/layouts",
+    "outDir": "../../../dist/out-tsc",
     "target": "es5",
     "module": "es2015",
     "moduleResolution": "node",
@@ -18,7 +18,6 @@
     ]
   },
   "angularCompilerOptions": {
-    "annotateForClosureCompiler": true,
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,
     "fullTemplateTypeCheck": true,
@@ -28,5 +27,9 @@
   "exclude": [
     "src/test.ts",
     "**/*.spec.ts"
+  ],
+  "include": [
+    "**/*.ts",
+    "src/lib/feature/search-list-layout/model/search-list-layout.model.ts"
   ]
 }

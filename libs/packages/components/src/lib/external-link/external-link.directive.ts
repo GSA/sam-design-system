@@ -9,10 +9,8 @@ import {
   OnChanges,
   HostListener
 } from '@angular/core';
-import { faCoffee, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
-import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome'; import { fas } from '@fortawesome/free-solid-svg-icons'; import { sds } from '@gsa-sam/sam-styles/src/icons/';
-
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 @Directive({
   selector: 'a[href]'
 })

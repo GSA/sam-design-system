@@ -8,9 +8,12 @@ import { SdsCollapseModule } from '@gsa-sam/components';
 import { SdsDirectivesModule } from '@gsa-sam/components';
 import { SdsAccordionModule } from '@gsa-sam/sam-material-extensions';
 
+
 @NgModule({
   imports: [
-    CommonModule, FormsModule, RouterModule, SdsCollapseModule, FontAwesomeModule, SdsDirectivesModule, SdsAccordionModule
+    CommonModule, FormsModule, RouterModule, SdsCollapseModule, FontAwesomeModule,
+    SdsDirectivesModule,
+    SdsAccordionModule
   ],
   declarations: [SdsFooterComponent],
   exports: [SdsFooterComponent]

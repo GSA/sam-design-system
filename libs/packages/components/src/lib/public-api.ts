@@ -22,6 +22,7 @@ export * from './selected-result/models/sds-selected-item-model-helper';
 export * from './side-navigation/side-navigation.module';
 export * from './side-navigation/side-navigation.component';
 export * from './search-result-list/search-result-list.module';
+export * from './search-result-list/search-result-list.component';
 export * from './common-navigation/common-navigation-model';
 export * from './common-navigation/navigation-helper';
 export * from './side-navigation/model/side-navigation-model';

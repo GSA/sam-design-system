@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import {
   MatExpansionModule
-} from '@angular/material/expansion';
+} from '@angular/material';
 import { SdsAccordionComponent, SdsAccordionItemComponent, SdsAccordionTitleDirective, SdsAccordionContentDirective } from './accordion.component';
 
 
@@ -42,7 +42,7 @@ class WrapperComponent {
 }
 
 
-xdescribe('SdsAccordionComponent', () => {
+describe('SdsAccordionComponent', () => {
   let component: SdsAccordionComponent;
   let wrapper: WrapperComponent;
   let fixture: ComponentFixture<WrapperComponent>;
@@ -137,3 +137,4 @@ xdescribe('SdsAccordionComponent', () => {
   });
 
 });
+

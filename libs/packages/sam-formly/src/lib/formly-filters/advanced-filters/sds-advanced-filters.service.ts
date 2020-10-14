@@ -5,7 +5,7 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
   providedIn: 'root'
 })
 export class SdsAdvancedFiltersService {
-  constructor() {}
+  constructor() { }
 
   convertToCheckboxes(origFields: FormlyFieldConfig[]): FormlyFieldConfig[] {
     const fields: FormlyFieldConfig[] = [];

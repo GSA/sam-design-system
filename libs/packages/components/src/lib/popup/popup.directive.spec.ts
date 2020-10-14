@@ -11,6 +11,7 @@ class TestPopupSampleComponent {
 
 }
 
+
 describe('PopupDirective', () => {
   let component: TestPopupSampleComponent;
   let fixture: ComponentFixture<TestPopupSampleComponent>;

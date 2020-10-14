@@ -8,8 +8,9 @@ import {
   ChangeDetectorRef,
   HostListener
 } from '@angular/core';
-import { FaIconLibrary } from '@fortawesome/angular-fontawesome'; import { fas } from '@fortawesome/free-solid-svg-icons'; import { sds } from '@gsa-sam/sam-styles/src/icons/';
-
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { sds } from '@gsa-sam/sam-styles/src/icons/';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -88,10 +89,10 @@ export class SdsFiltersComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private router: Router,
     private route: ActivatedRoute,
-    private datePipe: DatePipe, library: FaIconLibrary
+    private datePipe: DatePipe,
+    library: FaIconLibrary
 
   ) { library.addIconPacks(fas, sds); }
-
 
   @HostListener('window:popstate', ['$event'])
   onpopstate(event) {

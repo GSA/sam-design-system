@@ -1,7 +1,9 @@
-import {  Component,
+import {
+  Component,
   ChangeDetectionStrategy,
   ViewChild,
-  ChangeDetectorRef } from '@angular/core';
+  ChangeDetectorRef
+} from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 import { AbstractSdsFormly } from '../sds-formly';
 import { SdsTextComponent } from '@gsa-sam/components'
@@ -15,10 +17,10 @@ import { SdsTextComponent } from '@gsa-sam/components'
 })
 export class FormlyFieldTextComponent extends AbstractSdsFormly {
 
- @ViewChild(SdsTextComponent) public template: SdsTextComponent;
+  @ViewChild(SdsTextComponent, { static: false }) public template: SdsTextComponent;
 
-  constructor (_cdr: ChangeDetectorRef) {
+  constructor(_cdr: ChangeDetectorRef) {
     super(); /* istanbul ignore next */
     this.cdr = _cdr;
   }
- }
+}

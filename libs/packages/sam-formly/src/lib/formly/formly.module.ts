@@ -115,7 +115,7 @@ export { maxDateValidator, minDateValidator } from './formly.validators';
   ]
 })
 export class SdsFormlyModule {
-  public static forChild(config: ConfigOption = {}): ModuleWithProviders[] {
+  public static forChild(config: ConfigOption = {}): any[] {
     return [{ ngModule: SdsFormlyModule, providers: [] }, FormlyModule.forChild(config)];
   }
 }

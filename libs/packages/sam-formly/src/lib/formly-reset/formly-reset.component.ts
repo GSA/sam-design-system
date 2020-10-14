@@ -23,4 +23,5 @@ export class SdsFormlyResetComponent {
   resetAll() {
     this.options.resetModel();
   }
+
 }

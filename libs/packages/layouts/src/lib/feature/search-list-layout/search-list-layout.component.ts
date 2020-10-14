@@ -1,22 +1,21 @@
-import { Component, Input, ContentChild, TemplateRef, Optional, OnChanges, SimpleChanges, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ContentChild, TemplateRef, Optional } from '@angular/core';
 import { BehaviorSubject } from "rxjs";
 import { SearchListInterface, SearchListConfiguration } from './model/search-list-layout.model';
 import { SDSFormlyUpdateComunicationService } from '@gsa-sam/sam-formly';
-import { FaIconLibrary } from '@fortawesome/angular-fontawesome'; import { fas } from '@fortawesome/free-solid-svg-icons'; import { sds } from '@gsa-sam/sam-styles/src/icons/';
 
 @Component({
   selector: 'search-list-layout',
   templateUrl: './search-list-layout.component.html',
   styleUrls: ['./search-list-layout.component.scss']
 })
-export class SearchListLayoutComponent implements OnChanges, OnInit {
+export class SearchListLayoutComponent implements OnInit {
 
   /**
   * Child Template to be used to display the data for each item in the list of items
   */
   @ContentChild('resultContent') resultContentTemplate: TemplateRef<any>;
 
-  constructor(@Optional() private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService, library: FaIconLibrary) { library.addIconPacks(fas, sds); }
+  constructor(@Optional() private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService) { }
 
   /**
    * Input service to be called when items change
@@ -30,22 +29,10 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   @Input()
   configuration: SearchListConfiguration;
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.configuration.currentValue) {
-      this.configuration = changes.configuration.currentValue;
-      this.sortField = this.configuration.defaultSortValue;
-      this.onSelectChange();
-    }
-  }
   /**
    * Filter information
    */
   private filterData: any;
-
-  /**
-   * Total number of items
-   */
-  totalItems: number;
 
   ngOnInit() {
     this.page.pageSize = this.configuration.pageSize;
@@ -64,7 +51,6 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     }
   }
 
-
   /**
    * Default Page setttings
    */
@@ -76,7 +62,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
 
   /**
    * updates the filter and set the page number to 1 and calls imported service
-   * @param filter
+   * @param filter 
    */
   public updateFilter(filter: any) {
     this.filterData = filter;
@@ -113,7 +99,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   items = [];
 
   /**
-   * sort value
+   * sort value 
    */
   public sortField = '';
 
@@ -121,16 +107,11 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
    * calls service when updated
    */
   private updateContent() {
-    if (this.filterData) {
-      setTimeout(() => {
-        this.service.getData({ 'page': this.page, sortField: this.sortField, filter: this.filterData }).subscribe(
-          (result) => {
-            this.items = result.items;
-            this.page.totalPages = Math.ceil(result.totalItems / this.page.pageSize);
-            this.totalItems = result.totalItems;
-          }
-        );
-      });
-    }
+    this.service.getData({ 'page': this.page, sortField: this.sortField, filter: this.filterData }).subscribe(
+      (result) => {
+        this.items = result.items;
+        this.page.totalPages = Math.ceil(result.totalItems / this.page.pageSize);
+      }
+    );
   }
 }

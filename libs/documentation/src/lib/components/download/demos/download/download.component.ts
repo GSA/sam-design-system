@@ -94,7 +94,7 @@ export class DownloadComponent {
   ];
   constructor(public dialog: SdsDialogService) { }
   openDialog() {
-    const data: SdsFormlyDialogData = {
+    const data: any = {
       fields: this.fields,
       model: this.model,
       submit: 'Download',

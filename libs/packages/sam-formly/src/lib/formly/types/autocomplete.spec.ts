@@ -21,7 +21,7 @@ export function createGenericTestComponent<T>(html: string, type: { new(...args:
 
 let testAutocompleteComponent;
 
-describe('Autocomplete  Component', () => {
+describe('Formly Field Select Component', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [TestComponent, FormlyFieldAutoCompleteComponent],
@@ -81,7 +81,7 @@ describe('Autocomplete  Component', () => {
         key: 'firstName',
         type: 'autocomplete',
         templateOptions: {
-          // label: 'Auto Complete Test',
+          label: 'Auto Complete Test',
           service: testAutocompleteComponent.service,
           configuration: testAutocompleteComponent.settings,
           model: testAutocompleteComponent.autocompleteModel,
@@ -99,7 +99,7 @@ describe('Autocomplete  Component', () => {
 
 @Component({ selector: 'formly-form-test', template: '', entryComponents: [] })
 class TestComponent {
-  @ViewChild(FormlyForm) formlyForm: FormlyForm;
+  @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;
 
   fields = testAutocompleteComponent.fields;
   form: FormGroup = testAutocompleteComponent.form;
