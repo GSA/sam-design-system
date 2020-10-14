@@ -8,7 +8,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {
-  SdsAccordionModule, SdsAutocompleteModule, SdsDialogModule, SdsTextModule, SdsSearchModule
+  SdsAccordionModule, SdsAutocompleteModule, SdsDialogModule, SdsTextModule, SdsSearchModule, SdsCollapseModule
 } from '@gsa-sam/components';
 
 import { FIELD_TYPE_COMPONENTS, FORMLY_CONFIG } from './formly.config';
@@ -81,6 +81,7 @@ export { maxDateValidator, minDateValidator } from './formly.validators';
     SdsDialogModule,
     SdsSearchModule,
     SdsTextModule,
+    SdsCollapseModule,
     MatNativeDateModule,
     MatDatepickerModule,
     MatInputModule,
@@ -114,7 +115,7 @@ export { maxDateValidator, minDateValidator } from './formly.validators';
   ]
 })
 export class SdsFormlyModule {
-  public static forChild(config: ConfigOption = {}): ModuleWithProviders<SdsFormlyModule>[] {
+  public static forChild(config: ConfigOption = {}): any[] {
     return [{ ngModule: SdsFormlyModule, providers: [] }, FormlyModule.forChild(config)];
   }
 }

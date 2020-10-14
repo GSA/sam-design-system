@@ -3,8 +3,6 @@ import { FormGroup } from '@angular/forms';
 
 export interface SdsFormlyDialogData {
   fields: FormlyFieldConfig[];
-  originalFields: FormlyFieldConfig[];
-  originalModel: any;
   cancel?: string;
   form?: FormGroup;
   model?: object;
@@ -12,4 +10,5 @@ export interface SdsFormlyDialogData {
   submit?: string;
   subtitle?: string;
   title?: string;
+  disableSubmitButtonEnabled?: boolean
 }
