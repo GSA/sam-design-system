@@ -7,7 +7,7 @@ import { MatButtonToggleChange } from '@angular/material';
 })
 export class ButtonGroupBasic {
 
-  firstGroupCurrentValue: Array<any> = [];
+  firstGroupCurrentValue: Array<any> = ['reports'];
   secondGroupCurrentValue: Array<any> = [];
 
   firstGroupChange(obj: MatButtonToggleChange){

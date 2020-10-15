@@ -22,6 +22,7 @@ import { MatButtonToggleChange } from '@angular/material';
 export class SdsButtonGroupOptionComponent {
   @ViewChild('buttonGroupTemplate') buttonGroupTemplate: TemplateRef<any>;
   @Input() value: any;
+  @Input() checked: boolean;
   @Input('aria-label') ariaLabel: any;
 }
 
