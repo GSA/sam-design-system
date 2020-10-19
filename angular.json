@@ -12,7 +12,7 @@
         "build": {
           "builder": "@nrwl/angular:package",
           "outputs": [
-            "dist/libs/sam-material-extensions"
+            "dist/libs/components"
           ],
           "options": {
             "tsConfig": "libs/packages/components/tsconfig.lib.json",

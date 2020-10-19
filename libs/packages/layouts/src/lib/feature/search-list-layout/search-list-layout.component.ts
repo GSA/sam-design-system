@@ -16,7 +16,7 @@ export class SearchListLayoutComponent implements OnInit {
   @ContentChild('resultContent') resultContentTemplate: TemplateRef<any>;
 
   constructor(@Optional() private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService) { }
-
+  totalItems = 0;
   /**
    * Input service to be called when items change
    */
