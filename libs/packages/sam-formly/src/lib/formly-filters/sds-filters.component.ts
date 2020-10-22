@@ -104,13 +104,15 @@ export class SdsFiltersComponent implements OnInit {
     if (this.isHistoryEnable) {
       if (this._isEmpty(this.form.getRawValue())) {
         const queryString = window.location.search.substring(1);
-        const params = this.getUrlParams(queryString);
-        const paramModel = this.convertToModel(params);
+        const params: any = this.getUrlParams(queryString);
+
+        const paramModel: any = this.convertToModel(params);
+        console.log(paramModel.sfm, 'test-param')
         this.checkForHide();
         setTimeout(() => {
           this.form.patchValue({
             ...this.model,
-            ...paramModel
+            ...paramModel.sfm
           });
         });
         this.cdr.detectChanges();
@@ -146,7 +148,11 @@ export class SdsFiltersComponent implements OnInit {
 
   onModelChange(change: any) {
     if (this.isHistoryEnable) {
-      const params = this.convertToParam(change);
+      const queryString = window.location.search.substring(1);
+      const queryparams = this.getUrlParams(queryString);
+
+      const params = this.convertToParam({ "sfm": change });
+
       this.router.navigate(['.'], {
         relativeTo: this.route,
         queryParams: params,
