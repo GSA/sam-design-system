@@ -105,9 +105,7 @@ export class SdsFiltersComponent implements OnInit {
       if (this._isEmpty(this.form.getRawValue())) {
         const queryString = window.location.search.substring(1);
         const params: any = this.getUrlParams(queryString);
-
         const paramModel: any = this.convertToModel(params);
-        console.log(paramModel.sfm, 'test-param')
         this.checkForHide();
         setTimeout(() => {
           this.form.patchValue({
