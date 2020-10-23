@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
-import {ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'sds-formly-field-file',
