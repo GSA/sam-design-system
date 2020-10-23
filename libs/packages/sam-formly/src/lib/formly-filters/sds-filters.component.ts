@@ -149,14 +149,17 @@ export class SdsFiltersComponent implements OnInit {
   onModelChange(change: any) {
     if (this.isHistoryEnable) {
       const queryString = window.location.search.substring(1);
-      const queryparams = this.getUrlParams(queryString);
-
-      const params = this.convertToParam({ "sfm": change });
-
+      let queryObj = qs.parse(queryString, { allowPrototypes: true });
+      if (queryObj.hasOwnProperty('sfm')) {
+        queryObj.sfm = {};
+      }
+      queryObj['sfm'] = change;
+      const params = this.convertToParam(queryObj);
       this.router.navigate(['.'], {
         relativeTo: this.route,
         queryParams: params,
-        queryParamsHandling: 'merge'
+        // TODO: Need this for future use case
+        // queryParamsHandling: 'merge'
       });
     }
     this.updateChange(change);
