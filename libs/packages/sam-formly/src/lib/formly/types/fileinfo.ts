@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
+import {ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'sds-formly-field-file',
@@ -26,27 +27,55 @@ import { FieldType } from '@ngx-formly/core';
             [formControl]="formControl"
             [formlyAttributes]="field"
           />
+
           <label [for]="id + '_' + i">
-            <div class="sds-card__header sds-card__header--center">
-              <h3 class="sds-card__title ">{{ option.label }}</h3>
-            </div>
-            <div class="sds-card__body sds-card__header--center ">
-              <span
-                class="bg-base-light padding-1 padding-left-2 padding-right-2"
-                >{{ option.value }}</span
-              >
-            </div>
+          <button class="sds-button sds-button--icon-lg">
+          <div class="sds-button__header">
+          <fa-icon [icon]="['sds',  to.additionalProperties[i].icon]" class="text-base"  size="2x"></fa-icon>
+        
+          </div>
+          <div class="sds-button__body">
+            <span class="usa-tag">{{to.options[i].key}}</span>
+            <span>{{ to.options[i].description}}</span>
+          </div>
+        </button>
           </label>
+
         </div>
       </div>
     </div>
   `,
   styles: [
-    `
-      .sds-card-selected {
-        border-color: #2672de !important;
-        border-width: 2px !important;
+    `.sds-button.sds-button--icon-lg .usa-tag {
+      color: white;
+      font-style: normal;
+      margin-left: auto;
+      margin-right: auto;
+      padding-bottom: 0.5rem;
+      padding-top: 0.5rem;
+    }
+    
+    .sds-card{
+      border:none;
+      box-shadow:none;
+    }
+      .sds-button.sds-button--icon-lg {
+        width: 100%;
+        text-align: center;
+        display: flex;
       }
+
+    .sds-button.sds-button--icon-lg .sds-button__body {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+     }
+
+    .sds-button.sds-button--icon-lg {
+      height: 100%;
+      flex-direction: column;
+      align-items: center;
+    }
     `
   ]
 })

@@ -63,11 +63,17 @@ export class DownloadComponent {
       templateOptions: {
         label: 'Select file type',
         hideOptional: true,
+        additionalProperties:[
+          {icon: "document" },
+          {icon: "folder" },
+          {icon: "document-pdf"},
+          {icon: "document"}
+        ],
         options: [
-          { value: 'Default', key: 'CSV', description: '-Limited to 5000' },
-          { value: 'Full', key: 'ZIP', description: '-Limited to 10,000' },
-          { value: 'Case', key: 'PDF', description: '-Limited to 8000' },
-          { value: 'All', key: 'XLS', description: '-Limited to 45000' }
+          { value: 'Default', key: 'CSV', description: 'Limited to 5000' },
+          { value: 'Full', key: 'ZIP', description: 'Limited to 10,000' },
+          { value: 'Case', key: 'PDF', description: 'Limited to 8000' },
+          { value: 'All', key: 'XLS', description: 'Limited to 45000' }
         ]
       }
     },
