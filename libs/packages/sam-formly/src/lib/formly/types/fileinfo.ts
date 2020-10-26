@@ -45,35 +45,10 @@ import { FieldType } from '@ngx-formly/core';
     </div>
   `,
   styles: [
-    `.sds-button.sds-button--icon-lg .usa-tag {
-      color: white;
-      font-style: normal;
-      margin-left: auto;
-      margin-right: auto;
-      padding-bottom: 0.5rem;
-      padding-top: 0.5rem;
-    }
-    
+    `
     .sds-card{
       border:none;
       box-shadow:none;
-    }
-      .sds-button.sds-button--icon-lg {
-        width: 100%;
-        text-align: center;
-        display: flex;
-      }
-
-    .sds-button.sds-button--icon-lg .sds-button__body {
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-     }
-
-    .sds-button.sds-button--icon-lg {
-      height: 100%;
-      flex-direction: column;
-      align-items: center;
     }
     `
   ]
