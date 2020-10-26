@@ -120,7 +120,7 @@ describe('The Sam Filters Component', () => {
       component.onModelChange(component.model);
       tick();
       fixture.detectChanges();
-      expect(location.path()).toContain('/?filter');
+      expect(location.path()).toContain('/?sfm');
     }));
 
     it('should not change the route when history set to false', fakeAsync(() => {

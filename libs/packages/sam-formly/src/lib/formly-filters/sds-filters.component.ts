@@ -104,13 +104,13 @@ export class SdsFiltersComponent implements OnInit {
     if (this.isHistoryEnable) {
       if (this._isEmpty(this.form.getRawValue())) {
         const queryString = window.location.search.substring(1);
-        const params = this.getUrlParams(queryString);
-        const paramModel = this.convertToModel(params);
+        const params: any = this.getUrlParams(queryString);
+        const paramModel: any = this.convertToModel(params);
         this.checkForHide();
         setTimeout(() => {
           this.form.patchValue({
             ...this.model,
-            ...paramModel
+            ...paramModel.sfm
           });
         });
         this.cdr.detectChanges();
@@ -146,11 +146,18 @@ export class SdsFiltersComponent implements OnInit {
 
   onModelChange(change: any) {
     if (this.isHistoryEnable) {
-      const params = this.convertToParam(change);
+      const queryString = window.location.search.substring(1);
+      let queryObj = qs.parse(queryString, { allowPrototypes: true });
+      if (queryObj.hasOwnProperty('sfm')) {
+        queryObj.sfm = {};
+      }
+      queryObj['sfm'] = change;
+      const params = this.convertToParam(queryObj);
       this.router.navigate(['.'], {
         relativeTo: this.route,
         queryParams: params,
-        queryParamsHandling: 'merge'
+        // TODO: Need this for future use case
+        // queryParamsHandling: 'merge'
       });
     }
     this.updateChange(change);
