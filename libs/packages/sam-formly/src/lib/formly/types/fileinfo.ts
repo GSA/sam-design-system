@@ -4,18 +4,17 @@ import { FieldType } from '@ngx-formly/core';
 @Component({
   selector: 'sds-formly-field-file',
   template: `
-    <div class="grid-row grid-gap margin-top-1">
-      <div
+  <div class="grid-container width-tablet margin-top-1 margin-auto">
+    <div class="grid-row grid-gap">
+      <ng-container
         *ngFor="
           let option of (to.options | formlySelectOptions: field | async);
           let i = index
         "
       >
-        <div
-          class="sds-card mobile-lg:grid-col"
-          [ngClass]="{ 'sds-card-selected': formControl.value == option.value }"
-        >
-          <input
+        <div class="grid-col">
+          <button class="sds-button sds-button--icon-lg" [ngClass]="{ 'sds-button--icon-lg--selected': formControl.value == option.value }" >
+            <input
             type="radio"
             [id]="id + '_' + i"
             class="usa-sr-only usa-radio__input"
@@ -25,33 +24,23 @@ import { FieldType } from '@ngx-formly/core';
             [value]="option.value"
             [formControl]="formControl"
             [formlyAttributes]="field"
-          />
-
-          <label [for]="id + '_' + i">
-          <button class="sds-button sds-button--icon-lg">
+            />
           <div class="sds-button__header">
-          <fa-icon [icon]="['sds',  to.additionalProperties[i].icon]" class="text-base"  size="2x"></fa-icon>
-        
+          <fa-icon [icon]="['sds',  to.options[i].icon]" class="text-base"  size="2x"></fa-icon>
           </div>
           <div class="sds-button__body">
             <span class="usa-tag">{{to.options[i].key}}</span>
             <span>{{ to.options[i].description}}</span>
+            <span>{{formControl.value}}</span>
           </div>
-        </button>
-          </label>
+            </button>
+            </div>
 
-        </div>
+   
+          </ng-container>
       </div>
     </div>
   `,
-  styles: [
-    `
-    .sds-card{
-      border:none;
-      box-shadow:none;
-    }
-    `
-  ]
 })
 export class FormlyFieldFileInfoComponent extends FieldType {
   isSelected: boolean = false;

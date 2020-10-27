@@ -63,17 +63,11 @@ export class DownloadComponent {
       templateOptions: {
         label: 'Select file type',
         hideOptional: true,
-        additionalProperties:[
-          {icon: "document" },
-          {icon: "folder" },
-          {icon: "document-pdf"},
-          {icon: "document"}
-        ],
         options: [
-          { value: 'Default', key: 'CSV', description: 'Limited to 5000' },
-          { value: 'Full', key: 'ZIP', description: 'Limited to 10,000' },
-          { value: 'Case', key: 'PDF', description: 'Limited to 8000' },
-          { value: 'All', key: 'XLS', description: 'Limited to 45000' }
+          { value: 'Default', key: 'CSV', description: 'Limited to 5000',icon: "document" },
+          { value: 'Full', key: 'ZIP', description: 'Limited to 10,000', icon: "folder"  },
+          { value: 'Case', key: 'PDF', description: 'Limited to 8,000' , icon: "document-pdf"},
+          { value: 'All', key: 'XLS', description: 'Limited to 45,000', icon: "document" }
         ]
       }
     },
@@ -108,7 +102,7 @@ export class DownloadComponent {
       options: this.options,
       disableSubmitButtonEnabled: true,
       subtitle:
-        'Choose from the following download option.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt'
+        'Choose from the following download option. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt'
     };
 
     const dialogRef = this.dialog.open(SdsFormlyDialogComponent, {
