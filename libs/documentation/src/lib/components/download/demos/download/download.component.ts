@@ -64,10 +64,10 @@ export class DownloadComponent {
         label: 'Select file type',
         hideOptional: true,
         options: [
-          { value: 'Default', key: 'CSV', description: 'Limited to 5000',icon: "document" },
+          { value: 'Default', key: 'CSV', description: 'Limited to 5000',icon: "document-search" },
           { value: 'Full', key: 'ZIP', description: 'Limited to 10,000', icon: "folder"  },
           { value: 'Case', key: 'PDF', description: 'Limited to 8,000' , icon: "document-pdf"},
-          { value: 'All', key: 'XLS', description: 'Limited to 45,000', icon: "document" }
+          { value: 'All', key: 'XLS', description: 'Limited to 45,000', icon: "document-add" }
         ]
       }
     },
