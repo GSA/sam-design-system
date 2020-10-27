@@ -31,7 +31,7 @@ import { FieldType } from '@ngx-formly/core';
           <div class="sds-button__body">
             <span class="usa-tag">{{to.options[i].key}}</span>
             <span>{{ to.options[i].description}}</span>
-            <span>{{formControl.value}}</span>
+        
           </div>
             </button>
             </div>
