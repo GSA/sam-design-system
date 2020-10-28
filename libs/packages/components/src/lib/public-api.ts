@@ -33,3 +33,4 @@ export * from './text/text.module';
 export * from './search/search.component';
 export * from './top-banner/top-banner.component';
 export * from './top-banner/top-banner.module';
+export * from './icon/icon.module';
