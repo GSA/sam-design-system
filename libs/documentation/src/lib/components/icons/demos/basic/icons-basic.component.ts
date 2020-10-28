@@ -7,4 +7,5 @@ import { sds } from '@gsa-sam/sam-styles/src/icons/';
 })
 export class IconsBasic {
   sdsIcons = sds;
+
 }
