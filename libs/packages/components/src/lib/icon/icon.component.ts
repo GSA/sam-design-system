@@ -5,9 +5,10 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './icon.component.html',
   styleUrls: ['./icon.component.scss']
 })
-export class SdsIconComponent implements OnInit {
+export class SdsIconComponent {
 
-  @Input() set icon(iconToShow: Array<string>){
+  @Input()
+  set icon(iconToShow: Array<string>){
     if(iconToShow.length !== 2){
       return
     }
@@ -19,10 +20,5 @@ export class SdsIconComponent implements OnInit {
 
   library;
   iconToFind;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
 }
