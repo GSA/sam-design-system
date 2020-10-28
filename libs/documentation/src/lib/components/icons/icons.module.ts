@@ -16,6 +16,9 @@ import { IconsRotationModule } from './demos/rotation/icons-rotation.module';
 import { IconsColoring } from './demos/coloring/icons-coloring.component';
 import { IconsRotation } from './demos/rotation/icons-rotation.component';
 import { IconsScaling } from './demos/scaling/icons-scaling.component';
+import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
+import { DocumentationSourcePage } from '../shared/source-page/source.component';
+import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 
 declare var require: any;
 const DEMOS = {
@@ -63,6 +66,9 @@ export const ROUTES = [
     component: ComponentWrapperComponent,
     children: [
       { path: 'examples', component: DocumentationExamplesPage },
+      { path: 'api', component: DocumentationAPIPage },
+      { path: 'source', component: DocumentationSourcePage },
+      { path: 'template', component: DocumentationTemplatePage }
     ]
   }
 ];
