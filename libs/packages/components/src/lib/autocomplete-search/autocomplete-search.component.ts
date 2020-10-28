@@ -29,7 +29,7 @@ const Autocomplete_Autocomplete_VALUE_ACCESSOR: any = {
   providers: [Autocomplete_Autocomplete_VALUE_ACCESSOR]
 })
 export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
-  constructor(private _changeDetectorRef: ChangeDetectorRef) {}
+  constructor(private _changeDetectorRef: ChangeDetectorRef) { }
   /**
    * Ul list of elements
    */
@@ -202,15 +202,11 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     if (this.configuration) {
       if (this.configuration.selectionMode === SelectionMode.SINGLE) {
         if (this.model.items.length > 0) {
-          if (this.inputValue.length === 0) {
-            SDSSelectedItemModelHelper.clearItems(this.model.items);
-            this.propogateChange(this.model);
-          } else {
-            this.inputValue = this.getObjectValue(
-              this.model.items[0],
-              this.configuration.primaryTextField
-            );
-          }
+          this.inputValue = this.getObjectValue(
+            this.model.items[0],
+            this.configuration.primaryTextField
+          );
+
         }
       } else {
         this.inputValue = '';
