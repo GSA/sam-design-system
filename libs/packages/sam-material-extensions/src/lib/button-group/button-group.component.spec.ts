@@ -100,7 +100,7 @@ class CheckboxWrapperComponent {
   accordionComponentRef: SdsButtonGroupComponent;
 }
 
-fdescribe('ButtonGroupComponent', () => {
+describe('ButtonGroupComponent', () => {
   let component: CheckboxWrapperComponent;
   let fixture: ComponentFixture<CheckboxWrapperComponent>;
   let buttonGroupEl: DebugElement;
