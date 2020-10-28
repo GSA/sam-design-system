@@ -19,6 +19,6 @@
     "@fortawesome/angular-fontawesome": "^0.3.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.17",
     "@fortawesome/free-solid-svg-icons": "^5.8.1",
-    "@angular/material": "~10.2.1-sha-b23d130e1",
+    "@angular/material": "~10.2.1-sha-b23d130e1"
   }
 }
