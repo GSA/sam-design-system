@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {allIcons} from 'ngx-bootstrap-icons'
-import {lodash} from 'lodash-es';
+import { kebabCase } from 'lodash-es';
 
 @Component({
   templateUrl: './icons-bootstrap.component.html',
@@ -8,7 +8,7 @@ import {lodash} from 'lodash-es';
 })
 export class IconsBootstrap {
   bootstrapIcons = Object.keys(allIcons)
-    .map(iconName => lodash.kebabCase(iconName))
+    .map(iconName => kebabCase(iconName))
     .map(this.xByXCorrection)
     .map(this.degCorrection)
     .map(this.xKCorrection);
