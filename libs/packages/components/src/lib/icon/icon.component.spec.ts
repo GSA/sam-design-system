@@ -12,8 +12,7 @@ import { SdsIconComponent } from './icon.component';
     <sds-icon [icon]="['bs', 'alarm']" [rotate]="270"></sds-icon>
   `
 })
-class IconRotationComponent {
-}
+class IconRotationComponent {}
 
 describe('IconComponent Rotation', () => {
   let component: IconRotationComponent;
@@ -76,10 +75,7 @@ describe('IconComponent Rotation', () => {
 
   `
 })
-class IconScalingComponent {
-  @ViewChild(SdsIconComponent)
-  accordionComponentRef: SdsIconComponent;
-}
+class IconScalingComponent {}
 
 describe('IconComponent Scaling', () => {
   let component: IconScalingComponent;

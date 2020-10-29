@@ -64,6 +64,15 @@ export const ROUTES = [
   {
     path: '',
     component: ComponentWrapperComponent,
+    data: {
+      items: [
+        {
+          pkg: 'components',
+          type: 'components',
+          name: 'SdsIconComponent'
+        }
+      ]
+    },
     children: [
       { path: 'examples', component: DocumentationExamplesPage },
       { path: 'api', component: DocumentationAPIPage },

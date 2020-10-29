@@ -18,7 +18,7 @@ export class SdsIconComponent {
   @Input() rotate: number = 0;
   @Input() size: string = 'lg';
 
-  library;
-  iconToFind;
+  library: string;
+  iconToFind: string;
 
 }
