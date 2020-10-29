@@ -1,5 +1,5 @@
 <ng-container *ngIf="library === 'bs'">
-  <i-bs name={{iconToFind}} class="rotate-{{rotate}} size-{{size}}"></i-bs>
+  <i-bs name={{iconToFind}} class="rotate-{{rotate}} size-{{size}}" aria-hidden=true role="img"></i-bs>
 </ng-container>
 <ng-container *ngIf="library === 'sds'">
   <fa-icon [icon]="['sds', iconToFind]" size="{{size}}" rotate="{{rotate}}"></fa-icon>
