@@ -43,72 +43,6 @@
             "methods": []
         },
         {
-            "name": "FooterLogo",
-            "id": "interface-FooterLogo-8351bbc206ff7dcca88f5b1b636b3881",
-            "file": "libs/packages/components/src/lib/footer/model/FooterModel.ts",
-            "type": "interface",
-            "sourceCode": "import {\n  INavigationLink,\n  NavigationMode\n} from '../../common-navigation/common-navigation-model';\n\nexport class FooterModel {\n  /**\n   * List of sections and their links\n   */\n  linkSections: FooterLinkSection[];\n\n  /**\n   * Footer text and logo\n   */\n\n  footerLogo?: FooterLogo;\n}\n\nexport class FooterLinkSection {\n  /**\n   * Title text for the section\n   */\n  text: string;\n\n  /**\n   * Links in the section\n   */\n  links: FooterLink[];\n}\n\nexport class FooterLink implements INavigationLink {\n  /**\n   * Internal Angualr Routes, External HREF, EVENT: event on parent component\n   */\n  mode: NavigationMode;\n\n  /**\n   * Text to be displayed in the link\n   */\n  text: string;\n\n  /**\n   * Navigation Route\n   */\n  route: string;\n}\n\nexport interface FooterLogo {\n  /**\n   * Text for the Header\n   */\n\n  text: string;\n\n  /**\n   * Image Source Path for the Image button\n   */\n\n  imageSourcePath: string;\n\n  /**\n   * Alt text for image\n   */\n\n  imageAltText: string;\n}\n",
-            "properties": [
-                {
-                    "name": "imageAltText",
-                    "type": "string",
-                    "optional": false,
-                    "description": "<p>Alt text for image</p>\n",
-                    "line": 65
-                },
-                {
-                    "name": "imageSourcePath",
-                    "type": "string",
-                    "optional": false,
-                    "description": "<p>Image Source Path for the Image button</p>\n",
-                    "line": 59
-                },
-                {
-                    "name": "text",
-                    "type": "string",
-                    "optional": false,
-                    "description": "<p>Text for the Header</p>\n",
-                    "line": 53
-                }
-            ],
-            "indexSignatures": [],
-            "kind": 150,
-            "methods": []
-        },
-        {
-            "name": "HeaderModel",
-            "id": "interface-HeaderModel-ee7a838bc2d256032384e3e7e9c96aff",
-            "file": "libs/packages/components/src/lib/header/model/HeaderModel.ts",
-            "type": "interface",
-            "sourceCode": "import { INavigationLink, NavigationMode, Selectable } from '../../common-navigation/common-navigation-model';\n\n\nexport interface HeaderModel {\n\n    /**\n     * Header logo and header logo home link\n     */\n    home: HeaderHome;\n\n    /**\n     * List of secondary links\n     */\n    secondaryLinks: HeaderSecondaryLink[];\n\n    /**\n     * List of main navigaation links/drop downs\n     */\n    navigationLinks: HeaderNavigationLink[];\n}\n\n\nexport class HeaderHome implements Selectable, INavigationLink {\n\n    /**\n     * Internal Angualr Routes, External HREF, EVENT: event on parent component\n    */\n    mode: NavigationMode;\n\n    /**\n     * Text for the Header\n     */\n    text: string;\n\n    /**\n     * Agency Logo for the Header\n     */\n    logo: string;\n\n    /**\n     * Navigation Route for Home image button\n     */\n    route: string;\n\n    /**\n    * Identifier for the item when search for selected\n    */\n    id: string;\n\n    /**\n     * Status of if the item is selected\n     */\n    selected?: boolean;\n}\n\n/**\n *\n */\nexport class HeaderNavigationLink implements Selectable, INavigationLink {\n\n    /**\n     * Internal Angualr Routes, External HREF, EVENT: event on parent component\n     */\n    mode: NavigationMode;\n\n    /**\n     * Text to be displayed in the link or button\n     */\n    text: string;\n\n    /**\n     * Navigation Route\n     */\n    route: string;\n\n    /**\n     * List of child navigation items that will show when no route is provieded\n     */\n    children?: HeaderNavigationLink[];\n\n    /**\n     * Identifier for the item when search for selected\n     */\n    id: string;\n\n    /**\n     * Status of if the item is selected\n     */\n    selected?: boolean;\n}\n\n\nexport class HeaderSecondaryLink implements Selectable, INavigationLink {\n\n    /**\n     * Internal Angualr Routes, External HREF, EVENT: event on parent component\n     */\n    mode: NavigationMode;\n\n    /**\n     * Text to be displayed in the link\n     */\n    text: string;\n\n    /**\n     * Navigation Route\n     */\n    route: string;\n\n    /**\n     * image class eg. fas\n     */\n    imageClassPrefix: string;\n\n    /**\n     * image class\n     */\n    imageClass: string;\n\n    /**\n     * displays counter with image\n     */\n    hasCounter?: boolean;\n\n    /**\n     * Identifier for the item when search for selected\n     */\n    id: string;\n\n    /**\n     * Status of if the item is selected\n     */\n    selected?: boolean;\n}\n",
-            "properties": [
-                {
-                    "name": "home",
-                    "type": "HeaderHome",
-                    "optional": false,
-                    "description": "<p>Header logo and header logo home link</p>\n",
-                    "line": 9
-                },
-                {
-                    "name": "navigationLinks",
-                    "type": "HeaderNavigationLink[]",
-                    "optional": false,
-                    "description": "<p>List of main navigaation links/drop downs</p>\n",
-                    "line": 19
-                },
-                {
-                    "name": "secondaryLinks",
-                    "type": "HeaderSecondaryLink[]",
-                    "optional": false,
-                    "description": "<p>List of secondary links</p>\n",
-                    "line": 14
-                }
-            ],
-            "indexSignatures": [],
-            "kind": 150,
-            "methods": []
-        },
-        {
             "name": "INavigationLink",
             "id": "interface-INavigationLink-77ea232dd64ab74fe9e2f7c81b3b5ff4",
             "file": "libs/packages/components/src/lib/common-navigation/common-navigation-model.ts",
@@ -1297,300 +1231,6 @@
             "outputsClass": [],
             "hostBindings": [],
             "hostListeners": []
-        },
-        {
-            "name": "FooterLink",
-            "id": "class-FooterLink-8351bbc206ff7dcca88f5b1b636b3881",
-            "file": "libs/packages/components/src/lib/footer/model/FooterModel.ts",
-            "type": "class",
-            "sourceCode": "import {\n  INavigationLink,\n  NavigationMode\n} from '../../common-navigation/common-navigation-model';\n\nexport class FooterModel {\n  /**\n   * List of sections and their links\n   */\n  linkSections: FooterLinkSection[];\n\n  /**\n   * Footer text and logo\n   */\n\n  footerLogo?: FooterLogo;\n}\n\nexport class FooterLinkSection {\n  /**\n   * Title text for the section\n   */\n  text: string;\n\n  /**\n   * Links in the section\n   */\n  links: FooterLink[];\n}\n\nexport class FooterLink implements INavigationLink {\n  /**\n   * Internal Angualr Routes, External HREF, EVENT: event on parent component\n   */\n  mode: NavigationMode;\n\n  /**\n   * Text to be displayed in the link\n   */\n  text: string;\n\n  /**\n   * Navigation Route\n   */\n  route: string;\n}\n\nexport interface FooterLogo {\n  /**\n   * Text for the Header\n   */\n\n  text: string;\n\n  /**\n   * Image Source Path for the Image button\n   */\n\n  imageSourcePath: string;\n\n  /**\n   * Alt text for image\n   */\n\n  imageAltText: string;\n}\n",
-            "properties": [
-                {
-                    "name": "mode",
-                    "type": "NavigationMode",
-                    "optional": false,
-                    "description": "<p>Internal Angualr Routes, External HREF, EVENT: event on parent component</p>\n",
-                    "line": 35
-                },
-                {
-                    "name": "route",
-                    "type": "string",
-                    "optional": false,
-                    "description": "<p>Navigation Route</p>\n",
-                    "line": 45
-                },
-                {
-                    "name": "text",
-                    "type": "string",
-                    "optional": false,
-                    "description": "<p>Text to be displayed in the link</p>\n",
-                    "line": 40
-                }
-            ],
-            "methods": [],
-            "indexSignatures": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "hostBindings": [],
-            "hostListeners": [],
-            "implements": [
-                "INavigationLink"
-            ]
-        },
-        {
-            "name": "FooterLinkSection",
-            "id": "class-FooterLinkSection-8351bbc206ff7dcca88f5b1b636b3881",
-            "file": "libs/packages/components/src/lib/footer/model/FooterModel.ts",
-            "type": "class",
-            "sourceCode": "import {\n  INavigationLink,\n  NavigationMode\n} from '../../common-navigation/common-navigation-model';\n\nexport class FooterModel {\n  /**\n   * List of sections and their links\n   */\n  linkSections: FooterLinkSection[];\n\n  /**\n   * Footer text and logo\n   */\n\n  footerLogo?: FooterLogo;\n}\n\nexport class FooterLinkSection {\n  /**\n   * Title text for the section\n   */\n  text: string;\n\n  /**\n   * Links in the section\n   */\n  links: FooterLink[];\n}\n\nexport class FooterLink implements INavigationLink {\n  /**\n   * Internal Angualr Routes, External HREF, EVENT: event on parent component\n   */\n  mode: NavigationMode;\n\n  /**\n   * Text to be displayed in the link\n   */\n  text: string;\n\n  /**\n   * Navigation Route\n   */\n  route: string;\n}\n\nexport interface FooterLogo {\n  /**\n   * Text for the Header\n   */\n\n  text: string;\n\n  /**\n   * Image Source Path for the Image button\n   */\n\n  imageSourcePath: string;\n\n  /**\n   * Alt text for image\n   */\n\n  imageAltText: string;\n}\n",
-            "properties": [
-                {
-                    "name": "links",
-                    "type": "FooterLink[]",
-                    "optional": false,
-                    "description": "<p>Links in the section</p>\n",
-                    "line": 28
-                },
-                {
-                    "name": "text",
-                    "type": "string",
-                    "optional": false,
-                    "description": "<p>Title text for the section</p>\n",
-                    "line": 23
-                }
-            ],
-            "methods": [],
-            "indexSignatures": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "hostBindings": [],
-            "hostListeners": []
-        },
-        {
-            "name": "FooterModel",
-            "id": "class-FooterModel-8351bbc206ff7dcca88f5b1b636b3881",
-            "file": "libs/packages/components/src/lib/footer/model/FooterModel.ts",
-            "type": "class",
-            "sourceCode": "import {\n  INavigationLink,\n  NavigationMode\n} from '../../common-navigation/common-navigation-model';\n\nexport class FooterModel {\n  /**\n   * List of sections and their links\n   */\n  linkSections: FooterLinkSection[];\n\n  /**\n   * Footer text and logo\n   */\n\n  footerLogo?: FooterLogo;\n}\n\nexport class FooterLinkSection {\n  /**\n   * Title text for the section\n   */\n  text: string;\n\n  /**\n   * Links in the section\n   */\n  links: FooterLink[];\n}\n\nexport class FooterLink implements INavigationLink {\n  /**\n   * Internal Angualr Routes, External HREF, EVENT: event on parent component\n   */\n  mode: NavigationMode;\n\n  /**\n   * Text to be displayed in the link\n   */\n  text: string;\n\n  /**\n   * Navigation Route\n   */\n  route: string;\n}\n\nexport interface FooterLogo {\n  /**\n   * Text for the Header\n   */\n\n  text: string;\n\n  /**\n   * Image Source Path for the Image button\n   */\n\n  imageSourcePath: string;\n\n  /**\n   * Alt text for image\n   */\n\n  imageAltText: string;\n}\n",
-            "properties": [
-                {
-                    "name": "footerLogo",
-                    "type": "FooterLogo",
-                    "optional": true,
-                    "description": "<p>Footer text and logo</p>\n",
-                    "line": 16
-                },
-                {
-                    "name": "linkSections",
-                    "type": "FooterLinkSection[]",
-                    "optional": false,
-                    "description": "<p>List of sections and their links</p>\n",
-                    "line": 10
-                }
-            ],
-            "methods": [],
-            "indexSignatures": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "hostBindings": [],
-            "hostListeners": []
-        },
-        {
-            "name": "HeaderHome",
-            "id": "class-HeaderHome-ee7a838bc2d256032384e3e7e9c96aff",
-            "file": "libs/packages/components/src/lib/header/model/HeaderModel.ts",
-            "type": "class",
-            "sourceCode": "import { INavigationLink, NavigationMode, Selectable } from '../../common-navigation/common-navigation-model';\n\n\nexport interface HeaderModel {\n\n    /**\n     * Header logo and header logo home link\n     */\n    home: HeaderHome;\n\n    /**\n     * List of secondary links\n     */\n    secondaryLinks: HeaderSecondaryLink[];\n\n    /**\n     * List of main navigaation links/drop downs\n     */\n    navigationLinks: HeaderNavigationLink[];\n}\n\n\nexport class HeaderHome implements Selectable, INavigationLink {\n\n    /**\n     * Internal Angualr Routes, External HREF, EVENT: event on parent component\n    */\n    mode: NavigationMode;\n\n    /**\n     * Text for the Header\n     */\n    text: string;\n\n    /**\n     * Agency Logo for the Header\n     */\n    logo: string;\n\n    /**\n     * Navigation Route for Home image button\n     */\n    route: string;\n\n    /**\n    * Identifier for the item when search for selected\n    */\n    id: string;\n\n    /**\n     * Status of if the item is selected\n     */\n    selected?: boolean;\n}\n\n/**\n *\n */\nexport class HeaderNavigationLink implements Selectable, INavigationLink {\n\n    /**\n     * Internal Angualr Routes, External HREF, EVENT: event on parent component\n     */\n    mode: NavigationMode;\n\n    /**\n     * Text to be displayed in the link or button\n     */\n    text: string;\n\n    /**\n     * Navigation Route\n     */\n    route: string;\n\n    /**\n     * List of child navigation items that will show when no route is provieded\n     */\n    children?: HeaderNavigationLink[];\n\n    /**\n     * Identifier for the item when search for selected\n     */\n    id: string;\n\n    /**\n     * Status of if the item is selected\n     */\n    selected?: boolean;\n}\n\n\nexport class HeaderSecondaryLink implements Selectable, INavigationLink {\n\n    /**\n     * Internal Angualr Routes, External HREF, EVENT: event on parent component\n     */\n    mode: NavigationMode;\n\n    /**\n     * Text to be displayed in the link\n     */\n    text: string;\n\n    /**\n     * Navigation Route\n     */\n    route: string;\n\n    /**\n     * image class eg. fas\n     */\n    imageClassPrefix: string;\n\n    /**\n     * image class\n     */\n    imageClass: string;\n\n    /**\n     * displays counter with image\n     */\n    hasCounter?: boolean;\n\n    /**\n     * Identifier for the item when search for selected\n     */\n    id: string;\n\n    /**\n     * Status of if the item is selected\n     */\n    selected?: boolean;\n}\n",
-            "properties": [
-                {
-                    "name": "id",
-                    "type": "string",
-                    "optional": false,
-                    "description": "<p>Identifier for the item when search for selected</p>\n",
-                    "line": 48
-                },
-                {
-                    "name": "logo",
-                    "type": "string",
-                    "optional": false,
-                    "description": "<p>Agency Logo for the Header</p>\n",
-                    "line": 38
-                },
-                {
-                    "name": "mode",
-                    "type": "NavigationMode",
-                    "optional": false,
-                    "description": "<p>Internal Angualr Routes, External HREF, EVENT: event on parent component</p>\n",
-                    "line": 28
-                },
-                {
-                    "name": "route",
-                    "type": "string",
-                    "optional": false,
-                    "description": "<p>Navigation Route for Home image button</p>\n",
-                    "line": 43
-                },
-                {
-                    "name": "selected",
-                    "type": "boolean",
-                    "optional": true,
-                    "description": "<p>Status of if the item is selected</p>\n",
-                    "line": 53
-                },
-                {
-                    "name": "text",
-                    "type": "string",
-                    "optional": false,
-                    "description": "<p>Text for the Header</p>\n",
-                    "line": 33
-                }
-            ],
-            "methods": [],
-            "indexSignatures": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "hostBindings": [],
-            "hostListeners": [],
-            "implements": [
-                "Selectable",
-                "INavigationLink"
-            ]
-        },
-        {
-            "name": "HeaderNavigationLink",
-            "id": "class-HeaderNavigationLink-ee7a838bc2d256032384e3e7e9c96aff",
-            "file": "libs/packages/components/src/lib/header/model/HeaderModel.ts",
-            "type": "class",
-            "sourceCode": "import { INavigationLink, NavigationMode, Selectable } from '../../common-navigation/common-navigation-model';\n\n\nexport interface HeaderModel {\n\n    /**\n     * Header logo and header logo home link\n     */\n    home: HeaderHome;\n\n    /**\n     * List of secondary links\n     */\n    secondaryLinks: HeaderSecondaryLink[];\n\n    /**\n     * List of main navigaation links/drop downs\n     */\n    navigationLinks: HeaderNavigationLink[];\n}\n\n\nexport class HeaderHome implements Selectable, INavigationLink {\n\n    /**\n     * Internal Angualr Routes, External HREF, EVENT: event on parent component\n    */\n    mode: NavigationMode;\n\n    /**\n     * Text for the Header\n     */\n    text: string;\n\n    /**\n     * Agency Logo for the Header\n     */\n    logo: string;\n\n    /**\n     * Navigation Route for Home image button\n     */\n    route: string;\n\n    /**\n    * Identifier for the item when search for selected\n    */\n    id: string;\n\n    /**\n     * Status of if the item is selected\n     */\n    selected?: boolean;\n}\n\n/**\n *\n */\nexport class HeaderNavigationLink implements Selectable, INavigationLink {\n\n    /**\n     * Internal Angualr Routes, External HREF, EVENT: event on parent component\n     */\n    mode: NavigationMode;\n\n    /**\n     * Text to be displayed in the link or button\n     */\n    text: string;\n\n    /**\n     * Navigation Route\n     */\n    route: string;\n\n    /**\n     * List of child navigation items that will show when no route is provieded\n     */\n    children?: HeaderNavigationLink[];\n\n    /**\n     * Identifier for the item when search for selected\n     */\n    id: string;\n\n    /**\n     * Status of if the item is selected\n     */\n    selected?: boolean;\n}\n\n\nexport class HeaderSecondaryLink implements Selectable, INavigationLink {\n\n    /**\n     * Internal Angualr Routes, External HREF, EVENT: event on parent component\n     */\n    mode: NavigationMode;\n\n    /**\n     * Text to be displayed in the link\n     */\n    text: string;\n\n    /**\n     * Navigation Route\n     */\n    route: string;\n\n    /**\n     * image class eg. fas\n     */\n    imageClassPrefix: string;\n\n    /**\n     * image class\n     */\n    imageClass: string;\n\n    /**\n     * displays counter with image\n     */\n    hasCounter?: boolean;\n\n    /**\n     * Identifier for the item when search for selected\n     */\n    id: string;\n\n    /**\n     * Status of if the item is selected\n     */\n    selected?: boolean;\n}\n",
-            "properties": [
-                {
-                    "name": "children",
-                    "type": "HeaderNavigationLink[]",
-                    "optional": true,
-                    "description": "<p>List of child navigation items that will show when no route is provieded</p>\n",
-                    "line": 79
-                },
-                {
-                    "name": "id",
-                    "type": "string",
-                    "optional": false,
-                    "description": "<p>Identifier for the item when search for selected</p>\n",
-                    "line": 84
-                },
-                {
-                    "name": "mode",
-                    "type": "NavigationMode",
-                    "optional": false,
-                    "description": "<p>Internal Angualr Routes, External HREF, EVENT: event on parent component</p>\n",
-                    "line": 64
-                },
-                {
-                    "name": "route",
-                    "type": "string",
-                    "optional": false,
-                    "description": "<p>Navigation Route</p>\n",
-                    "line": 74
-                },
-                {
-                    "name": "selected",
-                    "type": "boolean",
-                    "optional": true,
-                    "description": "<p>Status of if the item is selected</p>\n",
-                    "line": 89
-                },
-                {
-                    "name": "text",
-                    "type": "string",
-                    "optional": false,
-                    "description": "<p>Text to be displayed in the link or button</p>\n",
-                    "line": 69
-                }
-            ],
-            "methods": [],
-            "indexSignatures": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "hostBindings": [],
-            "hostListeners": [],
-            "implements": [
-                "Selectable",
-                "INavigationLink"
-            ]
-        },
-        {
-            "name": "HeaderSecondaryLink",
-            "id": "class-HeaderSecondaryLink-ee7a838bc2d256032384e3e7e9c96aff",
-            "file": "libs/packages/components/src/lib/header/model/HeaderModel.ts",
-            "type": "class",
-            "sourceCode": "import { INavigationLink, NavigationMode, Selectable } from '../../common-navigation/common-navigation-model';\n\n\nexport interface HeaderModel {\n\n    /**\n     * Header logo and header logo home link\n     */\n    home: HeaderHome;\n\n    /**\n     * List of secondary links\n     */\n    secondaryLinks: HeaderSecondaryLink[];\n\n    /**\n     * List of main navigaation links/drop downs\n     */\n    navigationLinks: HeaderNavigationLink[];\n}\n\n\nexport class HeaderHome implements Selectable, INavigationLink {\n\n    /**\n     * Internal Angualr Routes, External HREF, EVENT: event on parent component\n    */\n    mode: NavigationMode;\n\n    /**\n     * Text for the Header\n     */\n    text: string;\n\n    /**\n     * Agency Logo for the Header\n     */\n    logo: string;\n\n    /**\n     * Navigation Route for Home image button\n     */\n    route: string;\n\n    /**\n    * Identifier for the item when search for selected\n    */\n    id: string;\n\n    /**\n     * Status of if the item is selected\n     */\n    selected?: boolean;\n}\n\n/**\n *\n */\nexport class HeaderNavigationLink implements Selectable, INavigationLink {\n\n    /**\n     * Internal Angualr Routes, External HREF, EVENT: event on parent component\n     */\n    mode: NavigationMode;\n\n    /**\n     * Text to be displayed in the link or button\n     */\n    text: string;\n\n    /**\n     * Navigation Route\n     */\n    route: string;\n\n    /**\n     * List of child navigation items that will show when no route is provieded\n     */\n    children?: HeaderNavigationLink[];\n\n    /**\n     * Identifier for the item when search for selected\n     */\n    id: string;\n\n    /**\n     * Status of if the item is selected\n     */\n    selected?: boolean;\n}\n\n\nexport class HeaderSecondaryLink implements Selectable, INavigationLink {\n\n    /**\n     * Internal Angualr Routes, External HREF, EVENT: event on parent component\n     */\n    mode: NavigationMode;\n\n    /**\n     * Text to be displayed in the link\n     */\n    text: string;\n\n    /**\n     * Navigation Route\n     */\n    route: string;\n\n    /**\n     * image class eg. fas\n     */\n    imageClassPrefix: string;\n\n    /**\n     * image class\n     */\n    imageClass: string;\n\n    /**\n     * displays counter with image\n     */\n    hasCounter?: boolean;\n\n    /**\n     * Identifier for the item when search for selected\n     */\n    id: string;\n\n    /**\n     * Status of if the item is selected\n     */\n    selected?: boolean;\n}\n",
-            "properties": [
-                {
-                    "name": "hasCounter",
-                    "type": "boolean",
-                    "optional": true,
-                    "description": "<p>displays counter with image</p>\n",
-                    "line": 123
-                },
-                {
-                    "name": "id",
-                    "type": "string",
-                    "optional": false,
-                    "description": "<p>Identifier for the item when search for selected</p>\n",
-                    "line": 128
-                },
-                {
-                    "name": "imageClass",
-                    "type": "string",
-                    "optional": false,
-                    "description": "<p>image class</p>\n",
-                    "line": 118
-                },
-                {
-                    "name": "imageClassPrefix",
-                    "type": "string",
-                    "optional": false,
-                    "description": "<p>image class eg. fas</p>\n",
-                    "line": 113
-                },
-                {
-                    "name": "mode",
-                    "type": "NavigationMode",
-                    "optional": false,
-                    "description": "<p>Internal Angualr Routes, External HREF, EVENT: event on parent component</p>\n",
-                    "line": 98
-                },
-                {
-                    "name": "route",
-                    "type": "string",
-                    "optional": false,
-                    "description": "<p>Navigation Route</p>\n",
-                    "line": 108
-                },
-                {
-                    "name": "selected",
-                    "type": "boolean",
-                    "optional": true,
-                    "description": "<p>Status of if the item is selected</p>\n",
-                    "line": 133
-                },
-                {
-                    "name": "text",
-                    "type": "string",
-                    "optional": false,
-                    "description": "<p>Text to be displayed in the link</p>\n",
-                    "line": 103
-                }
-            ],
-            "methods": [],
-            "indexSignatures": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "hostBindings": [],
-            "hostListeners": [],
-            "implements": [
-                "Selectable",
-                "INavigationLink"
-            ]
         },
         {
             "name": "KeyHelper",
@@ -4359,19 +3999,18 @@
         },
         {
             "name": "ExternalLinkDirective",
-            "id": "directive-ExternalLinkDirective-63ecc2c5ceba4acee303f0d8146a6ecc",
+            "id": "directive-ExternalLinkDirective-5f87244b2bf266c964a75e02e94a8596",
             "file": "libs/packages/components/src/lib/external-link/external-link.directive.ts",
             "type": "directive",
             "description": "",
-            "sourceCode": "import {\n  Directive,\n  AfterViewChecked,\n  ElementRef,\n  Renderer2,\n  Input,\n  ComponentFactoryResolver,\n  ViewContainerRef,\n  OnChanges,\n  HostListener\n} from '@angular/core';\nimport { faCoffee, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';\nimport { FaIconComponent } from '@fortawesome/angular-fontawesome';\n@Directive({\n  selector: 'a[href]'\n})\nexport class ExternalLinkDirective implements OnChanges {\n  private vcRef: ViewContainerRef;\n  @Input() href: string;\n  @Input() public hideIcon: boolean = false;\n\n  private get isExternalLink(): boolean {\n    return (\n      this.href\n        .replace(/^https?:\\/\\//, '')\n        .replace(/^www\\./, '')\n        .split('/')[0] != location.hostname\n    );\n  }\n\n  constructor(\n    private el: ElementRef,\n    private renderer: Renderer2,\n    private cfr: ComponentFactoryResolver,\n    private vc: ViewContainerRef\n  ) {}\n\n  @HostListener('click', ['$event'])\n  click(event: Event) {\n    window.location.href = this.href;\n  }\n\n\n  public ngOnChanges() {\n    if (!this.isExternalLink) {\n      return;\n    }\n    if (!this.hideIcon) {\n      this.createIcon();\n    }\n  }\n\n  private createIcon() {\n    // tslint:disable-next-line:no-unused-expression\n    this.vc.constructor.name === 'ViewContainerRef_';\n    const factory = this.cfr.resolveComponentFactory(FaIconComponent);\n    const component = this.vc.createComponent(factory);\n    component.instance.iconProp = ['fas', 'external-link-alt'];\n    const spanElement = document.createElement('span');\n    spanElement.classList.add('margin-left-2px');\n    const supElement = document.createElement('sup');\n    supElement.appendChild(component.location.nativeElement);\n    spanElement.appendChild(supElement);\n    this.el.nativeElement.appendChild(spanElement);\n    component.instance.ngOnChanges({});\n  }\n}\n",
+            "sourceCode": "import {\n  Directive,\n  ElementRef,\n  Renderer2,\n  Input,\n  ComponentFactoryResolver,\n  ViewContainerRef,\n  OnChanges,\n  HostBinding\n} from '@angular/core';\nimport { FaIconComponent } from '@fortawesome/angular-fontawesome';\n@Directive({\n  selector: 'a[href]'\n})\nexport class ExternalLinkDirective implements OnChanges {\n  private vcRef: ViewContainerRef;\n\n  @HostBinding('attr.href')\n  @Input() href: string;\n\n  @Input() public hideIcon = false;\n\n  private get isExternalLink(): boolean {\n    return (\n      this.href\n        .replace(/^https?:\\/\\//, '')\n        .replace(/^www\\./, '')\n        .split('/')[0] !== location.hostname\n    );\n  }\n\n  constructor(\n    private el: ElementRef,\n    private renderer: Renderer2,\n    private cfr: ComponentFactoryResolver,\n    private vc: ViewContainerRef\n  ) {}\n\n  public ngOnChanges() {\n    if (!this.isExternalLink) {\n      return;\n    }\n    if (!this.hideIcon) {\n      this.createIcon();\n      this.renderer.setAttribute(this.el.nativeElement, \"target\", \"_blank\");\n    }\n  }\n\n  private createIcon() {\n    // tslint:disable-next-line:no-unused-expression\n    this.vc.constructor.name === 'ViewContainerRef_';\n    const factory = this.cfr.resolveComponentFactory(FaIconComponent);\n    const component = this.vc.createComponent(factory);\n    component.instance.iconProp = ['fas', 'external-link-alt'];\n    const spanElement = document.createElement('span');\n    spanElement.classList.add('margin-left-2px');\n    const supElement = document.createElement('sup');\n    supElement.appendChild(component.location.nativeElement);\n    spanElement.appendChild(supElement);\n    this.el.nativeElement.appendChild(spanElement);\n    component.instance.ngOnChanges({});\n  }\n}\n",
             "selector": "a[href]",
             "providers": [],
             "inputsClass": [
                 {
                     "name": "hideIcon",
                     "defaultValue": "false",
-                    "line": 20,
-                    "type": "boolean"
+                    "line": 21
                 },
                 {
                     "name": "href",
@@ -4381,28 +4020,14 @@
             ],
             "outputsClass": [],
             "hostBindings": [],
-            "hostListeners": [
-                {
-                    "name": "click",
-                    "args": [
-                        {
-                            "name": "event",
-                            "type": "Event"
-                        }
-                    ],
-                    "argsDecorator": [
-                        "$event"
-                    ],
-                    "line": 39
-                }
-            ],
+            "hostListeners": [],
             "propertiesClass": [
                 {
                     "name": "vcRef",
                     "type": "ViewContainerRef",
                     "optional": false,
                     "description": "",
-                    "line": 18,
+                    "line": 16,
                     "modifierKind": [
                         112
                     ]
@@ -4415,7 +4040,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 53,
+                    "line": 49,
                     "modifierKind": [
                         112
                     ]
@@ -4426,7 +4051,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 44,
+                    "line": 39,
                     "modifierKind": [
                         114
                     ]
@@ -4456,7 +4081,7 @@
                         "type": "ViewContainerRef"
                     }
                 ],
-                "line": 29,
+                "line": 30,
                 "jsdoctags": [
                     {
                         "name": "el",
@@ -4495,7 +4120,7 @@
                         "name": "isExternalLink",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 22
+                        "line": 23
                     }
                 }
             }
@@ -6112,7 +5737,7 @@
     "components": [
         {
             "name": "PaginationComponent",
-            "id": "component-PaginationComponent-192096590a3fa1708b9b7bac4c3324f5",
+            "id": "component-PaginationComponent-dd448884e637d16139d35dd83ab0fe40",
             "file": "libs/packages/components/src/lib/pagination/pagination.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -6130,17 +5755,31 @@
             "viewProviders": [],
             "inputsClass": [
                 {
+                    "name": "displayMode",
+                    "defaultValue": "'default'",
+                    "description": "<p>displayMode = &#39;default&#39; | &#39;results&#39;;</p>\n",
+                    "line": 55,
+                    "type": "PaginationDisplayMode"
+                },
+                {
                     "name": "page",
                     "defaultValue": "new PaginationModel()",
                     "description": "<p>Pagination model</p>\n",
-                    "line": 40,
+                    "line": 43,
                     "type": "PaginationModel"
                 },
                 {
                     "name": "paginationConfiguration",
                     "description": "<p>configuration for the pagination</p>\n",
-                    "line": 46,
+                    "line": 49,
                     "type": "PaginationConfigurationModel"
+                },
+                {
+                    "name": "totalItems",
+                    "defaultValue": "0",
+                    "description": "<p>totalItems for display on results view;</p>\n",
+                    "line": 61,
+                    "type": "number"
                 }
             ],
             "outputsClass": [
@@ -6148,7 +5787,7 @@
                     "name": "pageChange",
                     "defaultValue": "new EventEmitter<PaginationModel>()",
                     "description": "<p>Output of the page model object</p>\n",
-                    "line": 34,
+                    "line": 37,
                     "type": "EventEmitter"
                 }
             ],
@@ -6158,7 +5797,7 @@
                     "type": "ElementRef",
                     "optional": false,
                     "description": "<p>Input field for the current page</p>\n",
-                    "line": 28,
+                    "line": 31,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -6172,7 +5811,7 @@
                     "type": "number",
                     "optional": false,
                     "description": "<p>debounce time for current page input</p>\n",
-                    "line": 52
+                    "line": 68
                 },
                 {
                     "name": "options",
@@ -6180,7 +5819,7 @@
                     "type": "[]",
                     "optional": false,
                     "description": "<p>Drop down options for page size</p>\n",
-                    "line": 67,
+                    "line": 83,
                     "modifierKind": [
                         114
                     ]
@@ -6190,7 +5829,7 @@
                     "type": "number",
                     "optional": false,
                     "description": "<p>Stores the previous number</p>\n",
-                    "line": 57,
+                    "line": 73,
                     "modifierKind": [
                         112
                     ]
@@ -6199,8 +5838,8 @@
                     "name": "timeoutNumber",
                     "type": "number",
                     "optional": false,
-                    "description": "<p>timeout id of the debounce time </p>\n",
-                    "line": 62
+                    "description": "<p>timeout id of the debounce time</p>\n",
+                    "line": 78
                 }
             ],
             "methodsClass": [
@@ -6210,7 +5849,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 138,
+                    "line": 154,
                     "description": "<p>current page focus out will replace with previous valid if empty</p>\n"
                 },
                 {
@@ -6225,7 +5864,7 @@
                     "optional": false,
                     "returnType": "number",
                     "typeParameters": [],
-                    "line": 123,
+                    "line": 139,
                     "description": "<p>adjusts the value if not within the page limit above or below</p>\n",
                     "modifierKind": [
                         112
@@ -6233,16 +5872,16 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 2832,
-                                "end": 2840,
+                                "pos": 3138,
+                                "end": 3146,
                                 "flags": 0,
                                 "escapedText": "newValue"
                             },
                             "type": "number",
                             "optional": true,
                             "tagName": {
-                                "pos": 2826,
-                                "end": 2831,
+                                "pos": 3132,
+                                "end": 3137,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -6256,7 +5895,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 21,
+                    "line": 24,
                     "description": "<p>Stores the previous number. Used when focus out if field empty</p>\n",
                     "modifierKind": [
                         112
@@ -6268,7 +5907,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 87,
+                    "line": 103,
                     "description": "<p>next page increase page number by one within range</p>\n"
                 },
                 {
@@ -6277,7 +5916,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 11
+                    "line": 14
                 },
                 {
                     "name": "onSelectChange",
@@ -6285,7 +5924,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 148,
+                    "line": 164,
                     "description": "<p>page size selection change</p>\n"
                 },
                 {
@@ -6294,7 +5933,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 76,
+                    "line": 92,
                     "description": "<p>previous page lowers page number by one within range</p>\n"
                 },
                 {
@@ -6309,21 +5948,21 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 99,
+                    "line": 115,
                     "description": "<p>current page changes sets new value if within range</p>\n",
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 2118,
-                                "end": 2126,
+                                "pos": 2425,
+                                "end": 2433,
                                 "flags": 0,
                                 "escapedText": "newValue"
                             },
                             "type": "number",
                             "optional": true,
                             "tagName": {
-                                "pos": 2112,
-                                "end": 2117,
+                                "pos": 2419,
+                                "end": 2424,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -6337,11 +5976,11 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit, Input, EventEmitter, Output, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';\nimport { PaginationConfigurationModel, PaginationModel } from './model/paginationModel';\n\n@Component({\n  selector: 'sds-pagination',\n  templateUrl: './pagination.component.html',\n  styleUrls: ['./pagination.component.scss']\n})\nexport class PaginationComponent implements OnInit {\n\n  ngOnInit(): void {\n    this.maintainPreviousValue();\n  }\n\n  constructor(private change: ChangeDetectorRef) { }\n\n\n  /**\n   * Stores the previous number. Used when focus out if field empty\n   */\n  private maintainPreviousValue() {\n    this.previousNumber = this.page.pageNumber.valueOf();\n  }\n\n  /**\n   * Input field for the current page\n   */\n  @ViewChild('currentPage') currentPageField: ElementRef;\n\n  /**\n   * Output of the page model object\n   */\n  @Output()\n  pageChange = new EventEmitter<PaginationModel>();\n\n  /**\n   * Pagination model\n   */\n  @Input()\n  page: PaginationModel = new PaginationModel();\n\n  /**\n   * configuration for the pagination\n   */\n  @Input()\n  paginationConfiguration: PaginationConfigurationModel;\n\n\n  /**\n   * debounce time for current page input\n   */\n  debounceTime: number = 500;\n\n  /**\n   * Stores the previous number\n   */\n  private previousNumber: number;\n\n  /**\n   * timeout id of the debounce time \n   */\n  timeoutNumber: number;\n\n  /**\n   * Drop down options for page size\n   */\n  public options = [\n    { label: '25', value: 25 },\n    { label: '50', value: 50 },\n    { label: '100', value: 100 }\n  ];\n\n  /**\n   * previous page lowers page number by one within range\n   */\n  previousPage() {\n    if (this.page.pageNumber > 1) {\n      this.page.pageNumber--;\n      this.maintainPreviousValue();\n      this.pageChange.emit(this.page);\n    }\n  }\n\n  /**\n   * next page increase page number by one within range\n   */\n  nextPage() {\n    if (this.page.pageNumber < this.page.totalPages) {\n      this.page.pageNumber++;\n      this.maintainPreviousValue();\n      this.pageChange.emit(this.page);\n    }\n  }\n\n  /**\n   * current page changes sets new value if within range\n   * @param newValue \n   */\n  valuechange(newValue?: number) {\n    window.clearTimeout(this.timeoutNumber);\n    this.timeoutNumber = window.setTimeout(() => {\n      if (newValue || newValue === 0) {\n        newValue = this.handleInputOutsideBounds(newValue);\n        if (newValue >= 1 && newValue <= this.page.totalPages) {\n          this.page.pageNumber = newValue;\n          this.maintainPreviousValue();\n          this.pageChange.emit(this.page);\n          this.change.detectChanges();\n        }\n      } else {\n\n        if (this.page.pageNumber) {\n          this.maintainPreviousValue();\n        }\n      }\n    }, this.debounceTime);\n  }\n\n  /**\n   * adjusts the value if not within the page limit above or below\n   * @param newValue handles\n   */\n  private handleInputOutsideBounds(newValue?: number) {\n    if (newValue < 1) {\n      newValue = 1;\n      this.currentPageField.nativeElement.value = newValue;\n    }\n    else if (newValue > this.page.totalPages) {\n      newValue = this.page.totalPages;\n      this.currentPageField.nativeElement.value = newValue;\n    }\n    return newValue;\n  }\n\n  /**\n   * current page focus out will replace with previous valid if empty\n   */\n  currentPageFocusOut() {\n    if (this.currentPageField.nativeElement.value === '') {\n      this.currentPageField.nativeElement.value = this.page.pageNumber = this.previousNumber;\n      this.change.detectChanges();\n    }\n  }\n\n  /**\n   * page size selection change\n   */\n  onSelectChange() {\n    this.page.pageNumber = 1;\n    this.pageChange.emit(this.page);\n  }\n}\n",
+            "sourceCode": "import { Component, OnInit, Input, EventEmitter, Output, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';\nimport { PaginationConfigurationModel, PaginationModel } from './model/paginationModel';\n\n/** pagination display modes. */\nexport type PaginationDisplayMode = 'default' | 'results';\n\n@Component({\n  selector: 'sds-pagination',\n  templateUrl: './pagination.component.html',\n  styleUrls: ['./pagination.component.scss']\n})\nexport class PaginationComponent implements OnInit {\n\n  ngOnInit(): void {\n    this.maintainPreviousValue();\n  }\n\n  constructor(private change: ChangeDetectorRef) { }\n\n\n  /**\n   * Stores the previous number. Used when focus out if field empty\n   */\n  private maintainPreviousValue() {\n    this.previousNumber = this.page.pageNumber.valueOf();\n  }\n\n  /**\n   * Input field for the current page\n   */\n  @ViewChild('currentPage') currentPageField: ElementRef;\n\n  /**\n   * Output of the page model object\n   */\n  @Output()\n  pageChange = new EventEmitter<PaginationModel>();\n\n  /**\n   * Pagination model\n   */\n  @Input()\n  page: PaginationModel = new PaginationModel();\n\n  /**\n   * configuration for the pagination\n   */\n  @Input()\n  paginationConfiguration: PaginationConfigurationModel;\n\n  /**\n   * displayMode = 'default' | 'results';\n   */\n  @Input()\n  displayMode: PaginationDisplayMode = 'default';\n\n    /**\n   * totalItems for display on results view;\n   */\n  @Input()\n  totalItems?: number = 0;\n\n\n\n  /**\n   * debounce time for current page input\n   */\n  debounceTime: number = 500;\n\n  /**\n   * Stores the previous number\n   */\n  private previousNumber: number;\n\n  /**\n   * timeout id of the debounce time\n   */\n  timeoutNumber: number;\n\n  /**\n   * Drop down options for page size\n   */\n  public options = [\n    { label: '25', value: 25 },\n    { label: '50', value: 50 },\n    { label: '100', value: 100 }\n  ];\n\n  /**\n   * previous page lowers page number by one within range\n   */\n  previousPage() {\n    if (this.page.pageNumber > 1) {\n      this.page.pageNumber--;\n      this.maintainPreviousValue();\n      this.pageChange.emit(this.page);\n    }\n  }\n\n  /**\n   * next page increase page number by one within range\n   */\n  nextPage() {\n    if (this.page.pageNumber < this.page.totalPages) {\n      this.page.pageNumber++;\n      this.maintainPreviousValue();\n      this.pageChange.emit(this.page);\n    }\n  }\n\n  /**\n   * current page changes sets new value if within range\n   * @param newValue\n   */\n  valuechange(newValue?: number) {\n    window.clearTimeout(this.timeoutNumber);\n    this.timeoutNumber = window.setTimeout(() => {\n      if (newValue || newValue === 0) {\n        newValue = this.handleInputOutsideBounds(newValue);\n        if (newValue >= 1 && newValue <= this.page.totalPages) {\n          this.page.pageNumber = newValue;\n          this.maintainPreviousValue();\n          this.pageChange.emit(this.page);\n          this.change.detectChanges();\n        }\n      } else {\n\n        if (this.page.pageNumber) {\n          this.maintainPreviousValue();\n        }\n      }\n    }, this.debounceTime);\n  }\n\n  /**\n   * adjusts the value if not within the page limit above or below\n   * @param newValue handles\n   */\n  private handleInputOutsideBounds(newValue?: number) {\n    if (newValue < 1) {\n      newValue = 1;\n      this.currentPageField.nativeElement.value = newValue;\n    }\n    else if (newValue > this.page.totalPages) {\n      newValue = this.page.totalPages;\n      this.currentPageField.nativeElement.value = newValue;\n    }\n    return newValue;\n  }\n\n  /**\n   * current page focus out will replace with previous valid if empty\n   */\n  currentPageFocusOut() {\n    if (this.currentPageField.nativeElement.value === '') {\n      this.currentPageField.nativeElement.value = this.page.pageNumber = this.previousNumber;\n      this.change.detectChanges();\n    }\n  }\n\n  /**\n   * page size selection change\n   */\n  onSelectChange() {\n    this.page.pageNumber = 1;\n    this.pageChange.emit(this.page);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "/* Hide HTML5 Up and Down arrows. */\ninput[type=number]::-webkit-inner-spin-button, \ninput[type=number]::-webkit-outer-spin-button { \n  -webkit-appearance: none; \n  margin: 0; \n}\n \ninput[type=\"number\"] {\n    -moz-appearance: textfield;\n}",
+                    "data": "/* Hide HTML5 Up and Down arrows. */\ninput[type=number]::-webkit-inner-spin-button,\ninput[type=number]::-webkit-outer-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n\ninput[type=\"number\"] {\n    -moz-appearance: textfield;\n}\n\n",
                     "styleUrl": "./pagination.component.scss"
                 }
             ],
@@ -6355,7 +5994,7 @@
                         "type": "ChangeDetectorRef"
                     }
                 ],
-                "line": 13,
+                "line": 16,
                 "jsdoctags": [
                     {
                         "name": "change",
@@ -6369,7 +6008,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"sds-pagination\">\n  <div class=\"sds-pagination__controls\">\n    <button [attr.id]=\"paginationConfiguration.id +'-previousPage'\" (click)=\"previousPage()\">Previous Page</button>\n    <label class=\"usa-label font-sans-3xs margin-top-1 text-italic text-base usa-sr-only\"\n      [attr.for]=\"paginationConfiguration.id + '-currentPage'\">Current Page</label>\n    <input [attr.id]=\"paginationConfiguration.id +'-currentPage'\"\n      class=\"usa-input height-3 width-4 line-height-05 font-sans-3xs text-center border-base-light\" #currentPage\n      (ngModelChange)=\"valuechange($event)\" [(ngModel)]=\"page.pageNumber\" type=\"number\" min=\"1\"\n      [(attr.max)]=\"page.totalPages\" (focusout)=\"currentPageFocusOut()\" aria-label=\"current page\" />\n    <span class=\"sds-pagination__total\">\n      of <strong>{{ page.totalPages }}</strong>\n    </span>\n    <button [attr.id]=\"paginationConfiguration.id +'-nextPage'\" (click)=\"nextPage()\">Next Page</button>\n  </div>\n  <div class=\"sds-pagination__results\">\n    <label class=\"usa-label font-sans-3xs text-italic text-base\"\n      [attr.for]=\"paginationConfiguration.id + '-select'\">Results per page</label>\n    <select class=\"usa-select usa-select--small border-base-light\" [attr.id]=\"paginationConfiguration.id + '-select'\"\n      (change)=\"onSelectChange()\" [(ngModel)]=\"page.pageSize\">\n      <option *ngFor=\"let item of options\" [ngValue]=\"item.value\">\n        {{ item.label }}\n      </option>\n    </select>\n  </div>\n</div>\n"
+            "templateData": "<div class=\"sds-pagination\" *ngIf=\"displayMode === 'default'\">\n  <div class=\"sds-pagination__controls\">\n    <button [attr.id]=\"paginationConfiguration.id +'-previousPage'\" (click)=\"previousPage()\">Previous Page</button>\n    <label class=\"usa-label font-sans-3xs margin-top-1 text-italic text-base usa-sr-only\"\n      [attr.for]=\"paginationConfiguration.id + '-currentPage'\">Current Page</label>\n    <input [attr.id]=\"paginationConfiguration.id +'-currentPage'\"\n      class=\"usa-input usa-input--small font-sans-3xs text-center border-base-light\" #currentPage\n      (ngModelChange)=\"valuechange($event)\" [(ngModel)]=\"page.pageNumber\" type=\"number\" min=\"1\"\n      [(attr.max)]=\"page.totalPages\" (focusout)=\"currentPageFocusOut()\" aria-label=\"current page\" [ngStyle]=\"{'width': (20 + page.totalPages.toString().length * 10) +'px'}\" />\n    <span class=\"sds-pagination__total\">\n      of <strong>{{ page.totalPages }}</strong>\n    </span>\n    <button [attr.id]=\"paginationConfiguration.id +'-nextPage'\" (click)=\"nextPage()\">Next Page</button>\n  </div>\n  <div class=\"sds-pagination__results\">\n    <label class=\"usa-label font-sans-3xs text-italic text-base\"\n      [attr.for]=\"paginationConfiguration.id + '-select'\">Results per page</label>\n    <select class=\"usa-select usa-select--small border-base-light\" [attr.id]=\"paginationConfiguration.id + '-select'\"\n      (change)=\"onSelectChange()\" [(ngModel)]=\"page.pageSize\">\n      <option *ngFor=\"let item of options\" [ngValue]=\"item.value\">\n        {{ item.label }}\n      </option>\n    </select>\n  </div>\n</div>\n\n<div class=\"sds-pagination\" *ngIf=\"totalItems && displayMode === 'results'\">\n  <div class=\"text-semibold font-sans-3xs\">Showing {{(page.pageNumber-1)*page.pageSize+1 | number:'1.0':'en-US'}} - {{((page.pageNumber-1)*page.pageSize+page.pageSize) > totalItems ? (totalItems | number:'1.0':'en-US') : ((page.pageNumber-1)*page.pageSize+page.pageSize | number:'1.0':'en-US') }} of {{totalItems | number:'1.0':'en-US'}} results</div>\n</div>\n"
         },
         {
             "name": "SdsAccordionItemComponent",
@@ -7229,7 +6868,7 @@
         },
         {
             "name": "SDSAutocompleteSearchComponent",
-            "id": "component-SDSAutocompleteSearchComponent-5c0cd4828b42ae2dad0d6f038e3abeb2",
+            "id": "component-SDSAutocompleteSearchComponent-bea5e6680945d7839aef67a885c24744",
             "file": "libs/packages/components/src/lib/autocomplete-search/autocomplete-search.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -7506,7 +7145,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 531,
+                    "line": 527,
                     "description": "<p>adds a single item to the list</p>\n",
                     "modifierKind": [
                         112
@@ -7514,15 +7153,15 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 14549,
-                                "end": 14553,
+                                "pos": 14351,
+                                "end": 14355,
                                 "flags": 0,
                                 "escapedText": "item"
                             },
                             "type": "object",
                             "tagName": {
-                                "pos": 14543,
-                                "end": 14548,
+                                "pos": 14345,
+                                "end": 14350,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -7541,7 +7180,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 568,
+                    "line": 564,
                     "description": "<p>Adds message to be read by screen reader</p>\n",
                     "modifierKind": [
                         112
@@ -7549,15 +7188,15 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 15618,
-                                "end": 15625,
+                                "pos": 15420,
+                                "end": 15427,
                                 "flags": 0,
                                 "escapedText": "message"
                             },
                             "type": "string",
                             "tagName": {
-                                "pos": 15612,
-                                "end": 15617,
+                                "pos": 15414,
+                                "end": 15419,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -7581,15 +7220,15 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4562,
-                                "end": 4567,
+                                "pos": 4563,
+                                "end": 4568,
                                 "flags": 0,
                                 "escapedText": "event"
                             },
                             "type": "",
                             "tagName": {
-                                "pos": 4556,
-                                "end": 4561,
+                                "pos": 4557,
+                                "end": 4562,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -7608,20 +7247,20 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 443,
+                    "line": 439,
                     "description": "<p>return Item is already selected or not</p>\n",
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 11650,
-                                "end": 11656,
+                                "pos": 11452,
+                                "end": 11458,
                                 "flags": 0,
                                 "escapedText": "result"
                             },
                             "type": "any",
                             "tagName": {
-                                "pos": 11644,
-                                "end": 11649,
+                                "pos": 11446,
+                                "end": 11451,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -7635,7 +7274,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 330,
+                    "line": 326,
                     "description": "<p>clears the results and closes result drop down</p>\n",
                     "modifierKind": [
                         112
@@ -7659,7 +7298,7 @@
                     "optional": false,
                     "returnType": "{ type: string; }",
                     "typeParameters": [],
-                    "line": 433,
+                    "line": 429,
                     "modifierKind": [
                         112
                     ]
@@ -7682,7 +7321,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 514,
+                    "line": 510,
                     "description": "<p>gets more results based when scrolling and adds the items</p>\n",
                     "modifierKind": [
                         112
@@ -7694,7 +7333,7 @@
                     "optional": false,
                     "returnType": "\"hide-cursor\" | \"\"",
                     "typeParameters": [],
-                    "line": 588
+                    "line": 584
                 },
                 {
                     "name": "getFlatElements",
@@ -7702,7 +7341,7 @@
                     "optional": false,
                     "returnType": "{}",
                     "typeParameters": [],
-                    "line": 340,
+                    "line": 336,
                     "modifierKind": [
                         114
                     ]
@@ -7727,15 +7366,15 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 3559,
-                                "end": 3565,
+                                "pos": 3560,
+                                "end": 3566,
                                 "flags": 0,
                                 "escapedText": "object"
                             },
                             "type": "Object",
                             "tagName": {
-                                "pos": 3553,
-                                "end": 3558,
+                                "pos": 3554,
+                                "end": 3559,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -7743,15 +7382,15 @@
                         },
                         {
                             "name": {
-                                "pos": 3578,
-                                "end": 3592,
+                                "pos": 3579,
+                                "end": 3593,
                                 "flags": 0,
                                 "escapedText": "propertyFields"
                             },
                             "type": "string",
                             "tagName": {
-                                "pos": 3572,
-                                "end": 3577,
+                                "pos": 3573,
+                                "end": 3578,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -7770,7 +7409,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 455,
+                    "line": 451,
                     "description": "<p>gets the inital results</p>\n",
                     "modifierKind": [
                         112
@@ -7778,15 +7417,15 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 11976,
-                                "end": 11988,
+                                "pos": 11778,
+                                "end": 11790,
                                 "flags": 0,
                                 "escapedText": "searchString"
                             },
                             "type": "string",
                             "tagName": {
-                                "pos": 11970,
-                                "end": 11975,
+                                "pos": 11772,
+                                "end": 11777,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -7800,7 +7439,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 242,
+                    "line": 238,
                     "description": "<p>Event method used when focus is gained to the input</p>\n"
                 },
                 {
@@ -7814,7 +7453,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 493,
+                    "line": 489,
                     "description": "<p>Checks if the new search string matches the old search string</p>\n",
                     "modifierKind": [
                         112
@@ -7822,15 +7461,15 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 13370,
-                                "end": 13382,
+                                "pos": 13172,
+                                "end": 13184,
                                 "flags": 0,
                                 "escapedText": "searchString"
                             },
                             "type": "string",
                             "tagName": {
-                                "pos": 13364,
-                                "end": 13369,
+                                "pos": 13166,
+                                "end": 13171,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -7844,7 +7483,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 378,
+                    "line": 374,
                     "description": "<p>handles the arrow down key event</p>\n",
                     "modifierKind": [
                         112
@@ -7856,7 +7495,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 391,
+                    "line": 387,
                     "description": "<p>handles the arrow up key event</p>\n",
                     "modifierKind": [
                         112
@@ -7873,20 +7512,20 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 259,
+                    "line": 255,
                     "description": "<p>Key event</p>\n",
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 6279,
-                                "end": 6284,
+                                "pos": 6081,
+                                "end": 6086,
                                 "flags": 0,
                                 "escapedText": "event"
                             },
                             "type": "",
                             "tagName": {
-                                "pos": 6273,
-                                "end": 6278,
+                                "pos": 6075,
+                                "end": 6080,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -7905,7 +7544,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 223,
+                    "line": 219,
                     "jsdoctags": [
                         {
                             "name": "ev",
@@ -7922,7 +7561,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 499,
+                    "line": 495,
                     "description": "<p>Scroll Event Handler (Calculates if mpre items should be asked for from service on scrolling down)</p>\n"
                 },
                 {
@@ -7931,7 +7570,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 336
+                    "line": 332
                 },
                 {
                     "name": "registerOnChange",
@@ -7944,7 +7583,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 595,
+                    "line": 591,
                     "jsdoctags": [
                         {
                             "name": "fn",
@@ -7966,7 +7605,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 599,
+                    "line": 595,
                     "jsdoctags": [
                         {
                             "name": "fn",
@@ -7983,7 +7622,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 361,
+                    "line": 357,
                     "description": "<p>When paging up and down with arrow key it sets the highlighted item into view</p>\n",
                     "modifierKind": [
                         112
@@ -8000,7 +7639,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 297,
+                    "line": 293,
                     "description": "<p>selects the item adding it to the model and closes the results</p>\n",
                     "modifierKind": [
                         114
@@ -8008,15 +7647,15 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 7490,
-                                "end": 7494,
+                                "pos": 7292,
+                                "end": 7296,
                                 "flags": 0,
                                 "escapedText": "item"
                             },
                             "type": "object",
                             "tagName": {
-                                "pos": 7484,
-                                "end": 7489,
+                                "pos": 7286,
+                                "end": 7291,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -8035,7 +7674,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 603,
+                    "line": 599,
                     "jsdoctags": [
                         {
                             "name": "isDisabled",
@@ -8057,7 +7696,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 540,
+                    "line": 536,
                     "description": "<p>Sets the highlighted item by keyboard or mouseover</p>\n",
                     "modifierKind": [
                         112
@@ -8065,15 +7704,15 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 14753,
-                                "end": 14757,
+                                "pos": 14555,
+                                "end": 14559,
                                 "flags": 0,
                                 "escapedText": "item"
                             },
                             "type": "Object",
                             "tagName": {
-                                "pos": 14747,
-                                "end": 14752,
+                                "pos": 14549,
+                                "end": 14554,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -8087,7 +7726,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 401
+                    "line": 397
                 },
                 {
                     "name": "textChange",
@@ -8100,7 +7739,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 226,
+                    "line": 222,
                     "jsdoctags": [
                         {
                             "name": "event",
@@ -8122,7 +7761,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 572,
+                    "line": 568,
                     "jsdoctags": [
                         {
                             "name": "obj",
@@ -8139,7 +7778,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import {\n  Component,\n  Input,\n  ViewChild,\n  TemplateRef,\n  ElementRef,\n  forwardRef,\n  ChangeDetectorRef\n} from '@angular/core';\nimport { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';\nimport { SDSAutocompleteServiceInterface } from './models/SDSAutocompleteServiceInterface';\nimport { KeyHelper, KEYS } from '../key-helper/key-helper';\nimport { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';\nimport {\n  SelectionMode,\n  SDSSelectedItemModelHelper\n} from '../selected-result/models/sds-selected-item-model-helper';\nimport { SDSAutocompleteSearchConfiguration } from './models/SDSAutocompleteConfiguration';\nconst Autocomplete_Autocomplete_VALUE_ACCESSOR: any = {\n  provide: NG_VALUE_ACCESSOR,\n  useExisting: forwardRef(() => SDSAutocompleteSearchComponent),\n  multi: true\n};\n\n@Component({\n  selector: 'sds-search-autocomplete',\n  templateUrl: './autocomplete-search.component.html',\n  styleUrls: ['./autocomplete-search.component.scss'],\n  providers: [Autocomplete_Autocomplete_VALUE_ACCESSOR]\n})\nexport class SDSAutocompleteSearchComponent implements ControlValueAccessor {\n  constructor(private _changeDetectorRef: ChangeDetectorRef) {}\n  /**\n   * Ul list of elements\n   */\n  @ViewChild('resultsList') resultsListElement: ElementRef;\n\n  /**\n   * input control\n   */\n  @ViewChild('input') input: ElementRef;\n\n  /**\n   * Allow to insert a customized template for suggestions to use\n   */\n  @Input() itemTemplate: TemplateRef<any>;\n\n  /**\n   * The data model that has the selected item\n   */\n  public model: SDSSelectedItemModel;\n\n  /**\n   * Model contain only the primary key, primary value, and secondary value.\n   */\n  @Input() public essentialModelFields: boolean = false;\n\n  /**\n   * Configuration for the Autocomplete control\n   */\n  @Input()\n  public configuration: SDSAutocompleteSearchConfiguration;\n\n  /**\n   * Instance of the SamHiercarchicalServiceInterface provided\n   */\n  @Input()\n  public service: SDSAutocompleteServiceInterface;\n\n  /**\n   * Timer id for the timer awaiting the service call for more typeing\n   */\n  private timeoutNumber: number;\n\n  /**\n   *  result set to be rendered\n   */\n  results: object[];\n\n  /**\n   * max number of results to be shown\n   */\n  private maxResults: number;\n\n  /**\n   * selected index\n   */\n  public highlightedIndex: number = 0;\n\n  /**\n   * selected child index\n   */\n  public highlightedChildIndex = 0;\n\n  /**\n   * highlighted object in drop down\n   */\n  private highlightedItem: object;\n\n  /**\n   * value of the input field\n   */\n  public inputValue: string = '';\n\n  /**\n   * Proprty being set on the object is highlighted\n   */\n  private HighlightedPropertyName = 'highlighted';\n\n  public showLoad: boolean = true;\n\n  /**\n   * Search string\n   */\n  private searchString: string = null;\n\n  /**\n   * Message announced by screen readers when\n   * autocomplete results are updated or new item\n   * is highlighted\n   */\n  public srOnlyText: string;\n\n  /**\n   * To make input readonly\n   */\n  @Input() public inputReadOnly = false;\n\n  /**\n   * Stored Event for ControlValueAccessor\n   */\n  public onTouchedCallback: () => void = () => null;\n\n  /**\n   * Stored Event for ControlValueAccessor\n   */\n  public propogateChange: (_: any) => void = (_: any) => null;\n\n  @Input()\n  public disabled: boolean;\n\n  private resultsAvailableMessage: string =\n    ' results available. Use up and down arrows\\\n  to scroll through results. Hit enter to select.';\n\n  private index = 0;\n  /**\n   * Gets the string value from the specifed properties of an object\n   * @param object\n   * @param propertyFields comma seperated list with periods depth of object\n   */\n\n  getObjectValue(object: Object, propertyFields: string): string {\n    let value = '';\n    let current = object;\n    let fieldSplit = propertyFields.split(',');\n    for (let i = 0; i < fieldSplit.length; i++) {\n      let fieldValue = fieldSplit[i];\n      let fieldPartSplit = fieldValue.split('.');\n      for (let j = 0; j < fieldPartSplit.length; j++) {\n        let fieldCheckValue = fieldPartSplit[j];\n        if (current) {\n          current = current[fieldCheckValue];\n        }\n      }\n\n      if (current) {\n        value += current.toString() + ' ';\n      }\n      current = object;\n    }\n    return value.trim();\n  }\n\n  /**\n   * Determines if the dropdown should be shown\n   */\n  public showResults = false;\n\n  /**\n   * Clears the input fields and value\n   */\n  public clearInput(): void {\n    this.inputValue = '';\n    this.onTouchedCallback();\n    this.clearAndHideResults();\n  }\n\n  /**\n   *\n   * @param event\n   */\n  checkForFocus(event): void {\n    this.focusRemoved();\n    this.showResults = false;\n  }\n\n  /**\n   *\n   */\n  private focusRemoved() {\n    if (this.configuration) {\n      if (this.configuration.selectionMode === SelectionMode.SINGLE) {\n        if (this.model.items.length > 0) {\n          if (this.inputValue.length === 0) {\n            SDSSelectedItemModelHelper.clearItems(this.model.items);\n            this.propogateChange(this.model);\n          } else {\n            this.inputValue = this.getObjectValue(\n              this.model.items[0],\n              this.configuration.primaryTextField\n            );\n          }\n        }\n      } else {\n        this.inputValue = '';\n      }\n    } else {\n      this.inputValue = '';\n    }\n  }\n\n  onkeypress(ev) {\n    return this.configuration.inputReadOnly ? false : true;\n  }\n  textChange(event) {\n    if (!this.configuration.isTagModeEnabled) {\n      // ie 11 placeholders will incorrectly trigger input events (known bug)\n      // if input isn't active element then don't do anything\n      if (event.target != document.activeElement) {\n        event.preventDefault();\n        return;\n      }\n      const searchString = event.target.value || '';\n      this.getResults(searchString);\n    }\n  }\n\n  /**\n   * Event method used when focus is gained to the input\n   */\n  inputFocusHandler(): void {\n    if (!this.configuration.isTagModeEnabled) {\n      if (this.configuration.focusInSearch) {\n        this.highlightedIndex = 0;\n        this.highlightedChildIndex = this.configuration.isSelectableGroup\n          ? 0\n          : null;\n        this.getResults(this.inputValue || '');\n      }\n      this.onTouchedCallback();\n    }\n  }\n\n  /**\n   * Key event\n   * @param event\n   */\n  onKeydown(event): void {\n    if (KeyHelper.is(KEYS.TAB, event)) {\n      return;\n    } else if (KeyHelper.is(KEYS.BACKSPACE, event)) {\n      if (this.configuration.inputReadOnly) {\n        event.preventDefault();\n      }\n    } else if (KeyHelper.is(KEYS.DOWN, event)) {\n      this.onArrowGroupDown();\n    } else if (KeyHelper.is(KEYS.UP, event)) {\n      event.preventDefault();\n      this.onArrowGroupUp();\n    } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex >= 0) {\n      if (this.configuration.isTagModeEnabled) {\n        const val = this.createFreeTextItem();\n        this.selectItem(val);\n      } else {\n        this.selectItem(this.highlightedItem);\n      }\n    } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex < 0) {\n      if (this.configuration.isFreeTextEnabled) {\n        const val = this.createFreeTextItem();\n        this.selectItem(val);\n      }\n    } else if (KeyHelper.is(KEYS.ESC, event)) {\n      if (this.showResults) {\n        this.clearAndHideResults();\n        if (event.stopPropagation) {\n          event.stopPropagation();\n        }\n      }\n    }\n  }\n\n  /**\n   * selects the item adding it to the model and closes the results\n   * @param item\n   */\n  public selectItem(item: object): void {\n    let filterItem = {};\n    if (this.essentialModelFields) {\n      filterItem[this.configuration.primaryKeyField] =\n        item[this.configuration.primaryKeyField];\n      filterItem[this.configuration.primaryTextField] =\n        item[this.configuration.primaryTextField];\n      if (this.configuration.secondaryTextField) {\n        filterItem[this.configuration.secondaryTextField] =\n          item[this.configuration.secondaryTextField];\n      }\n    } else {\n      filterItem = item;\n    }\n    SDSSelectedItemModelHelper.addItem(\n      filterItem,\n      this.configuration.primaryKeyField,\n      this.configuration.selectionMode,\n      this.model\n    );\n    this.propogateChange(this.model);\n    let message = this.getObjectValue(\n      item,\n      this.configuration.primaryTextField\n    );\n    this.inputValue = message;\n    this.focusRemoved();\n    this.showResults = false;\n  }\n\n  /**\n   *  clears the results and closes result drop down\n   */\n  private clearAndHideResults(): void {\n    this.results = [];\n    this.showResults = false;\n    this.focusRemoved();\n  }\n\n  openOptions() {\n    this.input.nativeElement.focus();\n  }\n\n  public getFlatElements() {\n    const results = this.results;\n    const flat = [];\n    const flatten = (array: any) => {\n      for (let i in array) {\n        const item = array[i];\n        flat.push(item);\n        if (\n          item[this.configuration.groupByChild] &&\n          item[this.configuration.groupByChild].length\n        ) {\n          flatten(item[this.configuration.groupByChild]);\n        }\n      }\n    };\n    flatten(results);\n    return flat;\n  }\n  /**\n   * When paging up and down with arrow key it sets the highlighted item into view\n   */\n  private scrollToSelectedItem() {\n    if (this.highlightedIndex >= 0) {\n      let selectedChild;\n      const dom = this.resultsListElement.nativeElement;\n      selectedChild = dom.querySelector('.sds-autocomplete__item--highlighted');\n      if (selectedChild) {\n        selectedChild.scrollIntoView({\n          behavior: 'smooth',\n          block: 'center',\n          inline: 'start'\n        });\n      }\n    }\n  }\n  /**\n   *  handles the arrow down key event\n   */\n  private onArrowGroupDown(): void {\n    if (this.results && this.results.length > 0) {\n      const flat = this.getFlatElements();\n      if (this.highlightedIndex < this.results.length - 1) {\n        this.highlightedIndex++;\n      }\n      this.setHighlightedItem(flat[this.highlightedIndex]);\n      this.scrollToSelectedItem();\n    }\n  }\n  /**\n   *  handles the arrow up key event\n   */\n  private onArrowGroupUp(): void {\n    if (this.results && this.results.length > 0) {\n      const flat = this.getFlatElements();\n      if (this.highlightedIndex != 0) {\n        this.highlightedIndex--;\n      }\n      this.setHighlightedItem(flat[this.highlightedIndex]);\n      this.scrollToSelectedItem();\n    }\n  }\n  showFreeText() {\n    if (this.configuration.isFreeTextEnabled) {\n      if (this.inputValue) {\n        if (this.inputValue.length !== 0) {\n          let foundItem = false;\n          if (this.results) {\n            for (var i = 0; i < this.results.length && !foundItem; i++) {\n              let item = this.results[i];\n              foundItem =\n                item[this.configuration.primaryTextField] === this.inputValue;\n            }\n          }\n          if (this.model.items.length > 0 && !foundItem) {\n            for (var i = 0; i < this.model.items.length && !foundItem; i++) {\n              let item = this.model.items[i];\n              foundItem =\n                item[this.configuration.primaryTextField] === this.inputValue;\n            }\n          }\n\n          return !foundItem;\n        } else {\n          return false;\n        }\n      } else {\n        return false;\n      }\n    } else {\n      return this.configuration.isFreeTextEnabled;\n    }\n  }\n\n  private createFreeTextItem() {\n    let item = { type: 'custom' };\n    item[this.configuration.primaryTextField] = this.inputValue;\n    item[this.configuration.primaryKeyField] = this.inputValue;\n    return item;\n  }\n  /**\n   *  return Item is already selected or not\n   * @param result\n   */\n  checkItemSelected(result: any) {\n    const selectedItem = this.model.items.filter(\n      item =>\n        item[this.configuration.primaryKeyField] ===\n        result[this.configuration.primaryKeyField]\n    );\n    return selectedItem.length > 0 ? true : false;\n  }\n  /**\n   *  gets the inital results\n   * @param searchString\n   */\n  private getResults(searchString: string): void {\n    if (searchString.length >= this.configuration.minimumCharacterCountSearch) {\n      if (\n        !this.matchPastSearchString(searchString) ||\n        (this.matchPastSearchString(searchString) && !this.showResults) ||\n        this.matchPastSearchString('')\n      ) {\n        this.searchString = searchString;\n        window.clearTimeout(this.timeoutNumber);\n        this.timeoutNumber = window.setTimeout(() => {\n          this.showLoad = true;\n          this.service.getDataByText(0, searchString).subscribe(result => {\n            this.results = result.items;\n            this.showLoad = false;\n            this.maxResults = result.totalItems;\n\n            this.highlightedIndex =\n              this.configuration.isFreeTextEnabled || this.maxResults == 0\n                ? -1\n                : 0;\n            if (!this.configuration.isFreeTextEnabled) {\n              this.setHighlightedItem(this.results[this.highlightedIndex]);\n            }\n            this.showResults = true;\n            this.addScreenReaderMessage(\n              this.maxResults + ' ' + this.resultsAvailableMessage\n            );\n            this._changeDetectorRef.markForCheck();\n          });\n        }, this.configuration.debounceTime);\n      }\n    }\n  }\n\n  /**\n   * Checks if the new search string matches the old search string\n   * @param searchString\n   */\n  private matchPastSearchString(searchString: string) {\n    return this.searchString === searchString;\n  }\n  /**\n   * Scroll Event Handler (Calculates if mpre items should be asked for from service on scrolling down)\n   */\n  onScroll() {\n    if (this.maxResults > this.results.length) {\n      let scrollAreaHeight = this.resultsListElement.nativeElement.offsetHeight;\n      let scrollTopPos = this.resultsListElement.nativeElement.scrollTop;\n      let scrollAreaMaxHeight = this.resultsListElement.nativeElement\n        .scrollHeight;\n      if (scrollTopPos + scrollAreaHeight * 2 >= scrollAreaMaxHeight) {\n        this.getAdditionalResults();\n      }\n    }\n  }\n\n  /**\n   * gets more results based when scrolling and adds the items\n   */\n  private getAdditionalResults() {\n    this.showLoad = true;\n    this.service\n      .getDataByText(this.results.length, this.searchString)\n      .subscribe(result => {\n        for (let i = 0; i < result.items.length; i++) {\n          this.addResult(result.items[i]);\n        }\n        this.showLoad = false;\n        this.maxResults = result.totalItems;\n      });\n  }\n\n  /**\n   * adds a single item to the list\n   * @param item\n   */\n  private addResult(item: object) {\n    //add check to make sure item does not exist\n    this.results.push(item);\n  }\n\n  /**\n   * Sets the highlighted item by keyboard or mouseover\n   * @param item\n   */\n  private setHighlightedItem(item: Object): void {\n    if (this.results && this.results.length > 0) {\n      if (this.highlightedItem) {\n        this.highlightedItem[this.HighlightedPropertyName] = false;\n      }\n      let message = '';\n      if (item) {\n        this.highlightedItem = item;\n        this.highlightedItem[this.HighlightedPropertyName] = true;\n        message = item[this.configuration.primaryTextField];\n        if (\n          this.configuration.secondaryTextField &&\n          item[this.configuration.secondaryTextField]\n        ) {\n          message += ': ' + item[this.configuration.secondaryTextField];\n        }\n      } else {\n        this.highlightedItem = undefined;\n        message = 'No item selected';\n      }\n      this.addScreenReaderMessage(message);\n    }\n  }\n\n  /**\n   * Adds message to be read by screen reader\n   * @param message\n   */\n  private addScreenReaderMessage(message: string) {\n    this.srOnlyText = message;\n  }\n\n  writeValue(obj: any): void {\n    if (obj instanceof SDSSelectedItemModel) {\n      this.model = obj as SDSSelectedItemModel;\n      this._changeDetectorRef.markForCheck();\n      if (this.model.items.length === 0) {\n        this.inputValue = '';\n      } else {\n        if (this.configuration.selectionMode === SelectionMode.SINGLE) {\n          this.inputValue = this.getObjectValue(\n            this.model.items[0],\n            this.configuration.primaryTextField\n          );\n        }\n      }\n    }\n  }\n  getClass() {\n    return this.configuration.inputReadOnly &&\n      this.configuration.selectionMode === SelectionMode.MULTIPLE\n      ? 'hide-cursor'\n      : '';\n  }\n\n  registerOnChange(fn: any): void {\n    this.propogateChange = fn;\n  }\n\n  registerOnTouched(fn: any): void {\n    this.onTouchedCallback = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n  }\n}\n",
+            "sourceCode": "import {\n  Component,\n  Input,\n  ViewChild,\n  TemplateRef,\n  ElementRef,\n  forwardRef,\n  ChangeDetectorRef\n} from '@angular/core';\nimport { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';\nimport { SDSAutocompleteServiceInterface } from './models/SDSAutocompleteServiceInterface';\nimport { KeyHelper, KEYS } from '../key-helper/key-helper';\nimport { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';\nimport {\n  SelectionMode,\n  SDSSelectedItemModelHelper\n} from '../selected-result/models/sds-selected-item-model-helper';\nimport { SDSAutocompleteSearchConfiguration } from './models/SDSAutocompleteConfiguration';\nconst Autocomplete_Autocomplete_VALUE_ACCESSOR: any = {\n  provide: NG_VALUE_ACCESSOR,\n  useExisting: forwardRef(() => SDSAutocompleteSearchComponent),\n  multi: true\n};\n\n@Component({\n  selector: 'sds-search-autocomplete',\n  templateUrl: './autocomplete-search.component.html',\n  styleUrls: ['./autocomplete-search.component.scss'],\n  providers: [Autocomplete_Autocomplete_VALUE_ACCESSOR]\n})\nexport class SDSAutocompleteSearchComponent implements ControlValueAccessor {\n  constructor(private _changeDetectorRef: ChangeDetectorRef) { }\n  /**\n   * Ul list of elements\n   */\n  @ViewChild('resultsList') resultsListElement: ElementRef;\n\n  /**\n   * input control\n   */\n  @ViewChild('input') input: ElementRef;\n\n  /**\n   * Allow to insert a customized template for suggestions to use\n   */\n  @Input() itemTemplate: TemplateRef<any>;\n\n  /**\n   * The data model that has the selected item\n   */\n  public model: SDSSelectedItemModel;\n\n  /**\n   * Model contain only the primary key, primary value, and secondary value.\n   */\n  @Input() public essentialModelFields: boolean = false;\n\n  /**\n   * Configuration for the Autocomplete control\n   */\n  @Input()\n  public configuration: SDSAutocompleteSearchConfiguration;\n\n  /**\n   * Instance of the SamHiercarchicalServiceInterface provided\n   */\n  @Input()\n  public service: SDSAutocompleteServiceInterface;\n\n  /**\n   * Timer id for the timer awaiting the service call for more typeing\n   */\n  private timeoutNumber: number;\n\n  /**\n   *  result set to be rendered\n   */\n  results: object[];\n\n  /**\n   * max number of results to be shown\n   */\n  private maxResults: number;\n\n  /**\n   * selected index\n   */\n  public highlightedIndex: number = 0;\n\n  /**\n   * selected child index\n   */\n  public highlightedChildIndex = 0;\n\n  /**\n   * highlighted object in drop down\n   */\n  private highlightedItem: object;\n\n  /**\n   * value of the input field\n   */\n  public inputValue: string = '';\n\n  /**\n   * Proprty being set on the object is highlighted\n   */\n  private HighlightedPropertyName = 'highlighted';\n\n  public showLoad: boolean = true;\n\n  /**\n   * Search string\n   */\n  private searchString: string = null;\n\n  /**\n   * Message announced by screen readers when\n   * autocomplete results are updated or new item\n   * is highlighted\n   */\n  public srOnlyText: string;\n\n  /**\n   * To make input readonly\n   */\n  @Input() public inputReadOnly = false;\n\n  /**\n   * Stored Event for ControlValueAccessor\n   */\n  public onTouchedCallback: () => void = () => null;\n\n  /**\n   * Stored Event for ControlValueAccessor\n   */\n  public propogateChange: (_: any) => void = (_: any) => null;\n\n  @Input()\n  public disabled: boolean;\n\n  private resultsAvailableMessage: string =\n    ' results available. Use up and down arrows\\\n  to scroll through results. Hit enter to select.';\n\n  private index = 0;\n  /**\n   * Gets the string value from the specifed properties of an object\n   * @param object\n   * @param propertyFields comma seperated list with periods depth of object\n   */\n\n  getObjectValue(object: Object, propertyFields: string): string {\n    let value = '';\n    let current = object;\n    let fieldSplit = propertyFields.split(',');\n    for (let i = 0; i < fieldSplit.length; i++) {\n      let fieldValue = fieldSplit[i];\n      let fieldPartSplit = fieldValue.split('.');\n      for (let j = 0; j < fieldPartSplit.length; j++) {\n        let fieldCheckValue = fieldPartSplit[j];\n        if (current) {\n          current = current[fieldCheckValue];\n        }\n      }\n\n      if (current) {\n        value += current.toString() + ' ';\n      }\n      current = object;\n    }\n    return value.trim();\n  }\n\n  /**\n   * Determines if the dropdown should be shown\n   */\n  public showResults = false;\n\n  /**\n   * Clears the input fields and value\n   */\n  public clearInput(): void {\n    this.inputValue = '';\n    this.onTouchedCallback();\n    this.clearAndHideResults();\n  }\n\n  /**\n   *\n   * @param event\n   */\n  checkForFocus(event): void {\n    this.focusRemoved();\n    this.showResults = false;\n  }\n\n  /**\n   *\n   */\n  private focusRemoved() {\n    if (this.configuration) {\n      if (this.configuration.selectionMode === SelectionMode.SINGLE) {\n        if (this.model.items.length > 0) {\n          this.inputValue = this.getObjectValue(\n            this.model.items[0],\n            this.configuration.primaryTextField\n          );\n\n        }\n      } else {\n        this.inputValue = '';\n      }\n    } else {\n      this.inputValue = '';\n    }\n  }\n\n  onkeypress(ev) {\n    return this.configuration.inputReadOnly ? false : true;\n  }\n  textChange(event) {\n    if (!this.configuration.isTagModeEnabled) {\n      // ie 11 placeholders will incorrectly trigger input events (known bug)\n      // if input isn't active element then don't do anything\n      if (event.target != document.activeElement) {\n        event.preventDefault();\n        return;\n      }\n      const searchString = event.target.value || '';\n      this.getResults(searchString);\n    }\n  }\n\n  /**\n   * Event method used when focus is gained to the input\n   */\n  inputFocusHandler(): void {\n    if (!this.configuration.isTagModeEnabled) {\n      if (this.configuration.focusInSearch) {\n        this.highlightedIndex = 0;\n        this.highlightedChildIndex = this.configuration.isSelectableGroup\n          ? 0\n          : null;\n        this.getResults(this.inputValue || '');\n      }\n      this.onTouchedCallback();\n    }\n  }\n\n  /**\n   * Key event\n   * @param event\n   */\n  onKeydown(event): void {\n    if (KeyHelper.is(KEYS.TAB, event)) {\n      return;\n    } else if (KeyHelper.is(KEYS.BACKSPACE, event)) {\n      if (this.configuration.inputReadOnly) {\n        event.preventDefault();\n      }\n    } else if (KeyHelper.is(KEYS.DOWN, event)) {\n      this.onArrowGroupDown();\n    } else if (KeyHelper.is(KEYS.UP, event)) {\n      event.preventDefault();\n      this.onArrowGroupUp();\n    } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex >= 0) {\n      if (this.configuration.isTagModeEnabled) {\n        const val = this.createFreeTextItem();\n        this.selectItem(val);\n      } else {\n        this.selectItem(this.highlightedItem);\n      }\n    } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex < 0) {\n      if (this.configuration.isFreeTextEnabled) {\n        const val = this.createFreeTextItem();\n        this.selectItem(val);\n      }\n    } else if (KeyHelper.is(KEYS.ESC, event)) {\n      if (this.showResults) {\n        this.clearAndHideResults();\n        if (event.stopPropagation) {\n          event.stopPropagation();\n        }\n      }\n    }\n  }\n\n  /**\n   * selects the item adding it to the model and closes the results\n   * @param item\n   */\n  public selectItem(item: object): void {\n    let filterItem = {};\n    if (this.essentialModelFields) {\n      filterItem[this.configuration.primaryKeyField] =\n        item[this.configuration.primaryKeyField];\n      filterItem[this.configuration.primaryTextField] =\n        item[this.configuration.primaryTextField];\n      if (this.configuration.secondaryTextField) {\n        filterItem[this.configuration.secondaryTextField] =\n          item[this.configuration.secondaryTextField];\n      }\n    } else {\n      filterItem = item;\n    }\n    SDSSelectedItemModelHelper.addItem(\n      filterItem,\n      this.configuration.primaryKeyField,\n      this.configuration.selectionMode,\n      this.model\n    );\n    this.propogateChange(this.model);\n    let message = this.getObjectValue(\n      item,\n      this.configuration.primaryTextField\n    );\n    this.inputValue = message;\n    this.focusRemoved();\n    this.showResults = false;\n  }\n\n  /**\n   *  clears the results and closes result drop down\n   */\n  private clearAndHideResults(): void {\n    this.results = [];\n    this.showResults = false;\n    this.focusRemoved();\n  }\n\n  openOptions() {\n    this.input.nativeElement.focus();\n  }\n\n  public getFlatElements() {\n    const results = this.results;\n    const flat = [];\n    const flatten = (array: any) => {\n      for (let i in array) {\n        const item = array[i];\n        flat.push(item);\n        if (\n          item[this.configuration.groupByChild] &&\n          item[this.configuration.groupByChild].length\n        ) {\n          flatten(item[this.configuration.groupByChild]);\n        }\n      }\n    };\n    flatten(results);\n    return flat;\n  }\n  /**\n   * When paging up and down with arrow key it sets the highlighted item into view\n   */\n  private scrollToSelectedItem() {\n    if (this.highlightedIndex >= 0) {\n      let selectedChild;\n      const dom = this.resultsListElement.nativeElement;\n      selectedChild = dom.querySelector('.sds-autocomplete__item--highlighted');\n      if (selectedChild) {\n        selectedChild.scrollIntoView({\n          behavior: 'smooth',\n          block: 'center',\n          inline: 'start'\n        });\n      }\n    }\n  }\n  /**\n   *  handles the arrow down key event\n   */\n  private onArrowGroupDown(): void {\n    if (this.results && this.results.length > 0) {\n      const flat = this.getFlatElements();\n      if (this.highlightedIndex < this.results.length - 1) {\n        this.highlightedIndex++;\n      }\n      this.setHighlightedItem(flat[this.highlightedIndex]);\n      this.scrollToSelectedItem();\n    }\n  }\n  /**\n   *  handles the arrow up key event\n   */\n  private onArrowGroupUp(): void {\n    if (this.results && this.results.length > 0) {\n      const flat = this.getFlatElements();\n      if (this.highlightedIndex != 0) {\n        this.highlightedIndex--;\n      }\n      this.setHighlightedItem(flat[this.highlightedIndex]);\n      this.scrollToSelectedItem();\n    }\n  }\n  showFreeText() {\n    if (this.configuration.isFreeTextEnabled) {\n      if (this.inputValue) {\n        if (this.inputValue.length !== 0) {\n          let foundItem = false;\n          if (this.results) {\n            for (var i = 0; i < this.results.length && !foundItem; i++) {\n              let item = this.results[i];\n              foundItem =\n                item[this.configuration.primaryTextField] === this.inputValue;\n            }\n          }\n          if (this.model.items.length > 0 && !foundItem) {\n            for (var i = 0; i < this.model.items.length && !foundItem; i++) {\n              let item = this.model.items[i];\n              foundItem =\n                item[this.configuration.primaryTextField] === this.inputValue;\n            }\n          }\n\n          return !foundItem;\n        } else {\n          return false;\n        }\n      } else {\n        return false;\n      }\n    } else {\n      return this.configuration.isFreeTextEnabled;\n    }\n  }\n\n  private createFreeTextItem() {\n    let item = { type: 'custom' };\n    item[this.configuration.primaryTextField] = this.inputValue;\n    item[this.configuration.primaryKeyField] = this.inputValue;\n    return item;\n  }\n  /**\n   *  return Item is already selected or not\n   * @param result\n   */\n  checkItemSelected(result: any) {\n    const selectedItem = this.model.items.filter(\n      item =>\n        item[this.configuration.primaryKeyField] ===\n        result[this.configuration.primaryKeyField]\n    );\n    return selectedItem.length > 0 ? true : false;\n  }\n  /**\n   *  gets the inital results\n   * @param searchString\n   */\n  private getResults(searchString: string): void {\n    if (searchString.length >= this.configuration.minimumCharacterCountSearch) {\n      if (\n        !this.matchPastSearchString(searchString) ||\n        (this.matchPastSearchString(searchString) && !this.showResults) ||\n        this.matchPastSearchString('')\n      ) {\n        this.searchString = searchString;\n        window.clearTimeout(this.timeoutNumber);\n        this.timeoutNumber = window.setTimeout(() => {\n          this.showLoad = true;\n          this.service.getDataByText(0, searchString).subscribe(result => {\n            this.results = result.items;\n            this.showLoad = false;\n            this.maxResults = result.totalItems;\n\n            this.highlightedIndex =\n              this.configuration.isFreeTextEnabled || this.maxResults == 0\n                ? -1\n                : 0;\n            if (!this.configuration.isFreeTextEnabled) {\n              this.setHighlightedItem(this.results[this.highlightedIndex]);\n            }\n            this.showResults = true;\n            this.addScreenReaderMessage(\n              this.maxResults + ' ' + this.resultsAvailableMessage\n            );\n            this._changeDetectorRef.markForCheck();\n          });\n        }, this.configuration.debounceTime);\n      }\n    }\n  }\n\n  /**\n   * Checks if the new search string matches the old search string\n   * @param searchString\n   */\n  private matchPastSearchString(searchString: string) {\n    return this.searchString === searchString;\n  }\n  /**\n   * Scroll Event Handler (Calculates if mpre items should be asked for from service on scrolling down)\n   */\n  onScroll() {\n    if (this.maxResults > this.results.length) {\n      let scrollAreaHeight = this.resultsListElement.nativeElement.offsetHeight;\n      let scrollTopPos = this.resultsListElement.nativeElement.scrollTop;\n      let scrollAreaMaxHeight = this.resultsListElement.nativeElement\n        .scrollHeight;\n      if (scrollTopPos + scrollAreaHeight * 2 >= scrollAreaMaxHeight) {\n        this.getAdditionalResults();\n      }\n    }\n  }\n\n  /**\n   * gets more results based when scrolling and adds the items\n   */\n  private getAdditionalResults() {\n    this.showLoad = true;\n    this.service\n      .getDataByText(this.results.length, this.searchString)\n      .subscribe(result => {\n        for (let i = 0; i < result.items.length; i++) {\n          this.addResult(result.items[i]);\n        }\n        this.showLoad = false;\n        this.maxResults = result.totalItems;\n      });\n  }\n\n  /**\n   * adds a single item to the list\n   * @param item\n   */\n  private addResult(item: object) {\n    //add check to make sure item does not exist\n    this.results.push(item);\n  }\n\n  /**\n   * Sets the highlighted item by keyboard or mouseover\n   * @param item\n   */\n  private setHighlightedItem(item: Object): void {\n    if (this.results && this.results.length > 0) {\n      if (this.highlightedItem) {\n        this.highlightedItem[this.HighlightedPropertyName] = false;\n      }\n      let message = '';\n      if (item) {\n        this.highlightedItem = item;\n        this.highlightedItem[this.HighlightedPropertyName] = true;\n        message = item[this.configuration.primaryTextField];\n        if (\n          this.configuration.secondaryTextField &&\n          item[this.configuration.secondaryTextField]\n        ) {\n          message += ': ' + item[this.configuration.secondaryTextField];\n        }\n      } else {\n        this.highlightedItem = undefined;\n        message = 'No item selected';\n      }\n      this.addScreenReaderMessage(message);\n    }\n  }\n\n  /**\n   * Adds message to be read by screen reader\n   * @param message\n   */\n  private addScreenReaderMessage(message: string) {\n    this.srOnlyText = message;\n  }\n\n  writeValue(obj: any): void {\n    if (obj instanceof SDSSelectedItemModel) {\n      this.model = obj as SDSSelectedItemModel;\n      this._changeDetectorRef.markForCheck();\n      if (this.model.items.length === 0) {\n        this.inputValue = '';\n      } else {\n        if (this.configuration.selectionMode === SelectionMode.SINGLE) {\n          this.inputValue = this.getObjectValue(\n            this.model.items[0],\n            this.configuration.primaryTextField\n          );\n        }\n      }\n    }\n  }\n  getClass() {\n    return this.configuration.inputReadOnly &&\n      this.configuration.selectionMode === SelectionMode.MULTIPLE\n      ? 'hide-cursor'\n      : '';\n  }\n\n  registerOnChange(fn: any): void {\n    this.propogateChange = fn;\n  }\n\n  registerOnTouched(fn: any): void {\n    this.onTouchedCallback = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -8531,506 +8170,101 @@
             "templateData": "<button sds-dialog-close class=\"close-btn\">\n  <fa-icon [icon]=\"['fas', 'times']\"></fa-icon>\n</button>\n\n<!-- Alert Icons -->\n<div *ngIf=\"_config.alert\" [ngSwitch]=\"_config.alert\" class=\"sds-dialog-icon\">\n  <fa-icon *ngSwitchCase=\"'error'\" [icon]=\"['fas', 'ban']\" size=\"3x\"></fa-icon>\n  <fa-icon\n    *ngSwitchCase=\"'warning'\"\n    [icon]=\"['fas', 'exclamation-triangle']\"\n    size=\"3x\"\n  ></fa-icon>\n  <fa-icon\n    *ngSwitchCase=\"'info'\"\n    [icon]=\"['fas', 'info-circle']\"\n    size=\"3x\"\n  ></fa-icon>\n  <div *ngSwitchDefault>\n    Alert <em>{{ _config.alert }}</em> is not valid\n  </div>\n</div>\n\n<ng-template cdkPortalOutlet></ng-template>\n"
         },
         {
-            "name": "SdsFooterComponent",
-            "id": "component-SdsFooterComponent-1edbc97398e39648f3615062e33f1b44",
-            "file": "libs/packages/components/src/lib/footer/footer.component.ts",
+            "name": "SdsIconComponent",
+            "id": "component-SdsIconComponent-6e98e0cc9f468d8f2adc82f76c825ca9",
+            "file": "libs/packages/components/src/lib/icon/icon.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "sds-footer",
+            "selector": "sds-icon",
             "styleUrls": [
-                "./footer.component.scss"
+                "./icon.component.scss"
             ],
             "styles": [],
             "templateUrl": [
-                "./footer.component.html"
+                "./icon.component.html"
             ],
             "viewProviders": [],
             "inputsClass": [
                 {
-                    "name": "isCollapsedContent",
-                    "defaultValue": "true",
-                    "line": 24,
-                    "type": "boolean"
+                    "name": "icon",
+                    "line": 11,
+                    "type": ""
                 },
                 {
-                    "name": "model",
-                    "description": "<p>Model used for the different display portions of the footer</p>\n",
-                    "line": 23,
-                    "type": "FooterModel"
-                }
-            ],
-            "outputsClass": [
+                    "name": "rotate",
+                    "defaultValue": "0",
+                    "line": 18,
+                    "type": "number"
+                },
                 {
-                    "name": "linkEvent",
-                    "defaultValue": "new EventEmitter<INavigationLink>()",
-                    "description": "<p>event for event based</p>\n",
-                    "line": 31,
-                    "type": "EventEmitter"
+                    "name": "size",
+                    "defaultValue": "'lg'",
+                    "line": 19,
+                    "type": "string"
                 }
             ],
+            "outputsClass": [],
             "propertiesClass": [
                 {
-                    "name": "expandedIndex",
-                    "type": "number",
+                    "name": "iconToFind",
+                    "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 13,
-                    "modifierKind": [
-                        114
-                    ]
+                    "line": 22
                 },
                 {
-                    "name": "innerWidth",
-                    "type": "any",
+                    "name": "library",
+                    "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 12,
-                    "modifierKind": [
-                        114
-                    ]
-                },
-                {
-                    "name": "isCollapsedMobile",
-                    "defaultValue": "true",
-                    "type": "boolean",
-                    "optional": false,
-                    "description": "",
-                    "line": 25
-                },
-                {
-                    "name": "navigationHelper",
-                    "defaultValue": "new NavigationHelper()",
-                    "type": "",
-                    "optional": false,
-                    "description": "<p>Navigation helper</p>\n",
-                    "line": 18
+                    "line": 21
                 }
             ],
-            "methodsClass": [
-                {
-                    "name": "collapse",
-                    "args": [
-                        {
-                            "name": "index",
-                            "type": "number"
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 46,
-                    "jsdoctags": [
-                        {
-                            "name": "index",
-                            "type": "number",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "linkClickEvent",
-                    "args": [
-                        {
-                            "name": "link",
-                            "type": "INavigationLink"
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "boolean",
-                    "typeParameters": [],
-                    "line": 37,
-                    "description": "<p>Link clicked and emits the link data into an event</p>\n",
-                    "jsdoctags": [
-                        {
-                            "name": {
-                                "pos": 1002,
-                                "end": 1006,
-                                "flags": 0,
-                                "escapedText": "link"
-                            },
-                            "type": "INavigationLink",
-                            "tagName": {
-                                "pos": 996,
-                                "end": 1001,
-                                "flags": 0,
-                                "escapedText": "param"
-                            },
-                            "comment": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "ngOnInit",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 42
-                }
-            ],
+            "methodsClass": [],
             "hostBindings": [],
             "hostListeners": [],
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter, OnInit, HostListener } from '@angular/core';\nimport { FooterModel } from './model/FooterModel';\nimport { INavigationLink, NavigationMode } from '../common-navigation/common-navigation-model';\nimport { NavigationHelper } from '../common-navigation/navigation-helper';\n\n@Component({\n  selector: 'sds-footer',\n  templateUrl: './footer.component.html',\n  styleUrls: ['./footer.component.scss']\n})\nexport class SdsFooterComponent implements OnInit {\n public innerWidth: any;\n public expandedIndex: number;\n\n  /**\n   * Navigation helper\n   */\n  navigationHelper = new NavigationHelper();\n\n  /**\n   * Model used for the different display portions of the footer\n   */\n  @Input() model: FooterModel;\n  @Input() isCollapsedContent: boolean = true;\n  isCollapsedMobile: boolean = true;\n\n  /**\n   * event for event based\n   */\n  @Output()\n  linkEvent = new EventEmitter<INavigationLink>();\n\n  /**\n   * Link clicked and emits the link data into an event\n   * @param link\n   */\n  linkClickEvent(link: INavigationLink) {\n    this.linkEvent.emit(link);\n    return false;\n  }\n\n  ngOnInit(){\n    this.expandedIndex = -1\n  }\n\n  collapse(index:number){\n    this.expandedIndex = index === this.expandedIndex ? -1 : index;\n  }\n\n}\n",
+            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'sds-icon',\n  templateUrl: './icon.component.html',\n  styleUrls: ['./icon.component.scss']\n})\nexport class SdsIconComponent {\n\n  @Input()\n  set icon(iconToShow: Array<string>){\n    if(iconToShow.length !== 2){\n      return\n    }\n    this.library = iconToShow[0];\n    this.iconToFind = iconToShow[1];\n  };\n  @Input() rotate: number = 0;\n  @Input() size: string = 'lg';\n\n  library: string;\n  iconToFind: string;\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "\n",
-                    "styleUrl": "./footer.component.scss"
+                    "data": "$rotation-values: 90 180 270;\n\n@each $item in $rotation-values {\n  i-bs.rotate-#{$item} ::ng-deep{\n    svg{\n      transform: rotate($item * 1deg);\n    }\n  }\n}\n\ni-bs.size-xs{\n  font-size: .75em;\n}\ni-bs.size-sm{\n  font-size: .875em;\n}\ni-bs.size-lg{\n  font-size: 1.33em;\n}\ni-bs.size-2x{\n  font-size: 2em;\n}\ni-bs.size-3x{\n  font-size: 3em;\n}\ni-bs.size-4x{\n  font-size: 4em;\n}\ni-bs.size-5x{\n  font-size: 5em;\n}\ni-bs.size-6x{\n  font-size: 6em;\n}\ni-bs.size-7x{\n  font-size: 7em;\n}\ni-bs.size-8x{\n  font-size: 8em;\n}\ni-bs.size-9x{\n  font-size: 9em;\n}\ni-bs.size-10x{\n  font-size: 10em;\n}\n",
+                    "styleUrl": "./icon.component.scss"
                 }
             ],
             "stylesData": "",
-            "implements": [
-                "OnInit"
-            ],
-            "templateData": "<footer class=\"usa-footer usa-footer--big\" role=\"contentinfo\">\n  <div class=\"sds-feedback\">\n    <button\n      type=\"button\"\n      class=\"sds-feedback__button simple-toggle\"\n      [attr.aria-expanded]=\"!isCollapsedContent\"\n      aria-controls=\"collapseID\"\n      (click)=\"isCollapsedContent = !isCollapsedContent\"\n    >\n      <fa-layers [fixedWidth]=\"true\" size=\"2x\">\n        <fa-icon\n          [icon]=\"['fas', 'circle']\"\n          [sdsCollapse]=\"isCollapsedContent\"\n          class=\"text-base-light margin-auto\"\n        ></fa-icon>\n        <fa-icon\n          [icon]=\"['sds', 'arrow-up']\"\n          [sdsCollapse]=\"isCollapsedContent\"\n          transform=\"shrink-6\"\n        ></fa-icon>\n        <fa-icon\n          [icon]=\"['fas', 'circle']\"\n          [sdsCollapse]=\"!isCollapsedContent\"\n          class=\"text-primary margin-auto\"\n        ></fa-icon>\n        <fa-icon\n          [icon]=\"['sds', 'arrow-down']\"\n          [sdsCollapse]=\"!isCollapsedContent\"\n          transform=\"shrink-6\"\n        ></fa-icon>\n      </fa-layers>\n      <span class=\"sds-feedback__title\">Feedback</span>\n    </button>\n    <div\n      id=\"collapseID\"\n      [sdsCollapse]=\"isCollapsedContent\"\n      class=\"sds-feedback__response\"\n    >\n      <div class=\"tablet:width-tablet-lg padding-4 margin-auto\">\n        <span class=\"sds-feedback__response-title\">One Question </span>\n        <span class=\"sds-feedback__response-title-thin\"> Survey</span>\n        <p class=\"sds-feedback__response-text\">\n          What changes or improvements would you suggest?\n        </p>\n        <input class=\"sds-feedback__input\" type=\"text\" />\n        <p class=\"text-right\">\n          <button class=\"usa-button usa-button--secondary\">Submit</button>\n        </p>\n      </div>\n    </div>\n  </div>\n\n\n        <div class=\"usa-footer__primary-section\">\n          <div class=\"grid-container\">\n            <div class=\"grid-row grid-gap\">\n              <div class=\"tablet:grid-col-12\">\n                <nav class=\"usa-footer__nav\">\n                  <div class=\"grid-row grid-gap-4\"\n                  >\n                    <div class=\"grid-col-6 tablet:grid-col-3\"\n                    *ngFor=\"let section of model.linkSections\"\n                    >\n                      <section class=\"usa-footer__primary-content usa-footer__primary-content--collapsible\">\n                        <span class=\"usa-footer__primary-link\">{{ section.text }}</span>\n                        <ul class=\"usa-list usa-list--unstyled\">\n\n                          <li *ngFor=\"let link of section.links\">\n                            <ng-container\n                              [ngTemplateOutlet]=\"\n                                navigationHelper.isLinkInternal(link)\n                                  ? footerRouteLinkTemplate\n                                  : navigationHelper.isLinkExternal(link)\n                                  ? footerHREFLinkTemplate\n                                  : footerEVENTLinkTemplate\n                              \"\n                              [ngTemplateOutletContext]=\"{ $implicit: link }\"\n                            ></ng-container>\n                          </li>\n                        </ul>\n                      </section>\n                    </div>\n                  </div>\n                </nav>\n              </div>\n            </div>\n          </div>\n\n          <nav class=\"sds-footer__nav--accordion\">\n            <div class=\"sds-accordion usa-accordion\"\n            *ngFor=\"let section of model.linkSections; let $index = index\"\n            >\n              <h2 class=\"usa-accordion__heading sds-accordion__heading\">\n                <button class=\"usa-accordion__button usa-accordion__block\" [attr.aria-expanded]=\"$index == expandedIndex\"\n                aria-controls=\"collapseMobileID\"\n                (click)=\"collapse($index)\">\n                  {{ section.text }}\n                </button>\n              </h2>\n              <div\n              [sdsCollapse]=\"$index !== expandedIndex || $index == null\"\n              >\n              <ul class=\"sds-footer__nav--accordion-content\" [hidden]=\"$index != expandedIndex\">\n                <li *ngFor=\"let link of section.links\">\n                  <ng-container\n                    [ngTemplateOutlet]=\"\n                      navigationHelper.isLinkInternal(link)\n                        ? footerRouteLinkTemplate\n                        : navigationHelper.isLinkExternal(link)\n                        ? footerHREFLinkTemplate\n                        : footerEVENTLinkTemplate\n                    \"\n                    [ngTemplateOutletContext]=\"{ $implicit: link }\"\n                  ></ng-container>\n                </li>\n              </ul>\n            </div>\n            </div>\n          </nav>\n        </div>\n\n\n\n  <div class=\"usa-footer__secondary-section\">\n    <div class=\"grid-container\">\n      <div class=\"grid-row grid-gap\">\n        <div\n          class=\"grid-col-12 mobile-lg:grid-col-6 tablet:grid-col-4 margin-bottom-4\"\n        >\n          <div class=\"sds-footer__logo\">\n              <img\n                *ngIf=\"model.footerLogo\"\n                class=\"usa-footer__logo-img\"\n                [attr.src]=\"model.footerLogo.imageSourcePath\"\n                [attr.alt]=\"model.footerLogo.imageAltText\"\n              />\n           \n            <h3 class=\"sds-footer__logo-heading\">\n              General Services Administration\n            </h3>\n          </div>\n        </div>\n        <div\n          class=\"sds-footer__note grid-col-12 mobile-lg:grid-col-6 tablet:grid-col-8\"\n        >\n          This is a U.S. General Services Administration Federal Government\n          computer system that is <strong>\"FOR OFFICIAL USE ONLY.\"</strong> This\n          system is subject to monitoring. Individuals found performing\n          unauthorized activities are subject to disciplinary action including\n          criminal prosecution.\n        </div>\n      </div>\n    </div>\n  </div>\n</footer>\n\n<ng-template #footerRouteLinkTemplate let-link>\n  <a class=\"usa-link\" [routerLink]=\"[link.route]\">{{ link.text }}</a>\n</ng-template>\n\n<ng-template #footerHREFLinkTemplate let-link>\n  <a class=\"usa-link\" [href]=\"link.route\">{{ link.text }}</a>\n</ng-template>\n\n<ng-template #footerEVENTLinkTemplate let-link>\n  <a href=\"javascript:void(0)\" (click)=\"linkClickEvent(link)\">{{\n    link.text\n  }}</a>\n</ng-template>"
-        },
-        {
-            "name": "SdsHeaderComponent",
-            "id": "component-SdsHeaderComponent-00970f2b0809c98c35ceb149ab6f8c2b",
-            "file": "libs/packages/components/src/lib/header/header.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "sds-header",
-            "styleUrls": [
-                "./header.component.scss"
-            ],
-            "styles": [],
-            "templateUrl": [
-                "./header.component.html"
-            ],
-            "viewProviders": [],
-            "inputsClass": [
-                {
-                    "name": "model",
-                    "description": "<p>Model used for the different display portions of the header</p>\n",
-                    "line": 28,
-                    "type": "HeaderModel"
-                },
-                {
-                    "name": "showTopBanner",
-                    "defaultValue": "true",
-                    "description": "<p>determines if the top banner is shown</p>\n",
-                    "line": 23,
-                    "type": "boolean"
-                },
-                {
-                    "name": "topBannerDescription",
-                    "defaultValue": "''",
-                    "line": 30,
-                    "type": "string"
-                }
-            ],
-            "outputsClass": [
-                {
-                    "name": "linkEvent",
-                    "defaultValue": "new EventEmitter<INavigationLink>()",
-                    "description": "<p>event for event based</p>\n",
-                    "line": 144,
-                    "type": "EventEmitter"
-                }
-            ],
-            "propertiesClass": [
-                {
-                    "name": "closeNavBtn",
-                    "type": "ElementRef",
-                    "optional": false,
-                    "description": "",
-                    "line": 13,
-                    "decorators": [
-                        {
-                            "name": "ViewChild",
-                            "stringifiedArguments": "'usaNavClose'"
-                        }
-                    ]
-                },
-                {
-                    "name": "mobileNavActive",
-                    "defaultValue": "false",
-                    "type": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 14
-                },
-                {
-                    "name": "navigationHelper",
-                    "defaultValue": "new NavigationHelper()",
-                    "type": "",
-                    "optional": false,
-                    "description": "<p>Navigation helper</p>\n",
-                    "line": 18
-                },
-                {
-                    "name": "openNavBtn",
-                    "type": "ElementRef",
-                    "optional": false,
-                    "description": "",
-                    "line": 12,
-                    "decorators": [
-                        {
-                            "name": "ViewChild",
-                            "stringifiedArguments": "'usaNavOpen'"
-                        }
-                    ]
-                }
-            ],
-            "methodsClass": [
-                {
-                    "name": "closeMobileNav",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 172
-                },
-                {
-                    "name": "deselect",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 71,
-                    "description": "<p>Deselects all the items in the header model</p>\n"
-                },
-                {
-                    "name": "find",
-                    "args": [
-                        {
-                            "name": "id",
-                            "type": "string"
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "Selectable",
-                    "typeParameters": [],
-                    "line": 98,
-                    "description": "<p>Finds the navigation element by id in the header model</p>\n",
-                    "jsdoctags": [
-                        {
-                            "name": {
-                                "pos": 2565,
-                                "end": 2567,
-                                "flags": 0,
-                                "escapedText": "id"
-                            },
-                            "type": "string",
-                            "tagName": {
-                                "pos": 2559,
-                                "end": 2564,
-                                "flags": 0,
-                                "escapedText": "param"
-                            },
-                            "comment": "<p>of the navigation item</p>\n"
-                        }
-                    ]
-                },
-                {
-                    "name": "findNavigationLinks",
-                    "args": [
-                        {
-                            "name": "id",
-                            "type": "string"
-                        },
-                        {
-                            "name": "toReturn",
-                            "type": "Selectable"
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "Selectable",
-                    "typeParameters": [],
-                    "line": 122,
-                    "description": "<p>Searchs the items in the navigation links</p>\n",
-                    "modifierKind": [
-                        112
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": {
-                                "pos": 3170,
-                                "end": 3172,
-                                "flags": 0,
-                                "escapedText": "id"
-                            },
-                            "type": "string",
-                            "tagName": {
-                                "pos": 3164,
-                                "end": 3169,
-                                "flags": 0,
-                                "escapedText": "param"
-                            },
-                            "comment": ""
-                        },
-                        {
-                            "name": "toReturn",
-                            "type": "Selectable",
-                            "tagName": {
-                                "text": "param"
+            "accessors": {
+                "icon": {
+                    "name": "icon",
+                    "setSignature": {
+                        "name": "icon",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "iconToShow",
+                                "type": ""
                             }
-                        }
-                    ]
-                },
-                {
-                    "name": "hasCounter",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "boolean",
-                    "typeParameters": [],
-                    "line": 42,
-                    "description": "<p>seeif any secondary link has a counter</p>\n"
-                },
-                {
-                    "name": "linkClickEvent",
-                    "args": [
-                        {
-                            "name": "link",
-                            "type": "INavigationLink"
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "boolean",
-                    "typeParameters": [],
-                    "line": 150,
-                    "description": "<p>Link clicked and emits the link data into an event</p>\n",
-                    "jsdoctags": [
-                        {
-                            "name": {
-                                "pos": 3869,
-                                "end": 3873,
-                                "flags": 0,
-                                "escapedText": "link"
-                            },
-                            "type": "INavigationLink",
-                            "tagName": {
-                                "pos": 3863,
-                                "end": 3868,
-                                "flags": 0,
-                                "escapedText": "param"
-                            },
-                            "comment": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "navAnimationEnd",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 183
-                },
-                {
-                    "name": "openMobileNav",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 168
-                },
-                {
-                    "name": "removeWhiteSpace",
-                    "args": [
-                        {
-                            "name": "text",
-                            "type": "string"
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "any",
-                    "typeParameters": [],
-                    "line": 35,
-                    "description": "<p>Takes in a text string and removes all white space characters and returns the new string</p>\n",
-                    "jsdoctags": [
-                        {
-                            "name": {
-                                "pos": 1121,
-                                "end": 1125,
-                                "flags": 0,
-                                "escapedText": "text"
-                            },
-                            "type": "string",
-                            "tagName": {
-                                "pos": 1115,
-                                "end": 1120,
-                                "flags": 0,
-                                "escapedText": "param"
-                            },
-                            "comment": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "select",
-                    "args": [
-                        {
-                            "name": "id",
-                            "type": "string"
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 60,
-                    "description": "<p>Deselects previous seletion</p>\n",
-                    "jsdoctags": [
-                        {
-                            "name": {
-                                "pos": 1640,
-                                "end": 1642,
-                                "flags": 0,
-                                "escapedText": "id"
-                            },
-                            "type": "string",
-                            "tagName": {
-                                "pos": 1634,
-                                "end": 1639,
-                                "flags": 0,
-                                "escapedText": "param"
-                            },
-                            "comment": ""
-                        }
-                    ]
+                        ],
+                        "returnType": "void",
+                        "line": 11,
+                        "jsdoctags": [
+                            {
+                                "name": "iconToShow",
+                                "type": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
                 }
-            ],
-            "hostBindings": [],
-            "hostListeners": [
-                {
-                    "name": "window:resize",
-                    "args": [
-                        {
-                            "name": "event",
-                            "type": ""
-                        }
-                    ],
-                    "argsDecorator": [
-                        "$event"
-                    ],
-                    "line": 159
-                }
-            ],
-            "description": "",
-            "rawdescription": "",
-            "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, HostListener } from '@angular/core';\nimport { HeaderModel, HeaderNavigationLink, HeaderSecondaryLink } from './model/HeaderModel';\nimport { INavigationLink, NavigationMode, Selectable } from '../common-navigation/common-navigation-model';\nimport { NavigationHelper } from '../common-navigation/navigation-helper';\n@Component({\n  selector: 'sds-header',\n  templateUrl: './header.component.html',\n  styleUrls: ['./header.component.scss']\n})\nexport class SdsHeaderComponent {\n\n  @ViewChild('usaNavOpen') openNavBtn: ElementRef;\n  @ViewChild('usaNavClose') closeNavBtn: ElementRef;\n  mobileNavActive = false;\n  /**\n  * Navigation helper\n  */\n  navigationHelper = new NavigationHelper();\n\n  /**\n   * determines if the top banner is shown\n   */\n  @Input() showTopBanner: boolean = true;\n\n  /**\n   * Model used for the different display portions of the header\n   */\n  @Input() model: HeaderModel;\n\n  @Input() topBannerDescription: string = '';\n  /**\n   * Takes in a text string and removes all white space characters and returns the new string\n   * @param text\n   */\n  removeWhiteSpace(text: string) {\n    return text.replace(/ /g, '');\n  }\n\n  /**\n   * seeif any secondary link has a counter\n   */\n  hasCounter(): boolean {\n    let hasCounter = false;\n    if (this.model) {\n      if (this.model.secondaryLinks) {\n        this.model.secondaryLinks.forEach(function (item: HeaderSecondaryLink) {\n          if (item.hasCounter) {\n            hasCounter = true;\n          }\n        });\n      }\n    }\n    return hasCounter;\n  }\n\n  /**\n   * Deselects previous seletion\n   * @param id\n   */\n  select(id: string) {\n    this.deselect();\n    let item = this.find(id);\n    if (item) {\n      item.selected = true;\n    }\n  }\n\n  /**\n   * Deselects all the items in the header model\n   */\n  deselect() {\n    if (this.model) {\n      if (this.model.home) {\n        this.model.home.selected = false;\n      }\n      if (this.model.navigationLinks) {\n        this.model.navigationLinks.forEach(function (item: HeaderNavigationLink) {\n          item.selected = false;\n          if (item.children) {\n            item.children.forEach(function (child: HeaderNavigationLink) {\n              child.selected = false;\n            });\n          }\n        });\n      }\n      if (this.model.secondaryLinks) {\n        this.model.secondaryLinks.forEach(function (item: HeaderSecondaryLink) {\n          item.selected = false;\n        });\n      }\n    }\n  }\n\n  /**\n   * Finds the navigation element by id in the header model\n   * @param id of the navigation item\n   */\n  find(id: string): Selectable {\n    let toReturn = null;\n    if (this.model) {\n      if (this.model.home) {\n        if (this.model.home.id === id) {\n          toReturn = this.model.home;\n        }\n      }\n      toReturn = this.findNavigationLinks(id, toReturn);\n      if (this.model.secondaryLinks) {\n        this.model.secondaryLinks.forEach(function (item: HeaderSecondaryLink) {\n          if (item.id === id) {\n            toReturn = item;\n          }\n        });\n      }\n    }\n    return toReturn;\n  }\n\n  /**\n   * Searchs the items in the navigation links\n   * @param id\n   */\n  private findNavigationLinks(id: string, toReturn: Selectable): Selectable {\n    if (this.model.navigationLinks) {\n      this.model.navigationLinks.forEach(function (item: HeaderNavigationLink) {\n        if (item.id === id) {\n          toReturn = item;\n        }\n        if (item.children) {\n          item.children.forEach(function (child: HeaderNavigationLink) {\n            if (child.id === id) {\n              toReturn = child;\n            }\n          });\n        }\n      });\n    }\n    return toReturn;\n  }\n\n  /**\n   * event for event based\n   */\n  @Output()\n  linkEvent = new EventEmitter<INavigationLink>();\n\n  /**\n   * Link clicked and emits the link data into an event\n   * @param link\n   */\n  linkClickEvent(link: INavigationLink) {\n    this.linkEvent.emit(link);\n    return false;\n  }\n\n  // When the mobile nav is active, and the close box isn't visible,\n  // we know the user's viewport has been resized to be larger.\n  // Let's make the page state consistent by deactivating the mobile nav.\n  @HostListener('window:resize', ['$event'])\n  onBrowserResize(event) {\n    if (\n      this.mobileNavActive &&\n      this.closeNavBtn.nativeElement.getBoundingClientRect().width === 0\n    ) {\n      this.mobileNavActive = false;\n    }\n  }\n\n  openMobileNav() {\n    this.mobileNavActive = true;\n  }\n\n  closeMobileNav() {\n    this.mobileNavActive = false;\n    // The mobile nav was just deactivated, and focus was on the close\n    // button, which is no longer visible. We don't want the focus to\n    // disappear into the void, so focus on the menu button if it's\n    // visible (this may have been what the user was just focused on,\n    // if they triggered the mobile nav by mistake).\n    this.openNavBtn.nativeElement.focus();\n  }\n\n  // The mobile nav was just activated, so focus on the close button,\n  navAnimationEnd() {\n    this.closeNavBtn.nativeElement.focus();\n  }\n\n\n}\n",
-            "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": "",
-                    "styleUrl": "./header.component.scss"
-                }
-            ],
-            "stylesData": "",
-            "templateData": "<sds-top-banner *ngIf=\"showTopBanner\" \n[description]=\"topBannerDescription\"\n></sds-top-banner>\n<div\n  class=\"usa-overlay\"\n  [class.is-visible]=\"mobileNavActive\"\n  (click)=\"closeMobileNav()\"\n></div>\n<header class=\"usa-header usa-header--extended\">\n  <div class=\"usa-navbar\">\n    <div class=\"usa-logo\" id=\"extended-logo\">\n      <ng-container\n        [ngTemplateOutlet]=\"\n          navigationHelper.isLinkInternal(model.home)\n            ? homeLinkRouteTemplate\n            : homeLinkHREFTemplate\n        \"\n        [ngTemplateOutletContext]=\"{ $implicit: model.home }\"\n      ></ng-container>\n    </div>\n    <button #usaNavOpen class=\"usa-menu-btn\" (click)=\"openMobileNav()\">\n      <fa-layers [fixedWidth]=\"true\" size=\"3x\">\n        <fa-icon\n          [icon]=\"['fas', 'square']\"\n          [classes]=\"['text-primary']\"\n        ></fa-icon>\n        <fa-icon\n          [icon]=\"['sds', 'bars']\"\n          [classes]=\"['icon-bars']\"\n          transform=\"shrink-6\"\n        ></fa-icon>\n        <fa-layers-counter\n          *ngIf=\"hasCounter()\"\n          [classes]=\"['icon-layers-counter']\"\n        ></fa-layers-counter>\n      </fa-layers>\n      <span class=\"usa-sr-only\">Menu</span>\n    </button>\n  </div>\n  <nav\n    aria-label=\"Primary navigation\"\n    class=\"usa-nav\"\n    (keydown.esc)=\"closeMobileNav()\"\n    (animationend)=\"navAnimationEnd()\"\n    [class.is-visible]=\"mobileNavActive\"\n    [cdkTrapFocus]=\"mobileNavActive\"\n  >\n    <div class=\"usa-nav__inner\">\n      <button #usaNavClose class=\"usa-nav__close\" (click)=\"closeMobileNav()\">\n        <fa-layers [fixedWidth]=\"true\" size=\"lg\">\n          <fa-icon\n            [icon]=\"['fas', 'circle']\"\n            [inverse]=\"true\"\n            transform=\"grow-2\"\n          ></fa-icon>\n          <fa-icon [icon]=\"['fas', 'times']\" transform=\"shrink-6\"></fa-icon>\n        </fa-layers>\n        <span class=\"usa-sr-only\">Close</span>\n      </button>\n      <ul class=\"usa-nav__primary usa-accordion\">\n        <li\n          *ngFor=\"let link of model.navigationLinks\"\n          class=\"usa-nav__primary-item\"\n        >\n          <ng-container\n            [ngTemplateOutlet]=\"link.route ? linkTemplate : dropDownTemplate\"\n            [ngTemplateOutletContext]=\"{ $implicit: link }\"\n          ></ng-container>\n        </li>\n      </ul>\n      <div class=\"usa-nav__secondary\">\n        <ul class=\"usa-nav__secondary-links\">\n          <li\n            *ngFor=\"let link of model.secondaryLinks\"\n            class=\"usa-nav__secondary-item\"\n          >\n            <ng-container\n              [ngTemplateOutlet]=\"\n                navigationHelper.isLinkInternal(link)\n                  ? secondaryRouteLinkTemplate\n                  : navigationHelper.isLinkExternal(link)\n                  ? secondaryHREFLinkTemplate\n                  : secondaryEVENTLinkTemplate\n              \"\n              [ngTemplateOutletContext]=\"{ $implicit: link }\"\n            ></ng-container>\n          </li>\n        </ul>\n      </div>\n    </div>\n  </nav>\n</header>\n<ng-template #homeLinkRouteTemplate let-home>\n  <a [routerLink]=\"home.route\" title=\"Home\" aria-label=\"Home\">\n    <img class=\"sds-header__logo\" [src]=\"home.logo\" [alt]=\"home.text\" />\n  </a>\n</ng-template>\n\n<ng-template #homeLinkHREFTemplate let-home>\n  <a [attr.href]=\"home.route\" title=\"Home\" aria-label=\"Home\">\n    <img class=\"sds-header__logo\" [src]=\"home.logo\" [alt]=\"home.text\" />\n  </a>\n</ng-template>\n\n<ng-template #secondaryRouteLinkTemplate let-link>\n  <a\n    [attr.id]=\"link.id\"\n    [routerLink]=\"[link.route]\"\n    [attr.class]=\"link.selected ? 'usa-current' : ''\"\n  >\n    <ng-container\n      [ngTemplateOutlet]=\"iconLinkTemplate\"\n      [ngTemplateOutletContext]=\"{ $implicit: link }\"\n    >\n    </ng-container>\n  </a>\n</ng-template>\n\n<ng-template #secondaryHREFLinkTemplate let-link>\n  <a\n    [attr.id]=\"link.id\"\n    [attr.href]=\"[link.route]\"\n    [attr.class]=\"link.selected ? 'usa-current' : ''\"\n  >\n    <ng-container\n      [ngTemplateOutlet]=\"iconLinkTemplate\"\n      [ngTemplateOutletContext]=\"{ $implicit: link }\"\n    >\n    </ng-container>\n  </a>\n</ng-template>\n\n<ng-template #secondaryEVENTLinkTemplate let-link>\n  <a\n    [attr.id]=\"link.id\"\n    (click)=\"linkClickEvent(link)\"\n    href=\"javascript:void(0)\"\n    [attr.class]=\"link.selected ? 'usa-current' : ''\"\n  >\n    <ng-container\n      [ngTemplateOutlet]=\"iconLinkTemplate\"\n      [ngTemplateOutletContext]=\"{ $implicit: link }\"\n    >\n    </ng-container>\n  </a>\n</ng-template>\n\n<ng-template #iconLinkTemplate let-link>\n  <fa-layers [fixedWidth]=\"true\">\n    <fa-icon [icon]=\"[link.imageClassPrefix, link.imageClass]\"></fa-icon>\n    <fa-layers-counter\n      *ngIf=\"link.hasCounter\"\n      [classes]=\"['icon-layers-counter']\"\n    ></fa-layers-counter>\n  </fa-layers>\n  <span class=\"sds-nav__secondary-item-text\">{{ link.text }}</span>\n</ng-template>\n\n<ng-template #linkTemplate let-link>\n  <ng-container\n    [ngTemplateOutlet]=\"\n      navigationHelper.isLinkInternal(link)\n        ? linkRouteTemplate\n        : navigationHelper.isLinkExternal(link)\n        ? linkHREFTemplate\n        : linkEventTemplate\n    \"\n    [ngTemplateOutletContext]=\"{ $implicit: link }\"\n  ></ng-container>\n</ng-template>\n\n<ng-template #linkRouteTemplate let-link>\n  <a\n    [attr.id]=\"link.id\"\n    [attr.class]=\"link.selected ? 'usa-nav__link usa-current' : 'usa-nav__link'\"\n    [routerLink]=\"[link.route]\"\n    ><span>{{ link.text }}</span></a\n  >\n</ng-template>\n\n<ng-template #linkHREFTemplate let-link>\n  <a\n    [attr.id]=\"link.id\"\n    [attr.class]=\"link.selected ? 'usa-nav__link usa-current' : 'usa-nav__link'\"\n    [attr.href]=\"[link.route]\"\n    ><span>{{ link.text }}</span></a\n  >\n</ng-template>\n\n<ng-template #linkEventTemplate let-link>\n  <a\n    [attr.id]=\"link.id\"\n    [attr.class]=\"link.selected ? 'usa-nav__link usa-current' : 'usa-nav__link'\"\n    href=\"javascript:void(0)\"\n    (click)=\"linkClickEvent(link)\"\n    ><span>{{ link.text }}</span></a\n  >\n</ng-template>\n\n<ng-template #dropDownTemplate let-link>\n  <button\n    [attr.id]=\"link.id\"\n    [attr.class]=\"\n      link.selected\n        ? 'usa-accordion__button usa-nav__link usa-current'\n        : 'usa-accordion__button usa-nav__link'\n    \"\n    aria-expanded=\"false\"\n    [attr.aria-controls]=\"removeWhiteSpace(link.text) + '-section'\"\n  >\n    <span>{{ link.text }}</span>\n  </button>\n  <ul\n    [attr.id]=\"removeWhiteSpace(link.text) + '-section'\"\n    class=\"usa-nav__submenu\"\n    hidden\n  >\n    <li *ngFor=\"let childLink of link.children\" class=\"usa-nav__submenu-item\">\n      <ng-container\n        [ngTemplateOutlet]=\"\n          navigationHelper.isLinkInternal(childLink)\n            ? dropDownRouteLinkTemplate\n            : navigationHelper.isLinkExternal(childLink)\n            ? dropDownHREFLinkTemplate\n            : dropDownEVENTLinkTemplate\n        \"\n        [ngTemplateOutletContext]=\"{ $implicit: childLink }\"\n      ></ng-container>\n    </li>\n  </ul>\n</ng-template>\n\n<ng-template #dropDownRouteLinkTemplate let-childLink>\n  <a [routerLink]=\"[childLink.route]\">{{ childLink.text }}</a>\n</ng-template>\n\n<ng-template #dropDownHREFLinkTemplate let-childLink>\n  <a [attr.href]=\"[childLink.route]\">{{ childLink.text }}</a>\n</ng-template>\n\n<ng-template #dropDownEVENTLinkTemplate let-childLink>\n  <a href=\"javascript:void(0)\" (click)=\"linkClickEvent(childLink)\">{{\n    childLink.text\n  }}</a>\n</ng-template>\n"
+            },
+            "templateData": "<ng-container *ngIf=\"library === 'bs'\">\n  <i-bs name={{iconToFind}} class=\"rotate-{{rotate}} size-{{size}}\" aria-hidden=true role=\"img\"></i-bs>\n</ng-container>\n<ng-container *ngIf=\"library === 'sds'\">\n  <fa-icon [icon]=\"['sds', iconToFind]\" size=\"{{size}}\" rotate=\"{{rotate}}\"></fa-icon>\n</ng-container>\n"
         },
         {
             "name": "SdsMenuComponent",
@@ -12274,7 +11508,7 @@
             ]
         },
         {
-            "name": "SdsFooterModule",
+            "name": "SdsIconModule",
             "children": [
                 {
                     "type": "providers",
@@ -12284,54 +11518,7 @@
                     "type": "declarations",
                     "elements": [
                         {
-                            "name": "SdsFooterComponent"
-                        }
-                    ]
-                },
-                {
-                    "type": "imports",
-                    "elements": [
-                        {
-                            "name": "SdsCollapseModule"
-                        },
-                        {
-                            "name": "SdsDirectivesModule"
-                        }
-                    ]
-                },
-                {
-                    "type": "exports",
-                    "elements": [
-                        {
-                            "name": "SdsFooterComponent"
-                        }
-                    ]
-                },
-                {
-                    "type": "bootstrap",
-                    "elements": []
-                },
-                {
-                    "type": "classes",
-                    "elements": []
-                }
-            ]
-        },
-        {
-            "name": "SdsHeaderModule",
-            "children": [
-                {
-                    "type": "providers",
-                    "elements": []
-                },
-                {
-                    "type": "declarations",
-                    "elements": [
-                        {
-                            "name": "SdsHeaderComponent"
-                        },
-                        {
-                            "name": "SdsTopBannerComponent"
+                            "name": "SdsIconComponent"
                         }
                     ]
                 },
@@ -12343,7 +11530,7 @@
                     "type": "exports",
                     "elements": [
                         {
-                            "name": "SdsHeaderComponent"
+                            "name": "SdsIconComponent"
                         }
                     ]
                 },
@@ -12808,6 +11995,43 @@
             ]
         },
         {
+            "name": "SdsTopBannerModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "SdsTopBannerComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "SdsTopBannerComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
             "name": "SdsTruncateModule",
             "children": [
                 {
@@ -13123,18 +12347,18 @@
                 "name": "uniqueId",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/packages/components/src/lib/accordion/accordion-item.component.ts",
+                "file": "libs/packages/components/src/lib/dialog/dialog-ref.ts",
                 "type": "number",
-                "defaultValue": "0",
-                "description": "<p>Counter for generating unique element ids. </p>\n"
+                "defaultValue": "0"
             },
             {
                 "name": "uniqueId",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/packages/components/src/lib/dialog/dialog-ref.ts",
+                "file": "libs/packages/components/src/lib/accordion/accordion-item.component.ts",
                 "type": "number",
-                "defaultValue": "0"
+                "defaultValue": "0",
+                "description": "<p>Counter for generating unique element ids. </p>\n"
             },
             {
                 "name": "uniqueId",
@@ -13789,6 +13013,15 @@
                 "kind": 177
             },
             {
+                "name": "PaginationDisplayMode",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"default\" | \"results\"",
+                "file": "libs/packages/components/src/lib/pagination/pagination.component.ts",
+                "description": "<p>pagination display modes. </p>\n",
+                "kind": 168
+            },
+            {
                 "name": "SdsAccordionDisplayMode",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
@@ -14214,6 +13447,16 @@
                     "defaultValue": "{\n  container: trigger('container', [\n    state(\n      'void',\n      style({\n        opacity: 0,\n        transform: 'scale(0.8)'\n      })\n    ),\n    transition(\n      'void => enter',\n      group([\n        query(\n          '.sds-overlay',\n          animate(\n            '100ms linear',\n            style({\n              opacity: 1\n            })\n          )\n        ),\n        animate(\n          '120ms cubic-bezier(0, 0, 0.2, 1)',\n          style({ transform: 'scale(1)' })\n        )\n      ])\n    ),\n    transition('* => void', animate('100ms 25ms linear', style({ opacity: 0 })))\n  ])\n}"
                 }
             ],
+            "libs/packages/components/src/lib/dialog/dialog-ref.ts": [
+                {
+                    "name": "uniqueId",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/packages/components/src/lib/dialog/dialog-ref.ts",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
             "libs/packages/components/src/lib/accordion/accordion-item.component.ts": [
                 {
                     "name": "uniqueId",
@@ -14223,16 +13466,6 @@
                     "type": "number",
                     "defaultValue": "0",
                     "description": "<p>Counter for generating unique element ids. </p>\n"
-                }
-            ],
-            "libs/packages/components/src/lib/dialog/dialog-ref.ts": [
-                {
-                    "name": "uniqueId",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/dialog/dialog-ref.ts",
-                    "type": "number",
-                    "defaultValue": "0"
                 }
             ],
             "libs/packages/components/src/lib/toolbar/toolbar.component.ts": [
@@ -15040,6 +14273,17 @@
                     "file": "libs/packages/components/src/lib/menu/menu.component.ts",
                     "description": "<p>Menu available sizes </p>\n",
                     "kind": 177
+                }
+            ],
+            "libs/packages/components/src/lib/pagination/pagination.component.ts": [
+                {
+                    "name": "PaginationDisplayMode",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"default\" | \"results\"",
+                    "file": "libs/packages/components/src/lib/pagination/pagination.component.ts",
+                    "description": "<p>pagination display modes. </p>\n",
+                    "kind": 168
                 }
             ],
             "libs/packages/components/src/lib/accordion/accordion-base.ts": [
