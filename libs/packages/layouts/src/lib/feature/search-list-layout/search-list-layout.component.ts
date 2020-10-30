@@ -2,6 +2,7 @@ import { Component, Input, ContentChild, TemplateRef, Optional, OnChanges, Simpl
 import { BehaviorSubject } from "rxjs";
 import { SearchListInterface, SearchListConfiguration } from './model/search-list-layout.model';
 import { SDSFormlyUpdateComunicationService } from '@gsa-sam/sam-formly';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'search-list-layout',
@@ -15,7 +16,8 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   */
   @ContentChild('resultContent') resultContentTemplate: TemplateRef<any>;
 
-  constructor(@Optional() private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService) { }
+  constructor(@Optional() private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,
+    private router: Router, private route: ActivatedRoute) { }
 
   /**
    * Input service to be called when items change
@@ -52,6 +54,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     this.paginationChange.subscribe(
       () => {
         this.updateContent();
+        this.updateRoute();
       }
     );
     if (this.formlyUpdateComunicationService) {
@@ -89,8 +92,17 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   onSelectChange() {
     this.page.pageNumber = 1;
     this.updateContent();
+    this.updateRoute();
   }
 
+  updateRoute() {
+    const params = { pageNumber: this.page.pageNumber, pageSize: this.page.pageSize, sortValue: this.sortField }
+    this.router.navigate(['.'], {
+      relativeTo: this.route,
+      queryParams: params,
+      queryParamsHandling: 'merge'
+    });
+  }
   /**
    * Id of the top pagination control
    */
@@ -105,6 +117,8 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
    * Page event listener
    */
   public paginationChange = new BehaviorSubject<object>(this.page);
+
+  // public configurationChange = new BehaviorSubject<object>(this.configuration);
 
   /**
    * List of items to be displayed
