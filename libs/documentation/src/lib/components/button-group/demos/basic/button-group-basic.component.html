@@ -1,0 +1,39 @@
+<sds-button-group
+  [mode]="'radio'"
+  (change)="firstGroupChange($event)"
+  class="sds-button-group"
+>
+  <sds-button-group-option value="reports" [aria-label]="'reports'" [checked]=true>
+    Reports
+  </sds-button-group-option>
+  <sds-button-group-option value="subscriptions" [aria-label]="'subscriptions'">
+      Subscriptions
+  </sds-button-group-option>
+  <sds-button-group-option value="history">
+    History
+  </sds-button-group-option>
+</sds-button-group>
+
+<div>
+  <p>First Group Current Value: {{ firstGroupCurrentValue | json }}</p>
+</div>
+
+<sds-button-group
+  [mode]="'checkbox'"
+  (change)="secondGroupChange($event)"
+  class="sds-button-group sds-button-group--secondary"
+>
+  <sds-button-group-option value="reports">
+    Reports
+  </sds-button-group-option>
+  <sds-button-group-option value="subscriptions">
+    Subscriptions
+  </sds-button-group-option>
+  <sds-button-group-option value="history">
+    History
+  </sds-button-group-option>
+</sds-button-group>
+
+<div>
+  <p>Second Group Current Value: {{ secondGroupCurrentValue | json }}</p>
+</div>

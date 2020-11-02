@@ -4,11 +4,7 @@
     checkboxes.
   </p>
   <form [formGroup]="form">
-    <formly-form
-      [model]="model"
-      [fields]="fields"
-      [options]="options"
-      [form]="form"
-    ></formly-form>
+    <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
   </form>
+  <pre>{{model |json}}</pre>
 </div>

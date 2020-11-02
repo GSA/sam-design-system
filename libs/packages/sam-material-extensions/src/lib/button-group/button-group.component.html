@@ -1,0 +1,24 @@
+<mat-button-toggle-group
+  [multiple]="mode === 'checkbox'"
+  (change)="change.emit($event)"
+>
+  <ng-container *ngFor="let option of buttonOptions">
+    <mat-button-toggle
+      #singleToggle
+      value="{{option.value}}"
+      aria-label="{{option.ariaLabel}}"
+      class="sds-button-group__item"
+      [disableRipple]="true"
+      [checked]="option.checked"
+    >
+      <div
+        class="usa-button"
+        [ngClass]="{ 'usa-button--outline': !singleToggle.checked }"
+      >
+        <ng-container
+          *ngTemplateOutlet="option.buttonGroupTemplate"
+        ></ng-container>
+      </div>
+    </mat-button-toggle>
+  </ng-container>
+</mat-button-toggle-group>

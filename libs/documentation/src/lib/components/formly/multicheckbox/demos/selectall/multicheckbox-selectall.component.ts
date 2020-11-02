@@ -12,25 +12,33 @@ export class MultiCheckboxSelectAll {
   options: FormlyFormOptions = {};
   fields: FormlyFieldConfig[] = [
     {
-      key: 'entity.socioeconomic',
+      key: 'domains',
       type: 'multicheckbox',
+      defaultValue: { cfda: true, opp: true, fh: false },
       templateOptions: {
-        label: 'Socio-Economic Status',
+        label: 'Domains',
         description: 'Select any socio-economic categories which reflect the current status of your entity',
         required: true,
         selectAllOption: true,
         options: [
           {
-            key: 'vet',
-            value: 'Veteran Owned',
+            key: 'cfda',
+            value: 'Assistance Listing',
           },
           {
-            key: 'women',
-            value: 'Women Owned',
+            key: 'opp',
+            value: 'Contract Opportunities',
           },
           {
-            key: 'minority',
-            value: 'Minority Owned'
+            key: 'ei',
+            value: 'Entity Information'
+          }, {
+            key: 'fh',
+            value: 'Federal Hierarchy'
+          },
+          {
+            key: 'wd',
+            value: 'Wage Determinations'
           }
         ]
       },
