@@ -1,0 +1,46 @@
+$rotation-values: 90 180 270;
+
+@each $item in $rotation-values {
+  i-bs.rotate-#{$item} ::ng-deep{
+    svg{
+      transform: rotate($item * 1deg);
+    }
+  }
+}
+
+i-bs.size-xs{
+  font-size: .75em;
+}
+i-bs.size-sm{
+  font-size: .875em;
+}
+i-bs.size-lg{
+  font-size: 1.33em;
+}
+i-bs.size-2x{
+  font-size: 2em;
+}
+i-bs.size-3x{
+  font-size: 3em;
+}
+i-bs.size-4x{
+  font-size: 4em;
+}
+i-bs.size-5x{
+  font-size: 5em;
+}
+i-bs.size-6x{
+  font-size: 6em;
+}
+i-bs.size-7x{
+  font-size: 7em;
+}
+i-bs.size-8x{
+  font-size: 8em;
+}
+i-bs.size-9x{
+  font-size: 9em;
+}
+i-bs.size-10x{
+  font-size: 10em;
+}

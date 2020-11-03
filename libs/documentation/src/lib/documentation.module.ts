@@ -154,6 +154,10 @@ import {
   ROUTES as TABLE_ROUTES,
   TableModule
 } from './components/table/table.module';
+import {
+  ROUTES as BUTTON_GROUP_ROUTES,
+  ButtonGroupModule
+} from './components/button-group/button-group.module';
 
 /* Utilities */
 import {
@@ -196,6 +200,7 @@ export const ROUTES: Routes = [
   { path: 'components/popup', children: POPUP_ROUTES },
   { path: 'components/filters', children: FILTERS_ROUTES },
   { path: 'components/accordion', children: ACCORDION_ROUTES },
+  { path: 'components/button-group', children: BUTTON_GROUP_ROUTES },
 
   // Formly
   { path: 'components/input', children: INPUT_ROUTES },
@@ -279,7 +284,8 @@ export const ROUTES: Routes = [
     TableModule,
     IconsModule,
     FormlyFormsModule,
-    FormlyConditionalModule
+    FormlyConditionalModule,
+    ButtonGroupModule
   ]
 })
 export class DocumentationModule {

@@ -59,3 +59,5 @@ export * from './text/child.component';
 export * from './search/search.component';
 export * from './top-banner/top-banner.component';
 export * from './top-banner/top-banner.module';
+export * from './icon/icon.module';
+export * from './video-player/video-player.component';
