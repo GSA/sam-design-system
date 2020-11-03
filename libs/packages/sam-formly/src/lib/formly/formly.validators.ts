@@ -76,3 +76,17 @@ export function maxDateValidator(control: FormControl, field: FormlyFieldConfig)
     return toReturn;
 }
 
+export function dateRangeValidator(control: FormControl, field: FormlyFieldConfig): ValidationErrors {
+
+    if (field.formControl.invalid && field.formControl.errors) {
+        return field.formControl.errors;
+    }
+
+    const innerFieldGroup: FormlyFieldConfig = field.fieldGroup.find(field => field.formControl.invalid && field.formControl.errors);
+
+    if (!innerFieldGroup) {
+        return null;
+    }
+    return innerFieldGroup.formControl.errors;
+}
+

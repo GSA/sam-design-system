@@ -27,6 +27,7 @@ export const FIELD_TYPE_COMPONENTS = [
   FormlyAccordianFormFieldComponent,
   FormlyFieldAutoCompleteComponent,
   FormlyFieldDatePickerComponent,
+  FormlyFieldDateRangePickerComponent,
   FormlyFormFieldFilterWrapperComponent,
   FormlyFieldButtonComponent,
   FormlyCustomWrapperComponent,
@@ -37,7 +38,7 @@ export const FIELD_TYPE_COMPONENTS = [
   FormlyGroupWrapperComponent,
   FormlyFieldSearchComponent
 ];
-import { maxDateValidator, minDateValidator } from './formly.validators';
+import { dateRangeValidator, maxDateValidator, minDateValidator } from './formly.validators';
 import { sdsWrappers, sdsGroupWrapper } from './sds-formly-options';
 import { FormlyLabelWrapperComponent } from './wrappers/label.wrapper';
 import { FormlyDescriptionWrapperComponent } from './wrappers/description.wrapper';
@@ -45,6 +46,7 @@ import { FormlyValidationWrapperComponent } from './wrappers/validation.wrapper'
 import { FormlyGroupWrapperComponent } from './wrappers/group.wrapper';
 import { FormlyFieldSearchComponent } from './types/search';
 import { FormlyFieldFileInfoComponent } from './types/fileinfo';
+import { FormlyFieldDateRangePickerComponent } from './types/daterangepicker';
 
 export const FORMLY_WRAPPERS: any = [
   {
@@ -183,6 +185,30 @@ export const FORMLY_CONFIG: ConfigOption = {
               'templateOptions.minDate': minDateToDateRangePicker,
               'templateOptions.maxDate': maxDateToDateRangePicker
             }
+          }
+        ],
+      }
+    },
+    {
+      name: 'daterangepickerv2',
+      component: FormlyFieldDateRangePickerComponent,
+      wrappers: sdsWrappers,
+      defaultOptions: {
+        validators: {
+          validation: [dateRangeValidator]
+        },
+        fieldGroup: [
+          {
+            key: 'fromDate',
+            templateOptions: {
+              placeholder: 'Start Date',
+            },
+          },
+          {
+            key: 'toDate',
+            templateOptions: {
+              placeholder: 'End Date',
+            },
           }
         ]
       }

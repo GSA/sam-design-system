@@ -11,3 +11,12 @@
   <h4>Model:</h4>
   <pre>{{ model ? (model | json) : '' }}</pre>
 </div>
+
+<form [formGroup]="form2">
+  <formly-form [form]="form2" [fields]="fields2" [model]="model2"></formly-form>
+</form>
+
+<div class="sam-example-pagination">
+  <h4>Model:</h4>
+  <pre>{{ model2 ? (model2 | json) : '' }}</pre>
+</div>
