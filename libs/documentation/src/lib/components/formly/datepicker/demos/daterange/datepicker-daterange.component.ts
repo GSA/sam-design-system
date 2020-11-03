@@ -14,11 +14,11 @@ export class FormlyDatepickerDateRange {
   fields: FormlyFieldConfig[] = [
     {
       key: 'expirationDateRangeEx',
-      type: 'daterangepicker',
+      type: 'daterangepickerv2',
       templateOptions: {
         label: 'Expiration Date Range',
         minDate: new Date(2019, 9, 5),
-        maxDate: new Date(2020, 11, 15)
+        maxDate: new Date(2020, 11, 15),
       }
     }
   ];
