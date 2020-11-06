@@ -285,10 +285,15 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       this.onArrowGroupUp();
     } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex >= 0) {
       if (this.configuration.isTagModeEnabled) {
-        const val = this.createFreeTextItem();
-        this.selectItem(val);
-      } else {
-        this.selectItem(this.highlightedItem);
+        this.error = this.checkValidaton(this.inputValue, this.field);
+        this.hasError = this.error === null ? false : true;
+        this.errorMessage = this.getErrorMessage(this.error);
+        if (!this.hasError) {
+          const val = this.createFreeTextItem();
+          this.selectItem(val);
+        } else {
+          this.selectItem(this.highlightedItem);
+        }
       }
     } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex < 0) {
       if (this.configuration.isFreeTextEnabled) {
@@ -350,7 +355,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   }
 
   checkValidaton(value, field: FormlyFieldConfig): ValidationErrors {
-    console.log(field.templateOptions);
     const methodMapper = {
       maxLength: autocompleteMaxLengthValidator,
       minLength: autocompleteMinLengthValidator,
