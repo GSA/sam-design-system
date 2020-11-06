@@ -9,18 +9,20 @@ import { FieldType } from '@ngx-formly/core';
       [formlyAttributes]="field"
       [class.usa-input--error]="showError">
       <input matStartDate
+        [attr.aria-label]="field.fieldGroup[0]?.templateOptions?.placeholder || 'Start Date'"
         [formlyAttributes]="field.fieldGroup[0]"
         [placeholder]="field.fieldGroup[0]?.templateOptions?.placeholder || 'Start Date'"
         [formControlName]="field.fieldGroup[0].key"
         />
         <input matEndDate
+        [attr.aria-label]="field.fieldGroup[1]?.templateOptions?.placeholder || 'End Date'"
         [formlyAttributes]="field.fieldGroup[1]"
         [placeholder]="field.fieldGroup[1]?.templateOptions?.placeholder || 'End Date'"
         [formControlName]="field.fieldGroup[1].key"
       />  
     </mat-date-range-input>
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-date-range-picker [panelClass]="['no-table-borders']" class="no-table-borders" [startAt]="to.startDate" #picker></mat-date-range-picker>
+    <mat-date-range-picker [startAt]="to.startDate" #picker></mat-date-range-picker>
   `,
   styles: ['.mat-date-range-input-start-wrapper {overflow: unset !important; }', 
             '.mat-date-range-input-end-wrapper {flex-grow: unset !important; }',
