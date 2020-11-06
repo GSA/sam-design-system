@@ -7,12 +7,12 @@ import {
   OnChanges,
   SimpleChanges,
   OnInit,
-  HostListener,
+  HostListener
 } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import {
   SearchListInterface,
-  SearchListConfiguration,
+  SearchListConfiguration
 } from './model/search-list-layout.model';
 import { SDSFormlyUpdateComunicationService } from '@gsa-sam/sam-formly';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -20,7 +20,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'search-list-layout',
   templateUrl: './search-list-layout.component.html',
-  styleUrls: ['./search-list-layout.component.scss'],
+  styleUrls: ['./search-list-layout.component.scss']
 })
 export class SearchListLayoutComponent implements OnChanges, OnInit {
   /**
@@ -52,7 +52,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   page = {
     pageNumber: 1,
     pageSize: 25,
-    totalPages: 0,
+    totalPages: 0
   };
 
   ngOnChanges(changes: SimpleChanges) {
@@ -76,15 +76,15 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   onpopstate(event) {
     const queryString = window.location.search.substring(1);
     const params = this.getUrlParams(queryString);
-    this.page.pageSize = ++params['pageSize'];
-    this.page.pageNumber = ++params['pageNumber'];
+    //this.page.pageSize = params['pageSize'];
+    this.page.pageNumber = params['pageNumber'];
     this.sortField = params['sortValue'];
     this.onSelectChange();
   }
 
   getUrlParams(queryString) {
     const target = {};
-    queryString.split('&').forEach((pair) => {
+    queryString.split('&').forEach(pair => {
       if (pair !== '') {
         const splitpair = pair.split('=');
         target[splitpair[0]] =
@@ -104,13 +104,14 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
       ? params.sortValue
       : this.configuration.defaultSortValue;
     this.page.pageNumber = params['pageNumber'] ? params['pageNumber'] : 1;
+
     this.paginationChange.subscribe(() => {
       this.updateContent();
       this.updateRoute();
     });
 
     if (this.formlyUpdateComunicationService) {
-      this.formlyUpdateComunicationService.filterUpdate.subscribe((filter) => {
+      this.formlyUpdateComunicationService.filterUpdate.subscribe(filter => {
         this.updateFilter(filter);
       });
     }
@@ -130,7 +131,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
    * Sorty by change event
    */
   onSelectChange() {
-    this.page.pageNumber = 1;
+    //this.page.pageNumber = 1;
     this.updateContent();
     this.updateRoute();
   }
@@ -138,13 +139,13 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   updateRoute() {
     const params = {
       pageNumber: this.page.pageNumber,
-      sortValue: this.sortField,
+      sortValue: this.sortField
     };
 
     this.router.navigate(['.'], {
       relativeTo: this.route,
       queryParams: params,
-      queryParamsHandling: 'merge',
+      queryParamsHandling: 'merge'
     });
   }
   /**
@@ -184,9 +185,9 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
           .getData({
             page: this.page,
             sortField: this.sortField,
-            filter: this.filterData,
+            filter: this.filterData
           })
-          .subscribe((result) => {
+          .subscribe(result => {
             this.items = result.items;
             this.page.totalPages = Math.ceil(
               result.totalItems / this.page.pageSize
