@@ -333,14 +333,10 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       } characters`;
     }
     if (error.min) {
-      msg = `This value should be more than ${
-        this.field.templateOptions.maxLength
-      }`;
+      msg = `This value should be more than ${this.field.templateOptions.min}`;
     }
     if (error.max) {
-      msg = `This value should be less than ${
-        this.field.templateOptions.maxLength
-      }`;
+      msg = `This value should be less than ${this.field.templateOptions.max}`;
     }
     if (error.age) {
       msg = `Age value should be between ${
