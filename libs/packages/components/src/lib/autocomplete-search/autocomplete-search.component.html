@@ -1,4 +1,5 @@
-<div sds-click-outside (clickOutside)="checkForFocus($event)" sds-tab-outside (tabOutside)="checkForFocus($event)">
+<div sds-click-outside [ngClass]="{'usa-form-group--error': hasError}" (clickOutside)="checkForFocus($event)"
+  sds-tab-outside (tabOutside)="checkForFocus($event)">
   <div class="maxw-mobile-lg position-relative">
     <div role="combobox" [attr.id]="configuration.id + '-container'" [attr.aria-expanded]="showResults"
       [attr.aria-owns]="showResults ? configuration.id + '-listbox' : undefined" aria-haspopup="listbox">
@@ -170,9 +171,9 @@
       <li>{{ srOnlyText }}</li>
     </ul>
   </div>
-</div>
 
-<!-- Error message -->
-<div class="usa-error-message" [style.display]="'block'" *ngIf="error.maxlength">This value should be more than
-  {{field.templateOptions.maxLength}} characters
+
+  <!-- Error message -->
+  <div class="usa-error-message" [style.display]="'block'" *ngIf="hasError">{{errorMessage}}
+  </div>
 </div>

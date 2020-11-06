@@ -153,6 +153,8 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     ' results available. Use up and down arrows\
   to scroll through results. Hit enter to select.';
 
+  hasError = false;
+  errorMessage = '';
   private index = 0;
   /**
    * Gets the string value from the specifed properties of an object
@@ -283,8 +285,10 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex < 0) {
       if (this.configuration.isFreeTextEnabled) {
         this.error = this.autocompleteMaxLengthValidator(this.field);
-        console.log(this.error);
-        if (this.error === null) {
+        this.hasError = this.error === null ? false : true;
+        debugger;
+        this.errorMessage = this.getErrorMessage(this.error);
+        if (!this.hasError) {
           const val = this.createFreeTextItem();
           setTimeout(() => {
             this.selectItem(val);
@@ -304,11 +308,15 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     }
   }
 
+  getErrorMessage(error: any): string {
+    if (error !== null) {
+      return `This value should be more than characters`;
+    }
+  }
+
   autocompleteMaxLengthValidator(field: FormlyFieldConfig): ValidationErrors {
     let maxLengthValue = field.templateOptions.maxLength;
-    console.log(maxLengthValue);
     let value = this.inputValue;
-    console.log(value.length);
     if (value && maxLengthValue && value.length > 0) {
       return value.length > maxLengthValue ? { maxlength: true } : null;
     }
@@ -611,10 +619,11 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     }
   }
   getClass() {
+    const errclass = !this.hasError ? '' : 'usa-input--error';
     return this.configuration.inputReadOnly &&
       this.configuration.selectionMode === SelectionMode.MULTIPLE
-      ? 'hide-cursor'
-      : '';
+      ? `hide-cursor ${errclass}`
+      : `${errclass}`;
   }
 
   registerOnChange(fn: any): void {
