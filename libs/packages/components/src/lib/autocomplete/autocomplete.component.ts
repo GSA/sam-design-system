@@ -12,8 +12,10 @@ import {
 import {
   NG_VALUE_ACCESSOR,
   ControlValueAccessor,
-  FormControl
+  FormControl,
+  FormGroup
 } from '@angular/forms';
+import { FormlyFieldConfig } from '@ngx-formly/core';
 import { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';
 import { SDSAutocompleteServiceInterface } from '../autocomplete-search/models/SDSAutocompleteServiceInterface';
 import { SDSAutocompletelConfiguration } from './models/SDSAutocompletelConfiguration.model';
@@ -63,39 +65,46 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
   @Input()
   public essentialModelFields: boolean = false;
 
+  @Input()
+  public field: FormlyFieldConfig[];
   /**
    * Instance of the SamHiercarchicalServiceInterface provided
    */
   @Input()
   public service: SDSAutocompleteServiceInterface;
 
-  @ViewChild('autocompleteSearch') autocompleteSearch: SDSAutocompleteSearchComponent;
-  constructor(private cd: ChangeDetectorRef) { }
+  @ViewChild('autocompleteSearch')
+  autocompleteSearch: SDSAutocompleteSearchComponent;
+  constructor(private cd: ChangeDetectorRef) {}
 
   /**
    * Stored Event for ControlValueAccessor
    */
   @HostListener('focusout')
-  public onTouched = () => { };
+  public onTouched = () => {};
 
   /**
    * Stored Event for ControlValueAccessor
    */
-  public onChange = (_: any) => { };
+  public onChange = (_: any) => {};
 
   // ControlValueAccessor (and Formly) is trying to update the value of the FormControl (our custom component) programatically
   // If there is a value we will just overwrite items
   // If there is no value we reset the items array to be empty
   writeValue(value: any) {
-    if (value instanceof SDSSelectedItemModel && value.items && value.items.length && this.model.items !== value.items) {
+    if (
+      value instanceof SDSSelectedItemModel &&
+      value.items &&
+      value.items.length &&
+      this.model.items !== value.items
+    ) {
       this.model.items = [...value.items];
       this.cd.markForCheck();
-    }
-    else if(value && value.length && this.model.items !== value) {
+    } else if (value && value.length && this.model.items !== value) {
       this.model.items = value;
       this.cd.markForCheck();
     } else {
-      if(!this.model || !(this.model instanceof SDSSelectedItemModel)) {
+      if (!this.model || !(this.model instanceof SDSSelectedItemModel)) {
         this.model = new SDSSelectedItemModel();
       }
       this.model.items = value && value.items ? value.items : [];
@@ -147,6 +156,6 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
   addItems(list: object[]) {
     list.forEach(item => {
       this.addItem(item);
-    })
+    });
   }
 }

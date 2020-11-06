@@ -7,7 +7,12 @@ import {
   forwardRef,
   ChangeDetectorRef
 } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import {
+  NG_VALUE_ACCESSOR,
+  ControlValueAccessor,
+  FormGroup,
+  ValidationErrors
+} from '@angular/forms';
 import { SDSAutocompleteServiceInterface } from './models/SDSAutocompleteServiceInterface';
 import { KeyHelper, KEYS } from '../key-helper/key-helper';
 import { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';
@@ -15,6 +20,7 @@ import {
   SelectionMode,
   SDSSelectedItemModelHelper
 } from '../selected-result/models/sds-selected-item-model-helper';
+import { FormlyFieldConfig } from '@ngx-formly/core';
 import { SDSAutocompleteSearchConfiguration } from './models/SDSAutocompleteConfiguration';
 const Autocomplete_Autocomplete_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -29,7 +35,7 @@ const Autocomplete_Autocomplete_VALUE_ACCESSOR: any = {
   providers: [Autocomplete_Autocomplete_VALUE_ACCESSOR]
 })
 export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
-  constructor(private _changeDetectorRef: ChangeDetectorRef) { }
+  constructor(private _changeDetectorRef: ChangeDetectorRef) {}
   /**
    * Ul list of elements
    */
@@ -66,6 +72,9 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    */
   @Input()
   public service: SDSAutocompleteServiceInterface;
+
+  @Input()
+  public field: FormlyFieldConfig;
 
   /**
    * Timer id for the timer awaiting the service call for more typeing
@@ -139,6 +148,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   @Input()
   public disabled: boolean;
 
+  public error = {};
   private resultsAvailableMessage: string =
     ' results available. Use up and down arrows\
   to scroll through results. Hit enter to select.';
@@ -206,7 +216,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
             this.model.items[0],
             this.configuration.primaryTextField
           );
-
         }
       } else {
         this.inputValue = '';
@@ -273,8 +282,17 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       }
     } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex < 0) {
       if (this.configuration.isFreeTextEnabled) {
-        const val = this.createFreeTextItem();
-        this.selectItem(val);
+        this.error = this.autocompleteMaxLengthValidator(this.field);
+        console.log(this.error);
+        if (this.error === null) {
+          const val = this.createFreeTextItem();
+          setTimeout(() => {
+            this.selectItem(val);
+          }, 0);
+        } else {
+          this.focusRemoved();
+          this.showResults = false;
+        }
       }
     } else if (KeyHelper.is(KEYS.ESC, event)) {
       if (this.showResults) {
@@ -286,6 +304,15 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     }
   }
 
+  autocompleteMaxLengthValidator(field: FormlyFieldConfig): ValidationErrors {
+    let maxLengthValue = field.templateOptions.maxLength;
+    console.log(maxLengthValue);
+    let value = this.inputValue;
+    console.log(value.length);
+    if (value && maxLengthValue && value.length > 0) {
+      return value.length > maxLengthValue ? { maxlength: true } : null;
+    }
+  }
   /**
    * selects the item adding it to the model and closes the results
    * @param item
@@ -304,6 +331,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     } else {
       filterItem = item;
     }
+    // setTimeout(() => {
     SDSSelectedItemModelHelper.addItem(
       filterItem,
       this.configuration.primaryKeyField,
@@ -311,6 +339,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       this.model
     );
     this.propogateChange(this.model);
+    // }, 0);
     let message = this.getObjectValue(
       item,
       this.configuration.primaryTextField

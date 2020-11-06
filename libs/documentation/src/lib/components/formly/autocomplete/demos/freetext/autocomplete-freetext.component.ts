@@ -32,6 +32,14 @@ export class FormlyAutocompleteFreetext {
             label: 'Auto Complete',
             hideLabel: true,
             service: this.service,
+            // required: true,
+            maxLength: 9,
+            // minLength: 5,
+            // min: 12,
+            // max: 40,
+            // minAge: 18,
+            // maxAge: 40,
+            // autoPattern: '^([a-z0-9])*$',
             configuration: this.settings,
             model: this.autocompleteModel
           }

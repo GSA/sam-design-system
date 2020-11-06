@@ -1,26 +1,32 @@
-import {  Component,
+import {
+  Component,
   ChangeDetectionStrategy,
   ViewChild,
-  ChangeDetectorRef} from '@angular/core';
+  ChangeDetectorRef
+} from '@angular/core';
 import { AbstractSdsFormly } from '../sds-formly';
-import { SDSAutocompleteComponent } from '@gsa-sam/components'
+import { SDSAutocompleteComponent } from '@gsa-sam/components';
 
 @Component({
   selector: 'sds-formly-field-autocomplete',
   template: `
-  <sds-autocomplete [formControl]="formControl"></sds-autocomplete>
+    <sds-autocomplete
+      [formControl]="formControl"
+      [field]="field"
+    ></sds-autocomplete>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormlyFieldAutoCompleteComponent extends AbstractSdsFormly {
- @ViewChild(SDSAutocompleteComponent) public template: SDSAutocompleteComponent;
- defaultOptions = {
-  templateOptions: {
-    essentialModelFields: true
-  },
-};
-  constructor (_cdr: ChangeDetectorRef) {
+  @ViewChild(SDSAutocompleteComponent)
+  public template: SDSAutocompleteComponent;
+  defaultOptions = {
+    templateOptions: {
+      essentialModelFields: true
+    }
+  };
+  constructor(_cdr: ChangeDetectorRef) {
     super(); /* istanbul ignore next */
     this.cdr = _cdr;
-  } 
- }
+  }
+}
