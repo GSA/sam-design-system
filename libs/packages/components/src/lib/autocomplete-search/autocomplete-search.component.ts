@@ -22,6 +22,14 @@ import {
 } from '../selected-result/models/sds-selected-item-model-helper';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { SDSAutocompleteSearchConfiguration } from './models/SDSAutocompleteConfiguration';
+import {
+  autocompleteMaxLengthValidator,
+  autocompleteMinLengthValidator,
+  autocompleteMinValidator,
+  autocompleteMaxValidator,
+  autocompleteAgeValidator,
+  autocompletePatternValidator
+} from './autocomplete-validators';
 const Autocomplete_Autocomplete_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => SDSAutocompleteSearchComponent),
@@ -148,7 +156,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   @Input()
   public disabled: boolean;
 
-  public error = {};
+  public error: any = {};
   private resultsAvailableMessage: string =
     ' results available. Use up and down arrows\
   to scroll through results. Hit enter to select.';
@@ -284,9 +292,8 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       }
     } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex < 0) {
       if (this.configuration.isFreeTextEnabled) {
-        this.error = this.autocompleteMaxLengthValidator(this.field);
+        this.error = this.checkValidaton(this.inputValue, this.field);
         this.hasError = this.error === null ? false : true;
-        debugger;
         this.errorMessage = this.getErrorMessage(this.error);
         if (!this.hasError) {
           const val = this.createFreeTextItem();
@@ -309,17 +316,58 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   }
 
   getErrorMessage(error: any): string {
-    if (error !== null) {
-      return `This value should be more than characters`;
+    let msg = '';
+    if (error.minLength) {
+      msg = `Should have atleast ${
+        this.field.templateOptions.minLength
+      } characters`;
     }
+    if (error.maxLength) {
+      msg = `This value should be less than ${
+        this.field.templateOptions.maxLength
+      } characters`;
+    }
+    if (error.min) {
+      msg = `This value should be more than ${
+        this.field.templateOptions.maxLength
+      }`;
+    }
+    if (error.max) {
+      msg = `This value should be less than ${
+        this.field.templateOptions.maxLength
+      }`;
+    }
+    if (error.age) {
+      msg = `Age value should be between ${
+        this.field.templateOptions.minAge
+      } and
+      ${this.field.templateOptions.maxAge}`;
+    }
+    if (error.autoPattern) {
+      msg = `This value is not a valid pattern`;
+    }
+    return msg;
   }
 
-  autocompleteMaxLengthValidator(field: FormlyFieldConfig): ValidationErrors {
-    let maxLengthValue = field.templateOptions.maxLength;
-    let value = this.inputValue;
-    if (value && maxLengthValue && value.length > 0) {
-      return value.length > maxLengthValue ? { maxlength: true } : null;
+  checkValidaton(value, field: FormlyFieldConfig): ValidationErrors {
+    console.log(field.templateOptions);
+    const methodMapper = {
+      maxLength: autocompleteMaxLengthValidator,
+      minLength: autocompleteMinLengthValidator,
+      min: autocompleteMinValidator,
+      max: autocompleteMaxValidator,
+      minAge: autocompleteAgeValidator,
+      maxAge: autocompleteAgeValidator,
+      autoPattern: autocompletePatternValidator
+    };
+    let errors = {};
+    for (let key in field.templateOptions) {
+      if (methodMapper[key]) {
+        const error = methodMapper[key](value, field);
+        errors = error ? { ...errors, ...error } : errors;
+      }
     }
+    return errors;
   }
   /**
    * selects the item adding it to the model and closes the results
