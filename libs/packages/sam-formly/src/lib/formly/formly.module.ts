@@ -5,7 +5,7 @@ import { FormlyModule, FormlyFieldConfig, ConfigOption } from '@ngx-formly/core'
 import { FormlySelectModule } from '@ngx-formly/core/select';
 import { MatInputModule } from '@angular/material/input';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatDateFormats, MatNativeDateModule, MAT_DATE_FORMATS, MAT_NATIVE_DATE_FORMATS } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {
   SdsAccordionModule, SdsAutocompleteModule, SdsDialogModule, SdsTextModule, SdsSearchModule, SdsCollapseModule
@@ -102,6 +102,18 @@ export function animationExtension(field: FormlyFieldConfig) {
 export { maxDateValidator, minDateValidator, dateRangeValidator } from './formly.validators';
 
 
+export const DATE_FORMAT: MatDateFormats = {
+  ...MAT_NATIVE_DATE_FORMATS,
+  display: {
+    ...MAT_NATIVE_DATE_FORMATS.display,
+    dateInput: {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    } as Intl.DateTimeFormatOptions,
+  }
+};
+
 @NgModule({
   declarations: [
     FIELD_TYPE_COMPONENTS,
@@ -149,6 +161,9 @@ export { maxDateValidator, minDateValidator, dateRangeValidator } from './formly
         { name: 'animation', extension: { onPopulate: animationExtension } },
       ],
     })
+  ],
+  providers: [
+    {provide: MAT_DATE_FORMATS, useValue: DATE_FORMAT},
   ]
 })
 export class SdsFormlyModule {
