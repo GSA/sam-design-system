@@ -14,6 +14,7 @@ export * from './side-navigation/side-navigation.module';
 export * from './search-result-list/search-result-list.module';
 export * from './common-navigation/common-navigation-model';
 export * from './common-navigation/navigation-helper';
+export * from './selection-panel/selection-panel.module';
 export * from './side-navigation/model/side-navigation-model';
 export * from './menu/menu.module';
 export * from './search/search.module';

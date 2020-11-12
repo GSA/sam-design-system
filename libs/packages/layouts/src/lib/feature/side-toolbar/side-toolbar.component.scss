@@ -1,0 +1,19 @@
+$small: 400px;
+
+.no-display-on-mobile {
+  @media screen and (max-width: $small) {
+    display: none;
+  }
+}
+
+.display-on-mobile {
+  @media screen and (max-width: $small) {
+    display: inline-block;
+  }
+}
+
+.no-display-on-desktop {
+  @media screen and (min-width: $small) {
+    display: none;
+  }
+}

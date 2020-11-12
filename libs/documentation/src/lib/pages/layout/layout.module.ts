@@ -8,7 +8,8 @@ import {
   SdsSearchResultListModule,
   SdsToolbarModule,
   SdsSideNavigationModule,
-  SdsAccordionModule
+  SdsAccordionModule,
+  SdsSelectionPanelModule
 } from '@gsa-sam/components';
 import {
   SdsFiltersModule,
@@ -18,7 +19,7 @@ import {
 } from '@gsa-sam/sam-formly';
 
 import { ResultModule } from './result/result.module';
-import { SearchListServiceModule } from '@gsa-sam/layouts';
+import { SearchListServiceModule, SideToolbarModule } from '@gsa-sam/layouts';
 import { FilterService } from './filter.service';
 import { AutocompleteSampleDataService } from './services/autocomplete-sample.service';
 
@@ -29,9 +30,11 @@ import { AutocompleteSampleDataService } from './services/autocomplete-sample.se
     SdsToolbarModule,
     SdsAccordionModule,
     SdsSideNavigationModule,
+    SdsSelectionPanelModule,
     SdsFiltersModule,
     SdsSearchResultListModule,
     SearchListServiceModule,
+    SideToolbarModule,
     ResultModule
  ],
   exports: [ResultsLayoutComponent],

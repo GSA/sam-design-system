@@ -19,7 +19,7 @@ export let navigationConfig: SideNavigationModel = {
             ]
         },
         {
-            id: 'entityInformation', text: 'Entity Information', route: '/', queryParams: { 'index' : 'entityinfo'}, mode: NavigationMode.INTERNAL, children: [
+            id: 'entityInformation', text: 'Entity Information', route: '/documentation/layout', queryParams: { 'index' : 'entityinfo'}, mode: NavigationMode.INTERNAL, children: [
                 {
                     id: 'registrations', mode: NavigationMode.INTERNAL,
                     route: '/documentation/layout', queryParams: { 'index' : 'registrations'}, text: 'Entity Registrations'

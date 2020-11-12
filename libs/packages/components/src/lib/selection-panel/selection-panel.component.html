@@ -1,0 +1,36 @@
+<!-- 
+<a *ngIf="mainParentOfCurrentSelection" (click)="onMainPanelHeaderClicked()" class="usa-link bold h4">{{mainParentOfCurrentSelection.text}}</a>
+<ul class="sds-list sds-list--bordered sds-list--unstyled usa-sidenav">
+  <li *ngFor="let panelItem of panelItemsOnDisplay" 
+    [ngClass]="{'usa-current': panelItem === currentSelection}">
+    <a class="bold"
+      (click)="onPanelItemClick(panelItem)"
+      [ngClass]="{'usa-link' : panelItem != currentSelection}"
+      [routerLink]="panelItem.route" [queryParams]="panelItem.queryParams">
+      {{panelItem.text}}</a>
+  </li>
+</ul> -->
+
+<div class="sds-card sds-card--collapsible"
+  [ngClass]="{'sds-card--collapsed': !panelExpanded}">
+  <div class="sds-card__header sds-card__header--action" [attr.aria-expanded]="panelExpanded" (click)="panelExpanded = !panelExpanded">
+      <div class="sds-card__title">Select Domain<br />
+        <span class="sds-card__subtitle" (click)="onMainPanelHeaderClicked($event)">
+          {{mainParentOfCurrentSelection?.text}}
+        </span>
+      </div>
+
+      <div class="sds-card__action sds-card__collapse"></div>
+  </div>
+  <div class="sds-card__body sds-card__body--accent-cool">
+      <ul class="usa-sidenav">
+        <li *ngFor="let panelItem of panelItemsOnDisplay" 
+          [ngClass]="{'usa-current': panelItem === currentSelection}">
+          <a class="bold"
+            (click)="onPanelItemClick(panelItem)"
+            [routerLink]="panelItem.route" [queryParams]="panelItem.queryParams">
+            {{panelItem.text}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>

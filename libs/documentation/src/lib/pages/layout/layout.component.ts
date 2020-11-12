@@ -19,6 +19,7 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
   filtersExpanded: boolean = true;
   public filterChange$ = new BehaviorSubject<object>(null);
   public navigationModel: SideNavigationModel = navigationConfig;
+  public filterPanelConfig;
 
   listConfig: SearchListConfiguration = {
     defaultSortValue: 'legalBusinessName',
@@ -58,6 +59,13 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
     this.filterModel = this.filterService.model;
     this.form = this.filterService.form;
     this.options = this.filterService.options;
+
+    this.filterPanelConfig = {
+      fields: this.fields,
+      filterModel: this.filterModel,
+      form: this.form,
+      options: this.options
+    }
   }
   ngAfterViewInit() {
     this.filterChange$.subscribe(res => {

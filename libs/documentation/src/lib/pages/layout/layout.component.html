@@ -8,14 +8,19 @@
 <div class="sds-page condensed margin-top-2">
   <div class="grid-container">
     <div class="grid-row">
-      <sds-toolbar class="grid-col-12 tablet:grid-col-auto" #toolbar="sdsToolbar" [expanded]="true">
+      <sds-side-toolbar 
+        [selectionPanelConfig]="navigationModel" 
+        [filterPanelConfig]="filterPanelConfig"
+        (selectedFilters)="filterChange$.next($event)">
+      </sds-side-toolbar>
+      <!-- <sds-toolbar class="grid-col-12 tablet:grid-col-auto" #toolbar="sdsToolbar" [expanded]="true">
         <sds-accordion>
           <sds-accordion-item #domainAccordion [expanded]="!filtersExpanded">
             <sds-accordion-item-header>
               <span class="text-normal">Domain</span>
-            </sds-accordion-item-header>
-            <sds-side-navigation #sideNav [model]="navigationModel"></sds-side-navigation>
-          </sds-accordion-item>
+            </sds-accordion-item-header> 
+            <sds-selection-panel #sideNav [model]="navigationModel"></sds-selection-panel>
+          </sds-accordion-item> 
           <sds-accordion-item #filtersAccordion [expanded]="filtersExpanded">
             <sds-accordion-item-header>Filter By</sds-accordion-item-header>
             <sds-filters [options]="options" [isHistoryEnable]="true" [form]="form" [fields]="fields"
@@ -23,7 +28,7 @@
             </sds-filters>
           </sds-accordion-item>
         </sds-accordion>
-      </sds-toolbar>
+      </sds-toolbar> -->
 
       <div class="sds-page__content tablet:grid-col-fill">
         <search-list-layout #resultList [service]="service" [configuration]="listConfig">

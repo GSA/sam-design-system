@@ -1,6 +1,8 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Component, EventEmitter, Inject, Input, Output, ViewChild } from "@angular/core";
 import { coerceBooleanProperty } from "@angular/cdk/coercion";
 import { sdsToolbarAnimations } from "./toolbar-animations";
+import { SdsDialogRef } from '../dialog/dialog-ref';
+import { SdsDialogService, SDS_DIALOG_DATA } from '../dialog/dialog';
 
 /** Toolbar's states. */
 export type SdsToolbarState = "expanded" | "collapsed";
@@ -19,6 +21,9 @@ let uniqueId = 0;
   }
 })
 export class SdsToolbarComponent {
+
+  @ViewChild('toolbar') toolBar: any;
+
   /** The unique Toolbar id. */
   readonly id = uniqueId++;
 
@@ -28,7 +33,9 @@ export class SdsToolbarComponent {
   /** ID for the content element. Used for a11y labelling. */
   readonly _contentId: string = `sds-toolbar-content-${this.id}`;
 
-  constructor() {}
+  constructor(
+    public dialogRef: SdsDialogService
+  ) {}
 
   /** Emits whenever the expanded state of the toolbar changes. */
   @Output() expandedChange: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -74,5 +81,9 @@ export class SdsToolbarComponent {
   /** Gets the expanded state string. */
   _getExpandedState(): SdsToolbarState {
     return this.expanded ? "expanded" : "collapsed";
+  }
+
+  onDisplayInModalClicked() {
+    this.dialogRef.open(this.toolBar);
   }
 }
