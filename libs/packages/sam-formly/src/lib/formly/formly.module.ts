@@ -5,14 +5,14 @@ import { FormlyModule, FormlyFieldConfig, ConfigOption } from '@ngx-formly/core'
 import { FormlySelectModule } from '@ngx-formly/core/select';
 import { MatInputModule } from '@angular/material/input';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatDateFormats, MatNativeDateModule, MAT_DATE_FORMATS, MAT_NATIVE_DATE_FORMATS } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {
   SdsAccordionModule, SdsAutocompleteModule, SdsDialogModule, SdsTextModule, SdsSearchModule, SdsCollapseModule
 } from '@gsa-sam/components';
 
 import { FIELD_TYPE_COMPONENTS, FORMLY_CONFIG } from './formly.config';
-import { maxDateValidator, minDateValidator } from './formly.validators';
+import { maxDateValidator, minDateValidator, dateRangeValidator } from './formly.validators';
 import { AnimationWrapperComponent } from './wrappers/form-field.animation';
 
 // Validate the min length of the character
@@ -55,6 +55,39 @@ export function invalidDateFormatValidationMessage(err, field: FormlyFieldConfig
   return `Valid date format required (ex: MM/DD/YYYY)`;
 }
 
+export function matDatepickerMinValidationMessage(err, field: FormlyFieldConfig) {
+  const fieldWithMinDate = field.templateOptions.minDate ? field : field.parent;
+  if (!fieldWithMinDate) {
+    return `Please enter a valid date`;
+  }
+
+  return minDateValidationMessage(err, fieldWithMinDate);
+}
+
+export function matDatepickerMaxValidationMessage(err, field: FormlyFieldConfig) {
+  const fieldWithMaxDate = field.templateOptions.minDate ? field : field.parent;
+  if (!fieldWithMaxDate) {
+    return `Please enter a valid date`;
+  }
+
+  return maxDateValidationMessage(err, fieldWithMaxDate);
+}
+
+export function matDateInBetweenValidationMessage(err, field: FormlyFieldConfig) {
+  const fieldWithMinDate = field.templateOptions.minDate ? field : field.parent;
+  const fieldWithMaxDate = field.templateOptions.maxDate ? field : field.parent;
+
+  if (fieldWithMinDate && !fieldWithMaxDate) {
+    return minDateValidationMessage(err, fieldWithMinDate);
+  } else if (fieldWithMaxDate && !fieldWithMinDate) {
+    return maxDateValidationMessage(err, fieldWithMaxDate);
+  } else if (fieldWithMaxDate && fieldWithMinDate) {
+    return betweenDateValidationMessage(err, fieldWithMaxDate);
+  }
+  
+  return `Please enter a valid date`;
+}
+
 // Validate the max value of the character
 export function maxValidationMessage(err, field) {
   return `This value should be less than ${field.templateOptions.max}`;
@@ -66,8 +99,20 @@ export function animationExtension(field: FormlyFieldConfig) {
 
   field.wrappers = ['animation', ...(field.wrappers || [])];
 }
-export { maxDateValidator, minDateValidator } from './formly.validators';
+export { maxDateValidator, minDateValidator, dateRangeValidator } from './formly.validators';
 
+
+export const DATE_FORMAT: MatDateFormats = {
+  ...MAT_NATIVE_DATE_FORMATS,
+  display: {
+    ...MAT_NATIVE_DATE_FORMATS.display,
+    dateInput: {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    } as Intl.DateTimeFormatOptions,
+  }
+};
 
 @NgModule({
   declarations: [
@@ -99,11 +144,15 @@ export { maxDateValidator, minDateValidator } from './formly.validators';
         { name: 'minDate', message: minDateValidationMessage },
         { name: 'maxDate', message: maxDateValidationMessage },
         { name: 'betweenDate', message: betweenDateValidationMessage },
-        { name: 'matDatepickerParse', message: invalidDateFormatValidationMessage }// Comes from the datepicker
+        { name: 'matDatepickerParse', message: invalidDateFormatValidationMessage }, // Comes from the datepicker
+        { name: 'matDatepickerMin', message: matDatepickerMinValidationMessage },// Comes from the datepicker
+        { name: 'matStartDateInvalid', message: matDateInBetweenValidationMessage }, // Comes from the datepicker
+        { name: 'matDatepickerMax', message: matDatepickerMaxValidationMessage } // Comes from the datepicker
       ],
       validators: [
         { name: 'minDate', validation: minDateValidator },
-        { name: 'maxDate', validation: maxDateValidator }
+        { name: 'maxDate', validation: maxDateValidator },
+        { name: 'dateRangeValidator', validation: dateRangeValidator },
       ],
       wrappers: [
         { name: 'animation', component: AnimationWrapperComponent },
@@ -112,6 +161,9 @@ export { maxDateValidator, minDateValidator } from './formly.validators';
         { name: 'animation', extension: { onPopulate: animationExtension } },
       ],
     })
+  ],
+  providers: [
+    {provide: MAT_DATE_FORMATS, useValue: DATE_FORMAT},
   ]
 })
 export class SdsFormlyModule {
