@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SdsDialogService, SideNavigationModel } from '@gsa-sam/components';
 import { SideToolbarDialogComponent } from '../side-toolbar-dialog/side-toolbar-dialog.component';
+import { SelectionPanelConfig, FilterPanelConfig } from './model/side-toolbar.model';
 
 @Component({
   selector: 'sds-side-toolbar',
@@ -8,9 +9,9 @@ import { SideToolbarDialogComponent } from '../side-toolbar-dialog/side-toolbar-
   styleUrls: ['./side-toolbar.component.scss']
 })
 export class SideToolbarComponent {
-
-  @Input() selectionPanelConfig: SideNavigationModel;
-  @Input() filterPanelConfig: { form: any, fields: any, filterModel: any, options: any };
+  
+  @Input() selectionPanelConfig: SelectionPanelConfig;
+  @Input() filterPanelConfig: FilterPanelConfig;
 
   @Output() selectedFilters = new EventEmitter();
 
@@ -34,7 +35,7 @@ export class SideToolbarComponent {
   }
   
   onOpenToolbarModalClicked() {
-    this.sdsDialogService.open(SideToolbarDialogComponent,
+    const dialog = this.sdsDialogService.open(SideToolbarDialogComponent,
       {
         data: {
           selectionPanelConfig: this.selectionPanelConfig,
@@ -45,6 +46,13 @@ export class SideToolbarComponent {
         maxWidth: '100vw',
         maxHeight: '100vh',
         hasBackdrop: false,
+        
+      });
+
+      dialog.afterClosed().subscribe(result => {
+        if (result) {
+          this.selectedFilters.emit(result);
+        }
       });
   }
 

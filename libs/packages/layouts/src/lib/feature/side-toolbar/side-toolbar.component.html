@@ -1,25 +1,20 @@
-<div class="no-display-on-mobile sds-toolbar sds-toolbar--expanded">
-  <sds-selection-panel #sideNav [model]="selectionPanelConfig"></sds-selection-panel>
+<div class="no-display-on-mobile">
+  <sds-selection-panel #sideNav 
+    [model]="selectionPanelConfig.selectionPanelModel" 
+    [title]="selectionPanelConfig.title">
+  </sds-selection-panel>
 
   <div class="sds-card sds-card--collapsible" [ngClass]="{'sds-card--collapsed': !filtersExpanded}">
     <div class="sds-card__header sds-card__header--action" [attr.aria-expanded]="filtersExpanded" (click)="filtersExpanded = !filtersExpanded">
-      <div class="sds-card__title">Filter By</div>
+      <div class="sds-card__title">{{filterPanelConfig.title ? filterPanelConfig.title : 'Filter By'}}</div>
       <div class="sds-card__action sds-card__collapse"></div>
     </div>
     <div class="sds-card__body sds-card__body--accent-cool">
       <sds-filters [options]="filterPanelConfig.options" [isHistoryEnable]="true" [form]="filterPanelConfig.form" [fields]="filterPanelConfig.fields"
-      [model]="filterPanelConfig.filterModel" (filterChange)="onFilterChange()">
+      [model]="filterPanelConfig.model" (filterChange)="onFilterChange($event)">
       </sds-filters>
     </div>
   </div>
-  <!-- <sds-accordion *ngIf="filterPanelConfig">
-    <sds-accordion-item>
-      <sds-accordion-item-header>Filter By</sds-accordion-item-header>
-      <sds-filters [options]="filterPanelConfig.options" [isHistoryEnable]="true" [form]="filterPanelConfig.form" [fields]="filterPanelConfig.fields"
-        [model]="filterPanelConfig.filterModel" (filterChange)="onFilterChange()">
-      </sds-filters>
-    </sds-accordion-item>
-  </sds-accordion> -->
 </div>
 
 <div class="no-display-on-desktop">

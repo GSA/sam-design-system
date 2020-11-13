@@ -18,7 +18,7 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
   options;
   filtersExpanded: boolean = true;
   public filterChange$ = new BehaviorSubject<object>(null);
-  public navigationModel: SideNavigationModel = navigationConfig;
+  public navigationModel: any = {title: 'Select Domain', selectionPanelModel: navigationConfig};
   public filterPanelConfig;
 
   listConfig: SearchListConfiguration = {

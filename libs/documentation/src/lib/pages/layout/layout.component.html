@@ -8,7 +8,8 @@
 <div class="sds-page condensed margin-top-2">
   <div class="grid-container">
     <div class="grid-row">
-      <sds-side-toolbar 
+      <sds-side-toolbar
+        class="sds-toolbar sds-toolbar--expanded"
         [selectionPanelConfig]="navigationModel" 
         [filterPanelConfig]="filterPanelConfig"
         (selectedFilters)="filterChange$.next($event)">
