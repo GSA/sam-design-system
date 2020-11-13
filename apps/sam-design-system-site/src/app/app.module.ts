@@ -12,7 +12,7 @@ import { sds } from '@gsa-sam/sam-styles/src/icons/';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { MarkdownModule } from 'ngx-markdown';
 import { Toast, ToastrModule } from 'ngx-toastr';
-import {SdsToastComponent} from 'libs/packages/components/src/lib/toast/toast-single.component';
+import {SdsToastComponent} from '@gsa-sam/components';
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import xml from 'highlight.js/lib/languages/xml';
 import scss from 'highlight.js/lib/languages/scss';
