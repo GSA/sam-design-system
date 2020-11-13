@@ -8,6 +8,7 @@ export interface FilterPanelConfig {
   fields: FormlyFieldConfig[];
   model: any;
   options: FormlyFormOptions;
+  isHistoryEnabled: boolean;
 }
 
 export interface SelectionPanelConfig {

@@ -10,8 +10,8 @@
       <div class="sds-card__action sds-card__collapse"></div>
     </div>
     <div class="sds-card__body sds-card__body--accent-cool">
-      <sds-filters [options]="filterPanelConfig.options" [isHistoryEnable]="true" [form]="filterPanelConfig.form" [fields]="filterPanelConfig.fields"
-      [model]="filterPanelConfig.model" (filterChange)="onFilterChange($event)">
+      <sds-filters [options]="filterPanelConfig.options" [isHistoryEnable]="false" [form]="filterPanelConfig.form" [fields]="filterPanelConfig.fields"
+        [model]="filterPanelConfig.model" (filterChange)="onFilterChange($event)">
       </sds-filters>
     </div>
   </div>

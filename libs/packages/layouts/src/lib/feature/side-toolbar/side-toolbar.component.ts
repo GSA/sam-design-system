@@ -1,7 +1,9 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { SdsDialogService, SideNavigationModel } from '@gsa-sam/components';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { SdsDialogService } from '@gsa-sam/components';
 import { SideToolbarDialogComponent } from '../side-toolbar-dialog/side-toolbar-dialog.component';
 import { SelectionPanelConfig, FilterPanelConfig } from './model/side-toolbar.model';
+import * as qs from 'qs';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'sds-side-toolbar',
@@ -20,9 +22,14 @@ export class SideToolbarComponent {
 
   constructor(
     private sdsDialogService: SdsDialogService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
   ) { }
 
   onFilterChange($event) {
+    if (this.filterPanelConfig.isHistoryEnabled) {
+      this.updateFilterRoute($event);
+    }
     this.selectedFilters.emit($event);
   }
 
@@ -51,9 +58,64 @@ export class SideToolbarComponent {
 
       dialog.afterClosed().subscribe(result => {
         if (result) {
-          this.selectedFilters.emit(result);
+          this.onFilterChange(result);
         }
       });
+  }
+
+  private updateFilterRoute(change: any) {
+    const queryString = window.location.search.substring(1);
+    let queryObj = qs.parse(queryString, { allowPrototypes: true });
+    if (queryObj.hasOwnProperty('sfm')) {
+      queryObj.sfm = {};
+    }
+    queryObj['sfm'] = change;
+    const params = this.convertToParam(queryObj);
+    this.router.navigate(['.'], {
+      relativeTo: this.activatedRoute,
+      queryParams: params,
+      // TODO: Need this for future use case
+      // queryParamsHandling: 'merge'
+    });
+  }
+
+  private convertToParam(filters) {
+    const encodedValues = qs.stringify(filters, {
+      skipNulls: true,
+      encode: false,
+      filter: this.shortFormatDate
+    });
+    if (encodedValues) {
+      return this.getUrlParams(encodedValues);
+    } else {
+      return '';
+    }
+  }
+
+  private getUrlParams(queryString) {
+    const target = {};
+    queryString.split('&').forEach(pair => {
+      if (pair !== '') {
+        const splitpair = pair.split('=');
+        target[splitpair[0]] =
+          splitpair[1] === '' || splitpair[1] === 'false' ? null : splitpair[1];
+      }
+    });
+    return target;
+  }
+
+  shortFormatDate(prefix, value) {
+    const fixDigit = val => {
+      return val.toString().length === 1 ? '0' + val : val;
+    };
+    const getFormattedDate = date =>
+      `${fixDigit(
+        date.getMonth() + 1
+      )}/${date.getDate()}/${date.getFullYear()}`;
+    if (value instanceof Date) {
+      value = getFormattedDate(new Date(value));
+    }
+    return value;
   }
 
 }

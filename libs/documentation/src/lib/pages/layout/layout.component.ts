@@ -64,7 +64,8 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
       fields: this.fields,
       filterModel: this.filterModel,
       form: this.form,
-      options: this.options
+      options: this.options,
+      isHistoryEnabled: true,
     }
   }
   ngAfterViewInit() {
