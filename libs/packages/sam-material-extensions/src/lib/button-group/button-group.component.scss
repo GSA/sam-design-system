@@ -1,0 +1,55 @@
+mat-button-toggle-group {
+  overflow: visible;
+  width: fit-content;
+  border: none;
+
+  mat-button-toggle.sds-button-group__item {
+    background-color: transparent;
+    ::ng-deep{
+      .mat-button-toggle-button{
+        background-color: transparent;
+        .mat-button-toggle-label-content{
+          line-height: inherit;
+          padding: 0;
+          background-color: transparent;
+
+          .usa-button{
+            margin-left: -2px;
+            margin-right: -1px;
+            &.usa-button--outline{
+              background-color: transparent;
+            }
+          }
+        }
+      }
+      &:focus{
+        outline: 0.25rem solid #2491ff;
+        outline-offset: 0.25rem;
+      }
+    }
+    &:first-child{
+      .usa-button{
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+
+      }
+    }
+    &:last-child{
+      .usa-button{
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+
+      }
+    }
+    &:only-child{
+      .usa-button{
+        border-radius: 0.25rem;
+      }
+    }
+    &:not(:first-child):not(:last-child){
+      .usa-button{
+        border-radius: 0;
+      }
+    }
+  }
+}

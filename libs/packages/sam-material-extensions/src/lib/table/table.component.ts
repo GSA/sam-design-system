@@ -10,13 +10,16 @@ import {
   TemplateRef,
   Directive,
   SimpleChanges,
-  OnChanges
+  OnChanges,
+  ChangeDetectorRef
 } from '@angular/core';
-import { MatSort } from '@angular/material/sort';
 import { AfterViewInit } from '@angular/core';
 import {MatTableDataSource, MatTable} from '@angular/material/table';
+import {MatSort} from '@angular/material/sort';
+import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import {coerceBooleanProperty} from '@angular/cdk/coercion';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 
 export interface SdsRowConfig {
@@ -147,17 +150,31 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
   /**
    * Sorting table
    */
-  @Input()
-  set sort(sort: boolean) {
-    this._sort = coerceBooleanProperty(sort);
-  }
-  get sort() {
-    return this._sort;
-  }
-  private _sort = false;
 
-    /**
-   * Sorting table
+  @Input() sort = 'false';
+
+  /**
+   * Sorting function override
+   */
+
+  @Input() sortFn: any;
+
+
+  /**
+   * Pagination table
+   */
+  @Input()
+  set pagination(pagination: boolean) {
+    this._pagination = coerceBooleanProperty(pagination);
+  }
+  get pagination() {
+    return this._pagination;
+  }
+  private _pagination = false;
+
+
+  /**
+   * Expansion table
    */
   @Input()
   set expansion(expansion: boolean) {
@@ -169,6 +186,7 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
   private _expansion = false;
 
   dataSource: MatTableDataSource<any>;
+  expandedElement: any;
 
   @ViewChild(MatTable) table: MatTable<any>;
   @ContentChild(SdsTableRowComponent) sdsTableRowComponent: SdsTableRowComponent;
@@ -176,18 +194,33 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
   @ContentChild(SdsTableFooterRowComponent) sdsTableFooterRowComponent: SdsTableFooterRowComponent;
   @ContentChildren(SdsTableColumnDefComponent, { descendants: true }) sdsColumnItems!: QueryList<SdsTableColumnDefComponent>;
   @ViewChild(MatSort) matSort: MatSort;
+  @ViewChild(MatPaginator) matPaginator: MatPaginator;
 
   rowConfig = {} as SdsRowConfig;
   headerRowConfig = {} as SdsHeaderRowConfig;
   footerRowConfig = {} as SdsFooterRowConfig;
+  pageEvent: PageEvent;
 
-  constructor() {}
+  /* sds pagination */
+  top = { id: 'top' };
+  bottom = { id: 'bottom' };
+  page: any;
+  public pageChange = new BehaviorSubject<object>(this.page);
+  showPagination = false;
+  totalItems: number;
+
+  constructor(private changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.data.currentValue) {
       this.dataSource = new MatTableDataSource(changes.data.currentValue);
-      if(this.sort) {
+      if(this.sort === 'true' || this.sort === '' || this.isArray(this.sort)) {
+        this.dataSource.sortingDataAccessor = this.sortFn ? this.sortFn : this.defaultSort;
         this.dataSource.sort = this.matSort;
+      }
+      if(this.pagination) {
+        this.dataSource.paginator = this.matPaginator;
+        this.updateSdsPagination();
       }
     }
   }
@@ -220,9 +253,61 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
   }
 
   ngAfterViewInit() {
-    if(this.sort) {
+    if(this.sort === 'true' || this.sort === '' || this.isArray(this.sort)) {
+      this.dataSource.sortingDataAccessor = this.sortFn ? this.sortFn : this.defaultSort;
       this.dataSource.sort = this.matSort;
     }
+    if(this.pagination) {
+      this.dataSource.paginator = this.matPaginator;
+      this.dataSource.paginator.initialized.subscribe(
+        value => {
+          setTimeout(() => {
+            this.page = {
+              pageNumber: this.dataSource.paginator.pageIndex + 1,
+              pageSize: this.dataSource.paginator.pageSize,
+              totalPages: this.dataSource.paginator.getNumberOfPages()
+            }
+            this.totalItems = this.dataSource.data.length;
+            this.showPagination = true;
+            this.changeDetectorRef.detectChanges();
+          });
+        }
+      );
+
+      this.pageChange.subscribe(
+        value => {
+          this.updateSdsPagination();
+        }
+      );
+      this.changeDetectorRef.detectChanges();
+    }
+
   }
+
+  typeOf(value) {
+    return typeof value;
+  }
+
+  isArray(obj : any ) {
+    return Array.isArray(obj)
+  }
+
+  updateSdsPagination() {
+    if(this.page) {
+      this.dataSource.paginator.pageIndex = this.page.pageNumber - 1;
+      this.dataSource.paginator._changePageSize(this.page.pageSize);
+      this.page.totalPages = Math.ceil(this.dataSource.data.length / this.page.pageSize);
+      this.totalItems = this.dataSource.data.length;
+      this.changeDetectorRef.detectChanges();
+    }
+  }
+
+  defaultSort(data, sortHeaderId) {
+    if (typeof data[sortHeaderId] === 'string') {
+      return data[sortHeaderId].toLocaleLowerCase();
+    }
+
+    return data[sortHeaderId];
+  };
 
 }

@@ -8,6 +8,8 @@ export class TableSortComponent {
 
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'requests', 'date'];
 
+  sortColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'date'];
+
   data = [
     {
       id: 1,

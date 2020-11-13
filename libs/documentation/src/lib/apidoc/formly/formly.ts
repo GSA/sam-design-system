@@ -3,17 +3,24 @@ const FORMLY = {
     "interfaces": [
         {
             "name": "SdsFormlyDialogData",
-            "id": "interface-SdsFormlyDialogData-eb18fa3af06795f8df3123cef4c4a842",
+            "id": "interface-SdsFormlyDialogData-fe1146671d4f0363d30512d8ccee9438",
             "file": "libs/packages/sam-formly/src/lib/formly-dialog/formly-dialog-data.model.ts",
             "type": "interface",
-            "sourceCode": "import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';\nimport { FormGroup } from '@angular/forms';\n\nexport interface SdsFormlyDialogData {\n  fields: FormlyFieldConfig[];\n  originalFields?: FormlyFieldConfig[];\n  originalModel?: any;\n  cancel?: string;\n  form?: FormGroup;\n  model?: object;\n  options?: FormlyFormOptions;\n  submit?: string;\n  subtitle?: string;\n  title?: string;\n  isAdvanceFilter?: boolean;\n}\n",
+            "sourceCode": "import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';\nimport { FormGroup } from '@angular/forms';\n\nexport interface SdsFormlyDialogData {\n  fields: FormlyFieldConfig[];\n  cancel?: string;\n  form?: FormGroup;\n  model?: object;\n  options?: FormlyFormOptions;\n  submit?: string;\n  subtitle?: string;\n  title?: string;\n  disableSubmitButtonEnabled?: boolean\n}\n",
             "properties": [
                 {
                     "name": "cancel",
                     "type": "string",
                     "optional": true,
                     "description": "",
-                    "line": 8
+                    "line": 6
+                },
+                {
+                    "name": "disableSubmitButtonEnabled",
+                    "type": "boolean",
+                    "optional": true,
+                    "description": "",
+                    "line": 13
                 },
                 {
                     "name": "fields",
@@ -27,63 +34,42 @@ const FORMLY = {
                     "type": "FormGroup",
                     "optional": true,
                     "description": "",
-                    "line": 9
-                },
-                {
-                    "name": "isAdvanceFilter",
-                    "type": "boolean",
-                    "optional": true,
-                    "description": "",
-                    "line": 15
+                    "line": 7
                 },
                 {
                     "name": "model",
                     "type": "object",
                     "optional": true,
                     "description": "",
-                    "line": 10
+                    "line": 8
                 },
                 {
                     "name": "options",
                     "type": "FormlyFormOptions",
                     "optional": true,
                     "description": "",
-                    "line": 11
-                },
-                {
-                    "name": "originalFields",
-                    "type": "FormlyFieldConfig[]",
-                    "optional": true,
-                    "description": "",
-                    "line": 6
-                },
-                {
-                    "name": "originalModel",
-                    "type": "any",
-                    "optional": true,
-                    "description": "",
-                    "line": 7
+                    "line": 9
                 },
                 {
                     "name": "submit",
                     "type": "string",
                     "optional": true,
                     "description": "",
-                    "line": 12
+                    "line": 10
                 },
                 {
                     "name": "subtitle",
                     "type": "string",
                     "optional": true,
                     "description": "",
-                    "line": 13
+                    "line": 11
                 },
                 {
                     "name": "title",
                     "type": "string",
                     "optional": true,
                     "description": "",
-                    "line": 14
+                    "line": 12
                 }
             ],
             "indexSignatures": [],
@@ -509,7 +495,7 @@ const FORMLY = {
     "components": [
         {
             "name": "AdvancedFiltersComponent",
-            "id": "component-AdvancedFiltersComponent-62821476c638fba091de735f726aaf06",
+            "id": "component-AdvancedFiltersComponent-6041e8973e9768f5f8ef999fcf9f8dc8",
             "file": "libs/packages/sam-formly/src/lib/formly-filters/advanced-filters/advanced-filters.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -580,7 +566,7 @@ const FORMLY = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { SdsDialogService } from '@gsa-sam/components';\nimport { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';\n\nimport { SdsAdvancedFiltersService } from './sds-advanced-filters.service';\nimport { SdsFormlyDialogData } from '../../formly-dialog/formly-dialog-data.model';\nimport { SdsFormlyDialogComponent } from '../../formly-dialog/formly-dialog.component';\n\n@Component({\n  selector: 'sds-advanced-filters',\n  templateUrl: './advanced-filters.component.html',\n  styleUrls: ['./advanced-filters.component.scss']\n})\nexport class AdvancedFiltersComponent {\n  /**\n   * Pass in a Form Group for ReactiveForms Support\n   */\n  @Input() public form: FormGroup;\n\n  /**\n   *  Fields are used to configure the UI components\n   */\n  @Input() public fields: FormlyFieldConfig[];\n\n  /**\n   *  Model used to display the filter values.\n   */\n  @Input() public model: any;\n\n  /**\n   *    Options for the form.\n   */\n  @Input() public options: FormlyFormOptions = {};\n\n  constructor(\n    public dialog: SdsDialogService,\n    private advancedFiltersService: SdsAdvancedFiltersService\n  ) {}\n\n  openDialog(): void {\n    const modalFields: FormlyFieldConfig[] = this.advancedFiltersService.convertToCheckboxes(\n      this.fields\n    );\n\n    const data: SdsFormlyDialogData = {\n      fields: modalFields,\n      originalFields: this.fields,\n      originalModel: this.model,\n      submit: 'Update',\n      title: 'More Filters',\n      isAdvanceFilter: true\n    };\n\n    const dialogRef = this.dialog.open(SdsFormlyDialogComponent, {\n      width: 'medium',\n      data: data\n    });\n\n    dialogRef.afterClosed().subscribe(result => {\n      if (result) {\n        this.fields = result.fields;\n        this.model = result.model;\n      }\n    });\n  }\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { SdsDialogService } from '@gsa-sam/components';\nimport { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';\n\nimport { SdsAdvancedFiltersService } from './sds-advanced-filters.service';\nimport { SdsFormlyDialogData } from '../../formly-dialog/formly-dialog-data.model';\nimport { SdsFormlyDialogComponent } from '../../formly-dialog/formly-dialog.component';\n\n@Component({\n  selector: 'sds-advanced-filters',\n  templateUrl: './advanced-filters.component.html',\n  styleUrls: ['./advanced-filters.component.scss']\n})\nexport class AdvancedFiltersComponent {\n  /**\n   * Pass in a Form Group for ReactiveForms Support\n   */\n  @Input() public form: FormGroup;\n\n  /**\n   *  Fields are used to configure the UI components\n   */\n  @Input() public fields: FormlyFieldConfig[];\n\n  /**\n   *  Model used to display the filter values.\n   */\n  @Input() public model: any;\n\n  /**\n   *    Options for the form.\n   */\n  @Input() public options: FormlyFormOptions = {};\n\n  constructor(\n    public dialog: SdsDialogService,\n    private advancedFiltersService: SdsAdvancedFiltersService\n  ) {}\n\n  openDialog(): void {\n    const modalFields: FormlyFieldConfig[] = this.advancedFiltersService.convertToCheckboxes(\n      this.fields\n    );\n\n    const data: SdsFormlyDialogData = {\n      fields: modalFields,\n      submit: 'Update',\n      title: 'More Filters'\n    };\n\n    const dialogRef = this.dialog.open(SdsFormlyDialogComponent, {\n      width: 'medium',\n      data: data\n    });\n\n    dialogRef.afterClosed().subscribe(result => {\n      if (result) {\n        const response = this.advancedFiltersService.updateFields(\n          result,\n          this.fields,\n          this.model\n        );\n\n        this.fields = response.fields;\n        this.model = response.model;\n      }\n    });\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1184,7 +1170,7 @@ const FORMLY = {
         },
         {
             "name": "FormlyFieldFileInfoComponent",
-            "id": "component-FormlyFieldFileInfoComponent-4875ef16d6ef382b02675db8c74c2c29",
+            "id": "component-FormlyFieldFileInfoComponent-90d5ac89f3086cea12f38fd5bedd4eaa",
             "file": "libs/packages/sam-formly/src/lib/formly/types/fileinfo.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1196,7 +1182,7 @@ const FORMLY = {
             "styles": [
                 "\n      .sds-card-selected {\n        border-color: #2672de !important;\n        border-width: 2px !important;\n      }\n    "
             ],
-            "template": "<div class=\"grid-row grid-gap padding-1\">\n  <div\n    *ngFor=\"\n      let option of (to.options | formlySelectOptions: field | async);\n      let i = index\n    \"\n  >\n    <div\n      class=\"sds-card mobile-lg:grid-col\"\n      [ngClass]=\"{ 'sds-card-selected': formControl.value == option.value }\"\n    >\n      <input\n        type=\"radio\"\n        [id]=\"id + '_' + i\"\n        class=\"usa-sr-only usa-radio__input\"\n        [name]=\"id\"\n        [class.usa-input--error]=\"showError\"\n        [attr.value]=\"option.value\"\n        [value]=\"option.value\"\n        [formControl]=\"formControl\"\n        [formlyAttributes]=\"field\"\n      />\n      <label [for]=\"id + '_' + i\">\n        <div class=\"sds-card__header sds-card__header--center\">\n          <h3 class=\"sds-card__title \">{{ option.label }}</h3>\n        </div>\n        <div class=\"sds-card__body sds-card__header--center\">\n          <span class=\"usa-tag padding-left-05\">{{ option.value }}</span>\n        </div>\n      </label>\n    </div>\n  </div>\n</div>\n",
+            "template": "<div class=\"grid-row grid-gap margin-top-1\">\n  <div\n    *ngFor=\"\n      let option of (to.options | formlySelectOptions: field | async);\n      let i = index\n    \"\n  >\n    <div\n      class=\"sds-card mobile-lg:grid-col\"\n      [ngClass]=\"{ 'sds-card-selected': formControl.value == option.value }\"\n    >\n      <input\n        type=\"radio\"\n        [id]=\"id + '_' + i\"\n        class=\"usa-sr-only usa-radio__input\"\n        [name]=\"id\"\n        [class.usa-input--error]=\"showError\"\n        [attr.value]=\"option.value\"\n        [value]=\"option.value\"\n        [formControl]=\"formControl\"\n        [formlyAttributes]=\"field\"\n      />\n      <label [for]=\"id + '_' + i\">\n        <div class=\"sds-card__header sds-card__header--center\">\n          <h3 class=\"sds-card__title \">{{ option.label }}</h3>\n        </div>\n        <div class=\"sds-card__body sds-card__header--center \">\n          <span\n            class=\"bg-base-light padding-1 padding-left-2 padding-right-2\"\n            >{{ option.value }}</span\n          >\n        </div>\n      </label>\n    </div>\n  </div>\n</div>\n",
             "templateUrl": [],
             "viewProviders": [],
             "inputsClass": [],
@@ -1208,7 +1194,15 @@ const FORMLY = {
                     "type": "object",
                     "optional": false,
                     "description": "",
-                    "line": 52
+                    "line": 56
+                },
+                {
+                    "name": "description",
+                    "defaultValue": "''",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 55
                 },
                 {
                     "name": "isSelected",
@@ -1216,7 +1210,7 @@ const FORMLY = {
                     "type": "boolean",
                     "optional": false,
                     "description": "",
-                    "line": 51
+                    "line": 54
                 }
             ],
             "methodsClass": [],
@@ -1225,7 +1219,7 @@ const FORMLY = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { FieldType } from '@ngx-formly/core';\n\n@Component({\n  selector: 'sds-formly-field-file',\n  template: `\n    <div class=\"grid-row grid-gap padding-1\">\n      <div\n        *ngFor=\"\n          let option of (to.options | formlySelectOptions: field | async);\n          let i = index\n        \"\n      >\n        <div\n          class=\"sds-card mobile-lg:grid-col\"\n          [ngClass]=\"{ 'sds-card-selected': formControl.value == option.value }\"\n        >\n          <input\n            type=\"radio\"\n            [id]=\"id + '_' + i\"\n            class=\"usa-sr-only usa-radio__input\"\n            [name]=\"id\"\n            [class.usa-input--error]=\"showError\"\n            [attr.value]=\"option.value\"\n            [value]=\"option.value\"\n            [formControl]=\"formControl\"\n            [formlyAttributes]=\"field\"\n          />\n          <label [for]=\"id + '_' + i\">\n            <div class=\"sds-card__header sds-card__header--center\">\n              <h3 class=\"sds-card__title \">{{ option.label }}</h3>\n            </div>\n            <div class=\"sds-card__body sds-card__header--center\">\n              <span class=\"usa-tag padding-left-05\">{{ option.value }}</span>\n            </div>\n          </label>\n        </div>\n      </div>\n    </div>\n  `,\n  styles: [\n    `\n      .sds-card-selected {\n        border-color: #2672de !important;\n        border-width: 2px !important;\n      }\n    `\n  ]\n})\nexport class FormlyFieldFileInfoComponent extends FieldType {\n  isSelected: boolean = false;\n  defaultOptions = {\n    templateOptions: {\n      options: []\n    }\n  };\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { FieldType } from '@ngx-formly/core';\n\n@Component({\n  selector: 'sds-formly-field-file',\n  template: `\n    <div class=\"grid-row grid-gap margin-top-1\">\n      <div\n        *ngFor=\"\n          let option of (to.options | formlySelectOptions: field | async);\n          let i = index\n        \"\n      >\n        <div\n          class=\"sds-card mobile-lg:grid-col\"\n          [ngClass]=\"{ 'sds-card-selected': formControl.value == option.value }\"\n        >\n          <input\n            type=\"radio\"\n            [id]=\"id + '_' + i\"\n            class=\"usa-sr-only usa-radio__input\"\n            [name]=\"id\"\n            [class.usa-input--error]=\"showError\"\n            [attr.value]=\"option.value\"\n            [value]=\"option.value\"\n            [formControl]=\"formControl\"\n            [formlyAttributes]=\"field\"\n          />\n          <label [for]=\"id + '_' + i\">\n            <div class=\"sds-card__header sds-card__header--center\">\n              <h3 class=\"sds-card__title \">{{ option.label }}</h3>\n            </div>\n            <div class=\"sds-card__body sds-card__header--center \">\n              <span\n                class=\"bg-base-light padding-1 padding-left-2 padding-right-2\"\n                >{{ option.value }}</span\n              >\n            </div>\n          </label>\n        </div>\n      </div>\n    </div>\n  `,\n  styles: [\n    `\n      .sds-card-selected {\n        border-color: #2672de !important;\n        border-width: 2px !important;\n      }\n    `\n  ]\n})\nexport class FormlyFieldFileInfoComponent extends FieldType {\n  isSelected: boolean = false;\n  description: string = '';\n  defaultOptions = {\n    templateOptions: {\n      options: []\n    }\n  };\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "\n      .sds-card-selected {\n        border-color: #2672de !important;\n        border-width: 2px !important;\n      }\n    \n",
@@ -3100,7 +3094,7 @@ const FORMLY = {
         },
         {
             "name": "SdsFiltersComponent",
-            "id": "component-SdsFiltersComponent-3691aaef00a4236310d30b5dad75fcae",
+            "id": "component-SdsFiltersComponent-ca4a112e46c10263dd092d18c3d03a03",
             "file": "libs/packages/sam-formly/src/lib/formly-filters/sds-filters.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3215,12 +3209,13 @@ const FORMLY = {
             ],
             "methodsClass": [
                 {
-                    "name": "addOption",
+                    "name": "checkForHide",
                     "args": [],
                     "optional": false,
-                    "returnType": "{}",
+                    "returnType": "void",
                     "typeParameters": [],
-                    "line": 120
+                    "line": 123,
+                    "description": "<p>This is for getting the model which has a value.</p>\n"
                 },
                 {
                     "name": "convertToModel",
@@ -3233,7 +3228,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "{}",
                     "typeParameters": [],
-                    "line": 210,
+                    "line": 220,
                     "jsdoctags": [
                         {
                             "name": "filters",
@@ -3255,7 +3250,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "{}",
                     "typeParameters": [],
-                    "line": 166,
+                    "line": 176,
                     "jsdoctags": [
                         {
                             "name": "filters",
@@ -3277,7 +3272,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "{}",
                     "typeParameters": [],
-                    "line": 178,
+                    "line": 188,
                     "jsdoctags": [
                         {
                             "name": "queryString",
@@ -3299,7 +3294,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 204,
+                    "line": 214,
                     "jsdoctags": [
                         {
                             "name": "_date",
@@ -3325,7 +3320,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 221,
+                    "line": 231,
                     "jsdoctags": [
                         {
                             "name": "prefix",
@@ -3362,7 +3357,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 145,
+                    "line": 147,
                     "jsdoctags": [
                         {
                             "name": "change",
@@ -3388,7 +3383,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 190,
+                    "line": 200,
                     "jsdoctags": [
                         {
                             "name": "prefix",
@@ -3417,7 +3412,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 155,
+                    "line": 165,
                     "jsdoctags": [
                         {
                             "name": "change",
@@ -3448,7 +3443,7 @@ const FORMLY = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import {\n  Component,\n  Input,\n  Output,\n  EventEmitter,\n  Optional,\n  OnInit,\n  ChangeDetectorRef,\n  HostListener\n} from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';\nimport { Router, ActivatedRoute } from '@angular/router';\nimport * as qs from 'qs';\nimport { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';\nimport { DatePipe } from '@angular/common';\n@Component({\n  selector: 'sds-filters',\n  templateUrl: './sds-filters.component.html'\n})\nexport class SdsFiltersComponent implements OnInit {\n  /**\n   * Pass in a Form Group for ReactiveForms Support\n   */\n  @Input() public form: FormGroup;\n\n  /**\n   *  Fields are used to configure the UI components\n   */\n  @Input() public fields: FormlyFieldConfig[];\n\n  /**\n   *  Model used to display the filter values.\n   */\n  @Input() public model: any;\n\n  /**\n   *    Options for the form.\n   */\n  @Input() public options: FormlyFormOptions = {};\n\n  /**\n   *  Emit results when model updated\n   * To enable History Tracking\n   *  If advanced filters dialog should be displayed -- defaults to false\n   */\n  @Input() advancedFilters: boolean = false;\n\n  /**\n   * Timer id for the timer awaiting the service call for more typeing\n   */\n  @Input() public isHistoryEnable: boolean = true;\n\n  /**\n   * To get clean model without null and empty\n   */\n  @Input() public getCleanModel: boolean = false;\n\n  /**\n   *  Emit results when model updated\n   */\n  // TODO: check type -- Formly models are typically objects\n  @Output() filterChange = new EventEmitter<object[]>();\n\n  _isObj = (obj: any): boolean => typeof obj === 'object' && obj !== null;\n  _isEmpty = (obj: any): boolean => Object.keys(obj).length === 0;\n  overwrite = (baseObj: any, newObj: any) => {\n    const result = {};\n    for (const key in baseObj) {\n      if (Array.isArray(baseObj[key])) {\n        result[key] = newObj[key] || null;\n      } else if (baseObj[key] instanceof Date) {\n        result[key] = newObj[key] === undefined ? null : new Date(newObj[key]);\n      } else if (this._isObj(baseObj[key])) {\n        result[key] = this.overwrite(baseObj[key], newObj[key] || {});\n      } else {\n        result[key] = newObj[key] || null;\n      }\n    }\n    return result;\n  };\n\n  constructor(\n    @Optional()\n    public formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,\n    private cdr: ChangeDetectorRef,\n    private router: Router,\n    private route: ActivatedRoute,\n    private datePipe: DatePipe\n  ) {}\n\n  @HostListener('window:popstate', ['$event'])\n  onpopstate(event) {\n    const queryString = window.location.search.substring(1);\n    const params = this.getUrlParams(queryString);\n    const updatedFormValue = this.overwrite(\n      this.form.getRawValue(),\n      this.convertToModel(params)\n    );\n    this.form.setValue(updatedFormValue);\n    this.updateChange(updatedFormValue);\n  }\n  ngOnInit(): void {\n    if (this.isHistoryEnable) {\n      if (this._isEmpty(this.form.getRawValue())) {\n        const queryString = window.location.search.substring(1);\n        const params = this.getUrlParams(queryString);\n        const paramModel = this.convertToModel(params);\n        this.updateChange(paramModel);\n        setTimeout(() => {\n          this.form.patchValue({\n            ...this.model,\n            ...paramModel\n          });\n        });\n      }\n    }\n  }\n\n  addOption() {\n    const updatedFields: FormlyFieldConfig[] = [];\n    this.fields.forEach(field => {\n      if (field) {\n        if (field.fieldGroup) {\n          field.fieldGroup.forEach(subField => {\n            if (subField.type == 'input') {\n              field.modelOptions.updateOn = 'blur';\n            } else if (subField.type == 'autocomplete') {\n              field.templateOptions.essentialModelFields = true;\n            }\n          });\n        } else {\n          if (field.type == 'input') {\n            field.modelOptions.updateOn = 'blur';\n          } else if (field.type == 'autocomplete') {\n            field.templateOptions.essentialModelFields = true;\n          }\n        }\n      }\n      updatedFields.push(field);\n    });\n    return updatedFields;\n  }\n\n  onModelChange(change: any) {\n    if (this.isHistoryEnable) {\n      const params = this.convertToParam(change);\n      this.router.navigate(['.'], {\n        relativeTo: this.route,\n        queryParams: params\n      });\n    }\n    this.updateChange(change);\n  }\n  updateChange(change) {\n    const updatedModel = this.getCleanModel\n      ? this.convertToModel(change)\n      : change;\n    this.filterChange.emit([updatedModel]);\n    if (this.formlyUpdateComunicationService) {\n      this.formlyUpdateComunicationService.updateFilter(updatedModel);\n    }\n    this.cdr.detectChanges();\n  }\n\n  convertToParam(filters) {\n    const encodedValues = qs.stringify(filters, {\n      skipNulls: true,\n      encode: false,\n      filter: this.shortFormatDate\n    });\n    if (encodedValues) {\n      return this.getUrlParams(encodedValues);\n    } else {\n      return '';\n    }\n  }\n  getUrlParams(queryString) {\n    const target = {};\n    queryString.split('&').forEach(pair => {\n      if (pair !== '') {\n        const splitpair = pair.split('=');\n        target[splitpair[0]] =\n          splitpair[1] === '' || splitpair[1] === 'false' ? null : splitpair[1];\n      }\n    });\n    return target;\n  }\n\n  shortFormatDate(prefix, value) {\n    const fixDigit = val => {\n      return val.toString().length === 1 ? '0' + val : val;\n    };\n    const getFormattedDate = date =>\n      `${fixDigit(\n        date.getMonth() + 1\n      )}/${date.getDate()}/${date.getFullYear()}`;\n    if (value instanceof Date) {\n      value = getFormattedDate(new Date(value));\n    }\n    return value;\n  }\n\n  isDate(_date) {\n    const _regExp = new RegExp(\n      '^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(.[0-9]+)?(Z)?$'\n    );\n    return _regExp.test(_date);\n  }\n  convertToModel(filters) {\n    let obj = {};\n    const encodedValues = qs.stringify(filters, {\n      skipNulls: true,\n      encode: false,\n      filter: this.longFormatDate\n    });\n    obj = qs.parse(encodedValues);\n    return obj;\n  }\n\n  longFormatDate(prefix, value) {\n    const val = decodeURIComponent(value);\n    const isDate = /^(\\d{1,2})[-\\/](\\d{1,2})[-\\/](\\d{4})$/.exec(val);\n    if (isDate) {\n      value = new Date(val).toISOString();\n    }\n    return value;\n  }\n}\n",
+            "sourceCode": "import {\n  Component,\n  Input,\n  Output,\n  EventEmitter,\n  Optional,\n  OnInit,\n  ChangeDetectorRef,\n  HostListener\n} from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';\nimport { Router, ActivatedRoute } from '@angular/router';\nimport * as qs from 'qs';\nimport { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';\nimport { DatePipe } from '@angular/common';\n@Component({\n  selector: 'sds-filters',\n  templateUrl: './sds-filters.component.html'\n})\nexport class SdsFiltersComponent implements OnInit {\n  /**\n   * Pass in a Form Group for ReactiveForms Support\n   */\n  @Input() public form: FormGroup;\n\n  /**\n   *  Fields are used to configure the UI components\n   */\n  @Input() public fields: FormlyFieldConfig[];\n\n  /**\n   *  Model used to display the filter values.\n   */\n  @Input() public model: any;\n\n  /**\n   *    Options for the form.\n   */\n  @Input() public options: FormlyFormOptions = {};\n\n  /**\n   *  Emit results when model updated\n   * To enable History Tracking\n   *  If advanced filters dialog should be displayed -- defaults to false\n   */\n  @Input() advancedFilters: boolean = false;\n\n  /**\n   * Timer id for the timer awaiting the service call for more typeing\n   */\n  @Input() public isHistoryEnable: boolean = true;\n\n  /**\n   * To get clean model without null and empty\n   */\n  @Input() public getCleanModel: boolean = false;\n\n  /**\n   *  Emit results when model updated\n   */\n  // TODO: check type -- Formly models are typically objects\n  @Output() filterChange = new EventEmitter<object[]>();\n\n  _isObj = (obj: any): boolean => typeof obj === 'object' && obj !== null;\n  _isEmpty = (obj: any): boolean => Object.keys(obj).length === 0;\n  overwrite = (baseObj: any, newObj: any) => {\n    const result = {};\n    for (const key in baseObj) {\n      if (Array.isArray(baseObj[key])) {\n        result[key] = newObj[key] || null;\n      } else if (baseObj[key] instanceof Date) {\n        result[key] = newObj[key] === undefined ? null : new Date(newObj[key]);\n      } else if (this._isObj(baseObj[key])) {\n        result[key] = this.overwrite(baseObj[key], newObj[key] || {});\n      } else {\n        result[key] = newObj[key] || null;\n      }\n    }\n    return result;\n  };\n\n  constructor(\n    @Optional()\n    public formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,\n    private cdr: ChangeDetectorRef,\n    private router: Router,\n    private route: ActivatedRoute,\n    private datePipe: DatePipe\n  ) { }\n\n  @HostListener('window:popstate', ['$event'])\n  onpopstate(event) {\n    const queryString = window.location.search.substring(1);\n    const params = this.getUrlParams(queryString);\n    const updatedFormValue = this.overwrite(\n      this.form.getRawValue(),\n      this.convertToModel(params)\n    );\n    this.form.setValue(updatedFormValue);\n    this.updateChange(updatedFormValue);\n  }\n  ngOnInit(): void {\n    if (this.isHistoryEnable) {\n      if (this._isEmpty(this.form.getRawValue())) {\n        const queryString = window.location.search.substring(1);\n        const params: any = this.getUrlParams(queryString);\n        const paramModel: any = this.convertToModel(params);\n        this.checkForHide();\n        setTimeout(() => {\n          this.form.patchValue({\n            ...this.model,\n            ...paramModel.sfm\n          });\n        });\n        this.cdr.detectChanges();\n      }\n    }\n  }\n  /**\n   * This is for getting the model which has a value.\n   */\n  checkForHide() {\n    let fieldWithValue = this.convertToParam(this.model);\n    let keys = [];\n    Object.keys(fieldWithValue).map(key => {\n      keys.push(key.replace(/\\[/g, '.').replace(/\\]/g, ''));\n    });\n    keys.forEach(key => {\n      const [lastKey] = key.split('.').slice(-1);\n      this.fields.forEach(field => {\n        if (key.includes(field.key)) {\n          let hiddenField;\n          if (field.fieldGroup) {\n            hiddenField = field.fieldGroup.find(item => item.key === lastKey);\n          } else {\n            hiddenField = field;\n          }\n          if (hiddenField.hide) {\n            hiddenField.hide = false;\n          }\n        }\n      });\n    });\n  }\n\n  onModelChange(change: any) {\n    if (this.isHistoryEnable) {\n      const queryString = window.location.search.substring(1);\n      let queryObj = qs.parse(queryString, { allowPrototypes: true });\n      if (queryObj.hasOwnProperty('sfm')) {\n        queryObj.sfm = {};\n      }\n      queryObj['sfm'] = change;\n      const params = this.convertToParam(queryObj);\n      this.router.navigate(['.'], {\n        relativeTo: this.route,\n        queryParams: params,\n        // TODO: Need this for future use case\n        // queryParamsHandling: 'merge'\n      });\n    }\n    this.updateChange(change);\n  }\n  updateChange(change) {\n    const updatedModel = this.getCleanModel\n      ? this.convertToModel(change)\n      : change;\n    this.filterChange.emit([updatedModel]);\n    if (this.formlyUpdateComunicationService) {\n      this.formlyUpdateComunicationService.updateFilter(updatedModel);\n    }\n    this.cdr.detectChanges();\n  }\n\n  convertToParam(filters) {\n    const encodedValues = qs.stringify(filters, {\n      skipNulls: true,\n      encode: false,\n      filter: this.shortFormatDate\n    });\n    if (encodedValues) {\n      return this.getUrlParams(encodedValues);\n    } else {\n      return '';\n    }\n  }\n  getUrlParams(queryString) {\n    const target = {};\n    queryString.split('&').forEach(pair => {\n      if (pair !== '') {\n        const splitpair = pair.split('=');\n        target[splitpair[0]] =\n          splitpair[1] === '' || splitpair[1] === 'false' ? null : splitpair[1];\n      }\n    });\n    return target;\n  }\n\n  shortFormatDate(prefix, value) {\n    const fixDigit = val => {\n      return val.toString().length === 1 ? '0' + val : val;\n    };\n    const getFormattedDate = date =>\n      `${fixDigit(\n        date.getMonth() + 1\n      )}/${date.getDate()}/${date.getFullYear()}`;\n    if (value instanceof Date) {\n      value = getFormattedDate(new Date(value));\n    }\n    return value;\n  }\n\n  isDate(_date) {\n    const _regExp = new RegExp(\n      '^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(.[0-9]+)?(Z)?$'\n    );\n    return _regExp.test(_date);\n  }\n  convertToModel(filters) {\n    let obj = {};\n    const encodedValues = qs.stringify(filters, {\n      skipNulls: true,\n      encode: false,\n      filter: this.longFormatDate\n    });\n    obj = qs.parse(encodedValues);\n    return obj;\n  }\n\n  longFormatDate(prefix, value) {\n    const val = decodeURIComponent(value);\n    const isDate = /^(\\d{1,2})[-\\/](\\d{1,2})[-\\/](\\d{4})$/.exec(val);\n    if (isDate) {\n      value = new Date(val).toISOString();\n    }\n    return value;\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -3519,11 +3514,11 @@ const FORMLY = {
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<formly-form [form]=\"form\" [fields]=\"fields\" [options]=\"options\" [model]=\"model\" (modelChange)=\"onModelChange($event)\">\n</formly-form>\n<div class=\"grid-row\">\n  <div *ngIf=\"advancedFilters\" class=\"grid-col\">\n    <sds-advanced-filters [form]=\"form\" [fields]=\"fields\" [options]=\"options\" [model]=\"model\">\n    </sds-advanced-filters>\n  </div>\n  <div class=\"grid-col text-right\">\n    <sds-formly-reset [options]=\"options\"></sds-formly-reset>\n  </div>\n</div>\n"
+            "templateData": "<formly-form [form]=\"form\" [fields]=\"fields\" [options]=\"options\" [model]=\"model\" (modelChange)=\"onModelChange($event)\">\n</formly-form>\n<div class=\"grid-row margin-top-2\">\n  <div *ngIf=\"advancedFilters\" class=\"grid-col\">\n    <sds-advanced-filters [form]=\"form\" [fields]=\"fields\" [options]=\"options\" [model]=\"model\">\n    </sds-advanced-filters>\n  </div>\n  <div class=\"grid-col text-right\">\n    <sds-formly-reset [options]=\"options\"></sds-formly-reset>\n  </div>\n</div>\n"
         },
         {
             "name": "SdsFormlyDialogComponent",
-            "id": "component-SdsFormlyDialogComponent-7dc472a9484e9cb178d6d50432101160",
+            "id": "component-SdsFormlyDialogComponent-23f374481d181ac77c5c2d3f9c3d4092",
             "file": "libs/packages/sam-formly/src/lib/formly-dialog/formly-dialog.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3584,6 +3579,13 @@ const FORMLY = {
                     ]
                 },
                 {
+                    "name": "disableSubmitButton",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 20
+                },
+                {
                     "name": "fields",
                     "type": "FormlyFieldConfig[]",
                     "optional": false,
@@ -3596,14 +3598,6 @@ const FORMLY = {
                     "optional": false,
                     "description": "",
                     "line": 14
-                },
-                {
-                    "name": "isAdvanceFilter",
-                    "defaultValue": "false",
-                    "type": "boolean",
-                    "optional": false,
-                    "description": "",
-                    "line": 20
                 },
                 {
                     "name": "model",
@@ -3645,7 +3639,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 56
+                    "line": 44
                 },
                 {
                     "name": "onSubmit",
@@ -3653,7 +3647,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 40
+                    "line": 38
                 }
             ],
             "hostBindings": [],
@@ -3661,7 +3655,7 @@ const FORMLY = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, Inject, OnInit } from '@angular/core';\nimport { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';\nimport { FormGroup } from '@angular/forms';\nimport { SdsDialogRef, SDS_DIALOG_DATA } from '@gsa-sam/components';\n\nimport { SdsFormlyDialogData } from './formly-dialog-data.model';\nimport { SdsAdvancedFiltersService } from '../formly-filters/advanced-filters/sds-advanced-filters.service';\n\n@Component({\n  selector: 'sds-formly-dialog',\n  templateUrl: './formly-dialog.component.html'\n})\nexport class SdsFormlyDialogComponent implements OnInit {\n  form: FormGroup;\n  model: any;\n  options: FormlyFormOptions;\n  fields: FormlyFieldConfig[];\n  cancel: string;\n  submit: string;\n  isAdvanceFilter: boolean = false;\n\n  constructor(\n    public advancedFiltersService: SdsAdvancedFiltersService,\n    public dialogRef: SdsDialogRef<SdsFormlyDialogComponent>,\n    @Inject(SDS_DIALOG_DATA) public data: SdsFormlyDialogData\n  ) {}\n\n  public ngOnInit() {\n    this.fields = this.data.fields;\n    this.form = this.data.form ? this.data.form : new FormGroup({});\n    this.model = this.data.model ? this.data.model : {};\n    this.options = this.data.options ? this.data.options : {};\n    this.cancel = this.data.cancel ? this.data.cancel : 'Cancel';\n    this.submit = this.data.submit ? this.data.submit : 'Submit';\n    this.isAdvanceFilter = this.data.isAdvanceFilter\n      ? this.data.isAdvanceFilter\n      : false;\n  }\n\n  onSubmit() {\n    if (this.form.valid) {\n      let results = {};\n      if (this.isAdvanceFilter) {\n        results = this.advancedFiltersService.updateFields(\n          this.model,\n          this.data.originalFields,\n          this.data.originalModel\n        );\n      } else {\n        results = { ...this.model };\n      }\n      this.dialogRef.close(this.model);\n    }\n  }\n\n  onCancel() {\n    if (!this.isAdvanceFilter) {\n      this.options.resetModel();\n    }\n    this.dialogRef.close();\n  }\n}\n",
+            "sourceCode": "import { Component, Inject, OnInit } from '@angular/core';\nimport { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';\nimport { FormGroup } from '@angular/forms';\nimport { SdsDialogRef, SDS_DIALOG_DATA } from '@gsa-sam/components';\n\nimport { SdsFormlyDialogData } from './formly-dialog-data.model';\nimport { SdsAdvancedFiltersService } from '../formly-filters/advanced-filters/sds-advanced-filters.service';\n\n@Component({\n  selector: 'sds-formly-dialog',\n  templateUrl: './formly-dialog.component.html'\n})\nexport class SdsFormlyDialogComponent implements OnInit {\n  form: FormGroup;\n  model: any;\n  options: FormlyFormOptions;\n  fields: FormlyFieldConfig[];\n  cancel: string;\n  submit: string;\n  disableSubmitButton: boolean;\n\n  constructor(\n    public advancedFiltersService: SdsAdvancedFiltersService,\n    public dialogRef: SdsDialogRef<SdsFormlyDialogComponent>,\n    @Inject(SDS_DIALOG_DATA) public data: SdsFormlyDialogData\n  ) { }\n\n  public ngOnInit() {\n    this.fields = this.data.fields;\n    this.form = this.data.form ? this.data.form : new FormGroup({});\n    this.model = this.data.model ? this.data.model : {};\n    this.options = this.data.options ? this.data.options : {};\n    this.cancel = this.data.cancel ? this.data.cancel : 'Cancel';\n    this.submit = this.data.submit ? this.data.submit : 'Submit';\n    this.disableSubmitButton = this.data.disableSubmitButtonEnabled ? this.data.disableSubmitButtonEnabled : false;\n  }\n\n  onSubmit() {\n    if (this.form.valid) {\n      this.dialogRef.close(this.model);\n    }\n  }\n\n  onCancel() {\n    this.options.resetModel();\n    this.dialogRef.close();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -3710,7 +3704,7 @@ const FORMLY = {
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<form [formGroup]=\"form\" (ngSubmit)=\"onSubmit()\">\n  <div *ngIf=\"data.title\" sds-dialog-title>{{data.title}}</div>\n  <div *ngIf=\"data.subtitle\" sds-dialog-subtitle>{{data.subtitle}}</div>\n  <div sds-dialog-content>\n    <formly-form [form]=\"form\" [fields]=\"fields\" [options]=\"options\" [model]=\"model\"></formly-form>\n  </div>\n  <div sds-dialog-actions>\n    <button class=\"usa-button usa-button--base\" (click)=\"onCancel()\" type=\"button\">\n      {{cancel}}\n    </button>\n    <button class=\"usa-button\" type=\"submit\">\n      {{submit}}\n    </button>\n  </div>\n</form>\n"
+            "templateData": "<form [formGroup]=\"form\" (ngSubmit)=\"onSubmit()\">\n  <div *ngIf=\"data.title\" sds-dialog-title>{{data.title}}</div>\n  <div *ngIf=\"data.subtitle\" sds-dialog-subtitle>{{data.subtitle}}</div>\n  <div sds-dialog-content>\n    <formly-form [form]=\"form\" [fields]=\"fields\" [options]=\"options\" [model]=\"model\"></formly-form>\n  </div>\n  <div sds-dialog-actions>\n    <button class=\"usa-button usa-button--base\" (click)=\"onCancel()\" type=\"button\">\n      {{cancel}}\n    </button>\n    <button class=\"usa-button\" [disabled]=\"disableSubmitButton ? !form.valid  : disableSubmitButton\" type=\"submit\">\n      {{submit}}\n    </button>\n  </div>\n</form>"
         },
         {
             "name": "SdsFormlyResetComponent",

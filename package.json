@@ -1,6 +1,6 @@
 {
   "name": "sam-design-system",
-  "version": "0.6.26",
+  "version": "0.7.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -73,6 +73,7 @@
     "accessible-html5-video-player": "^1.0.6",
     "core-js": "^2.5.4",
     "lodash-es": "^4.17.15",
+    "ngx-bootstrap-icons": "^1.0.0",
     "ngx-highlightjs": "^3.0.3",
     "ngx-markdown": "^8.0.0",
     "qs": "^6.2.3",

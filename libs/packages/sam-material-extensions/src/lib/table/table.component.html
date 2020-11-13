@@ -1,14 +1,20 @@
+<div class="margin-y-05" *ngIf="pagination && showPagination">
+  <sds-pagination [displayMode]="'results'" [paginationConfiguration]="top" [(page)]="page" [totalItems]="totalItems"></sds-pagination>
+</div>
+
 <div class="sds-table__container" [ngClass]="{ 'sds-table__container--borderless': borderless }">
   <table mat-table [dataSource]="dataSource" class="sds-table width-full mat-elevation-z8" matSort multiTemplateDataRows [ngClass]="{ 'sds-table--expansion': expansion }">
 
     <ng-container *ngFor="let sdsColumnItem of sdsColumnItems">
       <ng-container *ngIf="!sdsColumnItem.sdsExpandedTemplate" matColumnDef="{{sdsColumnItem.sdsColumnName}}" [sticky]="sdsColumnItem.sticky" [stickyEnd]="sdsColumnItem.stickyEnd">
-        <ng-container *ngIf="sort">
+        <ng-container *ngIf="(sort==='true' || sort==='') || ((typeOf(sort) === 'object') && isArray(sort) && sort.includes(sdsColumnItem.sdsColumnName)) else basicColumn">
           <th mat-header-cell *matHeaderCellDef scope="col" mat-sort-header><ng-container *ngTemplateOutlet="sdsColumnItem.columnHeaderCell"></ng-container></th>
         </ng-container>
-        <ng-container *ngIf="!sort">
-          <th mat-header-cell *matHeaderCellDef scope="col"><ng-container *ngTemplateOutlet="sdsColumnItem.columnHeaderCell"></ng-container></th>
-        </ng-container>
+        <ng-template #basicColumn>
+          <ng-container>
+            <th mat-header-cell *matHeaderCellDef scope="col"><ng-container *ngTemplateOutlet="sdsColumnItem.columnHeaderCell"></ng-container></th>
+          </ng-container>
+        </ng-template>
         <td mat-cell *matCellDef="let element"><ng-container *ngTemplateOutlet="sdsColumnItem.columnCell; context: {element : element}"></ng-container></td>
         <ng-container *ngIf="sdsColumnItem.footerCellTemplate" >
           <th mat-footer-cell *matFooterCellDef scope="col"><ng-container *ngTemplateOutlet="sdsColumnItem.columnFooterCell"></ng-container></th>
@@ -16,7 +22,6 @@
         <ng-container *ngIf="!sdsColumnItem.footerCellTemplate" >
           <td mat-footer-cell *matFooterCellDef scope="col"></td>
         </ng-container>
-
       </ng-container>
     </ng-container>
 
@@ -64,4 +69,15 @@
     </ng-container>
 
   </table>
+
+  <div [hidden]="true">
+    <ng-container *ngIf="pagination">
+      <mat-paginator [pageSizeOptions]="[25, 50, 100]" showFirstLastButtons (page)="pageEvent = $event"></mat-paginator>
+    </ng-container>
+  </div>
 </div>
+
+<div *ngIf="pagination && showPagination">
+  <sds-pagination [paginationConfiguration]="bottom" [(page)]="page" (pageChange)="pageChange.next($event)" (initialized)="pageChange.next($event)"></sds-pagination>
+</div>
+

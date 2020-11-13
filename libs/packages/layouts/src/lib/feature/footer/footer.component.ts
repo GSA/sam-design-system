@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FooterModel } from './model/FooterModel';
-import { INavigationLink } from '../common-navigation/common-navigation-model';
-import { NavigationHelper } from '../common-navigation/navigation-helper';
+import { INavigationLink } from '@gsa-sam/components';
+import { NavigationHelper } from '@gsa-sam/components';
 
 @Component({
   selector: 'sds-footer',
