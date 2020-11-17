@@ -49,7 +49,7 @@ export class SdsFiltersComponent implements OnInit {
   /**
    * Sort the filters by alphabetical order
    */
-  @Input() sortFilter: boolean = false;
+  @Input() sortMoreFilter: boolean = false;
 
   /**
    * Timer id for the timer awaiting the service call for more typeing
