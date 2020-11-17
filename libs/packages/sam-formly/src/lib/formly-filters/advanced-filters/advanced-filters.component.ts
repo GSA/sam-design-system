@@ -48,14 +48,13 @@ export class AdvancedFiltersComponent {
       this.fields
     );
     if (this.sortMoreFilter) {
-      modalFields.sort((a, b) =>
-        a.templateOptions.label < b.templateOptions.label
-          ? -1
-          : a.templateOptions.label > b.templateOptions.label
-          ? 1
+      modalFields.sort((a: FormlyFieldConfig, b: FormlyFieldConfig) =>
+        a.templateOptions && b.templateOptions
+          ? a.templateOptions.label.localeCompare(b.templateOptions.label)
           : 0
       );
     }
+
     const data: SdsFormlyDialogData = {
       fields: modalFields,
       submit: 'Update',
