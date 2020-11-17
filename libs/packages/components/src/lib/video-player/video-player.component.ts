@@ -42,6 +42,8 @@ export class SdsVideoPlayerComponent implements AfterViewInit {
     }
 
     new InitPxVideo(this.config);
+    document.getElementsByClassName('px-video-container')[0].setAttribute("style", "width:"+this.VPConfiguration.width+";");
+    
   }
 
   constructor() {
