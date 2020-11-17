@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { NavigationLink, SideNavigationModel } from '../side-navigation/model/side-navigation-model';
 
 @Component({
@@ -13,6 +14,8 @@ export class SdsSelectionPanelComponent implements OnChanges {
 
   @Input() title: string;
   
+  @Input() navigateOnClick = true;
+
   @Output() panelSelected = new EventEmitter<NavigationLink>();
 
   // list of items currently shown to user
@@ -26,7 +29,10 @@ export class SdsSelectionPanelComponent implements OnChanges {
 
   isTopSection = true;
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+  ) { }
 
   onPanelItemClick(panelItem: NavigationLink) {
     this.currentSelection = panelItem;
@@ -41,6 +47,15 @@ export class SdsSelectionPanelComponent implements OnChanges {
       this.mainParentOfCurrentSelection = parentLink;
     }
 
+    if (this.navigateOnClick) {
+      const navigationExtras: NavigationExtras = {
+        queryParams: panelItem.queryParams,
+        relativeTo: this.activatedRoute
+      }
+
+      this.router.navigate(['.'], navigationExtras);
+    }
+    
     this.panelSelected.emit(panelItem);
   }
 

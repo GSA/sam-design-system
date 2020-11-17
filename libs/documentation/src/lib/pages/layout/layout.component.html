@@ -6,32 +6,17 @@
 </div>
 
 <div class="sds-page condensed margin-top-2">
-  <div class="grid-container">
-    <div class="grid-row">
-      <sds-side-toolbar
-        class="sds-toolbar sds-toolbar--expanded"
-        [selectionPanelConfig]="navigationModel" 
-        [filterPanelConfig]="filterPanelConfig"
-        (selectedFilters)="filterChange$.next($event)">
-      </sds-side-toolbar>
-      <!-- <sds-toolbar class="grid-col-12 tablet:grid-col-auto" #toolbar="sdsToolbar" [expanded]="true">
-        <sds-accordion>
-          <sds-accordion-item #domainAccordion [expanded]="!filtersExpanded">
-            <sds-accordion-item-header>
-              <span class="text-normal">Domain</span>
-            </sds-accordion-item-header> 
-            <sds-selection-panel #sideNav [model]="navigationModel"></sds-selection-panel>
-          </sds-accordion-item> 
-          <sds-accordion-item #filtersAccordion [expanded]="filtersExpanded">
-            <sds-accordion-item-header>Filter By</sds-accordion-item-header>
-            <sds-filters [options]="options" [isHistoryEnable]="true" [form]="form" [fields]="fields"
-              [model]="filterModel" (filterChange)="filterChange$.next($event)">
-            </sds-filters>
-          </sds-accordion-item>
-        </sds-accordion>
-      </sds-toolbar> -->
-
-      <div class="sds-page__content tablet:grid-col-fill">
+  <div class="">
+    <div class="grid-row grid-gap">
+        <div class="desktop:grid-col-4 tablet-lg:grid-col-12 mobile-lg:grid-col-12 margin-bottom-3">
+          <sds-side-toolbar
+          [selectionPanelConfig]="navigationModel" 
+          [filterPanelConfig]="filterPanelConfig"
+          (selectedFilters)="filterChange$.next($event)">
+          </sds-side-toolbar>  
+        </div>
+      
+      <div class="desktop:grid-col-8 tablet-lg:grid-col-12 mobile-lg:grid-col-12">
         <search-list-layout #resultList [service]="service" [configuration]="listConfig">
           <ng-template #resultContent let-item>
             <div>

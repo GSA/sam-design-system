@@ -14,8 +14,8 @@
       [ngClass]="{'usa-sidenav--styled': isTopSection, 'sds-list sds-list--subdomain': !isTopSection}">
       <li *ngFor="let panelItem of panelItemsOnDisplay" class="usa-sidenav__item"
         [ngClass]="{'usa-current': isTopSection && panelItem === currentSelection}">
-        <a [ngClass]="{'usa-link': !isTopSection, 'usa-link--active': panelItem === currentSelection}"
-          (click)="onPanelItemClick(panelItem)" [routerLink]="panelItem.route" [queryParams]="panelItem.queryParams">
+        <a href="javascript:void(0);" [ngClass]="{'usa-link': !isTopSection, 'usa-link--active': panelItem === currentSelection}"
+          (click)="onPanelItemClick(panelItem)">
           {{panelItem.text}}</a>
       </li>
     </ul>

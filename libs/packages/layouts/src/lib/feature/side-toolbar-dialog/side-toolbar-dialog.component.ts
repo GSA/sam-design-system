@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { SdsDialogRef, SDS_DIALOG_DATA, SideNavigationModel } from '@gsa-sam/components';
+import { NavigationLink, SdsDialogRef, SDS_DIALOG_DATA, SideNavigationModel } from '@gsa-sam/components';
 import { FilterPanelConfig, SelectionPanelConfig } from '../side-toolbar/model/side-toolbar.model';
 
 interface DialogData {
@@ -20,7 +20,8 @@ export class SideToolbarDialogComponent implements OnInit {
   filtersExpanded = true;
   panelExpanded = true;
 
-  selectedFilters = {};
+  selectedFilters = [];
+  selectedPanel: NavigationLink;
 
   constructor(
     public dialogRef: SdsDialogRef<SideToolbarDialogComponent>,
@@ -36,8 +37,17 @@ export class SideToolbarDialogComponent implements OnInit {
     this.selectedFilters = $event;
   }
 
+  onPanelChange($event) {
+    this.selectedPanel = $event;
+  }
+
   onApplyFilter() {
-    this.dialogRef.close(this.selectedFilters);
+    const closedResult = {
+      selectedPanel: this.selectedPanel,
+      selectedFilters: this.selectedFilters
+    };
+
+    this.dialogRef.close(closedResult);
   }
 
   onCancelClicked() {
