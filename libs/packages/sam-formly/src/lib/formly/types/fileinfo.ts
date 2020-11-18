@@ -31,7 +31,7 @@ import { FieldType } from '@ngx-formly/core';
       />
   
         <div class="sds-button__header">
-          <fa-icon [icon]="['sds',  to.options[i].icon]" class="text-base"  size="2x">
+          <fa-icon [icon]="['sds',  option.icon]" class="text-base"  size="2x">
           </fa-icon>
         </div>
       <div class="sds-button__body">
