@@ -3,12 +3,13 @@ import { NavigationLink, SideNavigationModel } from '@gsa-sam/components';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 
 export interface FilterPanelConfig {
+  advancedFilters?: boolean;
   title: string;
   form: FormGroup;
   fields: FormlyFieldConfig[];
   model: any;
-  options: FormlyFormOptions;
-  isHistoryEnabled: boolean;
+  options?: FormlyFormOptions;
+  isHistoryEnabled?: boolean;
 }
 
 export interface SelectionPanelConfig {

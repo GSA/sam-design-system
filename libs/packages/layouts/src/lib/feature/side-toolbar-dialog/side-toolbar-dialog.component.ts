@@ -26,7 +26,7 @@ export class SideToolbarDialogComponent implements OnInit {
   constructor(
     public dialogRef: SdsDialogRef<SideToolbarDialogComponent>,
     @Inject(SDS_DIALOG_DATA) public data: DialogData
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.selectionPanelConfig = this.data.selectionPanelConfig;

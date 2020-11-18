@@ -1,16 +1,23 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { NavigationLink, SdsDialogService } from '@gsa-sam/components';
 import { SideToolbarDialogComponent } from '../side-toolbar-dialog/side-toolbar-dialog.component';
 import { SelectionPanelConfig, FilterPanelConfig } from './model/side-toolbar.model';
 import * as qs from 'qs';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { Subscription } from 'rxjs';
+
+interface DialogClosedResult {
+  selectedPanel?: NavigationLink, 
+  selectedFilters?: any[]
+}
 
 @Component({
   selector: 'sds-side-toolbar',
   templateUrl: './side-toolbar.component.html',
-  styleUrls: ['./side-toolbar.component.scss']
+  styleUrls: ['./side-toolbar.component.scss'],
 })
-export class SideToolbarComponent {
+export class SideToolbarComponent implements OnInit, OnDestroy {
   
   @Input() selectionPanelConfig: SelectionPanelConfig;
   @Input() filterPanelConfig: FilterPanelConfig;
@@ -19,16 +26,29 @@ export class SideToolbarComponent {
 
   filtersExpanded = false;
   panelExpanded = false;
+  
+  isMobileSize = false;
+
+  private readonly mobileSize = 480;
+  private subscription: Subscription = new Subscription();
 
   constructor(
     private sdsDialogService: SdsDialogService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    private breakpointObserver: BreakpointObserver, // Will watch for changes between mobile and non-mobile screen size
   ) { }
+
+  ngOnInit() {
+    this.observeViewChange();
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 
   onFilterChange($event) {
     if (this.filterPanelConfig.isHistoryEnabled) {
-
       this.updateFilterRoute({selectedFilters: $event});
     }
     this.selectedFilters.emit($event);
@@ -45,12 +65,12 @@ export class SideToolbarComponent {
           selectionPanelConfig: this.selectionPanelConfig,
           filterPanelConfig: this.filterPanelConfig
         },
+        height: '100vh',
         width: '100vw',
-        height:  '100vh',
         maxWidth: '100vw',
         maxHeight: '100vh',
         hasBackdrop: false,
-        
+        displayCloseBtn: false,
       });
 
       dialog.afterClosed().subscribe(result => {
@@ -60,7 +80,21 @@ export class SideToolbarComponent {
       });
   }
 
-  private updateFilterRoute(change: any) {
+  private observeViewChange() {
+    const breakpointUnsubscription = this.breakpointObserver.observe([
+      `(max-width: ${this.mobileSize}px)`
+    ]).subscribe(result => {
+      if (result.matches) {
+        this.isMobileSize = true;
+      } else {
+        this.isMobileSize = false;
+      }
+    });
+
+    this.subscription.add(breakpointUnsubscription);
+  }
+
+  private updateFilterRoute(change: DialogClosedResult) {
     const selectedPanel: NavigationLink = change.selectedPanel;
     const selectedFilters = change.selectedFilters;
 
@@ -75,7 +109,7 @@ export class SideToolbarComponent {
     let params = this.convertToParam(queryObj);
     
     if (selectedPanel) {
-      params = {...selectedPanel.queryParams, ...params};
+      params = {...params, ...selectedPanel.queryParams};
     }
 
     this.router.navigate(['.'], {

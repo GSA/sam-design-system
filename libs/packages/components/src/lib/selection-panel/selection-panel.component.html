@@ -13,8 +13,12 @@
     <ul class="usa-sidenav" 
       [ngClass]="{'usa-sidenav--styled': isTopSection, 'sds-list sds-list--subdomain': !isTopSection}">
       <li *ngFor="let panelItem of panelItemsOnDisplay" class="usa-sidenav__item"
-        [ngClass]="{'usa-current': isTopSection && panelItem === currentSelection}">
-        <a href="javascript:void(0);" [ngClass]="{'usa-link': !isTopSection, 'usa-link--active': panelItem === currentSelection}"
+        [ngClass]="{'usa-current': isTopSection && currentSelection && panelItem.id === currentSelection.id}">
+        <a href="javascript:void(0);" 
+          [ngClass]="{
+            'text-secondary': !isTopSection && (!currentSelection || panelItem.id != currentSelection.id), 
+            'usa-link usa-link--active': !isTopSection && currentSelection && panelItem.id === currentSelection.id
+          }"
           (click)="onPanelItemClick(panelItem)">
           {{panelItem.text}}</a>
       </li>

@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ResultsLayoutComponent } from './layout.component';
 import {
-  PaginationModule,
-  SdsPageModule,
   SdsSearchResultListModule,
   SdsToolbarModule,
   SdsSideNavigationModule,
@@ -12,10 +10,7 @@ import {
   SdsSelectionPanelModule
 } from '@gsa-sam/components';
 import {
-  SdsFiltersModule,
-  SdsFormlyDialogModule,
-  SDSFormlyUpdateComunicationService,
-  SdsFormlyModule
+  SdsFiltersModule
 } from '@gsa-sam/sam-formly';
 
 import { ResultModule } from './result/result.module';

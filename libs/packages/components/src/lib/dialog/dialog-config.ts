@@ -107,4 +107,9 @@ export class SdsDialogConfig<D = any> {
    * Wheter the dialog its an alert
    */
   alert?: 'warning' | 'info' | 'error';
+
+  /**
+   * Whether to display the close button in dialog header
+   */
+  displayCloseBtn? = true;
 }

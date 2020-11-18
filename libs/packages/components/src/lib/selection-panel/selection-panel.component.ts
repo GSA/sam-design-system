@@ -69,7 +69,7 @@ export class SdsSelectionPanelComponent implements OnChanges {
     this.panelItemsOnDisplay = this.model.navigationLinks;
     this.currentSelection = this.mainParentOfCurrentSelection;
     this.isTopSection = true;
-    $event.stopPropagation();
+    $event.stopPropagation(); // Stop collapsible card from closing
   }
 
 }

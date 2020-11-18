@@ -6,25 +6,21 @@
 </div>
 
 <div class="sds-page condensed margin-top-2">
-  <div class="">
-    <div class="grid-row grid-gap">
-        <div class="desktop:grid-col-4 tablet-lg:grid-col-12 mobile-lg:grid-col-12 margin-bottom-3">
-          <sds-side-toolbar
-          [selectionPanelConfig]="navigationModel" 
-          [filterPanelConfig]="filterPanelConfig"
-          (selectedFilters)="filterChange$.next($event)">
-          </sds-side-toolbar>  
-        </div>
-      
-      <div class="desktop:grid-col-8 tablet-lg:grid-col-12 mobile-lg:grid-col-12">
-        <search-list-layout #resultList [service]="service" [configuration]="listConfig">
-          <ng-template #resultContent let-item>
-            <div>
-              <result-item [model]="item"></result-item>
-            </div>
-          </ng-template>
-        </search-list-layout>
-      </div>
+  <div class="grid-container grid-row grid-gap">
+    <div class="desktop:grid-col-4 tablet-lg:grid-col-12 mobile-lg:grid-col-12 margin-bottom-3">
+      <sds-side-toolbar [selectionPanelConfig]="navigationModel" [filterPanelConfig]="filterPanelConfig"
+        (selectedFilters)="filterChange$.next($event)">
+      </sds-side-toolbar>
+    </div>
+
+    <div class="desktop:grid-col-8 tablet-lg:grid-col-12 mobile-lg:grid-col-12">
+      <search-list-layout #resultList [service]="service" [configuration]="listConfig">
+        <ng-template #resultContent let-item>
+          <div>
+            <result-item [model]="item"></result-item>
+          </div>
+        </ng-template>
+      </search-list-layout>
     </div>
   </div>
 </div>

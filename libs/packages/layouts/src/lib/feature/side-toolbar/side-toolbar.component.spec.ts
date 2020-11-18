@@ -1,4 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { SdsDialogModule, SdsDialogService, SdsSelectionPanelModule } from '@gsa-sam/components';
+import { SdsFiltersModule } from '@gsa-sam/sam-formly';
+import { SideToolbarDialogModule } from '../side-toolbar-dialog/side-toolbar-dialog.module';
 
 import { SideToolbarComponent } from './side-toolbar.component';
 
@@ -8,7 +12,17 @@ describe('SideToolbarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SideToolbarComponent ]
+      imports: [
+        SdsFiltersModule, 
+        SdsSelectionPanelModule,
+        SdsDialogModule,
+        SideToolbarDialogModule,
+        RouterTestingModule,
+      ],
+      declarations: [ SideToolbarComponent ],
+      providers: [
+        SdsDialogService
+      ]
     })
     .compileComponents();
   }));

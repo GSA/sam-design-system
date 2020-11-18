@@ -18,7 +18,7 @@ import { SideToolbarDialogModule } from '../side-toolbar-dialog/side-toolbar-dia
     SideToolbarDialogModule,
   ], exports: [SideToolbarComponent],
   providers: [
-    SdsDialogService
+    SdsDialogService,
   ]
 })
 export class SideToolbarModule { }
