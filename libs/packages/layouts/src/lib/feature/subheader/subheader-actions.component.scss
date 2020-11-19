@@ -1,0 +1,36 @@
+@import "~@gsa-sam/sam-styles/src/stylesheets/theme/_styles";
+@import "~uswds/src/stylesheets/packages/_required";
+
+.action-button{
+  display: flex;
+  align-items: center;
+  margin-right: 0;
+
+  // Desktop
+  &.sds-button--labeled-icon{
+    padding-right: 0.5em;
+  }
+
+  // Mobile or Tablet
+  &.sds-button--circular:active{
+    @include u-bg('secondary-dark');
+    sds-icon{
+      color: white;
+    }
+  }
+
+  // Desktop view
+  sds-icon.action-button-icon-desktop{
+    background-color: #70e17b;
+    border-radius: 50%;
+    padding: 0.1em 0.2em;
+    margin-left: 0.4em;
+  }
+
+  &:active{
+    sds-icon{
+      @include u-bg('secondary-dark');
+      color: white;
+    }
+  }
+}
