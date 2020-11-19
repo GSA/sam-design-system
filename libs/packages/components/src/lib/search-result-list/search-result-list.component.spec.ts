@@ -4,7 +4,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CommonModule } from '@angular/common';
 import { DebugElement } from '@angular/core';
 import { SpyLocation } from '@angular/common/testing';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
+import { SdsIconModule } from '../icon/icon.module';
 describe('SdsSearchResultListComponent', () => {
   let component: SdsSearchResultListComponent;
   let fixture: ComponentFixture<SdsSearchResultListComponent>;
@@ -13,12 +14,9 @@ describe('SdsSearchResultListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SdsSearchResultListComponent],
-      imports: [FontAwesomeModule, CommonModule],
-      providers:[
-        {provide: Location, useClass: SpyLocation}  
-      ]
-    })
-      .compileComponents();
+      imports: [FontAwesomeModule, CommonModule, SdsIconModule],
+      providers: [{ provide: Location, useClass: SpyLocation }]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -32,20 +30,21 @@ describe('SdsSearchResultListComponent', () => {
     expect(component).toBeTruthy();
   });
   it('should display list of items', async(() => {
-    component.model = { results: [
-      { title: 'First', id: 1 },
-      { title: 'Second', id: 2 },
-      { title: 'Third', id: 3 },
-      { title: 'Fourth', id: 4 },
-      { title: 'Fifth', id: 5 }
-    ] }
-  fixture.detectChanges();
-   const testResult = component.updateModel.results[0];
-   const testResults = component.updateModel.results;
-   expect(testResult).toBeTruthy("Could not find");
-   expect(testResults.length).toBeGreaterThan(0);
-   expect(testResult.title).toEqual('First');
-
+    component.model = {
+      results: [
+        { title: 'First', id: 1 },
+        { title: 'Second', id: 2 },
+        { title: 'Third', id: 3 },
+        { title: 'Fourth', id: 4 },
+        { title: 'Fifth', id: 5 }
+      ]
+    };
+    fixture.detectChanges();
+    const testResult = component.updateModel.results[0];
+    const testResults = component.updateModel.results;
+    expect(testResult).toBeTruthy('Could not find');
+    expect(testResults.length).toBeGreaterThan(0);
+    expect(testResult.title).toEqual('First');
   }));
 
   it('should convert model array to searchModel object', async(() => {
@@ -58,12 +57,12 @@ describe('SdsSearchResultListComponent', () => {
     ];
     component.model = items;
     fixture.detectChanges();
-    
+
     expect(component.updateModel.results.length).toBe(items.length);
   }));
 
   it('should go back to previous page on go back button click', () => {
-    component.model =[];
+    component.model = [];
     spyOn(location, 'back');
     component.goBack();
     expect(location.back).toHaveBeenCalled();
