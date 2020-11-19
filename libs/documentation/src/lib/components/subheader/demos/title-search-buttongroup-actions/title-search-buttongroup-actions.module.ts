@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { SubHeaderBasic } from './subheader-basic.component';
 import { SdsSubheaderModule } from '@gsa-sam/layouts';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -11,6 +10,10 @@ import {
   SdsFormlyModule,
   SdsFormlyDialogModule
 } from '@gsa-sam/sam-formly';
+import { TitleSearchButtonGroupActions } from './title-search-buttongroup-actions.component';
+import { SdsButtonGroupModule } from 'libs/packages/sam-material-extensions/src/lib/button-group/button-group.module';
+
+
 
 @NgModule({
   imports: [
@@ -24,10 +27,11 @@ import {
     SdsFormlyModule,
     FormlyModule,
     // FormlyModule,
-    SdsIconModule
+    SdsIconModule,
+    SdsButtonGroupModule
   ],
-  declarations: [SubHeaderBasic],
-  exports: [SubHeaderBasic],
-  bootstrap: [SubHeaderBasic]
+  declarations: [TitleSearchButtonGroupActions],
+  exports: [TitleSearchButtonGroupActions],
+  bootstrap: [TitleSearchButtonGroupActions]
 })
-export class SubHeaderBasicModule {}
+export class TitleSearchButtonGroupActionsModule {}

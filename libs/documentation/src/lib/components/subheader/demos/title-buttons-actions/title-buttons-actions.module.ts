@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { SubHeaderBasic } from './subheader-basic.component';
 import { SdsSubheaderModule } from '@gsa-sam/layouts';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -11,6 +10,8 @@ import {
   SdsFormlyModule,
   SdsFormlyDialogModule
 } from '@gsa-sam/sam-formly';
+import { TitleButtonsActions } from './title-buttons-actions.component';
+
 
 @NgModule({
   imports: [
@@ -26,8 +27,8 @@ import {
     // FormlyModule,
     SdsIconModule
   ],
-  declarations: [SubHeaderBasic],
-  exports: [SubHeaderBasic],
-  bootstrap: [SubHeaderBasic]
+  declarations: [TitleButtonsActions],
+  exports: [TitleButtonsActions],
+  bootstrap: [TitleButtonsActions]
 })
-export class SubHeaderBasicModule {}
+export class TitleButtonsActionsModule {}

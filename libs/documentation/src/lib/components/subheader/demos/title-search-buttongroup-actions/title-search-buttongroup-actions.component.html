@@ -1,0 +1,60 @@
+<div class="scroll-container">
+  <div class="wide-container">
+    <sds-subheader>
+      <!-- =============== BACK BUTTON =============== -->
+      <button class="sds-button sds-button--circular sds-navbar__back-button" style="margin-right: 1em;">
+        <sds-icon [icon]="['bs', 'chevron-left']"></sds-icon>
+      </button>
+
+      <!-- =============== TITLE =============== -->
+      <span class="sds-navbar__title">
+        Contract Opportunities
+      </span>
+
+      <!-- =============== SEARCH =============== -->
+      <sds-search
+        (term)="log($event)"
+        parentSelector=".grid-row"
+        placeholder="Entity an entity ID, name, or keyword"
+        inputClass="width-card-lg widescreen:width-mobile display-none desktop-lg:display-inline-block"
+      >
+      </sds-search>
+
+      <!-- =============== BUTTON GROUP =============== -->
+      <ng-container subheader-buttongroup-container>
+        <sds-button-group
+      [mode]="'radio'"
+      class="sds-button-group sds-button-group--secondary"
+    >
+      <sds-button-group-option value="selected" [aria-label]="'selected'">
+        Selected
+      </sds-button-group-option>
+      <sds-button-group-option value="button1" [aria-label]="'button1'">
+          Button 1
+      </sds-button-group-option>
+      <sds-button-group-option value="button2" [aria-label]="'button2'">
+        Button 2
+      </sds-button-group-option>
+    </sds-button-group>
+      </ng-container>
+      <!--
+        sds-button-group width 100%
+        mat-button-toggle-group width 100%
+        mat-button-toggle flex 1 1 0px
+        .mat-button-toggle-label-content width 100%
+        .usa-button.usa-button--outline display flex justify-content center
+      -->
+
+      <!-- =============== ACTIONS BUTTONS =============== -->
+      <sds-subheader-actions
+        [model]="subheader"
+        (clicks)="onActionMenuItem($event)"
+      ></sds-subheader-actions>
+
+      <!-- =============== DRAWER CONTENT =============== -->
+      <!-- <sds-subheader-drawer
+        [drawerContentTemplate]="contentTemplate"
+      ></sds-subheader-drawer> -->
+    </sds-subheader>
+  </div>
+</div>
