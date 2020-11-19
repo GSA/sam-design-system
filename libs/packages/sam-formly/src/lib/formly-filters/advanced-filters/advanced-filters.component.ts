@@ -33,6 +33,11 @@ export class AdvancedFiltersComponent {
    */
   @Input() public options: FormlyFormOptions = {};
 
+  /**
+   * Sort the filters by alphabetical order
+   */
+  @Input() public sortMoreFilter: boolean = false;
+
   constructor(
     public dialog: SdsDialogService,
     private advancedFiltersService: SdsAdvancedFiltersService
@@ -42,6 +47,13 @@ export class AdvancedFiltersComponent {
     const modalFields: FormlyFieldConfig[] = this.advancedFiltersService.convertToCheckboxes(
       this.fields
     );
+    if (this.sortMoreFilter) {
+      modalFields.sort((a: FormlyFieldConfig, b: FormlyFieldConfig) =>
+        a.templateOptions && b.templateOptions
+          ? a.templateOptions.label.localeCompare(b.templateOptions.label)
+          : 0
+      );
+    }
 
     const data: SdsFormlyDialogData = {
       fields: modalFields,
