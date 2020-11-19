@@ -7,9 +7,7 @@ import { FilterService } from '../filter.service';
 import { navigationConfig } from '../navigate.config';
 
 @Component({
-  selector: 'gsa-sam-layout-responsive',
   templateUrl: './layout-responsive.component.html',
-  styleUrls: ['./layout-responsive.component.scss']
 })
 export class LayoutResponsiveComponent {
   @ViewChild('resultList') resultList;

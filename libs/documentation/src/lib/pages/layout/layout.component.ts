@@ -7,7 +7,6 @@ import { SearchListConfiguration } from '@gsa-sam/layouts';
 import { FilterService } from './filter.service';
 import { SideNavigationModel } from '@gsa-sam/components';
 @Component({
-  selector: 'sds-layout',
   templateUrl: './layout.component.html'
 })
 export class ResultsLayoutComponent implements AfterViewInit, OnInit {

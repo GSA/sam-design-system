@@ -1,8 +1,6 @@
-import { Component, EventEmitter, Inject, Input, Output, ViewChild } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { coerceBooleanProperty } from "@angular/cdk/coercion";
 import { sdsToolbarAnimations } from "./toolbar-animations";
-import { SdsDialogRef } from '../dialog/dialog-ref';
-import { SdsDialogService, SDS_DIALOG_DATA } from '../dialog/dialog';
 
 /** Toolbar's states. */
 export type SdsToolbarState = "expanded" | "collapsed";
@@ -21,7 +19,6 @@ let uniqueId = 0;
   }
 })
 export class SdsToolbarComponent {
-
   /** The unique Toolbar id. */
   readonly id = uniqueId++;
 
