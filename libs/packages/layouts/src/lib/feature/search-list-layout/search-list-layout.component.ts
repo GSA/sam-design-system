@@ -52,7 +52,8 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   page = {
     pageNumber: 1,
     pageSize: 25,
-    totalPages: 0
+    totalPages: 0,
+    default: true
   };
 
   ngOnChanges(changes: SimpleChanges) {
@@ -123,8 +124,10 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
    */
   public updateFilter(filter: any) {
     this.filterData = filter;
-    // this.page.pageNumber = 1;
+    this.page.pageNumber = this.page.default ? this.page.pageNumber : 1;
+    this.page.default = filter ? false : true;
     this.updateContent();
+    this.updateRoute();
   }
 
   /**
