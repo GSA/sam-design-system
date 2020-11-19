@@ -37,6 +37,9 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
   @ViewChild('selectEl', { read: ElementRef }) selectEl: ElementRef;
   @ViewChild('buttonEl', { read: ElementRef }) buttonEl: ElementRef;
 
+  /**
+   * Classes to be applied to input field
+   */
   @Input() inputClass: string;
   @Input() parentSelector: string;
   @Input() searchSettings: SearchSettings = new SearchSettings();
@@ -114,10 +117,12 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
 
   setInputVisibleStyles() {
     const inputWidth = this.calculateInputWidth();
-    this.inputEl.nativeElement.style.display = 'block';
+    // this.inputEl.nativeElement.set
+    this.inputEl.nativeElement.style.setProperty("display", "block", "important");
     this.inputEl.nativeElement.style.position = 'absolute';
     this.inputEl.nativeElement.style.left = `-${inputWidth}px`;
-    this.inputEl.nativeElement.style.width = `${inputWidth}px`;
+    // this.inputEl.nativeElement.style.width = `${inputWidth}px !important`;
+    this.inputEl.nativeElement.style.setProperty("width", `${inputWidth}px`, "important");
     this.inputState.visible = true;
   }
 
