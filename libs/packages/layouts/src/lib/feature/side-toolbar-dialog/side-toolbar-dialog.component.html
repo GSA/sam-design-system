@@ -1,35 +1,33 @@
 <div class="sds-card">
   <div class="sds-card__header sds-card__header--accent-cool grid-row">
-    <button
-      id="cancelButton"
-      class="sds-button sds-button--circular sds-button--white" 
-      (click)="onCancelClicked()" 
+    <button id="cancelButton" class="sds-button sds-button--circular sds-button--white" (click)="onCancelClicked()"
       aria-label="Cancel Advanced Search">
       <fa-icon [icon]="['fas', 'chevron-left']" [fixedWidth]="true"></fa-icon>
     </button>
     <div class="margin-x-auto">
       <h2 class="sds-card__title margin-top-1 margin-left-neg-2">Advanced Search</h2>
-    </div>  
+    </div>
   </div>
 </div>
 
 <div>
-  <sds-selection-panel *ngIf="selectionPanelConfig" 
-    [model]="selectionPanelConfig.selectionPanelModel" 
-    [title]="this.selectionPanelConfig.title"
-    [navigateOnClick]="false"
-    (panelSelected)="onPanelChange($event)">
+  <sds-selection-panel *ngIf="selectionPanelConfig" [model]="selectionPanelConfig.selectionPanelModel"
+    [title]="this.selectionPanelConfig.title" [navigateOnClick]="false" (panelSelected)="onPanelChange($event)">
   </sds-selection-panel>
 
-  <div *ngIf="filterPanelConfig" class="sds-card sds-card--collapsible" [ngClass]="{'sds-card--collapsed': !filtersExpanded}">
-    <div class="sds-card__header sds-card__header--action" [attr.aria-expanded]="filtersExpanded" (click)="filtersExpanded = !filtersExpanded">
+  <div *ngIf="filterPanelConfig" class="sds-card sds-card--collapsible"
+    [ngClass]="{'sds-card--collapsed': !filtersExpanded}">
+    <div class="sds-card__header sds-card__header--action" role="button" tabindex="0" aria-controls="filtersBody"
+      [attr.aria-label]="filterPanelConfig.title ? filterPanelConfig.title : 'Filter By'"
+      [attr.aria-expanded]="filtersExpanded" (click)="filtersExpanded = !filtersExpanded"
+      (keyup.enter)="filtersExpanded = !filtersExpanded">
       <div class="sds-card__title">{{filterPanelConfig.title ? filterPanelConfig.title : 'Filter By'}}</div>
       <div class="sds-card__action sds-card__collapse"></div>
     </div>
     <div class="sds-card__body sds-card__body--accent-cool">
-      <sds-filters [options]="filterPanelConfig.options" [isHistoryEnable]="false" 
-        [advancedFilters]="filterPanelConfig.advancedFilters" [form]="filterPanelConfig.form" [fields]="filterPanelConfig.fields"
-        [model]="filterPanelConfig.model" (filterChange)="onFilterChange($event)">
+      <sds-filters [options]="filterPanelConfig.options" [isHistoryEnable]="false"
+        [advancedFilters]="filterPanelConfig.advancedFilters" [form]="filterPanelConfig.form"
+        [fields]="filterPanelConfig.fields" [model]="filterPanelConfig.model" (filterChange)="onFilterChange($event)">
       </sds-filters>
     </div>
   </div>

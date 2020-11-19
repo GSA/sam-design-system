@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnChanges, Output, ViewChild } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { NavigationLink, SideNavigationModel } from '../side-navigation/model/side-navigation-model';
 
@@ -8,6 +8,8 @@ import { NavigationLink, SideNavigationModel } from '../side-navigation/model/si
   styleUrls: ['./selection-panel.component.scss'],
 })
 export class SdsSelectionPanelComponent implements OnChanges {
+
+  @ViewChild('panelBody') panelBody: ElementRef;
 
   @Input()
   model: SideNavigationModel;
@@ -39,6 +41,7 @@ export class SdsSelectionPanelComponent implements OnChanges {
     if (panelItem.children) {
       this.panelItemsOnDisplay = panelItem.children;
       this.isTopSection = false;
+      this.panelBody.nativeElement.focus();
     }
 
     const parentLink = this.model.navigationLinks.find(link => link.id === panelItem.id);
@@ -69,6 +72,7 @@ export class SdsSelectionPanelComponent implements OnChanges {
     this.panelItemsOnDisplay = this.model.navigationLinks;
     this.currentSelection = this.mainParentOfCurrentSelection;
     this.isTopSection = true;
+
     $event.stopPropagation(); // Stop collapsible card from closing
   }
 
