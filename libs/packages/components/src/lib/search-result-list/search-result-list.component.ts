@@ -31,7 +31,6 @@ export class SdsSearchResultListComponent implements OnInit {
       const items = value;
       this.updateModel = new SearchModel();
       this.updateModel.results = items;
-      console.log(items, 'initial');
     } else {
       this.updateModel = value;
     }
@@ -46,7 +45,6 @@ export class SdsSearchResultListComponent implements OnInit {
 
   ngOnInit() {
     this.initialLoad = true;
-    console.log(this.initialLoad, 'set');
   }
 
   /**
