@@ -37,9 +37,6 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
   @ViewChild('selectEl', { read: ElementRef }) selectEl: ElementRef;
   @ViewChild('buttonEl', { read: ElementRef }) buttonEl: ElementRef;
 
-  /**
-   * Classes to be applied to input field
-   */
   @Input() inputClass: string;
   @Input() parentSelector: string;
   @Input() searchSettings: SearchSettings = new SearchSettings();

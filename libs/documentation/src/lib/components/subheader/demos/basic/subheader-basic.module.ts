@@ -23,7 +23,6 @@ import {
     ReactiveFormsModule,
     SdsFormlyModule,
     FormlyModule,
-    // FormlyModule,
     SdsIconModule
   ],
   declarations: [SubHeaderBasic],
