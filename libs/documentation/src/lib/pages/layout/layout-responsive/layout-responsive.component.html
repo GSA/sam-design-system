@@ -1,0 +1,26 @@
+<div aria-level="1" aria-role="heading" class="h1 text-ink line-height-sans-2 margin-y-3">Search List Layout</div>
+<div class="margin-y-2">
+  <button class="usa-button" (click)="updateConfig(false)">Default Sort Config</button>
+  <button class="usa-button" (click)="updateConfig(true)">Update Sort Config</button>
+  <hr />
+</div>
+
+<div class="sds-page condensed margin-top-2">
+  <div class="grid-container grid-row grid-gap">
+    <div class="desktop:grid-col-4 tablet-lg:grid-col-12 mobile-lg:grid-col-12 margin-bottom-3">
+      <sds-side-toolbar [selectionPanelConfig]="navigationModel" [filterPanelConfig]="filterPanelConfig"
+        (selectedFilters)="filterChange$.next($event)">
+      </sds-side-toolbar>
+    </div>
+
+    <div class="desktop:grid-col-8 tablet-lg:grid-col-12 mobile-lg:grid-col-12">
+      <search-list-layout #resultList [service]="service" [configuration]="listConfig">
+        <ng-template #resultContent let-item>
+          <div>
+            <result-item [model]="item"></result-item>
+          </div>
+        </ng-template>
+      </search-list-layout>
+    </div>
+  </div>
+</div>

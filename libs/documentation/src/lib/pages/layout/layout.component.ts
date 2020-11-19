@@ -2,11 +2,12 @@ import { Component, AfterViewInit, ViewChild, OnInit } from '@angular/core';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { BehaviorSubject } from 'rxjs';
 import { DataService } from './data.service';
-import { SideNavigationModel } from '@gsa-sam/components';
 import { navigationConfig } from './navigate.config';
 import { SearchListConfiguration } from '@gsa-sam/layouts';
 import { FilterService } from './filter.service';
+import { SideNavigationModel } from '@gsa-sam/components';
 @Component({
+  selector: 'sds-layout',
   templateUrl: './layout.component.html'
 })
 export class ResultsLayoutComponent implements AfterViewInit, OnInit {
@@ -18,8 +19,7 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
   options;
   filtersExpanded: boolean = true;
   public filterChange$ = new BehaviorSubject<object>(null);
-  public navigationModel: any = {title: 'Select Domain', selectionPanelModel: navigationConfig};
-  public filterPanelConfig;
+  public navigationModel: SideNavigationModel = navigationConfig;
 
   listConfig: SearchListConfiguration = {
     defaultSortValue: 'legalBusinessName',
@@ -59,14 +59,6 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
     this.filterModel = this.filterService.model;
     this.form = this.filterService.form;
     this.options = this.filterService.options;
-
-    this.filterPanelConfig = {
-      fields: this.fields,
-      filterModel: this.filterModel,
-      form: this.form,
-      options: this.options,
-      isHistoryEnabled: true,
-    }
   }
   ngAfterViewInit() {
     this.filterChange$.subscribe(res => {

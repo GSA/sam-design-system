@@ -173,6 +173,7 @@ import { FormlyFormsModule } from './pages/formly-forms/formly-forms.module';
 import { FormlyFormsComponent } from './pages/formly-forms/formly-forms.component';
 import { FormlyConditionalModule } from './pages/formly-conditional/formly-conditional.module';
 import { FormlyConditionalComponent } from './pages/formly-conditional/formly-conditional.component';
+import { LayoutResponsiveComponent } from './pages/layout/layout-responsive/layout-responsive.component';
 
 declare var require: any;
 
@@ -181,6 +182,7 @@ export const ROUTES: Routes = [
   { path: 'overview', component: OverviewComponent },
   { path: 'introduction', component: IntroductionComponent },
   { path: 'layout', component: ResultsLayoutComponent },
+  { path: 'layout-responsive', component: LayoutResponsiveComponent},
 
   // Components
   { path: 'components', pathMatch: 'full', redirectTo: 'components/alert' },

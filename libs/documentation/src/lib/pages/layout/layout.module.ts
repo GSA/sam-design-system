@@ -16,6 +16,7 @@ import { ResultModule } from './result/result.module';
 import { SearchListServiceModule, SideToolbarModule } from '@gsa-sam/layouts';
 import { FilterService } from './filter.service';
 import { AutocompleteSampleDataService } from './services/autocomplete-sample.service';
+import { LayoutResponsiveComponent } from './layout-responsive/layout-responsive.component';
 
 @NgModule({
   imports: [
@@ -30,8 +31,8 @@ import { AutocompleteSampleDataService } from './services/autocomplete-sample.se
     SideToolbarModule,
     ResultModule
  ],
-  exports: [ResultsLayoutComponent],
-  declarations: [ResultsLayoutComponent],
+  exports: [ResultsLayoutComponent, LayoutResponsiveComponent],
+  declarations: [ResultsLayoutComponent, LayoutResponsiveComponent],
   providers: [FilterService, AutocompleteSampleDataService]
 })
 export class ResultsLayoutModule {}
