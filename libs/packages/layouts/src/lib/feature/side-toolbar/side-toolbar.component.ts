@@ -74,9 +74,17 @@ export class SideToolbarComponent implements OnInit, OnDestroy {
       });
 
       dialog.afterClosed().subscribe(result => {
-        if (result) {
-          this.updateFilterRoute(result);
+        if (!result) {
+          return;
         }
+
+        if (this.filterPanelConfig.isHistoryEnabled) {
+          this.updateFilterRoute(result);
+        } else {
+          this.updateFilterRoute({selectedPanel: result.selectedPanel});
+        }
+
+        this.selectedFilters.emit(result.selectedFilters);
       });
   }
 
@@ -105,12 +113,15 @@ export class SideToolbarComponent implements OnInit, OnDestroy {
       queryObj.sfm = {};
     }
 
-    queryObj['sfm'] = selectedFilters;
-    let params = this.convertToParam(queryObj);
-    
-    if (selectedPanel) {
-      params = {...params, ...selectedPanel.queryParams};
+    if (selectedFilters) {
+      queryObj['sfm'] = selectedFilters;
     }
+
+    if (selectedPanel) {
+      queryObj = {...queryObj, ...selectedPanel.queryParams}
+    }
+    
+    const params = this.convertToParam(queryObj);
 
     this.router.navigate(['.'], {
       relativeTo: this.activatedRoute,
