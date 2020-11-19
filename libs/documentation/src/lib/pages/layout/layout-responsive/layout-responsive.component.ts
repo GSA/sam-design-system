@@ -17,7 +17,7 @@ export class LayoutResponsiveComponent {
   filterModel = {};
   options;
   filtersExpanded: boolean = true;
-  public filterChange$ = new BehaviorSubject<object>(null);
+  public filterChange$ = new BehaviorSubject<object>([]);
   public navigationModel: SelectionPanelConfig = {title: 'Select Domain', selectionPanelModel: navigationConfig};
   public filterPanelConfig: FilterPanelConfig;
 
