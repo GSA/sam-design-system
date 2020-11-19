@@ -253,6 +253,10 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * @param event
    */
   onKeydown(event): void {
+    if(KeyHelper.is(KEYS.ALT, event)){  
+      event.preventDefault();
+      this.inputFocusHandler();
+    }
     if (KeyHelper.is(KEYS.TAB, event)) {
       return;
     } else if (KeyHelper.is(KEYS.BACKSPACE, event)) {
