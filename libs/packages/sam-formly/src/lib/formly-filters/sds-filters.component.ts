@@ -90,8 +90,7 @@ export class SdsFiltersComponent implements OnInit {
     public formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,
     private cdr: ChangeDetectorRef,
     private router: Router,
-    private route: ActivatedRoute,
-    private datePipe: DatePipe
+    private route: ActivatedRoute
   ) {}
 
   @HostListener('window:popstate', ['$event'])
