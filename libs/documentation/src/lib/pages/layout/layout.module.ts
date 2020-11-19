@@ -7,7 +7,6 @@ import {
   SdsToolbarModule,
   SdsSideNavigationModule,
   SdsAccordionModule,
-  SdsSelectionPanelModule
 } from '@gsa-sam/components';
 import {
   SdsFiltersModule
@@ -25,7 +24,6 @@ import { AutocompleteSampleDataService } from './services/autocomplete-sample.se
     SdsToolbarModule,
     SdsAccordionModule,
     SdsSideNavigationModule,
-    SdsSelectionPanelModule,
     SdsFiltersModule,
     SdsSearchResultListModule,
     SearchListServiceModule,

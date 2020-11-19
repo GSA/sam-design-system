@@ -22,8 +22,6 @@ let uniqueId = 0;
 })
 export class SdsToolbarComponent {
 
-  @ViewChild('toolbar') toolBar: any;
-
   /** The unique Toolbar id. */
   readonly id = uniqueId++;
 
@@ -33,9 +31,7 @@ export class SdsToolbarComponent {
   /** ID for the content element. Used for a11y labelling. */
   readonly _contentId: string = `sds-toolbar-content-${this.id}`;
 
-  constructor(
-    public dialogRef: SdsDialogService
-  ) {}
+  constructor() {}
 
   /** Emits whenever the expanded state of the toolbar changes. */
   @Output() expandedChange: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -81,9 +77,5 @@ export class SdsToolbarComponent {
   /** Gets the expanded state string. */
   _getExpandedState(): SdsToolbarState {
     return this.expanded ? "expanded" : "collapsed";
-  }
-
-  onDisplayInModalClicked() {
-    this.dialogRef.open(this.toolBar);
   }
 }
