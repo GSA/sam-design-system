@@ -9,7 +9,7 @@ export class DataService {
     this.data = registrationData._embedded.results;
     if (this.data) {
       if (search.filter) {
-        if (search.filter && search.filter[0].keyword) {
+        if (search.filter[0].keyword) {
           const toReturn = [];
           for (let i = 0; i < this.data.length; i++) {
             const item = this.data[i];
