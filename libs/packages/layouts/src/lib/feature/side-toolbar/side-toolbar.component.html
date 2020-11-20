@@ -1,29 +1,10 @@
-<div *ngIf="!isMobileSize">
-  <sds-selection-panel *ngIf="selectionPanelConfig" [model]="selectionPanelConfig.selectionPanelModel"
-    [title]="selectionPanelConfig.title">
-  </sds-selection-panel>
-
-  <div *ngIf="filterPanelConfig" class="sds-card sds-card--collapsible"
-    [ngClass]="{'sds-card--collapsed': !filtersExpanded}">
-    <div class="sds-card__header sds-card__header--action" role="button" tabindex="0" aria-controls="filtersBody"
-      [attr.aria-label]="filterPanelConfig.title ? filterPanelConfig.title : 'Filter By'"
-      [attr.aria-expanded]="filtersExpanded" (click)="filtersExpanded = !filtersExpanded"
-      (keyup.enter)="filtersExpanded = !filtersExpanded">
-      <div class="sds-card__title">{{filterPanelConfig.title ? filterPanelConfig.title : 'Filter By'}}</div>
-      <div class="sds-card__action sds-card__collapse"></div>
-    </div>
-    <div class="sds-card__body sds-card__body--accent-cool" id="filtersBody">
-      <sds-filters [options]="filterPanelConfig.options" [isHistoryEnable]="false"
-        [advancedFilters]="filterPanelConfig.advancedFilters" [form]="filterPanelConfig.form"
-        [fields]="filterPanelConfig.fields" [model]="filterPanelConfig.model" (filterChange)="onFilterChange($event)">
-      </sds-filters>
-    </div>
-  </div>
+<div *ngIf="!isMobileView">
+  <ng-container *ngTemplateOutlet="template"></ng-container>
 </div>
 
-<div *ngIf="isMobileSize">
+<div *ngIf="isMobileView">
   <button class="usa-button usa-button--accent-cool usa-button--hover text-secondary-dar" id="advancedSearchButton"
-    (click)="onOpenToolbarModalClicked()" aria-label="Advanced Search">
-    Advanced Search
+    (click)="onMobileButtonClicked()" [attr.aria-label]="mobileButtonText">
+    {{mobileButtonText}}
   </button>
 </div>

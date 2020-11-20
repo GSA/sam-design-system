@@ -18,12 +18,13 @@ export class SdsSelectionPanelComponent implements OnChanges {
   
   @Input() navigateOnClick = true;
 
+  @Input() currentSelection: NavigationLink;
+
   @Output() panelSelected = new EventEmitter<NavigationLink>();
 
   // list of items currently shown to user
   panelItemsOnDisplay: NavigationLink[];
 
-  currentSelection: NavigationLink;
 
   mainParentOfCurrentSelection: NavigationLink;
 

@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { FilterPanelConfig, SearchListConfiguration, SelectionPanelConfig } from '@gsa-sam/layouts';
+import { NavigationLink, SdsDialogRef } from '@gsa-sam/components';
+import { SearchListConfiguration } from '@gsa-sam/layouts';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { BehaviorSubject } from 'rxjs';
 import { DataService } from '../data.service';
@@ -12,14 +13,17 @@ import { navigationConfig } from '../navigate.config';
 export class LayoutResponsiveComponent {
   @ViewChild('resultList') resultList;
 
+  isMobileMode: boolean;
+  mobileDialog: SdsDialogRef<any>;
+
   fields: FormlyFieldConfig[] = [];
   form;
   filterModel = {};
   options;
   filtersExpanded: boolean = true;
   public filterChange$ = new BehaviorSubject<object>([]);
-  public navigationModel: SelectionPanelConfig = {title: 'Select Domain', selectionPanelModel: navigationConfig};
-  public filterPanelConfig: FilterPanelConfig;
+  public navigationModel = {title: 'Select Domain', selectionPanelModel: navigationConfig};
+  public filterPanelConfig;
 
   listConfig: SearchListConfiguration = {
     defaultSortValue: 'legalBusinessName',
@@ -83,5 +87,27 @@ export class LayoutResponsiveComponent {
       this.listConfig = { ...this.defaultListConfig };
     }
 
+  }
+
+  onDialogOpen($event) {
+    this.mobileDialog = $event;
+  }
+
+  onCancelClicked() {
+    this.mobileDialog.close();
+    this.mobileDialog = undefined;
+  }
+
+  onApplyFilter() {
+    this.mobileDialog.close();
+    this.mobileDialog = undefined;
+  }
+
+  onPanelSelection($event: NavigationLink) {
+    console.log('Selected Domain', $event);
+  }
+
+  onFilterChange($event) {
+    console.log('Selected Filters', $event);
   }
 }
