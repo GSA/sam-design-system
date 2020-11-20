@@ -7,6 +7,4 @@ export * from './feature/header/header.module';
 export * from './feature/footer/footer.module';
 export * from './feature/footer/model/FooterModel';
 export * from './feature/header/model/HeaderModel';
-export * from './feature/side-toolbar/model/side-toolbar.model';
 export * from './feature/side-toolbar/side-toolbar.module';
-export * from './feature/side-toolbar-dialog/side-toolbar-dialog.module';

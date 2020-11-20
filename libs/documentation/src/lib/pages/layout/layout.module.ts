@@ -7,13 +7,14 @@ import {
   SdsToolbarModule,
   SdsSideNavigationModule,
   SdsAccordionModule,
+  SdsSelectionPanelModule
 } from '@gsa-sam/components';
 import {
   SdsFiltersModule
 } from '@gsa-sam/sam-formly';
 
 import { ResultModule } from './result/result.module';
-import { SearchListServiceModule } from '@gsa-sam/layouts';
+import { SearchListServiceModule, SideToolbarModule} from '@gsa-sam/layouts';
 import { FilterService } from './filter.service';
 import { AutocompleteSampleDataService } from './services/autocomplete-sample.service';
 import { LayoutResponsiveComponent } from './layout-responsive/layout-responsive.component';
@@ -29,7 +30,10 @@ import { LayoutResponsiveComponent } from './layout-responsive/layout-responsive
     SdsSearchResultListModule,
     SearchListServiceModule,
     ResultModule,
+    SideToolbarModule,
+    SdsSelectionPanelModule,
  ],
+
   exports: [ResultsLayoutComponent, LayoutResponsiveComponent],
   declarations: [ResultsLayoutComponent, LayoutResponsiveComponent],
   providers: [FilterService, AutocompleteSampleDataService]
