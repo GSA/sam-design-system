@@ -10,7 +10,7 @@ import {
   SdsFormlyModule,
   SdsFormlyDialogModule
 } from '@gsa-sam/sam-formly';
-import { TitleSearchButtonGroupActions } from './title-search-buttongroup-actions.component';
+import { SubheaderTier2WorkspaceComponent } from './subheader-tier-2-workspace.component';
 import { SdsButtonGroupModule } from 'libs/packages/sam-material-extensions/src/lib/button-group/button-group.module';
 
 
@@ -30,8 +30,8 @@ import { SdsButtonGroupModule } from 'libs/packages/sam-material-extensions/src/
     SdsIconModule,
     SdsButtonGroupModule
   ],
-  declarations: [TitleSearchButtonGroupActions],
-  exports: [TitleSearchButtonGroupActions],
-  bootstrap: [TitleSearchButtonGroupActions]
+  declarations: [SubheaderTier2WorkspaceComponent],
+  exports: [SubheaderTier2WorkspaceComponent],
+  bootstrap: [SubheaderTier2WorkspaceComponent]
 })
-export class TitleSearchButtonGroupActionsModule {}
+export class SubheaderTier2WorkspaceModule {}

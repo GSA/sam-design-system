@@ -12,10 +12,10 @@ import {
 } from '@gsa-sam/sam-formly';
 
 @Component({
-  templateUrl: './title-actions.component.html',
-  styleUrls: ['./title-actions.component.scss']
+  templateUrl: './subheader-data-entry.component.html',
+  styleUrls: ['./subheader-data-entry.component.scss']
 })
-export class TitleActions {
+export class SubheaderDataEntryComponent {
   subheader = {
     buttons: [
       { id: 'FirstButton', text: 'Button', class: 'usa-button--secondary' },

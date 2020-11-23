@@ -1,11 +1,11 @@
 <!-- Actions Menu Trigger: Desktop -->
 <span class="display-none desktop:display-inline-block">
   <button
-    class="sds-button sds-button--labeled-icon action-button"
+    class="sds-button sds-button--labeled-icon actions-button"
     [sdsMenuTriggerFor]="menu"
   >
     Actions
-    <sds-icon [icon]="['bs', 'three-dots-vertical']" [size]="'lg'" class="action-button-icon-desktop"></sds-icon>
+    <sds-icon [icon]="['bs', 'three-dots-vertical']" [size]="'lg'" class="ellipsis-icon"></sds-icon>
   </button>
 </span>
 
@@ -13,10 +13,10 @@
 <span class="desktop:display-none ">
   <span class="display-none tablet-lg:display-inline-block">
     <button
-      class="sds-button sds-button--circular action-button"
+      class="sds-button sds-button--circular actions-button"
       [sdsMenuTriggerFor]="menu"
     >
-      <sds-icon [icon]="['bs', 'three-dots-vertical']" [size]="'lg'"></sds-icon>
+      <sds-icon [icon]="['bs', 'three-dots-vertical']" [size]="'lg'" class="ellipsis-icon"></sds-icon>
       <span class="usa-sr-only">Toggle Actions Menu</span>
     </button>
   </span>
@@ -25,10 +25,10 @@
 <!-- Actions Menu Trigger: Mobile -->
 <span class="tablet-lg:display-none">
   <button
-  class="sds-button sds-button--circular action-button margin-top-05 tablet:margin-top-0"
+  class="sds-button sds-button--circular actions-button margin-top-05 tablet:margin-top-0"
     [sdsMenuTriggerFor]="menu"
   >
-  <sds-icon [icon]="['bs', 'three-dots-vertical']" [size]="'lg'"></sds-icon>
+  <sds-icon [icon]="['bs', 'three-dots-vertical']" [size]="'lg'" class="ellipsis-icon"></sds-icon>
   </button>
 </span>
 

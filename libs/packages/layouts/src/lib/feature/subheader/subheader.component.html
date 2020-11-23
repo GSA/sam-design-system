@@ -1,26 +1,17 @@
 <div class="sds-navbar border-bottom border-base-lighter">
-  <div class="sds-navbar__content">
-    <div class="grid-row flex-justify">
-      <!-- <div class="order-first grid-col-fill tablet-lg:grid-col-auto display-flex flex-align-center margin-bottom-1 tablet-lg:margin-bottom-0"> -->
-      <!-- <div class="order-first grid-col-fill display-flex flex-align-center margin-bottom-1 tablet-lg:margin-bottom-0"> -->
-      <!-- <div class="order-first grid-col-auto display-flex flex-align-center margin-bottom-1 tablet-lg:margin-bottom-0"> -->
-      <div class="order-first grid-col-auto">
-        <ng-content></ng-content>
-      </div>
-      <div class="margin-x-105 margin-top-05 tablet:margin-top-0 tablet:order-0 grid-col-auto tablet:grid-col-fill display-flex flex-justify-end tablet-lg:flex-justify-start tablet-lg:padding-left-6">
-      <!-- <div class="grid-col-fill  tablet:order-0"> -->
-        <ng-content select="sds-search"></ng-content>
-      </div>
-      <!-- <div class="order-last grid-col-12 tablet-lg:order-1 tablet-lg:grid-col-3 tablet-lg:display-flex flex-column flex-align-end"> -->
-      <div class="order-last grid-col-12 tablet:order-1 tablet:grid-col-auto display-flex">
-      <!-- <div class="order-last tablet:order-1 grid-col-auto"> -->
-        <ng-content select="[subheader-buttons-container]"></ng-content>
-        <ng-content select="[subheader-buttongroup-container]"></ng-content>
-      </div>
-      <!-- <div class="order-2 margin-left-2 grid-col-1 display-flex flex-justify-end"> -->
-      <div class="order-2 tablet:margin-left-2 grid-col-auto">
-        <ng-content select="sds-subheader-actions"></ng-content>
-      </div>
+  <div class="sds-subheader__content">
+    <div class="order-first grid-col-auto">
+      <ng-content></ng-content>
+    </div>
+    <div class="margin-x-105 margin-top-05 tablet:margin-top-0 tablet:order-0 grid-col-fill display-flex flex-justify-end tablet-lg:flex-justify-start tablet-lg:padding-left-6">
+      <ng-content select="sds-search"></ng-content>
+    </div>
+    <div class="order-last grid-col-12 tablet:order-1 tablet:grid-col-auto display-flex button-container">
+      <ng-content select="[subheader-buttons-container]"></ng-content>
+      <ng-content select="[subheader-buttongroup-container]"></ng-content>
+    </div>
+    <div class="order-2 tablet:margin-left-2 grid-col-auto actions-div">
+      <ng-content select="sds-subheader-actions"></ng-content>
     </div>
   </div>
 </div>

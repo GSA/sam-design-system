@@ -22,29 +22,10 @@
       </sds-search>
 
       <!-- =============== BUTTON GROUP =============== -->
-      <ng-container subheader-buttongroup-container>
-        <sds-button-group
-      [mode]="'radio'"
-      class="sds-button-group sds-button-group--secondary"
-    >
-      <sds-button-group-option value="selected" [aria-label]="'selected'">
-        Selected
-      </sds-button-group-option>
-      <sds-button-group-option value="button1" [aria-label]="'button1'">
-          Button 1
-      </sds-button-group-option>
-      <sds-button-group-option value="button2" [aria-label]="'button2'">
-        Button 2
-      </sds-button-group-option>
-    </sds-button-group>
+      <ng-container subheader-buttons-container>
+        <button class="usa-button usa-button--secondary grid-col-6">Button</button>
+        <button class="usa-button grid-col-6">Button</button>
       </ng-container>
-      <!--
-        sds-button-group width 100%
-        mat-button-toggle-group width 100%
-        mat-button-toggle flex 1 1 0px
-        .mat-button-toggle-label-content width 100%
-        .usa-button.usa-button--outline display flex justify-content center
-      -->
 
       <!-- =============== ACTIONS BUTTONS =============== -->
       <sds-subheader-actions
@@ -52,10 +33,6 @@
         (clicks)="onActionMenuItem($event)"
       ></sds-subheader-actions>
 
-      <!-- =============== DRAWER CONTENT =============== -->
-      <!-- <sds-subheader-drawer
-        [drawerContentTemplate]="contentTemplate"
-      ></sds-subheader-drawer> -->
     </sds-subheader>
   </div>
 </div>

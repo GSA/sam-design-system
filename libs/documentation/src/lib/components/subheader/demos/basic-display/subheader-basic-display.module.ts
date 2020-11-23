@@ -10,7 +10,7 @@ import {
   SdsFormlyModule,
   SdsFormlyDialogModule
 } from '@gsa-sam/sam-formly';
-import { TitleActions } from './title-actions.component';
+import { SubheaderBasicDisplayComponent } from './subheader-basic-display.component';
 
 @NgModule({
   imports: [
@@ -23,11 +23,10 @@ import { TitleActions } from './title-actions.component';
     ReactiveFormsModule,
     SdsFormlyModule,
     FormlyModule,
-    // FormlyModule,
     SdsIconModule
   ],
-  declarations: [TitleActions],
-  exports: [TitleActions],
-  bootstrap: [TitleActions]
+  declarations: [SubheaderBasicDisplayComponent],
+  exports: [SubheaderBasicDisplayComponent],
+  bootstrap: [SubheaderBasicDisplayComponent]
 })
-export class TitleActionsModule {}
+export class SubheaderBasicDisplayModule {}

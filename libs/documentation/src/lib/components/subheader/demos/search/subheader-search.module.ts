@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { SubHeaderBasic } from './subheader-basic.component';
 import { SdsSubheaderModule } from '@gsa-sam/layouts';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -11,6 +10,9 @@ import {
   SdsFormlyModule,
   SdsFormlyDialogModule
 } from '@gsa-sam/sam-formly';
+import { SubheaderSearchComponent } from './subheader-search.component';
+
+
 
 @NgModule({
   imports: [
@@ -23,10 +25,11 @@ import {
     ReactiveFormsModule,
     SdsFormlyModule,
     FormlyModule,
+    // FormlyModule,
     SdsIconModule
   ],
-  declarations: [SubHeaderBasic],
-  exports: [SubHeaderBasic],
-  bootstrap: [SubHeaderBasic]
+  declarations: [SubheaderSearchComponent],
+  exports: [SubheaderSearchComponent],
+  bootstrap: [SubheaderSearchComponent]
 })
-export class SubHeaderBasicModule {}
+export class SubheaderSearchModule {}

@@ -6,9 +6,10 @@ import { SdsMenuItemComponent } from './menu-item.component';
 import { SdsMenuTriggerForDirective } from './menu-trigger.directive';
 import { SdsMenuHeaderComponent } from './menu-header.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SdsIconModule } from '../icon/icon.module';
 
 @NgModule({
-  imports: [CommonModule, OverlayModule, FontAwesomeModule],
+  imports: [CommonModule, OverlayModule, FontAwesomeModule, SdsIconModule],
   exports: [
     SdsMenuComponent,
     SdsMenuItemComponent,

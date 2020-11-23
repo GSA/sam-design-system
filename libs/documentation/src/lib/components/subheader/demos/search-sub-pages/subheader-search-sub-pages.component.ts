@@ -12,10 +12,10 @@ import {
 } from '@gsa-sam/sam-formly';
 
 @Component({
-  templateUrl: './title-search-buttongroup-actions.component.html',
-  styleUrls: ['./title-search-buttongroup-actions.component.scss']
+  templateUrl: './subheader-search-sub-pages.component.html',
+  styleUrls: ['./subheader-search-sub-pages.component.scss']
 })
-export class TitleSearchButtonGroupActions {
+export class SubheaderSearchSubPagesComponent {
   subheader = {
     buttons: [
       { id: 'FirstButton', text: 'Button', class: 'usa-button--secondary' },

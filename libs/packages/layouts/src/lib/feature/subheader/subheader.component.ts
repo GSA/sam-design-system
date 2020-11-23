@@ -19,8 +19,7 @@ export class SdsSubheaderComponent {
 
 @Component({
   selector: 'sds-subheader-actions',
-  templateUrl: 'subheader-actions.component.html',
-  styleUrls: ['subheader-actions.component.scss']
+  templateUrl: 'subheader-actions.component.html'
 })
 export class SdsSubheaderActionsComponent {
   @Input() model;

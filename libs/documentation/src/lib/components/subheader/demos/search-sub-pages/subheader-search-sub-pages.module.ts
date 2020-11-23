@@ -10,7 +10,9 @@ import {
   SdsFormlyModule,
   SdsFormlyDialogModule
 } from '@gsa-sam/sam-formly';
-import { TitleButtonsActions } from './title-buttons-actions.component';
+import { SubheaderSearchSubPagesComponent } from './subheader-search-sub-pages.component';
+import { SdsButtonGroupModule } from 'libs/packages/sam-material-extensions/src/lib/button-group/button-group.module';
+
 
 
 @NgModule({
@@ -25,10 +27,11 @@ import { TitleButtonsActions } from './title-buttons-actions.component';
     SdsFormlyModule,
     FormlyModule,
     // FormlyModule,
-    SdsIconModule
+    SdsIconModule,
+    SdsButtonGroupModule
   ],
-  declarations: [TitleButtonsActions],
-  exports: [TitleButtonsActions],
-  bootstrap: [TitleButtonsActions]
+  declarations: [SubheaderSearchSubPagesComponent],
+  exports: [SubheaderSearchSubPagesComponent],
+  bootstrap: [SubheaderSearchSubPagesComponent]
 })
-export class TitleButtonsActionsModule {}
+export class SubheaderSearchSubPagesModule {}

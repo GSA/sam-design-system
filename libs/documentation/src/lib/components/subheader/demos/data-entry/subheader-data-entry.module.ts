@@ -10,8 +10,7 @@ import {
   SdsFormlyModule,
   SdsFormlyDialogModule
 } from '@gsa-sam/sam-formly';
-import { TitleSearchActions } from './title-search-actions.component';
-
+import { SubheaderDataEntryComponent } from './subheader-data-entry.component';
 
 
 @NgModule({
@@ -28,8 +27,8 @@ import { TitleSearchActions } from './title-search-actions.component';
     // FormlyModule,
     SdsIconModule
   ],
-  declarations: [TitleSearchActions],
-  exports: [TitleSearchActions],
-  bootstrap: [TitleSearchActions]
+  declarations: [SubheaderDataEntryComponent],
+  exports: [SubheaderDataEntryComponent],
+  bootstrap: [SubheaderDataEntryComponent]
 })
-export class TitleSearchActionsModule {}
+export class SubheaderDataEntryModule {}
