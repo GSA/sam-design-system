@@ -16,7 +16,7 @@ export class SideToolbarComponent implements OnInit, OnDestroy {
   @Input() compactButtonText: string;
 
   // default value is size of mobile view in px
-  @Input() mobileSize = 480;
+  @Input() compactSize = 480;
 
   @Output() compactDialog = new EventEmitter();
   @Output() compactView = new EventEmitter();
@@ -56,7 +56,7 @@ export class SideToolbarComponent implements OnInit, OnDestroy {
 
   private observeViewChange() {
     const breakpointUnsubscription = this.breakpointObserver.observe([
-      `(max-width: ${this.mobileSize}px)`
+      `(max-width: ${this.compactSize}px)`
     ]).subscribe(result => {
       console.log(this.openResponsiveDialog);
       if (result.matches) {
