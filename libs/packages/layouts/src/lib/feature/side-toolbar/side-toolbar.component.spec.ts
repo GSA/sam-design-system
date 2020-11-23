@@ -1,6 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
 import { SdsDialogModule, SdsDialogService } from '@gsa-sam/components';
 
 import { SideToolbarComponent } from './side-toolbar.component';
@@ -8,8 +7,6 @@ import { SideToolbarComponent } from './side-toolbar.component';
 describe('SideToolbarComponent', () => {
   let component: SideToolbarComponent;
   let fixture: ComponentFixture<SideToolbarComponent>;
-  let router: Router;
-  let activatedRoute: ActivatedRoute;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -22,9 +19,6 @@ describe('SideToolbarComponent', () => {
       ]
     })
     .compileComponents();
-    router = TestBed.get(Router);
-    activatedRoute = TestBed.get(ActivatedRoute);
-
   }));
 
   beforeEach(() => {
