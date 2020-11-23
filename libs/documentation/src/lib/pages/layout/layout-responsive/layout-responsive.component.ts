@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { NavigationLink, SdsDialogRef } from '@gsa-sam/components';
 import { SearchListConfiguration } from '@gsa-sam/layouts';
 import { FormlyFieldConfig } from '@ngx-formly/core';
+import { SdsFiltersComponent } from 'libs/packages/sam-formly/src/lib/formly-filters/sds-filters.component';
 import { BehaviorSubject } from 'rxjs';
 import { DataService } from '../data.service';
 import { FilterService } from '../filter.service';
@@ -12,6 +13,7 @@ import { navigationConfig } from '../navigate.config';
 })
 export class LayoutResponsiveComponent {
   @ViewChild('resultList') resultList;
+  @ViewChild('filters') filterComponent: SdsFiltersComponent;
 
   isMobileMode: boolean;
   mobileDialog: SdsDialogRef<any>;
@@ -86,7 +88,6 @@ export class LayoutResponsiveComponent {
     else {
       this.listConfig = { ...this.defaultListConfig };
     }
-
   }
 
   onDialogOpen($event) {
@@ -101,6 +102,7 @@ export class LayoutResponsiveComponent {
   onApplyFilter() {
     this.mobileDialog.close();
     this.mobileDialog = undefined;
+    console.log('Applied Filters', this.filterModel);
   }
 
   onPanelSelection($event: NavigationLink) {

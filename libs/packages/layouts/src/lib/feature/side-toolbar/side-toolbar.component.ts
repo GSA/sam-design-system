@@ -1,5 +1,5 @@
 import { Component, ContentChild, EventEmitter, Input, OnDestroy, OnInit, Output, TemplateRef } from '@angular/core';
-import { SdsDialogService } from '@gsa-sam/components';
+import { SdsDialogRef, SdsDialogService } from '@gsa-sam/components';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs';
 
@@ -12,15 +12,20 @@ export class SideToolbarComponent implements OnInit, OnDestroy {
   
   @ContentChild(TemplateRef) template: TemplateRef<any>;
 
-  @Input() mobileButtonText: string;
+  // Text for button in compact view
+  @Input() compactButtonText: string;
 
-  @Output() mobileDialog = new EventEmitter();
-  @Output() mobileView = new EventEmitter();
+  // default value is size of mobile view in px
+  @Input() mobileSize = 480;
 
-  isMobileView = false;
+  @Output() compactDialog = new EventEmitter();
+  @Output() compactView = new EventEmitter();
 
-  private readonly mobileSize = 480;
+
+  isCompactView = false;
+
   private subscription: Subscription = new Subscription();
+  private openResponsiveDialog: SdsDialogRef<TemplateRef<any>>;
 
   constructor(
     private sdsDialogService: SdsDialogService,
@@ -35,29 +40,37 @@ export class SideToolbarComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  onMobileButtonClicked() {
-    const dialog = this.sdsDialogService.open(this.template, {
+  onCompactViewButtonClicked() {
+    this.openResponsiveDialog = this.sdsDialogService.open(this.template, {
       height: '100vh',
       width: '100vw',
       maxWidth: '100vw',
       maxHeight: '100vh',
       hasBackdrop: false,
       displayCloseBtn: false,
+      panelClass: ['sds--dialog__full'],
     });
 
-    this.mobileDialog.emit(dialog);
+    this.compactDialog.emit(this.openResponsiveDialog);
   }
 
   private observeViewChange() {
     const breakpointUnsubscription = this.breakpointObserver.observe([
       `(max-width: ${this.mobileSize}px)`
     ]).subscribe(result => {
+      console.log(this.openResponsiveDialog);
       if (result.matches) {
-        this.isMobileView = true;
+        this.isCompactView = true;
       } else {
-        this.isMobileView = false;
+        this.isCompactView = false;
+        if (this.openResponsiveDialog) {
+          this.openResponsiveDialog.close();
+          this.openResponsiveDialog = undefined;
+          this.compactDialog.emit(this.openResponsiveDialog);
+        }
       }
-      this.mobileView.emit(this.isMobileView);
+
+      this.compactView.emit(this.isCompactView);
     });
 
     this.subscription.add(breakpointUnsubscription);
