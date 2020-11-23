@@ -48,7 +48,7 @@ export class SideToolbarComponent implements OnInit, OnDestroy {
       maxHeight: '100vh',
       hasBackdrop: false,
       displayCloseBtn: false,
-      panelClass: ['sds--dialog__full'],
+      panelClass: ['sds-dialog--full'],
     });
 
     this.compactDialog.emit(this.openResponsiveDialog);
