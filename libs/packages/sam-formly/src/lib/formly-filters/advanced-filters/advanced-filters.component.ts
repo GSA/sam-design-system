@@ -38,7 +38,7 @@ export class AdvancedFiltersComponent {
   /**
    * Sort the filters by alphabetical order
    */
-  @Input() public sortMoreFilter: boolean = false;
+  @Input() public sortMoreFilterBy = '';
 
   selectAll = false;
 
@@ -103,10 +103,12 @@ export class AdvancedFiltersComponent {
     const modalFields: FormlyFieldConfig[] = this.advancedFiltersService.convertToCheckboxes(
       this.fields
     );
-    if (this.sortMoreFilter) {
+    if (this.sortMoreFilterBy) {
       modalFields.sort((a: FormlyFieldConfig, b: FormlyFieldConfig) =>
         a.templateOptions && b.templateOptions
-          ? a.templateOptions.label.localeCompare(b.templateOptions.label)
+          ? a.templateOptions[this.sortMoreFilterBy].localeCompare(
+              b.templateOptions[this.sortMoreFilterBy]
+            )
           : 0
       );
     }
