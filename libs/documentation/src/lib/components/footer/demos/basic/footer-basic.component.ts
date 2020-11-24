@@ -3,6 +3,7 @@ import { NavigationMode } from '@gsa-sam/components';
 import { FooterModel } from '@gsa-sam/layouts';
 import { BehaviorSubject } from 'rxjs';
 import { LocationStrategy } from '@angular/common';
+import { FormControl } from '@angular/forms';
 
 @Component({
   templateUrl: './footer-basic.component.html',
@@ -101,10 +102,19 @@ export class FooterBasic implements OnInit {
     disclaimer: `This is a U.S. General Services Administration Federal Government computer system that is <strong>"FOR OFFICIAL USE ONLY."</strong> This system is subject to monitoring. Individuals found performing unauthorized activities are subject to disciplinary action including criminal prosecution.`
   };
 
+  feedbackModel: FormControl;
+
   ngOnInit() {
     this.linkEvent.subscribe(value => {
       console.log('Link Event Clicked Change');
       console.log(value);
     });
+
+    this.feedbackModel = new FormControl('');
+  }
+
+  onFeedbackSubmit(feedback: string) {
+    console.log(feedback);
+    this.feedbackModel.reset();
   }
 }

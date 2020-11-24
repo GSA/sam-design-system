@@ -42,9 +42,9 @@
         <p class="sds-feedback__response-text">
           What changes or improvements would you suggest?
         </p>
-        <input class="sds-feedback__input" type="text" />
-        <p class="text-right">
-          <button class="usa-button usa-button--secondary">Submit</button>
+        <textarea [formControl]="feedbackModel" class="sds-feedback__input" id="feedbackInput" aria-label="Feedback input form" type="text" rows="8"></textarea>
+        <p class="text-left">
+          <button class="usa-button usa-button--secondary" (click)="onFeedbackSubmitClicked()">Submit</button>
         </p>
       </div>
     </div>
