@@ -68,7 +68,7 @@
           ></ng-container>
         </li>
       </ul>
-      <div class="usa-nav__secondary" [ngClass]="{'sds-nav__secondary-blank': !showHeaderLogo}">
+      <div class="usa-nav__secondary" [ngClass]="{'sds-nav__secondary--blank': !showHeaderLogo}">
         <ul class="usa-nav__secondary-links">
           <li
             *ngFor="let link of model.secondaryLinks"
@@ -246,5 +246,5 @@
 
 <ng-template #fillerBlock>
   <!--Empty filler space for secondary links for when header logo display is turned off-->
-  <div class="sds-navbar-blank "></div>
+  <div class="sds-navbar--blank "></div>
 </ng-template>
