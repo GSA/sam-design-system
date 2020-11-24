@@ -44,7 +44,8 @@
         </p>
         <textarea [formControl]="feedbackModel" class="sds-feedback__input" id="feedbackInput" aria-label="Feedback input form" type="text" rows="8"></textarea>
         <p class="text-left">
-          <button class="usa-button usa-button--secondary" (click)="onFeedbackSubmitClicked()">Submit</button>
+          <button class="usa-button usa-button--secondary" id="feedbackSubmit" 
+            aria-label="Feedback submit" (click)="onFeedbackSubmitClicked()">Submit</button>
         </p>
       </div>
     </div>
