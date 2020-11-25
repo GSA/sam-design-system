@@ -8,16 +8,16 @@
 ></div>
 <header class="usa-header usa-header--extended">
   <div class="usa-navbar">
-    <div class="usa-logo" id="extended-logo">
-      <ng-container
-        [ngTemplateOutlet]="
-          navigationHelper.isLinkInternal(model.home)
-            ? homeLinkRouteTemplate
-            : homeLinkHREFTemplate
-        "
-        [ngTemplateOutletContext]="{ $implicit: model.home }"
-      ></ng-container>
-    </div>
+      <div *ngIf="showHeaderLogo; else fillerBlock" class="usa-logo" id="extended-logo">
+        <ng-container
+          [ngTemplateOutlet]="
+            navigationHelper.isLinkInternal(model.home)
+              ? homeLinkRouteTemplate
+              : homeLinkHREFTemplate
+          "
+          [ngTemplateOutletContext]="{ $implicit: model.home }"
+        ></ng-container>
+      </div>
     <button #usaNavOpen class="usa-menu-btn" (click)="openMobileNav()">
       <fa-layers [fixedWidth]="true" size="3x">
         <fa-icon
@@ -68,7 +68,7 @@
           ></ng-container>
         </li>
       </ul>
-      <div class="usa-nav__secondary">
+      <div class="usa-nav__secondary" [ngClass]="{'sds-nav__secondary--blank': !showHeaderLogo}">
         <ul class="usa-nav__secondary-links">
           <li
             *ngFor="let link of model.secondaryLinks"
@@ -242,4 +242,9 @@
   <a href="javascript:void(0)" (click)="linkClickEvent(childLink)">{{
     childLink.text
   }}</a>
+</ng-template>
+
+<ng-template #fillerBlock>
+  <!--Empty filler space for secondary links for when header logo display is turned off-->
+  <div class="sds-navbar--blank "></div>
 </ng-template>
