@@ -1,23 +1,33 @@
 <sds-page class="sds-page condensed margin-bottom-0">
-    <sds-search-result-list [model]="items">
-      <ng-template #resultContent let-item>
-        <ul class="usa-list usa-list--unstyled">
-          <li>ID {{ item.id }} - {{ item.title }}</li>
-        </ul>
-      </ng-template>
-    </sds-search-result-list>
-    <hr class="margin-top-4" />
-    <p>Apply different items to the example:</p>
-   <button (click)="items = defaultModel" class="usa-button usa-button--base" [ngClass]="{ 'usa-button--active': items === defaultModel }">
-      5 Item List
-    </button>
-    <button (click)="items = emptyModel" class="usa-button usa-button--base" [ngClass]="{ 'usa-button--active': items === null }">
-      Empty List
-    </button>
-    <button (click)="items = errorModel" class="usa-button usa-button--base" [ngClass]="{ 'usa-button--active': items === errorModel }">
-      Error
-    </button>
-    <button (click)="items = infoModel" class="usa-button usa-button--base" [ngClass]="{ 'usa-button--active': items === infoModel }">
-      Info
-    </button>
-  </sds-page>
+  <sds-search-result-list [model]="items">
+    <ng-template #resultContent let-item>
+      <ul class="usa-list usa-list--unstyled">
+        <li>ID {{ item.id }} - {{ item.title }}</li>
+      </ul>
+    </ng-template>
+  </sds-search-result-list>
+
+  <hr class="margin-top-4" />
+  <p>Apply different items to the example:</p>
+  <button (click)="items = defaultModel" class="usa-button usa-button--base"
+    [ngClass]="{ 'usa-button--active': items === defaultModel }">
+    5 Item List
+  </button>
+  <button (click)="items = initialModel" class="usa-button usa-button--base"
+    [ngClass]="{ 'usa-button--active': items === null }">
+    Initial Message
+  </button>
+  <button (click)="items = errorModel" class="usa-button usa-button--base"
+    [ngClass]="{ 'usa-button--active': items === errorModel }">
+    Error
+  </button>
+  <button (click)="items = infoModel" class="usa-button usa-button--base"
+    [ngClass]="{ 'usa-button--active': items === infoModel }">
+    Info
+  </button>
+
+  <button (click)="items = emptyModel" class="usa-button usa-button--base"
+    [ngClass]="{ 'usa-button--active': items === emptyModel }">
+    Empty results
+  </button>
+</sds-page>

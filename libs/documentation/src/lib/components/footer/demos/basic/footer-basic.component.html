@@ -1,1 +1,4 @@
-<sds-footer [model]="modelFooter" (linkEvent)="linkEvent.next($event)"></sds-footer>
+<sds-footer [model]="modelFooter"
+  [feedbackModel]="feedbackModel"
+  (linkEvent)="linkEvent.next($event)" 
+  (feedbackSubmit)="onFeedbackSubmit($event)"></sds-footer>
