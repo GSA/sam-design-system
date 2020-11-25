@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, HostListener } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, HostListener, TemplateRef } from '@angular/core';
 import { HeaderModel, HeaderNavigationLink, HeaderSecondaryLink } from './model/HeaderModel';
 import { INavigationLink, NavigationMode, Selectable } from '@gsa-sam/components';
 import { NavigationHelper } from '@gsa-sam/components';
@@ -32,6 +32,8 @@ export class SdsHeaderComponent {
   @Input() topBannerDescription = '';
 
   @Input() showHeaderLogo = true;
+
+  @Input() alertsTemplate: TemplateRef<any>;
 
   /**
    * event for event based

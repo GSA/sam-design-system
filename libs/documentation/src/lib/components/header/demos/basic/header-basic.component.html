@@ -1,2 +1,6 @@
-<sds-header #header [model]="modelHeader" (linkEvent)="linkEvent.next($event)"></sds-header>
+<sds-header #header [model]="modelHeader" (linkEvent)="linkEvent.next($event)" [alertsTemplate]="alerts"></sds-header>
+
+<ng-template #alerts>
+  <sds-system-alert></sds-system-alert>
+</ng-template>
 
