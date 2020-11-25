@@ -1,25 +1,22 @@
 <!-- Actions Menu Trigger: Desktop -->
-<span class="display-none desktop-lg:display-inline-block">
+<span class="display-none desktop:display-inline-block">
   <button
-    class="sds-button sds-button--labeled-icon"
+    class="sds-button sds-button--labeled-icon actions-button"
     [sdsMenuTriggerFor]="menu"
   >
     Actions
-    <fa-layers [fixedWidth]="true" size="lg">
-      <fa-icon [icon]="['fas', 'circle']"></fa-icon>
-      <fa-icon [icon]="['fas', 'ellipsis-v']" transform="shrink-6"></fa-icon>
-    </fa-layers>
+    <sds-icon [icon]="['bs', 'three-dots-vertical']" [size]="'lg'" class="ellipsis-icon"></sds-icon>
   </button>
 </span>
 
 <!-- Actions Menu Trigger: Tablet -->
-<span class="desktop-lg:display-none ">
+<span class="desktop:display-none ">
   <span class="display-none tablet-lg:display-inline-block">
     <button
-      class="sds-button sds-button--primary sds-button--circular"
+      class="sds-button sds-button--circular actions-button"
       [sdsMenuTriggerFor]="menu"
     >
-      <fa-icon [fixedWidth]="true" [icon]="['fas', 'ellipsis-v']"></fa-icon>
+      <sds-icon [icon]="['bs', 'three-dots-vertical']" [size]="'lg'" class="ellipsis-icon"></sds-icon>
       <span class="usa-sr-only">Toggle Actions Menu</span>
     </button>
   </span>
@@ -28,11 +25,10 @@
 <!-- Actions Menu Trigger: Mobile -->
 <span class="tablet-lg:display-none">
   <button
-    *ngFor="let button of model.actions"
-    (click)="clicks.emit(button.id)"
-    class="sds-button sds-button--circular margin-top-05 tablet:margin-top-0"
+  class="sds-button sds-button--circular actions-button margin-top-05 tablet:margin-top-0"
+    [sdsMenuTriggerFor]="menu"
   >
-    <fa-icon [fixedWidth]="true" [icon]="['sds', button.icon]"></fa-icon>
+  <sds-icon [icon]="['bs', 'three-dots-vertical']" [size]="'lg'" class="ellipsis-icon"></sds-icon>
   </button>
 </span>
 

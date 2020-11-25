@@ -1,0 +1,21 @@
+.sds-navbar{
+  ::ng-deep{
+    sds-button-group{
+      width: 100%;
+      margin: 0;
+      mat-button-toggle-group{
+        width: 100%;
+        mat-button-toggle{
+          flex: 1 1 0px;
+          .mat-button-toggle-label-content{
+            width: 100%;
+            .usa-button.usa-button--outline{
+              display: flex;
+              justify-content: center;
+            }
+          }
+        }
+      }
+    }
+  }
+}

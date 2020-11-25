@@ -1,0 +1,22 @@
+<div class="scroll-container">
+  <div class="wide-container">
+    <sds-subheader>
+      <!-- =============== BACK BUTTON =============== -->
+      <button class="sds-button sds-button--circular">
+        <sds-icon [icon]="['bs', 'chevron-left']"></sds-icon>
+        <span class="usa-sr-only">Go Back</span>
+      </button>
+
+      <!-- =============== TITLE =============== -->
+      <span class="sds-navbar__title">
+        Contract Opportunities
+      </span>
+
+      <!-- =============== ACTIONS BUTTONS =============== -->
+      <sds-subheader-actions
+        [model]="subheader"
+        (clicks)="onActionMenuItem($event)"
+      ></sds-subheader-actions>
+    </sds-subheader>
+  </div>
+</div>
