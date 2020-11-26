@@ -265,6 +265,10 @@
 
 .px-video-container {
   position: relative;
+  min-width: 200px;
+}
+#videoPlayer{
+  min-width: 200px;
 }
 .px-video-container.fullscreen {
   position: fixed;

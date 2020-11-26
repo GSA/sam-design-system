@@ -2,13 +2,14 @@ import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { FormGroup } from '@angular/forms';
 import { AutocompleteSampleDataService } from './services/autocomplete-sample.service';
 import {
-  SelectionMode, SDSSelectedItemModel, SDSAutocompletelConfiguration
+  SelectionMode,
+  SDSSelectedItemModel,
+  SDSAutocompletelConfiguration
 } from '@gsa-sam/components';
 import { Injectable } from '@angular/core';
 
 @Injectable()
 export class FilterService {
-
   public settings = new SDSAutocompletelConfiguration();
   public autocompleteModel = new SDSSelectedItemModel();
 
@@ -18,6 +19,7 @@ export class FilterService {
   public fields: FormlyFieldConfig[] = [
     {
       key: 'keyword',
+      hide: true,
       templateOptions: { label: 'Keyword' },
       type: 'input'
     },
@@ -217,11 +219,9 @@ export class FilterService {
     }
   ];
 
-
   constructor(public service: AutocompleteSampleDataService) {
     this.setup();
   }
-
 
   changes(value) {
     console.log(value);

@@ -1,0 +1,5 @@
+<div class="margin-bottom-5">
+  The beta.sam logo in the header can be toggled off using <code>[showHeaderLogo]</code> input. A value of <code>false</code> will hide the
+  beta.sam logo
+</div>
+<sds-header #header [model]="modelHeader" [showHeaderLogo]="false" (linkEvent)="linkEvent.next($event)"></sds-header>

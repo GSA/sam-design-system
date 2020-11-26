@@ -48,6 +48,8 @@ export class SdsHeaderComponent {
 
   @Input() topBannerDescription = '';
 
+  @Input() showHeaderLogo = true;
+
   /**
    * event for event based
    */

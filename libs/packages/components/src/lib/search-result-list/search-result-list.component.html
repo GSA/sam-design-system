@@ -6,34 +6,84 @@
   </div>
   <hr *ngIf="divider && updateModel?.results?.length" class="thin" />
 </ng-container>
-<ng-container *ngIf="(updateModel == null || (!updateModel?.metadata?.messages && updateModel?.results?.length === 0))">
+
+<ng-container *ngIf="(noResultsTemplate && !(updateModel?.results?.length))" [ngTemplateOutlet]="noResultsTemplate"
+  [ngTemplateOutletContext]="{$implicit:updateModel}">
+</ng-container>
+
+<!-- <ng-container *ngIf="(!updateModel?.metadata?.messages && updateModel?.results?.length === 0)">
   <div class="sds-card sds-card--vertical sds-card--shadowed sds-card--bordered">
-    <div class="sds-card__header">
-      <fa-icon [icon]="['sds', 'search']" [classes]="['search']" size="7x"></fa-icon>
-    </div>
-    <div class="sds-card__body margin-2">
-      <h1 class="sds-card__title">No matches found</h1>
-      <p>We couldn't find a match for your search criteria.</p>
-      <p>Please try another search or go back to previous results.</p>
-      <div class="margin-top-3">
-        <button class="usa-button usa-button--outline" (click)="goBack()">Go Back</button>
+
+    This is initial template
+  </div>
+</ng-container> -->
+
+<ng-container *ngIf="!noResultsTemplate">
+  <ng-container
+    *ngIf="(updateModel == null || (!updateModel?.metadata?.messages && updateModel?.results?.length === 0))">
+    <ng-container *ngIf="!initialLoad">
+      <div class="sds-card sds-card--vertical sds-card--shadowed sds-card--bordered">
+        <div class="sds-card__header">
+          <sds-icon [icon]="['bs', 'search']" [size]="'5x'"></sds-icon>
+        </div>
+        <div class="sds-card__body margin-2">
+          <h1 class="sds-card__title">No matches found</h1>
+          <p>We couldn't find a match for your search criteria.</p>
+          <p>Please try another search or go back to previous results.</p>
+          <div class="margin-top-3">
+            <button class="usa-button usa-button--outline" (click)="goBack()">Go Back</button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="initialLoad">
+      <div class="sds-card sds-card--vertical sds-card--shadowed sds-card--bordered">
+        <div class="sds-card__header">
+          <sds-icon [icon]="['bs', 'arrow-left-circle-fill']" [size]="'5x'"></sds-icon>
+        </div>
+        <div class="sds-card__body margin-2">
+          <h1 class="sds-card__title">Select Criteria</h1>
+          <p>Choose your filters and run your report to begin.</p>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+
+  <ng-container *ngIf="updateModel?.metadata?.messages">
+    <div *ngFor="let msg of updateModel.metadata.messages"
+      class="sds-card sds-card--vertical sds-card--shadowed sds-card--bordered" [ngClass]="msg.classes">
+      <div class="sds-card__header">
+        <sds-icon
+          [icon]="(msg.type ==='error') ?  ['sds', 'alert-error'] :( (msg.type ==='info') ? ['bs', 'info-circle'] :( (msg.type ==='initial') ? ['bs', 'arrow-left-circle-fill']: ['bs', 'search']))"
+          [size]="'5x'">
+        </sds-icon>
+      </div>
+      <div class="sds-card__body margin-2">
+        <h1 class="sds-card__title">{{msg.title}}</h1>
+        <p [innerHTML]="msg.message"></p>
+        <div class="sds-card__buttons">
+          <button *ngFor="let button of msg.buttons" class="usa-button"
+            [ngClass]="button.classes ? button.classes : 'usa-button--outline'" (click)="button.action()">
+            {{button.text}}
+          </button>
+        </div>
       </div>
     </div>
-  </div>
+  </ng-container>
 </ng-container>
 <ng-container *ngIf="updateModel?.metadata?.messages">
-  <div *ngFor="let msg of updateModel.metadata.messages" class="sds-card sds-card--vertical sds-card--shadowed sds-card--bordered"
-    [ngClass]="msg.classes">
+  <div *ngFor="let msg of updateModel.metadata.messages"
+    class="sds-card sds-card--vertical sds-card--shadowed sds-card--bordered" [ngClass]="msg.classes">
     <div class="sds-card__header">
-      <fa-icon [icon]="(msg.type ==='error') ?  ['sds', 'alert-error'] : ['sds', 'information-circle']" class="sds-card__icon"
-        size="5x"></fa-icon>
+      <fa-icon [icon]="(msg.type ==='error') ?  ['sds', 'alert-error'] : ['sds', 'information-circle']"
+        class="sds-card__icon" size="5x"></fa-icon>
     </div>
     <div class="sds-card__body margin-2">
       <h1 class="sds-card__title">{{msg.title}}</h1>
       <p [innerHTML]="msg.message"></p>
       <div class="sds-card__buttons">
-        <button *ngFor="let button of msg.buttons" class="usa-button" [ngClass]="button.classes ? button.classes : 'usa-button--outline'"
-          (click)="button.action()">
+        <button *ngFor="let button of msg.buttons" class="usa-button"
+          [ngClass]="button.classes ? button.classes : 'usa-button--outline'" (click)="button.action()">
           {{button.text}}
         </button>
       </div>

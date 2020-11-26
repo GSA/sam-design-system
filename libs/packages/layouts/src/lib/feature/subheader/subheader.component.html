@@ -1,33 +1,17 @@
 <div class="sds-navbar border-bottom border-base-lighter">
-  <div class="sds-navbar__content">
-    <div class="grid-row">
-      <div
-        class="grid-col-12 tablet-lg:grid-col-auto display-flex flex-align-center margin-bottom-1 tablet-lg:margin-bottom-0"
-      >
-        <ng-content></ng-content>
-      </div>
-      <div class="grid-col-12 tablet-lg:grid-col-fill display-flex">
-        <div class="tablet-lg:order-1">
-          <!-- Buttons -->
-          <ng-content select="[subheader-buttons-container]"></ng-content>
-        </div>
-        <div class="flex-fill">
-          <!-- Search -->
-          <div class="margin-x-105 margin-top-05 tablet:margin-top-0">
-            <ng-content select="sds-search"></ng-content>
-          </div>
-        </div>
-        <div class="tablet-lg:order-2 margin-left-2">
-          <!-- Actions Menu Trigger -->
-          <ng-content select="sds-subheader-actions"></ng-content>
-
-          <!-- Drawer Trigger -->
-          <ng-content select="sds-subheader-drawer"></ng-content>
-        </div>
-      </div>
+  <div class="sds-subheader__content">
+    <div class="order-first grid-col-auto">
+      <ng-content></ng-content>
+    </div>
+    <div class="margin-x-105 margin-top-05 tablet:margin-top-0 tablet:order-0 grid-col-fill display-flex flex-justify-end tablet-lg:flex-justify-start tablet-lg:padding-left-6">
+      <ng-content select="sds-search"></ng-content>
+    </div>
+    <div class="order-last grid-col-12 tablet:order-1 tablet:grid-col-auto display-flex button-container">
+      <ng-content select="[subheader-buttons-container]"></ng-content>
+      <ng-content select="[subheader-buttongroup-container]"></ng-content>
+    </div>
+    <div class="order-2 tablet:margin-left-2 grid-col-auto actions-div">
+      <ng-content select="sds-subheader-actions"></ng-content>
     </div>
   </div>
 </div>
-
-<!-- =============== DRAWER CONTENT =============== -->
-<sds-drawer-content></sds-drawer-content>

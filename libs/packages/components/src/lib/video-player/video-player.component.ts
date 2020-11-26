@@ -1,4 +1,4 @@
-import { Component, Input, AfterViewInit, ViewEncapsulation } from '@angular/core';
+import { Component,ViewChild, Input,ElementRef, AfterViewInit, ViewEncapsulation } from '@angular/core';
 import { GLOBAL_STRINGS } from 'accessible-html5-video-player/js/strings.js';
 import * as InitPxVideo from 'accessible-html5-video-player/js/px-video.js';
 import { VPInterface } from './video-player';
@@ -25,6 +25,7 @@ declare class InitPxVideo {
 })
 export class SdsVideoPlayerComponent implements AfterViewInit {
   @Input() VPConfiguration: VPInterface;
+  @ViewChild('video') video: ElementRef;
   private config: InitPxVideoConfig;
 
   @Input() crossorigin = "";
@@ -42,6 +43,8 @@ export class SdsVideoPlayerComponent implements AfterViewInit {
     }
 
     new InitPxVideo(this.config);
+    this.video.nativeElement.setAttribute("style", "width:"+this.VPConfiguration.width+";");
+    
   }
 
   constructor() {

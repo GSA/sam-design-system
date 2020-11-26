@@ -11,6 +11,8 @@ import {
 } from './../shared/index';
 import { ComponentWrapperComponent } from './../../shared/component-wrapper/component-wrapper.component';
 import { HeaderBasicModule } from './demos/basic/header-basic.module';
+import { HeaderHiddenLogoComponent } from './demos/header-hidden-logo/header-hidden-logo.component';
+import { SdsHeaderModule } from '@gsa-sam/layouts';
 
 export declare var require: any;
 
@@ -22,6 +24,13 @@ const DEMOS = {
     markup: require('!!raw-loader!./demos/basic/header-basic.component.html'),
     readme: require('!!raw-loader!./demos/basic/readme.md'),
     path: 'libs/documentation/src/lib/components/header/demos/basic'
+  },
+  hiddenLogo: {
+    title: 'SAM Header - Blank SAM Logo',
+    type: HeaderHiddenLogoComponent,
+    code: require('!!raw-loader!./demos/header-hidden-logo/header-hidden-logo.component'),
+    markup: require('!!raw-loader!./demos/header-hidden-logo/header-hidden-logo.component.html'),
+    path: 'libs/documentation/src/lib/components/header/demos/header-hidden-logo'
   }
 };
 
@@ -54,8 +63,11 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
+    SdsHeaderModule,
     HeaderBasicModule
-  ]
+  ],
+  declarations: [HeaderHiddenLogoComponent],
+  entryComponents: [HeaderHiddenLogoComponent],
 })
 export class HeaderModule {
   constructor(demoList: DocumentationDemoList) {

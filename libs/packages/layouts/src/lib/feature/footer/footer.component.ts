@@ -1,7 +1,15 @@
-import { Component, Input, Output, EventEmitter, OnInit, HostListener } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnInit,
+  HostListener
+} from '@angular/core';
 import { FooterModel } from './model/FooterModel';
 import { INavigationLink } from '@gsa-sam/components';
 import { NavigationHelper } from '@gsa-sam/components';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'sds-footer',
@@ -21,14 +29,17 @@ export class SdsFooterComponent implements OnInit {
    * Model used for the different display portions of the footer
    */
   @Input() model: FooterModel;
-  @Input() isCollapsedContent: boolean = true;
-  isCollapsedMobile: boolean = true;
+  @Input() isCollapsedContent = true;
+  @Input() feedbackModel: FormControl = new FormControl('');
 
   /**
    * event for event based
    */
   @Output()
   linkEvent = new EventEmitter<INavigationLink>();
+
+  @Output()
+  feedbackSubmit = new EventEmitter<string>();
 
   /**
    * Link clicked and emits the link data into an event
@@ -39,12 +50,7 @@ export class SdsFooterComponent implements OnInit {
     return false;
   }
 
-  ngOnInit() {
-    this.expandedIndex = -1
+  onFeedbackSubmitClicked() {
+    this.feedbackSubmit.emit(this.feedbackModel.value);
   }
-
-  collapse(index: number) {
-    this.expandedIndex = index === this.expandedIndex ? -1 : index;
-  }
-
 }

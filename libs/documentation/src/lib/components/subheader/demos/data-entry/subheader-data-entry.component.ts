@@ -12,10 +12,10 @@ import {
 } from '@gsa-sam/sam-formly';
 
 @Component({
-  templateUrl: './subheader-basic.component.html',
-  styleUrls: ['./subheader-basic.component.scss']
+  templateUrl: './subheader-data-entry.component.html',
+  styleUrls: ['./subheader-data-entry.component.scss']
 })
-export class SubHeaderBasic {
+export class SubheaderDataEntryComponent {
   subheader = {
     buttons: [
       { id: 'FirstButton', text: 'Button', class: 'usa-button--secondary' },
@@ -94,10 +94,10 @@ export class SubHeaderBasic {
   options: FormlyFormOptions;
   downloadResponse = {};
 
-  constructor(public dialog: SdsDialogService) { }
+  constructor(public dialog: SdsDialogService) {}
   onActionMenuItem(btnId) {
     if (btnId == 'DownloadBtn') {
-      const data: any = {
+      const data: SdsFormlyDialogData = {
         fields: this.fields,
         model: this.model,
         submit: 'Download',
