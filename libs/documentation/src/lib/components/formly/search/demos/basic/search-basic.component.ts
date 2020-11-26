@@ -5,26 +5,25 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 @Component({
   templateUrl: './search-basic.component.html',
 })
-
 export class SearchBasic {
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
- 
+
   fields: FormlyFieldConfig[] = [
     {
       key: 'filter',
       templateOptions: {
         label: 'Keyword (with label)',
-        ariaHidden: true
+        ariaHidden: true,
       },
       fieldGroup: [
         {
           key: 'searchmodel',
           type: 'search',
           templateOptions: {
-            label: 'Search'
-          }
+            label: 'Search',
+          },
         },
 
         {
@@ -37,11 +36,11 @@ export class SearchBasic {
                 options: [
                   { label: '30 Days', value: '30' },
                   { label: '60 Days', value: '60' },
-                  { label: '90 Days', value: '90' }
-                ]
-              }
-            }
-          }
+                  { label: '90 Days', value: '90' },
+                ],
+              },
+            },
+          },
         },
 
         {
@@ -55,13 +54,13 @@ export class SearchBasic {
                 options: [
                   { label: '30 Days', value: '30' },
                   { label: '60 Days', value: '60' },
-                  { label: '90 Days', value: '90' }
-                ]
-              }
-            }
-          }
-        }
-      ]
-    }
+                  { label: '90 Days', value: '90' },
+                ],
+              },
+            },
+          },
+        },
+      ],
+    },
   ];
 }

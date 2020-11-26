@@ -16,7 +16,7 @@ import { FormControl } from '@angular/forms';
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
-export class SdsFooterComponent implements OnInit {
+export class SdsFooterComponent {
   public innerWidth: any;
   public expandedIndex: number;
 
