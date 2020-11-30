@@ -5,7 +5,7 @@ import {
   TemplateRef,
   ElementRef,
   forwardRef,
-  ChangeDetectorRef
+  ChangeDetectorRef,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { SDSAutocompleteServiceInterface } from './models/SDSAutocompleteServiceInterface';
@@ -13,23 +13,23 @@ import { KeyHelper, KEYS } from '../key-helper/key-helper';
 import { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';
 import {
   SelectionMode,
-  SDSSelectedItemModelHelper
+  SDSSelectedItemModelHelper,
 } from '../selected-result/models/sds-selected-item-model-helper';
 import { SDSAutocompleteSearchConfiguration } from './models/SDSAutocompleteConfiguration';
 const Autocomplete_Autocomplete_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => SDSAutocompleteSearchComponent),
-  multi: true
+  multi: true,
 };
 
 @Component({
   selector: 'sds-search-autocomplete',
   templateUrl: './autocomplete-search.component.html',
   styleUrls: ['./autocomplete-search.component.scss'],
-  providers: [Autocomplete_Autocomplete_VALUE_ACCESSOR]
+  providers: [Autocomplete_Autocomplete_VALUE_ACCESSOR],
 })
 export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
-  constructor(private _changeDetectorRef: ChangeDetectorRef) { }
+  constructor(private _changeDetectorRef: ChangeDetectorRef) {}
   /**
    * Ul list of elements
    */
@@ -182,6 +182,12 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    */
   public clearInput(): void {
     this.inputValue = '';
+    if (this.configuration.selectionMode === SelectionMode.SINGLE) {
+      if (this.model.items.length > 0) {
+        SDSSelectedItemModelHelper.clearItems(this.model.items);
+        this.propogateChange(this.model);
+      }
+    }
     this.onTouchedCallback();
     this.clearAndHideResults();
   }
@@ -206,7 +212,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
             this.model.items[0],
             this.configuration.primaryTextField
           );
-
         }
       } else {
         this.inputValue = '';
@@ -253,7 +258,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * @param event
    */
   onKeydown(event): void {
-    if(KeyHelper.is(KEYS.ALT, event)){  
+    if (KeyHelper.is(KEYS.ALT, event)) {
       event.preventDefault();
       this.inputFocusHandler();
     }
@@ -367,7 +372,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
         selectedChild.scrollIntoView({
           behavior: 'smooth',
           block: 'center',
-          inline: 'start'
+          inline: 'start',
         });
       }
     }
@@ -442,7 +447,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    */
   checkItemSelected(result: any) {
     const selectedItem = this.model.items.filter(
-      item =>
+      (item) =>
         item[this.configuration.primaryKeyField] ===
         result[this.configuration.primaryKeyField]
     );
@@ -463,7 +468,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
         window.clearTimeout(this.timeoutNumber);
         this.timeoutNumber = window.setTimeout(() => {
           this.showLoad = true;
-          this.service.getDataByText(0, searchString).subscribe(result => {
+          this.service.getDataByText(0, searchString).subscribe((result) => {
             this.results = result.items;
             this.showLoad = false;
             this.maxResults = result.totalItems;
@@ -515,7 +520,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     this.showLoad = true;
     this.service
       .getDataByText(this.results.length, this.searchString)
-      .subscribe(result => {
+      .subscribe((result) => {
         for (let i = 0; i < result.items.length; i++) {
           this.addResult(result.items[i]);
         }
