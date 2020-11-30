@@ -15,7 +15,8 @@ import {
   SelectionMode,
   SDSSelectedItemModelHelper
 } from '../selected-result/models/sds-selected-item-model-helper';
-import { fas } from '@fortawesome/free-solid-svg-icons'; import { sds } from '@gsa-sam/sam-styles/src/icons/';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { sds } from '@gsa-sam/sam-styles/src/icons/';
 import { SDSAutocompleteSearchConfiguration } from './models/SDSAutocompleteConfiguration';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 const Autocomplete_Autocomplete_VALUE_ACCESSOR: any = {
@@ -31,7 +32,10 @@ const Autocomplete_Autocomplete_VALUE_ACCESSOR: any = {
   providers: [Autocomplete_Autocomplete_VALUE_ACCESSOR]
 })
 export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
-  constructor(private _changeDetectorRef: ChangeDetectorRef, library: FaIconLibrary) {
+  constructor(
+    private _changeDetectorRef: ChangeDetectorRef,
+    library: FaIconLibrary
+  ) {
     library.addIconPacks(fas, sds);
   }
   /**
@@ -186,6 +190,12 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    */
   public clearInput(): void {
     this.inputValue = '';
+    if (this.configuration.selectionMode === SelectionMode.SINGLE) {
+      if (this.model.items.length > 0) {
+        SDSSelectedItemModelHelper.clearItems(this.model.items);
+        this.propogateChange(this.model);
+      }
+    }
     this.onTouchedCallback();
     this.clearAndHideResults();
   }
@@ -210,7 +220,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
             this.model.items[0],
             this.configuration.primaryTextField
           );
-
         }
       } else {
         this.inputValue = '';
@@ -257,7 +266,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * @param event
    */
   onKeydown(event): void {
-    if(KeyHelper.is(KEYS.ALT, event)){  
+    if (KeyHelper.is(KEYS.ALT, event)) {
       event.preventDefault();
       this.inputFocusHandler();
     }
