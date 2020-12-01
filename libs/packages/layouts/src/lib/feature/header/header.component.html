@@ -1,7 +1,7 @@
 <sds-top-banner *ngIf="showTopBanner" [description]="topBannerDescription"></sds-top-banner>
 
 <div *ngIf="alertsTemplate">
-  <ng-container *ngTemplateOutlet="alertsTemplate"></ng-container>
+  <ng-container [ngTemplateOutlet]="alertsTemplate"></ng-container>
 </div>
 
 <div class="usa-overlay" [class.is-visible]="mobileNavActive" (click)="closeMobileNav()"></div>

@@ -1,0 +1,7 @@
+<sds-header #header [model]="modelHeader" (linkEvent)="linkEvent.next($event)" [alertsTemplate]="alertsTemplate"></sds-header>
+
+<ng-template #alertsTemplate>
+  <sds-system-alert *ngIf="alerts && alerts.length" 
+    [alerts]="alerts" (seeAllAlerts)="onSeeAllAlerts()"></sds-system-alert>
+</ng-template>
+

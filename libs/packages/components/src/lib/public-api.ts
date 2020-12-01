@@ -26,7 +26,6 @@ export * from './selected-result/models/SDSSelectedResultConfiguration';
 export * from './selected-result/selected-result.module';
 export * from './side-navigation/model/side-navigation-model';
 export * from './side-navigation/side-navigation.module';
-export * from './system-alert/system-alert.module';
 export * from './tab-outside/taboutside.module';
 export * from './text/text.component';
 export * from './text/text.module';
