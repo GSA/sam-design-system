@@ -6,7 +6,7 @@ import {
   AfterViewInit,
   forwardRef,
   ChangeDetectionStrategy,
-  ChangeDetectorRef
+  ChangeDetectorRef, Output, EventEmitter
 } from '@angular/core';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { ViewportRuler } from '@angular/cdk/overlay';
@@ -40,6 +40,8 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
   @Input() inputClass: string;
   @Input() parentSelector: string;
   @Input() searchSettings: SearchSettings = new SearchSettings();
+
+  @Output() submit: EventEmitter<{searchText: string}> = new EventEmitter(null);
 
   model: any = {};
   inputState = {
@@ -82,11 +84,7 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
       this.setInputVisibleStyles();
       this.focusMonitor.focusVia(this.inputEl, 'program');
     } else if (this.inputEl || this.selectEl) {
-      this.model.searchText = this.inputEl? this.inputEl.nativeElement.value : '';
-      if (this.selectEl && this.selectEl.nativeElement.value) {
-        this.model.searchCategory = this.selectEl.nativeElement.value;
-      }
-      this._onChange(this.model);
+      this.submit.emit(this.model);
     }
   }
 

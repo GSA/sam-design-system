@@ -66,6 +66,14 @@ describe('SearchComponent', () => {
     expect(component.model.searchText).toBe('test');
   });
 
+  it('Should emit on submit output on click event', () => {
+    const model = {searchText: 'abc'};
+    component.model = model;
+    spyOn(component.submit, 'emit');
+    component.handleClick({preventDefault: () => {}});
+    expect(component.submit.emit).toHaveBeenCalledWith(model)
+  });
+
   it('Should check the Initial State Visible', () => {
     expect(component.inputState.visible).toBe(
       component.inputState.initial.visible
