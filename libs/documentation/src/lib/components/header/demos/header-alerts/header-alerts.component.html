@@ -2,6 +2,6 @@
 
 <ng-template #alertsTemplate>
   <sds-system-alert *ngIf="alerts && alerts.length" 
-    [alerts]="alerts" (seeAllAlerts)="onSeeAllAlerts()"></sds-system-alert>
+    [alerts]="alerts" (seeAllAlerts)="onSeeAllAlerts()" (detailsClicked)="onShowDetailsClicked($event)"></sds-system-alert>
 </ng-template>
 

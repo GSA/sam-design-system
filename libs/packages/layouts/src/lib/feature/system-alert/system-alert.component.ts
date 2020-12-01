@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Alert } from './model/alert.model';
 
 @Component({
   selector: 'sds-system-alert',
@@ -7,7 +8,7 @@ import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core
 })
 export class SystemAlertComponent {
 
-  @Input() alerts: any[];
+  @Input() alerts: Alert[];
   
   @Output() seeAllAlerts = new EventEmitter();
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { HeaderModel } from '@gsa-sam/layouts';
+import { Alert, HeaderModel } from '@gsa-sam/layouts';
 import { NavigationMode } from '@gsa-sam/components';
 import { LocationStrategy } from '@angular/common';
 
@@ -88,14 +88,14 @@ export class HeaderAlertsComponent implements OnInit {
     }
   };
 
-  alerts = [
+  alerts: Alert[] = [
     {
       header: 'Test Alert',
-      date: new Date().toDateString()
+      date: new Date()
     },
     {
       header: 'New Alert New Alert New Alert New Alert New Alert New Alert New Alert New Alert New Alert New Alert New Alert ',
-      date: new Date().toDateString(),
+      date: new Date(),
     }
   ];
 
@@ -108,5 +108,9 @@ export class HeaderAlertsComponent implements OnInit {
 
   onSeeAllAlerts() {
     console.log('See All Alerts Clicked');
+  }
+
+  onShowDetailsClicked(alert) {
+    console.log('Show Details for alert', alert);
   }
 }

@@ -9,7 +9,7 @@ import { SystemAlertComponent } from './system-alert.component';
     SdsIconModule,
   ],
   declarations: [
-    SystemAlertComponent
+    SystemAlertComponent,
   ],
   exports: [
     SystemAlertComponent

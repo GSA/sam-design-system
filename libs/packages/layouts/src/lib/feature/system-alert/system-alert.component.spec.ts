@@ -13,7 +13,7 @@ fdescribe('SystemAlertComponent', () => {
       imports: [
         SdsIconModule,
       ],
-      declarations: [ SystemAlertComponent ]
+      declarations: [ SystemAlertComponent, ]
     })
     .compileComponents();
   }));
@@ -24,11 +24,11 @@ fdescribe('SystemAlertComponent', () => {
     component.alerts = [
       {
         header: 'Test Alert',
-        date: new Date().toDateString()
+        date: new Date()
       },
       {
         header: 'New Alert New Alert New Alert New Alert New Alert New Alert New Alert New Alert New Alert New Alert New Alert ',
-        date: new Date().toDateString(),
+        date: new Date(),
       }
     ];
     fixture.detectChanges();
