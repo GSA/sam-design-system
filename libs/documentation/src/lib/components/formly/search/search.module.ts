@@ -10,6 +10,8 @@ import { ComponentWrapperComponent } from '../../../shared/component-wrapper/com
 import { SearchBasicModule } from './demos/basic/search-basic.module';
 import { SearchOptionalModule } from './demos/optional/search-optional.module';
 import { SearchOptional } from './demos/optional/search-optional.component';
+import { SearchHandleSubmitModule } from './demos/submit/search-handle-submit.module';
+import { SearchHandleSubmit } from './demos/submit/search-handle-submit.component';
 
 declare var require: any;
 const DEMOS = {
@@ -26,6 +28,13 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/optional/search-optional.component'),
     markup: require('!!raw-loader!./demos/optional/search-optional.component.html'),
     path: 'libs/documentation/src/lib/components/formly/search/demos/optional'
+  },
+  handleSubmit: {
+    title: 'Handling Submit',
+    type: SearchHandleSubmit,
+    code: require('!!raw-loader!./demos/submit/search-handle-submit.component'),
+    markup: require('!!raw-loader!./demos/submit/search-handle-submit.component.html'),
+    path: 'libs/documentation/src/lib/components/formly/search/demos/submit'
   }
 };
 
@@ -55,10 +64,11 @@ export const ROUTES = [
 
 @NgModule({
   imports: [
-    CommonModule, 
+    CommonModule,
     DocumentationComponentsSharedModule,
     SearchBasicModule,
-    SearchOptionalModule
+    SearchOptionalModule,
+    SearchHandleSubmitModule
   ]
 })
 export class FormlySearchModule {
