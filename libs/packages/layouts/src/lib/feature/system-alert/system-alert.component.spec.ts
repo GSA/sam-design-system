@@ -2,24 +2,24 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { SdsIconModule } from '@gsa-sam/components';
 
-import { SystemAlertComponent } from './system-alert.component';
+import { SdsSystemAlertComponent } from './system-alert.component';
 
 fdescribe('SystemAlertComponent', () => {
-  let component: SystemAlertComponent;
-  let fixture: ComponentFixture<SystemAlertComponent>;
+  let component: SdsSystemAlertComponent;
+  let fixture: ComponentFixture<SdsSystemAlertComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         SdsIconModule,
       ],
-      declarations: [ SystemAlertComponent, ]
+      declarations: [ SdsSystemAlertComponent, ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SystemAlertComponent);
+    fixture = TestBed.createComponent(SdsSystemAlertComponent);
     component = fixture.componentInstance;
     component.alerts = [
       {
