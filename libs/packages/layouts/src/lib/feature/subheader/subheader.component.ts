@@ -10,7 +10,8 @@ import { SdsDrawerCommunicationService } from './drawer-communication.service';
 
 @Component({
   selector: 'sds-subheader',
-  templateUrl: 'subheader.component.html'
+  templateUrl: 'subheader.component.html',
+  styleUrls: ['subheader.component.scss']
 })
 export class SdsSubheaderComponent {
   constructor() {}
