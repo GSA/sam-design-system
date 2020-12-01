@@ -26,7 +26,6 @@ import { SdsButtonGroupModule } from 'libs/packages/sam-material-extensions/src/
     ReactiveFormsModule,
     SdsFormlyModule,
     FormlyModule,
-    // FormlyModule,
     SdsIconModule,
     SdsButtonGroupModule
   ],

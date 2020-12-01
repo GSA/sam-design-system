@@ -1,10 +1,8 @@
-import { Component, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { FormGroup } from '@angular/forms';
 import {
   SdsDialogService,
-  SdsDialogRef,
-  SDS_DIALOG_DATA
 } from '@gsa-sam/components';
 import {
   SdsFormlyDialogComponent,
@@ -27,9 +25,7 @@ export class SubheaderSearchComponent {
       { id: 'ShareBtn', icon: 'bars', text: 'Share' }
     ]
   };
-  log(value) {
-    console.log(`%cLog: ${value}`, 'color: blue; font-weight: bold');
-  }
+
   // Code begin for download
   fields: FormlyFieldConfig[] = [
     {
