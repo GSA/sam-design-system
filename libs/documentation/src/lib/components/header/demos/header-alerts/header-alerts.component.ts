@@ -91,11 +91,14 @@ export class HeaderAlertsComponent implements OnInit {
   alerts: Alert[] = [
     {
       header: 'Test Alert',
-      date: new Date()
+      date: new Date(),
+      description: 'Test Alert Description',
     },
     {
-      header: 'New Alert New Alert New Alert New Alert New Alert New Alert New Alert New Alert New Alert New Alert New Alert ',
+      header: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
       date: new Date(),
+      description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. \
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur',
     }
   ];
 

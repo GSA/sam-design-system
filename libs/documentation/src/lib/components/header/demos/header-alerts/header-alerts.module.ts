@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from "@angular/core";
-import { SdsHeaderModule, SystemAlertModule } from '@gsa-sam/layouts';
+import { SdsHeaderModule, SdsSystemAlertModule } from '@gsa-sam/layouts';
 import { HeaderAlertsComponent } from './header-alerts.component';
 
 @NgModule({
   imports: [
     CommonModule,
     SdsHeaderModule,
-    SystemAlertModule,
+    SdsSystemAlertModule,
   ],
   declarations: [HeaderAlertsComponent],
   exports: [HeaderAlertsComponent],

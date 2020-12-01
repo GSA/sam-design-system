@@ -24,11 +24,13 @@ fdescribe('SystemAlertComponent', () => {
     component.alerts = [
       {
         header: 'Test Alert',
-        date: new Date()
+        date: new Date(),
+        description: 'Test Alert description'
       },
       {
         header: 'New Alert New Alert New Alert New Alert New Alert New Alert New Alert New Alert New Alert New Alert New Alert ',
         date: new Date(),
+        description: 'New Alert Description'
       }
     ];
     fixture.detectChanges();
