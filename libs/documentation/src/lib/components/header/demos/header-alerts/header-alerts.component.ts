@@ -6,7 +6,6 @@ import { LocationStrategy } from '@angular/common';
 
 @Component({
   templateUrl: './header-alerts.component.html',
-  styleUrls: ['./header-alerts.component.scss']
 })
 export class HeaderAlertsComponent implements OnInit {
 
