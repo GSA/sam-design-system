@@ -18,10 +18,11 @@
   </ng-container>
 </form>
 
-<ng-template #inputTemplate> <label class="usa-sr-only" for="search-field">Search</label>
+<ng-template #inputTemplate>
+  <label class="usa-sr-only" for="search-field">Search</label>
   <input #inputEl [value]="model.searchText? model.searchText :''" [ngClass]="inputClass" id="search-field" type="search" class="usa-input"
-    name="search" [placeholder]="searchSettings.placeholder? searchSettings.placeholder : 'type here'" />
-  <button class="usa-button" type="submit"  (click)="handleClick($event)">
+    name="search" [placeholder]="searchSettings.placeholder? searchSettings.placeholder : 'type here'" (blur)="focusChange();"/>
+  <button #buttonEl class="usa-button" type="submit"  (click)="handleClick($event)">
     <span class="usa-sr-only">Search</span>
   </button>
 </ng-template>

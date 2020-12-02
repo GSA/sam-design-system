@@ -9,15 +9,15 @@ export class DataService {
     this.data = registrationData._embedded.results;
     if (this.data) {
       if (search.filter) {
-        if (search.filter.keyword) {
+        if (search.filter[0].keyword) {
           const toReturn = [];
           for (let i = 0; i < this.data.length; i++) {
             const item = this.data[i];
             if (
-              search.filter.keyword &&
+              search.filter[0].keyword &&
               item.title
                 .toLowerCase()
-                .indexOf(search.filter.keyword.toLowerCase()) !== -1
+                .indexOf(search.filter[0].keyword.toLowerCase()) !== -1
             ) {
               toReturn.push(item);
             }

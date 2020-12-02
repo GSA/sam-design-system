@@ -29,7 +29,7 @@ const Autocomplete_Autocomplete_VALUE_ACCESSOR: any = {
   providers: [Autocomplete_Autocomplete_VALUE_ACCESSOR]
 })
 export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
-  constructor(private _changeDetectorRef: ChangeDetectorRef) { }
+  constructor(private _changeDetectorRef: ChangeDetectorRef) {}
   /**
    * Ul list of elements
    */
@@ -182,6 +182,12 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    */
   public clearInput(): void {
     this.inputValue = '';
+    if (this.configuration.selectionMode === SelectionMode.SINGLE) {
+      if (this.model.items.length > 0) {
+        SDSSelectedItemModelHelper.clearItems(this.model.items);
+        this.propogateChange(this.model);
+      }
+    }
     this.onTouchedCallback();
     this.clearAndHideResults();
   }
@@ -206,7 +212,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
             this.model.items[0],
             this.configuration.primaryTextField
           );
-
         }
       } else {
         this.inputValue = '';
@@ -253,6 +258,10 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * @param event
    */
   onKeydown(event): void {
+    if (KeyHelper.is(KEYS.ALT, event)) {
+      event.preventDefault();
+      this.inputFocusHandler();
+    }
     if (KeyHelper.is(KEYS.TAB, event)) {
       return;
     } else if (KeyHelper.is(KEYS.BACKSPACE, event)) {

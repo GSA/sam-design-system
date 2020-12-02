@@ -47,6 +47,11 @@ export class SdsFiltersComponent implements OnInit {
   @Input() advancedFilters: boolean = false;
 
   /**
+   * Sort the filters by alphabetical order
+   */
+  @Input() sortMoreFilterBy = '';
+
+  /**
    * Timer id for the timer awaiting the service call for more typeing
    */
   @Input() public isHistoryEnable: boolean = true;
@@ -85,9 +90,8 @@ export class SdsFiltersComponent implements OnInit {
     public formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,
     private cdr: ChangeDetectorRef,
     private router: Router,
-    private route: ActivatedRoute,
-    private datePipe: DatePipe
-  ) { }
+    private route: ActivatedRoute
+  ) {}
 
   @HostListener('window:popstate', ['$event'])
   onpopstate(event) {
@@ -155,7 +159,7 @@ export class SdsFiltersComponent implements OnInit {
       const params = this.convertToParam(queryObj);
       this.router.navigate(['.'], {
         relativeTo: this.route,
-        queryParams: params,
+        queryParams: params
         // TODO: Need this for future use case
         // queryParamsHandling: 'merge'
       });

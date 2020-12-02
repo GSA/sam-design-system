@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 
 @Component({
@@ -16,9 +16,22 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType
   };
   allComplete: boolean;
   ariaChecked = '';
+
+  constructor(private cdr: ChangeDetectorRef) {
+    super();
+  }
+
   ngOnInit() {
+    this.formControl.valueChanges.subscribe(values => {
+      const isChecked =
+        (Array.isArray(values) && values.length) > 0 ? true : false;
+      this.ariaChecked = isChecked.toString();
+      this.allComplete = isChecked;
+      this.cdr.detectChanges();
+    });
     this.someComplete();
   }
+
   onChange(value: any, checked: boolean) {
     if (this.to.type === 'array') {
       this.formControl.patchValue(

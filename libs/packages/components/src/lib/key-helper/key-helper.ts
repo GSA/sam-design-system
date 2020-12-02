@@ -3,7 +3,7 @@ export class KeyHelper {
   private _allowedKeys: string[] = [];
 
   private _currentlySupported = [
-    'enter','up','down','left','right','tab','esc','space',
+    'alt','enter','up','down','left','right','tab','esc','space',
     'shift','backspace','1','2','3','4','5','6','7','8',
     '9','0', 'delete'
   ];
@@ -79,6 +79,8 @@ export class KeyHelper {
     event: KeyboardEvent | any): boolean {
     let lowercased = validKeyParam.toLowerCase();
     switch (lowercased) {
+      case 'alt'  :
+        return this._isAltKey(event);
       case 'enter':
         return this._isEnter(event);
       case 'up':
@@ -138,6 +140,19 @@ export class KeyHelper {
       return false;
     }
   }
+  private static _isAltKey (e: KeyboardEvent | any) {
+    if (e.code === 'Alt'
+      || e.key === 'Alt'
+      || e.keyIdentifier === 'Alt'
+      || e.which === 18
+      || e.charCode === 18
+      || e.keyCode === 18) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 
   private static _isArrowUp (e: KeyboardEvent | any) {
     if (e.code === 'ArrowUp'
@@ -414,6 +429,7 @@ export class KeyHelper {
 
 export enum KEYS {
   'ENTER' = 'enter',
+  'ALT' = 'alt',
   'UP' = 'up',
   'DOWN' = 'down',
   'LEFT' = 'left',

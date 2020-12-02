@@ -1,12 +1,10 @@
-import {
-  Component
-} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   templateUrl: './result-list-basic.component.html'
 })
 export class ResultListBasic {
-  constructor() { }
+  constructor() {}
 
   itemsDefault = [
     { title: 'First', id: 1 },
@@ -61,7 +59,7 @@ export class ResultListBasic {
             {
               id: 'forward',
               text: 'Go forward',
-              classes: 'usa-button usa-button--secondary width-card margin-y-2',
+              classes: 'usa-button usa-button--secondary width-card margin-y-2'
             }
           ]
         }
@@ -73,6 +71,37 @@ export class ResultListBasic {
     results: this.itemsDefault
   };
   emptyModel = {
+    metadata: {
+      messages: [
+        {
+          type: 'empty',
+          title: 'No Search results',
+          message: `We couldn't find a match for your search criteria.`,
+          classes: 'usa-custom',
+          buttons: [
+            {
+              id: 'backward',
+              text: 'Go back',
+              classes: 'usa-button--secondary',
+              action: this.gobackbutton
+            }
+          ]
+        }
+      ]
+    },
+    results: []
+  };
+  initialModel = {
+    metadata: {
+      messages: [
+        {
+          type: 'initial',
+          title: 'Search Criteria',
+          message: `Choose your filter to run report`,
+          classes: 'usa-custom'
+        }
+      ]
+    },
     results: []
   };
   gobackbutton() {
