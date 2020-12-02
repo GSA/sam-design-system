@@ -1,6 +1,6 @@
 import { Component, AfterViewInit, ViewChild, OnInit } from '@angular/core';
 import { FormlyFieldConfig } from '@ngx-formly/core';
-import { BehaviorSubject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { DataService } from './data.service';
 import { SideNavigationModel } from '@gsa-sam/components';
 import { navigationConfig } from './navigate.config';
@@ -17,7 +17,7 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
   filterModel = {};
   options;
   filtersExpanded: boolean = true;
-  public filterChange$ = new BehaviorSubject<object>(null);
+  public filterChange$ = new Subject<object>();
   public navigationModel: SideNavigationModel = navigationConfig;
 
   listConfig: SearchListConfiguration = {
