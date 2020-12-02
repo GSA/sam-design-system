@@ -31,9 +31,6 @@ export * from './collapse/collapse.module';
 export * from './text/text.component';
 export * from './text/text.module';
 export * from './search/search.component';
-export * from './toast/toast-single.component';
-export * from './toast/toast.module';
-
 export * from './top-banner/top-banner.component';
 export * from './top-banner/top-banner.module';
 export * from './icon/icon.module';

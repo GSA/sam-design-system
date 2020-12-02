@@ -30,10 +30,6 @@ import {
   AccordionModule
 } from './components/accordion/accordion.module';
 import {
-  ROUTES as TOASTS_ROUTES,
-  ToastsModule
-} from './components/toasts/toasts.module';
-import {
   ROUTES as DOWNLOAD_ROUTES,
   DownloadModule
 } from './components/download/download.module';
@@ -204,7 +200,6 @@ export const ROUTES: Routes = [
   { path: 'components/popup', children: POPUP_ROUTES },
   { path: 'components/filters', children: FILTERS_ROUTES },
   { path: 'components/accordion', children: ACCORDION_ROUTES },
-  { path: 'components/toasts', children: TOASTS_ROUTES },
   { path: 'components/button-group', children: BUTTON_GROUP_ROUTES },
 
   // Formly
@@ -281,7 +276,6 @@ export const ROUTES: Routes = [
     FormFieldModule,
     FilterWrapperModule,
     AccordionWrapperModule,
-    ToastsModule,
     GroupWrappersModule,
     LabelWrapperModule,
     DescriptionWrapperModule,
