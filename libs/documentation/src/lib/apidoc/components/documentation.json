@@ -10597,150 +10597,6 @@
             ]
         },
         {
-            "name": "SdsToastComponent",
-            "id": "component-SdsToastComponent-eeea10d830c80312bbf523a1d18ceb05",
-            "file": "libs/packages/components/src/lib/toast/toast-single.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "sds-toast",
-            "styleUrls": [],
-            "styles": [
-                "\n    :host {\n      position: relative;\n    }\n    \n  "
-            ],
-            "templateUrl": [
-                "./toast-single.component.html"
-            ],
-            "viewProviders": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "toastPackage",
-                    "type": "ToastPackage",
-                    "optional": false,
-                    "description": "",
-                    "line": 46,
-                    "modifierKind": [
-                        114
-                    ]
-                }
-            ],
-            "methodsClass": [
-                {
-                    "name": "action",
-                    "args": [
-                        {
-                            "name": "event",
-                            "type": "Event"
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "boolean",
-                    "typeParameters": [],
-                    "line": 52,
-                    "jsdoctags": [
-                        {
-                            "name": "event",
-                            "type": "Event",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "getIcon",
-                    "args": [
-                        {
-                            "name": "toastType",
-                            "type": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "\"check-circle\" | \"alert-info\" | \"alert-warning\" | \"alert-error\"",
-                    "typeParameters": [],
-                    "line": 58,
-                    "jsdoctags": [
-                        {
-                            "name": "toastType",
-                            "type": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "getToastSr",
-                    "args": [
-                        {
-                            "name": "toastType",
-                            "type": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "\"Success\" | \"Info\" | \"Warning\" | \"Error\"",
-                    "typeParameters": [],
-                    "line": 67,
-                    "jsdoctags": [
-                        {
-                            "name": "toastType",
-                            "type": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                }
-            ],
-            "hostBindings": [],
-            "hostListeners": [],
-            "description": "",
-            "rawdescription": "",
-            "type": "component",
-            "sourceCode": "import {\n    animate,\n    keyframes,\n    state,\n    style,\n    transition,\n    trigger\n  } from '@angular/animations';\n  import { Component } from '@angular/core';\n  \n  import { Toast, ToastrService, ToastPackage } from 'ngx-toastr';\n\n  \n  @Component({\n    selector: 'sds-toast',\n    styles: [`\n    :host {\n      position: relative;\n    }\n    \n  `],\n  templateUrl: './toast-single.component.html',\n  animations: [\n    trigger('flyInOut', [\n      state('inactive', style({ opacity: 0 })),\n      state('active', style({ opacity: 1 })),\n      state('removed', style({ opacity: 0 })),\n      transition(\n        'inactive => active',\n        animate('{{ easeTime }}ms {{ easing }}')\n      ),\n      transition(\n        'active => removed',\n        animate('{{ easeTime }}ms {{ easing }}')\n      )\n    ])\n  ],\n \n    preserveWhitespaces: false,\n  })\n  export class SdsToastComponent extends Toast {\n\n    constructor(\n      protected toastrService: ToastrService,\n      public toastPackage: ToastPackage\n    ) {\n      super(toastrService, toastPackage);\n  \n    }\n  \n    action(event: Event) {\n      event.stopPropagation();\n      this.toastPackage.triggerAction();\n      return false;\n    }\n\n    getIcon(toastType) {\n      switch (toastType) {\n        case \"sds-toast--success\": return 'check-circle';\n        case \"sds-toast--info\": return 'alert-info';\n        case \"sds-toast--warning\": return 'alert-warning';\n        case \"sds-toast--error\": return 'alert-error';\n        default: return 'alert-info';\n      }\n    }\n    getToastSr(toastType) {\n      switch (toastType) {\n        case \"sds-toast--success\": return 'Success';\n        case \"sds-toast--info\": return 'Info';\n        case \"sds-toast--warning\": return 'Warning';\n        case \"sds-toast--error\": return 'Error';\n        default: return 'Info';\n      }\n    }\n\n  }\n  ",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "\n    :host {\n      position: relative;\n    }\n    \n  \n",
-            "preserveWhitespaces": false,
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "args": [
-                    {
-                        "name": "toastrService",
-                        "type": "ToastrService"
-                    },
-                    {
-                        "name": "toastPackage",
-                        "type": "ToastPackage"
-                    }
-                ],
-                "line": 42,
-                "jsdoctags": [
-                    {
-                        "name": "toastrService",
-                        "type": "ToastrService",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    },
-                    {
-                        "name": "toastPackage",
-                        "type": "ToastPackage",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
-            },
-            "extends": "Toast",
-            "templateData": "\n    <div class=\"sds-toast__content\" role=\"alert\" aria-live=\"polite\" aria-live=\"assertive\">\n        <div class=\"sr-only sr-only-focusable\">{{getToastSr(toastPackage.toastType)}}</div>\n        <div class=\"sds-toast__content__icon\">\n            <fa-icon [icon]=\"['sds', getIcon(toastPackage.toastType)]\"  size=\"2x\"></fa-icon>\n        </div>\n        <span class=\"sds-toast__content__text\">{{message}}</span>\n        <div *ngIf=\"!options.closeButton\" class=\"sds-toast__content__close\" (click)=\"remove()\">\n      \n            <svg class=\"svg-inline--fa fa-times fa-w-11 fa-fw\" aria-hidden=\"true\" focusable=\"false\" data-prefix=\"fas\" data-icon=\"times\" role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 352 512\" data-fa-i2svg=\"\">\n                <path fill=\"currentColor\" d=\"M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z\"></path>\n            </svg>\n        </div>\n    </div>\n"
-        },
-        {
             "name": "SdsToolbarComponent",
             "id": "component-SdsToolbarComponent-67efc4d28a051482f71d87c2eeaa0d7a",
             "file": "libs/packages/components/src/lib/toolbar/toolbar.component.ts",
@@ -12093,43 +11949,6 @@
             ]
         },
         {
-            "name": "SdsToastModule",
-            "children": [
-                {
-                    "type": "providers",
-                    "elements": []
-                },
-                {
-                    "type": "declarations",
-                    "elements": [
-                        {
-                            "name": "SdsToastComponent"
-                        }
-                    ]
-                },
-                {
-                    "type": "imports",
-                    "elements": []
-                },
-                {
-                    "type": "exports",
-                    "elements": [
-                        {
-                            "name": "SdsToastComponent"
-                        }
-                    ]
-                },
-                {
-                    "type": "bootstrap",
-                    "elements": []
-                },
-                {
-                    "type": "classes",
-                    "elements": []
-                }
-            ]
-        },
-        {
             "name": "SdsToolbarModule",
             "children": [
                 {
@@ -12500,14 +12319,6 @@
                 "defaultValue": "{\n  transformMenu: trigger('transformMenu', [\n    state(\n      'void',\n      style({\n        opacity: 0,\n        transform: 'scale(0.8)'\n      })\n    ),\n    transition(\n      'void => enter',\n      group([\n        query(\n          '.sds-menu',\n          animate(\n            '100ms linear',\n            style({\n              opacity: 1\n            })\n          )\n        ),\n        animate(\n          '120ms cubic-bezier(0, 0, 0.2, 1)',\n          style({ transform: 'scale(1)' })\n        )\n      ])\n    ),\n    transition('* => void', animate('100ms 25ms linear', style({ opacity: 0 })))\n  ])\n}"
             },
             {
-                "name": "SdsToastSettings",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/toast/toast.module.ts",
-                "type": "object",
-                "defaultValue": "{\n  toastComponent: SdsToastComponent,\n  timeOut: 6000,\n  toastClass: 'sds-toast',\n  positionClass: 'toast-bottom-left',\n}"
-            },
-            {
                 "name": "sdsToolbarAnimations",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -12536,18 +12347,18 @@
                 "name": "uniqueId",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/packages/components/src/lib/accordion/accordion-item.component.ts",
+                "file": "libs/packages/components/src/lib/dialog/dialog-ref.ts",
                 "type": "number",
-                "defaultValue": "0",
-                "description": "<p>Counter for generating unique element ids. </p>\n"
+                "defaultValue": "0"
             },
             {
                 "name": "uniqueId",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/packages/components/src/lib/dialog/dialog-ref.ts",
+                "file": "libs/packages/components/src/lib/accordion/accordion-item.component.ts",
                 "type": "number",
-                "defaultValue": "0"
+                "defaultValue": "0",
+                "description": "<p>Counter for generating unique element ids. </p>\n"
             },
             {
                 "name": "uniqueId",
@@ -13607,16 +13418,6 @@
                     "defaultValue": "{\n  transformMenu: trigger('transformMenu', [\n    state(\n      'void',\n      style({\n        opacity: 0,\n        transform: 'scale(0.8)'\n      })\n    ),\n    transition(\n      'void => enter',\n      group([\n        query(\n          '.sds-menu',\n          animate(\n            '100ms linear',\n            style({\n              opacity: 1\n            })\n          )\n        ),\n        animate(\n          '120ms cubic-bezier(0, 0, 0.2, 1)',\n          style({ transform: 'scale(1)' })\n        )\n      ])\n    ),\n    transition('* => void', animate('100ms 25ms linear', style({ opacity: 0 })))\n  ])\n}"
                 }
             ],
-            "libs/packages/components/src/lib/toast/toast.module.ts": [
-                {
-                    "name": "SdsToastSettings",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/toast/toast.module.ts",
-                    "type": "object",
-                    "defaultValue": "{\n  toastComponent: SdsToastComponent,\n  timeOut: 6000,\n  toastClass: 'sds-toast',\n  positionClass: 'toast-bottom-left',\n}"
-                }
-            ],
             "libs/packages/components/src/lib/toolbar/toolbar-animations.ts": [
                 {
                     "name": "sdsToolbarAnimations",
@@ -13646,6 +13447,16 @@
                     "defaultValue": "{\n  container: trigger('container', [\n    state(\n      'void',\n      style({\n        opacity: 0,\n        transform: 'scale(0.8)'\n      })\n    ),\n    transition(\n      'void => enter',\n      group([\n        query(\n          '.sds-overlay',\n          animate(\n            '100ms linear',\n            style({\n              opacity: 1\n            })\n          )\n        ),\n        animate(\n          '120ms cubic-bezier(0, 0, 0.2, 1)',\n          style({ transform: 'scale(1)' })\n        )\n      ])\n    ),\n    transition('* => void', animate('100ms 25ms linear', style({ opacity: 0 })))\n  ])\n}"
                 }
             ],
+            "libs/packages/components/src/lib/dialog/dialog-ref.ts": [
+                {
+                    "name": "uniqueId",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/packages/components/src/lib/dialog/dialog-ref.ts",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
             "libs/packages/components/src/lib/accordion/accordion-item.component.ts": [
                 {
                     "name": "uniqueId",
@@ -13655,16 +13466,6 @@
                     "type": "number",
                     "defaultValue": "0",
                     "description": "<p>Counter for generating unique element ids. </p>\n"
-                }
-            ],
-            "libs/packages/components/src/lib/dialog/dialog-ref.ts": [
-                {
-                    "name": "uniqueId",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/dialog/dialog-ref.ts",
-                    "type": "number",
-                    "defaultValue": "0"
                 }
             ],
             "libs/packages/components/src/lib/toolbar/toolbar.component.ts": [

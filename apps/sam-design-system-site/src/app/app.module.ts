@@ -11,8 +11,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { sds } from '@gsa-sam/sam-styles/src/icons/';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { MarkdownModule } from 'ngx-markdown';
-import { Toast, ToastrModule } from 'ngx-toastr';
-import { SdsToastComponent, SdsToastSettings } from '@gsa-sam/components';
+
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import xml from 'highlight.js/lib/languages/xml';
 import scss from 'highlight.js/lib/languages/scss';
@@ -22,7 +21,7 @@ export function hljsLanguages() {
   return [
     { name: 'typescript', func: typescript },
     { name: 'scss', func: scss },
-    { name: 'xml', func: xml },
+    { name: 'xml', func: xml }
   ];
 }
 
@@ -34,20 +33,17 @@ export function hljsLanguages() {
     FontAwesomeModule,
     RouterModule.forRoot(ROUTES, { scrollPositionRestoration: 'enabled' }),
     FormsModule,
-    MarkdownModule.forRoot(),
-    ToastrModule.forRoot(SdsToastSettings),
+    MarkdownModule.forRoot()
   ],
   providers: [
     { provide: LocationStrategy, useClass: PathLocationStrategy },
     {
-      provide: HIGHLIGHT_OPTIONS,
-      useValue: {
-        languages: hljsLanguages,
-      },
-    },
-  ],
-  entryComponents: [SdsToastComponent],
-  bootstrap: [AppComponent],
+    provide: HIGHLIGHT_OPTIONS,
+    useValue: {
+      languages: hljsLanguages,
+    }
+  }],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
   constructor() {
