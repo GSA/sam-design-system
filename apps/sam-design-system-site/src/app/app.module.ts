@@ -27,7 +27,7 @@ export function hljsLanguages() {
 }
 
 @NgModule({
-  declarations: [AppComponent, SdsToastComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
