@@ -443,6 +443,148 @@
             "stylesData": ""
         },
         {
+            "name": "SdsButtonGroupComponent",
+            "id": "component-SdsButtonGroupComponent-a1c4cb3ddbaa5863b438fd4fb16f8168",
+            "file": "libs/packages/sam-material-extensions/src/lib/button-group/button-group.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "host": {},
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "sds-button-group",
+            "styleUrls": [
+                "./button-group.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./button-group.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "mode",
+                    "defaultValue": "'radio'",
+                    "description": "<p>&#39;checkbox&#39; || &#39;radio&#39;</p>\n",
+                    "line": 44,
+                    "type": "string"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "change",
+                    "defaultValue": "new EventEmitter()",
+                    "line": 45,
+                    "type": "EventEmitter<MatButtonToggleChange>"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "buttonOptions",
+                    "type": "QueryList<SdsButtonGroupOptionComponent>",
+                    "optional": false,
+                    "description": "",
+                    "line": 36,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "SdsButtonGroupOptionComponent"
+                        }
+                    ]
+                },
+                {
+                    "name": "classesToApply",
+                    "defaultValue": "{}",
+                    "type": "Object",
+                    "optional": false,
+                    "description": "",
+                    "line": 39
+                }
+            ],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import {\n  Component,\n  ContentChildren,\n  EventEmitter,\n  Input,\n  Output,\n  QueryList,\n  TemplateRef,\n  ViewChild\n} from '@angular/core';\nimport { MatButtonToggleChange } from '@angular/material';\n\n@Component({\n  selector: 'sds-button-group-option',\n  styleUrls: ['./button-group.component.scss'],\n  template: `\n    <ng-template #buttonGroupTemplate>\n      <ng-content #content></ng-content>\n    </ng-template>\n  `\n})\nexport class SdsButtonGroupOptionComponent {\n  @ViewChild('buttonGroupTemplate') buttonGroupTemplate: TemplateRef<any>;\n  @Input() value: any;\n  @Input() checked: boolean;\n  @Input('aria-label') ariaLabel: any;\n}\n\n@Component({\n  selector: 'sds-button-group',\n  templateUrl: './button-group.component.html',\n  styleUrls: ['./button-group.component.scss'],\n  host: {'class':'sds-button-group--segmented'}\n})\nexport class SdsButtonGroupComponent {\n  @ContentChildren(SdsButtonGroupOptionComponent) buttonOptions!: QueryList<\n    SdsButtonGroupOptionComponent\n  >;\n  classesToApply: Object = {};\n\n  /**\n   * 'checkbox' || 'radio'\n   */\n  @Input() mode: string = 'radio';\n  @Output() change: EventEmitter<MatButtonToggleChange> = new EventEmitter();\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "mat-button-toggle-group {\n  overflow: visible;\n  width: fit-content;\n  border: none;\n\n  mat-button-toggle.sds-button-group__item {\n    background-color: transparent;\n    ::ng-deep{\n      .mat-button-toggle-button{\n        background-color: transparent;\n        .mat-button-toggle-label-content{\n          line-height: inherit;\n          padding: 0;\n          background-color: transparent;\n\n          .usa-button{\n            margin-left: -2px;\n            margin-right: -1px;\n            &.usa-button--outline{\n              background-color: transparent;\n            }\n          }\n        }\n      }\n      &:focus{\n        outline: 0.25rem solid #2491ff;\n        outline-offset: 0.25rem;\n      }\n    }\n    &:first-child{\n      .usa-button{\n        border-top-right-radius: 0;\n        border-bottom-right-radius: 0;\n\n      }\n    }\n    &:last-child{\n      .usa-button{\n        border-top-left-radius: 0;\n        border-bottom-left-radius: 0;\n\n      }\n    }\n    &:only-child{\n      .usa-button{\n        border-radius: 0.25rem;\n      }\n    }\n    &:not(:first-child):not(:last-child){\n      .usa-button{\n        border-radius: 0;\n      }\n    }\n  }\n}\n",
+                    "styleUrl": "./button-group.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<mat-button-toggle-group\n  [multiple]=\"mode === 'checkbox'\"\n  (change)=\"change.emit($event)\"\n>\n  <ng-container *ngFor=\"let option of buttonOptions\">\n    <mat-button-toggle\n      #singleToggle\n      value=\"{{option.value}}\"\n      aria-label=\"{{option.ariaLabel}}\"\n      class=\"sds-button-group__item\"\n      [disableRipple]=\"true\"\n      [checked]=\"option.checked\"\n    >\n      <div\n        class=\"usa-button\"\n        [ngClass]=\"{ 'usa-button--outline': !singleToggle.checked }\"\n      >\n        <ng-container\n          *ngTemplateOutlet=\"option.buttonGroupTemplate\"\n        ></ng-container>\n      </div>\n    </mat-button-toggle>\n  </ng-container>\n</mat-button-toggle-group>\n"
+        },
+        {
+            "name": "SdsButtonGroupOptionComponent",
+            "id": "component-SdsButtonGroupOptionComponent-a1c4cb3ddbaa5863b438fd4fb16f8168",
+            "file": "libs/packages/sam-material-extensions/src/lib/button-group/button-group.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "sds-button-group-option",
+            "styleUrls": [
+                "./button-group.component.scss"
+            ],
+            "styles": [],
+            "template": "<ng-template #buttonGroupTemplate>\n  <ng-content #content></ng-content>\n</ng-template>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "aria-label",
+                    "line": 26,
+                    "type": "any"
+                },
+                {
+                    "name": "checked",
+                    "line": 25,
+                    "type": "boolean"
+                },
+                {
+                    "name": "value",
+                    "line": 24,
+                    "type": "any"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "buttonGroupTemplate",
+                    "type": "TemplateRef<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 23,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'buttonGroupTemplate'"
+                        }
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import {\n  Component,\n  ContentChildren,\n  EventEmitter,\n  Input,\n  Output,\n  QueryList,\n  TemplateRef,\n  ViewChild\n} from '@angular/core';\nimport { MatButtonToggleChange } from '@angular/material';\n\n@Component({\n  selector: 'sds-button-group-option',\n  styleUrls: ['./button-group.component.scss'],\n  template: `\n    <ng-template #buttonGroupTemplate>\n      <ng-content #content></ng-content>\n    </ng-template>\n  `\n})\nexport class SdsButtonGroupOptionComponent {\n  @ViewChild('buttonGroupTemplate') buttonGroupTemplate: TemplateRef<any>;\n  @Input() value: any;\n  @Input() checked: boolean;\n  @Input('aria-label') ariaLabel: any;\n}\n\n@Component({\n  selector: 'sds-button-group',\n  templateUrl: './button-group.component.html',\n  styleUrls: ['./button-group.component.scss'],\n  host: {'class':'sds-button-group--segmented'}\n})\nexport class SdsButtonGroupComponent {\n  @ContentChildren(SdsButtonGroupOptionComponent) buttonOptions!: QueryList<\n    SdsButtonGroupOptionComponent\n  >;\n  classesToApply: Object = {};\n\n  /**\n   * 'checkbox' || 'radio'\n   */\n  @Input() mode: string = 'radio';\n  @Output() change: EventEmitter<MatButtonToggleChange> = new EventEmitter();\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "mat-button-toggle-group {\n  overflow: visible;\n  width: fit-content;\n  border: none;\n\n  mat-button-toggle.sds-button-group__item {\n    background-color: transparent;\n    ::ng-deep{\n      .mat-button-toggle-button{\n        background-color: transparent;\n        .mat-button-toggle-label-content{\n          line-height: inherit;\n          padding: 0;\n          background-color: transparent;\n\n          .usa-button{\n            margin-left: -2px;\n            margin-right: -1px;\n            &.usa-button--outline{\n              background-color: transparent;\n            }\n          }\n        }\n      }\n      &:focus{\n        outline: 0.25rem solid #2491ff;\n        outline-offset: 0.25rem;\n      }\n    }\n    &:first-child{\n      .usa-button{\n        border-top-right-radius: 0;\n        border-bottom-right-radius: 0;\n\n      }\n    }\n    &:last-child{\n      .usa-button{\n        border-top-left-radius: 0;\n        border-bottom-left-radius: 0;\n\n      }\n    }\n    &:only-child{\n      .usa-button{\n        border-radius: 0.25rem;\n      }\n    }\n    &:not(:first-child):not(:last-child){\n      .usa-button{\n        border-radius: 0;\n      }\n    }\n  }\n}\n",
+                    "styleUrl": "./button-group.component.scss"
+                }
+            ],
+            "stylesData": ""
+        },
+        {
             "name": "SdsTableColumnDefComponent",
             "id": "component-SdsTableColumnDefComponent-4560d45fe5f509fca7bafc35b0ae70e8",
             "file": "libs/packages/sam-material-extensions/src/lib/table/table.component.ts",
@@ -1292,6 +1434,49 @@
                         },
                         {
                             "name": "SdsAccordionTitleDirective"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "SdsButtonGroupModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "SdsButtonGroupComponent"
+                        },
+                        {
+                            "name": "SdsButtonGroupOptionComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "SdsButtonGroupComponent"
+                        },
+                        {
+                            "name": "SdsButtonGroupOptionComponent"
                         }
                     ]
                 },
