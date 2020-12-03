@@ -2,7 +2,7 @@
   <div class="wide-container">
     <sds-subheader>
       <!-- =============== BACK BUTTON =============== -->
-      <button class="sds-button sds-button--circular sds-navbar__back-button" style="margin-right: 1em;">
+      <button class="sds-button sds-button--circular sds-navbar__back-button">
         <sds-icon [icon]="['bs', 'chevron-left']"></sds-icon>
         <span class="usa-sr-only">Go Back</span>
       </button>
@@ -14,7 +14,6 @@
 
       <!-- =============== SEARCH =============== -->
       <sds-search
-        (term)="log($event)"
         parentSelector=".grid-row"
         placeholder="Entity an entity ID, name, or keyword"
         inputClass="width-card-lg widescreen:width-mobile display-none desktop-lg:display-inline-block"

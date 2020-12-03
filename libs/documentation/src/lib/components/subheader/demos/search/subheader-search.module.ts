@@ -25,7 +25,6 @@ import { SubheaderSearchComponent } from './subheader-search.component';
     ReactiveFormsModule,
     SdsFormlyModule,
     FormlyModule,
-    // FormlyModule,
     SdsIconModule
   ],
   declarations: [SubheaderSearchComponent],
