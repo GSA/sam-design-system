@@ -4,7 +4,7 @@ import { SdsIconModule } from '@gsa-sam/components';
 
 import { SdsSystemAlertComponent } from './system-alert.component';
 
-fdescribe('SystemAlertComponent', () => {
+describe('SystemAlertComponent', () => {
   let component: SdsSystemAlertComponent;
   let fixture: ComponentFixture<SdsSystemAlertComponent>;
 
