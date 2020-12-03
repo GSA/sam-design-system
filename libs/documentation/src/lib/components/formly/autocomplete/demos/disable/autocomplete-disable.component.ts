@@ -26,7 +26,6 @@ export class FormlyAutocompleteDisable {
   };
   options: FormlyFormOptions = {};
   public settings = new SDSAutocompletelConfiguration();
-  public autocompleteSingleModel = new SDSSelectedItemModel();
   public autocompleteMultipleModel = new SDSSelectedItemModel();
   private data = SampleAutocompleteData;
   public filterChange$ = new BehaviorSubject<object>(null);
