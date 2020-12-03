@@ -1,10 +1,8 @@
-import { Component, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { FormGroup } from '@angular/forms';
 import {
   SdsDialogService,
-  SdsDialogRef,
-  SDS_DIALOG_DATA
 } from '@gsa-sam/components';
 import {
   SdsFormlyDialogComponent,
@@ -12,10 +10,10 @@ import {
 } from '@gsa-sam/sam-formly';
 
 @Component({
-  templateUrl: './subheader-basic.component.html',
-  styleUrls: ['./subheader-basic.component.scss']
+  templateUrl: './subheader-search-sub-pages.component.html',
+  styleUrls: ['./subheader-search-sub-pages.component.scss']
 })
-export class SubHeaderBasic {
+export class SubheaderSearchSubPagesComponent {
   subheader = {
     buttons: [
       { id: 'FirstButton', text: 'Button', class: 'usa-button--secondary' },
@@ -27,9 +25,6 @@ export class SubHeaderBasic {
       { id: 'ShareBtn', icon: 'bars', text: 'Share' }
     ]
   };
-  log(value) {
-    console.log(`%cLog: ${value}`, 'color: blue; font-weight: bold');
-  }
   // Code begin for download
   fields: FormlyFieldConfig[] = [
     {

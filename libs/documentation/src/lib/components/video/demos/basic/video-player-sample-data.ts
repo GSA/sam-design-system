@@ -2,8 +2,8 @@ export let VideoPlayerSampleData =
   {
     'sourceWebm': '',
     'sourceMp4': 'https://github.com/GSA/sam-static-content/raw/master/assets/video/gsa-sample.mp4',
-    'height': '360',
-    'width': '640',
+    'height': 'auto',
+    'width': '100%',
     'caption':'assets/video/gsa-sample.vtt',
     'poster':'https://github.com/GSA/sam-static-content/raw/master/assets/images/gsa-sample.jpg',
     'id': 'smapleId1',

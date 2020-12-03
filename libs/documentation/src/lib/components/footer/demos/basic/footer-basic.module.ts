@@ -4,6 +4,7 @@ import { FooterBasic } from './footer-basic.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SdsFooterModule } from '@gsa-sam/layouts';
 import { SdsCollapseModule } from '@gsa-sam/components';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { SdsCollapseModule } from '@gsa-sam/components';
     CommonModule,
     FontAwesomeModule,
     SdsFooterModule,
-    SdsCollapseModule
+    SdsCollapseModule,
+    ReactiveFormsModule,
   ],
   exports: [FooterBasic],
   bootstrap: [FooterBasic]

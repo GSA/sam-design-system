@@ -49,7 +49,7 @@ export class SdsFiltersComponent implements OnInit {
   /**
    * Sort the filters by alphabetical order
    */
-  @Input() sortMoreFilter: boolean = false;
+  @Input() sortMoreFilterBy = '';
 
   /**
    * Timer id for the timer awaiting the service call for more typeing
@@ -90,8 +90,7 @@ export class SdsFiltersComponent implements OnInit {
     public formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,
     private cdr: ChangeDetectorRef,
     private router: Router,
-    private route: ActivatedRoute,
-    private datePipe: DatePipe
+    private route: ActivatedRoute
   ) {}
 
   @HostListener('window:popstate', ['$event'])

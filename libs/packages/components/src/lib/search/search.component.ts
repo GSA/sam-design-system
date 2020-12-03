@@ -6,7 +6,7 @@ import {
   AfterViewInit,
   forwardRef,
   ChangeDetectionStrategy,
-  ChangeDetectorRef
+  ChangeDetectorRef, Output, EventEmitter
 } from '@angular/core';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { ViewportRuler } from '@angular/cdk/overlay';
@@ -40,6 +40,8 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
   @Input() inputClass: string;
   @Input() parentSelector: string;
   @Input() searchSettings: SearchSettings = new SearchSettings();
+
+  @Output() submit: EventEmitter<{searchText: string}> = new EventEmitter(null);
 
   model: any = {};
   inputState = {
@@ -82,12 +84,16 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
       this.setInputVisibleStyles();
       this.focusMonitor.focusVia(this.inputEl, 'program');
     } else if (this.inputEl || this.selectEl) {
-      this.model.searchText = this.inputEl? this.inputEl.nativeElement.value : '';
-      if (this.selectEl && this.selectEl.nativeElement.value) {
-        this.model.searchCategory = this.selectEl.nativeElement.value;
-      }
-      this._onChange(this.model);
+      this.submit.emit(this.model);
     }
+  }
+
+  writeValueToModel() {
+    this.model.searchText = this.inputEl ? this.inputEl.nativeElement.value : '';
+    if (this.selectEl && this.selectEl.nativeElement.value) {
+      this.model.searchCategory = this.selectEl.nativeElement.value;
+    }
+    this._onChange(Object.assign({}, this.model));
   }
 
   writeValue(value: any) {
@@ -113,11 +119,12 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
   }
 
   setInputVisibleStyles() {
+
     const inputWidth = this.calculateInputWidth();
-    this.inputEl.nativeElement.style.display = 'block';
+    this.inputEl.nativeElement.style.setProperty("display", "block", "important");
     this.inputEl.nativeElement.style.position = 'absolute';
     this.inputEl.nativeElement.style.left = `-${inputWidth}px`;
-    this.inputEl.nativeElement.style.width = `${inputWidth}px`;
+    this.inputEl.nativeElement.style.setProperty("width", `${inputWidth}px`, "important");
     this.inputState.visible = true;
   }
 
@@ -129,20 +136,21 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
     this.inputState.visible = false;
   }
 
-  focusChange(event) {
-    if (event === null && !this.inputState.initial.visible) {
+  focusChange() {
+    if (!this.inputState.initial.visible) {
       this.removeInputVisibleStyles();
     }
   }
 
   calculateInputWidth(): number {
+    const leftPadding = 20;
     const buttonElement = this.buttonEl.nativeElement;
     const inputElement = this.inputEl.nativeElement;
     const rightPosition = buttonElement.getBoundingClientRect().left;
     const leftPosition = this.parentSelector
       ? inputElement.closest(this.parentSelector).getBoundingClientRect().left
       : 0;
-    return Math.floor(rightPosition - leftPosition);
+    return Math.floor(rightPosition - leftPosition - leftPadding);
   }
   getClass() {
     const cls =

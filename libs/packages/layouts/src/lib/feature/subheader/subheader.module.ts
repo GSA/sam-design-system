@@ -5,7 +5,8 @@ import {
   SdsMenuModule,
   SdsSearchModule,
   SdsObserversModule,
-  SdsTruncateModule
+  SdsTruncateModule,
+  SdsIconModule
 } from '@gsa-sam/components';
 import {
   SdsSubheaderComponent,
@@ -24,7 +25,8 @@ import { SdsDrawerCommunicationService } from './drawer-communication.service';
     SdsObserversModule,
     SdsSearchModule,
     SdsTruncateModule,
-    SdsActionsMenuModule
+    SdsActionsMenuModule,
+    SdsIconModule
   ],
   exports: [
     SdsSubheaderComponent,

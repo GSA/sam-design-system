@@ -20,12 +20,13 @@ export class FormlyAutocompleteDisable {
   model = {
     filters: {
       agency: [],
-      items: []
+      items1: [],
+      items2: []
     }
   };
   options: FormlyFormOptions = {};
   public settings = new SDSAutocompletelConfiguration();
-  public autocompleteModel = new SDSSelectedItemModel();
+  public autocompleteMultipleModel = new SDSSelectedItemModel();
   private data = SampleAutocompleteData;
   public filterChange$ = new BehaviorSubject<object>(null);
   public multipleSettings = new SDSAutocompletelConfiguration();
@@ -36,15 +37,35 @@ export class FormlyAutocompleteDisable {
       templateOptions: { label: 'Keyword' },
       fieldGroup: [
         {
-          key: 'items',
+          key: 'items1',
           type: 'autocomplete',
 
           templateOptions: {
-            label: 'Auto Complete disable with single selection mode',
-            disabled: true,
+            label: 'Generic Autocomplete',
             service: this.service,
             configuration: this.settings,
-            model: this.autocompleteModel
+          },
+          lifecycle: {
+            onChanges: function(form: FormGroup, field) {
+              form.controls.items1.valueChanges.subscribe((value: any[]) => {
+                if (!value || !value.length) {
+                  form.controls.items2.reset();
+                }
+              })
+            }
+          }
+        },
+        {
+          key: 'items2',
+          type: 'autocomplete',
+
+          templateOptions: {
+            label: 'Auto Complete disabled using Expression properties until Previous Autocomplete is selected',
+            service: this.service,
+            configuration: this.settings,
+          },
+          expressionProperties: {
+            'templateOptions.disabled': () => !this.model.filters.items1 || this.model.filters.items1.length === 0
           }
         },
         {
@@ -55,7 +76,7 @@ export class FormlyAutocompleteDisable {
             disabled: true,
             service: this.service,
             configuration: this.multipleSettings,
-            model: this.autocompleteModel
+            model: this.autocompleteMultipleModel
           }
         }
       ]
@@ -74,8 +95,6 @@ export class FormlyAutocompleteDisable {
     this.settings.labelText = 'Autocomplete 1';
     this.settings.selectionMode = SelectionMode.SINGLE;
     this.settings.autocompletePlaceHolderText = 'Enter text';
-
-    this.model.filters.items.push(this.data[0]);
 
     this.multipleSettings.id = 'autocomplete1';
     this.multipleSettings.primaryKeyField = 'id';
