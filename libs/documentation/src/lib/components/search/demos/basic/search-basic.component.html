@@ -1,9 +1,19 @@
 <div>
+  <p>
+    Search has been updated to keep the model up to date with each character entered
+  by a user.
+  </p>
+  <p>
+    An output <code>(submit)</code> has been added to search which emits when the
+    user clicks submit. The value of the event contains the current state of the
+    model when the user clicks submit.
+  </p>
   <h4>SDS Search</h4>
 
   <sds-search
     [(ngModel)]="model"
     [searchSettings]="searchSettings"
+    (submit)="onSubmit($event)"
     placeholder="Entity an entity ID, name, or keyword"
   ></sds-search>
   Model: {{ model | json }}

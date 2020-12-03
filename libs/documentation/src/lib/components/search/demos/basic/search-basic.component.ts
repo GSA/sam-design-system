@@ -18,4 +18,8 @@ export class SearchBasic {
   onsearchModelChanges() {
     console.log(this.bigmodel, 'model changs');
   }
+
+  onSubmit(value){
+    console.log('Search Submitted', value)
+  }
 }
