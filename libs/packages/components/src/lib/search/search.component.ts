@@ -130,14 +130,14 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
     this.inputState.visible = false;
   }
 
-  focusChange(event) {
-    if (event === null && !this.inputState.initial.visible) {
+  focusChange() {
+    if (!this.inputState.initial.visible) {
       this.removeInputVisibleStyles();
     }
   }
 
   calculateInputWidth(): number {
-    const leftPadding = 16;
+    const leftPadding = 20;
     const buttonElement = this.buttonEl.nativeElement;
     const inputElement = this.inputEl.nativeElement;
     const rightPosition = buttonElement.getBoundingClientRect().left;

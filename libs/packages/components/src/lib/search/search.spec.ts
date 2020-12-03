@@ -84,7 +84,7 @@ describe('SearchComponent', () => {
   it('Should trigger focus event', () => {
     const e = null;
     component.inputState.initial.visible = true;
-    component.focusChange(e);
+    component.focusChange();
     fixture.detectChanges();
     expect(component.inputEl.nativeElement.style.display).toBe('');
     expect(component.inputEl.nativeElement.style.position).toBe('');
