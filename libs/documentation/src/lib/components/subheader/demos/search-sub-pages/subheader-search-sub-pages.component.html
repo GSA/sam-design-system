@@ -14,9 +14,9 @@
 
       <!-- =============== SEARCH =============== -->
       <sds-search
-        parentSelector=".grid-row"
-        placeholder="Entity an entity ID, name, or keyword"
-        inputClass="width-card-lg widescreen:width-mobile display-none desktop-lg:display-inline-block"
+        [(ngModel)]="searchModel"
+        [searchSettings]="searchSettings"
+        (submit)="searchSubmit($event)"
       >
       </sds-search>
 

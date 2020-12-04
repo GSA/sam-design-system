@@ -14,7 +14,6 @@
     [(ngModel)]="model"
     [searchSettings]="searchSettings"
     (submit)="onSubmit($event)"
-    placeholder="Entity an entity ID, name, or keyword"
   ></sds-search>
   Model: {{ model | json }}
 
@@ -24,7 +23,6 @@
     [(ngModel)]="bigmodel"
     (ngModelChange)="onsearchModelChanges()"
     [searchSettings]="bigSearchSettings"
-    placeholder="Entity an entity ID, name, or keyword"
   ></sds-search>
   Big Model: {{ bigmodel | json }}
 </div>

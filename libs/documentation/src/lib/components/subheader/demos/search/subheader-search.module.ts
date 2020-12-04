@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SdsSearchModule, SdsDialogModule, SdsIconModule } from '@gsa-sam/components';
 
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
 import {
   SdsFormlyModule,
@@ -25,7 +25,8 @@ import { SubheaderSearchComponent } from './subheader-search.component';
     ReactiveFormsModule,
     SdsFormlyModule,
     FormlyModule,
-    SdsIconModule
+    SdsIconModule,
+    FormsModule
   ],
   declarations: [SubheaderSearchComponent],
   exports: [SubheaderSearchComponent],

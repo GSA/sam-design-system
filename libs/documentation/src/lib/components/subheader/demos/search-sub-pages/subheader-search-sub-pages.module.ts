@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SdsSearchModule, SdsDialogModule, SdsIconModule } from '@gsa-sam/components';
 
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
 import {
   SdsFormlyModule,
@@ -27,7 +27,8 @@ import { SdsButtonGroupModule } from 'libs/packages/sam-material-extensions/src/
     SdsFormlyModule,
     FormlyModule,
     SdsIconModule,
-    SdsButtonGroupModule
+    SdsButtonGroupModule,
+    FormsModule
   ],
   declarations: [SubheaderSearchSubPagesComponent],
   exports: [SubheaderSearchSubPagesComponent],

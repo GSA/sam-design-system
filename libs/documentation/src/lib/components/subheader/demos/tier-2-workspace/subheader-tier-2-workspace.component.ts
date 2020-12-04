@@ -4,7 +4,7 @@ import { FormGroup } from '@angular/forms';
 import {
   SdsDialogService,
   SdsDialogRef,
-  SDS_DIALOG_DATA
+  SDS_DIALOG_DATA, SearchSettings
 } from '@gsa-sam/components';
 import {
   SdsFormlyDialogComponent,
@@ -27,9 +27,6 @@ export class SubheaderTier2WorkspaceComponent {
       { id: 'ShareBtn', icon: 'bars', text: 'Share' }
     ]
   };
-  log(value) {
-    console.log(`%cLog: ${value}`, 'color: blue; font-weight: bold');
-  }
   // Code begin for download
   fields: FormlyFieldConfig[] = [
     {
@@ -94,6 +91,15 @@ export class SubheaderTier2WorkspaceComponent {
   options: FormlyFormOptions;
   downloadResponse = {};
 
+  searchSettings: SearchSettings = {
+    placeholder: 'Entity an entity ID, name, or keyword',
+    parentSelector: '.grid-row',
+    inputClass: 'width-card-lg widescreen:width-mobile display-none desktop-lg:display-inline-block',
+    size: 'small',
+    dropdown: {}
+  };
+  searchModel = {};
+
   constructor(public dialog: SdsDialogService) {}
   onActionMenuItem(btnId) {
     if (btnId == 'DownloadBtn') {
@@ -118,5 +124,8 @@ export class SubheaderTier2WorkspaceComponent {
     }
 
     console.log('down', btnId);
+  }
+  searchSubmit(model){
+    console.log('Search Submitted', model)
   }
 }
