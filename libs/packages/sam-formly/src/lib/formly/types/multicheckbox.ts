@@ -27,7 +27,9 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType
         (Array.isArray(values) && values.length) > 0 ? true : false;
       this.ariaChecked = isChecked.toString();
       this.allComplete = isChecked;
-      this.cdr.detectChanges();
+      if(!this.cdr['destroyed']){
+        this.cdr.detectChanges();
+      }
     });
     this.someComplete();
   }
