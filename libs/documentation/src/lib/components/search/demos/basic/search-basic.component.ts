@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  templateUrl: './search-basic.component.html'
+  templateUrl: './search-basic.component.html',
+  styleUrls: ['./search-basic.component.scss']
 })
 export class SearchBasic {
   model = {};
