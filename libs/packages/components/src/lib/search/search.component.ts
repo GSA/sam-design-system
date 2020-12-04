@@ -19,6 +19,8 @@ export class SearchSettings {
     options: [],
     inverse: false
   };
+  public inputClass: string;
+  public parentSelector: string;
 }
 @Component({
   selector: 'sds-search',
@@ -37,10 +39,7 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
   @ViewChild('selectEl', { read: ElementRef }) selectEl: ElementRef;
   @ViewChild('buttonEl', { read: ElementRef }) buttonEl: ElementRef;
 
-  @Input() inputClass: string;
-  @Input() parentSelector: string;
   @Input() searchSettings: SearchSettings = new SearchSettings();
-
   @Output() submit: EventEmitter<{searchText: string}> = new EventEmitter(null);
 
   model: any = {};
@@ -147,8 +146,8 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
     const buttonElement = this.buttonEl.nativeElement;
     const inputElement = this.inputEl.nativeElement;
     const rightPosition = buttonElement.getBoundingClientRect().left;
-    const leftPosition = this.parentSelector
-      ? inputElement.closest(this.parentSelector).getBoundingClientRect().left
+    const leftPosition = this.searchSettings.parentSelector
+      ? inputElement.closest(this.searchSettings.parentSelector).getBoundingClientRect().left
       : 0;
     return Math.floor(rightPosition - leftPosition - leftPadding);
   }
