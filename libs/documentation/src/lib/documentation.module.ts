@@ -74,6 +74,11 @@ import {
   FiltersModule
 } from './components/filters/filters.module';
 
+import {
+  ROUTES as SELECTION_PANEL_ROUTES,
+  SelectionPanelModule
+} from './components/selection-panel/selection-panel.module';
+
 /* Form Types */
 import {
   ROUTES as INPUT_ROUTES,
@@ -203,6 +208,7 @@ export const ROUTES: Routes = [
   { path: 'components/filters', children: FILTERS_ROUTES },
   { path: 'components/accordion', children: ACCORDION_ROUTES },
   { path: 'components/button-group', children: BUTTON_GROUP_ROUTES },
+  { path: 'components/selection-panel', children: SELECTION_PANEL_ROUTES},
 
   // Formly
   { path: 'components/input', children: INPUT_ROUTES },
@@ -287,7 +293,8 @@ export const ROUTES: Routes = [
     IconsModule,
     FormlyFormsModule,
     FormlyConditionalModule,
-    ButtonGroupModule
+    ButtonGroupModule,
+    SelectionPanelModule,
   ]
 })
 export class DocumentationModule {
