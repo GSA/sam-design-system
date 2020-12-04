@@ -165,6 +165,11 @@ import {
   IconsModule
 } from './components/icons/icons.module';
 
+import {
+  ROUTES as SYSTEM_ALERT_ROUTES,
+  SystemAlertsModule
+} from './components/system-alerts/system-alerts.module';
+
 import { DocumentationSharedModule } from './shared';
 import { OverviewComponent } from './pages/overview/overview.component';
 import { ResultsLayoutModule } from './pages/layout/layout.module';
@@ -201,6 +206,7 @@ export const ROUTES: Routes = [
   { path: 'components/filters', children: FILTERS_ROUTES },
   { path: 'components/accordion', children: ACCORDION_ROUTES },
   { path: 'components/button-group', children: BUTTON_GROUP_ROUTES },
+  { path: 'components/system-alerts', children: SYSTEM_ALERT_ROUTES },
 
   // Formly
   { path: 'components/input', children: INPUT_ROUTES },
@@ -285,8 +291,9 @@ export const ROUTES: Routes = [
     IconsModule,
     FormlyFormsModule,
     FormlyConditionalModule,
-    ButtonGroupModule
-  ]
+    ButtonGroupModule,
+    SystemAlertsModule,
+  ],
 })
 export class DocumentationModule {
   constructor() {

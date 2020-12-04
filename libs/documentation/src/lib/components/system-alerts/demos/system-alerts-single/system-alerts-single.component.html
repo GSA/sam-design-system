@@ -1,0 +1,3 @@
+
+  <sds-system-alert *ngIf="alerts && alerts.length" 
+  [alerts]="alerts" (seeAllAlerts)="onSeeAllAlerts()" (detailsClicked)="onShowDetailsClicked($event)"></sds-system-alert>
