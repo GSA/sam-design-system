@@ -92,7 +92,7 @@ export class SubheaderTier2WorkspaceComponent {
   downloadResponse = {};
 
   searchSettings: SearchSettings = {
-    placeholder: 'Entity an entity ID, name, or keyword',
+    placeholder: 'Enter an entity ID, name, or keyword',
     parentSelector: '.grid-row',
     inputClass: 'width-card-lg widescreen:width-mobile display-none desktop-lg:display-inline-block',
     size: 'small',
