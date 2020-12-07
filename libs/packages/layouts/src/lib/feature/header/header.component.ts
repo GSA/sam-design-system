@@ -1,6 +1,6 @@
-import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, HostListener } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, HostListener, TemplateRef } from '@angular/core';
 import { HeaderModel, HeaderNavigationLink, HeaderSecondaryLink } from './model/HeaderModel';
-import { INavigationLink, NavigationMode, Selectable } from '@gsa-sam/components';
+import { INavigationLink, Selectable } from '@gsa-sam/components';
 import { NavigationHelper } from '@gsa-sam/components';
 
 
@@ -33,6 +33,8 @@ export class SdsHeaderComponent {
 
   @Input() showHeaderLogo = true;
 
+  @Input() alertsTemplate: TemplateRef<any>;
+
   /**
    * event for event based
    */
@@ -45,7 +47,7 @@ export class SdsHeaderComponent {
   removeWhiteSpace(text: string) {
     return text.replace(/ /g, '');
   }
-
+  
   /**
    * seeif any secondary link has a counter
    */

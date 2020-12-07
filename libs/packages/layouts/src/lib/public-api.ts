@@ -8,3 +8,5 @@ export * from './feature/footer/footer.module';
 export * from './feature/footer/model/FooterModel';
 export * from './feature/header/model/HeaderModel';
 export * from './feature/side-toolbar/side-toolbar.module';
+export * from './feature/system-alert/system-alert.module';
+export * from './feature/system-alert/model/alert.model';
