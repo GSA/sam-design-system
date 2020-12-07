@@ -32,13 +32,13 @@ describe('SideToolbarComponent', () => {
   });
 
   it('Should display advanced search button when mobile view is enabled', () => {
-    let compactViewButton = fixture.debugElement.query(By.css('#compactViewButton'));
-    expect(compactViewButton).toBeNull();
+    let responsiveViewButton = fixture.debugElement.query(By.css('#responsiveViewButton'));
+    expect(responsiveViewButton).toBeNull();
 
-    component.isCompactView = true;
+    component.isResponsiveView = true;
     fixture.detectChanges();
 
-    compactViewButton = fixture.debugElement.query(By.css('#compactViewButton'));
-    expect(compactViewButton).toBeDefined();
+    responsiveViewButton = fixture.debugElement.query(By.css('#responsiveViewButton'));
+    expect(responsiveViewButton).toBeDefined();
   });
 });

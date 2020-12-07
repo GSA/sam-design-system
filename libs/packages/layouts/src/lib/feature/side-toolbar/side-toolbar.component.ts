@@ -12,17 +12,17 @@ export class SideToolbarComponent implements OnInit, OnDestroy {
   
   @ContentChild(TemplateRef) template: TemplateRef<any>;
 
-  // Text for button in compact view
-  @Input() compactButtonText: string;
+  // Text for button in responsive view
+  @Input() responsiveButtonText: string;
 
   // default value is size of mobile view in px
-  @Input() compactSize = 480;
+  @Input() responsiveSize = 480;
 
-  @Output() compactDialog = new EventEmitter();
-  @Output() compactView = new EventEmitter();
+  @Output() responsiveDialog = new EventEmitter();
+  @Output() responsiveView = new EventEmitter();
 
 
-  isCompactView = false;
+  isResponsiveView = false;
 
   private subscription: Subscription = new Subscription();
   private openResponsiveDialog: SdsDialogRef<TemplateRef<any>>;
@@ -40,7 +40,7 @@ export class SideToolbarComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  onCompactViewButtonClicked() {
+  onResponsiveViewButtonClicked() {
     this.openResponsiveDialog = this.sdsDialogService.open(this.template, {
       height: '100vh',
       width: '100vw',
@@ -51,26 +51,26 @@ export class SideToolbarComponent implements OnInit, OnDestroy {
       panelClass: ['sds-dialog--full'],
     });
 
-    this.compactDialog.emit(this.openResponsiveDialog);
+    this.responsiveDialog.emit(this.openResponsiveDialog);
   }
 
   private observeViewChange() {
     const breakpointUnsubscription = this.breakpointObserver.observe([
-      `(max-width: ${this.compactSize}px)`
+      `(max-width: ${this.responsiveSize}px)`
     ]).subscribe(result => {
       console.log(this.openResponsiveDialog);
       if (result.matches) {
-        this.isCompactView = true;
+        this.isResponsiveView = true;
       } else {
-        this.isCompactView = false;
+        this.isResponsiveView = false;
         if (this.openResponsiveDialog) {
           this.openResponsiveDialog.close();
           this.openResponsiveDialog = undefined;
-          this.compactDialog.emit(this.openResponsiveDialog);
+          this.responsiveDialog.emit(this.openResponsiveDialog);
         }
       }
 
-      this.compactView.emit(this.isCompactView);
+      this.responsiveView.emit(this.isResponsiveView);
     });
 
     this.subscription.add(breakpointUnsubscription);

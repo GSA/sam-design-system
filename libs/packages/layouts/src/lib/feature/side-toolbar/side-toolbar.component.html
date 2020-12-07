@@ -1,10 +1,10 @@
-<div *ngIf="!isCompactView">
+<div *ngIf="!isResponsiveView">
   <ng-container *ngTemplateOutlet="template"></ng-container>
 </div>
 
-<div *ngIf="isCompactView">
-  <button class="usa-button usa-button--accent-cool usa-button--hover text-secondary-dar" id="compactViewButton"
-    (click)="onCompactViewButtonClicked()" [attr.aria-label]="compactButtonText">
-    {{compactButtonText}}
+<div *ngIf="isResponsiveView">
+  <button class="usa-button usa-button--accent-cool usa-button--hover text-secondary-dar" id="responsiveViewButton"
+    (click)="onResponsiveViewButtonClicked()" [attr.aria-label]="responsiveButtonText">
+    {{responsiveButtonText}}
   </button>
 </div>

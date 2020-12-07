@@ -8,7 +8,7 @@
 <div class="sds-page condensed margin-top-2">
   <div class="grid-container grid-row grid-gap">
     <div class="desktop:grid-col-4 tablet-lg:grid-col-12 mobile-lg:grid-col-12 margin-bottom-3">
-      <sds-side-toolbar (compactDialog)="onDialogOpen($event)" (compactView)="isMobileMode = $event;" [compactButtonText]="'Advanced Search'">
+      <sds-side-toolbar (responsiveDialog)="onDialogOpen($event)" (responsiveView)="isMobileMode = $event;" [responsiveButtonText]="'Advanced Search'">
         <ng-template #toolbarContent>
           <div class="sds-card" *ngIf="isMobileMode">
             <div class="sds-card__header sds-card__header--accent-cool grid-row">

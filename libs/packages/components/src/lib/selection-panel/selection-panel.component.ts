@@ -45,11 +45,7 @@ export class SdsSelectionPanelComponent implements OnChanges {
       this.panelBody.nativeElement.focus();
     }
 
-    const parentLink = this.model.navigationLinks.find(link => link.id === panelItem.id);
-
-    if (parentLink != null) {
-      this.mainParentOfCurrentSelection = parentLink;
-    }
+    this.updateSubheader(panelItem);
 
     if (this.navigateOnClick) {
       const navigationExtras: NavigationExtras = {
@@ -67,6 +63,10 @@ export class SdsSelectionPanelComponent implements OnChanges {
     if (this.model) {
       this.panelItemsOnDisplay = this.model.navigationLinks;
     }
+
+    if (this.model && this.currentSelection) {
+      this.updateSubheader(this.currentSelection);
+    }
   }
 
   onMainPanelHeaderClicked($event: MouseEvent) {
@@ -75,6 +75,15 @@ export class SdsSelectionPanelComponent implements OnChanges {
     this.isTopSection = true;
 
     $event.stopPropagation(); // Stop collapsible card from closing
+  }
+
+  private updateSubheader(panelItem: NavigationLink) {
+    const parentLink = this.model.navigationLinks.find(link => link.id === panelItem.id);
+
+    if (parentLink != null) {
+      this.mainParentOfCurrentSelection = parentLink;
+    }
+
   }
 
 }
