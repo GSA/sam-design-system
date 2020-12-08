@@ -34,6 +34,5 @@ export * from './toolbar/toolbar.module';
 export * from './top-banner/top-banner.component';
 export * from './top-banner/top-banner.module';
 export * from './truncate-text/truncate.text.module';
-export * from './truncate-text/truncate.text.module';
 export * from './video-player/video-player.component';
 export * from './video-player/video-player.module';
