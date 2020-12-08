@@ -35,7 +35,18 @@
                 ? formControl.value.includes(option.value)
                 : formControl.value[option.value])
             " />
-          <label class="usa-checkbox__label" [for]="id + '_' + i">{{ option.label }}</label>
+          <label class="usa-checkbox__label" [for]="id + '_' + i">
+            <!-- 
+                The reference of options array through index is done intentionally here rather 
+                than using local variable option because the formlySelectOptions pipe transforms 
+                each option such that they lose all properties except label, value, and disabled 
+            -->
+            <span *ngIf="to.options[i].tagText" class="usa-tag"  
+              [ngClass]="to.options[i].tagClass ? to.options[i].tagClass : 'sds-tag--info-white'">
+              {{to.options[i].tagText}}
+            </span>
+            {{ option.label }}
+          </label>
         </div>
       </li>
     </ul>
