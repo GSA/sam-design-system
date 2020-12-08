@@ -10,13 +10,15 @@ import { SdsSearchComponent } from '@gsa-sam/components';
 @Component({
   selector: 'sds-formly-field-search',
   template: `
-    <sds-search [formControl]="formControl"></sds-search>
+    <sds-search
+      [formControl]="formControl"
+      (submit)="to.submitHandler && to.submitHandler($event)"
+    ></sds-search>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormlyFieldSearchComponent extends AbstractSdsFormly {
-  @ViewChild(SdsSearchComponent, { static: true })
-  public template: SdsSearchComponent;
+  @ViewChild(SdsSearchComponent) public template: SdsSearchComponent;
 
   constructor(_cdr: ChangeDetectorRef) {
     super();

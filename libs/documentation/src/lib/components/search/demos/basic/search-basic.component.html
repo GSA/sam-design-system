@@ -1,10 +1,32 @@
 <div>
+  <p>
+    Search has been updated to keep the model up to date with each character entered
+  by a user.
+  </p>
+  <p>
+    An output <code>(submit)</code> has been added to search which emits when the
+    user clicks submit. The value of the event contains the current state of the
+    model when the user clicks submit.
+  </p>
+  <div class="settings-documentation">
+    Search Settings:
+    <p><code>placeholder</code> - text to serve as a placeholder in search input</p>
+    <p><code>size</code> - size of the search, defaults to small</p>
+    <p><code>inputClass</code> - string of classes to be applied to search input</p>
+    <p><code>parentSelector</code> - css selector of the element containing search component</p>
+    <div>
+      <code>dropdown</code> - dropdown settings object
+      <p><code>placeholder</code> - default option text, defaults to "-Select-" if nothing provided</p>
+      <p><code>options</code> - options to be displayed in dropdown, should array of key value pairs</p>
+      <p><code>inverse</code> - boolean option to invert color scheme of dropdown</p>
+    </div>
+  </div>
   <h4>SDS Search</h4>
 
   <sds-search
     [(ngModel)]="model"
     [searchSettings]="searchSettings"
-    placeholder="Entity an entity ID, name, or keyword"
+    (submit)="onSubmit($event)"
   ></sds-search>
   Model: {{ model | json }}
 
@@ -14,7 +36,6 @@
     [(ngModel)]="bigmodel"
     (ngModelChange)="onsearchModelChanges()"
     [searchSettings]="bigSearchSettings"
-    placeholder="Entity an entity ID, name, or keyword"
   ></sds-search>
   Big Model: {{ bigmodel | json }}
 </div>

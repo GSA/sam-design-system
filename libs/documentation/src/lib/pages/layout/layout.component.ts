@@ -2,10 +2,10 @@ import { Component, AfterViewInit, ViewChild, OnInit } from '@angular/core';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { Subject } from 'rxjs';
 import { DataService } from './data.service';
-import { SideNavigationModel } from '@gsa-sam/components';
 import { navigationConfig } from './navigate.config';
 import { SearchListConfiguration } from '@gsa-sam/layouts';
 import { FilterService } from './filter.service';
+import { SideNavigationModel } from '@gsa-sam/components';
 @Component({
   templateUrl: './layout.component.html'
 })

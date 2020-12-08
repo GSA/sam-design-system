@@ -62,6 +62,11 @@ export * from './toast/toast.module';
 
 export * from './top-banner/top-banner.component';
 export * from './top-banner/top-banner.module';
-export * from './icon/icon.module';
+export * from './truncate-text/truncate.text.module';
+export * from './truncate-text/truncate.text.module';
 export * from './video-player/video-player.component';
 export * from './icon/icon.component';
+export * from './icon/icon.module';
+export * from './selection-panel/selection-panel.component';
+
+export * from './selection-panel/selection-panel.module';

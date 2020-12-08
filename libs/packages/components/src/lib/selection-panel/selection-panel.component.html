@@ -1,0 +1,35 @@
+<div class="sds-card sds-card--collapsible" [ngClass]="{'sds-card--collapsed': !panelExpanded}">
+  <div role="button" class="sds-card__header sds-card__header--action" [attr.aria-expanded]="panelExpanded"
+    aria-controls="panelBody" tabindex="0" [attr.aria-label]="title"
+    (click)="panelExpanded = !panelExpanded"
+    (keyup.enter)="panelExpanded = !panelExpanded"
+    >
+    <div class="sds-card__title">{{title}}<br />
+      <span *ngIf="mainParentOfCurrentSelection" 
+        class="sds-card__subtitle" role="button" 
+        (click)="onMainPanelHeaderClicked($event)"
+        (keyup.enter)="onMainPanelHeaderClicked($event)"
+        tabindex="0"
+      >
+        {{mainParentOfCurrentSelection.text}}
+      </span>
+    </div>
+
+    <div class="sds-card__action sds-card__collapse"></div>
+  </div>
+  <div class="sds-card__body sds-card__body--accent-cool" id="panelBody" #panelBody tabindex="-1">
+    <ul class="usa-sidenav" 
+      [ngClass]="{'usa-sidenav--styled': isTopSection, 'sds-list sds-list--subdomain': !isTopSection}">
+      <li *ngFor="let panelItem of panelItemsOnDisplay" class="usa-sidenav__item"
+        [ngClass]="{'usa-current': isTopSection && currentSelection && panelItem.id === currentSelection.id}">
+        <a href="javascript:void(0);" 
+          [ngClass]="{
+            'text-secondary': !isTopSection && (!currentSelection || panelItem.id != currentSelection.id), 
+            'usa-link usa-link--active': !isTopSection && currentSelection && panelItem.id === currentSelection.id
+          }"
+          (click)="onPanelItemClick(panelItem)">
+          {{panelItem.text}}</a>
+      </li>
+    </ul>
+  </div>
+</div>

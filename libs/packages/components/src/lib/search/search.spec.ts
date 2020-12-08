@@ -56,14 +56,22 @@ describe('SearchComponent', () => {
     expect(component.model.searchText).toBe(undefined);
   });
 
-  it('Should update the model value on click event', () => {
+  it('Should update the model value on input event', () => {
     const event = {
       preventDefault: () => {}
     };
     const input = fixture.debugElement.query(By.css('.usa-input'));
     input.nativeElement.value = 'test';
-    component.handleClick(event);
+    input.triggerEventHandler('input', {})
     expect(component.model.searchText).toBe('test');
+  });
+
+  it('Should emit on submit output on click event', () => {
+    const model = {searchText: 'abc'};
+    component.model = model;
+    spyOn(component.submit, 'emit');
+    component.handleClick({preventDefault: () => {}});
+    expect(component.submit.emit).toHaveBeenCalledWith(model)
   });
 
   it('Should check the Initial State Visible', () => {

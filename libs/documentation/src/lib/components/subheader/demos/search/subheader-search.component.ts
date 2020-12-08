@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { FormGroup } from '@angular/forms';
-import {
-  SdsDialogService,
-} from '@gsa-sam/components';
+import { SdsDialogService, SearchSettings } from '@gsa-sam/components';
 import {
   SdsFormlyDialogComponent,
   SdsFormlyDialogData
@@ -90,7 +88,17 @@ export class SubheaderSearchComponent {
   options: FormlyFormOptions;
   downloadResponse = {};
 
-  constructor(public dialog: SdsDialogService) { }
+  searchSettings: SearchSettings = {
+    placeholder: 'Enter an entity ID, name, or keyword',
+    parentSelector: '.grid-row',
+    inputClass:
+      'width-card-lg widescreen:width-mobile display-none desktop-lg:display-inline-block',
+    size: 'small',
+    dropdown: {}
+  };
+  searchModel = {};
+
+  constructor(public dialog: SdsDialogService) {}
   onActionMenuItem(btnId) {
     if (btnId == 'DownloadBtn') {
       const data: any = {
@@ -114,5 +122,9 @@ export class SubheaderSearchComponent {
     }
 
     console.log('down', btnId);
+  }
+
+  searchSubmit(model) {
+    console.log('Search Submitted', model);
   }
 }

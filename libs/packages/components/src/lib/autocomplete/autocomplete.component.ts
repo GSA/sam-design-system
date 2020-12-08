@@ -102,6 +102,8 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
       this.model.items = value && value.items ? value.items : [];
       this.cd.markForCheck();
     }
+
+    this.autocompleteSearch.writeValue(this.model);
   }
 
   // Method that is fired when the child component event notifies us that the items array has been modified within the child component

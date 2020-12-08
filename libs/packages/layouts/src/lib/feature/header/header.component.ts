@@ -5,18 +5,15 @@ import {
   EventEmitter,
   ViewChild,
   ElementRef,
-  HostListener
+  HostListener,
+  TemplateRef
 } from '@angular/core';
 import {
   HeaderModel,
   HeaderNavigationLink,
   HeaderSecondaryLink
 } from './model/HeaderModel';
-import {
-  INavigationLink,
-  NavigationMode,
-  Selectable
-} from '@gsa-sam/components';
+import { INavigationLink, Selectable } from '@gsa-sam/components';
 import { NavigationHelper } from '@gsa-sam/components';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -49,6 +46,8 @@ export class SdsHeaderComponent {
   @Input() topBannerDescription = '';
 
   @Input() showHeaderLogo = true;
+
+  @Input() alertsTemplate: TemplateRef<any>;
 
   /**
    * event for event based

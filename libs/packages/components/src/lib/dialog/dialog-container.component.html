@@ -1,4 +1,4 @@
-<button sds-dialog-close class="close-btn">
+<button *ngIf="_config.displayCloseBtn" sds-dialog-close class="close-btn">
   <fa-icon [icon]="['fas', 'times']"></fa-icon>
 </button>
 

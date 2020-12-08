@@ -6,7 +6,9 @@ import {
   AfterViewInit,
   forwardRef,
   ChangeDetectionStrategy,
-  ChangeDetectorRef
+  ChangeDetectorRef,
+  Output,
+  EventEmitter
 } from '@angular/core';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { ViewportRuler } from '@angular/cdk/overlay';
@@ -14,6 +16,8 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 export class SearchSettings {
   public placeholder = 'Search';
   public size: string;
+  public inputClass: string;
+  public parentSelector: string;
   public dropdown: any = {
     placeholder: '-Select-',
     options: [],
@@ -33,27 +37,31 @@ export class SearchSettings {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
-  @ViewChild('inputEl', { read: ElementRef, static: false }) inputEl: ElementRef;
-  @ViewChild('selectEl', { read: ElementRef, static: false }) selectEl: ElementRef;
-  @ViewChild('buttonEl', { read: ElementRef, static: false }) buttonEl: ElementRef;
+  @ViewChild('inputEl', { read: ElementRef, static: false })
+  inputEl: ElementRef;
+  @ViewChild('selectEl', { read: ElementRef, static: false })
+  selectEl: ElementRef;
+  @ViewChild('buttonEl', { read: ElementRef, static: false })
+  buttonEl: ElementRef;
 
-  @Input() inputClass: string;
-  @Input() parentSelector: string;
   @Input() searchSettings: SearchSettings = new SearchSettings();
+  @Output() submit: EventEmitter<{ searchText: string }> = new EventEmitter(
+    null
+  );
 
   model: any = {};
   inputState = {
     initial: { visible: undefined },
     visible: undefined
   };
-  private _onChange = (_: any) => { };
-  private _onTouched = () => { };
+  private _onChange = (_: any) => {};
+  private _onTouched = () => {};
 
   constructor(
     private cd: ChangeDetectorRef,
     private focusMonitor: FocusMonitor,
     private viewportRuler: ViewportRuler
-  ) { }
+  ) {}
 
   ngAfterViewInit() {
     this.inputState.initial.visible = this.isInputVisible();
@@ -82,12 +90,18 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
       this.setInputVisibleStyles();
       this.focusMonitor.focusVia(this.inputEl, 'program');
     } else if (this.inputEl || this.selectEl) {
-      this.model.searchText = this.inputEl ? this.inputEl.nativeElement.value : '';
-      if (this.selectEl && this.selectEl.nativeElement.value) {
-        this.model.searchCategory = this.selectEl.nativeElement.value;
-      }
-      this._onChange(this.model);
+      this.submit.emit(this.model);
     }
+  }
+
+  writeValueToModel() {
+    this.model.searchText = this.inputEl
+      ? this.inputEl.nativeElement.value
+      : '';
+    if (this.selectEl && this.selectEl.nativeElement.value) {
+      this.model.searchCategory = this.selectEl.nativeElement.value;
+    }
+    this._onChange(Object.assign({}, this.model));
   }
 
   writeValue(value: any) {
@@ -113,12 +127,19 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
   }
 
   setInputVisibleStyles() {
-
     const inputWidth = this.calculateInputWidth();
-    this.inputEl.nativeElement.style.setProperty("display", "block", "important");
+    this.inputEl.nativeElement.style.setProperty(
+      'display',
+      'block',
+      'important'
+    );
     this.inputEl.nativeElement.style.position = 'absolute';
     this.inputEl.nativeElement.style.left = `-${inputWidth}px`;
-    this.inputEl.nativeElement.style.setProperty("width", `${inputWidth}px`, "important");
+    this.inputEl.nativeElement.style.setProperty(
+      'width',
+      `${inputWidth}px`,
+      'important'
+    );
     this.inputState.visible = true;
   }
 
@@ -141,8 +162,10 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
     const buttonElement = this.buttonEl.nativeElement;
     const inputElement = this.inputEl.nativeElement;
     const rightPosition = buttonElement.getBoundingClientRect().left;
-    const leftPosition = this.parentSelector
-      ? inputElement.closest(this.parentSelector).getBoundingClientRect().left
+    const leftPosition = this.searchSettings.parentSelector
+      ? inputElement
+          .closest(this.searchSettings.parentSelector)
+          .getBoundingClientRect().left
       : 0;
     return Math.floor(rightPosition - leftPosition - leftPadding);
   }
