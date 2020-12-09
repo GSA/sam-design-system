@@ -11,13 +11,13 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { MarkdownModule } from 'ngx-markdown';
 import {
   FontAwesomeModule,
-  FaIconLibrary
+  FaIconLibrary,
 } from '@fortawesome/angular-fontawesome';
 import { Toast, ToastrModule } from 'ngx-toastr';
 import {
   SdsToastComponent,
   SdsToastModule,
-  SdsToastSettings
+  SdsToastSettings,
 } from '@gsa-sam/components';
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import xml from 'highlight.js/lib/languages/xml';
@@ -28,7 +28,7 @@ export function hljsLanguages() {
   return [
     { name: 'typescript', func: typescript },
     { name: 'scss', func: scss },
-    { name: 'xml', func: xml }
+    { name: 'xml', func: xml },
   ];
 }
 
@@ -39,20 +39,22 @@ export function hljsLanguages() {
     BrowserAnimationsModule,
     FontAwesomeModule,
     SdsToastModule,
+    ToastrModule.forRoot(SdsToastSettings),
     RouterModule.forRoot(ROUTES, { scrollPositionRestoration: 'enabled' }),
     FormsModule,
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
   ],
   providers: [
     { provide: LocationStrategy, useClass: PathLocationStrategy },
     {
       provide: HIGHLIGHT_OPTIONS,
       useValue: {
-        languages: hljsLanguages
-      }
-    }
+        languages: hljsLanguages,
+      },
+    },
   ],
-  bootstrap: [AppComponent]
+  entryComponents: [SdsToastComponent],
+  bootstrap: [AppComponent],
 })
 export class AppModule {
   constructor(library: FaIconLibrary) {
