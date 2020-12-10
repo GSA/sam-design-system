@@ -10,6 +10,7 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import * as qs from 'qs';
 import {
   SearchListInterface,
   SearchListConfiguration,
@@ -66,6 +67,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   totalItems: number;
 
   ngOnInit() {
+    this.getHistoryModel();
     this.page.pageSize = this.configuration.pageSize;
     this.sortField = this.configuration.defaultSortValue;
     this.paginationChange.subscribe(() => {
@@ -76,6 +78,24 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
         this.updateFilter(filter);
       });
     }
+  }
+
+  getHistoryModel() {
+    if (this._isEmpty(this.form.getRawValue())) {
+      const queryString = window.location.search.substring(1);
+      const params: any = this.getUrlParams(queryString);
+      const paramModel: any = this.convertToModel(params);
+      this.checkForHide();
+      setTimeout(() => {
+        this.form.patchValue({
+          ...this.model,
+          ...paramModel.sfm,
+        });
+      });
+      this.cdr.detectChanges();
+    }
+  }
+
   }
 
   /**
@@ -103,9 +123,10 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     if (queryObj.hasOwnProperty('sfm')) {
       queryObj = {};
     }
-    queryObj['sfm'] = this.filterData;
+
     queryObj['pageNumber'] = this.page.pageNumber.toString();
     queryObj['sorting'] = this.sortField.toString();
+    queryObj['sfm'] = this.filterData;
 
     const params = this.convertToParam(queryObj);
     this.router.navigate(['.'], {
@@ -127,6 +148,51 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     } else {
       return '';
     }
+  }
+  getUrlParams(queryString) {
+    const target = {};
+    queryString.split('&').forEach((pair) => {
+      if (pair !== '') {
+        const splitpair = pair.split('=');
+        target[splitpair[0]] =
+          splitpair[1] === '' || splitpair[1] === 'false' ? null : splitpair[1];
+      }
+    });
+    return target;
+  }
+
+  shortFormatDate(prefix, value) {
+    const fixDigit = (val) => {
+      return val.toString().length === 1 ? '0' + val : val;
+    };
+    const getFormattedDate = (date) =>
+      `${fixDigit(
+        date.getMonth() + 1
+      )}/${date.getDate()}/${date.getFullYear()}`;
+    if (value instanceof Date) {
+      value = getFormattedDate(new Date(value));
+    }
+    return value;
+  }
+
+  convertToModel(filters) {
+    let obj = {};
+    const encodedValues = qs.stringify(filters, {
+      skipNulls: true,
+      encode: false,
+      filter: this.longFormatDate,
+    });
+    obj = qs.parse(encodedValues);
+    return obj;
+  }
+
+  longFormatDate(prefix, value) {
+    const val = decodeURIComponent(value);
+    const isDate = /^(\d{1,2})[-\/](\d{1,2})[-\/](\d{4})$/.exec(val);
+    if (isDate) {
+      value = new Date(val).toISOString();
+    }
+    return value;
   }
 
   /**
@@ -166,6 +232,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
    * calls service when updated
    */
   private updateContent() {
+    this.updateNavigation();
     if (this.filterData) {
       setTimeout(() => {
         this.service
