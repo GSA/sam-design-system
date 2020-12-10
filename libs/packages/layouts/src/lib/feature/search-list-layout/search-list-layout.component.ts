@@ -66,6 +66,13 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
    */
   totalItems: number;
 
+  // @HostListener('window:popstate', ['$event'])
+  // onpopstate(event) {
+  //   const queryString = window.location.search.substring(1);
+  //   const params = this.getUrlParams(queryString);
+  //   const historyModel: any = this.convertToModel(params);
+  // }
+
   ngOnInit() {
     // this.getHistoryModel();
     this.page.pageSize = this.configuration.pageSize;
@@ -85,13 +92,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
       const queryString = window.location.search.substring(1);
       const params: any = this.getUrlParams(queryString);
       const paramModel: any = this.convertToModel(params);
-      this.checkForHide();
-      setTimeout(() => {
-        this.form.patchValue({
-          ...this.model,
-          ...paramModel.sfm,
-        });
-      });
+
       this.cdr.detectChanges();
     }
   }
