@@ -67,7 +67,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   totalItems: number;
 
   ngOnInit() {
-    this.getHistoryModel();
+    // this.getHistoryModel();
     this.page.pageSize = this.configuration.pageSize;
     this.sortField = this.configuration.defaultSortValue;
     this.paginationChange.subscribe(() => {
@@ -94,8 +94,6 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
       });
       this.cdr.detectChanges();
     }
-  }
-
   }
 
   /**
