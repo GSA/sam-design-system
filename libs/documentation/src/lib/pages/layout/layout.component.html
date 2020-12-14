@@ -19,7 +19,7 @@
           <sds-accordion-item #filtersAccordion [expanded]="filtersExpanded">
             <sds-accordion-item-header>Filter By</sds-accordion-item-header>
             <sds-filters [options]="options" [advancedFilters]="true" [sortMoreFilterBy]="'label'"
-              [isHistoryEnable]="true" [form]="form" [fields]="fields" [model]="filterModel"
+              [isHistoryEnable]="false" [form]="form" [fields]="fields" [model]="filterModel"
               (filterChange)="filterChange$.next($event)">
             </sds-filters>
           </sds-accordion-item>

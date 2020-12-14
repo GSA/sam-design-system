@@ -15,7 +15,10 @@ import {
   SearchListInterface,
   SearchListConfiguration,
 } from './model/search-list-layout.model';
-import { SDSFormlyUpdateComunicationService } from '@gsa-sam/sam-formly';
+import {
+  SDSFormlyUpdateComunicationService,
+  SDSFormlyUpdateModelService,
+} from '@gsa-sam/sam-formly';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -34,7 +37,8 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     private router: Router,
     private route: ActivatedRoute,
     @Optional()
-    private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService
+    private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,
+    private filterUpdateModelService: SDSFormlyUpdateModelService
   ) {}
 
   /**
@@ -74,7 +78,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   // }
 
   ngOnInit() {
-    // this.getHistoryModel();
+    this.getHistoryModel();
     this.page.pageSize = this.configuration.pageSize;
     this.sortField = this.configuration.defaultSortValue;
     this.paginationChange.subscribe(() => {
@@ -88,13 +92,15 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   }
 
   getHistoryModel() {
-    if (this._isEmpty(this.form.getRawValue())) {
-      const queryString = window.location.search.substring(1);
-      const params: any = this.getUrlParams(queryString);
-      const paramModel: any = this.convertToModel(params);
-
-      this.cdr.detectChanges();
+    // if (this._isEmpty(this.form.getRawValue())) {
+    const queryString = window.location.search.substring(1);
+    const params: any = this.getUrlParams(queryString);
+    const paramModel: any = this.convertToModel(params);
+    if (this.filterUpdateModelService) {
+      this.filterUpdateModelService.updateModel(paramModel['sfm']);
     }
+    // this.cdr.detectChanges();
+    // }
   }
 
   /**

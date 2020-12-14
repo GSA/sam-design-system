@@ -13,6 +13,7 @@ import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import * as qs from 'qs';
 import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
+import { SDSFormlyUpdateModelService } from './service/sds-filter-model-update.service';
 
 @Component({
   selector: 'sds-filters',
@@ -65,7 +66,7 @@ export class SdsFiltersComponent implements OnInit {
    *  Emit results when model updated
    */
   // TODO: check type -- Formly models are typically objects
-  @Output() filterChange = new EventEmitter<object[]>();
+  @Output() filterChange = new EventEmitter<object>();
 
   _isObj = (obj: any): boolean => typeof obj === 'object' && obj !== null;
   _isEmpty = (obj: any): boolean => Object.keys(obj).length === 0;
@@ -90,7 +91,9 @@ export class SdsFiltersComponent implements OnInit {
     public formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,
     private cdr: ChangeDetectorRef,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    @Optional()
+    private filterUpdateModelService: SDSFormlyUpdateModelService
   ) {}
 
   @HostListener('window:popstate', ['$event'])
@@ -105,6 +108,20 @@ export class SdsFiltersComponent implements OnInit {
     this.updateChange(updatedFormValue);
   }
   ngOnInit(): void {
+    if (this.filterUpdateModelService) {
+      this.filterUpdateModelService.filterModel.subscribe((filter) => {
+        console.log('getting updated fields', filter);
+
+        setTimeout(() => {
+          this.form.patchValue({
+            ...this.model,
+            ...filter,
+          });
+        });
+      });
+      this.cdr.detectChanges();
+    }
+
     if (this.isHistoryEnable) {
       if (this._isEmpty(this.form.getRawValue())) {
         const queryString = window.location.search.substring(1);
