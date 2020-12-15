@@ -8,6 +8,8 @@ import {
   SimpleChanges,
   OnInit,
   ChangeDetectorRef,
+  HostListener,
+  OnDestroy,
 } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import * as qs from 'qs';
@@ -26,7 +28,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './search-list-layout.component.html',
   styleUrls: ['./search-list-layout.component.scss'],
 })
-export class SearchListLayoutComponent implements OnChanges, OnInit {
+export class SearchListLayoutComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * Child Template to be used to display the data for each item in the list of items
    */
@@ -60,6 +62,11 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
       this.onSelectChange();
     }
   }
+
+
+  ngOnDestroy() {
+    this.filterUpdateModelService.updateModel({})
+  }
   /**
    * Filter information
    */
@@ -70,12 +77,14 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
    */
   totalItems: number;
 
-  // @HostListener('window:popstate', ['$event'])
-  // onpopstate(event) {
-  //   const queryString = window.location.search.substring(1);
-  //   const params = this.getUrlParams(queryString);
-  //   const historyModel: any = this.convertToModel(params);
-  // }
+  @HostListener('window:popstate', ['$event'])
+  onpopstate(event) {
+    this.getHistoryModel();
+    // const queryString = window.location.search.substring(1);
+    // const params = this.getUrlParams(queryString);
+    // const historyModel: any = this.convertToModel(params);
+    // console.log(historyModel, 'model')
+  }
 
   ngOnInit() {
     this.getHistoryModel();
@@ -92,15 +101,14 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   }
 
   getHistoryModel() {
-    // if (this._isEmpty(this.form.getRawValue())) {
     const queryString = window.location.search.substring(1);
     const params: any = this.getUrlParams(queryString);
     const paramModel: any = this.convertToModel(params);
     if (this.filterUpdateModelService) {
+      if(paramModel&& paramModel['sfm'] && paramModel['sfm'] ) {
       this.filterUpdateModelService.updateModel(paramModel['sfm']);
+      }
     }
-    // this.cdr.detectChanges();
-    // }
   }
 
   /**

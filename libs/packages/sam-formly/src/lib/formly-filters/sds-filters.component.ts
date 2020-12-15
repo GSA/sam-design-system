@@ -96,24 +96,21 @@ export class SdsFiltersComponent implements OnInit {
     private filterUpdateModelService: SDSFormlyUpdateModelService
   ) {}
 
-  @HostListener('window:popstate', ['$event'])
-  onpopstate(event) {
-    const queryString = window.location.search.substring(1);
-    const params = this.getUrlParams(queryString);
-    const updatedFormValue = this.overwrite(
-      this.form.getRawValue(),
-      this.convertToModel(params)
-    );
-    this.form.setValue(updatedFormValue);
-    this.updateChange(updatedFormValue);
-  }
+  // @HostListener('window:popstate', ['$event'])
+  // onpopstate(event) {
+  //   const queryString = window.location.search.substring(1);
+  //   const params = this.getUrlParams(queryString);
+  //   const updatedFormValue = this.overwrite(
+  //     this.form.getRawValue(),
+  //     this.convertToModel(params)
+  //   );
+  //   this.form.setValue(updatedFormValue);
+  //   this.updateChange(updatedFormValue);
+  // }
   ngOnInit(): void {
     if (this.filterUpdateModelService) {
       this.filterUpdateModelService.filterModel.subscribe((filter) => {
-        
         if(filter) {
-          console.log('getting updated fields', filter);
-
           this.form.patchValue(filter);
           this.cdr.detectChanges();
         }
@@ -186,7 +183,7 @@ export class SdsFiltersComponent implements OnInit {
     const updatedModel = this.getCleanModel
       ? this.convertToModel(change)
       : change;
-    this.filterChange.emit([updatedModel]);
+    this.filterChange.emit(updatedModel);
     if (this.formlyUpdateComunicationService) {
       this.formlyUpdateComunicationService.updateFilter(updatedModel);
     }
