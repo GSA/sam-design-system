@@ -90,17 +90,20 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     this.paginationChange.subscribe(() => {
       this.updateContent();
     });
-    if (this.formlyUpdateComunicationService) {
-      this.formlyUpdateComunicationService.filterUpdate.subscribe((filter) => {
-        this.updateFilter(filter);
-      });
-    }
+    // if (this.formlyUpdateComunicationService) {
+    //   this.formlyUpdateComunicationService.filterUpdate.subscribe((filter) => {
+      
+    //     this.updateFilter(filter);
+    //   });
+    // }
   }
 
   getHistoryModel() {
     const queryString = window.location.search.substring(1);
     const params: any = this.getUrlParams(queryString);
     const paramModel: any = this.convertToModel(params);
+    this.page.pageNumber = paramModel['pageNumber'];
+    this.sortField = paramModel['sorting'];
     if (this.filterUpdateModelService) {
       if(paramModel && paramModel['sfm'] ) {
       this.filterUpdateModelService.updateModel(paramModel['sfm']);
@@ -117,6 +120,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     pageNumber: 1,
     pageSize: 25,
     totalPages: 0,
+    default: true,
   };
 
   /**
@@ -124,8 +128,10 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
    * @param filter
    */
   public updateFilter(filter: any) {
+
     this.filterData = filter;
-    this.page.pageNumber = 1;
+    this.page.pageNumber = this.page.default ? this.page.pageNumber : 1;
+    this.page.default = filter ? false : true;
     this.updateContent();
   }
 
@@ -211,7 +217,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
    * Sorty by change event
    */
   onSelectChange() {
-    this.page.pageNumber = 1;
+   this.page.pageNumber = 1;
     this.updateContent();
   }
 
