@@ -110,14 +110,13 @@ export class SdsFiltersComponent implements OnInit {
   ngOnInit(): void {
     if (this.filterUpdateModelService) {
       this.filterUpdateModelService.filterModel.subscribe((filter) => {
-        console.log('getting updated fields', filter);
+        
+        if(filter) {
+          console.log('getting updated fields', filter);
 
-        setTimeout(() => {
-          this.form.patchValue({
-            ...this.model,
-            ...filter,
-          });
-        });
+          this.form.patchValue(filter);
+          this.cdr.detectChanges();
+        }
       });
       this.cdr.detectChanges();
     }
