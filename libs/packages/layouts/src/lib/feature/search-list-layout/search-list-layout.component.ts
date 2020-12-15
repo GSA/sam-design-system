@@ -28,7 +28,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './search-list-layout.component.html',
   styleUrls: ['./search-list-layout.component.scss'],
 })
-export class SearchListLayoutComponent implements OnChanges, OnInit, OnDestroy {
+export class SearchListLayoutComponent implements OnChanges, OnInit {
   /**
    * Child Template to be used to display the data for each item in the list of items
    */
@@ -64,9 +64,6 @@ export class SearchListLayoutComponent implements OnChanges, OnInit, OnDestroy {
   }
 
 
-  ngOnDestroy() {
-    this.filterUpdateModelService.updateModel({})
-  }
   /**
    * Filter information
    */
@@ -105,8 +102,10 @@ export class SearchListLayoutComponent implements OnChanges, OnInit, OnDestroy {
     const params: any = this.getUrlParams(queryString);
     const paramModel: any = this.convertToModel(params);
     if (this.filterUpdateModelService) {
-      if(paramModel&& paramModel['sfm'] && paramModel['sfm'] ) {
+      if(paramModel && paramModel['sfm'] ) {
       this.filterUpdateModelService.updateModel(paramModel['sfm']);
+      } else {
+        this.filterUpdateModelService.updateModel({});
       }
     }
   }

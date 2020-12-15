@@ -96,42 +96,17 @@ export class SdsFiltersComponent implements OnInit {
     private filterUpdateModelService: SDSFormlyUpdateModelService
   ) {}
 
-  // @HostListener('window:popstate', ['$event'])
-  // onpopstate(event) {
-  //   const queryString = window.location.search.substring(1);
-  //   const params = this.getUrlParams(queryString);
-  //   const updatedFormValue = this.overwrite(
-  //     this.form.getRawValue(),
-  //     this.convertToModel(params)
-  //   );
-  //   this.form.setValue(updatedFormValue);
-  //   this.updateChange(updatedFormValue);
-  // }
   ngOnInit(): void {
     if (this.filterUpdateModelService) {
       this.filterUpdateModelService.filterModel.subscribe((filter) => {
         if(filter) {
-          this.form.patchValue(filter);
-          this.cdr.detectChanges();
+          const updatedFormValue = this.overwrite(this.form.getRawValue(), filter);
+          setTimeout(() => {
+          this.form.patchValue(updatedFormValue);
+          });
         }
       });
       this.cdr.detectChanges();
-    }
-
-    if (this.isHistoryEnable) {
-      if (this._isEmpty(this.form.getRawValue())) {
-        const queryString = window.location.search.substring(1);
-        const params: any = this.getUrlParams(queryString);
-        const paramModel: any = this.convertToModel(params);
-        this.checkForHide();
-        setTimeout(() => {
-          this.form.patchValue({
-            ...this.model,
-            ...paramModel.sfm,
-          });
-        });
-        this.cdr.detectChanges();
-      }
     }
   }
   /**
@@ -162,21 +137,6 @@ export class SdsFiltersComponent implements OnInit {
   }
 
   onModelChange(change: any) {
-    if (this.isHistoryEnable) {
-      const queryString = window.location.search.substring(1);
-      let queryObj = qs.parse(queryString, { allowPrototypes: true });
-      if (queryObj.hasOwnProperty('sfm')) {
-        queryObj.sfm = {};
-      }
-      queryObj['sfm'] = change;
-      const params = this.convertToParam(queryObj);
-      this.router.navigate(['.'], {
-        relativeTo: this.route,
-        queryParams: params,
-        // TODO: Need this for future use case
-        // queryParamsHandling: 'merge'
-      });
-    }
     this.updateChange(change);
   }
   updateChange(change) {
