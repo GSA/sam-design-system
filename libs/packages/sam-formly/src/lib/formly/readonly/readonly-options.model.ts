@@ -19,6 +19,8 @@ export interface ReadonlyOptions {
     primaryTextField: string
   },
 
+  // Key value that maps to start / end dates of the date range model. 
+  // By default, these values are set to 'fromDate' and 'toDate'
   daterangepickerOptions?: {
     fromDateKey: string,
     toDateKey: string,
