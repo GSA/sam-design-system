@@ -15,6 +15,7 @@ import * as qs from 'qs';
 import {
   SearchListInterface,
   SearchListConfiguration,
+  ResultsModel,
 } from './model/search-list-layout.model';
 import {
   SDSFormlyUpdateComunicationService,
@@ -134,9 +135,9 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     const queryString = window.location.search.substring(1);
     const params: any = this.getUrlParams(queryString);
     const paramModel: any = this.convertToModel(params);
-    this.page.pageNumber = +paramModel['pageNumber'];
+    this.page.pageNumber = paramModel['page'] ? +paramModel['page']: 1;
     
-    this.sortField = paramModel['sorting'];
+    this.sortField = paramModel['sort'];
     if (this.filterUpdateModelService) {
       if(paramModel && paramModel['sfm'] ) {
       this.filterUpdateModelService.updateModel(paramModel['sfm']);
@@ -164,8 +165,8 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
       queryObj = {};
     }
 
-    queryObj['pageNumber'] = this.page.pageNumber.toString();
-    queryObj['sorting'] = this.sortField.toString();
+    queryObj['page'] = this.page.pageNumber.toString();
+    queryObj['sort'] = this.sortField.toString();
     queryObj['sfm'] = this.filterData;
     const params = this.convertToParam(queryObj);
     this.router.navigate(['.'], {
@@ -248,6 +249,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     if(this.isHistoryEnabled){
     this.updateNavigation();
     }
+
     if (this.filterData && this.service) {
       setTimeout(() => {
         this.service
@@ -261,6 +263,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
             this.page.totalPages = Math.ceil(
               result.totalItems / this.page.pageSize
             );
+            console.log(this.filterData, 'model');
             this.totalItems = result.totalItems;
           });
       });
@@ -268,11 +271,14 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   }
 
 
-  public updateFilterModel(filter: any) {
-   this.filterData = filter;
+  public updateSearchResultsModel(historyModel: ResultsModel) {
+   this.filterData = historyModel.filterModel;
+   this.page.default = historyModel.page || historyModel.sort ? true : false;
+   this.page.pageNumber = historyModel.page;
+   this.sortField = historyModel.sort;
    if (this.filterUpdateModelService) {
-    if(filter ) {
-    this.filterUpdateModelService.updateModel(filter);
+    if(historyModel && historyModel.filterModel ) {
+    this.filterUpdateModelService.updateModel(historyModel.filterModel);
     } else {
       this.filterUpdateModelService.updateModel({});
     }

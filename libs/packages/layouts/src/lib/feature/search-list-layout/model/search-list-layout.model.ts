@@ -92,10 +92,10 @@ export class SearchListConfiguration {
      */
     pageSize: number = 25;
 
-     /**
-     * history tracking
-     */
-    isHistoryEnabled?: boolean = true;
+}
 
-
+export interface ResultsModel {
+    sort?: string;
+    page?: number;
+    filterModel: any;
 }

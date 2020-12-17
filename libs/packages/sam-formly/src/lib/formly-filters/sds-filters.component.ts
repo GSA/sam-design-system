@@ -55,7 +55,7 @@ export class SdsFiltersComponent implements OnInit {
   /**
    * Timer id for the timer awaiting the service call for more typeing
    */
-  @Input() public isHistoryEnable: boolean = true;
+  @Input() public isHistoryEnable: boolean = false;
 
   /**
    * To get clean model without null and empty

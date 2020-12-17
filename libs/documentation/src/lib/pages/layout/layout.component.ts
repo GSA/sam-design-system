@@ -3,7 +3,7 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 import { Subject } from 'rxjs';
 import { DataService } from './data.service';
 import { navigationConfig } from './navigate.config';
-import { SearchListConfiguration } from '@gsa-sam/layouts';
+import { SearchListConfiguration, ResultsModel } from '@gsa-sam/layouts';
 import { FilterService } from './filter.service';
 import { SideNavigationModel } from '@gsa-sam/components';
 @Component({
@@ -36,8 +36,7 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
     sortList: [
       { text: 'Entity Name', value: 'legalBusinessName' },
       { text: 'Status', value: 'registrationStatus' }
-    ],
-    isHistoryEnabled: true
+    ]
   };
 
   updatedListConfig: SearchListConfiguration = {
@@ -75,5 +74,14 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
       this.listConfig = { ...this.defaultListConfig };
     }
 
+  }
+
+  updateSearchResultsModel() {
+    const model: ResultsModel = { page: 2, sort: '', 
+    filterModel: { keyword: 'te', 
+    location: { city: null, congressionalDistrict: null, country: null, 
+      state: [{ id: 'AL', name: 'Alabama', subtext: undefined }], zipCode: null } } };
+
+    this.resultList.updateSearchResultsModel(model);
   }
 }
