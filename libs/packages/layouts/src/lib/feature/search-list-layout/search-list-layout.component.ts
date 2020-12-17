@@ -23,6 +23,11 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   @Input()
   service: SearchListInterface;
 
+ /**
+   * Allow to insert a customized template for no results to use
+   */
+  @Input() customResultsTemplate: TemplateRef<any>;
+
   /**
    * configuration
    */
