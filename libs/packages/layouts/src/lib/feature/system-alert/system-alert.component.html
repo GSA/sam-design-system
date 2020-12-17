@@ -59,12 +59,13 @@
         <div class="sds-alert--header__label margin-right-1">
           {{alert.header}}
         </div>
-        <a (click)="onShowDetailsClicked(alert)" href="javascript:void(0)" class="sds-alert--header__link">
+        <a (click)="alert.displayDescription = !alert.displayDescription; onShowDetailsClicked(alert)" href="javascript:void(0)" class="sds-alert--header__link">
           Show Details
         </a>
         <span class="sds-alert--header__date">
           {{alert.date | date: 'mediumDate'}}
         </span>
+        <span *ngIf="alerts[i].displayDescription" [innerHTML]="alert.description"></span>
       </div>
       <div class="grid-offset-1 grid-col-auto">
         <button (click)="onAlertClose(i)" [attr.id]="'alert'+ i + 'CloseBtn'"
