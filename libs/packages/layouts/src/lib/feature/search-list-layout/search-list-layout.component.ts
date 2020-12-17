@@ -19,7 +19,7 @@ import {
 } from './model/search-list-layout.model';
 import {
   SDSFormlyUpdateComunicationService,
-  SDSFormlyUpdateModelService,
+  SDSFormlyUpdateModelService
 } from '@gsa-sam/sam-formly';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -165,8 +165,8 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
       queryObj = {};
     }
 
-    queryObj['page'] = this.page.pageNumber.toString();
-    queryObj['sort'] = this.sortField.toString();
+    queryObj['page'] = this.page.pageNumber? this.page.pageNumber.toString(): '1';
+    queryObj['sort'] = this.sortField? this.sortField.toString(): '';
     queryObj['sfm'] = this.filterData;
     const params = this.convertToParam(queryObj);
     this.router.navigate(['.'], {
