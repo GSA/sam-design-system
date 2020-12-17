@@ -29,8 +29,8 @@ export const ROUTES = [
         {
           pkg: 'formly',
           type: 'components',
-          name: 'FormlyFieldRadioComponent',
-          formType: 'radio'
+          name: 'FormlyReadonlyWrapperComponent',
+          wrappers: ['readonly'],
         }
       ]
     },
