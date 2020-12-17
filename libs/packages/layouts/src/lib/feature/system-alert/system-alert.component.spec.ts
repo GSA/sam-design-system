@@ -57,4 +57,23 @@ describe('SystemAlertComponent', () => {
     expect(seeAllAlertsSpy).toHaveBeenCalled();
   });
 
+  it('Should display/hide alert description when show details is clicked', () => {
+    const showDetailsButton = fixture.debugElement.query(By.css('.sds-alert--header__content .sds-alert--header__link'));
+    let headerContent = fixture.debugElement.query(By.css('.sds-alert--header__content'));
+
+    // ensure description is initially not present
+    expect(headerContent.nativeElement.textContent.trim()).not.toContain('Test Alert description');
+
+    // Show details clicked - description should be present
+    showDetailsButton.triggerEventHandler('click', null);
+    fixture.detectChanges();
+    expect(headerContent.nativeElement.textContent.trim()).toContain('Test Alert description');
+
+    // Hide details clicked - description should be hidden again
+    showDetailsButton.triggerEventHandler('click', null);
+    fixture.detectChanges();
+    expect(headerContent.nativeElement.textContent.trim()).not.toContain('Test Alert description');
+
+
+  });
 });
