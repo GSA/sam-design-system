@@ -8,7 +8,6 @@ import { AutocompleteSampleDataService } from '../../../../autocomplete/demos/ba
 @Component({
   selector: 'gsa-sam-readonly-basic',
   templateUrl: './readonly-basic.component.html',
-  styleUrls: ['./readonly-basic.component.scss'],
   providers: [ AutocompleteSampleDataService ]
 
 })
