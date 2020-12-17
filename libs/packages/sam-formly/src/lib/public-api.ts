@@ -1,6 +1,7 @@
 export * from './formly/formly.module';
 export * from './formly-reset/formly-reset.module';
 export * from './formly-filters/sds-filters.module';
+export * from './formly/readonly/readonly.module';
 export * from './formly-dialog/formly-dialog.component';
 export * from './formly-dialog/sds-formly-dialog.module';
 export * from './formly-dialog/formly-dialog-data.model';
