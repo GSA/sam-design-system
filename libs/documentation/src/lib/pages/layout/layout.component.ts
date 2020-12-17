@@ -36,7 +36,8 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
     sortList: [
       { text: 'Entity Name', value: 'legalBusinessName' },
       { text: 'Status', value: 'registrationStatus' }
-    ]
+    ],
+    isHistoryEnabled: true
   };
 
   updatedListConfig: SearchListConfiguration = {
@@ -46,7 +47,8 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
       { text: 'Entity Name', value: 'legalBusinessName' },
       { text: 'Cage Code', value: 'cageCode' },
       { text: 'Status', value: 'registrationStatus' }
-    ]
+    ],
+    
   };
 
   constructor(

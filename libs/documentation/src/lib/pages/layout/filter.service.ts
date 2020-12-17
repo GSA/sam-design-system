@@ -233,7 +233,7 @@ export class FilterService {
     this.settings.primaryTextField = 'name';
     this.settings.secondaryTextField = 'subtext';
     this.settings.labelText = 'Autocomplete 1';
-    this.settings.selectionMode = SelectionMode.MULTIPLE;
+    this.settings.selectionMode = SelectionMode.SINGLE;
     this.settings.autocompletePlaceHolderText = 'Enter text';
     this.settings.debounceTime = 350;
   }

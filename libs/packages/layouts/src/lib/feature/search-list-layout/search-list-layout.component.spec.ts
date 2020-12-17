@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { SearchParameters, SearchResult, SearchListInterface } from './model/search-list-layout.model';
 import { of, Observable } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
+import { SDSFormlyUpdateModelService } from '@gsa-sam/sam-formly';
 describe('SearchListLayoutComponent', () => {
   let component: SearchListLayoutComponent;
   let fixture: ComponentFixture<SearchListLayoutComponent>;
@@ -13,7 +14,8 @@ describe('SearchListLayoutComponent', () => {
     TestBed.configureTestingModule({
       declarations: [SearchListLayoutComponent],
       imports: [PaginationModule, SdsSearchResultListModule, FormsModule,
-        RouterTestingModule.withRoutes([]),]
+        RouterTestingModule.withRoutes([]),],
+        providers:[SDSFormlyUpdateModelService]
     })
       .compileComponents();
   }));

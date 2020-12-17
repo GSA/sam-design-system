@@ -8,8 +8,7 @@ import {
   SimpleChanges,
   OnInit,
   ChangeDetectorRef,
-  HostListener,
-  OnDestroy,
+  HostListener
 } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import * as qs from 'qs';
@@ -46,23 +45,13 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   /**
    * Input service to be called when items change
    */
-  @Input()
-  service: SearchListInterface;
+  @Input() service: SearchListInterface;
 
+  @Input() isHistoryEnabled = true;
   /**
    * configuration
    */
-  @Input()
-  configuration: SearchListConfiguration;
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.configuration.currentValue) {
-      this.configuration = changes.configuration.currentValue;
-      this.sortField = this.configuration.defaultSortValue;
-      this.onSelectChange();
-    }
-  }
-
+  @Input() configuration: SearchListConfiguration;
 
   /**
    * Filter information
@@ -74,35 +63,79 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
    */
   totalItems: number;
 
+   /**
+   * Default Page setttings
+   */
+  page = {
+    pageNumber: 1,
+    pageSize: 25,
+    totalPages: 0,
+    default: true,
+  };
+
+  /**
+   * Id of the top pagination control
+   */
+  top = { id: 'topPagination' };
+
+  /**
+   * Id of the bottom pagination control
+   */
+  bottom = { id: 'bottomPagination' };
+
+  /**
+   * Page event listener
+   */
+  public paginationChange = new BehaviorSubject<object>(this.page);
+
+  /**
+   * List of items to be displayed
+   */
+  items = [];
+
+  /**
+   * sort value
+   */
+  public sortField = '';
+  
   @HostListener('window:popstate', ['$event'])
   onpopstate(event) {
+    if(this.isHistoryEnabled){
     this.getHistoryModel();
-    // const queryString = window.location.search.substring(1);
-    // const params = this.getUrlParams(queryString);
-    // const historyModel: any = this.convertToModel(params);
-    // console.log(historyModel, 'model')
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.configuration.currentValue) {
+      this.configuration = changes.configuration.currentValue;
+      this.sortField = this.configuration.defaultSortValue;
+      this.onSelectChange();
+    }
   }
 
   ngOnInit() {
+    if(this.isHistoryEnabled){
     this.getHistoryModel();
+    }
     this.page.pageSize = this.configuration.pageSize;
     this.sortField = this.configuration.defaultSortValue;
     this.paginationChange.subscribe(() => {
       this.updateContent();
     });
-    // if (this.formlyUpdateComunicationService) {
-    //   this.formlyUpdateComunicationService.filterUpdate.subscribe((filter) => {
+    if (this.formlyUpdateComunicationService) {
+      this.formlyUpdateComunicationService.filterUpdate.subscribe((filter) => {
       
-    //     this.updateFilter(filter);
-    //   });
-    // }
+        this.updateFilter(filter);
+      });
+    }
   }
 
   getHistoryModel() {
     const queryString = window.location.search.substring(1);
     const params: any = this.getUrlParams(queryString);
     const paramModel: any = this.convertToModel(params);
-    this.page.pageNumber = paramModel['pageNumber'];
+    this.page.pageNumber = +paramModel['pageNumber'];
+    
     this.sortField = paramModel['sorting'];
     if (this.filterUpdateModelService) {
       if(paramModel && paramModel['sfm'] ) {
@@ -114,21 +147,10 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   }
 
   /**
-   * Default Page setttings
-   */
-  page = {
-    pageNumber: 1,
-    pageSize: 25,
-    totalPages: 0,
-    default: true,
-  };
-
-  /**
    * updates the filter and set the page number to 1 and calls imported service
    * @param filter
    */
   public updateFilter(filter: any) {
-
     this.filterData = filter;
     this.page.pageNumber = this.page.default ? this.page.pageNumber : 1;
     this.page.default = filter ? false : true;
@@ -145,13 +167,10 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     queryObj['pageNumber'] = this.page.pageNumber.toString();
     queryObj['sorting'] = this.sortField.toString();
     queryObj['sfm'] = this.filterData;
-
     const params = this.convertToParam(queryObj);
     this.router.navigate(['.'], {
       relativeTo: this.route,
-      queryParams: params,
-      // TODO: Need this for future use case
-      // queryParamsHandling: 'merge'
+      queryParams: params
     });
   }
 
@@ -221,37 +240,15 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     this.updateContent();
   }
 
-  /**
-   * Id of the top pagination control
-   */
-  top = { id: 'topPagination' };
-
-  /**
-   * Id of the bottom pagination control
-   */
-  bottom = { id: 'bottomPagination' };
-
-  /**
-   * Page event listener
-   */
-  public paginationChange = new BehaviorSubject<object>(this.page);
-
-  /**
-   * List of items to be displayed
-   */
-  items = [];
-
-  /**
-   * sort value
-   */
-  public sortField = '';
 
   /**
    * calls service when updated
    */
   private updateContent() {
+    if(this.isHistoryEnabled){
     this.updateNavigation();
-    if (this.filterData) {
+    }
+    if (this.filterData && this.service) {
       setTimeout(() => {
         this.service
           .getData({
@@ -268,5 +265,18 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
           });
       });
     }
+  }
+
+
+  public updateFilterModel(filter: any) {
+   this.filterData = filter;
+   if (this.filterUpdateModelService) {
+    if(filter ) {
+    this.filterUpdateModelService.updateModel(filter);
+    } else {
+      this.filterUpdateModelService.updateModel({});
+    }
+  }
+    this.updateContent();
   }
 }

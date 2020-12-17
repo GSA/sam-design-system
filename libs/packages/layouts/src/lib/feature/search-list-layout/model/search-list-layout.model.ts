@@ -92,4 +92,10 @@ export class SearchListConfiguration {
      */
     pageSize: number = 25;
 
+     /**
+     * history tracking
+     */
+    isHistoryEnabled?: boolean = true;
+
+
 }
