@@ -6,7 +6,6 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 @Component({
   selector: 'gsa-sam-custom-template',
   templateUrl: './custom-template.component.html',
-  styleUrls: ['./custom-template.component.scss']
 })
 export class CustomTemplateComponent {
 

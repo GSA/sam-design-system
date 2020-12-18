@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { SdsFormlyTypes } from '@gsa-sam/sam-formly';
 
 @Component({
   selector: 'gsa-sam-readonly-wrapper',
   templateUrl: './readonly-wrapper.component.html',
-  styleUrls: ['./readonly-wrapper.component.scss']
 })
 export class ReadonlyWrapperComponent {
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyUtilsService, SdsFormlyTypes } from '@gsa-sam/sam-formly';
 import { FormlyFieldConfig } from '@ngx-formly/core';
@@ -6,7 +6,6 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 @Component({
   selector: 'gsa-sam-readonly-formly-type',
   templateUrl: './readonly-formly-type.component.html',
-  styleUrls: ['./readonly-formly-type.component.scss']
 })
 export class ReadonlyFormlyTypeComponent {
 
