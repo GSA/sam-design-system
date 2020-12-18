@@ -4,7 +4,7 @@ import { SdsHeaderModule } from '@gsa-sam/layouts';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
-  imports: [CommonModule, SdsHeaderModule],
+  imports: [CommonModule, SdsHeaderModule, ],
   declarations: [HeaderBasic],
   exports: [HeaderBasic],
   bootstrap: [HeaderBasic]

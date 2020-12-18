@@ -17,7 +17,7 @@ export class SdsSearchResultListComponent implements OnInit {
   /**
    * Allow to insert a customized template for no results to use
    */
-  @Input() noResultsTemplate: TemplateRef<any>;
+  @Input() customResultsTemplate: TemplateRef<any>;
 
   initialLoad = false;
   /**

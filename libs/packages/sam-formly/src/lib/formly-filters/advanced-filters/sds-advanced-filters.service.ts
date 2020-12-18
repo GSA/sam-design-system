@@ -43,7 +43,9 @@ export class SdsAdvancedFiltersService {
           : null;
       const option = {
         key: field.key,
-        value: label
+        value: label,
+        tagText: field.templateOptions.tagText,
+        tagClass: field.templateOptions.tagClass,
       };
       options.push(option);
       if (!origField.hide && !field.hide) {

@@ -74,6 +74,11 @@ import {
   FiltersModule
 } from './components/filters/filters.module';
 
+import {
+  ROUTES as SELECTION_PANEL_ROUTES,
+  SelectionPanelModule
+} from './components/selection-panel/selection-panel.module';
+
 /* Form Types */
 import {
   ROUTES as INPUT_ROUTES,
@@ -165,6 +170,11 @@ import {
   IconsModule
 } from './components/icons/icons.module';
 
+import {
+  ROUTES as SYSTEM_ALERT_ROUTES,
+  SystemAlertsModule
+} from './components/system-alerts/system-alerts.module';
+
 import { DocumentationSharedModule } from './shared';
 import { OverviewComponent } from './pages/overview/overview.component';
 import { ResultsLayoutModule } from './pages/layout/layout.module';
@@ -173,6 +183,7 @@ import { FormlyFormsModule } from './pages/formly-forms/formly-forms.module';
 import { FormlyFormsComponent } from './pages/formly-forms/formly-forms.component';
 import { FormlyConditionalModule } from './pages/formly-conditional/formly-conditional.module';
 import { FormlyConditionalComponent } from './pages/formly-conditional/formly-conditional.component';
+import { LayoutResponsiveComponent } from './pages/layout/layout-responsive/layout-responsive.component';
 
 declare var require: any;
 
@@ -181,6 +192,7 @@ export const ROUTES: Routes = [
   { path: 'overview', component: OverviewComponent },
   { path: 'introduction', component: IntroductionComponent },
   { path: 'layout', component: ResultsLayoutComponent },
+  { path: 'layout-responsive', component: LayoutResponsiveComponent},
 
   // Components
   { path: 'components', pathMatch: 'full', redirectTo: 'components/alert' },
@@ -201,6 +213,8 @@ export const ROUTES: Routes = [
   { path: 'components/filters', children: FILTERS_ROUTES },
   { path: 'components/accordion', children: ACCORDION_ROUTES },
   { path: 'components/button-group', children: BUTTON_GROUP_ROUTES },
+  { path: 'components/selection-panel', children: SELECTION_PANEL_ROUTES},
+  { path: 'components/system-alerts', children: SYSTEM_ALERT_ROUTES },
 
   // Formly
   { path: 'components/input', children: INPUT_ROUTES },
@@ -285,8 +299,10 @@ export const ROUTES: Routes = [
     IconsModule,
     FormlyFormsModule,
     FormlyConditionalModule,
-    ButtonGroupModule
-  ]
+    ButtonGroupModule,
+    SelectionPanelModule,
+    SystemAlertsModule,
+  ],
 })
 export class DocumentationModule {
   constructor() {
