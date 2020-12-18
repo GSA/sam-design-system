@@ -21,4 +21,8 @@ export class FormlyReadonlyWrapperComponent extends FieldWrapper {
   @ViewChild('fieldComponent', {read: ViewContainerRef}) fieldComponent: ViewContainerRef;
 
   sdsFormlyTypes = SdsFormlyTypes;
+
+  customtemplate() {
+    console.log(this.field);
+  }
 }

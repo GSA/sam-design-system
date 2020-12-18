@@ -1,0 +1,17 @@
+<p>
+  The readonly wrapper internally unses default templates wrapped in <code>ReadonlyContainerComponent</code>.
+  Thus you may also choose to not use formly and directly pass in the required inputs to this wrapper component
+  to display your date model
+</p>
+<div class="grid-row grid-gap-2">
+  <ng-container *ngFor="let data of sampleData">
+    <sds-readonly-container
+      class="grid-col-4"
+      [formlyType]="data.formlyType"
+      [label]="data.label" 
+      [value]="data.value" 
+      [additionalConfig]="data.additionalConfig">
+    </sds-readonly-container>
+  </ng-container>
+</div>
+

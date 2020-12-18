@@ -41,8 +41,8 @@ export class ReadonlyBasicComponent implements OnInit {
   inputTypefields: FormlyFieldConfig[] = [
     {
       className: 'grid-col-7 display-inline-block',
-      key: SdsFormlyTypes.INPUT,
-      type: 'input',
+      key: 'input',
+      type: SdsFormlyTypes.INPUT,
       defaultValue: 'Jane',
       templateOptions: {
         label: 'Input Type',
