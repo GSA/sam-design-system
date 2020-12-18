@@ -114,9 +114,17 @@ describe('SdsAdvancedFiltersService', () => {
   };
 
   const advancedFilterModel = {
-    searchKeyword: false,
-    searchEntity: ['uniqueEntityIdSam', 'cageNcge', 'uniqueEntityIdDuns'],
-    hideGroup: []
+    showInactive: false,
+    filterToggle: {
+      selectAll: false,
+      filters: [
+        {
+          searchKeyword: false,
+          searchEntity: ['uniqueEntityIdSam', 'cageNcge', 'uniqueEntityIdDuns'],
+          hideGroup: []
+        }
+      ]
+    }
   };
 
   const updatedFields: FormlyFieldConfig[] = [
@@ -134,7 +142,7 @@ describe('SdsAdvancedFiltersService', () => {
       key: 'searchEntity',
       wrappers: ['accordionwrapper'],
       templateOptions: { label: 'Entity' },
-      hide: false,
+      hide: true,
       fieldGroup: [
         {
           key: 'legalBusinessName',
@@ -150,14 +158,15 @@ describe('SdsAdvancedFiltersService', () => {
         {
           key: 'uniqueEntityIdSam',
           type: 'input',
-          hide: false,
+          hide: true,
           templateOptions: {
             label: 'Unique Entity ID (SAM)',
             placeholder: '',
             min: 13,
             max: 40,
             inputType: 'number',
-            inputStyle: 'error'
+            inputStyle: 'error',
+            required: false
           }
         }
       ]
@@ -200,19 +209,20 @@ describe('SdsAdvancedFiltersService', () => {
     expect(service.convertToCheckboxes(fields)).toEqual(checkboxFields);
   });
 
-  it('should update filters based on selected filter options', () => {
+  fit('should update filters based on selected filter options', () => {
     const results = {
       fields: updatedFields,
       model: {
         searchEntity: {
-          legalBusinessName: null
+            legalBusinessName: null,
+            uniqueEntityIdSam: null
         },
-        searchKeyword: null,
         hideGroup: {
-          hideField1: null,
-          hideField2: null
-        }
-      }
+            hideField1: null,
+            hideField2: null
+        },
+        searchKeyword: null
+    }
     };
     expect(service.updateFields(advancedFilterModel, fields, model)).toEqual(
       results

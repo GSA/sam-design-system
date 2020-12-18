@@ -13,7 +13,6 @@ import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import * as qs from 'qs';
 import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
-import { DatePipe } from '@angular/common';
 @Component({
   selector: 'sds-filters',
   templateUrl: './sds-filters.component.html'
@@ -52,6 +51,11 @@ export class SdsFiltersComponent implements OnInit {
   @Input() sortMoreFilterBy = '';
 
   /**
+   * Show option to include inactive filter values
+   */
+  @Input()isInactiveValueFieldShown: boolean = false;
+
+  /**
    * Timer id for the timer awaiting the service call for more typeing
    */
   @Input() public isHistoryEnable: boolean = true;
@@ -66,6 +70,7 @@ export class SdsFiltersComponent implements OnInit {
    */
   // TODO: check type -- Formly models are typically objects
   @Output() filterChange = new EventEmitter<object[]>();
+  @Output() showInactiveFiltersChange = new EventEmitter<boolean>();
 
   _isObj = (obj: any): boolean => typeof obj === 'object' && obj !== null;
   _isEmpty = (obj: any): boolean => Object.keys(obj).length === 0;
@@ -239,5 +244,9 @@ export class SdsFiltersComponent implements OnInit {
       value = new Date(val).toISOString();
     }
     return value;
+  }
+
+  handleInactiveFilterChange(inactiveFilterValue: boolean){
+    this.showInactiveFiltersChange.emit(inactiveFilterValue);
   }
 }
