@@ -25,14 +25,13 @@
 </div>
 <div class="grid-row">
   <div class="grid-col-12">
-    <sds-search-result-list [model]="items">
+    <sds-search-result-list [model]="items" [customResultsTemplate]="customResultsTemplate">
       <ng-template #resultContent let-item>
         <ng-container *ngTemplateOutlet="resultContentTemplate,
                 context: { $implicit: item }"></ng-container>
       </ng-template>
     </sds-search-result-list>
     <sds-pagination *ngIf="items?.length" [paginationConfiguration]="bottom" [(page)]="page"
-      (pageChange)="paginationChange.next($event)">
-    </sds-pagination>
+      (pageChange)="paginationChange.next($event)"></sds-pagination>
   </div>
 </div>

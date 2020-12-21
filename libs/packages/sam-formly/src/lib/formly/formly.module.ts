@@ -32,6 +32,7 @@ import {
   dateRangeValidator,
 } from './formly.validators';
 import { AnimationWrapperComponent } from './wrappers/form-field.animation';
+import { SdsReadonlyModule } from './readonly/readonly.module';
 
 // Validate the min length of the character
 export function minlengthValidationMessage(err, field) {
@@ -166,6 +167,7 @@ export const DATE_FORMAT: MatDateFormats = {
     FontAwesomeModule,
     ReactiveFormsModule,
     FormlySelectModule,
+    SdsReadonlyModule,
     FormlyModule.forChild(FORMLY_CONFIG),
     FormlyModule.forRoot({
       validationMessages: [
