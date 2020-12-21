@@ -35,7 +35,8 @@ export const FIELD_TYPE_COMPONENTS = [
   FormlyValidationWrapperComponent,
   FormlyFieldTextComponent,
   FormlyGroupWrapperComponent,
-  FormlyFieldSearchComponent
+  FormlyFieldSearchComponent,
+  FormlyReadonlyWrapperComponent,
 ];
 import { maxDateValidator, minDateValidator } from './formly.validators';
 import { sdsWrappers, sdsGroupWrapper } from './sds-formly-options';
@@ -45,6 +46,8 @@ import { FormlyValidationWrapperComponent } from './wrappers/validation.wrapper'
 import { FormlyGroupWrapperComponent } from './wrappers/group.wrapper';
 import { FormlyFieldSearchComponent } from './types/search';
 import { FormlyFieldFileInfoComponent } from './types/fileinfo';
+import { SdsFormlyTypes } from './models/formly-types';
+import { FormlyReadonlyWrapperComponent } from './wrappers/readonly.wrapper';
 
 export const FORMLY_WRAPPERS: any = [
   {
@@ -88,66 +91,76 @@ export const FORMLY_WRAPPERS: any = [
     name: 'customwrapper',
     component: FormlyCustomWrapperComponent,
     componentName: 'FormlyCustomWrapperComponent'
+  },
+  {
+    name: 'readonly',
+    component: FormlyReadonlyWrapperComponent,
+    componentName: 'FormlyReadonlyWrapperComponent',
   }
 ];
 
 export const FORMLY_CONFIG: ConfigOption = {
   types: [
     {
-      name: 'formly-group',
+      name: SdsFormlyTypes.FORMLYGROUP,
       wrappers: sdsGroupWrapper
     },
     {
-      name: 'button',
+      name: SdsFormlyTypes.READONLY,
+      wrappers: sdsGroupWrapper,
+      component: FormlyReadonlyWrapperComponent,
+    },
+    {
+      name: SdsFormlyTypes.BUTTON,
       component: FormlyFieldButtonComponent
     },
     {
-      name: 'customtext',
+      name: SdsFormlyTypes.CUSTOMTEXT,
       component: FormlyFieldTextComponent,
       wrappers: sdsWrappers
     },
     {
-      name: 'input',
+      name: SdsFormlyTypes.INPUT,
       component: FormlyFieldInputComponent,
       wrappers: sdsWrappers
     },
     {
-      name: 'checkbox',
+      name: SdsFormlyTypes.CHECKBOX,
       component: FormlyFieldCheckboxComponent,
       wrappers: sdsWrappers
     },
     {
-      name: 'fileinfo',
+      name: SdsFormlyTypes.FILEINFO,
       component: FormlyFieldFileInfoComponent,
       wrappers: sdsWrappers
     },
     {
-      name: 'radio',
+      name: SdsFormlyTypes.RADIO,
       component: FormlyFieldRadioComponent,
       wrappers: sdsWrappers
     },
     {
-      name: 'select',
+      name: SdsFormlyTypes.SELECT,
       component: FormlyFieldSelectComponent,
       wrappers: sdsWrappers
     },
     {
-      name: 'textarea',
+      name: SdsFormlyTypes.TEXTAREA,
       component: FormlyFieldTextAreaComponent,
       wrappers: sdsWrappers
     },
     {
-      name: 'multicheckbox',
+      name: SdsFormlyTypes.MULTICHECKBOX,
       component: FormlyFieldMultiCheckboxComponent,
       wrappers: sdsWrappers
     },
     {
-      name: 'autocomplete',
+      name: SdsFormlyTypes.AUTOCOMPLETE,
       component: FormlyFieldAutoCompleteComponent,
       wrappers: sdsWrappers
     },
     {
-      name: 'datepicker',
+      name: SdsFormlyTypes.DATEPICKER,
       component: FormlyFieldDatePickerComponent,
       wrappers: sdsWrappers,
       defaultOptions: {
@@ -157,13 +170,13 @@ export const FORMLY_CONFIG: ConfigOption = {
       }
     },
     {
-      name: 'daterangepicker',
-      extends: 'formly-group',
+      name : SdsFormlyTypes . DATERANGEPICKER ,
+      extends: SdsFormlyTypes.FORMLYGROUP,
       wrappers: sdsWrappers,
       defaultOptions: {
         fieldGroup: [
           {
-            type: 'datepicker',
+            type: SdsFormlyTypes.DATEPICKER,
             key: 'fromDate',
             templateOptions: {
               label: 'From'
@@ -174,7 +187,7 @@ export const FORMLY_CONFIG: ConfigOption = {
             }
           },
           {
-            type: 'datepicker',
+            type: SdsFormlyTypes.DATEPICKER,
             key: 'toDate',
             templateOptions: {
               label: 'To'
@@ -188,7 +201,7 @@ export const FORMLY_CONFIG: ConfigOption = {
       }
     },
     {
-      name: 'search',
+      name: SdsFormlyTypes.SEARCH,
       component: FormlyFieldSearchComponent,
       wrappers: sdsWrappers
     }
@@ -201,7 +214,8 @@ export const FORMLY_CONFIG: ConfigOption = {
     { name: 'form-field', component: FormlyWrapperFormFieldComponent },
     { name: 'accordionwrapper', component: FormlyAccordianFormFieldComponent },
     { name: 'filterwrapper', component: FormlyFormFieldFilterWrapperComponent },
-    { name: 'customwrapper', component: FormlyCustomWrapperComponent }
+    { name: 'customwrapper', component: FormlyCustomWrapperComponent },
+    { name: 'readonly', component: FormlyReadonlyWrapperComponent },
   ]
 };
 

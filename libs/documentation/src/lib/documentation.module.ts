@@ -163,6 +163,10 @@ import {
   ROUTES as BUTTON_GROUP_ROUTES,
   ButtonGroupModule
 } from './components/button-group/button-group.module';
+import {
+  ROUTES as READONLY_ROUTES,
+  ReadonlyModule
+} from './components/formly/readonly/readonly.module';
 
 /* Utilities */
 import {
@@ -240,6 +244,7 @@ export const ROUTES: Routes = [
   { path: 'components/description', children: DESCRIPTION_ROUTES },
   { path: 'components/validation', children: VALIDATION_ROUTES },
   { path: 'components/templateoptions', children: TEMPLATEOPTIONS_ROUTES },
+  { path: 'components/readonly', children: READONLY_ROUTES },
 
   // Form Examples
   { path: 'pages', pathMatch: 'full', redirectTo: 'pages/formly-form' },
@@ -302,6 +307,7 @@ export const ROUTES: Routes = [
     ButtonGroupModule,
     SelectionPanelModule,
     SystemAlertsModule,
+    ReadonlyModule,
   ],
 })
 export class DocumentationModule {
