@@ -55,8 +55,11 @@ export class ReadonlyContainerComponent implements OnInit {
     const options = this.formlyFieldConfig.templateOptions.options as any;
     this.additionalConfig = {
       providedOptions: options,
-      autocompleteOptions: this.formlyFieldConfig.templateOptions.configuration,
     };
+
+    if (this.formlyFieldConfig.type === this.sdsFormlyTypes.AUTOCOMPLETE) {
+      this.additionalConfig.autocompleteOptions = this.formlyFieldConfig.templateOptions.configuration;
+    }
 
     // We do array access from field config for daterangepicker, which can be undefined for other types, 
     // hence this is sectioned off in a conditional
