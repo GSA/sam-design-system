@@ -14,6 +14,7 @@ import {
 import { FIELD_TYPE_COMPONENTS, FORMLY_CONFIG } from './formly.config';
 import { maxDateValidator, minDateValidator } from './formly.validators';
 import { AnimationWrapperComponent } from './wrappers/form-field.animation';
+import { SdsReadonlyModule } from './readonly/readonly.module';
 
 // Validate the min length of the character
 export function minlengthValidationMessage(err, field) {
@@ -88,6 +89,7 @@ export { maxDateValidator, minDateValidator } from './formly.validators';
     FontAwesomeModule,
     ReactiveFormsModule,
     FormlySelectModule,
+    SdsReadonlyModule,
     FormlyModule.forChild(FORMLY_CONFIG),
     FormlyModule.forRoot({
       validationMessages: [
