@@ -10,3 +10,5 @@ export * from './formly-filters/advanced-filters/sds-advanced-filters.service';
 export * from './formly/sds-formly-options';
 export * from './formly/formly.config';
 export * from './formly/sds-formly';
+export * from './formly/models/formly-types';
+export * from './formly/services/formly-utils.service';
