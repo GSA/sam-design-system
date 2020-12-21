@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { SdsIconModule } from '@gsa-sam/components';
+import { SdsCollapseModule, SdsIconModule } from '@gsa-sam/components';
 
 import { SdsSystemAlertComponent } from './system-alert.component';
 
@@ -12,6 +12,7 @@ describe('SystemAlertComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         SdsIconModule,
+        SdsCollapseModule,
       ],
       declarations: [ SdsSystemAlertComponent, ]
     })
@@ -57,4 +58,24 @@ describe('SystemAlertComponent', () => {
     expect(seeAllAlertsSpy).toHaveBeenCalled();
   });
 
+  it('Should display/hide alert description when show details is clicked', () => {
+    const showDetailsButton = fixture.debugElement.query(By.css('.sds-alert--header__content .sds-alert--header__link'));
+
+    let alertDescription = fixture.debugElement.query(By.css('#alertDescription0'));
+
+    // ensure description is initially not present
+    expect(alertDescription.classes['display-none']).toEqual(true);
+
+    // Show details clicked - description should be present
+    showDetailsButton.triggerEventHandler('click', null);
+    fixture.detectChanges();
+    expect(alertDescription.classes['display-none']).toEqual(false);
+
+    // Hide details clicked - description should be hidden again
+    showDetailsButton.triggerEventHandler('click', null);
+    fixture.detectChanges();
+    expect(alertDescription.classes['display-none']).toEqual(true);
+
+
+  });
 });
