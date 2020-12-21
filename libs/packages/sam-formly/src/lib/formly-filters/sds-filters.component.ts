@@ -6,7 +6,7 @@ import {
   Optional,
   OnInit,
   ChangeDetectorRef,
-  HostListener
+  HostListener,
 } from '@angular/core';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -16,10 +16,11 @@ import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import * as qs from 'qs';
 import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
-import { DatePipe } from '@angular/common';
+import { SDSFormlyUpdateModelService } from './service/sds-filter-model-update.service';
+
 @Component({
   selector: 'sds-filters',
-  templateUrl: './sds-filters.component.html'
+  templateUrl: './sds-filters.component.html',
 })
 export class SdsFiltersComponent implements OnInit {
   /**
@@ -57,7 +58,7 @@ export class SdsFiltersComponent implements OnInit {
   /**
    * Timer id for the timer awaiting the service call for more typeing
    */
-  @Input() public isHistoryEnable: boolean = true;
+  @Input() public isHistoryEnable: boolean = false;
 
   /**
    * To get clean model without null and empty
@@ -68,7 +69,7 @@ export class SdsFiltersComponent implements OnInit {
    *  Emit results when model updated
    */
   // TODO: check type -- Formly models are typically objects
-  @Output() filterChange = new EventEmitter<object[]>();
+  @Output() filterChange = new EventEmitter<object>();
 
   _isObj = (obj: any): boolean => typeof obj === 'object' && obj !== null;
   _isEmpty = (obj: any): boolean => Object.keys(obj).length === 0;
@@ -94,37 +95,27 @@ export class SdsFiltersComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private router: Router,
     private route: ActivatedRoute,
+    @Optional()
+    private filterUpdateModelService: SDSFormlyUpdateModelService,
     library: FaIconLibrary
   ) {
     library.addIconPacks(fas, sds);
   }
 
-  @HostListener('window:popstate', ['$event'])
-  onpopstate(event) {
-    const queryString = window.location.search.substring(1);
-    const params = this.getUrlParams(queryString);
-    const updatedFormValue = this.overwrite(
-      this.form.getRawValue(),
-      this.convertToModel(params)
-    );
-    this.form.setValue(updatedFormValue);
-    this.updateChange(updatedFormValue);
-  }
   ngOnInit(): void {
-    if (this.isHistoryEnable) {
-      if (this._isEmpty(this.form.getRawValue())) {
-        const queryString = window.location.search.substring(1);
-        const params: any = this.getUrlParams(queryString);
-        const paramModel: any = this.convertToModel(params);
-        this.checkForHide();
-        setTimeout(() => {
-          this.form.patchValue({
-            ...this.model,
-            ...paramModel.sfm
+    if (this.filterUpdateModelService) {
+      this.filterUpdateModelService.filterModel.subscribe((filter) => {
+        if (filter) {
+          const updatedFormValue = this.overwrite(
+            this.form.getRawValue(),
+            filter
+          );
+          setTimeout(() => {
+            this.form.patchValue(updatedFormValue);
           });
-        });
-        this.cdr.detectChanges();
-      }
+        }
+      });
+      this.cdr.detectChanges();
     }
   }
   /**
@@ -133,16 +124,16 @@ export class SdsFiltersComponent implements OnInit {
   checkForHide() {
     let fieldWithValue = this.convertToParam(this.model);
     let keys = [];
-    Object.keys(fieldWithValue).map(key => {
+    Object.keys(fieldWithValue).map((key) => {
       keys.push(key.replace(/\[/g, '.').replace(/\]/g, ''));
     });
-    keys.forEach(key => {
+    keys.forEach((key) => {
       const [lastKey] = key.split('.').slice(-1);
-      this.fields.forEach(field => {
+      this.fields.forEach((field) => {
         if (key.includes(field.key)) {
           let hiddenField;
           if (field.fieldGroup) {
-            hiddenField = field.fieldGroup.find(item => item.key === lastKey);
+            hiddenField = field.fieldGroup.find((item) => item.key === lastKey);
           } else {
             hiddenField = field;
           }
@@ -155,28 +146,13 @@ export class SdsFiltersComponent implements OnInit {
   }
 
   onModelChange(change: any) {
-    if (this.isHistoryEnable) {
-      const queryString = window.location.search.substring(1);
-      let queryObj = qs.parse(queryString, { allowPrototypes: true });
-      if (queryObj.hasOwnProperty('sfm')) {
-        queryObj.sfm = {};
-      }
-      queryObj['sfm'] = change;
-      const params = this.convertToParam(queryObj);
-      this.router.navigate(['.'], {
-        relativeTo: this.route,
-        queryParams: params
-        // TODO: Need this for future use case
-        // queryParamsHandling: 'merge'
-      });
-    }
     this.updateChange(change);
   }
   updateChange(change) {
     const updatedModel = this.getCleanModel
       ? this.convertToModel(change)
       : change;
-    this.filterChange.emit([updatedModel]);
+    this.filterChange.emit(updatedModel);
     if (this.formlyUpdateComunicationService) {
       this.formlyUpdateComunicationService.updateFilter(updatedModel);
     }
@@ -187,7 +163,7 @@ export class SdsFiltersComponent implements OnInit {
     const encodedValues = qs.stringify(filters, {
       skipNulls: true,
       encode: false,
-      filter: this.shortFormatDate
+      filter: this.shortFormatDate,
     });
     if (encodedValues) {
       return this.getUrlParams(encodedValues);
@@ -197,7 +173,7 @@ export class SdsFiltersComponent implements OnInit {
   }
   getUrlParams(queryString) {
     const target = {};
-    queryString.split('&').forEach(pair => {
+    queryString.split('&').forEach((pair) => {
       if (pair !== '') {
         const splitpair = pair.split('=');
         target[splitpair[0]] =
@@ -208,10 +184,10 @@ export class SdsFiltersComponent implements OnInit {
   }
 
   shortFormatDate(prefix, value) {
-    const fixDigit = val => {
+    const fixDigit = (val) => {
       return val.toString().length === 1 ? '0' + val : val;
     };
-    const getFormattedDate = date =>
+    const getFormattedDate = (date) =>
       `${fixDigit(
         date.getMonth() + 1
       )}/${date.getDate()}/${date.getFullYear()}`;
@@ -232,7 +208,7 @@ export class SdsFiltersComponent implements OnInit {
     const encodedValues = qs.stringify(filters, {
       skipNulls: true,
       encode: false,
-      filter: this.longFormatDate
+      filter: this.longFormatDate,
     });
     obj = qs.parse(encodedValues);
     return obj;

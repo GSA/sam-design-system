@@ -1,4 +1,4 @@
-import { CommonModule } from "@angular/common";
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ResultsLayoutComponent } from './layout.component';
@@ -7,14 +7,15 @@ import {
   SdsToolbarModule,
   SdsSideNavigationModule,
   SdsAccordionModule,
-  SdsSelectionPanelModule
+  SdsSelectionPanelModule,
 } from '@gsa-sam/components';
 import {
-  SdsFiltersModule
+  SdsFiltersModule,
+  SDSFormlyUpdateModelService,
 } from '@gsa-sam/sam-formly';
 
 import { ResultModule } from './result/result.module';
-import { SearchListServiceModule, SideToolbarModule} from '@gsa-sam/layouts';
+import { SearchListServiceModule, SideToolbarModule } from '@gsa-sam/layouts';
 import { FilterService } from './filter.service';
 import { AutocompleteSampleDataService } from './services/autocomplete-sample.service';
 import { LayoutResponsiveComponent } from './layout-responsive/layout-responsive.component';
@@ -32,10 +33,14 @@ import { LayoutResponsiveComponent } from './layout-responsive/layout-responsive
     ResultModule,
     SideToolbarModule,
     SdsSelectionPanelModule,
- ],
+  ],
 
   exports: [ResultsLayoutComponent, LayoutResponsiveComponent],
   declarations: [ResultsLayoutComponent, LayoutResponsiveComponent],
-  providers: [FilterService, AutocompleteSampleDataService]
+  providers: [
+    FilterService,
+    AutocompleteSampleDataService,
+    SDSFormlyUpdateModelService,
+  ],
 })
 export class ResultsLayoutModule {}
