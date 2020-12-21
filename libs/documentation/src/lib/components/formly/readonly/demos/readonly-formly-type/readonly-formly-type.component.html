@@ -1,0 +1,15 @@
+<p>
+  In the formly field config, you may also define a formly field as having a readonly type. In that case,
+  the readonly wrapper will be used and the field will stay in readonly mode, ignoring the switch done 
+  from <code>FormlyUtilsService</code> method
+</p>
+
+<form [formGroup]="form" class="margin-bottom-3">
+  <formly-form [fields]="fields" [form]="form"></formly-form>
+</form>
+
+<button *ngIf="!isReadOnlyMode; else readonlyMode" class="usa-button" (click)="toggleReadonlyMode()">Preview</button>
+
+<ng-template #readonlyMode>
+  <button *ngIf="isReadOnlyMode; else readonlyMode" class="usa-button usa-button--base" (click)="toggleReadonlyMode()">Cancel</button>
+</ng-template>
