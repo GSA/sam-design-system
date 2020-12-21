@@ -35,7 +35,8 @@ export const FIELD_TYPE_COMPONENTS = [
   FormlyValidationWrapperComponent,
   FormlyFieldTextComponent,
   FormlyGroupWrapperComponent,
-  FormlyFieldSearchComponent
+  FormlyFieldSearchComponent,
+  FormlyReadonlyWrapperComponent,
 ];
 import { maxDateValidator, minDateValidator } from './formly.validators';
 import { sdsWrappers, sdsGroupWrapper } from './sds-formly-options';
@@ -46,6 +47,7 @@ import { FormlyGroupWrapperComponent } from './wrappers/group.wrapper';
 import { FormlyFieldSearchComponent } from './types/search';
 import { FormlyFieldFileInfoComponent } from './types/fileinfo';
 import { SdsFormlyTypes } from './models/formly-types';
+import { FormlyReadonlyWrapperComponent } from './wrappers/readonly.wrapper';
 
 export const FORMLY_WRAPPERS: any = [
   {
@@ -89,6 +91,11 @@ export const FORMLY_WRAPPERS: any = [
     name: 'customwrapper',
     component: FormlyCustomWrapperComponent,
     componentName: 'FormlyCustomWrapperComponent'
+  },
+  {
+    name: 'readonly',
+    component: FormlyReadonlyWrapperComponent,
+    componentName: 'FormlyReadonlyWrapperComponent',
   }
 ];
 
@@ -97,6 +104,11 @@ export const FORMLY_CONFIG: ConfigOption = {
     {
       name: SdsFormlyTypes.FORMLYGROUP,
       wrappers: sdsGroupWrapper
+    },
+    {
+      name: SdsFormlyTypes.READONLY,
+      wrappers: sdsGroupWrapper,
+      component: FormlyReadonlyWrapperComponent,
     },
     {
       name: SdsFormlyTypes.BUTTON,
@@ -202,7 +214,8 @@ export const FORMLY_CONFIG: ConfigOption = {
     { name: 'form-field', component: FormlyWrapperFormFieldComponent },
     { name: 'accordionwrapper', component: FormlyAccordianFormFieldComponent },
     { name: 'filterwrapper', component: FormlyFormFieldFilterWrapperComponent },
-    { name: 'customwrapper', component: FormlyCustomWrapperComponent }
+    { name: 'customwrapper', component: FormlyCustomWrapperComponent },
+    { name: 'readonly', component: FormlyReadonlyWrapperComponent },
   ]
 };
 
