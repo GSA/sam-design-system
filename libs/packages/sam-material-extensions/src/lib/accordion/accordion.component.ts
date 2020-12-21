@@ -7,7 +7,8 @@ import {
   QueryList,
   ContentChildren,
   Output,
-  EventEmitter
+  EventEmitter,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 import { MatAccordion } from '@angular/material/expansion';
@@ -24,17 +25,14 @@ export class SdsAccordionContentDirective {}
     <ng-template #itemTitleTemplate>
       <ng-content #title select="sds-accordion-title"></ng-content>
     </ng-template>
-
     <ng-template #itemContentTemplate>
       <ng-content #content select="sds-accordion-content"></ng-content>
     </ng-template>
   `
 })
 export class SdsAccordionItemComponent {
-  @ViewChild('itemTitleTemplate', { static: false })
-  itemTitleTemplate: TemplateRef<any>;
-  @ViewChild('itemContentTemplate', { static: false })
-  itemContentTemplate: TemplateRef<any>;
+  @ViewChild('itemTitleTemplate') itemTitleTemplate: TemplateRef<any>;
+  @ViewChild('itemContentTemplate') itemContentTemplate: TemplateRef<any>;
 
   @Input() expanded = false;
 
@@ -67,10 +65,11 @@ export class SdsAccordionItemComponent {
 @Component({
   selector: 'sds-accordion-next',
   templateUrl: './accordion.component.html',
-  styleUrls: ['./accordion.component.scss']
+  styleUrls: ['./accordion.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SdsAccordionComponent {
-  @ViewChild(MatAccordion, { static: false }) accordion: MatAccordion;
+  @ViewChild(MatAccordion, { static: true }) accordion: MatAccordion;
 
   @ContentChildren(SdsAccordionItemComponent) accordionItems!: QueryList<
     SdsAccordionItemComponent

@@ -6,7 +6,8 @@ import {
   Output,
   QueryList,
   TemplateRef,
-  ViewChild
+  ViewChild,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { MatButtonToggleChange } from '@angular/material/button-toggle';
 
@@ -31,6 +32,7 @@ export class SdsButtonGroupOptionComponent {
   selector: 'sds-button-group',
   templateUrl: './button-group.component.html',
   styleUrls: ['./button-group.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'sds-button-group--segmented' }
 })
 export class SdsButtonGroupComponent {

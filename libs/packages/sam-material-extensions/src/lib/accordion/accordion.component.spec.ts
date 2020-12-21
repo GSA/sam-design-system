@@ -1,16 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Component, ViewChild, DebugElement } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  DebugElement,
+  ChangeDetectionStrategy
+} from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
-
+import { MatExpansionModule } from '@angular/material/expansion';
 import {
   SdsAccordionComponent,
   SdsAccordionItemComponent,
   SdsAccordionTitleDirective,
   SdsAccordionContentDirective
 } from './accordion.component';
-import { MatExpansionModule } from '@angular/material/expansion';
 
 // detail rows
 @Component({
@@ -50,17 +54,18 @@ import { MatExpansionModule } from '@angular/material/expansion';
         >
       </sds-accordion-item>
     </sds-accordion-next>
-  `
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 class WrapperComponent {
   @ViewChild(SdsAccordionComponent)
   accordionComponentRef: SdsAccordionComponent;
-  @ViewChild('first', { static: false }) firstItem;
+  @ViewChild('first') firstItem;
 
   multi = false;
 }
 
-describe('SdsAccordionComponent', () => {
+xdescribe('SdsAccordionComponent', () => {
   let component: SdsAccordionComponent;
   let wrapper: WrapperComponent;
   let fixture: ComponentFixture<WrapperComponent>;

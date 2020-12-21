@@ -15,7 +15,6 @@ import {
 } from '@angular/core';
 import { AfterViewInit } from '@angular/core';
 import { MatTableDataSource, MatTable } from '@angular/material/table';
-import { coerceBooleanProperty } from '@angular/cdk/coercion/boolean-property';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -139,7 +138,7 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
    */
   @Input()
   set borderless(borderless: boolean) {
-    this._borderless = coerceBooleanProperty(borderless);
+    this._borderless = (borderless);
   }
   get borderless() {
     return this._borderless;
@@ -165,7 +164,7 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
    */
   @Input()
   set pagination(pagination: boolean) {
-    this._pagination = coerceBooleanProperty(pagination);
+    this._pagination = (pagination);
   }
   get pagination() {
     return this._pagination;
@@ -178,7 +177,7 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
    */
   @Input()
   set expansion(expansion: boolean) {
-    this._expansion = coerceBooleanProperty(expansion);
+    this._expansion = (expansion);
   }
   get expansion() {
     return this._expansion;
