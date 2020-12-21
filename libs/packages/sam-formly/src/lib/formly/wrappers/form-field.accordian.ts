@@ -4,7 +4,7 @@ import * as qs from 'qs';
 
 /**
  * @param {string} [to.expand] to expand the accordion
- * 
+ *
  */
 
 @Component({
@@ -22,7 +22,7 @@ import * as qs from 'qs';
   `
 })
 export class FormlyAccordianFormFieldComponent extends FieldWrapper {
-  @ViewChild('fieldComponent', { read: ViewContainerRef })
+  @ViewChild('fieldComponent', { read: ViewContainerRef, static: false })
   fieldComponent: ViewContainerRef;
   constructor() {
     super();

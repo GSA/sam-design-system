@@ -25,8 +25,8 @@ import { sds } from '@gsa-sam/sam-styles/src/icons/';
   styleUrls: ['./header.component.scss']
 })
 export class SdsHeaderComponent {
-  @ViewChild('usaNavOpen') openNavBtn: ElementRef;
-  @ViewChild('usaNavClose') closeNavBtn: ElementRef;
+  @ViewChild('usaNavOpen', { static: false }) openNavBtn: ElementRef;
+  @ViewChild('usaNavClose', { static: false }) closeNavBtn: ElementRef;
   mobileNavActive = false;
   /**
    * Navigation helper

@@ -10,13 +10,12 @@ import {
   EventEmitter
 } from '@angular/core';
 
-import {MatAccordion} from '@angular/material/expansion';
+import { MatAccordion } from '@angular/material/expansion';
 
-
-@Directive({selector: 'sds-accordion-title'})
+@Directive({ selector: 'sds-accordion-title' })
 export class SdsAccordionTitleDirective {}
 
-@Directive({selector: 'sds-accordion-content'})
+@Directive({ selector: 'sds-accordion-content' })
 export class SdsAccordionContentDirective {}
 
 @Component({
@@ -32,9 +31,10 @@ export class SdsAccordionContentDirective {}
   `
 })
 export class SdsAccordionItemComponent {
-
-  @ViewChild('itemTitleTemplate') itemTitleTemplate: TemplateRef<any>;
-  @ViewChild('itemContentTemplate') itemContentTemplate: TemplateRef<any>;
+  @ViewChild('itemTitleTemplate', { static: false })
+  itemTitleTemplate: TemplateRef<any>;
+  @ViewChild('itemContentTemplate', { static: false })
+  itemContentTemplate: TemplateRef<any>;
 
   @Input() expanded = false;
 
@@ -58,11 +58,10 @@ export class SdsAccordionItemComponent {
   /** Toggles the disabled state of the expansion panel. */
   toggleDisabled(): void {
     this.disabled = !this.disabled;
-    if(this.disabled) {
+    if (this.disabled) {
       this.expanded = false;
     }
   }
-
 }
 
 @Component({
@@ -71,14 +70,15 @@ export class SdsAccordionItemComponent {
   styleUrls: ['./accordion.component.scss']
 })
 export class SdsAccordionComponent {
+  @ViewChild(MatAccordion, { static: false }) accordion: MatAccordion;
 
-  @ViewChild(MatAccordion) accordion: MatAccordion;
-
-  @ContentChildren(SdsAccordionItemComponent) accordionItems!: QueryList<SdsAccordionItemComponent>;
+  @ContentChildren(SdsAccordionItemComponent) accordionItems!: QueryList<
+    SdsAccordionItemComponent
+  >;
 
   @Input() multi = false;
 
-  @Output() multiChange:EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() multiChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   @Input() displayMode = 'flat';
 
@@ -98,5 +98,4 @@ export class SdsAccordionComponent {
     this.accordion.closeAll();
     this.multiChange.emit(this.multi);
   }
-
 }

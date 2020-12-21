@@ -25,7 +25,7 @@ declare class InitPxVideo {
 })
 export class SdsVideoPlayerComponent implements AfterViewInit {
   @Input() VPConfiguration: VPInterface;
-  @ViewChild('video') video: ElementRef;
+  @ViewChild('video', { static: false }) video: ElementRef;
   private config: InitPxVideoConfig;
 
   @Input() crossorigin = "";

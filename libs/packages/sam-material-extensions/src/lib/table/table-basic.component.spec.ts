@@ -9,7 +9,16 @@ import {
 } from '@angular/material';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import { SdsTableComponent, SdsTableRowComponent, SdsTableHeaderRowComponent, SdsTableFooterRowComponent, SdsTableColumnDefComponent, SdsTableCellDirective, SdsTableHeaderCellDirective, SdsTableFooterCellDirective } from './table.component';
+import {
+  SdsTableComponent,
+  SdsTableRowComponent,
+  SdsTableHeaderRowComponent,
+  SdsTableFooterRowComponent,
+  SdsTableColumnDefComponent,
+  SdsTableCellDirective,
+  SdsTableHeaderCellDirective,
+  SdsTableFooterCellDirective
+} from './table.component';
 import { PaginationModule } from '@gsa-sam/components';
 
 const MOCK_DATA = [
@@ -23,9 +32,7 @@ const MOCK_DATA = [
     jobTitle: 'Software Test Engineer IV',
     requests: 1,
     date: '2020-07-23',
-    tags: [
-      { className: "text-info-dark", label: "Normal" }
-    ]
+    tags: [{ className: 'text-info-dark', label: 'Normal' }]
   },
   {
     id: 2,
@@ -38,8 +45,8 @@ const MOCK_DATA = [
     requests: 3,
     date: '2020-04-11',
     tags: [
-      { className: "text-error", label: "Expired" },
-      { className: "text-warning-darker", label: "Inactive" }
+      { className: 'text-error', label: 'Expired' },
+      { className: 'text-warning-darker', label: 'Inactive' }
     ]
   },
   {
@@ -52,9 +59,7 @@ const MOCK_DATA = [
     jobTitle: 'Media Manager IV',
     requests: 0,
     date: '2020-04-22',
-    tags: [
-      { className: "text-info", label: "Draft" }
-    ]
+    tags: [{ className: 'text-info', label: 'Draft' }]
   },
   {
     id: 4,
@@ -66,9 +71,7 @@ const MOCK_DATA = [
     jobTitle: 'Account Coordinator',
     requests: 2,
     date: '2019-11-02',
-    tags: [
-      { className: "text-success", label: "Active" }
-    ]
+    tags: [{ className: 'text-success', label: 'Active' }]
   },
   {
     id: 5,
@@ -80,9 +83,7 @@ const MOCK_DATA = [
     jobTitle: 'Financial Analyst',
     requests: 6,
     date: '2020-04-15',
-    tags: [
-      { className: "text-default", label: "Default" }
-    ]
+    tags: [{ className: 'text-default', label: 'Default' }]
   },
   {
     id: 6,
@@ -94,9 +95,7 @@ const MOCK_DATA = [
     jobTitle: 'Clinical Specialist',
     requests: 11,
     date: '2020-04-17',
-    tags: [
-      { className: "text-error", label: "Expired" }
-    ]
+    tags: [{ className: 'text-error', label: 'Expired' }]
   },
   {
     id: 7,
@@ -109,8 +108,8 @@ const MOCK_DATA = [
     requests: 3,
     date: '2019-11-13',
     tags: [
-      { className: "text-info", label: "Draft" },
-      { className: "text-warning-light", label: "Expiring" }
+      { className: 'text-info', label: 'Draft' },
+      { className: 'text-warning-light', label: 'Expiring' }
     ]
   },
   {
@@ -123,9 +122,7 @@ const MOCK_DATA = [
     jobTitle: 'Engineer II',
     requests: 1,
     date: '2020-01-09',
-    tags: [
-      { className: "text-success", label: "Active" }
-    ]
+    tags: [{ className: 'text-success', label: 'Active' }]
   },
   {
     id: 9,
@@ -137,9 +134,7 @@ const MOCK_DATA = [
     jobTitle: 'Associate Professor',
     requests: 5,
     date: '2020-02-20',
-    tags: [
-      { className: "text-info", label: "Draft" }
-    ]
+    tags: [{ className: 'text-info', label: 'Draft' }]
   },
   {
     id: 10,
@@ -151,61 +146,82 @@ const MOCK_DATA = [
     jobTitle: 'Safety Technician II',
     requests: 2,
     date: '2019-12-13',
-    tags: [
-      { className: "text-error", label: "Expired" }
-    ]
+    tags: [{ className: 'text-error', label: 'Expired' }]
   }
 ];
 
 @Component({
   template: `
-  <sds-table [data]="data" expansion="false">
+    <sds-table [data]="data" expansion="false">
+      <sds-table-column sdsColumnName="id">
+        <ng-template #sdsHeaderCell>ID</ng-template>
+        <ng-template #sdsCell let-element="element">{{
+          element.id
+        }}</ng-template>
+      </sds-table-column>
+      <sds-table-column sdsColumnName="firstName">
+        <ng-template #sdsHeaderCell>First</ng-template>
+        <ng-template #sdsCell let-element="element">{{
+          element.firstName
+        }}</ng-template>
+      </sds-table-column>
+      <sds-table-column sdsColumnName="lastName">
+        <ng-template #sdsHeaderCell>Last</ng-template>
+        <ng-template #sdsCell let-element="element">{{
+          element.lastName
+        }}</ng-template>
+      </sds-table-column>
+      <sds-table-column sdsColumnName="email">
+        <ng-template #sdsHeaderCell>Email</ng-template>
+        <ng-template #sdsCell let-element="element"
+          ><a
+            href="https://beta.sam.gov"
+            (click)="$event.stopPropagation()"
+            class="usa-link"
+            >{{ element.email }}</a
+          ></ng-template
+        >
+      </sds-table-column>
+      <sds-table-column sdsColumnName="requests">
+        <ng-template #sdsHeaderCell>Requests</ng-template>
+        <ng-template #sdsCell let-element="element">{{
+          element.requests
+        }}</ng-template>
+      </sds-table-column>
+      <sds-table-column sdsColumnName="date">
+        <ng-template #sdsHeaderCell>Date</ng-template>
+        <ng-template #sdsCell let-element="element">{{
+          element.date | date
+        }}</ng-template>
+      </sds-table-column>
 
-    <sds-table-column sdsColumnName="id">
-      <ng-template #sdsHeaderCell>ID</ng-template>
-      <ng-template #sdsCell let-element="element">{{ element.id }}</ng-template>
-    </sds-table-column>
-    <sds-table-column sdsColumnName="firstName">
-      <ng-template #sdsHeaderCell>First</ng-template>
-      <ng-template #sdsCell let-element="element">{{ element.firstName }}</ng-template>
-    </sds-table-column>
-    <sds-table-column sdsColumnName="lastName">
-      <ng-template #sdsHeaderCell>Last</ng-template>
-      <ng-template #sdsCell let-element="element">{{ element.lastName }}</ng-template>
-    </sds-table-column>
-    <sds-table-column sdsColumnName="email">
-      <ng-template #sdsHeaderCell>Email</ng-template>
-      <ng-template #sdsCell let-element="element"><a href="https://beta.sam.gov" (click)="$event.stopPropagation()" class="usa-link">{{ element.email }}</a></ng-template>
-    </sds-table-column>
-    <sds-table-column sdsColumnName="requests">
-      <ng-template #sdsHeaderCell>Requests</ng-template>
-      <ng-template #sdsCell let-element="element">{{ element.requests }}</ng-template>
-    </sds-table-column>
-    <sds-table-column sdsColumnName="date">
-      <ng-template #sdsHeaderCell>Date</ng-template>
-      <ng-template #sdsCell let-element="element">{{ element.date | date }}</ng-template>
-    </sds-table-column>
-
-    <sds-row [displayedColumns]="displayedColumns"></sds-row>
-
-  </sds-table>
+      <sds-row [displayedColumns]="displayedColumns"></sds-row>
+    </sds-table>
   `
 })
 class WrapperComponent {
-  @ViewChild(SdsTableComponent) sdsTableComponentRef: SdsTableComponent;
-  @ViewChild(SdsTableRowComponent) sdsTableRowComponentRef: SdsTableRowComponent;
-  @ViewChild(SdsTableHeaderRowComponent) sdsTableHeaderRowComponent: SdsTableHeaderRowComponent;
+  @ViewChild(SdsTableComponent, { static: false })
+  sdsTableComponentRef: SdsTableComponent;
+  @ViewChild(SdsTableRowComponent)
+  sdsTableRowComponentRef: SdsTableRowComponent;
+  @ViewChild(SdsTableHeaderRowComponent)
+  sdsTableHeaderRowComponent: SdsTableHeaderRowComponent;
 
-  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'requests', 'date'];
+  displayedColumns: string[] = [
+    'id',
+    'firstName',
+    'lastName',
+    'email',
+    'requests',
+    'date'
+  ];
 
   data = MOCK_DATA;
 
   sortToggle = true;
   expansionToggle = true;
   borderlessToggle = false;
-
 }
-
 
 describe('SdsTableComponent Basic', () => {
   let component: SdsTableComponent;
@@ -215,7 +231,17 @@ describe('SdsTableComponent Basic', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [SdsTableComponent, SdsTableRowComponent, SdsTableHeaderRowComponent, SdsTableFooterRowComponent, SdsTableColumnDefComponent, SdsTableCellDirective, SdsTableHeaderCellDirective, SdsTableFooterCellDirective, WrapperComponent],
+      declarations: [
+        SdsTableComponent,
+        SdsTableRowComponent,
+        SdsTableHeaderRowComponent,
+        SdsTableFooterRowComponent,
+        SdsTableColumnDefComponent,
+        SdsTableCellDirective,
+        SdsTableHeaderCellDirective,
+        SdsTableFooterCellDirective,
+        WrapperComponent
+      ],
       imports: [
         MatTableModule,
         FontAwesomeModule,
@@ -241,6 +267,5 @@ describe('SdsTableComponent Basic', () => {
     it('should create', async(() => {
       expect(component).toBeTruthy();
     }));
-
   });
 });

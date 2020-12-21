@@ -10,10 +10,7 @@ import {
 
 @Component({
   template: `
-    <sds-button-group
-      [mode]="'radio'"
-      class="sds-button-group"
-    >
+    <sds-button-group [mode]="'radio'" class="sds-button-group">
       <sds-button-group-option value="reports">
         Reports
       </sds-button-group-option>
@@ -27,7 +24,7 @@ import {
   `
 })
 class RadioWrapperComponent {
-  @ViewChild(SdsButtonGroupComponent)
+  @ViewChild(SdsButtonGroupComponent, { static: false })
   accordionComponentRef: SdsButtonGroupComponent;
 }
 
@@ -96,7 +93,7 @@ describe('ButtonGroupComponent', () => {
   `
 })
 class CheckboxWrapperComponent {
-  @ViewChild(SdsButtonGroupComponent)
+  @ViewChild(SdsButtonGroupComponent, { static: false })
   accordionComponentRef: SdsButtonGroupComponent;
 }
 
