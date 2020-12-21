@@ -3,13 +3,14 @@ import { Component, ViewChild, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
-import { MatExpansionModule } from '@angular/material';
+
 import {
   SdsAccordionComponent,
   SdsAccordionItemComponent,
   SdsAccordionTitleDirective,
   SdsAccordionContentDirective
 } from './accordion.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 // detail rows
 @Component({

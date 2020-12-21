@@ -2,11 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component, ViewChild, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  MatTableModule,
-  MatSortModule,
-  MatPaginatorModule
-} from '@angular/material';
+
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import {
@@ -20,6 +16,9 @@ import {
   SdsTableFooterCellDirective
 } from './table.component';
 import { PaginationModule } from '@gsa-sam/components';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 const MOCK_DATA = [
   {
