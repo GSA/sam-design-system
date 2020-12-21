@@ -18,7 +18,7 @@ import { SdsSearchComponent } from '@gsa-sam/components';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormlyFieldSearchComponent extends AbstractSdsFormly {
-  @ViewChild(SdsSearchComponent) public template: SdsSearchComponent;
+  @ViewChild(SdsSearchComponent, { static: true }) public template: SdsSearchComponent;
 
   constructor(_cdr: ChangeDetectorRef) {
     super();
