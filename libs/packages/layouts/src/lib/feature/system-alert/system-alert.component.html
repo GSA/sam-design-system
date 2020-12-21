@@ -57,14 +57,23 @@
     <div class="sds-alert--header__content grid-row" id="sds-alert--header__content">
       <div class="grid-col-fill">
         <div class="sds-alert--header__label margin-right-1" [innerHTML]="alert.header"></div>
-        <a (click)="onShowDetailsClicked(alert)" 
-          href="javascript:void(0)" class="sds-alert--header__link">
+        <a (click)="onShowDetailsClicked(alert)"
+          role="button"
+          href="javascript:void(0)" class="sds-alert--header__link"
+          [attr.aria-expanded]="alert.displayDescription"
+          [attr.aria-controls]="'alertDescription' + i"
+          >
           {{alert.displayDescription ? 'Hide Details' : 'Show Details'}}
         </a>
         <span class="sds-alert--header__date">
           {{alert.date | date: 'mediumDate'}}
         </span>
-        <span *ngIf="alert.displayDescription" [innerHTML]="alert.description"></span>
+        <span
+          aria-live="polite" 
+          [attr.id]="'alertDescription' + i" 
+          [sdsCollapse]="!alert.displayDescription" 
+          [innerHTML]="alert.description">
+        </span>
       </div>
       <div class="grid-offset-1 grid-col-auto">
         <button (click)="onAlertClose(i)" [attr.id]="'alert'+ i + 'CloseBtn'"
