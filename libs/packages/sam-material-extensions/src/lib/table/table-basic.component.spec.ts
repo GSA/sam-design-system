@@ -199,8 +199,7 @@ const MOCK_DATA = [
   `
 })
 class WrapperComponent {
-  @ViewChild(SdsTableComponent, { static: false })
-  sdsTableComponentRef: SdsTableComponent;
+  @ViewChild(SdsTableComponent) sdsTableComponentRef: SdsTableComponent;
   @ViewChild(SdsTableRowComponent)
   sdsTableRowComponentRef: SdsTableRowComponent;
   @ViewChild(SdsTableHeaderRowComponent)
@@ -222,7 +221,7 @@ class WrapperComponent {
   borderlessToggle = false;
 }
 
-xdescribe('SdsTableComponent Basic', () => {
+describe('SdsTableComponent Basic', () => {
   let component: SdsTableComponent;
   let fixture: ComponentFixture<WrapperComponent>;
   let tableDe: DebugElement;

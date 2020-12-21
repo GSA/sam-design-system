@@ -9,7 +9,7 @@ import { NavigationLink, SideNavigationModel } from '../side-navigation/model/si
 })
 export class SdsSelectionPanelComponent implements OnChanges {
 
-  @ViewChild('panelBody', { static: false }) panelBody: ElementRef;
+  @ViewChild('panelBody') panelBody: ElementRef;
 
   @Input()
   model: SideNavigationModel;

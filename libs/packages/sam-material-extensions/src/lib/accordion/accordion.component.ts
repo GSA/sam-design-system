@@ -69,7 +69,7 @@ export class SdsAccordionItemComponent {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SdsAccordionComponent {
-  @ViewChild(MatAccordion, { static: true }) accordion: MatAccordion;
+  @ViewChild(MatAccordion) accordion: MatAccordion;
 
   @ContentChildren(SdsAccordionItemComponent) accordionItems!: QueryList<
     SdsAccordionItemComponent

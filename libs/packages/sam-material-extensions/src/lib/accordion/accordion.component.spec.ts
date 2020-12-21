@@ -65,7 +65,7 @@ class WrapperComponent {
   multi = false;
 }
 
-xdescribe('SdsAccordionComponent', () => {
+describe('SdsAccordionComponent', () => {
   let component: SdsAccordionComponent;
   let wrapper: WrapperComponent;
   let fixture: ComponentFixture<WrapperComponent>;

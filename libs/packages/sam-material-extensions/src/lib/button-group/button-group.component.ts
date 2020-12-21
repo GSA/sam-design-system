@@ -6,8 +6,7 @@ import {
   Output,
   QueryList,
   TemplateRef,
-  ViewChild,
-  ChangeDetectionStrategy
+  ViewChild
 } from '@angular/core';
 import { MatButtonToggleChange } from '@angular/material/button-toggle';
 
@@ -21,8 +20,7 @@ import { MatButtonToggleChange } from '@angular/material/button-toggle';
   `
 })
 export class SdsButtonGroupOptionComponent {
-  @ViewChild('buttonGroupTemplate', { static: false })
-  buttonGroupTemplate: TemplateRef<any>;
+  @ViewChild('buttonGroupTemplate') buttonGroupTemplate: TemplateRef<any>;
   @Input() value: any;
   @Input() checked: boolean;
   @Input('aria-label') ariaLabel: any;
@@ -32,7 +30,6 @@ export class SdsButtonGroupOptionComponent {
   selector: 'sds-button-group',
   templateUrl: './button-group.component.html',
   styleUrls: ['./button-group.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'sds-button-group--segmented' }
 })
 export class SdsButtonGroupComponent {
