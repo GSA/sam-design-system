@@ -36,10 +36,12 @@ export class SdsSystemAlertComponent {
 
   /**
    * Fired when 'Show Details' for an alert is clicked. Emits the detailsClicked event
-   * with the alert whose 'Show Details' link was clicked
+   * with the alert whose 'Show Details' link was clicked and toggles description view for
+   * the alert
    * @param alert 
    */
   onShowDetailsClicked(alert: Alert) {
+    alert.displayDescription = !alert.displayDescription;
     this.detailsClicked.emit(alert);
   }
 

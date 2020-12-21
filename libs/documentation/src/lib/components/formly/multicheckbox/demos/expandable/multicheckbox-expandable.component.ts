@@ -24,63 +24,80 @@ export class MultiCheckboxExpandable {
         options: [
           {
             key: 'AL',
-            value: 'Alabama'
+            value: 'Alabama',
+            tagText: 'AL'
           },
           {
             key: 'AK',
-            value: 'Alaska'
+            value: 'Alaska',
+            tagText: 'AK'
+
           },
           {
             key: 'AZ',
-            value: 'Arizona'
+            value: 'Arizona',
+            tagText: 'AZ'
           },
           {
             key: 'AR',
-            value: 'Arkansas'
+            value: 'Arkansas',
+            tagText: 'AR'
           },
           {
             key: 'CA',
-            value: 'California'
+            value: 'California',
+            tagText: 'CA'
           },
           {
             key: 'CO',
-            value: 'Colorado'
+            value: 'Colorado',
+            tagText: 'CO'
           },
           {
             key: 'CT',
-            value: 'Connecticut'
+            value: 'Connecticut',
+            tagText: 'CT'
           },
           {
             key: 'DE',
-            value: 'Delaware'
+            value: 'Delaware',
+            tagText: 'DE'
           },
           {
             key: 'DC',
-            value: 'District Of Columbia'
+            value: 'District Of Columbia',
+            tagText: 'DC',
+            tagClass: 'sds-tag--info-purple'
           },
           {
             key: 'FL',
-            value: 'Florida'
+            value: 'Florida',
+            tagText: 'FL',
           },
           {
             key: 'GA',
-            value: 'Georgia'
+            value: 'Georgia',
+            tagText: 'GA',
           },
           {
             key: 'HI',
-            value: 'Hawaii'
+            value: 'Hawaii',
+            tagText: 'HI',
           },
           {
             key: 'ID',
-            value: 'Idaho'
+            value: 'Idaho',
+            tagText: 'ID',
           },
           {
             key: 'IL',
-            value: 'Illinois'
+            value: 'Illinois',
+            tagText: 'IL',
           },
           {
             key: 'IN',
-            value: 'Indiana'
+            value: 'Indiana',
+            tagText: 'IN',
           }
         ]
       }

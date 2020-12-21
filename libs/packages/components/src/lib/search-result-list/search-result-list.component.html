@@ -7,8 +7,8 @@
   <hr *ngIf="divider && updateModel?.results?.length" class="fine" />
 </ng-container>
 
-<ng-container *ngIf="(noResultsTemplate && !(updateModel?.results?.length))" [ngTemplateOutlet]="noResultsTemplate"
-  [ngTemplateOutletContext]="{$implicit:updateModel}">
+<ng-container *ngIf="(customResultsTemplate && !(updateModel?.results?.length))"
+  [ngTemplateOutlet]="customResultsTemplate" [ngTemplateOutletContext]="{$implicit:updateModel}">
 </ng-container>
 
 <!-- <ng-container *ngIf="(!updateModel?.metadata?.messages && updateModel?.results?.length === 0)">
@@ -17,7 +17,7 @@
   </div>
 </ng-container> -->
 
-<ng-container *ngIf="!noResultsTemplate">
+<ng-container *ngIf="!customResultsTemplate">
   <ng-container
     *ngIf="(updateModel == null || (!updateModel?.metadata?.messages && updateModel?.results?.length === 0))">
     <ng-container *ngIf="!initialLoad">

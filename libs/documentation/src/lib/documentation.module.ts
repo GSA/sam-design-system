@@ -9,177 +9,181 @@ import { sds } from '@gsa-sam/sam-styles/src/icons/';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import {
   FontAwesomeModule,
-  FaIconLibrary,
+  FaIconLibrary
 } from '@fortawesome/angular-fontawesome';
 /* Layout / Components */
 import {
   ROUTES as HEADER_ROUTES,
-  HeaderModule,
+  HeaderModule
 } from './components/header/header.module';
 import {
   ROUTES as FOOTER_ROUTES,
-  FooterModule,
+  FooterModule
 } from './components/footer/footer.module';
 import {
   ROUTES as SUBHEADER_ROUTES,
-  SubHeaderModule,
+  SubHeaderModule
 } from './components/subheader/subheader.module';
 import {
   ROUTES as DIALOG_ROUTES,
-  DialogModule,
+  DialogModule
 } from './components/dialog/dialog.module';
 import {
   ROUTES as ACCORDION_ROUTES,
-  AccordionModule,
+  AccordionModule
 } from './components/accordion/accordion.module';
 import {
   ROUTES as DOWNLOAD_ROUTES,
-  DownloadModule,
+  DownloadModule
 } from './components/download/download.module';
 import {
   ROUTES as COLLAPSE_ROUTES,
-  CollapseModule,
+  CollapseModule
 } from './components/collapse/collapse.module';
 import {
   ROUTES as ACTIONS_ROUTES,
-  ActionsModule,
+  ActionsModule
 } from './components/actions/actions.module';
 import {
   ROUTES as PAGINATION_ROUTES,
-  PaginationModule,
+  PaginationModule
 } from './components/pagination/pagination.module';
 import {
   ROUTES as SIDE_NAVIGATION_ROUTES,
-  SideNavigationModule,
+  SideNavigationModule
 } from './components/sidenavigation/sidenavigation.module';
 import {
   ROUTES as RESULT_LIST_ROUTES,
-  ResultListModule,
+  ResultListModule
 } from './components/result-list/result-list.module';
 import {
   ROUTES as SEARCH_ROUTES,
-  SearchModule,
+  SearchModule
 } from './components/search/search.module';
 import {
   ROUTES as AUTOCOMPLETE_ROUTES,
-  AutocompleteModule,
+  AutocompleteModule
 } from './components/autocomplete/autocomplete.module';
 import {
   ROUTES as VIDEO_ROUTES,
-  VideoModule,
+  VideoModule
 } from './components/video/video.module';
 import {
   ROUTES as POPUP_ROUTES,
-  PopupModule,
+  PopupModule
 } from './components/popup/popup.module';
 import {
   ROUTES as FILTERS_ROUTES,
-  FiltersModule,
+  FiltersModule
 } from './components/filters/filters.module';
 
 import {
   ROUTES as SELECTION_PANEL_ROUTES,
-  SelectionPanelModule,
+  SelectionPanelModule
 } from './components/selection-panel/selection-panel.module';
 
 /* Form Types */
 import {
   ROUTES as INPUT_ROUTES,
-  InputModule,
+  InputModule
 } from './components/formly/input/input.module';
 import {
   ROUTES as TEXT_AREA_ROUTES,
-  TextAreaModule,
+  TextAreaModule
 } from './components/formly/textarea/textarea.module';
 import {
   ROUTES as CHECKBOX_ROUTES,
-  CheckboxModule,
+  CheckboxModule
 } from './components/formly/checkbox/checkbox.module';
 import {
   ROUTES as MULTI_CHECKBOX_ROUTES,
-  MultiCheckboxModule,
+  MultiCheckboxModule
 } from './components/formly/multicheckbox/multicheckbox.module';
 import {
   ROUTES as RADIO_ROUTES,
-  RadioModule,
+  RadioModule
 } from './components/formly/radio/radio.module';
 import {
   ROUTES as SELECT_ROUTES,
-  SelectModule,
+  SelectModule
 } from './components/formly/select/select.module';
 import {
   ROUTES as FORMLY_AUTOCOMPLETE_ROUTES,
-  FormlyAutocompleteModule,
+  FormlyAutocompleteModule
 } from './components/formly/autocomplete/autocomplete.module';
 import {
   ROUTES as FORMLY_DATEPICKER_ROUTES,
-  FormlyDatepickerModule,
+  FormlyDatepickerModule
 } from './components/formly/datepicker/datepicker.module';
 import {
   ROUTES as TEXT_ROUTES,
-  TextModule,
+  TextModule
 } from './components/text/text.module';
 import {
   ROUTES as SEARCH_FORMLY_ROUTES,
-  FormlySearchModule,
+  FormlySearchModule
 } from './components/formly/search/search.module';
 
 import {
   ROUTES as TOASTS_ROUTES,
-  ToastsModule,
+  ToastsModule
 } from './components/toasts/toasts.module';
 /* Form Wrappers */
 
 import {
   ROUTES as FORM_FIELD_ROUTES,
-  FormFieldModule,
+  FormFieldModule
 } from './components/form-field/form-field.module';
 import {
   ROUTES as FILTER_WRAPPER_ROUTES,
-  FilterWrapperModule,
+  FilterWrapperModule
 } from './components/filterwrapper/filterwrapper.module';
 import {
   ROUTES as ACCORDION_WRAPPER_ROUTES,
-  AccordionWrapperModule,
+  AccordionWrapperModule
 } from './components/accordionwrapper/accordionwrapper.module';
 import {
   ROUTES as GROUP_ROUTES,
-  GroupWrappersModule,
+  GroupWrappersModule
 } from './components/groupwrappers/groupwrappers.module';
 import {
   ROUTES as LABEL_ROUTES,
-  LabelWrapperModule,
+  LabelWrapperModule
 } from './components/labelwrapper/labelwrapper.module';
 import {
   ROUTES as DESCRIPTION_ROUTES,
-  DescriptionWrapperModule,
+  DescriptionWrapperModule
 } from './components/descriptionwrapper/descriptionwrapper.module';
 import {
   ROUTES as VALIDATION_ROUTES,
-  ValidationWrapperModule,
+  ValidationWrapperModule
 } from './components/validationwrapper/validationwrapper.module';
 import {
   ROUTES as TEMPLATEOPTIONS_ROUTES,
-  TemplateOptionsModule,
+  TemplateOptionsModule
 } from './components/templateoptions/templateoptions.module';
 import {
   ROUTES as TABLE_ROUTES,
-  TableModule,
+  TableModule
 } from './components/table/table.module';
 import {
   ROUTES as BUTTON_GROUP_ROUTES,
-  ButtonGroupModule,
+  ButtonGroupModule
 } from './components/button-group/button-group.module';
+import {
+  ROUTES as READONLY_ROUTES,
+  ReadonlyModule
+} from './components/formly/readonly/readonly.module';
 
 /* Utilities */
 import {
   ROUTES as ICONS_ROUTES,
-  IconsModule,
+  IconsModule
 } from './components/icons/icons.module';
 
 import {
   ROUTES as SYSTEM_ALERT_ROUTES,
-  SystemAlertsModule,
+  SystemAlertsModule
 } from './components/system-alerts/system-alerts.module';
 
 import { DocumentationSharedModule } from './shared';
@@ -232,7 +236,7 @@ export const ROUTES: Routes = [
   { path: 'components/select', children: SELECT_ROUTES },
   {
     path: 'components/formly-autocomplete',
-    children: FORMLY_AUTOCOMPLETE_ROUTES,
+    children: FORMLY_AUTOCOMPLETE_ROUTES
   },
   { path: 'components/formly-datepicker', children: FORMLY_DATEPICKER_ROUTES },
   { path: 'components/text', children: TEXT_ROUTES },
@@ -247,6 +251,7 @@ export const ROUTES: Routes = [
   { path: 'components/description', children: DESCRIPTION_ROUTES },
   { path: 'components/validation', children: VALIDATION_ROUTES },
   { path: 'components/templateoptions', children: TEMPLATEOPTIONS_ROUTES },
+  { path: 'components/readonly', children: READONLY_ROUTES },
 
   // Form Examples
   { path: 'pages', pathMatch: 'full', redirectTo: 'pages/formly-form' },
@@ -257,7 +262,7 @@ export const ROUTES: Routes = [
   { path: 'components/table', children: TABLE_ROUTES },
 
   // Icons
-  { path: 'components/icons', children: ICONS_ROUTES },
+  { path: 'components/icons', children: ICONS_ROUTES }
 ];
 
 @NgModule({
@@ -310,7 +315,8 @@ export const ROUTES: Routes = [
     SelectionPanelModule,
     SystemAlertsModule,
     ToastsModule,
-  ],
+    ReadonlyModule
+  ]
 })
 export class DocumentationModule {
   constructor(library: FaIconLibrary) {
