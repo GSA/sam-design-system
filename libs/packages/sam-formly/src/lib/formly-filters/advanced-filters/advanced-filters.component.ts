@@ -125,7 +125,52 @@ export class AdvancedFiltersComponent {
           : 0
       );
     }
-    const filedGroup: FormlyFieldConfig[] = [
+    const filedGroup: FormlyFieldConfig[] = this.filedGroup;
+    const showInactiveGroup: FormlyFieldConfig[] = this.showInactiveGroup;
+
+    let updateField: FormlyFieldConfig[] = [{
+      key: 'filterToggle',
+      fieldGroup: [...filedGroup, {
+        key: 'filters',
+        fieldGroup: [...modalFields]
+      }]
+    }];
+    if(this.isInactiveValueFieldShown){
+      updateField.push(...showInactiveGroup)
+    }
+    const data: SdsFormlyDialogData = {
+      fields: updateField,
+      submit: 'Update',
+      title: 'More Filters'
+    };
+
+    const dialogRef = this.dialog.open(SdsFormlyDialogComponent, {
+      width: 'medium',
+      data: data
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        if(this.showInactiveOnOpen !== this.showInactive){
+          this.onShowInactiveChange(this.showInactive);
+          this.showInactiveOnOpen = this.showInactive;
+        }
+      }
+      if (result) {
+        const response = this.advancedFiltersService.updateFields(
+          result,
+          this.fields,
+          this.model
+        );
+
+        this.fields = response.fields;
+        this.model = response.model;
+      }
+    });
+  }
+
+  get filedGroup(): FormlyFieldConfig[]{
+    return [
       {
         templateOptions: { label: 'test' },
         fieldGroup: [
@@ -165,8 +210,10 @@ export class AdvancedFiltersComponent {
         ]
       }
     ];
+  }
 
-    const showInactiveGroup: FormlyFieldConfig[] = [
+  get showInactiveGroup(): FormlyFieldConfig[]{
+    return [
       {
         template: '<hr/>'
       },
@@ -202,52 +249,5 @@ export class AdvancedFiltersComponent {
         ]
       }
     ];
-    let updateField: FormlyFieldConfig[];
-    if(this.isInactiveValueFieldShown){
-      updateField = [{
-        key: 'filterToggle',
-        fieldGroup: [...filedGroup, {
-          key: 'filters',
-          fieldGroup: [...modalFields]
-        }]
-      }, ...showInactiveGroup];
-    } else {
-      updateField = [{
-        key: 'filterToggle',
-        fieldGroup: [...filedGroup, {
-          key: 'filters',
-          fieldGroup: [...modalFields]
-        }]
-      }];
-    }
-    const data: SdsFormlyDialogData = {
-      fields: updateField,
-      submit: 'Update',
-      title: 'More Filters'
-    };
-
-    const dialogRef = this.dialog.open(SdsFormlyDialogComponent, {
-      width: 'medium',
-      data: data
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if(result){
-        if(this.showInactiveOnOpen !== this.showInactive){
-          this.onShowInactiveChange(this.showInactive);
-          this.showInactiveOnOpen = this.showInactive;
-        }
-      }
-      if (result) {
-        const response = this.advancedFiltersService.updateFields(
-          result,
-          this.fields,
-          this.model
-        );
-
-        this.fields = response.fields;
-        this.model = response.model;
-      }
-    });
   }
 }

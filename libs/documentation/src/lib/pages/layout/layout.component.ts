@@ -79,7 +79,7 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
     if(showInactiveFilterValues){
       const temp = Object.assign([], this.filterService.fields[6].fieldGroup[2].templateOptions.service.loadedData);
       temp.unshift({
-        name: 'Aqweqweqweqweew',
+        name: 'Aqweqweqweqweew *',
         id: 'AQ'
       });
       this.fields[6].fieldGroup[2].templateOptions.service.loadedData = temp;

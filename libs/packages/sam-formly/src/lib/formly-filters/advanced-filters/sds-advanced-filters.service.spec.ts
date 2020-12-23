@@ -211,7 +211,7 @@ describe('SdsAdvancedFiltersService', () => {
     expect(service.convertToCheckboxes(fields)).toEqual(checkboxFields);
   });
 
-  fit('should update filters based on selected filter options', () => {
+  it('should update filters based on selected filter options', () => {
     const results = {
       fields: updatedFields,
       model: {
