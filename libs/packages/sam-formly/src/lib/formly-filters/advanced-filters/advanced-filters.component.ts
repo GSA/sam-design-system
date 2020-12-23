@@ -51,6 +51,8 @@ export class AdvancedFiltersComponent {
   showInactiveOnOpen = false;
   showInactive = false;
 
+  readonly filtersFieldGroupKey = 'filters';
+
   constructor(
     public dialog: SdsDialogService,
     private advancedFiltersService: SdsAdvancedFiltersService,
@@ -61,25 +63,25 @@ export class AdvancedFiltersComponent {
     const modalFields: FormlyFieldConfig[] = this.advancedFiltersService.convertToCheckboxes(
       this.fields
     );
-    const keys = Object.keys(selectedform.get('filters').controls);
+    const keys = Object.keys(selectedform.get(this.filtersFieldGroupKey).controls);
     if (!isOnload) {
       this.selectAll = selectAllValue;
       keys.forEach(key => {
         if (key !== 'selectAll' && key !== 'showInactive') {
           let currentField = modalFields.find(item => item.key === key);
           if (currentField.key === key && currentField.type === 'checkbox') {
-            selectedform.get('filters').get(key).setValue(this.selectAll);
+            selectedform.get(this.filtersFieldGroupKey).get(key).setValue(this.selectAll);
           } else if (currentField.type === 'multicheckbox') {
             const array = [];
             if (this.selectAll) {
               currentField.templateOptions.options.forEach((option: any) => {
                 array.push(option.key);
               });
-              selectedform.get('filters').get(key).setValue(array);
+              selectedform.get(this.filtersFieldGroupKey).get(key).setValue(array);
 
               this.cdr.detectChanges();
             } else {
-              selectedform.get('filters').get(key).setValue([]);
+              selectedform.get(this.filtersFieldGroupKey).get(key).setValue([]);
             }
           }
         }
@@ -90,10 +92,10 @@ export class AdvancedFiltersComponent {
         if (key !== 'selectAll') {
           let currentField = modalFields.find(item => item.key === key);
           let val;
-          if (Array.isArray(selectedform.get('filters').get(key).value)) {
-            val = selectedform.get('filters').get(key).value.length > 0 ? true : false;
+          if (Array.isArray(selectedform.get(this.filtersFieldGroupKey).get(key).value)) {
+            val = selectedform.get(this.filtersFieldGroupKey).get(key).value.length > 0 ? true : false;
           } else {
-            val = selectedform.get('filters').get(key).value;
+            val = selectedform.get(this.filtersFieldGroupKey).get(key).value;
           }
           if (!allValues.includes(val)) {
             allValues.push(val);
@@ -131,7 +133,7 @@ export class AdvancedFiltersComponent {
     let updateField: FormlyFieldConfig[] = [{
       key: 'filterToggle',
       fieldGroup: [...filedGroup, {
-        key: 'filters',
+        key: this.filtersFieldGroupKey,
         fieldGroup: [...modalFields]
       }]
     }];
