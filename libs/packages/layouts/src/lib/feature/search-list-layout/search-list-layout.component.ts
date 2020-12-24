@@ -165,8 +165,9 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   updateNavigation() {
     const queryString = window.location.search.substring(1);
     let queryObj = qs.parse(queryString, { allowPrototypes: true });
+    console.log(queryObj);
     if (queryObj.hasOwnProperty('sfm')) {
-      queryObj = {};
+      queryObj['sfm'] = {};
     }
 
     queryObj['page'] = this.page.pageNumber
@@ -178,6 +179,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     this.router.navigate(['.'], {
       relativeTo: this.route,
       queryParams: params,
+      // queryParamsHandling: "merge"
     });
   }
 
