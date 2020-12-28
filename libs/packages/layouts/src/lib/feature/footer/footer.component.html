@@ -1,56 +1,7 @@
 <footer class="usa-footer" role="contentinfo">
-  <div class="sds-feedback">
-    <button
-      type="button"
-      class="sds-feedback__button simple-toggle"
-      [attr.aria-expanded]="!isCollapsedContent"
-      aria-controls="collapseID"
-      (click)="isCollapsedContent = !isCollapsedContent"
-    >
-      <fa-layers [fixedWidth]="true" size="2x">
-        <fa-icon
-          [icon]="['fas', 'circle']"
-          [sdsCollapse]="isCollapsedContent"
-          class="text-base-light margin-auto"
-        ></fa-icon>
-        <fa-icon
-          [icon]="['sds', 'arrow-up']"
-          [sdsCollapse]="isCollapsedContent"
-          transform="shrink-6"
-        ></fa-icon>
-        <fa-icon
-          [icon]="['fas', 'circle']"
-          [sdsCollapse]="!isCollapsedContent"
-          class="text-primary margin-auto"
-        ></fa-icon>
-        <fa-icon
-          [icon]="['sds', 'arrow-down']"
-          [sdsCollapse]="!isCollapsedContent"
-          transform="shrink-6"
-        ></fa-icon>
-      </fa-layers>
-      <span class="sds-feedback__title">Feedback</span>
-    </button>
-    <div
-      id="collapseID"
-      [sdsCollapse]="isCollapsedContent"
-      class="sds-feedback__response"
-    >
-      <div class="tablet:width-tablet-lg padding-4 margin-auto">
-        <span class="sds-feedback__response-title">One Question </span>
-        <span class="sds-feedback__response-title-thin"> Survey</span>
-        <p class="sds-feedback__response-text">
-          What changes or improvements would you suggest?
-        </p>
-        <textarea [formControl]="feedbackModel" class="sds-feedback__input" id="feedbackInput" aria-label="Feedback input form" type="text" rows="8"></textarea>
-        <p class="text-left">
-          <button class="usa-button usa-button--secondary" id="feedbackSubmit" 
-            aria-label="Feedback submit" (click)="onFeedbackSubmitClicked()">Submit</button>
-        </p>
-      </div>
-    </div>
+  <div *ngIf="feedbackTemplate">
+    <ng-container *ngTemplateOutlet="feedbackTemplate"></ng-container>
   </div>
-
   <div class="usa-footer__primary-section">
     <div class="grid-container margin-x-0 mobile-lg:margin-x-auto padding-x-0 mobile-lg:padding-x-auto display-none tablet:display-block">
       <div class="grid-row grid-gap-0 mobile-lg:grid-gap">

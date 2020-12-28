@@ -1,4 +1,10 @@
-<sds-footer [model]="modelFooter"
-  [feedbackModel]="feedbackModel"
-  (linkEvent)="linkEvent.next($event)" 
-  (feedbackSubmit)="onFeedbackSubmit($event)"></sds-footer>
+<sds-footer 
+  [model]="modelFooter"
+  [feedbackTemplate]="feedbackTemplate"
+  (linkEvent)="linkEvent.next($event)"
+>
+</sds-footer>
+
+<ng-template #feedbackTemplate>
+  <sds-feedback [feedbackModel]="feedbackModel" (feedbackSubmit)="onFeedbackSubmit($event)"></sds-feedback>
+</ng-template>
