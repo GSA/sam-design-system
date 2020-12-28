@@ -74,24 +74,4 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
     }
 
   }
-
-  updateFields(showInactiveFilterValues){
-    if(showInactiveFilterValues){
-      const temp = Object.assign([], this.filterService.fields[6].fieldGroup[2].templateOptions.service.loadedData);
-      temp.unshift({
-        name: 'Aqweqweqweqweew *',
-        id: 'AQ'
-      });
-      this.fields[6].fieldGroup[2].templateOptions.service.loadedData = temp;
-    } else if(this.fields[6].fieldGroup[2].templateOptions.service.loadedData[0].id==='AQ'){
-      const temp = Object.assign([], this.filterService.fields[6].fieldGroup[2].templateOptions.service.loadedData);
-      temp.shift();
-      this.fields[6].fieldGroup[2].templateOptions.service.loadedData = temp;
-    }
-  }
-
-  handleInactiveValueChange(value){
-    console.log('Inactive Filter Value',value)
-    this.updateFields(value);
-  }
 }
