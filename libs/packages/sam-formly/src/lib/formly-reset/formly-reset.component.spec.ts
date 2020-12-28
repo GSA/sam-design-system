@@ -61,6 +61,43 @@ describe('SDS Formly Reset', () => {
     expect(testComp.model).toEqual({ flat: null, nested: { nestedInput: null } });
   });
 
+  it("should reset fields with defaultValue provided to that defaultValue when clicked", () => {
+    fields = [
+      {
+        key: 'flat',
+        type: 'input',
+        defaultValue: 'flat defaultValue'
+      },
+      {
+        key: 'nested',
+        fieldGroup: [
+          {
+            key: 'nestedInput',
+            type: 'input',
+            defaultValue: 'nested defaultValue'
+          }
+        ]
+      }
+    ];
+
+    fixture = TestBed.createComponent(TestComponent);
+    testComp = fixture.componentInstance;
+    fixture.detectChanges();
+
+    expect(testComp.model).toEqual({
+      flat: 'flat defaultValue',
+      nested: { nestedInput: 'nested defaultValue' }
+    });
+
+    resetEl = fixture.nativeElement.querySelector('.usa-button');
+    resetEl.click()
+
+    expect(testComp.model).toEqual({
+      flat: 'flat defaultValue',
+      nested: { nestedInput: 'nested defaultValue' }
+    });
+  });
+
   it('should clone both flat and nested values from initial model during resetModel if values were set when clicked', () => {
     model = {
       flat: 'flat value set',
