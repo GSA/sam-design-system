@@ -4,7 +4,9 @@ import { FieldType } from '@ngx-formly/core';
 @Component({
   selector: 'sds-formly-field-checkbox',
   template: `
-    <div class="usa-checkbox">
+    <div class="usa-checkbox"
+      [class.text-align-end]="to.textAlignEnd"
+    >
       <input class="usa-checkbox__input" type="checkbox"
         [class.is-invalid]="showError"
         [indeterminate]="to.indeterminate && formControl.value === null"

@@ -17,6 +17,8 @@ import { FiltersConfig } from './demos/config/filter-config.component';
 import { FiltersConfigModule } from './demos/config/filter-config.module';
 import { FiltersHideExpressionModule } from './demos/hideexpression/filters-hideexpression.module';
 import { FiltersHideExpression } from './demos/hideexpression/filters-hideexpression.component';
+import { FiltersShowInactiveFilterValues } from './demos/showInactiveFilterValues/filters-showInactiveFilterValues.component';
+import { FiltersShowInactiveFilterValuesModule } from './demos/showInactiveFilterValues/filters-showInactiveFilterValues.module';
 
 declare var require: any;
 const DEMOS = {
@@ -40,6 +42,13 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/hideexpression/filters-hideexpression.component'),
     markup: require('!!raw-loader!./demos/hideexpression/filters-hideexpression.component.html'),
     path: 'libs/documentation/src/lib/components/filters/demos/hideexpression'
+  },
+  showInactiveFilterValues: {
+    title: 'Show Inactive Filter Value',
+    type: FiltersShowInactiveFilterValues,
+    code: require('!!raw-loader!./demos/showInactiveFilterValues/filters-showInactiveFilterValues.component'),
+    markup: require('!!raw-loader!./demos/showInactiveFilterValues/filters-showInactiveFilterValues.component.html'),
+    path: 'libs/documentation/src/lib/components/filters/demos/showInactiveFilterValues'
   },
   config: {
     title: 'Filters with different field config',
@@ -80,7 +89,8 @@ export const ROUTES = [
     FiltersBasicModule,
     FiltersOptionalModule,
     FiltersConfigModule,
-    FiltersHideExpressionModule
+    FiltersHideExpressionModule,
+    FiltersShowInactiveFilterValuesModule
   ]
 })
 export class FiltersModule {

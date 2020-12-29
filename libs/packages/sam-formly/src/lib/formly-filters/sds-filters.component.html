@@ -3,7 +3,7 @@
 <div class="grid-row margin-top-2">
   <div *ngIf="advancedFilters" class="grid-col">
     <sds-advanced-filters [form]="form" [sortMoreFilterBy]="sortMoreFilterBy" [fields]="fields" [options]="options"
-      [model]="model">
+      [model]="model" (showInactiveFiltersChange)="showInactiveFiltersChange.next($event)" [isInactiveValueFieldShown]=isInactiveValueFieldShown>
     </sds-advanced-filters>
   </div>
   <div class="grid-col text-right">
