@@ -165,7 +165,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   updateNavigation() {
     const queryString = window.location.search.substring(1);
     let queryObj = qs.parse(queryString, { allowPrototypes: true });
-    console.log(queryObj);
+
     if (queryObj.hasOwnProperty('sfm')) {
       queryObj['sfm'] = {};
     }
@@ -270,7 +270,6 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
             this.page.totalPages = Math.ceil(
               result.totalItems / this.page.pageSize
             );
-            console.log(this.filterData, 'model');
             this.totalItems = result.totalItems;
           });
       });

@@ -21,7 +21,6 @@ import { FieldType } from '@ngx-formly/core';
           [value]="option.value"
           [formControl]="formControl"
           [formlyAttributes]="field"
-          (change)="onChange($event)"
         />
         <label class="usa-radio__label" [for]="id + '_' + i">
           {{ option.label }}
@@ -36,7 +35,4 @@ export class FormlyFieldRadioComponent extends FieldType {
       options: [],
     },
   };
-  onChange(ev) {
-    console.log(ev, this.field);
-  }
 }
