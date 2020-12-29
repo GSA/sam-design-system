@@ -62,7 +62,7 @@ export class ReadonlyContainerComponent implements OnInit {
     }
 
     // We do array access from field config for daterangepicker, which can be undefined for other types, 
-    // hence this is sectioned off in a conditional 
+    // hence this is sectioned off in a conditional
     if (this.formlyFieldConfig.type === this.sdsFormlyTypes.DATERANGEPICKER) {
       this.additionalConfig.daterangepickerOptions = {
         fromDateKey: this.formlyFieldConfig.fieldGroup[0].key as any,
