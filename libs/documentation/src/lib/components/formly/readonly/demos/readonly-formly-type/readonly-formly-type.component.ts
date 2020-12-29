@@ -19,51 +19,44 @@ export class ReadonlyFormlyTypeComponent {
         </span>`
     },
     {
+      key: 'paymentType',
+      type: SdsFormlyTypes.READONLY,
+      defaultValue: 'Credit',
       templateOptions: {
-        label: 'Test Label'
+        label: 'Payment Type',
+        hideOptional: true,
       },
-      fieldGroup: [
-        {
-          key: 'paymentType',
-          type: SdsFormlyTypes.READONLY,
-          defaultValue: 'Credit',
-          templateOptions: {
-            label: 'Payment Type',
-            hideOptional: true,
-          },
-        },
-        {
-          key: 'cardNumber',
-          type: SdsFormlyTypes.INPUT,
-          templateOptions: {
-            label: 'Card Number',
-            placeholder: '16-digit Credit Card Number',
-            required: true,
-            maxLength: 16,
-          },
-        },
-        {
-          key: 'cvvCode',
-          type: SdsFormlyTypes.INPUT,
-          templateOptions: {
-            label: 'Security Code',
-            placeholder: '3 or 4 digit CVV',
-            required: true,
-            maxLength: 4,
-          },
-        },
-        {
-          key: 'zipCode',
-          type: SdsFormlyTypes.INPUT,
-          templateOptions: {
-            label: 'Zip Code',
-            placeholder: '5 digit Zip Code',
-            required: true,
-            maxLength: 5
-          },
-        },
-      ]
-    }
+    },
+    {
+      key: 'cardNumber',
+      type: SdsFormlyTypes.INPUT,
+      templateOptions: {
+        label: 'Card Number',
+        placeholder: '16-digit Credit Card Number',
+        required: true,
+        maxLength: 16,
+      },
+    },
+    {
+      key: 'cvvCode',
+      type: SdsFormlyTypes.INPUT,
+      templateOptions: {
+        label: 'Security Code',
+        placeholder: '3 or 4 digit CVV',
+        required: true,
+        maxLength: 4,
+      },
+    },
+    {
+      key: 'zipCode',
+      type: SdsFormlyTypes.INPUT,
+      templateOptions: {
+        label: 'Zip Code',
+        placeholder: '5 digit Zip Code',
+        required: true,
+        maxLength: 5
+      },
+    },
   ];
 
   toggleReadonlyMode() {
