@@ -12,10 +12,10 @@ export class FormlyUtilsService {
     });
   }
 
-  public static formlyConfigToReadonlyData(fields: FormlyFieldConfig[], model: any) {
+  public static formlyConfigToReadonlyData(fields: FormlyFieldConfig[], model: any, options: {convertAll: boolean}) {
     const readonlyData = [];
     fields.forEach(field => {
-      this,this._formlyConfigToReadonlyData(field, model, readonlyData);
+      this,this._formlyConfigToReadonlyData(field, model, readonlyData, options);
     });
 
     return readonlyData;
@@ -35,16 +35,19 @@ export class FormlyUtilsService {
     }
   }
 
-  private static _formlyConfigToReadonlyData(field: FormlyFieldConfig, model: any, readonlyData: any[]) {
+  private static _formlyConfigToReadonlyData(field: FormlyFieldConfig, model: any, readonlyData: any[], options: {convertAll: boolean}) {
     if (field.fieldGroup) {
       const innerModel = field.key ? model[field.key as string] : model;
       field.fieldGroup.forEach(innerField => {
-        this._formlyConfigToReadonlyData(innerField, innerModel, readonlyData);
+        this._formlyConfigToReadonlyData(innerField, innerModel, readonlyData, options);
       });
     }
 
-    if (Object.values(SdsFormlyTypes).includes(field.type as any)) {
+    if (!field.templateOptions) {
+      return;
+    }
 
+    if (options.convertAll || Object.values(SdsFormlyTypes).includes(field.type as any)) {
       const label = field.templateOptions.label;
       const value = model[field.key as string];
       const readonlyOptions: ReadonlyOptions = {

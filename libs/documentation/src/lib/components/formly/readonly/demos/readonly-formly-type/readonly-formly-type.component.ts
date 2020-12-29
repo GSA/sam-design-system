@@ -66,12 +66,8 @@ export class ReadonlyFormlyTypeComponent {
     }
   ];
 
-  componentData: any[];
-
-
   toggleReadonlyMode() {
     this.isReadOnlyMode = !this.isReadOnlyMode
     FormlyUtilsService.setReadonlyMode(this.isReadOnlyMode, this.fields);
-    this.componentData = FormlyUtilsService.formlyConfigToReadonlyData(this.fields, this.model);
   }
 }

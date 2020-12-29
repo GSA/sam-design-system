@@ -8,18 +8,6 @@
   <formly-form [fields]="fields" [form]="form" [model]="model"></formly-form>
 </form>
 
-<div class="grid-row grid-gap-2" *ngIf="isReadOnlyMode">
-  <ng-container *ngFor="let data of componentData">
-    <sds-readonly-container
-      class="grid-col-4"
-      [formlyType]="data.formlyType"
-      [label]="data.label" 
-      [value]="data.value" 
-      [additionalConfig]="data.additionalConfig">
-    </sds-readonly-container>
-  </ng-container>
-</div>
-
 <button *ngIf="!isReadOnlyMode; else readonlyMode" class="usa-button" (click)="toggleReadonlyMode()">Preview</button>
 
 <ng-template #readonlyMode>
