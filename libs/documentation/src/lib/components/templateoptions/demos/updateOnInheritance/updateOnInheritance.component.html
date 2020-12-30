@@ -1,0 +1,13 @@
+<p>By default, the updateOn option assigned to a field will be passed to any
+  sub-field contained in <code>fieldGroup</code>. In this example, blur is
+  assigned to the top field for it's updateOn option. As a result, the input
+  fields contained in it's <code>fieldGroup</code> which do not assign their
+  own updateOn option will also update on blur. However, by specifying a
+  different updateOn choice, a field can be made to update differently than its
+  ancestors.</p>
+<form [formGroup]="form">
+  <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form" (ngSubmit)="submit()"></formly-form>
+  <button type="submit" class="usa-button">Submit</button>
+</form>
+
+{{model |json}}
