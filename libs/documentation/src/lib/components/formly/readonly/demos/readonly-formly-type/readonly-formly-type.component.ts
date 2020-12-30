@@ -10,7 +10,6 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 export class ReadonlyFormlyTypeComponent {
 
   isReadOnlyMode = false;
-  model = {};
   form = new FormGroup({});
   fields: FormlyFieldConfig[] = [
     {
@@ -19,7 +18,6 @@ export class ReadonlyFormlyTypeComponent {
         </span>`
     },
     {
-      key: 'paymentType',
       type: SdsFormlyTypes.READONLY,
       defaultValue: 'Credit',
       templateOptions: {
@@ -28,7 +26,6 @@ export class ReadonlyFormlyTypeComponent {
       },
     },
     {
-      key: 'cardNumber',
       type: SdsFormlyTypes.INPUT,
       templateOptions: {
         label: 'Card Number',
@@ -38,7 +35,6 @@ export class ReadonlyFormlyTypeComponent {
       },
     },
     {
-      key: 'cvvCode',
       type: SdsFormlyTypes.INPUT,
       templateOptions: {
         label: 'Security Code',
@@ -48,7 +44,6 @@ export class ReadonlyFormlyTypeComponent {
       },
     },
     {
-      key: 'zipCode',
       type: SdsFormlyTypes.INPUT,
       templateOptions: {
         label: 'Zip Code',
