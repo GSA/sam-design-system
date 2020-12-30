@@ -13,9 +13,9 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { MarkdownModule } from 'ngx-markdown';
 
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
-import * as xml from 'highlight.js/lib/languages/xml';
-import * as scss from 'highlight.js/lib/languages/scss';
-import * as typescript from 'highlight.js/lib/languages/typescript';
+import xml from 'highlight.js/lib/languages/xml';
+import scss from 'highlight.js/lib/languages/scss';
+import typescript from 'highlight.js/lib/languages/typescript';
 
 export function hljsLanguages() {
   return [
