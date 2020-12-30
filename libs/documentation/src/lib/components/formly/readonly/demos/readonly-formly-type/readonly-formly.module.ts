@@ -1,7 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
-import { SdsFormlyModule, SdsReadonlyModule } from "@gsa-sam/sam-formly";
+import { SdsFormlyModule } from "@gsa-sam/sam-formly";
 import { FormlyModule } from "@ngx-formly/core";
 import { ReadonlyFormlyTypeComponent } from "./readonly-formly-type.component";
 
@@ -11,7 +11,6 @@ import { ReadonlyFormlyTypeComponent } from "./readonly-formly-type.component";
     SdsFormlyModule,
     FormlyModule,
     ReactiveFormsModule,
-    SdsReadonlyModule,
   ],
   declarations: [
     ReadonlyFormlyTypeComponent,

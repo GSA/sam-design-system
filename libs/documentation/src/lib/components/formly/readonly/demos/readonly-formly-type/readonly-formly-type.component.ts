@@ -10,6 +10,7 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 export class ReadonlyFormlyTypeComponent {
 
   isReadOnlyMode = false;
+
   form = new FormGroup({});
   fields: FormlyFieldConfig[] = [
     {
@@ -52,7 +53,7 @@ export class ReadonlyFormlyTypeComponent {
         maxLength: 5
       },
     },
-  ];
+  ]
 
   toggleReadonlyMode() {
     this.isReadOnlyMode = !this.isReadOnlyMode
