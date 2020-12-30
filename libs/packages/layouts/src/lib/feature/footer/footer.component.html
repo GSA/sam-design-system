@@ -1,7 +1,12 @@
 <footer class="usa-footer" role="contentinfo">
-  <div *ngIf="feedbackTemplate">
+  <div *ngIf="feedbackTemplate; else defaultFeedback">
     <ng-container *ngTemplateOutlet="feedbackTemplate"></ng-container>
   </div>
+
+  <ng-template #defaultFeedback>
+    <sds-feedback (feedbackSubmit)="onFeedbackSubmitClicked($event)"></sds-feedback>
+  </ng-template>
+
   <div class="usa-footer__primary-section">
     <div class="grid-container margin-x-0 mobile-lg:margin-x-auto padding-x-0 mobile-lg:padding-x-auto display-none tablet:display-block">
       <div class="grid-row grid-gap-0 mobile-lg:grid-gap">

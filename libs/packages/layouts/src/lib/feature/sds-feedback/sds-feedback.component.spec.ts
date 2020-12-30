@@ -1,5 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { By } from '@angular/platform-browser';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SdsCollapseModule } from '@gsa-sam/components';
 import { SdsFeedbackComponent } from './sds-feedback.component';
 
 describe('SdsFeedbackComponent', () => {
@@ -8,6 +12,12 @@ describe('SdsFeedbackComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        NoopAnimationsModule,
+        ReactiveFormsModule,
+        SdsCollapseModule,
+        FontAwesomeModule,
+      ],
       declarations: [ SdsFeedbackComponent ]
     })
     .compileComponents();
@@ -21,5 +31,15 @@ describe('SdsFeedbackComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('Should emit feedback content on submit click', () => {
+    component.feedbackModel.setValue('Test Feedback');
+    const feedbackSubmitSpy = spyOn(component.feedbackSubmit, 'emit');
+
+    const feedbackSubmitButton = fixture.debugElement.query(By.css('#feedbackSubmit'));
+    feedbackSubmitButton.triggerEventHandler('click', null);
+    fixture.detectChanges();
+    expect(feedbackSubmitSpy).toHaveBeenCalledWith('Test Feedback');
   });
 });

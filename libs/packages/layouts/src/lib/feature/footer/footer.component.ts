@@ -27,6 +27,8 @@ export class SdsFooterComponent {
   @Output()
   linkEvent = new EventEmitter<INavigationLink>();
 
+  @Output()
+  feedbackSubmit = new EventEmitter<string>();
 
   /**
    * Link clicked and emits the link data into an event
@@ -35,6 +37,10 @@ export class SdsFooterComponent {
   linkClickEvent(link: INavigationLink) {
     this.linkEvent.emit(link);
     return false;
+  }
+
+  onFeedbackSubmitClicked(feedback: string) {
+    this.feedbackSubmit.emit(feedback);
   }
 
 }
