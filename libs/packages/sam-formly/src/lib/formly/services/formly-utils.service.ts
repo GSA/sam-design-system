@@ -3,6 +3,12 @@ import { FormlyFieldConfig } from "@ngx-formly/core";
 import { SdsFormlyTypes } from "../models/formly-types";
 import { ReadonlyOptions } from "../readonly/readonly-options.model";
 
+interface ReadonlyDataType {
+  formlyType: SdsFormlyTypes,
+  label: string,
+  value: any,
+  readonlyOptions: ReadonlyOptions
+};
 @Injectable()
 export class FormlyUtilsService {
 
@@ -30,7 +36,7 @@ export class FormlyUtilsService {
    *  convertAll - By default any fields with a type not in SdsFormlyType will be ignored.
    *               Turn this on to include fields with no type or type not in SdsFormlyType.
    */
-  public static formlyConfigToReadonlyData(fields: FormlyFieldConfig[], model: any, options = {convertAll: false}) {
+  public static formlyConfigToReadonlyData(fields: FormlyFieldConfig[], model: any, options = {convertAll: false}): ReadonlyDataType[] {
     const readonlyData = [];
     fields.forEach(field => {
       this,this._formlyConfigToReadonlyData(field, model, readonlyData, options);
@@ -59,7 +65,7 @@ export class FormlyUtilsService {
       const label = field.templateOptions.label;
       const value = model[field.key as string];
       const readonlyOptions: ReadonlyOptions = {
-        providedOptions: field.options as any,
+        providedOptions: field.templateOptions.options as any,
         autocompleteOptions: field.templateOptions.configuration,
       };
 
