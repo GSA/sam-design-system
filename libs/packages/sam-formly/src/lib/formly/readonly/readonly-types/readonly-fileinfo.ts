@@ -23,9 +23,4 @@ export class ReadonlyFileinfoComponent implements OnInit {
       throw new Error(`No option list provided for readonly mode of fileinfo type for ${this.label}`);
     }
   }
-  
-  isObject(value) {
-    return typeof(value) === 'object';
-  }
-
 }

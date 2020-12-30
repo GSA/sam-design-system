@@ -23,8 +23,4 @@ export class ReadonlyMulticheckboxComponent implements OnInit {
       throw new Error(`No option list provided for readonly mode of multicheckbox type for ${this.label}`);
     }
   }
-
-  isObject(value) {
-    return typeof(value) === 'object';
-  }
 }

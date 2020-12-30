@@ -24,9 +24,4 @@ export class ReadonlyRadioComponent implements OnInit {
       throw new Error(`No option list provided for readonly mode of radio type for ${this.label}`);
     }
   }
-
-  isObject(value) {
-    return typeof(value) === 'object';
-  }
-
 }

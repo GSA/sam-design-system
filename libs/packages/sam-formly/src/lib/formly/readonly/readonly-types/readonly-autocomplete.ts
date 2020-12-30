@@ -28,8 +28,4 @@ export class ReadonlyAutocompleteComponent implements OnInit {
       this.displayValue = this.value.map(value => value[this.autocompleteSettings.primaryTextField]).join(', ');
     }
   }
-
-  isObject(value) {
-    return typeof(value) === 'object';
-  }
 }
