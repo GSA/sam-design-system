@@ -57,7 +57,7 @@ export function hljsLanguages() {
   bootstrap: [AppComponent],
 })
 export class AppModule {
-  constructor(library: FaIconLibrary) {
-    library.addIconPacks(fas, sds);
-  }
+    constructor(library: FaIconLibrary) {
+      library.addIconPacks(fas, sds);
+    }
 }
