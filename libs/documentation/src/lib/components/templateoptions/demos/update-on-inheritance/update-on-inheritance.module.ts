@@ -1,6 +1,6 @@
 import { FormlyModule } from '@ngx-formly/core';
 import { NgModule } from '@angular/core';
-import { UpdateOnInheritanceComponent } from './updateOnInheritance.component';
+import { UpdateOnInheritanceComponent } from './update-on-inheritance.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 

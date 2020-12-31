@@ -19,8 +19,8 @@ import { TemplateOptionExpand } from './demos/expand/templateoption-expand.compo
 import { TemplateOptionsExpandModule } from './demos/expand/templateoption-expand.module';
 import { TemplateOptionAnnounceLabel } from './demos/announceLabel/templateoption-announceLabel.component';
 import { TemplateOptionsAnnounceLabelModule } from './demos/announceLabel/templateoption-announceLabel.module';
-import { UpdateOnInheritanceModule } from './demos/updateOnInheritance/updateOnInheritance.module';
-import { UpdateOnInheritanceComponent } from './demos/updateOnInheritance/updateOnInheritance.component';
+import { UpdateOnInheritanceModule } from './demos/update-on-inheritance/update-on-inheritance.module';
+import { UpdateOnInheritanceComponent } from './demos/update-on-inheritance/update-on-inheritance.component';
 
 declare var require: any;
 const DEMOS = {
