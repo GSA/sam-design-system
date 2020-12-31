@@ -34,9 +34,9 @@ const DEMOS = {
   updateOnInhereitance: {
     title: 'UpdateOn Inheritance',
     type: UpdateOnInheritanceComponent,
-    code: require('!!raw-loader!./demos/updateOnInheritance/updateOnInheritance.component'),
-    markup: require('!!raw-loader!./demos/updateOnInheritance/updateOnInheritance.component.html'),
-    path: 'libs/documentation/src/lib/components/templateoptions/demos/updateOnInheritance'
+    code: require('!!raw-loader!./demos/update-on-inheritance/update-on-inheritance.component'),
+    markup: require('!!raw-loader!./demos/update-on-inheritance/update-on-inheritance.component.html'),
+    path: 'libs/documentation/src/lib/components/templateoptions/demos/update-on-inheritance'
   },
   tags: {
     title: 'Template Options for tags',
