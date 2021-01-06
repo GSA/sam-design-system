@@ -124,6 +124,8 @@ export class SdsFiltersComponent implements OnInit {
         });
         this.cdr.detectChanges();
       }
+    } else if (this.model) {
+      this.checkForHide();
     }
   }
   /**
@@ -139,17 +141,13 @@ export class SdsFiltersComponent implements OnInit {
       const [lastKey] = key.split('.').slice(-1);
       this.fields.forEach(field => {
         if (key.includes(field.key)) {
-          let hiddenField;
           if (field.fieldGroup) {
             const fieldExists = this.findFieldInFieldGroup(field.fieldGroup, lastKey);
             if (fieldExists) {
               field.hide = false;
             }
           } else {
-            hiddenField = field;
-          }
-          if (hiddenField.hide) {
-            hiddenField.hide = false;
+            field.hide = false;
           }
         }
       });
