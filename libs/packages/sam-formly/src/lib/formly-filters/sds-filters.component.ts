@@ -124,8 +124,6 @@ export class SdsFiltersComponent implements OnInit {
         });
         this.cdr.detectChanges();
       }
-    } else if (this.model) {
-      this.checkForHide();
     }
   }
   /**
