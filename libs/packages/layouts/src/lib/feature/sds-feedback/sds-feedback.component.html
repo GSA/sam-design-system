@@ -4,30 +4,14 @@
     class="sds-feedback__button simple-toggle"
     [attr.aria-expanded]="!isCollapsedContent"
     aria-controls="collapseID"
-    (click)="isCollapsedContent = !isCollapsedContent"
-  >
-    <fa-layers [fixedWidth]="true" size="2x">
-      <fa-icon
-        [icon]="['fas', 'circle']"
-        [sdsCollapse]="isCollapsedContent"
-        class="text-base-light margin-auto"
-      ></fa-icon>
-      <fa-icon
-        [icon]="['sds', 'arrow-up']"
-        [sdsCollapse]="isCollapsedContent"
-        transform="shrink-6"
-      ></fa-icon>
-      <fa-icon
-        [icon]="['fas', 'circle']"
-        [sdsCollapse]="!isCollapsedContent"
-        class="text-primary margin-auto"
-      ></fa-icon>
-      <fa-icon
-        [icon]="['sds', 'arrow-down']"
-        [sdsCollapse]="!isCollapsedContent"
-        transform="shrink-6"
-      ></fa-icon>
-    </fa-layers>
+    (click)="isCollapsedContent = !isCollapsedContent">
+    
+    <sds-icon [icon]="['bs', 'arrow-up-circle-fill']" [sdsCollapse]="isCollapsedContent"
+      [size]="'2x'" class="text-primary margin-auto"></sds-icon>
+
+    <sds-icon [icon]="['bs', 'arrow-down-circle-fill']" [size]="'2x'"
+      [sdsCollapse]="!isCollapsedContent" class="text-primary margin-auto"></sds-icon>
+
     <span class="sds-feedback__title">Feedback</span>
   </button>
   <div
