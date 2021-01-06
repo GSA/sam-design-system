@@ -11,7 +11,9 @@ import {
   Directive,
   SimpleChanges,
   OnChanges,
-  ChangeDetectorRef
+  ChangeDetectorRef,
+  Output,
+  EventEmitter
 } from '@angular/core';
 import { AfterViewInit } from '@angular/core';
 import {MatTableDataSource, MatTable} from '@angular/material/table';
@@ -185,6 +187,9 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
   }
   private _expansion = false;
 
+  @Output()
+  expansionClicked = new EventEmitter<any>();
+
   dataSource: MatTableDataSource<any>;
   expandedElement: any;
 
@@ -309,5 +314,10 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
 
     return data[sortHeaderId];
   };
+
+  onExpansionClicked(element: any) {
+    !this.rowConfig.expandOnClick ? (this.expandedElement = this.expandedElement === element ? null : element) : false;
+    this.expansionClicked.emit(this.expandedElement);
+  }
 
 }

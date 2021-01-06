@@ -42,7 +42,7 @@
       <td mat-header-cell *matHeaderCellDef></td>
       <td mat-cell *matCellDef="let element"
         class="cursor-pointer"
-        (click)="!rowConfig.expandOnClick ? (expandedElement = expandedElement === element ? null : element) : false"
+        (click)="onExpansionClicked(element)"
       >
         <fa-icon *ngIf="element == expandedElement" [icon]="['fas', 'chevron-up']" size="sm"></fa-icon>
         <fa-icon *ngIf="element != expandedElement" [icon]="['fas', 'chevron-down']" size="sm"></fa-icon>
