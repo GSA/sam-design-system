@@ -2,8 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { SdsCollapseModule } from '@gsa-sam/components';
+import { SdsCollapseModule, SdsIconModule } from '@gsa-sam/components';
 import { SdsFeedbackComponent } from './sds-feedback.component';
 
 describe('SdsFeedbackComponent', () => {
@@ -16,7 +15,7 @@ describe('SdsFeedbackComponent', () => {
         NoopAnimationsModule,
         ReactiveFormsModule,
         SdsCollapseModule,
-        FontAwesomeModule,
+        SdsIconModule,
       ],
       declarations: [ SdsFeedbackComponent ]
     })
