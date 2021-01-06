@@ -124,6 +124,8 @@ export class SdsFiltersComponent implements OnInit {
         });
         this.cdr.detectChanges();
       }
+    } else if (this.model) {
+      this.checkForHide();
     }
   }
   /**
@@ -139,18 +141,42 @@ export class SdsFiltersComponent implements OnInit {
       const [lastKey] = key.split('.').slice(-1);
       this.fields.forEach(field => {
         if (key.includes(field.key)) {
-          let hiddenField;
           if (field.fieldGroup) {
-            hiddenField = field.fieldGroup.find(item => item.key === lastKey);
+            const fieldExists = this.findFieldInFieldGroup(field.fieldGroup, lastKey);
+            if (fieldExists) {
+              field.hide = false;
+            }
           } else {
-            hiddenField = field;
-          }
-          if (hiddenField.hide) {
-            hiddenField.hide = false;
+            field.hide = false;
           }
         }
       });
     });
+  }
+
+  /**
+   * Recursively iterate over each field as well as potential field groups of the field
+   * to find a field with the given key. Returns true if field exists. Also toggles
+   * hide value of formly field for the key as well as it's parent fields to false.
+   * @param fields - The list of formly fields to search for the given key
+   * @param key - The key of the formly field config to search for
+   */
+  private findFieldInFieldGroup(fields: FormlyFieldConfig[], key: any) {
+    let existsInFieldGroup = false;
+    fields.forEach(field => {
+      if (field.fieldGroup) {
+        existsInFieldGroup = existsInFieldGroup || this.findFieldInFieldGroup(field.fieldGroup, key);
+        if (existsInFieldGroup) {
+          field.hide = false;
+        }
+      }
+      else if (field.key === key) {
+        existsInFieldGroup = true;
+        field.hide = false;
+      }
+    });
+
+    return existsInFieldGroup;
   }
 
   onModelChange(change: any) {
