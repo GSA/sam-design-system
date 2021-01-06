@@ -17,16 +17,15 @@ export class ReadonlyAutocompleteComponent implements OnInit {
   displayValue: string;
 
   ngOnInit() {
+
+    if(!this.autocompleteSettings || !this.autocompleteSettings.primaryTextField) {
+      throw new Error(`Primary text field missing in autocomplete settings for ${this.label}`);
+    }
+
     if (!this.value || !this.value.length) {
       this.displayValue = '&mdash;';
-    } else if (!this.autocompleteSettings || !this.autocompleteSettings.primaryTextField) {
-      this.displayValue = this.isObject(this.value) ? JSON.stringify(this.value) : this.value;
     } else {
       this.displayValue = this.value.map(value => value[this.autocompleteSettings.primaryTextField]).join(', ');
     }
-  }
-
-  isObject(value) {
-    return typeof(value) === 'object';
   }
 }
