@@ -10,6 +10,10 @@ jobs:
       - image: circleci/node:10.14.0-browsers
     steps:
       - checkout
+      - restore_cache:
+          keys:
+          - v2-dependencies-{{ checksum "package-lock.json" }}
+          - v2-dependencies-
       - run: npm install
       - save_cache:
           paths:
