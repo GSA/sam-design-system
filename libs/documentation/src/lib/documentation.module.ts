@@ -7,7 +7,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { sds } from '@gsa-sam/sam-styles/src/icons/';
 import { fas } from '@fortawesome/free-solid-svg-icons';
-
+import {
+  FontAwesomeModule,
+  FaIconLibrary
+} from '@fortawesome/angular-fontawesome';
 /* Layout / Components */
 import {
   ROUTES as HEADER_ROUTES,
@@ -121,6 +124,10 @@ import {
   FormlySearchModule
 } from './components/formly/search/search.module';
 
+import {
+  ROUTES as TOASTS_ROUTES,
+  ToastsModule
+} from './components/toasts/toasts.module';
 /* Form Wrappers */
 
 import {
@@ -196,7 +203,7 @@ export const ROUTES: Routes = [
   { path: 'overview', component: OverviewComponent },
   { path: 'introduction', component: IntroductionComponent },
   { path: 'layout', component: ResultsLayoutComponent },
-  { path: 'layout-responsive', component: LayoutResponsiveComponent},
+  { path: 'layout-responsive', component: LayoutResponsiveComponent },
 
   // Components
   { path: 'components', pathMatch: 'full', redirectTo: 'components/alert' },
@@ -217,9 +224,9 @@ export const ROUTES: Routes = [
   { path: 'components/filters', children: FILTERS_ROUTES },
   { path: 'components/accordion', children: ACCORDION_ROUTES },
   { path: 'components/button-group', children: BUTTON_GROUP_ROUTES },
-  { path: 'components/selection-panel', children: SELECTION_PANEL_ROUTES},
+  { path: 'components/selection-panel', children: SELECTION_PANEL_ROUTES },
   { path: 'components/system-alerts', children: SYSTEM_ALERT_ROUTES },
-
+  { path: 'components/toasts', children: TOASTS_ROUTES },
   // Formly
   { path: 'components/input', children: INPUT_ROUTES },
   { path: 'components/textarea', children: TEXT_AREA_ROUTES },
@@ -248,8 +255,8 @@ export const ROUTES: Routes = [
 
   // Form Examples
   { path: 'pages', pathMatch: 'full', redirectTo: 'pages/formly-form' },
-  { path: 'pages/formly-form', component: FormlyFormsComponent},
-  { path: 'pages/formly-conditional', component: FormlyConditionalComponent},
+  { path: 'pages/formly-form', component: FormlyFormsComponent },
+  { path: 'pages/formly-conditional', component: FormlyConditionalComponent },
 
   // Material
   { path: 'components/table', children: TABLE_ROUTES },
@@ -307,11 +314,13 @@ export const ROUTES: Routes = [
     ButtonGroupModule,
     SelectionPanelModule,
     SystemAlertsModule,
-    ReadonlyModule,
-  ],
+    ToastsModule,
+    ReadonlyModule
+  ]
 })
 export class DocumentationModule {
-  constructor() {
-    library.add(fas, sds);
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fas, sds);
+    // library.add(fas, sds);
   }
 }

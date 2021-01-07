@@ -1,8 +1,23 @@
-import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, HostListener, TemplateRef } from '@angular/core';
-import { HeaderModel, HeaderNavigationLink, HeaderSecondaryLink } from './model/HeaderModel';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ViewChild,
+  ElementRef,
+  HostListener,
+  TemplateRef
+} from '@angular/core';
+import {
+  HeaderModel,
+  HeaderNavigationLink,
+  HeaderSecondaryLink
+} from './model/HeaderModel';
 import { INavigationLink, Selectable } from '@gsa-sam/components';
 import { NavigationHelper } from '@gsa-sam/components';
-
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { sds } from '@gsa-sam/sam-styles/src/icons/';
 
 @Component({
   selector: 'sds-header',
@@ -10,13 +25,12 @@ import { NavigationHelper } from '@gsa-sam/components';
   styleUrls: ['./header.component.scss']
 })
 export class SdsHeaderComponent {
-
   @ViewChild('usaNavOpen') openNavBtn: ElementRef;
   @ViewChild('usaNavClose') closeNavBtn: ElementRef;
   mobileNavActive = false;
   /**
-  * Navigation helper
-  */
+   * Navigation helper
+   */
   navigationHelper = new NavigationHelper();
 
   /**
@@ -47,7 +61,9 @@ export class SdsHeaderComponent {
   removeWhiteSpace(text: string) {
     return text.replace(/ /g, '');
   }
-  
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fas, sds);
+  }
   /**
    * seeif any secondary link has a counter
    */
@@ -55,7 +71,7 @@ export class SdsHeaderComponent {
     let hasCounter = false;
     if (this.model) {
       if (this.model.secondaryLinks) {
-        this.model.secondaryLinks.forEach(function (item: HeaderSecondaryLink) {
+        this.model.secondaryLinks.forEach(function(item: HeaderSecondaryLink) {
           if (item.hasCounter) {
             hasCounter = true;
           }
@@ -86,17 +102,19 @@ export class SdsHeaderComponent {
         this.model.home.selected = false;
       }
       if (this.model.navigationLinks) {
-        this.model.navigationLinks.forEach(function (item: HeaderNavigationLink) {
+        this.model.navigationLinks.forEach(function(
+          item: HeaderNavigationLink
+        ) {
           item.selected = false;
           if (item.children) {
-            item.children.forEach(function (child: HeaderNavigationLink) {
+            item.children.forEach(function(child: HeaderNavigationLink) {
               child.selected = false;
             });
           }
         });
       }
       if (this.model.secondaryLinks) {
-        this.model.secondaryLinks.forEach(function (item: HeaderSecondaryLink) {
+        this.model.secondaryLinks.forEach(function(item: HeaderSecondaryLink) {
           item.selected = false;
         });
       }
@@ -117,7 +135,7 @@ export class SdsHeaderComponent {
       }
       toReturn = this.findNavigationLinks(id, toReturn);
       if (this.model.secondaryLinks) {
-        this.model.secondaryLinks.forEach(function (item: HeaderSecondaryLink) {
+        this.model.secondaryLinks.forEach(function(item: HeaderSecondaryLink) {
           if (item.id === id) {
             toReturn = item;
           }
@@ -133,12 +151,12 @@ export class SdsHeaderComponent {
    */
   private findNavigationLinks(id: string, toReturn: Selectable): Selectable {
     if (this.model.navigationLinks) {
-      this.model.navigationLinks.forEach(function (item: HeaderNavigationLink) {
+      this.model.navigationLinks.forEach(function(item: HeaderNavigationLink) {
         if (item.id === id) {
           toReturn = item;
         }
         if (item.children) {
-          item.children.forEach(function (child: HeaderNavigationLink) {
+          item.children.forEach(function(child: HeaderNavigationLink) {
             if (child.id === id) {
               toReturn = child;
             }
@@ -189,6 +207,4 @@ export class SdsHeaderComponent {
   navAnimationEnd() {
     this.closeNavBtn.nativeElement.focus();
   }
-
-
 }

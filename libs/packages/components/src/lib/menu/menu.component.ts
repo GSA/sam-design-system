@@ -70,10 +70,10 @@ export interface SdsMenuInterface<T = any> {
 })
 export class SdsMenuComponent
   implements
-    OnInit,
-    AfterContentInit,
-    OnDestroy,
-    SdsMenuInterface<SdsMenuItemComponent> {
+  OnInit,
+  AfterContentInit,
+  OnDestroy,
+  SdsMenuInterface<SdsMenuItemComponent> {
   /** After | Before the menu triger element */
   private _xPosition: MenuPositionX = 'after';
 
@@ -99,7 +99,7 @@ export class SdsMenuComponent
   _panelAnimationState: 'void' | 'enter' = 'void';
 
   /** Grab the component template */
-  @ViewChild(TemplateRef) templateRef: TemplateRef<any>;
+  @ViewChild(TemplateRef, { static: false }) templateRef: TemplateRef<any>;
 
   /**
    * Size of menu component.
@@ -165,7 +165,7 @@ export class SdsMenuComponent
   /** Event emitted when the menu is closed. */
   @Output() closed = new EventEmitter<void | 'click' | 'keydown' | 'tab'>();
 
-  constructor(private _elementRef: ElementRef<HTMLElement>) {}
+  constructor(private _elementRef: ElementRef<HTMLElement>) { }
 
   ngOnInit() {
     this.setPositionClasses();
@@ -258,7 +258,7 @@ export class SdsMenuComponent
   }
 
   /** Callback that is invoked when the panel animation completes. */
-  _onAnimationDone(event: AnimationEvent) {}
+  _onAnimationDone(event: AnimationEvent) { }
 
   /** Resets the panel animation to its initial state. */
   _resetAnimation() {

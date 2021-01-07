@@ -1,31 +1,30 @@
 import {
   Directive,
+  AfterViewChecked,
   ElementRef,
   Renderer2,
   Input,
   ComponentFactoryResolver,
   ViewContainerRef,
   OnChanges,
-  HostBinding
+  HostListener
 } from '@angular/core';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome'; import { fas } from '@fortawesome/free-solid-svg-icons'; import { sds } from '@gsa-sam/sam-styles/src/icons/';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 @Directive({
   selector: 'a[href]'
 })
 export class ExternalLinkDirective implements OnChanges {
   private vcRef: ViewContainerRef;
-
-  @HostBinding('attr.href')
   @Input() href: string;
-
-  @Input() public hideIcon = false;
+  @Input() public hideIcon: boolean = false;
 
   private get isExternalLink(): boolean {
     return (
       this.href
         .replace(/^https?:\/\//, '')
         .replace(/^www\./, '')
-        .split('/')[0] !== location.hostname
+        .split('/')[0] != location.hostname
     );
   }
 
@@ -33,8 +32,17 @@ export class ExternalLinkDirective implements OnChanges {
     private el: ElementRef,
     private renderer: Renderer2,
     private cfr: ComponentFactoryResolver,
-    private vc: ViewContainerRef
-  ) {}
+    private vc: ViewContainerRef,
+    library: FaIconLibrary
+  ) {
+    library.addIconPacks(fas, sds);
+  }
+
+  @HostListener('click', ['$event'])
+  click(event: Event) {
+    window.location.href = this.href;
+  }
+
 
   public ngOnChanges() {
     if (!this.isExternalLink) {
@@ -42,7 +50,6 @@ export class ExternalLinkDirective implements OnChanges {
     }
     if (!this.hideIcon) {
       this.createIcon();
-      this.renderer.setAttribute(this.el.nativeElement, "target", "_blank");
     }
   }
 
@@ -51,7 +58,7 @@ export class ExternalLinkDirective implements OnChanges {
     this.vc.constructor.name === 'ViewContainerRef_';
     const factory = this.cfr.resolveComponentFactory(FaIconComponent);
     const component = this.vc.createComponent(factory);
-    component.instance.iconProp = ['fas', 'external-link-alt'];
+    component.instance.icon = ['fas', 'external-link-alt'];
     const spanElement = document.createElement('span');
     spanElement.classList.add('margin-left-2px');
     const supElement = document.createElement('sup');

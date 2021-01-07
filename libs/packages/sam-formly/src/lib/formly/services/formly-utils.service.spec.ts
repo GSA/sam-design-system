@@ -3,25 +3,26 @@ import { SdsFormlyTypes } from '../models/formly-types';
 import { FormlyUtilsService } from './formly-utils.service';
 
 describe('Formly Utility Service', () => {
-  
-
   it('Should properly toggle on readonly mode for field configs', () => {
     const formlyFields = getDefaultFormlyFields();
     FormlyUtilsService.setReadonlyMode(true, formlyFields);
-    formlyFields.forEach(field => {
+    formlyFields.forEach((field) => {
       expect(field.templateOptions.readonlyMode).toBeTruthy();
-    })
+    });
   });
 
   it('Should propeerly parse formly field config into readonly essential data', () => {
     const formlyFields = getDefaultFormlyFields();
     const demoModel = {
-      'key1': 'test',
-      'key2': 'select2',
-      'key3': {id: 1, name: 'Jane'}
+      key1: 'test',
+      key2: 'select2',
+      key3: { id: 1, name: 'Jane' },
     };
 
-    const parsedData = FormlyUtilsService.formlyConfigToReadonlyData(formlyFields, demoModel);
+    const parsedData = FormlyUtilsService.formlyConfigToReadonlyData(
+      formlyFields,
+      demoModel
+    );
     expect(parsedData[0].label).toEqual('Input Type');
     expect(parsedData[0].value).toEqual('test');
 
@@ -30,10 +31,9 @@ describe('Formly Utility Service', () => {
     expect(parsedData[1].readonlyOptions.providedOptions).toBeDefined();
 
     expect(parsedData[2].label).toEqual('Autocomplete Type');
-    expect(parsedData[2].value).toEqual({id: 1, name: 'Jane'});
+    expect(parsedData[2].value).toEqual({ id: 1, name: 'Jane' });
     expect(parsedData[2].readonlyOptions.autocompleteOptions).toBeDefined();
-
-  })
+  });
 
   function getDefaultFormlyFields() {
     const formlyFieldConfigs: FormlyFieldConfig[] = [
@@ -41,8 +41,8 @@ describe('Formly Utility Service', () => {
         key: 'key1',
         type: SdsFormlyTypes.INPUT,
         templateOptions: {
-          label: 'Input Type'
-        }
+          label: 'Input Type',
+        },
       },
       {
         key: 'key2',
@@ -50,10 +50,10 @@ describe('Formly Utility Service', () => {
         templateOptions: {
           label: 'Select Type',
           options: [
-            {label: 'Select 1', value: 'select1'},
-            {label: 'Select 2', value: 'select2'},
-            {label: 'Select 3', value: 'select3'},
-          ]
+            { label: 'Select 1', value: 'select1' },
+            { label: 'Select 2', value: 'select2' },
+            { label: 'Select 3', value: 'select3' },
+          ],
         },
       },
       {
@@ -62,10 +62,10 @@ describe('Formly Utility Service', () => {
         templateOptions: {
           label: 'Autocomplete Type',
           configuration: {
-            primaryTextField: 'name'
-          }
-        }
-      }
+            primaryTextField: 'name',
+          },
+        },
+      },
     ];
 
     return formlyFieldConfigs;

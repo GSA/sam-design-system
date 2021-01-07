@@ -26,9 +26,9 @@ export class FormlyDialog {
     }
   ];
 
-  constructor(public dialog: SdsDialogService) {}
+  constructor(public dialog: SdsDialogService) { }
   openDialog() {
-    const data: SdsFormlyDialogData = {
+    const data: any = {
       fields: this.fields,
       model: this.model,
       submit: 'Submit',

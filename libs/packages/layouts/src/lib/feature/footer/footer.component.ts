@@ -9,6 +9,8 @@ import { NavigationHelper } from '@gsa-sam/components';
   styleUrls: ['./footer.component.scss']
 })
 export class SdsFooterComponent {
+  public innerWidth: any;
+  public expandedIndex: number;
 
   /**
    * Navigation helper
@@ -42,5 +44,4 @@ export class SdsFooterComponent {
   onFeedbackSubmitClicked(feedback: string) {
     this.feedbackSubmit.emit(feedback);
   }
-
 }

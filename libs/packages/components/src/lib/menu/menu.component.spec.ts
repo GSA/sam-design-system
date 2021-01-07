@@ -571,9 +571,9 @@ describe('SdsMenu', () => {
   `
 })
 class SimpleMenuComponent {
-  @ViewChild(SdsMenuTriggerForDirective) trigger: SdsMenuTriggerForDirective;
-  @ViewChild('triggerEl') triggerEl: ElementRef<HTMLElement>;
-  @ViewChild(SdsMenuComponent) menu: SdsMenuComponent;
+  @ViewChild(SdsMenuTriggerForDirective, { static: false }) trigger: SdsMenuTriggerForDirective;
+  @ViewChild('triggerEl', { static: false }) triggerEl: ElementRef<HTMLElement>;
+  @ViewChild(SdsMenuComponent, { static: false }) menu: SdsMenuComponent;
   @ViewChildren(SdsMenuItemComponent) items: QueryList<SdsMenuItemComponent>;
   extraItems: string[] = [];
   closeCallback = jasmine.createSpy('menu closed callback');
@@ -584,7 +584,7 @@ class SimpleMenuComponent {
   selector: 'sds-fake-icon',
   template: '<ng-content></ng-content>'
 })
-class FakeIconComponent {}
+class FakeIconComponent { }
 
 @Component({
   template: `
@@ -595,8 +595,8 @@ class FakeIconComponent {}
   `
 })
 class PositionedMenuComponent {
-  @ViewChild(SdsMenuTriggerForDirective) trigger: SdsMenuTriggerForDirective;
-  @ViewChild('triggerEl') triggerEl: ElementRef<HTMLElement>;
+  @ViewChild(SdsMenuTriggerForDirective, { static: false }) trigger: SdsMenuTriggerForDirective;
+  @ViewChild('triggerEl', { static: false }) triggerEl: ElementRef<HTMLElement>;
   xPosition: MenuPositionX = 'before';
   yPosition: MenuPositionY = 'above';
 }

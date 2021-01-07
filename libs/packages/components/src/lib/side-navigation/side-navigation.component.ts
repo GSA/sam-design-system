@@ -1,19 +1,6 @@
-import {
-  Component,
-  Input,
-  Output,
-  EventEmitter,
-  ViewChild,
-  TemplateRef
-} from '@angular/core';
-import {
-  SideNavigationModel,
-  NavigationLink
-} from './model/side-navigation-model';
-import {
-  INavigationLink,
-  NavigationMode
-} from '../common-navigation/common-navigation-model';
+import { Component, Input, Output, EventEmitter, ViewChild, TemplateRef } from '@angular/core';
+import { SideNavigationModel, NavigationLink } from './model/side-navigation-model';
+import { INavigationLink, NavigationMode } from '../common-navigation/common-navigation-model';
 import { NavigationHelper } from '../common-navigation/navigation-helper';
 
 @Component({
@@ -22,35 +9,35 @@ import { NavigationHelper } from '../common-navigation/navigation-helper';
   styleUrls: ['./side-navigation.component.scss']
 })
 export class SdsSideNavigationComponent {
+
   /**
    * Reference to the the Template used for internal links
    */
-  @ViewChild('sideNavRouteLinkTemplate')
+  @ViewChild('sideNavRouteLinkTemplate', { static: false })
   private sideNavRouteLinkTemplate: TemplateRef<any>;
 
   /**
    * Reference to the the Template used for side menu items that are a label
    */
-  @ViewChild('sideNavLabelLinkTemplate')
+  @ViewChild('sideNavLabelLinkTemplate', { static: false })
   private sideNavLabelLinkTemplate: TemplateRef<any>;
 
   /**
-   * Reference to the the Template used for external href
+   * Reference to the the Template used for external href 
    */
-  @ViewChild('sideNavHREFLinkTemplate')
+  @ViewChild('sideNavHREFLinkTemplate', { static: false })
   private sideNavHREFLinkTemplate: TemplateRef<any>;
 
   /**
    * Reference to the the Template used for event response
    */
-  @ViewChild('sideNavEVENTLinkTemplate')
+  @ViewChild('sideNavEVENTLinkTemplate', { static: false })
   private sideNavEVENTLinkTemplate: TemplateRef<any>;
 
   /**
    * Takes the navigation item and returns the template to be used
    * @param item navigation item
    */
-
   getItemTemplate(item: NavigationLink): TemplateRef<any> {
     let template = null;
     switch (item.mode) {
@@ -79,15 +66,14 @@ export class SdsSideNavigationComponent {
   navigationHelper = new NavigationHelper();
 
   /**
-   * Model used for the different display portions of the side navigation
+   * Model used for the different display portions of the side navigation 
    */
   @Input() model: SideNavigationModel;
 
   /**
    * Selects new item and parents and deselects previous
-   * @param id
+   * @param id 
    */
-
   select(id: string) {
     this.deselect();
     for (let i = 0; i < this.model.navigationLinks.length; i++) {
@@ -98,9 +84,9 @@ export class SdsSideNavigationComponent {
 
   /**
    * Selects item if matches passed in id and will select parent
-   * @param id
-   * @param item
-   * @param parent
+   * @param id 
+   * @param item 
+   * @param parent 
    */
   private selectItem(id: string, item: NavigationLink, parent: NavigationLink) {
     if (item.id === id) {
@@ -122,6 +108,7 @@ export class SdsSideNavigationComponent {
       }
     }
   }
+
 
   /**
    * Deselects all the items in the side navigation model
@@ -155,9 +142,10 @@ export class SdsSideNavigationComponent {
    */
   @Output()
   linkEvent = new EventEmitter<INavigationLink>();
+
   /**
    * Link clicked and emits the link data into an event
-   * @param link
+   * @param link 
    */
   linkClickEvent(link: INavigationLink) {
     this.linkEvent.emit(link);
@@ -166,7 +154,7 @@ export class SdsSideNavigationComponent {
 
   /**
    * creates url from provided route and query params
-   * @param item
+   * @param item 
    */
   urlBuilder(item: NavigationLink) {
     let url = item.route;
@@ -185,14 +173,12 @@ export class SdsSideNavigationComponent {
 
   /**
    * creates query string
-   * @param item
+   * @param item 
    */
   private queryStringBuilder(item: NavigationLink) {
     const ret = [];
     for (let d in item.queryParams) {
-      ret.push(
-        encodeURIComponent(d) + '=' + encodeURIComponent(item.queryParams[d])
-      );
+      ret.push(encodeURIComponent(d) + '=' + encodeURIComponent(item.queryParams[d]));
     }
     return ret.join('&');
   }

@@ -8,7 +8,7 @@ import {
   TemplateRef,
   ViewChild
 } from '@angular/core';
-import { MatButtonToggleChange } from '@angular/material';
+import { MatButtonToggleChange } from '@angular/material/button-toggle';
 
 @Component({
   selector: 'sds-button-group-option',
@@ -30,7 +30,7 @@ export class SdsButtonGroupOptionComponent {
   selector: 'sds-button-group',
   templateUrl: './button-group.component.html',
   styleUrls: ['./button-group.component.scss'],
-  host: {'class':'sds-button-group--segmented'}
+  host: { class: 'sds-button-group--segmented' }
 })
 export class SdsButtonGroupComponent {
   @ContentChildren(SdsButtonGroupOptionComponent) buttonOptions!: QueryList<

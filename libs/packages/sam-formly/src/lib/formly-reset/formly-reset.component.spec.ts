@@ -34,7 +34,7 @@ describe('SDS Formly Reset', () => {
         FormlyModule.forRoot({})
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -127,7 +127,7 @@ describe('SDS Formly Reset', () => {
 });
 
 @Component({
-  template:`
+  template: `
   <form [formGroup]="form">
     <formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>
     <sds-formly-reset [options]="options"></sds-formly-reset>
@@ -135,7 +135,7 @@ describe('SDS Formly Reset', () => {
 })
 
 class TestComponent {
-  @ViewChild(FormlyForm) formlyForm: FormlyForm;
+  @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;
   form = form;
   options = options;
   fields = fields || [

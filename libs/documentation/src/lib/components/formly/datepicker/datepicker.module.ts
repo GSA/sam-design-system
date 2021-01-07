@@ -12,6 +12,8 @@ import { FormlyDatepickerDateRange } from './demos/daterange/datepicker-daterang
 import { FormlyDatepickerDateRangeModule } from './demos/daterange/datepicker-daterange.module';
 import { FormlyDatepickerValidation } from './demos/validation/datepicker-validation.component';
 import { FormlyDatepickerValidationModule } from './demos/validation/datepicker-validation.module';
+import { FormlyDatepickerDateRangeV2 } from './demos/daterangev2/datepicker-daterangev2.component';
+import { FormlyDatepickerDateRangeV2Module } from './demos/daterangev2/datepicker-daterangev2.module';
 
 declare var require: any;
 export const closing = require('!!raw-loader!./closing.md');
@@ -30,6 +32,13 @@ const DEMOS = {
     markup: require('!!raw-loader!./demos/daterange/datepicker-daterange.component.html'),
     path: 'libs/documentation/src/lib/components/formly/datepicker/demos/daterange'
   },
+  daterangev2: {
+    title: 'Date Range picker for Angular 10+',
+    type: FormlyDatepickerDateRangeV2,
+    code: require('!!raw-loader!./demos/daterangev2/datepicker-daterangev2.component'),
+    markup: require('!!raw-loader!./demos/daterangev2/datepicker-daterangev2.component.html'),
+    path: 'libs/documentation/src/lib/components/formly/datepicker/demos/daterangev2'
+  },
   validation: {
     title: 'Date picker with validation',
     type: FormlyDatepickerValidation,
@@ -46,7 +55,7 @@ export const ROUTES = [
     data: {
       title: 'Datepicker',
       readme: {
-        closing
+        // closing
       },
       items: [
         {
@@ -73,6 +82,7 @@ export const ROUTES = [
     DocumentationComponentsSharedModule,
     FormlyDatepickerBasicModule,
     FormlyDatepickerDateRangeModule,
+    FormlyDatepickerDateRangeV2Module,
     FormlyDatepickerValidationModule
   ]
 })

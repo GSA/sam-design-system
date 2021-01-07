@@ -27,6 +27,7 @@ export const FIELD_TYPE_COMPONENTS = [
   FormlyAccordianFormFieldComponent,
   FormlyFieldAutoCompleteComponent,
   FormlyFieldDatePickerComponent,
+  FormlyFieldDateRangePickerComponent,
   FormlyFormFieldFilterWrapperComponent,
   FormlyFieldButtonComponent,
   FormlyCustomWrapperComponent,
@@ -36,9 +37,13 @@ export const FIELD_TYPE_COMPONENTS = [
   FormlyFieldTextComponent,
   FormlyGroupWrapperComponent,
   FormlyFieldSearchComponent,
-  FormlyReadonlyWrapperComponent,
+  FormlyReadonlyWrapperComponent
 ];
-import { maxDateValidator, minDateValidator } from './formly.validators';
+import {
+  dateRangeValidator,
+  maxDateValidator,
+  minDateValidator
+} from './formly.validators';
 import { sdsWrappers, sdsGroupWrapper } from './sds-formly-options';
 import { FormlyLabelWrapperComponent } from './wrappers/label.wrapper';
 import { FormlyDescriptionWrapperComponent } from './wrappers/description.wrapper';
@@ -46,6 +51,7 @@ import { FormlyValidationWrapperComponent } from './wrappers/validation.wrapper'
 import { FormlyGroupWrapperComponent } from './wrappers/group.wrapper';
 import { FormlyFieldSearchComponent } from './types/search';
 import { FormlyFieldFileInfoComponent } from './types/fileinfo';
+import { FormlyFieldDateRangePickerComponent } from './types/daterangepicker';
 import { SdsFormlyTypes } from './models/formly-types';
 import { FormlyReadonlyWrapperComponent } from './wrappers/readonly.wrapper';
 
@@ -95,7 +101,7 @@ export const FORMLY_WRAPPERS: any = [
   {
     name: 'readonly',
     component: FormlyReadonlyWrapperComponent,
-    componentName: 'FormlyReadonlyWrapperComponent',
+    componentName: 'FormlyReadonlyWrapperComponent'
   }
 ];
 
@@ -108,7 +114,7 @@ export const FORMLY_CONFIG: ConfigOption = {
     {
       name: SdsFormlyTypes.READONLY,
       wrappers: sdsGroupWrapper,
-      component: FormlyReadonlyWrapperComponent,
+      component: FormlyReadonlyWrapperComponent
     },
     {
       name: SdsFormlyTypes.BUTTON,
@@ -170,7 +176,7 @@ export const FORMLY_CONFIG: ConfigOption = {
       }
     },
     {
-      name : SdsFormlyTypes . DATERANGEPICKER ,
+      name: SdsFormlyTypes.DATERANGEPICKER,
       extends: SdsFormlyTypes.FORMLYGROUP,
       wrappers: sdsWrappers,
       defaultOptions: {
@@ -201,6 +207,30 @@ export const FORMLY_CONFIG: ConfigOption = {
       }
     },
     {
+      name: 'daterangepickerv2',
+      component: FormlyFieldDateRangePickerComponent,
+      wrappers: sdsWrappers,
+      defaultOptions: {
+        validators: {
+          validation: [dateRangeValidator]
+        },
+        fieldGroup: [
+          {
+            key: 'fromDate',
+            templateOptions: {
+              placeholder: 'Start Date'
+            }
+          },
+          {
+            key: 'toDate',
+            templateOptions: {
+              placeholder: 'End Date'
+            }
+          }
+        ]
+      }
+    },
+    {
       name: SdsFormlyTypes.SEARCH,
       component: FormlyFieldSearchComponent,
       wrappers: sdsWrappers
@@ -215,7 +245,7 @@ export const FORMLY_CONFIG: ConfigOption = {
     { name: 'accordionwrapper', component: FormlyAccordianFormFieldComponent },
     { name: 'filterwrapper', component: FormlyFormFieldFilterWrapperComponent },
     { name: 'customwrapper', component: FormlyCustomWrapperComponent },
-    { name: 'readonly', component: FormlyReadonlyWrapperComponent },
+    { name: 'readonly', component: FormlyReadonlyWrapperComponent }
   ]
 };
 

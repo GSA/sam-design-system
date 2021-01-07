@@ -19,4 +19,4 @@ import { SdsFeedbackModule } from '../sds-feedback/sds-feedback.module';
   declarations: [SdsFooterComponent],
   exports: [SdsFooterComponent]
 })
-export class SdsFooterModule { }
+export class SdsFooterModule {}

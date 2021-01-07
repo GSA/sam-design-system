@@ -9,6 +9,7 @@ import {
   ChangeDetectorRef,
   ChangeDetectionStrategy
 } from '@angular/core';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome'; import { fas } from '@fortawesome/free-solid-svg-icons'; import { sds } from '@gsa-sam/sam-styles/src/icons/';
 import {
   NG_VALUE_ACCESSOR,
   ControlValueAccessor,
@@ -69,8 +70,8 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
   @Input()
   public service: SDSAutocompleteServiceInterface;
 
-  @ViewChild('autocompleteSearch') autocompleteSearch: SDSAutocompleteSearchComponent;
-  constructor(private cd: ChangeDetectorRef) { }
+  @ViewChild('autocompleteSearch', { static: true }) autocompleteSearch: SDSAutocompleteSearchComponent;
+  constructor(private cd: ChangeDetectorRef, library: FaIconLibrary) { library.addIconPacks(fas, sds); }
 
   /**
    * Stored Event for ControlValueAccessor
@@ -91,11 +92,11 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
       this.model.items = [...value.items];
       this.cd.markForCheck();
     }
-    else if(value && value.length && this.model.items !== value) {
+    else if (value && value.length && this.model.items !== value) {
       this.model.items = value;
       this.cd.markForCheck();
     } else {
-      if(!this.model || !(this.model instanceof SDSSelectedItemModel)) {
+      if (!this.model || !(this.model instanceof SDSSelectedItemModel)) {
         this.model = new SDSSelectedItemModel();
       }
       this.model.items = value && value.items ? value.items : [];

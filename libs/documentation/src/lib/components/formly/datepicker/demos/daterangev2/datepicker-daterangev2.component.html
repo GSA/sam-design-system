@@ -1,0 +1,14 @@
+<p>
+  Example: To set 5th october 2019 as a min date and 15th December 2020 as max date.
+  <code>minDate: new Date(2019, 9, 5),maxDate: new Date(2020, 11, 15),</code> are
+  used to set the min, max values for date validation.
+</p>
+
+<form [formGroup]="form">
+  <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
+</form>
+
+<div class="sam-example-pagination">
+  <h4>Model:</h4>
+  <pre>{{ model ? (model | json) : '' }}</pre>
+</div>

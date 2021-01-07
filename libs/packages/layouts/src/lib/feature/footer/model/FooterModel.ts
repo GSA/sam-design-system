@@ -5,19 +5,12 @@ export class FooterModel {
    * List of sections and their links
    */
   linkSections: FooterLinkSection[];
-
+  disclaimer?: string;
   /**
    * Footer text and logo
    */
 
   footerLogo?: FooterLogo;
-
-  /**
-   * Footer disclaimer
-   */
-
-  disclaimer?: string;
-
 }
 
 export class FooterLinkSection {
@@ -69,15 +62,9 @@ export interface FooterLogo {
   imageAltText: string;
 
   /**
-   * link for logo image
-   */
+     * link 
+     */
+  href: string;
 
-  href?: string;
-
-  /**
-   * agency name adjacent to logo
-   */
-
-  agencyName?: string;
-
+  agencyName: string;
 }

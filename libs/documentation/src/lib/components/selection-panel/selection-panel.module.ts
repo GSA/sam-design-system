@@ -1,14 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
-import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../shared';
+import {
+  DocumentationComponentsSharedModule,
+  DocumentationDemoList
+} from '../shared';
 import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationExamplesPage } from '../shared/examples-page/examples.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 import { BasicSelectionPanelComponent } from './demos/basic-selection-panel/basic-selection-panel.component';
 import { BasicSelectionPanelModule } from './demos/basic-selection-panel/basic-selection-panel.module';
-
 
 declare var require: any;
 const DEMOS = {
@@ -17,8 +19,9 @@ const DEMOS = {
     type: BasicSelectionPanelComponent,
     code: require('!!raw-loader!./demos/basic-selection-panel/basic-selection-panel.component'),
     markup: require('!!raw-loader!./demos/basic-selection-panel/basic-selection-panel.component.html'),
-    path: 'libs/documentation/src/lib/components/selection-panel/demos/basic-selection-panel'
-  },
+    path:
+      'libs/documentation/src/lib/components/selection-panel/demos/basic-selection-panel'
+  }
 };
 
 export const ROUTES = [
@@ -48,7 +51,7 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    BasicSelectionPanelModule,
+    BasicSelectionPanelModule
   ]
 })
 export class SelectionPanelModule {

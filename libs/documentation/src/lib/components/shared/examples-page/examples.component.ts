@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {DocumentationDemoList} from '../demo-list';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { DocumentationDemoList } from '../demo-list';
 
 @Component({
   template: `
@@ -18,7 +18,7 @@ import {DocumentationDemoList} from '../demo-list';
     >
       <ng-template [ngComponentOutlet]="demo.type"></ng-template>
     </documentation-widget-demo>
-  `
+  `,
 })
 export class DocumentationExamplesPage {
   component: string;
@@ -30,7 +30,7 @@ export class DocumentationExamplesPage {
     if (componentName) {
       const demos = demoList.getDemos(componentName);
       if (demos) {
-        this.demos = Object.keys(demos).map(id => {
+        this.demos = Object.keys(demos).map((id) => {
           return { id, ...demos[id] };
         });
       }

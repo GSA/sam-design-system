@@ -5,16 +5,8 @@
 <!-- Alert Icons -->
 <div *ngIf="_config.alert" [ngSwitch]="_config.alert" class="sds-dialog-icon">
   <fa-icon *ngSwitchCase="'error'" [icon]="['fas', 'ban']" size="3x"></fa-icon>
-  <fa-icon
-    *ngSwitchCase="'warning'"
-    [icon]="['fas', 'exclamation-triangle']"
-    size="3x"
-  ></fa-icon>
-  <fa-icon
-    *ngSwitchCase="'info'"
-    [icon]="['fas', 'info-circle']"
-    size="3x"
-  ></fa-icon>
+  <fa-icon *ngSwitchCase="'warning'" [icon]="['fas', 'exclamation-triangle']" size="3x"></fa-icon>
+  <fa-icon *ngSwitchCase="'info'" [icon]="['fas', 'info-circle']" size="3x"></fa-icon>
   <div *ngSwitchDefault>
     Alert <em>{{ _config.alert }}</em> is not valid
   </div>

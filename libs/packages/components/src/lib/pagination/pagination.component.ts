@@ -28,7 +28,7 @@ export class PaginationComponent implements OnInit {
   /**
    * Input field for the current page
    */
-  @ViewChild('currentPage') currentPageField: ElementRef;
+  @ViewChild('currentPage', { static: false }) currentPageField: ElementRef;
 
   /**
    * Output of the page model object
@@ -54,9 +54,9 @@ export class PaginationComponent implements OnInit {
   @Input()
   displayMode: PaginationDisplayMode = 'default';
 
-    /**
-   * totalItems for display on results view;
-   */
+  /**
+ * totalItems for display on results view;
+ */
   @Input()
   totalItems?: number = 0;
 

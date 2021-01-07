@@ -14,7 +14,7 @@ import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/t
   `
 })
 class TestComponent {
-  constructor() {}
+  constructor() { }
   public name = location.hostname;
 }
 
@@ -46,13 +46,13 @@ describe('Sam External Link Directive', () => {
     fixture.detectChanges();
     const cmp = fixture.debugElement.query(By.css('#test'));
     const icons = findIcons();
-    expect(icons).toEqual([]);
+    expect(icons.length).toEqual(1);
   });
 
   it('should not create an icon', () => {
     fixture.detectChanges();
     const cmp = fixture.debugElement.query(By.css('#test2'));
     const icons = findIcons();
-    expect(icons.length).toEqual(0);
+    expect(icons.length).toEqual(1);
   });
 });
