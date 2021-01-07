@@ -26,7 +26,7 @@ import { SDSClickOutsideDirective } from './click-outside.directive';
 })
 class TestComponent {
   @Output() action: EventEmitter<any> = new EventEmitter<any>();
-  @ViewChild('var') var;
+  @ViewChild('var', { static: false }) var;
   clickOutsideHandler() {
     this.action.emit(true);
   }

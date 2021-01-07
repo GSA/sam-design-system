@@ -19,21 +19,26 @@ describe('SdsFooterComponent', () => {
       declarations: [SdsFooterComponent],
       imports: [
         NoopAnimationsModule,
-        RouterTestingModule, 
-        SdsCollapseModule, 
+        RouterTestingModule,
+        SdsCollapseModule,
         FontAwesomeModule,
         ReactiveFormsModule,
-        SdsAccordionModule]
-    })
-      .compileComponents();
+        SdsAccordionModule
+      ]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SdsFooterComponent);
     component = fixture.componentInstance;
     component.model = {
-      linkSections: [{ text: 'test link', links: [{mode: NavigationMode.EVENT, text: 'test', route: '/'}] }],
-      footerLogo: {} as FooterLogo,
+      linkSections: [
+        {
+          text: 'test link',
+          links: [{ mode: NavigationMode.EVENT, text: 'test', route: '/' }]
+        }
+      ],
+      footerLogo: {} as FooterLogo
     };
     fixture.detectChanges();
   });
@@ -53,9 +58,11 @@ describe('SdsFooterComponent', () => {
     component.feedbackModel.setValue('Test Feedback');
     const feedbackSubmitSpy = spyOn(component.feedbackSubmit, 'emit');
 
-    const feedbackSubmitButton = fixture.debugElement.query(By.css('#feedbackSubmit'));
+    const feedbackSubmitButton = fixture.debugElement.query(
+      By.css('#feedbackSubmit')
+    );
     feedbackSubmitButton.triggerEventHandler('click', null);
     fixture.detectChanges();
     expect(feedbackSubmitSpy).toHaveBeenCalledWith('Test Feedback');
-  })
+  });
 });

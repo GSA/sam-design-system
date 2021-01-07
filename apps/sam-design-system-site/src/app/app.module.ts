@@ -6,12 +6,19 @@ import { ROUTES } from './app.routes';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
 import { sds } from '@gsa-sam/sam-styles/src/icons/';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { MarkdownModule } from 'ngx-markdown';
-
+import {
+  FontAwesomeModule,
+  FaIconLibrary,
+} from '@fortawesome/angular-fontawesome';
+import { Toast, ToastrModule } from 'ngx-toastr';
+import {
+  SdsToastComponent,
+  SdsToastModule,
+  SdsToastSettings,
+} from '@gsa-sam/components';
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import xml from 'highlight.js/lib/languages/xml';
 import scss from 'highlight.js/lib/languages/scss';
@@ -21,7 +28,7 @@ export function hljsLanguages() {
   return [
     { name: 'typescript', func: typescript },
     { name: 'scss', func: scss },
-    { name: 'xml', func: xml }
+    { name: 'xml', func: xml },
   ];
 }
 
@@ -31,22 +38,26 @@ export function hljsLanguages() {
     BrowserModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
+    SdsToastModule,
+    ToastrModule.forRoot(SdsToastSettings),
     RouterModule.forRoot(ROUTES, { scrollPositionRestoration: 'enabled' }),
     FormsModule,
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
   ],
   providers: [
     { provide: LocationStrategy, useClass: PathLocationStrategy },
     {
-    provide: HIGHLIGHT_OPTIONS,
-    useValue: {
-      languages: hljsLanguages,
-    }
-  }],
-  bootstrap: [AppComponent]
+      provide: HIGHLIGHT_OPTIONS,
+      useValue: {
+        languages: hljsLanguages,
+      },
+    },
+  ],
+  entryComponents: [SdsToastComponent],
+  bootstrap: [AppComponent],
 })
 export class AppModule {
-  constructor() {
-    library.add(fas, sds);
-  }
+    constructor(library: FaIconLibrary) {
+      library.addIconPacks(fas, sds);
+    }
 }

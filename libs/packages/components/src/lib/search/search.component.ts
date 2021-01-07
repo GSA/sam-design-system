@@ -6,7 +6,9 @@ import {
   AfterViewInit,
   forwardRef,
   ChangeDetectionStrategy,
-  ChangeDetectorRef, Output, EventEmitter
+  ChangeDetectorRef,
+  Output,
+  EventEmitter
 } from '@angular/core';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { ViewportRuler } from '@angular/cdk/overlay';
@@ -35,12 +37,17 @@ export class SearchSettings {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
-  @ViewChild('inputEl', { read: ElementRef }) inputEl: ElementRef;
-  @ViewChild('selectEl', { read: ElementRef }) selectEl: ElementRef;
-  @ViewChild('buttonEl', { read: ElementRef }) buttonEl: ElementRef;
+  @ViewChild('inputEl', { read: ElementRef, static: false })
+  inputEl: ElementRef;
+  @ViewChild('selectEl', { read: ElementRef, static: false })
+  selectEl: ElementRef;
+  @ViewChild('buttonEl', { read: ElementRef, static: false })
+  buttonEl: ElementRef;
 
   @Input() searchSettings: SearchSettings = new SearchSettings();
-  @Output() submit: EventEmitter<{searchText: string}> = new EventEmitter(null);
+  @Output() submit: EventEmitter<{ searchText: string }> = new EventEmitter(
+    null
+  );
 
   model: any = {};
   inputState = {
@@ -88,7 +95,9 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
   }
 
   writeValueToModel() {
-    this.model.searchText = this.inputEl ? this.inputEl.nativeElement.value : '';
+    this.model.searchText = this.inputEl
+      ? this.inputEl.nativeElement.value
+      : '';
     if (this.selectEl && this.selectEl.nativeElement.value) {
       this.model.searchCategory = this.selectEl.nativeElement.value;
     }
@@ -118,12 +127,19 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
   }
 
   setInputVisibleStyles() {
-
     const inputWidth = this.calculateInputWidth();
-    this.inputEl.nativeElement.style.setProperty("display", "block", "important");
+    this.inputEl.nativeElement.style.setProperty(
+      'display',
+      'block',
+      'important'
+    );
     this.inputEl.nativeElement.style.position = 'absolute';
     this.inputEl.nativeElement.style.left = `-${inputWidth}px`;
-    this.inputEl.nativeElement.style.setProperty("width", `${inputWidth}px`, "important");
+    this.inputEl.nativeElement.style.setProperty(
+      'width',
+      `${inputWidth}px`,
+      'important'
+    );
     this.inputState.visible = true;
   }
 
@@ -147,7 +163,9 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
     const inputElement = this.inputEl.nativeElement;
     const rightPosition = buttonElement.getBoundingClientRect().left;
     const leftPosition = this.searchSettings.parentSelector
-      ? inputElement.closest(this.searchSettings.parentSelector).getBoundingClientRect().left
+      ? inputElement
+          .closest(this.searchSettings.parentSelector)
+          .getBoundingClientRect().left
       : 0;
     return Math.floor(rightPosition - leftPosition - leftPadding);
   }

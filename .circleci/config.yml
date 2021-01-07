@@ -10,16 +10,8 @@ jobs:
       - image: circleci/node:10.14.0-browsers
     steps:
       - checkout
-      - restore_cache:
-          keys:
-          - v2-dependencies-{{ checksum "package-lock.json" }}
-          - v2-dependencies-
       - run: npm install
-      - save_cache:
-          paths:
-            - node_modules
-          key: v2-dependencies-{{ checksum "package-lock.json" }}
       - run: npm run test -- --no-watch --no-progress --code-coverage --browsers=ChromeHeadlessCI
       - store_artifacts:
           path: coverage
-          destination : code-coverage
+          destination: code-coverage

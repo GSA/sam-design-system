@@ -19,9 +19,6 @@ import { HeaderAlertsModule } from './demos/header-alerts/header-alerts.module';
 
 export declare var require: any;
 
-export const opening = require('!!raw-loader!./opening.md');
-export const closing = require('!!raw-loader!./closing.md');
-
 const DEMOS = {
   basic: {
     title: 'SAM Header',
@@ -55,8 +52,6 @@ export const ROUTES = [
     component: ComponentWrapperComponent,
     data: {
       readme: {
-        opening,
-        closing
       },
       items: [
         {

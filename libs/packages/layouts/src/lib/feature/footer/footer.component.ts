@@ -1,4 +1,11 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnInit,
+  HostListener
+} from '@angular/core';
 import { FooterModel } from './model/FooterModel';
 import { INavigationLink } from '@gsa-sam/components';
 import { NavigationHelper } from '@gsa-sam/components';
@@ -10,6 +17,8 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./footer.component.scss']
 })
 export class SdsFooterComponent {
+  public innerWidth: any;
+  public expandedIndex: number;
 
   /**
    * Navigation helper
@@ -32,7 +41,6 @@ export class SdsFooterComponent {
   @Output()
   feedbackSubmit = new EventEmitter<string>();
 
-
   /**
    * Link clicked and emits the link data into an event
    * @param link
@@ -45,5 +53,4 @@ export class SdsFooterComponent {
   onFeedbackSubmitClicked() {
     this.feedbackSubmit.emit(this.feedbackModel.value);
   }
-
 }

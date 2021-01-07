@@ -1,41 +1,18 @@
 <footer class="usa-footer" role="contentinfo">
   <div class="sds-feedback">
-    <button
-      type="button"
-      class="sds-feedback__button simple-toggle"
-      [attr.aria-expanded]="!isCollapsedContent"
-      aria-controls="collapseID"
-      (click)="isCollapsedContent = !isCollapsedContent"
-    >
+    <button type="button" class="sds-feedback__button simple-toggle" [attr.aria-expanded]="!isCollapsedContent"
+      aria-controls="collapseID" (click)="isCollapsedContent = !isCollapsedContent">
       <fa-layers [fixedWidth]="true" size="2x">
-        <fa-icon
-          [icon]="['fas', 'circle']"
-          [sdsCollapse]="isCollapsedContent"
-          class="text-base-light margin-auto"
-        ></fa-icon>
-        <fa-icon
-          [icon]="['sds', 'arrow-up']"
-          [sdsCollapse]="isCollapsedContent"
-          transform="shrink-6"
-        ></fa-icon>
-        <fa-icon
-          [icon]="['fas', 'circle']"
-          [sdsCollapse]="!isCollapsedContent"
-          class="text-primary margin-auto"
-        ></fa-icon>
-        <fa-icon
-          [icon]="['sds', 'arrow-down']"
-          [sdsCollapse]="!isCollapsedContent"
-          transform="shrink-6"
-        ></fa-icon>
+        <fa-icon [icon]="['fas', 'circle']" [sdsCollapse]="isCollapsedContent" class="text-base-light margin-auto">
+        </fa-icon>
+        <fa-icon [icon]="['sds', 'arrow-up']" [sdsCollapse]="isCollapsedContent" transform="shrink-6"></fa-icon>
+        <fa-icon [icon]="['fas', 'circle']" [sdsCollapse]="!isCollapsedContent" class="text-primary margin-auto">
+        </fa-icon>
+        <fa-icon [icon]="['sds', 'arrow-down']" [sdsCollapse]="!isCollapsedContent" transform="shrink-6"></fa-icon>
       </fa-layers>
       <span class="sds-feedback__title">Feedback</span>
     </button>
-    <div
-      id="collapseID"
-      [sdsCollapse]="isCollapsedContent"
-      class="sds-feedback__response"
-    >
+    <div id="collapseID" [sdsCollapse]="isCollapsedContent" class="sds-feedback__response">
       <div class="tablet:width-tablet-lg padding-4 margin-auto">
         <span class="sds-feedback__response-title">One Question </span>
         <span class="sds-feedback__response-title-thin"> Survey</span>
@@ -52,7 +29,8 @@
   </div>
 
   <div class="usa-footer__primary-section">
-    <div class="grid-container margin-x-0 mobile-lg:margin-x-auto padding-x-0 mobile-lg:padding-x-auto display-none tablet:display-block">
+    <div
+      class="grid-container margin-x-0 mobile-lg:margin-x-auto padding-x-0 mobile-lg:padding-x-auto display-none tablet:display-block">
       <div class="grid-row grid-gap-0 mobile-lg:grid-gap">
         <div class="tablet:grid-col-12">
           <nav class="usa-footer__nav margin-x-0 mobile-lg:margin-x-2 padding-x-0 mobile-lg:padding-x-2">
@@ -62,16 +40,13 @@
                   <h4 class="usa-footer__primary-link">{{ section.text }}</h4>
                   <ul class="usa-list usa-list--unstyled">
                     <li class="usa-footer__secondary-link" *ngFor="let link of section.links">
-                      <ng-container
-                        [ngTemplateOutlet]="
+                      <ng-container [ngTemplateOutlet]="
                           navigationHelper.isLinkInternal(link)
                             ? footerRouteLinkTemplate
                             : navigationHelper.isLinkExternal(link)
                             ? footerHREFLinkTemplate
                             : footerEVENTLinkTemplate
-                        "
-                        [ngTemplateOutletContext]="{ $implicit: link }"
-                      ></ng-container>
+                        " [ngTemplateOutletContext]="{ $implicit: link }"></ng-container>
                     </li>
                   </ul>
                 </section>
@@ -88,16 +63,13 @@
           <sds-accordion-content>
             <ul class="usa-list usa-list--unstyled padding-y-1">
               <li class="usa-footer__secondary-link" *ngFor="let link of section.links">
-                <ng-container
-                  [ngTemplateOutlet]="
+                <ng-container [ngTemplateOutlet]="
                     navigationHelper.isLinkInternal(link)
                       ? footerRouteLinkTemplate
                       : navigationHelper.isLinkExternal(link)
                       ? footerHREFLinkTemplate
                       : footerEVENTLinkTemplate
-                  "
-                  [ngTemplateOutletContext]="{ $implicit: link }"
-                ></ng-container>
+                  " [ngTemplateOutletContext]="{ $implicit: link }"></ng-container>
               </li>
             </ul>
           </sds-accordion-content>
@@ -111,19 +83,16 @@
         <div class="grid-col-12 mobile-lg:grid-col-6 tablet:grid-col-4 margin-bottom-4">
           <div class="sds-footer__logo">
             <a class="sds-footer__logo-link" [attr.href]="model.footerLogo.href">
-              <img
-                *ngIf="model.footerLogo"
-                class="usa-footer__logo-img"
-                [attr.src]="model.footerLogo.imageSourcePath"
-                [attr.alt]="model.footerLogo.imageAltText"
-              />
+              <img *ngIf="model.footerLogo" class="usa-footer__logo-img" [attr.src]="model.footerLogo.imageSourcePath"
+                [attr.alt]="model.footerLogo.imageAltText" />
             </a>
             <h3 class="sds-footer__logo-heading">
               {{model.footerLogo.agencyName}}
             </h3>
           </div>
         </div>
-        <div class="sds-footer__note grid-col-12 mobile-lg:grid-col-6 tablet:grid-col-8" [innerHTML]="model.disclaimer"></div>
+        <div class="sds-footer__note grid-col-12 mobile-lg:grid-col-6 tablet:grid-col-8" [innerHTML]="model.disclaimer">
+        </div>
       </div>
     </div>
   </div>

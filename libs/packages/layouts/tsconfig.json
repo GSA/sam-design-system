@@ -3,5 +3,14 @@
   "compilerOptions": {
     "types": ["jasmine"]
   },
-  "include": ["**/*.ts", "src/lib/feature/search-list-layout/model/search-list-layout.model.ts"]
+  "include": [],
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
 }

@@ -1,0 +1,26 @@
+<h3 class="margin-bottom-1">Description</h3>
+<p>A toast notification is a brief message that shows up on the screen and disappears on its own after a short period. It’s purpose is to inform the user of something that is not critical and does not require specific attention. Toast notifications should be used for purely informational purposes in instances where user interaction is not required.</p>
+
+<form class="usa-form">
+<h3 class="margin-bottom-1">Configurations</h3>
+    <fieldset class="usa-fieldset">
+        <div class="usa-checkbox">
+            <input [(ngModel)]="options.disableTimeOut" class="usa-checkbox__input" id="disable-timeout" type="checkbox" name="disable-timeout">
+            <label class="usa-checkbox__label" for="disable-timeout">Timeout Disabled</label>
+        </div>
+        <div class="usa-checkbox">
+            <input  [(ngModel)]="options.preventDuplicates" class="usa-checkbox__input" id="prevent-duplicates" type="checkbox" name="prevent-duplicates">
+            <label class="usa-checkbox__label" for="prevent-duplicates">Prevent Duplicates</label>
+        </div>
+        <div class="usa-form-group margin-bottom-3">
+            <label class="usa-label" for="set-timeout">Set Timeout (In Milliseconds)</label>
+            <input class="usa-input" id="set-timeout" name="set-timeout" [(ngModel)]="options.timeOut" [disabled]="options.disableTimeOut === true ? 'true' : 'false' "  type="number">
+        </div>
+
+    </fieldset>
+</form>
+<button class="usa-button" (click)="showSuccess()">Trigger Success Toast</button>
+<button class="usa-button" (click)="showInfo()">Trigger Info Toast</button>
+<button class="usa-button" (click)="showWarning()">Trigger Warning Toast</button>
+<button class="usa-button" (click)="showError()">Trigger Error Toast</button>
+<button class="usa-button" (click)="clear()">Clear All Toast</button>

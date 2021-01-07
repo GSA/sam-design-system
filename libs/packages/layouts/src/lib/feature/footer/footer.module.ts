@@ -10,15 +10,15 @@ import { SdsAccordionModule } from '@gsa-sam/sam-material-extensions';
 
 @NgModule({
   imports: [
-    CommonModule, 
-    ReactiveFormsModule, 
-    RouterModule, 
-    SdsCollapseModule, 
-    FontAwesomeModule, 
-    SdsDirectivesModule, 
+    CommonModule,
+    ReactiveFormsModule,
+    RouterModule,
+    SdsCollapseModule,
+    FontAwesomeModule,
+    SdsDirectivesModule,
     SdsAccordionModule
   ],
   declarations: [SdsFooterComponent],
   exports: [SdsFooterComponent]
 })
-export class SdsFooterModule { }
+export class SdsFooterModule {}

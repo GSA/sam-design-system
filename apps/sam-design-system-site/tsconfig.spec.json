@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc/apps/sam-design-system-site",
+    "outDir": "../../dist/out-tsc",
     "types": ["jasmine", "node"]
   },
   "files": ["src/test.ts", "src/polyfills.ts"],

@@ -7,7 +7,6 @@
   </ul>
 </nav>
 
-
 <ng-template #sideNavLinkTemplate let-link>
   <ng-container [ngTemplateOutlet]="getItemTemplate(link)" [ngTemplateOutletContext]="{$implicit:link}">
   </ng-container>
@@ -19,12 +18,9 @@
   </ul>
 </ng-template>
 
-
-
-
 <ng-template #sideNavRouteLinkTemplate let-link>
-  <a [attr.class]="link.selected ? ' usa-current' : ''" [routerLink]="[link.route]" [queryParams]="link.queryParams"
-    (click)="linkClickEvent(link)"><span>{{link.text}}</span></a>
+  <a [attr.class]="link.selected ? ' usa-current' : ''" [routerLink]="[link.route]" (click)="linkClickEvent(link)"
+    [queryParams]="link.queryParams"><span>{{link.text}}</span></a>
 </ng-template>
 
 <ng-template #sideNavHREFLinkTemplate let-link>

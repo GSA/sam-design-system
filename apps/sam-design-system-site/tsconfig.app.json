@@ -1,16 +1,10 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc/apps/sam-design-system-site",
+    "outDir": "../../dist/out-tsc",
     "types": ["node"],
     "typeRoots": ["node_modules/@types"]
   },
-  "exclude": [
-    "test.ts",
-    "**/*.spec.ts"
-  ],
-  "include": [
-    "**/*.ts",
-    "../../libs/documentation/src/index.ts"
-  ]
+  "files": ["src/main.ts", "src/polyfills.ts"],
+  "include": ["**/*.d.ts", "../../libs/documentation/src/index.ts"]
 }

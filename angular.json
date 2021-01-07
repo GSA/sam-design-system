@@ -10,7 +10,10 @@
       "prefix": "sds",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
+          "outputs": [
+            "dist/libs/components"
+          ],
           "options": {
             "tsConfig": "libs/packages/components/tsconfig.lib.json",
             "project": "libs/packages/components/ng-package.json"
@@ -35,7 +38,10 @@
               "libs/packages/components/tsconfig.lib.json",
               "libs/packages/components/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/packages/sam-material-extensions/**/*"
+            ]
           }
         }
       },
@@ -52,7 +58,10 @@
       "prefix": "sds",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
+          "outputs": [
+            "dist/libs/components"
+          ],
           "options": {
             "tsConfig": "libs/packages/sam-material-extensions/tsconfig.lib.json",
             "project": "libs/packages/sam-material-extensions/ng-package.json"
@@ -73,7 +82,10 @@
               "libs/packages/sam-material-extensions/tsconfig.lib.json",
               "libs/packages/sam-material-extensions/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/packages/components/**/*"
+            ]
           }
         }
       },
@@ -90,7 +102,10 @@
       "prefix": "sds",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
+          "outputs": [
+            "dist/libs/sam-formly"
+          ],
           "options": {
             "tsConfig": "libs/packages/sam-formly/tsconfig.lib.json",
             "project": "libs/packages/sam-formly/ng-package.json"
@@ -106,12 +121,18 @@
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
+          "outputs": [
+            "dist/libs/sam-formly"
+          ],
           "options": {
             "tsConfig": [
               "libs/packages/sam-formly/tsconfig.lib.json",
               "libs/packages/sam-formly/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/packages/sam-formly/**/*"
+            ]
           }
         }
       },
@@ -149,7 +170,9 @@
               "libs/packages/layouts/tsconfig.lib.json",
               "libs/packages/layouts/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       },
@@ -243,7 +266,9 @@
             "polyfills": "apps/sam-design-system-site/src/polyfills.ts",
             "tsConfig": "apps/sam-design-system-site/tsconfig.spec.json",
             "karmaConfig": "apps/sam-design-system-site/karma.conf.js",
-            "styles": ["apps/sam-design-system-site/src/styles.scss"],
+            "styles": [
+              "apps/sam-design-system-site/src/styles.scss"
+            ],
             "scripts": [],
             "assets": [
               "apps/sam-design-system-site/src/favicon.ico",
@@ -258,7 +283,10 @@
               "apps/sam-design-system-site/tsconfig.app.json",
               "apps/sam-design-system-site/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/sam-design-system-site/**/*"
+            ]
           }
         }
       }
@@ -284,7 +312,10 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "apps/sam-design-system-site-e2e/tsconfig.e2e.json",
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/sam-design-system-site-e2e/**/*"
+            ]
           }
         }
       }
@@ -296,7 +327,10 @@
       "prefix": "sds",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
+          "outputs": [
+            "dist/libs/experimental"
+          ],
           "options": {
             "tsConfig": "libs/packages/experimental/tsconfig.lib.json",
             "project": "libs/packages/experimental/ng-package.json"
@@ -317,7 +351,10 @@
               "libs/packages/experimental/tsconfig.lib.json",
               "libs/packages/experimental/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/packages/experimental/**/*"
+            ]
           }
         }
       },
@@ -348,7 +385,10 @@
               "libs/documentation/tsconfig.lib.json",
               "libs/documentation/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/documentation/**/*"
+            ]
           }
         }
       },
@@ -361,18 +401,24 @@
   },
   "cli": {
     "warnings": {
-      "typescriptMismatch": false,
       "versionMismatch": false
     },
-    "defaultCollection": "@nrwl/schematics",
+    "defaultCollection": "@nrwl/angular",
     "packageManager": "npm"
   },
   "schematics": {
     "@nrwl/schematics:application": {
-      "style": "scss"
+      "style": "scss",
+      "unitTestRunner": "karma",
+      "e2eTestRunner": "protractor"
     },
     "@nrwl/schematics:library": {
-      "style": "scss"
+      "style": "scss",
+      "unitTestRunner": "karma",
+      "framework": "angular"
+    },
+    "@nrwl/schematics:node-application": {
+      "framework": "express"
     }
   },
   "defaultProject": "sam-design-system-site"

@@ -3,14 +3,19 @@
   "compilerOptions": {
     "sourceMap": true,
     "declaration": false,
-    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es5",
     "module": "es2015",
-    "typeRoots": ["node_modules/@types"],
-    "lib": ["es2017", "dom"],
+    "moduleResolution": "node",
+    "typeRoots": [
+      "./node_modules/@types/"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "baseUrl": ".",
     "paths": {
       "@gsa-sam/components": [
@@ -32,8 +37,14 @@
       "@gsa-sam/experimental": [
         "libs/packages/experimental/src/index.ts"
       ],
-      "@gsa-sam/documentation": ["libs/documentation/src/index.ts"]
-    }
+      "@gsa-sam/documentation": [
+        "libs/documentation/src/index.ts"
+      ]
+    },
+    "rootDir": "."
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }

@@ -7,16 +7,16 @@ import {
   QueryList,
   ContentChildren,
   Output,
-  EventEmitter
+  EventEmitter,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
-import {MatAccordion} from '@angular/material/expansion';
+import { MatAccordion } from '@angular/material/expansion';
 
-
-@Directive({selector: 'sds-accordion-title'})
+@Directive({ selector: 'sds-accordion-title' })
 export class SdsAccordionTitleDirective {}
 
-@Directive({selector: 'sds-accordion-content'})
+@Directive({ selector: 'sds-accordion-content' })
 export class SdsAccordionContentDirective {}
 
 @Component({
@@ -25,14 +25,12 @@ export class SdsAccordionContentDirective {}
     <ng-template #itemTitleTemplate>
       <ng-content #title select="sds-accordion-title"></ng-content>
     </ng-template>
-
     <ng-template #itemContentTemplate>
       <ng-content #content select="sds-accordion-content"></ng-content>
     </ng-template>
   `
 })
 export class SdsAccordionItemComponent {
-
   @ViewChild('itemTitleTemplate') itemTitleTemplate: TemplateRef<any>;
   @ViewChild('itemContentTemplate') itemContentTemplate: TemplateRef<any>;
 
@@ -58,27 +56,28 @@ export class SdsAccordionItemComponent {
   /** Toggles the disabled state of the expansion panel. */
   toggleDisabled(): void {
     this.disabled = !this.disabled;
-    if(this.disabled) {
+    if (this.disabled) {
       this.expanded = false;
     }
   }
-
 }
 
 @Component({
   selector: 'sds-accordion-next',
   templateUrl: './accordion.component.html',
-  styleUrls: ['./accordion.component.scss']
+  styleUrls: ['./accordion.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SdsAccordionComponent {
-
   @ViewChild(MatAccordion) accordion: MatAccordion;
 
-  @ContentChildren(SdsAccordionItemComponent) accordionItems!: QueryList<SdsAccordionItemComponent>;
+  @ContentChildren(SdsAccordionItemComponent) accordionItems!: QueryList<
+    SdsAccordionItemComponent
+  >;
 
   @Input() multi = false;
 
-  @Output() multiChange:EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() multiChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   @Input() displayMode = 'flat';
 
@@ -98,5 +97,4 @@ export class SdsAccordionComponent {
     this.accordion.closeAll();
     this.multiChange.emit(this.multi);
   }
-
 }

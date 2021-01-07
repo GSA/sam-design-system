@@ -11,18 +11,20 @@ import {
   ViewEncapsulation,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import {DOCUMENT} from '@angular/common';
-import {AnimationEvent} from '@angular/animations';
-import {sdsDialogAnimations} from './dialog-animations';
+import { DOCUMENT } from '@angular/common';
+import { AnimationEvent } from '@angular/animations';
+import { sdsDialogAnimations } from './dialog-animations';
 import {
   BasePortalOutlet,
   ComponentPortal,
   CdkPortalOutlet,
   TemplatePortal
 } from '@angular/cdk/portal';
-import {FocusTrap, FocusTrapFactory} from '@angular/cdk/a11y';
-import {SdsDialogConfig} from './dialog-config';
-
+import { FocusTrap, FocusTrapFactory } from '@angular/cdk/a11y';
+import { SdsDialogConfig } from './dialog-config';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { sds } from '@gsa-sam/sam-styles/src/icons/';
 
 /**
  * Throws an exception for the case when a ComponentPortal is
@@ -49,9 +51,9 @@ export function throwSdsDialogContentAlreadyAttachedError() {
   host: {
     'class': 'sds-dialog__container',
     '[class.sds-dialog--alert]': '_config.alert',
-    '[class.sds-dialog--alert-error]':'_config.alert === "error"',
-    '[class.sds-dialog--alert-warning]':'_config.alert === "warning"',
-    '[class.sds-dialog--alert-info]':'_config.alert === "info"',
+    '[class.sds-dialog--alert-error]': '_config.alert === "error"',
+    '[class.sds-dialog--alert-warning]': '_config.alert === "warning"',
+    '[class.sds-dialog--alert-info]': '_config.alert === "info"',
     'tabindex': '-1',
     'aria-modal': 'true',
     '[attr.id]': '_id',
@@ -65,8 +67,9 @@ export function throwSdsDialogContentAlreadyAttachedError() {
   },
 })
 export class SdsDialogContainerComponent extends BasePortalOutlet {
+
   /** The portal outlet inside of this container into which the dialog content will be loaded. */
-  @ViewChild(CdkPortalOutlet) _portalOutlet: CdkPortalOutlet;
+  @ViewChild(CdkPortalOutlet, { static: true }) _portalOutlet: CdkPortalOutlet;
 
   /** The class that traps and manages focus within the dialog. */
   private _focusTrap: FocusTrap;
@@ -86,15 +89,16 @@ export class SdsDialogContainerComponent extends BasePortalOutlet {
   /** ID for the container DOM element. */
   _id: string;
 
-  constructor(
+  constructor(library: FaIconLibrary,
     private _elementRef: ElementRef,
     private _focusTrapFactory: FocusTrapFactory,
     private _changeDetectorRef: ChangeDetectorRef,
     @Optional() @Inject(DOCUMENT) private _document: any,
     /** The dialog configuration. */
     public _config: SdsDialogConfig) {
-
     super();
+    library.addIconPacks(fas, sds);
+    // super();
   }
 
   /**

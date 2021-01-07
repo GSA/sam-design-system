@@ -1,7 +1,7 @@
-import {AnimationEvent} from '@angular/animations';
+import { AnimationEvent } from '@angular/animations';
 import { CdkAccordionItem } from "@angular/cdk/accordion";
-import {UniqueSelectionDispatcher} from '@angular/cdk/collections';
-import {TemplatePortal} from '@angular/cdk/portal';
+import { UniqueSelectionDispatcher } from '@angular/cdk/collections';
+import { TemplatePortal } from '@angular/cdk/portal';
 import {
   AfterContentInit,
   ChangeDetectionStrategy,
@@ -21,13 +21,13 @@ import {
   ViewEncapsulation,
   ViewChild
 } from "@angular/core";
-import {DOCUMENT} from '@angular/common';
-import {ANIMATION_MODULE_TYPE} from '@angular/platform-browser/animations';
-import {Subject} from 'rxjs';
-import {filter, startWith, take, distinctUntilChanged} from 'rxjs/operators';
-import {sdsExpansionAnimations} from './accordion-animations';
-import {SdsAccordionItemContentDirective} from './accordion-item-content.directive';
-import {SDS_ACCORDION, SdsAccordionBase} from './accordion-base';
+import { DOCUMENT } from '@angular/common';
+import { ANIMATION_MODULE_TYPE } from '@angular/platform-browser/animations';
+import { Subject } from 'rxjs';
+import { filter, startWith, take, distinctUntilChanged } from 'rxjs/operators';
+import { sdsExpansionAnimations } from './accordion-animations';
+import { SdsAccordionItemContentDirective } from './accordion-item-content.directive';
+import { SDS_ACCORDION, SdsAccordionBase } from './accordion-base';
 
 /** Accordion Item's states. */
 export type SdsAccordionItemState = 'expanded' | 'collapsed';
@@ -70,7 +70,8 @@ export class SdsAccordionItemComponent extends CdkAccordionItem
   @ContentChild(SdsAccordionItemContentDirective) _lazyContent: SdsAccordionItemContentDirective;
 
   /** Element containing the accordion item's user-provided content. */
-  @ViewChild('body') _body: ElementRef<HTMLElement>;
+  // @ViewChild('body') _body: ElementRef<HTMLElement>;
+  @ViewChild('body', { static: false }) _body: ElementRef<HTMLElement>;
 
   /** Portal holding the user's content. */
   _portal: TemplatePortal;
@@ -82,11 +83,11 @@ export class SdsAccordionItemComponent extends CdkAccordionItem
   _bodyAnimationDone = new Subject<AnimationEvent>();
 
   constructor(@Optional() @SkipSelf() @Inject(SDS_ACCORDION) accordion: SdsAccordionBase,
-              _changeDetectorRef: ChangeDetectorRef,
-              _uniqueSelectionDispatcher: UniqueSelectionDispatcher,
-              private _viewContainerRef: ViewContainerRef,
-              @Inject(DOCUMENT) _document: any,
-              @Optional() @Inject(ANIMATION_MODULE_TYPE) public _animationMode: string) {
+    _changeDetectorRef: ChangeDetectorRef,
+    _uniqueSelectionDispatcher: UniqueSelectionDispatcher,
+    private _viewContainerRef: ViewContainerRef,
+    @Inject(DOCUMENT) _document: any,
+    @Optional() @Inject(ANIMATION_MODULE_TYPE) public _animationMode: string) {
     super(accordion, _changeDetectorRef, _uniqueSelectionDispatcher);
     this.accordion = accordion;
     this._document = _document;

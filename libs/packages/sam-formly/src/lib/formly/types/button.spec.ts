@@ -13,99 +13,99 @@ const createTestComponent = (html: string) =>
     createGenericTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;
 
 export function createGenericTestComponent<T>(html: string, type: { new(...args: any[]): T }): ComponentFixture<T> {
-        TestBed.overrideComponent(type, { set: { template: html } });
-        const fixture = TestBed.createComponent(type);
-        fixture.detectChanges();
-        return fixture as ComponentFixture<T>;
-    }
+    TestBed.overrideComponent(type, { set: { template: html } });
+    const fixture = TestBed.createComponent(type);
+    fixture.detectChanges();
+    return fixture as ComponentFixture<T>;
+}
 
-    let testComponentButtons;
+let testComponentButtons;
 
-    describe('Formly Field button Component', () => {
-        beforeEach(() => {
-            TestBed.configureTestingModule({
-                declarations: [TestComponent, FormlyFieldButtonComponent],
-                imports: [
-                    NoopAnimationsModule,
-                    ReactiveFormsModule,
-                    FormlySelectModule,
-                    FormlyModule.forRoot({
-                        types: [
-                            {
-                                name: 'button',
-                                component: FormlyFieldButtonComponent,
-                            },
-                        ],
-                    }),
-                ],
-            });
+describe('Formly Field button Component', () => {
+    beforeEach(() => {
+        TestBed.configureTestingModule({
+            declarations: [TestComponent, FormlyFieldButtonComponent],
+            imports: [
+                NoopAnimationsModule,
+                ReactiveFormsModule,
+                FormlySelectModule,
+                FormlyModule.forRoot({
+                    types: [
+                        {
+                            name: 'button',
+                            component: FormlyFieldButtonComponent,
+                        },
+                    ],
+                }),
+            ],
         });
+    });
 
-        describe('button', () => {
-            beforeEach(() => {
-                testComponentButtons = {
-                    form: new FormGroup({}),
-                    options: {},
-                    model: {},
-                };
-            });
+    describe('button', () => {
+        beforeEach(() => {
+            testComponentButtons = {
+                form: new FormGroup({}),
+                options: {},
+                model: {},
+            };
+        });
         it('should test click', () => {
             testComponentButtons.fields = [
                 {
-                  key: 'button-test',
-                  type: 'button',
-                  templateOptions: {
-                    text: 'Show Extension',
-                    btnType: 'info',
-                    onClick: $event => {
-                      this.model.showExtension = 'show';
+                    key: 'button-test',
+                    type: 'button',
+                    templateOptions: {
+                        text: 'Show Extension',
+                        btnType: 'info',
+                        onClick: $event => {
+                            testComponentButtons.model.showExtension = 'show';
+                        }
                     }
-                  }
                 }
-              ];
+            ];
             const fixture = createTestComponent(
                 '<formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>'),
                 trigger = fixture.nativeElement.querySelector('ng-star-inserted')
-                const buttonField: any = fixture.debugElement.query(By.css('.usa-button--unstyled'));
+            const buttonField: any = fixture.debugElement.query(By.css('.usa-button--unstyled'));
 
-                const spy = spyOn(buttonField.nativeElement, 'click');
-                buttonField.nativeElement.click();
-                fixture.detectChanges();
-                expect(spy).toHaveBeenCalled();
-            });
-            
+            const spy = spyOn(buttonField.nativeElement, 'click');
+            buttonField.nativeElement.click();
+            fixture.detectChanges();
+            expect(spy).toHaveBeenCalled();
+        });
+
 
         it('should test click worked', () => {
             testComponentButtons.fields = [
                 {
-                  key: 'button-test',
-                  type: 'button',
-                  templateOptions: {
-                    text: 'Show Extension',
-                    btnType: 'info',
-                    onClick: $event => {
-                      this.model.showExtension = 'show';
+                    key: 'button-test',
+                    type: 'button',
+                    templateOptions: {
+                        text: 'Show Extension',
+                        btnType: 'info',
+                        onClick: $event => {
+                            testComponentButtons.model.showExtension = 'show';
+                        }
                     }
-                  }
                 }
-              ];
+            ];
             const fixture = createTestComponent(
                 '<formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>'),
                 trigger = fixture.nativeElement.querySelector('ng-star-inserted')
-                const buttonField: any = fixture.debugElement.query(By.css('.usa-button--unstyled'));
+            const buttonField: any = fixture.debugElement.query(By.css('.usa-button--unstyled'));
 
-                const spy = spyOn(buttonField.nativeElement, 'click');
-                buttonField.nativeElement.click();
-                buttonField.nativeElement.dispatchEvent(new Event('onClick'));
-            });
-            
+            const spy = spyOn(buttonField.nativeElement, 'click');
+            buttonField.nativeElement.click();
+            buttonField.nativeElement.dispatchEvent(new Event('onClick'));
         });
+
+    });
 
 });
 
 @Component({ selector: 'formly-form-button', template: '', entryComponents: [] })
 class TestComponent {
-    @ViewChild(FormlyForm) formlyForm: FormlyForm;
+    @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;
 
     fields = testComponentButtons.fields;
     form: FormGroup = testComponentButtons.form;
