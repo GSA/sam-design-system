@@ -5,7 +5,7 @@ export class FooterModel {
    * List of sections and their links
    */
   linkSections: FooterLinkSection[];
-  disclaimer: string;
+  disclaimer?: string;
   /**
    * Footer text and logo
    */

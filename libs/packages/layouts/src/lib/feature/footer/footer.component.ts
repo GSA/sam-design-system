@@ -1,15 +1,7 @@
-import {
-  Component,
-  Input,
-  Output,
-  EventEmitter,
-  OnInit,
-  HostListener
-} from '@angular/core';
+import { Component, Input, Output, EventEmitter, TemplateRef } from '@angular/core';
 import { FooterModel } from './model/FooterModel';
 import { INavigationLink } from '@gsa-sam/components';
 import { NavigationHelper } from '@gsa-sam/components';
-import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'sds-footer',
@@ -29,9 +21,8 @@ export class SdsFooterComponent {
    * Model used for the different display portions of the footer
    */
   @Input() model: FooterModel;
-  @Input() isCollapsedContent = true;
-  @Input() feedbackModel: FormControl = new FormControl('');
-
+  @Input() feedbackTemplate: TemplateRef<any>;
+  
   /**
    * event for event based
    */
@@ -50,7 +41,7 @@ export class SdsFooterComponent {
     return false;
   }
 
-  onFeedbackSubmitClicked() {
-    this.feedbackSubmit.emit(this.feedbackModel.value);
+  onFeedbackSubmitClicked(feedback: string) {
+    this.feedbackSubmit.emit(feedback);
   }
 }
