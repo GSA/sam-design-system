@@ -48,7 +48,7 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
   /**
    * The data model that has the selected item
    */
-  public model: SDSSelectedItemModel;
+  public model: SDSSelectedItemModel = new SDSSelectedItemModel();
 
   public disabled: boolean;
 

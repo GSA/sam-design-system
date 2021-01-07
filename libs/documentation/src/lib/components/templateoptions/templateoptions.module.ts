@@ -19,6 +19,8 @@ import { TemplateOptionExpand } from './demos/expand/templateoption-expand.compo
 import { TemplateOptionsExpandModule } from './demos/expand/templateoption-expand.module';
 import { TemplateOptionAnnounceLabel } from './demos/announceLabel/templateoption-announceLabel.component';
 import { TemplateOptionsAnnounceLabelModule } from './demos/announceLabel/templateoption-announceLabel.module';
+import { UpdateOnInheritanceModule } from './demos/update-on-inheritance/update-on-inheritance.module';
+import { UpdateOnInheritanceComponent } from './demos/update-on-inheritance/update-on-inheritance.component';
 
 declare var require: any;
 const DEMOS = {
@@ -28,6 +30,13 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/basic/templateoptions-basic.component'),
     markup: require('!!raw-loader!./demos/basic/templateoptions-basic.component.html'),
     path: 'libs/documentation/src/lib/components/templateoptions/demos/basic'
+  },
+  updateOnInhereitance: {
+    title: 'UpdateOn Inheritance',
+    type: UpdateOnInheritanceComponent,
+    code: require('!!raw-loader!./demos/update-on-inheritance/update-on-inheritance.component'),
+    markup: require('!!raw-loader!./demos/update-on-inheritance/update-on-inheritance.component.html'),
+    path: 'libs/documentation/src/lib/components/templateoptions/demos/update-on-inheritance'
   },
   tags: {
     title: 'Template Options for tags',
@@ -92,7 +101,8 @@ export const ROUTES = [
     TemplateOptionsTagsModule,
     TemplateOptionsHideOptionalModule,
     TemplateOptionsExpandModule,
-    TemplateOptionsAnnounceLabelModule
+    TemplateOptionsAnnounceLabelModule,
+    UpdateOnInheritanceModule
   ]
 })
 export class TemplateOptionsModule {
