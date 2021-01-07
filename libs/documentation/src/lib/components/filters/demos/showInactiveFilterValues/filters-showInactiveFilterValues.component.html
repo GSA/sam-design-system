@@ -16,14 +16,7 @@
     event emits, based on its value
   </p>
   <div class="sds-card__content">
-    <sds-filters
-      [form]="form"
-      [fields]="sdsSelect"
-      [model]="model"
-      [isHistoryEnable]="false"
-      [advancedFilters]="true"
-      [isInactiveValueFieldShown]="true"
-      (showInactiveFiltersChange)="showInactiveFiltersUpdate($event)"
-    ></sds-filters>
+    <sds-filters [form]="form" [fields]="sdsSelect" [model]="model" [isHistoryEnable]="false" [advancedFilters]="true"
+      [isInactiveValueFieldShown]="true" (showInactiveFiltersChange)="showInactiveFiltersUpdate($event)"></sds-filters>
   </div>
 </div>

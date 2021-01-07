@@ -6,7 +6,7 @@ import {
   Optional,
   OnInit,
   ChangeDetectorRef,
-  HostListener
+  HostListener,
 } from '@angular/core';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -18,7 +18,7 @@ import * as qs from 'qs';
 import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
 @Component({
   selector: 'sds-filters',
-  templateUrl: './sds-filters.component.html'
+  templateUrl: './sds-filters.component.html',
 })
 export class SdsFiltersComponent implements OnInit {
   /**
@@ -56,12 +56,12 @@ export class SdsFiltersComponent implements OnInit {
   /**
    * Show option to include inactive filter values
    */
-  @Input()isInactiveValueFieldShown: boolean = false;
+  @Input() isInactiveValueFieldShown: boolean = false;
 
   /**
    * Timer id for the timer awaiting the service call for more typeing
    */
-  @Input() public isHistoryEnable: boolean = true;
+  @Input() public isHistoryEnable: boolean = false;
 
   /**
    * To get clean model without null and empty
@@ -125,7 +125,7 @@ export class SdsFiltersComponent implements OnInit {
         setTimeout(() => {
           this.form.patchValue({
             ...this.model,
-            ...paramModel.sfm
+            ...paramModel.sfm,
           });
         });
         this.cdr.detectChanges();
@@ -140,15 +140,18 @@ export class SdsFiltersComponent implements OnInit {
   checkForHide() {
     let fieldWithValue = this.convertToParam(this.model);
     let keys = [];
-    Object.keys(fieldWithValue).map(key => {
+    Object.keys(fieldWithValue).map((key) => {
       keys.push(key.replace(/\[/g, '.').replace(/\]/g, ''));
     });
-    keys.forEach(key => {
+    keys.forEach((key) => {
       const [lastKey] = key.split('.').slice(-1);
-      this.fields.forEach(field => {
+      this.fields.forEach((field) => {
         if (key.includes(field.key)) {
           if (field.fieldGroup) {
-            const fieldExists = this.findFieldInFieldGroup(field.fieldGroup, lastKey);
+            const fieldExists = this.findFieldInFieldGroup(
+              field.fieldGroup,
+              lastKey
+            );
             if (fieldExists) {
               field.hide = false;
             }
@@ -169,14 +172,15 @@ export class SdsFiltersComponent implements OnInit {
    */
   private findFieldInFieldGroup(fields: FormlyFieldConfig[], key: any) {
     let existsInFieldGroup = false;
-    fields.forEach(field => {
+    fields.forEach((field) => {
       if (field.fieldGroup) {
-        existsInFieldGroup = existsInFieldGroup || this.findFieldInFieldGroup(field.fieldGroup, key);
+        existsInFieldGroup =
+          existsInFieldGroup ||
+          this.findFieldInFieldGroup(field.fieldGroup, key);
         if (existsInFieldGroup) {
           field.hide = false;
         }
-      }
-      else if (field.key === key) {
+      } else if (field.key === key) {
         existsInFieldGroup = true;
         field.hide = false;
       }
@@ -196,7 +200,7 @@ export class SdsFiltersComponent implements OnInit {
       const params = this.convertToParam(queryObj);
       this.router.navigate(['.'], {
         relativeTo: this.route,
-        queryParams: params
+        queryParams: params,
         // TODO: Need this for future use case
         // queryParamsHandling: 'merge'
       });
@@ -218,7 +222,7 @@ export class SdsFiltersComponent implements OnInit {
     const encodedValues = qs.stringify(filters, {
       skipNulls: true,
       encode: false,
-      filter: this.shortFormatDate
+      filter: this.shortFormatDate,
     });
     if (encodedValues) {
       return this.getUrlParams(encodedValues);
@@ -228,7 +232,7 @@ export class SdsFiltersComponent implements OnInit {
   }
   getUrlParams(queryString) {
     const target = {};
-    queryString.split('&').forEach(pair => {
+    queryString.split('&').forEach((pair) => {
       if (pair !== '') {
         const splitpair = pair.split('=');
         target[splitpair[0]] =
@@ -239,10 +243,10 @@ export class SdsFiltersComponent implements OnInit {
   }
 
   shortFormatDate(prefix, value) {
-    const fixDigit = val => {
+    const fixDigit = (val) => {
       return val.toString().length === 1 ? '0' + val : val;
     };
-    const getFormattedDate = date =>
+    const getFormattedDate = (date) =>
       `${fixDigit(
         date.getMonth() + 1
       )}/${date.getDate()}/${date.getFullYear()}`;
@@ -263,7 +267,7 @@ export class SdsFiltersComponent implements OnInit {
     const encodedValues = qs.stringify(filters, {
       skipNulls: true,
       encode: false,
-      filter: this.longFormatDate
+      filter: this.longFormatDate,
     });
     obj = qs.parse(encodedValues);
     return obj;
@@ -278,7 +282,7 @@ export class SdsFiltersComponent implements OnInit {
     return value;
   }
 
-  handleInactiveFilterChange(inactiveFilterValue: boolean){
+  handleInactiveFilterChange(inactiveFilterValue: boolean) {
     this.showInactiveFiltersChange.emit(inactiveFilterValue);
   }
 }
