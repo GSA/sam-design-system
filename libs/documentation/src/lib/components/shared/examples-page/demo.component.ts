@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { FaIconLibrary } from '@fortawesome/angular-fontawesome'; import { sds } from '@gsa-sam/sam-styles/src/icons/';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { sds } from '@gsa-sam/sam-styles/src/icons/';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 @Component({
   selector: 'documentation-widget-demo',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './demo.component.html'
+  templateUrl: './demo.component.html',
 })
 export class DocumentationWidgetDemoComponent {
   @Input() demoTitle: string;
@@ -17,7 +18,9 @@ export class DocumentationWidgetDemoComponent {
   @Input() files: { name: string; source: string }[];
   @Input() showCode = false;
 
-  constructor(library: FaIconLibrary) { library.addIconPacks(fab, sds); }
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fab, sds);
+  }
 
   getGithubLink() {
     const baseRepoURL = 'https://github.com/GSA/sam-design-system/tree/master/';
@@ -34,9 +37,8 @@ export class DocumentationWidgetDemoComponent {
         html: 'HTML',
         scss: 'Style (SCSS)',
         css: 'Style (CSS)',
-        ts: 'Typescript'
+        ts: 'Typescript',
       }[ext] || 'Code'
     );
   }
-
 }

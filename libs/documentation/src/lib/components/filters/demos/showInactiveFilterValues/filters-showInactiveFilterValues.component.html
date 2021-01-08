@@ -1,0 +1,22 @@
+<div class="sds-card--shadowed sds-card--bordered margin-bottom-2">
+  <p>
+    Input <code>isInactiveValueFieldShown</code> has been added to enable
+    a "Show Inactive Filter Values" checkbox being added to More Filters dialog. This input
+    defaults to false. When enabled, an additional output <code>showInactiveFiltersChange</code>
+    will become available for developers to connect to. This output will emit
+    a boolean for the current state of the "Show Inactive Filter Values" checkbox.
+  </p>
+  <p>
+    The output emits when the user clicks "Update" and the value of "Show Inactive
+    Filter Values" checkbox is different than when it opened.
+  </p>
+  <p>
+    In this example an option will be added/removed from the country select and
+    a message will be logged when the <code>showInactiveFiltersChange</code>
+    event emits, based on its value
+  </p>
+  <div class="sds-card__content">
+    <sds-filters [form]="form" [fields]="sdsSelect" [model]="model" [isHistoryEnable]="false" [advancedFilters]="true"
+      [isInactiveValueFieldShown]="true" (showInactiveFiltersChange)="showInactiveFiltersUpdate($event)"></sds-filters>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 
 @Component({
   selector: `sds-readonly-fileinfo`,
@@ -7,25 +7,20 @@ import { Component, Input } from "@angular/core";
     <span *ngIf="!value; else definedValues" class="text-bold">&mdash;</span>
 
     <ng-template #definedValues>
-      <span *ngIf="!fileInfoOptions || !fileInfoOptions.length; else selectedOption" class="text-bold">
-        {{isObject(value) ? (value | json) : value}}
-      </span>
-    </ng-template>
-
-    <ng-template #selectedOption>
       <span *ngFor="let option of fileInfoOptions | formlySelectOptions | async">
         <span *ngIf="option.value === value" class="text-bold">{{option.label}} - {{option.value}}</span>
       </span>
     </ng-template>
   `
 })
-export class ReadonlyFileinfoComponent {
+export class ReadonlyFileinfoComponent implements OnInit {
   @Input() label: string;
   @Input() value: any;
   @Input() fileInfoOptions: any[];
 
-  isObject(value) {
-    return typeof(value) === 'object';
+  ngOnInit() {
+    if (!this.fileInfoOptions || !this.fileInfoOptions.length) {
+      throw new Error(`No option list provided for readonly mode of fileinfo type for ${this.label}`);
+    }
   }
-
 }

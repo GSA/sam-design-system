@@ -8,6 +8,8 @@ export * from './feature/subheader/subheader.module';
 export * from './feature/actions-menu/actions-menu.module';
 export * from './feature/header/header.module';
 export * from './feature/footer/footer.module';
+export * from './feature/sds-feedback/sds-feedback.module';
+export * from './feature/sds-feedback/sds-feedback.component';
 export * from './feature/footer/model/FooterModel';
 export * from './feature/header/model/HeaderModel';
 export * from './feature/header/header.component';

@@ -24,7 +24,10 @@ export class LayoutResponsiveComponent {
   options;
   filtersExpanded: boolean = true;
   public filterChange$ = new BehaviorSubject<object>([]);
-  public navigationModel = {title: 'Select Domain', selectionPanelModel: navigationConfig};
+  public navigationModel = {
+    title: 'Select Domain',
+    selectionPanelModel: navigationConfig,
+  };
   public filterPanelConfig;
 
   listConfig: SearchListConfiguration = {
@@ -32,8 +35,8 @@ export class LayoutResponsiveComponent {
     pageSize: 25,
     sortList: [
       { text: 'Entity Name', value: 'legalBusinessName' },
-      { text: 'Status', value: 'registrationStatus' }
-    ]
+      { text: 'Status', value: 'registrationStatus' },
+    ],
   };
 
   /* Sort config change demo */
@@ -42,8 +45,8 @@ export class LayoutResponsiveComponent {
     pageSize: 25,
     sortList: [
       { text: 'Entity Name', value: 'legalBusinessName' },
-      { text: 'Status', value: 'registrationStatus' }
-    ]
+      { text: 'Status', value: 'registrationStatus' },
+    ],
   };
 
   updatedListConfig: SearchListConfiguration = {
@@ -52,8 +55,8 @@ export class LayoutResponsiveComponent {
     sortList: [
       { text: 'Entity Name', value: 'legalBusinessName' },
       { text: 'Cage Code', value: 'cageCode' },
-      { text: 'Status', value: 'registrationStatus' }
-    ]
+      { text: 'Status', value: 'registrationStatus' },
+    ],
   };
 
   constructor(
@@ -73,19 +76,18 @@ export class LayoutResponsiveComponent {
       form: this.form,
       options: this.options,
       isHistoryEnabled: true,
-    }
+    };
   }
   ngAfterViewInit() {
-    this.filterChange$.subscribe(res => {
+    this.filterChange$.subscribe((res) => {
       this.resultList.updateFilter(res);
     });
   }
 
   updateConfig(update: boolean) {
-    if(update) {
+    if (update) {
       this.listConfig = { ...this.updatedListConfig };
-    }
-    else {
+    } else {
       this.listConfig = { ...this.defaultListConfig };
     }
   }

@@ -7,7 +7,7 @@ import { DocumentationSourcePage } from '../shared/source-page/source.component'
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 import {
   DocumentationComponentsSharedModule,
-  DocumentationDemoList
+  DocumentationDemoList,
 } from './../shared/index';
 import { ComponentWrapperComponent } from './../../shared/component-wrapper/component-wrapper.component';
 import { FooterBasicModule } from './demos/basic/footer-basic.module';
@@ -23,8 +23,8 @@ const DEMOS = {
     type: FooterBasic,
     code: require('!!raw-loader!./demos/basic/footer-basic.component'),
     markup: require('!!raw-loader!./demos/basic/footer-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/footer/demos/basic'
-  }
+    path: 'libs/documentation/src/lib/components/footer/demos/basic',
+  },
 };
 
 export const ROUTES = [
@@ -41,25 +41,25 @@ export const ROUTES = [
         {
           pkg: 'layouts',
           type: 'components',
-          name: 'SdsFooterComponent'
-        }
-      ]
+          name: 'SdsFooterComponent',
+        },
+      ],
     },
     children: [
       { path: 'examples', component: DocumentationExamplesPage },
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
-      { path: 'template', component: DocumentationTemplatePage }
-    ]
-  }
+      { path: 'template', component: DocumentationTemplatePage },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    FooterBasicModule
-  ]
+    FooterBasicModule,
+  ],
 })
 export class FooterModule {
   constructor(demoList: DocumentationDemoList) {

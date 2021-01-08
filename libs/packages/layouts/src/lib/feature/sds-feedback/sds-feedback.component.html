@@ -1,0 +1,35 @@
+<div class="sds-feedback">
+  <button
+    type="button"
+    class="sds-feedback__button simple-toggle"
+    [attr.aria-expanded]="!isCollapsedContent"
+    aria-controls="collapseID"
+    (click)="isCollapsedContent = !isCollapsedContent">
+    
+    <sds-icon [icon]="['bs', 'arrow-up-circle-fill']" [sdsCollapse]="isCollapsedContent"
+      [size]="'2x'" class="text-primary margin-auto"></sds-icon>
+
+    <sds-icon [icon]="['bs', 'arrow-down-circle-fill']" [size]="'2x'"
+      [sdsCollapse]="!isCollapsedContent" class="text-primary margin-auto"></sds-icon>
+
+    <span class="sds-feedback__title">Feedback</span>
+  </button>
+  <div
+    id="collapseID"
+    [sdsCollapse]="isCollapsedContent"
+    class="sds-feedback__response"
+  >
+    <div class="tablet:width-tablet-lg padding-4 margin-auto">
+      <span class="sds-feedback__response-title">One Question </span>
+      <span class="sds-feedback__response-title-thin"> Survey</span>
+      <p class="sds-feedback__response-text">
+        What changes or improvements would you suggest?
+      </p>
+      <textarea [formControl]="feedbackModel" class="sds-feedback__input" id="feedbackInput" aria-label="Feedback input form" type="text" rows="8"></textarea>
+      <p class="text-left">
+        <button class="usa-button usa-button--secondary" id="feedbackSubmit" 
+          aria-label="Feedback submit" (click)="onFeedbackSubmitClicked()">Submit</button>
+      </p>
+    </div>
+  </div>
+</div>
