@@ -8,6 +8,13 @@ $rotation-values: 90 180 270;
   }
 }
 
+i-bs ::ng-deep{
+  svg {
+    width: 1em;
+    height: 1em;
+  }
+}
+
 i-bs.size-xs{
   font-size: .75em;
 }
