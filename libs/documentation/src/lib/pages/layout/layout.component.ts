@@ -73,10 +73,10 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
     }
   }
 
-  updateSearchResultsModel() {
+  onSearchModelUpdate() {
     const model: ResultsModel = {
       page: 2,
-      sort: '',
+      sort: 'registrationStatus',
       filterModel: {
         keyword: 'te',
         location: {

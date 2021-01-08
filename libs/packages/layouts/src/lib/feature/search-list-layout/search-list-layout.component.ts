@@ -279,8 +279,8 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   public updateSearchResultsModel(historyModel: ResultsModel) {
     this.filterData = historyModel.filterModel;
     this.page.default = historyModel.page || historyModel.sort ? true : false;
-    this.page.pageNumber = historyModel.page;
-    this.sortField = historyModel.sort;
+    this.page.pageNumber = historyModel.page ? historyModel.page : 1;
+    this.sortField = historyModel.sort ? historyModel.sort : this.sortField;
     if (this.filterUpdateModelService) {
       if (historyModel && historyModel.filterModel) {
         this.filterUpdateModelService.updateModel(historyModel.filterModel);
