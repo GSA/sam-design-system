@@ -1,56 +1,58 @@
 <div class="sds-alert--header usa-grid" id="sds-alert--header">
-
-  <div class="sds-mobile-alert grid-row" id="sds-mobile-alert">
-    <div class="grid-col-auto padding-top-1">
-      <sds-icon [icon]="['sds', 'alert-warning']" [class]="'sds-alert--header__icon-mobile'" [size]="'3x'"></sds-icon>
-    </div>
-
-    <div class="grid-col-fill">
-      <div class="grid-row tablet:display-none">
-        <div class="grid-col-fill">
-          <div class="sds-alert--header__label">
-            You have {{alerts.length}} new alerts
+  <div class="sds-alert--container">
+    <div class="sds-mobile-alert grid-row" id="sds-mobile-alert">
+      <div class="grid-col-auto padding-top-1">
+        <sds-icon [icon]="['sds', 'alert-warning']" [class]="'sds-alert--header__icon-mobile'" [size]="'3x'"></sds-icon>
+      </div>
+  
+      <div class="grid-col-fill">
+        <div class="grid-row tablet:display-none">
+          <div class="grid-col-fill">
+            <div class="sds-alert--header__label">
+              You have {{alerts.length}} new alerts
+            </div>
+            <div>
+              <a href="javascript:void(0)" (click)="onToggleAlertsClicked(alertsContent)"
+                class="sds-alert--header__link simple-toggle" aria-controls="collapseTarget">
+                Show / Hide Alerts
+              </a>
+            </div>
           </div>
-          <div>
-            <a href="javascript:void(0)" (click)="onToggleAlertsClicked(alertsContent)"
-              class="sds-alert--header__link simple-toggle" aria-controls="collapseTarget">
-              Show / Hide Alerts
-            </a>
+          <div class="grid-col-auto">
+            <button (click)="onToggleAlertsClicked(alertsContent)"
+              class="sds-button--circle usa-button--secondary simple-toggle" aria-controls="collapseTarget">
+              <sds-icon [icon]="['bs', 'caret-down-fill']" [size]="'1x'"></sds-icon>
+            </button>
           </div>
         </div>
-        <div class="grid-col-auto">
-          <button (click)="onToggleAlertsClicked(alertsContent)"
-            class="sds-button--circle usa-button--secondary simple-toggle" aria-controls="collapseTarget">
-            <sds-icon [icon]="['bs', 'caret-down-fill']" [size]="'1x'"></sds-icon>
-          </button>
+        <div #alertsContent class="grid-row width-full display-none tablet:display-inline-block" id="collapseTarget">
+          <div class="grid-col-fill">
+            <div class="grid-row">
+              <ng-container 
+                [ngTemplateOutlet]="alerts && alerts.length == 1 ? singleAlert : multipleAlerts"
+                [ngTemplateOutletContext]="{$implicit: alerts}"
+              >
+              </ng-container>
+            </div>
+          </div>
+          <div class="tablet:grid-offset-1 tablet:grid-col-auto tablet:display-none">
+            <div>
+              <button class="usa-button usa-button--secondary" id="seeAllAlertsMobileBtn"
+                (click)="onSeeAllAlertsClicked()">See All Alerts</button>
+            </div>
+          </div>
         </div>
       </div>
-      <div #alertsContent class="grid-row width-full display-none tablet:display-inline-block" id="collapseTarget">
-        <div class="grid-col-fill">
-          <div class="grid-row">
-            <ng-container 
-              [ngTemplateOutlet]="alerts && alerts.length == 1 ? singleAlert : multipleAlerts"
-              [ngTemplateOutletContext]="{$implicit: alerts}"
-            >
-            </ng-container>
-          </div>
-        </div>
-        <div class="tablet:grid-offset-1 tablet:grid-col-auto tablet:display-none">
-          <div>
-            <button class="usa-button usa-button--secondary" id="seeAllAlertsMobileBtn"
-              (click)="onSeeAllAlertsClicked()">See All Alerts</button>
-          </div>
-        </div>
+  
+      <div class="grid-offset-1 grid-col-auto display-none tablet:display-inline-block">
+        <button class="usa-button usa-button--secondary margin-y-1" id="seeAllAlertsTabletBtn"
+          (click)="onSeeAllAlertsClicked()">See All
+          Alerts</button>
       </div>
-    </div>
-
-    <div class="grid-offset-1 grid-col-auto display-none tablet:display-inline-block">
-      <button class="usa-button usa-button--secondary margin-y-1" id="seeAllAlertsTabletBtn"
-        (click)="onSeeAllAlertsClicked()">See All
-        Alerts</button>
     </div>
   </div>
 </div>
+
 
 <ng-template #multipleAlerts let-alerts>
   <div *ngFor="let alert of alerts; let i = index;" class="grid-col-12" [attr.id]="'alert' + i">
