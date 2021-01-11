@@ -59,13 +59,9 @@ export class ExternalLinkDirective implements OnChanges {
     this.vc.constructor.name === 'ViewContainerRef_';
     const factory = this.cfr.resolveComponentFactory(FaIconComponent);
     const component = this.vc.createComponent(factory);
-    //component.instance.icon = ['fas', 'external-link-alt'];
     const spanElement = document.createElement('span');
     spanElement.classList.add('margin-left-2px');
     spanElement.classList.add('usa-link--external');
-    // const supElement = document.createElement('sup');
-    // supElement.appendChild(component.location.nativeElement);
-    // spanElement.appendChild(supElement);
     this.el.nativeElement.appendChild(spanElement);
     component.instance.ngOnChanges({});
   }
