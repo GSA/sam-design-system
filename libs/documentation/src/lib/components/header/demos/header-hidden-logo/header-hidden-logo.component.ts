@@ -29,7 +29,7 @@ export class HeaderHiddenLogoComponent implements OnInit {
       {
         imageClassPrefix: 'sds',
         imageClass: 'messages',
-        text: 'Messages',
+        text: 'Notifications',
         route: '/',
         id: 'messages',
         mode: NavigationMode.INTERNAL
