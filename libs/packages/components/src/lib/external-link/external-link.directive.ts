@@ -60,7 +60,7 @@ export class ExternalLinkDirective implements OnChanges {
     const factory = this.cfr.resolveComponentFactory(FaIconComponent);
     const component = this.vc.createComponent(factory);
     const spanElement = document.createElement('span');
-    spanElement.classList.add('margin-left-2px');
+    spanElement.classList.add('margin-left-1px');
     spanElement.classList.add('usa-link--external');
     this.el.nativeElement.appendChild(spanElement);
     component.instance.ngOnChanges({});
