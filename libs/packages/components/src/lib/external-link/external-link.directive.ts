@@ -9,15 +9,12 @@ import {
   OnChanges,
   HostListener,
 } from '@angular/core';
-import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { sds } from '@gsa-sam/sam-styles/src/icons/';
+
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 @Directive({
   selector: 'a[href]',
 })
 export class ExternalLinkDirective implements OnChanges {
-  private vcRef: ViewContainerRef;
   @Input() href: string;
   @Input() public hideIcon: boolean = false;
   private internalLinks = ['fsd.gov'];
@@ -32,13 +29,9 @@ export class ExternalLinkDirective implements OnChanges {
 
   constructor(
     private el: ElementRef,
-    private renderer: Renderer2,
     private cfr: ComponentFactoryResolver,
-    private vc: ViewContainerRef,
-    library: FaIconLibrary
-  ) {
-    library.addIconPacks(fas, sds);
-  }
+    private vc: ViewContainerRef
+  ) {}
 
   @HostListener('click', ['$event'])
   click(event: Event) {
