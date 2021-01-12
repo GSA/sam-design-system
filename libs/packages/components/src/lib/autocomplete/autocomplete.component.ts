@@ -134,10 +134,7 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
 
   setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
-    if (this.autocompleteSearch) {
-      this.autocompleteSearch.setDisabledState(isDisabled);
-      this.cd.detectChanges();
-    }
+    this.cd.detectChanges();
   }
 
   isSingleMode(): boolean {
