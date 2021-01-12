@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, ContentChild, TemplateRef, Optional } from '@angular/core';
-import { BehaviorSubject } from "rxjs";
+import { Component, OnInit, Input, ContentChild, TemplateRef, Optional, OnDestroy } from '@angular/core';
+import { BehaviorSubject, Subscription } from "rxjs";
 import { SearchListInterface, SearchListConfiguration } from './model/search-list-layout.model';
 import { SDSFormlyUpdateComunicationService } from '@gsa-sam/sam-formly';
 
@@ -8,7 +8,7 @@ import { SDSFormlyUpdateComunicationService } from '@gsa-sam/sam-formly';
   templateUrl: './search-list-layout.component.html',
   styleUrls: ['./search-list-layout.component.scss']
 })
-export class SearchListLayoutComponent implements OnInit {
+export class SearchListLayoutComponent implements OnInit, OnDestroy {
 
   /**
   * Child Template to be used to display the data for each item in the list of items
@@ -39,6 +39,8 @@ export class SearchListLayoutComponent implements OnInit {
    */
   private filterData: any;
 
+  private formlySubscription: Subscription;
+
   ngOnInit() {
     this.page.pageSize = this.configuration.pageSize;
     this.sortField = this.configuration.defaultSortValue;
@@ -48,11 +50,17 @@ export class SearchListLayoutComponent implements OnInit {
       }
     );
     if (this.formlyUpdateComunicationService) {
-      this.formlyUpdateComunicationService.filterUpdate.subscribe(
+      this.formlySubscription = this.formlyUpdateComunicationService.filterUpdate.subscribe(
         (filter) => {
           this.updateFilter(filter);
         }
       )
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.formlySubscription) {
+      this.formlySubscription.unsubscribe();
     }
   }
 
