@@ -10,7 +10,7 @@ import {
   ChangeDetectorRef,
   HostListener,
 } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import * as qs from 'qs';
 import {
   SearchListInterface,
@@ -68,6 +68,13 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
    * Total number of items
    */
   totalItems: number;
+  private formlySubscription: Subscription;
+
+  ngOnDestroy() {
+    if (this.formlySubscription) {
+      this.formlySubscription.unsubscribe();
+    }
+  }
 
   /**
    * Default Page setttings

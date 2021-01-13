@@ -134,6 +134,7 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
 
   setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
+    this.cd.detectChanges();
   }
 
   isSingleMode(): boolean {
