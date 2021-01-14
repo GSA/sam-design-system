@@ -119,6 +119,7 @@ export class SdsFiltersComponent implements OnInit {
           setTimeout(() => {
             this.form.patchValue(updatedFormValue);
           });
+          this.checkForHide();
         }
       });
       this.cdr.detectChanges();
