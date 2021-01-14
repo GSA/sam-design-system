@@ -4,6 +4,7 @@ import { selectionPanelConfig } from '../../navigation.config'
 
 @Component({
   templateUrl: './basic-selection-panel.component.html',
+  selector: `sds-selection-panel-basic-demo`,
 })
 export class BasicSelectionPanelComponent {
 

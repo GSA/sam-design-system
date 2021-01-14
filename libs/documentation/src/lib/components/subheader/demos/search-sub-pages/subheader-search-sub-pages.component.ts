@@ -11,7 +11,8 @@ import {
 
 @Component({
   templateUrl: './subheader-search-sub-pages.component.html',
-  styleUrls: ['./subheader-search-sub-pages.component.scss']
+  styleUrls: ['./subheader-search-sub-pages.component.scss'],
+  selector: `sds-subheader-sub-pages-demo`,
 })
 export class SubheaderSearchSubPagesComponent {
   subheader = {

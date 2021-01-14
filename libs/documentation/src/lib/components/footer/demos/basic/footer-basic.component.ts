@@ -7,7 +7,8 @@ import { FormControl } from '@angular/forms';
 
 @Component({
   templateUrl: './footer-basic.component.html',
-  styleUrls: ['./footer-basic.component.scss']
+  styleUrls: ['./footer-basic.component.scss'],
+  selector: `sds-footer-basic-demo`,
 })
 export class FooterBasic implements OnInit {
   constructor() {}

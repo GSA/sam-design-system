@@ -3,7 +3,8 @@ import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-  templateUrl: './text-basic.component.html'
+  templateUrl: './text-basic.component.html',
+  selector: `sds-text-demo`,
 })
 export class TextBasic {
   textModel = 'test';

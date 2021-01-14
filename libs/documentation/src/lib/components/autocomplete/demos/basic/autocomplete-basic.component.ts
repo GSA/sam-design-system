@@ -4,12 +4,13 @@ import {
   SDSSelectedItemModel,
   SelectionMode
 } from '@gsa-sam/components';
-import { SampleAutocompleteData } from './service/autocomplete-sample.data';
-import { AutocompleteSampleDataService } from './service/autocomplete-sample.service';
+import { SampleAutocompleteData } from './autocomplete-sample.data';
+import { AutocompleteSampleDataService } from './autocomplete-sample.service';
 
 @Component({
   templateUrl: './autocomplete-basic.component.html',
   styleUrls: ['./autocomplete-basic.component.scss'],
+  selector: `sds-autocomplete-basic-demo`,
   providers: [AutocompleteSampleDataService]
 })
 export class AutocompleteBasic implements OnInit {

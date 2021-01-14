@@ -13,7 +13,8 @@ import {
 
 @Component({
   templateUrl: './subheader-basic-display.component.html',
-  styleUrls: ['./subheader-basic-display.component.scss']
+  styleUrls: ['./subheader-basic-display.component.scss'],
+  selector: `sds-subheader-basic-demo`,
 })
 export class SubheaderBasicDisplayComponent {
   subheader = {

@@ -4,6 +4,7 @@ import { MatButtonToggleChange } from '@angular/material/button-toggle';
 @Component({
   templateUrl: './button-group-basic.component.html',
   styleUrls: ['./button-group-basic.component.scss'],
+  selector: `sds-button-group-demo`,
 })
 export class ButtonGroupBasic {
   firstGroupCurrentValue: Array<any> = ['reports'];

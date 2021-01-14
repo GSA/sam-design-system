@@ -13,7 +13,8 @@ import {
 
 @Component({
   templateUrl: './subheader-tier-2-workspace.component.html',
-  styleUrls: ['./subheader-tier-2-workspace.component.scss']
+  styleUrls: ['./subheader-tier-2-workspace.component.scss'],
+  selector: `sds-subheader-tier2-demo`,
 })
 export class SubheaderTier2WorkspaceComponent {
   subheader = {

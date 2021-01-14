@@ -85,48 +85,48 @@ import {
 /* Form Types */
 import {
   ROUTES as INPUT_ROUTES,
-  InputModule,
-} from './components/formly/input/input.module';
+  InputModule
+} from './components/formly-input/input.module';
 import {
   ROUTES as TEXT_AREA_ROUTES,
-  TextAreaModule,
-} from './components/formly/textarea/textarea.module';
+  TextAreaModule
+} from './components/formly-textarea/textarea.module';
 import {
   ROUTES as CHECKBOX_ROUTES,
-  CheckboxModule,
-} from './components/formly/checkbox/checkbox.module';
+  CheckboxModule
+} from './components/formly-checkbox/checkbox.module';
 import {
   ROUTES as MULTI_CHECKBOX_ROUTES,
-  MultiCheckboxModule,
-} from './components/formly/multicheckbox/multicheckbox.module';
+  MultiCheckboxModule
+} from './components/formly-multicheckbox/multicheckbox.module';
 import {
   ROUTES as RADIO_ROUTES,
-  RadioModule,
-} from './components/formly/radio/radio.module';
+  RadioModule
+} from './components/formly-radio/radio.module';
 import {
   ROUTES as SELECT_ROUTES,
-  SelectModule,
-} from './components/formly/select/select.module';
+  SelectModule
+} from './components/formly-select/select.module';
 import {
   ROUTES as FORMLY_AUTOCOMPLETE_ROUTES,
-  FormlyAutocompleteModule,
-} from './components/formly/autocomplete/autocomplete.module';
+  FormlyAutocompleteModule
+} from './components/formly-autocomplete/autocomplete.module';
 import {
   ROUTES as FORMLY_FILEINFO_ROUTES,
   FormlyFileInfoModule,
-} from './components/formly/fileinfo/fileinfo.module';
+} from './components/formly-fileinfo/fileinfo.module';
 import {
   ROUTES as FORMLY_DATEPICKER_ROUTES,
-  FormlyDatepickerModule,
-} from './components/formly/datepicker/datepicker.module';
+  FormlyDatepickerModule
+} from './components/formly-datepicker/datepicker.module';
 import {
   ROUTES as TEXT_ROUTES,
   TextModule,
 } from './components/text/text.module';
 import {
   ROUTES as SEARCH_FORMLY_ROUTES,
-  FormlySearchModule,
-} from './components/formly/search/search.module';
+  FormlySearchModule
+} from './components/formly-search/search.module';
 
 import {
   ROUTES as TOASTS_ROUTES,
@@ -176,8 +176,8 @@ import {
 } from './components/button-group/button-group.module';
 import {
   ROUTES as READONLY_ROUTES,
-  ReadonlyModule,
-} from './components/formly/readonly/readonly.module';
+  ReadonlyModule
+} from './components/formly-readonly/readonly.module';
 
 /* Utilities */
 import {
@@ -254,12 +254,12 @@ export const ROUTES: Routes = [
   { path: 'components/form-field', children: FORM_FIELD_ROUTES },
   { path: 'components/filterwrapper', children: FILTER_WRAPPER_ROUTES },
   { path: 'components/accordionwrapper', children: ACCORDION_WRAPPER_ROUTES },
-  { path: 'components/group', children: GROUP_ROUTES },
-  { path: 'components/label', children: LABEL_ROUTES },
-  { path: 'components/description', children: DESCRIPTION_ROUTES },
-  { path: 'components/validation', children: VALIDATION_ROUTES },
+  { path: 'components/groupwrappers', children: GROUP_ROUTES },
+  { path: 'components/labelwrapper', children: LABEL_ROUTES },
+  { path: 'components/descriptionwrapper', children: DESCRIPTION_ROUTES },
+  { path: 'components/validationwrapper', children: VALIDATION_ROUTES },
   { path: 'components/templateoptions', children: TEMPLATEOPTIONS_ROUTES },
-  { path: 'components/readonly', children: READONLY_ROUTES },
+  { path: 'components/formly-readonly', children: READONLY_ROUTES },
 
   // Form Examples
   { path: 'pages', pathMatch: 'full', redirectTo: 'pages/formly-form' },

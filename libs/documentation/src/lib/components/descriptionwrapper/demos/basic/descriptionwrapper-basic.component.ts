@@ -3,7 +3,8 @@ import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-  templateUrl: './descriptionwrapper-basic.component.html'
+  templateUrl: './descriptionwrapper-basic.component.html',
+  selector: `sds-descriptionwrapper-demo`,
 })
 
 export class DescriptionWrapperBasic {

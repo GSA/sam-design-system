@@ -14,7 +14,7 @@ import { FilterWrapperBasicModule } from './demos/basic/filterwrapper-basic.modu
 
 declare var require: any;
 const DEMOS = {
-  formfield: {
+  basic: {
     title: 'Filter Wrapper',
     type: FilterWrapperBasic,
     code: require('!!raw-loader!./demos/basic/filterwrapper-basic.component'),

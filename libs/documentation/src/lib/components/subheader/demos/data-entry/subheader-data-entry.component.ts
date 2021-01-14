@@ -13,7 +13,8 @@ import {
 
 @Component({
   templateUrl: './subheader-data-entry.component.html',
-  styleUrls: ['./subheader-data-entry.component.scss']
+  styleUrls: ['./subheader-data-entry.component.scss'],
+  selector: `sds-subheader-data-entry-demo`,
 })
 export class SubheaderDataEntryComponent {
   subheader = {
