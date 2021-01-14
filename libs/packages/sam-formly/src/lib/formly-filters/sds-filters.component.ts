@@ -17,6 +17,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import * as qs from 'qs';
 import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
 import { SDSFormlyUpdateModelService } from './service/sds-filter-model-update.service';
+import { Subject } from 'rxjs/internal/Subject';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'sds-filters',
@@ -76,7 +78,7 @@ export class SdsFiltersComponent implements OnInit {
   // TODO: check type -- Formly models are typically objects
   @Output() filterChange = new EventEmitter<object>();
   @Output() showInactiveFiltersChange = new EventEmitter<boolean>();
-
+  unsubscribe$ = new Subject<void>();
   _isObj = (obj: any): boolean => typeof obj === 'object' && obj !== null;
   _isEmpty = (obj: any): boolean => Object.keys(obj).length === 0;
   overwrite = (baseObj: any, newObj: any) => {
@@ -107,21 +109,27 @@ export class SdsFiltersComponent implements OnInit {
   ) {
     library.addIconPacks(fas, sds);
   }
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
 
   ngOnInit(): void {
     if (this.filterUpdateModelService) {
-      this.filterUpdateModelService.filterModel.subscribe((filter) => {
-        if (filter) {
-          const updatedFormValue = this.overwrite(
-            this.form.getRawValue(),
-            filter
-          );
-          setTimeout(() => {
-            this.form.patchValue(updatedFormValue);
-          });
-          this.checkForHide();
-        }
-      });
+      this.filterUpdateModelService.filterModel
+        .pipe(takeUntil(this.unsubscribe$))
+        .subscribe((filter) => {
+          if (filter) {
+            const updatedFormValue = this.overwrite(
+              this.form.getRawValue(),
+              filter
+            );
+            setTimeout(() => {
+              this.form.patchValue(updatedFormValue);
+            });
+            this.checkForHide();
+          }
+        });
       this.cdr.detectChanges();
     }
   }
