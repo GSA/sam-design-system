@@ -19,7 +19,6 @@ export class FilterService {
   public fields: FormlyFieldConfig[] = [
     {
       key: 'keyword',
-      // hide: true,
       templateOptions: { label: 'Keyword' },
       type: 'input',
     },

@@ -19,9 +19,18 @@ import { IconsScaling } from './demos/scaling/icons-scaling.component';
 import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
+import { IconsStackingComponent } from './demos/stacking/icons-stacking.component';
+import { IconsStackingModule } from './demos/stacking/icons-stacking.module';
 
 declare var require: any;
 const DEMOS = {
+  stacking: {
+    title: 'Stacking Icons',
+    type: IconsStackingComponent,
+    code: require('!!raw-loader!./demos/stacking/icons-stacking.component'),
+    markup: require('!!raw-loader!./demos/stacking/icons-stacking.component.html'),
+    path: 'libs/documentation/src/lib/components/icons/demos/stacking'
+  },
   coloring: {
     title: 'Coloring Icons',
     type: IconsColoring,
@@ -90,7 +99,8 @@ export const ROUTES = [
     IconsBootstrapModule,
     IconsColoringModule,
     IconsScalingModule,
-    IconsRotationModule
+    IconsRotationModule,
+    IconsStackingModule
   ]
 })
 export class IconsModule {
