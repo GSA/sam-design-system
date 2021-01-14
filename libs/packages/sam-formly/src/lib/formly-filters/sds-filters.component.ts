@@ -6,7 +6,8 @@ import {
   Optional,
   OnInit,
   ChangeDetectorRef,
-  HostListener,
+  OnChanges,
+  SimpleChanges,
 } from '@angular/core';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -24,7 +25,7 @@ import { takeUntil } from 'rxjs/operators';
   selector: 'sds-filters',
   templateUrl: './sds-filters.component.html',
 })
-export class SdsFiltersComponent implements OnInit {
+export class SdsFiltersComponent implements OnInit, OnChanges {
   /**
    * Pass in a Form Group for ReactiveForms Support
    */
@@ -127,12 +128,21 @@ export class SdsFiltersComponent implements OnInit {
             setTimeout(() => {
               this.form.patchValue(updatedFormValue);
             });
-            this.checkForHide();
           }
         });
       this.cdr.detectChanges();
     }
   }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (
+      changes.model &&
+      changes.model.currentValue != changes.model.previousValue
+    ) {
+      this.checkForHide();
+    }
+  }
+
   /**
    * This is for getting the model which has a value.
    */
