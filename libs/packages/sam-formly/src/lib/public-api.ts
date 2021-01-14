@@ -25,4 +25,5 @@ export * from './formly/readonly/readonly-types/readonly-multicheckbox';
 export * from './formly/readonly/readonly-types/readonly-radio';
 export * from './formly/readonly/readonly-types/readonly-select';
 export * from './formly/readonly/readonly-container.component';
+export * from './formly-filters/service/sds-filter-model-update.service';
 export * from './formly/readonly/readonly-options.model';

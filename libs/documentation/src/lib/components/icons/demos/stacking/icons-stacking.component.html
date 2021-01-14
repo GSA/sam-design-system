@@ -1,0 +1,31 @@
+<p>To stack two icons, apply the <code>sds-stack</code> class the parent HTML
+  element of the icons you want to stack. Then add the
+  <code>sds-stack-icon</code> class to the icons you want stacked.</p>
+<p>Classes starting with <code>sds-</code> and followed by a sds-icon size
+  multiplier ie: <code>sds-sm</code> or <code>sds-2x</code> can be applied
+  to the parent HTML element to scale the overall size of the stacked icons.
+  For further refinement of one of the icons, the <code>size</code> input of
+  sds-icon can be used.</p>
+<div style="display: flex; align-items: flex-end">
+  <div style="padding-right: 1em; text-align: center;">
+    <div class="sds-stack sds-1x">
+      <sds-icon class="sds-stack-icon" [size]="'2x'" [icon]="['bs', 'circle-fill']"></sds-icon>
+      <sds-icon class="sds-stack-icon text-base-lightest" [size]="'lg'" [icon]="['bs', 'caret-left']"></sds-icon>
+    </div>
+    <p>sds-1x</p>
+  </div>
+  <div style="padding-right: 1em; text-align: center;">
+    <div class="sds-stack sds-2x">
+      <sds-icon class="sds-stack-icon" [size]="'2x'" [icon]="['bs', 'circle-fill']"></sds-icon>
+      <sds-icon class="sds-stack-icon text-base-lightest" [size]="'lg'" [icon]="['bs', 'caret-left']"></sds-icon>
+    </div>
+    <p>sds-2x</p>
+  </div>
+  <div style="padding-right: 1em; text-align: center;">
+    <div class="sds-stack sds-4x">
+      <sds-icon class="sds-stack-icon" [size]="'2x'" [icon]="['bs', 'circle-fill']"></sds-icon>
+      <sds-icon class="sds-stack-icon text-base-lightest" [size]="'lg'" [icon]="['bs', 'caret-left']"></sds-icon>
+    </div>
+    <p>sds-4x</p>
+  </div>
+</div>

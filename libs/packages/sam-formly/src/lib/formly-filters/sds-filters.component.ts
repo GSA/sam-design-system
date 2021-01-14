@@ -6,7 +6,8 @@ import {
   Optional,
   OnInit,
   ChangeDetectorRef,
-  HostListener,
+  OnChanges,
+  SimpleChanges,
 } from '@angular/core';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -16,11 +17,15 @@ import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import * as qs from 'qs';
 import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
+import { SDSFormlyUpdateModelService } from './service/sds-filter-model-update.service';
+import { Subject } from 'rxjs/internal/Subject';
+import { takeUntil } from 'rxjs/operators';
+
 @Component({
   selector: 'sds-filters',
   templateUrl: './sds-filters.component.html',
 })
-export class SdsFiltersComponent implements OnInit {
+export class SdsFiltersComponent implements OnInit, OnChanges {
   /**
    * Pass in a Form Group for ReactiveForms Support
    */
@@ -72,9 +77,9 @@ export class SdsFiltersComponent implements OnInit {
    *  Emit results when model updated
    */
   // TODO: check type -- Formly models are typically objects
-  @Output() filterChange = new EventEmitter<object[]>();
+  @Output() filterChange = new EventEmitter<object>();
   @Output() showInactiveFiltersChange = new EventEmitter<boolean>();
-
+  unsubscribe$ = new Subject<void>();
   _isObj = (obj: any): boolean => typeof obj === 'object' && obj !== null;
   _isEmpty = (obj: any): boolean => Object.keys(obj).length === 0;
   overwrite = (baseObj: any, newObj: any) => {
@@ -99,41 +104,45 @@ export class SdsFiltersComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private router: Router,
     private route: ActivatedRoute,
+    @Optional()
+    private filterUpdateModelService: SDSFormlyUpdateModelService,
     library: FaIconLibrary
   ) {
     library.addIconPacks(fas, sds);
   }
-
-  @HostListener('window:popstate', ['$event'])
-  onpopstate(event) {
-    const queryString = window.location.search.substring(1);
-    const params = this.getUrlParams(queryString);
-    const updatedFormValue = this.overwrite(
-      this.form.getRawValue(),
-      this.convertToModel(params)
-    );
-    this.form.setValue(updatedFormValue);
-    this.updateChange(updatedFormValue);
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
+
   ngOnInit(): void {
-    if (this.isHistoryEnable) {
-      if (this._isEmpty(this.form.getRawValue())) {
-        const queryString = window.location.search.substring(1);
-        const params: any = this.getUrlParams(queryString);
-        const paramModel: any = this.convertToModel(params);
-        this.checkForHide();
-        setTimeout(() => {
-          this.form.patchValue({
-            ...this.model,
-            ...paramModel.sfm,
-          });
+    if (this.filterUpdateModelService) {
+      this.filterUpdateModelService.filterModel
+        .pipe(takeUntil(this.unsubscribe$))
+        .subscribe((filter) => {
+          if (filter) {
+            const updatedFormValue = this.overwrite(
+              this.form.getRawValue(),
+              filter
+            );
+            setTimeout(() => {
+              this.form.patchValue(updatedFormValue);
+            });
+          }
         });
-        this.cdr.detectChanges();
-      }
-    } else if (this.model) {
+      this.cdr.detectChanges();
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (
+      changes.model &&
+      changes.model.currentValue != changes.model.previousValue
+    ) {
       this.checkForHide();
     }
   }
+
   /**
    * This is for getting the model which has a value.
    */
@@ -190,28 +199,13 @@ export class SdsFiltersComponent implements OnInit {
   }
 
   onModelChange(change: any) {
-    if (this.isHistoryEnable) {
-      const queryString = window.location.search.substring(1);
-      let queryObj = qs.parse(queryString, { allowPrototypes: true });
-      if (queryObj.hasOwnProperty('sfm')) {
-        queryObj.sfm = {};
-      }
-      queryObj['sfm'] = change;
-      const params = this.convertToParam(queryObj);
-      this.router.navigate(['.'], {
-        relativeTo: this.route,
-        queryParams: params,
-        // TODO: Need this for future use case
-        // queryParamsHandling: 'merge'
-      });
-    }
     this.updateChange(change);
   }
   updateChange(change) {
     const updatedModel = this.getCleanModel
       ? this.convertToModel(change)
       : change;
-    this.filterChange.emit([updatedModel]);
+    this.filterChange.emit(updatedModel);
     if (this.formlyUpdateComunicationService) {
       this.formlyUpdateComunicationService.updateFilter(updatedModel);
     }

@@ -89,40 +89,6 @@ describe('The Sam Filters Component', () => {
       expect(component.form.invalid).toBe(true);
     });
 
-    it('should route the navigation', fakeAsync(() => {
-      component.model = {
-        filter: {
-          entityType: '30'
-        }
-      };
-      component.fields = [
-        {
-          key: 'filter',
-          wrappers: ['filterwrapper'],
-          templateOptions: { label: 'Entity Types' },
-          fieldGroup: [
-            {
-              key: 'entityType',
-              type: 'radio',
-              templateOptions: {
-                label: 'Expiration Date',
-                options: [
-                  { label: '30 Days', value: '30' },
-                  { label: '60 Days', value: '60' },
-                  { label: '90 Days', value: '90' }
-                ]
-              }
-            }
-          ]
-        }
-      ];
-      fixture.detectChanges();
-      component.onModelChange(component.model);
-      tick();
-      fixture.detectChanges();
-      expect(location.path()).toContain('/?sfm');
-    }));
-
     it('should not change the route when history set to false', fakeAsync(() => {
       component.model = {
         filter: {
@@ -215,17 +181,6 @@ describe('The Sam Filters Component', () => {
       );
       console.log(result);
       expect(JSON.stringify(result)).toEqual(JSON.stringify(expectedOutput));
-    });
-    it('should update the form value to null values if ref param is empty when back button is pressed ', () => {
-      component.form = new FormGroup({
-        test: new FormControl(''),
-        filters: new FormControl('')
-      });
-      component.form.controls['test'].setValue('abc');
-      component.form.controls['filters'].setValue({ uniqueId: 1 });
-      window.dispatchEvent(new Event('popstate'));
-      const obj = { test: null, filters: {} };
-      expect(JSON.stringify(component.form.value)).toEqual(JSON.stringify(obj));
     });
   });
   describe('validation tests', () => {
@@ -325,7 +280,7 @@ describe('The Sam Filters Component', () => {
       ];
       component.model = { test: null, filters: { uniqueId: '45466' } };
       fixture.detectChanges();
-      expect(component.fields[0].fieldGroup[0].hide).toBe(false);
+      expect(component.fields[0].fieldGroup[0].hide).toBe(true);
     });
     it('should change the hide value when model has value', () => {
       component.fields = [
@@ -341,7 +296,7 @@ describe('The Sam Filters Component', () => {
       ];
       component.model = { filters: '45466' };
       fixture.detectChanges();
-      expect(component.fields[0].hide).toBe(false);
+      expect(component.fields[0].hide).toBe(true);
     });
   });
 });

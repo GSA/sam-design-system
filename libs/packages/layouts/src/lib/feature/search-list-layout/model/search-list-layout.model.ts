@@ -93,3 +93,9 @@ export class SearchListConfiguration {
     pageSize: number = 25;
 
 }
+
+export interface ResultsModel {
+    sort?: string;
+    page?: number;
+    filterModel: any;
+}

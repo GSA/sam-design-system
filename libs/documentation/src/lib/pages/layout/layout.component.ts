@@ -3,11 +3,11 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 import { Subject } from 'rxjs';
 import { DataService } from './data.service';
 import { navigationConfig } from './navigate.config';
-import { SearchListConfiguration } from '@gsa-sam/layouts';
+import { SearchListConfiguration, ResultsModel } from '@gsa-sam/layouts';
 import { FilterService } from './filter.service';
 import { SideNavigationModel } from '@gsa-sam/components';
 @Component({
-  templateUrl: './layout.component.html'
+  templateUrl: './layout.component.html',
 })
 export class ResultsLayoutComponent implements AfterViewInit, OnInit {
   @ViewChild('resultList') resultList;
@@ -25,8 +25,8 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
     pageSize: 25,
     sortList: [
       { text: 'Entity Name', value: 'legalBusinessName' },
-      { text: 'Status', value: 'registrationStatus' }
-    ]
+      { text: 'Status', value: 'registrationStatus' },
+    ],
   };
 
   /* Sort config change demo */
@@ -35,8 +35,8 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
     pageSize: 25,
     sortList: [
       { text: 'Entity Name', value: 'legalBusinessName' },
-      { text: 'Status', value: 'registrationStatus' }
-    ]
+      { text: 'Status', value: 'registrationStatus' },
+    ],
   };
 
   updatedListConfig: SearchListConfiguration = {
@@ -45,8 +45,8 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
     sortList: [
       { text: 'Entity Name', value: 'legalBusinessName' },
       { text: 'Cage Code', value: 'cageCode' },
-      { text: 'Status', value: 'registrationStatus' }
-    ]
+      { text: 'Status', value: 'registrationStatus' },
+    ],
   };
 
   constructor(
@@ -60,18 +60,35 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
     this.options = this.filterService.options;
   }
   ngAfterViewInit() {
-    this.filterChange$.subscribe(res => {
+    this.filterChange$.subscribe((res) => {
       this.resultList.updateFilter(res);
     });
   }
 
   updateConfig(update: boolean) {
-    if(update) {
+    if (update) {
       this.listConfig = { ...this.updatedListConfig };
-    }
-    else {
+    } else {
       this.listConfig = { ...this.defaultListConfig };
     }
+  }
 
+  onSearchModelUpdate() {
+    const model: ResultsModel = {
+      page: 2,
+      sort: 'registrationStatus',
+      filterModel: {
+        keyword: 'te',
+        location: {
+          city: null,
+          congressionalDistrict: null,
+          country: null,
+          state: [{ id: 'AL', name: 'Alabama', subtext: undefined }],
+          zipCode: null,
+        },
+      },
+    };
+
+    this.resultList.updateSearchResultsModel(model);
   }
 }
