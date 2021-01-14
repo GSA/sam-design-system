@@ -4,7 +4,7 @@ import { AutocompleteSampleDataService } from './services/autocomplete-sample.se
 import {
   SelectionMode,
   SDSSelectedItemModel,
-  SDSAutocompletelConfiguration
+  SDSAutocompletelConfiguration,
 } from '@gsa-sam/components';
 import { Injectable } from '@angular/core';
 
@@ -20,7 +20,7 @@ export class FilterService {
     {
       key: 'keyword',
       templateOptions: { label: 'Keyword' },
-      type: 'input'
+      type: 'input',
     },
     {
       key: 'searchEntity',
@@ -32,8 +32,8 @@ export class FilterService {
           templateOptions: {
             type: 'text',
             hideOptional: true,
-            label: 'Entity Name'
-          }
+            label: 'Entity Name',
+          },
         },
         {
           key: 'uniqueEntityIdDuns',
@@ -47,8 +47,8 @@ export class FilterService {
             min: 13,
             max: 40,
             inputType: 'number',
-            inputStyle: 'error'
-          }
+            inputStyle: 'error',
+          },
         },
         {
           key: 'uniqueEntityIdSam',
@@ -58,8 +58,8 @@ export class FilterService {
             label: 'Unique Entity ID',
             hideOptional: true,
             placeholder: '',
-            inputType: 'text'
-          }
+            inputType: 'text',
+          },
         },
         {
           key: 'cageCode',
@@ -67,10 +67,10 @@ export class FilterService {
           templateOptions: {
             type: 'text',
             hideOptional: true,
-            label: 'CAGE / NCAGE'
-          }
-        }
-      ]
+            label: 'CAGE / NCAGE',
+          },
+        },
+      ],
     },
     {
       key: 'purposeOfRegistration',
@@ -82,41 +82,41 @@ export class FilterService {
         options: [
           {
             key: 'allawards',
-            value: 'All Awards'
+            value: 'All Awards',
           },
           {
             key: 'assistance-awards',
-            value: 'Federal Assistance Awards'
+            value: 'Federal Assistance Awards',
           },
           {
             key: 'igt-awards',
-            value: 'Intragovernmental Transactions'
-          }
-        ]
-      }
+            value: 'Intragovernmental Transactions',
+          },
+        ],
+      },
     },
     {
       key: 'entityType',
       type: 'input',
       templateOptions: {
         label: 'Entity Type',
-        group: 'accordion'
-      }
+        group: 'accordion',
+      },
     },
     {
       key: 'socioEconomicStatus',
       wrappers: ['accordionwrapper'],
       type: 'input',
       templateOptions: {
-        label: 'Socio-Economic Status'
-      }
+        label: 'Socio-Economic Status',
+      },
     },
     {
       key: 'serviceClassifications',
 
       templateOptions: {
         label: 'NAICS and Product Service Codes',
-        group: 'accordion'
+        group: 'accordion',
       },
       fieldGroup: [
         {
@@ -126,8 +126,8 @@ export class FilterService {
             type: 'text',
             hideOptional: true,
             label: 'NAICS Code',
-            placeholder: 'Ex: 110610'
-          }
+            placeholder: 'Ex: 110610',
+          },
         },
         {
           key: 'productServiceCode',
@@ -135,10 +135,10 @@ export class FilterService {
           templateOptions: {
             label: 'Product Service Code',
             hideOptional: true,
-            placeholder: 'Ex: 3320 or L019'
-          }
-        }
-      ]
+            placeholder: 'Ex: 3320 or L019',
+          },
+        },
+      ],
     },
     {
       key: 'location',
@@ -150,8 +150,8 @@ export class FilterService {
           templateOptions: {
             type: 'text',
             hideOptional: true,
-            label: 'Country'
-          }
+            label: 'Country',
+          },
         },
         {
           key: 'zipCode',
@@ -159,8 +159,8 @@ export class FilterService {
           templateOptions: {
             type: 'text',
             hideOptional: true,
-            label: 'Zip Code'
-          }
+            label: 'Zip Code',
+          },
         },
         {
           key: 'state',
@@ -171,8 +171,8 @@ export class FilterService {
             service: this.service,
             configuration: this.settings,
             model: this.autocompleteModel,
-            modelChange: this.changes
-          }
+            modelChange: this.changes,
+          },
         },
         {
           key: 'city',
@@ -180,8 +180,8 @@ export class FilterService {
           templateOptions: {
             type: 'text',
             hideOptional: true,
-            label: 'City'
-          }
+            label: 'City',
+          },
         },
         {
           key: 'congressionalDistrict',
@@ -189,10 +189,10 @@ export class FilterService {
           templateOptions: {
             type: 'text',
             hideOptional: true,
-            label: 'Congressional District'
-          }
-        }
-      ]
+            label: 'Congressional District',
+          },
+        },
+      ],
     },
     {
       key: 'status',
@@ -205,17 +205,17 @@ export class FilterService {
             options: [
               {
                 key: 'Active',
-                value: 'Active'
+                value: 'Active',
               },
               {
                 key: 'Inactive',
-                value: 'Inactive'
-              }
-            ]
-          }
-        }
-      ]
-    }
+                value: 'Inactive',
+              },
+            ],
+          },
+        },
+      ],
+    },
   ];
 
   constructor(public service: AutocompleteSampleDataService) {

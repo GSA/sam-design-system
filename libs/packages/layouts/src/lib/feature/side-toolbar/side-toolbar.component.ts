@@ -1,4 +1,13 @@
-import { Component, ContentChild, EventEmitter, Input, OnDestroy, OnInit, Output, TemplateRef } from '@angular/core';
+import {
+  Component,
+  ContentChild,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  TemplateRef,
+} from '@angular/core';
 import { SdsDialogRef, SdsDialogService } from '@gsa-sam/components';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs';
@@ -9,7 +18,6 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./side-toolbar.component.scss'],
 })
 export class SideToolbarComponent implements OnInit, OnDestroy {
-  
   @ContentChild(TemplateRef) template: TemplateRef<any>;
 
   // Text for button in responsive view
@@ -21,7 +29,6 @@ export class SideToolbarComponent implements OnInit, OnDestroy {
   @Output() responsiveDialog = new EventEmitter();
   @Output() responsiveView = new EventEmitter();
 
-
   isResponsiveView = false;
 
   private subscription: Subscription = new Subscription();
@@ -29,8 +36,8 @@ export class SideToolbarComponent implements OnInit, OnDestroy {
 
   constructor(
     private sdsDialogService: SdsDialogService,
-    private breakpointObserver: BreakpointObserver, // Will watch for changes between mobile and non-mobile screen size
-  ) { }
+    private breakpointObserver: BreakpointObserver // Will watch for changes between mobile and non-mobile screen size
+  ) {}
 
   ngOnInit() {
     this.observeViewChange();
@@ -55,25 +62,23 @@ export class SideToolbarComponent implements OnInit, OnDestroy {
   }
 
   private observeViewChange() {
-    const breakpointUnsubscription = this.breakpointObserver.observe([
-      `(max-width: ${this.responsiveSize}px)`
-    ]).subscribe(result => {
-      console.log(this.openResponsiveDialog);
-      if (result.matches) {
-        this.isResponsiveView = true;
-      } else {
-        this.isResponsiveView = false;
-        if (this.openResponsiveDialog) {
-          this.openResponsiveDialog.close();
-          this.openResponsiveDialog = undefined;
-          this.responsiveDialog.emit(this.openResponsiveDialog);
+    const breakpointUnsubscription = this.breakpointObserver
+      .observe([`(max-width: ${this.responsiveSize}px)`])
+      .subscribe((result) => {
+        if (result.matches) {
+          this.isResponsiveView = true;
+        } else {
+          this.isResponsiveView = false;
+          if (this.openResponsiveDialog) {
+            this.openResponsiveDialog.close();
+            this.openResponsiveDialog = undefined;
+            this.responsiveDialog.emit(this.openResponsiveDialog);
+          }
         }
-      }
 
-      this.responsiveView.emit(this.isResponsiveView);
-    });
+        this.responsiveView.emit(this.isResponsiveView);
+      });
 
     this.subscription.add(breakpointUnsubscription);
   }
-
 }

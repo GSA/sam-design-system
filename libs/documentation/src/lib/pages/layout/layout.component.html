@@ -2,6 +2,7 @@
 <div class="margin-y-2">
   <button class="usa-button" (click)="updateConfig(false)">Default Sort Config</button>
   <button class="usa-button" (click)="updateConfig(true)">Update Sort Config</button>
+  <button class="usa-button" (click)="onSearchModelUpdate()">Update search results model</button>
   <hr />
 </div>
 
@@ -18,8 +19,9 @@
           </sds-accordion-item>
           <sds-accordion-item #filtersAccordion [expanded]="filtersExpanded">
             <sds-accordion-item-header>Filter By</sds-accordion-item-header>
-            <sds-filters [options]="options" [advancedFilters]="true" [sortMoreFilterBy]="'label'" [form]="form"
-              [fields]="fields" [model]="filterModel" (filterChange)="filterChange$.next($event)">
+            <sds-filters [options]="options" [advancedFilters]="true" [sortMoreFilterBy]="'label'"
+              [isHistoryEnable]="false" [form]="form" [fields]="fields" [model]="filterModel"
+              (filterChange)="filterChange$.next($event)">
             </sds-filters>
           </sds-accordion-item>
         </sds-accordion>
