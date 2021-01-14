@@ -9,7 +9,7 @@ export class DataService {
     this.data = registrationData._embedded.results;
     if (this.data) {
       if (search.filter) {
-        if (search.filter.keyword) {
+        if (search.filter[0].keyword || search.filter[0].location) {
           const toReturn = [];
           for (let i = 0; i < this.data.length; i++) {
             const item = this.data[i];
@@ -20,6 +20,19 @@ export class DataService {
                 .indexOf(search.filter.keyword.toLowerCase()) !== -1
             ) {
               toReturn.push(item);
+            } else if (search.filter[0].location) {
+              const location = search.filter[0].location;
+
+              if (location.country && item.address.country && item.address.country.toLowerCase().indexOf(location.country.toLowerCase()) > -1 ) {
+                toReturn.push(item);
+              } else if (location.state && location.state.length && item.address.state && 
+                location.state.find(state => item.address.state.toLowerCase().indexOf(state.id.toLowerCase()) > -1)) {
+                toReturn.push(item);
+              } else if (location.city && item.address.city && item.address.city.toLowerCase().indexOf(location.city.toLowerCase()) > -1) {
+                toReturn.push(item);
+              } else if (location.zipCode && item.address.zip && item.address.zip.toLowerCase().indexOf(location.city.toLowerCase()) > -1) {
+                toReturn.push(item);
+              }
             }
           }
           this.data = toReturn;

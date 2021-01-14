@@ -70,12 +70,6 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   totalItems: number;
   private formlySubscription: Subscription;
 
-  ngOnDestroy() {
-    if (this.formlySubscription) {
-      this.formlySubscription.unsubscribe();
-    }
-  }
-
   /**
    * Default Page setttings
    */
@@ -136,9 +130,15 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
       this.updateContent();
     });
     if (this.formlyUpdateComunicationService) {
-      this.formlyUpdateComunicationService.filterUpdate.subscribe((filter) => {
+      this.formlySubscription = this.formlyUpdateComunicationService.filterUpdate.subscribe((filter) => {
         this.updateFilter(filter);
       });
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.formlySubscription) {
+      this.formlySubscription.unsubscribe();
     }
   }
 
