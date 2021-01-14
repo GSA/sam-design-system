@@ -20,7 +20,7 @@ function main () {
   
   libNames.forEach(lib => {
     const distDir = resolve(rootDir, `dist/libs/${lib}/`);
-    execSync(`ng build ${lib}`, { stdio: 'inherit' });
+    execSync(`ng build ${lib} --prod`, { stdio: 'inherit' });
     execSync(`npm pack`, { cwd: distDir, stdio: 'inherit' });
 
     const tarballPath = findTarball(distDir);
