@@ -1,0 +1,8 @@
+<form [formGroup]="form">
+  <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
+</form>
+
+<div class="sam-example-pagination">
+  <h4>Filter Model:</h4>
+  <pre>{{ model ? (model |json) : ''}}</pre>
+</div>
