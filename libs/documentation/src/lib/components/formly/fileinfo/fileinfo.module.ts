@@ -28,7 +28,7 @@ export const ROUTES = [
   {
     path: '',
     data: {
-      title: 'Datepicker',
+      title: 'File Info',
       readme: {},
       items: [
         {
