@@ -232,12 +232,12 @@ export const ROUTES: Routes = [
   { path: 'components/system-alerts', children: SYSTEM_ALERT_ROUTES },
   { path: 'components/toasts', children: TOASTS_ROUTES },
   // Formly
-  { path: 'components/input', children: INPUT_ROUTES },
-  { path: 'components/textarea', children: TEXT_AREA_ROUTES },
-  { path: 'components/checkbox', children: CHECKBOX_ROUTES },
-  { path: 'components/multicheckbox', children: MULTI_CHECKBOX_ROUTES },
-  { path: 'components/radio', children: RADIO_ROUTES },
-  { path: 'components/select', children: SELECT_ROUTES },
+  { path: 'components/formly-input', children: INPUT_ROUTES },
+  { path: 'components/formly-textarea', children: TEXT_AREA_ROUTES },
+  { path: 'components/formly-checkbox', children: CHECKBOX_ROUTES },
+  { path: 'components/formly-multicheckbox', children: MULTI_CHECKBOX_ROUTES },
+  { path: 'components/formly-radio', children: RADIO_ROUTES },
+  { path: 'components/formly-select', children: SELECT_ROUTES },
   {
     path: 'components/formly-autocomplete',
     children: FORMLY_AUTOCOMPLETE_ROUTES,
@@ -248,7 +248,7 @@ export const ROUTES: Routes = [
   },
   { path: 'components/formly-datepicker', children: FORMLY_DATEPICKER_ROUTES },
   { path: 'components/text', children: TEXT_ROUTES },
-  { path: 'components/search-formly', children: SEARCH_FORMLY_ROUTES },
+  { path: 'components/formly-search', children: SEARCH_FORMLY_ROUTES },
 
   // Wrappers
   { path: 'components/form-field', children: FORM_FIELD_ROUTES },
