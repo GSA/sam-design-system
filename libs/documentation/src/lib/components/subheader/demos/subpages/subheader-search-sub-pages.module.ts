@@ -11,7 +11,7 @@ import {
   SdsFormlyDialogModule
 } from '@gsa-sam/sam-formly';
 import { SubheaderSearchSubPagesComponent } from './subheader-search-sub-pages.component';
-import { SdsButtonGroupModule } from 'libs/packages/sam-material-extensions/src/lib/button-group/button-group.module';
+import { SdsButtonGroupModule } from '@gsa-sam/sam-material-extensions';
 
 
 
