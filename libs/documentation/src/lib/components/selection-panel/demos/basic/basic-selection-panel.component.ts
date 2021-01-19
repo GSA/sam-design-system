@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationLink, SideNavigationModel } from '@gsa-sam/components';
-import { selectionPanelConfig } from '../../navigation.config'
+import { selectionPanelConfig } from './navigation.config'
 
 @Component({
   templateUrl: './basic-selection-panel.component.html',
