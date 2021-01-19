@@ -53,6 +53,6 @@ export const ROUTES = [
 })
 export class TextAreaModule {
   constructor(demoList: DocumentationDemoList) {
-    demoList.register('textarea', DEMOS);
+    demoList.register('formly-textarea', DEMOS);
   }
 }

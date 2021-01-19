@@ -76,6 +76,6 @@ export const ROUTES = [
 })
 export class MultiCheckboxModule {
   constructor(demoList: DocumentationDemoList) {
-    demoList.register('multicheckbox', DEMOS);
+    demoList.register('formly-multicheckbox', DEMOS);
   }
 }

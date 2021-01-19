@@ -53,6 +53,6 @@ export const ROUTES = [
 })
 export class SelectModule {
   constructor(demoList: DocumentationDemoList) {
-    demoList.register('select', DEMOS);
+    demoList.register('formly-select', DEMOS);
   }
 }

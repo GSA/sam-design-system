@@ -63,6 +63,6 @@ export const ROUTES = [
 })
 export class InputModule {
   constructor(demoList: DocumentationDemoList) {
-    demoList.register('input', DEMOS);
+    demoList.register('formly-input', DEMOS);
   }
 }

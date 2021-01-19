@@ -53,6 +53,6 @@ export const ROUTES = [
 })
 export class RadioModule {
   constructor(demoList: DocumentationDemoList) {
-    demoList.register('radio', DEMOS);
+    demoList.register('formly-radio', DEMOS);
   }
 }

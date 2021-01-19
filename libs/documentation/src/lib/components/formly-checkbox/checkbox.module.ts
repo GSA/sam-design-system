@@ -53,6 +53,6 @@ export const ROUTES = [
 })
 export class CheckboxModule {
   constructor(demoList: DocumentationDemoList) {
-    demoList.register('checkbox', DEMOS);
+    demoList.register('formly-checkbox', DEMOS);
   }
 }

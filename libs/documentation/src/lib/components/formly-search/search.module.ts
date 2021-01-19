@@ -73,6 +73,6 @@ export const ROUTES = [
 })
 export class FormlySearchModule {
   constructor(demoList: DocumentationDemoList) {
-    demoList.register('search-formly', DEMOS);
+    demoList.register('formly-search', DEMOS);
   }
 }
