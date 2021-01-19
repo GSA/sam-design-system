@@ -183,7 +183,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     queryObj['sort'] = this.sortField ? this.sortField.toString() : '';
     queryObj['sfm'] = this.filterData;
     const params = this.convertToParam(queryObj);
-    this.router.navigate(['.'], {
+    this.router.navigate([], {
       relativeTo: this.route,
       queryParams: params,
       // queryParamsHandling: "merge"
