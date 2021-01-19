@@ -43,8 +43,6 @@ export function parseDemo(globPath: string): Map<string, DemoMetadata> {
                 modules.set(
                     sourceFile.fileName,
                     {moduleClassName: className, bootstrap: {selector: '', fileName: '', className: matches[1]}});
-              } else {
-                // throw new Error(`Couldn't find any bootstrap components in ${className} in ${sourceFile.fileName}`);
               }
             }
 
@@ -78,7 +76,6 @@ export function parseDemo(globPath: string): Map<string, DemoMetadata> {
     const bootstrapMetadata = components.get(bootstrapComponent);
     if (!bootstrapMetadata) {
       modules.delete(key);
-      // throw new Error(`Couldn't get bootstrap component metadata for component ${bootstrapComponent}`);
     } else {
       metadata.bootstrap = bootstrapMetadata;
     }

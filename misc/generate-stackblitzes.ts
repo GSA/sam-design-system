@@ -112,9 +112,6 @@ modulesInfo.forEach((value, demoModule) => {
   for (const file of demoFiles) {
 
     const destFile = path.basename(file);
-    if (file.includes('header') && fs.lstatSync(file).isDirectory() ) {
-      console.log('DIRECTORY', file, destFile);
-    }
     try {
       stackblitzData.files.push({name: `src/app/${destFile}`, source: fs.readFileSync(file).toString()});
     } catch (exception) {
