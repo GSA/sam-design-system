@@ -160,7 +160,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
 
   /**
    * updates the filter and set the page number to 1 and calls imported service
-   * @param filter
+   * @param filter - the updated filter model
    */
   public updateFilter(filter: any) {
     this.filterData = filter;
@@ -295,6 +295,5 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
         this.filterUpdateModelService.updateModel({});
       }
     }
-    this.updateContent();
   }
 }

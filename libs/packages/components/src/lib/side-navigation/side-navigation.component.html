@@ -20,7 +20,10 @@
 
 <ng-template #sideNavRouteLinkTemplate let-link>
   <a [attr.class]="link.selected ? ' usa-current' : ''" [routerLink]="[link.route]" (click)="linkClickEvent(link)"
-    [queryParams]="link.queryParams"><span>{{link.text}}</span></a>
+    [queryParams]="link.queryParams" 
+    [queryParamsHandling]="link.queryParamsHandling ? link.queryParamsHandling : 'merge'">
+      <span>{{link.text}}</span>
+  </a>
 </ng-template>
 
 <ng-template #sideNavHREFLinkTemplate let-link>
