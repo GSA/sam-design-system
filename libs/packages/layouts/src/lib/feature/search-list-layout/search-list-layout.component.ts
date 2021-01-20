@@ -161,13 +161,12 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   /**
    * updates the filter and set the page number to 1 and calls imported service
    * @param filter - the updated filter model
-   * @param updateNavigation - Whether to perform a route navigation or not - defaults to true if not specified
    */
-  public updateFilter(filter: any, updateNavigation = true) {
+  public updateFilter(filter: any) {
     this.filterData = filter;
     this.page.pageNumber = this.page.default ? this.page.pageNumber : 1;
     this.page.default = filter ? false : true;
-    this.updateContent(updateNavigation);
+    this.updateContent();
   }
 
   updateNavigation() {
@@ -260,8 +259,8 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   /**
    * calls service when updated
    */
-  private updateContent(updateNavigation = true) {
-    if (this.isHistoryEnabled && updateNavigation) {
+  private updateContent() {
+    if (this.isHistoryEnabled) {
       this.updateNavigation();
     }
 
@@ -296,6 +295,5 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
         this.filterUpdateModelService.updateModel({});
       }
     }
-    this.updateContent();
   }
 }

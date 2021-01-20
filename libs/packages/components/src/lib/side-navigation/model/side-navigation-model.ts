@@ -1,3 +1,4 @@
+import { QueryParamsHandling } from '@angular/router';
 import { INavigationLink, NavigationMode, Selectable } from '../../common-navigation/common-navigation-model';
 
 export class SideNavigationModel {
@@ -50,6 +51,7 @@ export class NavigationLink implements Selectable, INavigationLink {
         [k: string]: any;
     }
 
+    queryParamsHandling?: QueryParamsHandling;
 }
 
 
