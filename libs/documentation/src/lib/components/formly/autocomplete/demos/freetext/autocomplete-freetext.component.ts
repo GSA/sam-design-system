@@ -45,11 +45,11 @@ export class FormlyAutocompleteFreetext {
   }
 
   setup() {
-    this.settings.id = 'autocomplete1';
+    this.settings.id = 'autocompleteFreeText';
     this.settings.primaryKeyField = 'id';
     this.settings.primaryTextField = 'name';
     this.settings.secondaryTextField = 'subtext';
-    this.settings.labelText = 'Autocomplete 1';
+    this.settings.labelText = 'Autocomplete Free Text';
     this.settings.selectionMode = SelectionMode.MULTIPLE;
     this.settings.autocompletePlaceHolderText = 'Enter text';
     this.settings.isFreeTextEnabled = true;

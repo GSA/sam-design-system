@@ -277,11 +277,13 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
         event.preventDefault();
       }
     } else if (KeyHelper.is(KEYS.DOWN, event)) {
+      event.preventDefault();
       this.onArrowGroupDown();
     } else if (KeyHelper.is(KEYS.UP, event)) {
       event.preventDefault();
       this.onArrowGroupUp();
     } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex >= 0) {
+      event.preventDefault();
       if (this.configuration.isTagModeEnabled) {
         const val = this.createFreeTextItem();
         this.selectItem(val);
@@ -373,15 +375,18 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    */
   private scrollToSelectedItem() {
     if (this.highlightedIndex >= 0) {
-      let selectedChild;
+      this._changeDetectorRef.detectChanges();
+      let selectedChild: HTMLDListElement;
       const dom = this.resultsListElement.nativeElement;
       selectedChild = dom.querySelector('.sds-autocomplete__item--highlighted');
       if (selectedChild) {
-        selectedChild.scrollIntoView({
-          behavior: 'smooth',
-          block: 'center',
-          inline: 'start'
-        });
+        const scrollOptions = {
+          left: 0,
+          top: selectedChild.offsetHeight * this.highlightedIndex,
+          behavior: 'smooth'
+        };
+
+        this.resultsListElement.nativeElement.scroll(scrollOptions);
       }
     }
   }
@@ -394,6 +399,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       if (this.highlightedIndex < this.results.length - 1) {
         this.highlightedIndex++;
       }
+
       this.setHighlightedItem(flat[this.highlightedIndex]);
       this.scrollToSelectedItem();
     }

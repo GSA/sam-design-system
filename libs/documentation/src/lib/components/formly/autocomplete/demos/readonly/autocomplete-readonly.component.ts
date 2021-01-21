@@ -45,7 +45,7 @@ export class FormlyAutocompleteReadOnly  {
   }
 
   setup() {
-    this.settings.id = 'autocomplete1';
+    this.settings.id = 'autocompleteReadonly';
     this.settings.primaryKeyField = 'id';
     this.settings.primaryTextField = 'name';
     this.settings.secondaryTextField = 'subtext';

@@ -26,6 +26,8 @@ export class FormlyAutocompleteDisable {
   };
   options: FormlyFormOptions = {};
   public settings = new SDSAutocompletelConfiguration();
+  public settings2 = new SDSAutocompletelConfiguration();
+
   public autocompleteMultipleModel = new SDSSelectedItemModel();
   private data = SampleAutocompleteData;
   public filterChange$ = new BehaviorSubject<object>(null);
@@ -39,7 +41,6 @@ export class FormlyAutocompleteDisable {
         {
           key: 'items1',
           type: 'autocomplete',
-
           templateOptions: {
             label: 'Generic Autocomplete',
             service: this.service,
@@ -62,7 +63,7 @@ export class FormlyAutocompleteDisable {
           templateOptions: {
             label: 'Auto Complete disabled using Expression properties until Previous Autocomplete is selected',
             service: this.service,
-            configuration: this.settings,
+            configuration: this.settings2,
           },
           expressionProperties: {
             'templateOptions.disabled': () => !this.model.filters.items1 || this.model.filters.items1.length === 0
@@ -88,7 +89,7 @@ export class FormlyAutocompleteDisable {
   }
 
   setup() {
-    this.settings.id = 'autocomplete1';
+    this.settings.id = 'autocompleteDisableSingle';
     this.settings.primaryKeyField = 'id';
     this.settings.primaryTextField = 'name';
     this.settings.secondaryTextField = 'subtext';
@@ -96,7 +97,15 @@ export class FormlyAutocompleteDisable {
     this.settings.selectionMode = SelectionMode.SINGLE;
     this.settings.autocompletePlaceHolderText = 'Enter text';
 
-    this.multipleSettings.id = 'autocomplete1';
+    this.settings2.id = 'autocompleteDisable2Single';
+    this.settings2.primaryKeyField = 'id';
+    this.settings2.primaryTextField = 'name';
+    this.settings2.secondaryTextField = 'subtext';
+    this.settings2.labelText = 'Autocomplete 2';
+    this.settings2.selectionMode = SelectionMode.SINGLE;
+    this.settings2.autocompletePlaceHolderText = 'Enter text';
+
+    this.multipleSettings.id = 'autocompleteDisableMultiple';
     this.multipleSettings.primaryKeyField = 'id';
     this.multipleSettings.primaryTextField = 'name';
     this.multipleSettings.secondaryTextField = 'subtext';

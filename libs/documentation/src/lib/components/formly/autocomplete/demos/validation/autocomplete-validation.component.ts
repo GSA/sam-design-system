@@ -66,7 +66,7 @@ export class FormlyAutocompleteValidation {
   }
 
   setup() {
-    this.settings.id = 'autocomplete1';
+    this.settings.id = 'autocompleteValidationSingle';
     this.settings.primaryKeyField = 'id';
     this.settings.primaryTextField = 'name';
     this.settings.secondaryTextField = 'subtext';
@@ -74,7 +74,7 @@ export class FormlyAutocompleteValidation {
     this.settings.selectionMode = SelectionMode.SINGLE;
     this.settings.autocompletePlaceHolderText = 'Enter text';
 
-    this.multipleSettings.id = 'autocomplete1';
+    this.multipleSettings.id = 'autocompleteValidationMultiple';
     this.multipleSettings.primaryKeyField = 'id';
     this.multipleSettings.primaryTextField = 'name';
     this.multipleSettings.secondaryTextField = 'subtext';
