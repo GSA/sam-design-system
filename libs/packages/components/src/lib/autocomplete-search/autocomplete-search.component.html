@@ -1,8 +1,33 @@
-<div sds-click-outside (clickOutside)="checkForFocus($event)" sds-tab-outside (tabOutside)="checkForFocus($event)">
-    <div class="maxw-mobile-lg position-relative">
-        <div role="combobox" [attr.id]="configuration.id + '-container'" [attr.aria-expanded]="showResults" [attr.aria-owns]="showResults ? configuration.id + '-listbox' : undefined" aria-haspopup="listbox">
-            <input [disabled]="disabled" (keypress)="onkeypress($event)" (input)="textChange($event)" class="usa-input padding-right-3" [ngClass]="getClass()" #input [attr.aria-label]="configuration.ariaLabelText" [attr.id]="configuration.id" type="text" (focus)="inputFocusHandler()"
-                (keydown)="onKeydown($event)" [(ngModel)]="inputValue" aria-autocomplete="list" [attr.placeholder]="configuration.autocompletePlaceHolderText" [attr.aria-activedescendant]="
+<div
+  sds-click-outside
+  (clickOutside)="checkForFocus($event)"
+  sds-tab-outside
+  (tabOutside)="checkForFocus($event)"
+>
+  <div class="maxw-mobile-lg position-relative">
+    <div
+      [attr.id]="configuration.id + '-container'"
+    >
+      <input
+        role="combobox"
+        [attr.aria-expanded]="showResults"
+        [attr.aria-owns]="showResults ? configuration.id + '-listbox' : undefined"
+        aria-haspopup="listbox"
+        [disabled]="disabled"
+        (keypress)="onkeypress($event)"
+        (input)="textChange($event)"
+        class="usa-input padding-right-3"
+        [ngClass]="getClass()"
+        #input
+        [attr.aria-label]="configuration.ariaLabelText"
+        [attr.id]="configuration.id"
+        type="text"
+        (focus)="inputFocusHandler()"
+        (keydown)="onKeydown($event)"
+        aria-autocomplete="list"
+        [(ngModel)]="inputValue"
+        [attr.placeholder]="configuration.autocompletePlaceHolderText"
+        [attr.aria-activedescendant]="
           showResults
             ? configuration.id + '-resultItem-' + highlightedIndex
             : ''
@@ -46,8 +71,16 @@
                             </ng-container>
                         </div>
 
-                        <ul class="usa-list usa-list--unstyled" #childrenList [attr.id]="configuration.id + '-childrenlistbox-'" role="listbox">
-                            <li [attr.id]="configuration.id + '-childItem-' + j" role="option" [ngClass]="{
+            <ul
+              class="usa-list usa-list--unstyled"
+              #childrenList
+              [attr.id]="configuration.id + '-childrenlistbox-' + i"
+              role="listbox"
+            >
+              <li
+                [attr.id]="configuration.id + '-childItem-' + j"
+                role="option"
+                [ngClass]="{
                   'sds-autocomplete__group':
                     child[configuration.groupByChild]?.length,
                   'sds-autocomplete__item': !child[configuration.groupByChild]

@@ -3,7 +3,8 @@ import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-  templateUrl: './validationwrapper-basic.component.html'
+  templateUrl: './validationwrapper-basic.component.html',
+  selector: `sds-validationwrapper-basic-demo`,
 })
 
 export class ValidationWrapperBasic {

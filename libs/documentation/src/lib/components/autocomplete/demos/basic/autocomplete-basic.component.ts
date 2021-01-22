@@ -4,12 +4,13 @@ import {
   SDSSelectedItemModel,
   SelectionMode
 } from '@gsa-sam/components';
-import { SampleAutocompleteData } from './service/autocomplete-sample.data';
-import { AutocompleteSampleDataService } from './service/autocomplete-sample.service';
+import { SampleAutocompleteData } from './autocomplete-sample.data';
+import { AutocompleteSampleDataService } from './autocomplete-sample.service';
 
 @Component({
   templateUrl: './autocomplete-basic.component.html',
   styleUrls: ['./autocomplete-basic.component.scss'],
+  selector: `sds-autocomplete-basic-demo`,
   providers: [AutocompleteSampleDataService]
 })
 export class AutocompleteBasic implements OnInit {
@@ -31,7 +32,7 @@ export class AutocompleteBasic implements OnInit {
   ngOnInit() {}
 
   setup() {
-    this.settings.id = 'autocomplete1';
+    this.settings.id = 'autocompleteBasic';
     this.settings.primaryKeyField = 'id';
     this.settings.primaryTextField = 'name';
     this.settings.secondaryTextField = 'subtext';
@@ -40,7 +41,7 @@ export class AutocompleteBasic implements OnInit {
     this.settings.autocompletePlaceHolderText = 'Enter text';
 
     this.settings3.primaryKeyField = 'id';
-    this.settings3.id = 'autocomplete3';
+    this.settings3.id = 'autocompleteBasic3';
     this.settings3.labelText = 'Autocomplete 3';
     this.settings3.primaryTextField = 'name';
     this.settings3.secondaryTextField = 'subtext';

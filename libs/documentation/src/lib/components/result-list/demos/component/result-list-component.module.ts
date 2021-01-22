@@ -6,8 +6,8 @@ import { SdsSearchResultListModule } from '@gsa-sam/components';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SdsActionsMenuModule } from '@gsa-sam/layouts';
 import { ResultListComponent } from './result-list-component.component';
-import { ResultListItemSampleComponent } from './item/item.component';
-import { ResultListItemChildSampleComponent } from './item/child-item/child-item.component';
+import { ResultListItemSampleComponent } from './item.component';
+import { ResultListItemChildSampleComponent } from './child-item.component';
 
 @NgModule({
   declarations: [

@@ -277,11 +277,13 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
         event.preventDefault();
       }
     } else if (KeyHelper.is(KEYS.DOWN, event)) {
+      event.preventDefault();
       this.onArrowGroupDown();
     } else if (KeyHelper.is(KEYS.UP, event)) {
       event.preventDefault();
       this.onArrowGroupUp();
     } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex >= 0) {
+      event.preventDefault();
       if (this.configuration.isTagModeEnabled) {
         const val = this.createFreeTextItem();
         this.selectItem(val);
@@ -368,36 +370,37 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     flatten(results);
     return flat;
   }
+  
   /**
    * When paging up and down with arrow key it sets the highlighted item into view
    */
   private scrollToSelectedItem() {
     if (this.highlightedIndex >= 0) {
-      let selectedChild;
+      this._changeDetectorRef.detectChanges();;
       const dom = this.resultsListElement.nativeElement;
-      selectedChild = dom.querySelector('.sds-autocomplete__item--highlighted');
+      const selectedChild = dom.querySelector('.sds-autocomplete__item--highlighted');
       if (selectedChild) {
-        selectedChild.scrollIntoView({
-          behavior: 'smooth',
-          block: 'center',
-          inline: 'start'
-        });
+        // Manually set scroll top rather than invoke scroll functions for browser compatibility
+        const containerCenter = this.resultsListElement.nativeElement.getBoundingClientRect().height / 2;
+        this.resultsListElement.nativeElement.scrollTop = selectedChild.offsetTop - containerCenter;
       }
     }
   }
+
   /**
    *  handles the arrow down key event
    */
   private onArrowGroupDown(): void {
     if (this.results && this.results.length > 0) {
       const flat = this.getFlatElements();
-      if (this.highlightedIndex < this.results.length - 1) {
+      if (this.highlightedIndex < flat.length - 1) {
         this.highlightedIndex++;
       }
       this.setHighlightedItem(flat[this.highlightedIndex]);
       this.scrollToSelectedItem();
     }
   }
+
   /**
    *  handles the arrow up key event
    */

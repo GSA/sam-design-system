@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  templateUrl: './borderless.component.html'
+  templateUrl: './borderless.component.html',
+  selector: `sds-table-borderless-demo`,
 })
 
 export class TableBorderlessComponent {

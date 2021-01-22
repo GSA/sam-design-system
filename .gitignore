@@ -31,6 +31,7 @@ yarn-error.log
 testem.log
 /typings
 /documentation
+apps/sam-design-system-site/src/assets/stackblitzes
 
 # System Files
 .DS_Store
