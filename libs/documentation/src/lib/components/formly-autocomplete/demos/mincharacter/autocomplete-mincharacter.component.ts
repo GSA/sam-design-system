@@ -46,7 +46,7 @@ export class FormlyAutocompleteMinCharacter  {
   }
 
   setup() {
-    this.settings.id = 'autocomplete1';
+    this.settings.id = 'autocompleteMinchar';
     this.settings.primaryKeyField = 'id';
     this.settings.primaryTextField = 'name';
     this.settings.secondaryTextField = 'subtext';

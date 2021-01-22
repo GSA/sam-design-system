@@ -54,7 +54,7 @@ export class FormlyAutocompleteBasic implements OnInit {
   }
 
   setup() {
-    this.settings.id = 'autocomplete1';
+    this.settings.id = 'autocompleteBasic';
     this.settings.primaryKeyField = 'id';
     this.settings.primaryTextField = 'name';
     this.settings.secondaryTextField = 'subtext';

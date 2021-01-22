@@ -6,13 +6,13 @@
 >
   <div class="maxw-mobile-lg position-relative">
     <div
-      role="combobox"
       [attr.id]="configuration.id + '-container'"
-      [attr.aria-expanded]="showResults"
-      [attr.aria-owns]="showResults ? configuration.id + '-listbox' : undefined"
-      aria-haspopup="listbox"
     >
       <input
+        role="combobox"
+        [attr.aria-expanded]="showResults"
+        [attr.aria-owns]="showResults ? configuration.id + '-listbox' : undefined"
+        aria-haspopup="listbox"
         [disabled]="disabled"
         (keypress)="onkeypress($event)"
         (input)="textChange($event)"
@@ -24,8 +24,8 @@
         type="text"
         (focus)="inputFocusHandler()"
         (keydown)="onKeydown($event)"
-        [(ngModel)]="inputValue"
         aria-autocomplete="list"
+        [(ngModel)]="inputValue"
         [attr.placeholder]="configuration.autocompletePlaceHolderText"
         [attr.aria-activedescendant]="
           showResults
@@ -100,7 +100,7 @@
             <ul
               class="usa-list usa-list--unstyled"
               #childrenList
-              [attr.id]="configuration.id + '-childrenlistbox-'"
+              [attr.id]="configuration.id + '-childrenlistbox-' + i"
               role="listbox"
             >
               <li
