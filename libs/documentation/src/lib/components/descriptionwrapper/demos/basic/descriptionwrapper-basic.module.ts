@@ -1,4 +1,4 @@
-import { SdsFormlyModule } from '../../../../../../../packages/sam-formly/src/lib/formly/formly.module';
+import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
 import { NgModule } from '@angular/core';
 import { DescriptionWrapperBasic } from './descriptionwrapper-basic.component';

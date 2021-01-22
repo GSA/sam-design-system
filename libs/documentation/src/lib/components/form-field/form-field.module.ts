@@ -14,7 +14,7 @@ import { FormFieldBasicModule } from './demos/basic/form-field-basic.module';
 
 declare var require: any;
 const DEMOS = {
-  formfield: {
+  basic: {
     title: 'Basic Form Field',
     type: FormFieldBasic,
     code: require('!!raw-loader!./demos/basic/form-field-basic.component'),

@@ -3,7 +3,8 @@ import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-  templateUrl: './group-accordion.component.html'
+  templateUrl: './group-accordion.component.html',
+  selector: `sds-groupwrappers-accordion-demo`,
 })
 
 export class GroupAccordion {

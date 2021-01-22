@@ -16,14 +16,14 @@ import { GroupPanel } from './demos/panel/group-panel.component';
 
 declare var require: any;
 const DEMOS = {
-  formfield: {
+  panel: {
     title: 'Group with Panel',
     type: GroupPanel,
     code: require('!!raw-loader!./demos/panel/group-panel.component'),
     markup: require('!!raw-loader!./demos/panel/group-panel.component.html'),
     path: 'libs/documentation/src/lib/components/groupwrappers/demos/panel'
   },
-  optionalformfield: {
+  accordion: {
     title: 'Group with Accordion',
     type: GroupAccordion,
     code: require('!!raw-loader!./demos/accordion/group-accordion.component'),
@@ -67,6 +67,6 @@ export const ROUTES = [
 })
 export class GroupWrappersModule {
   constructor(demoList: DocumentationDemoList) {
-    demoList.register('group', DEMOS);
+    demoList.register('groupwrappers', DEMOS);
   }
 }

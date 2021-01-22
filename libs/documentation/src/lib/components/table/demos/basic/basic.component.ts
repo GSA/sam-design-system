@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  templateUrl: './basic.component.html'
+  templateUrl: './basic.component.html',
+  selector: `sds-table-basic-demo`,
 })
 
 export class TableBasicComponent {

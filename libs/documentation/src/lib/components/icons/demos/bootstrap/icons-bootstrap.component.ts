@@ -4,7 +4,8 @@ import { kebabCase } from 'lodash-es';
 
 @Component({
   templateUrl: './icons-bootstrap.component.html',
-  styleUrls: ['./icons-bootstrap.component.scss']
+  styleUrls: ['./icons-bootstrap.component.scss'],
+  selector: `sds-icons-bootstrap-demo`,
 })
 export class IconsBootstrap {
   bootstrapIcons = Object.keys(allIcons)
