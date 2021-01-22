@@ -47,7 +47,7 @@
         "nx": "nx",
         "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
         "demo:stackblitzes": "ts-node --project misc/tsconfig.json misc/generate-stackblitzes.ts",
-        "demo:stackblitzes-federalist": "ts-node --project misc/tsconfig.json misc/generate-stackblitzes.ts --federalist"    
+        "demo:stackblitzes-federalist": "ts-node --project misc/tsconfig.json misc/generate-stackblitzes.ts --federalist"
     },
     "private": true,
     "dependencies": {
@@ -69,7 +69,7 @@
         "@fortawesome/fontawesome-svg-core": "^1.2.34",
         "@fortawesome/free-brands-svg-icons": "^5.15.2",
         "@fortawesome/free-solid-svg-icons": "^5.15.2",
-        "@gsa-sam/sam-styles": "0.0.94",
+        "@gsa-sam/sam-styles": "0.0.96",
         "@ngx-formly/core": "^5.10.2",
         "@ngx-formly/schematics": "^5.10.1",
         "@nrwl/angular": "^10.4.10",
