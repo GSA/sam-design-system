@@ -19,7 +19,7 @@ export class AutocompleteSelectGroup {
   }
 
   setup() {
-    this.settings.id = 'autocomplete1';
+    this.settings.id = 'autocompleteSelectGroup';
     this.settings.primaryKeyField = 'element_id';
     this.settings.primaryTextField = 'value';
     this.settings.labelText = 'Autocomplete 1';
