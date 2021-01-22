@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import tableDataFull from '../data';
+import tableDataFull from './data';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
   templateUrl: './full.component.html',
-  styleUrls: [ './full.component.scss' ]
+  styleUrls: [ './full.component.scss' ],
+  selector: `sds-table-full-demo`,
 })
 
 export class TableFullComponent {

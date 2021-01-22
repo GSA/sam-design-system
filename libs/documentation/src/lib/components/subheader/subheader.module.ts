@@ -8,53 +8,53 @@ import {
   DocumentationDemoList
 } from './../shared/index';
 import { ComponentWrapperComponent } from './../../shared/component-wrapper/component-wrapper.component';
-import { SubheaderBasicDisplayModule } from './demos/basic-display/subheader-basic-display.module';
-import { SubheaderDataEntryComponent } from './demos/data-entry/subheader-data-entry.component';
-import { SubheaderDataEntryModule } from './demos/data-entry/subheader-data-entry.module';
-import { SubheaderBasicDisplayComponent } from './demos/basic-display/subheader-basic-display.component';
+import { SubheaderBasicDisplayModule } from './demos/basic/subheader-basic-display.module';
+import { SubheaderDataEntryComponent } from './demos/dataentry/subheader-data-entry.component';
+import { SubheaderDataEntryModule } from './demos/dataentry/subheader-data-entry.module';
+import { SubheaderBasicDisplayComponent } from './demos/basic/subheader-basic-display.component';
 import { SubheaderSearchComponent } from './demos/search/subheader-search.component';
 import { SubheaderSearchModule } from './demos/search/subheader-search.module';
-import { SubheaderSearchSubPagesModule } from './demos/search-sub-pages/subheader-search-sub-pages.module';
-import { SubheaderTier2WorkspaceComponent } from './demos/tier-2-workspace/subheader-tier-2-workspace.component';
-import { SubheaderTier2WorkspaceModule } from './demos/tier-2-workspace/subheader-tier-2-workspace.module';
-import { SubheaderSearchSubPagesComponent } from './demos/search-sub-pages/subheader-search-sub-pages.component';
+import { SubheaderSearchSubPagesModule } from './demos/subpages/subheader-search-sub-pages.module';
+import { SubheaderTier2WorkspaceComponent } from './demos/workspace/subheader-tier-2-workspace.component';
+import { SubheaderTier2WorkspaceModule } from './demos/workspace/subheader-tier-2-workspace.module';
+import { SubheaderSearchSubPagesComponent } from './demos/subpages/subheader-search-sub-pages.component';
 
 declare var require: any;
 const DEMOS = {
-  subheaderBasicDisplay: {
+  basic: {
     title: 'Basic Display',
     type: SubheaderBasicDisplayComponent,
-    code: require('!!raw-loader!./demos/basic-display/subheader-basic-display.component'),
-    markup: require('!!raw-loader!./demos/basic-display/subheader-basic-display.component.html'),
-    path: 'libs/documentation/src/lib/components/subheader/demos/subheader-basic-display'
+    code: require('!!raw-loader!./demos/basic/subheader-basic-display.component'),
+    markup: require('!!raw-loader!./demos/basic/subheader-basic-display.component.html'),
+    path: 'libs/documentation/src/lib/components/subheader/demos/basic'
   },
-  subheaderDataEntry: {
+  dataentry: {
     title: 'Data Entry',
     type: SubheaderDataEntryComponent,
-    code: require('!!raw-loader!./demos/data-entry/subheader-data-entry.component'),
-    markup: require('!!raw-loader!./demos/data-entry/subheader-data-entry.component.html'),
-    path: 'libs/documentation/src/lib/components/subheader/demos/subheader-data-entry'
+    code: require('!!raw-loader!./demos/dataentry/subheader-data-entry.component'),
+    markup: require('!!raw-loader!./demos/dataentry/subheader-data-entry.component.html'),
+    path: 'libs/documentation/src/lib/components/subheader/demos/dataentry'
   },
-  subheaderSearch: {
+  search: {
     title: 'Search',
     type: SubheaderSearchComponent,
     code: require('!!raw-loader!./demos/search/subheader-search.component'),
     markup: require('!!raw-loader!./demos/search/subheader-search.component.html'),
     path: 'libs/documentation/src/lib/components/subheader/demos/subheader-search'
   },
-  subheaderWiethSubPages: {
+  subpages: {
     title: 'Search with Sub-Pages',
     type: SubheaderSearchSubPagesComponent,
-    code: require('!!raw-loader!./demos/search-sub-pages/subheader-search-sub-pages.component'),
-    markup: require('!!raw-loader!./demos/search-sub-pages/subheader-search-sub-pages.component.html'),
-    path: 'libs/documentation/src/lib/components/subheader/demos/search-sub-pages'
+    code: require('!!raw-loader!./demos/subpages/subheader-search-sub-pages.component'),
+    markup: require('!!raw-loader!./demos/subpages/subheader-search-sub-pages.component.html'),
+    path: 'libs/documentation/src/lib/components/subheader/demos/subpages'
   },
-  subheaderTier2Workspace: {
+  workspace: {
     title: 'Tier 2 Workspace',
     type: SubheaderTier2WorkspaceComponent,
-    code: require('!!raw-loader!./demos/tier-2-workspace/subheader-tier-2-workspace.component'),
-    markup: require('!!raw-loader!./demos/tier-2-workspace/subheader-tier-2-workspace.component.html'),
-    path: 'libs/documentation/src/lib/components/subheader/demos/tier-2-workspace'
+    code: require('!!raw-loader!./demos/workspace/subheader-tier-2-workspace.component'),
+    markup: require('!!raw-loader!./demos/workspace/subheader-tier-2-workspace.component.html'),
+    path: 'libs/documentation/src/lib/components/subheader/demos/workspace'
   }
 };
 

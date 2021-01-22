@@ -4,6 +4,7 @@ import { ToastrService,GlobalConfig } from 'ngx-toastr';
 @Component({
   templateUrl: './toasts-basic.component.html',
   styleUrls: ['./toasts-basic.component.scss'],
+  selector: `sds-toasts-basic-demo`,
   encapsulation: ViewEncapsulation.None
 })
 export class ToastsBasic {

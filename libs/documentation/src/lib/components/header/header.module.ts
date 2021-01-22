@@ -11,11 +11,11 @@ import {
 } from './../shared/index';
 import { ComponentWrapperComponent } from './../../shared/component-wrapper/component-wrapper.component';
 import { HeaderBasicModule } from './demos/basic/header-basic.module';
-import { HeaderHiddenLogoComponent } from './demos/header-hidden-logo/header-hidden-logo.component';
+import { HeaderHiddenLogoComponent } from './demos/hiddenlogo/header-hidden-logo.component';
 import { SdsHeaderModule } from '@gsa-sam/layouts';
-import { HeaderAlertsComponent } from './demos/header-alerts/header-alerts.component';
-import { HeaderHiddenLogoModule } from './demos/header-hidden-logo/header-hidden-logo.module';
-import { HeaderAlertsModule } from './demos/header-alerts/header-alerts.module';
+import { HeaderAlertsComponent } from './demos/alerts/header-alerts.component';
+import { HeaderHiddenLogoModule } from './demos/hiddenlogo/header-hidden-logo.module';
+import { HeaderAlertsModule } from './demos/alerts/header-alerts.module';
 
 export declare var require: any;
 
@@ -28,20 +28,20 @@ const DEMOS = {
     readme: require('!!raw-loader!./demos/basic/readme.md'),
     path: 'libs/documentation/src/lib/components/header/demos/basic'
   },
-  hiddenLogo: {
+  hiddenlogo: {
     title: 'SAM Header - Blank SAM Logo',
     type: HeaderHiddenLogoComponent,
-    code: require('!!raw-loader!./demos/header-hidden-logo/header-hidden-logo.component'),
-    markup: require('!!raw-loader!./demos/header-hidden-logo/header-hidden-logo.component.html'),
-    path: 'libs/documentation/src/lib/components/header/demos/header-hidden-logo'
+    code: require('!!raw-loader!./demos/hiddenlogo/header-hidden-logo.component'),
+    markup: require('!!raw-loader!./demos/hiddenlogo/header-hidden-logo.component.html'),
+    path: 'libs/documentation/src/lib/components/header/demos/hiddenlogo'
   }
   ,
-  systemAlerts: {
+  alerts: {
     title: 'SAM Header - System Alerts',
     type: HeaderAlertsComponent,
-    code: require('!!raw-loader!./demos/header-alerts/header-alerts.component'),
-    markup: require('!!raw-loader!./demos/header-alerts/header-alerts.component.html'),
-    path: 'libs/documentation/src/lib/components/header/demos/header-alerts'
+    code: require('!!raw-loader!./demos/alerts/header-alerts.component'),
+    markup: require('!!raw-loader!./demos/alerts/header-alerts.component.html'),
+    path: 'libs/documentation/src/lib/components/header/demos/alerts'
   }
 };
 

@@ -14,7 +14,7 @@ import { DescriptionWrapperBasicModule } from './demos/basic/descriptionwrapper-
 
 declare var require: any;
 const DEMOS = {
-  formfield: {
+  basic: {
     title: 'Description Wrapper',
     type: DescriptionWrapperBasic,
     code: require('!!raw-loader!./demos/basic/descriptionwrapper-basic.component'),
@@ -57,6 +57,6 @@ export const ROUTES = [
 })
 export class DescriptionWrapperModule {
   constructor(demoList: DocumentationDemoList) {
-    demoList.register('description', DEMOS);
+    demoList.register('descriptionwrapper', DEMOS);
   }
 }

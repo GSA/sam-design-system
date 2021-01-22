@@ -5,8 +5,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   SdsFiltersModule,
-  SdsFormlyDialogModule
+  SdsFormlyDialogModule,
+  SdsFormlyModule
 } from '@gsa-sam/sam-formly';
+import { SdsDialogModule } from '@gsa-sam/components';
 
 @NgModule({
   imports: [
@@ -15,7 +17,10 @@ import {
     FormsModule,
     SdsFiltersModule,
     SdsFormlyDialogModule,
-    FormlyModule.forRoot()
+    FormlyModule.forRoot(),
+    SdsFormlyModule,
+    SdsDialogModule,
+    SdsFormlyDialogModule,
   ],
   declarations: [FiltersConfig],
   exports: [FiltersConfig],

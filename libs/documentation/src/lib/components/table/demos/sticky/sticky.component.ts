@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  templateUrl: './sticky.component.html'
+  templateUrl: './sticky.component.html',
+  selector: `sds-table-sticky-demo`,
 })
 
 export class TableStickyComponent {

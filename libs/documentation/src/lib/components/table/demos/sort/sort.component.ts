@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  templateUrl: './sort.component.html'
+  templateUrl: './sort.component.html',
+  selector: `sds-table-sort-demo`,
 })
 
 export class TableSortComponent {

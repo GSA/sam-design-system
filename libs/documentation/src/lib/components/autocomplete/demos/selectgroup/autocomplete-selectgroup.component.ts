@@ -4,10 +4,11 @@ import {
   SDSSelectedItemModel,
   SelectionMode
 } from '@gsa-sam/components';
-import { AutocompleteSampleDataService } from './service/autocomplete-sample.service';
+import { AutocompleteSampleDataService } from './autocomplete-sample.service';
 
 @Component({
   templateUrl: './autocomplete-selectgroup.component.html',
+  selector: `sds-autocomplete-selectgroup-demo`,
   providers: [AutocompleteSampleDataService]
 })
 export class AutocompleteSelectGroup {
@@ -19,7 +20,7 @@ export class AutocompleteSelectGroup {
   }
 
   setup() {
-    this.settings.id = 'autocomplete1';
+    this.settings.id = 'autocompleteSelectGroup';
     this.settings.primaryKeyField = 'element_id';
     this.settings.primaryTextField = 'value';
     this.settings.labelText = 'Autocomplete 1';

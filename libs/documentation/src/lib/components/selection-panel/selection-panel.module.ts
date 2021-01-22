@@ -9,18 +9,18 @@ import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationExamplesPage } from '../shared/examples-page/examples.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
-import { BasicSelectionPanelComponent } from './demos/basic-selection-panel/basic-selection-panel.component';
-import { BasicSelectionPanelModule } from './demos/basic-selection-panel/basic-selection-panel.module';
+import { BasicSelectionPanelComponent } from './demos/basic/basic-selection-panel.component';
+import { BasicSelectionPanelModule } from './demos/basic/basic-selection-panel.module';
 
 declare var require: any;
 const DEMOS = {
-  optional: {
+  basic: {
     title: 'Basic Selection Panel',
     type: BasicSelectionPanelComponent,
-    code: require('!!raw-loader!./demos/basic-selection-panel/basic-selection-panel.component'),
-    markup: require('!!raw-loader!./demos/basic-selection-panel/basic-selection-panel.component.html'),
+    code: require('!!raw-loader!./demos/basic/basic-selection-panel.component'),
+    markup: require('!!raw-loader!./demos/basic/basic-selection-panel.component.html'),
     path:
-      'libs/documentation/src/lib/components/selection-panel/demos/basic-selection-panel'
+      'libs/documentation/src/lib/components/selection-panel/demos/basic'
   }
 };
 

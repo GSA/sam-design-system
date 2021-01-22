@@ -6,7 +6,8 @@ import { LocationStrategy } from '@angular/common';
 
 @Component({
   templateUrl: './header-basic.component.html',
-  styleUrls: ['./header-basic.component.scss']
+  styleUrls: ['./header-basic.component.scss'],
+  selector: `sds-header-basic-demo`,
 })
 export class HeaderBasic implements OnInit {
 
