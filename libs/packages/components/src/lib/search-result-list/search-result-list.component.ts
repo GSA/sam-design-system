@@ -19,21 +19,20 @@ export class SdsSearchResultListComponent implements OnInit {
    */
   @Input() customResultsTemplate: TemplateRef<any>;
 
-  initialLoad = false;
+  initialLoad: boolean;
   /**
    * Model for search results
    */
   @Input('model')
   set model(value) {
     if (Array.isArray(value)) {
-      this.initialLoad = false;
-
       const items = value;
       this.updateModel = new SearchModel();
       this.updateModel.results = items;
     } else {
       this.updateModel = value;
     }
+    if (this.updateModel.results.length > 0) this.initialLoad = false;
   }
 
   /**
@@ -41,7 +40,7 @@ export class SdsSearchResultListComponent implements OnInit {
    */
   @Input() divider = true;
 
-  constructor(private _location: Location) {}
+  constructor(private _location: Location) { }
 
   ngOnInit() {
     this.initialLoad = true;
