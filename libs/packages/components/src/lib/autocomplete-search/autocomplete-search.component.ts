@@ -370,40 +370,37 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     flatten(results);
     return flat;
   }
+  
   /**
    * When paging up and down with arrow key it sets the highlighted item into view
    */
   private scrollToSelectedItem() {
     if (this.highlightedIndex >= 0) {
-      this._changeDetectorRef.detectChanges();
-      let selectedChild: HTMLDListElement;
+      this._changeDetectorRef.detectChanges();;
       const dom = this.resultsListElement.nativeElement;
-      selectedChild = dom.querySelector('.sds-autocomplete__item--highlighted');
+      const selectedChild = dom.querySelector('.sds-autocomplete__item--highlighted');
       if (selectedChild) {
-        const scrollOptions = {
-          left: 0,
-          top: selectedChild.offsetHeight * this.highlightedIndex,
-          behavior: 'smooth'
-        };
-
-        this.resultsListElement.nativeElement.scroll(scrollOptions);
+        // Manually set scroll top rather than invoke scroll functions for browser compatibility
+        const containerCenter = this.resultsListElement.nativeElement.getBoundingClientRect().height / 2;
+        this.resultsListElement.nativeElement.scrollTop = selectedChild.offsetTop - containerCenter;
       }
     }
   }
+
   /**
    *  handles the arrow down key event
    */
   private onArrowGroupDown(): void {
     if (this.results && this.results.length > 0) {
       const flat = this.getFlatElements();
-      if (this.highlightedIndex < this.results.length - 1) {
+      if (this.highlightedIndex < flat.length - 1) {
         this.highlightedIndex++;
       }
-
       this.setHighlightedItem(flat[this.highlightedIndex]);
       this.scrollToSelectedItem();
     }
   }
+
   /**
    *  handles the arrow up key event
    */
