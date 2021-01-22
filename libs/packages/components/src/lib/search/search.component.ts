@@ -34,6 +34,9 @@ export class SearchSettings {
       multi: true
     }
   ],
+  styles: [`input::-ms-clear {
+    display: none;
+}`],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
@@ -54,14 +57,14 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
     initial: { visible: undefined },
     visible: undefined
   };
-  private _onChange = (_: any) => {};
-  private _onTouched = () => {};
+  private _onChange = (_: any) => { };
+  private _onTouched = () => { };
 
   constructor(
     private cd: ChangeDetectorRef,
     private focusMonitor: FocusMonitor,
     private viewportRuler: ViewportRuler
-  ) {}
+  ) { }
 
   ngAfterViewInit() {
     this.inputState.initial.visible = this.isInputVisible();
@@ -164,8 +167,8 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
     const rightPosition = buttonElement.getBoundingClientRect().left;
     const leftPosition = this.searchSettings.parentSelector
       ? inputElement
-          .closest(this.searchSettings.parentSelector)
-          .getBoundingClientRect().left
+        .closest(this.searchSettings.parentSelector)
+        .getBoundingClientRect().left
       : 0;
     return Math.floor(rightPosition - leftPosition - leftPadding);
   }
