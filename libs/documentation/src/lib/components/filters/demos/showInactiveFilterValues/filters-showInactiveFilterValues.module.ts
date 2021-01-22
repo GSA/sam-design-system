@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SdsFiltersModule } from '@gsa-sam/sam-formly';
+import { SdsFiltersModule, SdsFormlyDialogModule, SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
-import { SdsAccordionModule } from '@gsa-sam/components';
+import { SdsAccordionModule, SdsDialogModule } from '@gsa-sam/components';
 import { FiltersShowInactiveFilterValues } from './filters-showInactiveFilterValues.component';
 
 @NgModule({
@@ -14,7 +14,10 @@ import { FiltersShowInactiveFilterValues } from './filters-showInactiveFilterVal
     SdsAccordionModule,
     SdsFiltersModule,
     FormlyModule.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SdsDialogModule,
+    SdsFormlyModule,
+    SdsFormlyDialogModule,
   ],
   exports: [FiltersShowInactiveFilterValues],
   bootstrap: [FiltersShowInactiveFilterValues]

@@ -1,0 +1,42 @@
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { RouterModule } from '@angular/router';
+import {
+  FontAwesomeModule,
+  FaIconLibrary,
+} from '@fortawesome/angular-fontawesome';
+import { sds } from '@gsa-sam/sam-styles/src/icons/';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { AppComponent } from './app.component';
+import { MarkdownModule } from 'ngx-markdown';
+import { ToastrModule } from 'ngx-toastr';
+import {
+  SdsToastComponent,
+  SdsToastModule,
+  SdsToastSettings,
+} from '@gsa-sam/components';
+import {<%=moduleClassName%>} from '<%=modulePath%>';
+
+@NgModule({
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    RouterModule.forRoot([]),
+    SdsToastModule,
+    ToastrModule.forRoot(SdsToastSettings),
+    FontAwesomeModule,
+    MarkdownModule.forRoot(),
+    <%=moduleClassName%>
+  ],
+  declarations: [
+    AppComponent
+  ],
+  entryComponents: [SdsToastComponent],
+  bootstrap: [AppComponent]
+})
+export class AppModule {
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fas, sds);
+  }
+}

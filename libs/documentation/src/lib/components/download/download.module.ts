@@ -12,19 +12,19 @@ import { ComponentWrapperComponent } from '../../shared/component-wrapper/compon
 ``;
 import { DownloadComponent } from './demos/download/download.component';
 import { DownloadBasicModule } from './demos/download/download.module';
-import { FormlyDialog } from './demos/formly-modal/formly-modal.component';
-import { FormlyDialogModule } from './demos/formly-modal/formly-modal.module';
+import { FormlyDialog } from './demos/formlymodal/formly-modal.component';
+import { FormlyDialogModule } from './demos/formlymodal/formly-modal.module';
 
 declare var require: any;
 const DEMOS = {
-  formly: {
+  formlymodal: {
     title: 'Modal Dialog with Formly',
     type: FormlyDialog,
-    code: require('!!raw-loader!./demos/formly-modal/formly-modal.component'),
-    markup: require('!!raw-loader!./demos/formly-modal/formly-modal.component.html'),
-    path: 'libs/documentation/src/lib/components/download/demos/formly-modal'
+    code: require('!!raw-loader!./demos/formlymodal/formly-modal.component'),
+    markup: require('!!raw-loader!./demos/formlymodal/formly-modal.component.html'),
+    path: 'libs/documentation/src/lib/components/download/demos/formlymodal'
   },
-  basic: {
+  download: {
     title: 'Download Modal Dialog',
     type: DownloadComponent,
     code: require('!!raw-loader!./demos/download/download.component'),

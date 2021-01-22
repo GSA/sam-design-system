@@ -14,7 +14,7 @@ import { ValidationWrapperBasicModule } from './demos/basic/validationwrapper-ba
 
 declare var require: any;
 const DEMOS = {
-  formfield: {
+  basic: {
     title: 'Validation Wrapper',
     type: ValidationWrapperBasic,
     code: require('!!raw-loader!./demos/basic/validationwrapper-basic.component'),
@@ -57,6 +57,6 @@ export const ROUTES = [
 })
 export class ValidationWrapperModule {
   constructor(demoList: DocumentationDemoList) {
-    demoList.register('validation', DEMOS);
+    demoList.register('validationwrapper', DEMOS);
   }
 }

@@ -17,7 +17,7 @@ export interface AlertData {
 
 @Component({
   selector: 'sds-dialog-sample-data',
-  templateUrl: 'overview/template.html'
+  templateUrl: './overview-template.html'
 })
 export class DialogOverviewExampleDialog {
   constructor(
@@ -65,7 +65,7 @@ export class NestedDialogComponent {
 // Error
 @Component({
   selector: 'sds-dialog-sample-alert',
-  templateUrl: './alert/template.html'
+  templateUrl: './alert-template.html'
 })
 export class AlertComponent {
   constructor(@Inject(SDS_DIALOG_DATA) public data: AlertData) {}
@@ -77,7 +77,7 @@ export class AlertComponent {
  */
 @Component({
   selector: 'sds-dialog-sample-official',
-  templateUrl: './official/template.html'
+  templateUrl: './official-template.html'
 })
 export class OfficialComponent {}
 
@@ -87,7 +87,7 @@ export class OfficialComponent {}
  */
 @Component({
   selector: 'sds-modal-sample',
-  templateUrl: 'dialog-basic.component.html'
+  templateUrl: './dialog-basic.component.html'
 })
 export class DialogBasic {
   animal: string;
