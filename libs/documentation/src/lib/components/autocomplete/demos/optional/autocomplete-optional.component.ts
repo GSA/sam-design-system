@@ -87,15 +87,15 @@ export class AutocompleteOptional implements OnInit {
 
     this.settings6.primaryKeyField = 'id';
     this.settings6.id = 'autocompleteOptional6';
-    this.settings6.labelText = 'Autocomplete 6 Disabled';
+    this.settings6.labelText = 'Autocomplete 6';
     this.settings6.primaryTextField = 'name';
     this.settings6.secondaryTextField = 'subtext';
     this.settings6.selectionMode = SelectionMode.SINGLE;
     this.settings6.autocompletePlaceHolderText = 'Enter text';
 
     this.disableMSettings.primaryKeyField = 'id';
-    this.disableMSettings.id = 'autocompleteOptional6';
-    this.disableMSettings.labelText = 'Autocomplete 6 Disabled';
+    this.disableMSettings.id = 'autocompleteOptionalDisable';
+    this.disableMSettings.labelText = 'Autocomplete Disabled';
     this.disableMSettings.primaryTextField = 'name';
     this.disableMSettings.secondaryTextField = 'subtext';
     this.disableMSettings.selectionMode = SelectionMode.MULTIPLE;

@@ -1,6 +1,6 @@
 <form class="usa-form usa-search" [ngClass]="getClass()" role="search">
-    <label class="usa-sr-only" for="options">Dropdown label</label>
-    <select *ngIf="hasDropdown()" [value]="model.searchCategory? model.searchCategory :''" #selectEl name="search options" class="usa-select" id="search-options" (change)="writeValueToModel()">
+    <label *ngIf="hasDropdown()" class="usa-sr-only" [attr.for]="searchSettings.dropdown.id">Dropdown label</label>
+    <select *ngIf="hasDropdown()" [value]="model.searchCategory? model.searchCategory :''" #selectEl name="search options" aria-label="Search Options" class="usa-select" [attr.id]="searchSettings.dropdown.id" (change)="writeValueToModel()">
      <ng-container *ngFor="let item of searchSettings.dropdown.options">
       <optgroup *ngIf="item.group" label="{{item.label}}">
         <option *ngFor="let child of item.group" [value]="child.value" [selected]="model.searchCategory == child.value"
@@ -17,8 +17,11 @@
 </form>
 
 <ng-template #inputTemplate>
-    <label class="usa-sr-only" for="search-field">Search</label>
-    <input #inputEl [value]="model.searchText? model.searchText :''" [ngClass]="searchSettings?.inputClass" id="search-field" type="search" class="usa-input" name="search" [placeholder]="searchSettings.placeholder? searchSettings.placeholder : 'type here'"
+    <label class="usa-sr-only" [attr.for]="searchSettings.id">Search</label>
+    <input #inputEl [value]="model.searchText? model.searchText :''" 
+        [ngClass]="searchSettings?.inputClass" [attr.id]="searchSettings.id" type="search" class="usa-input" name="search" 
+        [placeholder]="searchSettings.placeholder? searchSettings.placeholder : 'type here'"
+        [attr.aria-label]="searchSettings.ariaLabel"
         (blur)="focusChange()" (input)="writeValueToModel()" />
     <button #buttonEl class="usa-button" type="submit" (click)="handleClick($event)">
     <span class="usa-sr-only">Search</span>

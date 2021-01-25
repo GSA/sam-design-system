@@ -10,11 +10,15 @@ export class SearchBasic {
   bigmodel = {};
 
   searchSettings = {
-    placeholder: 'type here'
+    placeholder: 'type here',
+    id: 'searchBasic',
+    ariaLabel: 'Basic Search',
   };
 
   bigSearchSettings = {
-    size: 'large'
+    size: 'large',
+    id: 'bigSearchBasic',
+    ariaLabel: 'Big Search',
   };
 
   onsearchModelChanges() {

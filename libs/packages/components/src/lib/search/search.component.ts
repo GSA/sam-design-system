@@ -15,10 +15,13 @@ import { ViewportRuler } from '@angular/cdk/overlay';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 export class SearchSettings {
   public placeholder = 'Search';
+  public ariaLabel? = 'Search';
   public size: string;
   public inputClass: string;
   public parentSelector: string;
+  public id?: string;
   public dropdown: any = {
+    id: 'searchOptions',
     placeholder: '-Select-',
     options: [],
     inverse: false

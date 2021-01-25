@@ -53,7 +53,8 @@ export let formlyFieldConfig: FormlyFieldConfig[] = [
         type: 'input',
         defaultValue: 'test',
         templateOptions: {
-          hideLabel: true
+          hideLabel: true,
+          label: 'Federal Organizations',
         }
       }
     ]
