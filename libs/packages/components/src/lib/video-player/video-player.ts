@@ -9,4 +9,5 @@ export interface VPInterface{
  	seekInterval: number;
  	debug: boolean;
   preload: string;
+  description?: string;
 }

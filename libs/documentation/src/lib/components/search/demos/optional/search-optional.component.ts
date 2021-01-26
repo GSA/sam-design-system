@@ -12,8 +12,10 @@ export class SearchOptional {
 
   ddSearchSettings = {
     placeholder: 'type here',
+    id: 'ddSearch',
     dropdown: {
       placeholder: 'Select',
+      id: 'ddSearchOptions',
       options: [
         { value: '1', label: 'One' },
         { value: '2', label: 'Two' },
@@ -24,7 +26,9 @@ export class SearchOptional {
 
   invDDSearchSettings = {
     placeholder: 'type here',
+    id: 'invDDSearch',
     dropdown: {
+      id: 'invDDSearchOptions',
       placeholder: 'Select',
       options: [
         { value: '1', label: 'One' },
@@ -37,8 +41,10 @@ export class SearchOptional {
 
   bigddSearchSettings = {
     placeholder: 'type here',
+    id: 'bigssSearch',
     size: 'large',
     dropdown: {
+      id: 'bigddSearchOptions',
       placeholder: 'Select',
       options: [
         { value: '1', label: 'One' },
@@ -50,7 +56,9 @@ export class SearchOptional {
 
   biginvDDSearchSettings = {
     placeholder: 'type here',
+    id: 'biginvDDSearch',
     dropdown: {
+      id: 'bigInvDDSearchOptions',
       options: [
         { value: '1', label: 'One' },
         { value: '2', label: 'Two' },
