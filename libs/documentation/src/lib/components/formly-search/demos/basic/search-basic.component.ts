@@ -33,6 +33,7 @@ export class SearchBasic {
           templateOptions: {
             label: 'Search with dropdown',
             searchSettings: {
+              id: 'ddsearch',
               dropdown: {
                 options: [
                   { label: '30 Days', value: '30' },
@@ -50,6 +51,7 @@ export class SearchBasic {
           templateOptions: {
             label: 'Search with dropdown inverse',
             searchSettings: {
+              id: 'invSearch',
               dropdown: {
                 inverse: true,
                 options: [

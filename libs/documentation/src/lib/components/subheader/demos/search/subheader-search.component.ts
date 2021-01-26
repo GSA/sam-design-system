@@ -94,7 +94,8 @@ export class SubheaderSearchComponent {
     parentSelector: '.grid-row',
     inputClass:
       'width-card-lg widescreen:width-mobile display-none desktop-lg:display-inline-block',
-    size: 'small',
+    size: 'small',  
+    ariaLabel: 'Search Entity',
     dropdown: {}
   };
   searchModel = {};
