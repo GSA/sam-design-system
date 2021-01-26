@@ -1,4 +1,4 @@
-import { Component, forwardRef, ChangeDetectionStrategy, ChangeDetectorRef, OnInit, Input } from '@angular/core';
+import { Component, forwardRef, ChangeDetectionStrategy, ChangeDetectorRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -26,7 +26,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SdsTextComponent implements ControlValueAccessor, OnInit {
+export class SdsTextComponent implements ControlValueAccessor {
 
   items = [];
   multiple = true;
@@ -37,10 +37,6 @@ export class SdsTextComponent implements ControlValueAccessor, OnInit {
   private _onTouched = () => { };
 
   constructor(private cd: ChangeDetectorRef) { }
-
-  ngOnInit() {
-    console.log(this);
-  }
 
   // Helper method to programatically add a value to the existing items array
   addItem(val) {
