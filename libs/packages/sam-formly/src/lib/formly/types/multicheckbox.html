@@ -5,7 +5,7 @@
         <div>
           <input [id]="id + '_Select'" type="checkbox" class="usa-checkbox__input" value="value" [checked]="allComplete"
             [attr.aria-checked]="ariaChecked" (change)="setAll($event)" />
-          <label class="usa-checkbox__label" [attr.aria-checked]="ariaChecked" [for]="id + '_Select'">{{ to.label }}
+          <label class="usa-checkbox__label" [for]="id + '_Select'">{{ to.label }}
           </label>
         </div>
         <div *ngIf="to.expandableOptions">

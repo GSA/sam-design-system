@@ -7,7 +7,7 @@
 <div class="usa-overlay" [class.is-visible]="mobileNavActive" (click)="closeMobileNav()"></div>
 <header class="usa-header usa-header--extended">
   <div class="usa-navbar">
-    <div *ngIf="showHeaderLogo; else fillerBlock" class="usa-logo" id="extended-logo">
+    <div *ngIf="showHeaderLogo; else fillerBlock" class="usa-logo">
       <ng-container [ngTemplateOutlet]="
             navigationHelper.isLinkInternal(model.home)
               ? homeLinkRouteTemplate

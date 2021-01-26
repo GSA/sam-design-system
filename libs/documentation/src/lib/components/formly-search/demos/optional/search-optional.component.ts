@@ -20,10 +20,11 @@ export class SearchOptional {
       fieldGroup: [
         {
           key: 'searchmodel',
-          type: 'search',
+          type: 'searchOptional',
           templateOptions: {
             label: 'Big Search',
             searchSettings: {
+              id: 'search',
               size: 'large',
             },
           },
@@ -35,6 +36,7 @@ export class SearchOptional {
           templateOptions: {
             label: 'Big Search with dropdown',
             searchSettings: {
+              id: 'ddSearchOptional',
               size: 'large',
               dropdown: {
                 options: [
@@ -55,6 +57,7 @@ export class SearchOptional {
             searchSettings: {
               placeholder: 'type here to search',
               size: 'large',
+              id: 'invSearchOptional',
               dropdown: {
                 placeholder: ' Select category',
                 inverse: true,

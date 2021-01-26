@@ -97,6 +97,7 @@ export class SubheaderTier2WorkspaceComponent {
     parentSelector: '.grid-row',
     inputClass: 'width-card-lg widescreen:width-mobile display-none desktop-lg:display-inline-block',
     size: 'small',
+    ariaLabel: 'Search Entity',
     dropdown: {}
   };
   searchModel = {};

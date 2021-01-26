@@ -36,6 +36,7 @@ export class SearchHandleSubmit {
             label: 'Search with dropdown',
             submitHandler: this.handleSubmit,
             searchSettings: {
+              id: 'ddSearchSubmit',
               dropdown: {
                 options: [
                   { label: '30 Days', value: '30' },
@@ -54,6 +55,7 @@ export class SearchHandleSubmit {
             label: 'Search with dropdown inverse',
             submitHandler: this.handleSubmit,
             searchSettings: {
+              id: 'invSearchSubmit',
               dropdown: {
                 inverse: true,
                 options: [

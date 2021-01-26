@@ -1,11 +1,11 @@
-import { Component, forwardRef, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, forwardRef, ChangeDetectionStrategy, ChangeDetectorRef, OnInit, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'sds-text',
   template: `
     <div>
-      <input #searchInput class="usa-input display-inline-block" />
+      <input #searchInput class="usa-input display-inline-block" [attr.aria-label]="label"/>
       <button class="usa-button margin-left-05 display-inline-block" (click)="addItem(searchInput.value); searchInput.value=''">Add Item</button>
     </div>
 
@@ -26,15 +26,21 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SdsTextComponent implements ControlValueAccessor {
+export class SdsTextComponent implements ControlValueAccessor, OnInit {
 
   items = [];
   multiple = true;
+
+  @Input() label: string;
 
   private _onChange = (_: any) => { };
   private _onTouched = () => { };
 
   constructor(private cd: ChangeDetectorRef) { }
+
+  ngOnInit() {
+    console.log(this);
+  }
 
   // Helper method to programatically add a value to the existing items array
   addItem(val) {

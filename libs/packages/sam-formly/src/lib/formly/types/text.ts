@@ -17,7 +17,7 @@ import { SdsTextComponent } from '@gsa-sam/components'
 })
 export class FormlyFieldTextComponent extends AbstractSdsFormly {
 
-  @ViewChild(SdsTextComponent, { static: false }) public template: SdsTextComponent;
+  @ViewChild(SdsTextComponent, { static: true }) public template: SdsTextComponent;
 
   constructor(_cdr: ChangeDetectorRef) {
     super(); /* istanbul ignore next */
