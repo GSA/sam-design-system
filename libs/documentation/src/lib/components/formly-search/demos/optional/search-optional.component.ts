@@ -20,8 +20,9 @@ export class SearchOptional {
       fieldGroup: [
         {
           key: 'searchmodel',
-          type: 'searchOptional',
+          type: 'search',
           templateOptions: {
+            id: 'searchOptional',
             label: 'Big Search',
             searchSettings: {
               id: 'search',
