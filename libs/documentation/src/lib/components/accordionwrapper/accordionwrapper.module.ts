@@ -14,7 +14,7 @@ import { AccordionWrapperBasicModule } from './demos/basic/accordionwrapper-basi
 
 declare var require: any;
 const DEMOS = {
-  formfield: {
+  basic: {
     title: 'Accordion Wrapper',
     type: AccordionWrapperBasic,
     code: require('!!raw-loader!./demos/basic/accordionwrapper-basic.component'),

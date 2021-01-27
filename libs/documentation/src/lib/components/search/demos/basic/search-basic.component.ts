@@ -2,18 +2,23 @@ import { Component } from '@angular/core';
 
 @Component({
   templateUrl: './search-basic.component.html',
-  styleUrls: ['./search-basic.component.scss']
+  styleUrls: ['./search-basic.component.scss'],
+  selector: `sds-search-basic-demo`,
 })
 export class SearchBasic {
   model = {};
   bigmodel = {};
 
   searchSettings = {
-    placeholder: 'type here'
+    placeholder: 'type here',
+    id: 'searchBasic',
+    ariaLabel: 'Basic Search',
   };
 
   bigSearchSettings = {
-    size: 'large'
+    size: 'large',
+    id: 'bigSearchBasic',
+    ariaLabel: 'Big Search',
   };
 
   onsearchModelChanges() {

@@ -4,12 +4,13 @@ import {
   SDSSelectedItemModel,
   SelectionMode
 } from '@gsa-sam/components';
-import { SampleAutocompleteData } from './service/autocomplete-sample.data';
-import { AutocompleteSampleDataService } from './service/autocomplete-sample.service';
+import { SampleAutocompleteData } from './autocomplete-sample.data';
+import { AutocompleteSampleDataService } from './autocomplete-sample.service';
 
 @Component({
   templateUrl: './autocomplete-optional.component.html',
   styleUrls: ['./autocomplete-optional.component.scss'],
+  selector: `sds-autocomplete-optional-demo`,
   providers: [AutocompleteSampleDataService]
 })
 export class AutocompleteOptional implements OnInit {
@@ -40,7 +41,7 @@ export class AutocompleteOptional implements OnInit {
   ngOnInit() {}
 
   setup() {
-    this.settings.id = 'autocomplete1';
+    this.settings.id = 'autocompleteOptional';
     this.settings.primaryKeyField = 'id';
     this.settings.primaryTextField = 'name';
     this.settings.secondaryTextField = 'subtext';
@@ -50,7 +51,7 @@ export class AutocompleteOptional implements OnInit {
     this.settings.isFreeTextEnabled = true;
 
     this.settings2.primaryKeyField = 'id';
-    this.settings2.id = 'autocomplete2';
+    this.settings2.id = 'autocompleteOptional2';
     this.settings2.labelText = 'Autocomplete 2';
     this.settings2.primaryTextField = 'name';
     this.settings2.secondaryTextField = 'subtext';
@@ -59,7 +60,7 @@ export class AutocompleteOptional implements OnInit {
     this.settings2.inputReadOnly = true;
 
     this.settings3.primaryKeyField = 'id';
-    this.settings3.id = 'autocomplete3';
+    this.settings3.id = 'autocompleteOptional3';
     this.settings3.labelText = 'Autocomplete 3';
     this.settings3.primaryTextField = 'name';
     this.settings3.secondaryTextField = 'subtext';
@@ -68,7 +69,7 @@ export class AutocompleteOptional implements OnInit {
     this.settings3.isTagModeEnabled = true;
 
     this.settings4.primaryKeyField = 'id';
-    this.settings4.id = 'autocomplete4';
+    this.settings4.id = 'autocompleteOptional4';
     this.settings4.labelText = 'Autocomplete 4';
     this.settings4.primaryTextField = 'name';
     this.settings4.secondaryTextField = 'subtext';
@@ -76,7 +77,7 @@ export class AutocompleteOptional implements OnInit {
     this.settings4.selectionMode = SelectionMode.MULTIPLE;
 
     this.settings5.primaryKeyField = 'id';
-    this.settings5.id = 'autocomplete5';
+    this.settings5.id = 'autocompleteOptional5';
     this.settings5.labelText = 'Autocomplete 5';
     this.settings5.primaryTextField = 'name';
     this.settings5.secondaryTextField = 'subtext';
@@ -85,16 +86,16 @@ export class AutocompleteOptional implements OnInit {
     this.settings5.minimumCharacterCountSearch = 3;
 
     this.settings6.primaryKeyField = 'id';
-    this.settings6.id = 'autocomplete6';
-    this.settings6.labelText = 'Autocomplete 6 Disabled';
+    this.settings6.id = 'autocompleteOptional6';
+    this.settings6.labelText = 'Autocomplete 6';
     this.settings6.primaryTextField = 'name';
     this.settings6.secondaryTextField = 'subtext';
     this.settings6.selectionMode = SelectionMode.SINGLE;
     this.settings6.autocompletePlaceHolderText = 'Enter text';
 
     this.disableMSettings.primaryKeyField = 'id';
-    this.disableMSettings.id = 'autocomplete6';
-    this.disableMSettings.labelText = 'Autocomplete 6 Disabled';
+    this.disableMSettings.id = 'autocompleteOptionalDisable';
+    this.disableMSettings.labelText = 'Autocomplete Disabled';
     this.disableMSettings.primaryTextField = 'name';
     this.disableMSettings.secondaryTextField = 'subtext';
     this.disableMSettings.selectionMode = SelectionMode.MULTIPLE;

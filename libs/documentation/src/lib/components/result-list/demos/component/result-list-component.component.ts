@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef } from '
 
 @Component({
   templateUrl: './result-list-component.component.html',
+  selector: `sds-result-list-component-demo`,
 })
 
 export class ResultListComponent {

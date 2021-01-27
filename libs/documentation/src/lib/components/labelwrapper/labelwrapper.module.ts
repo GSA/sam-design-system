@@ -14,7 +14,7 @@ import { LabelWrapperBasicModule } from './demos/basic/labelwrapper-basic.module
 
 declare var require: any;
 const DEMOS = {
-  formfield: {
+  basic: {
     title: 'Label Wrapper',
     type: LabelWrapperBasic,
     code: require('!!raw-loader!./demos/basic/labelwrapper-basic.component'),
@@ -57,6 +57,6 @@ export const ROUTES = [
 })
 export class LabelWrapperModule {
   constructor(demoList: DocumentationDemoList) {
-    demoList.register('label', DEMOS);
+    demoList.register('labelwrapper', DEMOS);
   }
 }

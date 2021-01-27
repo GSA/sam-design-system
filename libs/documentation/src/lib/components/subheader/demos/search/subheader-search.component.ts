@@ -9,7 +9,8 @@ import {
 
 @Component({
   templateUrl: './subheader-search.component.html',
-  styleUrls: ['./subheader-search.component.scss']
+  styleUrls: ['./subheader-search.component.scss'],
+  selector: `sds-subheader-search-demo`,
 })
 export class SubheaderSearchComponent {
   subheader = {

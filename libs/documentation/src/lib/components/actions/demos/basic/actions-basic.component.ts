@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  templateUrl: 'actions-basic.component.html'
+  templateUrl: 'actions-basic.component.html',
+  selector: `sds-actions-basic-demo`,
 })
 export class ActionsBasic {
   constructor() {}

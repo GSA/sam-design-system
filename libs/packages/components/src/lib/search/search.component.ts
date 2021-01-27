@@ -15,10 +15,13 @@ import { ViewportRuler } from '@angular/cdk/overlay';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 export class SearchSettings {
   public placeholder = 'Search';
+  public ariaLabel? = 'Search';
   public size: string;
   public inputClass: string;
   public parentSelector: string;
+  public id?: string;
   public dropdown: any = {
+    id: 'searchOptions',
     placeholder: '-Select-',
     options: [],
     inverse: false
@@ -34,6 +37,9 @@ export class SearchSettings {
       multi: true
     }
   ],
+  styles: [`input::-ms-clear {
+    display: none;
+}`],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
@@ -54,14 +60,14 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
     initial: { visible: undefined },
     visible: undefined
   };
-  private _onChange = (_: any) => {};
-  private _onTouched = () => {};
+  private _onChange = (_: any) => { };
+  private _onTouched = () => { };
 
   constructor(
     private cd: ChangeDetectorRef,
     private focusMonitor: FocusMonitor,
     private viewportRuler: ViewportRuler
-  ) {}
+  ) { }
 
   ngAfterViewInit() {
     this.inputState.initial.visible = this.isInputVisible();
@@ -164,8 +170,8 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
     const rightPosition = buttonElement.getBoundingClientRect().left;
     const leftPosition = this.searchSettings.parentSelector
       ? inputElement
-          .closest(this.searchSettings.parentSelector)
-          .getBoundingClientRect().left
+        .closest(this.searchSettings.parentSelector)
+        .getBoundingClientRect().left
       : 0;
     return Math.floor(rightPosition - leftPosition - leftPadding);
   }

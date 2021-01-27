@@ -7,6 +7,7 @@
         width: 100%;
         mat-button-toggle{
           flex: 1 1 0px;
+          -ms-flex: 1 0 auto;
           .mat-button-toggle-label-content{
             width: 100%;
             .usa-button.usa-button--outline{

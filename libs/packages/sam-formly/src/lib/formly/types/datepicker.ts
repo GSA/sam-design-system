@@ -4,6 +4,7 @@ import { FieldType } from '@ngx-formly/core';
 @Component({
   selector: 'sds-formly-field-datepicker',
   template: `
+    <div class="display-flex">
     <input
       [id]="id"
       class="usa-input display-inline-block margin-top-3"
@@ -16,8 +17,9 @@ import { FieldType } from '@ngx-formly/core';
       [matDatepicker]="picker"
       placeholder="Choose a date"
     />
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker-toggle class="padding-top-1" matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker [startAt]="to.startDate" #picker></mat-datepicker>
+</div>
   `
 })
 export class FormlyFieldDatePickerComponent extends FieldType {}

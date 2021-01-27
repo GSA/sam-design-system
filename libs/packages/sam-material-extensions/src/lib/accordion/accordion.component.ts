@@ -66,7 +66,6 @@ export class SdsAccordionItemComponent {
   selector: 'sds-accordion-next',
   templateUrl: './accordion.component.html',
   styleUrls: ['./accordion.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SdsAccordionComponent {
   @ViewChild(MatAccordion) accordion: MatAccordion;
