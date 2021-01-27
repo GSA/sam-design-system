@@ -170,6 +170,11 @@ export class SdsTableComponent
   @Input() sortFn: any;
 
   /**
+   * Name of table - used in setting element id values
+   */
+  @Input() tableName: string;
+
+  /**
    * Pagination table
    */
   @Input()
@@ -244,6 +249,11 @@ export class SdsTableComponent
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource(this.data);
+
+    if (this.tableName) {
+      this.top = { id: this.tableName + 'Top' };
+      this.bottom = { id: this.tableName + 'Bottom' };
+    }
   }
 
   ngAfterContentInit() {

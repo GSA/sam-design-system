@@ -1,4 +1,4 @@
-<sds-table [data]="data" [pagination]="true" expansion sort [sortFn]="customSort" (expansionClicked)="onExpansionClicked($event)"
+<sds-table [data]="data" [pagination]="true" expansion sort [sortFn]="customSort" [tableName]="'fullTable'" (expansionClicked)="onExpansionClicked($event)"
   class="maxh-tablet overflow-auto">
 
   <sds-table-column sdsColumnName="id" sticky="true">
