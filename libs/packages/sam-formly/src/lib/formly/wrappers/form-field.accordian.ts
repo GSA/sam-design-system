@@ -4,25 +4,34 @@ import * as qs from 'qs';
 
 /**
  * @param {string} [to.expand] to expand the accordion
- * 
+ *
  */
 
 @Component({
   selector: 'sam-formly-accordian-form-field',
   template: `
-    <sds-accordion multi="true" displayMode="basic">
+    <sds-accordion-next
+      [(multi)]="multi"
+      expandedHeight="34px"
+      collapsedHeight="34px"
+      #sdsAccordionDemo
+      class="sds-accordion--filters"
+    >
       <sds-accordion-item
         class="sds-accordion__panel"
         [expanded]="modelHasValue()"
       >
-        <sds-accordion-item-header> {{ to.label }} </sds-accordion-item-header>
-        <ng-container #fieldComponent></ng-container>
+        <sds-accordion-title> {{ to.label }}</sds-accordion-title>
+        <sds-accordion-content>
+          <ng-container #fieldComponent></ng-container>
+        </sds-accordion-content>
       </sds-accordion-item>
-    </sds-accordion>
-  `
+    </sds-accordion-next>
+  `,
 })
 export class FormlyAccordianFormFieldComponent extends FieldWrapper {
   @ViewChild('fieldComponent', { read: ViewContainerRef })
+  multi = true;
   fieldComponent: ViewContainerRef;
   constructor() {
     super();
