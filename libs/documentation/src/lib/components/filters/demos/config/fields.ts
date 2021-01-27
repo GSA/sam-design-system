@@ -169,7 +169,8 @@ export let formlyFieldConfig: FormlyFieldConfig[] = [
         key: 'setAside',
         type: 'input',
         templateOptions: {
-          hideLabel: true
+          hideLabel: true,
+          label: 'Set Aside',
         }
       }
     ]
