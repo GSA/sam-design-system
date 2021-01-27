@@ -10,13 +10,11 @@
 <p>
   The input to access icons in the custom icons library is <code>sds</code>
 </p>
-<ul class="usa-list usa-list--unstyled">
-  <div class="display-inline-flex flex-wrap">
-    <ng-container *ngFor="let item of sdsIcons | keyvalue">
-      <li class="display-flex flex-column flex-align-center height-10.5 width-10" *ngIf="item.value.iconName">
-        <sds-icon [icon]="['sds', item.value.iconName]" [size]="'2x'"></sds-icon>
-        <p class="font-sans-3xs margin-y-auto">{{ item.value.iconName }}</p>
-      </li>
-    </ng-container>
-  </div>
-</ul>
+<div class="display-inline-flex flex-wrap">
+  <ng-container *ngFor="let item of sdsIcons | keyvalue">
+    <span class="display-flex flex-column flex-align-center height-10.5 width-10" *ngIf="item.value.iconName">
+      <sds-icon [icon]="['sds', item.value.iconName]" [size]="'2x'"></sds-icon>
+      <p class="font-sans-3xs margin-y-auto">{{ item.value.iconName }}</p>
+    </span>
+  </ng-container>
+</div>

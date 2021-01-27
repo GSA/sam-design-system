@@ -1,6 +1,6 @@
-<div class="sds-alert--header usa-grid" id="sds-alert--header">
+<div class="sds-alert--header usa-grid">
   <div class="sds-alert--container">
-    <div class="sds-mobile-alert grid-row" id="sds-mobile-alert">
+    <div class="sds-mobile-alert grid-row">
       <div class="grid-col-auto padding-top-1">
         <sds-icon [icon]="['sds', 'alert-warning']" [class]="'sds-alert--header__icon-mobile'" [size]="'3x'"></sds-icon>
       </div>
@@ -56,7 +56,7 @@
 
 <ng-template #multipleAlerts let-alerts>
   <div *ngFor="let alert of alerts; let i = index;" class="grid-col-12" [attr.id]="'alert' + i">
-    <div class="sds-alert--header__content grid-row" id="sds-alert--header__content">
+    <div class="sds-alert--header__content grid-row">
       <div class="grid-col-fill">
         <div class="sds-alert--header__label margin-right-1" [innerHTML]="alert.header"></div>
         <a (click)="onShowDetailsClicked(alert)"
@@ -90,7 +90,7 @@
 
 <ng-template #singleAlert let-alerts>
   <div class="grid-col-12" id="alert0">
-    <div class="sds-alert--header__content grid-row" id="sds-alert--header__content">
+    <div class="sds-alert--header__content grid-row">
       <div class="grid-col-fill">
         <div class="sds-alert--header__label margin-right-1" [innerHTML]="alerts[0].header"></div>
         <span class="sds-alert--header__date">
