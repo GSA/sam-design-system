@@ -11,8 +11,8 @@ import {
 import { ComponentWrapperComponent } from './../../shared/component-wrapper/component-wrapper.component';
 import { ButtonGroupBasic } from './demos/basic/button-group-basic.component';
 import { ButtonGroupBasicModule } from './demos/basic/button-group-basic.module';
-import { ButtonGroupDifferingLengths } from './demos/differing-lengths/button-group-differing-lengths.component';
-import { ButtonGroupDifferingLengthsModule } from './demos/differing-lengths/button-group-differing-lengths.module';
+import { ButtonGroupDifferingLengths } from './demos/differinglengths/button-group-differing-lengths.component';
+import { ButtonGroupDifferingLengthsModule } from './demos/differinglengths/button-group-differing-lengths.module';
 
 declare var require: any;
 const DEMOS = {
@@ -23,12 +23,12 @@ const DEMOS = {
     markup: require('!!raw-loader!./demos/basic/button-group-basic.component.html'),
     path: 'libs/documentation/src/lib/components/button-group/demos/basic'
   },
-  differingLengths: {
+  differinglengths: {
     title: 'Differing Lengths',
     type: ButtonGroupDifferingLengths,
-    code: require('!!raw-loader!./demos/differing-lengths/button-group-differing-lengths.component'),
-    markup: require('!!raw-loader!./demos/differing-lengths/button-group-differing-lengths.component.html'),
-    path: 'libs/documentation/src/lib/components/button-group/demos/differing-lengths'
+    code: require('!!raw-loader!./demos/differinglengths/button-group-differing-lengths.component'),
+    markup: require('!!raw-loader!./demos/differinglengths/button-group-differing-lengths.component.html'),
+    path: 'libs/documentation/src/lib/components/button-group/demos/differinglengths'
   }
 };
 

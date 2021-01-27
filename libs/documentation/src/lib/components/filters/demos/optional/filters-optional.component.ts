@@ -5,7 +5,8 @@ import { BehaviorSubject } from 'rxjs';
 
 @Component({
   templateUrl: './filters-optional.component.html',
-  styleUrls: ['./filters-optional.component.scss']
+  styleUrls: ['./filters-optional.component.scss'],
+  selector: `sds-filters-optional-demo`,
 })
 export class FiltersOptional implements OnInit {
   constructor() {}

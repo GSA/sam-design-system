@@ -9,6 +9,7 @@ export let VideoPlayerSampleData =
     'id': 'smapleId1',
     'seekInterval': 20,
     'debug': true,
-    'preload': 'none'
+    'preload': 'none',
+    'description': 'GSA example video'
 }
 

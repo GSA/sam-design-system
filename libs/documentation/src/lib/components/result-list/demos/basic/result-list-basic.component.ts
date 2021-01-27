@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  templateUrl: './result-list-basic.component.html'
+  templateUrl: './result-list-basic.component.html',
+  selector: `sds-result-list-basic-demo`,
 })
 export class ResultListBasic {
   constructor() {}

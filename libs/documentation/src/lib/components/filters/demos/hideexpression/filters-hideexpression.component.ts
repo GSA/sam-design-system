@@ -3,7 +3,8 @@ import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-  templateUrl: './filters-hideexpression.component.html'
+  templateUrl: './filters-hideexpression.component.html',
+  selector: `sds-filters-hideexpression-demo`,
 })
 export class FiltersHideExpression {
   form = new FormGroup({});

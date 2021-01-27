@@ -4,7 +4,8 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
   templateUrl: './form-field-basic.component.html',
-  styleUrls: ['./form-field-basic.component.scss']
+  styleUrls: ['./form-field-basic.component.scss'],
+  selector: `sds-form-field-basic-demo`,
 })
 
 export class FormFieldBasic {
