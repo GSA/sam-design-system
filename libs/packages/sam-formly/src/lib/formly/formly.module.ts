@@ -17,9 +17,7 @@ import {
 } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {
-  SdsAccordionModule} from '@gsa-sam/sam-material-extensions';
-import {
-  
+  SdsAccordionModule,
   SdsAutocompleteModule,
   SdsDialogModule,
   SdsTextModule,

@@ -14,10 +14,10 @@ import {
 import { MatAccordion } from '@angular/material/expansion';
 
 @Directive({ selector: 'sds-accordion-title' })
-export class SdsAccordionTitleDirective { }
+export class SdsAccordionTitleDirective {}
 
 @Directive({ selector: 'sds-accordion-content' })
-export class SdsAccordionContentDirective { }
+export class SdsAccordionContentDirective {}
 
 @Component({
   selector: 'sds-accordion-item',
@@ -79,9 +79,6 @@ export class SdsAccordionComponent {
   @Output() multiChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   @Input() displayMode = 'flat';
-
-  @Input() collapsedHeight;
-  @Input() expandedHeight;
 
   /** Opens all accordion items. */
   openAll(): void {
