@@ -105,10 +105,10 @@ export class FilterService {
     },
     {
       key: 'socioEconomicStatus',
+      wrappers: ['accordionwrapper'],
       type: 'input',
       templateOptions: {
         label: 'Socio-Economic Status',
-        group: 'accordion',
       },
     },
     {
