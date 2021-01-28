@@ -14,8 +14,12 @@ import { FieldType } from '@ngx-formly/core';
         <div
           class="sds-card mobile-lg:grid-col"
           [ngClass]="{ 'sds-card-selected': formControl.value == option.value }"
+          tabindex="0"
+          (keyup.enter)="formControl.setValue(option.value)"
+          [attr.aria-label]="option.label + ' ' + option.value"
         >
           <input
+            tabindex="-1"
             type="radio"
             [id]="id + '_' + i"
             class="usa-sr-only usa-radio__input"
