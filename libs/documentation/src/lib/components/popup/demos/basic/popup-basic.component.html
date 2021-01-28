@@ -3,19 +3,20 @@
 </div>
 
 <div [sdsPopup]='tooltip' position="top-center" placement="out"
-  aria-label="Tooltip that hides when scrolled out of the container">
+  aria-label="Tooltip that hides when scrolled out of the container"
+  tabindex="0">
   <div class="tooltip tooltip-left">
     <div>popup outside</div>
   </div>
 </div>
 <br><br>
 <div #tooltipbutton>
-  <button class="usa-button usa-button--base">
+  <button class="usa-button usa-button--base" tabindex="-1">
     tooltip
   </button>
 </div>
 
-<div [sdsPopup]='tooltipbutton' position="bottom-center" placement="out"
+<div [sdsPopup]='tooltipbutton' position="bottom-center" placement="out" tabindex="0"
   aria-label="Tooltip that hides when scrolled out of the container">
   <div class="tooltip tooltip-left">
     <div>popup outside</div>
@@ -29,7 +30,7 @@
 </div>
 
 <div [sdsPopup]='tooltipRichcontent' position="top-center" placement="out"
-  aria-label="Tooltip that hides when scrolled out of the container">
+  aria-label="Tooltip that hides when scrolled out of the container" tabindex="0">
   <div class="sds-alert bg-base-lightest ">
     <div class="sds-alert-icon">
       <i class="fa fa-exclamation"></i>
@@ -50,7 +51,7 @@
         </span>
       </div>
       <div [sdsPopup]='tooltipForIn' position="top-left" placement="in"
-        aria-label="Tooltip that hides when scrolled out of the container">
+        aria-label="Tooltip that hides when scrolled out of the container" tabindex="0">
         <div class="radius-lg shadow-2 margin-y-neg-1x05 width-card-lg bg-white padding-left-1 padding-bottom-1 border">
           <svg class="svg-inline--fa fa-information-circle fa-w-16 fa-2x float-right margin-1" aria-hidden="true"
             focusable="false" data-prefix="sds" data-icon="information-circle" role="img"
@@ -73,7 +74,7 @@
           </span>
         </div>
         <div [sdsPopup]='tooltipForRight' position="top-right" placement="in"
-          aria-label="Tooltip that hides when scrolled out of the container">
+          aria-label="Tooltip that hides when scrolled out of the container" tabindex="0">
           <div
             class="radius-lg shadow-2 margin-y-neg-1x05 width-card-lg bg-white padding-left-1 padding-bottom-1 border">
             <svg class="svg-inline--fa fa-information-circle fa-w-16 fa-2x float-right margin-1" aria-hidden="true"
@@ -110,7 +111,7 @@
         </span>
       </div>
       <div [sdsPopup]='tooltipForCenter' position="bottom-center" placement="in"
-        aria-label="Tooltip that hides when scrolled out of the container">
+        aria-label="Tooltip that hides when scrolled out of the container" tabindex="0">
         <div class="radius-lg shadow-2 margin-y-neg-1x05 width-card-lg bg-white padding-left-1 padding-bottom-1 border">
           <svg class="svg-inline--fa fa-information-circle fa-w-16 fa-2x float-right margin-1" aria-hidden="true"
             focusable="false" data-prefix="sds" data-icon="information-circle" role="img"
