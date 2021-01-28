@@ -153,7 +153,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
       if (paramModel && paramModel['sfm']) {
         this.filterUpdateModelService.updateModel(paramModel['sfm']);
       } else {
-        this.filterUpdateModelService.updateModel({});
+        this.filterUpdateModelService.updateModel(this.configuration.defaultFilterValue);
       }
     }
   }

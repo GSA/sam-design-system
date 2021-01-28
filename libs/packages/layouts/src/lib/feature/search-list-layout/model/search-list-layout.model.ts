@@ -92,6 +92,11 @@ export class SearchListConfiguration {
      */
     pageSize: number = 25;
 
+    /**
+     * Default values to use during initialization when there is none in url.
+     */
+    defaultFilterValue?: any = {};
+
 }
 
 export interface ResultsModel {

@@ -27,6 +27,7 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
       { text: 'Entity Name', value: 'legalBusinessName' },
       { text: 'Status', value: 'registrationStatus' },
     ],
+    defaultFilterValue: {status: {registrationStatus: {Active: true}}},
   };
 
   /* Sort config change demo */
