@@ -95,7 +95,7 @@ export class SearchListConfiguration {
     /**
      * Default values to use during initialization when there is none in url.
      */
-    defaultFilterValue: any = {};
+    defaultFilterValue?: any = {};
 
 }
 
