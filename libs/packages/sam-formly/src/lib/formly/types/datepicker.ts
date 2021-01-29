@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 
 @Component({
@@ -20,6 +20,10 @@ import { FieldType } from '@ngx-formly/core';
     <mat-datepicker-toggle class="padding-top-1" matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker [startAt]="to.startDate" #picker></mat-datepicker>
 </div>
-  `
+  `,
+  styles: [
+    'table.mat-calendar-table td, table.mat-calendar-table th {border-style: none; background-color: unset; }'
+  ],
+  encapsulation: ViewEncapsulation.None,
 })
 export class FormlyFieldDatePickerComponent extends FieldType {}
