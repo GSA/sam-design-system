@@ -11,12 +11,12 @@ export class SearchOptional {
   biginvddmodel = {};
 
   ddSearchSettings = {
-    placeholder: 'type here',
     id: 'ddSearch',
     dropdown: {
-      placeholder: 'Select',
+     
       id: 'ddSearchOptions',
       options: [
+        {value: '-', label: '--Select--'},
         { value: '1', label: 'One' },
         { value: '2', label: 'Two' },
         { value: '3', label: 'Three' }
@@ -29,8 +29,8 @@ export class SearchOptional {
     id: 'invDDSearch',
     dropdown: {
       id: 'invDDSearchOptions',
-      placeholder: 'Select',
       options: [
+        {value: '-', label: '--Select--'},
         { value: '1', label: 'One' },
         { value: '2', label: 'Two' },
         { value: '3', label: 'Three' }
@@ -45,8 +45,9 @@ export class SearchOptional {
     size: 'large',
     dropdown: {
       id: 'bigddSearchOptions',
-      placeholder: 'Select',
+     
       options: [
+        {value: '-', label: '--Select--'},
         { value: '1', label: 'One' },
         { value: '2', label: 'Two' },
         { value: '3', label: 'Three' }
