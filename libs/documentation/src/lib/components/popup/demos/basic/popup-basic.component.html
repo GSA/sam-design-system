@@ -1,132 +1,89 @@
-<div #tooltip>
-  <span>Tootltip content</span>
-</div>
+<div>
+  <p>When <code>sdsTooltip</code> directive is applied to an element, a tooltip
+    will appear when the element is hovered over. The contents of this text can
+    be set by passing either a string or element reference as an input.</p>
 
-<div [sdsPopup]='tooltip' position="top-center" placement="out"
-  aria-label="Tooltip that hides when scrolled out of the container"
-  tabindex="0">
-  <div class="tooltip tooltip-left">
-    <div>popup outside</div>
-  </div>
-</div>
-<br><br>
-<div #tooltipbutton>
-  <button class="usa-button usa-button--base" tabindex="-1">
-    tooltip
-  </button>
-</div>
-
-<div [sdsPopup]='tooltipbutton' position="bottom-center" placement="out" tabindex="0"
-  aria-label="Tooltip that hides when scrolled out of the container">
-  <div class="tooltip tooltip-left">
-    <div>popup outside</div>
-  </div>
-</div>
-<br><br>
-<div #tooltipRichcontent>
-  <span class="border-1px sds-popup padding-1 radius-md">
-    rich content
-  </span>
-</div>
-
-<div [sdsPopup]='tooltipRichcontent' position="top-center" placement="out"
-  aria-label="Tooltip that hides when scrolled out of the container" tabindex="0">
-  <div class="sds-alert bg-base-lightest ">
-    <div class="sds-alert-icon">
-      <i class="fa fa-exclamation"></i>
+  <div style="display: flex; padding-left: 3rem;">
+    <sds-icon [icon]="['bs', 'exclamation-circle']" [size]="'2x'" class="text-error"
+      [sdsTooltip]="'All fields must be completed'" [position]="'top'" tabindex="0"></sds-icon>
+    <div style="padding-left: 3rem;">
+      <p #tipContent>Hello, <b>World</b>!</p>
+      <button [sdsTooltip]="tipContent" [position]="'bottom'" class="usa-button usa-button--base" tabindex="0">HTML binding</button>
     </div>
-    <span>Review Required</span>
-    <p>Venenatis dapibus ex</p>
   </div>
-</div><br><br>
-<div class="sds-card sds-card--shadowed sds-card--bordered padding-2">
-  <div class="sds-card__header sds-card__header--base sds-card__header--left">
-    <h2 class="sds-card__title">My Content starts here. </h2>
+  <p>
+    The position of the tooltip can be manipulated by the <code>postion</code>
+    input. By default, the tooltip will appear at the top of the
+    element.
+  </p>
+  <p>Valid <code>position</code> values include
+    <code>top</code>,
+    <code>right</code>,
+    <code>bottom</code>,
+    <code>left</code>
+  </p>
+
+  <div>
+    <button class="usa-button usa-button--base" [sdsTooltip]="'Tooltip on top'" [position]="'top'">Tooltip on
+      top</button>
+    <button class="usa-button usa-button--base" [sdsTooltip]="'Tooltip on right'" [position]="'right'">Tooltip on
+      right</button>
+    <button class="usa-button usa-button--base" [sdsTooltip]="'Tooltip on bottom'" [position]="'bottom'">Tooltip
+      on bottom</button>
+    <button class="usa-button usa-button--base" [sdsTooltip]="'Tooltip on left'" [position]="'left'">Tooltip on
+      left</button>
   </div>
-  <div class="grid-row">
-    <div class="tablet:grid-col">
-      <div #tooltipForIn>
-        <span class="float-left">
-          <fa-icon [icon]="['sds', 'new-version']" transform="grow-10"></fa-icon>
-        </span>
+</div>
+<br>
+<br>
+<br>
+<div>
+  <p>When <code>sdsPopover</code> directive is applied to an element, a popover
+    will appear when the element is clicked on. The title of this popover accepts
+    either a string or element reference passed to <code>sdsPopoverTitle</code>.
+    The content of this popover accepts either a string or element reference
+    passed to the directive.</p>
+
+    <div style="display: flex;">
+      <div style="padding-left: 3rem;">
+        <sds-icon [icon]="['bs', 'caret-down-square']" [size]="'2x'"[sdsPopover]="'Content'" [sdsPopoverTitle]="'Title'" [position]="'top'"></sds-icon>
       </div>
-      <div [sdsPopup]='tooltipForIn' position="top-left" placement="in"
-        aria-label="Tooltip that hides when scrolled out of the container" tabindex="0">
-        <div class="radius-lg shadow-2 margin-y-neg-1x05 width-card-lg bg-white padding-left-1 padding-bottom-1 border">
-          <svg class="svg-inline--fa fa-information-circle fa-w-16 fa-2x float-right margin-1" aria-hidden="true"
-            focusable="false" data-prefix="sds" data-icon="information-circle" role="img"
-            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
-            <path fill="currentColor"
-              d="M256,512C114.8,512,0,397.2,0,256S114.8,0,256,0s256,114.8,256,256S397.2,512,256,512z M256,19.8c-130.2,0-236.2,106-236.2,236.2s106,236.2,236.2,236.2s236.2-106,236.2-236.2S386.2,19.8,256,19.8z M256,185.2c-6.6,0-12-1.9-16.2-5.7s-6.4-8.8-6.4-14.9c0-6.1,2.1-11.2,6.4-15.1c4.2-3.9,9.6-5.9,16.2-5.9c6.6,0,12,2,16.2,5.9s6.4,8.9,6.4,15.1c0,6.1-2.1,11.1-6.4,14.9C268,183.3,262.6,185.2,256,185.2z M237.6,368.4V212.5h36.5v155.9H237.6z">
-            </path>
-          </svg><!-- <i class="sds fa-information-circle fa-2x float-right margin-1"></i> -->
-          <h4> Pop inside</h4>
-          <ul>
-            <li>Lorem ipsum sit amet</li>
-            <li>Lorem ipsum</li>
-          </ul>
-        </div>
-      </div>
-      <div class="float-right">
-        <div #tooltipForRight>
-          <span class="float-right">
-            <fa-icon [icon]="['sds', 'new-version']" transform="grow-10"></fa-icon>
-          </span>
-        </div>
-        <div [sdsPopup]='tooltipForRight' position="top-right" placement="in"
-          aria-label="Tooltip that hides when scrolled out of the container" tabindex="0">
-          <div
-            class="radius-lg shadow-2 margin-y-neg-1x05 width-card-lg bg-white padding-left-1 padding-bottom-1 border">
-            <svg class="svg-inline--fa fa-information-circle fa-w-16 fa-2x float-right margin-1" aria-hidden="true"
-              focusable="false" data-prefix="sds" data-icon="information-circle" role="img"
-              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
-              <path fill="currentColor"
-                d="M256,512C114.8,512,0,397.2,0,256S114.8,0,256,0s256,114.8,256,256S397.2,512,256,512z M256,19.8c-130.2,0-236.2,106-236.2,236.2s106,236.2,236.2,236.2s236.2-106,236.2-236.2S386.2,19.8,256,19.8z M256,185.2c-6.6,0-12-1.9-16.2-5.7s-6.4-8.8-6.4-14.9c0-6.1,2.1-11.2,6.4-15.1c4.2-3.9,9.6-5.9,16.2-5.9c6.6,0,12,2,16.2,5.9s6.4,8.9,6.4,15.1c0,6.1-2.1,11.1-6.4,14.9C268,183.3,262.6,185.2,256,185.2z M237.6,368.4V212.5h36.5v155.9H237.6z">
-              </path>
-            </svg><!-- <i class="sds fa-information-circle fa-2x float-right margin-1"></i> -->
-            <h4> Pop inside</h4>
-            <ul>
-              <li>Lorem ipsum sit amet</li>
-              <li>Lorem ipsum</li>
-            </ul>
-          </div>
+      <div style="padding-left: 3rem;">
+        <p #title style="margin: 0em 1em;">Have a suggestion?</p>
+        <p #content style="margin: 0em 1em;">Please let us know what we could do better.</p>
+        <div class="sds-stack sds-1x" [sdsPopover]="content" [sdsPopoverTitle]="title" [position]="'right'">
+          <sds-icon class="sds-stack-icon" [size]="'2x'" [icon]="['bs', 'square-fill']"></sds-icon>
+          <sds-icon class="sds-stack-icon text-base-lightest" [size]="'lg'" [icon]="['bs', 'hand-thumbs-down']"></sds-icon>
         </div>
       </div>
     </div>
-  </div>
-  <div class="sds-card__content">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In neque nunc, auctor a cursus vitae, venenatis dapibus
-      ex. Nam tristique aliquam efficitur. Aliquam sit amet sodales elit, accumsan lacinia nisi. Aliquam eu
-      mauris ut augue fringilla congue a eu ante. Donec maximus placementrat convallis. Morbi eu tincidunt neque, vel
-      porta
-      nulla. Suspendisse venenatis augue eget massa ullamcorper, et fringilla ipsum lobortis. In hac habitasse
-      platea dictumst. Quisque et fringilla lacus, non consequat nulla.
+
+    <p>
+      The position of the popover can be manipulated by the <code>postion</code>
+      input. By default, the popover will appear at the top of the
+      element.
     </p>
-  </div>
-  <div class="text-center">
-    <div class="">
-      <div #tooltipForCenter>
-        <span>
-          <fa-icon [icon]="['sds', 'new-version']" transform="grow-10"></fa-icon>
-        </span>
-      </div>
-      <div [sdsPopup]='tooltipForCenter' position="bottom-center" placement="in"
-        aria-label="Tooltip that hides when scrolled out of the container" tabindex="0">
-        <div class="radius-lg shadow-2 margin-y-neg-1x05 width-card-lg bg-white padding-left-1 padding-bottom-1 border">
-          <svg class="svg-inline--fa fa-information-circle fa-w-16 fa-2x float-right margin-1" aria-hidden="true"
-            focusable="false" data-prefix="sds" data-icon="information-circle" role="img"
-            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
-            <path fill="currentColor"
-              d="M256,512C114.8,512,0,397.2,0,256S114.8,0,256,0s256,114.8,256,256S397.2,512,256,512z M256,19.8c-130.2,0-236.2,106-236.2,236.2s106,236.2,236.2,236.2s236.2-106,236.2-236.2S386.2,19.8,256,19.8z M256,185.2c-6.6,0-12-1.9-16.2-5.7s-6.4-8.8-6.4-14.9c0-6.1,2.1-11.2,6.4-15.1c4.2-3.9,9.6-5.9,16.2-5.9c6.6,0,12,2,16.2,5.9s6.4,8.9,6.4,15.1c0,6.1-2.1,11.1-6.4,14.9C268,183.3,262.6,185.2,256,185.2z M237.6,368.4V212.5h36.5v155.9H237.6z">
-            </path>
-          </svg><!-- <i class="sds fa-information-circle fa-2x float-right margin-1"></i> -->
-          <h4> Pop inside</h4>
-          <ul>
-            <li>Lorem ipsum sit amet</li>
-            <li>Lorem ipsum</li>
-          </ul>
-        </div>
-      </div>
+    <p>Valid <code>position</code> values include
+      <code>top</code>,
+      <code>right</code>,
+      <code>bottom</code>,
+      <code>left</code>
+    </p>
+
+    <div>
+      <button class="usa-button usa-button--base" [sdsPopover]="'Popover on top'" [sdsPopoverTitle]="'Title'" [position]="'top'">Popover on
+        top</button>
+      <button class="usa-button usa-button--base" [sdsPopover]="'Popover on right'" [sdsPopoverTitle]="'Title'" [position]="'right'">Popover on
+        right</button>
+      <button class="usa-button usa-button--base" [sdsPopover]="'Popover on bottom'" [sdsPopoverTitle]="'Title'" [position]="'bottom'">Popover
+        on bottom</button>
+      <button class="usa-button usa-button--base" [sdsPopover]="'Popover on left'" [sdsPopoverTitle]="'Title'" [position]="'left'">Popover on
+        left</button>
     </div>
-  </div>
+
+    <p>
+      The <code>sdsPopoverTitle</code> input is not required. In the case where no value is provided to the title input a popover with no divider will be rendered.
+    </p>
+
+    <button class="usa-button usa-button--base" [sdsPopover]="'Content'" [position]="'right'">Content Only</button>
 </div>
