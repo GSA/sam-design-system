@@ -14,22 +14,14 @@ import * as qs from 'qs';
     <ng-container *ngIf="!to.readonlyMode; else defaultTemplate">
       <ng-container [ngSwitch]="to.group">
         <ng-container *ngSwitchCase="'accordion'">
-          <sds-accordion multi="true" displayMode="basic">
-            <sds-accordion-item
-              class="sds-accordion__panel"
-              [expanded]="modelHasValue()"
-            >
-              <sds-accordion-item-header>
-                <span
-                  *ngIf="!to.hideLabel"
-                  [attr.aria-hidden]="!to.announceLabel ? undefined : 'true'"
-                >
-                  {{ to.label }}
-                </span>
-              </sds-accordion-item-header>
-              <ng-container #fieldComponent></ng-container>
-            </sds-accordion-item>
-          </sds-accordion>
+        <sds-accordion-next [(multi)]="multi" expandedHeight="34px" collapsedHeight="34px" #sdsAccordionDemo class="sds-accordion--filters">
+        <sds-accordion-item  class="sds-accordion__panel" [expanded]="modelHasValue()">
+          <sds-accordion-title>{{ to.label }}</sds-accordion-title>
+          <sds-accordion-content>
+            <ng-container #fieldComponent></ng-container>
+          </sds-accordion-content>
+        </sds-accordion-item>
+      </sds-accordion-next>
         </ng-container>
         <ng-container *ngSwitchCase="'panel'">
           <div
@@ -61,6 +53,7 @@ import * as qs from 'qs';
 export class FormlyGroupWrapperComponent extends FieldWrapper {
   @ViewChild('fieldComponent', { read: ViewContainerRef })
   fieldComponent: ViewContainerRef;
+  multi = true;
   constructor() {
     super();
   }
