@@ -3,14 +3,14 @@ import { FieldWrapper } from '@ngx-formly/core';
 import * as qs from 'qs';
 
 /**
- * @param {string} [to.expand] to expand the accordion
- * 
+ * @param string [to.expand] to expand the accordion
+ *
  */
 
 @Component({
   selector: 'sam-formly-accordian-form-field',
   template: `
-  <sds-accordion-next
+    <sds-accordion-next
       [(multi)]="multi"
       expandedHeight="34px"
       collapsedHeight="34px"
@@ -27,7 +27,7 @@ import * as qs from 'qs';
         </sds-accordion-content>
       </sds-accordion-item>
     </sds-accordion-next>
-  `
+  `,
 })
 export class FormlyAccordianFormFieldComponent extends FieldWrapper {
   @ViewChild('fieldComponent', { read: ViewContainerRef })

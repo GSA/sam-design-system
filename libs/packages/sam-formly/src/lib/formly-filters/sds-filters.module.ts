@@ -10,12 +10,14 @@ import { SdsFormlyModule } from '../formly/formly.module';
 import { SdsFormlyResetModule } from '../formly-reset/formly-reset.module';
 import { AdvancedFiltersComponent } from './advanced-filters/advanced-filters.component';
 import { SDSFormlyUpdateModelService } from './service/sds-filter-model-update.service';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [SdsFiltersComponent, AdvancedFiltersComponent],
   imports: [
     CommonModule,
     FormsModule,
+    MatExpansionModule,
     SdsAccordionModule,
     SdsFormlyModule,
     SdsFormlyResetModule,
