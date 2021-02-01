@@ -16,6 +16,7 @@ import { FieldType } from '@ngx-formly/core';
       [max]="to.maxDate"
       [matDatepicker]="picker"
       placeholder="Choose a date"
+      (ngModelChange)="to.change ? to.change(field) : ''"
     />
     <mat-datepicker-toggle class="padding-top-1" matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker [startAt]="to.startDate" #picker></mat-datepicker>
