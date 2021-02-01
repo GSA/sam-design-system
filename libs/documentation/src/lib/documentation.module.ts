@@ -224,7 +224,7 @@ export const ROUTES: Routes = [
   { path: 'components/search', children: SEARCH_ROUTES },
   { path: 'components/autocomplete', children: AUTOCOMPLETE_ROUTES },
   { path: 'components/video', children: VIDEO_ROUTES },
-  { path: 'components/popup', children: POPUP_ROUTES },
+  { path: 'components/tooltip-popover', children: POPUP_ROUTES },
   { path: 'components/filters', children: FILTERS_ROUTES },
   { path: 'components/accordion', children: ACCORDION_ROUTES },
   { path: 'components/button-group', children: BUTTON_GROUP_ROUTES },
