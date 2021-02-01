@@ -15,14 +15,18 @@
             <sds-accordion-title>
               <span class="text-normal">Domain</span>
             </sds-accordion-title>
-            <sds-side-navigation #sideNav [model]="navigationModel"></sds-side-navigation>
+            <sds-accordion-content>
+              <sds-side-navigation #sideNav [model]="navigationModel"></sds-side-navigation>
+            </sds-accordion-content>
           </sds-accordion-item>
           <sds-accordion-item #filtersAccordion [expanded]="filtersExpanded">
             <sds-accordion-title>Filter By</sds-accordion-title>
-            <sds-filters [options]="options" [advancedFilters]="true" [sortMoreFilterBy]="'label'"
-              [isHistoryEnable]="false" [form]="form" [fields]="fields" [model]="filterModel"
-              (filterChange)="filterChange$.next($event)">
-            </sds-filters>
+            <sds-accordion-content>
+              <sds-filters [options]="options" [advancedFilters]="true" [sortMoreFilterBy]="'label'"
+                [isHistoryEnable]="false" [form]="form" [fields]="fields" [model]="filterModel"
+                (filterChange)="filterChange$.next($event)">
+              </sds-filters>
+            </sds-accordion-content>
           </sds-accordion-item>
         </sds-accordion-next>
       </sds-toolbar>
