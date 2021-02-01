@@ -72,7 +72,7 @@ export class FormlyGroupWrapperComponent extends FieldWrapper {
         this.formControl.value instanceof Object
           ? qs.stringify(this.formControl.value, { skipNulls: true })
           : this.formControl.value;
-      return hasValue ? true : false;
+      return hasValue || this.formControl.dirty ? true : false;
     }
   }
 }

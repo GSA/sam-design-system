@@ -14,12 +14,14 @@ import { FieldType } from '@ngx-formly/core';
           [formlyAttributes]="field.fieldGroup[0]"
           [placeholder]="field.fieldGroup[0]?.templateOptions?.placeholder || 'Start Date'"
           [formControlName]="field.fieldGroup[0].key"
+          (ngModelChange)="field.fieldGroup[0]?.templateOptions?.change ? field.fieldGroup[0].templateOptions.change(field.fieldGroup[0]) : ''"
           />
           <input matEndDate
           [attr.aria-label]="field.fieldGroup[1]?.templateOptions?.placeholder || 'End Date'"
           [formlyAttributes]="field.fieldGroup[1]"
           [placeholder]="field.fieldGroup[1]?.templateOptions?.placeholder || 'End Date'"
           [formControlName]="field.fieldGroup[1].key"
+          (ngModelChange)="field.fieldGroup[1]?.templateOptions?.change ? field.fieldGroup[1].templateOptions.change(field.fieldGroup[1]) : ''"
         />  
       </mat-date-range-input>
       <mat-datepicker-toggle class="padding-top-3" matSuffix [for]="picker"></mat-datepicker-toggle>
