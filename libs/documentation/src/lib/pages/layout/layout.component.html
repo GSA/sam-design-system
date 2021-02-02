@@ -22,12 +22,12 @@
           <sds-accordion-item #filtersAccordion [expanded]="filtersExpanded">
             <sds-accordion-title>Filter By</sds-accordion-title>
             <sds-accordion-content>
-              <div class="sds-card__body sds-card__body--accent-cool margin-0" id="filtersBody">
-                <sds-filters [options]="options" [advancedFilters]="true" [sortMoreFilterBy]="'label'"
-                  [isHistoryEnable]="false" [form]="form" [fields]="fields" [model]="filterModel"
-                  (filterChange)="filterChange$.next($event)">
-                </sds-filters>
-              </div>
+
+              <sds-filters [options]="options" [advancedFilters]="true" [sortMoreFilterBy]="'label'"
+                [isHistoryEnable]="false" [form]="form" [fields]="fields" [model]="filterModel"
+                (filterChange)="filterChange$.next($event)">
+              </sds-filters>
+
             </sds-accordion-content>
           </sds-accordion-item>
         </sds-accordion-next>
