@@ -5,10 +5,12 @@
     (keyup.enter)="panelExpanded = !panelExpanded"
     >
     <div class="sds-card__title">{{title}}<br />
-      <span *ngIf="mainParentOfCurrentSelection" 
-        class="sds-card__subtitle" role="button" 
+      <span *ngIf="mainParentOfCurrentSelection"
+        role="list"
+        class="sds-card__subtitle"
         (click)="onMainPanelHeaderClicked($event)"
         (keyup.enter)="onMainPanelHeaderClicked($event)"
+        [attr.aria-label]="mainParentOfCurrentSelection.text + 'Press to navigate back to main list'"
         tabindex="0"
       >
         {{mainParentOfCurrentSelection.text}}
