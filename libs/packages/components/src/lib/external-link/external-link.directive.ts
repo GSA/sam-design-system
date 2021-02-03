@@ -1,52 +1,56 @@
 import {
   Directive,
-  AfterViewChecked,
+  HostBinding,
   ElementRef,
-  Renderer2,
+  PLATFORM_ID,
+  Inject,
   Input,
-  ComponentFactoryResolver,
   ViewContainerRef,
   OnChanges,
-  HostListener,
 } from '@angular/core';
 
-import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { isPlatformBrowser } from '@angular/common';
+
 @Directive({
   selector: 'a[href]',
 })
 export class ExternalLinkDirective implements OnChanges {
+  @HostBinding('attr.rel') relAttr = '';
+  @HostBinding('attr.target') targetAttr = '';
+  @HostBinding('attr.href') hrefAttr = '';
   @Input() href: string;
   @Input() public hideIcon: boolean = false;
   private internalLinks = ['fsd.gov'];
 
-  private get isExternalLink(): boolean {
-    let link = this.href
-      .replace(/^https?:\/\//, '')
-      .replace(/^www\./, '')
-      .split('/')[0];
-    return link != location.hostname && !this.internalLinks.includes(link);
-  }
-
   constructor(
+    @Inject(PLATFORM_ID) private platformId: string,
     private el: ElementRef,
-    private cfr: ComponentFactoryResolver,
     private vc: ViewContainerRef
   ) {}
 
-  @HostListener('click', ['$event'])
-  click(event: Event) {
-    window.location.href = this.href;
-  }
-
   public ngOnChanges() {
+    this.hrefAttr = this.href;
+    this.relAttr = 'noopener';
+    this.targetAttr = '_blank';
     if (!this.isExternalLink) {
       return;
-    }
-    if (!this.hideIcon) {
-      this.createIcon();
+    } else {
+      if (!this.hideIcon) {
+        this.createIcon();
+      }
     }
   }
-
+  private get isExternalLink(): boolean {
+    const link = this.href
+      .replace(/^https?:\/\//, '')
+      .replace(/^www\./, '')
+      .split('/')[0];
+    return (
+      isPlatformBrowser(this.platformId) &&
+      !link.includes(location.hostname) &&
+      !this.internalLinks.includes(link)
+    );
+  }
   private createIcon() {
     // tslint:disable-next-line:no-unused-expression
     this.vc.constructor.name === 'ViewContainerRef_';
