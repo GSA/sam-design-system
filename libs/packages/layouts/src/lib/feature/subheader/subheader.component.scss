@@ -6,8 +6,9 @@
       mat-button-toggle-group{
         width: 100%;
         mat-button-toggle{
-          flex: 1 1 0px;
-          -ms-flex: 1 0 auto;
+          @media screen and (max-width: 480px) {
+            flex: 1 1 0px;
+          }
           .mat-button-toggle-label-content{
             width: 100%;
             .usa-button.usa-button--outline{
