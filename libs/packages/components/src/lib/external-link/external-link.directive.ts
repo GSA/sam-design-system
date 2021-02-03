@@ -34,10 +34,10 @@ export class ExternalLinkDirective implements OnChanges {
     } else {
       if (!this.hideIcon) {
         this.createIcon();
-        this.hrefAttr = this.href;
-        this.relAttr = 'noopener';
-        this.targetAttr = '_blank';
       }
+      this.hrefAttr = this.href;
+      this.relAttr = 'noopener';
+      this.targetAttr = '_blank';
     }
   }
   private get isExternalLink(): boolean {
