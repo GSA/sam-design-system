@@ -29,14 +29,14 @@ export class ExternalLinkDirective implements OnChanges {
   ) {}
 
   public ngOnChanges() {
-    this.hrefAttr = this.href;
-    this.relAttr = 'noopener';
-    this.targetAttr = '_blank';
     if (!this.isExternalLink) {
       return;
     } else {
       if (!this.hideIcon) {
         this.createIcon();
+        this.hrefAttr = this.href;
+        this.relAttr = 'noopener';
+        this.targetAttr = '_blank';
       }
     }
   }
