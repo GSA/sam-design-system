@@ -3,7 +3,7 @@
     type="button"
     class="sds-feedback__button simple-toggle"
     [attr.aria-expanded]="!isCollapsedContent"
-    aria-controls="collapseID"
+    aria-controls="feedbackCollapseId"
     (click)="isCollapsedContent = !isCollapsedContent">
     
     <sds-icon [icon]="['bs', 'arrow-up-circle-fill']" [sdsCollapse]="isCollapsedContent"
@@ -15,7 +15,7 @@
     <span class="sds-feedback__title">Feedback</span>
   </button>
   <div
-    id="collapseID"
+    id="feedbackCollapseId"
     [sdsCollapse]="isCollapsedContent"
     class="sds-feedback__response"
   >
