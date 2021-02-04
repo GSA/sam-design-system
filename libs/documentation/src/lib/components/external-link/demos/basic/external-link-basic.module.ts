@@ -7,5 +7,6 @@ import { ExternalLinkBasicComponent } from './external-link-basic.component';
   imports: [CommonModule, SdsExternalLinkDirectivesModule],
   declarations: [ExternalLinkBasicComponent],
   exports: [ExternalLinkBasicComponent],
+  bootstrap: [ExternalLinkBasicComponent],
 })
 export class ExternalLinkBasicModule {}
