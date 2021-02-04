@@ -31,12 +31,39 @@
             }
         }
     }
+    // Accordion sidenav styling
+    sds-accordion-next.sds-accordion--sidenav {
+        mat-expansion-panel.mat-expanded {
+            overflow: visible;
+        }
+        .mat-expansion-panel-header {
+            padding: 0 1em;
+        }
+        .mat-expansion-panel-body {
+            padding: 0 1em 1em;
+        }
+        .mat-accordion .mat-expansion-panel.mat-expanded {
+            @include u-bg('accent-cool-lighter', !important);
+        }
+        sds-side-navigation nav {
+            @include u-bg('white');
+            @include u-border('base-light');
+            @include u-border('1px');
+            margin: 0px;
+        }
+    }
+
     // Accordion filter styling
     sds-accordion-next.sds-accordion--filters {
+
+        // Override only for filters
+        .usa-label {
+            margin-top: 1em;
+        }
+
         .mat-accordion .mat-expansion-panel {
             @include u-bg('accent-cool-lighter');
             border: 0;
-            padding-left: 11px;
             &.mat-expanded {
                 overflow: visible;
                 sds-accordion-title {
@@ -44,7 +71,7 @@
                 }
             }
         }
-        mat-expansion-panel-header {
+        .mat-expansion-panel-header {
             padding: 0;
             font-size: inherit !important;
         }
@@ -52,7 +79,7 @@
             @include u-bg('white');
             box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 3px 0px inset;
             margin: 0px;
-            padding: 1px 8px 10px 0px;
+            padding: 0.5em 1em;
         }
         .mat-expansion-panel-content {
             @include u-font('sans', 'xs');
