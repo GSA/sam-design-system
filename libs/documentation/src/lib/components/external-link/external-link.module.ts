@@ -33,7 +33,7 @@ export const ROUTES = [
       items: [
         {
           pkg: 'components',
-          type: 'components',
+          type: 'directives',
           name: 'ExternalLinkDirective',
         },
       ],
