@@ -8,7 +8,6 @@ import {
 import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationExamplesPage } from '../shared/examples-page/examples.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
-import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 import { ExternalLinkBasicComponent } from './demos/basic/external-link-basic.component';
 import { ExternalLinkBasicModule } from './demos/basic/external-link-basic.module';
 
@@ -42,7 +41,6 @@ export const ROUTES = [
       { path: 'examples', component: DocumentationExamplesPage },
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
-      { path: 'template', component: DocumentationTemplatePage },
     ],
   },
 ];
