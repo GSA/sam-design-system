@@ -55,9 +55,10 @@ describe('SearchListLayoutComponent', () => {
   it('onSelectChange', () => {
     component.onSelectChange();
     fixture.detectChanges();
-    tick(100);
+    fakeAsync(() => tick(100));
     expect(component.items.length).toBe(0);
   });
+
   it('should call filterUpdate', fakeAsync(() => {
     const filterData = { searchKeyword: 'test', entity: 'testEntity' };
     component.page = {

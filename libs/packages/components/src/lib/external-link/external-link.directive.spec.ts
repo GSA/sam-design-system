@@ -24,7 +24,7 @@ describe('Sam External Link Directive', () => {
   let fixture: ComponentFixture<TestComponent>;
 
   function findIcons() {
-    return fixture.debugElement.queryAll(By.css('.margin-left-2px'));
+    return fixture.debugElement.queryAll(By.css('.usa-link--external'));
   }
 
   beforeEach(() => {

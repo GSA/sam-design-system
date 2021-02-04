@@ -69,7 +69,7 @@ describe('SystemAlertComponent', () => {
     // Show details clicked - description should be present
     showDetailsButton.triggerEventHandler('click', null);
     fixture.detectChanges();
-    expect(alertDescription.classes['display-none']).toEqual(false);
+    expect(alertDescription.classes['display-none']).toBeFalsy();
 
     // Hide details clicked - description should be hidden again
     showDetailsButton.triggerEventHandler('click', null);

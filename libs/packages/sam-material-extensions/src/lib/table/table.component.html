@@ -44,8 +44,8 @@
         class="cursor-pointer"
         (click)="onExpansionClicked(element)"
       >
-        <fa-icon *ngIf="element == expandedElement" [icon]="['fas', 'chevron-up']" size="sm"></fa-icon>
-        <fa-icon *ngIf="element != expandedElement" [icon]="['fas', 'chevron-down']" size="sm"></fa-icon>
+        <sds-icon *ngIf="element == expandedElement" [icon]="['bs', 'chevron-up']" size="sm"></sds-icon>
+        <sds-icon *ngIf="element != expandedElement" [icon]="['bs', 'chevron-down']" size="sm"></sds-icon>
       </td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
