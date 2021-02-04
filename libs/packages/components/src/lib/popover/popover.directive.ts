@@ -1,4 +1,5 @@
 import { AfterViewInit, Directive, ElementRef, HostListener, Input, Renderer2, TemplateRef } from '@angular/core';
+import { debounce } from './debounce.decorator';
 
 @Directive({
   selector: '[sdsPopover]',
@@ -11,17 +12,15 @@ export class SdsPopoverDirective implements AfterViewInit {
   sdsPopoverDiv: HTMLElement;
   clicked= false;
 
-  @HostListener('click', ['$event']) onClick($event){
-    this.clicked = !this.clicked;
-    if(this.clicked){
-      this.renderer.addClass(this.sdsPopoverDiv, 'sds-popover__shown');
-      this.renderer.removeClass(this.sdsPopoverDiv, 'sds-popover__hidden');
-      this.renderer.setAttribute(this.sdsPopoverDiv, 'aria-hidden', 'false');
-    } else {
-      this.renderer.removeClass(this.sdsPopoverDiv, 'sds-popover__shown');
-      this.renderer.addClass(this.sdsPopoverDiv, 'sds-popover__hidden');
-      this.renderer.setAttribute(this.sdsPopoverDiv, 'aria-hidden', 'true');
-    }
+  @HostListener('click', ['$event']) onClick(){
+    this.clickEvent();
+  }
+
+  /**
+   * Adding listener for keyup.enter to ensure that user can activate popover with keyboard
+   */
+  @HostListener('keyup.enter', ['$event']) onKeyUp(){
+    this.clickEvent();
   }
 
   @Input()
@@ -80,5 +79,19 @@ export class SdsPopoverDirective implements AfterViewInit {
       popoverSection = value;
     }
     return popoverSection;
+  }
+
+  @debounce(100)
+  clickEvent(){
+    this.clicked = !this.clicked;
+    if(this.clicked){
+      this.renderer.addClass(this.sdsPopoverDiv, 'sds-popover__shown');
+      this.renderer.removeClass(this.sdsPopoverDiv, 'sds-popover__hidden');
+      this.renderer.setAttribute(this.sdsPopoverDiv, 'aria-hidden', 'false');
+    } else {
+      this.renderer.removeClass(this.sdsPopoverDiv, 'sds-popover__shown');
+      this.renderer.addClass(this.sdsPopoverDiv, 'sds-popover__hidden');
+      this.renderer.setAttribute(this.sdsPopoverDiv, 'aria-hidden', 'true');
+    }
   }
 }
