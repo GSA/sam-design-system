@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { SdsToastComponent } from './toast-single.component';
 import { CommonModule } from '@angular/common';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SdsIconModule } from '../icon/icon.module';
 
 export let SdsToastSettings = {
   toastComponent: SdsToastComponent,
@@ -11,7 +11,7 @@ export let SdsToastSettings = {
 };
 
 @NgModule({
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [CommonModule, SdsIconModule],
   exports: [SdsToastComponent],
   declarations: [SdsToastComponent],
   entryComponents: [],

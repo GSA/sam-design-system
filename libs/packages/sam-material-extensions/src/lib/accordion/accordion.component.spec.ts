@@ -3,7 +3,8 @@ import {
   Component,
   ViewChild,
   DebugElement,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
+  ChangeDetectorRef
 } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -62,6 +63,10 @@ class WrapperComponent {
   accordionComponentRef: SdsAccordionComponent;
   @ViewChild('first') firstItem;
 
+  constructor(
+    public cdr: ChangeDetectorRef,
+  ) {}
+
   multi = false;
 }
 
@@ -88,11 +93,12 @@ describe('SdsAccordionComponent', () => {
   describe('Accordion', () => {
     beforeEach(() => {
       fixture = TestBed.createComponent(WrapperComponent);
+      fixture.detectChanges();
+
       const wrapperComponent = fixture.debugElement.componentInstance;
       component = wrapperComponent.accordionComponentRef;
       accordionDe = fixture.debugElement;
       wrapper = wrapperComponent;
-      fixture.detectChanges();
     });
 
     it('should create', async(() => {
@@ -110,22 +116,23 @@ describe('SdsAccordionComponent', () => {
 
     it('first item should open', () => {
       wrapper.firstItem.open();
-      fixture.detectChanges();
+      fixture.componentInstance.cdr.detectChanges();
       const cont = accordionDe.query(By.css('.mat-expansion-panel'));
       expect(cont.classes['mat-expanded']).toBeTruthy();
     });
 
     it('first item should close', () => {
       wrapper.firstItem.close();
-      fixture.detectChanges();
+      fixture.componentInstance.cdr.detectChanges();
       const cont = accordionDe.query(By.css('.mat-expansion-panel'));
       expect(cont.classes['mat-expanded']).toBeFalsy();
     });
 
     it('first item should toggle', () => {
       wrapper.firstItem.close();
+      fixture.componentInstance.cdr.detectChanges();
       wrapper.firstItem.toggle();
-      fixture.detectChanges();
+      fixture.componentInstance.cdr.detectChanges();
       const cont = accordionDe.query(By.css('.mat-expansion-panel'));
       expect(cont.classes['mat-expanded']).toBeTruthy();
     });
@@ -142,19 +149,20 @@ describe('SdsAccordionComponent', () => {
 
     it('accordion should openAll and closeAll', () => {
       component.multi = true;
-      fixture.detectChanges();
+      fixture.componentInstance.cdr.detectChanges();
       component.openAll();
-      fixture.detectChanges();
+      fixture.componentInstance.cdr.detectChanges();
       const cont = accordionDe.query(By.css('.mat-expansion-panel'));
       expect(cont.classes['mat-expanded']).toBeTruthy();
       component.closeAll();
-      fixture.detectChanges();
+      fixture.componentInstance.cdr.detectChanges();
+
       expect(cont.classes['mat-expanded']).toBeFalsy();
     });
 
     it('accordion should toggleMulti', () => {
       component.toggleMulti();
-      fixture.detectChanges();
+      fixture.componentInstance.cdr.detectChanges();
       expect(component.multi).toBeTruthy();
     });
   });

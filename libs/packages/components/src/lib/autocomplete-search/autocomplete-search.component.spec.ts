@@ -106,6 +106,7 @@ describe('SamAutocompleteComponent', () => {
   it('Should have results with input and free text search on', fakeAsync(() => {
     component.inputValue = 'search text';
     const event = {
+      preventDefault: () => {},
       key: 'Enter',
       target: { value: component.inputValue }
     };
@@ -155,6 +156,7 @@ describe('SamAutocompleteComponent', () => {
 
   it('Should have empty results key press minimumCharacterCountSearch', fakeAsync(() => {
     const event = {
+      preventDefault: () => {},
       key: 'd',
       target: { value: 'id' }
     };
@@ -365,7 +367,8 @@ describe('SamAutocompleteComponent', () => {
     expect(listBefore.nativeElement.children.length).toBe(16);
     const event = {
       key: 'Escape',
-      target: { value: 'id' }
+      target: { value: 'id' },
+      preventDefault: () => {},
     };
     component.onKeydown(event);
     fixture.detectChanges();
@@ -395,7 +398,8 @@ describe('SamAutocompleteComponent', () => {
     expect(component.results[0]['highlighted']).toBeTruthy();
     const event = {
       key: 'Enter',
-      target: { value: 'id' }
+      target: { value: 'id' },
+      preventDefault: () => {},
     };
     component.onKeydown(event);
     fixture.detectChanges();
@@ -413,7 +417,8 @@ describe('SamAutocompleteComponent', () => {
     const list = fixture.debugElement.query(By.css('.sds-autocomplete'));
     const event = {
       key: 'Enter',
-      target: { value: 'id' }
+      target: { value: 'id' },
+      preventDefault: () => {},
     };
     component.onKeydown(event);
     fixture.detectChanges();
@@ -514,7 +519,8 @@ describe('SamAutocompleteComponent', () => {
     component.inputValue = 'searchtext';
     const event = {
       key: 'Enter',
-      target: { value: component.inputValue }
+      target: { value: component.inputValue },
+      preventDefault: () => {},
     };
     component.onKeydown(event);
     fixture.detectChanges();
@@ -526,7 +532,8 @@ describe('SamAutocompleteComponent', () => {
   it('Should have input read only', fakeAsync(() => {
     component.configuration.inputReadOnly = true;
     const event = {
-      key: 'a'
+      key: 'a',
+      preventDefault: () => {},
     };
     component.onkeypress(event);
     fixture.detectChanges();
@@ -560,7 +567,8 @@ describe('SamAutocompleteComponent', () => {
     component.inputValue = 'a';
     const event = {
       key: 'a',
-      target: { value: component.inputValue }
+      target: { value: component.inputValue },
+      preventDefault: () => {},
     };
     component.onkeypress(event);
     fixture.detectChanges();
