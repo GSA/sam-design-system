@@ -10689,7 +10689,7 @@ const COMPONENTS = {
                 }
             ],
             "stylesData": "",
-            "templateData": "<nav>\n  <ul class=\"usa-sidenav\">\n    <li *ngFor=\"let link of model.navigationLinks\" class=\"sidenav__item\">\n      <ng-container [ngTemplateOutlet]=\"sideNavLinkTemplate\" [ngTemplateOutletContext]=\"{$implicit:link}\">\n      </ng-container>\n    </li>\n  </ul>\n</nav>\n\n<ng-template #sideNavLinkTemplate let-link>\n  <ng-container [ngTemplateOutlet]=\"getItemTemplate(link)\" [ngTemplateOutletContext]=\"{$implicit:link}\">\n  </ng-container>\n  <ul *ngIf=\"link.children\" class=\"usa-sidenav__sublist\">\n    <li *ngFor=\"let link of link.children\" class=\"sidenav__item\">\n      <ng-container [ngTemplateOutlet]=\"sideNavLinkTemplate\" [ngTemplateOutletContext]=\"{$implicit:link}\">\n      </ng-container>\n    </li>\n  </ul>\n</ng-template>\n\n<ng-template #sideNavRouteLinkTemplate let-link>\n  <a [attr.class]=\"link.selected ? ' usa-current' : ''\" [routerLink]=\"[link.route]\" (click)=\"linkClickEvent(link)\"\n    [queryParams]=\"link.queryParams\" \n    [queryParamsHandling]=\"link.queryParamsHandling ? link.queryParamsHandling : 'merge'\">\n      <span>{{link.text}}</span>\n  </a>\n</ng-template>\n\n<ng-template #sideNavHREFLinkTemplate let-link>\n  <a [attr.class]=\"link.selected ? ' usa-current' : ''\" [attr.href]=\"urlBuilder(link)\"\n    (click)=\"linkClickEvent(link)\"><span>{{link.text}}</span></a>\n</ng-template>\n\n<ng-template #sideNavLabelLinkTemplate let-link>\n  <span [attr.class]=\"link.selected ? ' usa-current' : ''\"><span>{{link.text}}</span></span>\n</ng-template>\n\n<ng-template #sideNavEVENTLinkTemplate let-link>\n  <a [attr.class]=\"link.selected ? ' usa-current' : ''\" href=\"javascript:void(0)\"\n    (click)=\"linkClickEvent(link)\"><span>{{link.text}}</span></a>\n</ng-template>\n"
+            "templateData": "<nav>\n  <ul class=\"usa-sidenav\">\n    <li *ngFor=\"let link of model.navigationLinks\" class=\"sidenav__item\">\n      <ng-container [ngTemplateOutlet]=\"sideNavLinkTemplate\" [ngTemplateOutletContext]=\"{$implicit:link}\">\n      </ng-container>\n    </li>\n  </ul>\n</nav>\n\n<ng-template #sideNavLinkTemplate let-link>\n  <ng-container [ngTemplateOutlet]=\"getItemTemplate(link)\" [ngTemplateOutletContext]=\"{$implicit:link}\">\n  </ng-container>\n  <ul *ngIf=\"link.children\" class=\"usa-sidenav__sublist\">\n    <li *ngFor=\"let link of link.children\" class=\"sidenav__item\">\n      <ng-container [ngTemplateOutlet]=\"sideNavLinkTemplate\" [ngTemplateOutletContext]=\"{$implicit:link}\">\n      </ng-container>\n    </li>\n  </ul>\n</ng-template>\n\n<ng-template #sideNavRouteLinkTemplate let-link>\n  <a [attr.class]=\"link.selected ? ' usa-current' : ''\" [routerLink]=\"[link.route]\" (click)=\"linkClickEvent(link)\"\n    [queryParams]=\"link.queryParams\" \n    [queryParamsHandling]=\"link.queryParamsHandling\">\n      <span>{{link.text}}</span>\n  </a>\n</ng-template>\n\n<ng-template #sideNavHREFLinkTemplate let-link>\n  <a [attr.class]=\"link.selected ? ' usa-current' : ''\" [attr.href]=\"urlBuilder(link)\"\n    (click)=\"linkClickEvent(link)\"><span>{{link.text}}</span></a>\n</ng-template>\n\n<ng-template #sideNavLabelLinkTemplate let-link>\n  <span [attr.class]=\"link.selected ? ' usa-current' : ''\"><span>{{link.text}}</span></span>\n</ng-template>\n\n<ng-template #sideNavEVENTLinkTemplate let-link>\n  <a [attr.class]=\"link.selected ? ' usa-current' : ''\" href=\"javascript:void(0)\"\n    (click)=\"linkClickEvent(link)\"><span>{{link.text}}</span></a>\n</ng-template>\n"
         },
         {
             "name": "SdsTextChildComponent",
@@ -12435,11 +12435,7 @@ const COMPONENTS = {
                 },
                 {
                     "type": "imports",
-                    "elements": [
-                        {
-                            "name": "SdsAccordionModule"
-                        }
-                    ]
+                    "elements": []
                 },
                 {
                     "type": "exports",
@@ -12945,7 +12941,7 @@ const COMPONENTS = {
                 "subtype": "variable",
                 "file": "libs/packages/components/src/lib/toolbar/toolbar-animations.ts",
                 "type": "literal type",
-                "defaultValue": "{\n  /** Animation that expands and collapses the accordion item content. */\n  bodyExpansion: trigger('bodyExpansion', [\n    state('collapsed, void', style({width: '0px', height: '0px', opacity: '0', visibility: 'hidden'})),\n    state('expanded', style({width: '{{expandedWidth}}', height: '*', opacity: '1', visibility: 'visible'}), {\n      params: { expandedWidth: '300px' }\n    }),\n    transition('expanded <=> collapsed, void => collapsed',\n      animate(TOOLBAR_ANIMATION_TIMING)),\n  ])\n}"
+                "defaultValue": "{\n  /** Animation that expands and collapses the accordion item content. */\n  bodyExpansion: trigger('bodyExpansion', [\n    state('collapsed, void', style({ width: '0px', height: '0px', opacity: '0', visibility: 'hidden', marginLeft: '-1px', marginBottom: '-1px' })),\n    state('expanded', style({ width: '{{expandedWidth}}', height: '*', opacity: '1', visibility: 'visible', marginLeft: '-1px', marginBottom: '-1px' }), {\n      params: { expandedWidth: '300px' }\n    }),\n    transition('expanded <=> collapsed, void => collapsed',\n      animate(TOOLBAR_ANIMATION_TIMING)),\n  ])\n}"
             },
             {
                 "name": "sdsTruncateTextAnimations",
@@ -14043,7 +14039,7 @@ const COMPONENTS = {
                     "subtype": "variable",
                     "file": "libs/packages/components/src/lib/toolbar/toolbar-animations.ts",
                     "type": "literal type",
-                    "defaultValue": "{\n  /** Animation that expands and collapses the accordion item content. */\n  bodyExpansion: trigger('bodyExpansion', [\n    state('collapsed, void', style({width: '0px', height: '0px', opacity: '0', visibility: 'hidden'})),\n    state('expanded', style({width: '{{expandedWidth}}', height: '*', opacity: '1', visibility: 'visible'}), {\n      params: { expandedWidth: '300px' }\n    }),\n    transition('expanded <=> collapsed, void => collapsed',\n      animate(TOOLBAR_ANIMATION_TIMING)),\n  ])\n}"
+                    "defaultValue": "{\n  /** Animation that expands and collapses the accordion item content. */\n  bodyExpansion: trigger('bodyExpansion', [\n    state('collapsed, void', style({ width: '0px', height: '0px', opacity: '0', visibility: 'hidden', marginLeft: '-1px', marginBottom: '-1px' })),\n    state('expanded', style({ width: '{{expandedWidth}}', height: '*', opacity: '1', visibility: 'visible', marginLeft: '-1px', marginBottom: '-1px' }), {\n      params: { expandedWidth: '300px' }\n    }),\n    transition('expanded <=> collapsed, void => collapsed',\n      animate(TOOLBAR_ANIMATION_TIMING)),\n  ])\n}"
                 },
                 {
                     "name": "TOOLBAR_ANIMATION_TIMING",

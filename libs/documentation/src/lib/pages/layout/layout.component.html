@@ -3,28 +3,33 @@
   <button class="usa-button" (click)="updateConfig(false)">Default Sort Config</button>
   <button class="usa-button" (click)="updateConfig(true)">Update Sort Config</button>
   <button class="usa-button" (click)="onSearchModelUpdate()">Update search results model</button>
-  <hr />
+  <hr/>
 </div>
 
 <div class="sds-page condensed margin-top-2">
   <div class="grid-container">
     <div class="grid-row">
       <sds-toolbar class="grid-col-12 tablet:grid-col-auto" #toolbar="sdsToolbar" [expanded]="true">
-        <sds-accordion>
+        <sds-accordion-next class="sds-accordion--sidenav">
           <sds-accordion-item #domainAccordion [expanded]="!filtersExpanded">
-            <sds-accordion-item-header>
+            <sds-accordion-title>
               <span class="text-normal">Domain</span>
-            </sds-accordion-item-header>
-            <sds-side-navigation #sideNav [model]="navigationModel"></sds-side-navigation>
+            </sds-accordion-title>
+            <sds-accordion-content>
+              <sds-side-navigation #sideNav [model]="navigationModel"></sds-side-navigation>
+            </sds-accordion-content>
           </sds-accordion-item>
           <sds-accordion-item #filtersAccordion [expanded]="filtersExpanded">
-            <sds-accordion-item-header>Filter By</sds-accordion-item-header>
-            <sds-filters [options]="options" [advancedFilters]="true" [sortMoreFilterBy]="'label'"
-              [isHistoryEnable]="false" [form]="form" [fields]="fields" [model]="filterModel"
-              (filterChange)="filterChange$.next($event)">
-            </sds-filters>
+            <sds-accordion-title>Filter By</sds-accordion-title>
+            <sds-accordion-content>
+
+              <sds-filters [options]="options" [advancedFilters]="true" [sortMoreFilterBy]="'label'"
+                [isHistoryEnable]="false" [form]="form" [fields]="fields" [model]="filterModel"
+                (filterChange)="filterChange$.next($event)"></sds-filters>
+
+            </sds-accordion-content>
           </sds-accordion-item>
-        </sds-accordion>
+        </sds-accordion-next>
       </sds-toolbar>
 
       <div class="sds-page__content tablet:grid-col-fill">

@@ -3,12 +3,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SdsSideNavigationComponent } from './side-navigation.component';
 import { RouterModule } from '@angular/router';
-import { SdsAccordionModule } from '../accordion/accordion.module';
-
 
 @NgModule({
   imports: [
-    CommonModule, FormsModule, RouterModule, SdsAccordionModule
+    CommonModule, FormsModule, RouterModule
   ],
   declarations: [SdsSideNavigationComponent],
   exports: [SdsSideNavigationComponent]
