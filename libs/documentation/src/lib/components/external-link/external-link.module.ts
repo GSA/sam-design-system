@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { SdsSystemAlertModule } from '@gsa-sam/layouts';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import {
   DocumentationComponentsSharedModule,
