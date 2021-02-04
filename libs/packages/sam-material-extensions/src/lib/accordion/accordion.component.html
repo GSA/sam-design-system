@@ -7,7 +7,9 @@
                 </mat-panel-title>
                 <span class="sds-expansion-indicator" [ngClass]="{'sds-expansion-indicator--expanded' : accordionItem.expanded}"></span>
             </mat-expansion-panel-header>
-            <ng-container *ngTemplateOutlet="accordionItem.itemContentTemplate"></ng-container>
+            <span [ngClass]="{'display-none': !accordionItem.expanded}">
+                <ng-container *ngTemplateOutlet="accordionItem.itemContentTemplate"></ng-container>
+            </span>
         </mat-expansion-panel>
     </ng-container>
 </mat-accordion>
