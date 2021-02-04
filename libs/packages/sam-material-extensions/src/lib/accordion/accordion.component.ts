@@ -8,7 +8,7 @@ import {
   ContentChildren,
   Output,
   EventEmitter,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
 } from '@angular/core';
 
 import { MatAccordion } from '@angular/material/expansion';
@@ -28,7 +28,7 @@ export class SdsAccordionContentDirective {}
     <ng-template #itemContentTemplate>
       <ng-content #content select="sds-accordion-content"></ng-content>
     </ng-template>
-  `
+  `,
 })
 export class SdsAccordionItemComponent {
   @ViewChild('itemTitleTemplate') itemTitleTemplate: TemplateRef<any>;
@@ -79,6 +79,9 @@ export class SdsAccordionComponent {
   @Output() multiChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   @Input() displayMode = 'flat';
+
+  @Input() collapsedHeight;
+  @Input() expandedHeight;
 
   /** Opens all accordion items. */
   openAll(): void {

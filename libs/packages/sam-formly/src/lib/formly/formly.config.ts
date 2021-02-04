@@ -1,6 +1,4 @@
 import { ConfigOption, FormlyFieldConfig } from '@ngx-formly/core';
-
-import { FormlyCustomWrapperComponent } from './wrappers/custom-wrapper';
 import { FormlyWrapperFormFieldComponent } from './wrappers/form-field.wrapper';
 import { FormlyAccordianFormFieldComponent } from './wrappers/form-field.accordian';
 import { FormlyFormFieldFilterWrapperComponent } from './wrappers/form-field.filterwrapper';
@@ -30,7 +28,6 @@ export const FIELD_TYPE_COMPONENTS = [
   FormlyFieldDateRangePickerComponent,
   FormlyFormFieldFilterWrapperComponent,
   FormlyFieldButtonComponent,
-  FormlyCustomWrapperComponent,
   FormlyLabelWrapperComponent,
   FormlyDescriptionWrapperComponent,
   FormlyValidationWrapperComponent,
@@ -93,11 +90,7 @@ export const FORMLY_WRAPPERS: any = [
     componentName: 'FormlyGroupWrapperComponent'
   },
 
-  {
-    name: 'customwrapper',
-    component: FormlyCustomWrapperComponent,
-    componentName: 'FormlyCustomWrapperComponent'
-  },
+ 
   {
     name: 'readonly',
     component: FormlyReadonlyWrapperComponent,
@@ -244,7 +237,7 @@ export const FORMLY_CONFIG: ConfigOption = {
     { name: 'form-field', component: FormlyWrapperFormFieldComponent },
     { name: 'accordionwrapper', component: FormlyAccordianFormFieldComponent },
     { name: 'filterwrapper', component: FormlyFormFieldFilterWrapperComponent },
-    { name: 'customwrapper', component: FormlyCustomWrapperComponent },
+  
     { name: 'readonly', component: FormlyReadonlyWrapperComponent }
   ]
 };
