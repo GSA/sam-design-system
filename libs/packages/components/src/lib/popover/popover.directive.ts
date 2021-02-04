@@ -11,6 +11,7 @@ export class SdsPopoverDirective implements AfterViewInit {
 
   sdsPopoverDiv: HTMLElement;
   clicked= false;
+  popoverDivId: string;
 
   @HostListener('click', ['$event']) onClick(){
     this.clickEvent();
@@ -35,6 +36,9 @@ export class SdsPopoverDirective implements AfterViewInit {
   }
 
   ngAfterViewInit() {
+    this.popoverDivId = this.el.nativeElement.id ? `${this.el.nativeElement.id}-popover` : `${this.el.nativeElement.tagName}-${this.el.nativeElement.offsetTop}-${this.el.nativeElement.offsetWidth}-popover`
+    this.sdsPopoverDiv.id = this.popoverDivId;
+    this.renderer.setAttribute(this.el.nativeElement, 'aria-describedby', this.popoverDivId)
     this.renderer.setAttribute(this.sdsPopoverDiv, 'data-position', this.position)
     this.renderer.addClass(this.sdsPopoverDiv, 'out');
     this.renderer.addClass(this.sdsPopoverDiv, this.position);
