@@ -8,7 +8,6 @@ export class SdsTooltipDirective implements AfterViewInit {
 
   private _sdsTooltip: string | TemplateRef<any> | HTMLDivElement;
   sdsTooltipDiv: HTMLElement;
-  tooltipDivId: string;
 
   @Input()
   position: string = 'top';
@@ -29,7 +28,7 @@ export class SdsTooltipDirective implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.renderer.setAttribute(this.sdsTooltipDiv, 'aria-hidden', 'true');
+    // this.renderer.setAttribute(this.sdsTooltipDiv, 'aria-hidden', 'true');
     this.renderer.setAttribute(this.sdsTooltipDiv, 'data-position', this.position)
     this.renderer.addClass(this.sdsTooltipDiv, this.position);
     this.renderer.appendChild(this.sdsTooltipDiv, this.sdsTooltip);
