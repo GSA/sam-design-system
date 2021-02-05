@@ -93,7 +93,6 @@ export class SdsPopoverDirective implements AfterViewInit {
       this.renderer.removeClass(this.sdsPopoverDiv, 'sds-popover__hidden');
       this.renderer.setAttribute(this.sdsPopoverDiv, 'aria-hidden', 'false');
       this.renderer.setAttribute(this.el.nativeElement, 'aria-describedby', this.popoverDivId)
-      this.sdsPopoverDiv.focus();
     } else {
       this.renderer.removeClass(this.sdsPopoverDiv, 'sds-popover__shown');
       this.renderer.addClass(this.sdsPopoverDiv, 'sds-popover__hidden');
