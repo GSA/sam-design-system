@@ -33,7 +33,7 @@ export class SdsTooltipDirective implements AfterViewInit {
     this.sdsTooltipDiv.id = this.tooltipDivId;
     this.renderer.setAttribute(this.el.nativeElement, 'aria-describedby', this.tooltipDivId)
 
-    this.renderer.setAttribute(this.sdsTooltipDiv, 'aria-hidden', 'false');
+    this.renderer.setAttribute(this.sdsTooltipDiv, 'aria-hidden', 'true');
     this.renderer.setAttribute(this.sdsTooltipDiv, 'data-position', this.position)
     this.renderer.addClass(this.sdsTooltipDiv, this.position);
     this.renderer.appendChild(this.sdsTooltipDiv, this.sdsTooltip);
