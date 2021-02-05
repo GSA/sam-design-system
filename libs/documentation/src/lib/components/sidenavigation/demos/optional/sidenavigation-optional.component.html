@@ -1,8 +1,7 @@
 <h4>Side Navigation</h4>
-
-<sds-toolbar class="tablet:grid-col-auto" #toolbar="sdsToolbar" [expanded]="true">
-  <sds-accordion-next multi="false">
-    <sds-accordion-item #navigationAccordion>
+<sds-toolbar class="grid-col-12 tablet:grid-col-auto" #toolbar="sdsToolbar" [expanded]="true">
+  <sds-accordion-next class="sds-accordion--sidenav" multi="false">
+    <sds-accordion-item #navigationAccordion [expanded]="false">
       <sds-accordion-title>
         <div class="sds-accordion__item-header-title">Select Domain</div>
         <span class="text-normal">{{ selectedCategory }}</span>
@@ -13,8 +12,11 @@
     </sds-accordion-item>
     <sds-accordion-item #filtersAccordion [expanded]="true">
       <sds-accordion-title>Filter By</sds-accordion-title>
-      <sds-filters [form]="form" [fields]="fields" [model]="filterModel">
-      </sds-filters>
+      <sds-accordion-content>
+        <sds-filters [options]="options" [advancedFilters]="true" [sortMoreFilterBy]="'label'" [isHistoryEnable]="false"
+          [form]="form" [fields]="fields" [model]="filterModel" (filterChange)="filterChange$.next($event)">
+        </sds-filters>
+      </sds-accordion-content>
     </sds-accordion-item>
   </sds-accordion-next>
 </sds-toolbar>
