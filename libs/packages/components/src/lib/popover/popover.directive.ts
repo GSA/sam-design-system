@@ -38,7 +38,6 @@ export class SdsPopoverDirective implements AfterViewInit {
   ngAfterViewInit() {
     this.popoverDivId = this.el.nativeElement.id ? `${this.el.nativeElement.id}-popover` : `${this.el.nativeElement.tagName}-${this.el.nativeElement.offsetTop}-${this.el.nativeElement.offsetWidth}-popover`
     this.sdsPopoverDiv.id = this.popoverDivId;
-    this.renderer.setAttribute(this.el.nativeElement, 'aria-describedby', this.popoverDivId)
     this.renderer.setAttribute(this.sdsPopoverDiv, 'data-position', this.position)
     this.renderer.setAttribute(this.sdsPopoverDiv, 'aria-hidden', 'true');
     this.renderer.addClass(this.sdsPopoverDiv, 'out');
@@ -93,11 +92,13 @@ export class SdsPopoverDirective implements AfterViewInit {
       this.renderer.addClass(this.sdsPopoverDiv, 'sds-popover__shown');
       this.renderer.removeClass(this.sdsPopoverDiv, 'sds-popover__hidden');
       this.renderer.setAttribute(this.sdsPopoverDiv, 'aria-hidden', 'false');
+      this.renderer.setAttribute(this.el.nativeElement, 'aria-describedby', this.popoverDivId)
       this.sdsPopoverDiv.focus();
     } else {
       this.renderer.removeClass(this.sdsPopoverDiv, 'sds-popover__shown');
       this.renderer.addClass(this.sdsPopoverDiv, 'sds-popover__hidden');
       this.renderer.setAttribute(this.sdsPopoverDiv, 'aria-hidden', 'true');
+      this.renderer.removeAttribute(this.el.nativeElement, 'aria-describedby')
     }
   }
 }
