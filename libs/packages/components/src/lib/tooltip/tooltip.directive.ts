@@ -13,6 +13,13 @@ export class SdsTooltipDirective implements AfterViewInit {
   @Input()
   position: string = 'top';
 
+  @HostListener('focus', ['$event']) onFocus(){
+    this.renderer.setAttribute(this.sdsTooltipDiv, 'aria-hidden', 'false')
+  }
+  @HostListener('blur', ['$event']) onBlue(){
+    this.renderer.setAttribute(this.sdsTooltipDiv, 'aria-hidden', 'true')
+  }
+
 
   constructor(private el: ElementRef, private renderer: Renderer2) {
     this.renderer.addClass(this.el.nativeElement, 'sds-tooltip');
@@ -22,10 +29,6 @@ export class SdsTooltipDirective implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.tooltipDivId = this.el.nativeElement.id ? `${this.el.nativeElement.id}-popover` : `${this.el.nativeElement.tagName}-${this.el.nativeElement.offsetTop}-${this.el.nativeElement.offsetWidth}-popover`
-    this.sdsTooltipDiv.id = this.tooltipDivId;
-    this.renderer.setAttribute(this.el.nativeElement, 'aria-describedby', this.tooltipDivId)
-
     this.renderer.setAttribute(this.sdsTooltipDiv, 'aria-hidden', 'true');
     this.renderer.setAttribute(this.sdsTooltipDiv, 'data-position', this.position)
     this.renderer.addClass(this.sdsTooltipDiv, this.position);
