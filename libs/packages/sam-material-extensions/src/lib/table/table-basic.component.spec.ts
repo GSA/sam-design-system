@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Component, ViewChild, DebugElement } from '@angular/core';
+import { Component, ViewChild, DebugElement, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -151,7 +151,7 @@ const MOCK_DATA = [
 
 @Component({
   template: `
-    <sds-table [data]="data" expansion="false">
+    <sds-table [data]="data">
       <sds-table-column sdsColumnName="id">
         <ng-template #sdsHeaderCell>ID</ng-template>
         <ng-template #sdsCell let-element="element">{{
@@ -195,8 +195,9 @@ const MOCK_DATA = [
       </sds-table-column>
 
       <sds-row [displayedColumns]="displayedColumns"></sds-row>
-    </sds-table>
-  `
+    </sds-table>,
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class WrapperComponent {
   @ViewChild(SdsTableComponent) sdsTableComponentRef: SdsTableComponent;
@@ -204,6 +205,10 @@ class WrapperComponent {
   sdsTableRowComponentRef: SdsTableRowComponent;
   @ViewChild(SdsTableHeaderRowComponent)
   sdsTableHeaderRowComponent: SdsTableHeaderRowComponent;
+
+  constructor(
+    public cdr: ChangeDetectorRef,
+  ) {}
 
   displayedColumns: string[] = [
     'id',
@@ -242,7 +247,7 @@ describe('SdsTableComponent Basic', () => {
       ],
       imports: [
         MatTableModule,
-        FontAwesomeModule,
+        SdsIconModule,
         MatSortModule,
         SdsIconModule,
         MatPaginatorModule,
@@ -256,6 +261,7 @@ describe('SdsTableComponent Basic', () => {
     beforeEach(() => {
       fixture = TestBed.createComponent(WrapperComponent);
       const wrapperComponent = fixture.debugElement.componentInstance;
+      wrapperComponent.cdr.detectChanges();
       component = wrapperComponent.sdsTableComponentRef;
       tableDe = fixture.debugElement;
       wrapper = wrapperComponent;

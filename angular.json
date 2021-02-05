@@ -65,7 +65,7 @@
         "build": {
           "builder": "@nrwl/angular:package",
           "outputs": [
-            "dist/libs/components"
+            "dist/libs/sam-material-extensions"
           ],
           "options": {
             "tsConfig": "libs/packages/sam-material-extensions/tsconfig.lib.json",
@@ -237,12 +237,10 @@
           },
           "configurations": {
             "production": {
-              "fileReplacements": [
-                {
-                  "replace": "apps/sam-design-system-site/src/environments/environment.ts",
-                  "with": "apps/sam-design-system-site/src/environments/environment.prod.ts"
-                }
-              ],
+              "fileReplacements": [{
+                "replace": "apps/sam-design-system-site/src/environments/environment.ts",
+                "with": "apps/sam-design-system-site/src/environments/environment.prod.ts"
+              }],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -252,13 +250,11 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                }
-              ]
+              "budgets": [{
+                "type": "initial",
+                "maximumWarning": "2mb",
+                "maximumError": "5mb"
+              }]
             }
           }
         },

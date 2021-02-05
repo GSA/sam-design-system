@@ -41,6 +41,7 @@ export class SearchOptional {
               size: 'large',
               dropdown: {
                 options: [
+                  {value: '-', label: '--Select--'},
                   { label: '30 Days', value: '30' },
                   { label: '60 Days', value: '60' },
                   { label: '90 Days', value: '90' },
@@ -60,9 +61,10 @@ export class SearchOptional {
               size: 'large',
               id: 'invSearchOptional',
               dropdown: {
-                placeholder: ' Select category',
+                placeholder: 'Select category',
                 inverse: true,
                 options: [
+                  {value: '-', label: 'Select category'},
                   { label: '30 Days', value: '30' },
                   { label: '60 Days', value: '60' },
                   { label: '90 Days', value: '90' },

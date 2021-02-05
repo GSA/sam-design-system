@@ -5,7 +5,7 @@ import { NavigationMode } from '../common-navigation/common-navigation-model';
 
 import { SdsSelectionPanelComponent } from './selection-panel.component';
 
-fdescribe('SelectionPanelComponent', () => {
+describe('SelectionPanelComponent', () => {
   let component: SdsSelectionPanelComponent;
   let fixture: ComponentFixture<SdsSelectionPanelComponent>;
 
@@ -55,8 +55,8 @@ fdescribe('SelectionPanelComponent', () => {
 
   it('Display children items if selected item contains children', () => {
     component.navigateOnClick = false;
-    const federalAssistanceDomain = fixture.debugElement.query(By.css('a'));
-    federalAssistanceDomain.triggerEventHandler('click', null);
+    const federalAssistanceDomain = fixture.debugElement.nativeElement.querySelector('a');
+    federalAssistanceDomain.click()
     fixture.detectChanges();
 
     expect(component.mainParentOfCurrentSelection).toEqual(inputValues.model.navigationLinks[0]);
@@ -65,12 +65,12 @@ fdescribe('SelectionPanelComponent', () => {
 
   it('Should display parent section if sub header is clicked', () => {
     component.navigateOnClick = false;
-    const federalAssistanceDomain = fixture.debugElement.query(By.css('a'));
-    federalAssistanceDomain.triggerEventHandler('click', null);
+    const federalAssistanceDomain = fixture.debugElement.nativeElement.querySelector('a');
+    federalAssistanceDomain.click();
     fixture.detectChanges();
 
-    const subTitle = fixture.debugElement.query(By.css('.sds-card__subtitle'));
-    subTitle.triggerEventHandler('click', null);
+    const subTitle = fixture.debugElement.nativeElement.querySelector('.sds-card__subtitle');
+    subTitle.click();
     fixture.detectChanges();
 
     expect(component.mainParentOfCurrentSelection).toEqual(inputValues.model.navigationLinks[0]);

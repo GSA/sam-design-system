@@ -1,35 +1,31 @@
 <fieldset class="usa-fieldset">
-  <legend class="usa-sr-only">{{ to.label }}</legend>
-  <ul class="sds-list--no-bullets">
-    <li class="grid-row" *ngIf="to.selectAllOption">
-        <div>
-          <input [id]="id + '_Select'" type="checkbox" class="usa-checkbox__input" value="value" [checked]="allComplete"
-            [attr.aria-checked]="ariaChecked" (change)="setAll($event)" />
-          <label class="usa-checkbox__label" [for]="id + '_Select'">{{ to.label }}
+    <legend class="usa-sr-only">{{ to.label }}</legend>
+    <ul class="sds-list--no-bullets">
+        <li class="grid-row" *ngIf="to.selectAllOption">
+            <div>
+                <input [id]="id + '_Select'" type="checkbox" class="usa-checkbox__input" value="value" [checked]="allComplete" [attr.aria-checked]="ariaChecked" (change)="setAll($event)" />
+                <label class="usa-checkbox__label" [attr.aria-checked]="ariaChecked" [for]="id + '_Select'">{{ to.label }}
           </label>
-        </div>
-        <div *ngIf="to.expandableOptions">
-          <button type="button" class="sds-button padding-top-0" [attr.aria-expanded]="!to.expandedOptions"
-            [attr.aria-controls]="id + 'collapseID'" (click)="to.expandedOptions = !to.expandedOptions">
+            </div>
+            <div *ngIf="to.expandableOptions">
+                <button type="button" class="sds-button padding-top-0" [attr.aria-expanded]="!to.expandedOptions" [attr.aria-controls]="id + 'collapseID'" (click)="to.expandedOptions = !to.expandedOptions">
             <span class="usa-sr-only">expand/collapsed</span>
             <fa-icon [icon]="
                 to.expandedOptions ? ['fas', 'angle-down'] : ['fas', 'angle-up']
               " size="sm"></fa-icon>
           </button>
-        </div>
-    </li>
-    <li [id]="id+ 'collapseID'" [sdsCollapse]="to.expandedOptions" [ngClass]="{'margin-left-4 margin-top-0': to.selectAllOption}">
-      <ul class="sds-list--no-bullets">
-        <li *ngFor="let option of (to.options | formlySelectOptions: field | async); let i = index">
-          <input class="usa-checkbox__input" [id]="id + '_' + i" type="checkbox" [name]="id + '_name_' + i"
-            [disabled]="option.disabled" [value]="option.value" [formlyAttributes]="field"
-            (change)="onChange(option.value, $event.target.checked)" [checked]="
+            </div>
+        </li>
+        <li [id]="id+ 'collapseID'" [sdsCollapse]="to.expandedOptions" [ngClass]="{'margin-left-4 margin-top-0': to.selectAllOption}">
+            <ul class="sds-list--no-bullets">
+                <li *ngFor="let option of (to.options | formlySelectOptions: field | async); let i = index">
+                    <input class="usa-checkbox__input" [id]="id + '_' + i" type="checkbox" [name]="id + '_name_' + i" [disabled]="option.disabled" [value]="option.value" [formlyAttributes]="field" (change)="onChange(option.value, $event.target.checked)" [checked]="
               formControl.value &&
               (this.to.type === 'array'
                 ? formControl.value.includes(option.value)
                 : formControl.value[option.value])
             " />
-          <label class="usa-checkbox__label" [for]="id + '_' + i">
+                    <label class="usa-checkbox__label" [for]="id + '_' + i">
             <!-- 
                 The reference of options array through index is done intentionally here rather 
                 than using local variable option because the formlySelectOptions pipe transforms 
@@ -41,8 +37,8 @@
             </span>
             {{ option.label }}
           </label>
-      </li>
-      </ul>
-    </li>
-  </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
 </fieldset>

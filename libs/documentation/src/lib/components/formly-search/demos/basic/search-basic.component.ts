@@ -36,6 +36,7 @@ export class SearchBasic {
               id: 'ddsearch',
               dropdown: {
                 options: [
+                  {value: '-', label: '--Select--'},
                   { label: '30 Days', value: '30' },
                   { label: '60 Days', value: '60' },
                   { label: '90 Days', value: '90' },
@@ -55,6 +56,7 @@ export class SearchBasic {
               dropdown: {
                 inverse: true,
                 options: [
+                  {value: '-', label: '--Select--'},
                   { label: '30 Days', value: '30' },
                   { label: '60 Days', value: '60' },
                   { label: '90 Days', value: '90' },

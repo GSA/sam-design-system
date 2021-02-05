@@ -55,21 +55,6 @@ describe('SdsAccordionItem', () => {
     expect(panelIdOne).not.toBe(panelIdTwo);
   });
 
-  it('should set `aria-labelledby` of the content to the header id', () => {
-    const fixture = TestBed.createComponent(AccordionItem);
-    const headerEl = fixture.nativeElement.querySelector('.sds-accordion__trigger');
-    const contentEl = fixture.nativeElement.querySelector('.sam-accordion__panel');
-
-    fixture.detectChanges();
-
-    const headerId = headerEl.getAttribute('id');
-    const contentLabel = contentEl.getAttribute('aria-labelledby');
-
-    expect(headerId).toBeTruthy();
-    expect(contentLabel).toBeTruthy();
-    expect(headerId).toBe(contentLabel);
-  });
-
   it('should set the proper role on the content element', () => {
     const fixture = TestBed.createComponent(AccordionItem);
     const contentEl = fixture.nativeElement.querySelector('.sam-accordion__panel');

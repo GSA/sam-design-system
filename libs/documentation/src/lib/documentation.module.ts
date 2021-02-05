@@ -85,31 +85,31 @@ import {
 /* Form Types */
 import {
   ROUTES as INPUT_ROUTES,
-  InputModule
+  InputModule,
 } from './components/formly-input/input.module';
 import {
   ROUTES as TEXT_AREA_ROUTES,
-  TextAreaModule
+  TextAreaModule,
 } from './components/formly-textarea/textarea.module';
 import {
   ROUTES as CHECKBOX_ROUTES,
-  CheckboxModule
+  CheckboxModule,
 } from './components/formly-checkbox/checkbox.module';
 import {
   ROUTES as MULTI_CHECKBOX_ROUTES,
-  MultiCheckboxModule
+  MultiCheckboxModule,
 } from './components/formly-multicheckbox/multicheckbox.module';
 import {
   ROUTES as RADIO_ROUTES,
-  RadioModule
+  RadioModule,
 } from './components/formly-radio/radio.module';
 import {
   ROUTES as SELECT_ROUTES,
-  SelectModule
+  SelectModule,
 } from './components/formly-select/select.module';
 import {
   ROUTES as FORMLY_AUTOCOMPLETE_ROUTES,
-  FormlyAutocompleteModule
+  FormlyAutocompleteModule,
 } from './components/formly-autocomplete/autocomplete.module';
 import {
   ROUTES as FORMLY_FILEINFO_ROUTES,
@@ -117,7 +117,7 @@ import {
 } from './components/formly-fileinfo/fileinfo.module';
 import {
   ROUTES as FORMLY_DATEPICKER_ROUTES,
-  FormlyDatepickerModule
+  FormlyDatepickerModule,
 } from './components/formly-datepicker/datepicker.module';
 import {
   ROUTES as TEXT_ROUTES,
@@ -125,7 +125,7 @@ import {
 } from './components/text/text.module';
 import {
   ROUTES as SEARCH_FORMLY_ROUTES,
-  FormlySearchModule
+  FormlySearchModule,
 } from './components/formly-search/search.module';
 
 import {
@@ -176,7 +176,7 @@ import {
 } from './components/button-group/button-group.module';
 import {
   ROUTES as READONLY_ROUTES,
-  ReadonlyModule
+  ReadonlyModule,
 } from './components/formly-readonly/readonly.module';
 
 /* Utilities */
@@ -189,6 +189,11 @@ import {
   ROUTES as SYSTEM_ALERT_ROUTES,
   SystemAlertsModule,
 } from './components/system-alerts/system-alerts.module';
+
+import {
+  ROUTES as EXTERNA_LINK_ROUTES,
+  ExternalLinkModule,
+} from './components/external-link/external-link.module';
 
 import { DocumentationSharedModule } from './shared';
 import { OverviewComponent } from './pages/overview/overview.component';
@@ -230,6 +235,7 @@ export const ROUTES: Routes = [
   { path: 'components/button-group', children: BUTTON_GROUP_ROUTES },
   { path: 'components/selection-panel', children: SELECTION_PANEL_ROUTES },
   { path: 'components/system-alerts', children: SYSTEM_ALERT_ROUTES },
+  { path: 'components/external-link', children: EXTERNA_LINK_ROUTES },
   { path: 'components/toasts', children: TOASTS_ROUTES },
   // Formly
   { path: 'components/formly-input', children: INPUT_ROUTES },
@@ -323,6 +329,7 @@ export const ROUTES: Routes = [
     ButtonGroupModule,
     SelectionPanelModule,
     SystemAlertsModule,
+    ExternalLinkModule,
     ToastsModule,
     ReadonlyModule,
   ],

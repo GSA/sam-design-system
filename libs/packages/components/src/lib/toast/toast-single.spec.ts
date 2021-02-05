@@ -1,10 +1,9 @@
 import { SdsToastComponent } from './toast-single.component';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
-import { Injectable, NgModule, Component, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { ToastPackage, ToastRef, ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SdsIconModule } from '../icon/icon.module';
 
 describe('Component: SdsToastComponent', () => {
   let component: SdsToastComponent;
@@ -24,7 +23,7 @@ describe('Component: SdsToastComponent', () => {
     TestBed.configureTestingModule({
       declarations: [SdsToastComponent],
       imports: [
-        FontAwesomeModule,
+        SdsIconModule,
         ToastrModule.forRoot(),
         BrowserAnimationsModule
       ],
@@ -47,7 +46,7 @@ describe('Component: SdsToastComponent', () => {
 
   it('should get right icon class via method', () => {
     expect(component.getIcon(component.toastPackage.toastType)).toEqual(
-      'check-circle'
+      'check2-circle'
     );
   });
 

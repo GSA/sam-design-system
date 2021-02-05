@@ -57,11 +57,11 @@ import {
 
     getIcon(toastType) {
       switch (toastType) {
-        case "sds-toast--success": return 'check-circle';
-        case "sds-toast--info": return 'alert-info';
-        case "sds-toast--warning": return 'alert-warning';
-        case "sds-toast--error": return 'alert-error';
-        default: return 'alert-info';
+        case "sds-toast--success": return 'check2-circle';
+        case "sds-toast--info": return 'info-circle';
+        case "sds-toast--warning": return 'exclamation-triangle';
+        case "sds-toast--error": return 'slash-circle';
+        default: return 'info-circle';
       }
     }
     getToastSr(toastType) {

@@ -16,8 +16,8 @@ import {
   MAT_NATIVE_DATE_FORMATS,
 } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { SdsAccordionModule } from '@gsa-sam/sam-material-extensions';
 import {
-  SdsAccordionModule,
   SdsAutocompleteModule,
   SdsDialogModule,
   SdsTextModule,
@@ -33,6 +33,7 @@ import {
 } from './formly.validators';
 import { AnimationWrapperComponent } from './wrappers/form-field.animation';
 import { SdsReadonlyModule } from './readonly/readonly.module';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 // Validate the min length of the character
 export function minlengthValidationMessage(err, field) {
@@ -156,6 +157,7 @@ export const DATE_FORMAT: MatDateFormats = {
   imports: [
     CommonModule,
     SdsAccordionModule,
+    MatExpansionModule,
     SdsAutocompleteModule,
     SdsDialogModule,
     SdsSearchModule,
