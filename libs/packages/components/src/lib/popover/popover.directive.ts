@@ -40,6 +40,7 @@ export class SdsPopoverDirective implements AfterViewInit {
     this.sdsPopoverDiv.id = this.popoverDivId;
     this.renderer.setAttribute(this.sdsPopoverDiv, 'data-position', this.position)
     this.renderer.setAttribute(this.sdsPopoverDiv, 'aria-hidden', 'true');
+    this.renderer.setAttribute(this.el.nativeElement, 'role', 'button')
     this.renderer.addClass(this.sdsPopoverDiv, 'out');
     this.renderer.addClass(this.sdsPopoverDiv, this.position);
     if(this._sdsPopoverTitle){
