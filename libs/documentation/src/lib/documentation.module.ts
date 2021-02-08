@@ -71,7 +71,7 @@ import {
 import {
   ROUTES as POPUP_ROUTES,
   PopupModule,
-} from './components/popup/popup.module';
+} from './components/tooltip-popover/tooltip-popover.module';
 import {
   ROUTES as FILTERS_ROUTES,
   FiltersModule,
