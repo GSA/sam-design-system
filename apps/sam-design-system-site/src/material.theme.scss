@@ -137,15 +137,3 @@ $sds-mat-app-theme: mat-light-theme($sds-mat-app-primary, $sds-mat-app-accent, $
 input.mat-input-element {
   margin-top: 0.5rem !important;
 }
-
-sds-accordion-next {
-  // Add padding for displaying outline
-  .mat-expansion-panel {
-    padding: 0.25rem;
-  }
-
-  // Override material's outline of 0
-  .mat-expansion-panel-header:focus {
-    outline: 0.25rem solid #2491ff !important; 
-  }
-}
