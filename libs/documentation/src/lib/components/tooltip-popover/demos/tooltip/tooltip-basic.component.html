@@ -1,0 +1,37 @@
+<div>
+  <p>When <code>sdsTooltip</code> directive is applied to an element, a tooltip
+    will appear when the element is hovered over. The contents of this text can
+    be set by passing either a string or element reference as an input.</p>
+
+  <div style="display: flex; padding-left: 3rem;">
+    <sds-icon [icon]="['bs', 'exclamation-circle']" [size]="'2x'"
+      [sdsTooltip]="'All fields must be completed'" [position]="'top'"
+      tabindex="0" class="text-error"></sds-icon>
+    <div style="padding-left: 3rem;">
+      <p #tipContent>Hello, <b>World</b>!</p>
+      <button [sdsTooltip]="tipContent" [position]="'bottom'" class="usa-button usa-button--base" tabindex="0">HTML binding</button>
+    </div>
+  </div>
+  <p>
+    The position of the tooltip can be manipulated by the <code>postion</code>
+    input. By default, the tooltip will appear at the top of the
+    element.
+  </p>
+  <p>Valid <code>position</code> values include
+    <code>top</code>,
+    <code>right</code>,
+    <code>bottom</code>,
+    <code>left</code>
+  </p>
+
+  <div>
+    <button class="usa-button usa-button--base" [sdsTooltip]="'Tooltip on top'" [position]="'top'" (click)="clicked()">Tooltip on
+      top</button>
+    <button class="usa-button usa-button--base" [sdsTooltip]="'Tooltip on right'" [position]="'right'">Tooltip on
+      right</button>
+    <button class="usa-button usa-button--base" [sdsTooltip]="'Tooltip on bottom'" [position]="'bottom'">Tooltip
+      on bottom</button>
+    <button class="usa-button usa-button--base" [sdsTooltip]="'Tooltip on left'" [position]="'left'">Tooltip on
+      left</button>
+  </div>
+</div>
