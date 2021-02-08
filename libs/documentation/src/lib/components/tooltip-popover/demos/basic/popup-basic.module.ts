@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PopupBasic } from './popup-basic.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { SdsPopupModule } from '@gsa-sam/components';
-import { SdsIconModule, SdsPopoverModule, SdsTooltipModule } from '../../../../../../../packages/components/src/lib/public-api';
+import { SdsIconModule, SdsPopoverModule, SdsTooltipModule } from '@gsa-sam/components';
 
 @NgModule({
   declarations: [PopupBasic],

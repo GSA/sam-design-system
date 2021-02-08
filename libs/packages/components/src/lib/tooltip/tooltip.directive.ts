@@ -15,7 +15,7 @@ export class SdsTooltipDirective implements AfterViewInit {
   @HostListener('focus', ['$event']) onFocus(){
     this.renderer.setAttribute(this.sdsTooltipDiv, 'aria-hidden', 'false')
   }
-  @HostListener('blur', ['$event']) onBlue(){
+  @HostListener('blur', ['$event']) onBlur(){
     this.renderer.setAttribute(this.sdsTooltipDiv, 'aria-hidden', 'true')
   }
 
@@ -23,15 +23,17 @@ export class SdsTooltipDirective implements AfterViewInit {
   constructor(private el: ElementRef, private renderer: Renderer2) {
     this.renderer.addClass(this.el.nativeElement, 'sds-tooltip');
     this.renderer.setAttribute(this.el.nativeElement, 'tabindex', '0')
+
     this.sdsTooltipDiv = document.createElement('div');
+
     this.renderer.addClass(this.sdsTooltipDiv, 'sds-tooltip__content');
   }
 
   ngAfterViewInit() {
-    // this.renderer.setAttribute(this.sdsTooltipDiv, 'aria-hidden', 'true');
     this.renderer.setAttribute(this.sdsTooltipDiv, 'data-position', this.position)
     this.renderer.addClass(this.sdsTooltipDiv, this.position);
     this.renderer.appendChild(this.sdsTooltipDiv, this.sdsTooltip);
+
     this.renderer.appendChild(this.el.nativeElement, this.sdsTooltipDiv);
   }
 

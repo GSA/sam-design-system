@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { SdsIconModule, SdsTooltipModule } from '../../../../../../../packages/components/src/lib/public-api';
+import { SdsIconModule, SdsTooltipModule } from '@gsa-sam/components';
 import { TooltipBasic } from './tooltip-basic.component';
 
 @NgModule({

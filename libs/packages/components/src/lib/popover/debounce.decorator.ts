@@ -1,3 +1,6 @@
+/**
+ * Delays calling of a function for `delay` number of milliseconds.
+ */
 export function debounce(delay: number = 300): MethodDecorator {
   return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
     const timeoutKey = Symbol();
