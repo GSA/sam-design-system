@@ -2,7 +2,7 @@
   <div class="sds-alert--container">
     <div class="sds-mobile-alert grid-row">
       <div class="grid-col-auto padding-top-1">
-        <sds-icon [icon]="['sds', 'alert-warning']" [class]="'sds-alert--header__icon-mobile'" [size]="'3x'"></sds-icon>
+        <sds-icon [icon]="['bs', 'exclamation-triangle']" [class]="'sds-alert--header__icon-mobile'" [size]="'3x'"></sds-icon>
       </div>
   
       <div class="grid-col-fill">
@@ -82,7 +82,7 @@
         <button (click)="onAlertClose(i)" [attr.id]="'alert'+ i + 'CloseBtn'"
           class="usa-button sds-button--circle usa-button--secondary sds-alert--header__close simple-toggle"
           aria-label="Close Alert" [attr.aria-controls]="'alert' + i">
-          <sds-icon [icon]="['sds', 'exit']"></sds-icon>
+          <sds-icon [icon]="['bs', 'x']"></sds-icon>
         </button>
       </div>
     </div>
@@ -103,7 +103,7 @@
         <button (click)="onAlertClose(0)" id="alert0CloseBtn"
           class="usa-button sds-button--circle usa-button--secondary sds-alert--header__close simple-toggle"
           aria-label="Close Alert" aria-controls="alert0">
-          <sds-icon [icon]="['sds', 'exit']"></sds-icon>
+          <sds-icon [icon]="['bs', 'x']"></sds-icon>
         </button>
       </div>
     </div>

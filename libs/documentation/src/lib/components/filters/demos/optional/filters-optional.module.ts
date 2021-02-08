@@ -5,7 +5,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SdsFiltersModule } from '@gsa-sam/sam-formly';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
-import { SdsAccordionModule } from '@gsa-sam/components';
+import { SdsAccordionModule } from '@gsa-sam/sam-material-extensions';
 
 
 @NgModule({

@@ -4,7 +4,8 @@
   <div class="grid-row">
     <div class="grid-col flex-8">
       <div class="usa-logo float-left margin-left-2">
-        <a href="/" title="Home" aria-label="Home"><img alt="Beta.sam logo" src="assets/img/logo-sam.svg" width="140" /></a>
+        <a href="/" title="Home" aria-label="Home"><img alt="Beta.sam logo" src="assets/img/logo-sam.svg"
+            width="140" /></a>
         <a href="/" title="Home" aria-label="Home" class="title-text">Design System Components</a>
       </div>
     </div>
@@ -64,6 +65,11 @@
                 </a>
               </li>
               <li class="usa-sidenav__item">
+                <a [routerLink]="['documentation/components/external-link']" routerLinkActive="usa-current">
+                  External Link
+                </a>
+              </li>
+              <li class="usa-sidenav__item">
                 <a [routerLink]="['documentation/components/pagination']" routerLinkActive="usa-current">
                   Pagination
                 </a>
@@ -94,8 +100,8 @@
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/popup']" routerLinkActive="usa-current">
-                  Popup / Tooltip
+                <a [routerLink]="['documentation/components/tooltip-popover']" routerLinkActive="usa-current">
+                  Popover / Tooltip
                 </a>
               </li>
               <li class="usa-sidenav__item">

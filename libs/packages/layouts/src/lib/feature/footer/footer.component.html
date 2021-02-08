@@ -16,7 +16,7 @@
             <div class="grid-row grid-gap-0 mobile-lg:grid-gap-4">
               <div class="mobile-lg:grid-col-6 desktop:grid-col-3" *ngFor="let section of model.linkSections">
                 <section class="usa-footer__primary-content usa-footer__primary-content--collapsible">
-                  <h4 class="usa-footer__primary-link">{{ section.text }}</h4>
+                  <span class="h4 usa-footer__primary-link">{{ section.text }}</span>
                   <ul class="usa-list usa-list--unstyled">
                     <li class="usa-footer__secondary-link" *ngFor="let link of section.links">
                       <ng-container [ngTemplateOutlet]="
@@ -82,7 +82,7 @@
 </ng-template>
 
 <ng-template #footerHREFLinkTemplate let-link>
-  <a class="usa-link" [href]="link.route">{{ link.text }}</a>
+  <a class="usa-link" [attr.aria-label]="'Open ' + link.text + ' in new window'" target="_blank" [href]="link.route">{{ link.text }}</a>
 </ng-template>
 
 <ng-template #footerEVENTLinkTemplate let-link>

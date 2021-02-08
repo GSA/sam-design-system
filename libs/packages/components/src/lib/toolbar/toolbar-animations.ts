@@ -15,8 +15,8 @@ export const sdsToolbarAnimations: {
 } = {
   /** Animation that expands and collapses the accordion item content. */
   bodyExpansion: trigger('bodyExpansion', [
-    state('collapsed, void', style({width: '0px', height: '0px', opacity: '0', visibility: 'hidden'})),
-    state('expanded', style({width: '{{expandedWidth}}', height: '*', opacity: '1', visibility: 'visible'}), {
+    state('collapsed, void', style({ width: '0px', height: '0px', opacity: '0', visibility: 'hidden', marginLeft: '-1px', marginBottom: '-1px' })),
+    state('expanded', style({ width: '{{expandedWidth}}', height: '*', opacity: '1', visibility: 'visible', marginLeft: '-1px', marginBottom: '-1px' }), {
       params: { expandedWidth: '300px' }
     }),
     transition('expanded <=> collapsed, void => collapsed',

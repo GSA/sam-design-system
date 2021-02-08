@@ -56,13 +56,13 @@
   </nav>
 </header>
 <ng-template #homeLinkRouteTemplate let-home>
-  <a [routerLink]="home.route" title="Home" aria-label="Home">
+  <a [routerLink]="home.route" title="Home" aria-label="Go to Home page">
     <img class="sds-header__logo" [src]="home.logo" [alt]="home.text" />
   </a>
 </ng-template>
 
 <ng-template #homeLinkHREFTemplate let-home>
-  <a [attr.href]="home.route" title="Home" aria-label="Home">
+  <a [attr.href]="home.route" title="Home" aria-label="Go to Home page">
     <img class="sds-header__logo" [src]="home.logo" [alt]="home.text" />
   </a>
 </ng-template>
