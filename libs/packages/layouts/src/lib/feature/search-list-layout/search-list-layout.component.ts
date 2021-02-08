@@ -111,6 +111,11 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
    */
   loading = false;
 
+  /**
+   * Used in ngFor to create multiple copies of the same loading row.
+   */
+  loadingArray = Array(25);
+
   @HostListener('window:popstate', ['$event'])
   onpopstate(event) {
     if (this.isHistoryEnabled) {
