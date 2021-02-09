@@ -4,7 +4,7 @@ import { FieldType } from '@ngx-formly/core';
 @Component({
   selector: 'sds-formly-field-radio',
   template: `
-    <div class="usa-radio">
+    <div class="usa-radio" [id]="id">
       <div
         *ngFor="
           let option of to.options | formlySelectOptions: field | async;
@@ -15,7 +15,7 @@ import { FieldType } from '@ngx-formly/core';
           type="radio"
           [id]="id + '_' + i"
           class="usa-radio__input"
-          [name]="id"
+          [attr.name]="id"
           [class.usa-input--error]="showError"
           [attr.value]="option.value"
           [value]="option.value"
