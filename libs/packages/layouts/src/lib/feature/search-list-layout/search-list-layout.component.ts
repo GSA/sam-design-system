@@ -105,6 +105,17 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
    */
   public sortField = '';
 
+  /**
+   * Value to track whether API call in progress for purpose of showing loading
+   * template
+   */
+  loading = false;
+
+  /**
+   * Used in ngFor to create multiple copies of the same loading row.
+   */
+  loadingArray = Array(25);
+
   @HostListener('window:popstate', ['$event'])
   onpopstate(event) {
     if (this.isHistoryEnabled) {
@@ -266,6 +277,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
 
     if (this.filterData && this.service) {
       setTimeout(() => {
+        this.loading = true;
         this.service
           .getData({
             page: this.page,
@@ -273,6 +285,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
             filter: this.filterData,
           })
           .subscribe((result) => {
+            this.loading = false;
             this.items = result.items;
             this.page.totalPages = Math.ceil(
               result.totalItems / this.page.pageSize

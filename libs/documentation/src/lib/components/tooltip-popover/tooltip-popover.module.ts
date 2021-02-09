@@ -10,11 +10,21 @@ import {
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { PopupBasicModule } from './demos/basic/popup-basic.module';
 import { PopupBasic } from './demos/basic/popup-basic.component';
+import { TooltipBasic } from './demos/tooltip/tooltip-basic.component';
+import { TooltipBasicModule } from './demos/tooltip/tooltip-basic.module';
 
 declare var require: any;
 const DEMOS = {
+  tooltip: {
+    title: 'Tooltip',
+    type: TooltipBasic,
+    code: require('!!raw-loader!./demos/tooltip/tooltip-basic.component'),
+    module: require('!!raw-loader!./demos/tooltip/tooltip-basic.module'),
+    markup: require('!!raw-loader!./demos/tooltip/tooltip-basic.component.html'),
+    path: 'libs/documentation/src/lib/components/popup/demos/tooltip',
+  },
   basic: {
-    title: 'Popup / Tooltip',
+    title: 'Popover',
     type: PopupBasic,
     code: require('!!raw-loader!./demos/basic/popup-basic.component'),
     module: require('!!raw-loader!./demos/basic/popup-basic.module'),
@@ -50,10 +60,11 @@ export const ROUTES = [
     CommonModule,
     DocumentationComponentsSharedModule,
     PopupBasicModule,
+    TooltipBasicModule,
   ],
 })
 export class PopupModule {
   constructor(demoList: DocumentationDemoList) {
-    demoList.register('popup', DEMOS);
+    demoList.register('tooltip-popover', DEMOS);
   }
 }

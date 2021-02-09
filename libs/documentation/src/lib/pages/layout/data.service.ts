@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { registrationData } from './search-data';
 import { SearchParameters, SearchResult } from '@gsa-sam/layouts';
+import { delay } from 'rxjs/operators';
 @Injectable({ providedIn: 'root' })
 export class DataService {
   private data: any[];
@@ -71,7 +72,7 @@ export class DataService {
       return of({
         items: this.data.slice(start, end),
         totalItems: this.data.length,
-      });
+      }).pipe(delay(5000));
     } else {
       return of({
         items: [],

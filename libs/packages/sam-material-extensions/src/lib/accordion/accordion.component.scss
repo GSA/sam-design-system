@@ -71,10 +71,22 @@
                 }
             }
         }
+
+        // Add padding for displaying outline
+        .mat-expansion-panel {
+            padding: 0.25rem;
+        }
+
         .mat-expansion-panel-header {
             padding: 0;
             font-size: inherit !important;
         }
+
+        // Override material's outline of 0
+        .mat-expansion-panel-header:focus {
+            outline: 0.25rem solid #2491ff !important; 
+        }
+        
         .mat-expansion-panel-body {
             @include u-bg('white');
             box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 3px 0px inset;
