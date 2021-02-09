@@ -84,7 +84,8 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
   _isEmpty = (obj: any): boolean => Object.keys(obj).length === 0;
   overwrite = (baseObj: any, newObj: any) => {
     const result = {};
-    for (const key in baseObj) {
+    const mergedObj = {...baseObj, ...newObj};
+    for (const key in mergedObj) {
       if (Array.isArray(baseObj[key])) {
         result[key] = newObj[key] || null;
       } else if (baseObj[key] instanceof Date) {
@@ -125,6 +126,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
               this.form.getRawValue(),
               filter
             );
+            this.model = updatedFormValue;
             setTimeout(() => {
               this.form.patchValue(updatedFormValue);
             });
