@@ -92,6 +92,16 @@ export class ResultListBasic {
     },
     results: []
   };
+  loadingModel = {
+    metadata: {
+      messages: [
+        {
+          type: 'loading',
+        }
+      ]
+    },
+    results: []
+  };
   initialModel = {
     metadata: {
       messages: [

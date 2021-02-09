@@ -25,9 +25,12 @@
     [ngClass]="{ 'usa-button--active': items === infoModel }">
     Info
   </button>
-
   <button (click)="items = emptyModel" class="usa-button usa-button--base"
     [ngClass]="{ 'usa-button--active': items === emptyModel }">
     Empty results
+  </button>
+  <button (click)="items = loadingModel" class="usa-button usa-button--base"
+    [ngClass]="{ 'usa-button--active': items === loadingModel }">
+    Loading
   </button>
 </sds-page>
