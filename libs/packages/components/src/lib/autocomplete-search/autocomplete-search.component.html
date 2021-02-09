@@ -4,7 +4,8 @@
       <input role="combobox" [attr.aria-expanded]="showResults"
         [attr.aria-owns]="showResults ? configuration.id + '-listbox' : undefined" aria-haspopup="listbox"
         [disabled]="disabled" (keypress)="onkeypress($event)" (input)="textChange($event)"
-        class="usa-input padding-right-3" [ngClass]="getClass()" #input [attr.aria-label]="configuration.ariaLabelText"
+        class="usa-input padding-right-3" [ngClass]="getClass()" #input 
+        [attr.aria-label]="configuration.ariaLabelText ? configuration.ariaLabelText : configuration.labelText"
         [attr.id]="configuration.id" type="text" (focus)="inputFocusHandler()" (keydown)="onKeydown($event)"
         aria-autocomplete="list" [(ngModel)]="inputValue" [attr.placeholder]="configuration.autocompletePlaceHolderText"
         [attr.aria-activedescendant]="
