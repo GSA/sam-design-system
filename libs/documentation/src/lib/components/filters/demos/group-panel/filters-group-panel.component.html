@@ -1,0 +1,26 @@
+<h6>API reference for SDS Filter</h6>
+<p><code>import SdsFiltersModule from '@gsa-sam/sam-formly';</code></p>
+<p><code>import SdsFormlyModule from '@gsa-sam/sam-formly';</code></p>
+
+<h3>Group Panel</h3>
+<p>
+  <code>group: 'panel'</code> is a
+  default group(wrapper), used for setting panel wrapper for the form field in side sds-filters.
+</p>
+
+<h4>Multiple Form Controls</h4>
+<div class="sds-card--shadowed sds-card--bordered margin-bottom-2">
+  <div class="sds-card__content">
+    <h4 class="sds-card__title">Default</h4>
+    <sds-filters [form]="form" [fields]="sdsGroupDefaultMultipleControls" [model]="model"></sds-filters>
+  </div>
+</div>
+
+
+<h4>Single Form Control</h4>
+<div class="sds-card--shadowed sds-card--bordered margin-top-2">
+  <div class="sds-card__content">
+    <h4 class="sds-card__title">Default</h4>
+    <sds-filters [form]="form" [fields]="sdsGroupDefaultSingleControl" [model]="model"></sds-filters>
+  </div>
+</div>

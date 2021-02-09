@@ -15,14 +15,25 @@ import { FiltersHideExpressionModule } from './demos/hideexpression/filters-hide
 import { FiltersHideExpression } from './demos/hideexpression/filters-hideexpression.component';
 import { FiltersShowInactiveFilterValues } from './demos/showInactiveFilterValues/filters-showInactiveFilterValues.component';
 import { FiltersShowInactiveFilterValuesModule } from './demos/showInactiveFilterValues/filters-showInactiveFilterValues.module';
+import { FiltersGroupPanel } from './demos/group-panel/filters-group-panel.component';
+import { FiltersGroupPanelModule } from './demos/group-panel/filters-group-panel.module';
 
 declare var require: any;
 const DEMOS = {
+  groupPanel: {
+    title: 'Filters with Panel Group',
+    type: FiltersGroupPanel,
+    code: require('!!raw-loader!./demos/group-panel/filters-group-panel.component'),
+    markup: require('!!raw-loader!./demos/group-panel/filters-group-panel.component.html'),
+    module: require('!!raw-loader!./demos/group-panel/filters-group-panel.module'),
+    path: 'libs/documentation/src/lib/components/filters/demos/group-panel',
+  },
   optional: {
-    title: 'Optional Filters',
+    title: 'Filters with Accordion Group',
     type: FiltersOptional,
     code: require('!!raw-loader!./demos/optional/filters-optional.component'),
     markup: require('!!raw-loader!./demos/optional/filters-optional.component.html'),
+    module: require('!!raw-loader!./demos/optional/filters-optional.module'),
     path: 'libs/documentation/src/lib/components/filters/demos/optional',
   },
   hideexpression: {
@@ -30,6 +41,7 @@ const DEMOS = {
     type: FiltersHideExpression,
     code: require('!!raw-loader!./demos/hideexpression/filters-hideexpression.component'),
     markup: require('!!raw-loader!./demos/hideexpression/filters-hideexpression.component.html'),
+    module: require('!!raw-loader!./demos/hideexpression/filters-hideexpression.module'),
     path: 'libs/documentation/src/lib/components/filters/demos/hideexpression',
   },
   showInactiveFilterValues: {
@@ -37,6 +49,7 @@ const DEMOS = {
     type: FiltersShowInactiveFilterValues,
     code: require('!!raw-loader!./demos/showInactiveFilterValues/filters-showInactiveFilterValues.component'),
     markup: require('!!raw-loader!./demos/showInactiveFilterValues/filters-showInactiveFilterValues.component.html'),
+    module: require('!!raw-loader!./demos/showInactiveFilterValues/filters-showInactiveFilterValues.module'),
     path:
       'libs/documentation/src/lib/components/filters/demos/showInactiveFilterValues',
   },
@@ -71,6 +84,7 @@ export const ROUTES = [
     DocumentationComponentsSharedModule,
     FiltersOptionalModule,
     FiltersHideExpressionModule,
+    FiltersGroupPanelModule,
     FiltersShowInactiveFilterValuesModule,
   ],
 })

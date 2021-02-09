@@ -10,6 +10,7 @@ import { DocumentationDemoList } from '../demo-list';
       [demoTitle]="demo.title"
       [code]="demo.code"
       [markup]="demo.markup"
+      [module]="demo.module"
       [path]="demo.path"
       [readme]="demo.readme"
       [component]="component"
