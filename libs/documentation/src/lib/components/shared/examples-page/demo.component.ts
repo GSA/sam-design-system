@@ -13,6 +13,7 @@ export class DocumentationWidgetDemoComponent {
   @Input() id: string;
   @Input() code: string;
   @Input() markup: string;
+  @Input() module: string;
   @Input() readme: string;
   @Input() path: string;
   @Input() files: { name: string; source: string }[];
