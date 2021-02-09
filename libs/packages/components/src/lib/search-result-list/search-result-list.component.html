@@ -52,13 +52,14 @@
     <ng-container *ngIf="updateModel?.metadata?.messages">
       <div *ngFor="let msg of updateModel.metadata.messages"
         class="sds-card sds-card--shadowed sds-card--bordered" [ngClass]="[(msg.type !== 'loading') ? 'sds-card--vertical': '', msg.classes ? msg.classes : '']">
-          <div class="sds-card__header" *ngIf="msg.type !== 'loading'">
+        <ng-container *ngIf="msg.type !== 'loading' else loading">
+          <div class="sds-card__header">
             <sds-icon
               [icon]="(msg.type ==='error') ?  ['sds', 'alert-error'] :( (msg.type ==='info') ? ['bs', 'info-circle'] :( (msg.type ==='initial') ? ['bs', 'arrow-left-circle-fill']: ['bs', 'search']))"
               [size]="'5x'">
             </sds-icon>
           </div>
-          <div class="sds-card__body margin-2" *ngIf="msg.type !== 'loading'">
+          <div class="sds-card__body margin-2">
             <h1 class="sds-card__title">{{msg.title}}</h1>
             <p [innerHTML]="msg.message"></p>
             <div class="sds-card__buttons">
@@ -67,22 +68,26 @@
                 {{button.text}}
               </button>
             </div>
-        </div>
-        <div class="grid-container" *ngIf="msg.type === 'loading'">
-          <div class="sds-load grid-row">
-            <div class="grid-col-5 sds-load__title"></div>
-            <div class="grid-col-auto sds-load__circle"></div>
           </div>
-          <div class="sds-load grid-row">
-            <div class="tablet:grid-col-fill sds-load__content"></div>
-            <div class="tablet:grid-col-fill sds-load__content"></div>
-            <div class="tablet:grid-col-2 grid-col sds-load__element"></div>
-            <div class="tablet:grid-col-2 grid-col sds-load__element"></div>
-          </div>
-        </div>
+        </ng-container>
       </div>
     </ng-container>
   </ng-container>
 
 
 </div>
+
+<ng-template #loading>
+  <div class="grid-container">
+    <div class="sds-load grid-row">
+      <div class="grid-col-5 sds-load__title"></div>
+      <div class="grid-col-auto sds-load__circle"></div>
+    </div>
+    <div class="sds-load grid-row">
+      <div class="tablet:grid-col-fill sds-load__content"></div>
+      <div class="tablet:grid-col-fill sds-load__content"></div>
+      <div class="tablet:grid-col-2 grid-col sds-load__element"></div>
+      <div class="tablet:grid-col-2 grid-col sds-load__element"></div>
+    </div>
+  </div>
+</ng-template>
