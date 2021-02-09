@@ -5,7 +5,7 @@ import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
 import {
   DocumentationComponentsSharedModule,
-  DocumentationDemoList
+  DocumentationDemoList,
 } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { PopupBasicModule } from './demos/basic/popup-basic.module';
@@ -15,20 +15,22 @@ import { TooltipBasicModule } from './demos/tooltip/tooltip-basic.module';
 
 declare var require: any;
 const DEMOS = {
-  tooltip:{
+  tooltip: {
     title: 'Tooltip',
     type: TooltipBasic,
     code: require('!!raw-loader!./demos/tooltip/tooltip-basic.component'),
+    module: require('!!raw-loader!./demos/tooltip/tooltip-basic.module'),
     markup: require('!!raw-loader!./demos/tooltip/tooltip-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/popup/demos/tooltip'
+    path: 'libs/documentation/src/lib/components/popup/demos/tooltip',
   },
   basic: {
     title: 'Popover',
     type: PopupBasic,
     code: require('!!raw-loader!./demos/basic/popup-basic.component'),
+    module: require('!!raw-loader!./demos/basic/popup-basic.module'),
     markup: require('!!raw-loader!./demos/basic/popup-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/popup/demos/basic'
-  }
+    path: 'libs/documentation/src/lib/components/popup/demos/basic',
+  },
 };
 
 export const ROUTES = [
@@ -41,16 +43,16 @@ export const ROUTES = [
         {
           pkg: 'components',
           type: 'directives',
-          name: 'SdsPopupDirective'
-        }
-      ]
+          name: 'SdsPopupDirective',
+        },
+      ],
     },
     children: [
       { path: 'examples', component: DocumentationExamplesPage },
       { path: 'api', component: DocumentationAPIPage },
-      { path: 'source', component: DocumentationSourcePage }
-    ]
-  }
+      { path: 'source', component: DocumentationSourcePage },
+    ],
+  },
 ];
 
 @NgModule({
@@ -58,8 +60,8 @@ export const ROUTES = [
     CommonModule,
     DocumentationComponentsSharedModule,
     PopupBasicModule,
-    TooltipBasicModule
-  ]
+    TooltipBasicModule,
+  ],
 })
 export class PopupModule {
   constructor(demoList: DocumentationDemoList) {

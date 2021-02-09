@@ -7,7 +7,7 @@ import { DocumentationSourcePage } from '../shared/source-page/source.component'
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 import {
   DocumentationComponentsSharedModule,
-  DocumentationDemoList
+  DocumentationDemoList,
 } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { AccordionWrapperBasicModule } from './demos/basic/accordionwrapper-basic.module';
@@ -19,8 +19,9 @@ const DEMOS = {
     type: AccordionWrapperBasic,
     code: require('!!raw-loader!./demos/basic/accordionwrapper-basic.component'),
     markup: require('!!raw-loader!./demos/basic/accordionwrapper-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/accordionwrapper/demos/basic'
-  }
+    module: require('!!raw-loader!./demos/basic/accordionwrapper-basic.module'),
+    path: 'libs/documentation/src/lib/components/accordionwrapper/demos/basic',
+  },
 };
 
 export const ROUTES = [
@@ -29,31 +30,31 @@ export const ROUTES = [
     path: '',
     component: ComponentWrapperComponent,
     data: {
-      title: "Accordion Wrapper",
+      title: 'Accordion Wrapper',
       items: [
         {
           pkg: 'formly',
           type: 'components',
           name: 'FormlyAccordianFormFieldComponent',
-          wrappers: ['accordionwrapper']
-        }
-      ]
+          wrappers: ['accordionwrapper'],
+        },
+      ],
     },
     children: [
       { path: 'examples', component: DocumentationExamplesPage },
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
-      { path: 'template', component: DocumentationTemplatePage }
-    ]
-  }
+      { path: 'template', component: DocumentationTemplatePage },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    AccordionWrapperBasicModule
-  ]
+    AccordionWrapperBasicModule,
+  ],
 })
 export class AccordionWrapperModule {
   constructor(demoList: DocumentationDemoList) {

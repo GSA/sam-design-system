@@ -7,7 +7,7 @@ import { DocumentationSourcePage } from '../shared/source-page/source.component'
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 import {
   DocumentationComponentsSharedModule,
-  DocumentationDemoList
+  DocumentationDemoList,
 } from './../shared/index';
 import { ComponentWrapperComponent } from './../../shared/component-wrapper/component-wrapper.component';
 import { HeaderBasicModule } from './demos/basic/header-basic.module';
@@ -24,25 +24,27 @@ const DEMOS = {
     title: 'SAM Header',
     type: HeaderBasic,
     code: require('!!raw-loader!./demos/basic/header-basic.component'),
+    module: require('!!raw-loader!./demos/basic/header-basic.module'),
     markup: require('!!raw-loader!./demos/basic/header-basic.component.html'),
     readme: require('!!raw-loader!./demos/basic/readme.md'),
-    path: 'libs/documentation/src/lib/components/header/demos/basic'
+    path: 'libs/documentation/src/lib/components/header/demos/basic',
   },
   hiddenlogo: {
     title: 'SAM Header - Blank SAM Logo',
     type: HeaderHiddenLogoComponent,
     code: require('!!raw-loader!./demos/hiddenlogo/header-hidden-logo.component'),
+    module: require('!!raw-loader!./demos/hiddenlogo/header-hidden-logo.module'),
     markup: require('!!raw-loader!./demos/hiddenlogo/header-hidden-logo.component.html'),
-    path: 'libs/documentation/src/lib/components/header/demos/hiddenlogo'
-  }
-  ,
+    path: 'libs/documentation/src/lib/components/header/demos/hiddenlogo',
+  },
   alerts: {
     title: 'SAM Header - System Alerts',
     type: HeaderAlertsComponent,
     code: require('!!raw-loader!./demos/alerts/header-alerts.component'),
+    module: require('!!raw-loader!./demos/alerts/header-alerts.module'),
     markup: require('!!raw-loader!./demos/alerts/header-alerts.component.html'),
-    path: 'libs/documentation/src/lib/components/header/demos/alerts'
-  }
+    path: 'libs/documentation/src/lib/components/header/demos/alerts',
+  },
 };
 
 export const ROUTES = [
@@ -51,23 +53,22 @@ export const ROUTES = [
     path: '',
     component: ComponentWrapperComponent,
     data: {
-      readme: {
-      },
+      readme: {},
       items: [
         {
           pkg: 'layouts',
           type: 'components',
-          name: 'SdsHeaderComponent'
-        }
-      ]
+          name: 'SdsHeaderComponent',
+        },
+      ],
     },
     children: [
       { path: 'examples', component: DocumentationExamplesPage },
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
-      { path: 'template', component: DocumentationTemplatePage }
-    ]
-  }
+      { path: 'template', component: DocumentationTemplatePage },
+    ],
+  },
 ];
 
 @NgModule({
@@ -77,7 +78,7 @@ export const ROUTES = [
     SdsHeaderModule,
     HeaderBasicModule,
     HeaderHiddenLogoModule,
-    HeaderAlertsModule
+    HeaderAlertsModule,
   ],
 })
 export class HeaderModule {

@@ -7,7 +7,7 @@ import { DocumentationSourcePage } from '../shared/source-page/source.component'
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 import {
   DocumentationComponentsSharedModule,
-  DocumentationDemoList
+  DocumentationDemoList,
 } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { ActionsBasicModule } from './demos/basic/actions-basic.module';
@@ -19,8 +19,9 @@ const DEMOS = {
     type: ActionsBasic,
     code: require('!!raw-loader!./demos/basic/actions-basic.component'),
     markup: require('!!raw-loader!./demos/basic/actions-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/actions/demos/basic'
-  }
+    module: require('!!raw-loader!./demos/basic/actions-basic.module'),
+    path: 'libs/documentation/src/lib/components/actions/demos/basic',
+  },
 };
 
 export const ROUTES = [
@@ -33,25 +34,25 @@ export const ROUTES = [
         {
           pkg: 'layouts',
           type: 'components',
-          name: 'SdsActionsMenuComponent'
-        }
-      ]
+          name: 'SdsActionsMenuComponent',
+        },
+      ],
     },
     children: [
       { path: 'examples', component: DocumentationExamplesPage },
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
-      { path: 'template', component: DocumentationTemplatePage }
-    ]
-  }
+      { path: 'template', component: DocumentationTemplatePage },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    ActionsBasicModule
-  ]
+    ActionsBasicModule,
+  ],
 })
 export class ActionsModule {
   constructor(demoList: DocumentationDemoList) {

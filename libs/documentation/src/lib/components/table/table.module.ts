@@ -6,7 +6,10 @@ import { DocumentationExamplesPage } from '../shared/examples-page/examples.comp
 import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
-import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../shared';
+import {
+  DocumentationComponentsSharedModule,
+  DocumentationDemoList,
+} from '../shared';
 import { TableBasicComponent } from './demos/basic/basic.component';
 import { TableBasicModule } from './demos/basic/basic.module';
 import { TableBorderlessComponent } from './demos/borderless/borderless.component';
@@ -27,43 +30,49 @@ const DEMOS = {
     title: 'Basic', // Title
     type: TableBasicComponent, // Component
     code: require('!!raw-loader!./demos/basic/basic.component'), // Source Tab Content
+    module: require('!!raw-loader!./demos/basic/basic.module'), // module Tab Content
     markup: require('!!raw-loader!./demos/basic/basic.component.html'), // Template Tab Content
-    path: 'libs/documentation/src/lib/components/table/demos/basic' // Path to demo for the Github link
+    path: 'libs/documentation/src/lib/components/table/demos/basic', // Path to demo for the Github link
   },
   borderless: {
     title: 'Borderless', // Title
     type: TableBorderlessComponent, // Component
     code: require('!!raw-loader!./demos/borderless/borderless.component'), // Source Tab Content
+    module: require('!!raw-loader!./demos/borderless/borderless.module'), // module Tab Content
     markup: require('!!raw-loader!./demos/borderless/borderless.component.html'), // Template Tab Content
-    path: 'libs/documentation/src/lib/components/table/demos/borderless' // Path to demo for the Github link
+    path: 'libs/documentation/src/lib/components/table/demos/borderless', // Path to demo for the Github link
   },
   sort: {
     title: 'Sorting', // Title
     type: TableSortComponent, // Component
     code: require('!!raw-loader!./demos/sort/sort.component'), // Source Tab Content
+    module: require('!!raw-loader!./demos/sort/sort.module'), // Module Tab Content
     markup: require('!!raw-loader!./demos/sort/sort.component.html'), // Template Tab Content
-    path: 'libs/documentation/src/lib/components/table/demos/sort' // Path to demo for the Github link
+    path: 'libs/documentation/src/lib/components/table/demos/sort', // Path to demo for the Github link
   },
   pagination: {
     title: 'Pagination', // Title
     type: TablePaginationComponent, // Component
     code: require('!!raw-loader!./demos/pagination/pagination.component'), // Source Tab Content
+    module: require('!!raw-loader!./demos/pagination/pagination.module'), // Module Tab Content
     markup: require('!!raw-loader!./demos/pagination/pagination.component.html'), // Template Tab Content
-    path: 'libs/documentation/src/lib/components/table/demos/pagination' // Path to demo for the Github link
+    path: 'libs/documentation/src/lib/components/table/demos/pagination', // Path to demo for the Github link
   },
   sticky: {
     title: 'Sticky Header, Footer, or Columns', // Title
     type: TableStickyComponent, // Component
     code: require('!!raw-loader!./demos/sticky/sticky.component'), // Source Tab Content
+    module: require('!!raw-loader!./demos/sticky/sticky.module'), // Module Tab Content
     markup: require('!!raw-loader!./demos/sticky/sticky.component.html'), // Template Tab Content
-    path: 'libs/documentation/src/lib/components/table/demos/sticky' // Path to demo for the Github link
+    path: 'libs/documentation/src/lib/components/table/demos/sticky', // Path to demo for the Github link
   },
   full: {
     title: 'Kitchen Sink', // Title
     type: TableFullComponent, // Component
     code: require('!!raw-loader!./demos/full/full.component'), // Source Tab Content
+    module: require('!!raw-loader!./demos/full/full.module'), // Module Tab Content
     markup: require('!!raw-loader!./demos/full/full.component.html'), // Template Tab Content
-    path: 'libs/documentation/src/lib/components/table/demos/full' // Path to demo for the Github link
+    path: 'libs/documentation/src/lib/components/table/demos/full', // Path to demo for the Github link
   },
 };
 
@@ -73,23 +82,24 @@ export const ROUTES = [
     path: '',
     component: ComponentWrapperComponent,
     data: {
-      readme: {
-      },
-      items: [ // Defines what documentation to display on the API tab
+      readme: {},
+      items: [
+        // Defines what documentation to display on the API tab
         {
           pkg: 'material',
           type: 'components', // Within the compodocs, target the components section
-          name: 'SdsTableComponent'
-        }
-      ]
+          name: 'SdsTableComponent',
+        },
+      ],
     },
-    children: [ // You can omit any tab sections by removing the child routes here
+    children: [
+      // You can omit any tab sections by removing the child routes here
       { path: 'examples', component: DocumentationExamplesPage },
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
-      { path: 'template', component: DocumentationTemplatePage }
-    ]
-  }
+      { path: 'template', component: DocumentationTemplatePage },
+    ],
+  },
 ];
 
 @NgModule({
@@ -102,10 +112,9 @@ export const ROUTES = [
     TableSortModule,
     TableStickyModule,
     TableFullModule,
-    TablePaginationModule
-  ]
+    TablePaginationModule,
+  ],
 })
-
 export class TableModule {
   constructor(demoList: DocumentationDemoList) {
     demoList.register('table', DEMOS); // Register the component with the demo list

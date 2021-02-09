@@ -7,7 +7,7 @@ import { DocumentationSourcePage } from '../shared/source-page/source.component'
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 import {
   DocumentationComponentsSharedModule,
-  DocumentationDemoList
+  DocumentationDemoList,
 } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { AutocompleteBasicModule } from './demos/basic/autocomplete-basic.module';
@@ -26,29 +26,34 @@ const DEMOS = {
     type: AutocompleteBasic,
     code: require('!!raw-loader!./demos/basic/autocomplete-basic.component'),
     markup: require('!!raw-loader!./demos/basic/autocomplete-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/autocomplete/demos/basic'
+    module: require('!!raw-loader!./demos/basic/autocomplete-basic.module'),
+    path: 'libs/documentation/src/lib/components/autocomplete/demos/basic',
   },
   group: {
     title: 'Autocomplete with grouping',
     type: AutocompleteGroup,
     code: require('!!raw-loader!./demos/group/autocomplete-group.component'),
     markup: require('!!raw-loader!./demos/group/autocomplete-group.component.html'),
-    path: 'libs/documentation/src/lib/components/autocomplete/demos/group'
+    module: require('!!raw-loader!./demos/group/autocomplete-group.module'),
+    path: 'libs/documentation/src/lib/components/autocomplete/demos/group',
   },
   selectgroup: {
     title: 'Autocomplete Group as a label ',
     type: AutocompleteSelectGroup,
     code: require('!!raw-loader!./demos/selectgroup/autocomplete-selectgroup.component'),
     markup: require('!!raw-loader!./demos/selectgroup/autocomplete-selectgroup.component.html'),
-    path: 'libs/documentation/src/lib/components/autocomplete/demos/selectgroup'
+    module: require('!!raw-loader!./demos/selectgroup/autocomplete-selectgroup.module'),
+    path:
+      'libs/documentation/src/lib/components/autocomplete/demos/selectgroup',
   },
   optional: {
     title: 'Optional Autocomplete',
     type: AutocompleteOptional,
     code: require('!!raw-loader!./demos/optional/autocomplete-optional.component'),
+    module: require('!!raw-loader!./demos/optional/autocomplete-optional.module'),
     markup: require('!!raw-loader!./demos/optional/autocomplete-optional.component.html'),
-    path: 'libs/documentation/src/lib/components/autocomplete/demos/optional'
-  }
+    path: 'libs/documentation/src/lib/components/autocomplete/demos/optional',
+  },
 };
 
 export const ROUTES = [
@@ -61,17 +66,17 @@ export const ROUTES = [
         {
           pkg: 'components',
           type: 'components',
-          name: 'SDSAutocompleteComponent'
-        }
-      ]
+          name: 'SDSAutocompleteComponent',
+        },
+      ],
     },
     children: [
       { path: 'examples', component: DocumentationExamplesPage },
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
-      { path: 'template', component: DocumentationTemplatePage }
-    ]
-  }
+      { path: 'template', component: DocumentationTemplatePage },
+    ],
+  },
 ];
 
 @NgModule({
@@ -81,8 +86,8 @@ export const ROUTES = [
     AutocompleteGroupModule,
     AutocompleteSelectGroupModule,
     AutocompleteBasicModule,
-    AutocompleteOptionalModule
-  ]
+    AutocompleteOptionalModule,
+  ],
 })
 export class AutocompleteModule {
   constructor(demoList: DocumentationDemoList) {

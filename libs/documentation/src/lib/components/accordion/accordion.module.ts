@@ -7,7 +7,7 @@ import { DocumentationSourcePage } from '../shared/source-page/source.component'
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 import {
   DocumentationComponentsSharedModule,
-  DocumentationDemoList
+  DocumentationDemoList,
 } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { AccordionBasicModule } from './demos/basic/accordion-basic.module';
@@ -19,8 +19,9 @@ const DEMOS = {
     type: AccordionBasic,
     code: require('!!raw-loader!./demos/basic/accordion-basic.component'),
     markup: require('!!raw-loader!./demos/basic/accordion-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/accordion/demos/basic'
-  }
+    module: require('!!raw-loader!./demos/basic/accordion-basic.module'),
+    path: 'libs/documentation/src/lib/components/accordion/demos/basic',
+  },
 };
 
 export const ROUTES = [
@@ -33,25 +34,25 @@ export const ROUTES = [
         {
           pkg: 'material',
           type: 'components',
-          name: 'SdsAccordionComponent'
-        }
-      ]
+          name: 'SdsAccordionComponent',
+        },
+      ],
     },
     children: [
       { path: 'examples', component: DocumentationExamplesPage },
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
-      { path: 'template', component: DocumentationTemplatePage }
-    ]
-  }
+      { path: 'template', component: DocumentationTemplatePage },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    AccordionBasicModule
-  ]
+    AccordionBasicModule,
+  ],
 })
 export class AccordionModule {
   constructor(demoList: DocumentationDemoList) {

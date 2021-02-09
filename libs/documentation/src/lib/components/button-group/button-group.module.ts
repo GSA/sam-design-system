@@ -6,7 +6,7 @@ import { DocumentationSourcePage } from '../shared/source-page/source.component'
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 import {
   DocumentationComponentsSharedModule,
-  DocumentationDemoList
+  DocumentationDemoList,
 } from './../shared/index';
 import { ComponentWrapperComponent } from './../../shared/component-wrapper/component-wrapper.component';
 import { ButtonGroupBasic } from './demos/basic/button-group-basic.component';
@@ -21,15 +21,18 @@ const DEMOS = {
     type: ButtonGroupBasic,
     code: require('!!raw-loader!./demos/basic/button-group-basic.component'),
     markup: require('!!raw-loader!./demos/basic/button-group-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/button-group/demos/basic'
+    module: require('!!raw-loader!./demos/basic/button-group-basic.module'),
+    path: 'libs/documentation/src/lib/components/button-group/demos/basic',
   },
   differinglengths: {
     title: 'Differing Lengths',
     type: ButtonGroupDifferingLengths,
     code: require('!!raw-loader!./demos/differinglengths/button-group-differing-lengths.component'),
+    module: require('!!raw-loader!./demos/differinglengths/button-group-differing-lengths.module'),
     markup: require('!!raw-loader!./demos/differinglengths/button-group-differing-lengths.component.html'),
-    path: 'libs/documentation/src/lib/components/button-group/demos/differinglengths'
-  }
+    path:
+      'libs/documentation/src/lib/components/button-group/demos/differinglengths',
+  },
 };
 
 export const ROUTES = [
@@ -42,17 +45,17 @@ export const ROUTES = [
         {
           pkg: 'material',
           type: 'components',
-          name: 'SdsButtonGroupComponent'
-        }
-      ]
+          name: 'SdsButtonGroupComponent',
+        },
+      ],
     },
     children: [
       { path: 'examples', component: DocumentationExamplesPage },
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
-      { path: 'template', component: DocumentationTemplatePage }
-    ]
-  }
+      { path: 'template', component: DocumentationTemplatePage },
+    ],
+  },
 ];
 
 @NgModule({
@@ -60,8 +63,8 @@ export const ROUTES = [
     CommonModule,
     DocumentationComponentsSharedModule,
     ButtonGroupBasicModule,
-    ButtonGroupDifferingLengthsModule
-  ]
+    ButtonGroupDifferingLengthsModule,
+  ],
 })
 export class ButtonGroupModule {
   constructor(demoList: DocumentationDemoList) {

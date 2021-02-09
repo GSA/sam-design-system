@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DocumentationExamplesPage } from '../shared/examples-page/examples.component';
 import {
   DocumentationComponentsSharedModule,
-  DocumentationDemoList
+  DocumentationDemoList,
 } from './../shared/index';
 import { ComponentWrapperComponent } from './../../shared/component-wrapper/component-wrapper.component';
 import { IconsBasicModule } from './demos/basic/icons-basic.module';
@@ -28,44 +28,50 @@ const DEMOS = {
     title: 'Stacking Icons',
     type: IconsStackingComponent,
     code: require('!!raw-loader!./demos/stacking/icons-stacking.component'),
+    module: require('!!raw-loader!./demos/stacking/icons-stacking.module'),
     markup: require('!!raw-loader!./demos/stacking/icons-stacking.component.html'),
-    path: 'libs/documentation/src/lib/components/icons/demos/stacking'
+    path: 'libs/documentation/src/lib/components/icons/demos/stacking',
   },
   coloring: {
     title: 'Coloring Icons',
     type: IconsColoring,
     code: require('!!raw-loader!./demos/coloring/icons-coloring.component'),
+    module: require('!!raw-loader!./demos/coloring/icons-coloring.module'),
     markup: require('!!raw-loader!./demos/coloring/icons-coloring.component.html'),
-    path: 'libs/documentation/src/lib/components/icons/demos/coloring'
+    path: 'libs/documentation/src/lib/components/icons/demos/coloring',
   },
   rotating: {
     title: 'Rotating Icons',
     type: IconsRotation,
     code: require('!!raw-loader!./demos/rotation/icons-rotation.component'),
+    module: require('!!raw-loader!./demos/rotation/icons-rotation.module'),
     markup: require('!!raw-loader!./demos/rotation/icons-rotation.component.html'),
-    path: 'libs/documentation/src/lib/components/icons/demos/rotation'
+    path: 'libs/documentation/src/lib/components/icons/demos/rotation',
   },
   scaling: {
     title: 'Sizing Icons',
     type: IconsScaling,
     code: require('!!raw-loader!./demos/scaling/icons-scaling.component'),
+    module: require('!!raw-loader!./demos/scaling/icons-scaling.module'),
     markup: require('!!raw-loader!./demos/scaling/icons-scaling.component.html'),
-    path: 'libs/documentation/src/lib/components/icons/demos/scaling'
+    path: 'libs/documentation/src/lib/components/icons/demos/scaling',
   },
   basic: {
     title: 'All Custom Icons',
     type: IconsBasic,
     code: require('!!raw-loader!./demos/basic/icons-basic.component'),
+    module: require('!!raw-loader!./demos/basic/icons-basic.module'),
     markup: require('!!raw-loader!./demos/basic/icons-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/icons/demos/basic'
+    path: 'libs/documentation/src/lib/components/icons/demos/basic',
   },
   bootstrap: {
     title: 'All Bootstrap Icons',
     type: IconsBootstrap,
     code: require('!!raw-loader!./demos/bootstrap/icons-bootstrap.component'),
+    module: require('!!raw-loader!./demos/bootstrap/icons-bootstrap.module'),
     markup: require('!!raw-loader!./demos/bootstrap/icons-bootstrap.component.html'),
-    path: 'libs/documentation/src/lib/components/icons/demos/bootstrap'
-  }
+    path: 'libs/documentation/src/lib/components/icons/demos/bootstrap',
+  },
 };
 
 export const ROUTES = [
@@ -78,17 +84,17 @@ export const ROUTES = [
         {
           pkg: 'components',
           type: 'components',
-          name: 'SdsIconComponent'
-        }
-      ]
+          name: 'SdsIconComponent',
+        },
+      ],
     },
     children: [
       { path: 'examples', component: DocumentationExamplesPage },
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
-      { path: 'template', component: DocumentationTemplatePage }
-    ]
-  }
+      { path: 'template', component: DocumentationTemplatePage },
+    ],
+  },
 ];
 
 @NgModule({
@@ -100,8 +106,8 @@ export const ROUTES = [
     IconsColoringModule,
     IconsScalingModule,
     IconsRotationModule,
-    IconsStackingModule
-  ]
+    IconsStackingModule,
+  ],
 })
 export class IconsModule {
   constructor(demoList: DocumentationDemoList) {

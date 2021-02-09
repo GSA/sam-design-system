@@ -7,7 +7,7 @@ import { DocumentationSourcePage } from '../shared/source-page/source.component'
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 import {
   DocumentationComponentsSharedModule,
-  DocumentationDemoList
+  DocumentationDemoList,
 } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { FormFieldBasicModule } from './demos/basic/form-field-basic.module';
@@ -18,9 +18,10 @@ const DEMOS = {
     title: 'Basic Form Field',
     type: FormFieldBasic,
     code: require('!!raw-loader!./demos/basic/form-field-basic.component'),
+    module: require('!!raw-loader!./demos/basic/form-field-basic.module'),
     markup: require('!!raw-loader!./demos/basic/form-field-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/form-field/demos/basic'
-  }
+    path: 'libs/documentation/src/lib/components/form-field/demos/basic',
+  },
 };
 
 export const ROUTES = [
@@ -29,7 +30,7 @@ export const ROUTES = [
     path: '',
     component: ComponentWrapperComponent,
     data: {
-      title: "Form Field",
+      title: 'Form Field',
       introducedVersion: '0.4.8',
       deprecatedVersion: '0.7.11',
       items: [
@@ -37,25 +38,25 @@ export const ROUTES = [
           pkg: 'formly',
           type: 'components',
           name: 'FormlyWrapperFormFieldComponent',
-          wrappers: ['form-field']
-        }
-      ]
+          wrappers: ['form-field'],
+        },
+      ],
     },
     children: [
       { path: 'examples', component: DocumentationExamplesPage },
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
-      { path: 'template', component: DocumentationTemplatePage }
-    ]
-  }
+      { path: 'template', component: DocumentationTemplatePage },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    FormFieldBasicModule
-  ]
+    FormFieldBasicModule,
+  ],
 })
 export class FormFieldModule {
   constructor(demoList: DocumentationDemoList) {

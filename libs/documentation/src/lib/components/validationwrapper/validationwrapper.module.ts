@@ -7,7 +7,7 @@ import { DocumentationSourcePage } from '../shared/source-page/source.component'
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 import {
   DocumentationComponentsSharedModule,
-  DocumentationDemoList
+  DocumentationDemoList,
 } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { ValidationWrapperBasicModule } from './demos/basic/validationwrapper-basic.module';
@@ -17,10 +17,11 @@ const DEMOS = {
   basic: {
     title: 'Validation Wrapper',
     type: ValidationWrapperBasic,
+    module: require('!!raw-loader!./demos/basic/validationwrapper-basic.module'),
     code: require('!!raw-loader!./demos/basic/validationwrapper-basic.component'),
     markup: require('!!raw-loader!./demos/basic/validationwrapper-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/validationwrapper/demos/basic'
-  }
+    path: 'libs/documentation/src/lib/components/validationwrapper/demos/basic',
+  },
 };
 
 export const ROUTES = [
@@ -29,31 +30,31 @@ export const ROUTES = [
     path: '',
     component: ComponentWrapperComponent,
     data: {
-      title: "Validation Wrapper",
+      title: 'Validation Wrapper',
       items: [
         {
           pkg: 'formly',
           type: 'components',
           name: 'FormlyValidationWrapperComponent',
-          wrappers: ['validation']
-        }
-      ]
+          wrappers: ['validation'],
+        },
+      ],
     },
     children: [
       { path: 'examples', component: DocumentationExamplesPage },
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
-      { path: 'template', component: DocumentationTemplatePage }
-    ]
-  }
+      { path: 'template', component: DocumentationTemplatePage },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    ValidationWrapperBasicModule
-  ]
+    ValidationWrapperBasicModule,
+  ],
 })
 export class ValidationWrapperModule {
   constructor(demoList: DocumentationDemoList) {
