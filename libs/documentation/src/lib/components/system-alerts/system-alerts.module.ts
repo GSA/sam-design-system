@@ -1,8 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from "@angular/core";
+import { NgModule } from '@angular/core';
 import { SdsSystemAlertModule } from '@gsa-sam/layouts';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
-import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../shared';
+import {
+  DocumentationComponentsSharedModule,
+  DocumentationDemoList,
+} from '../shared';
 import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationExamplesPage } from '../shared/examples-page/examples.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
@@ -19,16 +22,18 @@ const DEMOS = {
     title: 'System Alert',
     type: SystemAlertsSingleComponent,
     code: require('!!raw-loader!./demos/single/system-alerts-single.component'),
+    module: require('!!raw-loader!./demos/single/system-alerts-single.module'),
     markup: require('!!raw-loader!./demos/single/system-alerts-single.component.html'),
-    path: 'libs/documentation/src/lib/components/system-alerts/demos/single'
+    path: 'libs/documentation/src/lib/components/system-alerts/demos/single',
   },
   multiple: {
     title: 'System Alert - Multiple Alerts',
     type: SystemAlertsMultipleComponent,
     code: require('!!raw-loader!./demos/multiple/system-alerts-multiple.component'),
+    module: require('!!raw-loader!./demos/multiple/system-alerts-multiple.module'),
     markup: require('!!raw-loader!./demos/multiple/system-alerts-multiple.component.html'),
-    path: 'libs/documentation/src/lib/components/system-alerts/demos/multiple'
-  }
+    path: 'libs/documentation/src/lib/components/system-alerts/demos/multiple',
+  },
 };
 
 export const ROUTES = [
@@ -41,17 +46,17 @@ export const ROUTES = [
         {
           pkg: 'layouts',
           type: 'components',
-          name: 'SdsSystemAlertComponent'
-        }
+          name: 'SdsSystemAlertComponent',
+        },
       ],
     },
     children: [
       { path: 'examples', component: DocumentationExamplesPage },
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
-      { path: 'template', component: DocumentationTemplatePage }
-    ]
-  }
+      { path: 'template', component: DocumentationTemplatePage },
+    ],
+  },
 ];
 
 @NgModule({
@@ -60,7 +65,7 @@ export const ROUTES = [
     DocumentationComponentsSharedModule,
     SystemAlertsMultipleModule,
     SystemAlertsSingleModule,
-  ]
+  ],
 })
 export class SystemAlertsModule {
   constructor(demoList: DocumentationDemoList) {

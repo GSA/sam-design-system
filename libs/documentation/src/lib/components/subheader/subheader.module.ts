@@ -5,7 +5,7 @@ import { DocumentationSourcePage } from '../shared/source-page/source.component'
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 import {
   DocumentationComponentsSharedModule,
-  DocumentationDemoList
+  DocumentationDemoList,
 } from './../shared/index';
 import { ComponentWrapperComponent } from './../../shared/component-wrapper/component-wrapper.component';
 import { SubheaderBasicDisplayModule } from './demos/basic/subheader-basic-display.module';
@@ -25,39 +25,44 @@ const DEMOS = {
     title: 'Basic Display',
     type: SubheaderBasicDisplayComponent,
     code: require('!!raw-loader!./demos/basic/subheader-basic-display.component'),
+    module: require('!!raw-loader!./demos/basic/subheader-basic-display.module'),
     markup: require('!!raw-loader!./demos/basic/subheader-basic-display.component.html'),
-    path: 'libs/documentation/src/lib/components/subheader/demos/basic'
+    path: 'libs/documentation/src/lib/components/subheader/demos/basic',
   },
   dataentry: {
     title: 'Data Entry',
     type: SubheaderDataEntryComponent,
     code: require('!!raw-loader!./demos/dataentry/subheader-data-entry.component'),
+    module: require('!!raw-loader!./demos/dataentry/subheader-data-entry.module'),
     markup: require('!!raw-loader!./demos/dataentry/subheader-data-entry.component.html'),
-    path: 'libs/documentation/src/lib/components/subheader/demos/dataentry'
+    path: 'libs/documentation/src/lib/components/subheader/demos/dataentry',
   },
   search: {
     title: 'Search',
     type: SubheaderSearchComponent,
     code: require('!!raw-loader!./demos/search/subheader-search.component'),
+    module: require('!!raw-loader!./demos/search/subheader-search.module'),
     markup: require('!!raw-loader!./demos/search/subheader-search.component.html'),
-    path: 'libs/documentation/src/lib/components/subheader/demos/subheader-search'
+    path:
+      'libs/documentation/src/lib/components/subheader/demos/subheader-search',
   },
   subpages: {
     title: 'Search with Sub-Pages',
     type: SubheaderSearchSubPagesComponent,
     code: require('!!raw-loader!./demos/subpages/subheader-search-sub-pages.component'),
+    module: require('!!raw-loader!./demos/subpages/subheader-search-sub-pages.module'),
     markup: require('!!raw-loader!./demos/subpages/subheader-search-sub-pages.component.html'),
-    path: 'libs/documentation/src/lib/components/subheader/demos/subpages'
+    path: 'libs/documentation/src/lib/components/subheader/demos/subpages',
   },
   workspace: {
     title: 'Tier 2 Workspace',
     type: SubheaderTier2WorkspaceComponent,
     code: require('!!raw-loader!./demos/workspace/subheader-tier-2-workspace.component'),
+    module: require('!!raw-loader!./demos/workspace/subheader-tier-2-workspace.module'),
     markup: require('!!raw-loader!./demos/workspace/subheader-tier-2-workspace.component.html'),
-    path: 'libs/documentation/src/lib/components/subheader/demos/workspace'
-  }
+    path: 'libs/documentation/src/lib/components/subheader/demos/workspace',
+  },
 };
-
 
 export const ROUTES = [
   { path: '', pathMatch: 'full', redirectTo: 'examples' },
@@ -69,16 +74,16 @@ export const ROUTES = [
         {
           pkg: 'layouts',
           type: 'components',
-          name: 'SdsSubheaderComponent'
-        }
-      ]
+          name: 'SdsSubheaderComponent',
+        },
+      ],
     },
     children: [
       { path: 'examples', component: DocumentationExamplesPage },
       { path: 'source', component: DocumentationSourcePage },
-      { path: 'template', component: DocumentationTemplatePage }
-    ]
-  }
+      { path: 'template', component: DocumentationTemplatePage },
+    ],
+  },
 ];
 
 @NgModule({
@@ -89,8 +94,8 @@ export const ROUTES = [
     SubheaderDataEntryModule,
     SubheaderSearchModule,
     SubheaderSearchSubPagesModule,
-    SubheaderTier2WorkspaceModule
-  ]
+    SubheaderTier2WorkspaceModule,
+  ],
 })
 export class SubHeaderModule {
   constructor(demoList: DocumentationDemoList) {

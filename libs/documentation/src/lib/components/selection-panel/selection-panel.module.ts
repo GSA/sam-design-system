@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import {
   DocumentationComponentsSharedModule,
-  DocumentationDemoList
+  DocumentationDemoList,
 } from '../shared';
 import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationExamplesPage } from '../shared/examples-page/examples.component';
@@ -18,10 +18,10 @@ const DEMOS = {
     title: 'Basic Selection Panel',
     type: BasicSelectionPanelComponent,
     code: require('!!raw-loader!./demos/basic/basic-selection-panel.component'),
+    module: require('!!raw-loader!./demos/basic/basic-selection-panel.module'),
     markup: require('!!raw-loader!./demos/basic/basic-selection-panel.component.html'),
-    path:
-      'libs/documentation/src/lib/components/selection-panel/demos/basic'
-  }
+    path: 'libs/documentation/src/lib/components/selection-panel/demos/basic',
+  },
 };
 
 export const ROUTES = [
@@ -34,25 +34,25 @@ export const ROUTES = [
         {
           pkg: 'components',
           type: 'components',
-          name: 'SdsSelectionPanelComponent'
-        }
-      ]
+          name: 'SdsSelectionPanelComponent',
+        },
+      ],
     },
     children: [
       { path: 'examples', component: DocumentationExamplesPage },
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
-      { path: 'template', component: DocumentationTemplatePage }
-    ]
-  }
+      { path: 'template', component: DocumentationTemplatePage },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    BasicSelectionPanelModule
-  ]
+    BasicSelectionPanelModule,
+  ],
 })
 export class SelectionPanelModule {
   constructor(demoList: DocumentationDemoList) {

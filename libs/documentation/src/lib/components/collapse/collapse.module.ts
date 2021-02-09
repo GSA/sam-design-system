@@ -6,7 +6,7 @@ import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
 import {
   DocumentationComponentsSharedModule,
-  DocumentationDemoList
+  DocumentationDemoList,
 } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { CollapseBasicModule } from './demos/basic/collapse-basic.module';
@@ -17,9 +17,10 @@ const DEMOS = {
     title: 'Collapse',
     type: CollapseBasic,
     code: require('!!raw-loader!./demos/basic/collapse-basic.component'),
+    module: require('!!raw-loader!./demos/basic/collapse-basic.module'),
     markup: require('!!raw-loader!./demos/basic/collapse-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/collapse/demos/basic'
-  }
+    path: 'libs/documentation/src/lib/components/collapse/demos/basic',
+  },
 };
 
 export const ROUTES = [
@@ -32,24 +33,24 @@ export const ROUTES = [
         {
           pkg: 'components',
           type: 'directives',
-          name: 'CollapseDirective'
-        }
-      ]
+          name: 'CollapseDirective',
+        },
+      ],
     },
     children: [
       { path: 'examples', component: DocumentationExamplesPage },
       { path: 'api', component: DocumentationAPIPage },
-      { path: 'source', component: DocumentationSourcePage }
-    ]
-  }
+      { path: 'source', component: DocumentationSourcePage },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    CollapseBasicModule
-  ]
+    CollapseBasicModule,
+  ],
 })
 export class CollapseModule {
   constructor(demoList: DocumentationDemoList) {

@@ -7,7 +7,7 @@ import { DocumentationSourcePage } from '../shared/source-page/source.component'
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 import {
   DocumentationComponentsSharedModule,
-  DocumentationDemoList
+  DocumentationDemoList,
 } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { TextBasicModule } from './demos/basic/text-basic.module';
@@ -19,9 +19,10 @@ const DEMOS = {
     title: 'SAM Text',
     type: TextBasic,
     code: require('!!raw-loader!./demos/basic/text-basic.component'),
+    module: require('!!raw-loader!./demos/basic/text-basic.module'),
     markup: require('!!raw-loader!./demos/basic/text-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/text/demos/basic'
-  }
+    path: 'libs/documentation/src/lib/components/text/demos/basic',
+  },
 };
 
 export const ROUTES = [
@@ -34,25 +35,21 @@ export const ROUTES = [
         {
           pkg: 'components',
           type: 'components',
-          name: 'SdsTextComponent'
-        }
-      ]
+          name: 'SdsTextComponent',
+        },
+      ],
     },
     children: [
       { path: 'examples', component: DocumentationExamplesPage },
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
-      { path: 'template', component: DocumentationTemplatePage }
-    ]
-  }
+      { path: 'template', component: DocumentationTemplatePage },
+    ],
+  },
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    DocumentationComponentsSharedModule,
-    TextBasicModule
-  ]
+  imports: [CommonModule, DocumentationComponentsSharedModule, TextBasicModule],
 })
 export class TextModule {
   constructor(demoList: DocumentationDemoList) {

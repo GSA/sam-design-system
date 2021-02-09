@@ -6,7 +6,7 @@ import { DocumentationSourcePage } from '../shared/source-page/source.component'
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 import {
   DocumentationComponentsSharedModule,
-  DocumentationDemoList
+  DocumentationDemoList,
 } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { SideNavigationOptionalModule } from './demos/optional/sidenavigation-optional.module';
@@ -18,8 +18,9 @@ const DEMOS = {
     title: 'Side Navigation',
     type: SideNavigationOptional,
     code: require('!!raw-loader!./demos/optional/sidenavigation-optional.component'),
+    module: require('!!raw-loader!./demos/optional/sidenavigation-optional.module'),
     markup: require('!!raw-loader!./demos/optional/sidenavigation-optional.component.html'),
-    path: 'libs/documentation/src/lib/components/sidenavigation/demos/optional'
+    path: 'libs/documentation/src/lib/components/sidenavigation/demos/optional',
   },
 };
 
@@ -33,25 +34,25 @@ export const ROUTES = [
         {
           pkg: 'components',
           type: 'components',
-          name: 'SdsSideNavigationComponent'
-        }
-      ]
+          name: 'SdsSideNavigationComponent',
+        },
+      ],
     },
     children: [
       { path: 'examples', component: DocumentationExamplesPage },
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
-      { path: 'template', component: DocumentationTemplatePage }
-    ]
-  }
+      { path: 'template', component: DocumentationTemplatePage },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    SideNavigationOptionalModule
-  ]
+    SideNavigationOptionalModule,
+  ],
 })
 export class SideNavigationModule {
   constructor(demoList: DocumentationDemoList) {

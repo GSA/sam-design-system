@@ -7,7 +7,7 @@ import { DocumentationSourcePage } from '../shared/source-page/source.component'
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 import {
   DocumentationComponentsSharedModule,
-  DocumentationDemoList
+  DocumentationDemoList,
 } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { FilterWrapperBasicModule } from './demos/basic/filterwrapper-basic.module';
@@ -18,9 +18,10 @@ const DEMOS = {
     title: 'Filter Wrapper',
     type: FilterWrapperBasic,
     code: require('!!raw-loader!./demos/basic/filterwrapper-basic.component'),
+    module: require('!!raw-loader!./demos/basic/filterwrapper-basic.module'),
     markup: require('!!raw-loader!./demos/basic/filterwrapper-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/filterwrapper/demos/basic'
-  }
+    path: 'libs/documentation/src/lib/components/filterwrapper/demos/basic',
+  },
 };
 
 export const ROUTES = [
@@ -29,31 +30,31 @@ export const ROUTES = [
     path: '',
     component: ComponentWrapperComponent,
     data: {
-      title: "Filter Wrapper",
+      title: 'Filter Wrapper',
       items: [
         {
           pkg: 'formly',
           type: 'components',
           name: 'FormlyFormFieldFilterWrapperComponent',
-          wrappers: ['filterwrapper']
-        }
-      ]
+          wrappers: ['filterwrapper'],
+        },
+      ],
     },
     children: [
       { path: 'examples', component: DocumentationExamplesPage },
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
-      { path: 'template', component: DocumentationTemplatePage }
-    ]
-  }
+      { path: 'template', component: DocumentationTemplatePage },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    FilterWrapperBasicModule
-  ]
+    FilterWrapperBasicModule,
+  ],
 })
 export class FilterWrapperModule {
   constructor(demoList: DocumentationDemoList) {

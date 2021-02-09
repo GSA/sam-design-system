@@ -7,7 +7,7 @@ import { DocumentationSourcePage } from '../shared/source-page/source.component'
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 import {
   DocumentationComponentsSharedModule,
-  DocumentationDemoList
+  DocumentationDemoList,
 } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { SearchBasicModule } from './demos/basic/search-basic.module';
@@ -21,17 +21,18 @@ const DEMOS = {
     title: 'Basic Search ',
     type: SearchBasic,
     code: require('!!raw-loader!./demos/basic/search-basic.component'),
+    module: require('!!raw-loader!./demos/basic/search-basic.module'),
     markup: require('!!raw-loader!./demos/basic/search-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/search/demos/basic'
+    path: 'libs/documentation/src/lib/components/search/demos/basic',
   },
   optional: {
     title: 'Search with Select Dropdown',
     type: SearchOptional,
     code: require('!!raw-loader!./demos/optional/search-optional.component'),
+    module: require('!!raw-loader!./demos/optional/search-optional.module'),
     markup: require('!!raw-loader!./demos/optional/search-optional.component.html'),
-    path: 'libs/documentation/src/lib/components/search/demos/optional'
-  }
-  
+    path: 'libs/documentation/src/lib/components/search/demos/optional',
+  },
 };
 
 export const ROUTES = [
@@ -44,17 +45,17 @@ export const ROUTES = [
         {
           pkg: 'components',
           type: 'components',
-          name: 'SdsSearchComponent'
-        }
-      ]
+          name: 'SdsSearchComponent',
+        },
+      ],
     },
     children: [
       { path: 'examples', component: DocumentationExamplesPage },
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
-      { path: 'template', component: DocumentationTemplatePage }
-    ]
-  }
+      { path: 'template', component: DocumentationTemplatePage },
+    ],
+  },
 ];
 
 @NgModule({
@@ -62,8 +63,8 @@ export const ROUTES = [
     CommonModule,
     DocumentationComponentsSharedModule,
     SearchBasicModule,
-    SearchOptionalModule
-  ]
+    SearchOptionalModule,
+  ],
 })
 export class SearchModule {
   constructor(demoList: DocumentationDemoList) {

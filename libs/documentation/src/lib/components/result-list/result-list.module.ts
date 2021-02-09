@@ -6,7 +6,7 @@ import { DocumentationSourcePage } from '../shared/source-page/source.component'
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 import {
   DocumentationComponentsSharedModule,
-  DocumentationDemoList
+  DocumentationDemoList,
 } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 
@@ -25,30 +25,34 @@ const DEMOS = {
     title: 'Result List',
     type: ResultListBasic,
     code: require('!!raw-loader!./demos/basic/result-list-basic.component'),
+    module: require('!!raw-loader!./demos/basic/result-list-basic.module'),
     markup: require('!!raw-loader!./demos/basic/result-list-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/result-list/demos/basic'
+    path: 'libs/documentation/src/lib/components/result-list/demos/basic',
   },
   template: {
     title: 'Result List with custom template',
     type: ResultListTemplate,
     code: require('!!raw-loader!./demos/template/result-list-template.component'),
+    module: require('!!raw-loader!./demos/template/result-list-template.module'),
     markup: require('!!raw-loader!./demos/template/result-list-template.component.html'),
-    path: 'libs/documentation/src/lib/components/result-list/demos/template'
+    path: 'libs/documentation/src/lib/components/result-list/demos/template',
   },
   component: {
     title: 'Result List with Component',
     type: ResultListComponent,
     code: require('!!raw-loader!./demos/component/result-list-component.component'),
+    module: require('!!raw-loader!./demos/component/result-list-component.module'),
     markup: require('!!raw-loader!./demos/component/result-list-component.component.html'),
-    path: 'libs/documentation/src/lib/components/result-list/demos/component'
+    path: 'libs/documentation/src/lib/components/result-list/demos/component',
   },
   card: {
     title: 'Result List with Card Component',
     type: ResultListCardComponent,
     code: require('!!raw-loader!./demos/card/result-list-card-component.component'),
+    module: require('!!raw-loader!./demos/card/result-list-card-component.module'),
     markup: require('!!raw-loader!./demos/card/result-list-card-component.component.html'),
-    path: 'libs/documentation/src/lib/components/result-list/demos/card'
-  }
+    path: 'libs/documentation/src/lib/components/result-list/demos/card',
+  },
 };
 
 export const ROUTES = [
@@ -61,17 +65,17 @@ export const ROUTES = [
         {
           pkg: 'components',
           type: 'components',
-          name: 'SdsSearchResultListComponent'
-        }
-      ]
+          name: 'SdsSearchResultListComponent',
+        },
+      ],
     },
     children: [
       { path: 'examples', component: DocumentationExamplesPage },
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
-      { path: 'template', component: DocumentationTemplatePage }
-    ]
-  }
+      { path: 'template', component: DocumentationTemplatePage },
+    ],
+  },
 ];
 
 @NgModule({
@@ -81,8 +85,8 @@ export const ROUTES = [
     ResultListBasicModule,
     ResultListTemplateModule,
     ResultListComponentModule,
-    ResultListCardComponentModule
-  ]
+    ResultListCardComponentModule,
+  ],
 })
 export class ResultListModule {
   constructor(demoList: DocumentationDemoList) {

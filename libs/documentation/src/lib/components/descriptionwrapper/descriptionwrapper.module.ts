@@ -7,7 +7,7 @@ import { DocumentationSourcePage } from '../shared/source-page/source.component'
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 import {
   DocumentationComponentsSharedModule,
-  DocumentationDemoList
+  DocumentationDemoList,
 } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { DescriptionWrapperBasicModule } from './demos/basic/descriptionwrapper-basic.module';
@@ -18,9 +18,11 @@ const DEMOS = {
     title: 'Description Wrapper',
     type: DescriptionWrapperBasic,
     code: require('!!raw-loader!./demos/basic/descriptionwrapper-basic.component'),
+    module: require('!!raw-loader!./demos/basic/descriptionwrapper-basic.module'),
     markup: require('!!raw-loader!./demos/basic/descriptionwrapper-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/descriptionwrapper/demos/basic'
-  }
+    path:
+      'libs/documentation/src/lib/components/descriptionwrapper/demos/basic',
+  },
 };
 
 export const ROUTES = [
@@ -29,31 +31,31 @@ export const ROUTES = [
     path: '',
     component: ComponentWrapperComponent,
     data: {
-      title: "Description Wrapper",
+      title: 'Description Wrapper',
       items: [
         {
           pkg: 'formly',
           type: 'components',
           name: 'FormlyDescriptionWrapperComponent',
-          wrappers: ['description']
-        }
-      ]
+          wrappers: ['description'],
+        },
+      ],
     },
     children: [
       { path: 'examples', component: DocumentationExamplesPage },
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
-      { path: 'template', component: DocumentationTemplatePage }
-    ]
-  }
+      { path: 'template', component: DocumentationTemplatePage },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    DescriptionWrapperBasicModule
-  ]
+    DescriptionWrapperBasicModule,
+  ],
 })
 export class DescriptionWrapperModule {
   constructor(demoList: DocumentationDemoList) {

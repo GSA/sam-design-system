@@ -7,7 +7,7 @@ import { DocumentationSourcePage } from '../shared/source-page/source.component'
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 import {
   DocumentationComponentsSharedModule,
-  DocumentationDemoList
+  DocumentationDemoList,
 } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { TemplateOptionsBasicModule } from './demos/basic/templateoptions-basic.module';
@@ -28,43 +28,52 @@ const DEMOS = {
     title: 'Template Option for on blur',
     type: TemplateOptionsBasic,
     code: require('!!raw-loader!./demos/basic/templateoptions-basic.component'),
+    module: require('!!raw-loader!./demos/basic/templateoptions-basic.module'),
     markup: require('!!raw-loader!./demos/basic/templateoptions-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/templateoptions/demos/basic'
+    path: 'libs/documentation/src/lib/components/templateoptions/demos/basic',
   },
   updateoninhereitance: {
     title: 'UpdateOn Inheritance',
     type: UpdateOnInheritanceComponent,
     code: require('!!raw-loader!./demos/updateoninheritance/update-on-inheritance.component'),
+    module: require('!!raw-loader!./demos/updateoninheritance/update-on-inheritance.module'),
     markup: require('!!raw-loader!./demos/updateoninheritance/update-on-inheritance.component.html'),
-    path: 'libs/documentation/src/lib/components/templateoptions/demos/updateoninheritance'
+    path:
+      'libs/documentation/src/lib/components/templateoptions/demos/updateoninheritance',
   },
   tags: {
     title: 'Template Options for tags',
     type: TemplateOptionsTags,
     code: require('!!raw-loader!./demos/tags/templateoption-tags.component'),
+    module: require('!!raw-loader!./demos/tags/templateoption-tags.module'),
     markup: require('!!raw-loader!./demos/tags/templateoption-tags.component.html'),
-    path: 'libs/documentation/src/lib/components/templateoptions/demos/tags'
+    path: 'libs/documentation/src/lib/components/templateoptions/demos/tags',
   },
   hideOptional: {
     title: 'Template Options for hide (optional) text',
     type: TemplateOptionHideOptional,
     code: require('!!raw-loader!./demos/hideOptional/templateoption-hideOptional.component'),
+    module: require('!!raw-loader!./demos/hideOptional/templateoption-hideOptional.module'),
     markup: require('!!raw-loader!./demos/hideOptional/templateoption-hideOptional.component.html'),
-    path: 'libs/documentation/src/lib/components/templateoptions/demos/hideOptional'
+    path:
+      'libs/documentation/src/lib/components/templateoptions/demos/hideOptional',
   },
   expand: {
     title: 'Template Options for expand',
     type: TemplateOptionExpand,
     code: require('!!raw-loader!./demos/expand/templateoption-expand.component'),
+    module: require('!!raw-loader!./demos/expand/templateoption-expand.module'),
     markup: require('!!raw-loader!./demos/expand/templateoption-expand.component.html'),
-    path: 'libs/documentation/src/lib/components/templateoptions/demos/expand'
+    path: 'libs/documentation/src/lib/components/templateoptions/demos/expand',
   },
   announceLabel: {
     title: 'Template Options for announce label for screen reader',
     type: TemplateOptionAnnounceLabel,
     code: require('!!raw-loader!./demos/announceLabel/templateoption-announceLabel.component'),
+    module: require('!!raw-loader!./demos/announceLabel/templateoption-announceLabel.module'),
     markup: require('!!raw-loader!./demos/announceLabel/templateoption-announceLabel.component.html'),
-    path: 'libs/documentation/src/lib/components/templateoptions/demos/announceLabel'
+    path:
+      'libs/documentation/src/lib/components/templateoptions/demos/announceLabel',
   },
 };
 
@@ -80,17 +89,17 @@ export const ROUTES = [
           pkg: 'formly',
           type: 'components',
           name: 'FormlyLabelWrapperComponent',
-          wrappers: ['templateoptions']
-        }
-      ]
+          wrappers: ['templateoptions'],
+        },
+      ],
     },
     children: [
       { path: 'examples', component: DocumentationExamplesPage },
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
-      { path: 'template', component: DocumentationTemplatePage }
-    ]
-  }
+      { path: 'template', component: DocumentationTemplatePage },
+    ],
+  },
 ];
 
 @NgModule({
@@ -102,8 +111,8 @@ export const ROUTES = [
     TemplateOptionsHideOptionalModule,
     TemplateOptionsExpandModule,
     TemplateOptionsAnnounceLabelModule,
-    UpdateOnInheritanceModule
-  ]
+    UpdateOnInheritanceModule,
+  ],
 })
 export class TemplateOptionsModule {
   constructor(demoList: DocumentationDemoList) {

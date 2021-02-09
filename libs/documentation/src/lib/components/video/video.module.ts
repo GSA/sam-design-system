@@ -6,7 +6,7 @@ import { DocumentationSourcePage } from '../shared/source-page/source.component'
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 import {
   DocumentationComponentsSharedModule,
-  DocumentationDemoList
+  DocumentationDemoList,
 } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { VideoBasicModule } from './demos/basic/video-basic.module';
@@ -19,9 +19,10 @@ const DEMOS = {
     title: 'Video Player',
     type: VideoBasic,
     code: require('!!raw-loader!./demos/basic/video-basic.component'),
+    module: require('!!raw-loader!./demos/basic/video-basic.module'),
     markup: require('!!raw-loader!./demos/basic/video-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/video/demos/basic'
-  }
+    path: 'libs/documentation/src/lib/components/video/demos/basic',
+  },
 };
 
 export const ROUTES = [
@@ -31,31 +32,31 @@ export const ROUTES = [
     component: ComponentWrapperComponent,
     data: {
       readme: {
-        closing
+        closing,
       },
       items: [
         {
           pkg: 'components',
           type: 'components',
-          name: 'SdsVideoPlayerComponent'
-        }
-      ]
+          name: 'SdsVideoPlayerComponent',
+        },
+      ],
     },
     children: [
       { path: 'examples', component: DocumentationExamplesPage },
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
-      { path: 'template', component: DocumentationTemplatePage }
-    ]
-  }
+      { path: 'template', component: DocumentationTemplatePage },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    VideoBasicModule
-  ]
+    VideoBasicModule,
+  ],
 })
 export class VideoModule {
   constructor(demoList: DocumentationDemoList) {

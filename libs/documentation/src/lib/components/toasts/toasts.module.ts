@@ -18,6 +18,7 @@ const DEMOS = {
     title: 'Toasts',
     type: ToastsBasic,
     code: require('!!raw-loader!./demos/basic/toasts-basic.component'),
+    module: require('!!raw-loader!./demos/basic/toasts-basic.module'),
     markup: require('!!raw-loader!./demos/basic/toasts-basic.component.html'),
     path: 'libs/documentation/src/lib/components/toasts/demos/basic',
   },

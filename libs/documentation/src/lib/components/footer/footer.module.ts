@@ -22,6 +22,7 @@ const DEMOS = {
     title: 'SAM Footer',
     type: FooterBasic,
     code: require('!!raw-loader!./demos/basic/footer-basic.component'),
+    module: require('!!raw-loader!./demos/basic/footer-basic.module'),
     markup: require('!!raw-loader!./demos/basic/footer-basic.component.html'),
     path: 'libs/documentation/src/lib/components/footer/demos/basic',
   },

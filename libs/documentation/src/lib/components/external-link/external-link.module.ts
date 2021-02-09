@@ -18,6 +18,7 @@ const DEMOS = {
     title: 'External Link',
     type: ExternalLinkBasicComponent,
     code: require('!!raw-loader!./demos/basic/external-link-basic.component'),
+    module: require('!!raw-loader!./demos/basic/external-link-basic.module'),
     markup: require('!!raw-loader!./demos/basic/external-link-basic.component.html'),
     path: 'libs/documentation/src/lib/components/external-link/demos/basic',
   },
