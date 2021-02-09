@@ -43,7 +43,21 @@ export class DocumentationWidgetDemoComponent {
   }
 
   getStackblitzLink() {
-    const filePath = `assets/stackblitzes/${this.component}/${this.id}/stackblitz.html`;
+
+    if (!this.path) {
+      throw new Error(`Demo component ${this.component} is missing path value in module setup`);
+    }
+
+    // example: path = libs/documentation/src/lib/components/search/demos/optional
+    const splitPath = this.path.split('/');
+
+    // in Example, gets 'search'
+    const outerDirectory = splitPath[splitPath.length - 3];
+
+    // in Example, gets 'optional' - assume a 'demos' directory will always be present in between
+    const innerDirectory = splitPath[splitPath.length - 1];
+    
+    const filePath = `assets/stackblitzes/${outerDirectory}/${innerDirectory}/stackblitz.html`;
     return filePath;
   }
 }
