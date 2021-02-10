@@ -29,31 +29,27 @@ export class ExternalLinkDirective implements OnChanges {
   ) {}
 
   public ngOnChanges() {
+    this.hrefAttr = this.href;
     if (!this.isExternalLink) {
       return;
     } else {
-      if (!this.hideIcon && !this.isFsd()) {
+      if (!this.hideIcon) {
         this.createIcon();
       }
-      this.hrefAttr = this.href;
       this.relAttr = 'noopener';
       this.targetAttr = '_blank';
     }
   }
-  private isFsd() {
-    const link = this.href
-      .replace(/^https?:\/\//, '')
-      .replace(/^www\./, '')
-      .split('/')[0];
-    return this.internalLinks.includes(link);
-  }
+
   private get isExternalLink(): boolean {
     const link = this.href
       .replace(/^https?:\/\//, '')
       .replace(/^www\./, '')
       .split('/')[0];
     return (
-      isPlatformBrowser(this.platformId) && !link.includes(location.hostname)
+      isPlatformBrowser(this.platformId) &&
+      !link.includes(location.hostname) &&
+      !this.internalLinks.includes(link)
     );
   }
   private createIcon() {
