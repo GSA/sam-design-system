@@ -73,3 +73,6 @@ export * from './icon/icon.module';
 export * from './selection-panel/selection-panel.component';
 
 export * from './selection-panel/selection-panel.module';
+export * from './tabs/tabs.module';
+export * from './tabs/tabs.component';
+export * from './tabs/tab-panel.component';
