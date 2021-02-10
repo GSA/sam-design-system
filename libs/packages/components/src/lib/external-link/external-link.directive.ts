@@ -29,17 +29,18 @@ export class ExternalLinkDirective implements OnChanges {
   ) {}
 
   public ngOnChanges() {
+    this.hrefAttr = this.href;
     if (!this.isExternalLink) {
       return;
     } else {
       if (!this.hideIcon) {
         this.createIcon();
       }
-      this.hrefAttr = this.href;
       this.relAttr = 'noopener';
       this.targetAttr = '_blank';
     }
   }
+
   private get isExternalLink(): boolean {
     const link = this.href
       .replace(/^https?:\/\//, '')
