@@ -32,7 +32,7 @@ export class ExternalLinkDirective implements OnChanges {
     if (!this.isExternalLink) {
       return;
     } else {
-      if (!this.hideIcon) {
+      if (!this.hideIcon && !this.isFsd()) {
         this.createIcon();
       }
       this.hrefAttr = this.href;
@@ -40,15 +40,20 @@ export class ExternalLinkDirective implements OnChanges {
       this.targetAttr = '_blank';
     }
   }
+  private isFsd() {
+    const link = this.href
+      .replace(/^https?:\/\//, '')
+      .replace(/^www\./, '')
+      .split('/')[0];
+    return this.internalLinks.includes(link);
+  }
   private get isExternalLink(): boolean {
     const link = this.href
       .replace(/^https?:\/\//, '')
       .replace(/^www\./, '')
       .split('/')[0];
     return (
-      isPlatformBrowser(this.platformId) &&
-      !link.includes(location.hostname) &&
-      !this.internalLinks.includes(link)
+      isPlatformBrowser(this.platformId) && !link.includes(location.hostname)
     );
   }
   private createIcon() {

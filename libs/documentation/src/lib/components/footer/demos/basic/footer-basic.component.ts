@@ -22,12 +22,12 @@ export class FooterBasic implements OnInit {
           {
             text: 'About This Site',
             route: '/',
-            mode: NavigationMode.INTERNAL
+            mode: NavigationMode.INTERNAL,
           },
           { text: 'Release Notes', route: '/', mode: NavigationMode.INTERNAL },
           { text: 'Alerts', route: '/', mode: NavigationMode.INTERNAL },
-          { text: 'News', route: '/', mode: NavigationMode.INTERNAL }
-        ]
+          { text: 'News', route: '/', mode: NavigationMode.INTERNAL },
+        ],
       },
       {
         text: 'Our Partners',
@@ -35,20 +35,25 @@ export class FooterBasic implements OnInit {
           {
             text: 'Acquisition.gov',
             route: 'https://Acquisition.gov',
-            mode: NavigationMode.EXTERNAL
+            mode: NavigationMode.EXTERNAL,
+          },
+          {
+            text: 'FSD.gov',
+            route: 'https://fsd.gov',
+            mode: NavigationMode.EXTERNAL,
           },
           {
             text: 'USASpending.gov',
             route: 'https://USASpending.gov',
-            mode: NavigationMode.EXTERNAL
+            mode: NavigationMode.EXTERNAL,
           },
           {
             text: 'Grants.gov',
             route: 'https://Grants.gov',
-            mode: NavigationMode.EXTERNAL
+            mode: NavigationMode.EXTERNAL,
           },
-          { text: 'More Partners', route: '/', mode: NavigationMode.INTERNAL }
-        ]
+          { text: 'More Partners', route: '/', mode: NavigationMode.INTERNAL },
+        ],
       },
       {
         text: 'Customer Service',
@@ -56,24 +61,24 @@ export class FooterBasic implements OnInit {
           {
             text: 'Help',
             route: '/',
-            mode: NavigationMode.INTERNAL
+            mode: NavigationMode.INTERNAL,
           },
           {
             text: 'Contact Federal Service Desk',
             route: 'https://fsd.gov',
-            mode: NavigationMode.EXTERNAL
+            mode: NavigationMode.EXTERNAL,
           },
           {
             text: 'Our Community',
             route: 'https://sam.gov',
-            mode: NavigationMode.EXTERNAL
+            mode: NavigationMode.EXTERNAL,
           },
           {
             text: 'Policy',
             route: '/',
-            mode: NavigationMode.INTERNAL
-          }
-        ]
+            mode: NavigationMode.INTERNAL,
+          },
+        ],
       },
       {
         text: 'Policies',
@@ -81,32 +86,32 @@ export class FooterBasic implements OnInit {
           {
             text: 'Privacy Policy',
             route: '/',
-            mode: NavigationMode.INTERNAL
+            mode: NavigationMode.INTERNAL,
           },
           { text: 'Disclaimers', route: '/', mode: NavigationMode.INTERNAL },
           {
             text: 'Freedom of Information Act',
             route: 'https://foia.gov',
-            mode: NavigationMode.EXTERNAL
+            mode: NavigationMode.EXTERNAL,
           },
-          { text: 'Accessibility', route: '/', mode: NavigationMode.INTERNAL }
-        ]
-      }
+          { text: 'Accessibility', route: '/', mode: NavigationMode.INTERNAL },
+        ],
+      },
     ],
     footerLogo: {
       text: 'Logo',
       imageSourcePath: './assets/img/logo-gsa.svg',
       imageAltText: 'GSA Logo',
-      href: "https://www.gsa.gov",
-      agencyName: "General Services Administration"
+      href: 'https://www.gsa.gov',
+      agencyName: 'General Services Administration',
     },
-    disclaimer: `This is a U.S. General Services Administration Federal Government computer system that is <strong>"FOR OFFICIAL USE ONLY."</strong> This system is subject to monitoring. Individuals found performing unauthorized activities are subject to disciplinary action including criminal prosecution.`
+    disclaimer: `This is a U.S. General Services Administration Federal Government computer system that is <strong>"FOR OFFICIAL USE ONLY."</strong> This system is subject to monitoring. Individuals found performing unauthorized activities are subject to disciplinary action including criminal prosecution.`,
   };
 
   feedbackModel: FormControl;
 
   ngOnInit() {
-    this.linkEvent.subscribe(value => {
+    this.linkEvent.subscribe((value) => {
       console.log('Link Event Clicked Change');
       console.log(value);
     });
