@@ -11,10 +11,10 @@ jobs:
     steps:
       - checkout
       - run: npm install
-      - run: npm run --max-old-space-size=8192 test:components
-      - run: npm run --max-old-space-size=8192 test:material-extensions
-      - run: npm run --max-old-space-size=8192 test:sam-formly
-      - run: npm run --max-old-space-size=8192 test:layouts
+      - run: npm run test:components
+      - run: npm run test:material-extensions
+      - run: npm run test:sam-formly
+      - run: npm run test:layouts
       - store_artifacts:
           path: coverage
           destination: code-coverage
