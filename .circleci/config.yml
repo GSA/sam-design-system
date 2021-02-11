@@ -11,7 +11,7 @@ jobs:
     steps:
       - checkout
       - run: npm install
-      - run: npm run test -- --no-watch --no-progress --code-coverage --browsers=ChromeHeadlessCI
+      - run: npm run circleci
       - store_artifacts:
           path: coverage
           destination: code-coverage
