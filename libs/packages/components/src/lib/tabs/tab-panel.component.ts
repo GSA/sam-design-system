@@ -6,9 +6,19 @@ import { Component, Input } from "@angular/core";
 })
 export class TabPanelComponent {
 
-  @Input() classes: string;
+  /**
+   * The associated id of this tab panel
+   */
   @Input() id: string;
+
+  /**
+   * True if panel is currently selected.
+   * Only one tabpanel should be selected at a time
+   */
   @Input() selected: boolean;
-  @Input() disabled: boolean;
+
+  /**
+   * Header text of the tabpanel
+   */
   @Input() tabHeader: string;
 }

@@ -1,7 +1,5 @@
 <div 
-  [attr.aria-labelledby]="tabId"
   [attr.aria-hidden]="!selected"
-  [attr.aria-disabled]="disabled"
   [attr.id]="id" 
   role="tabpanel"
   [ngClass]="{'display-none': !selected, 'display-block': selected}"

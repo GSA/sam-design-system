@@ -1,4 +1,4 @@
-import { Component, ContentChildren, Input, OnInit, QueryList } from "@angular/core";
+import { AfterContentInit, AfterViewInit, Component, ContentChildren, EventEmitter, Input, OnInit, Output, QueryList } from "@angular/core";
 import { TabPanelComponent } from "./tab-panel.component";
 
 /** CONSTANTS
@@ -13,23 +13,46 @@ const RIGHT_ARROW = 'ArrowRight';
   templateUrl: `./tabs.component.html`,
   styleUrls: ['./tabs.component.scss'],
 })
-export class TabsComponent implements OnInit {
+export class TabsComponent implements OnInit, AfterContentInit {
 
+  /**
+   * Default panel to display on initialization. If one is not provided, then the first panel
+   * will be shown
+   */
   @Input() defaultSelection: TabPanelComponent;
+
+  /**
+   * Emits an event whenever a tab is selected by the user containing the
+   * TabPanelComponent
+   */
+  @Output() tabSelected: EventEmitter<TabPanelComponent> = new EventEmitter<TabPanelComponent>();
 
   @ContentChildren(TabPanelComponent) tabPanels: QueryList<TabPanelComponent>;
 
   selectedPanel: TabPanelComponent;
 
   ngOnInit () {
-    this.defaultSelection.selected = true;
-    this.selectedPanel = this.defaultSelection;
+    if (this.defaultSelection) {
+      this.defaultSelection.selected = true;
+      this.selectedPanel = this.defaultSelection;
+    }
+  }
+
+  ngAfterContentInit() {
+    if (!this.defaultSelection && this.tabPanels.first) {
+      this.tabPanels.first.selected = true;
+      this.selectedPanel = this.tabPanels.first;
+    }
   }
   
   onTabClicked(clickEvent: MouseEvent, tabPanel: TabPanelComponent) {
     this.changeSelectedTabPanel(tabPanel);
   }
 
+  /**
+   * Looks for Left and Right arrow presses and moves selected tab accordingly.
+   * @param $event - Keyboard Event
+   */
   onKeyDown($event) {
     const tabPanelArray = this.tabPanels.toArray();
     let selectedTabIndex = tabPanelArray.findIndex(panel => panel.selected);
@@ -54,5 +77,6 @@ export class TabsComponent implements OnInit {
     this.selectedPanel.selected = false;
     newTabPanel.selected = true;
     this.selectedPanel = newTabPanel;
+    this.tabSelected.emit({...this.selectedPanel});
   }
 }

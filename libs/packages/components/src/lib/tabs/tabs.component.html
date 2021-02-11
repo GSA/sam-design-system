@@ -1,5 +1,5 @@
 <div role="tablist" class="sds-tabs">
-  <div
+  <button
     *ngFor="let tabPanel of tabPanels"
     role="tab"
     class="sds-tabs__item"
@@ -7,11 +7,10 @@
     [attr.tabindex]="tabPanel.selected ? 0 : -1"
     [attr.aria-controls]="tabPanel.id"
     (click)="onTabClicked($event, tabPanel)"
-    [disabled]="tabPanel.disabled"
     (keydown)="onKeyDown($event)">
     {{tabPanel.tabHeader}}
-  </div>
+  </button>
 </div>
-<div class="sds-tabs__content">
+<div class="sds-tabs__content" tabindex="0">
   <ng-content></ng-content>
 </div>
