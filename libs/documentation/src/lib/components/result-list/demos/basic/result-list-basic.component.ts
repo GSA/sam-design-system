@@ -1,22 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 @Component({
   templateUrl: './result-list-basic.component.html',
   selector: `sds-result-list-basic-demo`,
 })
 export class ResultListBasic {
-  constructor() {}
+  @ViewChild('templateModel') messagesTemplate;
+  templateMessageModel: any = {};
 
+  constructor() {}
+  updateTemplate() {
+    this.templateMessageModel = {
+      results: [],
+      metadata: {
+        messages: this.messagesTemplate,
+      },
+    };
+    this.items = this.templateMessageModel;
+  }
   itemsDefault = [
     { title: 'First', id: 1 },
     { title: 'Second', id: 2 },
     { title: 'Third', id: 3 },
     { title: 'Fourth', id: 4 },
-    { title: 'Fifth', id: 5, hasNewerData: true }
+    { title: 'Fifth', id: 5, hasNewerData: true },
   ];
 
   items = {
-    results: this.itemsDefault
+    results: this.itemsDefault,
   };
 
   errorModel = {
@@ -32,12 +43,12 @@ export class ResultListBasic {
             {
               id: 'backward',
               text: 'Go back',
-              action: this.gobackbutton
-            }
-          ]
-        }
-      ]
-    }
+              action: this.gobackbutton,
+            },
+          ],
+        },
+      ],
+    },
   };
 
   infoModel = {
@@ -55,21 +66,21 @@ export class ResultListBasic {
               id: 'backward',
               text: 'Go back',
               classes: 'usa-button--secondary',
-              action: this.gobackbutton
+              action: this.gobackbutton,
             },
             {
               id: 'forward',
               text: 'Go forward',
-              classes: 'usa-button usa-button--secondary width-card margin-y-2'
-            }
-          ]
-        }
-      ]
-    }
+              classes: 'usa-button usa-button--secondary width-card margin-y-2',
+            },
+          ],
+        },
+      ],
+    },
   };
 
   defaultModel = {
-    results: this.itemsDefault
+    results: this.itemsDefault,
   };
   emptyModel = {
     metadata: {
@@ -84,23 +95,23 @@ export class ResultListBasic {
               id: 'backward',
               text: 'Go back',
               classes: 'usa-button--secondary',
-              action: this.gobackbutton
-            }
-          ]
-        }
-      ]
+              action: this.gobackbutton,
+            },
+          ],
+        },
+      ],
     },
-    results: []
+    results: [],
   };
   loadingModel = {
     metadata: {
       messages: [
         {
           type: 'loading',
-        }
-      ]
+        },
+      ],
     },
-    results: []
+    results: [],
   };
   initialModel = {
     metadata: {
@@ -109,11 +120,11 @@ export class ResultListBasic {
           type: 'initial',
           title: 'Search Criteria',
           message: `Choose your filter to run report`,
-          classes: 'usa-custom'
-        }
-      ]
+          classes: 'usa-custom',
+        },
+      ],
     },
-    results: []
+    results: [],
   };
   gobackbutton() {
     console.log('button click');
