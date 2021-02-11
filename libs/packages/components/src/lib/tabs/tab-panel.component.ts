@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, TemplateRef } from "@angular/core";
 
 @Component({
   selector: `sds-tab-panel`,
@@ -20,5 +20,15 @@ export class TabPanelComponent {
   /**
    * Header text of the tabpanel
    */
-  @Input() tabHeader: string;
+  @Input() tabTextHeader: string;
+
+  /**
+   * Header template of the tabpanel. Will take precendance over tabTextHeader
+   */
+  @Input() tabTemplateHeader: TemplateRef<any>;
+
+  /**
+   * Aria label for tab header
+   */
+  @Input() ariaLabel: string;
 }

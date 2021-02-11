@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { TabPanelComponent } from "@gsa-sam/components";
 
 
 @Component({
@@ -6,5 +7,9 @@ import { Component } from "@angular/core";
   selector: `sds-tabs-basic-demo`
 })
 export class TabsBasicComponent {
+  selectedTab: TabPanelComponent;
 
+  selectTab(tab: TabPanelComponent) {
+    this.selectedTab = tab;
+  }
 }

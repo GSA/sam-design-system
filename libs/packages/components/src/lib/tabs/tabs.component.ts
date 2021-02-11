@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewInit, Component, ContentChildren, EventEmitter, Input, OnInit, Output, QueryList } from "@angular/core";
+import { AfterContentInit, AfterViewInit, Component, ContentChildren, EventEmitter, Input, OnChanges, OnInit, Output, QueryList, SimpleChanges } from "@angular/core";
 import { TabPanelComponent } from "./tab-panel.component";
 
 /** CONSTANTS
@@ -13,35 +13,42 @@ const RIGHT_ARROW = 'ArrowRight';
   templateUrl: `./tabs.component.html`,
   styleUrls: ['./tabs.component.scss'],
 })
-export class TabsComponent implements OnInit, AfterContentInit {
+export class TabsComponent implements OnInit, OnChanges, AfterContentInit {
 
   /**
-   * Default panel to display on initialization. If one is not provided, then the first panel
-   * will be shown
+   * Currently selected tab for display.
    */
-  @Input() defaultSelection: TabPanelComponent;
+  @Input() 
+  selectedTab: TabPanelComponent;
 
   /**
-   * Emits an event whenever a tab is selected by the user containing the
-   * TabPanelComponent
+   * Emits an event whenever a tab is selected by the user containing the selected
+   * TabPanelComponent. Please note that because this output contains `Change` suffix
+   * to the `tabSelected` input, users can 2-way bind to the `selectedTab` input
    */
-  @Output() tabSelected: EventEmitter<TabPanelComponent> = new EventEmitter<TabPanelComponent>();
+  @Output()
+  selectedTabChange: EventEmitter<TabPanelComponent> = new EventEmitter<TabPanelComponent>();
 
   @ContentChildren(TabPanelComponent) tabPanels: QueryList<TabPanelComponent>;
 
-  selectedPanel: TabPanelComponent;
 
   ngOnInit () {
-    if (this.defaultSelection) {
-      this.defaultSelection.selected = true;
-      this.selectedPanel = this.defaultSelection;
+    if (this.selectedTab) {
+      this.selectedTab.selected = true;
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.selectedTab && changes.selectedTab.currentValue) {
+      this.tabPanels.forEach(tab => tab.selected = false);
+      changes.selectedTab.currentValue.selected = true;
     }
   }
 
   ngAfterContentInit() {
-    if (!this.defaultSelection && this.tabPanels.first) {
+    if (!this.selectedTab) {
       this.tabPanels.first.selected = true;
-      this.selectedPanel = this.tabPanels.first;
+      this.selectedTab = this.tabPanels.first;
     }
   }
   
@@ -74,9 +81,9 @@ export class TabsComponent implements OnInit, AfterContentInit {
   }
 
   private changeSelectedTabPanel(newTabPanel: TabPanelComponent) {
-    this.selectedPanel.selected = false;
+    this.selectedTab.selected = false;
     newTabPanel.selected = true;
-    this.selectedPanel = newTabPanel;
-    this.tabSelected.emit({...this.selectedPanel});
+    this.selectedTab = newTabPanel;
+    this.selectedTabChange.emit(this.selectedTab);
   }
 }

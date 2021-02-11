@@ -2,13 +2,19 @@
   <button
     *ngFor="let tabPanel of tabPanels"
     role="tab"
-    class="sds-tabs__item"
+    [attr.class]="tabPanel.tabTemplateHeader ? '' : 'sds-tabs__item'"
     [attr.aria-selected]="tabPanel.selected"
     [attr.tabindex]="tabPanel.selected ? 0 : -1"
     [attr.aria-controls]="tabPanel.id"
+    [attr.aria-label]="tabPanel.ariaLabel"
     (click)="onTabClicked($event, tabPanel)"
     (keydown)="onKeyDown($event)">
-    {{tabPanel.tabHeader}}
+    <ng-container *ngIf="tabPanel.tabTemplateHeader; else textHeader">
+      <ng-template *ngTemplateOutlet="tabPanel.tabTemplateHeader"></ng-template>
+    </ng-container>
+    <ng-template #textHeader>
+      {{tabPanel.tabTextHeader}}
+    </ng-template>
   </button>
 </div>
 <div class="sds-tabs__content" tabindex="0">

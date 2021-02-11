@@ -8,6 +8,8 @@ import { DocumentationSourcePage } from "../shared/source-page/source.component"
 import { DocumentationTemplatePage } from "../shared/template-page/template.component";
 import { TabsBasicComponent } from "./demos/basic/tabs-basic.component";
 import { TabsBasicModule } from "./demos/basic/tabs-basic.module";
+import { TabsTemplateHeaderComponent } from "./demos/template-header/tabs-template-header.component";
+import { TabsTemplateHeaderModule } from "./demos/template-header/tabs-template-header.module";
 
 declare var require: any;
 const DEMOS = {
@@ -18,6 +20,14 @@ const DEMOS = {
     markup: require('!!raw-loader!./demos/basic/tabs-basic.component.html'),
     module: require('!!raw-loader!./demos/basic/tabs-basic.module.ts'),
     path: 'libs/documentation/src/lib/components/tabs/demos/basic',
+  },
+  templateHeader: {
+    title: 'Custom Tab Header',
+    type: TabsTemplateHeaderComponent,
+    code: require('!!raw-loader!./demos/template-header/tabs-template-header.component'),
+    markup: require('!!raw-loader!./demos/template-header/tabs-template-header.component.html'),
+    module: require('!!raw-loader!./demos/template-header/tabs-template-header.module.ts'),
+    path: 'libs/documentation/src/lib/components/tabs/demos/template-header',
   }
 };
 
@@ -48,7 +58,8 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    TabsBasicModule
+    TabsBasicModule,
+    TabsTemplateHeaderModule,
   ]
 })
 export class TabsModule {
