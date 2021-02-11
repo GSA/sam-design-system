@@ -6,6 +6,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
   selector: 'documentation-widget-demo',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './demo.component.html',
+  styleUrls: ['./demo.component.scss'],
 })
 export class DocumentationWidgetDemoComponent {
   @Input() demoTitle: string;
@@ -18,6 +19,12 @@ export class DocumentationWidgetDemoComponent {
   @Input() path: string;
   @Input() files: { name: string; source: string }[];
   @Input() showCode = false;
+  viewMode = 'code';
+  tabs: any[] = [
+    { name: 'Source Code', type: 'code' },
+    { name: 'Template Markup', type: 'markUp' },
+    { name: 'Module', type: 'module' },
+  ];
 
   constructor(library: FaIconLibrary) {
     library.addIconPacks(fab, sds);
@@ -44,9 +51,10 @@ export class DocumentationWidgetDemoComponent {
   }
 
   getStackblitzLink() {
-
     if (!this.path) {
-      throw new Error(`Demo component ${this.component} is missing path value in module setup`);
+      throw new Error(
+        `Demo component ${this.component} is missing path value in module setup`
+      );
     }
 
     // example: path = libs/documentation/src/lib/components/search/demos/optional
@@ -57,7 +65,6 @@ export class DocumentationWidgetDemoComponent {
 
     // in Example, gets 'optional' - assume a 'demos' directory will always be present in between
     const innerDirectory = splitPath[splitPath.length - 1];
-    
     const filePath = `assets/stackblitzes/${outerDirectory}/${innerDirectory}/stackblitz.html`;
     return filePath;
   }

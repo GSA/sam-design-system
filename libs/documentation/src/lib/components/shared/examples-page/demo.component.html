@@ -24,14 +24,28 @@
   <div class="sds-card__body">
 
     <div *ngIf="showCode" class="padding-bottom-2 border-bottom margin-bottom-2">
-      <p class="margin-bottom-0"><code class="text-magenta bg-white">Source Code</code></p>
-      <pre class="highlight"><code [highlight]="code"></code></pre>
 
-      <p class="margin-bottom-0"><code class="text-magenta bg-white">Template Markup</code></p>
-      <pre class="highlight"><code [highlight]="markup"></code></pre>
+      <div class="tab-slider--nav">
+        <ul class="tab-slider--tabs" *ngFor="let tab of tabs">
+          <li class="tab-slider--trigger" [class.active]="viewMode == tab.type" rel="tab1" (click)="viewMode =tab.type">
+            {{tab.name}}</li>
+        </ul>
+      </div>
+      <div [ngSwitch]="viewMode">
+        <div id="code" *ngSwitchCase="'code'">
+          <p class="margin-bottom-0"><code class="text-magenta bg-white">Source Code</code></p>
+          <pre class="highlight"><code [highlight]="code"></code></pre>
+        </div>
+        <div id="markUp" *ngSwitchCase="'markUp'">
+          <p class="margin-bottom-0"><code class="text-magenta bg-white">Template Markup</code></p>
+          <pre class="highlight"><code [highlight]="markup"></code></pre>
+        </div>
+        <div id="module" *ngSwitchCase="'module'">
+          <p class="margin-bottom-0"><code class="text-magenta bg-white">Module</code></p>
+          <pre class="highlight"><code [highlight]="module"></code></pre>
+        </div>
 
-      <p class="margin-bottom-0"><code class="text-magenta bg-white">Module</code></p>
-      <pre class="highlight"><code [highlight]="module"></code></pre>
+      </div>
     </div>
 
     <markdown [data]="readme"></markdown>
