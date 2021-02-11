@@ -51,8 +51,7 @@
 
     <ng-container *ngIf="updateModel?.metadata?.messages">
       <ng-container *ngIf="!isTemplate()">
-        <ng-container *ngTemplateOutlet="updateModel?.metadata?.messages,
-        context: { $implicit: item }"></ng-container>
+        <ng-container *ngTemplateOutlet="updateModel?.metadata?.messages"></ng-container>
       </ng-container>
       <ng-container *ngIf="isTemplate()">
         <div *ngFor="let msg of updateModel.metadata.messages" class="sds-card sds-card--shadowed sds-card--bordered"
