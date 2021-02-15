@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnChanges, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { NavigationLink, SideNavigationModel } from '../side-navigation/model/side-navigation-model';
 
@@ -9,7 +9,7 @@ import { NavigationLink, SideNavigationModel } from '../side-navigation/model/si
 })
 export class SdsSelectionPanelComponent implements OnChanges {
 
-  @ViewChild('panelBody') panelBody: ElementRef;
+  @ViewChild('startOfPanelBody') panelBody: ElementRef;
 
   @Input()
   model: SideNavigationModel;
@@ -45,27 +45,25 @@ export class SdsSelectionPanelComponent implements OnChanges {
       this.panelBody.nativeElement.focus();
     }
 
-    this.updateSubheader(panelItem);
+    this.updateSubheader(panelItem, this.model.navigationLinks);
 
     if (this.navigateOnClick) {
-      const navigationExtras: NavigationExtras = {
-        queryParams: panelItem.queryParams,
-        relativeTo: this.activatedRoute
-      }
-
-      this.router.navigate(['.'], navigationExtras);
+      this.navigateToSelectedItem(this.currentSelection);
     }
     
     this.panelSelected.emit(panelItem);
   }
 
-  ngOnChanges() {
+  ngOnChanges(changes: SimpleChanges) {
     if (this.model) {
       this.panelItemsOnDisplay = this.model.navigationLinks;
     }
 
-    if (this.model && this.currentSelection) {
-      this.updateSubheader(this.currentSelection);
+    if (this.model && this.currentSelection && changes.currentSelection) {
+      this.updateSubheader(this.currentSelection, this.model.navigationLinks);
+      if (this.navigateOnClick) {
+        this.navigateToSelectedItem(this.currentSelection);
+      }
     }
   }
 
@@ -74,16 +72,35 @@ export class SdsSelectionPanelComponent implements OnChanges {
     this.currentSelection = this.mainParentOfCurrentSelection;
     this.isTopSection = true;
 
+    if (this.navigateOnClick) {
+      this.navigateToSelectedItem(this.currentSelection);
+    }
+
+    this.panelSelected.emit(this.currentSelection);
+
     $event.stopPropagation(); // Stop collapsible card from closing
   }
 
-  private updateSubheader(panelItem: NavigationLink) {
-    const parentLink = this.model.navigationLinks.find(link => link.id === panelItem.id);
+  private updateSubheader(selectedPanel: NavigationLink, allPanels: NavigationLink[], isTopSection = true, parentPanel?: NavigationLink) {
+    allPanels.forEach(panel => {
+      if (panel.id === selectedPanel.id) {
+        this.panelItemsOnDisplay = panel.children ? panel.children : allPanels;
+        this.mainParentOfCurrentSelection = panel.children && isTopSection ? panel : parentPanel;
+        this.isTopSection = panel.children ? false : isTopSection;
+        return;
+      } else if (panel.children) {
+        this.updateSubheader(selectedPanel, panel.children, false, parentPanel ? parentPanel : panel);
+      }
+    })
+  }
 
-    if (parentLink != null) {
-      this.mainParentOfCurrentSelection = parentLink;
+  navigateToSelectedItem(selectedPanel: NavigationLink) {
+    const navigationExtras: NavigationExtras = {
+      queryParams: selectedPanel.queryParams,
+      relativeTo: this.activatedRoute
     }
 
+    this.router.navigate(['.'], navigationExtras);
   }
 
 }

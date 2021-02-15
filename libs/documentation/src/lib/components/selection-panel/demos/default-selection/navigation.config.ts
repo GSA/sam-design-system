@@ -43,6 +43,3 @@ export let selectionPanelConfig: SideNavigationModel = {
     }
     ]
 };
-
-
-
