@@ -45,7 +45,7 @@ describe('SelectionPanelComponent', () => {
     component = fixture.componentInstance;
     component.title = inputValues.title;
     component.model = inputValues.model;
-    component.ngOnChanges();
+    component.ngOnChanges({});
     fixture.detectChanges();
   });
 
