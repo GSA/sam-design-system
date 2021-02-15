@@ -19,6 +19,7 @@ export class ExternalLinkDirective implements OnChanges {
   @HostBinding('attr.target') targetAttr = '';
   @HostBinding('attr.href') hrefAttr = '';
   @Input() href: string;
+  @Input() target: string;
   @Input() public hideIcon: boolean = false;
   private internalLinks = ['fsd.gov'];
 
@@ -30,6 +31,7 @@ export class ExternalLinkDirective implements OnChanges {
 
   public ngOnChanges() {
     this.hrefAttr = this.href;
+    this.targetAttr = this.target;
     if (!this.isExternalLink) {
       return;
     } else {
