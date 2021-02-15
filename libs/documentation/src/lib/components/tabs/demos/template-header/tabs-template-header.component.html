@@ -4,14 +4,9 @@
 <p class="margin-bottom-2"><code>import &#123; SdsTabsModule &#125; from '@gsa-sam/components';</code></p>
 
 <sds-tabs>
-  <sds-tab-panel [tabTemplateHeader]="tab1Header">
+  <sds-tab-panel [tabHeader]="tab1Header" ariaLabel="Tab1">
     <ng-template #tab1Header>
-      <div class="sds-tabs sds-tabs--wizard">
-        <div class="height-2 width-2 line-height-sans-1">
-          1
-        </div>
-        Get a Login.gov Account
-      </div>
+      <sds-icon [icon]="['bs', 'tablet']"></sds-icon>
     </ng-template>
     <span>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -21,14 +16,9 @@
     </span>
   </sds-tab-panel>
 
-  <sds-tab-panel [tabTemplateHeader]="tab2Header">
+  <sds-tab-panel [tabHeader]="tab2Header" ariaLabel="Tab2">
     <ng-template #tab2Header>
-      <div class="sds-tabs sds-tabs--wizard">
-        <div class="height-2 width-2 line-height-sans-1">
-          2
-        </div>
-        Request a DUNS Number
-      </div>
+      <sds-icon [icon]="['bs', 'file-excel']"></sds-icon>
     </ng-template>
     <span>
       Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
@@ -38,16 +28,10 @@
     </span>
   </sds-tab-panel>
 
-  <sds-tab-panel [tabTemplateHeader]="tab3Header">
+  <sds-tab-panel [tabHeader]="tab3Header" ariaLabel="Tab3">
     <ng-template #tab3Header>
-      <div class="sds-tabs sds-tabs--wizard">
-        <div class="height-2 width-2 line-height-sans-1">
-          3
-        </div>
-        Prepare Documentation
-      </div>
+      <sds-icon [icon]="['bs', 'table']"></sds-icon>
     </ng-template>
-
     <span>
       At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti 
       atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique 
@@ -56,50 +40,3 @@
     </span>
   </sds-tab-panel>
 </sds-tabs>
-
-<div class="grid-row margin-top-2">
-  <div class="grid-col-6">
-    <ul class="sds-tabs sds-tabs--wizard">
-      <li>
-        <a class="usa-link sds-tabs__link sds-active" href="#">
-          <button class="sds-button sds-button--circular sds-round sds-button--unstyled">
-            <div class="height-2 width-2 line-height-sans-1">
-              1
-            </div>
-          </button>
-          Get a Login.gov Account
-        </a>
-      </li>
-      <li>
-        <a class="usa-link sds-tabs__link" href="#">
-          <button class="sds-button sds-button--circular sds-round sds-button--unstyled">
-            <div class="height-2 width-2 line-height-sans-1">
-              2
-            </div>
-          </button>
-          Request a DUNS Number
-        </a>
-      </li>
-      <li>
-        <a class="usa-link sds-tabs__link" href="#">
-          <button class="sds-button sds-button--circular sds-round sds-button--unstyled">
-            <div class="height-2 width-2 line-height-sans-1">
-              3
-            </div>
-          </button>
-          Prepare Documentation
-        </a>
-      </li>
-      <li>
-        <a class="usa-link sds-tabs__link" href="#">
-          <button class="sds-button sds-button--circular sds-round sds-button--unstyled">
-            <div class="height-2 width-2 line-height-sans-1">
-              1
-            </div>
-          </button>
-          Review Requirements
-        </a>
-      </li>
-    </ul>
-  </div>
-</div>

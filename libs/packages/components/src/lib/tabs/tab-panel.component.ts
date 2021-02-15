@@ -18,17 +18,18 @@ export class TabPanelComponent {
   @Input() selected: boolean;
 
   /**
-   * Header text of the tabpanel
+   * Header content for the tab panel. May be a string or a template
    */
-  @Input() tabTextHeader: string;
-
-  /**
-   * Header template of the tabpanel. Will take precendance over tabTextHeader
-   */
-  @Input() tabTemplateHeader: TemplateRef<any>;
+  @Input() tabHeader: string | TemplateRef<any>;
 
   /**
    * Aria label for tab header
    */
   @Input() ariaLabel: string;
+
+  /**
+   * Whether this tab panel is disabled for selection
+   */
+  @Input() disabled: boolean;
+
 }

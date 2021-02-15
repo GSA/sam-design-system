@@ -25,13 +25,13 @@
 
     <div *ngIf="showCode" class="padding-bottom-2 border-bottom margin-bottom-2">
       <sds-tabs>
-        <sds-tab-panel [tabHeader]="'Source Code'">
+        <sds-tab-panel [tabTextHeader]="'Source Code'">
           <pre class="highlight"><code [highlight]="code"></code></pre>
         </sds-tab-panel>
-        <sds-tab-panel [tabHeader]="'Template Markup'">
+        <sds-tab-panel [tabTextHeader]="'Template Markup'">
           <pre class="highlight"><code [highlight]="markup"></code></pre>
         </sds-tab-panel>
-        <sds-tab-panel [tabHeader]="'Module'">
+        <sds-tab-panel [tabTextHeader]="'Module'">
           <pre class="highlight"><code [highlight]="module"></code></pre>
         </sds-tab-panel>
       </sds-tabs>
