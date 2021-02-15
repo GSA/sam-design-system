@@ -69,7 +69,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/free-brands-svg-icons": "^5.15.2",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
-    "@gsa-sam/sam-styles": "0.0.99",
+    "@gsa-sam/sam-styles": "0.0.100",
     "@ngx-formly/core": "^5.10.12",
     "@ngx-formly/schematics": "^5.10.12",
     "@nrwl/angular": "^10.4.10",
