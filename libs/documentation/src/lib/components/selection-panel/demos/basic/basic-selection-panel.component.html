@@ -1,7 +1,15 @@
+<div class="margin-bottom-2">
+  The base input requirements for a selection panel component is a <code>[model]</code> of type <code>SideNavigationModel</code>
+  and a <code>[title]</code> of type <code>string.</code>
 
-  <sds-selection-panel 
+  The input <code>[navigateOnClick]</code> is of type <code>boolean</code> and can be used to toggle on/off route navigation
+  when a panel item is selected.
+
+  An output event <code>(panelSelected)</code> is fired anytime a navigation item is selected with the selected <code>NavigationLink</code>
+</div>
+
+<sds-selection-panel 
   [model]="selectionPanelModel"
-  [currentSelection]="selectionPanelModel.navigationLinks[1]"
   [title]="title"
   [navigateOnClick]="false"
   (panelSelected)="onPanelSelection($event)">
