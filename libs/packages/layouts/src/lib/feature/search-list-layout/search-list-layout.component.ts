@@ -59,6 +59,8 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
    */
   @Input() configuration: SearchListConfiguration;
 
+  @Input() enableApiCall: boolean = true;
+
   /**
    * Filter information
    */
@@ -124,7 +126,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.configuration.currentValue) {
+    if (changes.configuration && changes.configuration.currentValue) {
       this.configuration = changes.configuration.currentValue;
       this.sortField = this.configuration.defaultSortValue;
       this.onSelectChange();
@@ -275,7 +277,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
       this.updateNavigation();
     }
 
-    if (this.filterData && this.service) {
+    if (this.filterData && this.service && this.enableApiCall) {
       setTimeout(() => {
         this.loading = true;
         this.service

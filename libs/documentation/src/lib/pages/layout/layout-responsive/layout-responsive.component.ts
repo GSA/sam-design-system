@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NavigationLink, SdsDialogRef } from '@gsa-sam/components';
-import { SearchListConfiguration } from '@gsa-sam/layouts';
+import { SearchListConfiguration, SearchListLayoutComponent } from '@gsa-sam/layouts';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { SdsFiltersComponent } from 'libs/packages/sam-formly/src/lib/formly-filters/sds-filters.component';
 import { BehaviorSubject } from 'rxjs';
@@ -12,7 +13,7 @@ import { navigationConfig } from '../navigate.config';
   templateUrl: './layout-responsive.component.html',
 })
 export class LayoutResponsiveComponent {
-  @ViewChild('resultList') resultList;
+  @ViewChild('resultList') resultList: SearchListLayoutComponent;
   @ViewChild('filters') filterComponent: SdsFiltersComponent;
 
   isMobileMode: boolean;
@@ -29,6 +30,8 @@ export class LayoutResponsiveComponent {
     selectionPanelModel: navigationConfig,
   };
   public filterPanelConfig;
+
+  private selectedDomain: NavigationLink;
 
   listConfig: SearchListConfiguration = {
     defaultSortValue: 'legalBusinessName',
@@ -61,7 +64,9 @@ export class LayoutResponsiveComponent {
 
   constructor(
     public service: DataService,
-    public filterService: FilterService
+    public filterService: FilterService,
+    public router: Router,
+    public activatedRoute: ActivatedRoute,
   ) {}
   ngOnInit() {
     this.fields = this.filterService.fields;
@@ -77,11 +82,6 @@ export class LayoutResponsiveComponent {
       options: this.options,
       isHistoryEnabled: true,
     };
-  }
-  ngAfterViewInit() {
-    this.filterChange$.subscribe((res) => {
-      this.resultList.updateFilter(res);
-    });
   }
 
   updateConfig(update: boolean) {
@@ -104,14 +104,22 @@ export class LayoutResponsiveComponent {
   onApplyFilter() {
     this.mobileDialog.close();
     this.mobileDialog = undefined;
+    this.router.navigate([], {
+      queryParams: this.selectedDomain.queryParams,
+      relativeTo: this.activatedRoute
+    }).then(() => {
+      this.resultList.updateSearchResultsModel({filterModel: this.filterModel});
+    })
     console.log('Applied Filters', this.filterModel);
   }
 
   onPanelSelection($event: NavigationLink) {
+    this.selectedDomain = $event;
     console.log('Selected Domain', $event);
   }
 
   onFilterChange($event) {
     console.log('Selected Filters', $event);
+    this.resultList.updateFilter($event);
   }
 }
