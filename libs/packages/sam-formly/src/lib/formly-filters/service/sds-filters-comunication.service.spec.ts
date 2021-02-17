@@ -8,12 +8,13 @@ describe('Service: SDSFormlyUpdateComunicationService', () => {
     });
 
     it('update filter should propagate', fakeAsync(() => {
-        let testData = 'someData'; service.filterUpdate
+        let testData = 'someData'; 
+        service.updateFilter(testData);
+        service.filterUpdate
             .subscribe(result => {
 
                 expect(result).toBe(testData);
-            });
-        service.updateFilter(testData);
+        });
 
     }));
 });
