@@ -1,3 +1,4 @@
+import { QueryParamsHandling } from '@angular/router';
 import { Observable } from 'rxjs';
 export class SearchParameters {
 
@@ -96,6 +97,8 @@ export class SearchListConfiguration {
      * Default values to use during initialization when there is none in url.
      */
     defaultFilterValue?: any = {};
+
+    queryParamsHandling?: QueryParamsHandling;
 
 }
 

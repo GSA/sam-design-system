@@ -199,7 +199,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: params,
-      // queryParamsHandling: "merge"
+      queryParamsHandling: this.configuration.queryParamsHandling,
     });
   }
 
