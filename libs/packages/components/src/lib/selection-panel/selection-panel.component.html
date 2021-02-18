@@ -34,7 +34,7 @@
     </ng-container>
 
     <ng-template #subPanel>
-      <ul class="usa-sidenav sds-list sds-list--subdomain">
+      <ul class="usa-sidenav sds-list">
         <li *ngFor="let panelItem of panelItemsOnDisplay" class="usa-sidenav__item">
           <ng-container [ngTemplateOutlet]="subPanelTemplate" [ngTemplateOutletContext]="{$implicit:panelItem}">
           </ng-container>
