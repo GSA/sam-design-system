@@ -39,11 +39,6 @@ export class SdsSelectionPanelComponent implements OnChanges {
 
   onPanelItemClick(panelItem: NavigationLink) {
     this.currentSelection = panelItem;
-    if (panelItem.children) {
-      this.panelItemsOnDisplay = panelItem.children;
-      this.isTopSection = false;
-      this.panelBody.nativeElement.focus();
-    }
 
     this.updateSubheader(panelItem, this.model.navigationLinks);
 
@@ -84,7 +79,7 @@ export class SdsSelectionPanelComponent implements OnChanges {
   private updateSubheader(selectedPanel: NavigationLink, allPanels: NavigationLink[], isTopSection = true, parentPanel?: NavigationLink) {
     allPanels.forEach(panel => {
       if (panel.id === selectedPanel.id) {
-        this.panelItemsOnDisplay = panel.children ? panel.children : allPanels;
+        this.panelItemsOnDisplay = panel.children && isTopSection ? panel.children : this.panelItemsOnDisplay;
         this.mainParentOfCurrentSelection = panel.children && isTopSection ? panel : parentPanel;
         this.isTopSection = panel.children ? false : isTopSection;
         return;
