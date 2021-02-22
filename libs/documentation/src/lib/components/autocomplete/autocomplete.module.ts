@@ -12,12 +12,23 @@ import {
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { AutocompleteBasicModule } from './demos/basic/autocomplete-basic.module';
 import { AutocompleteBasic } from './demos/basic/autocomplete-basic.component';
-import { AutocompleteOptional } from './demos/optional/autocomplete-optional.component';
 import { AutocompleteOptionalModule } from './demos/optional/autocomplete-optional.module';
 import { AutocompleteGroup } from './demos/group/autocomplete-group.component';
 import { AutocompleteGroupModule } from './demos/group/autocomplete-group.module';
 import { AutocompleteSelectGroup } from './demos/selectgroup/autocomplete-selectgroup.component';
 import { AutocompleteSelectGroupModule } from './demos/selectgroup/autocomplete-selectgroup.module';
+import { AutocompleteTagmode } from './demos/tagmode/autocomplete-tagmode.component';
+import { AutocompleteTagmodeModule } from './demos/tagmode/autocomplete-tagmode.module';
+import { AutocompleteMinCharacterModule } from './demos/mincharacter/autocomplete-mincharacter.module';
+import { AutocompleteMinCharacter } from './demos/mincharacter/autocomplete-mincharacter.component';
+import { AutocompleteInputReadOnly } from './demos/inputreadonly/autocomplete-inputreadonly.component';
+import { AutocompleteInputReadOnlyModule } from './demos/inputreadonly/autocomplete-inputreadonly.module';
+import { AutocompleteFreeText } from './demos/freetext/autocomplete-freetext.component';
+import { AutocompleteFreeTextModule } from './demos/freetext/autocomplete-freetext.module';
+import { AutocompleteDisableModule } from './demos/disable/autocomplete-disable.module';
+import { AutocompleteDisable } from './demos/disable/autocomplete-disable.component';
+import { AutocompleteCustomTemplate } from './demos/customtemplate/autocomplete-customtemplate.component';
+import { AutocompleteCustomTemplateModule } from './demos/customtemplate/autocomplete-customtemplate.module';
 
 declare var require: any;
 const DEMOS = {
@@ -46,13 +57,57 @@ const DEMOS = {
     path:
       'libs/documentation/src/lib/components/autocomplete/demos/selectgroup',
   },
-  optional: {
-    title: 'Optional Autocomplete',
-    type: AutocompleteOptional,
-    code: require('!!raw-loader!./demos/optional/autocomplete-optional.component'),
-    module: require('!!raw-loader!./demos/optional/autocomplete-optional.module'),
-    markup: require('!!raw-loader!./demos/optional/autocomplete-optional.component.html'),
-    path: 'libs/documentation/src/lib/components/autocomplete/demos/optional',
+  tagmode: {
+    title: 'Tagmode enabled on Autocomplete',
+    type: AutocompleteTagmode,
+    code: require('!!raw-loader!./demos/tagmode/autocomplete-tagmode.component'),
+    module: require('!!raw-loader!./demos/tagmode/autocomplete-tagmode.module'),
+    markup: require('!!raw-loader!./demos/tagmode/autocomplete-tagmode.component.html'),
+    path: 'libs/documentation/src/lib/components/autocomplete/demos/tagmode',
+  },
+  mincharacter: {
+    title: 'Minimum character count Autocomplete',
+    type: AutocompleteMinCharacter,
+    code: require('!!raw-loader!./demos/mincharacter/autocomplete-mincharacter.component'),
+    module: require('!!raw-loader!./demos/mincharacter/autocomplete-mincharacter.module'),
+    markup: require('!!raw-loader!./demos/mincharacter/autocomplete-mincharacter.component.html'),
+    path:
+      'libs/documentation/src/lib/components/autocomplete/demos/mincharacter',
+  },
+  inputreadonly: {
+    title: 'Autocomplete with input read only mode',
+    type: AutocompleteInputReadOnly,
+    code: require('!!raw-loader!./demos/inputreadonly/autocomplete-inputreadonly.component'),
+    module: require('!!raw-loader!./demos/inputreadonly/autocomplete-inputreadonly.module'),
+    markup: require('!!raw-loader!./demos/inputreadonly/autocomplete-inputreadonly.component.html'),
+    path:
+      'libs/documentation/src/lib/components/autocomplete/demos/inputreadonly',
+  },
+
+  freetext: {
+    title: 'Freetext Autocomplete',
+    type: AutocompleteFreeText,
+    code: require('!!raw-loader!./demos/freetext/autocomplete-freetext.component'),
+    module: require('!!raw-loader!./demos/freetext/autocomplete-freetext.module'),
+    markup: require('!!raw-loader!./demos/freetext/autocomplete-freetext.component.html'),
+    path: 'libs/documentation/src/lib/components/autocomplete/demos/freetext',
+  },
+  disable: {
+    title: 'Disable Autocomplete',
+    type: AutocompleteDisable,
+    code: require('!!raw-loader!./demos/disable/autocomplete-disable.component'),
+    module: require('!!raw-loader!./demos/disable/autocomplete-disable.module'),
+    markup: require('!!raw-loader!./demos/disable/autocomplete-disable.component.html'),
+    path: 'libs/documentation/src/lib/components/autocomplete/demos/disable',
+  },
+  customtemplate: {
+    title: 'Customtemplate Autocomplete',
+    type: AutocompleteCustomTemplate,
+    code: require('!!raw-loader!./demos/customtemplate/autocomplete-customtemplate.component'),
+    module: require('!!raw-loader!./demos/customtemplate/autocomplete-customtemplate.module'),
+    markup: require('!!raw-loader!./demos/customtemplate/autocomplete-customtemplate.component.html'),
+    path:
+      'libs/documentation/src/lib/components/autocomplete/demos/customtemplate',
   },
 };
 
@@ -87,6 +142,12 @@ export const ROUTES = [
     AutocompleteSelectGroupModule,
     AutocompleteBasicModule,
     AutocompleteOptionalModule,
+    AutocompleteTagmodeModule,
+    AutocompleteMinCharacterModule,
+    AutocompleteInputReadOnlyModule,
+    AutocompleteFreeTextModule,
+    AutocompleteDisableModule,
+    AutocompleteCustomTemplateModule,
   ],
 })
 export class AutocompleteModule {

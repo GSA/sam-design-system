@@ -1,0 +1,14 @@
+<div class="margin-bottom-4">
+  <h4 id="autoOptional4Label">Autocomplete with custom template</h4>
+  <p> <code> [suggestionTemplate]="temp" </code> is used to pass the custom template. </p>
+  <sds-autocomplete [service]="service" (ngModelChange)="changes($event)" [(ngModel)]="customTemplateModel"
+    [configuration]="customTemplateSettings" [suggestionTemplate]="temp" [selectedItemTemplate]="temp">
+  </sds-autocomplete>
+</div>
+
+<ng-template #temp let-item>
+  <span>
+    <span>Template</span>
+    {{item['name'] +': '+ item['subtext'] }}
+  </span>
+</ng-template>
