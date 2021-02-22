@@ -24,7 +24,7 @@
 
           <sds-selection-panel 
             [model]="navigationModel.selectionPanelModel"
-            [currentSelection]="navigationModel.selectionPanelModel.navigationLinks[1]"
+            [currentSelection]="selectedDomain"
             [title]="navigationModel.title"
             [navigateOnClick]="!isMobileMode"
             (panelSelected)="onPanelSelection($event)"
@@ -41,7 +41,7 @@
               <div class="sds-card__action sds-card__collapse"></div>
             </div>
             <div class="sds-card__body sds-card__body--accent-cool" id="filtersBody">
-              <sds-filters #filters [options]="filterPanelConfig.options" [isHistoryEnable]="!isMobileMode"
+              <sds-filters #filters [options]="filterPanelConfig.options"
                 [advancedFilters]="filterPanelConfig.advancedFilters" [form]="filterPanelConfig.form"
                 [fields]="filterPanelConfig.fields" [model]="filterPanelConfig.model" (filterChange)="onFilterChange($event)">
               </sds-filters>
@@ -58,7 +58,7 @@
     </div>
 
     <div class="desktop:grid-col-8 tablet-lg:grid-col-12 mobile-lg:grid-col-12">
-      <search-list-layout #resultList [service]="service" [configuration]="listConfig">
+      <search-list-layout #resultList [service]="service" [configuration]="listConfig" [isHistoryEnabled]="!mobileDialog" [enableApiCall]="!mobileDialog">
         <ng-template #resultContent let-item>
           <div>
             <result-item [model]="item"></result-item>
