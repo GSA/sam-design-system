@@ -32,6 +32,11 @@ export class TabsComponent implements OnInit, OnChanges, AfterContentInit {
   @Input() automaticActivation: boolean = false;
 
   /**
+   * CSS styling class for tabs
+   */
+  @Input() tabClass: string = 'sds-tabs--inverse';
+
+  /**
    * Emits an event whenever a tab is selected by the user containing the selected
    * TabPanelComponent. Please note that because this output contains `Change` suffix
    * to the `tabSelected` input, users can 2-way bind to the `selectedTab` input
