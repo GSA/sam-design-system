@@ -3,29 +3,20 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { SdsDialogModule } from '@gsa-sam/components';
 import {
-  DialogBasic,
+  DialogNested,
   DialogOverviewExampleDialog,
   NestedDialogComponent,
-  AlertComponent,
-  OfficialComponent
-} from './dialog-basic.component';
+} from './dialog-nested.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, SdsDialogModule],
-  exports: [DialogBasic],
-  bootstrap: [DialogBasic],
+  exports: [DialogNested],
+  bootstrap: [DialogNested],
   declarations: [
-    DialogBasic,
+    DialogNested,
     DialogOverviewExampleDialog,
     NestedDialogComponent,
-    AlertComponent,
-    OfficialComponent
   ],
-  entryComponents: [
-    DialogOverviewExampleDialog,
-    NestedDialogComponent,
-    AlertComponent,
-    OfficialComponent
-  ]
+  entryComponents: [DialogOverviewExampleDialog, NestedDialogComponent],
 })
-export class DialogBasicModule {}
+export class DialogNestedModule {}
