@@ -1,30 +1,27 @@
-<!-- <div class="sds-card sds-card--collapsible" [ngClass]="{'sds-card--collapsed': !panelExpanded}">
-  <div role="button" class="sds-card__header sds-card__header--action" [attr.aria-expanded]="panelExpanded"
-    aria-controls="panelBody" tabindex="0" [attr.aria-label]="title"
-    (click)="panelExpanded = !panelExpanded"
-    (keyup.enter)="panelExpanded = !panelExpanded"
-    >
-    <div class="sds-card__title">{{title}}<br />
-      <span *ngIf="currentSelection" class="sds-card__subtitle">
-        {{currentSelection.text}}
-      </span>
-    </div>
-
-    <div class="sds-card__action sds-card__collapse"></div>
-  </div>
-
-</div> -->
-
-<!-- Move focus here after an item has been selected so that next tab press moves to panel content-->
-<div #startOfPanelBody class="sr-only" tabindex="-1"></div>
 
 <div class="sds-card__body sds-card__body--accent-cool" id="panelBody">
   <ul class="usa-sidenav usa-sidenav--styled">
     <li *ngFor="let panelItem of panelItemsOnDisplay" class="usa-sidenav__item"
       [ngClass]="{'usa-current': currentSelection && panelItem.id === currentSelection.id}">
-      <a href="javascript:void(0);" (click)="onPanelItemClick(panelItem)">{{panelItem.text}}</a>
     </li>
   </ul>
 </div>
 
+
+<ul class="usa-sidenav sds-list">
+  <li *ngFor="let panelItem of model" class="usa-sidenav__item">
+    <ng-container [ngTemplateOutlet]="subPanelTemplate" [ngTemplateOutletContext]="{$implicit:panelItem}">
+    </ng-container>
+  </li>
+</ul>
+
+<ng-template #subPanelTemplate let-panelItem>
+  <a href="javascript:void(0);" (click)="onPanelItemClick(panelItem)">{{panelItem.text}}</a>
+  <ul *ngIf="panelItem.children" class="usa-sidenav__sublist">
+    <li *ngFor="let panelItem of panelItem.children" class="sidenav__item">
+      <ng-container [ngTemplateOutlet]="subPanelTemplate" [ngTemplateOutletContext]="{$implicit:panelItem}">
+      </ng-container>
+    </li>
+  </ul>
+</ng-template>
 <!-- <sds-sub-panel *ngIf="subPanels" [model]="subPanels"></sds-sub-panel> -->

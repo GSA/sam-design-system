@@ -9,14 +9,12 @@ import { NavigationLink, SideNavigationModel } from '../../side-navigation/model
 })
 export class SdsSelectionPanelNavigationModeComponent implements OnChanges {
 
-  @ViewChild('startOfPanelBody') panelBody: ElementRef;
-
   @Input()
   model: SideNavigationModel;
 
   @Input() title: string;
   
-  @Input() navigateOnClick = false;
+  @Input() navigateOnClick = true;
 
   @Input() currentSelection: NavigationLink;
 
