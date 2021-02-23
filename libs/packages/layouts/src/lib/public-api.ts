@@ -19,3 +19,5 @@ export * from './feature/side-toolbar/side-toolbar.component';
 export * from './feature/system-alert/system-alert.module';
 export * from './feature/system-alert/system-alert.component';
 export * from './feature/system-alert/model/alert.model';
+export * from './feature/slide-out/slide-out.component';
+export * from './feature/slide-out/slide-out.module';

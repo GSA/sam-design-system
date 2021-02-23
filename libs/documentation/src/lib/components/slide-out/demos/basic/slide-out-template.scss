@@ -1,0 +1,22 @@
+.container {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: black 1px solid;
+    margin-top: 2rem;
+    padding-left: 1rem;
+  }
+  .content{
+    padding: 0 1rem;
+
+    .result > a{
+      text-decoration: none;
+      &:hover{
+        text-decoration: underline;
+        color: #3f57a6;
+        cursor: pointer;
+      }
+    }
+  }
+
+}
