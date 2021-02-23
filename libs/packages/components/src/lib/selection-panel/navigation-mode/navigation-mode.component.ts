@@ -1,18 +1,20 @@
 import { Component, ElementRef, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { NavigationLink, SideNavigationModel } from '../side-navigation/model/side-navigation-model';
+import { NavigationLink, SideNavigationModel } from '../../side-navigation/model/side-navigation-model';
 
 @Component({
-  selector: 'sds-selection-panel',
-  templateUrl: './selection-panel.component.html',
-  styleUrls: ['./selection-panel.component.scss'],
+  selector: 'sds-selection-panel-navigation-mode',
+  templateUrl: './navigation-mode.component.html',
+  styleUrls: ['./navigation-mode.component.scss'],
 })
-export class SdsSelectionPanelComponent implements OnChanges {
+export class SdsSelectionPanelNavigationModeComponent implements OnChanges {
 
   @ViewChild('startOfPanelBody') panelBody: ElementRef;
 
   @Input()
   model: SideNavigationModel;
+
+  @Input() title: string;
   
   @Input() navigateOnClick = false;
 

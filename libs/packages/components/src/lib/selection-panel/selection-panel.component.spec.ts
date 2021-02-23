@@ -43,7 +43,6 @@ describe('SelectionPanelComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SdsSelectionPanelComponent);
     component = fixture.componentInstance;
-    component.title = inputValues.title;
     component.model = inputValues.model;
     component.ngOnChanges({});
     fixture.detectChanges();

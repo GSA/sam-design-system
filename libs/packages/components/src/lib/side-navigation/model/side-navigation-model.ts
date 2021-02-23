@@ -7,6 +7,7 @@ export class SideNavigationModel {
      * 
      */
     navigationLinks: NavigationLink[];
+    navigationMode?: 'SELECTION' | 'NAVIGATION' = 'SELECTION';
 }
 
 
