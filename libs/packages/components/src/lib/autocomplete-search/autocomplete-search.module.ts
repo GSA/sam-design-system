@@ -5,6 +5,7 @@ import { SDSAutocompleteSearchComponent } from './autocomplete-search.component'
 import { SDSClickOutsideModule } from '../click-outside/click-outside.module';
 import { SdsTabOutsideModule } from '../tab-outside/taboutside.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 @NgModule({
   imports: [
@@ -12,9 +13,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FormsModule,
     SDSClickOutsideModule,
     SdsTabOutsideModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    OverlayModule
   ],
   declarations: [SDSAutocompleteSearchComponent],
   exports: [SDSAutocompleteSearchComponent]
 })
-export class SdsAutocompleteSearchModule {}
+export class SdsAutocompleteSearchModule { }
+    
