@@ -11,6 +11,8 @@ import { DocumentationSourcePage } from '../shared/source-page/source.component'
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 import { BasicSelectionPanelComponent } from './demos/basic/basic-selection-panel.component';
 import { BasicSelectionPanelModule } from './demos/basic/basic-selection-panel.module';
+import { DefaultSelectionPanelComponent } from './demos/default-selection/default-selection-panel.component';
+import { DefaultSelectionPanelModule } from './demos/default-selection/default-selection-panel.module';
 
 declare var require: any;
 const DEMOS = {
@@ -21,6 +23,14 @@ const DEMOS = {
     module: require('!!raw-loader!./demos/basic/basic-selection-panel.module'),
     markup: require('!!raw-loader!./demos/basic/basic-selection-panel.component.html'),
     path: 'libs/documentation/src/lib/components/selection-panel/demos/basic',
+  },
+  defaultPanel: {
+    title: 'Pre-select Panel Item',
+    type: DefaultSelectionPanelComponent,
+    code: require('!!raw-loader!./demos/default-selection/default-selection-panel.component'),
+    module: require('!!raw-loader!./demos/default-selection/default-selection-panel.module'),
+    markup: require('!!raw-loader!./demos/default-selection/default-selection-panel.component.html'),
+    path: 'libs/documentation/src/lib/components/selection-panel/demos/default-selection',
   },
 };
 
@@ -52,6 +62,7 @@ export const ROUTES = [
     CommonModule,
     DocumentationComponentsSharedModule,
     BasicSelectionPanelModule,
+    DefaultSelectionPanelModule,
   ],
 })
 export class SelectionPanelModule {

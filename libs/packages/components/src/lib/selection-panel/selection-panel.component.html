@@ -19,19 +19,32 @@
 
     <div class="sds-card__action sds-card__collapse"></div>
   </div>
-  <div class="sds-card__body sds-card__body--accent-cool" id="panelBody" #panelBody tabindex="-1">
-    <ul class="usa-sidenav" 
-      [ngClass]="{'usa-sidenav--styled': isTopSection, 'sds-list sds-list--subdomain': !isTopSection}">
-      <li *ngFor="let panelItem of panelItemsOnDisplay" class="usa-sidenav__item"
-        [ngClass]="{'usa-current': isTopSection && currentSelection && panelItem.id === currentSelection.id}">
-        <a href="javascript:void(0);" 
-          [ngClass]="{
-            'text-secondary': !isTopSection && (!currentSelection || panelItem.id != currentSelection.id), 
-            'usa-link usa-link--active': !isTopSection && currentSelection && panelItem.id === currentSelection.id
-          }"
-          (click)="onPanelItemClick(panelItem)">
-          {{panelItem.text}}</a>
-      </li>
-    </ul>
+
+  <!-- Move focus here after an item has been selected so that next tab press moves to panel content-->
+  <div #startOfPanelBody class="sr-only" tabindex="-1"></div>
+
+  <div class="sds-card__body sds-card__body--accent-cool" id="panelBody">
+    <ng-container *ngIf="isTopSection; else subPanel">
+      <ul class="usa-sidenav usa-sidenav--styled">
+        <li *ngFor="let panelItem of panelItemsOnDisplay" class="usa-sidenav__item"
+          [ngClass]="{'usa-current': currentSelection && panelItem.id === currentSelection.id}">
+          <a href="javascript:void(0);" (click)="onPanelItemClick(panelItem)">{{panelItem.text}}</a>
+        </li>
+      </ul>
+    </ng-container>
+
+    <ng-template #subPanel>
+      <ul class="usa-sidenav sds-list sds-list--subdomain">
+        <li *ngFor="let panelItem of panelItemsOnDisplay" class="usa-sidenav__item">
+          <a href="javascript:void(0);" 
+            [ngClass]="{
+              'text-secondary': !currentSelection || panelItem.id != currentSelection.id, 
+              'usa-link usa-link--active': currentSelection && panelItem.id === currentSelection.id
+            }"
+            (click)="onPanelItemClick(panelItem)">
+            {{panelItem.text}}</a>
+        </li>
+      </ul>
+    </ng-template>
   </div>
 </div>
