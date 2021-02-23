@@ -47,6 +47,13 @@ export class ExternalLinkDirective implements OnChanges {
       }
       this.relAttr = 'noopener';
       this.targetAttr = '_blank';
+    }
+
+    /**
+     * Add aria label warning users the link will open a new window if the anchor tag
+     * does not already have an aria label
+     */
+    if (this.targetAttr === '_blank') {
       const currentAriaLabel = this.el.nativeElement.getAttribute('aria-label');
       if (!currentAriaLabel || currentAriaLabel.length === 0) {
         this.ariaLabel = `Open ${this.href} in a new window`;
