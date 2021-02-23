@@ -23,12 +23,15 @@ export class LayoutResponsiveComponent {
   filterModel = {};
   options;
   filtersExpanded: boolean = true;
+
   public filterChange$ = new BehaviorSubject<object>([]);
   public navigationModel = {
     title: 'Select Domain',
     selectionPanelModel: navigationConfig,
   };
   public filterPanelConfig;
+
+  selectedPanel: NavigationLink = this.navigationModel.selectionPanelModel.navigationLinks[1];
 
   listConfig: SearchListConfiguration = {
     defaultSortValue: 'legalBusinessName',
@@ -108,7 +111,13 @@ export class LayoutResponsiveComponent {
   }
 
   onPanelSelection($event: NavigationLink) {
+    this.selectedPanel = $event;
+    this.filtersExpanded = true;
     console.log('Selected Domain', $event);
+  }
+
+  onSubPanelClicked($event: NavigationLink) {
+    console.log('Sub Domain selected', $event);
   }
 
   onFilterChange($event) {

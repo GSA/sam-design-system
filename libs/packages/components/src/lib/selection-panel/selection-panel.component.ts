@@ -16,7 +16,7 @@ export class SdsSelectionPanelComponent implements OnChanges {
 
   @Input() title: string;
   
-  @Input() navigateOnClick = true;
+  @Input() navigateOnClick = false;
 
   @Input() currentSelection: NavigationLink;
 
@@ -25,12 +25,11 @@ export class SdsSelectionPanelComponent implements OnChanges {
   // list of items currently shown to user
   panelItemsOnDisplay: NavigationLink[];
 
+  subPanels: NavigationLink[];
 
   mainParentOfCurrentSelection: NavigationLink;
 
   panelExpanded = true;
-
-  isTopSection = true;
 
   constructor(
     private router: Router,
@@ -40,12 +39,13 @@ export class SdsSelectionPanelComponent implements OnChanges {
   onPanelItemClick(panelItem: NavigationLink) {
     this.currentSelection = panelItem;
 
-    this.updateSubheader(panelItem, this.model.navigationLinks);
+    this.subPanels = panelItem.children;
 
     if (this.navigateOnClick) {
       this.navigateToSelectedItem(this.currentSelection);
     }
     
+    this.panelExpanded = false;
     this.panelSelected.emit(panelItem);
   }
 
@@ -55,38 +55,12 @@ export class SdsSelectionPanelComponent implements OnChanges {
     }
 
     if (this.model && this.currentSelection && changes.currentSelection) {
-      this.updateSubheader(this.currentSelection, this.model.navigationLinks);
+      this.subPanels = this.currentSelection.children;
+      this.panelExpanded = false;
       if (this.navigateOnClick) {
         this.navigateToSelectedItem(this.currentSelection);
       }
     }
-  }
-
-  onMainPanelHeaderClicked($event: MouseEvent) {
-    this.panelItemsOnDisplay = this.model.navigationLinks;
-    this.currentSelection = this.mainParentOfCurrentSelection;
-    this.isTopSection = true;
-
-    if (this.navigateOnClick) {
-      this.navigateToSelectedItem(this.currentSelection);
-    }
-
-    this.panelSelected.emit(this.currentSelection);
-
-    $event.stopPropagation(); // Stop collapsible card from closing
-  }
-
-  private updateSubheader(selectedPanel: NavigationLink, allPanels: NavigationLink[], isTopSection = true, parentPanel?: NavigationLink) {
-    allPanels.forEach(panel => {
-      if (panel.id === selectedPanel.id) {
-        this.panelItemsOnDisplay = panel.children && isTopSection ? panel.children : this.panelItemsOnDisplay;
-        this.mainParentOfCurrentSelection = panel.children && isTopSection ? panel : parentPanel;
-        this.isTopSection = panel.children ? false : isTopSection;
-        return;
-      } else if (panel.children) {
-        this.updateSubheader(selectedPanel, panel.children, false, parentPanel ? parentPanel : panel);
-      }
-    })
   }
 
   navigateToSelectedItem(selectedPanel: NavigationLink) {
