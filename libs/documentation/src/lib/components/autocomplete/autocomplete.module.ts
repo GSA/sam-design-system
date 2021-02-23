@@ -12,7 +12,6 @@ import {
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { AutocompleteBasicModule } from './demos/basic/autocomplete-basic.module';
 import { AutocompleteBasic } from './demos/basic/autocomplete-basic.component';
-import { AutocompleteOptionalModule } from './demos/optional/autocomplete-optional.module';
 import { AutocompleteGroup } from './demos/group/autocomplete-group.component';
 import { AutocompleteGroupModule } from './demos/group/autocomplete-group.module';
 import { AutocompleteSelectGroup } from './demos/selectgroup/autocomplete-selectgroup.component';
@@ -141,7 +140,6 @@ export const ROUTES = [
     AutocompleteGroupModule,
     AutocompleteSelectGroupModule,
     AutocompleteBasicModule,
-    AutocompleteOptionalModule,
     AutocompleteTagmodeModule,
     AutocompleteMinCharacterModule,
     AutocompleteInputReadOnlyModule,
