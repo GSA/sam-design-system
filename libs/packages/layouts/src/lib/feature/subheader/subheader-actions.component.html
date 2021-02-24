@@ -2,7 +2,7 @@
 <span class="display-none desktop:display-inline-block">
   <button
     class="sds-button sds-button--labeled-icon actions-button"
-    [sdsMenuTriggerFor]="test"
+    [sdsMenuTriggerFor]="menu"
   >
     Actions
     <sds-icon [icon]="['bs', 'three-dots-vertical']" [size]="'lg'" class="ellipsis-icon"></sds-icon>
@@ -14,7 +14,7 @@
   <span class="display-none tablet-lg:display-inline-block">
     <button
       class="sds-button sds-button--circular actions-button"
-      [sdsMenuTriggerFor]="test"
+      [sdsMenuTriggerFor]="menu"
     >
       <sds-icon [icon]="['bs', 'three-dots-vertical']" [size]="'lg'" class="ellipsis-icon"></sds-icon>
       <span class="usa-sr-only">Toggle Actions Menu</span>
@@ -26,7 +26,7 @@
 <span class="tablet-lg:display-none">
   <button
   class="sds-button sds-button--circular actions-button margin-top-05 tablet:margin-top-0"
-    [sdsMenuTriggerFor]="test"
+    [sdsMenuTriggerFor]="menu"
   >
   <sds-icon [icon]="['bs', 'three-dots-vertical']" [size]="'lg'" class="ellipsis-icon"></sds-icon>
   <span class="usa-sr-only">Toggle Actions Menu</span>
@@ -34,7 +34,7 @@
 </span>
 
 <!-- Menu content -->
-<sds-menu #test="sdsMenu" xPosition="before" overlapTrigger="true">
+<sds-menu #menu="sdsMenu" xPosition="before" overlapTrigger="true">
   <!-- Menu header (optional) -->
   <sds-menu-header>Actions</sds-menu-header>
   <!-- Menu items -->
