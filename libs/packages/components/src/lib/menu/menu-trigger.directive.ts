@@ -37,7 +37,7 @@ import {
 })
 export class SdsMenuTriggerForDirective implements OnDestroy {
   /** ARIA haspopup for the menu trigger. */
-  @HostBinding('attr.aria-haspopup') ariaHasPopup = true;
+  // @HostBinding('attr.aria-haspopup') ariaHasPopup = true;
 
   /** ARIA expanded for the menu trigger. */
   @HostBinding('attr.aria-expanded')
@@ -206,7 +206,7 @@ export class SdsMenuTriggerForDirective implements OnDestroy {
       this.menu._resetAnimation();
       this._resetMenu();
     }
-    
+
   }
 
   /**
