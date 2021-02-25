@@ -37,9 +37,9 @@
               <div class="sds-card__action sds-card__collapse"></div>
             </div>
             
-            <div class="sds-card__body sds-card__body--accent-cool" id="panelBody">
+            <div class="sds-card__body sds-card__body--accent-cool">
               <sds-selection-panel 
-              [model]="navigationModel.selectionPanelModel"
+              [model]="navigationModel"
               [currentSelection]="selectedPanel"
               [navigateOnClick]="!isMobileMode"
               (panelSelected)="onPanelSelection($event)">
@@ -47,7 +47,7 @@
             </div>
           </div>
 
-          <div class="sds-card" *ngIf="selectedPanel.children">
+          <div class="sds-card" *ngIf="selectedPanel && selectedPanel.children">
             <div class="sds-card__body sds-card__body--accent-cool">
               <sds-sub-panel [model]="selectedPanel.children" (subPanelClicked)="onSubPanelClicked($event)"></sds-sub-panel>
             </div>

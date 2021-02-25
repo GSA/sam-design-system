@@ -14,6 +14,7 @@ export let selectionPanelConfig: SideNavigationModel = {
       , children: [
         {
           text: 'Regional Locations', queryParams: { 'item': 'Regional Locations' }, route: '/documentation/components/selection-panel/examples', id: 'linkgc2c4p1', mode: NavigationMode.INTERNAL,
+          
           children: [
             { text: 'Entity Information', queryParams: { 'item': 'Entity Information' }, route: '/documentation/components/selection-panel/examples', id: 'linkg1gc1c4p1', mode: NavigationMode.INTERNAL },
             {
@@ -25,6 +26,3 @@ export let selectionPanelConfig: SideNavigationModel = {
     }
   ]
 };
-
-
-

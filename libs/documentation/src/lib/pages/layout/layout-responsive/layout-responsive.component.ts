@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavigationLink, SdsDialogRef } from '@gsa-sam/components';
+import { NavigationLink, SdsDialogRef, SelectionPanelModel } from '@gsa-sam/components';
 import { SearchListConfiguration } from '@gsa-sam/layouts';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { SdsFiltersComponent } from 'libs/packages/sam-formly/src/lib/formly-filters/sds-filters.component';
@@ -25,13 +25,14 @@ export class LayoutResponsiveComponent {
   filtersExpanded: boolean = true;
 
   public filterChange$ = new BehaviorSubject<object>([]);
-  public navigationModel = {
-    title: 'Select Domain',
-    selectionPanelModel: navigationConfig,
-  };
+  public navigationModel: SelectionPanelModel = {
+    navigationLinks: navigationConfig.navigationLinks,
+    selectionMode: 'SELECTION'
+   };
+  
   public filterPanelConfig;
 
-  selectedPanel: NavigationLink = this.navigationModel.selectionPanelModel.navigationLinks[1];
+  selectedPanel: NavigationLink = this.navigationModel.navigationLinks[1];
 
   listConfig: SearchListConfiguration = {
     defaultSortValue: 'legalBusinessName',

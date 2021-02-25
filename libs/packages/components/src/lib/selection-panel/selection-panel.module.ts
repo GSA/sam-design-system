@@ -2,7 +2,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { SdsSelectionPanelComponent } from './selection-panel.component';
+import { SdsSelectionPanelComponent } from './selection-panel-wrapper/selection-panel.component';
 import { SdsSubPanelComponent } from './sub-panel/sub-panel.component';
 import { SdsSelectionPanelSelectionModeComponent } from './selection-mode/selection-mode.component';
 import { SdsSelectionPanelNavigationModeComponent } from './navigation-mode/navigation-mode.component';

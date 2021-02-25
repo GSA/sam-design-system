@@ -1,10 +1,6 @@
-<div class="sds-card__body sds-card__body--accent-cool" id="panelBody">
-  <ul class="usa-sidenav usa-sidenav--styled">
-    <li *ngFor="let panelItem of panelItemsOnDisplay" class="usa-sidenav__item"
-      [ngClass]="{'usa-current': currentSelection && panelItem.id === currentSelection.id}">
-      <a href="javascript:void(0);" (click)="onPanelItemClick(panelItem)">{{panelItem.text}}</a>
-    </li>
-  </ul>
-</div>
-
-<sds-sub-panel *ngIf="subPanels" [model]="subPanels"></sds-sub-panel>
+<ul class="usa-sidenav usa-sidenav--styled">
+  <li *ngFor="let panelItem of model.navigationLinks" class="usa-sidenav__item"
+    [ngClass]="{'usa-current': currentSelection && panelItem.id === currentSelection.id}">
+    <a href="javascript:void(0);" (click)="onPanelItemClick(panelItem)">{{panelItem.text}}</a>
+  </li>
+</ul>
