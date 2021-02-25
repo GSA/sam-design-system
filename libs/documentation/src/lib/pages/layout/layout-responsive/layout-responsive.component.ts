@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NavigationLink, SdsDialogRef, SelectionPanelModel } from '@gsa-sam/components';
 import { SearchListConfiguration } from '@gsa-sam/layouts';
 import { FormlyFieldConfig } from '@ngx-formly/core';
@@ -65,8 +66,11 @@ export class LayoutResponsiveComponent {
 
   constructor(
     public service: DataService,
-    public filterService: FilterService
+    public filterService: FilterService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
   ) {}
+
   ngOnInit() {
     this.fields = this.filterService.fields;
     this.filterModel = this.filterService.model;
@@ -115,13 +119,17 @@ export class LayoutResponsiveComponent {
     this.selectedPanel = $event;
     this.filtersExpanded = true;
     console.log('Selected Domain', $event);
+    this.router.navigate(
+      [], 
+      {queryParams: $event.queryParams, relativeTo: this.activatedRoute, queryParamsHandling: 'merge'}
+    );
   }
 
   onSubPanelClicked($event: NavigationLink) {
     console.log('Sub Domain selected', $event);
-  }
-
-  onFilterChange($event) {
-    console.log('Selected Filters', $event);
+    this.router.navigate(
+      [], 
+      {queryParams: $event.queryParams, relativeTo: this.activatedRoute, queryParamsHandling: 'merge'}
+    );
   }
 }

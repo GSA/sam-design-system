@@ -34,10 +34,8 @@ export class SdsSelectionPanelNavigationModeComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (this.model && this.currentSelection && changes.currentSelection) {
-      if (this.navigateOnClick) {
-        this.navigateToSelectedItem(this.currentSelection);
-      }
+    if (this.model && this.currentSelection && changes.currentSelection && this.navigateOnClick) {
+      this.navigateToSelectedItem(this.currentSelection);
     }
   }
 
