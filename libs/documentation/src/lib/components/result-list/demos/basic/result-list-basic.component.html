@@ -13,6 +13,11 @@
     [ngClass]="{ 'usa-button--active': items === defaultModel }">
     5 Item List
   </button>
+  <button (click)="updateTemplate()" class="usa-button usa-button--base"
+    [ngClass]="{ 'usa-button--active': items === templateMessageModel }">
+    Template Model
+  </button>
+
   <button (click)="items = initialModel" class="usa-button usa-button--base"
     [ngClass]="{ 'usa-button--active': items === null }">
     Initial Message
@@ -34,3 +39,29 @@
     Loading
   </button>
 </sds-page>
+
+
+<ng-template #templateModel let-item>
+  <div class="sds-card sds-card--bordered">
+    <div class="sds-card__header sds-card__header--center">
+      <div class="sds-card__icon margin-left-2">
+        <fa-icon [icon]="['sds', 'book']" [classes]="['search']" size="2x"></fa-icon>
+      </div>
+      <h2 class="sds-card__title padding-left-2 ">No Results found</h2>
+
+    </div>
+    <div class="sds-card__body">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+      <div class="margin-top-3">
+        <p>To View entity you must register. Please sign in</p>
+        <button class="usa-button">Sign In</button>
+      </div>
+
+      <div class="margin-top-3">
+        <p>We couldn't find a match for your search criteria</p>
+        <button class="usa-button usa-button--outline">Yes</button>
+        <button class="usa-button usa-button--outline">Go Back</button>
+      </div>
+    </div>
+  </div>
+</ng-template>

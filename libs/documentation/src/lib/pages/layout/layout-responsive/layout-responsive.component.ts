@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavigationLink, SdsDialogRef } from '@gsa-sam/components';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NavigationLink, SdsDialogRef, SelectionPanelModel } from '@gsa-sam/components';
 import { SearchListConfiguration } from '@gsa-sam/layouts';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { SdsFiltersComponent } from 'libs/packages/sam-formly/src/lib/formly-filters/sds-filters.component';
@@ -23,12 +24,16 @@ export class LayoutResponsiveComponent {
   filterModel = {};
   options;
   filtersExpanded: boolean = true;
+
   public filterChange$ = new BehaviorSubject<object>([]);
-  public navigationModel = {
-    title: 'Select Domain',
-    selectionPanelModel: navigationConfig,
-  };
+  public navigationModel: SelectionPanelModel = {
+    navigationLinks: navigationConfig.navigationLinks,
+    selectionMode: 'SELECTION'
+   };
+  
   public filterPanelConfig;
+
+  selectedPanel: NavigationLink = this.navigationModel.navigationLinks[1];
 
   listConfig: SearchListConfiguration = {
     defaultSortValue: 'legalBusinessName',
@@ -61,8 +66,11 @@ export class LayoutResponsiveComponent {
 
   constructor(
     public service: DataService,
-    public filterService: FilterService
+    public filterService: FilterService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
   ) {}
+
   ngOnInit() {
     this.fields = this.filterService.fields;
     this.filterModel = this.filterService.model;
@@ -108,10 +116,20 @@ export class LayoutResponsiveComponent {
   }
 
   onPanelSelection($event: NavigationLink) {
+    this.selectedPanel = $event;
+    this.filtersExpanded = true;
     console.log('Selected Domain', $event);
+    this.router.navigate(
+      [], 
+      {queryParams: $event.queryParams, relativeTo: this.activatedRoute, queryParamsHandling: 'merge'}
+    );
   }
 
-  onFilterChange($event) {
-    console.log('Selected Filters', $event);
+  onSubPanelClicked($event: NavigationLink) {
+    console.log('Sub Domain selected', $event);
+    this.router.navigate(
+      [], 
+      {queryParams: $event.queryParams, relativeTo: this.activatedRoute, queryParamsHandling: 'merge'}
+    );
   }
 }

@@ -11,6 +11,12 @@ import { DocumentationSourcePage } from '../shared/source-page/source.component'
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 import { BasicSelectionPanelComponent } from './demos/basic/basic-selection-panel.component';
 import { BasicSelectionPanelModule } from './demos/basic/basic-selection-panel.module';
+import { CollapsiblePanelComponent } from './demos/collapsible-panel/collapsible-panel.component';
+import { SelectionPanelCollapsibleModule } from './demos/collapsible-panel/collapsible-panel.module';
+import { DefaultSelectionPanelComponent } from './demos/default-selection/default-selection-panel.component';
+import { DefaultSelectionPanelModule } from './demos/default-selection/default-selection-panel.module';
+import { SelectionModeComponent } from './demos/selection-mode/selection-mode.component';
+import { SelectionModeSelectionPanelModule } from './demos/selection-mode/selection-mode.module';
 
 declare var require: any;
 const DEMOS = {
@@ -21,6 +27,30 @@ const DEMOS = {
     module: require('!!raw-loader!./demos/basic/basic-selection-panel.module'),
     markup: require('!!raw-loader!./demos/basic/basic-selection-panel.component.html'),
     path: 'libs/documentation/src/lib/components/selection-panel/demos/basic',
+  },
+  defaultPanel: {
+    title: 'Pre-select Panel Item',
+    type: DefaultSelectionPanelComponent,
+    code: require('!!raw-loader!./demos/default-selection/default-selection-panel.component'),
+    module: require('!!raw-loader!./demos/default-selection/default-selection-panel.module'),
+    markup: require('!!raw-loader!./demos/default-selection/default-selection-panel.component.html'),
+    path: 'libs/documentation/src/lib/components/selection-panel/demos/default-selection',
+  },
+  selectionMode: {
+    title: 'Selection Panel With Selection Mode',
+    type: SelectionModeComponent,
+    code: require('!!raw-loader!./demos/selection-mode/selection-mode.component'),
+    module: require('!!raw-loader!./demos/selection-mode/selection-mode.module'),
+    markup: require('!!raw-loader!./demos/selection-mode/selection-mode.component.html'),
+    path: 'libs/documentation/src/lib/components/selection-panel/demos/selection-mode',
+  },
+  collapsiblePanel: {
+    title: 'Selection Panel Collapsible Card',
+    type: CollapsiblePanelComponent,
+    code: require('!!raw-loader!./demos/collapsible-panel/collapsible-panel.component'),
+    module: require('!!raw-loader!./demos/collapsible-panel/collapsible-panel.module'),
+    markup: require('!!raw-loader!./demos/collapsible-panel/collapsible-panel.component.html'),
+    path: 'libs/documentation/src/lib/components/selection-panel/demos/collapsible-panel',
   },
 };
 
@@ -52,6 +82,9 @@ export const ROUTES = [
     CommonModule,
     DocumentationComponentsSharedModule,
     BasicSelectionPanelModule,
+    DefaultSelectionPanelModule,
+    SelectionModeSelectionPanelModule,
+    SelectionPanelCollapsibleModule,
   ],
 })
 export class SelectionPanelModule {

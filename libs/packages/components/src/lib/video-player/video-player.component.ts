@@ -1,4 +1,4 @@
-import { Component,ViewChild, Input,ElementRef, AfterViewInit, ViewEncapsulation } from '@angular/core';
+import { Component,ViewChild, Input,ElementRef, AfterViewInit, ViewEncapsulation, Renderer2 } from '@angular/core';
 import { GLOBAL_STRINGS } from 'accessible-html5-video-player/js/strings.js';
 import * as InitPxVideo from 'accessible-html5-video-player/js/px-video.js';
 import { VPInterface } from './video-player';
@@ -29,6 +29,12 @@ export class SdsVideoPlayerComponent implements AfterViewInit {
   private config: InitPxVideoConfig;
 
   @Input() crossorigin = "";
+
+  constructor(
+    private elementRef: ElementRef,
+    private renderer2: Renderer2,
+  ) {}
+
   ngAfterViewInit() {
     if (this.crossorigin) {
       const id = document.getElementById('videoPlayer');
@@ -44,10 +50,10 @@ export class SdsVideoPlayerComponent implements AfterViewInit {
 
     new InitPxVideo(this.config);
     this.video.nativeElement.setAttribute("style", "width:"+this.VPConfiguration.width+";");
-    
-  }
 
-  constructor() {
-}
+    const progressElement: HTMLProgressElement= this.elementRef.nativeElement.querySelector('progress');
+
+    this.renderer2.setAttribute(progressElement, 'aria-label', this.VPConfiguration.description + ' progress bar');
+  }
 
 }

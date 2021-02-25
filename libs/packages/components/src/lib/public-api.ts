@@ -70,9 +70,10 @@ export * from './truncate-text/truncate.text.module';
 export * from './video-player/video-player.component';
 export * from './icon/icon.component';
 export * from './icon/icon.module';
-export * from './selection-panel/selection-panel.component';
-
+export * from './selection-panel/selection-panel-wrapper/selection-panel.component';
+export * from './selection-panel/sub-panel/sub-panel.component';
 export * from './selection-panel/selection-panel.module';
+export * from './selection-panel/model/selection-panel.model';
 export * from './tabs/tabs.module';
 export * from './tabs/tabs.component';
 export * from './tabs/tab-panel.component';

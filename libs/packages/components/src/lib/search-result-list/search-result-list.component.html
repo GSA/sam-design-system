@@ -18,7 +18,7 @@
 </ng-container> -->
 <div aria-live="polite" aria-atomic="true">
   <ng-container *ngIf="!customResultsTemplate">
-      <ng-container
+    <ng-container
       *ngIf="(updateModel == null || (!updateModel?.metadata?.messages && updateModel?.results?.length === 0))">
       <ng-container *ngIf="!initialLoad">
         <div class="sds-card sds-card--vertical sds-card--shadowed sds-card--bordered">
@@ -50,31 +50,34 @@
 
 
     <ng-container *ngIf="updateModel?.metadata?.messages">
-      <div *ngFor="let msg of updateModel.metadata.messages"
-        class="sds-card sds-card--shadowed sds-card--bordered" [ngClass]="[(msg.type !== 'loading') ? 'sds-card--vertical': '', msg.classes ? msg.classes : '']">
-        <ng-container *ngIf="msg.type !== 'loading' else loading">
-          <div class="sds-card__header">
-            <sds-icon
-              [icon]="(msg.type ==='error') ?  ['sds', 'alert-error'] :( (msg.type ==='info') ? ['bs', 'info-circle'] :( (msg.type ==='initial') ? ['bs', 'arrow-left-circle-fill']: ['bs', 'search']))"
-              [size]="'5x'">
-            </sds-icon>
-          </div>
-          <div class="sds-card__body margin-2">
-            <h1 class="sds-card__title">{{msg.title}}</h1>
-            <p [innerHTML]="msg.message"></p>
-            <div class="sds-card__buttons">
-              <button *ngFor="let button of msg.buttons" class="usa-button"
-                [ngClass]="button.classes ? button.classes : 'usa-button--outline'" (click)="button.action()">
-                {{button.text}}
-              </button>
+      <ng-container *ngIf="!isTemplate()">
+        <ng-container *ngTemplateOutlet="updateModel?.metadata?.messages"></ng-container>
+      </ng-container>
+      <ng-container *ngIf="isTemplate()">
+        <div *ngFor="let msg of updateModel.metadata.messages" class="sds-card sds-card--shadowed sds-card--bordered"
+          [ngClass]="[(msg.type !== 'loading') ? 'sds-card--vertical': '', msg.classes ? msg.classes : '']">
+          <ng-container *ngIf="msg.type !== 'loading' else loading">
+            <div class="sds-card__header">
+              <sds-icon
+                [icon]="(msg.type ==='error') ?  ['sds', 'alert-error'] :( (msg.type ==='info') ? ['bs', 'info-circle'] :( (msg.type ==='initial') ? ['bs', 'arrow-left-circle-fill']: ['bs', 'search']))"
+                [size]="'5x'">
+              </sds-icon>
             </div>
-          </div>
-        </ng-container>
-      </div>
+            <div class="sds-card__body margin-2">
+              <h1 class="sds-card__title">{{msg.title}}</h1>
+              <p [innerHTML]="msg.message"></p>
+              <div class="sds-card__buttons">
+                <button *ngFor="let button of msg.buttons" class="usa-button"
+                  [ngClass]="button.classes ? button.classes : 'usa-button--outline'" (click)="button.action()">
+                  {{button.text}}
+                </button>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </ng-container>
     </ng-container>
   </ng-container>
-
-
 </div>
 
 <ng-template #loading>

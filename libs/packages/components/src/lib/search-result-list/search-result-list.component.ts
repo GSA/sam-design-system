@@ -3,14 +3,14 @@ import {
   Input,
   ContentChild,
   TemplateRef,
-  OnInit
+  OnInit,
 } from '@angular/core';
 import { SearchModel } from './model/search-results.model';
 import { Location } from '@angular/common';
 @Component({
   selector: 'sds-search-result-list',
   templateUrl: './search-result-list.component.html',
-  styleUrls: ['./search-result-list.component.scss']
+  styleUrls: ['./search-result-list.component.scss'],
 })
 export class SdsSearchResultListComponent implements OnInit {
   public updateModel = new SearchModel();
@@ -32,7 +32,8 @@ export class SdsSearchResultListComponent implements OnInit {
     } else {
       this.updateModel = value;
     }
-    if (this.updateModel.results.length > 0) this.initialLoad = false;
+    if (this.updateModel && this.updateModel.results.length > 0)
+      this.initialLoad = false;
   }
 
   /**
@@ -40,7 +41,7 @@ export class SdsSearchResultListComponent implements OnInit {
    */
   @Input() divider = true;
 
-  constructor(private _location: Location) { }
+  constructor(private _location: Location) {}
 
   ngOnInit() {
     this.initialLoad = true;
@@ -53,5 +54,10 @@ export class SdsSearchResultListComponent implements OnInit {
 
   goBack() {
     this._location.back();
+  }
+  isTemplate() {
+    if (this.updateModel && this.updateModel.metadata) {
+      return Array.isArray(this.updateModel.metadata.messages);
+    }
   }
 }

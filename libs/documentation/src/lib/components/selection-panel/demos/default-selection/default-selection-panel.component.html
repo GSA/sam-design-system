@@ -1,0 +1,11 @@
+<div class="margin-bottom-2">
+  The input <code>[currentSelection]</code> allows users to pre-select a panel item during initialization.
+  If the selected navigation link contains children, then the children items will be displayed.
+</div>
+
+<sds-selection-panel 
+[model]="selectionPanelModel"
+[currentSelection]="currentSelectedPanel">
+</sds-selection-panel>
+
+<button class="usa-button usa-button--secondary margin-top-1" (click)="onSelectExclusionsClicked()">Select Contract Data</button>

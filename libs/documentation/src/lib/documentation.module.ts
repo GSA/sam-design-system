@@ -208,12 +208,15 @@ import { FormlyFormsComponent } from './pages/formly-forms/formly-forms.componen
 import { FormlyConditionalModule } from './pages/formly-conditional/formly-conditional.module';
 import { FormlyConditionalComponent } from './pages/formly-conditional/formly-conditional.component';
 import { LayoutResponsiveComponent } from './pages/layout/layout-responsive/layout-responsive.component';
+import { RoadmapComponent } from './pages/roadmap/roadmap.component';
+import { RoadmapModule } from './pages/roadmap/roadmap.module';
 
 declare var require: any;
 
 export const ROUTES: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'components/header' },
   { path: 'overview', component: OverviewComponent },
+  { path: 'roadmap', component: RoadmapComponent },
   { path: 'introduction', component: IntroductionComponent },
   { path: 'layout', component: ResultsLayoutComponent },
   { path: 'layout-responsive', component: LayoutResponsiveComponent },
@@ -339,6 +342,7 @@ export const ROUTES: Routes = [
     ExternalLinkModule,
     ToastsModule,
     ReadonlyModule,
+    RoadmapModule
   ],
 })
 export class DocumentationModule {
