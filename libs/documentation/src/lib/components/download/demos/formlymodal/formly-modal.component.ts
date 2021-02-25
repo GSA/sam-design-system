@@ -53,6 +53,86 @@ export class FormlyDialog {
         },
       ],
     },
+    {
+      key: 'entity.title',
+      type: 'input',
+      templateOptions: {
+        label: 'Entity Name',
+        placeholder: 'Acme Corporation',
+        description: 'Enter the name of your entity.',
+        required: true,
+      },
+    },
+    {
+      key: 'entity.title',
+      type: 'input',
+      templateOptions: {
+        label: 'Entity Name',
+        placeholder: 'Acme Corporation',
+        description: 'Enter the name of your entity.',
+        required: true,
+      },
+    },
+    {
+      key: 'entity.title',
+      type: 'input',
+      templateOptions: {
+        label: 'Entity Name',
+        placeholder: 'Acme Corporation',
+        description: 'Enter the name of your entity.',
+        required: true,
+      },
+    },
+    {
+      key: 'entity.title',
+      type: 'input',
+      templateOptions: {
+        label: 'Entity Name',
+        placeholder: 'Acme Corporation',
+        description: 'Enter the name of your entity.',
+        required: true,
+      },
+    },
+    {
+      key: 'entity.title',
+      type: 'input',
+      templateOptions: {
+        label: 'Entity Name',
+        placeholder: 'Acme Corporation',
+        description: 'Enter the name of your entity.',
+        required: true,
+      },
+    },
+    {
+      key: 'entity.title',
+      type: 'input',
+      templateOptions: {
+        label: 'Entity Name',
+        placeholder: 'Acme Corporation',
+        description: 'Enter the name of your entity.',
+        required: true,
+      },
+    },
+    {
+      key: 'entity.title',
+      type: 'input',
+      templateOptions: {
+        label: 'Entity Name',
+        placeholder: 'Acme Corporation',
+        description: 'Enter the name of your entity.',
+        required: true,
+      },
+    },
+    {
+      key: 'entity.title',
+      type: 'input',
+      templateOptions: {
+        label: 'Entity Name',
+        placeholder: 'Acme Corporation',
+        description: 'Enter the name of your entity.',
+        required: true,
+      },
+    },
   ];
   constructor(
     public service: AutocompleteSampleDataService,
