@@ -23,16 +23,22 @@
     </div>
   </div>
 </div>
-<div class="grid-row" *ngIf="!loading else loadingScreen">
+<div class="grid-row">
   <div class="grid-col-12">
     <sds-search-result-list [model]="items" [customResultsTemplate]="customResultsTemplate">
-      <ng-template #resultContent let-item>
-        <ng-container *ngTemplateOutlet="resultContentTemplate,
-                context: { $implicit: item }"></ng-container>
-      </ng-template>
+      <ng-container *ngIf="!loading">
+        <ng-template #resultContent let-item>
+          <ng-container *ngTemplateOutlet=" resultContentTemplate, context: { $implicit: item }">
+          </ng-container>
+        </ng-template>
+      </ng-container>
+      <ng-container *ngIf="loading">
+        <ng-container *ngTemplateOutlet="loadingScreen"></ng-container>
+      </ng-container>
     </sds-search-result-list>
-    <sds-pagination *ngIf="items?.length" [paginationConfiguration]="bottom" [(page)]="page"
-      (pageChange)="paginationChange.next($event)"></sds-pagination>
+    <sds-pagination *ngIf="!loading && items?.length" [paginationConfiguration]="bottom" [(page)]="page"
+      (pageChange)="paginationChange.next($event)">
+    </sds-pagination>
   </div>
 </div>
 
