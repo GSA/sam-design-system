@@ -7,6 +7,7 @@ import {
   Input,
   ViewContainerRef,
   OnChanges,
+  AfterViewInit,
 } from '@angular/core';
 
 import { isPlatformBrowser } from '@angular/common';
@@ -18,8 +19,13 @@ export class ExternalLinkDirective implements OnChanges {
   @HostBinding('attr.rel') relAttr = '';
   @HostBinding('attr.target') targetAttr = '';
   @HostBinding('attr.href') hrefAttr = '';
+  @HostBinding('attr.aria-label') ariaLabel = '';
+
+
   @Input() href: string;
   @Input() target: string;
+
+
   @Input() public hideIcon: boolean = false;
   private internalLinks = ['fsd.gov'];
 
@@ -32,6 +38,7 @@ export class ExternalLinkDirective implements OnChanges {
   public ngOnChanges() {
     this.hrefAttr = this.href;
     this.targetAttr = this.target;
+
     if (!this.isExternalLink) {
       return;
     } else {
@@ -40,6 +47,17 @@ export class ExternalLinkDirective implements OnChanges {
       }
       this.relAttr = 'noopener';
       this.targetAttr = '_blank';
+    }
+
+    /**
+     * Add aria label warning users the link will open a new window if the anchor tag
+     * does not already have an aria label
+     */
+    if (this.targetAttr === '_blank') {
+      const currentAriaLabel = this.el.nativeElement.getAttribute('aria-label');
+      if (!currentAriaLabel || currentAriaLabel.length === 0) {
+        this.ariaLabel = `Open ${this.href} in a new window`;
+      }
     }
   }
 

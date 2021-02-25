@@ -31,6 +31,7 @@
 .px-video-progress {
   width: 100%;
   height: 10px;
+  cursor: pointer;
 }
 .px-video-progress[value] {
   /* Reset the default appearance */
@@ -304,6 +305,7 @@
   border-radius: 3px;
   color: #fff;
   width: auto;
+  bottom: 20px;
 }
 .px-timetip:after {
   top: 100%;

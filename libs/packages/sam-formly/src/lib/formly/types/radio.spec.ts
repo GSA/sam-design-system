@@ -2,7 +2,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TestBed, ComponentFixture, async, fakeAsync, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Component, ViewChild } from '@angular/core';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule, FormlyForm } from '@ngx-formly/core';
 import { FormlySelectModule } from '@ngx-formly/core/select';
 import { FormlyFieldRadioComponent } from './radio';
@@ -28,6 +28,7 @@ describe('Formly Field Radio Component', () => {
         NoopAnimationsModule,
         ReactiveFormsModule,
         FormlySelectModule,
+        FormsModule,
         FormlyModule.forRoot({
           types: [
             {

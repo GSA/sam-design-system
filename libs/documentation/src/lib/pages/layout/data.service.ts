@@ -72,7 +72,7 @@ export class DataService {
       return of({
         items: this.data.slice(start, end),
         totalItems: this.data.length,
-      }).pipe(delay(5000));
+      }).pipe(delay(2000));
     } else {
       return of({
         items: [],
