@@ -1,0 +1,27 @@
+.roadmap-intro{
+  font-size: 1.25rem; line-height: 1.6; font-weight: 300; margin-top: 0.5rem;
+}
+.roadmap-featues-container{
+  margin-top: 2rem;
+}
+.section-label {
+  margin-top: 1rem;
+
+  &:first-of-type {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+.top-divider {
+  margin-bottom: 0.25rem;
+}
+
+.feature-div {
+  display: flex;
+  border-top: #e6e6e6 solid 1px;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  align-items: center;
+  margin-top: 0.25rem;
+}

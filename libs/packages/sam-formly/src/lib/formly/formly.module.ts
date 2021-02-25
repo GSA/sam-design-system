@@ -1,6 +1,6 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   FormlyModule,
   FormlyFieldConfig,
@@ -170,6 +170,7 @@ export const DATE_FORMAT: MatDateFormats = {
     ReactiveFormsModule,
     FormlySelectModule,
     SdsReadonlyModule,
+    FormsModule,
     FormlyModule.forChild(FORMLY_CONFIG),
     FormlyModule.forRoot({
       validationMessages: [

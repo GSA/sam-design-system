@@ -4,20 +4,17 @@ import { FieldType } from '@ngx-formly/core';
 @Component({
   selector: 'sds-formly-field-radio',
   template: `
-    <div class="usa-radio" [id]="id">
-      <div
+    <form class="usa-radio" [id]="id" role="radiogroup">
+      <ng-container
         *ngFor="
           let option of to.options | formlySelectOptions: field | async;
-          let i = index
-        "
-      >
+          let i = index">
         <input
           type="radio"
           [id]="id + '_' + i"
           class="usa-radio__input"
-          [attr.name]="id"
+          [name]="id"
           [class.usa-input--error]="showError"
-          [attr.value]="option.value"
           [value]="option.value"
           [formControl]="formControl"
           [formlyAttributes]="field"
@@ -25,8 +22,8 @@ import { FieldType } from '@ngx-formly/core';
         <label class="usa-radio__label" [for]="id + '_' + i">
           {{ option.label }}
         </label>
-      </div>
-    </div>
+      </ng-container>
+    </form>
   `,
 })
 export class FormlyFieldRadioComponent extends FieldType {
