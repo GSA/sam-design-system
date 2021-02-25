@@ -26,14 +26,16 @@
 <div class="grid-row">
   <div class="grid-col-12">
     <sds-search-result-list [model]="items" [customResultsTemplate]="customResultsTemplate">
-      <ng-container *ngIf="!loading">
+      <ng-container>
         <ng-template #resultContent let-item>
-          <ng-container *ngTemplateOutlet=" resultContentTemplate, context: { $implicit: item }">
-          </ng-container>
+          <div *ngIf="loading">
+            <ng-container *ngTemplateOutlet="loadingScreen"></ng-container>
+          </div>
+          <div *ngIf="!loading">
+            <ng-container *ngTemplateOutlet=" resultContentTemplate, context: { $implicit: item }">
+            </ng-container>
+          </div>
         </ng-template>
-      </ng-container>
-      <ng-container *ngIf="loading">
-        <ng-container *ngTemplateOutlet="loadingScreen"></ng-container>
       </ng-container>
     </sds-search-result-list>
     <sds-pagination *ngIf="!loading && items?.length" [paginationConfiguration]="bottom" [(page)]="page"
