@@ -12,6 +12,10 @@ import { TabsBasicComponent } from "./demos/basic/tabs-basic.component";
 import { TabsBasicModule } from "./demos/basic/tabs-basic.module";
 import { TabsDisabledComponent } from "./demos/disabled/tabs-disabled.component";
 import { TabsDisabledModule } from "./demos/disabled/tabs-disabled.module";
+import { DynamicTabsComponet } from "./demos/dynamic-tabs/dynamic-tabs.component";
+import { DynamicTabsModule } from "./demos/dynamic-tabs/dynamic-tabs.module";
+import { TabsStylingComponent } from "./demos/styling/tabs-styling.component";
+import { TabsStylingModule } from "./demos/styling/tabs-styling.module";
 import { TabsTemplateHeaderComponent } from "./demos/template-header/tabs-template-header.component";
 import { TabsTemplateHeaderModule } from "./demos/template-header/tabs-template-header.module";
 
@@ -48,6 +52,22 @@ const DEMOS = {
     markup: require('!!raw-loader!./demos/auto-activate/tabs-auto-activate.component.html'),
     module: require('!!raw-loader!./demos/auto-activate/tabs-auto-activate.module.ts'),
     path: 'libs/documentation/src/lib/components/tabs/demos/auto-activate',
+  },
+  dynamicTabs: {
+    title: 'Dynamically Generate Tabs',
+    type: DynamicTabsComponet,
+    code: require('!!raw-loader!./demos/dynamic-tabs/dynamic-tabs.component'),
+    markup: require('!!raw-loader!./demos/dynamic-tabs/dynamic-tabs.component.html'),
+    module: require('!!raw-loader!./demos/dynamic-tabs/dynamic-tabs.module.ts'),
+    path: 'libs/documentation/src/lib/components/tabs/demos/dynamic-tabs',
+  },
+  tabsClass: {
+    title: 'Custom Styling Tabs',
+    type: TabsStylingComponent,
+    code: require('!!raw-loader!./demos/styling/tabs-styling.component'),
+    markup: require('!!raw-loader!./demos/styling/tabs-styling.component.html'),
+    module: require('!!raw-loader!./demos/styling/tabs-styling.module.ts'),
+    path: 'libs/documentation/src/lib/components/tabs/demos/styling',
   }
 };
 
@@ -82,6 +102,8 @@ export const ROUTES = [
     TabsTemplateHeaderModule,
     TabsDisabledModule,
     TabsAutoActivateModule,
+    DynamicTabsModule,
+    TabsStylingModule,
   ]
 })
 export class TabsModule {
