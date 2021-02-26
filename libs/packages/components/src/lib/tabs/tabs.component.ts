@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewInit, Component, ContentChildren, EventEmitter, Input, OnChanges, OnInit, Output, QueryList, SimpleChanges, TemplateRef } from "@angular/core";
+import { AfterContentInit, AfterViewInit, ChangeDetectorRef, Component, ContentChildren, EventEmitter, Input, OnChanges, OnInit, Output, QueryList, SimpleChanges, TemplateRef } from "@angular/core";
 import { TabPanelComponent } from "./tab-panel.component";
 
 /** CONSTANTS
@@ -34,7 +34,7 @@ export class TabsComponent implements OnInit, OnChanges, AfterContentInit {
   /**
    * CSS styling class for tabs
    */
-  @Input() tabClass: string = 'sds-tabs--inverse';
+  @Input() tabClass: string = 'sds-tabs--default';
 
   /**
    * Emits an event whenever a tab is selected by the user containing the selected
@@ -109,13 +109,13 @@ export class TabsComponent implements OnInit, OnChanges, AfterContentInit {
         break;
     }
 
-    if (this.automaticActivation) {
-      this.changeSelectedTabPanel(this.focusedTab);
-    }
-
     // Move focus to newly selected panel
     $event.target.parentElement.children[selectedTabIndex].focus();
     this.focusedTab = tabPanelArray[selectedTabIndex];
+
+    if (this.automaticActivation) {
+      this.changeSelectedTabPanel(this.focusedTab);
+    }
   }
 
   isObj(obj: any) {
