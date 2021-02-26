@@ -110,12 +110,21 @@ modulesInfo.forEach((value, demoModule) => {
   stackblitzData.files.push({name: 'src/app.module.ts', source: appModule(stackblitzData)})
   stackblitzData.files.push({name: 'src/app.component.ts', source: appComponent(stackblitzData)});
   for (const file of demoFiles) {
-
     const destFile = path.basename(file);
     try {
       stackblitzData.files.push({name: `src/app/${destFile}`, source: fs.readFileSync(file).toString()});
     } catch (exception) {
       console.log(file);
+    }
+
+    // Look for service folders and add those in as well to the demo
+    const serviceFolder = path.normalize(root + '/' + demoFolder + '/../services');
+    if (fs.existsSync(serviceFolder)) {
+      const serviceFiles = glob.sync(path.join(serviceFolder, '*'), {});
+      for (const serviceFile of serviceFiles) {
+        const destServiceFile = path.basename(serviceFile);
+        stackblitzData.files.push({name: `src/services/${destServiceFile}`, source: fs.readFileSync(serviceFile).toString()});
+      }
     }
   }
   fs.ensureDirSync(destinationFolder);

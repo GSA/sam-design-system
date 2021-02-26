@@ -28,6 +28,8 @@ import { AutocompleteDisableModule } from './demos/disable/autocomplete-disable.
 import { AutocompleteDisable } from './demos/disable/autocomplete-disable.component';
 import { AutocompleteCustomTemplate } from './demos/customtemplate/autocomplete-customtemplate.component';
 import { AutocompleteCustomTemplateModule } from './demos/customtemplate/autocomplete-customtemplate.module';
+import { AutocompleteAriaLabelComponent } from './demos/aria-label/autocomplete-aria-label.component';
+import { AutocompleteAriaLabelModule } from './demos/aria-label/autocomplete-aria-label.module';
 
 declare var require: any;
 const DEMOS = {
@@ -108,6 +110,15 @@ const DEMOS = {
     path:
       'libs/documentation/src/lib/components/autocomplete/demos/customtemplate',
   },
+  ariaLabel: {
+    title: 'Aria Label Autocomplete',
+    type: AutocompleteAriaLabelComponent,
+    code: require('!!raw-loader!./demos/aria-label/autocomplete-aria-label.component'),
+    module: require('!!raw-loader!./demos/aria-label/autocomplete-aria-label.module'),
+    markup: require('!!raw-loader!./demos/aria-label/autocomplete-aria-label.component.html'),
+    path:
+      'libs/documentation/src/lib/components/autocomplete/demos/aria-label',
+  },
 };
 
 export const ROUTES = [
@@ -146,6 +157,7 @@ export const ROUTES = [
     AutocompleteFreeTextModule,
     AutocompleteDisableModule,
     AutocompleteCustomTemplateModule,
+    AutocompleteAriaLabelModule,
   ],
 })
 export class AutocompleteModule {
