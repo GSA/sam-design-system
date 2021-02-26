@@ -4,7 +4,7 @@
     to use when describing the autocomplete. If ariaLabelText is not provided, then the labelText
     will be used for aria label value.
   </p>
-  <sds-autocomplete [service]="service" (ngModelChange)="changes($event)" [(ngModel)]="model" [configuration]="settings">
+  <sds-autocomplete [service]="service" [(ngModel)]="model" [configuration]="settings">
   </sds-autocomplete>
 </div>
 {{model| json}}
