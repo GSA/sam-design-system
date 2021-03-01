@@ -40,6 +40,11 @@ export class FooterLink implements INavigationLink {
    * Navigation Route
    */
   route: string;
+
+  /**
+   * Hide external link icon
+   */
+  hideIcon?: boolean = false;
 }
 
 export interface FooterLogo {
@@ -62,8 +67,8 @@ export interface FooterLogo {
   imageAltText: string;
 
   /**
-     * link 
-     */
+   * link
+   */
   href: string;
 
   agencyName: string;
