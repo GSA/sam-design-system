@@ -83,8 +83,7 @@
 </ng-template>
 
 <ng-template #footerHREFLinkTemplate let-link>
-  <a class="usa-link" [attr.aria-label]="'Open ' + link.text + ' in new window'" [hideIcon]="link.hideIcon"
-    [href]="link.route">{{ link.text }}</a>
+  <a class="usa-link" [hideIcon]="link.hideIcon" [href]="link.route">{{ link.text }}</a>
 </ng-template>
 
 <ng-template #footerEVENTLinkTemplate let-link>
