@@ -23,7 +23,8 @@ export class LayoutResponsiveComponent {
   form;
   filterModel = {};
   options;
-  filtersExpanded: boolean = true;
+  filtersExpanded: boolean = false;
+  domainsExpanded: boolean = true;
 
   public filterChange$ = new BehaviorSubject<object>([]);
   public navigationModel: SelectionPanelModel = {
@@ -117,6 +118,7 @@ export class LayoutResponsiveComponent {
 
   onPanelSelection($event: NavigationLink) {
     this.selectedPanel = $event;
+    this.domainsExpanded = false;
     this.filtersExpanded = true;
     console.log('Selected Domain', $event);
     this.router.navigate(
