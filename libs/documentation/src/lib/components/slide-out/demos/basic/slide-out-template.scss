@@ -3,18 +3,22 @@
     display: flex;
     justify-content: space-between;
     border-bottom: black 1px solid;
-    margin-top: 2rem;
+    margin-top: 1.3rem;
     padding-left: 1rem;
+    padding-bottom: 0.5rem;
   }
   .content{
     padding: 0 1rem;
 
-    .result > a{
-      text-decoration: none;
-      &:hover{
-        text-decoration: underline;
-        color: #3f57a6;
-        cursor: pointer;
+    .list{
+      list-style-type: none;
+      .result > a{
+        text-decoration: none;
+        &:hover{
+          text-decoration: underline;
+          color: #3f57a6;
+          cursor: pointer;
+        }
       }
     }
   }

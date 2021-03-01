@@ -112,4 +112,10 @@ export class SdsDialogConfig<D = any> {
    * Whether to display the close button in dialog header
    */
   displayCloseBtn? = true;
+
+  /**
+   * Whether dialog is a slide-out. Changes enter and exit animation, and adds
+   * class `dialog-slide-out` to container
+   */
+  slideOut? = false;
 }

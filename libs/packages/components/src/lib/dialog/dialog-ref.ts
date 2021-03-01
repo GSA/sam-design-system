@@ -42,7 +42,7 @@ export class SdsDialogRef<T, R = any> {
 
     // Emit when opening animation completes
     _containerInstance._animationStateChanged.pipe(
-      filter(event => event.phaseName === 'done' && event.toState === 'enter'),
+      filter(event => event.phaseName === 'done' && (event.toState === 'enter' || event.toState === 'slideEnter')),
       take(1)
     )
     .subscribe(() => {
@@ -52,7 +52,7 @@ export class SdsDialogRef<T, R = any> {
 
     // Dispose overlay when closing animation is complete
     _containerInstance._animationStateChanged.pipe(
-      filter(event => event.phaseName === 'done' && event.toState === 'exit'),
+      filter(event => event.phaseName === 'done' && (event.toState === 'exit' || event.toState === 'slideExit')),
       take(1)
     ).subscribe(() => this._overlayRef.dispose());
 

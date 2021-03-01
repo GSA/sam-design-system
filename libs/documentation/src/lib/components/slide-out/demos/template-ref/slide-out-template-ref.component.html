@@ -1,0 +1,31 @@
+
+<button class="usa-button" (click)="buttonClicked()">Show Slide Out</button>
+
+<ng-template #templateRef>
+  <div class="container" role="dialog" aria-labelledby="slide-out-title" cdkTrapFocus>
+    <div class="header">
+      <h1 id="slide-out-title">Header</h1>
+    </div>
+    <div class="content">
+      <div>
+        <h2 style="margin-top: 1rem;">B</h2>
+        <hr>
+        <ul class="list">
+          <li class="result">
+            <a>Baby</a>
+          </li>
+          <li class="result">
+            <a>Backed</a>
+          </li>
+          <li class="result">
+            <a>Badger</a>
+          </li>
+          <li class="result">
+            <a>Bagpipes</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</ng-template>

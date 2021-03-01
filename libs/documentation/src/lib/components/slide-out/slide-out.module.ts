@@ -10,16 +10,26 @@ import {
 import { ComponentWrapperComponent } from './../../shared/component-wrapper/component-wrapper.component';
 import { SlideOutBasicComponent } from './demos/basic/slide-out-basic.component';
 import { SlideOutBasicModule } from './demos/basic/slide-out-basic.module';
+import { SlideOutTemplateRefComponent } from './demos/template-ref/slide-out-template-ref.component';
+import { SlideOutTemplateRefModule } from './demos/template-ref/slide-out-template-ref.module';
 
 declare var require: any;
 const DEMOS = {
   basic: {
-    title: 'Basic Display',
+    title: 'Slide Out',
     type: SlideOutBasicComponent,
     code: require('!!raw-loader!./demos/basic/slide-out-basic.component'),
     module: require('!!raw-loader!./demos/basic/slide-out-basic.module'),
     markup: require('!!raw-loader!./demos/basic/slide-out-basic.component.html'),
     path: 'libs/documentation/src/lib/components/slide-out/demos/basic',
+  },
+  templateRef: {
+    title: 'Slide Out - Template Ref',
+    type: SlideOutTemplateRefComponent,
+    code: require('!!raw-loader!./demos/template-ref/slide-out-template-ref.component'),
+    module: require('!!raw-loader!./demos/template-ref/slide-out-template-ref.module'),
+    markup: require('!!raw-loader!./demos/template-ref/slide-out-template-ref.component.html'),
+    path: 'libs/documentation/src/lib/components/slide-out/demos/template-ref',
   }
 };
 
@@ -33,7 +43,7 @@ export const ROUTES = [
         {
           pkg: 'layouts',
           type: 'components',
-          name: 'SdsSubheaderComponent',
+          name: 'SdsDialogContainerComponent',
         },
       ],
     },
@@ -49,7 +59,8 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    SlideOutBasicModule
+    SlideOutBasicModule,
+    SlideOutTemplateRefModule
   ],
 })
 export class SlideOutModule {
