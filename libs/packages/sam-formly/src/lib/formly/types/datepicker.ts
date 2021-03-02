@@ -6,6 +6,7 @@ import { FieldType } from '@ngx-formly/core';
   template: `
     <div class="display-flex">
     <input
+      type="text"
       [id]="id"
       class="usa-input display-inline-block margin-top-3"
       [class.usa-input--error]="showError"
@@ -15,7 +16,7 @@ import { FieldType } from '@ngx-formly/core';
       [min]="to.minDate"
       [max]="to.maxDate"
       [matDatepicker]="picker"
-      placeholder="Choose a date"
+      placeholder="to.placeholder ? to.placeholder : ''"
       (ngModelChange)="to.change ? to.change(field) : ''"
     />
     <mat-datepicker-toggle class="padding-top-1" matSuffix [for]="picker"></mat-datepicker-toggle>

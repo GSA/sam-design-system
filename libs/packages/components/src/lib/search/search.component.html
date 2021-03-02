@@ -20,7 +20,7 @@
     <label class="usa-sr-only" [attr.for]="searchSettings.id">Search</label>
     <input #inputEl [value]="model.searchText? model.searchText :''" 
         [ngClass]="searchSettings?.inputClass" [attr.id]="searchSettings.id" type="search" class="usa-input" name="search" 
-        [placeholder]="searchSettings.placeholder? searchSettings.placeholder : 'type here'"
+        [placeholder]="searchSettings.placeholder ? searchSettings.placeholder : ''"
         [attr.aria-label]="searchSettings.ariaLabel"
         (blur)="focusChange()" (input)="writeValueToModel()" />
     <button #buttonEl class="usa-button" type="submit" (click)="handleClick($event)">

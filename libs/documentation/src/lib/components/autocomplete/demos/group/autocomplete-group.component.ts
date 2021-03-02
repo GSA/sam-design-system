@@ -25,7 +25,7 @@ export class AutocompleteGroup {
     this.settings.primaryTextField = 'value';
     this.settings.labelText = 'Autocomplete 1';
     this.settings.selectionMode = SelectionMode.MULTIPLE;
-    this.settings.autocompletePlaceHolderText = 'Enter text';
+    this.settings.autocompletePlaceHolderText = 'Formula Grants';
     this.settings.isGroupingEnabled = true;
     this.settings.groupByChild = 'elements';
   }

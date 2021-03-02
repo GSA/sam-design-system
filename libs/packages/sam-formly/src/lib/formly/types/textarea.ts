@@ -6,6 +6,7 @@ import { FieldType } from '@ngx-formly/core';
   template: `
     <textarea [formControl]="formControl" [cols]="to.cols"
       [rows]="to.rows" class="usa-textarea" [class.usa-input--error]="showError"
+      [placeholder]="to.placeholder"
       [formlyAttributes]="field">
     </textarea>
   `,
