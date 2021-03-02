@@ -6,7 +6,6 @@ import { FieldType } from '@ngx-formly/core';
   template: `
     <div class="display-flex">
     <input
-      type="text"
       [id]="id"
       class="usa-input display-inline-block margin-top-3"
       [class.usa-input--error]="showError"
