@@ -14,6 +14,8 @@ export class SdsFormlyResetComponent {
    */
   @Input() options: FormlyFormOptions;
 
+  @Input() defaultModel: any;
+
   /**
    * Pass in classes for reset button -- default .usa-button .usa-button--unstyled
    */
@@ -21,7 +23,12 @@ export class SdsFormlyResetComponent {
 
   constructor(library: FaIconLibrary) { library.addIconPacks(fas, sds); }
   resetAll() {
-    this.options.resetModel();
+
+    if (this.defaultModel) {
+      this.options.resetModel(this.defaultModel);
+    } else {
+      this.options.resetModel();
+    }
   }
 
 }

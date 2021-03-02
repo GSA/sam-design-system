@@ -298,5 +298,30 @@ describe('The Sam Filters Component', () => {
       fixture.detectChanges();
       expect(component.fields[0].hide).toBe(true);
     });
+
+    it('Should reset to given defaultModel if provided', () => {
+      component.fields = [
+        {
+          key: 'filters',
+          type: 'input',
+          hide: true,
+          templateOptions: {
+            label: 'State',
+            description: 'State'
+          }
+        }
+      ];
+
+      component.model = {filters: '12345'};
+      component.defaultModel = {filters: '67890'};
+
+      fixture.detectChanges();
+
+      const resetAllButton = fixture.debugElement.query(By.css('button'));
+      resetAllButton.triggerEventHandler('click', null);
+      fixture.detectChanges();
+      expect(component.model).toEqual({filters: '67890'});
+
+    })
   });
 });
