@@ -20,6 +20,11 @@ export class FormlyDatepickerBasic  {
       type: 'datepicker',
       templateOptions: {
         label: 'Expiration Date (no validation)',
+        placeholder: new Date().toLocaleString('en-US', {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric'
+        }),
       }
     }
   ];

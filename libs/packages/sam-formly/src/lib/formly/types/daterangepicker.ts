@@ -12,14 +12,14 @@ import { FieldType } from '@ngx-formly/core';
         <input matStartDate
           [attr.aria-label]="field.fieldGroup[0]?.templateOptions?.placeholder || 'Start Date'"
           [formlyAttributes]="field.fieldGroup[0]"
-          [placeholder]="field.fieldGroup[0]?.templateOptions?.placeholder || 'Start Date'"
+          [placeholder]="field.fieldGroup[0]?.templateOptions?.placeholder || 'mmm-dd-yyyy'"
           [formControlName]="field.fieldGroup[0].key"
           (ngModelChange)="field.fieldGroup[0]?.templateOptions?.change ? field.fieldGroup[0].templateOptions.change(field.fieldGroup[0]) : ''"
           />
           <input matEndDate
           [attr.aria-label]="field.fieldGroup[1]?.templateOptions?.placeholder || 'End Date'"
           [formlyAttributes]="field.fieldGroup[1]"
-          [placeholder]="field.fieldGroup[1]?.templateOptions?.placeholder || 'End Date'"
+          [placeholder]="field.fieldGroup[1]?.templateOptions?.placeholder || 'mmm-dd-yyyy'"
           [formControlName]="field.fieldGroup[1].key"
           (ngModelChange)="field.fieldGroup[1]?.templateOptions?.change ? field.fieldGroup[1].templateOptions.change(field.fieldGroup[1]) : ''"
         />  

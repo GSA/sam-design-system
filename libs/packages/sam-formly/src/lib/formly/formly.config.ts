@@ -178,7 +178,12 @@ export const FORMLY_CONFIG: ConfigOption = {
             type: SdsFormlyTypes.DATEPICKER,
             key: 'fromDate',
             templateOptions: {
-              label: 'From'
+              label: 'From',
+              placeholder:  new Date().toLocaleString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric'
+              })
             },
             expressionProperties: {
               'templateOptions.minDate': minDateFromDateRangePicker,
@@ -189,7 +194,12 @@ export const FORMLY_CONFIG: ConfigOption = {
             type: SdsFormlyTypes.DATEPICKER,
             key: 'toDate',
             templateOptions: {
-              label: 'To'
+              label: 'To',
+              placeholder:  new Date().toLocaleString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric'
+              })
             },
             expressionProperties: {
               'templateOptions.minDate': minDateToDateRangePicker,
@@ -211,13 +221,21 @@ export const FORMLY_CONFIG: ConfigOption = {
           {
             key: 'fromDate',
             templateOptions: {
-              placeholder: 'Start Date'
+              placeholder: new Date().toLocaleString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric'
+              })
             }
           },
           {
             key: 'toDate',
             templateOptions: {
-              placeholder: 'End Date'
+              placeholder:  new Date().toLocaleString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric'
+              })
             }
           }
         ]
