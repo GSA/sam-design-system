@@ -126,7 +126,12 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
               this.form.getRawValue(),
               filter
             );
-            this.model = updatedFormValue;
+            
+            // Shallow copy to not trigger onChanges from formly side
+            Object.keys(updatedFormValue).forEach(key => {
+              this.model[key] = updatedFormValue[key];
+            });
+
             setTimeout(() => {
               this.form.patchValue(updatedFormValue);
             });
