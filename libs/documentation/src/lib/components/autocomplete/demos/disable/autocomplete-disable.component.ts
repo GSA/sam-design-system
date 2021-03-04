@@ -38,7 +38,7 @@ export class AutocompleteDisable implements OnInit {
     this.multiModeDisableSettings.primaryTextField = 'name';
     this.multiModeDisableSettings.secondaryTextField = 'subtext';
     this.multiModeDisableSettings.selectionMode = SelectionMode.SINGLE;
-    this.multiModeDisableSettings.autocompletePlaceHolderText = 'Enter text';
+    this.multiModeDisableSettings.autocompletePlaceHolderText = 'Level 1';
 
     this.disableMSettings.primaryKeyField = 'id';
     this.disableMSettings.id = 'autocompleteOptionalDisable';
@@ -46,7 +46,7 @@ export class AutocompleteDisable implements OnInit {
     this.disableMSettings.primaryTextField = 'name';
     this.disableMSettings.secondaryTextField = 'subtext';
     this.disableMSettings.selectionMode = SelectionMode.MULTIPLE;
-    this.disableMSettings.autocompletePlaceHolderText = 'Enter text';
+    this.disableMSettings.autocompletePlaceHolderText = 'Level 1';
 
     this.disableMModel.items.push(this.data[0]);
     this.disableMModel.items.push(this.data[3]);

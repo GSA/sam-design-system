@@ -22,7 +22,7 @@ export class AutocompleteAriaLabelComponent {
     this.settings.secondaryTextField = 'subtext';
     this.settings.labelText = 'Autocomplete Aria';
     this.settings.selectionMode = SelectionMode.SINGLE;
-    this.settings.autocompletePlaceHolderText = 'Enter text';
+    this.settings.autocompletePlaceHolderText = 'Level 1';
     this.settings.ariaLabelText = 'Aria Label Example';
   }
 }
