@@ -1,0 +1,17 @@
+input::-ms-clear {
+  display: none;
+}
+
+.suffix-icon {
+  input::-webkit-search-cancel-button {
+    display: none;
+  }
+
+  .close-icon-large {
+    left: -4.5rem;
+  }
+
+  .close-icon {
+    left: -2.5rem;
+  }
+}
