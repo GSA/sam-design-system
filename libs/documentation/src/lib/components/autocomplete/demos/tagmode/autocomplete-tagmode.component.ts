@@ -36,7 +36,7 @@ export class AutocompleteTagmode implements OnInit {
     this.tagmodeSettings.primaryTextField = 'name';
     this.tagmodeSettings.secondaryTextField = 'subtext';
     this.tagmodeSettings.selectionMode = SelectionMode.MULTIPLE;
-    this.tagmodeSettings.autocompletePlaceHolderText = 'Enter text';
+    this.tagmodeSettings.autocompletePlaceHolderText = 'Level 1';
     this.tagmodeSettings.isTagModeEnabled = true;
   }
 }

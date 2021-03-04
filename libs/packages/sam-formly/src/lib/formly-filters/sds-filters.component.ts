@@ -74,6 +74,15 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
   @Input() public getCleanModel: boolean = false;
 
   /**
+   * Default values to reset form to when reset is done
+   * If not passed in, then default values will be values
+   * assigned to the model input during component init
+   * or defaultValue provided in formly config
+   */
+  @Input() defaultModel: any;
+
+
+  /**
    *  Emit results when model updated
    */
   // TODO: check type -- Formly models are typically objects
@@ -126,7 +135,12 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
               this.form.getRawValue(),
               filter
             );
-            this.model = updatedFormValue;
+            
+            // Shallow copy to not trigger onChanges from formly side
+            Object.keys(updatedFormValue).forEach(key => {
+              this.model[key] = updatedFormValue[key];
+            });
+
             setTimeout(() => {
               this.form.patchValue(updatedFormValue);
             });

@@ -96,7 +96,7 @@ export class FormlyAutocompleteDisable {
     this.settings.secondaryTextField = 'subtext';
     this.settings.labelText = 'Autocomplete 1';
     this.settings.selectionMode = SelectionMode.SINGLE;
-    this.settings.autocompletePlaceHolderText = 'Enter text';
+    this.settings.autocompletePlaceHolderText = 'Level 1';
 
     this.settings2.id = 'autocompleteDisable2Single';
     this.settings2.primaryKeyField = 'id';
@@ -104,7 +104,7 @@ export class FormlyAutocompleteDisable {
     this.settings2.secondaryTextField = 'subtext';
     this.settings2.labelText = 'Autocomplete 2';
     this.settings2.selectionMode = SelectionMode.SINGLE;
-    this.settings2.autocompletePlaceHolderText = 'Enter text';
+    this.settings2.autocompletePlaceHolderText = 'Level 1';
 
     this.multipleSettings.id = 'autocompleteDisableMultiple';
     this.multipleSettings.primaryKeyField = 'id';
@@ -112,7 +112,7 @@ export class FormlyAutocompleteDisable {
     this.multipleSettings.secondaryTextField = 'subtext';
     this.multipleSettings.labelText = 'Autocomplete 1';
     this.multipleSettings.selectionMode = SelectionMode.MULTIPLE;
-    this.multipleSettings.autocompletePlaceHolderText = 'Enter text';
+    this.multipleSettings.autocompletePlaceHolderText = 'Level 1';
 
     this.model.filters.agency.push(this.data[0]);
     this.model.filters.agency.push(this.data[1]);
