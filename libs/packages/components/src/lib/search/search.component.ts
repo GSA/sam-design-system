@@ -26,7 +26,7 @@ export class SearchSettings {
     options: [],
     inverse: false,
   };
-  public isSuffixSearchIcon: boolean = false;
+  public isSuffixSearchIcon?: boolean = false;
 }
 @Component({
   selector: 'sds-search',
