@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class SearchBasic {
   model = {};
   bigmodel = {};
+  suffixmodel = {};
 
   searchSettings = {
     placeholder: 'type here',
@@ -21,11 +22,18 @@ export class SearchBasic {
     ariaLabel: 'Big Search',
   };
 
+  suffixSearchIconSettings = {
+    isSuffixSearchIcon: true,
+    placeholder: 'type here',
+    id: 'searchSuffix',
+    ariaLabel: 'Suffix Search',
+  };
+
   onsearchModelChanges() {
     console.log(this.bigmodel, 'model changs');
   }
 
-  onSubmit(value){
-    console.log('Search Submitted', value)
+  onSubmit(value) {
+    console.log('Search Submitted', value);
   }
 }
