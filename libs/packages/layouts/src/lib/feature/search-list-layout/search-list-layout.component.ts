@@ -61,6 +61,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
 
   @Input() enableApiCall: boolean = true;
 
+  @Input() isFilterPresent: boolean;
   /**
    * Filter information
    */
@@ -143,9 +144,11 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
       this.updateContent();
     });
     if (this.formlyUpdateComunicationService) {
-      this.formlySubscription = this.formlyUpdateComunicationService.filterUpdate.subscribe((filter) => {
-        this.updateFilter(filter);
-      });
+      this.formlySubscription = this.formlyUpdateComunicationService.filterUpdate.subscribe(
+        (filter) => {
+          this.updateFilter(filter);
+        }
+      );
     }
   }
 
@@ -166,7 +169,9 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
       if (paramModel && paramModel['sfm']) {
         this.filterUpdateModelService.updateModel(paramModel['sfm']);
       } else {
-        this.filterUpdateModelService.updateModel(this.configuration.defaultFilterValue);
+        this.filterUpdateModelService.updateModel(
+          this.configuration.defaultFilterValue
+        );
       }
     }
   }
