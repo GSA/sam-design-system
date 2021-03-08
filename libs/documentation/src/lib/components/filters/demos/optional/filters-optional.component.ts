@@ -35,6 +35,7 @@ export class FiltersOptional implements OnInit {
             label: 'Unique Entity ID',
             tagText: 'DUNS',
             tagClass: 'sds-tag--info-purple',
+            placeholder: 'A123456',
           },
         },
         {

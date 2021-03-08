@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import {
   SDS_DIALOG_SCROLL_STRATEGY_PROVIDER,
+  SDS_SLIDE_OUT_SCROLL_STRATEGY_PROVIDER,
   SdsDialogService
 } from './dialog';
 import { SdsDialogContainerComponent } from './dialog-container.component';
@@ -34,7 +35,7 @@ import {
     SdsDialogActionsDirective,
     SdsDialogContentDirective
   ],
-  providers: [SdsDialogService, SDS_DIALOG_SCROLL_STRATEGY_PROVIDER],
+  providers: [SdsDialogService, SDS_DIALOG_SCROLL_STRATEGY_PROVIDER, SDS_SLIDE_OUT_SCROLL_STRATEGY_PROVIDER],
   entryComponents: [SdsDialogContainerComponent]
 })
 export class SdsDialogModule {}

@@ -1,9 +1,11 @@
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 export class SDSFormlyUpdateModelService {
   /**
-   * Filter update subject
+   * Filter update subject - This is a BehaviorSubject in case layout
+   * component initializes and fires a filter model event before 
+   * sds-filters subscribes. 
    */
-  private updateFilterModel = new Subject<any>();
+  private updateFilterModel = new BehaviorSubject<any>(null);
 
   /**
    * Observable to subscribe to for get updates of the filter

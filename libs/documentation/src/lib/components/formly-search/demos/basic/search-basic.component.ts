@@ -24,6 +24,9 @@ export class SearchBasic {
           type: 'search',
           templateOptions: {
             label: 'Search',
+            searchSettings: {
+              placeholder: 'Acme Corporation',
+            },
           },
         },
 
@@ -42,6 +45,7 @@ export class SearchBasic {
                   { label: '90 Days', value: '90' },
                 ],
               },
+              placeholder: 'Acme Corporation',
             },
           },
         },
@@ -62,6 +66,7 @@ export class SearchBasic {
                   { label: '90 Days', value: '90' },
                 ],
               },
+              placeholder: 'Acme Corporation',
             },
           },
         },

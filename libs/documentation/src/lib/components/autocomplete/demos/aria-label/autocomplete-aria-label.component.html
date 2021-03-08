@@ -1,0 +1,10 @@
+<div class="margin-bottom-4">
+  <h4 id="autoBasicLabel" for="autocomplete1">Basic Autocomplete with Aria Label</h4>
+  <p> <code>this.settings.ariaLabelText</code> is used to set the aria label for screen readers
+    to use when describing the autocomplete. If ariaLabelText is not provided, then the labelText
+    will be used for aria label value.
+  </p>
+  <sds-autocomplete [service]="service" [(ngModel)]="model" [configuration]="settings">
+  </sds-autocomplete>
+</div>
+{{model| json}}
