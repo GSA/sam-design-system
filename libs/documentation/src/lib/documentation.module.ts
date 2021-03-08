@@ -81,6 +81,10 @@ import {
   ROUTES as SELECTION_PANEL_ROUTES,
   SelectionPanelModule,
 } from './components/selection-panel/selection-panel.module';
+import {
+  ROUTES as SLIDE_OUT_ROUTES,
+  SlideOutModule,
+} from './components/slide-out/slide-out.module';
 
 /* Form Types */
 import {
@@ -240,6 +244,7 @@ export const ROUTES: Routes = [
   { path: 'components/system-alerts', children: SYSTEM_ALERT_ROUTES },
   { path: 'components/external-link', children: EXTERNA_LINK_ROUTES },
   { path: 'components/toasts', children: TOASTS_ROUTES },
+  { path: 'components/slide-out', children: SLIDE_OUT_ROUTES },
   // Formly
   { path: 'components/formly-input', children: INPUT_ROUTES },
   { path: 'components/formly-textarea', children: TEXT_AREA_ROUTES },
@@ -335,7 +340,8 @@ export const ROUTES: Routes = [
     ExternalLinkModule,
     ToastsModule,
     ReadonlyModule,
-    RoadmapModule
+    RoadmapModule,
+    SlideOutModule
   ],
 })
 export class DocumentationModule {
