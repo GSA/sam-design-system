@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavigationLink, SideNavigationModel } from '@gsa-sam/components';
+import { NavigationLink, SelectionPanelModel } from '@gsa-sam/components';
 import { selectionPanelConfig } from './navigation.config'
 
 @Component({
@@ -9,7 +9,7 @@ import { selectionPanelConfig } from './navigation.config'
 export class BasicSelectionPanelComponent {
 
   title = 'Basic Selection Panel'
-  selectionPanelModel: SideNavigationModel = selectionPanelConfig;
+  selectionPanelModel: SelectionPanelModel = selectionPanelConfig;
 
   constructor() { }
 

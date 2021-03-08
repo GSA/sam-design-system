@@ -7,7 +7,6 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
   styleUrls: ['./input-optional.component.scss'],
   selector: `sds-formly-input-optional-demo`,
 })
-
 export class InputOptional {
   form = new FormGroup({});
   model: any = {};
@@ -19,7 +18,18 @@ export class InputOptional {
       templateOptions: {
         label: 'Reference Number',
         placeholder: 'A123456',
-        description: 'If you have your own reference number you can add it here.'
+        description:
+          'If you have your own reference number you can add it here.',
+      },
+    },
+    {
+      key: 'search',
+      type: 'input',
+      templateOptions: {
+        label: 'Search',
+        placeholder: 'A123456',
+        disabled: true,
+        description: 'Type here to search',
       },
     },
   ];

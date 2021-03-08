@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { NavigationLink, SideNavigationModel } from "@gsa-sam/components";
+import { SelectionPanelModel } from "@gsa-sam/components";
 import { selectionPanelConfig } from './navigation.config'
 
 
@@ -10,7 +10,7 @@ import { selectionPanelConfig } from './navigation.config'
 export class DefaultSelectionPanelComponent {
 
   title = 'Pre-Selected Selection Panel'
-  selectionPanelModel: SideNavigationModel = selectionPanelConfig;
+  selectionPanelModel: SelectionPanelModel = selectionPanelConfig;
   currentSelectedPanel = this.selectionPanelModel.navigationLinks[0]; // select `All Domains`
 
   /**
