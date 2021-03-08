@@ -26,10 +26,16 @@ const animationBody = [
       )
     ]
   ),
-  state('slideExit', style({right: '-15rem'})),
-  state('slideEnter', style({right: '0rem'})),
-  transition('* => slideEnter', animate('1s')),
-  transition('* => slideExit', animate('1s')),
+  // state('slideExit', style({right: '-15rem'})),
+  // state('slideEnter', style({right: '0rem'})),
+  transition('* => slideEnter', [
+    style({right: '-15rem'}),
+    animate('1s', style({right: '0rem'}))
+  ]),
+  transition('* => slideExit', [
+    style({right: '0rem'}),
+    animate('1s', style({right: '-15rem'}))
+  ]),
 ];
 
 /**

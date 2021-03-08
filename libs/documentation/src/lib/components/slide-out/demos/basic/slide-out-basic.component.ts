@@ -1,6 +1,6 @@
 import { ScrollStrategyOptions } from '@angular/cdk/overlay';
 import { Component } from '@angular/core';
-import { SdsDialogService } from '@gsa-sam/components';
+import { SdsDialogRef, SdsDialogService } from '@gsa-sam/components';
 
 @Component({
   templateUrl: './slide-out-basic.component.html',
@@ -9,15 +9,22 @@ import { SdsDialogService } from '@gsa-sam/components';
 })
 export class SlideOutBasicComponent {
 
+  openedDialogRef: SdsDialogRef<any>;
+
   constructor(public dialog: SdsDialogService, private options: ScrollStrategyOptions) {}
 
   buttonClicked(){
-    this.dialog.open(SlideOutTemplateComponent, {
-      hasBackdrop: false,
-      height: '100%',
-      position: {right: 'true'},
-      slideOut: true
-    })
+    if(!this.openedDialogRef){
+      this.openedDialogRef = this.dialog.open(SlideOutTemplateComponent, {
+        hasBackdrop: false,
+        height: '100%',
+        position: {right: 'true'},
+        slideOut: true
+      })
+    } else {
+      this.openedDialogRef.close();
+      this.openedDialogRef = null;
+    }
   }
 }
 
