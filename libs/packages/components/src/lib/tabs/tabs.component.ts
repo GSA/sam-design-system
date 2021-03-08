@@ -5,8 +5,8 @@ import { TabPanelComponent } from "./tab-panel.component";
  * Adding in the constant values for keycodes
  * to handle onKeyDown events
  */
-const LEFT_ARROW = 'ArrowLeft';
-const RIGHT_ARROW = 'ArrowRight';
+const LEFT_ARROW = 37;
+const RIGHT_ARROW = 39;
 
 @Component({
   selector: `sds-tabs`,
@@ -97,10 +97,11 @@ export class TabsComponent implements OnInit, OnChanges, AfterContentInit {
    * @param $event - Keyboard Event
    */
   onKeyDown($event) {
+    console.log($event);
     const tabPanelArray = this.tabPanels.toArray();
     let selectedTabIndex = tabPanelArray.findIndex((tabPanel) => tabPanel === this.focusedTab);
 
-    switch($event.key) {
+    switch($event.keyCode) {
       case LEFT_ARROW:
         selectedTabIndex = this.getNextTabLeft(tabPanelArray, selectedTabIndex);
         break;
