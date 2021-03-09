@@ -40,9 +40,9 @@
         </sds-icon>
       </span>
     </span>
-    <button *ngIf="!searchSettings.isSuffixSearchIcon" #buttonEl class="usa-button" type="submit"
+    <button *ngIf="!searchSettings.isSuffixSearchIcon" #buttonEl class="usa-button" type="submit" 
+      [attr.aria-label]="searchSettings.ariaLabel ? searchSettings.ariaLabel : 'Search'"
       (click)="handleClick($event)">
-      <span class="usa-sr-only">Search</span>
     </button>
   </div>
 
