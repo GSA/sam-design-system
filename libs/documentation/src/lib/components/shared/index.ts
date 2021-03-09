@@ -13,12 +13,12 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { sds } from '@gsa-sam/sam-styles/src/icons/';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-import { SdsIconModule } from '@gsa-sam/components';
+import { SdsIconModule, SdsTabsModule } from '@gsa-sam/components';
 
 export * from './demo-list';
 
 @NgModule({
-  imports: [DocumentationSharedModule, FontAwesomeModule, MarkdownModule, HighlightModule, SdsIconModule,],
+  imports: [DocumentationSharedModule, FontAwesomeModule, MarkdownModule, HighlightModule, SdsIconModule, SdsTabsModule,],
   declarations: [
     DocumentationExamplesPage, DocumentationAPIPage, DocumentationAPIComponent, DocumentationTemplatePage, DocumentationSourcePage, DocumentationWidgetDemoComponent
   ],
