@@ -23,7 +23,7 @@ import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    FontAwesomeModule,
+    
     SdsToastModule,
     ToastrModule.forRoot(SdsToastSettings),
     RouterModule.forRoot(ROUTES, { scrollPositionRestoration: 'enabled' }),

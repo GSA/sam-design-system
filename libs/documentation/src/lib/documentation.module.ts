@@ -348,8 +348,5 @@ export const ROUTES: Routes = [
   ],
 })
 export class DocumentationModule {
-  constructor(library: FaIconLibrary) {
-    library.addIconPacks(fas, sds);
-    // library.add(fas, sds);
-  }
+ 
 }
