@@ -1,51 +1,27 @@
-<ul
-  *ngIf="model"
-  [attr.aria-label]="configuration.labelText + ' results'"
-  class="usa-list usa-list--unstyled sds-autocomplete-selected"
-  aria-relevant="additions"
-  role="listbox"
-  aria-live="polite"
->
-  <li role="option" *ngFor="let result of model.items; let i = index">
-    <div
-      class="sds-tag sds-tag--chip sds-tag--input"
-      [ngClass]="disabled ? 'sds-tag--disabled' : ''"
-    >
-      <ng-container
-        *ngIf="itemTemplate"
-        [ngTemplateOutlet]="itemTemplate"
-        [ngTemplateOutletContext]="{ $implicit: result }"
-      >
-      </ng-container>
-      <ng-container *ngIf="!itemTemplate">
-        <div class="sds--tag__item">
-          <div>
-            {{ getObjectValue(result, configuration.primaryTextField) }}
-          </div>
-          <div
-            *ngIf="
+<ul *ngIf="model" [attr.aria-label]="configuration.labelText + ' results'" class="usa-list usa-list--unstyled sds-autocomplete-selected" aria-relevant="additions" role="listbox" aria-live="polite">
+    <li role="option" *ngFor="let result of model.items; let i = index">
+        <div class="sds-tag sds-tag--chip sds-tag--input" [ngClass]="disabled ? 'sds-tag--disabled' : ''">
+            <ng-container *ngIf="itemTemplate" [ngTemplateOutlet]="itemTemplate" [ngTemplateOutletContext]="{ $implicit: result }">
+            </ng-container>
+            <ng-container *ngIf="!itemTemplate">
+                <div class="sds--tag__item">
+                    <div>
+                        {{ getObjectValue(result, configuration.primaryTextField) }}
+                    </div>
+                    <div *ngIf="
               configuration.secondaryTextField &&
               result[configuration.secondaryTextField]
-            "
-          >
-            {{ result[configuration.secondaryTextField] }}
-          </div>
-        </div>
-      </ng-container>
-      <button
-        *ngIf="!disabled"
-        [attr.aria-label]="
+            ">
+                        {{ result[configuration.secondaryTextField] }}
+                    </div>
+                </div>
+            </ng-container>
+            <button *ngIf="!disabled" [attr.aria-label]="
           'Remove Item ' +
           getObjectValue(result, configuration.primaryTextField)
-        "
-        [class.text-base]="disabled"
-        aria-hidden="false"
-        class="sds-tag__close"
-        (click)="removeItem(result)"
-        (keyup.enter)="removeItem(result)"
-      >
-        <fa-icon [icon]="['fas', 'times']" size="sm"></fa-icon>
+        " [class.text-base]="disabled" aria-hidden="false" class="sds-tag__close" (click)="removeItem(result)" (keyup.enter)="removeItem(result)">
+        <sds-icon [icon]="['bs', 'exit']" size="2x"></sds-icon>
       </button>
-    </div>
-  </li>
+        </div>
+    </li>
 </ul>

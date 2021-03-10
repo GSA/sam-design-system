@@ -1,46 +1,43 @@
 <div class="sds-card sds-card--shadowed sds-card--bordered margin-top-2 margin-bottom-4">
 
-  <div class="sds-card__header sds-card__header--accent-cool sds-card__header--flex">
+    <div class="sds-card__header sds-card__header--accent-cool sds-card__header--flex">
 
-    <h2 class="sds-card__title">{{ demoTitle }}</h2>
+        <h2 class="sds-card__title">{{ demoTitle }}</h2>
 
-    <div class="sds-card__buttons">
-      <button class="usa-button--unstyled text-ink margin-left-1 cursor-pointer"
-        [ngClass]="{ 'usa-button--active' : showCode }" (click)="showCode = !showCode" aria-label="Show Code">
-        <fa-icon [icon]="['fas', 'code']"></fa-icon>
+        <div class="sds-card__buttons">
+            <button class="usa-button--unstyled text-ink margin-left-1 cursor-pointer" [ngClass]="{ 'usa-button--active' : showCode }" (click)="showCode = !showCode" aria-label="Show Code">
+        <sds-icon [icon]="['bs', 'code']"></sds-icon>
       </button>
-      <a class="text-ink usa-button--unstyled margin-left-1" *ngIf="getGithubLink()" [attr.href]="getGithubLink()"
-        target="_blank" aria-label="Open new window in github">
-        <fa-icon [icon]="['fab', 'github']"></fa-icon>
-      </a>
-      <a class="text-ink usa-button--unstyled margin-left-1" [attr.href]="getStackblitzLink()" target="_blank"
-        aria-label="Open new window in Stackblitz">
-        <sds-icon [size]="'sm'" [icon]="['bs', 'lightning-fill']"></sds-icon>
-      </a>
+            <a class="text-ink usa-button--unstyled margin-left-1" *ngIf="getGithubLink()" [attr.href]="getGithubLink()" target="_blank" aria-label="Open new window in github">
+                <sds-icon [icon]="['bs', 'arrow-up-right-circle']"></sds-icon>
+            </a>
+            <a class="text-ink usa-button--unstyled margin-left-1" [attr.href]="getStackblitzLink()" target="_blank" aria-label="Open new window in Stackblitz">
+                <sds-icon [size]="'sm'" [icon]="['bs', 'lightning-fill']"></sds-icon>
+            </a>
+        </div>
+
     </div>
 
-  </div>
+    <div class="sds-card__body">
 
-  <div class="sds-card__body">
+        <div *ngIf="showCode" class="padding-bottom-2 border-bottom margin-bottom-2">
+            <sds-tabs>
+                <sds-tab-panel [tabHeader]="'Source Code'">
+                    <pre class="highlight"><code [highlight]="code"></code></pre>
+                </sds-tab-panel>
+                <sds-tab-panel [tabHeader]="'Template Markup'">
+                    <pre class="highlight"><code [highlight]="markup"></code></pre>
+                </sds-tab-panel>
+                <sds-tab-panel [tabHeader]="'Module'">
+                    <pre class="highlight"><code [highlight]="module"></code></pre>
+                </sds-tab-panel>
+            </sds-tabs>
+        </div>
 
-    <div *ngIf="showCode" class="padding-bottom-2 border-bottom margin-bottom-2">
-      <sds-tabs>
-        <sds-tab-panel [tabHeader]="'Source Code'">
-          <pre class="highlight"><code [highlight]="code"></code></pre>
-        </sds-tab-panel>
-        <sds-tab-panel [tabHeader]="'Template Markup'">
-          <pre class="highlight"><code [highlight]="markup"></code></pre>
-        </sds-tab-panel>
-        <sds-tab-panel [tabHeader]="'Module'">
-          <pre class="highlight"><code [highlight]="module"></code></pre>
-        </sds-tab-panel>
-      </sds-tabs>
+        <markdown [data]="readme"></markdown>
+
+        <ng-content></ng-content>
+
     </div>
-
-    <markdown [data]="readme"></markdown>
-
-    <ng-content></ng-content>
-
-  </div>
 
 </div>

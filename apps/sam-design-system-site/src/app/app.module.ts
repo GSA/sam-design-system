@@ -6,12 +6,12 @@ import { ROUTES } from './app.routes';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
-import { sds } from '@gsa-sam/sam-styles/src/icons/';
-import { fas } from '@fortawesome/free-solid-svg-icons';
+
 import { MarkdownModule } from 'ngx-markdown';
 
 import { Toast, ToastrModule } from 'ngx-toastr';
 import {
+  SdsIconModule,
   SdsToastComponent,
   SdsToastModule,
   SdsToastSettings,
@@ -23,7 +23,7 @@ import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    
+    SdsIconModule,
     SdsToastModule,
     ToastrModule.forRoot(SdsToastSettings),
     RouterModule.forRoot(ROUTES, { scrollPositionRestoration: 'enabled' }),

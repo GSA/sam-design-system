@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SdsTableModule } from '@gsa-sam/sam-material-extensions';
 
 import { TableBasicComponent } from './basic.component';
+import { SdsIconModule } from '@gsa-sam/components';
 
 
 @NgModule({
