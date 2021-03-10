@@ -2,8 +2,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SdsHeaderComponent } from './header.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { SdsTopBannerComponent } from '@gsa-sam/components';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SdsIconModule, SdsTopBannerComponent } from '@gsa-sam/components';
+
 import { NavigationMode } from '@gsa-sam/components';
 import { A11yModule } from '@angular/cdk/a11y';
 
@@ -15,7 +15,7 @@ describe('SdsHeaderComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SdsHeaderComponent, SdsTopBannerComponent],
-      imports: [RouterTestingModule, FontAwesomeModule, A11yModule]
+      imports: [RouterTestingModule, SdsIconModule, A11yModule]
     })
       .compileComponents();
   }));

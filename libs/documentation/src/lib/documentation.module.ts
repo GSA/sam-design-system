@@ -4,11 +4,7 @@ import { OverviewModule } from './pages/overview/overview.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { sds } from '@gsa-sam/sam-styles/src/icons/';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import {
-  FaIconLibrary,
-} from '@fortawesome/angular-fontawesome';
+
 /* Layout / Components */
 import {
   ROUTES as HEADER_ROUTES,

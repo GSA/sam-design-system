@@ -5,11 +5,11 @@ import {
   fakeAsync
 } from '@angular/core/testing';
 import { of } from 'rxjs';
-import { SdsDialogService } from '@gsa-sam/components';
+import { SdsDialogService, SdsIconModule } from '@gsa-sam/components';
 
 import { AdvancedFiltersComponent } from './advanced-filters.component';
 import { SdsAdvancedFiltersService } from './sds-advanced-filters.service';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 describe('Advanced Filteres Component', () => {
   let component: AdvancedFiltersComponent;
@@ -28,7 +28,7 @@ describe('Advanced Filteres Component', () => {
     );
     TestBed.configureTestingModule({
       declarations: [AdvancedFiltersComponent],
-      imports: [FontAwesomeModule],
+      imports: [SdsIconModule],
       providers: [
         { provide: SdsDialogService, useValue: modalServiceSpy },
         {

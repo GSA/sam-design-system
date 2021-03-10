@@ -9,9 +9,7 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
-import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { sds } from '@gsa-sam/sam-styles/src/icons/';
+
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -116,9 +114,9 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     private route: ActivatedRoute,
     @Optional()
     private filterUpdateModelService: SDSFormlyUpdateModelService,
-    library: FaIconLibrary
+   
   ) {
-    library.addIconPacks(fas, sds);
+   
   }
   ngOnDestroy() {
     this.unsubscribe$.next();

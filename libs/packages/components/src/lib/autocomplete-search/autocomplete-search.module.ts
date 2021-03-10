@@ -4,7 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { SDSAutocompleteSearchComponent } from './autocomplete-search.component';
 import { SDSClickOutsideModule } from '../click-outside/click-outside.module';
 import { SdsTabOutsideModule } from '../tab-outside/taboutside.module';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SdsIconModule } from '@gsa-sam/components';
+
 
 @NgModule({
   imports: [
@@ -12,7 +13,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FormsModule,
     SDSClickOutsideModule,
     SdsTabOutsideModule,
-    FontAwesomeModule
+    SdsIconModule
   ],
   declarations: [SDSAutocompleteSearchComponent],
   exports: [SDSAutocompleteSearchComponent]

@@ -3,7 +3,7 @@ import { Component, ViewChild, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { PaginationModule, SdsIconModule } from '@gsa-sam/components';
 
 import {
@@ -327,10 +327,8 @@ describe('SdsTableComponent Full', () => {
       ],
       imports: [
         MatTableModule,
-        FontAwesomeModule,
-        MatSortModule,
         SdsIconModule,
-        FontAwesomeModule,
+        MatSortModule,
         MatPaginatorModule,
         BrowserAnimationsModule,
         PaginationModule

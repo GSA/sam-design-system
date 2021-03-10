@@ -8,10 +8,11 @@ import {
   FormlyFieldConfig
 } from '@ngx-formly/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 import { SdsFormlyModule } from '../formly/formly.module';
 import { SdsFormlyResetComponent } from './formly-reset.component';
+import { SdsIconModule } from '@gsa-sam/components';
 
 let resetEl: HTMLElement;
 let model: any;
@@ -27,7 +28,7 @@ describe('SDS Formly Reset', () => {
     TestBed.configureTestingModule({
       declarations: [SdsFormlyResetComponent, TestComponent],
       imports: [
-        FontAwesomeModule,
+        SdsIconModule,
         NoopAnimationsModule,
         SdsFormlyModule,
         ReactiveFormsModule,

@@ -1,6 +1,7 @@
 import { Component, DebugElement, ViewChild } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SdsIconModule } from '@gsa-sam/components';
+
 import { NgxBootstrapIconsModule,allIcons } from 'ngx-bootstrap-icons';
 
 import { SdsIconComponent } from './icon.component';
@@ -22,7 +23,7 @@ describe('IconComponent Rotation', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ SdsIconComponent, IconRotationComponent ],
-      imports: [FontAwesomeModule, NgxBootstrapIconsModule.pick(allIcons)]
+      imports: [SdsIconModule, NgxBootstrapIconsModule.pick(allIcons)]
     })
     .compileComponents();
   }));
@@ -85,7 +86,7 @@ describe('IconComponent Scaling', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ SdsIconComponent, IconScalingComponent ],
-      imports: [FontAwesomeModule, NgxBootstrapIconsModule.pick(allIcons)]
+      imports: [SdsIconModule, NgxBootstrapIconsModule.pick(allIcons)]
     })
     .compileComponents();
   }));

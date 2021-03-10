@@ -2,8 +2,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SdsFooterComponent } from './footer.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { NavigationMode } from '@gsa-sam/components';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NavigationMode, SdsIconModule } from '@gsa-sam/components';
+
 import { SdsAccordionModule } from '@gsa-sam/sam-material-extensions';
 import { FooterLogo } from './model/FooterModel';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,7 +18,7 @@ describe('SdsFooterComponent', () => {
       imports: [
         NoopAnimationsModule,
         RouterTestingModule, 
-        FontAwesomeModule,
+        SdsIconModule,
         SdsAccordionModule,
         SdsFeedbackModule,
       ]

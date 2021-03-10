@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SDSSelectedResultComponent } from './selected-result.component';
 import { RouterModule } from '@angular/router';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SdsIconModule } from '@gsa-sam/components';
+
 
 @NgModule({
-  imports: [CommonModule, FormsModule, RouterModule, FontAwesomeModule],
+  imports: [CommonModule, FormsModule, RouterModule, SdsIconModule],
   declarations: [SDSSelectedResultComponent],
   exports: [SDSSelectedResultComponent]
 })

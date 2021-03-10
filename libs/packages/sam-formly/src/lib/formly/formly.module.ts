@@ -8,7 +8,7 @@ import {
 } from '@ngx-formly/core';
 import { FormlySelectModule } from '@ngx-formly/core/select';
 import { MatInputModule } from '@angular/material/input';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import {
   MatDateFormats,
   MatNativeDateModule,
@@ -23,6 +23,7 @@ import {
   SdsTextModule,
   SdsSearchModule,
   SdsCollapseModule,
+  SdsIconModule,
 } from '@gsa-sam/components';
 
 import { FIELD_TYPE_COMPONENTS, FORMLY_CONFIG } from './formly.config';
@@ -166,7 +167,7 @@ export const DATE_FORMAT: MatDateFormats = {
     MatNativeDateModule,
     MatDatepickerModule,
     MatInputModule,
-    FontAwesomeModule,
+    SdsIconModule,
     ReactiveFormsModule,
     FormlySelectModule,
     SdsReadonlyModule,

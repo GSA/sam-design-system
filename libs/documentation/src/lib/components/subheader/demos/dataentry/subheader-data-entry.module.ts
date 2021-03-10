@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { SdsSubheaderModule } from '@gsa-sam/layouts';
 import { CommonModule } from '@angular/common';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { SdsSearchModule, SdsDialogModule, SdsIconModule } from '@gsa-sam/components';
 
 import { ReactiveFormsModule } from '@angular/forms';
@@ -17,7 +17,7 @@ import { SubheaderDataEntryComponent } from './subheader-data-entry.component';
   imports: [
     CommonModule,
     SdsSubheaderModule,
-    FontAwesomeModule,
+    SdsIconModule,
     SdsSearchModule,
     SdsFormlyDialogModule,
     SdsDialogModule,
@@ -25,7 +25,7 @@ import { SubheaderDataEntryComponent } from './subheader-data-entry.component';
     SdsFormlyModule,
     FormlyModule,
     // FormlyModule,
-    SdsIconModule
+  
   ],
   declarations: [SubheaderDataEntryComponent],
   exports: [SubheaderDataEntryComponent],

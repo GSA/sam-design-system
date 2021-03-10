@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { SdsSubheaderModule } from '@gsa-sam/layouts';
 import { CommonModule } from '@angular/common';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { SdsSearchModule, SdsDialogModule, SdsIconModule } from '@gsa-sam/components';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -19,7 +19,6 @@ import { SdsButtonGroupModule } from '@gsa-sam/sam-material-extensions';
   imports: [
     CommonModule,
     SdsSubheaderModule,
-    FontAwesomeModule,
     SdsSearchModule,
     SdsFormlyDialogModule,
     SdsDialogModule,

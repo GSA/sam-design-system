@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SdsTableModule } from '@gsa-sam/sam-material-extensions';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { TableSortComponent } from './sort.component';
 
 
@@ -10,7 +10,7 @@ import { TableSortComponent } from './sort.component';
   imports: [
     CommonModule,
     SdsTableModule,
-    FontAwesomeModule
+    SdsIconModule
   ],
   exports: [TableSortComponent],
   bootstrap: [TableSortComponent]

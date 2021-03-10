@@ -9,10 +9,7 @@ import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { sds } from '@gsa-sam/sam-styles/src/icons/';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { MarkdownModule } from 'ngx-markdown';
-import {
-  FontAwesomeModule,
-  FaIconLibrary,
-} from '@fortawesome/angular-fontawesome';
+
 import { Toast, ToastrModule } from 'ngx-toastr';
 import {
   SdsToastComponent,
@@ -51,7 +48,5 @@ import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
   bootstrap: [AppComponent],
 })
 export class AppModule {
-    constructor(library: FaIconLibrary) {
-      library.addIconPacks(fas, sds);
-    }
+ 
 }

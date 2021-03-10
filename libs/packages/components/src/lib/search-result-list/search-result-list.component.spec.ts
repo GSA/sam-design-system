@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SdsSearchResultListComponent } from './search-result-list.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { CommonModule } from '@angular/common';
 import { DebugElement } from '@angular/core';
 import { SpyLocation } from '@angular/common/testing';
@@ -14,7 +14,7 @@ describe('SdsSearchResultListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SdsSearchResultListComponent],
-      imports: [FontAwesomeModule, CommonModule, SdsIconModule],
+      imports: [SdsIconModule, CommonModule],
       providers: [{ provide: Location, useClass: SpyLocation }]
     }).compileComponents();
   }));

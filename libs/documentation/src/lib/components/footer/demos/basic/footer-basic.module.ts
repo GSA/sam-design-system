@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FooterBasic } from './footer-basic.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {SdsIconModule } from '@gsa-sam/components';
 import { SdsFeedbackModule, SdsFooterModule } from '@gsa-sam/layouts';
 import { SdsCollapseModule } from '@gsa-sam/components';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -11,7 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [FooterBasic],
   imports: [
     CommonModule,
-    FontAwesomeModule,
+    SdsIconModule,
     SdsFooterModule,
     SdsCollapseModule,
     ReactiveFormsModule,

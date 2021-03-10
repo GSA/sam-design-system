@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+import {SdsIconModule } from '@gsa-sam/components';
 import { SdsFormlyResetComponent } from './formly-reset.component';
 
 @NgModule({
   declarations: [SdsFormlyResetComponent],
   imports: [
     CommonModule,
-    FontAwesomeModule
+    SdsIconModule
   ],
   exports: [
     SdsFormlyResetComponent
