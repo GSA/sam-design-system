@@ -37,7 +37,7 @@ export class SdsVideoPlayerComponent implements AfterViewInit, OnChanges {
 
   ngAfterViewInit() {
     if (this.crossorigin) {
-      const id = document.getElementById('videoPlayer');
+      const id = this.elementRef.nativeElement.getElementById('videoPlayer');
       id.setAttribute('crossorigin', this.crossorigin);
     }
     this.config = {
@@ -58,7 +58,7 @@ export class SdsVideoPlayerComponent implements AfterViewInit, OnChanges {
 
   ngOnChanges(changes) {
     if (changes && changes.crossorigin) {
-      const id = document.getElementById('videoPlayer');
+      const id = this.elementRef.nativeElement.getElementById('videoPlayer');
       if (id) {
         id.setAttribute('crossorigin', this.crossorigin);
       }
