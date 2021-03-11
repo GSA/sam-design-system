@@ -10,5 +10,4 @@ export interface VPInterface{
  	debug: boolean;
   preload: string;
   description?: string;
-  crossorigin?: string;
 }
