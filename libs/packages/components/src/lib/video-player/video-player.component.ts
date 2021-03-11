@@ -36,10 +36,6 @@ export class SdsVideoPlayerComponent implements AfterViewInit {
   ) {}
 
   ngAfterViewInit() {
-    if (this.crossorigin) {
-      const id = document.getElementById('videoPlayer');
-      id.setAttribute('crossorigin', this.crossorigin);
-    }
     this.config = {
       videoId: this.VPConfiguration.id,
       captionsOnDefault: false,
