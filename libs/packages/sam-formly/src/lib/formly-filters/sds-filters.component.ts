@@ -16,8 +16,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import * as qs from 'qs';
 import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
 import { SDSFormlyUpdateModelService } from './service/sds-filter-model-update.service';
-import { Subject } from 'rxjs/internal/Subject';
+
 import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'sds-filters',
@@ -79,7 +80,6 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
    */
   @Input() defaultModel: any;
 
-
   /**
    *  Emit results when model updated
    */
@@ -91,7 +91,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
   _isEmpty = (obj: any): boolean => Object.keys(obj).length === 0;
   overwrite = (baseObj: any, newObj: any) => {
     const result = {};
-    const mergedObj = {...baseObj, ...newObj};
+    const mergedObj = { ...baseObj, ...newObj };
     for (const key in mergedObj) {
       if (Array.isArray(baseObj[key])) {
         result[key] = newObj[key] || null;
@@ -113,11 +113,8 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     private router: Router,
     private route: ActivatedRoute,
     @Optional()
-    private filterUpdateModelService: SDSFormlyUpdateModelService,
-   
-  ) {
-   
-  }
+    private filterUpdateModelService: SDSFormlyUpdateModelService
+  ) {}
   ngOnDestroy() {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
@@ -133,9 +130,9 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
               this.form.getRawValue(),
               filter
             );
-            
+
             // Shallow copy to not trigger onChanges from formly side
-            Object.keys(updatedFormValue).forEach(key => {
+            Object.keys(updatedFormValue).forEach((key) => {
               this.model[key] = updatedFormValue[key];
             });
 

@@ -2,11 +2,11 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { SdsIconModule } from '@gsa-sam/components';
+import { SdsIconModule } from '../icon/icon.module';
 import {
   SDS_DIALOG_SCROLL_STRATEGY_PROVIDER,
   SDS_SLIDE_OUT_SCROLL_STRATEGY_PROVIDER,
-  SdsDialogService
+  SdsDialogService,
 } from './dialog';
 import { SdsDialogContainerComponent } from './dialog-container.component';
 
@@ -15,7 +15,7 @@ import {
   SdsDialogCloseDirective,
   SdsDialogContentDirective,
   SdsDialogTitleDirective,
-  SdsDialogSubtitleDirective
+  SdsDialogSubtitleDirective,
 } from './dialog-content.directives';
 
 @NgModule({
@@ -26,7 +26,7 @@ import {
     SdsDialogTitleDirective,
     SdsDialogSubtitleDirective,
     SdsDialogContentDirective,
-    SdsDialogActionsDirective
+    SdsDialogActionsDirective,
   ],
   declarations: [
     SdsDialogContainerComponent,
@@ -34,9 +34,13 @@ import {
     SdsDialogTitleDirective,
     SdsDialogSubtitleDirective,
     SdsDialogActionsDirective,
-    SdsDialogContentDirective
+    SdsDialogContentDirective,
   ],
-  providers: [SdsDialogService, SDS_DIALOG_SCROLL_STRATEGY_PROVIDER, SDS_SLIDE_OUT_SCROLL_STRATEGY_PROVIDER],
-  entryComponents: [SdsDialogContainerComponent]
+  providers: [
+    SdsDialogService,
+    SDS_DIALOG_SCROLL_STRATEGY_PROVIDER,
+    SDS_SLIDE_OUT_SCROLL_STRATEGY_PROVIDER,
+  ],
+  entryComponents: [SdsDialogContainerComponent],
 })
 export class SdsDialogModule {}

@@ -32,7 +32,7 @@
       'close-icon': !searchSettings.size}">
       <span *ngIf="model.searchText" role="button" aria-label="Clear input" (click)="clearInput($event)"
         (keyup.enter)="clearInput($event)" tabindex="0">
-        <sds-icon [icon]="['sds', 'exit']" [size]="searchSettings.size === 'large'?'2x':'1x'"></sds-icon>
+        <sds-icon [icon]="['bs', 'x']" [size]="searchSettings.size === 'large'?'2x':'1x'"></sds-icon>
       </span>
       <span role="button" aria-label="search input" (click)="handleClick($event)" (keyup.enter)="handleClick($event)"
         tabindex="0">
@@ -40,9 +40,8 @@
         </sds-icon>
       </span>
     </span>
-    <button *ngIf="!searchSettings.isSuffixSearchIcon" #buttonEl class="usa-button" type="submit" 
-      [attr.aria-label]="searchSettings.ariaLabel ? searchSettings.ariaLabel : 'Search'"
-      (click)="handleClick($event)">
+    <button *ngIf="!searchSettings.isSuffixSearchIcon" #buttonEl class="usa-button" type="submit"
+      [attr.aria-label]="searchSettings.ariaLabel ? searchSettings.ariaLabel : 'Search'" (click)="handleClick($event)">
     </button>
   </div>
 

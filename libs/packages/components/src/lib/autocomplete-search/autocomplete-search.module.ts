@@ -4,8 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { SDSAutocompleteSearchComponent } from './autocomplete-search.component';
 import { SDSClickOutsideModule } from '../click-outside/click-outside.module';
 import { SdsTabOutsideModule } from '../tab-outside/taboutside.module';
-import { SdsIconModule } from '@gsa-sam/components';
-
+import { SdsIconModule } from '../icon/icon.module';
 
 @NgModule({
   imports: [
@@ -13,9 +12,9 @@ import { SdsIconModule } from '@gsa-sam/components';
     FormsModule,
     SDSClickOutsideModule,
     SdsTabOutsideModule,
-    SdsIconModule
+    SdsIconModule,
   ],
   declarations: [SDSAutocompleteSearchComponent],
-  exports: [SDSAutocompleteSearchComponent]
+  exports: [SDSAutocompleteSearchComponent],
 })
 export class SdsAutocompleteSearchModule {}

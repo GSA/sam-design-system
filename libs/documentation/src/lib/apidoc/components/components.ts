@@ -3,10 +3,10 @@ const COMPONENTS = {
     "interfaces": [
         {
             "name": "DialogPosition",
-            "id": "interface-DialogPosition-cb1ecf9b20ebb1be4b7d4f3f8caeec39",
+            "id": "interface-DialogPosition-dc43c900e9467fbeee3ba3fcf8bb84ec",
             "file": "libs/packages/components/src/lib/dialog/dialog-config.ts",
             "type": "interface",
-            "sourceCode": "import {ViewContainerRef} from '@angular/core';\nimport {Direction} from '@angular/cdk/bidi';\nimport {ScrollStrategy} from '@angular/cdk/overlay';\n\n/** Valid ARIA roles for a dialog element. */\nexport type DialogRole = 'dialog' | 'alertdialog';\n\n/** Possible overrides for a dialog's position. */\nexport interface DialogPosition {\n  /** Override for the dialog's top position. */\n  top?: string;\n\n  /** Override for the dialog's bottom position. */\n  bottom?: string;\n\n  /** Override for the dialog's left position. */\n  left?: string;\n\n  /** Override for the dialog's right position. */\n  right?: string;\n}\n\n/**\n * Configuration for opening a modal dialog with the SdsDialog service.\n */\nexport class SdsDialogConfig<D = any> {\n\n  /**\n   * Where the attached component should live in Angular's *logical* component tree.\n   * This affects what is available for injection and the change detection order for the\n   * component instantiated inside of the dialog. This does not affect where the dialog\n   * content will be rendered.\n   */\n  viewContainerRef?: ViewContainerRef;\n\n  /** ID for the dialog. If omitted, a unique one will be generated. */\n  id?: string;\n\n  /** The ARIA role of the dialog element. */\n  role?: DialogRole = 'dialog';\n\n  /** Custom class for the overlay pane. */\n  panelClass?: string | string[] = '';\n\n  /** Whether the dialog has a backdrop. */\n  hasBackdrop? = true;\n\n  /** Custom class for the backdrop, */\n  backdropClass? = '';\n\n  /** Whether the user can use escape or clicking on the backdrop to close the modal. */\n  disableClose? = false;\n\n  /** Width of the dialog. */\n  width? = '';\n\n  /** Height of the dialog. */\n  height? = '';\n\n  /** Min-width of the dialog. If a number is provided, pixel units are assumed. */\n  minWidth?: number | string;\n\n  /** Min-height of the dialog. If a number is provided, pixel units are assumed. */\n  minHeight?: number | string;\n\n  /** Max-width of the dialog. If a number is provided, pixel units are assumed. Defaults to 80vw */\n  maxWidth?: number | string = '80vw';\n\n  /** Max-height of the dialog. If a number is provided, pixel units are assumed. */\n  maxHeight?: number | string;\n\n  /** Position overrides. */\n  position?: DialogPosition;\n\n  /** Data being injected into the child component. */\n  data?: D | null = null;\n\n  /** Layout direction for the dialog's content. */\n  direction?: Direction;\n\n  /** ID of the element that describes the dialog. */\n  ariaDescribedBy?: string | null = null;\n\n  /** Aria label to assign to the dialog element */\n  ariaLabel?: string | null = null;\n\n  /** Whether the dialog should focus the first focusable element on open. */\n  autoFocus? = true;\n\n  /**\n   * Whether the dialog should restore focus to the\n   * previously-focused element, after it's closed.\n   */\n  restoreFocus? = true;\n\n  /** Scroll strategy to be used for the dialog. */\n  scrollStrategy?: ScrollStrategy;\n\n  /**\n   * Whether the dialog should close when the user goes backwards/forwards in history.\n   * Note that this usually doesn't include clicking on links (unless the user is using\n   * the `HashLocationStrategy`).\n   */\n  closeOnNavigation? = true;\n\n  /**\n   * Wheter the dialog its an alert\n   */\n  alert?: 'warning' | 'info' | 'error';\n\n  /**\n   * Whether to display the close button in dialog header\n   */\n  displayCloseBtn? = true;\n}\n",
+            "sourceCode": "import {ViewContainerRef} from '@angular/core';\nimport {Direction} from '@angular/cdk/bidi';\nimport {ScrollStrategy} from '@angular/cdk/overlay';\n\n/** Valid ARIA roles for a dialog element. */\nexport type DialogRole = 'dialog' | 'alertdialog';\n\n/** Possible overrides for a dialog's position. */\nexport interface DialogPosition {\n  /** Override for the dialog's top position. */\n  top?: string;\n\n  /** Override for the dialog's bottom position. */\n  bottom?: string;\n\n  /** Override for the dialog's left position. */\n  left?: string;\n\n  /** Override for the dialog's right position. */\n  right?: string;\n}\n\n/**\n * Configuration for opening a modal dialog with the SdsDialog service.\n */\nexport class SdsDialogConfig<D = any> {\n\n  /**\n   * Where the attached component should live in Angular's *logical* component tree.\n   * This affects what is available for injection and the change detection order for the\n   * component instantiated inside of the dialog. This does not affect where the dialog\n   * content will be rendered.\n   */\n  viewContainerRef?: ViewContainerRef;\n\n  /** ID for the dialog. If omitted, a unique one will be generated. */\n  id?: string;\n\n  /** The ARIA role of the dialog element. */\n  role?: DialogRole = 'dialog';\n\n  /** Custom class for the overlay pane. */\n  panelClass?: string | string[] = '';\n\n  /** Whether the dialog has a backdrop. */\n  hasBackdrop? = true;\n\n  /** Custom class for the backdrop, */\n  backdropClass? = '';\n\n  /** Whether the user can use escape or clicking on the backdrop to close the modal. */\n  disableClose? = false;\n\n  /** Width of the dialog. */\n  width? = '';\n\n  /** Height of the dialog. */\n  height? = '';\n\n  /** Min-width of the dialog. If a number is provided, pixel units are assumed. */\n  minWidth?: number | string;\n\n  /** Min-height of the dialog. If a number is provided, pixel units are assumed. */\n  minHeight?: number | string;\n\n  /** Max-width of the dialog. If a number is provided, pixel units are assumed. Defaults to 80vw */\n  maxWidth?: number | string = '80vw';\n\n  /** Max-height of the dialog. If a number is provided, pixel units are assumed. */\n  maxHeight?: number | string;\n\n  /** Position overrides. */\n  position?: DialogPosition;\n\n  /** Data being injected into the child component. */\n  data?: D | null = null;\n\n  /** Layout direction for the dialog's content. */\n  direction?: Direction;\n\n  /** ID of the element that describes the dialog. */\n  ariaDescribedBy?: string | null = null;\n\n  /** Aria label to assign to the dialog element */\n  ariaLabel?: string | null = null;\n\n  /** Whether the dialog should focus the first focusable element on open. */\n  autoFocus? = true;\n\n  /**\n   * Whether the dialog should restore focus to the\n   * previously-focused element, after it's closed.\n   */\n  restoreFocus? = true;\n\n  /** Scroll strategy to be used for the dialog. */\n  scrollStrategy?: ScrollStrategy;\n\n  /**\n   * Whether the dialog should close when the user goes backwards/forwards in history.\n   * Note that this usually doesn't include clicking on links (unless the user is using\n   * the `HashLocationStrategy`).\n   */\n  closeOnNavigation? = true;\n\n  /**\n   * Wheter the dialog its an alert\n   */\n  alert?: 'warning' | 'info' | 'error';\n\n  /**\n   * Whether to display the close button in dialog header\n   */\n  displayCloseBtn? = true;\n\n  /**\n   * Whether dialog is a slide-out. Changes enter and exit animation, and adds\n   * class `dialog-slide-out` to container\n   */\n  slideOut? = false;\n}\n",
             "properties": [
                 {
                     "name": "bottom",
@@ -77,10 +77,10 @@ const COMPONENTS = {
         },
         {
             "name": "InitPxVideoConfig",
-            "id": "interface-InitPxVideoConfig-630c9e0ff7d8166c732c26d489786df8",
+            "id": "interface-InitPxVideoConfig-937e6d0c4279f2320a2f0ab602d8f0a4",
             "file": "libs/packages/components/src/lib/video-player/video-player.component.ts",
             "type": "interface",
-            "sourceCode": "import { Component,ViewChild, Input,ElementRef, AfterViewInit, ViewEncapsulation } from '@angular/core';\nimport { GLOBAL_STRINGS } from 'accessible-html5-video-player/js/strings.js';\nimport * as InitPxVideo from 'accessible-html5-video-player/js/px-video.js';\nimport { VPInterface } from './video-player';\n\ninterface InitPxVideoConfig {\n  \"videoId\": string,\n  \"captionsOnDefault\": boolean,\n  \"seekInterval\": number,\n  \"videoTitle\": string,\n  \"debug\": boolean\n}\n\ndeclare const GLOBAL_STRINGS: any;\n\ndeclare class InitPxVideo {\n  constructor(config: InitPxVideoConfig);\n}\n\n@Component({\n  selector: 'sds-video-player',\n  templateUrl: './video-player.component.html',\n  styleUrls: ['./css/px-video.css'],\n  encapsulation: ViewEncapsulation.None\n})\nexport class SdsVideoPlayerComponent implements AfterViewInit {\n  @Input() VPConfiguration: VPInterface;\n  @ViewChild('video') video: ElementRef;\n  private config: InitPxVideoConfig;\n\n  @Input() crossorigin = \"\";\n  ngAfterViewInit() {\n    if (this.crossorigin) {\n      const id = document.getElementById('videoPlayer');\n      id.setAttribute('crossorigin', this.crossorigin);\n    }\n    this.config = {\n      videoId: this.VPConfiguration.id,\n      captionsOnDefault: false,\n      seekInterval: this.VPConfiguration.seekInterval,\n      videoTitle: 'Video Player',\n      debug: this.VPConfiguration.debug\n    }\n\n    new InitPxVideo(this.config);\n    this.video.nativeElement.setAttribute(\"style\", \"width:\"+this.VPConfiguration.width+\";\");\n    \n  }\n\n  constructor() {\n}\n\n}\n",
+            "sourceCode": "import { Component,ViewChild, Input,ElementRef, AfterViewInit, ViewEncapsulation, Renderer2 } from '@angular/core';\nimport { GLOBAL_STRINGS } from 'accessible-html5-video-player/js/strings.js';\nimport * as InitPxVideo from 'accessible-html5-video-player/js/px-video.js';\nimport { VPInterface } from './video-player';\n\ninterface InitPxVideoConfig {\n  \"videoId\": string,\n  \"captionsOnDefault\": boolean,\n  \"seekInterval\": number,\n  \"videoTitle\": string,\n  \"debug\": boolean\n}\n\ndeclare const GLOBAL_STRINGS: any;\n\ndeclare class InitPxVideo {\n  constructor(config: InitPxVideoConfig);\n}\n\n@Component({\n  selector: 'sds-video-player',\n  templateUrl: './video-player.component.html',\n  styleUrls: ['./css/px-video.css'],\n  encapsulation: ViewEncapsulation.None\n})\nexport class SdsVideoPlayerComponent implements AfterViewInit {\n  @Input() VPConfiguration: VPInterface;\n  @ViewChild('video') video: ElementRef;\n  private config: InitPxVideoConfig;\n\n  @Input() crossorigin = \"\";\n\n  constructor(\n    private elementRef: ElementRef,\n    private renderer2: Renderer2,\n  ) {}\n\n  ngAfterViewInit() {\n    if (this.crossorigin) {\n      const id = document.getElementById('videoPlayer');\n      id.setAttribute('crossorigin', this.crossorigin);\n    }\n    this.config = {\n      videoId: this.VPConfiguration.id,\n      captionsOnDefault: false,\n      seekInterval: this.VPConfiguration.seekInterval,\n      videoTitle: 'Video Player',\n      debug: this.VPConfiguration.debug\n    }\n\n    new InitPxVideo(this.config);\n    this.video.nativeElement.setAttribute(\"style\", \"width:\"+this.VPConfiguration.width+\";\");\n\n    const progressElement: HTMLProgressElement= this.elementRef.nativeElement.querySelector('progress');\n\n    this.renderer2.setAttribute(progressElement, 'aria-label', this.VPConfiguration.description + ' progress bar');\n  }\n\n}\n",
             "properties": [
                 {
                     "name": "captionsOnDefault",
@@ -475,7 +475,7 @@ const COMPONENTS = {
     "injectables": [
         {
             "name": "SdsDialogService",
-            "id": "injectable-SdsDialogService-6429059d9697a36bc859ee95c621f68e",
+            "id": "injectable-SdsDialogService-20484071e70a1983928235d992d346ef",
             "file": "libs/packages/components/src/lib/dialog/dialog.ts",
             "properties": [
                 {
@@ -484,7 +484,7 @@ const COMPONENTS = {
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 64,
+                    "line": 79,
                     "modifierKind": [
                         112,
                         132
@@ -496,7 +496,7 @@ const COMPONENTS = {
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 65,
+                    "line": 80,
                     "modifierKind": [
                         112,
                         132
@@ -508,7 +508,7 @@ const COMPONENTS = {
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 66,
+                    "line": 81,
                     "modifierKind": [
                         112
                     ]
@@ -519,7 +519,7 @@ const COMPONENTS = {
                     "type": "SdsDialogRef<any>[]",
                     "optional": false,
                     "description": "",
-                    "line": 63,
+                    "line": 78,
                     "modifierKind": [
                         112
                     ]
@@ -529,7 +529,17 @@ const COMPONENTS = {
                     "type": "function",
                     "optional": false,
                     "description": "",
-                    "line": 67,
+                    "line": 82,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_slideOutScrollStrategy",
+                    "type": "function",
+                    "optional": false,
+                    "description": "",
+                    "line": 83,
                     "modifierKind": [
                         112
                     ]
@@ -540,7 +550,7 @@ const COMPONENTS = {
                     "type": "Observable<void>",
                     "optional": false,
                     "description": "<p>Stream that emits when all open dialog have finished closing.\nWill emit on subscribe if there are no open dialogs to begin with.</p>\n",
-                    "line": 88,
+                    "line": 104,
                     "modifierKind": [
                         132
                     ]
@@ -562,7 +572,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "SdsDialogContainerComponent",
                     "typeParameters": [],
-                    "line": 225,
+                    "line": 243,
                     "description": "<p>Attaches an SdsDialogContainerComponent to a dialog&#39;s already-created overlay.</p>\n",
                     "modifierKind": [
                         112
@@ -570,15 +580,15 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 7587,
-                                "end": 7594,
+                                "pos": 8327,
+                                "end": 8334,
                                 "flags": 0,
                                 "escapedText": "overlay"
                             },
                             "type": "OverlayRef",
                             "tagName": {
-                                "pos": 7581,
-                                "end": 7586,
+                                "pos": 8321,
+                                "end": 8326,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -586,15 +596,15 @@ const COMPONENTS = {
                         },
                         {
                             "name": {
-                                "pos": 7653,
-                                "end": 7659,
+                                "pos": 8393,
+                                "end": 8399,
                                 "flags": 0,
                                 "escapedText": "config"
                             },
                             "type": "SdsDialogConfig",
                             "tagName": {
-                                "pos": 7647,
-                                "end": 7652,
+                                "pos": 8387,
+                                "end": 8392,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -602,8 +612,8 @@ const COMPONENTS = {
                         },
                         {
                             "tagName": {
-                                "pos": 7692,
-                                "end": 7699,
+                                "pos": 8432,
+                                "end": 8439,
                                 "flags": 0,
                                 "escapedText": "returns"
                             },
@@ -637,7 +647,7 @@ const COMPONENTS = {
                         "T",
                         "R"
                     ],
-                    "line": 246,
+                    "line": 264,
                     "description": "<p>Attaches the user-provided component to the already-created SdsDialogContainerComponent.</p>\n",
                     "modifierKind": [
                         112
@@ -645,15 +655,15 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 8465,
-                                "end": 8487,
+                                "pos": 9205,
+                                "end": 9227,
                                 "flags": 0,
                                 "escapedText": "componentOrTemplateRef"
                             },
                             "type": "ComponentType<T> | TemplateRef<T>",
                             "tagName": {
-                                "pos": 8459,
-                                "end": 8464,
+                                "pos": 9199,
+                                "end": 9204,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -661,15 +671,15 @@ const COMPONENTS = {
                         },
                         {
                             "name": {
-                                "pos": 8609,
-                                "end": 8624,
+                                "pos": 9349,
+                                "end": 9364,
                                 "flags": 0,
                                 "escapedText": "dialogContainer"
                             },
                             "type": "SdsDialogContainerComponent",
                             "tagName": {
-                                "pos": 8603,
-                                "end": 8608,
+                                "pos": 9343,
+                                "end": 9348,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -677,15 +687,15 @@ const COMPONENTS = {
                         },
                         {
                             "name": {
-                                "pos": 8692,
-                                "end": 8702,
+                                "pos": 9432,
+                                "end": 9442,
                                 "flags": 0,
                                 "escapedText": "overlayRef"
                             },
                             "type": "OverlayRef",
                             "tagName": {
-                                "pos": 8686,
-                                "end": 8691,
+                                "pos": 9426,
+                                "end": 9431,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -693,15 +703,15 @@ const COMPONENTS = {
                         },
                         {
                             "name": {
-                                "pos": 8769,
-                                "end": 8775,
+                                "pos": 9509,
+                                "end": 9515,
                                 "flags": 0,
                                 "escapedText": "config"
                             },
                             "type": "SdsDialogConfig",
                             "tagName": {
-                                "pos": 8763,
-                                "end": 8768,
+                                "pos": 9503,
+                                "end": 9508,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -709,8 +719,8 @@ const COMPONENTS = {
                         },
                         {
                             "tagName": {
-                                "pos": 8808,
-                                "end": 8815,
+                                "pos": 9548,
+                                "end": 9555,
                                 "flags": 0,
                                 "escapedText": "returns"
                             },
@@ -729,7 +739,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 373,
+                    "line": 391,
                     "description": "<p>Closes all of the dialogs in an array. </p>\n",
                     "modifierKind": [
                         112
@@ -765,7 +775,7 @@ const COMPONENTS = {
                     "typeParameters": [
                         "T"
                     ],
-                    "line": 292,
+                    "line": 310,
                     "description": "<p>Creates a custom injector to be used inside the dialog. This allows a component loaded inside\nof a dialog to close itself and, optionally, to return a value.</p>\n",
                     "modifierKind": [
                         112
@@ -773,15 +783,15 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 10449,
-                                "end": 10455,
+                                "pos": 11189,
+                                "end": 11195,
                                 "flags": 0,
                                 "escapedText": "config"
                             },
                             "type": "SdsDialogConfig",
                             "tagName": {
-                                "pos": 10443,
-                                "end": 10448,
+                                "pos": 11183,
+                                "end": 11188,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -789,15 +799,15 @@ const COMPONENTS = {
                         },
                         {
                             "name": {
-                                "pos": 10520,
-                                "end": 10529,
+                                "pos": 11260,
+                                "end": 11269,
                                 "flags": 0,
                                 "escapedText": "dialogRef"
                             },
                             "type": "SdsDialogRef<T>",
                             "tagName": {
-                                "pos": 10514,
-                                "end": 10519,
+                                "pos": 11254,
+                                "end": 11259,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -812,8 +822,8 @@ const COMPONENTS = {
                         },
                         {
                             "tagName": {
-                                "pos": 10640,
-                                "end": 10647,
+                                "pos": 11380,
+                                "end": 11387,
                                 "flags": 0,
                                 "escapedText": "returns"
                             },
@@ -832,7 +842,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "OverlayRef",
                     "typeParameters": [],
-                    "line": 188,
+                    "line": 206,
                     "description": "<p>Creates the overlay into which the dialog will be loaded.</p>\n",
                     "modifierKind": [
                         112
@@ -840,15 +850,15 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 6307,
-                                "end": 6313,
+                                "pos": 6988,
+                                "end": 6994,
                                 "flags": 0,
                                 "escapedText": "config"
                             },
                             "type": "SdsDialogConfig",
                             "tagName": {
-                                "pos": 6301,
-                                "end": 6306,
+                                "pos": 6982,
+                                "end": 6987,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -856,8 +866,8 @@ const COMPONENTS = {
                         },
                         {
                             "tagName": {
-                                "pos": 6346,
-                                "end": 6353,
+                                "pos": 7027,
+                                "end": 7034,
                                 "flags": 0,
                                 "escapedText": "returns"
                             },
@@ -876,7 +886,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "OverlayConfig",
                     "typeParameters": [],
-                    "line": 198,
+                    "line": 216,
                     "description": "<p>Creates an overlay config from a dialog config.</p>\n",
                     "modifierKind": [
                         112
@@ -884,15 +894,15 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 6669,
-                                "end": 6681,
+                                "pos": 7350,
+                                "end": 7362,
                                 "flags": 0,
                                 "escapedText": "dialogConfig"
                             },
                             "type": "SdsDialogConfig",
                             "tagName": {
-                                "pos": 6663,
-                                "end": 6668,
+                                "pos": 7344,
+                                "end": 7349,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -900,8 +910,8 @@ const COMPONENTS = {
                         },
                         {
                             "tagName": {
-                                "pos": 6714,
-                                "end": 6721,
+                                "pos": 7395,
+                                "end": 7402,
                                 "flags": 0,
                                 "escapedText": "returns"
                             },
@@ -915,7 +925,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 350,
+                    "line": 368,
                     "description": "<p>Hides all of the content that isn&#39;t an overlay from assistive technology.</p>\n",
                     "modifierKind": [
                         112
@@ -932,7 +942,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 324,
+                    "line": 342,
                     "description": "<p>Removes a dialog from the array of open dialogs.</p>\n",
                     "modifierKind": [
                         112
@@ -940,15 +950,15 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 11919,
-                                "end": 11928,
+                                "pos": 12659,
+                                "end": 12668,
                                 "flags": 0,
                                 "escapedText": "dialogRef"
                             },
                             "type": "SdsDialogRef<any>",
                             "tagName": {
-                                "pos": 11913,
-                                "end": 11918,
+                                "pos": 12653,
+                                "end": 12658,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -962,7 +972,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 163,
+                    "line": 181,
                     "description": "<p>Closes all of the currently-open dialogs.</p>\n"
                 },
                 {
@@ -976,20 +986,20 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "SdsDialogRef | undefined",
                     "typeParameters": [],
-                    "line": 171,
+                    "line": 189,
                     "description": "<p>Finds an open dialog by its id.</p>\n",
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5773,
-                                "end": 5775,
+                                "pos": 6454,
+                                "end": 6456,
                                 "flags": 0,
                                 "escapedText": "id"
                             },
                             "type": "string",
                             "tagName": {
-                                "pos": 5767,
-                                "end": 5772,
+                                "pos": 6448,
+                                "end": 6453,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -1003,7 +1013,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 175
+                    "line": 193
                 },
                 {
                     "name": "open",
@@ -1025,20 +1035,20 @@ const COMPONENTS = {
                         "D",
                         "R"
                     ],
-                    "line": 110,
+                    "line": 128,
                     "description": "<p>Opens a modal dialog containing the given component.</p>\n",
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 3690,
-                                "end": 3712,
+                                "pos": 4371,
+                                "end": 4393,
                                 "flags": 0,
                                 "escapedText": "componentOrTemplateRef"
                             },
                             "type": "ComponentType<T> | TemplateRef<T>",
                             "tagName": {
-                                "pos": 3684,
-                                "end": 3689,
+                                "pos": 4365,
+                                "end": 4370,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -1046,16 +1056,16 @@ const COMPONENTS = {
                         },
                         {
                             "name": {
-                                "pos": 3836,
-                                "end": 3842,
+                                "pos": 4517,
+                                "end": 4523,
                                 "flags": 0,
                                 "escapedText": "config"
                             },
                             "type": "SdsDialogConfig<D>",
                             "optional": true,
                             "tagName": {
-                                "pos": 3830,
-                                "end": 3835,
+                                "pos": 4511,
+                                "end": 4516,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -1063,8 +1073,8 @@ const COMPONENTS = {
                         },
                         {
                             "tagName": {
-                                "pos": 3878,
-                                "end": 3885,
+                                "pos": 4559,
+                                "end": 4566,
                                 "flags": 0,
                                 "escapedText": "returns"
                             },
@@ -1074,7 +1084,7 @@ const COMPONENTS = {
                 }
             ],
             "description": "<p>Service to open modal dialogs.</p>\n",
-            "sourceCode": "import {Directionality} from '@angular/cdk/bidi';\nimport {\n  Overlay,\n  OverlayConfig,\n  OverlayContainer,\n  OverlayRef,\n  ScrollStrategy,\n} from '@angular/cdk/overlay';\nimport {ComponentPortal, ComponentType, PortalInjector, TemplatePortal} from '@angular/cdk/portal';\nimport {Location} from '@angular/common';\nimport {\n  Inject,\n  Injectable,\n  InjectionToken,\n  Injector,\n  OnDestroy,\n  Optional,\n  SkipSelf,\n  TemplateRef,\n} from '@angular/core';\nimport {defer, Observable, of as observableOf, Subject} from 'rxjs';\nimport {startWith} from 'rxjs/operators';\nimport {SdsDialogConfig} from './dialog-config';\nimport {SdsDialogContainerComponent} from './dialog-container.component';\nimport {SdsDialogRef} from './dialog-ref';\n\n\n/** Injection token that can be used to access the data that was passed in to a dialog. */\nexport const SDS_DIALOG_DATA = new InjectionToken<any>('SdsDialogData');\n\n/** Injection token that can be used to specify default dialog options. */\nexport const SDS_DIALOG_DEFAULT_OPTIONS =\n    new InjectionToken<SdsDialogConfig>('sds-dialog-default-options');\n\n/** Injection token that determines the scroll handling while the dialog is open. */\nexport const SDS_DIALOG_SCROLL_STRATEGY =\n    new InjectionToken<() => ScrollStrategy>('sds-dialog-scroll-strategy');\n\n/** @docs-private */\nexport function SDS_DIALOG_SCROLL_STRATEGY_FACTORY(overlay: Overlay): () => ScrollStrategy {\n  return () => overlay.scrollStrategies.block();\n}\n\n/** @docs-private */\nexport function SDS_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY(overlay: Overlay):\n  () => ScrollStrategy {\n  return () => overlay.scrollStrategies.block();\n}\n\n/** @docs-private */\nexport const SDS_DIALOG_SCROLL_STRATEGY_PROVIDER = {\n  provide: SDS_DIALOG_SCROLL_STRATEGY,\n  deps: [Overlay],\n  useFactory: SDS_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY,\n};\n\n\n/**\n * Service to open modal dialogs.\n */\n@Injectable()\nexport class SdsDialogService implements OnDestroy {\n  private _openDialogsAtThisLevel: SdsDialogRef<any>[] = [];\n  private readonly _afterAllClosedAtThisLevel = new Subject<void>();\n  private readonly _afterOpenedAtThisLevel = new Subject<SdsDialogRef<any>>();\n  private _ariaHiddenElements = new Map<Element, string|null>();\n  private _scrollStrategy: () => ScrollStrategy;\n\n  /** Keeps track of the currently-open dialogs. */\n  get openDialogs(): SdsDialogRef<any>[] {\n    return this._parentDialog ? this._parentDialog.openDialogs : this._openDialogsAtThisLevel;\n  }\n\n  /** Stream that emits when a dialog has been opened. */\n  get afterOpened(): Subject<SdsDialogRef<any>> {\n    return this._parentDialog ? this._parentDialog.afterOpened : this._afterOpenedAtThisLevel;\n  }\n\n  get _afterAllClosed(): Subject<void> {\n    const parent = this._parentDialog;\n    return parent ? parent._afterAllClosed : this._afterAllClosedAtThisLevel;\n  }\n\n  /**\n   * Stream that emits when all open dialog have finished closing.\n   * Will emit on subscribe if there are no open dialogs to begin with.\n   */\n  readonly afterAllClosed: Observable<void> = defer<void>(() => this.openDialogs.length ?\n      this._afterAllClosed :\n      this._afterAllClosed.pipe(startWith(undefined)));\n\n  constructor(\n      private _overlay: Overlay,\n      private _injector: Injector,\n      @Optional() private _location: Location,\n      @Optional() @Inject(SDS_DIALOG_DEFAULT_OPTIONS) private _defaultOptions: SdsDialogConfig,\n      @Inject(SDS_DIALOG_SCROLL_STRATEGY) scrollStrategy: any,\n      @Optional() @SkipSelf() private _parentDialog: SdsDialogService,\n      private _overlayContainer: OverlayContainer) {\n    this._scrollStrategy = scrollStrategy;\n  }\n\n  /**\n   * Opens a modal dialog containing the given component.\n   * @param componentOrTemplateRef Type of the component to load into the dialog,\n   *     or a TemplateRef to instantiate as the dialog content.\n   * @param config Extra configuration options.\n   * @returns Reference to the newly-opened dialog.\n   */\n  open<T, D = any, R = any>(componentOrTemplateRef: ComponentType<T> | TemplateRef<T>,\n          config?: SdsDialogConfig<D>): SdsDialogRef<T, R> {\n\n    // Convenience widths names: small | medium | large\n    // added to help with standardization\n    if (config && config.width) {\n      switch (config.width) {\n        case 'small': {\n          config.width = '370px';\n          break;\n        }\n        case 'medium': {\n          config.width = '730px';\n          break;\n        }\n        case 'large': {\n          config.width = '960px';\n          break;\n        }\n        default: {\n          break;\n        }\n      }\n    }\n\n    config = _applyConfigDefaults(config, this._defaultOptions || new SdsDialogConfig());\n\n    if (config.id && this.getDialogById(config.id)) {\n      throw Error(`Dialog with id \"${config.id}\" exists already. The dialog id must be unique.`);\n    }\n\n    const overlayRef = this._createOverlay(config);\n    const dialogContainer = this._attachDialogContainer(overlayRef, config);\n    const dialogRef = this._attachDialogContent<T, R>(componentOrTemplateRef,\n                                                      dialogContainer,\n                                                      overlayRef,\n                                                      config);\n\n    // If this is the first dialog that we're opening, hide all the non-overlay content.\n    if (!this.openDialogs.length) {\n      this._hideNonDialogContentFromAssistiveTechnology();\n    }\n\n    this.openDialogs.push(dialogRef);\n    dialogRef.afterClosed().subscribe(() => this._removeOpenDialog(dialogRef));\n    this.afterOpened.next(dialogRef);\n\n    return dialogRef;\n  }\n\n  /**\n   * Closes all of the currently-open dialogs.\n   */\n  closeAll(): void {\n    this._closeDialogs(this.openDialogs);\n  }\n\n  /**\n   * Finds an open dialog by its id.\n   * @param id ID to use when looking up the dialog.\n   */\n  getDialogById(id: string): SdsDialogRef<any> | undefined {\n    return this.openDialogs.find(dialog => dialog.id === id);\n  }\n\n  ngOnDestroy() {\n    // Only close the dialogs at this level on destroy\n    // since the parent service may still be active.\n    this._closeDialogs(this._openDialogsAtThisLevel);\n    this._afterAllClosedAtThisLevel.complete();\n    this._afterOpenedAtThisLevel.complete();\n  }\n\n  /**\n   * Creates the overlay into which the dialog will be loaded.\n   * @param config The dialog configuration.\n   * @returns A promise resolving to the OverlayRef for the created overlay.\n   */\n  private _createOverlay(config: SdsDialogConfig): OverlayRef {\n    const overlayConfig = this._getOverlayConfig(config);\n    return this._overlay.create(overlayConfig);\n  }\n\n  /**\n   * Creates an overlay config from a dialog config.\n   * @param dialogConfig The dialog configuration.\n   * @returns The overlay configuration.\n   */\n  private _getOverlayConfig(dialogConfig: SdsDialogConfig): OverlayConfig {\n    const state = new OverlayConfig({\n      positionStrategy: this._overlay.position().global(),\n      scrollStrategy: dialogConfig.scrollStrategy || this._scrollStrategy(),\n      panelClass: dialogConfig.panelClass,\n      hasBackdrop: dialogConfig.hasBackdrop,\n      direction: dialogConfig.direction,\n      minWidth: dialogConfig.minWidth,\n      minHeight: dialogConfig.minHeight,\n      maxWidth: dialogConfig.maxWidth,\n      maxHeight: dialogConfig.maxHeight,\n      disposeOnNavigation: dialogConfig.closeOnNavigation\n    });\n\n    if (dialogConfig.backdropClass) {\n      state.backdropClass = dialogConfig.backdropClass;\n    }\n\n    return state;\n  }\n\n  /**\n   * Attaches an SdsDialogContainerComponent to a dialog's already-created overlay.\n   * @param overlay Reference to the dialog's underlying overlay.\n   * @param config The dialog configuration.\n   * @returns A promise resolving to a ComponentRef for the attached container.\n   */\n  private _attachDialogContainer(overlay: OverlayRef, config: SdsDialogConfig): SdsDialogContainerComponent {\n    const userInjector = config && config.viewContainerRef && config.viewContainerRef.injector;\n    const injector = new PortalInjector(userInjector || this._injector, new WeakMap([\n      [SdsDialogConfig, config]\n    ]));\n    const containerPortal =\n        new ComponentPortal(SdsDialogContainerComponent, config.viewContainerRef, injector);\n    const containerRef = overlay.attach<SdsDialogContainerComponent>(containerPortal);\n\n    return containerRef.instance;\n  }\n\n  /**\n   * Attaches the user-provided component to the already-created SdsDialogContainerComponent.\n   * @param componentOrTemplateRef The type of component being loaded into the dialog,\n   *     or a TemplateRef to instantiate as the content.\n   * @param dialogContainer Reference to the wrapping SdsDialogContainerComponent.\n   * @param overlayRef Reference to the overlay in which the dialog resides.\n   * @param config The dialog configuration.\n   * @returns A promise resolving to the SdsDialogRef that should be returned to the user.\n   */\n  private _attachDialogContent<T, R>(\n      componentOrTemplateRef: ComponentType<T> | TemplateRef<T>,\n      dialogContainer: SdsDialogContainerComponent,\n      overlayRef: OverlayRef,\n      config: SdsDialogConfig): SdsDialogRef<T, R> {\n\n    // Create a reference to the dialog we're creating in order to give the user a handle\n    // to modify and close it.\n    const dialogRef =\n        new SdsDialogRef<T, R>(overlayRef, dialogContainer, this._location, config.id);\n\n    // When the dialog backdrop is clicked, we want to close it.\n    if (config.hasBackdrop) {\n      overlayRef.backdropClick().subscribe(() => {\n        if (!dialogRef.disableClose) {\n          dialogRef.close();\n        }\n      });\n    }\n\n    if (componentOrTemplateRef instanceof TemplateRef) {\n      dialogContainer.attachTemplatePortal(\n        new TemplatePortal<T>(componentOrTemplateRef, null!,\n          <any>{ $implicit: config.data, dialogRef }));\n    } else {\n      const injector = this._createInjector<T>(config, dialogRef, dialogContainer);\n      const contentRef = dialogContainer.attachComponentPortal<T>(\n          new ComponentPortal(componentOrTemplateRef, undefined, injector));\n      dialogRef.componentInstance = contentRef.instance;\n    }\n\n    dialogRef\n      .updateSize(config.width, config.height)\n      .updatePosition(config.position);\n\n    return dialogRef;\n  }\n\n  /**\n   * Creates a custom injector to be used inside the dialog. This allows a component loaded inside\n   * of a dialog to close itself and, optionally, to return a value.\n   * @param config Config object that is used to construct the dialog.\n   * @param dialogRef Reference to the dialog.\n   * @param container Dialog container element that wraps all of the contents.\n   * @returns The custom injector that can be used inside the dialog.\n   */\n  private _createInjector<T>(\n      config: SdsDialogConfig,\n      dialogRef: SdsDialogRef<T>,\n      dialogContainer: SdsDialogContainerComponent): PortalInjector {\n\n    const userInjector = config && config.viewContainerRef && config.viewContainerRef.injector;\n\n    // The SdsDialogContainerComponent is injected in the portal as the SdsDialogContainerComponent and the dialog's\n    // content are created out of the same ViewContainerRef and as such, are siblings for injector\n    // purposes. To allow the hierarchy that is expected, the SdsDialogContainerComponent is explicitly\n    // added to the injection tokens.\n    const injectionTokens = new WeakMap<any, any>([\n      [SdsDialogContainerComponent, dialogContainer],\n      [SDS_DIALOG_DATA, config.data],\n      [SdsDialogRef, dialogRef]\n    ]);\n\n    if (config.direction &&\n        (!userInjector || !userInjector.get<Directionality | null>(Directionality, null))) {\n      injectionTokens.set(Directionality, {\n        value: config.direction,\n        change: observableOf()\n      });\n    }\n\n    return new PortalInjector(userInjector || this._injector, injectionTokens);\n  }\n\n  /**\n   * Removes a dialog from the array of open dialogs.\n   * @param dialogRef Dialog to be removed.\n   */\n  private _removeOpenDialog(dialogRef: SdsDialogRef<any>) {\n    const index = this.openDialogs.indexOf(dialogRef);\n\n    if (index > -1) {\n      this.openDialogs.splice(index, 1);\n\n      // If all the dialogs were closed, remove/restore the `aria-hidden`\n      // to a the siblings and emit to the `afterAllClosed` stream.\n      if (!this.openDialogs.length) {\n        this._ariaHiddenElements.forEach((previousValue, element) => {\n          if (previousValue) {\n            element.setAttribute('aria-hidden', previousValue);\n          } else {\n            element.removeAttribute('aria-hidden');\n          }\n        });\n\n        this._ariaHiddenElements.clear();\n        this._afterAllClosed.next();\n      }\n    }\n  }\n\n  /**\n   * Hides all of the content that isn't an overlay from assistive technology.\n   */\n  private _hideNonDialogContentFromAssistiveTechnology() {\n    const overlayContainer = this._overlayContainer.getContainerElement();\n\n    // Ensure that the overlay container is attached to the DOM.\n    if (overlayContainer.parentElement) {\n      const siblings = overlayContainer.parentElement.children;\n\n      for (let i = siblings.length - 1; i > -1; i--) {\n        const sibling = siblings[i];\n\n        if (sibling !== overlayContainer &&\n          sibling.nodeName !== 'SCRIPT' &&\n          sibling.nodeName !== 'STYLE' &&\n          !sibling.hasAttribute('aria-live')) {\n\n          this._ariaHiddenElements.set(sibling, sibling.getAttribute('aria-hidden'));\n          sibling.setAttribute('aria-hidden', 'true');\n        }\n      }\n    }\n  }\n\n  /** Closes all of the dialogs in an array. */\n  private _closeDialogs(dialogs: SdsDialogRef<any>[]) {\n    let i = dialogs.length;\n\n    while (i--) {\n      // The `_openDialogs` property isn't updated after close until the rxjs subscription\n      // runs on the next microtask, in addition to modifying the array as we're going\n      // through it. We loop through all of them and call close without assuming that\n      // they'll be removed from the list instantaneously.\n      dialogs[i].close();\n    }\n  }\n\n}\n\n/**\n * Applies default options to the dialog config.\n * @param config Config to be modified.\n * @param defaultOptions Default options provided.\n * @returns The new configuration object.\n */\nfunction _applyConfigDefaults(\n    config?: SdsDialogConfig, defaultOptions?: SdsDialogConfig): SdsDialogConfig {\n  return {...defaultOptions, ...config};\n}\n",
+            "sourceCode": "import {Directionality} from '@angular/cdk/bidi';\nimport {\n  Overlay,\n  OverlayConfig,\n  OverlayContainer,\n  OverlayRef,\n  ScrollStrategy,\n} from '@angular/cdk/overlay';\nimport {ComponentPortal, ComponentType, PortalInjector, TemplatePortal} from '@angular/cdk/portal';\nimport {Location} from '@angular/common';\nimport {\n  Inject,\n  Injectable,\n  InjectionToken,\n  Injector,\n  OnDestroy,\n  Optional,\n  SkipSelf,\n  TemplateRef,\n} from '@angular/core';\nimport {defer, Observable, of as observableOf, Subject} from 'rxjs';\nimport {startWith} from 'rxjs/operators';\nimport {SdsDialogConfig} from './dialog-config';\nimport {SdsDialogContainerComponent} from './dialog-container.component';\nimport {SdsDialogRef} from './dialog-ref';\n\n\n/** Injection token that can be used to access the data that was passed in to a dialog. */\nexport const SDS_DIALOG_DATA = new InjectionToken<any>('SdsDialogData');\n\n/** Injection token that can be used to specify default dialog options. */\nexport const SDS_DIALOG_DEFAULT_OPTIONS =\n    new InjectionToken<SdsDialogConfig>('sds-dialog-default-options');\n\n/** Injection token that determines the scroll handling while the dialog is open. */\nexport const SDS_DIALOG_SCROLL_STRATEGY =\n    new InjectionToken<() => ScrollStrategy>('sds-dialog-scroll-strategy');\n\nexport const SDS_SLIDE_OUT_SCROLL_STRATEGY =\n  new InjectionToken<() => ScrollStrategy>('sds-slide-out-scroll-strategy');\n\n/** @docs-private */\nexport function SDS_DIALOG_SCROLL_STRATEGY_FACTORY(overlay: Overlay): () => ScrollStrategy {\n  return () => overlay.scrollStrategies.block();\n}\n\n/** @docs-private */\nexport function SDS_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY(overlay: Overlay):\n  () => ScrollStrategy {\n  return () => overlay.scrollStrategies.block();\n}\n\n/** @docs-private */\nexport function SDS_SLIDE_OUT_SCROLL_STRATEGY_PROVIDER_FACTORY(overlay: Overlay):\n  () => ScrollStrategy {\n  return () => overlay.scrollStrategies.reposition();\n}\n\n/** @docs-private */\nexport const SDS_DIALOG_SCROLL_STRATEGY_PROVIDER = {\n  provide: SDS_DIALOG_SCROLL_STRATEGY,\n  deps: [Overlay],\n  useFactory: SDS_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY,\n};\n\nexport const SDS_SLIDE_OUT_SCROLL_STRATEGY_PROVIDER = {\n  provide: SDS_SLIDE_OUT_SCROLL_STRATEGY,\n  deps: [Overlay],\n  useFactory: SDS_SLIDE_OUT_SCROLL_STRATEGY_PROVIDER_FACTORY,\n};\n\n\n/**\n * Service to open modal dialogs.\n */\n@Injectable()\nexport class SdsDialogService implements OnDestroy {\n  private _openDialogsAtThisLevel: SdsDialogRef<any>[] = [];\n  private readonly _afterAllClosedAtThisLevel = new Subject<void>();\n  private readonly _afterOpenedAtThisLevel = new Subject<SdsDialogRef<any>>();\n  private _ariaHiddenElements = new Map<Element, string|null>();\n  private _scrollStrategy: () => ScrollStrategy;\n  private _slideOutScrollStrategy: () => ScrollStrategy;\n\n  /** Keeps track of the currently-open dialogs. */\n  get openDialogs(): SdsDialogRef<any>[] {\n    return this._parentDialog ? this._parentDialog.openDialogs : this._openDialogsAtThisLevel;\n  }\n\n  /** Stream that emits when a dialog has been opened. */\n  get afterOpened(): Subject<SdsDialogRef<any>> {\n    return this._parentDialog ? this._parentDialog.afterOpened : this._afterOpenedAtThisLevel;\n  }\n\n  get _afterAllClosed(): Subject<void> {\n    const parent = this._parentDialog;\n    return parent ? parent._afterAllClosed : this._afterAllClosedAtThisLevel;\n  }\n\n  /**\n   * Stream that emits when all open dialog have finished closing.\n   * Will emit on subscribe if there are no open dialogs to begin with.\n   */\n  readonly afterAllClosed: Observable<void> = defer<void>(() => this.openDialogs.length ?\n      this._afterAllClosed :\n      this._afterAllClosed.pipe(startWith(undefined)));\n\n  constructor(\n      private _overlay: Overlay,\n      private _injector: Injector,\n      @Optional() private _location: Location,\n      @Optional() @Inject(SDS_DIALOG_DEFAULT_OPTIONS) private _defaultOptions: SdsDialogConfig,\n      @Inject(SDS_DIALOG_SCROLL_STRATEGY) scrollStrategy: any,\n      @Inject(SDS_SLIDE_OUT_SCROLL_STRATEGY) slideOutScrollStrategy: any,\n      @Optional() @SkipSelf() private _parentDialog: SdsDialogService,\n      private _overlayContainer: OverlayContainer) {\n    this._scrollStrategy = scrollStrategy;\n    this._slideOutScrollStrategy = slideOutScrollStrategy;\n  }\n\n  /**\n   * Opens a modal dialog containing the given component.\n   * @param componentOrTemplateRef Type of the component to load into the dialog,\n   *     or a TemplateRef to instantiate as the dialog content.\n   * @param config Extra configuration options.\n   * @returns Reference to the newly-opened dialog.\n   */\n  open<T, D = any, R = any>(componentOrTemplateRef: ComponentType<T> | TemplateRef<T>,\n          config?: SdsDialogConfig<D>): SdsDialogRef<T, R> {\n\n    // Convenience widths names: small | medium | large\n    // added to help with standardization\n    if (config && config.width) {\n      switch (config.width) {\n        case 'small': {\n          config.width = '370px';\n          break;\n        }\n        case 'medium': {\n          config.width = '730px';\n          break;\n        }\n        case 'large': {\n          config.width = '960px';\n          break;\n        }\n        default: {\n          break;\n        }\n      }\n    }\n\n    config = _applyConfigDefaults(config, this._defaultOptions || new SdsDialogConfig());\n\n    if (config.id && this.getDialogById(config.id)) {\n      throw Error(`Dialog with id \"${config.id}\" exists already. The dialog id must be unique.`);\n    }\n\n    const overlayRef = this._createOverlay(config);\n    const dialogContainer = this._attachDialogContainer(overlayRef, config);\n    const dialogRef = this._attachDialogContent<T, R>(componentOrTemplateRef,\n                                                      dialogContainer,\n                                                      overlayRef,\n                                                      config);\n\n    // If this is the first dialog that we're opening, hide all the non-overlay content.\n    if (!this.openDialogs.length) {\n      this._hideNonDialogContentFromAssistiveTechnology();\n    }\n\n    this.openDialogs.push(dialogRef);\n    dialogRef.afterClosed().subscribe(() => this._removeOpenDialog(dialogRef));\n    this.afterOpened.next(dialogRef);\n\n    return dialogRef;\n  }\n\n  /**\n   * Closes all of the currently-open dialogs.\n   */\n  closeAll(): void {\n    this._closeDialogs(this.openDialogs);\n  }\n\n  /**\n   * Finds an open dialog by its id.\n   * @param id ID to use when looking up the dialog.\n   */\n  getDialogById(id: string): SdsDialogRef<any> | undefined {\n    return this.openDialogs.find(dialog => dialog.id === id);\n  }\n\n  ngOnDestroy() {\n    // Only close the dialogs at this level on destroy\n    // since the parent service may still be active.\n    this._closeDialogs(this._openDialogsAtThisLevel);\n    this._afterAllClosedAtThisLevel.complete();\n    this._afterOpenedAtThisLevel.complete();\n  }\n\n  /**\n   * Creates the overlay into which the dialog will be loaded.\n   * @param config The dialog configuration.\n   * @returns A promise resolving to the OverlayRef for the created overlay.\n   */\n  private _createOverlay(config: SdsDialogConfig): OverlayRef {\n    const overlayConfig = this._getOverlayConfig(config);\n    return this._overlay.create(overlayConfig);\n  }\n\n  /**\n   * Creates an overlay config from a dialog config.\n   * @param dialogConfig The dialog configuration.\n   * @returns The overlay configuration.\n   */\n  private _getOverlayConfig(dialogConfig: SdsDialogConfig): OverlayConfig {\n    const state = new OverlayConfig({\n      positionStrategy: this._overlay.position().global(),\n      scrollStrategy: dialogConfig.scrollStrategy || (dialogConfig.slideOut ? this._slideOutScrollStrategy() : this._scrollStrategy()),\n      panelClass: dialogConfig.panelClass,\n      hasBackdrop: dialogConfig.hasBackdrop,\n      direction: dialogConfig.direction,\n      minWidth: dialogConfig.minWidth,\n      minHeight: dialogConfig.minHeight,\n      maxWidth: dialogConfig.maxWidth,\n      maxHeight: dialogConfig.maxHeight,\n      disposeOnNavigation: dialogConfig.closeOnNavigation\n    });\n\n    if (dialogConfig.backdropClass) {\n      state.backdropClass = dialogConfig.backdropClass;\n    }\n\n    return state;\n  }\n\n  /**\n   * Attaches an SdsDialogContainerComponent to a dialog's already-created overlay.\n   * @param overlay Reference to the dialog's underlying overlay.\n   * @param config The dialog configuration.\n   * @returns A promise resolving to a ComponentRef for the attached container.\n   */\n  private _attachDialogContainer(overlay: OverlayRef, config: SdsDialogConfig): SdsDialogContainerComponent {\n    const userInjector = config && config.viewContainerRef && config.viewContainerRef.injector;\n    const injector = new PortalInjector(userInjector || this._injector, new WeakMap([\n      [SdsDialogConfig, config]\n    ]));\n    const containerPortal =\n        new ComponentPortal(SdsDialogContainerComponent, config.viewContainerRef, injector);\n    const containerRef = overlay.attach<SdsDialogContainerComponent>(containerPortal);\n\n    return containerRef.instance;\n  }\n\n  /**\n   * Attaches the user-provided component to the already-created SdsDialogContainerComponent.\n   * @param componentOrTemplateRef The type of component being loaded into the dialog,\n   *     or a TemplateRef to instantiate as the content.\n   * @param dialogContainer Reference to the wrapping SdsDialogContainerComponent.\n   * @param overlayRef Reference to the overlay in which the dialog resides.\n   * @param config The dialog configuration.\n   * @returns A promise resolving to the SdsDialogRef that should be returned to the user.\n   */\n  private _attachDialogContent<T, R>(\n      componentOrTemplateRef: ComponentType<T> | TemplateRef<T>,\n      dialogContainer: SdsDialogContainerComponent,\n      overlayRef: OverlayRef,\n      config: SdsDialogConfig): SdsDialogRef<T, R> {\n\n    // Create a reference to the dialog we're creating in order to give the user a handle\n    // to modify and close it.\n    const dialogRef =\n        new SdsDialogRef<T, R>(overlayRef, dialogContainer, this._location, config.id);\n\n    // When the dialog backdrop is clicked, we want to close it.\n    if (config.hasBackdrop) {\n      overlayRef.backdropClick().subscribe(() => {\n        if (!dialogRef.disableClose) {\n          dialogRef.close();\n        }\n      });\n    }\n\n    if (componentOrTemplateRef instanceof TemplateRef) {\n      dialogContainer.attachTemplatePortal(\n        new TemplatePortal<T>(componentOrTemplateRef, null!,\n          <any>{ $implicit: config.data, dialogRef }));\n    } else {\n      const injector = this._createInjector<T>(config, dialogRef, dialogContainer);\n      const contentRef = dialogContainer.attachComponentPortal<T>(\n          new ComponentPortal(componentOrTemplateRef, undefined, injector));\n      dialogRef.componentInstance = contentRef.instance;\n    }\n\n    dialogRef\n      .updateSize(config.width, config.height)\n      .updatePosition(config.position);\n\n    return dialogRef;\n  }\n\n  /**\n   * Creates a custom injector to be used inside the dialog. This allows a component loaded inside\n   * of a dialog to close itself and, optionally, to return a value.\n   * @param config Config object that is used to construct the dialog.\n   * @param dialogRef Reference to the dialog.\n   * @param container Dialog container element that wraps all of the contents.\n   * @returns The custom injector that can be used inside the dialog.\n   */\n  private _createInjector<T>(\n      config: SdsDialogConfig,\n      dialogRef: SdsDialogRef<T>,\n      dialogContainer: SdsDialogContainerComponent): PortalInjector {\n\n    const userInjector = config && config.viewContainerRef && config.viewContainerRef.injector;\n\n    // The SdsDialogContainerComponent is injected in the portal as the SdsDialogContainerComponent and the dialog's\n    // content are created out of the same ViewContainerRef and as such, are siblings for injector\n    // purposes. To allow the hierarchy that is expected, the SdsDialogContainerComponent is explicitly\n    // added to the injection tokens.\n    const injectionTokens = new WeakMap<any, any>([\n      [SdsDialogContainerComponent, dialogContainer],\n      [SDS_DIALOG_DATA, config.data],\n      [SdsDialogRef, dialogRef]\n    ]);\n\n    if (config.direction &&\n        (!userInjector || !userInjector.get<Directionality | null>(Directionality, null))) {\n      injectionTokens.set(Directionality, {\n        value: config.direction,\n        change: observableOf()\n      });\n    }\n\n    return new PortalInjector(userInjector || this._injector, injectionTokens);\n  }\n\n  /**\n   * Removes a dialog from the array of open dialogs.\n   * @param dialogRef Dialog to be removed.\n   */\n  private _removeOpenDialog(dialogRef: SdsDialogRef<any>) {\n    const index = this.openDialogs.indexOf(dialogRef);\n\n    if (index > -1) {\n      this.openDialogs.splice(index, 1);\n\n      // If all the dialogs were closed, remove/restore the `aria-hidden`\n      // to a the siblings and emit to the `afterAllClosed` stream.\n      if (!this.openDialogs.length) {\n        this._ariaHiddenElements.forEach((previousValue, element) => {\n          if (previousValue) {\n            element.setAttribute('aria-hidden', previousValue);\n          } else {\n            element.removeAttribute('aria-hidden');\n          }\n        });\n\n        this._ariaHiddenElements.clear();\n        this._afterAllClosed.next();\n      }\n    }\n  }\n\n  /**\n   * Hides all of the content that isn't an overlay from assistive technology.\n   */\n  private _hideNonDialogContentFromAssistiveTechnology() {\n    const overlayContainer = this._overlayContainer.getContainerElement();\n\n    // Ensure that the overlay container is attached to the DOM.\n    if (overlayContainer.parentElement) {\n      const siblings = overlayContainer.parentElement.children;\n\n      for (let i = siblings.length - 1; i > -1; i--) {\n        const sibling = siblings[i];\n\n        if (sibling !== overlayContainer &&\n          sibling.nodeName !== 'SCRIPT' &&\n          sibling.nodeName !== 'STYLE' &&\n          !sibling.hasAttribute('aria-live')) {\n\n          this._ariaHiddenElements.set(sibling, sibling.getAttribute('aria-hidden'));\n          sibling.setAttribute('aria-hidden', 'true');\n        }\n      }\n    }\n  }\n\n  /** Closes all of the dialogs in an array. */\n  private _closeDialogs(dialogs: SdsDialogRef<any>[]) {\n    let i = dialogs.length;\n\n    while (i--) {\n      // The `_openDialogs` property isn't updated after close until the rxjs subscription\n      // runs on the next microtask, in addition to modifying the array as we're going\n      // through it. We loop through all of them and call close without assuming that\n      // they'll be removed from the list instantaneously.\n      dialogs[i].close();\n    }\n  }\n\n}\n\n/**\n * Applies default options to the dialog config.\n * @param config Config to be modified.\n * @param defaultOptions Default options provided.\n * @returns The new configuration object.\n */\nfunction _applyConfigDefaults(\n    config?: SdsDialogConfig, defaultOptions?: SdsDialogConfig): SdsDialogConfig {\n  return {...defaultOptions, ...config};\n}\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -1100,6 +1110,10 @@ const COMPONENTS = {
                         "type": "any"
                     },
                     {
+                        "name": "slideOutScrollStrategy",
+                        "type": "any"
+                    },
+                    {
                         "name": "_parentDialog",
                         "type": "SdsDialogService"
                     },
@@ -1108,7 +1122,7 @@ const COMPONENTS = {
                         "type": "OverlayContainer"
                     }
                 ],
-                "line": 90,
+                "line": 106,
                 "jsdoctags": [
                     {
                         "name": "_overlay",
@@ -1146,6 +1160,13 @@ const COMPONENTS = {
                         }
                     },
                     {
+                        "name": "slideOutScrollStrategy",
+                        "type": "any",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
                         "name": "_parentDialog",
                         "type": "SdsDialogService",
                         "tagName": {
@@ -1168,7 +1189,7 @@ const COMPONENTS = {
                         "name": "openDialogs",
                         "type": "[]",
                         "returnType": "SdsDialogRef[]",
-                        "line": 70,
+                        "line": 86,
                         "description": "<p>Keeps track of the currently-open dialogs. </p>\n"
                     }
                 },
@@ -1178,7 +1199,7 @@ const COMPONENTS = {
                         "name": "afterOpened",
                         "type": "",
                         "returnType": "Subject<SdsDialogRef<any>>",
-                        "line": 75,
+                        "line": 91,
                         "description": "<p>Stream that emits when a dialog has been opened. </p>\n"
                     }
                 },
@@ -1188,7 +1209,7 @@ const COMPONENTS = {
                         "name": "_afterAllClosed",
                         "type": "",
                         "returnType": "Subject<void>",
-                        "line": 79
+                        "line": 95
                     }
                 }
             },
@@ -1198,10 +1219,10 @@ const COMPONENTS = {
     "classes": [
         {
             "name": "Button",
-            "id": "class-Button-bbcdef271bfdea4b342908ed9d28c551",
+            "id": "class-Button-d6d8080f7dd9761ac032773955c2f655",
             "file": "libs/packages/components/src/lib/search-result-list/model/search-results.model.ts",
             "type": "class",
-            "sourceCode": "import { EventEmitter } from '@angular/core';\n\nexport class SearchModel{\n    results: any[];\n    metadata: {\n      messages:Message[];\n    }\n  };\n  export class Message {\n    type: string;\n    title: string;\n    message:string;\n    classes: string;\n    buttons:Button[];\n  }\n  export class Button{\n    id: string;\n    text:string;\n    classes: string;\n    action: any;\n  } ",
+            "sourceCode": "import { TemplateRef } from '@angular/core';\n\nexport class SearchModel {\n  results: any[];\n  metadata: {\n    messages: Message[] | TemplateRef<any>;\n  };\n}\nexport class Message {\n  type: string;\n  title: string;\n  message: string;\n  classes: string;\n  buttons: Button[];\n}\nexport class Button {\n  id: string;\n  text: string;\n  classes: string;\n  action: any;\n}\n",
             "properties": [
                 {
                     "name": "action",
@@ -2059,10 +2080,10 @@ const COMPONENTS = {
         },
         {
             "name": "Message",
-            "id": "class-Message-bbcdef271bfdea4b342908ed9d28c551",
+            "id": "class-Message-d6d8080f7dd9761ac032773955c2f655",
             "file": "libs/packages/components/src/lib/search-result-list/model/search-results.model.ts",
             "type": "class",
-            "sourceCode": "import { EventEmitter } from '@angular/core';\n\nexport class SearchModel{\n    results: any[];\n    metadata: {\n      messages:Message[];\n    }\n  };\n  export class Message {\n    type: string;\n    title: string;\n    message:string;\n    classes: string;\n    buttons:Button[];\n  }\n  export class Button{\n    id: string;\n    text:string;\n    classes: string;\n    action: any;\n  } ",
+            "sourceCode": "import { TemplateRef } from '@angular/core';\n\nexport class SearchModel {\n  results: any[];\n  metadata: {\n    messages: Message[] | TemplateRef<any>;\n  };\n}\nexport class Message {\n  type: string;\n  title: string;\n  message: string;\n  classes: string;\n  buttons: Button[];\n}\nexport class Button {\n  id: string;\n  text: string;\n  classes: string;\n  action: any;\n}\n",
             "properties": [
                 {
                     "name": "buttons",
@@ -2321,10 +2342,10 @@ const COMPONENTS = {
         },
         {
             "name": "SDSAutocompletelConfiguration",
-            "id": "class-SDSAutocompletelConfiguration-7f872ce2a971438de47fdbb6ffc506f0",
+            "id": "class-SDSAutocompletelConfiguration-e4013deb23bd1d0b3075e3555e4a47b0",
             "file": "libs/packages/components/src/lib/autocomplete/models/SDSAutocompletelConfiguration.model.ts",
             "type": "class",
-            "sourceCode": "import { SDSSelectedResultConfiguration } from '../../selected-result/models/SDSSelectedResultConfiguration';\nimport { SDSAutocompleteSearchConfiguration } from '../../autocomplete-search/models/SDSAutocompleteConfiguration';\nimport { SelectionMode } from '../../selected-result/models/sds-selected-item-model-helper';\n\nexport class SDSAutocompletelConfiguration\n  implements\n    SDSSelectedResultConfiguration,\n    SDSAutocompleteSearchConfiguration {\n  /**\n   * sets the default debounce time to 250 milliseconds\n   */\n  constructor() {\n    this.debounceTime = 250;\n    this.minimumCharacterCountSearch = 0;\n  }\n\n  /**\n   * Used to describe the drop down (Text should match the label that will be supplied)\n   */\n  public labelText: string;\n\n  /**\n   * Used for the Id of the control\n   */\n  public id: string;\n\n  /**\n   *  This is the primary field used to identify each object in the results\n   */\n  public primaryKeyField: string;\n\n  /**\n   *  Property from supplied model used for the top part of the basic template\n   */\n  public primaryTextField: string;\n\n  /**\n   *  Property from supplied model used for the bottom part of the basic template\n   */\n  public secondaryTextField: string;\n\n  /**\n   *  Sets the time waited for addional key actions Default is 250 milliseconds\n   */\n  public debounceTime: number;\n\n  /**\n   * Place holder text for autocomplete input\n   */\n  public autocompletePlaceHolderText: string;\n\n  /**\n   * Mininumn Characters for search\n   */\n  public minimumCharacterCountSearch: number;\n\n  /**\n   * Mode of the model either allows a single item or multiple items\n   */\n  public selectionMode: SelectionMode = SelectionMode.SINGLE;\n\n  /**\n   * Allows option to allow user text not in the standard results\n   */\n  public isFreeTextEnabled: boolean = false;\n\n  /**\n   * Text appeneded ad the end of free text\n   */\n  public freeTextSubtext: string = 'search';\n\n  /**\n   * Focus into autocomplete search\n   */\n  public focusInSearch: boolean = true;\n\n  /**\n   * The aria-label for the auto-complete\n   */\n  public ariaLabelText: string = 'Auto Complete';\n\n  /**\n   * To enable the tag mode\n   */\n  public isTagModeEnabled: boolean = false;\n\n  /**\n   * To make input readonly\n   */\n  public inputReadOnly = false;\n\n  /**\n   * Name of the children filed\n   */\n  public groupByChild: string = 'children';\n\n  /**\n   * To enable the Grouping mode\n   */\n  public isGroupingEnabled: boolean = false;\n\n  /**\n   * To enable the Group item selectable\n   */\n  public isSelectableGroup: boolean = true;\n}\n",
+            "sourceCode": "import { SDSSelectedResultConfiguration } from '../../selected-result/models/SDSSelectedResultConfiguration';\nimport { SDSAutocompleteSearchConfiguration } from '../../autocomplete-search/models/SDSAutocompleteConfiguration';\nimport { SelectionMode } from '../../selected-result/models/sds-selected-item-model-helper';\n\nexport class SDSAutocompletelConfiguration\n  implements\n    SDSSelectedResultConfiguration,\n    SDSAutocompleteSearchConfiguration {\n  /**\n   * sets the default debounce time to 250 milliseconds\n   */\n  constructor() {\n    this.debounceTime = 250;\n    this.minimumCharacterCountSearch = 0;\n  }\n\n  /**\n   * Used to describe the drop down (Text should match the label that will be supplied)\n   */\n  public labelText: string;\n\n  /**\n   * Used for the Id of the control\n   */\n  public id: string;\n\n  /**\n   *  This is the primary field used to identify each object in the results\n   */\n  public primaryKeyField: string;\n\n  /**\n   *  Property from supplied model used for the top part of the basic template\n   */\n  public primaryTextField: string;\n\n  /**\n   *  Property from supplied model used for the bottom part of the basic template\n   */\n  public secondaryTextField: string;\n\n  /**\n   *  Sets the time waited for addional key actions Default is 250 milliseconds\n   */\n  public debounceTime: number;\n\n  /**\n   * Place holder text for autocomplete input\n   */\n  public autocompletePlaceHolderText: string;\n\n  /**\n   * Mininumn Characters for search\n   */\n  public minimumCharacterCountSearch: number;\n\n  /**\n   * Mode of the model either allows a single item or multiple items\n   */\n  public selectionMode: SelectionMode = SelectionMode.SINGLE;\n\n  /**\n   * Allows option to allow user text not in the standard results\n   */\n  public isFreeTextEnabled: boolean = false;\n\n  /**\n   * Text appeneded ad the end of free text\n   */\n  public freeTextSubtext: string = 'search';\n\n  /**\n   * Focus into autocomplete search\n   */\n  public focusInSearch: boolean = true;\n\n  /**\n   * The aria-label for the auto-complete\n   */\n  public ariaLabelText: string;\n\n  /**\n   * To enable the tag mode\n   */\n  public isTagModeEnabled: boolean = false;\n\n  /**\n   * To make input readonly\n   */\n  public inputReadOnly = false;\n\n  /**\n   * Name of the children filed\n   */\n  public groupByChild: string = 'children';\n\n  /**\n   * To enable the Grouping mode\n   */\n  public isGroupingEnabled: boolean = false;\n\n  /**\n   * To enable the Group item selectable\n   */\n  public isSelectableGroup: boolean = true;\n}\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "<p>sets the default debounce time to 250 milliseconds</p>\n",
@@ -2334,7 +2355,6 @@ const COMPONENTS = {
             "properties": [
                 {
                     "name": "ariaLabelText",
-                    "defaultValue": "'Auto Complete'",
                     "type": "string",
                     "optional": false,
                     "description": "<p>The aria-label for the auto-complete</p>\n",
@@ -2536,10 +2556,10 @@ const COMPONENTS = {
         },
         {
             "name": "SDSAutocompleteSearchConfiguration",
-            "id": "class-SDSAutocompleteSearchConfiguration-87e4295972120fff05fff44d75ce9588",
+            "id": "class-SDSAutocompleteSearchConfiguration-939ad8908dc395cc0b4a82d9e4ac7565",
             "file": "libs/packages/components/src/lib/autocomplete-search/models/SDSAutocompleteConfiguration.ts",
             "type": "class",
-            "sourceCode": "import { SelectionMode } from '../../selected-result/models/sds-selected-item-model-helper';\n\nexport class SDSAutocompleteSearchConfiguration {\n  /**\n   * sets the default debounce time to 250 milliseconds\n   */\n  constructor() {\n    this.debounceTime = 250;\n    this.minimumCharacterCountSearch = 0;\n  }\n\n  /**\n   * Used to describe the drop down (Text should match the label that will be supplied)\n   */\n  public labelText: string;\n\n  /**\n   * Used for the Id of the control\n   */\n  public id: string;\n\n  /**\n   *  This is the primary field used to identify each object in the results\n   */\n  public primaryKeyField: string;\n\n  /**\n   *  Property from supplied model used for the top part of the basic template\n   *  and the text for single selection\n   */\n  public primaryTextField: string;\n\n  /**\n   *  Property from supplied model used for the bottom part of the basic template\n   */\n  public secondaryTextField: string;\n\n  /**\n   *  Sets the time waited for addional key actions Default is 250 milliseconds\n   */\n  public debounceTime: number;\n\n  /**\n   * Place holder text for autocomplete input\n   */\n  public autocompletePlaceHolderText: string;\n\n  /**\n   * Mininumn Characters for search\n   */\n  public minimumCharacterCountSearch: number;\n\n  /**\n   * Mode of the model either allows a single item or multiple items\n   */\n  public selectionMode: SelectionMode = SelectionMode.SINGLE;\n\n  /**\n   * Allows option to allow user text not in the standard results\n   */\n  public isFreeTextEnabled: boolean = false;\n\n  /**\n   * Text appeneded ad the end of free text\n   */\n  public freeTextSubtext: string = 'search';\n\n  /**\n   * Focus into autocomplete search\n   */\n  public focusInSearch: boolean = true;\n\n  /**\n   * The aria-label for the auto-complete\n   */\n  public ariaLabelText: string = 'Auto Complete';\n\n  /**\n   * To enable the tag mode\n   */\n  public isTagModeEnabled: boolean = false;\n\n  /**\n   * To make input readonly\n   */\n  public inputReadOnly = false;\n\n  /**\n   * Name of the children filed\n   */\n  public groupByChild: string = 'children';\n\n  /**\n   * To enable the Grouping mode\n   */\n  public isGroupingEnabled: boolean = false;\n\n  /**\n   * To enable the Group item selectable\n   */\n  public isSelectableGroup: boolean = true;\n}\n",
+            "sourceCode": "import { SelectionMode } from '../../selected-result/models/sds-selected-item-model-helper';\n\nexport class SDSAutocompleteSearchConfiguration {\n  /**\n   * sets the default debounce time to 250 milliseconds\n   */\n  constructor() {\n    this.debounceTime = 250;\n    this.minimumCharacterCountSearch = 0;\n  }\n\n  /**\n   * Used to describe the drop down (Text should match the label that will be supplied)\n   */\n  public labelText: string;\n\n  /**\n   * Used for the Id of the control\n   */\n  public id: string;\n\n  /**\n   *  This is the primary field used to identify each object in the results\n   */\n  public primaryKeyField: string;\n\n  /**\n   *  Property from supplied model used for the top part of the basic template\n   *  and the text for single selection\n   */\n  public primaryTextField: string;\n\n  /**\n   *  Property from supplied model used for the bottom part of the basic template\n   */\n  public secondaryTextField: string;\n\n  /**\n   *  Sets the time waited for addional key actions Default is 250 milliseconds\n   */\n  public debounceTime: number;\n\n  /**\n   * Place holder text for autocomplete input\n   */\n  public autocompletePlaceHolderText: string;\n\n  /**\n   * Mininumn Characters for search\n   */\n  public minimumCharacterCountSearch: number;\n\n  /**\n   * Mode of the model either allows a single item or multiple items\n   */\n  public selectionMode: SelectionMode = SelectionMode.SINGLE;\n\n  /**\n   * Allows option to allow user text not in the standard results\n   */\n  public isFreeTextEnabled: boolean = false;\n\n  /**\n   * Text appeneded ad the end of free text\n   */\n  public freeTextSubtext: string = 'search';\n\n  /**\n   * Focus into autocomplete search\n   */\n  public focusInSearch: boolean = true;\n\n  /**\n   * The aria-label for the auto-complete\n   */\n  public ariaLabelText: string;\n\n  /**\n   * To enable the tag mode\n   */\n  public isTagModeEnabled: boolean = false;\n\n  /**\n   * To make input readonly\n   */\n  public inputReadOnly = false;\n\n  /**\n   * Name of the children filed\n   */\n  public groupByChild: string = 'children';\n\n  /**\n   * To enable the Grouping mode\n   */\n  public isGroupingEnabled: boolean = false;\n\n  /**\n   * To enable the Group item selectable\n   */\n  public isSelectableGroup: boolean = true;\n}\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "<p>sets the default debounce time to 250 milliseconds</p>\n",
@@ -2549,7 +2569,6 @@ const COMPONENTS = {
             "properties": [
                 {
                     "name": "ariaLabelText",
-                    "defaultValue": "'Auto Complete'",
                     "type": "string",
                     "optional": false,
                     "description": "<p>The aria-label for the auto-complete</p>\n",
@@ -2747,10 +2766,10 @@ const COMPONENTS = {
         },
         {
             "name": "SdsDialogConfig",
-            "id": "class-SdsDialogConfig-cb1ecf9b20ebb1be4b7d4f3f8caeec39",
+            "id": "class-SdsDialogConfig-dc43c900e9467fbeee3ba3fcf8bb84ec",
             "file": "libs/packages/components/src/lib/dialog/dialog-config.ts",
             "type": "class",
-            "sourceCode": "import {ViewContainerRef} from '@angular/core';\nimport {Direction} from '@angular/cdk/bidi';\nimport {ScrollStrategy} from '@angular/cdk/overlay';\n\n/** Valid ARIA roles for a dialog element. */\nexport type DialogRole = 'dialog' | 'alertdialog';\n\n/** Possible overrides for a dialog's position. */\nexport interface DialogPosition {\n  /** Override for the dialog's top position. */\n  top?: string;\n\n  /** Override for the dialog's bottom position. */\n  bottom?: string;\n\n  /** Override for the dialog's left position. */\n  left?: string;\n\n  /** Override for the dialog's right position. */\n  right?: string;\n}\n\n/**\n * Configuration for opening a modal dialog with the SdsDialog service.\n */\nexport class SdsDialogConfig<D = any> {\n\n  /**\n   * Where the attached component should live in Angular's *logical* component tree.\n   * This affects what is available for injection and the change detection order for the\n   * component instantiated inside of the dialog. This does not affect where the dialog\n   * content will be rendered.\n   */\n  viewContainerRef?: ViewContainerRef;\n\n  /** ID for the dialog. If omitted, a unique one will be generated. */\n  id?: string;\n\n  /** The ARIA role of the dialog element. */\n  role?: DialogRole = 'dialog';\n\n  /** Custom class for the overlay pane. */\n  panelClass?: string | string[] = '';\n\n  /** Whether the dialog has a backdrop. */\n  hasBackdrop? = true;\n\n  /** Custom class for the backdrop, */\n  backdropClass? = '';\n\n  /** Whether the user can use escape or clicking on the backdrop to close the modal. */\n  disableClose? = false;\n\n  /** Width of the dialog. */\n  width? = '';\n\n  /** Height of the dialog. */\n  height? = '';\n\n  /** Min-width of the dialog. If a number is provided, pixel units are assumed. */\n  minWidth?: number | string;\n\n  /** Min-height of the dialog. If a number is provided, pixel units are assumed. */\n  minHeight?: number | string;\n\n  /** Max-width of the dialog. If a number is provided, pixel units are assumed. Defaults to 80vw */\n  maxWidth?: number | string = '80vw';\n\n  /** Max-height of the dialog. If a number is provided, pixel units are assumed. */\n  maxHeight?: number | string;\n\n  /** Position overrides. */\n  position?: DialogPosition;\n\n  /** Data being injected into the child component. */\n  data?: D | null = null;\n\n  /** Layout direction for the dialog's content. */\n  direction?: Direction;\n\n  /** ID of the element that describes the dialog. */\n  ariaDescribedBy?: string | null = null;\n\n  /** Aria label to assign to the dialog element */\n  ariaLabel?: string | null = null;\n\n  /** Whether the dialog should focus the first focusable element on open. */\n  autoFocus? = true;\n\n  /**\n   * Whether the dialog should restore focus to the\n   * previously-focused element, after it's closed.\n   */\n  restoreFocus? = true;\n\n  /** Scroll strategy to be used for the dialog. */\n  scrollStrategy?: ScrollStrategy;\n\n  /**\n   * Whether the dialog should close when the user goes backwards/forwards in history.\n   * Note that this usually doesn't include clicking on links (unless the user is using\n   * the `HashLocationStrategy`).\n   */\n  closeOnNavigation? = true;\n\n  /**\n   * Wheter the dialog its an alert\n   */\n  alert?: 'warning' | 'info' | 'error';\n\n  /**\n   * Whether to display the close button in dialog header\n   */\n  displayCloseBtn? = true;\n}\n",
+            "sourceCode": "import {ViewContainerRef} from '@angular/core';\nimport {Direction} from '@angular/cdk/bidi';\nimport {ScrollStrategy} from '@angular/cdk/overlay';\n\n/** Valid ARIA roles for a dialog element. */\nexport type DialogRole = 'dialog' | 'alertdialog';\n\n/** Possible overrides for a dialog's position. */\nexport interface DialogPosition {\n  /** Override for the dialog's top position. */\n  top?: string;\n\n  /** Override for the dialog's bottom position. */\n  bottom?: string;\n\n  /** Override for the dialog's left position. */\n  left?: string;\n\n  /** Override for the dialog's right position. */\n  right?: string;\n}\n\n/**\n * Configuration for opening a modal dialog with the SdsDialog service.\n */\nexport class SdsDialogConfig<D = any> {\n\n  /**\n   * Where the attached component should live in Angular's *logical* component tree.\n   * This affects what is available for injection and the change detection order for the\n   * component instantiated inside of the dialog. This does not affect where the dialog\n   * content will be rendered.\n   */\n  viewContainerRef?: ViewContainerRef;\n\n  /** ID for the dialog. If omitted, a unique one will be generated. */\n  id?: string;\n\n  /** The ARIA role of the dialog element. */\n  role?: DialogRole = 'dialog';\n\n  /** Custom class for the overlay pane. */\n  panelClass?: string | string[] = '';\n\n  /** Whether the dialog has a backdrop. */\n  hasBackdrop? = true;\n\n  /** Custom class for the backdrop, */\n  backdropClass? = '';\n\n  /** Whether the user can use escape or clicking on the backdrop to close the modal. */\n  disableClose? = false;\n\n  /** Width of the dialog. */\n  width? = '';\n\n  /** Height of the dialog. */\n  height? = '';\n\n  /** Min-width of the dialog. If a number is provided, pixel units are assumed. */\n  minWidth?: number | string;\n\n  /** Min-height of the dialog. If a number is provided, pixel units are assumed. */\n  minHeight?: number | string;\n\n  /** Max-width of the dialog. If a number is provided, pixel units are assumed. Defaults to 80vw */\n  maxWidth?: number | string = '80vw';\n\n  /** Max-height of the dialog. If a number is provided, pixel units are assumed. */\n  maxHeight?: number | string;\n\n  /** Position overrides. */\n  position?: DialogPosition;\n\n  /** Data being injected into the child component. */\n  data?: D | null = null;\n\n  /** Layout direction for the dialog's content. */\n  direction?: Direction;\n\n  /** ID of the element that describes the dialog. */\n  ariaDescribedBy?: string | null = null;\n\n  /** Aria label to assign to the dialog element */\n  ariaLabel?: string | null = null;\n\n  /** Whether the dialog should focus the first focusable element on open. */\n  autoFocus? = true;\n\n  /**\n   * Whether the dialog should restore focus to the\n   * previously-focused element, after it's closed.\n   */\n  restoreFocus? = true;\n\n  /** Scroll strategy to be used for the dialog. */\n  scrollStrategy?: ScrollStrategy;\n\n  /**\n   * Whether the dialog should close when the user goes backwards/forwards in history.\n   * Note that this usually doesn't include clicking on links (unless the user is using\n   * the `HashLocationStrategy`).\n   */\n  closeOnNavigation? = true;\n\n  /**\n   * Wheter the dialog its an alert\n   */\n  alert?: 'warning' | 'info' | 'error';\n\n  /**\n   * Whether to display the close button in dialog header\n   */\n  displayCloseBtn? = true;\n\n  /**\n   * Whether dialog is a slide-out. Changes enter and exit animation, and adds\n   * class `dialog-slide-out` to container\n   */\n  slideOut? = false;\n}\n",
             "properties": [
                 {
                     "name": "alert",
@@ -2921,6 +2940,14 @@ const COMPONENTS = {
                     "line": 97
                 },
                 {
+                    "name": "slideOut",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": true,
+                    "description": "<p>Whether dialog is a slide-out. Changes enter and exit animation, and adds\nclass <code>dialog-slide-out</code> to container</p>\n",
+                    "line": 120
+                },
+                {
                     "name": "viewContainerRef",
                     "type": "ViewContainerRef",
                     "optional": true,
@@ -2947,10 +2974,10 @@ const COMPONENTS = {
         },
         {
             "name": "SdsDialogRef",
-            "id": "class-SdsDialogRef-f018eede837db3ccddd25aafabd8e8aa",
+            "id": "class-SdsDialogRef-07046616d000bafc1b964555cb6e26d9",
             "file": "libs/packages/components/src/lib/dialog/dialog-ref.ts",
             "type": "class",
-            "sourceCode": "import {ESCAPE} from '@angular/cdk/keycodes';\nimport {GlobalPositionStrategy, OverlayRef} from '@angular/cdk/overlay';\nimport {Location} from '@angular/common';\nimport {Observable, Subject} from 'rxjs';\nimport {filter, take} from 'rxjs/operators';\nimport {DialogPosition} from './dialog-config';\nimport {SdsDialogContainerComponent} from './dialog-container.component';\n\n// Counter for unique dialog ids.\nlet uniqueId = 0;\n\n/**\n * Reference to a dialog opened via the SdsDialog service.\n */\nexport class SdsDialogRef<T, R = any> {\n  /** The instance of component opened into the dialog. */\n  componentInstance: T;\n\n  /** Whether the user is allowed to close the dialog. */\n  disableClose: boolean | undefined = this._containerInstance._config.disableClose;\n\n  /** Subject for notifying the user that the dialog has finished opening. */\n  private readonly _afterOpened = new Subject<void>();\n\n  /** Subject for notifying the user that the dialog has finished closing. */\n  private readonly _afterClosed = new Subject<R | undefined>();\n\n  /** Subject for notifying the user that the dialog has started closing. */\n  private readonly _beforeClosed = new Subject<R | undefined>();\n\n  /** Result to be passed to afterClosed. */\n  private _result: R | undefined;\n\n  constructor(\n    private _overlayRef: OverlayRef,\n    public _containerInstance: SdsDialogContainerComponent,\n    _location?: Location,\n    readonly id: string = `sds-dialog-${uniqueId++}`) {\n\n    // Pass the id along to the container.\n    _containerInstance._id = id;\n\n    // Emit when opening animation completes\n    _containerInstance._animationStateChanged.pipe(\n      filter(event => event.phaseName === 'done' && event.toState === 'enter'),\n      take(1)\n    )\n    .subscribe(() => {\n      this._afterOpened.next();\n      this._afterOpened.complete();\n    });\n\n    // Dispose overlay when closing animation is complete\n    _containerInstance._animationStateChanged.pipe(\n      filter(event => event.phaseName === 'done' && event.toState === 'exit'),\n      take(1)\n    ).subscribe(() => this._overlayRef.dispose());\n\n    _overlayRef.detachments().subscribe(() => {\n      this._beforeClosed.next(this._result);\n      this._beforeClosed.complete();\n      this._afterClosed.next(this._result);\n      this._afterClosed.complete();\n      this.componentInstance = null!;\n      this._overlayRef.dispose();\n    });\n\n    _overlayRef.keydownEvents()\n      .pipe(filter(event => event.keyCode === ESCAPE && !this.disableClose))\n      .subscribe(() => this.close());\n  }\n\n  /**\n   * Close the dialog.\n   * @param dialogResult Optional result to return to the dialog opener.\n   */\n  close(dialogResult?: R): void {\n    this._result = dialogResult;\n\n    // Transition the backdrop in parallel to the dialog.\n    this._containerInstance._animationStateChanged.pipe(\n      filter(event => event.phaseName === 'start'),\n      take(1)\n    )\n    .subscribe(() => {\n      this._beforeClosed.next(dialogResult);\n      this._beforeClosed.complete();\n      this._overlayRef.detachBackdrop();\n    });\n\n    this._containerInstance._startExitAnimation();\n  }\n\n  /**\n   * Gets an observable that is notified when the dialog is finished opening.\n   */\n  afterOpened(): Observable<void> {\n    return this._afterOpened.asObservable();\n  }\n\n  /**\n   * Gets an observable that is notified when the dialog is finished closing.\n   */\n  afterClosed(): Observable<R | undefined> {\n    return this._afterClosed.asObservable();\n  }\n\n  /**\n   * Gets an observable that is notified when the dialog has started closing.\n   */\n  beforeClosed(): Observable<R | undefined> {\n    return this._beforeClosed.asObservable();\n  }\n\n  /**\n   * Gets an observable that emits when the overlay's backdrop has been clicked.\n   */\n  backdropClick(): Observable<MouseEvent> {\n    return this._overlayRef.backdropClick();\n  }\n\n  /**\n   * Gets an observable that emits when keydown events are targeted on the overlay.\n   */\n  keydownEvents(): Observable<KeyboardEvent> {\n    return this._overlayRef.keydownEvents();\n  }\n\n  /**\n   * Updates the dialog's position.\n   * @param position New dialog position.\n   */\n  updatePosition(position?: DialogPosition): this {\n    const strategy = this._getPositionStrategy();\n\n    if (position && (position.left || position.right)) {\n      position.left ? strategy.left(position.left) : strategy.right(position.right);\n    } else {\n      strategy.centerHorizontally();\n    }\n\n    if (position && (position.top || position.bottom)) {\n      position.top ? strategy.top(position.top) : strategy.bottom(position.bottom);\n    } else {\n      strategy.centerVertically();\n    }\n\n    this._overlayRef.updatePosition();\n\n    return this;\n  }\n\n  /**\n   * Updates the dialog's width and height.\n   * @param width New width of the dialog.\n   * @param height New height of the dialog.\n   */\n  updateSize(width: string = '', height: string = ''): this {\n    this._getPositionStrategy().width(width).height(height);\n    this._overlayRef.updatePosition();\n    return this;\n  }\n\n  /** Add a CSS class or an array of classes to the overlay pane. */\n  addPanelClass(classes: string | string[]): this {\n    this._overlayRef.addPanelClass(classes);\n    return this;\n  }\n\n  /** Remove a CSS class or an array of classes from the overlay pane. */\n  removePanelClass(classes: string | string[]): this {\n    this._overlayRef.removePanelClass(classes);\n    return this;\n  }\n\n  /** Fetches the position strategy object from the overlay ref. */\n  private _getPositionStrategy(): GlobalPositionStrategy {\n    return this._overlayRef.getConfig().positionStrategy as GlobalPositionStrategy;\n  }\n}\n",
+            "sourceCode": "import {ESCAPE} from '@angular/cdk/keycodes';\nimport {GlobalPositionStrategy, OverlayRef} from '@angular/cdk/overlay';\nimport {Location} from '@angular/common';\nimport {Observable, Subject} from 'rxjs';\nimport {filter, take} from 'rxjs/operators';\nimport {DialogPosition} from './dialog-config';\nimport {SdsDialogContainerComponent} from './dialog-container.component';\n\n// Counter for unique dialog ids.\nlet uniqueId = 0;\n\n/**\n * Reference to a dialog opened via the SdsDialog service.\n */\nexport class SdsDialogRef<T, R = any> {\n  /** The instance of component opened into the dialog. */\n  componentInstance: T;\n\n  /** Whether the user is allowed to close the dialog. */\n  disableClose: boolean | undefined = this._containerInstance._config.disableClose;\n\n  /** Subject for notifying the user that the dialog has finished opening. */\n  private readonly _afterOpened = new Subject<void>();\n\n  /** Subject for notifying the user that the dialog has finished closing. */\n  private readonly _afterClosed = new Subject<R | undefined>();\n\n  /** Subject for notifying the user that the dialog has started closing. */\n  private readonly _beforeClosed = new Subject<R | undefined>();\n\n  /** Result to be passed to afterClosed. */\n  private _result: R | undefined;\n\n  constructor(\n    private _overlayRef: OverlayRef,\n    public _containerInstance: SdsDialogContainerComponent,\n    _location?: Location,\n    readonly id: string = `sds-dialog-${uniqueId++}`) {\n\n    // Pass the id along to the container.\n    _containerInstance._id = id;\n\n    // Emit when opening animation completes\n    _containerInstance._animationStateChanged.pipe(\n      filter(event => event.phaseName === 'done' && (event.toState === 'enter' || event.toState === 'slideEnter')),\n      take(1)\n    )\n    .subscribe(() => {\n      this._afterOpened.next();\n      this._afterOpened.complete();\n    });\n\n    // Dispose overlay when closing animation is complete\n    _containerInstance._animationStateChanged.pipe(\n      filter(event => event.phaseName === 'done' && (event.toState === 'exit' || event.toState === 'slideExit')),\n      take(1)\n    ).subscribe(() => this._overlayRef.dispose());\n\n    _overlayRef.detachments().subscribe(() => {\n      this._beforeClosed.next(this._result);\n      this._beforeClosed.complete();\n      this._afterClosed.next(this._result);\n      this._afterClosed.complete();\n      this.componentInstance = null!;\n      this._overlayRef.dispose();\n    });\n\n    _overlayRef.keydownEvents()\n      .pipe(filter(event => event.keyCode === ESCAPE && !this.disableClose))\n      .subscribe(() => this.close());\n  }\n\n  /**\n   * Close the dialog.\n   * @param dialogResult Optional result to return to the dialog opener.\n   */\n  close(dialogResult?: R): void {\n    this._result = dialogResult;\n\n    // Transition the backdrop in parallel to the dialog.\n    this._containerInstance._animationStateChanged.pipe(\n      filter(event => event.phaseName === 'start'),\n      take(1)\n    )\n    .subscribe(() => {\n      this._beforeClosed.next(dialogResult);\n      this._beforeClosed.complete();\n      this._overlayRef.detachBackdrop();\n    });\n\n    this._containerInstance._startExitAnimation();\n  }\n\n  /**\n   * Gets an observable that is notified when the dialog is finished opening.\n   */\n  afterOpened(): Observable<void> {\n    return this._afterOpened.asObservable();\n  }\n\n  /**\n   * Gets an observable that is notified when the dialog is finished closing.\n   */\n  afterClosed(): Observable<R | undefined> {\n    return this._afterClosed.asObservable();\n  }\n\n  /**\n   * Gets an observable that is notified when the dialog has started closing.\n   */\n  beforeClosed(): Observable<R | undefined> {\n    return this._beforeClosed.asObservable();\n  }\n\n  /**\n   * Gets an observable that emits when the overlay's backdrop has been clicked.\n   */\n  backdropClick(): Observable<MouseEvent> {\n    return this._overlayRef.backdropClick();\n  }\n\n  /**\n   * Gets an observable that emits when keydown events are targeted on the overlay.\n   */\n  keydownEvents(): Observable<KeyboardEvent> {\n    return this._overlayRef.keydownEvents();\n  }\n\n  /**\n   * Updates the dialog's position.\n   * @param position New dialog position.\n   */\n  updatePosition(position?: DialogPosition): this {\n    const strategy = this._getPositionStrategy();\n\n    if (position && (position.left || position.right)) {\n      position.left ? strategy.left(position.left) : strategy.right(position.right);\n    } else {\n      strategy.centerHorizontally();\n    }\n\n    if (position && (position.top || position.bottom)) {\n      position.top ? strategy.top(position.top) : strategy.bottom(position.bottom);\n    } else {\n      strategy.centerVertically();\n    }\n\n    this._overlayRef.updatePosition();\n\n    return this;\n  }\n\n  /**\n   * Updates the dialog's width and height.\n   * @param width New width of the dialog.\n   * @param height New height of the dialog.\n   */\n  updateSize(width: string = '', height: string = ''): this {\n    this._getPositionStrategy().width(width).height(height);\n    this._overlayRef.updatePosition();\n    return this;\n  }\n\n  /** Add a CSS class or an array of classes to the overlay pane. */\n  addPanelClass(classes: string | string[]): this {\n    this._overlayRef.addPanelClass(classes);\n    return this;\n  }\n\n  /** Remove a CSS class or an array of classes from the overlay pane. */\n  removePanelClass(classes: string | string[]): this {\n    this._overlayRef.removePanelClass(classes);\n    return this;\n  }\n\n  /** Fetches the position strategy object from the overlay ref. */\n  private _getPositionStrategy(): GlobalPositionStrategy {\n    return this._overlayRef.getConfig().positionStrategy as GlobalPositionStrategy;\n  }\n}\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -3172,16 +3199,16 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 2566,
-                                "end": 2578,
+                                "pos": 2637,
+                                "end": 2649,
                                 "flags": 0,
                                 "escapedText": "dialogResult"
                             },
                             "type": "R",
                             "optional": true,
                             "tagName": {
-                                "pos": 2560,
-                                "end": 2565,
+                                "pos": 2631,
+                                "end": 2636,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -3238,16 +3265,16 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4081,
-                                "end": 4089,
+                                "pos": 4152,
+                                "end": 4160,
                                 "flags": 0,
                                 "escapedText": "position"
                             },
                             "type": "DialogPosition",
                             "optional": true,
                             "tagName": {
-                                "pos": 4075,
-                                "end": 4080,
+                                "pos": 4146,
+                                "end": 4151,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -3277,16 +3304,16 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4739,
-                                "end": 4744,
+                                "pos": 4810,
+                                "end": 4815,
                                 "flags": 0,
                                 "escapedText": "width"
                             },
                             "type": "string",
                             "defaultValue": "''",
                             "tagName": {
-                                "pos": 4733,
-                                "end": 4738,
+                                "pos": 4804,
+                                "end": 4809,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -3294,16 +3321,16 @@ const COMPONENTS = {
                         },
                         {
                             "name": {
-                                "pos": 4782,
-                                "end": 4788,
+                                "pos": 4853,
+                                "end": 4859,
                                 "flags": 0,
                                 "escapedText": "height"
                             },
                             "type": "string",
                             "defaultValue": "''",
                             "tagName": {
-                                "pos": 4776,
-                                "end": 4781,
+                                "pos": 4847,
+                                "end": 4852,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -3918,10 +3945,10 @@ const COMPONENTS = {
         },
         {
             "name": "SearchModel",
-            "id": "class-SearchModel-bbcdef271bfdea4b342908ed9d28c551",
+            "id": "class-SearchModel-d6d8080f7dd9761ac032773955c2f655",
             "file": "libs/packages/components/src/lib/search-result-list/model/search-results.model.ts",
             "type": "class",
-            "sourceCode": "import { EventEmitter } from '@angular/core';\n\nexport class SearchModel{\n    results: any[];\n    metadata: {\n      messages:Message[];\n    }\n  };\n  export class Message {\n    type: string;\n    title: string;\n    message:string;\n    classes: string;\n    buttons:Button[];\n  }\n  export class Button{\n    id: string;\n    text:string;\n    classes: string;\n    action: any;\n  } ",
+            "sourceCode": "import { TemplateRef } from '@angular/core';\n\nexport class SearchModel {\n  results: any[];\n  metadata: {\n    messages: Message[] | TemplateRef<any>;\n  };\n}\nexport class Message {\n  type: string;\n  title: string;\n  message: string;\n  classes: string;\n  buttons: Button[];\n}\nexport class Button {\n  id: string;\n  text: string;\n  classes: string;\n  action: any;\n}\n",
             "properties": [
                 {
                     "name": "metadata",
@@ -3947,10 +3974,10 @@ const COMPONENTS = {
         },
         {
             "name": "SearchSettings",
-            "id": "class-SearchSettings-3e2f81dda1b154fae7c2c9ee6c0f63dc",
+            "id": "class-SearchSettings-f0b3b034aecf392b8ce523e6de9f756e",
             "file": "libs/packages/components/src/lib/search/search.component.ts",
             "type": "class",
-            "sourceCode": "import {\n  Component,\n  ViewChild,\n  ElementRef,\n  Input,\n  AfterViewInit,\n  forwardRef,\n  ChangeDetectionStrategy,\n  ChangeDetectorRef,\n  Output,\n  EventEmitter\n} from '@angular/core';\nimport { FocusMonitor } from '@angular/cdk/a11y';\nimport { ViewportRuler } from '@angular/cdk/overlay';\nimport { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';\nexport class SearchSettings {\n  public placeholder = 'Search';\n  public ariaLabel? = 'Search';\n  public size: string;\n  public inputClass: string;\n  public parentSelector: string;\n  public id?: string;\n  public dropdown: any = {\n    id: 'searchOptions',\n    placeholder: '-Select-',\n    options: [],\n    inverse: false\n  };\n}\n@Component({\n  selector: 'sds-search',\n  templateUrl: 'search.component.html',\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => SdsSearchComponent),\n      multi: true\n    }\n  ],\n  styles: [`input::-ms-clear {\n    display: none;\n}`],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {\n  @ViewChild('inputEl', { read: ElementRef, static: false })\n  inputEl: ElementRef;\n  @ViewChild('selectEl', { read: ElementRef, static: false })\n  selectEl: ElementRef;\n  @ViewChild('buttonEl', { read: ElementRef, static: false })\n  buttonEl: ElementRef;\n\n  @Input() searchSettings: SearchSettings = new SearchSettings();\n  @Output() submit: EventEmitter<{ searchText: string }> = new EventEmitter(\n    null\n  );\n\n  model: any = {};\n  inputState = {\n    initial: { visible: undefined },\n    visible: undefined\n  };\n  private _onChange = (_: any) => { };\n  private _onTouched = () => { };\n\n  constructor(\n    private cd: ChangeDetectorRef,\n    private focusMonitor: FocusMonitor,\n    private viewportRuler: ViewportRuler\n  ) { }\n\n  ngAfterViewInit() {\n    this.inputState.initial.visible = this.isInputVisible();\n    this.inputState.visible = this.inputState.initial.visible;\n    this.viewportRuler.change(0).subscribe(() => {\n      this.inputState.initial.visible = this.isInputVisible();\n      this.inputState.visible = this.inputState.initial.visible;\n    });\n  }\n\n  hasDropdown() {\n    if (\n      this.searchSettings &&\n      this.searchSettings.dropdown &&\n      this.searchSettings.dropdown.options &&\n      this.searchSettings.dropdown.options.length\n    ) {\n      return true;\n    } else {\n      return false;\n    }\n  }\n  handleClick(event) {\n    event.preventDefault();\n    if (!this.inputState.visible) {\n      this.setInputVisibleStyles();\n      this.focusMonitor.focusVia(this.inputEl, 'program');\n    } else if (this.inputEl || this.selectEl) {\n      this.submit.emit(this.model);\n    }\n  }\n\n  writeValueToModel() {\n    this.model.searchText = this.inputEl\n      ? this.inputEl.nativeElement.value\n      : '';\n    if (this.selectEl && this.selectEl.nativeElement.value) {\n      this.model.searchCategory = this.selectEl.nativeElement.value;\n    }\n    this._onChange(Object.assign({}, this.model));\n  }\n\n  writeValue(value: any) {\n    if (value && this.model !== value) {\n      this.model = value;\n      this.cd.markForCheck();\n    } else {\n      this.model = {};\n      this.cd.markForCheck();\n    }\n  }\n  registerOnTouched(fn: any) {\n    this._onTouched = fn;\n  }\n  registerOnChange(fn: any): void {\n    this._onChange = fn;\n  }\n\n  isInputVisible(): boolean {\n    return this.inputEl.nativeElement.getBoundingClientRect().width\n      ? true\n      : false;\n  }\n\n  setInputVisibleStyles() {\n    const inputWidth = this.calculateInputWidth();\n    this.inputEl.nativeElement.style.setProperty(\n      'display',\n      'block',\n      'important'\n    );\n    this.inputEl.nativeElement.style.position = 'absolute';\n    this.inputEl.nativeElement.style.left = `-${inputWidth}px`;\n    this.inputEl.nativeElement.style.setProperty(\n      'width',\n      `${inputWidth}px`,\n      'important'\n    );\n    this.inputState.visible = true;\n  }\n\n  removeInputVisibleStyles() {\n    this.inputEl.nativeElement.style.display = '';\n    this.inputEl.nativeElement.style.position = '';\n    this.inputEl.nativeElement.style.left = '';\n    this.inputEl.nativeElement.style.width = '';\n    this.inputState.visible = false;\n  }\n\n  focusChange() {\n    if (!this.inputState.initial.visible) {\n      this.removeInputVisibleStyles();\n    }\n  }\n\n  calculateInputWidth(): number {\n    const leftPadding = 20;\n    const buttonElement = this.buttonEl.nativeElement;\n    const inputElement = this.inputEl.nativeElement;\n    const rightPosition = buttonElement.getBoundingClientRect().left;\n    const leftPosition = this.searchSettings.parentSelector\n      ? inputElement\n        .closest(this.searchSettings.parentSelector)\n        .getBoundingClientRect().left\n      : 0;\n    return Math.floor(rightPosition - leftPosition - leftPadding);\n  }\n  getClass() {\n    const cls =\n      this.searchSettings && this.searchSettings.size === 'large'\n        ? 'usa-search--big'\n        : 'usa-search--small';\n    return this.searchSettings.dropdown && this.searchSettings.dropdown.inverse\n      ? `${cls} sds-inverse`\n      : cls;\n  }\n}\n",
+            "sourceCode": "import {\n  Component,\n  ViewChild,\n  ElementRef,\n  Input,\n  AfterViewInit,\n  forwardRef,\n  ChangeDetectionStrategy,\n  ChangeDetectorRef,\n  Output,\n  EventEmitter,\n} from '@angular/core';\nimport { FocusMonitor } from '@angular/cdk/a11y';\nimport { ViewportRuler } from '@angular/cdk/overlay';\nimport { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';\nexport class SearchSettings {\n  public placeholder = 'Search';\n  public ariaLabel? = 'Search';\n  public size: string;\n  public inputClass: string;\n  public parentSelector: string;\n  public id?: string;\n  public dropdown: any = {\n    id: 'searchOptions',\n    placeholder: '-Select-',\n    options: [],\n    inverse: false,\n  };\n  public isSuffixSearchIcon?: boolean = false;\n}\n@Component({\n  selector: 'sds-search',\n  templateUrl: 'search.component.html',\n  styleUrls: ['search.component.scss'],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => SdsSearchComponent),\n      multi: true,\n    },\n  ],\n\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {\n  @ViewChild('inputEl', { read: ElementRef, static: false })\n  inputEl: ElementRef;\n  @ViewChild('selectEl', { read: ElementRef, static: false })\n  selectEl: ElementRef;\n  @ViewChild('buttonEl', { read: ElementRef, static: false })\n  buttonEl: ElementRef;\n\n  @Input() searchSettings: SearchSettings = new SearchSettings();\n  @Output() submit: EventEmitter<{ searchText: string }> = new EventEmitter(\n    null\n  );\n\n  model: any = {};\n  inputState = {\n    initial: { visible: undefined },\n    visible: undefined,\n  };\n  private _onChange = (_: any) => {};\n  private _onTouched = () => {};\n\n  constructor(\n    private cd: ChangeDetectorRef,\n    private focusMonitor: FocusMonitor,\n    private viewportRuler: ViewportRuler\n  ) {}\n\n  ngAfterViewInit() {\n    this.inputState.initial.visible = this.isInputVisible();\n    this.inputState.visible = this.inputState.initial.visible;\n    this.viewportRuler.change(0).subscribe(() => {\n      this.inputState.initial.visible = this.isInputVisible();\n      this.inputState.visible = this.inputState.initial.visible;\n    });\n  }\n\n  hasDropdown() {\n    if (\n      this.searchSettings &&\n      this.searchSettings.dropdown &&\n      this.searchSettings.dropdown.options &&\n      this.searchSettings.dropdown.options.length\n    ) {\n      return true;\n    } else {\n      return false;\n    }\n  }\n  handleClick(event) {\n    event.preventDefault();\n    if (!this.inputState.visible) {\n      this.setInputVisibleStyles();\n      this.focusMonitor.focusVia(this.inputEl, 'program');\n    } else if (this.inputEl || this.selectEl) {\n      this.submit.emit(this.model);\n    }\n  }\n\n  writeValueToModel() {\n    this.model.searchText = this.inputEl\n      ? this.inputEl.nativeElement.value\n      : '';\n    if (this.selectEl && this.selectEl.nativeElement.value) {\n      this.model.searchCategory = this.selectEl.nativeElement.value;\n    }\n    this._onChange(Object.assign({}, this.model));\n  }\n\n  writeValue(value: any) {\n    if (value && this.model !== value) {\n      this.model = value;\n      this.cd.markForCheck();\n    } else {\n      this.model = {};\n      this.cd.markForCheck();\n    }\n  }\n  registerOnTouched(fn: any) {\n    this._onTouched = fn;\n  }\n  registerOnChange(fn: any): void {\n    this._onChange = fn;\n  }\n\n  isInputVisible(): boolean {\n    return this.inputEl.nativeElement.getBoundingClientRect().width\n      ? true\n      : false;\n  }\n\n  setInputVisibleStyles() {\n    const inputWidth = this.calculateInputWidth();\n    this.inputEl.nativeElement.style.setProperty(\n      'display',\n      'block',\n      'important'\n    );\n    this.inputEl.nativeElement.style.position = 'absolute';\n    this.inputEl.nativeElement.style.left = `-${inputWidth}px`;\n    this.inputEl.nativeElement.style.setProperty(\n      'width',\n      `${inputWidth}px`,\n      'important'\n    );\n    this.inputState.visible = true;\n  }\n\n  removeInputVisibleStyles() {\n    this.inputEl.nativeElement.style.display = '';\n    this.inputEl.nativeElement.style.position = '';\n    this.inputEl.nativeElement.style.left = '';\n    this.inputEl.nativeElement.style.width = '';\n    this.inputState.visible = false;\n  }\n\n  focusChange() {\n    if (!this.inputState.initial.visible) {\n      this.removeInputVisibleStyles();\n    }\n  }\n\n  calculateInputWidth(): number {\n    const leftPadding = 20;\n    const buttonElement = this.buttonEl.nativeElement;\n    const inputElement = this.inputEl.nativeElement;\n    const rightPosition = buttonElement.getBoundingClientRect().left;\n    const leftPosition = this.searchSettings.parentSelector\n      ? inputElement\n          .closest(this.searchSettings.parentSelector)\n          .getBoundingClientRect().left\n      : 0;\n    return Math.floor(rightPosition - leftPosition - leftPadding);\n  }\n  getClass() {\n    const cls =\n      this.searchSettings && this.searchSettings.size === 'large'\n        ? 'usa-search--big'\n        : 'usa-search--small';\n    return this.searchSettings.dropdown && this.searchSettings.dropdown.inverse\n      ? `${cls} sds-inverse`\n      : cls;\n  }\n  clearInput(ev) {\n    this.inputEl.nativeElement.value = '';\n    this.writeValueToModel();\n  }\n}\n",
             "properties": [
                 {
                     "name": "ariaLabel",
@@ -3965,7 +3992,7 @@ const COMPONENTS = {
                 },
                 {
                     "name": "dropdown",
-                    "defaultValue": "{\n    id: 'searchOptions',\n    placeholder: '-Select-',\n    options: [],\n    inverse: false\n  }",
+                    "defaultValue": "{\n    id: 'searchOptions',\n    placeholder: '-Select-',\n    options: [],\n    inverse: false,\n  }",
                     "type": "any",
                     "optional": false,
                     "description": "",
@@ -3990,6 +4017,17 @@ const COMPONENTS = {
                     "optional": false,
                     "description": "",
                     "line": 20,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "isSuffixSearchIcon",
+                    "defaultValue": "false",
+                    "type": "boolean",
+                    "optional": true,
+                    "description": "",
+                    "line": 29,
                     "modifierKind": [
                         114
                     ]
@@ -4028,6 +4066,39 @@ const COMPONENTS = {
             ],
             "methods": [],
             "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        },
+        {
+            "name": "SelectionPanelModel",
+            "id": "class-SelectionPanelModel-cf45e3c33740e59148cc1f28eb2c0908",
+            "file": "libs/packages/components/src/lib/selection-panel/model/selection-panel.model.ts",
+            "type": "class",
+            "sourceCode": "import { SideNavigationModel } from '../../side-navigation/model/side-navigation-model';\n\nexport class SelectionPanelModel extends SideNavigationModel {\n  /**\n   * The mode selected impacts which version of the selection panel is used.\n   * 'SELECTION' mode will only display the top level navigation items and\n   * will not display children items. 'NAVIGATION' mode will display the children\n   * navigation items indented under its parent. If a mode is not passed in,\n   * then 'NAVIGATION' mode is assumed.\n   */\n  selectionMode?: 'SELECTION' | 'NAVIGATION';\n}",
+            "properties": [
+                {
+                    "name": "selectionMode",
+                    "type": "\"SELECTION\" | \"NAVIGATION\"",
+                    "optional": true,
+                    "description": "<p>The mode selected impacts which version of the selection panel is used.\n&#39;SELECTION&#39; mode will only display the top level navigation items and\nwill not display children items. &#39;NAVIGATION&#39; mode will display the children\nnavigation items indented under its parent. If a mode is not passed in,\nthen &#39;NAVIGATION&#39; mode is assumed.</p>\n",
+                    "line": 11
+                },
+                {
+                    "name": "navigationLinks",
+                    "type": "NavigationLink[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 9,
+                    "inheritance": {
+                        "file": "SideNavigationModel"
+                    }
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "extends": "SideNavigationModel",
             "inputsClass": [],
             "outputsClass": [],
             "hostBindings": [],
@@ -4088,42 +4159,52 @@ const COMPONENTS = {
         },
         {
             "name": "ExternalLinkDirective",
-            "id": "directive-ExternalLinkDirective-45f813353289926cbf5ca3a4422df6e1",
+            "id": "directive-ExternalLinkDirective-e24be923fff80d6b32e8636b0fcfb3a1",
             "file": "libs/packages/components/src/lib/external-link/external-link.directive.ts",
             "type": "directive",
             "description": "",
-            "sourceCode": "import {\n  Directive,\n  HostBinding,\n  ElementRef,\n  PLATFORM_ID,\n  Inject,\n  Input,\n  ViewContainerRef,\n  OnChanges,\n} from '@angular/core';\n\nimport { isPlatformBrowser } from '@angular/common';\n\n@Directive({\n  selector: 'a[href]',\n})\nexport class ExternalLinkDirective implements OnChanges {\n  @HostBinding('attr.rel') relAttr = '';\n  @HostBinding('attr.target') targetAttr = '';\n  @HostBinding('attr.href') hrefAttr = '';\n  @Input() href: string;\n  @Input() public hideIcon: boolean = false;\n  private internalLinks = ['fsd.gov'];\n\n  constructor(\n    @Inject(PLATFORM_ID) private platformId: string,\n    private el: ElementRef,\n    private vc: ViewContainerRef\n  ) {}\n\n  public ngOnChanges() {\n    if (!this.isExternalLink) {\n      return;\n    } else {\n      if (!this.hideIcon) {\n        this.createIcon();\n      }\n      this.hrefAttr = this.href;\n      this.relAttr = 'noopener';\n      this.targetAttr = '_blank';\n    }\n  }\n  private get isExternalLink(): boolean {\n    const link = this.href\n      .replace(/^https?:\\/\\//, '')\n      .replace(/^www\\./, '')\n      .split('/')[0];\n    return (\n      isPlatformBrowser(this.platformId) &&\n      !link.includes(location.hostname) &&\n      !this.internalLinks.includes(link)\n    );\n  }\n  private createIcon() {\n    // tslint:disable-next-line:no-unused-expression\n    this.vc.constructor.name === 'ViewContainerRef_';\n    const spanElement = document.createElement('span');\n    spanElement.classList.add('margin-left-1px');\n    spanElement.classList.add('usa-link--external');\n    this.el.nativeElement.appendChild(spanElement);\n  }\n}\n",
+            "sourceCode": "import {\n  Directive,\n  HostBinding,\n  ElementRef,\n  PLATFORM_ID,\n  Inject,\n  Input,\n  ViewContainerRef,\n  OnChanges,\n  AfterViewInit,\n} from '@angular/core';\n\nimport { isPlatformBrowser } from '@angular/common';\n\n@Directive({\n  selector: 'a[href]',\n})\nexport class ExternalLinkDirective implements OnChanges {\n  @HostBinding('attr.rel') relAttr = '';\n  @HostBinding('attr.target') targetAttr = '';\n  @HostBinding('attr.href') hrefAttr = '';\n  @HostBinding('attr.aria-label') ariaLabel = '';\n\n\n  @Input() href: string;\n  @Input() target: string;\n\n\n  @Input() public hideIcon: boolean = false;\n  private internalLinks = ['fsd.gov'];\n\n  constructor(\n    @Inject(PLATFORM_ID) private platformId: string,\n    private el: ElementRef,\n    private vc: ViewContainerRef\n  ) {}\n\n  public ngOnChanges() {\n    this.hrefAttr = this.href;\n    this.targetAttr = this.target;\n\n    if (!this.isExternalLink) {\n      return;\n    } else {\n      if (!this.hideIcon) {\n        this.createIcon();\n      }\n      this.relAttr = 'noopener';\n      this.targetAttr = '_blank';\n    }\n\n    /**\n     * Add aria label warning users the link will open a new window if the anchor tag\n     * does not already have an aria label\n     */\n    if (this.targetAttr === '_blank') {\n      const currentAriaLabel = this.el.nativeElement.getAttribute('aria-label');\n      if (!currentAriaLabel || currentAriaLabel.length === 0) {\n        this.ariaLabel = `Open ${this.href} in a new window`;\n      }\n    }\n  }\n\n  private get isExternalLink(): boolean {\n    const link = this.href\n      .replace(/^https?:\\/\\//, '')\n      .replace(/^www\\./, '')\n      .split('/')[0];\n    return (\n      isPlatformBrowser(this.platformId) &&\n      !link.includes(location.hostname) &&\n      !this.internalLinks.includes(link)\n    );\n  }\n  private createIcon() {\n    // tslint:disable-next-line:no-unused-expression\n    this.vc.constructor.name === 'ViewContainerRef_';\n    const spanElement = document.createElement('span');\n    spanElement.classList.add('margin-left-1px');\n    spanElement.classList.add('usa-link--external');\n    this.el.nativeElement.appendChild(spanElement);\n  }\n}\n",
             "selector": "a[href]",
             "providers": [],
             "inputsClass": [
                 {
                     "name": "hideIcon",
                     "defaultValue": "false",
-                    "line": 22,
+                    "line": 29,
                     "type": "boolean"
                 },
                 {
                     "name": "href",
-                    "line": 21,
+                    "line": 25,
+                    "type": "string"
+                },
+                {
+                    "name": "target",
+                    "line": 26,
                     "type": "string"
                 }
             ],
             "outputsClass": [],
             "hostBindings": [
                 {
+                    "name": "attr.aria-label",
+                    "defaultValue": "''",
+                    "line": 22
+                },
+                {
                     "name": "attr.href",
                     "defaultValue": "''",
-                    "line": 20
+                    "line": 21
                 },
                 {
                     "name": "attr.rel",
                     "defaultValue": "''",
-                    "line": 18
+                    "line": 19
                 },
                 {
                     "name": "attr.target",
                     "defaultValue": "''",
-                    "line": 19
+                    "line": 20
                 }
             ],
             "hostListeners": [],
@@ -4134,7 +4215,7 @@ const COMPONENTS = {
                     "type": "[]",
                     "optional": false,
                     "description": "",
-                    "line": 23,
+                    "line": 30,
                     "modifierKind": [
                         112
                     ]
@@ -4147,7 +4228,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 54,
+                    "line": 75,
                     "modifierKind": [
                         112
                     ]
@@ -4158,7 +4239,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 31,
+                    "line": 38,
                     "modifierKind": [
                         114
                     ]
@@ -4184,7 +4265,7 @@ const COMPONENTS = {
                         "type": "ViewContainerRef"
                     }
                 ],
-                "line": 23,
+                "line": 30,
                 "jsdoctags": [
                     {
                         "name": "platformId",
@@ -4216,7 +4297,7 @@ const COMPONENTS = {
                         "name": "isExternalLink",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 43
+                        "line": 64
                     }
                 }
             }
@@ -5244,6 +5325,253 @@ const COMPONENTS = {
             }
         },
         {
+            "name": "SdsPopoverDirective",
+            "id": "directive-SdsPopoverDirective-edb6df8cc9fa55f30a05cb2a5d01d0eb",
+            "file": "libs/packages/components/src/lib/popover/popover.directive.ts",
+            "type": "directive",
+            "description": "",
+            "sourceCode": "import { AfterViewInit, Directive, ElementRef, HostListener, Input, Renderer2, TemplateRef } from '@angular/core';\nimport { debounce } from './debounce.decorator';\n\n@Directive({\n  selector: '[sdsPopover]',\n  exportAs: 'sdsPopover'\n})\nexport class SdsPopoverDirective implements AfterViewInit {\n  private _sdsPopoverContent: string | TemplateRef<any> | HTMLParagraphElement;\n  private _sdsPopoverTitle: string | TemplateRef<any> | HTMLParagraphElement;\n\n  sdsPopoverDiv: HTMLElement;\n  popoverVisible= false;\n  popoverDivId: string;\n\n  @HostListener('click', ['$event']) onClick(){\n    this.clickEvent();\n  }\n\n  /**\n   * Adding listener for keyup.enter to ensure that user can activate popover with keyboard\n   */\n  @HostListener('keyup.enter', ['$event']) onKeyUp(){\n    this.clickEvent();\n  }\n\n  @Input()\n  position: string = 'top';\n\n  constructor(private el: ElementRef, private renderer: Renderer2) {\n    this.renderer.addClass(this.el.nativeElement, 'sds-popover');\n\n    this.sdsPopoverDiv = document.createElement('div');\n  }\n\n  ngAfterViewInit() {\n    // Generating semi-random id for use with aria-describedby\n    this.popoverDivId = this.el.nativeElement.id ? `${this.el.nativeElement.id}-popover` : `${this.el.nativeElement.tagName}-${this.el.nativeElement.offsetTop}-${this.el.nativeElement.offsetWidth}-popover`\n    this.sdsPopoverDiv.id = this.popoverDivId;\n\n    this.renderer.addClass(this.sdsPopoverDiv, 'sds-popover__content');\n    this.renderer.addClass(this.sdsPopoverDiv, 'tooltip')\n    this.renderer.addClass(this.sdsPopoverDiv, 'out');\n    this.renderer.setAttribute(this.sdsPopoverDiv, 'data-position', this.position)\n    this.renderer.setAttribute(this.sdsPopoverDiv, 'aria-hidden', 'true');\n    this.renderer.addClass(this.sdsPopoverDiv, this.position);\n\n    // Add title section and divider if title included\n    if(this._sdsPopoverTitle){\n      this.renderer.appendChild(this.sdsPopoverDiv, this._sdsPopoverTitle);\n\n      const divider = document.createElement('hr');\n      this.renderer.addClass(divider, 'divider');\n      this.renderer.appendChild(this.sdsPopoverDiv, divider);\n    }\n\n    this.renderer.appendChild(this.sdsPopoverDiv, this._sdsPopoverContent);\n\n    this.renderer.setAttribute(this.el.nativeElement, 'role', 'button');\n    this.renderer.setAttribute(this.el.nativeElement, 'aria-expanded', 'false');\n    this.renderer.setAttribute(this.el.nativeElement, 'aria-haspopup', 'dialog');\n\n    this.renderer.appendChild(this.el.nativeElement, this.sdsPopoverDiv);\n  }\n\n  @Input()\n  set sdsPopover(value: string | TemplateRef<any> | HTMLParagraphElement){\n    this._sdsPopoverContent = this.handlePopoverSection(value, 'content')\n  }\n\n  get sdsPopover(): string | TemplateRef<any> | HTMLParagraphElement{\n    return this._sdsPopoverContent;\n  }\n\n  @Input()\n  set sdsPopoverTitle(value: string | TemplateRef<any> | HTMLParagraphElement){\n    this._sdsPopoverTitle = this.handlePopoverSection(value, 'title')\n  }\n\n  get sdsPopoverTitle(): string | TemplateRef<any> | HTMLParagraphElement{\n    return this._sdsPopoverTitle;\n  }\n\n  handlePopoverSection(value: string | TemplateRef<any> | HTMLParagraphElement,  classToApply: string): string | TemplateRef<any> | HTMLParagraphElement{\n    let popoverSection;\n    if(typeof value === 'string'){\n      popoverSection = document.createElement('p');\n      popoverSection.innerText = value;\n      this.renderer.addClass(popoverSection, classToApply)\n\n    } else {\n      popoverSection = value;\n    }\n    return popoverSection;\n  }\n\n  /**\n   * Using debounce decorator here to prevent a scenario where a popover is\n   * applied to a button and this function is called by both the enter key\n   * listener and click listener.\n   */\n  @debounce(100)\n  clickEvent(){\n    this.popoverVisible = !this.popoverVisible;\n    if(this.popoverVisible){\n      this.renderer.addClass(this.sdsPopoverDiv, 'sds-popover__shown');\n      this.renderer.setAttribute(this.sdsPopoverDiv, 'aria-hidden', 'false');\n      this.renderer.setAttribute(this.el.nativeElement, 'aria-describedby', this.popoverDivId)\n      this.renderer.setAttribute(this.el.nativeElement, 'aria-expanded', 'true');\n\n      this.renderer.removeClass(this.sdsPopoverDiv, 'sds-popover__hidden');\n    } else {\n      this.renderer.addClass(this.sdsPopoverDiv, 'sds-popover__hidden');\n      this.renderer.setAttribute(this.sdsPopoverDiv, 'aria-hidden', 'true');\n      this.renderer.setAttribute(this.el.nativeElement, 'aria-expanded', 'false');\n\n      this.renderer.removeClass(this.sdsPopoverDiv, 'sds-popover__shown');\n      this.renderer.removeAttribute(this.el.nativeElement, 'aria-describedby')\n    }\n  }\n}\n",
+            "selector": "[sdsPopover]",
+            "providers": [],
+            "inputsClass": [
+                {
+                    "name": "position",
+                    "defaultValue": "'top'",
+                    "line": 28,
+                    "type": "string"
+                },
+                {
+                    "name": "sdsPopover",
+                    "line": 67,
+                    "type": ""
+                },
+                {
+                    "name": "sdsPopoverTitle",
+                    "line": 76,
+                    "type": ""
+                }
+            ],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": [
+                {
+                    "name": "click",
+                    "args": [],
+                    "argsDecorator": [
+                        "$event"
+                    ],
+                    "line": 16
+                },
+                {
+                    "name": "keyup.enter",
+                    "args": [],
+                    "argsDecorator": [
+                        "$event"
+                    ],
+                    "description": "<p>Adding listener for keyup.enter to ensure that user can activate popover with keyboard</p>\n",
+                    "line": 23
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "_sdsPopoverContent",
+                    "type": "string | TemplateRef<any> | HTMLParagraphElement",
+                    "optional": false,
+                    "description": "",
+                    "line": 9,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_sdsPopoverTitle",
+                    "type": "string | TemplateRef<any> | HTMLParagraphElement",
+                    "optional": false,
+                    "description": "",
+                    "line": 10,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "popoverDivId",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                },
+                {
+                    "name": "popoverVisible",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
+                },
+                {
+                    "name": "sdsPopoverDiv",
+                    "type": "HTMLElement",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "clickEvent",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 103,
+                    "description": "<p>Using debounce decorator here to prevent a scenario where a popover is\napplied to a button and this function is called by both the enter key\nlistener and click listener.</p>\n",
+                    "decorators": [
+                        {
+                            "name": "debounce",
+                            "stringifiedArguments": "100"
+                        }
+                    ]
+                },
+                {
+                    "name": "handlePopoverSection",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "string | TemplateRef<any> | HTMLParagraphElement"
+                        },
+                        {
+                            "name": "classToApply",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string | TemplateRef | HTMLParagraphElement",
+                    "typeParameters": [],
+                    "line": 84,
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "string | TemplateRef<any> | HTMLParagraphElement",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "classToApply",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 36
+                }
+            ],
+            "implements": [
+                "AfterViewInit"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "el",
+                        "type": "ElementRef"
+                    },
+                    {
+                        "name": "renderer",
+                        "type": "Renderer2"
+                    }
+                ],
+                "line": 28,
+                "jsdoctags": [
+                    {
+                        "name": "el",
+                        "type": "ElementRef",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "renderer",
+                        "type": "Renderer2",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "accessors": {
+                "sdsPopover": {
+                    "name": "sdsPopover",
+                    "setSignature": {
+                        "name": "sdsPopover",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 67,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    },
+                    "getSignature": {
+                        "name": "sdsPopover",
+                        "type": "",
+                        "returnType": "string | TemplateRef | HTMLParagraphElement",
+                        "line": 71
+                    }
+                },
+                "sdsPopoverTitle": {
+                    "name": "sdsPopoverTitle",
+                    "setSignature": {
+                        "name": "sdsPopoverTitle",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 76,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    },
+                    "getSignature": {
+                        "name": "sdsPopoverTitle",
+                        "type": "",
+                        "returnType": "string | TemplateRef | HTMLParagraphElement",
+                        "line": 80
+                    }
+                }
+            }
+        },
+        {
             "name": "SdsPopupDirective",
             "id": "directive-SdsPopupDirective-f90e258a1339ca9bbf2c49725c31b0e5",
             "file": "libs/packages/components/src/lib/popup/popup.directive.ts",
@@ -5514,6 +5842,144 @@ const COMPONENTS = {
                                 }
                             }
                         ]
+                    }
+                }
+            }
+        },
+        {
+            "name": "SdsTooltipDirective",
+            "id": "directive-SdsTooltipDirective-a89acca1ecb6852ff9b7988a3cfaeb21",
+            "file": "libs/packages/components/src/lib/tooltip/tooltip.directive.ts",
+            "type": "directive",
+            "description": "",
+            "sourceCode": "import { AfterViewInit, Directive, ElementRef, HostListener, Input, Renderer2, TemplateRef } from '@angular/core';\n\n@Directive({\n  selector: '[sdsTooltip]',\n  exportAs: 'sdsTooltip'\n})\nexport class SdsTooltipDirective implements AfterViewInit {\n\n  private _sdsTooltip: string | TemplateRef<any> | HTMLDivElement;\n  sdsTooltipDiv: HTMLElement;\n\n  @Input()\n  position: string = 'top';\n\n  @HostListener('focus', ['$event']) onFocus(){\n    this.renderer.setAttribute(this.sdsTooltipDiv, 'aria-hidden', 'false')\n  }\n  @HostListener('blur', ['$event']) onBlur(){\n    this.renderer.setAttribute(this.sdsTooltipDiv, 'aria-hidden', 'true')\n  }\n\n\n  constructor(private el: ElementRef, private renderer: Renderer2) {\n    this.renderer.addClass(this.el.nativeElement, 'sds-tooltip');\n    this.renderer.setAttribute(this.el.nativeElement, 'tabindex', '0')\n\n    this.sdsTooltipDiv = document.createElement('div');\n\n    this.renderer.addClass(this.sdsTooltipDiv, 'sds-tooltip__content');\n  }\n\n  ngAfterViewInit() {\n    this.renderer.setAttribute(this.sdsTooltipDiv, 'data-position', this.position)\n    this.renderer.addClass(this.sdsTooltipDiv, this.position);\n    this.renderer.appendChild(this.sdsTooltipDiv, this.sdsTooltip);\n\n    this.renderer.appendChild(this.el.nativeElement, this.sdsTooltipDiv);\n  }\n\n  @Input()\n  set sdsTooltip(value: string | TemplateRef<any> | HTMLDivElement){\n    if(typeof value === 'string'){\n      this._sdsTooltip = document.createElement('div');\n      this._sdsTooltip.innerText = value;\n    } else {\n      this._sdsTooltip = value;\n    }\n    this.renderer.addClass(this._sdsTooltip, 'tooltip')\n  }\n\n  get sdsTooltip(): string | TemplateRef<any> | HTMLDivElement{\n    return this._sdsTooltip;\n  }\n\n}\n",
+            "selector": "[sdsTooltip]",
+            "providers": [],
+            "inputsClass": [
+                {
+                    "name": "position",
+                    "defaultValue": "'top'",
+                    "line": 13,
+                    "type": "string"
+                },
+                {
+                    "name": "sdsTooltip",
+                    "line": 41,
+                    "type": ""
+                }
+            ],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": [
+                {
+                    "name": "blur",
+                    "args": [],
+                    "argsDecorator": [
+                        "$event"
+                    ],
+                    "line": 18
+                },
+                {
+                    "name": "focus",
+                    "args": [],
+                    "argsDecorator": [
+                        "$event"
+                    ],
+                    "line": 15
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "_sdsTooltip",
+                    "type": "string | TemplateRef<any> | HTMLDivElement",
+                    "optional": false,
+                    "description": "",
+                    "line": 9,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "sdsTooltipDiv",
+                    "type": "HTMLElement",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 32
+                }
+            ],
+            "implements": [
+                "AfterViewInit"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "el",
+                        "type": "ElementRef"
+                    },
+                    {
+                        "name": "renderer",
+                        "type": "Renderer2"
+                    }
+                ],
+                "line": 20,
+                "jsdoctags": [
+                    {
+                        "name": "el",
+                        "type": "ElementRef",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "renderer",
+                        "type": "Renderer2",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "accessors": {
+                "sdsTooltip": {
+                    "name": "sdsTooltip",
+                    "setSignature": {
+                        "name": "sdsTooltip",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 41,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    },
+                    "getSignature": {
+                        "name": "sdsTooltip",
+                        "type": "",
+                        "returnType": "string | TemplateRef | HTMLDivElement",
+                        "line": 51
                     }
                 }
             }
@@ -6104,7 +6570,7 @@ const COMPONENTS = {
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"sds-pagination\" *ngIf=\"displayMode === 'default'\">\n  <div class=\"sds-pagination__controls\">\n    <button [attr.id]=\"paginationConfiguration.id +'-previousPage'\" (click)=\"previousPage()\">Previous Page</button>\n    <label class=\"usa-label font-sans-3xs margin-top-1 text-italic text-base usa-sr-only\"\n      [attr.for]=\"paginationConfiguration.id + '-currentPage'\">Current Page</label>\n    <input [attr.id]=\"paginationConfiguration.id +'-currentPage'\"\n      class=\"usa-input usa-input--small font-sans-3xs text-center border-base-light\" #currentPage\n      (ngModelChange)=\"valuechange($event)\" [(ngModel)]=\"page.pageNumber\" type=\"number\" min=\"1\"\n      [(attr.max)]=\"page.totalPages\" (focusout)=\"currentPageFocusOut()\" [ngStyle]=\"{'width': (20 + page.totalPages.toString().length * 10) +'px'}\" />\n    <span class=\"sds-pagination__total\">\n      of <strong>{{ page.totalPages }}</strong>\n    </span>\n    <button [attr.id]=\"paginationConfiguration.id +'-nextPage'\" (click)=\"nextPage()\">Next Page</button>\n  </div>\n  <div class=\"sds-pagination__results\">\n    <label class=\"usa-label font-sans-3xs text-italic text-base\"\n      [attr.for]=\"paginationConfiguration.id + '-select'\">Results per page</label>\n    <select class=\"usa-select usa-select--small border-base-light\" [attr.id]=\"paginationConfiguration.id + '-select'\"\n      (change)=\"onSelectChange()\" [(ngModel)]=\"page.pageSize\">\n      <option *ngFor=\"let item of options\" [ngValue]=\"item.value\">\n        {{ item.label }}\n      </option>\n    </select>\n  </div>\n</div>\n\n<div class=\"sds-pagination\" *ngIf=\"totalItems && displayMode === 'results'\">\n  <div class=\"text-semibold font-sans-3xs\">Showing {{(page.pageNumber-1)*page.pageSize+1 | number:'1.0':'en-US'}} - {{((page.pageNumber-1)*page.pageSize+page.pageSize) > totalItems ? (totalItems | number:'1.0':'en-US') : ((page.pageNumber-1)*page.pageSize+page.pageSize | number:'1.0':'en-US') }} of {{totalItems | number:'1.0':'en-US'}} results</div>\n</div>\n"
+            "templateData": "<div class=\"sds-pagination\" *ngIf=\"displayMode === 'default'\">\n  <div class=\"sds-pagination__controls\">\n    <button [attr.id]=\"paginationConfiguration.id +'-previousPage'\" (click)=\"previousPage()\">Previous Page</button>\n    <label class=\"usa-label font-sans-3xs margin-top-1 text-italic text-base usa-sr-only\"\n      [attr.for]=\"paginationConfiguration.id + '-currentPage'\">Current Page</label>\n    <input [attr.id]=\"paginationConfiguration.id +'-currentPage'\"\n      class=\"usa-input usa-input--small font-sans-3xs text-center border-base-light\" #currentPage\n      [attr.aria-label]=\"'Page ' + page.pageNumber + ' of ' + page.totalPages\"\n      (ngModelChange)=\"valuechange($event)\" [(ngModel)]=\"page.pageNumber\" type=\"number\" min=\"1\"\n      [(attr.max)]=\"page.totalPages\" (focusout)=\"currentPageFocusOut()\" [ngStyle]=\"{'width': (20 + page.totalPages.toString().length * 10) +'px'}\" />\n    <span class=\"sds-pagination__total\">\n      of <strong>{{ page.totalPages }}</strong>\n    </span>\n    <button [attr.id]=\"paginationConfiguration.id +'-nextPage'\" (click)=\"nextPage()\">Next Page</button>\n  </div>\n  <div class=\"sds-pagination__results\">\n    <label class=\"usa-label font-sans-3xs text-italic text-base\"\n      [attr.for]=\"paginationConfiguration.id + '-select'\">Results per page</label>\n    <select class=\"usa-select usa-select--small border-base-light\" [attr.id]=\"paginationConfiguration.id + '-select'\"\n      (change)=\"onSelectChange()\" [(ngModel)]=\"page.pageSize\">\n      <option *ngFor=\"let item of options\" [ngValue]=\"item.value\">\n        {{ item.label }}\n      </option>\n    </select>\n  </div>\n</div>\n\n<div aria-live=\"polite\">\n  <div class=\"sds-pagination\" *ngIf=\"totalItems && displayMode === 'results'\">\n    <div class=\"text-semibold font-sans-3xs\">\n      Showing {{(page.pageNumber-1)*page.pageSize+1 | number:'1.0':'en-US'}} - {{((page.pageNumber-1)*page.pageSize+page.pageSize) > totalItems ? (totalItems | number:'1.0':'en-US') : ((page.pageNumber-1)*page.pageSize+page.pageSize | number:'1.0':'en-US') }} of {{totalItems | number:'1.0':'en-US'}} results\n    </div>\n  </div>\n</div>\n\n"
         },
         {
             "name": "SdsAccordionItemComponent",
@@ -6634,7 +7100,7 @@ const COMPONENTS = {
         },
         {
             "name": "SDSAutocompleteComponent",
-            "id": "component-SDSAutocompleteComponent-4e19e49c1010f6e8e22d0656b58af347",
+            "id": "component-SDSAutocompleteComponent-848728be6f1554d9da5c823fbf039184",
             "file": "libs/packages/components/src/lib/autocomplete/autocomplete.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -6929,7 +7395,7 @@ const COMPONENTS = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import {\n  Component,\n  Input,\n  ViewChild,\n  TemplateRef,\n  ElementRef,\n  forwardRef,\n  HostListener,\n  ChangeDetectorRef,\n  ChangeDetectionStrategy\n} from '@angular/core';\nimport { FaIconLibrary } from '@fortawesome/angular-fontawesome'; import { fas } from '@fortawesome/free-solid-svg-icons'; import { sds } from '@gsa-sam/sam-styles/src/icons/';\nimport {\n  NG_VALUE_ACCESSOR,\n  ControlValueAccessor,\n  FormControl\n} from '@angular/forms';\nimport { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';\nimport { SDSAutocompleteServiceInterface } from '../autocomplete-search/models/SDSAutocompleteServiceInterface';\nimport { SDSAutocompletelConfiguration } from './models/SDSAutocompletelConfiguration.model';\nimport { SelectionMode } from '../selected-result/models/sds-selected-item-model-helper';\nimport { SDSAutocompleteSearchComponent } from '../autocomplete-search/autocomplete-search.component';\n\nconst Autocomplete_VALUE_ACCESSOR: any = {\n  provide: NG_VALUE_ACCESSOR,\n  useExisting: forwardRef(() => SDSAutocompleteComponent),\n  multi: true\n};\n\n@Component({\n  selector: 'sds-autocomplete',\n  templateUrl: './autocomplete.component.html',\n  styleUrls: ['./autocomplete.component.scss'],\n  providers: [Autocomplete_VALUE_ACCESSOR],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class SDSAutocompleteComponent implements ControlValueAccessor {\n  /**\n   * Allow to insert a customized template for suggestions results\n   */\n  @Input() suggestionTemplate: TemplateRef<any>;\n\n  /**\n   * Allow to insert a customized template for selected items\n   */\n  @Input() selectedItemTemplate: TemplateRef<any>;\n\n  /**\n   * The data model that has the selected item\n   */\n  public model: SDSSelectedItemModel = new SDSSelectedItemModel();\n\n  public disabled: boolean;\n\n  /**\n   * Configuration for the control\n   */\n  @Input()\n  public configuration: SDSAutocompletelConfiguration;\n\n  /**\n   * Model contain only the primary key, primary value, and secondary value.\n   */\n  @Input()\n  public essentialModelFields: boolean = false;\n\n  /**\n   * Instance of the SamHiercarchicalServiceInterface provided\n   */\n  @Input()\n  public service: SDSAutocompleteServiceInterface;\n\n  @ViewChild('autocompleteSearch', { static: true }) autocompleteSearch: SDSAutocompleteSearchComponent;\n  constructor(private cd: ChangeDetectorRef, library: FaIconLibrary) { library.addIconPacks(fas, sds); }\n\n  /**\n   * Stored Event for ControlValueAccessor\n   */\n  @HostListener('focusout')\n  public onTouched = () => { };\n\n  /**\n   * Stored Event for ControlValueAccessor\n   */\n  public onChange = (_: any) => { };\n\n  // ControlValueAccessor (and Formly) is trying to update the value of the FormControl (our custom component) programatically\n  // If there is a value we will just overwrite items\n  // If there is no value we reset the items array to be empty\n  writeValue(value: any) {\n    if (value instanceof SDSSelectedItemModel && value.items && value.items.length) {\n      this.model.items = [...value.items];\n      this.cd.markForCheck();\n    }\n    else if (value && value.length) {\n      this.model.items = value;\n      this.cd.markForCheck();\n    } else {\n      if (!this.model || !(this.model instanceof SDSSelectedItemModel)) {\n        this.model = new SDSSelectedItemModel();\n      }\n      this.model.items = value && value.items ? value.items : [];\n      this.cd.markForCheck();\n    }\n\n    this.autocompleteSearch.writeValue(this.model);\n  }\n\n  // Method that is fired when the child component event notifies us that the items array has been modified within the child component\n  updateItems($event) {\n    this.updateModel();\n  }\n\n  // Helper method that gets a new instance of the model and notifies ControlValueAccessor that we have a new model for this FormControl (our custom component)\n  updateModel() {\n    const model = this.getModel();\n    this.onChange(model);\n  }\n\n  // Helper method to return a new instance of an array that contains our items\n  getModel() {\n    return [...this.model.items];\n  }\n\n  // ControlValueAccessor hook that lets us call this._onChange(var) to let the form know our variable has changed (in this case model)\n  registerOnChange(fn: any): void {\n    this.onChange = fn;\n  }\n\n  // ControlValueAccessor hook (not used)\n  registerOnTouched(fn: any) {\n    this.onTouched = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n    this.cd.detectChanges();\n  }\n\n  isSingleMode(): boolean {\n    if (this.configuration) {\n      return this.configuration.selectionMode === SelectionMode.SINGLE;\n    } else {\n      return false;\n    }\n  }\n  addItem(item: object) {\n    this.autocompleteSearch.selectItem(item);\n  }\n\n  addItems(list: object[]) {\n    list.forEach(item => {\n      this.addItem(item);\n    })\n  }\n}",
+            "sourceCode": "import {\n  Component,\n  Input,\n  ViewChild,\n  TemplateRef,\n  ElementRef,\n  forwardRef,\n  HostListener,\n  ChangeDetectorRef,\n  ChangeDetectionStrategy\n} from '@angular/core';\n\nimport {\n  NG_VALUE_ACCESSOR,\n  ControlValueAccessor,\n  FormControl\n} from '@angular/forms';\nimport { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';\nimport { SDSAutocompleteServiceInterface } from '../autocomplete-search/models/SDSAutocompleteServiceInterface';\nimport { SDSAutocompletelConfiguration } from './models/SDSAutocompletelConfiguration.model';\nimport { SelectionMode } from '../selected-result/models/sds-selected-item-model-helper';\nimport { SDSAutocompleteSearchComponent } from '../autocomplete-search/autocomplete-search.component';\n\nconst Autocomplete_VALUE_ACCESSOR: any = {\n  provide: NG_VALUE_ACCESSOR,\n  useExisting: forwardRef(() => SDSAutocompleteComponent),\n  multi: true\n};\n\n@Component({\n  selector: 'sds-autocomplete',\n  templateUrl: './autocomplete.component.html',\n  styleUrls: ['./autocomplete.component.scss'],\n  providers: [Autocomplete_VALUE_ACCESSOR],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class SDSAutocompleteComponent implements ControlValueAccessor {\n  /**\n   * Allow to insert a customized template for suggestions results\n   */\n  @Input() suggestionTemplate: TemplateRef<any>;\n\n  /**\n   * Allow to insert a customized template for selected items\n   */\n  @Input() selectedItemTemplate: TemplateRef<any>;\n\n  /**\n   * The data model that has the selected item\n   */\n  public model: SDSSelectedItemModel = new SDSSelectedItemModel();\n\n  public disabled: boolean;\n\n  /**\n   * Configuration for the control\n   */\n  @Input()\n  public configuration: SDSAutocompletelConfiguration;\n\n  /**\n   * Model contain only the primary key, primary value, and secondary value.\n   */\n  @Input()\n  public essentialModelFields: boolean = false;\n\n  /**\n   * Instance of the SamHiercarchicalServiceInterface provided\n   */\n  @Input()\n  public service: SDSAutocompleteServiceInterface;\n\n  @ViewChild('autocompleteSearch', { static: true }) autocompleteSearch: SDSAutocompleteSearchComponent;\n  constructor(private cd: ChangeDetectorRef) {  }\n\n  /**\n   * Stored Event for ControlValueAccessor\n   */\n  @HostListener('focusout')\n  public onTouched = () => { };\n\n  /**\n   * Stored Event for ControlValueAccessor\n   */\n  public onChange = (_: any) => { };\n\n  // ControlValueAccessor (and Formly) is trying to update the value of the FormControl (our custom component) programatically\n  // If there is a value we will just overwrite items\n  // If there is no value we reset the items array to be empty\n  writeValue(value: any) {\n    if (value instanceof SDSSelectedItemModel && value.items && value.items.length) {\n      this.model.items = [...value.items];\n      this.cd.markForCheck();\n    }\n    else if (value && value.length) {\n      this.model.items = value;\n      this.cd.markForCheck();\n    } else {\n      if (!this.model || !(this.model instanceof SDSSelectedItemModel)) {\n        this.model = new SDSSelectedItemModel();\n      }\n      this.model.items = value && value.items ? value.items : [];\n      this.cd.markForCheck();\n    }\n\n    this.autocompleteSearch.writeValue(this.model);\n  }\n\n  // Method that is fired when the child component event notifies us that the items array has been modified within the child component\n  updateItems($event) {\n    this.updateModel();\n  }\n\n  // Helper method that gets a new instance of the model and notifies ControlValueAccessor that we have a new model for this FormControl (our custom component)\n  updateModel() {\n    const model = this.getModel();\n    this.onChange(model);\n  }\n\n  // Helper method to return a new instance of an array that contains our items\n  getModel() {\n    return [...this.model.items];\n  }\n\n  // ControlValueAccessor hook that lets us call this._onChange(var) to let the form know our variable has changed (in this case model)\n  registerOnChange(fn: any): void {\n    this.onChange = fn;\n  }\n\n  // ControlValueAccessor hook (not used)\n  registerOnTouched(fn: any) {\n    this.onTouched = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n    this.cd.detectChanges();\n  }\n\n  isSingleMode(): boolean {\n    if (this.configuration) {\n      return this.configuration.selectionMode === SelectionMode.SINGLE;\n    } else {\n      return false;\n    }\n  }\n  addItem(item: object) {\n    this.autocompleteSearch.selectItem(item);\n  }\n\n  addItems(list: object[]) {\n    list.forEach(item => {\n      this.addItem(item);\n    })\n  }\n}",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -6945,10 +7411,6 @@ const COMPONENTS = {
                     {
                         "name": "cd",
                         "type": "ChangeDetectorRef"
-                    },
-                    {
-                        "name": "library",
-                        "type": "FaIconLibrary"
                     }
                 ],
                 "line": 73,
@@ -6956,13 +7418,6 @@ const COMPONENTS = {
                     {
                         "name": "cd",
                         "type": "ChangeDetectorRef",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    },
-                    {
-                        "name": "library",
-                        "type": "FaIconLibrary",
                         "tagName": {
                             "text": "param"
                         }
@@ -6976,7 +7431,7 @@ const COMPONENTS = {
         },
         {
             "name": "SDSAutocompleteSearchComponent",
-            "id": "component-SDSAutocompleteSearchComponent-94fb42a5041c4d67e69493a3072aae40",
+            "id": "component-SDSAutocompleteSearchComponent-b895a81754a7bb5b9c821c05e80c38b5",
             "file": "libs/packages/components/src/lib/autocomplete-search/autocomplete-search.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -7261,15 +7716,15 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 15197,
-                                "end": 15201,
+                                "pos": 14969,
+                                "end": 14973,
                                 "flags": 0,
                                 "escapedText": "item"
                             },
                             "type": "object",
                             "tagName": {
-                                "pos": 15191,
-                                "end": 15196,
+                                "pos": 14963,
+                                "end": 14968,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -7296,15 +7751,15 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 16266,
-                                "end": 16273,
+                                "pos": 16038,
+                                "end": 16045,
                                 "flags": 0,
                                 "escapedText": "message"
                             },
                             "type": "string",
                             "tagName": {
-                                "pos": 16260,
-                                "end": 16265,
+                                "pos": 16032,
+                                "end": 16037,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -7328,15 +7783,15 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5045,
-                                "end": 5050,
+                                "pos": 4817,
+                                "end": 4822,
                                 "flags": 0,
                                 "escapedText": "event"
                             },
                             "type": "",
                             "tagName": {
-                                "pos": 5039,
-                                "end": 5044,
+                                "pos": 4811,
+                                "end": 4816,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -7360,15 +7815,15 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 12298,
-                                "end": 12304,
+                                "pos": 12070,
+                                "end": 12076,
                                 "flags": 0,
                                 "escapedText": "result"
                             },
                             "type": "any",
                             "tagName": {
-                                "pos": 12292,
-                                "end": 12297,
+                                "pos": 12064,
+                                "end": 12069,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -7474,15 +7929,15 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 3811,
-                                "end": 3817,
+                                "pos": 3583,
+                                "end": 3589,
                                 "flags": 0,
                                 "escapedText": "object"
                             },
                             "type": "Object",
                             "tagName": {
-                                "pos": 3805,
-                                "end": 3810,
+                                "pos": 3577,
+                                "end": 3582,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -7490,15 +7945,15 @@ const COMPONENTS = {
                         },
                         {
                             "name": {
-                                "pos": 3830,
-                                "end": 3844,
+                                "pos": 3602,
+                                "end": 3616,
                                 "flags": 0,
                                 "escapedText": "propertyFields"
                             },
                             "type": "string",
                             "tagName": {
-                                "pos": 3824,
-                                "end": 3829,
+                                "pos": 3596,
+                                "end": 3601,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -7525,15 +7980,15 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 12624,
-                                "end": 12636,
+                                "pos": 12396,
+                                "end": 12408,
                                 "flags": 0,
                                 "escapedText": "searchString"
                             },
                             "type": "string",
                             "tagName": {
-                                "pos": 12618,
-                                "end": 12623,
+                                "pos": 12390,
+                                "end": 12395,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -7569,15 +8024,15 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 14018,
-                                "end": 14030,
+                                "pos": 13790,
+                                "end": 13802,
                                 "flags": 0,
                                 "escapedText": "searchString"
                             },
                             "type": "string",
                             "tagName": {
-                                "pos": 14012,
-                                "end": 14017,
+                                "pos": 13784,
+                                "end": 13789,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -7625,15 +8080,15 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 6562,
-                                "end": 6567,
+                                "pos": 6334,
+                                "end": 6339,
                                 "flags": 0,
                                 "escapedText": "event"
                             },
                             "type": "",
                             "tagName": {
-                                "pos": 6556,
-                                "end": 6561,
+                                "pos": 6328,
+                                "end": 6333,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -7755,15 +8210,15 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 7942,
-                                "end": 7946,
+                                "pos": 7714,
+                                "end": 7718,
                                 "flags": 0,
                                 "escapedText": "item"
                             },
                             "type": "object",
                             "tagName": {
-                                "pos": 7936,
-                                "end": 7941,
+                                "pos": 7708,
+                                "end": 7713,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -7812,15 +8267,15 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 15401,
-                                "end": 15405,
+                                "pos": 15173,
+                                "end": 15177,
                                 "flags": 0,
                                 "escapedText": "item"
                             },
                             "type": "Object",
                             "tagName": {
-                                "pos": 15395,
-                                "end": 15400,
+                                "pos": 15167,
+                                "end": 15172,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -7886,7 +8341,7 @@ const COMPONENTS = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import {\n  Component,\n  Input,\n  ViewChild,\n  TemplateRef,\n  ElementRef,\n  forwardRef,\n  ChangeDetectorRef\n} from '@angular/core';\nimport { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';\nimport { SDSAutocompleteServiceInterface } from './models/SDSAutocompleteServiceInterface';\nimport { KeyHelper, KEYS } from '../key-helper/key-helper';\nimport { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';\nimport {\n  SelectionMode,\n  SDSSelectedItemModelHelper\n} from '../selected-result/models/sds-selected-item-model-helper';\nimport { fas } from '@fortawesome/free-solid-svg-icons';\nimport { sds } from '@gsa-sam/sam-styles/src/icons/';\nimport { SDSAutocompleteSearchConfiguration } from './models/SDSAutocompleteConfiguration';\nimport { FaIconLibrary } from '@fortawesome/angular-fontawesome';\nconst Autocomplete_Autocomplete_VALUE_ACCESSOR: any = {\n  provide: NG_VALUE_ACCESSOR,\n  useExisting: forwardRef(() => SDSAutocompleteSearchComponent),\n  multi: true\n};\n\n@Component({\n  selector: 'sds-search-autocomplete',\n  templateUrl: './autocomplete-search.component.html',\n  styleUrls: ['./autocomplete-search.component.scss'],\n  providers: [Autocomplete_Autocomplete_VALUE_ACCESSOR]\n})\nexport class SDSAutocompleteSearchComponent implements ControlValueAccessor {\n  constructor(\n    private _changeDetectorRef: ChangeDetectorRef,\n    library: FaIconLibrary\n  ) {\n    library.addIconPacks(fas, sds);\n  }\n  /**\n   * Ul list of elements\n   */\n  @ViewChild('resultsList') resultsListElement: ElementRef;\n\n  /**\n   * input control\n   */\n  @ViewChild('input') input: ElementRef;\n\n  /**\n   * Allow to insert a customized template for suggestions to use\n   */\n  @Input() itemTemplate: TemplateRef<any>;\n\n  /**\n   * The data model that has the selected item\n   */\n  public model: SDSSelectedItemModel;\n\n  /**\n   * Model contain only the primary key, primary value, and secondary value.\n   */\n  @Input() public essentialModelFields: boolean = false;\n\n  /**\n   * Configuration for the Autocomplete control\n   */\n  @Input()\n  public configuration: SDSAutocompleteSearchConfiguration;\n\n  /**\n   * Instance of the SamHiercarchicalServiceInterface provided\n   */\n  @Input()\n  public service: SDSAutocompleteServiceInterface;\n\n  /**\n   * Timer id for the timer awaiting the service call for more typeing\n   */\n  private timeoutNumber: number;\n\n  /**\n   *  result set to be rendered\n   */\n  results: object[];\n\n  /**\n   * max number of results to be shown\n   */\n  private maxResults: number;\n\n  /**\n   * selected index\n   */\n  public highlightedIndex: number = 0;\n\n  /**\n   * selected child index\n   */\n  public highlightedChildIndex = 0;\n\n  /**\n   * highlighted object in drop down\n   */\n  private highlightedItem: object;\n\n  /**\n   * value of the input field\n   */\n  public inputValue: string = '';\n\n  /**\n   * Proprty being set on the object is highlighted\n   */\n  private HighlightedPropertyName = 'highlighted';\n\n  public showLoad: boolean = true;\n\n  /**\n   * Search string\n   */\n  private searchString: string = null;\n\n  /**\n   * Message announced by screen readers when\n   * autocomplete results are updated or new item\n   * is highlighted\n   */\n  public srOnlyText: string;\n\n  /**\n   * To make input readonly\n   */\n  @Input() public inputReadOnly = false;\n\n  /**\n   * Stored Event for ControlValueAccessor\n   */\n  public onTouchedCallback: () => void = () => null;\n\n  /**\n   * Stored Event for ControlValueAccessor\n   */\n  public propogateChange: (_: any) => void = (_: any) => null;\n\n  @Input()\n  public disabled: boolean;\n\n  private resultsAvailableMessage: string =\n    ' results available. Use up and down arrows\\\n  to scroll through results. Hit enter to select.';\n\n  private index = 0;\n  /**\n   * Gets the string value from the specifed properties of an object\n   * @param object\n   * @param propertyFields comma seperated list with periods depth of object\n   */\n\n  getObjectValue(object: Object, propertyFields: string): string {\n    let value = '';\n    let current = object;\n    let fieldSplit = propertyFields.split(',');\n    for (let i = 0; i < fieldSplit.length; i++) {\n      let fieldValue = fieldSplit[i];\n      let fieldPartSplit = fieldValue.split('.');\n      for (let j = 0; j < fieldPartSplit.length; j++) {\n        let fieldCheckValue = fieldPartSplit[j];\n        if (current) {\n          current = current[fieldCheckValue];\n        }\n      }\n\n      if (current) {\n        value += current.toString() + ' ';\n      }\n      current = object;\n    }\n    return value.trim();\n  }\n\n  /**\n   * Determines if the dropdown should be shown\n   */\n  public showResults = false;\n\n  /**\n   * Clears the input fields and value\n   */\n  public clearInput(): void {\n    this.inputValue = '';\n    if (this.configuration.selectionMode === SelectionMode.SINGLE) {\n      if (this.model.items.length > 0) {\n        SDSSelectedItemModelHelper.clearItems(this.model.items);\n        this.propogateChange(this.model);\n      }\n    }\n    this.onTouchedCallback();\n    this.clearAndHideResults();\n  }\n\n  /**\n   *\n   * @param event\n   */\n  checkForFocus(event): void {\n    this.focusRemoved();\n    this.showResults = false;\n  }\n\n  /**\n   *\n   */\n  private focusRemoved() {\n    if (this.configuration) {\n      if (this.configuration.selectionMode === SelectionMode.SINGLE) {\n        if (this.model.items.length > 0) {\n          this.inputValue = this.getObjectValue(\n            this.model.items[0],\n            this.configuration.primaryTextField\n          );\n        }\n      } else {\n        this.inputValue = '';\n      }\n    } else {\n      this.inputValue = '';\n    }\n  }\n\n  onkeypress(ev) {\n    return this.configuration.inputReadOnly ? false : true;\n  }\n  textChange(event) {\n    if (!this.configuration.isTagModeEnabled) {\n      // ie 11 placeholders will incorrectly trigger input events (known bug)\n      // if input isn't active element then don't do anything\n      if (event.target != document.activeElement) {\n        event.preventDefault();\n        return;\n      }\n      const searchString = event.target.value || '';\n      this.getResults(searchString);\n    }\n  }\n\n  /**\n   * Event method used when focus is gained to the input\n   */\n  inputFocusHandler(): void {\n    if (!this.configuration.isTagModeEnabled) {\n      if (this.configuration.focusInSearch) {\n        this.highlightedIndex = 0;\n        this.highlightedChildIndex = this.configuration.isSelectableGroup\n          ? 0\n          : null;\n        this.getResults(this.inputValue || '');\n      }\n      this.onTouchedCallback();\n    }\n  }\n\n  /**\n   * Key event\n   * @param event\n   */\n  onKeydown(event): void {\n    if (KeyHelper.is(KEYS.ALT, event)) {\n      event.preventDefault();\n      this.inputFocusHandler();\n    }\n    if (KeyHelper.is(KEYS.TAB, event)) {\n      return;\n    } else if (KeyHelper.is(KEYS.BACKSPACE, event)) {\n      if (this.configuration.inputReadOnly) {\n        event.preventDefault();\n      }\n    } else if (KeyHelper.is(KEYS.DOWN, event)) {\n      event.preventDefault();\n      this.onArrowGroupDown();\n    } else if (KeyHelper.is(KEYS.UP, event)) {\n      event.preventDefault();\n      this.onArrowGroupUp();\n    } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex >= 0) {\n      event.preventDefault();\n      if (this.configuration.isTagModeEnabled) {\n        const val = this.createFreeTextItem();\n        this.selectItem(val);\n      } else {\n        this.selectItem(this.highlightedItem);\n      }\n    } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex < 0) {\n      if (this.configuration.isFreeTextEnabled) {\n        const val = this.createFreeTextItem();\n        this.selectItem(val);\n      }\n    } else if (KeyHelper.is(KEYS.ESC, event)) {\n      if (this.showResults) {\n        this.clearAndHideResults();\n        if (event.stopPropagation) {\n          event.stopPropagation();\n        }\n      }\n    }\n  }\n\n  /**\n   * selects the item adding it to the model and closes the results\n   * @param item\n   */\n  public selectItem(item: object): void {\n    let filterItem = {};\n    if (this.essentialModelFields) {\n      filterItem[this.configuration.primaryKeyField] =\n        item[this.configuration.primaryKeyField];\n      filterItem[this.configuration.primaryTextField] =\n        item[this.configuration.primaryTextField];\n      if (this.configuration.secondaryTextField) {\n        filterItem[this.configuration.secondaryTextField] =\n          item[this.configuration.secondaryTextField];\n      }\n    } else {\n      filterItem = item;\n    }\n    SDSSelectedItemModelHelper.addItem(\n      filterItem,\n      this.configuration.primaryKeyField,\n      this.configuration.selectionMode,\n      this.model\n    );\n    this.propogateChange(this.model);\n    let message = this.getObjectValue(\n      item,\n      this.configuration.primaryTextField\n    );\n    this.inputValue = message;\n    this.focusRemoved();\n    this.showResults = false;\n  }\n\n  /**\n   *  clears the results and closes result drop down\n   */\n  private clearAndHideResults(): void {\n    this.results = [];\n    this.showResults = false;\n    this.focusRemoved();\n  }\n\n  openOptions() {\n    this.input.nativeElement.focus();\n  }\n\n  public getFlatElements() {\n    const results = this.results;\n    const flat = [];\n    const flatten = (array: any) => {\n      for (let i in array) {\n        const item = array[i];\n        flat.push(item);\n        if (\n          item[this.configuration.groupByChild] &&\n          item[this.configuration.groupByChild].length\n        ) {\n          flatten(item[this.configuration.groupByChild]);\n        }\n      }\n    };\n    flatten(results);\n    return flat;\n  }\n  \n  /**\n   * When paging up and down with arrow key it sets the highlighted item into view\n   */\n  private scrollToSelectedItem() {\n    if (this.highlightedIndex >= 0) {\n      this._changeDetectorRef.detectChanges();;\n      const dom = this.resultsListElement.nativeElement;\n      const selectedChild = dom.querySelector('.sds-autocomplete__item--highlighted');\n      if (selectedChild) {\n        // Manually set scroll top rather than invoke scroll functions for browser compatibility\n        const containerCenter = this.resultsListElement.nativeElement.getBoundingClientRect().height / 2;\n        this.resultsListElement.nativeElement.scrollTop = selectedChild.offsetTop - containerCenter;\n      }\n    }\n  }\n\n  /**\n   *  handles the arrow down key event\n   */\n  private onArrowGroupDown(): void {\n    if (this.results && this.results.length > 0) {\n      const flat = this.getFlatElements();\n      if (this.highlightedIndex < flat.length - 1) {\n        this.highlightedIndex++;\n      }\n      this.setHighlightedItem(flat[this.highlightedIndex]);\n      this.scrollToSelectedItem();\n    }\n  }\n\n  /**\n   *  handles the arrow up key event\n   */\n  private onArrowGroupUp(): void {\n    if (this.results && this.results.length > 0) {\n      const flat = this.getFlatElements();\n      if (this.highlightedIndex != 0) {\n        this.highlightedIndex--;\n      }\n      this.setHighlightedItem(flat[this.highlightedIndex]);\n      this.scrollToSelectedItem();\n    }\n  }\n  showFreeText() {\n    if (this.configuration.isFreeTextEnabled) {\n      if (this.inputValue) {\n        if (this.inputValue.length !== 0) {\n          let foundItem = false;\n          if (this.results) {\n            for (var i = 0; i < this.results.length && !foundItem; i++) {\n              let item = this.results[i];\n              foundItem =\n                item[this.configuration.primaryTextField] === this.inputValue;\n            }\n          }\n          if (this.model.items.length > 0 && !foundItem) {\n            for (var i = 0; i < this.model.items.length && !foundItem; i++) {\n              let item = this.model.items[i];\n              foundItem =\n                item[this.configuration.primaryTextField] === this.inputValue;\n            }\n          }\n\n          return !foundItem;\n        } else {\n          return false;\n        }\n      } else {\n        return false;\n      }\n    } else {\n      return this.configuration.isFreeTextEnabled;\n    }\n  }\n\n  private createFreeTextItem() {\n    let item = { type: 'custom' };\n    item[this.configuration.primaryTextField] = this.inputValue;\n    item[this.configuration.primaryKeyField] = this.inputValue;\n    return item;\n  }\n  /**\n   *  return Item is already selected or not\n   * @param result\n   */\n  checkItemSelected(result: any) {\n    const selectedItem = this.model.items.filter(\n      item =>\n        item[this.configuration.primaryKeyField] ===\n        result[this.configuration.primaryKeyField]\n    );\n    return selectedItem.length > 0 ? true : false;\n  }\n  /**\n   *  gets the inital results\n   * @param searchString\n   */\n  private getResults(searchString: string): void {\n    if (searchString.length >= this.configuration.minimumCharacterCountSearch) {\n      if (\n        !this.matchPastSearchString(searchString) ||\n        (this.matchPastSearchString(searchString) && !this.showResults) ||\n        this.matchPastSearchString('')\n      ) {\n        this.searchString = searchString;\n        window.clearTimeout(this.timeoutNumber);\n        this.timeoutNumber = window.setTimeout(() => {\n          this.showLoad = true;\n          this.service.getDataByText(0, searchString).subscribe(result => {\n            this.results = result.items;\n            this.showLoad = false;\n            this.maxResults = result.totalItems;\n\n            this.highlightedIndex =\n              this.configuration.isFreeTextEnabled || this.maxResults == 0\n                ? -1\n                : 0;\n            if (!this.configuration.isFreeTextEnabled) {\n              this.setHighlightedItem(this.results[this.highlightedIndex]);\n            }\n            this.showResults = true;\n            this.addScreenReaderMessage(\n              this.maxResults + ' ' + this.resultsAvailableMessage\n            );\n            this._changeDetectorRef.markForCheck();\n          });\n        }, this.configuration.debounceTime);\n      }\n    }\n  }\n\n  /**\n   * Checks if the new search string matches the old search string\n   * @param searchString\n   */\n  private matchPastSearchString(searchString: string) {\n    return this.searchString === searchString;\n  }\n  /**\n   * Scroll Event Handler (Calculates if mpre items should be asked for from service on scrolling down)\n   */\n  onScroll() {\n    if (this.maxResults > this.results.length) {\n      let scrollAreaHeight = this.resultsListElement.nativeElement.offsetHeight;\n      let scrollTopPos = this.resultsListElement.nativeElement.scrollTop;\n      let scrollAreaMaxHeight = this.resultsListElement.nativeElement\n        .scrollHeight;\n      if (scrollTopPos + scrollAreaHeight * 2 >= scrollAreaMaxHeight) {\n        this.getAdditionalResults();\n      }\n    }\n  }\n\n  /**\n   * gets more results based when scrolling and adds the items\n   */\n  private getAdditionalResults() {\n    this.showLoad = true;\n    this.service\n      .getDataByText(this.results.length, this.searchString)\n      .subscribe(result => {\n        for (let i = 0; i < result.items.length; i++) {\n          this.addResult(result.items[i]);\n        }\n        this.showLoad = false;\n        this.maxResults = result.totalItems;\n      });\n  }\n\n  /**\n   * adds a single item to the list\n   * @param item\n   */\n  private addResult(item: object) {\n    //add check to make sure item does not exist\n    this.results.push(item);\n  }\n\n  /**\n   * Sets the highlighted item by keyboard or mouseover\n   * @param item\n   */\n  private setHighlightedItem(item: Object): void {\n    if (this.results && this.results.length > 0) {\n      if (this.highlightedItem) {\n        this.highlightedItem[this.HighlightedPropertyName] = false;\n      }\n      let message = '';\n      if (item) {\n        this.highlightedItem = item;\n        this.highlightedItem[this.HighlightedPropertyName] = true;\n        message = item[this.configuration.primaryTextField];\n        if (\n          this.configuration.secondaryTextField &&\n          item[this.configuration.secondaryTextField]\n        ) {\n          message += ': ' + item[this.configuration.secondaryTextField];\n        }\n      } else {\n        this.highlightedItem = undefined;\n        message = 'No item selected';\n      }\n      this.addScreenReaderMessage(message);\n    }\n  }\n\n  /**\n   * Adds message to be read by screen reader\n   * @param message\n   */\n  private addScreenReaderMessage(message: string) {\n    this.srOnlyText = message;\n  }\n\n  writeValue(obj: any): void {\n    if (obj instanceof SDSSelectedItemModel) {\n      this.model = obj as SDSSelectedItemModel;\n      this._changeDetectorRef.markForCheck();\n      if (this.model.items.length === 0) {\n        this.inputValue = '';\n      } else if (this.configuration && this.configuration.selectionMode === SelectionMode.SINGLE){\n          this.inputValue = this.getObjectValue(\n            this.model.items[0],\n            this.configuration.primaryTextField\n          );\n      }\n    }\n  }\n  getClass() {\n    return this.configuration.inputReadOnly &&\n      this.configuration.selectionMode === SelectionMode.MULTIPLE\n      ? 'hide-cursor'\n      : '';\n  }\n\n  registerOnChange(fn: any): void {\n    this.propogateChange = fn;\n  }\n\n  registerOnTouched(fn: any): void {\n    this.onTouchedCallback = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n  }\n}\n",
+            "sourceCode": "import {\n  Component,\n  Input,\n  ViewChild,\n  TemplateRef,\n  ElementRef,\n  forwardRef,\n  ChangeDetectorRef\n} from '@angular/core';\nimport { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';\nimport { SDSAutocompleteServiceInterface } from './models/SDSAutocompleteServiceInterface';\nimport { KeyHelper, KEYS } from '../key-helper/key-helper';\nimport { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';\nimport {\n  SelectionMode,\n  SDSSelectedItemModelHelper\n} from '../selected-result/models/sds-selected-item-model-helper';\n\n\nimport { SDSAutocompleteSearchConfiguration } from './models/SDSAutocompleteConfiguration';\n\nconst Autocomplete_Autocomplete_VALUE_ACCESSOR: any = {\n  provide: NG_VALUE_ACCESSOR,\n  useExisting: forwardRef(() => SDSAutocompleteSearchComponent),\n  multi: true\n};\n\n@Component({\n  selector: 'sds-search-autocomplete',\n  templateUrl: './autocomplete-search.component.html',\n  styleUrls: ['./autocomplete-search.component.scss'],\n  providers: [Autocomplete_Autocomplete_VALUE_ACCESSOR]\n})\nexport class SDSAutocompleteSearchComponent implements ControlValueAccessor {\n  constructor(\n    private _changeDetectorRef: ChangeDetectorRef,\n   \n  ) {\n    \n  }\n  /**\n   * Ul list of elements\n   */\n  @ViewChild('resultsList') resultsListElement: ElementRef;\n\n  /**\n   * input control\n   */\n  @ViewChild('input') input: ElementRef;\n\n  /**\n   * Allow to insert a customized template for suggestions to use\n   */\n  @Input() itemTemplate: TemplateRef<any>;\n\n  /**\n   * The data model that has the selected item\n   */\n  public model: SDSSelectedItemModel;\n\n  /**\n   * Model contain only the primary key, primary value, and secondary value.\n   */\n  @Input() public essentialModelFields: boolean = false;\n\n  /**\n   * Configuration for the Autocomplete control\n   */\n  @Input()\n  public configuration: SDSAutocompleteSearchConfiguration;\n\n  /**\n   * Instance of the SamHiercarchicalServiceInterface provided\n   */\n  @Input()\n  public service: SDSAutocompleteServiceInterface;\n\n  /**\n   * Timer id for the timer awaiting the service call for more typeing\n   */\n  private timeoutNumber: number;\n\n  /**\n   *  result set to be rendered\n   */\n  results: object[];\n\n  /**\n   * max number of results to be shown\n   */\n  private maxResults: number;\n\n  /**\n   * selected index\n   */\n  public highlightedIndex: number = 0;\n\n  /**\n   * selected child index\n   */\n  public highlightedChildIndex = 0;\n\n  /**\n   * highlighted object in drop down\n   */\n  private highlightedItem: object;\n\n  /**\n   * value of the input field\n   */\n  public inputValue: string = '';\n\n  /**\n   * Proprty being set on the object is highlighted\n   */\n  private HighlightedPropertyName = 'highlighted';\n\n  public showLoad: boolean = true;\n\n  /**\n   * Search string\n   */\n  private searchString: string = null;\n\n  /**\n   * Message announced by screen readers when\n   * autocomplete results are updated or new item\n   * is highlighted\n   */\n  public srOnlyText: string;\n\n  /**\n   * To make input readonly\n   */\n  @Input() public inputReadOnly = false;\n\n  /**\n   * Stored Event for ControlValueAccessor\n   */\n  public onTouchedCallback: () => void = () => null;\n\n  /**\n   * Stored Event for ControlValueAccessor\n   */\n  public propogateChange: (_: any) => void = (_: any) => null;\n\n  @Input()\n  public disabled: boolean;\n\n  private resultsAvailableMessage: string =\n    ' results available. Use up and down arrows\\\n  to scroll through results. Hit enter to select.';\n\n  private index = 0;\n  /**\n   * Gets the string value from the specifed properties of an object\n   * @param object\n   * @param propertyFields comma seperated list with periods depth of object\n   */\n\n  getObjectValue(object: Object, propertyFields: string): string {\n    let value = '';\n    let current = object;\n    let fieldSplit = propertyFields.split(',');\n    for (let i = 0; i < fieldSplit.length; i++) {\n      let fieldValue = fieldSplit[i];\n      let fieldPartSplit = fieldValue.split('.');\n      for (let j = 0; j < fieldPartSplit.length; j++) {\n        let fieldCheckValue = fieldPartSplit[j];\n        if (current) {\n          current = current[fieldCheckValue];\n        }\n      }\n\n      if (current) {\n        value += current.toString() + ' ';\n      }\n      current = object;\n    }\n    return value.trim();\n  }\n\n  /**\n   * Determines if the dropdown should be shown\n   */\n  public showResults = false;\n\n  /**\n   * Clears the input fields and value\n   */\n  public clearInput(): void {\n    this.inputValue = '';\n    if (this.configuration.selectionMode === SelectionMode.SINGLE) {\n      if (this.model.items.length > 0) {\n        SDSSelectedItemModelHelper.clearItems(this.model.items);\n        this.propogateChange(this.model);\n      }\n    }\n    this.onTouchedCallback();\n    this.clearAndHideResults();\n  }\n\n  /**\n   *\n   * @param event\n   */\n  checkForFocus(event): void {\n    this.focusRemoved();\n    this.showResults = false;\n  }\n\n  /**\n   *\n   */\n  private focusRemoved() {\n    if (this.configuration) {\n      if (this.configuration.selectionMode === SelectionMode.SINGLE) {\n        if (this.model.items.length > 0) {\n          this.inputValue = this.getObjectValue(\n            this.model.items[0],\n            this.configuration.primaryTextField\n          );\n        }\n      } else {\n        this.inputValue = '';\n      }\n    } else {\n      this.inputValue = '';\n    }\n  }\n\n  onkeypress(ev) {\n    return this.configuration.inputReadOnly ? false : true;\n  }\n  textChange(event) {\n    if (!this.configuration.isTagModeEnabled) {\n      // ie 11 placeholders will incorrectly trigger input events (known bug)\n      // if input isn't active element then don't do anything\n      if (event.target != document.activeElement) {\n        event.preventDefault();\n        return;\n      }\n      const searchString = event.target.value || '';\n      this.getResults(searchString);\n    }\n  }\n\n  /**\n   * Event method used when focus is gained to the input\n   */\n  inputFocusHandler(): void {\n    if (!this.configuration.isTagModeEnabled) {\n      if (this.configuration.focusInSearch) {\n        this.highlightedIndex = 0;\n        this.highlightedChildIndex = this.configuration.isSelectableGroup\n          ? 0\n          : null;\n        this.getResults(this.inputValue || '');\n      }\n      this.onTouchedCallback();\n    }\n  }\n\n  /**\n   * Key event\n   * @param event\n   */\n  onKeydown(event): void {\n    if (KeyHelper.is(KEYS.ALT, event)) {\n      event.preventDefault();\n      this.inputFocusHandler();\n    }\n    if (KeyHelper.is(KEYS.TAB, event)) {\n      return;\n    } else if (KeyHelper.is(KEYS.BACKSPACE, event)) {\n      if (this.configuration.inputReadOnly) {\n        event.preventDefault();\n      }\n    } else if (KeyHelper.is(KEYS.DOWN, event)) {\n      event.preventDefault();\n      this.onArrowGroupDown();\n    } else if (KeyHelper.is(KEYS.UP, event)) {\n      event.preventDefault();\n      this.onArrowGroupUp();\n    } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex >= 0) {\n      event.preventDefault();\n      if (this.configuration.isTagModeEnabled) {\n        const val = this.createFreeTextItem();\n        this.selectItem(val);\n      } else {\n        this.selectItem(this.highlightedItem);\n      }\n    } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex < 0) {\n      if (this.configuration.isFreeTextEnabled) {\n        const val = this.createFreeTextItem();\n        this.selectItem(val);\n      }\n    } else if (KeyHelper.is(KEYS.ESC, event)) {\n      if (this.showResults) {\n        this.clearAndHideResults();\n        if (event.stopPropagation) {\n          event.stopPropagation();\n        }\n      }\n    }\n  }\n\n  /**\n   * selects the item adding it to the model and closes the results\n   * @param item\n   */\n  public selectItem(item: object): void {\n    let filterItem = {};\n    if (this.essentialModelFields) {\n      filterItem[this.configuration.primaryKeyField] =\n        item[this.configuration.primaryKeyField];\n      filterItem[this.configuration.primaryTextField] =\n        item[this.configuration.primaryTextField];\n      if (this.configuration.secondaryTextField) {\n        filterItem[this.configuration.secondaryTextField] =\n          item[this.configuration.secondaryTextField];\n      }\n    } else {\n      filterItem = item;\n    }\n    SDSSelectedItemModelHelper.addItem(\n      filterItem,\n      this.configuration.primaryKeyField,\n      this.configuration.selectionMode,\n      this.model\n    );\n    this.propogateChange(this.model);\n    let message = this.getObjectValue(\n      item,\n      this.configuration.primaryTextField\n    );\n    this.inputValue = message;\n    this.focusRemoved();\n    this.showResults = false;\n  }\n\n  /**\n   *  clears the results and closes result drop down\n   */\n  private clearAndHideResults(): void {\n    this.results = [];\n    this.showResults = false;\n    this.focusRemoved();\n  }\n\n  openOptions() {\n    this.input.nativeElement.focus();\n  }\n\n  public getFlatElements() {\n    const results = this.results;\n    const flat = [];\n    const flatten = (array: any) => {\n      for (let i in array) {\n        const item = array[i];\n        flat.push(item);\n        if (\n          item[this.configuration.groupByChild] &&\n          item[this.configuration.groupByChild].length\n        ) {\n          flatten(item[this.configuration.groupByChild]);\n        }\n      }\n    };\n    flatten(results);\n    return flat;\n  }\n  \n  /**\n   * When paging up and down with arrow key it sets the highlighted item into view\n   */\n  private scrollToSelectedItem() {\n    if (this.highlightedIndex >= 0) {\n      this._changeDetectorRef.detectChanges();;\n      const dom = this.resultsListElement.nativeElement;\n      const selectedChild = dom.querySelector('.sds-autocomplete__item--highlighted');\n      if (selectedChild) {\n        // Manually set scroll top rather than invoke scroll functions for browser compatibility\n        const containerCenter = this.resultsListElement.nativeElement.getBoundingClientRect().height / 2;\n        this.resultsListElement.nativeElement.scrollTop = selectedChild.offsetTop - containerCenter;\n      }\n    }\n  }\n\n  /**\n   *  handles the arrow down key event\n   */\n  private onArrowGroupDown(): void {\n    if (this.results && this.results.length > 0) {\n      const flat = this.getFlatElements();\n      if (this.highlightedIndex < flat.length - 1) {\n        this.highlightedIndex++;\n      }\n      this.setHighlightedItem(flat[this.highlightedIndex]);\n      this.scrollToSelectedItem();\n    }\n  }\n\n  /**\n   *  handles the arrow up key event\n   */\n  private onArrowGroupUp(): void {\n    if (this.results && this.results.length > 0) {\n      const flat = this.getFlatElements();\n      if (this.highlightedIndex != 0) {\n        this.highlightedIndex--;\n      }\n      this.setHighlightedItem(flat[this.highlightedIndex]);\n      this.scrollToSelectedItem();\n    }\n  }\n  showFreeText() {\n    if (this.configuration.isFreeTextEnabled) {\n      if (this.inputValue) {\n        if (this.inputValue.length !== 0) {\n          let foundItem = false;\n          if (this.results) {\n            for (var i = 0; i < this.results.length && !foundItem; i++) {\n              let item = this.results[i];\n              foundItem =\n                item[this.configuration.primaryTextField] === this.inputValue;\n            }\n          }\n          if (this.model.items.length > 0 && !foundItem) {\n            for (var i = 0; i < this.model.items.length && !foundItem; i++) {\n              let item = this.model.items[i];\n              foundItem =\n                item[this.configuration.primaryTextField] === this.inputValue;\n            }\n          }\n\n          return !foundItem;\n        } else {\n          return false;\n        }\n      } else {\n        return false;\n      }\n    } else {\n      return this.configuration.isFreeTextEnabled;\n    }\n  }\n\n  private createFreeTextItem() {\n    let item = { type: 'custom' };\n    item[this.configuration.primaryTextField] = this.inputValue;\n    item[this.configuration.primaryKeyField] = this.inputValue;\n    return item;\n  }\n  /**\n   *  return Item is already selected or not\n   * @param result\n   */\n  checkItemSelected(result: any) {\n    const selectedItem = this.model.items.filter(\n      item =>\n        item[this.configuration.primaryKeyField] ===\n        result[this.configuration.primaryKeyField]\n    );\n    return selectedItem.length > 0 ? true : false;\n  }\n  /**\n   *  gets the inital results\n   * @param searchString\n   */\n  private getResults(searchString: string): void {\n    if (searchString.length >= this.configuration.minimumCharacterCountSearch) {\n      if (\n        !this.matchPastSearchString(searchString) ||\n        (this.matchPastSearchString(searchString) && !this.showResults) ||\n        this.matchPastSearchString('')\n      ) {\n        this.searchString = searchString;\n        window.clearTimeout(this.timeoutNumber);\n        this.timeoutNumber = window.setTimeout(() => {\n          this.showLoad = true;\n          this.service.getDataByText(0, searchString).subscribe(result => {\n            this.results = result.items;\n            this.showLoad = false;\n            this.maxResults = result.totalItems;\n\n            this.highlightedIndex =\n              this.configuration.isFreeTextEnabled || this.maxResults == 0\n                ? -1\n                : 0;\n            if (!this.configuration.isFreeTextEnabled) {\n              this.setHighlightedItem(this.results[this.highlightedIndex]);\n            }\n            this.showResults = true;\n            this.addScreenReaderMessage(\n              this.maxResults + ' ' + this.resultsAvailableMessage\n            );\n            this._changeDetectorRef.markForCheck();\n          });\n        }, this.configuration.debounceTime);\n      }\n    }\n  }\n\n  /**\n   * Checks if the new search string matches the old search string\n   * @param searchString\n   */\n  private matchPastSearchString(searchString: string) {\n    return this.searchString === searchString;\n  }\n  /**\n   * Scroll Event Handler (Calculates if mpre items should be asked for from service on scrolling down)\n   */\n  onScroll() {\n    if (this.maxResults > this.results.length) {\n      let scrollAreaHeight = this.resultsListElement.nativeElement.offsetHeight;\n      let scrollTopPos = this.resultsListElement.nativeElement.scrollTop;\n      let scrollAreaMaxHeight = this.resultsListElement.nativeElement\n        .scrollHeight;\n      if (scrollTopPos + scrollAreaHeight * 2 >= scrollAreaMaxHeight) {\n        this.getAdditionalResults();\n      }\n    }\n  }\n\n  /**\n   * gets more results based when scrolling and adds the items\n   */\n  private getAdditionalResults() {\n    this.showLoad = true;\n    this.service\n      .getDataByText(this.results.length, this.searchString)\n      .subscribe(result => {\n        for (let i = 0; i < result.items.length; i++) {\n          this.addResult(result.items[i]);\n        }\n        this.showLoad = false;\n        this.maxResults = result.totalItems;\n      });\n  }\n\n  /**\n   * adds a single item to the list\n   * @param item\n   */\n  private addResult(item: object) {\n    //add check to make sure item does not exist\n    this.results.push(item);\n  }\n\n  /**\n   * Sets the highlighted item by keyboard or mouseover\n   * @param item\n   */\n  private setHighlightedItem(item: Object): void {\n    if (this.results && this.results.length > 0) {\n      if (this.highlightedItem) {\n        this.highlightedItem[this.HighlightedPropertyName] = false;\n      }\n      let message = '';\n      if (item) {\n        this.highlightedItem = item;\n        this.highlightedItem[this.HighlightedPropertyName] = true;\n        message = item[this.configuration.primaryTextField];\n        if (\n          this.configuration.secondaryTextField &&\n          item[this.configuration.secondaryTextField]\n        ) {\n          message += ': ' + item[this.configuration.secondaryTextField];\n        }\n      } else {\n        this.highlightedItem = undefined;\n        message = 'No item selected';\n      }\n      this.addScreenReaderMessage(message);\n    }\n  }\n\n  /**\n   * Adds message to be read by screen reader\n   * @param message\n   */\n  private addScreenReaderMessage(message: string) {\n    this.srOnlyText = message;\n  }\n\n  writeValue(obj: any): void {\n    if (obj instanceof SDSSelectedItemModel) {\n      this.model = obj as SDSSelectedItemModel;\n      this._changeDetectorRef.markForCheck();\n      if (this.model.items.length === 0) {\n        this.inputValue = '';\n      } else if (this.configuration && this.configuration.selectionMode === SelectionMode.SINGLE){\n          this.inputValue = this.getObjectValue(\n            this.model.items[0],\n            this.configuration.primaryTextField\n          );\n      }\n    }\n  }\n  getClass() {\n    return this.configuration.inputReadOnly &&\n      this.configuration.selectionMode === SelectionMode.MULTIPLE\n      ? 'hide-cursor'\n      : '';\n  }\n\n  registerOnChange(fn: any): void {\n    this.propogateChange = fn;\n  }\n\n  registerOnTouched(fn: any): void {\n    this.onTouchedCallback = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -7902,10 +8357,6 @@ const COMPONENTS = {
                     {
                         "name": "_changeDetectorRef",
                         "type": "ChangeDetectorRef"
-                    },
-                    {
-                        "name": "library",
-                        "type": "FaIconLibrary"
                     }
                 ],
                 "line": 34,
@@ -7916,24 +8367,17 @@ const COMPONENTS = {
                         "tagName": {
                             "text": "param"
                         }
-                    },
-                    {
-                        "name": "library",
-                        "type": "FaIconLibrary",
-                        "tagName": {
-                            "text": "param"
-                        }
                     }
                 ]
             },
             "implements": [
                 "ControlValueAccessor"
             ],
-            "templateData": "<div\n  sds-click-outside\n  (clickOutside)=\"checkForFocus($event)\"\n  sds-tab-outside\n  (tabOutside)=\"checkForFocus($event)\"\n>\n  <div class=\"maxw-mobile-lg position-relative\">\n    <div\n      [attr.id]=\"configuration.id + '-container'\"\n    >\n      <input\n        role=\"combobox\"\n        [attr.aria-expanded]=\"showResults\"\n        [attr.aria-owns]=\"showResults ? configuration.id + '-listbox' : undefined\"\n        aria-haspopup=\"listbox\"\n        [disabled]=\"disabled\"\n        (keypress)=\"onkeypress($event)\"\n        (input)=\"textChange($event)\"\n        class=\"usa-input padding-right-3\"\n        [ngClass]=\"getClass()\"\n        #input\n        [attr.aria-label]=\"configuration.ariaLabelText\"\n        [attr.id]=\"configuration.id\"\n        type=\"text\"\n        (focus)=\"inputFocusHandler()\"\n        (keydown)=\"onKeydown($event)\"\n        aria-autocomplete=\"list\"\n        [(ngModel)]=\"inputValue\"\n        [attr.placeholder]=\"configuration.autocompletePlaceHolderText\"\n        [attr.aria-activedescendant]=\"\n          showResults\n            ? configuration.id + '-resultItem-' + highlightedIndex\n            : ''\n        \" [attr.aria-controls]=\"\n          showResults ? configuration.id + '-listbox' : undefined\n        \" autocomplete=\"off\" />\n        </div>\n        <ul #resultsList *ngIf=\"showResults\" [attr.id]=\"configuration.id + '-listbox'\" role=\"listbox\" class=\"usa-list usa-list--unstyled sds-autocomplete\" (scroll)=\"onScroll()\">\n            <ng-container *ngIf=\"results && results.length\">\n                <li [attr.id]=\"configuration.id + '-resultItem-' + i\" role=\"option\" [ngClass]=\"{\n            'sds-autocomplete__group': configuration.isGroupingEnabled,\n            'sds-autocomplete__item': !configuration.isGroupingEnabled,\n            'sds-autocomplete__item--highlighted':\n              result['highlighted'] && !configuration.isGroupingEnabled,\n            'sds-autocomplete__item--selected':\n              checkItemSelected(result) && !configuration.isGroupingEnabled\n          }\" *ngFor=\"let result of results; let i = index\" (click)=\"!configuration.isSelectableGroup ? '' : selectItem(result)\">\n                    <ng-container *ngIf=\"itemTemplate\" [ngTemplateOutlet]=\"itemTemplate\" [ngTemplateOutletContext]=\"{ $implicit: result }\">\n                    </ng-container>\n                    <ng-container *ngIf=\"!itemTemplate\">\n                        <div [ngClass]=\"{\n                'sds-autocomplete__item': configuration.isGroupingEnabled,\n                'sds-autocomplete__item--highlighted':\n                  configuration.isGroupingEnabled && result['highlighted'],\n                'sds-autocomplete__item--disabled':\n                  !configuration.isSelectableGroup &&\n                  configuration.isGroupingEnabled,\n                'sds-autocomplete__item--selected':\n                  checkItemSelected(result) && configuration.isGroupingEnabled\n              }\">\n                            <div [ngClass]=\"{\n                  'text-semibold': configuration.secondaryTextField\n                }\">\n                                {{ getObjectValue(result, configuration.primaryTextField) }}\n                            </div>\n                            <ng-container *ngIf=\"\n                  configuration.secondaryTextField &&\n                  result[configuration.secondaryTextField]\n                \">\n                                <div>{{ result[configuration.secondaryTextField] }}</div>\n                            </ng-container>\n                        </div>\n\n            <ul\n              class=\"usa-list usa-list--unstyled\"\n              #childrenList\n              [attr.id]=\"configuration.id + '-childrenlistbox-' + i\"\n              role=\"listbox\"\n            >\n              <li\n                [attr.id]=\"configuration.id + '-childItem-' + j\"\n                role=\"option\"\n                [ngClass]=\"{\n                  'sds-autocomplete__group':\n                    child[configuration.groupByChild]?.length,\n                  'sds-autocomplete__item': !child[configuration.groupByChild]\n                    ?.length,\n                  'sds-autocomplete__item--highlighted':\n                    child['highlighted'] &&\n                    !child[configuration.groupByChild]?.length,\n                  'sds-autocomplete__item--selected':\n                    checkItemSelected(child) &&\n                    !child[configuration.groupByChild]?.length\n                }\" *ngFor=\"\n                  let child of result[configuration.groupByChild];\n                  let j = index\n                \" (click)=\"selectItem(child)\">\n                                <div [ngClass]=\"{\n                    'sds-autocomplete__item':\n                      child[configuration.groupByChild]?.length,\n                    'sds-autocomplete__item--highlighted':\n                      child[configuration.groupByChild]?.length &&\n                      child['highlighted'],\n                    'sds-autocomplete__item--disabled':\n                      !configuration.isSelectableGroup &&\n                      child[configuration.groupByChild]?.length,\n                    'sds-autocomplete__item--selected':\n                      checkItemSelected(child) &&\n                      child[configuration.groupByChild]?.length\n                  }\">\n                                    <div [ngClass]=\"{\n                      'text-semibold': configuration.secondaryTextField\n                    }\">\n                                        {{ getObjectValue(child, configuration.primaryTextField) }}\n                                    </div>\n\n                                    <div *ngIf=\"\n                      configuration.secondaryTextField &&\n                      child[configuration.secondaryTextField]\n                    \">\n                                        {{ child[configuration.secondaryTextField] }}\n                                    </div>\n                                </div>\n                                <ul class=\"usa-list usa-list--unstyled\" #childrenItems [attr.id]=\"configuration.id + '-grandchildren-'\" role=\"listbox\">\n                                    <li [attr.id]=\"configuration.id + '-grandchildren-' + k\" role=\"option\" class=\"sds-autocomplete__item\" [ngClass]=\"{\n                      'sds-autocomplete__item--selected': checkItemSelected(\n                        subchild\n                      ),\n                      'sds-autocomplete__item--highlighted':\n                        subchild['highlighted']\n                    }\" *ngFor=\"\n                      let subchild of child[configuration.groupByChild];\n                      let k = index\n                    \" (click)=\"selectItem(subchild)\">\n                                        <div>\n                                            <div [ngClass]=\"{\n                          'text-semibold': configuration.secondaryTextField\n                        }\">\n                                                {{ getObjectValue( subchild, configuration.primaryTextField ) }}\n\n                                                <div *ngIf=\"\n                            configuration.secondaryTextField &&\n                            subchild[configuration.secondaryTextField]\n                          \">\n                                                    {{ subchild[configuration.secondaryTextField] }}\n                                                </div>\n                                            </div>\n                                        </div>\n                                    </li>\n                                </ul>\n                            </li>\n                        </ul>\n                    </ng-container>\n                </li>\n            </ng-container>\n            <ng-container *ngIf=\"!results || results.length == 0\">\n                <li class=\"emptyResults margin-1\">No results found</li>\n            </ng-container>\n            <ng-container *ngIf=\"showLoad\">\n                <li class=\"autoLoading\">\n                    <div class=\"lightToGrayBackgroundGradiate\"></div>\n                    <div class=\"grayToLightBackgroundGradiate\"></div>\n                </li>\n                <li class=\"autoLoading\">\n                    <div class=\"lightToGrayBackgroundGradiate\"></div>\n                    <div class=\"grayToLightBackgroundGradiate\"></div>\n                </li>\n            </ng-container>\n        </ul>\n\n        <ng-container *ngIf=\"!input.disabled\">\n            <span class=\"position-absolute right-105 top-1 cursor-pointer\">\n        <span\n          *ngIf=\"inputValue && !disabled\"\n          role=\"button\"\n          aria-label=\"Clear input\"\n          (click)=\"clearInput()\"\n          (keyup.enter)=\"clearInput()\"\n          tabindex=\"0\"\n        >\n          <fa-icon [icon]=\"['fas', 'times']\" size=\"xs\"></fa-icon>\n        </span>\n          <span *ngIf=\"!configuration.isTagModeEnabled\" class=\"margin-left-1\">\n          <fa-icon\n            role=\"button\"\n            aria-label=\"Display Options\"\n            tabindex=\"0\"\n            *ngIf=\"!showResults && !disabled\"\n            (click)=\"openOptions()\"\n            (keyup.enter)=\"openOptions()\"\n            [icon]=\"['fas', 'caret-down']\"\n            size=\"sm\"\n          ></fa-icon>\n          <fa-icon\n            role=\"button\"\n            aria-label=\"Hide Options\"\n            tabindex=\"0\"\n            *ngIf=\"showResults && !disabled\"\n            (click)=\"checkForFocus($event)\"\n            (keyup.enter)=\"checkForFocus()\"\n            [icon]=\"['fas', 'caret-up']\"\n            size=\"sm\"\n          ></fa-icon>\n        </span>\n            </span>\n        </ng-container>\n        <ul class=\"usa-sr-only\" aria-live=\"assertive\">\n            <li>{{ srOnlyText }}</li>\n        </ul>\n    </div>\n</div>"
+            "templateData": "<div sds-click-outside (clickOutside)=\"checkForFocus($event)\" sds-tab-outside (tabOutside)=\"checkForFocus($event)\">\n    <div class=\"maxw-mobile-lg position-relative\">\n        <div [attr.id]=\"configuration.id + '-container'\">\n            <input role=\"combobox\" [attr.aria-expanded]=\"showResults\" [attr.aria-owns]=\"showResults ? configuration.id + '-listbox' : undefined\" aria-haspopup=\"listbox\" [disabled]=\"disabled\" (keypress)=\"onkeypress($event)\" (input)=\"textChange($event)\" class=\"usa-input padding-right-3\"\n                [ngClass]=\"getClass()\" #input [attr.aria-label]=\"configuration.ariaLabelText ? configuration.ariaLabelText : configuration.labelText\" [attr.id]=\"configuration.id\" type=\"text\" (focus)=\"inputFocusHandler()\" (keydown)=\"onKeydown($event)\" aria-autocomplete=\"list\"\n                [(ngModel)]=\"inputValue\" [attr.placeholder]=\"configuration.autocompletePlaceHolderText\" [attr.aria-activedescendant]=\"\n          showResults\n            ? configuration.id + '-resultItem-' + highlightedIndex\n            : ''\n        \" [attr.aria-controls]=\"\n          showResults ? configuration.id + '-listbox' : undefined\n        \" autocomplete=\"off\" />\n        </div>\n        <ul #resultsList *ngIf=\"showResults\" [attr.id]=\"configuration.id + '-listbox'\" role=\"listbox\" class=\"usa-list usa-list--unstyled sds-autocomplete\" (scroll)=\"onScroll()\">\n            <ng-container *ngIf=\"results && results.length\">\n                <li [attr.id]=\"configuration.id + '-resultItem-' + i\" role=\"option\" [ngClass]=\"{\n            'sds-autocomplete__group': configuration.isGroupingEnabled,\n            'sds-autocomplete__item': !configuration.isGroupingEnabled,\n            'sds-autocomplete__item--highlighted':\n              result['highlighted'] && !configuration.isGroupingEnabled,\n            'sds-autocomplete__item--selected':\n              checkItemSelected(result) && !configuration.isGroupingEnabled\n          }\" *ngFor=\"let result of results; let i = index\" (click)=\"!configuration.isSelectableGroup ? '' : selectItem(result)\">\n                    <ng-container *ngIf=\"itemTemplate\" [ngTemplateOutlet]=\"itemTemplate\" [ngTemplateOutletContext]=\"{ $implicit: result }\">\n                    </ng-container>\n                    <ng-container *ngIf=\"!itemTemplate\">\n                        <div [ngClass]=\"{\n                'sds-autocomplete__item': configuration.isGroupingEnabled,\n                'sds-autocomplete__item--highlighted':\n                  configuration.isGroupingEnabled && result['highlighted'],\n                'sds-autocomplete__item--disabled':\n                  !configuration.isSelectableGroup &&\n                  configuration.isGroupingEnabled,\n                'sds-autocomplete__item--selected':\n                  checkItemSelected(result) && configuration.isGroupingEnabled\n              }\">\n                            <div [ngClass]=\"{\n                  'text-semibold': configuration.secondaryTextField\n                }\">\n                                {{ getObjectValue(result, configuration.primaryTextField) }}\n                            </div>\n                            <ng-container *ngIf=\"\n                  configuration.secondaryTextField &&\n                  result[configuration.secondaryTextField]\n                \">\n                                <div>{{ result[configuration.secondaryTextField] }}</div>\n                            </ng-container>\n                        </div>\n\n                        <ul class=\"usa-list usa-list--unstyled\" #childrenList [attr.id]=\"configuration.id + '-childrenlistbox-' + i\" role=\"listbox\">\n                            <li [attr.id]=\"configuration.id + '-childItem-' + j\" role=\"option\" [ngClass]=\"{\n                  'sds-autocomplete__group':\n                    child[configuration.groupByChild]?.length,\n                  'sds-autocomplete__item': !child[configuration.groupByChild]\n                    ?.length,\n                  'sds-autocomplete__item--highlighted':\n                    child['highlighted'] &&\n                    !child[configuration.groupByChild]?.length,\n                  'sds-autocomplete__item--selected':\n                    checkItemSelected(child) &&\n                    !child[configuration.groupByChild]?.length\n                }\" *ngFor=\"\n                  let child of result[configuration.groupByChild];\n                  let j = index\n                \" (click)=\"selectItem(child)\">\n                                <div [ngClass]=\"{\n                    'sds-autocomplete__item':\n                      child[configuration.groupByChild]?.length,\n                    'sds-autocomplete__item--highlighted':\n                      child[configuration.groupByChild]?.length &&\n                      child['highlighted'],\n                    'sds-autocomplete__item--disabled':\n                      !configuration.isSelectableGroup &&\n                      child[configuration.groupByChild]?.length,\n                    'sds-autocomplete__item--selected':\n                      checkItemSelected(child) &&\n                      child[configuration.groupByChild]?.length\n                  }\">\n                                    <div [ngClass]=\"{\n                      'text-semibold': configuration.secondaryTextField\n                    }\">\n                                        {{ getObjectValue(child, configuration.primaryTextField) }}\n                                    </div>\n\n                                    <div *ngIf=\"\n                      configuration.secondaryTextField &&\n                      child[configuration.secondaryTextField]\n                    \">\n                                        {{ child[configuration.secondaryTextField] }}\n                                    </div>\n                                </div>\n                                <ul class=\"usa-list usa-list--unstyled\" #childrenItems [attr.id]=\"configuration.id + '-grandchildren-'\" role=\"listbox\">\n                                    <li [attr.id]=\"configuration.id + '-grandchildren-' + k\" role=\"option\" class=\"sds-autocomplete__item\" [ngClass]=\"{\n                      'sds-autocomplete__item--selected': checkItemSelected(\n                        subchild\n                      ),\n                      'sds-autocomplete__item--highlighted':\n                        subchild['highlighted']\n                    }\" *ngFor=\"\n                      let subchild of child[configuration.groupByChild];\n                      let k = index\n                    \" (click)=\"selectItem(subchild)\">\n                                        <div>\n                                            <div [ngClass]=\"{\n                          'text-semibold': configuration.secondaryTextField\n                        }\">\n                                                {{ getObjectValue( subchild, configuration.primaryTextField ) }}\n\n                                                <div *ngIf=\"\n                            configuration.secondaryTextField &&\n                            subchild[configuration.secondaryTextField]\n                          \">\n                                                    {{ subchild[configuration.secondaryTextField] }}\n                                                </div>\n                                            </div>\n                                        </div>\n                                    </li>\n                                </ul>\n                            </li>\n                        </ul>\n                    </ng-container>\n                </li>\n            </ng-container>\n            <ng-container *ngIf=\"!results || results.length == 0\">\n                <li class=\"emptyResults margin-1\">No results found</li>\n            </ng-container>\n            <ng-container *ngIf=\"showLoad\">\n                <li class=\"autoLoading\">\n                    <div class=\"lightToGrayBackgroundGradiate\"></div>\n                    <div class=\"grayToLightBackgroundGradiate\"></div>\n                </li>\n                <li class=\"autoLoading\">\n                    <div class=\"lightToGrayBackgroundGradiate\"></div>\n                    <div class=\"grayToLightBackgroundGradiate\"></div>\n                </li>\n            </ng-container>\n        </ul>\n\n        <ng-container *ngIf=\"!input.disabled\">\n            <span class=\"position-absolute right-105 top-1 cursor-pointer\">\n        <span *ngIf=\"inputValue && !disabled\" role=\"button\" aria-label=\"Clear input\" (click)=\"clearInput()\"\n          (keyup.enter)=\"clearInput()\" tabindex=\"0\">\n          <sds-icon [icon]=\"['bs', 'exit']\" size=\"1x\"></sds-icon>\n        </span>\n            <span *ngIf=\"!configuration.isTagModeEnabled\" class=\"margin-left-1\">\n          <sds-icon role=\"button\" aria-label=\"Display Options\" tabindex=\"0\" *ngIf=\"!showResults && !disabled\"\n            (click)=\"openOptions()\" (keyup.enter)=\"openOptions()\" [icon]=\"['bs', 'caret-down-fill']\" size=\"2x\"></sds-icon>\n          <sds-icon role=\"button\" aria-label=\"Hide Options\" tabindex=\"0\" *ngIf=\"showResults && !disabled\"\n            (click)=\"checkForFocus($event)\" (keyup.enter)=\"checkForFocus($event)\" [icon]=\"['bs', 'caret-up-fill']\"\n            size=\"sm\"></sds-icon>\n        </span>\n            </span>\n        </ng-container>\n        <ul class=\"usa-sr-only\" aria-live=\"assertive\">\n            <li>{{ srOnlyText }}</li>\n        </ul>\n    </div>\n</div>"
         },
         {
             "name": "SdsDialogContainerComponent",
-            "id": "component-SdsDialogContainerComponent-f432e2b26bf5993e692caa95bd6cd9eb",
+            "id": "component-SdsDialogContainerComponent-b5544a4d78a81cb7745cd1de4239dd16",
             "file": "libs/packages/components/src/lib/dialog/dialog-container.component.ts",
             "changeDetection": "ChangeDetectionStrategy.Default",
             "encapsulation": [
@@ -7960,7 +8404,7 @@ const COMPONENTS = {
                     "type": "",
                     "optional": false,
                     "description": "<p>Emits when an animation state changes. </p>\n",
-                    "line": 84
+                    "line": 83
                 },
                 {
                     "name": "_ariaLabelledBy",
@@ -7968,14 +8412,14 @@ const COMPONENTS = {
                     "type": "string | null",
                     "optional": false,
                     "description": "<p>ID of the element that should be considered as the dialog&#39;s label. </p>\n",
-                    "line": 87
+                    "line": 86
                 },
                 {
                     "name": "_config",
                     "type": "SdsDialogConfig",
                     "optional": false,
                     "description": "<p>The dialog configuration. </p>\n",
-                    "line": 98,
+                    "line": 97,
                     "modifierKind": [
                         114
                     ]
@@ -7986,7 +8430,7 @@ const COMPONENTS = {
                     "type": "HTMLElement | null",
                     "optional": false,
                     "description": "<p>Element that was focused before the dialog was opened. Save this to restore upon close. </p>\n",
-                    "line": 78,
+                    "line": 77,
                     "modifierKind": [
                         112
                     ]
@@ -7996,7 +8440,7 @@ const COMPONENTS = {
                     "type": "FocusTrap",
                     "optional": false,
                     "description": "<p>The class that traps and manages focus within the dialog. </p>\n",
-                    "line": 75,
+                    "line": 74,
                     "modifierKind": [
                         112
                     ]
@@ -8006,14 +8450,14 @@ const COMPONENTS = {
                     "type": "string",
                     "optional": false,
                     "description": "<p>ID for the container DOM element. </p>\n",
-                    "line": 90
+                    "line": 89
                 },
                 {
                     "name": "_portalOutlet",
                     "type": "CdkPortalOutlet",
                     "optional": false,
                     "description": "<p>The portal outlet inside of this container into which the dialog content will be loaded. </p>\n",
-                    "line": 72,
+                    "line": 71,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -8023,11 +8467,11 @@ const COMPONENTS = {
                 },
                 {
                     "name": "_state",
-                    "defaultValue": "'enter'",
-                    "type": "\"void\" | \"enter\" | \"exit\"",
+                    "defaultValue": "this._config.slideOut ? 'slideEnter' : 'enter'",
+                    "type": "\"void\" | \"enter\" | \"exit\" | \"slideEnter\" | \"slideExit\"",
                     "optional": false,
                     "description": "<p>State of the dialog animation. </p>\n",
-                    "line": 81
+                    "line": 80
                 }
             ],
             "methodsClass": [
@@ -8042,7 +8486,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 174,
+                    "line": 172,
                     "description": "<p>Callback, invoked whenever an animation on the host completes. </p>\n",
                     "jsdoctags": [
                         {
@@ -8065,7 +8509,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 185,
+                    "line": 183,
                     "description": "<p>Callback, invoked when an animation on the host starts. </p>\n",
                     "jsdoctags": [
                         {
@@ -8083,7 +8527,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 145,
+                    "line": 143,
                     "description": "<p>Restores focus to the element that was focused before the dialog opened. </p>\n",
                     "modifierKind": [
                         112
@@ -8095,7 +8539,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 159,
+                    "line": 157,
                     "description": "<p>Saves a reference to the element that was focused before the dialog was opened. </p>\n",
                     "modifierKind": [
                         112
@@ -8107,7 +8551,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 190,
+                    "line": 188,
                     "description": "<p>Starts the dialog exit animation. </p>\n"
                 },
                 {
@@ -8116,7 +8560,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 131,
+                    "line": 129,
                     "description": "<p>Moves the focus inside the focus trap. </p>\n",
                     "modifierKind": [
                         112
@@ -8135,20 +8579,20 @@ const COMPONENTS = {
                     "typeParameters": [
                         "T"
                     ],
-                    "line": 108,
+                    "line": 106,
                     "description": "<p>Attach a ComponentPortal as content to this dialog container.</p>\n",
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 3737,
-                                "end": 3743,
+                                "pos": 3610,
+                                "end": 3616,
                                 "flags": 0,
                                 "escapedText": "portal"
                             },
                             "type": "ComponentPortal<T>",
                             "tagName": {
-                                "pos": 3731,
-                                "end": 3736,
+                                "pos": 3604,
+                                "end": 3609,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -8169,20 +8613,20 @@ const COMPONENTS = {
                     "typeParameters": [
                         "C"
                     ],
-                    "line": 121,
+                    "line": 119,
                     "description": "<p>Attach a TemplatePortal as content to this dialog container.</p>\n",
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4163,
-                                "end": 4169,
+                                "pos": 4036,
+                                "end": 4042,
                                 "flags": 0,
                                 "escapedText": "portal"
                             },
                             "type": "TemplatePortal<C>",
                             "tagName": {
-                                "pos": 4157,
-                                "end": 4162,
+                                "pos": 4030,
+                                "end": 4035,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -8196,25 +8640,25 @@ const COMPONENTS = {
             "description": "<p>Internal component that wraps user-provided dialog content.</p>\n",
             "rawdescription": "Internal component that wraps user-provided dialog content.",
             "type": "component",
-            "sourceCode": "import {\n  Component,\n  ComponentRef,\n  ElementRef,\n  EmbeddedViewRef,\n  EventEmitter,\n  Inject,\n  Optional,\n  ChangeDetectorRef,\n  ViewChild,\n  ViewEncapsulation,\n  ChangeDetectionStrategy,\n} from '@angular/core';\nimport { DOCUMENT } from '@angular/common';\nimport { AnimationEvent } from '@angular/animations';\nimport { sdsDialogAnimations } from './dialog-animations';\nimport {\n  BasePortalOutlet,\n  ComponentPortal,\n  CdkPortalOutlet,\n  TemplatePortal\n} from '@angular/cdk/portal';\nimport { FocusTrap, FocusTrapFactory } from '@angular/cdk/a11y';\nimport { SdsDialogConfig } from './dialog-config';\nimport { FaIconLibrary } from '@fortawesome/angular-fontawesome';\nimport { fas } from '@fortawesome/free-solid-svg-icons';\nimport { sds } from '@gsa-sam/sam-styles/src/icons/';\n\n/**\n * Throws an exception for the case when a ComponentPortal is\n * attached to a DomPortalOutlet without an origin.\n * @docs-private\n */\nexport function throwSdsDialogContentAlreadyAttachedError() {\n  throw Error('Attempting to attach dialog content after content is already attached');\n}\n\n/**\n * Internal component that wraps user-provided dialog content.\n * @docs-private\n */\n@Component({\n  selector: 'sds-dialog-container',\n  templateUrl: 'dialog-container.component.html',\n  encapsulation: ViewEncapsulation.None,\n  // Using OnPush for dialogs caused some G3 sync issues. Disabled until we can track them down.\n  // tslint:disable-next-line:validate-decorators\n  changeDetection: ChangeDetectionStrategy.Default,\n  animations: [sdsDialogAnimations.dialogContainer],\n  // tslint:disable-next-line: use-host-property-decorator\n  host: {\n    'class': 'sds-dialog__container',\n    '[class.sds-dialog--alert]': '_config.alert',\n    '[class.sds-dialog--alert-error]': '_config.alert === \"error\"',\n    '[class.sds-dialog--alert-warning]': '_config.alert === \"warning\"',\n    '[class.sds-dialog--alert-info]': '_config.alert === \"info\"',\n    'tabindex': '-1',\n    'aria-modal': 'true',\n    '[attr.id]': '_id',\n    '[attr.role]': '_config.role',\n    '[attr.aria-labelledby]': '_config.ariaLabel ? null : _ariaLabelledBy',\n    '[attr.aria-label]': '_config.ariaLabel',\n    '[attr.aria-describedby]': '_config.ariaDescribedBy || null',\n    '[@dialogContainer]': '_state',\n    '(@dialogContainer.start)': '_onAnimationStart($event)',\n    '(@dialogContainer.done)': '_onAnimationDone($event)',\n  },\n})\nexport class SdsDialogContainerComponent extends BasePortalOutlet {\n\n  /** The portal outlet inside of this container into which the dialog content will be loaded. */\n  @ViewChild(CdkPortalOutlet, { static: true }) _portalOutlet: CdkPortalOutlet;\n\n  /** The class that traps and manages focus within the dialog. */\n  private _focusTrap: FocusTrap;\n\n  /** Element that was focused before the dialog was opened. Save this to restore upon close. */\n  private _elementFocusedBeforeDialogWasOpened: HTMLElement | null = null;\n\n  /** State of the dialog animation. */\n  _state: 'void' | 'enter' | 'exit' = 'enter';\n\n  /** Emits when an animation state changes. */\n  _animationStateChanged = new EventEmitter<AnimationEvent>();\n\n  /** ID of the element that should be considered as the dialog's label. */\n  _ariaLabelledBy: string | null = null;\n\n  /** ID for the container DOM element. */\n  _id: string;\n\n  constructor(library: FaIconLibrary,\n    private _elementRef: ElementRef,\n    private _focusTrapFactory: FocusTrapFactory,\n    private _changeDetectorRef: ChangeDetectorRef,\n    @Optional() @Inject(DOCUMENT) private _document: any,\n    /** The dialog configuration. */\n    public _config: SdsDialogConfig) {\n    super();\n    library.addIconPacks(fas, sds);\n    // super();\n  }\n\n  /**\n   * Attach a ComponentPortal as content to this dialog container.\n   * @param portal Portal to be attached as the dialog content.\n   */\n  attachComponentPortal<T>(portal: ComponentPortal<T>): ComponentRef<T> {\n    if (this._portalOutlet.hasAttached()) {\n      throwSdsDialogContentAlreadyAttachedError();\n    }\n\n    this._savePreviouslyFocusedElement();\n    return this._portalOutlet.attachComponentPortal(portal);\n  }\n\n  /**\n   * Attach a TemplatePortal as content to this dialog container.\n   * @param portal Portal to be attached as the dialog content.\n   */\n  attachTemplatePortal<C>(portal: TemplatePortal<C>): EmbeddedViewRef<C> {\n    if (this._portalOutlet.hasAttached()) {\n      throwSdsDialogContentAlreadyAttachedError();\n    }\n\n    this._savePreviouslyFocusedElement();\n    return this._portalOutlet.attachTemplatePortal(portal);\n  }\n\n  /** Moves the focus inside the focus trap. */\n  private _trapFocus() {\n    if (!this._focusTrap) {\n      this._focusTrap = this._focusTrapFactory.create(this._elementRef.nativeElement);\n    }\n\n    // If were to attempt to focus immediately, then the content of the dialog would not yet be\n    // ready in instances where change detection has to run first. To deal with this, we simply\n    // wait for the microtask queue to be empty.\n    if (this._config.autoFocus) {\n      this._focusTrap.focusInitialElementWhenReady();\n    }\n  }\n\n  /** Restores focus to the element that was focused before the dialog opened. */\n  private _restoreFocus() {\n    const toFocus = this._elementFocusedBeforeDialogWasOpened;\n\n    // We need the extra check, because IE can set the `activeElement` to null in some cases.\n    if (this._config.restoreFocus && toFocus && typeof toFocus.focus === 'function') {\n      toFocus.focus();\n    }\n\n    if (this._focusTrap) {\n      this._focusTrap.destroy();\n    }\n  }\n\n  /** Saves a reference to the element that was focused before the dialog was opened. */\n  private _savePreviouslyFocusedElement() {\n    if (this._document) {\n      this._elementFocusedBeforeDialogWasOpened = this._document.activeElement as HTMLElement;\n\n      // Note that there is no focus method when rendering on the server.\n      if (this._elementRef.nativeElement.focus) {\n        // Move focus onto the dialog immediately in order to prevent the user from accidentally\n        // opening multiple dialogs at the same time. Needs to be async, because the element\n        // may not be focusable immediately.\n        Promise.resolve().then(() => this._elementRef.nativeElement.focus());\n      }\n    }\n  }\n\n  /** Callback, invoked whenever an animation on the host completes. */\n  _onAnimationDone(event: AnimationEvent) {\n    if (event.toState === 'enter') {\n      this._trapFocus();\n    } else if (event.toState === 'exit') {\n      this._restoreFocus();\n    }\n\n    this._animationStateChanged.emit(event);\n  }\n\n  /** Callback, invoked when an animation on the host starts. */\n  _onAnimationStart(event: AnimationEvent) {\n    this._animationStateChanged.emit(event);\n  }\n\n  /** Starts the dialog exit animation. */\n  _startExitAnimation(): void {\n    this._state = 'exit';\n\n    // Mark the container for check so it can react if the\n    // view container is using OnPush change detection.\n    this._changeDetectorRef.markForCheck();\n  }\n}\n",
+            "sourceCode": "import {\n  Component,\n  ComponentRef,\n  ElementRef,\n  EmbeddedViewRef,\n  EventEmitter,\n  Inject,\n  Optional,\n  ChangeDetectorRef,\n  ViewChild,\n  ViewEncapsulation,\n  ChangeDetectionStrategy,\n} from '@angular/core';\nimport { DOCUMENT } from '@angular/common';\nimport { AnimationEvent } from '@angular/animations';\nimport { sdsDialogAnimations } from './dialog-animations';\nimport {\n  BasePortalOutlet,\n  ComponentPortal,\n  CdkPortalOutlet,\n  TemplatePortal\n} from '@angular/cdk/portal';\nimport { FocusTrap, FocusTrapFactory } from '@angular/cdk/a11y';\nimport { SdsDialogConfig } from './dialog-config';\n\n\n/**\n * Throws an exception for the case when a ComponentPortal is\n * attached to a DomPortalOutlet without an origin.\n * @docs-private\n */\nexport function throwSdsDialogContentAlreadyAttachedError() {\n  throw Error('Attempting to attach dialog content after content is already attached');\n}\n\n/**\n * Internal component that wraps user-provided dialog content.\n * @docs-private\n */\n@Component({\n  selector: 'sds-dialog-container',\n  templateUrl: 'dialog-container.component.html',\n  encapsulation: ViewEncapsulation.None,\n  // Using OnPush for dialogs caused some G3 sync issues. Disabled until we can track them down.\n  // tslint:disable-next-line:validate-decorators\n  changeDetection: ChangeDetectionStrategy.Default,\n  animations: [sdsDialogAnimations.dialogContainer],\n  // tslint:disable-next-line: use-host-property-decorator\n  host: {\n    'class': 'sds-dialog__container',\n    '[class.sds-dialog--alert]': '_config.alert',\n    '[class.sds-dialog--alert-error]': '_config.alert === \"error\"',\n    '[class.sds-dialog--alert-warning]': '_config.alert === \"warning\"',\n    '[class.sds-dialog--alert-info]': '_config.alert === \"info\"',\n    '[class.dialog-slide-out]': '_config.slideOut',\n    'tabindex': '-1',\n    'aria-modal': 'true',\n    '[attr.id]': '_id',\n    '[attr.role]': '_config.role',\n    '[attr.aria-labelledby]': '_config.ariaLabel ? null : _ariaLabelledBy',\n    '[attr.aria-label]': '_config.ariaLabel',\n    '[attr.aria-describedby]': '_config.ariaDescribedBy || null',\n    '[@dialogContainer]': '_state',\n    '(@dialogContainer.start)': '_onAnimationStart($event)',\n    '(@dialogContainer.done)': '_onAnimationDone($event)',\n  },\n})\nexport class SdsDialogContainerComponent extends BasePortalOutlet {\n\n  /** The portal outlet inside of this container into which the dialog content will be loaded. */\n  @ViewChild(CdkPortalOutlet, { static: true }) _portalOutlet: CdkPortalOutlet;\n\n  /** The class that traps and manages focus within the dialog. */\n  private _focusTrap: FocusTrap;\n\n  /** Element that was focused before the dialog was opened. Save this to restore upon close. */\n  private _elementFocusedBeforeDialogWasOpened: HTMLElement | null = null;\n\n  /** State of the dialog animation. */\n  _state: 'void' | 'enter' | 'exit' | 'slideEnter' | 'slideExit' = this._config.slideOut ? 'slideEnter' : 'enter';\n\n  /** Emits when an animation state changes. */\n  _animationStateChanged = new EventEmitter<AnimationEvent>();\n\n  /** ID of the element that should be considered as the dialog's label. */\n  _ariaLabelledBy: string | null = null;\n\n  /** ID for the container DOM element. */\n  _id: string;\n\n  constructor(\n    private _elementRef: ElementRef,\n    private _focusTrapFactory: FocusTrapFactory,\n    private _changeDetectorRef: ChangeDetectorRef,\n    @Optional() @Inject(DOCUMENT) private _document: any,\n    /** The dialog configuration. */\n    public _config: SdsDialogConfig) {\n    super();\n   \n  }\n\n  /**\n   * Attach a ComponentPortal as content to this dialog container.\n   * @param portal Portal to be attached as the dialog content.\n   */\n  attachComponentPortal<T>(portal: ComponentPortal<T>): ComponentRef<T> {\n    if (this._portalOutlet.hasAttached()) {\n      throwSdsDialogContentAlreadyAttachedError();\n    }\n\n    this._savePreviouslyFocusedElement();\n    return this._portalOutlet.attachComponentPortal(portal);\n  }\n\n  /**\n   * Attach a TemplatePortal as content to this dialog container.\n   * @param portal Portal to be attached as the dialog content.\n   */\n  attachTemplatePortal<C>(portal: TemplatePortal<C>): EmbeddedViewRef<C> {\n    if (this._portalOutlet.hasAttached()) {\n      throwSdsDialogContentAlreadyAttachedError();\n    }\n\n    this._savePreviouslyFocusedElement();\n    return this._portalOutlet.attachTemplatePortal(portal);\n  }\n\n  /** Moves the focus inside the focus trap. */\n  private _trapFocus() {\n    if (!this._focusTrap) {\n      this._focusTrap = this._focusTrapFactory.create(this._elementRef.nativeElement);\n    }\n\n    // If were to attempt to focus immediately, then the content of the dialog would not yet be\n    // ready in instances where change detection has to run first. To deal with this, we simply\n    // wait for the microtask queue to be empty.\n    if (this._config.autoFocus) {\n      this._focusTrap.focusInitialElementWhenReady();\n    }\n  }\n\n  /** Restores focus to the element that was focused before the dialog opened. */\n  private _restoreFocus() {\n    const toFocus = this._elementFocusedBeforeDialogWasOpened;\n\n    // We need the extra check, because IE can set the `activeElement` to null in some cases.\n    if (this._config.restoreFocus && toFocus && typeof toFocus.focus === 'function') {\n      toFocus.focus();\n    }\n\n    if (this._focusTrap) {\n      this._focusTrap.destroy();\n    }\n  }\n\n  /** Saves a reference to the element that was focused before the dialog was opened. */\n  private _savePreviouslyFocusedElement() {\n    if (this._document) {\n      this._elementFocusedBeforeDialogWasOpened = this._document.activeElement as HTMLElement;\n\n      // Note that there is no focus method when rendering on the server.\n      if (this._elementRef.nativeElement.focus) {\n        // Move focus onto the dialog immediately in order to prevent the user from accidentally\n        // opening multiple dialogs at the same time. Needs to be async, because the element\n        // may not be focusable immediately.\n        Promise.resolve().then(() => this._elementRef.nativeElement.focus());\n      }\n    }\n  }\n\n  /** Callback, invoked whenever an animation on the host completes. */\n  _onAnimationDone(event: AnimationEvent) {\n    if (event.toState === 'enter' || event.toState === 'slideEnter') {\n      this._trapFocus();\n    } else if (event.toState === 'exit' || event.toState === 'slideExit') {\n      this._restoreFocus();\n    }\n\n    this._animationStateChanged.emit(event);\n  }\n\n  /** Callback, invoked when an animation on the host starts. */\n  _onAnimationStart(event: AnimationEvent) {\n    this._animationStateChanged.emit(event);\n  }\n\n  /** Starts the dialog exit animation. */\n  _startExitAnimation(): void {\n    this._state = this._config.slideOut ? 'slideExit' : 'exit';\n\n    // Mark the container for check so it can react if the\n    // view container is using OnPush change detection.\n    this._changeDetectorRef.markForCheck();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "jsdoctags": [
                 {
-                    "pos": 1142,
-                    "end": 1147,
+                    "pos": 966,
+                    "end": 971,
                     "flags": 0,
                     "kind": 288,
                     "atToken": {
-                        "pos": 1142,
-                        "end": 1143,
+                        "pos": 966,
+                        "end": 967,
                         "flags": 0,
                         "kind": 57
                     },
                     "tagName": {
-                        "pos": 1143,
-                        "end": 1147,
+                        "pos": 967,
+                        "end": 971,
                         "flags": 0,
                         "escapedText": "docs"
                     },
@@ -8225,10 +8669,6 @@ const COMPONENTS = {
                 "name": "constructor",
                 "description": "",
                 "args": [
-                    {
-                        "name": "library",
-                        "type": "FaIconLibrary"
-                    },
                     {
                         "name": "_elementRef",
                         "type": "ElementRef"
@@ -8250,15 +8690,8 @@ const COMPONENTS = {
                         "type": "SdsDialogConfig"
                     }
                 ],
-                "line": 90,
+                "line": 89,
                 "jsdoctags": [
-                    {
-                        "name": "library",
-                        "type": "FaIconLibrary",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    },
                     {
                         "name": "_elementRef",
                         "type": "ElementRef",
@@ -8297,7 +8730,7 @@ const COMPONENTS = {
                 ]
             },
             "extends": "BasePortalOutlet",
-            "templateData": "<button *ngIf=\"_config.displayCloseBtn\" sds-dialog-close class=\"close-btn\" aria-label=\"Close Modal\">\n  <fa-icon [icon]=\"['fas', 'times']\"></fa-icon>\n</button>\n\n<!-- Alert Icons -->\n<div *ngIf=\"_config.alert\" [ngSwitch]=\"_config.alert\" class=\"sds-dialog-icon\">\n  <fa-icon *ngSwitchCase=\"'error'\" [icon]=\"['fas', 'ban']\" size=\"3x\"></fa-icon>\n  <fa-icon *ngSwitchCase=\"'warning'\" [icon]=\"['fas', 'exclamation-triangle']\" size=\"3x\"></fa-icon>\n  <fa-icon *ngSwitchCase=\"'info'\" [icon]=\"['fas', 'info-circle']\" size=\"3x\"></fa-icon>\n  <div *ngSwitchDefault>\n    Alert <em>{{ _config.alert }}</em> is not valid\n  </div>\n</div>\n\n<ng-template cdkPortalOutlet></ng-template>"
+            "templateData": "<button *ngIf=\"_config.displayCloseBtn\" sds-dialog-close class=\"close-btn\" aria-label=\"Close Modal\">\n  <sds-icon [icon]=\"['bs', 'exit']\"></sds-icon>\n</button>\n\n<!-- Alert Icons -->\n<div *ngIf=\"_config.alert\" [ngSwitch]=\"_config.alert\" class=\"sds-dialog-icon\">\n    <sds-icon *ngSwitchCase=\"'error'\" [icon]=\"['sds', 'alert-error']\" size=\"3x\"></sds-icon>\n    <sds-icon *ngSwitchCase=\"'warning'\" [icon]=\"['bs', 'exclamation-triangle']\" size=\"3x\"></sds-icon>\n    <sds-icon *ngSwitchCase=\"'info'\" [icon]=\"['bs', 'info-circle']\" size=\"3x\"></sds-icon>\n    <div *ngSwitchDefault>\n        Alert <em>{{ _config.alert }}</em> is not valid\n    </div>\n</div>\n\n<ng-template cdkPortalOutlet></ng-template>"
         },
         {
             "name": "SdsIconComponent",
@@ -8394,7 +8827,7 @@ const COMPONENTS = {
                     }
                 }
             },
-            "templateData": "<ng-container *ngIf=\"library === 'bs'\">\n  <i-bs name={{iconToFind}} class=\"rotate-{{rotate}} size-{{size}}\" aria-hidden=true role=\"img\"></i-bs>\n</ng-container>\n<ng-container *ngIf=\"library === 'sds'\">\n  <fa-icon [icon]=\"['sds', iconToFind]\" size=\"{{size}}\" rotate=\"{{rotate}}\"></fa-icon>\n</ng-container>\n"
+            "templateData": "<ng-container *ngIf=\"library === 'bs'\">\n    <i-bs name={{iconToFind}} class=\"rotate-{{rotate}} size-{{size}}\" aria-hidden=true role=\"img\"></i-bs>\n</ng-container>\n<ng-container *ngIf=\"library === 'sds'\">\n    <sds-icon [icon]=\"['sds', iconToFind]\" size=\"{{size}}\" rotate=\"{{rotate}}\"></sds-icon>\n</ng-container>"
         },
         {
             "name": "SdsMenuComponent",
@@ -9289,7 +9722,7 @@ const COMPONENTS = {
         },
         {
             "name": "SdsSearchComponent",
-            "id": "component-SdsSearchComponent-3e2f81dda1b154fae7c2c9ee6c0f63dc",
+            "id": "component-SdsSearchComponent-f0b3b034aecf392b8ce523e6de9f756e",
             "file": "libs/packages/components/src/lib/search/search.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -9298,15 +9731,15 @@ const COMPONENTS = {
             "outputs": [],
             "providers": [
                 {
-                    "name": "{\n    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => SdsSearchComponent), multi: true\n}",
+                    "name": "{\n    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => SdsSearchComponent), multi: true,\n}",
                     "type": "component"
                 }
             ],
             "selector": "sds-search",
-            "styleUrls": [],
-            "styles": [
-                "input::-ms-clear {\n    display: none;\n}"
+            "styleUrls": [
+                "search.component.scss"
             ],
+            "styles": [],
             "templateUrl": [
                 "search.component.html"
             ],
@@ -9378,7 +9811,7 @@ const COMPONENTS = {
                 },
                 {
                     "name": "inputState",
-                    "defaultValue": "{\n    initial: { visible: undefined },\n    visible: undefined\n  }",
+                    "defaultValue": "{\n    initial: { visible: undefined },\n    visible: undefined,\n  }",
                     "type": "object",
                     "optional": false,
                     "description": "",
@@ -9414,6 +9847,28 @@ const COMPONENTS = {
                     "returnType": "number",
                     "typeParameters": [],
                     "line": 166
+                },
+                {
+                    "name": "clearInput",
+                    "args": [
+                        {
+                            "name": "ev",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 187,
+                    "jsdoctags": [
+                        {
+                            "name": "ev",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 },
                 {
                     "name": "focusChange",
@@ -9573,10 +10028,15 @@ const COMPONENTS = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import {\n  Component,\n  ViewChild,\n  ElementRef,\n  Input,\n  AfterViewInit,\n  forwardRef,\n  ChangeDetectionStrategy,\n  ChangeDetectorRef,\n  Output,\n  EventEmitter\n} from '@angular/core';\nimport { FocusMonitor } from '@angular/cdk/a11y';\nimport { ViewportRuler } from '@angular/cdk/overlay';\nimport { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';\nexport class SearchSettings {\n  public placeholder = 'Search';\n  public ariaLabel? = 'Search';\n  public size: string;\n  public inputClass: string;\n  public parentSelector: string;\n  public id?: string;\n  public dropdown: any = {\n    id: 'searchOptions',\n    placeholder: '-Select-',\n    options: [],\n    inverse: false\n  };\n}\n@Component({\n  selector: 'sds-search',\n  templateUrl: 'search.component.html',\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => SdsSearchComponent),\n      multi: true\n    }\n  ],\n  styles: [`input::-ms-clear {\n    display: none;\n}`],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {\n  @ViewChild('inputEl', { read: ElementRef, static: false })\n  inputEl: ElementRef;\n  @ViewChild('selectEl', { read: ElementRef, static: false })\n  selectEl: ElementRef;\n  @ViewChild('buttonEl', { read: ElementRef, static: false })\n  buttonEl: ElementRef;\n\n  @Input() searchSettings: SearchSettings = new SearchSettings();\n  @Output() submit: EventEmitter<{ searchText: string }> = new EventEmitter(\n    null\n  );\n\n  model: any = {};\n  inputState = {\n    initial: { visible: undefined },\n    visible: undefined\n  };\n  private _onChange = (_: any) => { };\n  private _onTouched = () => { };\n\n  constructor(\n    private cd: ChangeDetectorRef,\n    private focusMonitor: FocusMonitor,\n    private viewportRuler: ViewportRuler\n  ) { }\n\n  ngAfterViewInit() {\n    this.inputState.initial.visible = this.isInputVisible();\n    this.inputState.visible = this.inputState.initial.visible;\n    this.viewportRuler.change(0).subscribe(() => {\n      this.inputState.initial.visible = this.isInputVisible();\n      this.inputState.visible = this.inputState.initial.visible;\n    });\n  }\n\n  hasDropdown() {\n    if (\n      this.searchSettings &&\n      this.searchSettings.dropdown &&\n      this.searchSettings.dropdown.options &&\n      this.searchSettings.dropdown.options.length\n    ) {\n      return true;\n    } else {\n      return false;\n    }\n  }\n  handleClick(event) {\n    event.preventDefault();\n    if (!this.inputState.visible) {\n      this.setInputVisibleStyles();\n      this.focusMonitor.focusVia(this.inputEl, 'program');\n    } else if (this.inputEl || this.selectEl) {\n      this.submit.emit(this.model);\n    }\n  }\n\n  writeValueToModel() {\n    this.model.searchText = this.inputEl\n      ? this.inputEl.nativeElement.value\n      : '';\n    if (this.selectEl && this.selectEl.nativeElement.value) {\n      this.model.searchCategory = this.selectEl.nativeElement.value;\n    }\n    this._onChange(Object.assign({}, this.model));\n  }\n\n  writeValue(value: any) {\n    if (value && this.model !== value) {\n      this.model = value;\n      this.cd.markForCheck();\n    } else {\n      this.model = {};\n      this.cd.markForCheck();\n    }\n  }\n  registerOnTouched(fn: any) {\n    this._onTouched = fn;\n  }\n  registerOnChange(fn: any): void {\n    this._onChange = fn;\n  }\n\n  isInputVisible(): boolean {\n    return this.inputEl.nativeElement.getBoundingClientRect().width\n      ? true\n      : false;\n  }\n\n  setInputVisibleStyles() {\n    const inputWidth = this.calculateInputWidth();\n    this.inputEl.nativeElement.style.setProperty(\n      'display',\n      'block',\n      'important'\n    );\n    this.inputEl.nativeElement.style.position = 'absolute';\n    this.inputEl.nativeElement.style.left = `-${inputWidth}px`;\n    this.inputEl.nativeElement.style.setProperty(\n      'width',\n      `${inputWidth}px`,\n      'important'\n    );\n    this.inputState.visible = true;\n  }\n\n  removeInputVisibleStyles() {\n    this.inputEl.nativeElement.style.display = '';\n    this.inputEl.nativeElement.style.position = '';\n    this.inputEl.nativeElement.style.left = '';\n    this.inputEl.nativeElement.style.width = '';\n    this.inputState.visible = false;\n  }\n\n  focusChange() {\n    if (!this.inputState.initial.visible) {\n      this.removeInputVisibleStyles();\n    }\n  }\n\n  calculateInputWidth(): number {\n    const leftPadding = 20;\n    const buttonElement = this.buttonEl.nativeElement;\n    const inputElement = this.inputEl.nativeElement;\n    const rightPosition = buttonElement.getBoundingClientRect().left;\n    const leftPosition = this.searchSettings.parentSelector\n      ? inputElement\n        .closest(this.searchSettings.parentSelector)\n        .getBoundingClientRect().left\n      : 0;\n    return Math.floor(rightPosition - leftPosition - leftPadding);\n  }\n  getClass() {\n    const cls =\n      this.searchSettings && this.searchSettings.size === 'large'\n        ? 'usa-search--big'\n        : 'usa-search--small';\n    return this.searchSettings.dropdown && this.searchSettings.dropdown.inverse\n      ? `${cls} sds-inverse`\n      : cls;\n  }\n}\n",
+            "sourceCode": "import {\n  Component,\n  ViewChild,\n  ElementRef,\n  Input,\n  AfterViewInit,\n  forwardRef,\n  ChangeDetectionStrategy,\n  ChangeDetectorRef,\n  Output,\n  EventEmitter,\n} from '@angular/core';\nimport { FocusMonitor } from '@angular/cdk/a11y';\nimport { ViewportRuler } from '@angular/cdk/overlay';\nimport { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';\nexport class SearchSettings {\n  public placeholder = 'Search';\n  public ariaLabel? = 'Search';\n  public size: string;\n  public inputClass: string;\n  public parentSelector: string;\n  public id?: string;\n  public dropdown: any = {\n    id: 'searchOptions',\n    placeholder: '-Select-',\n    options: [],\n    inverse: false,\n  };\n  public isSuffixSearchIcon?: boolean = false;\n}\n@Component({\n  selector: 'sds-search',\n  templateUrl: 'search.component.html',\n  styleUrls: ['search.component.scss'],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => SdsSearchComponent),\n      multi: true,\n    },\n  ],\n\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {\n  @ViewChild('inputEl', { read: ElementRef, static: false })\n  inputEl: ElementRef;\n  @ViewChild('selectEl', { read: ElementRef, static: false })\n  selectEl: ElementRef;\n  @ViewChild('buttonEl', { read: ElementRef, static: false })\n  buttonEl: ElementRef;\n\n  @Input() searchSettings: SearchSettings = new SearchSettings();\n  @Output() submit: EventEmitter<{ searchText: string }> = new EventEmitter(\n    null\n  );\n\n  model: any = {};\n  inputState = {\n    initial: { visible: undefined },\n    visible: undefined,\n  };\n  private _onChange = (_: any) => {};\n  private _onTouched = () => {};\n\n  constructor(\n    private cd: ChangeDetectorRef,\n    private focusMonitor: FocusMonitor,\n    private viewportRuler: ViewportRuler\n  ) {}\n\n  ngAfterViewInit() {\n    this.inputState.initial.visible = this.isInputVisible();\n    this.inputState.visible = this.inputState.initial.visible;\n    this.viewportRuler.change(0).subscribe(() => {\n      this.inputState.initial.visible = this.isInputVisible();\n      this.inputState.visible = this.inputState.initial.visible;\n    });\n  }\n\n  hasDropdown() {\n    if (\n      this.searchSettings &&\n      this.searchSettings.dropdown &&\n      this.searchSettings.dropdown.options &&\n      this.searchSettings.dropdown.options.length\n    ) {\n      return true;\n    } else {\n      return false;\n    }\n  }\n  handleClick(event) {\n    event.preventDefault();\n    if (!this.inputState.visible) {\n      this.setInputVisibleStyles();\n      this.focusMonitor.focusVia(this.inputEl, 'program');\n    } else if (this.inputEl || this.selectEl) {\n      this.submit.emit(this.model);\n    }\n  }\n\n  writeValueToModel() {\n    this.model.searchText = this.inputEl\n      ? this.inputEl.nativeElement.value\n      : '';\n    if (this.selectEl && this.selectEl.nativeElement.value) {\n      this.model.searchCategory = this.selectEl.nativeElement.value;\n    }\n    this._onChange(Object.assign({}, this.model));\n  }\n\n  writeValue(value: any) {\n    if (value && this.model !== value) {\n      this.model = value;\n      this.cd.markForCheck();\n    } else {\n      this.model = {};\n      this.cd.markForCheck();\n    }\n  }\n  registerOnTouched(fn: any) {\n    this._onTouched = fn;\n  }\n  registerOnChange(fn: any): void {\n    this._onChange = fn;\n  }\n\n  isInputVisible(): boolean {\n    return this.inputEl.nativeElement.getBoundingClientRect().width\n      ? true\n      : false;\n  }\n\n  setInputVisibleStyles() {\n    const inputWidth = this.calculateInputWidth();\n    this.inputEl.nativeElement.style.setProperty(\n      'display',\n      'block',\n      'important'\n    );\n    this.inputEl.nativeElement.style.position = 'absolute';\n    this.inputEl.nativeElement.style.left = `-${inputWidth}px`;\n    this.inputEl.nativeElement.style.setProperty(\n      'width',\n      `${inputWidth}px`,\n      'important'\n    );\n    this.inputState.visible = true;\n  }\n\n  removeInputVisibleStyles() {\n    this.inputEl.nativeElement.style.display = '';\n    this.inputEl.nativeElement.style.position = '';\n    this.inputEl.nativeElement.style.left = '';\n    this.inputEl.nativeElement.style.width = '';\n    this.inputState.visible = false;\n  }\n\n  focusChange() {\n    if (!this.inputState.initial.visible) {\n      this.removeInputVisibleStyles();\n    }\n  }\n\n  calculateInputWidth(): number {\n    const leftPadding = 20;\n    const buttonElement = this.buttonEl.nativeElement;\n    const inputElement = this.inputEl.nativeElement;\n    const rightPosition = buttonElement.getBoundingClientRect().left;\n    const leftPosition = this.searchSettings.parentSelector\n      ? inputElement\n          .closest(this.searchSettings.parentSelector)\n          .getBoundingClientRect().left\n      : 0;\n    return Math.floor(rightPosition - leftPosition - leftPadding);\n  }\n  getClass() {\n    const cls =\n      this.searchSettings && this.searchSettings.size === 'large'\n        ? 'usa-search--big'\n        : 'usa-search--small';\n    return this.searchSettings.dropdown && this.searchSettings.dropdown.inverse\n      ? `${cls} sds-inverse`\n      : cls;\n  }\n  clearInput(ev) {\n    this.inputEl.nativeElement.value = '';\n    this.writeValueToModel();\n  }\n}\n",
             "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "input::-ms-clear {\n    display: none;\n}\n",
+            "styleUrlsData": [
+                {
+                    "data": "input::-ms-clear {\n  display: none;\n}\n\n.suffix-icon {\n  input::-webkit-search-cancel-button {\n    display: none;\n  }\n\n  .close-icon-large {\n    left: -4.5rem;\n  }\n\n  .close-icon {\n    left: -2.5rem;\n  }\n}\n",
+                    "styleUrl": "search.component.scss"
+                }
+            ],
+            "stylesData": "",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -9623,11 +10083,11 @@ const COMPONENTS = {
                 "AfterViewInit",
                 "ControlValueAccessor"
             ],
-            "templateData": "<form class=\"usa-form usa-search\" [ngClass]=\"getClass()\" role=\"search\">\n    <label *ngIf=\"hasDropdown()\" class=\"usa-sr-only\" [attr.for]=\"searchSettings.dropdown.id\">Dropdown label</label>\n    <select *ngIf=\"hasDropdown()\" [value]=\"model.searchCategory? model.searchCategory :''\" #selectEl name=\"search options\" aria-label=\"Search Options\" class=\"usa-select\" [attr.id]=\"searchSettings.dropdown.id\" (change)=\"writeValueToModel()\">\n     <ng-container *ngFor=\"let item of searchSettings.dropdown.options\">\n      <optgroup *ngIf=\"item.group\" label=\"{{item.label}}\">\n        <option *ngFor=\"let child of item.group\" [value]=\"child.value\" [selected]=\"model.searchCategory == child.value\"\n          [disabled]=\"child.disabled\">\n          {{ child.label }}\n        </option>\n      </optgroup>\n      <option *ngIf=\"!item.group\" [value]=\"item.value\" [selected]=\"model.searchCategory == item.value\" [disabled]=\"item.disabled\">{{\n        item.label }}</option>\n    </ng-container>\n  </select>\n    <ng-container *ngIf=\"(searchSettings.dropdown && searchSettings.dropdown.inverse); then inverseTemplate else inputTemplate\">\n    </ng-container>\n</form>\n\n<ng-template #inputTemplate>\n    <label class=\"usa-sr-only\" [attr.for]=\"searchSettings.id\">Search</label>\n    <input #inputEl [value]=\"model.searchText? model.searchText :''\" \n        [ngClass]=\"searchSettings?.inputClass\" [attr.id]=\"searchSettings.id\" type=\"search\" class=\"usa-input\" name=\"search\" \n        [placeholder]=\"searchSettings.placeholder? searchSettings.placeholder : 'type here'\"\n        [attr.aria-label]=\"searchSettings.ariaLabel\"\n        (blur)=\"focusChange()\" (input)=\"writeValueToModel()\" />\n    <button #buttonEl class=\"usa-button\" type=\"submit\" (click)=\"handleClick($event)\">\n    <span class=\"usa-sr-only\">Search</span>\n  </button>\n</ng-template>\n<ng-template #inverseTemplate>\n    <div class=\"sds-inverse__search\">\n        <ng-container [ngTemplateOutlet]=\"inputTemplate\"></ng-container>\n    </div>\n</ng-template>"
+            "templateData": "<form class=\"usa-form usa-search\" [ngClass]=\"getClass()\" role=\"search\">\n  <label *ngIf=\"hasDropdown()\" class=\"usa-sr-only\" [attr.for]=\"searchSettings.dropdown.id\">Dropdown label</label>\n  <select *ngIf=\"hasDropdown()\" [value]=\"model.searchCategory? model.searchCategory :''\" #selectEl name=\"search options\"\n    aria-label=\"Search Options\" class=\"usa-select\" [attr.id]=\"searchSettings.dropdown.id\"\n    (change)=\"writeValueToModel()\">\n    <ng-container *ngFor=\"let item of searchSettings.dropdown.options\">\n      <optgroup *ngIf=\"item.group\" label=\"{{item.label}}\">\n        <option *ngFor=\"let child of item.group\" [value]=\"child.value\" [selected]=\"model.searchCategory == child.value\"\n          [disabled]=\"child.disabled\">\n          {{ child.label }}\n        </option>\n      </optgroup>\n      <option *ngIf=\"!item.group\" [value]=\"item.value\" [selected]=\"model.searchCategory == item.value\"\n        [disabled]=\"item.disabled\">{{\n        item.label }}</option>\n    </ng-container>\n  </select>\n  <ng-container [ngTemplateOutlet]=\"inputTemplate\"></ng-container>\n</form>\n\n<ng-template #inputTemplate>\n\n  <div class=\"position-relative\" [ngClass]=\"{\n  'suffix-icon': searchSettings.isSuffixSearchIcon}\">\n    <label class=\"usa-sr-only\" [attr.for]=\"searchSettings.id\">Search</label>\n    <input #inputEl [value]=\"model.searchText? model.searchText :''\" [ngClass]=\"searchSettings?.inputClass\"\n      [attr.id]=\"searchSettings.id\" type=\"search\" class=\"usa-input width-mobile\" name=\"search\"\n      [placeholder]=\"searchSettings.placeholder? searchSettings.placeholder : 'type here'\"\n      [attr.aria-label]=\"searchSettings.ariaLabel\" (blur)=\"focusChange()\" (input)=\"writeValueToModel()\" />\n\n    <span *ngIf=\"searchSettings.isSuffixSearchIcon\" class=\"position-relative top-1 cursor-pointer\" [ngClass]=\"{'top-2':searchSettings.size === 'large','close-icon-large': searchSettings.size === 'large',\n      'close-icon': !searchSettings.size}\">\n      <span *ngIf=\"model.searchText\" role=\"button\" aria-label=\"Clear input\" (click)=\"clearInput($event)\"\n        (keyup.enter)=\"clearInput($event)\" tabindex=\"0\">\n        <sds-icon [icon]=\"['sds', 'exit']\" [size]=\"searchSettings.size === 'large'?'2x':'1x'\"></sds-icon>\n      </span>\n      <span role=\"button\" aria-label=\"search input\" (click)=\"handleClick($event)\" (keyup.enter)=\"handleClick($event)\"\n        tabindex=\"0\">\n        <sds-icon [icon]=\"['bs', 'search']\" [size]=\"searchSettings.size === 'large'?'2x':'1x'\">\n        </sds-icon>\n      </span>\n    </span>\n    <button *ngIf=\"!searchSettings.isSuffixSearchIcon\" #buttonEl class=\"usa-button\" type=\"submit\" \n      [attr.aria-label]=\"searchSettings.ariaLabel ? searchSettings.ariaLabel : 'Search'\"\n      (click)=\"handleClick($event)\">\n    </button>\n  </div>\n\n</ng-template>\n"
         },
         {
             "name": "SdsSearchResultListComponent",
-            "id": "component-SdsSearchResultListComponent-895f572dcfde0022e4ac1292e2cf8806",
+            "id": "component-SdsSearchResultListComponent-e149396a796efbe17a01ce3efd775daa",
             "file": "libs/packages/components/src/lib/search-result-list/search-result-list.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -9654,7 +10114,7 @@ const COMPONENTS = {
                     "name": "divider",
                     "defaultValue": "true",
                     "description": "<p>Show divider between results</p>\n",
-                    "line": 41
+                    "line": 42
                 },
                 {
                     "name": "model",
@@ -9676,7 +10136,7 @@ const COMPONENTS = {
                     "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "<p>Child Template to be used to display the data for each item in the list of items</p>\n",
-                    "line": 52,
+                    "line": 53,
                     "decorators": [
                         {
                             "name": "ContentChild",
@@ -9703,7 +10163,15 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 54
+                    "line": 55
+                },
+                {
+                    "name": "isTemplate",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 58
                 },
                 {
                     "name": "ngOnInit",
@@ -9711,7 +10179,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 45
+                    "line": 46
                 }
             ],
             "hostBindings": [],
@@ -9719,7 +10187,7 @@ const COMPONENTS = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import {\n  Component,\n  Input,\n  ContentChild,\n  TemplateRef,\n  OnInit\n} from '@angular/core';\nimport { SearchModel } from './model/search-results.model';\nimport { Location } from '@angular/common';\n@Component({\n  selector: 'sds-search-result-list',\n  templateUrl: './search-result-list.component.html',\n  styleUrls: ['./search-result-list.component.scss']\n})\nexport class SdsSearchResultListComponent implements OnInit {\n  public updateModel = new SearchModel();\n  /**\n   * Allow to insert a customized template for no results to use\n   */\n  @Input() customResultsTemplate: TemplateRef<any>;\n\n  initialLoad: boolean;\n  /**\n   * Model for search results\n   */\n  @Input('model')\n  set model(value) {\n    if (Array.isArray(value)) {\n      const items = value;\n      this.updateModel = new SearchModel();\n      this.updateModel.results = items;\n    } else {\n      this.updateModel = value;\n    }\n    if (this.updateModel.results.length > 0) this.initialLoad = false;\n  }\n\n  /**\n   * Show divider between results\n   */\n  @Input() divider = true;\n\n  constructor(private _location: Location) { }\n\n  ngOnInit() {\n    this.initialLoad = true;\n  }\n\n  /**\n   * Child Template to be used to display the data for each item in the list of items\n   */\n  @ContentChild('resultContent') resultContentTemplate: TemplateRef<any>;\n\n  goBack() {\n    this._location.back();\n  }\n}\n",
+            "sourceCode": "import {\n  Component,\n  Input,\n  ContentChild,\n  TemplateRef,\n  OnInit,\n} from '@angular/core';\nimport { SearchModel } from './model/search-results.model';\nimport { Location } from '@angular/common';\n@Component({\n  selector: 'sds-search-result-list',\n  templateUrl: './search-result-list.component.html',\n  styleUrls: ['./search-result-list.component.scss'],\n})\nexport class SdsSearchResultListComponent implements OnInit {\n  public updateModel = new SearchModel();\n  /**\n   * Allow to insert a customized template for no results to use\n   */\n  @Input() customResultsTemplate: TemplateRef<any>;\n\n  initialLoad: boolean;\n  /**\n   * Model for search results\n   */\n  @Input('model')\n  set model(value) {\n    if (Array.isArray(value)) {\n      const items = value;\n      this.updateModel = new SearchModel();\n      this.updateModel.results = items;\n    } else {\n      this.updateModel = value;\n    }\n    if (this.updateModel && this.updateModel.results.length > 0)\n      this.initialLoad = false;\n  }\n\n  /**\n   * Show divider between results\n   */\n  @Input() divider = true;\n\n  constructor(private _location: Location) {}\n\n  ngOnInit() {\n    this.initialLoad = true;\n  }\n\n  /**\n   * Child Template to be used to display the data for each item in the list of items\n   */\n  @ContentChild('resultContent') resultContentTemplate: TemplateRef<any>;\n\n  goBack() {\n    this._location.back();\n  }\n  isTemplate() {\n    if (this.updateModel && this.updateModel.metadata) {\n      return Array.isArray(this.updateModel.metadata.messages);\n    }\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -9737,7 +10205,7 @@ const COMPONENTS = {
                         "type": "Location"
                     }
                 ],
-                "line": 41,
+                "line": 42,
                 "jsdoctags": [
                     {
                         "name": "_location",
@@ -9778,11 +10246,11 @@ const COMPONENTS = {
                     }
                 }
             },
-            "templateData": "<ng-container *ngIf=\"updateModel?.results?.length\">\n  <div *ngFor=\"let item of updateModel.results\">\n    <hr *ngIf=\"divider\" class=\"fine\" />\n    <ng-container *ngTemplateOutlet=\"resultContentTemplate,\n                   context: { $implicit: item }\"></ng-container>\n  </div>\n  <hr *ngIf=\"divider && updateModel?.results?.length\" class=\"fine\" />\n</ng-container>\n\n<ng-container *ngIf=\"(customResultsTemplate && !(updateModel?.results?.length))\"\n  [ngTemplateOutlet]=\"customResultsTemplate\" [ngTemplateOutletContext]=\"{$implicit:updateModel}\">\n</ng-container>\n\n<!-- <ng-container *ngIf=\"(!updateModel?.metadata?.messages && updateModel?.results?.length === 0)\">\n  <div class=\"sds-card sds-card--vertical sds-card--shadowed sds-card--bordered\">\n    This is initial template\n  </div>\n</ng-container> -->\n\n<ng-container *ngIf=\"!customResultsTemplate\">\n  <ng-container\n    *ngIf=\"(updateModel == null || (!updateModel?.metadata?.messages && updateModel?.results?.length === 0))\">\n    <ng-container *ngIf=\"!initialLoad\">\n      <div class=\"sds-card sds-card--vertical sds-card--shadowed sds-card--bordered\">\n        <div class=\"sds-card__header\">\n          <sds-icon [icon]=\"['bs', 'search']\" [size]=\"'5x'\"></sds-icon>\n        </div>\n        <div class=\"sds-card__body margin-2\">\n          <h1 class=\"sds-card__title\">No matches found</h1>\n          <p>We couldn't find a match for your search criteria.</p>\n          <p>Please try another search or go back to previous results.</p>\n          <div class=\"margin-top-3\">\n            <button class=\"usa-button usa-button--outline\" (click)=\"goBack()\">Go Back</button>\n          </div>\n        </div>\n      </div>\n    </ng-container>\n    <ng-container *ngIf=\"initialLoad\">\n      <div class=\"sds-card sds-card--vertical sds-card--shadowed sds-card--bordered\">\n        <div class=\"sds-card__header\">\n          <sds-icon [icon]=\"['bs', 'arrow-left-circle-fill']\" [size]=\"'5x'\"></sds-icon>\n        </div>\n        <div class=\"sds-card__body margin-2\">\n          <h1 class=\"sds-card__title\">Select Criteria</h1>\n          <p>Choose your filters and run your report to begin.</p>\n        </div>\n      </div>\n    </ng-container>\n  </ng-container>\n\n  <ng-container *ngIf=\"updateModel?.metadata?.messages\">\n    <div *ngFor=\"let msg of updateModel.metadata.messages\"\n      class=\"sds-card sds-card--vertical sds-card--shadowed sds-card--bordered\" [ngClass]=\"msg.classes\">\n      <div class=\"sds-card__header\">\n        <sds-icon\n          [icon]=\"(msg.type ==='error') ?  ['sds', 'alert-error'] :( (msg.type ==='info') ? ['bs', 'info-circle'] :( (msg.type ==='initial') ? ['bs', 'arrow-left-circle-fill']: ['bs', 'search']))\"\n          [size]=\"'5x'\">\n        </sds-icon>\n      </div>\n      <div class=\"sds-card__body margin-2\">\n        <h1 class=\"sds-card__title\">{{msg.title}}</h1>\n        <p [innerHTML]=\"msg.message\"></p>\n        <div class=\"sds-card__buttons\">\n          <button *ngFor=\"let button of msg.buttons\" class=\"usa-button\"\n            [ngClass]=\"button.classes ? button.classes : 'usa-button--outline'\" (click)=\"button.action()\">\n            {{button.text}}\n          </button>\n        </div>\n      </div>\n    </div>\n  </ng-container>\n</ng-container>\n"
+            "templateData": "<ng-container *ngIf=\"updateModel?.results?.length\">\n  <div *ngFor=\"let item of updateModel.results\">\n    <hr *ngIf=\"divider\" class=\"fine\" />\n    <ng-container *ngTemplateOutlet=\"resultContentTemplate,\n                   context: { $implicit: item }\"></ng-container>\n  </div>\n  <hr *ngIf=\"divider && updateModel?.results?.length\" class=\"fine\" />\n</ng-container>\n\n<ng-container *ngIf=\"(customResultsTemplate && !(updateModel?.results?.length))\"\n  [ngTemplateOutlet]=\"customResultsTemplate\" [ngTemplateOutletContext]=\"{$implicit:updateModel}\">\n</ng-container>\n\n<!-- <ng-container *ngIf=\"(!updateModel?.metadata?.messages && updateModel?.results?.length === 0)\">\n  <div class=\"sds-card sds-card--vertical sds-card--shadowed sds-card--bordered\">\n    This is initial template\n  </div>\n</ng-container> -->\n<div aria-live=\"polite\" aria-atomic=\"true\">\n  <ng-container *ngIf=\"!customResultsTemplate\">\n    <ng-container\n      *ngIf=\"(updateModel == null || (!updateModel?.metadata?.messages && updateModel?.results?.length === 0))\">\n      <ng-container *ngIf=\"!initialLoad\">\n        <div class=\"sds-card sds-card--vertical sds-card--shadowed sds-card--bordered\">\n          <div class=\"sds-card__header\">\n            <sds-icon [icon]=\"['bs', 'search']\" [size]=\"'5x'\"></sds-icon>\n          </div>\n          <div class=\"sds-card__body margin-2\">\n            <h1 class=\"sds-card__title\">No matches found</h1>\n            <p>We couldn't find a match for your search criteria.</p>\n            <p>Please try another search or go back to previous results.</p>\n            <div class=\"margin-top-3\">\n              <button class=\"usa-button usa-button--outline\" (click)=\"goBack()\">Go Back</button>\n            </div>\n          </div>\n        </div>\n      </ng-container>\n      <ng-container *ngIf=\"initialLoad\">\n        <div class=\"sds-card sds-card--vertical sds-card--shadowed sds-card--bordered\">\n          <div class=\"sds-card__header\">\n            <sds-icon [icon]=\"['bs', 'arrow-left-circle-fill']\" [size]=\"'5x'\"></sds-icon>\n          </div>\n          <div class=\"sds-card__body margin-2\">\n            <h1 class=\"sds-card__title\">Select Criteria</h1>\n            <p>Choose your filters and run your report to begin.</p>\n          </div>\n        </div>\n      </ng-container>\n    </ng-container>\n\n\n    <ng-container *ngIf=\"updateModel?.metadata?.messages\">\n      <ng-container *ngIf=\"!isTemplate()\">\n        <ng-container *ngTemplateOutlet=\"updateModel?.metadata?.messages\"></ng-container>\n      </ng-container>\n      <ng-container *ngIf=\"isTemplate()\">\n        <div *ngFor=\"let msg of updateModel.metadata.messages\" class=\"sds-card sds-card--shadowed sds-card--bordered\"\n          [ngClass]=\"[(msg.type !== 'loading') ? 'sds-card--vertical': '', msg.classes ? msg.classes : '']\">\n          <ng-container *ngIf=\"msg.type !== 'loading' else loading\">\n            <div class=\"sds-card__header\">\n              <sds-icon\n                [icon]=\"(msg.type ==='error') ?  ['sds', 'alert-error'] :( (msg.type ==='info') ? ['bs', 'info-circle'] :( (msg.type ==='initial') ? ['bs', 'arrow-left-circle-fill']: ['bs', 'search']))\"\n                [size]=\"'5x'\">\n              </sds-icon>\n            </div>\n            <div class=\"sds-card__body margin-2\">\n              <h1 class=\"sds-card__title\">{{msg.title}}</h1>\n              <p [innerHTML]=\"msg.message\"></p>\n              <div class=\"sds-card__buttons\">\n                <button *ngFor=\"let button of msg.buttons\" class=\"usa-button\"\n                  [ngClass]=\"button.classes ? button.classes : 'usa-button--outline'\" (click)=\"button.action()\">\n                  {{button.text}}\n                </button>\n              </div>\n            </div>\n          </ng-container>\n        </div>\n      </ng-container>\n    </ng-container>\n  </ng-container>\n</div>\n\n<ng-template #loading>\n  <div class=\"grid-container\">\n    <div class=\"sds-load grid-row\">\n      <div class=\"grid-col-5 sds-load__title\"></div>\n      <div class=\"grid-col-auto sds-load__circle\"></div>\n    </div>\n    <div class=\"sds-load grid-row\">\n      <div class=\"tablet:grid-col-fill sds-load__content\"></div>\n      <div class=\"tablet:grid-col-fill sds-load__content\"></div>\n      <div class=\"tablet:grid-col-2 grid-col sds-load__element\"></div>\n      <div class=\"tablet:grid-col-2 grid-col sds-load__element\"></div>\n    </div>\n  </div>\n</ng-template>\n"
         },
         {
             "name": "SDSSelectedResultComponent",
-            "id": "component-SDSSelectedResultComponent-8d2002694b949b8aedc539e477daa145",
+            "id": "component-SDSSelectedResultComponent-0a1efdd75f52cd417b40d3e192116d1b",
             "file": "libs/packages/components/src/lib/selected-result/selected-result.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -9806,18 +10274,18 @@ const COMPONENTS = {
                 {
                     "name": "configuration",
                     "description": "<p>Configuration for the Selected Results control </p>\n",
-                    "line": 41,
+                    "line": 37,
                     "type": "SDSSelectedResultConfiguration"
                 },
                 {
                     "name": "disabled",
-                    "line": 54,
+                    "line": 50,
                     "type": "boolean"
                 },
                 {
                     "name": "itemTemplate",
                     "description": "<p>Allow to insert a customized template for suggestions to use</p>\n",
-                    "line": 29,
+                    "line": 25,
                     "type": "TemplateRef<any>"
                 }
             ],
@@ -9828,7 +10296,7 @@ const COMPONENTS = {
                     "type": "SDSSelectedItemModel",
                     "optional": false,
                     "description": "<p>The data model that has the selected item</p>\n",
-                    "line": 34,
+                    "line": 30,
                     "modifierKind": [
                         114
                     ]
@@ -9839,7 +10307,7 @@ const COMPONENTS = {
                     "type": "function",
                     "optional": false,
                     "description": "<p>Stored Event for ControlValueAccessor</p>\n",
-                    "line": 46,
+                    "line": 42,
                     "modifierKind": [
                         114
                     ]
@@ -9850,7 +10318,7 @@ const COMPONENTS = {
                     "type": "function",
                     "optional": false,
                     "description": "<p>Stored Event for ControlValueAccessor</p>\n",
-                    "line": 51,
+                    "line": 47,
                     "modifierKind": [
                         114
                     ]
@@ -9872,20 +10340,20 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 92,
+                    "line": 88,
                     "description": "<p>Gets the string value from the specifed properties of an object</p>\n",
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 2464,
-                                "end": 2470,
+                                "pos": 2211,
+                                "end": 2217,
                                 "flags": 0,
                                 "escapedText": "object"
                             },
                             "type": "Object",
                             "tagName": {
-                                "pos": 2458,
-                                "end": 2463,
+                                "pos": 2205,
+                                "end": 2210,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -9893,15 +10361,15 @@ const COMPONENTS = {
                         },
                         {
                             "name": {
-                                "pos": 2484,
-                                "end": 2498,
+                                "pos": 2231,
+                                "end": 2245,
                                 "flags": 0,
                                 "escapedText": "propertyFields"
                             },
                             "type": "string",
                             "tagName": {
-                                "pos": 2478,
-                                "end": 2483,
+                                "pos": 2225,
+                                "end": 2230,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -9920,7 +10388,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 74,
+                    "line": 70,
                     "jsdoctags": [
                         {
                             "name": "fn",
@@ -9942,7 +10410,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 78,
+                    "line": 74,
                     "jsdoctags": [
                         {
                             "name": "fn",
@@ -9964,20 +10432,20 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 60,
+                    "line": 56,
                     "description": "<p>Removes item from the model</p>\n",
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 1758,
-                                "end": 1762,
+                                "pos": 1505,
+                                "end": 1509,
                                 "flags": 0,
                                 "escapedText": "item"
                             },
                             "type": "object",
                             "tagName": {
-                                "pos": 1752,
-                                "end": 1757,
+                                "pos": 1499,
+                                "end": 1504,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -9996,7 +10464,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 82,
+                    "line": 78,
                     "jsdoctags": [
                         {
                             "name": "isDisabled",
@@ -10018,7 +10486,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 68,
+                    "line": 64,
                     "jsdoctags": [
                         {
                             "name": "obj",
@@ -10035,7 +10503,7 @@ const COMPONENTS = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, Input, TemplateRef, forwardRef } from '@angular/core';\nimport { SDSSelectedItemModel } from './models/sds-selectedItem.model';\nimport { SDSSelectedResultConfiguration } from './models/SDSSelectedResultConfiguration';\nimport { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';\nimport { SDSSelectedItemModelHelper } from './models/sds-selected-item-model-helper';\nimport { FaIconLibrary } from '@fortawesome/angular-fontawesome';\nimport { fas } from '@fortawesome/free-solid-svg-icons';\nimport { sds } from '@gsa-sam/sam-styles/src/icons/';\nconst SDS_SelectedResult_VALUE_ACCESSOR: any = {\n  provide: NG_VALUE_ACCESSOR,\n  useExisting: forwardRef(() => SDSSelectedResultComponent),\n  multi: true\n};\n\n@Component({\n  selector: 'sds-selected-result',\n  templateUrl: './selected-result.component.html',\n  styleUrls: ['./selected-result.component.scss'],\n  providers: [SDS_SelectedResult_VALUE_ACCESSOR]\n})\nexport class SDSSelectedResultComponent implements ControlValueAccessor {\n  constructor(library: FaIconLibrary) {\n    library.addIconPacks(fas, sds);\n  }\n\n  /**\n  * Allow to insert a customized template for suggestions to use\n  */\n  @Input() itemTemplate: TemplateRef<any>;\n\n  /**\n   * The data model that has the selected item\n   */\n  public model: SDSSelectedItemModel;\n\n\n  /**\n  * Configuration for the Selected Results control \n  */\n  @Input()\n  public configuration: SDSSelectedResultConfiguration;\n\n  /**\n   * Stored Event for ControlValueAccessor\n   */\n  public onTouchedCallback: () => void = () => null;\n\n  /**\n   * Stored Event for ControlValueAccessor\n   */\n  public propogateChange: (_: any) => void = (_: any) => null;\n\n  @Input()\n  public disabled: boolean;\n\n  /**\n   * Removes item from the model\n   * @param item \n   */\n  removeItem(item: object) {\n    if (!this.disabled) {\n      SDSSelectedItemModelHelper.removeItem(item, this.configuration.primaryKeyField, this.model);\n      this.propogateChange(this.model);\n      this.onTouchedCallback();\n    }\n  }\n\n  writeValue(obj: any): void {\n    if (obj instanceof SDSSelectedItemModel) {\n      this.model = obj as SDSSelectedItemModel;\n    }\n  }\n\n  registerOnChange(fn: any): void {\n    this.propogateChange = fn;\n  }\n\n  registerOnTouched(fn: any): void {\n    this.onTouchedCallback = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n  }\n\n\n  /**\n   * Gets the string value from the specifed properties of an object\n   * @param object \n   * @param propertyFields comma seperated list with periods depth of object\n   */\n  getObjectValue(object: Object, propertyFields: string): string {\n    let value = '';\n    let current = object;\n    let fieldSplit = propertyFields.split(',');\n    for (let i = 0; i < fieldSplit.length; i++) {\n      let fieldValue = fieldSplit[i];\n      let fieldPartSplit = fieldValue.split('.');\n      for (let j = 0; j < fieldPartSplit.length; j++) {\n        let fieldCheckValue = fieldPartSplit[j];\n        if (current) {\n          current = current[fieldCheckValue];\n        }\n      }\n\n      if (current) {\n        value += current.toString() + ' ';\n      }\n      current = object;\n    }\n    return value.trim();\n  }\n\n}\n",
+            "sourceCode": "import { Component, Input, TemplateRef, forwardRef } from '@angular/core';\nimport { SDSSelectedItemModel } from './models/sds-selectedItem.model';\nimport { SDSSelectedResultConfiguration } from './models/SDSSelectedResultConfiguration';\nimport { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';\nimport { SDSSelectedItemModelHelper } from './models/sds-selected-item-model-helper';\n\nconst SDS_SelectedResult_VALUE_ACCESSOR: any = {\n  provide: NG_VALUE_ACCESSOR,\n  useExisting: forwardRef(() => SDSSelectedResultComponent),\n  multi: true\n};\n\n@Component({\n  selector: 'sds-selected-result',\n  templateUrl: './selected-result.component.html',\n  styleUrls: ['./selected-result.component.scss'],\n  providers: [SDS_SelectedResult_VALUE_ACCESSOR]\n})\nexport class SDSSelectedResultComponent implements ControlValueAccessor {\n  \n\n  /**\n  * Allow to insert a customized template for suggestions to use\n  */\n  @Input() itemTemplate: TemplateRef<any>;\n\n  /**\n   * The data model that has the selected item\n   */\n  public model: SDSSelectedItemModel;\n\n\n  /**\n  * Configuration for the Selected Results control \n  */\n  @Input()\n  public configuration: SDSSelectedResultConfiguration;\n\n  /**\n   * Stored Event for ControlValueAccessor\n   */\n  public onTouchedCallback: () => void = () => null;\n\n  /**\n   * Stored Event for ControlValueAccessor\n   */\n  public propogateChange: (_: any) => void = (_: any) => null;\n\n  @Input()\n  public disabled: boolean;\n\n  /**\n   * Removes item from the model\n   * @param item \n   */\n  removeItem(item: object) {\n    if (!this.disabled) {\n      SDSSelectedItemModelHelper.removeItem(item, this.configuration.primaryKeyField, this.model);\n      this.propogateChange(this.model);\n      this.onTouchedCallback();\n    }\n  }\n\n  writeValue(obj: any): void {\n    if (obj instanceof SDSSelectedItemModel) {\n      this.model = obj as SDSSelectedItemModel;\n    }\n  }\n\n  registerOnChange(fn: any): void {\n    this.propogateChange = fn;\n  }\n\n  registerOnTouched(fn: any): void {\n    this.onTouchedCallback = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n  }\n\n\n  /**\n   * Gets the string value from the specifed properties of an object\n   * @param object \n   * @param propertyFields comma seperated list with periods depth of object\n   */\n  getObjectValue(object: Object, propertyFields: string): string {\n    let value = '';\n    let current = object;\n    let fieldSplit = propertyFields.split(',');\n    for (let i = 0; i < fieldSplit.length; i++) {\n      let fieldValue = fieldSplit[i];\n      let fieldPartSplit = fieldValue.split('.');\n      for (let j = 0; j < fieldPartSplit.length; j++) {\n        let fieldCheckValue = fieldPartSplit[j];\n        if (current) {\n          current = current[fieldCheckValue];\n        }\n      }\n\n      if (current) {\n        value += current.toString() + ' ';\n      }\n      current = object;\n    }\n    return value.trim();\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -10044,44 +10512,22 @@ const COMPONENTS = {
                 }
             ],
             "stylesData": "",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "args": [
-                    {
-                        "name": "library",
-                        "type": "FaIconLibrary"
-                    }
-                ],
-                "line": 21,
-                "jsdoctags": [
-                    {
-                        "name": "library",
-                        "type": "FaIconLibrary",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
-            },
             "implements": [
                 "ControlValueAccessor"
             ],
-            "templateData": "<ul\n  *ngIf=\"model\"\n  [attr.aria-label]=\"configuration.labelText + ' results'\"\n  class=\"usa-list usa-list--unstyled sds-autocomplete-selected\"\n  aria-relevant=\"additions\"\n  role=\"listbox\"\n  aria-live=\"polite\"\n>\n  <li role=\"option\" *ngFor=\"let result of model.items; let i = index\">\n    <div\n      class=\"sds-tag sds-tag--chip sds-tag--input\"\n      [ngClass]=\"disabled ? 'sds-tag--disabled' : ''\"\n    >\n      <ng-container\n        *ngIf=\"itemTemplate\"\n        [ngTemplateOutlet]=\"itemTemplate\"\n        [ngTemplateOutletContext]=\"{ $implicit: result }\"\n      >\n      </ng-container>\n      <ng-container *ngIf=\"!itemTemplate\">\n        <div class=\"sds--tag__item\">\n          <div>\n            {{ getObjectValue(result, configuration.primaryTextField) }}\n          </div>\n          <div\n            *ngIf=\"\n              configuration.secondaryTextField &&\n              result[configuration.secondaryTextField]\n            \"\n          >\n            {{ result[configuration.secondaryTextField] }}\n          </div>\n        </div>\n      </ng-container>\n      <button\n        *ngIf=\"!disabled\"\n        [attr.aria-label]=\"\n          'Remove Item ' +\n          getObjectValue(result, configuration.primaryTextField)\n        \"\n        [class.text-base]=\"disabled\"\n        aria-hidden=\"false\"\n        class=\"sds-tag__close\"\n        (click)=\"removeItem(result)\"\n        (keyup.enter)=\"removeItem(result)\"\n      >\n        <fa-icon [icon]=\"['fas', 'times']\" size=\"sm\"></fa-icon>\n      </button>\n    </div>\n  </li>\n</ul>\n"
+            "templateData": "<ul *ngIf=\"model\" [attr.aria-label]=\"configuration.labelText + ' results'\" class=\"usa-list usa-list--unstyled sds-autocomplete-selected\" aria-relevant=\"additions\" role=\"listbox\" aria-live=\"polite\">\n    <li role=\"option\" *ngFor=\"let result of model.items; let i = index\">\n        <div class=\"sds-tag sds-tag--chip sds-tag--input\" [ngClass]=\"disabled ? 'sds-tag--disabled' : ''\">\n            <ng-container *ngIf=\"itemTemplate\" [ngTemplateOutlet]=\"itemTemplate\" [ngTemplateOutletContext]=\"{ $implicit: result }\">\n            </ng-container>\n            <ng-container *ngIf=\"!itemTemplate\">\n                <div class=\"sds--tag__item\">\n                    <div>\n                        {{ getObjectValue(result, configuration.primaryTextField) }}\n                    </div>\n                    <div *ngIf=\"\n              configuration.secondaryTextField &&\n              result[configuration.secondaryTextField]\n            \">\n                        {{ result[configuration.secondaryTextField] }}\n                    </div>\n                </div>\n            </ng-container>\n            <button *ngIf=\"!disabled\" [attr.aria-label]=\"\n          'Remove Item ' +\n          getObjectValue(result, configuration.primaryTextField)\n        \" [class.text-base]=\"disabled\" aria-hidden=\"false\" class=\"sds-tag__close\" (click)=\"removeItem(result)\" (keyup.enter)=\"removeItem(result)\">\n        <sds-icon [icon]=\"['bs', 'exit']\" size=\"2x\"></sds-icon>\n      </button>\n        </div>\n    </li>\n</ul>"
         },
         {
             "name": "SdsSelectionPanelComponent",
-            "id": "component-SdsSelectionPanelComponent-b867fd9aa37e11be68a62a27aef374fa",
-            "file": "libs/packages/components/src/lib/selection-panel/selection-panel.component.ts",
+            "id": "component-SdsSelectionPanelComponent-cc5f4b90a3ee0e68bc91a141fc526344",
+            "file": "libs/packages/components/src/lib/selection-panel/selection-panel-wrapper/selection-panel.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
             "selector": "sds-selection-panel",
-            "styleUrls": [
-                "./selection-panel.component.scss"
-            ],
+            "styleUrls": [],
             "styles": [],
             "templateUrl": [
                 "./selection-panel.component.html"
@@ -10090,103 +10536,128 @@ const COMPONENTS = {
             "inputsClass": [
                 {
                     "name": "currentSelection",
-                    "line": 21,
+                    "description": "<p>Allows users to programatically select panel item. Can also be used\nto select initial panel</p>\n",
+                    "line": 28,
                     "type": "NavigationLink"
                 },
                 {
                     "name": "model",
+                    "description": "<p>Model containing navigation links as well as a selection mode property.\nNavigation mode is implied if no selection mode is passed in</p>\n",
                     "line": 15,
-                    "type": "SideNavigationModel"
+                    "type": "SelectionPanelModel"
                 },
                 {
                     "name": "navigateOnClick",
-                    "defaultValue": "true",
-                    "line": 19
-                },
-                {
-                    "name": "title",
-                    "line": 17,
-                    "type": "string"
+                    "description": "<p>True if users would prefer to navigate on panel selection, false otherwise.\nNavigation feature is not supported on SELECTION mode. On NAVIGATION mode,\nthis is enabled by default</p>\n",
+                    "line": 22,
+                    "type": "boolean"
                 }
             ],
             "outputsClass": [
                 {
                     "name": "panelSelected",
                     "defaultValue": "new EventEmitter<NavigationLink>()",
-                    "line": 23,
+                    "description": "<p>Outputs a NavigationLink item when it is selected from the panel</p>\n",
+                    "line": 33,
                     "type": "EventEmitter"
                 }
             ],
-            "propertiesClass": [
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { NavigationLink } from '../../side-navigation/model/side-navigation-model';\nimport { SelectionPanelModel } from '../model/selection-panel.model';\n\n@Component({\n  selector: 'sds-selection-panel',\n  templateUrl: './selection-panel.component.html',\n})\nexport class SdsSelectionPanelComponent {\n\n  /**\n   * Model containing navigation links as well as a selection mode property.\n   * Navigation mode is implied if no selection mode is passed in\n   */\n  @Input() model: SelectionPanelModel;\n  \n  /**\n   * True if users would prefer to navigate on panel selection, false otherwise.\n   * Navigation feature is not supported on SELECTION mode. On NAVIGATION mode,\n   * this is enabled by default\n   */\n  @Input() navigateOnClick: boolean;\n\n  /**\n   * Allows users to programatically select panel item. Can also be used\n   * to select initial panel\n   */\n  @Input() currentSelection: NavigationLink;\n\n  /**\n   * Outputs a NavigationLink item when it is selected from the panel\n   */\n  @Output() panelSelected = new EventEmitter<NavigationLink>();\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "templateData": "<ng-container *ngIf=\"model.selectionMode && model.selectionMode === 'SELECTION'; else selectionMode\">\n  <sds-selection-panel-selection-mode \n  [model]=\"model\" \n  [currentSelection]=\"currentSelection\"\n  (panelSelected)=\"panelSelected.emit($event)\">\n  </sds-selection-panel-selection-mode>\n</ng-container>\n\n<!-- Default mode if no selectionMode is passed in -->\n<ng-template #selectionMode>\n  <sds-selection-panel-navigation-mode \n  [model]=\"model\" \n  [navigateOnClick]=\"navigateOnClick\" \n  [currentSelection]=\"currentSelection\"\n  (panelSelected)=\"panelSelected.emit($event)\">\n  </sds-selection-panel-navigation-mode>\n</ng-template>"
+        },
+        {
+            "name": "SdsSelectionPanelNavigationModeComponent",
+            "id": "component-SdsSelectionPanelNavigationModeComponent-bf01391abf5bfe68e6912345039a8998",
+            "file": "libs/packages/components/src/lib/selection-panel/navigation-mode/navigation-mode.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "sds-selection-panel-navigation-mode",
+            "styleUrls": [
+                "./navigation-mode.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./navigation-mode.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
                 {
-                    "name": "isTopSection",
+                    "name": "currentSelection",
+                    "line": 17,
+                    "type": "NavigationLink"
+                },
+                {
+                    "name": "model",
+                    "line": 13,
+                    "type": "SelectionPanelModel"
+                },
+                {
+                    "name": "navigateOnClick",
                     "defaultValue": "true",
-                    "type": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 33
-                },
-                {
-                    "name": "mainParentOfCurrentSelection",
-                    "type": "NavigationLink",
-                    "optional": false,
-                    "description": "",
-                    "line": 29
-                },
-                {
-                    "name": "panelBody",
-                    "type": "ElementRef",
-                    "optional": false,
-                    "description": "",
-                    "line": 12,
-                    "decorators": [
-                        {
-                            "name": "ViewChild",
-                            "stringifiedArguments": "'panelBody'"
-                        }
-                    ]
-                },
-                {
-                    "name": "panelExpanded",
-                    "defaultValue": "true",
-                    "type": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 31
-                },
-                {
-                    "name": "panelItemsOnDisplay",
-                    "type": "NavigationLink[]",
-                    "optional": false,
-                    "description": "",
-                    "line": 26
+                    "line": 15
                 }
             ],
+            "outputsClass": [
+                {
+                    "name": "panelSelected",
+                    "defaultValue": "new EventEmitter<NavigationLink>()",
+                    "line": 19,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
             "methodsClass": [
                 {
-                    "name": "ngOnChanges",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 62
-                },
-                {
-                    "name": "onMainPanelHeaderClicked",
+                    "name": "navigateToSelectedItem",
                     "args": [
                         {
-                            "name": "$event",
-                            "type": "MouseEvent"
+                            "name": "selectedPanel",
+                            "type": "NavigationLink"
                         }
                     ],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 72,
+                    "line": 42,
                     "jsdoctags": [
                         {
-                            "name": "$event",
-                            "type": "MouseEvent",
+                            "name": "selectedPanel",
+                            "type": "NavigationLink",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnChanges",
+                    "args": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 36,
+                    "jsdoctags": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges",
                             "tagName": {
                                 "text": "param"
                             }
@@ -10204,32 +10675,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 40,
-                    "jsdoctags": [
-                        {
-                            "name": "panelItem",
-                            "type": "NavigationLink",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "updateSubheader",
-                    "args": [
-                        {
-                            "name": "panelItem",
-                            "type": "NavigationLink"
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 80,
-                    "modifierKind": [
-                        112
-                    ],
+                    "line": 26,
                     "jsdoctags": [
                         {
                             "name": "panelItem",
@@ -10246,12 +10692,12 @@ const COMPONENTS = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, ElementRef, EventEmitter, Input, OnChanges, Output, ViewChild } from '@angular/core';\nimport { ActivatedRoute, NavigationExtras, Router } from '@angular/router';\nimport { NavigationLink, SideNavigationModel } from '../side-navigation/model/side-navigation-model';\n\n@Component({\n  selector: 'sds-selection-panel',\n  templateUrl: './selection-panel.component.html',\n  styleUrls: ['./selection-panel.component.scss'],\n})\nexport class SdsSelectionPanelComponent implements OnChanges {\n\n  @ViewChild('panelBody') panelBody: ElementRef;\n\n  @Input()\n  model: SideNavigationModel;\n\n  @Input() title: string;\n  \n  @Input() navigateOnClick = true;\n\n  @Input() currentSelection: NavigationLink;\n\n  @Output() panelSelected = new EventEmitter<NavigationLink>();\n\n  // list of items currently shown to user\n  panelItemsOnDisplay: NavigationLink[];\n\n\n  mainParentOfCurrentSelection: NavigationLink;\n\n  panelExpanded = true;\n\n  isTopSection = true;\n\n  constructor(\n    private router: Router,\n    private activatedRoute: ActivatedRoute,\n  ) { }\n\n  onPanelItemClick(panelItem: NavigationLink) {\n    this.currentSelection = panelItem;\n    if (panelItem.children) {\n      this.panelItemsOnDisplay = panelItem.children;\n      this.isTopSection = false;\n      this.panelBody.nativeElement.focus();\n    }\n\n    this.updateSubheader(panelItem);\n\n    if (this.navigateOnClick) {\n      const navigationExtras: NavigationExtras = {\n        queryParams: panelItem.queryParams,\n        relativeTo: this.activatedRoute\n      }\n\n      this.router.navigate(['.'], navigationExtras);\n    }\n    \n    this.panelSelected.emit(panelItem);\n  }\n\n  ngOnChanges() {\n    if (this.model) {\n      this.panelItemsOnDisplay = this.model.navigationLinks;\n    }\n\n    if (this.model && this.currentSelection) {\n      this.updateSubheader(this.currentSelection);\n    }\n  }\n\n  onMainPanelHeaderClicked($event: MouseEvent) {\n    this.panelItemsOnDisplay = this.model.navigationLinks;\n    this.currentSelection = this.mainParentOfCurrentSelection;\n    this.isTopSection = true;\n\n    $event.stopPropagation(); // Stop collapsible card from closing\n  }\n\n  private updateSubheader(panelItem: NavigationLink) {\n    const parentLink = this.model.navigationLinks.find(link => link.id === panelItem.id);\n\n    if (parentLink != null) {\n      this.mainParentOfCurrentSelection = parentLink;\n    }\n\n  }\n\n}\n",
+            "sourceCode": "import { Component, ElementRef, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';\nimport { ActivatedRoute, NavigationExtras, Router } from '@angular/router';\nimport { NavigationLink, SideNavigationModel } from '../../side-navigation/model/side-navigation-model';\nimport { SelectionPanelModel } from '../model/selection-panel.model';\n\n@Component({\n  selector: 'sds-selection-panel-navigation-mode',\n  templateUrl: './navigation-mode.component.html',\n  styleUrls: ['./navigation-mode.component.scss'],\n})\nexport class SdsSelectionPanelNavigationModeComponent implements OnChanges {\n\n  @Input() model: SelectionPanelModel;\n  \n  @Input() navigateOnClick = true;\n\n  @Input() currentSelection: NavigationLink;\n\n  @Output() panelSelected = new EventEmitter<NavigationLink>();\n\n  constructor(\n    private router: Router,\n    private activatedRoute: ActivatedRoute,\n  ) { }\n\n  onPanelItemClick(panelItem: NavigationLink) {\n    this.currentSelection = panelItem;\n\n    if (this.navigateOnClick) {\n      this.navigateToSelectedItem(this.currentSelection);\n    }\n\n    this.panelSelected.emit(panelItem);\n  }\n\n  ngOnChanges(changes: SimpleChanges) {\n    if (this.model && this.currentSelection && changes.currentSelection && this.navigateOnClick) {\n      this.navigateToSelectedItem(this.currentSelection);\n    }\n  }\n\n  navigateToSelectedItem(selectedPanel: NavigationLink) {\n    const navigationExtras: NavigationExtras = {\n      queryParams: selectedPanel.queryParams,\n      relativeTo: this.activatedRoute\n    }\n\n    this.router.navigate(['.'], navigationExtras);\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
                     "data": "",
-                    "styleUrl": "./selection-panel.component.scss"
+                    "styleUrl": "./navigation-mode.component.scss"
                 }
             ],
             "stylesData": "",
@@ -10268,7 +10714,7 @@ const COMPONENTS = {
                         "type": "ActivatedRoute"
                     }
                 ],
-                "line": 33,
+                "line": 19,
                 "jsdoctags": [
                     {
                         "name": "router",
@@ -10289,7 +10735,86 @@ const COMPONENTS = {
             "implements": [
                 "OnChanges"
             ],
-            "templateData": "<div class=\"sds-card sds-card--collapsible\" [ngClass]=\"{'sds-card--collapsed': !panelExpanded}\">\n  <div role=\"button\" class=\"sds-card__header sds-card__header--action\" [attr.aria-expanded]=\"panelExpanded\"\n    aria-controls=\"panelBody\" tabindex=\"0\" [attr.aria-label]=\"title\"\n    (click)=\"panelExpanded = !panelExpanded\"\n    (keyup.enter)=\"panelExpanded = !panelExpanded\"\n    >\n    <div class=\"sds-card__title\">{{title}}<br />\n      <span *ngIf=\"mainParentOfCurrentSelection\"\n        role=\"list\"\n        class=\"sds-card__subtitle\"\n        (click)=\"onMainPanelHeaderClicked($event)\"\n        (keyup.enter)=\"onMainPanelHeaderClicked($event)\"\n        [attr.aria-label]=\"mainParentOfCurrentSelection.text + 'Press to navigate back to main list'\"\n        tabindex=\"0\"\n      >\n        {{mainParentOfCurrentSelection.text}}\n      </span>\n    </div>\n\n    <div class=\"sds-card__action sds-card__collapse\"></div>\n  </div>\n  <div class=\"sds-card__body sds-card__body--accent-cool\" id=\"panelBody\" #panelBody tabindex=\"-1\">\n    <ul class=\"usa-sidenav\" \n      [ngClass]=\"{'usa-sidenav--styled': isTopSection, 'sds-list sds-list--subdomain': !isTopSection}\">\n      <li *ngFor=\"let panelItem of panelItemsOnDisplay\" class=\"usa-sidenav__item\"\n        [ngClass]=\"{'usa-current': isTopSection && currentSelection && panelItem.id === currentSelection.id}\">\n        <a href=\"javascript:void(0);\" \n          [ngClass]=\"{\n            'text-secondary': !isTopSection && (!currentSelection || panelItem.id != currentSelection.id), \n            'usa-link usa-link--active': !isTopSection && currentSelection && panelItem.id === currentSelection.id\n          }\"\n          (click)=\"onPanelItemClick(panelItem)\">\n          {{panelItem.text}}</a>\n      </li>\n    </ul>\n  </div>\n</div>"
+            "templateData": "\n<ul class=\"usa-sidenav usa-sidenav--styled\">\n  <li *ngFor=\"let panelItem of model.navigationLinks\">\n    <ng-container [ngTemplateOutlet]=\"subPanelTemplate\" [ngTemplateOutletContext]=\"{$implicit:panelItem}\">\n    </ng-container>\n  </li>\n</ul>\n\n<ng-template #subPanelTemplate let-panelItem>\n  <a href=\"javascript:void(0);\" class=\"usa-sidenav__item\" (click)=\"onPanelItemClick(panelItem)\" [ngClass]=\"{'usa-current': currentSelection && panelItem.id === currentSelection.id}\">{{panelItem.text}}</a>\n  <ul *ngIf=\"panelItem.children\" class=\"usa-sidenav__sublist\">\n    <li *ngFor=\"let panelItem of panelItem.children\">\n      <ng-container [ngTemplateOutlet]=\"subPanelTemplate\" [ngTemplateOutletContext]=\"{$implicit:panelItem}\">\n      </ng-container>\n    </li>\n  </ul>\n</ng-template>\n"
+        },
+        {
+            "name": "SdsSelectionPanelSelectionModeComponent",
+            "id": "component-SdsSelectionPanelSelectionModeComponent-66aceb6dec71b4bbec7201122a25ce74",
+            "file": "libs/packages/components/src/lib/selection-panel/selection-mode/selection-mode.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "sds-selection-panel-selection-mode",
+            "styleUrls": [
+                "./selection-mode.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./selection-mode.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "currentSelection",
+                    "line": 14,
+                    "type": "NavigationLink"
+                },
+                {
+                    "name": "model",
+                    "line": 12,
+                    "type": "SideNavigationModel"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "panelSelected",
+                    "defaultValue": "new EventEmitter<NavigationLink>()",
+                    "line": 16,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "onPanelItemClick",
+                    "args": [
+                        {
+                            "name": "panelItem",
+                            "type": "NavigationLink"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 18,
+                    "jsdoctags": [
+                        {
+                            "name": "panelItem",
+                            "type": "NavigationLink",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { NavigationLink, SideNavigationModel } from '../..//side-navigation/model/side-navigation-model';\n\n@Component({\n  selector: 'sds-selection-panel-selection-mode',\n  templateUrl: './selection-mode.component.html',\n  styleUrls: ['./selection-mode.component.scss'],\n})\nexport class SdsSelectionPanelSelectionModeComponent {\n\n  @Input()\n  model: SideNavigationModel;\n  \n  @Input() currentSelection: NavigationLink;\n\n  @Output() panelSelected = new EventEmitter<NavigationLink>();\n\n  onPanelItemClick(panelItem: NavigationLink) {\n    this.currentSelection = panelItem;\n    this.panelSelected.emit(panelItem);\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./selection-mode.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<ul class=\"usa-sidenav usa-sidenav--styled\">\n  <li *ngFor=\"let panelItem of model.navigationLinks\" class=\"usa-sidenav__item\"\n    [ngClass]=\"{'usa-current': currentSelection && panelItem.id === currentSelection.id}\">\n    <a href=\"javascript:void(0);\" (click)=\"onPanelItemClick(panelItem)\">{{panelItem.text}}</a>\n  </li>\n</ul>\n"
         },
         {
             "name": "SdsSideNavigationComponent",
@@ -10692,6 +11217,78 @@ const COMPONENTS = {
             "templateData": "<nav>\n  <ul class=\"usa-sidenav\">\n    <li *ngFor=\"let link of model.navigationLinks\" class=\"sidenav__item\">\n      <ng-container [ngTemplateOutlet]=\"sideNavLinkTemplate\" [ngTemplateOutletContext]=\"{$implicit:link}\">\n      </ng-container>\n    </li>\n  </ul>\n</nav>\n\n<ng-template #sideNavLinkTemplate let-link>\n  <ng-container [ngTemplateOutlet]=\"getItemTemplate(link)\" [ngTemplateOutletContext]=\"{$implicit:link}\">\n  </ng-container>\n  <ul *ngIf=\"link.children\" class=\"usa-sidenav__sublist\">\n    <li *ngFor=\"let link of link.children\" class=\"sidenav__item\">\n      <ng-container [ngTemplateOutlet]=\"sideNavLinkTemplate\" [ngTemplateOutletContext]=\"{$implicit:link}\">\n      </ng-container>\n    </li>\n  </ul>\n</ng-template>\n\n<ng-template #sideNavRouteLinkTemplate let-link>\n  <a [attr.class]=\"link.selected ? ' usa-current' : ''\" [routerLink]=\"[link.route]\" (click)=\"linkClickEvent(link)\"\n    [queryParams]=\"link.queryParams\" \n    [queryParamsHandling]=\"link.queryParamsHandling\">\n      <span>{{link.text}}</span>\n  </a>\n</ng-template>\n\n<ng-template #sideNavHREFLinkTemplate let-link>\n  <a [attr.class]=\"link.selected ? ' usa-current' : ''\" [attr.href]=\"urlBuilder(link)\"\n    (click)=\"linkClickEvent(link)\"><span>{{link.text}}</span></a>\n</ng-template>\n\n<ng-template #sideNavLabelLinkTemplate let-link>\n  <span [attr.class]=\"link.selected ? ' usa-current' : ''\"><span>{{link.text}}</span></span>\n</ng-template>\n\n<ng-template #sideNavEVENTLinkTemplate let-link>\n  <a [attr.class]=\"link.selected ? ' usa-current' : ''\" href=\"javascript:void(0)\"\n    (click)=\"linkClickEvent(link)\"><span>{{link.text}}</span></a>\n</ng-template>\n"
         },
         {
+            "name": "SdsSubPanelComponent",
+            "id": "component-SdsSubPanelComponent-a1e8fb4448d6596f6f3e57389e2c5d33",
+            "file": "libs/packages/components/src/lib/selection-panel/sub-panel/sub-panel.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "sds-sub-panel",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./sub-panel.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "currentSelection",
+                    "line": 11,
+                    "type": "NavigationLink"
+                },
+                {
+                    "name": "model",
+                    "line": 9,
+                    "type": "NavigationLink[]"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "subPanelClicked",
+                    "defaultValue": "new EventEmitter<NavigationLink>()",
+                    "line": 13,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "onSubPanelItemClicked",
+                    "args": [
+                        {
+                            "name": "item",
+                            "type": "NavigationLink"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 15,
+                    "jsdoctags": [
+                        {
+                            "name": "item",
+                            "type": "NavigationLink",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from \"@angular/core\";\nimport { NavigationLink, SideNavigationModel } from \"../../side-navigation/model/side-navigation-model\";\n\n@Component({\n  selector: `sds-sub-panel`,\n  templateUrl: './sub-panel.component.html'\n})\nexport class SdsSubPanelComponent {\n  @Input() model: NavigationLink[];\n\n  @Input() currentSelection: NavigationLink;\n\n  @Output() subPanelClicked = new EventEmitter<NavigationLink>();\n\n  onSubPanelItemClicked(item: NavigationLink) {\n    this.currentSelection = item;\n    this.subPanelClicked.emit(item);\n  }\n\n}",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "templateData": "\n<ul class=\"usa-sidenav sds-list\">\n  <li *ngFor=\"let panelItem of model\" class=\"usa-sidenav__item\">\n    <ng-container [ngTemplateOutlet]=\"subPanelTemplate\" [ngTemplateOutletContext]=\"{$implicit:panelItem}\">\n    </ng-container>\n  </li>\n</ul>\n\n<ng-template #subPanelTemplate let-panelItem>\n  <a href=\"javascript:void(0);\" \n  [ngClass]=\"{\n    'text-secondary': !currentSelection || panelItem.id != currentSelection.id, \n    'usa-link usa-link--active': currentSelection && panelItem.id === currentSelection.id\n  }\"\n  (click)=\"onSubPanelItemClicked(panelItem)\">\n  {{panelItem.text}}</a>\n  <ul *ngIf=\"panelItem.children\" class=\"usa-sidenav__sublist\">\n    <li *ngFor=\"let panelItem of panelItem.children\" class=\"sidenav__item\">\n      <ng-container [ngTemplateOutlet]=\"subPanelTemplate\" [ngTemplateOutletContext]=\"{$implicit:panelItem}\">\n      </ng-container>\n    </li>\n  </ul>\n</ng-template>\n"
+        },
+        {
             "name": "SdsTextChildComponent",
             "id": "component-SdsTextChildComponent-c11eaf163618dec5897ac362ed360fc2",
             "file": "libs/packages/components/src/lib/text/child.component.ts",
@@ -10987,7 +11584,7 @@ const COMPONENTS = {
         },
         {
             "name": "SdsToastComponent",
-            "id": "component-SdsToastComponent-eeea10d830c80312bbf523a1d18ceb05",
+            "id": "component-SdsToastComponent-4db48e83ca4a24099417ef153b05e8e9",
             "file": "libs/packages/components/src/lib/toast/toast-single.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -11049,7 +11646,7 @@ const COMPONENTS = {
                         }
                     ],
                     "optional": false,
-                    "returnType": "\"check-circle\" | \"alert-info\" | \"alert-warning\" | \"alert-error\"",
+                    "returnType": "\"check2-circle\" | \"info-circle\" | \"exclamation-triangle\" | \"slash-circle\"",
                     "typeParameters": [],
                     "line": 58,
                     "jsdoctags": [
@@ -11090,7 +11687,7 @@ const COMPONENTS = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import {\n    animate,\n    keyframes,\n    state,\n    style,\n    transition,\n    trigger\n  } from '@angular/animations';\n  import { Component } from '@angular/core';\n  \n  import { Toast, ToastrService, ToastPackage } from 'ngx-toastr';\n\n  \n  @Component({\n    selector: 'sds-toast',\n    styles: [`\n    :host {\n      position: relative;\n    }\n    \n  `],\n  templateUrl: './toast-single.component.html',\n  animations: [\n    trigger('flyInOut', [\n      state('inactive', style({ opacity: 0 })),\n      state('active', style({ opacity: 1 })),\n      state('removed', style({ opacity: 0 })),\n      transition(\n        'inactive => active',\n        animate('{{ easeTime }}ms {{ easing }}')\n      ),\n      transition(\n        'active => removed',\n        animate('{{ easeTime }}ms {{ easing }}')\n      )\n    ])\n  ],\n \n    preserveWhitespaces: false,\n  })\n  export class SdsToastComponent extends Toast {\n\n    constructor(\n      protected toastrService: ToastrService,\n      public toastPackage: ToastPackage\n    ) {\n      super(toastrService, toastPackage);\n  \n    }\n  \n    action(event: Event) {\n      event.stopPropagation();\n      this.toastPackage.triggerAction();\n      return false;\n    }\n\n    getIcon(toastType) {\n      switch (toastType) {\n        case \"sds-toast--success\": return 'check-circle';\n        case \"sds-toast--info\": return 'alert-info';\n        case \"sds-toast--warning\": return 'alert-warning';\n        case \"sds-toast--error\": return 'alert-error';\n        default: return 'alert-info';\n      }\n    }\n    getToastSr(toastType) {\n      switch (toastType) {\n        case \"sds-toast--success\": return 'Success';\n        case \"sds-toast--info\": return 'Info';\n        case \"sds-toast--warning\": return 'Warning';\n        case \"sds-toast--error\": return 'Error';\n        default: return 'Info';\n      }\n    }\n\n  }\n  ",
+            "sourceCode": "import {\n    animate,\n    keyframes,\n    state,\n    style,\n    transition,\n    trigger\n  } from '@angular/animations';\n  import { Component } from '@angular/core';\n  \n  import { Toast, ToastrService, ToastPackage } from 'ngx-toastr';\n\n  \n  @Component({\n    selector: 'sds-toast',\n    styles: [`\n    :host {\n      position: relative;\n    }\n    \n  `],\n  templateUrl: './toast-single.component.html',\n  animations: [\n    trigger('flyInOut', [\n      state('inactive', style({ opacity: 0 })),\n      state('active', style({ opacity: 1 })),\n      state('removed', style({ opacity: 0 })),\n      transition(\n        'inactive => active',\n        animate('{{ easeTime }}ms {{ easing }}')\n      ),\n      transition(\n        'active => removed',\n        animate('{{ easeTime }}ms {{ easing }}')\n      )\n    ])\n  ],\n \n    preserveWhitespaces: false,\n  })\n  export class SdsToastComponent extends Toast {\n\n    constructor(\n      protected toastrService: ToastrService,\n      public toastPackage: ToastPackage\n    ) {\n      super(toastrService, toastPackage);\n  \n    }\n  \n    action(event: Event) {\n      event.stopPropagation();\n      this.toastPackage.triggerAction();\n      return false;\n    }\n\n    getIcon(toastType) {\n      switch (toastType) {\n        case \"sds-toast--success\": return 'check2-circle';\n        case \"sds-toast--info\": return 'info-circle';\n        case \"sds-toast--warning\": return 'exclamation-triangle';\n        case \"sds-toast--error\": return 'slash-circle';\n        default: return 'info-circle';\n      }\n    }\n    getToastSr(toastType) {\n      switch (toastType) {\n        case \"sds-toast--success\": return 'Success';\n        case \"sds-toast--info\": return 'Info';\n        case \"sds-toast--warning\": return 'Warning';\n        case \"sds-toast--error\": return 'Error';\n        default: return 'Info';\n      }\n    }\n\n  }\n  ",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "\n    :host {\n      position: relative;\n    }\n    \n  \n",
@@ -11127,7 +11724,7 @@ const COMPONENTS = {
                 ]
             },
             "extends": "Toast",
-            "templateData": "\n    <div class=\"sds-toast__content\" role=\"alert\" aria-live=\"assertive\">\n        <div class=\"sr-only sr-only-focusable\">{{getToastSr(toastPackage.toastType)}}</div>\n        <div class=\"sds-toast__content__icon\">\n            <fa-icon [icon]=\"['sds', getIcon(toastPackage.toastType)]\"  size=\"2x\"></fa-icon>\n        </div>\n        <span class=\"sds-toast__content__text\">{{message}}</span>\n        <div *ngIf=\"!options.closeButton\" class=\"sds-toast__content__close\" (click)=\"remove()\">\n      \n            <svg class=\"svg-inline--fa fa-times fa-w-11 fa-fw\" aria-hidden=\"true\" focusable=\"false\" data-prefix=\"fas\" data-icon=\"times\" role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 352 512\" data-fa-i2svg=\"\">\n                <path fill=\"currentColor\" d=\"M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z\"></path>\n            </svg>\n        </div>\n    </div>\n"
+            "templateData": "\n    <div class=\"sds-toast__content\" role=\"alert\" aria-live=\"assertive\">\n        <div class=\"sr-only sr-only-focusable\">{{getToastSr(toastPackage.toastType)}}</div>\n        <div class=\"sds-toast__content__icon\">\n            <sds-icon [icon]=\"['bs', getIcon(toastPackage.toastType)]\"  size=\"2x\"></sds-icon>\n        </div>\n        <span class=\"sds-toast__content__text\">{{message}}</span>\n        <div *ngIf=\"!options.closeButton\" class=\"sds-toast__content__close\" (click)=\"remove()\">\n      \n            <svg class=\"svg-inline--fa fa-times fa-w-11 fa-fw\" aria-hidden=\"true\" focusable=\"false\" data-prefix=\"fas\" data-icon=\"times\" role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 352 512\" data-fa-i2svg=\"\">\n                <path fill=\"currentColor\" d=\"M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z\"></path>\n            </svg>\n        </div>\n    </div>\n"
         },
         {
             "name": "SdsToolbarComponent",
@@ -11598,7 +12195,7 @@ const COMPONENTS = {
         },
         {
             "name": "SdsVideoPlayerComponent",
-            "id": "component-SdsVideoPlayerComponent-630c9e0ff7d8166c732c26d489786df8",
+            "id": "component-SdsVideoPlayerComponent-937e6d0c4279f2320a2f0ab602d8f0a4",
             "file": "libs/packages/components/src/lib/video-player/video-player.component.ts",
             "encapsulation": [
                 "ViewEncapsulation.None"
@@ -11661,7 +12258,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 32
+                    "line": 38
                 }
             ],
             "hostBindings": [],
@@ -11669,11 +12266,11 @@ const COMPONENTS = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component,ViewChild, Input,ElementRef, AfterViewInit, ViewEncapsulation } from '@angular/core';\nimport { GLOBAL_STRINGS } from 'accessible-html5-video-player/js/strings.js';\nimport * as InitPxVideo from 'accessible-html5-video-player/js/px-video.js';\nimport { VPInterface } from './video-player';\n\ninterface InitPxVideoConfig {\n  \"videoId\": string,\n  \"captionsOnDefault\": boolean,\n  \"seekInterval\": number,\n  \"videoTitle\": string,\n  \"debug\": boolean\n}\n\ndeclare const GLOBAL_STRINGS: any;\n\ndeclare class InitPxVideo {\n  constructor(config: InitPxVideoConfig);\n}\n\n@Component({\n  selector: 'sds-video-player',\n  templateUrl: './video-player.component.html',\n  styleUrls: ['./css/px-video.css'],\n  encapsulation: ViewEncapsulation.None\n})\nexport class SdsVideoPlayerComponent implements AfterViewInit {\n  @Input() VPConfiguration: VPInterface;\n  @ViewChild('video') video: ElementRef;\n  private config: InitPxVideoConfig;\n\n  @Input() crossorigin = \"\";\n  ngAfterViewInit() {\n    if (this.crossorigin) {\n      const id = document.getElementById('videoPlayer');\n      id.setAttribute('crossorigin', this.crossorigin);\n    }\n    this.config = {\n      videoId: this.VPConfiguration.id,\n      captionsOnDefault: false,\n      seekInterval: this.VPConfiguration.seekInterval,\n      videoTitle: 'Video Player',\n      debug: this.VPConfiguration.debug\n    }\n\n    new InitPxVideo(this.config);\n    this.video.nativeElement.setAttribute(\"style\", \"width:\"+this.VPConfiguration.width+\";\");\n    \n  }\n\n  constructor() {\n}\n\n}\n",
+            "sourceCode": "import { Component,ViewChild, Input,ElementRef, AfterViewInit, ViewEncapsulation, Renderer2 } from '@angular/core';\nimport { GLOBAL_STRINGS } from 'accessible-html5-video-player/js/strings.js';\nimport * as InitPxVideo from 'accessible-html5-video-player/js/px-video.js';\nimport { VPInterface } from './video-player';\n\ninterface InitPxVideoConfig {\n  \"videoId\": string,\n  \"captionsOnDefault\": boolean,\n  \"seekInterval\": number,\n  \"videoTitle\": string,\n  \"debug\": boolean\n}\n\ndeclare const GLOBAL_STRINGS: any;\n\ndeclare class InitPxVideo {\n  constructor(config: InitPxVideoConfig);\n}\n\n@Component({\n  selector: 'sds-video-player',\n  templateUrl: './video-player.component.html',\n  styleUrls: ['./css/px-video.css'],\n  encapsulation: ViewEncapsulation.None\n})\nexport class SdsVideoPlayerComponent implements AfterViewInit {\n  @Input() VPConfiguration: VPInterface;\n  @ViewChild('video') video: ElementRef;\n  private config: InitPxVideoConfig;\n\n  @Input() crossorigin = \"\";\n\n  constructor(\n    private elementRef: ElementRef,\n    private renderer2: Renderer2,\n  ) {}\n\n  ngAfterViewInit() {\n    if (this.crossorigin) {\n      const id = document.getElementById('videoPlayer');\n      id.setAttribute('crossorigin', this.crossorigin);\n    }\n    this.config = {\n      videoId: this.VPConfiguration.id,\n      captionsOnDefault: false,\n      seekInterval: this.VPConfiguration.seekInterval,\n      videoTitle: 'Video Player',\n      debug: this.VPConfiguration.debug\n    }\n\n    new InitPxVideo(this.config);\n    this.video.nativeElement.setAttribute(\"style\", \"width:\"+this.VPConfiguration.width+\";\");\n\n    const progressElement: HTMLProgressElement= this.elementRef.nativeElement.querySelector('progress');\n\n    this.renderer2.setAttribute(progressElement, 'aria-label', this.VPConfiguration.description + ' progress bar');\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "/* utilities */\n.pull-left {\n  float: left;\n}\n.sr-only {\n  position: absolute !important;\n  clip: rect(1px, 1px, 1px, 1px);\n  padding: 0 !important;\n  border: 0 !important;\n  height: 1px !important;\n  width: 1px !important;\n  overflow: hidden;\n}\n.hide {\n  display: none;\n}\n.show-inline {\n  display: inline-block;\n}\n\n/* containers */\n.px-video-img-captions-container * {\n  box-sizing: border-box;\n}\n\n.px-video-img-captions-container {\n  position: relative;\n}\n\n/* progress indicator */\n.px-video-progress {\n  width: 100%;\n  height: 10px;\n}\n.px-video-progress[value] {\n  /* Reset the default appearance */\n  -webkit-appearance: none;\n  border: none;\n}\n.px-video-progress[value]::-webkit-progress-bar {\n  background-color: #e6e6e6;\n}\n.px-video-progress[value]::-webkit-progress-value {\n  background-color: #009cdf;\n}\n\n/* time */\n.px-video-time {\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  float: right;\n  margin-top: 2px;\n  font-size: 14px;\n}\n\n/* caption area */\n.px-video-captions {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  padding: 0.5em;\n  min-height: 2.5em;\n  background-color: #000;\n  color: #fff;\n  font-size: 1.1em;\n  text-align: center;\n  opacity: 0.75;\n}\n\n/* buttons */\n.px-video-controls button {\n  border: 1px #fff solid;\n  background: transparent;\n  padding: 0;\n  margin: 0 5px;\n  width: 25px;\n  height: 20px;\n  overflow: hidden;\n  background: no-repeat url(\"./px-video-sprite.svg\");\n}\n.px-video-controls button:focus {\n  border: 1px #999 dotted;\n  outline: none;\n}\n.px-video-controls button {\n  cursor: pointer;\n}\n\n/* restart button */\n.px-video-controls button.px-video-restart {\n  background-position: -6px -333px;\n  margin-left: 0;\n}\n.px-video-controls button.px-video-restart:hover,\n.px-video-controls button.px-video-restart:focus {\n  background-position: -6px -297px;\n}\n\n/* rewind button */\n.px-video-controls button.px-video-rewind {\n  background-position: -6px -189px;\n}\n.px-video-controls button.px-video-rewind:hover,\n.px-video-controls button.px-video-rewind:focus {\n  background-position: -6px -153px;\n}\n\n/* play button */\n.px-video-controls button.px-video-play {\n  background-position: -6px -45px;\n}\n.px-video-controls button.px-video-play:hover,\n.px-video-controls button.px-video-play:focus {\n  background-position: -6px -9px;\n}\n\n/* pause button */\n.px-video-controls button.px-video-pause {\n  background-position: -6px -117px;\n}\n.px-video-controls button.px-video-pause:hover,\n.px-video-controls button.px-video-pause:focus {\n  background-position: -6px -81px;\n}\n\n/* forward button */\n.px-video-controls button.px-video-forward {\n  background-position: -6px -261px;\n}\n.px-video-controls button.px-video-forward:hover,\n.px-video-controls button.px-video-forward:focus {\n  background-position: -6px -225px;\n}\n\n.px-video-fullscreen-btn-container label {\n  display: inline-block;\n  width: 25px;\n  height: 20px;\n  margin-left: 10px;\n  background: no-repeat url(\"./px-video-sprite.svg\");\n  background-position: -6px -907px;\n}\n.px-video-fullscreen-btn-container input[type=\"checkbox\"]:focus + label {\n  outline: 1px #999 dotted;\n  background-position: -6px -943px;\n}\n.px-video-fullscreen-btn-container input[type=\"checkbox\"]:hover + label {\n  background-position: -6px -943px;\n  cursor: pointer;\n}\n.px-video-fullscreen-btn-container input[type=\"checkbox\"]:focus + label {\n  outline: 1px #999 dotted;\n  background-position: -6px -943px;\n}\n.px-video-fullscreen-btn-container input[type=\"checkbox\"]:checked + label {\n  background-position: -6px -979px;\n}\n.px-video-fullscreen-btn-container\n  input[type=\"checkbox\"]:checked:hover\n  + label {\n  background-position: -6px -1015px;\n}\n\n/* captions button */\n.px-video-captions-btn-container label {\n  display: inline-block;\n  width: 25px;\n  height: 20px;\n  margin-left: 10px;\n  background: no-repeat url(\"./px-video-sprite.svg\");\n  background-position: -6px -835px;\n}\n.px-video-captions-btn-container input[type=\"checkbox\"]:focus + label {\n  outline: 1px #999 dotted;\n  background-position: -6px -799px;\n}\n.px-video-captions-btn-container input[type=\"checkbox\"]:hover + label {\n  background-position: -6px -799px;\n  cursor: pointer;\n}\n.px-video-captions-btn-container input[type=\"checkbox\"]:focus + label {\n  outline: 1px #999 dotted;\n  background-position: -6px -799px;\n}\n.px-video-captions-btn-container input[type=\"checkbox\"]:checked + label {\n  background-position: -6px -871px;\n}\n\n/* mute button */\n.px-video-mute-btn-container label {\n  display: inline-block;\n  width: 25px;\n  height: 20px;\n  margin-left: 240px;\n  margin-top: 2px;\n  background: no-repeat url(\"./px-video-sprite.svg\");\n  background-position: -6px -476px;\n}\n.px-video-mute-btn-container input[type=\"checkbox\"]:focus + label {\n  outline: 1px #999 dotted;\n  background-position: -6px -440px;\n}\n.px-video-mute-btn-container input[type=\"checkbox\"]:hover + label {\n  background-position: -6px -440px;\n  cursor: pointer;\n}\n.px-video-mute-btn-container input[type=\"checkbox\"]:focus + label {\n  outline: 1px #999 dotted;\n  background-position: -6px -440px;\n}\n/* checked state of mute button */\n.px-video-mute-btn-container input[type=\"checkbox\"]:checked + label {\n  background-position: -6px -692px;\n}\n.px-video-mute-btn-container input[type=\"checkbox\"]:checked:hover + label,\n.px-video-mute-btn-container input[type=\"checkbox\"]:checked:focus + label {\n  background-position: -6px -656px;\n}\n\n/* volume range input */\n.px-video-controls input[type=\"range\"] {\n  -webkit-appearance: none;\n  height: 6px;\n  width: 100px;\n  margin-top: 8px;\n  background-color: #e6e6e6;\n  outline: none;\n}\n.px-video-controls input[type=\"range\"]:focus::-webkit-slider-thumb {\n  outline: 1px #999 dotted;\n}\n.px-video-controls input[type=\"range\"]::-moz-range-track {\n  -moz-appearance: none;\n  height: 6px;\n  background-color: #e6e6e6;\n  border: none;\n}\n.px-video-controls input[type=\"range\"]::-webkit-slider-thumb {\n  -webkit-appearance: none !important;\n  height: 10px;\n  width: 6px;\n  background-color: #666;\n}\n.px-video-controls input[type=\"range\"]::-moz-range-thumb {\n  height: 12px;\n  width: 8px;\n  background-color: #666;\n}\n/* fixing display for IE10+ */\n@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {\n  .px-video-controls input[type=\"range\"] {\n    position: relative;\n    padding: 0;\n    height: 8px;\n    top: -3px;\n  }\n  .px-video-time {\n    margin-top: 4px;\n  }\n  .px-video-captions {\n    padding: 8px;\n    min-height: 36px;\n  }\n}\n\n.px-video-container {\n  position: relative;\n  min-width: 200px;\n}\n#videoPlayer{\n  min-width: 200px;\n}\n.px-video-container.fullscreen {\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  -webkit-cursor-visibility: auto-hide;\n}\n\n/* Fullscreen styles */\n\n/* style applied through js */\n.px-video-controls.js-fullscreen-controls {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  z-index: 940;\n  background: white;\n}\n\n.px-video-captions.js-fullscreen-captions {\n  min-height: 3.5em;\n  font-size: 2.5em;\n  padding: 1em;\n}\n\n.px-timetip {\n  padding: 5px 10px;\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  font-size: 14px;\n  background: rgba(0, 0, 0, 0.83);\n  border-radius: 3px;\n  color: #fff;\n  width: auto;\n}\n.px-timetip:after {\n  top: 100%;\n  left: 50%;\n  border: solid transparent;\n  content: \" \";\n  height: 0;\n  width: 0;\n  position: absolute;\n  pointer-events: none;\n  border-color: rgba(43, 43, 43, 0);\n  border-top-color: #2b2b2b;\n  border-width: 10px;\n  margin-left: -10px;\n}\n",
+                    "data": "/* utilities */\n.pull-left {\n  float: left;\n}\n.sr-only {\n  position: absolute !important;\n  clip: rect(1px, 1px, 1px, 1px);\n  padding: 0 !important;\n  border: 0 !important;\n  height: 1px !important;\n  width: 1px !important;\n  overflow: hidden;\n}\n.hide {\n  display: none;\n}\n.show-inline {\n  display: inline-block;\n}\n\n/* containers */\n.px-video-img-captions-container * {\n  box-sizing: border-box;\n}\n\n.px-video-img-captions-container {\n  position: relative;\n}\n\n/* progress indicator */\n.px-video-progress {\n  width: 100%;\n  height: 10px;\n  cursor: pointer;\n}\n.px-video-progress[value] {\n  /* Reset the default appearance */\n  -webkit-appearance: none;\n  border: none;\n}\n.px-video-progress[value]::-webkit-progress-bar {\n  background-color: #e6e6e6;\n}\n.px-video-progress[value]::-webkit-progress-value {\n  background-color: #009cdf;\n}\n\n/* time */\n.px-video-time {\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  float: right;\n  margin-top: 2px;\n  font-size: 14px;\n}\n\n/* caption area */\n.px-video-captions {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  padding: 0.5em;\n  min-height: 2.5em;\n  background-color: #000;\n  color: #fff;\n  font-size: 1.1em;\n  text-align: center;\n  opacity: 0.75;\n}\n\n/* buttons */\n.px-video-controls button {\n  border: 1px #fff solid;\n  background: transparent;\n  padding: 0;\n  margin: 0 5px;\n  width: 25px;\n  height: 20px;\n  overflow: hidden;\n  background: no-repeat url(\"./px-video-sprite.svg\");\n}\n.px-video-controls button:focus {\n  border: 1px #999 dotted;\n  outline: none;\n}\n.px-video-controls button {\n  cursor: pointer;\n}\n\n/* restart button */\n.px-video-controls button.px-video-restart {\n  background-position: -6px -333px;\n  margin-left: 0;\n}\n.px-video-controls button.px-video-restart:hover,\n.px-video-controls button.px-video-restart:focus {\n  background-position: -6px -297px;\n}\n\n/* rewind button */\n.px-video-controls button.px-video-rewind {\n  background-position: -6px -189px;\n}\n.px-video-controls button.px-video-rewind:hover,\n.px-video-controls button.px-video-rewind:focus {\n  background-position: -6px -153px;\n}\n\n/* play button */\n.px-video-controls button.px-video-play {\n  background-position: -6px -45px;\n}\n.px-video-controls button.px-video-play:hover,\n.px-video-controls button.px-video-play:focus {\n  background-position: -6px -9px;\n}\n\n/* pause button */\n.px-video-controls button.px-video-pause {\n  background-position: -6px -117px;\n}\n.px-video-controls button.px-video-pause:hover,\n.px-video-controls button.px-video-pause:focus {\n  background-position: -6px -81px;\n}\n\n/* forward button */\n.px-video-controls button.px-video-forward {\n  background-position: -6px -261px;\n}\n.px-video-controls button.px-video-forward:hover,\n.px-video-controls button.px-video-forward:focus {\n  background-position: -6px -225px;\n}\n\n.px-video-fullscreen-btn-container label {\n  display: inline-block;\n  width: 25px;\n  height: 20px;\n  margin-left: 10px;\n  background: no-repeat url(\"./px-video-sprite.svg\");\n  background-position: -6px -907px;\n}\n.px-video-fullscreen-btn-container input[type=\"checkbox\"]:focus + label {\n  outline: 1px #999 dotted;\n  background-position: -6px -943px;\n}\n.px-video-fullscreen-btn-container input[type=\"checkbox\"]:hover + label {\n  background-position: -6px -943px;\n  cursor: pointer;\n}\n.px-video-fullscreen-btn-container input[type=\"checkbox\"]:focus + label {\n  outline: 1px #999 dotted;\n  background-position: -6px -943px;\n}\n.px-video-fullscreen-btn-container input[type=\"checkbox\"]:checked + label {\n  background-position: -6px -979px;\n}\n.px-video-fullscreen-btn-container\n  input[type=\"checkbox\"]:checked:hover\n  + label {\n  background-position: -6px -1015px;\n}\n\n/* captions button */\n.px-video-captions-btn-container label {\n  display: inline-block;\n  width: 25px;\n  height: 20px;\n  margin-left: 10px;\n  background: no-repeat url(\"./px-video-sprite.svg\");\n  background-position: -6px -835px;\n}\n.px-video-captions-btn-container input[type=\"checkbox\"]:focus + label {\n  outline: 1px #999 dotted;\n  background-position: -6px -799px;\n}\n.px-video-captions-btn-container input[type=\"checkbox\"]:hover + label {\n  background-position: -6px -799px;\n  cursor: pointer;\n}\n.px-video-captions-btn-container input[type=\"checkbox\"]:focus + label {\n  outline: 1px #999 dotted;\n  background-position: -6px -799px;\n}\n.px-video-captions-btn-container input[type=\"checkbox\"]:checked + label {\n  background-position: -6px -871px;\n}\n\n/* mute button */\n.px-video-mute-btn-container label {\n  display: inline-block;\n  width: 25px;\n  height: 20px;\n  margin-left: 240px;\n  margin-top: 2px;\n  background: no-repeat url(\"./px-video-sprite.svg\");\n  background-position: -6px -476px;\n}\n.px-video-mute-btn-container input[type=\"checkbox\"]:focus + label {\n  outline: 1px #999 dotted;\n  background-position: -6px -440px;\n}\n.px-video-mute-btn-container input[type=\"checkbox\"]:hover + label {\n  background-position: -6px -440px;\n  cursor: pointer;\n}\n.px-video-mute-btn-container input[type=\"checkbox\"]:focus + label {\n  outline: 1px #999 dotted;\n  background-position: -6px -440px;\n}\n/* checked state of mute button */\n.px-video-mute-btn-container input[type=\"checkbox\"]:checked + label {\n  background-position: -6px -692px;\n}\n.px-video-mute-btn-container input[type=\"checkbox\"]:checked:hover + label,\n.px-video-mute-btn-container input[type=\"checkbox\"]:checked:focus + label {\n  background-position: -6px -656px;\n}\n\n/* volume range input */\n.px-video-controls input[type=\"range\"] {\n  -webkit-appearance: none;\n  height: 6px;\n  width: 100px;\n  margin-top: 8px;\n  background-color: #e6e6e6;\n  outline: none;\n}\n.px-video-controls input[type=\"range\"]:focus::-webkit-slider-thumb {\n  outline: 1px #999 dotted;\n}\n.px-video-controls input[type=\"range\"]::-moz-range-track {\n  -moz-appearance: none;\n  height: 6px;\n  background-color: #e6e6e6;\n  border: none;\n}\n.px-video-controls input[type=\"range\"]::-webkit-slider-thumb {\n  -webkit-appearance: none !important;\n  height: 10px;\n  width: 6px;\n  background-color: #666;\n}\n.px-video-controls input[type=\"range\"]::-moz-range-thumb {\n  height: 12px;\n  width: 8px;\n  background-color: #666;\n}\n/* fixing display for IE10+ */\n@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {\n  .px-video-controls input[type=\"range\"] {\n    position: relative;\n    padding: 0;\n    height: 8px;\n    top: -3px;\n  }\n  .px-video-time {\n    margin-top: 4px;\n  }\n  .px-video-captions {\n    padding: 8px;\n    min-height: 36px;\n  }\n}\n\n.px-video-container {\n  position: relative;\n  min-width: 200px;\n}\n#videoPlayer{\n  min-width: 200px;\n}\n.px-video-container.fullscreen {\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  -webkit-cursor-visibility: auto-hide;\n}\n\n/* Fullscreen styles */\n\n/* style applied through js */\n.px-video-controls.js-fullscreen-controls {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  z-index: 940;\n  background: white;\n}\n\n.px-video-captions.js-fullscreen-captions {\n  min-height: 3.5em;\n  font-size: 2.5em;\n  padding: 1em;\n}\n\n.px-timetip {\n  padding: 5px 10px;\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  font-size: 14px;\n  background: rgba(0, 0, 0, 0.83);\n  border-radius: 3px;\n  color: #fff;\n  width: auto;\n  bottom: 20px;\n}\n.px-timetip:after {\n  top: 100%;\n  left: 50%;\n  border: solid transparent;\n  content: \" \";\n  height: 0;\n  width: 0;\n  position: absolute;\n  pointer-events: none;\n  border-color: rgba(43, 43, 43, 0);\n  border-top-color: #2b2b2b;\n  border-width: 10px;\n  margin-left: -10px;\n}\n",
                     "styleUrl": "./css/px-video.css"
                 }
             ],
@@ -11681,13 +12278,470 @@ const COMPONENTS = {
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
-                "args": [],
-                "line": 48
+                "args": [
+                    {
+                        "name": "elementRef",
+                        "type": "ElementRef"
+                    },
+                    {
+                        "name": "renderer2",
+                        "type": "Renderer2"
+                    }
+                ],
+                "line": 31,
+                "jsdoctags": [
+                    {
+                        "name": "elementRef",
+                        "type": "ElementRef",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "renderer2",
+                        "type": "Renderer2",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
             },
             "implements": [
                 "AfterViewInit"
             ],
             "templateData": "<div #video class=\"px-video-container\" id=\"{{VPConfiguration.id}}\" [style.width]=\"VPConfiguration.width\" >\n  <div class=\"px-video-img-captions-container\" >\n      <div class=\"px-video-captions hide\" aria-hidden=\"true\"></div>\n      <video id=\"videoPlayer\" [style.width]=\"VPConfiguration.width\" [style.height]=\"VPConfiguration.height\" \n        poster=\"{{VPConfiguration.poster}}\" controls preload={{VPConfiguration.preload}}\n        [attr.aria-label]=\"VPConfiguration.description\"\n      >\n        <!-- if Safari/Chrome-->\n          <source src=\"{{VPConfiguration.sourceMp4}}\" type=\"video/mp4\" />\n          <!-- If Firefox/Opera/Chrome/IE -->\n          <source src=\"{{VPConfiguration.sourceWebm}}\" type=\"video/webm\" />\n          <track kind=\"subtitles\" kind=\"captions\" label=\"English captions\" src=\"{{VPConfiguration.caption}}\" srclang=\"en\" default />\n      </video>\n  </div>\n  <div class=\"px-video-controls\"></div>\n</div>\n"
+        },
+        {
+            "name": "TabPanelComponent",
+            "id": "component-TabPanelComponent-222d6e2de38ee54620b56c22d2a641b5",
+            "file": "libs/packages/components/src/lib/tabs/tab-panel.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "sds-tab-panel",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./tab-panel.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "ariaLabel",
+                    "description": "<p>Aria label for tab header</p>\n",
+                    "line": 28,
+                    "type": "string"
+                },
+                {
+                    "name": "disabled",
+                    "description": "<p>Whether this tab panel is disabled for selection</p>\n",
+                    "line": 33,
+                    "type": "boolean"
+                },
+                {
+                    "name": "id",
+                    "description": "<p>The associated id of this tab panel</p>\n",
+                    "line": 12,
+                    "type": "string"
+                },
+                {
+                    "name": "selected",
+                    "description": "<p>True if panel is currently selected.\nOnly one tabpanel should be selected at a time</p>\n",
+                    "line": 18,
+                    "type": "boolean"
+                },
+                {
+                    "name": "tabHeader",
+                    "description": "<p>Header content for the tab panel. May be a string or a template</p>\n",
+                    "line": 23,
+                    "type": "string | TemplateRef<any>"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, Input, TemplateRef } from \"@angular/core\";\n\n@Component({\n  selector: `sds-tab-panel`,\n  templateUrl: `./tab-panel.component.html`\n})\nexport class TabPanelComponent {\n\n  /**\n   * The associated id of this tab panel\n   */\n  @Input() id: string;\n\n  /**\n   * True if panel is currently selected.\n   * Only one tabpanel should be selected at a time\n   */\n  @Input() selected: boolean;\n\n  /**\n   * Header content for the tab panel. May be a string or a template\n   */\n  @Input() tabHeader: string | TemplateRef<any>;\n\n  /**\n   * Aria label for tab header\n   */\n  @Input() ariaLabel: string;\n\n  /**\n   * Whether this tab panel is disabled for selection\n   */\n  @Input() disabled: boolean;\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "templateData": "<div \n  [attr.aria-hidden]=\"!selected\"\n  [attr.id]=\"id\" \n  role=\"tabpanel\"\n  [ngClass]=\"{'display-none': !selected, 'display-block': selected}\"\n  >\n  <ng-content></ng-content>\n</div>"
+        },
+        {
+            "name": "TabsComponent",
+            "id": "component-TabsComponent-721b6031c34b8518d061bdd76caae2c3",
+            "file": "libs/packages/components/src/lib/tabs/tabs.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "sds-tabs",
+            "styleUrls": [
+                "./tabs.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./tabs.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "automaticActivation",
+                    "defaultValue": "false",
+                    "description": "<p>Enable automatic activation for tabs when cycling through tabs using\nLeft or Right arrow keys. Automatic activated tabs will automatically\nbe selected on focus as user presses left or right arrow to move\nthrough each tab. By default, tabs will need to be manually selected\nwhen using keyboard only by pressing either Enter or Space to select\nthe focused tab</p>\n",
+                    "line": 32,
+                    "type": "boolean"
+                },
+                {
+                    "name": "selectedTab",
+                    "description": "<p>Currently selected tab for display.</p>\n",
+                    "line": 22,
+                    "type": "TabPanelComponent"
+                },
+                {
+                    "name": "tabClass",
+                    "defaultValue": "'sds-tabs--default'",
+                    "description": "<p>CSS styling class for tabs</p>\n",
+                    "line": 37,
+                    "type": "string"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "selectedTabChange",
+                    "defaultValue": "new EventEmitter<TabPanelComponent>()",
+                    "description": "<p>Emits an event whenever a tab is selected by the user containing the selected\nTabPanelComponent. Please note that because this output contains <code>Change</code> suffix\nto the <code>tabSelected</code> input, users can 2-way bind to the <code>selectedTab</code> input</p>\n",
+                    "line": 45,
+                    "type": "EventEmitter<TabPanelComponent>"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "focusedTab",
+                    "type": "TabPanelComponent",
+                    "optional": false,
+                    "description": "<p>Currently focused tab - can differ from selected tab when tab panels are manually activated</p>\n",
+                    "line": 52,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "tabPanels",
+                    "type": "QueryList<TabPanelComponent>",
+                    "optional": false,
+                    "description": "",
+                    "line": 47,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "TabPanelComponent"
+                        }
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "changeSelectedTabPanel",
+                    "args": [
+                        {
+                            "name": "newTabPanel",
+                            "type": "TabPanelComponent"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 138,
+                    "description": "<p>Internal method to change currently selected tab panel and display another panel\nto the user. External components should not use this method, but rather\ntwo-way bind the selectedTab input and modify that value.</p>\n",
+                    "modifierKind": [
+                        112
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 4458,
+                                "end": 4469,
+                                "flags": 0,
+                                "escapedText": "newTabPanel"
+                            },
+                            "type": "TabPanelComponent",
+                            "tagName": {
+                                "pos": 4452,
+                                "end": 4457,
+                                "flags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "getNextTabLeft",
+                    "args": [
+                        {
+                            "name": "tabPanels",
+                            "type": "TabPanelComponent[]"
+                        },
+                        {
+                            "name": "startIndex",
+                            "type": "number"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "number",
+                    "typeParameters": [],
+                    "line": 152,
+                    "description": "<p>Gets next tab panel to the left of currently selected panel when Left Arrow is pressed.\nSkips disabled panels until it finds next left panel that is not disabled</p>\n",
+                    "modifierKind": [
+                        112
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 4933,
+                                "end": 4942,
+                                "flags": 0,
+                                "escapedText": "tabPanels"
+                            },
+                            "type": "TabPanelComponent[]",
+                            "tagName": {
+                                "pos": 4927,
+                                "end": 4932,
+                                "flags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": "<ul>\n<li>List of TabPanelComponents in the tab group</li>\n</ul>\n"
+                        },
+                        {
+                            "name": {
+                                "pos": 5001,
+                                "end": 5011,
+                                "flags": 0,
+                                "escapedText": "startIndex"
+                            },
+                            "type": "number",
+                            "tagName": {
+                                "pos": 4995,
+                                "end": 5000,
+                                "flags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": "<ul>\n<li>Current index of focused tab panel</li>\n</ul>\n"
+                        }
+                    ]
+                },
+                {
+                    "name": "getNextTabRight",
+                    "args": [
+                        {
+                            "name": "tabPanels",
+                            "type": "TabPanelComponent[]"
+                        },
+                        {
+                            "name": "startIndex",
+                            "type": "number"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "number",
+                    "typeParameters": [],
+                    "line": 168,
+                    "description": "<p>Gets next tab panel to the right of currently selected panel when Right Arrow is pressed\nSkips disabled panels until it finds next right panel that is not disabled</p>\n",
+                    "modifierKind": [
+                        112
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 5564,
+                                "end": 5573,
+                                "flags": 0,
+                                "escapedText": "tabPanels"
+                            },
+                            "type": "TabPanelComponent[]",
+                            "tagName": {
+                                "pos": 5558,
+                                "end": 5563,
+                                "flags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": "<ul>\n<li>List of TabPanelComponents in the tab group</li>\n</ul>\n"
+                        },
+                        {
+                            "name": {
+                                "pos": 5632,
+                                "end": 5642,
+                                "flags": 0,
+                                "escapedText": "startIndex"
+                            },
+                            "type": "number",
+                            "tagName": {
+                                "pos": 5626,
+                                "end": 5631,
+                                "flags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": "<ul>\n<li>Current index of focused tab panel</li>\n</ul>\n"
+                        }
+                    ]
+                },
+                {
+                    "name": "isObj",
+                    "args": [
+                        {
+                            "name": "obj",
+                            "type": "any"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 122,
+                    "jsdoctags": [
+                        {
+                            "name": "obj",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngAfterContentInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 83,
+                    "description": "<p>If user has not given any tabs to select initially,\nselect the first tab panel.</p>\n"
+                },
+                {
+                    "name": "ngOnChanges",
+                    "args": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 71,
+                    "description": "<p>Listens for programmatic change to selected tab. When a tab is changed\nprogrammatically, we must disable previously selected tab, set selected\nproperty of the new tab to true, and adjust bookkeeping values.</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 59,
+                    "description": "<p>Assigns selected tab value was given. Otherwise, the first\ntab panel in the list will be selected after content has initialized.</p>\n"
+                },
+                {
+                    "name": "onKeyDown",
+                    "args": [
+                        {
+                            "name": "$event",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 99,
+                    "description": "<p>Looks for Left and Right arrow presses and moves selected tab accordingly.</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 3160,
+                                "end": 3166,
+                                "flags": 0,
+                                "escapedText": "$event"
+                            },
+                            "type": "",
+                            "tagName": {
+                                "pos": 3154,
+                                "end": 3159,
+                                "flags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": "<ul>\n<li>Keyboard Event</li>\n</ul>\n"
+                        }
+                    ]
+                },
+                {
+                    "name": "onTabClicked",
+                    "args": [
+                        {
+                            "name": "clickEvent",
+                            "type": "MouseEvent"
+                        },
+                        {
+                            "name": "tabPanel",
+                            "type": "TabPanelComponent"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 91,
+                    "jsdoctags": [
+                        {
+                            "name": "clickEvent",
+                            "type": "MouseEvent",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "tabPanel",
+                            "type": "TabPanelComponent",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { AfterContentInit, AfterViewInit, ChangeDetectorRef, Component, ContentChildren, EventEmitter, Input, OnChanges, OnInit, Output, QueryList, SimpleChanges, TemplateRef } from \"@angular/core\";\nimport { TabPanelComponent } from \"./tab-panel.component\";\n\n/** CONSTANTS\n * Adding in the constant values for keycodes\n * to handle onKeyDown events\n */\nconst LEFT_ARROW = 37;\nconst RIGHT_ARROW = 39;\n\n@Component({\n  selector: `sds-tabs`,\n  templateUrl: `./tabs.component.html`,\n  styleUrls: ['./tabs.component.scss'],\n})\nexport class TabsComponent implements OnInit, OnChanges, AfterContentInit {\n\n  /**\n   * Currently selected tab for display.\n   */\n  @Input() \n  selectedTab: TabPanelComponent;\n\n  /**\n   * Enable automatic activation for tabs when cycling through tabs using\n   * Left or Right arrow keys. Automatic activated tabs will automatically\n   * be selected on focus as user presses left or right arrow to move\n   * through each tab. By default, tabs will need to be manually selected\n   * when using keyboard only by pressing either Enter or Space to select\n   * the focused tab\n   */\n  @Input() automaticActivation: boolean = false;\n\n  /**\n   * CSS styling class for tabs\n   */\n  @Input() tabClass: string = 'sds-tabs--default';\n\n  /**\n   * Emits an event whenever a tab is selected by the user containing the selected\n   * TabPanelComponent. Please note that because this output contains `Change` suffix\n   * to the `tabSelected` input, users can 2-way bind to the `selectedTab` input\n   */\n  @Output()\n  selectedTabChange: EventEmitter<TabPanelComponent> = new EventEmitter<TabPanelComponent>();\n\n  @ContentChildren(TabPanelComponent) tabPanels: QueryList<TabPanelComponent>;\n\n  /**\n   * Currently focused tab - can differ from selected tab when tab panels are manually activated\n   */\n  private focusedTab: TabPanelComponent;\n\n\n  /**\n   * Assigns selected tab value was given. Otherwise, the first\n   * tab panel in the list will be selected after content has initialized.\n   */\n  ngOnInit () {\n    if (this.selectedTab) {\n      this.selectedTab.selected = true;\n      this.focusedTab = this.selectedTab;\n    }\n  }\n\n  /**\n   * Listens for programmatic change to selected tab. When a tab is changed\n   * programmatically, we must disable previously selected tab, set selected\n   * property of the new tab to true, and adjust bookkeeping values.\n   */\n  ngOnChanges(changes: SimpleChanges) {\n    if (changes.selectedTab && changes.selectedTab.currentValue) {\n      this.tabPanels.forEach(tab => tab.selected = false);\n      changes.selectedTab.currentValue.selected = true;\n      this.focusedTab = this.selectedTab;\n    }\n  }\n\n  /**\n   * If user has not given any tabs to select initially,\n   * select the first tab panel.\n   */\n  ngAfterContentInit() {\n    if (!this.selectedTab) {\n      this.tabPanels.first.selected = true;\n      this.selectedTab = this.tabPanels.first;\n      this.focusedTab = this.selectedTab;\n    }\n  }\n  \n  onTabClicked(clickEvent: MouseEvent, tabPanel: TabPanelComponent) {\n    this.changeSelectedTabPanel(tabPanel);\n  }\n\n  /**\n   * Looks for Left and Right arrow presses and moves selected tab accordingly.\n   * @param $event - Keyboard Event\n   */\n  onKeyDown($event) {\n    console.log($event);\n    const tabPanelArray = this.tabPanels.toArray();\n    let selectedTabIndex = tabPanelArray.findIndex((tabPanel) => tabPanel === this.focusedTab);\n\n    switch($event.keyCode) {\n      case LEFT_ARROW:\n        selectedTabIndex = this.getNextTabLeft(tabPanelArray, selectedTabIndex);\n        break;\n      case RIGHT_ARROW:\n        selectedTabIndex = this.getNextTabRight(tabPanelArray, selectedTabIndex);\n        break;\n    }\n\n    // Move focus to newly selected panel\n    $event.target.parentElement.children[selectedTabIndex].focus();\n    this.focusedTab = tabPanelArray[selectedTabIndex];\n\n    if (this.automaticActivation) {\n      this.changeSelectedTabPanel(this.focusedTab);\n    }\n  }\n\n  isObj(obj: any) {\n    if (typeof(obj) === 'object' && (obj as TemplateRef<any>).elementRef) {\n      return true;\n    } else if (typeof(obj) === 'string') {\n      return false;\n    } else {\n      throw new Error('Tab header must be either a string or a template reference');\n    }\n  }\n\n  /**\n   * Internal method to change currently selected tab panel and display another panel\n   * to the user. External components should not use this method, but rather\n   * two-way bind the selectedTab input and modify that value.\n   * @param newTabPanel \n   */\n  private changeSelectedTabPanel(newTabPanel: TabPanelComponent) {\n    this.selectedTab.selected = false;\n    newTabPanel.selected = true;\n    this.selectedTab = newTabPanel;\n    this.focusedTab = newTabPanel;\n    this.selectedTabChange.emit(this.selectedTab);\n  }\n\n  /**\n   * Gets next tab panel to the left of currently selected panel when Left Arrow is pressed.\n   * Skips disabled panels until it finds next left panel that is not disabled\n   * @param tabPanels - List of TabPanelComponents in the tab group\n   * @param startIndex - Current index of focused tab panel\n   */\n  private getNextTabLeft(tabPanels: TabPanelComponent[], startIndex: number) {\n\n    for (let i = 0; i < tabPanels.length; i++) {\n      startIndex = startIndex == 0 ? tabPanels.length - 1 : (startIndex - 1) % tabPanels.length;\n      if (!tabPanels[startIndex].disabled) {\n        return startIndex;\n      }\n    }\n  }\n\n  /**\n   * Gets next tab panel to the right of currently selected panel when Right Arrow is pressed\n   * Skips disabled panels until it finds next right panel that is not disabled\n   * @param tabPanels - List of TabPanelComponents in the tab group\n   * @param startIndex - Current index of focused tab panel\n   */\n  private getNextTabRight(tabPanels: TabPanelComponent[], startIndex: number) {\n    for (let i = 0; i < tabPanels.length; i++) {\n      startIndex = (startIndex + 1) % this.tabPanels.length;\n      if (!tabPanels[startIndex].disabled) {\n        return startIndex;\n      }\n    }\n  }\n}",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./tabs.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "implements": [
+                "OnInit",
+                "OnChanges",
+                "AfterContentInit"
+            ],
+            "templateData": "<div role=\"tablist\" [attr.class]=\"tabClass\">\n  <button\n    *ngFor=\"let tabPanel of tabPanels\"\n    role=\"tab\"\n    class=\"sds-tabs__item\"\n    [attr.aria-selected]=\"tabPanel.selected\"\n    [attr.tabindex]=\"tabPanel.selected ? 0 : -1\"\n    [attr.aria-controls]=\"tabPanel.id\"\n    [attr.aria-label]=\"tabPanel.ariaLabel\"\n    [disabled]=\"tabPanel.disabled\"\n    (click)=\"onTabClicked($event, tabPanel)\"\n    (keydown)=\"onKeyDown($event)\">\n    <ng-container *ngIf=\"isObj(tabPanel.tabHeader); else textHeader\">\n      <ng-template *ngTemplateOutlet=\"tabPanel.tabHeader\"></ng-template>\n    </ng-container>\n    <ng-template #textHeader>\n      {{tabPanel.tabHeader}}\n    </ng-template>\n  </button>\n</div>\n<div class=\"sds-tabs__content\" tabindex=\"0\">\n  <ng-content></ng-content>\n</div>\n"
         }
     ],
     "modules": [
@@ -11849,6 +12903,9 @@ const COMPONENTS = {
                             "name": "SDSClickOutsideModule"
                         },
                         {
+                            "name": "SdsIconModule"
+                        },
+                        {
                             "name": "SdsTabOutsideModule"
                         }
                     ]
@@ -11981,7 +13038,11 @@ const COMPONENTS = {
                 },
                 {
                     "type": "imports",
-                    "elements": []
+                    "elements": [
+                        {
+                            "name": "SdsIconModule"
+                        }
+                    ]
                 },
                 {
                     "type": "exports",
@@ -12033,7 +13094,11 @@ const COMPONENTS = {
                 },
                 {
                     "type": "imports",
-                    "elements": []
+                    "elements": [
+                        {
+                            "name": "SdsIconModule"
+                        }
+                    ]
                 },
                 {
                     "type": "exports",
@@ -12230,6 +13295,43 @@ const COMPONENTS = {
             ]
         },
         {
+            "name": "SdsPopoverModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "SdsPopoverDirective"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "SdsPopoverDirective"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
             "name": "SdsPopupModule",
             "children": [
                 {
@@ -12283,7 +13385,11 @@ const COMPONENTS = {
                 },
                 {
                     "type": "imports",
-                    "elements": []
+                    "elements": [
+                        {
+                            "name": "SdsIconModule"
+                        }
+                    ]
                 },
                 {
                     "type": "exports",
@@ -12361,7 +13467,11 @@ const COMPONENTS = {
                 },
                 {
                     "type": "imports",
-                    "elements": []
+                    "elements": [
+                        {
+                            "name": "SdsIconModule"
+                        }
+                    ]
                 },
                 {
                     "type": "exports",
@@ -12393,6 +13503,15 @@ const COMPONENTS = {
                     "elements": [
                         {
                             "name": "SdsSelectionPanelComponent"
+                        },
+                        {
+                            "name": "SdsSelectionPanelNavigationModeComponent"
+                        },
+                        {
+                            "name": "SdsSelectionPanelSelectionModeComponent"
+                        },
+                        {
+                            "name": "SdsSubPanelComponent"
                         }
                     ]
                 },
@@ -12405,6 +13524,9 @@ const COMPONENTS = {
                     "elements": [
                         {
                             "name": "SdsSelectionPanelComponent"
+                        },
+                        {
+                            "name": "SdsSubPanelComponent"
                         }
                     ]
                 },
@@ -12493,6 +13615,49 @@ const COMPONENTS = {
             ]
         },
         {
+            "name": "SdsTabsModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "TabPanelComponent"
+                        },
+                        {
+                            "name": "TabsComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "TabPanelComponent"
+                        },
+                        {
+                            "name": "TabsComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
             "name": "SdsTextModule",
             "children": [
                 {
@@ -12552,7 +13717,11 @@ const COMPONENTS = {
                 },
                 {
                     "type": "imports",
-                    "elements": []
+                    "elements": [
+                        {
+                            "name": "SdsIconModule"
+                        }
+                    ]
                 },
                 {
                     "type": "exports",
@@ -12605,6 +13774,43 @@ const COMPONENTS = {
                         },
                         {
                             "name": "SdsToolbarExpandDirective"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "SdsTooltipModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "SdsTooltipDirective"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "SdsTooltipDirective"
                         }
                     ]
                 },
@@ -12750,7 +13956,7 @@ const COMPONENTS = {
                 "subtype": "variable",
                 "file": "libs/packages/components/src/lib/dialog/dialog-animations.ts",
                 "type": "[]",
-                "defaultValue": "[\n  // Note: The `enter` animation transitions to `transform: none`, because for some reason\n  // specifying the transform explicitly, causes IE both to blur the dialog content and\n  // decimate the animation performance. Leaving it as `none` solves both issues.\n  state('void, exit', style({opacity: 0, transform: 'scale(0.7)'})),\n  state('enter', style({transform: 'none'})),\n  transition('* => enter', animate('150ms cubic-bezier(0, 0, 0.2, 1)',\n      style({transform: 'none', opacity: 1}))),\n  transition('* => void, * => exit',\n      animate('75ms cubic-bezier(0.4, 0.0, 0.2, 1)', style({opacity: 0}))),\n]"
+                "defaultValue": "[\n  // Note: The `enter` animation transitions to `transform: none`, because for some reason\n  // specifying the transform explicitly, causes IE both to blur the dialog content and\n  // decimate the animation performance. Leaving it as `none` solves both issues.\n  transition('* => enter',\n    [\n      style({opacity: 0, transform: 'scale(0.7)'}),\n      animate('150ms cubic-bezier(0, 0, 0.2, 1)',\n        style({transform: 'none', opacity: 1}))\n    ]\n  ),\n  transition('* => void, * => exit',\n    [\n      style({transform: 'none'}),\n      animate('75ms cubic-bezier(0.4, 0.0, 0.2, 1)',\n        style({opacity: 0})\n      )\n    ]\n  ),\n  // state('slideExit', style({right: '-15rem'})),\n  // state('slideEnter', style({right: '0rem'})),\n  transition('* => slideEnter', [\n    style({right: '-15rem'}),\n    animate('1s', style({right: '0rem'}))\n  ]),\n  transition('* => slideExit', [\n    style({right: '0rem'}),\n    animate('1s', style({right: '-15rem'}))\n  ]),\n]"
             },
             {
                 "name": "Autocomplete_Autocomplete_VALUE_ACCESSOR",
@@ -12817,12 +14023,29 @@ const COMPONENTS = {
                 "defaultValue": "{\n  enter: {\n    charCode: 0,\n    code: undefined,\n    key: 'Enter',\n    keyCode: 13,\n    keyIdentifier: undefined,\n    which: 13\n  },\n  up: {\n    charCode: 0,\n    code: undefined,\n    key: 'Up',\n    keyCode: 38,\n    keyIdentifier: undefined,\n    which: 38\n  },\n  down: {\n    charCode: 0,\n    code: undefined,\n    key: 'Down',\n    keyCode: 40,\n    keyIdentifier: undefined,\n    which: 40\n  },\n  left: {\n    charCode: 0,\n    code: undefined,\n    key: 'Left',\n    keyCode: 37,\n    keyIdentifier: undefined,\n    which: 37\n  },\n  right: {\n    charCode: 0,\n    code: undefined,\n    key: 'Right',\n    keyCode: 39,\n    keyIdentifier: undefined,\n    which: 39\n  },\n  tab: {\n    charCode: 0,\n    code: undefined,\n    key: 'Tab',\n    keyCode: 9,\n    keyIdentifier: undefined,\n    which: 9\n  },\n  esc: {\n    charCode: 0,\n    code: undefined,\n    key: 'Esc',\n    keyCode: 27,\n    keyIdentifier: undefined,\n    which: 27\n  },\n  space: {\n    charCode: 0,\n    code: undefined,\n    key: 'Spacebar',\n    keyCode: 32,\n    keyIdentifier: undefined,\n    which: 32\n  },\n  shift: {\n    charCode: 0,\n    code: undefined,\n    key: 'Shift',\n    keyCode: 16,\n    keyIdentifier: undefined,\n    which: 16\n  },\n  backspace: {\n    charCode: 0,\n    code: undefined,\n    key: 'Backspace',\n    keyCode: 8,\n    keyIdentifier: undefined,\n    which: 8\n  },\n  delete: {\n    charCode: 0,\n    code: undefined,\n    key: 'Delete',\n    keyCode: 46,\n    keyIdentifier: undefined,\n    which: 46\n  },\n  0: {\n    charCode: 0,\n    code: 'Digit0',\n    key: 0,\n    keyCode: 48,\n    keyIdentifier: 'U+0030',\n    which: 48\n  },\n  1: {\n    charCode: 0,\n    code: 'Digit1',\n    key: 1,\n    keyCode: 49,\n    keyIdentifier: 'U+0031',\n    which: 49\n  },\n  2: {\n    charCode: 0,\n    code: 'Digit2',\n    key: 2,\n    keyCode: 50,\n    keyIdentifier: 'U+0032',\n    which: 50\n  },\n  3: {\n    charCode: 0,\n    code: 'Digit3',\n    key: 3,\n    keyCode: 51,\n    keyIdentifier: 'U+0033',\n    which: 51\n  },\n  4: {\n    charCode: 0,\n    code: 'Digit4',\n    key: 4,\n    keyCode: 52,\n    keyIdentifier: 'U+0034',\n    which: 52\n  },\n  5: {\n    charCode: 0,\n    code: 'Digit5',\n    key: 5,\n    keyCode: 53,\n    keyIdentifier: 'U+0035',\n    which: 53\n  },\n  6: {\n    charCode: 0,\n    code: 'Digit6',\n    key: 6,\n    keyCode: 54,\n    keyIdentifier: 'U+0036',\n    which: 54\n  },\n  7: {\n    charCode: 0,\n    code: 'Digit7',\n    key: 7,\n    keyCode: 55,\n    keyIdentifier: 'U+0037',\n    which: 55\n  },\n  8: {\n    charCode: 0,\n    code: 'Digit8',\n    key: 8,\n    keyCode: 56,\n    keyIdentifier: 'U+0038',\n    which: 56\n  },\n  9: {\n    charCode: 0,\n    code: 'Digit9',\n    key: 9,\n    keyCode: 57,\n    keyIdentifier: 'U+0039',\n    which: 57\n  }\n}"
             },
             {
+                "name": "LEFT_ARROW",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/packages/components/src/lib/tabs/tabs.component.ts",
+                "type": "number",
+                "defaultValue": "37",
+                "description": "<p>CONSTANTS\nAdding in the constant values for keycodes\nto handle onKeyDown events</p>\n"
+            },
+            {
                 "name": "mocks",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "libs/packages/components/src/lib/key-helper/key-mocks.ts",
                 "type": "object",
                 "defaultValue": "{\n  ie: IEMocks,\n  edge: EdgeMocks,\n  default: ChromeFirefoxMocks,\n  safari: SafariMocks\n}"
+            },
+            {
+                "name": "RIGHT_ARROW",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/packages/components/src/lib/tabs/tabs.component.ts",
+                "type": "number",
+                "defaultValue": "39"
             },
             {
                 "name": "SafariMocks",
@@ -12894,6 +14117,22 @@ const COMPONENTS = {
                 "defaultValue": "{\n  provide: NG_VALUE_ACCESSOR,\n  useExisting: forwardRef(() => SDSSelectedResultComponent),\n  multi: true\n}"
             },
             {
+                "name": "SDS_SLIDE_OUT_SCROLL_STRATEGY",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/packages/components/src/lib/dialog/dialog.ts",
+                "type": "",
+                "defaultValue": "new InjectionToken<() => ScrollStrategy>('sds-slide-out-scroll-strategy')"
+            },
+            {
+                "name": "SDS_SLIDE_OUT_SCROLL_STRATEGY_PROVIDER",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/packages/components/src/lib/dialog/dialog.ts",
+                "type": "object",
+                "defaultValue": "{\n  provide: SDS_SLIDE_OUT_SCROLL_STRATEGY,\n  deps: [Overlay],\n  useFactory: SDS_SLIDE_OUT_SCROLL_STRATEGY_PROVIDER_FACTORY,\n}"
+            },
+            {
                 "name": "SDS_TRUNCATED_TEXT_DATA",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -12908,7 +14147,7 @@ const COMPONENTS = {
                 "subtype": "variable",
                 "file": "libs/packages/components/src/lib/dialog/dialog-animations.ts",
                 "type": "literal type",
-                "defaultValue": "{\n  /** Animation that is applied on the dialog container by defalt. */\n  dialogContainer: trigger('dialogContainer', animationBody),\n}",
+                "defaultValue": "{\n  /** Animation that is applied on the dialog container by defalt. */\n  dialogContainer: trigger('dialogContainer', animationBody)\n}",
                 "description": "<p>Animations used by SdsDialog.</p>\n"
             },
             {
@@ -13008,15 +14247,15 @@ const COMPONENTS = {
                 "jsdoctags": [
                     {
                         "name": {
-                            "pos": 14093,
-                            "end": 14099,
+                            "pos": 14833,
+                            "end": 14839,
                             "flags": 0,
                             "escapedText": "config"
                         },
                         "optional": true,
                         "tagName": {
-                            "pos": 14087,
-                            "end": 14092,
+                            "pos": 14827,
+                            "end": 14832,
                             "flags": 0,
                             "escapedText": "param"
                         },
@@ -13024,15 +14263,15 @@ const COMPONENTS = {
                     },
                     {
                         "name": {
-                            "pos": 14133,
-                            "end": 14147,
+                            "pos": 14873,
+                            "end": 14887,
                             "flags": 0,
                             "escapedText": "defaultOptions"
                         },
                         "optional": true,
                         "tagName": {
-                            "pos": 14127,
-                            "end": 14132,
+                            "pos": 14867,
+                            "end": 14872,
                             "flags": 0,
                             "escapedText": "param"
                         },
@@ -13040,8 +14279,8 @@ const COMPONENTS = {
                     },
                     {
                         "tagName": {
-                            "pos": 14178,
-                            "end": 14185,
+                            "pos": 14918,
+                            "end": 14925,
                             "flags": 0,
                             "escapedText": "returns"
                         },
@@ -13231,6 +14470,27 @@ const COMPONENTS = {
                     {
                         "name": "pageY",
                         "type": "number",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "debounce",
+                "file": "libs/packages/components/src/lib/popover/debounce.decorator.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "description": "<p>Delays calling of a function for <code>delay</code> number of milliseconds.</p>\n",
+                "args": [
+                    {
+                        "name": "delay"
+                    }
+                ],
+                "returnType": "MethodDecorator",
+                "jsdoctags": [
+                    {
+                        "name": "delay",
                         "tagName": {
                             "text": "param"
                         }
@@ -13584,6 +14844,27 @@ const COMPONENTS = {
                 ]
             },
             {
+                "name": "SDS_SLIDE_OUT_SCROLL_STRATEGY_PROVIDER_FACTORY",
+                "file": "libs/packages/components/src/lib/dialog/dialog.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "description": "",
+                "args": [
+                    {
+                        "name": "overlay"
+                    }
+                ],
+                "returnType": "ScrollStrategy",
+                "jsdoctags": [
+                    {
+                        "name": "overlay",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
                 "name": "throwSdsDialogContentAlreadyAttachedError",
                 "file": "libs/packages/components/src/lib/dialog/dialog-container.component.ts",
                 "ctype": "miscellaneous",
@@ -13828,7 +15109,7 @@ const COMPONENTS = {
                     "subtype": "variable",
                     "file": "libs/packages/components/src/lib/dialog/dialog-animations.ts",
                     "type": "[]",
-                    "defaultValue": "[\n  // Note: The `enter` animation transitions to `transform: none`, because for some reason\n  // specifying the transform explicitly, causes IE both to blur the dialog content and\n  // decimate the animation performance. Leaving it as `none` solves both issues.\n  state('void, exit', style({opacity: 0, transform: 'scale(0.7)'})),\n  state('enter', style({transform: 'none'})),\n  transition('* => enter', animate('150ms cubic-bezier(0, 0, 0.2, 1)',\n      style({transform: 'none', opacity: 1}))),\n  transition('* => void, * => exit',\n      animate('75ms cubic-bezier(0.4, 0.0, 0.2, 1)', style({opacity: 0}))),\n]"
+                    "defaultValue": "[\n  // Note: The `enter` animation transitions to `transform: none`, because for some reason\n  // specifying the transform explicitly, causes IE both to blur the dialog content and\n  // decimate the animation performance. Leaving it as `none` solves both issues.\n  transition('* => enter',\n    [\n      style({opacity: 0, transform: 'scale(0.7)'}),\n      animate('150ms cubic-bezier(0, 0, 0.2, 1)',\n        style({transform: 'none', opacity: 1}))\n    ]\n  ),\n  transition('* => void, * => exit',\n    [\n      style({transform: 'none'}),\n      animate('75ms cubic-bezier(0.4, 0.0, 0.2, 1)',\n        style({opacity: 0})\n      )\n    ]\n  ),\n  // state('slideExit', style({right: '-15rem'})),\n  // state('slideEnter', style({right: '0rem'})),\n  transition('* => slideEnter', [\n    style({right: '-15rem'}),\n    animate('1s', style({right: '0rem'}))\n  ]),\n  transition('* => slideExit', [\n    style({right: '0rem'}),\n    animate('1s', style({right: '-15rem'}))\n  ]),\n]"
                 },
                 {
                     "name": "sdsDialogAnimations",
@@ -13836,7 +15117,7 @@ const COMPONENTS = {
                     "subtype": "variable",
                     "file": "libs/packages/components/src/lib/dialog/dialog-animations.ts",
                     "type": "literal type",
-                    "defaultValue": "{\n  /** Animation that is applied on the dialog container by defalt. */\n  dialogContainer: trigger('dialogContainer', animationBody),\n}",
+                    "defaultValue": "{\n  /** Animation that is applied on the dialog container by defalt. */\n  dialogContainer: trigger('dialogContainer', animationBody)\n}",
                     "description": "<p>Animations used by SdsDialog.</p>\n"
                 }
             ],
@@ -13932,6 +15213,25 @@ const COMPONENTS = {
                     "defaultValue": "[\n  {\n    code: 'A',\n    elements: [\n      {\n        code: 'A',\n        elements: null,\n        description: null,\n        element_id: '0001001',\n        value: 'Formula Grants'\n      },\n      {\n        code: 'A',\n        elements: null,\n        description: null,\n        element_id: '0001002',\n        value: 'Formula Grants (Apportionments)'\n      },\n      {\n        code: 'A',\n        elements: null,\n        description: null,\n        element_id: '0001003',\n        value: 'Formula Grants (Cooperative Agreements)'\n      },\n      {\n        code: 'A',\n        elements: null,\n        description: null,\n        element_id: '0001004',\n        value: 'Formula Grants (Health Incentive Grants)'\n      }\n    ],\n    description:\n      'Formula Grants - Allocations of money to States or their subdivisions in accordance with a distribution formula prescribed by law or administrative regulation, for activities of a continuing nature not confined to a specific project.',\n    element_id: '0001',\n    value: 'FORMULA GRANTS'\n  },\n  {\n    code: 'B',\n    elements: [\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003001',\n        value: 'Cooperative Agreements'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003002',\n        value: 'Cooperative Agreements (Discretionary Grants)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003003',\n        value: 'Project Grants'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003004',\n        value:\n          'Project Grants (Capacity Building and Complaint Processing, Training)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003005',\n        value: 'Project Grants (Contracts)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003006',\n        value: 'Project Grants (Cooperative Agreements or Contracts)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003007',\n        value: 'Project Grants (Cooperative Agreements)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003008',\n        value: 'Project Grants (Discretionary)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003009',\n        value: 'Project Grants (Fellowships)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003010',\n        value:\n          'Project Grants (for administration projects authorized under Section'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003011',\n        value:\n          'Project Grants (for collaborative design of curriculum, production of'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003012',\n        value: 'Project Grants (for specified projects)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003013',\n        value: 'Project Grants (including individual awards)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003014',\n        value: 'Project Grants (including travel grants)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003015',\n        value:\n          'Project Grants (Rehabilitation of existing indoor and outdoor recreat'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003016',\n        value: 'Project Grants (Special)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003017',\n        value: 'Project Grants (to capitalize loan funds)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003018',\n        value: 'Project Grants (with Formula Distribution)'\n      }\n    ],\n    description:\n      'Project Grants - The funding, for fixed or known periods, of specific projects or the delivery of specific services or products without liability for damages for failure to perform. Project grants include fellowships, scholarships, research grants, training grants, traineeships, experimental and demonstration grants, evaluation grants, planning grants, technical assistance grants, survey grants, construction grants, and unsolicited contractual agreements.',\n    element_id: '0003',\n    value: 'PROJECT GRANTS'\n  },\n  {\n    code: 'C',\n    elements: [\n      {\n        code: 'C',\n        elements: null,\n        description: null,\n        element_id: '0005001',\n        value: 'Direct Payments for Specified Use'\n      },\n      {\n        code: 'C',\n        elements: null,\n        description: null,\n        element_id: '0005002',\n        value: 'Direct Payments for Specified Use (Cooperative Agreements)'\n      }\n    ],\n    description:\n      'Direct Payments for a Specified Use - Financial assistance provided directly to individuals, private firms, and other private institutions to encourage or subsidize a particular activity by conditioning the receipt of the on a particular performance by the recipient. This does not include solicited contracts for the procurement of goods and services for the Federal government.',\n    element_id: '0005',\n    value: 'DIRECT PAYMENTS FOR A SPECIFIED USE'\n  },\n  {\n    code: 'D',\n    elements: [\n      {\n        code: 'D',\n        elements: null,\n        description: null,\n        element_id: '0007001',\n        value: 'Direct Payments with Unrestricted Use'\n      }\n    ],\n    description:\n      'Direct Payments with Unrestricted Use - Financial assistance provided directly to beneficiaries who satisfy eligibility requirements with no restrictions imposed on the recipient as to how the money is spent. Included are payments under retirement, pension, and compensation programs.',\n    element_id: '0007',\n    value: 'DIRECT PAYMENTS WITH UNRESTRICTED USE'\n  },\n  {\n    code: 'E',\n    elements: [\n      {\n        code: 'E',\n        elements: null,\n        description: null,\n        element_id: '0009001',\n        value: 'Direct Loans'\n      }\n    ],\n    description:\n      'Direct Loans - Financial assistance provided through the lending of Federal monies for a specific period of time, with a reasonable expectation of repayment. Such loans may or may not require the payment of interest.',\n    element_id: '0009',\n    value: 'DIRECT LOANS'\n  },\n  {\n    code: 'F',\n    elements: [\n      {\n        code: 'F',\n        elements: null,\n        description: null,\n        element_id: '0011001',\n        value: 'Guaranteed/Insured Loans'\n      },\n      {\n        code: 'F',\n        elements: null,\n        description: null,\n        element_id: '0011002',\n        value:\n          'Guaranteed/Insured Loans (including Guaranty Participation Loans)'\n      },\n      {\n        code: 'F',\n        elements: null,\n        description: null,\n        element_id: '0011003',\n        value:\n          'Guaranteed/Insured Loans (including Immediate Participation Loans)'\n      },\n      {\n        code: 'F',\n        elements: null,\n        description: null,\n        element_id: '0011004',\n        value: 'Loan Guarantees/Grants'\n      }\n    ],\n    description:\n      'Guaranteed/Insured Loans - Programs in which the Federal Government makes an arrangement to indemnify a lender against all or part of all of any defaults by those responsible for the repayment of loans.',\n    element_id: '0011',\n    value: 'GUARANTEED/INSURED LOANS'\n  },\n  {\n    code: 'G',\n    elements: [\n      {\n        code: 'G',\n        elements: null,\n        description: null,\n        element_id: '0013001',\n        value: 'Insurance'\n      },\n      {\n        code: 'G',\n        elements: null,\n        description: null,\n        element_id: '0013002',\n        value: 'Insurance (Guaranteed Surety Bonds)'\n      },\n      {\n        code: 'G',\n        elements: null,\n        description: null,\n        element_id: '0013003',\n        value: 'Insurance (Reimbursement)'\n      }\n    ],\n    description:\n      'Insurance - Financial assistance provided to assure reimbursement for losses sustained under specified conditions. Coverage may be provided directly by the Federal Government or through private carriers and may or may not involve the payment of premiums.',\n    element_id: '0013',\n    value: 'INSURANCE'\n  },\n  {\n    code: 'H',\n    elements: [\n      {\n        code: 'H',\n        elements: null,\n        description: null,\n        element_id: '0015001',\n        value: 'Sale, Exchange, or Donation of Property and Goods'\n      }\n    ],\n    description:\n      'Sale, Exchange, or Donation of Property or Goods - Programs that provide for the sale, exchange, or donation of Federal real property, personal property, commodities, and other goods including land, buildings, equipment, food, and drugs. This does not include the loan of, use of, or access to Federal facilities or property.',\n    element_id: '0015',\n    value: 'SALE, EXCHANGE, OR DONATION OF PROPERTY OR GOODS'\n  },\n  {\n    code: 'I',\n    elements: [\n      {\n        code: 'I',\n        elements: null,\n        description: null,\n        element_id: '0017001',\n        value: 'Use of Property, Facilities, and Equipment'\n      }\n    ],\n    description:\n      'Use of Property, Facilities, or Equipment - Programs that provide for the loan of, use of, or access to Federal facilities or property wherein the federally owned facilities or property do not remain in the possession of the recipient of the assistance.',\n    element_id: '0017',\n    value: 'USE OF PROPERTY, FACILITIES, OR EQUIPMENT'\n  },\n  {\n    code: 'J',\n    elements: [\n      {\n        code: 'J',\n        elements: null,\n        description: null,\n        element_id: '0019001',\n        value: 'Provision of Specialized Services'\n      }\n    ],\n    description:\n      'Provision of Specialized Services - Programs that provide Federal personnel to directly perform certain tasks for the benefit of communities or individuals. These services may be performed in conjunction with non-Federal personnel, but they involve more than consultation, advice, or counseling.',\n    element_id: '0019',\n    value: 'PROVISION OF SPECIALIZED SERVICES'\n  },\n  {\n    code: 'K',\n    elements: [\n      {\n        code: 'K',\n        elements: null,\n        description: null,\n        element_id: '0021001',\n        value: 'Advisory Services and Counseling'\n      },\n      {\n        code: 'K',\n        elements: null,\n        description: null,\n        element_id: '0021002',\n        value: 'Advisory Services on Compliance'\n      }\n    ],\n    description:\n      'Advisory Services and Counseling - Programs that provide Federal specialists to consult, advise, or counsel communities or individuals including conferences, workshops, or personal contacts. This may involve the use of published information, but only in a secondary capacity.',\n    element_id: '0021',\n    value: 'ADVISORY SERVICES AND COUNSELING'\n  },\n  {\n    code: 'L',\n    elements: [\n      {\n        code: 'L',\n        elements: null,\n        description: null,\n        element_id: '0023001',\n        value: 'Dissemination of Technical Information'\n      },\n      {\n        code: 'L',\n        elements: null,\n        description: null,\n        element_id: '0023002',\n        value: 'Information'\n      }\n    ],\n    description:\n      'Dissemination of Technical Information - Programs that provide for the publication and distribution of information or data of a specialized technical nature, frequently through clearinghouses or libraries. This does not include conventional public information services designed for general public consumption.',\n    element_id: '0023',\n    value: 'DISSEMINATION OF TECHNICAL INFORMATION'\n  },\n  {\n    code: 'M',\n    elements: [\n      {\n        code: 'M',\n        elements: null,\n        description: null,\n        element_id: '0025001',\n        value: 'Training'\n      }\n    ],\n    description:\n      'Training - Programs that provide instructional activities conducted directly by a Federal agency for individuals not employed by the Federal Government.',\n    element_id: '0025',\n    value: 'TRAINING'\n  },\n  {\n    code: 'N',\n    elements: [\n      {\n        code: 'N',\n        elements: null,\n        description: null,\n        element_id: '0027020',\n        value: 'Resolution of Disputes'\n      },\n      {\n        code: 'N',\n        elements: null,\n        description: null,\n        element_id: '0027001',\n        value: 'Investigation of Complaints'\n      },\n      {\n        code: 'N',\n        elements: null,\n        description: null,\n        element_id: '0027002',\n        value: 'Investigation of Complaints (Compliance Reviews)'\n      }\n    ],\n    description:\n      'Investigation of Complaints - Federal administrative agency activities that are initiated in response to requests, either formal or informal, to examine or investigate claims of violations of Federal statutes, policy, or procedure. Such claims must come from outside the Federal Government.',\n    element_id: '0027',\n    value: 'INVESTIGATION OF COMPLAINTS'\n  },\n  {\n    code: 'O',\n    elements: [\n      {\n        code: 'O',\n        elements: null,\n        description: null,\n        element_id: '0029001',\n        value: 'Federal Employment'\n      }\n    ],\n    description:\n      'Federal Employment - Programs that reflect the government-wide resposibilities of the Office of Personnel Management in the recruitment and hiring of Federal civilian agency personnel.',\n    element_id: '0029',\n    value: 'FEDERAL EMPLOYMENT'\n  },\n  {\n    code: 'Z',\n    elements: [\n      {\n        code: 'Z',\n        elements: null,\n        description: null,\n        element_id: '0090001',\n        value: 'Salaries and Expenses'\n      }\n    ],\n    description: null,\n    element_id: '0090',\n    value: 'SALARIES AND EXPENSES'\n  }\n]"
                 }
             ],
+            "libs/packages/components/src/lib/tabs/tabs.component.ts": [
+                {
+                    "name": "LEFT_ARROW",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/packages/components/src/lib/tabs/tabs.component.ts",
+                    "type": "number",
+                    "defaultValue": "37",
+                    "description": "<p>CONSTANTS\nAdding in the constant values for keycodes\nto handle onKeyDown events</p>\n"
+                },
+                {
+                    "name": "RIGHT_ARROW",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/packages/components/src/lib/tabs/tabs.component.ts",
+                    "type": "number",
+                    "defaultValue": "39"
+                }
+            ],
             "libs/packages/components/src/lib/accordion/accordion-base.ts": [
                 {
                     "name": "SDS_ACCORDION",
@@ -13978,6 +15278,22 @@ const COMPONENTS = {
                     "file": "libs/packages/components/src/lib/dialog/dialog.ts",
                     "type": "object",
                     "defaultValue": "{\n  provide: SDS_DIALOG_SCROLL_STRATEGY,\n  deps: [Overlay],\n  useFactory: SDS_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY,\n}"
+                },
+                {
+                    "name": "SDS_SLIDE_OUT_SCROLL_STRATEGY",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/packages/components/src/lib/dialog/dialog.ts",
+                    "type": "",
+                    "defaultValue": "new InjectionToken<() => ScrollStrategy>('sds-slide-out-scroll-strategy')"
+                },
+                {
+                    "name": "SDS_SLIDE_OUT_SCROLL_STRATEGY_PROVIDER",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/packages/components/src/lib/dialog/dialog.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  provide: SDS_SLIDE_OUT_SCROLL_STRATEGY,\n  deps: [Overlay],\n  useFactory: SDS_SLIDE_OUT_SCROLL_STRATEGY_PROVIDER_FACTORY,\n}"
                 }
             ],
             "libs/packages/components/src/lib/menu/menu.component.ts": [
@@ -14116,15 +15432,15 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 14093,
-                                "end": 14099,
+                                "pos": 14833,
+                                "end": 14839,
                                 "flags": 0,
                                 "escapedText": "config"
                             },
                             "optional": true,
                             "tagName": {
-                                "pos": 14087,
-                                "end": 14092,
+                                "pos": 14827,
+                                "end": 14832,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -14132,15 +15448,15 @@ const COMPONENTS = {
                         },
                         {
                             "name": {
-                                "pos": 14133,
-                                "end": 14147,
+                                "pos": 14873,
+                                "end": 14887,
                                 "flags": 0,
                                 "escapedText": "defaultOptions"
                             },
                             "optional": true,
                             "tagName": {
-                                "pos": 14127,
-                                "end": 14132,
+                                "pos": 14867,
+                                "end": 14872,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -14148,8 +15464,8 @@ const COMPONENTS = {
                         },
                         {
                             "tagName": {
-                                "pos": 14178,
-                                "end": 14185,
+                                "pos": 14918,
+                                "end": 14925,
                                 "flags": 0,
                                 "escapedText": "returns"
                             },
@@ -14180,6 +15496,27 @@ const COMPONENTS = {
                 },
                 {
                     "name": "SDS_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY",
+                    "file": "libs/packages/components/src/lib/dialog/dialog.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "overlay"
+                        }
+                    ],
+                    "returnType": "ScrollStrategy",
+                    "jsdoctags": [
+                        {
+                            "name": "overlay",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "SDS_SLIDE_OUT_SCROLL_STRATEGY_PROVIDER_FACTORY",
                     "file": "libs/packages/components/src/lib/dialog/dialog.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
@@ -14383,6 +15720,29 @@ const COMPONENTS = {
                         {
                             "name": "pageY",
                             "type": "number",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "libs/packages/components/src/lib/popover/debounce.decorator.ts": [
+                {
+                    "name": "debounce",
+                    "file": "libs/packages/components/src/lib/popover/debounce.decorator.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "description": "<p>Delays calling of a function for <code>delay</code> number of milliseconds.</p>\n",
+                    "args": [
+                        {
+                            "name": "delay"
+                        }
+                    ],
+                    "returnType": "MethodDecorator",
+                    "jsdoctags": [
+                        {
+                            "name": "delay",
                             "tagName": {
                                 "text": "param"
                             }
