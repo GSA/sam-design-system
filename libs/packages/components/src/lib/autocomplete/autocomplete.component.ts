@@ -7,13 +7,14 @@ import {
   forwardRef,
   HostListener,
   ChangeDetectorRef,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
 } from '@angular/core';
-import { FaIconLibrary } from '@fortawesome/angular-fontawesome'; import { fas } from '@fortawesome/free-solid-svg-icons'; import { sds } from '@gsa-sam/sam-styles/src/icons/';
+
+import { sds } from '@gsa-sam/sam-styles/src/icons/';
 import {
   NG_VALUE_ACCESSOR,
   ControlValueAccessor,
-  FormControl
+  FormControl,
 } from '@angular/forms';
 import { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';
 import { SDSAutocompleteServiceInterface } from '../autocomplete-search/models/SDSAutocompleteServiceInterface';
@@ -24,7 +25,7 @@ import { SDSAutocompleteSearchComponent } from '../autocomplete-search/autocompl
 const Autocomplete_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => SDSAutocompleteComponent),
-  multi: true
+  multi: true,
 };
 
 @Component({
@@ -32,7 +33,7 @@ const Autocomplete_VALUE_ACCESSOR: any = {
   templateUrl: './autocomplete.component.html',
   styleUrls: ['./autocomplete.component.scss'],
   providers: [Autocomplete_VALUE_ACCESSOR],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SDSAutocompleteComponent implements ControlValueAccessor {
   /**
@@ -70,29 +71,33 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
   @Input()
   public service: SDSAutocompleteServiceInterface;
 
-  @ViewChild('autocompleteSearch', { static: true }) autocompleteSearch: SDSAutocompleteSearchComponent;
-  constructor(private cd: ChangeDetectorRef, library: FaIconLibrary) { library.addIconPacks(fas, sds); }
+  @ViewChild('autocompleteSearch', { static: true })
+  autocompleteSearch: SDSAutocompleteSearchComponent;
+  constructor(private cd: ChangeDetectorRef) {}
 
   /**
    * Stored Event for ControlValueAccessor
    */
   @HostListener('focusout')
-  public onTouched = () => { };
+  public onTouched = () => {};
 
   /**
    * Stored Event for ControlValueAccessor
    */
-  public onChange = (_: any) => { };
+  public onChange = (_: any) => {};
 
   // ControlValueAccessor (and Formly) is trying to update the value of the FormControl (our custom component) programatically
   // If there is a value we will just overwrite items
   // If there is no value we reset the items array to be empty
   writeValue(value: any) {
-    if (value instanceof SDSSelectedItemModel && value.items && value.items.length) {
+    if (
+      value instanceof SDSSelectedItemModel &&
+      value.items &&
+      value.items.length
+    ) {
       this.model.items = [...value.items];
       this.cd.markForCheck();
-    }
-    else if (value && value.length) {
+    } else if (value && value.length) {
       this.model.items = value;
       this.cd.markForCheck();
     } else {
@@ -149,8 +154,8 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
   }
 
   addItems(list: object[]) {
-    list.forEach(item => {
+    list.forEach((item) => {
       this.addItem(item);
-    })
+    });
   }
 }

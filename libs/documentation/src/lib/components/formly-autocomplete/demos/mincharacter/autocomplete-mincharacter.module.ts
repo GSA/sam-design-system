@@ -1,9 +1,10 @@
 import { FormlyModule } from '@ngx-formly/core';
 import { NgModule } from '@angular/core';
-import { FormlyAutocompleteMinCharacter} from './autocomplete-mincharacter.component';
+import { FormlyAutocompleteMinCharacter } from './autocomplete-mincharacter.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
+import { SdsIconModule } from '@gsa-sam/components';
 
 @NgModule({
   imports: [
@@ -12,9 +13,10 @@ import { SdsFormlyModule } from '@gsa-sam/sam-formly';
     FormsModule,
     FormlyModule.forRoot(),
     SdsFormlyModule,
+    SdsIconModule,
   ],
   declarations: [FormlyAutocompleteMinCharacter],
   exports: [FormlyAutocompleteMinCharacter],
-  bootstrap: [FormlyAutocompleteMinCharacter]
+  bootstrap: [FormlyAutocompleteMinCharacter],
 })
 export class FormlyAutocompleteMinCharacterModule {}

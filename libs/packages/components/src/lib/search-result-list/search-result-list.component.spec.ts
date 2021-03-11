@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SdsSearchResultListComponent } from './search-result-list.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { CommonModule } from '@angular/common';
 import { DebugElement } from '@angular/core';
 import { SpyLocation } from '@angular/common/testing';
@@ -14,8 +14,8 @@ describe('SdsSearchResultListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SdsSearchResultListComponent],
-      imports: [FontAwesomeModule, CommonModule, SdsIconModule],
-      providers: [{ provide: Location, useClass: SpyLocation }]
+      imports: [CommonModule, SdsIconModule],
+      providers: [{ provide: Location, useClass: SpyLocation }],
     }).compileComponents();
   }));
 
@@ -36,8 +36,8 @@ describe('SdsSearchResultListComponent', () => {
         { title: 'Second', id: 2 },
         { title: 'Third', id: 3 },
         { title: 'Fourth', id: 4 },
-        { title: 'Fifth', id: 5 }
-      ]
+        { title: 'Fifth', id: 5 },
+      ],
     };
     fixture.detectChanges();
     const testResult = component.updateModel.results[0];
@@ -53,7 +53,7 @@ describe('SdsSearchResultListComponent', () => {
       { title: 'Second', id: 2 },
       { title: 'Third', id: 3 },
       { title: 'Fourth', id: 4 },
-      { title: 'Fifth', id: 5, hasNewerData: true }
+      { title: 'Fifth', id: 5, hasNewerData: true },
     ];
     component.model = items;
     fixture.detectChanges();

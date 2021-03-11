@@ -1,12 +1,12 @@
-import { CommonModule } from "@angular/common";
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { IntroductionComponent } from './introduction.component';
 
 @NgModule({
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [CommonModule],
   exports: [IntroductionComponent],
   declarations: [IntroductionComponent],
-  providers: []
+  providers: [],
 })
 export class IntroductionModule {}

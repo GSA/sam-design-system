@@ -18,6 +18,7 @@ import { ResultListCardComponentModule } from './demos/card/result-list-card-com
 import { ResultListCardComponent } from './demos/card/result-list-card-component.component';
 import { ResultListTemplate } from './demos/template/result-list-template.component';
 import { ResultListTemplateModule } from './demos/template/result-list-template.module';
+import { SdsIconModule } from '@gsa-sam/components';
 
 declare var require: any;
 const DEMOS = {
@@ -86,6 +87,7 @@ export const ROUTES = [
     ResultListTemplateModule,
     ResultListComponentModule,
     ResultListCardComponentModule,
+    SdsIconModule,
   ],
 })
 export class ResultListModule {

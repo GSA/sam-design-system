@@ -3,7 +3,6 @@ import { Component, ViewChild, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PaginationModule, SdsIconModule } from '@gsa-sam/components';
 
 import {
@@ -14,7 +13,7 @@ import {
   SdsTableColumnDefComponent,
   SdsTableCellDirective,
   SdsTableHeaderCellDirective,
-  SdsTableFooterCellDirective
+  SdsTableFooterCellDirective,
 } from './table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
@@ -31,7 +30,7 @@ const MOCK_DATA = [
     jobTitle: 'Software Test Engineer IV',
     requests: 1,
     date: '2020-07-23',
-    tags: [{ className: 'text-info-dark', label: 'Normal' }]
+    tags: [{ className: 'text-info-dark', label: 'Normal' }],
   },
   {
     id: 2,
@@ -45,8 +44,8 @@ const MOCK_DATA = [
     date: '2020-04-11',
     tags: [
       { className: 'text-error', label: 'Expired' },
-      { className: 'text-warning-darker', label: 'Inactive' }
-    ]
+      { className: 'text-warning-darker', label: 'Inactive' },
+    ],
   },
   {
     id: 3,
@@ -58,7 +57,7 @@ const MOCK_DATA = [
     jobTitle: 'Media Manager IV',
     requests: 0,
     date: '2020-04-22',
-    tags: [{ className: 'text-info', label: 'Draft' }]
+    tags: [{ className: 'text-info', label: 'Draft' }],
   },
   {
     id: 4,
@@ -70,7 +69,7 @@ const MOCK_DATA = [
     jobTitle: 'Account Coordinator',
     requests: 2,
     date: '2019-11-02',
-    tags: [{ className: 'text-success', label: 'Active' }]
+    tags: [{ className: 'text-success', label: 'Active' }],
   },
   {
     id: 5,
@@ -82,7 +81,7 @@ const MOCK_DATA = [
     jobTitle: 'Financial Analyst',
     requests: 6,
     date: '2020-04-15',
-    tags: [{ className: 'text-default', label: 'Default' }]
+    tags: [{ className: 'text-default', label: 'Default' }],
   },
   {
     id: 6,
@@ -94,7 +93,7 @@ const MOCK_DATA = [
     jobTitle: 'Clinical Specialist',
     requests: 11,
     date: '2020-04-17',
-    tags: [{ className: 'text-error', label: 'Expired' }]
+    tags: [{ className: 'text-error', label: 'Expired' }],
   },
   {
     id: 7,
@@ -108,8 +107,8 @@ const MOCK_DATA = [
     date: '2019-11-13',
     tags: [
       { className: 'text-info', label: 'Draft' },
-      { className: 'text-warning-light', label: 'Expiring' }
-    ]
+      { className: 'text-warning-light', label: 'Expiring' },
+    ],
   },
   {
     id: 8,
@@ -121,7 +120,7 @@ const MOCK_DATA = [
     jobTitle: 'Engineer II',
     requests: 1,
     date: '2020-01-09',
-    tags: [{ className: 'text-success', label: 'Active' }]
+    tags: [{ className: 'text-success', label: 'Active' }],
   },
   {
     id: 9,
@@ -133,7 +132,7 @@ const MOCK_DATA = [
     jobTitle: 'Associate Professor',
     requests: 5,
     date: '2020-02-20',
-    tags: [{ className: 'text-info', label: 'Draft' }]
+    tags: [{ className: 'text-info', label: 'Draft' }],
   },
   {
     id: 10,
@@ -145,8 +144,8 @@ const MOCK_DATA = [
     jobTitle: 'Safety Technician II',
     requests: 2,
     date: '2019-12-13',
-    tags: [{ className: 'text-error', label: 'Expired' }]
-  }
+    tags: [{ className: 'text-error', label: 'Expired' }],
+  },
 ];
 
 @Component({
@@ -211,11 +210,11 @@ const MOCK_DATA = [
         <ng-template #sdsCell let-element="element">
           <ul class="usa-list usa-list--unstyled">
             <li *ngFor="let tag of element.tags">
-              <fa-icon
-                [icon]="['fas', 'circle']"
+              <sds-icon
+                [icon]="['bs', 'circle']"
                 size="sm"
                 [class]="tag.className"
-              ></fa-icon>
+              ></sds-icon>
               {{ tag.label }}
             </li>
           </ul>
@@ -272,7 +271,7 @@ const MOCK_DATA = [
         [sticky]="true"
       ></sds-footer-row>
     </sds-table>
-  `
+  `,
 })
 class WrapperComponent {
   @ViewChild(SdsTableComponent) sdsTableComponentRef: SdsTableComponent;
@@ -291,7 +290,7 @@ class WrapperComponent {
     'requests',
     'date',
     'tags',
-    'actions'
+    'actions',
   ];
 
   data = MOCK_DATA;
@@ -301,7 +300,7 @@ class WrapperComponent {
 
   getTotalRequests() {
     return this.data
-      .map(t => t.requests)
+      .map((t) => t.requests)
       .reduce((acc, value) => acc + value, 0);
   }
 }
@@ -323,18 +322,18 @@ describe('SdsTableComponent Full', () => {
         SdsTableCellDirective,
         SdsTableHeaderCellDirective,
         SdsTableFooterCellDirective,
-        WrapperComponent
+        WrapperComponent,
       ],
       imports: [
         MatTableModule,
-        FontAwesomeModule,
+
         MatSortModule,
         SdsIconModule,
-        FontAwesomeModule,
+
         MatPaginatorModule,
         BrowserAnimationsModule,
-        PaginationModule
-      ]
+        PaginationModule,
+      ],
     }).compileComponents();
   }));
 
@@ -367,7 +366,7 @@ describe('SdsTableComponent Full', () => {
       component.page = {
         pageNumber: 1,
         pageSize: 5,
-        totalPages: 0
+        totalPages: 0,
       };
       component.updateSdsPagination();
       fixture.detectChanges();

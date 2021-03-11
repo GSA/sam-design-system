@@ -5,7 +5,7 @@ import {
   TemplateRef,
   ElementRef,
   forwardRef,
-  ChangeDetectorRef
+  ChangeDetectorRef,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { SDSAutocompleteServiceInterface } from './models/SDSAutocompleteServiceInterface';
@@ -13,31 +13,25 @@ import { KeyHelper, KEYS } from '../key-helper/key-helper';
 import { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';
 import {
   SelectionMode,
-  SDSSelectedItemModelHelper
+  SDSSelectedItemModelHelper,
 } from '../selected-result/models/sds-selected-item-model-helper';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { sds } from '@gsa-sam/sam-styles/src/icons/';
+
 import { SDSAutocompleteSearchConfiguration } from './models/SDSAutocompleteConfiguration';
-import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+
 const Autocomplete_Autocomplete_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => SDSAutocompleteSearchComponent),
-  multi: true
+  multi: true,
 };
 
 @Component({
   selector: 'sds-search-autocomplete',
   templateUrl: './autocomplete-search.component.html',
   styleUrls: ['./autocomplete-search.component.scss'],
-  providers: [Autocomplete_Autocomplete_VALUE_ACCESSOR]
+  providers: [Autocomplete_Autocomplete_VALUE_ACCESSOR],
 })
 export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
-  constructor(
-    private _changeDetectorRef: ChangeDetectorRef,
-    library: FaIconLibrary
-  ) {
-    library.addIconPacks(fas, sds);
-  }
+  constructor(private _changeDetectorRef: ChangeDetectorRef) {}
   /**
    * Ul list of elements
    */
@@ -370,19 +364,24 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     flatten(results);
     return flat;
   }
-  
+
   /**
    * When paging up and down with arrow key it sets the highlighted item into view
    */
   private scrollToSelectedItem() {
     if (this.highlightedIndex >= 0) {
-      this._changeDetectorRef.detectChanges();;
+      this._changeDetectorRef.detectChanges();
       const dom = this.resultsListElement.nativeElement;
-      const selectedChild = dom.querySelector('.sds-autocomplete__item--highlighted');
+      const selectedChild = dom.querySelector(
+        '.sds-autocomplete__item--highlighted'
+      );
       if (selectedChild) {
         // Manually set scroll top rather than invoke scroll functions for browser compatibility
-        const containerCenter = this.resultsListElement.nativeElement.getBoundingClientRect().height / 2;
-        this.resultsListElement.nativeElement.scrollTop = selectedChild.offsetTop - containerCenter;
+        const containerCenter =
+          this.resultsListElement.nativeElement.getBoundingClientRect().height /
+          2;
+        this.resultsListElement.nativeElement.scrollTop =
+          selectedChild.offsetTop - containerCenter;
       }
     }
   }
@@ -458,7 +457,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    */
   checkItemSelected(result: any) {
     const selectedItem = this.model.items.filter(
-      item =>
+      (item) =>
         item[this.configuration.primaryKeyField] ===
         result[this.configuration.primaryKeyField]
     );
@@ -479,7 +478,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
         window.clearTimeout(this.timeoutNumber);
         this.timeoutNumber = window.setTimeout(() => {
           this.showLoad = true;
-          this.service.getDataByText(0, searchString).subscribe(result => {
+          this.service.getDataByText(0, searchString).subscribe((result) => {
             this.results = result.items;
             this.showLoad = false;
             this.maxResults = result.totalItems;
@@ -531,7 +530,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     this.showLoad = true;
     this.service
       .getDataByText(this.results.length, this.searchString)
-      .subscribe(result => {
+      .subscribe((result) => {
         for (let i = 0; i < result.items.length; i++) {
           this.addResult(result.items[i]);
         }
@@ -591,11 +590,14 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       this._changeDetectorRef.markForCheck();
       if (this.model.items.length === 0) {
         this.inputValue = '';
-      } else if (this.configuration && this.configuration.selectionMode === SelectionMode.SINGLE){
-          this.inputValue = this.getObjectValue(
-            this.model.items[0],
-            this.configuration.primaryTextField
-          );
+      } else if (
+        this.configuration &&
+        this.configuration.selectionMode === SelectionMode.SINGLE
+      ) {
+        this.inputValue = this.getObjectValue(
+          this.model.items[0],
+          this.configuration.primaryTextField
+        );
       }
     }
   }

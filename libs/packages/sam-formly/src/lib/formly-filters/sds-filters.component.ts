@@ -9,9 +9,7 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
-import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { sds } from '@gsa-sam/sam-styles/src/icons/';
+
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -81,7 +79,6 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
    */
   @Input() defaultModel: any;
 
-
   /**
    *  Emit results when model updated
    */
@@ -93,7 +90,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
   _isEmpty = (obj: any): boolean => Object.keys(obj).length === 0;
   overwrite = (baseObj: any, newObj: any) => {
     const result = {};
-    const mergedObj = {...baseObj, ...newObj};
+    const mergedObj = { ...baseObj, ...newObj };
     for (const key in mergedObj) {
       if (Array.isArray(baseObj[key])) {
         result[key] = newObj[key] || null;
@@ -115,11 +112,8 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     private router: Router,
     private route: ActivatedRoute,
     @Optional()
-    private filterUpdateModelService: SDSFormlyUpdateModelService,
-    library: FaIconLibrary
-  ) {
-    library.addIconPacks(fas, sds);
-  }
+    private filterUpdateModelService: SDSFormlyUpdateModelService
+  ) {}
   ngOnDestroy() {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
@@ -135,9 +129,9 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
               this.form.getRawValue(),
               filter
             );
-            
+
             // Shallow copy to not trigger onChanges from formly side
-            Object.keys(updatedFormValue).forEach(key => {
+            Object.keys(updatedFormValue).forEach((key) => {
               this.model[key] = updatedFormValue[key];
             });
 

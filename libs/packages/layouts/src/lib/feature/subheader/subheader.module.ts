@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import {
   SdsMenuModule,
   SdsSearchModule,
   SdsObserversModule,
   SdsTruncateModule,
-  SdsIconModule
+  SdsIconModule,
 } from '@gsa-sam/components';
 import {
   SdsSubheaderComponent,
   SdsSubheaderActionsComponent,
   SdsSubheaderDrawerComponent,
-  SdsDrawerContentComponent
+  SdsDrawerContentComponent,
 } from './subheader.component';
 import { SdsActionsMenuModule } from '../actions-menu/actions-menu.module';
 import { SdsDrawerCommunicationService } from './drawer-communication.service';
@@ -20,27 +20,26 @@ import { SdsDrawerCommunicationService } from './drawer-communication.service';
 @NgModule({
   imports: [
     CommonModule,
-    FontAwesomeModule,
+
     SdsMenuModule,
     SdsObserversModule,
     SdsSearchModule,
     SdsTruncateModule,
     SdsActionsMenuModule,
-    SdsIconModule
+    SdsIconModule,
   ],
   exports: [
     SdsSubheaderComponent,
     SdsSubheaderActionsComponent,
     SdsSubheaderDrawerComponent,
     SdsDrawerContentComponent,
-
   ],
   declarations: [
     SdsSubheaderComponent,
     SdsSubheaderActionsComponent,
     SdsSubheaderDrawerComponent,
-    SdsDrawerContentComponent
+    SdsDrawerContentComponent,
   ],
-  providers: [SdsDrawerCommunicationService]
+  providers: [SdsDrawerCommunicationService],
 })
 export class SdsSubheaderModule {}

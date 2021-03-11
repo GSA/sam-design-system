@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
-import { SdsPageModule } from '@gsa-sam/components';
+import { SdsIconModule, SdsPageModule } from '@gsa-sam/components';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SdsSearchResultListModule } from '@gsa-sam/components';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SdsActionsMenuModule } from '@gsa-sam/layouts';
 import { ResultListCardComponent } from './result-list-card-component.component';
 import { ResultListCardItemSampleComponent } from './card-item.component';
@@ -13,17 +12,17 @@ import { ResultListCardItemChildSampleComponent } from './child-card-item.compon
   declarations: [
     ResultListCardComponent,
     ResultListCardItemSampleComponent,
-    ResultListCardItemChildSampleComponent
+    ResultListCardItemChildSampleComponent,
   ],
   imports: [
-    FontAwesomeModule,
     CommonModule,
     FormsModule,
+    SdsIconModule,
     SdsPageModule,
     SdsSearchResultListModule,
-    SdsActionsMenuModule
+    SdsActionsMenuModule,
   ],
   exports: [ResultListCardComponent],
-  bootstrap: [ResultListCardComponent]
+  bootstrap: [ResultListCardComponent],
 })
 export class ResultListCardComponentModule {}

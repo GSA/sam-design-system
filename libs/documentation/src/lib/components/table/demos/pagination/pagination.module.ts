@@ -1,19 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SdsTableModule } from '@gsa-sam/sam-material-extensions';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { TablePaginationComponent } from './pagination.component';
 
+import { TablePaginationComponent } from './pagination.component';
 
 @NgModule({
   declarations: [TablePaginationComponent],
-  imports: [
-    CommonModule,
-    SdsTableModule,
-    FontAwesomeModule
-  ],
+  imports: [CommonModule, SdsTableModule],
   exports: [TablePaginationComponent],
-  bootstrap: [TablePaginationComponent]
+  bootstrap: [TablePaginationComponent],
 })
-
-export class TablePaginationModule { }
+export class TablePaginationModule {}

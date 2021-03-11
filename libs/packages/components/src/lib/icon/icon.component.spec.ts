@@ -1,7 +1,7 @@
 import { Component, DebugElement, ViewChild } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { NgxBootstrapIconsModule,allIcons } from 'ngx-bootstrap-icons';
+
+import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
 
 import { SdsIconComponent } from './icon.component';
 @Component({
@@ -10,7 +10,7 @@ import { SdsIconComponent } from './icon.component';
     <sds-icon [icon]="['bs', 'alarm']" [rotate]="90"></sds-icon>
     <sds-icon [icon]="['bs', 'alarm']" [rotate]="180"></sds-icon>
     <sds-icon [icon]="['bs', 'alarm']" [rotate]="270"></sds-icon>
-  `
+  `,
 })
 class IconRotationComponent {}
 
@@ -21,10 +21,9 @@ describe('IconComponent Rotation', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SdsIconComponent, IconRotationComponent ],
-      imports: [FontAwesomeModule, NgxBootstrapIconsModule.pick(allIcons)]
-    })
-    .compileComponents();
+      declarations: [SdsIconComponent, IconRotationComponent],
+      imports: [NgxBootstrapIconsModule.pick(allIcons)],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -41,26 +40,32 @@ describe('IconComponent Rotation', () => {
   it('first boostrap icon should have rotate-0 class applied', () => {
     const firstSdsIcon = iconRotationEl.children[0];
     const baselineIcon = firstSdsIcon.children[0]; // Either i-bs or fa-icon
-    expect(baselineIcon.nativeElement.classList.contains('rotate-0')).toBe(true);
+    expect(baselineIcon.nativeElement.classList.contains('rotate-0')).toBe(
+      true
+    );
   });
   it('second boostrap icon should have rotate-90 class applied', () => {
     const secondSdsIcon = iconRotationEl.children[1];
     const baselineIcon = secondSdsIcon.children[0]; // Either i-bs or fa-icon
-    expect(baselineIcon.nativeElement.classList.contains('rotate-90')).toBe(true);
+    expect(baselineIcon.nativeElement.classList.contains('rotate-90')).toBe(
+      true
+    );
   });
   it('third boostrap icon should have rotate-180 class applied', () => {
     const secondSdsIcon = iconRotationEl.children[2];
     const baselineIcon = secondSdsIcon.children[0]; // Either i-bs or fa-icon
-    expect(baselineIcon.nativeElement.classList.contains('rotate-180')).toBe(true);
+    expect(baselineIcon.nativeElement.classList.contains('rotate-180')).toBe(
+      true
+    );
   });
   it('fourth boostrap icon should have rotate-270 class applied', () => {
     const secondSdsIcon = iconRotationEl.children[3];
     const baselineIcon = secondSdsIcon.children[0]; // Either i-bs or fa-icon
-    expect(baselineIcon.nativeElement.classList.contains('rotate-270')).toBe(true);
+    expect(baselineIcon.nativeElement.classList.contains('rotate-270')).toBe(
+      true
+    );
   });
 });
-
-
 
 @Component({
   template: `
@@ -72,8 +77,7 @@ describe('IconComponent Rotation', () => {
     <sds-icon [icon]="['bs', 'alarm']" [size]="'3x'"></sds-icon>
     <sds-icon [icon]="['bs', 'alarm']" [size]="'5x'"></sds-icon>
     <sds-icon [icon]="['bs', 'alarm']" [size]="'7x'"></sds-icon>
-
-  `
+  `,
 })
 class IconScalingComponent {}
 
@@ -84,10 +88,9 @@ describe('IconComponent Scaling', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SdsIconComponent, IconScalingComponent ],
-      imports: [FontAwesomeModule, NgxBootstrapIconsModule.pick(allIcons)]
-    })
-    .compileComponents();
+      declarations: [SdsIconComponent, IconScalingComponent],
+      imports: [NgxBootstrapIconsModule.pick(allIcons)],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -138,4 +141,3 @@ describe('IconComponent Scaling', () => {
     expect(baselineIcon.nativeElement.classList.contains('size-7x')).toBe(true);
   });
 });
-

@@ -1,5 +1,5 @@
-<sds-table [data]="data" [pagination]="true" expansion sort [sortFn]="customSort" [tableName]="'fullTable'" (expansionClicked)="onExpansionClicked($event)"
-  class="maxh-tablet overflow-auto">
+<sds-table [data]="data" [pagination]="true" expansion sort [sortFn]="customSort" [tableName]="'fullTable'"
+  (expansionClicked)="onExpansionClicked($event)" class="maxh-tablet overflow-auto">
 
   <sds-table-column sdsColumnName="id" sticky="true">
     <ng-template #sdsHeaderCell>ID</ng-template>
@@ -37,7 +37,7 @@
     <ng-template #sdsCell let-element="element">
       <ul class="usa-list usa-list--unstyled">
         <li *ngFor="let tag of element.tags">
-          <fa-icon [icon]="['fas', 'circle']" size="sm" [class]="tag.className"></fa-icon>
+          <sds-icon [icon]="['bs', 'circle']" size="sm" [class]="tag.className"></sds-icon>
           {{ tag.label }}
         </li>
       </ul>

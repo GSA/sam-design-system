@@ -18,13 +18,10 @@ import {
   BasePortalOutlet,
   ComponentPortal,
   CdkPortalOutlet,
-  TemplatePortal
+  TemplatePortal,
 } from '@angular/cdk/portal';
 import { FocusTrap, FocusTrapFactory } from '@angular/cdk/a11y';
 import { SdsDialogConfig } from './dialog-config';
-import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { sds } from '@gsa-sam/sam-styles/src/icons/';
 
 /**
  * Throws an exception for the case when a ComponentPortal is
@@ -32,7 +29,9 @@ import { sds } from '@gsa-sam/sam-styles/src/icons/';
  * @docs-private
  */
 export function throwSdsDialogContentAlreadyAttachedError() {
-  throw Error('Attempting to attach dialog content after content is already attached');
+  throw Error(
+    'Attempting to attach dialog content after content is already attached'
+  );
 }
 
 /**
@@ -49,12 +48,12 @@ export function throwSdsDialogContentAlreadyAttachedError() {
   animations: [sdsDialogAnimations.dialogContainer],
   // tslint:disable-next-line: use-host-property-decorator
   host: {
-    'class': 'sds-dialog__container',
+    class: 'sds-dialog__container',
     '[class.sds-dialog--alert]': '_config.alert',
     '[class.sds-dialog--alert-error]': '_config.alert === "error"',
     '[class.sds-dialog--alert-warning]': '_config.alert === "warning"',
     '[class.sds-dialog--alert-info]': '_config.alert === "info"',
-    'tabindex': '-1',
+    tabindex: '-1',
     'aria-modal': 'true',
     '[attr.id]': '_id',
     '[attr.role]': '_config.role',
@@ -67,7 +66,6 @@ export function throwSdsDialogContentAlreadyAttachedError() {
   },
 })
 export class SdsDialogContainerComponent extends BasePortalOutlet {
-
   /** The portal outlet inside of this container into which the dialog content will be loaded. */
   @ViewChild(CdkPortalOutlet, { static: true }) _portalOutlet: CdkPortalOutlet;
 
@@ -89,16 +87,15 @@ export class SdsDialogContainerComponent extends BasePortalOutlet {
   /** ID for the container DOM element. */
   _id: string;
 
-  constructor(library: FaIconLibrary,
+  constructor(
     private _elementRef: ElementRef,
     private _focusTrapFactory: FocusTrapFactory,
     private _changeDetectorRef: ChangeDetectorRef,
     @Optional() @Inject(DOCUMENT) private _document: any,
     /** The dialog configuration. */
-    public _config: SdsDialogConfig) {
+    public _config: SdsDialogConfig
+  ) {
     super();
-    library.addIconPacks(fas, sds);
-    // super();
   }
 
   /**
@@ -130,7 +127,9 @@ export class SdsDialogContainerComponent extends BasePortalOutlet {
   /** Moves the focus inside the focus trap. */
   private _trapFocus() {
     if (!this._focusTrap) {
-      this._focusTrap = this._focusTrapFactory.create(this._elementRef.nativeElement);
+      this._focusTrap = this._focusTrapFactory.create(
+        this._elementRef.nativeElement
+      );
     }
 
     // If were to attempt to focus immediately, then the content of the dialog would not yet be
@@ -146,7 +145,11 @@ export class SdsDialogContainerComponent extends BasePortalOutlet {
     const toFocus = this._elementFocusedBeforeDialogWasOpened;
 
     // We need the extra check, because IE can set the `activeElement` to null in some cases.
-    if (this._config.restoreFocus && toFocus && typeof toFocus.focus === 'function') {
+    if (
+      this._config.restoreFocus &&
+      toFocus &&
+      typeof toFocus.focus === 'function'
+    ) {
       toFocus.focus();
     }
 
@@ -158,7 +161,8 @@ export class SdsDialogContainerComponent extends BasePortalOutlet {
   /** Saves a reference to the element that was focused before the dialog was opened. */
   private _savePreviouslyFocusedElement() {
     if (this._document) {
-      this._elementFocusedBeforeDialogWasOpened = this._document.activeElement as HTMLElement;
+      this._elementFocusedBeforeDialogWasOpened = this._document
+        .activeElement as HTMLElement;
 
       // Note that there is no focus method when rendering on the server.
       if (this._elementRef.nativeElement.focus) {

@@ -3,10 +3,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SdsHeaderComponent } from './header.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SdsTopBannerComponent } from '@gsa-sam/components';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { NavigationMode } from '@gsa-sam/components';
 import { A11yModule } from '@angular/cdk/a11y';
-
 
 describe('SdsHeaderComponent', () => {
   let component: SdsHeaderComponent;
@@ -15,19 +14,53 @@ describe('SdsHeaderComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SdsHeaderComponent, SdsTopBannerComponent],
-      imports: [RouterTestingModule, FontAwesomeModule, A11yModule]
-    })
-      .compileComponents();
+      imports: [RouterTestingModule, A11yModule],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SdsHeaderComponent);
     component = fixture.componentInstance;
     component.model = {
-      home: { text: "", logo: "", id: "home", route: '', selected: false, mode: NavigationMode.INTERNAL },
-      navigationLinks:
-        [{ text: "", selected: false, route: "", children: [{ text: "", selected: false, route: "", children: [], id: "childLink", mode: NavigationMode.INTERNAL }], id: "navLink", mode: NavigationMode.INTERNAL }],
-      secondaryLinks: [{ text: "", selected: false, route: "", id: "secNavLink", hasCounter: false, imageClass: '', imageClassPrefix: '', mode: NavigationMode.INTERNAL }]
+      home: {
+        text: '',
+        logo: '',
+        id: 'home',
+        route: '',
+        selected: false,
+        mode: NavigationMode.INTERNAL,
+      },
+      navigationLinks: [
+        {
+          text: '',
+          selected: false,
+          route: '',
+          children: [
+            {
+              text: '',
+              selected: false,
+              route: '',
+              children: [],
+              id: 'childLink',
+              mode: NavigationMode.INTERNAL,
+            },
+          ],
+          id: 'navLink',
+          mode: NavigationMode.INTERNAL,
+        },
+      ],
+      secondaryLinks: [
+        {
+          text: '',
+          selected: false,
+          route: '',
+          id: 'secNavLink',
+          hasCounter: false,
+          imageClass: '',
+          imageClassPrefix: '',
+          mode: NavigationMode.INTERNAL,
+        },
+      ],
     };
   });
 
@@ -45,9 +78,7 @@ describe('SdsHeaderComponent', () => {
     expect(component.find('')).toBe(null);
   });
 
-
   it('home find / select /deselect', () => {
-
     expect(component.find(component.model.home.id)).toBe(component.model.home);
 
     expect(component.model.home.selected).toBe(false);
@@ -57,9 +88,10 @@ describe('SdsHeaderComponent', () => {
     expect(component.model.home.selected).toBe(false);
   });
 
-
   it('navigation link find / select /deselect', () => {
-    expect(component.find(component.model.navigationLinks[0].id)).toBe(component.model.navigationLinks[0]);
+    expect(component.find(component.model.navigationLinks[0].id)).toBe(
+      component.model.navigationLinks[0]
+    );
     component.select(component.model.navigationLinks[0].id);
     expect(component.model.navigationLinks[0].selected).toBe(true);
     component.deselect();
@@ -67,7 +99,9 @@ describe('SdsHeaderComponent', () => {
   });
 
   it('secondary navigation link find / select /deselect', () => {
-    expect(component.find(component.model.secondaryLinks[0].id)).toBe(component.model.secondaryLinks[0]);
+    expect(component.find(component.model.secondaryLinks[0].id)).toBe(
+      component.model.secondaryLinks[0]
+    );
 
     component.select(component.model.secondaryLinks[0].id);
     expect(component.model.secondaryLinks[0].selected).toBe(true);
@@ -76,7 +110,9 @@ describe('SdsHeaderComponent', () => {
   });
 
   it('navigation link child find / select /deselect', () => {
-    expect(component.find(component.model.navigationLinks[0].children[0].id)).toBe(component.model.navigationLinks[0].children[0]);
+    expect(
+      component.find(component.model.navigationLinks[0].children[0].id)
+    ).toBe(component.model.navigationLinks[0].children[0]);
     component.select(component.model.navigationLinks[0].children[0].id);
     expect(component.model.navigationLinks[0].children[0].selected).toBe(true);
     component.deselect();
@@ -89,12 +125,10 @@ describe('SdsHeaderComponent', () => {
     expect(component.hasCounter()).toBe(true);
   });
 
-
   it('event click', () => {
     let navItem = { mode: NavigationMode.EVENT, text: 'test', route: '/' };
     spyOn(component.linkEvent, 'emit');
     component.linkClickEvent(navItem);
     expect(component.linkEvent.emit).toHaveBeenCalledWith(navItem);
   });
-
 });

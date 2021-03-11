@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SdsFooterComponent } from './footer.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NavigationMode } from '@gsa-sam/components';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { SdsAccordionModule } from '@gsa-sam/sam-material-extensions';
 import { FooterLogo } from './model/FooterModel';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,20 +17,24 @@ describe('SdsFooterComponent', () => {
       declarations: [SdsFooterComponent],
       imports: [
         NoopAnimationsModule,
-        RouterTestingModule, 
-        FontAwesomeModule,
+        RouterTestingModule,
+
         SdsAccordionModule,
         SdsFeedbackModule,
-      ]
-    })
-      .compileComponents();
+      ],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SdsFooterComponent);
     component = fixture.componentInstance;
     component.model = {
-      linkSections: [{ text: 'test link', links: [{mode: NavigationMode.EVENT, text: 'test', route: '/'}] }],
+      linkSections: [
+        {
+          text: 'test link',
+          links: [{ mode: NavigationMode.EVENT, text: 'test', route: '/' }],
+        },
+      ],
       footerLogo: {} as FooterLogo,
     };
     fixture.detectChanges();

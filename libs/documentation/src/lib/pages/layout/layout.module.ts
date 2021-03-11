@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { ResultsLayoutComponent } from './layout.component';
 import {
   SdsSearchResultListModule,
@@ -23,7 +23,7 @@ import { SdsAccordionModule } from '@gsa-sam/sam-material-extensions';
 @NgModule({
   imports: [
     CommonModule,
-    FontAwesomeModule,
+
     SdsToolbarModule,
     SdsAccordionModule,
     SdsSideNavigationModule,

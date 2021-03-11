@@ -7,6 +7,6 @@ import { SdsIconModule } from '../icon/icon.module';
 @NgModule({
   imports: [CommonModule, FormsModule, SdsIconModule],
   declarations: [SdsSearchResultListComponent],
-  exports: [SdsSearchResultListComponent]
+  exports: [SdsSearchResultListComponent],
 })
 export class SdsSearchResultListModule {}

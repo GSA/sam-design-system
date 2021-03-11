@@ -2,19 +2,25 @@ import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { ExternalLinkDirective } from './external-link.directive';
-import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 
 @Component({
   template: `
     <a id="test" href="google.com">Google </a>
-    <a id="test2" [hideIcon]="true" href="google.com" aria-label="test aria label">Google </a>
+    <a
+      id="test2"
+      [hideIcon]="true"
+      href="google.com"
+      aria-label="test aria label"
+      >Google
+    </a>
     <a id="test3">Not Google </a>
-    <a id="test4" href="{{name}}/settings/test123">Google </a>
-  `
+    <a id="test4" href="{{ name }}/settings/test123">Google </a>
+  `,
 })
 class TestComponent {
-  constructor() { }
+  constructor() {}
   public name = location.hostname;
 }
 
@@ -29,9 +35,9 @@ describe('Sam External Link Directive', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TestComponent, ExternalLinkDirective, FaIconComponent]
+      declarations: [TestComponent, ExternalLinkDirective],
     }).overrideModule(BrowserDynamicTestingModule, {
-      set: { entryComponents: [FaIconComponent] }
+      set: { entryComponents: [] },
     });
 
     fixture = TestBed.createComponent(TestComponent);
@@ -54,21 +60,31 @@ describe('Sam External Link Directive', () => {
     expect(icons.length).toEqual(1);
   });
 
-  it ('Showd add aria label attribute to external links if one does not exist', () => {
+  it('Showd add aria label attribute to external links if one does not exist', () => {
     fixture.detectChanges();
-    const testElementWithoutAriaLabel = fixture.debugElement.query(By.css('#test'));
-    expect(testElementWithoutAriaLabel.attributes['aria-label']).toEqual('Open google.com in a new window');
+    const testElementWithoutAriaLabel = fixture.debugElement.query(
+      By.css('#test')
+    );
+    expect(testElementWithoutAriaLabel.attributes['aria-label']).toEqual(
+      'Open google.com in a new window'
+    );
   });
 
   it('Should not add aria label to external link if one is already provided', () => {
     fixture.detectChanges();
-    const testElementWithoutAriaLabel = fixture.debugElement.query(By.css('#test2'));
-    expect(testElementWithoutAriaLabel.attributes['aria-label']).toEqual('test aria label');
+    const testElementWithoutAriaLabel = fixture.debugElement.query(
+      By.css('#test2')
+    );
+    expect(testElementWithoutAriaLabel.attributes['aria-label']).toEqual(
+      'test aria label'
+    );
   });
 
   it('Should not add aria label to internal links', () => {
     fixture.detectChanges();
-    const testElementWithoutAriaLabel = fixture.debugElement.query(By.css('#test4'));
+    const testElementWithoutAriaLabel = fixture.debugElement.query(
+      By.css('#test4')
+    );
     expect(testElementWithoutAriaLabel.attributes['aria-label']).toEqual('');
-  })
+  });
 });

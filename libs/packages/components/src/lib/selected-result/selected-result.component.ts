@@ -3,29 +3,23 @@ import { SDSSelectedItemModel } from './models/sds-selectedItem.model';
 import { SDSSelectedResultConfiguration } from './models/SDSSelectedResultConfiguration';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { SDSSelectedItemModelHelper } from './models/sds-selected-item-model-helper';
-import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { sds } from '@gsa-sam/sam-styles/src/icons/';
+
 const SDS_SelectedResult_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => SDSSelectedResultComponent),
-  multi: true
+  multi: true,
 };
 
 @Component({
   selector: 'sds-selected-result',
   templateUrl: './selected-result.component.html',
   styleUrls: ['./selected-result.component.scss'],
-  providers: [SDS_SelectedResult_VALUE_ACCESSOR]
+  providers: [SDS_SelectedResult_VALUE_ACCESSOR],
 })
 export class SDSSelectedResultComponent implements ControlValueAccessor {
-  constructor(library: FaIconLibrary) {
-    library.addIconPacks(fas, sds);
-  }
-
   /**
-  * Allow to insert a customized template for suggestions to use
-  */
+   * Allow to insert a customized template for suggestions to use
+   */
   @Input() itemTemplate: TemplateRef<any>;
 
   /**
@@ -33,10 +27,9 @@ export class SDSSelectedResultComponent implements ControlValueAccessor {
    */
   public model: SDSSelectedItemModel;
 
-
   /**
-  * Configuration for the Selected Results control 
-  */
+   * Configuration for the Selected Results control
+   */
   @Input()
   public configuration: SDSSelectedResultConfiguration;
 
@@ -55,11 +48,15 @@ export class SDSSelectedResultComponent implements ControlValueAccessor {
 
   /**
    * Removes item from the model
-   * @param item 
+   * @param item
    */
   removeItem(item: object) {
     if (!this.disabled) {
-      SDSSelectedItemModelHelper.removeItem(item, this.configuration.primaryKeyField, this.model);
+      SDSSelectedItemModelHelper.removeItem(
+        item,
+        this.configuration.primaryKeyField,
+        this.model
+      );
       this.propogateChange(this.model);
       this.onTouchedCallback();
     }
@@ -83,10 +80,9 @@ export class SDSSelectedResultComponent implements ControlValueAccessor {
     this.disabled = isDisabled;
   }
 
-
   /**
    * Gets the string value from the specifed properties of an object
-   * @param object 
+   * @param object
    * @param propertyFields comma seperated list with periods depth of object
    */
   getObjectValue(object: Object, propertyFields: string): string {
@@ -110,5 +106,4 @@ export class SDSSelectedResultComponent implements ControlValueAccessor {
     }
     return value.trim();
   }
-
 }

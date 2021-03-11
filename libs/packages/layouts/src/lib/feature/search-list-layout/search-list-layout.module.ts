@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { SearchListLayoutComponent } from './search-list-layout.component';
 import {
   PaginationModule,
+  SdsIconModule,
   SdsSearchResultListModule,
 } from '@gsa-sam/components';
 
@@ -12,6 +13,7 @@ import {
   imports: [
     CommonModule,
     FormsModule,
+    SdsIconModule,
     PaginationModule,
     SdsSearchResultListModule,
   ],

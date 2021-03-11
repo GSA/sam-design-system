@@ -2,21 +2,20 @@ import {
   async,
   ComponentFixture,
   TestBed,
-  fakeAsync
+  fakeAsync,
 } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { SdsDialogService } from '@gsa-sam/components';
 
 import { AdvancedFiltersComponent } from './advanced-filters.component';
 import { SdsAdvancedFiltersService } from './sds-advanced-filters.service';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 describe('Advanced Filteres Component', () => {
   let component: AdvancedFiltersComponent;
   let fixture: ComponentFixture<AdvancedFiltersComponent>;
   let modalServiceSpy: jasmine.SpyObj<SdsDialogService>;
   let dialogRefSpyObj = jasmine.createSpyObj({
-    afterClosed: of({})
+    afterClosed: of({}),
   });
   let advancedFiltersService: SdsAdvancedFiltersService;
 
@@ -28,14 +27,14 @@ describe('Advanced Filteres Component', () => {
     );
     TestBed.configureTestingModule({
       declarations: [AdvancedFiltersComponent],
-      imports: [FontAwesomeModule],
+      imports: [],
       providers: [
         { provide: SdsDialogService, useValue: modalServiceSpy },
         {
           provide: SdsAdvancedFiltersService,
-          useValue: advancedFiltersServiceSpy
-        }
-      ]
+          useValue: advancedFiltersServiceSpy,
+        },
+      ],
     }).compileComponents();
   }));
 

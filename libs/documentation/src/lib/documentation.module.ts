@@ -4,13 +4,7 @@ import { OverviewModule } from './pages/overview/overview.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { sds } from '@gsa-sam/sam-styles/src/icons/';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import {
-  FontAwesomeModule,
-  FaIconLibrary,
-} from '@fortawesome/angular-fontawesome';
+
 /* Layout / Components */
 import {
   ROUTES as HEADER_ROUTES,
@@ -335,12 +329,7 @@ export const ROUTES: Routes = [
     ExternalLinkModule,
     ToastsModule,
     ReadonlyModule,
-    RoadmapModule
+    RoadmapModule,
   ],
 })
-export class DocumentationModule {
-  constructor(library: FaIconLibrary) {
-    library.addIconPacks(fas, sds);
-    // library.add(fas, sds);
-  }
-}
+export class DocumentationModule {}
