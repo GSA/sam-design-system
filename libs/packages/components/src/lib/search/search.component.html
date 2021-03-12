@@ -28,21 +28,19 @@
       [placeholder]="searchSettings.placeholder? searchSettings.placeholder : 'type here'"
       [attr.aria-label]="searchSettings.ariaLabel" (blur)="focusChange()" (input)="writeValueToModel()" />
 
-    <span *ngIf="searchSettings.isSuffixSearchIcon" class="position-relative top-1 cursor-pointer" [ngClass]="{'top-2':searchSettings.size === 'large','close-icon-large': searchSettings.size === 'large',
-      'close-icon': !searchSettings.size}">
-      <span *ngIf="model.searchText" role="button" aria-label="Clear input" (click)="clearInput($event)"
-        (keyup.enter)="clearInput($event)" tabindex="0">
+    <span class="" *ngIf="searchSettings.isSuffixSearchIcon" class="cursor-pointer">
+      <span *ngIf="model.searchText" class="postfix close-icon" role="button" aria-label="Clear input"
+        (click)="clearInput($event)" (keyup.enter)="clearInput($event)" tabindex="0">
         <sds-icon [icon]="['sds', 'exit']" [size]="searchSettings.size === 'large'?'2x':'1x'"></sds-icon>
       </span>
-      <span role="button" aria-label="search input" (click)="handleClick($event)" (keyup.enter)="handleClick($event)"
-        tabindex="0">
-        <sds-icon [icon]="['bs', 'search']" [size]="searchSettings.size === 'large'?'2x':'1x'">
+      <span class="postfix search-icon" role="button" aria-label="search input" (click)="handleClick($event)"
+        (keyup.enter)="handleClick($event)" tabindex="0">
+        <sds-icon [icon]="['bs', 'search']" [size]="searchSettings.size === 'large'?'sm':'xs'">
         </sds-icon>
       </span>
     </span>
-    <button *ngIf="!searchSettings.isSuffixSearchIcon" #buttonEl class="usa-button" type="submit" 
-      [attr.aria-label]="searchSettings.ariaLabel ? searchSettings.ariaLabel : 'Search'"
-      (click)="handleClick($event)">
+    <button *ngIf="!searchSettings.isSuffixSearchIcon" #buttonEl class="usa-button" type="submit"
+      [attr.aria-label]="searchSettings.ariaLabel ? searchSettings.ariaLabel : 'Search'" (click)="handleClick($event)">
     </button>
   </div>
 
