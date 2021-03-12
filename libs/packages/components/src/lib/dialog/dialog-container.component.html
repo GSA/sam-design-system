@@ -1,15 +1,15 @@
 <button *ngIf="_config.displayCloseBtn" sds-dialog-close class="close-btn" aria-label="Close Modal">
-  <sds-icon [icon]="['bs', 'exit']"></sds-icon>
+  <sds-icon [icon]="['bs', 'x']"></sds-icon>
 </button>
 
 <!-- Alert Icons -->
 <div *ngIf="_config.alert" [ngSwitch]="_config.alert" class="sds-dialog-icon">
-    <sds-icon *ngSwitchCase="'error'" [icon]="['sds', 'alert-error']" size="3x"></sds-icon>
-    <sds-icon *ngSwitchCase="'warning'" [icon]="['bs', 'exclamation-triangle']" size="3x"></sds-icon>
-    <sds-icon *ngSwitchCase="'info'" [icon]="['bs', 'info-circle']" size="3x"></sds-icon>
-    <div *ngSwitchDefault>
-        Alert <em>{{ _config.alert }}</em> is not valid
-    </div>
+  <sds-icon *ngSwitchCase="'error'" [icon]="['sds', 'alert-error']" size="3x"></sds-icon>
+  <sds-icon *ngSwitchCase="'warning'" [icon]="['bs', 'exclamation-triangle']" size="3x"></sds-icon>
+  <sds-icon *ngSwitchCase="'info'" [icon]="['bs', 'info-circle']" size="3x"></sds-icon>
+  <div *ngSwitchDefault>
+    Alert <em>{{ _config.alert }}</em> is not valid
+  </div>
 </div>
 
 <ng-template cdkPortalOutlet></ng-template>

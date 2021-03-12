@@ -21,10 +21,8 @@ export class ExternalLinkDirective implements OnChanges {
   @HostBinding('attr.href') hrefAttr = '';
   @HostBinding('attr.aria-label') ariaLabel = '';
 
-
   @Input() href: string;
   @Input() target: string;
-
 
   @Input() public hideIcon: boolean = false;
   private internalLinks = ['fsd.gov'];
@@ -78,6 +76,7 @@ export class ExternalLinkDirective implements OnChanges {
     const spanElement = document.createElement('span');
     spanElement.classList.add('margin-left-1px');
     spanElement.classList.add('usa-link--external');
+    spanElement.classList.add('font-body-md');
     this.el.nativeElement.appendChild(spanElement);
   }
 }
