@@ -7,11 +7,27 @@ input::-ms-clear {
     display: none;
   }
 
-  .close-icon-large {
-    left: -4.5rem;
+  .postfix~input {
+    width: 80%;
+    width: calc(100% - 8rem);
+    margin-left: 0px;
+    margin-right: 6rem !important;
+  }
+
+  .postfix {
+    color: #3f57a6;
+    position: absolute;
+    right: 15px;
+    font-size: 2rem;
+    -webkit-transition: color .2s;
+    transition: color .2s;
+  }
+
+  .searchicon {
+    width: 3rem;
   }
 
   .close-icon {
-    left: -2.5rem;
+    width: 4rem;
   }
 }

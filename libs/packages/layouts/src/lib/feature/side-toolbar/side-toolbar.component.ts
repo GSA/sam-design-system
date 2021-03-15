@@ -69,7 +69,7 @@ export class SideToolbarComponent implements OnInit, OnDestroy {
           this.isResponsiveView = true;
         } else {
           this.isResponsiveView = false;
-          if (this.openResponsiveDialog) {
+          if (this.openResponsiveDialog && this.openResponsiveDialog.componentInstance) {
             this.openResponsiveDialog.close();
             this.openResponsiveDialog = undefined;
             this.responsiveDialog.emit(this.openResponsiveDialog);

@@ -20,8 +20,7 @@ import { FieldWrapper } from '@ngx-formly/core';
           'usa-sr-only':
             to.hideLabel ||
             ((to.group === 'panel' || to.group === 'accordion') &&
-              field?.parent?.type !== 'formly-group'),
-          'usa-label--disabled': to.disabled
+              field?.parent?.type !== 'formly-group')
         }"
       >
         <span

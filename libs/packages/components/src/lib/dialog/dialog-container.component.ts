@@ -54,6 +54,7 @@ export function throwSdsDialogContentAlreadyAttachedError() {
     '[class.sds-dialog--alert-error]': '_config.alert === "error"',
     '[class.sds-dialog--alert-warning]': '_config.alert === "warning"',
     '[class.sds-dialog--alert-info]': '_config.alert === "info"',
+    '[class.dialog-slide-out]': '_config.slideOut',
     'tabindex': '-1',
     'aria-modal': 'true',
     '[attr.id]': '_id',
@@ -78,7 +79,7 @@ export class SdsDialogContainerComponent extends BasePortalOutlet {
   private _elementFocusedBeforeDialogWasOpened: HTMLElement | null = null;
 
   /** State of the dialog animation. */
-  _state: 'void' | 'enter' | 'exit' = 'enter';
+  _state: 'void' | 'enter' | 'exit' | 'slideEnter' | 'slideExit' = this._config.slideOut ? 'slideEnter' : 'enter';
 
   /** Emits when an animation state changes. */
   _animationStateChanged = new EventEmitter<AnimationEvent>();
@@ -172,9 +173,9 @@ export class SdsDialogContainerComponent extends BasePortalOutlet {
 
   /** Callback, invoked whenever an animation on the host completes. */
   _onAnimationDone(event: AnimationEvent) {
-    if (event.toState === 'enter') {
+    if (event.toState === 'enter' || event.toState === 'slideEnter') {
       this._trapFocus();
-    } else if (event.toState === 'exit') {
+    } else if (event.toState === 'exit' || event.toState === 'slideExit') {
       this._restoreFocus();
     }
 
@@ -188,7 +189,7 @@ export class SdsDialogContainerComponent extends BasePortalOutlet {
 
   /** Starts the dialog exit animation. */
   _startExitAnimation(): void {
-    this._state = 'exit';
+    this._state = this._config.slideOut ? 'slideExit' : 'exit';
 
     // Mark the container for check so it can react if the
     // view container is using OnPush change detection.
