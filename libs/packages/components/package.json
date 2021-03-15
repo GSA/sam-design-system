@@ -1,20 +1,19 @@
 {
-    "name": "@gsa-sam/components",
-    "version": "10.0.15",
-    "types": "../../../dist/out-tsc/libs/components/index.d.ts",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/GSA/sam-design-system.git"
-    },
-    "dependencies": {
-        "tslib": "^2.0.0"
-    },
-    "homepage": "https://github.com/GSA/sam-design-system/tree/master/libs/packages/components",
-    "peerDependencies": {
-        "@angular/common": "^10.1.3",
-        "@angular/core": "^10.1.3",
-
-        "accessible-html5-video-player": "^1.0.6",
-        "ngx-bootstrap-icons": "^1.0.0"
-    }
+  "name": "@gsa-sam/components",
+  "version": "10.0.16",
+  "types": "../../../dist/out-tsc/libs/components/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GSA/sam-design-system.git"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "homepage": "https://github.com/GSA/sam-design-system/tree/master/libs/packages/components",
+  "peerDependencies": {
+    "@angular/common": "^10.1.3",
+    "@angular/core": "^10.1.3",
+    "accessible-html5-video-player": "^1.0.6",
+    "ngx-bootstrap-icons": "^1.0.0"
+  }
 }
