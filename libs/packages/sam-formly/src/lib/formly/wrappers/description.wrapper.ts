@@ -11,9 +11,6 @@ import { FieldWrapper } from '@ngx-formly/core';
         *ngIf="to.description"
         class="form-text text-muted"
         [id]="id + '-description'"
-        [ngClass]="{
-          'usa-label--disabled': to.disabled
-        }"
         >{{ to.description }}</small
       >
       <ng-container #fieldComponent></ng-container>
