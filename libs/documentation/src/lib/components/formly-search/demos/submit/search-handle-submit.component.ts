@@ -27,7 +27,7 @@ export class SearchHandleSubmit {
             label: 'Search',
             submitHandler: this.handleSubmit,
             searchSettings: {
-              placeholder: 'Acme Corporation',
+              placeholder: 'eg: Acme Corporation',
             },
           },
         },
@@ -48,7 +48,7 @@ export class SearchHandleSubmit {
                   { label: '90 Days', value: '90' }
                 ]
               },
-              placeholder: 'Acme Corporation',
+              placeholder: 'eg: Acme Corporation',
             }
           }
         },
@@ -70,7 +70,7 @@ export class SearchHandleSubmit {
                   { label: '90 Days', value: '90' }
                 ]
               },
-              placeholder: 'Acme Corporation',
+              placeholder: 'eg: Acme Corporation',
             }
           }
         }

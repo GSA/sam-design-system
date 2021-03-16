@@ -12,7 +12,7 @@ export class SearchOptional {
 
   ddSearchSettings = {
     id: 'ddSearch',
-    placeholder: 'Acme Corporation',
+    placeholder: 'eg: Acme Corporation',
     dropdown: {
      
       id: 'ddSearchOptions',
@@ -26,7 +26,7 @@ export class SearchOptional {
   };
 
   invDDSearchSettings = {
-    placeholder: 'Acme Corporation',
+    placeholder: 'eg: Acme Corporation',
     id: 'invDDSearch',
     dropdown: {
       id: 'invDDSearchOptions',
@@ -41,7 +41,7 @@ export class SearchOptional {
   };
 
   bigddSearchSettings = {
-    placeholder: 'Acme Corporation',
+    placeholder: 'eg: Acme Corporation',
     id: 'bigssSearch',
     size: 'large',
     dropdown: {
@@ -57,7 +57,7 @@ export class SearchOptional {
   };
 
   biginvDDSearchSettings = {
-    placeholder: 'Acme Corporation',
+    placeholder: 'eg: Acme Corporation',
     id: 'biginvDDSearch',
     dropdown: {
       id: 'bigInvDDSearchOptions',

@@ -179,7 +179,7 @@ export const FORMLY_CONFIG: ConfigOption = {
             key: 'fromDate',
             templateOptions: {
               label: 'From',
-              placeholder:  new Date().toLocaleString('en-US', {
+              placeholder: 'eg: ' + new Date().toLocaleString('en-US', {
                 month: 'short',
                 day: 'numeric',
                 year: 'numeric'
@@ -195,7 +195,7 @@ export const FORMLY_CONFIG: ConfigOption = {
             key: 'toDate',
             templateOptions: {
               label: 'To',
-              placeholder:  new Date().toLocaleString('en-US', {
+              placeholder: 'eg: ' + new Date().toLocaleString('en-US', {
                 month: 'short',
                 day: 'numeric',
                 year: 'numeric'
@@ -221,7 +221,7 @@ export const FORMLY_CONFIG: ConfigOption = {
           {
             key: 'fromDate',
             templateOptions: {
-              placeholder: new Date().toLocaleString('en-US', {
+              placeholder: 'eg: ' + new Date().toLocaleString('en-US', {
                 month: 'short',
                 day: 'numeric',
                 year: 'numeric'
@@ -231,7 +231,7 @@ export const FORMLY_CONFIG: ConfigOption = {
           {
             key: 'toDate',
             templateOptions: {
-              placeholder:  new Date().toLocaleString('en-US', {
+              placeholder: new Date().toLocaleString('en-US', {
                 month: 'short',
                 day: 'numeric',
                 year: 'numeric'

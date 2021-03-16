@@ -17,7 +17,7 @@ export class TextBasic {
       type: 'customtext',
       templateOptions: {
         label: 'Entity Name',
-        placeholder: 'Acme Corporation',
+        placeholder: 'eg: Acme Corporation',
         description: 'Enter the name of your entity.'
       }
     }

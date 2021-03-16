@@ -13,19 +13,19 @@ export class SearchBasic {
   searchSettings = {
     id: 'searchBasic',
     ariaLabel: 'Basic Search',
-    placeholder: 'Acme Corporation',
+    placeholder: 'eg: Acme Corporation',
   };
 
   bigSearchSettings = {
     size: 'large',
     id: 'bigSearchBasic',
     ariaLabel: 'Big Search',
-    placeholder: 'Acme Corporation',
+    placeholder: 'eg: Acme Corporation',
   };
 
   suffixSearchIconSettings = {
     isSuffixSearchIcon: true,
-    placeholder: 'type here',
+    placeholder: 'eg: Acme Corporation',
     id: 'searchSuffix',
     ariaLabel: 'Suffix Search',
   };
