@@ -1,4 +1,4 @@
-import { ConfigOption, FormlyFieldConfig } from '@ngx-formly/core';
+import { ConfigOption, Field, FormlyFieldConfig } from '@ngx-formly/core';
 import { FormlyWrapperFormFieldComponent } from './wrappers/form-field.wrapper';
 import { FormlyAccordianFormFieldComponent } from './wrappers/form-field.accordian';
 import { FormlyFormFieldFilterWrapperComponent } from './wrappers/form-field.filterwrapper';
@@ -183,11 +183,14 @@ export const FORMLY_CONFIG: ConfigOption = {
                 month: 'short',
                 day: 'numeric',
                 year: 'numeric'
-              })
+              }),
             },
             expressionProperties: {
               'templateOptions.minDate': minDateFromDateRangePicker,
-              'templateOptions.maxDate': maxDateFromDateRangePicker
+              'templateOptions.maxDate': maxDateFromDateRangePicker,
+              'templateOptions.hideOptional': (model, formState, field) => {
+                return field.parent.templateOptions.hideOptional;
+              },
             }
           },
           {
@@ -203,8 +206,10 @@ export const FORMLY_CONFIG: ConfigOption = {
             },
             expressionProperties: {
               'templateOptions.minDate': minDateToDateRangePicker,
-              'templateOptions.maxDate': maxDateToDateRangePicker
-            }
+              'templateOptions.maxDate': maxDateToDateRangePicker,
+              'templateOptions.hideOptional': (model, formState, field) => {
+                return field.parent.templateOptions.hideOptional;
+              },            }
           }
         ]
       }

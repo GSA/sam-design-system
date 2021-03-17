@@ -25,7 +25,8 @@ export class FormlyDatepickerDateRange {
           day: 'numeric',
           year: 'numeric'
         }),
-      }
+        hideOptional: true,
+      },
     }
   ];
 
