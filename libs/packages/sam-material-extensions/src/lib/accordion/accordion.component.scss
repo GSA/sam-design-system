@@ -218,3 +218,11 @@
 mat-panel-title {
     line-height: 25px;
 }
+
+.mat-expansion-panel-header {
+    min-height: 34px;
+}
+  
+.mat-expansion-panel-header, .mat-expansion-panel-header.mat-expanded {
+    height: auto;
+}

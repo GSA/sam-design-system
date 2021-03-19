@@ -74,3 +74,6 @@ export * from './selection-panel/selection-panel-wrapper/selection-panel.compone
 export * from './selection-panel/sub-panel/sub-panel.component';
 export * from './selection-panel/selection-panel.module';
 export * from './selection-panel/model/selection-panel.model';
+export * from './tabs/tabs.module';
+export * from './tabs/tabs.component';
+export * from './tabs/tab-panel.component';

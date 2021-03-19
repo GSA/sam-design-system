@@ -36,6 +36,9 @@ export const SDS_DIALOG_DEFAULT_OPTIONS =
 export const SDS_DIALOG_SCROLL_STRATEGY =
     new InjectionToken<() => ScrollStrategy>('sds-dialog-scroll-strategy');
 
+export const SDS_SLIDE_OUT_SCROLL_STRATEGY =
+  new InjectionToken<() => ScrollStrategy>('sds-slide-out-scroll-strategy');
+
 /** @docs-private */
 export function SDS_DIALOG_SCROLL_STRATEGY_FACTORY(overlay: Overlay): () => ScrollStrategy {
   return () => overlay.scrollStrategies.block();
@@ -48,10 +51,22 @@ export function SDS_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY(overlay: Overlay):
 }
 
 /** @docs-private */
+export function SDS_SLIDE_OUT_SCROLL_STRATEGY_PROVIDER_FACTORY(overlay: Overlay):
+  () => ScrollStrategy {
+  return () => overlay.scrollStrategies.reposition();
+}
+
+/** @docs-private */
 export const SDS_DIALOG_SCROLL_STRATEGY_PROVIDER = {
   provide: SDS_DIALOG_SCROLL_STRATEGY,
   deps: [Overlay],
   useFactory: SDS_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY,
+};
+
+export const SDS_SLIDE_OUT_SCROLL_STRATEGY_PROVIDER = {
+  provide: SDS_SLIDE_OUT_SCROLL_STRATEGY,
+  deps: [Overlay],
+  useFactory: SDS_SLIDE_OUT_SCROLL_STRATEGY_PROVIDER_FACTORY,
 };
 
 
@@ -65,6 +80,7 @@ export class SdsDialogService implements OnDestroy {
   private readonly _afterOpenedAtThisLevel = new Subject<SdsDialogRef<any>>();
   private _ariaHiddenElements = new Map<Element, string|null>();
   private _scrollStrategy: () => ScrollStrategy;
+  private _slideOutScrollStrategy: () => ScrollStrategy;
 
   /** Keeps track of the currently-open dialogs. */
   get openDialogs(): SdsDialogRef<any>[] {
@@ -95,9 +111,11 @@ export class SdsDialogService implements OnDestroy {
       @Optional() private _location: Location,
       @Optional() @Inject(SDS_DIALOG_DEFAULT_OPTIONS) private _defaultOptions: SdsDialogConfig,
       @Inject(SDS_DIALOG_SCROLL_STRATEGY) scrollStrategy: any,
+      @Inject(SDS_SLIDE_OUT_SCROLL_STRATEGY) slideOutScrollStrategy: any,
       @Optional() @SkipSelf() private _parentDialog: SdsDialogService,
       private _overlayContainer: OverlayContainer) {
     this._scrollStrategy = scrollStrategy;
+    this._slideOutScrollStrategy = slideOutScrollStrategy;
   }
 
   /**
@@ -198,7 +216,7 @@ export class SdsDialogService implements OnDestroy {
   private _getOverlayConfig(dialogConfig: SdsDialogConfig): OverlayConfig {
     const state = new OverlayConfig({
       positionStrategy: this._overlay.position().global(),
-      scrollStrategy: dialogConfig.scrollStrategy || this._scrollStrategy(),
+      scrollStrategy: dialogConfig.scrollStrategy || (dialogConfig.slideOut ? this._slideOutScrollStrategy() : this._scrollStrategy()),
       panelClass: dialogConfig.panelClass,
       hasBackdrop: dialogConfig.hasBackdrop,
       direction: dialogConfig.direction,
