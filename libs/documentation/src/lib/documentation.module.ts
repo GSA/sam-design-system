@@ -4,11 +4,9 @@ import { OverviewModule } from './pages/overview/overview.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { library } from '@fortawesome/fontawesome-svg-core';
 import { sds } from '@gsa-sam/sam-styles/src/icons/';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import {
-  FontAwesomeModule,
   FaIconLibrary,
 } from '@fortawesome/angular-fontawesome';
 /* Layout / Components */
@@ -81,6 +79,16 @@ import {
   ROUTES as SELECTION_PANEL_ROUTES,
   SelectionPanelModule,
 } from './components/selection-panel/selection-panel.module';
+import {
+  ROUTES as SLIDE_OUT_ROUTES,
+  SlideOutModule,
+} from './components/slide-out/slide-out.module';
+
+import {
+  ROUTES as TABS_ROUTES,
+  TabsModule,
+}
+from './components/tabs/tabs.module';
 
 /* Form Types */
 import {
@@ -240,6 +248,9 @@ export const ROUTES: Routes = [
   { path: 'components/system-alerts', children: SYSTEM_ALERT_ROUTES },
   { path: 'components/external-link', children: EXTERNA_LINK_ROUTES },
   { path: 'components/toasts', children: TOASTS_ROUTES },
+  { path: 'components/tabs', children: TABS_ROUTES },
+
+  { path: 'components/slide-out', children: SLIDE_OUT_ROUTES },
   // Formly
   { path: 'components/formly-input', children: INPUT_ROUTES },
   { path: 'components/formly-textarea', children: TEXT_AREA_ROUTES },
@@ -326,6 +337,7 @@ export const ROUTES: Routes = [
     ValidationWrapperModule,
     TemplateOptionsModule,
     TableModule,
+    TabsModule,
     IconsModule,
     FormlyFormsModule,
     FormlyConditionalModule,
@@ -335,7 +347,8 @@ export const ROUTES: Routes = [
     ExternalLinkModule,
     ToastsModule,
     ReadonlyModule,
-    RoadmapModule
+    RoadmapModule,
+    SlideOutModule
   ],
 })
 export class DocumentationModule {
