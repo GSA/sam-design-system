@@ -34,7 +34,7 @@ export class AutocompleteCustomTemplate {
     this.customTemplateSettings.labelText = 'Autocomplete 4';
     this.customTemplateSettings.primaryTextField = 'name';
     this.customTemplateSettings.secondaryTextField = 'subtext';
-    this.customTemplateSettings.autocompletePlaceHolderText = 'Level 1';
+    this.customTemplateSettings.autocompletePlaceHolderText = 'eg: Level 1';
     this.customTemplateSettings.selectionMode = SelectionMode.MULTIPLE;
   }
 }

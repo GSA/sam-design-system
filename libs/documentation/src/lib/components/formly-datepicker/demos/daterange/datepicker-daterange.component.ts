@@ -20,12 +20,13 @@ export class FormlyDatepickerDateRange {
         label: 'Expiration Date Range',
         minDate: new Date(2019, 9, 5),
         maxDate: new Date(2020, 11, 15),
-        placeholder: new Date().toLocaleString('en-US', {
+        placeholder: 'eg: ' + new Date().toLocaleString('en-US', {
           month: 'short',
           day: 'numeric',
           year: 'numeric'
         }),
-      }
+        hideOptional: true,
+      },
     }
   ];
 
@@ -42,7 +43,7 @@ export class FormlyDatepickerDateRange {
         label: 'Expiration Date Range - Angular 10+',
         minDate: new Date(2019, 9, 5),
         maxDate: new Date(2020, 11, 15),
-        placeholder: new Date().toLocaleString('en-US', {
+        placeholder: 'eg: ' + new Date().toLocaleString('en-US', {
           month: 'short',
           day: 'numeric',
           year: 'numeric'

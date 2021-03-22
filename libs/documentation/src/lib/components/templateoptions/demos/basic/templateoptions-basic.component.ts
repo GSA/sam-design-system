@@ -19,7 +19,7 @@ export class TemplateOptionsBasic {
       },
       templateOptions: {
         label: 'Keyword',
-        placeholder: 'Placeholder',
+        placeholder: 'eg: Acme Corporation',
         description: 'Description',
         required: true,
       },

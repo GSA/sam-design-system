@@ -18,7 +18,7 @@ export class GroupAccordion {
       templateOptions: {
         label: 'Input',
         group: 'accordion',
-        placeholder: 'Placeholder',
+        placeholder: 'eg: Acme Corporation',
         description: 'Description',
         required: true,
       },
@@ -56,7 +56,7 @@ export class GroupAccordion {
           type: 'input',
           templateOptions: {
             label: 'Entity Name',
-            placeholder: 'Acme Corporation',
+            placeholder: 'eg: Acme Corporation',
             description: 'Enter the name of your entity.',
             required: true
           }

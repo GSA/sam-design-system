@@ -27,7 +27,7 @@ export class SearchOptional {
             searchSettings: {
               id: 'search',
               size: 'large',
-              placeholder: 'Acme Corporation',
+              placeholder: 'eg: Acme Corporation',
             },
           },
         },
@@ -48,7 +48,7 @@ export class SearchOptional {
                   { label: '90 Days', value: '90' },
                 ],
               },
-              placeholder: 'Acme Corporation',
+              placeholder: 'eg: Acme Corporation',
             },
           },
         },
@@ -59,7 +59,7 @@ export class SearchOptional {
           templateOptions: {
             label: 'Big Search with dropdown inverse',
             searchSettings: {
-              placeholder: 'Acme Corporation',
+              placeholder: 'eg: Acme Corporation',
               size: 'large',
               id: 'invSearchOptional',
               dropdown: {

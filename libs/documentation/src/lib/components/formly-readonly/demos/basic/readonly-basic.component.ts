@@ -389,7 +389,7 @@ export class ReadonlyBasicComponent implements OnInit {
     this.autocompleteSingleSelectSettings.secondaryTextField = 'subtext';
     this.autocompleteSingleSelectSettings.labelText = 'Autocomplete Single Select';
     this.autocompleteSingleSelectSettings.selectionMode = SelectionMode.SINGLE;
-    this.autocompleteSingleSelectSettings.autocompletePlaceHolderText = 'Level 1';
+    this.autocompleteSingleSelectSettings.autocompletePlaceHolderText = 'eg: Level 1';
     this.autocompleteSingleSelectSettings.isFreeTextEnabled = true;
 
     this.autocompleteMultiSelectSettings.id = 'autocompletesingle';
@@ -398,7 +398,7 @@ export class ReadonlyBasicComponent implements OnInit {
     this.autocompleteMultiSelectSettings.secondaryTextField = 'subtext';
     this.autocompleteMultiSelectSettings.labelText = 'Autocomplete Single Select';
     this.autocompleteMultiSelectSettings.selectionMode = SelectionMode.MULTIPLE;
-    this.autocompleteMultiSelectSettings.autocompletePlaceHolderText = 'Level 1';
+    this.autocompleteMultiSelectSettings.autocompletePlaceHolderText = 'eg: Level 1';
     this.autocompleteMultiSelectSettings.isFreeTextEnabled = true;
   }
 }

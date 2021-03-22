@@ -18,7 +18,7 @@ export class LabelWrapperBasic {
       type: 'input',
       templateOptions: {
         label: 'Input',
-        placeholder: 'Placeholder'
+        placeholder: 'eg: Acme Corporation'
       },
     },
   ];

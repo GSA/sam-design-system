@@ -53,7 +53,7 @@ describe('The Sam Filters Component', () => {
               templateOptions: {
                 required: true,
                 label: 'Formly input type number',
-                placeholder: 'placeholder',
+                placeholder: 'eg: Acme Corporation',
                 min: 13,
                 max: 400,
                 minLength: 2,
@@ -213,7 +213,7 @@ describe('The Sam Filters Component', () => {
               templateOptions: {
                 required: true,
                 label: 'Formly input type number',
-                placeholder: 'placeholder',
+                placeholder: 'eg: Acme Corporation',
                 minLength: 2,
                 maxLength: 4,
                 inputType: 'number'
@@ -266,7 +266,7 @@ describe('The Sam Filters Component', () => {
               templateOptions: {
                 required: true,
                 label: 'Formly input type number',
-                placeholder: 'placeholder',
+                placeholder: 'eg: Acme Corporation',
                 minLength: 2,
                 maxLength: 4,
                 inputType: 'number'
