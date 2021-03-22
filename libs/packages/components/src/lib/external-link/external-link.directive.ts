@@ -21,10 +21,8 @@ export class ExternalLinkDirective implements OnChanges {
   @HostBinding('attr.href') hrefAttr = '';
   @HostBinding('attr.aria-label') ariaLabel = '';
 
-
   @Input() href: string;
   @Input() target: string;
-
 
   @Input() public hideIcon: boolean = false;
   private internalLinks = ['fsd.gov'];
@@ -57,6 +55,8 @@ export class ExternalLinkDirective implements OnChanges {
       const currentAriaLabel = this.el.nativeElement.getAttribute('aria-label');
       if (!currentAriaLabel || currentAriaLabel.length === 0) {
         this.ariaLabel = `Open ${this.href} in a new window`;
+      } else {
+        this.ariaLabel = currentAriaLabel;
       }
     }
   }
