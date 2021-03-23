@@ -188,11 +188,10 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     this.page.pageNumber = this.page.default ? this.page.pageNumber : 1;
     this.page.default = filter ? false : true;
     this.isDefaultFilter(filter);
-    if (!this.isDefaultModel) {
-      this.updateContent();
-    } else {
+    if (this.isDefaultModel) {
       this.items = [];
     }
+    this.updateContent();
   }
 
   isDefaultFilter(filter) {
@@ -314,7 +313,12 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
       this.updateNavigation();
     }
 
-    if (this.filterData && this.service && this.enableApiCall) {
+    if (
+      this.filterData &&
+      this.service &&
+      this.enableApiCall &&
+      !this.isDefaultModel
+    ) {
       setTimeout(() => {
         this.loading = true;
         this.service
