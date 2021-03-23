@@ -22,7 +22,7 @@ import {
   SDSFormlyUpdateModelService,
 } from '@gsa-sam/sam-formly';
 import { Router, ActivatedRoute } from '@angular/router';
-import * as _ from 'lodash';
+import * as _ from 'lodash-es';
 
 @Component({
   selector: 'search-list-layout',
@@ -188,12 +188,15 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     this.page.pageNumber = this.page.default ? this.page.pageNumber : 1;
     this.page.default = filter ? false : true;
     this.isDefaultFilter(filter);
-    this.updateContent();
+    if (!this.isDefaultModel) {
+      this.updateContent();
+    } else {
+      this.items = [];
+    }
   }
 
   isDefaultFilter(filter) {
-    let cleanModel = qs.parse(filter, { plainObjects: true });
-    cleanModel = this.flatten(filter);
+    const cleanModel = this.flatten(filter);
     const op = this.flatten(this.configuration.defaultFilterValue);
     this.isDefaultModel = _.isEqual(cleanModel, op);
   }
