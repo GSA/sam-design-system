@@ -188,9 +188,7 @@ export const FORMLY_CONFIG: ConfigOption = {
             expressionProperties: {
               'templateOptions.minDate': minDateFromDateRangePicker,
               'templateOptions.maxDate': maxDateFromDateRangePicker,
-              'templateOptions.hideOptional': (model, formState, field) => {
-                return field.parent.templateOptions.hideOptional;
-              },
+              'templateOptions.hideOptional': getParentHideOptional,
             }
           },
           {
@@ -207,9 +205,8 @@ export const FORMLY_CONFIG: ConfigOption = {
             expressionProperties: {
               'templateOptions.minDate': minDateToDateRangePicker,
               'templateOptions.maxDate': maxDateToDateRangePicker,
-              'templateOptions.hideOptional': (model, formState, field) => {
-                return field.parent.templateOptions.hideOptional;
-              },            }
+              'templateOptions.hideOptional': getParentHideOptional,     
+            }
           }
         ]
       }
@@ -326,4 +323,16 @@ export function maxDateFromDateRangePicker(
     }
   }
   return date;
+}
+
+export function getParentHideOptional(
+  model: any,
+  formState: any,
+  field: FormlyFieldConfig
+) {
+
+  if (field.parent && field.parent.templateOptions) {
+    return field.parent.templateOptions.hideOptional;
+  }
+  return false;
 }
