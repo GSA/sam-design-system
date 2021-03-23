@@ -19,7 +19,7 @@ export class SdsSearchResultListComponent {
    */
   @Input() customResultsTemplate: TemplateRef<any>;
 
-  @Input() isFilterPresent: boolean;
+  @Input() isDefaultModel: boolean;
 
   /**
    * Model for search results

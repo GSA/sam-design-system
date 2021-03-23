@@ -26,7 +26,7 @@
 <div class="grid-row">
   <div class="grid-col-12">
     <sds-search-result-list [model]="items" [customResultsTemplate]="customResultsTemplate"
-      [isFilterPresent]="isFilterPresent">
+      [isDefaultModel]="isDefaultModel">
       <ng-container>
         <ng-template #resultContent let-item>
           <div *ngIf="loading">
