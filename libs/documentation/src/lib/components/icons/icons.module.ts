@@ -21,6 +21,8 @@ import { DocumentationSourcePage } from '../shared/source-page/source.component'
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 import { IconsStackingComponent } from './demos/stacking/icons-stacking.component';
 import { IconsStackingModule } from './demos/stacking/icons-stacking.module';
+import { IconSkewingComponent } from './demos/icon-skewing/icon-skewing.component';
+import { IconSkewingModule } from './demos/icon-skewing/icon-skewing.module';
 
 declare var require: any;
 const DEMOS = {
@@ -55,6 +57,15 @@ const DEMOS = {
     module: require('!!raw-loader!./demos/scaling/icons-scaling.module'),
     markup: require('!!raw-loader!./demos/scaling/icons-scaling.component.html'),
     path: 'libs/documentation/src/lib/components/icons/demos/scaling',
+  },
+  skewing: {
+    title: 'Skewing Icons',
+    type: IconSkewingComponent,
+    code: require('!!raw-loader!./demos/icon-skewing/icon-skewing.component'),
+    module: require('!!raw-loader!./demos/icon-skewing/icon-skewing.module'),
+    markup: require('!!raw-loader!./demos/icon-skewing/icon-skewing.component.html'),
+    path: 'libs/documentation/src/lib/components/icons/demos/icon-skewing',
+
   },
   basic: {
     title: 'All Custom Icons',
@@ -107,6 +118,7 @@ export const ROUTES = [
     IconsScalingModule,
     IconsRotationModule,
     IconsStackingModule,
+    IconSkewingModule
   ],
 })
 export class IconsModule {
