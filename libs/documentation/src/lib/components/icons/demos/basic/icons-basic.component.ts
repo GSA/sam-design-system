@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { sds } from '@gsa-sam/sam-styles/src/icons/';
+import { allIcons } from '@gsa-sam/components';
+import { kebabCase } from 'lodash-es';
 
 @Component({
   templateUrl: './icons-basic.component.html',
@@ -7,6 +8,8 @@ import { sds } from '@gsa-sam/sam-styles/src/icons/';
   selector: `sds-icons-basic-demo`,
 })
 export class IconsBasic {
-  sdsIcons = sds;
+  sdsIcons = Object.keys(allIcons)
+  .map(iconName => kebabCase(iconName));
+
 
 }
