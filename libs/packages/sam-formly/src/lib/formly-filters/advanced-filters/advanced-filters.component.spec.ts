@@ -5,10 +5,11 @@ import {
   fakeAsync
 } from '@angular/core/testing';
 import { of } from 'rxjs';
-import { SdsDialogService, SdsIconModule } from '@gsa-sam/components';
+import { SdsDialogService, SdsIconModule, allIcons as sdsAllIcons } from '@gsa-sam/components';
 
 import { AdvancedFiltersComponent } from './advanced-filters.component';
 import { SdsAdvancedFiltersService } from './sds-advanced-filters.service';
+import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 
 
 describe('Advanced Filteres Component', () => {
@@ -28,7 +29,7 @@ describe('Advanced Filteres Component', () => {
     );
     TestBed.configureTestingModule({
       declarations: [AdvancedFiltersComponent],
-      imports: [SdsIconModule],
+      imports: [SdsIconModule, NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))],
       providers: [
         { provide: SdsDialogService, useValue: modalServiceSpy },
         {

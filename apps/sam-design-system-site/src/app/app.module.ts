@@ -9,14 +9,15 @@ import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 import { MarkdownModule } from 'ngx-markdown';
 
-import { Toast, ToastrModule } from 'ngx-toastr';
+import { ToastrModule } from 'ngx-toastr';
 import {
   SdsIconModule,
   SdsToastComponent,
   SdsToastModule,
-  SdsToastSettings,
+  SdsToastSettings
 } from '@gsa-sam/components';
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
+import { NgxBootstrapIconsModule, github } from 'ngx-bootstrap-icons';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,6 +30,7 @@ import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
     RouterModule.forRoot(ROUTES, { scrollPositionRestoration: 'enabled' }),
     FormsModule,
     MarkdownModule.forRoot(),
+    NgxBootstrapIconsModule.pick({github})
   ],
   providers: [
     { provide: LocationStrategy, useClass: PathLocationStrategy },
@@ -48,5 +50,5 @@ import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
   bootstrap: [AppComponent],
 })
 export class AppModule {
- 
+
 }

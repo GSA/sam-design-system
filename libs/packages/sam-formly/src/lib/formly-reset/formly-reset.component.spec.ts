@@ -12,7 +12,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SdsFormlyModule } from '../formly/formly.module';
 import { SdsFormlyResetComponent } from './formly-reset.component';
-import { SdsIconModule } from '@gsa-sam/components';
+import { SdsIconModule, allIcons as sdsAllIcons } from '@gsa-sam/components';
+import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 
 let resetEl: HTMLElement;
 let model: any;
@@ -32,7 +33,8 @@ describe('SDS Formly Reset', () => {
         NoopAnimationsModule,
         SdsFormlyModule,
         ReactiveFormsModule,
-        FormlyModule.forRoot({})
+        FormlyModule.forRoot({}),
+        NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))
       ]
     })
       .compileComponents();

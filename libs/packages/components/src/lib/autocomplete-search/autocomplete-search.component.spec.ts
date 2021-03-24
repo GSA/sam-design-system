@@ -14,6 +14,8 @@ import { SelectionMode } from '../selected-result/models/sds-selected-item-model
 import { By } from '@angular/platform-browser';
 import { AutoCompleteSampleDataService } from './autocomplete-seach-test-service.spec';
 import {SdsIconModule } from '@gsa-sam/components';
+import {allIcons as sdsAllIcons} from '@gsa-sam/components'
+import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 
 describe('SamAutocompleteComponent', () => {
   let component: SDSAutocompleteSearchComponent;
@@ -22,7 +24,7 @@ describe('SamAutocompleteComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SDSAutocompleteSearchComponent],
-      imports: [FormsModule, SdsIconModule]
+      imports: [FormsModule, SdsIconModule, NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))]
     }).compileComponents();
   }));
 

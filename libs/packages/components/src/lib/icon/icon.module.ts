@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgxBootstrapIconsModule,allIcons } from 'ngx-bootstrap-icons';
+import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 import { SdsIconComponent } from '../icon/icon.component';
 
 
@@ -8,8 +8,7 @@ import { SdsIconComponent } from '../icon/icon.component';
   declarations: [SdsIconComponent],
   imports: [
     CommonModule,
-    NgxBootstrapIconsModule.pick(allIcons),
-    
+    NgxBootstrapIconsModule
   ],
   exports: [SdsIconComponent]
 })

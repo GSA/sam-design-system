@@ -4,6 +4,8 @@ import { OverviewModule } from './pages/overview/overview.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+import {allIcons as sdsAllIcons} from '@gsa-sam/components'
+import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 
 /* Layout / Components */
 import {
@@ -344,9 +346,10 @@ export const ROUTES: Routes = [
     ToastsModule,
     ReadonlyModule,
     RoadmapModule,
-    SlideOutModule
+    SlideOutModule,
+    NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))
   ],
 })
 export class DocumentationModule {
- 
+
 }

@@ -9,9 +9,8 @@ import { DocumentationAPIPage } from './api-page/docs-api.component';
 import { DocumentationAPIComponent } from './api-page/docs-api-component.component';
 import { DocumentationWidgetDemoComponent } from './examples-page/demo.component';
 
-import { sds } from '@gsa-sam/sam-styles/src/icons/';
-
 import { SdsIconModule, SdsTabsModule } from '@gsa-sam/components';
+
 
 export * from './demo-list';
 

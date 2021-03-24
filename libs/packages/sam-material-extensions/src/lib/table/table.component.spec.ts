@@ -211,7 +211,7 @@ const MOCK_DATA = [
         <ng-template #sdsCell let-element="element">
           <ul class="usa-list usa-list--unstyled">
             <li *ngFor="let tag of element.tags">
-            <sds-icon size="2x" [class]="tag.className" [icon]="['bs', 'circle']"></sds-icon>
+            <sds-icon size="2x" [class]="tag.className" [icon]="'circle'"></sds-icon>
               
               {{ tag.label }}
             </li>
