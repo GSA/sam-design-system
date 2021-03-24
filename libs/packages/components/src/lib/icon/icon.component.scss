@@ -1,4 +1,4 @@
-$rotation-values: 90 180 270;
+$rotation-values: 30 45 60 90 120 135 150 180 210 225 240 270 300 315 330;
 
 @each $item in $rotation-values {
   i-bs.rotate-#{$item} ::ng-deep{
