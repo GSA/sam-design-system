@@ -1,9 +1,20 @@
 $rotation-values: 30 45 60 90 120 135 150 180 210 225 240 270 300 315 330;
+$skew-values: -45, -40, -35, -30, -25, -20, -15, -10, -5, 0, 5, 10, 15, 20, 25, 30, 35, 40, 45;
 
 @each $item in $rotation-values {
   i-bs.rotate-#{$item} ::ng-deep{
     svg{
       transform: rotate($item * 1deg);
+    }
+  }
+}
+
+@each $skewX in $skew-values {
+  @each $skewY in $skew-values {
+    i-bs.skew-#{$skewX}-#{$skewY} ::ng-deep{
+      svg{
+        transform: skew($skewX * 1deg, $skewY * 1deg);
+      }
     }
   }
 }
