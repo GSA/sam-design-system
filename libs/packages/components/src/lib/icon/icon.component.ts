@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'sds-icon',
@@ -7,18 +7,19 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SdsIconComponent {
 
-  @Input()
-  set icon(iconToShow: Array<string>){
-    if(iconToShow.length !== 2){
-      return
-    }
-    this.library = iconToShow[0];
-    this.iconToFind = iconToShow[1];
-  };
+  @Input() icon: string;
   @Input() rotate: number = 0;
   @Input() size: string = 'lg';
+  /**
+   * Classes to be applied to i-bs element
+   */
+  @Input()
+  set classes(classesToApply: Array<string>){
+    if(classesToApply){
+      this.iconClasses = classesToApply.join(', ')
+    }
+  };
 
-  library: string;
-  iconToFind: string;
 
+  iconClasses: string = '';
 }
