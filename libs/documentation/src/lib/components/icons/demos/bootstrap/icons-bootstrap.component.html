@@ -5,7 +5,7 @@
   library.
 </p>
 <p>
-  For example <code>[icon]="['bs', 'alarm']"</code>
+  For example <code>[icon]="'alarm'"</code>
 </p>
 <p>
   The input to access icons in the boostrap library is <code>bs</code>
@@ -13,7 +13,7 @@
 <div class="display-inline-flex flex-wrap">
   <ng-container *ngFor="let item of bootstrapIcons">
     <span class="display-flex flex-column flex-align-center height-10.5 width-10" *ngIf="item">
-      <sds-icon [icon]="['bs', item]" [size]="'2x'"></sds-icon>
+      <sds-icon [icon]="item" [size]="'2x'"></sds-icon>
       <p class="font-sans-3xs margin-y-auto">{{item}}</p>
     </span>
   </ng-container>

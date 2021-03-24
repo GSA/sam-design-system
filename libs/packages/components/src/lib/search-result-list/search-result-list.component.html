@@ -23,7 +23,7 @@
       <ng-container *ngIf="!initialLoad">
         <div class="sds-card sds-card--vertical sds-card--shadowed sds-card--bordered">
           <div class="sds-card__header">
-            <sds-icon [icon]="['bs', 'search']" [size]="'5x'"></sds-icon>
+            <sds-icon [icon]="'search'" [size]="'5x'"></sds-icon>
           </div>
           <div class="sds-card__body margin-2">
             <h1 class="sds-card__title">No matches found</h1>
@@ -38,7 +38,7 @@
       <ng-container *ngIf="initialLoad">
         <div class="sds-card sds-card--vertical sds-card--shadowed sds-card--bordered">
           <div class="sds-card__header">
-            <sds-icon [icon]="['bs', 'arrow-left-circle-fill']" [size]="'5x'"></sds-icon>
+            <sds-icon [icon]="'arrow-left-circle-fill'" [size]="'5x'"></sds-icon>
           </div>
           <div class="sds-card__body margin-2">
             <h1 class="sds-card__title">Select Criteria</h1>
@@ -59,7 +59,7 @@
           <ng-container *ngIf="msg.type !== 'loading' else loading">
             <div class="sds-card__header">
               <sds-icon
-                [icon]="(msg.type ==='error') ?  ['sds', 'alert-error'] :( (msg.type ==='info') ? ['bs', 'info-circle'] :( (msg.type ==='initial') ? ['bs', 'arrow-left-circle-fill']: ['bs', 'search']))"
+                [icon]="(msg.type ==='error') ?  ['sds', 'alert-error'] :( (msg.type ==='info') ? 'info-circle' :( (msg.type ==='initial') ? 'arrow-left-circle-fill': 'search'))"
                 [size]="'5x'">
               </sds-icon>
             </div>
