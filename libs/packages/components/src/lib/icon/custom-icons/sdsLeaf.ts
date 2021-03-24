@@ -1,0 +1,1 @@
+export const leaf = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi sds-leaf\" viewBox=\"0 0 648.1 512\">\n  <path d=\"M324.1,101.6v232.8H324H104.6C48.6,334.4,3.3,289,3.3,233V2.3h221.5C279.6,2.3,324.1,46.7,324.1,101.6z\"/>\n</svg>";

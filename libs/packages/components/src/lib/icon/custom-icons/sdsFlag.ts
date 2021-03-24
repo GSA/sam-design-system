@@ -1,0 +1,1 @@
+export const flag = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi sds-flag\" viewBox=\"0 0 670.9 512\">\n  <path d=\"M36.7-0.1l272.9,512h-38.3L2.3-0.1H36.7z M360.4-0.1l46.7,102h121.5l139.4,256.4H378.3 l-28-57.4l71.3-42.8H212.7L74-0.1H360.4z\"/>\n</svg>";

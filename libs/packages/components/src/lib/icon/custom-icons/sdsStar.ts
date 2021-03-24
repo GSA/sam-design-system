@@ -1,0 +1,1 @@
+export const star = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi sds-star\" viewBox=\"0 0 512 512\">\n  <path d=\"M349.8,337.4L399.7,506L242.4,385.2L83.1,511.9l55.7-174.5L-0.1,204.3H177L242.4-0.1L317,204.3h194.9 L349.8,337.4z\"/>\n</svg>";

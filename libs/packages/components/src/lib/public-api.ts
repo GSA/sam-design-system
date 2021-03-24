@@ -77,3 +77,4 @@ export * from './selection-panel/model/selection-panel.model';
 export * from './tabs/tabs.module';
 export * from './tabs/tabs.component';
 export * from './tabs/tab-panel.component';
+export * from './icon/custom-icons'

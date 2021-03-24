@@ -1,0 +1,1 @@
+export const tablet = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi sds-tablet\" viewBox=\"0 0 512 512\">\n  <path d=\"M424,16H88A24,24,0,0,0,64,40V472a24,24,0,0,0,24,24H424a24,24,0,0,0,24-24V40A24,24,0,0,0,424,16Zm-8,32V368H96V48ZM96,464V400H416v64Zm176-32a16,16,0,1,1-16-16A16,16,0,0,1,272,432Z\"/>\n</svg>";
