@@ -7,10 +7,10 @@ import { NgxBootstrapIconsModule,allIcons } from 'ngx-bootstrap-icons';
 import { SdsIconComponent } from './icon.component';
 @Component({
   template: `
-    <sds-icon [icon]="['bs', 'alarm']"></sds-icon>
-    <sds-icon [icon]="['bs', 'alarm']" [rotate]="90"></sds-icon>
-    <sds-icon [icon]="['bs', 'alarm']" [rotate]="180"></sds-icon>
-    <sds-icon [icon]="['bs', 'alarm']" [rotate]="270"></sds-icon>
+    <sds-icon [icon]="'alarm'"></sds-icon>
+    <sds-icon [icon]="'alarm'" [rotate]="90"></sds-icon>
+    <sds-icon [icon]="'alarm'" [rotate]="180"></sds-icon>
+    <sds-icon [icon]="'alarm'" [rotate]="270"></sds-icon>
   `
 })
 class IconRotationComponent {}
@@ -65,14 +65,14 @@ describe('IconComponent Rotation', () => {
 
 @Component({
   template: `
-    <sds-icon [icon]="['bs', 'alarm']"></sds-icon>
-    <sds-icon [icon]="['bs', 'alarm']" [size]="'xs'"></sds-icon>
-    <sds-icon [icon]="['bs', 'alarm']" [size]="'sm'"></sds-icon>
-    <sds-icon [icon]="['bs', 'alarm']" [size]="'lg'"></sds-icon>
-    <sds-icon [icon]="['bs', 'alarm']" [size]="'2x'"></sds-icon>
-    <sds-icon [icon]="['bs', 'alarm']" [size]="'3x'"></sds-icon>
-    <sds-icon [icon]="['bs', 'alarm']" [size]="'5x'"></sds-icon>
-    <sds-icon [icon]="['bs', 'alarm']" [size]="'7x'"></sds-icon>
+    <sds-icon [icon]="'alarm'"></sds-icon>
+    <sds-icon [icon]="'alarm'" [size]="'xs'"></sds-icon>
+    <sds-icon [icon]="'alarm'" [size]="'sm'"></sds-icon>
+    <sds-icon [icon]="'alarm'" [size]="'lg'"></sds-icon>
+    <sds-icon [icon]="'alarm'" [size]="'2x'"></sds-icon>
+    <sds-icon [icon]="'alarm'" [size]="'3x'"></sds-icon>
+    <sds-icon [icon]="'alarm'" [size]="'5x'"></sds-icon>
+    <sds-icon [icon]="'alarm'" [size]="'7x'"></sds-icon>
 
   `
 })
