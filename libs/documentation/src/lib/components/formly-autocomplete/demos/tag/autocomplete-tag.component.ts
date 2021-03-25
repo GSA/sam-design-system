@@ -52,7 +52,7 @@ export class FormlyAutocompleteTag  {
     this.settings.secondaryTextField = 'subtext';
     this.settings.labelText = 'Autocomplete 1';
     this.settings.selectionMode = SelectionMode.MULTIPLE;
-    this.settings.autocompletePlaceHolderText = 'Level 1';
+    this.settings.autocompletePlaceHolderText = 'eg: Level 1';
     this.settings.debounceTime = 250;
     this.settings.isTagModeEnabled = true;
   }

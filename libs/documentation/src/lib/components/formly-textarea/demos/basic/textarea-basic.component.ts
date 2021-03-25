@@ -18,7 +18,7 @@ export class TextAreaBasic {
       type: 'textarea',
       templateOptions: {
         label: 'Entity Description',
-        placeholder: 'Acme Corporation is a federal contractor.',
+        placeholder: 'eg: Acme Corporation is a federal contractor.',
         description: 'Enter the description for your entity.',
         required: true,
       },

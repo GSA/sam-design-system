@@ -21,7 +21,7 @@ export class FormlyDatepickerValidation {
       templateOptions: {
         label: 'Expiration Date (Min only Validation)',
         minDate: new Date(2019, 6, 5),
-        placeholder: new Date().toLocaleString('en-US', {
+        placeholder:  'eg: ' + new Date().toLocaleString('en-US', {
           month: 'short',
           day: 'numeric',
           year: 'numeric'
@@ -38,7 +38,7 @@ export class FormlyDatepickerValidation {
         label: 'Expiration Date (Max only Validation)',
         required: true,
         maxDate: new Date(2020, 11, 25),
-        placeholder: new Date().toLocaleString('en-US', {
+        placeholder:  'eg: ' + new Date().toLocaleString('en-US', {
           month: 'short',
           day: 'numeric',
           year: 'numeric'
@@ -55,7 +55,7 @@ export class FormlyDatepickerValidation {
         label: 'Expiration Date (Min & Max only Validation)',
         minDate: new Date(2019, 9, 5),
         maxDate: new Date(2020, 10, 15),
-        placeholder: new Date().toLocaleString('en-US', {
+        placeholder:  'eg: ' + new Date().toLocaleString('en-US', {
           month: 'short',
           day: 'numeric',
           year: 'numeric'

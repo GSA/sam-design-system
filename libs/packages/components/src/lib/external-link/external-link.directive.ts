@@ -55,6 +55,8 @@ export class ExternalLinkDirective implements OnChanges {
       const currentAriaLabel = this.el.nativeElement.getAttribute('aria-label');
       if (!currentAriaLabel || currentAriaLabel.length === 0) {
         this.ariaLabel = `Open ${this.href} in a new window`;
+      } else {
+        this.ariaLabel = currentAriaLabel;
       }
     }
   }

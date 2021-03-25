@@ -34,7 +34,7 @@ export class AutocompleteInputReadOnly implements OnInit {
     this.inputReadOnlySettings.primaryTextField = 'name';
     this.inputReadOnlySettings.secondaryTextField = 'subtext';
     this.inputReadOnlySettings.selectionMode = SelectionMode.SINGLE;
-    this.inputReadOnlySettings.autocompletePlaceHolderText = 'Level 1';
+    this.inputReadOnlySettings.autocompletePlaceHolderText = 'eg: Level 1';
     this.inputReadOnlySettings.inputReadOnly = true;
   }
 }

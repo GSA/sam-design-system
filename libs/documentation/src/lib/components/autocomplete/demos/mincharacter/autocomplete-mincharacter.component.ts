@@ -36,7 +36,7 @@ export class AutocompleteMinCharacter implements OnInit {
     this.mincharacterSettings.primaryTextField = 'name';
     this.mincharacterSettings.secondaryTextField = 'subtext';
     this.mincharacterSettings.selectionMode = SelectionMode.MULTIPLE;
-    this.mincharacterSettings.autocompletePlaceHolderText = 'Level 1';
+    this.mincharacterSettings.autocompletePlaceHolderText = 'eg: Level 1';
     this.mincharacterSettings.minimumCharacterCountSearch = 3;
 
     this.mincharacterModel.items.push(this.data[0]);

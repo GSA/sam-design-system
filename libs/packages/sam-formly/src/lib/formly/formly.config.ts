@@ -1,4 +1,4 @@
-import { ConfigOption, FormlyFieldConfig } from '@ngx-formly/core';
+import { ConfigOption, Field, FormlyFieldConfig } from '@ngx-formly/core';
 import { FormlyWrapperFormFieldComponent } from './wrappers/form-field.wrapper';
 import { FormlyAccordianFormFieldComponent } from './wrappers/form-field.accordian';
 import { FormlyFormFieldFilterWrapperComponent } from './wrappers/form-field.filterwrapper';
@@ -179,15 +179,16 @@ export const FORMLY_CONFIG: ConfigOption = {
             key: 'fromDate',
             templateOptions: {
               label: 'From',
-              placeholder:  new Date().toLocaleString('en-US', {
+              placeholder: 'eg: ' + new Date().toLocaleString('en-US', {
                 month: 'short',
                 day: 'numeric',
                 year: 'numeric'
-              })
+              }),
             },
             expressionProperties: {
               'templateOptions.minDate': minDateFromDateRangePicker,
-              'templateOptions.maxDate': maxDateFromDateRangePicker
+              'templateOptions.maxDate': maxDateFromDateRangePicker,
+              'templateOptions.hideOptional': getParentHideOptional,
             }
           },
           {
@@ -195,7 +196,7 @@ export const FORMLY_CONFIG: ConfigOption = {
             key: 'toDate',
             templateOptions: {
               label: 'To',
-              placeholder:  new Date().toLocaleString('en-US', {
+              placeholder: 'eg: ' + new Date().toLocaleString('en-US', {
                 month: 'short',
                 day: 'numeric',
                 year: 'numeric'
@@ -203,7 +204,8 @@ export const FORMLY_CONFIG: ConfigOption = {
             },
             expressionProperties: {
               'templateOptions.minDate': minDateToDateRangePicker,
-              'templateOptions.maxDate': maxDateToDateRangePicker
+              'templateOptions.maxDate': maxDateToDateRangePicker,
+              'templateOptions.hideOptional': getParentHideOptional,     
             }
           }
         ]
@@ -221,7 +223,7 @@ export const FORMLY_CONFIG: ConfigOption = {
           {
             key: 'fromDate',
             templateOptions: {
-              placeholder: new Date().toLocaleString('en-US', {
+              placeholder: 'eg: ' + new Date().toLocaleString('en-US', {
                 month: 'short',
                 day: 'numeric',
                 year: 'numeric'
@@ -231,7 +233,7 @@ export const FORMLY_CONFIG: ConfigOption = {
           {
             key: 'toDate',
             templateOptions: {
-              placeholder:  new Date().toLocaleString('en-US', {
+              placeholder: new Date().toLocaleString('en-US', {
                 month: 'short',
                 day: 'numeric',
                 year: 'numeric'
@@ -321,4 +323,16 @@ export function maxDateFromDateRangePicker(
     }
   }
   return date;
+}
+
+export function getParentHideOptional(
+  model: any,
+  formState: any,
+  field: FormlyFieldConfig
+) {
+
+  if (field.parent && field.parent.templateOptions) {
+    return field.parent.templateOptions.hideOptional;
+  }
+  return false;
 }

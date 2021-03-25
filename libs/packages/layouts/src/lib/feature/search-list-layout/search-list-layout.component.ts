@@ -22,6 +22,7 @@ import {
   SDSFormlyUpdateModelService,
 } from '@gsa-sam/sam-formly';
 import { Router, ActivatedRoute } from '@angular/router';
+import * as _ from 'lodash-es';
 
 @Component({
   selector: 'search-list-layout',
@@ -61,6 +62,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
 
   @Input() enableApiCall: boolean = true;
 
+  isDefaultModel: boolean = true;
   /**
    * Filter information
    */
@@ -143,9 +145,11 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
       this.updateContent();
     });
     if (this.formlyUpdateComunicationService) {
-      this.formlySubscription = this.formlyUpdateComunicationService.filterUpdate.subscribe((filter) => {
-        this.updateFilter(filter);
-      });
+      this.formlySubscription = this.formlyUpdateComunicationService.filterUpdate.subscribe(
+        (filter) => {
+          this.updateFilter(filter);
+        }
+      );
     }
   }
 
@@ -156,7 +160,9 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   }
 
   getHistoryModel() {
-    const queryString = window.location.href.substring(window.location.href.indexOf('?') + 1);
+    const queryString = window.location.href.substring(
+      window.location.href.indexOf('?') + 1
+    );
     const params: any = this.getUrlParams(queryString);
     const paramModel: any = this.convertToModel(params);
     this.page.pageNumber = paramModel['page'] ? +paramModel['page'] : 1;
@@ -166,7 +172,9 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
       if (paramModel && paramModel['sfm']) {
         this.filterUpdateModelService.updateModel(paramModel['sfm']);
       } else {
-        this.filterUpdateModelService.updateModel(this.configuration.defaultFilterValue);
+        this.filterUpdateModelService.updateModel(
+          this.configuration.defaultFilterValue
+        );
       }
     }
   }
@@ -179,11 +187,39 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     this.filterData = filter;
     this.page.pageNumber = this.page.default ? this.page.pageNumber : 1;
     this.page.default = filter ? false : true;
+    this.isDefaultFilter(filter);
+    if (this.isDefaultModel) {
+      this.items = [];
+    }
     this.updateContent();
   }
 
+  isDefaultFilter(filter) {
+    const cleanModel = this.flatten(filter);
+    const op = this.flatten(this.configuration.defaultFilterValue);
+    this.isDefaultModel = _.isEqual(cleanModel, op);
+  }
+
+  flatten(input, reference?, output?) {
+    output = output || {};
+    for (var key in input) {
+      var value = input[key];
+      if (value) {
+        key = reference ? reference + '.' + key : key;
+        if (typeof value === 'object' && value !== null) {
+          this.flatten(value, key, output);
+        } else {
+          output[key] = value;
+        }
+      }
+    }
+    return output;
+  }
+
   updateNavigation() {
-    const queryString = window.location.href.substring(window.location.href.indexOf('?') + 1);
+    const queryString = window.location.href.substring(
+      window.location.href.indexOf('?') + 1
+    );
     let queryObj = qs.parse(queryString, { allowPrototypes: true });
 
     if (queryObj.hasOwnProperty('sfm')) {
@@ -277,7 +313,12 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
       this.updateNavigation();
     }
 
-    if (this.filterData && this.service && this.enableApiCall) {
+    if (
+      this.filterData &&
+      this.service &&
+      this.enableApiCall &&
+      !this.isDefaultModel
+    ) {
       setTimeout(() => {
         this.loading = true;
         this.service
