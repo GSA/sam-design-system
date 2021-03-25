@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PopupBasic } from './popup-basic.component';
 
 import { SdsIconModule, SdsPopoverModule, SdsTooltipModule } from '@gsa-sam/components';
+import { NgxBootstrapIconsModule, caretDownSquare, squareFill, handThumbsDown } from 'ngx-bootstrap-icons';
 
 @NgModule({
   declarations: [PopupBasic],
@@ -11,7 +12,8 @@ import { SdsIconModule, SdsPopoverModule, SdsTooltipModule } from '@gsa-sam/comp
     SdsIconModule,
     SdsTooltipModule,
     SdsPopoverModule,
-    SdsIconModule
+    SdsIconModule,
+    NgxBootstrapIconsModule.pick({caretDownSquare, squareFill, handThumbsDown})
   ],
   exports: [PopupBasic],
   bootstrap: [PopupBasic]

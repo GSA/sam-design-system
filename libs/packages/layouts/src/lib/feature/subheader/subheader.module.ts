@@ -16,17 +16,18 @@ import {
 } from './subheader.component';
 import { SdsActionsMenuModule } from '../actions-menu/actions-menu.module';
 import { SdsDrawerCommunicationService } from './drawer-communication.service';
+import { NgxBootstrapIconsModule, threeDotsVertical } from 'ngx-bootstrap-icons';
 
 @NgModule({
   imports: [
     CommonModule,
-    
     SdsMenuModule,
     SdsObserversModule,
     SdsSearchModule,
     SdsTruncateModule,
     SdsActionsMenuModule,
-    SdsIconModule
+    SdsIconModule,
+    NgxBootstrapIconsModule.pick({threeDotsVertical})
   ],
   exports: [
     SdsSubheaderComponent,

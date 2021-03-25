@@ -2,7 +2,9 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { NgxBootstrapIconsModule, x, infoCircle, exclamationTriangle } from 'ngx-bootstrap-icons';
 import { SdsIconModule } from '../icon/icon.module';
+import { alertError } from '../icon/custom-icons';
 import {
   SDS_DIALOG_SCROLL_STRATEGY_PROVIDER,
   SDS_SLIDE_OUT_SCROLL_STRATEGY_PROVIDER,
@@ -19,7 +21,7 @@ import {
 } from './dialog-content.directives';
 
 @NgModule({
-  imports: [CommonModule, OverlayModule, PortalModule, SdsIconModule],
+  imports: [CommonModule, OverlayModule, PortalModule, SdsIconModule, NgxBootstrapIconsModule.pick({x, alertError, infoCircle, exclamationTriangle})],
   exports: [
     SdsDialogContainerComponent,
     SdsDialogCloseDirective,

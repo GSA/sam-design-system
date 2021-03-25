@@ -12,6 +12,7 @@ import {
 } from '@gsa-sam/sam-formly';
 import { SubheaderTier2WorkspaceComponent } from './subheader-tier-2-workspace.component';
 import { SdsButtonGroupModule } from 'libs/packages/sam-material-extensions/src/lib/button-group/button-group.module';
+import { NgxBootstrapIconsModule, chevronLeft } from 'ngx-bootstrap-icons';
 
 
 
@@ -26,9 +27,9 @@ import { SdsButtonGroupModule } from 'libs/packages/sam-material-extensions/src/
     ReactiveFormsModule,
     SdsFormlyModule,
     FormlyModule,
-  
     SdsButtonGroupModule,
-    FormsModule
+    FormsModule,
+    NgxBootstrapIconsModule.pick({chevronLeft})
   ],
   declarations: [SubheaderTier2WorkspaceComponent],
   exports: [SubheaderTier2WorkspaceComponent],

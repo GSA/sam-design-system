@@ -6,9 +6,16 @@ import { RouterModule } from '@angular/router';
 import { SdsIconModule, SdsTopBannerModule } from '@gsa-sam/components';
 
 import { A11yModule } from '@angular/cdk/a11y';
+import { NgxBootstrapIconsModule, square, justifyLeft, circle } from 'ngx-bootstrap-icons';
 @NgModule({
   imports: [
-    CommonModule, FormsModule, RouterModule, SdsIconModule, A11yModule, SdsTopBannerModule
+    CommonModule,
+    FormsModule,
+    RouterModule,
+    SdsIconModule,
+    A11yModule,
+    SdsTopBannerModule,
+    NgxBootstrapIconsModule.pick({square, justifyLeft, circle})
   ],
   declarations: [SdsHeaderComponent],
   exports: [SdsHeaderComponent]

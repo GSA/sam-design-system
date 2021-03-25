@@ -12,6 +12,7 @@ import {
 } from '@gsa-sam/sam-formly';
 import { SubheaderSearchSubPagesComponent } from './subheader-search-sub-pages.component';
 import { SdsButtonGroupModule } from '@gsa-sam/sam-material-extensions';
+import { NgxBootstrapIconsModule, chevronLeft } from 'ngx-bootstrap-icons';
 
 
 
@@ -27,7 +28,8 @@ import { SdsButtonGroupModule } from '@gsa-sam/sam-material-extensions';
     FormlyModule,
     SdsIconModule,
     SdsButtonGroupModule,
-    FormsModule
+    FormsModule,
+    NgxBootstrapIconsModule.pick({chevronLeft})
   ],
   declarations: [SubheaderSearchSubPagesComponent],
   exports: [SubheaderSearchSubPagesComponent],

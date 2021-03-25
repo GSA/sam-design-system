@@ -11,14 +11,13 @@ import {
   SdsFormlyDialogModule
 } from '@gsa-sam/sam-formly';
 import { SubheaderSearchComponent } from './subheader-search.component';
-
+import { NgxBootstrapIconsModule, chevronLeft } from 'ngx-bootstrap-icons';
 
 
 @NgModule({
   imports: [
     CommonModule,
     SdsSubheaderModule,
-    
     SdsSearchModule,
     SdsFormlyDialogModule,
     SdsDialogModule,
@@ -26,7 +25,8 @@ import { SubheaderSearchComponent } from './subheader-search.component';
     SdsFormlyModule,
     FormlyModule,
     SdsIconModule,
-    FormsModule
+    FormsModule,
+    NgxBootstrapIconsModule.pick({chevronLeft})
   ],
   declarations: [SubheaderSearchComponent],
   exports: [SubheaderSearchComponent],

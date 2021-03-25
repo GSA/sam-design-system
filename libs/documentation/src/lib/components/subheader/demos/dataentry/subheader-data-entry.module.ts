@@ -11,7 +11,7 @@ import {
   SdsFormlyDialogModule
 } from '@gsa-sam/sam-formly';
 import { SubheaderDataEntryComponent } from './subheader-data-entry.component';
-
+import { NgxBootstrapIconsModule, chevronLeft } from 'ngx-bootstrap-icons';
 
 @NgModule({
   imports: [
@@ -24,8 +24,8 @@ import { SubheaderDataEntryComponent } from './subheader-data-entry.component';
     ReactiveFormsModule,
     SdsFormlyModule,
     FormlyModule,
-    // FormlyModule,
-  
+    NgxBootstrapIconsModule.pick({chevronLeft})
+
   ],
   declarations: [SubheaderDataEntryComponent],
   exports: [SubheaderDataEntryComponent],

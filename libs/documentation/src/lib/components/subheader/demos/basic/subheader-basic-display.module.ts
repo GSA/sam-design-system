@@ -11,6 +11,7 @@ import {
   SdsFormlyDialogModule
 } from '@gsa-sam/sam-formly';
 import { SubheaderBasicDisplayComponent } from './subheader-basic-display.component';
+import { NgxBootstrapIconsModule, chevronLeft } from 'ngx-bootstrap-icons';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { SubheaderBasicDisplayComponent } from './subheader-basic-display.compon
     SdsDialogModule,
     ReactiveFormsModule,
     SdsFormlyModule,
-    FormlyModule
+    FormlyModule,
+    NgxBootstrapIconsModule.pick({chevronLeft})
   ],
   declarations: [SubheaderBasicDisplayComponent],
   exports: [SubheaderBasicDisplayComponent],

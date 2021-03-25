@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { SdsIconModule, SdsTooltipModule } from '@gsa-sam/components';
 import { TooltipBasic } from './tooltip-basic.component';
+import { NgxBootstrapIconsModule, exclamationCircle } from 'ngx-bootstrap-icons';
 
 @NgModule({
   declarations: [TooltipBasic],
@@ -10,7 +11,8 @@ import { TooltipBasic } from './tooltip-basic.component';
     CommonModule,
     SdsIconModule,
     SdsTooltipModule,
-    SdsIconModule
+    SdsIconModule,
+    NgxBootstrapIconsModule.pick({exclamationCircle})
   ],
   exports: [TooltipBasic],
   bootstrap: [TooltipBasic]
