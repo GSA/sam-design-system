@@ -4,7 +4,7 @@
 
 <!-- Alert Icons -->
 <div *ngIf="_config.alert" [ngSwitch]="_config.alert" class="sds-dialog-icon">
-  <sds-icon *ngSwitchCase="'error'" [icon]="['sds', 'alert-error']" size="3x"></sds-icon>
+  <sds-icon *ngSwitchCase="'error'" [icon]="'alert-error'" size="3x"></sds-icon>
   <sds-icon *ngSwitchCase="'warning'" [icon]="'exclamation-triangle'" size="3x"></sds-icon>
   <sds-icon *ngSwitchCase="'info'" [icon]="'info-circle'" size="3x"></sds-icon>
   <div *ngSwitchDefault>
