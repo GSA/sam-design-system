@@ -93,7 +93,10 @@
 </ng-template>
 
 <ng-template #iconLinkTemplate let-link>
-  <sds-icon [icon]="link.imageClass" [size]="'sm'"></sds-icon>
+  <div class="sds-stack sds-sm">
+    <sds-icon class="sds-stack-icon text-ink" [icon]="link.imageClass"></sds-icon>
+    <sds-icon *ngIf="link.hasCounter" class="sds-stack-icon"  [icon]="'circle-fill'" [size]="'xs'" [classes]="['counter-icon']"></sds-icon>
+  </div>
   <!-- <fa-layers [fixedWidth]="true">
     <sds-icon [icon]="[link.imageClassPrefix, link.imageClass]"></sds-icon>
     <fa-layers-counter *ngIf="link.hasCounter" [classes]="['icon-layers-counter']"></fa-layers-counter>

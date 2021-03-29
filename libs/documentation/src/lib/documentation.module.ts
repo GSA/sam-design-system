@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import {allIcons as sdsAllIcons} from '@gsa-sam/components'
 import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
+import * as _ from 'lodash-es'
 
 /* Layout / Components */
 import {
@@ -347,7 +348,7 @@ export const ROUTES: Routes = [
     ReadonlyModule,
     RoadmapModule,
     SlideOutModule,
-    NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))
+    NgxBootstrapIconsModule.pick(Object.assign(_.cloneDeep(allIcons), _.cloneDeep(sdsAllIcons)))
   ],
 })
 export class DocumentationModule {

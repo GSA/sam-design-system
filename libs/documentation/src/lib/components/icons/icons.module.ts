@@ -26,14 +26,6 @@ import { IconSkewingModule } from './demos/icon-skewing/icon-skewing.module';
 
 declare var require: any;
 const DEMOS = {
-  stacking: {
-    title: 'Stacking Icons',
-    type: IconsStackingComponent,
-    code: require('!!raw-loader!./demos/stacking/icons-stacking.component'),
-    module: require('!!raw-loader!./demos/stacking/icons-stacking.module'),
-    markup: require('!!raw-loader!./demos/stacking/icons-stacking.component.html'),
-    path: 'libs/documentation/src/lib/components/icons/demos/stacking',
-  },
   coloring: {
     title: 'Coloring Icons',
     type: IconsColoring,
@@ -65,7 +57,14 @@ const DEMOS = {
     module: require('!!raw-loader!./demos/icon-skewing/icon-skewing.module'),
     markup: require('!!raw-loader!./demos/icon-skewing/icon-skewing.component.html'),
     path: 'libs/documentation/src/lib/components/icons/demos/icon-skewing',
-
+  },
+  stacking: {
+    title: 'Stacking Icons',
+    type: IconsStackingComponent,
+    code: require('!!raw-loader!./demos/stacking/icons-stacking.component'),
+    module: require('!!raw-loader!./demos/stacking/icons-stacking.module'),
+    markup: require('!!raw-loader!./demos/stacking/icons-stacking.component.html'),
+    path: 'libs/documentation/src/lib/components/icons/demos/stacking',
   },
   basic: {
     title: 'All Custom Icons',
