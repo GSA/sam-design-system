@@ -8,7 +8,11 @@
 <div class="sds-page condensed margin-top-2">
   <div class="grid-container grid-row grid-gap">
     <div class="desktop:grid-col-4 tablet-lg:grid-col-12 mobile-lg:grid-col-12 margin-bottom-3">
-      <sds-side-toolbar (responsiveDialog)="onDialogOpen($event)" (responsiveView)="isMobileMode = $event;" [responsiveButtonText]="'Advanced Search'">
+      <sds-side-toolbar
+        [responsiveButtonText]="'Advanced Search'"
+        [responsiveDialogOptions]="responsiveDialogOptions"
+        (responsiveDialog)="onDialogOpen($event)" 
+        (responsiveView)="isMobileMode = $event;">
         <ng-template #toolbarContent>
           <div class="sds-card" *ngIf="isMobileMode">
             <div class="sds-card__header sds-card__header--accent-cool grid-row">
@@ -37,7 +41,7 @@
               <div class="sds-card__action sds-card__collapse"></div>
             </div>
             
-            <div class="sds-card__body sds-card__body--accent-cool">
+            <div class="sds-card__body sds-card__body--accent-cool" id="panelBody">
               <sds-selection-panel 
               [model]="navigationModel"
               [currentSelection]="selectedPanel"

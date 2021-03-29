@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NavigationLink, SdsDialogRef, SelectionPanelModel } from '@gsa-sam/components';
+import { NavigationLink, SdsDialogConfig, SdsDialogRef, SelectionPanelModel } from '@gsa-sam/components';
 import { SearchListConfiguration } from '@gsa-sam/layouts';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { SdsFiltersComponent } from 'libs/packages/sam-formly/src/lib/formly-filters/sds-filters.component';
@@ -25,6 +25,9 @@ export class LayoutResponsiveComponent {
   options;
   filtersExpanded: boolean = false;
   domainsExpanded: boolean = true;
+  responsiveDialogOptions: SdsDialogConfig = {
+    ariaLabel: 'Search Filters',
+  };
 
   public filterChange$ = new BehaviorSubject<object>([]);
   public navigationModel: SelectionPanelModel = {
