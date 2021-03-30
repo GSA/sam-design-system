@@ -61,7 +61,7 @@ export class SideToolbarComponent implements OnInit, OnDestroy {
       panelClass: ['sds-dialog--full']
     };
 
-    let allOptions = this.responsiveDialogOptions ? {...this.responsiveDialogOptions, ...dialogOptions} : dialogOptions;
+    let allOptions = this.responsiveDialogOptions ? {...dialogOptions, ...this.responsiveDialogOptions} : dialogOptions;
 
     this.openResponsiveDialog = this.sdsDialogService.open(this.template, allOptions);
 
