@@ -54,6 +54,7 @@ import { messages } from './sdsMessages';
 import { mobile } from './sdsMobile';
 import { newNote } from './sdsNewNote';
 import { newVersion } from './sdsNewVersion';
+import { notCompleted } from './sdsNotCompleted';
 import { note } from './sdsNote';
 import { openDoors } from './sdsOpenDoors';
 import { paperPlane } from './sdsPaperPlane';
@@ -148,6 +149,7 @@ export const allIcons = {
   mobile,
   newNote,
   newVersion,
+  notCompleted,
   note,
   openDoors,
   paperPlane,
