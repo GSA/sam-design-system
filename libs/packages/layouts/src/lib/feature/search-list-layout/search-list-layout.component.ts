@@ -154,6 +154,9 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   }
 
   ngOnDestroy() {
+    // Reset filter Model in update service
+    this.filterUpdateModelService.updateModel(null);
+    
     if (this.formlySubscription) {
       this.formlySubscription.unsubscribe();
     }

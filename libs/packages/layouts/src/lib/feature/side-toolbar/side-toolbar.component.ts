@@ -59,6 +59,10 @@ export class SideToolbarComponent implements OnInit, OnDestroy {
     });
 
     this.responsiveDialog.emit(this.openResponsiveDialog);
+
+    this.openResponsiveDialog.afterClosed().subscribe(() => {
+      this.openResponsiveDialog = undefined;
+    })
   }
 
   private observeViewChange() {
@@ -69,7 +73,7 @@ export class SideToolbarComponent implements OnInit, OnDestroy {
           this.isResponsiveView = true;
         } else {
           this.isResponsiveView = false;
-          if (this.openResponsiveDialog && this.openResponsiveDialog.componentInstance) {
+          if (this.openResponsiveDialog) {
             this.openResponsiveDialog.close();
             this.openResponsiveDialog = undefined;
             this.responsiveDialog.emit(this.openResponsiveDialog);
