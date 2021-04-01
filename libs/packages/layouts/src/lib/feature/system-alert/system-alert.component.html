@@ -4,7 +4,7 @@
       <div class="grid-col-auto padding-top-1">
         <sds-icon [icon]="'exclamation-triangle'" [class]="'sds-alert--header__icon-mobile'" [size]="'3x'"></sds-icon>
       </div>
-  
+
       <div class="grid-col-fill">
         <div class="grid-row tablet:display-none">
           <div class="grid-col-fill">
@@ -19,8 +19,7 @@
             </div>
           </div>
           <div class="grid-col-auto">
-            <button (click)="onToggleAlertsClicked(alertsContent)"
-              aria-label="Show/Hide alerts"
+            <button (click)="onToggleAlertsClicked(alertsContent)" aria-label="Show/Hide alerts"
               class="sds-button--circle usa-button--secondary simple-toggle" aria-controls="collapseTarget">
               <sds-icon [icon]="'caret-down-fill'" [size]="'1x'"></sds-icon>
             </button>
@@ -29,10 +28,8 @@
         <div #alertsContent class="grid-row width-full display-none tablet:display-inline-block" id="collapseTarget">
           <div class="grid-col-fill">
             <div class="grid-row">
-              <ng-container 
-                [ngTemplateOutlet]="alerts && alerts.length == 1 ? singleAlert : multipleAlerts"
-                [ngTemplateOutletContext]="{$implicit: alerts}"
-              >
+              <ng-container [ngTemplateOutlet]="alerts && alerts.length == 1 ? singleAlert : multipleAlerts"
+                [ngTemplateOutletContext]="{$implicit: alerts}">
               </ng-container>
             </div>
           </div>
@@ -44,7 +41,7 @@
           </div>
         </div>
       </div>
-  
+
       <div class="grid-offset-1 grid-col-auto display-none tablet:display-inline-block">
         <button class="usa-button usa-button--secondary margin-y-1" id="seeAllAlertsTabletBtn"
           (click)="onSeeAllAlertsClicked()">See All
@@ -60,21 +57,14 @@
     <div class="sds-alert--header__content grid-row">
       <div class="grid-col-fill">
         <div class="sds-alert--header__label margin-right-1" [innerHTML]="alert.header"></div>
-        <a (click)="onShowDetailsClicked(alert)"
-          role="button"
-          href="javascript:void(0)" class="sds-alert--header__link"
-          [attr.aria-expanded]="alert.displayDescription"
-          [attr.aria-controls]="'alertDescription' + i"
-          >
+        <a (click)="onShowDetailsClicked(alert)" role="button" href="javascript:void(0)" class="sds-alert--header__link"
+          [attr.aria-expanded]="alert.displayDescription" [attr.aria-controls]="'alertDescription' + i">
           {{alert.displayDescription ? 'Hide Details' : 'Show Details'}}
         </a>
         <span class="sds-alert--header__date">
           {{alert.date | date: 'mediumDate'}}
         </span>
-        <span
-          aria-live="polite" 
-          [attr.id]="'alertDescription' + i" 
-          [sdsCollapse]="!alert.displayDescription" 
+        <span aria-live="polite" [attr.id]="'alertDescription' + i" [sdsCollapse]="!alert.displayDescription"
           [innerHTML]="alert.description">
         </span>
       </div>

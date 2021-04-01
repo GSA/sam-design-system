@@ -18,7 +18,8 @@
       <div class="sds-stack sds-lg">
         <sds-icon class="sds-stack-icon text-primary" [icon]="'square-fill'" [size]="'2x'"></sds-icon>
         <sds-icon class="sds-stack-icon" [icon]="'bars'" [size]="'lg'"></sds-icon>
-        <sds-icon *ngIf="hasCounter()" class="sds-stack-icon"  [icon]="'circle-fill'" [size]="'xs'" [classes]="['counter-icon']"></sds-icon>
+        <sds-icon *ngIf="hasCounter()" class="sds-stack-icon" [icon]="'circle-fill'" [size]="'xs'"
+          [classes]="['counter-icon']"></sds-icon>
       </div>
       <!-- <fa-layers [fixedWidth]="true" size="3x">
         <fa-icon [icon]="['fas', 'square']" [classes]="['text-primary']"></fa-icon>
@@ -32,7 +33,7 @@
     (animationend)="navAnimationEnd()" [class.is-visible]="mobileNavActive" [cdkTrapFocus]="mobileNavActive">
     <div class="usa-nav__inner">
       <button #usaNavClose class="usa-nav__close" (click)="closeMobileNav()">
-        <sds-icon [icon]="'circle'" [size]="'2x'"></sds-icon>
+        <sds-icon [icon]="'x-circle'" [size]="'lg'"></sds-icon>
         <!-- <fa-layers [fixedWidth]="true" size="lg">
           <fa-icon [icon]="['fas', 'circle']" [inverse]="true" transform="grow-2"></fa-icon>
           <fa-icon [icon]="['fas', 'times']" transform="shrink-6"></fa-icon>
@@ -98,7 +99,8 @@
 <ng-template #iconLinkTemplate let-link>
   <div class="sds-stack sds-sm">
     <sds-icon class="sds-stack-icon text-ink" [icon]="link.imageClass"></sds-icon>
-    <sds-icon *ngIf="link.hasCounter" class="sds-stack-icon"  [icon]="'circle-fill'" [size]="'xs'" [classes]="['counter-icon']"></sds-icon>
+    <sds-icon *ngIf="link.hasCounter" class="sds-stack-icon" [icon]="'circle-fill'" [size]="'xs'"
+      [classes]="['counter-icon']"></sds-icon>
   </div>
   <!-- <fa-layers [fixedWidth]="true">
     <sds-icon [icon]="[link.imageClassPrefix, link.imageClass]"></sds-icon>
