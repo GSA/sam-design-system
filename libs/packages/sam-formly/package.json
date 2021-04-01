@@ -17,6 +17,7 @@
     "@gsa-sam/sam-material-extensions": ">=10.0.6",
     "qs": "^6.2.3",
     "@types/qs": "^6.2.3",
-    "@angular/material": "~10.2.1-sha-b23d130e1"
+    "@angular/material": "~10.2.1-sha-b23d130e1",
+    "ngx-bootstrap-icons": "^1.4.0"
   }
 }

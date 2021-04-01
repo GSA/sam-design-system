@@ -15,8 +15,11 @@
           " [ngTemplateOutletContext]="{ $implicit: model.home }"></ng-container>
     </div>
     <button #usaNavOpen class="usa-menu-btn" (click)="openMobileNav()">
-      <sds-icon [icon]="'square'" [size]="'2x'"></sds-icon>
-      <sds-icon [icon]="'justify-left'" transform="shrink-6"></sds-icon>
+      <div class="sds-stack sds-lg">
+        <sds-icon class="sds-stack-icon text-primary" [icon]="'square-fill'" [size]="'2x'"></sds-icon>
+        <sds-icon class="sds-stack-icon" [icon]="'bars'" [size]="'lg'"></sds-icon>
+        <sds-icon *ngIf="hasCounter()" class="sds-stack-icon"  [icon]="'circle-fill'" [size]="'xs'" [classes]="['counter-icon']"></sds-icon>
+      </div>
       <!-- <fa-layers [fixedWidth]="true" size="3x">
         <fa-icon [icon]="['fas', 'square']" [classes]="['text-primary']"></fa-icon>
         <fa-icon [icon]="['sds', 'bars']" [classes]="['icon-bars']" transform="shrink-6"></fa-icon>
@@ -93,7 +96,10 @@
 </ng-template>
 
 <ng-template #iconLinkTemplate let-link>
-  <sds-icon [icon]="link.imageClass" [size]="'sm'"></sds-icon>
+  <div class="sds-stack sds-sm">
+    <sds-icon class="sds-stack-icon text-ink" [icon]="link.imageClass"></sds-icon>
+    <sds-icon *ngIf="link.hasCounter" class="sds-stack-icon"  [icon]="'circle-fill'" [size]="'xs'" [classes]="['counter-icon']"></sds-icon>
+  </div>
   <!-- <fa-layers [fixedWidth]="true">
     <sds-icon [icon]="[link.imageClassPrefix, link.imageClass]"></sds-icon>
     <fa-layers-counter *ngIf="link.hasCounter" [classes]="['icon-layers-counter']"></fa-layers-counter>
