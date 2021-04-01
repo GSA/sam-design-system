@@ -2,7 +2,17 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../../dist/out-tsc",
-    "types": ["jasmine", "node"]
+    "types": ["jasmine", "node"],
+    "paths": {
+      "@gsa-sam/components": [
+        "dist/libs/components",
+        "libs/packages/components/src/index.ts"
+      ],
+      "@gsa-sam/sam-material-extensions": [
+        "dist/libs/sam-material-extensions",
+        "libs/packages/sam-material-extensions/src/index.ts"
+      ],
+    },
   },
   "files": ["src/test.ts"],
   "include": ["**/*.spec.ts", "**/*.d.ts"]
