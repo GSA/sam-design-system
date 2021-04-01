@@ -1,5 +1,25 @@
 {
   "extends": "./tsconfig.lib.json",
+  "compilerOptions": {
+    "paths": {
+      "@gsa-sam/components": [
+        "dist/libs/components",
+        "libs/packages/components/src/index.ts"
+      ],
+      "@gsa-sam/layouts": [
+        "dist/libs/layouts",
+        "libs/packages/layouts/src/index.ts"
+      ],
+      "@gsa-sam/sam-formly": [
+        "dist/libs/sam-formly",
+        "libs/packages/sam-formly/src/index.ts"
+      ],
+      "@gsa-sam/sam-material-extensions": [
+        "dist/libs/sam-material-extensions",
+        "libs/packages/sam-material-extensions/src/index.ts"
+      ],
+    },
+  },
   "angularCompilerOptions": {
     "enableIvy": false
   }
