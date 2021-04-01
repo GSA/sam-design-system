@@ -41,6 +41,7 @@ export * from './tab-outside/taboutside.directive';
 export * from './click-outside/click-outside.module';
 export * from './click-outside/click-outside.directive';
 export * from './dialog/dialog';
+export * from './dialog/dialog-config';
 export * from './dialog/dialog-ref';
 export * from './dialog/dialog.module';
 export * from './dialog/dialog-container.component';

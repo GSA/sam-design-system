@@ -38,7 +38,13 @@
         }
         .mat-expansion-panel-header {
             padding: 0 1em;
+            min-height: 34px;
         }
+
+        .mat-expansion-panel-header, .mat-expansion-panel-header.mat-expanded {
+            height: auto;
+        }
+        
         .mat-expansion-panel-body {
             padding: 0 1em 1em;
         }
@@ -217,12 +223,4 @@
 
 mat-panel-title {
     line-height: 25px;
-}
-
-.mat-expansion-panel-header {
-    min-height: 34px;
-}
-  
-.mat-expansion-panel-header, .mat-expansion-panel-header.mat-expanded {
-    height: auto;
 }
