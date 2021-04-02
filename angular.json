@@ -164,7 +164,7 @@
       "prefix": "sds",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
           "options": {
             "tsConfig": "libs/packages/layouts/tsconfig.lib.json",
             "project": "libs/packages/layouts/ng-package.json"
