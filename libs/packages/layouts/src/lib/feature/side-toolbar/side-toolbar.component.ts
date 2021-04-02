@@ -24,7 +24,7 @@ export class SideToolbarComponent implements OnInit, OnDestroy {
   // Text for button in responsive view
   @Input() responsiveButtonText: string;
 
-  @Input() responsiveDialogOptions: SdsDialogConfig
+  @Input() responsiveDialogOptions: any
 
   // default value is size of mobile view in px
   @Input() responsiveSize = 480;
