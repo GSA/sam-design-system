@@ -16,12 +16,12 @@
                 box-sizing: border-box;
                 &:first-of-type {
                     @include u-border-top('1px');
-                    border-top-left-radius: 0;
-                    border-top-right-radius: 0;
+                    border-top-left-radius: 0.25rem;
+                    border-top-right-radius: 0.25rem;
                 }
                 &:last-of-type {
-                    border-bottom-left-radius: 0;
-                    border-bottom-right-radius: 0;
+                    border-bottom-left-radius: 0.25rem;
+                    border-bottom-right-radius: 0.25rem;
                 }
                 .mat-expanded {
                     sds-accordion-title {
@@ -159,6 +159,12 @@
     .sds-accordion--filters .mat-expansion-panel .mat-expansion-panel-header.cdk-program-focused:not([aria-disabled=true]),
     .sds-accordion--filters .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:hover:not([aria-disabled=true]) {
         @include u-bg('accent-cool-lighter', !important);
+    }
+
+    .sds-card--list .sds-card__body .mat-accordion .mat-expansion-panel:first-of-type {
+        @include u-border-top(0);
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
     }
 }
 
