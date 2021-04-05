@@ -11,6 +11,7 @@ import {
 import { SdsDialogRef, SdsDialogService } from '@gsa-sam/components';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs';
+import { SdsDialogConfig } from '@gsa-sam/components';
 
 @Component({
   selector: 'sds-side-toolbar',
@@ -23,7 +24,7 @@ export class SideToolbarComponent implements OnInit, OnDestroy {
   // Text for button in responsive view
   @Input() responsiveButtonText: string;
 
-  @Input() responsiveDialogOptions: any
+  @Input() responsiveDialogOptions: SdsDialogConfig
 
   // default value is size of mobile view in px
   @Input() responsiveSize = 480;
