@@ -31,3 +31,12 @@ input::-ms-clear {
     width: 4rem;
   }
 }
+.no-drop{
+  width: 100%;
+}
+
+@media only screen and (min-width: 480px){
+  .usa-form.usa-search select {
+      max-width: unset;
+  }
+}
