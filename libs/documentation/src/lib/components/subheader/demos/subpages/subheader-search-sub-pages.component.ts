@@ -92,7 +92,7 @@ export class SubheaderSearchSubPagesComponent {
 
   searchSettings: SearchSettings = {
     placeholder: 'Enter an entity ID, name, or keyword',
-    parentSelector: '.grid-row',
+    parentSelector: '.sds-subheader__content',
     inputClass: 'width-card-lg widescreen:width-mobile display-none desktop-lg:display-inline-block',
     size: 'small',
     ariaLabel: 'Search Entity',
