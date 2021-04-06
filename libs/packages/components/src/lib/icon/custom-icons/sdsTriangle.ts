@@ -1,0 +1,1 @@
+export const triangle = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi sds-triangle\" viewBox=\"0 0 589.6 512\">\n  <path d=\"M566.4,0L457.6,512L0,147.1L566.4,0z\"/>\n</svg>";

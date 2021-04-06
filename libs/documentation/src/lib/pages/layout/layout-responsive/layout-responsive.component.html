@@ -8,17 +8,14 @@
 <div class="sds-page condensed margin-top-2">
   <div class="grid-container grid-row grid-gap">
     <div class="desktop:grid-col-4 tablet-lg:grid-col-12 mobile-lg:grid-col-12 margin-bottom-3">
-      <sds-side-toolbar
-        [responsiveButtonText]="'Advanced Search'"
-        [responsiveDialogOptions]="responsiveDialogOptions"
-        (responsiveDialog)="onDialogOpen($event)" 
-        (responsiveView)="isMobileMode = $event;">
+      <sds-side-toolbar [responsiveButtonText]="'Advanced Search'" [responsiveDialogOptions]="responsiveDialogOptions"
+        (responsiveDialog)="onDialogOpen($event)" (responsiveView)="isMobileMode = $event;">
         <ng-template #toolbarContent>
           <div class="sds-card" *ngIf="isMobileMode">
             <div class="sds-card__header sds-card__header--accent-cool grid-row">
-              <button id="cancelButton" class="sds-button sds-button--circular sds-button--white" (click)="onCancelClicked()"
-                aria-label="Cancel Advanced Search">
-                <fa-icon [icon]="['fas', 'chevron-left']" [fixedWidth]="true"></fa-icon>
+              <button id="cancelButton" class="sds-button sds-button--circular sds-button--white"
+                (click)="onCancelClicked()" aria-label="Cancel Advanced Search">
+                <sds-icon [icon]="'chevron-left'"></sds-icon>
               </button>
               <div class="margin-x-auto">
                 <h2 class="sds-card__title margin-top-1 margin-left-neg-2">Advanced Search</h2>
@@ -28,48 +25,44 @@
 
           <div class="sds-card sds-card--collapsible" [ngClass]="{'sds-card--collapsed': !domainsExpanded}">
             <div role="button" class="sds-card__header sds-card__header--action" [attr.aria-expanded]="domainsExpanded"
-            aria-controls="panelBody" tabindex="0" aria-label="Select Domain"
-            (click)="domainsExpanded = !domainsExpanded"
-            (keyup.enter)="domainsExpanded = !domainsExpanded"
-            >
+              aria-controls="panelBody" tabindex="0" aria-label="Select Domain"
+              (click)="domainsExpanded = !domainsExpanded" (keyup.enter)="domainsExpanded = !domainsExpanded">
               <div class="sds-card__title">Select Domain<br />
                 <span class="sds-card__subtitle">
                   {{selectedPanel?.text}}
                 </span>
               </div>
-          
+
               <div class="sds-card__action sds-card__collapse"></div>
             </div>
-            
+
             <div class="sds-card__body sds-card__body--accent-cool" id="panelBody">
-              <sds-selection-panel 
-              [model]="navigationModel"
-              [currentSelection]="selectedPanel"
-              [navigateOnClick]="!isMobileMode"
-              (panelSelected)="onPanelSelection($event)">
-              </sds-selection-panel>  
+              <sds-selection-panel [model]="navigationModel" [currentSelection]="selectedPanel"
+                [navigateOnClick]="!isMobileMode" (panelSelected)="onPanelSelection($event)">
+              </sds-selection-panel>
             </div>
           </div>
 
-          <div class="sds-card" *ngIf="selectedPanel && selectedPanel.children" [ngClass]="{'display-none': domainsExpanded}">
+          <div class="sds-card" *ngIf="selectedPanel && selectedPanel.children"
+            [ngClass]="{'display-none': domainsExpanded}">
             <div class="sds-card__body sds-card__body--accent-cool">
-              <sds-sub-panel [model]="selectedPanel.children" (subPanelClicked)="onSubPanelClicked($event)"></sds-sub-panel>
+              <sds-sub-panel [model]="selectedPanel.children" (subPanelClicked)="onSubPanelClicked($event)">
+              </sds-sub-panel>
             </div>
           </div>
 
-          <div class="sds-card sds-card--collapsible"
-            [ngClass]="{'sds-card--collapsed': !filtersExpanded}">
-            <div class="sds-card__header sds-card__header--action" role="button" tabindex="0" aria-controls="filtersBody"
-              [attr.aria-label]="'Filter By'"
-              [attr.aria-expanded]="filtersExpanded" (click)="filtersExpanded = !filtersExpanded"
-              (keyup.enter)="filtersExpanded = !filtersExpanded">
+          <div class="sds-card sds-card--collapsible" [ngClass]="{'sds-card--collapsed': !filtersExpanded}">
+            <div class="sds-card__header sds-card__header--action" role="button" tabindex="0"
+              aria-controls="filtersBody" [attr.aria-label]="'Filter By'" [attr.aria-expanded]="filtersExpanded"
+              (click)="filtersExpanded = !filtersExpanded" (keyup.enter)="filtersExpanded = !filtersExpanded">
               <div class="sds-card__title">Filter By</div>
               <div class="sds-card__action sds-card__collapse"></div>
             </div>
             <div class="sds-card__body sds-card__body--accent-cool" id="filtersBody">
               <sds-filters #filters [options]="filterPanelConfig.options"
                 [advancedFilters]="filterPanelConfig.advancedFilters" [form]="filterPanelConfig.form"
-                [fields]="filterPanelConfig.fields" [model]="filterPanelConfig.model" (filterChange)="filterChange$.next($event)">
+                [fields]="filterPanelConfig.fields" [model]="filterPanelConfig.model"
+                (filterChange)="filterChange$.next($event)">
               </sds-filters>
             </div>
           </div>
@@ -79,12 +72,13 @@
               <button class="usa-button" id="applyButton" aria-label="Apply" (click)="onApplyFilter()">Apply</button>
             </div>
           </div>
-      </ng-template>
+        </ng-template>
       </sds-side-toolbar>
     </div>
 
     <div class="desktop:grid-col-8 tablet-lg:grid-col-12 mobile-lg:grid-col-12">
-      <search-list-layout #resultList [service]="service" [configuration]="listConfig" [isHistoryEnabled]="!mobileDialog" [enableApiCall]="!mobileDialog">
+      <search-list-layout #resultList [service]="service" [configuration]="listConfig"
+        [isHistoryEnabled]="!mobileDialog" [enableApiCall]="!mobileDialog">
         <ng-template #resultContent let-item>
           <div>
             <result-item [model]="item"></result-item>

@@ -1,0 +1,1 @@
+export const pentagon = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi sds-pentagon\" viewBox=\"0 0 543.5 512\">\n  <path d=\"M0,157.2l83.2,254.5h269.3l83.2-254.5L217.8,0L0,157.2z\"/>\n</svg>";

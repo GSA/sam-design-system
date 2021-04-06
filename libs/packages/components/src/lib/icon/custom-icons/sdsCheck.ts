@@ -1,0 +1,1 @@
+export const check = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi sds-check\" viewBox=\"0 0 512 512\">\n  <path d=\"M207.2,352h-.06a16.05,16.05,0,0,1-11.33-4.75l-63.2-64a16,16,0,1,1,22.78-22.5l51.91,52.58L356.72,164.66a16,16,0,1,1,22.56,22.68l-160.8,160A16,16,0,0,1,207.2,352Z\"/>\n</svg>";

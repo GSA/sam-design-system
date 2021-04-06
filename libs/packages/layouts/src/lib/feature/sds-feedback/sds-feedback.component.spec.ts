@@ -2,8 +2,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { SdsCollapseModule, SdsIconModule } from '@gsa-sam/components';
+import { SdsCollapseModule, SdsIconModule, allIcons as sdsAllIcons } from '@gsa-sam/components';
 import { SdsFeedbackComponent } from './sds-feedback.component';
+import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 
 describe('SdsFeedbackComponent', () => {
   let component: SdsFeedbackComponent;
@@ -16,6 +17,7 @@ describe('SdsFeedbackComponent', () => {
         ReactiveFormsModule,
         SdsCollapseModule,
         SdsIconModule,
+        NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))
       ],
       declarations: [ SdsFeedbackComponent ]
     })

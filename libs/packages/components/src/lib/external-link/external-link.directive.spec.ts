@@ -2,7 +2,7 @@ import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { ExternalLinkDirective } from './external-link.directive';
-import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 
 @Component({
@@ -29,9 +29,9 @@ describe('Sam External Link Directive', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TestComponent, ExternalLinkDirective, FaIconComponent]
+      declarations: [TestComponent, ExternalLinkDirective]
     }).overrideModule(BrowserDynamicTestingModule, {
-      set: { entryComponents: [FaIconComponent] }
+      set: { entryComponents: [] }
     });
 
     fixture = TestBed.createComponent(TestComponent);

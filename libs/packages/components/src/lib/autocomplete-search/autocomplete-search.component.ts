@@ -15,10 +15,10 @@ import {
   SelectionMode,
   SDSSelectedItemModelHelper
 } from '../selected-result/models/sds-selected-item-model-helper';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { sds } from '@gsa-sam/sam-styles/src/icons/';
+
+
 import { SDSAutocompleteSearchConfiguration } from './models/SDSAutocompleteConfiguration';
-import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+
 const Autocomplete_Autocomplete_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => SDSAutocompleteSearchComponent),
@@ -34,9 +34,9 @@ const Autocomplete_Autocomplete_VALUE_ACCESSOR: any = {
 export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   constructor(
     private _changeDetectorRef: ChangeDetectorRef,
-    library: FaIconLibrary
+   
   ) {
-    library.addIconPacks(fas, sds);
+    
   }
   /**
    * Ul list of elements

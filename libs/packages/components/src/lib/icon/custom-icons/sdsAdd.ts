@@ -1,0 +1,1 @@
+export const add = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi sds-add\" viewBox=\"0 0 512 512\">\n  <path d=\"M368,240H272V144a16,16,0,0,0-32,0v96H144a16,16,0,0,0,0,32h96v96a16,16,0,0,0,32,0V272h96a16,16,0,0,0,0-32Z\"/>\n</svg>";

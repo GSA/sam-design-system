@@ -6,32 +6,31 @@ import { ROUTES } from './app.routes';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
-import { sds } from '@gsa-sam/sam-styles/src/icons/';
-import { fas } from '@fortawesome/free-solid-svg-icons';
+
 import { MarkdownModule } from 'ngx-markdown';
+
+import { ToastrModule } from 'ngx-toastr';
 import {
-  FontAwesomeModule,
-  FaIconLibrary,
-} from '@fortawesome/angular-fontawesome';
-import { Toast, ToastrModule } from 'ngx-toastr';
-import {
+  SdsIconModule,
   SdsToastComponent,
   SdsToastModule,
-  SdsToastSettings,
+  SdsToastSettings
 } from '@gsa-sam/components';
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
+import { NgxBootstrapIconsModule, github } from 'ngx-bootstrap-icons';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    FontAwesomeModule,
+    SdsIconModule,
     SdsToastModule,
     ToastrModule.forRoot(SdsToastSettings),
     RouterModule.forRoot(ROUTES, { scrollPositionRestoration: 'enabled' }),
     FormsModule,
     MarkdownModule.forRoot(),
+    NgxBootstrapIconsModule.pick({github})
   ],
   providers: [
     { provide: LocationStrategy, useClass: PathLocationStrategy },
@@ -51,7 +50,5 @@ import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
   bootstrap: [AppComponent],
 })
 export class AppModule {
-    constructor(library: FaIconLibrary) {
-      library.addIconPacks(fas, sds);
-    }
+
 }

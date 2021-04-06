@@ -7,14 +7,14 @@
 
     <div style="display: flex;">
       <div style="padding-left: 3rem;">
-        <sds-icon [icon]="['bs', 'caret-down-square']" [size]="'2x'"[sdsPopover]="'Content'" [sdsPopoverTitle]="'Title'" [position]="'top'" tabindex="0" aria-label="Down carat"></sds-icon>
+        <sds-icon [icon]="'caret-down-square'" [size]="'2x'"[sdsPopover]="'Content'" [sdsPopoverTitle]="'Title'" [position]="'top'" tabindex="0" aria-label="Down carat"></sds-icon>
       </div>
       <div style="padding-left: 3rem;">
         <p #title style="margin: 0em 1em;">Have a suggestion?</p>
         <p #content style="margin: 0em 1em;">Please let us know what we could do better.</p>
         <div class="sds-stack sds-1x" [sdsPopover]="content" [sdsPopoverTitle]="title" [position]="'right'" tabindex="0" aria-label="Thumbs down">
-          <sds-icon class="sds-stack-icon" [size]="'2x'" [icon]="['bs', 'square-fill']"></sds-icon>
-          <sds-icon class="sds-stack-icon text-base-lightest" [size]="'lg'" [icon]="['bs', 'hand-thumbs-down']"></sds-icon>
+          <sds-icon class="sds-stack-icon" [size]="'2x'" [icon]="'square-fill'"></sds-icon>
+          <sds-icon class="sds-stack-icon text-base-lightest" [size]="'lg'" [icon]="'hand-thumbs-down'"></sds-icon>
         </div>
       </div>
     </div>

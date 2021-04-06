@@ -22,9 +22,7 @@ import {
 } from '@angular/cdk/portal';
 import { FocusTrap, FocusTrapFactory } from '@angular/cdk/a11y';
 import { SdsDialogConfig } from './dialog-config';
-import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { sds } from '@gsa-sam/sam-styles/src/icons/';
+
 
 /**
  * Throws an exception for the case when a ComponentPortal is
@@ -90,7 +88,7 @@ export class SdsDialogContainerComponent extends BasePortalOutlet {
   /** ID for the container DOM element. */
   _id: string;
 
-  constructor(library: FaIconLibrary,
+  constructor(
     private _elementRef: ElementRef,
     private _focusTrapFactory: FocusTrapFactory,
     private _changeDetectorRef: ChangeDetectorRef,
@@ -98,8 +96,7 @@ export class SdsDialogContainerComponent extends BasePortalOutlet {
     /** The dialog configuration. */
     public _config: SdsDialogConfig) {
     super();
-    library.addIconPacks(fas, sds);
-    // super();
+   
   }
 
   /**

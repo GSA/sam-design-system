@@ -2,10 +2,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SdsHeaderComponent } from './header.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { SdsTopBannerComponent } from '@gsa-sam/components';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SdsIconModule, SdsTopBannerComponent, allIcons as sdsAllIcons } from '@gsa-sam/components';
+
 import { NavigationMode } from '@gsa-sam/components';
 import { A11yModule } from '@angular/cdk/a11y';
+import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 
 
 describe('SdsHeaderComponent', () => {
@@ -15,7 +16,7 @@ describe('SdsHeaderComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SdsHeaderComponent, SdsTopBannerComponent],
-      imports: [RouterTestingModule, FontAwesomeModule, A11yModule]
+      imports: [RouterTestingModule, SdsIconModule, A11yModule, NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))]
     })
       .compileComponents();
   }));
@@ -27,7 +28,7 @@ describe('SdsHeaderComponent', () => {
       home: { text: "", logo: "", id: "home", route: '', selected: false, mode: NavigationMode.INTERNAL },
       navigationLinks:
         [{ text: "", selected: false, route: "", children: [{ text: "", selected: false, route: "", children: [], id: "childLink", mode: NavigationMode.INTERNAL }], id: "navLink", mode: NavigationMode.INTERNAL }],
-      secondaryLinks: [{ text: "", selected: false, route: "", id: "secNavLink", hasCounter: false, imageClass: '', imageClassPrefix: '', mode: NavigationMode.INTERNAL }]
+      secondaryLinks: [{ text: "", selected: false, route: "", id: "secNavLink", hasCounter: false, imageClass: '', mode: NavigationMode.INTERNAL }]
     };
   });
 

@@ -9,7 +9,7 @@ import {
   ChangeDetectorRef,
   ChangeDetectionStrategy
 } from '@angular/core';
-import { FaIconLibrary } from '@fortawesome/angular-fontawesome'; import { fas } from '@fortawesome/free-solid-svg-icons'; import { sds } from '@gsa-sam/sam-styles/src/icons/';
+
 import {
   NG_VALUE_ACCESSOR,
   ControlValueAccessor,
@@ -71,7 +71,7 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
   public service: SDSAutocompleteServiceInterface;
 
   @ViewChild('autocompleteSearch', { static: true }) autocompleteSearch: SDSAutocompleteSearchComponent;
-  constructor(private cd: ChangeDetectorRef, library: FaIconLibrary) { library.addIconPacks(fas, sds); }
+  constructor(private cd: ChangeDetectorRef) {  }
 
   /**
    * Stored Event for ControlValueAccessor
