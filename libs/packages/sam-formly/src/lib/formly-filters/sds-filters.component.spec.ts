@@ -16,6 +16,8 @@ import { DebugElement } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
+import {allIcons as sdsAllIcons} from '@gsa-sam/components'
+import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 
 describe('The Sam Filters Component', () => {
   describe('rendered tests', () => {
@@ -31,7 +33,8 @@ describe('The Sam Filters Component', () => {
           BrowserAnimationsModule,
           RouterTestingModule.withRoutes([]),
           SdsFormlyModule,
-          SdsFiltersModule
+          SdsFiltersModule,
+          NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))
         ],
         providers: [SDSFormlyUpdateComunicationService]
       });
@@ -194,7 +197,8 @@ describe('The Sam Filters Component', () => {
           BrowserAnimationsModule,
           RouterTestingModule.withRoutes([]),
           SdsFormlyModule,
-          SdsFiltersModule
+          SdsFiltersModule,
+          NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))
         ]
       });
 

@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SdsTableModule } from '@gsa-sam/sam-material-extensions';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { TablePaginationComponent } from './pagination.component';
+import { SdsIconModule } from '@gsa-sam/components';
 
 
 @NgModule({
@@ -10,7 +11,7 @@ import { TablePaginationComponent } from './pagination.component';
   imports: [
     CommonModule,
     SdsTableModule,
-    FontAwesomeModule
+    SdsIconModule
   ],
   exports: [TablePaginationComponent],
   bootstrap: [TablePaginationComponent]

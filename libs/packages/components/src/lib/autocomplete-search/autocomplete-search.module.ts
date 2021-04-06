@@ -4,7 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { SDSAutocompleteSearchComponent } from './autocomplete-search.component';
 import { SDSClickOutsideModule } from '../click-outside/click-outside.module';
 import { SdsTabOutsideModule } from '../tab-outside/taboutside.module';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SdsIconModule } from '../icon/icon.module';
+import { NgxBootstrapIconsModule, x, caretDownFill, caretUpFill } from 'ngx-bootstrap-icons';
 
 @NgModule({
   imports: [
@@ -12,9 +13,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FormsModule,
     SDSClickOutsideModule,
     SdsTabOutsideModule,
-    FontAwesomeModule
+    SdsIconModule,
+    NgxBootstrapIconsModule.pick({x, caretDownFill, caretUpFill})
   ],
   declarations: [SDSAutocompleteSearchComponent],
-  exports: [SDSAutocompleteSearchComponent]
+  exports: [SDSAutocompleteSearchComponent],
 })
 export class SdsAutocompleteSearchModule {}

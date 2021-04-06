@@ -3,7 +3,7 @@ import { Component, ViewChild, DebugElement, ChangeDetectionStrategy, ChangeDete
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 import {
   SdsTableComponent,
@@ -249,7 +249,7 @@ describe('SdsTableComponent Basic', () => {
         MatTableModule,
         SdsIconModule,
         MatSortModule,
-        SdsIconModule,
+  
         MatPaginatorModule,
         BrowserAnimationsModule,
         PaginationModule

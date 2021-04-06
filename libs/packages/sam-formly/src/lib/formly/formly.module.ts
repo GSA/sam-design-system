@@ -8,7 +8,7 @@ import {
 } from '@ngx-formly/core';
 import { FormlySelectModule } from '@ngx-formly/core/select';
 import { MatInputModule } from '@angular/material/input';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import {
   MatDateFormats,
   MatNativeDateModule,
@@ -23,6 +23,7 @@ import {
   SdsTextModule,
   SdsSearchModule,
   SdsCollapseModule,
+  SdsIconModule,
 } from '@gsa-sam/components';
 
 import { FIELD_TYPE_COMPONENTS, FORMLY_CONFIG } from './formly.config';
@@ -34,6 +35,7 @@ import {
 import { AnimationWrapperComponent } from './wrappers/form-field.animation';
 import { SdsReadonlyModule } from './readonly/readonly.module';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { NgxBootstrapIconsModule, caretDownFill, caretUpFill, filter, arrowClockwise } from 'ngx-bootstrap-icons';
 
 // Validate the min length of the character
 export function minlengthValidationMessage(err, field) {
@@ -166,11 +168,12 @@ export const DATE_FORMAT: MatDateFormats = {
     MatNativeDateModule,
     MatDatepickerModule,
     MatInputModule,
-    FontAwesomeModule,
+    SdsIconModule,
     ReactiveFormsModule,
     FormlySelectModule,
     SdsReadonlyModule,
     FormsModule,
+    NgxBootstrapIconsModule.pick({caretDownFill, caretUpFill, filter, arrowClockwise}),
     FormlyModule.forChild(FORMLY_CONFIG),
     FormlyModule.forRoot({
       validationMessages: [

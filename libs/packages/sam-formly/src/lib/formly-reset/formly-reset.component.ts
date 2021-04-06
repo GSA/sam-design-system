@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { FormlyFormOptions } from '@ngx-formly/core';
-import { FaIconLibrary } from '@fortawesome/angular-fontawesome'; import { fas } from '@fortawesome/free-solid-svg-icons'; import { sds } from '@gsa-sam/sam-styles/src/icons/';
 
 @Component({
   selector: 'sds-formly-reset',
@@ -21,7 +20,6 @@ export class SdsFormlyResetComponent {
    */
   @Input() classes: string[] = ['usa-button', 'usa-button--unstyled'];
 
-  constructor(library: FaIconLibrary) { library.addIconPacks(fas, sds); }
   resetAll() {
 
     if (this.defaultModel) {

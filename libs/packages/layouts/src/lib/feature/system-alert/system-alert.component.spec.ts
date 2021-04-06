@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { SdsCollapseModule, SdsIconModule } from '@gsa-sam/components';
+import { SdsCollapseModule, SdsIconModule, allIcons as sdsAllIcons } from '@gsa-sam/components';
+import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 
 import { SdsSystemAlertComponent } from './system-alert.component';
 
@@ -13,6 +14,7 @@ describe('SystemAlertComponent', () => {
       imports: [
         SdsIconModule,
         SdsCollapseModule,
+        NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))
       ],
       declarations: [ SdsSystemAlertComponent, ]
     })

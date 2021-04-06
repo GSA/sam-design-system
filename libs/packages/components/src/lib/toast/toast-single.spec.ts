@@ -4,6 +4,8 @@ import { By } from '@angular/platform-browser';
 import { ToastPackage, ToastRef, ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SdsIconModule } from '../icon/icon.module';
+import {allIcons as sdsAllIcons} from '@gsa-sam/components'
+import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 
 describe('Component: SdsToastComponent', () => {
   let component: SdsToastComponent;
@@ -25,7 +27,8 @@ describe('Component: SdsToastComponent', () => {
       imports: [
         SdsIconModule,
         ToastrModule.forRoot(),
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))
       ],
       providers: [{ provide: ToastPackage, useValue: toastPackageMock }]
     });

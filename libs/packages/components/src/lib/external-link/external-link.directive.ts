@@ -78,6 +78,7 @@ export class ExternalLinkDirective implements OnChanges {
     const spanElement = document.createElement('span');
     spanElement.classList.add('margin-left-1px');
     spanElement.classList.add('usa-link--external');
+    spanElement.classList.add('font-body-md');
     this.el.nativeElement.appendChild(spanElement);
   }
 }

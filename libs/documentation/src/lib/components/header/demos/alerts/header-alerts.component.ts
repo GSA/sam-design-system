@@ -17,7 +17,6 @@ export class HeaderAlertsComponent implements OnInit {
   modelHeader: HeaderModel = {
     secondaryLinks: [
       {
-        imageClassPrefix: 'sds',
         imageClass: 'request',
         text: 'Requests',
         route: '/',
@@ -27,7 +26,6 @@ export class HeaderAlertsComponent implements OnInit {
         mode: NavigationMode.INTERNAL
       },
       {
-        imageClassPrefix: 'sds',
         imageClass: 'messages',
         text: 'Notifications',
         route: '/',
@@ -35,7 +33,6 @@ export class HeaderAlertsComponent implements OnInit {
         mode: NavigationMode.INTERNAL
       },
       {
-        imageClassPrefix: 'sds',
         imageClass: 'workspace',
         text: 'Workspace',
         route: '/',
@@ -43,7 +40,6 @@ export class HeaderAlertsComponent implements OnInit {
         mode: NavigationMode.INTERNAL
       },
       {
-        imageClassPrefix: 'sds',
         imageClass: 'log-out',
         text: 'Sign Out',
         route: '/',

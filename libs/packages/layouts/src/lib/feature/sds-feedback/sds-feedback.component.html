@@ -6,10 +6,10 @@
     aria-controls="feedbackCollapseId"
     (click)="isCollapsedContent = !isCollapsedContent">
     
-    <sds-icon [icon]="['bs', 'arrow-up-circle-fill']" [sdsCollapse]="isCollapsedContent"
+    <sds-icon [icon]="'arrow-up-circle-fill'" [sdsCollapse]="isCollapsedContent"
       [size]="'2x'" class="text-primary margin-auto"></sds-icon>
 
-    <sds-icon [icon]="['bs', 'arrow-down-circle-fill']" [size]="'2x'"
+    <sds-icon [icon]="'arrow-down-circle-fill'" [size]="'2x'"
       [sdsCollapse]="!isCollapsedContent" class="text-primary margin-auto"></sds-icon>
 
     <span class="sds-feedback__title">Feedback</span>

@@ -1,10 +1,10 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from '@angular/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {SdsIconModule } from '@gsa-sam/components';
 import { IntroductionComponent } from './introduction.component';
 
 @NgModule({
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [CommonModule, SdsIconModule],
   exports: [IntroductionComponent],
   declarations: [IntroductionComponent],
   providers: []

@@ -3,7 +3,7 @@ import { Component, ViewChild, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { PaginationModule, SdsIconModule } from '@gsa-sam/components';
 
 import {
@@ -211,11 +211,8 @@ const MOCK_DATA = [
         <ng-template #sdsCell let-element="element">
           <ul class="usa-list usa-list--unstyled">
             <li *ngFor="let tag of element.tags">
-              <fa-icon
-                [icon]="['fas', 'circle']"
-                size="sm"
-                [class]="tag.className"
-              ></fa-icon>
+            <sds-icon size="2x" [class]="tag.className" [icon]="'circle'"></sds-icon>
+              
               {{ tag.label }}
             </li>
           </ul>
@@ -327,10 +324,8 @@ describe('SdsTableComponent Full', () => {
       ],
       imports: [
         MatTableModule,
-        FontAwesomeModule,
-        MatSortModule,
         SdsIconModule,
-        FontAwesomeModule,
+        MatSortModule,
         MatPaginatorModule,
         BrowserAnimationsModule,
         PaginationModule

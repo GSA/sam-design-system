@@ -1,101 +1,98 @@
-<sds-table [data]="data" [pagination]="true" expansion sort [sortFn]="customSort" [tableName]="'fullTable'" (expansionClicked)="onExpansionClicked($event)"
-  class="maxh-tablet overflow-auto">
+<sds-table [data]="data" [pagination]="true" expansion sort [sortFn]="customSort" [tableName]="'fullTable'" (expansionClicked)="onExpansionClicked($event)" class="maxh-tablet overflow-auto">
 
-  <sds-table-column sdsColumnName="id" sticky="true">
-    <ng-template #sdsHeaderCell>ID</ng-template>
-    <ng-template #sdsCell let-element="element">{{ element.id }}</ng-template>
-    <ng-template #sdsFooterCell colspan="4">Total</ng-template>
-  </sds-table-column>
-  <sds-table-column sdsColumnName="firstName">
-    <ng-template #sdsHeaderCell>First</ng-template>
-    <ng-template #sdsCell let-element="element">{{ element.firstName }}</ng-template>
+    <sds-table-column sdsColumnName="id" sticky="true">
+        <ng-template #sdsHeaderCell>ID</ng-template>
+        <ng-template #sdsCell let-element="element">{{ element.id }}</ng-template>
+        <ng-template #sdsFooterCell colspan="4">Total</ng-template>
+    </sds-table-column>
+    <sds-table-column sdsColumnName="firstName">
+        <ng-template #sdsHeaderCell>First</ng-template>
+        <ng-template #sdsCell let-element="element">{{ element.firstName }}</ng-template>
 
-  </sds-table-column>
-  <sds-table-column sdsColumnName="lastName">
-    <ng-template #sdsHeaderCell>Last</ng-template>
-    <ng-template #sdsCell let-element="element">{{ element.lastName }}</ng-template>
+    </sds-table-column>
+    <sds-table-column sdsColumnName="lastName">
+        <ng-template #sdsHeaderCell>Last</ng-template>
+        <ng-template #sdsCell let-element="element">{{ element.lastName }}</ng-template>
 
-  </sds-table-column>
-  <sds-table-column sdsColumnName="email">
-    <ng-template #sdsHeaderCell>Email</ng-template>
-    <ng-template #sdsCell let-element="element"><a href="https://beta.sam.gov" (click)="$event.stopPropagation()"
-        class="usa-link">{{ element.email }}</a></ng-template>
+    </sds-table-column>
+    <sds-table-column sdsColumnName="email">
+        <ng-template #sdsHeaderCell>Email</ng-template>
+        <ng-template #sdsCell let-element="element"><a href="https://beta.sam.gov" (click)="$event.stopPropagation()" class="usa-link">{{ element.email }}</a></ng-template>
 
-  </sds-table-column>
-  <sds-table-column sdsColumnName="requests">
-    <ng-template #sdsHeaderCell>Requests</ng-template>
-    <ng-template #sdsCell let-element="element">{{ element.requests }}</ng-template>
-    <ng-template #sdsFooterCell colspan="4">{{ getTotalRequests() }}</ng-template>
-  </sds-table-column>
-  <sds-table-column sdsColumnName="date">
-    <ng-template #sdsHeaderCell>Date</ng-template>
-    <ng-template #sdsCell let-element="element">{{ element.date | date }}</ng-template>
+    </sds-table-column>
+    <sds-table-column sdsColumnName="requests">
+        <ng-template #sdsHeaderCell>Requests</ng-template>
+        <ng-template #sdsCell let-element="element">{{ element.requests }}</ng-template>
+        <ng-template #sdsFooterCell colspan="4">{{ getTotalRequests() }}</ng-template>
+    </sds-table-column>
+    <sds-table-column sdsColumnName="date">
+        <ng-template #sdsHeaderCell>Date</ng-template>
+        <ng-template #sdsCell let-element="element">{{ element.date | date }}</ng-template>
 
-  </sds-table-column>
-  <sds-table-column sdsColumnName="tags">
-    <ng-template #sdsHeaderCell>Tags</ng-template>
-    <ng-template #sdsCell let-element="element">
-      <ul class="usa-list usa-list--unstyled">
-        <li *ngFor="let tag of element.tags">
-          <fa-icon [icon]="['fas', 'circle']" size="sm" [class]="tag.className"></fa-icon>
-          {{ tag.label }}
-        </li>
-      </ul>
-    </ng-template>
+    </sds-table-column>
+    <sds-table-column sdsColumnName="tags">
+        <ng-template #sdsHeaderCell>Tags</ng-template>
+        <ng-template #sdsCell let-element="element">
+            <ul class="usa-list usa-list--unstyled">
+                <li *ngFor="let tag of element.tags">
+                    <sds-icon [icon]="'circle'" size="2x" [class]="tag.className"></sds-icon>
+                    {{ tag.label }}
+                </li>
+            </ul>
+        </ng-template>
 
-  </sds-table-column>
-  <sds-table-column sdsColumnName="actions" stickyEnd="true">
-    <ng-template #sdsHeaderCell>Actions</ng-template>
-    <ng-template #sdsCell let-element="element"><a href="#" (click)="edit(element); $event.stopPropagation(); false;"
-        class="usa-link">Edit</a></ng-template>
+    </sds-table-column>
+    <sds-table-column sdsColumnName="actions" stickyEnd="true">
+        <ng-template #sdsHeaderCell>Actions</ng-template>
+        <ng-template #sdsCell let-element="element"><a href="#" (click)="edit(element); $event.stopPropagation(); false;" class="usa-link">Edit</a></ng-template>
 
-  </sds-table-column>
+    </sds-table-column>
 
-  <sds-table-column sdsColumnName="expandedDetail" sdsExpandedTemplate="true">
-    <ng-template #sdsHeaderCell></ng-template>
-    <ng-template #sdsCell let-element="element">
-      <div class="grid-row width-full padding-3">
-        <div class="grid-col-6">
-          <div class="sds-field">
-            <div class="sds-field__name">Catch Phrase:</div>
-            <div class="sds-field__value">{{element.catchPhrase}}</div>
-          </div>
-        </div>
-        <div class="grid-col-6">
-          <div class="sds-field">
-            <div class="sds-field__name">Job Title:</div>
-            <div class="sds-field__value">{{element.jobTitle}}</div>
-          </div>
-        </div>
-      </div>
-    </ng-template>
+    <sds-table-column sdsColumnName="expandedDetail" sdsExpandedTemplate="true">
+        <ng-template #sdsHeaderCell></ng-template>
+        <ng-template #sdsCell let-element="element">
+            <div class="grid-row width-full padding-3">
+                <div class="grid-col-6">
+                    <div class="sds-field">
+                        <div class="sds-field__name">Catch Phrase:</div>
+                        <div class="sds-field__value">{{element.catchPhrase}}</div>
+                    </div>
+                </div>
+                <div class="grid-col-6">
+                    <div class="sds-field">
+                        <div class="sds-field__name">Job Title:</div>
+                        <div class="sds-field__value">{{element.jobTitle}}</div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
 
-  </sds-table-column>
+    </sds-table-column>
 
 
-  <sds-header-row [displayedColumns]="displayedColumns" [sticky]="true"></sds-header-row>
-  <sds-row [displayedColumns]="displayedColumns" [expandOnClick]="false"></sds-row>
-  <sds-footer-row [displayedColumns]="displayedColumns" [sticky]="true"></sds-footer-row>
+    <sds-header-row [displayedColumns]="displayedColumns" [sticky]="true"></sds-header-row>
+    <sds-row [displayedColumns]="displayedColumns" [expandOnClick]="false"></sds-row>
+    <sds-footer-row [displayedColumns]="displayedColumns" [sticky]="true"></sds-footer-row>
 </sds-table>
 
 <div>
-  <hr class="margin-top-4" />
-  <p>Change number of rows:</p>
-  <button (click)="sliceData(0,5)" class="usa-button usa-button--base">
+    <hr class="margin-top-4" />
+    <p>Change number of rows:</p>
+    <button (click)="sliceData(0,5)" class="usa-button usa-button--base">
     5 rows
   </button>
-  <button (click)="sliceData(0,25)" class="usa-button usa-button--base">
+    <button (click)="sliceData(0,25)" class="usa-button usa-button--base">
     25 rows
   </button>
-  <button (click)="getAsyncData()" class="usa-button usa-button--base">
+    <button (click)="getAsyncData()" class="usa-button usa-button--base">
     50 rows (HTTP Async)
   </button>
-  <button (click)="sliceData(0,100)" class="usa-button usa-button--base">
+    <button (click)="sliceData(0,100)" class="usa-button usa-button--base">
     100 rows
   </button>
 </div>
 
 <div class="margin-2" *ngIf="rowEdit">
-  Edit Data:
-  <pre class="highlight"><code class="line-height-sans-3">{{ rowEdit | json }}</code></pre>
+    Edit Data:
+    <pre class="highlight"><code class="line-height-sans-3">{{ rowEdit | json }}</code></pre>
 </div>

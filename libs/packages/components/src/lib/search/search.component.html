@@ -28,14 +28,14 @@
       [placeholder]="searchSettings.placeholder? searchSettings.placeholder : 'type here'"
       [attr.aria-label]="searchSettings.ariaLabel" (blur)="focusChange()" (input)="writeValueToModel()"/>
 
-    <span class="" *ngIf="searchSettings.isSuffixSearchIcon" class="cursor-pointer display-flex flex-align-center">
+    <span *ngIf="searchSettings.isSuffixSearchIcon" class="cursor-pointer display-flex flex-align-center">
       <span *ngIf="model.searchText" class="postfix close-icon" role="button" aria-label="Clear input"
         (click)="clearInput($event)" (keyup.enter)="clearInput($event)" tabindex="0">
-        <sds-icon [icon]="['sds', 'exit']" [size]="searchSettings.size === 'large'?'2x':'1x'"></sds-icon>
+        <sds-icon [icon]="'x'" [size]="searchSettings.size === 'large'?'2x':'1x'"></sds-icon>
       </span>
       <span class="postfix search-icon" role="button" aria-label="search input" (click)="handleClick($event)"
         (keyup.enter)="handleClick($event)" tabindex="0">
-        <sds-icon [icon]="['bs', 'search']" [size]="searchSettings.size === 'large'?'1x':'xs'">
+        <sds-icon [icon]="'search'" [size]="searchSettings.size === 'large'?'1x':'xs'">
         </sds-icon>
       </span>
     </span>

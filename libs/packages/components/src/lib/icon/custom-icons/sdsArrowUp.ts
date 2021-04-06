@@ -1,0 +1,1 @@
+export const arrowUp = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi sds-arrow-up\" viewBox=\"0 0 512 512\">\n  <path d=\"M183.9,256.7V512h145.5V256.7l82,100.5L512,256.7L255.3,0L0,255.3c0,0,83.8,94.4,88.6,99.2L183.9,256.7z\"/>\n</svg>";
