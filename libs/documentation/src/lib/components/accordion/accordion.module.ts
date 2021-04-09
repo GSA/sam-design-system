@@ -11,6 +11,8 @@ import {
 } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { AccordionBasicModule } from './demos/basic/accordion-basic.module';
+import { AccordionCardlistModule } from './demos/cardlist/accordion-cardlist.module';
+import { AccordionCardlist } from './demos/cardlist/accordion-cardlist.component';
 
 declare var require: any;
 const DEMOS = {
@@ -21,6 +23,14 @@ const DEMOS = {
     markup: require('!!raw-loader!./demos/basic/accordion-basic.component.html'),
     module: require('!!raw-loader!./demos/basic/accordion-basic.module'),
     path: 'libs/documentation/src/lib/components/accordion/demos/basic',
+  },
+  cardlist: {
+    title: 'Accordion in Card',
+    type: AccordionCardlist,
+    code: require('!!raw-loader!./demos/cardlist/accordion-cardlist.component'),
+    markup: require('!!raw-loader!./demos/cardlist/accordion-cardlist.component.html'),
+    module: require('!!raw-loader!./demos/cardlist/accordion-cardlist.module'),
+    path: 'libs/documentation/src/lib/components/accordion/demos/cardlist',
   },
 };
 
@@ -52,6 +62,7 @@ export const ROUTES = [
     CommonModule,
     DocumentationComponentsSharedModule,
     AccordionBasicModule,
+    AccordionCardlistModule
   ],
 })
 export class AccordionModule {
