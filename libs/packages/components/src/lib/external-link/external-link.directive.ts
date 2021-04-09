@@ -25,7 +25,11 @@ export class ExternalLinkDirective implements OnChanges {
   @Input() target: string;
 
   @Input() public hideIcon: boolean = false;
-  private internalLinks = ['fsd.gov'];
+
+  /** Treat these domains as internal links */
+  private internalLinks = [
+    /** 'fsd.gov' - Removed until fsd.gov contains proper route back to sam.gov */
+  ];
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: string,
