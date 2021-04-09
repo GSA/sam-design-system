@@ -34,6 +34,12 @@
     },
     "module": "esnext",
   },
+  "references": [
+    {"path": "libs/packages/components"},
+    {"path": "libs/packages/sam-material-extensions"},
+    {"path": "libs/packages/sam-formly"},
+    {"path": "libs/packages/layouts"}
+  ],
   "include": [
     "**/*.ts"
   ]
