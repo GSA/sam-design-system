@@ -115,6 +115,15 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 Before running the tests make sure you are serving the app via `ng serve`.
 
+## Linking Projects to Separate Applications
+Run `ng build project-name` to initially output a build of the project. This will be stored in `dist/` directory.
+Navigate to the built project - `cd dist/libs/project-name`
+Run `npm link`
+Navigate back to root directory - cd `../../../`
+Run `ng build --watch` - This will watch for any changes to the project and update the build in dist directory
+On application side, from the same direstory where the application's package.json is placed, run `npm link @gsa-sam/project-name`.
+Start up your application - Now any changes made to the project should be initiate a reload and be reflected on the application.
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
