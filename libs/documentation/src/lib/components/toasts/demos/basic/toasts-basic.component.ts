@@ -19,6 +19,7 @@ export class ToastsBasic {
       success: 'sds-toast--success',
       warning: 'sds-toast--warning',
     };
+    this.options.closeButton = true;
   }
  
   showInfo() {
