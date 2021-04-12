@@ -122,7 +122,7 @@ Run `npm link` (Mac users might need to run with sudo command)
 Navigate back to root directory - cd `../../../`
 Run `ng build --watch` - This will watch for any changes to the project and update the build in dist directory
 On application side, from the same directory where the application's package.json is placed, run `npm link @gsa-sam/project-name`.
-Start up your application - Now any changes made to the project should be initiate a reload and be reflected on the application.
+Start up your application - Now any changes made to the project should initiate a reload and be reflected on the application.
 
 ## Further help
 
