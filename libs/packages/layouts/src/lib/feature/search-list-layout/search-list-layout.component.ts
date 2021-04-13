@@ -168,6 +168,8 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     );
     const params: any = this.getUrlParams(queryString);
     const paramModel: any = this.convertToModel(params);
+
+    this.page.default = true;
     this.page.pageNumber = paramModel['page'] ? +paramModel['page'] : 1;
 
     this.sortField = paramModel['sort'];
