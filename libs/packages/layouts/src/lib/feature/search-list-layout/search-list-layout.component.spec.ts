@@ -70,6 +70,8 @@ describe('SearchListLayoutComponent', () => {
       totalPages: 0,
       default: true,
     };
+    fixture.detectChanges();
+
     component.updateFilter(filterData);
     fixture.detectChanges();
     tick(100);
