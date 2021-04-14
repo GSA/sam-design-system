@@ -14,11 +14,11 @@ export class SearchOptional {
     id: 'ddSearch',
     placeholder: 'eg: Acme Corporation',
     dropdown: {
-     
+
       id: 'ddSearchOptions',
       options: [
         {value: '-', label: '--Select--'},
-        { value: '1', label: 'One' },
+        { value: '1', label: 'One With Long Text' },
         { value: '2', label: 'Two' },
         { value: '3', label: 'Three' }
       ]
@@ -46,7 +46,7 @@ export class SearchOptional {
     size: 'large',
     dropdown: {
       id: 'bigddSearchOptions',
-     
+
       options: [
         {value: '-', label: '--Select--'},
         { value: '1', label: 'One' },

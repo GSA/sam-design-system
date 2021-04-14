@@ -1,7 +1,7 @@
 <form class="usa-form usa-search grid-row" [ngClass]="getClass()" role="search">
   <label *ngIf="hasDropdown()" class="usa-sr-only" [attr.for]="searchSettings.dropdown.id">Dropdown label</label>
   <select *ngIf="hasDropdown()" [value]="model.searchCategory? model.searchCategory :''" #selectEl name="search options"
-    aria-label="Search Options" class="usa-select grid-col-12 tablet:grid-col-6" [attr.id]="searchSettings.dropdown.id"
+    aria-label="Search Options" class="usa-select grid-col-12 tablet:grid-col-auto" [attr.id]="searchSettings.dropdown.id"
     (change)="writeValueToModel()">
     <ng-container *ngFor="let item of searchSettings.dropdown.options">
       <optgroup *ngIf="item.group" label="{{item.label}}">
@@ -21,7 +21,7 @@
 <ng-template #inputTemplate>
 
   <div class="position-relative grid-col-12" [ngClass]="{
-  'suffix-icon': searchSettings.isSuffixSearchIcon, 'tablet:grid-col-6': hasDropdown()}">
+  'suffix-icon': searchSettings.isSuffixSearchIcon, 'tablet:grid-col': hasDropdown()}">
     <label class="usa-sr-only" [attr.for]="searchSettings.id">Search</label>
     <input #inputEl [value]="model.searchText? model.searchText :''" [ngClass]="[searchSettings?.inputClass ? searchSettings?.inputClass : '', !hasDropdown() ? 'no-drop' : '']"
       [attr.id]="searchSettings.id" type="search" class="usa-input" name="search"
