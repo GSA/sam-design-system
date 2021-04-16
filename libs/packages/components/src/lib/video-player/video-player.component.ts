@@ -82,15 +82,15 @@ export class SdsVideoPlayerComponent implements AfterContentInit, AfterViewInit,
    */
   private _loadVideoSourceOnDemand() {
     const playButton: HTMLButtonElement = this.elementRef.nativeElement.querySelector('.px-video-play');
-    const rewindButton: HTMLButtonElement = this.elementRef.nativeElement.querySelector('.px-video-rewind');
+    const restartButton: HTMLButtonElement = this.elementRef.nativeElement.querySelector('.px-video-restart');
 
-    if (!playButton || !rewindButton) {
+    if (!playButton || !restartButton) {
       // Edge case - if the button to toggle video source does not exist in dom, then add in the
       // video source and let the browser decide when to fetch video data
       this.loadVideoSource = true;
     } else {
       playButton.onclick = () => this.loadVideoSource = true;
-      rewindButton.onclick = () => this.loadVideoSource = true;
+      restartButton.onclick = () => this.loadVideoSource = true;
     }
   }
 
