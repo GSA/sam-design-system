@@ -1,6 +1,6 @@
 {
   "name": "sam-design-system",
-  "version": "10.0.21",
+  "version": "10.0.22",
   "license": "MIT",
   "scripts": {
     "ng": "nx",
