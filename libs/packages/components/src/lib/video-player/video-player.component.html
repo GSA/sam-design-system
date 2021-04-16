@@ -6,9 +6,9 @@
         [attr.aria-label]="VPConfiguration.description"
       >
         <!-- if Safari/Chrome-->
-          <source src="{{VPConfiguration.sourceMp4}}" type="video/mp4" />
+          <source *ngIf="loadVideoSource" src="{{VPConfiguration.sourceMp4}}" type="video/mp4" />
           <!-- If Firefox/Opera/Chrome/IE -->
-          <source src="{{VPConfiguration.sourceWebm}}" type="video/webm" />
+          <source *ngIf="loadVideoSource"  src="{{VPConfiguration.sourceWebm}}" type="video/webm" />
           <track kind="subtitles" kind="captions" label="English captions" src="{{VPConfiguration.caption}}" srclang="en" default />
       </video>
   </div>
