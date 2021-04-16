@@ -78,7 +78,7 @@ export class SdsVideoPlayerComponent implements AfterContentInit, AfterViewInit,
   /**
    * IE and Edge ignore preload attribute and load video data eagerly. In order to
    * workaround those such browsers, we add video source only after user clicks
-   * on play or rewind button of the video.
+   * on play or restart button of the video.
    */
   private _loadVideoSourceOnDemand() {
     const playButton: HTMLButtonElement = this.elementRef.nativeElement.querySelector('.px-video-play');
