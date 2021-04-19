@@ -203,7 +203,6 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     const cleanModel = this.flatten(filter);
     const op = this.flatten(this.configuration.defaultFilterValue);
     this.isDefaultModel = _.isEqual(cleanModel, op);
-    this.isDefaultModel;
   }
 
   flatten(input, reference?, output?) {
