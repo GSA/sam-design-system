@@ -175,7 +175,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     this.sortField = paramModel['sort'];
     if (this.filterUpdateModelService) {
       if (paramModel && paramModel['sfm']) {
-        this.filterUpdateModelService.updateModel(paramModel['sfm']);
+          this.filterUpdateModelService.updateModel(paramModel['sfm']);
       } else {
         this.filterUpdateModelService.updateModel(
           this.configuration.defaultFilterValue
@@ -214,7 +214,12 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
         if (typeof value === 'object' && value !== null) {
           this.flatten(value, key, output);
         } else {
-          output[key] = value;
+          // Treat true string as boolean value & ignore value of string 'false'
+          if (value === 'true') {
+            output[key] = true;
+          } else if (value != 'false') {
+            output[key] = value;
+          }
         }
       }
     }
