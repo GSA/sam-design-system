@@ -24,12 +24,7 @@
         <li *ngFor="let option of (to.options | formlySelectOptions: field | async); let i = index">
           <input class="usa-checkbox__input" [id]="id + '_' + i" type="checkbox" [name]="id + '_name_' + i"
             [disabled]="option.disabled" [value]="option.value" [formlyAttributes]="field"
-            (change)="onChange(option.value, $event.target.checked)" [checked]="
-              formControl.value &&
-              (this.to.type === 'array'
-                ? formControl.value.includes(option.value)
-                : formControl.value[option.value])
-            " />
+            (change)="onChange(option.value, $event.target.checked)" [checked]="isChecked(option)" />
           <label class="usa-checkbox__label" [for]="id + '_' + i">
             <!-- 
                 The reference of options array through index is done intentionally here rather 
