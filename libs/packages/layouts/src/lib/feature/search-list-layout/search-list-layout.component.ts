@@ -175,7 +175,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     this.sortField = paramModel['sort'];
     if (this.filterUpdateModelService) {
       if (paramModel && paramModel['sfm']) {
-          this.filterUpdateModelService.updateModel(paramModel['sfm']);
+        this.filterUpdateModelService.updateModel(paramModel['sfm']);
       } else {
         this.filterUpdateModelService.updateModel(
           this.configuration.defaultFilterValue
@@ -329,8 +329,9 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
       this.enableApiCall &&
       !this.isDefaultModel
     ) {
+      this.loading = true;
+
       setTimeout(() => {
-        this.loading = true;
         this.service
           .getData({
             page: this.page,
@@ -344,7 +345,10 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
               result.totalItems / this.page.pageSize
             );
             this.totalItems = result.totalItems;
-          });
+          },
+          (error) => this.loading = false,
+          () => this.loading = false
+          );
       });
     }
   }
