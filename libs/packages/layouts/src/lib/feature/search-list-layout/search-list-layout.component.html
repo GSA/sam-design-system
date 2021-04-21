@@ -30,13 +30,8 @@
         [isDefaultModel]="isDefaultModel">
         <ng-container>
           <ng-template #resultContent let-item>
-            <div *ngIf="loading">
-              <ng-container *ngTemplateOutlet="loadingScreen"></ng-container>
-            </div>
-            <div *ngIf="!loading">
-              <ng-container *ngTemplateOutlet=" resultContentTemplate, context: { $implicit: item }">
+              <ng-container *ngTemplateOutlet="resultContentTemplate, context: { $implicit: item }">
               </ng-container>
-            </div>
           </ng-template>
         </ng-container>
       </sds-search-result-list>
