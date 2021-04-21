@@ -175,9 +175,6 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     this.sortField = paramModel['sort'];
     if (this.filterUpdateModelService) {
       if (paramModel && paramModel['sfm']) {
-        if (!this.isDefaultFilter(paramModel['sfm'])) {
-          this.loading = true;
-        }
         this.filterUpdateModelService.updateModel(paramModel['sfm']);
       } else {
         this.filterUpdateModelService.updateModel(
@@ -206,7 +203,6 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     const cleanModel = this.flatten(filter);
     const op = this.flatten(this.configuration.defaultFilterValue);
     this.isDefaultModel = _.isEqual(cleanModel, op);
-    return this.isDefaultModel;
   }
 
   flatten(input, reference?, output?) {
@@ -348,10 +344,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
               result.totalItems / this.page.pageSize
             );
             this.totalItems = result.totalItems;
-          },
-          (error) => this.loading = false,
-          () => this.loading = false
-          );
+          });
       });
     }
   }
