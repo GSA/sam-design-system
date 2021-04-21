@@ -329,8 +329,9 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
       this.enableApiCall &&
       !this.isDefaultModel
     ) {
+      this.loading = true;
+
       setTimeout(() => {
-        this.loading = true;
         this.service
           .getData({
             page: this.page,
@@ -344,7 +345,10 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
               result.totalItems / this.page.pageSize
             );
             this.totalItems = result.totalItems;
-          });
+          },
+          (error) => this.loading = false,
+          () => this.loading = false
+          );
       });
     }
   }
