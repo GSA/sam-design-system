@@ -49,7 +49,6 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType
     }
     this.someComplete();
     this.formControl.markAsTouched();
-
   }
 
   isChecked(option) {
@@ -58,9 +57,14 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType
     }
 
     if (this.to.type === 'array') {
-      return this.formControl.value.includes(option.value) && option.value != 'false';
+      return (
+        this.formControl.value.includes(option.value) && option.value != 'false'
+      );
     } else if (this.formControl.value[option.value]) {
-      return this.formControl.value[option.value] && this.formControl.value[option.value] != 'false';
+      return (
+        this.formControl.value[option.value] &&
+        this.formControl.value[option.value] != 'false'
+      );
     }
   }
 
@@ -83,6 +87,7 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType
     this.ariaChecked = 'true';
     this.allComplete = ev.target.checked;
     if (Array.isArray(this.field.templateOptions.options)) {
+      this.formControl.setValue([]);
       this.field.templateOptions.options.map((option) => {
         this.onChange(option.key, ev.target.checked);
       });
