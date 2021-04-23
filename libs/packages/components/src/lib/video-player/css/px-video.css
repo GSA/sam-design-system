@@ -86,11 +86,6 @@
   background: no-repeat url("./px-video-sprite.svg");
 }
 
-.px-video-controls button:focus {
-  border: 1px #1a4480 dotted;
-  outline: none;
-}
-
 .px-video-controls button {
   cursor: pointer;
 }
@@ -156,7 +151,8 @@
 }
 
 .px-video-fullscreen-btn-container input[type="checkbox"]:focus+label {
-  outline: 1px #1a4480 dotted;
+  outline: 0.25rem solid #2491ff;
+  outline-offset: 0;
   background-position: -6px -943px;
 }
 
@@ -166,7 +162,8 @@
 }
 
 .px-video-fullscreen-btn-container input[type="checkbox"]:focus+label {
-  outline: 1px #1a4480 dotted;
+  outline: 0.25rem solid #2491ff;
+  outline-offset: 0;
   background-position: -6px -943px;
 }
 
@@ -189,7 +186,8 @@
 }
 
 .px-video-captions-btn-container input[type="checkbox"]:focus+label {
-  outline: 1px #1a4480 dotted;
+  outline: 0.25rem solid #2491ff;
+  outline-offset: 0;
   background-position: -6px -799px;
 }
 
@@ -199,7 +197,8 @@
 }
 
 .px-video-captions-btn-container input[type="checkbox"]:focus+label {
-  outline: 1px #1a4480 dotted;
+  outline: 0.25rem solid #2491ff;
+  outline-offset: 0;
   background-position: -6px -799px;
 }
 
@@ -219,7 +218,8 @@
 }
 
 .px-video-mute-btn-container input[type="checkbox"]:focus+label {
-  outline: 1px #1a4480 dotted;
+  outline: 0.25rem solid #2491ff;
+  outline-offset: 0;
   background-position: -6px -440px;
 }
 
@@ -229,7 +229,8 @@
 }
 
 .px-video-mute-btn-container input[type="checkbox"]:focus+label {
-  outline: 1px #1a4480 dotted;
+  outline: 0.25rem solid #2491ff;
+  outline-offset: 0;
   background-position: -6px -440px;
 }
 
@@ -254,7 +255,8 @@
 }
 
 .px-video-controls input[type="range"]:focus::-webkit-slider-thumb {
-  outline: 1px #1a4480 dotted;
+  outline: 0.25rem solid #2491ff;
+  outline-offset: 0;
 }
 
 .px-video-controls input[type="range"]::-moz-range-track {
