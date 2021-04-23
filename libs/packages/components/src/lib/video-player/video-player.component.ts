@@ -1,5 +1,4 @@
-import { Component,ViewChild, Input,ElementRef, AfterViewInit, ViewEncapsulation, Renderer2, OnChanges, AfterContentInit, OnInit, ChangeDetectorRef } from '@angular/core';
-import { GLOBAL_STRINGS } from 'accessible-html5-video-player/js/strings.js';
+import { Component,ViewChild, Input,ElementRef, AfterViewInit, ViewEncapsulation, Renderer2, OnChanges, OnInit, ChangeDetectorRef } from '@angular/core';
 import * as InitPxVideo from 'accessible-html5-video-player/js/px-video.js';
 import { VPInterface } from './video-player';
 
@@ -79,22 +78,13 @@ export class SdsVideoPlayerComponent implements AfterViewInit, OnChanges, OnInit
     }
   }
 
-  _loadVideo() {
+  onVideoContainerClicked() {
     if (this.loadVideoSource) {
       return;
     }
-
     const video: HTMLVideoElement = this.elementRef.nativeElement.querySelector('#videoPlayer');
-
     this.loadVideoSource = true;
-    
-    // Due to event handler timing issues in safari, the browser does not load the source
-    // when play and source are set at the same time. So we first set the source, wait for
-    // an event loop, pause, then play the video to trigger source loading
-    setTimeout(() => {
-      video.pause();
-      video.play();
-    });
+    video.load();
   }
 
   /**
@@ -105,14 +95,31 @@ export class SdsVideoPlayerComponent implements AfterViewInit, OnChanges, OnInit
   private _loadVideoSourceOnDemand() {
     const playButton: HTMLButtonElement = this.elementRef.nativeElement.querySelector('.px-video-play');
     const restartButton: HTMLButtonElement = this.elementRef.nativeElement.querySelector('.px-video-restart');
+    const video: HTMLVideoElement = this.elementRef.nativeElement.querySelector('#videoPlayer');
+
+    const loadVideo = ($event) => {
+      if (this.loadVideoSource) {
+        return;
+      }
+
+      this.loadVideoSource = true;
+      
+      // Due to event handler timing issues in safari, the browser does not load the source
+      // when play and source are set at the same time. So we first set the source, wait for
+      // an event loop, pause, then play the video to trigger source loading
+      setTimeout(() => {
+        video.pause();
+        video.play();
+      });
+    }
 
     if (!playButton || !restartButton) {
       // Edge case - if the button to toggle video source does not exist in dom, then add in the
       // video source and let the browser decide when to fetch video data
       this.loadVideoSource = true;
     } else {
-      playButton.onclick = this._loadVideo;
-      restartButton.onclick = this._loadVideo;
+      playButton.onclick = loadVideo;
+      restartButton.onclick = loadVideo;
     }
   }
 }
