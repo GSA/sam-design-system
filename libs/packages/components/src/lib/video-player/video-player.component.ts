@@ -79,6 +79,24 @@ export class SdsVideoPlayerComponent implements AfterViewInit, OnChanges, OnInit
     }
   }
 
+  _loadVideo() {
+    if (this.loadVideoSource) {
+      return;
+    }
+
+    const video: HTMLVideoElement = this.elementRef.nativeElement.querySelector('#videoPlayer');
+
+    this.loadVideoSource = true;
+    
+    // Due to event handler timing issues in safari, the browser does not load the source
+    // when play and source are set at the same time. So we first set the source, wait for
+    // an event loop, pause, then play the video to trigger source loading
+    setTimeout(() => {
+      video.pause();
+      video.play();
+    });
+  }
+
   /**
    * IE and Edge ignore preload attribute and load video data eagerly. In order to
    * workaround those such browsers, we add video source only after user clicks
@@ -87,31 +105,14 @@ export class SdsVideoPlayerComponent implements AfterViewInit, OnChanges, OnInit
   private _loadVideoSourceOnDemand() {
     const playButton: HTMLButtonElement = this.elementRef.nativeElement.querySelector('.px-video-play');
     const restartButton: HTMLButtonElement = this.elementRef.nativeElement.querySelector('.px-video-restart');
-    const video: HTMLVideoElement = this.elementRef.nativeElement.querySelector('#videoPlayer');
-
-    const loadVideo = ($event) => {
-      if (this.loadVideoSource) {
-        return;
-      }
-
-      this.loadVideoSource = true;
-      
-      // Due to event handler timing issues in safari, the browser does not load the source
-      // when play and source are set at the same time. So we first set the source, wait for
-      // an event loop, pause, then play the video to trigger source loading
-      setTimeout(() => {
-        video.pause();
-        video.play();
-      });
-    }
 
     if (!playButton || !restartButton) {
       // Edge case - if the button to toggle video source does not exist in dom, then add in the
       // video source and let the browser decide when to fetch video data
       this.loadVideoSource = true;
     } else {
-      playButton.onclick = loadVideo;
-      restartButton.onclick = loadVideo;
+      playButton.onclick = this._loadVideo;
+      restartButton.onclick = this._loadVideo;
     }
   }
 }
