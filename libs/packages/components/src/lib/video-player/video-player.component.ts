@@ -79,15 +79,6 @@ export class SdsVideoPlayerComponent implements AfterViewInit, OnChanges, OnInit
     }
   }
 
-  onVideoContainerClicked() {
-    if (this.loadVideoSource) {
-      return;
-    }
-    const video: HTMLVideoElement = this.elementRef.nativeElement.querySelector('#videoPlayer');
-    this.loadVideoSource = true;
-    video.load();
-  }
-
   /**
    * IE and Edge ignore preload attribute and load video data eagerly. In order to
    * workaround those such browsers, we add video source only after user clicks
