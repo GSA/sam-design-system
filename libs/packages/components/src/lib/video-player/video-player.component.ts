@@ -57,12 +57,13 @@ export class SdsVideoPlayerComponent implements AfterViewInit, OnChanges, OnInit
       debug: this.VPConfiguration.debug
     }
 
-    const video = new InitPxVideo(this.config);
+    new InitPxVideo(this.config);
     this.video.nativeElement.setAttribute("style", "width:"+this.VPConfiguration.width+";");
 
     const progressElement: HTMLProgressElement= this.elementRef.nativeElement.querySelector('progress');
-
-    this.renderer2.setAttribute(progressElement, 'aria-label', this.VPConfiguration.description + ' progress bar');
+    if (progressElement) {
+      this.renderer2.setAttribute(progressElement, 'aria-label', this.VPConfiguration.description + ' progress bar');
+    }
 
     if (this.VPConfiguration.preload === 'none') {
       this._loadVideoSourceOnDemand();
