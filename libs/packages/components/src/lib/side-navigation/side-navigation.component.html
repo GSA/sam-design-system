@@ -1,4 +1,4 @@
-<nav>
+<nav [attr.aria-label]="ariaLabel">
   <ul class="usa-sidenav">
     <li *ngFor="let link of model.navigationLinks" class="sidenav__item">
       <ng-container [ngTemplateOutlet]="sideNavLinkTemplate" [ngTemplateOutletContext]="{$implicit:link}">
