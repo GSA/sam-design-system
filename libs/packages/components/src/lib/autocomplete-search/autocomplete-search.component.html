@@ -148,18 +148,18 @@
     </ul>
 
     <ng-container *ngIf="!input.disabled">
-      <span class="position-absolute right-105 top-1 cursor-pointer">
+      <span class="position-absolute right-105 top-1 cursor-pointer bg-white">
         <span *ngIf="inputValue && !disabled" role="button" aria-label="Clear input" (click)="clearInput()"
           (keyup.enter)="clearInput()" tabindex="0">
-          <sds-icon [icon]="'x'" size="1x"></sds-icon>
+          <sds-icon [icon]="'x'" size="lg"></sds-icon>
         </span>
         <span *ngIf="!configuration.isTagModeEnabled" class="margin-left-1">
           <sds-icon role="button" aria-label="Display Options" tabindex="0" *ngIf="!showResults && !disabled"
             (click)="openOptions()" (keyup.enter)="openOptions()" [icon]="'caret-down-fill'" size="1x">
           </sds-icon>
           <sds-icon role="button" aria-label="Hide Options" tabindex="0" *ngIf="showResults && !disabled"
-            (click)="checkForFocus($event)" (keyup.enter)="checkForFocus($event)" [icon]="'caret-up-fill'"
-            size="1x"></sds-icon>
+            (click)="checkForFocus($event)" (keyup.enter)="checkForFocus($event)" [icon]="'caret-up-fill'" size="1x">
+          </sds-icon>
         </span>
       </span>
     </ng-container>
