@@ -86,12 +86,14 @@ export class SdsVideoPlayerComponent
     const progressElement: HTMLProgressElement = this.elementRef.nativeElement.querySelector(
       'progress'
     );
-
-    this.renderer2.setAttribute(
-      progressElement,
-      'aria-label',
-      this.VPConfiguration.description + ' progress bar'
-    );
+    
+    if (progressElement) {
+      this.renderer2.setAttribute(
+        progressElement,
+        'aria-label',
+        this.VPConfiguration.description + ' progress bar'
+      );
+    }
 
     if (this.VPConfiguration.preload === 'none') {
       this._loadVideoSourceOnDemand();
