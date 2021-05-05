@@ -62,7 +62,11 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
 
   @Input() enableApiCall: boolean = true;
 
+  /**
+   * Set to true when either filter is empty or filter is equal to default model
+   */
   isDefaultModel: boolean = true;
+
   /**
    * Filter information
    */
@@ -201,6 +205,13 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
 
   isDefaultFilter(filter) {
     const cleanModel = this.flatten(filter);
+    
+    // No filter values set
+    if (Object.keys(cleanModel).length === 0) {
+      this.isDefaultModel = true;
+      return;
+    }
+
     const op = this.flatten(this.configuration.defaultFilterValue);
     this.isDefaultModel = _.isEqual(cleanModel, op);
   }
@@ -294,8 +305,23 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
       encode: false,
       filter: this.longFormatDate,
     });
-    obj = qs.parse(encodedValues);
+    obj = qs.parse(encodedValues, {decoder: this.convertToModelParser});
     return obj;
+  }
+
+  /**
+   * Decoder for qs.parse to convert true / false strings to boolean values
+   */
+  convertToModelParser(str: string, decoder: qs.defaultDecoder, charset: string, type: 'key' | 'value') {
+    if (type === 'key') {
+      return decoder(str, decoder, charset);
+    }
+
+    if (str === 'true' || str === 'false') {
+      return str === 'true' ? true : false;
+    }
+
+    return decoder(str, decoder, charset);
   }
 
   longFormatDate(prefix, value) {

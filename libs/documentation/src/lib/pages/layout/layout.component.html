@@ -23,7 +23,7 @@
             <sds-accordion-title>Filter By</sds-accordion-title>
             <sds-accordion-content>
 
-              <sds-filters [options]="options" [advancedFilters]="true" [sortMoreFilterBy]="'label'"
+              <sds-filters [options]="options" [advancedFilters]="true" [sortMoreFilterBy]="'label'" [getCleanModel]="true"
                 [isHistoryEnable]="false" [form]="form" [fields]="fields" [model]="filterModel"
                 [defaultModel]="listConfig.defaultFilterValue"
                 (filterChange)="filterChange$.next($event)"></sds-filters>
