@@ -1,5 +1,5 @@
 
-<ul class="usa-sidenav sds-list">
+<ul class="usa-sidenav sds-subpanel sds-list">
   <li *ngFor="let panelItem of model" class="usa-sidenav__item">
     <ng-container [ngTemplateOutlet]="subPanelTemplate" [ngTemplateOutletContext]="{$implicit:panelItem}">
     </ng-container>
@@ -7,10 +7,10 @@
 </ul>
 
 <ng-template #subPanelTemplate let-panelItem>
-  <a href="javascript:void(0);" 
+  <a href="javascript:void(0);"
+  class="usa-link margin-right-neg-2" 
   [ngClass]="{
-    'text-secondary': !currentSelection || panelItem.id != currentSelection.id, 
-    'usa-link usa-link--active': currentSelection && panelItem.id === currentSelection.id
+    'usa-link--active': currentSelection && panelItem.id === currentSelection.id
   }"
   (click)="onSubPanelItemClicked(panelItem)">
   {{panelItem.text}}</a>
