@@ -274,8 +274,24 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
       encode: false,
       filter: this.longFormatDate,
     });
-    obj = qs.parse(encodedValues);
+    obj = qs.parse(encodedValues, {decoder: this.cleanModelParser});
     return obj;
+  }
+
+  /**
+   * Parser for qs.parse - if input string is true / false, 
+   * convert to boolean value, otherwise use default decoder
+   */
+  cleanModelParser(str: string, decoder: qs.defaultDecoder, charset: string, type: 'key' | 'value') {
+    if (type === 'key') {
+      return decoder(str, decoder, charset);
+    }
+
+    if (str === 'true' || str === 'false') {
+      return str === 'true' ? true : false;
+    }
+
+    return decoder(str, decoder, charset);
   }
 
   longFormatDate(prefix, value) {
