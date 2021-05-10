@@ -205,13 +205,6 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
 
   isDefaultFilter(filter) {
     const cleanModel = this.flatten(filter);
-    
-    // No filter values set
-    if (Object.keys(cleanModel).length === 0) {
-      this.isDefaultModel = true;
-      return;
-    }
-
     const op = this.flatten(this.configuration.defaultFilterValue);
     this.isDefaultModel = _.isEqual(cleanModel, op);
   }
