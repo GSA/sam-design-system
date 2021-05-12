@@ -19,7 +19,6 @@ export class ExternalLinkDirective implements OnChanges {
   @HostBinding('attr.rel') relAttr = '';
   @HostBinding('attr.target') targetAttr = '';
   @HostBinding('attr.href') hrefAttr = '';
-  @HostBinding('attr.aria-label') ariaLabel = '';
 
   @Input() href: string;
   @Input() target: string;
@@ -48,8 +47,8 @@ export class ExternalLinkDirective implements OnChanges {
     this.relAttr = 'noopener';
     this.targetAttr = '_blank';
 
-    this.ariaLabel = this._getAriaLabel();
-    (this.el.nativeElement as HTMLAnchorElement).setAttribute('aria-label', this.ariaLabel);
+    const ariaLabel = this._getAriaLabel();
+    (this.el.nativeElement as HTMLAnchorElement).setAttribute('aria-label', ariaLabel);
 
     if (!this.hideIcon) {
       this.createIcon();
