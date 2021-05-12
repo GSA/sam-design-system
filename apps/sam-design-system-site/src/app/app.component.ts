@@ -13,7 +13,7 @@ export class AppComponent {
   styleSheetLink: Element;
   constructor(){
     this.styleSheetLink = document.querySelector(
-      `link[href="sds.css"],[href="uswds.css"]`
+      `link[href^="sds"][href$="css"],[href^="uswds"][href$="css"]`
     );
     this.currentDisplayed = localStorage.getItem(this.displayThemeKey);
     if(this.currentDisplayed === null){
