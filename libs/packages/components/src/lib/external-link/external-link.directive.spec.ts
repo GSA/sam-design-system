@@ -10,7 +10,7 @@ import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/t
     <a id="test" href="google.com">Google </a>
     <a id="test2" [hideIcon]="true" href="google.com" aria-label="test aria label - opens in a new window">Google </a>
     <a id="test3">Not Google </a>
-    <a id="test4" href="{{name}}/settings/test123">Google </a>
+    <a id="test4" href="{{name}}/settings/test123" aria-label="Test label">Google </a>
     <a id="test5" [hideIcon]="true" href="google.com" aria-label="test aria label with no keywords">Google </a>
     <a id="test6" [hideIcon]="true" href="google.com">Google <span>test element</span></a>
   `
@@ -65,9 +65,9 @@ describe('Sam External Link Directive', () => {
     expect(testElementWithoutAriaLabel.attributes['aria-label']).toEqual('test aria label - opens in a new window');
   });
 
-  it('Should not add aria label to internal links', () => {
+  it('Should not update aria label to internal links', () => {
     const testElementWithoutAriaLabel = fixture.debugElement.query(By.css('#test4'));
-    expect(testElementWithoutAriaLabel.attributes['aria-label']).toEqual('');
+    expect(testElementWithoutAriaLabel.attributes['aria-label']).toEqual('Test label');
   });
 
   it('Should update aria label to external link if existing aria label does not indicate opening in new window', () => {
