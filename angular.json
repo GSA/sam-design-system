@@ -234,7 +234,7 @@
               },
               {
                 "input": "apps/sam-design-system-site/src/sds-styles.scss",
-                "inject": true,
+                "inject": false,
                 "bundleName": "sds"
               },
               "node_modules/highlight.js/styles/vs.css"
