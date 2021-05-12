@@ -8,6 +8,11 @@
             width="140" /></a>
         <a href="/" title="Home" aria-label="Home" class="title-text">Design System Components</a>
       </div>
+      <div class="theme-switcher">
+        <span>Switch Theme: </span>
+        <button class="usa-button usa-button--unstyled" (click)="swapTheme(sdsThemeString)" *ngIf="currentDisplayed===uswdsThemeString">SDS</button>
+        <button class="usa-button usa-button--unstyled" (click)="swapTheme(uswdsThemeString)" *ngIf="currentDisplayed===sdsThemeString">USWDS</button>
+      </div>
     </div>
     <div class="grid-col flex-4">
       <nav class="float-right" aria-label="Github Page Navigation">
