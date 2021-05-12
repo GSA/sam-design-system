@@ -38,6 +38,7 @@ describe('Sam External Link Directive', () => {
 
     fixture = TestBed.createComponent(TestComponent);
     component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
   it('should create component', () => {
@@ -45,43 +46,36 @@ describe('Sam External Link Directive', () => {
   });
 
   it('should create one icon', () => {
-    fixture.detectChanges();
     const icons = findIcons();
     expect(icons.length).toEqual(1);
   });
 
   it('should not create an icon', () => {
-    fixture.detectChanges();
     const icons = findIcons();
     expect(icons.length).toEqual(1);
   });
 
   it ('Should add aria label attribute to external links using inner text if one does not exist', () => {
-    fixture.detectChanges();
     const testElementWithoutAriaLabel = fixture.debugElement.query(By.css('#test'));
     expect(testElementWithoutAriaLabel.attributes['aria-label']).toEqual('Open Google in a new window');
   });
 
   it('Should not update aria label to external link if valid aria label is set', () => {
-    fixture.detectChanges();
     const testElementWithoutAriaLabel = fixture.debugElement.query(By.css('#test2'));
     expect(testElementWithoutAriaLabel.attributes['aria-label']).toEqual('test aria label - opens in a new window');
   });
 
   it('Should not add aria label to internal links', () => {
-    fixture.detectChanges();
     const testElementWithoutAriaLabel = fixture.debugElement.query(By.css('#test4'));
     expect(testElementWithoutAriaLabel.attributes['aria-label']).toEqual('');
   });
 
   it('Should update aria label to external link if existing aria label does not indicate opening in new window', () => {
-    fixture.detectChanges();
     const testElementWithoutAriaLabel = fixture.debugElement.query(By.css('#test5'));
-    expect(testElementWithoutAriaLabel.nativeNode['ariaLabel']).toEqual('test aria label with no keywords - opens in a new window');
+    expect(testElementWithoutAriaLabel.nativeElement.getAttribute('aria-label')).toEqual('test aria label with no keywords - opens in a new window');
   });
 
   it ('Should add aria label attribute to external links using href if one does not exist', () => {
-    fixture.detectChanges();
     const testElementWithoutAriaLabel = fixture.debugElement.query(By.css('#test6'));
     expect(testElementWithoutAriaLabel.attributes['aria-label']).toEqual('Open google.com in a new window');
   });
