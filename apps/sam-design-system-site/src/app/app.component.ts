@@ -9,7 +9,7 @@ export class AppComponent {
   styleSheetLink: Element;
   constructor(){
     this.styleSheetLink = document.querySelector(
-      `link[href^="sds"][href$="css"],[href^="uswds"][href$="css"]`
+      'link[id="selected-style"]'
     );
 
   }
