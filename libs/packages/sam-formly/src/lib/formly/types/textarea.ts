@@ -14,7 +14,7 @@ import { FieldType } from '@ngx-formly/core';
       >
       </textarea>
       <span [attr.id]="id + '-character-count'" 
-        class="usa-hint display-flex flex-column flex-align-end" 
+        class="usa-hint" 
         aria-live="polite">
         <span *ngIf="to.maxLength">
         {{charactersRemaining}} characters remaining
