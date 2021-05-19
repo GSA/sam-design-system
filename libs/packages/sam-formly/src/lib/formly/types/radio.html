@@ -1,0 +1,19 @@
+<form class="usa-radio" [id]="id" [attr.aria-label]="to.ariaLabel? to.ariaLabel : to.label"
+  [attr.aria-describedby]="to.description ? id + '_description' : undefined">
+  <ng-container *ngFor="
+    let option of to.options | formlySelectOptions: field | async;
+    let i = index">
+    <input type="radio" [id]="id + '_' + i" class="usa-radio__input"
+      [ngClass]="{'usa-radio__input--tile': to.tile, 'usa-input--error': !showError}" [name]="id" [value]="option.value"
+      [formControl]="formControl" [formlyAttributes]="field" />
+    <label [attr.class]="'usa-radio__label ' + (to.optionsClass ? to.optionsClass : '')" [for]="id + '_' + i">
+      {{ option.label }}
+      <!-- Go through templateoptions' option because formlySelectOptions pipe will include only limited fields -->
+      <ng-container *ngIf="to.options[i].description && to.options[i].description.length">
+        <div class="usa-checkbox__label-description">
+          <span class="display-block" *ngFor="let description of to.options[i].description">{{description}}</span>
+        </div>
+      </ng-container>
+    </label>
+  </ng-container>
+</form>
