@@ -16,9 +16,7 @@ import { FieldType } from '@ngx-formly/core';
       <span [attr.id]="id + '-character-count'" 
         class="usa-hint" 
         aria-live="polite">
-        <span *ngIf="to.maxLength">
-        {{charactersRemaining}} characters remaining
-        </span>
+        <span *ngIf="to.maxLength">{{charactersRemaining}} characters remaining</span>
       </span>
     </div>
   `,

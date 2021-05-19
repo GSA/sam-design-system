@@ -63,4 +63,48 @@ describe('Formly Input Component', () => {
     const expectedField = fixture.debugElement.query(By.css('.usa-textarea'));
     expect(expectedField.nativeElement.placeholder).toBe('placeholder for text area');
   });
+
+  it('should display correct initial value for character count',  () => {
+    const componentInstance = fixture.componentInstance;
+    componentInstance.fields = [
+        {
+            key: 'text',
+            type: 'textarea',
+            id: 'testCharacterCount',
+            templateOptions: {
+              label: 'Formly input type textarea',
+              placeholder: 'placeholder for text area',
+              maxLength: 50,
+             },
+          },
+    ];
+    fixture.detectChanges();
+
+    // assert
+    const expectedField = fixture.debugElement.query(By.css('#testCharacterCount-character-count'));
+    expect((expectedField.nativeElement as HTMLSpanElement).innerText).toBe('50 characters remaining');
+  })
+
+  it('should update character count value on input',  () => {
+    const componentInstance = fixture.componentInstance;
+    componentInstance.fields = [
+        {
+            key: 'text',
+            type: 'textarea',
+            id: 'testCharacterCount',
+            templateOptions: {
+              label: 'Formly input type textarea',
+              placeholder: 'placeholder for text area',
+              maxLength: 50,
+             },
+          },
+    ];
+    fixture.detectChanges();
+
+    componentInstance.form.get('text').setValue('Hello');
+    fixture.detectChanges();
+
+    const characterCountText: HTMLSpanElement = fixture.debugElement.query(By.css('#testCharacterCount-character-count')).nativeElement;
+    expect(characterCountText.innerText).toBe('45 characters remaining');
+  })
 });
