@@ -56,7 +56,9 @@ export class SdsVideoPlayerComponent
 
   ngOnDestroy() {
     let element = this.document.getElementById('px-video-aria-announce');
-    this.renderer2.removeChild(this.elementRef, element);
+    if (element) {
+      this.renderer2.removeChild(this.elementRef, element);
+    }
   }
   ngOnInit() {
     if (this.VPConfiguration.preload != 'none') {

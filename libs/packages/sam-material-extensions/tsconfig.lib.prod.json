@@ -6,10 +6,6 @@
         "dist/libs/components",
         "libs/packages/components/src/index.ts"
       ],
-      "@gsa-sam/sam-material-extensions": [
-        "dist/libs/sam-material-extensions",
-        "libs/packages/sam-material-extensions/src/index.ts"
-      ],
     },
   },
   "angularCompilerOptions": {
