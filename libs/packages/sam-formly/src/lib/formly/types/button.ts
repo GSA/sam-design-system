@@ -4,7 +4,7 @@ import { FieldType } from '@ngx-formly/core';
 @Component({
   selector: 'sds-formly-field-button',
   template: `
-      <button [type]="to.type" [ngClass]="'btn btn-' + to.btnType" (click)="onClick($event)" class="usa-button--unstyled">
+      <button [type]="to.type" [attr.class]="'usa-button' + to.btnType ? ' usa-button--' + to.btnType : ''" (click)="onClick($event)">
         {{ to.text }}
       </button>
   `,

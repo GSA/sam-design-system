@@ -1,4 +1,5 @@
 import { AfterContentInit, AfterViewInit, ChangeDetectorRef, Component, ContentChildren, EventEmitter, Input, OnChanges, OnInit, Output, QueryList, SimpleChanges, TemplateRef } from "@angular/core";
+import { KeyHelper, KEYS } from "../key-helper";
 import { TabPanelComponent } from "./tab-panel.component";
 
 /** CONSTANTS
@@ -49,7 +50,7 @@ export class TabsComponent implements OnInit, OnChanges, AfterContentInit {
   /**
    * Currently focused tab - can differ from selected tab when tab panels are manually activated
    */
-  private focusedTab: TabPanelComponent;
+  focusedTab: TabPanelComponent;
 
 
   /**
@@ -96,18 +97,17 @@ export class TabsComponent implements OnInit, OnChanges, AfterContentInit {
    * Looks for Left and Right arrow presses and moves selected tab accordingly.
    * @param $event - Keyboard Event
    */
-  onKeyDown($event) {
-    console.log($event);
+  onKeyDown($event: any) {
+
     const tabPanelArray = this.tabPanels.toArray();
     let selectedTabIndex = tabPanelArray.findIndex((tabPanel) => tabPanel === this.focusedTab);
 
-    switch($event.keyCode) {
-      case LEFT_ARROW:
-        selectedTabIndex = this.getNextTabLeft(tabPanelArray, selectedTabIndex);
-        break;
-      case RIGHT_ARROW:
-        selectedTabIndex = this.getNextTabRight(tabPanelArray, selectedTabIndex);
-        break;
+    if (KeyHelper.is(KEYS.LEFT, $event)) {
+      selectedTabIndex = this.getNextTabLeft(tabPanelArray, selectedTabIndex);
+    } else if (KeyHelper.is(KEYS.RIGHT, $event)) {
+      selectedTabIndex = this.getNextTabRight(tabPanelArray, selectedTabIndex);
+    } else {
+      return;
     }
 
     // Move focus to newly selected panel

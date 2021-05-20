@@ -9,6 +9,7 @@
     [attr.aria-label]="tabPanel.ariaLabel"
     [disabled]="tabPanel.disabled"
     (click)="onTabClicked($event, tabPanel)"
+    (focus)="focusedTab = tabPanel"
     (keydown)="onKeyDown($event)">
     <ng-container *ngIf="isObj(tabPanel.tabHeader); else textHeader">
       <ng-template *ngTemplateOutlet="tabPanel.tabHeader"></ng-template>
@@ -18,6 +19,6 @@
     </ng-template>
   </button>
 </div>
-<div class="sds-tabs__content" tabindex="0">
+<div class="sds-tabs__content">
   <ng-content></ng-content>
 </div>
