@@ -202,6 +202,11 @@ import {
   ExternalLinkModule,
 } from './components/external-link/external-link.module';
 
+import {
+  ROUTES as DATE_PIPE_ROUTES,
+  DatePipeModule,
+} from './components/date-pipe/date-pipe.module';
+
 import { DocumentationSharedModule } from './shared';
 import { OverviewComponent } from './pages/overview/overview.component';
 import { ResultsLayoutModule } from './pages/layout/layout.module';
@@ -248,6 +253,7 @@ export const ROUTES: Routes = [
   { path: 'components/external-link', children: EXTERNA_LINK_ROUTES },
   { path: 'components/toasts', children: TOASTS_ROUTES },
   { path: 'components/tabs', children: TABS_ROUTES },
+  { path: 'components/date-pipe', children: DATE_PIPE_ROUTES },
 
   { path: 'components/slide-out', children: SLIDE_OUT_ROUTES },
   // Formly
@@ -348,6 +354,7 @@ export const ROUTES: Routes = [
     ReadonlyModule,
     RoadmapModule,
     SlideOutModule,
+    DatePipeModule,
     NgxBootstrapIconsModule.pick(Object.assign(_.cloneDeep(allIcons), _.cloneDeep(sdsAllIcons)))
   ],
 })
