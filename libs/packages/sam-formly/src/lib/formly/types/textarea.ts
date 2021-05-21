@@ -14,9 +14,14 @@ import { FieldType } from '@ngx-formly/core';
       >
       </textarea>
       <span [attr.id]="id + '-character-count'" 
-        class="usa-hint" 
+        class="usa-hint"
         aria-live="polite">
-        <span *ngIf="to.maxLength">{{charactersRemaining}} characters remaining</span>
+        <span *ngIf="to.maxLength" [ngClass]="{'text-error text-bold': charactersRemaining < 0}" >
+          <ng-container *ngIf="charactersRemaining >= 0; else overLimit">{{charactersRemaining}} characters remaining</ng-container>
+          <ng-template #overLimit>
+            {{formControl.value.length - to.maxLength}} characters over limit
+          </ng-template>
+        </span>
       </span>
     </div>
   `,

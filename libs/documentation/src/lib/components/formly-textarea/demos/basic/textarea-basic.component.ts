@@ -25,4 +25,8 @@ export class TextAreaBasic {
       },
     },
   ];
+
+  onModelChange($event) {
+    console.log($event);
+  }
 }
