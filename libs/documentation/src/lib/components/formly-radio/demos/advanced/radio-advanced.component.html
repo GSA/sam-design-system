@@ -1,0 +1,17 @@
+<p>
+  You can create radio options with multi-line text by adding description to the radio options. Each option
+  can take a description property - an array of strings - where each string will be displayed in a new line.
+</p>
+<p>
+  Additionally, to show each radio option as a tile, you can enable <code> tile: true </code> in
+  the template options.
+</p>
+<p>
+  You can also declare classes radio labels through <code>optionsClass</code> property. This class will be
+  applied to each label in the radio options
+</p>
+
+<form [formGroup]="form">
+  <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form" (modelChange)="onModelChange($event)">
+  </formly-form>
+</form>
