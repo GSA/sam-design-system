@@ -12,7 +12,7 @@ fdescribe('SdsDatePipe', () => {
     const todayDate = new Date(today);
     const hours = todayDate.getHours();
     const min = todayDate.getMinutes();
-    expect(pipe.transform(today)).toBe(`${hours > 12 ? hours - 12 : hours}:${min} ${hours > 12 ? 'PM': 'AM'}`);
+    expect(pipe.transform(today)).toBe(`${hours > 12 ? hours - 12 : hours}:${min < 10 ? `0${min}` : min} ${hours > 12 ? 'PM': 'AM'}`);
   });
   it('should display the time when date displayed is today (date string)', () => {
     const pipe = new SdsDatePipe(new DatePipe('en-us'));
@@ -20,7 +20,7 @@ fdescribe('SdsDatePipe', () => {
     const today = todayDate.toISOString()
     const hours = todayDate.getHours();
     const min = todayDate.getMinutes();
-    expect(pipe.transform(today)).toBe(`${hours > 12 ? hours - 12 : hours}:${min} ${hours > 12 ? 'PM': 'AM'}`);
+    expect(pipe.transform(today)).toBe(`${hours > 12 ? hours - 12 : hours}:${min < 10 ? `0${min}` : min} ${hours > 12 ? 'PM': 'AM'}`);
   });
 
   it('should display the date without the year when date displayed is this calendar year (milliseconds)', () => {
