@@ -56,7 +56,6 @@ describe('Formly Field button Component', () => {
                     type: 'button',
                     templateOptions: {
                         text: 'Show Extension',
-                        btnType: 'info',
                         onClick: $event => {
                             testComponentButtons.model.showExtension = 'show';
                         }
@@ -66,7 +65,7 @@ describe('Formly Field button Component', () => {
             const fixture = createTestComponent(
                 '<formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>'),
                 trigger = fixture.nativeElement.querySelector('ng-star-inserted')
-            const buttonField: any = fixture.debugElement.query(By.css('.usa-button--unstyled'));
+            const buttonField: any = fixture.debugElement.query(By.css('.usa-button'));
 
             const spy = spyOn(buttonField.nativeElement, 'click');
             buttonField.nativeElement.click();
@@ -82,7 +81,7 @@ describe('Formly Field button Component', () => {
                     type: 'button',
                     templateOptions: {
                         text: 'Show Extension',
-                        btnType: 'info',
+                        btnType: 'secondary',
                         onClick: $event => {
                             testComponentButtons.model.showExtension = 'show';
                         }
@@ -92,7 +91,7 @@ describe('Formly Field button Component', () => {
             const fixture = createTestComponent(
                 '<formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>'),
                 trigger = fixture.nativeElement.querySelector('ng-star-inserted')
-            const buttonField: any = fixture.debugElement.query(By.css('.usa-button--unstyled'));
+            const buttonField: any = fixture.debugElement.query(By.css('.usa-button--secondary'));
 
             const spy = spyOn(buttonField.nativeElement, 'click');
             buttonField.nativeElement.click();
