@@ -14,7 +14,7 @@ export class TextAreaBasic {
   options: FormlyFormOptions = {};
   fields: FormlyFieldConfig[] = [
     {
-      key: 'entity.description',
+      key: 'entity',
       type: 'textarea',
       templateOptions: {
         label: 'Entity Description',

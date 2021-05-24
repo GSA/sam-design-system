@@ -16,11 +16,10 @@ import { FieldType } from '@ngx-formly/core';
       <span [attr.id]="id + '-character-count'" 
         class="usa-hint"
         aria-live="polite">
-        <span *ngIf="to.maxLength" [ngClass]="{'text-error text-bold': charactersRemaining < 0}" >
-          <ng-container *ngIf="charactersRemaining >= 0; else overLimit">{{charactersRemaining}} characters remaining</ng-container>
-          <ng-template #overLimit>
-            {{formControl.value.length - to.maxLength}} characters over limit
-          </ng-template>
+        <span *ngIf="to.maxLength">
+        {{charactersRemaining}} 
+        {{charactersRemaining === 1 ? 'character' : 'characters'}} 
+        {{charactersRemaining === to.maxLength ? 'allowed' : 'left'}}
         </span>
       </span>
     </div>
@@ -40,13 +39,34 @@ export class FormlyFieldTextAreaComponent extends FieldType implements OnInit {
     if (!this.to.maxLength) {
       return;
     }
-    const initialValue = this.field.formControl.value;
-    this.charactersRemaining = initialValue ? this.to.maxLength - initialValue.length : this.to.maxLength;
+    const initialValue: string = this.field.formControl.value;
+
+    if (!initialValue) {
+      this.charactersRemaining = this.to.maxLength;
+      return;
+    }
+
+    if (initialValue && initialValue.length <= this.to.maxLength) {
+      this.charactersRemaining = this.to.maxLength - initialValue.length;
+      return;
+    }
+
+    // Contains initial value that is over max length limit, so we truncate text to be at max length
+    const truncatedValue = initialValue.substring(0, this.to.maxLength);
+    this.formControl.setValue(truncatedValue);
+    this.charactersRemaining = this.to.maxLength - truncatedValue.length;
   }
 
-  valueChange(value) {
-    if (this.to.maxLength) {
-      this.charactersRemaining = this.to.maxLength - value.length;
+  valueChange(value: string) {
+    if (!this.to.maxLength) {
+      return;
+    }
+
+    if (value.length > this.to.maxLength) {
+      const newValue = value.substring(0, this.to.maxLength);
+      this.formControl.setValue(newValue);
+    } else {
+      this.charactersRemaining = Math.max(0, this.to.maxLength - value.length);
     }
   }
 

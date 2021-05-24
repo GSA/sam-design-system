@@ -82,7 +82,7 @@ describe('Formly Input Component', () => {
 
     // assert
     const expectedField = fixture.debugElement.query(By.css('#testCharacterCount-character-count'));
-    expect((expectedField.nativeElement as HTMLSpanElement).innerText).toBe('50 characters remaining');
+    expect((expectedField.nativeElement as HTMLSpanElement).innerText.trim()).toBe('50 characters allowed');
   })
 
   it('should update character count value on input',  () => {
@@ -105,6 +105,29 @@ describe('Formly Input Component', () => {
     fixture.detectChanges();
 
     const characterCountText: HTMLSpanElement = fixture.debugElement.query(By.css('#testCharacterCount-character-count')).nativeElement;
-    expect(characterCountText.innerText).toBe('45 characters remaining');
-  })
+    expect(characterCountText.innerText.trim()).toBe('45 characters left');
+  });
+
+  it('should truncate value when initial value is greate than max length',  () => {
+    const componentInstance = fixture.componentInstance;
+    componentInstance.fields = [
+        {
+            key: 'text',
+            type: 'textarea',
+            id: 'testCharacterCount',
+            defaultValue: 'Hello World',
+            templateOptions: {
+              label: 'Formly input type textarea',
+              placeholder: 'placeholder for text area',
+              maxLength: 5,
+             },
+          },
+    ];
+    fixture.detectChanges();
+
+    const characterCountText: HTMLSpanElement = fixture.debugElement.query(By.css('#testCharacterCount-character-count')).nativeElement;
+    const characterCountInput: HTMLTextAreaElement = fixture.debugElement.query(By.css('#testCharacterCount')).nativeElement;
+    expect(characterCountText.innerText.trim()).toBe('0 characters left');
+    expect(characterCountInput.value).toBe('Hello');
+  });
 });
