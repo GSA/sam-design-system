@@ -225,8 +225,18 @@
               "apps/sam-design-system-site/src/favicon.ico",
               "apps/sam-design-system-site/src/assets"
             ],
+            "extractCss": true,
             "styles": [
-              "apps/sam-design-system-site/src/styles.scss",
+              {
+                "input": "apps/sam-design-system-site/src/uswds-styles.scss",
+                "inject": false,
+                "bundleName": "uswds"
+              },
+              {
+                "input": "apps/sam-design-system-site/src/sds-styles.scss",
+                "inject": false,
+                "bundleName": "sds"
+              },
               "node_modules/highlight.js/styles/vs.css"
             ],
             "scripts": [

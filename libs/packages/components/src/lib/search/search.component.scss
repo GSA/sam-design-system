@@ -23,12 +23,13 @@ input::-ms-clear {
     transition: color .2s;
   }
 
-  .searchicon {
-    width: 3rem;
+  .search-icon {
+    top: 0px;
   }
 
   .close-icon {
     width: 4rem;
+    top: 4px;
   }
 }
 .no-drop{

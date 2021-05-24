@@ -2,14 +2,21 @@
 
 <header class="usa-header usa-header--basic border-base-light border-bottom-1px">
   <div class="grid-row">
-    <div class="grid-col flex-8">
+    <div class="grid-col flex-11">
       <div class="usa-logo float-left margin-left-2">
         <a href="/" title="Home" aria-label="Home"><img alt="Beta.sam logo" src="assets/img/logo-sam.svg"
             width="140" /></a>
         <a href="/" title="Home" aria-label="Home" class="title-text">Design System Components</a>
       </div>
+      <!-- <div class="theme-switcher">
+        <span>Switch Theme: </span>
+        <select (change)="swapTheme($event)">
+          <option value="sds">SDS</option>
+          <option value="uswds">USWDS</option>
+        </select>
+      </div> -->
     </div>
-    <div class="grid-col flex-4">
+    <div class="grid-col flex-1">
       <nav class="float-right" aria-label="Github Page Navigation">
         <ul class="usa-nav__primary usa-accordion">
           <li class="usa-nav__primary-item">
@@ -126,6 +133,11 @@
               <li class="usa-sidenav__item">
                 <a [routerLink]="['documentation/components/tabs']" routerLinkActive="usa-current">
                   Tabs
+                </a>
+              </li>
+              <li class="usa-sidenav__item">
+                <a [routerLink]="['documentation/components/date-pipe']" routerLinkActive="usa-current">
+                  Date Pipe
                 </a>
               </li>
             </ul>

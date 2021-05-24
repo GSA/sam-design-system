@@ -79,3 +79,6 @@ export * from './tabs/tabs.module';
 export * from './tabs/tabs.component';
 export * from './tabs/tab-panel.component';
 export * from './icon/custom-icons'
+
+export * from './date/sds-date.module'
+export * from './date/sds-date.pipe'
