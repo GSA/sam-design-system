@@ -167,9 +167,8 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   }
 
   getHistoryModel() {
-    const queryString = window.location.href.substring(
-      window.location.href.indexOf('?') + 1
-    );
+    const queryString = window.location.search.substring(1);
+    console.log(queryString);
     const params: any = this.getUrlParams(queryString);
     const paramModel: any = this.convertToModel(params);
 
@@ -231,9 +230,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   }
 
   updateNavigation() {
-    const queryString = window.location.href.substring(
-      window.location.href.indexOf('?') + 1
-    );
+    const queryString = window.location.search.substring(1);
     let queryObj = qs.parse(queryString, { allowPrototypes: true });
 
     if (queryObj.hasOwnProperty('sfm')) {
@@ -246,10 +243,12 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     queryObj['sort'] = this.sortField ? this.sortField.toString() : '';
     queryObj['sfm'] = this.filterData;
     const params = this.convertToParam(queryObj);
+    console.log(window.location.hash);
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: params,
       queryParamsHandling: this.configuration.queryParamsHandling,
+      fragment: window.location.hash?.length > 1 ? window.location.hash.substring(1) : undefined,
     });
   }
 
