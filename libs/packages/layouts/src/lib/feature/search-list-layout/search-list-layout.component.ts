@@ -168,7 +168,6 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
 
   getHistoryModel() {
     const queryString = window.location.search.substring(1);
-    console.log(queryString);
     const params: any = this.getUrlParams(queryString);
     const paramModel: any = this.convertToModel(params);
 
@@ -243,7 +242,6 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     queryObj['sort'] = this.sortField ? this.sortField.toString() : '';
     queryObj['sfm'] = this.filterData;
     const params = this.convertToParam(queryObj);
-    console.log(window.location.hash);
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: params,
