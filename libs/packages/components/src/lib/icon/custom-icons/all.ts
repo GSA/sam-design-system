@@ -22,7 +22,6 @@ import { calendarAdd } from './sdsCalendarAdd';
 import { calendarCheck } from './sdsCalendarCheck';
 import { check } from './sdsCheck';
 import { checkCircle } from './sdsCheckCircle';
-import { circle } from './sdsCircle';
 import { comment } from './sdsComment';
 import { document } from './sdsDocument';
 import { documentAdd } from './sdsDocumentAdd';
@@ -117,7 +116,6 @@ export const allIcons = {
   calendarCheck,
   check,
   checkCircle,
-  circle,
   comment,
   document,
   documentAdd,

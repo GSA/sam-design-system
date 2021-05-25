@@ -21,9 +21,13 @@
     <ng-container
       *ngIf="(updateModel == null || (!updateModel?.metadata?.messages && updateModel?.results?.length === 0))">
       <ng-container *ngIf="!isDefaultModel">
-        <div class="sds-card sds-card--vertical sds-card--shadowed sds-card--bordered">
+        <div class="sds-card sds-card--vertical sds-card--shadowed sds-card--bordered bg-base-lightest">
           <div class="sds-card__header">
-            <sds-icon [icon]="'search'" [size]="'5x'"></sds-icon>
+            <!-- <sds-icon [icon]="'search'" [size]="'5x'"></sds-icon> -->
+            <div class="sds-stack sds-3x">
+              <sds-icon class="sds-stack-icon" [size]="'2x'" [icon]="'circle'"></sds-icon>
+              <sds-icon class="sds-stack-icon" [icon]="'search'"></sds-icon>
+            </div>
           </div>
           <div class="sds-card__body margin-2">
             <h1 class="sds-card__title">No matches found</h1>
@@ -54,7 +58,7 @@
         <ng-container *ngTemplateOutlet="updateModel?.metadata?.messages"></ng-container>
       </ng-container>
       <ng-container *ngIf="isTemplate()">
-        <div *ngFor="let msg of updateModel.metadata.messages" class="sds-card sds-card--shadowed sds-card--bordered"
+        <div *ngFor="let msg of updateModel.metadata.messages" class="sds-card sds-card--shadowed sds-card--bordered bg-base-lightest"
           [ngClass]="[(msg.type !== 'loading') ? 'sds-card--vertical': '', msg.classes ? msg.classes : '']">
           <ng-container *ngIf="msg.type !== 'loading' else loading">
             <div class="sds-card__header">
