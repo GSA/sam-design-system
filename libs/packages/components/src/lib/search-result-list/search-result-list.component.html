@@ -40,7 +40,7 @@
         </div>
       </ng-container>
       <ng-container *ngIf="isDefaultModel">
-        <div class="sds-card sds-card--vertical sds-card--shadowed sds-card--bordered">
+        <div class="sds-card sds-card--vertical sds-card--shadowed sds-card--bordered bg-base-lightest">
           <div class="sds-card__header">
             <sds-icon [icon]="'arrow-left-circle-fill'" [size]="'5x'"></sds-icon>
           </div>
@@ -58,7 +58,7 @@
         <ng-container *ngTemplateOutlet="updateModel?.metadata?.messages"></ng-container>
       </ng-container>
       <ng-container *ngIf="isTemplate()">
-        <div *ngFor="let msg of updateModel.metadata.messages" class="sds-card sds-card--shadowed sds-card--bordered bg-base-lightest"
+        <div *ngFor="let msg of updateModel.metadata.messages" class="sds-card sds-card--shadowed"
           [ngClass]="[(msg.type !== 'loading') ? 'sds-card--vertical': '', msg.classes ? msg.classes : '']">
           <ng-container *ngIf="msg.type !== 'loading' else loading">
             <div class="sds-card__header">
