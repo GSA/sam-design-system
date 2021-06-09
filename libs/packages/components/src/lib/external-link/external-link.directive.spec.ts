@@ -13,6 +13,7 @@ import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/t
     <a id="test4" href="{{name}}/settings/test123" aria-label="Test label">Google </a>
     <a id="test5" [hideIcon]="true" href="google.com" aria-label="test aria label with no keywords">Google </a>
     <a id="test6" [hideIcon]="true" href="google.com">Google <span>test element</span></a>
+    <a id="test7" href="mailto:google.com">Email Google</a>
   `
 })
 class TestComponent {
@@ -78,5 +79,12 @@ describe('Sam External Link Directive', () => {
   it ('Should add aria label attribute to external links using href if one does not exist', () => {
     const testElementWithoutAriaLabel = fixture.debugElement.query(By.css('#test6'));
     expect(testElementWithoutAriaLabel.attributes['aria-label']).toEqual('Open google.com in a new window');
+  });
+
+  it ('Should treat links that start with mailto as internal links', () => {
+    const mailToLink = fixture.debugElement.query(By.css('#test7'));
+    const externalLinkIcon = mailToLink.nativeElement.querySelector('usa-link--external');
+    expect(externalLinkIcon).toBeNull();
+    expect(mailToLink.children.length).toEqual(0);
   });
 });

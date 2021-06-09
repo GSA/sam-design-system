@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { SdsDatePipe } from './sds-date.pipe';
 
-fdescribe('SdsDatePipe', () => {
+describe('SdsDatePipe', () => {
   it('create an instance', () => {
     const pipe = new SdsDatePipe(new DatePipe('en-us'));
     expect(pipe).toBeTruthy();

@@ -30,6 +30,8 @@ export class ExternalLinkDirective implements OnChanges {
     /** 'fsd.gov' - Removed until fsd.gov contains proper route back to sam.gov */
   ];
 
+  private readonly emailLinkKeyword = 'mailto';
+
   constructor(
     @Inject(PLATFORM_ID) private platformId: string,
     private el: ElementRef,
@@ -98,6 +100,7 @@ export class ExternalLinkDirective implements OnChanges {
     return (
       isPlatformBrowser(this.platformId) &&
       !link.includes(location.hostname) &&
+      link.indexOf(this.emailLinkKeyword) !== 0  &&
       !this.internalLinks.includes(link)
     );
   }
