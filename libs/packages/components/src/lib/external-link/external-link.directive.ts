@@ -113,6 +113,4 @@ export class ExternalLinkDirective implements OnChanges {
     spanElement.classList.add('font-body-md');
     this.el.nativeElement.appendChild(spanElement);
   }
-
-
 }
