@@ -85,7 +85,6 @@ describe('Sam External Link Directive', () => {
     const mailToLink = fixture.debugElement.query(By.css('#test7'));
     const externalLinkIcon = mailToLink.nativeElement.querySelector('usa-link--external');
     expect(externalLinkIcon).toBeNull();
-    console.log(mailToLink);
     expect(mailToLink.children.length).toEqual(0);
   });
 });
