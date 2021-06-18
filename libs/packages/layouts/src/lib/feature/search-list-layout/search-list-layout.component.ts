@@ -21,8 +21,9 @@ import {
   SDSFormlyUpdateComunicationService,
   SDSFormlyUpdateModelService,
 } from '@gsa-sam/sam-formly';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, UrlTree } from '@angular/router';
 import * as _ from 'lodash-es';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'search-list-layout',
@@ -41,7 +42,8 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     private route: ActivatedRoute,
     @Optional()
     private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,
-    private filterUpdateModelService: SDSFormlyUpdateModelService
+    private filterUpdateModelService: SDSFormlyUpdateModelService,
+    private loc: Location
   ) {}
 
   /**
@@ -124,8 +126,15 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
    */
   loadingArray = Array(25);
 
+  /**
+   * Used to track whether update resulting in navigation is as the result of a
+   * popstate. in order to apply correct navigation logic
+   */
+  private triggeredByPopState: boolean = false;
+
   @HostListener('window:popstate', ['$event'])
   onpopstate(event) {
+    this.triggeredByPopState = true;
     if (this.isHistoryEnabled) {
       this.getHistoryModel();
     }
@@ -160,7 +169,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   ngOnDestroy() {
     // Reset filter Model in update service
     this.filterUpdateModelService.updateModel(null);
-    
+
     if (this.formlySubscription) {
       this.formlySubscription.unsubscribe();
     }
@@ -173,12 +182,13 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
 
     this.page.default = true;
     this.page.pageNumber = paramModel['page'] ? +paramModel['page'] : 1;
+    this.page.pageSize = paramModel['pageSize'] ? Number.parseInt(paramModel['pageSize']) : this.configuration.pageSize;
 
     this.sortField = paramModel['sort'];
     if (this.filterUpdateModelService) {
       if (paramModel && paramModel['sfm']) {
         this.filterUpdateModelService.updateModel(paramModel['sfm']);
-      } else {
+      } else if(!this.triggeredByPopState){
         this.filterUpdateModelService.updateModel(
           this.configuration.defaultFilterValue
         );
@@ -198,7 +208,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     if (this.isDefaultModel) {
       this.items = [];
     }
-    this.updateContent();
+    this.updateContent(true);
   }
 
   isDefaultFilter(filter) {
@@ -228,7 +238,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     return output;
   }
 
-  updateNavigation() {
+  updateNavigation(triggeredByFilter = false) {
     const queryString = window.location.search.substring(1);
     let queryObj = qs.parse(queryString, { allowPrototypes: true });
 
@@ -239,15 +249,34 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     queryObj['page'] = this.page.pageNumber
       ? this.page.pageNumber.toString()
       : '1';
+    queryObj['pageSize'] = this.page.pageSize
+      ? this.page.pageSize.toString()
+      : '25';
     queryObj['sort'] = this.sortField ? this.sortField.toString() : '';
     queryObj['sfm'] = this.filterData;
     const params = this.convertToParam(queryObj);
-    this.router.navigate([], {
-      relativeTo: this.route,
-      queryParams: params,
-      queryParamsHandling: this.configuration.queryParamsHandling,
-      fragment: window.location.hash?.length > 1 ? window.location.hash.substring(1) : undefined,
-    });
+    /**
+     * loc.go updates URL but also updates history stack so that upon clicking
+     * back, the state which clicking forward would move user to is deleted by
+     * loc.go This state is preserved by router.navigate, so use router.navigate
+     * where we state needs to be preserved or we want the page jumped to the top.
+     * use loc.go only where we need the page to remain in place, and would normally
+     * overwrite the top of the history stack
+     */
+    if(!triggeredByFilter || this.triggeredByPopState){
+      this.triggeredByPopState = false;
+      this.router.navigate([], {
+        relativeTo: this.route,
+        queryParams: params,
+        queryParamsHandling: this.configuration.queryParamsHandling,
+        fragment: window.location.hash?.length > 1 ? window.location.hash.substring(1) : undefined,
+      });
+    } else {
+      const urlTree = this.router.parseUrl(this.loc.path());
+      urlTree.queryParams = params;
+      urlTree.fragment = window.location.hash?.length > 1 ? window.location.hash.substring(1) : undefined
+      this.loc.go(urlTree.toString());
+    }
   }
 
   convertToParam(filters) {
@@ -334,9 +363,9 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   /**
    * calls service when updated
    */
-  private updateContent() {
+  private updateContent(triggeredByFilter = false) {
     if (this.isHistoryEnabled) {
-      this.updateNavigation();
+      this.updateNavigation(triggeredByFilter);
     }
 
     if (
