@@ -136,6 +136,11 @@ import {
 } from './components/formly-search/search.module';
 
 import {
+  ROUTES as FORMLY_STEPPER_ROUTES,
+  StepperModule
+} from './components/formly-stepper/formly-stepper.module';
+
+import {
   ROUTES as TOASTS_ROUTES,
   ToastsModule,
 } from './components/toasts/toasts.module';
@@ -263,6 +268,8 @@ export const ROUTES: Routes = [
   { path: 'components/formly-multicheckbox', children: MULTI_CHECKBOX_ROUTES },
   { path: 'components/formly-radio', children: RADIO_ROUTES },
   { path: 'components/formly-select', children: SELECT_ROUTES },
+  { path: 'components/formly-stepper', children: FORMLY_STEPPER_ROUTES },
+
   {
     path: 'components/formly-autocomplete',
     children: FORMLY_AUTOCOMPLETE_ROUTES,
@@ -355,6 +362,7 @@ export const ROUTES: Routes = [
     RoadmapModule,
     SlideOutModule,
     DatePipeModule,
+    StepperModule,
     NgxBootstrapIconsModule.pick(Object.assign(_.cloneDeep(allIcons), _.cloneDeep(sdsAllIcons)))
   ],
 })
