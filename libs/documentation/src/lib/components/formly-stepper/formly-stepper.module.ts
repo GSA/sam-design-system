@@ -8,6 +8,8 @@ import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../s
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { StepperBasicDemoComponent } from './demos/basic/stepper-basic.component';
 import { StepperBasicModule } from './demos/basic/stepper-basic.module';
+import { StepperAdvancedDemoComponent } from './demos/advanced/stepper-advanced.component';
+import { StepperAdvancedModule } from './demos/advanced/stepper-advanced.module';
 
 declare var require: any;
 const DEMOS = {
@@ -16,7 +18,16 @@ const DEMOS = {
     type: StepperBasicDemoComponent,
     code: require('!!raw-loader!./demos/basic/stepper-basic.component'),
     markup: require('!!raw-loader!./demos/basic/stepper-basic.component.html'),
+    module: require('!!raw-loader!./demos/basic/stepper-basic.module.ts'),
     path: 'libs/documentation/src/lib/components/formly-stepper/demos/basic'
+  },
+  advanced: {
+    title: 'Complex Formly Stepper',
+    type: StepperAdvancedDemoComponent,
+    code: require('!!raw-loader!./demos/advanced/stepper-advanced.component'),
+    markup: require('!!raw-loader!./demos/advanced/stepper-advanced.component.html'),
+    module: require('!!raw-loader!./demos/advanced/stepper-advanced.module.ts'),
+    path: 'libs/documentation/src/lib/components/formly-stepper/demos/advanced'
   }
 };
 
@@ -48,7 +59,8 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    StepperBasicModule
+    StepperBasicModule,
+    StepperAdvancedModule,
   ]
 })
 export class StepperModule {

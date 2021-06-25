@@ -19,7 +19,7 @@
       <div class="grid-col-fill">
         <ng-content></ng-content>
 
-        <div class="grid-container grid-row grid-gap align-right">
+        <div class="grid-row grid-gap align-right margin-top-4">
           <div class="text-right margin-right-1" *ngIf="_currentStepIndex > 0">
             <button class="usa-button sds-button--circle usa-button--base usa-button--big padding-2"
               (click)="onPreviousStep()" [attr.id]="id + '-prevBtn'">
@@ -116,3 +116,4 @@
       <sds-icon [icon]="'not-completed'"></sds-icon>
     </span>
   </ng-container>
+</ng-template>

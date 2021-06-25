@@ -2,7 +2,9 @@
   [model]="model" 
   [currentStepId]="currentStepId" 
   [stepValidityMap]="stepValidityMap"
+  (stepChange)="onStepChange($event)"
   (saveData)="onSaveClicked($event)"
+  (modelChange)="onModelChange($event)"
 >
   <sds-step *ngFor="let step of steps" 
     [id]="step.id" 
@@ -11,12 +13,57 @@
     [mode]="step.mode"
     [isReview]="step.isReview"
   >
+    <h1 sdsStepHeader *ngIf="!step.children">
+      {{step.text}}
+      <hr>
+    </h1>
     <sds-step *ngFor="let childStep of step.children" 
       [text]="childStep.text" 
       [id]="childStep.id" 
       [fieldConfig]="childStep.fieldConfig"
+      [stepTemplate]="childStep.id === 'step1Child1' ? gatherInformation : undefined"
+      [stepValidationFn]="childStep.stepValidationFn"
       [mode]="childStep.mode"
     >
+      <h1 sdsStepHeader *ngIf="!childStep.children">
+        {{childStep.text}}
+        <hr>
+      </h1>
     </sds-step>
   </sds-step>
 </sds-stepper>
+
+<ng-template #gatherInformation>
+  <h1>
+    Gather Your Information
+  </h1>
+  <div class="sds-card">
+    <div class="sds-card__header">
+      <h2>
+        U.S. REGISTRANTS:
+      </h2>
+    </div>
+    <div class="sds-card__body">
+      <ul class="usa-list usa-list--unstyled">
+        <li class="margin-bottom-4">
+          <h3>Entity Details</h3>
+          <ul class="usa-list">
+            <li>Legal Business Name</li>
+            <li>Physical Address</li>
+          </ul>
+        </li>
+        <li>
+          <h3>Taxpayer Information</h3>
+          <ul class="usa-list">
+            <li>Taxpayer Identification Number (TIN)</li>
+            <li>Taxpayer Name</li>
+          </ul>
+          <span class="display-block text-small">
+            Review your tax documents from the IRS (such as a 1099 or w2 form)
+            to find your Taxpayer information.
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</ng-template>

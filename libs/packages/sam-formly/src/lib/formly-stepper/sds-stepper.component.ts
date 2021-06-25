@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, EventEmitter, Input, Output, QueryList, SimpleChanges } from "@angular/core";
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, EventEmitter, HostListener, Input, Output, QueryList, SimpleChanges } from "@angular/core";
 import { AbstractControl } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { NavigationMode } from "@gsa-sam/components";
@@ -6,6 +6,7 @@ import { FormlyFieldConfig } from "@ngx-formly/core";
 import { SdsStepComponent } from "./sds-step.component";
 import * as _ from 'lodash-es';
 
+let nextId = 0;
 @Component({
   selector: `sds-stepper`,
   templateUrl: './sds-stepper.component.html',
@@ -28,6 +29,16 @@ export class SdsStepperComponent {
    * @default false
    */
   @Input() customErrorHandling = false;
+
+  @Input() id = `sds-stepper-${nextId++}`;
+
+  /**
+   * Configurable query parameter to use when keeping track of which
+   * step the user is on from the URL. Useful when we'd want multiple
+   * steppers in one page but don't want the query params to conflict
+   * @default - sdsStepId
+   */
+  @Input() queryParamKey = 'sdsStepId';
 
   @Output() saveData = new EventEmitter<{ model: any, metadata: any }>();
 
@@ -52,6 +63,12 @@ export class SdsStepperComponent {
   reviewFields: FormlyFieldConfig[] = [];
   isReviewMode: boolean = false;
 
+  @HostListener('stepModelChange', ['$event'])
+  onModelChange($event: CustomEvent) {
+    $event.stopImmediatePropagation();
+    this.modelChange.emit($event.detail);
+  }
+
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -72,16 +89,17 @@ export class SdsStepperComponent {
 
     this._dataEntryStepsDef = this.getFlatSteps(this.stepTemplates);
     this._dataEntryStepsDef.forEach(step => {
-      step.model = step.model ? step.model : this.model
+      step.model = step.model ? step.model : this.model;
     });
 
-    this._currentStepIndex = 0;
-    this._currentStep = this._dataEntryStepsDef[this._currentStepIndex];
+
 
     if (this.activatedRoute.snapshot.queryParams.sdsStepId) {
       this.currentStepId = this.activatedRoute.snapshot.queryParams.sdsStepId;
     } else if (!this.currentStepId) {
       this.currentStepId = this._dataEntryStepsDef[0].id;
+      this._currentStepIndex = 0;
+      this._currentStep = this._dataEntryStepsDef[this._currentStepIndex];
     }
 
     if (this.stepValidityMap) {
@@ -94,8 +112,8 @@ export class SdsStepperComponent {
     this.changeStep(this.currentStepId);
 
     this.activatedRoute.queryParams.subscribe(queryParam => {
-      if (queryParam.sdsStepId && queryParam.sdsStepId != this.currentStepId) {
-        this.changeStep(queryParam.sdsStepId);
+      if (queryParam[this.queryParamKey] && queryParam[this.queryParamKey] != this.currentStepId) {
+        this.changeStep(queryParam[this.queryParamKey]);
       }
     })
   }
@@ -132,26 +150,18 @@ export class SdsStepperComponent {
   changeStep(stepId: string, incrementor?: 1 | -1) {
     this._dataEntryStepsDef = this.getFlatSteps(this.stepTemplates);
     let stepIndex = this._dataEntryStepsDef.findIndex(step => step.id === stepId);
+    stepIndex = stepIndex === -1 ? 0 : stepIndex;
+
     if (incrementor) {
       stepIndex = stepIndex + incrementor;
     }
 
-    // Update current step's validity before moving to next step
-    if (this.fields && this._currentStep) {
-      this.updateSidenavValidation(this._currentStep);
 
-      // If validity map is defined, then save the step when moving away from it
-      if (this.stepValidityMap[this._currentStep.id] === true ||
-        this.stepValidityMap[this._currentStep.id] === false) {
-        this.saveData.emit({
-          model: this.model,
-          metadata: {
-            stepId: this._currentStep.id,
-            stepValidityMap: this.stepValidityMap
-          }
-        });
-        this.checkReviewAndSubmit();
-      }
+    // Update current step's validity before moving to next step
+    if (this._currentStep) {
+      this.updateSidenavValidation(this._currentStep);
+      this.checkReviewAndSubmit();
+      this._currentStep.selected = false;
     }
 
     this.isReviewMode = false;
@@ -159,7 +169,6 @@ export class SdsStepperComponent {
     this._currentStepIndex = stepIndex;
     this._currentStep = this._dataEntryStepsDef[stepIndex];
 
-    this.updateSelected(this.stepTemplates, stepId);
     this._currentStep.selected = true;
     this.currentStepId = this._currentStep.id;
 
@@ -180,8 +189,9 @@ export class SdsStepperComponent {
     if (this._currentStep.mode === NavigationMode.INTERNAL) {
       this.router.navigate(this._currentStep.route ? [this._currentStep.route] : [], {
         queryParams: {
-          sdsStepId: this.currentStepId
-        }
+          [this.queryParamKey]: this.currentStepId
+        },
+        queryParamsHandling: 'merge'
       });
     }
 
@@ -232,25 +242,6 @@ export class SdsStepperComponent {
     this.submit.emit();
   }
 
-  private updateSelected(stepTemplates: QueryList<SdsStepComponent>, selectedId: string): boolean {
-    let isSelected = false;
-    stepTemplates.forEach(template => {
-      if (template.children && template.children.length) {
-        isSelected = this.updateSelected(template.children, selectedId);
-        template.selected = isSelected;
-      } else {
-        if (template.id === selectedId) {
-          template.selected = true;
-          isSelected = true;
-        } else {
-          template.selected = false;
-        }
-      }
-    });
-
-    return isSelected;
-  }
-
   private checkReviewAndSubmit() {
     this._isReviewAndSubmitDisabled = this._dataEntryStepsDef.some(step => !step.valid && !step.isReview);
   }
@@ -271,6 +262,14 @@ export class SdsStepperComponent {
 
   private updateSidenavValidation(currentStep: SdsStepComponent) {
     if (!currentStep) {
+      return;
+    }
+
+    // Custom validation function was provided, use provided custom validation
+    if (currentStep.stepValidationFn) {
+      const isValid = currentStep.stepValidationFn(currentStep.model ? currentStep.model : this.model);
+      currentStep.valid = isValid;
+      this.stepValidityMap[currentStep.id] = isValid;
       return;
     }
 

@@ -1,4 +1,5 @@
-import { Component, ContentChildren, EventEmitter, Input, Output, QueryList, TemplateRef } from "@angular/core";
+import { DOCUMENT } from "@angular/common";
+import { Component, ContentChildren, ElementRef, EventEmitter, Inject, Input, Output, QueryList, TemplateRef } from "@angular/core";
 import { NavigationMode } from "@gsa-sam/components";
 import { FormlyFieldConfig, FormlyFormOptions } from "@ngx-formly/core";
 
@@ -25,6 +26,12 @@ export class SdsStepComponent {
 
   @Input() stepTemplate: TemplateRef<any>;
 
+  /**
+   * Required when stepTemplate is defined - provides ways to check
+   * if the custom template step is valid
+   */
+  @Input() stepValidationFn: (model) => boolean;
+
   @Input() text: string;
 
   @Input() id: string = `sds-step-${nextId++}`;
@@ -50,4 +57,30 @@ export class SdsStepComponent {
   @Input() route: string;
 
   @Output() modelChange = new EventEmitter<any>();
+
+  constructor(
+    private _el: ElementRef,
+    @Inject(DOCUMENT) private _document
+  ) {}
+
+  /**
+   * Dispatch a custom event for parent stepper component to listen for on model change
+   * as well as an output binded event emitter for application level components to listen
+   * for if they wanted to listen at individual step level
+   * @param $event - the updated model
+   */
+  onModelChange($event) {
+    let event: CustomEvent;
+    if (typeof(Event) === 'function') {
+      event = new CustomEvent('stepModelChange', {bubbles: true, detail: $event});
+    } else {
+      // IE11 support
+      event = this._document.createEvent('CustomEvent');
+      event.initCustomEvent('sort', true, true, $event);
+    }
+
+    this._el.nativeElement.dispatchEvent(event);
+
+    this.modelChange.emit($event);
+  }
 }

@@ -30,3 +30,4 @@ export * from './formly/readonly/readonly-options.model';
 export * from './formly-stepper/formly-stepper.module';
 export * from './formly-stepper/sds-stepper.component';
 export * from './formly-stepper/sds-step.component';
+export * from './formly-stepper/stepper.model';

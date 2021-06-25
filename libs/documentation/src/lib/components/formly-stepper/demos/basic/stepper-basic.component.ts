@@ -1,7 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, TemplateRef, ViewChild } from "@angular/core";
 import { NavigationMode } from "@gsa-sam/components";
+import { FormlyUtilsService } from "@gsa-sam/sam-formly";
+import { FormlyFieldConfig } from "@ngx-formly/core";
 import { StepperBasicService } from "./stepper-basic.service";
-
+import * as _ from 'lodash-es';
 @Component({
   selector: `stepper-basic-demo`,
   templateUrl: './stepper-basic.component.html',
@@ -9,16 +11,23 @@ import { StepperBasicService } from "./stepper-basic.service";
     StepperBasicService
   ]
 })
-export class StepperBasicDemoComponent implements OnInit {
+export class StepperBasicDemoComponent {
+
   steps = [
     {
       id: 'step1',
-      text: 'Step 1',
+      text: 'Entity Report',
       mode: NavigationMode.LABEL,
       children: [
         {
           id: 'step1Child1',
-          text: 'Step 1 Child 1',
+          text: 'Initial Step',
+          stepValidationFn: (model) => true,
+          mode: NavigationMode.INTERNAL,
+        },
+        {
+          id: 'step1Child2',
+          text: 'Report Details',
           fieldConfig: this.stepperBasicService.getReportDetails(),
           mode: NavigationMode.INTERNAL,
         }
@@ -26,45 +35,46 @@ export class StepperBasicDemoComponent implements OnInit {
     },
     {
       id: 'step2',
-      text: 'Step 2',
-      fieldConfig: this.stepperBasicService.getPaymentInfo(),
+      text: 'Entity Address',
+      fieldConfig: this.stepperBasicService.getAddressDetails(),
       mode: NavigationMode.INTERNAL,
+    },
+    {
+      id: 'step3',
+      text: 'Entity Information',
+      fieldConfig: this.stepperBasicService.getEntityForm(),
+      mode: NavigationMode.INTERNAL,
+    },
+    {
+      id: 'review',
+      text: 'Review and Submit',
+      mode: NavigationMode.INTERNAL,
+      fieldConfig: {
+        fieldGroup: [
+          this.stepperBasicService.getReportDetails(),
+          this.stepperBasicService.getAddressDetails(),
+          this.stepperBasicService.getEntityForm()
+        ]
+      }
     }
   ];
 
   model: any = {};
   currentStepId: string;
   stepValidityMap: any;
-
+  isReview: boolean = false;
   constructor(
     private stepperBasicService: StepperBasicService,
   ) {}
 
-  ngOnInit() {
-
-    const savedDraft: string = sessionStorage.getItem('dataEntry');
-    if (!savedDraft) {
-      return;
-    }
-
-    this.getFormDataFromDraft(savedDraft);
-  }
-
-  onSaveClicked($event: { model: any, metadata: any }) {
-    console.log($event, 'moe');
-    sessionStorage.setItem('dataEntry', JSON.stringify($event));
-  }
-
   onStepChange($event) {
     this.currentStepId = $event.id;
+    if (this.currentStepId === 'review') {
+      FormlyUtilsService.setReadonlyMode(true, this.steps[3].fieldConfig.fieldGroup as any);
+    }
   }
 
-  getFormDataFromDraft(savedDraft: string) {
-    const savedDraftModel = JSON.parse(savedDraft);
-
-    this.model = savedDraftModel.model || {};
-    this.currentStepId = savedDraftModel?.metadata?.stepId;
-    this.stepValidityMap = savedDraftModel?.metadata?.stepValidityMap;
+  onModelChange($event) {
+    console.log('model change', $event);
   }
-
 }

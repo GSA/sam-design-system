@@ -1,0 +1,99 @@
+<sds-stepper [queryParamKey]="'sdsAdvancedStepper'">
+
+  <sds-step id="welcome" text="Welcome" 
+    [mode]="navigationMode.INTERNAL" 
+    [stepTemplate]="gatherInformation"
+    [stepValidationFn]="stepMap.welcome.validationFn">
+  </sds-step>
+
+  <sds-step id="entityDetails" text="Entity Details" [mode]="navigationMode.LABEL">
+    <sds-step id="registrationPurpose" text="Purpose of Registration" 
+    [mode]="navigationMode.INTERNAL" [fieldConfig]="stepMap.registrationPurpose.fieldConfig">
+      <h1 sdsStepHeader>
+        Purpose of Registration
+        <hr>
+      </h1>
+    </sds-step>
+
+    <sds-step id="entityInformation" text="Entity Information" [mode]="navigationMode.INTERNAL"
+      [fieldConfig]="stepMap.enitityInformation.fieldConfig">
+      <h1 sdsStepHeader>
+        Enter Entity Information
+        <hr>
+      </h1>
+    </sds-step>
+  </sds-step>
+
+
+  <sds-step id="taxPayerInfoForm" text="Taxpayer Details" [mode]="navigationMode.INTERNAL" 
+    [fieldConfig]="stepMap.taxpayerInformation.fieldConfig">
+    <h1 sdsStepHeader>
+      Enter Taxpayer Details
+      <hr>
+    </h1>
+  </sds-step>
+
+
+  <sds-step id="addSubawardee" text="Add Subawardee"
+    [mode]="navigationMode.INTERNAL" 
+    [stepTemplate]="subawardeeStep" 
+    [stepValidationFn]="stepMap.subawardee.validationFn">
+
+  </sds-step>
+
+</sds-stepper>
+
+<!-- Custom Templates -->
+<ng-template #gatherInformation>
+  <h1>
+    Gather Your Information
+  </h1>
+  <div class="sds-card">
+    <div class="sds-card__header">
+      <h2>
+        U.S. REGISTRANTS:
+      </h2>
+    </div>
+    <div class="sds-card__body">
+      <ul class="usa-list usa-list--unstyled">
+        <li class="margin-bottom-4">
+          <h3>Entity Details</h3>
+          <ul class="usa-list">
+            <li>Purpose of Registration</li>
+            <li>Legal Business Name</li>
+            <li>Physical Address</li>
+          </ul>
+        </li>
+        <li class="margin-bottom-4">
+          <h3>Taxpayer Information</h3>
+          <ul class="usa-list">
+            <li>Taxpayer Identification Number (TIN)</li>
+            <li>Taxpayer Name</li>
+          </ul>
+          <span class="display-block text-small">
+            Review your tax documents from the IRS (such as a 1099 or w2 form)
+            to find your Taxpayer information.
+          </span>
+        </li>
+        <li class="margin-bottom-4">
+          <h3>Banking Information</h3>
+          <ul class="usa-list">
+            <li>Routing Number</li>
+            <li>Account Number</li>
+          </ul>
+          <span class="display-block text-small">
+            Account type (checking or savings) to set up Electronic Funds Transfer (ETF)
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #subawardeeStep>
+  <h1>
+    Subawardee Data
+    <hr>
+  </h1>
+  <subawardee-demo></subawardee-demo>
+</ng-template>
