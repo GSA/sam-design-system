@@ -30,7 +30,7 @@ export class SdsStepComponent {
    * Required when stepTemplate is defined - provides ways to check
    * if the custom template step is valid
    */
-  @Input() stepValidationFn: (model) => boolean;
+  @Input() stepValidationFn: (model: any, field?: FormlyFieldConfig) => boolean | void;
 
   @Input() text: string;
 
@@ -44,7 +44,7 @@ export class SdsStepComponent {
 
   @Input() model?: any;
 
-  @Input() valid?: boolean;
+  @Input() valid?: boolean | void;
 
   @Input() hideFn?: (model: any, field?: FormlyFieldConfig) => boolean;
 
@@ -54,7 +54,9 @@ export class SdsStepComponent {
 
   @Input() mode: NavigationMode;
 
-  @Input() route: string;
+  @Input() route?: string;
+
+  @Input() disable?: boolean;
 
   @Output() modelChange = new EventEmitter<any>();
 

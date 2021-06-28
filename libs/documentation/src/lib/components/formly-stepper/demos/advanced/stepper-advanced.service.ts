@@ -76,7 +76,7 @@ export class StepperAdvancedService {
             label: 'Legal Business Name',
             description: `If you are acting on behalf of a limited partnershil, LLC, or corporation,
                           your legal business name is the name you registered with your state filing office.`
-            
+
           }
         },
         {
@@ -120,12 +120,12 @@ export class StepperAdvancedService {
             type: "number",
             label: "Zip",
             maxLength: 5,
+            minLength: 5,
             min: 0,
-            pattern: "\\d{5}",
           },
         },
         {
-          className: "grid-col-8",
+          className: "grid-col-7",
           type: "input",
           key: "cityName",
           templateOptions: {
@@ -186,6 +186,72 @@ export class StepperAdvancedService {
           },
         }
       ]
+    }
+  }
+
+  getSubawardeeForm() {
+    return {
+      key: 'subawardee',
+      fieldGroup: [
+        {
+          templateOptions: { label: "Input Details" },
+          fieldGroup: [
+            {
+              key: "globalDunsNumber",
+              type: "input",
+              templateOptions: {
+                label: "Subawardee Number",
+              },
+            },
+            {
+              key: "globalName",
+              type: "input",
+              templateOptions: {
+                label: "Subawardee Name",
+              },
+            },
+            {
+              key: "date",
+              type: "datepicker",
+              templateOptions: {
+                label: "Subawardee Date",
+                placeholder:
+                  "eg: " +
+                  new Date().toLocaleString("en-US", {
+                    month: "short",
+                    day: "numeric",
+                    year: "numeric",
+                  }),
+              },
+            },
+            {
+              key: "description",
+              type: "textarea",
+              templateOptions: {
+                label:
+                  "Description of the overall purpose and expected outcomes, OR results of the contract, including significant deliverables and, if appropriate, associated units of measure. (Optional)",
+              },
+            },
+            {
+              key: "subcontract",
+              type: "radio",
+              templateOptions: {
+                label:
+                  "As provided to you by your subcontractor, in your subcontractor's business or organization's preceding completed fiscal year, did its business or organization (the legal entity to which the DUNS number it provided belongs) receive (1) 80 percent or more of its annual gross revenues in U.S. federal contracts, subcontracts, loans, grants, subgrants, and/or cooperative agreements; and (2) $25,000,000 or more in annual gross revenues from U.S. federal contracts, subcontracts, loans, grants, subgrants, and/or cooperative agreements?*:",
+                options: [
+                  {
+                    value: "yes",
+                    label: "Yes",
+                  },
+                  {
+                    value: "no",
+                    label: "No",
+                  },
+                ],
+              },
+            },
+          ],
+        }]
     }
   }
 }

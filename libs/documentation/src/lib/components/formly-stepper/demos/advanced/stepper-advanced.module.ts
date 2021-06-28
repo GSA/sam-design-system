@@ -2,7 +2,9 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { StepperAdvancedDemoComponent } from "./stepper-advanced.component";
 import { SdsFormlyModule, SdsFormlyStepperModule } from '@gsa-sam/sam-formly';
-import { SubawardeeDemoComponent } from "./subawardee.component";
+import { AddSubawardeeDialogDemo, SubawardeeDemoComponent } from "./subawardee.component";
+import { FormlyModule } from "@ngx-formly/core";
+import { SdsActionsMenuModule } from "@gsa-sam/layouts";
 
 
 @NgModule({
@@ -10,18 +12,23 @@ import { SubawardeeDemoComponent } from "./subawardee.component";
     CommonModule,
     SdsFormlyModule,
     SdsFormlyStepperModule,
+    FormlyModule,
+    SdsActionsMenuModule,
   ],
   declarations: [
     StepperAdvancedDemoComponent,
     SubawardeeDemoComponent,
+    AddSubawardeeDialogDemo,
   ],
   exports: [
     StepperAdvancedDemoComponent,
-    SubawardeeDemoComponent
+    SubawardeeDemoComponent,
+    AddSubawardeeDialogDemo,
   ],
   bootstrap: [
     StepperAdvancedDemoComponent,
-    SubawardeeDemoComponent
+    SubawardeeDemoComponent,
+    AddSubawardeeDialogDemo
   ]
 })
 export class StepperAdvancedModule {}

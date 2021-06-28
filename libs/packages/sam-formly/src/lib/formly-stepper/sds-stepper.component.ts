@@ -156,6 +156,10 @@ export class SdsStepperComponent {
       stepIndex = stepIndex + incrementor;
     }
 
+    const step = this._dataEntryStepsDef[stepIndex];
+    if (step.isReview && this._isReviewAndSubmitDisabled) {
+      return;
+    }
 
     // Update current step's validity before moving to next step
     if (this._currentStep) {
@@ -163,8 +167,6 @@ export class SdsStepperComponent {
       this.checkReviewAndSubmit();
       this._currentStep.selected = false;
     }
-
-    this.isReviewMode = false;
 
     this._currentStepIndex = stepIndex;
     this._currentStep = this._dataEntryStepsDef[stepIndex];
@@ -218,10 +220,9 @@ export class SdsStepperComponent {
       this._currentStep.options.showError = (field) => !field.formControl.valid;
     }
 
-    const isValid = this.fields[0].formControl.valid;
-    this._currentStep.valid = isValid;
-    this.stepValidityMap[this._currentStep.id] = isValid;
+    this.updateSidenavValidation(this._currentStep);
     this.checkReviewAndSubmit();
+    
     this.saveData.emit({
       model: this.model,
       metadata: {
@@ -243,7 +244,17 @@ export class SdsStepperComponent {
   }
 
   private checkReviewAndSubmit() {
-    this._isReviewAndSubmitDisabled = this._dataEntryStepsDef.some(step => !step.valid && !step.isReview);
+    this._isReviewAndSubmitDisabled = this._dataEntryStepsDef.some(step => {
+      if (!this.stepValidityMap[step.id]) {
+        return true;
+      }
+
+      if (!step.isReview && !step.valid) {
+        return true;
+      }
+
+      return false;
+    });
   }
 
   private updateValidity(validityMap: any, stepTemplates: QueryList<SdsStepComponent>) {

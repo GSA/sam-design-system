@@ -1,4 +1,4 @@
-<sds-stepper [queryParamKey]="'sdsAdvancedStepper'">
+<sds-stepper [queryParamKey]="'sdsAdvancedStepper'" [model]="model" (stepChange)="onStepChange($event)">
 
   <sds-step id="welcome" text="Welcome" 
     [mode]="navigationMode.INTERNAL" 
@@ -39,6 +39,13 @@
     [stepTemplate]="subawardeeStep" 
     [stepValidationFn]="stepMap.subawardee.validationFn">
 
+  </sds-step>
+
+  <sds-step id="review" text="Review and Submit"
+    [isReview]="true"
+    [mode]="navigationMode.INTERNAL" 
+    [stepTemplate]="reviewTemplate" 
+    [stepValidationFn]="stepMap.review.validationFn">
   </sds-step>
 
 </sds-stepper>
@@ -95,5 +102,14 @@
     Subawardee Data
     <hr>
   </h1>
-  <subawardee-demo></subawardee-demo>
+  <subawardee-demo (subawardeeUpdate)="updateSubawardee($event)" [subawardees]="model.subawardee"></subawardee-demo>
+</ng-template>
+
+<ng-template #reviewTemplate>
+  <h1>
+    Review and Subtmi
+    <hr>
+  </h1>
+  <formly-form [fields]="[stepMap.review.fieldConfig]" [model]="model"></formly-form>
+  <subawardee-demo [displayInput]="false" [subawardees]="model.subawardee"></subawardee-demo>
 </ng-template>

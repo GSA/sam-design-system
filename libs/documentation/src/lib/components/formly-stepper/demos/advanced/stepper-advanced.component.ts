@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { NavigationMode } from "@gsa-sam/components";
-import { FormlyFieldConfig } from "@ngx-formly/core";
+import { FormlyUtilsService } from "@gsa-sam/sam-formly";
 import { StepperAdvancedService } from "./stepper-advanced.service";
 
 @Component({
@@ -12,6 +12,9 @@ import { StepperAdvancedService } from "./stepper-advanced.service";
 })
 export class StepperAdvancedDemoComponent {
   navigationMode = NavigationMode;
+  model = {
+    subawardee: []
+  };;
 
   stepMap = {
     welcome: {
@@ -27,11 +30,36 @@ export class StepperAdvancedDemoComponent {
       fieldConfig: this.stepperAdvancedService.getTaxpayerForm(),
     },
     subawardee: {
+      validationFn: (model: any) => {
+        return model.subawardee.length ? true : undefined;
+      },
+    },
+    review: {
+      fieldConfig: {
+        fieldGroup: [
+          this.stepperAdvancedService.getRegistrationPurpose(),
+          this.stepperAdvancedService.getEntityInformation(),
+          this.stepperAdvancedService.getTaxpayerForm(),
+        ]
+      },
       validationFn: () => true,
     }
   }
 
+  currentStepId: string;
+
   constructor(
     private stepperAdvancedService: StepperAdvancedService
   ) {}
+
+  onStepChange($event) {
+    this.currentStepId = $event.id;
+    if (this.currentStepId === 'review') {
+      FormlyUtilsService.setReadonlyMode(true, this.stepMap.review.fieldConfig.fieldGroup as any);
+    }
+  }
+
+  updateSubawardee($event) {
+    this.model.subawardee = $event;
+  }
 }

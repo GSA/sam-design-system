@@ -6,7 +6,9 @@
 
             <ul class="usa-sidenav usa-sidenav--styled">
               <li *ngFor="let step of getDisplayedSteps(stepTemplates); let i = index;" class="usa-sidenav__item"
-                [ngClass]="{'usa-current':  _currentStep.id === step.id}">
+                [ngClass]="{
+                  'usa-current':  _currentStep.id === step.id
+                }">
                 <ng-container [ngTemplateOutlet]="sidenavItem" [ngTemplateOutletContext]="{$implicit: step}">
                 </ng-container>
                 <ng-container [ngTemplateOutlet]="subPanelTemplate" [ngTemplateOutletContext]="{$implicit:step}">
@@ -95,7 +97,9 @@
         {{step.text}}
       </span>
     </span>
-    <a *ngSwitchDefault href="javascript:void(0);" (click)="changeStep(step.id)">
+    <a *ngSwitchDefault href="javascript:void(0);" (click)="changeStep(step.id)"
+      [ngClass]="{'cursor-default opacity-60': step.isReview && _isReviewAndSubmitDisabled}"
+    >
       <ng-container [ngTemplateOutlet]="sidenavIcon" [ngTemplateOutletContext]="{$implicit: step}"></ng-container>
       <span class="margin-left-1">
         {{step.text}}
