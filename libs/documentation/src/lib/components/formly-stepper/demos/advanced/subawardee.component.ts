@@ -51,7 +51,7 @@ export class SubawardeeDemoComponent {
     </div>
     <div sds-dialog-actions>
       <button class="usa-button usa-button--base" (click)="cancel()">Cancel</button>
-      <button type="submit" (click)="onFormSubmit($event)" class="usa-button margin-top-2">Submit</button>
+      <button type="submit" (click)="onFormSubmit()" class="usa-button margin-top-2">Submit</button>
     </div>
   `,
   providers: [
