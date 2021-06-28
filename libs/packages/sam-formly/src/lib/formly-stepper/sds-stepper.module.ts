@@ -36,4 +36,4 @@ import { FormlyModule } from "@ngx-formly/core";
     SdsStepFooterComponent,
   ]
 })
-export class SdsFormlyStepperModule {}
+export class SdsStepperModule {}

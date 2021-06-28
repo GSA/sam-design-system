@@ -1,12 +1,12 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { StepperBasicDemoComponent } from "./stepper-basic.component";
-import { SdsFormlyModule, SdsFormlyStepperModule } from '@gsa-sam/sam-formly';
+import { SdsFormlyModule, SdsStepperModule } from '@gsa-sam/sam-formly';
 
 @NgModule({
   imports: [
     CommonModule,
-    SdsFormlyStepperModule,
+    SdsStepperModule,
     SdsFormlyModule,
   ],
   declarations: [

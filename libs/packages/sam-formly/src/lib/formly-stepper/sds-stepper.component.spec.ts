@@ -10,8 +10,8 @@ import {
 } from "ngx-bootstrap-icons";
 import { NavigationMode, SdsIconModule } from "libs/packages/components/src/lib/public-api";
 import { RouterTestingModule } from "@angular/router/testing";
-import { SdsFormlyStepperModule } from './formly-stepper.module';
-import { Component, DebugElement, ViewChild } from "@angular/core";
+import { SdsStepperModule } from './sds-stepper.module';
+import { Component, ViewChild } from "@angular/core";
 import { FormlyFieldConfig } from "@ngx-formly/core";
 import { SdsStepperComponent } from "./sds-stepper.component";
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
@@ -75,7 +75,7 @@ describe('SdsStepperComponent', () => {
         NgxBootstrapIconsModule.pick({ chevronLeft, chevronRight, x, check }),
         SdsIconModule,
         RouterTestingModule,
-        SdsFormlyStepperModule,
+        SdsStepperModule,
         NoopAnimationsModule,
       ],
       declarations: [
