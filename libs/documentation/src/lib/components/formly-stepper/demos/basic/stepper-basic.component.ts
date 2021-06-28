@@ -49,6 +49,7 @@ export class StepperBasicDemoComponent {
       id: 'review',
       text: 'Review and Submit',
       mode: NavigationMode.INTERNAL,
+      isReview: true,
       fieldConfig: {
         fieldGroup: [
           this.stepperBasicService.getReportDetails(),
@@ -76,5 +77,9 @@ export class StepperBasicDemoComponent {
 
   onModelChange($event) {
     console.log('model change', $event);
+  }
+
+  onSaveClicked($event) {
+    console.log('saved', $event);
   }
 }

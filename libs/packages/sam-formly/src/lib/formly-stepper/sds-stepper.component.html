@@ -7,7 +7,7 @@
             <ul class="usa-sidenav usa-sidenav--styled">
               <li *ngFor="let step of getDisplayedSteps(stepTemplates); let i = index;" class="usa-sidenav__item"
                 [ngClass]="{
-                  'usa-current':  _currentStep.id === step.id
+                  'usa-current':  _currentStep?.id === step.id
                 }">
                 <ng-container [ngTemplateOutlet]="sidenavItem" [ngTemplateOutletContext]="{$implicit: step}">
                 </ng-container>
@@ -30,7 +30,7 @@
 
             <label [attr.for]="id + '-prevBtn'" class="text-right usa-link cursor-pointer display-block margin-top-2">
               Back to
-              <span class="display-block">{{_dataEntryStepsDef[_currentStepIndex - 1].text}}</span>
+              <span class="display-block">{{_dataEntryStepsDef[_currentStepIndex - 1]?.text}}</span>
             </label>
           </div>
           <div class="margin-right-2">
@@ -69,7 +69,7 @@
             </button>
             <label [attr.for]="id + '-nextBtn'" class="text-left usa-link cursor-pointer display-block margin-top-2">
               Go to
-              <span class="display-block">{{_dataEntryStepsDef[_currentStepIndex + 1].text}}</span>
+              <span class="display-block">{{_dataEntryStepsDef[_currentStepIndex + 1]?.text}}</span>
             </label>
           </div>
 
@@ -83,7 +83,7 @@
 <ng-template #subPanelTemplate let-panelItem>
   <div *ngFor="let pItem of getDisplayedSteps(panelItem.children); let i = index;">
     <ul class="usa-sidenav usa-sidenav--styled bg-base-lighter margin-x-0">
-      <li class="usa-sidenav__item  padding-left-3" [ngClass]="{'usa-current':  _currentStep.id === pItem.id }">
+      <li class="usa-sidenav__item  padding-left-3" [ngClass]="{'usa-current':  _currentStep?.id === pItem.id }">
         <ng-container [ngTemplateOutlet]="sidenavItem" [ngTemplateOutletContext]="{$implicit: pItem}"></ng-container>
       </li>
     </ul>

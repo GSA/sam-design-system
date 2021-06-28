@@ -245,11 +245,11 @@ export class SdsStepperComponent {
 
   private checkReviewAndSubmit() {
     this._isReviewAndSubmitDisabled = this._dataEntryStepsDef.some(step => {
-      if (!this.stepValidityMap[step.id]) {
-        return true;
+      if (step.isReview) {
+        return false;
       }
 
-      if (!step.isReview && !step.valid) {
+      if (!this.stepValidityMap[step.id]) {
         return true;
       }
 
