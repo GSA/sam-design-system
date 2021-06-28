@@ -47,6 +47,7 @@ export class StepperAdvancedDemoComponent {
   }
 
   currentStepId: string;
+  stepValidityMap = {};
 
   constructor(
     private stepperAdvancedService: StepperAdvancedService

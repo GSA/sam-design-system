@@ -1,4 +1,5 @@
-<sds-stepper [queryParamKey]="'sdsAdvancedStepper'" [model]="model" (stepChange)="onStepChange($event)">
+<sds-stepper [queryParamKey]="'sdsAdvancedStepper'" [model]="model" 
+  [stepValidityMap]="stepValidityMap" (stepChange)="onStepChange($event)">
 
   <sds-step id="welcome" text="Welcome" 
     [mode]="navigationMode.INTERNAL" 
