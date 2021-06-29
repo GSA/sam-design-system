@@ -62,7 +62,7 @@
           </div>
           <div class="margin-right-2"
             *ngIf="_currentStepIndex != _dataEntryStepsDef.length - 1 && !_currentStep?.isReview">
-            <button cdkStepperNext
+            <button
               class="usa-button sds-button--circle usa-button--base usa-button--big usa-button--active padding-2"
               (click)="onNextStep()" [attr.id]="id + '-nextBtn'">
               <sds-icon [icon]="'chevron-right'"></sds-icon>
@@ -72,10 +72,7 @@
               <span class="display-block">{{_dataEntryStepsDef[_currentStepIndex + 1]?.text}}</span>
             </label>
           </div>
-
         </div>
-
-
       </div>
     </div>
 </div>
