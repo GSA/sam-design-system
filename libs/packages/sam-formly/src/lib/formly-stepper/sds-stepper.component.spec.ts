@@ -92,7 +92,7 @@ describe('SdsStepperComponent', () => {
   it('Should create with expected steps', () => {
     expect(stepper).toBeDefined();
     expect(stepper.stepTemplates.toArray()[1].children.length).toEqual(1);
-    expect(stepper._dataEntryStepsDef.length).toEqual(3);
+    expect(stepper._stepsDef.length).toEqual(3);
     expect(stepper.currentStepId).toEqual('step1');
 
     const validSteps = fixture.debugElement.queryAll(By.css('.bi sds-check'));
@@ -113,7 +113,7 @@ describe('SdsStepperComponent', () => {
     expect(stepper.currentStepId).toEqual('step1');
 
     // Triggers min length of 5 validation in example component
-    stepper._dataEntryStepsDef[0].fieldConfig.formControl.setValue('test');
+    stepper._stepsDef[0].fieldConfig.formControl.setValue('test');
 
     const nextButton = fixture.debugElement.query(By.css('#stepperTestId-nextBtn'));
     nextButton.triggerEventHandler('click', null);
@@ -123,7 +123,7 @@ describe('SdsStepperComponent', () => {
 
   it('Should trigger validation on save click', () => {
     // Triggers min length of 5 validation in example component
-    stepper._dataEntryStepsDef[0].fieldConfig.formControl.setValue('test');
+    stepper._stepsDef[0].fieldConfig.formControl.setValue('test');
 
     const nextButton = fixture.debugElement.query(By.css('#stepperTestId-saveBtn'));
     nextButton.triggerEventHandler('click', null);
