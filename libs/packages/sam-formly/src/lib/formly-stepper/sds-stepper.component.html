@@ -30,12 +30,12 @@
 
             <label [attr.for]="id + '-prevBtn'" class="text-right usa-link cursor-pointer display-block margin-top-2">
               Back to
-              <span class="display-block">{{_dataEntryStepsDef[_currentStepIndex - 1]?.text}}</span>
+              <span class="display-block">{{_stepsDef[_currentStepIndex - 1]?.text}}</span>
             </label>
           </div>
           <div class="margin-right-2">
             <button class="usa-button sds-button--circle usa-button--big usa-button--base padding-2"
-              (click)="closeback();" [attr.id]="id + '-closeBtn'">
+              (click)="close.emit()" [attr.id]="id + '-closeBtn'">
               <sds-icon [icon]="'x'"></sds-icon>
             </button>
             <label [attr.for]="id + '-closeBtn'" class="text-center usa-link cursor-pointer display-block margin-top-2">
@@ -43,7 +43,7 @@
             </label>
           </div>
           <div class="margin-right-2" *ngIf="!_currentStep?.isReview">
-            <button class="usa-button sds-button--circle usa-button--big usa-button--base padding-2"
+            <button class="usa-button sds-button--circle usa-button--big usa-button--base padding-2" (click)="help.emit();"
               [attr.id]="id + '-helpBtn'">
               <sds-icon [icon]="'question'"></sds-icon>
             </button>
@@ -51,9 +51,8 @@
               Help
             </label>
           </div>
-          <div class="margin-right-2" *ngIf="!_currentStep?.isReview" (click)="onSaveClicked()"
-            [attr.id]="id + '-saveBtn'">
-            <button class="usa-button sds-button--circle usa-button--big usa-button--base padding-2">
+          <div class="margin-right-2" *ngIf="!_currentStep?.isReview" (click)="onSaveClicked()">
+            <button class="usa-button sds-button--circle usa-button--big usa-button--base padding-2" [attr.id]="id + '-saveBtn'">
               <sds-icon [icon]="'save'"></sds-icon>
             </button>
             <label [attr.for]="id + '-saveBtn'" class="text-center usa-link cursor-pointer display-block margin-top-2">
@@ -61,7 +60,7 @@
             </label>
           </div>
           <div class="margin-right-2"
-            *ngIf="_currentStepIndex != _dataEntryStepsDef.length - 1 && !_currentStep?.isReview">
+            *ngIf="_currentStepIndex != _stepsDef.length - 1 && !_currentStep?.isReview">
             <button
               class="usa-button sds-button--circle usa-button--base usa-button--big usa-button--active padding-2"
               (click)="onNextStep()" [attr.id]="id + '-nextBtn'">
@@ -69,7 +68,7 @@
             </button>
             <label [attr.for]="id + '-nextBtn'" class="text-left usa-link cursor-pointer display-block margin-top-2">
               Go to
-              <span class="display-block">{{_dataEntryStepsDef[_currentStepIndex + 1]?.text}}</span>
+              <span class="display-block">{{_stepsDef[_currentStepIndex + 1]?.text}}</span>
             </label>
           </div>
         </div>

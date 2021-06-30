@@ -15,12 +15,23 @@ let nextId = 0;
 export class SdsStepperComponent {
   @ContentChildren(SdsStepComponent) stepTemplates: QueryList<SdsStepComponent>;
 
-  // @Input() steps: FormlyStep[];
-
+  /**
+   * Singular global model to store user input for all steps. Alternatively,
+   * users may pass in a model specifically to each sds-step and manage the data
+   * modal separately
+   */
   @Input() model: any = {};
 
+  /**
+   * Id of the step currently shown to users
+   */
   @Input() currentStepId: string;
 
+  /**
+   * Mapping of step validity. This maps each step's id to a boolean value indicating
+   * whether the step is valid or invalid. This maps defines valid/invalid icons
+   * displayed in side nav
+   */
   @Input() stepValidityMap: any = {};
 
   /**
@@ -30,6 +41,9 @@ export class SdsStepperComponent {
    */
   @Input() customErrorHandling = false;
 
+  /**
+   * Unique identifier for the stepper. If none provided a default id will be used
+   */
   @Input() id = `sds-stepper-${nextId++}`;
 
   /**
@@ -40,15 +54,33 @@ export class SdsStepperComponent {
    */
   @Input() queryParamKey = 'sdsStepId';
 
+  /**
+   * Output event - emitted when save button is clicked
+   */
   @Output() saveData = new EventEmitter<{ model: any, metadata: any }>();
 
+  /**
+   * Output event - emitted when a step is changed, either through the
+   *  navigation buttons at the bottom of the step or by clicking on a
+   *  step in side panel
+   */
   @Output() stepChange = new EventEmitter<SdsStepComponent>();
 
+  /**
+   * Output event - emitted if the current step is a formly config.
+   *  Outputs whenever a model change occurs from the formly field
+   */
   @Output() modelChange = new EventEmitter<any>();
 
+  /**
+   * Output event - emitted whenever the close button is clicked
+   */
   @Output() close = new EventEmitter();
 
-  @Output() submit = new EventEmitter();
+  /**
+   * Output event - emitted whenever the help button is clicked
+   */
+  @Output() help = new EventEmitter();
 
   fields: FormlyFieldConfig[];
 
@@ -56,7 +88,7 @@ export class SdsStepperComponent {
 
   _currentStep: SdsStepComponent;
   _currentStepIndex: number;
-  _dataEntryStepsDef: SdsStepComponent[] = [];
+  _stepsDef: SdsStepComponent[] = [];
 
   _isReviewAndSubmitDisabled = true;
 
@@ -87,8 +119,8 @@ export class SdsStepperComponent {
 
   ngAfterContentInit() {
 
-    this._dataEntryStepsDef = this.getFlatSteps(this.stepTemplates);
-    this._dataEntryStepsDef.forEach(step => {
+    this._stepsDef = this.getFlatSteps(this.stepTemplates);
+    this._stepsDef.forEach(step => {
       step.model = step.model ? step.model : this.model;
     });
 
@@ -97,9 +129,9 @@ export class SdsStepperComponent {
     if (this.activatedRoute.snapshot.queryParams.sdsStepId) {
       this.currentStepId = this.activatedRoute.snapshot.queryParams.sdsStepId;
     } else if (!this.currentStepId) {
-      this.currentStepId = this._dataEntryStepsDef[0].id;
+      this.currentStepId = this._stepsDef[0].id;
       this._currentStepIndex = 0;
-      this._currentStep = this._dataEntryStepsDef[this._currentStepIndex];
+      this._currentStep = this._stepsDef[this._currentStepIndex];
     }
 
     if (this.stepValidityMap) {
@@ -148,15 +180,15 @@ export class SdsStepperComponent {
    *  previous to the provided step
    */
   changeStep(stepId: string, incrementor?: 1 | -1) {
-    this._dataEntryStepsDef = this.getFlatSteps(this.stepTemplates);
-    let stepIndex = this._dataEntryStepsDef.findIndex(step => step.id === stepId);
+    this._stepsDef = this.getFlatSteps(this.stepTemplates);
+    let stepIndex = this._stepsDef.findIndex(step => step.id === stepId);
     stepIndex = stepIndex === -1 ? 0 : stepIndex;
 
     if (incrementor) {
       stepIndex = stepIndex + incrementor;
     }
 
-    const step = this._dataEntryStepsDef[stepIndex];
+    const step = this._stepsDef[stepIndex];
     if (step.isReview && this._isReviewAndSubmitDisabled) {
       return;
     }
@@ -169,7 +201,7 @@ export class SdsStepperComponent {
     }
 
     this._currentStepIndex = stepIndex;
-    this._currentStep = this._dataEntryStepsDef[stepIndex];
+    this._currentStep = this._stepsDef[stepIndex];
 
     this._currentStep.selected = true;
     this.currentStepId = this._currentStep.id;
@@ -208,13 +240,9 @@ export class SdsStepperComponent {
     this.changeStep(this._currentStep.id, -1);
   }
 
-  closeback() {
-    this.close.emit();
-  }
-
   onSaveClicked() {
-    this._dataEntryStepsDef = this.getFlatSteps(this.stepTemplates);
-    this._currentStepIndex = this._dataEntryStepsDef.findIndex(step => step.id === this._currentStep.id);
+    this._stepsDef = this.getFlatSteps(this.stepTemplates);
+    this._currentStepIndex = this._stepsDef.findIndex(step => step.id === this._currentStep.id);
 
     if (!this.customErrorHandling) {
       this._currentStep.options.showError = (field) => !field.formControl.valid;
@@ -239,12 +267,8 @@ export class SdsStepperComponent {
     return steps.filter((step => !step.hide));
   }
 
-  onSubmit() {
-    this.submit.emit();
-  }
-
   private checkReviewAndSubmit() {
-    this._isReviewAndSubmitDisabled = this._dataEntryStepsDef.some(step => {
+    this._isReviewAndSubmitDisabled = this._stepsDef.some(step => {
       if (step.isReview) {
         return false;
       }
