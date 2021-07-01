@@ -36,7 +36,7 @@ import { AnimationWrapperComponent } from './wrappers/form-field.animation';
 import { SdsReadonlyModule } from './readonly/readonly.module';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { NgxBootstrapIconsModule, caretDownFill, caretUpFill, filter, arrowClockwise } from 'ngx-bootstrap-icons';
-import { UsaFileInputModule } from 'ngx-uswds';
+import { UsaFileInputModule } from '@gsa-sam/ngx-uswds';
 
 // Validate the min length of the character
 export function minlengthValidationMessage(err, field) {
