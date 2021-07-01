@@ -6,7 +6,7 @@ import { SDSAutocompletelConfiguration } from '@gsa-sam/components';
   template: `    
     <label class="usa-label">
       <span
-      *ngIf="to.tagText"
+      *ngIf="to?.tagText"
       class="usa-tag"
       [ngClass]="to.tagClass ? to.tagClass : 'sds-tag--info-white'"
       >{{ to.tagText }}</span>
