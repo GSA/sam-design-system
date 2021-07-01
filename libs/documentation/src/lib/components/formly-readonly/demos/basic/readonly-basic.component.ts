@@ -46,6 +46,7 @@ export class ReadonlyBasicComponent implements OnInit {
       defaultValue: 'Jane',
       templateOptions: {
         label: 'Input Type',
+        tagText: 'Tag',
         description: 'Enter text',
         hideOptional: true,
       },
@@ -78,6 +79,8 @@ export class ReadonlyBasicComponent implements OnInit {
       templateOptions: {
         label: 'Textarea Type',
         description: 'Enter text',
+        tagText: 'Purple Tag',
+        tagClass: 'sds-tag--info-purple',
         hideOptional: true,
         rows: 6,
       },
