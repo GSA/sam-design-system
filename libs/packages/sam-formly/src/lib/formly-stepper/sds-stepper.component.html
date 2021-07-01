@@ -51,8 +51,9 @@
               Help
             </label>
           </div>
-          <div class="margin-right-2" *ngIf="!_currentStep?.isReview" (click)="onSaveClicked()">
-            <button class="usa-button sds-button--circle usa-button--big usa-button--base padding-2" [attr.id]="id + '-saveBtn'">
+          <div class="margin-right-2" *ngIf="!_currentStep?.isReview">
+            <button class="usa-button sds-button--circle usa-button--big usa-button--base padding-2" 
+              [attr.id]="id + '-saveBtn'" (click)="onSaveClicked()">
               <sds-icon [icon]="'save'"></sds-icon>
             </button>
             <label [attr.for]="id + '-saveBtn'" class="text-center usa-link cursor-pointer display-block margin-top-2">

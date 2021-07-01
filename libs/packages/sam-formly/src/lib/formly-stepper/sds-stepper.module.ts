@@ -10,6 +10,8 @@ import {
   chevronRight,
   x,
   check,
+  question,
+  save
 } from "ngx-bootstrap-icons";
 import { RouterModule } from "@angular/router";
 import { FormlyModule } from "@ngx-formly/core";
@@ -20,7 +22,7 @@ import { FormlyModule } from "@ngx-formly/core";
     FormlyModule,
     SdsFormlyModule,
     SdsIconModule,
-    NgxBootstrapIconsModule.pick({ chevronLeft, chevronRight, x, check }),
+    NgxBootstrapIconsModule.pick({ chevronLeft, chevronRight, x, check, question, save }),
     RouterModule,
   ],
   declarations: [

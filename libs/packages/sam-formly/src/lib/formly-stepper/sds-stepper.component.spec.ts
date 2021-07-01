@@ -7,6 +7,8 @@ import {
   chevronRight,
   x,
   check,
+  question,
+  save
 } from "ngx-bootstrap-icons";
 import { NavigationMode, SdsIconModule } from "libs/packages/components/src/lib/public-api";
 import { RouterTestingModule } from "@angular/router/testing";
@@ -72,7 +74,7 @@ describe('SdsStepperComponent', () => {
       imports: [
         CommonModule,
         SdsFormlyModule,
-        NgxBootstrapIconsModule.pick({ chevronLeft, chevronRight, x, check }),
+        NgxBootstrapIconsModule.pick({ chevronLeft, chevronRight, x, check, question, save }),
         SdsIconModule,
         RouterTestingModule,
         SdsStepperModule,
@@ -125,8 +127,8 @@ describe('SdsStepperComponent', () => {
     // Triggers min length of 5 validation in example component
     stepper._stepsDef[0].fieldConfig.formControl.setValue('test');
 
-    const nextButton = fixture.debugElement.query(By.css('#stepperTestId-saveBtn'));
-    nextButton.triggerEventHandler('click', null);
+    const saveButton = fixture.debugElement.query(By.css('#stepperTestId-saveBtn'));
+    saveButton.triggerEventHandler('click', null);
     fixture.detectChanges();
     expect(stepper.stepValidityMap['step1']).toEqual(false);
   });
