@@ -3,7 +3,14 @@ import { Component, Input, OnInit } from "@angular/core";
 @Component({
   selector: `sds-readonly-fileinfo`,
   template: `
-      <label class="usa-label">{{label}}</label>
+    <label class="usa-label">
+      <span
+      *ngIf="to.tagText"
+      class="usa-tag"
+      [ngClass]="to.tagClass ? to.tagClass : 'sds-tag--info-white'"
+      >{{ to.tagText }}</span>
+      {{label ? label : to.label}}
+    </label>
     <span *ngIf="!value; else definedValues" class="text-bold">&mdash;</span>
 
     <ng-template #definedValues>
@@ -14,6 +21,7 @@ import { Component, Input, OnInit } from "@angular/core";
   `
 })
 export class ReadonlyFileinfoComponent implements OnInit {
+  @Input() to: any = {}; // template options
   @Input() label: string;
   @Input() value: any;
   @Input() fileInfoOptions: any[];

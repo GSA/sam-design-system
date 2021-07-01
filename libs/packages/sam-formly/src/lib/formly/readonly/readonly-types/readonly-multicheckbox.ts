@@ -13,7 +13,7 @@ import { Component, Input, OnInit } from '@angular/core';
   </ng-template>`,
 })
 export class ReadonlyMulticheckboxComponent implements OnInit {
-
+  @Input() templateOptions: any = {};
   @Input() label: string;
   @Input() value: any;
   @Input() multicheckboxOptions: any[];
