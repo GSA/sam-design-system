@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, ViewChild } from "@angular/core";
 import { AbstractSdsFormly } from "../sds-formly";
-import { UsaFileInputComponent } from 'ngx-uswds';
+import { UsaFileInputComponent } from '@gsa-sam/ngx-uswds';
 
 @Component({
   selector: `sds-formly-field-file-input`,

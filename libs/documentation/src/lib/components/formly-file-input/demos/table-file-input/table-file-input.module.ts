@@ -4,7 +4,6 @@ import { TableFileInputComponent } from './table-file-input.component';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
-import { UsaFileInputModule } from 'ngx-uswds';
 import { SdsTableModule } from '@gsa-sam/sam-material-extensions';
 
 
@@ -16,7 +15,6 @@ import { SdsTableModule } from '@gsa-sam/sam-material-extensions';
     SdsFormlyModule,
     ReactiveFormsModule,
     FormlyModule.forRoot(),
-    UsaFileInputModule,
     SdsTableModule,
   ]
 })
