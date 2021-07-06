@@ -114,7 +114,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     private route: ActivatedRoute,
     @Optional()
     private filterUpdateModelService: SDSFormlyUpdateModelService
-  ) {}
+  ) { }
   ngOnDestroy() {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
@@ -274,7 +274,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
       encode: false,
       filter: this.longFormatDate,
     });
-    obj = qs.parse(encodedValues, {decoder: this.cleanModelParser});
+    obj = qs.parse(encodedValues, { decoder: this.cleanModelParser });
     return obj;
   }
 
@@ -296,8 +296,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
 
   longFormatDate(prefix, value) {
     const val = decodeURIComponent(value);
-    const isDate = /^(\d{1,2})[-\/](\d{1,2})[-\/](\d{4})$/.exec(val);
-    if (isDate) {
+    if (!isNaN(Date.parse(val))) {
       value = new Date(val).toISOString();
     }
     return value;

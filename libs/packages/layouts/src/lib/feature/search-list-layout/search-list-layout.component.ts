@@ -44,7 +44,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,
     private filterUpdateModelService: SDSFormlyUpdateModelService,
     private loc: Location
-  ) {}
+  ) { }
 
   /**
    * Input service to be called when items change
@@ -187,7 +187,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     if (this.filterUpdateModelService) {
       if (paramModel && paramModel['sfm']) {
         this.filterUpdateModelService.updateModel(paramModel['sfm']);
-      } else if(!this.triggeredByPopState){
+      } else if (!this.triggeredByPopState) {
         this.filterUpdateModelService.updateModel(
           this.configuration.defaultFilterValue
         );
@@ -262,7 +262,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
      * use loc.go only where we need the page to remain in place, and would normally
      * overwrite the top of the history stack
      */
-    if(!triggeredByFilter || this.triggeredByPopState){
+    if (!triggeredByFilter || this.triggeredByPopState) {
       this.triggeredByPopState = false;
       this.router.navigate([], {
         relativeTo: this.route,
@@ -323,7 +323,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
       encode: false,
       filter: this.longFormatDate,
     });
-    obj = qs.parse(encodedValues, {decoder: this.convertToModelParser});
+    obj = qs.parse(encodedValues, { decoder: this.convertToModelParser });
     return obj;
   }
 
@@ -344,8 +344,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
 
   longFormatDate(prefix, value) {
     const val = decodeURIComponent(value);
-    const isDate = /^(\d{1,2})[-\/](\d{1,2})[-\/](\d{4})$/.exec(val);
-    if (isDate) {
+    if (!isNaN(Date.parse(val))) {
       value = new Date(val).toISOString();
     }
     return value;
@@ -390,8 +389,8 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
             );
             this.totalItems = result.totalItems;
           },
-          (error) => this.loading = false,
-          () => this.loading = false
+            (error) => this.loading = false,
+            () => this.loading = false
           );
       });
     }
