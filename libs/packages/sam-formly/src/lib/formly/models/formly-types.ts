@@ -14,4 +14,5 @@ export enum SdsFormlyTypes {
   CUSTOMTEXT = 'customtext',
   FILEINFO = 'fileinfo',
   SEARCH = 'search',
+  FILEINPUT = 'fileinput',
 };
