@@ -1,5 +1,5 @@
 /* tslint:disable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { SdsSideNavigationComponent } from './side-navigation.component';
 import { SdsAccordionModule } from '../accordion/accordion.module';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -25,7 +25,7 @@ describe('SdsSideNavigationComponent', () => {
     ]
   };
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [SdsSideNavigationComponent],
       imports: [RouterTestingModule, SdsAccordionModule, BrowserAnimationsModule]

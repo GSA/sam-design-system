@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { Component, ViewChild, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -309,7 +309,7 @@ describe('SdsTableComponent Full', () => {
   let tableDe: DebugElement;
   let wrapper: WrapperComponent;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         SdsTableComponent,
@@ -344,21 +344,21 @@ describe('SdsTableComponent Full', () => {
       fixture.detectChanges();
     });
 
-    it('should create', async(() => {
+    it('should create', waitForAsync(() => {
       expect(component).toBeTruthy();
     }));
 
-    it('isArray should return true', async(() => {
+    it('isArray should return true', waitForAsync(() => {
       expect(component.isArray(['test'])).toBeTruthy();
     }));
 
-    it('check after content init', async(() => {
+    it('check after content init', waitForAsync(() => {
       component.ngAfterContentInit();
       fixture.detectChanges();
       expect(component).toBeTruthy();
     }));
 
-    it('should update pagination', async(() => {
+    it('should update pagination', waitForAsync(() => {
       component.page = {
         pageNumber: 1,
         pageSize: 5,
@@ -369,13 +369,13 @@ describe('SdsTableComponent Full', () => {
       expect(component.page.totalPages).toBe(2);
     }));
 
-    it('default string sort should return lowercase', async(() => {
+    it('default string sort should return lowercase', waitForAsync(() => {
       expect(component.defaultSort(component.data[0], 'firstName')).toBe(
         'gregorius'
       );
     }));
 
-    it('default number sort should return lowercase', async(() => {
+    it('default number sort should return lowercase', waitForAsync(() => {
       expect(component.defaultSort(component.data[0], 'requests')).toBe(1);
     }));
   });

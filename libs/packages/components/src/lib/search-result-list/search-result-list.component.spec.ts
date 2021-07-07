@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { SdsSearchResultListComponent } from './search-result-list.component';
 
 import { CommonModule } from '@angular/common';
@@ -11,7 +11,7 @@ describe('SdsSearchResultListComponent', () => {
   let fixture: ComponentFixture<SdsSearchResultListComponent>;
   let el: DebugElement;
   let location: SpyLocation;
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [SdsSearchResultListComponent],
       imports: [SdsIconModule, CommonModule],
@@ -29,7 +29,7 @@ describe('SdsSearchResultListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('should display list of items', async(() => {
+  it('should display list of items', waitForAsync(() => {
     component.model = {
       results: [
         { title: 'First', id: 1 },
@@ -47,7 +47,7 @@ describe('SdsSearchResultListComponent', () => {
     expect(testResult.title).toEqual('First');
   }));
 
-  it('should convert model array to searchModel object', async(() => {
+  it('should convert model array to searchModel object', waitForAsync(() => {
     const items = [
       { title: 'First', id: 1 },
       { title: 'Second', id: 2 },

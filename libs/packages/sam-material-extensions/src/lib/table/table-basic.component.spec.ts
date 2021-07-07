@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { Component, ViewChild, DebugElement, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -232,7 +232,7 @@ describe('SdsTableComponent Basic', () => {
   let tableDe: DebugElement;
   let wrapper: WrapperComponent;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         SdsTableComponent,
@@ -269,7 +269,7 @@ describe('SdsTableComponent Basic', () => {
       fixture.detectChanges();
     });
 
-    it('should create', async(() => {
+    it('should create', waitForAsync(() => {
       expect(component).toBeTruthy();
     }));
   });

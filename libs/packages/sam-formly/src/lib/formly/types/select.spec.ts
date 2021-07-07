@@ -1,5 +1,5 @@
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { TestBed, ComponentFixture, async, fakeAsync, tick } from '@angular/core/testing';
+import { TestBed, ComponentFixture, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Component, ViewChild } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -73,7 +73,7 @@ describe('Formly Field Select Component', () => {
       expect(fixture.debugElement.queryAll(By.css('option')).length).toEqual(3);
     });
 
-    it('should correctly bind to an Observable', async(() => {
+    it('should correctly bind to an Observable', waitForAsync(() => {
       const sports$ = observableOf([
         { id: '1', name: 'Soccer' },
         { id: '2', name: 'Basketball' },

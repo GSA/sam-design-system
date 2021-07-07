@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { SdsCollapseModule, SdsIconModule, allIcons as sdsAllIcons } from '@gsa-sam/components';
 import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
@@ -9,7 +9,7 @@ describe('SystemAlertComponent', () => {
   let component: SdsSystemAlertComponent;
   let fixture: ComponentFixture<SdsSystemAlertComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         SdsIconModule,

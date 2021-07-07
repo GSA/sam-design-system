@@ -27,7 +27,7 @@ import { NgxBootstrapIconsModule, github } from 'ngx-bootstrap-icons';
     SdsIconModule,
     SdsToastModule,
     ToastrModule.forRoot(SdsToastSettings),
-    RouterModule.forRoot(ROUTES, { scrollPositionRestoration: 'enabled' }),
+    RouterModule.forRoot(ROUTES, { scrollPositionRestoration: 'enabled', relativeLinkResolution: 'legacy' }),
     FormsModule,
     MarkdownModule.forRoot(),
     NgxBootstrapIconsModule.pick({github})

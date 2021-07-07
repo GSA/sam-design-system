@@ -1,5 +1,5 @@
 /* tslint:disable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { SdsFooterComponent } from './footer.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NavigationMode, SdsIconModule, allIcons as sdsAllIcons } from '@gsa-sam/components';
@@ -13,7 +13,7 @@ import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 describe('SdsFooterComponent', () => {
   let component: SdsFooterComponent;
   let fixture: ComponentFixture<SdsFooterComponent>;
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [SdsFooterComponent],
       imports: [

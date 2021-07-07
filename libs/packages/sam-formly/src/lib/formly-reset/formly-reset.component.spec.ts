@@ -1,4 +1,4 @@
-import { TestBed, ComponentFixture, async } from '@angular/core/testing';
+import { TestBed, ComponentFixture, waitForAsync } from '@angular/core/testing';
 import { Component, ViewChild } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import {
@@ -25,7 +25,7 @@ describe('SDS Formly Reset', () => {
   let testComp: TestComponent;
   let fixture: ComponentFixture<TestComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [SdsFormlyResetComponent, TestComponent],
       imports: [

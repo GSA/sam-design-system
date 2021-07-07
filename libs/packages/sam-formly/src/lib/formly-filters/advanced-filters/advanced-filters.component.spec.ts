@@ -1,9 +1,4 @@
-import {
-  async,
-  ComponentFixture,
-  TestBed,
-  fakeAsync
-} from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, waitForAsync } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { SdsDialogService, SdsIconModule, allIcons as sdsAllIcons } from '@gsa-sam/components';
 
@@ -21,7 +16,7 @@ describe('Advanced Filteres Component', () => {
   });
   let advancedFiltersService: SdsAdvancedFiltersService;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     modalServiceSpy = jasmine.createSpyObj('modalService', ['open']);
     const advancedFiltersServiceSpy = jasmine.createSpyObj(
       'SdsAdvancedFiltersService',

@@ -1,5 +1,5 @@
 /* tslint:disable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { SdsHeaderComponent } from './header.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SdsIconModule, SdsTopBannerComponent, allIcons as sdsAllIcons } from '@gsa-sam/components';
@@ -13,7 +13,7 @@ describe('SdsHeaderComponent', () => {
   let component: SdsHeaderComponent;
   let fixture: ComponentFixture<SdsHeaderComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [SdsHeaderComponent, SdsTopBannerComponent],
       imports: [RouterTestingModule, SdsIconModule, A11yModule, NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))]
