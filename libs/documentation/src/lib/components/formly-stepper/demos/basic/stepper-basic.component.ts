@@ -1,14 +1,13 @@
-import { Component, OnInit, TemplateRef, ViewChild } from "@angular/core";
+import { Component } from "@angular/core";
 import { NavigationMode } from "@gsa-sam/components";
 import { FormlyUtilsService } from "@gsa-sam/sam-formly";
-import { FormlyFieldConfig } from "@ngx-formly/core";
 import { StepperBasicService } from "./stepper-basic.service";
 import * as _ from 'lodash-es';
 @Component({
   selector: `stepper-basic-demo`,
   templateUrl: './stepper-basic.component.html',
   providers: [
-    StepperBasicService
+    StepperBasicService,
   ]
 })
 export class StepperBasicDemoComponent {

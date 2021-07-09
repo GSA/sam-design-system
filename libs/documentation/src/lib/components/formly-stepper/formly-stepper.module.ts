@@ -21,14 +21,14 @@ const DEMOS = {
     module: require('!!raw-loader!./demos/basic/stepper-basic.module.ts'),
     path: 'libs/documentation/src/lib/components/formly-stepper/demos/basic'
   },
-  advanced: {
-    title: 'Complex Formly Stepper',
-    type: StepperAdvancedDemoComponent,
-    code: require('!!raw-loader!./demos/advanced/stepper-advanced.component'),
-    markup: require('!!raw-loader!./demos/advanced/stepper-advanced.component.html'),
-    module: require('!!raw-loader!./demos/advanced/stepper-advanced.module.ts'),
-    path: 'libs/documentation/src/lib/components/formly-stepper/demos/advanced'
-  }
+  // advanced: {
+  //   title: 'Complex Formly Stepper',
+  //   type: StepperAdvancedDemoComponent,
+  //   code: require('!!raw-loader!./demos/advanced/stepper-advanced.component'),
+  //   markup: require('!!raw-loader!./demos/advanced/stepper-advanced.component.html'),
+  //   module: require('!!raw-loader!./demos/advanced/stepper-advanced.module.ts'),
+  //   path: 'libs/documentation/src/lib/components/formly-stepper/demos/advanced'
+  // }
 };
 
 export const ROUTES = [

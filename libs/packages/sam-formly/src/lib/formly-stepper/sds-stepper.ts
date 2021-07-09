@@ -1,18 +1,115 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, EventEmitter, HostListener, Input, Output, QueryList, SimpleChanges } from "@angular/core";
+
+import { DOCUMENT } from "@angular/common";
+import { 
+  AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, 
+  ContentChildren, Directive, ElementRef, EventEmitter, forwardRef, 
+  HostListener, Inject, Input, Output, QueryList, SimpleChanges, 
+  TemplateRef, ViewChild } from "@angular/core";
 import { AbstractControl } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { NavigationMode } from "@gsa-sam/components";
-import { FormlyFieldConfig } from "@ngx-formly/core";
-import { SdsStepComponent } from "./sds-step.component";
+import { FormlyFieldConfig, FormlyFormOptions } from "@ngx-formly/core";
 import * as _ from 'lodash-es';
 
-let nextId = 0;
 @Component({
-  selector: `sds-stepper`,
-  templateUrl: './sds-stepper.component.html',
+  selector: `[sdsStepHeader]`,
+  template: `<ng-content></ng-content>`
+})
+export class SdsStepHeaderComponent {}
+
+@Component({
+  selector: `[sdsStepFooter]`,
+  template: '<ng-content></ng-content>'
+})
+export class SdsStepFooterComponent {}
+
+let nextId = 0;
+
+@Component({
+  selector: `sds-step`,
+  exportAs: `sdsStep`,
+  templateUrl: `./sds-step.component.html`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SdsStepperComponent {
+export class SdsStepComponent implements AfterViewInit {
+  @ContentChildren(SdsStepComponent) children: QueryList<SdsStepComponent>;
+
+  @ViewChild('mainContent') content: TemplateRef<any>;
+
+  @Input() stepTemplate: TemplateRef<any>;
+
+  /**
+   * Required when stepTemplate is defined - provides ways to check
+   * if the custom template step is valid
+   */
+  @Input() stepValidationFn: (model: any, field?: FormlyFieldConfig) => boolean | void;
+
+  @Input() text: string;
+
+  @Input() id: string = `sds-step-${nextId++}`;
+
+  @Input() selected = false;
+
+  @Input() fieldConfig?: FormlyFieldConfig;
+
+  @Input() options?: FormlyFormOptions; // Each step gets it's own options by default if not provided to determine whether to show error or not
+
+  @Input() model?: any;
+
+  @Input() valid?: boolean | void;
+
+  @Input() hideFn?: (model: any, field?: FormlyFieldConfig) => boolean;
+
+  @Input() hide?: boolean;
+
+  @Input() isReview?: boolean
+
+  @Input() mode: NavigationMode;
+
+  @Input() route?: string;
+
+  @Input() disable?: boolean;
+
+  @Output() modelChange = new EventEmitter<any>();
+
+  constructor(
+    @Inject(forwardRef(() => SdsStepper)) public _stepper: SdsStepper,
+    private _el: ElementRef,
+    @Inject(DOCUMENT) private _document
+  ) {}
+
+
+  ngAfterViewInit() {
+    console.log('step log', this);
+  }
+
+  /**
+   * Dispatch a custom event for parent stepper component to listen for on model change
+   * as well as an output binded event emitter for application level components to listen
+   * for if they wanted to listen at individual step level
+   * @param $event - the updated model
+   */
+  onModelChange($event) {
+    let event: CustomEvent;
+    if (typeof(Event) === 'function') {
+      event = new CustomEvent('stepModelChange', {bubbles: true, detail: $event});
+    } else {
+      // IE11 support
+      event = this._document.createEvent('CustomEvent');
+      event.initCustomEvent('sort', true, true, $event);
+    }
+
+    this._el.nativeElement.dispatchEvent(event);
+
+    this.modelChange.emit($event);
+  }
+}
+
+@Directive({
+  selector: `[sdsStepper]`,
+  exportAs: 'sdsStepper'
+})
+export class SdsStepper {
   @ContentChildren(SdsStepComponent) stepTemplates: QueryList<SdsStepComponent>;
 
   /**
@@ -244,10 +341,6 @@ export class SdsStepperComponent {
     this._stepsDef = this.getFlatSteps(this.stepTemplates);
     this._currentStepIndex = this._stepsDef.findIndex(step => step.id === this._currentStep.id);
 
-    if (!this.customErrorHandling) {
-      this._currentStep.options.showError = (field) => !field.formControl.valid;
-    }
-
     this.updateSidenavValidation(this._currentStep);
     this.checkReviewAndSubmit();
     
@@ -305,6 +398,9 @@ export class SdsStepperComponent {
       const isValid = currentStep.stepValidationFn(currentStep.model ? currentStep.model : this.model);
       currentStep.valid = isValid;
       this.stepValidityMap[currentStep.id] = isValid;
+      if (!this.customErrorHandling) {
+        this._currentStep.options.showError = (field) => !field.formControl.valid;
+      }
       return;
     }
 
@@ -317,6 +413,9 @@ export class SdsStepperComponent {
     const isValid = this.fields[0].formControl.valid;
     currentStep.valid = isValid;
     this.stepValidityMap[currentStep.id] = isValid;
+    if (!this.customErrorHandling) {
+      this._currentStep.options.showError = (field) => !field.formControl.valid;
+    }
   }
 
   private isFormEmpty(form: AbstractControl, defaultValue?: any) {

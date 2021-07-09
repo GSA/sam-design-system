@@ -1,13 +1,14 @@
 import { Component } from "@angular/core";
 import { NavigationMode } from "@gsa-sam/components";
-import { FormlyUtilsService } from "@gsa-sam/sam-formly";
+import { FormlyUtilsService, SdsStepper } from "@gsa-sam/sam-formly";
 import { StepperAdvancedService } from "./stepper-advanced.service";
 
 @Component({
   selector: `stepper-advanced-demo`,
   templateUrl: `./stepper-advanced.component.html`,
   providers: [
-    StepperAdvancedService
+    StepperAdvancedService,
+    SdsStepper
   ]
 })
 export class StepperAdvancedDemoComponent {

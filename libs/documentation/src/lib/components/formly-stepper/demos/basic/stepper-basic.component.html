@@ -1,40 +1,33 @@
-<sds-stepper
-  [model]="model" 
-  [currentStepId]="currentStepId" 
-  [stepValidityMap]="stepValidityMap"
-  (stepChange)="onStepChange($event)"
-  (saveData)="onSaveClicked($event)"
-  (modelChange)="onModelChange($event)"
+<stepper-basic-custom-demo>
+  <sds-step *ngFor="let step of steps"
+  [selected]="step.id === 'step2'" 
+  [id]="step.id" 
+  [fieldConfig]="step.fieldConfig" 
+  [text]="step.text"
+  [mode]="step.mode"
+  [isReview]="step.isReview">
+  <h1 sdsStepHeader *ngIf="!step.children" class="margin-top-0">
+    {{step.text}}
+    <hr>
+  </h1>
+  <sds-step *ngFor="let childStep of step.children" 
+  [text]="childStep.text" 
+  [id]="childStep.id" 
+  [fieldConfig]="childStep.fieldConfig"
+  [stepTemplate]="childStep.id === 'step1Child1' ? gatherInformation : undefined"
+  [stepValidationFn]="childStep.stepValidationFn"
+  [mode]="childStep.mode"
 >
-  <sds-step *ngFor="let step of steps" 
-    [id]="step.id" 
-    [fieldConfig]="step.fieldConfig" 
-    [text]="step.text"
-    [mode]="step.mode"
-    [isReview]="step.isReview"
-  >
-    <h1 sdsStepHeader *ngIf="!step.children">
-      {{step.text}}
+    <h1 sdsStepHeader *ngIf="!childStep.children" class="margin-top-0">
+      {{childStep.text}}
       <hr>
     </h1>
-    <sds-step *ngFor="let childStep of step.children" 
-      [text]="childStep.text" 
-      [id]="childStep.id" 
-      [fieldConfig]="childStep.fieldConfig"
-      [stepTemplate]="childStep.id === 'step1Child1' ? gatherInformation : undefined"
-      [stepValidationFn]="childStep.stepValidationFn"
-      [mode]="childStep.mode"
-    >
-      <h1 sdsStepHeader *ngIf="!childStep.children">
-        {{childStep.text}}
-        <hr>
-      </h1>
-    </sds-step>
   </sds-step>
-</sds-stepper>
+</sds-step>
+</stepper-basic-custom-demo>
 
 <ng-template #gatherInformation>
-  <h1>
+  <h1 class="margin-top-0">
     Gather Your Information
   </h1>
   <div class="sds-card">
@@ -66,4 +59,4 @@
       </ul>
     </div>
   </div>
-</ng-template>
+</ng-template> 

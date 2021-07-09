@@ -28,6 +28,5 @@ export * from './formly/readonly/readonly-container.component';
 export * from './formly-filters/service/sds-filter-model-update.service';
 export * from './formly/readonly/readonly-options.model';
 export * from './formly-stepper/sds-stepper.module';
-export * from './formly-stepper/sds-stepper.component';
-export * from './formly-stepper/sds-step.component';
+export * from './formly-stepper/sds-stepper';
 export * from './formly-stepper/stepper.model';
