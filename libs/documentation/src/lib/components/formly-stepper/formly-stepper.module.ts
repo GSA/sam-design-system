@@ -6,29 +6,26 @@ import { DocumentationSourcePage } from '../shared/source-page/source.component'
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
-import { StepperBasicDemoComponent } from './demos/basic/stepper-basic.component';
-import { StepperBasicModule } from './demos/basic/stepper-basic.module';
 import { StepperAdvancedDemoComponent } from './demos/advanced/stepper-advanced.component';
 import { StepperAdvancedModule } from './demos/advanced/stepper-advanced.module';
 
 declare var require: any;
 const DEMOS = {
-  basic: {
-    title: 'Basic Formly Stepper',
-    type: StepperBasicDemoComponent,
-    code: require('!!raw-loader!./demos/basic/stepper-basic.component'),
-    markup: require('!!raw-loader!./demos/basic/stepper-basic.component.html'),
-    module: require('!!raw-loader!./demos/basic/stepper-basic.module.ts'),
-    path: 'libs/documentation/src/lib/components/formly-stepper/demos/basic'
-  },
-  // advanced: {
-  //   title: 'Complex Formly Stepper',
-  //   type: StepperAdvancedDemoComponent,
-  //   code: require('!!raw-loader!./demos/advanced/stepper-advanced.component'),
-  //   markup: require('!!raw-loader!./demos/advanced/stepper-advanced.component.html'),
-  //   module: require('!!raw-loader!./demos/advanced/stepper-advanced.module.ts'),
-  //   path: 'libs/documentation/src/lib/components/formly-stepper/demos/advanced'
-  // }
+  advanced: {
+    title: 'Complex Formly Stepper',
+    type: StepperAdvancedDemoComponent,
+    code: require('!!raw-loader!./demos/advanced/stepper-advanced.component'),
+    markup: require('!!raw-loader!./demos/advanced/stepper-advanced.component.html'),
+    module: require('!!raw-loader!./demos/advanced/stepper-advanced.module.ts'),
+    path: 'libs/documentation/src/lib/components/formly-stepper/demos/advanced',
+    files: [
+      {name: 'stepper-advanced.service.ts', source: require('!!raw-loader!./demos/advanced/stepper-advanced.service')},
+      {name: 'custom-stepper-component.ts', source: require('!!raw-loader!./demos/advanced/custom-stepper.component')},
+      {name: 'custom-stepper.component.html', source: require('!!raw-loader!./demos/advanced/custom-stepper.component.html')},
+      {name: 'subawardee.component.ts', source: require('!!raw-loader!./demos/advanced/subawardee.component')},
+      {name: 'subawardee.component.html', source: require('!!raw-loader!./demos/advanced/subawardee.component.html')},
+    ]
+  }
 };
 
 export const ROUTES = [
@@ -59,7 +56,6 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    StepperBasicModule,
     StepperAdvancedModule,
   ]
 })

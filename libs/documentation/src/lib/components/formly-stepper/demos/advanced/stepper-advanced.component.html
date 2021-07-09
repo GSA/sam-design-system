@@ -1,4 +1,4 @@
-<sds-stepper [queryParamKey]="'sdsAdvancedStepper'" [model]="model" 
+<custom-stepper-demo [queryParamKey]="'sdsAdvancedStepper'" [model]="model" 
   [stepValidityMap]="stepValidityMap" (stepChange)="onStepChange($event)">
 
   <sds-step id="welcome" text="Welcome" 
@@ -10,7 +10,7 @@
   <sds-step id="entityDetails" text="Entity Details" [mode]="navigationMode.LABEL">
     <sds-step id="registrationPurpose" text="Purpose of Registration" 
     [mode]="navigationMode.INTERNAL" [fieldConfig]="stepMap.registrationPurpose.fieldConfig">
-      <h1 sdsStepHeader>
+      <h1 sdsStepHeader class="margin-top-0">
         Purpose of Registration
         <hr>
       </h1>
@@ -18,7 +18,7 @@
 
     <sds-step id="entityInformation" text="Entity Information" [mode]="navigationMode.INTERNAL"
       [fieldConfig]="stepMap.enitityInformation.fieldConfig">
-      <h1 sdsStepHeader>
+      <h1 sdsStepHeader class="margin-top-0">
         Enter Entity Information
         <hr>
       </h1>
@@ -28,7 +28,7 @@
 
   <sds-step id="taxPayerInfoForm" text="Taxpayer Details" [mode]="navigationMode.INTERNAL" 
     [fieldConfig]="stepMap.taxpayerInformation.fieldConfig">
-    <h1 sdsStepHeader>
+    <h1 sdsStepHeader class="margin-top-0">
       Enter Taxpayer Details
       <hr>
     </h1>
@@ -49,11 +49,11 @@
     [stepValidationFn]="stepMap.review.validationFn">
   </sds-step>
 
-</sds-stepper>
+</custom-stepper-demo>
 
 <!-- Custom Templates -->
 <ng-template #gatherInformation>
-  <h1>
+  <h1 class="margin-top-0">
     Gather Your Information
   </h1>
   <div class="sds-card">
@@ -99,7 +99,7 @@
 </ng-template>
 
 <ng-template #subawardeeStep>
-  <h1>
+  <h1 class="margin-top-0">
     Subawardee Data
     <hr>
   </h1>
@@ -107,7 +107,7 @@
 </ng-template>
 
 <ng-template #reviewTemplate>
-  <h1>
+  <h1 class="margin-top-0">
     Review and Submit
     <hr>
   </h1>

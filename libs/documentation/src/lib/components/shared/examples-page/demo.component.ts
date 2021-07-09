@@ -1,12 +1,13 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'documentation-widget-demo',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './demo.component.html',
   styleUrls: ['./demo.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
-export class DocumentationWidgetDemoComponent {
+export class DocumentationWidgetDemoComponent implements OnInit {
   @Input() demoTitle: string;
   @Input() component: string;
   @Input() id: string;
@@ -24,7 +25,9 @@ export class DocumentationWidgetDemoComponent {
     { name: 'Module', type: 'module' },
   ];
 
-
+  ngOnInit() {
+    console.log(this.files);
+  }
 
   getGithubLink() {
     const baseRepoURL = 'https://github.com/GSA/sam-design-system/tree/master/';

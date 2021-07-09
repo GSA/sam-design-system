@@ -344,6 +344,10 @@ export class SdsStepper {
     this.updateSidenavValidation(this._currentStep);
     this.checkReviewAndSubmit();
     
+    if (!this.customErrorHandling && this.stepValidityMap[this.currentStepId] === false) {
+      this._currentStep.options.showError = (field) => !field.formControl.valid;
+    }
+
     this.saveData.emit({
       model: this.model,
       metadata: {
@@ -398,9 +402,6 @@ export class SdsStepper {
       const isValid = currentStep.stepValidationFn(currentStep.model ? currentStep.model : this.model);
       currentStep.valid = isValid;
       this.stepValidityMap[currentStep.id] = isValid;
-      if (!this.customErrorHandling) {
-        this._currentStep.options.showError = (field) => !field.formControl.valid;
-      }
       return;
     }
 
@@ -413,9 +414,6 @@ export class SdsStepper {
     const isValid = this.fields[0].formControl.valid;
     currentStep.valid = isValid;
     this.stepValidityMap[currentStep.id] = isValid;
-    if (!this.customErrorHandling) {
-      this._currentStep.options.showError = (field) => !field.formControl.valid;
-    }
   }
 
   private isFormEmpty(form: AbstractControl, defaultValue?: any) {

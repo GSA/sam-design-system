@@ -1,23 +1,7 @@
-.tab-slider--nav {
-  width: 100%;
-  float: left;
-  margin-bottom: 20px;
-}
-
-.tab-slider--tabs {
-  float: left;
-  margin: 0;
-  padding: 0;
-  background: #fff;
-}
-
-.tab-slider--trigger {
-  font-weight: bold;
-  padding: 6px 20px;
-  cursor: pointer;
-  display: inline-block;
-}
-
-.active {
-  border-bottom: 2px solid #345F90;
+.sds-tabs--demo {
+  display: flex;
+  .sds-tabs__item {
+    display: inline-block;
+    padding: 0;
+  }
 }
