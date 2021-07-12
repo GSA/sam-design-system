@@ -22,6 +22,5 @@ export abstract class AbstractSdsFormly extends FieldType implements OnInit {
     if ((<any>this).template.control) {
       (<any>this).template.control = (<any>this).formControl;
     }
-    this.cdr.detectChanges();
   }
 }
