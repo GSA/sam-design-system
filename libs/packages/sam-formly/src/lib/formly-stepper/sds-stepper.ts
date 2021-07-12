@@ -1,7 +1,7 @@
 
 import { DOCUMENT } from "@angular/common";
 import { 
-  AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, 
+  ChangeDetectionStrategy, ChangeDetectorRef, Component, 
   ContentChildren, Directive, ElementRef, EventEmitter, forwardRef, 
   HostListener, Inject, Input, Output, QueryList, SimpleChanges, 
   TemplateRef, ViewChild } from "@angular/core";
@@ -31,11 +31,21 @@ let nextId = 0;
   templateUrl: `./sds-step.component.html`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SdsStepComponent implements AfterViewInit {
+export class SdsStepComponent  {
+  /**
+   * References to Any children this step might contain
+   */
   @ContentChildren(SdsStepComponent) children: QueryList<SdsStepComponent>;
 
-  @ViewChild('mainContent') content: TemplateRef<any>;
+  /**
+   * Content of step - either a formly field or custome template
+   */
+  @ViewChild('mainContent', {static: true}) content: TemplateRef<any>;
 
+  /**
+   * Custom template reference for this step. If both custom template and field
+   * config are provided, then only the custom template will be displayed
+   */
   @Input() stepTemplate: TemplateRef<any>;
 
   /**
@@ -44,32 +54,77 @@ export class SdsStepComponent implements AfterViewInit {
    */
   @Input() stepValidationFn: (model: any, field?: FormlyFieldConfig) => boolean | void;
 
+  /**
+   * Human readable label text for this step
+   */
   @Input() text: string;
 
+  /**
+   * Id for step - auto generated if none is provided
+   */
   @Input() id: string = `sds-step-${nextId++}`;
 
+  /**
+   * Whether the step is selected or not
+   */
   @Input() selected = false;
 
+  /**
+   * Formly fields to display for this step
+   */
   @Input() fieldConfig?: FormlyFieldConfig;
 
-  @Input() options?: FormlyFormOptions; // Each step gets it's own options by default if not provided to determine whether to show error or not
+  /**
+   * Each step gets it's own options by default if not provided to determine whether to show error or not
+   */
+  @Input() options?: FormlyFormOptions;
 
+  /**
+   * Reference to data model to store any user input if the input. If not defined,
+   * then user input data will be stored in a stepper level global model
+   */
   @Input() model?: any;
 
+  /**
+   * Defines whether the step has validation issues or not
+   */
   @Input() valid?: boolean | void;
 
+  /**
+   * Function for whether or not the step is hidden from users or not
+   */
   @Input() hideFn?: (model: any, field?: FormlyFieldConfig) => boolean;
 
   @Input() hide?: boolean;
 
+  /**
+   * Defines whether current step is review step. Review steps are generally the last
+   * step and contain culmination of user input throughout the steps in a readable format
+   */
   @Input() isReview?: boolean
 
+  /**
+   * Defines whether the step is navigable or simply a label. Only two options are allowed:
+   * INTERNAL - step is navigable. Users can click on it and expect to see information for the step
+   * LABEL: Step is not navigable and acts a simple label
+   */
   @Input() mode: NavigationMode;
 
+  /**
+   * Route to navigate to when the step is clicked. If none provided, then
+   * navigation will only modify query parameter to clicked step's ID when clicked
+   */
   @Input() route?: string;
 
+  /**
+   * Whether users should be allowed to navigate to this step or not
+   */
   @Input() disable?: boolean;
 
+  /**
+   * Emitted anytime user input changes in the step - only applicable if
+   * step is a formly field config
+   */
   @Output() modelChange = new EventEmitter<any>();
 
   constructor(
@@ -77,11 +132,6 @@ export class SdsStepComponent implements AfterViewInit {
     private _el: ElementRef,
     @Inject(DOCUMENT) private _document
   ) {}
-
-
-  ngAfterViewInit() {
-    console.log('step log', this);
-  }
 
   /**
    * Dispatch a custom event for parent stepper component to listen for on model change
@@ -169,29 +219,37 @@ export class SdsStepper {
    */
   @Output() modelChange = new EventEmitter<any>();
 
-  /**
-   * Output event - emitted whenever the close button is clicked
-   */
-  @Output() close = new EventEmitter();
-
-  /**
-   * Output event - emitted whenever the help button is clicked
-   */
-  @Output() help = new EventEmitter();
-
-  fields: FormlyFieldConfig[];
-
   navigationMode = NavigationMode;
 
-  _currentStep: SdsStepComponent;
-  _currentStepIndex: number;
-  _stepsDef: SdsStepComponent[] = [];
+  /**
+   * Reference to step currently selected and displayed to the user
+   */
+  selectedStep: SdsStepComponent;
 
+  /**
+   * Index of currently selected step in the flatSteps array
+   */
+  selectedStepIndex: number;
+
+  /**
+   * A flattened list of steps - steps with children are placed after their parent
+   * in the list
+   */
+  flatSteps: SdsStepComponent[] = [];
+
+  /**
+   * Switch that toggles on if and only if all steps in the flattned list of steps
+   * are seen as valid in the validity map
+   */
   _isReviewAndSubmitDisabled = true;
 
-  reviewFields: FormlyFieldConfig[] = [];
-  isReviewMode: boolean = false;
-
+  /**
+   * Event emitted by sds-step component whenever a model change
+   * occurs. Emits the modelChange event. This can be useful if
+   * users want to attach a listener for any model change in overall
+   * steps rather than listening for model change in each individual step
+   * @param $event 
+   */
   @HostListener('stepModelChange', ['$event'])
   onModelChange($event: CustomEvent) {
     $event.stopImmediatePropagation();
@@ -205,30 +263,34 @@ export class SdsStepper {
   ) { }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (!this._currentStep) {
+    if (!this.selectedStep) {
       return;
     }
 
-    if (changes.currentStepId && this._currentStep.id != changes.currentStepId.currentValue) {
+    if (changes.currentStepId && this.selectedStep.id != changes.currentStepId.currentValue) {
       this.changeStep(changes.currentStepId.currentValue);
+    }
+
+    if (changes.stepValidityMap && changes.stepValidityMap.currentValue) {
+      this.flatSteps.forEach(step => {
+        step.valid = this.stepValidityMap[step.id];
+      })
     }
   }
 
   ngAfterContentInit() {
 
-    this._stepsDef = this.getFlatSteps(this.stepTemplates);
-    this._stepsDef.forEach(step => {
+    this.flatSteps = this.getFlatSteps(this.stepTemplates);
+    this.flatSteps.forEach(step => {
       step.model = step.model ? step.model : this.model;
     });
 
-
-
-    if (this.activatedRoute.snapshot.queryParams.sdsStepId) {
-      this.currentStepId = this.activatedRoute.snapshot.queryParams.sdsStepId;
+    if (this.activatedRoute.snapshot.queryParams[this.queryParamKey]) {
+      this.currentStepId = this.activatedRoute.snapshot.queryParams[this.queryParamKey];
     } else if (!this.currentStepId) {
-      this.currentStepId = this._stepsDef[0].id;
-      this._currentStepIndex = 0;
-      this._currentStep = this._stepsDef[this._currentStepIndex];
+      this.currentStepId = this.flatSteps[0].id;
+      this.selectedStepIndex = 0;
+      this.selectedStep = this.flatSteps[this.selectedStepIndex];
     }
 
     if (this.stepValidityMap) {
@@ -244,7 +306,7 @@ export class SdsStepper {
       if (queryParam[this.queryParamKey] && queryParam[this.queryParamKey] != this.currentStepId) {
         this.changeStep(queryParam[this.queryParamKey]);
       }
-    })
+    });
   }
  
   getFlatSteps(stepTemplates: QueryList<SdsStepComponent>): SdsStepComponent[] {
@@ -277,48 +339,46 @@ export class SdsStepper {
    *  previous to the provided step
    */
   changeStep(stepId: string, incrementor?: 1 | -1) {
-    this._stepsDef = this.getFlatSteps(this.stepTemplates);
-    let stepIndex = this._stepsDef.findIndex(step => step.id === stepId);
+    this.flatSteps = this.getFlatSteps(this.stepTemplates);
+    let stepIndex = this.flatSteps.findIndex(step => step.id === stepId);
     stepIndex = stepIndex === -1 ? 0 : stepIndex;
 
     if (incrementor) {
       stepIndex = stepIndex + incrementor;
     }
 
-    const step = this._stepsDef[stepIndex];
+    const step = this.flatSteps[stepIndex];
     if (step.isReview && this._isReviewAndSubmitDisabled) {
       return;
     }
 
     // Update current step's validity before moving to next step
-    if (this._currentStep) {
-      this.updateSidenavValidation(this._currentStep);
+    if (this.selectedStep) {
+      this.updateSidenavValidation(this.selectedStep);
       this.checkReviewAndSubmit();
-      this._currentStep.selected = false;
+      this.selectedStep.selected = false;
     }
 
-    this._currentStepIndex = stepIndex;
-    this._currentStep = this._stepsDef[stepIndex];
+    this.selectedStepIndex = stepIndex;
+    this.selectedStep = this.flatSteps[stepIndex];
 
-    this._currentStep.selected = true;
-    this.currentStepId = this._currentStep.id;
+    this.selectedStep.selected = true;
+    this.currentStepId = this.selectedStep.id;
 
-    this.fields = [this._currentStep.fieldConfig];
-
-    if (!this._currentStep.options && !this.customErrorHandling) {
-      this._currentStep.options = {};
+    if (!this.selectedStep.options && !this.customErrorHandling) {
+      this.selectedStep.options = {};
     }
 
-    if (!this._currentStep.options.showError && !this.customErrorHandling) {
-      this._currentStep.options.showError = () => false;
+    if (!this.selectedStep.options.showError && !this.customErrorHandling) {
+      this.selectedStep.options.showError = () => false;
     }
 
-    if (this.stepValidityMap[this._currentStep.id] === false) {
-      this._currentStep.options.showError = (field) => field.formControl.invalid;
+    if (this.stepValidityMap[this.selectedStep.id] === false) {
+      this.selectedStep.options.showError = (field) => field.formControl.invalid;
     }
 
-    if (this._currentStep.mode === NavigationMode.INTERNAL) {
-      this.router.navigate(this._currentStep.route ? [this._currentStep.route] : [], {
+    if (this.selectedStep.mode === NavigationMode.INTERNAL) {
+      this.router.navigate(this.selectedStep.route ? [this.selectedStep.route] : [], {
         queryParams: {
           [this.queryParamKey]: this.currentStepId
         },
@@ -326,32 +386,32 @@ export class SdsStepper {
       });
     }
 
-    this.stepChange.emit(this._currentStep);
+    this.stepChange.emit(this.selectedStep);
   }
 
   onNextStep() {
-    this.changeStep(this._currentStep.id, 1);
+    this.changeStep(this.selectedStep.id, 1);
   }
 
   onPreviousStep() {
-    this.changeStep(this._currentStep.id, -1);
+    this.changeStep(this.selectedStep.id, -1);
   }
 
   onSaveClicked() {
-    this._stepsDef = this.getFlatSteps(this.stepTemplates);
-    this._currentStepIndex = this._stepsDef.findIndex(step => step.id === this._currentStep.id);
+    this.flatSteps = this.getFlatSteps(this.stepTemplates);
+    this.selectedStepIndex = this.flatSteps.findIndex(step => step.id === this.selectedStep.id);
 
-    this.updateSidenavValidation(this._currentStep);
+    this.updateSidenavValidation(this.selectedStep);
     this.checkReviewAndSubmit();
     
     if (!this.customErrorHandling && this.stepValidityMap[this.currentStepId] === false) {
-      this._currentStep.options.showError = (field) => !field.formControl.valid;
+      this.selectedStep.options.showError = (field) => !field.formControl.valid;
     }
 
     this.saveData.emit({
       model: this.model,
       metadata: {
-        stepId: this._currentStep.id,
+        stepId: this.selectedStep.id,
         stepValidityMap: this.stepValidityMap
       }
     });
@@ -365,7 +425,7 @@ export class SdsStepper {
   }
 
   private checkReviewAndSubmit() {
-    this._isReviewAndSubmitDisabled = this._stepsDef.some(step => {
+    this._isReviewAndSubmitDisabled = this.flatSteps.some(step => {
       if (step.isReview) {
         return false;
       }
@@ -411,7 +471,7 @@ export class SdsStepper {
       return;
     }
 
-    const isValid = this.fields[0].formControl.valid;
+    const isValid = currentStep.fieldConfig.formControl.valid;
     currentStep.valid = isValid;
     this.stepValidityMap[currentStep.id] = isValid;
   }

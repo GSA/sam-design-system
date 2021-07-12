@@ -24,11 +24,11 @@ export class SdsStepperNextDirective {
   }
 
   _disabled() {
-    if (!this._stepper._stepsDef) {
+    if (!this._stepper.flatSteps) {
       return true;
     }
 
-    return this._stepper._currentStepIndex >= (this._stepper._stepsDef.length - 1) ? true : undefined;
+    return this._stepper.selectedStepIndex >= (this._stepper.flatSteps.length - 1) ? true : undefined;
   }
 }
 
@@ -36,7 +36,7 @@ export class SdsStepperNextDirective {
 @Directive({
   selector: `[sdsStepperPrevious]`,
   host: {
-    '[attr.disabled]': '_stepper._currentStepIndex === 0 ? true : undefined'
+    '[attr.disabled]': '_stepper.selectedStepIndex === 0 ? true : undefined'
   }
 })
 export class SdsStepperPreviousDirective {

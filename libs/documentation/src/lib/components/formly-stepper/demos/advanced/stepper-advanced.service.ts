@@ -254,4 +254,69 @@ export class StepperAdvancedService {
         }]
     }
   }
+
+  getReportDetails() {
+    return {
+      key: 'reportDetails',
+      templateOptions: {
+        placeholder: "Input Unique Entity ID",
+      },
+      fieldGroup: [
+        {
+          key: "report",
+          fieldGroupClassName: "grid-row grid-gap-4",
+          fieldGroup: [
+            {
+              className: "grid-col-5",
+              key: "month",
+              type: "select",
+              templateOptions: {
+                label: "Report Month",
+                hideOptional: true,
+                options: [
+                  { label: "Jan", value: "01" },
+                  { label: "Feb", value: "02" },
+                  { label: "Mar", value: "03" },
+                  { label: "Apr", value: "04" },
+                ],
+                required: true,
+              },
+            },
+            {
+              className: "grid-col-4",
+              key: "year",
+              type: "select",
+              templateOptions: {
+                label: 'Report Year',
+                hideOptional: true,
+                options: [
+                  { label: "2001", value: "01" },
+                  { label: "2002", value: "02" },
+                  { label: "2003", value: "03" },
+                  { label: "2004", value: "04" },
+                ],
+                required: true,
+                showError: false,
+              },
+            },
+          ],
+        },
+
+        {
+          className: "desktop:grid-col-12 tablet:grid-col-12",
+          type: "input",
+          key: "title",
+
+          templateOptions: {
+            label: "Program or Project Title",
+            required: true,
+            showError: false,
+          },
+          modelOptions: {
+            updateOn: 'blur'
+          }
+        },
+      ]
+    };
+  }
 }

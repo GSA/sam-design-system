@@ -27,6 +27,9 @@ export class StepperAdvancedDemoComponent {
     enitityInformation: {
       fieldConfig: this.stepperAdvancedService.getEntityInformation(),
     },
+    reportDetails: {
+      fieldConfig: this.stepperAdvancedService.getReportDetails(),
+    },
     taxpayerInformation: {
       fieldConfig: this.stepperAdvancedService.getTaxpayerForm(),
     },
@@ -40,6 +43,7 @@ export class StepperAdvancedDemoComponent {
         fieldGroup: [
           this.stepperAdvancedService.getRegistrationPurpose(),
           this.stepperAdvancedService.getEntityInformation(),
+          this.stepperAdvancedService.getReportDetails(),
           this.stepperAdvancedService.getTaxpayerForm(),
         ]
       },
