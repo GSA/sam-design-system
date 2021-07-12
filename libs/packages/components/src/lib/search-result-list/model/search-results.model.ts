@@ -18,4 +18,5 @@ export class Button {
   text: string;
   classes: string;
   action: any;
+  ariaLabel?: string;
 }

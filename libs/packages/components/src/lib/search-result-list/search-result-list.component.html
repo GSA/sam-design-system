@@ -70,7 +70,7 @@
               <h1 class="sds-card__title">{{msg.title}}</h1>
               <p [innerHTML]="msg.message"></p>
               <div class="sds-card__buttons">
-                <button *ngFor="let button of msg.buttons" class="usa-button"
+                <button *ngFor="let button of msg.buttons" class="usa-button" [attr.aria-label]="button.ariaLabel"
                   [ngClass]="button.classes ? button.classes : 'usa-button--outline'" (click)="button.action()">
                   {{button.text}}
                 </button>
