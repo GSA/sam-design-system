@@ -406,7 +406,8 @@ describe('SdsMenu', () => {
     const event = dispatchKeyboardEvent(panel, 'keydown', HOME);
     fixture.detectChanges();
 
-    expect(items[0].focus).toHaveBeenCalled();
+    console.log(document.activeElement);
+    expect(items[0]).toEqual(document.activeElement as any);
     expect(event.defaultPrevented).toBe(true);
     flush();
   }));
