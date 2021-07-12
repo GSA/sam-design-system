@@ -30,7 +30,7 @@ import { SdsStepper } from "./sds-stepper";
 
           <ul class="usa-sidenav usa-sidenav--styled">
             <li *ngFor="let step of stepTemplates; let i = index;" class="usa-sidenav__item" [ngClass]="{
-                'usa-current':  _currentStep?.id === step.id
+                'usa-current':  selectedStep?.id === step.id
               }">
               <ng-container [ngTemplateOutlet]="sidenavItem" [ngTemplateOutletContext]="{$implicit: step}">
               </ng-container>
@@ -42,7 +42,7 @@ import { SdsStepper } from "./sds-stepper";
       </div>
     </div>
     <div class="grid-col-fill">
-      <div [ngTemplateOutlet]="_currentStep ? _currentStep.content : null"></div>
+      <div [ngTemplateOutlet]="selectedStep ? selectedStep.content : null"></div>
 
       <div class="grid-row grid-gap flex-justify-center margin-top-4">
         <div class="margin-right-1">
@@ -82,7 +82,7 @@ import { SdsStepper } from "./sds-stepper";
   <ng-template #subPanelTemplate let-panelItem>
     <div *ngFor="let pItem of getDisplayedSteps(panelItem.children); let i = index;">
       <ul class="usa-sidenav usa-sidenav--styled bg-base-lighter margin-x-0">
-        <li class="usa-sidenav__item  padding-left-3" [ngClass]="{'usa-current':  _currentStep?.id === pItem.id }">
+        <li class="usa-sidenav__item  padding-left-3" [ngClass]="{'usa-current':  selectedStep?.id === pItem.id }">
           <ng-container [ngTemplateOutlet]="sidenavItem" [ngTemplateOutletContext]="{$implicit: pItem}"></ng-container>
         </li>
       </ul>
@@ -96,7 +96,7 @@ import { SdsStepper } from "./sds-stepper";
           {{step.text}}
         </span>
       </span>
-      <a *ngSwitchDefault href="javascript:void(0);" [sdsStepperNav]="step.id">
+      <a *ngSwitchDefault href="javascript:void(0);" [sdsStepperNav]="step">
         <span>
           {{step.text}}
         </span>
@@ -165,7 +165,7 @@ class StepperTestComponent {
   stepValidityMap = {};
 }
 
-fdescribe('SdsStepperComponent', () => {
+describe('SdsStepperComponent', () => {
 
   let component: StepperTestComponent;
   let fixture: ComponentFixture<StepperTestComponent>;
