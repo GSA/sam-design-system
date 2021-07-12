@@ -141,6 +141,11 @@ import {
 } from './components/formly-stepper/formly-stepper.module';
 
 import {
+  ROUTES as FORMLY_FILE_INPUT_ROUTES,
+  FileInputModule
+} from './components/formly-file-input/file-input.module';
+
+import {
   ROUTES as TOASTS_ROUTES,
   ToastsModule,
 } from './components/toasts/toasts.module';
@@ -270,6 +275,7 @@ export const ROUTES: Routes = [
   { path: 'components/formly-select', children: SELECT_ROUTES },
   { path: 'components/formly-stepper', children: FORMLY_STEPPER_ROUTES },
 
+  { path: 'components/formly-file-input', children: FORMLY_FILE_INPUT_ROUTES },
   {
     path: 'components/formly-autocomplete',
     children: FORMLY_AUTOCOMPLETE_ROUTES,
@@ -363,6 +369,7 @@ export const ROUTES: Routes = [
     SlideOutModule,
     DatePipeModule,
     StepperModule,
+    FileInputModule,
     NgxBootstrapIconsModule.pick(Object.assign(_.cloneDeep(allIcons), _.cloneDeep(sdsAllIcons)))
   ],
 })
