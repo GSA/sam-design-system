@@ -1,5 +1,5 @@
 import { Directive, HostListener, Input } from "@angular/core";
-import { SdsStepper } from "./sds-stepper";
+import { SdsStepComponent, SdsStepper } from "./sds-stepper";
 
 /** Button that moves to the next step in a stepper workflow. */
 @Directive({
@@ -28,7 +28,15 @@ export class SdsStepperNextDirective {
       return true;
     }
 
-    return this._stepper.selectedStepIndex >= (this._stepper.flatSteps.length - 1) ? true : undefined;
+    if (this._stepper.selectedStepIndex >= this._stepper.flatSteps.length - 1) {
+      return true;
+    }
+
+    if (this._stepper.flatSteps[this._stepper.selectedStepIndex + 1].isReview && this._stepper._isReviewAndSubmitDisabled) {
+      return true;
+    }
+
+    return;
   }
 }
 
@@ -81,7 +89,7 @@ export class SdsStepperSaveDirective {
 })
 export class SdsStepperNavDirective {
 
-  @Input() sdsStepperNav: string;
+  @Input() sdsStepperNav: SdsStepComponent;
 
   constructor(
     public _stepper: SdsStepper
@@ -94,6 +102,6 @@ export class SdsStepperNavDirective {
   // tslint:disable-next-line:no-host-decorator-in-concrete
   @HostListener('click')
   _handleClick() {
-    this._stepper.changeStep(this.sdsStepperNav);
+    this._stepper.changeStep(this.sdsStepperNav.id);
   }
 }
