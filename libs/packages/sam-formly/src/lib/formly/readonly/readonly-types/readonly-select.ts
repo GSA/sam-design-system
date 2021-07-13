@@ -3,12 +3,19 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: `sds-readonly-select`,
   template: `
-    <label class="usa-label">{{label}}</label>
+    <label class="usa-label">
+      <span
+      *ngIf="to?.tagText"
+      class="usa-tag"
+      [ngClass]="to.tagClass ? to.tagClass : 'sds-tag--info-white'"
+      >{{ to.tagText }}</span>
+      {{label ? label : to.label}}
+    </label>
     <span [innerHTML]="displayValue.label" class="text-bold"></span>
   `
 })
 export class ReadonlySelectComponent implements OnInit {
-  
+  @Input() to: any = {}; // template options
   @Input() label: string;
   @Input() value: any;
   @Input() selectOptions: any[];

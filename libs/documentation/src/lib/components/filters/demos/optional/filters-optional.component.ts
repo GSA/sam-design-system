@@ -35,6 +35,7 @@ export class FiltersOptional implements OnInit {
             label: 'Unique Entity ID',
             tagText: 'DUNS',
             tagClass: 'sds-tag--info-purple',
+            placeholder: 'A123456',
           },
         },
         {
@@ -42,7 +43,7 @@ export class FiltersOptional implements OnInit {
           type: 'input',
           templateOptions: {
             label: 'Entity Name',
-            placeholder: 'Acme Corporation',
+            placeholder: 'eg: Acme Corporation',
             description: 'Enter the name of your entity.',
             required: true,
           },
@@ -59,7 +60,7 @@ export class FiltersOptional implements OnInit {
       templateOptions: {
         label: 'Entity Name',
         group: 'accordion',
-        placeholder: 'Acme Corporation',
+        placeholder: 'eg: Acme Corporation',
         description: 'Enter the name of your entity.',
         required: true,
       },

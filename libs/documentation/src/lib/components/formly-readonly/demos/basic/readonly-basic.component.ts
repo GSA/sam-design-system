@@ -46,6 +46,7 @@ export class ReadonlyBasicComponent implements OnInit {
       defaultValue: 'Jane',
       templateOptions: {
         label: 'Input Type',
+        tagText: 'Tag',
         description: 'Enter text',
         hideOptional: true,
       },
@@ -78,6 +79,8 @@ export class ReadonlyBasicComponent implements OnInit {
       templateOptions: {
         label: 'Textarea Type',
         description: 'Enter text',
+        tagText: 'Purple Tag',
+        tagClass: 'sds-tag--info-purple',
         hideOptional: true,
         rows: 6,
       },
@@ -389,7 +392,7 @@ export class ReadonlyBasicComponent implements OnInit {
     this.autocompleteSingleSelectSettings.secondaryTextField = 'subtext';
     this.autocompleteSingleSelectSettings.labelText = 'Autocomplete Single Select';
     this.autocompleteSingleSelectSettings.selectionMode = SelectionMode.SINGLE;
-    this.autocompleteSingleSelectSettings.autocompletePlaceHolderText = 'Enter text';
+    this.autocompleteSingleSelectSettings.autocompletePlaceHolderText = 'eg: Level 1';
     this.autocompleteSingleSelectSettings.isFreeTextEnabled = true;
 
     this.autocompleteMultiSelectSettings.id = 'autocompletesingle';
@@ -398,7 +401,7 @@ export class ReadonlyBasicComponent implements OnInit {
     this.autocompleteMultiSelectSettings.secondaryTextField = 'subtext';
     this.autocompleteMultiSelectSettings.labelText = 'Autocomplete Single Select';
     this.autocompleteMultiSelectSettings.selectionMode = SelectionMode.MULTIPLE;
-    this.autocompleteMultiSelectSettings.autocompletePlaceHolderText = 'Enter text';
+    this.autocompleteMultiSelectSettings.autocompletePlaceHolderText = 'eg: Level 1';
     this.autocompleteMultiSelectSettings.isFreeTextEnabled = true;
   }
 }

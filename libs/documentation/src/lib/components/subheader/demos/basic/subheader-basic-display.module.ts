@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { SdsSubheaderModule } from '@gsa-sam/layouts';
 import { CommonModule } from '@angular/common';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { SdsSearchModule, SdsDialogModule, SdsIconModule } from '@gsa-sam/components';
 
 import { ReactiveFormsModule } from '@angular/forms';
@@ -11,19 +11,20 @@ import {
   SdsFormlyDialogModule
 } from '@gsa-sam/sam-formly';
 import { SubheaderBasicDisplayComponent } from './subheader-basic-display.component';
+import { NgxBootstrapIconsModule, chevronLeft } from 'ngx-bootstrap-icons';
 
 @NgModule({
   imports: [
     CommonModule,
     SdsSubheaderModule,
-    FontAwesomeModule,
+    SdsIconModule,
     SdsSearchModule,
     SdsFormlyDialogModule,
     SdsDialogModule,
     ReactiveFormsModule,
     SdsFormlyModule,
     FormlyModule,
-    SdsIconModule
+    NgxBootstrapIconsModule.pick({chevronLeft})
   ],
   declarations: [SubheaderBasicDisplayComponent],
   exports: [SubheaderBasicDisplayComponent],

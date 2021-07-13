@@ -42,3 +42,14 @@ nav .usa-link {
 nav ul li a {
   margin-left: 1em;
 }
+
+.theme-switcher{
+  display: flex;
+  align-items: center;
+  height: 100%;
+  float: right;
+  .usa-button{
+    padding-left: 4px;
+  }
+
+}

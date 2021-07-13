@@ -32,4 +32,8 @@ export class SystemAlertsMultipleComponent {
   onShowDetailsClicked(alert: Alert) {
     console.log('Show details for alert', alert);
   }
+
+  onAlertDismiss(alert: Alert) {
+    console.log('Alert dismissed: ', alert);
+  }
 }

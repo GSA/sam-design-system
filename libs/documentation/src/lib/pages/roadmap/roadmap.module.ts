@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {SdsIconModule } from '@gsa-sam/components';
 import { RoadmapComponent } from './roadmap.component';
 
 @NgModule({
-  imports: [FontAwesomeModule, CommonModule],
+  imports: [SdsIconModule, CommonModule],
   exports: [RoadmapComponent],
   declarations: [RoadmapComponent],
   providers: [],

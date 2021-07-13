@@ -11,6 +11,7 @@ import {
 import { SdsDialogRef, SdsDialogService } from '@gsa-sam/components';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs';
+import { SdsDialogConfig } from '@gsa-sam/components';
 
 @Component({
   selector: 'sds-side-toolbar',
@@ -22,6 +23,8 @@ export class SideToolbarComponent implements OnInit, OnDestroy {
 
   // Text for button in responsive view
   @Input() responsiveButtonText: string;
+
+  @Input() responsiveDialogOptions: SdsDialogConfig
 
   // default value is size of mobile view in px
   @Input() responsiveSize = 480;
@@ -48,17 +51,25 @@ export class SideToolbarComponent implements OnInit, OnDestroy {
   }
 
   onResponsiveViewButtonClicked() {
-    this.openResponsiveDialog = this.sdsDialogService.open(this.template, {
+    let dialogOptions = {
       height: '100vh',
       width: '100vw',
       maxWidth: '100vw',
       maxHeight: '100vh',
       hasBackdrop: false,
       displayCloseBtn: false,
-      panelClass: ['sds-dialog--full'],
-    });
+      panelClass: ['sds-dialog--full']
+    };
+
+    let allOptions = this.responsiveDialogOptions ? {...dialogOptions, ...this.responsiveDialogOptions} : dialogOptions;
+
+    this.openResponsiveDialog = this.sdsDialogService.open(this.template, allOptions);
 
     this.responsiveDialog.emit(this.openResponsiveDialog);
+
+    this.openResponsiveDialog.afterClosed().subscribe(() => {
+      this.openResponsiveDialog = undefined;
+    })
   }
 
   private observeViewChange() {

@@ -4,13 +4,10 @@ import { OverviewModule } from './pages/overview/overview.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { sds } from '@gsa-sam/sam-styles/src/icons/';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import {
-  FontAwesomeModule,
-  FaIconLibrary,
-} from '@fortawesome/angular-fontawesome';
+import {allIcons as sdsAllIcons} from '@gsa-sam/components'
+import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
+import * as _ from 'lodash-es'
+
 /* Layout / Components */
 import {
   ROUTES as HEADER_ROUTES,
@@ -81,6 +78,16 @@ import {
   ROUTES as SELECTION_PANEL_ROUTES,
   SelectionPanelModule,
 } from './components/selection-panel/selection-panel.module';
+import {
+  ROUTES as SLIDE_OUT_ROUTES,
+  SlideOutModule,
+} from './components/slide-out/slide-out.module';
+
+import {
+  ROUTES as TABS_ROUTES,
+  TabsModule,
+}
+from './components/tabs/tabs.module';
 
 /* Form Types */
 import {
@@ -127,6 +134,11 @@ import {
   ROUTES as SEARCH_FORMLY_ROUTES,
   FormlySearchModule,
 } from './components/formly-search/search.module';
+
+import {
+  ROUTES as FORMLY_FILE_INPUT_ROUTES,
+  FileInputModule
+} from './components/formly-file-input/file-input.module';
 
 import {
   ROUTES as TOASTS_ROUTES,
@@ -195,6 +207,11 @@ import {
   ExternalLinkModule,
 } from './components/external-link/external-link.module';
 
+import {
+  ROUTES as DATE_PIPE_ROUTES,
+  DatePipeModule,
+} from './components/date-pipe/date-pipe.module';
+
 import { DocumentationSharedModule } from './shared';
 import { OverviewComponent } from './pages/overview/overview.component';
 import { ResultsLayoutModule } from './pages/layout/layout.module';
@@ -240,6 +257,10 @@ export const ROUTES: Routes = [
   { path: 'components/system-alerts', children: SYSTEM_ALERT_ROUTES },
   { path: 'components/external-link', children: EXTERNA_LINK_ROUTES },
   { path: 'components/toasts', children: TOASTS_ROUTES },
+  { path: 'components/tabs', children: TABS_ROUTES },
+  { path: 'components/date-pipe', children: DATE_PIPE_ROUTES },
+
+  { path: 'components/slide-out', children: SLIDE_OUT_ROUTES },
   // Formly
   { path: 'components/formly-input', children: INPUT_ROUTES },
   { path: 'components/formly-textarea', children: TEXT_AREA_ROUTES },
@@ -247,6 +268,7 @@ export const ROUTES: Routes = [
   { path: 'components/formly-multicheckbox', children: MULTI_CHECKBOX_ROUTES },
   { path: 'components/formly-radio', children: RADIO_ROUTES },
   { path: 'components/formly-select', children: SELECT_ROUTES },
+  { path: 'components/formly-file-input', children: FORMLY_FILE_INPUT_ROUTES },
   {
     path: 'components/formly-autocomplete',
     children: FORMLY_AUTOCOMPLETE_ROUTES,
@@ -326,6 +348,7 @@ export const ROUTES: Routes = [
     ValidationWrapperModule,
     TemplateOptionsModule,
     TableModule,
+    TabsModule,
     IconsModule,
     FormlyFormsModule,
     FormlyConditionalModule,
@@ -335,12 +358,13 @@ export const ROUTES: Routes = [
     ExternalLinkModule,
     ToastsModule,
     ReadonlyModule,
-    RoadmapModule
+    RoadmapModule,
+    SlideOutModule,
+    DatePipeModule,
+    FileInputModule,
+    NgxBootstrapIconsModule.pick(Object.assign(_.cloneDeep(allIcons), _.cloneDeep(sdsAllIcons)))
   ],
 })
 export class DocumentationModule {
-  constructor(library: FaIconLibrary) {
-    library.addIconPacks(fas, sds);
-    // library.add(fas, sds);
-  }
+
 }

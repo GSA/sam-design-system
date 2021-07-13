@@ -1,34 +1,47 @@
-<form class="usa-form usa-search" [ngClass]="getClass()" role="search">
-    <label *ngIf="hasDropdown()" class="usa-sr-only" [attr.for]="searchSettings.dropdown.id">Dropdown label</label>
-    <select *ngIf="hasDropdown()" [value]="model.searchCategory? model.searchCategory :''" #selectEl name="search options" aria-label="Search Options" class="usa-select" [attr.id]="searchSettings.dropdown.id" (change)="writeValueToModel()">
-     <ng-container *ngFor="let item of searchSettings.dropdown.options">
+<form class="usa-form usa-search grid-row" [ngClass]="getClass()" role="search">
+  <label *ngIf="hasDropdown()" class="usa-sr-only" [attr.for]="searchSettings.dropdown.id">Dropdown label</label>
+  <select *ngIf="hasDropdown()" [value]="model.searchCategory? model.searchCategory :''" #selectEl name="search options"
+    aria-label="Search Options" class="usa-select grid-col-12 tablet:grid-col-auto" [attr.id]="searchSettings.dropdown.id"
+    (change)="writeValueToModel()">
+    <ng-container *ngFor="let item of searchSettings.dropdown.options">
       <optgroup *ngIf="item.group" label="{{item.label}}">
         <option *ngFor="let child of item.group" [value]="child.value" [selected]="model.searchCategory == child.value"
           [disabled]="child.disabled">
           {{ child.label }}
         </option>
       </optgroup>
-      <option *ngIf="!item.group" [value]="item.value" [selected]="model.searchCategory == item.value" [disabled]="item.disabled">{{
+      <option *ngIf="!item.group" [value]="item.value" [selected]="model.searchCategory == item.value"
+        [disabled]="item.disabled">{{
         item.label }}</option>
     </ng-container>
   </select>
-    <ng-container *ngIf="(searchSettings.dropdown && searchSettings.dropdown.inverse); then inverseTemplate else inputTemplate">
-    </ng-container>
+  <ng-container [ngTemplateOutlet]="inputTemplate"></ng-container>
 </form>
 
 <ng-template #inputTemplate>
+
+  <div class="position-relative grid-col-12" [ngClass]="{
+  'suffix-icon': searchSettings.isSuffixSearchIcon, 'tablet:grid-col': hasDropdown()}">
     <label class="usa-sr-only" [attr.for]="searchSettings.id">Search</label>
-    <input #inputEl [value]="model.searchText? model.searchText :''" 
-        [ngClass]="searchSettings?.inputClass" [attr.id]="searchSettings.id" type="search" class="usa-input" name="search" 
-        [placeholder]="searchSettings.placeholder? searchSettings.placeholder : 'type here'"
-        [attr.aria-label]="searchSettings.ariaLabel"
-        (blur)="focusChange()" (input)="writeValueToModel()" />
-    <button #buttonEl class="usa-button" type="submit" (click)="handleClick($event)">
-    <span class="usa-sr-only">Search</span>
-  </button>
-</ng-template>
-<ng-template #inverseTemplate>
-    <div class="sds-inverse__search">
-        <ng-container [ngTemplateOutlet]="inputTemplate"></ng-container>
-    </div>
+    <input #inputEl [value]="model.searchText? model.searchText :''" [ngClass]="[searchSettings?.inputClass ? searchSettings?.inputClass : '', !hasDropdown() ? 'no-drop' : '']"
+      [attr.id]="searchSettings.id" type="search" class="usa-input" name="search"
+      [placeholder]="searchSettings.placeholder? searchSettings.placeholder : 'type here'"
+      [attr.aria-label]="searchSettings.ariaLabel" (blur)="focusChange()" (input)="writeValueToModel()"/>
+
+    <span *ngIf="searchSettings.isSuffixSearchIcon" class="cursor-pointer display-flex flex-align-center">
+      <span *ngIf="model.searchText" class="postfix close-icon" role="button" aria-label="Clear input"
+        (click)="clearInput($event)" (keyup.enter)="clearInput($event)" tabindex="0">
+        <sds-icon [icon]="'x'" [size]="searchSettings.size === 'large'?'2x':'1x'"></sds-icon>
+      </span>
+      <span class="postfix search-icon" role="button" aria-label="search input" (click)="handleClick($event)"
+        (keyup.enter)="handleClick($event)" tabindex="0">
+        <sds-icon [icon]="'search'" [size]="searchSettings.size === 'large'?'1x':'xs'">
+        </sds-icon>
+      </span>
+    </span>
+    <button *ngIf="!searchSettings.isSuffixSearchIcon" #buttonEl class="usa-button" type="submit"
+      [attr.aria-label]="searchSettings.ariaLabel ? searchSettings.ariaLabel : 'Search'" (click)="handleClick($event)">
+    </button>
+  </div>
+
 </ng-template>

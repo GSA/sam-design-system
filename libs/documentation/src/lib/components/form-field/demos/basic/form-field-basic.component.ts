@@ -19,7 +19,7 @@ export class FormFieldBasic {
       type: 'input',
       templateOptions: {
         label: 'Input',
-        placeholder: 'Placeholder',
+        placeholder: 'eg: Acme Corporation',
         description: 'Description',
         required: true,
       },

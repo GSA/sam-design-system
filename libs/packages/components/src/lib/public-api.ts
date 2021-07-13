@@ -41,6 +41,7 @@ export * from './tab-outside/taboutside.directive';
 export * from './click-outside/click-outside.module';
 export * from './click-outside/click-outside.directive';
 export * from './dialog/dialog';
+export * from './dialog/dialog-config';
 export * from './dialog/dialog-ref';
 export * from './dialog/dialog.module';
 export * from './dialog/dialog-container.component';
@@ -74,3 +75,10 @@ export * from './selection-panel/selection-panel-wrapper/selection-panel.compone
 export * from './selection-panel/sub-panel/sub-panel.component';
 export * from './selection-panel/selection-panel.module';
 export * from './selection-panel/model/selection-panel.model';
+export * from './tabs/tabs.module';
+export * from './tabs/tabs.component';
+export * from './tabs/tab-panel.component';
+export * from './icon/custom-icons'
+
+export * from './date/sds-date.module'
+export * from './date/sds-date.pipe'

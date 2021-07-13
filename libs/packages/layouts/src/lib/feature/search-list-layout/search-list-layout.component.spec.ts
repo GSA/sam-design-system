@@ -9,6 +9,7 @@ import { SearchListLayoutComponent } from './search-list-layout.component';
 import {
   PaginationModule,
   SdsSearchResultListModule,
+  allIcons as sdsAllIcons
 } from '@gsa-sam/components';
 import { FormsModule } from '@angular/forms';
 import {
@@ -20,6 +21,7 @@ import { of, Observable } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SDSFormlyUpdateModelService } from '@gsa-sam/sam-formly';
 import { SimpleChange } from '@angular/core';
+import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 describe('SearchListLayoutComponent', () => {
   let component: SearchListLayoutComponent;
   let fixture: ComponentFixture<SearchListLayoutComponent>;
@@ -32,6 +34,7 @@ describe('SearchListLayoutComponent', () => {
         SdsSearchResultListModule,
         FormsModule,
         RouterTestingModule.withRoutes([]),
+        NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))
       ],
       providers: [SDSFormlyUpdateModelService],
     }).compileComponents();
@@ -67,6 +70,8 @@ describe('SearchListLayoutComponent', () => {
       totalPages: 0,
       default: true,
     };
+    fixture.detectChanges();
+
     component.updateFilter(filterData);
     fixture.detectChanges();
     tick(100);

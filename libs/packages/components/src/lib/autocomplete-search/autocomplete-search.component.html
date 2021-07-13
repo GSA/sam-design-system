@@ -4,7 +4,7 @@
       <input role="combobox" [attr.aria-expanded]="showResults"
         [attr.aria-owns]="showResults ? configuration.id + '-listbox' : undefined" aria-haspopup="listbox"
         [disabled]="disabled" (keypress)="onkeypress($event)" (input)="textChange($event)"
-        class="usa-input padding-right-3" [ngClass]="getClass()" #input 
+        class="usa-input padding-right-3" [ngClass]="getClass()" #input
         [attr.aria-label]="configuration.ariaLabelText ? configuration.ariaLabelText : configuration.labelText"
         [attr.id]="configuration.id" type="text" (focus)="inputFocusHandler()" (keydown)="onKeydown($event)"
         aria-autocomplete="list" [(ngModel)]="inputValue" [attr.placeholder]="configuration.autocompletePlaceHolderText"
@@ -148,17 +148,18 @@
     </ul>
 
     <ng-container *ngIf="!input.disabled">
-      <span class="position-absolute right-105 top-1 cursor-pointer">
+      <span class="position-absolute right-105 top-1 cursor-pointer bg-white">
         <span *ngIf="inputValue && !disabled" role="button" aria-label="Clear input" (click)="clearInput()"
           (keyup.enter)="clearInput()" tabindex="0">
-          <fa-icon [icon]="['fas', 'times']" size="xs"></fa-icon>
+          <sds-icon [icon]="'x'" size="lg"></sds-icon>
         </span>
         <span *ngIf="!configuration.isTagModeEnabled" class="margin-left-1">
-          <fa-icon role="button" aria-label="Display Options" tabindex="0" *ngIf="!showResults && !disabled"
-            (click)="openOptions()" (keyup.enter)="openOptions()" [icon]="['fas', 'caret-down']" size="sm"></fa-icon>
-          <fa-icon role="button" aria-label="Hide Options" tabindex="0" *ngIf="showResults && !disabled"
-            (click)="checkForFocus($event)" (keyup.enter)="checkForFocus($event)" [icon]="['fas', 'caret-up']"
-            size="sm"></fa-icon>
+          <sds-icon role="button" aria-label="Display Options" tabindex="0" *ngIf="!showResults && !disabled"
+            (click)="openOptions()" (keyup.enter)="openOptions()" [icon]="'caret-down-fill'" size="1x">
+          </sds-icon>
+          <sds-icon role="button" aria-label="Hide Options" tabindex="0" *ngIf="showResults && !disabled"
+            (click)="checkForFocus($event)" (keyup.enter)="checkForFocus($event)" [icon]="'caret-up-fill'" size="1x">
+          </sds-icon>
         </span>
       </span>
     </ng-container>

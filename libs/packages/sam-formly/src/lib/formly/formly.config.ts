@@ -1,4 +1,4 @@
-import { ConfigOption, FormlyFieldConfig } from '@ngx-formly/core';
+import { ConfigOption, Field, FormlyFieldConfig } from '@ngx-formly/core';
 import { FormlyWrapperFormFieldComponent } from './wrappers/form-field.wrapper';
 import { FormlyAccordianFormFieldComponent } from './wrappers/form-field.accordian';
 import { FormlyFormFieldFilterWrapperComponent } from './wrappers/form-field.filterwrapper';
@@ -34,7 +34,8 @@ export const FIELD_TYPE_COMPONENTS = [
   FormlyFieldTextComponent,
   FormlyGroupWrapperComponent,
   FormlyFieldSearchComponent,
-  FormlyReadonlyWrapperComponent
+  FormlyReadonlyWrapperComponent,
+  FormlyFieldFileInputComponent,
 ];
 import {
   dateRangeValidator,
@@ -51,6 +52,7 @@ import { FormlyFieldFileInfoComponent } from './types/fileinfo';
 import { FormlyFieldDateRangePickerComponent } from './types/daterangepicker';
 import { SdsFormlyTypes } from './models/formly-types';
 import { FormlyReadonlyWrapperComponent } from './wrappers/readonly.wrapper';
+import { FormlyFieldFileInputComponent } from './types/file-input';
 
 export const FORMLY_WRAPPERS: any = [
   {
@@ -178,22 +180,34 @@ export const FORMLY_CONFIG: ConfigOption = {
             type: SdsFormlyTypes.DATEPICKER,
             key: 'fromDate',
             templateOptions: {
-              label: 'From'
+              label: 'From',
+              placeholder: 'eg: ' + new Date().toLocaleString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric'
+              }),
             },
             expressionProperties: {
               'templateOptions.minDate': minDateFromDateRangePicker,
-              'templateOptions.maxDate': maxDateFromDateRangePicker
+              'templateOptions.maxDate': maxDateFromDateRangePicker,
+              'templateOptions.hideOptional': getParentHideOptional,
             }
           },
           {
             type: SdsFormlyTypes.DATEPICKER,
             key: 'toDate',
             templateOptions: {
-              label: 'To'
+              label: 'To',
+              placeholder: 'eg: ' + new Date().toLocaleString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric'
+              })
             },
             expressionProperties: {
               'templateOptions.minDate': minDateToDateRangePicker,
-              'templateOptions.maxDate': maxDateToDateRangePicker
+              'templateOptions.maxDate': maxDateToDateRangePicker,
+              'templateOptions.hideOptional': getParentHideOptional,     
             }
           }
         ]
@@ -211,13 +225,21 @@ export const FORMLY_CONFIG: ConfigOption = {
           {
             key: 'fromDate',
             templateOptions: {
-              placeholder: 'Start Date'
+              placeholder: 'eg: ' + new Date().toLocaleString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric'
+              })
             }
           },
           {
             key: 'toDate',
             templateOptions: {
-              placeholder: 'End Date'
+              placeholder: new Date().toLocaleString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric'
+              })
             }
           }
         ]
@@ -227,6 +249,11 @@ export const FORMLY_CONFIG: ConfigOption = {
       name: SdsFormlyTypes.SEARCH,
       component: FormlyFieldSearchComponent,
       wrappers: sdsWrappers
+    },
+    {
+      name: SdsFormlyTypes.FILEINPUT,
+      component: FormlyFieldFileInputComponent,
+      wrappers: sdsWrappers,
     }
   ],
   wrappers: [
@@ -303,4 +330,16 @@ export function maxDateFromDateRangePicker(
     }
   }
   return date;
+}
+
+export function getParentHideOptional(
+  model: any,
+  formState: any,
+  field: FormlyFieldConfig
+) {
+
+  if (field.parent && field.parent.templateOptions) {
+    return field.parent.templateOptions.hideOptional;
+  }
+  return false;
 }

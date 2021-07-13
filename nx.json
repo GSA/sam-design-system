@@ -35,9 +35,6 @@
     "layouts": {
       "tags": ["scope:shared", "type:ui", "platform:web"]
     },
-    "experimental": {
-      "tags": ["scope:shared", "platform:web", "type:ui"]
-    },
     "documentation": {
       "tags": []
     }

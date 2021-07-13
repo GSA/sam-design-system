@@ -1,0 +1,1 @@
+export const mobile = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi sds-mobile\" viewBox=\"0 0 512 512\">\n  <path d=\"M376,48H136a24,24,0,0,0-24,24V440a24,24,0,0,0,24,24H376a24,24,0,0,0,24-24V72A24,24,0,0,0,376,48Zm-8,384H144V368H368Zm0-96H144V80H368ZM240,400a16,16,0,1,1,16,16A16,16,0,0,1,240,400Z\"/>\n</svg>";

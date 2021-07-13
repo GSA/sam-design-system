@@ -8,6 +8,8 @@ import { DocumentationTemplatePage } from '../shared/template-page/template.comp
 import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { RadioBasicModule } from './demos/basic/radio-basic.module';
+import { RadioAdvancedComponent } from './demos/advanced/radio-advanced.component';
+import { RadioAdvancedModule } from './demos/advanced/radio-advanced.module';
 
 declare var require: any;
 const DEMOS = {
@@ -17,6 +19,13 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/basic/radio-basic.component'),
     markup: require('!!raw-loader!./demos/basic/radio-basic.component.html'),
     path: 'libs/documentation/src/lib/components/formly-radio/demos/basic'
+  },
+  advanced: {
+    title: 'Advanced Form Radio',
+    type: RadioAdvancedComponent,
+    code: require('!!raw-loader!./demos/advanced/radio-advanced.component'),
+    markup: require('!!raw-loader!./demos/advanced/radio-advanced.component.html'),
+    path: 'libs/documentation/src/lib/components/formly-radio/demos/advanced'
   }
 };
 
@@ -48,7 +57,8 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    RadioBasicModule
+    RadioBasicModule,
+    RadioAdvancedModule,
   ]
 })
 export class RadioModule {

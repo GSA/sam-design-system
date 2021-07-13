@@ -1,4 +1,5 @@
-$rotation-values: 90 180 270;
+$rotation-values: 30 45 60 90 120 135 150 180 210 225 240 270 300 315 330;
+$skew-values: -45, -40, -35, -30, -25, -20, -15, -10, -5, 0, 5, 10, 15, 20, 25, 30, 35, 40, 45;
 
 @each $item in $rotation-values {
   i-bs.rotate-#{$item} ::ng-deep{
@@ -8,10 +9,21 @@ $rotation-values: 90 180 270;
   }
 }
 
+@each $skewX in $skew-values {
+  @each $skewY in $skew-values {
+    i-bs.skew-#{$skewX}-#{$skewY} ::ng-deep{
+      svg{
+        transform: skew($skewX * 1deg, $skewY * 1deg);
+      }
+    }
+  }
+}
+
 i-bs ::ng-deep{
   svg {
     width: 1em;
     height: 1em;
+    overflow: visible;
   }
 }
 
@@ -50,4 +62,8 @@ i-bs.size-9x{
 }
 i-bs.size-10x{
   font-size: 10em;
+}
+
+i-bs{
+  vertical-align: -0.15rem;
 }

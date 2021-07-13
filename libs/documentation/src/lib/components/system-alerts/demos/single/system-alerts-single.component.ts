@@ -23,4 +23,8 @@ export class SystemAlertsSingleComponent {
     console.log('Show details for alert', alert);
   }
 
+  onAlertDismiss(alert: Alert) {
+    console.log('Alert dismissed: ', alert);
+  }
+
 }

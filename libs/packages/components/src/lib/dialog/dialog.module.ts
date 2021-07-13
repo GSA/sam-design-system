@@ -2,29 +2,33 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { NgxBootstrapIconsModule, x, infoCircle, exclamationTriangle } from 'ngx-bootstrap-icons';
+import { SdsIconModule } from '../icon/icon.module';
+import { alertError } from '../icon/custom-icons';
 import {
   SDS_DIALOG_SCROLL_STRATEGY_PROVIDER,
-  SdsDialogService
+  SDS_SLIDE_OUT_SCROLL_STRATEGY_PROVIDER,
+  SdsDialogService,
 } from './dialog';
 import { SdsDialogContainerComponent } from './dialog-container.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import {
   SdsDialogActionsDirective,
   SdsDialogCloseDirective,
   SdsDialogContentDirective,
   SdsDialogTitleDirective,
-  SdsDialogSubtitleDirective
+  SdsDialogSubtitleDirective,
 } from './dialog-content.directives';
 
 @NgModule({
-  imports: [CommonModule, OverlayModule, PortalModule, FontAwesomeModule],
+  imports: [CommonModule, OverlayModule, PortalModule, SdsIconModule, NgxBootstrapIconsModule.pick({x, alertError, infoCircle, exclamationTriangle})],
   exports: [
     SdsDialogContainerComponent,
     SdsDialogCloseDirective,
     SdsDialogTitleDirective,
     SdsDialogSubtitleDirective,
     SdsDialogContentDirective,
-    SdsDialogActionsDirective
+    SdsDialogActionsDirective,
   ],
   declarations: [
     SdsDialogContainerComponent,
@@ -32,9 +36,13 @@ import {
     SdsDialogTitleDirective,
     SdsDialogSubtitleDirective,
     SdsDialogActionsDirective,
-    SdsDialogContentDirective
+    SdsDialogContentDirective,
   ],
-  providers: [SdsDialogService, SDS_DIALOG_SCROLL_STRATEGY_PROVIDER],
-  entryComponents: [SdsDialogContainerComponent]
+  providers: [
+    SdsDialogService,
+    SDS_DIALOG_SCROLL_STRATEGY_PROVIDER,
+    SDS_SLIDE_OUT_SCROLL_STRATEGY_PROVIDER,
+  ],
+  entryComponents: [SdsDialogContainerComponent],
 })
 export class SdsDialogModule {}

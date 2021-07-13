@@ -52,7 +52,7 @@ export class FormlyAutocompleteFreetext {
     this.settings.secondaryTextField = 'subtext';
     this.settings.labelText = 'Autocomplete Free Text';
     this.settings.selectionMode = SelectionMode.MULTIPLE;
-    this.settings.autocompletePlaceHolderText = 'Enter text';
+    this.settings.autocompletePlaceHolderText = 'eg: Level 1';
     this.settings.isFreeTextEnabled = true;
   }
 }

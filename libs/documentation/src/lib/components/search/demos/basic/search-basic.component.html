@@ -1,7 +1,6 @@
 <div>
   <p>
-    Search has been updated to keep the model up to date with each character entered
-  by a user.
+    Search has been updated to keep the model up to date with each character entered by a user.
   </p>
   <p>
     An output <code>(submit)</code> has been added to search which emits when the
@@ -11,6 +10,7 @@
   <div class="settings-documentation">
     Search Settings:
     <p><code>placeholder</code> - text to serve as a placeholder in search input</p>
+    <p><code>isSuffixSearchIcon</code> - boolean value is used for suffix the search icon</p>
     <p><code>size</code> - size of the search, defaults to small</p>
     <p><code>inputClass</code> - string of classes to be applied to search input</p>
     <p><code>parentSelector</code> - css selector of the element containing search component</p>
@@ -23,19 +23,19 @@
   </div>
   <h4>SDS Search</h4>
 
-  <sds-search
-    [(ngModel)]="model"
-    [searchSettings]="searchSettings"
-    (submit)="onSubmit($event)"
-  ></sds-search>
+  <sds-search [(ngModel)]="model" [searchSettings]="searchSettings" (submit)="onSubmit($event)"></sds-search>
   Model: {{ model | json }}
 
   <h4>SDS Search Big</h4>
   <p><code> size: 'large'</code> is used for selecting big search mode.</p>
-  <sds-search
-    [(ngModel)]="bigmodel"
-    (ngModelChange)="onsearchModelChanges()"
-    [searchSettings]="bigSearchSettings"
-  ></sds-search>
+  <sds-search [(ngModel)]="bigmodel" (ngModelChange)="onsearchModelChanges()" [searchSettings]="bigSearchSettings">
+  </sds-search>
   Big Model: {{ bigmodel | json }}
+
+  <h4>SDS Search with suffix icon</h4>
+  <p><code>isSuffixSearchIcon: true</code> is used for suffix the search icon.</p>
+  <sds-search [(ngModel)]="suffixmodel" (ngModelChange)="onsearchModelChanges()"
+    [searchSettings]="suffixSearchIconSettings"></sds-search>
+  Model: {{ suffixmodel | json }}
+
 </div>

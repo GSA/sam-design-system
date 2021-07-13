@@ -1,0 +1,28 @@
+<p>
+  Defined below are template options that are unique to file input formly type
+</p>
+<ul>
+  <li>
+    <code>multiple: boolean</code> - defines wheher or not the input accepts multiple files vs single file
+  </li>
+  <li>
+    <code>acceptFileType: string</code> - comma separate string that defines which file types are allowed. 
+      If not indicated, all files will be accepted
+  </li>
+  <li>
+    <code>disabled: boolean</code> - A disabled input field will not accept any files
+  </li>
+  <li>
+    <code>clearFilesOnAdd: boolean</code> - This is applicable for multiple file input. Defines whether
+      new file additions should clear pre-added files or simply append to existing uploaded files.
+      By default, when new files are added, the list is cleared of pre-existing files and replaced with
+      the new files. Switch this field to false if the new files should append instead to list of
+      pre-existing files
+  </li>
+  <li>
+    <code>displayFileInfo: boolean</code> - defines wheher or not to display added files in the file dropzone
+      By default, the files will be displayed. Switch this to false if you'd like the dropzone to
+      always stay empty. This can be useful if the application is creating a separate UI for displaying
+      added files, such as a table
+  </li>
+</ul>

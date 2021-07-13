@@ -9,17 +9,16 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
-import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { sds } from '@gsa-sam/sam-styles/src/icons/';
+
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import * as qs from 'qs';
 import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
 import { SDSFormlyUpdateModelService } from './service/sds-filter-model-update.service';
-import { Subject } from 'rxjs/internal/Subject';
+
 import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'sds-filters',
@@ -74,6 +73,14 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
   @Input() public getCleanModel: boolean = false;
 
   /**
+   * Default values to reset form to when reset is done
+   * If not passed in, then default values will be values
+   * assigned to the model input during component init
+   * or defaultValue provided in formly config
+   */
+  @Input() defaultModel: any;
+
+  /**
    *  Emit results when model updated
    */
   // TODO: check type -- Formly models are typically objects
@@ -84,7 +91,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
   _isEmpty = (obj: any): boolean => Object.keys(obj).length === 0;
   overwrite = (baseObj: any, newObj: any) => {
     const result = {};
-    const mergedObj = {...baseObj, ...newObj};
+    const mergedObj = { ...baseObj, ...newObj };
     for (const key in mergedObj) {
       if (Array.isArray(baseObj[key])) {
         result[key] = newObj[key] || null;
@@ -106,11 +113,8 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     private router: Router,
     private route: ActivatedRoute,
     @Optional()
-    private filterUpdateModelService: SDSFormlyUpdateModelService,
-    library: FaIconLibrary
-  ) {
-    library.addIconPacks(fas, sds);
-  }
+    private filterUpdateModelService: SDSFormlyUpdateModelService
+  ) { }
   ngOnDestroy() {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
@@ -126,7 +130,12 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
               this.form.getRawValue(),
               filter
             );
-            this.model = updatedFormValue;
+
+            // Shallow copy to not trigger onChanges from formly side
+            Object.keys(updatedFormValue).forEach((key) => {
+              this.model[key] = updatedFormValue[key];
+            });
+
             setTimeout(() => {
               this.form.patchValue(updatedFormValue);
             });
@@ -265,14 +274,29 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
       encode: false,
       filter: this.longFormatDate,
     });
-    obj = qs.parse(encodedValues);
+    obj = qs.parse(encodedValues, { decoder: this.cleanModelParser });
     return obj;
+  }
+
+  /**
+   * Parser for qs.parse - if input string is true / false, 
+   * convert to boolean value, otherwise use default decoder
+   */
+  cleanModelParser(str: string, decoder: qs.defaultDecoder, charset: string, type: 'key' | 'value') {
+    if (type === 'key') {
+      return decoder(str, decoder, charset);
+    }
+
+    if (str === 'true' || str === 'false') {
+      return str === 'true' ? true : false;
+    }
+
+    return decoder(str, decoder, charset);
   }
 
   longFormatDate(prefix, value) {
     const val = decodeURIComponent(value);
-    const isDate = /^(\d{1,2})[-\/](\d{1,2})[-\/](\d{4})$/.exec(val);
-    if (isDate) {
+    if (!isNaN(Date.parse(val))) {
       value = new Date(val).toISOString();
     }
     return value;

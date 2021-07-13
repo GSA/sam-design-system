@@ -4,12 +4,20 @@ import { SDSAutocompletelConfiguration } from '@gsa-sam/components';
 @Component({
   selector: `sds-readonly-autocomplete`,
   template: `    
-    <label class="usa-label">{{label}}</label>
+    <label class="usa-label">
+      <span
+      *ngIf="to?.tagText"
+      class="usa-tag"
+      [ngClass]="to.tagClass ? to.tagClass : 'sds-tag--info-white'"
+      >{{ to.tagText }}</span>
+      {{label ? label : to.label}}
+    </label>
     <span class="text-bold" [innerHTML]="displayValue"></span>
   `
 })
 export class ReadonlyAutocompleteComponent implements OnInit {
 
+  @Input() to: any = {}; // template options
   @Input() label: string;
   @Input() value: any;
   @Input() autocompleteSettings: SDSAutocompletelConfiguration;
