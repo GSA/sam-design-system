@@ -152,7 +152,7 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     if (this.isHistoryEnabled) {
       this.getHistoryModel();
     }
-    this.sortField = this.configuration.defaultSortValue;
+    this.sortField = this.sortField != null ? this.sortField : this.configuration.defaultSortValue;
     this.paginationChange.subscribe(() => {
       this.updateContent();
     });
