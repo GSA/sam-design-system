@@ -4,14 +4,14 @@ import {
   Output,
   EventEmitter,
   Input,
-  TemplateRef
+  TemplateRef,
 } from '@angular/core';
 import { SdsDrawerCommunicationService } from './drawer-communication.service';
 
 @Component({
   selector: 'sds-subheader',
   templateUrl: 'subheader.component.html',
-  styleUrls: ['subheader.component.scss']
+  styleUrls: ['subheader.component.scss'],
 })
 export class SdsSubheaderComponent {
   constructor() {}
@@ -19,7 +19,7 @@ export class SdsSubheaderComponent {
 
 @Component({
   selector: 'sds-subheader-actions',
-  templateUrl: 'subheader-actions.component.html'
+  templateUrl: 'subheader-actions.component.html',
 })
 export class SdsSubheaderActionsComponent {
   @Input() model;
@@ -29,7 +29,7 @@ export class SdsSubheaderActionsComponent {
 
 @Component({
   selector: 'sds-subheader-drawer',
-  templateUrl: 'subheader-drawer.component.html'
+  templateUrl: 'subheader-drawer.component.html',
 })
 export class SdsSubheaderDrawerComponent implements OnInit {
   @Input() drawerContentTemplate: TemplateRef<any>;
@@ -46,7 +46,7 @@ export class SdsSubheaderDrawerComponent implements OnInit {
 
 @Component({
   selector: 'sds-drawer-content',
-  templateUrl: 'drawer.content.component.html'
+  templateUrl: 'drawer.content.component.html',
 })
 export class SdsDrawerContentComponent implements OnInit {
   drawerContentTemplate: TemplateRef<any>;
@@ -55,8 +55,8 @@ export class SdsDrawerContentComponent implements OnInit {
   constructor(public data: SdsDrawerCommunicationService) {}
   ngOnInit() {
     this.data.contentTemplate.subscribe(
-      template => (this.drawerContentTemplate = template)
+      (template) => (this.drawerContentTemplate = template)
     );
-    this.data.isDrawerOpen.subscribe(open => (this.isDrawerOpen = open));
+    this.data.isDrawerOpen.subscribe((open) => (this.isDrawerOpen = open));
   }
 }
