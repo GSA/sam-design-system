@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { SdsSubheaderModule } from '@gsa-sam/layouts';
 import { CommonModule } from '@angular/common';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   SdsSearchModule,
   SdsDialogModule,
@@ -18,7 +17,6 @@ import { SubheaderSearchAutocompleteComponent } from './subheader-search-autocom
   imports: [
     CommonModule,
     SdsSubheaderModule,
-    FontAwesomeModule,
     SdsSearchModule,
     SdsFormlyDialogModule,
     SdsDialogModule,
@@ -33,4 +31,4 @@ import { SubheaderSearchAutocompleteComponent } from './subheader-search-autocom
   exports: [SubheaderSearchAutocompleteComponent],
   bootstrap: [SubheaderSearchAutocompleteComponent],
 })
-export class SubheaderSearchAutocompleteModule {}
+export class SubheaderSearchAutocompleteModule { }
