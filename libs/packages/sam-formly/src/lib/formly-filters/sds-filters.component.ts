@@ -192,21 +192,22 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
    */
   private findFieldInFieldGroup(fields: FormlyFieldConfig[], key: any) {
     let existsInFieldGroup = false;
-    fields.forEach((field) => {
+    
+    for (let i = 0; i < fields.length; i++) {
+      const field = fields[i];
+
       if (field.fieldGroup) {
-        existsInFieldGroup =
-          existsInFieldGroup ||
-          this.findFieldInFieldGroup(field.fieldGroup, key);
-        if (existsInFieldGroup) {
-          field.hide = false;
-        }
+        existsInFieldGroup = existsInFieldGroup || this.findFieldInFieldGroup(field.fieldGroup, key);
       } else if (field.key === key) {
         existsInFieldGroup = true;
-        field.hide = false;
       }
-    });
+      if (existsInFieldGroup) {
+        field.hide = false;
+        return true;;
+      }
+    }
 
-    return existsInFieldGroup;
+    return false;
   }
 
   onModelChange(change: any) {
