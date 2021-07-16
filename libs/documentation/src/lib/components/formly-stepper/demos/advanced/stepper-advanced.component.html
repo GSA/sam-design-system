@@ -1,22 +1,23 @@
-<custom-stepper-demo [queryParamKey]="'sdsAdvancedStepper'" [model]="model" 
-  [stepValidityMap]="stepValidityMap" (stepChange)="onStepChange($event)">
+<custom-stepper-demo [queryParamKey]="'sdsAdvancedStepper'" [model]="model"
+  [stepValidityMap]="stepValidityMap" (stepChange)="onStepChange($event)"
+  (saveData)="onSaveData($event)"
+>
 
   <sds-step id="welcome" text="Welcome" 
-    [mode]="navigationMode.INTERNAL" 
     [stepTemplate]="gatherInformation"
     [stepValidationFn]="stepMap.welcome.validationFn">
   </sds-step>
 
-  <sds-step id="entityDetails" text="Entity Details" [mode]="navigationMode.LABEL">
-    <sds-step id="registrationPurpose" text="Purpose of Registration" 
-    [mode]="navigationMode.INTERNAL" [fieldConfig]="stepMap.registrationPurpose.fieldConfig">
+  <sds-step id="entityDetails" text="Entity Details" [editable]="false">
+    <sds-step id="registrationPurpose" text="Purpose of Registration"
+      [fieldConfig]="stepMap.registrationPurpose.fieldConfig">
       <h1 sdsStepHeader class="margin-top-0">
         Purpose of Registration
         <hr>
       </h1>
     </sds-step>
 
-    <sds-step id="entityInformation" text="Entity Information" [mode]="navigationMode.INTERNAL"
+    <sds-step id="entityInformation" text="Entity Information"
       [fieldConfig]="stepMap.enitityInformation.fieldConfig">
       <h1 sdsStepHeader class="margin-top-0">
         Enter Entity Information
@@ -24,7 +25,7 @@
       </h1>
     </sds-step>
 
-    <sds-step id="reportDetails" text="Report Details" [mode]="navigationMode.INTERNAL"
+    <sds-step id="reportDetails" text="Report Details"
     [fieldConfig]="stepMap.reportDetails.fieldConfig">
     <h1 sdsStepHeader class="margin-top-0">
       Report Details
@@ -34,7 +35,7 @@
   </sds-step>
 
 
-  <sds-step id="taxPayerInfoForm" text="Taxpayer Details" [mode]="navigationMode.INTERNAL" 
+  <sds-step id="taxPayerInfoForm" text="Taxpayer Details"
     [fieldConfig]="stepMap.taxpayerInformation.fieldConfig">
     <h1 sdsStepHeader class="margin-top-0">
       Enter Taxpayer Details
@@ -44,15 +45,21 @@
 
 
   <sds-step id="addSubawardee" text="Add Subawardee"
-    [mode]="navigationMode.INTERNAL" 
     [stepTemplate]="subawardeeStep" 
     [stepValidationFn]="stepMap.subawardee.validationFn">
 
   </sds-step>
 
+  <sds-step id="taxPayerInfoForm2" text="Taxpayer Details"
+  [fieldConfig]="stepMap.taxpayerInformation.fieldConfig">
+  <h1 sdsStepHeader class="margin-top-0">
+    Enter Taxpayer Details
+    <hr>
+  </h1>
+</sds-step>
+
   <sds-step id="review" text="Review and Submit"
     [isReview]="true"
-    [mode]="navigationMode.INTERNAL" 
     [stepTemplate]="reviewTemplate" 
     [stepValidationFn]="stepMap.review.validationFn">
   </sds-step>
@@ -107,11 +114,27 @@
 </ng-template>
 
 <ng-template #subawardeeStep>
-  <h1 class="margin-top-0">
-    Subawardee Data
-    <hr>
-  </h1>
-  <subawardee-demo (subawardeeUpdate)="updateSubawardee($event)" [subawardees]="model.subawardee"></subawardee-demo>
+  <ng-container *ngIf="!showLoading; else loading">
+    <h1 class="margin-top-0">
+      Subawardee Data
+      <hr>
+    </h1>
+    <subawardee-demo (subawardeeUpdate)="updateSubawardee($event)" [subawardees]="model.subawardee"></subawardee-demo>
+  </ng-container>
+  <ng-template #loading>
+    <div class="grid-container">
+      <div class="sds-load grid-row">
+        <div class="grid-col-5 sds-load__title"></div>
+        <div class="grid-col-auto sds-load__circle"></div>
+      </div>
+      <div class="sds-load grid-row">
+        <div class="tablet:grid-col-fill sds-load__content"></div>
+        <div class="tablet:grid-col-fill sds-load__content"></div>
+        <div class="tablet:grid-col-2 grid-col sds-load__element"></div>
+        <div class="tablet:grid-col-2 grid-col sds-load__element"></div>
+      </div>
+    </div>
+  </ng-template>
 </ng-template>
 
 <ng-template #reviewTemplate>

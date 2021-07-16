@@ -86,14 +86,15 @@
 </ng-template>
 
 <ng-template #sidenavItem let-step>
-  <ng-container [ngSwitch]="step.mode">
-    <span *ngSwitchCase="navigationMode.LABEL">
+  <ng-container [ngSwitch]="step.editable">
+    <span *ngSwitchCase="false">
       <span class="padding-x-2 padding-y-1 display-block text-bold">
         {{step.text}}
       </span>
     </span>
     <a *ngSwitchDefault href="javascript:void(0);" [sdsStepperNav]="step"
-      [ngClass]="{'opacity-60': step.disabled || (step.isReview && _isReviewAndSubmitDisabled)}"
+      class="display-flex justify-content-space-between"
+      [ngClass]="{'usa-sidenav__item--disabled': step.disabled || (step.isReview && _isReviewAndSubmitDisabled)}"
     >
       <span>
         {{step.text}}
@@ -104,7 +105,7 @@
 </ng-template>
 
 <ng-template #sidenavIcon let-step>
-  <span class="float-right">
+  <span>
     <ng-container [ngSwitch]="step.valid">
       <sds-icon *ngSwitchCase="true" [icon]="'check-circle-fill'" class="text-primary"></sds-icon>
       <sds-icon *ngSwitchCase="false" [icon]="'slash-circle-fill'" class="text-error"></sds-icon>

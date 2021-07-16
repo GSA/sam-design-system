@@ -1,6 +1,6 @@
-import { Component } from "@angular/core";
-import { NavigationMode } from "@gsa-sam/components";
+import { Component, OnInit } from "@angular/core";
 import { FormlyUtilsService, SdsStepper } from "@gsa-sam/sam-formly";
+import { Observable } from "rxjs";
 import { StepperAdvancedService } from "./stepper-advanced.service";
 
 @Component({
@@ -11,11 +11,12 @@ import { StepperAdvancedService } from "./stepper-advanced.service";
     SdsStepper
   ]
 })
-export class StepperAdvancedDemoComponent {
-  navigationMode = NavigationMode;
+export class StepperAdvancedDemoComponent implements OnInit {
   model = {
     subawardee: []
-  };;
+  };
+
+  showLoading = false;
 
   stepMap = {
     welcome: {
@@ -58,11 +59,29 @@ export class StepperAdvancedDemoComponent {
     private stepperAdvancedService: StepperAdvancedService
   ) {}
 
+  ngOnInit() {
+    const sessionData = sessionStorage.getItem('dataEntry');
+    if (!sessionData) {
+      return;
+    }
+
+    const parsedModel = JSON.parse(sessionData);
+    this.model = parsedModel.model;
+    this.stepValidityMap = parsedModel.metadata.stepValidityMap;
+  }
+
   onStepChange($event) {
     this.currentStepId = $event.id;
+
     if (this.currentStepId === 'review') {
       FormlyUtilsService.setReadonlyMode(true, this.stepMap.review.fieldConfig.fieldGroup as any);
     }
+  }
+
+  onSaveData(data: {model: any, metadata: any}) {
+    console.log(data);
+    const jsonString = JSON.stringify(data);
+    sessionStorage.setItem('dataEntry', jsonString);
   }
 
   updateSubawardee($event) {

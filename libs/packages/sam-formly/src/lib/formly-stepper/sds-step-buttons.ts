@@ -24,15 +24,18 @@ export class SdsStepperNextDirective {
   }
 
   _disabled() {
-    if (!this._stepper.flatSteps) {
+    const flatSteps = this._stepper.flatSteps;
+    const nextIndex = this._stepper.selectedStepIndex + 1;
+
+    if (!flatSteps || this._stepper.selectedStepIndex == undefined) {
       return true;
     }
 
-    if (this._stepper.selectedStepIndex >= this._stepper.flatSteps.length - 1) {
+    if (this._stepper.selectedStepIndex >= flatSteps.length - 1) {
       return true;
     }
 
-    if (this._stepper.flatSteps[this._stepper.selectedStepIndex + 1].isReview && this._stepper._isReviewAndSubmitDisabled) {
+    if (flatSteps[nextIndex].disabled || (flatSteps[nextIndex].isReview && this._stepper._isReviewAndSubmitDisabled)) {
       return true;
     }
 
@@ -61,6 +64,25 @@ export class SdsStepperPreviousDirective {
   _handleClick() {
     this._stepper.onPreviousStep();
   }
+
+  _disabled() {
+    const flatSteps = this._stepper.flatSteps;
+    const previousStep = this._stepper.selectedStepIndex - 1;
+
+    if (!flatSteps || !this._stepper.selectedStepIndex) {
+      return true;
+    }
+
+    if (this._stepper.selectedStepIndex === 0) {
+      return true;
+    }
+
+    if (flatSteps[previousStep].disabled || (flatSteps[previousStep].isReview && this._stepper._isReviewAndSubmitDisabled)) {
+      return true;
+    }
+
+    return;
+  }
 }
 
 /** Button that moves to the next step in a stepper workflow. */
@@ -86,6 +108,9 @@ export class SdsStepperSaveDirective {
 /** Button that moves to the next step in a stepper workflow. */
 @Directive({
   selector: `[sdsStepperNav]`,
+  host: {
+    '[attr.disabled]': 'sdsStepperNav.disabled'
+  }
 })
 export class SdsStepperNavDirective {
 

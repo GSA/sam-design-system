@@ -90,8 +90,8 @@ import { SdsStepper } from "./sds-stepper";
   </ng-template>
 
   <ng-template #sidenavItem let-step>
-    <ng-container [ngSwitch]="step.mode">
-      <span *ngSwitchCase="navigationMode.LABEL">
+    <ng-container [ngSwitch]="step.editable">
+      <span *ngSwitchCase="false">
         <span class="padding-x-2 padding-y-1 display-block text-bold">
           {{step.text}}
         </span>
@@ -125,11 +125,11 @@ export class CustomTestStepper extends SdsStepper {
   selector: `stepper-test`,
   template: `
     <custom-test-stepper #stepper id="stepperTestId" [model]="model" [stepValidityMap]="stepValidityMap">
-      <sds-step id="step1" text="Step 1" [fieldConfig]="fieldConfigStep1" [mode]="navigationMode.INTERNAL"></sds-step>
-      <sds-step id="step2" text="Step 2" [mode]="navigationMode.LABEL">
-        <sds-step id="step2Child1" text="Step 2 Child 1" [fieldConfig]="fieldConfigStep2Child1" [mode]="navigationMode.INTERNAL"></sds-step>
+      <sds-step id="step1" text="Step 1" [fieldConfig]="fieldConfigStep1"></sds-step>
+      <sds-step id="step2" text="Step 2" [editable]="false">
+        <sds-step id="step2Child1" text="Step 2 Child 1" [fieldConfig]="fieldConfigStep2Child1"></sds-step>
       </sds-step>
-      <sds-step id="step3" text="Step 3" [stepTemplate]="templateStep" [mode]="navigationMode.INTERNAL"></sds-step>
+      <sds-step id="step3" text="Step 3" [stepTemplate]="templateStep"></sds-step>
     </custom-test-stepper>
 
     <ng-template #templateStep>
@@ -206,13 +206,16 @@ describe('SdsStepperComponent', () => {
     expect(invalidSteps.length).toEqual(0);
   });
 
-  it('Should move to next step when next button is clicked', () => {
+  it('Should move to next step when next button is clicked', waitForAsync(() => {
     expect(stepper.currentStepId).toEqual('step1');
     const nextButton = fixture.debugElement.query(By.css('#stepperTestId-nextBtn'));
     nextButton.triggerEventHandler('click', null);
     fixture.detectChanges();
-    expect(stepper.currentStepId).toEqual('step2Child1');
-  });
+
+    fixture.whenStable().then(() => {
+      expect(stepper.currentStepId).toEqual('step2Child1');
+    });
+  }));
 
   it('Should mark invalid step when moving to next step', () => {
     expect(stepper.currentStepId).toEqual('step1');
@@ -236,23 +239,31 @@ describe('SdsStepperComponent', () => {
     expect(stepper.stepValidityMap['step1']).toEqual(false);
   });
 
-  it('Should jump to step 3 when clicking from side navigation', () => {
+  it('Should jump to step 3 when clicking from side navigation', waitForAsync(() => {
     const sidenavLinks = fixture.debugElement.queryAll(By.css('li a'));
     sidenavLinks[2].triggerEventHandler('click', null);
     fixture.detectChanges();
-    expect(stepper.currentStepId).toEqual('step3');
-  });
+    fixture.whenStable().then(() => {
+      expect(stepper.currentStepId).toEqual('step3');
+    });
+  }));
 
-  it('Should go back to previous step when back is clicked', () => {
+  it('Should go back to previous step when back is clicked', waitForAsync(() => {
     const sidenavLinks = fixture.debugElement.queryAll(By.css('li a'));
     sidenavLinks[2].triggerEventHandler('click', null);
     fixture.detectChanges();
 
-    const backButton = fixture.debugElement.query(By.css('#stepperTestId-prevBtn'));
-    backButton.triggerEventHandler('click', null);
-    fixture.detectChanges();
-    expect(stepper.currentStepId).toEqual('step2Child1');
-  });
+    fixture.whenStable().then(() => {
+      const backButton = fixture.debugElement.query(By.css('#stepperTestId-prevBtn'));
+      backButton.triggerEventHandler('click', null);
+      fixture.detectChanges();
+  
+      fixture.whenStable().then(() => {
+        expect(stepper.currentStepId).toEqual('step2Child1');
+      });
+    }) 
+
+  }));
 
   it('Should prepopulate with correct model and validity when provided', () => {
     component.model = {

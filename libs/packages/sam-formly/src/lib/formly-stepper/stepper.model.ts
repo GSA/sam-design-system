@@ -86,5 +86,10 @@ export interface StepModel {
    * If users would like clicking on the step to navigate to another route, they may define
    * the route here
    */
-  route: string;
+  route?: string;
+
+  /**
+   * Whether users should be allowed to navigate to this step or not
+   */
+  disabled?: boolean;
 }
