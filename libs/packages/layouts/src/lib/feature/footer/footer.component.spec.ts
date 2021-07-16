@@ -9,7 +9,7 @@ import { FooterLogo } from './model/FooterModel';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SdsFeedbackModule } from '../sds-feedback/sds-feedback.module';
 import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
-import { IconModule, allIcons as sdsAllIcons } from 'ngx-uswds-icons'l
+import { IconModule, allIcons as sdsAllIcons } from 'ngx-uswds-icons';
 
 describe('SdsFooterComponent', () => {
   let component: SdsFooterComponent;
