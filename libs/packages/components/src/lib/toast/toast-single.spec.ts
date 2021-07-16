@@ -3,8 +3,7 @@ import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ToastPackage, ToastRef, ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SdsIconModule } from '../icon/icon.module';
-import {allIcons as sdsAllIcons} from '@gsa-sam/components'
+import { IconModule, allIcons as sdsAllIcons} from 'ngx-uswds-icons'
 import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 
 describe('Component: SdsToastComponent', () => {
@@ -25,7 +24,7 @@ describe('Component: SdsToastComponent', () => {
     TestBed.configureTestingModule({
       declarations: [SdsToastComponent],
       imports: [
-        SdsIconModule,
+        IconModule,
         ToastrModule.forRoot(),
         BrowserAnimationsModule,
         NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))

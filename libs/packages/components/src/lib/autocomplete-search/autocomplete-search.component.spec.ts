@@ -13,8 +13,7 @@ import { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem
 import { SelectionMode } from '../selected-result/models/sds-selected-item-model-helper';
 import { By } from '@angular/platform-browser';
 import { AutoCompleteSampleDataService } from './autocomplete-seach-test-service.spec';
-import {SdsIconModule } from '@gsa-sam/components';
-import {allIcons as sdsAllIcons} from '@gsa-sam/components'
+import { IconModule, allIcons as sdsAllIcons } from 'ngx-uswds-icons';
 import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 
 describe('SamAutocompleteComponent', () => {
@@ -24,7 +23,7 @@ describe('SamAutocompleteComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SDSAutocompleteSearchComponent],
-      imports: [FormsModule, SdsIconModule, NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))]
+      imports: [FormsModule, IconModule, NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))]
     }).compileComponents();
   }));
 
