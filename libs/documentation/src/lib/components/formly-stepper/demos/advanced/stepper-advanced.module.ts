@@ -4,7 +4,7 @@ import { StepperAdvancedDemoComponent } from "./stepper-advanced.component";
 import { SdsFormlyModule, SdsStepperModule } from '@gsa-sam/sam-formly';
 import { AddSubawardeeDialogDemo, SubawardeeDemoComponent } from "./subawardee.component";
 import { FormlyModule } from "@ngx-formly/core";
-import { SdsActionsMenuModule } from "@gsa-sam/layouts";
+import { SdsActionsMenuModule, SideToolbarModule } from "@gsa-sam/layouts";
 import { CustomStepperDemo } from "./custom-stepper.component";
 import { SdsIconModule } from "@gsa-sam/components";
 import {
@@ -28,6 +28,7 @@ import {
     SdsActionsMenuModule,
     SdsIconModule,
     NgxBootstrapIconsModule.pick({ chevronLeft, chevronRight, circle, slashCircleFill, checkCircleFill, question, save, x }),
+    SideToolbarModule,
   ],
   declarations: [
     StepperAdvancedDemoComponent,

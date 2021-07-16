@@ -1,6 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { FormlyUtilsService, SdsStepper } from "@gsa-sam/sam-formly";
-import { Observable } from "rxjs";
 import { StepperAdvancedService } from "./stepper-advanced.service";
 
 @Component({
@@ -11,7 +10,8 @@ import { StepperAdvancedService } from "./stepper-advanced.service";
     SdsStepper
   ]
 })
-export class StepperAdvancedDemoComponent implements OnInit {
+export class StepperAdvancedDemoComponent {
+
   model = {
     subawardee: []
   };
@@ -55,20 +55,11 @@ export class StepperAdvancedDemoComponent implements OnInit {
   currentStepId: string;
   stepValidityMap = {};
 
+  linear = false;
+  reinitializeComponents = false;
   constructor(
-    private stepperAdvancedService: StepperAdvancedService
+    private stepperAdvancedService: StepperAdvancedService,
   ) {}
-
-  ngOnInit() {
-    const sessionData = sessionStorage.getItem('dataEntry');
-    if (!sessionData) {
-      return;
-    }
-
-    const parsedModel = JSON.parse(sessionData);
-    this.model = parsedModel.model;
-    this.stepValidityMap = parsedModel.metadata.stepValidityMap;
-  }
 
   onStepChange($event) {
     this.currentStepId = $event.id;
@@ -80,11 +71,22 @@ export class StepperAdvancedDemoComponent implements OnInit {
 
   onSaveData(data: {model: any, metadata: any}) {
     console.log(data);
-    const jsonString = JSON.stringify(data);
-    sessionStorage.setItem('dataEntry', jsonString);
   }
 
   updateSubawardee($event) {
     this.model.subawardee = $event;
+  }
+
+  toggleLinearMode() {
+    this.linear = !this.linear;
+    this.reinitializeComponents = true;
+    this.model = {
+      subawardee: []
+    };
+    this.stepValidityMap = {};
+
+    setTimeout(() => {
+      this.reinitializeComponents = false;
+    }, 200)
   }
 }

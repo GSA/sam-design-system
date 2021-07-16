@@ -1,20 +1,36 @@
 <div class="grid-row">
   <div class="desktop:grid-col-4 tablet-lg:grid-col-12 mobile-lg:grid-col-12 margin-bottom-3 margin-right-2">
-    <div class="sds-card">
-      <div class="sds-card__body sds-card__body--accent-cool">
+    <sds-side-toolbar [responsiveButtonText]="'Select Step'" (responsiveDialog)="onDialogOpen($event)">
+      <ng-template #toolbarContent>
+        <div class="sds-card" *ngIf="!!responseDialog">
+          <div class="sds-card__header sds-card__header--accent-cool grid-row">
+            <button id="cancelButton" class="sds-button sds-button--circular sds-button--white"
+              (click)="onCancelClicked()" aria-label="Cancel Select Step">
+              <sds-icon [icon]="'chevron-left'"></sds-icon>
+            </button>
+            <div class="margin-x-auto">
+              <h2 class="sds-card__title margin-top-1 margin-left-neg-2">Select Step</h2>
+            </div>
+          </div>
+        </div>
 
-        <ul class="usa-sidenav usa-sidenav--styled">
-          <li *ngFor="let step of stepTemplates; let i = index;" class="usa-sidenav__item" [ngClass]="{
-              'usa-current':  selectedStep?.id === step.id
-            }">
-            <ng-container [ngTemplateOutlet]="sidenavItem" [ngTemplateOutletContext]="{$implicit: step}">
-            </ng-container>
-            <ng-container [ngTemplateOutlet]="subPanelTemplate" [ngTemplateOutletContext]="{$implicit:step}">
-            </ng-container>
-          </li>
-        </ul>
-      </div>
-    </div>
+        <div class="sds-card">
+          <div class="sds-card__body sds-card__body--accent-cool">
+    
+            <ul class="usa-sidenav usa-sidenav--styled">
+              <li *ngFor="let step of stepTemplates; let i = index;" class="usa-sidenav__item" [ngClass]="{
+                  'usa-current':  selectedStep?.id === step.id
+                }">
+                <ng-container [ngTemplateOutlet]="sidenavItem" [ngTemplateOutletContext]="{$implicit: step}">
+                </ng-container>
+                <ng-container [ngTemplateOutlet]="subPanelTemplate" [ngTemplateOutletContext]="{$implicit:step}">
+                </ng-container>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ng-template>
+    </sds-side-toolbar>
   </div>
   <div class="grid-col-fill">
     <div [ngTemplateOutlet]="selectedStep ? selectedStep.content : null"></div>
@@ -93,6 +109,7 @@
       </span>
     </span>
     <a *ngSwitchDefault href="javascript:void(0);" [sdsStepperNav]="step"
+      (click)="onSideNavClick()"
       class="display-flex justify-content-space-between"
       [ngClass]="{'usa-sidenav__item--disabled': step.disabled || (step.isReview && _isReviewAndSubmitDisabled)}"
     >
