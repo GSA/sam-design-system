@@ -2,7 +2,7 @@
   <div class="sds-alert--container">
     <div class="sds-mobile-alert grid-row">
       <div class="grid-col-auto padding-top-1">
-        <sds-icon [icon]="'exclamation-triangle'" [class]="'sds-alert--header__icon-mobile'" [size]="'3x'"></sds-icon>
+        <i-uswds [icon]="'exclamation-triangle'" [class]="'sds-alert--header__icon-mobile'" [size]="'3x'"></i-uswds>
       </div>
 
       <div class="grid-col-fill">
@@ -21,7 +21,7 @@
           <div class="grid-col-auto">
             <button (click)="onToggleAlertsClicked(alertsContent)" aria-label="Show/Hide alerts"
               class="sds-button--circle usa-button--secondary simple-toggle" aria-controls="collapseTarget">
-              <sds-icon [icon]="'caret-down-fill'" [size]="'1x'"></sds-icon>
+              <i-uswds [icon]="'caret-down-fill'" [size]="'1x'"></i-uswds>
             </button>
           </div>
         </div>
@@ -72,7 +72,7 @@
         <button (click)="onAlertClose(i)" [attr.id]="'alert'+ i + 'CloseBtn'"
           class="usa-button sds-button--circle usa-button--secondary sds-alert--header__close simple-toggle"
           aria-label="Close Alert" [attr.aria-controls]="'alert' + i">
-          <sds-icon [icon]="'x'"></sds-icon>
+          <i-uswds [icon]="'x'"></i-uswds>
         </button>
       </div>
     </div>
@@ -93,7 +93,7 @@
         <button (click)="onAlertClose(0)" id="alert0CloseBtn"
           class="usa-button sds-button--circle usa-button--secondary sds-alert--header__close simple-toggle"
           aria-label="Close Alert" aria-controls="alert0">
-          <sds-icon [icon]="'x'"></sds-icon>
+          <i-uswds [icon]="'x'"></i-uswds>
         </button>
       </div>
     </div>

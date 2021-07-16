@@ -22,8 +22,7 @@ import {
   SdsDialogModule,
   SdsTextModule,
   SdsSearchModule,
-  SdsCollapseModule,
-  SdsIconModule,
+  SdsCollapseModule
 } from '@gsa-sam/components';
 
 import { FIELD_TYPE_COMPONENTS, FORMLY_CONFIG } from './formly.config';
@@ -37,6 +36,7 @@ import { SdsReadonlyModule } from './readonly/readonly.module';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { NgxBootstrapIconsModule, caretDownFill, caretUpFill, filter, arrowClockwise } from 'ngx-bootstrap-icons';
 import { UsaFileInputModule } from '@gsa-sam/ngx-uswds';
+import { IconModule } from 'ngx-uswds-icons';
 
 // Validate the min length of the character
 export function minlengthValidationMessage(err, field) {
@@ -169,7 +169,7 @@ export const DATE_FORMAT: MatDateFormats = {
     MatNativeDateModule,
     MatDatepickerModule,
     MatInputModule,
-    SdsIconModule,
+    IconModule,
     ReactiveFormsModule,
     FormlySelectModule,
     SdsReadonlyModule,

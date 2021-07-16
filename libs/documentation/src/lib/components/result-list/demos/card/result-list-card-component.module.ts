@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
-import { SdsIconModule, SdsPageModule } from '@gsa-sam/components';
+import { SdsPageModule } from '@gsa-sam/components';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { SdsSearchResultListModule, bars, newVersion, comment, bell } from '@gsa-sam/components';
+import { SdsSearchResultListModule } from '@gsa-sam/components';
 
 import { SdsActionsMenuModule } from '@gsa-sam/layouts';
 import { ResultListCardComponent } from './result-list-card-component.component';
 import { ResultListCardItemSampleComponent } from './card-item.component';
 import { ResultListCardItemChildSampleComponent } from './child-card-item.component';
 import { NgxBootstrapIconsModule, question, check, threeDots, book, download } from 'ngx-bootstrap-icons';
+import { IconModule, bars, newVersion, comment, bell } from 'ngx-uswds-icons';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { NgxBootstrapIconsModule, question, check, threeDots, book, download } f
     ResultListCardItemChildSampleComponent
   ],
   imports: [
-    SdsIconModule,
+    IconModule,
     CommonModule,
     FormsModule,
     SdsPageModule,

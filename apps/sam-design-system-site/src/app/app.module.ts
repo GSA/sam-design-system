@@ -11,26 +11,26 @@ import { MarkdownModule } from 'ngx-markdown';
 
 import { ToastrModule } from 'ngx-toastr';
 import {
-  SdsIconModule,
   SdsToastComponent,
   SdsToastModule,
   SdsToastSettings
 } from '@gsa-sam/components';
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { NgxBootstrapIconsModule, github } from 'ngx-bootstrap-icons';
+import { IconModule } from 'ngx-uswds-icons';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    SdsIconModule,
     SdsToastModule,
     ToastrModule.forRoot(SdsToastSettings),
     RouterModule.forRoot(ROUTES, { scrollPositionRestoration: 'enabled' }),
     FormsModule,
     MarkdownModule.forRoot(),
-    NgxBootstrapIconsModule.pick({github})
+    NgxBootstrapIconsModule.pick({github}),
+    IconModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: PathLocationStrategy },

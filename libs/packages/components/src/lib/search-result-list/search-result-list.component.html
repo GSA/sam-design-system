@@ -24,8 +24,8 @@
         <div class="sds-card sds-card--vertical sds-card--shadowed sds-card--bordered bg-base-lightest">
           <div class="sds-card__header padding-3">
             <div class="sds-stack sds-2x">
-              <sds-icon class="sds-stack-icon" [size]="'3x'" [icon]="'circle'"></sds-icon>
-              <sds-icon class="sds-stack-icon" [size]="'2x'" [icon]="'search'"></sds-icon>
+              <i-uswds class="sds-stack-icon" [size]="'3x'" [icon]="'circle'"></i-uswds>
+              <i-uswds class="sds-stack-icon" [size]="'2x'" [icon]="'search'"></i-uswds>
             </div>
           </div>
           <div class="sds-card__body margin-2">
@@ -41,7 +41,7 @@
       <ng-container *ngIf="isDefaultModel">
         <div class="sds-card sds-card--vertical sds-card--shadowed sds-card--bordered bg-base-lightest">
           <div class="sds-card__header">
-            <sds-icon [icon]="'arrow-left-circle-fill'" [size]="'5x'"></sds-icon>
+            <i-uswds [icon]="'arrow-left-circle-fill'" [size]="'5x'"></i-uswds>
           </div>
           <div class="sds-card__body margin-2">
             <h1 class="sds-card__title">Select Criteria</h1>
@@ -61,10 +61,10 @@
           [ngClass]="[(msg.type !== 'loading') ? 'sds-card--vertical': '', msg.classes ? msg.classes : '']">
           <ng-container *ngIf="msg.type !== 'loading' else loading">
             <div class="sds-card__header">
-              <sds-icon
+              <i-uswds
                 [icon]="(msg.type ==='error') ?  ['sds', 'alert-error'] :( (msg.type ==='info') ? 'info-circle' :( (msg.type ==='initial') ? 'arrow-left-circle-fill': 'search'))"
                 [size]="'5x'">
-              </sds-icon>
+              </i-uswds>
             </div>
             <div class="sds-card__body margin-2">
               <h1 class="sds-card__title">{{msg.title}}</h1>

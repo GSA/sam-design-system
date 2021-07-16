@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SdsIconModule } from '@gsa-sam/components';
+import { IconModule } from 'ngx-uswds-icons';
 import { IconsScaling } from './icons-scaling.component'
 
 
 @NgModule({
-  imports: [CommonModule, SdsIconModule],
+  imports: [CommonModule, IconModule],
   declarations: [IconsScaling],
   exports: [IconsScaling],
   bootstrap: [IconsScaling]

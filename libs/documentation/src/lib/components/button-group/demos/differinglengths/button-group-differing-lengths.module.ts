@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {SdsIconModule } from '@gsa-sam/components';
+import { IconModule } from 'ngx-uswds-icons';
 import { ButtonGroupDifferingLengths } from './button-group-differing-lengths.component';
 import { SdsButtonGroupModule } from '@gsa-sam/sam-material-extensions';
 
 
 @NgModule({
-  imports: [CommonModule, SdsIconModule, SdsButtonGroupModule],
+  imports: [CommonModule, IconModule, SdsButtonGroupModule],
   declarations: [ButtonGroupDifferingLengths],
   exports: [ButtonGroupDifferingLengths],
   bootstrap: [ButtonGroupDifferingLengths]

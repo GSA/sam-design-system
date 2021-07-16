@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { allIcons } from '@gsa-sam/components';
 import { kebabCase } from 'lodash-es';
+import { allIcons } from 'ngx-uswds-icons';
+import * as _ from 'lodash';
+
 
 @Component({
   templateUrl: './icons-basic.component.html',
@@ -9,8 +11,20 @@ import { kebabCase } from 'lodash-es';
   preserveWhitespaces: true
 })
 export class IconsBasic {
-  sdsIcons = Object.keys(allIcons)
+  appendPrefix (iconsObject: {[key: string]: string}, prefix: string): Object {
+    const prefixedIconsObject = {};
+    Object.keys(iconsObject).forEach(key => {
+      prefixedIconsObject[`${prefix}${_.upperFirst(key)}`] = iconsObject[key];
+    })
+    return prefixedIconsObject;
+  };
+
+  sdsIcons = Object.keys(this.appendPrefix(allIcons, 'sds'))
   .map(iconName => kebabCase(iconName));
+
+  displayName = Object.keys(allIcons)
+  .map(iconName => kebabCase(iconName));
+
 
 
 }

@@ -1,14 +1,14 @@
 <p>
-  In order to use an icon as a part of sds-icon it must be selected in the
+  In order to use an icon as a part of i-uswds it must be selected in the
   module which declares the component where you wish to display the icon.
 </p>
 <p>
   To select an icon you wish you use, you must first import the icon from
-  either ngx-bootstrap-icons or @gsa-sam/components into the module which
+  either ngx-bootstrap-icons or ngx-uswds-icons into the module which
   declares your component.
 </p>
 <code>import &#123; NgxBootstrapIconsModule, square &#125; from 'ngx-bootstrap-icons';</code><br>
-<code>import &#123; add &#125; from '@gsa-sam/components';</code>
+<code>import &#123; add &#125; from 'ngx-uswds-icons';</code>
 <p>
   Next you must add NgxBootstrapIconsModule to your imports and call it's
   <code>pick</code> function. As an input to this function you should
@@ -27,19 +27,19 @@
     &#125;)
 </code>
 <p>
-  Finally in your template you can include sds-icon and set the value of the
+  Finally in your template you can include i-uswds and set the value of the
   <code>icon</code> input  to be one of the icons you just selected.
 </p>
 <p>
   <code>
-    &#060;sds-icon [icon]="'add'" [size]="'2x'"&#062;&#060;/sds-icon&#062;
+    &#060;i-uswds [icon]="'add'" [size]="'2x'"&#062;&#060;/i-uswds&#062;
   </code>
 </p>
 <div class="display-inline-flex flex-wrap">
-  <ng-container *ngFor="let item of sdsIcons">
+  <ng-container *ngFor="let item of sdsIcons; let i = index">
     <span class="display-flex flex-column flex-align-center height-10.5 width-10" *ngIf="item">
-      <sds-icon [icon]="item" [size]="'2x'"></sds-icon>
-      <p class="font-sans-3xs margin-y-auto">{{ item }}</p>
+      <i-uswds [icon]="item" [size]="'2x'"></i-uswds>
+      <p class="font-sans-3xs margin-y-auto">{{ displayName[i] }}</p>
     </span>
   </ng-container>
 </div>

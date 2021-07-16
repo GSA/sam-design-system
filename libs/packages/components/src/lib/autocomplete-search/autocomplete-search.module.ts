@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { SDSAutocompleteSearchComponent } from './autocomplete-search.component';
 import { SDSClickOutsideModule } from '../click-outside/click-outside.module';
 import { SdsTabOutsideModule } from '../tab-outside/taboutside.module';
-import { SdsIconModule } from '../icon/icon.module';
 import { NgxBootstrapIconsModule, x, caretDownFill, caretUpFill } from 'ngx-bootstrap-icons';
+import { IconModule } from 'ngx-uswds-icons';
 
 @NgModule({
   imports: [
@@ -13,7 +13,7 @@ import { NgxBootstrapIconsModule, x, caretDownFill, caretUpFill } from 'ngx-boot
     FormsModule,
     SDSClickOutsideModule,
     SdsTabOutsideModule,
-    SdsIconModule,
+    IconModule,
     NgxBootstrapIconsModule.pick({x, caretDownFill, caretUpFill})
   ],
   declarations: [SDSAutocompleteSearchComponent],

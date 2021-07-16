@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import {SdsIconModule } from '@gsa-sam/components';
+import { IconModule } from 'ngx-uswds-icons';
 import { OverviewComponent } from './overview.component';
 import { SdsExternalLinkDirectivesModule } from '@gsa-sam/components';
 
 @NgModule({
-  imports: [SdsIconModule, SdsExternalLinkDirectivesModule],
+  imports: [IconModule, SdsExternalLinkDirectivesModule],
   exports: [OverviewComponent],
   declarations: [OverviewComponent],
   providers: [],

@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SDSSelectedResultComponent } from './selected-result.component';
 import { RouterModule } from '@angular/router';
-import { SdsIconModule } from '../icon/icon.module';
+import { IconModule } from 'ngx-uswds-icons';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, RouterModule, SdsIconModule],
+  imports: [CommonModule, FormsModule, RouterModule, IconModule],
   declarations: [SDSSelectedResultComponent],
   exports: [SDSSelectedResultComponent],
 })

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {allIcons} from 'ngx-bootstrap-icons'
+import { allIcons } from 'ngx-bootstrap-icons'
 import { kebabCase } from 'lodash-es';
 
 @Component({

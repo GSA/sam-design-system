@@ -2,10 +2,10 @@
 <div class="sds-toast__content" role="alert" aria-live="assertive">
     <div class="usa-sr-only">{{getToastSr(toastPackage.toastType)}}</div>
     <div class="sds-toast__content__icon">
-        <sds-icon [icon]="getIcon(toastPackage.toastType)" size="2x"></sds-icon>
+        <i-uswds [icon]="getIcon(toastPackage.toastType)" size="2x"></i-uswds>
     </div>
     <span class="sds-toast__content__text">{{message}}</span>
     <div *ngIf="options.closeButton" class="sds-toast__content__close" (click)="remove()">
-        <sds-icon [icon]="'x'"></sds-icon>
+        <i-uswds [icon]="'x'"></i-uswds>
     </div>
 </div>

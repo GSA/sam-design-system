@@ -12,8 +12,8 @@
         <button type="button" class="sds-button padding-top-0" [attr.aria-expanded]="!to.expandedOptions"
           [attr.aria-controls]="id + 'collapseID'" (click)="to.expandedOptions = !to.expandedOptions">
           <span class="usa-sr-only">expand/collapsed</span>
-          <sds-icon [icon]="to.expandedOptions ?'caret-down-fill': 'caret-up-fill'" [size]="'1x'">
-          </sds-icon>
+          <i-uswds [icon]="to.expandedOptions ?'caret-down-fill': 'caret-up-fill'" [size]="'1x'">
+          </i-uswds>
 
         </button>
       </div>
@@ -26,10 +26,10 @@
             [disabled]="option.disabled" [value]="option.value" [formlyAttributes]="field"
             (change)="onChange(option.value, $event.target.checked)" [checked]="isChecked(option)" />
           <label class="usa-checkbox__label" [for]="id + '_' + i">
-            <!-- 
-                The reference of options array through index is done intentionally here rather 
-                than using local variable option because the formlySelectOptions pipe transforms 
-                each option such that they lose all properties except label, value, and disabled 
+            <!--
+                The reference of options array through index is done intentionally here rather
+                than using local variable option because the formlySelectOptions pipe transforms
+                each option such that they lose all properties except label, value, and disabled
             -->
             <span *ngIf="to.options[i].tagText" class="usa-tag"
               [ngClass]="to.options[i].tagClass ? to.options[i].tagClass : 'sds-tag--info-white'">
