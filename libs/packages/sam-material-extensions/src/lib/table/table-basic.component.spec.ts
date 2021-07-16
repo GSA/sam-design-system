@@ -15,10 +15,11 @@ import {
   SdsTableHeaderCellDirective,
   SdsTableFooterCellDirective
 } from './table.component';
-import { PaginationModule, SdsIconModule } from '@gsa-sam/components';
+import { PaginationModule } from '@gsa-sam/components';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { IconModule } from 'ngx-uswds-icons';
 
 const MOCK_DATA = [
   {
@@ -247,9 +248,9 @@ describe('SdsTableComponent Basic', () => {
       ],
       imports: [
         MatTableModule,
-        SdsIconModule,
+        IconModule,
         MatSortModule,
-  
+
         MatPaginatorModule,
         BrowserAnimationsModule,
         PaginationModule
