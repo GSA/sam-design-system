@@ -49,6 +49,16 @@ import * as qs from 'qs';
             </div>
           </div>
         </ng-container>
+        <ng-container *ngSwitchCase="'popover'">
+        <div #popoverContent class="padding-2">
+          <ng-container #fieldComponent></ng-container>
+        </div>
+          <div 
+            [sdsPopover]="popoverContent" [position]="'bottom'" [closeOnContentClick]="false" tabindex="0" aria-label="Down carat">
+            {{to.label}}
+            <sds-icon [icon]="'caret-down-square'" [size]="'2x'"></sds-icon>
+          </div>
+        </ng-container>
         <ng-container *ngSwitchDefault>
           <ng-container #fieldComponent></ng-container>
         </ng-container>

@@ -13,19 +13,28 @@ export class SdsPopoverDirective implements AfterViewInit {
   popoverVisible= false;
   popoverDivId: string;
 
-  @HostListener('click', ['$event']) onClick(){
+  @HostListener('click', ['$event']) onClick($event: MouseEvent){
+    if (!this.closeOnContentClick && this.sdsPopoverDiv.contains($event.target as any)) {
+      return;
+    }
+    
     this.clickEvent();
   }
 
   /**
    * Adding listener for keyup.enter to ensure that user can activate popover with keyboard
    */
-  @HostListener('keyup.enter', ['$event']) onKeyUp(){
+  @HostListener('keyup.enter', ['$event']) onKeyUp($event: KeyboardEvent){
+    if (! this.closeOnContentClick &&this.sdsPopoverDiv.contains($event.target as any)) {
+      return;
+    }
     this.clickEvent();
   }
 
   @Input()
   position: string = 'top';
+
+  @Input() closeOnContentClick = true;
 
   constructor(private el: ElementRef, private renderer: Renderer2) {
     this.renderer.addClass(this.el.nativeElement, 'sds-popover');

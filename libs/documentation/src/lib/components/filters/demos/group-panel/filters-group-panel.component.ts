@@ -24,7 +24,7 @@ export class FiltersGroupPanel implements OnInit {
       key: 'filters',
       templateOptions: {
         label: 'Entity Information',
-        group: 'panel',
+        group: 'popover',
       },
       fieldGroup: [
         {
