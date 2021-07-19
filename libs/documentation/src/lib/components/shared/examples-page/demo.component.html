@@ -24,7 +24,7 @@
   <div class="sds-card__body">
 
     <div *ngIf="showCode" class="padding-bottom-2 border-bottom margin-bottom-2">
-      <sds-tabs>
+      <sds-tabs [tabClass]="'sds-tabs--demo'">
         <sds-tab-panel [tabHeader]="'Source Code'">
           <pre class="highlight"><code [highlight]="code"></code></pre>
         </sds-tab-panel>
@@ -33,6 +33,10 @@
         </sds-tab-panel>
         <sds-tab-panel [tabHeader]="'Module'">
           <pre class="highlight"><code [highlight]="module"></code></pre>
+        </sds-tab-panel>
+
+        <sds-tab-panel *ngFor="let file of files" [tabHeader]="file.name">
+          <pre class="highlight"><code [highlight]="file.source"></code></pre>
         </sds-tab-panel>
       </sds-tabs>
     </div>

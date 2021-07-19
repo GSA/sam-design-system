@@ -1,0 +1,189 @@
+<div class="grid-col" *ngIf="displayInput">
+  <div class="grid-row">
+    <div class="grid-col">
+      <h3>Add Subawardee</h3>
+      <input #input class="usa-input" id="input-type-text" name="input-type-text"
+        [placeholder]="'Input Unique Entity ID'" type="text" />
+    </div>
+    <div class="grid-col padding-left-3 padding-top-3">
+      <button class="usa-button" type="button" (click)="onAddSubawardee(input.value)">
+        Add Subawardee
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="sds-card sds-card__body--accent-cool margin-top-3" *ngIf="subawardees.length === 0">
+  <div class="sds-card__header sds-card__header--left">
+    <h2 class="sds-card__title ">No Subawardees</h2>
+  </div>
+  <div class="sds-card__body ">
+    <p>
+      To add a subawardee, begin by entering a subawardee Unique Entity ID
+      above.
+    </p>
+  </div>
+</div>
+
+<!-- Subawards Display Template-->
+<div class="grid-container padding-0 margin-top-2">
+
+  <div class="sds-card" *ngFor="let subawardee of subawardees">
+    <div class="grid-row grid-gap sds-card__header">
+      <!-- 1st column -->
+      <div class="grid-col-12 tablet:grid-col-3">
+        <div class="grid-row margin-t-1">
+          <div class="sds-field sds-field--stacked sds-field--small">
+            <div class="sds-field__name">Subaward Number:</div>
+            <div class="sds-field__value">543</div>
+          </div>
+        </div>
+
+      </div>
+      <!-- 2nd column -->
+      <div class="grid-col-12 tablet:grid-col-3">
+        <!-- DUNS -->
+        <div class="grid-row margin-t-1">
+          <!-- Tag -->
+          <div class="grid-col-auto">
+            <div class="usa-tag sds-tag--info-purple sds-static--tag">DUNS</div>
+            <div class="sds-field sds-field--small sds-field__name has-usa-tag">Unique Entity ID:</div>
+            <div class="sds-field__value">902930291</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3rd column -->
+      <div class="grid-col-12 tablet:grid-col-3">
+
+        <div class="grid-row margin-t-1">
+          <div class="sds-field sds-field--stacked sds-field--small">
+            <div class="sds-field__name">Subaward Amount:</div>
+            <div class="sds-field__value">6811525.00</div>
+          </div>
+        </div>
+
+
+      </div>
+
+      <!-- 4th column -->
+      <div class="grid-col-12 tablet:grid-col-3">
+
+        <div class="grid-row margin-t-1">
+          <div class="sds-field sds-field--stacked sds-field--small">
+            <div class="sds-field__name">Subaward Date:</div>
+            <div class="sds-field__value">Feb 20, 2019</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="grid-row grid-gap sds-card__body">
+
+      <!-- 1st column -->
+      <div class="grid-col-12 tablet:grid-col-3">
+
+        <div class="grid-row margin-y-2">
+          <div class="sds-field sds-field--stacked sds-field--small">
+            <div class="sds-field__name">Doing Business As Name:</div>
+            <div class="sds-field__value">Simplicity Corperation</div>
+          </div>
+        </div>
+        <div class="grid-row margin-y-2">
+          <div class="sds-field sds-field--stacked sds-field--small">
+            <div class="sds-field__name">Physical Address:</div>
+            <div class="sds-field__value sds-results-child--hilite">
+              <div>123456 George Washington Boulevard, Suite 4a</div>
+              <div>Ashburn, VA 20147 United States</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- 2nd column -->
+      <div class="grid-col-12 tablet:grid-col-3">
+
+        <!-- SAM -->
+        <div class="grid-row margin-y-2">
+          <!-- Tag -->
+          <div class="grid-col-auto">
+            <div class="usa-tag sds-tag--info-white sds-static--tag">SAM</div>
+            <div class="sds-field sds-field--small sds-field__name has-usa-tag">Unique Entity ID:</div>
+            <div class="sds-field__value">1A23B45C67D89E</div>
+          </div>
+        </div>
+        <div class="grid-row margin-y-2">
+          <div class="sds-field sds-field--stacked sds-field--small">
+            <div class="sds-field__name">Principal Place of Performance:</div>
+            <div class="sds-field__value sds-results-child--hilite">
+              <div>1401 ROCKVILLE PIKE</div>
+              <div>ROCKVILLE, Virginia 10, USA</div>
+              <div>20852</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 3rd column -->
+      <div class="grid-col-12 tablet:grid-col-3">
+
+        <div class="grid-row margin-y-2">
+          <div class="sds-field sds-field--stacked sds-field--small">
+            <div class="sds-field__name">Primary Contract NAICS Code:</div>
+            <div class="sds-field__value sds-results-child--hilite">
+              <div>237310 -- Highway, Street, and Bridge Construction</div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 4th column -->
+      <div class="grid-col-12 tablet:grid-col-3">
+
+        <div class="grid-row margin-y-2">
+          <div class="sds-field sds-field--stacked sds-field--small">
+            <div class="sds-field__name">Organization / Business Type(s):</div>
+            <div class="sds-field__value">Contracts, SBA Certified Small Disadvantaged Business, SBA Certified 8(a)
+              Program
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="padding-3">
+      <hr />
+      <h3>Desciption of Requirement</h3>
+      <div class="sds-field__name">Preservation of adaptive immunity leads to HIV control upon treatment cessation.
+      </div>
+  
+      <hr />
+
+      <h3>Executive Compensation Data Certification(s)</h3>
+
+      <div class="grid-row margin-y-2">
+        <div class="sds-field sds-field--stacked sds-field--small">
+          <div class="sds-field__name">As provided to you by your subcontractor, in your subcontractor's business or
+            organization's preceding completed fiscal year, did its business or organization (the legal entity to
+            which the
+            DUNS
+            number it provided belongs) receive (1) 80 percent or more of its annual gross revenues in U.S. federal
+            contracts,
+            subcontracts, loans, grants, subgrants, and/or cooperative agreements; and (2) $25,000,000 or more in
+            annual gross
+            revenues from U.S. federal contracts, subcontracts, loans, grants, subgrants, and/or cooperative
+            agreements?*:
+          </div>
+          <div class="sds-field__value">No </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+</div>

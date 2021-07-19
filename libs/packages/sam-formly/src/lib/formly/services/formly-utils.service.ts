@@ -61,7 +61,7 @@ export class FormlyUtilsService {
       });
     }
 
-    if (field.templateOptions) {
+    if (field.templateOptions && field.type && Object.values(SdsFormlyTypes).includes(field.type as any)) {
       field.templateOptions.readonlyMode = readonlyMode;
     }
   }
