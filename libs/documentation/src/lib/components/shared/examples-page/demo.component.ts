@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'documentation-widget-demo',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './demo.component.html',
   styleUrls: ['./demo.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class DocumentationWidgetDemoComponent {
   @Input() demoTitle: string;
@@ -23,8 +24,6 @@ export class DocumentationWidgetDemoComponent {
     { name: 'Template Markup', type: 'markUp' },
     { name: 'Module', type: 'module' },
   ];
-
-
 
   getGithubLink() {
     const baseRepoURL = 'https://github.com/GSA/sam-design-system/tree/master/';
