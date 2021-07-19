@@ -1,0 +1,1 @@
+export const folderAlt1 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi sds-folder-alt-1\" viewBox=\"0 0 512 512\">\n  <path d=\"M440,129.49H208v-24a24,24,0,0,0-24-24H72a24,24,0,0,0-24,24v320a24,24,0,0,0,24,24H440a24,24,0,0,0,24-24v-272A24,24,0,0,0,440,129.49Zm-264-16v16H80v-16Zm256,304H80v-256H432Z\"/>\n</svg>";
