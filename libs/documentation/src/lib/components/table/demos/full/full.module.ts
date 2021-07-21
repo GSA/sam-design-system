@@ -4,7 +4,7 @@ import { SdsTableModule } from '@gsa-sam/sam-material-extensions';
 
 import { TableFullComponent } from './full.component';
 import { HttpClientModule } from '@angular/common/http';
-import { IconModule } from 'ngx-uswds-icons';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 
 @NgModule({

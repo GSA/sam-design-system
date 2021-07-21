@@ -7,7 +7,7 @@ import { SdsTopBannerComponent } from '@gsa-sam/components';
 import { NavigationMode } from '@gsa-sam/components';
 import { A11yModule } from '@angular/cdk/a11y';
 import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
-import { IconModule, allIcons as sdsAllIcons } from 'ngx-uswds-icons'
+import { IconModule, allIcons as sdsAllIcons } from '@gsa-sam/ngx-uswds-icons'
 
 
 describe('SdsHeaderComponent', () => {

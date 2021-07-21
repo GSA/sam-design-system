@@ -17,7 +17,7 @@ import {
 } from '@gsa-sam/components';
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { NgxBootstrapIconsModule, github } from 'ngx-bootstrap-icons';
-import { IconModule } from 'ngx-uswds-icons';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
   declarations: [AppComponent],

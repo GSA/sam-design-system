@@ -7,7 +7,7 @@ import { SdsTopBannerModule } from '@gsa-sam/components';
 
 import { A11yModule } from '@angular/cdk/a11y';
 import { NgxBootstrapIconsModule, square, justifyLeft, circle, circleFill } from 'ngx-bootstrap-icons';
-import { IconModule } from 'ngx-uswds-icons';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
   imports: [

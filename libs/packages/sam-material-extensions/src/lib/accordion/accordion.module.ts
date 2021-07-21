@@ -5,7 +5,7 @@ import { MatExpansionModule, MAT_EXPANSION_PANEL_DEFAULT_OPTIONS } from '@angula
 
 
 import { SdsAccordionComponent, SdsAccordionItemComponent, SdsAccordionTitleDirective, SdsAccordionContentDirective } from './accordion.component';
-import { IconModule } from 'ngx-uswds-icons';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
   declarations: [SdsAccordionComponent, SdsAccordionItemComponent, SdsAccordionTitleDirective, SdsAccordionContentDirective],

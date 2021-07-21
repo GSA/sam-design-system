@@ -8,7 +8,7 @@ import {
 } from '@gsa-sam/sam-formly';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SdsDialogModule } from '@gsa-sam/components';
-import { IconModule } from 'ngx-uswds-icons';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
   declarations: [DownloadComponent],

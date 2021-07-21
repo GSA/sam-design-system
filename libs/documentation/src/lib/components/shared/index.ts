@@ -10,7 +10,7 @@ import { DocumentationAPIComponent } from './api-page/docs-api-component.compone
 import { DocumentationWidgetDemoComponent } from './examples-page/demo.component';
 
 import { SdsTabsModule } from '@gsa-sam/components';
-import { IconModule } from 'ngx-uswds-icons';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 
 export * from './demo-list';

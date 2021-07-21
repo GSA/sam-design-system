@@ -9,7 +9,7 @@ import { ResultListCardComponent } from './result-list-card-component.component'
 import { ResultListCardItemSampleComponent } from './card-item.component';
 import { ResultListCardItemChildSampleComponent } from './child-card-item.component';
 import { NgxBootstrapIconsModule, question, check, threeDots, book, download } from 'ngx-bootstrap-icons';
-import { IconModule, bars, newVersion, comment, bell } from 'ngx-uswds-icons';
+import { IconModule, bars, newVersion, comment, bell } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
   declarations: [

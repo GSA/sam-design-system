@@ -9,7 +9,7 @@ import { SdsFormlyModule } from '../formly/formly.module';
 import { SdsFormlyResetModule } from '../formly-reset/formly-reset.module';
 import { AdvancedFiltersComponent } from './advanced-filters/advanced-filters.component';
 import { SDSFormlyUpdateModelService } from './service/sds-filter-model-update.service';
-import { IconModule } from 'ngx-uswds-icons';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 import { NgxBootstrapIconsModule, filter } from 'ngx-bootstrap-icons';
 
 @NgModule({

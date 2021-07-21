@@ -1,12 +1,12 @@
 <button *ngIf="_config.displayCloseBtn" sds-dialog-close class="close-btn" aria-label="Close Modal">
-  <i-uswds [icon]="'x'"></i-uswds>
+  <usa-icon [icon]="'x'"></usa-icon>
 </button>
 
 <!-- Alert Icons -->
 <div *ngIf="_config.alert" [ngSwitch]="_config.alert" class="sds-dialog-icon">
-  <i-uswds *ngSwitchCase="'error'" [icon]="'alert-error'" size="3x"></i-uswds>
-  <i-uswds *ngSwitchCase="'warning'" [icon]="'exclamation-triangle'" size="3x"></i-uswds>
-  <i-uswds *ngSwitchCase="'info'" [icon]="'info-circle'" size="3x"></i-uswds>
+  <usa-icon *ngSwitchCase="'error'" [icon]="'alert-error'" size="3x"></usa-icon>
+  <usa-icon *ngSwitchCase="'warning'" [icon]="'exclamation-triangle'" size="3x"></usa-icon>
+  <usa-icon *ngSwitchCase="'info'" [icon]="'info-circle'" size="3x"></usa-icon>
   <div *ngSwitchDefault>
     Alert <em>{{ _config.alert }}</em> is not valid
   </div>

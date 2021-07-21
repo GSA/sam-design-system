@@ -12,7 +12,7 @@ import { FormlyModule, FormlyForm } from '@ngx-formly/core';
 import { FormlySelectModule } from '@ngx-formly/core/select';
 import { FormlyFieldMultiCheckboxComponent } from './multicheckbox';
 import { SdsCollapseModule } from '@gsa-sam/components';
-import { IconModule } from 'ngx-uswds-icons';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 const createTestComponent = (html: string) =>
   createGenericTestComponent(html, TestComponent) as ComponentFixture<

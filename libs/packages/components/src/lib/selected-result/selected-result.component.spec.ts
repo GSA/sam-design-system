@@ -8,7 +8,7 @@ import { SDSSelectedResultConfiguration } from './models/SDSSelectedResultConfig
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { IconModule, allIcons as sdsAllIcons } from 'ngx-uswds-icons';
+import { IconModule, allIcons as sdsAllIcons } from '@gsa-sam/ngx-uswds-icons';
 import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 
 

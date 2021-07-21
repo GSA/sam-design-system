@@ -36,7 +36,7 @@ import { SdsReadonlyModule } from './readonly/readonly.module';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { NgxBootstrapIconsModule, caretDownFill, caretUpFill, filter, arrowClockwise } from 'ngx-bootstrap-icons';
 import { UsaFileInputModule } from '@gsa-sam/ngx-uswds';
-import { IconModule } from 'ngx-uswds-icons';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 // Validate the min length of the character
 export function minlengthValidationMessage(err, field) {

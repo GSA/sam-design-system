@@ -12,7 +12,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SdsFormlyModule } from '../formly/formly.module';
 import { SdsFormlyResetComponent } from './formly-reset.component';
-import { IconModule, allIcons as sdsAllIcons } from 'ngx-uswds-icons';
+import { IconModule, allIcons as sdsAllIcons } from '@gsa-sam/ngx-uswds-icons';
 import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 
 let resetEl: HTMLElement;

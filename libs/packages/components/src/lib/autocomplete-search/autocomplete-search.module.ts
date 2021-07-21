@@ -5,7 +5,7 @@ import { SDSAutocompleteSearchComponent } from './autocomplete-search.component'
 import { SDSClickOutsideModule } from '../click-outside/click-outside.module';
 import { SdsTabOutsideModule } from '../tab-outside/taboutside.module';
 import { NgxBootstrapIconsModule, x, caretDownFill, caretUpFill } from 'ngx-bootstrap-icons';
-import { IconModule } from 'ngx-uswds-icons';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
   imports: [

@@ -12,7 +12,7 @@ import {
 } from '@gsa-sam/sam-formly';
 import { SubheaderBasicDisplayComponent } from './subheader-basic-display.component';
 import { NgxBootstrapIconsModule, chevronLeft } from 'ngx-bootstrap-icons';
-import { IconModule } from 'ngx-uswds-icons';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
   imports: [

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { IconModule } from 'ngx-uswds-icons';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 import { SdsFormlyResetComponent } from './formly-reset.component';
 import { NgxBootstrapIconsModule, arrowClockwise } from 'ngx-bootstrap-icons';
 

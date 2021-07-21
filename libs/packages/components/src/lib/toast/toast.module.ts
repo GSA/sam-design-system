@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { SdsToastComponent } from './toast-single.component';
 import { CommonModule } from '@angular/common';
 import { NgxBootstrapIconsModule, check2Circle, infoCircle, exclamationTriangle, slashCircle, x } from 'ngx-bootstrap-icons';
-import { IconModule } from 'ngx-uswds-icons';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 export let SdsToastSettings = {
   toastComponent: SdsToastComponent,

@@ -7,7 +7,7 @@ import { SdsSearchResultListModule } from '@gsa-sam/components';
 import { SdsActionsMenuModule } from '@gsa-sam/layouts';
 import { ResultListBasic } from './result-list-basic.component';
 import { NgxBootstrapIconsModule, book } from 'ngx-bootstrap-icons';
-import { IconModule } from 'ngx-uswds-icons';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
   declarations: [ResultListBasic],

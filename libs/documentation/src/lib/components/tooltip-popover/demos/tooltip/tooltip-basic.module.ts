@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { SdsTooltipModule } from '@gsa-sam/components';
 import { TooltipBasic } from './tooltip-basic.component';
 import { NgxBootstrapIconsModule, exclamationCircle } from 'ngx-bootstrap-icons';
-import { IconModule } from 'ngx-uswds-icons';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
   declarations: [TooltipBasic],

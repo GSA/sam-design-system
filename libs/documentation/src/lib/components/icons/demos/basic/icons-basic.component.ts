@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { kebabCase } from 'lodash-es';
-import { allIcons } from 'ngx-uswds-icons';
+import { allIcons } from '@gsa-sam/ngx-uswds-icons';
 import * as _ from 'lodash';
 
 

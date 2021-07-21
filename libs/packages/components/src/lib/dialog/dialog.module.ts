@@ -9,7 +9,7 @@ import {
   SdsDialogService,
 } from './dialog';
 import { SdsDialogContainerComponent } from './dialog-container.component';
-import { IconModule, alertError } from 'ngx-uswds-icons';
+import { IconModule, alertError } from '@gsa-sam/ngx-uswds-icons';
 
 import {
   SdsDialogActionsDirective,

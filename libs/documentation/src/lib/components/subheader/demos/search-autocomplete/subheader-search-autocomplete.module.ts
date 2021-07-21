@@ -11,7 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
 import { SdsFormlyModule, SdsFormlyDialogModule } from '@gsa-sam/sam-formly';
 import { SubheaderSearchAutocompleteComponent } from './subheader-search-autocomplete.component';
-import { IconModule } from 'ngx-uswds-icons';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
   imports: [

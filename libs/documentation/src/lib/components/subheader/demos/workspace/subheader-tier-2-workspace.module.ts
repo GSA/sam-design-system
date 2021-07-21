@@ -13,7 +13,7 @@ import {
 import { SubheaderTier2WorkspaceComponent } from './subheader-tier-2-workspace.component';
 import { SdsButtonGroupModule } from 'libs/packages/sam-material-extensions/src/lib/button-group/button-group.module';
 import { NgxBootstrapIconsModule, chevronLeft } from 'ngx-bootstrap-icons';
-import { IconModule } from 'ngx-uswds-icons';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 
 

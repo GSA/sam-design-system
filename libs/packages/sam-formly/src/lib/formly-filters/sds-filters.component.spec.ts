@@ -16,7 +16,7 @@ import { DebugElement } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
-import { allIcons as sdsAllIcons } from 'ngx-uswds-icons'
+import { allIcons as sdsAllIcons } from '@gsa-sam/ngx-uswds-icons'
 import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 
 describe('The Sam Filters Component', () => {

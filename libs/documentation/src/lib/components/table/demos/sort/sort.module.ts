@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SdsTableModule } from '@gsa-sam/sam-material-extensions';
 
 import { TableSortComponent } from './sort.component';
-import { IconModule } from 'ngx-uswds-icons';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 
 @NgModule({

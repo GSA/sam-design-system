@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { IconModule } from 'ngx-uswds-icons';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 import { OverviewComponent } from './overview.component';
 import { SdsExternalLinkDirectivesModule } from '@gsa-sam/components';
 

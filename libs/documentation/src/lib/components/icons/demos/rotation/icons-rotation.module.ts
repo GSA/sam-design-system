@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IconModule } from 'ngx-uswds-icons';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 import { IconsRotation } from './icons-rotation.component'
 import { NgxBootstrapIconsModule, alarm } from 'ngx-bootstrap-icons';
 

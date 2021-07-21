@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SdsSearchResultListComponent } from './search-result-list.component';
-import { IconModule, alertError } from 'ngx-uswds-icons';
+import { IconModule, alertError } from '@gsa-sam/ngx-uswds-icons';
 import { NgxBootstrapIconsModule, search, arrowLeftCircleFill, infoCircle, circle } from 'ngx-bootstrap-icons';
 
 @NgModule({

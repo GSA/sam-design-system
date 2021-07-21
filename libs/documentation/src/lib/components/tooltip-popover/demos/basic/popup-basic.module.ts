@@ -4,7 +4,7 @@ import { PopupBasic } from './popup-basic.component';
 
 import { SdsPopoverModule, SdsTooltipModule } from '@gsa-sam/components';
 import { NgxBootstrapIconsModule, caretDownSquare, squareFill, handThumbsDown } from 'ngx-bootstrap-icons';
-import { IconModule } from 'ngx-uswds-icons';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
   declarations: [PopupBasic],

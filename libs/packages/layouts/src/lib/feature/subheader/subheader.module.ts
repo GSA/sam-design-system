@@ -16,7 +16,7 @@ import {
 import { SdsActionsMenuModule } from '../actions-menu/actions-menu.module';
 import { SdsDrawerCommunicationService } from './drawer-communication.service';
 import { NgxBootstrapIconsModule, threeDotsVertical } from 'ngx-bootstrap-icons';
-import { IconModule } from 'ngx-uswds-icons';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
   imports: [

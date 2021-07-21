@@ -13,7 +13,7 @@ import {
 import { SubheaderSearchSubPagesComponent } from './subheader-search-sub-pages.component';
 import { SdsButtonGroupModule } from '@gsa-sam/sam-material-extensions';
 import { NgxBootstrapIconsModule, chevronLeft } from 'ngx-bootstrap-icons';
-import { IconModule } from 'ngx-uswds-icons';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 
 

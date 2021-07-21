@@ -10,7 +10,7 @@ import { SdsDialogService } from '@gsa-sam/components';
 import { AdvancedFiltersComponent } from './advanced-filters.component';
 import { SdsAdvancedFiltersService } from './sds-advanced-filters.service';
 import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
-import { IconModule, allIcons as sdsAllIcons } from 'ngx-uswds-icons';
+import { IconModule, allIcons as sdsAllIcons } from '@gsa-sam/ngx-uswds-icons';
 
 
 describe('Advanced Filteres Component', () => {

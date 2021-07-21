@@ -21,7 +21,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { SDSFormlyUpdateModelService } from '@gsa-sam/sam-formly';
 import { SimpleChange } from '@angular/core';
 import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
-import { allIcons as sdsAllIcons } from 'ngx-uswds-icons';
+import { allIcons as sdsAllIcons } from '@gsa-sam/ngx-uswds-icons';
 
 describe('SearchListLayoutComponent', () => {
   let component: SearchListLayoutComponent;

@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { DebugElement } from '@angular/core';
 import { SpyLocation } from '@angular/common/testing';
 import { Location } from '@angular/common';
-import { IconModule } from 'ngx-uswds-icons';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 describe('SdsSearchResultListComponent', () => {
   let component: SdsSearchResultListComponent;
   let fixture: ComponentFixture<SdsSearchResultListComponent>;

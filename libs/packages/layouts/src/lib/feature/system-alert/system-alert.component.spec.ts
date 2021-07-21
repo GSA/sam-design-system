@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { SdsCollapseModule } from '@gsa-sam/components';
 import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
-import { IconModule, allIcons as sdsAllIcons } from 'ngx-uswds-icons'
+import { IconModule, allIcons as sdsAllIcons } from '@gsa-sam/ngx-uswds-icons'
 
 import { SdsSystemAlertComponent } from './system-alert.component';
 

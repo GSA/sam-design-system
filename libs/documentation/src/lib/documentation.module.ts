@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 import * as _ from 'lodash-es'
-import { IconModule, allIcons as sdsAllIcons, uswdsAllIcons} from 'ngx-uswds-icons'
+import { IconModule, allIcons as sdsAllIcons, uswdsAllIcons} from '@gsa-sam/ngx-uswds-icons'
 
 export const appendPrefix = (iconsObject: {[key: string]: string}, prefix: string): Object => {
   const prefixedIconsObject = {};
