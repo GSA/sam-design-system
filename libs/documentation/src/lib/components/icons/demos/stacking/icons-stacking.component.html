@@ -17,10 +17,10 @@
       &#125;)
   </code>
 </p>
-<p>After importing the module you can update your template to include <code>&#060;usa-stacked-icon&#062;</code>. The only input for this component is <code>sizeModifier</code> which can be used to scale the stacked icon using the same values as those used to modify the size of individual icons.</p>
+<p>After importing the module you can update your template to include <code>&#060;usa-stacked-icon&#062;</code>. The only input for this component is <code>size</code> which can be used to scale the stacked icon using the same values as those used to modify the size of individual icons.</p>
 <p>The icons you want to appear stacked should then be inserted as children of <code>&#060;usa-stacked-icon&#062;</code>. In order for the stacking css to work, make sure that the class <code>usa-stack-icon</code> is applied to the icons you are stacking.</p>
 <p style="max-width: unset;">
-  <code>&#060;usa-stacked-icon [sizeModifier]="'sm'"&#062;<br>
+  <code>&#060;usa-stacked-icon [size]="'sm'"&#062;<br>
     &emsp;&#060;usa-icon class="usa-stack-icon" [size]="'2x'" [icon]="'square-fill'"&#062;&#060;/usa-icon&#062;<br>
     &emsp;&#060;usa-icon class="usa-stack-icon text-base-lightest" [size]="'lg'" [icon]="'hand-thumbs-down'"&#062;&#060;/usa-icon&#062;<br>
     &#060;/usa-stacked-icon&#062;
@@ -28,7 +28,7 @@
 </p>
 <div style="display: flex; align-items: flex-end">
   <div style="padding-right: 1em; text-align: center;">
-    <usa-stacked-icon [sizeModifier]="'sm'">
+    <usa-stacked-icon [size]="'sm'">
       <usa-icon class="usa-stack-icon" [size]="'2x'" [icon]="'square-fill'"></usa-icon>
       <usa-icon class="usa-stack-icon text-base-lightest" [size]="'lg'" [icon]="'hand-thumbs-down'"></usa-icon>
     </usa-stacked-icon>
