@@ -49,7 +49,7 @@ let styles;
 let base;
 
 if (isFederalistBuild) {
-  const stylesPaths = glob.sync(path.join('dist', 'apps', 'sam-design-system-site', 'styles.*.css').toString())
+  const stylesPaths = glob.sync(path.join('dist', 'apps', 'sam-design-system-site', 'sds.*.css').toString())
   styles = fileContent(...stylesPaths);
   base = path.join('dist', 'apps', 'sam-design-system-site', 'assets', 'stackblitzes');
 

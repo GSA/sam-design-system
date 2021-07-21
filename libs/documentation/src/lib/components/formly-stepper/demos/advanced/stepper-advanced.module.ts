@@ -44,9 +44,6 @@ import {
   ],
   bootstrap: [
     StepperAdvancedDemoComponent,
-    SubawardeeDemoComponent,
-    AddSubawardeeDialogDemo,
-    CustomStepperDemo,
   ]
 })
 export class StepperAdvancedModule {}

@@ -37,7 +37,7 @@ export const ROUTES = [
         {
           pkg: 'formly',
           type: 'components',
-          name: 'SdsStepperComponent',
+          name: 'SdsStepper',
           formType: 'stepper'
         }
       ]
