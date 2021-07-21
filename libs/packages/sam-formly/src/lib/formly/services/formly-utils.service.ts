@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormlyFieldConfig } from '@ngx-formly/core';
-import { SdsFormlyTypes } from '../models/formly-types';
+import { SdsFormlyTypes, SdsReadonlyTypes } from '../models/formly-types';
 import { ReadonlyOptions } from '../readonly/readonly-options.model';
 
 interface ReadonlyDataType {
@@ -75,7 +75,7 @@ export class FormlyUtilsService {
     if (
       field.templateOptions &&
       (options.convertAll ||
-        Object.values(SdsFormlyTypes).includes(field.type as any))
+        Object.values(SdsReadonlyTypes).includes(field.type as any))
     ) {
       const label = field.templateOptions.label;
       const value = model[field.key as string];

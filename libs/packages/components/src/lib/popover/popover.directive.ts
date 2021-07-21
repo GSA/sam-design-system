@@ -14,11 +14,24 @@ export class SdsPopoverDirective implements AfterViewInit {
   popoverDivId: string;
 
   @HostListener('click', ['$event']) onClick($event: MouseEvent){
-    if (!this.closeOnContentClick && this.sdsPopoverDiv.contains($event.target as any)) {
+    const clickedOnContent = this.sdsPopoverDiv.contains($event.target as any);
+    if (clickedOnContent && !this.closeOnContentClick) {
       return;
     }
     
     this.clickEvent();
+  }
+
+  @HostListener('document:click', ['$event'])
+  clickout($event: MouseEvent) {
+    if (!this.closeOnClickOutside || !this.popoverVisible) {
+      return;
+    }
+    
+    const clickedInElement = this.el.nativeElement.contains($event.target);
+    if (!clickedInElement) {
+      this.clickEvent();
+    }
   }
 
   /**
@@ -35,6 +48,8 @@ export class SdsPopoverDirective implements AfterViewInit {
   position: string = 'top';
 
   @Input() closeOnContentClick = true;
+
+  @Input() closeOnClickOutside = false;
 
   constructor(private el: ElementRef, private renderer: Renderer2) {
     this.renderer.addClass(this.el.nativeElement, 'sds-popover');

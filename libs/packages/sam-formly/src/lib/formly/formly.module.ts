@@ -36,7 +36,7 @@ import {
 import { AnimationWrapperComponent } from './wrappers/form-field.animation';
 import { SdsReadonlyModule } from './readonly/readonly.module';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { NgxBootstrapIconsModule, caretDownFill, caretUpFill, filter, arrowClockwise } from 'ngx-bootstrap-icons';
+import { NgxBootstrapIconsModule, caretDownFill, caretUpFill, filter, arrowClockwise, chevronDown } from 'ngx-bootstrap-icons';
 import { UsaFileInputModule } from '@gsa-sam/ngx-uswds';
 
 // Validate the min length of the character
@@ -177,7 +177,7 @@ export const DATE_FORMAT: MatDateFormats = {
     FormsModule,
     UsaFileInputModule,
     SdsPopoverModule,
-    NgxBootstrapIconsModule.pick({caretDownFill, caretUpFill, filter, arrowClockwise}),
+    NgxBootstrapIconsModule.pick({caretDownFill, caretUpFill, filter, arrowClockwise, chevronDown}),
     FormlyModule.forChild(FORMLY_CONFIG),
     FormlyModule.forRoot({
       validationMessages: [

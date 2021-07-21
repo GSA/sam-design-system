@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { FormlyUtilsService } from '@gsa-sam/sam-formly';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -8,50 +9,78 @@ import { BehaviorSubject } from 'rxjs';
   selector: `sds-filters-group-panel-demo`,
 })
 export class FiltersGroupPanel implements OnInit {
-  constructor() {}
+  constructor() { }
 
   results: any = {};
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
   public filterChange$ = new BehaviorSubject<object>(null);
-
+  chips: any[];
   // Groups
 
   // Default Multiple Controls
   sdsGroupDefaultMultipleControls: FormlyFieldConfig[] = [
     {
       key: 'filters',
+      className: 'grid-col-2 display-inline-block',
       templateOptions: {
-        label: 'Entity Information',
+        label: 'Status',
         group: 'popover',
       },
       fieldGroup: [
         {
-          key: 'entity.type',
-          type: 'select',
+          key: 'socioeconomic',
+          type: 'multicheckbox',
           templateOptions: {
-            label: 'Entity Type',
-            description: 'Select the entity type.',
+            label: 'Socio-Economic Status',
             required: true,
             options: [
-              { label: 'Contract Opportunities', value: 'co' },
-              { label: 'Entity Information', value: 'ei' },
-              { label: 'Assistance Listings', value: 'al' },
-              { label: 'Contract Data', value: 'cd' },
-              { label: 'Federal Hierarchy', value: 'fh' },
-              { label: 'Wage Determination', value: 'wd' },
-            ],
+              {
+                key: 'vet',
+                value: 'Veteran Owned'
+              },
+              {
+                key: 'women',
+                value: 'Women Owned'
+              },
+              {
+                key: 'minority',
+                value: 'Minority Owned'
+              }
+            ]
           },
         },
+      ],
+    },
+    {
+      key: 'filters',
+      className: 'grid-col-2 display-inline-block',
+      templateOptions: {
+        label: 'Type',
+        group: 'popover',
+      },
+      fieldGroup: [
         {
-          key: 'multiple.default.entity.title',
-          type: 'input',
+          key: 'socioeconomic2',
+          type: 'multicheckbox',
           templateOptions: {
-            label: 'Entity Name',
-            placeholder: 'eg: Acme Corporation',
-            description: 'Enter the name of your entity.',
+            label: 'Socio-Economic Status',
             required: true,
+            options: [
+              {
+                key: 'vet',
+                value: 'Veteran Owned'
+              },
+              {
+                key: 'women',
+                value: 'Women Owned'
+              },
+              {
+                key: 'minority',
+                value: 'Minority Owned'
+              }
+            ]
           },
         },
       ],
@@ -77,5 +106,10 @@ export class FiltersGroupPanel implements OnInit {
     this.filterChange$.subscribe((res) => {
       this.results = res;
     });
+  }
+
+  onFilterChange($event: any) {
+    const readonlyData = FormlyUtilsService.formlyConfigToReadonlyData(this.sdsGroupDefaultMultipleControls, $event);
+    this.chips = readonlyData.filter(data => data.value);
   }
 }

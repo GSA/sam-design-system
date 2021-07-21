@@ -9,10 +9,16 @@
 </p>
 
 <h4>Multiple Form Controls</h4>
-<div class="sds-card--shadowed sds-card--bordered margin-bottom-2">
+<div class="sds-card--shadowed sds-card--bordered margin-bottom-2 bg-base-lighter">
   <div class="sds-card__content">
-    <h4 class="sds-card__title">Default</h4>
-    <sds-filters [form]="form" [fields]="sdsGroupDefaultMultipleControls" [model]="model"></sds-filters>
+    <h4 class="sds-card__title display-block">Default</h4>
+    <sds-filters [form]="form" [fields]="sdsGroupDefaultMultipleControls" [model]="model" (filterChange)="onFilterChange($event)"></sds-filters>
+    <div class="grid-row  grid-gap-2">
+      <div *ngFor="let chip of chips" class="grid-col-auto">
+        <sds-readonly-container [label]="chip.label" [value]="chip.value" [additionalConfig]="chip.readonlyOptions" [formlyType]="chip.formlyType"></sds-readonly-container>
+      </div>
+    </div>
+
   </div>
 </div>
 

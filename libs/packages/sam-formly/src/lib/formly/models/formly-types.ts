@@ -16,3 +16,18 @@ export enum SdsFormlyTypes {
   SEARCH = 'search',
   FILEINPUT = 'fileinput',
 };
+
+export enum SdsReadonlyTypes {
+  INPUT = 'input',
+  CHECKBOX = 'checkbox',
+  MULTICHECKBOX = 'multicheckbox',
+  RADIO = 'radio',
+  AUTOCOMPLETE = 'autocomplete',
+  DATEPICKER = 'datepicker',
+  SELECT = 'select',
+  TEXTAREA = 'textarea',
+  READONLY = 'readonly',
+  DATERANGEPICKER = 'daterangepicker',
+  FILEINFO = 'fileinfo',
+  SEARCH = 'search',
+};
