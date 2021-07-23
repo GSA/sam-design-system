@@ -11,10 +11,10 @@ import { AdvancedFiltersComponent } from './advanced-filters/advanced-filters.co
 import { SDSFormlyUpdateModelService } from './service/sds-filter-model-update.service';
 import { SdsIconModule } from '@gsa-sam/components';
 import { NgxBootstrapIconsModule, filter } from 'ngx-bootstrap-icons';
-import { SdsFormlyChips } from './service/formly-chips.pipe';
+import { SdsReadonlyModule } from '../formly/readonly/readonly.module';
 
 @NgModule({
-  declarations: [SdsFiltersComponent, AdvancedFiltersComponent, SdsFormlyChips],
+  declarations: [SdsFiltersComponent, AdvancedFiltersComponent ],
   imports: [
     CommonModule,
     FormsModule,
@@ -24,9 +24,10 @@ import { SdsFormlyChips } from './service/formly-chips.pipe';
     ReactiveFormsModule,
     FormlySelectModule,
     FormlyModule,
+    SdsReadonlyModule,
     NgxBootstrapIconsModule.pick({filter})
   ],
-  exports: [SdsFiltersComponent, SdsFormlyChips],
+  exports: [SdsFiltersComponent ],
   providers: [SDSFormlyUpdateModelService],
 })
 export class SdsFiltersModule {}

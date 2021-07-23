@@ -10,7 +10,7 @@ import { ReadonlyCheckboxComponent } from './readonly-types/readonly-checkbox';
 import { ReadonlyMulticheckboxComponent } from './readonly-types/readonly-multicheckbox';
 import { ReadonlyDaterangeComponent } from './readonly-types/readonly-daterange';
 import { ReadonlyFileinfoComponent } from './readonly-types/readonly-fileinfo';
-import { ReadonlyContainerComponent } from './readonly-container.component';
+import { ReadonlyContainerComponent, ReadonlyLabelDirective, ReadonlyValueDirective } from './readonly-container.component';
 
 @NgModule({
   imports: [
@@ -28,6 +28,8 @@ import { ReadonlyContainerComponent } from './readonly-container.component';
     ReadonlyDaterangeComponent,
     ReadonlyFileinfoComponent,
     ReadonlyContainerComponent,
+    ReadonlyLabelDirective,
+    ReadonlyValueDirective,
   ],
   exports: [
     ReadonlyInputComponent,
@@ -40,6 +42,8 @@ import { ReadonlyContainerComponent } from './readonly-container.component';
     ReadonlyDaterangeComponent,
     ReadonlyFileinfoComponent,
     ReadonlyContainerComponent,
+    ReadonlyLabelDirective,
+    ReadonlyValueDirective,
   ]
 
 })

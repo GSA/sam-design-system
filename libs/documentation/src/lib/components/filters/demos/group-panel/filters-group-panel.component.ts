@@ -1,29 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { FormlyUtilsService } from '@gsa-sam/sam-formly';
+import { SDSAutocompletelConfiguration, SelectionMode } from '@gsa-sam/components';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { BehaviorSubject } from 'rxjs';
+import { AutocompleteSampleDataService } from '../../../formly-autocomplete/demos/basic/autocomplete-sample.service';
 
 @Component({
   templateUrl: './filters-group-panel.component.html',
   selector: `sds-filters-group-panel-demo`,
+  providers: [
+    AutocompleteSampleDataService
+  ]
 })
 export class FiltersGroupPanel implements OnInit {
-  constructor() { }
+  constructor( 
+    private service: AutocompleteSampleDataService
+  ) { }
 
   results: any = {};
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
   public filterChange$ = new BehaviorSubject<object>(null);
-  chips: any[];
+  public settings = new SDSAutocompletelConfiguration();
   // Groups
 
   // Default Multiple Controls
   sdsGroupDefaultMultipleControls: FormlyFieldConfig[] = [
     {
       key: 'filters',
-      className: 'grid-col-2 display-inline-block',
       templateOptions: {
         label: 'Status',
         group: 'popover',
@@ -55,9 +60,8 @@ export class FiltersGroupPanel implements OnInit {
     },
     {
       key: 'filters',
-      className: 'grid-col-2 display-inline-block',
       templateOptions: {
-        label: 'Type',
+        label: 'Socio-Economic Status',
         group: 'popover',
       },
       fieldGroup: [
@@ -85,6 +89,18 @@ export class FiltersGroupPanel implements OnInit {
         },
       ],
     },
+    {
+      key: 'searchmodel',
+      type: 'search',
+      templateOptions: {
+        label: 'Search',
+        hideLabel: true,
+        submitHandler: this.handleSubmit,
+        searchSettings: {
+          placeholder: 'eg: Acme Corporation',
+        },
+      },
+    },
   ];
 
   // Default Single Control
@@ -102,14 +118,28 @@ export class FiltersGroupPanel implements OnInit {
     },
   ];
 
+
   public ngOnInit() {
     this.filterChange$.subscribe((res) => {
       this.results = res;
     });
+
+    this.settings.id = 'autocompleteBasic';
+    this.settings.primaryKeyField = 'id';
+    this.settings.primaryTextField = 'name';
+    this.settings.secondaryTextField = 'subtext';
+    this.settings.labelText = 'Autocomplete 1';
+    this.settings.selectionMode = SelectionMode.MULTIPLE;
+    this.settings.autocompletePlaceHolderText = 'eg: Level 1';
+    this.settings.debounceTime = 350;
+    this.settings.hideChips = true;
   }
 
-  onFilterChange($event: any) {
-    const readonlyData = FormlyUtilsService.formlyConfigToReadonlyData(this.sdsGroupDefaultMultipleControls, $event);
-    this.chips = readonlyData.filter(data => data.value);
+  removeItem(chip: any) {
+    console.log(chip);
+  }
+
+  handleSubmit($event) {
+    console.log($event);
   }
 }

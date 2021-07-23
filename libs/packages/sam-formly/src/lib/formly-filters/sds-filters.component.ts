@@ -10,15 +10,15 @@ import {
   SimpleChanges,
 } from '@angular/core';
 
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
-import { Router, ActivatedRoute } from '@angular/router';
 import * as qs from 'qs';
 import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
 import { SDSFormlyUpdateModelService } from './service/sds-filter-model-update.service';
 
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { FormlyUtilsService, ReadonlyDataType } from '../formly/services/formly-utils.service';
 
 @Component({
   selector: 'sds-filters',
@@ -81,11 +81,21 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
   @Input() defaultModel: any;
 
   /**
+   * Toggle layout for filters - when horizontal is toggled,
+   * the reset and more filters are placed in top right corner
+   */
+  @Input() horizontal = false;
+
+  @Input() displayChips;
+  /**
    *  Emit results when model updated
    */
   // TODO: check type -- Formly models are typically objects
   @Output() filterChange = new EventEmitter<object>();
   @Output() showInactiveFiltersChange = new EventEmitter<boolean>();
+
+  chips: ReadonlyDataType[] = [];
+
   unsubscribe$ = new Subject<void>();
   _isObj = (obj: any): boolean => typeof obj === 'object' && obj !== null;
   _isEmpty = (obj: any): boolean => Object.keys(obj).length === 0;
@@ -110,8 +120,6 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     @Optional()
     public formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,
     private cdr: ChangeDetectorRef,
-    private router: Router,
-    private route: ActivatedRoute,
     @Optional()
     private filterUpdateModelService: SDSFormlyUpdateModelService
   ) { }
@@ -121,6 +129,9 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
+    // keep display chips to defined value if defined, otherwise, default to false, unless hoirzontal is turned on
+    this.displayChips = this.displayChips != undefined ? this.displayChips : this.horizontal;
+
     if (this.filterUpdateModelService) {
       this.filterUpdateModelService.filterModel
         .pipe(takeUntil(this.unsubscribe$))
@@ -185,29 +196,29 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
 
   /**
    * Recursively iterate over each field as well as potential field groups of the field
-   * to find a field with the given key. Returns true if field exists. Also toggles
-   * hide value of formly field for the key as well as it's parent fields to false.
+   * to find a field with the given key. Returns the field if found, otherwise returns null.
    * @param fields - The list of formly fields to search for the given key
    * @param key - The key of the formly field config to search for
    */
   private findFieldInFieldGroup(fields: FormlyFieldConfig[], key: any) {
-    let existsInFieldGroup = false;
+    let matchingField: FormlyFieldConfig = null;
     
     for (let i = 0; i < fields.length; i++) {
       const field = fields[i];
 
       if (field.fieldGroup) {
-        existsInFieldGroup = existsInFieldGroup || this.findFieldInFieldGroup(field.fieldGroup, key);
+        matchingField = this.findFieldInFieldGroup(field.fieldGroup, key);
+      } else if(field.fieldArray) {
+        matchingField = this.findFieldInFieldGroup([field.fieldArray], key);
       } else if (field.key === key) {
-        existsInFieldGroup = true;
+        matchingField = field;
       }
-      if (existsInFieldGroup) {
-        field.hide = false;
-        return true;;
+      if (matchingField) {
+        break;
       }
     }
 
-    return false;
+    return matchingField;
   }
 
   onModelChange(change: any) {
@@ -221,6 +232,11 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     if (this.formlyUpdateComunicationService) {
       this.formlyUpdateComunicationService.updateFilter(updatedModel);
     }
+
+    if (this.displayChips) {
+      this.generateChips(change, this.fields);
+    }
+
     this.cdr.detectChanges();
   }
 
@@ -305,5 +321,72 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
 
   handleInactiveFilterChange(inactiveFilterValue: boolean) {
     this.showInactiveFiltersChange.emit(inactiveFilterValue);
+  }
+
+  generateChips(model: any, fields: FormlyFieldConfig[]) {
+    const readonlyData = FormlyUtilsService.formlyConfigToReadonlyData(fields, model);
+    const chipsWithValue = readonlyData.filter(data => data.value);
+    let allChips = [];
+    chipsWithValue.forEach(chip => {
+      if (typeof chip.value != 'object') {
+        allChips.push(chip);
+        return;
+      }
+
+      if (Array.isArray(chip.value)) {
+        const newChips = chip.value.map(chipValue => {
+          return {...chip, value: [chipValue]};
+        });
+        allChips = allChips.concat(newChips);
+        return;
+      }
+
+      Object.keys(chip.value).forEach(key => {
+        const value = chip.value[key];
+        const newChip = {...chip, value: {[key]: value}};
+        allChips.push(newChip);
+      })
+    })
+
+    this.chips = allChips;
+  }
+
+  /**
+   * Removing a certain chip from UI is the same as applying a change to the form, so
+   * this should update the form control. We can find the field to update based on the chip's
+   * formly key and what values to update to based on values of existing chips with the same key
+   * @param chip 
+   * @returns 
+   */
+  removeChip(chip: ReadonlyDataType) {
+    const field = this.findFieldInFieldGroup(this.fields, chip.formlyKey);
+
+    if (!field) {
+      throw new Error('Error: unable to find field to remove chip')
+    }
+
+    // If the form control is not complex, then we can simply reset
+    if (typeof field.formControl.value != 'object') {
+      field.formControl.reset();
+      return;
+    }
+
+    // If the form control contains complex values, such as an object or array, we need to determine what the new
+    // value of the form will be after this chip has been removed, and update the form control accordingly
+    const chipsWithSameKey = this.chips.filter(exisingChip => chip != exisingChip && chip.formlyKey === exisingChip.formlyKey);
+    const existingValues = chipsWithSameKey.map(chipWithSameKey => chipWithSameKey.value);
+
+    if (Array.isArray(field.formControl.value)) {
+      let updatedValue = [];
+      existingValues.forEach(value => {
+        updatedValue = updatedValue.concat(value)
+      });
+      field.formControl.setValue(updatedValue);
+      return;
+    }
+
+    const objectValue = {}
+    Object.assign(objectValue, ...existingValues)
+    field.formControl.setValue(objectValue);
   }
 }

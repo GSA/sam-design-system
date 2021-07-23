@@ -3,11 +3,12 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 import { SdsFormlyTypes, SdsReadonlyTypes } from '../models/formly-types';
 import { ReadonlyOptions } from '../readonly/readonly-options.model';
 
-interface ReadonlyDataType {
+export interface ReadonlyDataType {
   formlyType: SdsFormlyTypes;
   label: string;
   value: any;
   readonlyOptions: ReadonlyOptions;
+  formlyKey: string;
 }
 @Injectable()
 export class FormlyUtilsService {
@@ -96,6 +97,7 @@ export class FormlyUtilsService {
         label,
         value,
         readonlyOptions,
+        formlyKey: field.key
       });
     }
 

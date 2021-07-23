@@ -1,7 +1,25 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { AfterContentInit, Component, ContentChild, Directive, Input, OnInit, TemplateRef } from "@angular/core";
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { SdsFormlyTypes } from "../models/formly-types";
 import { ReadonlyOptions } from './readonly-options.model';
+
+@Directive({
+  selector: '[sdsReadonlyLabel]'
+})
+export class ReadonlyLabelDirective {
+  constructor(
+    public templateRef: TemplateRef<any>
+  ) {}
+}
+
+@Directive({
+  selector: '[sdsReadonlyValue]'
+})
+export class ReadonlyValueDirective {
+  constructor(
+    public templateRef: TemplateRef<any>
+  ) {}
+}
 
 /**
  * Wrapper level component for displaying readonly format for each formly types
@@ -11,6 +29,9 @@ import { ReadonlyOptions } from './readonly-options.model';
   templateUrl: './readonly-container.component.html',
 })
 export class ReadonlyContainerComponent implements OnInit {
+
+  @ContentChild(ReadonlyLabelDirective) labelTemplate: ReadonlyLabelDirective;
+  @ContentChild(ReadonlyValueDirective) valueTemplate: ReadonlyValueDirective;
 
   /**
    * Formlyfieldconfig that is used to generate the formlyform. If this value
@@ -49,6 +70,10 @@ export class ReadonlyContainerComponent implements OnInit {
       this.formlyType = this.formlyFieldConfig.type;
       this.assignAdditionalConfig();
     }
+  }
+
+  ngOnChanges() {
+    console.log('readonlyContainer', this);
   }
 
   private assignAdditionalConfig() {
