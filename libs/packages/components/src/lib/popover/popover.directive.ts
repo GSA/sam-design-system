@@ -38,7 +38,7 @@ export class SdsPopoverDirective implements AfterViewInit {
    * Adding listener for keyup.enter to ensure that user can activate popover with keyboard
    */
   @HostListener('keyup.enter', ['$event']) onKeyUp($event: KeyboardEvent){
-    if (! this.closeOnContentClick &&this.sdsPopoverDiv.contains($event.target as any)) {
+    if (!this.closeOnContentClick && this.sdsPopoverDiv.contains($event.target as any)) {
       return;
     }
     this.clickEvent();

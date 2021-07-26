@@ -72,10 +72,6 @@ export class ReadonlyContainerComponent implements OnInit {
     }
   }
 
-  ngOnChanges() {
-    console.log('readonlyContainer', this);
-  }
-
   private assignAdditionalConfig() {
     const options = this.formlyFieldConfig.templateOptions.options as any;
     this.additionalConfig = {
