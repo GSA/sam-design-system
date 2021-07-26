@@ -27,7 +27,7 @@
       </sds-readonly-container>
     </div>
     <button [attr.aria-label]="'Remove Item ' + chip.label + ' ' + chip.value"
-      [class.text-base]="disabled" aria-hidden="false" class="sds-tag__close position-static" 
+      aria-hidden="false" class="sds-tag__close position-static" 
       (click)="removeChip(chip)"
       (keyup.enter)="removeChip(chip)">
       <sds-icon [icon]="'x'" size="lg"></sds-icon>
