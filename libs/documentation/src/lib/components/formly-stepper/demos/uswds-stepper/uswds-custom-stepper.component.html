@@ -1,0 +1,15 @@
+
+<usa-step-indicator 
+  [steps]="stepLabels" 
+  [currentStep]="currentStepIndex"
+  [displayCounters]="true" 
+  [smallCounters]="true" 
+  (currentStepChange)="onStepChange($event)">
+  <h2 UsaStepHeader [template]="emptyHeader">
+    <ng-template #emptyHeader>
+      <span></span>
+    </ng-template>
+  </h2>
+</usa-step-indicator>
+<div [ngTemplateOutlet]="selectedStep ? selectedStep.content : null"></div>
+
