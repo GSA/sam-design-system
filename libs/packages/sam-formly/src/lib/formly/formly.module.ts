@@ -22,7 +22,8 @@ import {
   SdsDialogModule,
   SdsTextModule,
   SdsSearchModule,
-  SdsCollapseModule
+  SdsCollapseModule,
+  SdsPopoverModule,
 } from '@gsa-sam/components';
 
 import { FIELD_TYPE_COMPONENTS, FORMLY_CONFIG } from './formly.config';
@@ -34,7 +35,7 @@ import {
 import { AnimationWrapperComponent } from './wrappers/form-field.animation';
 import { SdsReadonlyModule } from './readonly/readonly.module';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { NgxBootstrapIconsModule, caretDownFill, caretUpFill, filter, arrowClockwise } from 'ngx-bootstrap-icons';
+import { NgxBootstrapIconsModule, caretDownFill, caretUpFill, filter, arrowClockwise, chevronDown } from 'ngx-bootstrap-icons';
 import { UsaFileInputModule } from '@gsa-sam/ngx-uswds';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
@@ -175,7 +176,8 @@ export const DATE_FORMAT: MatDateFormats = {
     SdsReadonlyModule,
     FormsModule,
     UsaFileInputModule,
-    NgxBootstrapIconsModule.pick({caretDownFill, caretUpFill, filter, arrowClockwise}),
+    SdsPopoverModule,
+    NgxBootstrapIconsModule.pick({caretDownFill, caretUpFill, filter, arrowClockwise, chevronDown}),
     FormlyModule.forChild(FORMLY_CONFIG),
     FormlyModule.forRoot({
       validationMessages: [
