@@ -1,30 +1,27 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 
 @Component({
   selector: `sds-readonly-select`,
   template: `
-    <label class="usa-label">
-      <span
-      *ngIf="to?.tagText"
-      class="usa-tag"
-      [ngClass]="to.tagClass ? to.tagClass : 'sds-tag--info-white'"
-      >{{ to.tagText }}</span>
-      {{label ? label : to.label}}
-    </label>
-    <span [innerHTML]="displayValue.label" class="text-bold"></span>
+    <ng-container *ngIf="valueTemplate; else defaultValue" 
+    [ngTemplateOutlet]="valueTemplate" 
+    [ngTemplateOutletContext]="{$implicit: displayValue.label}">
+    </ng-container>
+    <ng-template #defaultValue>
+      <span [innerHTML]="displayValue.label" class="text-bold"></span>
+    </ng-template>
   `
 })
 export class ReadonlySelectComponent implements OnInit {
-  @Input() to: any = {}; // template options
-  @Input() label: string;
   @Input() value: any;
+  @Input() valueTemplate: TemplateRef<any>;
   @Input() selectOptions: any[];
 
   displayValue: {label: string, value: string};
 
   ngOnInit() {
     if (!this.selectOptions || !this.selectOptions.length) {
-      throw new Error(`No option list provided for readonly mode of select type for ${this.label}`);
+      throw new Error(`No option list provided for readonly mode of select type with value of ${this.value}`);
     }
 
     if (!this.value) {

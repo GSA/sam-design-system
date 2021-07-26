@@ -103,4 +103,11 @@ export class SDSAutocompletelConfiguration
    * To enable the Group item selectable
    */
   public isSelectableGroup: boolean = true;
+
+  /**
+   * Toggle whether or not to display chips. This can be useful if some custom UI is used
+   * for rendering autocomplete values in multi-select mode
+   * @default false
+   */
+  public hideChips: boolean = false;
 }

@@ -1,23 +1,18 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, TemplateRef } from "@angular/core";
 
 @Component({
   selector: `sds-readonly-input`,
   template: `
-    <label class="usa-label">
-      <span
-      *ngIf="to?.tagText"
-      class="usa-tag"
-      [ngClass]="to.tagClass ? to.tagClass : 'sds-tag--info-white'"
-      >{{ to.tagText }}</span>
-      {{label ? label : to.label}}
-    </label>
-    <span class="text-bold">{{value ? value : '&mdash;'}}</span>
+    <ng-container *ngIf="valueTemplate; else defaultValue" 
+    [ngTemplateOutlet]="valueTemplate" 
+    [ngTemplateOutletContext]="{$implicit: value}">
+    </ng-container>
+    <ng-template #defaultValue>
+      <span class="text-bold">{{value ? value : '&mdash;'}}</span>
+    </ng-template>
   `
 })
 export class ReadonlyInputComponent {
-  @Input() to: any = {}; // template options
-  @Input() label: string;
   @Input() value: any;
-
-  constructor() {}
+  @Input() valueTemplate: TemplateRef<any>;
 }

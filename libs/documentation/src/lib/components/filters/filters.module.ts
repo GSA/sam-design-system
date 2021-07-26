@@ -19,6 +19,8 @@ import { FiltersGroupPanel } from './demos/group-panel/filters-group-panel.compo
 import { FiltersGroupPanelModule } from './demos/group-panel/filters-group-panel.module';
 import { FiltersDefaultValueComponent } from './demos/defaultValues/filters-default-value.component';
 import { FiltersDefaultValueModule } from './demos/defaultValues/filters-default-value.module';
+import { HorizontalFilterDemo } from './demos/horizontal-filter/horizontal-filter.component';
+import { HorizontalFilterModule } from './demos/horizontal-filter/horizontal-filter.module';
 
 declare var require: any;
 const DEMOS = {
@@ -37,6 +39,15 @@ const DEMOS = {
     markup: require('!!raw-loader!./demos/optional/filters-optional.component.html'),
     module: require('!!raw-loader!./demos/optional/filters-optional.module'),
     path: 'libs/documentation/src/lib/components/filters/demos/optional',
+  },
+  horizontalFilters: {
+    title: 'Horizontal Filter',
+    type: HorizontalFilterDemo,
+    code: require('!!raw-loader!./demos/horizontal-filter/horizontal-filter.component'),
+    markup: require('!!raw-loader!./demos/horizontal-filter/horizontal-filter.component.html'),
+    module: require('!!raw-loader!./demos/horizontal-filter/horizontal-filter.module'),
+    path:
+      'libs/documentation/src/lib/components/filters/demos/horizontal-filter',
   },
   hideexpression: {
     title: 'Filters Hide expression',
@@ -63,7 +74,7 @@ const DEMOS = {
     module: require('!!raw-loader!./demos/defaultValues/filters-default-value.module'),
     path:
       'libs/documentation/src/lib/components/filters/demos/defaultValues',
-  },
+  }
 };
 
 export const ROUTES = [
@@ -98,6 +109,7 @@ export const ROUTES = [
     FiltersGroupPanelModule,
     FiltersShowInactiveFilterValuesModule,
     FiltersDefaultValueModule,
+    HorizontalFilterModule,
   ],
 })
 export class FiltersModule {

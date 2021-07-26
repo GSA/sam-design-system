@@ -1,28 +1,34 @@
-import { Component, Input } from "@angular/core";
+import { DatePipe } from "@angular/common";
+import { Component, Input, OnInit, TemplateRef } from "@angular/core";
 
 @Component({
   selector: `sds-readonly-daterange`,
   template: `
-    <label class="usa-label">
-      <span
-      *ngIf="to?.tagText"
-      class="usa-tag"
-      [ngClass]="to.tagClass ? to.tagClass : 'sds-tag--info-white'"
-      >{{ to.tagText }}</span>
-      {{label ? label : to.label}}
-    </label>
-    <span class="text-bold"> 
-      {{value[daterangepickerOptions.fromDateKey] | date: 'mediumDate'}} - 
-      {{value[daterangepickerOptions.toDateKey] | date: 'mediumDate'}}
-    </span>
+    <ng-container *ngIf="valueTemplate; else defaultValue" 
+    [ngTemplateOutlet]="valueTemplate" 
+    [ngTemplateOutletContext]="{$implicit: displayValue}">
+    </ng-container>
+    <ng-template #defaultValue>
+      <span class="text-bold"> 
+        {{displayValue}}
+      </span>
+    </ng-template>
   `
 })
-export class ReadonlyDaterangeComponent {
-  @Input() to: any = {}; // template options
-  @Input() label: string;
+export class ReadonlyDaterangeComponent implements OnInit {
   @Input() value: any;
+  @Input() valueTemplate: TemplateRef<any>;
   @Input() daterangepickerOptions = {
     fromDateKey: 'fromDate',
     toDateKey: 'toDate'
   };
+
+  displayValue: string;
+  constructor(private datePipe: DatePipe) {}
+
+  ngOnInit() {
+    let fromDate = this.datePipe.transform(this.value[this.daterangepickerOptions.fromDateKey], 'mediumDate');
+    let toDate = this.datePipe.transform(this.value[this.daterangepickerOptions.toDateKey], 'mediumDate');
+    this.displayValue = `${fromDate ? fromDate : '--'} ${toDate ? ' - ' + toDate : ''}`;
+  }
 }
