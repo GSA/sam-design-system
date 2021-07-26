@@ -333,7 +333,9 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
   }
 
   handleInactiveFilterChange(inactiveFilterValue: boolean) {
-    this.generateChips(this.model, this.fields);
+    if (this.displayChips) {
+      this.generateChips(this.model, this.fields);
+    }
     this.showInactiveFiltersChange.emit(inactiveFilterValue);
   }
 
@@ -362,7 +364,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
         if (fromDateValue || toDateValue) {
           allChips.push(chip);
         }
-        
+
         return;
       }
 
