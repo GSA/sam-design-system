@@ -1,13 +1,13 @@
-<div [ngClass]="{'position-relative sds-filters--horizontal': horizontal}">
+<div [ngClass]="{'sds-filters--horizontal': horizontal}">
   <formly-form [form]="form" [fields]="fields" [options]="options" [model]="model" (modelChange)="onModelChange($event)">
   </formly-form>
-  <div class="grid-row" [ngClass]="{'position-absolute top-neg-3 right-0': horizontal, 'margin-top-2': !horizontal}">
+  <div class="grid-row" [ngClass]="{'margin-left-auto grid-gap-1 margin-top-neg-2': horizontal, 'margin-top-2': !horizontal}">
     <div *ngIf="advancedFilters" class="grid-col">
       <sds-advanced-filters [form]="form" [sortMoreFilterBy]="sortMoreFilterBy" [fields]="fields" [options]="options"
-        [model]="model" (showInactiveFiltersChange)="showInactiveFiltersChange.next($event)" [isInactiveValueFieldShown]=isInactiveValueFieldShown>
+        [model]="model" (showInactiveFiltersChange)="handleInactiveFilterChange($event)" [isInactiveValueFieldShown]=isInactiveValueFieldShown>
       </sds-advanced-filters>
     </div>
-    <div class="grid-col text-right">
+    <div *ngIf="showReset" class="grid-col text-right">
       <sds-formly-reset [options]="options" [defaultModel]="defaultModel"></sds-formly-reset>
     </div>
   </div>

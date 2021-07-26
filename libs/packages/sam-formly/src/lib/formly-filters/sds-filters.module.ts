@@ -10,7 +10,7 @@ import { SdsFormlyResetModule } from '../formly-reset/formly-reset.module';
 import { AdvancedFiltersComponent } from './advanced-filters/advanced-filters.component';
 import { SDSFormlyUpdateModelService } from './service/sds-filter-model-update.service';
 import { SdsIconModule } from '@gsa-sam/components';
-import { NgxBootstrapIconsModule, filter } from 'ngx-bootstrap-icons';
+import { NgxBootstrapIconsModule, filter, x } from 'ngx-bootstrap-icons';
 import { SdsReadonlyModule } from '../formly/readonly/readonly.module';
 
 @NgModule({
@@ -25,7 +25,7 @@ import { SdsReadonlyModule } from '../formly/readonly/readonly.module';
     FormlySelectModule,
     FormlyModule,
     SdsReadonlyModule,
-    NgxBootstrapIconsModule.pick({filter})
+    NgxBootstrapIconsModule.pick({filter, x})
   ],
   exports: [SdsFiltersComponent ],
   providers: [SDSFormlyUpdateModelService],

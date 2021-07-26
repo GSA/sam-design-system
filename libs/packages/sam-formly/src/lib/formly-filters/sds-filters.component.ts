@@ -19,6 +19,7 @@ import { SDSFormlyUpdateModelService } from './service/sds-filter-model-update.s
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { FormlyUtilsService, ReadonlyDataType } from '../formly/services/formly-utils.service';
+import { SdsFormlyTypes } from '../formly/models/formly-types';
 
 @Component({
   selector: 'sds-filters',
@@ -86,7 +87,18 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
    */
   @Input() horizontal = false;
 
-  @Input() displayChips;
+  /**
+   * Toggle displaying chips for selected filter values. By default this is toggled off
+   * in normal situations. When horizontal setting is turned on, then chip display is
+   * also toggled on by default
+   */
+  @Input() displayChips: boolean;
+
+  /**
+   * Switch to show/hide the reset all button
+   * @default true
+   */
+  @Input() showReset: boolean = true;
   /**
    *  Emit results when model updated
    */
@@ -206,13 +218,14 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     for (let i = 0; i < fields.length; i++) {
       const field = fields[i];
 
-      if (field.fieldGroup) {
+      if (field.key === key) {
+        matchingField = field;
+      } else if (field.fieldGroup) {
         matchingField = this.findFieldInFieldGroup(field.fieldGroup, key);
       } else if(field.fieldArray) {
         matchingField = this.findFieldInFieldGroup([field.fieldArray], key);
-      } else if (field.key === key) {
-        matchingField = field;
       }
+
       if (matchingField) {
         break;
       }
@@ -320,6 +333,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
   }
 
   handleInactiveFilterChange(inactiveFilterValue: boolean) {
+    this.generateChips(this.model, this.fields);
     this.showInactiveFiltersChange.emit(inactiveFilterValue);
   }
 
@@ -341,8 +355,25 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
         return;
       }
 
+      if (chip.formlyType === SdsFormlyTypes.DATERANGEPICKER || chip.formlyType === SdsFormlyTypes.DATERANGEPICKERV2) {
+        const fromDateValue = chip.value[chip.readonlyOptions.daterangepickerOptions.fromDateKey];
+        const toDateValue = chip.value[chip.readonlyOptions.daterangepickerOptions.toDateKey];
+
+        if (fromDateValue || toDateValue) {
+          allChips.push(chip);
+        }
+        
+        return;
+      }
+
       Object.keys(chip.value).forEach(key => {
         const value = chip.value[key];
+
+        // Ignore falsey or empty string values
+        if (!value || (typeof(value.length) === 'string' && !value.length)) {
+          return;
+        }
+
         const newChip = {...chip, value: {[key]: value}};
         allChips.push(newChip);
       })
@@ -368,6 +399,14 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     // If the form control is not complex, then we can simply reset
     if (typeof field.formControl.value != 'object') {
       field.formControl.reset();
+      return;
+    }
+
+    if (chip.formlyType === SdsFormlyTypes.DATERANGEPICKER || chip.formlyType === SdsFormlyTypes.DATERANGEPICKERV2) {
+      const fromDateControl = chip.readonlyOptions.daterangepickerOptions.fromDateKey;
+      const toDateControl = chip.readonlyOptions.daterangepickerOptions.toDateKey;
+      field.formControl.get(fromDateControl).reset();
+      field.formControl.get(toDateControl).reset();
       return;
     }
 

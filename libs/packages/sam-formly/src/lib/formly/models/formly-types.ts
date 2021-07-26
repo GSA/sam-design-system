@@ -10,6 +10,7 @@ export enum SdsFormlyTypes {
   TEXTAREA = 'textarea',
   READONLY = 'readonly',
   DATERANGEPICKER = 'daterangepicker',
+  DATERANGEPICKERV2 = 'daterangepickerv2',
   FORMLYGROUP = 'formly-group',
   CUSTOMTEXT = 'customtext',
   FILEINFO = 'fileinfo',
@@ -28,6 +29,7 @@ export enum SdsReadonlyTypes {
   TEXTAREA = 'textarea',
   READONLY = 'readonly',
   DATERANGEPICKER = 'daterangepicker',
+  DATERANGEPICKERV2 = 'daterangepickerv2',
   FILEINFO = 'fileinfo',
   SEARCH = 'search',
 };
