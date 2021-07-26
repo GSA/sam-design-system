@@ -9,7 +9,6 @@ import { SearchListLayoutComponent } from './search-list-layout.component';
 import {
   PaginationModule,
   SdsSearchResultListModule,
-  allIcons as sdsAllIcons
 } from '@gsa-sam/components';
 import { FormsModule } from '@angular/forms';
 import {
@@ -22,6 +21,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { SDSFormlyUpdateModelService } from '@gsa-sam/sam-formly';
 import { SimpleChange } from '@angular/core';
 import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
+import { allIcons as sdsAllIcons } from '@gsa-sam/ngx-uswds-icons';
+
 describe('SearchListLayoutComponent', () => {
   let component: SearchListLayoutComponent;
   let fixture: ComponentFixture<SearchListLayoutComponent>;

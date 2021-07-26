@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { SdsSubheaderModule } from '@gsa-sam/layouts';
 import { CommonModule } from '@angular/common';
 
-import { SdsSearchModule, SdsDialogModule, SdsIconModule } from '@gsa-sam/components';
+import { SdsSearchModule, SdsDialogModule } from '@gsa-sam/components';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
@@ -13,6 +13,7 @@ import {
 import { SubheaderTier2WorkspaceComponent } from './subheader-tier-2-workspace.component';
 import { SdsButtonGroupModule } from 'libs/packages/sam-material-extensions/src/lib/button-group/button-group.module';
 import { NgxBootstrapIconsModule, chevronLeft } from 'ngx-bootstrap-icons';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 
 
@@ -20,7 +21,7 @@ import { NgxBootstrapIconsModule, chevronLeft } from 'ngx-bootstrap-icons';
   imports: [
     CommonModule,
     SdsSubheaderModule,
-    SdsIconModule,
+    IconModule,
     SdsSearchModule,
     SdsFormlyDialogModule,
     SdsDialogModule,

@@ -4,9 +4,17 @@ import { OverviewModule } from './pages/overview/overview.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import {allIcons as sdsAllIcons} from '@gsa-sam/components'
 import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 import * as _ from 'lodash-es'
+import { IconModule, allIcons as sdsAllIcons, uswdsAllIcons} from '@gsa-sam/ngx-uswds-icons'
+
+export const appendPrefix = (iconsObject: {[key: string]: string}, prefix: string): Object => {
+  const prefixedIconsObject = {};
+  Object.keys(iconsObject).forEach(key => {
+    prefixedIconsObject[`${prefix}${_.upperFirst(key)}`] = iconsObject[key];
+  })
+  return prefixedIconsObject;
+};
 
 /* Layout / Components */
 import {
@@ -370,7 +378,12 @@ export const ROUTES: Routes = [
     DatePipeModule,
     StepperModule,
     FileInputModule,
-    NgxBootstrapIconsModule.pick(Object.assign(_.cloneDeep(allIcons), _.cloneDeep(sdsAllIcons)))
+    NgxBootstrapIconsModule.pick(Object.assign(
+      _.cloneDeep(allIcons),
+      appendPrefix(_.cloneDeep(sdsAllIcons), 'sds'),
+      _.cloneDeep(uswdsAllIcons),
+    )),
+    IconModule
   ],
 })
 export class DocumentationModule {

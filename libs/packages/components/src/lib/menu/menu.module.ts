@@ -5,11 +5,11 @@ import { SdsMenuComponent } from './menu.component';
 import { SdsMenuItemComponent } from './menu-item.component';
 import { SdsMenuTriggerForDirective } from './menu-trigger.directive';
 import { SdsMenuHeaderComponent } from './menu-header.component';
-import { SdsIconModule } from '../icon/icon.module';
 import { NgxBootstrapIconsModule, x } from 'ngx-bootstrap-icons';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
-  imports: [CommonModule, OverlayModule, SdsIconModule, NgxBootstrapIconsModule.pick({x})],
+  imports: [CommonModule, OverlayModule, IconModule, NgxBootstrapIconsModule.pick({x})],
   exports: [
     SdsMenuComponent,
     SdsMenuItemComponent,

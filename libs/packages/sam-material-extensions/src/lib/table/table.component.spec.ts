@@ -4,7 +4,8 @@ import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
-import { PaginationModule, SdsIconModule } from '@gsa-sam/components';
+import { PaginationModule } from '@gsa-sam/components';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 import {
   SdsTableComponent,
@@ -212,7 +213,7 @@ const MOCK_DATA = [
           <ul class="usa-list usa-list--unstyled">
             <li *ngFor="let tag of element.tags">
             <sds-icon size="2x" [class]="tag.className" [icon]="'circle'"></sds-icon>
-              
+
               {{ tag.label }}
             </li>
           </ul>
@@ -324,7 +325,7 @@ describe('SdsTableComponent Full', () => {
       ],
       imports: [
         MatTableModule,
-        SdsIconModule,
+        IconModule,
         MatSortModule,
         MatPaginatorModule,
         BrowserAnimationsModule,

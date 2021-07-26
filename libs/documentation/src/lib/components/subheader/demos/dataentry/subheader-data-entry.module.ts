@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { SdsSubheaderModule } from '@gsa-sam/layouts';
 import { CommonModule } from '@angular/common';
 
-import { SdsSearchModule, SdsDialogModule, SdsIconModule } from '@gsa-sam/components';
+import { SdsSearchModule, SdsDialogModule } from '@gsa-sam/components';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
@@ -12,12 +12,13 @@ import {
 } from '@gsa-sam/sam-formly';
 import { SubheaderDataEntryComponent } from './subheader-data-entry.component';
 import { NgxBootstrapIconsModule, chevronLeft } from 'ngx-bootstrap-icons';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
   imports: [
     CommonModule,
     SdsSubheaderModule,
-    SdsIconModule,
+    IconModule,
     SdsSearchModule,
     SdsFormlyDialogModule,
     SdsDialogModule,

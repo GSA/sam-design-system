@@ -1,17 +1,18 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
-import { SdsCollapseModule, SdsIconModule } from "@gsa-sam/components";
+import { SdsCollapseModule } from "@gsa-sam/components";
 import { NgxBootstrapIconsModule, arrowDownCircleFill, arrowUpCircleFill } from 'ngx-bootstrap-icons';
 import { SdsFeedbackComponent } from "./sds-feedback.component";
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    SdsCollapseModule, 
-    SdsIconModule,
+    SdsCollapseModule,
+    IconModule,
     NgxBootstrapIconsModule.pick({arrowDownCircleFill, arrowUpCircleFill})
   ],
   declarations: [
