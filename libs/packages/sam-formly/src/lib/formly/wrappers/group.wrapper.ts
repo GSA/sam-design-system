@@ -54,13 +54,13 @@ import * as qs from 'qs';
           <ng-container #fieldComponent></ng-container>
         </div>
           <div
-            [sdsPopover]="popoverContent" 
-              [position]="'bottom'" 
+            [sdsPopover]="popoverContent"
+              [position]="'bottom'"
               [closeOnContentClick]="false"
               [closeOnClickOutside]="true"
               tabindex="0" aria-label="Down carat">
             {{to.label}}
-            <sds-icon [icon]="'chevron-down'"></sds-icon>
+            <usa-icon [icon]="'chevron-down'"></usa-icon>
           </div>
         </ng-container>
         <ng-container *ngSwitchDefault>

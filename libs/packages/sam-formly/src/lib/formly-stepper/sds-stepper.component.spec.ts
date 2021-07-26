@@ -8,8 +8,8 @@ import {
   x,
   question,
   save,
-  circle, 
-  slashCircleFill, 
+  circle,
+  slashCircleFill,
   checkCircleFill
 } from "ngx-bootstrap-icons";
 import { NavigationMode, SdsIconModule } from "libs/packages/components/src/lib/public-api";
@@ -48,7 +48,7 @@ import { SdsStepper } from "./sds-stepper";
         <div class="margin-right-1">
           <button class="usa-button sds-button--circle usa-button--base usa-button--big padding-2" sdsStepperPrevious
             [attr.id]="id + '-prevBtn'">
-            <sds-icon [icon]="'chevron-left'"></sds-icon>
+            <usa-icon [icon]="'chevron-left'"></usa-icon>
           </button>
 
           <label [attr.for]="id + '-prevBtn'" class="text-right usa-link cursor-pointer display-block margin-top-2">
@@ -59,7 +59,7 @@ import { SdsStepper } from "./sds-stepper";
         <div class="margin-right-1">
           <button class="usa-button sds-button--circle usa-button--big usa-button--base padding-2" sdsStepperSave
             [attr.id]="id + '-saveBtn'">
-            <sds-icon [icon]="'save'"></sds-icon>
+            <usa-icon [icon]="'save'"></usa-icon>
           </button>
           <label [attr.for]="id + '-saveBtn'" class="text-center usa-link cursor-pointer display-block margin-top-2">
             Save
@@ -69,7 +69,7 @@ import { SdsStepper } from "./sds-stepper";
         <div class="margin-right-1">
           <button class="usa-button sds-button--circle usa-button--base usa-button--big usa-button--active padding-2"
             sdsStepperNext [attr.id]="id + '-nextBtn'">
-            <sds-icon [icon]="'chevron-right'"></sds-icon>
+            <usa-icon [icon]="'chevron-right'"></usa-icon>
           </button>
           <label [attr.for]="id + '-nextBtn'" class="text-left usa-link cursor-pointer display-block margin-top-2">
             Save and Continue
@@ -108,9 +108,9 @@ import { SdsStepper } from "./sds-stepper";
   <ng-template #sidenavIcon let-step>
     <span class="float-right">
       <ng-container [ngSwitch]="step.valid">
-        <sds-icon *ngSwitchCase="true" [icon]="'check-circle-fill'" class="text-primary"></sds-icon>
-        <sds-icon *ngSwitchCase="false" [icon]="'slash-circle-fill'" class="text-error"></sds-icon>
-        <sds-icon *ngSwitchDefault [icon]="'circle'"></sds-icon>
+        <usa-icon *ngSwitchCase="true" [icon]="'check-circle-fill'" class="text-primary"></usa-icon>
+        <usa-icon *ngSwitchCase="false" [icon]="'slash-circle-fill'" class="text-error"></usa-icon>
+        <usa-icon *ngSwitchDefault [icon]="'circle'"></usa-icon>
       </ng-container>
     </span>
   </ng-template>
@@ -257,11 +257,11 @@ describe('SdsStepperComponent', () => {
       const backButton = fixture.debugElement.query(By.css('#stepperTestId-prevBtn'));
       backButton.triggerEventHandler('click', null);
       fixture.detectChanges();
-  
+
       fixture.whenStable().then(() => {
         expect(stepper.currentStepId).toEqual('step2Child1');
       });
-    }) 
+    })
 
   }));
 
