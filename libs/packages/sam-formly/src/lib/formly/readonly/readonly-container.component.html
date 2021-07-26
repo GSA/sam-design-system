@@ -1,15 +1,15 @@
 <ng-container *ngIf="labelTemplate; else defaultLabel" 
-  [ngTemplateOutlet]="labelTemplate.templateRef" [ngTemplateOutletContext]="{$implicit: to}">
+  [ngTemplateOutlet]="labelTemplate.templateRef" [ngTemplateOutletContext]="{$implicit: formlyFieldConfig?.templateOptions}">
 </ng-container>
 
 <ng-template #defaultLabel>
   <label class="usa-label">
     <span
-    *ngIf="to?.tagText"
+    *ngIf="formlyFieldConfig?.templateOptions?.tagText"
     class="usa-tag"
-    [ngClass]="to.tagClass ? to.tagClass : 'sds-tag--info-white'"
-    >{{ to.tagText }}</span>
-    {{label ? label : to.label}}
+    [ngClass]="formlyFieldConfig.templateOptions.tagClass ? formlyFieldConfig.templateOptions.tagClass  : 'sds-tag--info-white'"
+    >{{ formlyFieldConfig.templateOptions.tagText }}</span>
+    {{label}}
   </label>
 </ng-template>
 
