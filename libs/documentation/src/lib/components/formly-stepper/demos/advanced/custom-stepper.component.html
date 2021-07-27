@@ -6,7 +6,7 @@
           <div class="sds-card__header sds-card__header--accent-cool grid-row">
             <button id="cancelButton" class="sds-button sds-button--circular sds-button--white"
               (click)="onCancelClicked()" aria-label="Cancel Select Step">
-              <sds-icon [icon]="'chevron-left'"></sds-icon>
+              <usa-icon [icon]="'chevron-left'"></usa-icon>
             </button>
             <div class="margin-x-auto">
               <h2 class="sds-card__title margin-top-1 margin-left-neg-2">Select Step</h2>
@@ -16,7 +16,7 @@
 
         <div class="sds-card">
           <div class="sds-card__body sds-card__body--accent-cool">
-    
+
             <ul class="usa-sidenav usa-sidenav--styled">
               <li *ngFor="let step of stepTemplates; let i = index;" class="usa-sidenav__item" [ngClass]="{
                   'usa-current':  selectedStep?.id === step.id
@@ -39,7 +39,7 @@
       <div class="margin-right-1">
         <button class="usa-button sds-button--circle usa-button--base usa-button--big padding-2" sdsStepperPrevious
           [attr.id]="id + '-prevBtn'">
-          <sds-icon [icon]="'chevron-left'"></sds-icon>
+          <usa-icon [icon]="'chevron-left'"></usa-icon>
         </button>
 
         <label [attr.for]="id + '-prevBtn'" class="text-right usa-link cursor-pointer display-block margin-top-2">
@@ -50,7 +50,7 @@
       <div class="margin-right-1">
         <button class="usa-button sds-button--circle usa-button--big usa-button--base padding-2"
           [attr.id]="id + '-closeBtn'">
-          <sds-icon [icon]="'x'"></sds-icon>
+          <usa-icon [icon]="'x'"></usa-icon>
         </button>
         <label [attr.for]="id + '-closeBtn'" class="text-center usa-link cursor-pointer display-block margin-top-2">
           Close
@@ -60,7 +60,7 @@
       <div class="margin-right-1">
         <button class="usa-button sds-button--circle usa-button--big usa-button--base padding-2"
           [attr.id]="id + '-helpBtn'">
-          <sds-icon [icon]="'question'"></sds-icon>
+          <usa-icon [icon]="'question'"></usa-icon>
         </button>
         <label [attr.for]="id + '-helpBtn'" class="text-center usa-link cursor-pointer display-block margin-top-2">
           Help
@@ -70,7 +70,7 @@
       <div class="margin-right-1">
         <button class="usa-button sds-button--circle usa-button--big usa-button--base padding-2" sdsStepperSave
           [attr.id]="id + '-saveBtn'">
-          <sds-icon [icon]="'save'"></sds-icon>
+          <usa-icon [icon]="'save'"></usa-icon>
         </button>
         <label [attr.for]="id + '-saveBtn'" class="text-center usa-link cursor-pointer display-block margin-top-2">
           Save
@@ -78,10 +78,10 @@
       </div>
 
       <div class="margin-right-1">
-        <button #saveAndContinueBtn 
+        <button #saveAndContinueBtn
           class="usa-button sds-button--circle usa-button--base usa-button--big usa-button--active padding-2"
           sdsStepperNext [attr.id]="id + '-nextBtn'">
-          <sds-icon [icon]="'chevron-right'"></sds-icon>
+          <usa-icon [icon]="'chevron-right'"></usa-icon>
         </button>
         <label [attr.for]="id + '-nextBtn'" class="text-left usa-link cursor-pointer display-block margin-top-2">
           Save and Continue
@@ -124,9 +124,9 @@
 <ng-template #sidenavIcon let-step>
   <span>
     <ng-container [ngSwitch]="step.valid">
-      <sds-icon *ngSwitchCase="true" [icon]="'check-circle-fill'" class="text-primary"></sds-icon>
-      <sds-icon *ngSwitchCase="false" [icon]="'slash-circle-fill'" class="text-error"></sds-icon>
-      <sds-icon *ngSwitchDefault [icon]="'circle'"></sds-icon>
+      <usa-icon *ngSwitchCase="true" [icon]="'check-circle-fill'" class="text-primary"></usa-icon>
+      <usa-icon *ngSwitchCase="false" [icon]="'slash-circle-fill'" class="text-error"></usa-icon>
+      <usa-icon *ngSwitchDefault [icon]="'circle'"></usa-icon>
     </ng-container>
   </span>
 </ng-template>

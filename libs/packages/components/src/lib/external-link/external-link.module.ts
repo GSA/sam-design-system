@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ExternalLinkDirective } from './external-link.directive';
-import { SdsIconModule } from '../icon/icon.module';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
   declarations: [ExternalLinkDirective],
-  imports: [CommonModule, SdsIconModule],
+  imports: [CommonModule, IconModule],
   entryComponents: [],
   exports: [ExternalLinkDirective],
 })

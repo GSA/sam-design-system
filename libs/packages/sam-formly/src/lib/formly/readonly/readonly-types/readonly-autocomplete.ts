@@ -1,25 +1,22 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, TemplateRef } from "@angular/core";
 import { SDSAutocompletelConfiguration } from '@gsa-sam/components';
 
 @Component({
   selector: `sds-readonly-autocomplete`,
-  template: `    
-    <label class="usa-label">
-      <span
-      *ngIf="to?.tagText"
-      class="usa-tag"
-      [ngClass]="to.tagClass ? to.tagClass : 'sds-tag--info-white'"
-      >{{ to.tagText }}</span>
-      {{label ? label : to.label}}
-    </label>
-    <span class="text-bold" [innerHTML]="displayValue"></span>
+  template: `
+    <ng-container *ngIf="valueTemplate; else defaultValue" 
+      [ngTemplateOutlet]="valueTemplate" 
+      [ngTemplateOutletContext]="{$implicit: displayValue}">
+    </ng-container>
+    <ng-template #defaultValue>
+      <span class="text-bold" [innerHTML]="displayValue"></span>
+    </ng-template>
   `
 })
 export class ReadonlyAutocompleteComponent implements OnInit {
 
-  @Input() to: any = {}; // template options
-  @Input() label: string;
   @Input() value: any;
+  @Input() valueTemplate: TemplateRef<any>;
   @Input() autocompleteSettings: SDSAutocompletelConfiguration;
 
   displayValue: string;
@@ -27,7 +24,7 @@ export class ReadonlyAutocompleteComponent implements OnInit {
   ngOnInit() {
 
     if(!this.autocompleteSettings || !this.autocompleteSettings.primaryTextField) {
-      throw new Error(`Primary text field missing in autocomplete settings for ${this.label}`);
+      throw new Error(`Primary text field missing in autocomplete settings with value of ${this.value}`);
     }
 
     if (!this.value || !this.value.length) {

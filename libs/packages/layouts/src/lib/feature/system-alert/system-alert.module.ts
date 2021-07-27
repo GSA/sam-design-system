@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from "@angular/core";
-import { SdsCollapseModule, SdsIconModule } from '@gsa-sam/components';
+import { SdsCollapseModule } from '@gsa-sam/components';
 import { SdsSystemAlertComponent } from './system-alert.component';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
   imports: [
     CommonModule,
-    SdsIconModule,
+    IconModule,
     SdsCollapseModule,
   ],
   declarations: [
