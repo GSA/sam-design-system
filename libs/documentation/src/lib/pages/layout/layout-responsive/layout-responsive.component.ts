@@ -102,6 +102,8 @@ export class LayoutResponsiveComponent {
     } else {
       this.listConfig = { ...this.defaultListConfig };
     }
+    const newSortValue = this.listConfig.defaultSortValue;
+    this.resultList.updateSearchResultsModel({sort: newSortValue, filterModel: this.filterModel});
   }
 
   onDialogOpen($event) {
