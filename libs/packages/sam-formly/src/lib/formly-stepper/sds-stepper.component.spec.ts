@@ -12,7 +12,7 @@ import {
   slashCircleFill,
   checkCircleFill
 } from "ngx-bootstrap-icons";
-import { NavigationMode, SdsIconModule } from "libs/packages/components/src/lib/public-api";
+import { NavigationMode } from "libs/packages/components/src/lib/public-api";
 import { RouterTestingModule } from "@angular/router/testing";
 import { SdsStepperModule } from './sds-stepper.module';
 import { Component, ViewChild } from "@angular/core";
@@ -20,7 +20,7 @@ import { FormlyFieldConfig } from "@ngx-formly/core";
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { By } from "@angular/platform-browser";
 import { SdsStepper } from "./sds-stepper";
-
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 @Component({
   selector: `custom-test-stepper`,
   template: `<div class="grid-row">
@@ -177,7 +177,7 @@ describe('SdsStepperComponent', () => {
         CommonModule,
         SdsFormlyModule,
         NgxBootstrapIconsModule.pick({ chevronLeft, chevronRight, circle, slashCircleFill, checkCircleFill, question, save, x }),
-        SdsIconModule,
+        IconModule,
         RouterTestingModule,
         SdsStepperModule,
         NoopAnimationsModule,
