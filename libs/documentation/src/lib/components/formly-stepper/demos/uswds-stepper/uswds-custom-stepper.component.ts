@@ -1,4 +1,4 @@
-import { AfterContentInit, Component } from "@angular/core";
+import { AfterContentInit, Component, OnInit } from "@angular/core";
 import { SdsStepper } from "@gsa-sam/sam-formly";
 
 
@@ -16,13 +16,17 @@ export class USWDSCustomStepperComponent extends SdsStepper implements AfterCont
 
   ngAfterContentInit() {
     super.ngAfterContentInit();
-    this.stepLabels = this.stepTemplates.map(stepTemplate => {
+    this.stepLabels = this.stepTemplates.map((stepTemplate, index) => {
+      if (stepTemplate.id === this.currentStepId) {
+        this.currentStepIndex = index;
+      }
+
       return {...stepTemplate, label: stepTemplate.text};
     });
   }
 
   onStepChange(stepIndex) {
-    this.changeStep(this.stepTemplates.get(stepIndex).id);
+    this.changeStep(this.stepTemplates.toArray()[stepIndex].id);
     this.currentStepIndex = stepIndex;
   }
 }

@@ -9,35 +9,43 @@ export class UswdsStepperComponent {
 
 
   stepOne: FormlyFieldConfig = {
-    key: 'title',
-    type: 'input',
-    templateOptions: {
-      label: 'Entity Name',
-      placeholder: 'eg: Acme Corporation',
-      description: 'Enter the name of your entity.',
-      required: true,
-    },
+    key: 'eitityOne',
+    fieldGroup: [
+      {
+        key: 'name',
+        type: 'input',
+        templateOptions: {
+          label: 'Entity Name',
+          placeholder: 'eg: Acme Corporation',
+          description: 'Enter the name of your entity.',
+          required: true,
+        },
+        modelOptions: {
+          updateOn: 'blur'
+        }
+      },
+      {
+          className: "desktop:grid-col-12 tablet:grid-col-12",
+          type: "input",
+          key: "title",
+
+          templateOptions: {
+            label: "Program or Project Title",
+            required: true,
+            showError: false,
+          },
+          modelOptions: {
+            updateOn: 'blur'
+          }
+      },
+    ]
+
   };
 
-  stepTwo: FormlyFieldConfig = {
-    key: 'title2',
-    type: 'input',
-    templateOptions: {
-      label: 'Entity Name 2',
-      placeholder: 'eg: Acme Corporation',
-      description: 'Enter the name of your entity.',
-      required: true,
-    },
-  };
+  model = {};
+  stepValidityMap = {};
 
-  stepThree: FormlyFieldConfig = {
-    key: 'title3',
-    type: 'input',
-    templateOptions: {
-      label: 'Entity Name 3',
-      placeholder: 'eg: Acme Corporation',
-      description: 'Enter the name of your entity.',
-      required: true,
-    },
-  };
+  onSaveData($event) {
+    console.log($event);
+  }
 }
