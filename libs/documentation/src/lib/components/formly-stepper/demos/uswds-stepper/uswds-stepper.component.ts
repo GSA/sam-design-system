@@ -33,14 +33,32 @@ export class UswdsStepperComponent {
             label: "Program or Project Title",
             required: true,
             showError: false,
-          },
-          modelOptions: {
-            updateOn: 'blur'
           }
       },
     ]
-
   };
+
+  stepTwo =  {
+    key: 'stepTwo',
+    type: 'input',
+    templateOptions: {
+      label: 'Entity Name 2',
+      placeholder: 'eg: Acme Corporation',
+      description: 'Enter the name of your entity.',
+      required: true,
+    }
+  }
+
+  stepThree =  {
+    key: 'stepThree',
+    type: 'input',
+    templateOptions: {
+      label: 'Entity Name 3',
+      placeholder: 'eg: Acme Corporation',
+      description: 'Enter the name of your entity.',
+      required: true,
+    }
+  }
 
   model = {};
   stepValidityMap = {};
