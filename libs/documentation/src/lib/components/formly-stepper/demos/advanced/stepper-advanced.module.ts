@@ -6,7 +6,6 @@ import { AddSubawardeeDialogDemo, SubawardeeDemoComponent } from "./subawardee.c
 import { FormlyModule } from "@ngx-formly/core";
 import { SdsActionsMenuModule, SideToolbarModule } from "@gsa-sam/layouts";
 import { CustomStepperDemo } from "./custom-stepper.component";
-import { SdsIconModule } from "@gsa-sam/components";
 import {
   NgxBootstrapIconsModule,
   chevronLeft,
@@ -18,6 +17,7 @@ import {
   save,
   x
 } from "ngx-bootstrap-icons";
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
   imports: [
@@ -26,7 +26,7 @@ import {
     SdsStepperModule,
     FormlyModule,
     SdsActionsMenuModule,
-    SdsIconModule,
+    IconModule,
     NgxBootstrapIconsModule.pick({ chevronLeft, chevronRight, circle, slashCircleFill, checkCircleFill, question, save, x }),
     SideToolbarModule,
   ],

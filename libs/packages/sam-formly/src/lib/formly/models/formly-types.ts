@@ -10,9 +10,26 @@ export enum SdsFormlyTypes {
   TEXTAREA = 'textarea',
   READONLY = 'readonly',
   DATERANGEPICKER = 'daterangepicker',
+  DATERANGEPICKERV2 = 'daterangepickerv2',
   FORMLYGROUP = 'formly-group',
   CUSTOMTEXT = 'customtext',
   FILEINFO = 'fileinfo',
   SEARCH = 'search',
   FILEINPUT = 'fileinput',
+};
+
+export enum SdsReadonlyTypes {
+  INPUT = 'input',
+  CHECKBOX = 'checkbox',
+  MULTICHECKBOX = 'multicheckbox',
+  RADIO = 'radio',
+  AUTOCOMPLETE = 'autocomplete',
+  DATEPICKER = 'datepicker',
+  SELECT = 'select',
+  TEXTAREA = 'textarea',
+  READONLY = 'readonly',
+  DATERANGEPICKER = 'daterangepicker',
+  DATERANGEPICKERV2 = 'daterangepickerv2',
+  FILEINFO = 'fileinfo',
+  SEARCH = 'search',
 };

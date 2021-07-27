@@ -1,31 +1,51 @@
-<p>To stack two icons, apply the <code>sds-stack</code> class the parent HTML
-  element of the icons you want to stack. Then add the
-  <code>sds-stack-icon</code> class to the icons you want stacked.</p>
-<p>Classes starting with <code>sds-</code> and followed by a sds-icon size
-  multiplier ie: <code>sds-sm</code> or <code>sds-2x</code> can be applied
-  to the parent HTML element to scale the overall size of the stacked icons.
-  For further refinement of one of the icons, the <code>size</code> input of
-  sds-icon can be used.</p>
+<p>In order to stack two or more icons, <code>StackedIconModule</code> must be imported into the module where you wish to use a stacked icon.</p>
+<p style="max-width: unset;">
+  <code>import &#123; NgxBootstrapIconsModule, square &#125; from 'ngx-bootstrap-icons';</code><br>
+  <code>import &#123; add, IconModule, StackedIconModule &#125; from '@gsa-sam/ngx-uswds-icons';</code>
+</p>
+<!-- <p>test</p> -->
+<p>
+  <code>@NgModule(&#123;<br>
+    &emsp;imports: [<br>
+    &emsp;&emsp;CommonModule,<br>
+    &emsp;&emsp;IconModule,<br>
+    &emsp;&emsp;StackedIconModule,<br>
+    &emsp;&emsp;NgxBootstrapIconsModule.pick(&#123;add, square&#125;)<br>
+    &emsp;],<br>
+    &emsp;declarations: [YourComponent],<br>
+    &emsp;exports: [YourComponent]<br>
+      &#125;)
+  </code>
+</p>
+<p>After importing the module you can update your template to include <code>&#060;usa-stacked-icon&#062;</code>. The only input for this component is <code>size</code> which can be used to scale the stacked icon using the same values as those used to modify the size of individual icons.</p>
+<p>The icons you want to appear stacked should then be inserted as children of <code>&#060;usa-stacked-icon&#062;</code>. In order for the stacking css to work, make sure that the class <code>usa-stack-icon</code> is applied to the icons you are stacking.</p>
+<p style="max-width: unset;">
+  <code>&#060;usa-stacked-icon [size]="'sm'"&#062;<br>
+    &emsp;&#060;usa-icon class="usa-stack-icon" [size]="'2x'" [icon]="'square-fill'"&#062;&#060;/usa-icon&#062;<br>
+    &emsp;&#060;usa-icon class="usa-stack-icon text-base-lightest" [size]="'lg'" [icon]="'hand-thumbs-down'"&#062;&#060;/usa-icon&#062;<br>
+    &#060;/usa-stacked-icon&#062;
+  </code>
+</p>
 <div style="display: flex; align-items: flex-end">
   <div style="padding-right: 1em; text-align: center;">
-    <div class="sds-stack sds-1x">
-      <sds-icon class="sds-stack-icon" [size]="'2x'" [icon]="'square-fill'"></sds-icon>
-      <sds-icon class="sds-stack-icon text-base-lightest" [size]="'lg'" [icon]="'hand-thumbs-down'"></sds-icon>
-    </div>
-    <p>sds-1x</p>
+    <usa-stacked-icon [size]="'sm'">
+      <usa-icon class="usa-stack-icon" [size]="'2x'" [icon]="'square-fill'"></usa-icon>
+      <usa-icon class="usa-stack-icon text-base-lightest" [size]="'lg'" [icon]="'hand-thumbs-down'"></usa-icon>
+    </usa-stacked-icon>
+    <p>sm</p>
   </div>
   <div style="padding-right: 1em; text-align: center;">
-    <div class="sds-stack sds-2x">
-      <sds-icon class="sds-stack-icon" [size]="'2x'" [icon]="'circle-fill'"></sds-icon>
-      <sds-icon class="sds-stack-icon text-warning" [size]="'lg'" [icon]="'cone'"></sds-icon>
-    </div>
-    <p>sds-2x</p>
+    <usa-stacked-icon [size]="'2x'">
+      <usa-icon class="usa-stack-icon" [size]="'2x'" [icon]="'circle-fill'"></usa-icon>
+      <usa-icon class="usa-stack-icon text-warning" [size]="'lg'" [icon]="'cone'"></usa-icon>
+    </usa-stacked-icon>
+    <p>2x</p>
   </div>
   <div style="padding-right: 1em; text-align: center;">
-    <div class="sds-stack sds-4x">
-      <sds-icon class="sds-stack-icon text-secondary-dark" [size]="'2x'" [icon]="'diamond-fill'"></sds-icon>
-      <sds-icon class="sds-stack-icon text-base-lightest" [size]="'lg'" [icon]="'diamond'"></sds-icon>
-    </div>
-    <p>sds-4x</p>
+    <usa-stacked-icon [size]="'4x'">
+      <usa-icon class="usa-stack-icon text-secondary-dark" [size]="'2x'" [icon]="'diamond-fill'"></usa-icon>
+      <usa-icon class="usa-stack-icon text-base-lightest" [size]="'lg'" [icon]="'diamond'"></usa-icon>
+    </usa-stacked-icon>
+    <p>4x</p>
   </div>
 </div>

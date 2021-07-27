@@ -1,7 +1,8 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { SdsCollapseModule, SdsIconModule, allIcons as sdsAllIcons } from '@gsa-sam/components';
+import { SdsCollapseModule } from '@gsa-sam/components';
 import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
+import { IconModule, allIcons as sdsAllIcons } from '@gsa-sam/ngx-uswds-icons'
 
 import { SdsSystemAlertComponent } from './system-alert.component';
 
@@ -12,7 +13,7 @@ describe('SystemAlertComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
-        SdsIconModule,
+        IconModule,
         SdsCollapseModule,
         NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))
       ],
