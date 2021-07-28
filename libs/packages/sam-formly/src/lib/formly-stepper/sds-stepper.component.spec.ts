@@ -20,7 +20,7 @@ import { FormlyFieldConfig } from "@ngx-formly/core";
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { By } from "@angular/platform-browser";
 import { SdsStepper } from "./sds-stepper";
-
+import { IconModule } from "@gsa-sam/ngx-uswds-icons";
 @Component({
   selector: `custom-test-stepper`,
   template: `<div class="grid-row">
@@ -177,10 +177,10 @@ describe('SdsStepperComponent', () => {
         CommonModule,
         SdsFormlyModule,
         NgxBootstrapIconsModule.pick({ chevronLeft, chevronRight, circle, slashCircleFill, checkCircleFill, question, save, x }),
-        SdsIconModule,
         RouterTestingModule,
         SdsStepperModule,
         NoopAnimationsModule,
+        IconModule,
       ],
       declarations: [
         StepperTestComponent,
