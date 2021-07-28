@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
-import { IconsBootstrap } from './icons-bootstrap.component'
+import { IconsUswds } from './icons-uswds.component'
 
 
 @NgModule({
   imports: [CommonModule, IconModule],
-  declarations: [IconsBootstrap],
-  exports: [IconsBootstrap],
-  bootstrap: [IconsBootstrap]
+  declarations: [IconsUswds],
+  exports: [IconsUswds],
+  bootstrap: [IconsUswds]
 })
-export class IconsBootstrapModule {}
+export class IconsUswdsModule {}

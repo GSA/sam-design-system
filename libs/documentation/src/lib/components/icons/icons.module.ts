@@ -23,6 +23,8 @@ import { IconsStackingComponent } from './demos/stacking/icons-stacking.componen
 import { IconsStackingModule } from './demos/stacking/icons-stacking.module';
 import { IconSkewingComponent } from './demos/icon-skewing/icon-skewing.component';
 import { IconSkewingModule } from './demos/icon-skewing/icon-skewing.module';
+import { IconsUswdsModule } from './demos/uswds/icons-uswds.module'
+import { IconsUswds } from './demos/uswds/icons-uswds.component'
 
 declare var require: any;
 const DEMOS = {
@@ -82,6 +84,14 @@ const DEMOS = {
     markup: require('!!raw-loader!./demos/bootstrap/icons-bootstrap.component.html'),
     path: 'libs/documentation/src/lib/components/icons/demos/bootstrap',
   },
+  uswds: {
+    title: 'All USWDS Icons',
+    type: IconsUswds,
+    code: require('!!raw-loader!./demos/uswds/icons-uswds.component'),
+    module: require('!!raw-loader!./demos/uswds/icons-uswds.module'),
+    markup: require('!!raw-loader!./demos/uswds/icons-uswds.component.html'),
+    path: 'libs/documentation/src/lib/components/icons/demos/uswds',
+  },
 };
 
 export const ROUTES = [
@@ -117,7 +127,8 @@ export const ROUTES = [
     IconsScalingModule,
     IconsRotationModule,
     IconsStackingModule,
-    IconSkewingModule
+    IconSkewingModule,
+    IconsUswdsModule
   ],
 })
 export class IconsModule {

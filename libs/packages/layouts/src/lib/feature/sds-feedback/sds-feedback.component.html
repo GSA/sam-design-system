@@ -5,12 +5,12 @@
     [attr.aria-expanded]="!isCollapsedContent"
     aria-controls="feedbackCollapseId"
     (click)="isCollapsedContent = !isCollapsedContent">
-    
-    <sds-icon [icon]="'arrow-up-circle-fill'" [sdsCollapse]="isCollapsedContent"
-      [size]="'2x'" class="text-primary margin-auto"></sds-icon>
 
-    <sds-icon [icon]="'arrow-down-circle-fill'" [size]="'2x'"
-      [sdsCollapse]="!isCollapsedContent" class="text-primary margin-auto"></sds-icon>
+    <usa-icon [icon]="'arrow-up-circle-fill'" [sdsCollapse]="isCollapsedContent"
+      [size]="'2x'" class="text-primary margin-auto"></usa-icon>
+
+    <usa-icon [icon]="'arrow-down-circle-fill'" [size]="'2x'"
+      [sdsCollapse]="!isCollapsedContent" class="text-primary margin-auto"></usa-icon>
 
     <span class="sds-feedback__title">Feedback</span>
   </button>
@@ -27,7 +27,7 @@
       </p>
       <textarea [formControl]="feedbackModel" class="sds-feedback__input" id="feedbackInput" aria-label="Feedback input form" type="text" rows="8"></textarea>
       <p class="text-left">
-        <button class="usa-button usa-button--secondary" id="feedbackSubmit" 
+        <button class="usa-button usa-button--secondary" id="feedbackSubmit"
           aria-label="Feedback submit" (click)="onFeedbackSubmitClicked()">Submit</button>
       </p>
     </div>

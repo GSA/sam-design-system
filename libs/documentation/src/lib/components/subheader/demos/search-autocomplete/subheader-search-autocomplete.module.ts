@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import {
   SdsSearchModule,
   SdsDialogModule,
-  SdsIconModule,
   SdsAutocompleteModule,
 } from '@gsa-sam/components';
 
@@ -12,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
 import { SdsFormlyModule, SdsFormlyDialogModule } from '@gsa-sam/sam-formly';
 import { SubheaderSearchAutocompleteComponent } from './subheader-search-autocomplete.component';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
   imports: [
@@ -23,7 +23,7 @@ import { SubheaderSearchAutocompleteComponent } from './subheader-search-autocom
     ReactiveFormsModule,
     SdsFormlyModule,
     FormlyModule,
-    SdsIconModule,
+    IconModule,
     SdsAutocompleteModule,
     FormsModule,
   ],

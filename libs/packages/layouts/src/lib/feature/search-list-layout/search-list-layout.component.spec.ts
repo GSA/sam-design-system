@@ -9,19 +9,21 @@ import { SearchListLayoutComponent } from './search-list-layout.component';
 import {
   PaginationModule,
   SdsSearchResultListModule,
-  allIcons as sdsAllIcons
 } from '@gsa-sam/components';
 import { FormsModule } from '@angular/forms';
 import {
   SearchParameters,
   SearchResult,
   SearchListInterface,
+  ResultsModel,
 } from './model/search-list-layout.model';
 import { of, Observable } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SDSFormlyUpdateModelService } from '@gsa-sam/sam-formly';
 import { SimpleChange } from '@angular/core';
 import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
+import { allIcons as sdsAllIcons } from '@gsa-sam/ngx-uswds-icons';
+
 describe('SearchListLayoutComponent', () => {
   let component: SearchListLayoutComponent;
   let fixture: ComponentFixture<SearchListLayoutComponent>;
@@ -92,16 +94,21 @@ describe('SearchListLayoutComponent', () => {
     expect(service.updateModel).toHaveBeenCalled();
   });
 
-  it('should set configuration & sortField on ngOnChanges', () => {
-    component.ngOnChanges({
-      configuration: new SimpleChange(
-        null,
-        { defaultSortValue: 'testValue' },
-        null
-      ),
-    });
+  it('should update sortvalue through updateSearchResultsModel', () => {
+    component.configuration =  {
+      defaultSortValue: 'legalBusinessName',
+      pageSize: 25,
+      sortList: [
+        { text: 'Entity Name', value: 'legalBusinessName' },
+        { text: 'Status', value: 'registrationStatus' },
+      ],
+    };
     fixture.detectChanges();
-    expect(component.sortField).toBe('testValue');
+
+    const config: ResultsModel = { sort: 'registrationStatus', filterModel: {} };
+    component.updateSearchResultsModel(config);
+    fixture.detectChanges();
+    expect(component.sortField).toBe('registrationStatus');
   });
 });
 

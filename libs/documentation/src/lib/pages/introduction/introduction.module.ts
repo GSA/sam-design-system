@@ -1,10 +1,10 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from '@angular/core';
-import {SdsIconModule } from '@gsa-sam/components';
 import { IntroductionComponent } from './introduction.component';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
-  imports: [CommonModule, SdsIconModule],
+  imports: [CommonModule, IconModule],
   exports: [IntroductionComponent],
   declarations: [IntroductionComponent],
   providers: []

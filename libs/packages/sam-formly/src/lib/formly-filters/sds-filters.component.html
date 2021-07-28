@@ -16,10 +16,10 @@
 <ng-container *ngIf="displayChips">
   <div *ngFor="let chip of chips" class="width-auto sds-tag sds-tag--chip sds-tag--input margin-right-2 ">
     <div class="sds--tag__item">
-      <sds-readonly-container 
-        [label]="chip.label" 
-        [value]="chip.value" 
-        [additionalConfig]="chip.readonlyOptions" 
+      <sds-readonly-container
+        [label]="chip.label"
+        [value]="chip.value"
+        [additionalConfig]="chip.readonlyOptions"
         [formlyType]="chip.formlyType"
       >
         <ng-container *sdsReadonlyLabel><span class="margin-right-1 text-bold">{{chip.label}}:</span></ng-container>
@@ -27,10 +27,10 @@
       </sds-readonly-container>
     </div>
     <button [attr.aria-label]="'Remove Item ' + chip.label + ' ' + chip.value"
-      [class.text-base]="disabled" aria-hidden="false" class="sds-tag__close position-static" 
+      aria-hidden="false" class="sds-tag__close position-static"
       (click)="removeChip(chip)"
       (keyup.enter)="removeChip(chip)">
-      <sds-icon [icon]="'x'" size="lg"></sds-icon>
+      <usa-icon [icon]="'x'" size="lg"></usa-icon>
     </button>
   </div>
 </ng-container>

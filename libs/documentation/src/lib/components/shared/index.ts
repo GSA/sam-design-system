@@ -9,13 +9,14 @@ import { DocumentationAPIPage } from './api-page/docs-api.component';
 import { DocumentationAPIComponent } from './api-page/docs-api-component.component';
 import { DocumentationWidgetDemoComponent } from './examples-page/demo.component';
 
-import { SdsIconModule, SdsTabsModule } from '@gsa-sam/components';
+import { SdsTabsModule } from '@gsa-sam/components';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 
 export * from './demo-list';
 
 @NgModule({
-  imports: [DocumentationSharedModule,  MarkdownModule, HighlightModule, SdsIconModule, SdsTabsModule,],
+  imports: [DocumentationSharedModule,  MarkdownModule, HighlightModule, IconModule, SdsTabsModule,],
   declarations: [
     DocumentationExamplesPage, DocumentationAPIPage, DocumentationAPIComponent, DocumentationTemplatePage, DocumentationSourcePage, DocumentationWidgetDemoComponent
   ],

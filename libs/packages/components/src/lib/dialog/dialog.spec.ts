@@ -36,7 +36,7 @@ import {
 import { SdsDialogRef } from './dialog-ref';
 import { SdsDialogModule } from './dialog.module';
 import { Subject } from 'rxjs';
-import {allIcons as sdsAllIcons} from '@gsa-sam/components'
+import { allIcons as sdsAllIcons } from '@gsa-sam/ngx-uswds-icons'
 import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 
 

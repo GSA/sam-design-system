@@ -69,8 +69,6 @@ export * from './top-banner/top-banner.component';
 export * from './top-banner/top-banner.module';
 export * from './truncate-text/truncate.text.module';
 export * from './video-player/video-player.component';
-export * from './icon/icon.component';
-export * from './icon/icon.module';
 export * from './selection-panel/selection-panel-wrapper/selection-panel.component';
 export * from './selection-panel/sub-panel/sub-panel.component';
 export * from './selection-panel/selection-panel.module';
@@ -78,7 +76,10 @@ export * from './selection-panel/model/selection-panel.model';
 export * from './tabs/tabs.module';
 export * from './tabs/tabs.component';
 export * from './tabs/tab-panel.component';
-export * from './icon/custom-icons'
 
 export * from './date/sds-date.module'
 export * from './date/sds-date.pipe'
+
+export * from './icon/icon.component'
+export * from './icon/icon.module'
+export * from './icon/custom-icons'

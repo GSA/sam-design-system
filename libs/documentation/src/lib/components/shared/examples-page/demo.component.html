@@ -7,15 +7,15 @@
     <div class="sds-card__buttons">
       <button class="usa-button--unstyled text-ink margin-left-1 cursor-pointer"
         [ngClass]="{ 'usa-button--active' : showCode }" (click)="showCode = !showCode" aria-label="Show Code">
-        <sds-icon [icon]="'code'"></sds-icon>
+        <usa-icon [icon]="'code'"></usa-icon>
       </button>
       <a class="text-ink usa-button--unstyled margin-left-1" *ngIf="getGithubLink()" [attr.href]="getGithubLink()"
         target="_blank" aria-label="Open new window in github">
-        <sds-icon [icon]="'arrow-up-right-circle'"></sds-icon>
+        <usa-icon [icon]="'arrow-up-right-circle'"></usa-icon>
       </a>
       <a class="text-ink usa-button--unstyled margin-left-1" [attr.href]="getStackblitzLink()" target="_blank"
         aria-label="Open new window in Stackblitz">
-        <sds-icon [icon]="'lightning-fill'"></sds-icon>
+        <usa-icon [icon]="'lightning-fill'"></usa-icon>
       </a>
     </div>
 

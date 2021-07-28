@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { SelectionMode } from '../selected-result/models/sds-selected-item-model-helper';
 import { SdsSelectedResultsModule } from '../selected-result/selected-result.module';
 import { SdsAutocompleteSearchModule } from '../autocomplete-search/autocomplete-search.module';
-import {allIcons as sdsAllIcons} from '@gsa-sam/components'
+import {allIcons as sdsAllIcons} from '@gsa-sam/ngx-uswds-icons'
 import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 
 
