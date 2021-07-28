@@ -24,9 +24,4 @@ export class USWDSCustomStepperComponent extends SdsStepper implements AfterCont
       return {...stepTemplate, label: stepTemplate.text};
     });
   }
-
-  onStepChange(stepIndex) {
-    this.changeStep(this.stepTemplates.toArray()[stepIndex].id);
-    this.currentStepIndex = stepIndex;
-  }
 }

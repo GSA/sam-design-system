@@ -17,7 +17,6 @@ import {
 } from "ngx-bootstrap-icons";
 import { SdsIconModule } from '@gsa-sam/components';
 
-
 @NgModule({
   declarations: [UswdsStepperComponent, USWDSCustomStepperComponent],
   imports: [
@@ -29,11 +28,11 @@ import { SdsIconModule } from '@gsa-sam/components';
   ],
   exports: [
     UswdsStepperComponent, 
-    USWDSCustomStepperComponent
+    USWDSCustomStepperComponent,
   ],
   bootstrap: [
     UswdsStepperComponent, 
-    USWDSCustomStepperComponent
+    USWDSCustomStepperComponent,
   ],
 })
 export class UswdsStepperModule { }

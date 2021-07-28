@@ -1,5 +1,8 @@
-<uswds-custom-stepper-demo [model]="model" [stepValidityMap]="stepValidityMap" (saveData)="onSaveData($event)">
-  <sds-step id="stepOne" text="Step One" [fieldConfig]="stepOne"></sds-step>
-  <sds-step id="stepTwo" text="Step Two" [fieldConfig]="stepTwo"></sds-step>
-  <sds-step id="stepThree" text="Step Three" [fieldConfig]="stepThree"></sds-step>
-</uswds-custom-stepper-demo>
+<div class="display-flex flex-justify-center">
+  <uswds-custom-stepper-demo [model]="model" [stepValidityMap]="stepValidityMap" (saveData)="onSaveData($event)">
+    <sds-step id="stepOne" text="Entity Title" [fieldConfig]="stepOne"></sds-step>
+    <sds-step id="stepTwo" text="Purpose of Registration" [fieldConfig]="stepTwo"></sds-step>
+    <sds-step id="stepThree" text="Taxpayer Details" [fieldConfig]="stepThree"></sds-step>
+  </uswds-custom-stepper-demo>
+</div>
+
