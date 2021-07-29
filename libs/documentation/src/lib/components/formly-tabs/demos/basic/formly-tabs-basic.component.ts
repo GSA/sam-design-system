@@ -17,6 +17,7 @@ export class FormlyTabsBasicComponent {
         label: 'Keyword Search',
         description: `For more information on how to use our keyword search, visit our <a href="#"> help guide </a>`,
         hideOptional: true,
+        tabClass: 'sds-tabs--formly',
       },
       fieldArray: {
         fieldGroup: [

@@ -8,7 +8,7 @@ import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 import * as _ from 'lodash-es'
 import { IconModule, allIcons as sdsAllIcons, uswdsAllIcons} from '@gsa-sam/ngx-uswds-icons'
 
-export const appendPrefix = (iconsObject: {[key: string]: string}, prefix: string): Object => {
+export const appendPrefix = (iconsObject: {[key: string]: string}, prefix: string): {[key: string]: string} => {
   const prefixedIconsObject = {};
   Object.keys(iconsObject).forEach(key => {
     prefixedIconsObject[`${prefix}${_.upperFirst(key)}`] = iconsObject[key];
@@ -301,6 +301,7 @@ export const ROUTES: Routes = [
   { path: 'components/text', children: TEXT_ROUTES },
   { path: 'components/formly-search', children: SEARCH_FORMLY_ROUTES },
   { path: 'components/formly-tabs', children: FORMLY_TABS_ROUTES },
+
 
   // Wrappers
   { path: 'components/form-field', children: FORM_FIELD_ROUTES },
