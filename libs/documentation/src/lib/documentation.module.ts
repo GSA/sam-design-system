@@ -154,6 +154,11 @@ import {
 } from './components/formly-file-input/file-input.module';
 
 import {
+  ROUTES as FORMLY_TABS_ROUTES,
+  FormlyTabsModule
+} from './components/formly-tabs/formly-tabs.module';
+
+import {
   ROUTES as TOASTS_ROUTES,
   ToastsModule,
 } from './components/toasts/toasts.module';
@@ -295,6 +300,7 @@ export const ROUTES: Routes = [
   { path: 'components/formly-datepicker', children: FORMLY_DATEPICKER_ROUTES },
   { path: 'components/text', children: TEXT_ROUTES },
   { path: 'components/formly-search', children: SEARCH_FORMLY_ROUTES },
+  { path: 'components/formly-tabs', children: FORMLY_TABS_ROUTES },
 
   // Wrappers
   { path: 'components/form-field', children: FORM_FIELD_ROUTES },
@@ -378,6 +384,7 @@ export const ROUTES: Routes = [
     DatePipeModule,
     StepperModule,
     FileInputModule,
+    FormlyTabsModule,
     NgxBootstrapIconsModule.pick(Object.assign(
       _.cloneDeep(allIcons),
       appendPrefix(_.cloneDeep(sdsAllIcons), 'sds'),

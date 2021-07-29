@@ -16,6 +16,7 @@ export enum SdsFormlyTypes {
   FILEINFO = 'fileinfo',
   SEARCH = 'search',
   FILEINPUT = 'fileinput',
+  TABS = 'tabs',
 };
 
 export enum SdsReadonlyTypes {
