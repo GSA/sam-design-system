@@ -21,7 +21,7 @@ import {
   SDSFormlyUpdateComunicationService,
   SDSFormlyUpdateModelService,
 } from '@gsa-sam/sam-formly';
-import { Router, ActivatedRoute, UrlTree } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import * as _ from 'lodash-es';
 import { Location } from '@angular/common';
 
@@ -30,7 +30,7 @@ import { Location } from '@angular/common';
   templateUrl: './search-list-layout.component.html',
   styleUrls: ['./search-list-layout.component.scss'],
 })
-export class SearchListLayoutComponent implements OnChanges, OnInit {
+export class SearchListLayoutComponent implements OnInit {
   /**
    * Child Template to be used to display the data for each item in the list of items
    */
@@ -137,14 +137,6 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     this.triggeredByPopState = true;
     if (this.isHistoryEnabled) {
       this.getHistoryModel();
-    }
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.configuration && changes.configuration.currentValue) {
-      this.configuration = changes.configuration.currentValue;
-      this.sortField = this.configuration.defaultSortValue;
-      this.onSelectChange();
     }
   }
 

@@ -9,6 +9,7 @@ import {
   SearchParameters,
   SearchResult,
   SearchListInterface,
+  ResultsModel,
 } from './model/search-list-layout.model';
 import { of, Observable } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -87,16 +88,21 @@ describe('SearchListLayoutComponent', () => {
     expect(service.updateModel).toHaveBeenCalled();
   });
 
-  it('should set configuration & sortField on ngOnChanges', () => {
-    component.ngOnChanges({
-      configuration: new SimpleChange(
-        null,
-        { defaultSortValue: 'testValue' },
-        null
-      ),
-    });
+  it('should update sortvalue through updateSearchResultsModel', () => {
+    component.configuration =  {
+      defaultSortValue: 'legalBusinessName',
+      pageSize: 25,
+      sortList: [
+        { text: 'Entity Name', value: 'legalBusinessName' },
+        { text: 'Status', value: 'registrationStatus' },
+      ],
+    };
     fixture.detectChanges();
-    expect(component.sortField).toBe('testValue');
+
+    const config: ResultsModel = { sort: 'registrationStatus', filterModel: {} };
+    component.updateSearchResultsModel(config);
+    fixture.detectChanges();
+    expect(component.sortField).toBe('registrationStatus');
   });
 });
 

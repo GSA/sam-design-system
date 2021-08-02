@@ -177,10 +177,10 @@ describe('SdsStepperComponent', () => {
         CommonModule,
         SdsFormlyModule,
         NgxBootstrapIconsModule.pick({ chevronLeft, chevronRight, circle, slashCircleFill, checkCircleFill, question, save, x }),
-        IconModule,
         RouterTestingModule,
         SdsStepperModule,
         NoopAnimationsModule,
+        IconModule,
       ],
       declarations: [
         StepperTestComponent,

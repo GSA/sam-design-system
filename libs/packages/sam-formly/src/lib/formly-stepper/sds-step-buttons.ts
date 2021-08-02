@@ -1,4 +1,6 @@
-import { Directive, HostListener, Input } from "@angular/core";
+import { Directive, forwardRef, HostListener, Inject, Input, OnDestroy, OnInit } from "@angular/core";
+import { UsaStepIndicatorComponent } from "@gsa-sam/ngx-uswds";
+import { Subscription } from "rxjs";
 import { SdsStepComponent, SdsStepper } from "./sds-stepper";
 
 /** Button that moves to the next step in a stepper workflow. */
@@ -128,5 +130,47 @@ export class SdsStepperNavDirective {
   @HostListener('click')
   _handleClick() {
     this._stepper.changeStep(this.sdsStepperNav.id);
+  }
+}
+
+/**
+ * Directive designed for when using ngx-uswds' step indicator component
+ * with sds stepper. This directive manages internal sync of usa-step-indicator
+ * and sds stepper steps such that when a step changes in one component, it is
+ * accurately reflected on the other
+ * 
+ * usage example: 
+ * Inside the template of a component that extends SdsStepper - 
+ *  <usa-step-indicator sdsStepperUSWDSNav> </usa-step-indicator>
+ */
+@Directive({
+  selector: `usa-step-indicator [sdsStepperUSWDSNav]`
+})
+export class SdsStepperUSWDSNavDirective implements OnInit, OnDestroy {
+  constructor(
+    @Inject(forwardRef(() => SdsStepper)) public _stepper: SdsStepper,
+    private _el: UsaStepIndicatorComponent,
+  ) {}
+
+  stepChangeSubscriptions: Subscription = new Subscription();
+  
+  ngOnInit() {
+    const usaStepChange = this._el.currentStepChange.subscribe(stepIndex => {
+      const step = this._el.steps[stepIndex];
+      const nextStep = this._stepper.flatSteps.find(flatStep => flatStep.text === step.label);
+      this._stepper.changeStep(nextStep.id);
+    });
+
+    const sdsStepChange = this._stepper.stepChange.subscribe(newStep => {
+      const stepIndex = this._el.steps.findIndex(usaStep => usaStep.label === newStep.text);
+      this._el.currentStep = stepIndex;
+    });
+
+    this.stepChangeSubscriptions.add(usaStepChange);
+    this.stepChangeSubscriptions.add(sdsStepChange);
+  }
+
+  ngOnDestroy() {
+    this.stepChangeSubscriptions.unsubscribe();
   }
 }
