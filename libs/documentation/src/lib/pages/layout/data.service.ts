@@ -10,6 +10,12 @@ export class DataService {
     this.data = registrationData._embedded.results;
     if (this.data) {
       if (search.filter) {
+        let filterText = '';
+        if (search.filter.keyword && search.filter.keyword.keywordTags) {
+          filterText = search.filter.keyword.keywordTags[0].text;
+        } else if (search.filter.keyword && search.filter.keyword.keywordTextarea) {
+          filterText =  search.filter.keyword.keywordTextarea;
+        }
         if (search.filter.keyword || search.filter.location) {
           const toReturn = [];
           for (let i = 0; i < this.data.length; i++) {
@@ -18,7 +24,7 @@ export class DataService {
               search.filter.keyword &&
               item.title
                 .toLowerCase()
-                .indexOf(search.filter.keyword.toLowerCase()) !== -1
+                .indexOf(filterText.toLowerCase()) !== -1
             ) {
               toReturn.push(item);
             } else if (search.filter.location) {
