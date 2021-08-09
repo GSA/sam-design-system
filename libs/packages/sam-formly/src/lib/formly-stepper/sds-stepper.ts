@@ -208,7 +208,7 @@ export class SdsStepper {
 
   /**
    * This is used to disable/enable the routing for the stepper
-   * @default - sdsStepId
+   * @default - true
    */
   @Input() isRouteEnabled = true;
 
