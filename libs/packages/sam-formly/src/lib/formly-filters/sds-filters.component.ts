@@ -8,6 +8,8 @@ import {
   ChangeDetectorRef,
   OnChanges,
   SimpleChanges,
+  ViewChild,
+  TemplateRef,
 } from '@angular/core';
 
 import { FormControl, FormGroup } from '@angular/forms';
@@ -20,12 +22,16 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { FormlyUtilsService, ReadonlyDataType } from '../formly/services/formly-utils.service';
 import { SdsFormlyTypes } from '../formly/models/formly-types';
-
+import { SdsDialogRef, SdsDialogService } from '@gsa-sam/components';
+import { cloneDeep } from 'lodash-es';
 @Component({
   selector: 'sds-filters',
   templateUrl: './sds-filters.component.html',
 })
 export class SdsFiltersComponent implements OnInit, OnChanges {
+
+  @ViewChild('horizontalFiltersDialog') horizontalFiltersDialogTemplate: TemplateRef<any>;
+
   /**
    * Pass in a Form Group for ReactiveForms Support
    */
@@ -107,6 +113,8 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
   @Output() showInactiveFiltersChange = new EventEmitter<boolean>();
 
   chips: ReadonlyDataType[] = [];
+  dialogRef: SdsDialogRef<any>;
+  _pendingFilterValue: any;
 
   unsubscribe$ = new Subject<void>();
   _isObj = (obj: any): boolean => typeof obj === 'object' && obj !== null;
@@ -128,9 +136,11 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     return result;
   };
 
+
   constructor(
     @Optional()
     public formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,
+    private formlyDialogService: SdsDialogService,
     private cdr: ChangeDetectorRef,
     @Optional()
     private filterUpdateModelService: SDSFormlyUpdateModelService
@@ -337,6 +347,57 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
       this.generateChips(this.model, this.fields);
     }
     this.showInactiveFiltersChange.emit(inactiveFilterValue);
+  }
+
+  openDialog() {
+    const clonedFields = cloneDeep(this.fields);
+    this.removePopoverGroup(clonedFields);
+    this.dialogRef = this.formlyDialogService.open(this.horizontalFiltersDialogTemplate, {    
+      data: {fields: clonedFields, options: {}},  
+      height: '100vh',
+      width: '100vw',
+      maxWidth: '100vw',
+      maxHeight: '100vh',
+      hasBackdrop: false,
+      displayCloseBtn: false,
+      panelClass: ['sds-dialog--full']
+    });
+
+    this.dialogRef.afterClosed().toPromise().then((result) => {
+      if (result) {
+        this.onModelChange(result);
+      }
+      this.dialogRef = null;
+    })
+  }
+
+  close() {
+    this.dialogRef.close();
+  }
+
+  applyDialogFilters() {
+    this.dialogRef.close({...this._pendingFilterValue});
+    this._pendingFilterValue = null;
+  }
+
+  removePopoverGroup(fields: FormlyFieldConfig[]) {
+    fields.forEach(field => {
+      if (field.templateOptions && field.templateOptions.group === 'popover') {
+        field.templateOptions.group = 'accordion';
+      }
+
+      if (field.hide) {
+        field.hide = false;
+      }
+      
+      if (field.fieldGroup) {
+        this.removePopoverGroup(field.fieldGroup);
+      }
+
+      if (field.fieldArray) {
+        this.removePopoverGroup([field.fieldArray]);
+      }
+    })
   }
 
   generateChips(model: any, fields: FormlyFieldConfig[]) {

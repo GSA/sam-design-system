@@ -12,6 +12,7 @@ import { SDSFormlyUpdateModelService } from './service/sds-filter-model-update.s
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 import { NgxBootstrapIconsModule, filter, x } from 'ngx-bootstrap-icons';
 import { SdsReadonlyModule } from '../formly/readonly/readonly.module';
+import { SdsPopoverModule } from '@gsa-sam/components';
 
 @NgModule({
   declarations: [SdsFiltersComponent, AdvancedFiltersComponent ],
@@ -25,6 +26,7 @@ import { SdsReadonlyModule } from '../formly/readonly/readonly.module';
     FormlySelectModule,
     FormlyModule,
     SdsReadonlyModule,
+    SdsPopoverModule,
     NgxBootstrapIconsModule.pick({filter, x})
   ],
   exports: [SdsFiltersComponent ],

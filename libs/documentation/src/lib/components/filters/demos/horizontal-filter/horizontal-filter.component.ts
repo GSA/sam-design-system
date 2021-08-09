@@ -84,21 +84,17 @@ export class HorizontalFilterDemo {
         required: true,
       },
     },
-    {
-      key: 'searchmodel',
-      type: 'search',
-      templateOptions: {
-        label: 'Search',
-        hideLabel: true,
-        submitHandler: this.handleSubmit,
-        searchSettings: {
-          placeholder: 'eg: Acme Corporation',
-        },
-      },
-    },
   ];
 
   handleSubmit($event) {
+    console.log($event);
+  }
+
+  onSearchModelChange($event) {
+    console.log($event);
+  }
+
+  onFilterChange($event) {
     console.log($event);
   }
 }

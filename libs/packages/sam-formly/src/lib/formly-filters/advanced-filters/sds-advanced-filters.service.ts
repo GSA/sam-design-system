@@ -119,7 +119,7 @@ export class SdsAdvancedFiltersService {
     } else {
       field.hide = true;
       field.templateOptions['required'] = false;
-      model[field.key] = null;
+      field.formControl.setValue(null);
     }
   }
 }
