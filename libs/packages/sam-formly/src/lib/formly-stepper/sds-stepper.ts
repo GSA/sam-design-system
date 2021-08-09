@@ -312,15 +312,17 @@ export class SdsStepper {
     if (this.linear) {
       this.evaluateIncompleteForms();
     }
-    if (this.isRouteEnabled) {
-      this.changeStep(this.currentStepId).finally(() => {
+
+    this.changeStep(this.currentStepId).finally(() => {
+      if (this.isRouteEnabled) {
         this.activatedRoute.queryParams.subscribe(queryParam => {
           if (queryParam[this.queryParamKey] && queryParam[this.queryParamKey] != this.currentStepId) {
             this.changeStep(queryParam[this.queryParamKey]);
           }
         });
-      });
-    }
+      }
+    });
+
   }
 
   getFlatSteps(stepTemplates: QueryList<SdsStepComponent>): SdsStepComponent[] {
