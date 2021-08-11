@@ -53,6 +53,7 @@ import { FormlyFieldDateRangePickerComponent } from './types/daterangepicker';
 import { SdsFormlyTypes } from './models/formly-types';
 import { FormlyReadonlyWrapperComponent } from './wrappers/readonly.wrapper';
 import { FormlyFieldFileInputComponent } from './types/file-input';
+import { FormControl, FormGroup } from '@angular/forms';
 
 export const FORMLY_WRAPPERS: any = [
   {
@@ -221,28 +222,30 @@ export const FORMLY_CONFIG: ConfigOption = {
         validators: {
           validation: [dateRangeValidator]
         },
-        fieldGroup: [
-          {
-            key: 'fromDate',
-            templateOptions: {
-              placeholder: 'eg: ' + new Date().toLocaleString('en-US', {
-                month: 'short',
-                day: 'numeric',
-                year: 'numeric'
-              })
-            }
-          },
-          {
-            key: 'toDate',
-            templateOptions: {
-              placeholder: new Date().toLocaleString('en-US', {
-                month: 'short',
-                day: 'numeric',
-                year: 'numeric'
-              })
-            }
-          }
-        ]
+        // fieldGroup: [
+        //   {
+        //     key: 'fromDate',
+        //     templateOptions: {
+        //       label: 'Start Date',
+        //       placeholder: 'eg: ' + new Date().toLocaleString('en-US', {
+        //         month: 'short',
+        //         day: 'numeric',
+        //         year: 'numeric'
+        //       })
+        //     }
+        //   },
+        //   {
+        //     key: 'toDate',
+        //     templateOptions: {
+        //       label: 'End Date',
+        //       placeholder: new Date().toLocaleString('en-US', {
+        //         month: 'short',
+        //         day: 'numeric',
+        //         year: 'numeric'
+        //       })
+        //     }
+        //   }
+        // ]
       }
     },
     {

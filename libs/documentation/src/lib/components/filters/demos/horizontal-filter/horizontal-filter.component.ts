@@ -57,7 +57,7 @@ export class HorizontalFilterDemo {
     },
     {
       key: 'expirationDateRangeEx',
-      type: 'daterangepicker',
+      type: 'daterangepickerv2',
       hide: true,
       templateOptions: {
         group: 'popover',
@@ -85,6 +85,8 @@ export class HorizontalFilterDemo {
       },
     },
   ];
+
+  searchModel = {};
 
   handleSubmit($event) {
     console.log($event);

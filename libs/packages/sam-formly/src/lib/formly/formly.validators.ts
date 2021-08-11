@@ -82,11 +82,11 @@ export function dateRangeValidator(control: FormControl, field: FormlyFieldConfi
         return field.formControl.errors;
     }
 
-    const innerFieldGroup: FormlyFieldConfig = field.fieldGroup.find(field => field.formControl.invalid && field.formControl.errors);
+    // const innerFieldGroup: FormlyFieldConfig = field.fieldGroup.find(field => field.formControl.invalid && field.formControl.errors);
 
-    if (!innerFieldGroup) {
-        return null;
-    }
-    return innerFieldGroup.formControl.errors;
+    // if (!innerFieldGroup) {
+    //     return null;
+    // }
+    // return innerFieldGroup.formControl.errors;
 }
 

@@ -460,12 +460,12 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     }
 
     // If the form control is not complex, then we can simply reset
-    if (typeof field.formControl.value != 'object') {
+    if (typeof field.formControl.value != 'object' || chip.formlyType === SdsFormlyTypes.DATERANGEPICKERV2) {
       field.formControl.reset();
       return;
     }
 
-    if (chip.formlyType === SdsFormlyTypes.DATERANGEPICKER || chip.formlyType === SdsFormlyTypes.DATERANGEPICKERV2) {
+    if (chip.formlyType === SdsFormlyTypes.DATERANGEPICKER) {
       const fromDateControl = chip.readonlyOptions.daterangepickerOptions.fromDateKey;
       const toDateControl = chip.readonlyOptions.daterangepickerOptions.toDateKey;
       field.formControl.get(fromDateControl).reset();
