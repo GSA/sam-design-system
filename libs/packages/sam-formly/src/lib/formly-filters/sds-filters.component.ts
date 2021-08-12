@@ -214,7 +214,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
    */
   private findFieldInFieldGroup(fields: FormlyFieldConfig[], key: any) {
     let matchingField: FormlyFieldConfig = null;
-    
+
     for (let i = 0; i < fields.length; i++) {
       const field = fields[i];
 
@@ -222,7 +222,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
         matchingField = field;
       } else if (field.fieldGroup) {
         matchingField = this.findFieldInFieldGroup(field.fieldGroup, key);
-      } else if(field.fieldArray) {
+      } else if (field.fieldArray) {
         matchingField = this.findFieldInFieldGroup([field.fieldArray], key);
       }
 
@@ -291,12 +291,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     return value;
   }
 
-  isDate(_date) {
-    const _regExp = new RegExp(
-      '^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(.[0-9]+)?(Z)?$'
-    );
-    return _regExp.test(_date);
-  }
+
   convertToModel(filters) {
     let obj = {};
     const encodedValues = qs.stringify(filters, {
@@ -325,8 +320,8 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
   }
 
   longFormatDate(prefix, value) {
-    const val = decodeURIComponent(value);
-    if (!isNaN(Date.parse(val))) {
+    const val = Date.parse(value);
+    if (!isNaN(val) && isNaN(value)) {
       value = new Date(val).toISOString();
     }
     return value;
@@ -351,7 +346,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
 
       if (Array.isArray(chip.value)) {
         const newChips = chip.value.map(chipValue => {
-          return {...chip, value: [chipValue]};
+          return { ...chip, value: [chipValue] };
         });
         allChips = allChips.concat(newChips);
         return;
@@ -372,11 +367,11 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
         const value = chip.value[key];
 
         // Ignore falsey or empty string values
-        if (!value || (typeof(value.length) === 'string' && !value.length)) {
+        if (!value || (typeof (value.length) === 'string' && !value.length)) {
           return;
         }
 
-        const newChip = {...chip, value: {[key]: value}};
+        const newChip = { ...chip, value: { [key]: value } };
         allChips.push(newChip);
       })
     })
