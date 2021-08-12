@@ -335,8 +335,8 @@ export class SearchListLayoutComponent implements OnInit {
   }
 
   longFormatDate(prefix, value) {
-    const val = decodeURIComponent(value);
-    if (!isNaN(Date.parse(val))) {
+    const val = Date.parse(value);
+    if (!isNaN(val) && isNaN(value)) {
       value = new Date(val).toISOString();
     }
     return value;
