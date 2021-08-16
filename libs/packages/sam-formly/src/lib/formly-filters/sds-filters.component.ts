@@ -10,11 +10,9 @@ import {
   SimpleChanges,
   ViewChild,
   TemplateRef,
-  Inject,
-  AfterViewInit,
 } from '@angular/core';
 
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import * as qs from 'qs';
 import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
@@ -119,15 +117,11 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
 
   // Snapshot of model before filter dialog opens during horizontal responsive format
   _modelSnapshot: any;
-  _modelOptions: any = {};
-  // Selected values of filters on modal view that have not yet been applied
-  _pendingFilterValue: any;
 
   unsubscribe$ = new Subject<void>();
   _isObj = (obj: any): boolean => typeof obj === 'object' && obj !== null;
   _isEmpty = (obj: any): boolean => Object.keys(obj).length === 0;
   overwrite = (baseObj: any, newObj: any) => {
-    console.log('overwrite');
     const result = {};
     const mergedObj = { ...baseObj, ...newObj };
     for (const key in mergedObj) {
@@ -387,10 +381,15 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
 
   applyDialogFilters() {
     this.dialogRef.close(this.model);
-    this._pendingFilterValue = null;
   }
 
-  removePopoverGroup(fields: FormlyFieldConfig[]) {
+  /**
+   * Converts all popover type fields to accordion and unhides any hidden fields
+   * so that they can be displayed in filter dialog during resposive mode for
+   * horizontal filters
+   * @param fields 
+   */
+  private removePopoverGroup(fields: FormlyFieldConfig[]) {
     fields.forEach(field => {
       if (field.templateOptions && field.templateOptions.group === 'popover') {
         field.templateOptions.group = 'accordion';
@@ -408,7 +407,13 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     })
   }
 
-  generateChips(model: any, fields: FormlyFieldConfig[]) {
+  /**
+   * Create chips to display for horizontal filters based on current model
+   * and formly field config
+   * @param model 
+   * @param fields 
+   */
+  private generateChips(model: any, fields: FormlyFieldConfig[]) {
     const readonlyData = FormlyUtilsService.formlyConfigToReadonlyData(fields, model);
     const chipsWithValue = readonlyData.filter(data => data.value);
     let allChips = [];

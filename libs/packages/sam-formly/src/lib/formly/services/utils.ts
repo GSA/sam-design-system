@@ -1,4 +1,11 @@
 
+/**
+ * Given an object, create a deep copy such that no references in the two objects
+ * overlap
+ * @param obj - object to deep copy
+ * @returns - the cloned object
+ * @throws Error if object could not be cloned
+ */
 export function deepCopy(obj: any) {
     var copy;
 

@@ -53,7 +53,6 @@ import { FormlyFieldDateRangePickerComponent } from './types/daterangepicker';
 import { SdsFormlyTypes } from './models/formly-types';
 import { FormlyReadonlyWrapperComponent } from './wrappers/readonly.wrapper';
 import { FormlyFieldFileInputComponent } from './types/file-input';
-import { FormControl, FormGroup } from '@angular/forms';
 
 export const FORMLY_WRAPPERS: any = [
   {
@@ -243,7 +242,7 @@ export const FORMLY_CONFIG: ConfigOption = {
               })
             }
           }
-        ],
+        ]
       }
     },
     {
