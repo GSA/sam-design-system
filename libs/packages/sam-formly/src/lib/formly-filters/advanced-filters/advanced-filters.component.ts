@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectorRef, Output, EventEmitter, TemplateRef, OnInit } from '@angular/core';
+import { Component, Input, ChangeDetectorRef, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { SdsDialogService } from '@gsa-sam/components';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
@@ -69,7 +69,7 @@ export class AdvancedFiltersComponent implements OnInit {
     if (!this.enablePopover) {
       return;
     }
-    this.popoverContent = this.getCheckboxFieldConfigs();
+    this.popoverContent = this.getCheckboxFieldConfigs(true);
   }
 
   onSelectAllChange(selectAllValue, selectedform, isOnload, selectAllField) {
@@ -163,9 +163,9 @@ export class AdvancedFiltersComponent implements OnInit {
     this.model = response.model;
   }
 
-  getCheckboxFieldConfigs() {
+  getCheckboxFieldConfigs(hideChildrenGroups = false) {
     const modalFields: FormlyFieldConfig[] = this.advancedFiltersService.convertToCheckboxes(
-      this.fields
+      this.fields, hideChildrenGroups
     );
     if (this.sortMoreFilterBy) {
       modalFields.sort((a: FormlyFieldConfig, b: FormlyFieldConfig) =>

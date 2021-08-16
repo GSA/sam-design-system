@@ -222,30 +222,28 @@ export const FORMLY_CONFIG: ConfigOption = {
         validators: {
           validation: [dateRangeValidator]
         },
-        // fieldGroup: [
-        //   {
-        //     key: 'fromDate',
-        //     templateOptions: {
-        //       label: 'Start Date',
-        //       placeholder: 'eg: ' + new Date().toLocaleString('en-US', {
-        //         month: 'short',
-        //         day: 'numeric',
-        //         year: 'numeric'
-        //       })
-        //     }
-        //   },
-        //   {
-        //     key: 'toDate',
-        //     templateOptions: {
-        //       label: 'End Date',
-        //       placeholder: new Date().toLocaleString('en-US', {
-        //         month: 'short',
-        //         day: 'numeric',
-        //         year: 'numeric'
-        //       })
-        //     }
-        //   }
-        // ]
+        fieldGroup: [
+          {
+            key: 'fromDate',
+            templateOptions: {
+              placeholder: 'eg: ' + new Date().toLocaleString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric'
+              })
+            }
+          },
+          {
+            key: 'toDate',
+            templateOptions: {
+              placeholder: new Date().toLocaleString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric'
+              })
+            }
+          }
+        ],
       }
     },
     {

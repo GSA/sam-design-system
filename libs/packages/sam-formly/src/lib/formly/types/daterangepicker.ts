@@ -1,25 +1,27 @@
-import { AfterViewInit, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component,  ViewEncapsulation } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'sds-formly-field-daterangepicker',
   template: `
-    <div class="display-flex">
-      <mat-date-range-input [formGroup]="dateRangeControl" [rangePicker]="picker" [min]="to.minDate" [max]="to.maxDate" [id]="id"
+    <div *ngIf="!field.hide" class="display-flex">
+      <mat-date-range-input [formGroup]="formControl" [rangePicker]="picker" [min]="to.minDate" [max]="to.maxDate" [id]="id"
         class="usa-input display-inline-block margin-top-3"
         [formlyAttributes]="field"
         [class.usa-input--error]="showError">
         <input matStartDate
-          [attr.aria-label]="'Start Date'"
-          [placeholder]="'mmm-dd-yyyy'"
-          formControlName="fromDate"
+          [attr.aria-label]="field.fieldGroup[0]?.templateOptions?.placeholder || 'Start Date'"
+          [formlyAttributes]="field.fieldGroup[0]"
+          [placeholder]="field.fieldGroup[0]?.templateOptions?.placeholder || 'mmm-dd-yyyy'"
+          [formControlName]="field.fieldGroup[0].key"
+          (ngModelChange)="field.fieldGroup[0]?.templateOptions?.change ? field.fieldGroup[0].templateOptions.change(field.fieldGroup[0]) : ''"
           />
           <input matEndDate
-          [attr.aria-label]="'End Date'"
-          [placeholder]="'mmm-dd-yyyy'"
-          formControlName="toDate"
+          [attr.aria-label]="field.fieldGroup[1]?.templateOptions?.placeholder || 'End Date'"
+          [formlyAttributes]="field.fieldGroup[1]"
+          [placeholder]="field.fieldGroup[1]?.templateOptions?.placeholder || 'mmm-dd-yyyy'"
+          [formControlName]="field.fieldGroup[1].key"
+          (ngModelChange)="field.fieldGroup[1]?.templateOptions?.change ? field.fieldGroup[1].templateOptions.change(field.fieldGroup[1]) : ''"
         />  
       </mat-date-range-input>
       <mat-datepicker-toggle class="padding-top-3" matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -32,40 +34,4 @@ import { Subscription } from 'rxjs';
           ],
   encapsulation: ViewEncapsulation.None,
 })
-export class FormlyFieldDateRangePickerComponent extends FieldType implements OnInit, OnDestroy {
-  dateRangeControl = new FormGroup({
-    fromDate: new FormControl(),
-    toDate: new FormControl()
-  });
-
-  subscription = new Subscription();
-
-  ngOnInit() {
-    if (this.model[this.key as string]) {
-      this.dateRangeControl.setValue(this.model[this.key as string]);
-    }
-    
-    const dateRangeSubscription = this.dateRangeControl.valueChanges.subscribe(changes => {
-      if (this.formControl.value != changes) {
-        this.formControl.setValue(changes);
-      }
-    });
-
-    const formControlSubscription = this.formControl.valueChanges.subscribe(changes => {
-      if (this.dateRangeControl.value != changes) {
-        if (!changes) {
-          this.dateRangeControl.setValue({fromDate: null, toDate: null});
-        } else {
-          this.dateRangeControl.setValue(changes);
-        }
-      }
-    });
-
-    this.subscription.add(dateRangeSubscription);
-    this.subscription.add(formControlSubscription);
-  }
-  
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
-}
+export class FormlyFieldDateRangePickerComponent extends FieldType {}

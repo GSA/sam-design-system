@@ -10,6 +10,8 @@ import {
   SimpleChanges,
   ViewChild,
   TemplateRef,
+  Inject,
+  AfterViewInit,
 } from '@angular/core';
 
 import { FormControl, FormGroup } from '@angular/forms';
@@ -22,7 +24,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { FormlyUtilsService, ReadonlyDataType } from '../formly/services/formly-utils.service';
 import { SdsFormlyTypes } from '../formly/models/formly-types';
-import { SdsDialogRef, SdsDialogService } from '@gsa-sam/components';
+import { SdsDialogRef, SdsDialogService, SDS_DIALOG_DATA } from '@gsa-sam/components';
 import { cloneDeep } from 'lodash-es';
 @Component({
   selector: 'sds-filters',
@@ -114,12 +116,18 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
 
   chips: ReadonlyDataType[] = [];
   dialogRef: SdsDialogRef<any>;
+
+  // Snapshot of model before filter dialog opens during horizontal responsive format
+  _modelSnapshot: any;
+  _modelOptions: any = {};
+  // Selected values of filters on modal view that have not yet been applied
   _pendingFilterValue: any;
 
   unsubscribe$ = new Subject<void>();
   _isObj = (obj: any): boolean => typeof obj === 'object' && obj !== null;
   _isEmpty = (obj: any): boolean => Object.keys(obj).length === 0;
   overwrite = (baseObj: any, newObj: any) => {
+    console.log('overwrite');
     const result = {};
     const mergedObj = { ...baseObj, ...newObj };
     for (const key in mergedObj) {
@@ -163,7 +171,6 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
               this.form.getRawValue(),
               filter
             );
-
             // Shallow copy to not trigger onChanges from formly side
             Object.keys(updatedFormValue).forEach((key) => {
               this.model[key] = updatedFormValue[key];
@@ -351,6 +358,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
 
   openDialog() {
     const clonedFields = cloneDeep(this.fields);
+    this._modelSnapshot = cloneDeep(this.model);
     this.removePopoverGroup(clonedFields);
     this.dialogRef = this.formlyDialogService.open(this.horizontalFiltersDialogTemplate, {    
       data: {fields: clonedFields, options: {}},  
@@ -366,6 +374,8 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     this.dialogRef.afterClosed().toPromise().then((result) => {
       if (result) {
         this.onModelChange(result);
+      } else {
+        this.model = this._modelSnapshot;
       }
       this.dialogRef = null;
     })
@@ -376,7 +386,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
   }
 
   applyDialogFilters() {
-    this.dialogRef.close({...this._pendingFilterValue});
+    this.dialogRef.close(this.model);
     this._pendingFilterValue = null;
   }
 
@@ -384,10 +394,6 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     fields.forEach(field => {
       if (field.templateOptions && field.templateOptions.group === 'popover') {
         field.templateOptions.group = 'accordion';
-      }
-
-      if (field.hide) {
-        field.hide = false;
       }
       
       if (field.fieldGroup) {
@@ -397,6 +403,8 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
       if (field.fieldArray) {
         this.removePopoverGroup([field.fieldArray]);
       }
+
+      field.hide = false;
     })
   }
 
@@ -460,16 +468,17 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     }
 
     // If the form control is not complex, then we can simply reset
-    if (typeof field.formControl.value != 'object' || chip.formlyType === SdsFormlyTypes.DATERANGEPICKERV2) {
+    if (typeof field.formControl.value != 'object') {
       field.formControl.reset();
       return;
     }
 
-    if (chip.formlyType === SdsFormlyTypes.DATERANGEPICKER) {
-      const fromDateControl = chip.readonlyOptions.daterangepickerOptions.fromDateKey;
-      const toDateControl = chip.readonlyOptions.daterangepickerOptions.toDateKey;
-      field.formControl.get(fromDateControl).reset();
-      field.formControl.get(toDateControl).reset();
+    if (chip.formlyType === SdsFormlyTypes.DATERANGEPICKER || chip.formlyType === SdsFormlyTypes.DATERANGEPICKERV2) {
+      
+      const fromDateControl = field.fieldGroup[0].formControl;
+      const toDateControl = field.fieldGroup[1].formControl;
+      fromDateControl.reset();
+      toDateControl.reset();
       return;
     }
 
