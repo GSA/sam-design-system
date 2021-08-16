@@ -14,7 +14,7 @@ import {
 import { RouterModule } from "@angular/router";
 import { FormlyModule } from "@ngx-formly/core";
 import { SdsStepper, SdsStepComponent, SdsStepFooterComponent, SdsStepHeaderComponent } from "./sds-stepper";
-import { SdsStepperNavDirective, SdsStepperNextDirective, SdsStepperPreviousDirective, SdsStepperSaveDirective } from "./sds-step-buttons";
+import { SdsStepperNavDirective, SdsStepperNextDirective, SdsStepperPreviousDirective, SdsStepperSaveDirective, SdsStepperUSWDSNavDirective } from "./sds-step-buttons";
 
 @NgModule({
   imports: [
@@ -34,6 +34,7 @@ import { SdsStepperNavDirective, SdsStepperNextDirective, SdsStepperPreviousDire
     SdsStepperNextDirective,
     SdsStepperPreviousDirective,
     SdsStepperSaveDirective,
+    SdsStepperUSWDSNavDirective
   ],
   exports: [
     SdsStepComponent,
@@ -44,6 +45,7 @@ import { SdsStepperNavDirective, SdsStepperNextDirective, SdsStepperPreviousDire
     SdsStepperNextDirective,
     SdsStepperPreviousDirective,
     SdsStepperSaveDirective,
+    SdsStepperUSWDSNavDirective
   ]
 })
 export class SdsStepperModule {}

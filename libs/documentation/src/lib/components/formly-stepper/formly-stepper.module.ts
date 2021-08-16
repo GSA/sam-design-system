@@ -8,6 +8,8 @@ import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../s
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { StepperAdvancedDemoComponent } from './demos/advanced/stepper-advanced.component';
 import { StepperAdvancedModule } from './demos/advanced/stepper-advanced.module';
+import { UswdsStepperComponent } from './demos/uswds-stepper/uswds-stepper.component';
+import { UswdsStepperModule } from './demos/uswds-stepper/uswds-stepper.module';
 
 declare var require: any;
 const DEMOS = {
@@ -24,6 +26,18 @@ const DEMOS = {
       {name: 'custom-stepper.component.html', source: require('!!raw-loader!./demos/advanced/custom-stepper.component.html')},
       {name: 'subawardee.component.ts', source: require('!!raw-loader!./demos/advanced/subawardee.component')},
       {name: 'subawardee.component.html', source: require('!!raw-loader!./demos/advanced/subawardee.component.html')},
+    ]
+  },
+  uswdsStepper: {
+    title: 'USWDS Step Indicator',
+    type: UswdsStepperComponent,
+    code: require('!!raw-loader!./demos/uswds-stepper/uswds-stepper.component'),
+    markup: require('!!raw-loader!./demos/uswds-stepper/uswds-stepper.component.html'),
+    module: require('!!raw-loader!./demos/uswds-stepper/uswds-stepper.module.ts'),
+    path: 'libs/documentation/src/lib/components/formly-stepper/demos/uswds-stepper',
+    files: [
+      {name: 'uswds-custom-stepper.component.ts', source: require('!!raw-loader!./demos/uswds-stepper/uswds-custom-stepper.component')},
+      {name: 'uswds-custom-stepper.component.html', source: require('!!raw-loader!./demos/uswds-stepper/uswds-custom-stepper.component.html')}
     ]
   }
 };
@@ -57,6 +71,7 @@ export const ROUTES = [
     CommonModule,
     DocumentationComponentsSharedModule,
     StepperAdvancedModule,
+    UswdsStepperModule,
   ]
 })
 export class StepperModule {

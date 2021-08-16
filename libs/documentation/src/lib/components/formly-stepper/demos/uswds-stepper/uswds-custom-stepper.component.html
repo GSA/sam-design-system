@@ -1,0 +1,44 @@
+<usa-step-indicator sdsStepperUSWDSNav [steps]="stepLabels" [(currentStep)]="currentStepIndex">
+  <h2 UsaStepHeader [template]="emptyHeader">
+    <ng-template #emptyHeader>
+      <span></span>
+    </ng-template>
+  </h2>
+</usa-step-indicator>
+
+<div [ngTemplateOutlet]="selectedStep ? selectedStep.content : null"></div>
+
+<div class="grid-row grid-gap flex-justify-center margin-top-4">
+  <div class="margin-right-1">
+    <button class="usa-button sds-button--circle usa-button--base usa-button--big padding-2" sdsStepperPrevious
+      [attr.id]="id + '-prevBtn'">
+      <sds-icon [icon]="'chevron-left'"></sds-icon>
+    </button>
+
+    <label [attr.for]="id + '-prevBtn'" class="text-right usa-link cursor-pointer display-block margin-top-2">
+      Go Back
+    </label>
+  </div>
+
+
+  <div class="margin-right-1">
+    <button class="usa-button sds-button--circle usa-button--big usa-button--base padding-2" sdsStepperSave
+      [attr.id]="id + '-saveBtn'">
+      <sds-icon [icon]="'save'"></sds-icon>
+    </button>
+    <label [attr.for]="id + '-saveBtn'" class="text-center usa-link cursor-pointer display-block margin-top-2">
+      Save
+    </label>
+  </div>
+
+  <div class="margin-right-1">
+    <button #saveAndContinueBtn
+      class="usa-button sds-button--circle usa-button--base usa-button--big usa-button--active padding-2"
+      sdsStepperNext [attr.id]="id + '-nextBtn'">
+      <sds-icon [icon]="'chevron-right'"></sds-icon>
+    </button>
+    <label [attr.for]="id + '-nextBtn'" class="text-left usa-link cursor-pointer display-block margin-top-2">
+      Save and Continue
+    </label>
+  </div>
+</div>

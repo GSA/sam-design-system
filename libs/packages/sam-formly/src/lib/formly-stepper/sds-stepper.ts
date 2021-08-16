@@ -306,12 +306,12 @@ export class SdsStepper {
       this.evaluateIncompleteForms();
     }
 
-    this.changeStep(this.currentStepId);
-
-    this.activatedRoute.queryParams.subscribe(queryParam => {
-      if (queryParam[this.queryParamKey] && queryParam[this.queryParamKey] != this.currentStepId) {
-        this.changeStep(queryParam[this.queryParamKey]);
-      }
+    this.changeStep(this.currentStepId).finally(() => {
+      this.activatedRoute.queryParams.subscribe(queryParam => {
+        if (queryParam[this.queryParamKey] && queryParam[this.queryParamKey] != this.currentStepId) {
+          this.changeStep(queryParam[this.queryParamKey]);
+        }
+      });
     });
   }
  
