@@ -8,10 +8,12 @@ import {
   FormlyFieldConfig
 } from '@ngx-formly/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 import { SdsFormlyModule } from '../formly/formly.module';
 import { SdsFormlyResetComponent } from './formly-reset.component';
+import { IconModule, allIcons as sdsAllIcons } from '@gsa-sam/ngx-uswds-icons';
+import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 
 let resetEl: HTMLElement;
 let model: any;
@@ -27,11 +29,12 @@ describe('SDS Formly Reset', () => {
     TestBed.configureTestingModule({
       declarations: [SdsFormlyResetComponent, TestComponent],
       imports: [
-        FontAwesomeModule,
+        IconModule,
         NoopAnimationsModule,
         SdsFormlyModule,
         ReactiveFormsModule,
-        FormlyModule.forRoot({})
+        FormlyModule.forRoot({}),
+        NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))
       ]
     })
       .compileComponents();

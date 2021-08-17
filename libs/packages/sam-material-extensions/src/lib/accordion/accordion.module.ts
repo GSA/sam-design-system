@@ -2,16 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MatExpansionModule, MAT_EXPANSION_PANEL_DEFAULT_OPTIONS } from '@angular/material/expansion';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 import { SdsAccordionComponent, SdsAccordionItemComponent, SdsAccordionTitleDirective, SdsAccordionContentDirective } from './accordion.component';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
   declarations: [SdsAccordionComponent, SdsAccordionItemComponent, SdsAccordionTitleDirective, SdsAccordionContentDirective],
   imports: [
     CommonModule,
     MatExpansionModule,
-    FontAwesomeModule
+    IconModule
   ],
   exports: [SdsAccordionComponent, SdsAccordionItemComponent, SdsAccordionTitleDirective, SdsAccordionContentDirective],
   providers: [

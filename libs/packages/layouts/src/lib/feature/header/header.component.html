@@ -15,11 +15,17 @@
           " [ngTemplateOutletContext]="{ $implicit: model.home }"></ng-container>
     </div>
     <button #usaNavOpen class="usa-menu-btn" (click)="openMobileNav()">
-      <fa-layers [fixedWidth]="true" size="3x">
+      <div class="sds-stack sds-lg">
+        <usa-icon class="sds-stack-icon text-primary" [icon]="'square-fill'" [size]="'2x'"></usa-icon>
+        <usa-icon class="sds-stack-icon" [icon]="'bars'" [size]="'lg'"></usa-icon>
+        <usa-icon *ngIf="hasCounter()" class="sds-stack-icon" [icon]="'circle-fill'" [size]="'xs'"
+          [classes]="['counter-icon']"></usa-icon>
+      </div>
+      <!-- <fa-layers [fixedWidth]="true" size="3x">
         <fa-icon [icon]="['fas', 'square']" [classes]="['text-primary']"></fa-icon>
         <fa-icon [icon]="['sds', 'bars']" [classes]="['icon-bars']" transform="shrink-6"></fa-icon>
         <fa-layers-counter *ngIf="hasCounter()" [classes]="['icon-layers-counter']"></fa-layers-counter>
-      </fa-layers>
+      </fa-layers> -->
       <span class="usa-sr-only">Menu</span>
     </button>
   </div>
@@ -27,10 +33,11 @@
     (animationend)="navAnimationEnd()" [class.is-visible]="mobileNavActive" [cdkTrapFocus]="mobileNavActive">
     <div class="usa-nav__inner">
       <button #usaNavClose class="usa-nav__close" (click)="closeMobileNav()">
-        <fa-layers [fixedWidth]="true" size="lg">
+        <usa-icon [icon]="'x-circle'" [size]="'lg'"></usa-icon>
+        <!-- <fa-layers [fixedWidth]="true" size="lg">
           <fa-icon [icon]="['fas', 'circle']" [inverse]="true" transform="grow-2"></fa-icon>
           <fa-icon [icon]="['fas', 'times']" transform="shrink-6"></fa-icon>
-        </fa-layers>
+        </fa-layers> -->
         <span class="usa-sr-only">Close</span>
       </button>
       <ul class="usa-nav__primary usa-accordion">
@@ -90,10 +97,15 @@
 </ng-template>
 
 <ng-template #iconLinkTemplate let-link>
-  <fa-layers [fixedWidth]="true">
-    <fa-icon [icon]="[link.imageClassPrefix, link.imageClass]"></fa-icon>
+  <div class="sds-stack sds-sm">
+    <usa-icon class="sds-stack-icon text-ink" [icon]="link.imageClass"></usa-icon>
+    <usa-icon *ngIf="link.hasCounter" class="sds-stack-icon" [icon]="'circle-fill'" [size]="'xs'"
+      [classes]="['counter-icon']"></usa-icon>
+  </div>
+  <!-- <fa-layers [fixedWidth]="true">
+    <usa-icon [icon]="[link.imageClassPrefix, link.imageClass]"></usa-icon>
     <fa-layers-counter *ngIf="link.hasCounter" [classes]="['icon-layers-counter']"></fa-layers-counter>
-  </fa-layers>
+  </fa-layers> -->
   <span class="sds-nav__secondary-item-text">{{ link.text }}</span>
 </ng-template>
 

@@ -17,6 +17,8 @@ export class SdsSystemAlertComponent {
 
   @Output() detailsClicked = new EventEmitter<Alert>();
 
+  @Output() alertDismiss = new EventEmitter<Alert>();
+
   constructor() { }
 
   /**
@@ -24,7 +26,9 @@ export class SdsSystemAlertComponent {
    * @param index - index of the alert in array to remove
    */
   onAlertClose(index: number) {
+    const dismissedAlert = this.alerts[index];
     this.alerts.splice(index, 1);
+    this.alertDismiss.emit(dismissedAlert);
   }
 
   /**

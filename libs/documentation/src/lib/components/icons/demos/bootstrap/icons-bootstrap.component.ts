@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import {allIcons} from 'ngx-bootstrap-icons'
+import { allIcons } from 'ngx-bootstrap-icons'
 import { kebabCase } from 'lodash-es';
 
 @Component({
   templateUrl: './icons-bootstrap.component.html',
   styleUrls: ['./icons-bootstrap.component.scss'],
   selector: `sds-icons-bootstrap-demo`,
+  preserveWhitespaces: true
 })
 export class IconsBootstrap {
   bootstrapIcons = Object.keys(allIcons)

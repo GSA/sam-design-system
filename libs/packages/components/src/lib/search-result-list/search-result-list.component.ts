@@ -12,14 +12,15 @@ import { Location } from '@angular/common';
   templateUrl: './search-result-list.component.html',
   styleUrls: ['./search-result-list.component.scss'],
 })
-export class SdsSearchResultListComponent implements OnInit {
+export class SdsSearchResultListComponent {
   public updateModel = new SearchModel();
   /**
    * Allow to insert a customized template for no results to use
    */
   @Input() customResultsTemplate: TemplateRef<any>;
 
-  initialLoad: boolean;
+  @Input() isDefaultModel: boolean;
+
   /**
    * Model for search results
    */
@@ -32,8 +33,6 @@ export class SdsSearchResultListComponent implements OnInit {
     } else {
       this.updateModel = value;
     }
-    if (this.updateModel && this.updateModel.results.length > 0)
-      this.initialLoad = false;
   }
 
   /**
@@ -42,10 +41,6 @@ export class SdsSearchResultListComponent implements OnInit {
   @Input() divider = true;
 
   constructor(private _location: Location) {}
-
-  ngOnInit() {
-    this.initialLoad = true;
-  }
 
   /**
    * Child Template to be used to display the data for each item in the list of items

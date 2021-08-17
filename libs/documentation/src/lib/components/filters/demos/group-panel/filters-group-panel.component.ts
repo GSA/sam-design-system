@@ -49,7 +49,7 @@ export class FiltersGroupPanel implements OnInit {
           type: 'input',
           templateOptions: {
             label: 'Entity Name',
-            placeholder: 'Acme Corporation',
+            placeholder: 'eg: Acme Corporation',
             description: 'Enter the name of your entity.',
             required: true,
           },
@@ -66,7 +66,7 @@ export class FiltersGroupPanel implements OnInit {
       templateOptions: {
         label: 'Entity Name',
         group: 'panel',
-        placeholder: 'Acme Corporation',
+        placeholder: 'eg: Acme Corporation',
         description: 'Enter the name of your entity.',
         required: true,
       },

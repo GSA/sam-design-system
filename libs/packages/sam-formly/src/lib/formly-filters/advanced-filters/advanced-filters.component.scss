@@ -3,10 +3,16 @@
   width: initial;
   text-decoration: none;
   font-weight: 600;
-  &:hover, &:active {
+
+  &:hover,
+  &:active {
     background: transparent;
     background: initial;
     color: initial;
     text-decoration: underline;
   }
+}
+
+.icon-filter {
+  font-size: 20px;
 }

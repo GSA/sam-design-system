@@ -18,7 +18,7 @@ export class DescriptionWrapperBasic {
       type: 'input',
       templateOptions: {
         description: 'Input description',
-        placeholder: 'Placeholder'
+        placeholder: 'eg: Acme Corporation'
       },
     }
   ];

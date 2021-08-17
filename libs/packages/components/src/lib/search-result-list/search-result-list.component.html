@@ -20,10 +20,13 @@
   <ng-container *ngIf="!customResultsTemplate">
     <ng-container
       *ngIf="(updateModel == null || (!updateModel?.metadata?.messages && updateModel?.results?.length === 0))">
-      <ng-container *ngIf="!initialLoad">
-        <div class="sds-card sds-card--vertical sds-card--shadowed sds-card--bordered">
-          <div class="sds-card__header">
-            <sds-icon [icon]="['bs', 'search']" [size]="'5x'"></sds-icon>
+      <ng-container *ngIf="!isDefaultModel">
+        <div class="sds-card sds-card--vertical sds-card--shadowed sds-card--bordered bg-base-lightest">
+          <div class="sds-card__header padding-3">
+            <div class="sds-stack sds-2x">
+              <usa-icon class="sds-stack-icon" [size]="'3x'" [icon]="'circle'"></usa-icon>
+              <usa-icon class="sds-stack-icon" [size]="'2x'" [icon]="'search'"></usa-icon>
+            </div>
           </div>
           <div class="sds-card__body margin-2">
             <h1 class="sds-card__title">No matches found</h1>
@@ -35,10 +38,10 @@
           </div>
         </div>
       </ng-container>
-      <ng-container *ngIf="initialLoad">
-        <div class="sds-card sds-card--vertical sds-card--shadowed sds-card--bordered">
+      <ng-container *ngIf="isDefaultModel">
+        <div class="sds-card sds-card--vertical sds-card--shadowed sds-card--bordered bg-base-lightest">
           <div class="sds-card__header">
-            <sds-icon [icon]="['bs', 'arrow-left-circle-fill']" [size]="'5x'"></sds-icon>
+            <usa-icon [icon]="'arrow-left-circle-fill'" [size]="'5x'"></usa-icon>
           </div>
           <div class="sds-card__body margin-2">
             <h1 class="sds-card__title">Select Criteria</h1>
@@ -58,16 +61,16 @@
           [ngClass]="[(msg.type !== 'loading') ? 'sds-card--vertical': '', msg.classes ? msg.classes : '']">
           <ng-container *ngIf="msg.type !== 'loading' else loading">
             <div class="sds-card__header">
-              <sds-icon
-                [icon]="(msg.type ==='error') ?  ['sds', 'alert-error'] :( (msg.type ==='info') ? ['bs', 'info-circle'] :( (msg.type ==='initial') ? ['bs', 'arrow-left-circle-fill']: ['bs', 'search']))"
+              <usa-icon
+                [icon]="(msg.type ==='error') ?  ['sds', 'alert-error'] :( (msg.type ==='info') ? 'info-circle' :( (msg.type ==='initial') ? 'arrow-left-circle-fill': 'search'))"
                 [size]="'5x'">
-              </sds-icon>
+              </usa-icon>
             </div>
             <div class="sds-card__body margin-2">
               <h1 class="sds-card__title">{{msg.title}}</h1>
               <p [innerHTML]="msg.message"></p>
               <div class="sds-card__buttons">
-                <button *ngFor="let button of msg.buttons" class="usa-button"
+                <button *ngFor="let button of msg.buttons" class="usa-button" [attr.aria-label]="button.ariaLabel"
                   [ngClass]="button.classes ? button.classes : 'usa-button--outline'" (click)="button.action()">
                   {{button.text}}
                 </button>

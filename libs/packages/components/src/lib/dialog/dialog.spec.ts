@@ -36,6 +36,8 @@ import {
 import { SdsDialogRef } from './dialog-ref';
 import { SdsDialogModule } from './dialog.module';
 import { Subject } from 'rxjs';
+import { allIcons as sdsAllIcons } from '@gsa-sam/ngx-uswds-icons'
+import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 
 
 describe('SdsDialog', () => {
@@ -50,7 +52,7 @@ describe('SdsDialog', () => {
 
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
-      imports: [SdsDialogModule, DialogTestModule],
+      imports: [SdsDialogModule, DialogTestModule, NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))],
       providers: [
         { provide: Location, useClass: SpyLocation },
         {

@@ -7,15 +7,15 @@
     <div class="sds-card__buttons">
       <button class="usa-button--unstyled text-ink margin-left-1 cursor-pointer"
         [ngClass]="{ 'usa-button--active' : showCode }" (click)="showCode = !showCode" aria-label="Show Code">
-        <fa-icon [icon]="['fas', 'code']"></fa-icon>
+        <usa-icon [icon]="'code'"></usa-icon>
       </button>
       <a class="text-ink usa-button--unstyled margin-left-1" *ngIf="getGithubLink()" [attr.href]="getGithubLink()"
         target="_blank" aria-label="Open new window in github">
-        <fa-icon [icon]="['fab', 'github']"></fa-icon>
+        <usa-icon [icon]="'arrow-up-right-circle'"></usa-icon>
       </a>
       <a class="text-ink usa-button--unstyled margin-left-1" [attr.href]="getStackblitzLink()" target="_blank"
         aria-label="Open new window in Stackblitz">
-        <sds-icon [size]="'sm'" [icon]="['bs', 'lightning-fill']"></sds-icon>
+        <usa-icon [icon]="'lightning-fill'"></usa-icon>
       </a>
     </div>
 
@@ -24,28 +24,21 @@
   <div class="sds-card__body">
 
     <div *ngIf="showCode" class="padding-bottom-2 border-bottom margin-bottom-2">
-
-      <div class="tab-slider--nav">
-        <ul class="tab-slider--tabs" *ngFor="let tab of tabs">
-          <li class="tab-slider--trigger" [class.active]="viewMode == tab.type" rel="tab1" (click)="viewMode =tab.type">
-            {{tab.name}}</li>
-        </ul>
-      </div>
-      <div [ngSwitch]="viewMode">
-        <div id="code" *ngSwitchCase="'code'">
-          <p class="margin-bottom-0"><code class="text-magenta bg-white">Source Code</code></p>
+      <sds-tabs [tabClass]="'sds-tabs--demo'">
+        <sds-tab-panel [tabHeader]="'Source Code'">
           <pre class="highlight"><code [highlight]="code"></code></pre>
-        </div>
-        <div id="markUp" *ngSwitchCase="'markUp'">
-          <p class="margin-bottom-0"><code class="text-magenta bg-white">Template Markup</code></p>
+        </sds-tab-panel>
+        <sds-tab-panel [tabHeader]="'Template Markup'">
           <pre class="highlight"><code [highlight]="markup"></code></pre>
-        </div>
-        <div id="module" *ngSwitchCase="'module'">
-          <p class="margin-bottom-0"><code class="text-magenta bg-white">Module</code></p>
+        </sds-tab-panel>
+        <sds-tab-panel [tabHeader]="'Module'">
           <pre class="highlight"><code [highlight]="module"></code></pre>
-        </div>
+        </sds-tab-panel>
 
-      </div>
+        <sds-tab-panel *ngFor="let file of files" [tabHeader]="file.name">
+          <pre class="highlight"><code [highlight]="file.source"></code></pre>
+        </sds-tab-panel>
+      </sds-tabs>
     </div>
 
     <markdown [data]="readme"></markdown>

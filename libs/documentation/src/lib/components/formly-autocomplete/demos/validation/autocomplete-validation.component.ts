@@ -70,7 +70,7 @@ export class FormlyAutocompleteValidation {
     this.settings.secondaryTextField = 'subtext';
     this.settings.labelText = 'Autocomplete 1';
     this.settings.selectionMode = SelectionMode.SINGLE;
-    this.settings.autocompletePlaceHolderText = 'Enter text';
+    this.settings.autocompletePlaceHolderText = 'eg: Level 1';
 
     this.multipleSettings.id = 'autocompleteValidationMultiple';
     this.multipleSettings.primaryKeyField = 'id';
@@ -78,6 +78,6 @@ export class FormlyAutocompleteValidation {
     this.multipleSettings.secondaryTextField = 'subtext';
     this.multipleSettings.labelText = 'Autocomplete 1';
     this.multipleSettings.selectionMode = SelectionMode.MULTIPLE;
-    this.multipleSettings.autocompletePlaceHolderText = 'Enter text';
+    this.multipleSettings.autocompletePlaceHolderText = 'eg: Level 1';
   }
 }

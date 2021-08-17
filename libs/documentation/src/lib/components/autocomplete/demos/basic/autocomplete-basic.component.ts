@@ -38,14 +38,14 @@ export class AutocompleteBasic implements OnInit {
     this.settings.secondaryTextField = 'subtext';
     this.settings.labelText = 'Autocomplete 1';
     this.settings.selectionMode = SelectionMode.SINGLE;
-    this.settings.autocompletePlaceHolderText = 'Enter text';
-
+    this.settings.autocompletePlaceHolderText = 'eg: Level 1';
+    
     this.settings3.primaryKeyField = 'id';
     this.settings3.id = 'autocompleteBasic3';
     this.settings3.labelText = 'Autocomplete 3';
     this.settings3.primaryTextField = 'name';
     this.settings3.secondaryTextField = 'subtext';
     this.settings3.selectionMode = SelectionMode.MULTIPLE;
-    this.settings3.autocompletePlaceHolderText = 'Enter text';
+    this.settings3.autocompletePlaceHolderText = 'eg: Level 1';
   }
 }

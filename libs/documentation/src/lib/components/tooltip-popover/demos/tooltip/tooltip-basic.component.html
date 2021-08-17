@@ -4,9 +4,9 @@
     be set by passing either a string or element reference as an input.</p>
 
   <div style="display: flex; padding-left: 3rem;">
-    <sds-icon [icon]="['bs', 'exclamation-circle']" [size]="'2x'"
+    <usa-icon [icon]="'exclamation-circle'" [size]="'2x'"
       [sdsTooltip]="'All fields must be completed'" [position]="'top'"
-      tabindex="0" class="text-error"></sds-icon>
+      tabindex="0" class="text-error"></usa-icon>
     <div style="padding-left: 3rem;">
       <p #tipContent>Hello, <b>World</b>!</p>
       <button [sdsTooltip]="tipContent" [position]="'bottom'" class="usa-button usa-button--base" tabindex="0">HTML binding</button>

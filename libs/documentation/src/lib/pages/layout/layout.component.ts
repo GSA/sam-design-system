@@ -3,14 +3,14 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 import { Subject } from 'rxjs';
 import { DataService } from './data.service';
 import { navigationConfig } from './navigate.config';
-import { SearchListConfiguration, ResultsModel } from '@gsa-sam/layouts';
+import { SearchListConfiguration, ResultsModel, SearchListLayoutComponent } from '@gsa-sam/layouts';
 import { FilterService } from './filter.service';
 import { SideNavigationModel } from '@gsa-sam/components';
 @Component({
   templateUrl: './layout.component.html',
 })
 export class ResultsLayoutComponent implements AfterViewInit, OnInit {
-  @ViewChild('resultList') resultList;
+  @ViewChild('resultList') resultList: SearchListLayoutComponent;
 
   fields: FormlyFieldConfig[] = [];
   form;
@@ -27,7 +27,7 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
       { text: 'Entity Name', value: 'legalBusinessName' },
       { text: 'Status', value: 'registrationStatus' },
     ],
-    defaultFilterValue: {status: {registrationStatus: {Active: true}}},
+    defaultFilterValue: { status: { registrationStatus: { Active: true, Inactive: false } } },
   };
 
   /* Sort config change demo */
@@ -72,6 +72,8 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
     } else {
       this.listConfig = { ...this.defaultListConfig };
     }
+    const newSortValue = this.listConfig.defaultSortValue;
+    this.resultList.updateSearchResultsModel({sort: newSortValue, filterModel: this.filterModel});
   }
 
   onSearchModelUpdate() {

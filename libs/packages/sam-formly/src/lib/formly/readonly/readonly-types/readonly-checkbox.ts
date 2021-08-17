@@ -1,14 +1,19 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, TemplateRef } from "@angular/core";
 
 
 @Component({
   selector: `sds-readonly-checkbox`,
   template: `
-      <label class="usa-label">{{label}}</label>
+    <ng-container *ngIf="valueTemplate; else defaultValue" 
+    [ngTemplateOutlet]="valueTemplate" 
+    [ngTemplateOutletContext]="{$implicit: value}">
+    </ng-container>
+    <ng-template #defaultValue>
       <span class="text-bold">{{value ? 'Checked' : 'Unchecked'}}</span>
+    </ng-template>
   `
 })
 export class ReadonlyCheckboxComponent {
-  @Input() label: string;
   @Input() value: any;
+  @Input() valueTemplate: TemplateRef<any>;
 }

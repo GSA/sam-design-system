@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NavigationLink, SdsDialogRef } from '@gsa-sam/components';
-import { SearchListConfiguration, SearchListLayoutComponent } from '@gsa-sam/layouts';
+import { NavigationLink, SdsDialogConfig, SdsDialogRef, SelectionPanelModel } from '@gsa-sam/components';
+import { SearchListConfiguration } from '@gsa-sam/layouts';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { SdsFiltersComponent } from 'libs/packages/sam-formly/src/lib/formly-filters/sds-filters.component';
 import { BehaviorSubject } from 'rxjs';
@@ -13,7 +13,7 @@ import { navigationConfig } from '../navigate.config';
   templateUrl: './layout-responsive.component.html',
 })
 export class LayoutResponsiveComponent {
-  @ViewChild('resultList') resultList: SearchListLayoutComponent;
+  @ViewChild('resultList') resultList;
   @ViewChild('filters') filterComponent: SdsFiltersComponent;
 
   isMobileMode: boolean;
@@ -23,15 +23,21 @@ export class LayoutResponsiveComponent {
   form;
   filterModel = {};
   options;
-  filtersExpanded: boolean = true;
-  public filterChange$ = new BehaviorSubject<object>([]);
-  public navigationModel = {
-    title: 'Select Domain',
-    selectionPanelModel: navigationConfig,
+  filtersExpanded: boolean = false;
+  domainsExpanded: boolean = true;
+  responsiveDialogOptions: SdsDialogConfig = {
+    ariaLabel: 'Search Filters',
   };
+
+  public filterChange$ = new BehaviorSubject<object>([]);
+  public navigationModel: SelectionPanelModel = {
+    navigationLinks: navigationConfig.navigationLinks,
+    selectionMode: 'SELECTION'
+   };
+  
   public filterPanelConfig;
 
-  private selectedDomain: NavigationLink;
+  selectedPanel: NavigationLink = this.navigationModel.navigationLinks[1];
 
   listConfig: SearchListConfiguration = {
     defaultSortValue: 'legalBusinessName',
@@ -65,9 +71,10 @@ export class LayoutResponsiveComponent {
   constructor(
     public service: DataService,
     public filterService: FilterService,
-    public router: Router,
-    public activatedRoute: ActivatedRoute,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
   ) {}
+
   ngOnInit() {
     this.fields = this.filterService.fields;
     this.filterModel = this.filterService.model;
@@ -83,6 +90,11 @@ export class LayoutResponsiveComponent {
       isHistoryEnabled: true,
     };
   }
+  ngAfterViewInit() {
+    this.filterChange$.subscribe((res) => {
+      this.resultList.updateFilter(res);
+    });
+  }
 
   updateConfig(update: boolean) {
     if (update) {
@@ -90,6 +102,8 @@ export class LayoutResponsiveComponent {
     } else {
       this.listConfig = { ...this.defaultListConfig };
     }
+    const newSortValue = this.listConfig.defaultSortValue;
+    this.resultList.updateSearchResultsModel({sort: newSortValue, filterModel: this.filterModel});
   }
 
   onDialogOpen($event) {
@@ -104,22 +118,25 @@ export class LayoutResponsiveComponent {
   onApplyFilter() {
     this.mobileDialog.close();
     this.mobileDialog = undefined;
-    this.router.navigate([], {
-      queryParams: this.selectedDomain.queryParams,
-      relativeTo: this.activatedRoute
-    }).then(() => {
-      this.resultList.updateSearchResultsModel({filterModel: this.filterModel});
-    })
     console.log('Applied Filters', this.filterModel);
   }
 
   onPanelSelection($event: NavigationLink) {
-    this.selectedDomain = $event;
+    this.selectedPanel = $event;
+    this.domainsExpanded = false;
+    this.filtersExpanded = true;
     console.log('Selected Domain', $event);
+    this.router.navigate(
+      [], 
+      {queryParams: $event.queryParams, relativeTo: this.activatedRoute, queryParamsHandling: 'merge'}
+    );
   }
 
-  onFilterChange($event) {
-    console.log('Selected Filters', $event);
-    this.resultList.updateFilter($event);
+  onSubPanelClicked($event: NavigationLink) {
+    console.log('Sub Domain selected', $event);
+    this.router.navigate(
+      [], 
+      {queryParams: $event.queryParams, relativeTo: this.activatedRoute, queryParamsHandling: 'merge'}
+    );
   }
 }

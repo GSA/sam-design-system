@@ -6,8 +6,7 @@ import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { SdsAdvancedFiltersService } from './sds-advanced-filters.service';
 import { SdsFormlyDialogData } from '../../formly-dialog/formly-dialog-data.model';
 import { SdsFormlyDialogComponent } from '../../formly-dialog/formly-dialog.component';
-import { startWith } from 'rxjs/internal/operators/startWith';
-import { tap } from 'rxjs/internal/operators/tap';
+import { tap, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'sds-advanced-filters',

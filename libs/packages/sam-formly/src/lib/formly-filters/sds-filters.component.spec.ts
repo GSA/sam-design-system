@@ -16,6 +16,8 @@ import { DebugElement } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
+import { allIcons as sdsAllIcons } from '@gsa-sam/ngx-uswds-icons'
+import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 
 describe('The Sam Filters Component', () => {
   describe('rendered tests', () => {
@@ -31,7 +33,8 @@ describe('The Sam Filters Component', () => {
           BrowserAnimationsModule,
           RouterTestingModule.withRoutes([]),
           SdsFormlyModule,
-          SdsFiltersModule
+          SdsFiltersModule,
+          NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))
         ],
         providers: [SDSFormlyUpdateComunicationService]
       });
@@ -53,7 +56,7 @@ describe('The Sam Filters Component', () => {
               templateOptions: {
                 required: true,
                 label: 'Formly input type number',
-                placeholder: 'placeholder',
+                placeholder: 'eg: Acme Corporation',
                 min: 13,
                 max: 400,
                 minLength: 2,
@@ -194,7 +197,8 @@ describe('The Sam Filters Component', () => {
           BrowserAnimationsModule,
           RouterTestingModule.withRoutes([]),
           SdsFormlyModule,
-          SdsFiltersModule
+          SdsFiltersModule,
+          NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))
         ]
       });
 
@@ -213,7 +217,7 @@ describe('The Sam Filters Component', () => {
               templateOptions: {
                 required: true,
                 label: 'Formly input type number',
-                placeholder: 'placeholder',
+                placeholder: 'eg: Acme Corporation',
                 minLength: 2,
                 maxLength: 4,
                 inputType: 'number'
@@ -266,7 +270,7 @@ describe('The Sam Filters Component', () => {
               templateOptions: {
                 required: true,
                 label: 'Formly input type number',
-                placeholder: 'placeholder',
+                placeholder: 'eg: Acme Corporation',
                 minLength: 2,
                 maxLength: 4,
                 inputType: 'number'
@@ -298,5 +302,30 @@ describe('The Sam Filters Component', () => {
       fixture.detectChanges();
       expect(component.fields[0].hide).toBe(true);
     });
+
+    it('Should reset to given defaultModel if provided', () => {
+      component.fields = [
+        {
+          key: 'filters',
+          type: 'input',
+          hide: true,
+          templateOptions: {
+            label: 'State',
+            description: 'State'
+          }
+        }
+      ];
+
+      component.model = {filters: '12345'};
+      component.defaultModel = {filters: '67890'};
+
+      fixture.detectChanges();
+
+      const resetAllButton = fixture.debugElement.query(By.css('button'));
+      resetAllButton.triggerEventHandler('click', null);
+      fixture.detectChanges();
+      expect(component.model).toEqual({filters: '67890'});
+
+    })
   });
 });

@@ -9,7 +9,9 @@ import { SdsDialogService } from '@gsa-sam/components';
 
 import { AdvancedFiltersComponent } from './advanced-filters.component';
 import { SdsAdvancedFiltersService } from './sds-advanced-filters.service';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
+import { IconModule, allIcons as sdsAllIcons } from '@gsa-sam/ngx-uswds-icons';
+
 
 describe('Advanced Filteres Component', () => {
   let component: AdvancedFiltersComponent;
@@ -28,7 +30,7 @@ describe('Advanced Filteres Component', () => {
     );
     TestBed.configureTestingModule({
       declarations: [AdvancedFiltersComponent],
-      imports: [FontAwesomeModule],
+      imports: [IconModule, NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))],
       providers: [
         { provide: SdsDialogService, useValue: modalServiceSpy },
         {

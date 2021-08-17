@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import {
   SdsMenuModule,
   SdsSearchModule,
   SdsObserversModule,
   SdsTruncateModule,
-  SdsIconModule
 } from '@gsa-sam/components';
 import {
   SdsSubheaderComponent,
@@ -16,17 +15,19 @@ import {
 } from './subheader.component';
 import { SdsActionsMenuModule } from '../actions-menu/actions-menu.module';
 import { SdsDrawerCommunicationService } from './drawer-communication.service';
+import { NgxBootstrapIconsModule, threeDotsVertical } from 'ngx-bootstrap-icons';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
   imports: [
     CommonModule,
-    FontAwesomeModule,
     SdsMenuModule,
     SdsObserversModule,
     SdsSearchModule,
     SdsTruncateModule,
     SdsActionsMenuModule,
-    SdsIconModule
+    IconModule,
+    NgxBootstrapIconsModule.pick({threeDotsVertical})
   ],
   exports: [
     SdsSubheaderComponent,

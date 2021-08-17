@@ -1,11 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SdsSearchResultListComponent } from './search-result-list.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { CommonModule } from '@angular/common';
 import { DebugElement } from '@angular/core';
 import { SpyLocation } from '@angular/common/testing';
 import { Location } from '@angular/common';
-import { SdsIconModule } from '../icon/icon.module';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 describe('SdsSearchResultListComponent', () => {
   let component: SdsSearchResultListComponent;
   let fixture: ComponentFixture<SdsSearchResultListComponent>;
@@ -14,7 +14,7 @@ describe('SdsSearchResultListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SdsSearchResultListComponent],
-      imports: [FontAwesomeModule, CommonModule, SdsIconModule],
+      imports: [IconModule, CommonModule],
       providers: [{ provide: Location, useClass: SpyLocation }]
     }).compileComponents();
   }));

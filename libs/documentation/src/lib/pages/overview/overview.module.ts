@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 import { OverviewComponent } from './overview.component';
 import { SdsExternalLinkDirectivesModule } from '@gsa-sam/components';
 
 @NgModule({
-  imports: [FontAwesomeModule, SdsExternalLinkDirectivesModule],
+  imports: [IconModule, SdsExternalLinkDirectivesModule],
   exports: [OverviewComponent],
   declarations: [OverviewComponent],
   providers: [],

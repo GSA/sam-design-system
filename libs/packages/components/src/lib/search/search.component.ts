@@ -8,7 +8,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Output,
-  EventEmitter
+  EventEmitter,
 } from '@angular/core';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { ViewportRuler } from '@angular/cdk/overlay';
@@ -16,31 +16,31 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 export class SearchSettings {
   public placeholder = 'Search';
   public ariaLabel? = 'Search';
-  public size: string;
-  public inputClass: string;
-  public parentSelector: string;
+  public size?: string;
+  public inputClass?: string;
+  public parentSelector?: string;
   public id?: string;
-  public dropdown: any = {
+  public dropdown?: any = {
     id: 'searchOptions',
     placeholder: '-Select-',
     options: [],
-    inverse: false
+    inverse: false,
   };
+  public isSuffixSearchIcon?: boolean = false;
 }
 @Component({
   selector: 'sds-search',
   templateUrl: 'search.component.html',
+  styleUrls: ['search.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => SdsSearchComponent),
-      multi: true
-    }
+      multi: true,
+    },
   ],
-  styles: [`input::-ms-clear {
-    display: none;
-}`],
-  changeDetection: ChangeDetectionStrategy.OnPush
+
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
   @ViewChild('inputEl', { read: ElementRef, static: false })
@@ -58,16 +58,16 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
   model: any = {};
   inputState = {
     initial: { visible: undefined },
-    visible: undefined
+    visible: undefined,
   };
-  private _onChange = (_: any) => { };
-  private _onTouched = () => { };
+  private _onChange = (_: any) => {};
+  private _onTouched = () => {};
 
   constructor(
     private cd: ChangeDetectorRef,
     private focusMonitor: FocusMonitor,
     private viewportRuler: ViewportRuler
-  ) { }
+  ) {}
 
   ngAfterViewInit() {
     this.inputState.initial.visible = this.isInputVisible();
@@ -170,8 +170,8 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
     const rightPosition = buttonElement.getBoundingClientRect().left;
     const leftPosition = this.searchSettings.parentSelector
       ? inputElement
-        .closest(this.searchSettings.parentSelector)
-        .getBoundingClientRect().left
+          .closest(this.searchSettings.parentSelector)
+          .getBoundingClientRect().left
       : 0;
     return Math.floor(rightPosition - leftPosition - leftPadding);
   }
@@ -183,5 +183,9 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
     return this.searchSettings.dropdown && this.searchSettings.dropdown.inverse
       ? `${cls} sds-inverse`
       : cls;
+  }
+  clearInput(ev) {
+    this.inputEl.nativeElement.value = '';
+    this.writeValueToModel();
   }
 }

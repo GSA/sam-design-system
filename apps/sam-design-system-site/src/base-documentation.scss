@@ -1,0 +1,80 @@
+@import './material.theme';
+
+//CDK Overlay
+@import '~@angular/cdk/overlay';
+$cdk-overlay-dark-backdrop-background: rgba(14, 52, 88, 0.7);
+@include cdk-overlay;
+
+// Demo pages only
+// DO NOT REUSE
+
+.usa-table--full-borderless tr, .usa-table--full-borderless td, .usa-table--full-borderless th {
+  border: 0;
+}
+
+.usa-table--row-borders--thin tr, .usa-table--row-borders--thin td, .usa-table--row-borders--thin th {
+  border-bottom: solid 1px #d9e8f6;
+}
+.usa-table--row-borders--thin th {
+  border-top: solid 1px #d9e8f6;
+}
+
+.usa-table--thin tr, .usa-table--thin td, .usa-table--thin th {
+  padding:0;
+  margin:0;
+}
+
+code::before, code::after {
+  content: '';
+}
+
+.header-styles .icon-layers-counter {
+  height: 1em;
+  min-width: 1em;
+  right: 4px;
+}
+
+.header-styles .icon-square {
+  color: #70e17b;
+}
+
+.sam-example-pagination {
+  line-height: 45px;
+}
+
+.usa-form-group--error {
+  margin-left: -0.5rem !important;
+}
+
+// Fixes for Docs
+
+pre[class*="highlight"] {
+  padding: 1em;
+  margin: .5em 0;
+  overflow: auto;
+  border: 1px solid #dddddd;
+  background-color: white;
+
+  code {
+    background-color: white;
+  }
+}
+
+documentation-widget-demo sds-page {
+  min-height: auto !important;
+  margin-bottom:0 !important;
+}
+
+.sds-tabs .usa-button {
+  margin-bottom: -2px;
+  margin-top: 0;
+}
+/* Fixes to look at in Sam-Styles */
+
+.sds-tag[class*="sds-tag--outline"] {
+  width: auto !important;
+
+}
+ code {
+   color: #e02b70;
+ }

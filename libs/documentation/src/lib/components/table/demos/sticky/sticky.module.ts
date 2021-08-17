@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SdsTableModule } from '@gsa-sam/sam-material-extensions';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { TableStickyComponent } from './sticky.component';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 
 @NgModule({
@@ -10,7 +11,7 @@ import { TableStickyComponent } from './sticky.component';
   imports: [
     CommonModule,
     SdsTableModule,
-    FontAwesomeModule
+    IconModule
   ],
   exports: [TableStickyComponent],
   bootstrap: [TableStickyComponent]

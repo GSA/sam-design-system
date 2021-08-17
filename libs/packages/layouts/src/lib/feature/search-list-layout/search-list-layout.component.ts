@@ -22,13 +22,15 @@ import {
   SDSFormlyUpdateModelService,
 } from '@gsa-sam/sam-formly';
 import { Router, ActivatedRoute } from '@angular/router';
+import * as _ from 'lodash-es';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'search-list-layout',
   templateUrl: './search-list-layout.component.html',
   styleUrls: ['./search-list-layout.component.scss'],
 })
-export class SearchListLayoutComponent implements OnChanges, OnInit {
+export class SearchListLayoutComponent implements OnInit {
   /**
    * Child Template to be used to display the data for each item in the list of items
    */
@@ -40,8 +42,9 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     private route: ActivatedRoute,
     @Optional()
     private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,
-    private filterUpdateModelService: SDSFormlyUpdateModelService
-  ) {}
+    private filterUpdateModelService: SDSFormlyUpdateModelService,
+    private loc: Location
+  ) { }
 
   /**
    * Input service to be called when items change
@@ -60,6 +63,11 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   @Input() configuration: SearchListConfiguration;
 
   @Input() enableApiCall: boolean = true;
+
+  /**
+   * Set to true when either filter is empty or filter is equal to default model
+   */
+  isDefaultModel: boolean = true;
 
   /**
    * Filter information
@@ -118,18 +126,17 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
    */
   loadingArray = Array(25);
 
+  /**
+   * Used to track whether update resulting in navigation is as the result of a
+   * popstate. in order to apply correct navigation logic
+   */
+  private triggeredByPopState: boolean = false;
+
   @HostListener('window:popstate', ['$event'])
   onpopstate(event) {
+    this.triggeredByPopState = true;
     if (this.isHistoryEnabled) {
       this.getHistoryModel();
-    }
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.configuration && changes.configuration.currentValue) {
-      this.configuration = changes.configuration.currentValue;
-      this.sortField = this.configuration.defaultSortValue;
-      this.onSelectChange();
     }
   }
 
@@ -137,19 +144,23 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     if (this.isHistoryEnabled) {
       this.getHistoryModel();
     }
-    this.page.pageSize = this.configuration.pageSize;
-    this.sortField = this.configuration.defaultSortValue;
+    this.sortField = this.sortField != null ? this.sortField : this.configuration.defaultSortValue;
     this.paginationChange.subscribe(() => {
       this.updateContent();
     });
     if (this.formlyUpdateComunicationService) {
-      this.formlySubscription = this.formlyUpdateComunicationService.filterUpdate.subscribe((filter) => {
-        this.updateFilter(filter);
-      });
+      this.formlySubscription = this.formlyUpdateComunicationService.filterUpdate.subscribe(
+        (filter) => {
+          this.updateFilter(filter);
+        }
+      );
     }
   }
 
   ngOnDestroy() {
+    // Reset filter Model in update service
+    this.filterUpdateModelService.updateModel(null);
+
     if (this.formlySubscription) {
       this.formlySubscription.unsubscribe();
     }
@@ -159,14 +170,19 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     const queryString = window.location.search.substring(1);
     const params: any = this.getUrlParams(queryString);
     const paramModel: any = this.convertToModel(params);
+
+    this.page.default = true;
     this.page.pageNumber = paramModel['page'] ? +paramModel['page'] : 1;
+    this.page.pageSize = paramModel['pageSize'] ? Number.parseInt(paramModel['pageSize']) : this.configuration.pageSize;
 
     this.sortField = paramModel['sort'];
     if (this.filterUpdateModelService) {
       if (paramModel && paramModel['sfm']) {
         this.filterUpdateModelService.updateModel(paramModel['sfm']);
-      } else {
-        this.filterUpdateModelService.updateModel(this.configuration.defaultFilterValue);
+      } else if (!this.triggeredByPopState) {
+        this.filterUpdateModelService.updateModel(
+          this.configuration.defaultFilterValue
+        );
       }
     }
   }
@@ -179,10 +195,41 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     this.filterData = filter;
     this.page.pageNumber = this.page.default ? this.page.pageNumber : 1;
     this.page.default = filter ? false : true;
-    this.updateContent();
+    this.isDefaultFilter(filter);
+    if (this.isDefaultModel) {
+      this.items = [];
+    }
+    this.updateContent(true);
   }
 
-  updateNavigation() {
+  isDefaultFilter(filter) {
+    const cleanModel = this.flatten(filter);
+    const op = this.flatten(this.configuration.defaultFilterValue);
+    this.isDefaultModel = _.isEqual(cleanModel, op);
+  }
+
+  flatten(input, reference?, output?) {
+    output = output || {};
+    for (var key in input) {
+      var value = input[key];
+      if (value) {
+        key = reference ? reference + '.' + key : key;
+        if (typeof value === 'object' && value !== null) {
+          this.flatten(value, key, output);
+        } else {
+          // Treat true string as boolean value & ignore value of string 'false'
+          if (value === 'true') {
+            output[key] = true;
+          } else if (value != 'false') {
+            output[key] = value;
+          }
+        }
+      }
+    }
+    return output;
+  }
+
+  updateNavigation(triggeredByFilter = false) {
     const queryString = window.location.search.substring(1);
     let queryObj = qs.parse(queryString, { allowPrototypes: true });
 
@@ -193,14 +240,34 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
     queryObj['page'] = this.page.pageNumber
       ? this.page.pageNumber.toString()
       : '1';
+    queryObj['pageSize'] = this.page.pageSize
+      ? this.page.pageSize.toString()
+      : '25';
     queryObj['sort'] = this.sortField ? this.sortField.toString() : '';
     queryObj['sfm'] = this.filterData;
     const params = this.convertToParam(queryObj);
-    this.router.navigate([], {
-      relativeTo: this.route,
-      queryParams: params,
-      queryParamsHandling: this.configuration.queryParamsHandling,
-    });
+    /**
+     * loc.go updates URL but also updates history stack so that upon clicking
+     * back, the state which clicking forward would move user to is deleted by
+     * loc.go This state is preserved by router.navigate, so use router.navigate
+     * where we state needs to be preserved or we want the page jumped to the top.
+     * use loc.go only where we need the page to remain in place, and would normally
+     * overwrite the top of the history stack
+     */
+    if (!triggeredByFilter || this.triggeredByPopState) {
+      this.triggeredByPopState = false;
+      this.router.navigate([], {
+        relativeTo: this.route,
+        queryParams: params,
+        queryParamsHandling: this.configuration.queryParamsHandling,
+        fragment: window.location.hash?.length > 1 ? window.location.hash.substring(1) : undefined,
+      });
+    } else {
+      const urlTree = this.router.parseUrl(this.loc.path());
+      urlTree.queryParams = params;
+      urlTree.fragment = window.location.hash?.length > 1 ? window.location.hash.substring(1) : undefined
+      this.loc.go(urlTree.toString());
+    }
   }
 
   convertToParam(filters) {
@@ -248,14 +315,28 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
       encode: false,
       filter: this.longFormatDate,
     });
-    obj = qs.parse(encodedValues);
+    obj = qs.parse(encodedValues, { decoder: this.convertToModelParser });
     return obj;
   }
 
+  /**
+   * Decoder for qs.parse to convert true / false strings to boolean values
+   */
+  convertToModelParser(str: string, decoder: qs.defaultDecoder, charset: string, type: 'key' | 'value') {
+    if (type === 'key') {
+      return decoder(str, decoder, charset);
+    }
+
+    if (str === 'true' || str === 'false') {
+      return str === 'true' ? true : false;
+    }
+
+    return decoder(str, decoder, charset);
+  }
+
   longFormatDate(prefix, value) {
-    const val = decodeURIComponent(value);
-    const isDate = /^(\d{1,2})[-\/](\d{1,2})[-\/](\d{4})$/.exec(val);
-    if (isDate) {
+    const val = Date.parse(value);
+    if (!isNaN(val) && isNaN(value)) {
       value = new Date(val).toISOString();
     }
     return value;
@@ -272,14 +353,20 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
   /**
    * calls service when updated
    */
-  private updateContent() {
+  private updateContent(triggeredByFilter = false) {
     if (this.isHistoryEnabled) {
-      this.updateNavigation();
+      this.updateNavigation(triggeredByFilter);
     }
 
-    if (this.filterData && this.service && this.enableApiCall) {
+    if (
+      this.filterData &&
+      this.service &&
+      this.enableApiCall &&
+      !this.isDefaultModel
+    ) {
+      this.loading = true;
+
       setTimeout(() => {
-        this.loading = true;
         this.service
           .getData({
             page: this.page,
@@ -293,7 +380,10 @@ export class SearchListLayoutComponent implements OnChanges, OnInit {
               result.totalItems / this.page.pageSize
             );
             this.totalItems = result.totalItems;
-          });
+          },
+            (error) => this.loading = false,
+            () => this.loading = false
+          );
       });
     }
   }

@@ -60,7 +60,7 @@ export class FormlyAutocompleteBasic implements OnInit {
     this.settings.secondaryTextField = 'subtext';
     this.settings.labelText = 'Autocomplete 1';
     this.settings.selectionMode = SelectionMode.SINGLE;
-    this.settings.autocompletePlaceHolderText = 'Enter text';
+    this.settings.autocompletePlaceHolderText = 'eg: Level 1';
     this.settings.debounceTime = 350;
   }
 

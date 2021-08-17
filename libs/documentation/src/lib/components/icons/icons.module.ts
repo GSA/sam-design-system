@@ -21,17 +21,13 @@ import { DocumentationSourcePage } from '../shared/source-page/source.component'
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 import { IconsStackingComponent } from './demos/stacking/icons-stacking.component';
 import { IconsStackingModule } from './demos/stacking/icons-stacking.module';
+import { IconSkewingComponent } from './demos/icon-skewing/icon-skewing.component';
+import { IconSkewingModule } from './demos/icon-skewing/icon-skewing.module';
+import { IconsUswdsModule } from './demos/uswds/icons-uswds.module'
+import { IconsUswds } from './demos/uswds/icons-uswds.component'
 
 declare var require: any;
 const DEMOS = {
-  stacking: {
-    title: 'Stacking Icons',
-    type: IconsStackingComponent,
-    code: require('!!raw-loader!./demos/stacking/icons-stacking.component'),
-    module: require('!!raw-loader!./demos/stacking/icons-stacking.module'),
-    markup: require('!!raw-loader!./demos/stacking/icons-stacking.component.html'),
-    path: 'libs/documentation/src/lib/components/icons/demos/stacking',
-  },
   coloring: {
     title: 'Coloring Icons',
     type: IconsColoring,
@@ -56,6 +52,22 @@ const DEMOS = {
     markup: require('!!raw-loader!./demos/scaling/icons-scaling.component.html'),
     path: 'libs/documentation/src/lib/components/icons/demos/scaling',
   },
+  skewing: {
+    title: 'Skewing Icons',
+    type: IconSkewingComponent,
+    code: require('!!raw-loader!./demos/icon-skewing/icon-skewing.component'),
+    module: require('!!raw-loader!./demos/icon-skewing/icon-skewing.module'),
+    markup: require('!!raw-loader!./demos/icon-skewing/icon-skewing.component.html'),
+    path: 'libs/documentation/src/lib/components/icons/demos/icon-skewing',
+  },
+  stacking: {
+    title: 'Stacking Icons',
+    type: IconsStackingComponent,
+    code: require('!!raw-loader!./demos/stacking/icons-stacking.component'),
+    module: require('!!raw-loader!./demos/stacking/icons-stacking.module'),
+    markup: require('!!raw-loader!./demos/stacking/icons-stacking.component.html'),
+    path: 'libs/documentation/src/lib/components/icons/demos/stacking',
+  },
   basic: {
     title: 'All Custom Icons',
     type: IconsBasic,
@@ -71,6 +83,14 @@ const DEMOS = {
     module: require('!!raw-loader!./demos/bootstrap/icons-bootstrap.module'),
     markup: require('!!raw-loader!./demos/bootstrap/icons-bootstrap.component.html'),
     path: 'libs/documentation/src/lib/components/icons/demos/bootstrap',
+  },
+  uswds: {
+    title: 'All USWDS Icons',
+    type: IconsUswds,
+    code: require('!!raw-loader!./demos/uswds/icons-uswds.component'),
+    module: require('!!raw-loader!./demos/uswds/icons-uswds.module'),
+    markup: require('!!raw-loader!./demos/uswds/icons-uswds.component.html'),
+    path: 'libs/documentation/src/lib/components/icons/demos/uswds',
   },
 };
 
@@ -107,6 +127,8 @@ export const ROUTES = [
     IconsScalingModule,
     IconsRotationModule,
     IconsStackingModule,
+    IconSkewingModule,
+    IconsUswdsModule
   ],
 })
 export class IconsModule {

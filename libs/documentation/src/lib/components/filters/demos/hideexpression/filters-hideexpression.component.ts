@@ -73,7 +73,8 @@ export class FiltersHideExpression {
       type: 'input',
       templateOptions: {
         label: 'State',
-        description: 'State'
+        description: 'State',
+        placeholder: 'Illinois',
       },
       hideExpression: () => {
         if (this.model && this.model.location && this.model.location.country) {
@@ -87,7 +88,8 @@ export class FiltersHideExpression {
       type: 'input',
       templateOptions: {
         label: 'City',
-        description: 'City'
+        description: 'City',
+        placeholder: 'Chicago'
       },
       hideExpression: () => {
         return !(

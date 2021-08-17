@@ -10,7 +10,7 @@
       "prefix": "sds",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@angular-devkit/build-ng-packagr:build",
           "outputs": [
             "dist/libs/components"
           ],
@@ -63,7 +63,7 @@
       "prefix": "sds",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@angular-devkit/build-ng-packagr:build",
           "outputs": [
             "dist/libs/sam-material-extensions"
           ],
@@ -112,7 +112,7 @@
       "prefix": "sds",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:package",
+          "builder": "@angular-devkit/build-ng-packagr:build",
           "outputs": [
             "dist/libs/sam-formly"
           ],
@@ -225,8 +225,18 @@
               "apps/sam-design-system-site/src/favicon.ico",
               "apps/sam-design-system-site/src/assets"
             ],
+            "extractCss": true,
             "styles": [
-              "apps/sam-design-system-site/src/styles.scss",
+              {
+                "input": "apps/sam-design-system-site/src/uswds-styles.scss",
+                "inject": false,
+                "bundleName": "uswds"
+              },
+              {
+                "input": "apps/sam-design-system-site/src/sds-styles.scss",
+                "inject": false,
+                "bundleName": "sds"
+              },
               "node_modules/highlight.js/styles/vs.css"
             ],
             "scripts": [
@@ -333,55 +343,6 @@
               "!apps/sam-design-system-site-e2e/**/*"
             ]
           }
-        }
-      }
-    },
-    "experimental": {
-      "root": "libs/packages/experimental",
-      "sourceRoot": "libs/packages/experimental/src",
-      "projectType": "library",
-      "prefix": "sds",
-      "architect": {
-        "build": {
-          "builder": "@nrwl/angular:package",
-          "outputs": [
-            "dist/libs/experimental"
-          ],
-          "options": {
-            "tsConfig": "libs/packages/experimental/tsconfig.lib.json",
-            "project": "libs/packages/experimental/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/packages/experimental/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/packages/experimental/src/test.ts",
-            "tsConfig": "libs/packages/experimental/tsconfig.spec.json",
-            "karmaConfig": "libs/packages/experimental/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/packages/experimental/tsconfig.lib.json",
-              "libs/packages/experimental/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/packages/experimental/**/*"
-            ]
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/schematics:component": {
-          "styleext": "scss"
         }
       }
     },

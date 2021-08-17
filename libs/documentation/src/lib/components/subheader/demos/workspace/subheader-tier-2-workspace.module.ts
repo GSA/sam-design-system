@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { SdsSubheaderModule } from '@gsa-sam/layouts';
 import { CommonModule } from '@angular/common';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { SdsSearchModule, SdsDialogModule, SdsIconModule } from '@gsa-sam/components';
+
+import { SdsSearchModule, SdsDialogModule } from '@gsa-sam/components';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
@@ -12,6 +12,8 @@ import {
 } from '@gsa-sam/sam-formly';
 import { SubheaderTier2WorkspaceComponent } from './subheader-tier-2-workspace.component';
 import { SdsButtonGroupModule } from 'libs/packages/sam-material-extensions/src/lib/button-group/button-group.module';
+import { NgxBootstrapIconsModule, chevronLeft } from 'ngx-bootstrap-icons';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 
 
@@ -19,16 +21,16 @@ import { SdsButtonGroupModule } from 'libs/packages/sam-material-extensions/src/
   imports: [
     CommonModule,
     SdsSubheaderModule,
-    FontAwesomeModule,
+    IconModule,
     SdsSearchModule,
     SdsFormlyDialogModule,
     SdsDialogModule,
     ReactiveFormsModule,
     SdsFormlyModule,
     FormlyModule,
-    SdsIconModule,
     SdsButtonGroupModule,
-    FormsModule
+    FormsModule,
+    NgxBootstrapIconsModule.pick({chevronLeft})
   ],
   declarations: [SubheaderTier2WorkspaceComponent],
   exports: [SubheaderTier2WorkspaceComponent],

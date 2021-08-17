@@ -3,11 +3,13 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SdsFooterComponent } from './footer.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NavigationMode } from '@gsa-sam/components';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { SdsAccordionModule } from '@gsa-sam/sam-material-extensions';
 import { FooterLogo } from './model/FooterModel';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SdsFeedbackModule } from '../sds-feedback/sds-feedback.module';
+import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
+import { IconModule, allIcons as sdsAllIcons } from '@gsa-sam/ngx-uswds-icons';
 
 describe('SdsFooterComponent', () => {
   let component: SdsFooterComponent;
@@ -17,10 +19,11 @@ describe('SdsFooterComponent', () => {
       declarations: [SdsFooterComponent],
       imports: [
         NoopAnimationsModule,
-        RouterTestingModule, 
-        FontAwesomeModule,
+        RouterTestingModule,
+        IconModule,
         SdsAccordionModule,
         SdsFeedbackModule,
+        NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))
       ]
     })
       .compileComponents();

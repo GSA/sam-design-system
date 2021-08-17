@@ -26,7 +26,7 @@ import {
 } from '@angular/animations';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { BehaviorSubject } from 'rxjs';
 
 export interface SdsRowConfig {
   displayedColumns?: string[];

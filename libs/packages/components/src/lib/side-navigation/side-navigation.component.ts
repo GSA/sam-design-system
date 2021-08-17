@@ -35,6 +35,12 @@ export class SdsSideNavigationComponent {
   private sideNavEVENTLinkTemplate: TemplateRef<any>;
 
   /**
+   * A brief description of the purpose of the navigation, omitting the term "navigation", 
+   * as the screen reader will read both the role and the contents of the label
+   */
+  @Input() ariaLabel: string;
+
+  /**
    * Takes the navigation item and returns the template to be used
    * @param item navigation item
    */

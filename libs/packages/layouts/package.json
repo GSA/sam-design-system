@@ -1,6 +1,6 @@
 {
   "name": "@gsa-sam/layouts",
-  "version": "10.0.11",
+  "version": "10.0.38",
   "repository": {
     "type": "git",
     "url": "https://github.com/GSA/sam-design-system.git"
@@ -11,6 +11,11 @@
   },
   "peerDependencies": {
     "@angular/common": "^10.1.3",
-    "@angular/core": "^10.1.3"
+    "@angular/core": "^10.1.3",
+    "@gsa-sam/components": ">=10.0.27",
+    "@gsa-sam/sam-material-extensions": ">=10.0.27",
+    "@gsa-sam/sam-formly": ">=10.0.27",
+    "lodash-es": "^4.17.15",
+    "ngx-bootstrap-icons": "^1.4.0"
   }
 }

@@ -1,67 +1,60 @@
 <sds-page class="sds-page condensed margin-bottom-0">
-  <sds-search-result-list [model]="items">
-    <ng-template #resultContent let-item>
-      <ul class="usa-list usa-list--unstyled">
-        <li>ID {{ item.id }} - {{ item.title }}</li>
-      </ul>
-    </ng-template>
-  </sds-search-result-list>
+    <sds-search-result-list [model]="items">
+        <ng-template #resultContent let-item>
+            <ul class="usa-list usa-list--unstyled">
+                <li>ID {{ item.id }} - {{ item.title }}</li>
+            </ul>
+        </ng-template>
+    </sds-search-result-list>
 
-  <hr class="margin-top-4" />
-  <p>Apply different items to the example:</p>
-  <button (click)="items = defaultModel" class="usa-button usa-button--base"
-    [ngClass]="{ 'usa-button--active': items === defaultModel }">
+    <hr class="margin-top-4" />
+    <p>Apply different items to the example:</p>
+    <button (click)="items = defaultModel" class="usa-button usa-button--base" [ngClass]="{ 'usa-button--active': items === defaultModel }">
     5 Item List
   </button>
-  <button (click)="updateTemplate()" class="usa-button usa-button--base"
-    [ngClass]="{ 'usa-button--active': items === templateMessageModel }">
+    <button (click)="updateTemplate()" class="usa-button usa-button--base" [ngClass]="{ 'usa-button--active': items === templateMessageModel }">
     Template Model
   </button>
 
-  <button (click)="items = initialModel" class="usa-button usa-button--base"
-    [ngClass]="{ 'usa-button--active': items === null }">
+    <button (click)="items = initialModel" class="usa-button usa-button--base" [ngClass]="{ 'usa-button--active': items === null }">
     Initial Message
   </button>
-  <button (click)="items = errorModel" class="usa-button usa-button--base"
-    [ngClass]="{ 'usa-button--active': items === errorModel }">
+    <button (click)="items = errorModel" class="usa-button usa-button--base" [ngClass]="{ 'usa-button--active': items === errorModel }">
     Error
   </button>
-  <button (click)="items = infoModel" class="usa-button usa-button--base"
-    [ngClass]="{ 'usa-button--active': items === infoModel }">
+    <button (click)="items = infoModel" class="usa-button usa-button--base" [ngClass]="{ 'usa-button--active': items === infoModel }">
     Info
   </button>
-  <button (click)="items = emptyModel" class="usa-button usa-button--base"
-    [ngClass]="{ 'usa-button--active': items === emptyModel }">
+    <button (click)="items = emptyModel" class="usa-button usa-button--base" [ngClass]="{ 'usa-button--active': items === emptyModel }">
     Empty results
   </button>
-  <button (click)="items = loadingModel" class="usa-button usa-button--base"
-    [ngClass]="{ 'usa-button--active': items === loadingModel }">
+    <button (click)="items = loadingModel" class="usa-button usa-button--base" [ngClass]="{ 'usa-button--active': items === loadingModel }">
     Loading
   </button>
 </sds-page>
 
 
 <ng-template #templateModel let-item>
-  <div class="sds-card sds-card--bordered">
-    <div class="sds-card__header sds-card__header--center">
-      <div class="sds-card__icon margin-left-2">
-        <fa-icon [icon]="['sds', 'book']" [classes]="['search']" size="2x"></fa-icon>
-      </div>
-      <h2 class="sds-card__title padding-left-2 ">No Results found</h2>
+    <div class="sds-card sds-card--bordered">
+        <div class="sds-card__header sds-card__header--center">
+            <div class="sds-card__icon margin-left-2">
+                <usa-icon [icon]="'book'" [classes]="['search']" size="2x"></usa-icon>
+            </div>
+            <h2 class="sds-card__title padding-left-2 ">No Results found</h2>
 
-    </div>
-    <div class="sds-card__body">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-      <div class="margin-top-3">
-        <p>To View entity you must register. Please sign in</p>
-        <button class="usa-button">Sign In</button>
-      </div>
+        </div>
+        <div class="sds-card__body">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+            <div class="margin-top-3">
+                <p>To View entity you must register. Please sign in</p>
+                <button class="usa-button">Sign In</button>
+            </div>
 
-      <div class="margin-top-3">
-        <p>We couldn't find a match for your search criteria</p>
-        <button class="usa-button usa-button--outline">Yes</button>
-        <button class="usa-button usa-button--outline">Go Back</button>
-      </div>
+            <div class="margin-top-3">
+                <p>We couldn't find a match for your search criteria</p>
+                <button class="usa-button usa-button--outline">Yes</button>
+                <button class="usa-button usa-button--outline">Go Back</button>
+            </div>
+        </div>
     </div>
-  </div>
 </ng-template>

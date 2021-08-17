@@ -1,0 +1,6 @@
+<p><code>sdsDate</code> pipe will accept either a datetime string or milliseconds since epoch. If the date passed in is the current day, only the time component will be displayed</p>
+<p>{{today | sdsDate}}</p>
+<p>If the date passed in is within the same year as today, only the month and day will be displayed</p>
+<p>{{currentYearDate | sdsDate}}</p>
+<p>If the date passed in is not within the same year as today, the month, day, and year will be displayed</p>
+<p>{{previouseYearDate | sdsDate}}</p>

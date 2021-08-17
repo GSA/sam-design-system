@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { SdsSubheaderModule } from '@gsa-sam/layouts';
 import { CommonModule } from '@angular/common';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { SdsSearchModule, SdsDialogModule, SdsIconModule } from '@gsa-sam/components';
+
+import { SdsSearchModule, SdsDialogModule } from '@gsa-sam/components';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
@@ -12,6 +12,8 @@ import {
 } from '@gsa-sam/sam-formly';
 import { SubheaderSearchSubPagesComponent } from './subheader-search-sub-pages.component';
 import { SdsButtonGroupModule } from '@gsa-sam/sam-material-extensions';
+import { NgxBootstrapIconsModule, chevronLeft } from 'ngx-bootstrap-icons';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 
 
@@ -19,16 +21,16 @@ import { SdsButtonGroupModule } from '@gsa-sam/sam-material-extensions';
   imports: [
     CommonModule,
     SdsSubheaderModule,
-    FontAwesomeModule,
     SdsSearchModule,
     SdsFormlyDialogModule,
     SdsDialogModule,
     ReactiveFormsModule,
     SdsFormlyModule,
     FormlyModule,
-    SdsIconModule,
+    IconModule,
     SdsButtonGroupModule,
-    FormsModule
+    FormsModule,
+    NgxBootstrapIconsModule.pick({chevronLeft})
   ],
   declarations: [SubheaderSearchSubPagesComponent],
   exports: [SubheaderSearchSubPagesComponent],

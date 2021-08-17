@@ -30,7 +30,7 @@ export class ReadonlyFormlyTypeComponent {
       type: SdsFormlyTypes.INPUT,
       templateOptions: {
         label: 'Card Number',
-        placeholder: '16-digit Credit Card Number',
+        placeholder: '1234-5678-9012-3456',
         required: true,
         maxLength: 16,
       },
@@ -39,7 +39,7 @@ export class ReadonlyFormlyTypeComponent {
       type: SdsFormlyTypes.INPUT,
       templateOptions: {
         label: 'Security Code',
-        placeholder: '3 or 4 digit CVV',
+        placeholder: '123',
         required: true,
         maxLength: 4,
       },
@@ -48,7 +48,7 @@ export class ReadonlyFormlyTypeComponent {
       type: SdsFormlyTypes.INPUT,
       templateOptions: {
         label: 'Zip Code',
-        placeholder: '5 digit Zip Code',
+        placeholder: '12345',
         required: true,
         maxLength: 5
       },

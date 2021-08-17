@@ -10,11 +10,11 @@ export class ResultListCardComponent {
   constructor(private change: ChangeDetectorRef) { }
 
   itemsDefault = [
-    { iconlib : 'sds', icon: "bell", text: 'First', id: 1 },
-    { iconlib : 'sds', icon: 'book', text: 'Second', id: 2 },
-    { iconlib : 'sds', icon: 'download', text: 'Third', id: 3 },
-    { iconlib : 'sds', icon: 'comment', text: 'Fourth', id: 4 },
-    { iconlib : 'sds', icon: 'comment', text: 'Fifth', id: 5 , hasNewerData:true}
+    { icon: "bell", text: 'First', id: 1 },
+    { icon: 'book', text: 'Second', id: 2 },
+    { icon: 'download', text: 'Third', id: 3 },
+    { icon: 'comment', text: 'Fourth', id: 4 },
+    { icon: 'comment', text: 'Fifth', id: 5 , hasNewerData:true}
   ];
 
   items = this.itemsDefault;

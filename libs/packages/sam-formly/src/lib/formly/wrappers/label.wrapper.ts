@@ -40,6 +40,10 @@ export class FormlyLabelWrapperComponent extends FieldWrapper {
   @ViewChild('fieldComponent', { read: ViewContainerRef })
   fieldComponent: ViewContainerRef;
   hasLabel() {
+    if (this.to.hideLabel) {
+      return false;
+    }
+    
     if (this.to.label) {
       if (
         !(this.field.type === 'checkbox' || this.field.type === 'multicheckbox')

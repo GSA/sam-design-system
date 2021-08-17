@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 import { SdsFormlyResetComponent } from './formly-reset.component';
+import { NgxBootstrapIconsModule, arrowClockwise } from 'ngx-bootstrap-icons';
 
 @NgModule({
   declarations: [SdsFormlyResetComponent],
   imports: [
     CommonModule,
-    FontAwesomeModule
+    IconModule,
+    NgxBootstrapIconsModule.pick({arrowClockwise})
   ],
   exports: [
     SdsFormlyResetComponent

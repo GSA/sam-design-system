@@ -3,8 +3,9 @@ import { Component, ViewChild, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { PaginationModule, SdsIconModule } from '@gsa-sam/components';
+
+import { PaginationModule } from '@gsa-sam/components';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 import {
   SdsTableComponent,
@@ -211,11 +212,8 @@ const MOCK_DATA = [
         <ng-template #sdsCell let-element="element">
           <ul class="usa-list usa-list--unstyled">
             <li *ngFor="let tag of element.tags">
-              <fa-icon
-                [icon]="['fas', 'circle']"
-                size="sm"
-                [class]="tag.className"
-              ></fa-icon>
+            <usa-icon size="2x" [class]="tag.className" [icon]="'circle'"></usa-icon>
+
               {{ tag.label }}
             </li>
           </ul>
@@ -327,10 +325,8 @@ describe('SdsTableComponent Full', () => {
       ],
       imports: [
         MatTableModule,
-        FontAwesomeModule,
+        IconModule,
         MatSortModule,
-        SdsIconModule,
-        FontAwesomeModule,
         MatPaginatorModule,
         BrowserAnimationsModule,
         PaginationModule

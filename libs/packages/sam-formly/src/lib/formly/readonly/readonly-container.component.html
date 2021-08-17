@@ -1,13 +1,89 @@
+<ng-container *ngIf="labelTemplate; else defaultLabel" 
+  [ngTemplateOutlet]="labelTemplate.templateRef" [ngTemplateOutletContext]="{$implicit: formlyFieldConfig?.templateOptions}">
+</ng-container>
+
+<ng-template #defaultLabel>
+  <label class="usa-label">
+    <span
+    *ngIf="formlyFieldConfig?.templateOptions?.tagText"
+    class="usa-tag"
+    [ngClass]="formlyFieldConfig.templateOptions.tagClass ? formlyFieldConfig.templateOptions.tagClass  : 'sds-tag--info-white'"
+    >{{ formlyFieldConfig.templateOptions.tagText }}</span>
+    {{label}}
+  </label>
+</ng-template>
+
+
 <span [ngSwitch]="formlyType">
-  <sds-readonly-input *ngSwitchCase="sdsFormlyTypes.INPUT" [label]="label" [value]="value"></sds-readonly-input>
-  <sds-readonly-input *ngSwitchCase="sdsFormlyTypes.TEXTAREA" [label]="label" [value]="value"></sds-readonly-input>
-  <sds-readonly-input *ngSwitchCase="sdsFormlyTypes.READONLY" [label]="label" [value]="value"></sds-readonly-input>
-  <sds-readonly-datepicker *ngSwitchCase="sdsFormlyTypes.DATEPICKER" [label]="label" [value]="value"></sds-readonly-datepicker>
-  <sds-readonly-select *ngSwitchCase="sdsFormlyTypes.SELECT" [label]="label" [value]="value" [selectOptions]="additionalConfig.providedOptions"></sds-readonly-select>
-  <sds-readonly-radio *ngSwitchCase="sdsFormlyTypes.RADIO" [label]="label" [value]="value" [radioOptions]="additionalConfig.providedOptions"></sds-readonly-radio>
-  <sds-readonly-fileinfo *ngSwitchCase="sdsFormlyTypes.FILEINFO" [label]="label" [value]="value" [fileInfoOptions]="additionalConfig.providedOptions"></sds-readonly-fileinfo>
-  <sds-readonly-autocomplete *ngSwitchCase="sdsFormlyTypes.AUTOCOMPLETE" [label]="label" [value]="value" [autocompleteSettings]="additionalConfig.autocompleteOptions"></sds-readonly-autocomplete>
-  <sds-readonly-checkbox *ngSwitchCase="sdsFormlyTypes.CHECKBOX" [label]="label" [value]="value"></sds-readonly-checkbox>
-  <sds-readonly-multicheckbox *ngSwitchCase="sdsFormlyTypes.MULTICHECKBOX" [label]="label" [value]="value" [multicheckboxOptions]="additionalConfig.providedOptions"></sds-readonly-multicheckbox>
-  <sds-readonly-daterange *ngSwitchCase="sdsFormlyTypes.DATERANGEPICKER" [label]="label" [value]="value" [daterangepickerOptions]="additionalConfig.daterangepickerOptions"></sds-readonly-daterange>
+  <sds-readonly-input *ngSwitchCase="sdsFormlyTypes.INPUT" 
+    [value]="value"
+    [valueTemplate]="valueTemplate?.templateRef">
+  </sds-readonly-input>
+
+  <sds-readonly-input *ngSwitchCase="sdsFormlyTypes.TEXTAREA" 
+    [value]="value"
+    [valueTemplate]="valueTemplate?.templateRef">
+  </sds-readonly-input>
+
+  <sds-readonly-input *ngSwitchCase="sdsFormlyTypes.READONLY" 
+    [value]="value"
+    [valueTemplate]="valueTemplate?.templateRef">
+  </sds-readonly-input>
+
+  <sds-readonly-input *ngSwitchCase="sdsFormlyTypes.SEARCH" 
+    [value]="value.searchText"
+    [valueTemplate]="valueTemplate?.templateRef">
+  </sds-readonly-input>
+
+  <sds-readonly-datepicker *ngSwitchCase="sdsFormlyTypes.DATEPICKER" 
+    [value]="value"
+    [valueTemplate]="valueTemplate?.templateRef">
+  </sds-readonly-datepicker>
+
+  <sds-readonly-select *ngSwitchCase="sdsFormlyTypes.SELECT" 
+    [value]="value" 
+    [valueTemplate]="valueTemplate?.templateRef"
+    [selectOptions]="additionalConfig.providedOptions">
+  </sds-readonly-select>
+
+  <sds-readonly-radio *ngSwitchCase="sdsFormlyTypes.RADIO" 
+    [value]="value" 
+    [valueTemplate]="valueTemplate?.templateRef"
+    [radioOptions]="additionalConfig.providedOptions">
+  </sds-readonly-radio>
+
+  <sds-readonly-fileinfo *ngSwitchCase="sdsFormlyTypes.FILEINFO" 
+    [value]="value" 
+    [valueTemplate]="valueTemplate?.templateRef" 
+    [fileInfoOptions]="additionalConfig.providedOptions">
+  </sds-readonly-fileinfo>
+
+  <sds-readonly-autocomplete *ngSwitchCase="sdsFormlyTypes.AUTOCOMPLETE" 
+    [value]="value"
+    [valueTemplate]="valueTemplate?.templateRef"
+    [autocompleteSettings]="additionalConfig.autocompleteOptions">
+  </sds-readonly-autocomplete>
+
+  <sds-readonly-checkbox *ngSwitchCase="sdsFormlyTypes.CHECKBOX" 
+    [value]="value"
+    [valueTemplate]="valueTemplate?.templateRef">
+  </sds-readonly-checkbox>
+
+  <sds-readonly-multicheckbox *ngSwitchCase="sdsFormlyTypes.MULTICHECKBOX" 
+    [value]="value"
+    [valueTemplate]="valueTemplate?.templateRef"
+    [multicheckboxOptions]="additionalConfig.providedOptions"
+    ></sds-readonly-multicheckbox>
+
+  <sds-readonly-daterange *ngSwitchCase="sdsFormlyTypes.DATERANGEPICKER" 
+    [value]="value"
+    [valueTemplate]="valueTemplate?.templateRef"
+    [daterangepickerOptions]="additionalConfig.daterangepickerOptions">
+  </sds-readonly-daterange>
+
+  <sds-readonly-daterange *ngSwitchCase="sdsFormlyTypes.DATERANGEPICKERV2" 
+    [value]="value"
+    [valueTemplate]="valueTemplate?.templateRef"
+    [daterangepickerOptions]="additionalConfig.daterangepickerOptions">
+  </sds-readonly-daterange>
 </span> 

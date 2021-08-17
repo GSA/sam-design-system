@@ -8,7 +8,9 @@ import { SDSSelectedResultConfiguration } from './models/SDSSelectedResultConfig
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { IconModule, allIcons as sdsAllIcons } from '@gsa-sam/ngx-uswds-icons';
+import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
+
 
 
 describe('SDSSelectedResultComponent', () => {
@@ -19,7 +21,7 @@ describe('SDSSelectedResultComponent', () => {
     TestBed.configureTestingModule({
       declarations: [SDSSelectedResultComponent],
       imports: [
-        CommonModule, FormsModule, RouterModule, FontAwesomeModule
+        CommonModule, FormsModule, RouterModule, IconModule, NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))
       ],
     })
       .compileComponents();

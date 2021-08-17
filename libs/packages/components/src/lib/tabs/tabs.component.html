@@ -1,0 +1,23 @@
+<div role="tablist" [attr.class]="tabClass">
+  <button
+    *ngFor="let tabPanel of tabPanels"
+    role="tab"
+    class="sds-tabs__item"
+    [attr.aria-selected]="tabPanel.selected"
+    [attr.tabindex]="tabPanel.selected ? 0 : -1"
+    [attr.aria-controls]="tabPanel.id"
+    [attr.aria-label]="tabPanel.ariaLabel"
+    [disabled]="tabPanel.disabled"
+    (click)="onTabClicked($event, tabPanel)"
+    (keydown)="onKeyDown($event)">
+    <ng-container *ngIf="isObj(tabPanel.tabHeader); else textHeader">
+      <ng-template *ngTemplateOutlet="tabPanel.tabHeader"></ng-template>
+    </ng-container>
+    <ng-template #textHeader>
+      {{tabPanel.tabHeader}}
+    </ng-template>
+  </button>
+</div>
+<div class="sds-tabs__content" tabindex="0">
+  <ng-content></ng-content>
+</div>

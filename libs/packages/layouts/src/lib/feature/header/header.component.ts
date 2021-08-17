@@ -15,9 +15,7 @@ import {
 } from './model/HeaderModel';
 import { INavigationLink, Selectable } from '@gsa-sam/components';
 import { NavigationHelper } from '@gsa-sam/components';
-import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { sds } from '@gsa-sam/sam-styles/src/icons/';
+
 
 @Component({
   selector: 'sds-header',
@@ -61,8 +59,8 @@ export class SdsHeaderComponent {
   removeWhiteSpace(text: string) {
     return text.replace(/ /g, '');
   }
-  constructor(library: FaIconLibrary) {
-    library.addIconPacks(fas, sds);
+  constructor() {
+   
   }
   /**
    * seeif any secondary link has a counter

@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { FormlyFieldConfig } from '@ngx-formly/core';
-import { SdsFormlyTypes } from '../models/formly-types';
+import { SdsFormlyTypes, SdsReadonlyTypes } from '../models/formly-types';
 import { ReadonlyOptions } from '../readonly/readonly-options.model';
 
-interface ReadonlyDataType {
+export interface ReadonlyDataType {
   formlyType: SdsFormlyTypes;
   label: string;
   value: any;
   readonlyOptions: ReadonlyOptions;
+  formlyKey: string;
 }
 @Injectable()
 export class FormlyUtilsService {
@@ -61,7 +62,7 @@ export class FormlyUtilsService {
       });
     }
 
-    if (field.templateOptions) {
+    if (field.templateOptions && field.type && Object.values(SdsFormlyTypes).includes(field.type as any)) {
       field.templateOptions.readonlyMode = readonlyMode;
     }
   }
@@ -75,7 +76,7 @@ export class FormlyUtilsService {
     if (
       field.templateOptions &&
       (options.convertAll ||
-        Object.values(SdsFormlyTypes).includes(field.type as any))
+        Object.values(SdsReadonlyTypes).includes(field.type as any))
     ) {
       const label = field.templateOptions.label;
       const value = model[field.key as string];
@@ -84,19 +85,21 @@ export class FormlyUtilsService {
         autocompleteOptions: field.templateOptions.configuration,
       };
 
-      if (field.type === SdsFormlyTypes.DATERANGEPICKER) {
-        readonlyOptions.daterangepickerOptions = {
-          fromDateKey: field.fieldGroup[0].key as string,
-          toDateKey: field.fieldGroup[1].key as string,
-        };
-      }
-
       readonlyData.push({
         formlyType: field.type,
         label,
         value,
         readonlyOptions,
+        formlyKey: field.key
       });
+
+      if (field.type === SdsFormlyTypes.DATERANGEPICKER || field.type === SdsFormlyTypes.DATERANGEPICKERV2) {
+        readonlyOptions.daterangepickerOptions = {
+          fromDateKey: field.fieldGroup[0].key as string,
+          toDateKey: field.fieldGroup[1].key as string,
+        };
+        return;
+      }
     }
 
     if (field.fieldGroup) {

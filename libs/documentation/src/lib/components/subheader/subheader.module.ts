@@ -18,6 +18,8 @@ import { SubheaderSearchSubPagesModule } from './demos/subpages/subheader-search
 import { SubheaderTier2WorkspaceComponent } from './demos/workspace/subheader-tier-2-workspace.component';
 import { SubheaderTier2WorkspaceModule } from './demos/workspace/subheader-tier-2-workspace.module';
 import { SubheaderSearchSubPagesComponent } from './demos/subpages/subheader-search-sub-pages.component';
+import { SubheaderSearchAutocompleteComponent } from './demos/search-autocomplete/subheader-search-autocomplete.component';
+import { SubheaderSearchAutocompleteModule } from './demos/search-autocomplete/subheader-search-autocomplete.module';
 
 declare var require: any;
 const DEMOS = {
@@ -43,6 +45,15 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/search/subheader-search.component'),
     module: require('!!raw-loader!./demos/search/subheader-search.module'),
     markup: require('!!raw-loader!./demos/search/subheader-search.component.html'),
+    path:
+      'libs/documentation/src/lib/components/subheader/demos/subheader-search',
+  },
+  searchautocomplete: {
+    title: 'Search with Autocomplete',
+    type: SubheaderSearchAutocompleteComponent,
+    code: require('!!raw-loader!./demos/search-autocomplete/subheader-search-autocomplete.component'),
+    module: require('!!raw-loader!./demos/search-autocomplete/subheader-search-autocomplete.module'),
+    markup: require('!!raw-loader!./demos/search-autocomplete/subheader-search-autocomplete.component.html'),
     path:
       'libs/documentation/src/lib/components/subheader/demos/subheader-search',
   },
@@ -95,6 +106,7 @@ export const ROUTES = [
     SubheaderSearchModule,
     SubheaderSearchSubPagesModule,
     SubheaderTier2WorkspaceModule,
+    SubheaderSearchAutocompleteModule,
   ],
 })
 export class SubHeaderModule {

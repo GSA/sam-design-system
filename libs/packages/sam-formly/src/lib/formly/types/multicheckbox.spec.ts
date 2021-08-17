@@ -5,13 +5,14 @@ import {
 
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { Component, ViewChild, DebugElement } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule, FormlyForm } from '@ngx-formly/core';
 import { FormlySelectModule } from '@ngx-formly/core/select';
 import { FormlyFieldMultiCheckboxComponent } from './multicheckbox';
 import { SdsCollapseModule } from '@gsa-sam/components';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 const createTestComponent = (html: string) =>
   createGenericTestComponent(html, TestComponent) as ComponentFixture<
@@ -39,7 +40,7 @@ describe('Formly Field multicheckbox Component', () => {
         ReactiveFormsModule,
         FormlySelectModule,
         SdsCollapseModule,
-        FontAwesomeModule,
+        IconModule,
         FormlyModule.forRoot({
           types: [
             {

@@ -1,12 +1,36 @@
-<formly-form [form]="form" [fields]="fields" [options]="options" [model]="model" (modelChange)="onModelChange($event)">
-</formly-form>
-<div class="grid-row margin-top-2">
-  <div *ngIf="advancedFilters" class="grid-col">
-    <sds-advanced-filters [form]="form" [sortMoreFilterBy]="sortMoreFilterBy" [fields]="fields" [options]="options"
-      [model]="model" (showInactiveFiltersChange)="showInactiveFiltersChange.next($event)" [isInactiveValueFieldShown]=isInactiveValueFieldShown>
-    </sds-advanced-filters>
-  </div>
-  <div class="grid-col text-right">
-    <sds-formly-reset [options]="options"></sds-formly-reset>
+<div [ngClass]="{'sds-filters--horizontal': horizontal}">
+  <formly-form [form]="form" [fields]="fields" [options]="options" [model]="model" (modelChange)="onModelChange($event)">
+  </formly-form>
+  <div [ngClass]="{'margin-left-auto margin-top-neg-2': horizontal, 'grid-row margin-top-2': !horizontal}">
+    <div *ngIf="advancedFilters" class="grid-col">
+      <sds-advanced-filters [form]="form" [sortMoreFilterBy]="sortMoreFilterBy" [fields]="fields" [options]="options"
+        [model]="model" (showInactiveFiltersChange)="handleInactiveFilterChange($event)" [isInactiveValueFieldShown]=isInactiveValueFieldShown>
+      </sds-advanced-filters>
+    </div>
+    <div *ngIf="showReset" class="grid-col text-right">
+      <sds-formly-reset [options]="options" [defaultModel]="defaultModel"></sds-formly-reset>
+    </div>
   </div>
 </div>
+
+<ng-container *ngIf="displayChips">
+  <div *ngFor="let chip of chips" class="width-auto sds-tag sds-tag--chip sds-tag--input margin-right-2 ">
+    <div class="sds--tag__item">
+      <sds-readonly-container
+        [label]="chip.label"
+        [value]="chip.value"
+        [additionalConfig]="chip.readonlyOptions"
+        [formlyType]="chip.formlyType"
+      >
+        <ng-container *sdsReadonlyLabel><span class="margin-right-1 text-bold">{{chip.label}}:</span></ng-container>
+        <ng-container *sdsReadonlyValue="let value"><span class="margin-right-1">{{value}}</span></ng-container>
+      </sds-readonly-container>
+    </div>
+    <button [attr.aria-label]="'Remove Item ' + chip.label + ' ' + chip.value"
+      aria-hidden="false" class="sds-tag__close position-static"
+      (click)="removeChip(chip)"
+      (keyup.enter)="removeChip(chip)">
+      <usa-icon [icon]="'x'" size="lg"></usa-icon>
+    </button>
+  </div>
+</ng-container>

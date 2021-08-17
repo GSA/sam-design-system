@@ -5,8 +5,10 @@ import { SdsTableComponent, SdsTableRowComponent, SdsTableHeaderRowComponent, Sd
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 
-import { PaginationModule, SdsIconModule } from '@gsa-sam/components';
+import { PaginationModule } from '@gsa-sam/components';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { chevronDown, chevronUp, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
   declarations: [SdsTableComponent, SdsTableRowComponent, SdsTableHeaderRowComponent, SdsTableFooterRowComponent, SdsTableColumnDefComponent, SdsTableCellDirective, SdsTableHeaderCellDirective, SdsTableFooterCellDirective],
@@ -16,7 +18,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatTableModule,
     MatPaginatorModule,
     PaginationModule,
-    SdsIconModule,
+    IconModule,
+    NgxBootstrapIconsModule.pick({chevronUp, chevronDown})
   ],
   exports: [SdsTableComponent, SdsTableRowComponent, SdsTableHeaderRowComponent, SdsTableFooterRowComponent, SdsTableColumnDefComponent, SdsTableCellDirective, SdsTableHeaderCellDirective, SdsTableFooterCellDirective]
 })

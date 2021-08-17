@@ -8,14 +8,14 @@ import {
 } from '@gsa-sam/sam-formly';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SdsDialogModule } from '@gsa-sam/components';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 import { FormlyDialog } from './formly-modal.component';
 
 @NgModule({
   declarations: [FormlyDialog],
   imports: [
     CommonModule,
-    FontAwesomeModule,
+    IconModule,
     SdsFormlyDialogModule,
     SdsDialogModule,
     ReactiveFormsModule,

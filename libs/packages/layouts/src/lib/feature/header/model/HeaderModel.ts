@@ -108,11 +108,6 @@ export class HeaderSecondaryLink implements Selectable, INavigationLink {
     route: string;
 
     /**
-     * image class eg. fas
-     */
-    imageClassPrefix: string;
-
-    /**
      * image class
      */
     imageClass: string;

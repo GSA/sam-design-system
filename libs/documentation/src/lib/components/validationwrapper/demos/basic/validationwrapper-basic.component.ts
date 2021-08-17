@@ -18,7 +18,7 @@ export class ValidationWrapperBasic {
       type: 'input',
       templateOptions: {
         required: true,
-        placeholder: 'Placeholder'
+        placeholder: 'eg: Acme Corporation'
       },
     },
   ];

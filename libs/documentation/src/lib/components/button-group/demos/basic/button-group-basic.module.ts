@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 import { ButtonGroupBasic } from './button-group-basic.component';
 import { SdsButtonGroupModule } from '@gsa-sam/sam-material-extensions';
 
 
 @NgModule({
-  imports: [CommonModule, FontAwesomeModule, SdsButtonGroupModule],
+  imports: [CommonModule, IconModule, SdsButtonGroupModule],
   declarations: [ButtonGroupBasic],
   exports: [ButtonGroupBasic],
   bootstrap: [ButtonGroupBasic]
