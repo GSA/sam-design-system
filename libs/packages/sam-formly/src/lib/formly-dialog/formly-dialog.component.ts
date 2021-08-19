@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { FormGroup } from '@angular/forms';
 import { SdsDialogRef, SDS_DIALOG_DATA } from '@gsa-sam/components';
@@ -19,6 +19,10 @@ export class SdsFormlyDialogComponent implements OnInit {
   submit: string;
   disableSubmitButton: boolean;
 
+  @Output() submitFn: EventEmitter<any> = new EventEmitter();
+
+  @Output() cancelFn: EventEmitter<any> = new EventEmitter();
+
   constructor(
     public advancedFiltersService: SdsAdvancedFiltersService,
     public dialogRef: SdsDialogRef<SdsFormlyDialogComponent>,
@@ -37,12 +41,12 @@ export class SdsFormlyDialogComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-      this.dialogRef.close(this.model);
+      this.submitFn.emit(this.model);
     }
   }
 
   onCancel() {
     this.options.resetModel();
-    this.dialogRef.close();
+    this.cancelFn.emit(this.model);
   }
 }

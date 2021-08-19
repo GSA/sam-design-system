@@ -42,9 +42,9 @@ export class AdvancedFiltersComponent {
   /**
    * Show option to include inactive filter values
    */
-  @Input()isInactiveValueFieldShown: boolean = false;
+  @Input() isInactiveValueFieldShown: boolean = false;
 
-  @Output()showInactiveFiltersChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() showInactiveFiltersChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   selectAll = false;
   showInactiveOnOpen = false;
@@ -56,7 +56,7 @@ export class AdvancedFiltersComponent {
     public dialog: SdsDialogService,
     private advancedFiltersService: SdsAdvancedFiltersService,
     private cdr: ChangeDetectorRef
-  ) {}
+  ) { }
 
   onSelectAllChange(selectAllValue, selectedform, isOnload, selectAllField) {
     const modalFields: FormlyFieldConfig[] = this.advancedFiltersService.convertToCheckboxes(
@@ -109,7 +109,7 @@ export class AdvancedFiltersComponent {
     }
   }
 
-  onShowInactiveChange(value){
+  onShowInactiveChange(value) {
     this.showInactiveFiltersChange.emit(value);
   }
 
@@ -121,8 +121,8 @@ export class AdvancedFiltersComponent {
       modalFields.sort((a: FormlyFieldConfig, b: FormlyFieldConfig) =>
         a.templateOptions && b.templateOptions
           ? a.templateOptions[this.sortMoreFilterBy].localeCompare(
-              b.templateOptions[this.sortMoreFilterBy]
-            )
+            b.templateOptions[this.sortMoreFilterBy]
+          )
           : 0
       );
     }
@@ -136,7 +136,7 @@ export class AdvancedFiltersComponent {
         fieldGroup: [...modalFields]
       }]
     }];
-    if(this.isInactiveValueFieldShown){
+    if (this.isInactiveValueFieldShown) {
       updateField.push(...showInactiveGroup)
     }
     const data: SdsFormlyDialogData = {
@@ -150,14 +150,13 @@ export class AdvancedFiltersComponent {
       data: data
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if(result){
-        if(this.showInactiveOnOpen !== this.showInactive){
+    dialogRef.componentInstance.submitFn.subscribe((result) => {
+      if (result) {
+        if (this.showInactiveOnOpen !== this.showInactive) {
           this.onShowInactiveChange(this.showInactive);
           this.showInactiveOnOpen = this.showInactive;
         }
-      }
-      if (result) {
+
         const response = this.advancedFiltersService.updateFields(
           result,
           this.fields,
@@ -167,10 +166,17 @@ export class AdvancedFiltersComponent {
         this.fields = response.fields;
         this.model = response.model;
       }
+      dialogRef.close();
+    }
+    );
+
+    dialogRef.componentInstance.cancelFn.subscribe(() => {
+      dialogRef.close();
     });
+
   }
 
-  get filedGroup(): FormlyFieldConfig[]{
+  get filedGroup(): FormlyFieldConfig[] {
     return [
       {
         templateOptions: { label: 'test' },
@@ -213,7 +219,7 @@ export class AdvancedFiltersComponent {
     ];
   }
 
-  get showInactiveGroup(): FormlyFieldConfig[]{
+  get showInactiveGroup(): FormlyFieldConfig[] {
     return [
       {
         template: '<hr/>'
