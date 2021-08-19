@@ -1,0 +1,23 @@
+<a
+  *ngIf="link.href; else internalLink"
+  class="usa-link"
+  [class.usa-link--external]="link.target === '_blank'"
+  [ngClass]="link.classes"
+  [href]="link.href"
+  [target]="link.target"
+  [innerHtml]="link.innerHtml"
+  [attr.aria-label]="
+    link.target === '_blank' ? link.ariaLabel + ' (Opens a new window)' : null
+  "
+></a>
+
+<ng-template #internalLink>
+  <a
+    class="usa-link"
+    [ngClass]="link.classes"
+    [routerLink]="link.routerLink"
+    [queryParams]="link.queryParams"
+    [innerHtml]="link.innerHtml"
+    [attr.aria-label]="link.ariaLabel"
+  ></a>
+</ng-template>
