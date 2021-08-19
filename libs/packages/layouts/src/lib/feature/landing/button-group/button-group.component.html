@@ -1,0 +1,64 @@
+<ng-container *ngFor="let button of buttons">
+  <ng-container *ngIf="button.icons; then icon; else noIcon"></ng-container>
+  <ng-template #icon>
+    <ng-container
+      *ngIf="button.clickHandler; then iconWithClickHandler; else iconWithLink"
+    ></ng-container>
+
+    <ng-template #iconWithClickHandler>
+      <button
+        class="display-flex flex-justify-center sds-button width-full margin-bottom-1"
+        id="{{ button.id || button.text }}"
+        (click)="button.clickHandler()"
+      >
+        <sds-icon
+          class="margin-right-1 padding-top-1px"
+          [icon]="[button.icons.icon.icon]"
+        ></sds-icon>
+        <div class="flex-align-self-center">{{ button.text }}</div>
+      </button>
+    </ng-template>
+
+    <ng-template #iconWithLink>
+      <button
+        class="display-flex flex-justify-center sds-button width-full margin-bottom-1"
+        id="{{ button.id || button.text }}"
+        routerLink="{{ button.url }}"
+      >
+        <sds-icon
+          class="margin-right-1 padding-top-1px"
+          [icon]="[button.icons.icon.icon]"
+        ></sds-icon>
+        <div class="flex-align-self-center">{{ button.text }}</div>
+      </button>
+    </ng-template>
+  </ng-template>
+
+  <ng-template #noIcon>
+    <button
+      *ngIf="button.clickHandler; else noClickHandler"
+      class="usa-button width-full margin-bottom-1"
+      id="{{ button.id || button.text }}"
+      (click)="button.clickHandler()"
+    >
+      {{ button.text }}
+    </button>
+    <ng-template #noClickHandler>
+      <a
+        *ngIf="button.external; else routerLink"
+        class="usa-button width-full margin-bottom-1"
+        [ngClass]="button.classes"
+        href="{{ button.url }}"
+        >{{ button.text }}</a
+      >
+      <ng-template #routerLink>
+        <a
+          class="usa-button width-full margin-bottom-1"
+          [ngClass]="button.classes"
+          routerLink="{{ button.url }}"
+          >{{ button.text }}</a
+        >
+      </ng-template>
+    </ng-template>
+  </ng-template>
+</ng-container>
