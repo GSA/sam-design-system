@@ -94,7 +94,11 @@ export class AdvancedFiltersComponent implements OnInit {
 
               this.cdr.detectChanges();
             } else {
-              selectedform.get(this.filtersFieldGroupKey).get(key).setValue([]);
+              if (this.enablePopover) {
+                selectedform.get(this.filtersFieldGroupKey).get(key).setValue(false);
+              } else {
+                selectedform.get(this.filtersFieldGroupKey).get(key).setValue([]);
+              }
             }
           }
         }

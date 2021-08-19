@@ -98,17 +98,13 @@ export class SdsAdvancedFiltersService {
     selectedFields: any,
     model: object
   ) {
-    if (selectedFields) {
+    if (selectedFields && (selectedFields.length || typeof(selectedFields) === 'boolean')) {
       parentField.hide = false;
       if (selectedFields === true || selectedFields.length) {
         parentField.fieldGroup.forEach((field) => {
           const key = field.key;
           const fieldSelected = selectedFields.length ? selectedFields.includes(key) : field;
           this.updateSingleField(field, fieldSelected, model);
-        });
-      } else if (Array.isArray(selectedFields) && !selectedFields.length) {
-        parentField.fieldGroup.forEach((field) => {
-          this.updateSingleField(field, false, model);
         });
       }
     } else {
