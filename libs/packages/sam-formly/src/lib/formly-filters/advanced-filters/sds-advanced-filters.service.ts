@@ -7,10 +7,10 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 export class SdsAdvancedFiltersService {
   constructor() {}
 
-  convertToCheckboxes(origFields: FormlyFieldConfig[]): FormlyFieldConfig[] {
+  convertToCheckboxes(origFields: FormlyFieldConfig[], hideChildrenGroups = false): FormlyFieldConfig[] {
     const fields: FormlyFieldConfig[] = [];
     origFields.forEach((origField) => {
-      if (origField.fieldGroup && origField.fieldGroup.length > 1) {
+      if (origField.fieldGroup && origField.fieldGroup.length > 1 && !hideChildrenGroups) {
         const field = this.createMulticheckbox(origField);
         fields.push(field);
       } else {
@@ -77,8 +77,8 @@ export class SdsAdvancedFiltersService {
   }
 
   updateFields(selectedFields: any, fields: FormlyFieldConfig[], model: any) {
-    fields.forEach((field: any) => {
-      const key = field.key;
+    fields.forEach((field) => {
+      const key = field.key as string;
       const selectedField = selectedFields['filterToggle']['filters'][key];
       if (field.fieldGroup && field.fieldGroup.length > 1) {
         const fieldModel = model[key];
@@ -98,13 +98,15 @@ export class SdsAdvancedFiltersService {
     selectedFields: any,
     model: object
   ) {
-    if (selectedFields && selectedFields.length) {
+    if (selectedFields && (selectedFields.length || typeof(selectedFields) === 'boolean')) {
       parentField.hide = false;
-      parentField.fieldGroup.forEach((field) => {
-        const key = field.key;
-        const fieldSelected = selectedFields.includes(key);
-        this.updateSingleField(field, fieldSelected, model);
-      });
+      if (selectedFields === true || selectedFields.length) {
+        parentField.fieldGroup.forEach((field) => {
+          const key = field.key;
+          const fieldSelected = selectedFields.length ? selectedFields.includes(key) : field;
+          this.updateSingleField(field, fieldSelected, model);
+        });
+      }
     } else {
       parentField.hide = true;
       parentField.fieldGroup.forEach((field) => {
@@ -119,7 +121,11 @@ export class SdsAdvancedFiltersService {
     } else {
       field.hide = true;
       field.templateOptions['required'] = false;
-      model[field.key] = null;
+      if (field.formControl) {
+        field.formControl.setValue(null);
+      } else {
+        model[field.key] = null;
+      }
     }
   }
 }

@@ -1,4 +1,17 @@
-<button type="button" (click)="openDialog()" class="usa-button usa-button--unstyled">More
+<button *ngIf="!enablePopover" type="button" (click)="openDialog()" class="usa-button usa-button--unstyled">More
   Filters
   <usa-icon [icon]="'filter'" class="icon-filter" [size]="'sm'"></usa-icon>
 </button>
+
+<div *ngIf="enablePopover"
+  [sdsPopover]="content" [position]="'bottom'"
+  [closeOnContentClick]="false" [closeOnClickOutside]="true"
+  tabindex="0" aria-label="More Filters">
+  More Filters
+  <usa-icon [icon]="'chevron-down'"></usa-icon>
+  <p #content class="padding-2">
+    <formly-form [fields]="popoverContent" (modelChange)="updateSelectedFields($event, false)"></formly-form>
+  </p>
+  
+</div>
+
