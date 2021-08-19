@@ -106,6 +106,10 @@ export class SdsAdvancedFiltersService {
           const fieldSelected = selectedFields.length ? selectedFields.includes(key) : field;
           this.updateSingleField(field, fieldSelected, model);
         });
+      } else if (Array.isArray(selectedFields) && !selectedFields.length) {
+        parentField.fieldGroup.forEach((field) => {
+          this.updateSingleField(field, false, model);
+        });
       }
     } else {
       parentField.hide = true;
