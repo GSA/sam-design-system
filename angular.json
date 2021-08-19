@@ -10,7 +10,7 @@
       "prefix": "sds",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "outputs": [
             "dist/libs/components"
           ],
@@ -63,7 +63,7 @@
       "prefix": "sds",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "outputs": [
             "dist/libs/sam-material-extensions"
           ],
@@ -112,7 +112,7 @@
       "prefix": "sds",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "outputs": [
             "dist/libs/sam-formly"
           ],
@@ -164,7 +164,7 @@
       "prefix": "sds",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "libs/packages/layouts/tsconfig.lib.json",
             "project": "libs/packages/layouts/ng-package.json"
@@ -225,16 +225,15 @@
               "apps/sam-design-system-site/src/favicon.ico",
               "apps/sam-design-system-site/src/assets"
             ],
-            "extractCss": true,
             "styles": [
               {
                 "input": "apps/sam-design-system-site/src/uswds-styles.scss",
-                "inject": false,
+                "inject": true,
                 "bundleName": "uswds"
               },
               {
                 "input": "apps/sam-design-system-site/src/sds-styles.scss",
-                "inject": false,
+                "inject": true,
                 "bundleName": "sds"
               },
               "node_modules/highlight.js/styles/vs.css"
@@ -247,24 +246,27 @@
           },
           "configurations": {
             "production": {
-              "fileReplacements": [{
-                "replace": "apps/sam-design-system-site/src/environments/environment.ts",
-                "with": "apps/sam-design-system-site/src/environments/environment.prod.ts"
-              }],
+              "fileReplacements": [
+                {
+                  "replace": "apps/sam-design-system-site/src/environments/environment.ts",
+                  "with": "apps/sam-design-system-site/src/environments/environment.prod.ts"
+                }
+              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "budgets": [{
-                "type": "initial",
-                "maximumWarning": "2mb",
-                "maximumError": "5mb"
-              }]
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
             }
           }
         },

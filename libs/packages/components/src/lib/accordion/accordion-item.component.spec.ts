@@ -1,15 +1,10 @@
-import {
-  async,
-  TestBed,
-  fakeAsync,
-  flush
-} from '@angular/core/testing';
+import { TestBed, fakeAsync, flush, waitForAsync } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SdsAccordionModule } from './accordion.module';
 
 describe('SdsAccordionItem', () => {
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [SdsAccordionModule, NoopAnimationsModule],
       declarations: [AccordionItem]
