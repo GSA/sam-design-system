@@ -92,6 +92,36 @@ import {
 } from './components/slide-out/slide-out.module';
 
 import {
+  ROUTES as LANDING_BUTTON_GROUP_ROUTES,
+  LandingButtonGroupModule,
+} from './components/landing/button-group/button-group.module';
+
+import {
+  ROUTES as LANDING_CARD_ROUTES,
+  LandingCardModule,
+} from './components/landing/card/card.module';
+
+import {
+  ROUTES as LANDING_LINK_ROUTES,
+  LandingLinkModule,
+} from './components/landing/link/link.module';
+
+import {
+  ROUTES as LANDING_LIST_ROUTES,
+  LandingListModule,
+} from './components/landing/list/list.module';
+
+import {
+  ROUTES as LANDING_PAGE_ROUTES,
+  LandingPageModule,
+} from './components/landing/page/page.module';
+
+import {
+  ROUTES as WORKSPACE_TIER_2_ROUTES,
+  WorkspaceTier2ItemModule,
+} from './components/workspace-tier-2/item/item.module';
+
+import {
   ROUTES as TABS_ROUTES,
   TabsModule,
 }
@@ -279,6 +309,13 @@ export const ROUTES: Routes = [
   { path: 'components/date-pipe', children: DATE_PIPE_ROUTES },
 
   { path: 'components/slide-out', children: SLIDE_OUT_ROUTES },
+  { path: 'components/landing-button-group', children: LANDING_BUTTON_GROUP_ROUTES },
+  { path: 'components/landing-card', children: LANDING_CARD_ROUTES },
+  { path: 'components/landing-link', children: LANDING_LINK_ROUTES },
+  { path: 'components/landing-list', children: LANDING_LIST_ROUTES },
+  { path: 'components/landing-page', children: LANDING_PAGE_ROUTES },
+  { path: 'components/workspace-tier-2-item', children: WORKSPACE_TIER_2_ROUTES },
+
   // Formly
   { path: 'components/formly-input', children: INPUT_ROUTES },
   { path: 'components/formly-textarea', children: TEXT_AREA_ROUTES },
@@ -382,6 +419,12 @@ export const ROUTES: Routes = [
     ReadonlyModule,
     RoadmapModule,
     SlideOutModule,
+    LandingButtonGroupModule,
+    LandingCardModule,
+    LandingLinkModule,
+    LandingListModule,
+    LandingPageModule,
+    WorkspaceTier2ItemModule,
     DatePipeModule,
     StepperModule,
     FileInputModule,

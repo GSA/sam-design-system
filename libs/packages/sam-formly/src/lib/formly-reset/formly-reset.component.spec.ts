@@ -1,31 +1,21 @@
-import { TestBed, ComponentFixture, async } from '@angular/core/testing';
+import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { Component, ViewChild } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import {
   FormlyModule,
-  FormlyFormOptions,
   FormlyForm,
-  FormlyFieldConfig
 } from '@ngx-formly/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-
-
 import { SdsFormlyModule } from '../formly/formly.module';
 import { SdsFormlyResetComponent } from './formly-reset.component';
 import { IconModule, allIcons as sdsAllIcons } from '@gsa-sam/ngx-uswds-icons';
 import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 
-let resetEl: HTMLElement;
-let model: any;
-let fields: FormlyFieldConfig[];
-let form: FormGroup;
-let options: FormlyFormOptions;
-
 describe('SDS Formly Reset', () => {
   let testComp: TestComponent;
   let fixture: ComponentFixture<TestComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [SdsFormlyResetComponent, TestComponent],
       imports: [
@@ -36,20 +26,15 @@ describe('SDS Formly Reset', () => {
         FormlyModule.forRoot({}),
         NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))
       ]
-    })
-      .compileComponents();
-  }));
+    }).compileComponents();
+    
+    fixture = TestBed.createComponent(TestComponent);
+    testComp = fixture.componentInstance;
 
-  beforeEach(() => {
-    form = new FormGroup({});
-    options = {};
+    fixture.detectChanges();
   });
 
   it('should reset form values to null if no values were set in model when clicked', () => {
-    fixture = TestBed.createComponent(TestComponent);
-    testComp = fixture.componentInstance;
-    fixture.detectChanges();
-
     testComp.form.controls.flat.setValue('edit flat input');
     testComp.form.get('nested.nestedInput').setValue('edit nested input');
 
@@ -58,14 +43,15 @@ describe('SDS Formly Reset', () => {
       nested: { nestedInput: 'edit nested input' }
     });
 
-    resetEl = fixture.nativeElement.querySelector('.usa-button');
-    resetEl.click()
+    const resetEl = fixture.nativeElement.querySelector('.usa-button');
+    resetEl.click();
+    fixture.detectChanges();
 
     expect(testComp.model).toEqual({ flat: null, nested: { nestedInput: null } });
   });
 
   it("should reset fields with defaultValue provided to that defaultValue when clicked", () => {
-    fields = [
+    const fields = [
       {
         key: 'flat',
         type: 'input',
@@ -83,8 +69,7 @@ describe('SDS Formly Reset', () => {
       }
     ];
 
-    fixture = TestBed.createComponent(TestComponent);
-    testComp = fixture.componentInstance;
+    testComp.fields = fields;
     fixture.detectChanges();
 
     expect(testComp.model).toEqual({
@@ -92,8 +77,9 @@ describe('SDS Formly Reset', () => {
       nested: { nestedInput: 'nested defaultValue' }
     });
 
-    resetEl = fixture.nativeElement.querySelector('.usa-button');
+    const resetEl = fixture.nativeElement.querySelector('.usa-button');
     resetEl.click()
+    fixture.detectChanges();
 
     expect(testComp.model).toEqual({
       flat: 'flat defaultValue',
@@ -102,25 +88,26 @@ describe('SDS Formly Reset', () => {
   });
 
   it('should clone both flat and nested values from initial model during resetModel if values were set when clicked', () => {
-    model = {
+    const model = {
       flat: 'flat value set',
       nested: { nestedInput: 'nested value set' }
     };
 
-    fixture = TestBed.createComponent(TestComponent);
-    testComp = fixture.componentInstance;
+    testComp.model = model;
+
     fixture.detectChanges();
 
-    form.get('flat').setValue('edit flat input');
-    form.get('nested.nestedInput').setValue('edit nested input');
+    testComp.form.get('flat').setValue('edit flat input');
+    testComp.form.get('nested.nestedInput').setValue('edit nested input');
 
     expect(testComp.model).toEqual({
       flat: 'edit flat input',
       nested: { nestedInput: 'edit nested input' }
     });
 
-    resetEl = fixture.nativeElement.querySelector('.usa-button');
+    const resetEl = fixture.nativeElement.querySelector('.usa-button');
     resetEl.click();
+    fixture.detectChanges();
 
     expect(testComp.model).toEqual({
       flat: 'flat value set',
@@ -139,9 +126,9 @@ describe('SDS Formly Reset', () => {
 
 class TestComponent {
   @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;
-  form = form;
-  options = options;
-  fields = fields || [
+  form = new FormGroup({});
+  options = {};
+  fields =  [
     {
       key: 'flat',
       type: 'input'
@@ -156,5 +143,5 @@ class TestComponent {
       ]
     }
   ];
-  model = model || {};
+  model = {};
 }

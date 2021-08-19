@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
 import { SdsAccordionModule } from '@gsa-sam/sam-material-extensions';
 import { NgxBootstrapIconsModule} from 'ngx-bootstrap-icons';
-import { SdsIconModule } from '@gsa-sam/components';
+import { SdsIconModule, SdsSearchModule } from '@gsa-sam/components';
 import { HorizontalFilterDemo } from './horizontal-filter.component';
 
 @NgModule({
@@ -20,6 +20,7 @@ import { HorizontalFilterDemo } from './horizontal-filter.component';
     SdsReadonlyModule,
     SdsIconModule,
     NgxBootstrapIconsModule,
+    SdsSearchModule,
   ],
   exports: [ HorizontalFilterDemo ],
   bootstrap: [ HorizontalFilterDemo ],

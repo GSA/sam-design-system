@@ -1,5 +1,5 @@
 /* tslint:disable */
-import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
 import { SDSAutocompleteComponent } from './autocomplete.component';
 import { AutoCompleteSampleDataService } from '../autocomplete-search/autocomplete-seach-test-service.spec';
 import { SDSAutocompletelConfiguration } from './models/SDSAutocompletelConfiguration.model';
@@ -16,7 +16,7 @@ describe('SDSAutocompleteComponent', () => {
   let component: SDSAutocompleteComponent;
   let fixture: ComponentFixture<SDSAutocompleteComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [SDSAutocompleteComponent],
       imports: [FormsModule, SdsSelectedResultsModule, SdsAutocompleteSearchModule, NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))]

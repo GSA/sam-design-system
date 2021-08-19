@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
+import { Component, Input, ChangeDetectorRef, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { SdsDialogService } from '@gsa-sam/components';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
@@ -13,7 +13,7 @@ import { tap, startWith } from 'rxjs/operators';
   templateUrl: './advanced-filters.component.html',
   styleUrls: ['./advanced-filters.component.scss']
 })
-export class AdvancedFiltersComponent {
+export class AdvancedFiltersComponent implements OnInit {
   /**
    * Pass in a Form Group for ReactiveForms Support
    */
@@ -44,11 +44,18 @@ export class AdvancedFiltersComponent {
    */
   @Input() isInactiveValueFieldShown: boolean = false;
 
+  /**
+   * Defines whether additional filters should be displayed through a popover or
+   * a modal
+   */
+  @Input() enablePopover = false;
+
   @Output() showInactiveFiltersChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   selectAll = false;
   showInactiveOnOpen = false;
   showInactive = false;
+  popoverContent: FormlyFieldConfig[];
 
   readonly filtersFieldGroupKey = 'filters';
 
@@ -57,6 +64,13 @@ export class AdvancedFiltersComponent {
     private advancedFiltersService: SdsAdvancedFiltersService,
     private cdr: ChangeDetectorRef
   ) { }
+
+  ngOnInit() {
+    if (!this.enablePopover) {
+      return;
+    }
+    this.popoverContent = this.getCheckboxFieldConfigs(true);
+  }
 
   onSelectAllChange(selectAllValue, selectedform, isOnload, selectAllField) {
     const modalFields: FormlyFieldConfig[] = this.advancedFiltersService.convertToCheckboxes(
@@ -80,7 +94,11 @@ export class AdvancedFiltersComponent {
 
               this.cdr.detectChanges();
             } else {
-              selectedform.get(this.filtersFieldGroupKey).get(key).setValue([]);
+              if (this.enablePopover) {
+                selectedform.get(this.filtersFieldGroupKey).get(key).setValue(false);
+              } else {
+                selectedform.get(this.filtersFieldGroupKey).get(key).setValue([]);
+              }
             }
           }
         }
@@ -114,8 +132,51 @@ export class AdvancedFiltersComponent {
   }
 
   openDialog(): void {
+    const checkboxFieldConfigs = this.getCheckboxFieldConfigs();
+    const data: SdsFormlyDialogData = {
+      fields: checkboxFieldConfigs,
+      submit: 'Update',
+      title: 'More Filters'
+    };
+
+    const dialogRef: any = this.dialog.open(SdsFormlyDialogComponent, {
+      width: 'medium',
+      data: data
+    });
+
+    dialogRef.componentInstance.submitFn.subscribe((result) => {
+      if (result) {
+        this.updateSelectedFields(result);
+      }
+      dialogRef.close();
+    }
+    );
+
+    dialogRef.componentInstance.cancelFn.subscribe(() => {
+      dialogRef.close();
+    });
+
+  }
+
+  updateSelectedFields(result: any) {
+    if (this.showInactiveOnOpen !== this.showInactive) {
+      this.onShowInactiveChange(this.showInactive);
+      this.showInactiveOnOpen = this.showInactive;
+    }
+
+    const response = this.advancedFiltersService.updateFields(
+      result,
+      this.fields,
+      this.model
+    );
+
+    this.fields = response.fields;
+    this.model = response.model;
+  }
+
+  getCheckboxFieldConfigs(hideChildrenGroups = false) {
     const modalFields: FormlyFieldConfig[] = this.advancedFiltersService.convertToCheckboxes(
-      this.fields
+      this.fields, hideChildrenGroups
     );
     if (this.sortMoreFilterBy) {
       modalFields.sort((a: FormlyFieldConfig, b: FormlyFieldConfig) =>
@@ -139,41 +200,8 @@ export class AdvancedFiltersComponent {
     if (this.isInactiveValueFieldShown) {
       updateField.push(...showInactiveGroup)
     }
-    const data: SdsFormlyDialogData = {
-      fields: updateField,
-      submit: 'Update',
-      title: 'More Filters'
-    };
 
-    const dialogRef = this.dialog.open(SdsFormlyDialogComponent, {
-      width: 'medium',
-      data: data
-    });
-
-    dialogRef.componentInstance.submitFn.subscribe((result) => {
-      if (result) {
-        if (this.showInactiveOnOpen !== this.showInactive) {
-          this.onShowInactiveChange(this.showInactive);
-          this.showInactiveOnOpen = this.showInactive;
-        }
-
-        const response = this.advancedFiltersService.updateFields(
-          result,
-          this.fields,
-          this.model
-        );
-
-        this.fields = response.fields;
-        this.model = response.model;
-      }
-      dialogRef.close();
-    }
-    );
-
-    dialogRef.componentInstance.cancelFn.subscribe(() => {
-      dialogRef.close();
-    });
-
+    return updateField;
   }
 
   get filedGroup(): FormlyFieldConfig[] {

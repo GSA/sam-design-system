@@ -58,7 +58,7 @@ import * as qs from 'qs';
               [position]="'bottom'"
               [closeOnContentClick]="false"
               [closeOnClickOutside]="true"
-              tabindex="0" aria-label="Down carat">
+              tabindex="0" [attr.aria-label]="to.label">
             {{to.label}}
             <usa-icon [icon]="'chevron-down'"></usa-icon>
           </div>

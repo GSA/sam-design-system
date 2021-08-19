@@ -1,0 +1,23 @@
+<h3 *ngIf="list.title" class="sds-list__title">{{ list.title }}</h3>
+<p *ngIf="list.intro" class="margin-bottom-2" [innerHtml]="list.intro"></p>
+
+<ul
+  class="sds-list margin-top-0 margin-bottom-1"
+  [ngClass]="list.classes"
+  [class.sds-list--icon]="list.iconList"
+>
+  <li *ngFor="let item of list.items">
+    <span *ngIf="list.iconList" class="sds-list__item-icon">
+      <sds-icon
+        *ngIf="item.icon.prefix == 'bs'"
+        [icon]="[item.icon.icon]"
+        [classList]="[item.icon.classes]"
+      >
+      </sds-icon>
+    </span>
+    <span class="sds-list__item-content">
+      <sds-landing-link *ngIf="item.link" [link]="item.link"></sds-landing-link>
+      {{ item.text }}
+    </span>
+  </li>
+</ul>

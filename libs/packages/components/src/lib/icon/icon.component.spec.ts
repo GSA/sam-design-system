@@ -1,5 +1,5 @@
 import { Component, DebugElement, ViewChild } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { SdsIconModule } from '@gsa-sam/components';
 
 import { NgxBootstrapIconsModule,allIcons } from 'ngx-bootstrap-icons';
@@ -20,7 +20,7 @@ describe('IconComponent Rotation', () => {
   let fixture: ComponentFixture<IconRotationComponent>;
   let iconRotationEl: DebugElement;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ SdsIconComponent, IconRotationComponent ],
       imports: [SdsIconModule, NgxBootstrapIconsModule.pick(allIcons)]
@@ -83,7 +83,7 @@ describe('IconComponent Scaling', () => {
   let fixture: ComponentFixture<IconScalingComponent>;
   let iconScalingEl: DebugElement;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ SdsIconComponent, IconScalingComponent ],
       imports: [SdsIconModule, NgxBootstrapIconsModule.pick(allIcons)]

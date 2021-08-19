@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
 import { FormGroup, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
@@ -18,7 +18,7 @@ describe('SdsFormlyDialogComponent', () => {
   let dialogRef: SdsDialogService;
   let advancedFiltersService: SdsAdvancedFiltersService;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     const advancedFiltersServiceSpy = jasmine.createSpyObj(
       'SdsAdvancedFiltersService',
       ['updateFields']
@@ -104,7 +104,7 @@ describe('SdsFormlyDialogComponent', () => {
     expect(component.cancel).toEqual('Cancel');
   });
 
-  it('should call onCancel() when Cancel button is clicked', async(() => {
+  it('should call onCancel() when Cancel button is clicked', waitForAsync(() => {
     spyOn(component, 'onCancel');
     const closeBtn: HTMLElement = fixture.nativeElement.querySelector(
       '.usa-button[type="button"]'
@@ -113,7 +113,7 @@ describe('SdsFormlyDialogComponent', () => {
     expect(component.onCancel).toHaveBeenCalled();
   }));
 
-  it('should call onSubmit() when Submit button is clicked', async(() => {
+  it('should call onSubmit() when Submit button is clicked', waitForAsync(() => {
     spyOn(component, 'onSubmit');
     const submitBtn: HTMLElement = fixture.nativeElement.querySelector(
       '.usa-button[type="submit"]'

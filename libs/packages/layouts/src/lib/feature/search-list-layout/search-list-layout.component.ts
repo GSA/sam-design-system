@@ -233,16 +233,24 @@ export class SearchListLayoutComponent implements OnInit {
     const queryString = window.location.search.substring(1);
     let queryObj = qs.parse(queryString, { allowPrototypes: true });
 
+    let skipHistoryOnNav = false;
+
     if (queryObj.hasOwnProperty('sfm')) {
       queryObj['sfm'] = {};
     }
 
+    // Prevent recursive navigation when adding default page to search
+    if (!queryObj.page || !queryObj.pageSize) {
+      skipHistoryOnNav = true;
+    }
+
     queryObj['page'] = this.page.pageNumber
-      ? this.page.pageNumber.toString()
-      : '1';
+    ? this.page.pageNumber.toString()
+    : '1';
     queryObj['pageSize'] = this.page.pageSize
       ? this.page.pageSize.toString()
       : '25';
+
     queryObj['sort'] = this.sortField ? this.sortField.toString() : '';
     queryObj['sfm'] = this.filterData;
     const params = this.convertToParam(queryObj);
@@ -261,6 +269,7 @@ export class SearchListLayoutComponent implements OnInit {
         queryParams: params,
         queryParamsHandling: this.configuration.queryParamsHandling,
         fragment: window.location.hash?.length > 1 ? window.location.hash.substring(1) : undefined,
+        replaceUrl: skipHistoryOnNav,
       });
     } else {
       const urlTree = this.router.parseUrl(this.loc.path());
