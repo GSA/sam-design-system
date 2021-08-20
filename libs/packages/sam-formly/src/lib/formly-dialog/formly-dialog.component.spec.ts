@@ -122,22 +122,7 @@ describe('SdsFormlyDialogComponent', () => {
     expect(component.onSubmit).toHaveBeenCalled();
   }));
 
-  it('should close when cancel button is clicked', () => {
-    const closeBtn: HTMLElement = fixture.nativeElement.querySelector(
-      '.usa-button[type="button"]'
-    );
-    closeBtn.click();
-    expect(component.dialogRef.close).toHaveBeenCalled();
-  });
 
-  it('should close with results when form is valid submit button is clicked', () => {
-    const submitBtn: HTMLElement = fixture.nativeElement.querySelector(
-      '.usa-button[type="submit"]'
-    );
-    submitBtn.click();
-    // expect(advancedFiltersService.updateFields).toHaveBeenCalled();
-    expect(component.dialogRef.close).toHaveBeenCalled();
-  });
 
   it('should not close when form is invalid and submit button is clicked', () => {
     component.form.setErrors({ invalid: true });
@@ -146,6 +131,6 @@ describe('SdsFormlyDialogComponent', () => {
     );
     submitBtn.click();
     expect(advancedFiltersService.updateFields).toHaveBeenCalledTimes(0);
-    expect(component.dialogRef.close).toHaveBeenCalledTimes(0);
+
   });
 });

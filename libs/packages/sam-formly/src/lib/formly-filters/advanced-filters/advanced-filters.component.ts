@@ -42,7 +42,7 @@ export class AdvancedFiltersComponent implements OnInit {
   /**
    * Show option to include inactive filter values
    */
-  @Input()isInactiveValueFieldShown: boolean = false;
+  @Input() isInactiveValueFieldShown: boolean = false;
 
   /**
    * Defines whether additional filters should be displayed through a popover or
@@ -50,20 +50,20 @@ export class AdvancedFiltersComponent implements OnInit {
    */
   @Input() enablePopover = false;
 
-  @Output()showInactiveFiltersChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() showInactiveFiltersChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   selectAll = false;
   showInactiveOnOpen = false;
   showInactive = false;
   popoverContent: FormlyFieldConfig[];
-  
+
   readonly filtersFieldGroupKey = 'filters';
 
   constructor(
     public dialog: SdsDialogService,
     private advancedFiltersService: SdsAdvancedFiltersService,
     private cdr: ChangeDetectorRef
-  ) {}
+  ) { }
 
   ngOnInit() {
     if (!this.enablePopover) {
@@ -127,7 +127,7 @@ export class AdvancedFiltersComponent implements OnInit {
     }
   }
 
-  onShowInactiveChange(value){
+  onShowInactiveChange(value) {
     this.showInactiveFiltersChange.emit(value);
   }
 
@@ -139,20 +139,27 @@ export class AdvancedFiltersComponent implements OnInit {
       title: 'More Filters'
     };
 
-    const dialogRef = this.dialog.open(SdsFormlyDialogComponent, {
+    const dialogRef: any = this.dialog.open(SdsFormlyDialogComponent, {
       width: 'medium',
       data: data
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.componentInstance.submitFn.subscribe((result) => {
       if (result) {
         this.updateSelectedFields(result);
       }
+      dialogRef.close();
+    }
+    );
+
+    dialogRef.componentInstance.cancelFn.subscribe(() => {
+      dialogRef.close();
     });
+
   }
 
   updateSelectedFields(result: any) {
-    if(this.showInactiveOnOpen !== this.showInactive){
+    if (this.showInactiveOnOpen !== this.showInactive) {
       this.onShowInactiveChange(this.showInactive);
       this.showInactiveOnOpen = this.showInactive;
     }
@@ -175,8 +182,8 @@ export class AdvancedFiltersComponent implements OnInit {
       modalFields.sort((a: FormlyFieldConfig, b: FormlyFieldConfig) =>
         a.templateOptions && b.templateOptions
           ? a.templateOptions[this.sortMoreFilterBy].localeCompare(
-              b.templateOptions[this.sortMoreFilterBy]
-            )
+            b.templateOptions[this.sortMoreFilterBy]
+          )
           : 0
       );
     }
@@ -190,14 +197,14 @@ export class AdvancedFiltersComponent implements OnInit {
         fieldGroup: [...modalFields]
       }]
     }];
-    if(this.isInactiveValueFieldShown){
+    if (this.isInactiveValueFieldShown) {
       updateField.push(...showInactiveGroup)
     }
 
     return updateField;
   }
 
-  get filedGroup(): FormlyFieldConfig[]{
+  get filedGroup(): FormlyFieldConfig[] {
     return [
       {
         templateOptions: { label: 'test' },
@@ -240,7 +247,7 @@ export class AdvancedFiltersComponent implements OnInit {
     ];
   }
 
-  get showInactiveGroup(): FormlyFieldConfig[]{
+  get showInactiveGroup(): FormlyFieldConfig[] {
     return [
       {
         template: '<hr/>'

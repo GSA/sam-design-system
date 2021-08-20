@@ -38,15 +38,20 @@ export class FormlyDialog {
       cancel: 'No thanks'
     };
 
-    const dialogRef = this.dialog.open(SdsFormlyDialogComponent, {
+    const dialogRef: any = this.dialog.open(SdsFormlyDialogComponent, {
       width: 'medium',
       data: data
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.updatedModel = result;
-      }
+    dialogRef.componentInstance.submitFn.subscribe((res) => {
+      this.updatedModel = res;
+      dialogRef.close();
+    }
+    );
+
+    dialogRef.componentInstance.cancelFn.subscribe((res) => {
+      this.updatedModel = res;
+      dialogRef.close();
     });
   }
 }

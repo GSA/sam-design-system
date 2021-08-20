@@ -95,7 +95,7 @@ export class SubheaderDataEntryComponent {
   options: FormlyFormOptions;
   downloadResponse = {};
 
-  constructor(public dialog: SdsDialogService) {}
+  constructor(public dialog: SdsDialogService) { }
   onActionMenuItem(btnId) {
     if (btnId == 'DownloadBtn') {
       const data: SdsFormlyDialogData = {
@@ -106,15 +106,20 @@ export class SubheaderDataEntryComponent {
         options: this.options
       };
 
-      const dialogRef = this.dialog.open(SdsFormlyDialogComponent, {
+      const dialogRef: any = this.dialog.open(SdsFormlyDialogComponent, {
         width: 'medium',
         data: data
       });
 
-      dialogRef.afterClosed().subscribe(result => {
-        if (result) {
-          this.downloadResponse = result;
-        }
+      dialogRef.componentInstance.submitFn.subscribe((res) => {
+        this.downloadResponse = res;
+        dialogRef.close();
+      }
+      );
+
+      dialogRef.componentInstance.cancelFn.subscribe((res) => {
+        this.downloadResponse = res;
+        dialogRef.close();
       });
     }
 
