@@ -1,9 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { SdsSearchComponent } from './search.component';
 import { By } from '@angular/platform-browser';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { ViewportRuler } from '@angular/cdk/overlay';
-import { Observable } from 'rxjs';
 
 class TestComponent {
   inputState = {
@@ -16,7 +15,7 @@ describe('SearchComponent', () => {
   let component: SdsSearchComponent;
   let fixture: ComponentFixture<SdsSearchComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [SdsSearchComponent],
       providers: [FocusMonitor, ViewportRuler]

@@ -1,7 +1,4 @@
-import {
-  TestBed, async,
-  fakeAsync, tick
-} from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import {
   Component, Output,
   ViewChild, EventEmitter

@@ -8,69 +8,8 @@ describe('SdsAdvancedFiltersService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({ providers: [SdsAdvancedFiltersService] });
-    service = TestBed.get(SdsAdvancedFiltersService);
+    service = TestBed.inject(SdsAdvancedFiltersService);
   });
-
-  const fields: FormlyFieldConfig[] = [
-    {
-      key: 'searchKeyword',
-      wrappers: ['filterwrapper'],
-      templateOptions: { label: 'Keyword' },
-      type: 'input'
-    },
-    {
-      key: 'searchEntity',
-      wrappers: ['accordionwrapper'],
-      hide: true,
-      templateOptions: { label: 'Entity' },
-      fieldGroup: [
-        {
-          key: 'legalBusinessName',
-          type: 'input',
-          hide: true,
-          templateOptions: {
-            label: 'Entity Name',
-            placeholder: '',
-            inputType: 'text'
-          }
-        },
-        {
-          key: 'uniqueEntityIdSam',
-          type: 'input',
-          hide: true,
-          templateOptions: {
-            label: 'Unique Entity ID (SAM)',
-            placeholder: '',
-            min: 13,
-            max: 40,
-            inputType: 'number',
-            inputStyle: 'error',
-            tagText: 'SAM'
-          }
-        }
-      ]
-    },
-    {
-      key: 'hideGroup',
-      wrappers: ['accordionwrapper'],
-      fieldGroup: [
-        {
-          key: 'hideField1',
-          type: 'input',
-          templateOptions: {
-            inputType: 'text'
-          }
-        },
-        {
-          key: 'hideField2',
-          type: 'input',
-          templateOptions: {
-            inputType: 'text'
-          }
-        }
-      ]
-    }
-  ];
 
   const checkboxFields: FormlyFieldConfig[] = [
     {
@@ -201,14 +140,12 @@ describe('SdsAdvancedFiltersService', () => {
   ];
 
   it('should be created', () => {
-    const service: SdsAdvancedFiltersService = TestBed.get(
-      SdsAdvancedFiltersService
-    );
     expect(service).toBeTruthy();
   });
 
   it('should be able to convert a Formly form fields to checkboxes', () => {
-    expect(service.convertToCheckboxes(fields)).toEqual(checkboxFields);
+    const checkBoxConverted = service.convertToCheckboxes(getFields());
+    expect(checkBoxConverted).toEqual(checkboxFields);
   });
 
   it('should update filters based on selected filter options', () => {
@@ -226,8 +163,71 @@ describe('SdsAdvancedFiltersService', () => {
         searchKeyword: null
     }
     };
-    expect(service.updateFields(advancedFilterModel, fields, model)).toEqual(
+    expect(service.updateFields(advancedFilterModel, getFields(), model)).toEqual(
       results
     );
   });
+
+  function getFields() {
+    return [
+      {
+        key: 'searchKeyword',
+        wrappers: ['filterwrapper'],
+        templateOptions: { label: 'Keyword' },
+        type: 'input'
+      },
+      {
+        key: 'searchEntity',
+        wrappers: ['accordionwrapper'],
+        hide: true,
+        templateOptions: { label: 'Entity' },
+        fieldGroup: [
+          {
+            key: 'legalBusinessName',
+            type: 'input',
+            hide: true,
+            templateOptions: {
+              label: 'Entity Name',
+              placeholder: '',
+              inputType: 'text'
+            }
+          },
+          {
+            key: 'uniqueEntityIdSam',
+            type: 'input',
+            hide: true,
+            templateOptions: {
+              label: 'Unique Entity ID (SAM)',
+              placeholder: '',
+              min: 13,
+              max: 40,
+              inputType: 'number',
+              inputStyle: 'error',
+              tagText: 'SAM'
+            }
+          }
+        ]
+      },
+      {
+        key: 'hideGroup',
+        wrappers: ['accordionwrapper'],
+        fieldGroup: [
+          {
+            key: 'hideField1',
+            type: 'input',
+            templateOptions: {
+              inputType: 'text'
+            }
+          },
+          {
+            key: 'hideField2',
+            type: 'input',
+            templateOptions: {
+              inputType: 'text'
+            }
+          }
+        ]
+      }
+    ];
+  }
 });

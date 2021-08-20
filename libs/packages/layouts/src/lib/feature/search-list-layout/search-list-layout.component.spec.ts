@@ -1,10 +1,4 @@
-import {
-  async,
-  ComponentFixture,
-  TestBed,
-  tick,
-  fakeAsync,
-} from '@angular/core/testing';
+import { ComponentFixture, TestBed, tick, fakeAsync, waitForAsync } from '@angular/core/testing';
 import { SearchListLayoutComponent } from './search-list-layout.component';
 import {
   PaginationModule,
@@ -28,7 +22,7 @@ describe('SearchListLayoutComponent', () => {
   let component: SearchListLayoutComponent;
   let fixture: ComponentFixture<SearchListLayoutComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [SearchListLayoutComponent],
       imports: [

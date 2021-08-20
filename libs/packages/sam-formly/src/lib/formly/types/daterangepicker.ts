@@ -1,10 +1,10 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component,  ViewEncapsulation } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 
 @Component({
   selector: 'sds-formly-field-daterangepicker',
   template: `
-    <div class="display-flex">
+    <div *ngIf="!field.hide" class="display-flex">
       <mat-date-range-input [formGroup]="formControl" [rangePicker]="picker" [min]="to.minDate" [max]="to.maxDate" [id]="id"
         class="usa-input display-inline-block margin-top-3"
         [formlyAttributes]="field"

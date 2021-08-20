@@ -137,15 +137,20 @@ export class SubheaderSearchAutocompleteComponent {
         options: this.options,
       };
 
-      const dialogRef = this.dialog.open(SdsFormlyDialogComponent, {
+      const dialogRef: any = this.dialog.open(SdsFormlyDialogComponent, {
         width: 'medium',
         data: data,
       });
 
-      dialogRef.afterClosed().subscribe((result) => {
-        if (result) {
-          this.downloadResponse = result;
-        }
+      dialogRef.componentInstance.submitFn.subscribe((res) => {
+        this.downloadResponse = res;
+        dialogRef.close();
+      }
+      );
+
+      dialogRef.componentInstance.cancelFn.subscribe((res) => {
+        this.downloadResponse = res;
+        dialogRef.close();
       });
     }
 

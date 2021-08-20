@@ -1,4 +1,4 @@
-import { TestBed, async, fakeAsync, tick } from '@angular/core/testing';
+import { TestBed, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
 import { Component, Output, ViewChild, EventEmitter } from '@angular/core';
 import { By } from '@angular/platform-browser';
 

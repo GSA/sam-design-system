@@ -57,7 +57,7 @@ export class HorizontalFilterDemo {
     },
     {
       key: 'expirationDateRangeEx',
-      type: 'daterangepicker',
+      type: 'daterangepickerv2',
       hide: true,
       templateOptions: {
         group: 'popover',
@@ -84,21 +84,19 @@ export class HorizontalFilterDemo {
         required: true,
       },
     },
-    {
-      key: 'searchmodel',
-      type: 'search',
-      templateOptions: {
-        label: 'Search',
-        hideLabel: true,
-        submitHandler: this.handleSubmit,
-        searchSettings: {
-          placeholder: 'eg: Acme Corporation',
-        },
-      },
-    },
   ];
 
+  searchModel = {};
+
   handleSubmit($event) {
+    console.log($event);
+  }
+
+  onSearchModelChange($event) {
+    console.log($event);
+  }
+
+  onFilterChange($event) {
     console.log($event);
   }
 }

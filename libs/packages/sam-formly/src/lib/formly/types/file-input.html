@@ -1,0 +1,30 @@
+<usa-file-input #fileInput [formControl]="formControl" [id]="id"></usa-file-input>
+
+<ng-container *ngIf="model[key]?.length">
+  <sds-table [data]="model[key]" [tableName]="'basicTable'" #fileTable>
+    <sds-table-column sdsColumnName="name">
+      <ng-template #sdsHeaderCell>Name</ng-template>
+      <ng-template #sdsCell let-element="element">{{ element?.name }}</ng-template>
+    </sds-table-column>
+    <sds-table-column sdsColumnName="type">
+      <ng-template #sdsHeaderCell>Type</ng-template>
+      <ng-template #sdsCell let-element="element">{{ element?.type }}</ng-template>
+    </sds-table-column>
+    <sds-table-column sdsColumnName="size">
+      <ng-template #sdsHeaderCell>Size</ng-template>
+      <ng-template #sdsCell let-element="element">{{ element?.size }}</ng-template>
+    </sds-table-column>
+    <sds-table-column sdsColumnName="action">
+      <ng-template #sdsHeaderCell>Action</ng-template>
+      <ng-template #sdsCell let-element="element">
+        <button class="usa-button usa-button--base" (click)="removeFile(element)">Remove</button>
+      </ng-template>
+    </sds-table-column>
+  
+    <sds-header-row [displayedColumns]="displayedColumns"></sds-header-row>
+    <sds-row [displayedColumns]="displayedColumns"></sds-row>
+  
+  </sds-table>
+  
+  <button class="usa-button usa-button--base margin-top-5" (click)="removeAllFiles()">Remove All Files</button>
+</ng-container>

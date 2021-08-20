@@ -21,7 +21,6 @@ import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { By } from "@angular/platform-browser";
 import { SdsStepper } from "./sds-stepper";
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
-
 @Component({
   selector: `custom-test-stepper`,
   template: `<div class="grid-row">

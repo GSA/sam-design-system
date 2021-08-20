@@ -1,10 +1,11 @@
 
 import { DOCUMENT } from "@angular/common";
-import { 
-  ChangeDetectionStrategy, ChangeDetectorRef, Component, 
-  ContentChildren, Directive, ElementRef, EventEmitter, forwardRef, 
-  HostListener, Inject, Input, Output, QueryList, SimpleChanges, 
-  TemplateRef, ViewChild } from "@angular/core";
+import {
+  ChangeDetectionStrategy, ChangeDetectorRef, Component,
+  ContentChildren, Directive, ElementRef, EventEmitter, forwardRef,
+  HostListener, Inject, Input, Output, QueryList, SimpleChanges,
+  TemplateRef, ViewChild
+} from "@angular/core";
 import { AbstractControl } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { FormlyFieldConfig, FormlyFormOptions } from "@ngx-formly/core";
@@ -15,13 +16,13 @@ import { Observable } from "rxjs";
   selector: `[sdsStepHeader]`,
   template: `<ng-content></ng-content>`
 })
-export class SdsStepHeaderComponent {}
+export class SdsStepHeaderComponent { }
 
 @Component({
   selector: `[sdsStepFooter]`,
   template: '<ng-content></ng-content>'
 })
-export class SdsStepFooterComponent {}
+export class SdsStepFooterComponent { }
 
 let nextId = 0;
 
@@ -31,7 +32,7 @@ let nextId = 0;
   templateUrl: `./sds-step.component.html`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SdsStepComponent  {
+export class SdsStepComponent {
   /**
    * References to Any children this step might contain
    */
@@ -40,7 +41,7 @@ export class SdsStepComponent  {
   /**
    * Content of step - either a formly field or custome template
    */
-  @ViewChild('mainContent', {static: true}) content: TemplateRef<any>;
+  @ViewChild('mainContent', { static: true }) content: TemplateRef<any>;
 
   /**
    * Custom template reference for this step. If both custom template and field
@@ -130,7 +131,7 @@ export class SdsStepComponent  {
     @Inject(forwardRef(() => SdsStepper)) public _stepper: SdsStepper,
     private _el: ElementRef,
     @Inject(DOCUMENT) private _document
-  ) {}
+  ) { }
 
   /**
    * Dispatch a custom event for parent stepper component to listen for on model change
@@ -140,8 +141,8 @@ export class SdsStepComponent  {
    */
   onModelChange($event) {
     let event: CustomEvent;
-    if (typeof(Event) === 'function') {
-      event = new CustomEvent('stepModelChange', {bubbles: true, detail: $event});
+    if (typeof (Event) === 'function') {
+      event = new CustomEvent('stepModelChange', { bubbles: true, detail: $event });
     } else {
       // IE11 support
       event = this._document.createEvent('CustomEvent');
@@ -204,6 +205,12 @@ export class SdsStepper {
    * @default - sdsStepId
    */
   @Input() queryParamKey = 'sdsStepId';
+
+  /**
+   * This is used to disable/enable the routing for the stepper
+   * @default - true
+   */
+  @Input() isRouteEnabled = true;
 
   /**
    * Output event - emitted when save button is clicked
@@ -287,7 +294,7 @@ export class SdsStepper {
       step.model = step.model ? step.model : this.model;
     });
 
-    if (this.activatedRoute.snapshot.queryParams[this.queryParamKey] && !this.linear) {
+    if (this.activatedRoute.snapshot.queryParams[this.queryParamKey] && !this.linear && this.isRouteEnabled) {
       this.currentStepId = this.activatedRoute.snapshot.queryParams[this.queryParamKey];
     } else if (!this.currentStepId) {
       this.currentStepId = this.flatSteps[0].id;
@@ -307,25 +314,28 @@ export class SdsStepper {
     }
 
     this.changeStep(this.currentStepId).finally(() => {
-      this.activatedRoute.queryParams.subscribe(queryParam => {
-        if (queryParam[this.queryParamKey] && queryParam[this.queryParamKey] != this.currentStepId) {
-          this.changeStep(queryParam[this.queryParamKey]);
-        }
-      });
+      if (this.isRouteEnabled) {
+        this.activatedRoute.queryParams.subscribe(queryParam => {
+          if (queryParam[this.queryParamKey] && queryParam[this.queryParamKey] != this.currentStepId) {
+            this.changeStep(queryParam[this.queryParamKey]);
+          }
+        });
+      }
     });
+
   }
- 
+
   getFlatSteps(stepTemplates: QueryList<SdsStepComponent>): SdsStepComponent[] {
     let flat: SdsStepComponent[] = [];
     stepTemplates.forEach(step => {
-        if (step.hideFn && step.hideFn(step.model ? step.model : this.model, step.fieldConfig)) {
-          step.hide = true;
-          return;
-        }
-        step.hide = false;
-        if (step.editable) {
-          flat.push(step);
-        }
+      if (step.hideFn && step.hideFn(step.model ? step.model : this.model, step.fieldConfig)) {
+        step.hide = true;
+        return;
+      }
+      step.hide = false;
+      if (step.editable) {
+        flat.push(step);
+      }
 
       if (step.children && step.children.length) {
         const childSteps = this.getFlatSteps(step.children);
@@ -386,7 +396,7 @@ export class SdsStepper {
       this.selectedStep.options.showError = (field) => field.formControl.invalid;
     }
 
-    if (this.selectedStep.editable) {
+    if (this.selectedStep.editable && this.isRouteEnabled) {
       this.router.navigate(this.selectedStep.route ? [this.selectedStep.route] : [], {
         queryParams: {
           [this.queryParamKey]: this.currentStepId
@@ -419,7 +429,7 @@ export class SdsStepper {
     if (this.linear) {
       this.evaluateIncompleteForms();
     }
-    
+
     if (!this.customErrorHandling && this.stepValidityMap[this.currentStepId] === false) {
       this.selectedStep.options.showError = (field) => !field.formControl.valid;
     }
@@ -513,10 +523,10 @@ export class SdsStepper {
     // Custom validation function was provided, use provided custom validation
     if (currentStep.stepValidationFn) {
       const isValid = currentStep.stepValidationFn(currentStep.model ? currentStep.model : this.model);
-      if (typeof(isValid) === 'boolean') {
+      if (typeof (isValid) === 'boolean') {
         currentStep.valid = isValid;
         this.stepValidityMap[currentStep.id] = isValid;
-      } else if (typeof(isValid) === 'object') {
+      } else if (typeof (isValid) === 'object') {
         const res = await isValid.toPromise();
         currentStep.valid = res;
         this.stepValidityMap[currentStep.id] = res;

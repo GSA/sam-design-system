@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import {
   Component,
   ViewChild,
@@ -76,7 +76,7 @@ describe('SdsAccordionComponent', () => {
   let fixture: ComponentFixture<WrapperComponent>;
   let accordionDe: DebugElement;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         SdsAccordionComponent,
@@ -101,7 +101,7 @@ describe('SdsAccordionComponent', () => {
       wrapper = wrapperComponent;
     });
 
-    it('should create', async(() => {
+    it('should create', waitForAsync(() => {
       expect(component).toBeTruthy();
     }));
 
