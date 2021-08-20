@@ -40,9 +40,7 @@ export class SdsFormlyDialogComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.form.valid) {
-      this.submitFn.emit(this.model);
-    }
+    this.submitFn.emit(this.model);
   }
 
   onCancel() {
