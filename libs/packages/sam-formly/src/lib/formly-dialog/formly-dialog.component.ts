@@ -18,6 +18,7 @@ export class SdsFormlyDialogComponent implements OnInit {
   cancel: string;
   submit: string;
   disableSubmitButton: boolean;
+  firstScroll = false;
 
   @Output() submitFn: EventEmitter<any> = new EventEmitter();
 
@@ -37,6 +38,21 @@ export class SdsFormlyDialogComponent implements OnInit {
     this.cancel = this.data.cancel ? this.data.cancel : 'Cancel';
     this.submit = this.data.submit ? this.data.submit : 'Submit';
     this.disableSubmitButton = this.data.disableSubmitButtonEnabled ? this.data.disableSubmitButtonEnabled : false;
+
+  }
+
+  ngAfterViewInit() {
+    let initialBottomValue: number;
+    document.getElementsByClassName('sds-dialog-content')[0]
+      .addEventListener('scroll', function (event) {
+        let scrollPosition = parseInt(parseFloat(event.target['scrollTop']).toFixed(2), 10);
+        let element = document.getElementById('autocompleteBasic-listbox').parentElement;
+        if (!this.firstScroll) {
+          initialBottomValue = parseInt(element.style.bottom.replace(/[^0-9.]/g, ''), 10);
+        }
+        element.style.bottom = (initialBottomValue + scrollPosition) + 'px';
+        this.firstScroll = true;
+      });
   }
 
   onSubmit() {
