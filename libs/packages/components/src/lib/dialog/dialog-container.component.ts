@@ -52,6 +52,7 @@ export function throwSdsDialogContentAlreadyAttachedError() {
     '[class.sds-dialog--alert-error]': '_config.alert === "error"',
     '[class.sds-dialog--alert-warning]': '_config.alert === "warning"',
     '[class.sds-dialog--alert-info]': '_config.alert === "info"',
+    '[class.sds-dialog--alert-success]': '_config.alert === "success"',
     '[class.dialog-slide-out]': '_config.slideOut',
     'tabindex': '-1',
     'aria-modal': 'true',
@@ -96,7 +97,7 @@ export class SdsDialogContainerComponent extends BasePortalOutlet {
     /** The dialog configuration. */
     public _config: SdsDialogConfig) {
     super();
-   
+
   }
 
   /**
