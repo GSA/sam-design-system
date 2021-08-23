@@ -62,6 +62,7 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
   }
   ngAfterViewInit() {
     this.filterChange$.subscribe((res) => {
+      console.log(res);
       this.resultList.updateFilter(res);
     });
   }
@@ -81,7 +82,15 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
       page: 2,
       sort: 'registrationStatus',
       filterModel: {
-        keyword: 'te',
+        keyword: {
+          keywordRadio: "allWords",
+          keywordTags: [
+            {
+              key: "te",
+              text: "te"
+            }
+          ]
+        },
         location: {
           city: null,
           congressionalDistrict: null,
@@ -91,7 +100,10 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
         },
       },
     };
-
-    this.resultList.updateSearchResultsModel(model);
+    this.fields[0].fieldArray.fieldGroup[0].form.setValue(model.filterModel.keyword);
+    // this.form.get('keyword').setValue(model.filterModel.keyword);
+    console.log(this.form);
+    // this.form.get('keyword').setValue()
+    // this.resultList.updateSearchResultsModel(model);
   }
 }

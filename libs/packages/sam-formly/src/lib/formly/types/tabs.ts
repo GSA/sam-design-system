@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, OnInit } from "@angular/core";
+import { Component, ChangeDetectionStrategy, OnInit, OnChanges } from "@angular/core";
 import { FieldType, FormlyFieldConfig } from "@ngx-formly/core";
 @Component({
   template: `
@@ -8,7 +8,7 @@ import { FieldType, FormlyFieldConfig } from "@ngx-formly/core";
       <ng-container *ngIf="field.fieldArray?.fieldGroup?.length > 1 else singleField">
         <sds-tabs [tabClass]="to.tabClass ? to.tabClass : 'sds-tabs--formly'">
           <sds-tab-panel *ngFor="let fieldConfig of field.fieldArray.fieldGroup" [tabHeader]="fieldConfig.templateOptions?.tabHeader">
-            <formly-form [fields]="[fieldConfig]" [model]="_initialModel" 
+            <formly-form [fields]="[fieldConfig]" [model]="_initialModel"
               (modelChange)="onModelChange(fieldConfig)">
             </formly-form>
           </sds-tab-panel>
@@ -17,7 +17,7 @@ import { FieldType, FormlyFieldConfig } from "@ngx-formly/core";
 
       <ng-template #singleField>
         <div class="padding-left-2 padding-right-2 padding-bottom-1">
-          <formly-form [fields]="field.fieldArray.fieldGroup" [model]="_initialModel" 
+          <formly-form [fields]="field.fieldArray.fieldGroup" [model]="_initialModel"
           (modelChange)="onModelChange(field.fieldArray.fieldGroup[0])"></formly-form>
         </div>
       </ng-template>
@@ -25,14 +25,22 @@ import { FieldType, FormlyFieldConfig } from "@ngx-formly/core";
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldTabsComponent extends FieldType implements OnInit {
+export class FormlyFieldTabsComponent extends FieldType implements OnInit, OnChanges {
 
   _initialModel: any;
+
+  ngOnChanges(changes) {
+    console.log(changes);
+  }
 
   ngOnInit() {
     if (!this.field.fieldArray || !this.field.fieldArray.fieldGroup) {
       throw new Error('Please define contents of keywords through a fieldGroup within the fieldArray property')
     }
+
+    this.form.valueChanges.subscribe(change => {
+      console.log(change, this.field);
+    })
 
     this._initialModel = this.model && this.model[this.key as string] ? {...this.model[this.key as string]} : {};
     if (this.field.fieldArray && this.field.fieldArray.fieldGroup) {
