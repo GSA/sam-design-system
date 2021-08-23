@@ -1,6 +1,6 @@
-import {ViewContainerRef} from '@angular/core';
-import {Direction} from '@angular/cdk/bidi';
-import {ScrollStrategy} from '@angular/cdk/overlay';
+import { ViewContainerRef } from '@angular/core';
+import { Direction } from '@angular/cdk/bidi';
+import { ScrollStrategy } from '@angular/cdk/overlay';
 
 /** Valid ARIA roles for a dialog element. */
 export type DialogRole = 'dialog' | 'alertdialog';
@@ -43,19 +43,19 @@ export class SdsDialogConfig<D = any> {
   panelClass?: string | string[] = '';
 
   /** Whether the dialog has a backdrop. */
-  hasBackdrop? = true;
+  hasBackdrop?= true;
 
   /** Custom class for the backdrop, */
-  backdropClass? = '';
+  backdropClass?= '';
 
   /** Whether the user can use escape or clicking on the backdrop to close the modal. */
-  disableClose? = false;
+  disableClose?= false;
 
   /** Width of the dialog. */
-  width? = '';
+  width?= '';
 
   /** Height of the dialog. */
-  height? = '';
+  height?= '';
 
   /** Min-width of the dialog. If a number is provided, pixel units are assumed. */
   minWidth?: number | string;
@@ -85,13 +85,13 @@ export class SdsDialogConfig<D = any> {
   ariaLabel?: string | null = null;
 
   /** Whether the dialog should focus the first focusable element on open. */
-  autoFocus? = true;
+  autoFocus?= true;
 
   /**
    * Whether the dialog should restore focus to the
    * previously-focused element, after it's closed.
    */
-  restoreFocus? = true;
+  restoreFocus?= true;
 
   /** Scroll strategy to be used for the dialog. */
   scrollStrategy?: ScrollStrategy;
@@ -101,21 +101,21 @@ export class SdsDialogConfig<D = any> {
    * Note that this usually doesn't include clicking on links (unless the user is using
    * the `HashLocationStrategy`).
    */
-  closeOnNavigation? = true;
+  closeOnNavigation?= true;
 
   /**
    * Wheter the dialog its an alert
    */
-  alert?: 'warning' | 'info' | 'error';
+  alert?: 'warning' | 'info' | 'error' | 'success';
 
   /**
    * Whether to display the close button in dialog header
    */
-  displayCloseBtn? = true;
+  displayCloseBtn?= true;
 
   /**
    * Whether dialog is a slide-out. Changes enter and exit animation, and adds
    * class `dialog-slide-out` to container
    */
-  slideOut? = false;
+  slideOut?= false;
 }
