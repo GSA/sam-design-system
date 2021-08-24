@@ -34,10 +34,7 @@ const Autocomplete_Autocomplete_VALUE_ACCESSOR: any = {
 export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   constructor(
     private _changeDetectorRef: ChangeDetectorRef,
-   
-  ) {
-    
-  }
+  ) { }
   /**
    * Ul list of elements
    */
@@ -258,6 +255,10 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
         this.getResults(this.inputValue || '');
       }
       this.onTouchedCallback();
+      console.log(document.getElementsByClassName('sds-dialog-content'), 'dialog')
+      if (document.getElementsByClassName('sds-dialog-content').length > 0) {
+        this.addListener();
+      }
     }
   }
 
@@ -370,7 +371,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     flatten(results);
     return flat;
   }
-  
+
   /**
    * When paging up and down with arrow key it sets the highlighted item into view
    */
@@ -591,14 +592,38 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       this._changeDetectorRef.markForCheck();
       if (this.model.items.length === 0) {
         this.inputValue = '';
-      } else if (this.configuration && this.configuration.selectionMode === SelectionMode.SINGLE){
-          this.inputValue = this.getObjectValue(
-            this.model.items[0],
-            this.configuration.primaryTextField
-          );
+      } else if (this.configuration && this.configuration.selectionMode === SelectionMode.SINGLE) {
+        this.inputValue = this.getObjectValue(
+          this.model.items[0],
+          this.configuration.primaryTextField
+        );
       }
     }
   }
+
+  addListener() {
+    let initialBottomValue: number;
+    let initialTopValue: number
+    document.getElementsByClassName('sds-dialog-content')[0]
+      .addEventListener('scroll', function (event) {
+        let scrollPosition = parseInt(parseFloat(event.target['scrollTop']).toFixed(2), 10);
+        let element = document.getElementsByClassName('sds-autocomplete')[0].parentElement;
+        if (element && !initialBottomValue && element.style.bottom) {
+          initialTopValue = undefined;
+          initialBottomValue = parseInt(element.style.bottom.replace(/[^0-9.]/g, ''), 10);
+        } else if (element && !initialTopValue && element.style.top) {
+          initialBottomValue = undefined;
+          initialTopValue = parseInt(element.style.top.replace(/[^0-9.]/g, ''), 10);
+        }
+        if (initialBottomValue) {
+          element.style.bottom = (initialBottomValue + scrollPosition) + 'px';
+        }
+        else {
+          element.style.top = (initialTopValue - scrollPosition) + 'px';
+        }
+      });
+  }
+
   getClass() {
     return this.configuration.inputReadOnly &&
       this.configuration.selectionMode === SelectionMode.MULTIPLE

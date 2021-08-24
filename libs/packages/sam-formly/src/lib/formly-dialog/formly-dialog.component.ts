@@ -41,32 +41,6 @@ export class SdsFormlyDialogComponent implements OnInit {
 
   }
 
-  ngAfterViewInit() {
-    let initialBottomValue: number;
-    let initialTopValue: number
-    console.log('tes')
-    document.getElementsByClassName('sds-dialog-content')[0]
-      .addEventListener('scroll', function (event) {
-
-        let scrollPosition = parseInt(parseFloat(event.target['scrollTop']).toFixed(2), 10);
-        let element = document.querySelectorAll('[id^="cdk-overlay"]')[1] as HTMLElement
-        // let element = document.getElementsByClassName('sds-autocomplete')[0].parentElement;
-        // let element = document.getElementById('cdk-overlay-8').parentElement;
-        if (!this.firstScroll) {
-          initialBottomValue = parseInt(element.style.bottom.replace(/[^0-9.]/g, ''), 10);
-          initialTopValue = parseInt(element.style.top.replace(/[^0-9.]/g, ''), 10);
-          console.log(initialTopValue, 'initialTopValue')
-        }
-        if (initialBottomValue) {
-          element.style.bottom = (initialBottomValue + scrollPosition) + 'px';
-        }
-        else {
-          element.style.top = (initialTopValue - scrollPosition) + 'px';
-        }
-        this.firstScroll = true;
-      });
-  }
-
   onSubmit() {
     this.submitFn.emit(this.model);
   }
