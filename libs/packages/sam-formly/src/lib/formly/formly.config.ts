@@ -36,7 +36,7 @@ export const FIELD_TYPE_COMPONENTS = [
   FormlyFieldSearchComponent,
   FormlyReadonlyWrapperComponent,
   FormlyFieldFileInputComponent,
-  FormlyFieldFileTableComponent,
+  FormlyFieldTableComponent,
   FormlyFieldTabsComponent,
 ];
 import {
@@ -56,7 +56,7 @@ import { SdsFormlyTypes } from './models/formly-types';
 import { FormlyReadonlyWrapperComponent } from './wrappers/readonly.wrapper';
 import { FormlyFieldFileInputComponent } from './types/file-input';
 import { FormlyFieldTabsComponent } from './types/tabs';
-import { FormlyFieldFileTableComponent } from './types/file-table';
+import { FormlyFieldTableComponent } from './types/table';
 
 export const FORMLY_WRAPPERS: any = [
   {
@@ -260,8 +260,8 @@ export const FORMLY_CONFIG: ConfigOption = {
       wrappers: sdsWrappers,
     },
     {
-      name: 'inputTable',
-      component: FormlyFieldFileTableComponent
+      name: SdsFormlyTypes.TABLE,
+      component: FormlyFieldTableComponent
     },
     {
       name: SdsFormlyTypes.TABS,

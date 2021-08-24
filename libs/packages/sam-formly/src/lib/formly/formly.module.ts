@@ -178,6 +178,7 @@ export const DATE_FORMAT: MatDateFormats = {
     SdsReadonlyModule,
     FormsModule,
     UsaFileInputModule,
+    SdsTableModule,
     SdsTabsModule,
     SdsPopoverModule,
     NgxBootstrapIconsModule.pick({caretDownFill, caretUpFill, filter, arrowClockwise, chevronDown}),

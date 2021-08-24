@@ -1,32 +1,26 @@
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from "@angular/core";
+import { ChangeDetectorRef, Component, ViewChild } from "@angular/core";
 import { AbstractSdsFormly } from "../sds-formly";
 import { UsaFileInputComponent } from '@gsa-sam/ngx-uswds';
-import { SdsTableComponent } from "@gsa-sam/sam-material-extensions";
 
 @Component({
   selector: `sds-formly-field-file-input`,
-  templateUrl: './file-input.html'
-})
-export class FormlyFieldFileInputComponent extends AbstractSdsFormly implements OnInit {
-  @ViewChild(UsaFileInputComponent, { static: true }) public template: UsaFileInputComponent;
-  @ViewChild('fileTable') fileTable: SdsTableComponent;
+  template: `
+    <usa-file-input #fileInput 
+      [formControl]="formControl" 
+      [id]="id">
+    </usa-file-input>
 
-  displayedColumns: string[] = ['name', 'size', 'scan', 'action'];
+    <ng-container *ngIf="field.fieldArray">
+      <div class="margin-top-2"></div>
+      <formly-form [fields]="[field.fieldArray]" [form]="formControl" [model]="model"></formly-form>
+    </ng-container> 
+  `
+})
+export class FormlyFieldFileInputComponent extends AbstractSdsFormly {
+  @ViewChild(UsaFileInputComponent, { static: true }) public template: UsaFileInputComponent;
 
   constructor(_cdr: ChangeDetectorRef) {
-    super(); /* istanbul ignore next */
+    super();
     this.cdr = _cdr;
-  }
-
-  ngOnInit() {
-    super.ngOnInit();
-    console.log(this.field);
-    this.formControl.valueChanges.subscribe(change => {
-      console.log('changedddd', change);
-    })
-  }
-
-  removeFile(file: File) {
-    this.template.removeFile(file);
   }
 }
