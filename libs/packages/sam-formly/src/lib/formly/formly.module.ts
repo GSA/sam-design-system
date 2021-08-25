@@ -16,7 +16,7 @@ import {
   MAT_NATIVE_DATE_FORMATS,
 } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { SdsAccordionModule } from '@gsa-sam/sam-material-extensions';
+import { SdsAccordionModule, SdsTableModule } from '@gsa-sam/sam-material-extensions';
 import {
   SdsAutocompleteModule,
   SdsDialogModule,
@@ -170,6 +170,7 @@ export const DATE_FORMAT: MatDateFormats = {
     SdsCollapseModule,
     MatNativeDateModule,
     MatDatepickerModule,
+    SdsTableModule,
     MatInputModule,
     IconModule,
     ReactiveFormsModule,
@@ -177,6 +178,7 @@ export const DATE_FORMAT: MatDateFormats = {
     SdsReadonlyModule,
     FormsModule,
     UsaFileInputModule,
+    SdsTableModule,
     SdsTabsModule,
     SdsPopoverModule,
     NgxBootstrapIconsModule.pick({caretDownFill, caretUpFill, filter, arrowClockwise, chevronDown}),
