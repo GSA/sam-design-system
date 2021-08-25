@@ -11,8 +11,8 @@ import { FieldType } from '@ngx-formly/core';
         [class.is-invalid]="showError"
         [indeterminate]="to.indeterminate && formControl.value === null"
         [formControl]="formControl"
-        [formlyAttributes]="field">
-      <label class="usa-checkbox__label" [for]="id">
+        [formlyAttributes]="field" >
+      <label class="usa-checkbox__label" [for]="id" [sdsTooltip]="to.toolTip" [position]="to.position" >
         {{ to.label }}
         <span *ngIf="!to.required && !to.hideOptional"> (Optional)</span>
       </label>

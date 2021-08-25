@@ -19,7 +19,9 @@ export class CheckboxBasic {
       templateOptions: {
         label: 'I agree.',
         description: 'By checking the box below you agree to the terms and conditions of the site.',
-        required: true
+        required: true,
+        toolTip: ' you agree to the terms and conditions ',
+        position: 'bottom'
       },
     },
   ];
