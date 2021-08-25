@@ -62,7 +62,6 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
   }
   ngAfterViewInit() {
     this.filterChange$.subscribe((res) => {
-      console.log(res);
       this.resultList.updateFilter(res);
     });
   }
@@ -100,10 +99,8 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
         },
       },
     };
+
     this.fields[0].fieldArray.fieldGroup[0].form.setValue(model.filterModel.keyword);
-    // this.form.get('keyword').setValue(model.filterModel.keyword);
-    console.log(this.form);
-    // this.form.get('keyword').setValue()
-    // this.resultList.updateSearchResultsModel(model);
+    this.resultList.updateSearchResultsModel(model);
   }
 }

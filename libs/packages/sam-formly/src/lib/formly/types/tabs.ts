@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, OnInit, OnChanges } from "@angular/core";
+import { Component, ChangeDetectionStrategy, OnInit } from "@angular/core";
 import { FieldType, FormlyFieldConfig } from "@ngx-formly/core";
 @Component({
   template: `
@@ -25,22 +25,14 @@ import { FieldType, FormlyFieldConfig } from "@ngx-formly/core";
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldTabsComponent extends FieldType implements OnInit, OnChanges {
+export class FormlyFieldTabsComponent extends FieldType implements OnInit {
 
   _initialModel: any;
-
-  ngOnChanges(changes) {
-    console.log(changes);
-  }
 
   ngOnInit() {
     if (!this.field.fieldArray || !this.field.fieldArray.fieldGroup) {
       throw new Error('Please define contents of keywords through a fieldGroup within the fieldArray property')
     }
-
-    this.form.valueChanges.subscribe(change => {
-      console.log(change, this.field);
-    })
 
     this._initialModel = this.model && this.model[this.key as string] ? {...this.model[this.key as string]} : {};
     if (this.field.fieldArray && this.field.fieldArray.fieldGroup) {
