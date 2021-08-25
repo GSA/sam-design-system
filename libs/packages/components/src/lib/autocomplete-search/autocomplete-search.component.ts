@@ -255,10 +255,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
         this.getResults(this.inputValue || '');
       }
       this.onTouchedCallback();
-      console.log(document.getElementsByClassName('sds-dialog-content'), 'dialog')
-      if (document.getElementsByClassName('sds-dialog-content').length > 0) {
-        this.addListener();
-      }
+      this.addListener();
     }
   }
 
@@ -602,26 +599,30 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   }
 
   addListener() {
-    let initialBottomValue: number;
-    let initialTopValue: number
-    document.getElementsByClassName('sds-dialog-content')[0]
-      .addEventListener('scroll', function (event) {
-        let scrollPosition = parseInt(parseFloat(event.target['scrollTop']).toFixed(2), 10);
-        let element = document.getElementsByClassName('sds-autocomplete')[0].parentElement;
-        if (element && !initialBottomValue && element.style.bottom) {
-          initialTopValue = undefined;
-          initialBottomValue = parseInt(element.style.bottom.replace(/[^0-9.]/g, ''), 10);
-        } else if (element && !initialTopValue && element.style.top) {
-          initialBottomValue = undefined;
-          initialTopValue = parseInt(element.style.top.replace(/[^0-9.]/g, ''), 10);
-        }
-        if (initialBottomValue) {
-          element.style.bottom = (initialBottomValue + scrollPosition) + 'px';
-        }
-        else {
-          element.style.top = (initialTopValue - scrollPosition) + 'px';
-        }
-      });
+    if (document.getElementsByClassName('sds-dialog-content').length > 0) {
+      let initialBottomValue: number;
+      let initialTopValue: number
+      let list = document.getElementsByClassName('sds-dialog-content')[0];
+      if (list) {
+        list.addEventListener('scroll', function (event) {
+          let scrollPosition = parseInt(parseFloat(event.target['scrollTop']).toFixed(2), 10);
+          let element = list.parentElement;
+          if (element && !initialBottomValue && element.style.bottom) {
+            initialTopValue = undefined;
+            initialBottomValue = parseInt(element.style.bottom.replace(/[^0-9.]/g, ''), 10);
+          } else if (element && !initialTopValue && element.style.top) {
+            initialBottomValue = undefined;
+            initialTopValue = parseInt(element.style.top.replace(/[^0-9.]/g, ''), 10);
+          }
+          if (initialBottomValue) {
+            element.style.bottom = (initialBottomValue + scrollPosition) + 'px';
+          }
+          else {
+            element.style.top = (initialTopValue - scrollPosition) + 'px';
+          }
+        });
+      }
+    }
   }
 
   getClass() {
