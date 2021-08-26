@@ -118,22 +118,18 @@
     <subawardee-demo (subawardeeUpdate)="updateSubawardee($event)" [subawardees]="model.subawardee"></subawardee-demo>
   </ng-container>
   <ng-template #loading>
-    <div *ngFor="let a of loadingArray">
-      <hr>
-      <div class="grid-container">
-        <div class="sds-load grid-row">
-          <div class="grid-col-5 sds-load__title"></div>
-          <div class="grid-col-auto sds-load__circle"></div>
-        </div>
-        <div class="sds-load">
-          <div class="tablet:grid-col-fill sds-load__element"></div>
-        </div>
-        <div class="sds-load">
-          <div class="grid-col-8 height-4 sds-load__content"></div>
-        </div>
+    <div class="grid-container">
+      <div class="sds-load grid-row">
+        <div class="grid-col-5 sds-load__title"></div>
+        <div class="grid-col-auto sds-load__circle"></div>
+      </div>
+      <div class="sds-load">
+        <div class="tablet:grid-col-fill sds-load__element"></div>
+      </div>
+      <div class="sds-load">
+        <div class="grid-col-8 height-4 sds-load__content"></div>
       </div>
     </div>
-    <hr>
   </ng-template>
 </ng-template>
 
