@@ -21,39 +21,10 @@ export class FormlyDialog {
   updatedModel: any = {};
   model: any = {};
   public settings = new SDSAutocompletelConfiguration();
-  public settings1 = new SDSAutocompletelConfiguration();
   public autocompleteModel = new SDSSelectedItemModel();
   options: FormlyFormOptions;
   fields: FormlyFieldConfig[] = [
-    {
-      key: 'ytes',
-      wrappers: ['filterwrapper'],
-      templateOptions: { label: 'yegyusgu' },
-      fieldGroup: [
-        {
-          key: 'lastname',
-          type: 'autocomplete',
-          templateOptions: {
-            label: 'Auto Complete',
-            hideLabel: true,
-            service: this.service,
-            configuration: this.settings1,
-            model: this.autocompleteModel,
-            modelChange: this.changes,
-          },
-        },
-      ],
-    },
-    {
-      key: 'entity.title',
-      type: 'input',
-      templateOptions: {
-        label: 'Entity Name',
-        placeholder: 'eg: Acme Corporation',
-        description: 'Enter the name of your entity.',
-        required: true,
-      },
-    },
+
     {
       key: 'filters',
       wrappers: ['filterwrapper'],
@@ -73,6 +44,17 @@ export class FormlyDialog {
         },
       ],
     },
+    {
+      key: 'entity.title',
+      type: 'input',
+      templateOptions: {
+        label: 'Entity Name',
+        placeholder: 'eg: Acme Corporation',
+        description: 'Enter the name of your entity.',
+        required: true,
+      },
+    },
+
   ];
   constructor(
     public service: AutocompleteSampleDataService,
@@ -94,14 +76,6 @@ export class FormlyDialog {
     this.settings.autocompletePlaceHolderText = 'Enter text';
     this.settings.debounceTime = 350;
 
-    this.settings1.id = 'autocompleteBasic1';
-    this.settings1.primaryKeyField = 'id';
-    this.settings1.primaryTextField = 'name';
-    this.settings1.secondaryTextField = 'subtext';
-    this.settings1.labelText = 'Autocomplete 1';
-    this.settings1.selectionMode = SelectionMode.SINGLE;
-    this.settings1.autocompletePlaceHolderText = 'Enter text';
-    this.settings1.debounceTime = 350;
   }
 
   openDialog() {
@@ -115,7 +89,7 @@ export class FormlyDialog {
     };
 
     const dialogRef: any = this.dialog.open(SdsFormlyDialogComponent, {
-      width: 'large',
+      width: 'medium',
       data: data,
     });
 

@@ -611,19 +611,21 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     document.getElementsByClassName('sds-dialog-content')[0]
       .addEventListener('scroll', function (event) {
         let scrollPosition = parseInt(parseFloat(event.target['scrollTop']).toFixed(2), 10);
-        let element = document.getElementsByClassName('sds-autocomplete')[0].parentElement;
-        if (element && !initialBottomValue && element.style.bottom) {
-          initialTopValue = undefined;
-          initialBottomValue = parseInt(element.style.bottom.replace(/[^0-9.]/g, ''), 10);
-        } else if (element && !initialTopValue && element.style.top) {
-          initialBottomValue = undefined;
-          initialTopValue = parseInt(element.style.top.replace(/[^0-9.]/g, ''), 10);
-        }
-        if (initialBottomValue) {
-          element.style.bottom = (initialBottomValue + scrollPosition) + 'px';
-        }
-        else {
-          element.style.top = (initialTopValue - scrollPosition) + 'px';
+        if (document.getElementsByClassName('sds-autocomplete').length > 0) {
+          let element = document.getElementsByClassName('sds-autocomplete')[0].parentElement;
+          if (element && !initialBottomValue && element.style.bottom) {
+            initialTopValue = undefined;
+            initialBottomValue = parseInt(element.style.bottom.replace(/[^0-9.]/g, ''), 10);
+          } else if (element && !initialTopValue && element.style.top) {
+            initialBottomValue = undefined;
+            initialTopValue = parseInt(element.style.top.replace(/[^0-9.]/g, ''), 10);
+          }
+          if (initialBottomValue) {
+            element.style.bottom = (initialBottomValue + scrollPosition) + 'px';
+          }
+          else {
+            element.style.top = (initialTopValue - scrollPosition) + 'px';
+          }
         }
       });
   }
