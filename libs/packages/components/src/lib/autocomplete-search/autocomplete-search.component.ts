@@ -255,11 +255,15 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
         this.getResults(this.inputValue || '');
       }
       this.onTouchedCallback();
-      console.log(document.getElementsByClassName('sds-dialog-content'), 'dialog')
-      if (document.getElementsByClassName('sds-dialog-content').length > 0) {
+
+      if (this.isAutocompleteWithinModal()) {
         this.addListener();
       }
     }
+  }
+
+  isAutocompleteWithinModal() {
+    return document.getElementsByClassName('sds-dialog-content').length > 0
   }
 
   /**
