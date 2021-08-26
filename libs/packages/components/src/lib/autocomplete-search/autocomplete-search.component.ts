@@ -149,6 +149,10 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   to scroll through results. Hit enter to select.';
 
   private index = 0;
+  private initialBottomValue: number;
+  private initialTopValue: number;
+  private firstCall = false;
+
   /**
    * Gets the string value from the specifed properties of an object
    * @param object
@@ -255,13 +259,13 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
         this.getResults(this.inputValue || '');
       }
       this.onTouchedCallback();
-
       if (this.isAutocompleteWithinModal()) {
-        this.addListener();
+        !this.firstCall ? this.addListener() : '';
+        this.firstCall = true;
       }
+
     }
   }
-
   isAutocompleteWithinModal() {
     return document.getElementsByClassName('sds-dialog-content').length > 0
   }
@@ -606,25 +610,24 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   }
 
   addListener() {
-    let initialBottomValue: number;
-    let initialTopValue: number
     document.getElementsByClassName('sds-dialog-content')[0]
       .addEventListener('scroll', function (event) {
-        let scrollPosition = parseInt(parseFloat(event.target['scrollTop']).toFixed(2), 10);
-        if (document.getElementsByClassName('sds-autocomplete').length > 0) {
+        if ((document.getElementsByClassName('sds-autocomplete')).length > 0) {
+          let scrollPosition = parseInt(parseFloat(event.target['scrollTop']).toFixed(2), 10);
+          console.log(scrollPosition, 'scrollPosition')
           let element = document.getElementsByClassName('sds-autocomplete')[0].parentElement;
-          if (element && !initialBottomValue && element.style.bottom) {
-            initialTopValue = undefined;
-            initialBottomValue = parseInt(element.style.bottom.replace(/[^0-9.]/g, ''), 10);
-          } else if (element && !initialTopValue && element.style.top) {
-            initialBottomValue = undefined;
-            initialTopValue = parseInt(element.style.top.replace(/[^0-9.]/g, ''), 10);
+          if (element && !this.initialBottomValue && element.style.bottom) {
+            this.initialTopValue = undefined;
+            this.initialBottomValue = parseInt(element.style.bottom.replace(/[^0-9.]/g, ''), 10);
+          } else if (element && !this.initialTopValue && element.style.top) {
+            this.initialBottomValue = undefined;
+            this.initialTopValue = parseInt(element.style.top.replace(/[^0-9.]/g, ''), 10);
           }
-          if (initialBottomValue) {
-            element.style.bottom = (initialBottomValue + scrollPosition) + 'px';
+          if (this.initialBottomValue) {
+            element.style.bottom = (this.initialBottomValue + scrollPosition) + 'px';
           }
           else {
-            element.style.top = (initialTopValue - scrollPosition) + 'px';
+            element.style.top = (this.initialTopValue - scrollPosition) + 'px';
           }
         }
       });

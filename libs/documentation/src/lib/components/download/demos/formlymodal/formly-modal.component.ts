@@ -26,6 +26,46 @@ export class FormlyDialog {
   fields: FormlyFieldConfig[] = [
 
     {
+      key: 'entity.title',
+      type: 'input',
+      templateOptions: {
+        label: 'Entity Name',
+        placeholder: 'eg: Acme Corporation',
+        description: 'Enter the name of your entity.',
+        required: true,
+      },
+    },
+    {
+      key: 'entity.title',
+      type: 'input',
+      templateOptions: {
+        label: 'Entity Name',
+        placeholder: 'eg: Acme Corporation',
+        description: 'Enter the name of your entity.',
+        required: true,
+      },
+    },
+    {
+      key: 'entity.title',
+      type: 'input',
+      templateOptions: {
+        label: 'Entity Name',
+        placeholder: 'eg: Acme Corporation',
+        description: 'Enter the name of your entity.',
+        required: true,
+      },
+    },
+    {
+      key: 'entity.title',
+      type: 'input',
+      templateOptions: {
+        label: 'Entity Name',
+        placeholder: 'eg: Acme Corporation',
+        description: 'Enter the name of your entity.',
+        required: true,
+      },
+    },
+    {
       key: 'filters',
       wrappers: ['filterwrapper'],
       templateOptions: { label: 'Keyword' },
@@ -43,6 +83,37 @@ export class FormlyDialog {
           },
         },
       ],
+    },
+    {
+      key: 'entity.title',
+      type: 'input',
+      templateOptions: {
+        label: 'Entity Name',
+        placeholder: 'eg: Acme Corporation',
+        description: 'Enter the name of your entity.',
+        required: true,
+      },
+    },
+
+    {
+      key: 'entity.title',
+      type: 'input',
+      templateOptions: {
+        label: 'Entity Name',
+        placeholder: 'eg: Acme Corporation',
+        description: 'Enter the name of your entity.',
+        required: true,
+      },
+    },
+    {
+      key: 'entity.title',
+      type: 'input',
+      templateOptions: {
+        label: 'Entity Name',
+        placeholder: 'eg: Acme Corporation',
+        description: 'Enter the name of your entity.',
+        required: true,
+      },
     },
     {
       key: 'entity.title',
