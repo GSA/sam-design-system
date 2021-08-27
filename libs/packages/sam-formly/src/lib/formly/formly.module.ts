@@ -23,8 +23,10 @@ import {
   SdsTextModule,
   SdsSearchModule,
   SdsCollapseModule,
-  SdsPopoverModule,
+  SdsIconModule,
+  SdsTooltipModule,
   SdsTabsModule,
+  SdsPopoverModule
 } from '@gsa-sam/components';
 
 import { FIELD_TYPE_COMPONENTS, FORMLY_CONFIG } from './formly.config';
@@ -38,7 +40,6 @@ import { SdsReadonlyModule } from './readonly/readonly.module';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { NgxBootstrapIconsModule, caretDownFill, caretUpFill, filter, arrowClockwise, chevronDown } from 'ngx-bootstrap-icons';
 import { UsaFileInputModule } from '@gsa-sam/ngx-uswds';
-import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 // Validate the min length of the character
 export function minlengthValidationMessage(err, field) {
@@ -172,16 +173,17 @@ export const DATE_FORMAT: MatDateFormats = {
     MatDatepickerModule,
     SdsTableModule,
     MatInputModule,
-    IconModule,
+    SdsIconModule,
     ReactiveFormsModule,
     FormlySelectModule,
     SdsReadonlyModule,
     FormsModule,
     UsaFileInputModule,
+    SdsTooltipModule,
     SdsTableModule,
     SdsTabsModule,
     SdsPopoverModule,
-    NgxBootstrapIconsModule.pick({caretDownFill, caretUpFill, filter, arrowClockwise, chevronDown}),
+    NgxBootstrapIconsModule.pick({ caretDownFill, caretUpFill, filter, arrowClockwise, chevronDown }),
     FormlyModule.forChild(FORMLY_CONFIG),
     FormlyModule.forRoot({
       validationMessages: [
