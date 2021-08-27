@@ -296,8 +296,9 @@ export class SearchListLayoutComponent implements OnInit {
     queryString.split('&').forEach((pair) => {
       if (pair !== '') {
         const splitpair = pair.split('=');
-        target[splitpair[0]] =
-          splitpair[1] === '' || splitpair[1] === 'false' ? null : splitpair[1];
+        if (splitpair[1] != '' && splitpair[1] != 'false') {
+          target[splitpair[0]] = splitpair[1]
+        }
       }
     });
     return target;
