@@ -36,7 +36,7 @@ export const FIELD_TYPE_COMPONENTS = [
   FormlyFieldSearchComponent,
   FormlyReadonlyWrapperComponent,
   FormlyFieldFileInputComponent,
-  FormlyFieldTabsComponent,
+  FormlyTabsWrapperComponent,
 ];
 import {
   dateRangeValidator,
@@ -54,7 +54,7 @@ import { FormlyFieldDateRangePickerComponent } from './types/daterangepicker';
 import { SdsFormlyTypes } from './models/formly-types';
 import { FormlyReadonlyWrapperComponent } from './wrappers/readonly.wrapper';
 import { FormlyFieldFileInputComponent } from './types/file-input';
-import { FormlyFieldTabsComponent } from './types/tabs';
+import { FormlyTabsWrapperComponent } from './wrappers/tabs.wrapper';
 
 export const FORMLY_WRAPPERS: any = [
   {
@@ -93,12 +93,15 @@ export const FORMLY_WRAPPERS: any = [
     component: FormlyGroupWrapperComponent,
     componentName: 'FormlyGroupWrapperComponent'
   },
-
- 
   {
     name: 'readonly',
     component: FormlyReadonlyWrapperComponent,
     componentName: 'FormlyReadonlyWrapperComponent'
+  },
+  {
+    name: 'tabs',
+    component: FormlyTabsWrapperComponent,
+    componentName: 'FormlyTabsWrapperComponent'
   }
 ];
 
@@ -257,10 +260,6 @@ export const FORMLY_CONFIG: ConfigOption = {
       component: FormlyFieldFileInputComponent,
       wrappers: sdsWrappers,
     },
-    {
-      name: SdsFormlyTypes.TABS,
-      component: FormlyFieldTabsComponent,
-    }
   ],
   wrappers: [
     { name: 'label', component: FormlyLabelWrapperComponent },
@@ -270,8 +269,8 @@ export const FORMLY_CONFIG: ConfigOption = {
     { name: 'form-field', component: FormlyWrapperFormFieldComponent },
     { name: 'accordionwrapper', component: FormlyAccordianFormFieldComponent },
     { name: 'filterwrapper', component: FormlyFormFieldFilterWrapperComponent },
-  
-    { name: 'readonly', component: FormlyReadonlyWrapperComponent }
+    { name: 'readonly', component: FormlyReadonlyWrapperComponent },
+    { name: 'tabs', component: FormlyTabsWrapperComponent},
   ]
 };
 

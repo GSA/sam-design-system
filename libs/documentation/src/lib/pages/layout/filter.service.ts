@@ -20,7 +20,7 @@ export class FilterService {
   public fields: FormlyFieldConfig[] = [
     {
       key: 'keyword',
-      type: 'tabs',
+      wrappers: ['tabs'],
       templateOptions: {
         label: 'Keyword Search',
         description: `For more information on how to use our keyword search, visit our <a href="#"> help guide </a>`,
