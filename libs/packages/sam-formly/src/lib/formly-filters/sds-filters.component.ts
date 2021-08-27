@@ -364,7 +364,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
       if (result) {
         this.onModelChange(result);
       } else {
-        this.model = this._modelSnapshot;
+        Object.assign(this.model, this._modelSnapshot);
       }
       this.dialogRef = null;
     })

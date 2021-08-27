@@ -1,6 +1,6 @@
 {
   "name": "@gsa-sam/sam-formly",
-  "version": "11.0.0",
+  "version": "11.0.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/GSA/sam-design-system.git"
@@ -12,7 +12,7 @@
   "peerDependencies": {
     "@angular/common": "^11.2.14",
     "@angular/core": "^11.2.14",
-    "@ngx-formly/core": "0.0.0-FORMLY-VERSION",
+    "@ngx-formly/core": "^5.10.22",
     "@gsa-sam/components": ">=11.0.0",
     "@gsa-sam/sam-material-extensions": ">=11.0.0",
     "@gsa-sam/ngx-uswds": ">=0.0.1",

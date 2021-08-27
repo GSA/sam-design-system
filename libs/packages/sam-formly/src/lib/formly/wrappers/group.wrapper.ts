@@ -50,7 +50,7 @@ import * as qs from 'qs';
           </div>
         </ng-container>
         <ng-container *ngSwitchCase="'popover'">
-        <div #popoverContent class="padding-1 text-left">
+        <div #popoverContent class="padding-1 text-left sds-width-max-content maxw-card-lg">
           <ng-container #fieldComponent></ng-container>
         </div>
           <div

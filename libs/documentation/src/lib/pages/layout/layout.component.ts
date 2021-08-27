@@ -81,7 +81,15 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
       page: 2,
       sort: 'registrationStatus',
       filterModel: {
-        keyword: 'te',
+        keyword: {
+          keywordRadio: "allWords",
+          keywordTags: [
+            {
+              key: "te",
+              text: "te"
+            }
+          ]
+        },
         location: {
           city: null,
           congressionalDistrict: null,
@@ -92,6 +100,7 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
       },
     };
 
+    this.fields[0].fieldArray.fieldGroup[0].form.setValue(model.filterModel.keyword);
     this.resultList.updateSearchResultsModel(model);
   }
 }

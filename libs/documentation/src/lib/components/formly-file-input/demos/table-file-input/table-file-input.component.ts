@@ -1,7 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { SdsFormlyTypes } from '@gsa-sam/sam-formly';
-import { SdsTableComponent } from '@gsa-sam/sam-material-extensions';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
@@ -10,42 +9,58 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 })
 export class TableFileInputComponent {
 
-  @ViewChild('fileTable') fileTable: SdsTableComponent;
-
   fields: FormlyFieldConfig[] = [
     {
-      key: 'multipleFilesInput',
+      key: 'tableFilesInput',
       type: SdsFormlyTypes.FILEINPUT, // Enum maps to 'fileinput' string
       templateOptions: {
-        label: 'Multiple File Input',
-        description: 'Accepts Multiple Files',
+        label: 'Table File Input',
+        description: 'Accepts multiple files and displays in table',
         multiple: true,
         hideOptional: true,
         clearFilesOnAdd: false,
+        tableDisplay: true,
+        displayFileInfo: false,
       },
+      fieldArray: {
+        type: SdsFormlyTypes.TABLE,
+        templateOptions: {
+          name: 'Demo Table',
+          noDataText: 'No Attachments',
+          tableColumns: [
+            {label: 'Attachment Name', columnName:'name', property: 'name'},
+            {label: 'File Size (kB)', columnName:'size', textFn: (file: File) => (file.size / 1000)},
+            {label: 'Virus Scan', columnName:'scan', property: 'scan'},
+            {label: 'Action', columnName:'action', text: 'Remove', onClick: this.removeFile}
+          ],
+        }
+      }
     },
   ];
 
   form = new FormGroup({});
 
-  displayedColumns: string[] = ['name', 'type', 'size', 'action'];
-  data = [];
-
-  onModelChange($event: {multipleFilesInput: File[]}) {
-    this.data = $event.multipleFilesInput;
-    if (this.fileTable) {
-      this.fileTable.table.renderRows();
-    }
+  onModelChange($event: {tableFilesInput: File[]}) {
+    // The 'scan' property here must match the property in
+    // {label: 'Virus Scan', columnName:'scan', property: 'scan'} in templateOptions' tableColumns
+    const newFiles = $event.tableFilesInput.filter(file => !file['scan']);
+    this.scanFiles(newFiles);
     console.log('model', $event);
   }
 
-  removeFile(file: File) {
-    const newFiles = this.data.filter(dataFile => dataFile != file);
-    this.form.get('multipleFilesInput').setValue(newFiles);
+  scanFiles(newFiles: File[]) {
+    newFiles.forEach(file => file['scan'] = 'Please Wait');
+
+    // Mock API call to scan file
+    setTimeout(() => {
+      // You can choose to then either remove the file or apply different text
+      newFiles.forEach(file => file['scan'] = 'Ready');
+    }, 2000);
   }
 
-  removeAllFiles() {
-    this.form.get('multipleFilesInput').setValue([]);
+  removeFile(file: File, field: FormlyFieldConfig) {
+    const tableFormControl = field.formControl;
+    const newFiles = tableFormControl.value.filter((value: File) => value != file);
+    tableFormControl.setValue(newFiles);
   }
-
 }
