@@ -12,7 +12,7 @@ import { FieldType } from '@ngx-formly/core';
         [indeterminate]="to.indeterminate && formControl.value === null"
         [formControl]="formControl"
         [formlyAttributes]="field" >
-      <label class="usa-checkbox__label" [for]="id" [sdsTooltip]="to.toolTip" [position]="to.position" >
+      <label class="usa-checkbox__label" [for]="id" [sdsTooltip]="to.tooltipText" [position]="to.tooltipPosition? to.tooltipPosition : 'bottom'" >
         {{ to.label }}
         <span *ngIf="!to.required && !to.hideOptional"> (Optional)</span>
       </label>

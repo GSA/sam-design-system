@@ -24,6 +24,8 @@ export class RadioBasic {
         options: [
           {
             key: 'ccorp',
+            tooltipText: 'Corporate Entity, Not Tax Exempt (Firm pays U.S. Federal Income Taxes or U.S. Possession Income Taxes)',
+            tooltipPosition: 'top',
             value:
               'Corporate Entity, Not Tax Exempt (Firm pays U.S. Federal Income Taxes or U.S. Possession Income Taxes)',
           },
@@ -43,6 +45,8 @@ export class RadioBasic {
           {
             key: 'international',
             value: 'International Organization',
+            tooltipText: 'International Organization',
+
           },
           {
             key: 'other',

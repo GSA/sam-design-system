@@ -20,8 +20,8 @@ export class CheckboxBasic {
         label: 'I agree.',
         description: 'By checking the box below you agree to the terms and conditions of the site.',
         required: true,
-        toolTip: ' you agree to the terms and conditions ',
-        position: 'bottom'
+        tooltipText: ' you agree to the terms and conditions ',
+        tooltipPosition: 'bottom'
       },
     },
   ];

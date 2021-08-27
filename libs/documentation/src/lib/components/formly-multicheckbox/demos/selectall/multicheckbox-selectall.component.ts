@@ -21,21 +21,21 @@ export class MultiCheckboxSelectAll {
         description: 'Select any socio-economic categories which reflect the current status of your entity',
         required: true,
         selectAllOption: true,
-        toolTip: ' you agree to the terms and conditions ',
-        position: 'bottom',
+        tooltipText: ' you agree to the terms and conditions ',
+        tooltipPosition: 'bottom',
         options: [
           {
             key: 'cfda',
             value: 'Assistance Listing',
-            position: 'bottom',
-            toolTip: '<b>Assistance Listing</b><u>Tool tip with style</u>',
+            tooltipPosition: 'bottom',
+            tooltipText: '<b>Assistance Listing</b><u>Tool tip with style</u>',
 
           },
           {
             key: 'opp',
             value: 'Contract Opportunities',
-            position: 'bottom',
-            toolTip: 'Contract Opportunities',
+            tooltipPosition: 'bottom',
+            tooltipText: 'Contract Opportunities',
 
           },
           {
