@@ -5,13 +5,14 @@
       <div>
         <input [id]="id + '_Select'" type="checkbox" class="usa-checkbox__input" value="value" [checked]="allComplete"
           [attr.aria-checked]="ariaChecked" (change)="setAll($event)" />
-        <label *ngIf="!to.tooltipText" class="usa-checkbox__label" [attr.aria-checked]="ariaChecked"
-          [for]="id + '_Select'">{{ to.label }}
+        <label class="usa-checkbox__label" [attr.aria-checked]="ariaChecked" [for]="id + '_Select'">{{ to.label }}
         </label>
-        <label *ngIf="to.tooltipText" class="usa-checkbox__label" [attr.aria-checked]="ariaChecked"
-          [sdsTooltip]="to.tooltipText" [position]="to.tooltipPosition ? to.tooltipPosition : 'bottom'"
-          [for]="id + '_Select'">{{ to.label }}
-        </label>
+
+      </div>
+      <div *ngIf="to.tooltipText" class="sds-stack margin-top-105 margin-left-1" [sdsPopover]="to.tooltipText"
+        [sdsPopoverTitle]="" [position]="to.tooltipPosition ? to.tooltipPosition :'right'" tabindex="0"
+        aria-label="info tooltip">
+        <usa-icon [size]="'lg'" [icon]="'info-circle-fill'"></usa-icon>
       </div>
       <div *ngIf="to.expandableOptions">
         <button type="button" class="sds-button padding-top-0" [attr.aria-expanded]="!to.expandedOptions"
@@ -26,32 +27,30 @@
     <li [id]="id+ 'collapseID'" [sdsCollapse]="to.expandedOptions"
       [ngClass]="{'margin-left-4 margin-top-0': to.selectAllOption}">
       <ul class="sds-list--no-bullets">
-        <li *ngFor="let option of (to.options | formlySelectOptions: field | async); let i = index">
-          <input class="usa-checkbox__input" [id]="id + '_' + i" type="checkbox" [name]="id + '_name_' + i"
-            [disabled]="option.disabled" [value]="option.value" [formlyAttributes]="field"
-            (change)="onChange(option.value, $event.target.checked)" [checked]="isChecked(option)" />
-          <label *ngIf="!to.options[i].tooltipText" class="usa-checkbox__label" [for]="id + '_' + i">
-            <!-- 
+        <li class="grid-row" *ngFor="let option of (to.options | formlySelectOptions: field | async); let i = index">
+          <div>
+            <input class="usa-checkbox__input" [id]="id + '_' + i" type="checkbox" [name]="id + '_name_' + i"
+              [disabled]="option.disabled" [value]="option.value" [formlyAttributes]="field"
+              (change)="onChange(option.value, $event.target.checked)" [checked]="isChecked(option)" />
+            <label class="usa-checkbox__label" [for]="id + '_' + i">
+              <!-- 
                 The reference of options array through index is done intentionally here rather 
                 than using local variable option because the formlySelectOptions pipe transforms 
                 each option such that they lose all properties except label, value, and disabled 
             -->
-            <span *ngIf="to.options[i].tagText" class="usa-tag"
-              [ngClass]="to.options[i].tagClass ? to.options[i].tagClass : 'sds-tag--info-white'">
-              {{to.options[i].tagText}}
-            </span>
-            {{ option.label }}
-          </label>
-
-          <label *ngIf="to.options[i].tooltipText" class="usa-checkbox__label" [for]="id + '_' + i"
-            [sdsTooltip]="to.options[i].tooltipText"
-            [position]="to.options[i].tooltipPosition? to.options[i].tooltipPosition : 'bottom'">
-            <span *ngIf="to.options[i].tagText" class="usa-tag"
-              [ngClass]="to.options[i].tagClass ? to.options[i].tagClass : 'sds-tag--info-white'">
-              {{to.options[i].tagText}}
-            </span>
-            {{ option.label }}
-          </label>
+              <span *ngIf="to.options[i].tagText" class="usa-tag"
+                [ngClass]="to.options[i].tagClass ? to.options[i].tagClass : 'sds-tag--info-white'">
+                {{to.options[i].tagText}}
+              </span>
+              {{ option.label }}
+            </label>
+          </div>
+          <div *ngIf="to.options[i].tooltipText" class="sds-stack padding-top-105 margin-left-1"
+            [sdsPopover]="to.options[i].tooltipText" [sdsPopoverTitle]="to.options[i].tooltipTitle"
+            [position]="to.options[i].tooltipPosition ? to.options[i].tooltipPosition :'right'" tabindex="0"
+            aria-label="info tooltip">
+            <usa-icon [size]="'lg'" [icon]="'info-circle-fill'"></usa-icon>
+          </div>
 
         </li>
       </ul>
