@@ -37,6 +37,7 @@ export class SdsFormlyDialogComponent implements OnInit {
     this.cancel = this.data.cancel ? this.data.cancel : 'Cancel';
     this.submit = this.data.submit ? this.data.submit : 'Submit';
     this.disableSubmitButton = this.data.disableSubmitButtonEnabled ? this.data.disableSubmitButtonEnabled : false;
+
   }
 
   onSubmit() {

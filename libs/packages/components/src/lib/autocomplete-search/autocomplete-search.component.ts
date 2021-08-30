@@ -34,10 +34,7 @@ const Autocomplete_Autocomplete_VALUE_ACCESSOR: any = {
 export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   constructor(
     private _changeDetectorRef: ChangeDetectorRef,
-   
-  ) {
-    
-  }
+  ) { }
   /**
    * Ul list of elements
    */
@@ -152,6 +149,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   to scroll through results. Hit enter to select.';
 
   private index = 0;
+
   /**
    * Gets the string value from the specifed properties of an object
    * @param object
@@ -258,7 +256,14 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
         this.getResults(this.inputValue || '');
       }
       this.onTouchedCallback();
+      if (this.isAutocompleteWithinModal()) {
+        this.addListener();
+      }
+
     }
+  }
+  isAutocompleteWithinModal() {
+    return document.getElementsByClassName('sds-dialog-content').length > 0
   }
 
   /**
@@ -370,7 +375,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     flatten(results);
     return flat;
   }
-  
+
   /**
    * When paging up and down with arrow key it sets the highlighted item into view
    */
@@ -591,14 +596,38 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       this._changeDetectorRef.markForCheck();
       if (this.model.items.length === 0) {
         this.inputValue = '';
-      } else if (this.configuration && this.configuration.selectionMode === SelectionMode.SINGLE){
-          this.inputValue = this.getObjectValue(
-            this.model.items[0],
-            this.configuration.primaryTextField
-          );
+      } else if (this.configuration && this.configuration.selectionMode === SelectionMode.SINGLE) {
+        this.inputValue = this.getObjectValue(
+          this.model.items[0],
+          this.configuration.primaryTextField
+        );
       }
     }
   }
+
+  addListener() {
+    const autocompleteElement = document.getElementById(this.configuration.id)
+    const dialogContainer = document.getElementsByClassName('sds-dialog-content')
+    const resultsDropdown = document.getElementsByClassName('sds-autocomplete')
+
+    let inputHeight = autocompleteElement.getBoundingClientRect().height;
+    let modalHeight = dialogContainer[0].getBoundingClientRect().height;
+    dialogContainer[0]
+      .addEventListener('scroll', function (event) {
+        if (resultsDropdown.length > 0) {
+          let inputTopValue = autocompleteElement.getBoundingClientRect().top;
+          let inputBottomValue = modalHeight - inputTopValue;
+          let listHeight = resultsDropdown[0].getBoundingClientRect().height;
+          let element = resultsDropdown[0].parentElement;
+          if (element && element.style.bottom) {
+            element.style.bottom = (inputBottomValue + listHeight - inputHeight + 30) + 'px';
+          } else {
+            element.style.top = (inputTopValue + inputHeight) + 'px';
+          }
+        }
+      });
+  }
+
   getClass() {
     return this.configuration.inputReadOnly &&
       this.configuration.selectionMode === SelectionMode.MULTIPLE
