@@ -606,16 +606,19 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   }
 
   addListener() {
-    let id = this.configuration.id;
-    let inputHeight = document.getElementById(id).getBoundingClientRect().height;
-    let modalHeight = document.getElementsByClassName('sds-dialog-content')[0].getBoundingClientRect().height;
-    document.getElementsByClassName('sds-dialog-content')[0]
+    const autocompleteElement = document.getElementById(this.configuration.id)
+    const dialogContainer = document.getElementsByClassName('sds-dialog-content')
+    const resultsDropdown = document.getElementsByClassName('sds-autocomplete')
+
+    let inputHeight = autocompleteElement.getBoundingClientRect().height;
+    let modalHeight = dialogContainer[0].getBoundingClientRect().height;
+    dialogContainer[0]
       .addEventListener('scroll', function (event) {
-        if ((document.getElementsByClassName('sds-autocomplete')).length > 0) {
-          let inputTopValue = document.getElementById(id).getBoundingClientRect().top;
+        if (resultsDropdown.length > 0) {
+          let inputTopValue = autocompleteElement.getBoundingClientRect().top;
           let inputBottomValue = modalHeight - inputTopValue;
-          let listHeight = document.getElementsByClassName('sds-autocomplete')[0].getBoundingClientRect().height;
-          let element = document.getElementsByClassName('sds-autocomplete')[0].parentElement;
+          let listHeight = resultsDropdown[0].getBoundingClientRect().height;
+          let element = resultsDropdown[0].parentElement;
           if (element && element.style.bottom) {
             element.style.bottom = (inputBottomValue + listHeight - inputHeight + 30) + 'px';
           } else {
