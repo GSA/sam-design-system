@@ -149,9 +149,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   to scroll through results. Hit enter to select.';
 
   private index = 0;
-  private initialBottomValue: number;
-  private initialTopValue: number;
-  private firstCall = false;
 
   /**
    * Gets the string value from the specifed properties of an object
@@ -260,8 +257,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       }
       this.onTouchedCallback();
       if (this.isAutocompleteWithinModal()) {
-        !this.firstCall ? this.addListener() : '';
-        this.firstCall = true;
+        this.addListener();
       }
 
     }
@@ -610,24 +606,20 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   }
 
   addListener() {
+    let id = this.configuration.id;
+    let inputHeight = document.getElementById('autocompleteBasic').getBoundingClientRect().height;
+    let modalHeight = document.getElementsByClassName('sds-dialog-content')[0].getBoundingClientRect().height;
     document.getElementsByClassName('sds-dialog-content')[0]
       .addEventListener('scroll', function (event) {
         if ((document.getElementsByClassName('sds-autocomplete')).length > 0) {
-          let scrollPosition = parseInt(parseFloat(event.target['scrollTop']).toFixed(2), 10);
-          console.log(scrollPosition, 'scrollPosition')
+          let inputTopValue = document.getElementById(id).getBoundingClientRect().top;
+          let inputBottomValue = modalHeight - inputTopValue;
+          let listHeight = document.getElementsByClassName('sds-autocomplete')[0].getBoundingClientRect().height;
           let element = document.getElementsByClassName('sds-autocomplete')[0].parentElement;
-          if (element && !this.initialBottomValue && element.style.bottom) {
-            this.initialTopValue = undefined;
-            this.initialBottomValue = parseInt(element.style.bottom.replace(/[^0-9.]/g, ''), 10);
-          } else if (element && !this.initialTopValue && element.style.top) {
-            this.initialBottomValue = undefined;
-            this.initialTopValue = parseInt(element.style.top.replace(/[^0-9.]/g, ''), 10);
-          }
-          if (this.initialBottomValue) {
-            element.style.bottom = (this.initialBottomValue + scrollPosition) + 'px';
-          }
-          else {
-            element.style.top = (this.initialTopValue - scrollPosition) + 'px';
+          if (element && element.style.bottom) {
+            element.style.bottom = (inputBottomValue + listHeight - inputHeight + 30) + 'px';
+          } else {
+            element.style.top = (inputTopValue + inputHeight) + 'px';
           }
         }
       });
