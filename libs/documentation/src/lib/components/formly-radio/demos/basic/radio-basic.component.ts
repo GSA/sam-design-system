@@ -27,7 +27,7 @@ export class RadioBasic {
             tooltipText: 'Corporate Entity, Not Tax Exempt (Firm pays U.S. Federal Income Taxes or U.S. Possession Income Taxes)',
             tooltipPosition: 'top',
             value:
-              'Corporate Entity, Not Tax Exempt (Firm pays U.S. Federal Income Taxes or U.S. Possession Income Taxes)',
+              'Corporate Entity, Not Tax Exempt ',
           },
           {
             key: 'nonprofit',

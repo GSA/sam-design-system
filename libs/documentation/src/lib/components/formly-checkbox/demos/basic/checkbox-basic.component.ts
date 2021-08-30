@@ -17,10 +17,10 @@ export class CheckboxBasic {
       key: 'entity.userAgreement',
       type: 'checkbox',
       templateOptions: {
-        label: 'I agree.',
+        label: 'I agree',
         description: 'By checking the box below you agree to the terms and conditions of the site.',
         required: true,
-        tooltipText: ' you agree to the terms and conditions ',
+        tooltipText: 'By checking the box below you agree to the terms and conditions',
         tooltipPosition: 'bottom'
       },
     },
