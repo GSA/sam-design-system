@@ -38,8 +38,9 @@ import {
 import { AnimationWrapperComponent } from './wrappers/form-field.animation';
 import { SdsReadonlyModule } from './readonly/readonly.module';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { NgxBootstrapIconsModule, caretDownFill, caretUpFill, filter, arrowClockwise, chevronDown } from 'ngx-bootstrap-icons';
+import { NgxBootstrapIconsModule, caretDownFill, caretUpFill, filter, arrowClockwise, chevronDown, infoCircleFill } from 'ngx-bootstrap-icons';
 import { UsaFileInputModule } from '@gsa-sam/ngx-uswds';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 // Validate the min length of the character
 export function minlengthValidationMessage(err, field) {
@@ -174,6 +175,7 @@ export const DATE_FORMAT: MatDateFormats = {
     SdsTableModule,
     MatInputModule,
     SdsIconModule,
+    IconModule,
     ReactiveFormsModule,
     FormlySelectModule,
     SdsReadonlyModule,
@@ -183,7 +185,7 @@ export const DATE_FORMAT: MatDateFormats = {
     SdsTableModule,
     SdsTabsModule,
     SdsPopoverModule,
-    NgxBootstrapIconsModule.pick({ caretDownFill, caretUpFill, filter, arrowClockwise, chevronDown }),
+    NgxBootstrapIconsModule.pick({ caretDownFill, caretUpFill, filter, arrowClockwise, chevronDown, infoCircleFill }),
     FormlyModule.forChild(FORMLY_CONFIG),
     FormlyModule.forRoot({
       validationMessages: [
