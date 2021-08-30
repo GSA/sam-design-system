@@ -5,10 +5,10 @@ import { By } from '@angular/platform-browser';
 import { Component, DebugElement, ViewChild } from '@angular/core';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule, FormlyForm, FormlyFieldConfig } from '@ngx-formly/core';
-import { FormlyFieldTabsComponent } from './tabs';
 import { SdsTabsModule, SelectionMode } from 'libs/packages/components/src/lib/public-api';
 import { SdsFormlyTypes } from '../models/formly-types';
 import { SdsFormlyModule } from '../formly.module';
+import { FormlyTabsWrapperComponent } from './tabs.wrapper';
 
 let testComponentInputs;
 
@@ -36,7 +36,7 @@ const getTabsFieldConfig = (): FormlyFieldConfig[] => {
   return [
     {
       key: 'keyword',
-      type: 'tabs',
+      wrappers: ['tabs'],
       templateOptions: {
         label: 'Keyword Search',
         description: `For more information on how to use our keyword search, visit our <a href="#"> help guide </a>`,
@@ -130,7 +130,7 @@ describe('Tabs Formly Field Component', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TestComponent, FormlyFieldTabsComponent ],
+      declarations: [TestComponent, FormlyTabsWrapperComponent ],
       imports: [
         NoopAnimationsModule,
         FormsModule,

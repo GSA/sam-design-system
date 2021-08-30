@@ -1,5 +1,6 @@
-import { Component, ChangeDetectionStrategy, OnInit } from "@angular/core";
-import { FieldType, FormlyFieldConfig } from "@ngx-formly/core";
+import { ChangeDetectionStrategy, Component, OnInit } from "@angular/core";
+import { FieldWrapper, FormlyFieldConfig } from "@ngx-formly/core";
+
 @Component({
   template: `
     <label [attr.for]="id" class="usa-label text-bold text-base-dark">{{to.label}}</label>
@@ -25,7 +26,7 @@ import { FieldType, FormlyFieldConfig } from "@ngx-formly/core";
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldTabsComponent extends FieldType implements OnInit {
+export class FormlyTabsWrapperComponent extends FieldWrapper implements OnInit {
 
   _initialModel: any;
 

@@ -12,7 +12,7 @@ export class FormlyTabsBasicComponent {
   fields: FormlyFieldConfig[] = [
     {
       key: 'keyword',
-      type: 'tabs',
+      wrappers: ['tabs'],
       templateOptions: {
         label: 'Keyword Search',
         description: `For more information on how to use our keyword search, visit our <a href="#"> help guide </a>`,
@@ -26,6 +26,7 @@ export class FormlyTabsBasicComponent {
             templateOptions: {
               tabHeader: 'Simple Search'
             },
+            id: 'Tab1',
             fieldGroup: [
               {
                 key: 'keywordRadio',
@@ -67,6 +68,7 @@ export class FormlyTabsBasicComponent {
           },
           //tab 2
           {
+            id: 'Tab2',
             templateOptions: {
               tabHeader: 'Search Editor',
               submitButtonId: 'booleanSearchSubmit',
