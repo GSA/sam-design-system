@@ -18,7 +18,6 @@ export class SdsFormlyDialogComponent implements OnInit {
   cancel: string;
   submit: string;
   disableSubmitButton: boolean;
-  firstScroll = false;
 
   @Output() submitFn: EventEmitter<any> = new EventEmitter();
 
