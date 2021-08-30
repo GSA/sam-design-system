@@ -9,7 +9,7 @@ import { FieldWrapper, FormlyFieldConfig } from "@ngx-formly/core";
       <ng-container *ngIf="field.fieldArray?.fieldGroup?.length > 1 else singleField">
         <sds-tabs [tabClass]="to.tabClass ? to.tabClass : 'sds-tabs--formly'">
           <sds-tab-panel *ngFor="let fieldConfig of field.fieldArray.fieldGroup" [tabHeader]="fieldConfig.templateOptions?.tabHeader">
-            <formly-form [fields]="[fieldConfig]" [model]="_initialModel" 
+            <formly-form [fields]="[fieldConfig]" [model]="_initialModel"
               (modelChange)="onModelChange(fieldConfig)">
             </formly-form>
           </sds-tab-panel>
@@ -18,7 +18,7 @@ import { FieldWrapper, FormlyFieldConfig } from "@ngx-formly/core";
 
       <ng-template #singleField>
         <div class="padding-left-2 padding-right-2 padding-bottom-1">
-          <formly-form [fields]="field.fieldArray.fieldGroup" [model]="_initialModel" 
+          <formly-form [fields]="field.fieldArray.fieldGroup" [model]="_initialModel"
           (modelChange)="onModelChange(field.fieldArray.fieldGroup[0])"></formly-form>
         </div>
       </ng-template>

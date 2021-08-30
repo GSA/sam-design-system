@@ -12,10 +12,10 @@ export class SdsTooltipDirective implements AfterViewInit {
   @Input()
   position: string = 'top';
 
-  @HostListener('focus', ['$event']) onFocus(){
+  @HostListener('focus', ['$event']) onFocus() {
     this.renderer.setAttribute(this.sdsTooltipDiv, 'aria-hidden', 'false')
   }
-  @HostListener('blur', ['$event']) onBlur(){
+  @HostListener('blur', ['$event']) onBlur() {
     this.renderer.setAttribute(this.sdsTooltipDiv, 'aria-hidden', 'true')
   }
 
@@ -31,24 +31,28 @@ export class SdsTooltipDirective implements AfterViewInit {
 
   ngAfterViewInit() {
     this.renderer.setAttribute(this.sdsTooltipDiv, 'data-position', this.position)
-    this.renderer.addClass(this.sdsTooltipDiv, this.position);
-    this.renderer.appendChild(this.sdsTooltipDiv, this.sdsTooltip);
-
-    this.renderer.appendChild(this.el.nativeElement, this.sdsTooltipDiv);
+    if (this.position && this.sdsTooltip) {
+      this.renderer.addClass(this.sdsTooltipDiv, this.position);
+      this.renderer.appendChild(this.sdsTooltipDiv, this.sdsTooltip);
+      this.renderer.appendChild(this.el.nativeElement, this.sdsTooltipDiv);
+    }
   }
 
   @Input()
-  set sdsTooltip(value: string | TemplateRef<any> | HTMLDivElement){
-    if(typeof value === 'string'){
+  set sdsTooltip(value: string | TemplateRef<any> | HTMLDivElement) {
+    if (typeof value === 'string') {
       this._sdsTooltip = document.createElement('div');
-      this._sdsTooltip.innerText = value;
+      this._sdsTooltip.innerHTML = value;
     } else {
       this._sdsTooltip = value;
     }
-    this.renderer.addClass(this._sdsTooltip, 'tooltip')
+
+    if (this._sdsTooltip) {
+      this.renderer.addClass(this._sdsTooltip, 'tooltip')
+    }
   }
 
-  get sdsTooltip(): string | TemplateRef<any> | HTMLDivElement{
+  get sdsTooltip(): string | TemplateRef<any> | HTMLDivElement {
     return this._sdsTooltip;
   }
 

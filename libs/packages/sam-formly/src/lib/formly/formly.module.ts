@@ -16,15 +16,17 @@ import {
   MAT_NATIVE_DATE_FORMATS,
 } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { SdsAccordionModule } from '@gsa-sam/sam-material-extensions';
+import { SdsAccordionModule, SdsTableModule } from '@gsa-sam/sam-material-extensions';
 import {
   SdsAutocompleteModule,
   SdsDialogModule,
   SdsTextModule,
   SdsSearchModule,
   SdsCollapseModule,
-  SdsPopoverModule,
+  SdsIconModule,
+  SdsTooltipModule,
   SdsTabsModule,
+  SdsPopoverModule
 } from '@gsa-sam/components';
 
 import { FIELD_TYPE_COMPONENTS, FORMLY_CONFIG } from './formly.config';
@@ -36,7 +38,7 @@ import {
 import { AnimationWrapperComponent } from './wrappers/form-field.animation';
 import { SdsReadonlyModule } from './readonly/readonly.module';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { NgxBootstrapIconsModule, caretDownFill, caretUpFill, filter, arrowClockwise, chevronDown } from 'ngx-bootstrap-icons';
+import { NgxBootstrapIconsModule, caretDownFill, caretUpFill, filter, arrowClockwise, chevronDown, infoCircleFill } from 'ngx-bootstrap-icons';
 import { UsaFileInputModule } from '@gsa-sam/ngx-uswds';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
@@ -170,16 +172,20 @@ export const DATE_FORMAT: MatDateFormats = {
     SdsCollapseModule,
     MatNativeDateModule,
     MatDatepickerModule,
+    SdsTableModule,
     MatInputModule,
+    SdsIconModule,
     IconModule,
     ReactiveFormsModule,
     FormlySelectModule,
     SdsReadonlyModule,
     FormsModule,
     UsaFileInputModule,
+    SdsTooltipModule,
+    SdsTableModule,
     SdsTabsModule,
     SdsPopoverModule,
-    NgxBootstrapIconsModule.pick({caretDownFill, caretUpFill, filter, arrowClockwise, chevronDown}),
+    NgxBootstrapIconsModule.pick({ caretDownFill, caretUpFill, filter, arrowClockwise, chevronDown, infoCircleFill }),
     FormlyModule.forChild(FORMLY_CONFIG),
     FormlyModule.forRoot({
       validationMessages: [

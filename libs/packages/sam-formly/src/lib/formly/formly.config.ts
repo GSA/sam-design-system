@@ -37,6 +37,7 @@ export const FIELD_TYPE_COMPONENTS = [
   FormlyReadonlyWrapperComponent,
   FormlyFieldFileInputComponent,
   FormlyTabsWrapperComponent,
+  FormlyFieldTableComponent,
 ];
 import {
   dateRangeValidator,
@@ -55,6 +56,7 @@ import { SdsFormlyTypes } from './models/formly-types';
 import { FormlyReadonlyWrapperComponent } from './wrappers/readonly.wrapper';
 import { FormlyFieldFileInputComponent } from './types/file-input';
 import { FormlyTabsWrapperComponent } from './wrappers/tabs.wrapper';
+import { FormlyFieldTableComponent } from './types/table';
 
 export const FORMLY_WRAPPERS: any = [
   {
@@ -260,6 +262,14 @@ export const FORMLY_CONFIG: ConfigOption = {
       component: FormlyFieldFileInputComponent,
       wrappers: sdsWrappers,
     },
+    {
+      name: SdsFormlyTypes.TABLE,
+      component: FormlyFieldTableComponent
+    },
+    {
+      name: SdsFormlyTypes.TABS,
+      component: FormlyFieldTabsComponent,
+    }
   ],
   wrappers: [
     { name: 'label', component: FormlyLabelWrapperComponent },
