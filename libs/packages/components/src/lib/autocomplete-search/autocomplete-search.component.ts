@@ -607,7 +607,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
 
   addListener() {
     let id = this.configuration.id;
-    let inputHeight = document.getElementById('autocompleteBasic').getBoundingClientRect().height;
+    let inputHeight = document.getElementById(id).getBoundingClientRect().height;
     let modalHeight = document.getElementsByClassName('sds-dialog-content')[0].getBoundingClientRect().height;
     document.getElementsByClassName('sds-dialog-content')[0]
       .addEventListener('scroll', function (event) {

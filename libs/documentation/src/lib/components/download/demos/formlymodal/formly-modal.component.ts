@@ -26,7 +26,7 @@ export class FormlyDialog {
   fields: FormlyFieldConfig[] = [
 
     {
-      key: 'entity.title',
+      key: 'entity.name',
       type: 'input',
       templateOptions: {
         label: 'Entity Name',
@@ -36,38 +36,32 @@ export class FormlyDialog {
       },
     },
     {
-      key: 'entity.title',
+      key: 'entity.samuei',
       type: 'input',
       templateOptions: {
-        label: 'Entity Name',
-        placeholder: 'eg: Acme Corporation',
-        description: 'Enter the name of your entity.',
-        required: true,
+        label: 'Unique Entity ID',
+
       },
     },
     {
-      key: 'entity.title',
+      key: 'entity.dunuei',
       type: 'input',
       templateOptions: {
-        label: 'Entity Name',
-        placeholder: 'eg: Acme Corporation',
-        description: 'Enter the name of your entity.',
-        required: true,
+        label: 'Unique Entity ID',
+
       },
     },
     {
-      key: 'entity.title',
+      key: 'entity.cage',
       type: 'input',
       templateOptions: {
-        label: 'Entity Name',
-        placeholder: 'eg: Acme Corporation',
-        description: 'Enter the name of your entity.',
-        required: true,
+        label: 'CAGE / NCAGE',
+
       },
     },
     {
       key: 'filters',
-      wrappers: ['filterwrapper'],
+
       templateOptions: { label: 'Keyword' },
       fieldGroup: [
         {
@@ -85,46 +79,25 @@ export class FormlyDialog {
       ],
     },
     {
-      key: 'entity.title',
+      key: 'entity.naics',
       type: 'input',
       templateOptions: {
-        label: 'Entity Name',
+        label: 'NAICS Code',
+
+      },
+    },
+
+    {
+      key: 'entity.psc',
+      type: 'input',
+      templateOptions: {
+        label: 'Product Service Code',
         placeholder: 'eg: Acme Corporation',
         description: 'Enter the name of your entity.',
         required: true,
       },
     },
 
-    {
-      key: 'entity.title',
-      type: 'input',
-      templateOptions: {
-        label: 'Entity Name',
-        placeholder: 'eg: Acme Corporation',
-        description: 'Enter the name of your entity.',
-        required: true,
-      },
-    },
-    {
-      key: 'entity.title',
-      type: 'input',
-      templateOptions: {
-        label: 'Entity Name',
-        placeholder: 'eg: Acme Corporation',
-        description: 'Enter the name of your entity.',
-        required: true,
-      },
-    },
-    {
-      key: 'entity.title',
-      type: 'input',
-      templateOptions: {
-        label: 'Entity Name',
-        placeholder: 'eg: Acme Corporation',
-        description: 'Enter the name of your entity.',
-        required: true,
-      },
-    },
 
   ];
   constructor(
