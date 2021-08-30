@@ -266,10 +266,6 @@ export const FORMLY_CONFIG: ConfigOption = {
       name: SdsFormlyTypes.TABLE,
       component: FormlyFieldTableComponent
     },
-    {
-      name: SdsFormlyTypes.TABS,
-      component: FormlyFieldTabsComponent,
-    }
   ],
   wrappers: [
     { name: 'label', component: FormlyLabelWrapperComponent },
