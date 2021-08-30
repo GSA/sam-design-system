@@ -50,7 +50,7 @@ import * as qs from 'qs';
           </div>
         </ng-container>
         <ng-container *ngSwitchCase="'popover'">
-        <div #popoverContent class="padding-1 text-left sds-width-max-content maxw-card-lg">
+        <div #popoverContent class="padding-1 text-left sds-width-max-content">
           <ng-container #fieldComponent></ng-container>
         </div>
           <div
@@ -60,7 +60,7 @@ import * as qs from 'qs';
               [closeOnClickOutside]="true"
               tabindex="0" [attr.aria-label]="to.label">
             {{to.label}}
-            <usa-icon [icon]="'chevron-down'"></usa-icon>
+            <usa-icon [icon]="'chevron-down'" [size]="'sm'"></usa-icon>
           </div>
         </ng-container>
         <ng-container *ngSwitchDefault>
