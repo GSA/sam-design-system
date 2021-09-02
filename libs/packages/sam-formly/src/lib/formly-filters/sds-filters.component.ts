@@ -111,6 +111,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
   // TODO: check type -- Formly models are typically objects
   @Output() filterChange = new EventEmitter<object>();
   @Output() showInactiveFiltersChange = new EventEmitter<boolean>();
+  @Output() resetClicked = new EventEmitter();
 
   chips: ReadonlyDataType[] = [];
   dialogRef: SdsDialogRef<any>;
