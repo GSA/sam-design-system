@@ -9,7 +9,7 @@
       </sds-advanced-filters>
     </div>
     <div class="grid-col text-right">
-      <sds-formly-reset [options]="options" [defaultModel]="defaultModel"></sds-formly-reset>
+      <sds-formly-reset [options]="options" [defaultModel]="defaultModel" (resetClicked)="resetClicked.emit()"></sds-formly-reset>
     </div>
   </div>
 </div>
@@ -41,7 +41,7 @@
   </div>
 
   <div *ngIf="showReset" class="horizontal-reset margin-left-2 text-right">
-    <sds-formly-reset [options]="options" [defaultModel]="{}"></sds-formly-reset>
+    <sds-formly-reset [options]="options" [defaultModel]="{}" (resetClicked)="resetClicked.emit()"></sds-formly-reset>
   </div>
 </div>
 
@@ -85,7 +85,7 @@
       </formly-form>
       <div class="grid-row margin-top-2">
         <div class="grid-col text-right">
-          <sds-formly-reset [options]="data.options" [defaultModel]="{}"></sds-formly-reset>
+          <sds-formly-reset [options]="data.options" [defaultModel]="{}" (resetClicked)="resetClicked.emit()"></sds-formly-reset>
         </div>
       </div>
     </div>

@@ -9,6 +9,8 @@ import {
   OnInit,
   ChangeDetectorRef,
   HostListener,
+  Output,
+  EventEmitter,
 } from '@angular/core';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import * as qs from 'qs';
@@ -63,6 +65,8 @@ export class SearchListLayoutComponent implements OnInit {
   @Input() configuration: SearchListConfiguration;
 
   @Input() enableApiCall: boolean = true;
+
+  @Output() sortFieldChange = new EventEmitter<string>();
 
   /**
    * Set to true when either filter is empty or filter is equal to default model
@@ -358,6 +362,7 @@ export class SearchListLayoutComponent implements OnInit {
   onSelectChange() {
     this.page.pageNumber = 1;
     this.updateContent();
+    this.sortFieldChange.emit(this.sortField);
   }
 
   /**

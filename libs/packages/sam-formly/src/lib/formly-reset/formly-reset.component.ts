@@ -20,6 +20,8 @@ export class SdsFormlyResetComponent {
    */
   @Input() classes: string[] = ['usa-button', 'usa-button--unstyled'];
 
+  @Output() resetClicked = new EventEmitter();
+
   resetAll() {
 
     if (this.defaultModel) {
@@ -27,6 +29,7 @@ export class SdsFormlyResetComponent {
     } else {
       this.options.resetModel();
     }
+    this.resetClicked.emit();
   }
 
 }
