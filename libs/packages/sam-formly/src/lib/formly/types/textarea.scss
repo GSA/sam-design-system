@@ -1,0 +1,30 @@
+.container,
+.backdrop,
+textarea {
+  width: 200px;
+  height: 100px;
+}
+
+.highlights,
+textarea {
+  padding: 10px;
+  font: 14px/14px sans-serif;
+
+}
+
+.backdrop {
+  position: absolute;
+  z-index: 1;
+  border: 1px solid;
+  background-color: #fff;
+  overflow: auto;
+  pointer-events: none;
+
+}
+
+textarea {
+  position: absolute;
+  z-index: 2;
+  margin: 0;
+  background-color: transparent;
+}

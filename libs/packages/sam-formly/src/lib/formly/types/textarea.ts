@@ -5,17 +5,20 @@ import { FieldType } from '@ngx-formly/core';
   selector: 'sds-formly-field-textarea',
   template: `
     <div [ngClass]="{'usa-character-count': to.maxLength}">
-      <textarea [formControl]="formControl" [cols]="to.cols"
+
+    <div class="container">
+    <div #backdrop class="backdrop">
+      <div class="highlights" [innerHTML]="highlightedText"></div>
+    </div>
+    <textarea [formControl]="formControl" [cols]="to.cols"
         [rows]="to.rows" class="usa-textarea minw-15" [class.usa-input--error]="showError"
         [placeholder]="to.placeholder"
         [formlyAttributes]="field"
         [maxlength]="to.maxLength"
-        (ngModelChange)="valueChange($event)"
-        
-      >
-
+        (ngModelChange)="valueChange($event)"> 
       </textarea>
-      <p id="textArea"></p>
+  </div>
+
       <span [attr.id]="id + '-character-count'" 
         class="usa-hint"
         aria-live="polite">
@@ -26,7 +29,9 @@ import { FieldType } from '@ngx-formly/core';
         </span>
       </span>
     </div>
-  `,
+
+    `,
+  styleUrls: ['./textarea.scss']
 })
 export class FormlyFieldTextAreaComponent extends FieldType implements OnInit {
   defaultOptions = {
@@ -35,7 +40,7 @@ export class FormlyFieldTextAreaComponent extends FieldType implements OnInit {
       rows: 1,
     },
   };
-
+  highlightedText: string;
   charactersRemaining: number;
 
   ngOnInit() {
@@ -81,7 +86,7 @@ export class FormlyFieldTextAreaComponent extends FieldType implements OnInit {
         }
       }
       let newValue = words.join(' ');
-
+      this.highlightedText = newValue;
       document.getElementById('textArea').innerHTML = newValue;
     }
 

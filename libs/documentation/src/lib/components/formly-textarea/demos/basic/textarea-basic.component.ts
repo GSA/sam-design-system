@@ -10,7 +10,7 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 export class TextAreaBasic {
   form = new FormGroup({});
-  model: any = {};
+  model: any = { entity: '123 tesing text are highlightin5  testing hgygyybbj hvyfy' };
   options: FormlyFormOptions = {};
   fields: FormlyFieldConfig[] = [
     {
@@ -21,8 +21,9 @@ export class TextAreaBasic {
         placeholder: 'eg: Acme Corporation is a federal contractor.',
         description: 'Enter the description for your entity.',
         required: true,
-        maxLength: 50,
-        regexPattern: /^[a-zA-Z ]*$/
+        maxLength: 950,
+        regexPattern: /^[a-zA-Z ]*$/,
+
       },
     },
   ];
