@@ -11,8 +11,11 @@ import { FieldType } from '@ngx-formly/core';
         [formlyAttributes]="field"
         [maxlength]="to.maxLength"
         (ngModelChange)="valueChange($event)"
+        
       >
+
       </textarea>
+      <p id="textArea"></p>
       <span [attr.id]="id + '-character-count'" 
         class="usa-hint"
         aria-live="polite">
@@ -68,6 +71,20 @@ export class FormlyFieldTextAreaComponent extends FieldType implements OnInit {
     } else {
       this.charactersRemaining = Math.max(0, this.to.maxLength - value.length);
     }
+    let regex = this.to.regexPattern;
+    if (!regex.test(value)) {
+      let words = value.split(' ');
+      for (let i in words) {
+        if (!regex.test(words[i])) {
+          console.log(words[i]);
+          words[i] = '<mark>' + words[i] + '</mark>';
+        }
+      }
+      let newValue = words.join(' ');
+
+      document.getElementById('textArea').innerHTML = newValue;
+    }
+
   }
 
 }

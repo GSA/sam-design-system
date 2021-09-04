@@ -22,6 +22,7 @@ export class TextAreaBasic {
         description: 'Enter the description for your entity.',
         required: true,
         maxLength: 50,
+        regexPattern: /^[a-zA-Z ]*$/
       },
     },
   ];
