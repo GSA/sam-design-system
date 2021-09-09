@@ -24,10 +24,22 @@ export class SideToolbarComponent implements OnInit, OnDestroy {
   // Text for button in responsive view
   @Input() responsiveButtonText: string;
 
+  // Text for title bar in responsive view. If not provided, will default to responsiveButtonText
+  @Input() dialogTitleText: string;
+
+  // Aria label to apply to back button. If not provided, will default to "Cancel + ${dialogTitleText}"
+  @Input() backButtonAria: string;
+
+
   @Input() responsiveDialogOptions: SdsDialogConfig
 
   // default value is size of mobile view in px
   @Input() responsiveSize = 480;
+
+  @Input() showApply: boolean = false;
+
+  @Output() onCancel: EventEmitter<any> = new EventEmitter();
+  @Output() onApply: EventEmitter<any> = new EventEmitter();
 
   @Output() responsiveDialog = new EventEmitter();
   @Output() responsiveView = new EventEmitter();
@@ -40,11 +52,18 @@ export class SideToolbarComponent implements OnInit, OnDestroy {
   constructor(
     private sdsDialogService: SdsDialogService,
     private breakpointObserver: BreakpointObserver // Will watch for changes between mobile and non-mobile screen size
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.observeViewChange();
+    if (this.dialogTitleText === undefined) {
+      this.dialogTitleText = this.responsiveButtonText;
+    }
+    if (this.backButtonAria === undefined) {
+      this.backButtonAria = `Cancel ${this.dialogTitleText}`
+    }
   }
+
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
@@ -61,7 +80,7 @@ export class SideToolbarComponent implements OnInit, OnDestroy {
       panelClass: ['sds-dialog--full']
     };
 
-    let allOptions = this.responsiveDialogOptions ? {...dialogOptions, ...this.responsiveDialogOptions} : dialogOptions;
+    let allOptions = this.responsiveDialogOptions ? { ...dialogOptions, ...this.responsiveDialogOptions } : dialogOptions;
 
     this.openResponsiveDialog = this.sdsDialogService.open(this.template, allOptions);
 
@@ -91,5 +110,17 @@ export class SideToolbarComponent implements OnInit, OnDestroy {
       });
 
     this.subscription.add(breakpointUnsubscription);
+  }
+
+  onCancelClicked() {
+    this.openResponsiveDialog.close();
+    this.openResponsiveDialog = undefined;
+    this.onCancel.emit();
+  }
+
+  onApplyClicked() {
+    this.openResponsiveDialog.close();
+    this.openResponsiveDialog = undefined;
+    this.onApply.emit();
   }
 }
