@@ -49,11 +49,6 @@
             ]
           }
         }
-      },
-      "schematics": {
-        "@nrwl/schematics:component": {
-          "styleext": "scss"
-        }
       }
     },
     "sam-material-extensions": {
@@ -97,11 +92,6 @@
               "!libs/packages/components/**/*"
             ]
           }
-        }
-      },
-      "schematics": {
-        "@nrwl/schematics:component": {
-          "styleext": "scss"
         }
       }
     },
@@ -150,11 +140,6 @@
             ]
           }
         }
-      },
-      "schematics": {
-        "@nrwl/schematics:component": {
-          "styleext": "scss"
-        }
       }
     },
     "layouts": {
@@ -195,11 +180,6 @@
             ]
           }
         }
-      },
-      "schematics": {
-        "@nrwl/schematics:component": {
-          "styleext": "scss"
-        }
       }
     },
     "sam-design-system-site": {
@@ -207,11 +187,6 @@
       "sourceRoot": "apps/sam-design-system-site/src",
       "projectType": "application",
       "prefix": "sds",
-      "schematics": {
-        "@nrwl/schematics:component": {
-          "style": "scss"
-        }
-      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -375,11 +350,6 @@
             ]
           }
         }
-      },
-      "schematics": {
-        "@nrwl/schematics:component": {
-          "styleext": "scss"
-        }
       }
     }
   },
@@ -387,23 +357,7 @@
     "warnings": {
       "versionMismatch": false
     },
-    "defaultCollection": "@nrwl/angular",
     "packageManager": "npm"
-  },
-  "schematics": {
-    "@nrwl/schematics:application": {
-      "style": "scss",
-      "unitTestRunner": "karma",
-      "e2eTestRunner": "protractor"
-    },
-    "@nrwl/schematics:library": {
-      "style": "scss",
-      "unitTestRunner": "karma",
-      "framework": "angular"
-    },
-    "@nrwl/schematics:node-application": {
-      "framework": "express"
-    }
   },
   "defaultProject": "sam-design-system-site"
 }
