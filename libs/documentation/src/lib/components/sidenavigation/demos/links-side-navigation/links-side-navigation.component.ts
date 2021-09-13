@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { INavigationLink, SdsDialogConfig, SdsDialogRef, SideNavigationModel } from '@gsa-sam/components';
-import { navigationConfig } from './navigate.config';
+import { navigationConfig } from '../filter-side-navigation/navigation.config';
 
 @Component({
   selector: 'links-side-navigation',

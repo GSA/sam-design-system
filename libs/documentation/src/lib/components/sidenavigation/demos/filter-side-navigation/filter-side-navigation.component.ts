@@ -7,7 +7,7 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 import { DataService } from 'libs/documentation/src/lib/pages/layout/data.service';
 import { FilterService } from 'libs/documentation/src/lib/pages/layout/filter.service';
 import { BehaviorSubject } from 'rxjs';
-import { navigationConfig } from '../links-side-navigation/navigate.config';
+import { navigationConfig } from './navigation.config';
 
 @Component({
   selector: 'filter-side-navigation',

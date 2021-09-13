@@ -9,19 +9,29 @@ import {
   DocumentationDemoList,
 } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
-import { SideNavigationOptionalModule } from './demos/optional/sidenavigation-optional.module';
-import { SideNavigationOptional } from './demos/optional/sidenavigation-optional.component';
+import { LinksSideNavigationComponent } from './demos/links-side-navigation/links-side-navigation.component';
+import { LinksSideNavigationModule } from './demos/links-side-navigation/links-side-navigation.module';
+import { FilterSideNavigationComponent } from './demos/filter-side-navigation/filter-side-navigation.component';
+import { FilterSideNavigationModule } from './demos/filter-side-navigation/filter-side-navigation.module';
 
 declare var require: any;
 const DEMOS = {
-  optional: {
-    title: 'Side Navigation',
-    type: SideNavigationOptional,
-    code: require('!!raw-loader!./demos/optional/sidenavigation-optional.component'),
-    module: require('!!raw-loader!./demos/optional/sidenavigation-optional.module'),
-    markup: require('!!raw-loader!./demos/optional/sidenavigation-optional.component.html'),
-    path: 'libs/documentation/src/lib/components/sidenavigation/demos/optional',
+  links: {
+    title: 'Links Navigation',
+    type: LinksSideNavigationComponent,
+    code: require('!!raw-loader!./demos/links-side-navigation/links-side-navigation.component'),
+    module: require('!!raw-loader!./demos/links-side-navigation/links-side-navigation.module'),
+    markup: require('!!raw-loader!./demos/links-side-navigation/links-side-navigation.component.html'),
+    path: 'libs/documentation/src/lib/components/sidenavigation/demos/links-side-navigation',
   },
+  filter: {
+    title: 'Filter Sidenav',
+    type: FilterSideNavigationComponent,
+    code: require('!!raw-loader!./demos/filter-side-navigation/filter-side-navigation.component'),
+    module: require('!!raw-loader!./demos/filter-side-navigation/filter-side-navigation.module'),
+    markup: require('!!raw-loader!./demos/filter-side-navigation/filter-side-navigation.component.html'),
+    path: 'libs/documentation/src/lib/components/sidenavigation/demos/filter-side-navigation',
+  }
 };
 
 export const ROUTES = [
@@ -51,7 +61,8 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    SideNavigationOptionalModule,
+    LinksSideNavigationModule,
+    FilterSideNavigationModule
   ],
 })
 export class SideNavigationModule {
