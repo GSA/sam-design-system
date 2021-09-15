@@ -1,6 +1,6 @@
 {
+  "extends": "tslint:recommended",
   "rulesDirectory": [
-    "node_modules/@nrwl/workspace/src/tslint",
     "node_modules/codelyzer"
   ],
 
@@ -53,19 +53,6 @@
     "variable-name": false,
     "directive-selector": [true, "attribute", "sds", "camelCase"],
     "component-selector": [true, "element", "sds", "kebab-case"],
-    "nx-enforce-module-boundaries": [
-      true,
-      {
-        "allow": [],
-        "depConstraints": [
-          {
-            "sourceTag": "*",
-            "onlyDependOnLibsWithTags": ["*"]
-          }
-        ],
-        "enforceBuildableLibDependency": true
-      }
-    ],
     "no-output-on-prefix": true,
     "no-inputs-metadata-property": true,
     "no-outputs-metadata-property": true,
