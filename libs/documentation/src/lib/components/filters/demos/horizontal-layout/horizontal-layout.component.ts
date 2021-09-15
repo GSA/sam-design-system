@@ -37,7 +37,7 @@ export class HorizontalLayoutComponent {
       fieldGroupClassName: 'grid-row grid-gap-2', // Set up grid row so that form controls will be on same row
       fieldGroup: [
         {
-          key: 'entity.type',
+          key: 'userRole',
           type: 'select',
           className: 'tablet:grid-col-5 mobile-lg:grid-col-12', // Set up column space for input based on screensize
           templateOptions: {
@@ -52,7 +52,7 @@ export class HorizontalLayoutComponent {
           },
         },
         {
-          key: 'multiple.default.entity.title',
+          key: 'userPurpose',
           type: 'autocomplete',
           className: 'tablet:grid-col-5 mobile-lg:grid-col-12', // Set up column space for input based on screensize
           templateOptions: {
