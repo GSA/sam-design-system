@@ -21,6 +21,8 @@ import { FiltersDefaultValueComponent } from './demos/defaultValues/filters-defa
 import { FiltersDefaultValueModule } from './demos/defaultValues/filters-default-value.module';
 import { HorizontalFilterDemo } from './demos/horizontal-filter/horizontal-filter.component';
 import { HorizontalFilterModule } from './demos/horizontal-filter/horizontal-filter.module';
+import { HorizontalLayoutComponent } from './demos/horizontal-layout/horizontal-layout.component';
+import { HorizontalLayoutModule } from './demos/horizontal-layout/horizontal-layout.module';
 
 declare var require: any;
 const DEMOS = {
@@ -40,6 +42,16 @@ const DEMOS = {
     module: require('!!raw-loader!./demos/optional/filters-optional.module'),
     path: 'libs/documentation/src/lib/components/filters/demos/optional',
   },
+  horizontalLayout: {
+    title: 'Horizontal Layout',
+    type: HorizontalLayoutComponent,
+    code: require('!!raw-loader!./demos/horizontal-layout/horizontal-layout.component'),
+    markup: require('!!raw-loader!./demos/horizontal-layout/horizontal-layout.component.html'),
+    module: require('!!raw-loader!./demos/horizontal-layout/horizontal-layout.module'),
+    path:
+      'libs/documentation/src/lib/components/filters/demos/horizontal-layout',
+  },
+
   horizontalFilters: {
     title: 'Horizontal Filter',
     type: HorizontalFilterDemo,
@@ -110,6 +122,7 @@ export const ROUTES = [
     FiltersShowInactiveFilterValuesModule,
     FiltersDefaultValueModule,
     HorizontalFilterModule,
+    HorizontalLayoutModule,
   ],
 })
 export class FiltersModule {

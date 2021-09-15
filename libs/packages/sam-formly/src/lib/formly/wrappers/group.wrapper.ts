@@ -25,7 +25,7 @@ import * as qs from 'qs';
               class="sds-accordion__panel"
               [expanded]="modelHasValue()"
             >
-              <sds-accordion-title>{{ to.label }}</sds-accordion-title>
+              <sds-accordion-title><span [attr.class]="to.labelClass">{{ to.label }}</span></sds-accordion-title>
               <sds-accordion-content>
                 <ng-container #fieldComponent></ng-container>
               </sds-accordion-content>
@@ -42,7 +42,7 @@ import * as qs from 'qs';
               *ngIf="!to.hideLabel"
               [attr.aria-hidden]="!to.announceLabel ? undefined : 'true'"
             >
-              {{ to.label }}
+              <span [attr.class]="to.labelClass">{{ to.label }}</span>
             </div>
             <div class="sds-panel__body">
               <ng-container #fieldComponent></ng-container>

@@ -29,7 +29,7 @@ import { FieldWrapper } from '@ngx-formly/core';
           [ngClass]="to.tagClass ? to.tagClass : 'sds-tag--info-white'"
           >{{ to.tagText }}</span
         >
-        <span>{{ to.label }}</span>
+        <span [attr.class]="to.labelClass">{{ to.label }}</span>
         <span *ngIf="!to.required && !to.hideOptional"> (Optional)</span>
       </label>
       <ng-container #fieldComponent></ng-container>
