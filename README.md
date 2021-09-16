@@ -1,6 +1,6 @@
 # SamDesignSystem
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) using [Nrwl Nx](https://nrwl.io/nx).
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli).
 
 ## How To Work In This Structure
 To ensure your work follows the expected structure, ensure you are using the correct Angular CLI commands as you create new libraries, modules, and components.
@@ -77,22 +77,6 @@ First, you will also need to create a personal access token with `repo` scope fo
 Under the Github profile, go to Settings -> Developer Settings -> Personal Access Tokens -> Generate New Token and then provide that to the environment variable to use gren.
 
 Second, you need to add the repo information to package.json. This is already done on this project, but that keeps you from having to update `gren` with the repo info on each push.
-
-## Nrwl Extensions for Angular (Nx)
-
-<a href="https://nrwl.io/nx"><img src="https://preview.ibb.co/mW6sdw/nx_logo.png"></a>
-
-Nx is an open source toolkit for enterprise Angular applications.
-
-Nx is designed to help you create and build enterprise grade Angular applications. It provides an opinionated approach to application project structure and patterns.
-
-## Quick Start & Documentation
-
-[Watch a 5-minute video on how to get started with Nx.](http://nrwl.io/nx)
-
-## Generate your first application
-
-Run `ng generate app myapp` to generate an application. When using Nx, you can create multiple applications and libraries in the same CLI workspace. Read more [here](http://nrwl.io/nx).
 
 ## Development server
 
