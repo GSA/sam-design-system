@@ -7,6 +7,7 @@ import {
   OnInit,
   Output,
   TemplateRef,
+  ViewChild,
 } from '@angular/core';
 import { SdsDialogRef, SdsDialogService } from '@gsa-sam/components';
 import { BreakpointObserver } from '@angular/cdk/layout';
@@ -20,6 +21,8 @@ import { SdsDialogConfig } from '@gsa-sam/components';
 })
 export class SideToolbarComponent implements OnInit, OnDestroy {
   @ContentChild(TemplateRef) template: TemplateRef<any>;
+
+  @ViewChild('mobile') mobile: TemplateRef<any>;
 
   // Text for button in responsive view
   @Input() responsiveButtonText: string;
@@ -82,7 +85,7 @@ export class SideToolbarComponent implements OnInit, OnDestroy {
 
     let allOptions = this.responsiveDialogOptions ? { ...dialogOptions, ...this.responsiveDialogOptions } : dialogOptions;
 
-    this.openResponsiveDialog = this.sdsDialogService.open(this.template, allOptions);
+    this.openResponsiveDialog = this.sdsDialogService.open(this.mobile, allOptions);
 
     this.responsiveDialog.emit(this.openResponsiveDialog);
 

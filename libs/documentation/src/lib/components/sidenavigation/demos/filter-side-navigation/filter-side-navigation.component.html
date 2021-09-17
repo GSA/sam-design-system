@@ -3,22 +3,10 @@
     [showApply]=true [dialogTitleText]="'Advanced Search'" [backButtonAria]="'Close Advanced Search'">
     <ng-template #toolbarContent>
 
-      <div class="sds-card" *ngIf="isMobileMode">
-        <div class="sds-card__header sds-card__header--accent-cool grid-row">
-          <button id="cancelButton" class="sds-button sds-button--circular sds-button--white"
-            (click)="onCancelClicked()" aria-label="Cancel Advanced Search">
-            <usa-icon [icon]="'chevron-left'"></usa-icon>
-          </button>
-          <div class="margin-x-auto">
-            <h2 class="sds-card__title margin-top-1 margin-left-neg-2">Advanced Search</h2>
-          </div>
-        </div>
-      </div>
-
       <div class="sds-card sds-card--collapsible" [ngClass]="{'sds-card--collapsed': !domainsExpanded}">
         <div role="button" class="sds-card__header sds-card__header--action" [attr.aria-expanded]="domainsExpanded"
-          aria-controls="panelBody" tabindex="0" aria-label="Select Domain"
-          (click)="domainsExpanded = !domainsExpanded" (keyup.enter)="domainsExpanded = !domainsExpanded">
+          aria-controls="panelBody" tabindex="0" aria-label="Select Domain" (click)="domainsExpanded = !domainsExpanded"
+          (keyup.enter)="domainsExpanded = !domainsExpanded">
           <div class="sds-card__title">Select Domain<br />
             <span class="sds-card__subtitle">
               {{selectedPanel?.text}}
@@ -30,7 +18,7 @@
 
         <div class="sds-card__body sds-card__body--accent-cool" id="panelBody">
           <sds-selection-panel [model]="navigationModel" [currentSelection]="selectedPanel"
-            [navigateOnClick]="!isMobileMode" (panelSelected)="onPanelSelection($event)">
+            (panelSelected)="onPanelSelection($event)">
           </sds-selection-panel>
         </div>
       </div>
@@ -44,8 +32,8 @@
       </div>
 
       <div class="sds-card sds-card--collapsible" [ngClass]="{'sds-card--collapsed': !filtersExpanded}">
-        <div class="sds-card__header sds-card__header--action" role="button" tabindex="0"
-          aria-controls="filtersBody" [attr.aria-label]="'Filter By'" [attr.aria-expanded]="filtersExpanded"
+        <div class="sds-card__header sds-card__header--action" role="button" tabindex="0" aria-controls="filtersBody"
+          [attr.aria-label]="'Filter By'" [attr.aria-expanded]="filtersExpanded"
           (click)="filtersExpanded = !filtersExpanded" (keyup.enter)="filtersExpanded = !filtersExpanded">
           <div class="sds-card__title">Filter By</div>
           <div class="sds-card__action sds-card__collapse"></div>
@@ -56,12 +44,6 @@
             [fields]="filterPanelConfig.fields" [model]="filterPanelConfig.model"
             (filterChange)="filterChange$.next($event)">
           </sds-filters>
-        </div>
-      </div>
-
-      <div class="sds-card" *ngIf="isMobileMode">
-        <div class="sds-card__body sds-card__body--accent-cool">
-          <button class="usa-button" id="applyButton" aria-label="Apply" (click)="onApplyFilter()">Apply</button>
         </div>
       </div>
     </ng-template>
