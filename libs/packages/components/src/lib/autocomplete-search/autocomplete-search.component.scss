@@ -117,8 +117,7 @@
 }
 
 .hide-cursor {
-  color: transparent;
-  text-shadow: 0 0 0;
+  caret-color: transparent;
 }
 
 input::-ms-clear {
@@ -128,5 +127,4 @@ input::-ms-clear {
 .sds-autocomplete {
   position: relative;
   min-width: 30rem;
-  max-width: max-content;
 }
