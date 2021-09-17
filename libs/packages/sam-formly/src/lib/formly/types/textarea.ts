@@ -29,7 +29,7 @@ import { FieldType } from '@ngx-formly/core';
         </span>
       </span>
     </div>
-
+{{highlightedText}}
     `,
   styleUrls: ['./textarea.scss']
 })
@@ -40,6 +40,7 @@ export class FormlyFieldTextAreaComponent extends FieldType implements OnInit {
       rows: 1,
     },
   };
+  highlightIndex = 0;
   highlightedText: string;
   charactersRemaining: number;
 
@@ -76,16 +77,17 @@ export class FormlyFieldTextAreaComponent extends FieldType implements OnInit {
     } else {
       this.charactersRemaining = Math.max(0, this.to.maxLength - value.length);
     }
+    let newValue;
     let regex = this.to.regexPattern;
     if (!regex.test(value)) {
-      let words = value.split(' ');
-      for (let i in words) {
-        if (!regex.test(words[i])) {
-          console.log(words[i]);
-          words[i] = '<mark>' + words[i] + '</mark>';
-        }
+      if (this.highlightIndex == 0) {
+        this.highlightIndex = value.length;
+        newValue = [value.slice(0, this.highlightIndex - 1), '<mark>', value.slice(value.length - 1)].join('') + '</mark>';
+
       }
-      let newValue = words.join(' ');
+
+
+
       this.highlightedText = newValue;
       document.getElementById('textArea').innerHTML = newValue;
     }

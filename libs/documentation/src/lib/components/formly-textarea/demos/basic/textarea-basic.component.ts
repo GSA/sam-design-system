@@ -10,7 +10,7 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 export class TextAreaBasic {
   form = new FormGroup({});
-  model: any = { entity: '123 tesing text are highlightin5  testing hgygyybbj hvyfy' };
+  model: any = {};
   options: FormlyFormOptions = {};
   fields: FormlyFieldConfig[] = [
     {
