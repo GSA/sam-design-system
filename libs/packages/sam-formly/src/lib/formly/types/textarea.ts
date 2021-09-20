@@ -4,6 +4,7 @@ import { FieldType } from '@ngx-formly/core';
 @Component({
   selector: 'sds-formly-field-textarea',
   template: `
+   <div class="grid-row">
     <div [ngClass]="{'usa-character-count': to.maxLength}">
       <textarea [formControl]="formControl" [cols]="to.cols"
         [rows]="to.rows" class="usa-textarea minw-15" [class.usa-input--error]="showError"
@@ -21,6 +22,13 @@ import { FieldType } from '@ngx-formly/core';
         {{charactersRemaining === 1 ? 'character' : 'characters'}} 
         {{charactersRemaining === to.maxLength ? 'allowed' : 'left'}}
         </span>
+      </span>
+    </div>
+    <span *ngIf="to.tooltipText" class="sds-stack padding-top-105 margin-left-1"
+        [sdsPopover]="to.tooltipText" [sdsPopoverTitle]="to.tooltipTitle"
+        [position]="to.tooltipPosition ? to.tooltipPosition :'right'" tabindex="0"
+        aria-label="info tooltip">
+        <usa-icon [size]="'lg'" [icon]="'info-circle-fill'"></usa-icon>
       </span>
     </div>
   `,
