@@ -12,6 +12,7 @@ import { FieldWrapper } from '@ngx-formly/core';
 @Component({
   template: `
     <div class="usa-form-group" [class.usa-form-group--error]="showError">
+    <div class="grid-row">
       <label
         class="usa-label"
         *ngIf="hasLabel()"
@@ -32,6 +33,13 @@ import { FieldWrapper } from '@ngx-formly/core';
         <span [attr.class]="to.labelClass">{{ to.label }}</span>
         <span *ngIf="!to.required && !to.hideOptional"> (Optional)</span>
       </label>
+      <span *ngIf="to.tooltipText" class="padding-top-3 margin-left-1"
+        [sdsPopover]="to.tooltipText" [sdsPopoverTitle]="to.tooltipTitle"
+        [position]="to.tooltipPosition ? to.tooltipPosition :'right'" tabindex="0"
+        aria-label="info tooltip">
+        <usa-icon [size]="'sm'" [class]="to.tooltipIconClass" [icon]="to.toolTipIcon ? to.toolTipIcon :'info-circle'"></usa-icon>
+      </span>
+      </div>
       <ng-container #fieldComponent></ng-container>
     </div>
   `,
@@ -43,7 +51,7 @@ export class FormlyLabelWrapperComponent extends FieldWrapper {
     if (this.to.hideLabel) {
       return false;
     }
-    
+
     if (this.to.label) {
       if (
         !(this.field.type === 'checkbox' || this.field.type === 'multicheckbox')

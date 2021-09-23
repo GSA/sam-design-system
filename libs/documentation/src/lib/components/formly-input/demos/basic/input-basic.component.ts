@@ -21,6 +21,19 @@ export class InputBasic {
         placeholder: 'eg: Acme Corporation',
         description: 'Enter the name of your entity.',
         required: true,
+        tooltipText: 'Enter the name of your entity'
+      },
+    },
+    {
+      key: 'entity.id',
+      type: 'input',
+      templateOptions: {
+        label: 'Profit',
+        placeholder: 'eg: 1234',
+        description: 'nonprofit.',
+        tooltipText: 'Corporate Entity, Tax Exempt (Firm does not pay U.S. Federal Income Taxes nor U.S. Possession Income Taxes) ',
+        toolTipIcon: 'alarm',
+        tooltipIconClass: 'text-secondary'
       },
     },
   ];
