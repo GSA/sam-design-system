@@ -20,12 +20,6 @@ import { FieldType } from '@ngx-formly/core';
     />
     <mat-datepicker-toggle class="padding-top-1" matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker [startAt]="to.startDate" #picker></mat-datepicker>
-    <span *ngIf="to.tooltipText" class="sds-stack padding-top-105 margin-left-1 padding-top-2"
-        [sdsPopover]="to.tooltipText" [sdsPopoverTitle]="to.tooltipTitle"
-        [position]="to.tooltipPosition ? to.tooltipPosition :'right'" tabindex="0"
-        aria-label="info tooltip">
-        <usa-icon [size]="'lg'" [icon]="'info-circle-fill'"></usa-icon>
-      </span>
 </div>
   `,
   styles: [
