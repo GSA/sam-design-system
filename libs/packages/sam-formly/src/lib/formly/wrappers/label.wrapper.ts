@@ -33,12 +33,17 @@ import { FieldWrapper } from '@ngx-formly/core';
         <span [attr.class]="to.labelClass">{{ to.label }}</span>
         <span *ngIf="!to.required && !to.hideOptional"> (Optional)</span>
       </label>
+    
       <span *ngIf="to.tooltipText" class="padding-top-3 margin-left-1"
-        [sdsPopover]="to.tooltipText" [sdsPopoverTitle]="to.tooltipTitle"
-        [position]="to.tooltipPosition ? to.tooltipPosition :'right'" tabindex="0"
+        [position]="to.tooltipPosition ? to.tooltipPosition :'right'" [sdsPopover]="content"
+        [sdsPopoverTitle]="title" tabindex="0"
         aria-label="info tooltip">
-        <usa-icon [size]="'sm'" [class]="to.tooltipIconClass" [icon]="to.toolTipIcon ? to.toolTipIcon :'info-circle'"></usa-icon>
+        <p #title *ngIf="to.tooltipTitle" class="margin-1" [innerHTML]="to.tooltipTitle"></p>
+        <p #content [ngClass]="to.tooltipClass" class="margin-1" [innerHTML]="to.tooltipText">
+        </p>
+        <usa-icon [size]="'sm'" [icon]="'info-circle'"></usa-icon>
       </span>
+
       </div>
       <ng-container #fieldComponent></ng-container>
     </div>

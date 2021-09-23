@@ -20,8 +20,7 @@ export class InputBasic {
         label: 'Entity Name',
         placeholder: 'eg: Acme Corporation',
         description: 'Enter the name of your entity.',
-        required: true,
-        tooltipText: 'Enter the name of your entity'
+        required: true
       },
     },
     {
@@ -31,9 +30,7 @@ export class InputBasic {
         label: 'Profit',
         placeholder: 'eg: 1234',
         description: 'nonprofit.',
-        tooltipText: 'Corporate Entity, Tax Exempt (Firm does not pay U.S. Federal Income Taxes nor U.S. Possession Income Taxes) ',
-        toolTipIcon: 'alarm',
-        tooltipIconClass: 'text-secondary'
+        tooltipText: '<b>Corporate Entity,</b> Tax Exempt (Firm does not pay U.S. Federal Income Taxes nor U.S. Possession Income Taxes) ',
       },
     },
   ];
