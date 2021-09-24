@@ -9,11 +9,15 @@
         </label>
 
       </div>
-      <div *ngIf="to.tooltipText" class="sds-stack margin-top-105 margin-left-1" [sdsPopover]="to.tooltipText"
-        [sdsPopoverTitle]="" [position]="to.tooltipPosition ? to.tooltipPosition :'right'" tabindex="0"
+      <div *ngIf="to.selectTooltipText" [position]="to.selecttooltipPosition ? to.selectTooltipPosition :'right'"
+        [sdsPopover]="content" [sdsPopoverTitle]="title" class="sds-stack padding-top-105 margin-left-1" tabindex="0"
         aria-label="info tooltip">
-        <usa-icon [size]="'lg'" [icon]="'info-circle-fill'"></usa-icon>
+        <p #title *ngIf="to.selectTooltipTitle" class="margin-1" [innerHTML]="to.selectTooltipTitle"></p>
+        <p #content [ngClass]="to.selectTooltipClass" class="margin-1" [innerHTML]="to.selectTooltipText">
+        </p>
+        <usa-icon [size]="'lg'" [icon]="'info-circle'"></usa-icon>
       </div>
+
       <div *ngIf="to.expandableOptions">
         <button type="button" class="sds-button padding-top-0" [attr.aria-expanded]="!to.expandedOptions"
           [attr.aria-controls]="id + 'collapseID'" (click)="to.expandedOptions = !to.expandedOptions">
@@ -45,11 +49,14 @@
               {{ option.label }}
             </label>
           </div>
-          <div *ngIf="to.options[i].tooltipText" class="sds-stack padding-top-105 margin-left-1"
-            [sdsPopover]="to.options[i].tooltipText" [sdsPopoverTitle]="to.options[i].tooltipTitle"
-            [position]="to.options[i].tooltipPosition ? to.options[i].tooltipPosition :'right'" tabindex="0"
+          <div *ngIf="to.options[i].tooltipText"
+            [position]="to.options[i].tooltipPosition ? to.options[i].tooltipPosition :'right'" [sdsPopover]="content"
+            [sdsPopoverTitle]="title" class="sds-stack padding-top-105 margin-left-1" tabindex="0"
             aria-label="info tooltip">
-            <usa-icon [size]="'lg'" [icon]="'info-circle-fill'"></usa-icon>
+            <p #title *ngIf="to.options[i].tooltipTitle" class="margin-1" [innerHTML]="to.options[i].tooltipTitle"></p>
+            <p #content [ngClass]="to.options[i].tooltipClass" class="margin-1" [innerHTML]="to.options[i].tooltipText">
+            </p>
+            <usa-icon [size]="'lg'" [icon]="'info-circle'"></usa-icon>
           </div>
 
         </li>

@@ -18,9 +18,16 @@ import { FieldType } from '@ngx-formly/core';
         <span *ngIf="!to.required && !to.hideOptional"> (Optional)</span>
       </label>
     </div>
-    <div *ngIf="to.tooltipText" class="sds-stack margin-top-205 margin-left-1" [sdsPopover]="to.tooltipText" [sdsPopoverTitle]="to.tooltipTitle" [position]="to.tooltipPosition ? to.tooltipPosition :'right'" tabindex="0" aria-label="info tooltip">
-        <usa-icon [size]="'lg'" [icon]="'info-circle-fill'"></usa-icon>
-    </div>
+
+    <div *ngIf="to.tooltipText" class="padding-top-3 margin-left-1"
+        [position]="to.tooltipPosition ? to.tooltipPosition :'right'" [sdsPopover]="content"
+        [sdsPopoverTitle]="title" tabindex="0"
+        aria-label="info tooltip">
+        <p #title *ngIf="to.tooltipTitle" class="margin-1" [innerHTML]="to.tooltipTitle"></p>
+        <p #content [ngClass]="to.tooltipClass" class="margin-1" [innerHTML]="to.tooltipText">
+        </p>
+        <usa-icon [size]="'lg'" [icon]="'info-circle'"></usa-icon>
+      </div>
 </div>
   `,
 })

@@ -27,4 +27,4 @@ import { FieldType } from '@ngx-formly/core';
   ],
   encapsulation: ViewEncapsulation.None,
 })
-export class FormlyFieldDatePickerComponent extends FieldType {}
+export class FormlyFieldDatePickerComponent extends FieldType { }
