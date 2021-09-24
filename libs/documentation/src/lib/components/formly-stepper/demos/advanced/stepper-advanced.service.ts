@@ -175,6 +175,7 @@ export class StepperAdvancedService {
           templateOptions: {
             label: "Taxpayer Name",
             hideOptional: true,
+            required: true,
           },
         },
         {
@@ -183,6 +184,7 @@ export class StepperAdvancedService {
           templateOptions: {
             label: "TIN Number",
             hideOptional: true,
+            required: true,
           },
         }
       ]

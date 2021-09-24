@@ -40,7 +40,7 @@
   </sds-step>
 
 
-  <sds-step id="taxPayerInfoForm" text="Taxpayer Details"
+  <sds-step id="taxPayerInfoForm" text="Taxpayer Details" [stepValidationFn]="stepMap.taxpayerInformation.validationFn"
     [fieldConfig]="stepMap.taxpayerInformation.fieldConfig">
     <h1 sdsStepHeader class="margin-top-0">
       Enter Taxpayer Details
