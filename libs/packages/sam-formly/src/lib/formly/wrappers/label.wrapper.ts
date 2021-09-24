@@ -34,7 +34,7 @@ import { FieldWrapper } from '@ngx-formly/core';
         <span *ngIf="!to.required && !to.hideOptional"> (Optional)</span>
       </label>
     
-      <span *ngIf="to.tooltipText" class="padding-top-3 margin-left-1"
+      <span *ngIf="to.tooltipText" class="margin-top-3 margin-left-1"
         [position]="to.tooltipPosition ? to.tooltipPosition :'right'" [sdsPopover]="content"
         [sdsPopoverTitle]="title" tabindex="0"
         aria-label="info tooltip">
