@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { SelectionMode } from './sds-selected-item-model-helper';
 
 export class SDSSelectedResultConfiguration {
@@ -26,4 +27,10 @@ export class SDSSelectedResultConfiguration {
    * Mode of the model either allows a single item or multiple items
    */
   public selectionMode: SelectionMode = SelectionMode.SINGLE;
+
+  /** 
+   * Modifiier function to change display of how primary text field is shown
+   * Allows adding prefix / suffix values when displaying tags
+   */
+  public displayModifierFn?: (displayValue: string, index?: number) => string;
 }
