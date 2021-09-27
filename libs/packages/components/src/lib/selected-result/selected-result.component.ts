@@ -84,8 +84,9 @@ export class SDSSelectedResultComponent implements ControlValueAccessor {
    * Gets the string value from the specifed properties of an object
    * @param object 
    * @param propertyFields comma seperated list with periods depth of object
+   * @param index - the index location of the value in model's item list
    */
-  getObjectValue(object: Object, propertyFields: string): string {
+  getObjectValue(object: Object, propertyFields: string, index?: number): string {
     let value = '';
     let current = object;
     let fieldSplit = propertyFields.split(',');
@@ -104,7 +105,8 @@ export class SDSSelectedResultComponent implements ControlValueAccessor {
       }
       current = object;
     }
-    return value.trim();
+
+    return this.configuration.displayModifierFn ? this.configuration.displayModifierFn(value.trim(), index) : value.trim();
   }
 
 }

@@ -9,7 +9,7 @@
       <ng-container *ngIf="!itemTemplate">
         <div class="sds--tag__item">
           <div>
-            {{ getObjectValue(result, configuration.primaryTextField) }}
+            {{ getObjectValue(result, configuration.primaryTextField, i) }}
           </div>
           <div *ngIf="
               configuration.secondaryTextField &&
@@ -21,7 +21,7 @@
       </ng-container>
       <button *ngIf="!disabled" [attr.aria-label]="
           'Remove Item ' +
-          getObjectValue(result, configuration.primaryTextField)
+          getObjectValue(result, configuration.primaryTextField, i)
         " [class.text-base]="disabled" aria-hidden="false" class="sds-tag__close" (click)="removeItem(result)"
         (keyup.enter)="removeItem(result)">
         <usa-icon [icon]="'x'" size="lg"></usa-icon>

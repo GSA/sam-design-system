@@ -7,7 +7,9 @@ import {
   forwardRef,
   HostListener,
   ChangeDetectorRef,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
+  OnInit,
+  OnDestroy
 } from '@angular/core';
 
 import {
@@ -20,6 +22,7 @@ import { SDSAutocompleteServiceInterface } from '../autocomplete-search/models/S
 import { SDSAutocompletelConfiguration } from './models/SDSAutocompletelConfiguration.model';
 import { SelectionMode } from '../selected-result/models/sds-selected-item-model-helper';
 import { SDSAutocompleteSearchComponent } from '../autocomplete-search/autocomplete-search.component';
+import { Subscription } from 'rxjs';
 
 const Autocomplete_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -34,7 +37,7 @@ const Autocomplete_VALUE_ACCESSOR: any = {
   providers: [Autocomplete_VALUE_ACCESSOR],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SDSAutocompleteComponent implements ControlValueAccessor {
+export class SDSAutocompleteComponent implements ControlValueAccessor, OnInit, OnDestroy {
   /**
    * Allow to insert a customized template for suggestions results
    */
@@ -70,8 +73,26 @@ export class SDSAutocompleteComponent implements ControlValueAccessor {
   @Input()
   public service: SDSAutocompleteServiceInterface;
 
+  _subscriptions = new Subscription();
+
   @ViewChild('autocompleteSearch', { static: true }) autocompleteSearch: SDSAutocompleteSearchComponent;
   constructor(private cd: ChangeDetectorRef) {  }
+
+  ngOnInit() {
+    if (!this.configuration.registerChanges$) {
+      return;
+    }
+
+    const changesSubscription = this.configuration.registerChanges$.subscribe(() => {
+      this.cd.detectChanges();
+    });
+
+    this._subscriptions.add(changesSubscription);
+  }
+
+  ngOnDestroy() {
+    this._subscriptions.unsubscribe();
+  }
 
   /**
    * Stored Event for ControlValueAccessor

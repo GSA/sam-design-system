@@ -64,6 +64,16 @@ export class ResultsLayoutComponent implements AfterViewInit, OnInit {
     this.filterChange$.subscribe((res) => {
       this.resultList.updateFilter(res);
     });
+
+    // Listen for radio change and refresh autocomplete
+    const keywordGroup = this.fields.find(field => field.key === 'keyword').fieldArray.fieldGroup[0].fieldGroup;
+    keywordGroup.find(keyword => keyword.key === 'keywordRadio').formControl.valueChanges.subscribe(change => {
+      // Refresh autocomplete chips - we do set timeout so that our model for radio option can update first, then
+      // this refresh will update our chips depending on the updated model value
+      setTimeout(() => {
+        this.filterService.keywordChangeSubject.next();
+      });
+    });
   }
 
   updateConfig(update: boolean) {
