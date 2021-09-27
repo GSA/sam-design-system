@@ -19,15 +19,12 @@ import { FieldType } from '@ngx-formly/core';
       </label>
     </div>
 
-    <div *ngIf="to.tooltipText" class="padding-top-3 margin-left-1"
-        [position]="to.tooltipPosition ? to.tooltipPosition :'right'" [sdsPopover]="content"
-        [sdsPopoverTitle]="title" tabindex="0"
-        aria-label="info tooltip">
-        <p #title *ngIf="to.tooltipTitle" class="margin-1" [innerHTML]="to.tooltipTitle"></p>
-        <p #content [ngClass]="to.tooltipClass" class="margin-1" [innerHTML]="to.tooltipText">
-        </p>
-        <usa-icon [size]="'lg'" [icon]="'info-circle'"></usa-icon>
-      </div>
+    <div *ngIf="to.tooltipText" class="padding-top-3 margin-left-1">
+            <p #tipContent [ngClass]="to.tooltipClass" class="margin-1"
+              [innerHTML]="to.tooltipText"></p>
+            <usa-icon [position]="to.tooltipPosition ? to.tooltipPosition :'right'"
+              [sdsTooltip]="tipContent" [size]="'lg'" [icon]="'info-circle'"></usa-icon>
+          </div>
 </div>
   `,
 })

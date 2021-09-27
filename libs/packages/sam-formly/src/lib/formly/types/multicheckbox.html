@@ -9,13 +9,11 @@
         </label>
 
       </div>
-      <div *ngIf="to.selectTooltipText" [position]="to.selecttooltipPosition ? to.selectTooltipPosition :'right'"
-        [sdsPopover]="content" [sdsPopoverTitle]="title" class="sds-stack padding-top-105 margin-left-1" tabindex="0"
-        aria-label="info tooltip">
-        <p #title *ngIf="to.selectTooltipTitle" class="margin-1" [innerHTML]="to.selectTooltipTitle"></p>
-        <p #content [ngClass]="to.selectTooltipClass" class="margin-1" [innerHTML]="to.selectTooltipText">
-        </p>
-        <usa-icon [size]="'lg'" [icon]="'info-circle'"></usa-icon>
+      <div *ngIf="to.selectTooltipText">
+        <p #tipContent1 [ngClass]="to.tooltipClass" class="margin-1" [innerHTML]="to.selectTooltipText"></p>
+        <usa-icon class="sds-stack padding-top-105 margin-left-1"
+          [position]="to.selecttooltipPosition ? to.selecttooltipPosition :'right'" [sdsTooltip]="tipContent1"
+          [size]="'lg'" [icon]="'info-circle'"></usa-icon>
       </div>
 
       <div *ngIf="to.expandableOptions">
@@ -49,16 +47,13 @@
               {{ option.label }}
             </label>
           </div>
-          <div *ngIf="to.options[i].tooltipText"
-            [position]="to.options[i].tooltipPosition ? to.options[i].tooltipPosition :'right'" [sdsPopover]="content"
-            [sdsPopoverTitle]="title" class="sds-stack padding-top-105 margin-left-1" tabindex="0"
-            aria-label="info tooltip">
-            <p #title *ngIf="to.options[i].tooltipTitle" class="margin-1" [innerHTML]="to.options[i].tooltipTitle"></p>
-            <p #content [ngClass]="to.options[i].tooltipClass" class="margin-1" [innerHTML]="to.options[i].tooltipText">
-            </p>
-            <usa-icon [size]="'lg'" [icon]="'info-circle'"></usa-icon>
-          </div>
 
+          <div *ngIf="to.options[i].tooltipText">
+            <p #tipContent [ngClass]="to.options[i].tooltipClass" class="margin-1"
+              [innerHTML]="to.options[i].tooltipText"></p>
+            <usa-icon [position]="to.options[i].tooltipPosition ? to.options[i].tooltipPosition :'right'"
+              [sdsTooltip]="tipContent" [size]="'lg'" [icon]="'info-circle'"></usa-icon>
+          </div>
         </li>
       </ul>
     </li>
