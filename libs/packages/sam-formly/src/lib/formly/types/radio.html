@@ -20,14 +20,12 @@
         </label>
       </div>
 
-      <div *ngIf="to.options[i].tooltipText"
-        [position]="to.options[i].tooltipPosition ? to.options[i].tooltipPosition :'right'" [sdsPopover]="content"
-        [sdsPopoverTitle]="title" class="sds-stack padding-top-105 margin-left-1" tabindex="0"
-        aria-label="info tooltip">
-        <p #title *ngIf="to.options[i].tooltipTitle" class="margin-1" [innerHTML]="to.options[i].tooltipTitle"></p>
-        <p #content [ngClass]="to.options[i].tooltipClass" class="margin-1" [innerHTML]="to.options[i].tooltipText">
+      <div *ngIf="to.options[i].tooltipText">
+        <p #tipContent [ngClass]="to.options[i].tooltipClass" class="margin-1" [innerHTML]="to.options[i].tooltipText">
         </p>
-        <usa-icon [size]="'lg'" [icon]="'info-circle'"></usa-icon>
+        <usa-icon class="sds-stack padding-top-105 margin-left-1"
+          [position]="to.options[i].tooltipPosition ? to.options[i].tooltipPosition :'right'" [sdsTooltip]="tipContent"
+          [size]="'lg'" [icon]="'info-circle'"></usa-icon>
       </div>
     </div>
   </ng-container>
