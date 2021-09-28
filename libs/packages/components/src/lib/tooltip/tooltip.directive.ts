@@ -12,10 +12,10 @@ export class SdsTooltipDirective implements AfterViewInit {
   @Input()
   position: string = 'top';
 
-  @HostListener('focus', ['$event']) onFocus() {
+  @HostListener('focus') onFocus() {
     this.renderer.setAttribute(this.sdsTooltipDiv, 'aria-hidden', 'false')
   }
-  @HostListener('blur', ['$event']) onBlur() {
+  @HostListener('blur') onBlur() {
     this.renderer.setAttribute(this.sdsTooltipDiv, 'aria-hidden', 'true')
   }
 
