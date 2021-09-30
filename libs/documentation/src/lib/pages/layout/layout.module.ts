@@ -7,6 +7,7 @@ import {
   SdsToolbarModule,
   SdsSideNavigationModule,
   SdsSelectionPanelModule,
+  SdsSideToolbarModule
 } from '@gsa-sam/components';
 import {
   SdsFiltersModule,
@@ -14,7 +15,7 @@ import {
 } from '@gsa-sam/sam-formly';
 
 import { ResultModule } from './result/result.module';
-import { SearchListServiceModule, SideToolbarModule } from '@gsa-sam/layouts';
+import { SearchListServiceModule } from '@gsa-sam/layouts';
 import { FilterService } from './filter.service';
 import { AutocompleteSampleDataService } from './services/autocomplete-sample.service';
 import { LayoutResponsiveComponent } from './layout-responsive/layout-responsive.component';
@@ -31,7 +32,7 @@ import { IconModule } from '@gsa-sam/ngx-uswds-icons';
     SdsSearchResultListModule,
     SearchListServiceModule,
     ResultModule,
-    SideToolbarModule,
+    SdsSideToolbarModule,
     SdsSelectionPanelModule,
   ],
 

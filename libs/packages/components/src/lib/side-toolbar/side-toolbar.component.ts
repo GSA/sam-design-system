@@ -8,17 +8,18 @@ import {
   Output,
   TemplateRef,
 } from '@angular/core';
-import { SdsDialogRef, SdsDialogService } from '@gsa-sam/components';
+import { SdsDialogRef } from '../dialog/dialog-ref';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs';
-import { SdsDialogConfig } from '@gsa-sam/components';
+import { SdsDialogConfig } from '../dialog/dialog-config';
+import { SdsDialogService } from '../dialog/dialog';
 
 @Component({
   selector: 'sds-side-toolbar',
   templateUrl: './side-toolbar.component.html',
   styleUrls: ['./side-toolbar.component.scss'],
 })
-export class SideToolbarComponent implements OnInit, OnDestroy {
+export class SdsSideToolbarComponent implements OnInit, OnDestroy {
   @ContentChild(TemplateRef) template: TemplateRef<any>;
 
   // Text for button in responsive view
@@ -40,9 +41,7 @@ export class SideToolbarComponent implements OnInit, OnDestroy {
   constructor(
     private sdsDialogService: SdsDialogService,
     private breakpointObserver: BreakpointObserver // Will watch for changes between mobile and non-mobile screen size
-  ) {
-    console.warn('The side toolbar you are currently using is deprecated. Please instead import SdsToolbarModule from @gsa-sam/components')
-  }
+  ) {}
 
   ngOnInit() {
     this.observeViewChange();

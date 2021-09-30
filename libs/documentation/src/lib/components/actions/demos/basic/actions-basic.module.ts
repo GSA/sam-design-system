@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActionsBasic } from './actions-basic.component';
-import { SdsActionsMenuModule } from '@gsa-sam/layouts';
+import { SdsActionsMenuModule } from '@gsa-sam/components';
 
 
 @NgModule({

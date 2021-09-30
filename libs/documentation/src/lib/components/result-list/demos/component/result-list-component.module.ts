@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SdsSearchResultListModule, SdsPageModule } from '@gsa-sam/components';
 
-import { SdsActionsMenuModule } from '@gsa-sam/layouts';
+import { SdsActionsMenuModule } from '@gsa-sam/components';
 import { ResultListComponent } from './result-list-component.component';
 import { ResultListItemSampleComponent } from './item.component';
 import { ResultListItemChildSampleComponent } from './child-item.component';

@@ -8,7 +8,5 @@ export class SdsActionsMenuComponent {
   @Input() model;
   @Input() size: string;
   @Output() clicks = new EventEmitter<string>();
-  constructor() {
-    console.warn('The action menu you are currently using is deprecated. Please instead import SdsActionsMenuModule from @gsa-sam/components')
-  }
+  constructor() {}
 }
