@@ -14,7 +14,7 @@ export class TextBasic {
   fields: FormlyFieldConfig[] = [
     {
       key: 'title',
-      type: 'customtext',
+      type: 'editor',
       templateOptions: {
         label: 'Entity Name',
         placeholder: 'eg: Acme Corporation',
@@ -24,7 +24,7 @@ export class TextBasic {
   ];
 
   // Method to programatically set the FormControl value which gets converted to the items array through the writeValue method
-  setModelVal() {
-    this.form.get('title').patchValue(['one', 'two', 'ten']);
-  }
+  // setModelVal() {
+  //   this.form.get('title').patchValue(['one', 'two', 'ten']);
+  // }
 }
