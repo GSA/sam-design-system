@@ -5,10 +5,14 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     selector: 'sds-editor',
     template: `
     <div>
-      <input #searchInput class="usa-input display-inline-block" [attr.aria-label]="label"/>
-      <button class="usa-button margin-left-05 display-inline-block" (click)="addItem(searchInput.value);">Add Item</button>
+    <div #searchInput id="text" class="textareaDiv" contenteditable="true">
+    </div>
+      <button class="usa-button margin-left-05 display-inline-block" (click)="addItem()">Add Item</button>
     </div>
   `,
+    styles: [
+        "\n .textareaDiv {\n  border: 1px solid black !important;\n height: 60px }\n"
+    ],
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,
@@ -19,26 +23,25 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SdsEditorComponent implements ControlValueAccessor {
-
-    model = '';
+    items = [];
     multiple = true;
-
-    @Input() label: string;
 
     private _onChange = (_: any) => { };
     private _onTouched = () => { };
 
     constructor(private cd: ChangeDetectorRef) { }
 
-    // Helper method to programatically add a value to the existing model array
-    addItem(val) {
+    // Helper method to programatically add a value to the existing items array
+    addItem() {
+        let contenteditable = document.querySelector('[contenteditable]'),
+            text = contenteditable.textContent;
         if (this.multiple) {
-            this.model = val;
+            this.items = [...this.items, text];
             this.updateModel();
         }
     }
 
-    // Method that is fired when the child component event notifies us that the model array has been modified within the child component
+    // Method that is fired when the child component event notifies us that the items array has been modified within the child component
     updateItems($event) {
         this.updateModel();
     }
@@ -49,20 +52,33 @@ export class SdsEditorComponent implements ControlValueAccessor {
         this._onChange(model);
     }
 
-    // Helper method to return a new instance of an array that contains our model
+    // Helper method to return a new instance of an array that contains our items
     getModel() {
-        return this.model;
+        return [...this.items];
     }
 
     // ControlValueAccessor (and Formly) is trying to update the value of the FormControl (our custom component) programatically
-    // If there is a value we will just overwrite model
-    // If there is no value we reset the model array to be empty
+    // If there is a value we will just overwrite items
+    // If there is no value we reset the items array to be empty
     writeValue(value: any) {
-        if (value && this.model !== value) {
-            this.model = value;
+        document.querySelector('[contenteditable]').addEventListener('input', (e) => {
+            let text = e['data'];
+            let newValue;
+            let regex = /^[a-zA-Z ]*$/;
+            if (!regex.test(text)) {
+                newValue = `<mark>${text}</mark>`;
+                let length = e.target['innerHTML'].length;
+                let updatedValue = e.target['innerHTML'].substring(0, length - 1) + newValue + '&nbsp';
+                document.querySelector('[contenteditable]').innerHTML = updatedValue;
+                document.execCommand('selectAll', false, null);
+                document.getSelection().collapseToEnd();
+            }
+        });
+        if (value && value.length && this.items !== value) {
+            this.items = value;
             this.cd.markForCheck();
         } else {
-            this.model = '';
+            this.items = [];
             this.cd.markForCheck();
         }
     }
