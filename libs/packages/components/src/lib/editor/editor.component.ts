@@ -3,7 +3,9 @@ import {
     forwardRef,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
-    Input
+    Input,
+    ViewChild,
+    ElementRef
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -17,7 +19,6 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
       contenteditable="true"
       (input)="valueChange($event.target.innerHTML)"
     >
-{{contentText}}
     </div>
   `,
 
@@ -31,6 +32,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SdsEditorComponent implements ControlValueAccessor {
+    @ViewChild('searchInput', { read: ElementRef, static: false })
+    searchInput: ElementRef;
     contentText = '';
     @Input() id = 'searchEditor';
     @Input() regex = /^[a-zA-Z ]*$/;
@@ -72,25 +75,27 @@ export class SdsEditorComponent implements ControlValueAccessor {
         let newValue;
 
         if (!this.regex.test(value)) {
-            newValue = `<mark>${value}</mark>`;
-            console.log(newValue)
-
+            if (this.highlightIndex == 0) {
+                console.log(this.highlightIndex, value)
+                this.highlightIndex = value.length;
+                newValue = [value.slice(0, this.highlightIndex - 1), '<mark>', value.slice(value.length - 1)].join('') + '</mark>';
+                this.searchInput.nativeElement.innerHTML = newValue;
+            }
         }
-
-
-        this.contentText = newValue;
     }
 
     // ControlValueAccessor (and Formly) is trying to update the value of the FormControl (our custom component) programatically
     // If there is a value we will just overwrite items
     // If there is no value we reset the items array to be empty
     writeValue(value: any) {
+        console.log(value, 'reset')
         if (value) {
             this.model = value;
-            this.contentText = value;
+            this.searchInput.nativeElement.innerHTML = value;
             this.cd.markForCheck();
         } else {
             this.model = '';
+            if (this.searchInput) this.searchInput.nativeElement.innerHTML = '';
             this.cd.markForCheck();
         }
     }
