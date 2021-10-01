@@ -38,6 +38,7 @@ export const FIELD_TYPE_COMPONENTS = [
   FormlyFieldFileInputComponent,
   FormlyTabsWrapperComponent,
   FormlyFieldTableComponent,
+  FormlyFieldEditorComponent
 ];
 import {
   dateRangeValidator,

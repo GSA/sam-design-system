@@ -11,7 +11,7 @@ import { SdsEditorComponent } from '@gsa-sam/components'
 @Component({
   selector: 'sds-formly-field-editor',
   template: `
-  <sds-text [formControl]="formControl"></sds-text>
+  <sds-editor [formControl]="formControl"></sds-editor>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })

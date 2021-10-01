@@ -1,44 +1,54 @@
-import { Component, forwardRef, ChangeDetectionStrategy, ChangeDetectorRef, Input } from '@angular/core';
+import {
+    Component,
+    forwardRef,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Input
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
     selector: 'sds-editor',
     template: `
-    <div>
-    <div #searchInput id="text" class="textareaDiv" contenteditable="true">
-    </div>
-      <button class="usa-button margin-left-05 display-inline-block" (click)="addItem()">Add Item</button>
+    <div
+      #searchInput
+      [attr.id]="id"
+      style="min-height:100px; border:black solid 2px"
+      contenteditable="true"
+      (input)="valueChange($event.target.innerHTML)"
+    >
+{{contentText}}
     </div>
   `,
-    styles: [
-        "\n .textareaDiv {\n  border: 1px solid black !important;\n height: 60px }\n"
-    ],
+
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,
             useExisting: forwardRef(() => SdsEditorComponent),
-            multi: true
-        }
+            multi: true,
+        },
     ],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SdsEditorComponent implements ControlValueAccessor {
-    items = [];
-    multiple = true;
+    contentText = '';
+    @Input() id = 'searchEditor';
+    @Input() regex = /^[a-zA-Z ]*$/;
+    model = '';
+    highlightIndex = 0;
 
     private _onChange = (_: any) => { };
     private _onTouched = () => { };
 
-    constructor(private cd: ChangeDetectorRef) { }
+    constructor(private cd: ChangeDetectorRef) {
+    }
 
     // Helper method to programatically add a value to the existing items array
-    addItem() {
-        let contenteditable = document.querySelector('[contenteditable]'),
-            text = contenteditable.textContent;
-        if (this.multiple) {
-            this.items = [...this.items, text];
-            this.updateModel();
-        }
+    valueChange(value) {
+        this.model = value;
+        this.validateRegex(this.model);
+        this.updateModel();
+
     }
 
     // Method that is fired when the child component event notifies us that the items array has been modified within the child component
@@ -54,31 +64,33 @@ export class SdsEditorComponent implements ControlValueAccessor {
 
     // Helper method to return a new instance of an array that contains our items
     getModel() {
-        return [...this.items];
+        return this.model;
+    }
+
+    validateRegex(value) {
+
+        let newValue;
+
+        if (!this.regex.test(value)) {
+            newValue = `<mark>${value}</mark>`;
+            console.log(newValue)
+
+        }
+
+
+        this.contentText = newValue;
     }
 
     // ControlValueAccessor (and Formly) is trying to update the value of the FormControl (our custom component) programatically
     // If there is a value we will just overwrite items
     // If there is no value we reset the items array to be empty
     writeValue(value: any) {
-        document.querySelector('[contenteditable]').addEventListener('input', (e) => {
-            let text = e['data'];
-            let newValue;
-            let regex = /^[a-zA-Z ]*$/;
-            if (!regex.test(text)) {
-                newValue = `<mark>${text}</mark>`;
-                let length = e.target['innerHTML'].length;
-                let updatedValue = e.target['innerHTML'].substring(0, length - 1) + newValue + '&nbsp';
-                document.querySelector('[contenteditable]').innerHTML = updatedValue;
-                document.execCommand('selectAll', false, null);
-                document.getSelection().collapseToEnd();
-            }
-        });
-        if (value && value.length && this.items !== value) {
-            this.items = value;
+        if (value) {
+            this.model = value;
+            this.contentText = value;
             this.cd.markForCheck();
         } else {
-            this.items = [];
+            this.model = '';
             this.cd.markForCheck();
         }
     }
