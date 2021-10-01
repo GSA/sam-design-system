@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SdsSearchResultListModule } from '@gsa-sam/components';
 
-import { SdsActionsMenuModule } from '@gsa-sam/layouts';
+import { SdsActionsMenuModule } from '@gsa-sam/components';
 import { ResultListBasic } from './result-list-basic.component';
 import { NgxBootstrapIconsModule, book } from 'ngx-bootstrap-icons';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
