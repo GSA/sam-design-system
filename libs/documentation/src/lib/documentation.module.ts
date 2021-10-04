@@ -6,9 +6,9 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 import * as _ from 'lodash-es'
-import { IconModule, allIcons as sdsAllIcons, uswdsAllIcons} from '@gsa-sam/ngx-uswds-icons'
+import { IconModule, allIcons as sdsAllIcons, uswdsAllIcons } from '@gsa-sam/ngx-uswds-icons'
 
-export const appendPrefix = (iconsObject: {[key: string]: string}, prefix: string): {[key: string]: string} => {
+export const appendPrefix = (iconsObject: { [key: string]: string }, prefix: string): { [key: string]: string } => {
   const prefixedIconsObject = {};
   Object.keys(iconsObject).forEach(key => {
     prefixedIconsObject[`${prefix}${_.upperFirst(key)}`] = iconsObject[key];
@@ -125,7 +125,7 @@ import {
   ROUTES as TABS_ROUTES,
   TabsModule,
 }
-from './components/tabs/tabs.module';
+  from './components/tabs/tabs.module';
 
 /* Form Types */
 import {
@@ -256,6 +256,11 @@ import {
 } from './components/external-link/external-link.module';
 
 import {
+  ROUTES as EDITOR_ROUTES,
+  EditorModule,
+} from './components/formly-editor/formly-editor.module';
+
+import {
   ROUTES as DATE_PIPE_ROUTES,
   DatePipeModule,
 } from './components/date-pipe/date-pipe.module';
@@ -338,7 +343,7 @@ export const ROUTES: Routes = [
   { path: 'components/text', children: TEXT_ROUTES },
   { path: 'components/formly-search', children: SEARCH_FORMLY_ROUTES },
   { path: 'components/formly-tabs', children: FORMLY_TABS_ROUTES },
-
+  { path: 'components/editor', children: EDITOR_ROUTES },
 
   // Wrappers
   { path: 'components/form-field', children: FORM_FIELD_ROUTES },
