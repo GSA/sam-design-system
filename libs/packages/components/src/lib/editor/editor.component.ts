@@ -36,7 +36,7 @@ export class SdsEditorComponent implements ControlValueAccessor {
     searchInput: ElementRef;
     contentText = '';
     @Input() id = 'searchEditor';
-    @Input() regex = /^[a-zA-Z ]*$/;
+    @Input() regex = /hello/gm;
     model = '';
     highlightIndex = 0;
 
@@ -69,19 +69,23 @@ export class SdsEditorComponent implements ControlValueAccessor {
     getModel() {
         return this.model;
     }
-
     validateRegex(value) {
-
-        let newValue;
-
-        if (!this.regex.test(value)) {
-            if (this.highlightIndex == 0) {
-                console.log(this.highlightIndex, value)
-                this.highlightIndex = value.length;
-                newValue = [value.slice(0, this.highlightIndex - 1), '<mark>', value.slice(value.length - 1)].join('') + '</mark>';
-                this.searchInput.nativeElement.innerHTML = newValue;
-            }
+        const rawValue = value.replaceAll('<mark>', '').replaceAll('</mark>', '');
+        const regex = new RegExp(this.regex, 'g');
+        let res = "";
+        let result = regex.exec(rawValue);
+        if (result) {
+            let index = result.index;
+            res = rawValue.substring(0, index) +
+                '<mark>' + rawValue.substring(index, index + 1) +
+                '</mark>' + rawValue.substring(index + 1, index + rawValue.length);
+        } else {
+            res = value;
         }
+
+        this.searchInput.nativeElement.innerHTML = res;
+        document.execCommand('selectAll', false, null);
+        document.getSelection().collapseToEnd();
     }
 
     // ControlValueAccessor (and Formly) is trying to update the value of the FormControl (our custom component) programatically
