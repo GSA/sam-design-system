@@ -1,5 +1,5 @@
 ## A few parts of this project fall under MIT license
-This repository contains work from angular material with modifications made by General Services Administration (GSA). The components under `libs/packages/sam-material-extensions` are work from angular material, with modifications made for compatibility with `@gsa-sam/sam-styles` library. As such, for those parts a full license text for the MIT licenesed files is provided: 
+This repository contains work from angular and ng-bootstrap with modifications made by General Services Administration (GSA). It contains work that combines ideas from angular and ng-bootstrap libraries and makes adjustments to create components compatible with sam-styles and uswds library. As such, for those parts a full license text for the MIT licenesed files is provided: 
 
 ```
 The MIT License (MIT)
@@ -10,6 +10,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
+
 
 ## Any parts not under MIT license are in public domain
 
