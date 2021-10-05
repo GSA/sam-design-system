@@ -18,7 +18,8 @@ export class EditorBasic {
       templateOptions: {
         label: 'Entity Name',
         placeholder: 'eg: Acme Corporation',
-        description: 'Enter the name of your entity.'
+        description: 'Enter the name of your entity.',
+        regex: /hello/gm
       }
     }
   ];

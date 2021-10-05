@@ -36,7 +36,7 @@ export class SdsEditorComponent implements ControlValueAccessor {
     searchInput: ElementRef;
     contentText = '';
     @Input() id = 'searchEditor';
-    @Input() regex = /hello/gm;
+    @Input() regex = '';
     model = '';
     highlightIndex = 0;
 

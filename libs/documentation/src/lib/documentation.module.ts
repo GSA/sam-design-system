@@ -432,6 +432,7 @@ export const ROUTES: Routes = [
     WorkspaceTier2ItemModule,
     DatePipeModule,
     StepperModule,
+    EditorModule,
     FileInputModule,
     FormlyTabsModule,
     NgxBootstrapIconsModule.pick(Object.assign(

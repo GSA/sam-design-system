@@ -3189,7 +3189,7 @@
         },
         {
             "name": "SearchListLayoutComponent",
-            "id": "component-SearchListLayoutComponent-97d589813c026377a1329eb1b08d40c3",
+            "id": "component-SearchListLayoutComponent-040391d1abd020750200671fdaad1079",
             "file": "libs/packages/layouts/src/lib/feature/search-list-layout/search-list-layout.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3212,7 +3212,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "configuration",
                     "description": "<p>configuration</p>\n",
-                    "line": 63,
+                    "line": 65,
                     "type": "SearchListConfiguration"
                 },
                 {
@@ -3221,7 +3221,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "Allow to insert a customized template for no results to use",
                     "description": "<p>Allow to insert a customized template for no results to use</p>\n",
-                    "line": 57,
+                    "line": 59,
                     "type": "TemplateRef<any>"
                 },
                 {
@@ -3229,7 +3229,7 @@
                     "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 65,
+                    "line": 67,
                     "type": "boolean"
                 },
                 {
@@ -3237,7 +3237,7 @@
                     "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 59,
+                    "line": 61,
                     "type": "boolean"
                 },
                 {
@@ -3246,11 +3246,20 @@
                     "deprecationMessage": "",
                     "rawdescription": "Input service to be called when items change",
                     "description": "<p>Input service to be called when items change</p>\n",
-                    "line": 52,
+                    "line": 54,
                     "type": "SearchListInterface"
                 }
             ],
-            "outputsClass": [],
+            "outputsClass": [
+                {
+                    "name": "sortFieldChange",
+                    "defaultValue": "new EventEmitter<string>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 69,
+                    "type": "EventEmitter"
+                }
+            ],
             "propertiesClass": [
                 {
                     "name": "bottom",
@@ -3260,7 +3269,7 @@
                     "type": "object",
                     "optional": false,
                     "description": "<p>Id of the bottom pagination control</p>\n",
-                    "line": 101,
+                    "line": 105,
                     "rawdescription": "\n\nId of the bottom pagination control\n"
                 },
                 {
@@ -3270,7 +3279,7 @@
                     "type": "any",
                     "optional": false,
                     "description": "<p>Filter information</p>\n",
-                    "line": 75,
+                    "line": 79,
                     "rawdescription": "\n\nFilter information\n",
                     "modifierKind": [
                         120
@@ -3283,7 +3292,7 @@
                     "type": "Subscription",
                     "optional": false,
                     "description": "",
-                    "line": 81,
+                    "line": 85,
                     "modifierKind": [
                         120
                     ]
@@ -3296,7 +3305,7 @@
                     "type": "boolean",
                     "optional": false,
                     "description": "<p>Set to true when either filter is empty or filter is equal to default model</p>\n",
-                    "line": 70,
+                    "line": 74,
                     "rawdescription": "\n\nSet to true when either filter is empty or filter is equal to default model\n"
                 },
                 {
@@ -3307,7 +3316,7 @@
                     "type": "[]",
                     "optional": false,
                     "description": "<p>List of items to be displayed</p>\n",
-                    "line": 111,
+                    "line": 115,
                     "rawdescription": "\n\nList of items to be displayed\n"
                 },
                 {
@@ -3318,7 +3327,7 @@
                     "type": "",
                     "optional": false,
                     "description": "<p>Value to track whether API call in progress for purpose of showing loading\ntemplate</p>\n",
-                    "line": 122,
+                    "line": 126,
                     "rawdescription": "\n\nValue to track whether API call in progress for purpose of showing loading\ntemplate\n"
                 },
                 {
@@ -3329,7 +3338,7 @@
                     "type": "",
                     "optional": false,
                     "description": "<p>Used in ngFor to create multiple copies of the same loading row.</p>\n",
-                    "line": 127,
+                    "line": 131,
                     "rawdescription": "\n\nUsed in ngFor to create multiple copies of the same loading row.\n"
                 },
                 {
@@ -3340,7 +3349,7 @@
                     "type": "object",
                     "optional": false,
                     "description": "<p>Default Page setttings</p>\n",
-                    "line": 86,
+                    "line": 90,
                     "rawdescription": "\n\nDefault Page setttings\n"
                 },
                 {
@@ -3351,7 +3360,7 @@
                     "type": "",
                     "optional": false,
                     "description": "<p>Page event listener</p>\n",
-                    "line": 106,
+                    "line": 110,
                     "rawdescription": "\n\nPage event listener\n",
                     "modifierKind": [
                         122
@@ -3364,7 +3373,7 @@
                     "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "<p>Child Template to be used to display the data for each item in the list of items</p>\n",
-                    "line": 37,
+                    "line": 39,
                     "rawdescription": "\n\nChild Template to be used to display the data for each item in the list of items\n",
                     "decorators": [
                         {
@@ -3381,7 +3390,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "<p>sort value</p>\n",
-                    "line": 116,
+                    "line": 120,
                     "rawdescription": "\n\nsort value\n",
                     "modifierKind": [
                         122
@@ -3395,7 +3404,7 @@
                     "type": "object",
                     "optional": false,
                     "description": "<p>Id of the top pagination control</p>\n",
-                    "line": 96,
+                    "line": 100,
                     "rawdescription": "\n\nId of the top pagination control\n"
                 },
                 {
@@ -3405,7 +3414,7 @@
                     "type": "number",
                     "optional": false,
                     "description": "<p>Total number of items</p>\n",
-                    "line": 80,
+                    "line": 84,
                     "rawdescription": "\n\nTotal number of items\n"
                 },
                 {
@@ -3416,7 +3425,7 @@
                     "type": "boolean",
                     "optional": false,
                     "description": "<p>Used to track whether update resulting in navigation is as the result of a\npopstate. in order to apply correct navigation logic</p>\n",
-                    "line": 133,
+                    "line": 137,
                     "rawdescription": "\n\nUsed to track whether update resulting in navigation is as the result of a\npopstate. in order to apply correct navigation logic\n",
                     "modifierKind": [
                         120
@@ -3437,7 +3446,7 @@
                     "optional": false,
                     "returnType": "{}",
                     "typeParameters": [],
-                    "line": 311,
+                    "line": 325,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3483,7 +3492,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 325,
+                    "line": 339,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nDecoder for qs.parse to convert true / false strings to boolean values\n",
@@ -3540,7 +3549,7 @@
                     "optional": false,
                     "returnType": "{}",
                     "typeParameters": [],
-                    "line": 273,
+                    "line": 286,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3582,7 +3591,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 211,
+                    "line": 215,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3623,7 +3632,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 169,
+                    "line": 173,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -3640,7 +3649,7 @@
                     "optional": false,
                     "returnType": "{}",
                     "typeParameters": [],
-                    "line": 285,
+                    "line": 298,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3668,7 +3677,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 205,
+                    "line": 209,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3702,7 +3711,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 337,
+                    "line": 351,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3732,7 +3741,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 160,
+                    "line": 164,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -3742,7 +3751,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 143,
+                    "line": 147,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -3759,7 +3768,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 136,
+                    "line": 140,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "decorators": [
@@ -3786,7 +3795,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 348,
+                    "line": 362,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nSorty by change event\n",
@@ -3811,7 +3820,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 297,
+                    "line": 311,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3849,7 +3858,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 356,
+                    "line": 371,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\ncalls service when updated\n",
@@ -3883,7 +3892,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 194,
+                    "line": 198,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nupdates the filter and set the page number to 1 and calls imported service\n",
@@ -3894,8 +3903,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4753,
-                                "end": 4759,
+                                "pos": 4838,
+                                "end": 4844,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -3906,8 +3915,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4747,
-                                "end": 4752,
+                                "pos": 4832,
+                                "end": 4837,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -3932,7 +3941,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 232,
+                    "line": 236,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3961,7 +3970,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 391,
+                    "line": 406,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -3999,13 +4008,13 @@
                     ],
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 136
+                    "line": 140
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  Component,\n  Input,\n  ContentChild,\n  TemplateRef,\n  Optional,\n  OnChanges,\n  SimpleChanges,\n  OnInit,\n  ChangeDetectorRef,\n  HostListener,\n} from '@angular/core';\nimport { BehaviorSubject, Subscription } from 'rxjs';\nimport * as qs from 'qs';\nimport {\n  SearchListInterface,\n  SearchListConfiguration,\n  ResultsModel,\n} from './model/search-list-layout.model';\nimport {\n  SDSFormlyUpdateComunicationService,\n  SDSFormlyUpdateModelService,\n} from '@gsa-sam/sam-formly';\nimport { Router, ActivatedRoute } from '@angular/router';\nimport * as _ from 'lodash-es';\nimport { Location } from '@angular/common';\n\n@Component({\n  selector: 'search-list-layout',\n  templateUrl: './search-list-layout.component.html',\n  styleUrls: ['./search-list-layout.component.scss'],\n})\nexport class SearchListLayoutComponent implements OnInit {\n  /**\n   * Child Template to be used to display the data for each item in the list of items\n   */\n  @ContentChild('resultContent') resultContentTemplate: TemplateRef<any>;\n\n  constructor(\n    private cdr: ChangeDetectorRef,\n    private router: Router,\n    private route: ActivatedRoute,\n    @Optional()\n    private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,\n    private filterUpdateModelService: SDSFormlyUpdateModelService,\n    private loc: Location\n  ) { }\n\n  /**\n   * Input service to be called when items change\n   */\n  @Input() service: SearchListInterface;\n\n  /**\n   * Allow to insert a customized template for no results to use\n   */\n  @Input() customResultsTemplate: TemplateRef<any>;\n\n  @Input() isHistoryEnabled = true;\n  /**\n   * configuration\n   */\n  @Input() configuration: SearchListConfiguration;\n\n  @Input() enableApiCall: boolean = true;\n\n  /**\n   * Set to true when either filter is empty or filter is equal to default model\n   */\n  isDefaultModel: boolean = true;\n\n  /**\n   * Filter information\n   */\n  private filterData: any;\n\n  /**\n   * Total number of items\n   */\n  totalItems: number;\n  private formlySubscription: Subscription;\n\n  /**\n   * Default Page setttings\n   */\n  page = {\n    pageNumber: 1,\n    pageSize: 25,\n    totalPages: 0,\n    default: true,\n  };\n\n  /**\n   * Id of the top pagination control\n   */\n  top = { id: 'topPagination' };\n\n  /**\n   * Id of the bottom pagination control\n   */\n  bottom = { id: 'bottomPagination' };\n\n  /**\n   * Page event listener\n   */\n  public paginationChange = new BehaviorSubject<object>(this.page);\n\n  /**\n   * List of items to be displayed\n   */\n  items = [];\n\n  /**\n   * sort value\n   */\n  public sortField = '';\n\n  /**\n   * Value to track whether API call in progress for purpose of showing loading\n   * template\n   */\n  loading = false;\n\n  /**\n   * Used in ngFor to create multiple copies of the same loading row.\n   */\n  loadingArray = Array(25);\n\n  /**\n   * Used to track whether update resulting in navigation is as the result of a\n   * popstate. in order to apply correct navigation logic\n   */\n  private triggeredByPopState: boolean = false;\n\n  @HostListener('window:popstate', ['$event'])\n  onpopstate(event) {\n    this.triggeredByPopState = true;\n    if (this.isHistoryEnabled) {\n      this.getHistoryModel();\n    }\n  }\n\n  ngOnInit() {\n    if (this.isHistoryEnabled) {\n      this.getHistoryModel();\n    }\n    this.sortField = this.sortField != null ? this.sortField : this.configuration.defaultSortValue;\n    this.paginationChange.subscribe(() => {\n      this.updateContent();\n    });\n    if (this.formlyUpdateComunicationService) {\n      this.formlySubscription = this.formlyUpdateComunicationService.filterUpdate.subscribe(\n        (filter) => {\n          this.updateFilter(filter);\n        }\n      );\n    }\n  }\n\n  ngOnDestroy() {\n    // Reset filter Model in update service\n    this.filterUpdateModelService.updateModel(null);\n\n    if (this.formlySubscription) {\n      this.formlySubscription.unsubscribe();\n    }\n  }\n\n  getHistoryModel() {\n    const queryString = window.location.search.substring(1);\n    const params: any = this.getUrlParams(queryString);\n    const paramModel: any = this.convertToModel(params);\n\n    this.page.default = true;\n    this.page.pageNumber = paramModel['page'] ? +paramModel['page'] : 1;\n    this.page.pageSize = paramModel['pageSize'] ? Number.parseInt(paramModel['pageSize']) : this.configuration.pageSize;\n\n    this.sortField = paramModel['sort'];\n    if (this.filterUpdateModelService) {\n      if (paramModel && paramModel['sfm']) {\n        this.filterUpdateModelService.updateModel(paramModel['sfm']);\n      } else if (!this.triggeredByPopState) {\n        this.filterUpdateModelService.updateModel(\n          this.configuration.defaultFilterValue\n        );\n      }\n    }\n  }\n\n  /**\n   * updates the filter and set the page number to 1 and calls imported service\n   * @param filter - the updated filter model\n   */\n  public updateFilter(filter: any) {\n    this.filterData = filter;\n    this.page.pageNumber = this.page.default ? this.page.pageNumber : 1;\n    this.page.default = filter ? false : true;\n    this.isDefaultFilter(filter);\n    if (this.isDefaultModel) {\n      this.items = [];\n    }\n    this.updateContent(true);\n  }\n\n  isDefaultFilter(filter) {\n    const cleanModel = this.flatten(filter);\n    const op = this.flatten(this.configuration.defaultFilterValue);\n    this.isDefaultModel = _.isEqual(cleanModel, op);\n  }\n\n  flatten(input, reference?, output?) {\n    output = output || {};\n    for (var key in input) {\n      var value = input[key];\n      if (value) {\n        key = reference ? reference + '.' + key : key;\n        if (typeof value === 'object' && value !== null) {\n          this.flatten(value, key, output);\n        } else {\n          // Treat true string as boolean value & ignore value of string 'false'\n          if (value === 'true') {\n            output[key] = true;\n          } else if (value != 'false') {\n            output[key] = value;\n          }\n        }\n      }\n    }\n    return output;\n  }\n\n  updateNavigation(triggeredByFilter = false) {\n    const queryString = window.location.search.substring(1);\n    let queryObj = qs.parse(queryString, { allowPrototypes: true });\n\n    if (queryObj.hasOwnProperty('sfm')) {\n      queryObj['sfm'] = {};\n    }\n\n    queryObj['page'] = this.page.pageNumber\n      ? this.page.pageNumber.toString()\n      : '1';\n    queryObj['pageSize'] = this.page.pageSize\n      ? this.page.pageSize.toString()\n      : '25';\n    queryObj['sort'] = this.sortField ? this.sortField.toString() : '';\n    queryObj['sfm'] = this.filterData;\n    const params = this.convertToParam(queryObj);\n    /**\n     * loc.go updates URL but also updates history stack so that upon clicking\n     * back, the state which clicking forward would move user to is deleted by\n     * loc.go This state is preserved by router.navigate, so use router.navigate\n     * where we state needs to be preserved or we want the page jumped to the top.\n     * use loc.go only where we need the page to remain in place, and would normally\n     * overwrite the top of the history stack\n     */\n    if (!triggeredByFilter || this.triggeredByPopState) {\n      this.triggeredByPopState = false;\n      this.router.navigate([], {\n        relativeTo: this.route,\n        queryParams: params,\n        queryParamsHandling: this.configuration.queryParamsHandling,\n        fragment: window.location.hash?.length > 1 ? window.location.hash.substring(1) : undefined,\n      });\n    } else {\n      const urlTree = this.router.parseUrl(this.loc.path());\n      urlTree.queryParams = params;\n      urlTree.fragment = window.location.hash?.length > 1 ? window.location.hash.substring(1) : undefined\n      this.loc.go(urlTree.toString());\n    }\n  }\n\n  convertToParam(filters) {\n    const encodedValues = qs.stringify(filters, {\n      skipNulls: true,\n      encode: false,\n      filter: this.shortFormatDate,\n    });\n    if (encodedValues) {\n      return this.getUrlParams(encodedValues);\n    } else {\n      return '';\n    }\n  }\n  getUrlParams(queryString) {\n    const target = {};\n    queryString.split('&').forEach((pair) => {\n      if (pair !== '') {\n        const splitpair = pair.split('=');\n        target[splitpair[0]] =\n          splitpair[1] === '' || splitpair[1] === 'false' ? null : splitpair[1];\n      }\n    });\n    return target;\n  }\n\n  shortFormatDate(prefix, value) {\n    const fixDigit = (val) => {\n      return val.toString().length === 1 ? '0' + val : val;\n    };\n    const getFormattedDate = (date) =>\n      `${fixDigit(\n        date.getMonth() + 1\n      )}/${date.getDate()}/${date.getFullYear()}`;\n    if (value instanceof Date) {\n      value = getFormattedDate(new Date(value));\n    }\n    return value;\n  }\n\n  convertToModel(filters) {\n    let obj = {};\n    const encodedValues = qs.stringify(filters, {\n      skipNulls: true,\n      encode: false,\n      filter: this.longFormatDate,\n    });\n    obj = qs.parse(encodedValues, { decoder: this.convertToModelParser });\n    return obj;\n  }\n\n  /**\n   * Decoder for qs.parse to convert true / false strings to boolean values\n   */\n  convertToModelParser(str: string, decoder: qs.defaultDecoder, charset: string, type: 'key' | 'value') {\n    if (type === 'key') {\n      return decoder(str, decoder, charset);\n    }\n\n    if (str === 'true' || str === 'false') {\n      return str === 'true' ? true : false;\n    }\n\n    return decoder(str, decoder, charset);\n  }\n\n  longFormatDate(prefix, value) {\n    const val = Date.parse(value);\n    if (!isNaN(val) && isNaN(value)) {\n      value = new Date(val).toISOString();\n    }\n    return value;\n  }\n\n  /**\n   * Sorty by change event\n   */\n  onSelectChange() {\n    this.page.pageNumber = 1;\n    this.updateContent();\n  }\n\n  /**\n   * calls service when updated\n   */\n  private updateContent(triggeredByFilter = false) {\n    if (this.isHistoryEnabled) {\n      this.updateNavigation(triggeredByFilter);\n    }\n\n    if (\n      this.filterData &&\n      this.service &&\n      this.enableApiCall &&\n      !this.isDefaultModel\n    ) {\n      this.loading = true;\n\n      setTimeout(() => {\n        this.service\n          .getData({\n            page: this.page,\n            sortField: this.sortField,\n            filter: this.filterData,\n          })\n          .subscribe((result) => {\n            this.loading = false;\n            this.items = result.items;\n            this.page.totalPages = Math.ceil(\n              result.totalItems / this.page.pageSize\n            );\n            this.totalItems = result.totalItems;\n          },\n            (error) => this.loading = false,\n            () => this.loading = false\n          );\n      });\n    }\n  }\n\n  public updateSearchResultsModel(historyModel: ResultsModel) {\n    this.filterData = historyModel.filterModel;\n    this.page.default = historyModel.page || historyModel.sort ? true : false;\n    this.page.pageNumber = historyModel.page ? historyModel.page : 1;\n    this.sortField = historyModel.sort ? historyModel.sort : this.sortField;\n    if (this.filterUpdateModelService) {\n      if (historyModel && historyModel.filterModel) {\n        this.filterUpdateModelService.updateModel(historyModel.filterModel);\n      } else {\n        this.filterUpdateModelService.updateModel({});\n      }\n    }\n  }\n}\n",
+            "sourceCode": "import {\n  Component,\n  Input,\n  ContentChild,\n  TemplateRef,\n  Optional,\n  OnChanges,\n  SimpleChanges,\n  OnInit,\n  ChangeDetectorRef,\n  HostListener,\n  Output,\n  EventEmitter,\n} from '@angular/core';\nimport { BehaviorSubject, Subscription } from 'rxjs';\nimport * as qs from 'qs';\nimport {\n  SearchListInterface,\n  SearchListConfiguration,\n  ResultsModel,\n} from './model/search-list-layout.model';\nimport {\n  SDSFormlyUpdateComunicationService,\n  SDSFormlyUpdateModelService,\n} from '@gsa-sam/sam-formly';\nimport { Router, ActivatedRoute } from '@angular/router';\nimport * as _ from 'lodash-es';\nimport { Location } from '@angular/common';\n\n@Component({\n  selector: 'search-list-layout',\n  templateUrl: './search-list-layout.component.html',\n  styleUrls: ['./search-list-layout.component.scss'],\n})\nexport class SearchListLayoutComponent implements OnInit {\n  /**\n   * Child Template to be used to display the data for each item in the list of items\n   */\n  @ContentChild('resultContent') resultContentTemplate: TemplateRef<any>;\n\n  constructor(\n    private cdr: ChangeDetectorRef,\n    private router: Router,\n    private route: ActivatedRoute,\n    @Optional()\n    private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,\n    private filterUpdateModelService: SDSFormlyUpdateModelService,\n    private loc: Location\n  ) { }\n\n  /**\n   * Input service to be called when items change\n   */\n  @Input() service: SearchListInterface;\n\n  /**\n   * Allow to insert a customized template for no results to use\n   */\n  @Input() customResultsTemplate: TemplateRef<any>;\n\n  @Input() isHistoryEnabled = true;\n  /**\n   * configuration\n   */\n  @Input() configuration: SearchListConfiguration;\n\n  @Input() enableApiCall: boolean = true;\n\n  @Output() sortFieldChange = new EventEmitter<string>();\n\n  /**\n   * Set to true when either filter is empty or filter is equal to default model\n   */\n  isDefaultModel: boolean = true;\n\n  /**\n   * Filter information\n   */\n  private filterData: any;\n\n  /**\n   * Total number of items\n   */\n  totalItems: number;\n  private formlySubscription: Subscription;\n\n  /**\n   * Default Page setttings\n   */\n  page = {\n    pageNumber: 1,\n    pageSize: 25,\n    totalPages: 0,\n    default: true,\n  };\n\n  /**\n   * Id of the top pagination control\n   */\n  top = { id: 'topPagination' };\n\n  /**\n   * Id of the bottom pagination control\n   */\n  bottom = { id: 'bottomPagination' };\n\n  /**\n   * Page event listener\n   */\n  public paginationChange = new BehaviorSubject<object>(this.page);\n\n  /**\n   * List of items to be displayed\n   */\n  items = [];\n\n  /**\n   * sort value\n   */\n  public sortField = '';\n\n  /**\n   * Value to track whether API call in progress for purpose of showing loading\n   * template\n   */\n  loading = false;\n\n  /**\n   * Used in ngFor to create multiple copies of the same loading row.\n   */\n  loadingArray = Array(25);\n\n  /**\n   * Used to track whether update resulting in navigation is as the result of a\n   * popstate. in order to apply correct navigation logic\n   */\n  private triggeredByPopState: boolean = false;\n\n  @HostListener('window:popstate', ['$event'])\n  onpopstate(event) {\n    this.triggeredByPopState = true;\n    if (this.isHistoryEnabled) {\n      this.getHistoryModel();\n    }\n  }\n\n  ngOnInit() {\n    if (this.isHistoryEnabled) {\n      this.getHistoryModel();\n    }\n    this.sortField = this.sortField != null ? this.sortField : this.configuration.defaultSortValue;\n    this.paginationChange.subscribe(() => {\n      this.updateContent();\n    });\n    if (this.formlyUpdateComunicationService) {\n      this.formlySubscription = this.formlyUpdateComunicationService.filterUpdate.subscribe(\n        (filter) => {\n          this.updateFilter(filter);\n        }\n      );\n    }\n  }\n\n  ngOnDestroy() {\n    // Reset filter Model in update service\n    this.filterUpdateModelService.updateModel(null);\n\n    if (this.formlySubscription) {\n      this.formlySubscription.unsubscribe();\n    }\n  }\n\n  getHistoryModel() {\n    const queryString = window.location.search.substring(1);\n    const params: any = this.getUrlParams(queryString);\n    const paramModel: any = this.convertToModel(params);\n\n    this.page.default = true;\n    this.page.pageNumber = paramModel['page'] ? +paramModel['page'] : 1;\n    this.page.pageSize = paramModel['pageSize'] ? Number.parseInt(paramModel['pageSize']) : this.configuration.pageSize;\n\n    this.sortField = paramModel['sort'];\n    if (this.filterUpdateModelService) {\n      if (paramModel && paramModel['sfm']) {\n        this.filterUpdateModelService.updateModel(paramModel['sfm']);\n      } else if (!this.triggeredByPopState) {\n        this.filterUpdateModelService.updateModel(\n          this.configuration.defaultFilterValue\n        );\n      }\n    }\n  }\n\n  /**\n   * updates the filter and set the page number to 1 and calls imported service\n   * @param filter - the updated filter model\n   */\n  public updateFilter(filter: any) {\n    this.filterData = filter;\n    this.page.pageNumber = this.page.default ? this.page.pageNumber : 1;\n    this.page.default = filter ? false : true;\n    this.isDefaultFilter(filter);\n    if (this.isDefaultModel) {\n      this.items = [];\n    }\n    this.updateContent(true);\n  }\n\n  isDefaultFilter(filter) {\n    const cleanModel = this.flatten(filter);\n    const op = this.flatten(this.configuration.defaultFilterValue);\n    this.isDefaultModel = _.isEqual(cleanModel, op);\n  }\n\n  flatten(input, reference?, output?) {\n    output = output || {};\n    for (var key in input) {\n      var value = input[key];\n      if (value) {\n        key = reference ? reference + '.' + key : key;\n        if (typeof value === 'object' && value !== null) {\n          this.flatten(value, key, output);\n        } else {\n          // Treat true string as boolean value & ignore value of string 'false'\n          if (value === 'true') {\n            output[key] = true;\n          } else if (value != 'false') {\n            output[key] = value;\n          }\n        }\n      }\n    }\n    return output;\n  }\n\n  updateNavigation(triggeredByFilter = false) {\n    const queryString = window.location.search.substring(1);\n    let queryObj = qs.parse(queryString, { allowPrototypes: true });\n\n    let skipHistoryOnNav = false;\n\n    if (queryObj.hasOwnProperty('sfm')) {\n      queryObj['sfm'] = {};\n    }\n\n    // Prevent recursive navigation when adding default page to search\n    if (!queryObj.page || !queryObj.pageSize) {\n      skipHistoryOnNav = true;\n    }\n\n    queryObj['page'] = this.page.pageNumber\n    ? this.page.pageNumber.toString()\n    : '1';\n    queryObj['pageSize'] = this.page.pageSize\n      ? this.page.pageSize.toString()\n      : '25';\n\n    queryObj['sort'] = this.sortField ? this.sortField.toString() : '';\n    queryObj['sfm'] = this.filterData;\n    const params = this.convertToParam(queryObj);\n    /**\n     * loc.go updates URL but also updates history stack so that upon clicking\n     * back, the state which clicking forward would move user to is deleted by\n     * loc.go This state is preserved by router.navigate, so use router.navigate\n     * where we state needs to be preserved or we want the page jumped to the top.\n     * use loc.go only where we need the page to remain in place, and would normally\n     * overwrite the top of the history stack\n     */\n    if (!triggeredByFilter || this.triggeredByPopState) {\n      this.triggeredByPopState = false;\n      this.router.navigate([], {\n        relativeTo: this.route,\n        queryParams: params,\n        queryParamsHandling: this.configuration.queryParamsHandling,\n        fragment: window.location.hash?.length > 1 ? window.location.hash.substring(1) : undefined,\n        replaceUrl: skipHistoryOnNav,\n      });\n    } else {\n      const urlTree = this.router.parseUrl(this.loc.path());\n      urlTree.queryParams = params;\n      urlTree.fragment = window.location.hash?.length > 1 ? window.location.hash.substring(1) : undefined\n      this.loc.go(urlTree.toString());\n    }\n  }\n\n  convertToParam(filters) {\n    const encodedValues = qs.stringify(filters, {\n      skipNulls: true,\n      encode: false,\n      filter: this.shortFormatDate,\n    });\n    if (encodedValues) {\n      return this.getUrlParams(encodedValues);\n    } else {\n      return '';\n    }\n  }\n  getUrlParams(queryString) {\n    const target = {};\n    queryString.split('&').forEach((pair) => {\n      if (pair !== '') {\n        const splitpair = pair.split('=');\n        if (splitpair[1] != '' && splitpair[1] != 'false') {\n          target[splitpair[0]] = splitpair[1]\n        }\n      }\n    });\n    return target;\n  }\n\n  shortFormatDate(prefix, value) {\n    const fixDigit = (val) => {\n      return val.toString().length === 1 ? '0' + val : val;\n    };\n    const getFormattedDate = (date) =>\n      `${fixDigit(\n        date.getMonth() + 1\n      )}/${date.getDate()}/${date.getFullYear()}`;\n    if (value instanceof Date) {\n      value = getFormattedDate(new Date(value));\n    }\n    return value;\n  }\n\n  convertToModel(filters) {\n    let obj = {};\n    const encodedValues = qs.stringify(filters, {\n      skipNulls: true,\n      encode: false,\n      filter: this.longFormatDate,\n    });\n    obj = qs.parse(encodedValues, { decoder: this.convertToModelParser });\n    return obj;\n  }\n\n  /**\n   * Decoder for qs.parse to convert true / false strings to boolean values\n   */\n  convertToModelParser(str: string, decoder: qs.defaultDecoder, charset: string, type: 'key' | 'value') {\n    if (type === 'key') {\n      return decoder(str, decoder, charset);\n    }\n\n    if (str === 'true' || str === 'false') {\n      return str === 'true' ? true : false;\n    }\n\n    return decoder(str, decoder, charset);\n  }\n\n  longFormatDate(prefix, value) {\n    const val = Date.parse(value);\n    if (!isNaN(val) && isNaN(value)) {\n      value = new Date(val).toISOString();\n    }\n    return value;\n  }\n\n  /**\n   * Sorty by change event\n   */\n  onSelectChange() {\n    this.page.pageNumber = 1;\n    this.updateContent();\n    this.sortFieldChange.emit(this.sortField);\n  }\n\n  /**\n   * calls service when updated\n   */\n  private updateContent(triggeredByFilter = false) {\n    if (this.isHistoryEnabled) {\n      this.updateNavigation(triggeredByFilter);\n    }\n\n    if (\n      this.filterData &&\n      this.service &&\n      this.enableApiCall &&\n      !this.isDefaultModel\n    ) {\n      this.loading = true;\n\n      setTimeout(() => {\n        this.service\n          .getData({\n            page: this.page,\n            sortField: this.sortField,\n            filter: this.filterData,\n          })\n          .subscribe((result) => {\n            this.loading = false;\n            this.items = result.items;\n            this.page.totalPages = Math.ceil(\n              result.totalItems / this.page.pageSize\n            );\n            this.totalItems = result.totalItems;\n          },\n            (error) => this.loading = false,\n            () => this.loading = false\n          );\n      });\n    }\n  }\n\n  public updateSearchResultsModel(historyModel: ResultsModel) {\n    this.filterData = historyModel.filterModel;\n    this.page.default = historyModel.page || historyModel.sort ? true : false;\n    this.page.pageNumber = historyModel.page ? historyModel.page : 1;\n    this.sortField = historyModel.sort ? historyModel.sort : this.sortField;\n    if (this.filterUpdateModelService) {\n      if (historyModel && historyModel.filterModel) {\n        this.filterUpdateModelService.updateModel(historyModel.filterModel);\n      } else {\n        this.filterUpdateModelService.updateModel({});\n      }\n    }\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -4057,7 +4066,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 37,
+                "line": 39,
                 "jsdoctags": [
                     {
                         "name": "cdr",
@@ -4118,7 +4127,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"grid-row\" *ngIf=\"items?.length\">\n  <div class=\"grid-col\">\n    <div class=\"grid-row\">\n      <div class=\"grid-col-auto\">\n        <sds-pagination class=\"tablet:grid-col display-block margin-top-3 padding-top-3\" [paginationConfiguration]=\"top\"\n          [(page)]=\"page\" (pageChange)=\"paginationChange.next($event)\" displayMode='results' [totalItems]=\"totalItems\">\n        </sds-pagination>\n      </div>\n      <div class=\"grid-col-fill\"></div>\n      <div class=\"grid-col-auto float-right\">\n        <div class=\"margin-left-1\">\n          <label class=\"usa-label font-sans-3xs text-italic text-base margin-top-1\" for=\"options\">\n            Sort by\n          </label>\n          <select (change)=\"onSelectChange()\" [(ngModel)]=\"sortField\"\n            class=\"usa-select usa-select--small sds-min-width-160 border-base-light\" id=\"options\">\n            <option *ngFor=\"let item of configuration.sortList\" [ngValue]=\"item.value\">\n              {{ item.text }}\n            </option>\n          </select>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"grid-row\">\n  <div class=\"grid-col-12\">\n    <div *ngIf=\"!loading; else loadingScreen\">\n      <sds-search-result-list [model]=\"items\" [customResultsTemplate]=\"customResultsTemplate\"\n        [isDefaultModel]=\"isDefaultModel\">\n        <ng-container>\n          <ng-template #resultContent let-item>\n              <ng-container *ngTemplateOutlet=\"resultContentTemplate, context: { $implicit: item }\">\n              </ng-container>\n          </ng-template>\n        </ng-container>\n      </sds-search-result-list>\n    </div>\n    <sds-pagination *ngIf=\"!loading && items?.length\" [paginationConfiguration]=\"bottom\" [(page)]=\"page\"\n      (pageChange)=\"paginationChange.next($event)\">\n    </sds-pagination>\n  </div>\n</div>\n\n<ng-template #loadingScreen>\n  <div *ngFor=\"let a of loadingArray\">\n    <hr>\n    <div class=\"grid-container\">\n      <div class=\"sds-load grid-row\">\n        <div class=\"grid-col-5 sds-load__title\"></div>\n        <div class=\"grid-col-auto sds-load__circle\"></div>\n      </div>\n      <div class=\"sds-load grid-row\">\n        <div class=\"tablet:grid-col-fill sds-load__content\"></div>\n        <div class=\"tablet:grid-col-fill sds-load__content\"></div>\n        <div class=\"tablet:grid-col-2 grid-col sds-load__element\"></div>\n        <div class=\"tablet:grid-col-2 grid-col sds-load__element\"></div>\n      </div>\n    </div>\n  </div>\n  <hr>\n</ng-template>\n"
+            "templateData": "<div class=\"grid-row\" *ngIf=\"items?.length\">\n  <div class=\"grid-col\">\n    <div class=\"grid-row\">\n      <div class=\"grid-col-auto\">\n        <sds-pagination class=\"tablet:grid-col display-block margin-top-3 padding-top-3\" [paginationConfiguration]=\"top\"\n          [(page)]=\"page\" (pageChange)=\"paginationChange.next($event)\" displayMode='results' [totalItems]=\"totalItems\">\n        </sds-pagination>\n      </div>\n      <div class=\"grid-col-fill\"></div>\n      <div class=\"grid-col-auto float-right\">\n        <div class=\"margin-left-1\">\n          <label class=\"usa-label font-sans-3xs text-italic text-base margin-top-1\" for=\"options\">\n            Sort by\n          </label>\n          <select (change)=\"onSelectChange()\" [(ngModel)]=\"sortField\"\n            class=\"usa-select usa-select--small sds-min-width-160 border-base-light\" id=\"options\">\n            <option *ngFor=\"let item of configuration.sortList\" [ngValue]=\"item.value\">\n              {{ item.text }}\n            </option>\n          </select>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"grid-row\">\n  <div class=\"grid-col-12\">\n    <div *ngIf=\"!loading; else loadingScreen\">\n      <sds-search-result-list [model]=\"items\" [customResultsTemplate]=\"customResultsTemplate\"\n        [isDefaultModel]=\"isDefaultModel\">\n        <ng-container>\n          <ng-template #resultContent let-item>\n              <ng-container *ngTemplateOutlet=\"resultContentTemplate, context: { $implicit: item }\">\n              </ng-container>\n          </ng-template>\n        </ng-container>\n      </sds-search-result-list>\n    </div>\n    <sds-pagination *ngIf=\"!loading && items?.length\" [paginationConfiguration]=\"bottom\" [(page)]=\"page\"\n      (pageChange)=\"paginationChange.next($event)\">\n    </sds-pagination>\n  </div>\n</div>\n\n<ng-template #loadingScreen>\n  <div *ngFor=\"let a of loadingArray\">\n    <hr>\n    <div class=\"grid-container padding-left-0\">\n      <div class=\"sds-load grid-row\">\n        <div class=\"grid-col-5 sds-load__title\"></div>\n      </div>\n      <div class=\"sds-load margin-top-1\">\n        <div class=\"tablet:grid-col-fill sds-load__element\"></div>\n      </div>\n      <div class=\"sds-load margin-top-1\">\n        <div class=\"grid-col-8 height-4 sds-load__content\"></div>\n      </div>\n    </div>\n  </div>\n  <hr>\n</ng-template>\n"
         },
         {
             "name": "SideToolbarComponent",
