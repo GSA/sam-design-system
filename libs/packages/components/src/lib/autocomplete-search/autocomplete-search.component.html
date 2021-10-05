@@ -19,7 +19,7 @@
     <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="showResults"
       [cdkConnectedOverlayDisableClose]="true" [cdkConnectedOverlayMinWidth]="input.offsetWidth">
       <ul #resultsList [attr.id]="configuration.id + '-listbox'" role="listbox" class="usa-list 
-        usa-list--unstyled" (scroll)="onScroll()">
+        usa-list--unstyled sds-autocomplete" (scroll)="onScroll()">
         <ng-container *ngIf="results && results.length">
           <li [attr.id]="configuration.id + '-resultItem-' + i" role="option" [ngClass]="{
               'sds-autocomplete__group': configuration.isGroupingEnabled,
