@@ -15,13 +15,12 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     <div
       #searchInput
       [attr.id]="id"
-      style="min-height:100px; border:black solid 2px"
+      class="minh-15 border-gray-70 border-1px"
       contenteditable="true"
       (input)="valueChange($event.target.innerHTML)"
     >
     </div>
   `,
-
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,
@@ -32,13 +31,12 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SdsEditorComponent implements ControlValueAccessor {
-    @ViewChild('searchInput', { read: ElementRef, static: false })
-    searchInput: ElementRef;
-    contentText = '';
+    @ViewChild('searchInput', { read: ElementRef, static: false }) searchInput: ElementRef;
+
     @Input() id = 'searchEditor';
     @Input() regex = '';
+
     model = '';
-    highlightIndex = 0;
 
     private _onChange = (_: any) => { };
     private _onTouched = () => { };
@@ -51,7 +49,6 @@ export class SdsEditorComponent implements ControlValueAccessor {
         this.model = value;
         this.validateRegex(this.model);
         this.updateModel();
-
     }
 
     // Method that is fired when the child component event notifies us that the items array has been modified within the child component
@@ -69,6 +66,7 @@ export class SdsEditorComponent implements ControlValueAccessor {
     getModel() {
         return this.model;
     }
+    // Validate regex and highlight first charecter of the failure
     validateRegex(value) {
         const rawValue = value.replaceAll('<mark>', '').replaceAll('</mark>', '');
         const regex = new RegExp(this.regex, 'g');
@@ -82,7 +80,6 @@ export class SdsEditorComponent implements ControlValueAccessor {
         } else {
             res = value;
         }
-
         this.searchInput.nativeElement.innerHTML = res;
         document.execCommand('selectAll', false, null);
         document.getSelection().collapseToEnd();
