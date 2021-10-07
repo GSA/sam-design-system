@@ -87,3 +87,6 @@ export * from './date/sds-date.pipe'
 export * from './icon/icon.component'
 export * from './icon/icon.module'
 export * from './icon/custom-icons'
+
+export * from './editor/editor.component'
+export * from './editor/editor.module';
