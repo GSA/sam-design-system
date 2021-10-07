@@ -3,10 +3,10 @@ import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-  templateUrl: './text-basic.component.html',
-  selector: `sds-text-demo`,
+  templateUrl: './formly-editor-basic.component.html',
+  selector: `sds-formly-editor-demo`,
 })
-export class TextBasic {
+export class EditorBasic {
   textModel = 'test';
   form = new FormGroup({});
   model: any = {};
@@ -14,17 +14,13 @@ export class TextBasic {
   fields: FormlyFieldConfig[] = [
     {
       key: 'title',
-      type: 'customtext',
+      type: 'editor',
       templateOptions: {
         label: 'Entity Name',
         placeholder: 'eg: Acme Corporation',
-        description: 'Enter the name of your entity.'
+        description: 'Enter the name of your entity.',
+        regex: /hello/gm
       }
     }
   ];
-
-  // Method to programatically set the FormControl value which gets converted to the items array through the writeValue method
-  setModelVal() {
-    this.form.get('title').patchValue(['one', 'two', 'ten']);
-  }
 }

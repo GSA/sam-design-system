@@ -13,6 +13,7 @@ export enum SdsFormlyTypes {
   DATERANGEPICKERV2 = 'daterangepickerv2',
   FORMLYGROUP = 'formly-group',
   CUSTOMTEXT = 'customtext',
+  EDITOR = 'editor',
   FILEINFO = 'fileinfo',
   SEARCH = 'search',
   FILEINPUT = 'fileinput',
