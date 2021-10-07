@@ -1,3 +1,4 @@
+import { DOCUMENT } from '@angular/common';
 import {
     Component,
     forwardRef,
@@ -5,7 +6,8 @@ import {
     ChangeDetectorRef,
     Input,
     ViewChild,
-    ElementRef
+    ElementRef,
+    Inject
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -41,7 +43,7 @@ export class SdsEditorComponent implements ControlValueAccessor {
     private _onChange = (_: any) => { };
     private _onTouched = () => { };
 
-    constructor(private cd: ChangeDetectorRef) {
+    constructor(private cd: ChangeDetectorRef, @Inject(DOCUMENT) private document: Document) {
     }
 
     // Helper method to programatically add a value to the existing items array
@@ -80,10 +82,13 @@ export class SdsEditorComponent implements ControlValueAccessor {
                 '<mark>' + rawValue.substring(index, index + 1) +
                 '</mark>' + rawValue.substring(index + 1, index + rawValue.length);
         } else {
-            res = value;
+            res = rawValue;
         }
         this.searchInput.nativeElement.innerHTML = res;
+        // To enable to SelectAll to remove the text
         document.execCommand('selectAll', false, null);
+
+        // moving the cursor to the end when the validation fails
         document.getSelection().collapseToEnd();
     }
 
