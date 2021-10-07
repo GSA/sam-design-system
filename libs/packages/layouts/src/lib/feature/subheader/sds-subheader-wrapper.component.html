@@ -1,0 +1,30 @@
+<sds-subheader>
+  <!-- =============== BACK BUTTON =============== -->
+  <button class="sds-button sds-button--circular sds-navbar__back-button" (click)="backClick()" id="backBtn">
+    <usa-icon [icon]="'chevron-left'"></usa-icon>
+    <span class="usa-sr-only">Go Back</span>
+  </button>
+
+  <!-- =============== TITLE =============== -->
+  <span class="sds-navbar__title">
+    {{title}}
+  </span>
+  <!--- Search and Autocomplete-->
+  <ng-container sds-search>
+
+  </ng-container>
+
+  <!-- =============== BUTTON GROUP =============== -->
+  <ng-container subheader-buttons-container>
+    <ng-container *ngIf="mode === HeaderMode.REQUEST" [ngTemplateOutlet]="request"></ng-container>
+
+    <!-- ADD CODE FOR EACH BUTTON SET -->
+    <!--ADD CODE FOR CONTAINER PASSING OF BUTTONS -->
+  </ng-container>
+</sds-subheader>
+
+
+<ng-template #request let-link>
+  <button class="usa-button usa-button--secondary grid-col-6" (click)="action.emit('Reject')">Reject</button>
+  <button class="usa-button grid-col-6" (click)="action.emit('Approve')">Approve</button>
+</ng-template>

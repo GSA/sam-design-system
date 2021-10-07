@@ -20,6 +20,8 @@ import { SubheaderTier2WorkspaceModule } from './demos/workspace/subheader-tier-
 import { SubheaderSearchSubPagesComponent } from './demos/subpages/subheader-search-sub-pages.component';
 import { SubheaderSearchAutocompleteComponent } from './demos/search-autocomplete/subheader-search-autocomplete.component';
 import { SubheaderSearchAutocompleteModule } from './demos/search-autocomplete/subheader-search-autocomplete.module';
+import { SdsSubheaderWrapperRequestComponent } from './demos/request/sds-subheader-wrapper-request.component';
+import { SdsSubheaderRequestModule } from './demos/request/sds-subheader-wrapper-request.module';
 
 declare var require: any;
 const DEMOS = {
@@ -73,6 +75,14 @@ const DEMOS = {
     markup: require('!!raw-loader!./demos/workspace/subheader-tier-2-workspace.component.html'),
     path: 'libs/documentation/src/lib/components/subheader/demos/workspace',
   },
+  request: {
+    title: 'Request',
+    type: SdsSubheaderWrapperRequestComponent,
+    code: require('!!raw-loader!./demos/request/sds-subheader-wrapper-request.component'),
+    module: require('!!raw-loader!./demos/request/sds-subheader-wrapper-request.module'),
+    markup: require('!!raw-loader!./demos/request/sds-subheader-wrapper-request.component.html'),
+    path: 'libs/documentation/src/lib/components/subheader/demos/request',
+  },
 };
 
 export const ROUTES = [
@@ -107,6 +117,7 @@ export const ROUTES = [
     SubheaderSearchSubPagesModule,
     SubheaderTier2WorkspaceModule,
     SubheaderSearchAutocompleteModule,
+    SdsSubheaderRequestModule,
   ],
 })
 export class SubHeaderModule {
