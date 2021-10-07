@@ -7,6 +7,7 @@ import {
   TemplateRef,
 } from '@angular/core';
 import { INavigationLink, NavigationMode, Selectable } from '@gsa-sam/components';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'sds-subheader-wrapper',
@@ -14,22 +15,35 @@ import { INavigationLink, NavigationMode, Selectable } from '@gsa-sam/components
 })
 export class SdsSubheaderWrapperComponent {
 
-  constructor() { }
+  constructor(private router: Router) {}
 
-  @Input() backbuttonBehanvor; //URL/Use standard browser
+  @Input() backbuttonBehavior: INavigationLink;
 
   @Input() title: string;
 
   @Input() mode: SubHeaderWrapperMode; //Button/Fields Appear
 
-  @Input() tabs: INavigationLink;
+  @Input() tabs: INavigationLink[];
 
   @Output() action = new EventEmitter<string>();
 
   HeaderMode = SubHeaderWrapperMode;
 
-  public backClick() {
+  public backClick(): void {
+    if (!this.backbuttonBehavior) {
+      window.history.back();
+    }
 
+    switch (this.backbuttonBehavior.mode) {
+      case NavigationMode.INTERNAL:
+        this.router.navigate([this.backbuttonBehavior.route]);
+        break;
+      case NavigationMode.EXTERNAL:
+        window.location.href = this.backbuttonBehavior.route;
+        break;
+      default:
+        window.history.back();
+    }
   }
 
 }
