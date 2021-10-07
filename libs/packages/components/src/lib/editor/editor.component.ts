@@ -43,7 +43,7 @@ export class SdsEditorComponent implements ControlValueAccessor {
     private _onChange = (_: any) => { };
     private _onTouched = () => { };
 
-    constructor(private cd: ChangeDetectorRef, @Inject(DOCUMENT) private document: Document) {
+    constructor(private cd: ChangeDetectorRef, @Inject(DOCUMENT) private _document: any) {
     }
 
     // Helper method to programatically add a value to the existing items array
@@ -86,10 +86,10 @@ export class SdsEditorComponent implements ControlValueAccessor {
         }
         this.searchInput.nativeElement.innerHTML = res;
         // To enable to SelectAll to remove the text
-        document.execCommand('selectAll', false, null);
+        this._document.execCommand('selectAll', false, null);
 
         // moving the cursor to the end when the validation fails
-        document.getSelection().collapseToEnd();
+        this._document.getSelection().collapseToEnd();
     }
 
     // ControlValueAccessor (and Formly) is trying to update the value of the FormControl (our custom component) programatically
