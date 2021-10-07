@@ -15,7 +15,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     <div
       #searchInput
       [attr.id]="id"
-      class="minh-15 border-gray-70 border-1px"
+      class="minh-15 border-gray-70 border-1px margin-top-1 padding-05"
       contenteditable="true"
       (input)="valueChange($event.target.innerHTML)"
     >
@@ -31,7 +31,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SdsEditorComponent implements ControlValueAccessor {
-    @ViewChild('searchInput', { read: ElementRef, static: false }) searchInput: ElementRef;
+    @ViewChild('searchInput', { read: ElementRef, static: true }) searchInput: ElementRef;
 
     @Input() id = 'searchEditor';
     @Input() regex = '';
@@ -47,7 +47,9 @@ export class SdsEditorComponent implements ControlValueAccessor {
     // Helper method to programatically add a value to the existing items array
     valueChange(value) {
         this.model = value;
-        this.validateRegex(this.model);
+        if (this.regex) {
+            this.validateRegex(this.model);
+        }
         this.updateModel();
     }
 
@@ -89,10 +91,10 @@ export class SdsEditorComponent implements ControlValueAccessor {
     // If there is a value we will just overwrite items
     // If there is no value we reset the items array to be empty
     writeValue(value: any) {
-        console.log(value, 'reset')
         if (value) {
             this.model = value;
-            this.searchInput.nativeElement.innerHTML = value;
+            if (this.searchInput)
+                this.searchInput.nativeElement.innerHTML = value;
             this.cd.markForCheck();
         } else {
             this.model = '';
