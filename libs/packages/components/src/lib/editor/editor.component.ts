@@ -72,7 +72,7 @@ export class SdsEditorComponent implements ControlValueAccessor {
     }
     // Validate regex and highlight first charecter of the failure
     validateRegex(value) {
-        const rawValue = value.replaceAll('<mark>', '').replaceAll('</mark>', '');
+        const rawValue = value.replaceAll('<mark>', '').replaceAll('</mark>', '').replaceAll(/<\/?span[^>]*>/g, '');
         const regex = new RegExp(this.regex, 'g');
         let res = "";
         let result = regex.exec(rawValue);
