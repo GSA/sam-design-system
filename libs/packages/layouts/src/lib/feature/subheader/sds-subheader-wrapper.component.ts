@@ -1,12 +1,10 @@
 import {
   Component,
-  OnInit,
   Output,
   EventEmitter,
   Input,
-  TemplateRef,
 } from '@angular/core';
-import { INavigationLink, NavigationMode, Selectable } from '@gsa-sam/components';
+import { INavigationLink, NavigationMode } from '@gsa-sam/components';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class SdsSubheaderWrapperComponent {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   @Input() backbuttonBehavior: INavigationLink;
 
@@ -32,23 +30,21 @@ export class SdsSubheaderWrapperComponent {
   public backClick(): void {
     if (!this.backbuttonBehavior) {
       window.history.back();
-    }
-
-    switch (this.backbuttonBehavior.mode) {
-      case NavigationMode.INTERNAL:
-        this.router.navigate([this.backbuttonBehavior.route]);
-        break;
-      case NavigationMode.EXTERNAL:
-        window.location.href = this.backbuttonBehavior.route;
-        break;
-      default:
-        window.history.back();
+    } else {
+      switch (this.backbuttonBehavior.mode) {
+        case NavigationMode.INTERNAL:
+          this.router.navigate([this.backbuttonBehavior.route]);
+          break;
+        case NavigationMode.EXTERNAL:
+          window.location.href = this.backbuttonBehavior.route;
+          break;
+        default:
+          window.history.back();
+      }
     }
   }
 
 }
-
-
 
 export enum SubHeaderWrapperMode {
   CUSTOM,
@@ -58,6 +54,5 @@ export enum SubHeaderWrapperMode {
   SEARCH,
   //
   TAB
-
 }
 
