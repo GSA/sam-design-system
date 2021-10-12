@@ -16,7 +16,7 @@ import {
 import { SdsSubheaderWrapperComponent } from './sds-subheader-wrapper.component';
 import { SdsActionsMenuModule } from '../actions-menu/actions-menu.module';
 import { SdsDrawerCommunicationService } from './drawer-communication.service';
-import { NgxBootstrapIconsModule, threeDotsVertical } from 'ngx-bootstrap-icons';
+import { NgxBootstrapIconsModule, threeDotsVertical, chevronLeft } from 'ngx-bootstrap-icons';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
@@ -28,7 +28,8 @@ import { IconModule } from '@gsa-sam/ngx-uswds-icons';
     SdsTruncateModule,
     SdsActionsMenuModule,
     IconModule,
-    NgxBootstrapIconsModule.pick({threeDotsVertical})
+    NgxBootstrapIconsModule.pick({threeDotsVertical, chevronLeft})
+
   ],
   exports: [
     SdsSubheaderComponent,
