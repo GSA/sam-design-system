@@ -1,4 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { UsaAccordionComponent, UsaAccordionItem } from '@gsa-sam/ngx-uswds';
 
 @Component({
   templateUrl: 'accordion-basic.component.html',
@@ -6,38 +7,37 @@ import { Component, ViewChild } from '@angular/core';
 })
 export class AccordionBasic {
 
-  @ViewChild('sdsAccordionDemo') sdsAccordionDemo;
-  @ViewChild('first') firstItem;
-  @ViewChild('third') thirdItem;
+  @ViewChild(UsaAccordionComponent) sdsAccordionDemo: UsaAccordionComponent;
+  @ViewChildren(UsaAccordionItem) usaAccordionItems: QueryList<UsaAccordionItem>;
 
   singleSelect = true;
 
-  toggle(): void {
-    this.firstItem.toggle();
+  toggle(accordionItem: UsaAccordionItem): void {
+    this.sdsAccordionDemo.toggle(this.usaAccordionItems.first.id);
   }
 
   close(): void {
-    this.firstItem.close();
+    this.sdsAccordionDemo.collapse(this.usaAccordionItems.first.id);
   }
 
   open(): void {
-    this.firstItem.open();
+    this.sdsAccordionDemo.expand(this.usaAccordionItems.first.id);
   }
 
   toggleDisabled(): void {
-    this.thirdItem.toggleDisabled();
+    this.usaAccordionItems.get(2).disabled = !this.usaAccordionItems.get(2).disabled;
   }
 
   openAll(): void {
-    this.sdsAccordionDemo.openAll();
+    this.sdsAccordionDemo.expandAll();
   }
 
   closeAll(): void {
-    this.sdsAccordionDemo.closeAll();
+    this.sdsAccordionDemo.collapseAll();
   }
 
   toggleMulti(): void {
-    this.sdsAccordionDemo.toggleMulti();
+    this.singleSelect = !this.singleSelect;
   }
 
 }
