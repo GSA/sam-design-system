@@ -1,4 +1,5 @@
-import { Component, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, Component, DoCheck, ViewChild, ViewContainerRef } from '@angular/core';
+import { UsaAccordionComponent, UsaAccordionItem } from '@gsa-sam/ngx-uswds';
 import { FieldWrapper } from '@ngx-formly/core';
 import * as qs from 'qs';
 
@@ -14,23 +15,16 @@ import * as qs from 'qs';
     <ng-container *ngIf="!to.readonlyMode; else defaultTemplate">
       <ng-container [ngSwitch]="to.group">
         <ng-container *ngSwitchCase="'accordion'">
-          <sds-accordion-next
-            [(multi)]="multi"
-            expandedHeight="34px"
-            collapsedHeight="34px"
-            #sdsAccordionDemo
-            class="sds-accordion--filters"
-          >
-            <sds-accordion-item
-              class="sds-accordion__panel"
-              [expanded]="modelHasValue()"
-            >
-              <sds-accordion-title><span [attr.class]="to.labelClass">{{ to.label }}</span></sds-accordion-title>
-              <sds-accordion-content>
+          <usa-accordion #groupAccordion [singleSelect]="!multi" class="sds-accordion--filters">
+            <usa-accordion-item>
+              <ng-template UsaAccordionHeader>
+                <span [attr.class]="to.labelClass">{{ to.label }}</span>
+              </ng-template>
+              <ng-template UsaAccordionContent>
                 <ng-container #fieldComponent></ng-container>
-              </sds-accordion-content>
-            </sds-accordion-item>
-          </sds-accordion-next>
+              </ng-template>
+            </usa-accordion-item>
+          </usa-accordion>
         </ng-container>
         <ng-container *ngSwitchCase="'panel'">
           <div
@@ -73,13 +67,28 @@ import * as qs from 'qs';
     </ng-template>
   `,
 })
-export class FormlyGroupWrapperComponent extends FieldWrapper {
+export class FormlyGroupWrapperComponent extends FieldWrapper implements AfterViewInit {
   @ViewChild('fieldComponent', { read: ViewContainerRef })
+  @ViewChild('groupAccordion') accordion: UsaAccordionComponent;
+  @ViewChild(UsaAccordionItem) accordionItem: UsaAccordionItem;
+
   fieldComponent: ViewContainerRef;
   multi = true;
   constructor() {
     super();
   }
+
+  ngAfterViewInit() {
+    if (this.to.group != 'accordion' || !this.accordion) {
+      return;
+    }
+
+    const shouldExpandAccordion = this.modelHasValue();
+    if (shouldExpandAccordion) {
+      this.accordion.expand(this.accordionItem.id);
+    }
+  }
+
   modelHasValue() {
     if (this.to.hasOwnProperty('expand')) {
       return this.to.expand;

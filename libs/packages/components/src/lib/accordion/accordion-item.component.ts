@@ -105,6 +105,9 @@ export class SdsAccordionItemComponent extends CdkAccordionItem
         }
       }
     });
+
+    console.warn(`This is a deprectaed version of accordion component, and will be removed in future versions. 
+      Please switch to using usa-accordion from @gsa-sam/ngx-uswds (https://github.com/GSA/ngx-uswds)`);
   }
 
   /** Gets the expanded state string. */

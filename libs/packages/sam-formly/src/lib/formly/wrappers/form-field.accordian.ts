@@ -1,4 +1,5 @@
-import { Component, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, ViewContainerRef } from '@angular/core';
+import { UsaAccordionComponent, UsaAccordionItem } from '@gsa-sam/ngx-uswds';
 import { FieldWrapper } from '@ngx-formly/core';
 import * as qs from 'qs';
 
@@ -10,31 +11,37 @@ import * as qs from 'qs';
 @Component({
   selector: 'sam-formly-accordian-form-field',
   template: `
-    <sds-accordion-next
-      [(multi)]="multi"
-      expandedHeight="34px"
-      collapsedHeight="34px"
-      #sdsAccordionDemo
-      class="sds-accordion--filters"
-    >
-      <sds-accordion-item
-        class="sds-accordion__panel"
-        [expanded]="modelHasValue()"
-      >
-        <sds-accordion-title> {{ to.label }}</sds-accordion-title>
-        <sds-accordion-content>
+    <usa-accordion #groupAccordion [singleSelect]="!multi" class="sds-accordion--filters">
+      <usa-accordion-item>
+        <ng-template UsaAccordionHeader>
+          <span [attr.class]="to.labelClass">{{ to.label }}</span>
+        </ng-template>
+        <ng-template UsaAccordionContent>
           <ng-container #fieldComponent></ng-container>
-        </sds-accordion-content>
-      </sds-accordion-item>
-    </sds-accordion-next>
+        </ng-template>
+      </usa-accordion-item>
+    </usa-accordion>
   `,
 })
-export class FormlyAccordianFormFieldComponent extends FieldWrapper {
-  @ViewChild('fieldComponent', { read: ViewContainerRef })
-  fieldComponent: ViewContainerRef;
+export class FormlyAccordianFormFieldComponent extends FieldWrapper implements AfterViewInit {
+  @ViewChild('fieldComponent', { read: ViewContainerRef }) fieldComponent: ViewContainerRef;
+  @ViewChild('groupAccordion') accordion: UsaAccordionComponent;
+  @ViewChild(UsaAccordionItem) accordionItem: UsaAccordionItem;
+
   multi = true;
   constructor() {
     super();
+  }
+
+  ngAfterViewInit() {
+    if (this.to.group != 'accordion' || !this.accordion) {
+      return;
+    }
+
+    const shouldExpandAccordion = this.modelHasValue();
+    if (shouldExpandAccordion) {
+      this.accordion.expand(this.accordionItem.id);
+    }
   }
   modelHasValue() {
     if (this.to.hasOwnProperty('expand')) {

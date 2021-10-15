@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AccordionBasic } from './accordion-basic.component';
-import { SdsAccordionModule } from '@gsa-sam/sam-material-extensions';
-import { MatExpansionModule } from '@angular/material/expansion';
+import { UsaAccordionModule } from '@gsa-sam/ngx-uswds';
 
 @NgModule({
   declarations: [AccordionBasic],
   imports: [
     CommonModule,
-    SdsAccordionModule,
-    MatExpansionModule
+    UsaAccordionModule,
   ],
   exports: [AccordionBasic],
   bootstrap: [AccordionBasic]

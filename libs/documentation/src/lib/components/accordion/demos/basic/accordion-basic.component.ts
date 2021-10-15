@@ -10,7 +10,7 @@ export class AccordionBasic {
   @ViewChild('first') firstItem;
   @ViewChild('third') thirdItem;
 
-  multi = false;
+  singleSelect = true;
 
   toggle(): void {
     this.firstItem.toggle();
