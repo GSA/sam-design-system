@@ -11,13 +11,11 @@ import { SideNavigationOptional } from './sidenavigation-optional.component';
 import { SdsFiltersModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
 import { SdsAccordionModule } from '@gsa-sam/sam-material-extensions';
-import { UsaAccordionModule } from '@gsa-sam/ngx-uswds';
 
 @NgModule({
   imports: [
     SdsSideNavigationModule,
     SdsAccordionModule,
-    UsaAccordionModule,
     CommonModule,
     FormsModule,
     SdsToolbarModule,
