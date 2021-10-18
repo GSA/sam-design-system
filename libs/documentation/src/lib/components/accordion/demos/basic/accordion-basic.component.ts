@@ -12,7 +12,7 @@ export class AccordionBasic {
 
   singleSelect = true;
 
-  toggle(accordionItem: UsaAccordionItem): void {
+  toggle(): void {
     this.sdsAccordionDemo.toggle(this.usaAccordionItems.first.id);
   }
 

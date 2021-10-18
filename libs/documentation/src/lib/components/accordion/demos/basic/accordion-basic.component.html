@@ -37,8 +37,8 @@
 <button (click)="toggleDisabled()" class="usa-button usa-button--base">Toggle Disabled Item</button>
 
 <h3>Accordion Controls:</h3>
-<p>To expand or collapse all accordion items, multi must be set to true. <code>multi: {{multi}}</code></p>
+<p>To expand or collapse all accordion items, multi must be set to true. <code>multi: {{!singleSelect}}</code></p>
 <button (click)="toggleMulti()" class="usa-button usa-button--base">Toggle Multi Mode</button>
-<button (click)="openAll()" class="usa-button usa-button--base" [disabled]="!multi">Open All Items</button>
-<button (click)="closeAll()" class="usa-button usa-button--base" [disabled]="!multi">Close All Items</button>
+<button (click)="openAll()" class="usa-button usa-button--base" [disabled]="singleSelect">Open All Items</button>
+<button (click)="closeAll()" class="usa-button usa-button--base" [disabled]="singleSelect">Close All Items</button>
 

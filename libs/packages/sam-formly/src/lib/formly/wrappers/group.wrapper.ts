@@ -68,11 +68,11 @@ import * as qs from 'qs';
   `,
 })
 export class FormlyGroupWrapperComponent extends FieldWrapper implements AfterViewInit {
-  @ViewChild('fieldComponent', { read: ViewContainerRef })
+  @ViewChild('fieldComponent', { read: ViewContainerRef }) fieldComponent: ViewContainerRef;
+  
   @ViewChild('groupAccordion') accordion: UsaAccordionComponent;
   @ViewChild(UsaAccordionItem) accordionItem: UsaAccordionItem;
 
-  fieldComponent: ViewContainerRef;
   multi = true;
   constructor() {
     super();
