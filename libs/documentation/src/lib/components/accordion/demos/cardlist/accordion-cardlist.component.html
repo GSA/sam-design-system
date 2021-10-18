@@ -3,29 +3,33 @@
     <h2 class="sds-card__title ">More About</h2>
   </div>
   <div class="sds-card__body">
-    <sds-accordion-next #sdsAccordionDemo>
-      <sds-accordion-item #first>
-        <sds-accordion-title>Chief Financial Officers Council Grants Training</sds-accordion-title>
-        <sds-accordion-content>Basic knowledge training modules on grants and cooperative agreements for Federal officials.
-        </sds-accordion-content>
-      </sds-accordion-item>
-      <sds-accordion-item [expanded]="true" #second>
-        <sds-accordion-title>Grants.gov Learning Center</sds-accordion-title>
-        <sds-accordion-content>Learn and navigate the step-by-step process of the <a class="usa-link"
-            href="javascript:void(0);">grants lifecycle</a>, from online application through post-award.
-        </sds-accordion-content>
-      </sds-accordion-item>
-      <sds-accordion-item #third>
-        <sds-accordion-title>Benefits.gov Benefit Finder</sds-accordion-title>
-        <sds-accordion-content>Connect to this benefits.gov tool to find government benefit information and determine your
-          eligibility.</sds-accordion-content>
-      </sds-accordion-item>
-      <sds-accordion-item #fourth>
-        <sds-accordion-title>USA.gov Government Benefits, Grants, and Loans</sds-accordion-title>
-        <sds-accordion-content>All you need to know about affordable housing, grants, and loans on USA.gov.
-        </sds-accordion-content>
-      </sds-accordion-item>
-    </sds-accordion-next>
+    <usa-accordion [singleSelect]="false" [headerLevel]="2" activeIds="active-accordion" [bordered]="true">
+      <usa-accordion-item #first header="Chief Financial Officers Council Grants Training">
+        <ng-template UsaAccordionContent>
+          Basic knowledge training modules on grants and cooperative agreements for Federal officials.
+        </ng-template>
+      </usa-accordion-item>
+    
+      <usa-accordion-item #second header="Grants.gov Learning Center" [id]="'active-accordion'">
+        <ng-template UsaAccordionContent>
+          Learn and navigate the step-by-step process of the <a class="usa-link" href="javascript:void(0);">grants lifecycle</a>, from online application through post-award.
+        </ng-template>
+      </usa-accordion-item>
+    
+      <usa-accordion-item #third header="Benefits.gov Benefit Finder">
+        <ng-template UsaAccordionContent>
+          Connect to this benefits.gov tool to find government benefit information and determine your eligibility.
+        </ng-template>
+      </usa-accordion-item>
+    
+      <usa-accordion-item #fourth header="Benefits.gov Benefit Finder">
+        <ng-template UsaAccordionHeader>
+          USA.gov Government Benefits, Grants, and Loans
+        </ng-template>
+        <ng-template UsaAccordionContent>
+          Connect to this benefits.gov tool to find government benefit information and determine your eligibility.
+        </ng-template>
+      </usa-accordion-item>
+    </usa-accordion>
   </div>
 </div>
-

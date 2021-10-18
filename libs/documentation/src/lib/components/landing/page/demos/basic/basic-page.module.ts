@@ -5,7 +5,6 @@ import { BasicPageComponent } from './basic-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
-import { SdsAccordionModule } from '@gsa-sam/sam-material-extensions';
 import { PortalModule } from '@angular/cdk/portal';
 
 import {
@@ -14,6 +13,7 @@ import {
   SdsLandingCardModule,
   SdsLandingPageModule
 } from '@gsa-sam/layouts';
+import { UsaAccordionModule } from '@gsa-sam/ngx-uswds';
 
 @NgModule({
   declarations: [BasicPageComponent],
@@ -26,8 +26,8 @@ import {
     FormlyModule,
     ReactiveFormsModule,
     SdsFormlyModule,
-    SdsAccordionModule,
-    PortalModule
+    PortalModule,
+    UsaAccordionModule,
   ],
 })
 export class BasicPageModule {}
