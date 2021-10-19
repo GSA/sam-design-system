@@ -1,5 +1,4 @@
 <div class="usa-banner">
-  <div class="usa-accordion">
     <header
       class="usa-banner__header"
       [class.sam-banner__header--expanded]="showDetail"
@@ -17,7 +16,7 @@
           </p>
         </div>
         <button
-          class="usa-accordion__button usa-banner__button"
+          class="usa-banner__button"
           (click)="toggleDetails()"
           (blur)="closeDetail()"
           [attr.aria-expanded]="showDetail"
@@ -31,7 +30,7 @@
       </div>
     </header>
     <div
-      class="usa-banner__content usa-accordion__content"
+      class="usa-banner__content"
       id="gov-banner"
       [hidden]="!showDetail"
     >
@@ -60,5 +59,4 @@
         </div>
       </div>
     </div>
-  </div>
 </div>
