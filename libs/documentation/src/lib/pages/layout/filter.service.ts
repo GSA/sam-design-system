@@ -195,6 +195,7 @@ export class FilterService {
       key: 'startDate',
       type: 'datepicker',
       templateOptions: {
+        group: 'accordion',
         hideOptional: true,
         label: 'Date',
       },
