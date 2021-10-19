@@ -14,7 +14,7 @@ import { Subject } from 'rxjs';
 export class FilterService {
   public settings = new SDSAutocompletelConfiguration();
   public autocompleteModel = new SDSSelectedItemModel();
-  
+
   public model = {};
   public form = new FormGroup({});
   options: FormlyFormOptions = {};
@@ -189,6 +189,14 @@ export class FilterService {
             value: 'Intragovernmental Transactions',
           },
         ],
+      },
+    },
+    {
+      key: 'startDate',
+      type: 'datepicker',
+      templateOptions: {
+        hideOptional: true,
+        label: 'Date',
       },
     },
     {
