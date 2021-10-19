@@ -269,7 +269,6 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     const encodedValues = qs.stringify(filters, {
       skipNulls: true,
       encode: false,
-      filter: this.shortFormatDate,
     });
     if (encodedValues) {
       return this.getUrlParams(encodedValues);
@@ -289,27 +288,11 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     return target;
   }
 
-  shortFormatDate(prefix, value) {
-    const fixDigit = (val) => {
-      return val.toString().length === 1 ? '0' + val : val;
-    };
-    const getFormattedDate = (date) =>
-      `${fixDigit(
-        date.getMonth() + 1
-      )}/${date.getDate()}/${date.getFullYear()}`;
-    if (value instanceof Date) {
-      value = getFormattedDate(new Date(value));
-    }
-    return value;
-  }
-
-
   convertToModel(filters) {
     let obj = {};
     const encodedValues = qs.stringify(filters, {
       skipNulls: true,
       encode: false,
-      filter: this.longFormatDate,
     });
     obj = qs.parse(encodedValues, { decoder: this.cleanModelParser });
     return obj;
@@ -331,14 +314,6 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     return decoder(str, decoder, charset);
   }
 
-  longFormatDate(prefix, value) {
-    const val = Date.parse(value);
-    if (!isNaN(val) && isNaN(value)) {
-      value = new Date(val).toISOString();
-    }
-    return value;
-  }
-
   handleInactiveFilterChange(inactiveFilterValue: boolean) {
     if (this.displayChips) {
       this.generateChips(this.model, this.fields);
@@ -350,8 +325,8 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     const clonedFields = cloneDeep(this.fields);
     this._modelSnapshot = cloneDeep(this.model);
     this.removePopoverGroup(clonedFields);
-    this.dialogRef = this.formlyDialogService.open(this.horizontalFiltersDialogTemplate, {    
-      data: {fields: clonedFields, options: {}},  
+    this.dialogRef = this.formlyDialogService.open(this.horizontalFiltersDialogTemplate, {
+      data: { fields: clonedFields, options: {} },
       height: '100vh',
       width: '100vw',
       maxWidth: '100vw',
@@ -390,7 +365,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
       if (field.templateOptions && field.templateOptions.group === 'popover') {
         field.templateOptions.group = 'accordion';
       }
-      
+
       if (field.fieldGroup) {
         this.removePopoverGroup(field.fieldGroup);
       }
@@ -475,7 +450,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     }
 
     if (chip.formlyType === SdsFormlyTypes.DATERANGEPICKER || chip.formlyType === SdsFormlyTypes.DATERANGEPICKERV2) {
-      
+
       const fromDateControl = field.fieldGroup[0].formControl;
       const toDateControl = field.fieldGroup[1].formControl;
       fromDateControl.reset();
