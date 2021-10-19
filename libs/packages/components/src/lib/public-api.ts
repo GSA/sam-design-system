@@ -7,9 +7,6 @@ export * from './actions-menu/actions-menu.component';
 export * from './actions-menu/actions-menu.module'
 export * from './page/page.module';
 export * from './page/page.component';
-export * from './toolbar/toolbar.module';
-export * from './toolbar/toolbar.component';
-export * from './toolbar/toolbar-expand.directive';
 export * from './pagination/pagination.module';
 export * from './pagination/pagination.component';
 export * from './autocomplete/autocomplete.component';
@@ -83,10 +80,6 @@ export * from './tabs/tab-panel.component';
 
 export * from './date/sds-date.module'
 export * from './date/sds-date.pipe'
-
-export * from './icon/icon.component'
-export * from './icon/icon.module'
-export * from './icon/custom-icons'
 
 export * from './editor/editor.component'
 export * from './editor/editor.module';

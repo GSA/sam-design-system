@@ -12,7 +12,7 @@
   <div class="margin-right-1">
     <button class="usa-button sds-button--circle usa-button--base usa-button--big padding-2" sdsStepperPrevious
       [attr.id]="id + '-prevBtn'">
-      <sds-icon [icon]="'chevron-left'"></sds-icon>
+      <usa-icon [icon]="'chevron-left'"></usa-icon>
     </button>
 
     <label [attr.for]="id + '-prevBtn'" class="text-right usa-link cursor-pointer display-block margin-top-2">
@@ -24,7 +24,7 @@
   <div class="margin-right-1">
     <button class="usa-button sds-button--circle usa-button--big usa-button--base padding-2" sdsStepperSave
       [attr.id]="id + '-saveBtn'">
-      <sds-icon [icon]="'save'"></sds-icon>
+      <usa-icon [icon]="'save'"></usa-icon>
     </button>
     <label [attr.for]="id + '-saveBtn'" class="text-center usa-link cursor-pointer display-block margin-top-2">
       Save
@@ -35,7 +35,7 @@
     <button #saveAndContinueBtn
       class="usa-button sds-button--circle usa-button--base usa-button--big usa-button--active padding-2"
       sdsStepperNext [attr.id]="id + '-nextBtn'">
-      <sds-icon [icon]="'chevron-right'"></sds-icon>
+      <usa-icon [icon]="'chevron-right'"></usa-icon>
     </button>
     <label [attr.for]="id + '-nextBtn'" class="text-left usa-link cursor-pointer display-block margin-top-2">
       Save and Continue

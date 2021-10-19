@@ -268,7 +268,6 @@ import {
 import { DocumentationSharedModule } from './shared';
 import { OverviewComponent } from './pages/overview/overview.component';
 import { ResultsLayoutModule } from './pages/layout/layout.module';
-import { ResultsLayoutComponent } from './pages/layout/layout.component';
 import { FormlyFormsModule } from './pages/formly-forms/formly-forms.module';
 import { FormlyFormsComponent } from './pages/formly-forms/formly-forms.component';
 import { FormlyConditionalModule } from './pages/formly-conditional/formly-conditional.module';
@@ -284,7 +283,6 @@ export const ROUTES: Routes = [
   { path: 'overview', component: OverviewComponent },
   { path: 'roadmap', component: RoadmapComponent },
   { path: 'introduction', component: IntroductionComponent },
-  { path: 'layout', component: ResultsLayoutComponent },
   { path: 'layout-responsive', component: LayoutResponsiveComponent },
 
   // Components
