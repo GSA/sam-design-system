@@ -1,23 +1,28 @@
 <h4>Side Navigation</h4>
-<sds-side-toolbar [responsiveButtonText]="'Open Navigation'">
-  <ng-template #toolbarContent>
-    <usa-accordion [singleSelect]="true" [bordered]="true">
-      <usa-accordion-item>
-        <ng-template UsaAccordionHeader>
-          <div class="sds-accordion__item-header-title">Select Domain</div>
-          <span class="text-normal">{{ selectedCategory }}</span>
-        </ng-template>
-        <ng-template UsaAccordionContent>
-          <sds-side-navigation #sideNav [model]="navigationModel" (linkEvent)="onNavigateLink()" [ariaLabel]="'Demo Side Navigation'"></sds-side-navigation>
-        </ng-template>
-      </usa-accordion-item>
-      <usa-accordion-item header="Filter By">
-        <ng-template UsaAccordionContent>
-          <sds-filters [options]="options" [advancedFilters]="true" [sortMoreFilterBy]="'label'" [isHistoryEnable]="false"
-          [form]="form" [fields]="fields" [model]="filterModel">
-          </sds-filters>
-        </ng-template>
-      </usa-accordion-item>
-    </usa-accordion>
-  </ng-template>
-</sds-side-toolbar>
+<div class="grid-row">
+  <div class="grid-col-4">
+    <sds-side-toolbar [responsiveButtonText]="'Open Navigation'">
+      <ng-template #toolbarContent>
+        <usa-accordion [singleSelect]="true" [bordered]="true">
+          <usa-accordion-item>
+            <ng-template UsaAccordionHeader>
+              <div class="sds-accordion__item-header-title">Select Domain</div>
+              <span class="text-normal">{{ selectedCategory }}</span>
+            </ng-template>
+            <ng-template UsaAccordionContent>
+              <sds-side-navigation #sideNav [model]="navigationModel" (linkEvent)="onNavigateLink()" [ariaLabel]="'Demo Side Navigation'"></sds-side-navigation>
+            </ng-template>
+          </usa-accordion-item>
+          <usa-accordion-item header="Filter By">
+            <ng-template UsaAccordionContent>
+              <sds-filters [options]="options" [advancedFilters]="true" [sortMoreFilterBy]="'label'" [isHistoryEnable]="false"
+              [form]="form" [fields]="fields" [model]="filterModel">
+              </sds-filters>
+            </ng-template>
+          </usa-accordion-item>
+        </usa-accordion>
+      </ng-template>
+    </sds-side-toolbar>
+  </div>
+</div>
+

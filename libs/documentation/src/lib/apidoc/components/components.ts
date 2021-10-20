@@ -10683,7 +10683,7 @@ const COMPONENTS = {
                     "name": "getClass",
                     "args": [],
                     "optional": false,
-                    "returnType": "\"hide-cursor\" | \"\"",
+                    "returnType": "\"\" | \"hide-cursor\"",
                     "typeParameters": [],
                     "line": 631,
                     "deprecated": false,
