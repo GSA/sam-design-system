@@ -4,8 +4,8 @@ import { SdsFooterComponent } from './footer.component';
 import { RouterModule } from '@angular/router';
 import { SdsCollapseModule } from '@gsa-sam/components';
 import { SdsExternalLinkDirectivesModule } from '@gsa-sam/components';
-import { SdsAccordionModule } from '@gsa-sam/sam-material-extensions';
 import { SdsFeedbackModule } from '../sds-feedback/sds-feedback.module';
+import { UsaAccordionModule } from '@gsa-sam/ngx-uswds';
 
 @NgModule({
   imports: [
@@ -13,8 +13,8 @@ import { SdsFeedbackModule } from '../sds-feedback/sds-feedback.module';
     RouterModule,
     SdsCollapseModule,
     SdsExternalLinkDirectivesModule,
-    SdsAccordionModule,
     SdsFeedbackModule,
+    UsaAccordionModule,
   ],
   declarations: [SdsFooterComponent],
   exports: [SdsFooterComponent],

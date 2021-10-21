@@ -23,8 +23,8 @@ export class LayoutResponsiveComponent {
   form;
   filterModel = {};
   options;
-  filtersExpanded: boolean = false;
-  domainsExpanded: boolean = true;
+  filtersExpanded: boolean = true;
+  domainsExpanded: boolean = false;
   responsiveDialogOptions: SdsDialogConfig = {
     ariaLabel: 'Search Filters',
   };
@@ -88,6 +88,7 @@ export class LayoutResponsiveComponent {
       form: this.form,
       options: this.options,
       isHistoryEnabled: true,
+      advancedFilters: true,
     };
   }
 

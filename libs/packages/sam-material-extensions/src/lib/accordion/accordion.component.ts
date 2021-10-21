@@ -83,6 +83,11 @@ export class SdsAccordionComponent {
   @Input() collapsedHeight;
   @Input() expandedHeight;
 
+  constructor() {
+    console.warn(`This is a deprectaed version of accordion component, and will be removed in future versions. 
+    Please switch to using usa-accordion from @gsa-sam/ngx-uswds (https://github.com/GSA/ngx-uswds)`);
+  }
+
   /** Opens all accordion items. */
   openAll(): void {
     this.accordion.openAll();

@@ -37,10 +37,9 @@
       </div>
     </div>
     <nav class="sds-footer__nav--accordion display-block tablet:display-none" aria-label="Footer Navigation Links">
-      <sds-accordion-next [multi]="true">
-        <sds-accordion-item *ngFor="let section of model.linkSections; let $index = index">
-          <sds-accordion-title>{{ section.text }}</sds-accordion-title>
-          <sds-accordion-content>
+      <usa-accordion [singleSelect]="false" [bordered]="true">
+        <usa-accordion-item *ngFor="let section of model.linkSections; let $index=index" [header]="section.text">
+          <ng-template UsaAccordionContent>
             <ul class="usa-list usa-list--unstyled padding-y-1">
               <li class="usa-footer__secondary-link" *ngFor="let link of section.links">
                 <ng-container [ngTemplateOutlet]="
@@ -52,9 +51,9 @@
                   " [ngTemplateOutletContext]="{ $implicit: link }"></ng-container>
               </li>
             </ul>
-          </sds-accordion-content>
-        </sds-accordion-item>
-      </sds-accordion-next>
+          </ng-template>
+        </usa-accordion-item>
+      </usa-accordion>
     </nav>
   </div>
   <div class="usa-footer__secondary-section">

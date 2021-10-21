@@ -30,3 +30,4 @@ export * from './feature/landing/list/list.component';
 export * from './feature/landing/page/page.module';
 export * from './feature/workspace-tier-2/item/item.module';
 export * from './feature/workspace-tier-2/label/label.module';
+export * from './feature/workspace-tier-2/title/title.module';
