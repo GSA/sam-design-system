@@ -132,16 +132,6 @@ export class SdsEditorComponent implements ControlValueAccessor {
             preCaretRange.selectNodeContents(element);
             preCaretRange.setEnd(range.endContainer, range.endOffset);
             caretOffset = preCaretRange.toString().length;
-        } else if (
-            typeof this._document['selection'] != 'undefined' &&
-            this._document['selection'].type != 'Control'
-        ) {
-            const body: any = this._document.body as any;
-            let textRange = this._document['selection'].createRange();
-            let preCaretTextRange = body.createTextRange();
-            preCaretTextRange.moveToElementText(element);
-            preCaretTextRange.setEndPoint('EndToEnd', textRange);
-            caretOffset = preCaretTextRange.text.length;
         }
         return caretOffset;
     }
@@ -161,7 +151,7 @@ export class SdsEditorComponent implements ControlValueAccessor {
         if (this.pos < this.length) {
             let firstNodeLength = node.childNodes[0].textContent.length;
             let childNodeIndex;
-            if (this.pos < firstNodeLength) {
+            if (this.pos <= firstNodeLength) {
                 childNodeIndex = 0;
             } else if (this.pos > firstNodeLength) {
                 childNodeIndex = 2;
