@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
 @Injectable({
@@ -122,7 +123,7 @@ export class SdsAdvancedFiltersService {
       field.hide = true;
       field.templateOptions['required'] = false;
       if (field.formControl) {
-        field.formControl.setValue(null);
+        (field.formControl.reset()
       } else {
         model[field.key] = null;
       }
