@@ -123,7 +123,7 @@ export class SdsAdvancedFiltersService {
       field.hide = true;
       field.templateOptions['required'] = false;
       if (field.formControl) {
-        (field.formControl.reset()
+        field.formControl.reset();
       } else {
         model[field.key] = null;
       }
