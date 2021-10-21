@@ -78,7 +78,10 @@ export class SdsEditorComponent implements ControlValueAccessor {
 
     // Validate regex and highlight first charecter of the failure
     validateRegex(value) {
-        const rawValue = value.replaceAll('<mark>', '').replaceAll('</mark>', '').replaceAll(/<\/?span[^>]*>/g, '');
+        const rawValue = value
+            .replaceAll(/<\/?mark[^>]*>/g, '')
+            .replaceAll(/<\/?span[^>]*>/g, '')
+            .replaceAll(/<\/?font[^>]*>/g, '');
         const regex = new RegExp(this.regex, 'g');
         let res = "";
         let result = regex.exec(rawValue);
@@ -119,17 +122,8 @@ export class SdsEditorComponent implements ControlValueAccessor {
         this._onTouched = fn;
     }
 
-    // onKeydown(event) {
-    //     if (event.key === 'Backspace' || event.key === 'Delete') {
-    //         this.length = this.length - 1;
-    //     }
-    // }
 
-    // onKeyPressed() {
-    //     this.length = this.length + 1;
-    // }
-
-    // Get the cursor current position and ma
+    // Get the cursor current position 
     getCaretCharacterOffsetWithin(element) {
         let caretOffset = 0;
         if (typeof window.getSelection != 'undefined') {
@@ -153,34 +147,16 @@ export class SdsEditorComponent implements ControlValueAccessor {
     }
 
     onValueChange(value) {
-
-        const rawValue = value
-            .replaceAll('<mark>', '')
-            .replaceAll('</mark>', '')
-            .replaceAll(/<\/?span[^>]*>/g, '')
-            .replaceAll(/<\/?font[^>]*>/g, '');
-
         this.pos = this.getCaretCharacterOffsetWithin(
-            this._document.getElementById(this.id)
+            this.searchInput.nativeElement
         );
-        const regex = new RegExp(this.regex, 'g');
-        let res = '';
-        let result = regex.exec(rawValue);
-        if (result) {
-            let index = result.index;
-            res =
-                rawValue.substring(0, index) +
-                '<mark>' +
-                rawValue.substring(index, index + 1) +
-                '</mark>' +
-                rawValue.substring(index + 1, index + rawValue.length);
-        } else {
-            res = rawValue;
+        if (this.regex) {
+            this.validateRegex(value);
         }
-        this.searchInput.nativeElement.innerHTML = res;
-        this.model = rawValue;
+        this.model = value;
         this.updateModel();
-        let node = this._document.getElementById(this.id);
+
+        let node = this.searchInput.nativeElement;
         this.length = node.innerText.length;
         if (this.pos < this.length) {
             let firstNodeLength = node.childNodes[0].textContent.length;
@@ -195,13 +171,13 @@ export class SdsEditorComponent implements ControlValueAccessor {
             let range = this._document.createRange();
             let sel = window.getSelection();
             range.setStart(
-                this._document.getElementById(this.id).childNodes[childNodeIndex],
+                this.searchInput.nativeElement.childNodes[childNodeIndex],
                 startPosition
             );
             range.collapse(true);
             sel.removeAllRanges();
             sel.addRange(range);
-            this._document.getElementById(this.id).focus();
+            this.searchInput.nativeElement.focus();
         } else {
             this._document.execCommand('selectAll', false, null);
             this._document.getSelection().collapseToEnd();
