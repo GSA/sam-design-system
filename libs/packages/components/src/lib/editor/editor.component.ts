@@ -19,8 +19,6 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
       [attr.id]="id"
       class="minh-15 border-gray-70 border-1px margin-top-1 padding-05"
       contenteditable="true"
-      (keydown)="onKeydown($event)"
-      (keypress)="onKeyPressed()"
       (input)="!validateOnBlur && onValueChange($event.target.innerHTML)"
       (blur)="validateOnBlur && onBlur($event.target.innerHTML)"
     >
@@ -121,15 +119,15 @@ export class SdsEditorComponent implements ControlValueAccessor {
         this._onTouched = fn;
     }
 
-    onKeydown(event) {
-        if (event.key === 'Backspace' || event.key === 'Delete') {
-            this.length = this.length - 1;
-        }
-    }
+    // onKeydown(event) {
+    //     if (event.key === 'Backspace' || event.key === 'Delete') {
+    //         this.length = this.length - 1;
+    //     }
+    // }
 
-    onKeyPressed() {
-        this.length = this.length + 1;
-    }
+    // onKeyPressed() {
+    //     this.length = this.length + 1;
+    // }
 
     // Get the cursor current position and ma
     getCaretCharacterOffsetWithin(element) {
@@ -183,7 +181,7 @@ export class SdsEditorComponent implements ControlValueAccessor {
         this.model = rawValue;
         this.updateModel();
         let node = this._document.getElementById(this.id);
-
+        this.length = node.innerText.length;
         if (this.pos < this.length) {
             let firstNodeLength = node.childNodes[0].textContent.length;
             let childNodeIndex;
