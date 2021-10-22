@@ -22,6 +22,20 @@ import { SubheaderSearchAutocompleteComponent } from './demos/search-autocomplet
 import { SubheaderSearchAutocompleteModule } from './demos/search-autocomplete/subheader-search-autocomplete.module';
 import { SdsSubheaderWrapperRequestComponent } from './demos/request/sds-subheader-wrapper-request.component';
 import { SdsSubheaderRequestModule } from './demos/request/sds-subheader-wrapper-request.module';
+import { SdsSubheaderWrapperSubmitComponent } from './demos/submit/sds-subheader-wrapper-submit.component';
+import { SdsSubheaderSubmitModule } from './demos/submit/sds-subheader-wrapper-submit.module';
+import { SdsSubheaderWrapperTabComponent } from './demos/tabs/sds-subheader-wrapper-tabs.component';
+import { SdsSubheaderTabModule } from './demos/tabs/sds-subheader-wrapper-tabs.module';
+
+import { SdsSubheaderWrapperSearchWrapperComponent } from './demos/search-wrapper/sds-subheader-wrapper-search-wrapper.component';
+import { SdsSubheaderSearchWrapperModule } from './demos/search-wrapper/sds-subheader-wrapper-search-wrapper.module';
+
+
+import { SdsSubheaderWrapperSearchWrapperDropdownComponent } from './demos/search-wrapper-dropdown/sds-subheader-wrapper-search-wrapper.component';
+import { SdsSubheaderSearchWrapperDropdownModule } from './demos/search-wrapper-dropdown/sds-subheader-wrapper-search-wrapper.module';
+
+
+
 
 declare var require: any;
 const DEMOS = {
@@ -83,6 +97,40 @@ const DEMOS = {
     markup: require('!!raw-loader!./demos/request/sds-subheader-wrapper-request.component.html'),
     path: 'libs/documentation/src/lib/components/subheader/demos/request',
   },
+
+  submit: {
+    title: 'Submit',
+    type: SdsSubheaderWrapperSubmitComponent,
+    code: require('!!raw-loader!./demos/submit/sds-subheader-wrapper-submit.component'),
+    module: require('!!raw-loader!./demos/submit/sds-subheader-wrapper-submit.module'),
+    markup: require('!!raw-loader!./demos/submit/sds-subheader-wrapper-submit.component.html'),
+    path: 'libs/documentation/src/lib/components/subheader/demos/submit',
+  },
+
+  tab: {
+    title: 'Tab',
+    type: SdsSubheaderWrapperTabComponent,
+    code: require('!!raw-loader!./demos/tabs/sds-subheader-wrapper-tabs.component'),
+    module: require('!!raw-loader!./demos/tabs/sds-subheader-wrapper-tabs.module'),
+    markup: require('!!raw-loader!./demos/tabs/sds-subheader-wrapper-tabs.component.html'),
+    path: 'libs/documentation/src/lib/components/subheader/demos/tabs',
+  },
+  searchWrapper: {
+    title: 'Search',
+    type: SdsSubheaderWrapperSearchWrapperComponent,
+    code: require('!!raw-loader!./demos/search-wrapper/sds-subheader-wrapper-search-wrapper.component'),
+    module: require('!!raw-loader!./demos/search-wrapper/sds-subheader-wrapper-search-wrapper.module'),
+    markup: require('!!raw-loader!./demos/search-wrapper/sds-subheader-wrapper-search-wrapper.component.html'),
+    path: 'libs/documentation/src/lib/components/subheader/demos/search-wrapper',
+  },
+  searchWrapperDropdown: {
+    title: 'Search Dropdown',
+    type: SdsSubheaderWrapperSearchWrapperDropdownComponent,
+    code: require('!!raw-loader!./demos/search-wrapper-dropdown/sds-subheader-wrapper-search-wrapper.component'),
+    module: require('!!raw-loader!./demos/search-wrapper-dropdown/sds-subheader-wrapper-search-wrapper.module'),
+    markup: require('!!raw-loader!./demos/search-wrapper-dropdown/sds-subheader-wrapper-search-wrapper.component.html'),
+    path: 'libs/documentation/src/lib/components/subheader/demos/search-wrapper-dropdown',
+  },
 };
 
 export const ROUTES = [
@@ -118,6 +166,10 @@ export const ROUTES = [
     SubheaderTier2WorkspaceModule,
     SubheaderSearchAutocompleteModule,
     SdsSubheaderRequestModule,
+    SdsSubheaderSubmitModule,
+    SdsSubheaderTabModule,
+    SdsSubheaderSearchWrapperModule,
+    SdsSubheaderSearchWrapperDropdownModule
   ],
 })
 export class SubHeaderModule {

@@ -18,7 +18,7 @@ import { SdsActionsMenuModule } from '../actions-menu/actions-menu.module';
 import { SdsDrawerCommunicationService } from './drawer-communication.service';
 import { NgxBootstrapIconsModule, threeDotsVertical, chevronLeft } from 'ngx-bootstrap-icons';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
-
+import { SdsButtonGroupModule } from '@gsa-sam/sam-material-extensions';
 @NgModule({
   imports: [
     CommonModule,
@@ -28,6 +28,7 @@ import { IconModule } from '@gsa-sam/ngx-uswds-icons';
     SdsTruncateModule,
     SdsActionsMenuModule,
     IconModule,
+    SdsButtonGroupModule,
     NgxBootstrapIconsModule.pick({threeDotsVertical, chevronLeft})
 
   ],
