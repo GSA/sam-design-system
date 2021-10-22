@@ -12,6 +12,8 @@ import {
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { EditorBasicModule } from './demos/basic/formly-editor-basic.module';
 import { EditorBasic } from './demos/basic/formly-editor-basic.component';
+import { EditorOptional } from './demos/optional/formly-editor-optional.component';
+import { EditorOptionalModule } from './demos/optional/formly-editor-optional.module';
 
 declare var require: any;
 const DEMOS = {
@@ -22,6 +24,14 @@ const DEMOS = {
     module: require('!!raw-loader!./demos/basic/formly-editor-basic.module'),
     markup: require('!!raw-loader!./demos/basic/formly-editor-basic.component.html'),
     path: 'libs/documentation/src/lib/components/formly-editor/demos/basic',
+  },
+  optional: {
+    title: 'Editor-Update on blur',
+    type: EditorOptional,
+    code: require('!!raw-loader!./demos/optional/formly-editor-optional.component'),
+    module: require('!!raw-loader!./demos/optional/formly-editor-optional.module'),
+    markup: require('!!raw-loader!./demos/optional/formly-editor-optional.component.html'),
+    path: 'libs/documentation/src/lib/components/formly-editor/demos/optional',
   },
 };
 
@@ -49,7 +59,7 @@ export const ROUTES = [
 ];
 
 @NgModule({
-  imports: [CommonModule, DocumentationComponentsSharedModule, EditorBasicModule],
+  imports: [CommonModule, DocumentationComponentsSharedModule, EditorBasicModule, EditorOptionalModule],
 })
 export class EditorModule {
   constructor(demoList: DocumentationDemoList) {
