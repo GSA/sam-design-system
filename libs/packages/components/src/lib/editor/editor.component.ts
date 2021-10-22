@@ -47,8 +47,6 @@ export class SdsEditorComponent implements ControlValueAccessor {
     @Input() validateOnBlur = false;
 
     model = '';
-    pos: number = undefined;
-    length: number = 0;
 
     private _onChange = (_: any) => { };
     private _onTouched = () => { };
@@ -137,7 +135,7 @@ export class SdsEditorComponent implements ControlValueAccessor {
     }
 
     onValueChange(value) {
-        this.pos = this.getCaretCharacterOffsetWithin(
+        const pos = this.getCaretCharacterOffsetWithin(
             this.searchInput.nativeElement
         );
         if (this.regex) {
@@ -147,17 +145,14 @@ export class SdsEditorComponent implements ControlValueAccessor {
         this.updateModel();
 
         let node = this.searchInput.nativeElement;
-        this.length = node.innerText.length;
-        if (this.pos < this.length) {
+        if (pos < node?.innerText?.length) {
             let firstNodeLength = node.childNodes[0].textContent.length;
-            let childNodeIndex;
-            if (this.pos <= firstNodeLength) {
-                childNodeIndex = 0;
-            } else if (this.pos > firstNodeLength) {
-                childNodeIndex = 2;
-            }
+
+            let childNodeIndex =
+                pos <= firstNodeLength ? 0 : 2;
+
             let startPosition =
-                childNodeIndex === 0 ? this.pos : this.pos - firstNodeLength - 1;
+                childNodeIndex === 0 ? pos : pos - firstNodeLength - 1;
             let range = this._document.createRange();
             let sel = window.getSelection();
             range.setStart(
