@@ -17,6 +17,6 @@ export class DefaultSelectionPanelComponent {
    * Update current selection panel programatically
    */
   onSelectExclusionsClicked() {
-    this.currentSelectedPanel = {...this.selectionPanelModel.navigationLinks[1]};
+    this.currentSelectedPanel = this.selectionPanelModel.navigationLinks[1];
   }
 }
