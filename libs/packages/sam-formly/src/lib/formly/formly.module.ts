@@ -24,7 +24,6 @@ import {
   SdsEditorModule,
   SdsSearchModule,
   SdsCollapseModule,
-  SdsIconModule,
   SdsTooltipModule,
   SdsTabsModule,
   SdsPopoverModule
@@ -176,7 +175,6 @@ export const DATE_FORMAT: MatDateFormats = {
     MatDatepickerModule,
     SdsTableModule,
     MatInputModule,
-    SdsIconModule,
     IconModule,
     ReactiveFormsModule,
     FormlySelectModule,

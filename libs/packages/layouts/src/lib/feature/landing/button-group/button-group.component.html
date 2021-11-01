@@ -11,10 +11,10 @@
         id="{{ button.id || button.text }}"
         (click)="button.clickHandler()"
       >
-        <sds-icon
+        <usa-icon
           class="margin-right-1 padding-top-1px"
           [icon]="[button.icons.icon.icon]"
-        ></sds-icon>
+        ></usa-icon>
         <div class="flex-align-self-center">{{ button.text }}</div>
       </button>
     </ng-template>
@@ -25,10 +25,10 @@
         id="{{ button.id || button.text }}"
         routerLink="{{ button.url }}"
       >
-        <sds-icon
+        <usa-icon
           class="margin-right-1 padding-top-1px"
           [icon]="[button.icons.icon.icon]"
-        ></sds-icon>
+        ></usa-icon>
         <div class="flex-align-self-center">{{ button.text }}</div>
       </button>
     </ng-template>

@@ -1,10 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ResultsLayoutComponent } from './layout.component';
 import {
   SdsSearchResultListModule,
-  SdsToolbarModule,
   SdsSideNavigationModule,
   SdsSelectionPanelModule,
   SdsSideToolbarModule
@@ -25,7 +23,6 @@ import { IconModule } from '@gsa-sam/ngx-uswds-icons';
   imports: [
     CommonModule,
     IconModule,
-    SdsToolbarModule,
     SdsAccordionModule,
     SdsSideNavigationModule,
     SdsFiltersModule,
@@ -36,8 +33,8 @@ import { IconModule } from '@gsa-sam/ngx-uswds-icons';
     SdsSelectionPanelModule,
   ],
 
-  exports: [ResultsLayoutComponent, LayoutResponsiveComponent],
-  declarations: [ResultsLayoutComponent, LayoutResponsiveComponent],
+  exports: [LayoutResponsiveComponent],
+  declarations: [LayoutResponsiveComponent],
   providers: [
     FilterService,
     AutocompleteSampleDataService,

@@ -3408,7 +3408,7 @@ const FORMLY = {
         },
         {
             "name": "FormlyAccordianFormFieldComponent",
-            "id": "component-FormlyAccordianFormFieldComponent-ee238b037402b8cedda2e72caa95f06a",
+            "id": "component-FormlyAccordianFormFieldComponent-72beb24c62abbad8fc91275b8f03b732",
             "file": "libs/packages/sam-formly/src/lib/formly/wrappers/form-field.accordian.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3418,12 +3418,42 @@ const FORMLY = {
             "selector": "sam-formly-accordian-form-field",
             "styleUrls": [],
             "styles": [],
-            "template": "<sds-accordion-next\n  [(multi)]=\"multi\"\n  expandedHeight=\"34px\"\n  collapsedHeight=\"34px\"\n  #sdsAccordionDemo\n  class=\"sds-accordion--filters\"\n>\n  <sds-accordion-item\n    class=\"sds-accordion__panel\"\n    [expanded]=\"modelHasValue()\"\n  >\n    <sds-accordion-title> {{ to.label }}</sds-accordion-title>\n    <sds-accordion-content>\n      <ng-container #fieldComponent></ng-container>\n    </sds-accordion-content>\n  </sds-accordion-item>\n</sds-accordion-next>\n",
+            "template": "<usa-accordion #groupAccordion [singleSelect]=\"!multi\" class=\"sds-accordion--filters\">\n  <usa-accordion-item>\n    <ng-template UsaAccordionHeader>\n      <span [attr.class]=\"to.labelClass\">{{ to.label }}</span>\n    </ng-template>\n    <ng-template UsaAccordionContent>\n      <ng-container #fieldComponent></ng-container>\n    </ng-template>\n  </usa-accordion-item>\n</usa-accordion>\n",
             "templateUrl": [],
             "viewProviders": [],
             "inputsClass": [],
             "outputsClass": [],
             "propertiesClass": [
+                {
+                    "name": "accordion",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "UsaAccordionComponent",
+                    "optional": false,
+                    "description": "",
+                    "line": 28,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'groupAccordion'"
+                        }
+                    ]
+                },
+                {
+                    "name": "accordionItem",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "UsaAccordionItem",
+                    "optional": false,
+                    "description": "",
+                    "line": 29,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "UsaAccordionItem"
+                        }
+                    ]
+                },
                 {
                     "name": "fieldComponent",
                     "deprecated": false,
@@ -3431,7 +3461,7 @@ const FORMLY = {
                     "type": "ViewContainerRef",
                     "optional": false,
                     "description": "",
-                    "line": 34,
+                    "line": 27,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -3447,7 +3477,7 @@ const FORMLY = {
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 35
+                    "line": 31
                 }
             ],
             "methodsClass": [
@@ -3457,7 +3487,17 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 39,
+                    "line": 46,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 36,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -3469,7 +3509,7 @@ const FORMLY = {
             "description": "",
             "rawdescription": "\n\n\n",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild, ViewContainerRef } from '@angular/core';\nimport { FieldWrapper } from '@ngx-formly/core';\nimport * as qs from 'qs';\n\n/**\n * @param string [to.expand] to expand the accordion\n *\n */\n\n@Component({\n  selector: 'sam-formly-accordian-form-field',\n  template: `\n    <sds-accordion-next\n      [(multi)]=\"multi\"\n      expandedHeight=\"34px\"\n      collapsedHeight=\"34px\"\n      #sdsAccordionDemo\n      class=\"sds-accordion--filters\"\n    >\n      <sds-accordion-item\n        class=\"sds-accordion__panel\"\n        [expanded]=\"modelHasValue()\"\n      >\n        <sds-accordion-title> {{ to.label }}</sds-accordion-title>\n        <sds-accordion-content>\n          <ng-container #fieldComponent></ng-container>\n        </sds-accordion-content>\n      </sds-accordion-item>\n    </sds-accordion-next>\n  `,\n})\nexport class FormlyAccordianFormFieldComponent extends FieldWrapper {\n  @ViewChild('fieldComponent', { read: ViewContainerRef })\n  fieldComponent: ViewContainerRef;\n  multi = true;\n  constructor() {\n    super();\n  }\n  modelHasValue() {\n    if (this.to.hasOwnProperty('expand')) {\n      return this.to.expand;\n    } else {\n      const hasValue =\n        this.formControl.value instanceof Object\n          ? qs.stringify(this.formControl.value, { skipNulls: true })\n          : this.formControl.value;\n      return hasValue || this.formControl.dirty ? true : false;\n    }\n  }\n}\n",
+            "sourceCode": "import { AfterViewInit, Component, ViewChild, ViewContainerRef } from '@angular/core';\nimport { UsaAccordionComponent, UsaAccordionItem } from '@gsa-sam/ngx-uswds';\nimport { FieldWrapper } from '@ngx-formly/core';\nimport * as qs from 'qs';\n\n/**\n * @param string [to.expand] to expand the accordion\n *\n */\n\n@Component({\n  selector: 'sam-formly-accordian-form-field',\n  template: `\n    <usa-accordion #groupAccordion [singleSelect]=\"!multi\" class=\"sds-accordion--filters\">\n      <usa-accordion-item>\n        <ng-template UsaAccordionHeader>\n          <span [attr.class]=\"to.labelClass\">{{ to.label }}</span>\n        </ng-template>\n        <ng-template UsaAccordionContent>\n          <ng-container #fieldComponent></ng-container>\n        </ng-template>\n      </usa-accordion-item>\n    </usa-accordion>\n  `,\n})\nexport class FormlyAccordianFormFieldComponent extends FieldWrapper implements AfterViewInit {\n  @ViewChild('fieldComponent', { read: ViewContainerRef }) fieldComponent: ViewContainerRef;\n  @ViewChild('groupAccordion') accordion: UsaAccordionComponent;\n  @ViewChild(UsaAccordionItem) accordionItem: UsaAccordionItem;\n\n  multi = true;\n  constructor() {\n    super();\n  }\n\n  ngAfterViewInit() {\n    if (this.to.group != 'accordion' || !this.accordion) {\n      return;\n    }\n\n    const shouldExpandAccordion = this.modelHasValue();\n    if (shouldExpandAccordion) {\n      this.accordion.expand(this.accordionItem.id);\n    }\n  }\n  modelHasValue() {\n    if (this.to.hasOwnProperty('expand')) {\n      return this.to.expand;\n    } else {\n      const hasValue =\n        this.formControl.value instanceof Object\n          ? qs.stringify(this.formControl.value, { skipNulls: true })\n          : this.formControl.value;\n      return hasValue || this.formControl.dirty ? true : false;\n    }\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -3479,9 +3519,12 @@ const FORMLY = {
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 35
+                "line": 31
             },
-            "extends": "FieldWrapper"
+            "extends": "FieldWrapper",
+            "implements": [
+                "AfterViewInit"
+            ]
         },
         {
             "name": "FormlyDescriptionWrapperComponent",
@@ -4539,7 +4582,7 @@ const FORMLY = {
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<fieldset class=\"usa-fieldset\">\n  <legend class=\"usa-sr-only\">{{ to.label }}</legend>\n  <ul class=\"sds-list--no-bullets\">\n    <li class=\"grid-row\" *ngIf=\"to.selectAllOption\">\n      <div>\n        <input [id]=\"id + '_Select'\" type=\"checkbox\" class=\"usa-checkbox__input\" value=\"value\" [checked]=\"allComplete\"\n          [attr.aria-checked]=\"ariaChecked\" (change)=\"setAll($event)\" />\n        <label class=\"usa-checkbox__label\" [attr.aria-checked]=\"ariaChecked\" [for]=\"id + '_Select'\">{{ to.label }}\n        </label>\n\n      </div>\n      <div *ngIf=\"to.selectTooltipText\">\n        <p #tipContent1 [ngClass]=\"to.tooltipClass\" class=\"margin-1\" [innerHTML]=\"to.selectTooltipText\"></p>\n        <usa-icon class=\"sds-stack padding-top-105 margin-left-1\"\n          [position]=\"to.selecttooltipPosition ? to.selecttooltipPosition :'right'\" [sdsTooltip]=\"tipContent1\"\n          [size]=\"'lg'\" [icon]=\"'info-circle'\"></usa-icon>\n      </div>\n\n      <div *ngIf=\"to.expandableOptions\">\n        <button type=\"button\" class=\"sds-button padding-top-0\" [attr.aria-expanded]=\"!to.expandedOptions\"\n          [attr.aria-controls]=\"id + 'collapseID'\" (click)=\"to.expandedOptions = !to.expandedOptions\">\n          <span class=\"usa-sr-only\">expand/collapsed</span>\n          <sds-icon [icon]=\"to.expandedOptions ?'caret-down-fill': 'caret-up-fill'\" [size]=\"'1x'\">\n          </sds-icon>\n\n        </button>\n      </div>\n    </li>\n    <li [id]=\"id+ 'collapseID'\" [sdsCollapse]=\"to.expandedOptions\"\n      [ngClass]=\"{'margin-left-4 margin-top-0': to.selectAllOption}\">\n      <ul class=\"sds-list--no-bullets\">\n        <li class=\"grid-row\" *ngFor=\"let option of (to.options | formlySelectOptions: field | async); let i = index\">\n          <div>\n            <input class=\"usa-checkbox__input\" [id]=\"id + '_' + i\" type=\"checkbox\" [name]=\"id + '_name_' + i\"\n              [disabled]=\"option.disabled\" [value]=\"option.value\" [formlyAttributes]=\"field\"\n              (change)=\"onChange(option.value, $event.target.checked)\" [checked]=\"isChecked(option)\" />\n            <label class=\"usa-checkbox__label\" [for]=\"id + '_' + i\">\n              <!-- \n                The reference of options array through index is done intentionally here rather \n                than using local variable option because the formlySelectOptions pipe transforms \n                each option such that they lose all properties except label, value, and disabled \n            -->\n              <span *ngIf=\"to.options[i].tagText\" class=\"usa-tag\"\n                [ngClass]=\"to.options[i].tagClass ? to.options[i].tagClass : 'sds-tag--info-white'\">\n                {{to.options[i].tagText}}\n              </span>\n              {{ option.label }}\n            </label>\n          </div>\n\n          <div *ngIf=\"to.options[i].tooltipText\">\n            <p #tipContent [ngClass]=\"to.options[i].tooltipClass\" class=\"margin-1\"\n              [innerHTML]=\"to.options[i].tooltipText\"></p>\n            <usa-icon [position]=\"to.options[i].tooltipPosition ? to.options[i].tooltipPosition :'right'\"\n              [sdsTooltip]=\"tipContent\" [size]=\"'lg'\" [icon]=\"'info-circle'\"></usa-icon>\n          </div>\n        </li>\n      </ul>\n    </li>\n  </ul>\n</fieldset>\n"
+            "templateData": "<fieldset class=\"usa-fieldset\">\n  <legend class=\"usa-sr-only\">{{ to.label }}</legend>\n  <ul class=\"sds-list--no-bullets\">\n    <li class=\"grid-row\" *ngIf=\"to.selectAllOption\">\n      <div>\n        <input [id]=\"id + '_Select'\" type=\"checkbox\" class=\"usa-checkbox__input\" value=\"value\" [checked]=\"allComplete\"\n          [attr.aria-checked]=\"ariaChecked\" (change)=\"setAll($event)\" />\n        <label class=\"usa-checkbox__label\" [attr.aria-checked]=\"ariaChecked\" [for]=\"id + '_Select'\">{{ to.label }}\n        </label>\n\n      </div>\n      <div *ngIf=\"to.selectTooltipText\">\n        <p #tipContent1 [ngClass]=\"to.tooltipClass\" class=\"margin-1\" [innerHTML]=\"to.selectTooltipText\"></p>\n        <usa-icon class=\"sds-stack padding-top-105 margin-left-1\"\n          [position]=\"to.selecttooltipPosition ? to.selecttooltipPosition :'right'\" [sdsTooltip]=\"tipContent1\"\n          [size]=\"'lg'\" [icon]=\"'info-circle'\"></usa-icon>\n      </div>\n\n      <div *ngIf=\"to.expandableOptions\">\n        <button type=\"button\" class=\"sds-button padding-top-0\" [attr.aria-expanded]=\"!to.expandedOptions\"\n          [attr.aria-controls]=\"id + 'collapseID'\" (click)=\"to.expandedOptions = !to.expandedOptions\">\n          <span class=\"usa-sr-only\">expand/collapsed</span>\n          <usa-icon [icon]=\"to.expandedOptions ?'caret-down-fill': 'caret-up-fill'\" [size]=\"'1x'\">\n          </usa-icon>\n\n        </button>\n      </div>\n    </li>\n    <li [id]=\"id+ 'collapseID'\" [sdsCollapse]=\"to.expandedOptions\"\n      [ngClass]=\"{'margin-left-4 margin-top-0': to.selectAllOption}\">\n      <ul class=\"sds-list--no-bullets\">\n        <li class=\"grid-row\" *ngFor=\"let option of (to.options | formlySelectOptions: field | async); let i = index\">\n          <div>\n            <input class=\"usa-checkbox__input\" [id]=\"id + '_' + i\" type=\"checkbox\" [name]=\"id + '_name_' + i\"\n              [disabled]=\"option.disabled\" [value]=\"option.value\" [formlyAttributes]=\"field\"\n              (change)=\"onChange(option.value, $event.target.checked)\" [checked]=\"isChecked(option)\" />\n            <label class=\"usa-checkbox__label\" [for]=\"id + '_' + i\">\n              <!-- \n                The reference of options array through index is done intentionally here rather \n                than using local variable option because the formlySelectOptions pipe transforms \n                each option such that they lose all properties except label, value, and disabled \n            -->\n              <span *ngIf=\"to.options[i].tagText\" class=\"usa-tag\"\n                [ngClass]=\"to.options[i].tagClass ? to.options[i].tagClass : 'sds-tag--info-white'\">\n                {{to.options[i].tagText}}\n              </span>\n              {{ option.label }}\n            </label>\n          </div>\n\n          <div *ngIf=\"to.options[i].tooltipText\">\n            <p #tipContent [ngClass]=\"to.options[i].tooltipClass\" class=\"margin-1\"\n              [innerHTML]=\"to.options[i].tooltipText\"></p>\n            <usa-icon [position]=\"to.options[i].tooltipPosition ? to.options[i].tooltipPosition :'right'\"\n              [sdsTooltip]=\"tipContent\" [size]=\"'lg'\" [icon]=\"'info-circle'\"></usa-icon>\n          </div>\n        </li>\n      </ul>\n    </li>\n  </ul>\n</fieldset>\n"
         },
         {
             "name": "FormlyFieldRadioComponent",
@@ -5165,7 +5208,7 @@ const FORMLY = {
         },
         {
             "name": "FormlyGroupWrapperComponent",
-            "id": "component-FormlyGroupWrapperComponent-200b92bfa3922f6a635c3f3d3834e56a",
+            "id": "component-FormlyGroupWrapperComponent-9a7fe863548e46e8f6ac748e8703d0a7",
             "file": "libs/packages/sam-formly/src/lib/formly/wrappers/group.wrapper.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -5174,12 +5217,42 @@ const FORMLY = {
             "providers": [],
             "styleUrls": [],
             "styles": [],
-            "template": "<ng-container *ngIf=\"!to.readonlyMode; else defaultTemplate\">\n  <ng-container [ngSwitch]=\"to.group\">\n    <ng-container *ngSwitchCase=\"'accordion'\">\n      <sds-accordion-next\n        [(multi)]=\"multi\"\n        expandedHeight=\"34px\"\n        collapsedHeight=\"34px\"\n        #sdsAccordionDemo\n        class=\"sds-accordion--filters\"\n      >\n        <sds-accordion-item\n          class=\"sds-accordion__panel\"\n          [expanded]=\"modelHasValue()\"\n        >\n          <sds-accordion-title><span [attr.class]=\"to.labelClass\">{{ to.label }}</span></sds-accordion-title>\n          <sds-accordion-content>\n            <ng-container #fieldComponent></ng-container>\n          </sds-accordion-content>\n        </sds-accordion-item>\n      </sds-accordion-next>\n    </ng-container>\n    <ng-container *ngSwitchCase=\"'panel'\">\n      <div\n        class=\"sds-panel\"\n        [ngClass]=\"{ 'sds-panel--multiple': field?.fieldGroup?.length }\"\n      >\n        <div\n          class=\"sds-panel__header\"\n          *ngIf=\"!to.hideLabel\"\n          [attr.aria-hidden]=\"!to.announceLabel ? undefined : 'true'\"\n        >\n          <span [attr.class]=\"to.labelClass\">{{ to.label }}</span>\n        </div>\n        <div class=\"sds-panel__body\">\n          <ng-container #fieldComponent></ng-container>\n        </div>\n      </div>\n    </ng-container>\n    <ng-container *ngSwitchCase=\"'popover'\">\n    <div #popoverContent class=\"padding-1 text-left sds-width-max-content\">\n      <ng-container #fieldComponent></ng-container>\n    </div>\n      <div\n        [sdsPopover]=\"popoverContent\"\n          [position]=\"'bottom'\"\n          [closeOnContentClick]=\"false\"\n          [closeOnClickOutside]=\"true\"\n          tabindex=\"0\" [attr.aria-label]=\"to.label\">\n        {{to.label}}\n        <usa-icon [icon]=\"'chevron-down'\" [size]=\"'sm'\"></usa-icon>\n      </div>\n    </ng-container>\n    <ng-container *ngSwitchDefault>\n      <ng-container #fieldComponent></ng-container>\n    </ng-container>\n  </ng-container>\n</ng-container>\n<ng-template #defaultTemplate>\n  <ng-container #fieldComponent></ng-container>\n</ng-template>\n",
+            "template": "<ng-container *ngIf=\"!to.readonlyMode; else defaultTemplate\">\n  <ng-container [ngSwitch]=\"to.group\">\n    <ng-container *ngSwitchCase=\"'accordion'\">\n      <usa-accordion #groupAccordion [singleSelect]=\"!multi\" class=\"sds-accordion--filters\">\n        <usa-accordion-item>\n          <ng-template UsaAccordionHeader>\n            <span [attr.class]=\"to.labelClass\">{{ to.label }}</span>\n          </ng-template>\n          <ng-template UsaAccordionContent>\n            <ng-container #fieldComponent></ng-container>\n          </ng-template>\n        </usa-accordion-item>\n      </usa-accordion>\n    </ng-container>\n    <ng-container *ngSwitchCase=\"'panel'\">\n      <div\n        class=\"sds-panel\"\n        [ngClass]=\"{ 'sds-panel--multiple': field?.fieldGroup?.length }\"\n      >\n        <div\n          class=\"sds-panel__header\"\n          *ngIf=\"!to.hideLabel\"\n          [attr.aria-hidden]=\"!to.announceLabel ? undefined : 'true'\"\n        >\n          <span [attr.class]=\"to.labelClass\">{{ to.label }}</span>\n        </div>\n        <div class=\"sds-panel__body\">\n          <ng-container #fieldComponent></ng-container>\n        </div>\n      </div>\n    </ng-container>\n    <ng-container *ngSwitchCase=\"'popover'\">\n    <div #popoverContent class=\"padding-1 text-left sds-width-max-content\">\n      <ng-container #fieldComponent></ng-container>\n    </div>\n      <div\n        [sdsPopover]=\"popoverContent\"\n          [position]=\"'bottom'\"\n          [closeOnContentClick]=\"false\"\n          [closeOnClickOutside]=\"true\"\n          tabindex=\"0\" [attr.aria-label]=\"to.label\">\n        {{to.label}}\n        <usa-icon [icon]=\"'chevron-down'\" [size]=\"'sm'\"></usa-icon>\n      </div>\n    </ng-container>\n    <ng-container *ngSwitchDefault>\n      <ng-container #fieldComponent></ng-container>\n    </ng-container>\n  </ng-container>\n</ng-container>\n<ng-template #defaultTemplate>\n  <ng-container #fieldComponent></ng-container>\n</ng-template>\n",
             "templateUrl": [],
             "viewProviders": [],
             "inputsClass": [],
             "outputsClass": [],
             "propertiesClass": [
+                {
+                    "name": "accordion",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "UsaAccordionComponent",
+                    "optional": false,
+                    "description": "",
+                    "line": 73,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'groupAccordion'"
+                        }
+                    ]
+                },
+                {
+                    "name": "accordionItem",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "UsaAccordionItem",
+                    "optional": false,
+                    "description": "",
+                    "line": 74,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "UsaAccordionItem"
+                        }
+                    ]
+                },
                 {
                     "name": "fieldComponent",
                     "deprecated": false,
@@ -5187,7 +5260,7 @@ const FORMLY = {
                     "type": "ViewContainerRef",
                     "optional": false,
                     "description": "",
-                    "line": 78,
+                    "line": 71,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -5203,7 +5276,7 @@ const FORMLY = {
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 79
+                    "line": 76
                 }
             ],
             "methodsClass": [
@@ -5213,7 +5286,17 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 83,
+                    "line": 92,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 81,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -5225,7 +5308,7 @@ const FORMLY = {
             "description": "",
             "rawdescription": "\n\n\n",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild, ViewContainerRef } from '@angular/core';\nimport { FieldWrapper } from '@ngx-formly/core';\nimport * as qs from 'qs';\n\n/**\n * @param string [to.group] used to set the wrapper tupe\n * @param string [to.announceLabel] For screenreader\n * @param string [to.label] Text to be shown for the label\n * @param string [to.hideLabel] Hide the label\n *\n */\n@Component({\n  template: `\n    <ng-container *ngIf=\"!to.readonlyMode; else defaultTemplate\">\n      <ng-container [ngSwitch]=\"to.group\">\n        <ng-container *ngSwitchCase=\"'accordion'\">\n          <sds-accordion-next\n            [(multi)]=\"multi\"\n            expandedHeight=\"34px\"\n            collapsedHeight=\"34px\"\n            #sdsAccordionDemo\n            class=\"sds-accordion--filters\"\n          >\n            <sds-accordion-item\n              class=\"sds-accordion__panel\"\n              [expanded]=\"modelHasValue()\"\n            >\n              <sds-accordion-title><span [attr.class]=\"to.labelClass\">{{ to.label }}</span></sds-accordion-title>\n              <sds-accordion-content>\n                <ng-container #fieldComponent></ng-container>\n              </sds-accordion-content>\n            </sds-accordion-item>\n          </sds-accordion-next>\n        </ng-container>\n        <ng-container *ngSwitchCase=\"'panel'\">\n          <div\n            class=\"sds-panel\"\n            [ngClass]=\"{ 'sds-panel--multiple': field?.fieldGroup?.length }\"\n          >\n            <div\n              class=\"sds-panel__header\"\n              *ngIf=\"!to.hideLabel\"\n              [attr.aria-hidden]=\"!to.announceLabel ? undefined : 'true'\"\n            >\n              <span [attr.class]=\"to.labelClass\">{{ to.label }}</span>\n            </div>\n            <div class=\"sds-panel__body\">\n              <ng-container #fieldComponent></ng-container>\n            </div>\n          </div>\n        </ng-container>\n        <ng-container *ngSwitchCase=\"'popover'\">\n        <div #popoverContent class=\"padding-1 text-left sds-width-max-content\">\n          <ng-container #fieldComponent></ng-container>\n        </div>\n          <div\n            [sdsPopover]=\"popoverContent\"\n              [position]=\"'bottom'\"\n              [closeOnContentClick]=\"false\"\n              [closeOnClickOutside]=\"true\"\n              tabindex=\"0\" [attr.aria-label]=\"to.label\">\n            {{to.label}}\n            <usa-icon [icon]=\"'chevron-down'\" [size]=\"'sm'\"></usa-icon>\n          </div>\n        </ng-container>\n        <ng-container *ngSwitchDefault>\n          <ng-container #fieldComponent></ng-container>\n        </ng-container>\n      </ng-container>\n    </ng-container>\n    <ng-template #defaultTemplate>\n      <ng-container #fieldComponent></ng-container>\n    </ng-template>\n  `,\n})\nexport class FormlyGroupWrapperComponent extends FieldWrapper {\n  @ViewChild('fieldComponent', { read: ViewContainerRef })\n  fieldComponent: ViewContainerRef;\n  multi = true;\n  constructor() {\n    super();\n  }\n  modelHasValue() {\n    if (this.to.hasOwnProperty('expand')) {\n      return this.to.expand;\n    } else {\n      const hasValue =\n        this.formControl.value instanceof Object\n          ? qs.stringify(this.formControl.value, { skipNulls: true })\n          : this.formControl.value;\n      return hasValue || this.formControl.dirty ? true : false;\n    }\n  }\n}\n",
+            "sourceCode": "import { AfterViewInit, Component, DoCheck, ViewChild, ViewContainerRef } from '@angular/core';\nimport { UsaAccordionComponent, UsaAccordionItem } from '@gsa-sam/ngx-uswds';\nimport { FieldWrapper } from '@ngx-formly/core';\nimport * as qs from 'qs';\n\n/**\n * @param string [to.group] used to set the wrapper tupe\n * @param string [to.announceLabel] For screenreader\n * @param string [to.label] Text to be shown for the label\n * @param string [to.hideLabel] Hide the label\n *\n */\n@Component({\n  template: `\n    <ng-container *ngIf=\"!to.readonlyMode; else defaultTemplate\">\n      <ng-container [ngSwitch]=\"to.group\">\n        <ng-container *ngSwitchCase=\"'accordion'\">\n          <usa-accordion #groupAccordion [singleSelect]=\"!multi\" class=\"sds-accordion--filters\">\n            <usa-accordion-item>\n              <ng-template UsaAccordionHeader>\n                <span [attr.class]=\"to.labelClass\">{{ to.label }}</span>\n              </ng-template>\n              <ng-template UsaAccordionContent>\n                <ng-container #fieldComponent></ng-container>\n              </ng-template>\n            </usa-accordion-item>\n          </usa-accordion>\n        </ng-container>\n        <ng-container *ngSwitchCase=\"'panel'\">\n          <div\n            class=\"sds-panel\"\n            [ngClass]=\"{ 'sds-panel--multiple': field?.fieldGroup?.length }\"\n          >\n            <div\n              class=\"sds-panel__header\"\n              *ngIf=\"!to.hideLabel\"\n              [attr.aria-hidden]=\"!to.announceLabel ? undefined : 'true'\"\n            >\n              <span [attr.class]=\"to.labelClass\">{{ to.label }}</span>\n            </div>\n            <div class=\"sds-panel__body\">\n              <ng-container #fieldComponent></ng-container>\n            </div>\n          </div>\n        </ng-container>\n        <ng-container *ngSwitchCase=\"'popover'\">\n        <div #popoverContent class=\"padding-1 text-left sds-width-max-content\">\n          <ng-container #fieldComponent></ng-container>\n        </div>\n          <div\n            [sdsPopover]=\"popoverContent\"\n              [position]=\"'bottom'\"\n              [closeOnContentClick]=\"false\"\n              [closeOnClickOutside]=\"true\"\n              tabindex=\"0\" [attr.aria-label]=\"to.label\">\n            {{to.label}}\n            <usa-icon [icon]=\"'chevron-down'\" [size]=\"'sm'\"></usa-icon>\n          </div>\n        </ng-container>\n        <ng-container *ngSwitchDefault>\n          <ng-container #fieldComponent></ng-container>\n        </ng-container>\n      </ng-container>\n    </ng-container>\n    <ng-template #defaultTemplate>\n      <ng-container #fieldComponent></ng-container>\n    </ng-template>\n  `,\n})\nexport class FormlyGroupWrapperComponent extends FieldWrapper implements AfterViewInit {\n  @ViewChild('fieldComponent', { read: ViewContainerRef }) fieldComponent: ViewContainerRef;\n  \n  @ViewChild('groupAccordion') accordion: UsaAccordionComponent;\n  @ViewChild(UsaAccordionItem) accordionItem: UsaAccordionItem;\n\n  multi = true;\n  constructor() {\n    super();\n  }\n\n  ngAfterViewInit() {\n    if (this.to.group != 'accordion' || !this.accordion) {\n      return;\n    }\n\n    const shouldExpandAccordion = this.modelHasValue();\n    if (shouldExpandAccordion) {\n      this.accordion.expand(this.accordionItem.id);\n    }\n  }\n\n  modelHasValue() {\n    if (this.to.hasOwnProperty('expand')) {\n      return this.to.expand;\n    } else {\n      const hasValue =\n        this.formControl.value instanceof Object\n          ? qs.stringify(this.formControl.value, { skipNulls: true })\n          : this.formControl.value;\n      return hasValue || this.formControl.dirty ? true : false;\n    }\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -5235,9 +5318,12 @@ const FORMLY = {
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 79
+                "line": 76
             },
-            "extends": "FieldWrapper"
+            "extends": "FieldWrapper",
+            "implements": [
+                "AfterViewInit"
+            ]
         },
         {
             "name": "FormlyLabelWrapperComponent",
@@ -6391,7 +6477,7 @@ const FORMLY = {
         },
         {
             "name": "SdsFiltersComponent",
-            "id": "component-SdsFiltersComponent-f7af2de55a2a1569bfa2688ac776a06f",
+            "id": "component-SdsFiltersComponent-8d7a6599e9071c984cbaf6a6d08819a1",
             "file": "libs/packages/sam-formly/src/lib/formly-filters/sds-filters.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -6691,7 +6777,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 378,
+                    "line": 353,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -6738,7 +6824,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 322,
+                    "line": 305,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nParser for qs.parse - if input string is true / false,\nconvert to boolean value, otherwise use default decoder\n",
@@ -6788,7 +6874,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 374,
+                    "line": 349,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -6805,7 +6891,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "{}",
                     "typeParameters": [],
-                    "line": 307,
+                    "line": 291,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -6945,7 +7031,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 412,
+                    "line": 387,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nCreate chips to display for horizontal filters based on current model\nand formly field config\n",
@@ -6956,8 +7042,8 @@ const FORMLY = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 11595,
-                                "end": 11600,
+                                "pos": 10951,
+                                "end": 10956,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -6968,8 +7054,8 @@ const FORMLY = {
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 11589,
-                                "end": 11594,
+                                "pos": 10945,
+                                "end": 10950,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -6980,8 +7066,8 @@ const FORMLY = {
                         },
                         {
                             "name": {
-                                "pos": 11614,
-                                "end": 11620,
+                                "pos": 10970,
+                                "end": 10976,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -6992,8 +7078,8 @@ const FORMLY = {
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 11608,
-                                "end": 11613,
+                                "pos": 10964,
+                                "end": 10969,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -7017,7 +7103,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "{}",
                     "typeParameters": [],
-                    "line": 280,
+                    "line": 279,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -7045,56 +7131,13 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 342,
+                    "line": 317,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
                             "name": "inactiveFilterValue",
                             "type": "boolean",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "longFormatDate",
-                    "args": [
-                        {
-                            "name": "prefix",
-                            "type": "",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        },
-                        {
-                            "name": "value",
-                            "type": "",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "any",
-                    "typeParameters": [],
-                    "line": 334,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "prefix",
-                            "type": "",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "value",
-                            "type": "",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -7185,7 +7228,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 349,
+                    "line": 324,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -7202,7 +7245,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 464,
+                    "line": 439,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nRemoving a certain chip from UI is the same as applying a change to the form, so\nthis should update the form control. We can find the field to update based on the chip's\nformly key and what values to update to based on values of existing chips with the same key\n",
@@ -7210,8 +7253,8 @@ const FORMLY = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 13341,
-                                "end": 13345,
+                                "pos": 12697,
+                                "end": 12701,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -7222,8 +7265,8 @@ const FORMLY = {
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 13335,
-                                "end": 13340,
+                                "pos": 12691,
+                                "end": 12696,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -7234,8 +7277,8 @@ const FORMLY = {
                         },
                         {
                             "tagName": {
-                                "pos": 13353,
-                                "end": 13360,
+                                "pos": 12709,
+                                "end": 12716,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -7259,7 +7302,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 388,
+                    "line": 363,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nConverts all popover type fields to accordion and unhides any hidden fields\nso that they can be displayed in filter dialog during resposive mode for\nhorizontal filters\n",
@@ -7270,8 +7313,8 @@ const FORMLY = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 11003,
-                                "end": 11009,
+                                "pos": 10365,
+                                "end": 10371,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -7282,8 +7325,8 @@ const FORMLY = {
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 10997,
-                                "end": 11002,
+                                "pos": 10359,
+                                "end": 10364,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -7291,49 +7334,6 @@ const FORMLY = {
                                 "escapedText": "param"
                             },
                             "comment": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "shortFormatDate",
-                    "args": [
-                        {
-                            "name": "prefix",
-                            "type": "",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        },
-                        {
-                            "name": "value",
-                            "type": "",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "any",
-                    "typeParameters": [],
-                    "line": 292,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "prefix",
-                            "type": "",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "value",
-                            "type": "",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
                         }
                     ]
                 },
@@ -7373,7 +7373,7 @@ const FORMLY = {
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  Component,\n  Input,\n  Output,\n  EventEmitter,\n  Optional,\n  OnInit,\n  ChangeDetectorRef,\n  OnChanges,\n  SimpleChanges,\n  ViewChild,\n  TemplateRef,\n} from '@angular/core';\n\nimport { FormGroup } from '@angular/forms';\nimport { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';\nimport * as qs from 'qs';\nimport { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';\nimport { SDSFormlyUpdateModelService } from './service/sds-filter-model-update.service';\n\nimport { takeUntil } from 'rxjs/operators';\nimport { Subject } from 'rxjs';\nimport { FormlyUtilsService, ReadonlyDataType } from '../formly/services/formly-utils.service';\nimport { SdsFormlyTypes } from '../formly/models/formly-types';\nimport { SdsDialogRef, SdsDialogService, SDS_DIALOG_DATA } from '@gsa-sam/components';\nimport { cloneDeep } from 'lodash-es';\n@Component({\n  selector: 'sds-filters',\n  templateUrl: './sds-filters.component.html',\n})\nexport class SdsFiltersComponent implements OnInit, OnChanges {\n\n  @ViewChild('horizontalFiltersDialog') horizontalFiltersDialogTemplate: TemplateRef<any>;\n\n  /**\n   * Pass in a Form Group for ReactiveForms Support\n   */\n  @Input() public form: FormGroup;\n\n  /**\n   *  Fields are used to configure the UI components\n   */\n  @Input() public fields: FormlyFieldConfig[];\n\n  /**\n   *  Model used to display the filter values.\n   */\n  @Input() public model: any;\n\n  /**\n   *    Options for the form.\n   */\n  @Input() public options: FormlyFormOptions = {};\n\n  /**\n   *  Emit results when model updated\n   * To enable History Tracking\n   *  If advanced filters dialog should be displayed -- defaults to false\n   */\n  @Input() advancedFilters: boolean = false;\n\n  /**\n   * Sort the filters by alphabetical order\n   */\n  @Input() sortMoreFilterBy = '';\n\n  /**\n   * Show option to include inactive filter values\n   */\n  @Input() isInactiveValueFieldShown: boolean = false;\n\n  /**\n   * Timer id for the timer awaiting the service call for more typeing\n   */\n  @Input() public isHistoryEnable: boolean = false;\n\n  /**\n   * To get clean model without null and empty\n   */\n  @Input() public getCleanModel: boolean = false;\n\n  /**\n   * Default values to reset form to when reset is done\n   * If not passed in, then default values will be values\n   * assigned to the model input during component init\n   * or defaultValue provided in formly config\n   */\n  @Input() defaultModel: any;\n\n  /**\n   * Toggle layout for filters - when horizontal is toggled,\n   * the reset and more filters are placed in top right corner\n   */\n  @Input() horizontal = false;\n\n  /**\n   * Toggle displaying chips for selected filter values. By default this is toggled off\n   * in normal situations. When horizontal setting is turned on, then chip display is\n   * also toggled on by default\n   */\n  @Input() displayChips: boolean;\n\n  /**\n   * Switch to show/hide the reset all button\n   * @default true\n   */\n  @Input() showReset: boolean = true;\n  /**\n   *  Emit results when model updated\n   */\n  // TODO: check type -- Formly models are typically objects\n  @Output() filterChange = new EventEmitter<object>();\n  @Output() showInactiveFiltersChange = new EventEmitter<boolean>();\n  @Output() resetClicked = new EventEmitter();\n\n  chips: ReadonlyDataType[] = [];\n  dialogRef: SdsDialogRef<any>;\n\n  // Snapshot of model before filter dialog opens during horizontal responsive format\n  _modelSnapshot: any;\n\n  unsubscribe$ = new Subject<void>();\n  _isObj = (obj: any): boolean => typeof obj === 'object' && obj !== null;\n  _isEmpty = (obj: any): boolean => Object.keys(obj).length === 0;\n  overwrite = (baseObj: any, newObj: any) => {\n    const result = {};\n    const mergedObj = { ...baseObj, ...newObj };\n    for (const key in mergedObj) {\n      if (Array.isArray(baseObj[key])) {\n        result[key] = newObj[key] || null;\n      } else if (baseObj[key] instanceof Date) {\n        result[key] = newObj[key] === undefined ? null : new Date(newObj[key]);\n      } else if (this._isObj(baseObj[key])) {\n        result[key] = this.overwrite(baseObj[key], newObj[key] || {});\n      } else {\n        result[key] = newObj[key] || null;\n      }\n    }\n    return result;\n  };\n\n\n  constructor(\n    @Optional()\n    public formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,\n    private formlyDialogService: SdsDialogService,\n    private cdr: ChangeDetectorRef,\n    @Optional()\n    private filterUpdateModelService: SDSFormlyUpdateModelService\n  ) { }\n  ngOnDestroy() {\n    this.unsubscribe$.next();\n    this.unsubscribe$.complete();\n  }\n\n  ngOnInit(): void {\n    // keep display chips to defined value if defined, otherwise, default to false, unless hoirzontal is turned on\n    this.displayChips = this.displayChips != undefined ? this.displayChips : this.horizontal;\n\n    if (this.filterUpdateModelService) {\n      this.filterUpdateModelService.filterModel\n        .pipe(takeUntil(this.unsubscribe$))\n        .subscribe((filter) => {\n          if (filter) {\n            const updatedFormValue = this.overwrite(\n              this.form.getRawValue(),\n              filter\n            );\n            // Shallow copy to not trigger onChanges from formly side\n            Object.keys(updatedFormValue).forEach((key) => {\n              this.model[key] = updatedFormValue[key];\n            });\n\n            setTimeout(() => {\n              this.form.patchValue(updatedFormValue);\n            });\n          }\n        });\n      this.cdr.detectChanges();\n    }\n  }\n\n  ngOnChanges(changes: SimpleChanges) {\n    if (\n      changes.model &&\n      changes.model.currentValue != changes.model.previousValue\n    ) {\n      this.checkForHide();\n    }\n  }\n\n  /**\n   * This is for getting the model which has a value.\n   */\n  checkForHide() {\n    let fieldWithValue = this.convertToParam(this.model);\n    let keys = [];\n    Object.keys(fieldWithValue).map((key) => {\n      keys.push(key.replace(/\\[/g, '.').replace(/\\]/g, ''));\n    });\n    keys.forEach((key) => {\n      const [lastKey] = key.split('.').slice(-1);\n      this.fields.forEach((field) => {\n        if (key.includes(field.key)) {\n          if (field.fieldGroup) {\n            const fieldExists = this.findFieldInFieldGroup(\n              field.fieldGroup,\n              lastKey\n            );\n            if (fieldExists) {\n              field.hide = false;\n            }\n          } else {\n            field.hide = false;\n          }\n        }\n      });\n    });\n  }\n\n  /**\n   * Recursively iterate over each field as well as potential field groups of the field\n   * to find a field with the given key. Returns the field if found, otherwise returns null.\n   * @param fields - The list of formly fields to search for the given key\n   * @param key - The key of the formly field config to search for\n   */\n  private findFieldInFieldGroup(fields: FormlyFieldConfig[], key: any) {\n    let matchingField: FormlyFieldConfig = null;\n\n    for (let i = 0; i < fields.length; i++) {\n      const field = fields[i];\n\n      if (field.key === key) {\n        matchingField = field;\n      } else if (field.fieldGroup) {\n        matchingField = this.findFieldInFieldGroup(field.fieldGroup, key);\n      } else if (field.fieldArray) {\n        matchingField = this.findFieldInFieldGroup([field.fieldArray], key);\n      }\n\n      if (matchingField) {\n        break;\n      }\n    }\n\n    return matchingField;\n  }\n\n  onModelChange(change: any) {\n    this.updateChange(change);\n  }\n  updateChange(change) {\n    const updatedModel = this.getCleanModel\n      ? this.convertToModel(change)\n      : change;\n    this.filterChange.emit(updatedModel);\n    if (this.formlyUpdateComunicationService) {\n      this.formlyUpdateComunicationService.updateFilter(updatedModel);\n    }\n\n    if (this.displayChips) {\n      this.generateChips(change, this.fields);\n    }\n\n    this.cdr.detectChanges();\n  }\n\n  convertToParam(filters) {\n    const encodedValues = qs.stringify(filters, {\n      skipNulls: true,\n      encode: false,\n      filter: this.shortFormatDate,\n    });\n    if (encodedValues) {\n      return this.getUrlParams(encodedValues);\n    } else {\n      return '';\n    }\n  }\n  getUrlParams(queryString) {\n    const target = {};\n    queryString.split('&').forEach((pair) => {\n      if (pair !== '') {\n        const splitpair = pair.split('=');\n        target[splitpair[0]] =\n          splitpair[1] === '' || splitpair[1] === 'false' ? null : splitpair[1];\n      }\n    });\n    return target;\n  }\n\n  shortFormatDate(prefix, value) {\n    const fixDigit = (val) => {\n      return val.toString().length === 1 ? '0' + val : val;\n    };\n    const getFormattedDate = (date) =>\n      `${fixDigit(\n        date.getMonth() + 1\n      )}/${date.getDate()}/${date.getFullYear()}`;\n    if (value instanceof Date) {\n      value = getFormattedDate(new Date(value));\n    }\n    return value;\n  }\n\n\n  convertToModel(filters) {\n    let obj = {};\n    const encodedValues = qs.stringify(filters, {\n      skipNulls: true,\n      encode: false,\n      filter: this.longFormatDate,\n    });\n    obj = qs.parse(encodedValues, { decoder: this.cleanModelParser });\n    return obj;\n  }\n\n  /**\n   * Parser for qs.parse - if input string is true / false, \n   * convert to boolean value, otherwise use default decoder\n   */\n  cleanModelParser(str: string, decoder: qs.defaultDecoder, charset: string, type: 'key' | 'value') {\n    if (type === 'key') {\n      return decoder(str, decoder, charset);\n    }\n\n    if (str === 'true' || str === 'false') {\n      return str === 'true' ? true : false;\n    }\n\n    return decoder(str, decoder, charset);\n  }\n\n  longFormatDate(prefix, value) {\n    const val = Date.parse(value);\n    if (!isNaN(val) && isNaN(value)) {\n      value = new Date(val).toISOString();\n    }\n    return value;\n  }\n\n  handleInactiveFilterChange(inactiveFilterValue: boolean) {\n    if (this.displayChips) {\n      this.generateChips(this.model, this.fields);\n    }\n    this.showInactiveFiltersChange.emit(inactiveFilterValue);\n  }\n\n  openDialog() {\n    const clonedFields = cloneDeep(this.fields);\n    this._modelSnapshot = cloneDeep(this.model);\n    this.removePopoverGroup(clonedFields);\n    this.dialogRef = this.formlyDialogService.open(this.horizontalFiltersDialogTemplate, {    \n      data: {fields: clonedFields, options: {}},  \n      height: '100vh',\n      width: '100vw',\n      maxWidth: '100vw',\n      maxHeight: '100vh',\n      hasBackdrop: false,\n      displayCloseBtn: false,\n      panelClass: ['sds-dialog--full']\n    });\n\n    this.dialogRef.afterClosed().toPromise().then((result) => {\n      if (result) {\n        this.onModelChange(result);\n      } else {\n        Object.assign(this.model, this._modelSnapshot);\n      }\n      this.dialogRef = null;\n    })\n  }\n\n  close() {\n    this.dialogRef.close();\n  }\n\n  applyDialogFilters() {\n    this.dialogRef.close(this.model);\n  }\n\n  /**\n   * Converts all popover type fields to accordion and unhides any hidden fields\n   * so that they can be displayed in filter dialog during resposive mode for\n   * horizontal filters\n   * @param fields \n   */\n  private removePopoverGroup(fields: FormlyFieldConfig[]) {\n    fields.forEach(field => {\n      if (field.templateOptions && field.templateOptions.group === 'popover') {\n        field.templateOptions.group = 'accordion';\n      }\n      \n      if (field.fieldGroup) {\n        this.removePopoverGroup(field.fieldGroup);\n      }\n\n      if (field.fieldArray) {\n        this.removePopoverGroup([field.fieldArray]);\n      }\n\n      field.hide = false;\n    })\n  }\n\n  /**\n   * Create chips to display for horizontal filters based on current model\n   * and formly field config\n   * @param model \n   * @param fields \n   */\n  private generateChips(model: any, fields: FormlyFieldConfig[]) {\n    const readonlyData = FormlyUtilsService.formlyConfigToReadonlyData(fields, model);\n    const chipsWithValue = readonlyData.filter(data => data.value);\n    let allChips = [];\n    chipsWithValue.forEach(chip => {\n      if (typeof chip.value != 'object') {\n        allChips.push(chip);\n        return;\n      }\n\n      if (Array.isArray(chip.value)) {\n        const newChips = chip.value.map(chipValue => {\n          return { ...chip, value: [chipValue] };\n        });\n        allChips = allChips.concat(newChips);\n        return;\n      }\n\n      if (chip.formlyType === SdsFormlyTypes.DATERANGEPICKER || chip.formlyType === SdsFormlyTypes.DATERANGEPICKERV2) {\n        const fromDateValue = chip.value[chip.readonlyOptions.daterangepickerOptions.fromDateKey];\n        const toDateValue = chip.value[chip.readonlyOptions.daterangepickerOptions.toDateKey];\n\n        if (fromDateValue || toDateValue) {\n          allChips.push(chip);\n        }\n\n        return;\n      }\n\n      Object.keys(chip.value).forEach(key => {\n        const value = chip.value[key];\n\n        // Ignore falsey or empty string values\n        if (!value || (typeof (value.length) === 'string' && !value.length)) {\n          return;\n        }\n\n        const newChip = { ...chip, value: { [key]: value } };\n        allChips.push(newChip);\n      })\n    })\n\n    this.chips = allChips;\n  }\n\n  /**\n   * Removing a certain chip from UI is the same as applying a change to the form, so\n   * this should update the form control. We can find the field to update based on the chip's\n   * formly key and what values to update to based on values of existing chips with the same key\n   * @param chip \n   * @returns \n   */\n  removeChip(chip: ReadonlyDataType) {\n    const field = this.findFieldInFieldGroup(this.fields, chip.formlyKey);\n\n    if (!field) {\n      throw new Error('Error: unable to find field to remove chip')\n    }\n\n    // If the form control is not complex, then we can simply reset\n    if (typeof field.formControl.value != 'object') {\n      field.formControl.reset();\n      return;\n    }\n\n    if (chip.formlyType === SdsFormlyTypes.DATERANGEPICKER || chip.formlyType === SdsFormlyTypes.DATERANGEPICKERV2) {\n      \n      const fromDateControl = field.fieldGroup[0].formControl;\n      const toDateControl = field.fieldGroup[1].formControl;\n      fromDateControl.reset();\n      toDateControl.reset();\n      return;\n    }\n\n    // If the form control contains complex values, such as an object or array, we need to determine what the new\n    // value of the form will be after this chip has been removed, and update the form control accordingly\n    const chipsWithSameKey = this.chips.filter(exisingChip => chip != exisingChip && chip.formlyKey === exisingChip.formlyKey);\n    const existingValues = chipsWithSameKey.map(chipWithSameKey => chipWithSameKey.value);\n\n    if (Array.isArray(field.formControl.value)) {\n      let updatedValue = [];\n      existingValues.forEach(value => {\n        updatedValue = updatedValue.concat(value)\n      });\n      field.formControl.setValue(updatedValue);\n      return;\n    }\n\n    const objectValue = {}\n    Object.assign(objectValue, ...existingValues)\n    field.formControl.setValue(objectValue);\n  }\n}\n",
+            "sourceCode": "import {\n  Component,\n  Input,\n  Output,\n  EventEmitter,\n  Optional,\n  OnInit,\n  ChangeDetectorRef,\n  OnChanges,\n  SimpleChanges,\n  ViewChild,\n  TemplateRef,\n} from '@angular/core';\n\nimport { FormGroup } from '@angular/forms';\nimport { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';\nimport * as qs from 'qs';\nimport { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';\nimport { SDSFormlyUpdateModelService } from './service/sds-filter-model-update.service';\n\nimport { takeUntil } from 'rxjs/operators';\nimport { Subject } from 'rxjs';\nimport { FormlyUtilsService, ReadonlyDataType } from '../formly/services/formly-utils.service';\nimport { SdsFormlyTypes } from '../formly/models/formly-types';\nimport { SdsDialogRef, SdsDialogService, SDS_DIALOG_DATA } from '@gsa-sam/components';\nimport { cloneDeep } from 'lodash-es';\n@Component({\n  selector: 'sds-filters',\n  templateUrl: './sds-filters.component.html',\n})\nexport class SdsFiltersComponent implements OnInit, OnChanges {\n\n  @ViewChild('horizontalFiltersDialog') horizontalFiltersDialogTemplate: TemplateRef<any>;\n\n  /**\n   * Pass in a Form Group for ReactiveForms Support\n   */\n  @Input() public form: FormGroup;\n\n  /**\n   *  Fields are used to configure the UI components\n   */\n  @Input() public fields: FormlyFieldConfig[];\n\n  /**\n   *  Model used to display the filter values.\n   */\n  @Input() public model: any;\n\n  /**\n   *    Options for the form.\n   */\n  @Input() public options: FormlyFormOptions = {};\n\n  /**\n   *  Emit results when model updated\n   * To enable History Tracking\n   *  If advanced filters dialog should be displayed -- defaults to false\n   */\n  @Input() advancedFilters: boolean = false;\n\n  /**\n   * Sort the filters by alphabetical order\n   */\n  @Input() sortMoreFilterBy = '';\n\n  /**\n   * Show option to include inactive filter values\n   */\n  @Input() isInactiveValueFieldShown: boolean = false;\n\n  /**\n   * Timer id for the timer awaiting the service call for more typeing\n   */\n  @Input() public isHistoryEnable: boolean = false;\n\n  /**\n   * To get clean model without null and empty\n   */\n  @Input() public getCleanModel: boolean = false;\n\n  /**\n   * Default values to reset form to when reset is done\n   * If not passed in, then default values will be values\n   * assigned to the model input during component init\n   * or defaultValue provided in formly config\n   */\n  @Input() defaultModel: any;\n\n  /**\n   * Toggle layout for filters - when horizontal is toggled,\n   * the reset and more filters are placed in top right corner\n   */\n  @Input() horizontal = false;\n\n  /**\n   * Toggle displaying chips for selected filter values. By default this is toggled off\n   * in normal situations. When horizontal setting is turned on, then chip display is\n   * also toggled on by default\n   */\n  @Input() displayChips: boolean;\n\n  /**\n   * Switch to show/hide the reset all button\n   * @default true\n   */\n  @Input() showReset: boolean = true;\n  /**\n   *  Emit results when model updated\n   */\n  // TODO: check type -- Formly models are typically objects\n  @Output() filterChange = new EventEmitter<object>();\n  @Output() showInactiveFiltersChange = new EventEmitter<boolean>();\n  @Output() resetClicked = new EventEmitter();\n\n  chips: ReadonlyDataType[] = [];\n  dialogRef: SdsDialogRef<any>;\n\n  // Snapshot of model before filter dialog opens during horizontal responsive format\n  _modelSnapshot: any;\n\n  unsubscribe$ = new Subject<void>();\n  _isObj = (obj: any): boolean => typeof obj === 'object' && obj !== null;\n  _isEmpty = (obj: any): boolean => Object.keys(obj).length === 0;\n  overwrite = (baseObj: any, newObj: any) => {\n    const result = {};\n    const mergedObj = { ...baseObj, ...newObj };\n    for (const key in mergedObj) {\n      if (Array.isArray(baseObj[key])) {\n        result[key] = newObj[key] || null;\n      } else if (baseObj[key] instanceof Date) {\n        result[key] = newObj[key] === undefined ? null : new Date(newObj[key]);\n      } else if (this._isObj(baseObj[key])) {\n        result[key] = this.overwrite(baseObj[key], newObj[key] || {});\n      } else {\n        result[key] = newObj[key] || null;\n      }\n    }\n    return result;\n  };\n\n\n  constructor(\n    @Optional()\n    public formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,\n    private formlyDialogService: SdsDialogService,\n    private cdr: ChangeDetectorRef,\n    @Optional()\n    private filterUpdateModelService: SDSFormlyUpdateModelService\n  ) { }\n  ngOnDestroy() {\n    this.unsubscribe$.next();\n    this.unsubscribe$.complete();\n  }\n\n  ngOnInit(): void {\n    // keep display chips to defined value if defined, otherwise, default to false, unless hoirzontal is turned on\n    this.displayChips = this.displayChips != undefined ? this.displayChips : this.horizontal;\n\n    if (this.filterUpdateModelService) {\n      this.filterUpdateModelService.filterModel\n        .pipe(takeUntil(this.unsubscribe$))\n        .subscribe((filter) => {\n          if (filter) {\n            const updatedFormValue = this.overwrite(\n              this.form.getRawValue(),\n              filter\n            );\n            // Shallow copy to not trigger onChanges from formly side\n            Object.keys(updatedFormValue).forEach((key) => {\n              this.model[key] = updatedFormValue[key];\n            });\n\n            setTimeout(() => {\n              this.form.patchValue(updatedFormValue);\n            });\n          }\n        });\n      this.cdr.detectChanges();\n    }\n  }\n\n  ngOnChanges(changes: SimpleChanges) {\n    if (\n      changes.model &&\n      changes.model.currentValue != changes.model.previousValue\n    ) {\n      this.checkForHide();\n    }\n  }\n\n  /**\n   * This is for getting the model which has a value.\n   */\n  checkForHide() {\n    let fieldWithValue = this.convertToParam(this.model);\n    let keys = [];\n    Object.keys(fieldWithValue).map((key) => {\n      keys.push(key.replace(/\\[/g, '.').replace(/\\]/g, ''));\n    });\n    keys.forEach((key) => {\n      const [lastKey] = key.split('.').slice(-1);\n      this.fields.forEach((field) => {\n        if (key.includes(field.key)) {\n          if (field.fieldGroup) {\n            const fieldExists = this.findFieldInFieldGroup(\n              field.fieldGroup,\n              lastKey\n            );\n            if (fieldExists) {\n              field.hide = false;\n            }\n          } else {\n            field.hide = false;\n          }\n        }\n      });\n    });\n  }\n\n  /**\n   * Recursively iterate over each field as well as potential field groups of the field\n   * to find a field with the given key. Returns the field if found, otherwise returns null.\n   * @param fields - The list of formly fields to search for the given key\n   * @param key - The key of the formly field config to search for\n   */\n  private findFieldInFieldGroup(fields: FormlyFieldConfig[], key: any) {\n    let matchingField: FormlyFieldConfig = null;\n\n    for (let i = 0; i < fields.length; i++) {\n      const field = fields[i];\n\n      if (field.key === key) {\n        matchingField = field;\n      } else if (field.fieldGroup) {\n        matchingField = this.findFieldInFieldGroup(field.fieldGroup, key);\n      } else if (field.fieldArray) {\n        matchingField = this.findFieldInFieldGroup([field.fieldArray], key);\n      }\n\n      if (matchingField) {\n        break;\n      }\n    }\n\n    return matchingField;\n  }\n\n  onModelChange(change: any) {\n    this.updateChange(change);\n  }\n  updateChange(change) {\n    const updatedModel = this.getCleanModel\n      ? this.convertToModel(change)\n      : change;\n    this.filterChange.emit(updatedModel);\n    if (this.formlyUpdateComunicationService) {\n      this.formlyUpdateComunicationService.updateFilter(updatedModel);\n    }\n\n    if (this.displayChips) {\n      this.generateChips(change, this.fields);\n    }\n\n    this.cdr.detectChanges();\n  }\n\n  convertToParam(filters) {\n    const encodedValues = qs.stringify(filters, {\n      skipNulls: true,\n      encode: false,\n    });\n    if (encodedValues) {\n      return this.getUrlParams(encodedValues);\n    } else {\n      return '';\n    }\n  }\n  getUrlParams(queryString) {\n    const target = {};\n    queryString.split('&').forEach((pair) => {\n      if (pair !== '') {\n        const splitpair = pair.split('=');\n        target[splitpair[0]] =\n          splitpair[1] === '' || splitpair[1] === 'false' ? null : splitpair[1];\n      }\n    });\n    return target;\n  }\n\n  convertToModel(filters) {\n    let obj = {};\n    const encodedValues = qs.stringify(filters, {\n      skipNulls: true,\n      encode: false,\n    });\n    obj = qs.parse(encodedValues, { decoder: this.cleanModelParser });\n    return obj;\n  }\n\n  /**\n   * Parser for qs.parse - if input string is true / false, \n   * convert to boolean value, otherwise use default decoder\n   */\n  cleanModelParser(str: string, decoder: qs.defaultDecoder, charset: string, type: 'key' | 'value') {\n    if (type === 'key') {\n      return decoder(str, decoder, charset);\n    }\n\n    if (str === 'true' || str === 'false') {\n      return str === 'true' ? true : false;\n    }\n\n    return decoder(str, decoder, charset);\n  }\n\n  handleInactiveFilterChange(inactiveFilterValue: boolean) {\n    if (this.displayChips) {\n      this.generateChips(this.model, this.fields);\n    }\n    this.showInactiveFiltersChange.emit(inactiveFilterValue);\n  }\n\n  openDialog() {\n    const clonedFields = cloneDeep(this.fields);\n    this._modelSnapshot = cloneDeep(this.model);\n    this.removePopoverGroup(clonedFields);\n    this.dialogRef = this.formlyDialogService.open(this.horizontalFiltersDialogTemplate, {\n      data: { fields: clonedFields, options: {} },\n      height: '100vh',\n      width: '100vw',\n      maxWidth: '100vw',\n      maxHeight: '100vh',\n      hasBackdrop: false,\n      displayCloseBtn: false,\n      panelClass: ['sds-dialog--full']\n    });\n\n    this.dialogRef.afterClosed().toPromise().then((result) => {\n      if (result) {\n        this.onModelChange(result);\n      } else {\n        Object.assign(this.model, this._modelSnapshot);\n      }\n      this.dialogRef = null;\n    })\n  }\n\n  close() {\n    this.dialogRef.close();\n  }\n\n  applyDialogFilters() {\n    this.dialogRef.close(this.model);\n  }\n\n  /**\n   * Converts all popover type fields to accordion and unhides any hidden fields\n   * so that they can be displayed in filter dialog during resposive mode for\n   * horizontal filters\n   * @param fields \n   */\n  private removePopoverGroup(fields: FormlyFieldConfig[]) {\n    fields.forEach(field => {\n      if (field.templateOptions && field.templateOptions.group === 'popover') {\n        field.templateOptions.group = 'accordion';\n      }\n\n      if (field.fieldGroup) {\n        this.removePopoverGroup(field.fieldGroup);\n      }\n\n      if (field.fieldArray) {\n        this.removePopoverGroup([field.fieldArray]);\n      }\n\n      field.hide = false;\n    })\n  }\n\n  /**\n   * Create chips to display for horizontal filters based on current model\n   * and formly field config\n   * @param model \n   * @param fields \n   */\n  private generateChips(model: any, fields: FormlyFieldConfig[]) {\n    const readonlyData = FormlyUtilsService.formlyConfigToReadonlyData(fields, model);\n    const chipsWithValue = readonlyData.filter(data => data.value);\n    let allChips = [];\n    chipsWithValue.forEach(chip => {\n      if (typeof chip.value != 'object') {\n        allChips.push(chip);\n        return;\n      }\n\n      if (Array.isArray(chip.value)) {\n        const newChips = chip.value.map(chipValue => {\n          return { ...chip, value: [chipValue] };\n        });\n        allChips = allChips.concat(newChips);\n        return;\n      }\n\n      if (chip.formlyType === SdsFormlyTypes.DATERANGEPICKER || chip.formlyType === SdsFormlyTypes.DATERANGEPICKERV2) {\n        const fromDateValue = chip.value[chip.readonlyOptions.daterangepickerOptions.fromDateKey];\n        const toDateValue = chip.value[chip.readonlyOptions.daterangepickerOptions.toDateKey];\n\n        if (fromDateValue || toDateValue) {\n          allChips.push(chip);\n        }\n\n        return;\n      }\n\n      Object.keys(chip.value).forEach(key => {\n        const value = chip.value[key];\n\n        // Ignore falsey or empty string values\n        if (!value || (typeof (value.length) === 'string' && !value.length)) {\n          return;\n        }\n\n        const newChip = { ...chip, value: { [key]: value } };\n        allChips.push(newChip);\n      })\n    })\n\n    this.chips = allChips;\n  }\n\n  /**\n   * Removing a certain chip from UI is the same as applying a change to the form, so\n   * this should update the form control. We can find the field to update based on the chip's\n   * formly key and what values to update to based on values of existing chips with the same key\n   * @param chip \n   * @returns \n   */\n  removeChip(chip: ReadonlyDataType) {\n    const field = this.findFieldInFieldGroup(this.fields, chip.formlyKey);\n\n    if (!field) {\n      throw new Error('Error: unable to find field to remove chip')\n    }\n\n    // If the form control is not complex, then we can simply reset\n    if (typeof field.formControl.value != 'object') {\n      field.formControl.reset();\n      return;\n    }\n\n    if (chip.formlyType === SdsFormlyTypes.DATERANGEPICKER || chip.formlyType === SdsFormlyTypes.DATERANGEPICKERV2) {\n\n      const fromDateControl = field.fieldGroup[0].formControl;\n      const toDateControl = field.fieldGroup[1].formControl;\n      fromDateControl.reset();\n      toDateControl.reset();\n      return;\n    }\n\n    // If the form control contains complex values, such as an object or array, we need to determine what the new\n    // value of the form will be after this chip has been removed, and update the form control accordingly\n    const chipsWithSameKey = this.chips.filter(exisingChip => chip != exisingChip && chip.formlyKey === exisingChip.formlyKey);\n    const existingValues = chipsWithSameKey.map(chipWithSameKey => chipWithSameKey.value);\n\n    if (Array.isArray(field.formControl.value)) {\n      let updatedValue = [];\n      existingValues.forEach(value => {\n        updatedValue = updatedValue.concat(value)\n      });\n      field.formControl.setValue(updatedValue);\n      return;\n    }\n\n    const objectValue = {}\n    Object.assign(objectValue, ...existingValues)\n    field.formControl.setValue(objectValue);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -8321,7 +8321,7 @@ const FORMLY = {
         },
         {
             "name": "SdsFormlyModule",
-            "id": "module-SdsFormlyModule-95f90a7eb3dd4e0d49229af73d00ae1e",
+            "id": "module-SdsFormlyModule-f267268b717626e035fa79d3b6b90214",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
@@ -8341,7 +8341,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "ModuleWithProviders<SdsFormlyModule>",
                     "typeParameters": [],
-                    "line": 233,
+                    "line": 231,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -8361,7 +8361,7 @@ const FORMLY = {
                     ]
                 }
             ],
-            "sourceCode": "import { NgModule, ModuleWithProviders } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\nimport {\n  FormlyModule,\n  FormlyFieldConfig,\n  ConfigOption,\n} from '@ngx-formly/core';\nimport { FormlySelectModule } from '@ngx-formly/core/select';\nimport { MatInputModule } from '@angular/material/input';\n\nimport {\n  MatDateFormats,\n  MatNativeDateModule,\n  MAT_DATE_FORMATS,\n  MAT_NATIVE_DATE_FORMATS,\n} from '@angular/material/core';\nimport { MatDatepickerModule } from '@angular/material/datepicker';\nimport { SdsAccordionModule, SdsTableModule } from '@gsa-sam/sam-material-extensions';\nimport {\n  SdsAutocompleteModule,\n  SdsDialogModule,\n  SdsTextModule,\n  SdsEditorModule,\n  SdsSearchModule,\n  SdsCollapseModule,\n  SdsIconModule,\n  SdsTooltipModule,\n  SdsTabsModule,\n  SdsPopoverModule\n} from '@gsa-sam/components';\n\nimport { FIELD_TYPE_COMPONENTS, FORMLY_CONFIG } from './formly.config';\nimport {\n  maxDateValidator,\n  minDateValidator,\n  dateRangeValidator,\n} from './formly.validators';\nimport { AnimationWrapperComponent } from './wrappers/form-field.animation';\nimport { SdsReadonlyModule } from './readonly/readonly.module';\nimport { MatExpansionModule } from '@angular/material/expansion';\nimport { NgxBootstrapIconsModule, caretDownFill, caretUpFill, filter, arrowClockwise, chevronDown, infoCircleFill } from 'ngx-bootstrap-icons';\nimport { UsaFileInputModule } from '@gsa-sam/ngx-uswds';\nimport { IconModule } from '@gsa-sam/ngx-uswds-icons';\n\n// Validate the min length of the character\nexport function minlengthValidationMessage(err, field) {\n  return `Should have atleast ${field.templateOptions.minLength} characters`;\n}\n\n// Validate the max length of the character\nexport function maxlengthValidationMessage(err, field) {\n  return `This value should be less than ${field.templateOptions.maxLength} characters`;\n}\n\n// Validate the min value of the character\nexport function minValidationMessage(err, field: FormlyFieldConfig) {\n  return `This value should be more than ${field.templateOptions.min}`;\n}\n\nexport function minDateValidationMessage(err, field: FormlyFieldConfig) {\n  const dt = field.templateOptions.minDate;\n  const dateFormat =\n    dt.getMonth() + 1 + '/' + dt.getDate() + '/' + dt.getFullYear();\n  return `Date must be after ${dateFormat}`;\n}\n\nexport function maxDateValidationMessage(err, field: FormlyFieldConfig) {\n  const dt = field.templateOptions.maxDate;\n  const dateFormat =\n    dt.getMonth() + 1 + '/' + dt.getDate() + '/' + dt.getFullYear();\n  return `Date must be before ${dateFormat}`;\n}\n\nexport function betweenDateValidationMessage(err, field: FormlyFieldConfig) {\n  const dtnmax = field.templateOptions.maxDate;\n  const dateMaxFormat =\n    dtnmax.getMonth() + 1 + '/' + dtnmax.getDate() + '/' + dtnmax.getFullYear();\n  const dtmin = field.templateOptions.minDate;\n  const dateMinFormat =\n    dtmin.getMonth() + 1 + '/' + dtmin.getDate() + '/' + dtmin.getFullYear();\n  return `Date must be between ${dateMinFormat} and ${dateMaxFormat} `;\n}\n\nexport function invalidDateFormatValidationMessage(\n  err,\n  field: FormlyFieldConfig\n) {\n  return `Valid date format required (ex: MM/DD/YYYY)`;\n}\n\nexport function matDatepickerMinValidationMessage(\n  err,\n  field: FormlyFieldConfig\n) {\n  const fieldWithMinDate = field.templateOptions.minDate ? field : field.parent;\n  if (!fieldWithMinDate) {\n    return `Please enter a valid date`;\n  }\n\n  return minDateValidationMessage(err, fieldWithMinDate);\n}\n\nexport function matDatepickerMaxValidationMessage(\n  err,\n  field: FormlyFieldConfig\n) {\n  const fieldWithMaxDate = field.templateOptions.minDate ? field : field.parent;\n  if (!fieldWithMaxDate) {\n    return `Please enter a valid date`;\n  }\n\n  return maxDateValidationMessage(err, fieldWithMaxDate);\n}\n\nexport function matDateInBetweenValidationMessage(\n  err,\n  field: FormlyFieldConfig\n) {\n  const fieldWithMinDate = field.templateOptions.minDate ? field : field.parent;\n  const fieldWithMaxDate = field.templateOptions.maxDate ? field : field.parent;\n\n  if (fieldWithMinDate && !fieldWithMaxDate) {\n    return minDateValidationMessage(err, fieldWithMinDate);\n  } else if (fieldWithMaxDate && !fieldWithMinDate) {\n    return maxDateValidationMessage(err, fieldWithMaxDate);\n  } else if (fieldWithMaxDate && fieldWithMinDate) {\n    return betweenDateValidationMessage(err, fieldWithMaxDate);\n  }\n\n  return `Please enter a valid date`;\n}\n\n// Validate the max value of the character\nexport function maxValidationMessage(err, field) {\n  return `This value should be less than ${field.templateOptions.max}`;\n}\nexport function animationExtension(field: FormlyFieldConfig) {\n  if (field.wrappers && field.wrappers.includes('animation')) {\n    return;\n  }\n\n  field.wrappers = ['animation', ...(field.wrappers || [])];\n}\nexport {\n  maxDateValidator,\n  minDateValidator,\n  dateRangeValidator,\n} from './formly.validators';\n\nexport const DATE_FORMAT: MatDateFormats = {\n  ...MAT_NATIVE_DATE_FORMATS,\n  display: {\n    ...MAT_NATIVE_DATE_FORMATS.display,\n    dateInput: {\n      year: 'numeric',\n      month: 'short',\n      day: 'numeric',\n    } as Intl.DateTimeFormatOptions,\n  },\n};\n\n@NgModule({\n  declarations: [FIELD_TYPE_COMPONENTS, AnimationWrapperComponent],\n  imports: [\n    CommonModule,\n    SdsAccordionModule,\n    MatExpansionModule,\n    SdsAutocompleteModule,\n    SdsDialogModule,\n    SdsSearchModule,\n    SdsTextModule,\n    SdsEditorModule,\n    SdsCollapseModule,\n    MatNativeDateModule,\n    MatDatepickerModule,\n    SdsTableModule,\n    MatInputModule,\n    SdsIconModule,\n    IconModule,\n    ReactiveFormsModule,\n    FormlySelectModule,\n    SdsReadonlyModule,\n    FormsModule,\n    UsaFileInputModule,\n    SdsTooltipModule,\n    SdsTableModule,\n    SdsTabsModule,\n    SdsPopoverModule,\n    NgxBootstrapIconsModule.pick({ caretDownFill, caretUpFill, filter, arrowClockwise, chevronDown, infoCircleFill }),\n    FormlyModule.forChild(FORMLY_CONFIG),\n    FormlyModule.forRoot({\n      validationMessages: [\n        { name: 'required', message: 'This field is required' },\n        { name: 'minlength', message: minlengthValidationMessage },\n        { name: 'maxlength', message: maxlengthValidationMessage },\n        { name: 'min', message: minValidationMessage },\n        { name: 'max', message: maxValidationMessage },\n        { name: 'minDate', message: minDateValidationMessage },\n        { name: 'maxDate', message: maxDateValidationMessage },\n        { name: 'betweenDate', message: betweenDateValidationMessage },\n        {\n          name: 'matDatepickerParse',\n          message: invalidDateFormatValidationMessage,\n        }, // Comes from the datepicker\n        {\n          name: 'matDatepickerMin',\n          message: matDatepickerMinValidationMessage,\n        }, // Comes from the datepicker\n        {\n          name: 'matStartDateInvalid',\n          message: matDateInBetweenValidationMessage,\n        }, // Comes from the datepicker\n        {\n          name: 'matDatepickerMax',\n          message: matDatepickerMaxValidationMessage,\n        }, // Comes from the datepicker\n      ],\n      validators: [\n        { name: 'minDate', validation: minDateValidator },\n        { name: 'maxDate', validation: maxDateValidator },\n        { name: 'dateRangeValidator', validation: dateRangeValidator },\n      ],\n      wrappers: [{ name: 'animation', component: AnimationWrapperComponent }],\n      extensions: [\n        { name: 'animation', extension: { onPopulate: animationExtension } },\n      ],\n    }),\n  ],\n  providers: [{ provide: MAT_DATE_FORMATS, useValue: DATE_FORMAT }],\n})\nexport class SdsFormlyModule {\n  public static forChild(\n    config: ConfigOption = {}\n  ): ModuleWithProviders<SdsFormlyModule> {\n    return {\n      ngModule: SdsFormlyModule,\n      providers: [...FormlyModule.forChild(config).providers],\n    };\n  }\n}\n",
+            "sourceCode": "import { NgModule, ModuleWithProviders } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\nimport {\n  FormlyModule,\n  FormlyFieldConfig,\n  ConfigOption,\n} from '@ngx-formly/core';\nimport { FormlySelectModule } from '@ngx-formly/core/select';\nimport { MatInputModule } from '@angular/material/input';\n\nimport {\n  MatDateFormats,\n  MatNativeDateModule,\n  MAT_DATE_FORMATS,\n  MAT_NATIVE_DATE_FORMATS,\n} from '@angular/material/core';\nimport { MatDatepickerModule } from '@angular/material/datepicker';\nimport { SdsTableModule } from '@gsa-sam/sam-material-extensions';\nimport {\n  SdsAutocompleteModule,\n  SdsDialogModule,\n  SdsTextModule,\n  SdsEditorModule,\n  SdsSearchModule,\n  SdsCollapseModule,\n  SdsTooltipModule,\n  SdsTabsModule,\n  SdsPopoverModule\n} from '@gsa-sam/components';\n\nimport { FIELD_TYPE_COMPONENTS, FORMLY_CONFIG } from './formly.config';\nimport {\n  maxDateValidator,\n  minDateValidator,\n  dateRangeValidator,\n} from './formly.validators';\nimport { AnimationWrapperComponent } from './wrappers/form-field.animation';\nimport { SdsReadonlyModule } from './readonly/readonly.module';\nimport { MatExpansionModule } from '@angular/material/expansion';\nimport { NgxBootstrapIconsModule, caretDownFill, caretUpFill, filter, arrowClockwise, chevronDown, infoCircleFill } from 'ngx-bootstrap-icons';\nimport { UsaAccordionModule, UsaFileInputModule } from '@gsa-sam/ngx-uswds';\nimport { IconModule } from '@gsa-sam/ngx-uswds-icons';\n\n// Validate the min length of the character\nexport function minlengthValidationMessage(err, field) {\n  return `Should have atleast ${field.templateOptions.minLength} characters`;\n}\n\n// Validate the max length of the character\nexport function maxlengthValidationMessage(err, field) {\n  return `This value should be less than ${field.templateOptions.maxLength} characters`;\n}\n\n// Validate the min value of the character\nexport function minValidationMessage(err, field: FormlyFieldConfig) {\n  return `This value should be more than ${field.templateOptions.min}`;\n}\n\nexport function minDateValidationMessage(err, field: FormlyFieldConfig) {\n  const dt = field.templateOptions.minDate;\n  const dateFormat =\n    dt.getMonth() + 1 + '/' + dt.getDate() + '/' + dt.getFullYear();\n  return `Date must be after ${dateFormat}`;\n}\n\nexport function maxDateValidationMessage(err, field: FormlyFieldConfig) {\n  const dt = field.templateOptions.maxDate;\n  const dateFormat =\n    dt.getMonth() + 1 + '/' + dt.getDate() + '/' + dt.getFullYear();\n  return `Date must be before ${dateFormat}`;\n}\n\nexport function betweenDateValidationMessage(err, field: FormlyFieldConfig) {\n  const dtnmax = field.templateOptions.maxDate;\n  const dateMaxFormat =\n    dtnmax.getMonth() + 1 + '/' + dtnmax.getDate() + '/' + dtnmax.getFullYear();\n  const dtmin = field.templateOptions.minDate;\n  const dateMinFormat =\n    dtmin.getMonth() + 1 + '/' + dtmin.getDate() + '/' + dtmin.getFullYear();\n  return `Date must be between ${dateMinFormat} and ${dateMaxFormat} `;\n}\n\nexport function invalidDateFormatValidationMessage(\n  err,\n  field: FormlyFieldConfig\n) {\n  return `Valid date format required (ex: MM/DD/YYYY)`;\n}\n\nexport function matDatepickerMinValidationMessage(\n  err,\n  field: FormlyFieldConfig\n) {\n  const fieldWithMinDate = field.templateOptions.minDate ? field : field.parent;\n  if (!fieldWithMinDate) {\n    return `Please enter a valid date`;\n  }\n\n  return minDateValidationMessage(err, fieldWithMinDate);\n}\n\nexport function matDatepickerMaxValidationMessage(\n  err,\n  field: FormlyFieldConfig\n) {\n  const fieldWithMaxDate = field.templateOptions.minDate ? field : field.parent;\n  if (!fieldWithMaxDate) {\n    return `Please enter a valid date`;\n  }\n\n  return maxDateValidationMessage(err, fieldWithMaxDate);\n}\n\nexport function matDateInBetweenValidationMessage(\n  err,\n  field: FormlyFieldConfig\n) {\n  const fieldWithMinDate = field.templateOptions.minDate ? field : field.parent;\n  const fieldWithMaxDate = field.templateOptions.maxDate ? field : field.parent;\n\n  if (fieldWithMinDate && !fieldWithMaxDate) {\n    return minDateValidationMessage(err, fieldWithMinDate);\n  } else if (fieldWithMaxDate && !fieldWithMinDate) {\n    return maxDateValidationMessage(err, fieldWithMaxDate);\n  } else if (fieldWithMaxDate && fieldWithMinDate) {\n    return betweenDateValidationMessage(err, fieldWithMaxDate);\n  }\n\n  return `Please enter a valid date`;\n}\n\n// Validate the max value of the character\nexport function maxValidationMessage(err, field) {\n  return `This value should be less than ${field.templateOptions.max}`;\n}\nexport function animationExtension(field: FormlyFieldConfig) {\n  if (field.wrappers && field.wrappers.includes('animation')) {\n    return;\n  }\n\n  field.wrappers = ['animation', ...(field.wrappers || [])];\n}\nexport {\n  maxDateValidator,\n  minDateValidator,\n  dateRangeValidator,\n} from './formly.validators';\n\nexport const DATE_FORMAT: MatDateFormats = {\n  ...MAT_NATIVE_DATE_FORMATS,\n  display: {\n    ...MAT_NATIVE_DATE_FORMATS.display,\n    dateInput: {\n      year: 'numeric',\n      month: 'short',\n      day: 'numeric',\n    } as Intl.DateTimeFormatOptions,\n  },\n};\n\n@NgModule({\n  declarations: [FIELD_TYPE_COMPONENTS, AnimationWrapperComponent],\n  imports: [\n    CommonModule,\n    UsaAccordionModule,\n    MatExpansionModule,\n    SdsAutocompleteModule,\n    SdsDialogModule,\n    SdsSearchModule,\n    SdsTextModule,\n    SdsEditorModule,\n    SdsCollapseModule,\n    MatNativeDateModule,\n    MatDatepickerModule,\n    SdsTableModule,\n    MatInputModule,\n    IconModule,\n    ReactiveFormsModule,\n    FormlySelectModule,\n    SdsReadonlyModule,\n    FormsModule,\n    UsaFileInputModule,\n    SdsTooltipModule,\n    SdsTableModule,\n    SdsTabsModule,\n    SdsPopoverModule,\n    NgxBootstrapIconsModule.pick({ caretDownFill, caretUpFill, filter, arrowClockwise, chevronDown, infoCircleFill }),\n    FormlyModule.forChild(FORMLY_CONFIG),\n    FormlyModule.forRoot({\n      validationMessages: [\n        { name: 'required', message: 'This field is required' },\n        { name: 'minlength', message: minlengthValidationMessage },\n        { name: 'maxlength', message: maxlengthValidationMessage },\n        { name: 'min', message: minValidationMessage },\n        { name: 'max', message: maxValidationMessage },\n        { name: 'minDate', message: minDateValidationMessage },\n        { name: 'maxDate', message: maxDateValidationMessage },\n        { name: 'betweenDate', message: betweenDateValidationMessage },\n        {\n          name: 'matDatepickerParse',\n          message: invalidDateFormatValidationMessage,\n        }, // Comes from the datepicker\n        {\n          name: 'matDatepickerMin',\n          message: matDatepickerMinValidationMessage,\n        }, // Comes from the datepicker\n        {\n          name: 'matStartDateInvalid',\n          message: matDateInBetweenValidationMessage,\n        }, // Comes from the datepicker\n        {\n          name: 'matDatepickerMax',\n          message: matDatepickerMaxValidationMessage,\n        }, // Comes from the datepicker\n      ],\n      validators: [\n        { name: 'minDate', validation: minDateValidator },\n        { name: 'maxDate', validation: maxDateValidator },\n        { name: 'dateRangeValidator', validation: dateRangeValidator },\n      ],\n      wrappers: [{ name: 'animation', component: AnimationWrapperComponent }],\n      extensions: [\n        { name: 'animation', extension: { onPopulate: animationExtension } },\n      ],\n    }),\n  ],\n  providers: [{ provide: MAT_DATE_FORMATS, useValue: DATE_FORMAT }],\n})\nexport class SdsFormlyModule {\n  public static forChild(\n    config: ConfigOption = {}\n  ): ModuleWithProviders<SdsFormlyModule> {\n    return {\n      ngModule: SdsFormlyModule,\n      providers: [...FormlyModule.forChild(config).providers],\n    };\n  }\n}\n",
             "children": [
                 {
                     "type": "providers",
@@ -8628,13 +8628,13 @@ const FORMLY = {
         },
         {
             "name": "SdsStepperModule",
-            "id": "module-SdsStepperModule-16c2d8d094d8a6a38085872fe31ff990",
+            "id": "module-SdsStepperModule-8c8a3b28700e1c1f81f0abd7ee7b455a",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "libs/packages/sam-formly/src/lib/formly-stepper/sds-stepper.module.ts",
             "methods": [],
-            "sourceCode": "import { CommonModule } from \"@angular/common\";\nimport { NgModule } from \"@angular/core\";\nimport { SdsIconModule } from \"@gsa-sam/components\";\nimport { SdsFormlyModule } from \"../formly/formly.module\";\nimport {\n  NgxBootstrapIconsModule,\n  chevronLeft,\n  chevronRight,\n  x,\n  check,\n  question,\n  save\n} from \"ngx-bootstrap-icons\";\nimport { RouterModule } from \"@angular/router\";\nimport { FormlyModule } from \"@ngx-formly/core\";\nimport { SdsStepper, SdsStepComponent, SdsStepFooterComponent, SdsStepHeaderComponent } from \"./sds-stepper\";\nimport { SdsStepperNavDirective, SdsStepperNextDirective, SdsStepperPreviousDirective, SdsStepperSaveDirective, SdsStepperUSWDSNavDirective } from \"./sds-step-buttons\";\n\n@NgModule({\n  imports: [\n    CommonModule,\n    FormlyModule,\n    SdsFormlyModule,\n    SdsIconModule,\n    NgxBootstrapIconsModule.pick({ chevronLeft, chevronRight, x, check, question, save }),\n    RouterModule,\n  ],\n  declarations: [\n    SdsStepComponent,\n    SdsStepHeaderComponent,\n    SdsStepFooterComponent,\n    SdsStepper,\n    SdsStepperNavDirective,\n    SdsStepperNextDirective,\n    SdsStepperPreviousDirective,\n    SdsStepperSaveDirective,\n    SdsStepperUSWDSNavDirective\n  ],\n  exports: [\n    SdsStepComponent,\n    SdsStepHeaderComponent,\n    SdsStepFooterComponent,\n    SdsStepper,\n    SdsStepperNavDirective,\n    SdsStepperNextDirective,\n    SdsStepperPreviousDirective,\n    SdsStepperSaveDirective,\n    SdsStepperUSWDSNavDirective\n  ]\n})\nexport class SdsStepperModule {}\n",
+            "sourceCode": "import { CommonModule } from \"@angular/common\";\nimport { NgModule } from \"@angular/core\";\nimport { SdsFormlyModule } from \"../formly/formly.module\";\nimport {\n  NgxBootstrapIconsModule,\n  chevronLeft,\n  chevronRight,\n  x,\n  check,\n  question,\n  save\n} from \"ngx-bootstrap-icons\";\nimport { RouterModule } from \"@angular/router\";\nimport { FormlyModule } from \"@ngx-formly/core\";\nimport { SdsStepper, SdsStepComponent, SdsStepFooterComponent, SdsStepHeaderComponent } from \"./sds-stepper\";\nimport { SdsStepperNavDirective, SdsStepperNextDirective, SdsStepperPreviousDirective, SdsStepperSaveDirective, SdsStepperUSWDSNavDirective } from \"./sds-step-buttons\";\nimport { IconModule } from \"@gsa-sam/ngx-uswds-icons\";\n\n@NgModule({\n  imports: [\n    CommonModule,\n    FormlyModule,\n    SdsFormlyModule,\n    IconModule,\n    NgxBootstrapIconsModule.pick({ chevronLeft, chevronRight, x, check, question, save }),\n    RouterModule,\n  ],\n  declarations: [\n    SdsStepComponent,\n    SdsStepHeaderComponent,\n    SdsStepFooterComponent,\n    SdsStepper,\n    SdsStepperNavDirective,\n    SdsStepperNextDirective,\n    SdsStepperPreviousDirective,\n    SdsStepperSaveDirective,\n    SdsStepperUSWDSNavDirective\n  ],\n  exports: [\n    SdsStepComponent,\n    SdsStepHeaderComponent,\n    SdsStepFooterComponent,\n    SdsStepper,\n    SdsStepperNavDirective,\n    SdsStepperNextDirective,\n    SdsStepperPreviousDirective,\n    SdsStepperSaveDirective,\n    SdsStepperUSWDSNavDirective\n  ]\n})\nexport class SdsStepperModule {}\n",
             "children": [
                 {
                     "type": "providers",
