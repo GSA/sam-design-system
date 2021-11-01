@@ -29,14 +29,25 @@ export class SdsStepperNextDirective {
     const flatSteps = this._stepper.flatSteps;
     const nextIndex = this._stepper.selectedStepIndex + 1;
 
+    // Handle edge case - no steps or no selected step
     if (!flatSteps || this._stepper.selectedStepIndex == undefined) {
       return true;
     }
 
+    /** Handle case where current step is last step */
     if (this._stepper.selectedStepIndex >= flatSteps.length - 1) {
       return true;
     }
 
+    /** 
+    * For linear mode, enable the next step, on click, current step will be validated,
+    * and if valid, user will automatically progress to next step
+    */
+    if (this._stepper.linear) {
+      return;
+    }
+    
+    /** Otherwise, if next step is disabled or next step is review step and review step is disabled, disable next step */
     if (flatSteps[nextIndex].disabled || (flatSteps[nextIndex].isReview && this._stepper._isReviewAndSubmitDisabled)) {
       return true;
     }

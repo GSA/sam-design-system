@@ -179,7 +179,7 @@ export class SdsStepper {
    * whether the step is valid or invalid. This maps defines valid/invalid icons
    * displayed in side nav
    */
-  @Input() stepValidityMap: any = {};
+  @Input() stepValidityMap: {[key: string]: boolean | undefined} = {};
 
   /**
    * Toggle custom error handling from user side. By default, errors are displayed
@@ -285,6 +285,30 @@ export class SdsStepper {
         step.valid = this.stepValidityMap[step.id];
       })
     }
+
+    /** 
+     * Handling toggling between linear and non-linear modes.
+     * On switch to linear, disable incomplete forms.
+     * On switch to non-linear, enable all steps except review step
+     */
+    if (changes.linear) {
+      if (changes.linear.currentValue) {
+        const lastValidStepIndex = this.evaluateIncompleteForms();
+        this.changeStep(this.flatSteps[lastValidStepIndex].id);
+      } else {
+        this.flatSteps.forEach(step => {
+          if (!step.isReview) {
+            step.disabled = false;
+          } else if (!this._isReviewAndSubmitDisabled) {
+            step.disabled = false
+          }
+        });
+      }
+
+      this.flatSteps.forEach(step => {
+        step.valid = this.stepValidityMap[step.id];
+      });
+    }
   }
 
   ngAfterContentInit() {
@@ -364,7 +388,16 @@ export class SdsStepper {
     }
 
     const step = this.flatSteps[stepIndex];
-    if (step.disabled || (step.isReview && this._isReviewAndSubmitDisabled)) {
+
+    /** Already on desired step, nothing to do */
+    if (step === this.selectedStep) {
+      return;
+    }
+    /**
+     * On non-linear mode, do not allow step change if step we are moving to is disabled or is review step.
+     * In linear mode, we will run validations first, then decide whether or not to move to next step
+     */
+    if (!this.linear && (step.disabled || (step.isReview && this._isReviewAndSubmitDisabled))) {
       return;
     }
 
@@ -378,23 +411,25 @@ export class SdsStepper {
       this.selectedStep.selected = false;
     }
 
+
+    /** 
+     * In linear mode and moving to next step. 
+     * Disable changing step if current step is invalid or has empty data, and display errors
+     * */
+    if (this.linear && stepIndex > this.selectedStepIndex && !this.stepValidityMap[this.selectedStep.id]) {
+      this.toggleOnValidationForStep(this.selectedStep, this.stepValidityMap, this.customErrorHandling);
+      return;
+    }
+
+
+
     this.selectedStepIndex = stepIndex;
     this.selectedStep = this.flatSteps[stepIndex];
 
     this.selectedStep.selected = true;
     this.currentStepId = this.selectedStep.id;
 
-    if (!this.selectedStep.options && !this.customErrorHandling) {
-      this.selectedStep.options = {};
-    }
-
-    if (!this.selectedStep.options.showError && !this.customErrorHandling) {
-      this.selectedStep.options.showError = () => false;
-    }
-
-    if (this.stepValidityMap[this.selectedStep.id] === false) {
-      this.selectedStep.options.showError = (field) => field.formControl.invalid;
-    }
+    this.toggleOnValidationForStep(this.selectedStep, this.stepValidityMap, this.customErrorHandling);
 
     if (this.selectedStep.editable && this.isRouteEnabled) {
       this.router.navigate(this.selectedStep.route ? [this.selectedStep.route] : [], {
@@ -406,6 +441,25 @@ export class SdsStepper {
     }
 
     this.stepChange.emit(this.selectedStep);
+  }
+
+  /**
+   * Enables validation error display for a given step
+   * @param step 
+   */
+  private toggleOnValidationForStep(step: SdsStepComponent, 
+      validityMap: {[key: string]: boolean | undefined}, customErrorHandling?: boolean) {
+    if (!step.options && !customErrorHandling) {
+      this.selectedStep.options = {};
+    }
+
+    if (!step.options.showError && !customErrorHandling) {
+      this.selectedStep.options.showError = () => false;
+    }
+
+    if (validityMap[step.id] === false) {
+      step.options.showError = (field) => field.formControl.invalid;
+    }
   }
 
   onNextStep() {
@@ -454,8 +508,15 @@ export class SdsStepper {
     return steps.filter((step => !step.hide));
   }
 
+  /**
+   * Used while in linear mode. All steps that are in the step validity and are valid
+   * map should be enabled until we find the first step that is invalid.
+   * Then all steps from that point on should be disabled
+   * 
+   * @returns the index of the last valid step
+   */
   private evaluateIncompleteForms() {
-    let startIndex = this.flatSteps.length;
+    let startIndex = 0;
     this.flatSteps.some((step, index) => {
       step.disabled = false;
 
@@ -468,6 +529,8 @@ export class SdsStepper {
     for (let i = (startIndex + 1); i < this.flatSteps.length; i++) {
       this.flatSteps[i].disabled = true;
     }
+
+    return startIndex;
   }
 
   private checkReviewAndSubmit() {
