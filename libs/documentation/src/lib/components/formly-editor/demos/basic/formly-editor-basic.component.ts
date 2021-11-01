@@ -13,12 +13,11 @@ export class EditorBasic {
   options: FormlyFormOptions = {};
   fields: FormlyFieldConfig[] = [
     {
-      key: 'title',
+      key: 'searchkey',
       type: 'editor',
       templateOptions: {
-        label: 'Entity Name',
-        placeholder: 'eg: Acme Corporation',
-        description: 'Enter the name of your entity.',
+        label: 'Search',
+        placeholder: 'eg: type here',
         regex: /hello/gm
       }
     }
