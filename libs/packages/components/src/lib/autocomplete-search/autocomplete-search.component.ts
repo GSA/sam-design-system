@@ -289,14 +289,12 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       this.onArrowGroupUp();
     } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex >= 0) {
       event.preventDefault();
-      if (this.configuration.isTagModeEnabled) {
+      if (this.configuration.isTagModeEnabled && this.inputValue.length > 0) {
         const val = this.createFreeTextItem();
         this.selectItem(val);
-      } else {
-        this.selectItem(this.highlightedItem);
       }
     } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex < 0) {
-      if (this.configuration.isFreeTextEnabled) {
+      if (this.configuration.isFreeTextEnabled && this.inputValue.length > 0) {
         const val = this.createFreeTextItem();
         this.selectItem(val);
       }
