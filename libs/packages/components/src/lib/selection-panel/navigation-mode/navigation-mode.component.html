@@ -7,7 +7,10 @@
 </ul>
 
 <ng-template #subPanelTemplate let-panelItem>
-  <a href="javascript:void(0);" class="usa-sidenav__item" (click)="onPanelItemClick(panelItem)" [ngClass]="{'usa-current': currentSelection && panelItem.id === currentSelection.id}">{{panelItem.text}}</a>
+  <a href="javascript:void(0);" class="usa-sidenav__item" (click)="onPanelItemClick(panelItem)" 
+    [ngClass]="{'usa-current': panelItem.selected}">
+    <span>{{panelItem.text}}</span>
+  </a>
   <ul *ngIf="panelItem.children" class="usa-sidenav__sublist">
     <li *ngFor="let panelItem of panelItem.children">
       <ng-container [ngTemplateOutlet]="subPanelTemplate" [ngTemplateOutletContext]="{$implicit:panelItem}">

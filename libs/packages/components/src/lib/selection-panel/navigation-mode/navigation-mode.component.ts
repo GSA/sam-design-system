@@ -11,7 +11,7 @@ import { SelectionPanelModel } from '../model/selection-panel.model';
 export class SdsSelectionPanelNavigationModeComponent implements OnChanges {
 
   @Input() model: SelectionPanelModel;
-  
+
   @Input() navigateOnClick = true;
 
   @Input() currentSelection: NavigationLink;
@@ -23,20 +23,25 @@ export class SdsSelectionPanelNavigationModeComponent implements OnChanges {
     private activatedRoute: ActivatedRoute,
   ) { }
 
-  onPanelItemClick(panelItem: NavigationLink) {
-    this.currentSelection = panelItem;
+  ngOnChanges(changes: SimpleChanges) {
+    if (this.model && this.currentSelection && changes.currentSelection) {
+      this.selectPanel(this.currentSelection);
 
+      if (this.navigateOnClick) {
+        this.navigateToSelectedItem(this.currentSelection);
+      }
+    }
+  }
+
+  onPanelItemClick(panelItem: NavigationLink) {
+    this.selectPanel(panelItem);
+    this.currentSelection = panelItem;
+    
     if (this.navigateOnClick) {
-      this.navigateToSelectedItem(this.currentSelection);
+      this.navigateToSelectedItem(panelItem);
     }
 
     this.panelSelected.emit(panelItem);
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (this.model && this.currentSelection && changes.currentSelection && this.navigateOnClick) {
-      this.navigateToSelectedItem(this.currentSelection);
-    }
   }
 
   navigateToSelectedItem(selectedPanel: NavigationLink) {
@@ -46,6 +51,46 @@ export class SdsSelectionPanelNavigationModeComponent implements OnChanges {
     }
 
     this.router.navigate(['.'], navigationExtras);
+  }
+
+  /** Public interface to select panel item */
+  public selectPanel(panelItem: NavigationLink) {
+    this.deselectSideNav(this.model.navigationLinks);
+    this.selectSideNav(panelItem, this.model.navigationLinks);
+  }
+
+  /**
+ * Deselects any previously selected sidenav item
+ * @param sidenavItems
+ */
+  private deselectSideNav(sidenavItems: NavigationLink[]): void {
+    sidenavItems.forEach(sideNavItem => {
+      if (sideNavItem.children) {
+        this.deselectSideNav(sideNavItem.children);
+      }
+      sideNavItem.selected = false;
+    });
+  }
+
+  /**
+   * Selects the clicked sidenav item as we as any parent
+   * @param selectedItem
+   * @param allNavItems
+   */
+  private selectSideNav(selectedItem: NavigationLink, allNavItems: NavigationLink[]): boolean {
+    for (const item of allNavItems) {
+      if (item === selectedItem) {
+        item.selected = true;
+        return true;
+      } else if (item.children) {
+        const isChildSelected = this.selectSideNav(selectedItem, item.children);
+        if (isChildSelected) {
+          item.selected = true;
+          return true;
+        }
+      }
+    }
+    return false;
   }
 
 }
