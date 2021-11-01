@@ -79,14 +79,5 @@ export class StepperAdvancedDemoComponent {
 
   toggleLinearMode() {
     this.linear = !this.linear;
-    this.reinitializeComponents = true;
-    this.model = {
-      subawardee: []
-    };
-    this.stepValidityMap = {};
-
-    setTimeout(() => {
-      this.reinitializeComponents = false;
-    }, 200)
   }
 }

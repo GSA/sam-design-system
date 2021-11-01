@@ -1,11 +1,9 @@
 <button class="usa-button margin-bottom-3" (click)="toggleLinearMode()">Toggle Linear Mode</button>
 
-<div *ngIf="reinitializeComponents"></div>
 <custom-stepper-demo #stepper [queryParamKey]="'sdsAdvancedStepper'" [model]="model"
   [stepValidityMap]="stepValidityMap" (stepChange)="onStepChange($event)"
   [linear]="linear"
   (saveData)="onSaveData($event)"
-  *ngIf="!reinitializeComponents"
 >
 
   <sds-step id="welcome" text="Welcome" 
