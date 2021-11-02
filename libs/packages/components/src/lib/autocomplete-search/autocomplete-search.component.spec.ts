@@ -423,8 +423,6 @@ describe('SamAutocompleteComponent', () => {
     tick();
     fixture.detectChanges();
     expect(component.model.items.length).toBe(0);
-
-    expect(Object.keys(component.model.items[0]).length).toBe(3);
   }));
 
   it('clearInput and results closed', fakeAsync(() => {
