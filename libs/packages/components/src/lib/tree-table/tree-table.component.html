@@ -1,0 +1,53 @@
+<table id="treegrid" role="treegrid" aria-label="Inbox" class="usa-table">
+  <colgroup>
+    <col id="treegrid-col1">
+    <col id="treegrid-col2">
+    <col id="treegrid-col3">
+  </colgroup>
+  <thead>
+    <tr>
+      <th scope="col">Related</th>
+      <th scope="col">Subject</th>
+      <th scope="col">Summary</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let data of dataSource; index as i" 
+      [ngTemplateOutlet]="treeTablePanel" 
+      [ngTemplateOutletContext]="getTemplateContext(dataSource, data, index, 0)">
+    </ng-container>
+  </tbody>
+</table>
+
+<ng-template #treeTablePanel let-row="row" let-level="level" let-index="index" let-size="size">
+  <tr role="row" 
+    [attr.aria-level]="level" 
+    [attr.aria-posinset]="index + 1" 
+    [attr.aria-setsize]="size"
+    [attr.aria-expanded]="row.children ? row.expanded ? true : false: undefined"
+    [attr.tabindex]="row.selected ? 1 : -1"
+    (click)="row.children ? row.expanded = !row.expanded : ''"
+    
+    >
+    <td></td>
+    <td role="gridcell">{{row.title}}</td>
+    <td role="gridcell">{{row.description}}</td>
+    <td role="gridcell"><a href="mailto:aaron@thegoogle.rocks" tabindex="0">{{row.year}}</a></td>
+  </tr>
+
+  <ng-container *ngIf="row.expanded">
+    <ng-container *ngFor="let data of row.children; index as i" 
+    [ngTemplateOutlet]="treeTablePanel" 
+    [ngTemplateOutletContext]="getTemplateContext(row, data, index, level)">
+    </ng-container>
+  </ng-container>
+
+
+  <tr class="text-center" *ngIf="row.expanded && row.totalChildren > row.children.length">
+    <td></td>
+    <td></td>
+    <td><button class="usa-button usa-button--base">View All ({{row.totalChildren - row.children.length}})</button></td>
+    <td></td>
+  </tr>
+</ng-template>
