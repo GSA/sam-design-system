@@ -1,7 +1,9 @@
-import { AfterViewInit, Component, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ViewChild, ViewContainerRef } from '@angular/core';
 import { UsaAccordionComponent, UsaAccordionItem } from '@gsa-sam/ngx-uswds';
 import { FieldWrapper } from '@ngx-formly/core';
 import * as qs from 'qs';
+import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 /**
  * @param string [to.expand] to expand the accordion
@@ -29,7 +31,12 @@ export class FormlyAccordianFormFieldComponent extends FieldWrapper implements A
   @ViewChild(UsaAccordionItem) accordionItem: UsaAccordionItem;
 
   multi = true;
-  constructor() {
+
+  resetAllSubscription: Subscription;
+
+  constructor(
+    private changeDetectorRef: ChangeDetectorRef
+  ) {
     super();
   }
 
@@ -41,8 +48,24 @@ export class FormlyAccordianFormFieldComponent extends FieldWrapper implements A
     const shouldExpandAccordion = this.modelHasValue();
     if (shouldExpandAccordion) {
       this.accordion.expand(this.accordionItem.id);
+      this.changeDetectorRef.detectChanges();
+    }
+
+    this.resetAllSubscription = this.field.options.fieldChanges.pipe(
+      filter(({ type }) => type === 'resetAll' && this.accordionItem.isOpen))
+      .subscribe(() => {
+        if (!this.modelHasValue()) {
+          this.accordion.collapse(this.accordionItem.id);
+        }
+      });
+  }
+
+  ngOnDestroy() {
+    if (this.resetAllSubscription) {
+      this.resetAllSubscription.unsubscribe();
     }
   }
+
   modelHasValue() {
     if (this.to.hasOwnProperty('expand')) {
       return this.to.expand;

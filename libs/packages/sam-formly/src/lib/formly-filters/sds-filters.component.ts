@@ -24,6 +24,7 @@ import { FormlyUtilsService, ReadonlyDataType } from '../formly/services/formly-
 import { SdsFormlyTypes } from '../formly/models/formly-types';
 import { SdsDialogRef, SdsDialogService, SDS_DIALOG_DATA } from '@gsa-sam/components';
 import { cloneDeep } from 'lodash-es';
+import { FormlyValueChangeEvent } from '@ngx-formly/core/lib/components/formly.field.config';
 @Component({
   selector: 'sds-filters',
   templateUrl: './sds-filters.component.html',
@@ -174,9 +175,10 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
             setTimeout(() => {
               this.form.patchValue(updatedFormValue);
             });
+            this.checkForHide();
           }
         });
-      this.cdr.detectChanges();
+        this.cdr.detectChanges();
     }
   }
 
@@ -249,6 +251,18 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
   onModelChange(change: any) {
     this.updateChange(change);
   }
+
+  onResetClicked() {
+    const fieldChangeEvent: FormlyValueChangeEvent = {
+      field: undefined,
+      type: 'resetAll',
+      value: undefined
+    };
+
+    this.options.fieldChanges.next(fieldChangeEvent);
+    this.resetClicked.emit();
+  }
+
   updateChange(change) {
     const updatedModel = this.getCleanModel
       ? this.convertToModel(change)
