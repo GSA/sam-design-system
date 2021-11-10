@@ -1,7 +1,9 @@
-import { AfterViewInit, Component, DoCheck, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, ViewChild, ViewContainerRef } from '@angular/core';
 import { UsaAccordionComponent, UsaAccordionItem } from '@gsa-sam/ngx-uswds';
 import { FieldWrapper } from '@ngx-formly/core';
 import * as qs from 'qs';
+import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 /**
  * @param string [to.group] used to set the wrapper tupe
@@ -67,14 +69,19 @@ import * as qs from 'qs';
     </ng-template>
   `,
 })
-export class FormlyGroupWrapperComponent extends FieldWrapper implements AfterViewInit {
+export class FormlyGroupWrapperComponent extends FieldWrapper implements AfterViewInit, OnDestroy {
   @ViewChild('fieldComponent', { read: ViewContainerRef }) fieldComponent: ViewContainerRef;
   
   @ViewChild('groupAccordion') accordion: UsaAccordionComponent;
   @ViewChild(UsaAccordionItem) accordionItem: UsaAccordionItem;
 
   multi = true;
-  constructor() {
+
+  resetAllSubscription: Subscription;
+
+  constructor(
+    private changeDetectorRef: ChangeDetectorRef
+  ) {
     super();
   }
 
@@ -86,6 +93,21 @@ export class FormlyGroupWrapperComponent extends FieldWrapper implements AfterVi
     const shouldExpandAccordion = this.modelHasValue();
     if (shouldExpandAccordion) {
       this.accordion.expand(this.accordionItem.id);
+      this.changeDetectorRef.detectChanges();
+    }
+
+    this.resetAllSubscription = this.field.options.fieldChanges.pipe(
+      filter(({ type }) => type === 'resetAll' && this.accordionItem.isOpen))
+      .subscribe(() => {
+        if (!this.modelHasValue()) {
+          this.accordion.collapse(this.accordionItem.id);
+        }
+      });
+  }
+
+  ngOnDestroy() {
+    if (this.resetAllSubscription) {
+      this.resetAllSubscription.unsubscribe();
     }
   }
 

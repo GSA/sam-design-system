@@ -170,7 +170,7 @@ export class FilterService {
     },
     {
       key: 'purposeOfRegistration',
-
+      hide: true,
       type: 'multicheckbox',
       templateOptions: {
         label: 'Purpose of Registration',
