@@ -1,3 +1,6 @@
 <button class="usa-button usa-button--unstyled margin-right-3" (click)="expandAll()">Expand All</button>
-<button class="usa-button usa-button--unstyled" (click)="collapseAll()">Collapse All</button>
-<sds-tree-table #treeTable [dataSource]="displayedData" [displayColumns]="tableColumns"></sds-tree-table>
+<button class="usa-button usa-button--unstyled margin-right-3" (click)="collapseAll()">Collapse All</button>
+<button class="usa-button usa-button--unstyled margin-right-3" (click)="expandChild()">Expand Child</button>
+<button class="usa-button usa-button--unstyled margin-right-3" (click)="collapseRow()">Collapse Row</button>
+
+<sds-tree-table #treeTable [dataSource]="displayedData" [displayColumns]="tableColumns" (viewAll)="onViewAll($event)"></sds-tree-table>
