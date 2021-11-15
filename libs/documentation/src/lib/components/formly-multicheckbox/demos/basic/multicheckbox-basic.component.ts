@@ -23,11 +23,12 @@ export class MultiCheckboxBasic {
         options: [
           {
             key: 'vet',
-            value: 'Veteran Owned'
+            value: 'Veteran Owned',
+            tagText: 'Tag'
           },
           {
             key: 'women',
-            value: 'Women Owned'
+            value: 'Women Owned (<a href="javascript:void(0)">HTML content for label</a>)',
           },
           {
             key: 'minority',

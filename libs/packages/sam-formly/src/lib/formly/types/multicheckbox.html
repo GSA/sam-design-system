@@ -5,7 +5,8 @@
       <div>
         <input [id]="id + '_Select'" type="checkbox" class="usa-checkbox__input" value="value" [checked]="allComplete"
           [attr.aria-checked]="ariaChecked" (change)="setAll($event)" />
-        <label class="usa-checkbox__label" [attr.aria-checked]="ariaChecked" [for]="id + '_Select'">{{ to.label }}
+        <label class="usa-checkbox__label" [attr.aria-checked]="ariaChecked" [for]="id + '_Select'">
+          <span [innerHtml]="to.label"></span>
         </label>
 
       </div>
@@ -44,11 +45,11 @@
                 [ngClass]="to.options[i].tagClass ? to.options[i].tagClass : 'sds-tag--info-white'">
                 {{to.options[i].tagText}}
               </span>
-              {{ option.label }}
+              <span [innerHtml]="option.label"></span>
             </label>
           </div>
 
-          <div *ngIf="to.options[i].tooltipText">
+          <div *ngIf="to.options[i].tooltipText" class="margin-top-1 margin-left-1">
             <p #tipContent [ngClass]="to.options[i].tooltipClass" class="margin-1"
               [innerHTML]="to.options[i].tooltipText"></p>
             <usa-icon [position]="to.options[i].tooltipPosition ? to.options[i].tooltipPosition :'right'"
