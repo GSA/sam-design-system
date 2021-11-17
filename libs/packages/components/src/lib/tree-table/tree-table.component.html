@@ -1,63 +1,64 @@
-<table id="treegrid" role="treegrid" aria-label="Inbox" class="usa-table">
-  <colgroup>
-    <col id="treegrid-col1">
-    <col id="treegrid-col2">
-    <col id="treegrid-col3">
-  </colgroup>
-  <thead>
-    <tr>
-      <th scope="col">Related</th>
-      <th scope="col">Subject</th>
-      <th scope="col">Summary</th>
-      <th scope="col">Email</th>
-    </tr>
-  </thead>
-  <tbody>
-    <ng-container *ngFor="let data of dataSource; index as i" 
-      [ngTemplateOutlet]="treeTablePanel" 
-      [ngTemplateOutletContext]="getTemplateContext(dataSource, data, i, 0)">
-    </ng-container>
-  </tbody>
-</table>
+<div class="usa-table-container--scrollable">
+  <table id="treegrid" role="treegrid" aria-label="Inbox" class="usa-table sds-tree-table padding-x-1">
+    <thead>
+      <tr>
+        <th scope="col">Related</th>
+        <th scope="col" *ngFor="let col of displayColumns">{{col}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let data of dataSource; index as i" 
+        [ngTemplateOutlet]="treeTablePanel" 
+        [ngTemplateOutletContext]="getTemplateContext(dataSource, data, i, 0, data === _selectedRowParent)">
+      </ng-container>
+    </tbody>
+  </table>
+</div>
 
-<ng-template #treeTablePanel let-row="row" let-level="level" let-index="index" let-size="size">
+<ng-template #treeTablePanel 
+  let-row="row" 
+  let-level="level" 
+  let-index="index" 
+  let-size="size" 
+  let-rows="rows"
+  let-parentSelected="parentSelected"
+>
   <tr role="row"
     [attr.id]="row.id"
     [attr.aria-level]="level" 
     [attr.aria-posinset]="index" 
     [attr.aria-setsize]="size"
     [attr.aria-expanded]="row.children ? row.expanded ? true : false: undefined"
-    [attr.tabindex]="row === _selectedRow ? 1 : -1"
-    [ngClass]="{'sds-tree-table__row--selected': _selectedRow === row}"
-    (click)="onRowClicked(row)"
-    (keyup.enter)="onRowClicked(row)"
+    [attr.tabindex]="row === _selectedRow ? 0 : undefined"
+    [ngClass]="{'sds-tree-table__row--selected': row === _selectedRow, 'sds-tree-table__row--highlight-border': parentSelected}"
     >
-    <td></td>
-    <td role="gridcell">
-      <span>{{row.title}}</span>
+    <td>
+      <span [ngClass]="{'display-none': rows && rows[index-2]?.expanded}" class="vertical-border-top"></span>
+      <span *ngIf="(index < size && level >= 2) || row.expanded" class="vertical-border-bottom"></span>
+      <span class="horizontal-border"></span>
+      <button class="usa-button sds-button--circle border-0 bg-white" *ngIf="row.children" 
+        [attr.tabindex]="row === _selectedRow ? 1 : -1" (click)="onRowClicked(row)">
+        <usa-icon 
+          [icon]="row.expanded ? 'dash-circle-fill' : 'plus-circle-fill'"
+          [size]="'2x'">
+        </usa-icon>
+      </button>
     </td>
-    <td role="gridcell">
-      <span>{{row.description}}</span>
-    </td>
-    <td role="gridcell">
-      <span>
-        <a href="mailto:aaron@thegoogle.rocks" tabindex="0"><span>{{row.year}}</span></a>
-      </span>
-    </td>
+    <ng-container [ngTemplateOutlet]="treetableRow.templateRef" 
+      [ngTemplateOutletContext]="{$implicit: row, index: index - 1}">
+    </ng-container>
   </tr>
 
   <ng-container *ngIf="row.expanded">
     <ng-container *ngFor="let data of row.children; index as i" 
     [ngTemplateOutlet]="treeTablePanel" 
-    [ngTemplateOutletContext]="getTemplateContext(row, data, i, level)">
+    [ngTemplateOutletContext]="getTemplateContext(row, data, i, level, parentSelected)">
     </ng-container>
   </ng-container>
 
 
   <tr class="text-center" *ngIf="row.expanded && row.totalChildren > row.children.length">
     <td></td>
-    <td></td>
-    <td><button class="usa-button usa-button--base" (click)="viewAllClicked(row)">View All ({{row.totalChildren - row.children.length}})</button></td>
-    <td></td>
+    <td class="width-100"><button class="usa-button usa-button--base" (click)="viewAllClicked(row)">View All ({{row.totalChildren - row.children.length}})</button></td>
   </tr>
 </ng-template>

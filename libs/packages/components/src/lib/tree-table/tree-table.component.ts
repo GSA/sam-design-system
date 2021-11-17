@@ -1,25 +1,34 @@
-import { ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, Output } from "@angular/core";
+import { ChangeDetectionStrategy, Component, ContentChild, Directive, EventEmitter, Input, Output, TemplateRef } from "@angular/core";
+import { SdsTreeTableData } from "./tree-table.model";
 
+@Directive({
+  selector: `[sdsTreeTableRow]`
+})
+export class SdsTreeTableRow {
+  constructor(
+    public templateRef: TemplateRef<any>
+  ) {}
+}
 
 @Component({
   selector: `sds-tree-table`,
   templateUrl: `./tree-table.component.html`,
   styleUrls: ['./tree-table.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SdsTreeTableComponent {
-  @Input() dataSource: any[];
+export class SdsTreeTableComponent  {
+  @Input() dataSource: SdsTreeTableData[];
   @Input() displayColumns: string[];
 
+  @ContentChild(SdsTreeTableRow) treetableRow: SdsTreeTableRow;
 
   @Output() viewAll = new EventEmitter<any>();
+  @Output() rowExpanded = new EventEmitter<any>();
 
   _selectedRow: any;
+  _selectedRowParent: any;
 
-  constructor(
-    private elementRef: ElementRef,
-    private cdr: ChangeDetectorRef,
-  ) {}
-
+  constructor() {}
 
   /**
    * Public Interface - close all opened children
@@ -37,10 +46,6 @@ export class SdsTreeTableComponent {
 
   public expandRow(rowId: string) {
     this.expandRowHelper(this.dataSource, rowId);
-    this.cdr.detectChanges();
-
-    const tableRow: HTMLTableRowElement = this.elementRef.nativeElement.querySelector(`#${rowId}`);
-    tableRow.scrollIntoView({behavior: 'smooth', block: 'center'});
   }
 
   public collapseRow(rowId: string) {
@@ -69,8 +74,6 @@ export class SdsTreeTableComponent {
     for (let i = 0; i < allRows.length; i++) {
       const row = allRows[i];
       if (row.id === id) {
-        if (this._selectedRow) this._selectedRow.selected = false;
-        this._selectedRow = row;
         return true;
       } else if (row.children) {
         const isChildExpanded = this.expandRowHelper(row.children, id);
@@ -103,7 +106,7 @@ export class SdsTreeTableComponent {
     }
   }
 
-  getTemplateContext(parent: any, row: any, index: number, level: number) {
+  getTemplateContext(parent: any, row: any, index: number, level: number, parentSelected?: boolean) {
     const updatedLevel = level + 1;
     const posinset = index + 1;
     return {
@@ -111,15 +114,35 @@ export class SdsTreeTableComponent {
       level: updatedLevel,
       index: posinset,
       size: parent.children ? parent.children.length : 1,
+      rows: parent.children,
+      parentSelected: parentSelected
     }
   }
 
   onRowClicked(row: any) {
-    row.selected = true;
     if (row.children) {
       row.expanded = !row.expanded;
     }
 
     this._selectedRow = row;
+    this._selectedRowParent = this.getParentOfRow(this.dataSource, row);
+    this.rowExpanded.emit(row);
+  }
+
+  getParentOfRow(allRows: any[], row: any) {
+    let retRow = null;
+    for (let i = 0; i < allRows.length; i++) {
+      if (allRows[i] === row) {
+        retRow = allRows[i];
+        break;
+      } else if(allRows[i].children) {
+        const isChildRow = this.getParentOfRow(allRows[i].children, row);
+        if (isChildRow) {
+          retRow = allRows[i];
+        }
+      }
+    }
+    
+    return retRow;
   }
 }
