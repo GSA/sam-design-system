@@ -24,20 +24,23 @@
   let-parentSelected="parentSelected"
 >
   <tr role="row"
+    #tableRow
     [attr.id]="row.id"
     [attr.aria-level]="level" 
     [attr.aria-posinset]="index" 
     [attr.aria-setsize]="size"
     [attr.aria-expanded]="row.children ? row.expanded ? true : false: undefined"
-    [attr.tabindex]="row === _selectedRow ? 0 : undefined"
+    [attr.tabindex]="level === 1 && index === 1 && !_selectedRow ? 0 : row === _selectedRow ? 0 : undefined"
+    (keydown)="onKeyDown($event, row, tableRow)"
     [ngClass]="{'sds-tree-table__row--selected': row === _selectedRow, 'sds-tree-table__row--highlight-border': parentSelected}"
     >
     <td>
       <span [ngClass]="{'display-none': rows && rows[index-2]?.expanded}" class="vertical-border-top"></span>
       <span *ngIf="(index < size && level >= 2) || row.expanded" class="vertical-border-bottom"></span>
       <span class="horizontal-border"></span>
-      <button class="usa-button sds-button--circle border-0 bg-white" *ngIf="row.children" 
-        [attr.tabindex]="row === _selectedRow ? 1 : -1" (click)="onRowClicked(row)">
+      <button class="usa-button sds-button--circle border-0 bg-white" *ngIf="row.children"
+        [attr.tabindex]="row === _selectedRow ? 1 : -1" (click)="onRowClicked(row, tableRow)">
+        <span class="usa-sr-only">Expand / Collapse current row</span>
         <usa-icon 
           [icon]="row.expanded ? 'dash-circle-fill' : 'plus-circle-fill'"
           [size]="'2x'">
@@ -57,8 +60,13 @@
   </ng-container>
 
 
-  <tr class="text-center" *ngIf="row.expanded && row.totalChildren > row.children.length">
+  <tr class="text-center" 
+    #viewAllRow
+    *ngIf="row.expanded && row.totalChildren > row.children.length" 
+    (keydown.enter)="viewAllClicked(row, viewAllRow, tableRow)"
+    (keydown)="onKeyDown($event, {}, viewAllRow)"
+  >
     <td></td>
-    <td class="width-100"><button class="usa-button usa-button--base" (click)="viewAllClicked(row)">View All ({{row.totalChildren - row.children.length}})</button></td>
+    <td class="width-100"><button class="usa-button usa-button--base" (click)="viewAllClicked(row, viewAllRow, tableRow)">View All ({{row.totalChildren - row.children.length}})</button></td>
   </tr>
 </ng-template>

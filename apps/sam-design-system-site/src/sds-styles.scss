@@ -15,19 +15,14 @@ table.sds-tree-table {
   thead {
     th {
       border: none;
-      padding: 1rem;
-      background-color: #eff6fb;
+      @include u-padding(2);
+      @include u-bg('accent-cool-lighter');
     }
-  
-    border: 1px solid #d9e8f6;
-  
+    
+    @include u-border('accent-cool-light');  
   }
   
   tbody {
-  
-    tr {
-      height: 65px;
-    }
   
     td {
       border-style: none;
@@ -72,6 +67,10 @@ table.sds-tree-table {
             background-color: black;
             border-radius: 50%;
           }
+        }
+
+        .usa-button:hover {
+          color: white;
         }
       }
   
@@ -119,16 +118,16 @@ table.sds-tree-table {
   
   .sds-tree-table__row--selected:not(.text-center) {
     td:nth-child(2) {
-      border-left: 4px solid blue;
+      @include u-border-left('secondary');
     }
   
     td:not(:first-child) {
-      border-top: 4px solid blue;
-      border-bottom: 4px solid blue
+      @include u-border-top('secondary');
+      @include u-border-bottom('secondary');
     }
   
     td:last-child {
-      border-right: 4px solid blue;
+      @include u-border-right('secondary');
     }
   }
 

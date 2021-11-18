@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ContentChild, Directive, EventEmitter, Input, Output, TemplateRef } from "@angular/core";
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, Directive, ElementRef, EventEmitter, Input, Output, TemplateRef } from "@angular/core";
 import { SdsTreeTableData } from "./tree-table.model";
 
 @Directive({
@@ -28,13 +28,17 @@ export class SdsTreeTableComponent  {
   _selectedRow: any;
   _selectedRowParent: any;
 
-  constructor() {}
+  constructor(
+    private elementRef: ElementRef,
+    private cdr: ChangeDetectorRef,
+  ) {}
 
   /**
    * Public Interface - close all opened children
    */
   public collapseAll() {
-    this.toggleAllHelper(this.dataSource, false)
+    this.toggleAllHelper(this.dataSource, false);
+    this.cdr.detectChanges();
   }
 
   /**
@@ -42,10 +46,12 @@ export class SdsTreeTableComponent  {
    */
   public expandAll() {
     this.toggleAllHelper(this.dataSource, true);
+    this.cdr.detectChanges();
   }
 
   public expandRow(rowId: string) {
     this.expandRowHelper(this.dataSource, rowId);
+    this.cdr.detectChanges();
   }
 
   public collapseRow(rowId: string) {
@@ -55,10 +61,14 @@ export class SdsTreeTableComponent  {
     }
 
     this.collapseRowHelper(row);
+    this.cdr.detectChanges();
   }
 
-  viewAllClicked(row: any) {
+  viewAllClicked(row: any, currentRow: HTMLTableRowElement, tableRow: HTMLTableRowElement) {
     this.viewAll.emit(row);
+    currentRow.setAttribute('tabindex', undefined);
+    tableRow.setAttribute('tabindex', '0');
+    setTimeout(() => tableRow.focus());
   }
 
   private toggleAllHelper(data: any[], expanded: boolean) {
@@ -119,14 +129,44 @@ export class SdsTreeTableComponent  {
     }
   }
 
-  onRowClicked(row: any) {
+  onRowClicked(row: SdsTreeTableData, tableRow: HTMLTableRowElement) {
     if (row.children) {
       row.expanded = !row.expanded;
     }
 
     this._selectedRow = row;
     this._selectedRowParent = this.getParentOfRow(this.dataSource, row);
+    setTimeout(() => tableRow.focus());
     this.rowExpanded.emit(row);
+  }
+
+  onKeyDown($event: KeyboardEvent, row: SdsTreeTableData, tableRow: HTMLTableRowElement) {
+    if ($event.target != tableRow) {
+      return;
+    }
+
+    let siblingRow: HTMLTableRowElement;
+
+    if ($event.key === 'ArrowUp') {
+      siblingRow = ($event.target as HTMLTableRowElement).previousElementSibling as HTMLTableRowElement;
+    } else if ($event.key === 'ArrowDown') {
+      siblingRow = ($event.target as HTMLTableRowElement).nextElementSibling as HTMLTableRowElement;
+    } else if ($event.key === 'Enter') {
+      if (row.children) {
+        row.expanded = !row.expanded;
+      }
+    } else if ($event.key === 'Home') {
+      siblingRow = this.elementRef.nativeElement.querySelector('tbody tr');
+    } else if ($event.key === 'End') {
+      siblingRow = this.elementRef.nativeElement.querySelector('tbody tr:last-child');
+    }
+
+    if (!siblingRow) return;
+
+    ($event.target as HTMLTableRowElement).setAttribute('tabindex', undefined);
+    siblingRow.setAttribute('tabindex', '0');
+    siblingRow.focus();
+    $event.preventDefault();
   }
 
   getParentOfRow(allRows: any[], row: any) {

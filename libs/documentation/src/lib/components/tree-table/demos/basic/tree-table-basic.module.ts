@@ -6,7 +6,7 @@ import { SdsTreeTableModule } from '@gsa-sam/components';
 @NgModule({
   imports: [
     CommonModule,
-    SdsTreeTableModule
+    SdsTreeTableModule,
   ],
   declarations: [
     TreeTableBasicComponent,
