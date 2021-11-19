@@ -1,4 +1,4 @@
-<div class="usa-table-container--scrollable">
+<div class="sds-tree-table--scrollable">
   <table id="treegrid" role="treegrid" aria-label="Inbox" class="usa-table sds-tree-table padding-x-1">
     <thead>
       <tr>
@@ -22,6 +22,8 @@
   let-size="size" 
   let-rows="rows"
   let-parentSelected="parentSelected"
+  let-parent="parent"
+  let-parentRow="parentRow"
 >
   <tr role="row"
     #tableRow
@@ -31,12 +33,15 @@
     [attr.aria-setsize]="size"
     [attr.aria-expanded]="row.children ? row.expanded ? true : false: undefined"
     [attr.tabindex]="level === 1 && index === 1 && !_selectedRow ? 0 : row === _selectedRow ? 0 : undefined"
+    (keydown.enter)="onRowClicked(row, tableRow)"
     (keydown)="onKeyDown($event, row, tableRow)"
     [ngClass]="{'sds-tree-table__row--selected': row === _selectedRow, 'sds-tree-table__row--highlight-border': parentSelected}"
     >
     <td>
-      <span [ngClass]="{'display-none': rows && rows[index-2]?.expanded}" class="vertical-border-top"></span>
-      <span *ngIf="(index < size && level >= 2) || row.expanded" class="vertical-border-bottom"></span>
+      <span *ngIf="rows && index == rows.length" #border class="vertical-border">
+        <!-- Programitcally set height of vertical border because we won't know the height until view finishes rendering -->
+        {{setHeight(tableRow, parentRow, border)}}
+      </span>
       <span class="horizontal-border"></span>
       <button class="usa-button sds-button--circle border-0 bg-white" *ngIf="row.children"
         [attr.tabindex]="row === _selectedRow ? 1 : -1" (click)="onRowClicked(row, tableRow)">
@@ -55,7 +60,7 @@
   <ng-container *ngIf="row.expanded">
     <ng-container *ngFor="let data of row.children; index as i" 
     [ngTemplateOutlet]="treeTablePanel" 
-    [ngTemplateOutletContext]="getTemplateContext(row, data, i, level, parentSelected)">
+    [ngTemplateOutletContext]="getTemplateContext(row, data, i, level, parentSelected, tableRow)">
     </ng-container>
   </ng-container>
 

@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, Directive, ElementRef, EventEmitter, Input, Output, TemplateRef } from "@angular/core";
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, 
+  ContentChild, Directive, ElementRef, EventEmitter, Input, NgZone, Output, TemplateRef } from "@angular/core";
+import { Observable } from "rxjs";
 import { SdsTreeTableData } from "./tree-table.model";
 
 @Directive({
@@ -16,9 +18,10 @@ export class SdsTreeTableRow {
   styleUrls: ['./tree-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SdsTreeTableComponent  {
+export class SdsTreeTableComponent {
   @Input() dataSource: SdsTreeTableData[];
   @Input() displayColumns: string[];
+  @Input() maxChidrenDisplay: number = 5;
 
   @ContentChild(SdsTreeTableRow) treetableRow: SdsTreeTableRow;
 
@@ -31,7 +34,9 @@ export class SdsTreeTableComponent  {
   constructor(
     private elementRef: ElementRef,
     private cdr: ChangeDetectorRef,
+    private ngZone: NgZone,
   ) {}
+
 
   /**
    * Public Interface - close all opened children
@@ -64,11 +69,13 @@ export class SdsTreeTableComponent  {
     this.cdr.detectChanges();
   }
 
-  viewAllClicked(row: any, currentRow: HTMLTableRowElement, tableRow: HTMLTableRowElement) {
-    this.viewAll.emit(row);
+  viewAllClicked(row: SdsTreeTableData, currentRow: HTMLTableRowElement, tableRow: HTMLTableRowElement) {
+    
     currentRow.setAttribute('tabindex', undefined);
     tableRow.setAttribute('tabindex', '0');
     setTimeout(() => tableRow.focus());
+
+    this.viewAll.emit(row);
   }
 
   private toggleAllHelper(data: any[], expanded: boolean) {
@@ -116,7 +123,41 @@ export class SdsTreeTableComponent  {
     }
   }
 
-  getTemplateContext(parent: any, row: any, index: number, level: number, parentSelected?: boolean) {
+  /** Sets height of vertical border on the tree table view */
+  setHeight(row: HTMLTableRowElement, parentRow: HTMLTableRowElement, border: HTMLSpanElement) {
+    if (!row || !parentRow) {
+      return;
+    }
+
+    /** 
+     * We run outside ngZone because we don't want the setTimeout to trigger change detection,
+     * which would re-run changes on template, and re-evalute this function, causing infinite loop
+     */
+    this.ngZone.runOutsideAngular(() => {
+
+      /** 
+       * We do set timeout to let the table rows finish rendering. If a row was
+       * expanded / collapsed, then the height of the vertical border will need to
+       * be re-evaluated based on new distance from child to parent. We let the
+       * view finish refreshing so that bounding rectangle is re-evaluated, and then
+       * we can re-calculate height. Doing this synchronously without setTimeout
+       * would give us incorrect value for height because the bouunding rectangle
+       * has yet to update from the collapse / expand change
+       */
+      setTimeout(() => {
+        const firstRect = parentRow.getBoundingClientRect();
+        const rowRect = row.getBoundingClientRect();
+    
+        const yFirstRect = firstRect.top + firstRect.height / 2;
+        const yRowRect = rowRect.top + rowRect.height / 2;
+    
+        const height = yRowRect - yFirstRect - 20;
+        border.style.height = `${height}px`;
+      })
+    })
+  }
+
+  getTemplateContext(parent: any, row: any, index: number, level: number, parentSelected?: boolean, parentRow?: HTMLTableRowElement) {
     const updatedLevel = level + 1;
     const posinset = index + 1;
     return {
@@ -125,7 +166,9 @@ export class SdsTreeTableComponent  {
       index: posinset,
       size: parent.children ? parent.children.length : 1,
       rows: parent.children,
-      parentSelected: parentSelected
+      parentSelected: parentSelected,
+      parent: parent,
+      parentRow: parentRow
     }
   }
 
@@ -151,10 +194,6 @@ export class SdsTreeTableComponent  {
       siblingRow = ($event.target as HTMLTableRowElement).previousElementSibling as HTMLTableRowElement;
     } else if ($event.key === 'ArrowDown') {
       siblingRow = ($event.target as HTMLTableRowElement).nextElementSibling as HTMLTableRowElement;
-    } else if ($event.key === 'Enter') {
-      if (row.children) {
-        row.expanded = !row.expanded;
-      }
     } else if ($event.key === 'Home') {
       siblingRow = this.elementRef.nativeElement.querySelector('tbody tr');
     } else if ($event.key === 'End') {

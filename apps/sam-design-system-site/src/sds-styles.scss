@@ -8,6 +8,14 @@ $theme-font-path: '~@gsa-sam/sam-styles/src/fonts';
 @import '~@gsa-sam/sam-styles/src/stylesheets/sam';
 
 
+.sds-tree-table--scrollable {
+  overflow: scroll;
+
+  .sds-tree-table {
+    width: 59.25rem;
+  }
+}
+
 table.sds-tree-table {
   border-collapse:separate; 
   border-spacing: 0 5px;
@@ -28,29 +36,20 @@ table.sds-tree-table {
       border-style: none;
       position: relative;
       .horizontal-border {
-        border-top: 1px dashed;
+        border-top: 3px dashed;
         height: 1px;
         position: absolute;
         width: 100%;
         top: 50%;
         color: black;
       }
-      
-      .vertical-border-top {
-        border-left: 1px dashed;
-        width: 1px;
-        height: 50%;
-        position: absolute;
-        top: 0;
-        color: black;
-      }
   
-      .vertical-border-bottom {
-        border-left: 1px dashed;
+      .vertical-border {
+        border-left: 3px dashed;
         width: 1px;
         height: 100%;
         position: absolute;
-        top: 50%;
+        bottom: 40px;
         color: black;
       }
     }
@@ -70,7 +69,7 @@ table.sds-tree-table {
         }
 
         .usa-button:hover {
-          color: white;
+          filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.1));
         }
       }
   
@@ -100,11 +99,7 @@ table.sds-tree-table {
   
 
     tr[aria-level="1"] {
-      .vertical-border-top {
-        display: none;
-      }
-
-      .vertical-border-bottom {
+      .vertical-border {
         margin-left: 1rem;
         margin-top: 1rem;
       }
@@ -136,7 +131,7 @@ table.sds-tree-table {
       border-color: blue;
     }
 
-    .vertical-border-bottom {
+    .vertical-border {
       border-color: blue;
     }
 
@@ -156,12 +151,12 @@ table.sds-tree-table {
         padding-right: #{($i * 1.5) - 1.5}rem;
       }
 
-      .vertical-border-bottom, .vertical-border-top, .horizontal-border {
+      .vertical-border, .horizontal-border {
         margin-left: #{($i * 1.5) - 2}rem;
       }
     }
 
-    tr[aria-level="#{$i}"][aria-expanded="true"] .vertical-border-bottom {
+    tr[aria-level="#{$i}"][aria-expanded="true"] .vertical-border {
       margin-left: #{($i * 1.5) - 0.5}rem;
     }
 
