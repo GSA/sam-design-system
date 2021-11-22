@@ -14,7 +14,6 @@ export class SdsTreeTableRow {
 @Component({
   selector: `sds-tree-table`,
   templateUrl: `./tree-table.component.html`,
-  styleUrls: ['./tree-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SdsTreeTableComponent {
