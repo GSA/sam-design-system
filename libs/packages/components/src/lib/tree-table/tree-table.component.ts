@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, 
   ContentChild, Directive, ElementRef, EventEmitter, Input, NgZone, Output, TemplateRef } from "@angular/core";
-import { Observable } from "rxjs";
 import { SdsTreeTableData } from "./tree-table.model";
 
 @Directive({

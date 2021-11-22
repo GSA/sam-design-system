@@ -86,3 +86,4 @@ export * from './editor/editor.module';
 
 export * from './tree-table/tree-table.module';
 export * from './tree-table/tree-table.component';
+export * from './tree-table/tree-table.model';
