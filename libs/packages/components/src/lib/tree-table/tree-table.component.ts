@@ -19,13 +19,18 @@ export class SdsTreeTableRow {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SdsTreeTableComponent {
+  /** Rows of table tada to display */
   @Input() dataSource: SdsTreeTableData[];
+
+  /** Column header text */
   @Input() displayColumns: string[];
-  @Input() maxChidrenDisplay: number = 5;
 
   @ContentChild(SdsTreeTableRow) treetableRow: SdsTreeTableRow;
 
+  /** Emitted for a row if there are more children to display and user clicked view all */
   @Output() viewAll = new EventEmitter<any>();
+
+  /** Emitted anytime a row 's expansion / collapse value changes */
   @Output() rowExpanded = new EventEmitter<any>();
 
   _selectedRow: any;
@@ -54,11 +59,21 @@ export class SdsTreeTableComponent {
     this.cdr.detectChanges();
   }
 
+  /** 
+   * Public interface - expand a single row given an ID. 
+   * The row's predecessors will also be expanded 
+   * @param rowId - id of row to expand
+   */
   public expandRow(rowId: string) {
     this.expandRowHelper(this.dataSource, rowId);
     this.cdr.detectChanges();
   }
 
+  /**
+   * Public Interface - Collapse a single row given an id.
+   * The row's successors will also be collapsed
+   * @param rowId - id of row to collapse
+   */
   public collapseRow(rowId: string) {
     const row = this.findRow(this.dataSource, rowId);
     if (!row) {
@@ -183,7 +198,7 @@ export class SdsTreeTableComponent {
     this.rowExpanded.emit(row);
   }
 
-  onKeyDown($event: KeyboardEvent, row: SdsTreeTableData, tableRow: HTMLTableRowElement) {
+  onKeyDown($event: KeyboardEvent, tableRow: HTMLTableRowElement) {
     if ($event.target != tableRow) {
       return;
     }

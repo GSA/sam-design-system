@@ -34,7 +34,7 @@
     [attr.aria-expanded]="row.children ? row.expanded ? true : false: undefined"
     [attr.tabindex]="level === 1 && index === 1 && !_selectedRow ? 0 : row === _selectedRow ? 0 : undefined"
     (keydown.enter)="onRowClicked(row, tableRow)"
-    (keydown)="onKeyDown($event, row, tableRow)"
+    (keydown)="onKeyDown($event, tableRow)"
     [ngClass]="{'sds-tree-table__row--selected': row === _selectedRow, 'sds-tree-table__row--highlight-border': parentSelected}"
     >
     <td>
@@ -69,7 +69,7 @@
     #viewAllRow
     *ngIf="row.expanded && row.totalChildren > row.children.length" 
     (keydown.enter)="viewAllClicked(row, viewAllRow, tableRow)"
-    (keydown)="onKeyDown($event, {}, viewAllRow)"
+    (keydown)="onKeyDown($event, viewAllRow)"
   >
     <td></td>
     <td class="width-100"><button class="usa-button usa-button--base" (click)="viewAllClicked(row, viewAllRow, tableRow)">View All ({{row.totalChildren - row.children.length}})</button></td>
