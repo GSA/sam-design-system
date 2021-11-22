@@ -1,10 +1,11 @@
 import {
   animate,
-  state,
   style,
   transition,
   trigger,
   AnimationTriggerMetadata,
+  animation,
+  useAnimation,
 } from '@angular/animations';
 
 const animationBody = [
@@ -26,15 +27,31 @@ const animationBody = [
       )
     ]
   ),
-  // state('slideExit', style({right: '-15rem'})),
-  // state('slideEnter', style({right: '0rem'})),
   transition('* => slideEnter', [
-    style({right: '-15rem'}),
-    animate('1s', style({right: '0rem'}))
+    useAnimation(
+      animation(
+        [
+          style({ right: '-{{ width }}' }),
+          animate(
+            '{{ time }} cubic-bezier(0, 0, 0.2, 1)',
+            style({ right: '0rem' })
+          ),
+        ],
+      )
+    ),
   ]),
   transition('* => slideExit', [
-    style({right: '0rem'}),
-    animate('1s', style({right: '-15rem'}))
+    useAnimation(
+      animation(
+        [
+          style({ right: '0rem' }),
+          animate(
+            '{{ time }} cubic-bezier(0, 0, 0.2, 1)',
+            style({ right: '-{{ width }}' })
+          ),
+        ],
+      )
+    ),
   ]),
 ];
 

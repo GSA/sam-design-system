@@ -21,9 +21,7 @@ import {
   TemplatePortal
 } from '@angular/cdk/portal';
 import { FocusTrap, FocusTrapFactory } from '@angular/cdk/a11y';
-import { SdsDialogConfig } from './dialog-config';
-
-
+import { SdsDialogConfig, SlideOutConfig } from './dialog-config';
 /**
  * Throws an exception for the case when a ComponentPortal is
  * attached to a DomPortalOutlet without an origin.
@@ -61,7 +59,10 @@ export function throwSdsDialogContentAlreadyAttachedError() {
     '[attr.aria-labelledby]': '_config.ariaLabel ? null : _ariaLabelledBy',
     '[attr.aria-label]': '_config.ariaLabel',
     '[attr.aria-describedby]': '_config.ariaDescribedBy || null',
-    '[@dialogContainer]': '_state',
+    '[style.width]':
+      '_config.slideOut && isSlideOutConfig(_config.slideOut) ? _config.slideOut.width : null',
+    '[@dialogContainer]':
+      '{ value: _state, params: _config.slideOut && isSlideOutConfig(_config.slideOut) ? { width: _config.slideOut.width || "15rem", time: _config.slideOut.time || "1s" } : { width: "15rem", time: "1s" } }',
     '(@dialogContainer.start)': '_onAnimationStart($event)',
     '(@dialogContainer.done)': '_onAnimationDone($event)',
   },
@@ -192,5 +193,14 @@ export class SdsDialogContainerComponent extends BasePortalOutlet {
     // Mark the container for check so it can react if the
     // view container is using OnPush change detection.
     this._changeDetectorRef.markForCheck();
+  }
+
+  /** Checks if the value is a Slide Out panel configuration or a boolean. */
+  /** A configuration indicates that a user wants a custom Slide Out Panel */
+  isSlideOutConfig(val: boolean | SlideOutConfig): val is SlideOutConfig {
+    return (
+      (val as SlideOutConfig).width !== undefined ||
+      (val as SlideOutConfig).time !== undefined
+    );
   }
 }
