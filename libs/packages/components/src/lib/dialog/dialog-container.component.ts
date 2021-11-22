@@ -60,9 +60,9 @@ export function throwSdsDialogContentAlreadyAttachedError() {
     '[attr.aria-label]': '_config.ariaLabel',
     '[attr.aria-describedby]': '_config.ariaDescribedBy || null',
     '[style.width]':
-      'isSlideOutConfig(_config.slideOut) ? _config.slideOut.width : null',
+      '_config.slideOut && isSlideOutConfig(_config.slideOut) ? _config.slideOut.width : null',
     '[@dialogContainer]':
-      '{ value: _state, params: isSlideOutConfig(_config.slideOut) ? { width: _config.slideOut.width || "15rem", time: _config.slideOut.time || "1s" } : { width: "15rem", time: "1s" } }',
+      '{ value: _state, params: _config.slideOut && isSlideOutConfig(_config.slideOut) ? { width: _config.slideOut.width || "15rem", time: _config.slideOut.time || "1s" } : { width: "15rem", time: "1s" } }',
     '(@dialogContainer.start)': '_onAnimationStart($event)',
     '(@dialogContainer.done)': '_onAnimationDone($event)',
   },
