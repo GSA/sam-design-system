@@ -83,3 +83,7 @@ export * from './date/sds-date.pipe'
 
 export * from './editor/editor.component'
 export * from './editor/editor.module';
+
+export * from './tree-table/tree-table.module';
+export * from './tree-table/tree-table.component';
+export * from './tree-table/tree-table.model';

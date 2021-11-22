@@ -127,6 +127,11 @@ import {
 }
   from './components/tabs/tabs.module';
 
+import {
+  ROUTES as TREE_TABLE_ROUTES,
+  TreeTableModule
+} from './components/tree-table/tree-table.module';
+
 /* Form Types */
 import {
   ROUTES as INPUT_ROUTES,
@@ -310,7 +315,7 @@ export const ROUTES: Routes = [
   { path: 'components/toasts', children: TOASTS_ROUTES },
   { path: 'components/tabs', children: TABS_ROUTES },
   { path: 'components/date-pipe', children: DATE_PIPE_ROUTES },
-
+  { path: 'components/tree-table', children: TREE_TABLE_ROUTES },
   { path: 'components/slide-out', children: SLIDE_OUT_ROUTES },
   { path: 'components/landing-button-group', children: LANDING_BUTTON_GROUP_ROUTES },
   { path: 'components/landing-card', children: LANDING_CARD_ROUTES },
@@ -433,6 +438,7 @@ export const ROUTES: Routes = [
     EditorModule,
     FileInputModule,
     FormlyTabsModule,
+    TreeTableModule,
     NgxBootstrapIconsModule.pick(Object.assign(
       _.cloneDeep(allIcons),
       appendPrefix(_.cloneDeep(sdsAllIcons), 'sds'),
