@@ -23,6 +23,39 @@ export class SdsTreeTableComponent {
   /** Column header text */
   @Input() displayColumns: string[];
 
+  /** 
+   * Defines maximum number of children to show to the user
+   * IE - if a row has 20 children available, and childrenLimit
+   * value is 10, then the amount of children displayed to the
+   * user will be numChildrenToDisplay amount, and the rest
+   * is toggled behind a 'View All' button,
+   * This should be greater than or equal to numChildrenToDisplay
+   * @default - Number.MAX_SAFE_INTEGER
+   */
+  @Input() childrenLimit: number = Number.MAX_SAFE_INTEGER;
+
+  /**
+   * Number of children to Display to users if a row's children length
+   * exceeds childrenLimit. This should be less than or equal to childrenLimit
+   * 
+   * General Cases:
+   * If numChildrenToDisplay is 5, childrenLimit is 10, and row has 20 children
+   *  5 children will be shown and the remaining can be displayed through View All button
+   * 
+   * If numChildrenToDisplay is 5, childrenLimit is 10, and row has 10 children
+   *  All 10 children will be displayed because the row's children does not exceed childrenLimit
+   * 
+   * If numChildren is 5, childrenLimit is 10, and row has 4 children
+   *  All 4 children will be displayed because row's children does not exceed childrenLimit
+   * 
+   * @default - Number.MAX_SAFE_INTEGER
+   */
+  @Input() numChildrenToDisplay: number = this.childrenLimit
+
+  /**
+   * Reference for content projection. User defined values for how to
+   * display each cell in a row
+   */
   @ContentChild(SdsTreeTableRow) treetableRow: SdsTreeTableRow;
 
   /** Emitted for a row if there are more children to display and user clicked view all */
@@ -86,9 +119,11 @@ export class SdsTreeTableComponent {
     
     currentRow.setAttribute('tabindex', undefined);
     tableRow.setAttribute('tabindex', '0');
+    row.viewAllChildren = true;
     setTimeout(() => tableRow.focus());
-
-    this.viewAll.emit(row);
+    if (row.totalChildren && row.totalChildren > row.children.length) {
+      this.viewAll.emit(row);
+    }
   }
 
   private toggleAllHelper(data: any[], expanded: boolean) {
@@ -168,6 +203,23 @@ export class SdsTreeTableComponent {
         border.style.height = `${height}px`;
       })
     })
+  }
+
+  /** 
+   * Defines whether or not to display vertical border from this row. Vertical borders generally
+   * start from the last child and extend to the parent. However, if we are truncating the number
+   * of children displayed, then the vertical border would need to start from the child we
+   * truncate at.
+   * */
+  displayVerticalBorder(parentRow: SdsTreeTableData, index: number, siblingRows: SdsTreeTableRow[]): boolean {
+    if (!siblingRows) return false;
+
+    // Decide whether last child displayed is last child in row's children index or is at numChildrenToDisplay
+    if (parentRow.viewAllChildren || siblingRows.length <= this.childrenLimit) {
+      return index === siblingRows.length - 1;
+    } else {
+      return index === this.numChildrenToDisplay - 1;
+    }
   }
 
   getTemplateContext(parent: any, row: any, index: number, level: number, parentSelected?: boolean, parentRow?: HTMLTableRowElement) {

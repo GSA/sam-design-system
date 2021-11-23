@@ -15,6 +15,7 @@
   </table>
 </div>
 
+<!-- TODO: Extract this into separate component -->
 <ng-template #treeTablePanel 
   let-row="row" 
   let-level="level" 
@@ -38,7 +39,8 @@
     [ngClass]="{'sds-tree-table__row--selected': row === _selectedRow, 'sds-tree-table__row--highlight-border': parentSelected}"
     >
     <td>
-      <span *ngIf="rows && index == rows.length" #border class="vertical-border">
+      <span *ngIf="displayVerticalBorder(parent, index - 1, rows)" 
+        #border class="vertical-border">
         <!-- Programitcally set height of vertical border because we won't know the height until view finishes rendering -->
         {{setHeight(tableRow, parentRow, border)}}
       </span>
@@ -58,20 +60,33 @@
   </tr>
 
   <ng-container *ngIf="row.expanded">
-    <ng-container *ngFor="let data of row.children; index as i" 
-    [ngTemplateOutlet]="treeTablePanel" 
-    [ngTemplateOutletContext]="getTemplateContext(row, data, i, level, parentSelected, tableRow)">
-    </ng-container>
+    <ng-container *ngFor="let data of row.children; index as i">
+      <ng-container 
+        *ngIf="row.children.length <= childrenLimit || 
+          row.viewAllChildren || 
+          i  < numChildrenToDisplay"
+        [ngTemplateOutlet]="treeTablePanel" 
+        [ngTemplateOutletContext]="getTemplateContext(row, data, i, level, parentSelected, tableRow)">
+      </ng-container>
+    </ng-container> 
   </ng-container>
-
 
   <tr class="text-center" 
     #viewAllRow
-    *ngIf="row.expanded && row.totalChildren > row.children.length" 
+    *ngIf="row.expanded && !row.viewAllChildren && (row.totalChildren > row.children.length || row.children.length > childrenLimit)" 
     (keydown.enter)="viewAllClicked(row, viewAllRow, tableRow)"
     (keydown)="onKeyDown($event, viewAllRow)"
   >
     <td></td>
-    <td class="width-100"><button class="usa-button usa-button--base" (click)="viewAllClicked(row, viewAllRow, tableRow)">View All ({{row.totalChildren - row.children.length}})</button></td>
+    <td class="width-100">
+      <button class="usa-button usa-button--base" (click)="viewAllClicked(row, viewAllRow, tableRow)">
+        View All ( 
+          <span *ngIf="row.totalChildren && row.totalChildren > row.children.length; else childrenLength">
+            {{row.totalChildren}}
+          </span>
+        )
+          <ng-template #childrenLength>{{row.children.length}}</ng-template>
+      </button>
+    </td>
   </tr>
 </ng-template>
