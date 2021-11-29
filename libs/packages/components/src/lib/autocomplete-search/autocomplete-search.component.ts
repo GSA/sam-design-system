@@ -242,7 +242,13 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       this.getResults(searchString);
     }
   }
+  isCleanIconVisible(): boolean {
+    if (this.model && this.model.items.length > 0 && !this.model?.items[0][this.configuration.primaryKeyField])
+      return false;
 
+    return this.inputValue && !this.disabled
+  }
+  // 
   /**
    * Event method used when focus is gained to the input
    */
