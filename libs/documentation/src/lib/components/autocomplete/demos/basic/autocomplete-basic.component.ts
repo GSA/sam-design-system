@@ -29,7 +29,7 @@ export class AutocompleteBasic implements OnInit {
     console.log(value);
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   setup() {
     this.settings.id = 'autocompleteBasic';
@@ -39,7 +39,8 @@ export class AutocompleteBasic implements OnInit {
     this.settings.labelText = 'Autocomplete 1';
     this.settings.selectionMode = SelectionMode.SINGLE;
     this.settings.autocompletePlaceHolderText = 'eg: Level 1';
-    
+    this.settings.hideCloseIconPrimaryKeyValue = "1"
+
     this.settings3.primaryKeyField = 'id';
     this.settings3.id = 'autocompleteBasic3';
     this.settings3.labelText = 'Autocomplete 3';

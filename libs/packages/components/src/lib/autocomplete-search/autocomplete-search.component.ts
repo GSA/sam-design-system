@@ -243,7 +243,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     }
   }
   isCleanIconVisible(): boolean {
-    if (this.model && this.model.items.length > 0 && !this.model?.items[0][this.configuration.primaryKeyField])
+    if (this.model && this.model.items.length > 0 && this.model?.items[0][this.configuration.primaryKeyField] == this.configuration.hideCloseIconPrimaryKeyValue)
       return false;
 
     return this.inputValue && !this.disabled

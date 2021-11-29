@@ -99,4 +99,6 @@ export class SDSAutocompleteSearchConfiguration {
    * To enable the Group item selectable
    */
   public isSelectableGroup: boolean = true;
+
+  public hideCloseIconPrimaryKeyValue: string = '';
 }

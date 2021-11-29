@@ -5,8 +5,8 @@ import { Observable } from 'rxjs';
 
 export class SDSAutocompletelConfiguration
   implements
-    SDSSelectedResultConfiguration,
-    SDSAutocompleteSearchConfiguration {
+  SDSSelectedResultConfiguration,
+  SDSAutocompleteSearchConfiguration {
   /**
    * sets the default debounce time to 250 milliseconds
    */
@@ -126,4 +126,6 @@ export class SDSAutocompletelConfiguration
    * updates need to be made
    */
   public registerChanges$: Observable<void>;
+
+  public hideCloseIconPrimaryKeyValue: string = '';
 }
