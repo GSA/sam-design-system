@@ -18,7 +18,7 @@ import {
 export class FormlyAutocompleteBasic implements OnInit {
   results: any;
   form = new FormGroup({});
-  model = {};
+  model: any = {};
   options: FormlyFormOptions = {};
   public settings = new SDSAutocompletelConfiguration();
   public autocompleteModel = new SDSSelectedItemModel();
@@ -62,6 +62,14 @@ export class FormlyAutocompleteBasic implements OnInit {
     this.settings.selectionMode = SelectionMode.SINGLE;
     this.settings.autocompletePlaceHolderText = 'eg: Level 1';
     this.settings.debounceTime = 350;
+    this.settings.hideCloseIcon = true;
+  }
+
+  onModelChange() {
+    // To changes the close icon on modal change
+    if (this.model.filters.firstName[0].id !== "1") {
+      this.settings.hideCloseIcon = false
+    }
   }
 
   head(array) {

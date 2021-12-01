@@ -127,5 +127,5 @@ export class SDSAutocompletelConfiguration
    */
   public registerChanges$: Observable<void>;
 
-  public hideCloseIconPrimaryKeyValue: string = '';
+  public hideCloseIcon: boolean = false;
 }

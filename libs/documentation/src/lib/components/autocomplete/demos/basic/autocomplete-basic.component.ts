@@ -39,7 +39,6 @@ export class AutocompleteBasic implements OnInit {
     this.settings.labelText = 'Autocomplete 1';
     this.settings.selectionMode = SelectionMode.SINGLE;
     this.settings.autocompletePlaceHolderText = 'eg: Level 1';
-    this.settings.hideCloseIconPrimaryKeyValue = "1"
 
     this.settings3.primaryKeyField = 'id';
     this.settings3.id = 'autocompleteBasic3';

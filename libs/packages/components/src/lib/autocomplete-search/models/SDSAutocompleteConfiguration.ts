@@ -100,5 +100,5 @@ export class SDSAutocompleteSearchConfiguration {
    */
   public isSelectableGroup: boolean = true;
 
-  public hideCloseIconPrimaryKeyValue: string = '';
+  public hideCloseIcon: boolean = false;
 }
