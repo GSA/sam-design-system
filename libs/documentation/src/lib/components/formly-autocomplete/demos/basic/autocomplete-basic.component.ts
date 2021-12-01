@@ -69,6 +69,8 @@ export class FormlyAutocompleteBasic implements OnInit {
     // To changes the close icon on modal change
     if (this.model.filters.firstName[0].id !== "1") {
       this.settings.hideCloseIcon = false
+    } else {
+      this.settings.hideCloseIcon = true;
     }
   }
 
