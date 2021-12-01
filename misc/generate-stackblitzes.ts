@@ -8,19 +8,32 @@ import {parseDemo} from './parse-demo';
 
 
 const stackblitzUrl = 'https://stackblitz.com/run';
-const packageJson = fs.readJsonSync('package.json');
-const samLayoutsPackage = fs.readJsonSync("libs/packages/layouts/package.json");
-const samComponentsPackage = fs.readJsonSync("libs/packages/components/package.json");
-const samFormlyPackage = fs.readJsonSync("libs/packages/sam-formly/package.json");
-const samMaterialExtensions = fs.readJsonSync("libs/packages/sam-material-extensions/package.json");
 
-let dependencies = packageJson.dependencies;
-// Locking version at 11.0.3 - issue with stackblitz is that it does not pick up newly released npm modules for weeks
+let dependencies = {
+  "@angular/animations": "^11.2.14",
+  "@angular/cdk": "^11.2.13",
+  "@angular/cli": "^11.2.14",
+  "@angular/common": "^11.2.14",
+  "@angular/core": "^11.2.14",
+  "@angular/forms": "^11.2.14",
+  "@angular/material": "^11.2.13",
+  "@angular/platform-browser": "^11.2.14",
+  "@angular/router": "^11.2.14",
+  "@gsa-sam/ngx-uswds": "0.0.10",
+  "@gsa-sam/ngx-uswds-icons": "0.0.7",
+  "@ngx-formly/core": "^5.10.22",
+  "accessible-html5-video-player": "^1.0.6",
+  "core-js": "^2.6.11",
+  "lodash-es": "^4.17.15",
+  "lodash.camelcase": "4.3.0",
+  "ngx-toastr": "^13.2.0",
+  "qs": "^6.9.6",
+  "rxjs": "~6.5.5",
+  "zone.js": "^0.10.2"
+}
+
+// Locking version at 11.0.10 - issue with stackblitz is that it does not pick up newly released npm modules for weeks
 const samDependencies = {
-  '@gsa-sam/layouts': '11.0.3',
-  '@gsa-sam/components': '11.0.3',
-  '@gsa-sam/sam-formly': '11.0.3',
-  '@gsa-sam/sam-material-extensions': '11.0.3',
 };
 
 dependencies = {...dependencies, ...samDependencies};
@@ -72,6 +85,8 @@ const initialData = {
     {name: 'angular.json', source: fileContent('misc', 'stackblitzes-templates', 'angular.json')}
   ]
 };
+
+console.log(JSON.stringify(dependencies));
 
 // removing folder
 fs.ensureDirSync(base);

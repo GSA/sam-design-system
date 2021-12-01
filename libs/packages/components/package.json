@@ -1,6 +1,6 @@
 {
   "name": "@gsa-sam/components",
-  "version": "11.0.14",
+  "version": "11.0.14-beta.2",
   "types": "../../../dist/out-tsc/libs/components/index.d.ts",
   "repository": {
     "type": "git",
@@ -13,7 +13,6 @@
   "peerDependencies": {
     "@angular/common": "^11.2.14",
     "@angular/core": "^11.2.14",
-    "accessible-html5-video-player": "^1.0.6",
-    "ngx-bootstrap-icons": "^1.4.0"
+    "accessible-html5-video-player": "^1.0.6"
   }
 }

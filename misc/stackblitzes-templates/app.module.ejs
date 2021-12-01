@@ -9,8 +9,6 @@ import {
   SdsToastModule,
   SdsToastSettings
 } from '@gsa-sam/components';
-import { NgxBootstrapIconsModule, github } from 'ngx-bootstrap-icons';
-import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 import { <%=moduleClassName%> } from '<%=modulePath%>';
 
 @NgModule({
@@ -18,11 +16,9 @@ import { <%=moduleClassName%> } from '<%=modulePath%>';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    IconModule,
     SdsToastModule,
     ToastrModule.forRoot(SdsToastSettings),
     FormsModule,
-    NgxBootstrapIconsModule.pick({github}),
     <%=moduleClassName%>
   ],
   entryComponents: [SdsToastComponent],
