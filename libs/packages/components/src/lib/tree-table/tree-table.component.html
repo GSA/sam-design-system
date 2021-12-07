@@ -45,7 +45,7 @@
         {{setHeight(tableRow, parentRow, border)}}
       </span>
       <span class="horizontal-border"></span>
-      <button class="usa-button sds-button--circle border-0 bg-white" *ngIf="row.children"
+      <button class="usa-button sds-button--circle border-0 bg-white" *ngIf="row.children || row.totalChildren > 0"
         [attr.tabindex]="row === _selectedRow ? 1 : -1" (click)="onRowClicked(row, tableRow)">
         <span class="usa-sr-only">Expand / Collapse current row</span>
         <usa-icon 
@@ -73,7 +73,7 @@
 
   <tr class="text-center" 
     #viewAllRow
-    *ngIf="row.expanded && !row.viewAllChildren && (row.totalChildren > row.children.length || row.children.length > childrenLimit)" 
+    *ngIf="row.expanded && !row.viewAllChildren && (row.totalChildren > row.children?.length || row.children?.length > childrenLimit)" 
     (keydown.enter)="viewAllClicked(row, viewAllRow, tableRow)"
     (keydown)="onKeyDown($event, viewAllRow)"
   >
@@ -81,11 +81,11 @@
     <td class="width-100">
       <button class="usa-button usa-button--base" (click)="viewAllClicked(row, viewAllRow, tableRow)">
         View All ( 
-          <span *ngIf="row.totalChildren && row.totalChildren > row.children.length; else childrenLength">
+          <span *ngIf="row.totalChildren && row.totalChildren > row.children?.length; else childrenLength">
             {{row.totalChildren}}
           </span>
         )
-          <ng-template #childrenLength>{{row.children.length}}</ng-template>
+          <ng-template #childrenLength>{{row.children?.length}}</ng-template>
       </button>
     </td>
   </tr>

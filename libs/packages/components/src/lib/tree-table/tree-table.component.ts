@@ -69,7 +69,7 @@ export class SdsTreeTableComponent {
 
   constructor(
     private elementRef: ElementRef,
-    private cdr: ChangeDetectorRef,
+    public cdr: ChangeDetectorRef,
     private ngZone: NgZone,
   ) {}
 
@@ -238,7 +238,7 @@ export class SdsTreeTableComponent {
   }
 
   onRowClicked(row: SdsTreeTableData, tableRow: HTMLTableRowElement) {
-    if (row.children) {
+    if (row.children || row.totalChildren > 0) {
       row.expanded = !row.expanded;
     }
 
