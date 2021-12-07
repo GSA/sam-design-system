@@ -1,4 +1,4 @@
-<sds-tree-table #treeTable [dataSource]="treeTableData" [displayColumns]="columns" (viewAll)="onViewAll($event)" 
+<sds-tree-table #treeTable [dataSource]="treeTableData" [displayColumns]="columns" (viewAll)="onViewAll($event)" (rowExpanded)="onRowExpansion($event)"
   [childrenLimit]="5" [numChildrenToDisplay]="5">
   <ng-container *sdsTreeTableRow="let row">
     <td>
