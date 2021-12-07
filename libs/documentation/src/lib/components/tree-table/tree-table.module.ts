@@ -11,6 +11,8 @@ import {
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { TreeTableBasicModule } from './demos/basic/tree-table-basic.module';
 import { TreeTableBasicComponent } from './demos/basic/tree-table-basic.component';
+import { TreeTableMixedApiComponent } from './demos/mixed-api/mixed-api.component';
+import { TreeTableMixedApiModule } from './demos/mixed-api/mixed-api.module';
 
 declare var require: any;
 
@@ -21,6 +23,14 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/basic/tree-table-basic.component'),
     module: require('!!raw-loader!./demos/basic/tree-table-basic.module'),
     markup: require('!!raw-loader!./demos/basic/tree-table-basic.component.html'),
+    path: 'libs/documentation/src/lib/components/tree-table/demos/tree-table',
+  },
+  api: {
+    title: 'Tree Table Api Parsing',
+    type: TreeTableMixedApiComponent,
+    code: require('!!raw-loader!./demos/mixed-api/mixed-api.component'),
+    module: require('!!raw-loader!./demos/mixed-api/mixed-api.module'),
+    markup: require('!!raw-loader!./demos/mixed-api/mixed-api.component.html'),
     path: 'libs/documentation/src/lib/components/tree-table/demos/tree-table',
   },
 };
@@ -53,6 +63,7 @@ export const ROUTES = [
     CommonModule,
     DocumentationComponentsSharedModule,
     TreeTableBasicModule,
+    TreeTableMixedApiModule,
   ],
 })
 export class TreeTableModule {

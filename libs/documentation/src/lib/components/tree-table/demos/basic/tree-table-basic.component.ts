@@ -18,12 +18,14 @@ export class TreeTableBasicComponent {
       title: 'Declaration of Independence',
       year: 1776,
       id: 'row1',
+      totalChildren: 4,
       children: [
         {
           title: 'Bill of Rights',
           description: 'The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.',
           year: 1791,
-          id: 'row2'
+          id: 'row2',
+          totalChildren: 0,
         },
         {
           title: 'Declaration of Sentiments',

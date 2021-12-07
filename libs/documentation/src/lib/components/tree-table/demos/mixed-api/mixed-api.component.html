@@ -1,0 +1,15 @@
+<sds-tree-table #treeTable [dataSource]="treeTableData" [displayColumns]="columns" (viewAll)="onViewAll($event)" 
+  [childrenLimit]="5" [numChildrenToDisplay]="5">
+  <ng-container *sdsTreeTableRow="let row">
+    <td>
+      <h4>
+        <a href="javascript:void(0)">{{row.name}}</a>
+      </h4>
+      <span class="display-block font-mono-3xs">545 S 3rd St Ste 310, Louisville, KY 40404-1936 USA</span>
+    </td>
+    <td>
+      {{row.description}}
+    </td>
+  </ng-container>
+
+</sds-tree-table>

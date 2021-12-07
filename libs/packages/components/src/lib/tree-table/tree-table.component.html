@@ -45,7 +45,7 @@
         {{setHeight(tableRow, parentRow, border)}}
       </span>
       <span class="horizontal-border"></span>
-      <button class="usa-button sds-button--circle border-0 bg-white" *ngIf="row.children"
+      <button class="usa-button sds-button--circle border-0 bg-white" *ngIf="row.totalChildren > 0 || children.length"
         [attr.tabindex]="row === _selectedRow ? 1 : -1" (click)="onRowClicked(row, tableRow)">
         <span class="usa-sr-only">Expand / Collapse current row</span>
         <usa-icon 
