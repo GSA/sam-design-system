@@ -203,12 +203,12 @@
             "styles": [
               {
                 "input": "apps/sam-design-system-site/src/uswds-styles.scss",
-                "inject": false,
+                "inject": true,
                 "bundleName": "uswds"
               },
               {
                 "input": "apps/sam-design-system-site/src/sds-styles.scss",
-                "inject": false,
+                "inject": true,
                 "bundleName": "sds"
               },
               "node_modules/highlight.js/styles/vs.css"
