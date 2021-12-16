@@ -1,9 +1,6 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ViewChild, ViewContainerRef } from '@angular/core';
-import { UsaAccordionComponent, UsaAccordionItem } from '@gsa-sam/ngx-uswds';
+import { Component, ViewChild, ViewContainerRef } from '@angular/core';
 import { FieldWrapper } from '@ngx-formly/core';
 import * as qs from 'qs';
-import { Subscription } from 'rxjs';
-import { filter } from 'rxjs/operators';
 
 /**
  * @param string [to.expand] to expand the accordion
@@ -14,7 +11,7 @@ import { filter } from 'rxjs/operators';
   selector: 'sam-formly-accordian-form-field',
   template: `
     <usa-accordion #groupAccordion [singleSelect]="!multi" class="sds-accordion--filters">
-      <usa-accordion-item>
+      <usa-accordion-item [expanded]="modelHasValue()"]>
         <ng-template UsaAccordionHeader>
           <span [attr.class]="to.labelClass">{{ to.label }}</span>
         </ng-template>
@@ -25,47 +22,13 @@ import { filter } from 'rxjs/operators';
     </usa-accordion>
   `,
 })
-export class FormlyAccordianFormFieldComponent extends FieldWrapper implements AfterViewInit {
-  @ViewChild('fieldComponent', { read: ViewContainerRef }) fieldComponent: ViewContainerRef;
-  @ViewChild('groupAccordion') accordion: UsaAccordionComponent;
-  @ViewChild(UsaAccordionItem) accordionItem: UsaAccordionItem;
-
+export class FormlyAccordianFormFieldComponent extends FieldWrapper {
+  @ViewChild('fieldComponent', { read: ViewContainerRef })
+  fieldComponent: ViewContainerRef;
   multi = true;
-
-  resetAllSubscription: Subscription;
-
-  constructor(
-    private changeDetectorRef: ChangeDetectorRef
-  ) {
+  constructor() {
     super();
   }
-
-  ngAfterViewInit() {
-    if (this.to.group != 'accordion' || !this.accordion) {
-      return;
-    }
-
-    const shouldExpandAccordion = this.modelHasValue();
-    if (shouldExpandAccordion) {
-      this.accordion.expand(this.accordionItem.id);
-      this.changeDetectorRef.detectChanges();
-    }
-
-    this.resetAllSubscription = this.field.options.fieldChanges.pipe(
-      filter(({ type }) => type === 'resetAll' && this.accordionItem.isOpen))
-      .subscribe(() => {
-        if (!this.modelHasValue()) {
-          this.accordion.collapse(this.accordionItem.id);
-        }
-      });
-  }
-
-  ngOnDestroy() {
-    if (this.resetAllSubscription) {
-      this.resetAllSubscription.unsubscribe();
-    }
-  }
-
   modelHasValue() {
     if (this.to.hasOwnProperty('expand')) {
       return this.to.expand;
@@ -74,7 +37,7 @@ export class FormlyAccordianFormFieldComponent extends FieldWrapper implements A
         this.formControl.value instanceof Object
           ? qs.stringify(this.formControl.value, { skipNulls: true })
           : this.formControl.value;
-      return hasValue || this.formControl.dirty ? true : false;
+      return hasValue ? true : false;
     }
   }
 }
