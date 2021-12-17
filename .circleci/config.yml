@@ -12,7 +12,6 @@ jobs:
       CHROME_BIN: /usr/bin/chromium-browser
     steps:
       - checkout
-      - run: npm install chromium
       - run: npm install
       - run: npm run test:components
       - run: npm run test:material-extensions

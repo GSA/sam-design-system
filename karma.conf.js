@@ -4,6 +4,8 @@
 const { join } = require('path');
 const { constants } = require('karma');
 
+process.env.CHROME_BIN = require('puppeteer').executablePath()
+
 module.exports = () => {
   return {
     basePath: '',
@@ -28,7 +30,7 @@ module.exports = () => {
     colors: true,
     logLevel: constants.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browsers: ['ChromeHeadless'],
     customLaunchers: {
       ChromeHeadlessCI: {
         base: 'ChromeHeadless',

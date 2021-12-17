@@ -98,7 +98,7 @@
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~6.3.4",
-    "karma-chrome-launcher": "~3.1.0",
+    "karma-chrome-launcher": "^3.1.0",
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
@@ -106,6 +106,7 @@
     "postcss": "^8.3.5",
     "prettier": "2.0.4",
     "protractor": "~7.0.0",
+    "puppeteer": "^13.0.0",
     "ts-node": "~7.0.0",
     "tslint": "~6.1.3"
   }
