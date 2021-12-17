@@ -54,7 +54,7 @@
     "@compodoc/compodoc": "^1.1.11",
     "@gsa-sam/components": "11.0.9",
     "@gsa-sam/layouts": "11.0.9",
-    "@gsa-sam/ngx-uswds": "0.0.15",
+    "@gsa-sam/ngx-uswds": "0.0.16",
     "@gsa-sam/ngx-uswds-icons": "0.0.7",
     "@gsa-sam/sam-formly": "11.0.9",
     "@gsa-sam/sam-material-extensions": "11.0.9",
