@@ -4,8 +4,6 @@
 const { join } = require('path');
 const { constants } = require('karma');
 
-process.env.CHROME_BIN = require('puppeteer').executablePath()
-
 module.exports = () => {
   return {
     basePath: '',
