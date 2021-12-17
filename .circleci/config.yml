@@ -9,6 +9,7 @@ jobs:
     docker:
       - image: circleci/node:12.14.0
     steps:
+      - run: apk add chromium && export CHROME_BIN='/usr/bin/chromium'
       - checkout
       - run: npm install
       - run: npm run test:components
