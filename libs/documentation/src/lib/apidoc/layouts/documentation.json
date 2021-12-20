@@ -1252,7 +1252,7 @@
     "components": [
         {
             "name": "SdsActionsMenuComponent",
-            "id": "component-SdsActionsMenuComponent-b29369330e17e32ba02c3425b2f75f08",
+            "id": "component-SdsActionsMenuComponent-b7234f22cae5888312f7d6050c2e3704",
             "file": "libs/packages/layouts/src/lib/feature/actions-menu/actions-menu.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1301,7 +1301,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'sds-actions-menu',\n  templateUrl: 'actions-menu.component.html'\n})\nexport class SdsActionsMenuComponent {\n  @Input() model;\n  @Input() size: string;\n  @Output() clicks = new EventEmitter<string>();\n  constructor() {}\n}\n",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'sds-actions-menu',\n  templateUrl: 'actions-menu.component.html'\n})\nexport class SdsActionsMenuComponent {\n  @Input() model;\n  @Input() size: string;\n  @Output() clicks = new EventEmitter<string>();\n  constructor() {\n    console.warn('The action menu you are currently using is deprecated. Please instead import SdsActionsMenuModule from @gsa-sam/components')\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -1689,7 +1689,7 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<footer class=\"usa-footer\" role=\"contentinfo\">\n  <div *ngIf=\"feedbackTemplate; else defaultFeedback\">\n    <ng-container *ngTemplateOutlet=\"feedbackTemplate\"></ng-container>\n  </div>\n\n  <ng-template #defaultFeedback>\n    <sds-feedback (feedbackSubmit)=\"onFeedbackSubmitClicked($event)\"></sds-feedback>\n  </ng-template>\n\n  <div class=\"usa-footer__primary-section\">\n    <div\n      class=\"grid-container margin-x-0 mobile-lg:margin-x-auto padding-x-0 mobile-lg:padding-x-auto display-none tablet:display-block\">\n      <div class=\"grid-row grid-gap-0 mobile-lg:grid-gap\">\n        <div class=\"tablet:grid-col-12\">\n          <nav class=\"usa-footer__nav margin-x-0 mobile-lg:margin-x-2 padding-x-0 mobile-lg:padding-x-2\"\n            aria-label=\"Footer Navigation Links\">\n            <div class=\"grid-row grid-gap-0 mobile-lg:grid-gap-4\">\n              <div class=\"mobile-lg:grid-col-6 desktop:grid-col-3\" *ngFor=\"let section of model.linkSections\">\n                <section class=\"usa-footer__primary-content usa-footer__primary-content--collapsible\">\n                  <span class=\"h4 usa-footer__primary-link\">{{ section.text }}</span>\n                  <ul class=\"usa-list usa-list--unstyled\">\n                    <li class=\"usa-footer__secondary-link\" *ngFor=\"let link of section.links\">\n                      <ng-container [ngTemplateOutlet]=\"\n                          navigationHelper.isLinkInternal(link)\n                            ? footerRouteLinkTemplate\n                            : navigationHelper.isLinkExternal(link)\n                            ? footerHREFLinkTemplate\n                            : footerEVENTLinkTemplate\n                        \" [ngTemplateOutletContext]=\"{ $implicit: link }\"></ng-container>\n                    </li>\n                  </ul>\n                </section>\n              </div>\n            </div>\n          </nav>\n        </div>\n      </div>\n    </div>\n    <nav class=\"sds-footer__nav--accordion display-block tablet:display-none\" aria-label=\"Footer Navigation Links\">\n      <sds-accordion-next [multi]=\"true\">\n        <sds-accordion-item *ngFor=\"let section of model.linkSections; let $index = index\">\n          <sds-accordion-title>{{ section.text }}</sds-accordion-title>\n          <sds-accordion-content>\n            <ul class=\"usa-list usa-list--unstyled padding-y-1\">\n              <li class=\"usa-footer__secondary-link\" *ngFor=\"let link of section.links\">\n                <ng-container [ngTemplateOutlet]=\"\n                    navigationHelper.isLinkInternal(link)\n                      ? footerRouteLinkTemplate\n                      : navigationHelper.isLinkExternal(link)\n                      ? footerHREFLinkTemplate\n                      : footerEVENTLinkTemplate\n                  \" [ngTemplateOutletContext]=\"{ $implicit: link }\"></ng-container>\n              </li>\n            </ul>\n          </sds-accordion-content>\n        </sds-accordion-item>\n      </sds-accordion-next>\n    </nav>\n  </div>\n  <div class=\"usa-footer__secondary-section\">\n    <div class=\"grid-container\">\n      <div class=\"grid-row grid-gap\">\n        <div class=\"grid-col-12 mobile-lg:grid-col-6 tablet:grid-col-4 margin-bottom-4\">\n          <div class=\"sds-footer__logo\">\n            <a class=\"sds-footer__logo-link\" [attr.href]=\"model.footerLogo.href\">\n              <img *ngIf=\"model.footerLogo\" class=\"usa-footer__logo-img\" [attr.src]=\"model.footerLogo.imageSourcePath\"\n                [attr.alt]=\"model.footerLogo.imageAltText\" />\n            </a>\n            <h3 class=\"sds-footer__logo-heading\">\n              {{model.footerLogo.agencyName}}\n            </h3>\n          </div>\n        </div>\n        <div class=\"sds-footer__note grid-col-12 mobile-lg:grid-col-6 tablet:grid-col-8\" [innerHTML]=\"model.disclaimer\">\n        </div>\n      </div>\n    </div>\n  </div>\n</footer>\n\n<ng-template #footerRouteLinkTemplate let-link>\n  <a class=\"usa-link\" [routerLink]=\"[link.route]\">{{ link.text }}</a>\n</ng-template>\n\n<ng-template #footerHREFLinkTemplate let-link>\n  <a class=\"usa-link\" [attr.aria-label]=\"link.text\" [hideIcon]=\"link.hideIcon\" [href]=\"link.route\">{{ link.text }}</a>\n</ng-template>\n\n<ng-template #footerEVENTLinkTemplate let-link>\n  <a href=\"javascript:void(0)\" (click)=\"linkClickEvent(link)\">{{\n    link.text\n  }}</a>\n</ng-template>\n"
+            "templateData": "<footer class=\"usa-footer\" role=\"contentinfo\">\n  <div *ngIf=\"feedbackTemplate; else defaultFeedback\">\n    <ng-container *ngTemplateOutlet=\"feedbackTemplate\"></ng-container>\n  </div>\n\n  <ng-template #defaultFeedback>\n    <sds-feedback (feedbackSubmit)=\"onFeedbackSubmitClicked($event)\"></sds-feedback>\n  </ng-template>\n\n  <div class=\"usa-footer__primary-section\">\n    <div\n      class=\"grid-container margin-x-0 mobile-lg:margin-x-auto padding-x-0 mobile-lg:padding-x-auto display-none tablet:display-block\">\n      <div class=\"grid-row grid-gap-0 mobile-lg:grid-gap\">\n        <div class=\"tablet:grid-col-12\">\n          <nav class=\"usa-footer__nav margin-x-0 mobile-lg:margin-x-2 padding-x-0 mobile-lg:padding-x-2\"\n            aria-label=\"Footer Navigation Links\">\n            <div class=\"grid-row grid-gap-0 mobile-lg:grid-gap-4\">\n              <div class=\"mobile-lg:grid-col-6 desktop:grid-col-3\" *ngFor=\"let section of model.linkSections\">\n                <section class=\"usa-footer__primary-content usa-footer__primary-content--collapsible\">\n                  <span class=\"h4 usa-footer__primary-link\">{{ section.text }}</span>\n                  <ul class=\"usa-list usa-list--unstyled\">\n                    <li class=\"usa-footer__secondary-link\" *ngFor=\"let link of section.links\">\n                      <ng-container [ngTemplateOutlet]=\"\n                          navigationHelper.isLinkInternal(link)\n                            ? footerRouteLinkTemplate\n                            : navigationHelper.isLinkExternal(link)\n                            ? footerHREFLinkTemplate\n                            : footerEVENTLinkTemplate\n                        \" [ngTemplateOutletContext]=\"{ $implicit: link }\"></ng-container>\n                    </li>\n                  </ul>\n                </section>\n              </div>\n            </div>\n          </nav>\n        </div>\n      </div>\n    </div>\n    <nav class=\"sds-footer__nav--accordion display-block tablet:display-none\" aria-label=\"Footer Navigation Links\">\n      <usa-accordion [singleSelect]=\"false\" [bordered]=\"true\">\n        <usa-accordion-item *ngFor=\"let section of model.linkSections; let $index=index\" [header]=\"section.text\">\n          <ng-template UsaAccordionContent>\n            <ul class=\"usa-list usa-list--unstyled padding-y-1\">\n              <li class=\"usa-footer__secondary-link\" *ngFor=\"let link of section.links\">\n                <ng-container [ngTemplateOutlet]=\"\n                    navigationHelper.isLinkInternal(link)\n                      ? footerRouteLinkTemplate\n                      : navigationHelper.isLinkExternal(link)\n                      ? footerHREFLinkTemplate\n                      : footerEVENTLinkTemplate\n                  \" [ngTemplateOutletContext]=\"{ $implicit: link }\"></ng-container>\n              </li>\n            </ul>\n          </ng-template>\n        </usa-accordion-item>\n      </usa-accordion>\n    </nav>\n  </div>\n  <div class=\"usa-footer__secondary-section\">\n    <div class=\"grid-container\">\n      <div class=\"grid-row grid-gap\">\n        <div class=\"grid-col-12 mobile-lg:grid-col-6 tablet:grid-col-4 margin-bottom-4\">\n          <div class=\"sds-footer__logo\">\n            <a class=\"sds-footer__logo-link\" [attr.href]=\"model.footerLogo.href\">\n              <img *ngIf=\"model.footerLogo\" class=\"usa-footer__logo-img\" [attr.src]=\"model.footerLogo.imageSourcePath\"\n                [attr.alt]=\"model.footerLogo.imageAltText\" />\n            </a>\n            <h3 class=\"sds-footer__logo-heading\">\n              {{model.footerLogo.agencyName}}\n            </h3>\n          </div>\n        </div>\n        <div class=\"sds-footer__note grid-col-12 mobile-lg:grid-col-6 tablet:grid-col-8\" [innerHTML]=\"model.disclaimer\">\n        </div>\n      </div>\n    </div>\n  </div>\n</footer>\n\n<ng-template #footerRouteLinkTemplate let-link>\n  <a class=\"usa-link\" [routerLink]=\"[link.route]\">{{ link.text }}</a>\n</ng-template>\n\n<ng-template #footerHREFLinkTemplate let-link>\n  <a class=\"usa-link\" [attr.aria-label]=\"link.text\" [hideIcon]=\"link.hideIcon\" [href]=\"link.route\">{{ link.text }}</a>\n</ng-template>\n\n<ng-template #footerEVENTLinkTemplate let-link>\n  <a href=\"javascript:void(0)\" (click)=\"linkClickEvent(link)\">{{\n    link.text\n  }}</a>\n</ng-template>\n"
         },
         {
             "name": "SdsHeaderComponent",
@@ -2235,7 +2235,7 @@
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "templateData": "<ng-container *ngFor=\"let button of buttons\">\n  <ng-container *ngIf=\"button.icons; then icon; else noIcon\"></ng-container>\n  <ng-template #icon>\n    <ng-container\n      *ngIf=\"button.clickHandler; then iconWithClickHandler; else iconWithLink\"\n    ></ng-container>\n\n    <ng-template #iconWithClickHandler>\n      <button\n        class=\"display-flex flex-justify-center sds-button width-full margin-bottom-1\"\n        id=\"{{ button.id || button.text }}\"\n        (click)=\"button.clickHandler()\"\n      >\n        <sds-icon\n          class=\"margin-right-1 padding-top-1px\"\n          [icon]=\"[button.icons.icon.icon]\"\n        ></sds-icon>\n        <div class=\"flex-align-self-center\">{{ button.text }}</div>\n      </button>\n    </ng-template>\n\n    <ng-template #iconWithLink>\n      <button\n        class=\"display-flex flex-justify-center sds-button width-full margin-bottom-1\"\n        id=\"{{ button.id || button.text }}\"\n        routerLink=\"{{ button.url }}\"\n      >\n        <sds-icon\n          class=\"margin-right-1 padding-top-1px\"\n          [icon]=\"[button.icons.icon.icon]\"\n        ></sds-icon>\n        <div class=\"flex-align-self-center\">{{ button.text }}</div>\n      </button>\n    </ng-template>\n  </ng-template>\n\n  <ng-template #noIcon>\n    <button\n      *ngIf=\"button.clickHandler; else noClickHandler\"\n      class=\"usa-button width-full margin-bottom-1\"\n      id=\"{{ button.id || button.text }}\"\n      (click)=\"button.clickHandler()\"\n    >\n      {{ button.text }}\n    </button>\n    <ng-template #noClickHandler>\n      <a\n        *ngIf=\"button.external; else routerLink\"\n        class=\"usa-button width-full margin-bottom-1\"\n        [ngClass]=\"button.classes\"\n        href=\"{{ button.url }}\"\n        >{{ button.text }}</a\n      >\n      <ng-template #routerLink>\n        <a\n          class=\"usa-button width-full margin-bottom-1\"\n          [ngClass]=\"button.classes\"\n          routerLink=\"{{ button.url }}\"\n          >{{ button.text }}</a\n        >\n      </ng-template>\n    </ng-template>\n  </ng-template>\n</ng-container>\n"
+            "templateData": "<ng-container *ngFor=\"let button of buttons\">\n  <ng-container *ngIf=\"button.icons; then icon; else noIcon\"></ng-container>\n  <ng-template #icon>\n    <ng-container\n      *ngIf=\"button.clickHandler; then iconWithClickHandler; else iconWithLink\"\n    ></ng-container>\n\n    <ng-template #iconWithClickHandler>\n      <button\n        class=\"display-flex flex-justify-center sds-button width-full margin-bottom-1\"\n        id=\"{{ button.id || button.text }}\"\n        (click)=\"button.clickHandler()\"\n      >\n        <usa-icon\n          class=\"margin-right-1 padding-top-1px\"\n          [icon]=\"[button.icons.icon.icon]\"\n        ></usa-icon>\n        <div class=\"flex-align-self-center\">{{ button.text }}</div>\n      </button>\n    </ng-template>\n\n    <ng-template #iconWithLink>\n      <button\n        class=\"display-flex flex-justify-center sds-button width-full margin-bottom-1\"\n        id=\"{{ button.id || button.text }}\"\n        routerLink=\"{{ button.url }}\"\n      >\n        <usa-icon\n          class=\"margin-right-1 padding-top-1px\"\n          [icon]=\"[button.icons.icon.icon]\"\n        ></usa-icon>\n        <div class=\"flex-align-self-center\">{{ button.text }}</div>\n      </button>\n    </ng-template>\n  </ng-template>\n\n  <ng-template #noIcon>\n    <button\n      *ngIf=\"button.clickHandler; else noClickHandler\"\n      class=\"usa-button width-full margin-bottom-1\"\n      id=\"{{ button.id || button.text }}\"\n      (click)=\"button.clickHandler()\"\n    >\n      {{ button.text }}\n    </button>\n    <ng-template #noClickHandler>\n      <a\n        *ngIf=\"button.external; else routerLink\"\n        class=\"usa-button width-full margin-bottom-1\"\n        [ngClass]=\"button.classes\"\n        href=\"{{ button.url }}\"\n        >{{ button.text }}</a\n      >\n      <ng-template #routerLink>\n        <a\n          class=\"usa-button width-full margin-bottom-1\"\n          [ngClass]=\"button.classes\"\n          routerLink=\"{{ button.url }}\"\n          >{{ button.text }}</a\n        >\n      </ng-template>\n    </ng-template>\n  </ng-template>\n</ng-container>\n"
         },
         {
             "name": "SdsLandingCardComponent",
@@ -2350,7 +2350,7 @@
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "templateData": "<h3 *ngIf=\"list.title\" class=\"sds-list__title\">{{ list.title }}</h3>\n<p *ngIf=\"list.intro\" class=\"margin-bottom-2\" [innerHtml]=\"list.intro\"></p>\n\n<ul\n  class=\"sds-list margin-top-0 margin-bottom-1\"\n  [ngClass]=\"list.classes\"\n  [class.sds-list--icon]=\"list.iconList\"\n>\n  <li *ngFor=\"let item of list.items\">\n    <span *ngIf=\"list.iconList\" class=\"sds-list__item-icon\">\n      <sds-icon\n        *ngIf=\"item.icon.prefix == 'bs'\"\n        [icon]=\"[item.icon.icon]\"\n        [classList]=\"[item.icon.classes]\"\n      >\n      </sds-icon>\n    </span>\n    <span class=\"sds-list__item-content\">\n      <sds-landing-link *ngIf=\"item.link\" [link]=\"item.link\"></sds-landing-link>\n      {{ item.text }}\n    </span>\n  </li>\n</ul>\n"
+            "templateData": "<h3 *ngIf=\"list.title\" class=\"sds-list__title\">{{ list.title }}</h3>\n<p *ngIf=\"list.intro\" class=\"margin-bottom-2\" [innerHtml]=\"list.intro\"></p>\n\n<ul\n  class=\"sds-list margin-top-0 margin-bottom-1\"\n  [ngClass]=\"list.classes\"\n  [class.sds-list--icon]=\"list.iconList\"\n>\n  <li *ngFor=\"let item of list.items\">\n    <span *ngIf=\"list.iconList\" class=\"sds-list__item-icon\">\n      <usa-icon\n        *ngIf=\"item.icon.prefix == 'bs'\"\n        [icon]=\"[item.icon.icon]\"\n        [classList]=\"[item.icon.classes]\"\n      >\n      </usa-icon>\n    </span>\n    <span class=\"sds-list__item-content\">\n      <sds-landing-link *ngIf=\"item.link\" [link]=\"item.link\"></sds-landing-link>\n      {{ item.text }}\n    </span>\n  </li>\n</ul>\n"
         },
         {
             "name": "SdsLandingPageComponent",
@@ -2383,7 +2383,7 @@
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "templateData": "<div\n  class=\"sds-hero--image minh-card-lg\"\n  style=\"\n    background-position: 100% 100%;\n    background-repeat: no-repeat;\n    background-size: cover;\n  \"\n>\n  <div class=\"grid-container\">\n    <ng-content select=\"sds-landing-page-head\"></ng-content>\n  </div>\n</div>\n\n<div class=\"grid-container\">\n  <div class=\"grid-row grid-gap margin-x-6 margin-top-105 margin-bottom-3\">\n    <ng-content select=\"sds-accordion-next\"></ng-content>\n  </div>\n\n  <ng-content select=\"[landing-page-cards]\"></ng-content>\n</div>\n\n<ng-content></ng-content>\n"
+            "templateData": "<div\n  class=\"sds-hero--image minh-card-lg\"\n  style=\"\n    background-position: 100% 100%;\n    background-repeat: no-repeat;\n    background-size: cover;\n  \"\n>\n  <div class=\"grid-container\">\n    <ng-content select=\"sds-landing-page-head\"></ng-content>\n  </div>\n</div>\n\n<div class=\"grid-container\">\n  <div class=\"grid-row grid-gap margin-x-6 margin-top-105 margin-bottom-3\">\n    <!-- TODO: Remove reference of sds-accordion-next as it will be deprecated -->\n    <ng-content select=\"sds-accordion-next\"></ng-content>\n    <ng-content select=\"usa-accordion\"></ng-content>\n  </div>\n\n  <ng-content select=\"[landing-page-cards]\"></ng-content>\n</div>\n\n<ng-content></ng-content>\n"
         },
         {
             "name": "SdsLandingPageHeadComponent",
@@ -3188,8 +3188,39 @@
             "stylesData": ""
         },
         {
+            "name": "SdsWorkspaceTier2TitleComponent",
+            "id": "component-SdsWorkspaceTier2TitleComponent-c32949c4b0f0e0d31b4edaff2909bec4",
+            "file": "libs/packages/layouts/src/lib/feature/workspace-tier-2/title/title.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "sds-workspace-tier2-title",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<div\n  role=\"heading\"\n  aria-level=\"2\"\n  class=\"font-sans-xs text-bold margin-bottom-1\"\n>\n  <ng-content></ng-content>\n</div>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'sds-workspace-tier2-title',\n  template: `\n    <div\n      role=\"heading\"\n      aria-level=\"2\"\n      class=\"font-sans-xs text-bold margin-bottom-1\"\n    >\n      <ng-content></ng-content>\n    </div>\n  `,\n})\nexport class SdsWorkspaceTier2TitleComponent {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": ""
+        },
+        {
             "name": "SearchListLayoutComponent",
-            "id": "component-SearchListLayoutComponent-97d589813c026377a1329eb1b08d40c3",
+            "id": "component-SearchListLayoutComponent-63964288b56946dd19968285d3c2245f",
             "file": "libs/packages/layouts/src/lib/feature/search-list-layout/search-list-layout.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3212,7 +3243,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "configuration",
                     "description": "<p>configuration</p>\n",
-                    "line": 63,
+                    "line": 65,
                     "type": "SearchListConfiguration"
                 },
                 {
@@ -3221,7 +3252,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "Allow to insert a customized template for no results to use",
                     "description": "<p>Allow to insert a customized template for no results to use</p>\n",
-                    "line": 57,
+                    "line": 59,
                     "type": "TemplateRef<any>"
                 },
                 {
@@ -3229,7 +3260,7 @@
                     "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 65,
+                    "line": 67,
                     "type": "boolean"
                 },
                 {
@@ -3237,7 +3268,7 @@
                     "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 59,
+                    "line": 61,
                     "type": "boolean"
                 },
                 {
@@ -3246,11 +3277,20 @@
                     "deprecationMessage": "",
                     "rawdescription": "Input service to be called when items change",
                     "description": "<p>Input service to be called when items change</p>\n",
-                    "line": 52,
+                    "line": 54,
                     "type": "SearchListInterface"
                 }
             ],
-            "outputsClass": [],
+            "outputsClass": [
+                {
+                    "name": "sortFieldChange",
+                    "defaultValue": "new EventEmitter<string>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 69,
+                    "type": "EventEmitter"
+                }
+            ],
             "propertiesClass": [
                 {
                     "name": "bottom",
@@ -3260,7 +3300,7 @@
                     "type": "object",
                     "optional": false,
                     "description": "<p>Id of the bottom pagination control</p>\n",
-                    "line": 101,
+                    "line": 105,
                     "rawdescription": "\n\nId of the bottom pagination control\n"
                 },
                 {
@@ -3270,7 +3310,7 @@
                     "type": "any",
                     "optional": false,
                     "description": "<p>Filter information</p>\n",
-                    "line": 75,
+                    "line": 79,
                     "rawdescription": "\n\nFilter information\n",
                     "modifierKind": [
                         120
@@ -3283,7 +3323,7 @@
                     "type": "Subscription",
                     "optional": false,
                     "description": "",
-                    "line": 81,
+                    "line": 85,
                     "modifierKind": [
                         120
                     ]
@@ -3296,7 +3336,7 @@
                     "type": "boolean",
                     "optional": false,
                     "description": "<p>Set to true when either filter is empty or filter is equal to default model</p>\n",
-                    "line": 70,
+                    "line": 74,
                     "rawdescription": "\n\nSet to true when either filter is empty or filter is equal to default model\n"
                 },
                 {
@@ -3307,7 +3347,7 @@
                     "type": "[]",
                     "optional": false,
                     "description": "<p>List of items to be displayed</p>\n",
-                    "line": 111,
+                    "line": 115,
                     "rawdescription": "\n\nList of items to be displayed\n"
                 },
                 {
@@ -3318,7 +3358,7 @@
                     "type": "",
                     "optional": false,
                     "description": "<p>Value to track whether API call in progress for purpose of showing loading\ntemplate</p>\n",
-                    "line": 122,
+                    "line": 126,
                     "rawdescription": "\n\nValue to track whether API call in progress for purpose of showing loading\ntemplate\n"
                 },
                 {
@@ -3329,7 +3369,7 @@
                     "type": "",
                     "optional": false,
                     "description": "<p>Used in ngFor to create multiple copies of the same loading row.</p>\n",
-                    "line": 127,
+                    "line": 131,
                     "rawdescription": "\n\nUsed in ngFor to create multiple copies of the same loading row.\n"
                 },
                 {
@@ -3340,7 +3380,7 @@
                     "type": "object",
                     "optional": false,
                     "description": "<p>Default Page setttings</p>\n",
-                    "line": 86,
+                    "line": 90,
                     "rawdescription": "\n\nDefault Page setttings\n"
                 },
                 {
@@ -3351,7 +3391,7 @@
                     "type": "",
                     "optional": false,
                     "description": "<p>Page event listener</p>\n",
-                    "line": 106,
+                    "line": 110,
                     "rawdescription": "\n\nPage event listener\n",
                     "modifierKind": [
                         122
@@ -3364,7 +3404,7 @@
                     "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "<p>Child Template to be used to display the data for each item in the list of items</p>\n",
-                    "line": 37,
+                    "line": 39,
                     "rawdescription": "\n\nChild Template to be used to display the data for each item in the list of items\n",
                     "decorators": [
                         {
@@ -3381,7 +3421,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "<p>sort value</p>\n",
-                    "line": 116,
+                    "line": 120,
                     "rawdescription": "\n\nsort value\n",
                     "modifierKind": [
                         122
@@ -3395,7 +3435,7 @@
                     "type": "object",
                     "optional": false,
                     "description": "<p>Id of the top pagination control</p>\n",
-                    "line": 96,
+                    "line": 100,
                     "rawdescription": "\n\nId of the top pagination control\n"
                 },
                 {
@@ -3405,7 +3445,7 @@
                     "type": "number",
                     "optional": false,
                     "description": "<p>Total number of items</p>\n",
-                    "line": 80,
+                    "line": 84,
                     "rawdescription": "\n\nTotal number of items\n"
                 },
                 {
@@ -3416,7 +3456,7 @@
                     "type": "boolean",
                     "optional": false,
                     "description": "<p>Used to track whether update resulting in navigation is as the result of a\npopstate. in order to apply correct navigation logic</p>\n",
-                    "line": 133,
+                    "line": 137,
                     "rawdescription": "\n\nUsed to track whether update resulting in navigation is as the result of a\npopstate. in order to apply correct navigation logic\n",
                     "modifierKind": [
                         120
@@ -3437,7 +3477,7 @@
                     "optional": false,
                     "returnType": "{}",
                     "typeParameters": [],
-                    "line": 311,
+                    "line": 310,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3483,7 +3523,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 325,
+                    "line": 323,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nDecoder for qs.parse to convert true / false strings to boolean values\n",
@@ -3540,7 +3580,7 @@
                     "optional": false,
                     "returnType": "{}",
                     "typeParameters": [],
-                    "line": 273,
+                    "line": 286,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3582,7 +3622,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 211,
+                    "line": 215,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3623,7 +3663,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 169,
+                    "line": 173,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -3640,7 +3680,7 @@
                     "optional": false,
                     "returnType": "{}",
                     "typeParameters": [],
-                    "line": 285,
+                    "line": 297,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3668,7 +3708,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 205,
+                    "line": 209,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3684,55 +3724,12 @@
                     ]
                 },
                 {
-                    "name": "longFormatDate",
-                    "args": [
-                        {
-                            "name": "prefix",
-                            "type": "",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        },
-                        {
-                            "name": "value",
-                            "type": "",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "any",
-                    "typeParameters": [],
-                    "line": 337,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "prefix",
-                            "type": "",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "value",
-                            "type": "",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
                     "name": "ngOnDestroy",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 160,
+                    "line": 164,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -3742,7 +3739,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 143,
+                    "line": 147,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -3759,7 +3756,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 136,
+                    "line": 140,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "decorators": [
@@ -3786,54 +3783,11 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 348,
+                    "line": 338,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nSorty by change event\n",
                     "description": "<p>Sorty by change event</p>\n"
-                },
-                {
-                    "name": "shortFormatDate",
-                    "args": [
-                        {
-                            "name": "prefix",
-                            "type": "",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        },
-                        {
-                            "name": "value",
-                            "type": "",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "any",
-                    "typeParameters": [],
-                    "line": 297,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "prefix",
-                            "type": "",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "value",
-                            "type": "",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
                 },
                 {
                     "name": "updateContent",
@@ -3849,7 +3803,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 356,
+                    "line": 347,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\ncalls service when updated\n",
@@ -3883,7 +3837,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 194,
+                    "line": 198,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nupdates the filter and set the page number to 1 and calls imported service\n",
@@ -3894,8 +3848,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4753,
-                                "end": 4759,
+                                "pos": 4838,
+                                "end": 4844,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -3906,8 +3860,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4747,
-                                "end": 4752,
+                                "pos": 4832,
+                                "end": 4837,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -3932,7 +3886,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 232,
+                    "line": 236,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3961,7 +3915,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 391,
+                    "line": 382,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -3999,13 +3953,13 @@
                     ],
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 136
+                    "line": 140
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  Component,\n  Input,\n  ContentChild,\n  TemplateRef,\n  Optional,\n  OnChanges,\n  SimpleChanges,\n  OnInit,\n  ChangeDetectorRef,\n  HostListener,\n} from '@angular/core';\nimport { BehaviorSubject, Subscription } from 'rxjs';\nimport * as qs from 'qs';\nimport {\n  SearchListInterface,\n  SearchListConfiguration,\n  ResultsModel,\n} from './model/search-list-layout.model';\nimport {\n  SDSFormlyUpdateComunicationService,\n  SDSFormlyUpdateModelService,\n} from '@gsa-sam/sam-formly';\nimport { Router, ActivatedRoute } from '@angular/router';\nimport * as _ from 'lodash-es';\nimport { Location } from '@angular/common';\n\n@Component({\n  selector: 'search-list-layout',\n  templateUrl: './search-list-layout.component.html',\n  styleUrls: ['./search-list-layout.component.scss'],\n})\nexport class SearchListLayoutComponent implements OnInit {\n  /**\n   * Child Template to be used to display the data for each item in the list of items\n   */\n  @ContentChild('resultContent') resultContentTemplate: TemplateRef<any>;\n\n  constructor(\n    private cdr: ChangeDetectorRef,\n    private router: Router,\n    private route: ActivatedRoute,\n    @Optional()\n    private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,\n    private filterUpdateModelService: SDSFormlyUpdateModelService,\n    private loc: Location\n  ) { }\n\n  /**\n   * Input service to be called when items change\n   */\n  @Input() service: SearchListInterface;\n\n  /**\n   * Allow to insert a customized template for no results to use\n   */\n  @Input() customResultsTemplate: TemplateRef<any>;\n\n  @Input() isHistoryEnabled = true;\n  /**\n   * configuration\n   */\n  @Input() configuration: SearchListConfiguration;\n\n  @Input() enableApiCall: boolean = true;\n\n  /**\n   * Set to true when either filter is empty or filter is equal to default model\n   */\n  isDefaultModel: boolean = true;\n\n  /**\n   * Filter information\n   */\n  private filterData: any;\n\n  /**\n   * Total number of items\n   */\n  totalItems: number;\n  private formlySubscription: Subscription;\n\n  /**\n   * Default Page setttings\n   */\n  page = {\n    pageNumber: 1,\n    pageSize: 25,\n    totalPages: 0,\n    default: true,\n  };\n\n  /**\n   * Id of the top pagination control\n   */\n  top = { id: 'topPagination' };\n\n  /**\n   * Id of the bottom pagination control\n   */\n  bottom = { id: 'bottomPagination' };\n\n  /**\n   * Page event listener\n   */\n  public paginationChange = new BehaviorSubject<object>(this.page);\n\n  /**\n   * List of items to be displayed\n   */\n  items = [];\n\n  /**\n   * sort value\n   */\n  public sortField = '';\n\n  /**\n   * Value to track whether API call in progress for purpose of showing loading\n   * template\n   */\n  loading = false;\n\n  /**\n   * Used in ngFor to create multiple copies of the same loading row.\n   */\n  loadingArray = Array(25);\n\n  /**\n   * Used to track whether update resulting in navigation is as the result of a\n   * popstate. in order to apply correct navigation logic\n   */\n  private triggeredByPopState: boolean = false;\n\n  @HostListener('window:popstate', ['$event'])\n  onpopstate(event) {\n    this.triggeredByPopState = true;\n    if (this.isHistoryEnabled) {\n      this.getHistoryModel();\n    }\n  }\n\n  ngOnInit() {\n    if (this.isHistoryEnabled) {\n      this.getHistoryModel();\n    }\n    this.sortField = this.sortField != null ? this.sortField : this.configuration.defaultSortValue;\n    this.paginationChange.subscribe(() => {\n      this.updateContent();\n    });\n    if (this.formlyUpdateComunicationService) {\n      this.formlySubscription = this.formlyUpdateComunicationService.filterUpdate.subscribe(\n        (filter) => {\n          this.updateFilter(filter);\n        }\n      );\n    }\n  }\n\n  ngOnDestroy() {\n    // Reset filter Model in update service\n    this.filterUpdateModelService.updateModel(null);\n\n    if (this.formlySubscription) {\n      this.formlySubscription.unsubscribe();\n    }\n  }\n\n  getHistoryModel() {\n    const queryString = window.location.search.substring(1);\n    const params: any = this.getUrlParams(queryString);\n    const paramModel: any = this.convertToModel(params);\n\n    this.page.default = true;\n    this.page.pageNumber = paramModel['page'] ? +paramModel['page'] : 1;\n    this.page.pageSize = paramModel['pageSize'] ? Number.parseInt(paramModel['pageSize']) : this.configuration.pageSize;\n\n    this.sortField = paramModel['sort'];\n    if (this.filterUpdateModelService) {\n      if (paramModel && paramModel['sfm']) {\n        this.filterUpdateModelService.updateModel(paramModel['sfm']);\n      } else if (!this.triggeredByPopState) {\n        this.filterUpdateModelService.updateModel(\n          this.configuration.defaultFilterValue\n        );\n      }\n    }\n  }\n\n  /**\n   * updates the filter and set the page number to 1 and calls imported service\n   * @param filter - the updated filter model\n   */\n  public updateFilter(filter: any) {\n    this.filterData = filter;\n    this.page.pageNumber = this.page.default ? this.page.pageNumber : 1;\n    this.page.default = filter ? false : true;\n    this.isDefaultFilter(filter);\n    if (this.isDefaultModel) {\n      this.items = [];\n    }\n    this.updateContent(true);\n  }\n\n  isDefaultFilter(filter) {\n    const cleanModel = this.flatten(filter);\n    const op = this.flatten(this.configuration.defaultFilterValue);\n    this.isDefaultModel = _.isEqual(cleanModel, op);\n  }\n\n  flatten(input, reference?, output?) {\n    output = output || {};\n    for (var key in input) {\n      var value = input[key];\n      if (value) {\n        key = reference ? reference + '.' + key : key;\n        if (typeof value === 'object' && value !== null) {\n          this.flatten(value, key, output);\n        } else {\n          // Treat true string as boolean value & ignore value of string 'false'\n          if (value === 'true') {\n            output[key] = true;\n          } else if (value != 'false') {\n            output[key] = value;\n          }\n        }\n      }\n    }\n    return output;\n  }\n\n  updateNavigation(triggeredByFilter = false) {\n    const queryString = window.location.search.substring(1);\n    let queryObj = qs.parse(queryString, { allowPrototypes: true });\n\n    if (queryObj.hasOwnProperty('sfm')) {\n      queryObj['sfm'] = {};\n    }\n\n    queryObj['page'] = this.page.pageNumber\n      ? this.page.pageNumber.toString()\n      : '1';\n    queryObj['pageSize'] = this.page.pageSize\n      ? this.page.pageSize.toString()\n      : '25';\n    queryObj['sort'] = this.sortField ? this.sortField.toString() : '';\n    queryObj['sfm'] = this.filterData;\n    const params = this.convertToParam(queryObj);\n    /**\n     * loc.go updates URL but also updates history stack so that upon clicking\n     * back, the state which clicking forward would move user to is deleted by\n     * loc.go This state is preserved by router.navigate, so use router.navigate\n     * where we state needs to be preserved or we want the page jumped to the top.\n     * use loc.go only where we need the page to remain in place, and would normally\n     * overwrite the top of the history stack\n     */\n    if (!triggeredByFilter || this.triggeredByPopState) {\n      this.triggeredByPopState = false;\n      this.router.navigate([], {\n        relativeTo: this.route,\n        queryParams: params,\n        queryParamsHandling: this.configuration.queryParamsHandling,\n        fragment: window.location.hash?.length > 1 ? window.location.hash.substring(1) : undefined,\n      });\n    } else {\n      const urlTree = this.router.parseUrl(this.loc.path());\n      urlTree.queryParams = params;\n      urlTree.fragment = window.location.hash?.length > 1 ? window.location.hash.substring(1) : undefined\n      this.loc.go(urlTree.toString());\n    }\n  }\n\n  convertToParam(filters) {\n    const encodedValues = qs.stringify(filters, {\n      skipNulls: true,\n      encode: false,\n      filter: this.shortFormatDate,\n    });\n    if (encodedValues) {\n      return this.getUrlParams(encodedValues);\n    } else {\n      return '';\n    }\n  }\n  getUrlParams(queryString) {\n    const target = {};\n    queryString.split('&').forEach((pair) => {\n      if (pair !== '') {\n        const splitpair = pair.split('=');\n        target[splitpair[0]] =\n          splitpair[1] === '' || splitpair[1] === 'false' ? null : splitpair[1];\n      }\n    });\n    return target;\n  }\n\n  shortFormatDate(prefix, value) {\n    const fixDigit = (val) => {\n      return val.toString().length === 1 ? '0' + val : val;\n    };\n    const getFormattedDate = (date) =>\n      `${fixDigit(\n        date.getMonth() + 1\n      )}/${date.getDate()}/${date.getFullYear()}`;\n    if (value instanceof Date) {\n      value = getFormattedDate(new Date(value));\n    }\n    return value;\n  }\n\n  convertToModel(filters) {\n    let obj = {};\n    const encodedValues = qs.stringify(filters, {\n      skipNulls: true,\n      encode: false,\n      filter: this.longFormatDate,\n    });\n    obj = qs.parse(encodedValues, { decoder: this.convertToModelParser });\n    return obj;\n  }\n\n  /**\n   * Decoder for qs.parse to convert true / false strings to boolean values\n   */\n  convertToModelParser(str: string, decoder: qs.defaultDecoder, charset: string, type: 'key' | 'value') {\n    if (type === 'key') {\n      return decoder(str, decoder, charset);\n    }\n\n    if (str === 'true' || str === 'false') {\n      return str === 'true' ? true : false;\n    }\n\n    return decoder(str, decoder, charset);\n  }\n\n  longFormatDate(prefix, value) {\n    const val = Date.parse(value);\n    if (!isNaN(val) && isNaN(value)) {\n      value = new Date(val).toISOString();\n    }\n    return value;\n  }\n\n  /**\n   * Sorty by change event\n   */\n  onSelectChange() {\n    this.page.pageNumber = 1;\n    this.updateContent();\n  }\n\n  /**\n   * calls service when updated\n   */\n  private updateContent(triggeredByFilter = false) {\n    if (this.isHistoryEnabled) {\n      this.updateNavigation(triggeredByFilter);\n    }\n\n    if (\n      this.filterData &&\n      this.service &&\n      this.enableApiCall &&\n      !this.isDefaultModel\n    ) {\n      this.loading = true;\n\n      setTimeout(() => {\n        this.service\n          .getData({\n            page: this.page,\n            sortField: this.sortField,\n            filter: this.filterData,\n          })\n          .subscribe((result) => {\n            this.loading = false;\n            this.items = result.items;\n            this.page.totalPages = Math.ceil(\n              result.totalItems / this.page.pageSize\n            );\n            this.totalItems = result.totalItems;\n          },\n            (error) => this.loading = false,\n            () => this.loading = false\n          );\n      });\n    }\n  }\n\n  public updateSearchResultsModel(historyModel: ResultsModel) {\n    this.filterData = historyModel.filterModel;\n    this.page.default = historyModel.page || historyModel.sort ? true : false;\n    this.page.pageNumber = historyModel.page ? historyModel.page : 1;\n    this.sortField = historyModel.sort ? historyModel.sort : this.sortField;\n    if (this.filterUpdateModelService) {\n      if (historyModel && historyModel.filterModel) {\n        this.filterUpdateModelService.updateModel(historyModel.filterModel);\n      } else {\n        this.filterUpdateModelService.updateModel({});\n      }\n    }\n  }\n}\n",
+            "sourceCode": "import {\n  Component,\n  Input,\n  ContentChild,\n  TemplateRef,\n  Optional,\n  OnChanges,\n  SimpleChanges,\n  OnInit,\n  ChangeDetectorRef,\n  HostListener,\n  Output,\n  EventEmitter,\n} from '@angular/core';\nimport { BehaviorSubject, Subscription } from 'rxjs';\nimport * as qs from 'qs';\nimport {\n  SearchListInterface,\n  SearchListConfiguration,\n  ResultsModel,\n} from './model/search-list-layout.model';\nimport {\n  SDSFormlyUpdateComunicationService,\n  SDSFormlyUpdateModelService,\n} from '@gsa-sam/sam-formly';\nimport { Router, ActivatedRoute } from '@angular/router';\nimport * as _ from 'lodash-es';\nimport { Location } from '@angular/common';\n\n@Component({\n  selector: 'search-list-layout',\n  templateUrl: './search-list-layout.component.html',\n  styleUrls: ['./search-list-layout.component.scss'],\n})\nexport class SearchListLayoutComponent implements OnInit {\n  /**\n   * Child Template to be used to display the data for each item in the list of items\n   */\n  @ContentChild('resultContent') resultContentTemplate: TemplateRef<any>;\n\n  constructor(\n    private cdr: ChangeDetectorRef,\n    private router: Router,\n    private route: ActivatedRoute,\n    @Optional()\n    private formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,\n    private filterUpdateModelService: SDSFormlyUpdateModelService,\n    private loc: Location\n  ) { }\n\n  /**\n   * Input service to be called when items change\n   */\n  @Input() service: SearchListInterface;\n\n  /**\n   * Allow to insert a customized template for no results to use\n   */\n  @Input() customResultsTemplate: TemplateRef<any>;\n\n  @Input() isHistoryEnabled = true;\n  /**\n   * configuration\n   */\n  @Input() configuration: SearchListConfiguration;\n\n  @Input() enableApiCall: boolean = true;\n\n  @Output() sortFieldChange = new EventEmitter<string>();\n\n  /**\n   * Set to true when either filter is empty or filter is equal to default model\n   */\n  isDefaultModel: boolean = true;\n\n  /**\n   * Filter information\n   */\n  private filterData: any;\n\n  /**\n   * Total number of items\n   */\n  totalItems: number;\n  private formlySubscription: Subscription;\n\n  /**\n   * Default Page setttings\n   */\n  page = {\n    pageNumber: 1,\n    pageSize: 25,\n    totalPages: 0,\n    default: true,\n  };\n\n  /**\n   * Id of the top pagination control\n   */\n  top = { id: 'topPagination' };\n\n  /**\n   * Id of the bottom pagination control\n   */\n  bottom = { id: 'bottomPagination' };\n\n  /**\n   * Page event listener\n   */\n  public paginationChange = new BehaviorSubject<object>(this.page);\n\n  /**\n   * List of items to be displayed\n   */\n  items = [];\n\n  /**\n   * sort value\n   */\n  public sortField = '';\n\n  /**\n   * Value to track whether API call in progress for purpose of showing loading\n   * template\n   */\n  loading = false;\n\n  /**\n   * Used in ngFor to create multiple copies of the same loading row.\n   */\n  loadingArray = Array(25);\n\n  /**\n   * Used to track whether update resulting in navigation is as the result of a\n   * popstate. in order to apply correct navigation logic\n   */\n  private triggeredByPopState: boolean = false;\n\n  @HostListener('window:popstate', ['$event'])\n  onpopstate(event) {\n    this.triggeredByPopState = true;\n    if (this.isHistoryEnabled) {\n      this.getHistoryModel();\n    }\n  }\n\n  ngOnInit() {\n    if (this.isHistoryEnabled) {\n      this.getHistoryModel();\n    }\n    this.sortField = this.sortField != null ? this.sortField : this.configuration.defaultSortValue;\n    this.paginationChange.subscribe(() => {\n      this.updateContent();\n    });\n    if (this.formlyUpdateComunicationService) {\n      this.formlySubscription = this.formlyUpdateComunicationService.filterUpdate.subscribe(\n        (filter) => {\n          this.updateFilter(filter);\n        }\n      );\n    }\n  }\n\n  ngOnDestroy() {\n    // Reset filter Model in update service\n    this.filterUpdateModelService.updateModel(null);\n\n    if (this.formlySubscription) {\n      this.formlySubscription.unsubscribe();\n    }\n  }\n\n  getHistoryModel() {\n    const queryString = window.location.search.substring(1);\n    const params: any = this.getUrlParams(queryString);\n    const paramModel: any = this.convertToModel(params);\n\n    this.page.default = true;\n    this.page.pageNumber = paramModel['page'] ? +paramModel['page'] : 1;\n    this.page.pageSize = paramModel['pageSize'] ? Number.parseInt(paramModel['pageSize']) : this.configuration.pageSize;\n\n    this.sortField = paramModel['sort'];\n    if (this.filterUpdateModelService) {\n      if (paramModel && paramModel['sfm']) {\n        this.filterUpdateModelService.updateModel(paramModel['sfm']);\n      } else if (!this.triggeredByPopState) {\n        this.filterUpdateModelService.updateModel(\n          this.configuration.defaultFilterValue\n        );\n      }\n    }\n  }\n\n  /**\n   * updates the filter and set the page number to 1 and calls imported service\n   * @param filter - the updated filter model\n   */\n  public updateFilter(filter: any) {\n    this.filterData = filter;\n    this.page.pageNumber = this.page.default ? this.page.pageNumber : 1;\n    this.page.default = filter ? false : true;\n    this.isDefaultFilter(filter);\n    if (this.isDefaultModel) {\n      this.items = [];\n    }\n    this.updateContent(true);\n  }\n\n  isDefaultFilter(filter) {\n    const cleanModel = this.flatten(filter);\n    const op = this.flatten(this.configuration.defaultFilterValue);\n    this.isDefaultModel = _.isEqual(cleanModel, op);\n  }\n\n  flatten(input, reference?, output?) {\n    output = output || {};\n    for (var key in input) {\n      var value = input[key];\n      if (value) {\n        key = reference ? reference + '.' + key : key;\n        if (typeof value === 'object' && value !== null) {\n          this.flatten(value, key, output);\n        } else {\n          // Treat true string as boolean value & ignore value of string 'false'\n          if (value === 'true') {\n            output[key] = true;\n          } else if (value != 'false') {\n            output[key] = value;\n          }\n        }\n      }\n    }\n    return output;\n  }\n\n  updateNavigation(triggeredByFilter = false) {\n    const queryString = window.location.search.substring(1);\n    let queryObj = qs.parse(queryString, { allowPrototypes: true });\n\n    let skipHistoryOnNav = false;\n\n    if (queryObj.hasOwnProperty('sfm')) {\n      queryObj['sfm'] = {};\n    }\n\n    // Prevent recursive navigation when adding default page to search\n    if (!queryObj.page || !queryObj.pageSize) {\n      skipHistoryOnNav = true;\n    }\n\n    queryObj['page'] = this.page.pageNumber\n      ? this.page.pageNumber.toString()\n      : '1';\n    queryObj['pageSize'] = this.page.pageSize\n      ? this.page.pageSize.toString()\n      : '25';\n\n    queryObj['sort'] = this.sortField ? this.sortField.toString() : '';\n    queryObj['sfm'] = this.filterData;\n    const params = this.convertToParam(queryObj);\n    /**\n     * loc.go updates URL but also updates history stack so that upon clicking\n     * back, the state which clicking forward would move user to is deleted by\n     * loc.go This state is preserved by router.navigate, so use router.navigate\n     * where we state needs to be preserved or we want the page jumped to the top.\n     * use loc.go only where we need the page to remain in place, and would normally\n     * overwrite the top of the history stack\n     */\n    if (!triggeredByFilter || this.triggeredByPopState) {\n      this.triggeredByPopState = false;\n      this.router.navigate([], {\n        relativeTo: this.route,\n        queryParams: params,\n        queryParamsHandling: this.configuration.queryParamsHandling,\n        fragment: window.location.hash?.length > 1 ? window.location.hash.substring(1) : undefined,\n        replaceUrl: skipHistoryOnNav,\n      });\n    } else {\n      const urlTree = this.router.parseUrl(this.loc.path());\n      urlTree.queryParams = params;\n      urlTree.fragment = window.location.hash?.length > 1 ? window.location.hash.substring(1) : undefined\n      this.loc.go(urlTree.toString());\n    }\n  }\n\n  convertToParam(filters) {\n    const encodedValues = qs.stringify(filters, {\n      skipNulls: true,\n      encode: false,\n    });\n    if (encodedValues) {\n      return this.getUrlParams(encodedValues);\n    } else {\n      return '';\n    }\n  }\n  getUrlParams(queryString) {\n    const target = {};\n    queryString.split('&').forEach((pair) => {\n      if (pair !== '') {\n        const splitpair = pair.split('=');\n        if (splitpair[1] != '' && splitpair[1] != 'false') {\n          target[splitpair[0]] = splitpair[1]\n        }\n      }\n    });\n    return target;\n  }\n\n  convertToModel(filters) {\n    let obj = {};\n    const encodedValues = qs.stringify(filters, {\n      skipNulls: true,\n      encode: false,\n    });\n    obj = qs.parse(encodedValues, { decoder: this.convertToModelParser });\n    return obj;\n  }\n\n  /**\n   * Decoder for qs.parse to convert true / false strings to boolean values\n   */\n  convertToModelParser(str: string, decoder: qs.defaultDecoder, charset: string, type: 'key' | 'value') {\n    if (type === 'key') {\n      return decoder(str, decoder, charset);\n    }\n\n    if (str === 'true' || str === 'false') {\n      return str === 'true' ? true : false;\n    }\n\n    return decoder(str, decoder, charset);\n  }\n\n  /**\n   * Sorty by change event\n   */\n  onSelectChange() {\n    this.page.pageNumber = 1;\n    this.updateContent();\n    this.sortFieldChange.emit(this.sortField);\n  }\n\n  /**\n   * calls service when updated\n   */\n  private updateContent(triggeredByFilter = false) {\n    if (this.isHistoryEnabled) {\n      this.updateNavigation(triggeredByFilter);\n    }\n\n    if (\n      this.filterData &&\n      this.service &&\n      this.enableApiCall &&\n      !this.isDefaultModel\n    ) {\n      this.loading = true;\n\n      setTimeout(() => {\n        this.service\n          .getData({\n            page: this.page,\n            sortField: this.sortField,\n            filter: this.filterData,\n          })\n          .subscribe((result) => {\n            this.loading = false;\n            this.items = result.items;\n            this.page.totalPages = Math.ceil(\n              result.totalItems / this.page.pageSize\n            );\n            this.totalItems = result.totalItems;\n          },\n            (error) => this.loading = false,\n            () => this.loading = false\n          );\n      });\n    }\n  }\n\n  public updateSearchResultsModel(historyModel: ResultsModel) {\n    this.filterData = historyModel.filterModel;\n    this.page.default = historyModel.page || historyModel.sort ? true : false;\n    this.page.pageNumber = historyModel.page ? historyModel.page : 1;\n    this.sortField = historyModel.sort ? historyModel.sort : this.sortField;\n    if (this.filterUpdateModelService) {\n      if (historyModel && historyModel.filterModel) {\n        this.filterUpdateModelService.updateModel(historyModel.filterModel);\n      } else {\n        this.filterUpdateModelService.updateModel({});\n      }\n    }\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -4057,7 +4011,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 37,
+                "line": 39,
                 "jsdoctags": [
                     {
                         "name": "cdr",
@@ -4118,11 +4072,11 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"grid-row\" *ngIf=\"items?.length\">\n  <div class=\"grid-col\">\n    <div class=\"grid-row\">\n      <div class=\"grid-col-auto\">\n        <sds-pagination class=\"tablet:grid-col display-block margin-top-3 padding-top-3\" [paginationConfiguration]=\"top\"\n          [(page)]=\"page\" (pageChange)=\"paginationChange.next($event)\" displayMode='results' [totalItems]=\"totalItems\">\n        </sds-pagination>\n      </div>\n      <div class=\"grid-col-fill\"></div>\n      <div class=\"grid-col-auto float-right\">\n        <div class=\"margin-left-1\">\n          <label class=\"usa-label font-sans-3xs text-italic text-base margin-top-1\" for=\"options\">\n            Sort by\n          </label>\n          <select (change)=\"onSelectChange()\" [(ngModel)]=\"sortField\"\n            class=\"usa-select usa-select--small sds-min-width-160 border-base-light\" id=\"options\">\n            <option *ngFor=\"let item of configuration.sortList\" [ngValue]=\"item.value\">\n              {{ item.text }}\n            </option>\n          </select>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"grid-row\">\n  <div class=\"grid-col-12\">\n    <div *ngIf=\"!loading; else loadingScreen\">\n      <sds-search-result-list [model]=\"items\" [customResultsTemplate]=\"customResultsTemplate\"\n        [isDefaultModel]=\"isDefaultModel\">\n        <ng-container>\n          <ng-template #resultContent let-item>\n              <ng-container *ngTemplateOutlet=\"resultContentTemplate, context: { $implicit: item }\">\n              </ng-container>\n          </ng-template>\n        </ng-container>\n      </sds-search-result-list>\n    </div>\n    <sds-pagination *ngIf=\"!loading && items?.length\" [paginationConfiguration]=\"bottom\" [(page)]=\"page\"\n      (pageChange)=\"paginationChange.next($event)\">\n    </sds-pagination>\n  </div>\n</div>\n\n<ng-template #loadingScreen>\n  <div *ngFor=\"let a of loadingArray\">\n    <hr>\n    <div class=\"grid-container\">\n      <div class=\"sds-load grid-row\">\n        <div class=\"grid-col-5 sds-load__title\"></div>\n        <div class=\"grid-col-auto sds-load__circle\"></div>\n      </div>\n      <div class=\"sds-load grid-row\">\n        <div class=\"tablet:grid-col-fill sds-load__content\"></div>\n        <div class=\"tablet:grid-col-fill sds-load__content\"></div>\n        <div class=\"tablet:grid-col-2 grid-col sds-load__element\"></div>\n        <div class=\"tablet:grid-col-2 grid-col sds-load__element\"></div>\n      </div>\n    </div>\n  </div>\n  <hr>\n</ng-template>\n"
+            "templateData": "<div class=\"grid-row\" *ngIf=\"items?.length\">\n  <div class=\"grid-col\">\n    <div class=\"grid-row\">\n      <div class=\"grid-col-auto\">\n        <sds-pagination class=\"tablet:grid-col display-block margin-top-3 padding-top-3\" [paginationConfiguration]=\"top\"\n          [(page)]=\"page\" (pageChange)=\"paginationChange.next($event)\" displayMode='results' [totalItems]=\"totalItems\">\n        </sds-pagination>\n      </div>\n      <div class=\"grid-col-fill\"></div>\n      <div class=\"grid-col-auto float-right\">\n        <div class=\"margin-left-1\">\n          <label class=\"usa-label font-sans-3xs text-italic text-base margin-top-1\" for=\"options\">\n            Sort by\n          </label>\n          <select (change)=\"onSelectChange()\" [(ngModel)]=\"sortField\"\n            class=\"usa-select usa-select--small sds-min-width-160 border-base-light\" id=\"options\">\n            <option *ngFor=\"let item of configuration.sortList\" [ngValue]=\"item.value\">\n              {{ item.text }}\n            </option>\n          </select>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"grid-row\">\n  <div class=\"grid-col-12\">\n    <div *ngIf=\"!loading; else loadingScreen\">\n      <sds-search-result-list [model]=\"items\" [customResultsTemplate]=\"customResultsTemplate\"\n        [isDefaultModel]=\"isDefaultModel\">\n        <ng-container>\n          <ng-template #resultContent let-item>\n              <ng-container *ngTemplateOutlet=\"resultContentTemplate, context: { $implicit: item }\">\n              </ng-container>\n          </ng-template>\n        </ng-container>\n      </sds-search-result-list>\n    </div>\n    <sds-pagination *ngIf=\"!loading && items?.length\" [paginationConfiguration]=\"bottom\" [(page)]=\"page\"\n      (pageChange)=\"paginationChange.next($event)\">\n    </sds-pagination>\n  </div>\n</div>\n\n<ng-template #loadingScreen>\n  <div *ngFor=\"let a of loadingArray\">\n    <hr>\n    <div class=\"grid-container padding-left-0\">\n      <div class=\"sds-load grid-row\">\n        <div class=\"grid-col-5 sds-load__title\"></div>\n      </div>\n      <div class=\"sds-load margin-top-1\">\n        <div class=\"tablet:grid-col-fill sds-load__element\"></div>\n      </div>\n      <div class=\"sds-load margin-top-1\">\n        <div class=\"grid-col-8 height-4 sds-load__content\"></div>\n      </div>\n    </div>\n  </div>\n  <hr>\n</ng-template>\n"
         },
         {
             "name": "SideToolbarComponent",
-            "id": "component-SideToolbarComponent-7e6d23937dfc09a9a05222cf74c14bf3",
+            "id": "component-SideToolbarComponent-879b70175d55b80d41ff3402080a10e2",
             "file": "libs/packages/layouts/src/lib/feature/side-toolbar/side-toolbar.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4239,7 +4193,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 49,
+                    "line": 51,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -4249,7 +4203,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 45,
+                    "line": 47,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -4259,7 +4213,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 75,
+                    "line": 77,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -4272,7 +4226,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 53,
+                    "line": 55,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -4284,7 +4238,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  Component,\n  ContentChild,\n  EventEmitter,\n  Input,\n  OnDestroy,\n  OnInit,\n  Output,\n  TemplateRef,\n} from '@angular/core';\nimport { SdsDialogRef, SdsDialogService } from '@gsa-sam/components';\nimport { BreakpointObserver } from '@angular/cdk/layout';\nimport { Subscription } from 'rxjs';\nimport { SdsDialogConfig } from '@gsa-sam/components';\n\n@Component({\n  selector: 'sds-side-toolbar',\n  templateUrl: './side-toolbar.component.html',\n  styleUrls: ['./side-toolbar.component.scss'],\n})\nexport class SideToolbarComponent implements OnInit, OnDestroy {\n  @ContentChild(TemplateRef) template: TemplateRef<any>;\n\n  // Text for button in responsive view\n  @Input() responsiveButtonText: string;\n\n  @Input() responsiveDialogOptions: SdsDialogConfig\n\n  // default value is size of mobile view in px\n  @Input() responsiveSize = 480;\n\n  @Output() responsiveDialog = new EventEmitter();\n  @Output() responsiveView = new EventEmitter();\n\n  isResponsiveView = false;\n\n  private subscription: Subscription = new Subscription();\n  private openResponsiveDialog: SdsDialogRef<TemplateRef<any>>;\n\n  constructor(\n    private sdsDialogService: SdsDialogService,\n    private breakpointObserver: BreakpointObserver // Will watch for changes between mobile and non-mobile screen size\n  ) {}\n\n  ngOnInit() {\n    this.observeViewChange();\n  }\n\n  ngOnDestroy() {\n    this.subscription.unsubscribe();\n  }\n\n  onResponsiveViewButtonClicked() {\n    let dialogOptions = {\n      height: '100vh',\n      width: '100vw',\n      maxWidth: '100vw',\n      maxHeight: '100vh',\n      hasBackdrop: false,\n      displayCloseBtn: false,\n      panelClass: ['sds-dialog--full']\n    };\n\n    let allOptions = this.responsiveDialogOptions ? {...dialogOptions, ...this.responsiveDialogOptions} : dialogOptions;\n\n    this.openResponsiveDialog = this.sdsDialogService.open(this.template, allOptions);\n\n    this.responsiveDialog.emit(this.openResponsiveDialog);\n\n    this.openResponsiveDialog.afterClosed().subscribe(() => {\n      this.openResponsiveDialog = undefined;\n    })\n  }\n\n  private observeViewChange() {\n    const breakpointUnsubscription = this.breakpointObserver\n      .observe([`(max-width: ${this.responsiveSize}px)`])\n      .subscribe((result) => {\n        if (result.matches) {\n          this.isResponsiveView = true;\n        } else {\n          this.isResponsiveView = false;\n          if (this.openResponsiveDialog) {\n            this.openResponsiveDialog.close();\n            this.openResponsiveDialog = undefined;\n            this.responsiveDialog.emit(this.openResponsiveDialog);\n          }\n        }\n\n        this.responsiveView.emit(this.isResponsiveView);\n      });\n\n    this.subscription.add(breakpointUnsubscription);\n  }\n}\n",
+            "sourceCode": "import {\n  Component,\n  ContentChild,\n  EventEmitter,\n  Input,\n  OnDestroy,\n  OnInit,\n  Output,\n  TemplateRef,\n} from '@angular/core';\nimport { SdsDialogRef, SdsDialogService } from '@gsa-sam/components';\nimport { BreakpointObserver } from '@angular/cdk/layout';\nimport { Subscription } from 'rxjs';\nimport { SdsDialogConfig } from '@gsa-sam/components';\n\n@Component({\n  selector: 'sds-side-toolbar',\n  templateUrl: './side-toolbar.component.html',\n  styleUrls: ['./side-toolbar.component.scss'],\n})\nexport class SideToolbarComponent implements OnInit, OnDestroy {\n  @ContentChild(TemplateRef) template: TemplateRef<any>;\n\n  // Text for button in responsive view\n  @Input() responsiveButtonText: string;\n\n  @Input() responsiveDialogOptions: SdsDialogConfig\n\n  // default value is size of mobile view in px\n  @Input() responsiveSize = 480;\n\n  @Output() responsiveDialog = new EventEmitter();\n  @Output() responsiveView = new EventEmitter();\n\n  isResponsiveView = false;\n\n  private subscription: Subscription = new Subscription();\n  private openResponsiveDialog: SdsDialogRef<TemplateRef<any>>;\n\n  constructor(\n    private sdsDialogService: SdsDialogService,\n    private breakpointObserver: BreakpointObserver // Will watch for changes between mobile and non-mobile screen size\n  ) {\n    console.warn('The side toolbar you are currently using is deprecated. Please instead import SdsSideToolbarModule from @gsa-sam/components')\n  }\n\n  ngOnInit() {\n    this.observeViewChange();\n  }\n\n  ngOnDestroy() {\n    this.subscription.unsubscribe();\n  }\n\n  onResponsiveViewButtonClicked() {\n    let dialogOptions = {\n      height: '100vh',\n      width: '100vw',\n      maxWidth: '100vw',\n      maxHeight: '100vh',\n      hasBackdrop: false,\n      displayCloseBtn: false,\n      panelClass: ['sds-dialog--full']\n    };\n\n    let allOptions = this.responsiveDialogOptions ? {...dialogOptions, ...this.responsiveDialogOptions} : dialogOptions;\n\n    this.openResponsiveDialog = this.sdsDialogService.open(this.template, allOptions);\n\n    this.responsiveDialog.emit(this.openResponsiveDialog);\n\n    this.openResponsiveDialog.afterClosed().subscribe(() => {\n      this.openResponsiveDialog = undefined;\n    })\n  }\n\n  private observeViewChange() {\n    const breakpointUnsubscription = this.breakpointObserver\n      .observe([`(max-width: ${this.responsiveSize}px)`])\n      .subscribe((result) => {\n        if (result.matches) {\n          this.isResponsiveView = true;\n        } else {\n          this.isResponsiveView = false;\n          if (this.openResponsiveDialog) {\n            this.openResponsiveDialog.close();\n            this.openResponsiveDialog = undefined;\n            this.responsiveDialog.emit(this.openResponsiveDialog);\n          }\n        }\n\n        this.responsiveView.emit(this.isResponsiveView);\n      });\n\n    this.subscription.add(breakpointUnsubscription);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -4468,13 +4422,13 @@
         },
         {
             "name": "SdsFooterModule",
-            "id": "module-SdsFooterModule-d2121ea3ca35a558633da8c274e5dbe0",
+            "id": "module-SdsFooterModule-94180f6f34fddd991c53450b72ec1692",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "libs/packages/layouts/src/lib/feature/footer/footer.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { SdsFooterComponent } from './footer.component';\nimport { RouterModule } from '@angular/router';\nimport { SdsCollapseModule } from '@gsa-sam/components';\nimport { SdsExternalLinkDirectivesModule } from '@gsa-sam/components';\nimport { SdsAccordionModule } from '@gsa-sam/sam-material-extensions';\nimport { SdsFeedbackModule } from '../sds-feedback/sds-feedback.module';\n\n@NgModule({\n  imports: [\n    CommonModule,\n    RouterModule,\n    SdsCollapseModule,\n    SdsExternalLinkDirectivesModule,\n    SdsAccordionModule,\n    SdsFeedbackModule,\n  ],\n  declarations: [SdsFooterComponent],\n  exports: [SdsFooterComponent],\n})\nexport class SdsFooterModule {}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { SdsFooterComponent } from './footer.component';\nimport { RouterModule } from '@angular/router';\nimport { SdsCollapseModule } from '@gsa-sam/components';\nimport { SdsExternalLinkDirectivesModule } from '@gsa-sam/components';\nimport { SdsFeedbackModule } from '../sds-feedback/sds-feedback.module';\nimport { UsaAccordionModule } from '@gsa-sam/ngx-uswds';\n\n@NgModule({\n  imports: [\n    CommonModule,\n    RouterModule,\n    SdsCollapseModule,\n    SdsExternalLinkDirectivesModule,\n    SdsFeedbackModule,\n    UsaAccordionModule,\n  ],\n  declarations: [SdsFooterComponent],\n  exports: [SdsFooterComponent],\n})\nexport class SdsFooterModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -4560,13 +4514,13 @@
         },
         {
             "name": "SdsLandingButtonGroupModule",
-            "id": "module-SdsLandingButtonGroupModule-aef2d61482d435b07c08a2ec488a8d73",
+            "id": "module-SdsLandingButtonGroupModule-408426ce12a084693833e1386fe94da3",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "libs/packages/layouts/src/lib/feature/landing/button-group/button-group.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { SdsLandingButtonGroupComponent } from './button-group.component';\nimport { SdsIconModule } from '@gsa-sam/components';\nimport { RouterModule } from '@angular/router';\n\n@NgModule({\n  imports: [CommonModule, RouterModule, SdsIconModule],\n  exports: [SdsLandingButtonGroupComponent],\n  declarations: [SdsLandingButtonGroupComponent],\n  providers: [],\n})\nexport class SdsLandingButtonGroupModule { }\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { SdsLandingButtonGroupComponent } from './button-group.component';\nimport { RouterModule } from '@angular/router';\nimport { IconModule } from '@gsa-sam/ngx-uswds-icons';\n\n@NgModule({\n  imports: [CommonModule, RouterModule, IconModule],\n  exports: [SdsLandingButtonGroupComponent],\n  declarations: [SdsLandingButtonGroupComponent],\n  providers: [],\n})\nexport class SdsLandingButtonGroupModule { }\n",
             "children": [
                 {
                     "type": "providers",
@@ -4698,13 +4652,13 @@
         },
         {
             "name": "SdsLandingListModule",
-            "id": "module-SdsLandingListModule-e5a10c4c34b770f790672a200abff4c9",
+            "id": "module-SdsLandingListModule-24dec628d82f42343a461b5e64dc15d8",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "libs/packages/layouts/src/lib/feature/landing/list/list.module.ts",
             "methods": [],
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { NgModule } from '@angular/core';\nimport {\n  NgxBootstrapIconsModule,\n  arrowRightCircleFill,\n  fileEarmark,\n  questionCircle,\n  fileEarmarkText,\n  book,\n  file,\n  play,\n  search,\n  person,\n  info,\n  arrowRightCircle,\n  playBtn,\n  chevronLeft,\n  checkCircle,\n} from 'ngx-bootstrap-icons';\n\nimport { SdsIconModule } from '@gsa-sam/components';\nimport { SdsLandingListComponent } from './list.component';\nimport { SdsLandingLinkModule } from '../link/link.module';\n\nconst arrowRightCircleGreen = `<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-arrow-right-circle bg-primary border-0 radius-pill\" viewBox=\"0 0 16 16\">\n  <path fill-rule=\"evenodd\" d=\"M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z\"/>\n</svg>`;\n\n@NgModule({\n  imports: [\n    CommonModule,\n    SdsLandingLinkModule,\n    SdsIconModule,\n    NgxBootstrapIconsModule,\n    NgxBootstrapIconsModule.pick({\n      arrowRightCircleFill,\n      fileEarmark,\n      arrowRightCircle,\n      questionCircle,\n      fileEarmarkText,\n      file,\n      book,\n      play,\n      search,\n      person,\n      info,\n      arrowRightCircleGreen,\n      playBtn,\n      chevronLeft,\n      checkCircle,\n    }),\n  ],\n  exports: [SdsLandingListComponent],\n  declarations: [SdsLandingListComponent],\n  providers: [],\n})\nexport class SdsLandingListModule {}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { NgModule } from '@angular/core';\nimport {\n  NgxBootstrapIconsModule,\n  arrowRightCircleFill,\n  fileEarmark,\n  questionCircle,\n  fileEarmarkText,\n  book,\n  file,\n  play,\n  search,\n  person,\n  info,\n  arrowRightCircle,\n  playBtn,\n  chevronLeft,\n  checkCircle,\n} from 'ngx-bootstrap-icons';\n\nimport { SdsLandingListComponent } from './list.component';\nimport { SdsLandingLinkModule } from '../link/link.module';\nimport { IconModule } from '@gsa-sam/ngx-uswds-icons';\n\nconst arrowRightCircleGreen = `<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-arrow-right-circle bg-primary border-0 radius-pill\" viewBox=\"0 0 16 16\">\n  <path fill-rule=\"evenodd\" d=\"M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z\"/>\n</svg>`;\n\n@NgModule({\n  imports: [\n    CommonModule,\n    SdsLandingLinkModule,\n    IconModule,\n    NgxBootstrapIconsModule,\n    NgxBootstrapIconsModule.pick({\n      arrowRightCircleFill,\n      fileEarmark,\n      arrowRightCircle,\n      questionCircle,\n      fileEarmarkText,\n      file,\n      book,\n      play,\n      search,\n      person,\n      info,\n      arrowRightCircleGreen,\n      playBtn,\n      chevronLeft,\n      checkCircle,\n    }),\n  ],\n  exports: [SdsLandingListComponent],\n  declarations: [SdsLandingListComponent],\n  providers: [],\n})\nexport class SdsLandingListModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -4844,13 +4798,13 @@
         },
         {
             "name": "SdsSubheaderModule",
-            "id": "module-SdsSubheaderModule-cbf348a5e9b63f67d777b908b176d3bf",
+            "id": "module-SdsSubheaderModule-e1719d0e3cc9f9efd1fc9bbbd88a239a",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "libs/packages/layouts/src/lib/feature/subheader/subheader.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport {\n  SdsMenuModule,\n  SdsSearchModule,\n  SdsObserversModule,\n  SdsTruncateModule,\n} from '@gsa-sam/components';\nimport {\n  SdsSubheaderComponent,\n  SdsSubheaderActionsComponent,\n  SdsSubheaderDrawerComponent,\n  SdsDrawerContentComponent\n} from './subheader.component';\nimport { SdsActionsMenuModule } from '../actions-menu/actions-menu.module';\nimport { SdsDrawerCommunicationService } from './drawer-communication.service';\nimport { NgxBootstrapIconsModule, threeDotsVertical } from 'ngx-bootstrap-icons';\nimport { IconModule } from '@gsa-sam/ngx-uswds-icons';\n\n@NgModule({\n  imports: [\n    CommonModule,\n    SdsMenuModule,\n    SdsObserversModule,\n    SdsSearchModule,\n    SdsTruncateModule,\n    SdsActionsMenuModule,\n    IconModule,\n    NgxBootstrapIconsModule.pick({threeDotsVertical})\n  ],\n  exports: [\n    SdsSubheaderComponent,\n    SdsSubheaderActionsComponent,\n    SdsSubheaderDrawerComponent,\n    SdsDrawerContentComponent,\n\n  ],\n  declarations: [\n    SdsSubheaderComponent,\n    SdsSubheaderActionsComponent,\n    SdsSubheaderDrawerComponent,\n    SdsDrawerContentComponent\n  ],\n  providers: [SdsDrawerCommunicationService]\n})\nexport class SdsSubheaderModule {}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport {\n  SdsMenuModule,\n  SdsSearchModule,\n  SdsObserversModule,\n  SdsTruncateModule,\n} from '@gsa-sam/components';\nimport {\n  SdsSubheaderComponent,\n  SdsSubheaderActionsComponent,\n  SdsSubheaderDrawerComponent,\n  SdsDrawerContentComponent\n} from './subheader.component';\nimport { SdsActionsMenuModule } from '@gsa-sam/components';\nimport { SdsDrawerCommunicationService } from './drawer-communication.service';\nimport { NgxBootstrapIconsModule, threeDotsVertical } from 'ngx-bootstrap-icons';\nimport { IconModule } from '@gsa-sam/ngx-uswds-icons';\n\n@NgModule({\n  imports: [\n    CommonModule,\n    SdsMenuModule,\n    SdsObserversModule,\n    SdsSearchModule,\n    SdsTruncateModule,\n    SdsActionsMenuModule,\n    IconModule,\n    NgxBootstrapIconsModule.pick({threeDotsVertical})\n  ],\n  exports: [\n    SdsSubheaderComponent,\n    SdsSubheaderActionsComponent,\n    SdsSubheaderDrawerComponent,\n    SdsDrawerContentComponent,\n\n  ],\n  declarations: [\n    SdsSubheaderComponent,\n    SdsSubheaderActionsComponent,\n    SdsSubheaderDrawerComponent,\n    SdsDrawerContentComponent\n  ],\n  providers: [SdsDrawerCommunicationService]\n})\nexport class SdsSubheaderModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -5049,6 +5003,50 @@
                         },
                         {
                             "name": "SdsWorkspaceTier2LabelDotComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "SdsWorkspaceTier2TitleModule",
+            "id": "module-SdsWorkspaceTier2TitleModule-0530cbdfe6210546dc89ac3c2371bbc5",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "libs/packages/layouts/src/lib/feature/workspace-tier-2/title/title.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { SdsWorkspaceTier2TitleComponent } from './title.component';\n\n@NgModule({\n  imports: [],\n  exports: [\n    SdsWorkspaceTier2TitleComponent\n  ],\n  declarations: [\n    SdsWorkspaceTier2TitleComponent\n  ],\n  providers: [],\n})\nexport class SdsWorkspaceTier2TitleModule {}\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "SdsWorkspaceTier2TitleComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "SdsWorkspaceTier2TitleComponent"
                         }
                     ]
                 },

@@ -16,14 +16,14 @@ import {
   MAT_NATIVE_DATE_FORMATS,
 } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { SdsAccordionModule, SdsTableModule } from '@gsa-sam/sam-material-extensions';
+import { SdsTableModule } from '@gsa-sam/sam-material-extensions';
 import {
   SdsAutocompleteModule,
   SdsDialogModule,
   SdsTextModule,
+  SdsEditorModule,
   SdsSearchModule,
   SdsCollapseModule,
-  SdsIconModule,
   SdsTooltipModule,
   SdsTabsModule,
   SdsPopoverModule
@@ -39,7 +39,7 @@ import { AnimationWrapperComponent } from './wrappers/form-field.animation';
 import { SdsReadonlyModule } from './readonly/readonly.module';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { NgxBootstrapIconsModule, caretDownFill, caretUpFill, filter, arrowClockwise, chevronDown, infoCircleFill } from 'ngx-bootstrap-icons';
-import { UsaFileInputModule } from '@gsa-sam/ngx-uswds';
+import { UsaAccordionModule, UsaFileInputModule } from '@gsa-sam/ngx-uswds';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 // Validate the min length of the character
@@ -163,18 +163,18 @@ export const DATE_FORMAT: MatDateFormats = {
   declarations: [FIELD_TYPE_COMPONENTS, AnimationWrapperComponent],
   imports: [
     CommonModule,
-    SdsAccordionModule,
+    UsaAccordionModule,
     MatExpansionModule,
     SdsAutocompleteModule,
     SdsDialogModule,
     SdsSearchModule,
     SdsTextModule,
+    SdsEditorModule,
     SdsCollapseModule,
     MatNativeDateModule,
     MatDatepickerModule,
     SdsTableModule,
     MatInputModule,
-    SdsIconModule,
     IconModule,
     ReactiveFormsModule,
     FormlySelectModule,

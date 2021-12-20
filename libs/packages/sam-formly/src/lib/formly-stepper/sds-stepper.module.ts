@@ -1,6 +1,5 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { SdsIconModule } from "@gsa-sam/components";
 import { SdsFormlyModule } from "../formly/formly.module";
 import {
   NgxBootstrapIconsModule,
@@ -15,13 +14,14 @@ import { RouterModule } from "@angular/router";
 import { FormlyModule } from "@ngx-formly/core";
 import { SdsStepper, SdsStepComponent, SdsStepFooterComponent, SdsStepHeaderComponent } from "./sds-stepper";
 import { SdsStepperNavDirective, SdsStepperNextDirective, SdsStepperPreviousDirective, SdsStepperSaveDirective, SdsStepperUSWDSNavDirective } from "./sds-step-buttons";
+import { IconModule } from "@gsa-sam/ngx-uswds-icons";
 
 @NgModule({
   imports: [
     CommonModule,
     FormlyModule,
     SdsFormlyModule,
-    SdsIconModule,
+    IconModule,
     NgxBootstrapIconsModule.pick({ chevronLeft, chevronRight, x, check, question, save }),
     RouterModule,
   ],

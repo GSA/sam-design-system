@@ -249,8 +249,8 @@ export class SearchListLayoutComponent implements OnInit {
     }
 
     queryObj['page'] = this.page.pageNumber
-    ? this.page.pageNumber.toString()
-    : '1';
+      ? this.page.pageNumber.toString()
+      : '1';
     queryObj['pageSize'] = this.page.pageSize
       ? this.page.pageSize.toString()
       : '25';
@@ -287,7 +287,6 @@ export class SearchListLayoutComponent implements OnInit {
     const encodedValues = qs.stringify(filters, {
       skipNulls: true,
       encode: false,
-      filter: this.shortFormatDate,
     });
     if (encodedValues) {
       return this.getUrlParams(encodedValues);
@@ -308,26 +307,11 @@ export class SearchListLayoutComponent implements OnInit {
     return target;
   }
 
-  shortFormatDate(prefix, value) {
-    const fixDigit = (val) => {
-      return val.toString().length === 1 ? '0' + val : val;
-    };
-    const getFormattedDate = (date) =>
-      `${fixDigit(
-        date.getMonth() + 1
-      )}/${date.getDate()}/${date.getFullYear()}`;
-    if (value instanceof Date) {
-      value = getFormattedDate(new Date(value));
-    }
-    return value;
-  }
-
   convertToModel(filters) {
     let obj = {};
     const encodedValues = qs.stringify(filters, {
       skipNulls: true,
       encode: false,
-      filter: this.longFormatDate,
     });
     obj = qs.parse(encodedValues, { decoder: this.convertToModelParser });
     return obj;
@@ -346,14 +330,6 @@ export class SearchListLayoutComponent implements OnInit {
     }
 
     return decoder(str, decoder, charset);
-  }
-
-  longFormatDate(prefix, value) {
-    const val = Date.parse(value);
-    if (!isNaN(val) && isNaN(value)) {
-      value = new Date(val).toISOString();
-    }
-    return value;
   }
 
   /**

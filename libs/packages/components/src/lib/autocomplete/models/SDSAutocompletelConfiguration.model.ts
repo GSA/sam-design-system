@@ -1,11 +1,12 @@
 import { SDSSelectedResultConfiguration } from '../../selected-result/models/SDSSelectedResultConfiguration';
 import { SDSAutocompleteSearchConfiguration } from '../../autocomplete-search/models/SDSAutocompleteConfiguration';
 import { SelectionMode } from '../../selected-result/models/sds-selected-item-model-helper';
+import { Observable } from 'rxjs';
 
 export class SDSAutocompletelConfiguration
   implements
-    SDSSelectedResultConfiguration,
-    SDSAutocompleteSearchConfiguration {
+  SDSSelectedResultConfiguration,
+  SDSAutocompleteSearchConfiguration {
   /**
    * sets the default debounce time to 250 milliseconds
    */
@@ -110,4 +111,21 @@ export class SDSAutocompletelConfiguration
    * @default false
    */
   public hideChips: boolean = false;
+
+  /** 
+   * Modifiier function to change display of how primary text field is shown
+   * Allows adding prefix / suffix values when displaying tags
+   */
+  public displayModifierFn: (displayValue: string, index?: number) => string;
+
+  /**
+   * Provides a way for external components to force change detection
+   * on internal components. Any time this observable is emitted, a change
+   * detection will be preformed, ensuring data model and template values are
+   * in sync. This can be useful if some external changes are made and visual
+   * updates need to be made
+   */
+  public registerChanges$: Observable<void>;
+
+  public hideCloseIcon: boolean = false;
 }

@@ -5,7 +5,9 @@
 
 <sds-selection-panel 
 [model]="selectionPanelModel"
-[currentSelection]="currentSelectedPanel">
+[currentSelection]="currentSelectedPanel"
+(panelSelected)="currentSelectedPanel = $event"
+>
 </sds-selection-panel>
 
 <button class="usa-button usa-button--secondary margin-top-1" (click)="onSelectExclusionsClicked()">Select Contract Data</button>

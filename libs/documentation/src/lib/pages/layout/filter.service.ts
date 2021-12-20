@@ -8,6 +8,7 @@ import {
 } from '@gsa-sam/components';
 import { Injectable } from '@angular/core';
 import { SdsFormlyTypes } from '@gsa-sam/sam-formly';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class FilterService {
@@ -17,6 +18,9 @@ export class FilterService {
   public model = {};
   public form = new FormGroup({});
   options: FormlyFormOptions = {};
+
+  public keywordChangeSubject = new Subject();
+
   public fields: FormlyFieldConfig[] = [
     {
       key: 'keyword',
@@ -33,9 +37,11 @@ export class FilterService {
             templateOptions: {
               tabHeader: 'Simple Search'
             },
+            fieldGroupClassName: 'grid-row',
             fieldGroup: [
               {
                 key: 'keywordRadio',
+                className: 'grid-col-5',
                 type: 'radio',
                 defaultValue: 'anyWords',
                 templateOptions: {
@@ -48,16 +54,22 @@ export class FilterService {
                       label: 'All Words',
                       value: 'allWords'
                     },
-                    {
-                      label: 'Exact Match',
-                      value: 'exactMatch'
-                    }
-                  ]
+                  ],
+                },
+              },
+              {
+                className: 'grid-col-6 margin-top-auto margin-left-auto',
+                key: 'keywordExactPhrase',
+                type: 'checkbox',
+                templateOptions: {
+                  label: 'Exact Phrase',
+                  hideOptional: true,
                 }
               },
               {
                 key: 'keywordTags',
                 type: 'autocomplete',
+                className: 'grid-col-12',
                 templateOptions: {
                   expand: false,
                   configuration: {
@@ -68,6 +80,10 @@ export class FilterService {
                     selectionMode: SelectionMode.MULTIPLE,
                     autocompletePlaceHolderText: "",
                     isTagModeEnabled: true,
+                    // Bind context of this service so we have access to radio button value
+                    displayModifierFn: this.displayModifierFn.bind(this),
+                    // Add observable so that we can tell autocomplete to run change detection later when radio option changes
+                    registerChanges$: this.keywordChangeSubject.asObservable(),
                   }
                 }
               }]
@@ -154,7 +170,7 @@ export class FilterService {
     },
     {
       key: 'purposeOfRegistration',
-
+      hide: true,
       type: 'multicheckbox',
       templateOptions: {
         label: 'Purpose of Registration',
@@ -173,6 +189,15 @@ export class FilterService {
             value: 'Intragovernmental Transactions',
           },
         ],
+      },
+    },
+    {
+      key: 'startDate',
+      type: 'datepicker',
+      templateOptions: {
+        group: 'accordion',
+        hideOptional: true,
+        label: 'Date',
       },
     },
     {
@@ -315,5 +340,26 @@ export class FilterService {
     this.settings.selectionMode = SelectionMode.MULTIPLE;
     this.settings.autocompletePlaceHolderText = 'Alaska';
     this.settings.debounceTime = 350;
+  }
+
+  displayModifierFn(value: string, index: number) {
+    if (index === 0) {
+      return value;
+    }
+
+    // We can do 'this.model' because we binded this service to the function in the config.
+    // So, inside this function, the context 'this' will refer to this service
+    const keywordRadio = this.model['keyword']?.keywordRadio;
+    if (!keywordRadio) {
+      return value;
+    }
+
+    if (keywordRadio === 'allWords') {
+      return `and  ${value}`;
+    } else if (keywordRadio === 'anyWords') {
+      return `or  ${value}`;
+    } else {
+      return value;
+    }
   }
 }

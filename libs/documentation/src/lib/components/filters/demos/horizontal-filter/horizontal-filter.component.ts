@@ -1,10 +1,8 @@
 import { Component } from "@angular/core";
 import { FormlyFieldConfig, FormlyFormOptions } from "@ngx-formly/core";
-
-
 @Component({
   selector: `horizontal-filter-demo`,
-  templateUrl: `horizontal-filter.component.html`
+  templateUrl: `horizontal-filter.component.html`,
 })
 export class HorizontalFilterDemo {
   options: FormlyFormOptions = {};

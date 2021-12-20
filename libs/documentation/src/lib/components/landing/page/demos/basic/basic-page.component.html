@@ -75,18 +75,16 @@
   </sds-landing-page-head>
 
   <!-- ACCORDIONS -->
-  <sds-accordion-next class="width-full">
-    <sds-accordion-item *ngFor="let item of accordion">
-      <sds-accordion-title>{{ item.head.title }}</sds-accordion-title>
-      <sds-accordion-content>
-        <ng-template
+  <usa-accordion [bordered]="true" [singleSelect]="true">
+    <usa-accordion-item *ngFor="let item of accordion" [header]="item.head.title">
+      <ng-template UsaAccordionContent>
+          <ng-template
           *ngFor="let content of item.body.content"
           [cdkPortalOutlet]="content.component"
-          (attached)="inputs($event, content.inputs)"
-        ></ng-template>
-      </sds-accordion-content>
-    </sds-accordion-item>
-  </sds-accordion-next>
+          (attached)="inputs($event, content.inputs)"></ng-template>
+      </ng-template>
+    </usa-accordion-item>
+  </usa-accordion>
 
   <!-- CARDS -->
   <div landing-page-cards class="grid-row grid-gap">

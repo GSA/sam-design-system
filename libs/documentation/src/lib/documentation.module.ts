@@ -6,9 +6,9 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 import * as _ from 'lodash-es'
-import { IconModule, allIcons as sdsAllIcons, uswdsAllIcons} from '@gsa-sam/ngx-uswds-icons'
+import { IconModule, allIcons as sdsAllIcons, uswdsAllIcons } from '@gsa-sam/ngx-uswds-icons'
 
-export const appendPrefix = (iconsObject: {[key: string]: string}, prefix: string): {[key: string]: string} => {
+export const appendPrefix = (iconsObject: { [key: string]: string }, prefix: string): { [key: string]: string } => {
   const prefixedIconsObject = {};
   Object.keys(iconsObject).forEach(key => {
     prefixedIconsObject[`${prefix}${_.upperFirst(key)}`] = iconsObject[key];
@@ -125,7 +125,12 @@ import {
   ROUTES as TABS_ROUTES,
   TabsModule,
 }
-from './components/tabs/tabs.module';
+  from './components/tabs/tabs.module';
+
+import {
+  ROUTES as TREE_TABLE_ROUTES,
+  TreeTableModule
+} from './components/tree-table/tree-table.module';
 
 /* Form Types */
 import {
@@ -256,6 +261,11 @@ import {
 } from './components/external-link/external-link.module';
 
 import {
+  ROUTES as EDITOR_ROUTES,
+  EditorModule,
+} from './components/formly-editor/formly-editor.module';
+
+import {
   ROUTES as DATE_PIPE_ROUTES,
   DatePipeModule,
 } from './components/date-pipe/date-pipe.module';
@@ -263,7 +273,6 @@ import {
 import { DocumentationSharedModule } from './shared';
 import { OverviewComponent } from './pages/overview/overview.component';
 import { ResultsLayoutModule } from './pages/layout/layout.module';
-import { ResultsLayoutComponent } from './pages/layout/layout.component';
 import { FormlyFormsModule } from './pages/formly-forms/formly-forms.module';
 import { FormlyFormsComponent } from './pages/formly-forms/formly-forms.component';
 import { FormlyConditionalModule } from './pages/formly-conditional/formly-conditional.module';
@@ -279,7 +288,6 @@ export const ROUTES: Routes = [
   { path: 'overview', component: OverviewComponent },
   { path: 'roadmap', component: RoadmapComponent },
   { path: 'introduction', component: IntroductionComponent },
-  { path: 'layout', component: ResultsLayoutComponent },
   { path: 'layout-responsive', component: LayoutResponsiveComponent },
 
   // Components
@@ -307,7 +315,7 @@ export const ROUTES: Routes = [
   { path: 'components/toasts', children: TOASTS_ROUTES },
   { path: 'components/tabs', children: TABS_ROUTES },
   { path: 'components/date-pipe', children: DATE_PIPE_ROUTES },
-
+  { path: 'components/tree-table', children: TREE_TABLE_ROUTES },
   { path: 'components/slide-out', children: SLIDE_OUT_ROUTES },
   { path: 'components/landing-button-group', children: LANDING_BUTTON_GROUP_ROUTES },
   { path: 'components/landing-card', children: LANDING_CARD_ROUTES },
@@ -338,7 +346,7 @@ export const ROUTES: Routes = [
   { path: 'components/text', children: TEXT_ROUTES },
   { path: 'components/formly-search', children: SEARCH_FORMLY_ROUTES },
   { path: 'components/formly-tabs', children: FORMLY_TABS_ROUTES },
-
+  { path: 'components/editor', children: EDITOR_ROUTES },
 
   // Wrappers
   { path: 'components/form-field', children: FORM_FIELD_ROUTES },
@@ -427,8 +435,10 @@ export const ROUTES: Routes = [
     WorkspaceTier2ItemModule,
     DatePipeModule,
     StepperModule,
+    EditorModule,
     FileInputModule,
     FormlyTabsModule,
+    TreeTableModule,
     NgxBootstrapIconsModule.pick(Object.assign(
       _.cloneDeep(allIcons),
       appendPrefix(_.cloneDeep(sdsAllIcons), 'sds'),

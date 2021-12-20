@@ -1,0 +1,21 @@
+<button class="usa-button usa-button--unstyled margin-right-3" (click)="expandAll()">Expand All</button>
+<button class="usa-button usa-button--unstyled margin-right-3" (click)="collapseAll()">Collapse All</button>
+<button class="usa-button usa-button--unstyled margin-right-3" (click)="expandChild()">Expand Child</button>
+<button class="usa-button usa-button--unstyled margin-right-3" (click)="collapseRow()">Collapse Row</button>
+
+<sds-tree-table #treeTable [dataSource]="displayedData" [displayColumns]="tableColumns" (viewAll)="onViewAll($event)" 
+  [childrenLimit]="10" [numChildrenToDisplay]="5">
+  <ng-container *sdsTreeTableRow="let row">
+    <td>
+      <h4>
+        <a href="javascript:void(0)">{{row.title}}</a>
+      </h4>
+      <span class="display-block font-mono-3xs">545 S 3rd St Ste 310, Louisville, KY 40404-1936 USA</span>
+    </td>
+    <td>
+      {{row.description}}
+    </td>
+    <td>{{row.year}}</td>
+  </ng-container>
+
+</sds-tree-table>

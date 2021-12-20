@@ -17,7 +17,7 @@
         " autocomplete="off" />
     </div>
     <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="showResults"
-      [cdkConnectedOverlayDisableClose]="true">
+      [cdkConnectedOverlayDisableClose]="true" [cdkConnectedOverlayMinWidth]="input.offsetWidth">
       <ul #resultsList [attr.id]="configuration.id + '-listbox'" role="listbox" class="usa-list 
         usa-list--unstyled sds-autocomplete" (scroll)="onScroll()">
         <ng-container *ngIf="results && results.length">
@@ -148,27 +148,29 @@
           </li>
         </ng-container>
       </ul>
+      <ul class="usa-sr-only" aria-live="assertive">
+        <li>{{ srOnlyText }}</li>
+      </ul>
     </ng-template>
 
 
     <ng-container *ngIf="!input.disabled">
       <span class="position-absolute right-105 top-1 cursor-pointer bg-white">
-        <span *ngIf="inputValue && !disabled" role="button" aria-label="Clear input" (click)="clearInput()"
+        <span *ngIf="isClearIconVisible()" role="button" aria-label="Clear input" (click)="clearInput()"
           (keyup.enter)="clearInput()" tabindex="0">
-          <usa-icon [icon]="'x'" size="lg"></usa-icon>
+          <usa-icon [icon]="'x'" size="lg" class="font-sans-xs"></usa-icon>
         </span>
-        <span *ngIf="!configuration.isTagModeEnabled" class="margin-left-1">
+        <span *ngIf="!configuration.isTagModeEnabled" class="margin-left-1 margin-top-05">
           <usa-icon role="button" aria-label="Display Options" tabindex="0" *ngIf="!showResults && !disabled"
-            (click)="openOptions()" (keyup.enter)="openOptions()" [icon]="'caret-down-fill'" size="1x">
+            (click)="openOptions()" class="font-sans-xs" (keyup.enter)="openOptions()" [icon]="'caret-down-fill'"
+            size="1x">
           </usa-icon>
           <usa-icon role="button" aria-label="Hide Options" tabindex="0" *ngIf="showResults && !disabled"
-            (click)="checkForFocus($event)" (keyup.enter)="checkForFocus($event)" [icon]="'caret-up-fill'" size="1x">
+            (click)="checkForFocus($event)" class="font-sans-xs" (keyup.enter)="checkForFocus($event)"
+            [icon]="'caret-up-fill'" size="1x">
           </usa-icon>
         </span>
       </span>
     </ng-container>
-    <ul class="usa-sr-only" aria-live="assertive">
-      <li>{{ srOnlyText }}</li>
-    </ul>
   </div>
 </div>

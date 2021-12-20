@@ -242,7 +242,13 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       this.getResults(searchString);
     }
   }
+  isClearIconVisible(): boolean {
+    if (this.model && this.model.items.length > 0 && this.configuration.hideCloseIcon)
+      return false;
 
+    return this.inputValue && !this.disabled
+  }
+  // 
   /**
    * Event method used when focus is gained to the input
    */
@@ -289,14 +295,12 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       this.onArrowGroupUp();
     } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex >= 0) {
       event.preventDefault();
-      if (this.configuration.isTagModeEnabled) {
+      if (this.configuration.isTagModeEnabled && this.inputValue.length > 0) {
         const val = this.createFreeTextItem();
         this.selectItem(val);
-      } else {
-        this.selectItem(this.highlightedItem);
       }
     } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex < 0) {
-      if (this.configuration.isFreeTextEnabled) {
+      if (this.configuration.isFreeTextEnabled && this.inputValue.length > 0) {
         const val = this.createFreeTextItem();
         this.selectItem(val);
       }
@@ -629,10 +633,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   }
 
   getClass() {
-    return this.configuration.inputReadOnly &&
-      this.configuration.selectionMode === SelectionMode.MULTIPLE
-      ? 'hide-cursor'
-      : '';
+    return this.configuration.inputReadOnly ? 'hide-cursor' : '';
   }
 
   registerOnChange(fn: any): void {

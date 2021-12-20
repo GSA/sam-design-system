@@ -3,11 +3,10 @@ export * from './accordion/accordion.directive';
 export * from './accordion/accordion-item-content.directive';
 export * from './accordion/accordion-item-header.component';
 export * from './accordion/accordion-item.component';
+export * from './actions-menu/actions-menu.component';
+export * from './actions-menu/actions-menu.module'
 export * from './page/page.module';
 export * from './page/page.component';
-export * from './toolbar/toolbar.module';
-export * from './toolbar/toolbar.component';
-export * from './toolbar/toolbar-expand.directive';
 export * from './pagination/pagination.module';
 export * from './pagination/pagination.component';
 export * from './autocomplete/autocomplete.component';
@@ -21,6 +20,8 @@ export * from './selected-result/models/SDSSelectedResultConfiguration';
 export * from './selected-result/models/sds-selected-item-model-helper';
 export * from './side-navigation/side-navigation.module';
 export * from './side-navigation/side-navigation.component';
+export * from './side-toolbar/side-toolbar.module';
+export * from './side-toolbar/side-toolbar.component';
 export * from './search-result-list/search-result-list.module';
 export * from './search-result-list/search-result-list.component';
 export * from './common-navigation/common-navigation-model';
@@ -80,6 +81,9 @@ export * from './tabs/tab-panel.component';
 export * from './date/sds-date.module'
 export * from './date/sds-date.pipe'
 
-export * from './icon/icon.component'
-export * from './icon/icon.module'
-export * from './icon/custom-icons'
+export * from './editor/editor.component'
+export * from './editor/editor.module';
+
+export * from './tree-table/tree-table.module';
+export * from './tree-table/tree-table.component';
+export * from './tree-table/tree-table.model';

@@ -38,6 +38,7 @@ export const FIELD_TYPE_COMPONENTS = [
   FormlyFieldFileInputComponent,
   FormlyTabsWrapperComponent,
   FormlyFieldTableComponent,
+  FormlyFieldEditorComponent
 ];
 import {
   dateRangeValidator,
@@ -57,6 +58,7 @@ import { FormlyReadonlyWrapperComponent } from './wrappers/readonly.wrapper';
 import { FormlyFieldFileInputComponent } from './types/file-input';
 import { FormlyTabsWrapperComponent } from './wrappers/tabs.wrapper';
 import { FormlyFieldTableComponent } from './types/table';
+import { FormlyFieldEditorComponent } from './types/editor';
 
 export const FORMLY_WRAPPERS: any = [
   {
@@ -125,6 +127,11 @@ export const FORMLY_CONFIG: ConfigOption = {
     {
       name: SdsFormlyTypes.CUSTOMTEXT,
       component: FormlyFieldTextComponent,
+      wrappers: sdsWrappers
+    },
+    {
+      name: SdsFormlyTypes.EDITOR,
+      component: FormlyFieldEditorComponent,
       wrappers: sdsWrappers
     },
     {
@@ -214,7 +221,7 @@ export const FORMLY_CONFIG: ConfigOption = {
             expressionProperties: {
               'templateOptions.minDate': minDateToDateRangePicker,
               'templateOptions.maxDate': maxDateToDateRangePicker,
-              'templateOptions.hideOptional': getParentHideOptional,     
+              'templateOptions.hideOptional': getParentHideOptional,
             }
           }
         ]
@@ -276,7 +283,7 @@ export const FORMLY_CONFIG: ConfigOption = {
     { name: 'accordionwrapper', component: FormlyAccordianFormFieldComponent },
     { name: 'filterwrapper', component: FormlyFormFieldFilterWrapperComponent },
     { name: 'readonly', component: FormlyReadonlyWrapperComponent },
-    { name: 'tabs', component: FormlyTabsWrapperComponent},
+    { name: 'tabs', component: FormlyTabsWrapperComponent },
   ]
 };
 

@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavigationLink, SdsDialogConfig, SdsDialogRef, SelectionPanelModel } from '@gsa-sam/components';
-import { SearchListConfiguration } from '@gsa-sam/layouts';
+import { ResultsModel, SearchListConfiguration } from '@gsa-sam/layouts';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { SdsFiltersComponent } from 'libs/packages/sam-formly/src/lib/formly-filters/sds-filters.component';
 import { BehaviorSubject } from 'rxjs';
@@ -23,8 +23,8 @@ export class LayoutResponsiveComponent {
   form;
   filterModel = {};
   options;
-  filtersExpanded: boolean = false;
-  domainsExpanded: boolean = true;
+  filtersExpanded: boolean = true;
+  domainsExpanded: boolean = false;
   responsiveDialogOptions: SdsDialogConfig = {
     ariaLabel: 'Search Filters',
   };
@@ -88,11 +88,23 @@ export class LayoutResponsiveComponent {
       form: this.form,
       options: this.options,
       isHistoryEnabled: true,
+      advancedFilters: true,
     };
   }
+
   ngAfterViewInit() {
     this.filterChange$.subscribe((res) => {
       this.resultList.updateFilter(res);
+    });
+
+    // Listen for radio change and refresh autocomplete
+    const keywordGroup = this.fields.find(field => field.key === 'keyword').fieldArray.fieldGroup[0].fieldGroup;
+    keywordGroup.find(keyword => keyword.key === 'keywordRadio').formControl.valueChanges.subscribe(change => {
+      // Refresh autocomplete chips - we do set timeout so that our model for radio option can update first, then
+      // this refresh will update our chips depending on the updated model value
+      setTimeout(() => {
+        this.filterService.keywordChangeSubject.next();
+      });
     });
   }
 
@@ -113,6 +125,34 @@ export class LayoutResponsiveComponent {
   onCancelClicked() {
     this.mobileDialog.close();
     this.mobileDialog = undefined;
+  }
+
+  onSearchModelUpdate() {
+    const model: ResultsModel = {
+      page: 2,
+      sort: 'registrationStatus',
+      filterModel: {
+        keyword: {
+          keywordRadio: "allWords",
+          keywordTags: [
+            {
+              key: "te",
+              text: "te"
+            }
+          ]
+        },
+        location: {
+          city: null,
+          congressionalDistrict: null,
+          country: null,
+          state: [{ id: 'AL', name: 'Alabama', subtext: undefined }],
+          zipCode: null,
+        },
+      },
+    };
+
+    this.fields[0].fieldArray.fieldGroup[0].form.setValue(model.filterModel.keyword);
+    this.resultList.updateSearchResultsModel(model);
   }
 
   onApplyFilter() {

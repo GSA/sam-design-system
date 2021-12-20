@@ -13,7 +13,7 @@ import {
   SdsSubheaderDrawerComponent,
   SdsDrawerContentComponent
 } from './subheader.component';
-import { SdsActionsMenuModule } from '../actions-menu/actions-menu.module';
+import { SdsActionsMenuModule } from '@gsa-sam/components';
 import { SdsDrawerCommunicationService } from './drawer-communication.service';
 import { NgxBootstrapIconsModule, threeDotsVertical } from 'ngx-bootstrap-icons';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';

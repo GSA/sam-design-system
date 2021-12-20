@@ -1,6 +1,9 @@
-import { Component, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, ViewChild, ViewContainerRef } from '@angular/core';
+import { UsaAccordionComponent, UsaAccordionItem } from '@gsa-sam/ngx-uswds';
 import { FieldWrapper } from '@ngx-formly/core';
 import * as qs from 'qs';
+import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 /**
  * @param string [to.group] used to set the wrapper tupe
@@ -14,23 +17,16 @@ import * as qs from 'qs';
     <ng-container *ngIf="!to.readonlyMode; else defaultTemplate">
       <ng-container [ngSwitch]="to.group">
         <ng-container *ngSwitchCase="'accordion'">
-          <sds-accordion-next
-            [(multi)]="multi"
-            expandedHeight="34px"
-            collapsedHeight="34px"
-            #sdsAccordionDemo
-            class="sds-accordion--filters"
-          >
-            <sds-accordion-item
-              class="sds-accordion__panel"
-              [expanded]="modelHasValue()"
-            >
-              <sds-accordion-title>{{ to.label }}</sds-accordion-title>
-              <sds-accordion-content>
+          <usa-accordion #groupAccordion [singleSelect]="!multi" class="sds-accordion--filters">
+            <usa-accordion-item>
+              <ng-template UsaAccordionHeader>
+                <span [attr.class]="to.labelClass">{{ to.label }}</span>
+              </ng-template>
+              <ng-template UsaAccordionContent>
                 <ng-container #fieldComponent></ng-container>
-              </sds-accordion-content>
-            </sds-accordion-item>
-          </sds-accordion-next>
+              </ng-template>
+            </usa-accordion-item>
+          </usa-accordion>
         </ng-container>
         <ng-container *ngSwitchCase="'panel'">
           <div
@@ -42,7 +38,7 @@ import * as qs from 'qs';
               *ngIf="!to.hideLabel"
               [attr.aria-hidden]="!to.announceLabel ? undefined : 'true'"
             >
-              {{ to.label }}
+              <span [attr.class]="to.labelClass">{{ to.label }}</span>
             </div>
             <div class="sds-panel__body">
               <ng-container #fieldComponent></ng-container>
@@ -73,13 +69,48 @@ import * as qs from 'qs';
     </ng-template>
   `,
 })
-export class FormlyGroupWrapperComponent extends FieldWrapper {
-  @ViewChild('fieldComponent', { read: ViewContainerRef })
-  fieldComponent: ViewContainerRef;
+export class FormlyGroupWrapperComponent extends FieldWrapper implements AfterViewInit, OnDestroy {
+  @ViewChild('fieldComponent', { read: ViewContainerRef }) fieldComponent: ViewContainerRef;
+  
+  @ViewChild('groupAccordion') accordion: UsaAccordionComponent;
+  @ViewChild(UsaAccordionItem) accordionItem: UsaAccordionItem;
+
   multi = true;
-  constructor() {
+
+  resetAllSubscription: Subscription;
+
+  constructor(
+    private changeDetectorRef: ChangeDetectorRef
+  ) {
     super();
   }
+
+  ngAfterViewInit() {
+    if (this.to.group != 'accordion' || !this.accordion) {
+      return;
+    }
+
+    const shouldExpandAccordion = this.modelHasValue();
+    if (shouldExpandAccordion) {
+      this.accordion.expand(this.accordionItem.id);
+      this.changeDetectorRef.detectChanges();
+    }
+
+    this.resetAllSubscription = this.field.options.fieldChanges.pipe(
+      filter(({ type }) => type === 'resetAll' && this.accordionItem.isOpen))
+      .subscribe(() => {
+        if (!this.modelHasValue()) {
+          this.accordion.collapse(this.accordionItem.id);
+        }
+      });
+  }
+
+  ngOnDestroy() {
+    if (this.resetAllSubscription) {
+      this.resetAllSubscription.unsubscribe();
+    }
+  }
+
   modelHasValue() {
     if (this.to.hasOwnProperty('expand')) {
       return this.to.expand;

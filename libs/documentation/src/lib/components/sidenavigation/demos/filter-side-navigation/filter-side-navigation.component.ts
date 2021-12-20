@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { SdsDialogRef, SdsDialogConfig, SelectionPanelModel, NavigationLink } from '@gsa-sam/components';
+import { SdsDialogConfig, SelectionPanelModel, NavigationLink } from '@gsa-sam/components';
 import { SearchListConfiguration } from '@gsa-sam/layouts';
 import { SdsFiltersComponent } from '@gsa-sam/sam-formly';
 import { FormlyFieldConfig } from '@ngx-formly/core';

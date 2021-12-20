@@ -15,7 +15,7 @@ import {
   save,
   x
 } from "ngx-bootstrap-icons";
-import { SdsIconModule } from '@gsa-sam/components';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
   declarations: [UswdsStepperComponent, USWDSCustomStepperComponent],
@@ -23,8 +23,8 @@ import { SdsIconModule } from '@gsa-sam/components';
     CommonModule,
     UsaStepIndicatorModule,
     SdsStepperModule,
-    SdsIconModule,
     NgxBootstrapIconsModule.pick({ chevronLeft, chevronRight, circle, slashCircleFill, checkCircleFill, question, save, x }),
+    IconModule,
   ],
   exports: [
     UswdsStepperComponent, 

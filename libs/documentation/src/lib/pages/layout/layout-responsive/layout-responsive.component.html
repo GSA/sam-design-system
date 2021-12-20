@@ -2,6 +2,7 @@
 <div class="margin-y-2">
   <button class="usa-button" (click)="updateConfig(false)">Default Sort Config</button>
   <button class="usa-button" (click)="updateConfig(true)">Update Sort Config</button>
+  <button class="usa-button" (click)="onSearchModelUpdate()">Update search results model</button>
   <hr />
 </div>
 
@@ -59,7 +60,8 @@
               <div class="sds-card__action sds-card__collapse"></div>
             </div>
             <div class="sds-card__body sds-card__body--accent-cool" id="filtersBody">
-              <sds-filters #filters [options]="filterPanelConfig.options"
+              <sds-filters #filters [options]="filterPanelConfig.options" 
+                [defaultModel]="{status: {registrationStatus: {Active: true}}}"
                 [advancedFilters]="filterPanelConfig.advancedFilters" [form]="filterPanelConfig.form"
                 [fields]="filterPanelConfig.fields" [model]="filterPanelConfig.model"
                 (filterChange)="filterChange$.next($event)">

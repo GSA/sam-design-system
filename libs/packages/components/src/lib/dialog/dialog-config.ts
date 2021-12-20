@@ -20,6 +20,15 @@ export interface DialogPosition {
   right?: string;
 }
 
+/** Custom Slide Out Panel configurations */
+export interface SlideOutConfig {
+  /** Width of the slide out panel */
+  width?: string;
+
+  /** Time that it takes to open and close the panel */
+  time?: string;
+}
+
 /**
  * Configuration for opening a modal dialog with the SdsDialog service.
  */
@@ -117,5 +126,5 @@ export class SdsDialogConfig<D = any> {
    * Whether dialog is a slide-out. Changes enter and exit animation, and adds
    * class `dialog-slide-out` to container
    */
-  slideOut?= false;
+  slideOut?: boolean | SlideOutConfig = false;
 }

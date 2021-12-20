@@ -40,7 +40,7 @@ export class SdsTextComponent implements ControlValueAccessor {
 
   // Helper method to programatically add a value to the existing items array
   addItem(val) {
-    if(this.multiple){
+    if (this.multiple) {
       this.items = [...this.items, val];
       this.updateModel();
     }
@@ -66,7 +66,7 @@ export class SdsTextComponent implements ControlValueAccessor {
   // If there is a value we will just overwrite items
   // If there is no value we reset the items array to be empty
   writeValue(value: any) {
-    if(value && value.length && this.items !== value) {
+    if (value && value.length && this.items !== value) {
       this.items = value;
       this.cd.markForCheck();
     } else {

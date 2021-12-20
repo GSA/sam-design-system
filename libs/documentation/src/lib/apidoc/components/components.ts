@@ -47,12 +47,12 @@ const COMPONENTS = {
     "interfaces": [
         {
             "name": "DialogPosition",
-            "id": "interface-DialogPosition-dc43c900e9467fbeee3ba3fcf8bb84ec",
+            "id": "interface-DialogPosition-9b8eea9614311bd51a2fb1fc54f8f7aa",
             "file": "libs/packages/components/src/lib/dialog/dialog-config.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import {ViewContainerRef} from '@angular/core';\nimport {Direction} from '@angular/cdk/bidi';\nimport {ScrollStrategy} from '@angular/cdk/overlay';\n\n/** Valid ARIA roles for a dialog element. */\nexport type DialogRole = 'dialog' | 'alertdialog';\n\n/** Possible overrides for a dialog's position. */\nexport interface DialogPosition {\n  /** Override for the dialog's top position. */\n  top?: string;\n\n  /** Override for the dialog's bottom position. */\n  bottom?: string;\n\n  /** Override for the dialog's left position. */\n  left?: string;\n\n  /** Override for the dialog's right position. */\n  right?: string;\n}\n\n/**\n * Configuration for opening a modal dialog with the SdsDialog service.\n */\nexport class SdsDialogConfig<D = any> {\n\n  /**\n   * Where the attached component should live in Angular's *logical* component tree.\n   * This affects what is available for injection and the change detection order for the\n   * component instantiated inside of the dialog. This does not affect where the dialog\n   * content will be rendered.\n   */\n  viewContainerRef?: ViewContainerRef;\n\n  /** ID for the dialog. If omitted, a unique one will be generated. */\n  id?: string;\n\n  /** The ARIA role of the dialog element. */\n  role?: DialogRole = 'dialog';\n\n  /** Custom class for the overlay pane. */\n  panelClass?: string | string[] = '';\n\n  /** Whether the dialog has a backdrop. */\n  hasBackdrop? = true;\n\n  /** Custom class for the backdrop, */\n  backdropClass? = '';\n\n  /** Whether the user can use escape or clicking on the backdrop to close the modal. */\n  disableClose? = false;\n\n  /** Width of the dialog. */\n  width? = '';\n\n  /** Height of the dialog. */\n  height? = '';\n\n  /** Min-width of the dialog. If a number is provided, pixel units are assumed. */\n  minWidth?: number | string;\n\n  /** Min-height of the dialog. If a number is provided, pixel units are assumed. */\n  minHeight?: number | string;\n\n  /** Max-width of the dialog. If a number is provided, pixel units are assumed. Defaults to 80vw */\n  maxWidth?: number | string = '80vw';\n\n  /** Max-height of the dialog. If a number is provided, pixel units are assumed. */\n  maxHeight?: number | string;\n\n  /** Position overrides. */\n  position?: DialogPosition;\n\n  /** Data being injected into the child component. */\n  data?: D | null = null;\n\n  /** Layout direction for the dialog's content. */\n  direction?: Direction;\n\n  /** ID of the element that describes the dialog. */\n  ariaDescribedBy?: string | null = null;\n\n  /** Aria label to assign to the dialog element */\n  ariaLabel?: string | null = null;\n\n  /** Whether the dialog should focus the first focusable element on open. */\n  autoFocus? = true;\n\n  /**\n   * Whether the dialog should restore focus to the\n   * previously-focused element, after it's closed.\n   */\n  restoreFocus? = true;\n\n  /** Scroll strategy to be used for the dialog. */\n  scrollStrategy?: ScrollStrategy;\n\n  /**\n   * Whether the dialog should close when the user goes backwards/forwards in history.\n   * Note that this usually doesn't include clicking on links (unless the user is using\n   * the `HashLocationStrategy`).\n   */\n  closeOnNavigation? = true;\n\n  /**\n   * Wheter the dialog its an alert\n   */\n  alert?: 'warning' | 'info' | 'error';\n\n  /**\n   * Whether to display the close button in dialog header\n   */\n  displayCloseBtn? = true;\n\n  /**\n   * Whether dialog is a slide-out. Changes enter and exit animation, and adds\n   * class `dialog-slide-out` to container\n   */\n  slideOut? = false;\n}\n",
+            "sourceCode": "import { ViewContainerRef } from '@angular/core';\nimport { Direction } from '@angular/cdk/bidi';\nimport { ScrollStrategy } from '@angular/cdk/overlay';\n\n/** Valid ARIA roles for a dialog element. */\nexport type DialogRole = 'dialog' | 'alertdialog';\n\n/** Possible overrides for a dialog's position. */\nexport interface DialogPosition {\n  /** Override for the dialog's top position. */\n  top?: string;\n\n  /** Override for the dialog's bottom position. */\n  bottom?: string;\n\n  /** Override for the dialog's left position. */\n  left?: string;\n\n  /** Override for the dialog's right position. */\n  right?: string;\n}\n\n/**\n * Configuration for opening a modal dialog with the SdsDialog service.\n */\nexport class SdsDialogConfig<D = any> {\n\n  /**\n   * Where the attached component should live in Angular's *logical* component tree.\n   * This affects what is available for injection and the change detection order for the\n   * component instantiated inside of the dialog. This does not affect where the dialog\n   * content will be rendered.\n   */\n  viewContainerRef?: ViewContainerRef;\n\n  /** ID for the dialog. If omitted, a unique one will be generated. */\n  id?: string;\n\n  /** The ARIA role of the dialog element. */\n  role?: DialogRole = 'dialog';\n\n  /** Custom class for the overlay pane. */\n  panelClass?: string | string[] = '';\n\n  /** Whether the dialog has a backdrop. */\n  hasBackdrop?= true;\n\n  /** Custom class for the backdrop, */\n  backdropClass?= '';\n\n  /** Whether the user can use escape or clicking on the backdrop to close the modal. */\n  disableClose?= false;\n\n  /** Width of the dialog. */\n  width?= '';\n\n  /** Height of the dialog. */\n  height?= '';\n\n  /** Min-width of the dialog. If a number is provided, pixel units are assumed. */\n  minWidth?: number | string;\n\n  /** Min-height of the dialog. If a number is provided, pixel units are assumed. */\n  minHeight?: number | string;\n\n  /** Max-width of the dialog. If a number is provided, pixel units are assumed. Defaults to 80vw */\n  maxWidth?: number | string = '80vw';\n\n  /** Max-height of the dialog. If a number is provided, pixel units are assumed. */\n  maxHeight?: number | string;\n\n  /** Position overrides. */\n  position?: DialogPosition;\n\n  /** Data being injected into the child component. */\n  data?: D | null = null;\n\n  /** Layout direction for the dialog's content. */\n  direction?: Direction;\n\n  /** ID of the element that describes the dialog. */\n  ariaDescribedBy?: string | null = null;\n\n  /** Aria label to assign to the dialog element */\n  ariaLabel?: string | null = null;\n\n  /** Whether the dialog should focus the first focusable element on open. */\n  autoFocus?= true;\n\n  /**\n   * Whether the dialog should restore focus to the\n   * previously-focused element, after it's closed.\n   */\n  restoreFocus?= true;\n\n  /** Scroll strategy to be used for the dialog. */\n  scrollStrategy?: ScrollStrategy;\n\n  /**\n   * Whether the dialog should close when the user goes backwards/forwards in history.\n   * Note that this usually doesn't include clicking on links (unless the user is using\n   * the `HashLocationStrategy`).\n   */\n  closeOnNavigation?= true;\n\n  /**\n   * Wheter the dialog its an alert\n   */\n  alert?: 'warning' | 'info' | 'error' | 'success';\n\n  /**\n   * Whether to display the close button in dialog header\n   */\n  displayCloseBtn?= true;\n\n  /**\n   * Whether dialog is a slide-out. Changes enter and exit animation, and adds\n   * class `dialog-slide-out` to container\n   */\n  slideOut?= false;\n}\n",
             "properties": [
                 {
                     "name": "bottom",
@@ -3073,19 +3073,19 @@ const COMPONENTS = {
         },
         {
             "name": "SDSAutocompletelConfiguration",
-            "id": "class-SDSAutocompletelConfiguration-1efbea77e2cd5975e1c474e5c369c666",
+            "id": "class-SDSAutocompletelConfiguration-4a6933c477edf1fd886261f49c19dde6",
             "file": "libs/packages/components/src/lib/autocomplete/models/SDSAutocompletelConfiguration.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "class",
-            "sourceCode": "import { SDSSelectedResultConfiguration } from '../../selected-result/models/SDSSelectedResultConfiguration';\nimport { SDSAutocompleteSearchConfiguration } from '../../autocomplete-search/models/SDSAutocompleteConfiguration';\nimport { SelectionMode } from '../../selected-result/models/sds-selected-item-model-helper';\n\nexport class SDSAutocompletelConfiguration\n  implements\n    SDSSelectedResultConfiguration,\n    SDSAutocompleteSearchConfiguration {\n  /**\n   * sets the default debounce time to 250 milliseconds\n   */\n  constructor() {\n    this.debounceTime = 250;\n    this.minimumCharacterCountSearch = 0;\n  }\n\n  /**\n   * Used to describe the drop down (Text should match the label that will be supplied)\n   */\n  public labelText: string;\n\n  /**\n   * Used for the Id of the control\n   */\n  public id: string;\n\n  /**\n   *  This is the primary field used to identify each object in the results\n   */\n  public primaryKeyField: string;\n\n  /**\n   *  Property from supplied model used for the top part of the basic template\n   */\n  public primaryTextField: string;\n\n  /**\n   *  Property from supplied model used for the bottom part of the basic template\n   */\n  public secondaryTextField: string;\n\n  /**\n   *  Sets the time waited for addional key actions Default is 250 milliseconds\n   */\n  public debounceTime: number;\n\n  /**\n   * Place holder text for autocomplete input\n   */\n  public autocompletePlaceHolderText: string;\n\n  /**\n   * Mininumn Characters for search\n   */\n  public minimumCharacterCountSearch: number;\n\n  /**\n   * Mode of the model either allows a single item or multiple items\n   */\n  public selectionMode: SelectionMode = SelectionMode.SINGLE;\n\n  /**\n   * Allows option to allow user text not in the standard results\n   */\n  public isFreeTextEnabled: boolean = false;\n\n  /**\n   * Text appeneded ad the end of free text\n   */\n  public freeTextSubtext: string = 'search';\n\n  /**\n   * Focus into autocomplete search\n   */\n  public focusInSearch: boolean = true;\n\n  /**\n   * The aria-label for the auto-complete\n   */\n  public ariaLabelText: string;\n\n  /**\n   * To enable the tag mode\n   */\n  public isTagModeEnabled: boolean = false;\n\n  /**\n   * To make input readonly\n   */\n  public inputReadOnly = false;\n\n  /**\n   * Name of the children filed\n   */\n  public groupByChild: string = 'children';\n\n  /**\n   * To enable the Grouping mode\n   */\n  public isGroupingEnabled: boolean = false;\n\n  /**\n   * To enable the Group item selectable\n   */\n  public isSelectableGroup: boolean = true;\n\n  /**\n   * Toggle whether or not to display chips. This can be useful if some custom UI is used\n   * for rendering autocomplete values in multi-select mode\n   * @default false\n   */\n  public hideChips: boolean = false;\n}\n",
+            "sourceCode": "import { SDSSelectedResultConfiguration } from '../../selected-result/models/SDSSelectedResultConfiguration';\nimport { SDSAutocompleteSearchConfiguration } from '../../autocomplete-search/models/SDSAutocompleteConfiguration';\nimport { SelectionMode } from '../../selected-result/models/sds-selected-item-model-helper';\nimport { Observable } from 'rxjs';\n\nexport class SDSAutocompletelConfiguration\n  implements\n    SDSSelectedResultConfiguration,\n    SDSAutocompleteSearchConfiguration {\n  /**\n   * sets the default debounce time to 250 milliseconds\n   */\n  constructor() {\n    this.debounceTime = 250;\n    this.minimumCharacterCountSearch = 0;\n  }\n\n  /**\n   * Used to describe the drop down (Text should match the label that will be supplied)\n   */\n  public labelText: string;\n\n  /**\n   * Used for the Id of the control\n   */\n  public id: string;\n\n  /**\n   *  This is the primary field used to identify each object in the results\n   */\n  public primaryKeyField: string;\n\n  /**\n   *  Property from supplied model used for the top part of the basic template\n   */\n  public primaryTextField: string;\n\n  /**\n   *  Property from supplied model used for the bottom part of the basic template\n   */\n  public secondaryTextField: string;\n\n  /**\n   *  Sets the time waited for addional key actions Default is 250 milliseconds\n   */\n  public debounceTime: number;\n\n  /**\n   * Place holder text for autocomplete input\n   */\n  public autocompletePlaceHolderText: string;\n\n  /**\n   * Mininumn Characters for search\n   */\n  public minimumCharacterCountSearch: number;\n\n  /**\n   * Mode of the model either allows a single item or multiple items\n   */\n  public selectionMode: SelectionMode = SelectionMode.SINGLE;\n\n  /**\n   * Allows option to allow user text not in the standard results\n   */\n  public isFreeTextEnabled: boolean = false;\n\n  /**\n   * Text appeneded ad the end of free text\n   */\n  public freeTextSubtext: string = 'search';\n\n  /**\n   * Focus into autocomplete search\n   */\n  public focusInSearch: boolean = true;\n\n  /**\n   * The aria-label for the auto-complete\n   */\n  public ariaLabelText: string;\n\n  /**\n   * To enable the tag mode\n   */\n  public isTagModeEnabled: boolean = false;\n\n  /**\n   * To make input readonly\n   */\n  public inputReadOnly = false;\n\n  /**\n   * Name of the children filed\n   */\n  public groupByChild: string = 'children';\n\n  /**\n   * To enable the Grouping mode\n   */\n  public isGroupingEnabled: boolean = false;\n\n  /**\n   * To enable the Group item selectable\n   */\n  public isSelectableGroup: boolean = true;\n\n  /**\n   * Toggle whether or not to display chips. This can be useful if some custom UI is used\n   * for rendering autocomplete values in multi-select mode\n   * @default false\n   */\n  public hideChips: boolean = false;\n\n  /** \n   * Modifiier function to change display of how primary text field is shown\n   * Allows adding prefix / suffix values when displaying tags\n   */\n  public displayModifierFn: (displayValue: string, index?: number) => string;\n\n  /**\n   * Provides a way for external components to force change detection\n   * on internal components. Any time this observable is emitted, a change\n   * detection will be preformed, ensuring data model and template values are\n   * in sync. This can be useful if some external changes are made and visual\n   * updates need to be made\n   */\n  public registerChanges$: Observable<void>;\n}\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "<p>sets the default debounce time to 250 milliseconds</p>\n",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 8,
+                "line": 9,
                 "rawdescription": "\n\nsets the default debounce time to 250 milliseconds\n"
             },
             "properties": [
@@ -3096,7 +3096,7 @@ const COMPONENTS = {
                     "type": "string",
                     "optional": false,
                     "description": "<p>The aria-label for the auto-complete</p>\n",
-                    "line": 80,
+                    "line": 81,
                     "rawdescription": "\n\nThe aria-label for the auto-complete\n",
                     "modifierKind": [
                         122
@@ -3109,7 +3109,7 @@ const COMPONENTS = {
                     "type": "string",
                     "optional": false,
                     "description": "<p>Place holder text for autocomplete input</p>\n",
-                    "line": 50,
+                    "line": 51,
                     "rawdescription": "\n\nPlace holder text for autocomplete input\n",
                     "modifierKind": [
                         122
@@ -3122,8 +3122,21 @@ const COMPONENTS = {
                     "type": "number",
                     "optional": false,
                     "description": "<p> Sets the time waited for addional key actions Default is 250 milliseconds</p>\n",
-                    "line": 45,
+                    "line": 46,
                     "rawdescription": "\n\n Sets the time waited for addional key actions Default is 250 milliseconds\n",
+                    "modifierKind": [
+                        122
+                    ]
+                },
+                {
+                    "name": "displayModifierFn",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "function",
+                    "optional": false,
+                    "description": "<p>Modifiier function to change display of how primary text field is shown\nAllows adding prefix / suffix values when displaying tags</p>\n",
+                    "line": 119,
+                    "rawdescription": "\n\nModifiier function to change display of how primary text field is shown\nAllows adding prefix / suffix values when displaying tags\n",
                     "modifierKind": [
                         122
                     ]
@@ -3136,7 +3149,7 @@ const COMPONENTS = {
                     "type": "boolean",
                     "optional": false,
                     "description": "<p>Focus into autocomplete search</p>\n",
-                    "line": 75,
+                    "line": 76,
                     "rawdescription": "\n\nFocus into autocomplete search\n",
                     "modifierKind": [
                         122
@@ -3150,7 +3163,7 @@ const COMPONENTS = {
                     "type": "string",
                     "optional": false,
                     "description": "<p>Text appeneded ad the end of free text</p>\n",
-                    "line": 70,
+                    "line": 71,
                     "rawdescription": "\n\nText appeneded ad the end of free text\n",
                     "modifierKind": [
                         122
@@ -3164,7 +3177,7 @@ const COMPONENTS = {
                     "type": "string",
                     "optional": false,
                     "description": "<p>Name of the children filed</p>\n",
-                    "line": 95,
+                    "line": 96,
                     "rawdescription": "\n\nName of the children filed\n",
                     "modifierKind": [
                         122
@@ -3178,22 +3191,22 @@ const COMPONENTS = {
                     "type": "boolean",
                     "optional": false,
                     "description": "<p>Toggle whether or not to display chips. This can be useful if some custom UI is used\nfor rendering autocomplete values in multi-select mode</p>\n",
-                    "line": 112,
+                    "line": 113,
                     "rawdescription": "\n\nToggle whether or not to display chips. This can be useful if some custom UI is used\nfor rendering autocomplete values in multi-select mode\n",
                     "modifierKind": [
                         122
                     ],
                     "jsdoctags": [
                         {
-                            "pos": 2663,
-                            "end": 2681,
+                            "pos": 2698,
+                            "end": 2716,
                             "flags": 4227072,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 317,
                             "tagName": {
-                                "pos": 2664,
-                                "end": 2671,
+                                "pos": 2699,
+                                "end": 2706,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -3212,7 +3225,7 @@ const COMPONENTS = {
                     "type": "string",
                     "optional": false,
                     "description": "<p>Used for the Id of the control</p>\n",
-                    "line": 25,
+                    "line": 26,
                     "rawdescription": "\n\nUsed for the Id of the control\n",
                     "modifierKind": [
                         122
@@ -3226,7 +3239,7 @@ const COMPONENTS = {
                     "type": "",
                     "optional": false,
                     "description": "<p>To make input readonly</p>\n",
-                    "line": 90,
+                    "line": 91,
                     "rawdescription": "\n\nTo make input readonly\n",
                     "modifierKind": [
                         122
@@ -3240,7 +3253,7 @@ const COMPONENTS = {
                     "type": "boolean",
                     "optional": false,
                     "description": "<p>Allows option to allow user text not in the standard results</p>\n",
-                    "line": 65,
+                    "line": 66,
                     "rawdescription": "\n\nAllows option to allow user text not in the standard results\n",
                     "modifierKind": [
                         122
@@ -3254,7 +3267,7 @@ const COMPONENTS = {
                     "type": "boolean",
                     "optional": false,
                     "description": "<p>To enable the Grouping mode</p>\n",
-                    "line": 100,
+                    "line": 101,
                     "rawdescription": "\n\nTo enable the Grouping mode\n",
                     "modifierKind": [
                         122
@@ -3268,7 +3281,7 @@ const COMPONENTS = {
                     "type": "boolean",
                     "optional": false,
                     "description": "<p>To enable the Group item selectable</p>\n",
-                    "line": 105,
+                    "line": 106,
                     "rawdescription": "\n\nTo enable the Group item selectable\n",
                     "modifierKind": [
                         122
@@ -3282,7 +3295,7 @@ const COMPONENTS = {
                     "type": "boolean",
                     "optional": false,
                     "description": "<p>To enable the tag mode</p>\n",
-                    "line": 85,
+                    "line": 86,
                     "rawdescription": "\n\nTo enable the tag mode\n",
                     "modifierKind": [
                         122
@@ -3295,7 +3308,7 @@ const COMPONENTS = {
                     "type": "string",
                     "optional": false,
                     "description": "<p>Used to describe the drop down (Text should match the label that will be supplied)</p>\n",
-                    "line": 20,
+                    "line": 21,
                     "rawdescription": "\n\nUsed to describe the drop down (Text should match the label that will be supplied)\n",
                     "modifierKind": [
                         122
@@ -3308,7 +3321,7 @@ const COMPONENTS = {
                     "type": "number",
                     "optional": false,
                     "description": "<p>Mininumn Characters for search</p>\n",
-                    "line": 55,
+                    "line": 56,
                     "rawdescription": "\n\nMininumn Characters for search\n",
                     "modifierKind": [
                         122
@@ -3321,7 +3334,7 @@ const COMPONENTS = {
                     "type": "string",
                     "optional": false,
                     "description": "<p> This is the primary field used to identify each object in the results</p>\n",
-                    "line": 30,
+                    "line": 31,
                     "rawdescription": "\n\n This is the primary field used to identify each object in the results\n",
                     "modifierKind": [
                         122
@@ -3334,8 +3347,21 @@ const COMPONENTS = {
                     "type": "string",
                     "optional": false,
                     "description": "<p> Property from supplied model used for the top part of the basic template</p>\n",
-                    "line": 35,
+                    "line": 36,
                     "rawdescription": "\n\n Property from supplied model used for the top part of the basic template\n",
+                    "modifierKind": [
+                        122
+                    ]
+                },
+                {
+                    "name": "registerChanges$",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<void>",
+                    "optional": false,
+                    "description": "<p>Provides a way for external components to force change detection\non internal components. Any time this observable is emitted, a change\ndetection will be preformed, ensuring data model and template values are\nin sync. This can be useful if some external changes are made and visual\nupdates need to be made</p>\n",
+                    "line": 128,
+                    "rawdescription": "\n\nProvides a way for external components to force change detection\non internal components. Any time this observable is emitted, a change\ndetection will be preformed, ensuring data model and template values are\nin sync. This can be useful if some external changes are made and visual\nupdates need to be made\n",
                     "modifierKind": [
                         122
                     ]
@@ -3347,7 +3373,7 @@ const COMPONENTS = {
                     "type": "string",
                     "optional": false,
                     "description": "<p> Property from supplied model used for the bottom part of the basic template</p>\n",
-                    "line": 40,
+                    "line": 41,
                     "rawdescription": "\n\n Property from supplied model used for the bottom part of the basic template\n",
                     "modifierKind": [
                         122
@@ -3361,7 +3387,7 @@ const COMPONENTS = {
                     "type": "SelectionMode",
                     "optional": false,
                     "description": "<p>Mode of the model either allows a single item or multiple items</p>\n",
-                    "line": 60,
+                    "line": 61,
                     "rawdescription": "\n\nMode of the model either allows a single item or multiple items\n",
                     "modifierKind": [
                         122
@@ -3650,18 +3676,18 @@ const COMPONENTS = {
         },
         {
             "name": "SdsDialogConfig",
-            "id": "class-SdsDialogConfig-dc43c900e9467fbeee3ba3fcf8bb84ec",
+            "id": "class-SdsDialogConfig-9b8eea9614311bd51a2fb1fc54f8f7aa",
             "file": "libs/packages/components/src/lib/dialog/dialog-config.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "class",
-            "sourceCode": "import {ViewContainerRef} from '@angular/core';\nimport {Direction} from '@angular/cdk/bidi';\nimport {ScrollStrategy} from '@angular/cdk/overlay';\n\n/** Valid ARIA roles for a dialog element. */\nexport type DialogRole = 'dialog' | 'alertdialog';\n\n/** Possible overrides for a dialog's position. */\nexport interface DialogPosition {\n  /** Override for the dialog's top position. */\n  top?: string;\n\n  /** Override for the dialog's bottom position. */\n  bottom?: string;\n\n  /** Override for the dialog's left position. */\n  left?: string;\n\n  /** Override for the dialog's right position. */\n  right?: string;\n}\n\n/**\n * Configuration for opening a modal dialog with the SdsDialog service.\n */\nexport class SdsDialogConfig<D = any> {\n\n  /**\n   * Where the attached component should live in Angular's *logical* component tree.\n   * This affects what is available for injection and the change detection order for the\n   * component instantiated inside of the dialog. This does not affect where the dialog\n   * content will be rendered.\n   */\n  viewContainerRef?: ViewContainerRef;\n\n  /** ID for the dialog. If omitted, a unique one will be generated. */\n  id?: string;\n\n  /** The ARIA role of the dialog element. */\n  role?: DialogRole = 'dialog';\n\n  /** Custom class for the overlay pane. */\n  panelClass?: string | string[] = '';\n\n  /** Whether the dialog has a backdrop. */\n  hasBackdrop? = true;\n\n  /** Custom class for the backdrop, */\n  backdropClass? = '';\n\n  /** Whether the user can use escape or clicking on the backdrop to close the modal. */\n  disableClose? = false;\n\n  /** Width of the dialog. */\n  width? = '';\n\n  /** Height of the dialog. */\n  height? = '';\n\n  /** Min-width of the dialog. If a number is provided, pixel units are assumed. */\n  minWidth?: number | string;\n\n  /** Min-height of the dialog. If a number is provided, pixel units are assumed. */\n  minHeight?: number | string;\n\n  /** Max-width of the dialog. If a number is provided, pixel units are assumed. Defaults to 80vw */\n  maxWidth?: number | string = '80vw';\n\n  /** Max-height of the dialog. If a number is provided, pixel units are assumed. */\n  maxHeight?: number | string;\n\n  /** Position overrides. */\n  position?: DialogPosition;\n\n  /** Data being injected into the child component. */\n  data?: D | null = null;\n\n  /** Layout direction for the dialog's content. */\n  direction?: Direction;\n\n  /** ID of the element that describes the dialog. */\n  ariaDescribedBy?: string | null = null;\n\n  /** Aria label to assign to the dialog element */\n  ariaLabel?: string | null = null;\n\n  /** Whether the dialog should focus the first focusable element on open. */\n  autoFocus? = true;\n\n  /**\n   * Whether the dialog should restore focus to the\n   * previously-focused element, after it's closed.\n   */\n  restoreFocus? = true;\n\n  /** Scroll strategy to be used for the dialog. */\n  scrollStrategy?: ScrollStrategy;\n\n  /**\n   * Whether the dialog should close when the user goes backwards/forwards in history.\n   * Note that this usually doesn't include clicking on links (unless the user is using\n   * the `HashLocationStrategy`).\n   */\n  closeOnNavigation? = true;\n\n  /**\n   * Wheter the dialog its an alert\n   */\n  alert?: 'warning' | 'info' | 'error';\n\n  /**\n   * Whether to display the close button in dialog header\n   */\n  displayCloseBtn? = true;\n\n  /**\n   * Whether dialog is a slide-out. Changes enter and exit animation, and adds\n   * class `dialog-slide-out` to container\n   */\n  slideOut? = false;\n}\n",
+            "sourceCode": "import { ViewContainerRef } from '@angular/core';\nimport { Direction } from '@angular/cdk/bidi';\nimport { ScrollStrategy } from '@angular/cdk/overlay';\n\n/** Valid ARIA roles for a dialog element. */\nexport type DialogRole = 'dialog' | 'alertdialog';\n\n/** Possible overrides for a dialog's position. */\nexport interface DialogPosition {\n  /** Override for the dialog's top position. */\n  top?: string;\n\n  /** Override for the dialog's bottom position. */\n  bottom?: string;\n\n  /** Override for the dialog's left position. */\n  left?: string;\n\n  /** Override for the dialog's right position. */\n  right?: string;\n}\n\n/**\n * Configuration for opening a modal dialog with the SdsDialog service.\n */\nexport class SdsDialogConfig<D = any> {\n\n  /**\n   * Where the attached component should live in Angular's *logical* component tree.\n   * This affects what is available for injection and the change detection order for the\n   * component instantiated inside of the dialog. This does not affect where the dialog\n   * content will be rendered.\n   */\n  viewContainerRef?: ViewContainerRef;\n\n  /** ID for the dialog. If omitted, a unique one will be generated. */\n  id?: string;\n\n  /** The ARIA role of the dialog element. */\n  role?: DialogRole = 'dialog';\n\n  /** Custom class for the overlay pane. */\n  panelClass?: string | string[] = '';\n\n  /** Whether the dialog has a backdrop. */\n  hasBackdrop?= true;\n\n  /** Custom class for the backdrop, */\n  backdropClass?= '';\n\n  /** Whether the user can use escape or clicking on the backdrop to close the modal. */\n  disableClose?= false;\n\n  /** Width of the dialog. */\n  width?= '';\n\n  /** Height of the dialog. */\n  height?= '';\n\n  /** Min-width of the dialog. If a number is provided, pixel units are assumed. */\n  minWidth?: number | string;\n\n  /** Min-height of the dialog. If a number is provided, pixel units are assumed. */\n  minHeight?: number | string;\n\n  /** Max-width of the dialog. If a number is provided, pixel units are assumed. Defaults to 80vw */\n  maxWidth?: number | string = '80vw';\n\n  /** Max-height of the dialog. If a number is provided, pixel units are assumed. */\n  maxHeight?: number | string;\n\n  /** Position overrides. */\n  position?: DialogPosition;\n\n  /** Data being injected into the child component. */\n  data?: D | null = null;\n\n  /** Layout direction for the dialog's content. */\n  direction?: Direction;\n\n  /** ID of the element that describes the dialog. */\n  ariaDescribedBy?: string | null = null;\n\n  /** Aria label to assign to the dialog element */\n  ariaLabel?: string | null = null;\n\n  /** Whether the dialog should focus the first focusable element on open. */\n  autoFocus?= true;\n\n  /**\n   * Whether the dialog should restore focus to the\n   * previously-focused element, after it's closed.\n   */\n  restoreFocus?= true;\n\n  /** Scroll strategy to be used for the dialog. */\n  scrollStrategy?: ScrollStrategy;\n\n  /**\n   * Whether the dialog should close when the user goes backwards/forwards in history.\n   * Note that this usually doesn't include clicking on links (unless the user is using\n   * the `HashLocationStrategy`).\n   */\n  closeOnNavigation?= true;\n\n  /**\n   * Wheter the dialog its an alert\n   */\n  alert?: 'warning' | 'info' | 'error' | 'success';\n\n  /**\n   * Whether to display the close button in dialog header\n   */\n  displayCloseBtn?= true;\n\n  /**\n   * Whether dialog is a slide-out. Changes enter and exit animation, and adds\n   * class `dialog-slide-out` to container\n   */\n  slideOut?= false;\n}\n",
             "properties": [
                 {
                     "name": "alert",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "\"warning\" | \"info\" | \"error\"",
+                    "type": "\"warning\" | \"info\" | \"error\" | \"success\"",
                     "optional": true,
                     "description": "<p>Wheter the dialog its an alert</p>\n",
                     "line": 109,
@@ -5169,13 +5195,26 @@ const COMPONENTS = {
         },
         {
             "name": "SDSSelectedResultConfiguration",
-            "id": "class-SDSSelectedResultConfiguration-24e084062ea572751b858341d16eb2b7",
+            "id": "class-SDSSelectedResultConfiguration-8cea9d3e4a71dad5ed79e10a5e35e1e4",
             "file": "libs/packages/components/src/lib/selected-result/models/SDSSelectedResultConfiguration.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "class",
-            "sourceCode": "import { SelectionMode } from './sds-selected-item-model-helper';\n\nexport class SDSSelectedResultConfiguration {\n\n  /**\n   * Used to describe the drop down (Text should match the label that will be supplied)\n   */\n  public labelText: string;\n\n  /**\n   *  This is the primary field used to identify each object in the results\n   */\n  public primaryKeyField: string;\n\n  /**\n   *  Property from supplied model used for the top part of the basic template\n   */\n  public primaryTextField: string;\n\n  /**\n   *  Property from supplied model used for the bottom part of the basic template\n   */\n  public secondaryTextField: string;\n\n  /**\n   * Mode of the model either allows a single item or multiple items\n   */\n  public selectionMode: SelectionMode = SelectionMode.SINGLE;\n}\n",
+            "sourceCode": "import { Observable } from 'rxjs';\nimport { SelectionMode } from './sds-selected-item-model-helper';\n\nexport class SDSSelectedResultConfiguration {\n\n  /**\n   * Used to describe the drop down (Text should match the label that will be supplied)\n   */\n  public labelText: string;\n\n  /**\n   *  This is the primary field used to identify each object in the results\n   */\n  public primaryKeyField: string;\n\n  /**\n   *  Property from supplied model used for the top part of the basic template\n   */\n  public primaryTextField: string;\n\n  /**\n   *  Property from supplied model used for the bottom part of the basic template\n   */\n  public secondaryTextField: string;\n\n  /**\n   * Mode of the model either allows a single item or multiple items\n   */\n  public selectionMode: SelectionMode = SelectionMode.SINGLE;\n\n  /** \n   * Modifiier function to change display of how primary text field is shown\n   * Allows adding prefix / suffix values when displaying tags\n   */\n  public displayModifierFn?: (displayValue: string, index?: number) => string;\n}\n",
             "properties": [
+                {
+                    "name": "displayModifierFn",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "function",
+                    "optional": true,
+                    "description": "<p>Modifiier function to change display of how primary text field is shown\nAllows adding prefix / suffix values when displaying tags</p>\n",
+                    "line": 35,
+                    "rawdescription": "\n\nModifiier function to change display of how primary text field is shown\nAllows adding prefix / suffix values when displaying tags\n",
+                    "modifierKind": [
+                        122
+                    ]
+                },
                 {
                     "name": "labelText",
                     "deprecated": false,
@@ -5183,7 +5222,7 @@ const COMPONENTS = {
                     "type": "string",
                     "optional": false,
                     "description": "<p>Used to describe the drop down (Text should match the label that will be supplied)</p>\n",
-                    "line": 8,
+                    "line": 9,
                     "rawdescription": "\n\nUsed to describe the drop down (Text should match the label that will be supplied)\n",
                     "modifierKind": [
                         122
@@ -5196,7 +5235,7 @@ const COMPONENTS = {
                     "type": "string",
                     "optional": false,
                     "description": "<p> This is the primary field used to identify each object in the results</p>\n",
-                    "line": 13,
+                    "line": 14,
                     "rawdescription": "\n\n This is the primary field used to identify each object in the results\n",
                     "modifierKind": [
                         122
@@ -5209,7 +5248,7 @@ const COMPONENTS = {
                     "type": "string",
                     "optional": false,
                     "description": "<p> Property from supplied model used for the top part of the basic template</p>\n",
-                    "line": 18,
+                    "line": 19,
                     "rawdescription": "\n\n Property from supplied model used for the top part of the basic template\n",
                     "modifierKind": [
                         122
@@ -5222,7 +5261,7 @@ const COMPONENTS = {
                     "type": "string",
                     "optional": false,
                     "description": "<p> Property from supplied model used for the bottom part of the basic template</p>\n",
-                    "line": 23,
+                    "line": 24,
                     "rawdescription": "\n\n Property from supplied model used for the bottom part of the basic template\n",
                     "modifierKind": [
                         122
@@ -5236,7 +5275,7 @@ const COMPONENTS = {
                     "type": "SelectionMode",
                     "optional": false,
                     "description": "<p>Mode of the model either allows a single item or multiple items</p>\n",
-                    "line": 28,
+                    "line": 29,
                     "rawdescription": "\n\nMode of the model either allows a single item or multiple items\n",
                     "modifierKind": [
                         122
@@ -7867,191 +7906,13 @@ const COMPONENTS = {
             }
         },
         {
-            "name": "SdsToolbarExpandDirective",
-            "id": "directive-SdsToolbarExpandDirective-c6913009548411e7fd6803737d530c6f",
-            "file": "libs/packages/components/src/lib/toolbar/toolbar-expand.directive.ts",
-            "type": "directive",
-            "description": "",
-            "rawdescription": "\n",
-            "sourceCode": "import { Directive, ElementRef, Input, Renderer2, OnInit } from \"@angular/core\";\nimport { SdsToolbarComponent } from \"./toolbar.component\";\n\n@Directive({\n  selector: \"[sdsToolbarExpand]\"\n})\nexport class SdsToolbarExpandDirective implements OnInit {\n  /** Width of the toolbar while expanded. */\n  _expandedWidth: string;\n\n  /** References the toolbar instance that the element its associated with. */\n  @Input(\"sdsToolbarExpand\")\n  get toolbar() {\n    return this._toolbar;\n  }\n  set toolbar(toolbar: SdsToolbarComponent) {\n    if (toolbar === this._toolbar) {\n      return;\n    }\n    this._toolbar = toolbar;\n    /** Sets toolbar expanded width */\n\n    this._expandedWidth = this._toolbar.expandedSpace;\n  }\n  private _toolbar: SdsToolbarComponent;\n\n  constructor(private renderer: Renderer2, private _element: ElementRef) { }\n  ngOnInit() {\n    this.setStyle(this.toolbar.expanded);\n    this.toolbar.expandedChange.subscribe(value => {\n      this.setStyle(value);\n    });\n  }\n\n  private setStyle(value: any) {\n    if (value) {\n      this.renderer.setStyle(this._element.nativeElement, \"margin-left\", `${this._expandedWidth}`);\n    }\n    else {\n      this.renderer.removeStyle(this._element.nativeElement, \"margin-left\");\n    }\n  }\n}\n",
-            "selector": "[sdsToolbarExpand]",
-            "providers": [],
-            "inputsClass": [
-                {
-                    "name": "sdsToolbarExpand",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "References the toolbar instance that the element its associated with.",
-                    "description": "<p>References the toolbar instance that the element its associated with.</p>\n",
-                    "line": 13,
-                    "type": "any"
-                }
-            ],
-            "outputsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "propertiesClass": [
-                {
-                    "name": "_expandedWidth",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "optional": false,
-                    "description": "<p>Width of the toolbar while expanded.</p>\n",
-                    "line": 9,
-                    "rawdescription": "\nWidth of the toolbar while expanded."
-                },
-                {
-                    "name": "_toolbar",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "SdsToolbarComponent",
-                    "optional": false,
-                    "description": "",
-                    "line": 25,
-                    "modifierKind": [
-                        120
-                    ]
-                }
-            ],
-            "methodsClass": [
-                {
-                    "name": "ngOnInit",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 28,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "setStyle",
-                    "args": [
-                        {
-                            "name": "value",
-                            "type": "any",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 35,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "modifierKind": [
-                        120
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "value",
-                            "type": "any",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                }
-            ],
-            "implements": [
-                "OnInit"
-            ],
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [
-                    {
-                        "name": "renderer",
-                        "type": "Renderer2",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    },
-                    {
-                        "name": "_element",
-                        "type": "ElementRef",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    }
-                ],
-                "line": 25,
-                "jsdoctags": [
-                    {
-                        "name": "renderer",
-                        "type": "Renderer2",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    },
-                    {
-                        "name": "_element",
-                        "type": "ElementRef",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
-            },
-            "accessors": {
-                "toolbar": {
-                    "name": "toolbar",
-                    "setSignature": {
-                        "name": "toolbar",
-                        "type": "void",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "args": [
-                            {
-                                "name": "toolbar",
-                                "type": "SdsToolbarComponent",
-                                "deprecated": false,
-                                "deprecationMessage": ""
-                            }
-                        ],
-                        "returnType": "void",
-                        "line": 16,
-                        "jsdoctags": [
-                            {
-                                "name": "toolbar",
-                                "type": "SdsToolbarComponent",
-                                "deprecated": false,
-                                "deprecationMessage": "",
-                                "tagName": {
-                                    "text": "param"
-                                }
-                            }
-                        ]
-                    },
-                    "getSignature": {
-                        "name": "toolbar",
-                        "type": "",
-                        "returnType": "",
-                        "line": 13,
-                        "rawdescription": "References the toolbar instance that the element its associated with.",
-                        "description": "<p>References the toolbar instance that the element its associated with.</p>\n"
-                    }
-                }
-            }
-        },
-        {
             "name": "SdsTooltipDirective",
-            "id": "directive-SdsTooltipDirective-a89acca1ecb6852ff9b7988a3cfaeb21",
+            "id": "directive-SdsTooltipDirective-3f48bed8c4afaaf0586188d7c6e4e695",
             "file": "libs/packages/components/src/lib/tooltip/tooltip.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { AfterViewInit, Directive, ElementRef, HostListener, Input, Renderer2, TemplateRef } from '@angular/core';\n\n@Directive({\n  selector: '[sdsTooltip]',\n  exportAs: 'sdsTooltip'\n})\nexport class SdsTooltipDirective implements AfterViewInit {\n\n  private _sdsTooltip: string | TemplateRef<any> | HTMLDivElement;\n  sdsTooltipDiv: HTMLElement;\n\n  @Input()\n  position: string = 'top';\n\n  @HostListener('focus', ['$event']) onFocus(){\n    this.renderer.setAttribute(this.sdsTooltipDiv, 'aria-hidden', 'false')\n  }\n  @HostListener('blur', ['$event']) onBlur(){\n    this.renderer.setAttribute(this.sdsTooltipDiv, 'aria-hidden', 'true')\n  }\n\n\n  constructor(private el: ElementRef, private renderer: Renderer2) {\n    this.renderer.addClass(this.el.nativeElement, 'sds-tooltip');\n    this.renderer.setAttribute(this.el.nativeElement, 'tabindex', '0')\n\n    this.sdsTooltipDiv = document.createElement('div');\n\n    this.renderer.addClass(this.sdsTooltipDiv, 'sds-tooltip__content');\n  }\n\n  ngAfterViewInit() {\n    this.renderer.setAttribute(this.sdsTooltipDiv, 'data-position', this.position)\n    this.renderer.addClass(this.sdsTooltipDiv, this.position);\n    this.renderer.appendChild(this.sdsTooltipDiv, this.sdsTooltip);\n\n    this.renderer.appendChild(this.el.nativeElement, this.sdsTooltipDiv);\n  }\n\n  @Input()\n  set sdsTooltip(value: string | TemplateRef<any> | HTMLDivElement){\n    if(typeof value === 'string'){\n      this._sdsTooltip = document.createElement('div');\n      this._sdsTooltip.innerText = value;\n    } else {\n      this._sdsTooltip = value;\n    }\n    this.renderer.addClass(this._sdsTooltip, 'tooltip')\n  }\n\n  get sdsTooltip(): string | TemplateRef<any> | HTMLDivElement{\n    return this._sdsTooltip;\n  }\n\n}\n",
+            "sourceCode": "import { AfterViewInit, Directive, ElementRef, HostListener, Input, Renderer2, TemplateRef } from '@angular/core';\n\n@Directive({\n  selector: '[sdsTooltip]',\n  exportAs: 'sdsTooltip'\n})\nexport class SdsTooltipDirective implements AfterViewInit {\n\n  private _sdsTooltip: string | TemplateRef<any> | HTMLDivElement;\n  sdsTooltipDiv: HTMLElement;\n\n  @Input()\n  position: string = 'top';\n\n  @HostListener('focus') onFocus() {\n    this.renderer.setAttribute(this.sdsTooltipDiv, 'aria-hidden', 'false')\n  }\n  @HostListener('blur') onBlur() {\n    this.renderer.setAttribute(this.sdsTooltipDiv, 'aria-hidden', 'true')\n  }\n\n\n  constructor(private el: ElementRef, private renderer: Renderer2) {\n    this.renderer.addClass(this.el.nativeElement, 'sds-tooltip');\n    this.renderer.setAttribute(this.el.nativeElement, 'tabindex', '0')\n\n    this.sdsTooltipDiv = document.createElement('div');\n\n    this.renderer.addClass(this.sdsTooltipDiv, 'sds-tooltip__content');\n  }\n\n  ngAfterViewInit() {\n    this.renderer.setAttribute(this.sdsTooltipDiv, 'data-position', this.position)\n    if (this.position && this.sdsTooltip) {\n      this.renderer.addClass(this.sdsTooltipDiv, this.position);\n      this.renderer.appendChild(this.sdsTooltipDiv, this.sdsTooltip);\n      this.renderer.appendChild(this.el.nativeElement, this.sdsTooltipDiv);\n    }\n  }\n\n  @Input()\n  set sdsTooltip(value: string | TemplateRef<any> | HTMLDivElement) {\n    if (typeof value === 'string') {\n      this._sdsTooltip = document.createElement('div');\n      this._sdsTooltip.innerHTML = value;\n    } else {\n      this._sdsTooltip = value;\n    }\n\n    if (this._sdsTooltip) {\n      this.renderer.addClass(this._sdsTooltip, 'tooltip')\n    }\n  }\n\n  get sdsTooltip(): string | TemplateRef<any> | HTMLDivElement {\n    return this._sdsTooltip;\n  }\n\n}\n",
             "selector": "[sdsTooltip]",
             "providers": [],
             "inputsClass": [
@@ -8067,7 +7928,7 @@ const COMPONENTS = {
                     "name": "sdsTooltip",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 41,
+                    "line": 42,
                     "type": ""
                 }
             ],
@@ -8079,9 +7940,7 @@ const COMPONENTS = {
                 {
                     "name": "blur",
                     "args": [],
-                    "argsDecorator": [
-                        "$event"
-                    ],
+                    "argsDecorator": [],
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 18
@@ -8089,9 +7948,7 @@ const COMPONENTS = {
                 {
                     "name": "focus",
                     "args": [],
-                    "argsDecorator": [
-                        "$event"
-                    ],
+                    "argsDecorator": [],
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 15
@@ -8143,7 +8000,7 @@ const COMPONENTS = {
                     "decorators": [
                         {
                             "name": "HostListener",
-                            "stringifiedArguments": "'blur', ['$event']"
+                            "stringifiedArguments": "'blur'"
                         }
                     ]
                 },
@@ -8159,7 +8016,7 @@ const COMPONENTS = {
                     "decorators": [
                         {
                             "name": "HostListener",
-                            "stringifiedArguments": "'focus', ['$event']"
+                            "stringifiedArguments": "'focus'"
                         }
                     ]
                 }
@@ -8225,7 +8082,7 @@ const COMPONENTS = {
                             }
                         ],
                         "returnType": "void",
-                        "line": 41,
+                        "line": 42,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -8242,7 +8099,7 @@ const COMPONENTS = {
                         "name": "sdsTooltip",
                         "type": "",
                         "returnType": "string | TemplateRef | HTMLDivElement",
-                        "line": 51
+                        "line": 55
                     }
                 }
             }
@@ -9026,7 +8883,7 @@ const COMPONENTS = {
         },
         {
             "name": "SdsAccordionItemComponent",
-            "id": "component-SdsAccordionItemComponent-1c1205e908b29a8d12afc75412c96986",
+            "id": "component-SdsAccordionItemComponent-276ca499365a1a15dce6bf7a4af69471",
             "file": "libs/packages/components/src/lib/accordion/accordion-item.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [
@@ -9206,7 +9063,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 139,
+                    "line": 142,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nChecks whether the accordion item's content contains the currently-focused element.",
@@ -9218,7 +9075,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "SdsAccordionItemState",
                     "typeParameters": [],
-                    "line": 111,
+                    "line": 114,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nGets the expanded state string.",
@@ -9230,7 +9087,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 115,
+                    "line": 118,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -9247,7 +9104,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 128,
+                    "line": 131,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -9268,7 +9125,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 132,
+                    "line": 135,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -9280,7 +9137,7 @@ const COMPONENTS = {
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AnimationEvent } from '@angular/animations';\nimport { CdkAccordionItem } from \"@angular/cdk/accordion\";\nimport { UniqueSelectionDispatcher } from '@angular/cdk/collections';\nimport { TemplatePortal } from '@angular/cdk/portal';\nimport {\n  AfterContentInit,\n  ChangeDetectionStrategy,\n  ChangeDetectorRef,\n  Component,\n  ContentChild,\n  EventEmitter,\n  ElementRef,\n  Inject,\n  OnChanges,\n  OnDestroy,\n  Optional,\n  Output,\n  SimpleChanges,\n  SkipSelf,\n  ViewContainerRef,\n  ViewEncapsulation,\n  ViewChild\n} from \"@angular/core\";\nimport { DOCUMENT } from '@angular/common';\nimport { ANIMATION_MODULE_TYPE } from '@angular/platform-browser/animations';\nimport { Subject } from 'rxjs';\nimport { filter, startWith, take, distinctUntilChanged } from 'rxjs/operators';\nimport { sdsExpansionAnimations } from './accordion-animations';\nimport { SdsAccordionItemContentDirective } from './accordion-item-content.directive';\nimport { SDS_ACCORDION, SdsAccordionBase } from './accordion-base';\n\n/** Accordion Item's states. */\nexport type SdsAccordionItemState = 'expanded' | 'collapsed';\n\n/** Counter for generating unique element ids. */\nlet uniqueId = 0;\n\n@Component({\n  selector: \"sds-accordion-item\",\n  exportAs: \"sdsAccordionItem\",\n  templateUrl: \"accordion-item.component.html\",\n  encapsulation: ViewEncapsulation.None,\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  inputs: ['disabled', 'expanded'],\n  outputs: ['opened', 'closed', 'expandedChange'],\n  animations: [sdsExpansionAnimations.bodyExpansion],\n  host: {\n    'class': 'sds-accordion__item',\n    '[class.sds-accordion__item--expanded]': 'expanded',\n    '[class._sds-animation-noopable]': '_animationMode === \"NoopAnimations\"'\n  }\n})\nexport class SdsAccordionItemComponent extends CdkAccordionItem\n  implements AfterContentInit, OnChanges, OnDestroy {\n  private _document: Document;\n\n  /** An event emitted after the body's expansion animation happens. */\n  @Output() afterExpand = new EventEmitter<void>();\n\n  /** An event emitted after the body's collapse animation happens. */\n  @Output() afterCollapse = new EventEmitter<void>();\n\n  /** Stream that emits for changes in `@Input` properties. */\n  readonly _inputChanges = new Subject<SimpleChanges>();\n\n  /** Optionally defined accordion the accordion item belongs to. */\n  accordion: SdsAccordionBase;\n\n  /** Content that will be rendered lazily. */\n  @ContentChild(SdsAccordionItemContentDirective) _lazyContent: SdsAccordionItemContentDirective;\n\n  /** Element containing the accordion item's user-provided content. */\n  // @ViewChild('body') _body: ElementRef<HTMLElement>;\n  @ViewChild('body', { static: false }) _body: ElementRef<HTMLElement>;\n\n  /** Portal holding the user's content. */\n  _portal: TemplatePortal;\n\n  /** ID for the associated header element. Used for a11y labelling. */\n  _headerId = `sds-accordion-item-header-${uniqueId++}`;\n\n  /** Stream of body animation done events. */\n  _bodyAnimationDone = new Subject<AnimationEvent>();\n\n  constructor(@Optional() @SkipSelf() @Inject(SDS_ACCORDION) accordion: SdsAccordionBase,\n    _changeDetectorRef: ChangeDetectorRef,\n    _uniqueSelectionDispatcher: UniqueSelectionDispatcher,\n    private _viewContainerRef: ViewContainerRef,\n    @Inject(DOCUMENT) _document: any,\n    @Optional() @Inject(ANIMATION_MODULE_TYPE) public _animationMode: string) {\n    super(accordion, _changeDetectorRef, _uniqueSelectionDispatcher);\n    this.accordion = accordion;\n    this._document = _document;\n\n    // We need a Subject with distinctUntilChanged, because the `done` event\n    // fires twice on some browsers. See https://github.com/angular/angular/issues/24084\n    this._bodyAnimationDone.pipe(distinctUntilChanged((x, y) => {\n      return x.fromState === y.fromState && x.toState === y.toState;\n    })).subscribe(event => {\n      if (event.fromState !== 'void') {\n        if (event.toState === 'expanded') {\n          this.afterExpand.emit();\n        } else if (event.toState === 'collapsed') {\n          this.afterCollapse.emit();\n        }\n      }\n    });\n  }\n\n  /** Gets the expanded state string. */\n  _getExpandedState(): SdsAccordionItemState {\n    return this.expanded ? 'expanded' : 'collapsed';\n  }\n\n  ngAfterContentInit() {\n    if (this._lazyContent) {\n      // Render the content as soon as the accordion item becomes open.\n      this.opened.pipe(\n        startWith(null!),\n        filter(() => this.expanded && !this._portal),\n        take(1)\n      ).subscribe(() => {\n        this._portal = new TemplatePortal(this._lazyContent._template, this._viewContainerRef);\n      });\n    }\n  }\n\n  ngOnChanges(changes: SimpleChanges) {\n    this._inputChanges.next(changes);\n  }\n\n  ngOnDestroy() {\n    super.ngOnDestroy();\n    this._bodyAnimationDone.complete();\n    this._inputChanges.complete();\n  }\n\n  /** Checks whether the accordion item's content contains the currently-focused element. */\n  _containsFocus(): boolean {\n    if (this._body) {\n      const focusedElement = this._document.activeElement;\n      const bodyElement = this._body.nativeElement;\n      return focusedElement === bodyElement || bodyElement.contains(focusedElement);\n    }\n\n    return false;\n  }\n}\n",
+            "sourceCode": "import { AnimationEvent } from '@angular/animations';\nimport { CdkAccordionItem } from \"@angular/cdk/accordion\";\nimport { UniqueSelectionDispatcher } from '@angular/cdk/collections';\nimport { TemplatePortal } from '@angular/cdk/portal';\nimport {\n  AfterContentInit,\n  ChangeDetectionStrategy,\n  ChangeDetectorRef,\n  Component,\n  ContentChild,\n  EventEmitter,\n  ElementRef,\n  Inject,\n  OnChanges,\n  OnDestroy,\n  Optional,\n  Output,\n  SimpleChanges,\n  SkipSelf,\n  ViewContainerRef,\n  ViewEncapsulation,\n  ViewChild\n} from \"@angular/core\";\nimport { DOCUMENT } from '@angular/common';\nimport { ANIMATION_MODULE_TYPE } from '@angular/platform-browser/animations';\nimport { Subject } from 'rxjs';\nimport { filter, startWith, take, distinctUntilChanged } from 'rxjs/operators';\nimport { sdsExpansionAnimations } from './accordion-animations';\nimport { SdsAccordionItemContentDirective } from './accordion-item-content.directive';\nimport { SDS_ACCORDION, SdsAccordionBase } from './accordion-base';\n\n/** Accordion Item's states. */\nexport type SdsAccordionItemState = 'expanded' | 'collapsed';\n\n/** Counter for generating unique element ids. */\nlet uniqueId = 0;\n\n@Component({\n  selector: \"sds-accordion-item\",\n  exportAs: \"sdsAccordionItem\",\n  templateUrl: \"accordion-item.component.html\",\n  encapsulation: ViewEncapsulation.None,\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  inputs: ['disabled', 'expanded'],\n  outputs: ['opened', 'closed', 'expandedChange'],\n  animations: [sdsExpansionAnimations.bodyExpansion],\n  host: {\n    'class': 'sds-accordion__item',\n    '[class.sds-accordion__item--expanded]': 'expanded',\n    '[class._sds-animation-noopable]': '_animationMode === \"NoopAnimations\"'\n  }\n})\nexport class SdsAccordionItemComponent extends CdkAccordionItem\n  implements AfterContentInit, OnChanges, OnDestroy {\n  private _document: Document;\n\n  /** An event emitted after the body's expansion animation happens. */\n  @Output() afterExpand = new EventEmitter<void>();\n\n  /** An event emitted after the body's collapse animation happens. */\n  @Output() afterCollapse = new EventEmitter<void>();\n\n  /** Stream that emits for changes in `@Input` properties. */\n  readonly _inputChanges = new Subject<SimpleChanges>();\n\n  /** Optionally defined accordion the accordion item belongs to. */\n  accordion: SdsAccordionBase;\n\n  /** Content that will be rendered lazily. */\n  @ContentChild(SdsAccordionItemContentDirective) _lazyContent: SdsAccordionItemContentDirective;\n\n  /** Element containing the accordion item's user-provided content. */\n  // @ViewChild('body') _body: ElementRef<HTMLElement>;\n  @ViewChild('body', { static: false }) _body: ElementRef<HTMLElement>;\n\n  /** Portal holding the user's content. */\n  _portal: TemplatePortal;\n\n  /** ID for the associated header element. Used for a11y labelling. */\n  _headerId = `sds-accordion-item-header-${uniqueId++}`;\n\n  /** Stream of body animation done events. */\n  _bodyAnimationDone = new Subject<AnimationEvent>();\n\n  constructor(@Optional() @SkipSelf() @Inject(SDS_ACCORDION) accordion: SdsAccordionBase,\n    _changeDetectorRef: ChangeDetectorRef,\n    _uniqueSelectionDispatcher: UniqueSelectionDispatcher,\n    private _viewContainerRef: ViewContainerRef,\n    @Inject(DOCUMENT) _document: any,\n    @Optional() @Inject(ANIMATION_MODULE_TYPE) public _animationMode: string) {\n    super(accordion, _changeDetectorRef, _uniqueSelectionDispatcher);\n    this.accordion = accordion;\n    this._document = _document;\n\n    // We need a Subject with distinctUntilChanged, because the `done` event\n    // fires twice on some browsers. See https://github.com/angular/angular/issues/24084\n    this._bodyAnimationDone.pipe(distinctUntilChanged((x, y) => {\n      return x.fromState === y.fromState && x.toState === y.toState;\n    })).subscribe(event => {\n      if (event.fromState !== 'void') {\n        if (event.toState === 'expanded') {\n          this.afterExpand.emit();\n        } else if (event.toState === 'collapsed') {\n          this.afterCollapse.emit();\n        }\n      }\n    });\n\n    console.warn(`This is a deprectaed version of accordion component, and will be removed in future versions. \n      Please switch to using usa-accordion from @gsa-sam/ngx-uswds (https://github.com/GSA/ngx-uswds)`);\n  }\n\n  /** Gets the expanded state string. */\n  _getExpandedState(): SdsAccordionItemState {\n    return this.expanded ? 'expanded' : 'collapsed';\n  }\n\n  ngAfterContentInit() {\n    if (this._lazyContent) {\n      // Render the content as soon as the accordion item becomes open.\n      this.opened.pipe(\n        startWith(null!),\n        filter(() => this.expanded && !this._portal),\n        take(1)\n      ).subscribe(() => {\n        this._portal = new TemplatePortal(this._lazyContent._template, this._viewContainerRef);\n      });\n    }\n  }\n\n  ngOnChanges(changes: SimpleChanges) {\n    this._inputChanges.next(changes);\n  }\n\n  ngOnDestroy() {\n    super.ngOnDestroy();\n    this._bodyAnimationDone.complete();\n    this._inputChanges.complete();\n  }\n\n  /** Checks whether the accordion item's content contains the currently-focused element. */\n  _containsFocus(): boolean {\n    if (this._body) {\n      const focusedElement = this._document.activeElement;\n      const bodyElement = this._body.nativeElement;\n      return focusedElement === bodyElement || bodyElement.contains(focusedElement);\n    }\n\n    return false;\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -9682,8 +9539,73 @@ const COMPONENTS = {
             "templateData": "<span class=\"sds-accordion__title\" role=\"heading\" aria-level=\"2\">\n  <span class=\"sds-accordion__title-text\">\n    <ng-content></ng-content>\n  </span>\n  <span class=\"sds-accordion__icon\"></span>\n</span>\n"
         },
         {
+            "name": "SdsActionsMenuComponent",
+            "id": "component-SdsActionsMenuComponent-b29369330e17e32ba02c3425b2f75f08",
+            "file": "libs/packages/components/src/lib/actions-menu/actions-menu.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "sds-actions-menu",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "actions-menu.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "model",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 8,
+                    "type": "any"
+                },
+                {
+                    "name": "size",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 9,
+                    "type": "string"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "clicks",
+                    "defaultValue": "new EventEmitter<string>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'sds-actions-menu',\n  templateUrl: 'actions-menu.component.html'\n})\nexport class SdsActionsMenuComponent {\n  @Input() model;\n  @Input() size: string;\n  @Output() clicks = new EventEmitter<string>();\n  constructor() {}\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 10
+            },
+            "templateData": "<!-- Button that triggers menu (sdsMenuTriggerFor) -->\n<button class=\"sds-button sds-button--circular\" [class.sds-button--primary]=\"model.trigger.type === 'primary'\"\n  [class.sds-button--shadow]=\"model.trigger.shadow\" [class.sds-button--small]=\"size === 'sm'\"\n  [sdsMenuTriggerFor]=\"menu\">\n  <usa-icon [icon]=\"'three-dots-vertical'\" [size]=\"'1x'\"></usa-icon>\n  <span class=\"usa-sr-only\">Toggle Actions</span>\n</button>\n\n<!-- Menu content -->\n<sds-menu #menu=\"sdsMenu\" [size]=\"size\" xPosition=\"before\" overlapTrigger=\"true\">\n  <!-- Menu header (optional) -->\n  <sds-menu-header>Actions</sds-menu-header>\n  <!-- Menu items -->\n  <button *ngFor=\"let button of model.actions\" (click)=\"clicks.emit(button.id)\" sds-menu-item>\n    {{ button.text }}\n  </button>\n</sds-menu>\n"
+        },
+        {
             "name": "SDSAutocompleteComponent",
-            "id": "component-SDSAutocompleteComponent-848728be6f1554d9da5c823fbf039184",
+            "id": "component-SDSAutocompleteComponent-3b2ac237c65767f1253b1d3242fde9c0",
             "file": "libs/packages/components/src/lib/autocomplete/autocomplete.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -9711,7 +9633,7 @@ const COMPONENTS = {
                     "deprecationMessage": "",
                     "rawdescription": "Configuration for the control",
                     "description": "<p>Configuration for the control</p>\n",
-                    "line": 59,
+                    "line": 62,
                     "type": "SDSAutocompletelConfiguration"
                 },
                 {
@@ -9721,7 +9643,7 @@ const COMPONENTS = {
                     "deprecationMessage": "",
                     "rawdescription": "Model contain only the primary key, primary value, and secondary value.",
                     "description": "<p>Model contain only the primary key, primary value, and secondary value.</p>\n",
-                    "line": 65,
+                    "line": 68,
                     "type": "boolean"
                 },
                 {
@@ -9730,7 +9652,7 @@ const COMPONENTS = {
                     "deprecationMessage": "",
                     "rawdescription": "Allow to insert a customized template for selected items",
                     "description": "<p>Allow to insert a customized template for selected items</p>\n",
-                    "line": 46,
+                    "line": 49,
                     "type": "TemplateRef<any>"
                 },
                 {
@@ -9739,7 +9661,7 @@ const COMPONENTS = {
                     "deprecationMessage": "",
                     "rawdescription": "Instance of the SamHiercarchicalServiceInterface provided",
                     "description": "<p>Instance of the SamHiercarchicalServiceInterface provided</p>\n",
-                    "line": 71,
+                    "line": 74,
                     "type": "SDSAutocompleteServiceInterface"
                 },
                 {
@@ -9748,12 +9670,22 @@ const COMPONENTS = {
                     "deprecationMessage": "",
                     "rawdescription": "Allow to insert a customized template for suggestions results",
                     "description": "<p>Allow to insert a customized template for suggestions results</p>\n",
-                    "line": 41,
+                    "line": 44,
                     "type": "TemplateRef<any>"
                 }
             ],
             "outputsClass": [],
             "propertiesClass": [
+                {
+                    "name": "_subscriptions",
+                    "defaultValue": "new Subscription()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 76
+                },
                 {
                     "name": "autocompleteSearch",
                     "deprecated": false,
@@ -9761,7 +9693,7 @@ const COMPONENTS = {
                     "type": "SDSAutocompleteSearchComponent",
                     "optional": false,
                     "description": "",
-                    "line": 73,
+                    "line": 78,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -9776,7 +9708,7 @@ const COMPONENTS = {
                     "type": "boolean",
                     "optional": false,
                     "description": "",
-                    "line": 53,
+                    "line": 56,
                     "modifierKind": [
                         122
                     ]
@@ -9789,7 +9721,7 @@ const COMPONENTS = {
                     "type": "SDSSelectedItemModel",
                     "optional": false,
                     "description": "<p>The data model that has the selected item</p>\n",
-                    "line": 51,
+                    "line": 54,
                     "rawdescription": "\n\nThe data model that has the selected item\n",
                     "modifierKind": [
                         122
@@ -9803,7 +9735,7 @@ const COMPONENTS = {
                     "type": "",
                     "optional": false,
                     "description": "<p>Stored Event for ControlValueAccessor</p>\n",
-                    "line": 85,
+                    "line": 106,
                     "rawdescription": "\n\nStored Event for ControlValueAccessor\n",
                     "modifierKind": [
                         122
@@ -9817,7 +9749,7 @@ const COMPONENTS = {
                     "type": "",
                     "optional": false,
                     "description": "<p>Stored Event for ControlValueAccessor</p>\n",
-                    "line": 80,
+                    "line": 101,
                     "rawdescription": "\n\nStored Event for ControlValueAccessor\n",
                     "decorators": [
                         {
@@ -9844,7 +9776,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 147,
+                    "line": 168,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -9872,7 +9804,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 151,
+                    "line": 172,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -9893,7 +9825,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "{}",
                     "typeParameters": [],
-                    "line": 121,
+                    "line": 142,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -9903,7 +9835,27 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 140,
+                    "line": 161,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnDestroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 93,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 81,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -9920,7 +9872,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 126,
+                    "line": 147,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -9948,7 +9900,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 131,
+                    "line": 152,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -9976,7 +9928,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 135,
+                    "line": 156,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -10004,7 +9956,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 110,
+                    "line": 131,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -10025,7 +9977,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 115,
+                    "line": 136,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -10042,7 +9994,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 90,
+                    "line": 111,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -10070,13 +10022,13 @@ const COMPONENTS = {
                     "deprecationMessage": "",
                     "rawdescription": "\n\nStored Event for ControlValueAccessor\n",
                     "description": "<p>Stored Event for ControlValueAccessor</p>\n",
-                    "line": 80
+                    "line": 101
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  Component,\n  Input,\n  ViewChild,\n  TemplateRef,\n  ElementRef,\n  forwardRef,\n  HostListener,\n  ChangeDetectorRef,\n  ChangeDetectionStrategy\n} from '@angular/core';\n\nimport {\n  NG_VALUE_ACCESSOR,\n  ControlValueAccessor,\n  FormControl\n} from '@angular/forms';\nimport { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';\nimport { SDSAutocompleteServiceInterface } from '../autocomplete-search/models/SDSAutocompleteServiceInterface';\nimport { SDSAutocompletelConfiguration } from './models/SDSAutocompletelConfiguration.model';\nimport { SelectionMode } from '../selected-result/models/sds-selected-item-model-helper';\nimport { SDSAutocompleteSearchComponent } from '../autocomplete-search/autocomplete-search.component';\n\nconst Autocomplete_VALUE_ACCESSOR: any = {\n  provide: NG_VALUE_ACCESSOR,\n  useExisting: forwardRef(() => SDSAutocompleteComponent),\n  multi: true\n};\n\n@Component({\n  selector: 'sds-autocomplete',\n  templateUrl: './autocomplete.component.html',\n  styleUrls: ['./autocomplete.component.scss'],\n  providers: [Autocomplete_VALUE_ACCESSOR],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class SDSAutocompleteComponent implements ControlValueAccessor {\n  /**\n   * Allow to insert a customized template for suggestions results\n   */\n  @Input() suggestionTemplate: TemplateRef<any>;\n\n  /**\n   * Allow to insert a customized template for selected items\n   */\n  @Input() selectedItemTemplate: TemplateRef<any>;\n\n  /**\n   * The data model that has the selected item\n   */\n  public model: SDSSelectedItemModel = new SDSSelectedItemModel();\n\n  public disabled: boolean;\n\n  /**\n   * Configuration for the control\n   */\n  @Input()\n  public configuration: SDSAutocompletelConfiguration;\n\n  /**\n   * Model contain only the primary key, primary value, and secondary value.\n   */\n  @Input()\n  public essentialModelFields: boolean = false;\n\n  /**\n   * Instance of the SamHiercarchicalServiceInterface provided\n   */\n  @Input()\n  public service: SDSAutocompleteServiceInterface;\n\n  @ViewChild('autocompleteSearch', { static: true }) autocompleteSearch: SDSAutocompleteSearchComponent;\n  constructor(private cd: ChangeDetectorRef) {  }\n\n  /**\n   * Stored Event for ControlValueAccessor\n   */\n  @HostListener('focusout')\n  public onTouched = () => { };\n\n  /**\n   * Stored Event for ControlValueAccessor\n   */\n  public onChange = (_: any) => { };\n\n  // ControlValueAccessor (and Formly) is trying to update the value of the FormControl (our custom component) programatically\n  // If there is a value we will just overwrite items\n  // If there is no value we reset the items array to be empty\n  writeValue(value: any) {\n    if (value instanceof SDSSelectedItemModel && value.items && value.items.length) {\n      this.model.items = [...value.items];\n      this.cd.markForCheck();\n    }\n    else if (value && value.length) {\n      this.model.items = value;\n      this.cd.markForCheck();\n    } else {\n      if (!this.model || !(this.model instanceof SDSSelectedItemModel)) {\n        this.model = new SDSSelectedItemModel();\n      }\n      this.model.items = value && value.items ? value.items : [];\n      this.cd.markForCheck();\n    }\n\n    this.autocompleteSearch.writeValue(this.model);\n  }\n\n  // Method that is fired when the child component event notifies us that the items array has been modified within the child component\n  updateItems($event) {\n    this.updateModel();\n  }\n\n  // Helper method that gets a new instance of the model and notifies ControlValueAccessor that we have a new model for this FormControl (our custom component)\n  updateModel() {\n    const model = this.getModel();\n    this.onChange(model);\n  }\n\n  // Helper method to return a new instance of an array that contains our items\n  getModel() {\n    return [...this.model.items];\n  }\n\n  // ControlValueAccessor hook that lets us call this._onChange(var) to let the form know our variable has changed (in this case model)\n  registerOnChange(fn: any): void {\n    this.onChange = fn;\n  }\n\n  // ControlValueAccessor hook (not used)\n  registerOnTouched(fn: any) {\n    this.onTouched = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n    this.cd.detectChanges();\n  }\n\n  isSingleMode(): boolean {\n    if (this.configuration) {\n      return this.configuration.selectionMode === SelectionMode.SINGLE;\n    } else {\n      return false;\n    }\n  }\n  addItem(item: object) {\n    this.autocompleteSearch.selectItem(item);\n  }\n\n  addItems(list: object[]) {\n    list.forEach(item => {\n      this.addItem(item);\n    })\n  }\n}",
+            "sourceCode": "import {\n  Component,\n  Input,\n  ViewChild,\n  TemplateRef,\n  ElementRef,\n  forwardRef,\n  HostListener,\n  ChangeDetectorRef,\n  ChangeDetectionStrategy,\n  OnInit,\n  OnDestroy\n} from '@angular/core';\n\nimport {\n  NG_VALUE_ACCESSOR,\n  ControlValueAccessor,\n  FormControl\n} from '@angular/forms';\nimport { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';\nimport { SDSAutocompleteServiceInterface } from '../autocomplete-search/models/SDSAutocompleteServiceInterface';\nimport { SDSAutocompletelConfiguration } from './models/SDSAutocompletelConfiguration.model';\nimport { SelectionMode } from '../selected-result/models/sds-selected-item-model-helper';\nimport { SDSAutocompleteSearchComponent } from '../autocomplete-search/autocomplete-search.component';\nimport { Subscription } from 'rxjs';\n\nconst Autocomplete_VALUE_ACCESSOR: any = {\n  provide: NG_VALUE_ACCESSOR,\n  useExisting: forwardRef(() => SDSAutocompleteComponent),\n  multi: true\n};\n\n@Component({\n  selector: 'sds-autocomplete',\n  templateUrl: './autocomplete.component.html',\n  styleUrls: ['./autocomplete.component.scss'],\n  providers: [Autocomplete_VALUE_ACCESSOR],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class SDSAutocompleteComponent implements ControlValueAccessor, OnInit, OnDestroy {\n  /**\n   * Allow to insert a customized template for suggestions results\n   */\n  @Input() suggestionTemplate: TemplateRef<any>;\n\n  /**\n   * Allow to insert a customized template for selected items\n   */\n  @Input() selectedItemTemplate: TemplateRef<any>;\n\n  /**\n   * The data model that has the selected item\n   */\n  public model: SDSSelectedItemModel = new SDSSelectedItemModel();\n\n  public disabled: boolean;\n\n  /**\n   * Configuration for the control\n   */\n  @Input()\n  public configuration: SDSAutocompletelConfiguration;\n\n  /**\n   * Model contain only the primary key, primary value, and secondary value.\n   */\n  @Input()\n  public essentialModelFields: boolean = false;\n\n  /**\n   * Instance of the SamHiercarchicalServiceInterface provided\n   */\n  @Input()\n  public service: SDSAutocompleteServiceInterface;\n\n  _subscriptions = new Subscription();\n\n  @ViewChild('autocompleteSearch', { static: true }) autocompleteSearch: SDSAutocompleteSearchComponent;\n  constructor(private cd: ChangeDetectorRef) {  }\n\n  ngOnInit() {\n    if (!this.configuration.registerChanges$) {\n      return;\n    }\n\n    const changesSubscription = this.configuration.registerChanges$.subscribe(() => {\n      this.cd.detectChanges();\n    });\n\n    this._subscriptions.add(changesSubscription);\n  }\n\n  ngOnDestroy() {\n    this._subscriptions.unsubscribe();\n  }\n\n  /**\n   * Stored Event for ControlValueAccessor\n   */\n  @HostListener('focusout')\n  public onTouched = () => { };\n\n  /**\n   * Stored Event for ControlValueAccessor\n   */\n  public onChange = (_: any) => { };\n\n  // ControlValueAccessor (and Formly) is trying to update the value of the FormControl (our custom component) programatically\n  // If there is a value we will just overwrite items\n  // If there is no value we reset the items array to be empty\n  writeValue(value: any) {\n    if (value instanceof SDSSelectedItemModel && value.items && value.items.length) {\n      this.model.items = [...value.items];\n      this.cd.markForCheck();\n    }\n    else if (value && value.length) {\n      this.model.items = value;\n      this.cd.markForCheck();\n    } else {\n      if (!this.model || !(this.model instanceof SDSSelectedItemModel)) {\n        this.model = new SDSSelectedItemModel();\n      }\n      this.model.items = value && value.items ? value.items : [];\n      this.cd.markForCheck();\n    }\n\n    this.autocompleteSearch.writeValue(this.model);\n  }\n\n  // Method that is fired when the child component event notifies us that the items array has been modified within the child component\n  updateItems($event) {\n    this.updateModel();\n  }\n\n  // Helper method that gets a new instance of the model and notifies ControlValueAccessor that we have a new model for this FormControl (our custom component)\n  updateModel() {\n    const model = this.getModel();\n    this.onChange(model);\n  }\n\n  // Helper method to return a new instance of an array that contains our items\n  getModel() {\n    return [...this.model.items];\n  }\n\n  // ControlValueAccessor hook that lets us call this._onChange(var) to let the form know our variable has changed (in this case model)\n  registerOnChange(fn: any): void {\n    this.onChange = fn;\n  }\n\n  // ControlValueAccessor hook (not used)\n  registerOnTouched(fn: any) {\n    this.onTouched = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n    this.cd.detectChanges();\n  }\n\n  isSingleMode(): boolean {\n    if (this.configuration) {\n      return this.configuration.selectionMode === SelectionMode.SINGLE;\n    } else {\n      return false;\n    }\n  }\n  addItem(item: object) {\n    this.autocompleteSearch.selectItem(item);\n  }\n\n  addItems(list: object[]) {\n    list.forEach(item => {\n      this.addItem(item);\n    })\n  }\n}",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -10098,7 +10050,7 @@ const COMPONENTS = {
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 73,
+                "line": 78,
                 "jsdoctags": [
                     {
                         "name": "cd",
@@ -10112,13 +10064,15 @@ const COMPONENTS = {
                 ]
             },
             "implements": [
-                "ControlValueAccessor"
+                "ControlValueAccessor",
+                "OnInit",
+                "OnDestroy"
             ],
             "templateData": "<sds-search-autocomplete [disabled]=\"disabled\" [essentialModelFields]=\"essentialModelFields\" (ngModelChange)=\"updateItems($event)\" #autocompleteSearch\n    [service]=\"service\" [(ngModel)]=\"model\" [configuration]=\"configuration\" [itemTemplate]=\"suggestionTemplate\">\n</sds-search-autocomplete>\n<sds-selected-result (ngModelChange)=\"updateItems($event)\" [disabled]=\"disabled\" *ngIf=\"!isSingleMode() && !configuration?.hideChips\"\n    [(ngModel)]=\"model\" [configuration]=\"configuration\" [itemTemplate]=\"selectedItemTemplate\"></sds-selected-result>\n"
         },
         {
             "name": "SDSAutocompleteSearchComponent",
-            "id": "component-SDSAutocompleteSearchComponent-b895a81754a7bb5b9c821c05e80c38b5",
+            "id": "component-SDSAutocompleteSearchComponent-3eabb97ef4e792d5590cee74ca379c4c",
             "file": "libs/packages/components/src/lib/autocomplete-search/autocomplete-search.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -10145,14 +10099,14 @@ const COMPONENTS = {
                     "deprecationMessage": "",
                     "rawdescription": "Configuration for the Autocomplete control",
                     "description": "<p>Configuration for the Autocomplete control</p>\n",
-                    "line": 70,
+                    "line": 67,
                     "type": "SDSAutocompleteSearchConfiguration"
                 },
                 {
                     "name": "disabled",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 148,
+                    "line": 145,
                     "type": "boolean"
                 },
                 {
@@ -10162,7 +10116,7 @@ const COMPONENTS = {
                     "deprecationMessage": "",
                     "rawdescription": "Model contain only the primary key, primary value, and secondary value.",
                     "description": "<p>Model contain only the primary key, primary value, and secondary value.</p>\n",
-                    "line": 64,
+                    "line": 61,
                     "type": "boolean"
                 },
                 {
@@ -10172,7 +10126,7 @@ const COMPONENTS = {
                     "deprecationMessage": "",
                     "rawdescription": "To make input readonly",
                     "description": "<p>To make input readonly</p>\n",
-                    "line": 135,
+                    "line": 132,
                     "type": "boolean"
                 },
                 {
@@ -10181,7 +10135,7 @@ const COMPONENTS = {
                     "deprecationMessage": "",
                     "rawdescription": "Allow to insert a customized template for suggestions to use",
                     "description": "<p>Allow to insert a customized template for suggestions to use</p>\n",
-                    "line": 54,
+                    "line": 51,
                     "type": "TemplateRef<any>"
                 },
                 {
@@ -10190,7 +10144,7 @@ const COMPONENTS = {
                     "deprecationMessage": "",
                     "rawdescription": "Instance of the SamHiercarchicalServiceInterface provided",
                     "description": "<p>Instance of the SamHiercarchicalServiceInterface provided</p>\n",
-                    "line": 76,
+                    "line": 73,
                     "type": "SDSAutocompleteServiceInterface"
                 }
             ],
@@ -10204,7 +10158,7 @@ const COMPONENTS = {
                     "type": "number",
                     "optional": false,
                     "description": "<p>selected child index</p>\n",
-                    "line": 101,
+                    "line": 98,
                     "rawdescription": "\n\nselected child index\n",
                     "modifierKind": [
                         122
@@ -10218,7 +10172,7 @@ const COMPONENTS = {
                     "type": "number",
                     "optional": false,
                     "description": "<p>selected index</p>\n",
-                    "line": 96,
+                    "line": 93,
                     "rawdescription": "\n\nselected index\n",
                     "modifierKind": [
                         122
@@ -10231,7 +10185,7 @@ const COMPONENTS = {
                     "type": "object",
                     "optional": false,
                     "description": "<p>highlighted object in drop down</p>\n",
-                    "line": 106,
+                    "line": 103,
                     "rawdescription": "\n\nhighlighted object in drop down\n",
                     "modifierKind": [
                         120
@@ -10245,7 +10199,7 @@ const COMPONENTS = {
                     "type": "string",
                     "optional": false,
                     "description": "<p>Proprty being set on the object is highlighted</p>\n",
-                    "line": 116,
+                    "line": 113,
                     "rawdescription": "\n\nProprty being set on the object is highlighted\n",
                     "modifierKind": [
                         120
@@ -10259,7 +10213,7 @@ const COMPONENTS = {
                     "type": "number",
                     "optional": false,
                     "description": "",
-                    "line": 154,
+                    "line": 151,
                     "modifierKind": [
                         120
                     ]
@@ -10271,7 +10225,7 @@ const COMPONENTS = {
                     "type": "ElementRef",
                     "optional": false,
                     "description": "<p>input control</p>\n",
-                    "line": 49,
+                    "line": 46,
                     "rawdescription": "\n\ninput control\n",
                     "decorators": [
                         {
@@ -10288,7 +10242,7 @@ const COMPONENTS = {
                     "type": "string",
                     "optional": false,
                     "description": "<p>value of the input field</p>\n",
-                    "line": 111,
+                    "line": 108,
                     "rawdescription": "\n\nvalue of the input field\n",
                     "modifierKind": [
                         122
@@ -10301,7 +10255,7 @@ const COMPONENTS = {
                     "type": "number",
                     "optional": false,
                     "description": "<p>max number of results to be shown</p>\n",
-                    "line": 91,
+                    "line": 88,
                     "rawdescription": "\n\nmax number of results to be shown\n",
                     "modifierKind": [
                         120
@@ -10314,7 +10268,7 @@ const COMPONENTS = {
                     "type": "SDSSelectedItemModel",
                     "optional": false,
                     "description": "<p>The data model that has the selected item</p>\n",
-                    "line": 59,
+                    "line": 56,
                     "rawdescription": "\n\nThe data model that has the selected item\n",
                     "modifierKind": [
                         122
@@ -10328,7 +10282,7 @@ const COMPONENTS = {
                     "type": "function",
                     "optional": false,
                     "description": "<p>Stored Event for ControlValueAccessor</p>\n",
-                    "line": 140,
+                    "line": 137,
                     "rawdescription": "\n\nStored Event for ControlValueAccessor\n",
                     "modifierKind": [
                         122
@@ -10342,7 +10296,7 @@ const COMPONENTS = {
                     "type": "function",
                     "optional": false,
                     "description": "<p>Stored Event for ControlValueAccessor</p>\n",
-                    "line": 145,
+                    "line": 142,
                     "rawdescription": "\n\nStored Event for ControlValueAccessor\n",
                     "modifierKind": [
                         122
@@ -10355,7 +10309,7 @@ const COMPONENTS = {
                     "type": "object[]",
                     "optional": false,
                     "description": "<p> result set to be rendered</p>\n",
-                    "line": 86,
+                    "line": 83,
                     "rawdescription": "\n\n result set to be rendered\n"
                 },
                 {
@@ -10366,7 +10320,7 @@ const COMPONENTS = {
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 150,
+                    "line": 147,
                     "modifierKind": [
                         120
                     ]
@@ -10378,7 +10332,7 @@ const COMPONENTS = {
                     "type": "ElementRef",
                     "optional": false,
                     "description": "<p>Ul list of elements</p>\n",
-                    "line": 44,
+                    "line": 41,
                     "rawdescription": "\n\nUl list of elements\n",
                     "decorators": [
                         {
@@ -10395,7 +10349,7 @@ const COMPONENTS = {
                     "type": "string",
                     "optional": false,
                     "description": "<p>Search string</p>\n",
-                    "line": 123,
+                    "line": 120,
                     "rawdescription": "\n\nSearch string\n",
                     "modifierKind": [
                         120
@@ -10409,7 +10363,7 @@ const COMPONENTS = {
                     "type": "boolean",
                     "optional": false,
                     "description": "",
-                    "line": 118,
+                    "line": 115,
                     "modifierKind": [
                         122
                     ]
@@ -10422,7 +10376,7 @@ const COMPONENTS = {
                     "type": "",
                     "optional": false,
                     "description": "<p>Determines if the dropdown should be shown</p>\n",
-                    "line": 186,
+                    "line": 184,
                     "rawdescription": "\n\nDetermines if the dropdown should be shown\n",
                     "modifierKind": [
                         122
@@ -10435,7 +10389,7 @@ const COMPONENTS = {
                     "type": "string",
                     "optional": false,
                     "description": "<p>Message announced by screen readers when\nautocomplete results are updated or new item\nis highlighted</p>\n",
-                    "line": 130,
+                    "line": 127,
                     "rawdescription": "\n\nMessage announced by screen readers when\nautocomplete results are updated or new item\nis highlighted\n",
                     "modifierKind": [
                         122
@@ -10448,7 +10402,7 @@ const COMPONENTS = {
                     "type": "number",
                     "optional": false,
                     "description": "<p>Timer id for the timer awaiting the service call for more typeing</p>\n",
-                    "line": 81,
+                    "line": 78,
                     "rawdescription": "\n\nTimer id for the timer awaiting the service call for more typeing\n",
                     "modifierKind": [
                         120
@@ -10456,6 +10410,16 @@ const COMPONENTS = {
                 }
             ],
             "methodsClass": [
+                {
+                    "name": "addListener",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 608,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
                 {
                     "name": "addResult",
                     "args": [
@@ -10469,7 +10433,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 547,
+                    "line": 552,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nadds a single item to the list\n",
@@ -10480,8 +10444,8 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 14969,
-                                "end": 14973,
+                                "pos": 15152,
+                                "end": 15156,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -10492,8 +10456,8 @@ const COMPONENTS = {
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 14963,
-                                "end": 14968,
+                                "pos": 15146,
+                                "end": 15151,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -10517,7 +10481,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 584,
+                    "line": 589,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nAdds message to be read by screen reader\n",
@@ -10528,8 +10492,8 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 16038,
-                                "end": 16045,
+                                "pos": 16221,
+                                "end": 16228,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -10540,8 +10504,8 @@ const COMPONENTS = {
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 16032,
-                                "end": 16037,
+                                "pos": 16215,
+                                "end": 16220,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -10565,7 +10529,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 207,
+                    "line": 205,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\n\n",
@@ -10573,8 +10537,8 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4817,
-                                "end": 4822,
+                                "pos": 4807,
+                                "end": 4812,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -10585,8 +10549,8 @@ const COMPONENTS = {
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4811,
-                                "end": 4816,
+                                "pos": 4801,
+                                "end": 4806,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -10610,7 +10574,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 459,
+                    "line": 464,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\n return Item is already selected or not\n",
@@ -10618,8 +10582,8 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 12070,
-                                "end": 12076,
+                                "pos": 12253,
+                                "end": 12259,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -10630,8 +10594,8 @@ const COMPONENTS = {
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 12064,
-                                "end": 12069,
+                                "pos": 12247,
+                                "end": 12252,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -10648,7 +10612,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 345,
+                    "line": 350,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\n clears the results and closes result drop down\n",
@@ -10663,7 +10627,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 191,
+                    "line": 189,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nClears the input fields and value\n",
@@ -10678,7 +10642,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "{ type: string; }",
                     "typeParameters": [],
-                    "line": 449,
+                    "line": 454,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -10691,7 +10655,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 215,
+                    "line": 213,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\n\n",
@@ -10706,7 +10670,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 530,
+                    "line": 535,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\ngets more results based when scrolling and adds the items\n",
@@ -10719,9 +10683,9 @@ const COMPONENTS = {
                     "name": "getClass",
                     "args": [],
                     "optional": false,
-                    "returnType": "\"hide-cursor\" | \"\"",
+                    "returnType": "\"\" | \"hide-cursor\"",
                     "typeParameters": [],
-                    "line": 602,
+                    "line": 631,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -10731,7 +10695,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "{}",
                     "typeParameters": [],
-                    "line": 355,
+                    "line": 360,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -10757,7 +10721,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 161,
+                    "line": 159,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nGets the string value from the specifed properties of an object\n",
@@ -10765,8 +10729,8 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 3583,
-                                "end": 3589,
+                                "pos": 3573,
+                                "end": 3579,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -10778,8 +10742,8 @@ const COMPONENTS = {
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 3577,
-                                "end": 3582,
+                                "pos": 3567,
+                                "end": 3572,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -10790,8 +10754,8 @@ const COMPONENTS = {
                         },
                         {
                             "name": {
-                                "pos": 3602,
-                                "end": 3616,
+                                "pos": 3592,
+                                "end": 3606,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -10802,8 +10766,8 @@ const COMPONENTS = {
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 3596,
-                                "end": 3601,
+                                "pos": 3586,
+                                "end": 3591,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -10827,7 +10791,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 471,
+                    "line": 476,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\n gets the inital results\n",
@@ -10838,8 +10802,8 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 12396,
-                                "end": 12408,
+                                "pos": 12579,
+                                "end": 12591,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -10850,8 +10814,8 @@ const COMPONENTS = {
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 12390,
-                                "end": 12395,
+                                "pos": 12573,
+                                "end": 12578,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -10868,11 +10832,21 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 251,
+                    "line": 249,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nEvent method used when focus is gained to the input\n",
                     "description": "<p>Event method used when focus is gained to the input</p>\n"
+                },
+                {
+                    "name": "isAutocompleteWithinModal",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 265,
+                    "deprecated": false,
+                    "deprecationMessage": ""
                 },
                 {
                     "name": "matchPastSearchString",
@@ -10887,7 +10861,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 509,
+                    "line": 514,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nChecks if the new search string matches the old search string\n",
@@ -10898,8 +10872,8 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 13790,
-                                "end": 13802,
+                                "pos": 13973,
+                                "end": 13985,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -10910,8 +10884,8 @@ const COMPONENTS = {
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 13784,
-                                "end": 13789,
+                                "pos": 13967,
+                                "end": 13972,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -10928,7 +10902,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 393,
+                    "line": 398,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\n handles the arrow down key event\n",
@@ -10943,7 +10917,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 407,
+                    "line": 412,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\n handles the arrow up key event\n",
@@ -10965,7 +10939,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 268,
+                    "line": 273,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nKey event\n",
@@ -10973,8 +10947,8 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 6334,
-                                "end": 6339,
+                                "pos": 6519,
+                                "end": 6524,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -10985,8 +10959,8 @@ const COMPONENTS = {
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 6328,
-                                "end": 6333,
+                                "pos": 6513,
+                                "end": 6518,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -11010,7 +10984,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 232,
+                    "line": 230,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -11031,7 +11005,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 515,
+                    "line": 520,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nScroll Event Handler (Calculates if mpre items should be asked for from service on scrolling down)\n",
@@ -11043,7 +11017,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 351,
+                    "line": 356,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -11060,7 +11034,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 609,
+                    "line": 635,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -11088,7 +11062,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 613,
+                    "line": 639,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -11109,7 +11083,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 377,
+                    "line": 382,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nWhen paging up and down with arrow key it sets the highlighted item into view\n",
@@ -11131,7 +11105,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 312,
+                    "line": 317,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nselects the item adding it to the model and closes the results\n",
@@ -11142,8 +11116,8 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 7714,
-                                "end": 7718,
+                                "pos": 7899,
+                                "end": 7903,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -11154,8 +11128,8 @@ const COMPONENTS = {
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 7708,
-                                "end": 7713,
+                                "pos": 7893,
+                                "end": 7898,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -11179,7 +11153,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 617,
+                    "line": 643,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -11207,7 +11181,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 556,
+                    "line": 561,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nSets the highlighted item by keyboard or mouseover\n",
@@ -11218,8 +11192,8 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 15173,
-                                "end": 15177,
+                                "pos": 15356,
+                                "end": 15360,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -11230,8 +11204,8 @@ const COMPONENTS = {
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 15167,
-                                "end": 15172,
+                                "pos": 15350,
+                                "end": 15355,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -11248,7 +11222,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 417,
+                    "line": 422,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -11265,7 +11239,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 235,
+                    "line": 233,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -11293,7 +11267,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 588,
+                    "line": 593,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -11316,11 +11290,11 @@ const COMPONENTS = {
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  Component,\n  Input,\n  ViewChild,\n  TemplateRef,\n  ElementRef,\n  forwardRef,\n  ChangeDetectorRef\n} from '@angular/core';\nimport { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';\nimport { SDSAutocompleteServiceInterface } from './models/SDSAutocompleteServiceInterface';\nimport { KeyHelper, KEYS } from '../key-helper/key-helper';\nimport { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';\nimport {\n  SelectionMode,\n  SDSSelectedItemModelHelper\n} from '../selected-result/models/sds-selected-item-model-helper';\n\n\nimport { SDSAutocompleteSearchConfiguration } from './models/SDSAutocompleteConfiguration';\n\nconst Autocomplete_Autocomplete_VALUE_ACCESSOR: any = {\n  provide: NG_VALUE_ACCESSOR,\n  useExisting: forwardRef(() => SDSAutocompleteSearchComponent),\n  multi: true\n};\n\n@Component({\n  selector: 'sds-search-autocomplete',\n  templateUrl: './autocomplete-search.component.html',\n  styleUrls: ['./autocomplete-search.component.scss'],\n  providers: [Autocomplete_Autocomplete_VALUE_ACCESSOR]\n})\nexport class SDSAutocompleteSearchComponent implements ControlValueAccessor {\n  constructor(\n    private _changeDetectorRef: ChangeDetectorRef,\n   \n  ) {\n    \n  }\n  /**\n   * Ul list of elements\n   */\n  @ViewChild('resultsList') resultsListElement: ElementRef;\n\n  /**\n   * input control\n   */\n  @ViewChild('input') input: ElementRef;\n\n  /**\n   * Allow to insert a customized template for suggestions to use\n   */\n  @Input() itemTemplate: TemplateRef<any>;\n\n  /**\n   * The data model that has the selected item\n   */\n  public model: SDSSelectedItemModel;\n\n  /**\n   * Model contain only the primary key, primary value, and secondary value.\n   */\n  @Input() public essentialModelFields: boolean = false;\n\n  /**\n   * Configuration for the Autocomplete control\n   */\n  @Input()\n  public configuration: SDSAutocompleteSearchConfiguration;\n\n  /**\n   * Instance of the SamHiercarchicalServiceInterface provided\n   */\n  @Input()\n  public service: SDSAutocompleteServiceInterface;\n\n  /**\n   * Timer id for the timer awaiting the service call for more typeing\n   */\n  private timeoutNumber: number;\n\n  /**\n   *  result set to be rendered\n   */\n  results: object[];\n\n  /**\n   * max number of results to be shown\n   */\n  private maxResults: number;\n\n  /**\n   * selected index\n   */\n  public highlightedIndex: number = 0;\n\n  /**\n   * selected child index\n   */\n  public highlightedChildIndex = 0;\n\n  /**\n   * highlighted object in drop down\n   */\n  private highlightedItem: object;\n\n  /**\n   * value of the input field\n   */\n  public inputValue: string = '';\n\n  /**\n   * Proprty being set on the object is highlighted\n   */\n  private HighlightedPropertyName = 'highlighted';\n\n  public showLoad: boolean = true;\n\n  /**\n   * Search string\n   */\n  private searchString: string = null;\n\n  /**\n   * Message announced by screen readers when\n   * autocomplete results are updated or new item\n   * is highlighted\n   */\n  public srOnlyText: string;\n\n  /**\n   * To make input readonly\n   */\n  @Input() public inputReadOnly = false;\n\n  /**\n   * Stored Event for ControlValueAccessor\n   */\n  public onTouchedCallback: () => void = () => null;\n\n  /**\n   * Stored Event for ControlValueAccessor\n   */\n  public propogateChange: (_: any) => void = (_: any) => null;\n\n  @Input()\n  public disabled: boolean;\n\n  private resultsAvailableMessage: string =\n    ' results available. Use up and down arrows\\\n  to scroll through results. Hit enter to select.';\n\n  private index = 0;\n  /**\n   * Gets the string value from the specifed properties of an object\n   * @param object\n   * @param propertyFields comma seperated list with periods depth of object\n   */\n\n  getObjectValue(object: Object, propertyFields: string): string {\n    let value = '';\n    let current = object;\n    let fieldSplit = propertyFields.split(',');\n    for (let i = 0; i < fieldSplit.length; i++) {\n      let fieldValue = fieldSplit[i];\n      let fieldPartSplit = fieldValue.split('.');\n      for (let j = 0; j < fieldPartSplit.length; j++) {\n        let fieldCheckValue = fieldPartSplit[j];\n        if (current) {\n          current = current[fieldCheckValue];\n        }\n      }\n\n      if (current) {\n        value += current.toString() + ' ';\n      }\n      current = object;\n    }\n    return value.trim();\n  }\n\n  /**\n   * Determines if the dropdown should be shown\n   */\n  public showResults = false;\n\n  /**\n   * Clears the input fields and value\n   */\n  public clearInput(): void {\n    this.inputValue = '';\n    if (this.configuration.selectionMode === SelectionMode.SINGLE) {\n      if (this.model.items.length > 0) {\n        SDSSelectedItemModelHelper.clearItems(this.model.items);\n        this.propogateChange(this.model);\n      }\n    }\n    this.onTouchedCallback();\n    this.clearAndHideResults();\n  }\n\n  /**\n   *\n   * @param event\n   */\n  checkForFocus(event): void {\n    this.focusRemoved();\n    this.showResults = false;\n  }\n\n  /**\n   *\n   */\n  private focusRemoved() {\n    if (this.configuration) {\n      if (this.configuration.selectionMode === SelectionMode.SINGLE) {\n        if (this.model.items.length > 0) {\n          this.inputValue = this.getObjectValue(\n            this.model.items[0],\n            this.configuration.primaryTextField\n          );\n        }\n      } else {\n        this.inputValue = '';\n      }\n    } else {\n      this.inputValue = '';\n    }\n  }\n\n  onkeypress(ev) {\n    return this.configuration.inputReadOnly ? false : true;\n  }\n  textChange(event) {\n    if (!this.configuration.isTagModeEnabled) {\n      // ie 11 placeholders will incorrectly trigger input events (known bug)\n      // if input isn't active element then don't do anything\n      if (event.target != document.activeElement) {\n        event.preventDefault();\n        return;\n      }\n      const searchString = event.target.value || '';\n      this.getResults(searchString);\n    }\n  }\n\n  /**\n   * Event method used when focus is gained to the input\n   */\n  inputFocusHandler(): void {\n    if (!this.configuration.isTagModeEnabled) {\n      if (this.configuration.focusInSearch) {\n        this.highlightedIndex = 0;\n        this.highlightedChildIndex = this.configuration.isSelectableGroup\n          ? 0\n          : null;\n        this.getResults(this.inputValue || '');\n      }\n      this.onTouchedCallback();\n    }\n  }\n\n  /**\n   * Key event\n   * @param event\n   */\n  onKeydown(event): void {\n    if (KeyHelper.is(KEYS.ALT, event)) {\n      event.preventDefault();\n      this.inputFocusHandler();\n    }\n    if (KeyHelper.is(KEYS.TAB, event)) {\n      return;\n    } else if (KeyHelper.is(KEYS.BACKSPACE, event)) {\n      if (this.configuration.inputReadOnly) {\n        event.preventDefault();\n      }\n    } else if (KeyHelper.is(KEYS.DOWN, event)) {\n      event.preventDefault();\n      this.onArrowGroupDown();\n    } else if (KeyHelper.is(KEYS.UP, event)) {\n      event.preventDefault();\n      this.onArrowGroupUp();\n    } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex >= 0) {\n      event.preventDefault();\n      if (this.configuration.isTagModeEnabled) {\n        const val = this.createFreeTextItem();\n        this.selectItem(val);\n      } else {\n        this.selectItem(this.highlightedItem);\n      }\n    } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex < 0) {\n      if (this.configuration.isFreeTextEnabled) {\n        const val = this.createFreeTextItem();\n        this.selectItem(val);\n      }\n    } else if (KeyHelper.is(KEYS.ESC, event)) {\n      if (this.showResults) {\n        this.clearAndHideResults();\n        if (event.stopPropagation) {\n          event.stopPropagation();\n        }\n      }\n    }\n  }\n\n  /**\n   * selects the item adding it to the model and closes the results\n   * @param item\n   */\n  public selectItem(item: object): void {\n    let filterItem = {};\n    if (this.essentialModelFields) {\n      filterItem[this.configuration.primaryKeyField] =\n        item[this.configuration.primaryKeyField];\n      filterItem[this.configuration.primaryTextField] =\n        item[this.configuration.primaryTextField];\n      if (this.configuration.secondaryTextField) {\n        filterItem[this.configuration.secondaryTextField] =\n          item[this.configuration.secondaryTextField];\n      }\n    } else {\n      filterItem = item;\n    }\n    SDSSelectedItemModelHelper.addItem(\n      filterItem,\n      this.configuration.primaryKeyField,\n      this.configuration.selectionMode,\n      this.model\n    );\n    this.propogateChange(this.model);\n    let message = this.getObjectValue(\n      item,\n      this.configuration.primaryTextField\n    );\n    this.inputValue = message;\n    this.focusRemoved();\n    this.showResults = false;\n  }\n\n  /**\n   *  clears the results and closes result drop down\n   */\n  private clearAndHideResults(): void {\n    this.results = [];\n    this.showResults = false;\n    this.focusRemoved();\n  }\n\n  openOptions() {\n    this.input.nativeElement.focus();\n  }\n\n  public getFlatElements() {\n    const results = this.results;\n    const flat = [];\n    const flatten = (array: any) => {\n      for (let i in array) {\n        const item = array[i];\n        flat.push(item);\n        if (\n          item[this.configuration.groupByChild] &&\n          item[this.configuration.groupByChild].length\n        ) {\n          flatten(item[this.configuration.groupByChild]);\n        }\n      }\n    };\n    flatten(results);\n    return flat;\n  }\n  \n  /**\n   * When paging up and down with arrow key it sets the highlighted item into view\n   */\n  private scrollToSelectedItem() {\n    if (this.highlightedIndex >= 0) {\n      this._changeDetectorRef.detectChanges();;\n      const dom = this.resultsListElement.nativeElement;\n      const selectedChild = dom.querySelector('.sds-autocomplete__item--highlighted');\n      if (selectedChild) {\n        // Manually set scroll top rather than invoke scroll functions for browser compatibility\n        const containerCenter = this.resultsListElement.nativeElement.getBoundingClientRect().height / 2;\n        this.resultsListElement.nativeElement.scrollTop = selectedChild.offsetTop - containerCenter;\n      }\n    }\n  }\n\n  /**\n   *  handles the arrow down key event\n   */\n  private onArrowGroupDown(): void {\n    if (this.results && this.results.length > 0) {\n      const flat = this.getFlatElements();\n      if (this.highlightedIndex < flat.length - 1) {\n        this.highlightedIndex++;\n      }\n      this.setHighlightedItem(flat[this.highlightedIndex]);\n      this.scrollToSelectedItem();\n    }\n  }\n\n  /**\n   *  handles the arrow up key event\n   */\n  private onArrowGroupUp(): void {\n    if (this.results && this.results.length > 0) {\n      const flat = this.getFlatElements();\n      if (this.highlightedIndex != 0) {\n        this.highlightedIndex--;\n      }\n      this.setHighlightedItem(flat[this.highlightedIndex]);\n      this.scrollToSelectedItem();\n    }\n  }\n  showFreeText() {\n    if (this.configuration.isFreeTextEnabled) {\n      if (this.inputValue) {\n        if (this.inputValue.length !== 0) {\n          let foundItem = false;\n          if (this.results) {\n            for (var i = 0; i < this.results.length && !foundItem; i++) {\n              let item = this.results[i];\n              foundItem =\n                item[this.configuration.primaryTextField] === this.inputValue;\n            }\n          }\n          if (this.model.items.length > 0 && !foundItem) {\n            for (var i = 0; i < this.model.items.length && !foundItem; i++) {\n              let item = this.model.items[i];\n              foundItem =\n                item[this.configuration.primaryTextField] === this.inputValue;\n            }\n          }\n\n          return !foundItem;\n        } else {\n          return false;\n        }\n      } else {\n        return false;\n      }\n    } else {\n      return this.configuration.isFreeTextEnabled;\n    }\n  }\n\n  private createFreeTextItem() {\n    let item = { type: 'custom' };\n    item[this.configuration.primaryTextField] = this.inputValue;\n    item[this.configuration.primaryKeyField] = this.inputValue;\n    return item;\n  }\n  /**\n   *  return Item is already selected or not\n   * @param result\n   */\n  checkItemSelected(result: any) {\n    const selectedItem = this.model.items.filter(\n      item =>\n        item[this.configuration.primaryKeyField] ===\n        result[this.configuration.primaryKeyField]\n    );\n    return selectedItem.length > 0 ? true : false;\n  }\n  /**\n   *  gets the inital results\n   * @param searchString\n   */\n  private getResults(searchString: string): void {\n    if (searchString.length >= this.configuration.minimumCharacterCountSearch) {\n      if (\n        !this.matchPastSearchString(searchString) ||\n        (this.matchPastSearchString(searchString) && !this.showResults) ||\n        this.matchPastSearchString('')\n      ) {\n        this.searchString = searchString;\n        window.clearTimeout(this.timeoutNumber);\n        this.timeoutNumber = window.setTimeout(() => {\n          this.showLoad = true;\n          this.service.getDataByText(0, searchString).subscribe(result => {\n            this.results = result.items;\n            this.showLoad = false;\n            this.maxResults = result.totalItems;\n\n            this.highlightedIndex =\n              this.configuration.isFreeTextEnabled || this.maxResults == 0\n                ? -1\n                : 0;\n            if (!this.configuration.isFreeTextEnabled) {\n              this.setHighlightedItem(this.results[this.highlightedIndex]);\n            }\n            this.showResults = true;\n            this.addScreenReaderMessage(\n              this.maxResults + ' ' + this.resultsAvailableMessage\n            );\n            this._changeDetectorRef.markForCheck();\n          });\n        }, this.configuration.debounceTime);\n      }\n    }\n  }\n\n  /**\n   * Checks if the new search string matches the old search string\n   * @param searchString\n   */\n  private matchPastSearchString(searchString: string) {\n    return this.searchString === searchString;\n  }\n  /**\n   * Scroll Event Handler (Calculates if mpre items should be asked for from service on scrolling down)\n   */\n  onScroll() {\n    if (this.maxResults > this.results.length) {\n      let scrollAreaHeight = this.resultsListElement.nativeElement.offsetHeight;\n      let scrollTopPos = this.resultsListElement.nativeElement.scrollTop;\n      let scrollAreaMaxHeight = this.resultsListElement.nativeElement\n        .scrollHeight;\n      if (scrollTopPos + scrollAreaHeight * 2 >= scrollAreaMaxHeight) {\n        this.getAdditionalResults();\n      }\n    }\n  }\n\n  /**\n   * gets more results based when scrolling and adds the items\n   */\n  private getAdditionalResults() {\n    this.showLoad = true;\n    this.service\n      .getDataByText(this.results.length, this.searchString)\n      .subscribe(result => {\n        for (let i = 0; i < result.items.length; i++) {\n          this.addResult(result.items[i]);\n        }\n        this.showLoad = false;\n        this.maxResults = result.totalItems;\n      });\n  }\n\n  /**\n   * adds a single item to the list\n   * @param item\n   */\n  private addResult(item: object) {\n    //add check to make sure item does not exist\n    this.results.push(item);\n  }\n\n  /**\n   * Sets the highlighted item by keyboard or mouseover\n   * @param item\n   */\n  private setHighlightedItem(item: Object): void {\n    if (this.results && this.results.length > 0) {\n      if (this.highlightedItem) {\n        this.highlightedItem[this.HighlightedPropertyName] = false;\n      }\n      let message = '';\n      if (item) {\n        this.highlightedItem = item;\n        this.highlightedItem[this.HighlightedPropertyName] = true;\n        message = item[this.configuration.primaryTextField];\n        if (\n          this.configuration.secondaryTextField &&\n          item[this.configuration.secondaryTextField]\n        ) {\n          message += ': ' + item[this.configuration.secondaryTextField];\n        }\n      } else {\n        this.highlightedItem = undefined;\n        message = 'No item selected';\n      }\n      this.addScreenReaderMessage(message);\n    }\n  }\n\n  /**\n   * Adds message to be read by screen reader\n   * @param message\n   */\n  private addScreenReaderMessage(message: string) {\n    this.srOnlyText = message;\n  }\n\n  writeValue(obj: any): void {\n    if (obj instanceof SDSSelectedItemModel) {\n      this.model = obj as SDSSelectedItemModel;\n      this._changeDetectorRef.markForCheck();\n      if (this.model.items.length === 0) {\n        this.inputValue = '';\n      } else if (this.configuration && this.configuration.selectionMode === SelectionMode.SINGLE){\n          this.inputValue = this.getObjectValue(\n            this.model.items[0],\n            this.configuration.primaryTextField\n          );\n      }\n    }\n  }\n  getClass() {\n    return this.configuration.inputReadOnly &&\n      this.configuration.selectionMode === SelectionMode.MULTIPLE\n      ? 'hide-cursor'\n      : '';\n  }\n\n  registerOnChange(fn: any): void {\n    this.propogateChange = fn;\n  }\n\n  registerOnTouched(fn: any): void {\n    this.onTouchedCallback = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n  }\n}\n",
+            "sourceCode": "import {\n  Component,\n  Input,\n  ViewChild,\n  TemplateRef,\n  ElementRef,\n  forwardRef,\n  ChangeDetectorRef\n} from '@angular/core';\nimport { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';\nimport { SDSAutocompleteServiceInterface } from './models/SDSAutocompleteServiceInterface';\nimport { KeyHelper, KEYS } from '../key-helper/key-helper';\nimport { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';\nimport {\n  SelectionMode,\n  SDSSelectedItemModelHelper\n} from '../selected-result/models/sds-selected-item-model-helper';\n\n\nimport { SDSAutocompleteSearchConfiguration } from './models/SDSAutocompleteConfiguration';\n\nconst Autocomplete_Autocomplete_VALUE_ACCESSOR: any = {\n  provide: NG_VALUE_ACCESSOR,\n  useExisting: forwardRef(() => SDSAutocompleteSearchComponent),\n  multi: true\n};\n\n@Component({\n  selector: 'sds-search-autocomplete',\n  templateUrl: './autocomplete-search.component.html',\n  styleUrls: ['./autocomplete-search.component.scss'],\n  providers: [Autocomplete_Autocomplete_VALUE_ACCESSOR]\n})\nexport class SDSAutocompleteSearchComponent implements ControlValueAccessor {\n  constructor(\n    private _changeDetectorRef: ChangeDetectorRef,\n  ) { }\n  /**\n   * Ul list of elements\n   */\n  @ViewChild('resultsList') resultsListElement: ElementRef;\n\n  /**\n   * input control\n   */\n  @ViewChild('input') input: ElementRef;\n\n  /**\n   * Allow to insert a customized template for suggestions to use\n   */\n  @Input() itemTemplate: TemplateRef<any>;\n\n  /**\n   * The data model that has the selected item\n   */\n  public model: SDSSelectedItemModel;\n\n  /**\n   * Model contain only the primary key, primary value, and secondary value.\n   */\n  @Input() public essentialModelFields: boolean = false;\n\n  /**\n   * Configuration for the Autocomplete control\n   */\n  @Input()\n  public configuration: SDSAutocompleteSearchConfiguration;\n\n  /**\n   * Instance of the SamHiercarchicalServiceInterface provided\n   */\n  @Input()\n  public service: SDSAutocompleteServiceInterface;\n\n  /**\n   * Timer id for the timer awaiting the service call for more typeing\n   */\n  private timeoutNumber: number;\n\n  /**\n   *  result set to be rendered\n   */\n  results: object[];\n\n  /**\n   * max number of results to be shown\n   */\n  private maxResults: number;\n\n  /**\n   * selected index\n   */\n  public highlightedIndex: number = 0;\n\n  /**\n   * selected child index\n   */\n  public highlightedChildIndex = 0;\n\n  /**\n   * highlighted object in drop down\n   */\n  private highlightedItem: object;\n\n  /**\n   * value of the input field\n   */\n  public inputValue: string = '';\n\n  /**\n   * Proprty being set on the object is highlighted\n   */\n  private HighlightedPropertyName = 'highlighted';\n\n  public showLoad: boolean = true;\n\n  /**\n   * Search string\n   */\n  private searchString: string = null;\n\n  /**\n   * Message announced by screen readers when\n   * autocomplete results are updated or new item\n   * is highlighted\n   */\n  public srOnlyText: string;\n\n  /**\n   * To make input readonly\n   */\n  @Input() public inputReadOnly = false;\n\n  /**\n   * Stored Event for ControlValueAccessor\n   */\n  public onTouchedCallback: () => void = () => null;\n\n  /**\n   * Stored Event for ControlValueAccessor\n   */\n  public propogateChange: (_: any) => void = (_: any) => null;\n\n  @Input()\n  public disabled: boolean;\n\n  private resultsAvailableMessage: string =\n    ' results available. Use up and down arrows\\\n  to scroll through results. Hit enter to select.';\n\n  private index = 0;\n\n  /**\n   * Gets the string value from the specifed properties of an object\n   * @param object\n   * @param propertyFields comma seperated list with periods depth of object\n   */\n\n  getObjectValue(object: Object, propertyFields: string): string {\n    let value = '';\n    let current = object;\n    let fieldSplit = propertyFields.split(',');\n    for (let i = 0; i < fieldSplit.length; i++) {\n      let fieldValue = fieldSplit[i];\n      let fieldPartSplit = fieldValue.split('.');\n      for (let j = 0; j < fieldPartSplit.length; j++) {\n        let fieldCheckValue = fieldPartSplit[j];\n        if (current) {\n          current = current[fieldCheckValue];\n        }\n      }\n\n      if (current) {\n        value += current.toString() + ' ';\n      }\n      current = object;\n    }\n    return value.trim();\n  }\n\n  /**\n   * Determines if the dropdown should be shown\n   */\n  public showResults = false;\n\n  /**\n   * Clears the input fields and value\n   */\n  public clearInput(): void {\n    this.inputValue = '';\n    if (this.configuration.selectionMode === SelectionMode.SINGLE) {\n      if (this.model.items.length > 0) {\n        SDSSelectedItemModelHelper.clearItems(this.model.items);\n        this.propogateChange(this.model);\n      }\n    }\n    this.onTouchedCallback();\n    this.clearAndHideResults();\n  }\n\n  /**\n   *\n   * @param event\n   */\n  checkForFocus(event): void {\n    this.focusRemoved();\n    this.showResults = false;\n  }\n\n  /**\n   *\n   */\n  private focusRemoved() {\n    if (this.configuration) {\n      if (this.configuration.selectionMode === SelectionMode.SINGLE) {\n        if (this.model.items.length > 0) {\n          this.inputValue = this.getObjectValue(\n            this.model.items[0],\n            this.configuration.primaryTextField\n          );\n        }\n      } else {\n        this.inputValue = '';\n      }\n    } else {\n      this.inputValue = '';\n    }\n  }\n\n  onkeypress(ev) {\n    return this.configuration.inputReadOnly ? false : true;\n  }\n  textChange(event) {\n    if (!this.configuration.isTagModeEnabled) {\n      // ie 11 placeholders will incorrectly trigger input events (known bug)\n      // if input isn't active element then don't do anything\n      if (event.target != document.activeElement) {\n        event.preventDefault();\n        return;\n      }\n      const searchString = event.target.value || '';\n      this.getResults(searchString);\n    }\n  }\n\n  /**\n   * Event method used when focus is gained to the input\n   */\n  inputFocusHandler(): void {\n    if (!this.configuration.isTagModeEnabled) {\n      if (this.configuration.focusInSearch) {\n        this.highlightedIndex = 0;\n        this.highlightedChildIndex = this.configuration.isSelectableGroup\n          ? 0\n          : null;\n        this.getResults(this.inputValue || '');\n      }\n      this.onTouchedCallback();\n      if (this.isAutocompleteWithinModal()) {\n        this.addListener();\n      }\n\n    }\n  }\n  isAutocompleteWithinModal() {\n    return document.getElementsByClassName('sds-dialog-content').length > 0\n  }\n\n  /**\n   * Key event\n   * @param event\n   */\n  onKeydown(event): void {\n    if (KeyHelper.is(KEYS.ALT, event)) {\n      event.preventDefault();\n      this.inputFocusHandler();\n    }\n    if (KeyHelper.is(KEYS.TAB, event)) {\n      return;\n    } else if (KeyHelper.is(KEYS.BACKSPACE, event)) {\n      if (this.configuration.inputReadOnly) {\n        event.preventDefault();\n      }\n    } else if (KeyHelper.is(KEYS.DOWN, event)) {\n      event.preventDefault();\n      this.onArrowGroupDown();\n    } else if (KeyHelper.is(KEYS.UP, event)) {\n      event.preventDefault();\n      this.onArrowGroupUp();\n    } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex >= 0) {\n      event.preventDefault();\n      if (this.configuration.isTagModeEnabled) {\n        const val = this.createFreeTextItem();\n        this.selectItem(val);\n      } else {\n        this.selectItem(this.highlightedItem);\n      }\n    } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex < 0) {\n      if (this.configuration.isFreeTextEnabled) {\n        const val = this.createFreeTextItem();\n        this.selectItem(val);\n      }\n    } else if (KeyHelper.is(KEYS.ESC, event)) {\n      if (this.showResults) {\n        this.clearAndHideResults();\n        if (event.stopPropagation) {\n          event.stopPropagation();\n        }\n      }\n    }\n  }\n\n  /**\n   * selects the item adding it to the model and closes the results\n   * @param item\n   */\n  public selectItem(item: object): void {\n    let filterItem = {};\n    if (this.essentialModelFields) {\n      filterItem[this.configuration.primaryKeyField] =\n        item[this.configuration.primaryKeyField];\n      filterItem[this.configuration.primaryTextField] =\n        item[this.configuration.primaryTextField];\n      if (this.configuration.secondaryTextField) {\n        filterItem[this.configuration.secondaryTextField] =\n          item[this.configuration.secondaryTextField];\n      }\n    } else {\n      filterItem = item;\n    }\n    SDSSelectedItemModelHelper.addItem(\n      filterItem,\n      this.configuration.primaryKeyField,\n      this.configuration.selectionMode,\n      this.model\n    );\n    this.propogateChange(this.model);\n    let message = this.getObjectValue(\n      item,\n      this.configuration.primaryTextField\n    );\n    this.inputValue = message;\n    this.focusRemoved();\n    this.showResults = false;\n  }\n\n  /**\n   *  clears the results and closes result drop down\n   */\n  private clearAndHideResults(): void {\n    this.results = [];\n    this.showResults = false;\n    this.focusRemoved();\n  }\n\n  openOptions() {\n    this.input.nativeElement.focus();\n  }\n\n  public getFlatElements() {\n    const results = this.results;\n    const flat = [];\n    const flatten = (array: any) => {\n      for (let i in array) {\n        const item = array[i];\n        flat.push(item);\n        if (\n          item[this.configuration.groupByChild] &&\n          item[this.configuration.groupByChild].length\n        ) {\n          flatten(item[this.configuration.groupByChild]);\n        }\n      }\n    };\n    flatten(results);\n    return flat;\n  }\n\n  /**\n   * When paging up and down with arrow key it sets the highlighted item into view\n   */\n  private scrollToSelectedItem() {\n    if (this.highlightedIndex >= 0) {\n      this._changeDetectorRef.detectChanges();;\n      const dom = this.resultsListElement.nativeElement;\n      const selectedChild = dom.querySelector('.sds-autocomplete__item--highlighted');\n      if (selectedChild) {\n        // Manually set scroll top rather than invoke scroll functions for browser compatibility\n        const containerCenter = this.resultsListElement.nativeElement.getBoundingClientRect().height / 2;\n        this.resultsListElement.nativeElement.scrollTop = selectedChild.offsetTop - containerCenter;\n      }\n    }\n  }\n\n  /**\n   *  handles the arrow down key event\n   */\n  private onArrowGroupDown(): void {\n    if (this.results && this.results.length > 0) {\n      const flat = this.getFlatElements();\n      if (this.highlightedIndex < flat.length - 1) {\n        this.highlightedIndex++;\n      }\n      this.setHighlightedItem(flat[this.highlightedIndex]);\n      this.scrollToSelectedItem();\n    }\n  }\n\n  /**\n   *  handles the arrow up key event\n   */\n  private onArrowGroupUp(): void {\n    if (this.results && this.results.length > 0) {\n      const flat = this.getFlatElements();\n      if (this.highlightedIndex != 0) {\n        this.highlightedIndex--;\n      }\n      this.setHighlightedItem(flat[this.highlightedIndex]);\n      this.scrollToSelectedItem();\n    }\n  }\n  showFreeText() {\n    if (this.configuration.isFreeTextEnabled) {\n      if (this.inputValue) {\n        if (this.inputValue.length !== 0) {\n          let foundItem = false;\n          if (this.results) {\n            for (var i = 0; i < this.results.length && !foundItem; i++) {\n              let item = this.results[i];\n              foundItem =\n                item[this.configuration.primaryTextField] === this.inputValue;\n            }\n          }\n          if (this.model.items.length > 0 && !foundItem) {\n            for (var i = 0; i < this.model.items.length && !foundItem; i++) {\n              let item = this.model.items[i];\n              foundItem =\n                item[this.configuration.primaryTextField] === this.inputValue;\n            }\n          }\n\n          return !foundItem;\n        } else {\n          return false;\n        }\n      } else {\n        return false;\n      }\n    } else {\n      return this.configuration.isFreeTextEnabled;\n    }\n  }\n\n  private createFreeTextItem() {\n    let item = { type: 'custom' };\n    item[this.configuration.primaryTextField] = this.inputValue;\n    item[this.configuration.primaryKeyField] = this.inputValue;\n    return item;\n  }\n  /**\n   *  return Item is already selected or not\n   * @param result\n   */\n  checkItemSelected(result: any) {\n    const selectedItem = this.model.items.filter(\n      item =>\n        item[this.configuration.primaryKeyField] ===\n        result[this.configuration.primaryKeyField]\n    );\n    return selectedItem.length > 0 ? true : false;\n  }\n  /**\n   *  gets the inital results\n   * @param searchString\n   */\n  private getResults(searchString: string): void {\n    if (searchString.length >= this.configuration.minimumCharacterCountSearch) {\n      if (\n        !this.matchPastSearchString(searchString) ||\n        (this.matchPastSearchString(searchString) && !this.showResults) ||\n        this.matchPastSearchString('')\n      ) {\n        this.searchString = searchString;\n        window.clearTimeout(this.timeoutNumber);\n        this.timeoutNumber = window.setTimeout(() => {\n          this.showLoad = true;\n          this.service.getDataByText(0, searchString).subscribe(result => {\n            this.results = result.items;\n            this.showLoad = false;\n            this.maxResults = result.totalItems;\n\n            this.highlightedIndex =\n              this.configuration.isFreeTextEnabled || this.maxResults == 0\n                ? -1\n                : 0;\n            if (!this.configuration.isFreeTextEnabled) {\n              this.setHighlightedItem(this.results[this.highlightedIndex]);\n            }\n            this.showResults = true;\n            this.addScreenReaderMessage(\n              this.maxResults + ' ' + this.resultsAvailableMessage\n            );\n            this._changeDetectorRef.markForCheck();\n          });\n        }, this.configuration.debounceTime);\n      }\n    }\n  }\n\n  /**\n   * Checks if the new search string matches the old search string\n   * @param searchString\n   */\n  private matchPastSearchString(searchString: string) {\n    return this.searchString === searchString;\n  }\n  /**\n   * Scroll Event Handler (Calculates if mpre items should be asked for from service on scrolling down)\n   */\n  onScroll() {\n    if (this.maxResults > this.results.length) {\n      let scrollAreaHeight = this.resultsListElement.nativeElement.offsetHeight;\n      let scrollTopPos = this.resultsListElement.nativeElement.scrollTop;\n      let scrollAreaMaxHeight = this.resultsListElement.nativeElement\n        .scrollHeight;\n      if (scrollTopPos + scrollAreaHeight * 2 >= scrollAreaMaxHeight) {\n        this.getAdditionalResults();\n      }\n    }\n  }\n\n  /**\n   * gets more results based when scrolling and adds the items\n   */\n  private getAdditionalResults() {\n    this.showLoad = true;\n    this.service\n      .getDataByText(this.results.length, this.searchString)\n      .subscribe(result => {\n        for (let i = 0; i < result.items.length; i++) {\n          this.addResult(result.items[i]);\n        }\n        this.showLoad = false;\n        this.maxResults = result.totalItems;\n      });\n  }\n\n  /**\n   * adds a single item to the list\n   * @param item\n   */\n  private addResult(item: object) {\n    //add check to make sure item does not exist\n    this.results.push(item);\n  }\n\n  /**\n   * Sets the highlighted item by keyboard or mouseover\n   * @param item\n   */\n  private setHighlightedItem(item: Object): void {\n    if (this.results && this.results.length > 0) {\n      if (this.highlightedItem) {\n        this.highlightedItem[this.HighlightedPropertyName] = false;\n      }\n      let message = '';\n      if (item) {\n        this.highlightedItem = item;\n        this.highlightedItem[this.HighlightedPropertyName] = true;\n        message = item[this.configuration.primaryTextField];\n        if (\n          this.configuration.secondaryTextField &&\n          item[this.configuration.secondaryTextField]\n        ) {\n          message += ': ' + item[this.configuration.secondaryTextField];\n        }\n      } else {\n        this.highlightedItem = undefined;\n        message = 'No item selected';\n      }\n      this.addScreenReaderMessage(message);\n    }\n  }\n\n  /**\n   * Adds message to be read by screen reader\n   * @param message\n   */\n  private addScreenReaderMessage(message: string) {\n    this.srOnlyText = message;\n  }\n\n  writeValue(obj: any): void {\n    if (obj instanceof SDSSelectedItemModel) {\n      this.model = obj as SDSSelectedItemModel;\n      this._changeDetectorRef.markForCheck();\n      if (this.model.items.length === 0) {\n        this.inputValue = '';\n      } else if (this.configuration && this.configuration.selectionMode === SelectionMode.SINGLE) {\n        this.inputValue = this.getObjectValue(\n          this.model.items[0],\n          this.configuration.primaryTextField\n        );\n      }\n    }\n  }\n\n  addListener() {\n    const autocompleteElement = document.getElementById(this.configuration.id)\n    const dialogContainer = document.getElementsByClassName('sds-dialog-content')\n    const resultsDropdown = document.getElementsByClassName('sds-autocomplete')\n\n    let inputHeight = autocompleteElement.getBoundingClientRect().height;\n    let modalHeight = dialogContainer[0].getBoundingClientRect().height;\n    dialogContainer[0]\n      .addEventListener('scroll', function (event) {\n        if (resultsDropdown.length > 0) {\n          let inputTopValue = autocompleteElement.getBoundingClientRect().top;\n          let inputBottomValue = modalHeight - inputTopValue;\n          let listHeight = resultsDropdown[0].getBoundingClientRect().height;\n          let element = resultsDropdown[0].parentElement;\n          if (element && element.style.bottom) {\n            element.style.bottom = (inputBottomValue + listHeight - inputHeight + 30) + 'px';\n          } else {\n            element.style.top = (inputTopValue + inputHeight) + 'px';\n          }\n        }\n      });\n  }\n\n  getClass() {\n    return this.configuration.inputReadOnly ? 'hide-cursor' : '';\n  }\n\n  registerOnChange(fn: any): void {\n    this.propogateChange = fn;\n  }\n\n  registerOnTouched(fn: any): void {\n    this.onTouchedCallback = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".grayToLightBackgroundGradiate {\n    background: linear-gradient(to right, #c4c4c4, #f7f7f7);\n    background-size: 400% 400%;\n    height: 10px;\n    padding: 2.5px 0 2.5px 0;\n    text-align: center;\n    color: #888888;\n    font-size: 15px;\n    font-weight: bold;\n    margin: 7px 10px 0 10px;\n    -webkit-animation: gradiantShiftGray 5s ease infinite;\n    -moz-animation: gradiantShiftGray 5s ease infinite;\n    animation: gradiantShiftGray 5s ease infinite;\n    @-webkit-keyframes gradiantShiftGray {\n        0% {\n            background-position: 0% 50%;\n        }\n        50% {\n            background-position: 100% 50%;\n        }\n        100% {\n            background-position: 0% 50%;\n        }\n    }\n    @-moz-keyframes gradiantShiftGray {\n        0% {\n            background-position: 0% 50%;\n        }\n        50% {\n            background-position: 100% 50%;\n        }\n        100% {\n            background-position: 0% 50%;\n        }\n    }\n    @keyframes gradiantShiftGray {\n        0% {\n            background-position: 0% 50%;\n        }\n        50% {\n            background-position: 100% 50%;\n        }\n        100% {\n            background-position: 0% 50%;\n        }\n    }\n}\n\n.lightToGrayBackgroundGradiate {\n    background: linear-gradient(to right, #f7f7f7, #c4c4c4);\n    background-size: 400% 400%;\n    height: 15px;\n    padding: 2.5px 0 2.5px 0;\n    text-align: center;\n    color: #888888;\n    font-size: 15px;\n    font-weight: bold;\n    margin: 10px 10px 0 10px;\n    -webkit-animation: gradiantShift 5s ease infinite;\n    -moz-animation: gradiantShift 5s ease infinite;\n    animation: gradiantShift 5s ease infinite;\n    @-webkit-keyframes gradiantShift {\n        0% {\n            background-position: 0% 50%;\n        }\n        50% {\n            background-position: 100% 50%;\n        }\n        100% {\n            background-position: 0% 50%;\n        }\n    }\n    @-moz-keyframes gradiantShift {\n        0% {\n            background-position: 0% 50%;\n        }\n        50% {\n            background-position: 100% 50%;\n        }\n        100% {\n            background-position: 0% 50%;\n        }\n    }\n    @keyframes gradiantShift {\n        0% {\n            background-position: 0% 50%;\n        }\n        50% {\n            background-position: 100% 50%;\n        }\n        100% {\n            background-position: 0% 50%;\n        }\n    }\n}\n\n.autoLoading {\n    height: 60px;\n}\n\n.hide-cursor {\n    color: transparent;\n    text-shadow: 0 0 0;\n}\n\ninput::-ms-clear {\n    display: none;\n}",
+                    "data": ".grayToLightBackgroundGradiate {\n  background: linear-gradient(to right, #c4c4c4, #f7f7f7);\n  background-size: 400% 400%;\n  height: 10px;\n  padding: 2.5px 0 2.5px 0;\n  text-align: center;\n  color: #888888;\n  font-size: 15px;\n  font-weight: bold;\n  margin: 7px 10px 0 10px;\n  -webkit-animation: gradiantShiftGray 5s ease infinite;\n  -moz-animation: gradiantShiftGray 5s ease infinite;\n  animation: gradiantShiftGray 5s ease infinite;\n\n  @-webkit-keyframes gradiantShiftGray {\n    0% {\n      background-position: 0% 50%;\n    }\n\n    50% {\n      background-position: 100% 50%;\n    }\n\n    100% {\n      background-position: 0% 50%;\n    }\n  }\n\n  @-moz-keyframes gradiantShiftGray {\n    0% {\n      background-position: 0% 50%;\n    }\n\n    50% {\n      background-position: 100% 50%;\n    }\n\n    100% {\n      background-position: 0% 50%;\n    }\n  }\n\n  @keyframes gradiantShiftGray {\n    0% {\n      background-position: 0% 50%;\n    }\n\n    50% {\n      background-position: 100% 50%;\n    }\n\n    100% {\n      background-position: 0% 50%;\n    }\n  }\n}\n\n.lightToGrayBackgroundGradiate {\n  background: linear-gradient(to right, #f7f7f7, #c4c4c4);\n  background-size: 400% 400%;\n  height: 15px;\n  padding: 2.5px 0 2.5px 0;\n  text-align: center;\n  color: #888888;\n  font-size: 15px;\n  font-weight: bold;\n  margin: 10px 10px 0 10px;\n  -webkit-animation: gradiantShift 5s ease infinite;\n  -moz-animation: gradiantShift 5s ease infinite;\n  animation: gradiantShift 5s ease infinite;\n\n  @-webkit-keyframes gradiantShift {\n    0% {\n      background-position: 0% 50%;\n    }\n\n    50% {\n      background-position: 100% 50%;\n    }\n\n    100% {\n      background-position: 0% 50%;\n    }\n  }\n\n  @-moz-keyframes gradiantShift {\n    0% {\n      background-position: 0% 50%;\n    }\n\n    50% {\n      background-position: 100% 50%;\n    }\n\n    100% {\n      background-position: 0% 50%;\n    }\n  }\n\n  @keyframes gradiantShift {\n    0% {\n      background-position: 0% 50%;\n    }\n\n    50% {\n      background-position: 100% 50%;\n    }\n\n    100% {\n      background-position: 0% 50%;\n    }\n  }\n}\n\n.autoLoading {\n  height: 60px;\n}\n\n.hide-cursor {\n  caret-color: transparent;\n}\n\ninput::-ms-clear {\n  display: none;\n}\n",
                     "styleUrl": "./autocomplete-search.component.scss"
                 }
             ],
@@ -11354,11 +11328,11 @@ const COMPONENTS = {
             "implements": [
                 "ControlValueAccessor"
             ],
-            "templateData": "<div sds-click-outside (clickOutside)=\"checkForFocus($event)\" sds-tab-outside (tabOutside)=\"checkForFocus($event)\">\n  <div class=\"maxw-mobile-lg position-relative\">\n    <div [attr.id]=\"configuration.id + '-container'\">\n      <input role=\"combobox\" [attr.aria-expanded]=\"showResults\"\n        [attr.aria-owns]=\"showResults ? configuration.id + '-listbox' : undefined\" aria-haspopup=\"listbox\"\n        [disabled]=\"disabled\" (keypress)=\"onkeypress($event)\" (input)=\"textChange($event)\"\n        class=\"usa-input padding-right-3\" [ngClass]=\"getClass()\" #input\n        [attr.aria-label]=\"configuration.ariaLabelText ? configuration.ariaLabelText : configuration.labelText\"\n        [attr.id]=\"configuration.id\" type=\"text\" (focus)=\"inputFocusHandler()\" (keydown)=\"onKeydown($event)\"\n        aria-autocomplete=\"list\" [(ngModel)]=\"inputValue\" [attr.placeholder]=\"configuration.autocompletePlaceHolderText\"\n        [attr.aria-activedescendant]=\"\n          showResults\n            ? configuration.id + '-resultItem-' + highlightedIndex\n            : ''\n        \" [attr.aria-controls]=\"\n          showResults ? configuration.id + '-listbox' : undefined\n        \" autocomplete=\"off\" />\n    </div>\n    <ul #resultsList *ngIf=\"showResults\" [attr.id]=\"configuration.id + '-listbox'\" role=\"listbox\"\n      class=\"usa-list usa-list--unstyled sds-autocomplete\" (scroll)=\"onScroll()\">\n      <ng-container *ngIf=\"results && results.length\">\n        <li [attr.id]=\"configuration.id + '-resultItem-' + i\" role=\"option\" [ngClass]=\"{\n            'sds-autocomplete__group': configuration.isGroupingEnabled,\n            'sds-autocomplete__item': !configuration.isGroupingEnabled,\n            'sds-autocomplete__item--highlighted':\n              result['highlighted'] && !configuration.isGroupingEnabled,\n            'sds-autocomplete__item--selected':\n              checkItemSelected(result) && !configuration.isGroupingEnabled\n          }\" *ngFor=\"let result of results; let i = index\"\n          (click)=\"!configuration.isSelectableGroup ? '' : selectItem(result)\">\n          <ng-container *ngIf=\"itemTemplate\" [ngTemplateOutlet]=\"itemTemplate\"\n            [ngTemplateOutletContext]=\"{ $implicit: result }\">\n          </ng-container>\n          <ng-container *ngIf=\"!itemTemplate\">\n            <div [ngClass]=\"{\n                'sds-autocomplete__item': configuration.isGroupingEnabled,\n                'sds-autocomplete__item--highlighted':\n                  configuration.isGroupingEnabled && result['highlighted'],\n                'sds-autocomplete__item--disabled':\n                  !configuration.isSelectableGroup &&\n                  configuration.isGroupingEnabled,\n                'sds-autocomplete__item--selected':\n                  checkItemSelected(result) && configuration.isGroupingEnabled\n              }\">\n              <div [ngClass]=\"{\n                  'text-semibold': configuration.secondaryTextField\n                }\">\n                {{ getObjectValue(result, configuration.primaryTextField) }}\n              </div>\n              <ng-container *ngIf=\"\n                  configuration.secondaryTextField &&\n                  result[configuration.secondaryTextField]\n                \">\n                <div>{{ result[configuration.secondaryTextField] }}</div>\n              </ng-container>\n            </div>\n\n            <ul class=\"usa-list usa-list--unstyled\" #childrenList [attr.id]=\"configuration.id + '-childrenlistbox-' + i\"\n              role=\"listbox\">\n              <li [attr.id]=\"configuration.id + '-childItem-' + j\" role=\"option\" [ngClass]=\"{\n                  'sds-autocomplete__group':\n                    child[configuration.groupByChild]?.length,\n                  'sds-autocomplete__item': !child[configuration.groupByChild]\n                    ?.length,\n                  'sds-autocomplete__item--highlighted':\n                    child['highlighted'] &&\n                    !child[configuration.groupByChild]?.length,\n                  'sds-autocomplete__item--selected':\n                    checkItemSelected(child) &&\n                    !child[configuration.groupByChild]?.length\n                }\" *ngFor=\"\n                  let child of result[configuration.groupByChild];\n                  let j = index\n                \" (click)=\"selectItem(child)\">\n                <div [ngClass]=\"{\n                    'sds-autocomplete__item':\n                      child[configuration.groupByChild]?.length,\n                    'sds-autocomplete__item--highlighted':\n                      child[configuration.groupByChild]?.length &&\n                      child['highlighted'],\n                    'sds-autocomplete__item--disabled':\n                      !configuration.isSelectableGroup &&\n                      child[configuration.groupByChild]?.length,\n                    'sds-autocomplete__item--selected':\n                      checkItemSelected(child) &&\n                      child[configuration.groupByChild]?.length\n                  }\">\n                  <div [ngClass]=\"{\n                      'text-semibold': configuration.secondaryTextField\n                    }\">\n                    {{ getObjectValue(child, configuration.primaryTextField) }}\n                  </div>\n\n                  <div *ngIf=\"\n                      configuration.secondaryTextField &&\n                      child[configuration.secondaryTextField]\n                    \">\n                    {{ child[configuration.secondaryTextField] }}\n                  </div>\n                </div>\n                <ul class=\"usa-list usa-list--unstyled\" #childrenItems [attr.id]=\"configuration.id + '-grandchildren-'\"\n                  role=\"listbox\">\n                  <li [attr.id]=\"configuration.id + '-grandchildren-' + k\" role=\"option\" class=\"sds-autocomplete__item\"\n                    [ngClass]=\"{\n                      'sds-autocomplete__item--selected': checkItemSelected(\n                        subchild\n                      ),\n                      'sds-autocomplete__item--highlighted':\n                        subchild['highlighted']\n                    }\" *ngFor=\"\n                      let subchild of child[configuration.groupByChild];\n                      let k = index\n                    \" (click)=\"selectItem(subchild)\">\n                    <div>\n                      <div [ngClass]=\"{\n                          'text-semibold': configuration.secondaryTextField\n                        }\">\n                        {{ getObjectValue( subchild, configuration.primaryTextField ) }}\n\n                        <div *ngIf=\"\n                            configuration.secondaryTextField &&\n                            subchild[configuration.secondaryTextField]\n                          \">\n                          {{ subchild[configuration.secondaryTextField] }}\n                        </div>\n                      </div>\n                    </div>\n                  </li>\n                </ul>\n              </li>\n            </ul>\n          </ng-container>\n        </li>\n      </ng-container>\n      <ng-container *ngIf=\"!results || results.length == 0\">\n        <li class=\"emptyResults margin-1\">No results found</li>\n      </ng-container>\n      <ng-container *ngIf=\"showLoad\">\n        <li class=\"autoLoading\">\n          <div class=\"lightToGrayBackgroundGradiate\"></div>\n          <div class=\"grayToLightBackgroundGradiate\"></div>\n        </li>\n        <li class=\"autoLoading\">\n          <div class=\"lightToGrayBackgroundGradiate\"></div>\n          <div class=\"grayToLightBackgroundGradiate\"></div>\n        </li>\n      </ng-container>\n    </ul>\n\n    <ng-container *ngIf=\"!input.disabled\">\n      <span class=\"position-absolute right-105 top-1 cursor-pointer bg-white\">\n        <span *ngIf=\"inputValue && !disabled\" role=\"button\" aria-label=\"Clear input\" (click)=\"clearInput()\"\n          (keyup.enter)=\"clearInput()\" tabindex=\"0\">\n          <usa-icon [icon]=\"'x'\" size=\"lg\"></usa-icon>\n        </span>\n        <span *ngIf=\"!configuration.isTagModeEnabled\" class=\"margin-left-1\">\n          <usa-icon role=\"button\" aria-label=\"Display Options\" tabindex=\"0\" *ngIf=\"!showResults && !disabled\"\n            (click)=\"openOptions()\" (keyup.enter)=\"openOptions()\" [icon]=\"'caret-down-fill'\" size=\"1x\">\n          </usa-icon>\n          <usa-icon role=\"button\" aria-label=\"Hide Options\" tabindex=\"0\" *ngIf=\"showResults && !disabled\"\n            (click)=\"checkForFocus($event)\" (keyup.enter)=\"checkForFocus($event)\" [icon]=\"'caret-up-fill'\" size=\"1x\">\n          </usa-icon>\n        </span>\n      </span>\n    </ng-container>\n    <ul class=\"usa-sr-only\" aria-live=\"assertive\">\n      <li>{{ srOnlyText }}</li>\n    </ul>\n  </div>\n</div>\n"
+            "templateData": "<div sds-click-outside (clickOutside)=\"checkForFocus($event)\" sds-tab-outside (tabOutside)=\"checkForFocus($event)\">\n  <div class=\"maxw-mobile-lg position-relative\">\n    <div [attr.id]=\"configuration.id + '-container'\">\n      <input role=\"combobox\" [attr.aria-expanded]=\"showResults\" cdkOverlayOrigin #trigger=\"cdkOverlayOrigin\"\n        [attr.aria-owns]=\"showResults ? configuration.id + '-listbox' : undefined\" aria-haspopup=\"listbox\"\n        [disabled]=\"disabled\" (keypress)=\"onkeypress($event)\" (input)=\"textChange($event)\"\n        class=\"usa-input padding-right-3\" [ngClass]=\"getClass()\" #input\n        [attr.aria-label]=\"configuration.ariaLabelText ? configuration.ariaLabelText : configuration.labelText\"\n        [attr.id]=\"configuration.id\" type=\"text\" (focus)=\"inputFocusHandler()\" (keydown)=\"onKeydown($event)\"\n        aria-autocomplete=\"list\" [(ngModel)]=\"inputValue\" [attr.placeholder]=\"configuration.autocompletePlaceHolderText\"\n        [attr.aria-activedescendant]=\"\n          showResults\n            ? configuration.id + '-resultItem-' + highlightedIndex\n            : ''\n        \" [attr.aria-controls]=\"\n          showResults ? configuration.id + '-listbox' : undefined\n        \" autocomplete=\"off\" />\n    </div>\n    <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]=\"trigger\" [cdkConnectedOverlayOpen]=\"showResults\"\n      [cdkConnectedOverlayDisableClose]=\"true\" [cdkConnectedOverlayMinWidth]=\"input.offsetWidth\">\n      <ul #resultsList [attr.id]=\"configuration.id + '-listbox'\" role=\"listbox\" class=\"usa-list \n        usa-list--unstyled sds-autocomplete\" (scroll)=\"onScroll()\">\n        <ng-container *ngIf=\"results && results.length\">\n          <li [attr.id]=\"configuration.id + '-resultItem-' + i\" role=\"option\" [ngClass]=\"{\n              'sds-autocomplete__group': configuration.isGroupingEnabled,\n              'sds-autocomplete__item': !configuration.isGroupingEnabled,\n              'sds-autocomplete__item--highlighted':\n                result['highlighted'] && !configuration.isGroupingEnabled,\n              'sds-autocomplete__item--selected':\n                checkItemSelected(result) && !configuration.isGroupingEnabled\n            }\" *ngFor=\"let result of results; let i = index\"\n            (click)=\"!configuration.isSelectableGroup ? '' : selectItem(result)\">\n            <ng-container *ngIf=\"itemTemplate\" [ngTemplateOutlet]=\"itemTemplate\"\n              [ngTemplateOutletContext]=\"{ $implicit: result }\">\n            </ng-container>\n            <ng-container *ngIf=\"!itemTemplate\">\n              <div [ngClass]=\"{\n                  'sds-autocomplete__item': configuration.isGroupingEnabled,\n                  'sds-autocomplete__item--highlighted':\n                    configuration.isGroupingEnabled && result['highlighted'],\n                  'sds-autocomplete__item--disabled':\n                    !configuration.isSelectableGroup &&\n                    configuration.isGroupingEnabled,\n                  'sds-autocomplete__item--selected':\n                    checkItemSelected(result) && configuration.isGroupingEnabled\n                }\">\n                <div [ngClass]=\"{\n                    'text-semibold': configuration.secondaryTextField\n                  }\">\n                  {{ getObjectValue(result, configuration.primaryTextField) }}\n                </div>\n                <ng-container *ngIf=\"\n                    configuration.secondaryTextField &&\n                    result[configuration.secondaryTextField]\n                  \">\n                  <div>{{ result[configuration.secondaryTextField] }}</div>\n                </ng-container>\n              </div>\n\n              <ul class=\"usa-list usa-list--unstyled\" #childrenList\n                [attr.id]=\"configuration.id + '-childrenlistbox-' + i\" role=\"listbox\">\n                <li [attr.id]=\"configuration.id + '-childItem-' + j\" role=\"option\" [ngClass]=\"{\n                    'sds-autocomplete__group':\n                      child[configuration.groupByChild]?.length,\n                    'sds-autocomplete__item': !child[configuration.groupByChild]\n                      ?.length,\n                    'sds-autocomplete__item--highlighted':\n                      child['highlighted'] &&\n                      !child[configuration.groupByChild]?.length,\n                    'sds-autocomplete__item--selected':\n                      checkItemSelected(child) &&\n                      !child[configuration.groupByChild]?.length\n                  }\" *ngFor=\"\n                    let child of result[configuration.groupByChild];\n                    let j = index\n                  \" (click)=\"selectItem(child)\">\n                  <div [ngClass]=\"{\n                      'sds-autocomplete__item':\n                        child[configuration.groupByChild]?.length,\n                      'sds-autocomplete__item--highlighted':\n                        child[configuration.groupByChild]?.length &&\n                        child['highlighted'],\n                      'sds-autocomplete__item--disabled':\n                        !configuration.isSelectableGroup &&\n                        child[configuration.groupByChild]?.length,\n                      'sds-autocomplete__item--selected':\n                        checkItemSelected(child) &&\n                        child[configuration.groupByChild]?.length\n                    }\">\n                    <div [ngClass]=\"{\n                        'text-semibold': configuration.secondaryTextField\n                      }\">\n                      {{ getObjectValue(child, configuration.primaryTextField) }}\n                    </div>\n\n                    <div *ngIf=\"\n                        configuration.secondaryTextField &&\n                        child[configuration.secondaryTextField]\n                      \">\n                      {{ child[configuration.secondaryTextField] }}\n                    </div>\n                  </div>\n                  <ul class=\"usa-list usa-list--unstyled\" #childrenItems\n                    [attr.id]=\"configuration.id + '-grandchildren-'\" role=\"listbox\">\n                    <li [attr.id]=\"configuration.id + '-grandchildren-' + k\" role=\"option\"\n                      class=\"sds-autocomplete__item\" [ngClass]=\"{\n                        'sds-autocomplete__item--selected': checkItemSelected(\n                          subchild\n                        ),\n                        'sds-autocomplete__item--highlighted':\n                          subchild['highlighted']\n                      }\" *ngFor=\"\n                        let subchild of child[configuration.groupByChild];\n                        let k = index\n                      \" (click)=\"selectItem(subchild)\">\n                      <div>\n                        <div [ngClass]=\"{\n                            'text-semibold': configuration.secondaryTextField\n                          }\">\n                          {{ getObjectValue( subchild, configuration.primaryTextField ) }}\n\n                          <div *ngIf=\"\n                              configuration.secondaryTextField &&\n                              subchild[configuration.secondaryTextField]\n                            \">\n                            {{ subchild[configuration.secondaryTextField] }}\n                          </div>\n                        </div>\n                      </div>\n                    </li>\n                  </ul>\n                </li>\n              </ul>\n            </ng-container>\n          </li>\n        </ng-container>\n        <ng-container *ngIf=\"!results || results.length == 0\">\n          <li class=\"emptyResults margin-1\">No results found</li>\n        </ng-container>\n        <ng-container *ngIf=\"showLoad\">\n          <li class=\"autoLoading\">\n            <div class=\"lightToGrayBackgroundGradiate\"></div>\n            <div class=\"grayToLightBackgroundGradiate\"></div>\n          </li>\n          <li class=\"autoLoading\">\n            <div class=\"lightToGrayBackgroundGradiate\"></div>\n            <div class=\"grayToLightBackgroundGradiate\"></div>\n          </li>\n        </ng-container>\n      </ul>\n      <ul class=\"usa-sr-only\" aria-live=\"assertive\">\n        <li>{{ srOnlyText }}</li>\n      </ul>\n    </ng-template>\n\n\n    <ng-container *ngIf=\"!input.disabled\">\n      <span class=\"position-absolute right-105 top-1 cursor-pointer bg-white\">\n        <span *ngIf=\"inputValue && !disabled\" role=\"button\" aria-label=\"Clear input\" (click)=\"clearInput()\"\n          (keyup.enter)=\"clearInput()\" tabindex=\"0\">\n          <usa-icon [icon]=\"'x'\" size=\"lg\" class=\"font-sans-xs\"></usa-icon>\n        </span>\n        <span *ngIf=\"!configuration.isTagModeEnabled\" class=\"margin-left-1 margin-top-05\">\n          <usa-icon role=\"button\" aria-label=\"Display Options\" tabindex=\"0\" *ngIf=\"!showResults && !disabled\"\n            (click)=\"openOptions()\" class=\"font-sans-xs\" (keyup.enter)=\"openOptions()\" [icon]=\"'caret-down-fill'\"\n            size=\"1x\">\n          </usa-icon>\n          <usa-icon role=\"button\" aria-label=\"Hide Options\" tabindex=\"0\" *ngIf=\"showResults && !disabled\"\n            (click)=\"checkForFocus($event)\" class=\"font-sans-xs\" (keyup.enter)=\"checkForFocus($event)\"\n            [icon]=\"'caret-up-fill'\" size=\"1x\">\n          </usa-icon>\n        </span>\n      </span>\n    </ng-container>\n  </div>\n</div>\n"
         },
         {
             "name": "SdsDialogContainerComponent",
-            "id": "component-SdsDialogContainerComponent-b5544a4d78a81cb7745cd1de4239dd16",
+            "id": "component-SdsDialogContainerComponent-f3e20c12456f947115648a6f810fb8db",
             "file": "libs/packages/components/src/lib/dialog/dialog-container.component.ts",
             "changeDetection": "ChangeDetectionStrategy.Default",
             "encapsulation": [
@@ -11387,7 +11361,7 @@ const COMPONENTS = {
                     "type": "",
                     "optional": false,
                     "description": "<p>Emits when an animation state changes.</p>\n",
-                    "line": 83,
+                    "line": 84,
                     "rawdescription": "\nEmits when an animation state changes."
                 },
                 {
@@ -11398,7 +11372,7 @@ const COMPONENTS = {
                     "type": "string | null",
                     "optional": false,
                     "description": "<p>ID of the element that should be considered as the dialog&#39;s label.</p>\n",
-                    "line": 86,
+                    "line": 87,
                     "rawdescription": "\nID of the element that should be considered as the dialog's label."
                 },
                 {
@@ -11408,7 +11382,7 @@ const COMPONENTS = {
                     "type": "SdsDialogConfig",
                     "optional": false,
                     "description": "<p>The dialog configuration.</p>\n",
-                    "line": 97,
+                    "line": 98,
                     "rawdescription": "\nThe dialog configuration.",
                     "modifierKind": [
                         122
@@ -11422,7 +11396,7 @@ const COMPONENTS = {
                     "type": "HTMLElement | null",
                     "optional": false,
                     "description": "<p>Element that was focused before the dialog was opened. Save this to restore upon close.</p>\n",
-                    "line": 77,
+                    "line": 78,
                     "rawdescription": "\nElement that was focused before the dialog was opened. Save this to restore upon close.",
                     "modifierKind": [
                         120
@@ -11435,7 +11409,7 @@ const COMPONENTS = {
                     "type": "FocusTrap",
                     "optional": false,
                     "description": "<p>The class that traps and manages focus within the dialog.</p>\n",
-                    "line": 74,
+                    "line": 75,
                     "rawdescription": "\nThe class that traps and manages focus within the dialog.",
                     "modifierKind": [
                         120
@@ -11448,7 +11422,7 @@ const COMPONENTS = {
                     "type": "string",
                     "optional": false,
                     "description": "<p>ID for the container DOM element.</p>\n",
-                    "line": 89,
+                    "line": 90,
                     "rawdescription": "\nID for the container DOM element."
                 },
                 {
@@ -11458,7 +11432,7 @@ const COMPONENTS = {
                     "type": "CdkPortalOutlet",
                     "optional": false,
                     "description": "<p>The portal outlet inside of this container into which the dialog content will be loaded.</p>\n",
-                    "line": 71,
+                    "line": 72,
                     "rawdescription": "\nThe portal outlet inside of this container into which the dialog content will be loaded.",
                     "decorators": [
                         {
@@ -11475,7 +11449,7 @@ const COMPONENTS = {
                     "type": "\"void\" | \"enter\" | \"exit\" | \"slideEnter\" | \"slideExit\"",
                     "optional": false,
                     "description": "<p>State of the dialog animation.</p>\n",
-                    "line": 80,
+                    "line": 81,
                     "rawdescription": "\nState of the dialog animation."
                 }
             ],
@@ -11493,7 +11467,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 172,
+                    "line": 173,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nCallback, invoked whenever an animation on the host completes.",
@@ -11523,7 +11497,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 183,
+                    "line": 184,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nCallback, invoked when an animation on the host starts.",
@@ -11546,7 +11520,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 143,
+                    "line": 144,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nRestores focus to the element that was focused before the dialog opened.",
@@ -11561,7 +11535,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 157,
+                    "line": 158,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nSaves a reference to the element that was focused before the dialog was opened.",
@@ -11576,7 +11550,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 188,
+                    "line": 189,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nStarts the dialog exit animation.",
@@ -11588,7 +11562,7 @@ const COMPONENTS = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 129,
+                    "line": 130,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nMoves the focus inside the focus trap.",
@@ -11612,7 +11586,7 @@ const COMPONENTS = {
                     "typeParameters": [
                         "T"
                     ],
-                    "line": 106,
+                    "line": 107,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nAttach a ComponentPortal as content to this dialog container.\n",
@@ -11620,8 +11594,8 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 3610,
-                                "end": 3616,
+                                "pos": 3679,
+                                "end": 3685,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -11632,8 +11606,8 @@ const COMPONENTS = {
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 3604,
-                                "end": 3609,
+                                "pos": 3673,
+                                "end": 3678,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -11659,7 +11633,7 @@ const COMPONENTS = {
                     "typeParameters": [
                         "C"
                     ],
-                    "line": 119,
+                    "line": 120,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nAttach a TemplatePortal as content to this dialog container.\n",
@@ -11667,8 +11641,8 @@ const COMPONENTS = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4036,
-                                "end": 4042,
+                                "pos": 4105,
+                                "end": 4111,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -11679,8 +11653,8 @@ const COMPONENTS = {
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 4030,
-                                "end": 4035,
+                                "pos": 4099,
+                                "end": 4104,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -11699,7 +11673,7 @@ const COMPONENTS = {
             "description": "<p>Internal component that wraps user-provided dialog content.</p>\n",
             "rawdescription": "\n\nInternal component that wraps user-provided dialog content.\n",
             "type": "component",
-            "sourceCode": "import {\n  Component,\n  ComponentRef,\n  ElementRef,\n  EmbeddedViewRef,\n  EventEmitter,\n  Inject,\n  Optional,\n  ChangeDetectorRef,\n  ViewChild,\n  ViewEncapsulation,\n  ChangeDetectionStrategy,\n} from '@angular/core';\nimport { DOCUMENT } from '@angular/common';\nimport { AnimationEvent } from '@angular/animations';\nimport { sdsDialogAnimations } from './dialog-animations';\nimport {\n  BasePortalOutlet,\n  ComponentPortal,\n  CdkPortalOutlet,\n  TemplatePortal\n} from '@angular/cdk/portal';\nimport { FocusTrap, FocusTrapFactory } from '@angular/cdk/a11y';\nimport { SdsDialogConfig } from './dialog-config';\n\n\n/**\n * Throws an exception for the case when a ComponentPortal is\n * attached to a DomPortalOutlet without an origin.\n * @docs-private\n */\nexport function throwSdsDialogContentAlreadyAttachedError() {\n  throw Error('Attempting to attach dialog content after content is already attached');\n}\n\n/**\n * Internal component that wraps user-provided dialog content.\n * @docs-private\n */\n@Component({\n  selector: 'sds-dialog-container',\n  templateUrl: 'dialog-container.component.html',\n  encapsulation: ViewEncapsulation.None,\n  // Using OnPush for dialogs caused some G3 sync issues. Disabled until we can track them down.\n  // tslint:disable-next-line:validate-decorators\n  changeDetection: ChangeDetectionStrategy.Default,\n  animations: [sdsDialogAnimations.dialogContainer],\n  // tslint:disable-next-line: use-host-property-decorator\n  host: {\n    'class': 'sds-dialog__container',\n    '[class.sds-dialog--alert]': '_config.alert',\n    '[class.sds-dialog--alert-error]': '_config.alert === \"error\"',\n    '[class.sds-dialog--alert-warning]': '_config.alert === \"warning\"',\n    '[class.sds-dialog--alert-info]': '_config.alert === \"info\"',\n    '[class.dialog-slide-out]': '_config.slideOut',\n    'tabindex': '-1',\n    'aria-modal': 'true',\n    '[attr.id]': '_id',\n    '[attr.role]': '_config.role',\n    '[attr.aria-labelledby]': '_config.ariaLabel ? null : _ariaLabelledBy',\n    '[attr.aria-label]': '_config.ariaLabel',\n    '[attr.aria-describedby]': '_config.ariaDescribedBy || null',\n    '[@dialogContainer]': '_state',\n    '(@dialogContainer.start)': '_onAnimationStart($event)',\n    '(@dialogContainer.done)': '_onAnimationDone($event)',\n  },\n})\nexport class SdsDialogContainerComponent extends BasePortalOutlet {\n\n  /** The portal outlet inside of this container into which the dialog content will be loaded. */\n  @ViewChild(CdkPortalOutlet, { static: true }) _portalOutlet: CdkPortalOutlet;\n\n  /** The class that traps and manages focus within the dialog. */\n  private _focusTrap: FocusTrap;\n\n  /** Element that was focused before the dialog was opened. Save this to restore upon close. */\n  private _elementFocusedBeforeDialogWasOpened: HTMLElement | null = null;\n\n  /** State of the dialog animation. */\n  _state: 'void' | 'enter' | 'exit' | 'slideEnter' | 'slideExit' = this._config.slideOut ? 'slideEnter' : 'enter';\n\n  /** Emits when an animation state changes. */\n  _animationStateChanged = new EventEmitter<AnimationEvent>();\n\n  /** ID of the element that should be considered as the dialog's label. */\n  _ariaLabelledBy: string | null = null;\n\n  /** ID for the container DOM element. */\n  _id: string;\n\n  constructor(\n    private _elementRef: ElementRef,\n    private _focusTrapFactory: FocusTrapFactory,\n    private _changeDetectorRef: ChangeDetectorRef,\n    @Optional() @Inject(DOCUMENT) private _document: any,\n    /** The dialog configuration. */\n    public _config: SdsDialogConfig) {\n    super();\n   \n  }\n\n  /**\n   * Attach a ComponentPortal as content to this dialog container.\n   * @param portal Portal to be attached as the dialog content.\n   */\n  attachComponentPortal<T>(portal: ComponentPortal<T>): ComponentRef<T> {\n    if (this._portalOutlet.hasAttached()) {\n      throwSdsDialogContentAlreadyAttachedError();\n    }\n\n    this._savePreviouslyFocusedElement();\n    return this._portalOutlet.attachComponentPortal(portal);\n  }\n\n  /**\n   * Attach a TemplatePortal as content to this dialog container.\n   * @param portal Portal to be attached as the dialog content.\n   */\n  attachTemplatePortal<C>(portal: TemplatePortal<C>): EmbeddedViewRef<C> {\n    if (this._portalOutlet.hasAttached()) {\n      throwSdsDialogContentAlreadyAttachedError();\n    }\n\n    this._savePreviouslyFocusedElement();\n    return this._portalOutlet.attachTemplatePortal(portal);\n  }\n\n  /** Moves the focus inside the focus trap. */\n  private _trapFocus() {\n    if (!this._focusTrap) {\n      this._focusTrap = this._focusTrapFactory.create(this._elementRef.nativeElement);\n    }\n\n    // If were to attempt to focus immediately, then the content of the dialog would not yet be\n    // ready in instances where change detection has to run first. To deal with this, we simply\n    // wait for the microtask queue to be empty.\n    if (this._config.autoFocus) {\n      this._focusTrap.focusInitialElementWhenReady();\n    }\n  }\n\n  /** Restores focus to the element that was focused before the dialog opened. */\n  private _restoreFocus() {\n    const toFocus = this._elementFocusedBeforeDialogWasOpened;\n\n    // We need the extra check, because IE can set the `activeElement` to null in some cases.\n    if (this._config.restoreFocus && toFocus && typeof toFocus.focus === 'function') {\n      toFocus.focus();\n    }\n\n    if (this._focusTrap) {\n      this._focusTrap.destroy();\n    }\n  }\n\n  /** Saves a reference to the element that was focused before the dialog was opened. */\n  private _savePreviouslyFocusedElement() {\n    if (this._document) {\n      this._elementFocusedBeforeDialogWasOpened = this._document.activeElement as HTMLElement;\n\n      // Note that there is no focus method when rendering on the server.\n      if (this._elementRef.nativeElement.focus) {\n        // Move focus onto the dialog immediately in order to prevent the user from accidentally\n        // opening multiple dialogs at the same time. Needs to be async, because the element\n        // may not be focusable immediately.\n        Promise.resolve().then(() => this._elementRef.nativeElement.focus());\n      }\n    }\n  }\n\n  /** Callback, invoked whenever an animation on the host completes. */\n  _onAnimationDone(event: AnimationEvent) {\n    if (event.toState === 'enter' || event.toState === 'slideEnter') {\n      this._trapFocus();\n    } else if (event.toState === 'exit' || event.toState === 'slideExit') {\n      this._restoreFocus();\n    }\n\n    this._animationStateChanged.emit(event);\n  }\n\n  /** Callback, invoked when an animation on the host starts. */\n  _onAnimationStart(event: AnimationEvent) {\n    this._animationStateChanged.emit(event);\n  }\n\n  /** Starts the dialog exit animation. */\n  _startExitAnimation(): void {\n    this._state = this._config.slideOut ? 'slideExit' : 'exit';\n\n    // Mark the container for check so it can react if the\n    // view container is using OnPush change detection.\n    this._changeDetectorRef.markForCheck();\n  }\n}\n",
+            "sourceCode": "import {\n  Component,\n  ComponentRef,\n  ElementRef,\n  EmbeddedViewRef,\n  EventEmitter,\n  Inject,\n  Optional,\n  ChangeDetectorRef,\n  ViewChild,\n  ViewEncapsulation,\n  ChangeDetectionStrategy,\n} from '@angular/core';\nimport { DOCUMENT } from '@angular/common';\nimport { AnimationEvent } from '@angular/animations';\nimport { sdsDialogAnimations } from './dialog-animations';\nimport {\n  BasePortalOutlet,\n  ComponentPortal,\n  CdkPortalOutlet,\n  TemplatePortal\n} from '@angular/cdk/portal';\nimport { FocusTrap, FocusTrapFactory } from '@angular/cdk/a11y';\nimport { SdsDialogConfig } from './dialog-config';\n\n\n/**\n * Throws an exception for the case when a ComponentPortal is\n * attached to a DomPortalOutlet without an origin.\n * @docs-private\n */\nexport function throwSdsDialogContentAlreadyAttachedError() {\n  throw Error('Attempting to attach dialog content after content is already attached');\n}\n\n/**\n * Internal component that wraps user-provided dialog content.\n * @docs-private\n */\n@Component({\n  selector: 'sds-dialog-container',\n  templateUrl: 'dialog-container.component.html',\n  encapsulation: ViewEncapsulation.None,\n  // Using OnPush for dialogs caused some G3 sync issues. Disabled until we can track them down.\n  // tslint:disable-next-line:validate-decorators\n  changeDetection: ChangeDetectionStrategy.Default,\n  animations: [sdsDialogAnimations.dialogContainer],\n  // tslint:disable-next-line: use-host-property-decorator\n  host: {\n    'class': 'sds-dialog__container',\n    '[class.sds-dialog--alert]': '_config.alert',\n    '[class.sds-dialog--alert-error]': '_config.alert === \"error\"',\n    '[class.sds-dialog--alert-warning]': '_config.alert === \"warning\"',\n    '[class.sds-dialog--alert-info]': '_config.alert === \"info\"',\n    '[class.sds-dialog--alert-success]': '_config.alert === \"success\"',\n    '[class.dialog-slide-out]': '_config.slideOut',\n    'tabindex': '-1',\n    'aria-modal': 'true',\n    '[attr.id]': '_id',\n    '[attr.role]': '_config.role',\n    '[attr.aria-labelledby]': '_config.ariaLabel ? null : _ariaLabelledBy',\n    '[attr.aria-label]': '_config.ariaLabel',\n    '[attr.aria-describedby]': '_config.ariaDescribedBy || null',\n    '[@dialogContainer]': '_state',\n    '(@dialogContainer.start)': '_onAnimationStart($event)',\n    '(@dialogContainer.done)': '_onAnimationDone($event)',\n  },\n})\nexport class SdsDialogContainerComponent extends BasePortalOutlet {\n\n  /** The portal outlet inside of this container into which the dialog content will be loaded. */\n  @ViewChild(CdkPortalOutlet, { static: true }) _portalOutlet: CdkPortalOutlet;\n\n  /** The class that traps and manages focus within the dialog. */\n  private _focusTrap: FocusTrap;\n\n  /** Element that was focused before the dialog was opened. Save this to restore upon close. */\n  private _elementFocusedBeforeDialogWasOpened: HTMLElement | null = null;\n\n  /** State of the dialog animation. */\n  _state: 'void' | 'enter' | 'exit' | 'slideEnter' | 'slideExit' = this._config.slideOut ? 'slideEnter' : 'enter';\n\n  /** Emits when an animation state changes. */\n  _animationStateChanged = new EventEmitter<AnimationEvent>();\n\n  /** ID of the element that should be considered as the dialog's label. */\n  _ariaLabelledBy: string | null = null;\n\n  /** ID for the container DOM element. */\n  _id: string;\n\n  constructor(\n    private _elementRef: ElementRef,\n    private _focusTrapFactory: FocusTrapFactory,\n    private _changeDetectorRef: ChangeDetectorRef,\n    @Optional() @Inject(DOCUMENT) private _document: any,\n    /** The dialog configuration. */\n    public _config: SdsDialogConfig) {\n    super();\n\n  }\n\n  /**\n   * Attach a ComponentPortal as content to this dialog container.\n   * @param portal Portal to be attached as the dialog content.\n   */\n  attachComponentPortal<T>(portal: ComponentPortal<T>): ComponentRef<T> {\n    if (this._portalOutlet.hasAttached()) {\n      throwSdsDialogContentAlreadyAttachedError();\n    }\n\n    this._savePreviouslyFocusedElement();\n    return this._portalOutlet.attachComponentPortal(portal);\n  }\n\n  /**\n   * Attach a TemplatePortal as content to this dialog container.\n   * @param portal Portal to be attached as the dialog content.\n   */\n  attachTemplatePortal<C>(portal: TemplatePortal<C>): EmbeddedViewRef<C> {\n    if (this._portalOutlet.hasAttached()) {\n      throwSdsDialogContentAlreadyAttachedError();\n    }\n\n    this._savePreviouslyFocusedElement();\n    return this._portalOutlet.attachTemplatePortal(portal);\n  }\n\n  /** Moves the focus inside the focus trap. */\n  private _trapFocus() {\n    if (!this._focusTrap) {\n      this._focusTrap = this._focusTrapFactory.create(this._elementRef.nativeElement);\n    }\n\n    // If were to attempt to focus immediately, then the content of the dialog would not yet be\n    // ready in instances where change detection has to run first. To deal with this, we simply\n    // wait for the microtask queue to be empty.\n    if (this._config.autoFocus) {\n      this._focusTrap.focusInitialElementWhenReady();\n    }\n  }\n\n  /** Restores focus to the element that was focused before the dialog opened. */\n  private _restoreFocus() {\n    const toFocus = this._elementFocusedBeforeDialogWasOpened;\n\n    // We need the extra check, because IE can set the `activeElement` to null in some cases.\n    if (this._config.restoreFocus && toFocus && typeof toFocus.focus === 'function') {\n      toFocus.focus();\n    }\n\n    if (this._focusTrap) {\n      this._focusTrap.destroy();\n    }\n  }\n\n  /** Saves a reference to the element that was focused before the dialog was opened. */\n  private _savePreviouslyFocusedElement() {\n    if (this._document) {\n      this._elementFocusedBeforeDialogWasOpened = this._document.activeElement as HTMLElement;\n\n      // Note that there is no focus method when rendering on the server.\n      if (this._elementRef.nativeElement.focus) {\n        // Move focus onto the dialog immediately in order to prevent the user from accidentally\n        // opening multiple dialogs at the same time. Needs to be async, because the element\n        // may not be focusable immediately.\n        Promise.resolve().then(() => this._elementRef.nativeElement.focus());\n      }\n    }\n  }\n\n  /** Callback, invoked whenever an animation on the host completes. */\n  _onAnimationDone(event: AnimationEvent) {\n    if (event.toState === 'enter' || event.toState === 'slideEnter') {\n      this._trapFocus();\n    } else if (event.toState === 'exit' || event.toState === 'slideExit') {\n      this._restoreFocus();\n    }\n\n    this._animationStateChanged.emit(event);\n  }\n\n  /** Callback, invoked when an animation on the host starts. */\n  _onAnimationStart(event: AnimationEvent) {\n    this._animationStateChanged.emit(event);\n  }\n\n  /** Starts the dialog exit animation. */\n  _startExitAnimation(): void {\n    this._state = this._config.slideOut ? 'slideExit' : 'exit';\n\n    // Mark the container for check so it can react if the\n    // view container is using OnPush change detection.\n    this._changeDetectorRef.markForCheck();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -11740,7 +11714,7 @@ const COMPONENTS = {
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 89,
+                "line": 90,
                 "jsdoctags": [
                     {
                         "name": "_elementRef",
@@ -11790,101 +11764,291 @@ const COMPONENTS = {
                 ]
             },
             "extends": "BasePortalOutlet",
-            "templateData": "<button *ngIf=\"_config.displayCloseBtn\" sds-dialog-close class=\"close-btn\" aria-label=\"Close Modal\">\n  <usa-icon [icon]=\"'x'\"></usa-icon>\n</button>\n\n<!-- Alert Icons -->\n<div *ngIf=\"_config.alert\" [ngSwitch]=\"_config.alert\" class=\"sds-dialog-icon\">\n  <usa-icon *ngSwitchCase=\"'error'\" [icon]=\"'alert-error'\" size=\"3x\"></usa-icon>\n  <usa-icon *ngSwitchCase=\"'warning'\" [icon]=\"'exclamation-triangle'\" size=\"3x\"></usa-icon>\n  <usa-icon *ngSwitchCase=\"'info'\" [icon]=\"'info-circle'\" size=\"3x\"></usa-icon>\n  <div *ngSwitchDefault>\n    Alert <em>{{ _config.alert }}</em> is not valid\n  </div>\n</div>\n\n<ng-template cdkPortalOutlet></ng-template>\n"
+            "templateData": "<button *ngIf=\"_config.displayCloseBtn\" sds-dialog-close class=\"close-btn\" aria-label=\"Close Modal\">\n  <usa-icon [icon]=\"'x'\"></usa-icon>\n</button>\n\n<!-- Alert Icons -->\n<div *ngIf=\"_config.alert\" [ngSwitch]=\"_config.alert\" class=\"sds-dialog-icon\">\n  <usa-icon *ngSwitchCase=\"'error'\" [icon]=\"'alert-error'\" size=\"3x\"></usa-icon>\n  <usa-icon *ngSwitchCase=\"'warning'\" [icon]=\"'exclamation-triangle'\" size=\"3x\"></usa-icon>\n  <usa-icon *ngSwitchCase=\"'info'\" [icon]=\"'info-circle'\" size=\"3x\"></usa-icon>\n  <usa-icon *ngSwitchCase=\"'success'\" [icon]=\"'check-circle'\" size=\"3x\"></usa-icon>\n  <div *ngSwitchDefault>\n    Alert <em>{{ _config.alert }}</em> is not valid\n  </div>\n</div>\n\n<ng-template cdkPortalOutlet></ng-template>\n"
         },
         {
-            "name": "SdsIconComponent",
-            "id": "component-SdsIconComponent-05cdeab3e244d1aad7f7b0b4f1ce2e62",
-            "file": "libs/packages/components/src/lib/icon/icon.component.ts",
+            "name": "SdsEditorComponent",
+            "id": "component-SdsEditorComponent-4127c59f8053165b680d4d118f8def4a",
+            "file": "libs/packages/components/src/lib/editor/editor.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
-            "providers": [],
-            "selector": "sds-icon",
-            "styleUrls": [
-                "./icon.component.scss"
+            "providers": [
+                {
+                    "name": "{\n    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => SdsEditorComponent), multi: true,\n}",
+                    "type": "component"
+                }
             ],
+            "selector": "sds-editor",
+            "styleUrls": [],
             "styles": [],
-            "templateUrl": [
-                "./icon.component.html"
-            ],
+            "template": "<div\n  #searchInput\n  [attr.id]=\"id\"\n  class=\"minh-15 border-gray-70 border-1px margin-top-1 padding-05\"\n  contenteditable=\"true\"\n  (input)=\"valueChange($event.target.innerHTML)\"\n>\n</div>\n",
+            "templateUrl": [],
             "viewProviders": [],
             "inputsClass": [
                 {
-                    "name": "classes",
+                    "name": "id",
+                    "defaultValue": "'searchEditor'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "Classes to be applied to i-bs element",
-                    "description": "<p>Classes to be applied to i-bs element</p>\n",
-                    "line": 17,
-                    "type": ""
-                },
-                {
-                    "name": "icon",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 10,
+                    "line": 38,
                     "type": "string"
                 },
                 {
-                    "name": "rotate",
-                    "defaultValue": "0",
+                    "name": "regex",
+                    "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 11,
-                    "type": "number"
-                },
-                {
-                    "name": "size",
-                    "defaultValue": "'lg'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 12,
+                    "line": 39,
                     "type": "string"
-                },
-                {
-                    "name": "skew",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "Array of up to two numbers to indicate the degree value to skew icon. The first element determines the horizontal skewing. The second element determines the vertical skewing. The second element is optional. if it is not provided, 0 will be used.",
-                    "description": "<p>Array of up to two numbers to indicate the degree value to skew icon. The first element determines the horizontal skewing. The second element determines the vertical skewing. The second element is optional. if it is not provided, 0 will be used.</p>\n",
-                    "line": 26,
-                    "type": ""
                 }
             ],
             "outputsClass": [],
             "propertiesClass": [
                 {
-                    "name": "iconClasses",
+                    "name": "_onChange",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 43,
+                    "modifierKind": [
+                        120
+                    ]
+                },
+                {
+                    "name": "_onTouched",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 44,
+                    "modifierKind": [
+                        120
+                    ]
+                },
+                {
+                    "name": "model",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 40
+                    "line": 41
                 },
                 {
-                    "name": "skewX",
+                    "name": "searchInput",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "number",
+                    "type": "ElementRef",
                     "optional": false,
                     "description": "",
-                    "line": 38
-                },
-                {
-                    "name": "skewY",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "number",
-                    "optional": false,
-                    "description": "",
-                    "line": 39
+                    "line": 36,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'searchInput', {read: ElementRef, static: true}"
+                        }
+                    ]
                 }
             ],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "getModel",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 70,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "registerOnChange",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 112,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "registerOnTouched",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 117,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "updateItems",
+                    "args": [
+                        {
+                            "name": "$event",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 59,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "$event",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "updateModel",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 64,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "validateRegex",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 74,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "valueChange",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 50,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "writeValue",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 98,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -11892,91 +12056,54 @@ const COMPONENTS = {
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'sds-icon',\n  templateUrl: './icon.component.html',\n  styleUrls: ['./icon.component.scss']\n})\nexport class SdsIconComponent {\n\n  @Input() icon: string;\n  @Input() rotate: number = 0;\n  @Input() size: string = 'lg';\n  /**\n   * Classes to be applied to i-bs element\n   */\n  @Input()\n  set classes(classesToApply: Array<string>){\n    if(classesToApply){\n      this.iconClasses = classesToApply.join(', ')\n    }\n  };\n  /**\n   * Array of up to two numbers to indicate the degree value to skew icon. The first element determines the horizontal skewing. The second element determines the vertical skewing. The second element is optional. if it is not provided, 0 will be used.\n   */\n  @Input()\n  set skew(value: Array<number>){\n    this.skewX = value[0];\n    this.skewY = value[1] ? value[1] : 0;\n  }\n\n  get skewClass():string{\n    if(this.skewX || this.skewY){\n      return `skew-${this.skewX}-${this.skewY}`;\n    }\n    return '';\n  }\n\n  skewX: number;\n  skewY: number;\n  iconClasses: string = '';\n}\n",
+            "sourceCode": "import { DOCUMENT } from '@angular/common';\nimport {\n    Component,\n    forwardRef,\n    ChangeDetectionStrategy,\n    ChangeDetectorRef,\n    Input,\n    ViewChild,\n    ElementRef,\n    Inject\n} from '@angular/core';\nimport { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';\n\n@Component({\n    selector: 'sds-editor',\n    template: `\n    <div\n      #searchInput\n      [attr.id]=\"id\"\n      class=\"minh-15 border-gray-70 border-1px margin-top-1 padding-05\"\n      contenteditable=\"true\"\n      (input)=\"valueChange($event.target.innerHTML)\"\n    >\n    </div>\n  `,\n    providers: [\n        {\n            provide: NG_VALUE_ACCESSOR,\n            useExisting: forwardRef(() => SdsEditorComponent),\n            multi: true,\n        },\n    ],\n    changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class SdsEditorComponent implements ControlValueAccessor {\n    @ViewChild('searchInput', { read: ElementRef, static: true }) searchInput: ElementRef;\n\n    @Input() id = 'searchEditor';\n    @Input() regex = '';\n\n    model = '';\n\n    private _onChange = (_: any) => { };\n    private _onTouched = () => { };\n\n    constructor(private cd: ChangeDetectorRef, @Inject(DOCUMENT) private _document: any) {\n    }\n\n    // Helper method to programatically add a value to the existing items array\n    valueChange(value) {\n        this.model = value;\n        if (this.regex) {\n            this.validateRegex(this.model);\n        }\n        this.updateModel();\n    }\n\n    // Method that is fired when the child component event notifies us that the items array has been modified within the child component\n    updateItems($event) {\n        this.updateModel();\n    }\n\n    // Helper method that gets a new instance of the model and notifies ControlValueAccessor that we have a new model for this FormControl (our custom component)\n    updateModel() {\n        const model = this.getModel();\n        this._onChange(model);\n    }\n\n    // Helper method to return a new instance of an array that contains our items\n    getModel() {\n        return this.model;\n    }\n    // Validate regex and highlight first charecter of the failure\n    validateRegex(value) {\n        const rawValue = value.replaceAll('<mark>', '').replaceAll('</mark>', '');\n        const regex = new RegExp(this.regex, 'g');\n        let res = \"\";\n        let result = regex.exec(rawValue);\n        if (result) {\n            let index = result.index;\n            res = rawValue.substring(0, index) +\n                '<mark>' + rawValue.substring(index, index + 1) +\n                '</mark>' + rawValue.substring(index + 1, index + rawValue.length);\n        } else {\n            res = rawValue;\n        }\n        this.searchInput.nativeElement.innerHTML = res;\n        // To enable to SelectAll to remove the text\n        this._document.execCommand('selectAll', false, null);\n\n        // moving the cursor to the end when the validation fails\n        this._document.getSelection().collapseToEnd();\n    }\n\n    // ControlValueAccessor (and Formly) is trying to update the value of the FormControl (our custom component) programatically\n    // If there is a value we will just overwrite items\n    // If there is no value we reset the items array to be empty\n    writeValue(value: any) {\n        if (value) {\n            this.model = value;\n            if (this.searchInput)\n                this.searchInput.nativeElement.innerHTML = value;\n            this.cd.markForCheck();\n        } else {\n            this.model = '';\n            if (this.searchInput) this.searchInput.nativeElement.innerHTML = '';\n            this.cd.markForCheck();\n        }\n    }\n\n    // ControlValueAccessor hook that lets us call this._onChange(var) to let the form know our variable has changed (in this case model)\n    registerOnChange(fn: any): void {\n        this._onChange = fn;\n    }\n\n    // ControlValueAccessor hook (not used)\n    registerOnTouched(fn: any) {\n        this._onTouched = fn;\n    }\n}\n",
             "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": "$rotation-values: 30 45 60 90 120 135 150 180 210 225 240 270 300 315 330;\n$skew-values: -45, -40, -35, -30, -25, -20, -15, -10, -5, 0, 5, 10, 15, 20, 25, 30, 35, 40, 45;\n\n@each $item in $rotation-values {\n  i-bs.rotate-#{$item} ::ng-deep{\n    svg{\n      transform: rotate($item * 1deg);\n    }\n  }\n}\n\n@each $skewX in $skew-values {\n  @each $skewY in $skew-values {\n    i-bs.skew-#{$skewX}-#{$skewY} ::ng-deep{\n      svg{\n        transform: skew($skewX * 1deg, $skewY * 1deg);\n      }\n    }\n  }\n}\n\ni-bs ::ng-deep{\n  svg {\n    width: 1em;\n    height: 1em;\n    overflow: visible;\n  }\n}\n\ni-bs.size-xs{\n  font-size: .75em;\n}\ni-bs.size-sm{\n  font-size: .875em;\n}\ni-bs.size-lg{\n  font-size: 1.33em;\n}\ni-bs.size-2x{\n  font-size: 2em;\n}\ni-bs.size-3x{\n  font-size: 3em;\n}\ni-bs.size-4x{\n  font-size: 4em;\n}\ni-bs.size-5x{\n  font-size: 5em;\n}\ni-bs.size-6x{\n  font-size: 6em;\n}\ni-bs.size-7x{\n  font-size: 7em;\n}\ni-bs.size-8x{\n  font-size: 8em;\n}\ni-bs.size-9x{\n  font-size: 9em;\n}\ni-bs.size-10x{\n  font-size: 10em;\n}\n\ni-bs{\n  vertical-align: -0.15rem;\n}\n",
-                    "styleUrl": "./icon.component.scss"
-                }
-            ],
+            "styleUrlsData": "",
             "stylesData": "",
-            "accessors": {
-                "classes": {
-                    "name": "classes",
-                    "setSignature": {
-                        "name": "classes",
-                        "type": "void",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "cd",
+                        "type": "ChangeDetectorRef",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "_document",
+                        "type": "any",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 44,
+                "jsdoctags": [
+                    {
+                        "name": "cd",
+                        "type": "ChangeDetectorRef",
                         "deprecated": false,
                         "deprecationMessage": "",
-                        "args": [
-                            {
-                                "name": "classesToApply",
-                                "type": "Array<string>",
-                                "deprecated": false,
-                                "deprecationMessage": ""
-                            }
-                        ],
-                        "returnType": "void",
-                        "line": 17,
-                        "rawdescription": "Classes to be applied to i-bs element",
-                        "description": "<p>Classes to be applied to i-bs element</p>\n",
-                        "jsdoctags": [
-                            {
-                                "name": "classesToApply",
-                                "type": "Array<string>",
-                                "deprecated": false,
-                                "deprecationMessage": "",
-                                "tagName": {
-                                    "text": "param"
-                                }
-                            }
-                        ]
-                    }
-                },
-                "skew": {
-                    "name": "skew",
-                    "setSignature": {
-                        "name": "skew",
-                        "type": "void",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "_document",
+                        "type": "any",
                         "deprecated": false,
                         "deprecationMessage": "",
-                        "args": [
-                            {
-                                "name": "value",
-                                "type": "Array<number>",
-                                "deprecated": false,
-                                "deprecationMessage": ""
-                            }
-                        ],
-                        "returnType": "void",
-                        "line": 26,
-                        "rawdescription": "Array of up to two numbers to indicate the degree value to skew icon. The first element determines the horizontal skewing. The second element determines the vertical skewing. The second element is optional. if it is not provided, 0 will be used.",
-                        "description": "<p>Array of up to two numbers to indicate the degree value to skew icon. The first element determines the horizontal skewing. The second element determines the vertical skewing. The second element is optional. if it is not provided, 0 will be used.</p>\n",
-                        "jsdoctags": [
-                            {
-                                "name": "value",
-                                "type": "Array<number>",
-                                "deprecated": false,
-                                "deprecationMessage": "",
-                                "tagName": {
-                                    "text": "param"
-                                }
-                            }
-                        ]
+                        "tagName": {
+                            "text": "param"
+                        }
                     }
-                },
-                "skewClass": {
-                    "name": "skewClass",
-                    "getSignature": {
-                        "name": "skewClass",
-                        "type": "string",
-                        "returnType": "string",
-                        "line": 31
-                    }
-                }
+                ]
             },
-            "templateData": "<ng-container>\n  <i-bs name={{icon}} class=\"rotate-{{rotate}} size-{{size}}\" aria-hidden=true role=\"img\" [ngClass]=\"[iconClasses, skewClass]\"></i-bs>\n</ng-container>\n"
+            "implements": [
+                "ControlValueAccessor"
+            ]
         },
         {
             "name": "SdsMenuComponent",
@@ -13796,11 +13923,11 @@ const COMPONENTS = {
                     }
                 }
             },
-            "templateData": "<ng-container *ngIf=\"updateModel?.results?.length\">\n  <div *ngFor=\"let item of updateModel.results\">\n    <hr *ngIf=\"divider\" class=\"fine\" />\n    <ng-container *ngTemplateOutlet=\"resultContentTemplate,\n                   context: { $implicit: item }\"></ng-container>\n  </div>\n  <hr *ngIf=\"divider && updateModel?.results?.length\" class=\"fine\" />\n</ng-container>\n\n<ng-container *ngIf=\"(customResultsTemplate && !(updateModel?.results?.length))\"\n  [ngTemplateOutlet]=\"customResultsTemplate\" [ngTemplateOutletContext]=\"{$implicit:updateModel}\">\n</ng-container>\n\n<!-- <ng-container *ngIf=\"(!updateModel?.metadata?.messages && updateModel?.results?.length === 0)\">\n  <div class=\"sds-card sds-card--vertical sds-card--shadowed sds-card--bordered\">\n    This is initial template\n  </div>\n</ng-container> -->\n<div aria-live=\"polite\" aria-atomic=\"true\">\n  <ng-container *ngIf=\"!customResultsTemplate\">\n    <ng-container\n      *ngIf=\"(updateModel == null || (!updateModel?.metadata?.messages && updateModel?.results?.length === 0))\">\n      <ng-container *ngIf=\"!isDefaultModel\">\n        <div class=\"sds-card sds-card--vertical sds-card--shadowed sds-card--bordered bg-base-lightest\">\n          <div class=\"sds-card__header padding-3\">\n            <div class=\"sds-stack sds-2x\">\n              <usa-icon class=\"sds-stack-icon\" [size]=\"'3x'\" [icon]=\"'circle'\"></usa-icon>\n              <usa-icon class=\"sds-stack-icon\" [size]=\"'2x'\" [icon]=\"'search'\"></usa-icon>\n            </div>\n          </div>\n          <div class=\"sds-card__body margin-2\">\n            <h1 class=\"sds-card__title\">No matches found</h1>\n            <p>We couldn't find a match for your search criteria.</p>\n            <p>Please try another search or go back to previous results.</p>\n            <div class=\"margin-top-3\">\n              <button class=\"usa-button usa-button--outline\" (click)=\"goBack()\">Go Back</button>\n            </div>\n          </div>\n        </div>\n      </ng-container>\n      <ng-container *ngIf=\"isDefaultModel\">\n        <div class=\"sds-card sds-card--vertical sds-card--shadowed sds-card--bordered bg-base-lightest\">\n          <div class=\"sds-card__header\">\n            <usa-icon [icon]=\"'arrow-left-circle-fill'\" [size]=\"'5x'\"></usa-icon>\n          </div>\n          <div class=\"sds-card__body margin-2\">\n            <h1 class=\"sds-card__title\">Select Criteria</h1>\n            <p>Choose your filters and run your report to begin.</p>\n          </div>\n        </div>\n      </ng-container>\n    </ng-container>\n\n\n    <ng-container *ngIf=\"updateModel?.metadata?.messages\">\n      <ng-container *ngIf=\"!isTemplate()\">\n        <ng-container *ngTemplateOutlet=\"updateModel?.metadata?.messages\"></ng-container>\n      </ng-container>\n      <ng-container *ngIf=\"isTemplate()\">\n        <div *ngFor=\"let msg of updateModel.metadata.messages\" class=\"sds-card sds-card--shadowed sds-card--bordered\"\n          [ngClass]=\"[(msg.type !== 'loading') ? 'sds-card--vertical': '', msg.classes ? msg.classes : '']\">\n          <ng-container *ngIf=\"msg.type !== 'loading' else loading\">\n            <div class=\"sds-card__header\">\n              <usa-icon\n                [icon]=\"(msg.type ==='error') ?  ['sds', 'alert-error'] :( (msg.type ==='info') ? 'info-circle' :( (msg.type ==='initial') ? 'arrow-left-circle-fill': 'search'))\"\n                [size]=\"'5x'\">\n              </usa-icon>\n            </div>\n            <div class=\"sds-card__body margin-2\">\n              <h1 class=\"sds-card__title\">{{msg.title}}</h1>\n              <p [innerHTML]=\"msg.message\"></p>\n              <div class=\"sds-card__buttons\">\n                <button *ngFor=\"let button of msg.buttons\" class=\"usa-button\" [attr.aria-label]=\"button.ariaLabel\"\n                  [ngClass]=\"button.classes ? button.classes : 'usa-button--outline'\" (click)=\"button.action()\">\n                  {{button.text}}\n                </button>\n              </div>\n            </div>\n          </ng-container>\n        </div>\n      </ng-container>\n    </ng-container>\n  </ng-container>\n</div>\n\n<ng-template #loading>\n  <div class=\"grid-container\">\n    <div class=\"sds-load grid-row\">\n      <div class=\"grid-col-5 sds-load__title\"></div>\n      <div class=\"grid-col-auto sds-load__circle\"></div>\n    </div>\n    <div class=\"sds-load grid-row\">\n      <div class=\"tablet:grid-col-fill sds-load__content\"></div>\n      <div class=\"tablet:grid-col-fill sds-load__content\"></div>\n      <div class=\"tablet:grid-col-2 grid-col sds-load__element\"></div>\n      <div class=\"tablet:grid-col-2 grid-col sds-load__element\"></div>\n    </div>\n  </div>\n</ng-template>\n"
+            "templateData": "<ng-container *ngIf=\"updateModel?.results?.length\">\n  <div *ngFor=\"let item of updateModel.results\">\n    <hr *ngIf=\"divider\" class=\"fine\" />\n    <ng-container *ngTemplateOutlet=\"resultContentTemplate,\n                   context: { $implicit: item }\"></ng-container>\n  </div>\n  <hr *ngIf=\"divider && updateModel?.results?.length\" class=\"fine\" />\n</ng-container>\n\n<ng-container *ngIf=\"(customResultsTemplate && !(updateModel?.results?.length))\"\n  [ngTemplateOutlet]=\"customResultsTemplate\" [ngTemplateOutletContext]=\"{$implicit:updateModel}\">\n</ng-container>\n\n<!-- <ng-container *ngIf=\"(!updateModel?.metadata?.messages && updateModel?.results?.length === 0)\">\n  <div class=\"sds-card sds-card--vertical sds-card--shadowed sds-card--bordered\">\n    This is initial template\n  </div>\n</ng-container> -->\n<div aria-live=\"polite\" aria-atomic=\"true\">\n  <ng-container *ngIf=\"!customResultsTemplate\">\n    <ng-container\n      *ngIf=\"(updateModel == null || (!updateModel?.metadata?.messages && updateModel?.results?.length === 0))\">\n      <ng-container *ngIf=\"!isDefaultModel\">\n        <div class=\"sds-card sds-card--vertical sds-card--shadowed sds-card--bordered bg-base-lightest\">\n          <div class=\"sds-card__header padding-3\">\n            <div class=\"sds-stack sds-2x\">\n              <usa-icon class=\"sds-stack-icon\" [size]=\"'3x'\" [icon]=\"'circle'\"></usa-icon>\n              <usa-icon class=\"sds-stack-icon\" [size]=\"'2x'\" [icon]=\"'search'\"></usa-icon>\n            </div>\n          </div>\n          <div class=\"sds-card__body margin-2\">\n            <h1 class=\"sds-card__title\">No matches found</h1>\n            <p>We couldn't find a match for your search criteria.</p>\n            <p>Please try another search or go back to previous results.</p>\n            <div class=\"margin-top-3\">\n              <button class=\"usa-button usa-button--outline\" (click)=\"goBack()\">Go Back</button>\n            </div>\n          </div>\n        </div>\n      </ng-container>\n      <ng-container *ngIf=\"isDefaultModel\">\n        <div class=\"sds-card sds-card--vertical sds-card--shadowed sds-card--bordered bg-base-lightest\">\n          <div class=\"sds-card__header\">\n            <usa-icon [icon]=\"'arrow-left-circle-fill'\" [size]=\"'5x'\"></usa-icon>\n          </div>\n          <div class=\"sds-card__body margin-2\">\n            <h1 class=\"sds-card__title\">Select Criteria</h1>\n            <p>Choose your filters and run your report to begin.</p>\n          </div>\n        </div>\n      </ng-container>\n    </ng-container>\n\n\n    <ng-container *ngIf=\"updateModel?.metadata?.messages\">\n      <ng-container *ngIf=\"!isTemplate()\">\n        <ng-container *ngTemplateOutlet=\"updateModel?.metadata?.messages\"></ng-container>\n      </ng-container>\n      <ng-container *ngIf=\"isTemplate()\">\n        <div *ngFor=\"let msg of updateModel.metadata.messages\" class=\"sds-card sds-card--shadowed sds-card--bordered\"\n          [ngClass]=\"[(msg.type !== 'loading') ? 'sds-card--vertical': '', msg.classes ? msg.classes : '']\">\n          <ng-container *ngIf=\"msg.type !== 'loading' else loading\">\n            <div class=\"sds-card__header\">\n              <usa-icon\n                [icon]=\"(msg.type ==='error') ?  ['sds', 'alert-error'] :( (msg.type ==='info') ? 'info-circle' :( (msg.type ==='initial') ? 'arrow-left-circle-fill': 'search'))\"\n                [size]=\"'5x'\">\n              </usa-icon>\n            </div>\n            <div class=\"sds-card__body margin-2\">\n              <h1 class=\"sds-card__title\">{{msg.title}}</h1>\n              <p [innerHTML]=\"msg.message\"></p>\n              <div class=\"sds-card__buttons\">\n                <button *ngFor=\"let button of msg.buttons\" class=\"usa-button\" [attr.aria-label]=\"button.ariaLabel\"\n                  [ngClass]=\"button.classes ? button.classes : 'usa-button--outline'\" (click)=\"button.action()\">\n                  {{button.text}}\n                </button>\n              </div>\n            </div>\n          </ng-container>\n        </div>\n      </ng-container>\n    </ng-container>\n  </ng-container>\n</div>\n\n<ng-template #loading>\n  <div class=\"grid-container padding-left-0\">\n    <div class=\"sds-load grid-row\">\n      <div class=\"grid-col-5 sds-load__title\"></div>\n    </div>\n    <div class=\"sds-load margin-top-1\">\n      <div class=\"tablet:grid-col-fill sds-load__element\"></div>\n    </div>\n    <div class=\"sds-load margin-top-1\">\n      <div class=\"grid-col-8 height-4 sds-load__content\"></div>\n    </div>\n  </div>\n</ng-template>\n"
         },
         {
             "name": "SDSSelectedResultComponent",
-            "id": "component-SDSSelectedResultComponent-0a1efdd75f52cd417b40d3e192116d1b",
+            "id": "component-SDSSelectedResultComponent-151a3933bf52d0c226b98f5b8e2fda2e",
             "file": "libs/packages/components/src/lib/selected-result/selected-result.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -13906,12 +14033,19 @@ const COMPONENTS = {
                             "type": "string",
                             "deprecated": false,
                             "deprecationMessage": ""
+                        },
+                        {
+                            "name": "index",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
                         }
                     ],
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 88,
+                    "line": 89,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nGets the string value from the specifed properties of an object\n",
@@ -13965,6 +14099,31 @@ const COMPONENTS = {
                                 "escapedText": "param"
                             },
                             "comment": "<p>comma seperated list with periods depth of object</p>\n"
+                        },
+                        {
+                            "name": {
+                                "pos": 2308,
+                                "end": 2313,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 78,
+                                "escapedText": "index"
+                            },
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "tagName": {
+                                "pos": 2302,
+                                "end": 2307,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 78,
+                                "escapedText": "param"
+                            },
+                            "comment": "<ul>\n<li>the index location of the value in model&#39;s item list</li>\n</ul>\n"
                         }
                     ]
                 },
@@ -14133,7 +14292,7 @@ const COMPONENTS = {
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, TemplateRef, forwardRef } from '@angular/core';\nimport { SDSSelectedItemModel } from './models/sds-selectedItem.model';\nimport { SDSSelectedResultConfiguration } from './models/SDSSelectedResultConfiguration';\nimport { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';\nimport { SDSSelectedItemModelHelper } from './models/sds-selected-item-model-helper';\n\nconst SDS_SelectedResult_VALUE_ACCESSOR: any = {\n  provide: NG_VALUE_ACCESSOR,\n  useExisting: forwardRef(() => SDSSelectedResultComponent),\n  multi: true\n};\n\n@Component({\n  selector: 'sds-selected-result',\n  templateUrl: './selected-result.component.html',\n  styleUrls: ['./selected-result.component.scss'],\n  providers: [SDS_SelectedResult_VALUE_ACCESSOR]\n})\nexport class SDSSelectedResultComponent implements ControlValueAccessor {\n  \n\n  /**\n  * Allow to insert a customized template for suggestions to use\n  */\n  @Input() itemTemplate: TemplateRef<any>;\n\n  /**\n   * The data model that has the selected item\n   */\n  public model: SDSSelectedItemModel;\n\n\n  /**\n  * Configuration for the Selected Results control \n  */\n  @Input()\n  public configuration: SDSSelectedResultConfiguration;\n\n  /**\n   * Stored Event for ControlValueAccessor\n   */\n  public onTouchedCallback: () => void = () => null;\n\n  /**\n   * Stored Event for ControlValueAccessor\n   */\n  public propogateChange: (_: any) => void = (_: any) => null;\n\n  @Input()\n  public disabled: boolean;\n\n  /**\n   * Removes item from the model\n   * @param item \n   */\n  removeItem(item: object) {\n    if (!this.disabled) {\n      SDSSelectedItemModelHelper.removeItem(item, this.configuration.primaryKeyField, this.model);\n      this.propogateChange(this.model);\n      this.onTouchedCallback();\n    }\n  }\n\n  writeValue(obj: any): void {\n    if (obj instanceof SDSSelectedItemModel) {\n      this.model = obj as SDSSelectedItemModel;\n    }\n  }\n\n  registerOnChange(fn: any): void {\n    this.propogateChange = fn;\n  }\n\n  registerOnTouched(fn: any): void {\n    this.onTouchedCallback = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n  }\n\n\n  /**\n   * Gets the string value from the specifed properties of an object\n   * @param object \n   * @param propertyFields comma seperated list with periods depth of object\n   */\n  getObjectValue(object: Object, propertyFields: string): string {\n    let value = '';\n    let current = object;\n    let fieldSplit = propertyFields.split(',');\n    for (let i = 0; i < fieldSplit.length; i++) {\n      let fieldValue = fieldSplit[i];\n      let fieldPartSplit = fieldValue.split('.');\n      for (let j = 0; j < fieldPartSplit.length; j++) {\n        let fieldCheckValue = fieldPartSplit[j];\n        if (current) {\n          current = current[fieldCheckValue];\n        }\n      }\n\n      if (current) {\n        value += current.toString() + ' ';\n      }\n      current = object;\n    }\n    return value.trim();\n  }\n\n}\n",
+            "sourceCode": "import { Component, Input, TemplateRef, forwardRef } from '@angular/core';\nimport { SDSSelectedItemModel } from './models/sds-selectedItem.model';\nimport { SDSSelectedResultConfiguration } from './models/SDSSelectedResultConfiguration';\nimport { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';\nimport { SDSSelectedItemModelHelper } from './models/sds-selected-item-model-helper';\n\nconst SDS_SelectedResult_VALUE_ACCESSOR: any = {\n  provide: NG_VALUE_ACCESSOR,\n  useExisting: forwardRef(() => SDSSelectedResultComponent),\n  multi: true\n};\n\n@Component({\n  selector: 'sds-selected-result',\n  templateUrl: './selected-result.component.html',\n  styleUrls: ['./selected-result.component.scss'],\n  providers: [SDS_SelectedResult_VALUE_ACCESSOR]\n})\nexport class SDSSelectedResultComponent implements ControlValueAccessor {\n  \n\n  /**\n  * Allow to insert a customized template for suggestions to use\n  */\n  @Input() itemTemplate: TemplateRef<any>;\n\n  /**\n   * The data model that has the selected item\n   */\n  public model: SDSSelectedItemModel;\n\n\n  /**\n  * Configuration for the Selected Results control \n  */\n  @Input()\n  public configuration: SDSSelectedResultConfiguration;\n\n  /**\n   * Stored Event for ControlValueAccessor\n   */\n  public onTouchedCallback: () => void = () => null;\n\n  /**\n   * Stored Event for ControlValueAccessor\n   */\n  public propogateChange: (_: any) => void = (_: any) => null;\n\n  @Input()\n  public disabled: boolean;\n\n  /**\n   * Removes item from the model\n   * @param item \n   */\n  removeItem(item: object) {\n    if (!this.disabled) {\n      SDSSelectedItemModelHelper.removeItem(item, this.configuration.primaryKeyField, this.model);\n      this.propogateChange(this.model);\n      this.onTouchedCallback();\n    }\n  }\n\n  writeValue(obj: any): void {\n    if (obj instanceof SDSSelectedItemModel) {\n      this.model = obj as SDSSelectedItemModel;\n    }\n  }\n\n  registerOnChange(fn: any): void {\n    this.propogateChange = fn;\n  }\n\n  registerOnTouched(fn: any): void {\n    this.onTouchedCallback = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n  }\n\n\n  /**\n   * Gets the string value from the specifed properties of an object\n   * @param object \n   * @param propertyFields comma seperated list with periods depth of object\n   * @param index - the index location of the value in model's item list\n   */\n  getObjectValue(object: Object, propertyFields: string, index?: number): string {\n    let value = '';\n    let current = object;\n    let fieldSplit = propertyFields.split(',');\n    for (let i = 0; i < fieldSplit.length; i++) {\n      let fieldValue = fieldSplit[i];\n      let fieldPartSplit = fieldValue.split('.');\n      for (let j = 0; j < fieldPartSplit.length; j++) {\n        let fieldCheckValue = fieldPartSplit[j];\n        if (current) {\n          current = current[fieldCheckValue];\n        }\n      }\n\n      if (current) {\n        value += current.toString() + ' ';\n      }\n      current = object;\n    }\n\n    return this.configuration.displayModifierFn ? this.configuration.displayModifierFn(value.trim(), index) : value.trim();\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -14145,7 +14304,7 @@ const COMPONENTS = {
             "implements": [
                 "ControlValueAccessor"
             ],
-            "templateData": "<ul *ngIf=\"model\" [attr.aria-label]=\"configuration.labelText + ' results'\"\n  class=\"usa-list usa-list--unstyled sds-autocomplete-selected\" aria-relevant=\"additions\" role=\"listbox\"\n  aria-live=\"polite\">\n  <li role=\"option\" *ngFor=\"let result of model.items; let i = index\">\n    <div class=\"sds-tag sds-tag--chip sds-tag--input\" [ngClass]=\"disabled ? 'sds-tag--disabled' : ''\">\n      <ng-container *ngIf=\"itemTemplate\" [ngTemplateOutlet]=\"itemTemplate\"\n        [ngTemplateOutletContext]=\"{ $implicit: result }\">\n      </ng-container>\n      <ng-container *ngIf=\"!itemTemplate\">\n        <div class=\"sds--tag__item\">\n          <div>\n            {{ getObjectValue(result, configuration.primaryTextField) }}\n          </div>\n          <div *ngIf=\"\n              configuration.secondaryTextField &&\n              result[configuration.secondaryTextField]\n            \">\n            {{ result[configuration.secondaryTextField] }}\n          </div>\n        </div>\n      </ng-container>\n      <button *ngIf=\"!disabled\" [attr.aria-label]=\"\n          'Remove Item ' +\n          getObjectValue(result, configuration.primaryTextField)\n        \" [class.text-base]=\"disabled\" aria-hidden=\"false\" class=\"sds-tag__close\" (click)=\"removeItem(result)\"\n        (keyup.enter)=\"removeItem(result)\">\n        <usa-icon [icon]=\"'x'\" size=\"lg\"></usa-icon>\n      </button>\n    </div>\n  </li>\n</ul>\n"
+            "templateData": "<ul *ngIf=\"model\" [attr.aria-label]=\"configuration.labelText + ' results'\"\n  class=\"usa-list usa-list--unstyled sds-autocomplete-selected\" aria-relevant=\"additions\" role=\"listbox\"\n  aria-live=\"polite\">\n  <li role=\"option\" *ngFor=\"let result of model.items; let i = index\">\n    <div class=\"sds-tag sds-tag--chip sds-tag--input\" [ngClass]=\"disabled ? 'sds-tag--disabled' : ''\">\n      <ng-container *ngIf=\"itemTemplate\" [ngTemplateOutlet]=\"itemTemplate\"\n        [ngTemplateOutletContext]=\"{ $implicit: result }\">\n      </ng-container>\n      <ng-container *ngIf=\"!itemTemplate\">\n        <div class=\"sds--tag__item\">\n          <div>\n            {{ getObjectValue(result, configuration.primaryTextField, i) }}\n          </div>\n          <div *ngIf=\"\n              configuration.secondaryTextField &&\n              result[configuration.secondaryTextField]\n            \">\n            {{ result[configuration.secondaryTextField] }}\n          </div>\n        </div>\n      </ng-container>\n      <button *ngIf=\"!disabled\" [attr.aria-label]=\"\n          'Remove Item ' +\n          getObjectValue(result, configuration.primaryTextField, i)\n        \" [class.text-base]=\"disabled\" aria-hidden=\"false\" class=\"sds-tag__close\" (click)=\"removeItem(result)\"\n        (keyup.enter)=\"removeItem(result)\">\n        <usa-icon [icon]=\"'x'\" size=\"lg\"></usa-icon>\n      </button>\n    </div>\n  </li>\n</ul>\n"
         },
         {
             "name": "SdsSelectionPanelComponent",
@@ -15054,6 +15213,226 @@ const COMPONENTS = {
             "templateData": "<nav [attr.aria-label]=\"ariaLabel\">\n  <ul class=\"usa-sidenav\">\n    <li *ngFor=\"let link of model.navigationLinks\" class=\"sidenav__item\">\n      <ng-container [ngTemplateOutlet]=\"sideNavLinkTemplate\" [ngTemplateOutletContext]=\"{$implicit:link}\">\n      </ng-container>\n    </li>\n  </ul>\n</nav>\n\n<ng-template #sideNavLinkTemplate let-link>\n  <ng-container [ngTemplateOutlet]=\"getItemTemplate(link)\" [ngTemplateOutletContext]=\"{$implicit:link}\">\n  </ng-container>\n  <ul *ngIf=\"link.children\" class=\"usa-sidenav__sublist\">\n    <li *ngFor=\"let link of link.children\" class=\"sidenav__item\">\n      <ng-container [ngTemplateOutlet]=\"sideNavLinkTemplate\" [ngTemplateOutletContext]=\"{$implicit:link}\">\n      </ng-container>\n    </li>\n  </ul>\n</ng-template>\n\n<ng-template #sideNavRouteLinkTemplate let-link>\n  <a [attr.class]=\"link.selected ? ' usa-current' : ''\" [routerLink]=\"[link.route]\" (click)=\"linkClickEvent(link)\"\n    [queryParams]=\"link.queryParams\" \n    [queryParamsHandling]=\"link.queryParamsHandling\">\n      <span>{{link.text}}</span>\n  </a>\n</ng-template>\n\n<ng-template #sideNavHREFLinkTemplate let-link>\n  <a [attr.class]=\"link.selected ? ' usa-current' : ''\" [attr.href]=\"urlBuilder(link)\"\n    (click)=\"linkClickEvent(link)\"><span>{{link.text}}</span></a>\n</ng-template>\n\n<ng-template #sideNavLabelLinkTemplate let-link>\n  <span [attr.class]=\"link.selected ? ' usa-current' : ''\"><span>{{link.text}}</span></span>\n</ng-template>\n\n<ng-template #sideNavEVENTLinkTemplate let-link>\n  <a [attr.class]=\"link.selected ? ' usa-current' : ''\" href=\"javascript:void(0)\"\n    (click)=\"linkClickEvent(link)\"><span>{{link.text}}</span></a>\n</ng-template>\n"
         },
         {
+            "name": "SdsSideToolbarComponent",
+            "id": "component-SdsSideToolbarComponent-ad82c82dce4a1969af9690c5160597ea",
+            "file": "libs/packages/components/src/lib/side-toolbar/side-toolbar.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "sds-side-toolbar",
+            "styleUrls": [
+                "./side-toolbar.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./side-toolbar.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "responsiveButtonText",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 26,
+                    "type": "string"
+                },
+                {
+                    "name": "responsiveDialogOptions",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 28,
+                    "type": "SdsDialogConfig"
+                },
+                {
+                    "name": "responsiveSize",
+                    "defaultValue": "480",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 31,
+                    "type": "number"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "responsiveDialog",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 33,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "responsiveView",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 34,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "isResponsiveView",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 36
+                },
+                {
+                    "name": "openResponsiveDialog",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "SdsDialogRef<TemplateRef<any>>",
+                    "optional": false,
+                    "description": "",
+                    "line": 39,
+                    "modifierKind": [
+                        120
+                    ]
+                },
+                {
+                    "name": "subscription",
+                    "defaultValue": "new Subscription()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Subscription",
+                    "optional": false,
+                    "description": "",
+                    "line": 38,
+                    "modifierKind": [
+                        120
+                    ]
+                },
+                {
+                    "name": "template",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 23,
+                    "decorators": [
+                        {
+                            "name": "ContentChild",
+                            "stringifiedArguments": "TemplateRef"
+                        }
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnDestroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 50,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 46,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "observeViewChange",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 76,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        120
+                    ]
+                },
+                {
+                    "name": "onResponsiveViewButtonClicked",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 54,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {\n  Component,\n  ContentChild,\n  EventEmitter,\n  Input,\n  OnDestroy,\n  OnInit,\n  Output,\n  TemplateRef,\n} from '@angular/core';\nimport { SdsDialogRef } from '../dialog/dialog-ref';\nimport { BreakpointObserver } from '@angular/cdk/layout';\nimport { Subscription } from 'rxjs';\nimport { SdsDialogConfig } from '../dialog/dialog-config';\nimport { SdsDialogService } from '../dialog/dialog';\n\n@Component({\n  selector: 'sds-side-toolbar',\n  templateUrl: './side-toolbar.component.html',\n  styleUrls: ['./side-toolbar.component.scss'],\n})\nexport class SdsSideToolbarComponent implements OnInit, OnDestroy {\n  @ContentChild(TemplateRef) template: TemplateRef<any>;\n\n  // Text for button in responsive view\n  @Input() responsiveButtonText: string;\n\n  @Input() responsiveDialogOptions: SdsDialogConfig\n\n  // default value is size of mobile view in px\n  @Input() responsiveSize = 480;\n\n  @Output() responsiveDialog = new EventEmitter();\n  @Output() responsiveView = new EventEmitter();\n\n  isResponsiveView = false;\n\n  private subscription: Subscription = new Subscription();\n  private openResponsiveDialog: SdsDialogRef<TemplateRef<any>>;\n\n  constructor(\n    private sdsDialogService: SdsDialogService,\n    private breakpointObserver: BreakpointObserver // Will watch for changes between mobile and non-mobile screen size\n  ) {}\n\n  ngOnInit() {\n    this.observeViewChange();\n  }\n\n  ngOnDestroy() {\n    this.subscription.unsubscribe();\n  }\n\n  onResponsiveViewButtonClicked() {\n    let dialogOptions = {\n      height: '100vh',\n      width: '100vw',\n      maxWidth: '100vw',\n      maxHeight: '100vh',\n      hasBackdrop: false,\n      displayCloseBtn: false,\n      panelClass: ['sds-dialog--full']\n    };\n\n    let allOptions = this.responsiveDialogOptions ? {...dialogOptions, ...this.responsiveDialogOptions} : dialogOptions;\n\n    this.openResponsiveDialog = this.sdsDialogService.open(this.template, allOptions);\n\n    this.responsiveDialog.emit(this.openResponsiveDialog);\n\n    this.openResponsiveDialog.afterClosed().subscribe(() => {\n      this.openResponsiveDialog = undefined;\n    })\n  }\n\n  private observeViewChange() {\n    const breakpointUnsubscription = this.breakpointObserver\n      .observe([`(max-width: ${this.responsiveSize}px)`])\n      .subscribe((result) => {\n        if (result.matches) {\n          this.isResponsiveView = true;\n        } else {\n          this.isResponsiveView = false;\n          if (this.openResponsiveDialog) {\n            this.openResponsiveDialog.close();\n            this.openResponsiveDialog = undefined;\n            this.responsiveDialog.emit(this.openResponsiveDialog);\n          }\n        }\n\n        this.responsiveView.emit(this.isResponsiveView);\n      });\n\n    this.subscription.add(breakpointUnsubscription);\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./side-toolbar.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "sdsDialogService",
+                        "type": "SdsDialogService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "breakpointObserver",
+                        "type": "BreakpointObserver",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 39,
+                "jsdoctags": [
+                    {
+                        "name": "sdsDialogService",
+                        "type": "SdsDialogService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "breakpointObserver",
+                        "type": "BreakpointObserver",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit",
+                "OnDestroy"
+            ],
+            "templateData": "<div *ngIf=\"!isResponsiveView\">\n  <ng-container *ngTemplateOutlet=\"template\"></ng-container>\n</div>\n\n<div *ngIf=\"isResponsiveView\">\n  <button class=\"usa-button usa-button--accent-cool usa-button--hover text-secondary-dar\" id=\"responsiveViewButton\"\n    (click)=\"onResponsiveViewButtonClicked()\" [attr.aria-label]=\"responsiveButtonText\">\n    {{responsiveButtonText}}\n  </button>\n</div>"
+        },
+        {
             "name": "SdsSubPanelComponent",
             "id": "component-SdsSubPanelComponent-a1e8fb4448d6596f6f3e57389e2c5d33",
             "file": "libs/packages/components/src/lib/selection-panel/sub-panel/sub-panel.component.ts",
@@ -15218,7 +15597,7 @@ const COMPONENTS = {
         },
         {
             "name": "SdsTextComponent",
-            "id": "component-SdsTextComponent-d642ee42fff45e6a73fab6c266e82daf",
+            "id": "component-SdsTextComponent-f499ffdb4a5ab621dcee17fd41e7839b",
             "file": "libs/packages/components/src/lib/text/text.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -15464,7 +15843,7 @@ const COMPONENTS = {
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, forwardRef, ChangeDetectionStrategy, ChangeDetectorRef, Input } from '@angular/core';\nimport { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';\n\n@Component({\n  selector: 'sds-text',\n  template: `\n    <div>\n      <input #searchInput class=\"usa-input display-inline-block\" [attr.aria-label]=\"label\"/>\n      <button class=\"usa-button margin-left-05 display-inline-block\" (click)=\"addItem(searchInput.value); searchInput.value=''\">Add Item</button>\n    </div>\n\n    <h4>Component Items</h4>\n    <pre>{{ items | json }}</pre>\n\n    <hr />\n\n    <h4>Child Component Items <small>(click to remove)</small></h4>\n    <sds-text-child [(items)]=\"items\" (itemsChange)=\"updateItems($event)\"></sds-text-child>\n  `,\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => SdsTextComponent),\n      multi: true\n    }\n  ],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class SdsTextComponent implements ControlValueAccessor {\n\n  items = [];\n  multiple = true;\n\n  @Input() label: string;\n\n  private _onChange = (_: any) => { };\n  private _onTouched = () => { };\n\n  constructor(private cd: ChangeDetectorRef) { }\n\n  // Helper method to programatically add a value to the existing items array\n  addItem(val) {\n    if(this.multiple){\n      this.items = [...this.items, val];\n      this.updateModel();\n    }\n  }\n\n  // Method that is fired when the child component event notifies us that the items array has been modified within the child component\n  updateItems($event) {\n    this.updateModel();\n  }\n\n  // Helper method that gets a new instance of the model and notifies ControlValueAccessor that we have a new model for this FormControl (our custom component)\n  updateModel() {\n    const model = this.getModel();\n    this._onChange(model);\n  }\n\n  // Helper method to return a new instance of an array that contains our items\n  getModel() {\n    return [...this.items];\n  }\n\n  // ControlValueAccessor (and Formly) is trying to update the value of the FormControl (our custom component) programatically\n  // If there is a value we will just overwrite items\n  // If there is no value we reset the items array to be empty\n  writeValue(value: any) {\n    if(value && value.length && this.items !== value) {\n      this.items = value;\n      this.cd.markForCheck();\n    } else {\n      this.items = [];\n      this.cd.markForCheck();\n    }\n  }\n\n  // ControlValueAccessor hook that lets us call this._onChange(var) to let the form know our variable has changed (in this case model)\n  registerOnChange(fn: any): void {\n    this._onChange = fn;\n  }\n\n  // ControlValueAccessor hook (not used)\n  registerOnTouched(fn: any) {\n    this._onTouched = fn;\n  }\n}\n",
+            "sourceCode": "import { Component, forwardRef, ChangeDetectionStrategy, ChangeDetectorRef, Input } from '@angular/core';\nimport { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';\n\n@Component({\n  selector: 'sds-text',\n  template: `\n    <div>\n      <input #searchInput class=\"usa-input display-inline-block\" [attr.aria-label]=\"label\"/>\n      <button class=\"usa-button margin-left-05 display-inline-block\" (click)=\"addItem(searchInput.value); searchInput.value=''\">Add Item</button>\n    </div>\n\n    <h4>Component Items</h4>\n    <pre>{{ items | json }}</pre>\n\n    <hr />\n\n    <h4>Child Component Items <small>(click to remove)</small></h4>\n    <sds-text-child [(items)]=\"items\" (itemsChange)=\"updateItems($event)\"></sds-text-child>\n  `,\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => SdsTextComponent),\n      multi: true\n    }\n  ],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class SdsTextComponent implements ControlValueAccessor {\n\n  items = [];\n  multiple = true;\n\n  @Input() label: string;\n\n  private _onChange = (_: any) => { };\n  private _onTouched = () => { };\n\n  constructor(private cd: ChangeDetectorRef) { }\n\n  // Helper method to programatically add a value to the existing items array\n  addItem(val) {\n    if (this.multiple) {\n      this.items = [...this.items, val];\n      this.updateModel();\n    }\n  }\n\n  // Method that is fired when the child component event notifies us that the items array has been modified within the child component\n  updateItems($event) {\n    this.updateModel();\n  }\n\n  // Helper method that gets a new instance of the model and notifies ControlValueAccessor that we have a new model for this FormControl (our custom component)\n  updateModel() {\n    const model = this.getModel();\n    this._onChange(model);\n  }\n\n  // Helper method to return a new instance of an array that contains our items\n  getModel() {\n    return [...this.items];\n  }\n\n  // ControlValueAccessor (and Formly) is trying to update the value of the FormControl (our custom component) programatically\n  // If there is a value we will just overwrite items\n  // If there is no value we reset the items array to be empty\n  writeValue(value: any) {\n    if (value && value.length && this.items !== value) {\n      this.items = value;\n      this.cd.markForCheck();\n    } else {\n      this.items = [];\n      this.cd.markForCheck();\n    }\n  }\n\n  // ControlValueAccessor hook that lets us call this._onChange(var) to let the form know our variable has changed (in this case model)\n  registerOnChange(fn: any): void {\n    this._onChange = fn;\n  }\n\n  // ControlValueAccessor hook (not used)\n  registerOnTouched(fn: any) {\n    this._onTouched = fn;\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -15673,385 +16052,6 @@ const COMPONENTS = {
             },
             "extends": "Toast",
             "templateData": "\n<div class=\"sds-toast__content\" role=\"alert\" aria-live=\"assertive\">\n    <div class=\"usa-sr-only\">{{getToastSr(toastPackage.toastType)}}</div>\n    <div class=\"sds-toast__content__icon\">\n        <usa-icon [icon]=\"getIcon(toastPackage.toastType)\" size=\"2x\"></usa-icon>\n    </div>\n    <span class=\"sds-toast__content__text\">{{message}}</span>\n    <div *ngIf=\"options.closeButton\" class=\"sds-toast__content__close\" (click)=\"remove()\">\n        <usa-icon [icon]=\"'x'\"></usa-icon>\n    </div>\n</div>\n"
-        },
-        {
-            "name": "SdsToolbarComponent",
-            "id": "component-SdsToolbarComponent-67efc4d28a051482f71d87c2eeaa0d7a",
-            "file": "libs/packages/components/src/lib/toolbar/toolbar.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "exportAs": "sdsToolbar",
-            "host": {},
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "sds-toolbar",
-            "styleUrls": [],
-            "styles": [],
-            "templateUrl": [
-                "toolbar.component.html"
-            ],
-            "viewProviders": [],
-            "inputsClass": [
-                {
-                    "name": "disabled",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "Whether the toolbar is disabled.",
-                    "description": "<p>Whether the toolbar is disabled.</p>\n",
-                    "line": 54,
-                    "type": "any"
-                },
-                {
-                    "name": "expanded",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "Whether the toolbar is expanded.",
-                    "description": "<p>Whether the toolbar is expanded.</p>\n",
-                    "line": 38,
-                    "type": "any"
-                },
-                {
-                    "name": "expandedSpace",
-                    "defaultValue": "\"20px\"",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 67,
-                    "type": "string"
-                },
-                {
-                    "name": "expandedWidth",
-                    "defaultValue": "\"300px\"",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "Width of the toolbar when is expanded.",
-                    "description": "<p>Width of the toolbar when is expanded.</p>\n",
-                    "line": 63,
-                    "type": "string"
-                }
-            ],
-            "outputsClass": [
-                {
-                    "name": "expandedChange",
-                    "defaultValue": "new EventEmitter<boolean>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nEmits whenever the expanded state of the toolbar changes.",
-                    "description": "<p>Emits whenever the expanded state of the toolbar changes.</p>\n",
-                    "line": 34,
-                    "type": "EventEmitter<boolean>"
-                }
-            ],
-            "propertiesClass": [
-                {
-                    "name": "_contentId",
-                    "defaultValue": "`sds-toolbar-content-${this.id}`",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "optional": false,
-                    "description": "<p>ID for the content element. Used for a11y labelling.</p>\n",
-                    "line": 29,
-                    "rawdescription": "\nID for the content element. Used for a11y labelling.",
-                    "modifierKind": [
-                        142
-                    ]
-                },
-                {
-                    "name": "_disabled",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "boolean",
-                    "optional": false,
-                    "description": "",
-                    "line": 60,
-                    "modifierKind": [
-                        120
-                    ]
-                },
-                {
-                    "name": "_expanded",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 50,
-                    "modifierKind": [
-                        120
-                    ]
-                },
-                {
-                    "name": "_headerId",
-                    "defaultValue": "`sds-toolbar-header-${this.id}`",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "optional": false,
-                    "description": "<p>ID for the header element. Used for a11y labelling.</p>\n",
-                    "line": 26,
-                    "rawdescription": "\nID for the header element. Used for a11y labelling.",
-                    "modifierKind": [
-                        142
-                    ]
-                },
-                {
-                    "name": "id",
-                    "defaultValue": "uniqueId++",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "optional": false,
-                    "description": "<p>The unique Toolbar id.</p>\n",
-                    "line": 23,
-                    "rawdescription": "\nThe unique Toolbar id.",
-                    "modifierKind": [
-                        142
-                    ]
-                }
-            ],
-            "methodsClass": [
-                {
-                    "name": "_getExpandedState",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "SdsToolbarState",
-                    "typeParameters": [],
-                    "line": 75,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nGets the expanded state string.",
-                    "description": "<p>Gets the expanded state string.</p>\n"
-                },
-                {
-                    "name": "toggle",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 70,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nToggles the expanded state of the toolbar.",
-                    "description": "<p>Toggles the expanded state of the toolbar.</p>\n"
-                }
-            ],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, Output } from \"@angular/core\";\nimport { coerceBooleanProperty } from \"@angular/cdk/coercion\";\nimport { sdsToolbarAnimations } from \"./toolbar-animations\";\n\n/** Toolbar's states. */\nexport type SdsToolbarState = \"expanded\" | \"collapsed\";\n\n/** Counter for generating unique element ids. */\nlet uniqueId = 0;\n\n@Component({\n  selector: \"sds-toolbar\",\n  exportAs: \"sdsToolbar\",\n  templateUrl: \"toolbar.component.html\",\n  animations: [sdsToolbarAnimations.bodyExpansion],\n  host: {\n    class: \"sds-toolbar\",\n    \"[class.sds-toolbar--expanded]\": \"expanded\"\n  }\n})\nexport class SdsToolbarComponent {\n  /** The unique Toolbar id. */\n  readonly id = uniqueId++;\n\n  /** ID for the header element. Used for a11y labelling. */\n  readonly _headerId: string = `sds-toolbar-header-${this.id}`;\n\n  /** ID for the content element. Used for a11y labelling. */\n  readonly _contentId: string = `sds-toolbar-content-${this.id}`;\n\n  constructor() {}\n\n  /** Emits whenever the expanded state of the toolbar changes. */\n  @Output() expandedChange: EventEmitter<boolean> = new EventEmitter<boolean>();\n\n  /** Whether the toolbar is expanded. */\n  @Input()\n  get expanded(): any {\n    return this._expanded;\n  }\n  set expanded(expanded: any) {\n    expanded = coerceBooleanProperty(expanded);\n\n    // Only emit events and update the internal value if the value changes.\n    if (this._expanded !== expanded) {\n      this._expanded = expanded;\n      this.expandedChange.emit(expanded);\n    }\n  }\n  private _expanded = false;\n\n  /** Whether the toolbar is disabled. */\n  @Input()\n  get disabled() {\n    return this._disabled;\n  }\n  set disabled(disabled: any) {\n    this._disabled = coerceBooleanProperty(disabled);\n  }\n  private _disabled: boolean = false;\n\n  /** Width of the toolbar when is expanded. */\n  @Input() expandedWidth: string = \"300px\";\n\n  // Elements that surround the toolbar need to make space for the expanded toolbar.\n  // Adding 20 more pixes to provide padding\n  @Input() expandedSpace: string = \"20px\";\n\n  /** Toggles the expanded state of the toolbar. */\n  toggle() {\n    this.expanded = !this.expanded;\n  }\n\n  /** Gets the expanded state string. */\n  _getExpandedState(): SdsToolbarState {\n    return this.expanded ? \"expanded\" : \"collapsed\";\n  }\n}\n",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [],
-                "line": 29
-            },
-            "accessors": {
-                "expanded": {
-                    "name": "expanded",
-                    "setSignature": {
-                        "name": "expanded",
-                        "type": "void",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "args": [
-                            {
-                                "name": "expanded",
-                                "type": "any",
-                                "deprecated": false,
-                                "deprecationMessage": ""
-                            }
-                        ],
-                        "returnType": "void",
-                        "line": 41,
-                        "jsdoctags": [
-                            {
-                                "name": "expanded",
-                                "type": "any",
-                                "deprecated": false,
-                                "deprecationMessage": "",
-                                "tagName": {
-                                    "text": "param"
-                                }
-                            }
-                        ]
-                    },
-                    "getSignature": {
-                        "name": "expanded",
-                        "type": "any",
-                        "returnType": "any",
-                        "line": 38,
-                        "rawdescription": "Whether the toolbar is expanded.",
-                        "description": "<p>Whether the toolbar is expanded.</p>\n"
-                    }
-                },
-                "disabled": {
-                    "name": "disabled",
-                    "setSignature": {
-                        "name": "disabled",
-                        "type": "void",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "args": [
-                            {
-                                "name": "disabled",
-                                "type": "any",
-                                "deprecated": false,
-                                "deprecationMessage": ""
-                            }
-                        ],
-                        "returnType": "void",
-                        "line": 57,
-                        "jsdoctags": [
-                            {
-                                "name": "disabled",
-                                "type": "any",
-                                "deprecated": false,
-                                "deprecationMessage": "",
-                                "tagName": {
-                                    "text": "param"
-                                }
-                            }
-                        ]
-                    },
-                    "getSignature": {
-                        "name": "disabled",
-                        "type": "",
-                        "returnType": "",
-                        "line": 54,
-                        "rawdescription": "Whether the toolbar is disabled.",
-                        "description": "<p>Whether the toolbar is disabled.</p>\n"
-                    }
-                }
-            },
-            "templateData": "<sds-toolbar-header></sds-toolbar-header>\n<div\n  class=\"sds-toolbar__content\"\n  role=\"region\"\n  [@bodyExpansion]=\"{\n    value: _getExpandedState(),\n    params: { expandedWidth: expandedWidth }\n  }\"\n  [attr.aria-labelledby]=\"_headerId\"\n  [id]=\"_contentId\"\n>\n  <ng-content></ng-content>\n</div>\n"
-        },
-        {
-            "name": "SdsToolbarHeaderComponent",
-            "id": "component-SdsToolbarHeaderComponent-e9fb11c75f9df204a16398668c7dfaaa",
-            "file": "libs/packages/components/src/lib/toolbar/toolbar-header.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "host": {},
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "sds-toolbar-header",
-            "styleUrls": [],
-            "styles": [],
-            "templateUrl": [
-                "toolbar-header.component.html"
-            ],
-            "viewProviders": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "toolbar",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "SdsToolbarComponent",
-                    "optional": false,
-                    "description": "",
-                    "line": 12,
-                    "decorators": [
-                        {
-                            "name": "Host",
-                            "stringifiedArguments": ""
-                        }
-                    ],
-                    "modifierKind": [
-                        122
-                    ]
-                }
-            ],
-            "methodsClass": [
-                {
-                    "name": "_toggle",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 15,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nToggles the expanded state of the toolbar.",
-                    "description": "<p>Toggles the expanded state of the toolbar.</p>\n"
-                }
-            ],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component, Host } from \"@angular/core\";\nimport { SdsToolbarComponent } from \"./toolbar.component\";\n\n@Component({\n  selector: \"sds-toolbar-header\",\n  templateUrl: \"toolbar-header.component.html\",\n  host: {\n    class: \"sds-toolbar__header\"\n  }\n})\nexport class SdsToolbarHeaderComponent {\n  constructor(@Host() public toolbar: SdsToolbarComponent) {}\n\n  /** Toggles the expanded state of the toolbar. */\n  _toggle() {\n    this.toolbar.toggle();\n  }\n\n  /** Gets whether the toolbar is expanded. */\n  get _isExpanded(): boolean {\n    return this.toolbar.expanded;\n  }\n\n  /** Whether the toolbar is disabled. */\n  get _disabled(): boolean {\n    return this.toolbar.disabled;\n  }\n}\n",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [
-                    {
-                        "name": "toolbar",
-                        "type": "SdsToolbarComponent",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    }
-                ],
-                "line": 11,
-                "jsdoctags": [
-                    {
-                        "name": "toolbar",
-                        "type": "SdsToolbarComponent",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
-            },
-            "accessors": {
-                "_isExpanded": {
-                    "name": "_isExpanded",
-                    "getSignature": {
-                        "name": "_isExpanded",
-                        "type": "boolean",
-                        "returnType": "boolean",
-                        "line": 20,
-                        "rawdescription": "Gets whether the toolbar is expanded.",
-                        "description": "<p>Gets whether the toolbar is expanded.</p>\n"
-                    }
-                },
-                "_disabled": {
-                    "name": "_disabled",
-                    "getSignature": {
-                        "name": "_disabled",
-                        "type": "boolean",
-                        "returnType": "boolean",
-                        "line": 25,
-                        "rawdescription": "Whether the toolbar is disabled.",
-                        "description": "<p>Whether the toolbar is disabled.</p>\n"
-                    }
-                }
-            },
-            "templateData": "<button\n  class=\"sds-toolbar__toogle-btn\"\n  [attr.id]=\"toolbar._headerId\"\n  [attr.tabindex]=\"_disabled ? -1 : 0\"\n  [attr.aria-controls]=\"toolbar._contentId\"\n  [attr.aria-expanded]=\"_isExpanded\"\n  [attr.aria-disabled]=\"_disabled\"\n  (click)=\"_toggle()\"\n>\n  <div class=\"sds-toolbar__toggle\">\n    <span class=\"usa-sr-only\">Open/Close Toolbar</span>\n  </div>\n</button>\n"
         },
         {
             "name": "SdsTopBannerComponent",
@@ -17207,6 +17207,54 @@ const COMPONENTS = {
             ]
         },
         {
+            "name": "SdsActionsMenuModule",
+            "id": "module-SdsActionsMenuModule-a935869cfe338e4a10aa91889f25f7f5",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "libs/packages/components/src/lib/actions-menu/actions-menu.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\n\nimport { SdsActionsMenuComponent } from './actions-menu.component';\nimport { CommonModule } from '@angular/common';\nimport { NgxBootstrapIconsModule, threeDotsVertical, x } from 'ngx-bootstrap-icons';\nimport { IconModule } from '@gsa-sam/ngx-uswds-icons';\nimport { SdsMenuModule } from '../menu/menu.module';\n\n\n@NgModule({\n  imports: [CommonModule, IconModule, SdsMenuModule, NgxBootstrapIconsModule.pick({threeDotsVertical, x})],\n  exports: [SdsActionsMenuComponent],\n  declarations: [SdsActionsMenuComponent],\n  providers: []\n})\nexport class SdsActionsMenuModule {}\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "SdsActionsMenuComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "SdsMenuModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "SdsActionsMenuComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
             "name": "SdsAutocompleteModule",
             "id": "module-SdsAutocompleteModule-bb64d2b1f11c0192ae5c051743ae8940",
             "description": "",
@@ -17259,13 +17307,13 @@ const COMPONENTS = {
         },
         {
             "name": "SdsAutocompleteSearchModule",
-            "id": "module-SdsAutocompleteSearchModule-8ba0db16b3b4b5014655e360483365f1",
+            "id": "module-SdsAutocompleteSearchModule-e02fe7cc4d43c2fdfc454f3ca06ea6d3",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "libs/packages/components/src/lib/autocomplete-search/autocomplete-search.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { FormsModule } from '@angular/forms';\nimport { SDSAutocompleteSearchComponent } from './autocomplete-search.component';\nimport { SDSClickOutsideModule } from '../click-outside/click-outside.module';\nimport { SdsTabOutsideModule } from '../tab-outside/taboutside.module';\nimport { NgxBootstrapIconsModule, x, caretDownFill, caretUpFill } from 'ngx-bootstrap-icons';\nimport { IconModule } from '@gsa-sam/ngx-uswds-icons';\n\n@NgModule({\n  imports: [\n    CommonModule,\n    FormsModule,\n    SDSClickOutsideModule,\n    SdsTabOutsideModule,\n    IconModule,\n    NgxBootstrapIconsModule.pick({x, caretDownFill, caretUpFill})\n  ],\n  declarations: [SDSAutocompleteSearchComponent],\n  exports: [SDSAutocompleteSearchComponent],\n})\nexport class SdsAutocompleteSearchModule {}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { FormsModule } from '@angular/forms';\nimport { SDSAutocompleteSearchComponent } from './autocomplete-search.component';\nimport { SDSClickOutsideModule } from '../click-outside/click-outside.module';\nimport { SdsTabOutsideModule } from '../tab-outside/taboutside.module';\nimport { OverlayModule } from '@angular/cdk/overlay';\nimport { NgxBootstrapIconsModule, x, caretDownFill, caretUpFill } from 'ngx-bootstrap-icons';\nimport { IconModule } from '@gsa-sam/ngx-uswds-icons';\n\n@NgModule({\n  imports: [\n    CommonModule,\n    FormsModule,\n    SDSClickOutsideModule,\n    SdsTabOutsideModule,\n    OverlayModule,\n    IconModule,\n    NgxBootstrapIconsModule.pick({ x, caretDownFill, caretUpFill })\n  ],\n  declarations: [SDSAutocompleteSearchComponent],\n  exports: [SDSAutocompleteSearchComponent],\n})\nexport class SdsAutocompleteSearchModule { }\n",
             "children": [
                 {
                     "type": "providers",
@@ -17519,6 +17567,50 @@ const COMPONENTS = {
             ]
         },
         {
+            "name": "SdsEditorModule",
+            "id": "module-SdsEditorModule-75d0e39a092a9a4d37add01d32e60fb2",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "libs/packages/components/src/lib/editor/editor.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\n\nimport { SdsEditorComponent } from './editor.component';\n\nimport { A11yModule } from '@angular/cdk/a11y';\nimport { CommonModule } from '@angular/common';\nimport { FormsModule } from '@angular/forms';\n\n@NgModule({\n    imports: [CommonModule, A11yModule, FormsModule],\n    exports: [SdsEditorComponent],\n    declarations: [SdsEditorComponent],\n    providers: []\n})\nexport class SdsEditorModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "SdsEditorComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "SdsEditorComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
             "name": "SdsExternalLinkDirectivesModule",
             "id": "module-SdsExternalLinkDirectivesModule-cd357a49997a900e610a09db9bf7b6a6",
             "description": "",
@@ -17549,50 +17641,6 @@ const COMPONENTS = {
                     "elements": [
                         {
                             "name": "ExternalLinkDirective"
-                        }
-                    ]
-                },
-                {
-                    "type": "bootstrap",
-                    "elements": []
-                },
-                {
-                    "type": "classes",
-                    "elements": []
-                }
-            ]
-        },
-        {
-            "name": "SdsIconModule",
-            "id": "module-SdsIconModule-81be6e96533e68e42b37c04aaee7b83e",
-            "description": "",
-            "deprecationMessage": "",
-            "deprecated": false,
-            "file": "libs/packages/components/src/lib/icon/icon.module.ts",
-            "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';\nimport { SdsIconComponent } from '../icon/icon.component';\n\n\n@NgModule({\n  declarations: [SdsIconComponent],\n  imports: [\n    CommonModule,\n    NgxBootstrapIconsModule\n  ],\n  exports: [SdsIconComponent]\n})\nexport class SdsIconModule { }\n",
-            "children": [
-                {
-                    "type": "providers",
-                    "elements": []
-                },
-                {
-                    "type": "declarations",
-                    "elements": [
-                        {
-                            "name": "SdsIconComponent"
-                        }
-                    ]
-                },
-                {
-                    "type": "imports",
-                    "elements": []
-                },
-                {
-                    "type": "exports",
-                    "elements": [
-                        {
-                            "name": "SdsIconComponent"
                         }
                     ]
                 },
@@ -18083,6 +18131,54 @@ const COMPONENTS = {
             ]
         },
         {
+            "name": "SdsSideToolbarModule",
+            "id": "module-SdsSideToolbarModule-124c66cc18ec28a3b3d745834f175853",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "libs/packages/components/src/lib/side-toolbar/side-toolbar.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { SdsSideToolbarComponent } from './side-toolbar.component';\nimport { SdsDialogModule } from '../dialog/dialog.module';\n\n@NgModule({\n  declarations: [SdsSideToolbarComponent],\n  imports: [\n    CommonModule, \n    SdsDialogModule,\n  ], exports: [SdsSideToolbarComponent],\n})\nexport class SdsSideToolbarModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "SdsSideToolbarComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "SdsDialogModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "SdsSideToolbarComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
             "name": "SdsTabOutsideModule",
             "id": "module-SdsTabOutsideModule-706ed403e2724bfbecb56874eff1243f",
             "description": "",
@@ -18257,59 +18353,6 @@ const COMPONENTS = {
                     "elements": [
                         {
                             "name": "SdsToastComponent"
-                        }
-                    ]
-                },
-                {
-                    "type": "bootstrap",
-                    "elements": []
-                },
-                {
-                    "type": "classes",
-                    "elements": []
-                }
-            ]
-        },
-        {
-            "name": "SdsToolbarModule",
-            "id": "module-SdsToolbarModule-1650cddaa16a8153975a767c6cb0d538",
-            "description": "",
-            "deprecationMessage": "",
-            "deprecated": false,
-            "file": "libs/packages/components/src/lib/toolbar/toolbar.module.ts",
-            "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { SdsToolbarComponent } from './toolbar.component';\nimport { SdsToolbarHeaderComponent } from './toolbar-header.component';\nimport { SdsToolbarExpandDirective } from './toolbar-expand.directive';\n\n@NgModule({\n  imports: [CommonModule],\n  exports: [SdsToolbarComponent, SdsToolbarExpandDirective],\n  declarations: [\n    SdsToolbarComponent,\n    SdsToolbarHeaderComponent,\n    SdsToolbarExpandDirective\n  ],\n  providers: []\n})\nexport class SdsToolbarModule {}\n",
-            "children": [
-                {
-                    "type": "providers",
-                    "elements": []
-                },
-                {
-                    "type": "declarations",
-                    "elements": [
-                        {
-                            "name": "SdsToolbarComponent"
-                        },
-                        {
-                            "name": "SdsToolbarExpandDirective"
-                        },
-                        {
-                            "name": "SdsToolbarHeaderComponent"
-                        }
-                    ]
-                },
-                {
-                    "type": "imports",
-                    "elements": []
-                },
-                {
-                    "type": "exports",
-                    "elements": [
-                        {
-                            "name": "SdsToolbarComponent"
-                        },
-                        {
-                            "name": "SdsToolbarExpandDirective"
                         }
                     ]
                 },
@@ -18518,96 +18561,6 @@ const COMPONENTS = {
                 "description": "<p>Time and timing curve for accordion item animations.</p>\n"
             },
             {
-                "name": "add",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsAdd.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-add\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M368,240H272V144a16,16,0,0,0-32,0v96H144a16,16,0,0,0,0,32h96v96a16,16,0,0,0,32,0V272h96a16,16,0,0,0,0-32Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "addReq",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsAddReq.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-add-req\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M440,464H72a24,24,0,0,1-24-24V72A24,24,0,0,1,72,48H272a16,16,0,0,1,0,32H80V432H432V240a16,16,0,0,1,32,0V440A24,24,0,0,1,440,464Zm24-352H400V48a16,16,0,0,0-32,0v64H304a16,16,0,0,0,0,32h64v64a16,16,0,0,0,32,0V144h64a16,16,0,0,0,0-32Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "alertError",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsAlertError.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-alert-error\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M256,32C132.48,32,32,132.48,32,256S132.48,480,256,480,480,379.52,480,256,379.52,32,256,32ZM64,256a191,191,0,0,1,45.53-123.85L379.85,402.47A191,191,0,0,1,256,448C150.13,448,64,361.87,64,256ZM402.47,379.85,132.15,109.53A191,191,0,0,1,256,64c105.87,0,192,86.13,192,192A191,191,0,0,1,402.47,379.85Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "alertInfo",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsAlertInfo.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-alert-info\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M256,512C114.84,512,0,397.16,0,256S114.84,0,256,0,512,114.84,512,256,397.16,512,256,512Zm0-486C129.19,26,26,129.19,26,256S129.19,486,256,486,486,382.81,486,256,382.81,26,256,26Zm0,91.12a17.36,17.36,0,1,0,17.36,17.36A17.36,17.36,0,0,0,256,117.15Zm-17.36,86.78V377.49a17.36,17.36,0,1,0,34.71,0V203.93a17.36,17.36,0,1,0-34.71,0Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "alertWarning",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsAlertWarning.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-alert-warning\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M429.29,432H82.7C45.59,433.28,18.42,390.2,39,358.51L212.61,72.09c17.88-31.75,69.5-31.75,87.39,0L473,358.55C493.56,390.26,466.37,433.28,429.29,432Zm-173-352A18.82,18.82,0,0,0,240,88.71L66.36,375.13C59.16,389.21,70,399.54,82.7,400H429.29c12.71-.44,23.59-10.85,16.33-24.88l-173-286.47C269.36,83.26,263.23,80,256.31,80ZM272,288V160c.31-20.75-32.3-20.76-32,0V288a16,16,0,0,0,32,0Zm-16,48a16,16,0,1,0,16,16A16,16,0,0,0,256,336Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "allIcons",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/all.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "object",
-                "defaultValue": "{\n  add,\n  addReq,\n  alertError,\n  alertInfo,\n  alertWarning,\n  angleCircle,\n  angleLeft,\n  angleRight,\n  arrow,\n  arrowDown,\n  arrowUp,\n  article,\n  attachment,\n  bars,\n  bell,\n  book,\n  bookmark,\n  building,\n  buildingAlt,\n  calendar,\n  calendarAdd,\n  calendarCheck,\n  check,\n  checkCircle,\n  comment,\n  document,\n  documentAdd,\n  documentPdf,\n  documentSearch,\n  download,\n  ellipsis,\n  envelope,\n  exclamation,\n  exclamationCircle,\n  exclamationTriangle,\n  exit,\n  federalBuilding,\n  file,\n  fileChartLine,\n  filter,\n  flag,\n  folder,\n  folderAlt1,\n  folderAlt2,\n  home,\n  informationCircle,\n  invoice,\n  leaf,\n  link,\n  logIn,\n  logOut,\n  messages,\n  mobile,\n  newNote,\n  newVersion,\n  notCompleted,\n  note,\n  openDoors,\n  paperPlane,\n  penPaper,\n  pentagon,\n  photo,\n  photoAlt,\n  print,\n  question,\n  questionCircle,\n  receipt,\n  request,\n  reset,\n  resetFilter,\n  rulerPencil,\n  search,\n  searchCircle,\n  share,\n  ship,\n  stackblitz,\n  star,\n  tablet,\n  tag,\n  thumbDown,\n  thumbUp,\n  trash,\n  triangle,\n  unlink,\n  upload,\n  user,\n  userCircle,\n  users,\n  videoCircle,\n  videoPlay,\n  videoSquare,\n  workspace,\n}"
-            },
-            {
-                "name": "angleCircle",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsAngleCircle.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-angle-circle\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M296,368a16,16,0,0,1-12.3-5.76l-80-96a16,16,0,0,1,0-20.48l80-96a16,16,0,1,1,24.58,20.48L236.83,256l71.46,85.76A16,16,0,0,1,296,368ZM480,256C480,132.48,379.52,32,256,32S32,132.48,32,256,132.48,480,256,480,480,379.52,480,256Zm-32,0c0,105.87-86.13,192-192,192S64,361.87,64,256,150.13,64,256,64,448,150.13,448,256Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "angleLeft",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsAngleLeft.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-angle-left\\\" viewBox=\\\"0 0 232.7 512\\\">\\n  <path d=\\\"M194.2,512c-12.1,0-24-5.6-31.6-16.3L7.2,278.5c-9.7-13.5-9.7-31.6,0-45.1L162.6,16.2 c12.5-17.4,36.7-21.5,54.2-9c17.4,12.4,21.5,36.7,9,54.1L86.5,256l139.2,194.7c12.5,17.4,8.4,41.7-9,54.1 C209.9,509.7,202,512,194.2,512z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "angleRight",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsAngleRight.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-angle-right\\\" viewBox=\\\"0 0 234.3 512\\\">\\n  <path d=\\\"M39.5,0c12.6,0.1,24.3,6.2,31.6,16.4l156,218.4c9.6,13.5,9.6,31.7,0,45.2l-156,218.4c-14,16.4-38.6,18.3-55,4.3 C1.8,490.3-1.7,469.4,8,453.1l139.6-195L8,63.2C-5.1,46-1.8,21.6,15.4,8.5c0.5-0.4,1-0.8,1.5-1.1C23.5,2.6,31.4,0.1,39.5,0z\\\"/>\\n</svg>\""
-            },
-            {
                 "name": "animationBody",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -18616,56 +18569,6 @@ const COMPONENTS = {
                 "deprecationMessage": "",
                 "type": "[]",
                 "defaultValue": "[\n  // Note: The `enter` animation transitions to `transform: none`, because for some reason\n  // specifying the transform explicitly, causes IE both to blur the dialog content and\n  // decimate the animation performance. Leaving it as `none` solves both issues.\n  transition('* => enter',\n    [\n      style({opacity: 0, transform: 'scale(0.7)'}),\n      animate('150ms cubic-bezier(0, 0, 0.2, 1)',\n        style({transform: 'none', opacity: 1}))\n    ]\n  ),\n  transition('* => void, * => exit',\n    [\n      style({transform: 'none'}),\n      animate('75ms cubic-bezier(0.4, 0.0, 0.2, 1)',\n        style({opacity: 0})\n      )\n    ]\n  ),\n  // state('slideExit', style({right: '-15rem'})),\n  // state('slideEnter', style({right: '0rem'})),\n  transition('* => slideEnter', [\n    style({right: '-15rem'}),\n    animate('1s', style({right: '0rem'}))\n  ]),\n  transition('* => slideExit', [\n    style({right: '0rem'}),\n    animate('1s', style({right: '-15rem'}))\n  ]),\n]"
-            },
-            {
-                "name": "arrow",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsArrow.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-arrow\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M389,246.7,293,112.3a16,16,0,0,0-26,18.6L344.91,240H124.3a16,16,0,0,0,0,32H344.91L267,381.1a16,16,0,0,0,26,18.6l96-134.4A16,16,0,0,0,389,246.7Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "arrowDown",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsArrowDown.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-arrow-down\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M328.1,255.34V0H182.57V255.34l-82-100.55L0,255.34,256.66,512,512,256.67s-83.77-94.36-88.64-99.23Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "arrowUp",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsArrowUp.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-arrow-up\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M183.9,256.7V512h145.5V256.7l82,100.5L512,256.7L255.3,0L0,255.3c0,0,83.8,94.4,88.6,99.2L183.9,256.7z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "article",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsArticle.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-article\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M438.4,176H384V104a24,24,0,0,0-24-24H72a24,24,0,0,0-24,24V408a24,24,0,0,0,24,24H440a23.89,23.89,0,0,0,24-23.73v-207A25.47,25.47,0,0,0,438.4,176ZM80,112H352V400H80ZM432,400H384V208h48ZM128,256h80a16,16,0,0,0,16-16V160a16,16,0,0,0-16-16H128a16,16,0,0,0-16,16v80A16,16,0,0,0,128,256Zm16-80h48v48H144ZM320,304a16,16,0,0,1-16,16H128a16,16,0,0,1,0-32H304A16,16,0,0,1,320,304Zm0,48a16,16,0,0,1-16,16H128a16,16,0,0,1,0-32H304A16,16,0,0,1,320,352Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "attachment",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsAttachment.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-attachment\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M256,464.88a96.1,96.1,0,0,1-96-96v-120a56,56,0,0,1,112,0v88a16,16,0,0,1-32,0v-88a24,24,0,0,0-48,0v120a64,64,0,0,0,128,0v-224a64,64,0,0,0-128,0,16,16,0,0,1-32,0,96,96,0,0,1,192,0v224A96.1,96.1,0,0,1,256,464.88Z\\\"/>\\n</svg>\""
             },
             {
                 "name": "Autocomplete_Autocomplete_VALUE_ACCESSOR",
@@ -18688,116 +18591,6 @@ const COMPONENTS = {
                 "defaultValue": "{\n  provide: NG_VALUE_ACCESSOR,\n  useExisting: forwardRef(() => SDSAutocompleteComponent),\n  multi: true\n}"
             },
             {
-                "name": "bars",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsBars.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-bars\\\" viewBox=\\\"0 0 448 512\\\">\\n  <path d=\\\"M1.25,264.5c0-10.251,8.311-18.562,18.562-18.562h259.875c10.261,0,18.561,8.311,18.561,18.562c0,10.258-8.3,18.563-18.561,18.563H19.812C9.561,283.063,1.25,274.758,1.25,264.5z M428.188,394.438H19.812c-10.251,0-18.562,8.301-18.562,18.562c0,10.262,8.311,18.563,18.562,18.563h408.375c10.26,0,18.562-8.302,18.562-18.563C446.75,402.738,438.447,394.438,428.188,394.438z M353.937,97.438H182.082h-13.86H19.812c-10.251,0-18.562,8.302-18.562,18.562c0,10.262,8.311,18.563,18.562,18.563h148.41h13.86h171.855c10.263,0,18.565-8.302,18.565-18.563C372.502,105.739,364.199,97.438,353.937,97.438z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "bell",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsBell.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-bell\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M440.06,428.6l-34.35-68.76V185.38C405.71,83,322.79,0,220.5,0S35.29,83,35.29,185.38V359.85L.94,428.6a8.83,8.83,0,0,0,7.89,12.78H141.62a79.36,79.36,0,0,0,157.75,0H432.17A8.83,8.83,0,0,0,440.06,428.6ZM52.93,185.38c0-92.63,75-167.72,167.57-167.72S388.07,92.75,388.07,185.38V353.1H52.93Zm167.57,309a61.77,61.77,0,0,1-61.11-53H281.61A61.77,61.77,0,0,1,220.5,494.34Zm70.56-70.62H23.1l26.46-53H391.44l26.46,53Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "book",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsBook.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-book\\\" viewBox=\\\"0 0 448 512\\\">\\n  <path d=\\\"M464.24,0H43.82A43.78,43.78,0,0,0,0,43.75V441.13c0,.29,0,.57,0,.86s0,.28,0,.42c0,1.19,0,2.4,0,3.62v.27H0c0,.05,0,.11,0,.16a10.11,10.11,0,0,0,.31,2.31A70.05,70.05,0,0,0,70.07,512H464.24a8.76,8.76,0,0,0,8.76-8.75V8.75A8.76,8.76,0,0,0,464.24,0ZM105.11,17.5H192.7V144.61l-36.88-38.15a8.76,8.76,0,0,0-12.53-.07L105.11,145ZM455.48,431.75H359.13a8.75,8.75,0,1,0,0,17.5h96.35V494.5H70.07a52.52,52.52,0,0,1-52.53-51.65v-.64q0-2.54.2-4.94A52.53,52.53,0,0,1,48.86,394a75.58,75.58,0,0,1,16.26-3.17l195.26,0h195.1Zm0-59.77H70.07a69.86,69.86,0,0,0-28.18,5.91,61.71,61.71,0,0,0-24.35,14.91V43.75A26.27,26.27,0,0,1,43.82,17.5H87.59V166.27a8.76,8.76,0,0,0,15,6.15l46.87-47.36,45.71,47.29a8.76,8.76,0,0,0,15.06-6.08V17.5H455.48Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "bookmark",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsBookmark.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-bookmark\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M400,464a16.05,16.05,0,0,1-9.83-3.37L256,356.26,121.82,460.62A16,16,0,0,1,96,448V72a24,24,0,0,1,24-24H392a24,24,0,0,1,24,24V448a16,16,0,0,1-16,16ZM256,320a15.93,15.93,0,0,1,9.82,3.38L384,415.27V80H128V415.27l118.18-91.9A15.93,15.93,0,0,1,256,320Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "building",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsBuilding.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-building\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M461.43,435l-58.53-161A28.22,28.22,0,0,0,377.14,256h-56V72a24,24,0,0,0-24-24h-224a24,24,0,0,0-24,24V440a24,24,0,0,0,24,24h368a21.19,21.19,0,0,0,20.29-29ZM81.14,80h208V432h-208Zm240,352V288h52.79l52.36,144Zm-144-304a16,16,0,0,1-16,16h-32a16,16,0,1,1,0-32h32A16,16,0,0,1,177.14,128Zm0,64a16,16,0,0,1-16,16h-32a16,16,0,1,1,0-32h32A16,16,0,0,1,177.14,192Zm0,64a16,16,0,0,1-16,16h-32a16,16,0,1,1,0-32h32A16,16,0,0,1,177.14,256Zm80-128a16,16,0,0,1-16,16h-32a16,16,0,0,1,0-32h32A16,16,0,0,1,257.14,128Zm0,64a16,16,0,0,1-16,16h-32a16,16,0,0,1,0-32h32A16,16,0,0,1,257.14,192Zm0,64a16,16,0,0,1-16,16h-32a16,16,0,0,1,0-32h32A16,16,0,0,1,257.14,256Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "buildingAlt",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsBuildingAlt.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-building-alt\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M424,464H312a24,24,0,0,1-24-24V336H224V440a24,24,0,0,1-24,24H88a24,24,0,0,1-24-24V72A24,24,0,0,1,88,48H424a24,24,0,0,1,24,24V440A24,24,0,0,1,424,464ZM320,432h96V80H96V432h96V328a24,24,0,0,1,24-24h80a24,24,0,0,1,24,24ZM240,128a16,16,0,0,0-16-16H144a16,16,0,0,0,0,32h80A16,16,0,0,0,240,128Zm144,0a16,16,0,0,0-16-16H288a16,16,0,0,0,0,32h80A16,16,0,0,0,384,128ZM240,192a16,16,0,0,0-16-16H144a16,16,0,0,0,0,32h80A16,16,0,0,0,240,192Zm144,0a16,16,0,0,0-16-16H288a16,16,0,0,0,0,32h80A16,16,0,0,0,384,192ZM240,256a16,16,0,0,0-16-16H144a16,16,0,0,0,0,32h80A16,16,0,0,0,240,256Zm144,0a16,16,0,0,0-16-16H288a16,16,0,0,0,0,32h80A16,16,0,0,0,384,256Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "calendar",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsCalendar.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-calendar\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M448,64H384V48a16,16,0,0,0-32,0V64H160V48a16,16,0,0,0-32,0V64H64A16,16,0,0,0,48,80V448a16,16,0,0,0,16,16H448a16,16,0,0,0,16-16V80A16,16,0,0,0,448,64ZM432,96v48H80V96ZM80,432V176H432V432ZM384,288H304a16,16,0,0,0-16,16v80a16,16,0,0,0,16,16h80a16,16,0,0,0,16-16V304A16,16,0,0,0,384,288Zm-16,80H320V320h48Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "calendarAdd",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsCalendarAdd.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-calendar-add\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M448,64H384V48a16,16,0,0,0-32,0V64H160V48a16,16,0,0,0-32,0V64H64A16,16,0,0,0,48,80V448a16,16,0,0,0,16,16H448a16,16,0,0,0,16-16V80A16,16,0,0,0,448,64ZM432,96v48H80V96ZM80,432V176H432V432ZM336,304a16,16,0,0,1-16,16H272v48a16,16,0,0,1-32,0V320H192a16,16,0,0,1,0-32h48V240a16,16,0,0,1,32,0v48h48A16,16,0,0,1,336,304Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "calendarCheck",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsCalendarCheck.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-calendar-check\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M448,64H384V48a16,16,0,0,0-32,0V64H160V48a16,16,0,0,0-32,0V64H64A16,16,0,0,0,48,80V448a16,16,0,0,0,16,16H448a16,16,0,0,0,16-16V80A16,16,0,0,0,448,64ZM432,96v48H80V96ZM80,432V176H432V432ZM353.47,228.72a16,16,0,0,1-.06,22.63L229.68,374.45a16,16,0,0,1-11.28,4.65h-.07A16,16,0,0,1,207,374.35L158.4,325.1a16,16,0,0,1,22.77-22.48l37.33,37.81L330.85,228.66A16,16,0,0,1,353.47,228.72Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "check",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsCheck.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-check\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M207.2,352h-.06a16.05,16.05,0,0,1-11.33-4.75l-63.2-64a16,16,0,1,1,22.78-22.5l51.91,52.58L356.72,164.66a16,16,0,1,1,22.56,22.68l-160.8,160A16,16,0,0,1,207.2,352Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "checkCircle",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsCheckCircle.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-check-circle\\\" viewBox=\\\"0 0 543.5 512\\\">\\n  <path d=\\\"M313.3,319.9l186.4-185.7l22.4,22.6L313.3,364.9L206.5,258.5l22.4 22.6L313.3,319.9z M508.8,289.1 c0,104.3-85.2,189.1-189.8,189.1c-104.7,0-189.8-84.8-189.8-189.1S214.4,100,319,100V68.1C196.8,68.1,97.4,167.2,97.4,289 S196.8,509.9,319,509.9s221.6-99.1,221.7-220.8H508.8z\\\"/>\\n</svg>\""
-            },
-            {
                 "name": "ChromeFirefoxMocks",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -18806,16 +18599,6 @@ const COMPONENTS = {
                 "deprecationMessage": "",
                 "type": "object",
                 "defaultValue": "{\n  enter: {\n    charCode: 13,\n    code: 'Enter',\n    key: 'Enter',\n    keyCode: 13,\n    keyIdentifier: undefined,\n    which: 13,\n  },\n  up: {\n    charCode: 0,\n    code: 'ArrowUp',\n    key: 'ArrowUp',\n    keyCode: 38,\n    keyIdentifier: undefined,\n    which: 38\n  },\n  down: {\n    charCode: 0,\n    code: 'ArrowDown',\n    key: 'ArrowDown',\n    keyCode: 40,\n    keyIdentifier: undefined,\n    which: 40\n  },\n  left: {\n    charCode: 0,\n    code: 'ArrowLeft',\n    key: 'ArrowLeft',\n    keyCode: 37,\n    keyIdentifier: undefined,\n    which: 37\n  },\n  right: {\n    charCode: 0,\n    code: 'ArrowRight',\n    key: 'ArrowRight',\n    keyCode: 39,\n    keyIdentifier: undefined,\n    which: 39\n  },\n  tab: {\n    charCode: 0,\n    code: 'Tab',\n    key: 'Tab',\n    keyCode: 9,\n    keyIdentifier: undefined,\n    which: 9\n  },\n  esc: {\n    charCode: 0,\n    code: 'Escape',\n    key: 'Escape',\n    keyCode: 27,\n    keyIdentifier: undefined,\n    which: 27\n  },\n  space: {\n    charCode: 0,\n    code: 'Space',\n    key: ' ',\n    keyCode: 32,\n    keyIdentifier: undefined,\n    which: 32\n  },\n  shift: {\n    charCode: 0,\n    code: 'ShiftLeft',\n    key: 'Shift',\n    keyCode: 16,\n    keyIdentifier: undefined,\n    which: 16\n  },\n  backspace: {\n    charCode: 0,\n    code: 'Backspace',\n    key: 'Backspace',\n    keyCode: 8,\n    keyIdentifier: undefined,\n    which: 8\n  },\n  delete: {\n    charCode: 0,\n    code: 'Delete',\n    key: 'Delete',\n    keyCode: 46,\n    keyIdentifier: undefined,\n    which: 46\n  },\n  0: {\n    charCode: 0,\n    code: 'Digit0',\n    key: 0,\n    keyCode: 48,\n    keyIdentifier: 'U+0030',\n    which: 48\n  },\n  1: {\n    charCode: 0,\n    code: 'Digit1',\n    key: 1,\n    keyCode: 49,\n    keyIdentifier: 'U+0031',\n    which: 49\n  },\n  2: {\n    charCode: 0,\n    code: 'Digit2',\n    key: 2,\n    keyCode: 50,\n    keyIdentifier: 'U+0032',\n    which: 50\n  },\n  3: {\n    charCode: 0,\n    code: 'Digit3',\n    key: 3,\n    keyCode: 51,\n    keyIdentifier: 'U+0033',\n    which: 51\n  },\n  4: {\n    charCode: 0,\n    code: 'Digit4',\n    key: 4,\n    keyCode: 52,\n    keyIdentifier: 'U+0034',\n    which: 52\n  },\n  5: {\n    charCode: 0,\n    code: 'Digit5',\n    key: 5,\n    keyCode: 53,\n    keyIdentifier: 'U+0035',\n    which: 53\n  },\n  6: {\n    charCode: 0,\n    code: 'Digit6',\n    key: 6,\n    keyCode: 54,\n    keyIdentifier: 'U+0036',\n    which: 54\n  },\n  7: {\n    charCode: 0,\n    code: 'Digit7',\n    key: 7,\n    keyCode: 55,\n    keyIdentifier: 'U+0037',\n    which: 55\n  },\n  8: {\n    charCode: 0,\n    code: 'Digit8',\n    key: 8,\n    keyCode: 56,\n    keyIdentifier: 'U+0038',\n    which: 56\n  },\n  9: {\n    charCode: 0,\n    code: 'Digit9',\n    key: 9,\n    keyCode: 57,\n    keyIdentifier: 'U+0039',\n    which: 57\n  }\n}"
-            },
-            {
-                "name": "comment",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsComment.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-comment\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M382.4,478.4c-4.8,0-11.2-3.2-14.4-6.4l-84.8-84.8-3.2-1.6H72c-12.8,0-24-11.2-24-24h0V89.6c0-12.8,11.2-24,24-24H440c12.8,0,24,11.2,24,24v272c0,12.8-11.2,24-24,24H400v72c0,8-4.8,16-11.2,19.2C385.6,476.8,384,476.8,382.4,478.4ZM80,353.6H280c9.6,0,17.6,4.8,25.6,9.6L368,425.6V376c0-12.8,11.2-24,24-24h40V96H80Zm288-176H144c-9.6,0-16-6.4-16-16s6.4-16,16-16H368c9.6,0,16,6.4,16,16S377.6,177.6,368,177.6Zm0,64H144c-9.6,0-16-6.4-16-16s6.4-16,16-16H368c9.6,0,16,6.4,16,16S377.6,241.6,368,241.6Zm-112,64H144c-9.6,0-16-6.4-16-16s6.4-16,16-16H256c9.6,0,16,6.4,16,16S265.6,305.6,256,305.6\\\"/>\\n</svg>\""
             },
             {
                 "name": "dialogElementUid",
@@ -18830,56 +18613,6 @@ const COMPONENTS = {
                 "description": "<p>Counter used to generate unique IDs for dialog elements.</p>\n"
             },
             {
-                "name": "document",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsDocument.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-document\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M430.76,137.89a16.12,16.12,0,0,0-3.45-5.21l-96-96A16.33,16.33,0,0,0,320,32H96A16,16,0,0,0,80,48V464a16,16,0,0,0,16,16H416a16,16,0,0,0,16-16V144A16,16,0,0,0,430.76,137.89ZM336,86.63,377.37,128H336ZM400,448H112V64H304v80a16,16,0,0,0,16,16h80Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "documentAdd",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsDocumentAdd.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-document-add\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M430.77,137.89a15.91,15.91,0,0,0-3.47-5.21l-96-96A16.21,16.21,0,0,0,320,32H96A16,16,0,0,0,80,48V464a16,16,0,0,0,16,16H416a16,16,0,0,0,16-16V144A16,16,0,0,0,430.77,137.89ZM336,86.62,377.38,128H336ZM400,448H112V64H304v80a16,16,0,0,0,16,16h80ZM320,256a16,16,0,0,1,0,32H272v48a16,16,0,0,1-32,0V288H192a16,16,0,0,1,0-32h48V208a16,16,0,0,1,32,0v48Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "documentPdf",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsDocumentPdf.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-document-pdf\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M416,400a16,16,0,0,0-16,16v32H112V64H304v80a16,16,0,0,0,16,16h80v48a16,16,0,0,0,32,0V144a16.33,16.33,0,0,0-4.69-11.32l-96-96A16.33,16.33,0,0,0,320,32H96A16,16,0,0,0,80,48V464a16,16,0,0,0,16,16H416a16,16,0,0,0,16-16V416A16,16,0,0,0,416,400ZM336,86.62,377.38,128H336ZM219.25,269.3a42.09,42.09,0,0,0-15.17-6.47,85.85,85.85,0,0,0-18.67-1.94H144V379.11h27.17V340.57h15a66.44,66.44,0,0,0,18.12-2.41,43.45,43.45,0,0,0,15-7.39A35.8,35.8,0,0,0,229.5,318a41.47,41.47,0,0,0,3.79-18.3c0-7.29-1.27-13.41-3.79-18.4A32.18,32.18,0,0,0,219.25,269.3Zm-34.77,49.63H171.17V282.51h12.57c7.39,0,13.07,1.31,17,3.88s5.92,7,5.92,13.33Q206.67,318.93,184.48,318.93Zm128.67-54.6a83.89,83.89,0,0,0-24.95-3.44h-34V379.11h35.48a75.35,75.35,0,0,0,24.14-3.63,47.61,47.61,0,0,0,30.6-29.54q4.25-11.25,4.23-26.47t-4.23-26.3A46.86,46.86,0,0,0,332.2,275,50.67,50.67,0,0,0,313.15,264.33Zm5.09,73.08a30.27,30.27,0,0,1-6.93,11.69,25.79,25.79,0,0,1-10.74,6.43,46,46,0,0,1-14,2h-5.18V282.47h5.18a51,51,0,0,1,14,1.8,25.77,25.77,0,0,1,10.74,6.08,28.62,28.62,0,0,1,6.93,11.42,54.44,54.44,0,0,1,2.49,17.7Q320.73,330.15,318.24,337.41Zm80.95-53.59v27.9H441v22.93H399.19v44.46H372V260.89h76v22.93Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "documentSearch",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsDocumentSearch.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-document-search\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M305.34,248.67a72.67,72.67,0,1,0-72.68,72.66A72,72,0,0,0,271.34,310l53.35,53.35a16,16,0,0,0,22.62-22.62L294,287.33A72,72,0,0,0,305.34,248.67Zm-113.34,0a40.67,40.67,0,1,1,40.66,40.66A40.71,40.71,0,0,1,192,248.67ZM430.76,137.88a16.18,16.18,0,0,0-3.45-5.2l-96-96a16.14,16.14,0,0,0-5.21-3.46A16,16,0,0,0,320,32H96A16,16,0,0,0,80,48V464a16,16,0,0,0,16,16H416a16,16,0,0,0,16-16V144A16,16,0,0,0,430.76,137.88ZM336,86.62,377.38,128H336ZM400,448H112V64H304v80a16,16,0,0,0,16,16h80Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "download",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsDownload.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-download\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M448,416a16,16,0,0,1-16,16H80a16,16,0,0,1,0-32H432A16,16,0,0,1,448,416ZM358.7,243,272,304.92V96a16,16,0,0,0-32,0V304.92L153.29,243a16,16,0,0,0-18.59,26l112,80a16,16,0,0,0,18.59,0l112-80a16,16,0,1,0-18.59-26Z\\\"/>\\n</svg>\""
-            },
-            {
                 "name": "EdgeMocks",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -18888,146 +18621,6 @@ const COMPONENTS = {
                 "deprecationMessage": "",
                 "type": "object",
                 "defaultValue": "{\n  enter: {\n    charCode: 0,\n    code: undefined,\n    key: 'Enter',\n    keyCode: 13,\n    keyIdentifier: undefined,\n    which: 13\n  },\n  up: {\n    charCode: 0,\n    code: undefined,\n    key: 'Up',\n    keyCode: 38,\n    keyIdentifier: undefined,\n    which: 38\n  },\n  down: {\n    charCode: 0,\n    code: undefined,\n    key: 'Down',\n    keyCode: 40,\n    keyIdentifier: undefined,\n    which: 40\n  },\n  left: {\n    charCode: 0,\n    code: undefined,\n    key: 'Left',\n    keyCode: 37,\n    keyIdentifier: undefined,\n    which: 37\n  },\n  right: {\n    charCode: 0,\n    code: undefined,\n    key: 'Right',\n    keyCode: 39,\n    keyIdentifier: undefined,\n    which: 39\n  },\n  tab: {\n    charCode: 0,\n    code: undefined,\n    key: 'Tab',\n    keyCode: 9,\n    keyIdentifier: undefined,\n    which: 9\n  },\n  esc: {\n    charCode: 0,\n    code: undefined,\n    key: 'Esc',\n    keyCode: 27,\n    keyIdentifier: undefined,\n    which: 27\n  },\n  space: {\n    charCode: 0,\n    code: undefined,\n    key: ' ',\n    keyCode: 32,\n    keyIdentifier: undefined,\n    which: 32\n  },\n  shift: {\n    charCode: 0,\n    code: undefined,\n    key: 'Shift',\n    keyCode: 16,\n    keyIdentifier: undefined,\n    which: 16\n  },\n  backspace: {\n    charCode: 0,\n    code: undefined,\n    key: 'Backspace',\n    keyCode: 8,\n    keyIdentifier: undefined,\n    which: 8\n  },\n  delete: {\n    charCode: 0,\n    code: undefined,\n    key: 'Delete',\n    keyCode: 46,\n    keyIdentifier: undefined,\n    which: 46\n  },\n  0: {\n    charCode: 0,\n    code: 'Digit0',\n    key: 0,\n    keyCode: 48,\n    keyIdentifier: 'U+0030',\n    which: 48\n  },\n  1: {\n    charCode: 0,\n    code: 'Digit1',\n    key: 1,\n    keyCode: 49,\n    keyIdentifier: 'U+0031',\n    which: 49\n  },\n  2: {\n    charCode: 0,\n    code: 'Digit2',\n    key: 2,\n    keyCode: 50,\n    keyIdentifier: 'U+0032',\n    which: 50\n  },\n  3: {\n    charCode: 0,\n    code: 'Digit3',\n    key: 3,\n    keyCode: 51,\n    keyIdentifier: 'U+0033',\n    which: 51\n  },\n  4: {\n    charCode: 0,\n    code: 'Digit4',\n    key: 4,\n    keyCode: 52,\n    keyIdentifier: 'U+0034',\n    which: 52\n  },\n  5: {\n    charCode: 0,\n    code: 'Digit5',\n    key: 5,\n    keyCode: 53,\n    keyIdentifier: 'U+0035',\n    which: 53\n  },\n  6: {\n    charCode: 0,\n    code: 'Digit6',\n    key: 6,\n    keyCode: 54,\n    keyIdentifier: 'U+0036',\n    which: 54\n  },\n  7: {\n    charCode: 0,\n    code: 'Digit7',\n    key: 7,\n    keyCode: 55,\n    keyIdentifier: 'U+0037',\n    which: 55\n  },\n  8: {\n    charCode: 0,\n    code: 'Digit8',\n    key: 8,\n    keyCode: 56,\n    keyIdentifier: 'U+0038',\n    which: 56\n  },\n  9: {\n    charCode: 0,\n    code: 'Digit9',\n    key: 9,\n    keyCode: 57,\n    keyIdentifier: 'U+0039',\n    which: 57\n  }\n}"
-            },
-            {
-                "name": "ellipsis",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsEllipsis.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-ellipsis\\\" viewBox=\\\"0 0 120 512\\\">\\n  <path d=\\\"M60,390.763209 C93.137085,390.763209 120,417.902989 120,451.381605 C120,484.86022 93.137085,512 60,512 C26.862915,512 0,484.86022 0,451.381605 C0,417.902989 26.862915,390.763209 60,390.763209 Z M60,195.381605 C93.137085,195.381605 120,222.521385 120,256 C120,289.478615 93.137085,316.618395 60,316.618395 C26.862915,316.618395 0,289.478615 0,256 C0,222.521385 26.862915,195.381605 60,195.381605 Z M60,0 C93.137085,0 120,27.13978 120,60.6183953 C120,94.0970106 93.137085,121.236791 60,121.236791 C26.862915,121.236791 0,94.0970106 0,60.6183953 C0,27.13978 26.862915,0 60,0 Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "envelope",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsEnvelope.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-envelope\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M440,112H72a24,24,0,0,0-24,24V376a24,24,0,0,0,24,24H440a24,24,0,0,0,24-24V136A24,24,0,0,0,440,112Zm-42.68,32L256,252.92,112.16,144ZM80,368V159.79l162.8,123.3A21.75,21.75,0,0,0,256,287.55,22.27,22.27,0,0,0,269.34,283L432,157.68V368Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "exclamation",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsExclamation.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-exclamation\\\" viewBox=\\\"0 0 225 512\\\">\\n  <path d=\\\"M150,0H75A75.15,75.15,0,0,0,0,75.29V436.71A75.15,75.15,0,0,0,75,512h75a75.15,75.15,0,0,0,75-75.29V75.29A75.15,75.15,0,0,0,150,0ZM110,90.44q1.24-.08,2.48-.08a37.42,37.42,0,0,1,37.35,37.5q0,1.25-.08,2.49l-13.32,201H88.55l-13.32-201A37.45,37.45,0,0,1,110,90.44Zm2.48,346.27A37.65,37.65,0,1,1,150,399.06,37.57,37.57,0,0,1,112.5,436.71Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "exclamationCircle",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsExclamationCircle.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-exclamation-circle\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M256,0C114.61,0,0,114.61,0,256S114.61,512,256,512,512,397.39,512,256,397.39,0,256,0Zm0,450.19a36.52,36.52,0,1,1,36.52-36.52A36.52,36.52,0,0,1,256,450.19Zm47.26-315.89L269.45,337.19H244L210.21,134.31V66.68h93.05Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "exclamationTriangle",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsExclamationTriangle.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-exclamation-triangle\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M507.2,427.3L285.8,50.4c-3.1-4.6-7.7-9.2-12.3-12.3c-16.9-10-37.5-3.8-47.5,12.3L4.6,427.3 C1.6,432.7,0,438.8,0,445c0,19.2,15.3,34.5,34.5,34.5h442.8c6.1,0,12.3-1.5,17.6-4.6C511,464.9,517.1,443.4,507.2,427.3z M483.4,454.9c-2.3,0.8-3.8,1.5-6.1,1.5H34.5c-6.1,0-11.5-5.4-11.5-11.5c0-2.3,0.8-4.6,1.5-6.1L245.9,62.7 c3.8-5.4,10.7-6.9,16.1 3.8c1.5,0.8,3.1,2.3,3.8,3.8l221.4,376.1C491.1,445,488.8,451.8,483.4,454.9z M259.7,376 c8.4,0,15.3,6.9,15.3,15.3s-6.9,15.3-15.3,15.3s-15.3-6.9-15.3 15.3S251.3,376,259.7,376z M244.4,169.2H275v183.9h-30.6V169.2z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "exit",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsExit.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-exit\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M278.62,256l68.69-68.69a16,16,0,0,0-22.62-22.62L256,233.38l-68.69-68.69a16,16,0,0,0-22.62,22.62L233.38,256l-68.69,68.69a16,16,0,1,0,22.62,22.62L256,278.62l68.69,68.69a16,16,0,0,0,22.62-22.62Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "federalBuilding",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsFederalBuilding.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-federal-building\\\" viewBox=\\\"0 0 543.5 512\\\">\\n  <path d=\\\"M695.6,250.7c0-6.1,0.8-5.4-5.5-5.4c-45.2,0-90.4,0-135.6,0.1c-3.2,0-4.5-0.9-5.4-4 c-4.6-16.5-13.5-30.3-26.5-41.5c-13.5-11.7-29-18.7-46.8-20.6c-2.4-0.3-3.7-1-3.4-3.6c0.1-1.2,0-2.4,0-3.5c0-5.3,0-5.3,5.4-5.3 c32.7,0,65.4-0.1,98.2,0.1c3.4,0,4.5-0.8,4.5-4.4c-0.1-28.3-0.2-56.5,0-84.8c0-4-1.1-5-5.1-5c-47.2,0.1-94.4,0.1-141.5,0.1 c-1.6,0.7-1.3,2.2-1.2,3.4c0.5,26.1-1.4,52.2-0.9,78.3c0.1,5,0,10,0,15c0,9.3,0.2,7.8-7.8,9.3c-19.9,3.7-36.6,13.2-50.2,28.2 c-8.5,9.4-14.1,20.2-17.9,32.1c-1.5,4.8-2,5-7,5.1c-1.4,0-2.9,0-4.3,0c-42.8,0-85.7,0-128.5,0c-6.6,0-7.4,0.7-7.4,6.7 c0,67.1,0,134.3,0,201.4c0,1.8-0.1,3.7,1.2,5.3c0,16.4,0.2,32.9,0,49.3c0,3.7,1.1,4.5,4.6,4.5c158.9-0.1,317.8-0.1,476.6,0 c4,0,4.7-1.2,4.7-4.8C695.6,421.3,695.6,336,695.6,250.7z M284.6,468.7c0,2.7-0.9,3.7-3.6,3.7c-9.5-0.1-18.9-0.1-28.4,0 c-3,0-3.4-1.3-3.4-3.8c0.1-19.6,0-39.1,0-58.7c0-19,0.1-38.1-0.1-57.1c0-3.3,0.9-4.2,4.2-4.2c9.2,0.2,18.4,0.1,27.6,0 c2.6,0,3.7,0.5,3.7,3.4C284.5,390.9,284.5,429.8,284.6,468.7z M284.7,305.9c0.1,2.7-1.1,3.4-3.5,3.3c-4.7-0.1-9.5,0-14.2,0 c-4.9,0-9.7-0.1-14.6,0c-2.1,0-3.1-0.4-3.1-2.8c0-6.3,0-12.6-0.1-18.9c0-2.3,0.9-2.9,3.1-2.9c9.7,0.1,19.4,0.1,29.2,0 c2.4,0,3.2,0.8,3.2,3.2C284.6,293.8,284.6,299.9,284.7,305.9z M358.9,469.2c0,2.4-0.9,3.2-3.2,3.2c-9.6-0.1-19.2-0.1-28.8,0 c-3.1,0-2.9-1.7-2.9-3.8c0-19.3,0-38.6,0-57.9s0.1-38.6-0.1-57.9c0-3.3,1-4.2,4.2-4.1c9.2,0.2,18.4,0.1,27.6,0 c2.3,0,3.2,0.6,3.2,3.1C358.8,390.9,358.8,430,358.9,469.2z M358.9,306.3c0,2.2-0.7,3-2.9,3c-4.9-0.1-9.7,0-14.6,0 c-4.7,0-9.5-0.1-14.2,0c-2.3,0.1-3.3-0.6-3.2-3.1c0.1-6.2,0-12.4-0.1-18.5c0-2.2,0.6-3,2.9-3c9.7,0.1,19.4,0.1,29.2,0.1 c2.3,0,2.9,0.9,2.9,3C358.8,294,358.8,300.2,358.9,306.3z M473.2,113c2.2-2.5,7.2-0.8,10.9-0.8c7.6-0.1,15.2,0,22.8,0 c10.2,0,20.5,0.1,30.7-0.1c2.6,0,3.5,0.7,3.4,3.3c-0.2,3-0.1,6,0,9c0.1,2.3-0.7,3.3-3.2,3.3c-20.7-0.1-41.4-0.1-62.2,0 c-2.4,0-3.3-1-3.1-3.3C472.8,120.6,470.9,115.6,473.2,113z M504.2,472.4c-34.2-0.1-68.3-0.1-102.5,0c-3.1,0-3.6-1.4-3.6-4.1 c0.1-19.3,0-38.6,0-58c0-19.2,0.1-38.4-0.1-57.6c0-3.2,0.7-4.3,4.1-4.2c8.8,0.2,17.6,0.2,26.4,0c3.4-0.1,4.5,0.8,4.4,4.3 c-0.2,18,0,36-0.2,54c0,3.5,0.9,4.5,4.4,4.4c10.4-0.2,20.8-0.2,31.1,0c3.1,0.1,4.1-0.8,4-4c-0.1-18.1,0-36.3-0.2-54.4 c0-3.5,0.9-4.5,4.4-4.4c9.2,0.2,18.4,0.2,27.6,0c2.6,0,3.4,0.7,3.4,3.3c0.3,39.2,0.3,78.3,0.3,117.3 C507.7,471.6,506.8,472.4,504.2,472.4z M398.1,287.8c0-2.1,0.5-3.1,2.8-3.1c9.7,0.1,19.4,0.1,29.1,0c2.2,0,3,0.8,2.9,3 c-0.1,6.2-0.1,12.3,0,18.5c0.1,2.5-0.9,3.1-3.2,3.1c-4.7-0.1-9.4,0-14.2,0c-4.9,0-9.7-0.1-14.6,0c-2.2,0.1-3-0.7-2.9-3 C398.2,300.1,398.2,294,398.1,287.8z M507.7,306.1c0,2.4-0.9,3.2-3.3,3.1c-9.7-0.1-19.4-0.1-29.1,0c-2.2,0-3-0.7-3-2.9 c0.1-6.2,0.1-12.3,0-18.5c-0.1-2.5,0.9-3.1,3.2-3.1c4.9,0.1,9.7,0,14.6,0c4.9,0,9.7,0.1,14.6,0c2.2-0.1,3.1,0.6,3,2.9 C507.6,293.8,507.6,300,507.7,306.1z M505.2,245.4c-17.5-0.1-34.9-0.1-52.4-0.1c-17.3,0-34.7,0-52,0c-4,0-4.2-0.4-2.2-3.9 c8.3-13.9,20.7-22.1,36.7-23.3c12.8-0.9,25.7-1.4,38.5,0.5c14.8,2.2,25.7,10.6,33.4,23.3C508.9,244.6,508.4,245.4,505.2,245.4z M582,468.7c0,3.1-1.2,3.7-4,3.7c-9.1-0.1-18.1-0.2-27.2,0c-3.2,0.1-4.3-0.9-4.3-4.2c0.1-19.3,0.1-38.6,0.1-57.9 c0-19.2,0.1-38.4-0.1-57.5c0-3.3,0.9-4.3,4.2-4.2c9.2,0.2,18.4,0.2,27.6,0c2.6,0,3.7,0.5,3.7,3.4C581.9,390.9,581.9,429.8,582,468.7 z M582.1,306.2c0,2.2-0.8,3-3,3c-9.8-0.1-19.7-0.1-29.5,0c-2,0-2.8-0.6-2.8-2.7c0.1-6.3,0.1-12.6,0-18.9c-0.3-2.2,0.5-2.9,2.8-2.9 c4.9,0.1,9.7,0,14.6,0v-0.1c4.9,0,9.7,0.1,14.6,0c2.3-0.1,3.3,0.6,3.3,3.1C582,293.9,582,300,582.1,306.2z M652.3,472.4 c-9.1-0.2-18.1-0.2-27.2,0c-2.9,0-3.9-0.8-3.9-3.8c0.1-38.8,0.1-77.5,0-116.3c0-3,0.9-3.8,3.8-3.7c9.2,0.2,18.4,0.2,27.6,0 c2.8,0,3.5,0.8,3.5,3.5c-0.1,19.4-0.1,38.9-0.1,58.3c0,19.3-0.1,38.6,0.1,57.9C656.2,471.4,655.6,472.5,652.3,472.4z M656.2,306.1 c0.1,2.5-0.9,3.1-3.2,3.1c-4.9-0.1-9.7,0-14.6,0c-4.6,0-9.2-0.1-13.8,0c-2.2,0.1-3.4-0.4-3.3-3c0.2-6.1,0.1-12.3,0-18.5 c-0.1-2.5,1-3.1,3.3-3.1c9.5,0.1,18.9,0.1,28.4,0c2.3,0,3.3,0.5,3.2,3C656,293.8,656,300,656.2,306.1z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "file",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsFile.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-file\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M22.92,489.08H356.1V367.57a11.47,11.47,0,0,1,11.46-11.46H489.08V22.93H22.92ZM169,187.13H343a11.46,11.46,0,0,1,0,22.93H169a11.46,11.46,0,0,1,0-22.93Zm0,53.55H343a11.46,11.46,0,0,1,0,22.92H169a11.46,11.46,0,0,1,0-22.92Zm0,53.55h116.7a11.46,11.46,0,0,1,0,22.93H169a11.46,11.46,0,0,1,0-22.93Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "fileChartLine",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsFileChartLine.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-file-chart-line\\\" viewBox=\\\"0 0 448 512\\\">\\n  <path d=\\\"M358.68,29.26H248.88V7.31A7.32,7.32,0,0,0,241.56,0H124.44a7.32,7.32,0,0,0-7.32,7.31V29.26H7.32A7.32,7.32,0,0,0,0,36.57V504.69A7.32,7.32,0,0,0,7.32,512H358.68a7.32,7.32,0,0,0,7.32-7.31V36.57A7.32,7.32,0,0,0,358.68,29.26ZM131.76,14.63H234.24V29.26H131.76Zm219.6,482.74H14.64V43.89H351.36ZM241.56,95.09a7.31,7.31,0,1,1,0,14.63H65.88a7.31,7.31,0,1,1,0-14.63Zm-183,65.83a7.32,7.32,0,0,1,7.32-7.31H183a7.31,7.31,0,1,1,0,14.63H65.88A7.32,7.32,0,0,1,58.56,160.91Zm148.3,231.15L280,309.66a7.32,7.32,0,0,1,11,9.71l-77.9,87.77a7.32,7.32,0,0,1-10.22.71l-66.1-56.29-66.1,56.29a7.32,7.32,0,1,1-9.5-11.13L132,336.38a7.32,7.32,0,0,1,9.5,0Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "filter",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsFilter.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-filter\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M216,456a24,24,0,0,1-24-24V251.48L56.31,98.15A24,24,0,0,1,72,56H440a24,24,0,0,1,15.71,42.15L320,251.49V378.65a23.94,23.94,0,0,1-10.69,20l-80,53.34A24,24,0,0,1,216,456Zm-.77-226.53A23.89,23.89,0,0,1,224,248V417l64-42.67V248a23.87,23.87,0,0,1,8.77-18.55L421.94,88H90.06ZM440,88h0Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "flag",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsFlag.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-flag\\\" viewBox=\\\"0 0 670.9 512\\\">\\n  <path d=\\\"M36.7-0.1l272.9,512h-38.3L2.3-0.1H36.7z M360.4-0.1l46.7,102h121.5l139.4,256.4H378.3 l-28-57.4l71.3-42.8H212.7L74-0.1H360.4z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "folder",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsFolder.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-folder\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M440,97.48H209.5l-1-2.75a23.89,23.89,0,0,0-21.46-13.25H72a24,24,0,0,0-24,24V409.93a23.81,23.81,0,0,0,24,23.55H440a23.8,23.8,0,0,0,24-23.55V121A23.81,23.81,0,0,0,440,97.48Zm-8,32v40.45H235.31L220.9,129.48Zm0,272H80v-288H181.35l31.35,88.45H432Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "folderAlt1",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsFolderAlt1.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-folder-alt-1\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M440,129.49H208v-24a24,24,0,0,0-24-24H72a24,24,0,0,0-24,24v320a24,24,0,0,0,24,24H440a24,24,0,0,0,24-24v-272A24,24,0,0,0,440,129.49Zm-264-16v16H80v-16Zm256,304H80v-256H432Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "folderAlt2",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsFolderAlt2.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-folder-alt-2\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M440,114.19H220.21L208.53,94.76a23.86,23.86,0,0,0-21.48-13.28H72a24,24,0,0,0-24,24V409.93a23.8,23.8,0,0,0,24,23.55H440a23.81,23.81,0,0,0,24-23.55V137.75A23.81,23.81,0,0,0,440,114.19Zm-8,32v39.35L249.69,163.26l-10.25-17.07Zm0,255.29H80v-288H182.5l47.8,79.65L432,217.78v183.7Z\\\"/>\\n</svg>\""
             },
             {
                 "name": "GLOBAL_STRINGS",
@@ -19049,16 +18642,6 @@ const COMPONENTS = {
                 "defaultValue": "[\n  {\n    code: 'A',\n    elements: [\n      {\n        code: 'A',\n        elements: null,\n        description: null,\n        element_id: '0001001',\n        value: 'Formula Grants'\n      },\n      {\n        code: 'A',\n        elements: null,\n        description: null,\n        element_id: '0001002',\n        value: 'Formula Grants (Apportionments)'\n      },\n      {\n        code: 'A',\n        elements: null,\n        description: null,\n        element_id: '0001003',\n        value: 'Formula Grants (Cooperative Agreements)'\n      },\n      {\n        code: 'A',\n        elements: null,\n        description: null,\n        element_id: '0001004',\n        value: 'Formula Grants (Health Incentive Grants)'\n      }\n    ],\n    description:\n      'Formula Grants - Allocations of money to States or their subdivisions in accordance with a distribution formula prescribed by law or administrative regulation, for activities of a continuing nature not confined to a specific project.',\n    element_id: '0001',\n    value: 'FORMULA GRANTS'\n  },\n  {\n    code: 'B',\n    elements: [\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003001',\n        value: 'Cooperative Agreements'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003002',\n        value: 'Cooperative Agreements (Discretionary Grants)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003003',\n        value: 'Project Grants'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003004',\n        value:\n          'Project Grants (Capacity Building and Complaint Processing, Training)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003005',\n        value: 'Project Grants (Contracts)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003006',\n        value: 'Project Grants (Cooperative Agreements or Contracts)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003007',\n        value: 'Project Grants (Cooperative Agreements)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003008',\n        value: 'Project Grants (Discretionary)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003009',\n        value: 'Project Grants (Fellowships)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003010',\n        value:\n          'Project Grants (for administration projects authorized under Section'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003011',\n        value:\n          'Project Grants (for collaborative design of curriculum, production of'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003012',\n        value: 'Project Grants (for specified projects)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003013',\n        value: 'Project Grants (including individual awards)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003014',\n        value: 'Project Grants (including travel grants)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003015',\n        value:\n          'Project Grants (Rehabilitation of existing indoor and outdoor recreat'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003016',\n        value: 'Project Grants (Special)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003017',\n        value: 'Project Grants (to capitalize loan funds)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003018',\n        value: 'Project Grants (with Formula Distribution)'\n      }\n    ],\n    description:\n      'Project Grants - The funding, for fixed or known periods, of specific projects or the delivery of specific services or products without liability for damages for failure to perform. Project grants include fellowships, scholarships, research grants, training grants, traineeships, experimental and demonstration grants, evaluation grants, planning grants, technical assistance grants, survey grants, construction grants, and unsolicited contractual agreements.',\n    element_id: '0003',\n    value: 'PROJECT GRANTS'\n  },\n  {\n    code: 'C',\n    elements: [\n      {\n        code: 'C',\n        elements: null,\n        description: null,\n        element_id: '0005001',\n        value: 'Direct Payments for Specified Use'\n      },\n      {\n        code: 'C',\n        elements: null,\n        description: null,\n        element_id: '0005002',\n        value: 'Direct Payments for Specified Use (Cooperative Agreements)'\n      }\n    ],\n    description:\n      'Direct Payments for a Specified Use - Financial assistance provided directly to individuals, private firms, and other private institutions to encourage or subsidize a particular activity by conditioning the receipt of the on a particular performance by the recipient. This does not include solicited contracts for the procurement of goods and services for the Federal government.',\n    element_id: '0005',\n    value: 'DIRECT PAYMENTS FOR A SPECIFIED USE'\n  },\n  {\n    code: 'D',\n    elements: [\n      {\n        code: 'D',\n        elements: null,\n        description: null,\n        element_id: '0007001',\n        value: 'Direct Payments with Unrestricted Use'\n      }\n    ],\n    description:\n      'Direct Payments with Unrestricted Use - Financial assistance provided directly to beneficiaries who satisfy eligibility requirements with no restrictions imposed on the recipient as to how the money is spent. Included are payments under retirement, pension, and compensation programs.',\n    element_id: '0007',\n    value: 'DIRECT PAYMENTS WITH UNRESTRICTED USE'\n  },\n  {\n    code: 'E',\n    elements: [\n      {\n        code: 'E',\n        elements: null,\n        description: null,\n        element_id: '0009001',\n        value: 'Direct Loans'\n      }\n    ],\n    description:\n      'Direct Loans - Financial assistance provided through the lending of Federal monies for a specific period of time, with a reasonable expectation of repayment. Such loans may or may not require the payment of interest.',\n    element_id: '0009',\n    value: 'DIRECT LOANS'\n  },\n  {\n    code: 'F',\n    elements: [\n      {\n        code: 'F',\n        elements: null,\n        description: null,\n        element_id: '0011001',\n        value: 'Guaranteed/Insured Loans'\n      },\n      {\n        code: 'F',\n        elements: null,\n        description: null,\n        element_id: '0011002',\n        value:\n          'Guaranteed/Insured Loans (including Guaranty Participation Loans)'\n      },\n      {\n        code: 'F',\n        elements: null,\n        description: null,\n        element_id: '0011003',\n        value:\n          'Guaranteed/Insured Loans (including Immediate Participation Loans)'\n      },\n      {\n        code: 'F',\n        elements: null,\n        description: null,\n        element_id: '0011004',\n        value: 'Loan Guarantees/Grants'\n      }\n    ],\n    description:\n      'Guaranteed/Insured Loans - Programs in which the Federal Government makes an arrangement to indemnify a lender against all or part of all of any defaults by those responsible for the repayment of loans.',\n    element_id: '0011',\n    value: 'GUARANTEED/INSURED LOANS'\n  },\n  {\n    code: 'G',\n    elements: [\n      {\n        code: 'G',\n        elements: null,\n        description: null,\n        element_id: '0013001',\n        value: 'Insurance'\n      },\n      {\n        code: 'G',\n        elements: null,\n        description: null,\n        element_id: '0013002',\n        value: 'Insurance (Guaranteed Surety Bonds)'\n      },\n      {\n        code: 'G',\n        elements: null,\n        description: null,\n        element_id: '0013003',\n        value: 'Insurance (Reimbursement)'\n      }\n    ],\n    description:\n      'Insurance - Financial assistance provided to assure reimbursement for losses sustained under specified conditions. Coverage may be provided directly by the Federal Government or through private carriers and may or may not involve the payment of premiums.',\n    element_id: '0013',\n    value: 'INSURANCE'\n  },\n  {\n    code: 'H',\n    elements: [\n      {\n        code: 'H',\n        elements: null,\n        description: null,\n        element_id: '0015001',\n        value: 'Sale, Exchange, or Donation of Property and Goods'\n      }\n    ],\n    description:\n      'Sale, Exchange, or Donation of Property or Goods - Programs that provide for the sale, exchange, or donation of Federal real property, personal property, commodities, and other goods including land, buildings, equipment, food, and drugs. This does not include the loan of, use of, or access to Federal facilities or property.',\n    element_id: '0015',\n    value: 'SALE, EXCHANGE, OR DONATION OF PROPERTY OR GOODS'\n  },\n  {\n    code: 'I',\n    elements: [\n      {\n        code: 'I',\n        elements: null,\n        description: null,\n        element_id: '0017001',\n        value: 'Use of Property, Facilities, and Equipment'\n      }\n    ],\n    description:\n      'Use of Property, Facilities, or Equipment - Programs that provide for the loan of, use of, or access to Federal facilities or property wherein the federally owned facilities or property do not remain in the possession of the recipient of the assistance.',\n    element_id: '0017',\n    value: 'USE OF PROPERTY, FACILITIES, OR EQUIPMENT'\n  },\n  {\n    code: 'J',\n    elements: [\n      {\n        code: 'J',\n        elements: null,\n        description: null,\n        element_id: '0019001',\n        value: 'Provision of Specialized Services'\n      }\n    ],\n    description:\n      'Provision of Specialized Services - Programs that provide Federal personnel to directly perform certain tasks for the benefit of communities or individuals. These services may be performed in conjunction with non-Federal personnel, but they involve more than consultation, advice, or counseling.',\n    element_id: '0019',\n    value: 'PROVISION OF SPECIALIZED SERVICES'\n  },\n  {\n    code: 'K',\n    elements: [\n      {\n        code: 'K',\n        elements: null,\n        description: null,\n        element_id: '0021001',\n        value: 'Advisory Services and Counseling'\n      },\n      {\n        code: 'K',\n        elements: null,\n        description: null,\n        element_id: '0021002',\n        value: 'Advisory Services on Compliance'\n      }\n    ],\n    description:\n      'Advisory Services and Counseling - Programs that provide Federal specialists to consult, advise, or counsel communities or individuals including conferences, workshops, or personal contacts. This may involve the use of published information, but only in a secondary capacity.',\n    element_id: '0021',\n    value: 'ADVISORY SERVICES AND COUNSELING'\n  },\n  {\n    code: 'L',\n    elements: [\n      {\n        code: 'L',\n        elements: null,\n        description: null,\n        element_id: '0023001',\n        value: 'Dissemination of Technical Information'\n      },\n      {\n        code: 'L',\n        elements: null,\n        description: null,\n        element_id: '0023002',\n        value: 'Information'\n      }\n    ],\n    description:\n      'Dissemination of Technical Information - Programs that provide for the publication and distribution of information or data of a specialized technical nature, frequently through clearinghouses or libraries. This does not include conventional public information services designed for general public consumption.',\n    element_id: '0023',\n    value: 'DISSEMINATION OF TECHNICAL INFORMATION'\n  },\n  {\n    code: 'M',\n    elements: [\n      {\n        code: 'M',\n        elements: null,\n        description: null,\n        element_id: '0025001',\n        value: 'Training'\n      }\n    ],\n    description:\n      'Training - Programs that provide instructional activities conducted directly by a Federal agency for individuals not employed by the Federal Government.',\n    element_id: '0025',\n    value: 'TRAINING'\n  },\n  {\n    code: 'N',\n    elements: [\n      {\n        code: 'N',\n        elements: null,\n        description: null,\n        element_id: '0027020',\n        value: 'Resolution of Disputes'\n      },\n      {\n        code: 'N',\n        elements: null,\n        description: null,\n        element_id: '0027001',\n        value: 'Investigation of Complaints'\n      },\n      {\n        code: 'N',\n        elements: null,\n        description: null,\n        element_id: '0027002',\n        value: 'Investigation of Complaints (Compliance Reviews)'\n      }\n    ],\n    description:\n      'Investigation of Complaints - Federal administrative agency activities that are initiated in response to requests, either formal or informal, to examine or investigate claims of violations of Federal statutes, policy, or procedure. Such claims must come from outside the Federal Government.',\n    element_id: '0027',\n    value: 'INVESTIGATION OF COMPLAINTS'\n  },\n  {\n    code: 'O',\n    elements: [\n      {\n        code: 'O',\n        elements: null,\n        description: null,\n        element_id: '0029001',\n        value: 'Federal Employment'\n      }\n    ],\n    description:\n      'Federal Employment - Programs that reflect the government-wide resposibilities of the Office of Personnel Management in the recruitment and hiring of Federal civilian agency personnel.',\n    element_id: '0029',\n    value: 'FEDERAL EMPLOYMENT'\n  },\n  {\n    code: 'Z',\n    elements: [\n      {\n        code: 'Z',\n        elements: null,\n        description: null,\n        element_id: '0090001',\n        value: 'Salaries and Expenses'\n      }\n    ],\n    description: null,\n    element_id: '0090',\n    value: 'SALARIES AND EXPENSES'\n  }\n]"
             },
             {
-                "name": "home",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsHome.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-home\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M448,208a15.89,15.89,0,0,1-8-2.18L256,98.52,72.06,205.82a16,16,0,1,1-16.12-27.64l192-112a16,16,0,0,1,16.12,0l192,112A16,16,0,0,1,448,208Zm0-80V80a16,16,0,0,0-16-16H352a16,16,0,0,0,0,32h64v32a16,16,0,0,0,32,0Zm0,296V256a16,16,0,0,0-32,0V416H320V328a24,24,0,0,0-24-24H216a24,24,0,0,0-24,24v88H96V256a16,16,0,0,0-32,0V424a24,24,0,0,0,24,24H200a24,24,0,0,0,24-24V336h64v88a24,24,0,0,0,24,24H424A24,24,0,0,0,448,424Z\\\"/>\\n</svg>\""
-            },
-            {
                 "name": "IEMocks",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -19067,36 +18650,6 @@ const COMPONENTS = {
                 "deprecationMessage": "",
                 "type": "object",
                 "defaultValue": "{\n  enter: {\n    charCode: 0,\n    code: undefined,\n    key: 'Enter',\n    keyCode: 13,\n    keyIdentifier: undefined,\n    which: 13\n  },\n  up: {\n    charCode: 0,\n    code: undefined,\n    key: 'Up',\n    keyCode: 38,\n    keyIdentifier: undefined,\n    which: 38\n  },\n  down: {\n    charCode: 0,\n    code: undefined,\n    key: 'Down',\n    keyCode: 40,\n    keyIdentifier: undefined,\n    which: 40\n  },\n  left: {\n    charCode: 0,\n    code: undefined,\n    key: 'Left',\n    keyCode: 37,\n    keyIdentifier: undefined,\n    which: 37\n  },\n  right: {\n    charCode: 0,\n    code: undefined,\n    key: 'Right',\n    keyCode: 39,\n    keyIdentifier: undefined,\n    which: 39\n  },\n  tab: {\n    charCode: 0,\n    code: undefined,\n    key: 'Tab',\n    keyCode: 9,\n    keyIdentifier: undefined,\n    which: 9\n  },\n  esc: {\n    charCode: 0,\n    code: undefined,\n    key: 'Esc',\n    keyCode: 27,\n    keyIdentifier: undefined,\n    which: 27\n  },\n  space: {\n    charCode: 0,\n    code: undefined,\n    key: 'Spacebar',\n    keyCode: 32,\n    keyIdentifier: undefined,\n    which: 32\n  },\n  shift: {\n    charCode: 0,\n    code: undefined,\n    key: 'Shift',\n    keyCode: 16,\n    keyIdentifier: undefined,\n    which: 16\n  },\n  backspace: {\n    charCode: 0,\n    code: undefined,\n    key: 'Backspace',\n    keyCode: 8,\n    keyIdentifier: undefined,\n    which: 8\n  },\n  delete: {\n    charCode: 0,\n    code: undefined,\n    key: 'Delete',\n    keyCode: 46,\n    keyIdentifier: undefined,\n    which: 46\n  },\n  0: {\n    charCode: 0,\n    code: 'Digit0',\n    key: 0,\n    keyCode: 48,\n    keyIdentifier: 'U+0030',\n    which: 48\n  },\n  1: {\n    charCode: 0,\n    code: 'Digit1',\n    key: 1,\n    keyCode: 49,\n    keyIdentifier: 'U+0031',\n    which: 49\n  },\n  2: {\n    charCode: 0,\n    code: 'Digit2',\n    key: 2,\n    keyCode: 50,\n    keyIdentifier: 'U+0032',\n    which: 50\n  },\n  3: {\n    charCode: 0,\n    code: 'Digit3',\n    key: 3,\n    keyCode: 51,\n    keyIdentifier: 'U+0033',\n    which: 51\n  },\n  4: {\n    charCode: 0,\n    code: 'Digit4',\n    key: 4,\n    keyCode: 52,\n    keyIdentifier: 'U+0034',\n    which: 52\n  },\n  5: {\n    charCode: 0,\n    code: 'Digit5',\n    key: 5,\n    keyCode: 53,\n    keyIdentifier: 'U+0035',\n    which: 53\n  },\n  6: {\n    charCode: 0,\n    code: 'Digit6',\n    key: 6,\n    keyCode: 54,\n    keyIdentifier: 'U+0036',\n    which: 54\n  },\n  7: {\n    charCode: 0,\n    code: 'Digit7',\n    key: 7,\n    keyCode: 55,\n    keyIdentifier: 'U+0037',\n    which: 55\n  },\n  8: {\n    charCode: 0,\n    code: 'Digit8',\n    key: 8,\n    keyCode: 56,\n    keyIdentifier: 'U+0038',\n    which: 56\n  },\n  9: {\n    charCode: 0,\n    code: 'Digit9',\n    key: 9,\n    keyCode: 57,\n    keyIdentifier: 'U+0039',\n    which: 57\n  }\n}"
-            },
-            {
-                "name": "informationCircle",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsInformationCircle.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-information-circle\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M256,512C114.8,512,0,397.2,0,256S114.8,0,256,0s256,114.8,256,256S397.2,512,256,512z M256,19.8c-130.2,0-236.2,106-236.2,236.2s106,236.2,236.2,236.2s236.2-106,236.2-236.2S386.2,19.8,256,19.8z M256,185.2c-6.6,0-12-1.9-16.2-5.7s-6.4-8.8-6.4-14.9c0-6.1,2.1-11.2,6.4-15.1c4.2-3.9,9.6-5.9,16.2-5.9c6.6,0,12,2,16.2,5.9s6.4,8.9,6.4,15.1c0,6.1-2.1,11.1-6.4,14.9C268,183.3,262.6,185.2,256,185.2z M237.6,368.4V212.5h36.5v155.9H237.6z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "invoice",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsInvoice.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-invoice\\\" viewBox=\\\"0 0 448 512\\\">\\n  <path d=\\\"M521.22,423.72H464.14V61.89A61.7,61.7,0,0,0,402.62,0h-337q-2.09,0-4.38,0h-.06L60.16,0A60.33,60.33,0,0,0,0,60.5V97.1a8.8,8.8,0,0,0,8.78,8.83h94.43c0,16.22,0,37.64,0,83.91V451.59C103.2,485.3,128.14,512,161,512H451c43.63,0,79-35.57,79-79.45A8.8,8.8,0,0,0,521.22,423.72ZM102.77,88.28H17.56V60.5A42.56,42.56,0,0,1,95.24,36.18c3.74,6,6.24,13.44,7.49,22.4,0,.64,0,1.28,0,1.92Zm18,363.31V62.22c-.14-1.56-.31-3.08-.5-4.58a60.39,60.39,0,0,0-10.54-31.43,55.7,55.7,0,0,0-6.66-8.53H402.62a44.09,44.09,0,0,1,44,44.21V423.72H219.31a8.8,8.8,0,0,0-8.78,8.83v17.8a43.87,43.87,0,0,1-43.75,44H161C138.09,494.34,120.76,475.79,120.76,451.59ZM451,494.34H209.73a61.64,61.64,0,0,0,18.36-44v-9H511.82A61.57,61.57,0,0,1,451,494.34Zm-224.85-291A41,41,0,0,1,267,162.3h7.77v-7.8a8.44,8.44,0,1,1,16.88,0v7.8h32.07a8.49,8.49,0,0,1,0,17H267a24.11,24.11,0,0,0,0,48.21h32.41a41.08,41.08,0,0,1,0,82.16h-7.77v7.79a8.44,8.44,0,1,1-16.88,0v-7.79H242.69a8.49,8.49,0,0,1,0-17h56.72a24.11,24.11,0,0,0,0-48.21H267A41,41,0,0,1,226.15,203.38Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "leaf",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsLeaf.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-leaf\\\" viewBox=\\\"0 0 648.1 512\\\">\\n  <path d=\\\"M324.1,101.6v232.8H324H104.6C48.6,334.4,3.3,289,3.3,233V2.3h221.5C279.6,2.3,324.1,46.7,324.1,101.6z\\\"/>\\n</svg>\""
             },
             {
                 "name": "LEFT_ARROW",
@@ -19111,56 +18664,6 @@ const COMPONENTS = {
                 "description": "<p>CONSTANTS\nAdding in the constant values for keycodes\nto handle onKeyDown events</p>\n"
             },
             {
-                "name": "link",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsLink.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-link\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M182.47,441.71a80,80,0,0,1-65.42-125.87l55.06-78.63a16,16,0,0,1,26.22,18.36L143.27,334.2a48,48,0,1,0,78.63,55.07L277,310.62A16,16,0,0,1,303.18,329l-55.06,78.64A80,80,0,0,1,182.47,441.71ZM339.89,276.56,395,197.92a80,80,0,0,0-131.07-91.78l-55.06,78.64A16,16,0,1,0,235,203.14L290.1,124.5a48,48,0,1,1,78.63,55.06L313.67,258.2a16,16,0,0,0,26.22,18.36Zm-116.66,55L315,200.53a16,16,0,0,0-26.22-18.36L197,313.23a16,16,0,0,0,26.22,18.36Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "logIn",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsLogIn.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-log-in\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M432,160V80H80V432H432V352a16,16,0,0,1,32,0v88a24,24,0,0,1-24,24H72a24,24,0,0,1-24-24V72A24,24,0,0,1,72,48H440a24,24,0,0,1,24,24v88a16,16,0,0,1-32,0Zm-48,96a16,16,0,0,0-16-16H175.09L237,153.3A16,16,0,0,0,211,134.71l-80,112a16,16,0,0,0,0,18.59l80,112A16,16,0,1,0,237,358.71L175.09,272H368A16,16,0,0,0,384,256Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "logOut",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsLogOut.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-log-out\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M440,464H72a24,24,0,0,1-24-24V72A24,24,0,0,1,72,48H440a24,24,0,0,1,24,24v88a16,16,0,0,1-32,0V80H80V432H432V352a16,16,0,0,1,32,0v88A24,24,0,0,1,440,464ZM381,246.7l-80-112a16,16,0,0,0-26,18.6L336.92,240H144a16,16,0,0,0,0,32H336.92L275,358.7a16,16,0,0,0,26,18.6l80-112A16,16,0,0,0,381,246.7Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "messages",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsMessages.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-messages\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M440,176H336V72a24,24,0,0,0-24-24H72A24,24,0,0,0,48,72V236.21a24,24,0,0,0,24,24H96V312a19,19,0,0,0,32.8,14.12L192,266.24v98a24,24,0,0,0,24,24h95.76a9.72,9.72,0,0,1,3,1.13l68.39,64.78A19,19,0,0,0,416,440V388.21h24a24,24,0,0,0,24-24V200A24,24,0,0,0,440,176ZM128,282.8V252.21a24,24,0,0,0-24-24H80V80H304V228.21H200a39.1,39.1,0,0,0-24.8,9.88Zm304,73.41H408a24,24,0,0,0-24,24V410.8l-47.19-44.7A39.1,39.1,0,0,0,312,356.21H224v-96h88a24,24,0,0,0,24-24V208h96Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "mobile",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsMobile.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-mobile\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M376,48H136a24,24,0,0,0-24,24V440a24,24,0,0,0,24,24H376a24,24,0,0,0,24-24V72A24,24,0,0,0,376,48Zm-8,384H144V368H368Zm0-96H144V80H368ZM240,400a16,16,0,1,1,16,16A16,16,0,0,1,240,400Z\\\"/>\\n</svg>\""
-            },
-            {
                 "name": "mocks",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -19171,176 +18674,6 @@ const COMPONENTS = {
                 "defaultValue": "{\n  ie: IEMocks,\n  edge: EdgeMocks,\n  default: ChromeFirefoxMocks,\n  safari: SafariMocks\n}"
             },
             {
-                "name": "newNote",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsNewNote.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-new-note\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M440,48H72A24,24,0,0,0,48,72V440a24,24,0,0,0,24,24H344a38.18,38.18,0,0,0,25-10.34L453.66,369A38.18,38.18,0,0,0,464,344V72A24,24,0,0,0,440,48ZM80,80H432l0,256H360a24,24,0,0,0-24,24v72H80ZM368,409.37V368h41.37ZM320,272H272v48a16,16,0,0,1-32,0V272H192a16,16,0,0,1,0-32h48V192a16,16,0,0,1,32,0v48h48a16,16,0,0,1,0,32Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "newVersion",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsNewVersion.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-new-version\\\" viewBox=\\\"0 0 512 643.3\\\">\\n  <path d=\\\"M273.6,269.1L273.6,269.1h-63v-68.8c0-5-4.1-9.1-9.1-9.1s-9.1,4.1-9.1,9.1v77.9c0,5,4.1,9.1,9.1,9.1h72.1c5,0,9.1-4.1,9.1-9.1S278.6,269.1,273.6,269.1z M205.2,138.2c-73.1,0-132.6,59.5-132.6,132.6s59.5,132.6,132.6,132.6S337.8,344,337.8,270.8S278.3,138.2,205.2,138.2z M319.6,270.8c-0.1,63.2-51.3,114.4-114.5,114.5l0,0C142,385.2,90.7,334,90.7,270.8S142,156.3,205.2,156.3C268.4,156.4,319.6,207.6,319.6,270.8L319.6,270.8z M462.6,103c-5.4-25.6-26.5-45.3-52.7-48.9C405.8,23.6,379.7,0,348,0H62.4C28,0,0,28,0,62.4v416.8c0,31.7,23.6,57.8,54.1,61.9c3.5,26.2,23.3,47.3,48.8,52.7c6,28.2,31,49.4,61.1,49.4h285.5c34.5,0,62.4-28,62.4-62.4V164C512,134,490.8,109,462.6,103z M16.4,479.3V62.4c0-25.4,20.6-46,46-46H348c25.4,0,46,20.6,46,46v416.8c0,25.4-20.6,46-46,46H62.4C37,525.2,16.5,504.7,16.4,479.3z M70.9,541.7H348c34.5,0,62.4-28,62.4-62.4V70.9c21.1,4.2,37,22.8,37.1,45.1v416.8c0,25.4-20.6,46-46,46H116C93.6,578.8,75,562.8,70.9,541.7z M495.6,580.9c0,25.4-20.6,46-46,46H164c-20.4,0-37.6-13.3-43.7-31.7h281.2c34.5,0,62.4-28,62.4-62.4V120.4c18.4,6,31.6,23.3,31.6,43.7v416.8H495.6z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "notCompleted",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsNotCompleted.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?><svg width=\\\"50px\\\" height=\\\"50px\\\" viewBox=\\\"0 0 50 50\\\" version=\\\"1.1\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\"><title>not completed</title><g id=\\\"Status-Examples\\\" stroke=\\\"none\\\" stroke-width=\\\"1\\\" fill=\\\"none\\\" fill-rule=\\\"evenodd\\\" stroke-dasharray=\\\"4\\\"><g id=\\\"Status-Tracker---Submitted-Example\\\" transform=\\\"translate(-801.000000, -1163.000000)\\\" stroke=\\\"#5D5D52\\\" stroke-width=\\\"2\\\"><g id=\\\"Oval-Copy-2\\\" transform=\\\"translate(802.000000, 1164.000000)\\\"><path d=\\\"M24,48 C37.254834,48 48,37.254834 48,24 C48,10.745166 37.254834,0 24,0 C10.745166,0 0,10.745166 0,24 C0,37.254834 10.745166,48 24,48 Z\\\"></path></g></g></g></svg>\""
-            },
-            {
-                "name": "note",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsNote.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-note\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M440,48H72A24,24,0,0,0,48,72V440a24,24,0,0,0,24,24H344a38.18,38.18,0,0,0,25-10.34L453.66,369A38.18,38.18,0,0,0,464,344V72A24,24,0,0,0,440,48ZM80,80H432l0,256H360a24,24,0,0,0-24,24v72H80ZM368,409.38V368h41.38ZM320,208H192a16,16,0,0,1,0-32H320a16,16,0,0,1,0,32Zm0,64H192a16,16,0,0,1,0-32H320a16,16,0,0,1,0,32Zm-64,64H192a16,16,0,0,1,0-32h64a16,16,0,0,1,0,32Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "openDoors",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsOpenDoors.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-open-doors\\\" viewBox=\\\"0 0 517.2 512\\\">\\n  <path d=\\\"M145.2,196.3h17.1V307.2H145.2ZM511.5,5.5c-.1-.2-.1-.4-.2-.6a6.34,6.34,0,0,0-1.6-2.3c-.1-.1-.3-.2-.4-.4a6.47,6.47,0,0,0-.9-.8,3.38,3.38,0,0,0-1.2-.6.76.76,0,0,0-.4-.2,7.17,7.17,0,0,0-2.9-.6c-.1,0-.2-.1-.3-.1H8.7c-.1.1-.2.2-.3.2A7.17,7.17,0,0,0,5.5.7a.52.52,0,0,0-.4.2,5.17,5.17,0,0,0-1.3.6,6.47,6.47,0,0,0-.9.8l-.4.4A7,7,0,0,0,1,5l-.3.6a9.41,9.41,0,0,0-.6,3V503.5a8,8,0,0,0,.6,3c.1.2.1.4.2.6a6.34,6.34,0,0,0,1.6,2.3c.1.1.3.2.4.4a6.47,6.47,0,0,0,.9.8c.3.2.7.3,1,.5a3.55,3.55,0,0,0,.9.4,10.66,10.66,0,0,0,3,.6H503.6a8,8,0,0,0,3-.6c.3-.1.6-.3.9-.4s.7-.3,1-.5a6.47,6.47,0,0,0,.9-.8c.1-.1.3-.2.4-.4a8.68,8.68,0,0,0,1.6-2.3c.1-.2.1-.4.2-.6a10.47,10.47,0,0,0,.5-3V8.5A8,8,0,0,0,511.5,5.5ZM17.2,20.9,179.3,82.7V429.3L17.2,491.1ZM55,495l135.9-51.8a8.56,8.56,0,0,0,5.5-8V76.8a8.67,8.67,0,0,0-5.5-8L55,17.1H457.2L321.4,68.8a8.56,8.56,0,0,0-5.5,8V435.2a8.67,8.67,0,0,0,5.5,8L457.3,495Zm440-3.9L332.9,429.3V82.7L495,20.9ZM350,204.8h17.1V315.7H350ZM247.6,179.2h17.1v17.1H247.6Zm41.62,25.57,12.09-12.09,12.1,12.09-12.1,12.09Zm-87.85.11,12.09-12.09,12.09,12.09L213.46,217Zm53.13-.28a38.83,38.83,0,0,0-23.4,69.8V321a7.81,7.81,0,0,0,7.8,7.8h7.8v7.8h15.5v-7.8H270a7.81,7.81,0,0,0,7.8-7.8V274.3a38.72,38.72,0,0,0-23.3-69.7Zm7.7,108.7H246.7V297.8h15.5Zm3.8-49.8a7.73,7.73,0,0,0-3.9,6.7v12.1H246.6V270.2a7.73,7.73,0,0,0-3.9-6.7,23.07,23.07,0,0,1-11.7-20,23.35,23.35,0,0,1,46.7,0A23,23,0,0,1,266,263.5Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "paperPlane",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsPaperPlane.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-paper-plane\\\" viewBox=\\\"0 0 448 512\\\">\\n  <path d=\\\"M499.79,1,4.35,267.8a8.26,8.26,0,0,0,2.3,15.37l185.24,36.95,36.95,185.24a8.26,8.26,0,0,0,15.37,2.3L511,12.21A8.26,8.26,0,0,0,499.79,1ZM32.38,271.46,458.1,42.23,196.18,304.14ZM240.53,479.62l-32.67-163.8L469.75,53.94Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "penPaper",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsPenPaper.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-pen-paper\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M288,400H128a16,16,0,0,1,0-32H288a16,16,0,0,1,0,32Zm-80-64a16,16,0,0,0-16-16H128a16,16,0,0,0,0,32h64A16,16,0,0,0,208,336ZM440,80,234.71,306l72.35-15a22.75,22.75,0,0,0,11.54-6.24L473.45,130c9.25-8.88,8.71-24.77-.48-33.61L415.64,39c-8.89-9.19-24.68-9.75-33.59-.49L227.23,193.35A22.84,22.84,0,0,0,221,205l-15,72.32C202.29,293.91,218.1,309.72,234.71,306ZM398.6,67.24l46.16,46.17L297.9,260.27l-58.24,12.07,12.07-58.24ZM450.34,119h0ZM464,440V240a16,16,0,0,0-32,0V432H80V80H272a16,16,0,0,0,0-32H72A24,24,0,0,0,48,72V440a24,24,0,0,0,24,24H440A24,24,0,0,0,464,440Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "pentagon",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsPentagon.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-pentagon\\\" viewBox=\\\"0 0 543.5 512\\\">\\n  <path d=\\\"M0,157.2l83.2,254.5h269.3l83.2-254.5L217.8,0L0,157.2z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "photo",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsPhoto.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-photo\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M440,48H144a24,24,0,0,0-24,24v40H72a24,24,0,0,0-24,24V440a24,24,0,0,0,24,24H376a24,24,0,0,0,24-24V392h40a24,24,0,0,0,24-24V72A24,24,0,0,0,440,48Zm-72,96V346.55l-63.58-60.82a26.85,26.85,0,0,0-40-2.43l-50.67,48.87-22.49-21.51a23.82,23.82,0,0,0-33.39.2L80,387.22V144ZM271.84,432H80l94.73-92.86Zm46.3,0-81.22-77.69,46.25-44.62L368,390.84V432ZM432,360H400V136a24,24,0,0,0-24-24H152V80H432Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "photoAlt",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsPhotoAlt.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-photo-alt\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M440,48H144a24,24,0,0,0-24,24v40H72a24,24,0,0,0-24,24V440a24,24,0,0,0,24,24H376a24,24,0,0,0,24-24V392h40a24,24,0,0,0,24-24V72A24,24,0,0,0,440,48Zm-72,96V346.55l-63.58-60.82a26.85,26.85,0,0,0-40-2.43l-50.67,48.87-22.49-21.51a23.82,23.82,0,0,0-33.39.2L80,387.22V144ZM271.84,432H80l94.73-92.86Zm46.3,0-81.22-77.69,46.25-44.62L368,390.84V432ZM432,360H400V136a24,24,0,0,0-24-24H152V80H432Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "print",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsPrint.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-print\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M439.65,160H399.17a17.81,17.81,0,0,0,.83-3.86V67.87C400,56.73,390.53,48,378.44,48H133.57C121.48,48,112,56.73,112,67.87v88.27a18.41,18.41,0,0,0,.82,3.86H72.35A24.27,24.27,0,0,0,48,184.15V375.84A24.28,24.28,0,0,0,72.35,400H112v44c0,11.22,9.48,20,21.57,20H378.44c12.09,0,21.56-8.78,21.56-20V400h39.65A24.28,24.28,0,0,0,464,375.84V184.15A24.27,24.27,0,0,0,439.65,160ZM144,80H368v80H144ZM368,432H144V352H368Zm64-64H400V340c0-11.22-9.47-20-21.56-20H133.57c-12.09,0-21.57,8.78-21.57,20v28H80V192H432Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "question",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsQuestion.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-question\\\" viewBox=\\\"0 0 324 512\\\">\\n  <path d=\\\"M152.31,416.62a36,36,0,0,1-36-36V284.89c0-19.88,15.46-36,45.69-36h0c49.62,0,90-39.68,90-88.44S211.62,72,162,72s-90,39.67-90,88.45a36,36,0,0,1-72,0C0,72,72.67,0,162,0S324,72,324,160.45c0,79.6-58.83,145.83-135.69,158.33v61.84A36,36,0,0,1,152.31,416.62Zm2.6,39.38a28,28,0,1,0,28.35,28A28.18,28.18,0,0,0,154.91,456Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "questionCircle",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsQuestionCircle.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-question-circle\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M245.25,360.61a12,12,0,0,1-12-12V316.49a29.56,29.56,0,0,1,25.23-29.17A83.76,83.76,0,0,0,314,252.16c13.09-19,17.61-42.29,12.72-65.52C320.4,156.45,296,131.27,266,124c-32.48-7.91-64.39,2.88-85.33,28.79a12,12,0,0,1-18.77-15l.1-.12c26.52-32.81,68.59-46.94,109.64-37a106.38,106.38,0,0,1,78.64,81c6.25,29.73.41,59.58-16.45,84.07A107.83,107.83,0,0,1,262.26,311a5.71,5.71,0,0,0-5,5.48v32.13a12,12,0,0,1-12,12Zm2.4,17.94a12,12,0,1,0,11.28,12.68A12,12,0,0,0,247.65,378.55ZM256,512A256,256,0,0,1,75,75,256,256,0,0,1,437,437,254.33,254.33,0,0,1,256,512Zm0-489.07A233.07,233.07,0,0,0,91.19,420.81,233.07,233.07,0,1,0,420.81,91.19,231.55,231.55,0,0,0,256,22.93Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "receipt",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsReceipt.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-receipt\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M320,447a24,24,0,0,1-10.73-2.52L256,417.89l-53.27,26.63a24.1,24.1,0,0,1-21.46,0L128,417.89,82.73,440.52A24,24,0,0,1,48,419.05V72A24,24,0,0,1,72,48H440a24,24,0,0,1,24,24V419.05a24,24,0,0,1-34.73,21.47L384,417.89l-53.27,26.63A24,24,0,0,1,320,447Zm3.58-31.14h0ZM256,385a24,24,0,0,1,10.73,2.52L320,414.11l53.27-26.63a24.1,24.1,0,0,1,21.46,0L432,406.11V80H80V406.11l37.27-18.63a24.1,24.1,0,0,1,21.46,0L192,414.11l53.27-26.63A24,24,0,0,1,256,385Zm80-225a16,16,0,0,0-16-16H128a16,16,0,0,0,0,32H320A16,16,0,0,0,336,160Zm-48,64a16,16,0,0,0-16-16H128a16,16,0,0,0,0,32H272A16,16,0,0,0,288,224Zm-80,64a16,16,0,0,0-16-16H128a16,16,0,0,0,0,32h64A16,16,0,0,0,208,288Zm192,0a16,16,0,0,0-16-16H352a16,16,0,0,0,0,32h32A16,16,0,0,0,400,288Zm0,0a16,16,0,0,0-16-16H352a16,16,0,0,0,0,32h32A16,16,0,0,0,400,288Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "request",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsRequest.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-request\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M440,464H72a24,24,0,0,1-24-24V72A24,24,0,0,1,72,48H272a16,16,0,0,1,0,32H80V432H432V240a16,16,0,0,1,32,0V440A24,24,0,0,1,440,464ZM186.71,354.05l72.32-15a22.93,22.93,0,0,0,11.57-6.24L473.46,130c9.12-9.11,8.9-24.17-.49-33.59L415.64,39c-9.38-9.41-24.45-9.62-33.6-.5L179.14,241.44A22.87,22.87,0,0,0,173,253L158,325.3a24.56,24.56,0,0,0,23.94,29.23A24.67,24.67,0,0,0,186.71,354.05ZM398.6,67.23l46.16,46.18L249.92,308.25l-58.25,12.08,12.07-58.25ZM450.33,119h0Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "reset",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsReset.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-reset\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M511.92,177.87c-.32-4.68-9-115.19-130.7-158.71C300.42-10.66,122.15-25.7,25.84,130.8l-.47.76c-1.83,3.16-44.64,78-14.88,156C31,341.34,79,381.4,153.29,406.67a358.63,358.63,0,0,0,47.76,15.26q19.88,3.19,19.87,4.81V512L379.83,399.05,220.92,254.87V344.6c-16.63-4.72-37.69-9.09-37.88-9.17l-3.16-1.21c-51.61-17.37-83.95-42-96.11-73.28C67.38,218.8,91.13,173.55,93,170.21c86.65-139.93,254-81.41,261.29-78.75,69.47,24.85,78.75,83.1,79.67,90.68V476.75H512V180.39Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "resetFilter",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsResetFilter.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-reset-filter\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M511.92,177.87c-.32-4.68-9-115.19-130.7-158.71C300.42-10.66,122.15-25.7,25.84,130.8l-.47.76c-1.83,3.16-44.64,78-14.88,156C31,341.34,79,381.4,153.29,406.67a358.63,358.63,0,0,0,47.76,15.26q19.88,3.19,19.87,4.81V512L379.83,399.05,220.92,254.87V344.6c-16.63-4.72-37.69-9.09-37.88-9.17l-3.16-1.21c-51.61-17.37-83.95-42-96.11-73.28C67.38,218.8,91.13,173.55,93,170.21c86.65-139.93,254-81.41,261.29-78.75,69.47,24.85,78.75,83.1,79.67,90.68V476.75H512V180.39Z\\\"/>\\n</svg>\""
-            },
-            {
                 "name": "RIGHT_ARROW",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -19349,16 +18682,6 @@ const COMPONENTS = {
                 "deprecationMessage": "",
                 "type": "number",
                 "defaultValue": "39"
-            },
-            {
-                "name": "rulerPencil",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsRulerPencil.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-ruler-pencil\\\" viewBox=\\\"0 0 448 512\\\">\\n  <path d=\\\"M115.64,99.1a33,33,0,1,0-33-33A33,33,0,0,0,115.64,99.1Zm0-49.55A16.52,16.52,0,1,1,99.12,66.06,16.52,16.52,0,0,1,115.64,49.55ZM173.46,0H8.26A8.26,8.26,0,0,0,0,8.26V503.74A8.26,8.26,0,0,0,8.26,512h165.2a8.26,8.26,0,0,0,8.26-8.26V8.26A8.26,8.26,0,0,0,173.46,0ZM165.2,495.48H16.52V462.72H42.45a8.26,8.26,0,1,0,0-16.52H16.52V400.1H42.45a8.26,8.26,0,1,0,0-16.52H16.52V337.47H42.45a8.26,8.26,0,1,0,0-16.52H16.52V274.85H42.45a8.26,8.26,0,1,0,0-16.52H16.52V212.22H42.45a8.26,8.26,0,1,0,0-16.52H16.52V16.52H165.2ZM412.83,89.18s0-.08,0-.11A8.25,8.25,0,0,0,410.58,85L328,2.42a8.26,8.26,0,0,0-11.68,0L233.7,85a8.25,8.25,0,0,0-2.21,4.07s0,.08,0,.11a8.25,8.25,0,0,0-.17,1.66v412.9a8.26,8.26,0,0,0,8.26,8.26h165.2a8.26,8.26,0,0,0,8.26-8.26V90.84A8.25,8.25,0,0,0,412.83,89.18ZM396.48,99.1V429.42H247.8V99.1ZM247.8,445.94H396.48v16.52H247.8Zm74.34-426L384.8,82.58H259.48ZM247.8,495.48V479H396.48v16.52Z\\\"/>\\n</svg>\""
             },
             {
                 "name": "SafariMocks",
@@ -19525,16 +18848,6 @@ const COMPONENTS = {
                 "defaultValue": "{\n  toastComponent: SdsToastComponent,\n  timeOut: 6000,\n  toastClass: 'sds-toast',\n  positionClass: 'toast-bottom-left',\n}"
             },
             {
-                "name": "sdsToolbarAnimations",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/toolbar/toolbar-animations.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "literal type",
-                "defaultValue": "{\n  /** Animation that expands and collapses the accordion item content. */\n  bodyExpansion: trigger('bodyExpansion', [\n    state('collapsed, void', style({ width: '0px', height: '0px', opacity: '0', visibility: 'hidden', marginLeft: '-1px', marginBottom: '-1px' })),\n    state('expanded', style({ width: '{{expandedWidth}}', height: '*', opacity: '1', visibility: 'visible', marginLeft: '-1px', marginBottom: '-1px' }), {\n      params: { expandedWidth: '300px' }\n    }),\n    transition('expanded <=> collapsed, void => collapsed',\n      animate(TOOLBAR_ANIMATION_TIMING)),\n  ])\n}"
-            },
-            {
                 "name": "sdsTruncateTextAnimations",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -19543,138 +18856,6 @@ const COMPONENTS = {
                 "deprecationMessage": "",
                 "type": "literal type",
                 "defaultValue": "{\n  container: trigger('container', [\n    state(\n      'void',\n      style({\n        opacity: 0,\n        transform: 'scale(0.8)'\n      })\n    ),\n    transition(\n      'void => enter',\n      group([\n        query(\n          '.sds-overlay',\n          animate(\n            '100ms linear',\n            style({\n              opacity: 1\n            })\n          )\n        ),\n        animate(\n          '120ms cubic-bezier(0, 0, 0.2, 1)',\n          style({ transform: 'scale(1)' })\n        )\n      ])\n    ),\n    transition('* => void', animate('100ms 25ms linear', style({ opacity: 0 })))\n  ])\n}"
-            },
-            {
-                "name": "search",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsSearch.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-search\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M459.32,436.69,345.51,322.89A167.24,167.24,0,0,0,384,216c0-92.63-75.36-168-168-168S48,123.37,48,216s75.37,168,168,168a167.24,167.24,0,0,0,106.89-38.49l113.8,113.81a16,16,0,0,0,22.63-22.63ZM80,216c0-75,61-136,136-136s136,61,136,136S291,352,216,352,80,291,80,216Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "searchCircle",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsSearchCircle.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-search-circle\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M256,0C114.62,0,0,114.62,0,256S114.62,512,256,512,512,397.38,512,256,397.38,0,256,0Zm0,497.48C122.64,497.48,14.52,389.36,14.52,256S122.64,14.52,256,14.52,497.48,122.64,497.48,256,389.36,497.48,256,497.48ZM409.1,359.81l-144-118a92.41,92.41,0,1,0-10.78,13.84L398,373.38a8.79,8.79,0,0,0,12.34-1.22h0A8.8,8.8,0,0,0,409.1,359.81ZM197.88,270.15a78.7,78.7,0,1,1,67.17-88.75A78.71,78.71,0,0,1,197.88,270.15Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "share",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsShare.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-share\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M440,464H72a24,24,0,0,1-24-24V264a24,24,0,0,1,24-24h72c20.93.1,20.92,31.91,0,32H80V432H432V272H352c-20.93-.1-20.92-31.91,0-32h88a24,24,0,0,1,24,24V440A24,24,0,0,1,440,464Zm0-192h0ZM377.3,131l-112-80a16,16,0,0,0-18.6,0l-112,80c-17,12.26,1.51,38.09,18.6,26L240,95.09V368c.1,20.93,31.91,20.92,32,0V95.09L358.7,157C375.72,169.1,394.31,143.24,377.3,131Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "ship",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsShip.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-ship\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M447.7,254.6c-1.1-7.6-5.8-14.2-12.5-17.8L352,216.2v-64.5c0-13.3-10.7-24-24-24h-56V95.6h16 c20.9-0.1,20.9-31.9,0-32h-64c-20.9,0.1-20.9,31.9,0,32h16v32.2h-56c-13.3,0-24,10.7-24,24l0,0V216l-79.5,19.3 c-15.8,4.7-21.6,24.9-11.2,37.5l57.3,103.2c10.2,18.3,38.1,2.8,28-15.5l-54-97.2l139.4-34v74.1c0.1,20.9,31.9,20.9,32,0v-74.1 l139.4,34l-54,97.2c-10.1,18.4,17.8,33.8,28,15.5l57.3-103.2C446.9,267.7,448.7,261.1,447.7,254.6z M192,159.7h128v48.6l-54.8-13.5 c-5.9-2.4-12.5-2.4-18.4,0L192,208.2V159.7z M397.8,440.4c-4.4,7.7-14.1,10.4-21.8,6l-23.7-13.5l-21.1,11.6 c-7.1,3.9-15.6,3.9-22.7-0.1l-20.6-11.6l-20.6,11.5c-7.1,4-15.8,4-22.9-0.1l-20.1-11.4l-20.8,11.5c-7.1,4-15.8,4-22.8-0.1 l-20.3-11.5l-24.9,13.6c-18.4,10-33.7-17.9-15.4-28.1l29.1-16c7.1-3.9,15.7-3.8,22.8,0.2l20.2,11.5l20.8-11.6c7.1-4,15.8-4,22.9,0.1 l20,11.4l20.5-11.5c7.1-4,15.7-4,22.8,0l20.7,11.6l21.1-11.6c7.1-3.9,15.7-3.9,22.8,0.1l28,15.9 C399.5,422.9,402.2,432.7,397.8,440.4z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "stackblitz",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsStackblitz.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-stackblitz\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M 337.3568 83.3448 L 137.984 296.7976 h 104.192 l -59.9808 150.3744 l 199.3728 -213.4528 H 276.8128 z M 346.368 93.764 l -24.7808 59.136 l 112.64 112.64 l -96.8704 97.7152 v 83.9168 L 518.7072 265.54 z M 182.1952 83.3448 v 83.9168 L 85.0432 265.54 l 112.64 112.0768 l -24.4992 59.9808 L 0.5632 265.54 z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "star",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsStar.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-star\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M349.8,337.4L399.7,506L242.4,385.2L83.1,511.9l55.7-174.5L-0.1,204.3H177L242.4-0.1L317,204.3h194.9 L349.8,337.4z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "tablet",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsTablet.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-tablet\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M424,16H88A24,24,0,0,0,64,40V472a24,24,0,0,0,24,24H424a24,24,0,0,0,24-24V40A24,24,0,0,0,424,16Zm-8,32V368H96V48ZM96,464V400H416v64Zm176-32a16,16,0,1,1-16-16A16,16,0,0,1,272,432Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "tag",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsTag.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-tag\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M288,464h0a16,16,0,0,1-11.33-4.73L69.91,250.94a16.11,16.11,0,0,1-4.64-11.28V81.27a16,16,0,0,1,16-16H239.66a16.11,16.11,0,0,1,11.28,4.64L459.27,276.64a16,16,0,0,1,0,22.63l0,0-160,160A16,16,0,0,1,288,464ZM97.27,233.07,288.05,425.33,425.33,288.05,233.07,97.27H97.27ZM152,128a24,24,0,1,0,24,24A24,24,0,0,0,152,128Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "thumbDown",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsThumbDown.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-thumb-down\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M410,112H208.47a22.52,22.52,0,0,0-11.11,3l-10.79,6.19A25.11,25.11,0,0,0,167.11,112H104.89C91.17,112,80,122.86,80,136.2V292.14c0,13.36,11.17,24.22,24.89,24.22h62.22a24.9,24.9,0,0,0,23.28-15.68h10.7l22.22,23.54v69.9c0,12.06,9.94,21.88,22.94,21.88C279,416,314,394.72,314,363V332h95.84A22.11,22.11,0,0,0,432,310V133.87A22,22,0,0,0,410,112ZM112,144h48V284.36H112ZM400,300H304a22,22,0,0,0-22,21.89V363c0,8.33-12.28,17.06-26.69,20V320.11c0-6-2.55-11.8-6.16-15.07L222,276.23a24.1,24.1,0,0,0-17.51-7.55H192V154.9L211.05,144H400Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "thumbUp",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsThumbUp.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-thumb-up\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M409.84,180H314V149c0-31.69-35-53-68.53-53a22,22,0,0,0-22.16,21.88v69.84l-22.22,23.6H190.32a24.84,24.84,0,0,0-23.21-15.67H104.89c-13.73,0-24.89,10.86-24.89,24.2V375.79C80,389.14,91.16,400,104.89,400h62.22a25,25,0,0,0,19.36-9.18l10.92,6.25A22.51,22.51,0,0,0,208.46,400H410a22,22,0,0,0,22-21.88V202A22.12,22.12,0,0,0,409.84,180ZM160,368H112V227.65h48V368Zm240,0H211l-19-10.9V243.32h12.49A24.21,24.21,0,0,0,222,235.77l26.36-28.05a21.6,21.6,0,0,0,6.93-15.83v-63C269.47,131.74,282,140.55,282,149V190.1A22,22,0,0,0,304,212h96Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "TOOLBAR_ANIMATION_TIMING",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/toolbar/toolbar-animations.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "'225ms cubic-bezier(0.4,0.0,0.2,1)'",
-                "rawdescription": "Time and timing curve for accordion item animations.",
-                "description": "<p>Time and timing curve for accordion item animations.</p>\n"
-            },
-            {
-                "name": "trash",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsTrash.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-trash\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M432,96H320V72a24,24,0,0,0-24-24H216a24,24,0,0,0-24,24V96H80a16,16,0,0,0,0,32H96V440a24,24,0,0,0,24,24H392a24,24,0,0,0,24-24V128h16a16,16,0,0,0,0-32ZM224,80h64V96H224ZM384,432H128V128H384ZM272,352V208a16,16,0,0,1,32,0V352a16,16,0,0,1-32,0Zm-64,0V208a16,16,0,0,1,32,0V352a16,16,0,0,1-32,0Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "triangle",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsTriangle.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-triangle\\\" viewBox=\\\"0 0 589.6 512\\\">\\n  <path d=\\\"M566.4,0L457.6,512L0,147.1L566.4,0z\\\"/>\\n</svg>\""
             },
             {
                 "name": "uniqueId",
@@ -19697,108 +18878,6 @@ const COMPONENTS = {
                 "deprecationMessage": "",
                 "type": "number",
                 "defaultValue": "0"
-            },
-            {
-                "name": "uniqueId",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/toolbar/toolbar.component.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "number",
-                "defaultValue": "0",
-                "rawdescription": "Counter for generating unique element ids.",
-                "description": "<p>Counter for generating unique element ids.</p>\n"
-            },
-            {
-                "name": "unlink",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsUnlink.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-unlink\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M182.26,440.76A80,80,0,0,1,116.84,314.9l45.88-65.53a16,16,0,0,1,26.22,18.36l-45.89,65.53a48,48,0,0,0,78.64,55.06l45.88-65.53a16,16,0,0,1,26.22,18.36l-45.88,65.53A80,80,0,0,1,182.26,440.76Zm154-171.07a16,16,0,0,1-13.09-25.18L369,179a48,48,0,1,0-78.18-55.71l-.45.64-45.88,65.54a16,16,0,1,1-26.22-18.36l45.88-65.54a80,80,0,0,1,131.07,91.78h0l-45.88,65.54A16,16,0,0,1,336.24,269.69Zm11.37,66.74a16,16,0,0,1-9.18-2.91L155.12,204.79a16,16,0,0,1,18.39-26.19L356.82,307.34a16,16,0,0,1-9.21,29.09Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "upload",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsUpload.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-upload\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M448,408a16,16,0,0,1-16,16H80a16,16,0,0,1,0-32H432A16,16,0,0,1,448,408ZM153.3,197,240,135.08V328a16,16,0,0,0,32,0V135.08L358.7,197a16,16,0,1,0,18.6-26l-112-80a16,16,0,0,0-18.6,0l-112,80a16,16,0,1,0,18.6,26Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "user",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsUser.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-user\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M256,240a96,96,0,1,1,96-96A96.1,96.1,0,0,1,256,240Zm0-160a64,64,0,1,0,64,64A64.07,64.07,0,0,0,256,80ZM416,456V350a78.07,78.07,0,0,0-78-78H174a78.07,78.07,0,0,0-78,78V456a16,16,0,0,0,32,0V350a46,46,0,0,1,46-46H338a46,46,0,0,1,46,46V456a16,16,0,0,0,32,0Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "userCircle",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsUserCircle.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-user-circle\\\" viewBox=\\\"0 0 448 512\\\">\\n  <path d=\\\"M257,279.27A100.85,100.85,0,1,0,156.15,178.42,100.85,100.85,0,0,0,257,279.27Zm0-186.18a85.33,85.33,0,1,1-85.33,85.33A85.33,85.33,0,0,1,257,93.09ZM257,0C115.62,0,1,114.62,1,256S115.62,512,257,512,513,397.38,513,256,398.38,0,257,0Zm0,15.52c132.82,0,240.48,107.67,240.48,240.48a239.41,239.41,0,0,1-49.15,145.67c-28.3-62.14-98.49-91.37-191-91.37-92.83,0-163.15,29.44-191.25,92A239.42,239.42,0,0,1,16.52,256C16.52,123.18,124.18,15.52,257,15.52Zm0,481A239.88,239.88,0,0,1,77.15,415.62,7.74,7.74,0,0,0,78,414c23.36-59.43,89.25-88.17,179.34-88.17,89.14,0,154.68,28.18,178.63,86.39a7.73,7.73,0,0,0,1.65,2.5A239.9,239.9,0,0,1,257,496.48Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "users",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsUsers.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-users\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M136,352a56,56,0,1,1,56-56A56.07,56.07,0,0,1,136,352Zm0-80a24,24,0,1,0,24,24A24,24,0,0,0,136,272Zm88,176V430.48A62.55,62.55,0,0,0,161.52,368h-51A62.55,62.55,0,0,0,48,430.48V448a16,16,0,0,0,32,0V430.48A30.51,30.51,0,0,1,110.48,400h51A30.51,30.51,0,0,1,192,430.48V448a16,16,0,0,0,32,0Zm152-96a56,56,0,1,1,56-56A56.07,56.07,0,0,1,376,352Zm0-80a24,24,0,1,0,24,24A24,24,0,0,0,376,272Zm88,176V430.48A62.55,62.55,0,0,0,401.52,368h-51A62.55,62.55,0,0,0,288,430.48V448a16,16,0,0,0,32,0V430.48A30.51,30.51,0,0,1,350.48,400h51A30.51,30.51,0,0,1,432,430.48V448a16,16,0,0,0,32,0ZM256,144a56,56,0,1,1,56-56A56.07,56.07,0,0,1,256,144Zm0-80a24,24,0,1,0,24,24A24,24,0,0,0,256,64Zm88,158.48A62.55,62.55,0,0,0,281.52,160h-51A62.55,62.55,0,0,0,168,222.48c.09,20.92,31.91,20.93,32,0A30.51,30.51,0,0,1,230.48,192h51A30.51,30.51,0,0,1,312,222.48a16,16,0,1,0,32,0Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "videoCircle",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsVideoCircle.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-video-circle\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M225.2,352a16,16,0,0,1-16-16V176a16,16,0,0,1,16-16,15.64,15.64,0,0,1,9.3,3l112,80a16,16,0,0,1,3.7,22.3,16.24,16.24,0,0,1-3.7,3.7l-112,80A16.59,16.59,0,0,1,225.2,352Zm16-144.9v97.8L309.7,256Zm16,272.9c-123.5,0-224-100.5-224-224S133.7,32,257.2,32s224,100.5,224,224S380.7,480,257.2,480Zm0-416c-105.9,0-192,86.1-192,192s86.1,192,192,192,192-86.1,192-192S363,64,257.2,64Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "videoPlay",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsVideoPlay.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-video-play\\\" viewBox=\\\"0 0 512 476\\\">\\n  <path d=\\\"M238,115.86a13,13,0,0,1-13-12.94v-90a12.95,12.95,0,0,1,25.9,0v90A13,13,0,0,1,238,115.86ZM178.57,370.72a13,13,0,0,1-12.95-13h0V190.32A12.95,12.95,0,0,1,185,179.11l145,83.73a13,13,0,0,1,0,22.43L185,369A12.94,12.94,0,0,1,178.57,370.72Zm12.95-158v122.6L297.7,274ZM278,39.47v26.3c115,22,190.35,133.12,168.32,248.11A212,212,0,0,1,387.9,424C305,506.75,170.75,506.64,88,423.76s-82.64-217.15.24-299.9a211.21,211.21,0,0,1,109.68-58.1V39.47C85.57,58.5,0,156.27,0,274,0,405.47,106.53,512,238,512S476,405.47,476,274C475.9,156.27,390.34,58.5,278,39.47Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "videoSquare",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsVideoSquare.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-video-square\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M217.1,285a16,16,0,0,0,17-2l80-64.57a16,16,0,0,0,0-24.91l-80-64.57A16,16,0,0,0,208,141.38V270.52A16,16,0,0,0,217.1,285ZM240,174.85,278.52,206,240,237ZM448,46.52H64a16,16,0,0,0-16,16v288a16,16,0,0,0,16,16H448a16,16,0,0,0,16-16v-288A16,16,0,0,0,448,46.52Zm-16,288H80v-256H432Zm16,80H219.55a31.72,31.72,0,0,0-55.1,0H64a16,16,0,0,0,0,32H164.45a31.72,31.72,0,0,0,55.1,0H448a16,16,0,0,0,0-32Zm-256,0a16,16,0,1,1-16,16,16,16,0,0,1,16-16Z\\\"/>\\n</svg>\""
-            },
-            {
-                "name": "workspace",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/packages/components/src/lib/icon/custom-icons/sdsWorkspace.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-workspace\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M216,240H72a24,24,0,0,1-24-24V72A24,24,0,0,1,72,48H216a24,24,0,0,1,24,24V216A24,24,0,0,1,216,240ZM80,208H208V80H80Zm360,32H296a24,24,0,0,1-24-24V72a24,24,0,0,1,24-24H440a24,24,0,0,1,24,24V216A24,24,0,0,1,440,240ZM304,208H432V80H304ZM216,461.34H72a24,24,0,0,1-24-24v-144a24,24,0,0,1,24-24H216a24,24,0,0,1,24,24v144A24,24,0,0,1,216,461.34Zm-136-32H208v-128H80Zm360,32H296a24,24,0,0,1-24-24v-144a24,24,0,0,1,24-24H440a24,24,0,0,1,24,24v144A24,24,0,0,1,440,461.34Zm-136-32H432v-128H304Z\\\"/>\\n</svg>\""
             }
         ],
         "functions": [
@@ -20748,17 +19827,6 @@ const COMPONENTS = {
                 "deprecationMessage": "",
                 "description": "<p>Accordion Item&#39;s states.</p>\n",
                 "kind": 183
-            },
-            {
-                "name": "SdsToolbarState",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "\"expanded\" | \"collapsed\"",
-                "file": "libs/packages/components/src/lib/toolbar/toolbar.component.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "<p>Toolbar&#39;s states.</p>\n",
-                "kind": 183
             }
         ],
         "enumerations": [
@@ -20983,114 +20051,6 @@ const COMPONENTS = {
                     "defaultValue": "{\n  /** Animation that expands and collapses the accordion item content. */\n  bodyExpansion: trigger('bodyExpansion', [\n    state('collapsed, void', style({height: '0px', visibility: 'hidden'})),\n    state('expanded', style({height: '*', visibility: 'visible'})),\n    transition('expanded <=> collapsed, void => collapsed',\n      animate(ACCORDION_ITEM_ANIMATION_TIMING)),\n  ])\n}"
                 }
             ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsAdd.ts": [
-                {
-                    "name": "add",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsAdd.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-add\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M368,240H272V144a16,16,0,0,0-32,0v96H144a16,16,0,0,0,0,32h96v96a16,16,0,0,0,32,0V272h96a16,16,0,0,0,0-32Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsAddReq.ts": [
-                {
-                    "name": "addReq",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsAddReq.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-add-req\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M440,464H72a24,24,0,0,1-24-24V72A24,24,0,0,1,72,48H272a16,16,0,0,1,0,32H80V432H432V240a16,16,0,0,1,32,0V440A24,24,0,0,1,440,464Zm24-352H400V48a16,16,0,0,0-32,0v64H304a16,16,0,0,0,0,32h64v64a16,16,0,0,0,32,0V144h64a16,16,0,0,0,0-32Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsAlertError.ts": [
-                {
-                    "name": "alertError",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsAlertError.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-alert-error\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M256,32C132.48,32,32,132.48,32,256S132.48,480,256,480,480,379.52,480,256,379.52,32,256,32ZM64,256a191,191,0,0,1,45.53-123.85L379.85,402.47A191,191,0,0,1,256,448C150.13,448,64,361.87,64,256ZM402.47,379.85,132.15,109.53A191,191,0,0,1,256,64c105.87,0,192,86.13,192,192A191,191,0,0,1,402.47,379.85Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsAlertInfo.ts": [
-                {
-                    "name": "alertInfo",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsAlertInfo.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-alert-info\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M256,512C114.84,512,0,397.16,0,256S114.84,0,256,0,512,114.84,512,256,397.16,512,256,512Zm0-486C129.19,26,26,129.19,26,256S129.19,486,256,486,486,382.81,486,256,382.81,26,256,26Zm0,91.12a17.36,17.36,0,1,0,17.36,17.36A17.36,17.36,0,0,0,256,117.15Zm-17.36,86.78V377.49a17.36,17.36,0,1,0,34.71,0V203.93a17.36,17.36,0,1,0-34.71,0Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsAlertWarning.ts": [
-                {
-                    "name": "alertWarning",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsAlertWarning.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-alert-warning\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M429.29,432H82.7C45.59,433.28,18.42,390.2,39,358.51L212.61,72.09c17.88-31.75,69.5-31.75,87.39,0L473,358.55C493.56,390.26,466.37,433.28,429.29,432Zm-173-352A18.82,18.82,0,0,0,240,88.71L66.36,375.13C59.16,389.21,70,399.54,82.7,400H429.29c12.71-.44,23.59-10.85,16.33-24.88l-173-286.47C269.36,83.26,263.23,80,256.31,80ZM272,288V160c.31-20.75-32.3-20.76-32,0V288a16,16,0,0,0,32,0Zm-16,48a16,16,0,1,0,16,16A16,16,0,0,0,256,336Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/all.ts": [
-                {
-                    "name": "allIcons",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/all.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\n  add,\n  addReq,\n  alertError,\n  alertInfo,\n  alertWarning,\n  angleCircle,\n  angleLeft,\n  angleRight,\n  arrow,\n  arrowDown,\n  arrowUp,\n  article,\n  attachment,\n  bars,\n  bell,\n  book,\n  bookmark,\n  building,\n  buildingAlt,\n  calendar,\n  calendarAdd,\n  calendarCheck,\n  check,\n  checkCircle,\n  comment,\n  document,\n  documentAdd,\n  documentPdf,\n  documentSearch,\n  download,\n  ellipsis,\n  envelope,\n  exclamation,\n  exclamationCircle,\n  exclamationTriangle,\n  exit,\n  federalBuilding,\n  file,\n  fileChartLine,\n  filter,\n  flag,\n  folder,\n  folderAlt1,\n  folderAlt2,\n  home,\n  informationCircle,\n  invoice,\n  leaf,\n  link,\n  logIn,\n  logOut,\n  messages,\n  mobile,\n  newNote,\n  newVersion,\n  notCompleted,\n  note,\n  openDoors,\n  paperPlane,\n  penPaper,\n  pentagon,\n  photo,\n  photoAlt,\n  print,\n  question,\n  questionCircle,\n  receipt,\n  request,\n  reset,\n  resetFilter,\n  rulerPencil,\n  search,\n  searchCircle,\n  share,\n  ship,\n  stackblitz,\n  star,\n  tablet,\n  tag,\n  thumbDown,\n  thumbUp,\n  trash,\n  triangle,\n  unlink,\n  upload,\n  user,\n  userCircle,\n  users,\n  videoCircle,\n  videoPlay,\n  videoSquare,\n  workspace,\n}"
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsAngleCircle.ts": [
-                {
-                    "name": "angleCircle",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsAngleCircle.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-angle-circle\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M296,368a16,16,0,0,1-12.3-5.76l-80-96a16,16,0,0,1,0-20.48l80-96a16,16,0,1,1,24.58,20.48L236.83,256l71.46,85.76A16,16,0,0,1,296,368ZM480,256C480,132.48,379.52,32,256,32S32,132.48,32,256,132.48,480,256,480,480,379.52,480,256Zm-32,0c0,105.87-86.13,192-192,192S64,361.87,64,256,150.13,64,256,64,448,150.13,448,256Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsAngleLeft.ts": [
-                {
-                    "name": "angleLeft",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsAngleLeft.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-angle-left\\\" viewBox=\\\"0 0 232.7 512\\\">\\n  <path d=\\\"M194.2,512c-12.1,0-24-5.6-31.6-16.3L7.2,278.5c-9.7-13.5-9.7-31.6,0-45.1L162.6,16.2 c12.5-17.4,36.7-21.5,54.2-9c17.4,12.4,21.5,36.7,9,54.1L86.5,256l139.2,194.7c12.5,17.4,8.4,41.7-9,54.1 C209.9,509.7,202,512,194.2,512z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsAngleRight.ts": [
-                {
-                    "name": "angleRight",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsAngleRight.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-angle-right\\\" viewBox=\\\"0 0 234.3 512\\\">\\n  <path d=\\\"M39.5,0c12.6,0.1,24.3,6.2,31.6,16.4l156,218.4c9.6,13.5,9.6,31.7,0,45.2l-156,218.4c-14,16.4-38.6,18.3-55,4.3 C1.8,490.3-1.7,469.4,8,453.1l139.6-195L8,63.2C-5.1,46-1.8,21.6,15.4,8.5c0.5-0.4,1-0.8,1.5-1.1C23.5,2.6,31.4,0.1,39.5,0z\\\"/>\\n</svg>\""
-                }
-            ],
             "libs/packages/components/src/lib/dialog/dialog-animations.ts": [
                 {
                     "name": "animationBody",
@@ -21115,66 +20075,6 @@ const COMPONENTS = {
                     "description": "<p>Animations used by SdsDialog.</p>\n"
                 }
             ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsArrow.ts": [
-                {
-                    "name": "arrow",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsArrow.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-arrow\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M389,246.7,293,112.3a16,16,0,0,0-26,18.6L344.91,240H124.3a16,16,0,0,0,0,32H344.91L267,381.1a16,16,0,0,0,26,18.6l96-134.4A16,16,0,0,0,389,246.7Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsArrowDown.ts": [
-                {
-                    "name": "arrowDown",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsArrowDown.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-arrow-down\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M328.1,255.34V0H182.57V255.34l-82-100.55L0,255.34,256.66,512,512,256.67s-83.77-94.36-88.64-99.23Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsArrowUp.ts": [
-                {
-                    "name": "arrowUp",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsArrowUp.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-arrow-up\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M183.9,256.7V512h145.5V256.7l82,100.5L512,256.7L255.3,0L0,255.3c0,0,83.8,94.4,88.6,99.2L183.9,256.7z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsArticle.ts": [
-                {
-                    "name": "article",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsArticle.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-article\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M438.4,176H384V104a24,24,0,0,0-24-24H72a24,24,0,0,0-24,24V408a24,24,0,0,0,24,24H440a23.89,23.89,0,0,0,24-23.73v-207A25.47,25.47,0,0,0,438.4,176ZM80,112H352V400H80ZM432,400H384V208h48ZM128,256h80a16,16,0,0,0,16-16V160a16,16,0,0,0-16-16H128a16,16,0,0,0-16,16v80A16,16,0,0,0,128,256Zm16-80h48v48H144ZM320,304a16,16,0,0,1-16,16H128a16,16,0,0,1,0-32H304A16,16,0,0,1,320,304Zm0,48a16,16,0,0,1-16,16H128a16,16,0,0,1,0-32H304A16,16,0,0,1,320,352Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsAttachment.ts": [
-                {
-                    "name": "attachment",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsAttachment.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-attachment\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M256,464.88a96.1,96.1,0,0,1-96-96v-120a56,56,0,0,1,112,0v88a16,16,0,0,1-32,0v-88a24,24,0,0,0-48,0v120a64,64,0,0,0,128,0v-224a64,64,0,0,0-128,0,16,16,0,0,1-32,0,96,96,0,0,1,192,0v224A96.1,96.1,0,0,1,256,464.88Z\\\"/>\\n</svg>\""
-                }
-            ],
             "libs/packages/components/src/lib/autocomplete-search/autocomplete-search.component.ts": [
                 {
                     "name": "Autocomplete_Autocomplete_VALUE_ACCESSOR",
@@ -21197,138 +20097,6 @@ const COMPONENTS = {
                     "deprecationMessage": "",
                     "type": "any",
                     "defaultValue": "{\n  provide: NG_VALUE_ACCESSOR,\n  useExisting: forwardRef(() => SDSAutocompleteComponent),\n  multi: true\n}"
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsBars.ts": [
-                {
-                    "name": "bars",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsBars.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-bars\\\" viewBox=\\\"0 0 448 512\\\">\\n  <path d=\\\"M1.25,264.5c0-10.251,8.311-18.562,18.562-18.562h259.875c10.261,0,18.561,8.311,18.561,18.562c0,10.258-8.3,18.563-18.561,18.563H19.812C9.561,283.063,1.25,274.758,1.25,264.5z M428.188,394.438H19.812c-10.251,0-18.562,8.301-18.562,18.562c0,10.262,8.311,18.563,18.562,18.563h408.375c10.26,0,18.562-8.302,18.562-18.563C446.75,402.738,438.447,394.438,428.188,394.438z M353.937,97.438H182.082h-13.86H19.812c-10.251,0-18.562,8.302-18.562,18.562c0,10.262,8.311,18.563,18.562,18.563h148.41h13.86h171.855c10.263,0,18.565-8.302,18.565-18.563C372.502,105.739,364.199,97.438,353.937,97.438z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsBell.ts": [
-                {
-                    "name": "bell",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsBell.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-bell\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M440.06,428.6l-34.35-68.76V185.38C405.71,83,322.79,0,220.5,0S35.29,83,35.29,185.38V359.85L.94,428.6a8.83,8.83,0,0,0,7.89,12.78H141.62a79.36,79.36,0,0,0,157.75,0H432.17A8.83,8.83,0,0,0,440.06,428.6ZM52.93,185.38c0-92.63,75-167.72,167.57-167.72S388.07,92.75,388.07,185.38V353.1H52.93Zm167.57,309a61.77,61.77,0,0,1-61.11-53H281.61A61.77,61.77,0,0,1,220.5,494.34Zm70.56-70.62H23.1l26.46-53H391.44l26.46,53Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsBook.ts": [
-                {
-                    "name": "book",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsBook.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-book\\\" viewBox=\\\"0 0 448 512\\\">\\n  <path d=\\\"M464.24,0H43.82A43.78,43.78,0,0,0,0,43.75V441.13c0,.29,0,.57,0,.86s0,.28,0,.42c0,1.19,0,2.4,0,3.62v.27H0c0,.05,0,.11,0,.16a10.11,10.11,0,0,0,.31,2.31A70.05,70.05,0,0,0,70.07,512H464.24a8.76,8.76,0,0,0,8.76-8.75V8.75A8.76,8.76,0,0,0,464.24,0ZM105.11,17.5H192.7V144.61l-36.88-38.15a8.76,8.76,0,0,0-12.53-.07L105.11,145ZM455.48,431.75H359.13a8.75,8.75,0,1,0,0,17.5h96.35V494.5H70.07a52.52,52.52,0,0,1-52.53-51.65v-.64q0-2.54.2-4.94A52.53,52.53,0,0,1,48.86,394a75.58,75.58,0,0,1,16.26-3.17l195.26,0h195.1Zm0-59.77H70.07a69.86,69.86,0,0,0-28.18,5.91,61.71,61.71,0,0,0-24.35,14.91V43.75A26.27,26.27,0,0,1,43.82,17.5H87.59V166.27a8.76,8.76,0,0,0,15,6.15l46.87-47.36,45.71,47.29a8.76,8.76,0,0,0,15.06-6.08V17.5H455.48Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsBookmark.ts": [
-                {
-                    "name": "bookmark",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsBookmark.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-bookmark\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M400,464a16.05,16.05,0,0,1-9.83-3.37L256,356.26,121.82,460.62A16,16,0,0,1,96,448V72a24,24,0,0,1,24-24H392a24,24,0,0,1,24,24V448a16,16,0,0,1-16,16ZM256,320a15.93,15.93,0,0,1,9.82,3.38L384,415.27V80H128V415.27l118.18-91.9A15.93,15.93,0,0,1,256,320Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsBuilding.ts": [
-                {
-                    "name": "building",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsBuilding.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-building\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M461.43,435l-58.53-161A28.22,28.22,0,0,0,377.14,256h-56V72a24,24,0,0,0-24-24h-224a24,24,0,0,0-24,24V440a24,24,0,0,0,24,24h368a21.19,21.19,0,0,0,20.29-29ZM81.14,80h208V432h-208Zm240,352V288h52.79l52.36,144Zm-144-304a16,16,0,0,1-16,16h-32a16,16,0,1,1,0-32h32A16,16,0,0,1,177.14,128Zm0,64a16,16,0,0,1-16,16h-32a16,16,0,1,1,0-32h32A16,16,0,0,1,177.14,192Zm0,64a16,16,0,0,1-16,16h-32a16,16,0,1,1,0-32h32A16,16,0,0,1,177.14,256Zm80-128a16,16,0,0,1-16,16h-32a16,16,0,0,1,0-32h32A16,16,0,0,1,257.14,128Zm0,64a16,16,0,0,1-16,16h-32a16,16,0,0,1,0-32h32A16,16,0,0,1,257.14,192Zm0,64a16,16,0,0,1-16,16h-32a16,16,0,0,1,0-32h32A16,16,0,0,1,257.14,256Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsBuildingAlt.ts": [
-                {
-                    "name": "buildingAlt",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsBuildingAlt.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-building-alt\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M424,464H312a24,24,0,0,1-24-24V336H224V440a24,24,0,0,1-24,24H88a24,24,0,0,1-24-24V72A24,24,0,0,1,88,48H424a24,24,0,0,1,24,24V440A24,24,0,0,1,424,464ZM320,432h96V80H96V432h96V328a24,24,0,0,1,24-24h80a24,24,0,0,1,24,24ZM240,128a16,16,0,0,0-16-16H144a16,16,0,0,0,0,32h80A16,16,0,0,0,240,128Zm144,0a16,16,0,0,0-16-16H288a16,16,0,0,0,0,32h80A16,16,0,0,0,384,128ZM240,192a16,16,0,0,0-16-16H144a16,16,0,0,0,0,32h80A16,16,0,0,0,240,192Zm144,0a16,16,0,0,0-16-16H288a16,16,0,0,0,0,32h80A16,16,0,0,0,384,192ZM240,256a16,16,0,0,0-16-16H144a16,16,0,0,0,0,32h80A16,16,0,0,0,240,256Zm144,0a16,16,0,0,0-16-16H288a16,16,0,0,0,0,32h80A16,16,0,0,0,384,256Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsCalendar.ts": [
-                {
-                    "name": "calendar",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsCalendar.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-calendar\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M448,64H384V48a16,16,0,0,0-32,0V64H160V48a16,16,0,0,0-32,0V64H64A16,16,0,0,0,48,80V448a16,16,0,0,0,16,16H448a16,16,0,0,0,16-16V80A16,16,0,0,0,448,64ZM432,96v48H80V96ZM80,432V176H432V432ZM384,288H304a16,16,0,0,0-16,16v80a16,16,0,0,0,16,16h80a16,16,0,0,0,16-16V304A16,16,0,0,0,384,288Zm-16,80H320V320h48Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsCalendarAdd.ts": [
-                {
-                    "name": "calendarAdd",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsCalendarAdd.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-calendar-add\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M448,64H384V48a16,16,0,0,0-32,0V64H160V48a16,16,0,0,0-32,0V64H64A16,16,0,0,0,48,80V448a16,16,0,0,0,16,16H448a16,16,0,0,0,16-16V80A16,16,0,0,0,448,64ZM432,96v48H80V96ZM80,432V176H432V432ZM336,304a16,16,0,0,1-16,16H272v48a16,16,0,0,1-32,0V320H192a16,16,0,0,1,0-32h48V240a16,16,0,0,1,32,0v48h48A16,16,0,0,1,336,304Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsCalendarCheck.ts": [
-                {
-                    "name": "calendarCheck",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsCalendarCheck.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-calendar-check\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M448,64H384V48a16,16,0,0,0-32,0V64H160V48a16,16,0,0,0-32,0V64H64A16,16,0,0,0,48,80V448a16,16,0,0,0,16,16H448a16,16,0,0,0,16-16V80A16,16,0,0,0,448,64ZM432,96v48H80V96ZM80,432V176H432V432ZM353.47,228.72a16,16,0,0,1-.06,22.63L229.68,374.45a16,16,0,0,1-11.28,4.65h-.07A16,16,0,0,1,207,374.35L158.4,325.1a16,16,0,0,1,22.77-22.48l37.33,37.81L330.85,228.66A16,16,0,0,1,353.47,228.72Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsCheck.ts": [
-                {
-                    "name": "check",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsCheck.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-check\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M207.2,352h-.06a16.05,16.05,0,0,1-11.33-4.75l-63.2-64a16,16,0,1,1,22.78-22.5l51.91,52.58L356.72,164.66a16,16,0,1,1,22.56,22.68l-160.8,160A16,16,0,0,1,207.2,352Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsCheckCircle.ts": [
-                {
-                    "name": "checkCircle",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsCheckCircle.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-check-circle\\\" viewBox=\\\"0 0 543.5 512\\\">\\n  <path d=\\\"M313.3,319.9l186.4-185.7l22.4,22.6L313.3,364.9L206.5,258.5l22.4 22.6L313.3,319.9z M508.8,289.1 c0,104.3-85.2,189.1-189.8,189.1c-104.7,0-189.8-84.8-189.8-189.1S214.4,100,319,100V68.1C196.8,68.1,97.4,167.2,97.4,289 S196.8,509.9,319,509.9s221.6-99.1,221.7-220.8H508.8z\\\"/>\\n</svg>\""
                 }
             ],
             "libs/packages/components/src/lib/key-helper/key-mocks.ts": [
@@ -21383,18 +20151,6 @@ const COMPONENTS = {
                     "defaultValue": "{\n  enter: {\n    charCode: 0,\n    code: 'Enter',\n    key: 'Enter',\n    keyCode: 13,\n    keyIdentifier: 'Enter',\n    which: 13\n  },\n  up: {\n    charCode: 0,\n    code: 'ArrowUp',\n    key: 'ArrowUp',\n    keyCode: 38,\n    keyIdentifier: 'Up',\n    which: 38\n  },\n  down: {\n    charCode: 0,\n    code: 'ArrowDown',\n    key: 'ArrowDown',\n    keyCode: 40,\n    keyIdentifier: 'Down',\n    which: 40\n  },\n  left: {\n    charCode: 0,\n    code: 'ArrowLeft',\n    key: 'ArrowLeft',\n    keyCode: 37,\n    keyIdentifier: 'Left',\n    which: 37\n  },\n  right: {\n    charCode: 0,\n    code: 'ArrowRight',\n    key: 'ArrowRight',\n    keyCode: 39,\n    keyIdentifier: 'Right',\n    which: 39\n  },\n  tab: {\n    charCode: 0,\n    code: 'Tab',\n    key: 'Tab',\n    keyCode: 9,\n    keyIdentifier: 'U+0009',\n    which: 9\n  },\n  esc: {\n    charCode: 0,\n    code: 'Escape',\n    key: 'Escape',\n    keyCode: 27,\n    keyIdentifier: 'U+001B',\n    which: 27\n  },\n  space: {\n    charCode: 0,\n    code: 'Space',\n    key: ' ',\n    keyCode: 32,\n    keyIdentifier: 'U+0020',\n    which: 32\n  },\n  shift: {\n    charCode: 0,\n    code: 'ShiftLeft',\n    key: 'Shift',\n    keyCode: 16,\n    keyIdentifier: 'Shift',\n    which: 16\n  },\n  backspace: {\n    charCode: 0,\n    code: 'Backspace',\n    key: 'Backspace',\n    keyCode: 8,\n    keyIdentifier: 'U+0008',\n    which: 8\n  },\n  delete: {\n    charCode: 0,\n    code: 'Delete',\n    key: 'Delete',\n    keyCode: 46,\n    keyIdentifier: 'U+007F',\n    which: 46\n  },\n  0: {\n    charCode: 0,\n    code: 'Digit0',\n    key: 0,\n    keyCode: 48,\n    keyIdentifier: 'U+0030',\n    which: 48\n  },\n  1: {\n    charCode: 0,\n    code: 'Digit1',\n    key: 1,\n    keyCode: 49,\n    keyIdentifier: 'U+0031',\n    which: 49\n  },\n  2: {\n    charCode: 0,\n    code: 'Digit2',\n    key: 2,\n    keyCode: 50,\n    keyIdentifier: 'U+0032',\n    which: 50\n  },\n  3: {\n    charCode: 0,\n    code: 'Digit3',\n    key: 3,\n    keyCode: 51,\n    keyIdentifier: 'U+0033',\n    which: 51\n  },\n  4: {\n    charCode: 0,\n    code: 'Digit4',\n    key: 4,\n    keyCode: 52,\n    keyIdentifier: 'U+0034',\n    which: 52\n  },\n  5: {\n    charCode: 0,\n    code: 'Digit5',\n    key: 5,\n    keyCode: 53,\n    keyIdentifier: 'U+0035',\n    which: 53\n  },\n  6: {\n    charCode: 0,\n    code: 'Digit6',\n    key: 6,\n    keyCode: 54,\n    keyIdentifier: 'U+0036',\n    which: 54\n  },\n  7: {\n    charCode: 0,\n    code: 'Digit7',\n    key: 7,\n    keyCode: 55,\n    keyIdentifier: 'U+0037',\n    which: 55\n  },\n  8: {\n    charCode: 0,\n    code: 'Digit8',\n    key: 8,\n    keyCode: 56,\n    keyIdentifier: 'U+0038',\n    which: 56\n  },\n  9: {\n    charCode: 0,\n    code: 'Digit9',\n    key: 9,\n    keyCode: 57,\n    keyIdentifier: 'U+0039',\n    which: 57\n  }\n}"
                 }
             ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsComment.ts": [
-                {
-                    "name": "comment",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsComment.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-comment\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M382.4,478.4c-4.8,0-11.2-3.2-14.4-6.4l-84.8-84.8-3.2-1.6H72c-12.8,0-24-11.2-24-24h0V89.6c0-12.8,11.2-24,24-24H440c12.8,0,24,11.2,24,24v272c0,12.8-11.2,24-24,24H400v72c0,8-4.8,16-11.2,19.2C385.6,476.8,384,476.8,382.4,478.4ZM80,353.6H280c9.6,0,17.6,4.8,25.6,9.6L368,425.6V376c0-12.8,11.2-24,24-24h40V96H80Zm288-176H144c-9.6,0-16-6.4-16-16s6.4-16,16-16H368c9.6,0,16,6.4,16,16S377.6,177.6,368,177.6Zm0,64H144c-9.6,0-16-6.4-16-16s6.4-16,16-16H368c9.6,0,16,6.4,16,16S377.6,241.6,368,241.6Zm-112,64H144c-9.6,0-16-6.4-16-16s6.4-16,16-16H256c9.6,0,16,6.4,16,16S265.6,305.6,256,305.6\\\"/>\\n</svg>\""
-                }
-            ],
             "libs/packages/components/src/lib/dialog/dialog-content.directives.ts": [
                 {
                     "name": "dialogElementUid",
@@ -21407,234 +20163,6 @@ const COMPONENTS = {
                     "defaultValue": "0",
                     "rawdescription": "Counter used to generate unique IDs for dialog elements.",
                     "description": "<p>Counter used to generate unique IDs for dialog elements.</p>\n"
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsDocument.ts": [
-                {
-                    "name": "document",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsDocument.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-document\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M430.76,137.89a16.12,16.12,0,0,0-3.45-5.21l-96-96A16.33,16.33,0,0,0,320,32H96A16,16,0,0,0,80,48V464a16,16,0,0,0,16,16H416a16,16,0,0,0,16-16V144A16,16,0,0,0,430.76,137.89ZM336,86.63,377.37,128H336ZM400,448H112V64H304v80a16,16,0,0,0,16,16h80Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsDocumentAdd.ts": [
-                {
-                    "name": "documentAdd",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsDocumentAdd.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-document-add\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M430.77,137.89a15.91,15.91,0,0,0-3.47-5.21l-96-96A16.21,16.21,0,0,0,320,32H96A16,16,0,0,0,80,48V464a16,16,0,0,0,16,16H416a16,16,0,0,0,16-16V144A16,16,0,0,0,430.77,137.89ZM336,86.62,377.38,128H336ZM400,448H112V64H304v80a16,16,0,0,0,16,16h80ZM320,256a16,16,0,0,1,0,32H272v48a16,16,0,0,1-32,0V288H192a16,16,0,0,1,0-32h48V208a16,16,0,0,1,32,0v48Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsDocumentPdf.ts": [
-                {
-                    "name": "documentPdf",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsDocumentPdf.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-document-pdf\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M416,400a16,16,0,0,0-16,16v32H112V64H304v80a16,16,0,0,0,16,16h80v48a16,16,0,0,0,32,0V144a16.33,16.33,0,0,0-4.69-11.32l-96-96A16.33,16.33,0,0,0,320,32H96A16,16,0,0,0,80,48V464a16,16,0,0,0,16,16H416a16,16,0,0,0,16-16V416A16,16,0,0,0,416,400ZM336,86.62,377.38,128H336ZM219.25,269.3a42.09,42.09,0,0,0-15.17-6.47,85.85,85.85,0,0,0-18.67-1.94H144V379.11h27.17V340.57h15a66.44,66.44,0,0,0,18.12-2.41,43.45,43.45,0,0,0,15-7.39A35.8,35.8,0,0,0,229.5,318a41.47,41.47,0,0,0,3.79-18.3c0-7.29-1.27-13.41-3.79-18.4A32.18,32.18,0,0,0,219.25,269.3Zm-34.77,49.63H171.17V282.51h12.57c7.39,0,13.07,1.31,17,3.88s5.92,7,5.92,13.33Q206.67,318.93,184.48,318.93Zm128.67-54.6a83.89,83.89,0,0,0-24.95-3.44h-34V379.11h35.48a75.35,75.35,0,0,0,24.14-3.63,47.61,47.61,0,0,0,30.6-29.54q4.25-11.25,4.23-26.47t-4.23-26.3A46.86,46.86,0,0,0,332.2,275,50.67,50.67,0,0,0,313.15,264.33Zm5.09,73.08a30.27,30.27,0,0,1-6.93,11.69,25.79,25.79,0,0,1-10.74,6.43,46,46,0,0,1-14,2h-5.18V282.47h5.18a51,51,0,0,1,14,1.8,25.77,25.77,0,0,1,10.74,6.08,28.62,28.62,0,0,1,6.93,11.42,54.44,54.44,0,0,1,2.49,17.7Q320.73,330.15,318.24,337.41Zm80.95-53.59v27.9H441v22.93H399.19v44.46H372V260.89h76v22.93Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsDocumentSearch.ts": [
-                {
-                    "name": "documentSearch",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsDocumentSearch.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-document-search\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M305.34,248.67a72.67,72.67,0,1,0-72.68,72.66A72,72,0,0,0,271.34,310l53.35,53.35a16,16,0,0,0,22.62-22.62L294,287.33A72,72,0,0,0,305.34,248.67Zm-113.34,0a40.67,40.67,0,1,1,40.66,40.66A40.71,40.71,0,0,1,192,248.67ZM430.76,137.88a16.18,16.18,0,0,0-3.45-5.2l-96-96a16.14,16.14,0,0,0-5.21-3.46A16,16,0,0,0,320,32H96A16,16,0,0,0,80,48V464a16,16,0,0,0,16,16H416a16,16,0,0,0,16-16V144A16,16,0,0,0,430.76,137.88ZM336,86.62,377.38,128H336ZM400,448H112V64H304v80a16,16,0,0,0,16,16h80Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsDownload.ts": [
-                {
-                    "name": "download",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsDownload.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-download\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M448,416a16,16,0,0,1-16,16H80a16,16,0,0,1,0-32H432A16,16,0,0,1,448,416ZM358.7,243,272,304.92V96a16,16,0,0,0-32,0V304.92L153.29,243a16,16,0,0,0-18.59,26l112,80a16,16,0,0,0,18.59,0l112-80a16,16,0,1,0-18.59-26Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsEllipsis.ts": [
-                {
-                    "name": "ellipsis",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsEllipsis.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-ellipsis\\\" viewBox=\\\"0 0 120 512\\\">\\n  <path d=\\\"M60,390.763209 C93.137085,390.763209 120,417.902989 120,451.381605 C120,484.86022 93.137085,512 60,512 C26.862915,512 0,484.86022 0,451.381605 C0,417.902989 26.862915,390.763209 60,390.763209 Z M60,195.381605 C93.137085,195.381605 120,222.521385 120,256 C120,289.478615 93.137085,316.618395 60,316.618395 C26.862915,316.618395 0,289.478615 0,256 C0,222.521385 26.862915,195.381605 60,195.381605 Z M60,0 C93.137085,0 120,27.13978 120,60.6183953 C120,94.0970106 93.137085,121.236791 60,121.236791 C26.862915,121.236791 0,94.0970106 0,60.6183953 C0,27.13978 26.862915,0 60,0 Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsEnvelope.ts": [
-                {
-                    "name": "envelope",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsEnvelope.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-envelope\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M440,112H72a24,24,0,0,0-24,24V376a24,24,0,0,0,24,24H440a24,24,0,0,0,24-24V136A24,24,0,0,0,440,112Zm-42.68,32L256,252.92,112.16,144ZM80,368V159.79l162.8,123.3A21.75,21.75,0,0,0,256,287.55,22.27,22.27,0,0,0,269.34,283L432,157.68V368Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsExclamation.ts": [
-                {
-                    "name": "exclamation",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsExclamation.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-exclamation\\\" viewBox=\\\"0 0 225 512\\\">\\n  <path d=\\\"M150,0H75A75.15,75.15,0,0,0,0,75.29V436.71A75.15,75.15,0,0,0,75,512h75a75.15,75.15,0,0,0,75-75.29V75.29A75.15,75.15,0,0,0,150,0ZM110,90.44q1.24-.08,2.48-.08a37.42,37.42,0,0,1,37.35,37.5q0,1.25-.08,2.49l-13.32,201H88.55l-13.32-201A37.45,37.45,0,0,1,110,90.44Zm2.48,346.27A37.65,37.65,0,1,1,150,399.06,37.57,37.57,0,0,1,112.5,436.71Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsExclamationCircle.ts": [
-                {
-                    "name": "exclamationCircle",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsExclamationCircle.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-exclamation-circle\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M256,0C114.61,0,0,114.61,0,256S114.61,512,256,512,512,397.39,512,256,397.39,0,256,0Zm0,450.19a36.52,36.52,0,1,1,36.52-36.52A36.52,36.52,0,0,1,256,450.19Zm47.26-315.89L269.45,337.19H244L210.21,134.31V66.68h93.05Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsExclamationTriangle.ts": [
-                {
-                    "name": "exclamationTriangle",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsExclamationTriangle.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-exclamation-triangle\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M507.2,427.3L285.8,50.4c-3.1-4.6-7.7-9.2-12.3-12.3c-16.9-10-37.5-3.8-47.5,12.3L4.6,427.3 C1.6,432.7,0,438.8,0,445c0,19.2,15.3,34.5,34.5,34.5h442.8c6.1,0,12.3-1.5,17.6-4.6C511,464.9,517.1,443.4,507.2,427.3z M483.4,454.9c-2.3,0.8-3.8,1.5-6.1,1.5H34.5c-6.1,0-11.5-5.4-11.5-11.5c0-2.3,0.8-4.6,1.5-6.1L245.9,62.7 c3.8-5.4,10.7-6.9,16.1 3.8c1.5,0.8,3.1,2.3,3.8,3.8l221.4,376.1C491.1,445,488.8,451.8,483.4,454.9z M259.7,376 c8.4,0,15.3,6.9,15.3,15.3s-6.9,15.3-15.3,15.3s-15.3-6.9-15.3 15.3S251.3,376,259.7,376z M244.4,169.2H275v183.9h-30.6V169.2z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsExit.ts": [
-                {
-                    "name": "exit",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsExit.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-exit\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M278.62,256l68.69-68.69a16,16,0,0,0-22.62-22.62L256,233.38l-68.69-68.69a16,16,0,0,0-22.62,22.62L233.38,256l-68.69,68.69a16,16,0,1,0,22.62,22.62L256,278.62l68.69,68.69a16,16,0,0,0,22.62-22.62Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsFederalBuilding.ts": [
-                {
-                    "name": "federalBuilding",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsFederalBuilding.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-federal-building\\\" viewBox=\\\"0 0 543.5 512\\\">\\n  <path d=\\\"M695.6,250.7c0-6.1,0.8-5.4-5.5-5.4c-45.2,0-90.4,0-135.6,0.1c-3.2,0-4.5-0.9-5.4-4 c-4.6-16.5-13.5-30.3-26.5-41.5c-13.5-11.7-29-18.7-46.8-20.6c-2.4-0.3-3.7-1-3.4-3.6c0.1-1.2,0-2.4,0-3.5c0-5.3,0-5.3,5.4-5.3 c32.7,0,65.4-0.1,98.2,0.1c3.4,0,4.5-0.8,4.5-4.4c-0.1-28.3-0.2-56.5,0-84.8c0-4-1.1-5-5.1-5c-47.2,0.1-94.4,0.1-141.5,0.1 c-1.6,0.7-1.3,2.2-1.2,3.4c0.5,26.1-1.4,52.2-0.9,78.3c0.1,5,0,10,0,15c0,9.3,0.2,7.8-7.8,9.3c-19.9,3.7-36.6,13.2-50.2,28.2 c-8.5,9.4-14.1,20.2-17.9,32.1c-1.5,4.8-2,5-7,5.1c-1.4,0-2.9,0-4.3,0c-42.8,0-85.7,0-128.5,0c-6.6,0-7.4,0.7-7.4,6.7 c0,67.1,0,134.3,0,201.4c0,1.8-0.1,3.7,1.2,5.3c0,16.4,0.2,32.9,0,49.3c0,3.7,1.1,4.5,4.6,4.5c158.9-0.1,317.8-0.1,476.6,0 c4,0,4.7-1.2,4.7-4.8C695.6,421.3,695.6,336,695.6,250.7z M284.6,468.7c0,2.7-0.9,3.7-3.6,3.7c-9.5-0.1-18.9-0.1-28.4,0 c-3,0-3.4-1.3-3.4-3.8c0.1-19.6,0-39.1,0-58.7c0-19,0.1-38.1-0.1-57.1c0-3.3,0.9-4.2,4.2-4.2c9.2,0.2,18.4,0.1,27.6,0 c2.6,0,3.7,0.5,3.7,3.4C284.5,390.9,284.5,429.8,284.6,468.7z M284.7,305.9c0.1,2.7-1.1,3.4-3.5,3.3c-4.7-0.1-9.5,0-14.2,0 c-4.9,0-9.7-0.1-14.6,0c-2.1,0-3.1-0.4-3.1-2.8c0-6.3,0-12.6-0.1-18.9c0-2.3,0.9-2.9,3.1-2.9c9.7,0.1,19.4,0.1,29.2,0 c2.4,0,3.2,0.8,3.2,3.2C284.6,293.8,284.6,299.9,284.7,305.9z M358.9,469.2c0,2.4-0.9,3.2-3.2,3.2c-9.6-0.1-19.2-0.1-28.8,0 c-3.1,0-2.9-1.7-2.9-3.8c0-19.3,0-38.6,0-57.9s0.1-38.6-0.1-57.9c0-3.3,1-4.2,4.2-4.1c9.2,0.2,18.4,0.1,27.6,0 c2.3,0,3.2,0.6,3.2,3.1C358.8,390.9,358.8,430,358.9,469.2z M358.9,306.3c0,2.2-0.7,3-2.9,3c-4.9-0.1-9.7,0-14.6,0 c-4.7,0-9.5-0.1-14.2,0c-2.3,0.1-3.3-0.6-3.2-3.1c0.1-6.2,0-12.4-0.1-18.5c0-2.2,0.6-3,2.9-3c9.7,0.1,19.4,0.1,29.2,0.1 c2.3,0,2.9,0.9,2.9,3C358.8,294,358.8,300.2,358.9,306.3z M473.2,113c2.2-2.5,7.2-0.8,10.9-0.8c7.6-0.1,15.2,0,22.8,0 c10.2,0,20.5,0.1,30.7-0.1c2.6,0,3.5,0.7,3.4,3.3c-0.2,3-0.1,6,0,9c0.1,2.3-0.7,3.3-3.2,3.3c-20.7-0.1-41.4-0.1-62.2,0 c-2.4,0-3.3-1-3.1-3.3C472.8,120.6,470.9,115.6,473.2,113z M504.2,472.4c-34.2-0.1-68.3-0.1-102.5,0c-3.1,0-3.6-1.4-3.6-4.1 c0.1-19.3,0-38.6,0-58c0-19.2,0.1-38.4-0.1-57.6c0-3.2,0.7-4.3,4.1-4.2c8.8,0.2,17.6,0.2,26.4,0c3.4-0.1,4.5,0.8,4.4,4.3 c-0.2,18,0,36-0.2,54c0,3.5,0.9,4.5,4.4,4.4c10.4-0.2,20.8-0.2,31.1,0c3.1,0.1,4.1-0.8,4-4c-0.1-18.1,0-36.3-0.2-54.4 c0-3.5,0.9-4.5,4.4-4.4c9.2,0.2,18.4,0.2,27.6,0c2.6,0,3.4,0.7,3.4,3.3c0.3,39.2,0.3,78.3,0.3,117.3 C507.7,471.6,506.8,472.4,504.2,472.4z M398.1,287.8c0-2.1,0.5-3.1,2.8-3.1c9.7,0.1,19.4,0.1,29.1,0c2.2,0,3,0.8,2.9,3 c-0.1,6.2-0.1,12.3,0,18.5c0.1,2.5-0.9,3.1-3.2,3.1c-4.7-0.1-9.4,0-14.2,0c-4.9,0-9.7-0.1-14.6,0c-2.2,0.1-3-0.7-2.9-3 C398.2,300.1,398.2,294,398.1,287.8z M507.7,306.1c0,2.4-0.9,3.2-3.3,3.1c-9.7-0.1-19.4-0.1-29.1,0c-2.2,0-3-0.7-3-2.9 c0.1-6.2,0.1-12.3,0-18.5c-0.1-2.5,0.9-3.1,3.2-3.1c4.9,0.1,9.7,0,14.6,0c4.9,0,9.7,0.1,14.6,0c2.2-0.1,3.1,0.6,3,2.9 C507.6,293.8,507.6,300,507.7,306.1z M505.2,245.4c-17.5-0.1-34.9-0.1-52.4-0.1c-17.3,0-34.7,0-52,0c-4,0-4.2-0.4-2.2-3.9 c8.3-13.9,20.7-22.1,36.7-23.3c12.8-0.9,25.7-1.4,38.5,0.5c14.8,2.2,25.7,10.6,33.4,23.3C508.9,244.6,508.4,245.4,505.2,245.4z M582,468.7c0,3.1-1.2,3.7-4,3.7c-9.1-0.1-18.1-0.2-27.2,0c-3.2,0.1-4.3-0.9-4.3-4.2c0.1-19.3,0.1-38.6,0.1-57.9 c0-19.2,0.1-38.4-0.1-57.5c0-3.3,0.9-4.3,4.2-4.2c9.2,0.2,18.4,0.2,27.6,0c2.6,0,3.7,0.5,3.7,3.4C581.9,390.9,581.9,429.8,582,468.7 z M582.1,306.2c0,2.2-0.8,3-3,3c-9.8-0.1-19.7-0.1-29.5,0c-2,0-2.8-0.6-2.8-2.7c0.1-6.3,0.1-12.6,0-18.9c-0.3-2.2,0.5-2.9,2.8-2.9 c4.9,0.1,9.7,0,14.6,0v-0.1c4.9,0,9.7,0.1,14.6,0c2.3-0.1,3.3,0.6,3.3,3.1C582,293.9,582,300,582.1,306.2z M652.3,472.4 c-9.1-0.2-18.1-0.2-27.2,0c-2.9,0-3.9-0.8-3.9-3.8c0.1-38.8,0.1-77.5,0-116.3c0-3,0.9-3.8,3.8-3.7c9.2,0.2,18.4,0.2,27.6,0 c2.8,0,3.5,0.8,3.5,3.5c-0.1,19.4-0.1,38.9-0.1,58.3c0,19.3-0.1,38.6,0.1,57.9C656.2,471.4,655.6,472.5,652.3,472.4z M656.2,306.1 c0.1,2.5-0.9,3.1-3.2,3.1c-4.9-0.1-9.7,0-14.6,0c-4.6,0-9.2-0.1-13.8,0c-2.2,0.1-3.4-0.4-3.3-3c0.2-6.1,0.1-12.3,0-18.5 c-0.1-2.5,1-3.1,3.3-3.1c9.5,0.1,18.9,0.1,28.4,0c2.3,0,3.3,0.5,3.2,3C656,293.8,656,300,656.2,306.1z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsFile.ts": [
-                {
-                    "name": "file",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsFile.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-file\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M22.92,489.08H356.1V367.57a11.47,11.47,0,0,1,11.46-11.46H489.08V22.93H22.92ZM169,187.13H343a11.46,11.46,0,0,1,0,22.93H169a11.46,11.46,0,0,1,0-22.93Zm0,53.55H343a11.46,11.46,0,0,1,0,22.92H169a11.46,11.46,0,0,1,0-22.92Zm0,53.55h116.7a11.46,11.46,0,0,1,0,22.93H169a11.46,11.46,0,0,1,0-22.93Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsFileChartLine.ts": [
-                {
-                    "name": "fileChartLine",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsFileChartLine.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-file-chart-line\\\" viewBox=\\\"0 0 448 512\\\">\\n  <path d=\\\"M358.68,29.26H248.88V7.31A7.32,7.32,0,0,0,241.56,0H124.44a7.32,7.32,0,0,0-7.32,7.31V29.26H7.32A7.32,7.32,0,0,0,0,36.57V504.69A7.32,7.32,0,0,0,7.32,512H358.68a7.32,7.32,0,0,0,7.32-7.31V36.57A7.32,7.32,0,0,0,358.68,29.26ZM131.76,14.63H234.24V29.26H131.76Zm219.6,482.74H14.64V43.89H351.36ZM241.56,95.09a7.31,7.31,0,1,1,0,14.63H65.88a7.31,7.31,0,1,1,0-14.63Zm-183,65.83a7.32,7.32,0,0,1,7.32-7.31H183a7.31,7.31,0,1,1,0,14.63H65.88A7.32,7.32,0,0,1,58.56,160.91Zm148.3,231.15L280,309.66a7.32,7.32,0,0,1,11,9.71l-77.9,87.77a7.32,7.32,0,0,1-10.22.71l-66.1-56.29-66.1,56.29a7.32,7.32,0,1,1-9.5-11.13L132,336.38a7.32,7.32,0,0,1,9.5,0Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsFilter.ts": [
-                {
-                    "name": "filter",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsFilter.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-filter\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M216,456a24,24,0,0,1-24-24V251.48L56.31,98.15A24,24,0,0,1,72,56H440a24,24,0,0,1,15.71,42.15L320,251.49V378.65a23.94,23.94,0,0,1-10.69,20l-80,53.34A24,24,0,0,1,216,456Zm-.77-226.53A23.89,23.89,0,0,1,224,248V417l64-42.67V248a23.87,23.87,0,0,1,8.77-18.55L421.94,88H90.06ZM440,88h0Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsFlag.ts": [
-                {
-                    "name": "flag",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsFlag.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-flag\\\" viewBox=\\\"0 0 670.9 512\\\">\\n  <path d=\\\"M36.7-0.1l272.9,512h-38.3L2.3-0.1H36.7z M360.4-0.1l46.7,102h121.5l139.4,256.4H378.3 l-28-57.4l71.3-42.8H212.7L74-0.1H360.4z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsFolder.ts": [
-                {
-                    "name": "folder",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsFolder.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-folder\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M440,97.48H209.5l-1-2.75a23.89,23.89,0,0,0-21.46-13.25H72a24,24,0,0,0-24,24V409.93a23.81,23.81,0,0,0,24,23.55H440a23.8,23.8,0,0,0,24-23.55V121A23.81,23.81,0,0,0,440,97.48Zm-8,32v40.45H235.31L220.9,129.48Zm0,272H80v-288H181.35l31.35,88.45H432Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsFolderAlt1.ts": [
-                {
-                    "name": "folderAlt1",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsFolderAlt1.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-folder-alt-1\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M440,129.49H208v-24a24,24,0,0,0-24-24H72a24,24,0,0,0-24,24v320a24,24,0,0,0,24,24H440a24,24,0,0,0,24-24v-272A24,24,0,0,0,440,129.49Zm-264-16v16H80v-16Zm256,304H80v-256H432Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsFolderAlt2.ts": [
-                {
-                    "name": "folderAlt2",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsFolderAlt2.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-folder-alt-2\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M440,114.19H220.21L208.53,94.76a23.86,23.86,0,0,0-21.48-13.28H72a24,24,0,0,0-24,24V409.93a23.8,23.8,0,0,0,24,23.55H440a23.81,23.81,0,0,0,24-23.55V137.75A23.81,23.81,0,0,0,440,114.19Zm-8,32v39.35L249.69,163.26l-10.25-17.07Zm0,255.29H80v-288H182.5l47.8,79.65L432,217.78v183.7Z\\\"/>\\n</svg>\""
                 }
             ],
             "libs/packages/components/src/lib/video-player/video-player.component.ts": [
@@ -21660,54 +20188,6 @@ const COMPONENTS = {
                     "defaultValue": "[\n  {\n    code: 'A',\n    elements: [\n      {\n        code: 'A',\n        elements: null,\n        description: null,\n        element_id: '0001001',\n        value: 'Formula Grants'\n      },\n      {\n        code: 'A',\n        elements: null,\n        description: null,\n        element_id: '0001002',\n        value: 'Formula Grants (Apportionments)'\n      },\n      {\n        code: 'A',\n        elements: null,\n        description: null,\n        element_id: '0001003',\n        value: 'Formula Grants (Cooperative Agreements)'\n      },\n      {\n        code: 'A',\n        elements: null,\n        description: null,\n        element_id: '0001004',\n        value: 'Formula Grants (Health Incentive Grants)'\n      }\n    ],\n    description:\n      'Formula Grants - Allocations of money to States or their subdivisions in accordance with a distribution formula prescribed by law or administrative regulation, for activities of a continuing nature not confined to a specific project.',\n    element_id: '0001',\n    value: 'FORMULA GRANTS'\n  },\n  {\n    code: 'B',\n    elements: [\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003001',\n        value: 'Cooperative Agreements'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003002',\n        value: 'Cooperative Agreements (Discretionary Grants)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003003',\n        value: 'Project Grants'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003004',\n        value:\n          'Project Grants (Capacity Building and Complaint Processing, Training)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003005',\n        value: 'Project Grants (Contracts)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003006',\n        value: 'Project Grants (Cooperative Agreements or Contracts)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003007',\n        value: 'Project Grants (Cooperative Agreements)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003008',\n        value: 'Project Grants (Discretionary)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003009',\n        value: 'Project Grants (Fellowships)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003010',\n        value:\n          'Project Grants (for administration projects authorized under Section'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003011',\n        value:\n          'Project Grants (for collaborative design of curriculum, production of'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003012',\n        value: 'Project Grants (for specified projects)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003013',\n        value: 'Project Grants (including individual awards)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003014',\n        value: 'Project Grants (including travel grants)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003015',\n        value:\n          'Project Grants (Rehabilitation of existing indoor and outdoor recreat'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003016',\n        value: 'Project Grants (Special)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003017',\n        value: 'Project Grants (to capitalize loan funds)'\n      },\n      {\n        code: 'B',\n        elements: null,\n        description: null,\n        element_id: '0003018',\n        value: 'Project Grants (with Formula Distribution)'\n      }\n    ],\n    description:\n      'Project Grants - The funding, for fixed or known periods, of specific projects or the delivery of specific services or products without liability for damages for failure to perform. Project grants include fellowships, scholarships, research grants, training grants, traineeships, experimental and demonstration grants, evaluation grants, planning grants, technical assistance grants, survey grants, construction grants, and unsolicited contractual agreements.',\n    element_id: '0003',\n    value: 'PROJECT GRANTS'\n  },\n  {\n    code: 'C',\n    elements: [\n      {\n        code: 'C',\n        elements: null,\n        description: null,\n        element_id: '0005001',\n        value: 'Direct Payments for Specified Use'\n      },\n      {\n        code: 'C',\n        elements: null,\n        description: null,\n        element_id: '0005002',\n        value: 'Direct Payments for Specified Use (Cooperative Agreements)'\n      }\n    ],\n    description:\n      'Direct Payments for a Specified Use - Financial assistance provided directly to individuals, private firms, and other private institutions to encourage or subsidize a particular activity by conditioning the receipt of the on a particular performance by the recipient. This does not include solicited contracts for the procurement of goods and services for the Federal government.',\n    element_id: '0005',\n    value: 'DIRECT PAYMENTS FOR A SPECIFIED USE'\n  },\n  {\n    code: 'D',\n    elements: [\n      {\n        code: 'D',\n        elements: null,\n        description: null,\n        element_id: '0007001',\n        value: 'Direct Payments with Unrestricted Use'\n      }\n    ],\n    description:\n      'Direct Payments with Unrestricted Use - Financial assistance provided directly to beneficiaries who satisfy eligibility requirements with no restrictions imposed on the recipient as to how the money is spent. Included are payments under retirement, pension, and compensation programs.',\n    element_id: '0007',\n    value: 'DIRECT PAYMENTS WITH UNRESTRICTED USE'\n  },\n  {\n    code: 'E',\n    elements: [\n      {\n        code: 'E',\n        elements: null,\n        description: null,\n        element_id: '0009001',\n        value: 'Direct Loans'\n      }\n    ],\n    description:\n      'Direct Loans - Financial assistance provided through the lending of Federal monies for a specific period of time, with a reasonable expectation of repayment. Such loans may or may not require the payment of interest.',\n    element_id: '0009',\n    value: 'DIRECT LOANS'\n  },\n  {\n    code: 'F',\n    elements: [\n      {\n        code: 'F',\n        elements: null,\n        description: null,\n        element_id: '0011001',\n        value: 'Guaranteed/Insured Loans'\n      },\n      {\n        code: 'F',\n        elements: null,\n        description: null,\n        element_id: '0011002',\n        value:\n          'Guaranteed/Insured Loans (including Guaranty Participation Loans)'\n      },\n      {\n        code: 'F',\n        elements: null,\n        description: null,\n        element_id: '0011003',\n        value:\n          'Guaranteed/Insured Loans (including Immediate Participation Loans)'\n      },\n      {\n        code: 'F',\n        elements: null,\n        description: null,\n        element_id: '0011004',\n        value: 'Loan Guarantees/Grants'\n      }\n    ],\n    description:\n      'Guaranteed/Insured Loans - Programs in which the Federal Government makes an arrangement to indemnify a lender against all or part of all of any defaults by those responsible for the repayment of loans.',\n    element_id: '0011',\n    value: 'GUARANTEED/INSURED LOANS'\n  },\n  {\n    code: 'G',\n    elements: [\n      {\n        code: 'G',\n        elements: null,\n        description: null,\n        element_id: '0013001',\n        value: 'Insurance'\n      },\n      {\n        code: 'G',\n        elements: null,\n        description: null,\n        element_id: '0013002',\n        value: 'Insurance (Guaranteed Surety Bonds)'\n      },\n      {\n        code: 'G',\n        elements: null,\n        description: null,\n        element_id: '0013003',\n        value: 'Insurance (Reimbursement)'\n      }\n    ],\n    description:\n      'Insurance - Financial assistance provided to assure reimbursement for losses sustained under specified conditions. Coverage may be provided directly by the Federal Government or through private carriers and may or may not involve the payment of premiums.',\n    element_id: '0013',\n    value: 'INSURANCE'\n  },\n  {\n    code: 'H',\n    elements: [\n      {\n        code: 'H',\n        elements: null,\n        description: null,\n        element_id: '0015001',\n        value: 'Sale, Exchange, or Donation of Property and Goods'\n      }\n    ],\n    description:\n      'Sale, Exchange, or Donation of Property or Goods - Programs that provide for the sale, exchange, or donation of Federal real property, personal property, commodities, and other goods including land, buildings, equipment, food, and drugs. This does not include the loan of, use of, or access to Federal facilities or property.',\n    element_id: '0015',\n    value: 'SALE, EXCHANGE, OR DONATION OF PROPERTY OR GOODS'\n  },\n  {\n    code: 'I',\n    elements: [\n      {\n        code: 'I',\n        elements: null,\n        description: null,\n        element_id: '0017001',\n        value: 'Use of Property, Facilities, and Equipment'\n      }\n    ],\n    description:\n      'Use of Property, Facilities, or Equipment - Programs that provide for the loan of, use of, or access to Federal facilities or property wherein the federally owned facilities or property do not remain in the possession of the recipient of the assistance.',\n    element_id: '0017',\n    value: 'USE OF PROPERTY, FACILITIES, OR EQUIPMENT'\n  },\n  {\n    code: 'J',\n    elements: [\n      {\n        code: 'J',\n        elements: null,\n        description: null,\n        element_id: '0019001',\n        value: 'Provision of Specialized Services'\n      }\n    ],\n    description:\n      'Provision of Specialized Services - Programs that provide Federal personnel to directly perform certain tasks for the benefit of communities or individuals. These services may be performed in conjunction with non-Federal personnel, but they involve more than consultation, advice, or counseling.',\n    element_id: '0019',\n    value: 'PROVISION OF SPECIALIZED SERVICES'\n  },\n  {\n    code: 'K',\n    elements: [\n      {\n        code: 'K',\n        elements: null,\n        description: null,\n        element_id: '0021001',\n        value: 'Advisory Services and Counseling'\n      },\n      {\n        code: 'K',\n        elements: null,\n        description: null,\n        element_id: '0021002',\n        value: 'Advisory Services on Compliance'\n      }\n    ],\n    description:\n      'Advisory Services and Counseling - Programs that provide Federal specialists to consult, advise, or counsel communities or individuals including conferences, workshops, or personal contacts. This may involve the use of published information, but only in a secondary capacity.',\n    element_id: '0021',\n    value: 'ADVISORY SERVICES AND COUNSELING'\n  },\n  {\n    code: 'L',\n    elements: [\n      {\n        code: 'L',\n        elements: null,\n        description: null,\n        element_id: '0023001',\n        value: 'Dissemination of Technical Information'\n      },\n      {\n        code: 'L',\n        elements: null,\n        description: null,\n        element_id: '0023002',\n        value: 'Information'\n      }\n    ],\n    description:\n      'Dissemination of Technical Information - Programs that provide for the publication and distribution of information or data of a specialized technical nature, frequently through clearinghouses or libraries. This does not include conventional public information services designed for general public consumption.',\n    element_id: '0023',\n    value: 'DISSEMINATION OF TECHNICAL INFORMATION'\n  },\n  {\n    code: 'M',\n    elements: [\n      {\n        code: 'M',\n        elements: null,\n        description: null,\n        element_id: '0025001',\n        value: 'Training'\n      }\n    ],\n    description:\n      'Training - Programs that provide instructional activities conducted directly by a Federal agency for individuals not employed by the Federal Government.',\n    element_id: '0025',\n    value: 'TRAINING'\n  },\n  {\n    code: 'N',\n    elements: [\n      {\n        code: 'N',\n        elements: null,\n        description: null,\n        element_id: '0027020',\n        value: 'Resolution of Disputes'\n      },\n      {\n        code: 'N',\n        elements: null,\n        description: null,\n        element_id: '0027001',\n        value: 'Investigation of Complaints'\n      },\n      {\n        code: 'N',\n        elements: null,\n        description: null,\n        element_id: '0027002',\n        value: 'Investigation of Complaints (Compliance Reviews)'\n      }\n    ],\n    description:\n      'Investigation of Complaints - Federal administrative agency activities that are initiated in response to requests, either formal or informal, to examine or investigate claims of violations of Federal statutes, policy, or procedure. Such claims must come from outside the Federal Government.',\n    element_id: '0027',\n    value: 'INVESTIGATION OF COMPLAINTS'\n  },\n  {\n    code: 'O',\n    elements: [\n      {\n        code: 'O',\n        elements: null,\n        description: null,\n        element_id: '0029001',\n        value: 'Federal Employment'\n      }\n    ],\n    description:\n      'Federal Employment - Programs that reflect the government-wide resposibilities of the Office of Personnel Management in the recruitment and hiring of Federal civilian agency personnel.',\n    element_id: '0029',\n    value: 'FEDERAL EMPLOYMENT'\n  },\n  {\n    code: 'Z',\n    elements: [\n      {\n        code: 'Z',\n        elements: null,\n        description: null,\n        element_id: '0090001',\n        value: 'Salaries and Expenses'\n      }\n    ],\n    description: null,\n    element_id: '0090',\n    value: 'SALARIES AND EXPENSES'\n  }\n]"
                 }
             ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsHome.ts": [
-                {
-                    "name": "home",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsHome.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-home\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M448,208a15.89,15.89,0,0,1-8-2.18L256,98.52,72.06,205.82a16,16,0,1,1-16.12-27.64l192-112a16,16,0,0,1,16.12,0l192,112A16,16,0,0,1,448,208Zm0-80V80a16,16,0,0,0-16-16H352a16,16,0,0,0,0,32h64v32a16,16,0,0,0,32,0Zm0,296V256a16,16,0,0,0-32,0V416H320V328a24,24,0,0,0-24-24H216a24,24,0,0,0-24,24v88H96V256a16,16,0,0,0-32,0V424a24,24,0,0,0,24,24H200a24,24,0,0,0,24-24V336h64v88a24,24,0,0,0,24,24H424A24,24,0,0,0,448,424Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsInformationCircle.ts": [
-                {
-                    "name": "informationCircle",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsInformationCircle.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-information-circle\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M256,512C114.8,512,0,397.2,0,256S114.8,0,256,0s256,114.8,256,256S397.2,512,256,512z M256,19.8c-130.2,0-236.2,106-236.2,236.2s106,236.2,236.2,236.2s236.2-106,236.2-236.2S386.2,19.8,256,19.8z M256,185.2c-6.6,0-12-1.9-16.2-5.7s-6.4-8.8-6.4-14.9c0-6.1,2.1-11.2,6.4-15.1c4.2-3.9,9.6-5.9,16.2-5.9c6.6,0,12,2,16.2,5.9s6.4,8.9,6.4,15.1c0,6.1-2.1,11.1-6.4,14.9C268,183.3,262.6,185.2,256,185.2z M237.6,368.4V212.5h36.5v155.9H237.6z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsInvoice.ts": [
-                {
-                    "name": "invoice",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsInvoice.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-invoice\\\" viewBox=\\\"0 0 448 512\\\">\\n  <path d=\\\"M521.22,423.72H464.14V61.89A61.7,61.7,0,0,0,402.62,0h-337q-2.09,0-4.38,0h-.06L60.16,0A60.33,60.33,0,0,0,0,60.5V97.1a8.8,8.8,0,0,0,8.78,8.83h94.43c0,16.22,0,37.64,0,83.91V451.59C103.2,485.3,128.14,512,161,512H451c43.63,0,79-35.57,79-79.45A8.8,8.8,0,0,0,521.22,423.72ZM102.77,88.28H17.56V60.5A42.56,42.56,0,0,1,95.24,36.18c3.74,6,6.24,13.44,7.49,22.4,0,.64,0,1.28,0,1.92Zm18,363.31V62.22c-.14-1.56-.31-3.08-.5-4.58a60.39,60.39,0,0,0-10.54-31.43,55.7,55.7,0,0,0-6.66-8.53H402.62a44.09,44.09,0,0,1,44,44.21V423.72H219.31a8.8,8.8,0,0,0-8.78,8.83v17.8a43.87,43.87,0,0,1-43.75,44H161C138.09,494.34,120.76,475.79,120.76,451.59ZM451,494.34H209.73a61.64,61.64,0,0,0,18.36-44v-9H511.82A61.57,61.57,0,0,1,451,494.34Zm-224.85-291A41,41,0,0,1,267,162.3h7.77v-7.8a8.44,8.44,0,1,1,16.88,0v7.8h32.07a8.49,8.49,0,0,1,0,17H267a24.11,24.11,0,0,0,0,48.21h32.41a41.08,41.08,0,0,1,0,82.16h-7.77v7.79a8.44,8.44,0,1,1-16.88,0v-7.79H242.69a8.49,8.49,0,0,1,0-17h56.72a24.11,24.11,0,0,0,0-48.21H267A41,41,0,0,1,226.15,203.38Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsLeaf.ts": [
-                {
-                    "name": "leaf",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsLeaf.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-leaf\\\" viewBox=\\\"0 0 648.1 512\\\">\\n  <path d=\\\"M324.1,101.6v232.8H324H104.6C48.6,334.4,3.3,289,3.3,233V2.3h221.5C279.6,2.3,324.1,46.7,324.1,101.6z\\\"/>\\n</svg>\""
-                }
-            ],
             "libs/packages/components/src/lib/tabs/tabs.component.ts": [
                 {
                     "name": "LEFT_ARROW",
@@ -21730,282 +20210,6 @@ const COMPONENTS = {
                     "deprecationMessage": "",
                     "type": "number",
                     "defaultValue": "39"
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsLink.ts": [
-                {
-                    "name": "link",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsLink.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-link\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M182.47,441.71a80,80,0,0,1-65.42-125.87l55.06-78.63a16,16,0,0,1,26.22,18.36L143.27,334.2a48,48,0,1,0,78.63,55.07L277,310.62A16,16,0,0,1,303.18,329l-55.06,78.64A80,80,0,0,1,182.47,441.71ZM339.89,276.56,395,197.92a80,80,0,0,0-131.07-91.78l-55.06,78.64A16,16,0,1,0,235,203.14L290.1,124.5a48,48,0,1,1,78.63,55.06L313.67,258.2a16,16,0,0,0,26.22,18.36Zm-116.66,55L315,200.53a16,16,0,0,0-26.22-18.36L197,313.23a16,16,0,0,0,26.22,18.36Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsLogIn.ts": [
-                {
-                    "name": "logIn",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsLogIn.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-log-in\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M432,160V80H80V432H432V352a16,16,0,0,1,32,0v88a24,24,0,0,1-24,24H72a24,24,0,0,1-24-24V72A24,24,0,0,1,72,48H440a24,24,0,0,1,24,24v88a16,16,0,0,1-32,0Zm-48,96a16,16,0,0,0-16-16H175.09L237,153.3A16,16,0,0,0,211,134.71l-80,112a16,16,0,0,0,0,18.59l80,112A16,16,0,1,0,237,358.71L175.09,272H368A16,16,0,0,0,384,256Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsLogOut.ts": [
-                {
-                    "name": "logOut",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsLogOut.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-log-out\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M440,464H72a24,24,0,0,1-24-24V72A24,24,0,0,1,72,48H440a24,24,0,0,1,24,24v88a16,16,0,0,1-32,0V80H80V432H432V352a16,16,0,0,1,32,0v88A24,24,0,0,1,440,464ZM381,246.7l-80-112a16,16,0,0,0-26,18.6L336.92,240H144a16,16,0,0,0,0,32H336.92L275,358.7a16,16,0,0,0,26,18.6l80-112A16,16,0,0,0,381,246.7Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsMessages.ts": [
-                {
-                    "name": "messages",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsMessages.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-messages\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M440,176H336V72a24,24,0,0,0-24-24H72A24,24,0,0,0,48,72V236.21a24,24,0,0,0,24,24H96V312a19,19,0,0,0,32.8,14.12L192,266.24v98a24,24,0,0,0,24,24h95.76a9.72,9.72,0,0,1,3,1.13l68.39,64.78A19,19,0,0,0,416,440V388.21h24a24,24,0,0,0,24-24V200A24,24,0,0,0,440,176ZM128,282.8V252.21a24,24,0,0,0-24-24H80V80H304V228.21H200a39.1,39.1,0,0,0-24.8,9.88Zm304,73.41H408a24,24,0,0,0-24,24V410.8l-47.19-44.7A39.1,39.1,0,0,0,312,356.21H224v-96h88a24,24,0,0,0,24-24V208h96Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsMobile.ts": [
-                {
-                    "name": "mobile",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsMobile.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-mobile\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M376,48H136a24,24,0,0,0-24,24V440a24,24,0,0,0,24,24H376a24,24,0,0,0,24-24V72A24,24,0,0,0,376,48Zm-8,384H144V368H368Zm0-96H144V80H368ZM240,400a16,16,0,1,1,16,16A16,16,0,0,1,240,400Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsNewNote.ts": [
-                {
-                    "name": "newNote",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsNewNote.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-new-note\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M440,48H72A24,24,0,0,0,48,72V440a24,24,0,0,0,24,24H344a38.18,38.18,0,0,0,25-10.34L453.66,369A38.18,38.18,0,0,0,464,344V72A24,24,0,0,0,440,48ZM80,80H432l0,256H360a24,24,0,0,0-24,24v72H80ZM368,409.37V368h41.37ZM320,272H272v48a16,16,0,0,1-32,0V272H192a16,16,0,0,1,0-32h48V192a16,16,0,0,1,32,0v48h48a16,16,0,0,1,0,32Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsNewVersion.ts": [
-                {
-                    "name": "newVersion",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsNewVersion.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-new-version\\\" viewBox=\\\"0 0 512 643.3\\\">\\n  <path d=\\\"M273.6,269.1L273.6,269.1h-63v-68.8c0-5-4.1-9.1-9.1-9.1s-9.1,4.1-9.1,9.1v77.9c0,5,4.1,9.1,9.1,9.1h72.1c5,0,9.1-4.1,9.1-9.1S278.6,269.1,273.6,269.1z M205.2,138.2c-73.1,0-132.6,59.5-132.6,132.6s59.5,132.6,132.6,132.6S337.8,344,337.8,270.8S278.3,138.2,205.2,138.2z M319.6,270.8c-0.1,63.2-51.3,114.4-114.5,114.5l0,0C142,385.2,90.7,334,90.7,270.8S142,156.3,205.2,156.3C268.4,156.4,319.6,207.6,319.6,270.8L319.6,270.8z M462.6,103c-5.4-25.6-26.5-45.3-52.7-48.9C405.8,23.6,379.7,0,348,0H62.4C28,0,0,28,0,62.4v416.8c0,31.7,23.6,57.8,54.1,61.9c3.5,26.2,23.3,47.3,48.8,52.7c6,28.2,31,49.4,61.1,49.4h285.5c34.5,0,62.4-28,62.4-62.4V164C512,134,490.8,109,462.6,103z M16.4,479.3V62.4c0-25.4,20.6-46,46-46H348c25.4,0,46,20.6,46,46v416.8c0,25.4-20.6,46-46,46H62.4C37,525.2,16.5,504.7,16.4,479.3z M70.9,541.7H348c34.5,0,62.4-28,62.4-62.4V70.9c21.1,4.2,37,22.8,37.1,45.1v416.8c0,25.4-20.6,46-46,46H116C93.6,578.8,75,562.8,70.9,541.7z M495.6,580.9c0,25.4-20.6,46-46,46H164c-20.4,0-37.6-13.3-43.7-31.7h281.2c34.5,0,62.4-28,62.4-62.4V120.4c18.4,6,31.6,23.3,31.6,43.7v416.8H495.6z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsNotCompleted.ts": [
-                {
-                    "name": "notCompleted",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsNotCompleted.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?><svg width=\\\"50px\\\" height=\\\"50px\\\" viewBox=\\\"0 0 50 50\\\" version=\\\"1.1\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\"><title>not completed</title><g id=\\\"Status-Examples\\\" stroke=\\\"none\\\" stroke-width=\\\"1\\\" fill=\\\"none\\\" fill-rule=\\\"evenodd\\\" stroke-dasharray=\\\"4\\\"><g id=\\\"Status-Tracker---Submitted-Example\\\" transform=\\\"translate(-801.000000, -1163.000000)\\\" stroke=\\\"#5D5D52\\\" stroke-width=\\\"2\\\"><g id=\\\"Oval-Copy-2\\\" transform=\\\"translate(802.000000, 1164.000000)\\\"><path d=\\\"M24,48 C37.254834,48 48,37.254834 48,24 C48,10.745166 37.254834,0 24,0 C10.745166,0 0,10.745166 0,24 C0,37.254834 10.745166,48 24,48 Z\\\"></path></g></g></g></svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsNote.ts": [
-                {
-                    "name": "note",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsNote.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-note\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M440,48H72A24,24,0,0,0,48,72V440a24,24,0,0,0,24,24H344a38.18,38.18,0,0,0,25-10.34L453.66,369A38.18,38.18,0,0,0,464,344V72A24,24,0,0,0,440,48ZM80,80H432l0,256H360a24,24,0,0,0-24,24v72H80ZM368,409.38V368h41.38ZM320,208H192a16,16,0,0,1,0-32H320a16,16,0,0,1,0,32Zm0,64H192a16,16,0,0,1,0-32H320a16,16,0,0,1,0,32Zm-64,64H192a16,16,0,0,1,0-32h64a16,16,0,0,1,0,32Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsOpenDoors.ts": [
-                {
-                    "name": "openDoors",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsOpenDoors.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-open-doors\\\" viewBox=\\\"0 0 517.2 512\\\">\\n  <path d=\\\"M145.2,196.3h17.1V307.2H145.2ZM511.5,5.5c-.1-.2-.1-.4-.2-.6a6.34,6.34,0,0,0-1.6-2.3c-.1-.1-.3-.2-.4-.4a6.47,6.47,0,0,0-.9-.8,3.38,3.38,0,0,0-1.2-.6.76.76,0,0,0-.4-.2,7.17,7.17,0,0,0-2.9-.6c-.1,0-.2-.1-.3-.1H8.7c-.1.1-.2.2-.3.2A7.17,7.17,0,0,0,5.5.7a.52.52,0,0,0-.4.2,5.17,5.17,0,0,0-1.3.6,6.47,6.47,0,0,0-.9.8l-.4.4A7,7,0,0,0,1,5l-.3.6a9.41,9.41,0,0,0-.6,3V503.5a8,8,0,0,0,.6,3c.1.2.1.4.2.6a6.34,6.34,0,0,0,1.6,2.3c.1.1.3.2.4.4a6.47,6.47,0,0,0,.9.8c.3.2.7.3,1,.5a3.55,3.55,0,0,0,.9.4,10.66,10.66,0,0,0,3,.6H503.6a8,8,0,0,0,3-.6c.3-.1.6-.3.9-.4s.7-.3,1-.5a6.47,6.47,0,0,0,.9-.8c.1-.1.3-.2.4-.4a8.68,8.68,0,0,0,1.6-2.3c.1-.2.1-.4.2-.6a10.47,10.47,0,0,0,.5-3V8.5A8,8,0,0,0,511.5,5.5ZM17.2,20.9,179.3,82.7V429.3L17.2,491.1ZM55,495l135.9-51.8a8.56,8.56,0,0,0,5.5-8V76.8a8.67,8.67,0,0,0-5.5-8L55,17.1H457.2L321.4,68.8a8.56,8.56,0,0,0-5.5,8V435.2a8.67,8.67,0,0,0,5.5,8L457.3,495Zm440-3.9L332.9,429.3V82.7L495,20.9ZM350,204.8h17.1V315.7H350ZM247.6,179.2h17.1v17.1H247.6Zm41.62,25.57,12.09-12.09,12.1,12.09-12.1,12.09Zm-87.85.11,12.09-12.09,12.09,12.09L213.46,217Zm53.13-.28a38.83,38.83,0,0,0-23.4,69.8V321a7.81,7.81,0,0,0,7.8,7.8h7.8v7.8h15.5v-7.8H270a7.81,7.81,0,0,0,7.8-7.8V274.3a38.72,38.72,0,0,0-23.3-69.7Zm7.7,108.7H246.7V297.8h15.5Zm3.8-49.8a7.73,7.73,0,0,0-3.9,6.7v12.1H246.6V270.2a7.73,7.73,0,0,0-3.9-6.7,23.07,23.07,0,0,1-11.7-20,23.35,23.35,0,0,1,46.7,0A23,23,0,0,1,266,263.5Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsPaperPlane.ts": [
-                {
-                    "name": "paperPlane",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsPaperPlane.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-paper-plane\\\" viewBox=\\\"0 0 448 512\\\">\\n  <path d=\\\"M499.79,1,4.35,267.8a8.26,8.26,0,0,0,2.3,15.37l185.24,36.95,36.95,185.24a8.26,8.26,0,0,0,15.37,2.3L511,12.21A8.26,8.26,0,0,0,499.79,1ZM32.38,271.46,458.1,42.23,196.18,304.14ZM240.53,479.62l-32.67-163.8L469.75,53.94Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsPenPaper.ts": [
-                {
-                    "name": "penPaper",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsPenPaper.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-pen-paper\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M288,400H128a16,16,0,0,1,0-32H288a16,16,0,0,1,0,32Zm-80-64a16,16,0,0,0-16-16H128a16,16,0,0,0,0,32h64A16,16,0,0,0,208,336ZM440,80,234.71,306l72.35-15a22.75,22.75,0,0,0,11.54-6.24L473.45,130c9.25-8.88,8.71-24.77-.48-33.61L415.64,39c-8.89-9.19-24.68-9.75-33.59-.49L227.23,193.35A22.84,22.84,0,0,0,221,205l-15,72.32C202.29,293.91,218.1,309.72,234.71,306ZM398.6,67.24l46.16,46.17L297.9,260.27l-58.24,12.07,12.07-58.24ZM450.34,119h0ZM464,440V240a16,16,0,0,0-32,0V432H80V80H272a16,16,0,0,0,0-32H72A24,24,0,0,0,48,72V440a24,24,0,0,0,24,24H440A24,24,0,0,0,464,440Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsPentagon.ts": [
-                {
-                    "name": "pentagon",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsPentagon.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-pentagon\\\" viewBox=\\\"0 0 543.5 512\\\">\\n  <path d=\\\"M0,157.2l83.2,254.5h269.3l83.2-254.5L217.8,0L0,157.2z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsPhoto.ts": [
-                {
-                    "name": "photo",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsPhoto.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-photo\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M440,48H144a24,24,0,0,0-24,24v40H72a24,24,0,0,0-24,24V440a24,24,0,0,0,24,24H376a24,24,0,0,0,24-24V392h40a24,24,0,0,0,24-24V72A24,24,0,0,0,440,48Zm-72,96V346.55l-63.58-60.82a26.85,26.85,0,0,0-40-2.43l-50.67,48.87-22.49-21.51a23.82,23.82,0,0,0-33.39.2L80,387.22V144ZM271.84,432H80l94.73-92.86Zm46.3,0-81.22-77.69,46.25-44.62L368,390.84V432ZM432,360H400V136a24,24,0,0,0-24-24H152V80H432Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsPhotoAlt.ts": [
-                {
-                    "name": "photoAlt",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsPhotoAlt.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-photo-alt\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M440,48H144a24,24,0,0,0-24,24v40H72a24,24,0,0,0-24,24V440a24,24,0,0,0,24,24H376a24,24,0,0,0,24-24V392h40a24,24,0,0,0,24-24V72A24,24,0,0,0,440,48Zm-72,96V346.55l-63.58-60.82a26.85,26.85,0,0,0-40-2.43l-50.67,48.87-22.49-21.51a23.82,23.82,0,0,0-33.39.2L80,387.22V144ZM271.84,432H80l94.73-92.86Zm46.3,0-81.22-77.69,46.25-44.62L368,390.84V432ZM432,360H400V136a24,24,0,0,0-24-24H152V80H432Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsPrint.ts": [
-                {
-                    "name": "print",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsPrint.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-print\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M439.65,160H399.17a17.81,17.81,0,0,0,.83-3.86V67.87C400,56.73,390.53,48,378.44,48H133.57C121.48,48,112,56.73,112,67.87v88.27a18.41,18.41,0,0,0,.82,3.86H72.35A24.27,24.27,0,0,0,48,184.15V375.84A24.28,24.28,0,0,0,72.35,400H112v44c0,11.22,9.48,20,21.57,20H378.44c12.09,0,21.56-8.78,21.56-20V400h39.65A24.28,24.28,0,0,0,464,375.84V184.15A24.27,24.27,0,0,0,439.65,160ZM144,80H368v80H144ZM368,432H144V352H368Zm64-64H400V340c0-11.22-9.47-20-21.56-20H133.57c-12.09,0-21.57,8.78-21.57,20v28H80V192H432Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsQuestion.ts": [
-                {
-                    "name": "question",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsQuestion.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-question\\\" viewBox=\\\"0 0 324 512\\\">\\n  <path d=\\\"M152.31,416.62a36,36,0,0,1-36-36V284.89c0-19.88,15.46-36,45.69-36h0c49.62,0,90-39.68,90-88.44S211.62,72,162,72s-90,39.67-90,88.45a36,36,0,0,1-72,0C0,72,72.67,0,162,0S324,72,324,160.45c0,79.6-58.83,145.83-135.69,158.33v61.84A36,36,0,0,1,152.31,416.62Zm2.6,39.38a28,28,0,1,0,28.35,28A28.18,28.18,0,0,0,154.91,456Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsQuestionCircle.ts": [
-                {
-                    "name": "questionCircle",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsQuestionCircle.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-question-circle\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M245.25,360.61a12,12,0,0,1-12-12V316.49a29.56,29.56,0,0,1,25.23-29.17A83.76,83.76,0,0,0,314,252.16c13.09-19,17.61-42.29,12.72-65.52C320.4,156.45,296,131.27,266,124c-32.48-7.91-64.39,2.88-85.33,28.79a12,12,0,0,1-18.77-15l.1-.12c26.52-32.81,68.59-46.94,109.64-37a106.38,106.38,0,0,1,78.64,81c6.25,29.73.41,59.58-16.45,84.07A107.83,107.83,0,0,1,262.26,311a5.71,5.71,0,0,0-5,5.48v32.13a12,12,0,0,1-12,12Zm2.4,17.94a12,12,0,1,0,11.28,12.68A12,12,0,0,0,247.65,378.55ZM256,512A256,256,0,0,1,75,75,256,256,0,0,1,437,437,254.33,254.33,0,0,1,256,512Zm0-489.07A233.07,233.07,0,0,0,91.19,420.81,233.07,233.07,0,1,0,420.81,91.19,231.55,231.55,0,0,0,256,22.93Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsReceipt.ts": [
-                {
-                    "name": "receipt",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsReceipt.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-receipt\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M320,447a24,24,0,0,1-10.73-2.52L256,417.89l-53.27,26.63a24.1,24.1,0,0,1-21.46,0L128,417.89,82.73,440.52A24,24,0,0,1,48,419.05V72A24,24,0,0,1,72,48H440a24,24,0,0,1,24,24V419.05a24,24,0,0,1-34.73,21.47L384,417.89l-53.27,26.63A24,24,0,0,1,320,447Zm3.58-31.14h0ZM256,385a24,24,0,0,1,10.73,2.52L320,414.11l53.27-26.63a24.1,24.1,0,0,1,21.46,0L432,406.11V80H80V406.11l37.27-18.63a24.1,24.1,0,0,1,21.46,0L192,414.11l53.27-26.63A24,24,0,0,1,256,385Zm80-225a16,16,0,0,0-16-16H128a16,16,0,0,0,0,32H320A16,16,0,0,0,336,160Zm-48,64a16,16,0,0,0-16-16H128a16,16,0,0,0,0,32H272A16,16,0,0,0,288,224Zm-80,64a16,16,0,0,0-16-16H128a16,16,0,0,0,0,32h64A16,16,0,0,0,208,288Zm192,0a16,16,0,0,0-16-16H352a16,16,0,0,0,0,32h32A16,16,0,0,0,400,288Zm0,0a16,16,0,0,0-16-16H352a16,16,0,0,0,0,32h32A16,16,0,0,0,400,288Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsRequest.ts": [
-                {
-                    "name": "request",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsRequest.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-request\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M440,464H72a24,24,0,0,1-24-24V72A24,24,0,0,1,72,48H272a16,16,0,0,1,0,32H80V432H432V240a16,16,0,0,1,32,0V440A24,24,0,0,1,440,464ZM186.71,354.05l72.32-15a22.93,22.93,0,0,0,11.57-6.24L473.46,130c9.12-9.11,8.9-24.17-.49-33.59L415.64,39c-9.38-9.41-24.45-9.62-33.6-.5L179.14,241.44A22.87,22.87,0,0,0,173,253L158,325.3a24.56,24.56,0,0,0,23.94,29.23A24.67,24.67,0,0,0,186.71,354.05ZM398.6,67.23l46.16,46.18L249.92,308.25l-58.25,12.08,12.07-58.25ZM450.33,119h0Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsReset.ts": [
-                {
-                    "name": "reset",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsReset.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-reset\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M511.92,177.87c-.32-4.68-9-115.19-130.7-158.71C300.42-10.66,122.15-25.7,25.84,130.8l-.47.76c-1.83,3.16-44.64,78-14.88,156C31,341.34,79,381.4,153.29,406.67a358.63,358.63,0,0,0,47.76,15.26q19.88,3.19,19.87,4.81V512L379.83,399.05,220.92,254.87V344.6c-16.63-4.72-37.69-9.09-37.88-9.17l-3.16-1.21c-51.61-17.37-83.95-42-96.11-73.28C67.38,218.8,91.13,173.55,93,170.21c86.65-139.93,254-81.41,261.29-78.75,69.47,24.85,78.75,83.1,79.67,90.68V476.75H512V180.39Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsResetFilter.ts": [
-                {
-                    "name": "resetFilter",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsResetFilter.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-reset-filter\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M511.92,177.87c-.32-4.68-9-115.19-130.7-158.71C300.42-10.66,122.15-25.7,25.84,130.8l-.47.76c-1.83,3.16-44.64,78-14.88,156C31,341.34,79,381.4,153.29,406.67a358.63,358.63,0,0,0,47.76,15.26q19.88,3.19,19.87,4.81V512L379.83,399.05,220.92,254.87V344.6c-16.63-4.72-37.69-9.09-37.88-9.17l-3.16-1.21c-51.61-17.37-83.95-42-96.11-73.28C67.38,218.8,91.13,173.55,93,170.21c86.65-139.93,254-81.41,261.29-78.75,69.47,24.85,78.75,83.1,79.67,90.68V476.75H512V180.39Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsRulerPencil.ts": [
-                {
-                    "name": "rulerPencil",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsRulerPencil.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-ruler-pencil\\\" viewBox=\\\"0 0 448 512\\\">\\n  <path d=\\\"M115.64,99.1a33,33,0,1,0-33-33A33,33,0,0,0,115.64,99.1Zm0-49.55A16.52,16.52,0,1,1,99.12,66.06,16.52,16.52,0,0,1,115.64,49.55ZM173.46,0H8.26A8.26,8.26,0,0,0,0,8.26V503.74A8.26,8.26,0,0,0,8.26,512h165.2a8.26,8.26,0,0,0,8.26-8.26V8.26A8.26,8.26,0,0,0,173.46,0ZM165.2,495.48H16.52V462.72H42.45a8.26,8.26,0,1,0,0-16.52H16.52V400.1H42.45a8.26,8.26,0,1,0,0-16.52H16.52V337.47H42.45a8.26,8.26,0,1,0,0-16.52H16.52V274.85H42.45a8.26,8.26,0,1,0,0-16.52H16.52V212.22H42.45a8.26,8.26,0,1,0,0-16.52H16.52V16.52H165.2ZM412.83,89.18s0-.08,0-.11A8.25,8.25,0,0,0,410.58,85L328,2.42a8.26,8.26,0,0,0-11.68,0L233.7,85a8.25,8.25,0,0,0-2.21,4.07s0,.08,0,.11a8.25,8.25,0,0,0-.17,1.66v412.9a8.26,8.26,0,0,0,8.26,8.26h165.2a8.26,8.26,0,0,0,8.26-8.26V90.84A8.25,8.25,0,0,0,412.83,89.18ZM396.48,99.1V429.42H247.8V99.1ZM247.8,445.94H396.48v16.52H247.8Zm74.34-426L384.8,82.58H259.48ZM247.8,495.48V479H396.48v16.52Z\\\"/>\\n</svg>\""
                 }
             ],
             "libs/packages/components/src/lib/accordion/accordion-base.ts": [
@@ -22154,30 +20358,6 @@ const COMPONENTS = {
                     "defaultValue": "{\n  toastComponent: SdsToastComponent,\n  timeOut: 6000,\n  toastClass: 'sds-toast',\n  positionClass: 'toast-bottom-left',\n}"
                 }
             ],
-            "libs/packages/components/src/lib/toolbar/toolbar-animations.ts": [
-                {
-                    "name": "sdsToolbarAnimations",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/toolbar/toolbar-animations.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "literal type",
-                    "defaultValue": "{\n  /** Animation that expands and collapses the accordion item content. */\n  bodyExpansion: trigger('bodyExpansion', [\n    state('collapsed, void', style({ width: '0px', height: '0px', opacity: '0', visibility: 'hidden', marginLeft: '-1px', marginBottom: '-1px' })),\n    state('expanded', style({ width: '{{expandedWidth}}', height: '*', opacity: '1', visibility: 'visible', marginLeft: '-1px', marginBottom: '-1px' }), {\n      params: { expandedWidth: '300px' }\n    }),\n    transition('expanded <=> collapsed, void => collapsed',\n      animate(TOOLBAR_ANIMATION_TIMING)),\n  ])\n}"
-                },
-                {
-                    "name": "TOOLBAR_ANIMATION_TIMING",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/toolbar/toolbar-animations.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "'225ms cubic-bezier(0.4,0.0,0.2,1)'",
-                    "rawdescription": "Time and timing curve for accordion item animations.",
-                    "description": "<p>Time and timing curve for accordion item animations.</p>\n"
-                }
-            ],
             "libs/packages/components/src/lib/truncate-text/truncate-text-animations.ts": [
                 {
                     "name": "sdsTruncateTextAnimations",
@@ -22188,150 +20368,6 @@ const COMPONENTS = {
                     "deprecationMessage": "",
                     "type": "literal type",
                     "defaultValue": "{\n  container: trigger('container', [\n    state(\n      'void',\n      style({\n        opacity: 0,\n        transform: 'scale(0.8)'\n      })\n    ),\n    transition(\n      'void => enter',\n      group([\n        query(\n          '.sds-overlay',\n          animate(\n            '100ms linear',\n            style({\n              opacity: 1\n            })\n          )\n        ),\n        animate(\n          '120ms cubic-bezier(0, 0, 0.2, 1)',\n          style({ transform: 'scale(1)' })\n        )\n      ])\n    ),\n    transition('* => void', animate('100ms 25ms linear', style({ opacity: 0 })))\n  ])\n}"
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsSearch.ts": [
-                {
-                    "name": "search",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsSearch.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-search\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M459.32,436.69,345.51,322.89A167.24,167.24,0,0,0,384,216c0-92.63-75.36-168-168-168S48,123.37,48,216s75.37,168,168,168a167.24,167.24,0,0,0,106.89-38.49l113.8,113.81a16,16,0,0,0,22.63-22.63ZM80,216c0-75,61-136,136-136s136,61,136,136S291,352,216,352,80,291,80,216Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsSearchCircle.ts": [
-                {
-                    "name": "searchCircle",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsSearchCircle.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-search-circle\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M256,0C114.62,0,0,114.62,0,256S114.62,512,256,512,512,397.38,512,256,397.38,0,256,0Zm0,497.48C122.64,497.48,14.52,389.36,14.52,256S122.64,14.52,256,14.52,497.48,122.64,497.48,256,389.36,497.48,256,497.48ZM409.1,359.81l-144-118a92.41,92.41,0,1,0-10.78,13.84L398,373.38a8.79,8.79,0,0,0,12.34-1.22h0A8.8,8.8,0,0,0,409.1,359.81ZM197.88,270.15a78.7,78.7,0,1,1,67.17-88.75A78.71,78.71,0,0,1,197.88,270.15Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsShare.ts": [
-                {
-                    "name": "share",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsShare.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-share\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M440,464H72a24,24,0,0,1-24-24V264a24,24,0,0,1,24-24h72c20.93.1,20.92,31.91,0,32H80V432H432V272H352c-20.93-.1-20.92-31.91,0-32h88a24,24,0,0,1,24,24V440A24,24,0,0,1,440,464Zm0-192h0ZM377.3,131l-112-80a16,16,0,0,0-18.6,0l-112,80c-17,12.26,1.51,38.09,18.6,26L240,95.09V368c.1,20.93,31.91,20.92,32,0V95.09L358.7,157C375.72,169.1,394.31,143.24,377.3,131Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsShip.ts": [
-                {
-                    "name": "ship",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsShip.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-ship\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M447.7,254.6c-1.1-7.6-5.8-14.2-12.5-17.8L352,216.2v-64.5c0-13.3-10.7-24-24-24h-56V95.6h16 c20.9-0.1,20.9-31.9,0-32h-64c-20.9,0.1-20.9,31.9,0,32h16v32.2h-56c-13.3,0-24,10.7-24,24l0,0V216l-79.5,19.3 c-15.8,4.7-21.6,24.9-11.2,37.5l57.3,103.2c10.2,18.3,38.1,2.8,28-15.5l-54-97.2l139.4-34v74.1c0.1,20.9,31.9,20.9,32,0v-74.1 l139.4,34l-54,97.2c-10.1,18.4,17.8,33.8,28,15.5l57.3-103.2C446.9,267.7,448.7,261.1,447.7,254.6z M192,159.7h128v48.6l-54.8-13.5 c-5.9-2.4-12.5-2.4-18.4,0L192,208.2V159.7z M397.8,440.4c-4.4,7.7-14.1,10.4-21.8,6l-23.7-13.5l-21.1,11.6 c-7.1,3.9-15.6,3.9-22.7-0.1l-20.6-11.6l-20.6,11.5c-7.1,4-15.8,4-22.9-0.1l-20.1-11.4l-20.8,11.5c-7.1,4-15.8,4-22.8-0.1 l-20.3-11.5l-24.9,13.6c-18.4,10-33.7-17.9-15.4-28.1l29.1-16c7.1-3.9,15.7-3.8,22.8,0.2l20.2,11.5l20.8-11.6c7.1-4,15.8-4,22.9,0.1 l20,11.4l20.5-11.5c7.1-4,15.7-4,22.8,0l20.7,11.6l21.1-11.6c7.1-3.9,15.7-3.9,22.8,0.1l28,15.9 C399.5,422.9,402.2,432.7,397.8,440.4z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsStackblitz.ts": [
-                {
-                    "name": "stackblitz",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsStackblitz.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-stackblitz\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M 337.3568 83.3448 L 137.984 296.7976 h 104.192 l -59.9808 150.3744 l 199.3728 -213.4528 H 276.8128 z M 346.368 93.764 l -24.7808 59.136 l 112.64 112.64 l -96.8704 97.7152 v 83.9168 L 518.7072 265.54 z M 182.1952 83.3448 v 83.9168 L 85.0432 265.54 l 112.64 112.0768 l -24.4992 59.9808 L 0.5632 265.54 z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsStar.ts": [
-                {
-                    "name": "star",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsStar.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-star\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M349.8,337.4L399.7,506L242.4,385.2L83.1,511.9l55.7-174.5L-0.1,204.3H177L242.4-0.1L317,204.3h194.9 L349.8,337.4z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsTablet.ts": [
-                {
-                    "name": "tablet",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsTablet.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-tablet\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M424,16H88A24,24,0,0,0,64,40V472a24,24,0,0,0,24,24H424a24,24,0,0,0,24-24V40A24,24,0,0,0,424,16Zm-8,32V368H96V48ZM96,464V400H416v64Zm176-32a16,16,0,1,1-16-16A16,16,0,0,1,272,432Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsTag.ts": [
-                {
-                    "name": "tag",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsTag.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-tag\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M288,464h0a16,16,0,0,1-11.33-4.73L69.91,250.94a16.11,16.11,0,0,1-4.64-11.28V81.27a16,16,0,0,1,16-16H239.66a16.11,16.11,0,0,1,11.28,4.64L459.27,276.64a16,16,0,0,1,0,22.63l0,0-160,160A16,16,0,0,1,288,464ZM97.27,233.07,288.05,425.33,425.33,288.05,233.07,97.27H97.27ZM152,128a24,24,0,1,0,24,24A24,24,0,0,0,152,128Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsThumbDown.ts": [
-                {
-                    "name": "thumbDown",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsThumbDown.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-thumb-down\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M410,112H208.47a22.52,22.52,0,0,0-11.11,3l-10.79,6.19A25.11,25.11,0,0,0,167.11,112H104.89C91.17,112,80,122.86,80,136.2V292.14c0,13.36,11.17,24.22,24.89,24.22h62.22a24.9,24.9,0,0,0,23.28-15.68h10.7l22.22,23.54v69.9c0,12.06,9.94,21.88,22.94,21.88C279,416,314,394.72,314,363V332h95.84A22.11,22.11,0,0,0,432,310V133.87A22,22,0,0,0,410,112ZM112,144h48V284.36H112ZM400,300H304a22,22,0,0,0-22,21.89V363c0,8.33-12.28,17.06-26.69,20V320.11c0-6-2.55-11.8-6.16-15.07L222,276.23a24.1,24.1,0,0,0-17.51-7.55H192V154.9L211.05,144H400Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsThumbUp.ts": [
-                {
-                    "name": "thumbUp",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsThumbUp.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-thumb-up\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M409.84,180H314V149c0-31.69-35-53-68.53-53a22,22,0,0,0-22.16,21.88v69.84l-22.22,23.6H190.32a24.84,24.84,0,0,0-23.21-15.67H104.89c-13.73,0-24.89,10.86-24.89,24.2V375.79C80,389.14,91.16,400,104.89,400h62.22a25,25,0,0,0,19.36-9.18l10.92,6.25A22.51,22.51,0,0,0,208.46,400H410a22,22,0,0,0,22-21.88V202A22.12,22.12,0,0,0,409.84,180ZM160,368H112V227.65h48V368Zm240,0H211l-19-10.9V243.32h12.49A24.21,24.21,0,0,0,222,235.77l26.36-28.05a21.6,21.6,0,0,0,6.93-15.83v-63C269.47,131.74,282,140.55,282,149V190.1A22,22,0,0,0,304,212h96Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsTrash.ts": [
-                {
-                    "name": "trash",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsTrash.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-trash\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M432,96H320V72a24,24,0,0,0-24-24H216a24,24,0,0,0-24,24V96H80a16,16,0,0,0,0,32H96V440a24,24,0,0,0,24,24H392a24,24,0,0,0,24-24V128h16a16,16,0,0,0,0-32ZM224,80h64V96H224ZM384,432H128V128H384ZM272,352V208a16,16,0,0,1,32,0V352a16,16,0,0,1-32,0Zm-64,0V208a16,16,0,0,1,32,0V352a16,16,0,0,1-32,0Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsTriangle.ts": [
-                {
-                    "name": "triangle",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsTriangle.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-triangle\\\" viewBox=\\\"0 0 589.6 512\\\">\\n  <path d=\\\"M566.4,0L457.6,512L0,147.1L566.4,0z\\\"/>\\n</svg>\""
                 }
             ],
             "libs/packages/components/src/lib/accordion/accordion-item.component.ts": [
@@ -22358,128 +20394,6 @@ const COMPONENTS = {
                     "deprecationMessage": "",
                     "type": "number",
                     "defaultValue": "0"
-                }
-            ],
-            "libs/packages/components/src/lib/toolbar/toolbar.component.ts": [
-                {
-                    "name": "uniqueId",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/toolbar/toolbar.component.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "number",
-                    "defaultValue": "0",
-                    "rawdescription": "Counter for generating unique element ids.",
-                    "description": "<p>Counter for generating unique element ids.</p>\n"
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsUnlink.ts": [
-                {
-                    "name": "unlink",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsUnlink.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-unlink\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M182.26,440.76A80,80,0,0,1,116.84,314.9l45.88-65.53a16,16,0,0,1,26.22,18.36l-45.89,65.53a48,48,0,0,0,78.64,55.06l45.88-65.53a16,16,0,0,1,26.22,18.36l-45.88,65.53A80,80,0,0,1,182.26,440.76Zm154-171.07a16,16,0,0,1-13.09-25.18L369,179a48,48,0,1,0-78.18-55.71l-.45.64-45.88,65.54a16,16,0,1,1-26.22-18.36l45.88-65.54a80,80,0,0,1,131.07,91.78h0l-45.88,65.54A16,16,0,0,1,336.24,269.69Zm11.37,66.74a16,16,0,0,1-9.18-2.91L155.12,204.79a16,16,0,0,1,18.39-26.19L356.82,307.34a16,16,0,0,1-9.21,29.09Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsUpload.ts": [
-                {
-                    "name": "upload",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsUpload.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-upload\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M448,408a16,16,0,0,1-16,16H80a16,16,0,0,1,0-32H432A16,16,0,0,1,448,408ZM153.3,197,240,135.08V328a16,16,0,0,0,32,0V135.08L358.7,197a16,16,0,1,0,18.6-26l-112-80a16,16,0,0,0-18.6,0l-112,80a16,16,0,1,0,18.6,26Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsUser.ts": [
-                {
-                    "name": "user",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsUser.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-user\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M256,240a96,96,0,1,1,96-96A96.1,96.1,0,0,1,256,240Zm0-160a64,64,0,1,0,64,64A64.07,64.07,0,0,0,256,80ZM416,456V350a78.07,78.07,0,0,0-78-78H174a78.07,78.07,0,0,0-78,78V456a16,16,0,0,0,32,0V350a46,46,0,0,1,46-46H338a46,46,0,0,1,46,46V456a16,16,0,0,0,32,0Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsUserCircle.ts": [
-                {
-                    "name": "userCircle",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsUserCircle.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-user-circle\\\" viewBox=\\\"0 0 448 512\\\">\\n  <path d=\\\"M257,279.27A100.85,100.85,0,1,0,156.15,178.42,100.85,100.85,0,0,0,257,279.27Zm0-186.18a85.33,85.33,0,1,1-85.33,85.33A85.33,85.33,0,0,1,257,93.09ZM257,0C115.62,0,1,114.62,1,256S115.62,512,257,512,513,397.38,513,256,398.38,0,257,0Zm0,15.52c132.82,0,240.48,107.67,240.48,240.48a239.41,239.41,0,0,1-49.15,145.67c-28.3-62.14-98.49-91.37-191-91.37-92.83,0-163.15,29.44-191.25,92A239.42,239.42,0,0,1,16.52,256C16.52,123.18,124.18,15.52,257,15.52Zm0,481A239.88,239.88,0,0,1,77.15,415.62,7.74,7.74,0,0,0,78,414c23.36-59.43,89.25-88.17,179.34-88.17,89.14,0,154.68,28.18,178.63,86.39a7.73,7.73,0,0,0,1.65,2.5A239.9,239.9,0,0,1,257,496.48Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsUsers.ts": [
-                {
-                    "name": "users",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsUsers.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-users\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M136,352a56,56,0,1,1,56-56A56.07,56.07,0,0,1,136,352Zm0-80a24,24,0,1,0,24,24A24,24,0,0,0,136,272Zm88,176V430.48A62.55,62.55,0,0,0,161.52,368h-51A62.55,62.55,0,0,0,48,430.48V448a16,16,0,0,0,32,0V430.48A30.51,30.51,0,0,1,110.48,400h51A30.51,30.51,0,0,1,192,430.48V448a16,16,0,0,0,32,0Zm152-96a56,56,0,1,1,56-56A56.07,56.07,0,0,1,376,352Zm0-80a24,24,0,1,0,24,24A24,24,0,0,0,376,272Zm88,176V430.48A62.55,62.55,0,0,0,401.52,368h-51A62.55,62.55,0,0,0,288,430.48V448a16,16,0,0,0,32,0V430.48A30.51,30.51,0,0,1,350.48,400h51A30.51,30.51,0,0,1,432,430.48V448a16,16,0,0,0,32,0ZM256,144a56,56,0,1,1,56-56A56.07,56.07,0,0,1,256,144Zm0-80a24,24,0,1,0,24,24A24,24,0,0,0,256,64Zm88,158.48A62.55,62.55,0,0,0,281.52,160h-51A62.55,62.55,0,0,0,168,222.48c.09,20.92,31.91,20.93,32,0A30.51,30.51,0,0,1,230.48,192h51A30.51,30.51,0,0,1,312,222.48a16,16,0,1,0,32,0Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsVideoCircle.ts": [
-                {
-                    "name": "videoCircle",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsVideoCircle.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-video-circle\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M225.2,352a16,16,0,0,1-16-16V176a16,16,0,0,1,16-16,15.64,15.64,0,0,1,9.3,3l112,80a16,16,0,0,1,3.7,22.3,16.24,16.24,0,0,1-3.7,3.7l-112,80A16.59,16.59,0,0,1,225.2,352Zm16-144.9v97.8L309.7,256Zm16,272.9c-123.5,0-224-100.5-224-224S133.7,32,257.2,32s224,100.5,224,224S380.7,480,257.2,480Zm0-416c-105.9,0-192,86.1-192,192s86.1,192,192,192,192-86.1,192-192S363,64,257.2,64Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsVideoPlay.ts": [
-                {
-                    "name": "videoPlay",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsVideoPlay.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-video-play\\\" viewBox=\\\"0 0 512 476\\\">\\n  <path d=\\\"M238,115.86a13,13,0,0,1-13-12.94v-90a12.95,12.95,0,0,1,25.9,0v90A13,13,0,0,1,238,115.86ZM178.57,370.72a13,13,0,0,1-12.95-13h0V190.32A12.95,12.95,0,0,1,185,179.11l145,83.73a13,13,0,0,1,0,22.43L185,369A12.94,12.94,0,0,1,178.57,370.72Zm12.95-158v122.6L297.7,274ZM278,39.47v26.3c115,22,190.35,133.12,168.32,248.11A212,212,0,0,1,387.9,424C305,506.75,170.75,506.64,88,423.76s-82.64-217.15.24-299.9a211.21,211.21,0,0,1,109.68-58.1V39.47C85.57,58.5,0,156.27,0,274,0,405.47,106.53,512,238,512S476,405.47,476,274C475.9,156.27,390.34,58.5,278,39.47Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsVideoSquare.ts": [
-                {
-                    "name": "videoSquare",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsVideoSquare.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-video-square\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M217.1,285a16,16,0,0,0,17-2l80-64.57a16,16,0,0,0,0-24.91l-80-64.57A16,16,0,0,0,208,141.38V270.52A16,16,0,0,0,217.1,285ZM240,174.85,278.52,206,240,237ZM448,46.52H64a16,16,0,0,0-16,16v288a16,16,0,0,0,16,16H448a16,16,0,0,0,16-16v-288A16,16,0,0,0,448,46.52Zm-16,288H80v-256H432Zm16,80H219.55a31.72,31.72,0,0,0-55.1,0H64a16,16,0,0,0,0,32H164.45a31.72,31.72,0,0,0,55.1,0H448a16,16,0,0,0,0-32Zm-256,0a16,16,0,1,1-16,16,16,16,0,0,1,16-16Z\\\"/>\\n</svg>\""
-                }
-            ],
-            "libs/packages/components/src/lib/icon/custom-icons/sdsWorkspace.ts": [
-                {
-                    "name": "workspace",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/packages/components/src/lib/icon/custom-icons/sdsWorkspace.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "\"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" width=\\\"16\\\" height=\\\"16\\\" fill=\\\"currentColor\\\" class=\\\"bi sds-workspace\\\" viewBox=\\\"0 0 512 512\\\">\\n  <path d=\\\"M216,240H72a24,24,0,0,1-24-24V72A24,24,0,0,1,72,48H216a24,24,0,0,1,24,24V216A24,24,0,0,1,216,240ZM80,208H208V80H80Zm360,32H296a24,24,0,0,1-24-24V72a24,24,0,0,1,24-24H440a24,24,0,0,1,24,24V216A24,24,0,0,1,440,240ZM304,208H432V80H304ZM216,461.34H72a24,24,0,0,1-24-24v-144a24,24,0,0,1,24-24H216a24,24,0,0,1,24,24v144A24,24,0,0,1,216,461.34Zm-136-32H208v-128H80Zm360,32H296a24,24,0,0,1-24-24v-144a24,24,0,0,1,24-24H440a24,24,0,0,1,24,24v144A24,24,0,0,1,440,461.34Zm-136-32H432v-128H304Z\\\"/>\\n</svg>\""
                 }
             ]
         },
@@ -23655,19 +21569,6 @@ const COMPONENTS = {
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "<p>Accordion Item&#39;s states.</p>\n",
-                    "kind": 183
-                }
-            ],
-            "libs/packages/components/src/lib/toolbar/toolbar.component.ts": [
-                {
-                    "name": "SdsToolbarState",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "\"expanded\" | \"collapsed\"",
-                    "file": "libs/packages/components/src/lib/toolbar/toolbar.component.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "<p>Toolbar&#39;s states.</p>\n",
                     "kind": 183
                 }
             ]
