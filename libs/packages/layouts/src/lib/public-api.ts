@@ -14,8 +14,6 @@ export * from './feature/footer/model/FooterModel';
 export * from './feature/header/model/HeaderModel';
 export * from './feature/header/header.component';
 export * from './feature/footer/footer.component';
-export * from './feature/side-toolbar/side-toolbar.module';
-export * from './feature/side-toolbar/side-toolbar.component';
 export * from './feature/system-alert/system-alert.module';
 export * from './feature/system-alert/system-alert.component';
 export * from './feature/system-alert/model/alert.model';
