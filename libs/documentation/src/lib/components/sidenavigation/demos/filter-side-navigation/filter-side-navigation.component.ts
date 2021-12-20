@@ -29,6 +29,7 @@ export class FilterSideNavigationComponent implements OnInit, AfterViewInit {
   };
 
   public filterChange$ = new BehaviorSubject<object>([]);
+  
   public navigationModel: SelectionPanelModel = {
     navigationLinks: navigationConfig.navigationLinks,
     selectionMode: 'SELECTION'
@@ -37,35 +38,6 @@ export class FilterSideNavigationComponent implements OnInit, AfterViewInit {
   public filterPanelConfig;
 
   selectedPanel: NavigationLink = this.navigationModel.navigationLinks[1];
-
-  listConfig: SearchListConfiguration = {
-    defaultSortValue: 'legalBusinessName',
-    pageSize: 25,
-    sortList: [
-      { text: 'Entity Name', value: 'legalBusinessName' },
-      { text: 'Status', value: 'registrationStatus' },
-    ],
-  };
-
-  /* Sort config change demo */
-  defaultListConfig: SearchListConfiguration = {
-    defaultSortValue: 'legalBusinessName',
-    pageSize: 25,
-    sortList: [
-      { text: 'Entity Name', value: 'legalBusinessName' },
-      { text: 'Status', value: 'registrationStatus' },
-    ],
-  };
-
-  updatedListConfig: SearchListConfiguration = {
-    defaultSortValue: 'cageCode',
-    pageSize: 25,
-    sortList: [
-      { text: 'Entity Name', value: 'legalBusinessName' },
-      { text: 'Cage Code', value: 'cageCode' },
-      { text: 'Status', value: 'registrationStatus' },
-    ],
-  };
 
   constructor(
     public service: DataService,
@@ -89,19 +61,11 @@ export class FilterSideNavigationComponent implements OnInit, AfterViewInit {
       isHistoryEnabled: true,
     };
   }
+
   ngAfterViewInit() {
     this.filterChange$.subscribe((res) => {
       console.log('filter has changed')
     });
-  }
-
-  updateConfig(update: boolean) {
-    if (update) {
-      this.listConfig = { ...this.updatedListConfig };
-    } else {
-      this.listConfig = { ...this.defaultListConfig };
-    }
-    console.log('config updated')
   }
 
   onPanelSelection($event: NavigationLink) {
