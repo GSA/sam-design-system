@@ -131,6 +131,10 @@ export class SdsTreeTableComponent {
       if (data.children) {
         this.toggleAllHelper(data.children, expanded);
         data.expanded = expanded;
+
+        if (!expanded) {
+          data.viewAllChildren = false;
+        }
       }
     });
   }
@@ -166,6 +170,7 @@ export class SdsTreeTableComponent {
 
   private collapseRowHelper(row: any) {
     row.expanded = false;
+    row.viewAllChildren = false;
     if (row.children) {
       row.children.forEach(child => this.collapseRowHelper(child));
     }
@@ -240,6 +245,10 @@ export class SdsTreeTableComponent {
   onRowClicked(row: SdsTreeTableData, tableRow: HTMLTableRowElement) {
     if (row.children || row.totalChildren > 0) {
       row.expanded = !row.expanded;
+    }
+
+    if (!row.expanded) {
+      row.viewAllChildren = false;
     }
 
     this._selectedRow = row;
