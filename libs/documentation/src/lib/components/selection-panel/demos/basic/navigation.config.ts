@@ -4,7 +4,7 @@ export let selectionPanelConfig: SideNavigationModel = {
   navigationLinks: [
 
 
-    { text: 'Contract Opportunities', route: '/documentation/components/selection-panel/examples#test', id: 'linkc1p1', mode: NavigationMode.INTERNAL },
+    { text: 'Contract Opportunities', route: '/documentation/components/selection-panel/examples#contractOpp', id: 'linkc1p1', mode: NavigationMode.INTERNAL },
     {
       text: 'Contract Data', route: '/documentation/components/selection-panel/examples', queryParams: { 'item': 'Contract Data' }, id: 'linkc2p1', mode: NavigationMode.INTERNAL
     },
