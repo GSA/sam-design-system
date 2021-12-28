@@ -50,7 +50,7 @@ export class SdsSelectionPanelNavigationModeComponent implements OnChanges {
       relativeTo: this.activatedRoute
     }
 
-    this.router.navigate(['.'], navigationExtras);
+    this.router.navigateByUrl(selectedPanel.route, navigationExtras);
   }
 
   /** Public interface to select panel item */
