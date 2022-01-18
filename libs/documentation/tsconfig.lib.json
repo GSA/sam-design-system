@@ -18,10 +18,6 @@
         "dist/libs/components",
         "libs/packages/components/src/index.ts"
       ],
-      "@gsa-sam/layouts": [
-        "dist/libs/layouts",
-        "libs/packages/layouts/src/index.ts"
-      ],
       "@gsa-sam/sam-formly": [
         "dist/libs/sam-formly",
         "libs/packages/sam-formly/src/index.ts"
