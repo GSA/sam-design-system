@@ -200,12 +200,13 @@ export class SdsTreeTableComponent {
       setTimeout(() => {
         const firstRect = parentRow.getBoundingClientRect();
         const rowRect = row.getBoundingClientRect();
-    
+        
         const yFirstRect = firstRect.top + firstRect.height / 2;
         const yRowRect = rowRect.top + rowRect.height / 2;
-    
+
         const height = yRowRect - yFirstRect - 20;
         border.style.height = `${height}px`;
+        border.style.bottom = `${rowRect.height / 2}px`;
       })
     })
   }
