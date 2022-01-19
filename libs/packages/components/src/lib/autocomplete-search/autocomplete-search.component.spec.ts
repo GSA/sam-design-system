@@ -1,5 +1,11 @@
 /* tslint:disable */
-import { ComponentFixture, TestBed, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  TestBed,
+  fakeAsync,
+  tick,
+  waitForAsync,
+} from '@angular/core/testing';
 import { SDSAutocompleteSearchComponent } from './autocomplete-search.component';
 import { SDSAutocompleteSearchConfiguration } from './models/SDSAutocompleteConfiguration';
 import { FormsModule } from '@angular/forms';
@@ -16,13 +22,20 @@ describe('SamAutocompleteComponent', () => {
   let component: SDSAutocompleteSearchComponent;
   let fixture: ComponentFixture<SDSAutocompleteSearchComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [SDSAutocompleteSearchComponent],
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [SDSAutocompleteSearchComponent],
 
-      imports: [FormsModule, OverlayModule, IconModule, NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))]
-    }).compileComponents();
-  }));
+        imports: [
+          FormsModule,
+          OverlayModule,
+          IconModule,
+          NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons)),
+        ],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SDSAutocompleteSearchComponent);
@@ -71,7 +84,7 @@ describe('SamAutocompleteComponent', () => {
 
   it('Should have empty results with invalid search', fakeAsync(() => {
     const event = {
-      preventDefault: () => { },
+      preventDefault: () => {},
       target: component.input.nativeElement,
     };
     component.input.nativeElement.value = 'search';
@@ -88,7 +101,7 @@ describe('SamAutocompleteComponent', () => {
 
   it('Should have results with minimumCharacterCountSearch', fakeAsync(() => {
     const event = {
-      preventDefault: () => { },
+      preventDefault: () => {},
       target: component.input.nativeElement,
     };
     component.input.nativeElement.value = 'R';
@@ -104,7 +117,7 @@ describe('SamAutocompleteComponent', () => {
   it('Should have results with input and free text search on', fakeAsync(() => {
     component.inputValue = 'search text';
     const event = {
-      preventDefault: () => { },
+      preventDefault: () => {},
       key: 'Enter',
       target: { value: component.inputValue },
     };
@@ -119,7 +132,7 @@ describe('SamAutocompleteComponent', () => {
 
   it('Should have results key press', fakeAsync(() => {
     const event = {
-      preventDefault: () => { },
+      preventDefault: () => {},
       target: component.input.nativeElement,
     };
     component.input.nativeElement.value = 'Formu';
@@ -137,7 +150,7 @@ describe('SamAutocompleteComponent', () => {
 
   it('Should not highlight first result if free text is on', fakeAsync(() => {
     const event = {
-      preventDefault: () => { },
+      preventDefault: () => {},
       target: component.input.nativeElement,
     };
     component.configuration.isFreeTextEnabled = true;
@@ -154,7 +167,7 @@ describe('SamAutocompleteComponent', () => {
 
   it('Should have empty results key press minimumCharacterCountSearch', fakeAsync(() => {
     const event = {
-      preventDefault: () => { },
+      preventDefault: () => {},
       key: 'd',
       target: { value: 'id' },
     };
@@ -344,7 +357,7 @@ describe('SamAutocompleteComponent', () => {
 
   it('Should have delete have results', fakeAsync(() => {
     const event = {
-      preventDefault: () => { },
+      preventDefault: () => {},
       target: component.input.nativeElement,
     };
     component.input.nativeElement.value = 'id';
@@ -366,7 +379,7 @@ describe('SamAutocompleteComponent', () => {
     const event = {
       key: 'Escape',
       target: { value: 'id' },
-      preventDefault: () => { },
+      preventDefault: () => {},
     };
     component.onKeydown(event);
     fixture.detectChanges();
@@ -397,13 +410,13 @@ describe('SamAutocompleteComponent', () => {
     const event = {
       key: 'Enter',
       target: { value: 'id' },
-      preventDefault: () => { },
+      preventDefault: () => {},
     };
     component.onKeydown(event);
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
-    expect(component.model.items.length).toBe(0);
+    expect(component.model.items.length).toBe(1);
   }));
 
   it('Should return only essentialModelFields', fakeAsync(() => {
@@ -416,13 +429,13 @@ describe('SamAutocompleteComponent', () => {
     const event = {
       key: 'Enter',
       target: { value: 'id' },
-      preventDefault: () => { },
+      preventDefault: () => {},
     };
     component.onKeydown(event);
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
-    expect(component.model.items.length).toBe(0);
+    expect(component.model.items.length).toBe(1);
   }));
 
   it('clearInput and results closed', fakeAsync(() => {
@@ -516,7 +529,7 @@ describe('SamAutocompleteComponent', () => {
     const event = {
       key: 'Enter',
       target: { value: component.inputValue },
-      preventDefault: () => { },
+      preventDefault: () => {},
     };
     component.onKeydown(event);
     fixture.detectChanges();
@@ -529,7 +542,7 @@ describe('SamAutocompleteComponent', () => {
     component.configuration.inputReadOnly = true;
     const event = {
       key: 'a',
-      preventDefault: () => { },
+      preventDefault: () => {},
     };
     component.onkeypress(event);
     fixture.detectChanges();
@@ -545,7 +558,7 @@ describe('SamAutocompleteComponent', () => {
     component.configuration.inputReadOnly = true;
     const event = {
       key: 'Backspace',
-      preventDefault: () => { },
+      preventDefault: () => {},
       target: {
         value: component.inputValue,
       },
@@ -564,7 +577,7 @@ describe('SamAutocompleteComponent', () => {
     const event = {
       key: 'a',
       target: { value: component.inputValue },
-      preventDefault: () => { },
+      preventDefault: () => {},
     };
     component.onkeypress(event);
     fixture.detectChanges();
