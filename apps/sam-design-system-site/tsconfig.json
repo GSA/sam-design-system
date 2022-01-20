@@ -35,9 +35,6 @@
     },
     {
       "path": "libs/packages/sam-formly"
-    },
-    {
-      "path": "libs/packages/layouts"
     }
   ],
   "include": [
