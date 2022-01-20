@@ -20,9 +20,8 @@
 
 <ng-template #sideNavRouteLinkTemplate let-link>
   <a [attr.class]="link.selected ? ' usa-current' : ''" [routerLink]="[link.route]" (click)="linkClickEvent(link)"
-    [queryParams]="link.queryParams" 
-    [queryParamsHandling]="link.queryParamsHandling">
-      <span>{{link.text}}</span>
+    [queryParams]="link.queryParams" [queryParamsHandling]="link.queryParamsHandling">
+    <span>{{link.text}}</span>
   </a>
 </ng-template>
 

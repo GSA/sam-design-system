@@ -1,8 +1,8 @@
-import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, ViewChild, ViewContainerRef } from '@angular/core';
-import { UsaAccordionComponent, UsaAccordionItem } from '@gsa-sam/ngx-uswds';
+import { AfterViewInit, Component, OnDestroy, ViewChild, ViewContainerRef } from '@angular/core';
 import { FieldWrapper } from '@ngx-formly/core';
 import * as qs from 'qs';
 import { Subscription } from 'rxjs';
+import { UsaAccordionComponent, UsaAccordionItem } from '@gsa-sam/ngx-uswds';
 import { filter } from 'rxjs/operators';
 
 /**
@@ -18,7 +18,7 @@ import { filter } from 'rxjs/operators';
       <ng-container [ngSwitch]="to.group">
         <ng-container *ngSwitchCase="'accordion'">
           <usa-accordion #groupAccordion [singleSelect]="!multi" class="sds-accordion--filters">
-            <usa-accordion-item>
+            <usa-accordion-item [expanded]="modelHasValue()">
               <ng-template UsaAccordionHeader>
                 <span [attr.class]="to.labelClass">{{ to.label }}</span>
               </ng-template>
@@ -71,7 +71,7 @@ import { filter } from 'rxjs/operators';
 })
 export class FormlyGroupWrapperComponent extends FieldWrapper implements AfterViewInit, OnDestroy {
   @ViewChild('fieldComponent', { read: ViewContainerRef }) fieldComponent: ViewContainerRef;
-  
+
   @ViewChild('groupAccordion') accordion: UsaAccordionComponent;
   @ViewChild(UsaAccordionItem) accordionItem: UsaAccordionItem;
 
@@ -79,9 +79,7 @@ export class FormlyGroupWrapperComponent extends FieldWrapper implements AfterVi
 
   resetAllSubscription: Subscription;
 
-  constructor(
-    private changeDetectorRef: ChangeDetectorRef
-  ) {
+  constructor() {
     super();
   }
 
@@ -90,14 +88,8 @@ export class FormlyGroupWrapperComponent extends FieldWrapper implements AfterVi
       return;
     }
 
-    const shouldExpandAccordion = this.modelHasValue();
-    if (shouldExpandAccordion) {
-      this.accordion.expand(this.accordionItem.id);
-      this.changeDetectorRef.detectChanges();
-    }
-
     this.resetAllSubscription = this.field.options.fieldChanges.pipe(
-      filter(({ type }) => type === 'resetAll' && this.accordionItem.isOpen))
+      filter(({ type }) => type === 'resetAll' && this.accordionItem.expanded))
       .subscribe(() => {
         if (!this.modelHasValue()) {
           this.accordion.collapse(this.accordionItem.id);
