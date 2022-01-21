@@ -1,1 +1,0 @@
-This beta.sam.gov header component is based on USWDS 2.0 and is used across the IAE platform. For beta.sam.gov Micro Front-End developers please refer to the notes about using the integrated version of this component.
