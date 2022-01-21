@@ -12,7 +12,6 @@ import { ComponentWrapperComponent } from './../../../shared/component-wrapper/c
 import { BasicPageModule } from './demos/basic/basic-page.module';
 import { BasicPageComponent } from './demos/basic/basic-page.component';
 
-
 declare var require: any;
 const DEMOS = {
   basic: {
@@ -21,7 +20,8 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/basic/basic-page.component'),
     markup: require('!!raw-loader!./demos/basic/basic-page.component.html'),
     module: require('!!raw-loader!./demos/basic/basic-page.module'),
-    path: 'libs/documentation/src/lib/components/landing/page/demos/basic/page-link',
+    path:
+      'libs/documentation/src/lib/components/landing/page/demos/basic/page-link',
   },
 };
 
@@ -34,7 +34,7 @@ export const ROUTES = [
       title: 'Landing / Page',
       items: [
         {
-          pkg: 'layouts',
+          pkg: 'components',
           type: 'components',
           name: 'SdsLandingPageComponent',
         },
@@ -50,11 +50,7 @@ export const ROUTES = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    DocumentationComponentsSharedModule,
-    BasicPageModule
-  ],
+  imports: [CommonModule, DocumentationComponentsSharedModule, BasicPageModule],
 })
 export class LandingPageModule {
   constructor(demoList: DocumentationDemoList) {

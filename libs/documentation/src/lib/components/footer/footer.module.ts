@@ -40,7 +40,7 @@ export const ROUTES = [
       },
       items: [
         {
-          pkg: 'layouts',
+          pkg: 'components',
           type: 'components',
           name: 'SdsFooterComponent',
         },

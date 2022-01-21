@@ -12,7 +12,6 @@ import { ComponentWrapperComponent } from './../../../shared/component-wrapper/c
 import { BasicButtonGroupModule } from './demos/basic/basic-button-group.module';
 import { BasicButtonGroupComponent } from './demos/basic/basic-button-group.component';
 
-
 declare var require: any;
 const DEMOS = {
   basic: {
@@ -21,7 +20,8 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/basic/basic-button-group.component'),
     markup: require('!!raw-loader!./demos/basic/basic-button-group.component.html'),
     module: require('!!raw-loader!./demos/basic/basic-button-group.module'),
-    path: 'libs/documentation/src/lib/components/landing/button-group/demos/basic/basic-button-group',
+    path:
+      'libs/documentation/src/lib/components/landing/button-group/demos/basic/basic-button-group',
   },
 };
 
@@ -34,7 +34,7 @@ export const ROUTES = [
       title: 'Landing / Button Group',
       items: [
         {
-          pkg: 'layouts',
+          pkg: 'components',
           type: 'components',
           name: 'SdsLandingButtonGroupComponent',
         },
@@ -53,7 +53,7 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    BasicButtonGroupModule
+    BasicButtonGroupModule,
   ],
 })
 export class LandingButtonGroupModule {

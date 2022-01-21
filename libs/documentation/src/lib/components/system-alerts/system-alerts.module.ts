@@ -44,7 +44,7 @@ export const ROUTES = [
     data: {
       items: [
         {
-          pkg: 'layouts',
+          pkg: 'components',
           type: 'components',
           name: 'SdsSystemAlertComponent',
         },

@@ -12,7 +12,6 @@ import { ComponentWrapperComponent } from './../../../shared/component-wrapper/c
 import { BasicCardModule } from './demos/basic/basic-card.module';
 import { BasicCardComponent } from './demos/basic/basic-card.component';
 
-
 declare var require: any;
 const DEMOS = {
   basic: {
@@ -21,7 +20,8 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/basic/basic-card.component'),
     markup: require('!!raw-loader!./demos/basic/basic-card.component.html'),
     module: require('!!raw-loader!./demos/basic/basic-card.module'),
-    path: 'libs/documentation/src/lib/components/landing/button-group/demos/basic/basic-card',
+    path:
+      'libs/documentation/src/lib/components/landing/button-group/demos/basic/basic-card',
   },
 };
 
@@ -34,7 +34,7 @@ export const ROUTES = [
       title: 'Landing / Card',
       items: [
         {
-          pkg: 'layouts',
+          pkg: 'components',
           type: 'components',
           name: 'SdsLandingCardComponent',
         },
@@ -50,11 +50,7 @@ export const ROUTES = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    DocumentationComponentsSharedModule,
-    BasicCardModule
-  ],
+  imports: [CommonModule, DocumentationComponentsSharedModule, BasicCardModule],
 })
 export class LandingCardModule {
   constructor(demoList: DocumentationDemoList) {

@@ -12,7 +12,6 @@ import { ComponentWrapperComponent } from './../../../shared/component-wrapper/c
 import { ResultsModule } from './demos/results/results.module';
 import { ResultsComponent } from './demos/results/results.component';
 
-
 declare var require: any;
 const DEMOS = {
   basic: {
@@ -21,7 +20,8 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/results/results.component'),
     markup: require('!!raw-loader!./demos/results/results.component.html'),
     module: require('!!raw-loader!./demos/results/results.module'),
-    path: 'libs/documentation/src/lib/components/landing/link/demos/results/results',
+    path:
+      'libs/documentation/src/lib/components/landing/link/demos/results/results',
   },
 };
 
@@ -34,7 +34,7 @@ export const ROUTES = [
       title: 'Workspace Tier 2 / Item',
       items: [
         {
-          pkg: 'layouts',
+          pkg: 'components',
           type: 'components',
           name: 'SdsLandingLinkComponent',
         },
@@ -50,11 +50,7 @@ export const ROUTES = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    DocumentationComponentsSharedModule,
-    ResultsModule
-  ],
+  imports: [CommonModule, DocumentationComponentsSharedModule, ResultsModule],
 })
 export class WorkspaceTier2ItemModule {
   constructor(demoList: DocumentationDemoList) {

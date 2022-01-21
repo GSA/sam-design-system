@@ -56,7 +56,7 @@ export const ROUTES = [
       readme: {},
       items: [
         {
-          pkg: 'layouts',
+          pkg: 'components',
           type: 'components',
           name: 'SdsHeaderComponent',
         },

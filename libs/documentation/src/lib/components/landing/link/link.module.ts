@@ -12,7 +12,6 @@ import { ComponentWrapperComponent } from './../../../shared/component-wrapper/c
 import { BasicLinkModule } from './demos/basic/basic-link.module';
 import { BasicLinkComponent } from './demos/basic/basic-link.component';
 
-
 declare var require: any;
 const DEMOS = {
   basic: {
@@ -21,7 +20,8 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/basic/basic-link.component'),
     markup: require('!!raw-loader!./demos/basic/basic-link.component.html'),
     module: require('!!raw-loader!./demos/basic/basic-link.module'),
-    path: 'libs/documentation/src/lib/components/landing/link/demos/basic/basic-link',
+    path:
+      'libs/documentation/src/lib/components/landing/link/demos/basic/basic-link',
   },
 };
 
@@ -34,7 +34,7 @@ export const ROUTES = [
       title: 'Landing / Link',
       items: [
         {
-          pkg: 'layouts',
+          pkg: 'components',
           type: 'components',
           name: 'SdsLandingLinkComponent',
         },
@@ -50,11 +50,7 @@ export const ROUTES = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    DocumentationComponentsSharedModule,
-    BasicLinkModule
-  ],
+  imports: [CommonModule, DocumentationComponentsSharedModule, BasicLinkModule],
 })
 export class LandingLinkModule {
   constructor(demoList: DocumentationDemoList) {

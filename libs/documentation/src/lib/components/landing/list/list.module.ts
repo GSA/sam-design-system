@@ -24,7 +24,8 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/basic/basic-list.component'),
     markup: require('!!raw-loader!./demos/basic/basic-list.component.html'),
     module: require('!!raw-loader!./demos/basic/basic-list.module'),
-    path: 'libs/documentation/src/lib/components/landing/list/demos/basic/basic-list',
+    path:
+      'libs/documentation/src/lib/components/landing/list/demos/basic/basic-list',
   },
   links: {
     title: 'Landing List with Links',
@@ -32,7 +33,8 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/links/links-list.component'),
     markup: require('!!raw-loader!./demos/links/links-list.component.html'),
     module: require('!!raw-loader!./demos/links/links-list.module'),
-    path: 'libs/documentation/src/lib/components/landing/list/demos/links/links-list',
+    path:
+      'libs/documentation/src/lib/components/landing/list/demos/links/links-list',
   },
   icons: {
     title: 'Landing List with Icons',
@@ -40,7 +42,8 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/icons/icons-list.component'),
     markup: require('!!raw-loader!./demos/icons/icons-list.component.html'),
     module: require('!!raw-loader!./demos/icons/icons-list.module'),
-    path: 'libs/documentation/src/lib/components/landing/list/demos/icons/icons-list',
+    path:
+      'libs/documentation/src/lib/components/landing/list/demos/icons/icons-list',
   },
 };
 
@@ -53,7 +56,7 @@ export const ROUTES = [
       title: 'Landing / List',
       items: [
         {
-          pkg: 'layouts',
+          pkg: 'components',
           type: 'components',
           name: 'SdsLandingListComponent',
         },
@@ -74,7 +77,7 @@ export const ROUTES = [
     DocumentationComponentsSharedModule,
     BasicListModule,
     IconsListModule,
-    LinksListModule
+    LinksListModule,
   ],
 })
 export class LandingListModule {
