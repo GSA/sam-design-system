@@ -5,30 +5,26 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
-import * as _ from 'lodash-es'
-import { IconModule, allIcons as sdsAllIcons, uswdsAllIcons } from '@gsa-sam/ngx-uswds-icons'
+import * as _ from 'lodash-es';
+import {
+  IconModule,
+  allIcons as sdsAllIcons,
+  uswdsAllIcons,
+} from '@gsa-sam/ngx-uswds-icons';
 
-export const appendPrefix = (iconsObject: { [key: string]: string }, prefix: string): { [key: string]: string } => {
+export const appendPrefix = (
+  iconsObject: { [key: string]: string },
+  prefix: string
+): { [key: string]: string } => {
   const prefixedIconsObject = {};
-  Object.keys(iconsObject).forEach(key => {
+  Object.keys(iconsObject).forEach((key) => {
     prefixedIconsObject[`${prefix}${_.upperFirst(key)}`] = iconsObject[key];
-  })
+  });
   return prefixedIconsObject;
 };
 
 /* Layout / Components */
-import {
-  ROUTES as HEADER_ROUTES,
-  HeaderModule,
-} from './components/header/header.module';
-import {
-  ROUTES as FOOTER_ROUTES,
-  FooterModule,
-} from './components/footer/footer.module';
-import {
-  ROUTES as SUBHEADER_ROUTES,
-  SubHeaderModule,
-} from './components/subheader/subheader.module';
+
 import {
   ROUTES as DIALOG_ROUTES,
   DialogModule,
@@ -92,44 +88,13 @@ import {
 } from './components/slide-out/slide-out.module';
 
 import {
-  ROUTES as LANDING_BUTTON_GROUP_ROUTES,
-  LandingButtonGroupModule,
-} from './components/landing/button-group/button-group.module';
-
-import {
-  ROUTES as LANDING_CARD_ROUTES,
-  LandingCardModule,
-} from './components/landing/card/card.module';
-
-import {
-  ROUTES as LANDING_LINK_ROUTES,
-  LandingLinkModule,
-} from './components/landing/link/link.module';
-
-import {
-  ROUTES as LANDING_LIST_ROUTES,
-  LandingListModule,
-} from './components/landing/list/list.module';
-
-import {
-  ROUTES as LANDING_PAGE_ROUTES,
-  LandingPageModule,
-} from './components/landing/page/page.module';
-
-import {
-  ROUTES as WORKSPACE_TIER_2_ROUTES,
-  WorkspaceTier2ItemModule,
-} from './components/workspace-tier-2/item/item.module';
-
-import {
   ROUTES as TABS_ROUTES,
   TabsModule,
-}
-  from './components/tabs/tabs.module';
+} from './components/tabs/tabs.module';
 
 import {
   ROUTES as TREE_TABLE_ROUTES,
-  TreeTableModule
+  TreeTableModule,
 } from './components/tree-table/tree-table.module';
 
 /* Form Types */
@@ -180,17 +145,17 @@ import {
 
 import {
   ROUTES as FORMLY_STEPPER_ROUTES,
-  StepperModule
+  StepperModule,
 } from './components/formly-stepper/formly-stepper.module';
 
 import {
   ROUTES as FORMLY_FILE_INPUT_ROUTES,
-  FileInputModule
+  FileInputModule,
 } from './components/formly-file-input/file-input.module';
 
 import {
   ROUTES as FORMLY_TABS_ROUTES,
-  FormlyTabsModule
+  FormlyTabsModule,
 } from './components/formly-tabs/formly-tabs.module';
 
 import {
@@ -251,11 +216,6 @@ import {
 } from './components/icons/icons.module';
 
 import {
-  ROUTES as SYSTEM_ALERT_ROUTES,
-  SystemAlertsModule,
-} from './components/system-alerts/system-alerts.module';
-
-import {
   ROUTES as EXTERNA_LINK_ROUTES,
   ExternalLinkModule,
 } from './components/external-link/external-link.module';
@@ -272,12 +232,10 @@ import {
 
 import { DocumentationSharedModule } from './shared';
 import { OverviewComponent } from './pages/overview/overview.component';
-import { ResultsLayoutModule } from './pages/layout/layout.module';
 import { FormlyFormsModule } from './pages/formly-forms/formly-forms.module';
 import { FormlyFormsComponent } from './pages/formly-forms/formly-forms.component';
 import { FormlyConditionalModule } from './pages/formly-conditional/formly-conditional.module';
 import { FormlyConditionalComponent } from './pages/formly-conditional/formly-conditional.component';
-import { LayoutResponsiveComponent } from './pages/layout/layout-responsive/layout-responsive.component';
 import { RoadmapComponent } from './pages/roadmap/roadmap.component';
 import { RoadmapModule } from './pages/roadmap/roadmap.module';
 
@@ -288,13 +246,10 @@ export const ROUTES: Routes = [
   { path: 'overview', component: OverviewComponent },
   { path: 'roadmap', component: RoadmapComponent },
   { path: 'introduction', component: IntroductionComponent },
-  { path: 'layout-responsive', component: LayoutResponsiveComponent },
 
   // Components
   { path: 'components', pathMatch: 'full', redirectTo: 'components/alert' },
-  { path: 'components/header', children: HEADER_ROUTES },
-  { path: 'components/footer', children: FOOTER_ROUTES },
-  { path: 'components/subheader', children: SUBHEADER_ROUTES },
+
   { path: 'components/dialog', children: DIALOG_ROUTES },
   { path: 'components/download', children: DOWNLOAD_ROUTES },
   { path: 'components/collapse', children: COLLAPSE_ROUTES },
@@ -310,19 +265,12 @@ export const ROUTES: Routes = [
   { path: 'components/accordion', children: ACCORDION_ROUTES },
   { path: 'components/button-group', children: BUTTON_GROUP_ROUTES },
   { path: 'components/selection-panel', children: SELECTION_PANEL_ROUTES },
-  { path: 'components/system-alerts', children: SYSTEM_ALERT_ROUTES },
   { path: 'components/external-link', children: EXTERNA_LINK_ROUTES },
   { path: 'components/toasts', children: TOASTS_ROUTES },
   { path: 'components/tabs', children: TABS_ROUTES },
   { path: 'components/date-pipe', children: DATE_PIPE_ROUTES },
   { path: 'components/tree-table', children: TREE_TABLE_ROUTES },
   { path: 'components/slide-out', children: SLIDE_OUT_ROUTES },
-  { path: 'components/landing-button-group', children: LANDING_BUTTON_GROUP_ROUTES },
-  { path: 'components/landing-card', children: LANDING_CARD_ROUTES },
-  { path: 'components/landing-link', children: LANDING_LINK_ROUTES },
-  { path: 'components/landing-list', children: LANDING_LIST_ROUTES },
-  { path: 'components/landing-page', children: LANDING_PAGE_ROUTES },
-  { path: 'components/workspace-tier-2-item', children: WORKSPACE_TIER_2_ROUTES },
 
   // Formly
   { path: 'components/formly-input', children: INPUT_ROUTES },
@@ -376,9 +324,6 @@ export const ROUTES: Routes = [
     CommonModule,
     DocumentationSharedModule,
     RouterModule.forChild(ROUTES),
-    HeaderModule,
-    FooterModule,
-    SubHeaderModule,
     DialogModule,
     CollapseModule,
     DownloadModule,
@@ -395,7 +340,6 @@ export const ROUTES: Routes = [
     InputModule,
     OverviewModule,
     IntroductionModule,
-    ResultsLayoutModule,
     TextAreaModule,
     CheckboxModule,
     MultiCheckboxModule,
@@ -421,32 +365,25 @@ export const ROUTES: Routes = [
     FormlyConditionalModule,
     ButtonGroupModule,
     SelectionPanelModule,
-    SystemAlertsModule,
     ExternalLinkModule,
     ToastsModule,
     ReadonlyModule,
     RoadmapModule,
     SlideOutModule,
-    LandingButtonGroupModule,
-    LandingCardModule,
-    LandingLinkModule,
-    LandingListModule,
-    LandingPageModule,
-    WorkspaceTier2ItemModule,
     DatePipeModule,
     StepperModule,
     EditorModule,
     FileInputModule,
     FormlyTabsModule,
     TreeTableModule,
-    NgxBootstrapIconsModule.pick(Object.assign(
-      _.cloneDeep(allIcons),
-      appendPrefix(_.cloneDeep(sdsAllIcons), 'sds'),
-      _.cloneDeep(uswdsAllIcons),
-    )),
-    IconModule
+    NgxBootstrapIconsModule.pick(
+      Object.assign(
+        _.cloneDeep(allIcons),
+        appendPrefix(_.cloneDeep(sdsAllIcons), 'sds'),
+        _.cloneDeep(uswdsAllIcons)
+      )
+    ),
+    IconModule,
   ],
 })
-export class DocumentationModule {
-
-}
+export class DocumentationModule {}
