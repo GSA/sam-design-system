@@ -1,24 +1,32 @@
-import { AfterViewInit, Directive, ElementRef, HostListener, Input, Renderer2, TemplateRef } from '@angular/core';
+import {
+  AfterViewInit,
+  Directive,
+  ElementRef,
+  HostListener,
+  Input,
+  Renderer2,
+  TemplateRef,
+} from '@angular/core';
 import { debounce } from './debounce.decorator';
 
 @Directive({
   selector: '[sdsPopover]',
-  exportAs: 'sdsPopover'
+  exportAs: 'sdsPopover',
 })
 export class SdsPopoverDirective implements AfterViewInit {
   private _sdsPopoverContent: string | TemplateRef<any> | HTMLParagraphElement;
   private _sdsPopoverTitle: string | TemplateRef<any> | HTMLParagraphElement;
 
   sdsPopoverDiv: HTMLElement;
-  popoverVisible= false;
+  popoverVisible = false;
   popoverDivId: string;
 
-  @HostListener('click', ['$event']) onClick($event: MouseEvent){
+  @HostListener('click', ['$event']) onClick($event: MouseEvent) {
     const clickedOnContent = this.sdsPopoverDiv.contains($event.target as any);
     if (clickedOnContent && !this.closeOnContentClick) {
       return;
     }
-    
+
     this.clickEvent();
   }
 
@@ -27,7 +35,7 @@ export class SdsPopoverDirective implements AfterViewInit {
     if (!this.closeOnClickOutside || !this.popoverVisible) {
       return;
     }
-    
+
     const clickedInElement = this.el.nativeElement.contains($event.target);
     if (!clickedInElement) {
       this.clickEvent();
@@ -37,11 +45,28 @@ export class SdsPopoverDirective implements AfterViewInit {
   /**
    * Adding listener for keyup.enter to ensure that user can activate popover with keyboard
    */
-  @HostListener('keyup.enter', ['$event']) onKeyUp($event: KeyboardEvent){
-    if (!this.closeOnContentClick && this.sdsPopoverDiv.contains($event.target as any)) {
+  @HostListener('keyup.enter', ['$event']) onKeyUp($event: KeyboardEvent) {
+    if (
+      !this.closeOnContentClick &&
+      this.sdsPopoverDiv.contains($event.target as any)
+    ) {
       return;
     }
     this.clickEvent();
+  }
+
+  /**
+   * Adding listener for keydown.space to ensure that user can activate popover with keyboard
+   */
+  @HostListener('keydown.Space', ['$event']) onKeySpace($event: KeyboardEvent) {
+    if (
+      !this.closeOnContentClick &&
+      this.sdsPopoverDiv.contains($event.target as any)
+    ) {
+      return;
+    }
+    this.clickEvent();
+    $event.preventDefault();
   }
 
   @Input()
@@ -59,18 +84,24 @@ export class SdsPopoverDirective implements AfterViewInit {
 
   ngAfterViewInit() {
     // Generating semi-random id for use with aria-describedby
-    this.popoverDivId = this.el.nativeElement.id ? `${this.el.nativeElement.id}-popover` : `${this.el.nativeElement.tagName}-${this.el.nativeElement.offsetTop}-${this.el.nativeElement.offsetWidth}-popover`
+    this.popoverDivId = this.el.nativeElement.id
+      ? `${this.el.nativeElement.id}-popover`
+      : `${this.el.nativeElement.tagName}-${this.el.nativeElement.offsetTop}-${this.el.nativeElement.offsetWidth}-popover`;
     this.sdsPopoverDiv.id = this.popoverDivId;
 
     this.renderer.addClass(this.sdsPopoverDiv, 'sds-popover__content');
-    this.renderer.addClass(this.sdsPopoverDiv, 'tooltip')
+    this.renderer.addClass(this.sdsPopoverDiv, 'tooltip');
     this.renderer.addClass(this.sdsPopoverDiv, 'out');
-    this.renderer.setAttribute(this.sdsPopoverDiv, 'data-position', this.position)
+    this.renderer.setAttribute(
+      this.sdsPopoverDiv,
+      'data-position',
+      this.position
+    );
     this.renderer.setAttribute(this.sdsPopoverDiv, 'aria-hidden', 'true');
     this.renderer.addClass(this.sdsPopoverDiv, this.position);
 
     // Add title section and divider if title included
-    if(this._sdsPopoverTitle){
+    if (this._sdsPopoverTitle) {
       this.renderer.appendChild(this.sdsPopoverDiv, this._sdsPopoverTitle);
 
       const divider = document.createElement('hr');
@@ -82,36 +113,42 @@ export class SdsPopoverDirective implements AfterViewInit {
 
     this.renderer.setAttribute(this.el.nativeElement, 'role', 'button');
     this.renderer.setAttribute(this.el.nativeElement, 'aria-expanded', 'false');
-    this.renderer.setAttribute(this.el.nativeElement, 'aria-haspopup', 'dialog');
+    this.renderer.setAttribute(
+      this.el.nativeElement,
+      'aria-haspopup',
+      'dialog'
+    );
 
     this.renderer.appendChild(this.el.nativeElement, this.sdsPopoverDiv);
   }
 
   @Input()
-  set sdsPopover(value: string | TemplateRef<any> | HTMLParagraphElement){
-    this._sdsPopoverContent = this.handlePopoverSection(value, 'content')
+  set sdsPopover(value: string | TemplateRef<any> | HTMLParagraphElement) {
+    this._sdsPopoverContent = this.handlePopoverSection(value, 'content');
   }
 
-  get sdsPopover(): string | TemplateRef<any> | HTMLParagraphElement{
+  get sdsPopover(): string | TemplateRef<any> | HTMLParagraphElement {
     return this._sdsPopoverContent;
   }
 
   @Input()
-  set sdsPopoverTitle(value: string | TemplateRef<any> | HTMLParagraphElement){
-    this._sdsPopoverTitle = this.handlePopoverSection(value, 'title')
+  set sdsPopoverTitle(value: string | TemplateRef<any> | HTMLParagraphElement) {
+    this._sdsPopoverTitle = this.handlePopoverSection(value, 'title');
   }
 
-  get sdsPopoverTitle(): string | TemplateRef<any> | HTMLParagraphElement{
+  get sdsPopoverTitle(): string | TemplateRef<any> | HTMLParagraphElement {
     return this._sdsPopoverTitle;
   }
 
-  handlePopoverSection(value: string | TemplateRef<any> | HTMLParagraphElement,  classToApply: string): string | TemplateRef<any> | HTMLParagraphElement{
+  handlePopoverSection(
+    value: string | TemplateRef<any> | HTMLParagraphElement,
+    classToApply: string
+  ): string | TemplateRef<any> | HTMLParagraphElement {
     let popoverSection;
-    if(typeof value === 'string'){
+    if (typeof value === 'string') {
       popoverSection = document.createElement('p');
       popoverSection.innerText = value;
-      this.renderer.addClass(popoverSection, classToApply)
-
+      this.renderer.addClass(popoverSection, classToApply);
     } else {
       popoverSection = value;
     }
@@ -124,22 +161,34 @@ export class SdsPopoverDirective implements AfterViewInit {
    * listener and click listener.
    */
   @debounce(100)
-  clickEvent(){
+  clickEvent() {
     this.popoverVisible = !this.popoverVisible;
-    if(this.popoverVisible){
+    if (this.popoverVisible) {
       this.renderer.addClass(this.sdsPopoverDiv, 'sds-popover__shown');
       this.renderer.setAttribute(this.sdsPopoverDiv, 'aria-hidden', 'false');
-      this.renderer.setAttribute(this.el.nativeElement, 'aria-describedby', this.popoverDivId)
-      this.renderer.setAttribute(this.el.nativeElement, 'aria-expanded', 'true');
+      this.renderer.setAttribute(
+        this.el.nativeElement,
+        'aria-describedby',
+        this.popoverDivId
+      );
+      this.renderer.setAttribute(
+        this.el.nativeElement,
+        'aria-expanded',
+        'true'
+      );
 
       this.renderer.removeClass(this.sdsPopoverDiv, 'sds-popover__hidden');
     } else {
       this.renderer.addClass(this.sdsPopoverDiv, 'sds-popover__hidden');
       this.renderer.setAttribute(this.sdsPopoverDiv, 'aria-hidden', 'true');
-      this.renderer.setAttribute(this.el.nativeElement, 'aria-expanded', 'false');
+      this.renderer.setAttribute(
+        this.el.nativeElement,
+        'aria-expanded',
+        'false'
+      );
 
       this.renderer.removeClass(this.sdsPopoverDiv, 'sds-popover__shown');
-      this.renderer.removeAttribute(this.el.nativeElement, 'aria-describedby')
+      this.renderer.removeAttribute(this.el.nativeElement, 'aria-describedby');
     }
   }
 }
