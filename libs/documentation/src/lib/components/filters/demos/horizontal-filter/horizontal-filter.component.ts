@@ -54,6 +54,68 @@ export class HorizontalFilterDemo {
       },
     },
     {
+      key: 'dateRange',
+      templateOptions: {
+        label: 'Date Range',
+        group: 'popover',
+      },
+      fieldGroup: [
+        {
+          key: 'dateRangeSelect',
+          type: 'select',
+          className: 'display-block',
+          templateOptions: {
+            label: 'Select Date',
+            options: [
+              {label: 'Anytime', value: 'anytime'},
+              {label: 'Past day', value: 'pastDay'},
+              {label: 'Past Week', value: 'pastWeek'},
+              {label: 'Custom Dates', value: 'customDate'}
+            ],
+            hideOptional: true,
+          }
+        },
+        {
+          key: 'createdDate',
+          type: 'datepicker',
+          className: 'display-block',
+          templateOptions: {
+            label: 'Created Date',
+            minDate: new Date(2019, 9, 5),
+            maxDate: new Date(2020, 11, 15),
+            placeholder: 'eg: ' + new Date().toLocaleString('en-US', {
+              month: 'short',
+              day: 'numeric',
+              year: 'numeric'
+            }),
+            hideOptional: true,
+          },
+          hideExpression: (model) => {
+            return !model || !model['dateRangeSelect'] || model['dateRangeSelect'] != 'customDate';
+          }
+        },
+        {
+          key: 'expirationDate',
+          type: 'datepicker',
+          className: 'display-block',
+          templateOptions: {
+            label: 'Expires Date',
+            minDate: new Date(2019, 9, 5),
+            maxDate: new Date(2020, 11, 15),
+            placeholder: 'eg: ' + new Date().toLocaleString('en-US', {
+              month: 'short',
+              day: 'numeric',
+              year: 'numeric'
+            }),
+            hideOptional: true,
+          },
+          hideExpression: (model) => {
+            return !model || !model['dateRangeSelect'] || model['dateRangeSelect'] != 'customDate';
+          }
+        }
+      ]
+    },
+    {
       key: 'expirationDateRangeEx',
       type: 'daterangepickerv2',
       hide: true,
