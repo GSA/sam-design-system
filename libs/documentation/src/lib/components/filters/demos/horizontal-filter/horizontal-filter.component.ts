@@ -58,6 +58,7 @@ export class HorizontalFilterDemo {
       templateOptions: {
         label: 'Date Range',
         group: 'popover',
+        closeOnClickOutside: false,
       },
       fieldGroup: [
         {
