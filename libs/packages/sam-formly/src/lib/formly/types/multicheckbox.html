@@ -12,7 +12,7 @@
       </div>
       <div *ngIf="to.selectTooltipText">
         <p #tipContent1 [ngClass]="to.tooltipClass" class="margin-1" [innerHTML]="to.selectTooltipText"></p>
-        <usa-icon class="sds-stack padding-top-105 margin-left-1"
+        <usa-icon class="padding-top-105 margin-left-1"
           [position]="to.selecttooltipPosition ? to.selecttooltipPosition :'right'" [sdsTooltip]="tipContent1"
           [size]="'lg'" [icon]="'info-circle'"></usa-icon>
       </div>
