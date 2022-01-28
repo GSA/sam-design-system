@@ -9,7 +9,7 @@ import { FieldWrapper } from '@ngx-formly/core';
     <div>
       <div
         *ngIf="to.description"
-        class="form-text text-muted"
+        class="usa-hint"
         [id]="id + '-description'"
       >
         {{ to.description }}
