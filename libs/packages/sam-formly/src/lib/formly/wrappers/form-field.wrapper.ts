@@ -32,7 +32,7 @@ import { FieldWrapper } from '@ngx-formly/core';
         <span>{{ to.label }}</span>
         <span *ngIf="!to.required && !to.hideOptional"> (Optional)</span>
       </label>
-      <div *ngIf="to.description" class="usa-hint">
+      <div *ngIf="to.description" class="usa-label--description">
         {{ to.description }}
       </div>
       <ng-template #fieldComponent></ng-template>
