@@ -211,6 +211,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
             );
             if (fieldExists) {
               field.hide = false;
+              fieldExists.hide = false;
             }
           } else {
             field.hide = false;
