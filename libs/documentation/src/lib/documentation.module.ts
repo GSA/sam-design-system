@@ -230,6 +230,11 @@ import {
   DatePipeModule,
 } from './components/date-pipe/date-pipe.module';
 
+import {
+  ROUTES as EXPIRES_ROUTES,
+  ExpiresModule
+} from './components/expires/expires.module';
+
 import { DocumentationSharedModule } from './shared';
 import { OverviewComponent } from './pages/overview/overview.component';
 import { FormlyFormsModule } from './pages/formly-forms/formly-forms.module';
@@ -271,6 +276,7 @@ export const ROUTES: Routes = [
   { path: 'components/date-pipe', children: DATE_PIPE_ROUTES },
   { path: 'components/tree-table', children: TREE_TABLE_ROUTES },
   { path: 'components/slide-out', children: SLIDE_OUT_ROUTES },
+  { path: 'components/expires', children: EXPIRES_ROUTES},
 
   // Formly
   { path: 'components/formly-input', children: INPUT_ROUTES },
@@ -376,6 +382,7 @@ export const ROUTES: Routes = [
     FileInputModule,
     FormlyTabsModule,
     TreeTableModule,
+    ExpiresModule,
     NgxBootstrapIconsModule.pick(
       Object.assign(
         _.cloneDeep(allIcons),

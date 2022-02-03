@@ -1,0 +1,20 @@
+<p>
+  This directive is used to set an 'Expiration Date' for a html element. If user's current time
+  is past the expiration date, then the element will be hidden from the user.
+</p>
+
+<div *expires="expireFifteenSeconds">
+  <div class="usa-card__container">
+    <span class="usa-card__body">
+      This text will expire in 15 seconds
+    </span>
+  </div>
+</div>
+
+<div *expires="'2099-01-31T23:59:59.999+5:00'" class="usa-card">
+  <div class="usa-card__container">
+    <span class="usa-card__body">
+      This text will expire on January 31st, 2099 11:59:59 PM Eastern Time
+    </span>
+  </div>
+</div>

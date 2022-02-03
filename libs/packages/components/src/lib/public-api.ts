@@ -47,6 +47,8 @@ export * from './dialog/dialog-ref';
 export * from './dialog/dialog.module';
 export * from './dialog/dialog-container.component';
 export * from './dialog/dialog-content.directives';
+export * from './expires/expires.directive';
+export * from './expires/expires.module';
 export * from './external-link/external-link.module';
 export * from './external-link/external-link.directive';
 export * from './video-player/video-player.module';
