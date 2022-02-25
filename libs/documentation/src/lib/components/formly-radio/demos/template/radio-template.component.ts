@@ -30,7 +30,7 @@ export class RadioTemplateComponent implements AfterViewInit{
               'Includes getting a unique entity ID and entity registration.'
             ],
             linkText: 'What do I need for registration?',
-            icon: 'uswds-attach-money'
+            icon: 'uswds-attach-money',
           },
           {
             key: 'nonprofit',
@@ -40,7 +40,8 @@ export class RadioTemplateComponent implements AfterViewInit{
               'To apply for grants and loans as described by 2 CFR 200.'
             ],
             linkText: 'What do I need for registration?',
-            icon: 'award'
+            icon: 'award',
+            iconClass: 'text-secondary'
           },
           {
             key: 'partnerllc',
@@ -50,7 +51,7 @@ export class RadioTemplateComponent implements AfterViewInit{
               'You will get a unique entity ID. This is NOT an entity registration.',
             ],
             linkText: 'What\'s the difference between getting a UEI only and registration',
-            icon: 'uswds-identification'
+            icon: 'uswds-identification',
           }
         ],
       },
