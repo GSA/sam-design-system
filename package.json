@@ -48,6 +48,8 @@
     "@angular/platform-browser": "^11.2.14",
     "@angular/platform-browser-dynamic": "^11.2.14",
     "@angular/router": "^11.2.14",
+    "@ckeditor/ckeditor5-angular": "^2.0.2",
+    "@ckeditor/ckeditor5-build-classic": "^32.0.0",
     "@compodoc/compodoc": "1.1.11",
     "@gsa-sam/components": "11.0.16",
     "@gsa-sam/layouts": "11.0.16",

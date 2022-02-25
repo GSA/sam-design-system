@@ -1,0 +1,8 @@
+<ckeditor
+  [editor]="editor"
+  [data]=data
+  (change)=change.emit($event)
+  (blur)=blur.emit($event)
+  (focus)=focus.emit($event)
+  (error)=error.emit($event)
+></ckeditor>

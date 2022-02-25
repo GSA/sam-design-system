@@ -235,6 +235,11 @@ import {
   ExpiresModule
 } from './components/expires/expires.module';
 
+import {
+  ROUTES as RICH_TEXT_ROUTES,
+  RichTextModule
+} from './components/rich-text/rich-text.module';
+
 import { DocumentationSharedModule } from './shared';
 import { OverviewComponent } from './pages/overview/overview.component';
 import { FormlyFormsModule } from './pages/formly-forms/formly-forms.module';
@@ -277,6 +282,7 @@ export const ROUTES: Routes = [
   { path: 'components/tree-table', children: TREE_TABLE_ROUTES },
   { path: 'components/slide-out', children: SLIDE_OUT_ROUTES },
   { path: 'components/expires', children: EXPIRES_ROUTES},
+  { path: 'components/rich-text', children: RICH_TEXT_ROUTES},
 
   // Formly
   { path: 'components/formly-input', children: INPUT_ROUTES },
@@ -383,6 +389,7 @@ export const ROUTES: Routes = [
     FormlyTabsModule,
     TreeTableModule,
     ExpiresModule,
+    RichTextModule,
     NgxBootstrapIconsModule.pick(
       Object.assign(
         _.cloneDeep(allIcons),
