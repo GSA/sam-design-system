@@ -27,7 +27,7 @@
       </div>
       <ng-container *ngIf="to.options[i].icon">
         <div class="radio-icon">
-          <usa-icon [icon]="to.options[i].icon" [size]="'5x'" class="icon-display-block" ngClass="to.options[i].iconClass"></usa-icon>
+          <usa-icon [icon]="to.options[i].icon" [size]="'5x'" class="icon-display-block" ngClass="{{to.options[i].iconClass}}"></usa-icon>
         </div>
       </ng-container>
     </div>
