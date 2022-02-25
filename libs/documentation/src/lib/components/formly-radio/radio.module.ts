@@ -15,13 +15,6 @@ import { RadioTemplateModule } from './demos/template/radio-template.module';
 
 declare var require: any;
 const DEMOS = {
-  template: {
-    title: 'Template Form Radio',
-    type: RadioTemplateComponent,
-    code: require('!!raw-loader!./demos/template/radio-template.component'),
-    markup: require('!!raw-loader!./demos/template/radio-template.component.html'),
-    path: 'libs/documentation/src/lib/components/formly-radio/demos/template'
-  },
   basic: {
     title: 'Basic Form Radio',
     type: RadioBasic,
@@ -35,7 +28,14 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/advanced/radio-advanced.component'),
     markup: require('!!raw-loader!./demos/advanced/radio-advanced.component.html'),
     path: 'libs/documentation/src/lib/components/formly-radio/demos/advanced'
-  }
+  },
+  template: {
+    title: 'Template Form Radio',
+    type: RadioTemplateComponent,
+    code: require('!!raw-loader!./demos/template/radio-template.component'),
+    markup: require('!!raw-loader!./demos/template/radio-template.component.html'),
+    path: 'libs/documentation/src/lib/components/formly-radio/demos/template'
+  },
 };
 
 export const ROUTES = [
