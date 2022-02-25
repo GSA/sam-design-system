@@ -2,32 +2,53 @@
   [attr.aria-describedby]="to.description ? id + '_description' : undefined">
   <ng-container *ngFor="
   let option of to.options | formlySelectOptions: field | async;
-  let i = index">
-    <div class="grid-row">
-      <div>
-        <input class="usa-radio__input" [ngClass]="{'usa-radio__input--tile': to.tile, 'usa-input--error': !showError}"
-          [formlyAttributes]="field" [id]="id + '_' + i" type="radio" [name]="id" checked="checked"
-          [formControl]="formControl" [value]="option.value">
-
-        <label class="usa-radio__label" [ngClass]="to.optionsClass ? to.optionsClass : ''" [for]="id + '_' + i">
-          <span [innerHtml]="option.label"></span>
-          <!-- Go through templateoptions' option because formlySelectOptions pipe will include only limited fields -->
-          <ng-container *ngIf="to.options[i].description && to.options[i].description.length">
-            <div class="usa-checkbox__label-description">
-              <span class="display-block" *ngFor="let description of to.options[i].description"
-                [innerHtml]="description"></span>
-            </div>
-          </ng-container>
-        </label>
-      </div>
-
-      <div *ngIf="to.options[i].tooltipText">
-        <p #tipContent [ngClass]="to.options[i].tooltipClass" class="margin-1" [innerHTML]="to.options[i].tooltipText">
-        </p>
-        <usa-icon class="padding-top-105 margin-left-1"
-          [position]="to.options[i].tooltipPosition ? to.options[i].tooltipPosition :'right'" [sdsTooltip]="tipContent"
-          [size]="'lg'" [icon]="'info-circle'"></usa-icon>
-      </div>
-    </div>
+  let i = index"
+  [ngTemplateOutlet]="(to.template ? to.template : defaultTemplate)"
+  [ngTemplateOutletContext]="{
+    $implicit: option,
+    i: i,
+    to:to,
+    field: field,
+    id: id,
+    showError: showError,
+    formControl: formControl
+  }">
   </ng-container>
 </form>
+
+<ng-template let-option let-i="i" let-to="to" #defaultTemplate>
+  <!-- <p>i: {{i}}</p> -->
+  <div class="grid-row">
+    <div>
+      <input class="usa-radio__input"
+        [ngClass]="{'usa-radio__input--tile': to.tile, 'usa-input--error': !showError}" [formlyAttributes]="field"
+        [id]="id + '_' + i" type="radio" [name]="id" checked="checked" [formControl]="formControl"
+        [value]="option.value">
+
+      <label class="usa-radio__label" [ngClass]="to.optionsClass ? to.optionsClass : ''" [for]="id + '_' + i">
+        <span [innerHtml]="option.label"></span>
+        <!-- <p>i:  {{i}}</p> -->
+        <!-- <p>to:  {{to | json}}</p>
+        <p>to.options[i]: {{to.options[i] | json}}</p>
+        <p>to.options[i].description: {{to.options[i].description | json}}</p> -->
+        <!-- <span>{{}}</span> -->
+        <!-- Go through templateoptions' option because formlySelectOptions pipe will include only limited fields -->
+        <ng-container *ngIf="to.options[i].description && to.options[i].description.length">
+          <div class="usa-checkbox__label-description">
+            <span class="display-block" *ngFor="let description of to.options[i].description"
+              [innerHtml]="description"></span>
+          </div>
+        </ng-container>
+      </label>
+    </div>
+
+    <div *ngIf="to.options[i].tooltipText">
+      <p #tipContent [ngClass]="to.options[i].tooltipClass" class="margin-1"
+        [innerHTML]="to.options[i].tooltipText">
+      </p>
+      <usa-icon class="padding-top-105 margin-left-1"
+        [position]="to.options[i].tooltipPosition ? to.options[i].tooltipPosition :'right'"
+        [sdsTooltip]="tipContent" [size]="'lg'" [icon]="'info-circle'"></usa-icon>
+    </div>
+  </div>
+</ng-template>
