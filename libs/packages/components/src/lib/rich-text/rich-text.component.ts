@@ -1,4 +1,4 @@
-import { Component, EventEmitter, forwardRef, Output } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
@@ -12,9 +12,13 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
         useExisting: forwardRef(() => SdsRichTextComponent),
         multi: true,
     },
-],
+  ],
+  // host: { class: this.minHeight }
 })
 export class SdsRichTextComponent implements ControlValueAccessor {
+
+  @Input() minHeight: number;
+  @Input() maxHeight: number;
 
   _onChange = (_: any) => { };
   _onTouched = (_: any) => { };
@@ -29,9 +33,6 @@ export class SdsRichTextComponent implements ControlValueAccessor {
     this._onTouched = fn;
   }
   public editor = ClassicEditor;
-
-  @Output() focus: EventEmitter<any> = new EventEmitter();
-  @Output() error: EventEmitter<any> = new EventEmitter();
 
   model = "";
 }

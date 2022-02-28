@@ -1,11 +1,7 @@
 <ckeditor
-
   [(ngModel)]="model"
   [editor]="editor"
   (change)=_onChange(model)
   (blur)=_onTouched()
-  (focus)=focus.emit($event)
-  (error)=error.emit($event)
+  class="height-10"
 ></ckeditor>
-
-<p>SdsRichTextComponent data: {{model}}</p>
