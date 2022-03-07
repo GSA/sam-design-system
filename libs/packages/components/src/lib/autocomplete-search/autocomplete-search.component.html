@@ -2,7 +2,7 @@
   <div class="maxw-mobile-lg position-relative">
     <div [attr.id]="configuration.id + '-container'">
       <input role="combobox" [attr.aria-expanded]="showResults" cdkOverlayOrigin #trigger="cdkOverlayOrigin"
-        [attr.aria-owns]="showResults ? configuration.id + '-listbox' : undefined" aria-haspopup="listbox"
+        [attr.aria-owns]="showResults ? configuration.id + '-listbox' : ''" aria-haspopup="listbox"
         [disabled]="disabled" (keypress)="onkeypress($event)" (input)="textChange($event)"
         class="usa-input padding-right-3" [ngClass]="getClass()" #input
         [attr.aria-label]="configuration.ariaLabelText ? configuration.ariaLabelText : configuration.labelText"
@@ -13,7 +13,7 @@
             ? configuration.id + '-resultItem-' + highlightedIndex
             : ''
         " [attr.aria-controls]="
-          showResults ? configuration.id + '-listbox' : undefined
+          showResults ? configuration.id + '-listbox' : ''
         " autocomplete="off" />
     </div>
     <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="showResults"
