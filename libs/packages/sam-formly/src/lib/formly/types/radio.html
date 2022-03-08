@@ -1,5 +1,5 @@
 <form class="usa-radio" [id]="id" [attr.aria-label]="to.ariaLabel? to.ariaLabel : to.label"
-  [attr.aria-describedby]="to.description ? id + '_description' : undefined">
+  [attr.aria-describedby]="to.description ? id + '_description' : undefined" [ngClass]="{'horizontal': to.horizontal, 'grid-row': to.horizontal}">
   <ng-container *ngFor="
   let option of to.options | formlySelectOptions: field | async;
   let i = index"
@@ -17,7 +17,7 @@
 </form>
 
 <ng-template let-option let-i="i" let-to="to" #defaultTemplate>
-  <div class="grid-row">
+  <div class="grid-row" [ngClass]="{'horizontal-option': to.horizontal}">
     <div>
       <input class="usa-radio__input"
         [ngClass]="{'usa-radio__input--tile': to.tile, 'usa-input--error': !showError}" [formlyAttributes]="field"

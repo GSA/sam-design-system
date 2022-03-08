@@ -1,0 +1,9 @@
+.horizontal{
+  display: inline-flex;
+  flex-wrap: nowrap;
+
+  .horizontal-option{
+    padding-right: 3rem;
+    flex-wrap: nowrap;
+  }
+}
