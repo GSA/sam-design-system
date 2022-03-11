@@ -2579,7 +2579,7 @@ const FORMLY = {
         },
         {
             "name": "FormlyDescriptionWrapperComponent",
-            "id": "component-FormlyDescriptionWrapperComponent-5554488e778198a4f5296ffceadcebaf",
+            "id": "component-FormlyDescriptionWrapperComponent-f39ee4b41657afaa9ed248427cc1eb2c",
             "file": "libs/packages/sam-formly/src/lib/formly/wrappers/description.wrapper.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2588,7 +2588,7 @@ const FORMLY = {
             "providers": [],
             "styleUrls": [],
             "styles": [],
-            "template": "<div>\n  <small\n    *ngIf=\"to.description\"\n    class=\"form-text text-muted\"\n    [id]=\"id + '-description'\"\n    >{{ to.description }}</small\n  >\n  <ng-container #fieldComponent></ng-container>\n</div>\n",
+            "template": "<div>\n  <div\n    *ngIf=\"to.description\"\n    class=\"usa-label--description\"\n    [id]=\"id + '-description'\"\n  >\n    {{ to.description }}\n  </div>\n  <ng-container #fieldComponent></ng-container>\n</div>\n",
             "templateUrl": [],
             "viewProviders": [],
             "inputsClass": [],
@@ -2599,7 +2599,7 @@ const FORMLY = {
                     "type": "ViewContainerRef",
                     "optional": false,
                     "description": "",
-                    "line": 22,
+                    "line": 23,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -2614,7 +2614,7 @@ const FORMLY = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild, ViewContainerRef, OnInit } from '@angular/core';\nimport { FieldWrapper } from '@ngx-formly/core';\n/**\n * @param string [to.description] Add a description below the label\n *\n */\n@Component({\n  template: `\n    <div>\n      <small\n        *ngIf=\"to.description\"\n        class=\"form-text text-muted\"\n        [id]=\"id + '-description'\"\n        >{{ to.description }}</small\n      >\n      <ng-container #fieldComponent></ng-container>\n    </div>\n  `,\n})\nexport class FormlyDescriptionWrapperComponent extends FieldWrapper {\n  @ViewChild('fieldComponent', { read: ViewContainerRef })\n  fieldComponent: ViewContainerRef;\n}\n",
+            "sourceCode": "import { Component, ViewChild, ViewContainerRef, OnInit } from '@angular/core';\nimport { FieldWrapper } from '@ngx-formly/core';\n/**\n * @param string [to.description] Add a description below the label\n *\n */\n@Component({\n  template: `\n    <div>\n      <div\n        *ngIf=\"to.description\"\n        class=\"usa-label--description\"\n        [id]=\"id + '-description'\"\n      >\n        {{ to.description }}\n      </div>\n      <ng-container #fieldComponent></ng-container>\n    </div>\n  `,\n})\nexport class FormlyDescriptionWrapperComponent extends FieldWrapper {\n  @ViewChild('fieldComponent', { read: ViewContainerRef })\n  fieldComponent: ViewContainerRef;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -3302,11 +3302,11 @@ const FORMLY = {
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<fieldset class=\"usa-fieldset\">\n  <legend class=\"usa-sr-only\">{{ to.label }}</legend>\n  <ul class=\"sds-list--no-bullets\">\n    <li class=\"grid-row\" *ngIf=\"to.selectAllOption\">\n      <div>\n        <input [id]=\"id + '_Select'\" type=\"checkbox\" class=\"usa-checkbox__input\" value=\"value\" [checked]=\"allComplete\"\n          [attr.aria-checked]=\"ariaChecked\" (change)=\"setAll($event)\" />\n        <label class=\"usa-checkbox__label\" [attr.aria-checked]=\"ariaChecked\" [for]=\"id + '_Select'\">\n          <span [innerHtml]=\"to.label\"></span>\n        </label>\n\n      </div>\n      <div *ngIf=\"to.selectTooltipText\">\n        <p #tipContent1 [ngClass]=\"to.tooltipClass\" class=\"margin-1\" [innerHTML]=\"to.selectTooltipText\"></p>\n        <usa-icon class=\"sds-stack padding-top-105 margin-left-1\"\n          [position]=\"to.selecttooltipPosition ? to.selecttooltipPosition :'right'\" [sdsTooltip]=\"tipContent1\"\n          [size]=\"'lg'\" [icon]=\"'info-circle'\"></usa-icon>\n      </div>\n\n      <div *ngIf=\"to.expandableOptions\">\n        <button type=\"button\" class=\"sds-button padding-top-0\" [attr.aria-expanded]=\"!to.expandedOptions\"\n          [attr.aria-controls]=\"id + 'collapseID'\" (click)=\"to.expandedOptions = !to.expandedOptions\">\n          <span class=\"usa-sr-only\">expand/collapsed</span>\n          <usa-icon [icon]=\"to.expandedOptions ?'caret-down-fill': 'caret-up-fill'\" [size]=\"'1x'\">\n          </usa-icon>\n\n        </button>\n      </div>\n    </li>\n    <li [id]=\"id+ 'collapseID'\" [sdsCollapse]=\"to.expandedOptions\"\n      [ngClass]=\"{'margin-left-4 margin-top-0': to.selectAllOption}\">\n      <ul class=\"sds-list--no-bullets\">\n        <li class=\"grid-row\" *ngFor=\"let option of (to.options | formlySelectOptions: field | async); let i = index\">\n          <div>\n            <input class=\"usa-checkbox__input\" [id]=\"id + '_' + i\" type=\"checkbox\" [name]=\"id + '_name_' + i\"\n              [disabled]=\"option.disabled\" [value]=\"option.value\" [formlyAttributes]=\"field\"\n              (change)=\"onChange(option.value, $event.target.checked)\" [checked]=\"isChecked(option)\" />\n            <label class=\"usa-checkbox__label\" [for]=\"id + '_' + i\">\n              <!-- \n                The reference of options array through index is done intentionally here rather \n                than using local variable option because the formlySelectOptions pipe transforms \n                each option such that they lose all properties except label, value, and disabled \n            -->\n              <span *ngIf=\"to.options[i].tagText\" class=\"usa-tag\"\n                [ngClass]=\"to.options[i].tagClass ? to.options[i].tagClass : 'sds-tag--info-white'\">\n                {{to.options[i].tagText}}\n              </span>\n              <span [innerHtml]=\"option.label\"></span>\n            </label>\n          </div>\n\n          <div *ngIf=\"to.options[i].tooltipText\" class=\"margin-top-1 margin-left-1\">\n            <p #tipContent [ngClass]=\"to.options[i].tooltipClass\" class=\"margin-1\"\n              [innerHTML]=\"to.options[i].tooltipText\"></p>\n            <usa-icon [position]=\"to.options[i].tooltipPosition ? to.options[i].tooltipPosition :'right'\"\n              [sdsTooltip]=\"tipContent\" [size]=\"'lg'\" [icon]=\"'info-circle'\"></usa-icon>\n          </div>\n        </li>\n      </ul>\n    </li>\n  </ul>\n</fieldset>\n"
+            "templateData": "<fieldset class=\"usa-fieldset\">\n  <legend class=\"usa-sr-only\">{{ to.label }}</legend>\n  <ul class=\"sds-list--no-bullets\">\n    <li class=\"grid-row\" *ngIf=\"to.selectAllOption\">\n      <div>\n        <input [id]=\"id + '_Select'\" type=\"checkbox\" class=\"usa-checkbox__input\" value=\"value\" [checked]=\"allComplete\"\n          [attr.aria-checked]=\"ariaChecked\" (change)=\"setAll($event)\" />\n        <label class=\"usa-checkbox__label\" [attr.aria-checked]=\"ariaChecked\" [for]=\"id + '_Select'\">\n          <span [innerHtml]=\"to.label\"></span>\n        </label>\n\n      </div>\n      <div *ngIf=\"to.selectTooltipText\">\n        <p #tipContent1 [ngClass]=\"to.tooltipClass\" class=\"margin-1\" [innerHTML]=\"to.selectTooltipText\"></p>\n        <usa-icon class=\"padding-top-105 margin-left-1\"\n          [position]=\"to.selecttooltipPosition ? to.selecttooltipPosition :'right'\" [sdsTooltip]=\"tipContent1\"\n          [size]=\"'lg'\" [icon]=\"'info-circle'\"></usa-icon>\n      </div>\n\n      <div *ngIf=\"to.expandableOptions\">\n        <button type=\"button\" class=\"sds-button padding-top-0\" [attr.aria-expanded]=\"!to.expandedOptions\"\n          [attr.aria-controls]=\"id + 'collapseID'\" (click)=\"to.expandedOptions = !to.expandedOptions\">\n          <span class=\"usa-sr-only\">expand/collapsed</span>\n          <usa-icon [icon]=\"to.expandedOptions ?'caret-down-fill': 'caret-up-fill'\" [size]=\"'1x'\">\n          </usa-icon>\n\n        </button>\n      </div>\n    </li>\n    <li [id]=\"id+ 'collapseID'\" [sdsCollapse]=\"to.expandedOptions\"\n      [ngClass]=\"{'margin-left-4 margin-top-0': to.selectAllOption}\">\n      <ul class=\"sds-list--no-bullets\">\n        <li class=\"grid-row\" *ngFor=\"let option of (to.options | formlySelectOptions: field | async); let i = index\">\n          <div>\n            <input class=\"usa-checkbox__input\" [id]=\"id + '_' + i\" type=\"checkbox\" [name]=\"id + '_name_' + i\"\n              [disabled]=\"option.disabled\" [value]=\"option.value\" [formlyAttributes]=\"field\"\n              (change)=\"onChange(option.value, $event.target.checked)\" [checked]=\"isChecked(option)\" />\n            <label class=\"usa-checkbox__label\" [for]=\"id + '_' + i\">\n              <!-- \n                The reference of options array through index is done intentionally here rather \n                than using local variable option because the formlySelectOptions pipe transforms \n                each option such that they lose all properties except label, value, and disabled \n            -->\n              <span *ngIf=\"to.options[i].tagText\" class=\"usa-tag\"\n                [ngClass]=\"to.options[i].tagClass ? to.options[i].tagClass : 'sds-tag--info-white'\">\n                {{to.options[i].tagText}}\n              </span>\n              <span [innerHtml]=\"option.label\"></span>\n            </label>\n          </div>\n\n          <div *ngIf=\"to.options[i].tooltipText\" class=\"margin-top-1 margin-left-1\">\n            <p #tipContent [ngClass]=\"to.options[i].tooltipClass\" class=\"margin-1\"\n              [innerHTML]=\"to.options[i].tooltipText\"></p>\n            <usa-icon [position]=\"to.options[i].tooltipPosition ? to.options[i].tooltipPosition :'right'\"\n              [sdsTooltip]=\"tipContent\" [size]=\"'lg'\" [icon]=\"'info-circle'\"></usa-icon>\n          </div>\n        </li>\n      </ul>\n    </li>\n  </ul>\n</fieldset>\n"
         },
         {
             "name": "FormlyFieldRadioComponent",
-            "id": "component-FormlyFieldRadioComponent-a365900f9aa86a4fd535c0ddb9e9d37a",
+            "id": "component-FormlyFieldRadioComponent-5396aadb3d04382ddddbc16f32299ac8",
             "file": "libs/packages/sam-formly/src/lib/formly/types/radio.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3329,21 +3329,57 @@ const FORMLY = {
                     "type": "object",
                     "optional": false,
                     "description": "",
-                    "line": 9
+                    "line": 13
+                },
+                {
+                    "name": "defaultTemplate",
+                    "type": "TemplateRef<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 10,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'defaultTemplate'"
+                        }
+                    ]
+                },
+                {
+                    "name": "displayedTemplate",
+                    "defaultValue": "null",
+                    "type": "null",
+                    "optional": false,
+                    "description": "",
+                    "line": 11,
+                    "modifierKind": [
+                        114
+                    ]
                 }
             ],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 18
+                }
+            ],
             "hostBindings": [],
             "hostListeners": [],
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component} from '@angular/core';\nimport { FieldType } from '@ngx-formly/core';\n\n@Component({\n  selector: 'sds-formly-field-radio',\n  templateUrl: './radio.html',\n})\nexport class FormlyFieldRadioComponent extends FieldType {\n  defaultOptions = {\n    templateOptions: {\n      options: [],\n    },\n  };\n}\n",
+            "sourceCode": "import { AfterViewInit, Component, TemplateRef, ViewChild} from '@angular/core';\nimport { FieldType } from '@ngx-formly/core';\n\n@Component({\n  selector: 'sds-formly-field-radio',\n  templateUrl: './radio.html',\n})\nexport class FormlyFieldRadioComponent extends FieldType implements AfterViewInit{\n\n  @ViewChild('defaultTemplate') defaultTemplate: TemplateRef<any>;\n  public displayedTemplate = null;\n\n  defaultOptions = {\n    templateOptions: {\n      options: [],\n    },\n  };\n  ngAfterViewInit(){\n    const passedIn = this.to.template;\n    setTimeout(()=>{\n      this.displayedTemplate = passedIn ? passedIn : this.defaultTemplate;\n    })\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": "FieldType",
-            "templateData": "<form class=\"usa-radio\" [id]=\"id\" [attr.aria-label]=\"to.ariaLabel? to.ariaLabel : to.label\"\n  [attr.aria-describedby]=\"to.description ? id + '_description' : undefined\">\n  <ng-container *ngFor=\"\n  let option of to.options | formlySelectOptions: field | async;\n  let i = index\">\n    <div class=\"grid-row\">\n      <div>\n        <input class=\"usa-radio__input\" [ngClass]=\"{'usa-radio__input--tile': to.tile, 'usa-input--error': !showError}\"\n          [formlyAttributes]=\"field\" [id]=\"id + '_' + i\" type=\"radio\" [name]=\"id\" checked=\"checked\"\n          [formControl]=\"formControl\" [value]=\"option.value\">\n\n        <label class=\"usa-radio__label\" [ngClass]=\"to.optionsClass ? to.optionsClass : ''\" [for]=\"id + '_' + i\">\n          <span [innerHtml]=\"option.label\"></span>\n          <!-- Go through templateoptions' option because formlySelectOptions pipe will include only limited fields -->\n          <ng-container *ngIf=\"to.options[i].description && to.options[i].description.length\">\n            <div class=\"usa-checkbox__label-description\">\n              <span class=\"display-block\" *ngFor=\"let description of to.options[i].description\" [innerHtml]=\"description\"></span>\n            </div>\n          </ng-container>\n        </label>\n      </div>\n\n      <div *ngIf=\"to.options[i].tooltipText\">\n        <p #tipContent [ngClass]=\"to.options[i].tooltipClass\" class=\"margin-1\" [innerHTML]=\"to.options[i].tooltipText\">\n        </p>\n        <usa-icon class=\"sds-stack padding-top-105 margin-left-1\"\n          [position]=\"to.options[i].tooltipPosition ? to.options[i].tooltipPosition :'right'\" [sdsTooltip]=\"tipContent\"\n          [size]=\"'lg'\" [icon]=\"'info-circle'\"></usa-icon>\n      </div>\n    </div>\n  </ng-container>\n</form>\n"
+            "implements": [
+                "AfterViewInit"
+            ],
+            "templateData": "<form class=\"usa-radio\" [id]=\"id\" [attr.aria-label]=\"to.ariaLabel? to.ariaLabel : to.label\"\n  [attr.aria-describedby]=\"to.description ? id + '_description' : undefined\">\n  <ng-container *ngFor=\"\n  let option of to.options | formlySelectOptions: field | async;\n  let i = index\"\n  [ngTemplateOutlet]=\"(to.template ? to.template : defaultTemplate)\"\n  [ngTemplateOutletContext]=\"{\n    $implicit: option,\n    i: i,\n    to:to,\n    field: field,\n    id: id,\n    showError: showError,\n    formControl: formControl\n  }\">\n  </ng-container>\n</form>\n\n<ng-template let-option let-i=\"i\" let-to=\"to\" #defaultTemplate>\n  <div class=\"grid-row\">\n    <div>\n      <input class=\"usa-radio__input\"\n        [ngClass]=\"{'usa-radio__input--tile': to.tile, 'usa-input--error': !showError}\" [formlyAttributes]=\"field\"\n        [id]=\"id + '_' + i\" type=\"radio\" [name]=\"id\" checked=\"checked\" [formControl]=\"formControl\"\n        [value]=\"option.value\">\n\n      <label class=\"usa-radio__label\" [ngClass]=\"to.optionsClass ? to.optionsClass : ''\" [for]=\"id + '_' + i\">\n        <span [innerHtml]=\"option.label\"></span>\n        <ng-container *ngIf=\"to.options[i].description && to.options[i].description.length\">\n          <div class=\"usa-checkbox__label-description\">\n            <span class=\"display-block\" *ngFor=\"let description of to.options[i].description\"\n              [innerHtml]=\"description\"></span>\n          </div>\n        </ng-container>\n      </label>\n    </div>\n\n    <div *ngIf=\"to.options[i].tooltipText\">\n      <p #tipContent [ngClass]=\"to.options[i].tooltipClass\" class=\"margin-1\"\n        [innerHTML]=\"to.options[i].tooltipText\">\n      </p>\n      <usa-icon class=\"padding-top-105 margin-left-1\"\n        [position]=\"to.options[i].tooltipPosition ? to.options[i].tooltipPosition :'right'\"\n        [sdsTooltip]=\"tipContent\" [size]=\"'lg'\" [icon]=\"'info-circle'\"></usa-icon>\n    </div>\n  </div>\n</ng-template>\n"
         },
         {
             "name": "FormlyFieldSearchComponent",
@@ -3762,7 +3798,7 @@ const FORMLY = {
         },
         {
             "name": "FormlyGroupWrapperComponent",
-            "id": "component-FormlyGroupWrapperComponent-08de34d91fc7b2e2c843624702fab9ac",
+            "id": "component-FormlyGroupWrapperComponent-2bcbabb7e92e62e6c01af57f8a3ac4a3",
             "file": "libs/packages/sam-formly/src/lib/formly/wrappers/group.wrapper.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3771,7 +3807,7 @@ const FORMLY = {
             "providers": [],
             "styleUrls": [],
             "styles": [],
-            "template": "<ng-container *ngIf=\"!to.readonlyMode; else defaultTemplate\">\n  <ng-container [ngSwitch]=\"to.group\">\n    <ng-container *ngSwitchCase=\"'accordion'\">\n      <usa-accordion #groupAccordion [singleSelect]=\"!multi\" class=\"sds-accordion--filters\">\n        <usa-accordion-item [expanded]=\"modelHasValue()\">\n          <ng-template UsaAccordionHeader>\n            <span [attr.class]=\"to.labelClass\">{{ to.label }}</span>\n          </ng-template>\n          <ng-template UsaAccordionContent>\n            <ng-container #fieldComponent></ng-container>\n          </ng-template>\n        </usa-accordion-item>\n      </usa-accordion>\n    </ng-container>\n    <ng-container *ngSwitchCase=\"'panel'\">\n      <div\n        class=\"sds-panel\"\n        [ngClass]=\"{ 'sds-panel--multiple': field?.fieldGroup?.length }\"\n      >\n        <div\n          class=\"sds-panel__header\"\n          *ngIf=\"!to.hideLabel\"\n          [attr.aria-hidden]=\"!to.announceLabel ? undefined : 'true'\"\n        >\n          <span [attr.class]=\"to.labelClass\">{{ to.label }}</span>\n        </div>\n        <div class=\"sds-panel__body\">\n          <ng-container #fieldComponent></ng-container>\n        </div>\n      </div>\n    </ng-container>\n    <ng-container *ngSwitchCase=\"'popover'\">\n    <div #popoverContent class=\"padding-1 text-left sds-width-max-content\">\n      <ng-container #fieldComponent></ng-container>\n    </div>\n      <div\n        [sdsPopover]=\"popoverContent\"\n          [position]=\"'bottom'\"\n          [closeOnContentClick]=\"false\"\n          [closeOnClickOutside]=\"true\"\n          tabindex=\"0\" [attr.aria-label]=\"to.label\">\n        {{to.label}}\n        <usa-icon [icon]=\"'chevron-down'\" [size]=\"'sm'\"></usa-icon>\n      </div>\n    </ng-container>\n    <ng-container *ngSwitchDefault>\n      <ng-container #fieldComponent></ng-container>\n    </ng-container>\n  </ng-container>\n</ng-container>\n<ng-template #defaultTemplate>\n  <ng-container #fieldComponent></ng-container>\n</ng-template>\n",
+            "template": "<ng-container *ngIf=\"!to.readonlyMode; else defaultTemplate\">\n  <ng-container [ngSwitch]=\"to.group\">\n    <ng-container *ngSwitchCase=\"'accordion'\">\n      <usa-accordion #groupAccordion [singleSelect]=\"!multi\" class=\"sds-accordion--filters\">\n        <usa-accordion-item [expanded]=\"modelHasValue()\">\n          <ng-template UsaAccordionHeader>\n            <span [attr.class]=\"to.labelClass\">{{ to.label }}</span>\n          </ng-template>\n          <ng-template UsaAccordionContent>\n            <ng-container #fieldComponent></ng-container>\n          </ng-template>\n        </usa-accordion-item>\n      </usa-accordion>\n    </ng-container>\n    <ng-container *ngSwitchCase=\"'panel'\">\n      <div\n        class=\"sds-panel\"\n        [ngClass]=\"{ 'sds-panel--multiple': field?.fieldGroup?.length }\"\n      >\n        <div\n          class=\"sds-panel__header\"\n          *ngIf=\"!to.hideLabel\"\n          [attr.aria-hidden]=\"!to.announceLabel ? undefined : 'true'\"\n        >\n          <span [attr.class]=\"to.labelClass\">{{ to.label }}</span>\n        </div>\n        <div class=\"sds-panel__body\">\n          <ng-container #fieldComponent></ng-container>\n        </div>\n      </div>\n    </ng-container>\n    <ng-container *ngSwitchCase=\"'popover'\">\n    <div #popoverContent class=\"padding-1 text-left sds-width-max-content\">\n      <ng-container #fieldComponent></ng-container>\n    </div>\n      <div\n        [sdsPopover]=\"popoverContent\"\n          [position]=\"'bottom'\"\n          [closeOnContentClick]=\"to.closeOnContentClick != undefined ? to.closeOnContentClick : false\"\n          [closeOnClickOutside]=\"to.closeOnClickOutside != undefined ? to.closeOnClickOutside : true\"\n          tabindex=\"0\" [attr.aria-label]=\"to.label\">\n        {{to.label}}\n        <usa-icon [icon]=\"'chevron-down'\" [size]=\"'sm'\"></usa-icon>\n      </div>\n    </ng-container>\n    <ng-container *ngSwitchDefault>\n      <ng-container #fieldComponent></ng-container>\n    </ng-container>\n  </ng-container>\n</ng-container>\n<ng-template #defaultTemplate>\n  <ng-container #fieldComponent></ng-container>\n</ng-template>\n",
             "templateUrl": [],
             "viewProviders": [],
             "inputsClass": [],
@@ -3863,7 +3899,7 @@ const FORMLY = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { AfterViewInit, Component, OnDestroy, ViewChild, ViewContainerRef } from '@angular/core';\nimport { FieldWrapper } from '@ngx-formly/core';\nimport * as qs from 'qs';\nimport { Subscription } from 'rxjs';\nimport { UsaAccordionComponent, UsaAccordionItem } from '@gsa-sam/ngx-uswds';\nimport { filter } from 'rxjs/operators';\n\n/**\n * @param string [to.group] used to set the wrapper tupe\n * @param string [to.announceLabel] For screenreader\n * @param string [to.label] Text to be shown for the label\n * @param string [to.hideLabel] Hide the label\n *\n */\n@Component({\n  template: `\n    <ng-container *ngIf=\"!to.readonlyMode; else defaultTemplate\">\n      <ng-container [ngSwitch]=\"to.group\">\n        <ng-container *ngSwitchCase=\"'accordion'\">\n          <usa-accordion #groupAccordion [singleSelect]=\"!multi\" class=\"sds-accordion--filters\">\n            <usa-accordion-item [expanded]=\"modelHasValue()\">\n              <ng-template UsaAccordionHeader>\n                <span [attr.class]=\"to.labelClass\">{{ to.label }}</span>\n              </ng-template>\n              <ng-template UsaAccordionContent>\n                <ng-container #fieldComponent></ng-container>\n              </ng-template>\n            </usa-accordion-item>\n          </usa-accordion>\n        </ng-container>\n        <ng-container *ngSwitchCase=\"'panel'\">\n          <div\n            class=\"sds-panel\"\n            [ngClass]=\"{ 'sds-panel--multiple': field?.fieldGroup?.length }\"\n          >\n            <div\n              class=\"sds-panel__header\"\n              *ngIf=\"!to.hideLabel\"\n              [attr.aria-hidden]=\"!to.announceLabel ? undefined : 'true'\"\n            >\n              <span [attr.class]=\"to.labelClass\">{{ to.label }}</span>\n            </div>\n            <div class=\"sds-panel__body\">\n              <ng-container #fieldComponent></ng-container>\n            </div>\n          </div>\n        </ng-container>\n        <ng-container *ngSwitchCase=\"'popover'\">\n        <div #popoverContent class=\"padding-1 text-left sds-width-max-content\">\n          <ng-container #fieldComponent></ng-container>\n        </div>\n          <div\n            [sdsPopover]=\"popoverContent\"\n              [position]=\"'bottom'\"\n              [closeOnContentClick]=\"false\"\n              [closeOnClickOutside]=\"true\"\n              tabindex=\"0\" [attr.aria-label]=\"to.label\">\n            {{to.label}}\n            <usa-icon [icon]=\"'chevron-down'\" [size]=\"'sm'\"></usa-icon>\n          </div>\n        </ng-container>\n        <ng-container *ngSwitchDefault>\n          <ng-container #fieldComponent></ng-container>\n        </ng-container>\n      </ng-container>\n    </ng-container>\n    <ng-template #defaultTemplate>\n      <ng-container #fieldComponent></ng-container>\n    </ng-template>\n  `,\n})\nexport class FormlyGroupWrapperComponent extends FieldWrapper implements AfterViewInit, OnDestroy {\n  @ViewChild('fieldComponent', { read: ViewContainerRef }) fieldComponent: ViewContainerRef;\n\n  @ViewChild('groupAccordion') accordion: UsaAccordionComponent;\n  @ViewChild(UsaAccordionItem) accordionItem: UsaAccordionItem;\n\n  multi = true;\n\n  resetAllSubscription: Subscription;\n\n  constructor() {\n    super();\n  }\n\n  ngAfterViewInit() {\n    if (this.to.group != 'accordion' || !this.accordion) {\n      return;\n    }\n\n    this.resetAllSubscription = this.field.options.fieldChanges.pipe(\n      filter(({ type }) => type === 'resetAll' && this.accordionItem.expanded))\n      .subscribe(() => {\n        if (!this.modelHasValue()) {\n          this.accordion.collapse(this.accordionItem.id);\n        }\n      });\n  }\n\n  ngOnDestroy() {\n    if (this.resetAllSubscription) {\n      this.resetAllSubscription.unsubscribe();\n    }\n  }\n\n  modelHasValue() {\n    if (this.to.hasOwnProperty('expand')) {\n      return this.to.expand;\n    } else {\n      const hasValue =\n        this.formControl.value instanceof Object\n          ? qs.stringify(this.formControl.value, { skipNulls: true })\n          : this.formControl.value;\n      return hasValue || this.formControl.dirty ? true : false;\n    }\n  }\n}\n",
+            "sourceCode": "import { AfterViewInit, Component, OnDestroy, ViewChild, ViewContainerRef } from '@angular/core';\nimport { FieldWrapper } from '@ngx-formly/core';\nimport * as qs from 'qs';\nimport { Subscription } from 'rxjs';\nimport { UsaAccordionComponent, UsaAccordionItem } from '@gsa-sam/ngx-uswds';\nimport { filter } from 'rxjs/operators';\n\n/**\n * @param string [to.group] used to set the wrapper tupe\n * @param string [to.announceLabel] For screenreader\n * @param string [to.label] Text to be shown for the label\n * @param string [to.hideLabel] Hide the label\n *\n */\n@Component({\n  template: `\n    <ng-container *ngIf=\"!to.readonlyMode; else defaultTemplate\">\n      <ng-container [ngSwitch]=\"to.group\">\n        <ng-container *ngSwitchCase=\"'accordion'\">\n          <usa-accordion #groupAccordion [singleSelect]=\"!multi\" class=\"sds-accordion--filters\">\n            <usa-accordion-item [expanded]=\"modelHasValue()\">\n              <ng-template UsaAccordionHeader>\n                <span [attr.class]=\"to.labelClass\">{{ to.label }}</span>\n              </ng-template>\n              <ng-template UsaAccordionContent>\n                <ng-container #fieldComponent></ng-container>\n              </ng-template>\n            </usa-accordion-item>\n          </usa-accordion>\n        </ng-container>\n        <ng-container *ngSwitchCase=\"'panel'\">\n          <div\n            class=\"sds-panel\"\n            [ngClass]=\"{ 'sds-panel--multiple': field?.fieldGroup?.length }\"\n          >\n            <div\n              class=\"sds-panel__header\"\n              *ngIf=\"!to.hideLabel\"\n              [attr.aria-hidden]=\"!to.announceLabel ? undefined : 'true'\"\n            >\n              <span [attr.class]=\"to.labelClass\">{{ to.label }}</span>\n            </div>\n            <div class=\"sds-panel__body\">\n              <ng-container #fieldComponent></ng-container>\n            </div>\n          </div>\n        </ng-container>\n        <ng-container *ngSwitchCase=\"'popover'\">\n        <div #popoverContent class=\"padding-1 text-left sds-width-max-content\">\n          <ng-container #fieldComponent></ng-container>\n        </div>\n          <div\n            [sdsPopover]=\"popoverContent\"\n              [position]=\"'bottom'\"\n              [closeOnContentClick]=\"to.closeOnContentClick != undefined ? to.closeOnContentClick : false\"\n              [closeOnClickOutside]=\"to.closeOnClickOutside != undefined ? to.closeOnClickOutside : true\"\n              tabindex=\"0\" [attr.aria-label]=\"to.label\">\n            {{to.label}}\n            <usa-icon [icon]=\"'chevron-down'\" [size]=\"'sm'\"></usa-icon>\n          </div>\n        </ng-container>\n        <ng-container *ngSwitchDefault>\n          <ng-container #fieldComponent></ng-container>\n        </ng-container>\n      </ng-container>\n    </ng-container>\n    <ng-template #defaultTemplate>\n      <ng-container #fieldComponent></ng-container>\n    </ng-template>\n  `,\n})\nexport class FormlyGroupWrapperComponent extends FieldWrapper implements AfterViewInit, OnDestroy {\n  @ViewChild('fieldComponent', { read: ViewContainerRef }) fieldComponent: ViewContainerRef;\n\n  @ViewChild('groupAccordion') accordion: UsaAccordionComponent;\n  @ViewChild(UsaAccordionItem) accordionItem: UsaAccordionItem;\n\n  multi = true;\n\n  resetAllSubscription: Subscription;\n\n  constructor() {\n    super();\n  }\n\n  ngAfterViewInit() {\n    if (this.to.group != 'accordion' || !this.accordion) {\n      return;\n    }\n\n    this.resetAllSubscription = this.field.options.fieldChanges.pipe(\n      filter(({ type }) => type === 'resetAll' && this.accordionItem.expanded))\n      .subscribe(() => {\n        if (!this.modelHasValue()) {\n          this.accordion.collapse(this.accordionItem.id);\n        }\n      });\n  }\n\n  ngOnDestroy() {\n    if (this.resetAllSubscription) {\n      this.resetAllSubscription.unsubscribe();\n    }\n  }\n\n  modelHasValue() {\n    if (this.to.hasOwnProperty('expand')) {\n      return this.to.expand;\n    } else {\n      const hasValue =\n        this.formControl.value instanceof Object\n          ? qs.stringify(this.formControl.value, { skipNulls: true })\n          : this.formControl.value;\n      return hasValue || this.formControl.dirty ? true : false;\n    }\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -4468,7 +4504,7 @@ const FORMLY = {
         },
         {
             "name": "FormlyWrapperFormFieldComponent",
-            "id": "component-FormlyWrapperFormFieldComponent-630770d71526ad64638cd19ea460000f",
+            "id": "component-FormlyWrapperFormFieldComponent-dfff08d62fb9ce973d1ed5f1a9413567",
             "file": "libs/packages/sam-formly/src/lib/formly/wrappers/form-field.wrapper.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4478,7 +4514,7 @@ const FORMLY = {
             "selector": "sds-formly-wrapper-form-field",
             "styleUrls": [],
             "styles": [],
-            "template": "<div class=\"usa-form-group\" [class.usa-form-group--error]=\"showError\">\n  <label\n    class=\"usa-label\"\n    *ngIf=\"to.label && to.hideLabel !== true\"\n    [attr.for]=\"id\"\n    [ngClass]=\"to.labelClass\"\n  >\n    <span\n      *ngIf=\"to.tagText\"\n      class=\"usa-tag\"\n      [ngClass]=\"to.tagClass ? to.tagClass : 'sds-tag--info-white'\"\n      >{{ to.tagText }}</span\n    >\n    <span>{{ to.label }}</span>\n    <span *ngIf=\"!to.required && !to.hideOptional\"> (Optional)</span>\n  </label>\n  <small *ngIf=\"to.description\" class=\"form-text text-muted\">{{\n    to.description\n  }}</small>\n  <ng-template #fieldComponent></ng-template>\n  <div\n    *ngIf=\"showError\"\n    class=\"usa-error-message\"\n    [style.display]=\"'block'\"\n  >\n    <formly-validation-message [field]=\"field\"></formly-validation-message>\n  </div>\n</div>\n",
+            "template": "<div class=\"usa-form-group\" [class.usa-form-group--error]=\"showError\">\n  <label\n    class=\"usa-label\"\n    *ngIf=\"to.label && to.hideLabel !== true\"\n    [attr.for]=\"id\"\n    [ngClass]=\"to.labelClass\"\n  >\n    <span\n      *ngIf=\"to.tagText\"\n      class=\"usa-tag\"\n      [ngClass]=\"to.tagClass ? to.tagClass : 'sds-tag--info-white'\"\n      >{{ to.tagText }}</span\n    >\n    <span>{{ to.label }}</span>\n    <span *ngIf=\"!to.required && !to.hideOptional\"> (Optional)</span>\n  </label>\n  <div *ngIf=\"to.description\" class=\"usa-label--description\">\n    {{ to.description }}\n  </div>\n  <ng-template #fieldComponent></ng-template>\n  <div\n    *ngIf=\"showError\"\n    class=\"usa-error-message\"\n    [style.display]=\"'block'\"\n  >\n    <formly-validation-message [field]=\"field\"></formly-validation-message>\n  </div>\n</div>\n",
             "templateUrl": [],
             "viewProviders": [],
             "inputsClass": [],
@@ -4504,7 +4540,7 @@ const FORMLY = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild, ViewContainerRef } from '@angular/core';\nimport { FieldWrapper } from '@ngx-formly/core';\n\n/**\n * @param string [to.tagClass] Class to be added to the tag (default: sds-tag--info-white)\n * @param string [to.tagText] Text to be shown inside the tag\n * @param string [to.labelClass] Class to be applied to the label\n * @param string [to.label] Text to be shown for the label\n * @param string [to.required] Makes the field required\n * @param string [to.description] Add a description below the label\n * @param string [to.hideOptional] Remove the optional text\n * @param string [to.hideLabel] Hide the label\n *\n */\n\n@Component({\n  selector: 'sds-formly-wrapper-form-field',\n  template: `\n    <div class=\"usa-form-group\" [class.usa-form-group--error]=\"showError\">\n      <label\n        class=\"usa-label\"\n        *ngIf=\"to.label && to.hideLabel !== true\"\n        [attr.for]=\"id\"\n        [ngClass]=\"to.labelClass\"\n      >\n        <span\n          *ngIf=\"to.tagText\"\n          class=\"usa-tag\"\n          [ngClass]=\"to.tagClass ? to.tagClass : 'sds-tag--info-white'\"\n          >{{ to.tagText }}</span\n        >\n        <span>{{ to.label }}</span>\n        <span *ngIf=\"!to.required && !to.hideOptional\"> (Optional)</span>\n      </label>\n      <small *ngIf=\"to.description\" class=\"form-text text-muted\">{{\n        to.description\n      }}</small>\n      <ng-template #fieldComponent></ng-template>\n      <div\n        *ngIf=\"showError\"\n        class=\"usa-error-message\"\n        [style.display]=\"'block'\"\n      >\n        <formly-validation-message [field]=\"field\"></formly-validation-message>\n      </div>\n    </div>\n  `,\n})\nexport class FormlyWrapperFormFieldComponent extends FieldWrapper {\n  @ViewChild('fieldComponent', { read: ViewContainerRef })\n  fieldComponent!: ViewContainerRef;\n}\n",
+            "sourceCode": "import { Component, ViewChild, ViewContainerRef } from '@angular/core';\nimport { FieldWrapper } from '@ngx-formly/core';\n\n/**\n * @param string [to.tagClass] Class to be added to the tag (default: sds-tag--info-white)\n * @param string [to.tagText] Text to be shown inside the tag\n * @param string [to.labelClass] Class to be applied to the label\n * @param string [to.label] Text to be shown for the label\n * @param string [to.required] Makes the field required\n * @param string [to.description] Add a description below the label\n * @param string [to.hideOptional] Remove the optional text\n * @param string [to.hideLabel] Hide the label\n *\n */\n\n@Component({\n  selector: 'sds-formly-wrapper-form-field',\n  template: `\n    <div class=\"usa-form-group\" [class.usa-form-group--error]=\"showError\">\n      <label\n        class=\"usa-label\"\n        *ngIf=\"to.label && to.hideLabel !== true\"\n        [attr.for]=\"id\"\n        [ngClass]=\"to.labelClass\"\n      >\n        <span\n          *ngIf=\"to.tagText\"\n          class=\"usa-tag\"\n          [ngClass]=\"to.tagClass ? to.tagClass : 'sds-tag--info-white'\"\n          >{{ to.tagText }}</span\n        >\n        <span>{{ to.label }}</span>\n        <span *ngIf=\"!to.required && !to.hideOptional\"> (Optional)</span>\n      </label>\n      <div *ngIf=\"to.description\" class=\"usa-label--description\">\n        {{ to.description }}\n      </div>\n      <ng-template #fieldComponent></ng-template>\n      <div\n        *ngIf=\"showError\"\n        class=\"usa-error-message\"\n        [style.display]=\"'block'\"\n      >\n        <formly-validation-message [field]=\"field\"></formly-validation-message>\n      </div>\n    </div>\n  `,\n})\nexport class FormlyWrapperFormFieldComponent extends FieldWrapper {\n  @ViewChild('fieldComponent', { read: ViewContainerRef })\n  fieldComponent!: ViewContainerRef;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -5374,7 +5410,7 @@ const FORMLY = {
         },
         {
             "name": "SdsFiltersComponent",
-            "id": "component-SdsFiltersComponent-f8b478c4201e21cfe882cb92ab7935df",
+            "id": "component-SdsFiltersComponent-21c9396a51be765c0c1ff87a69775294",
             "file": "libs/packages/sam-formly/src/lib/formly-filters/sds-filters.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -5587,7 +5623,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 367
+                    "line": 368
                 },
                 {
                     "name": "checkForHide",
@@ -5621,7 +5657,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 319,
+                    "line": 320,
                     "description": "<p>Parser for qs.parse - if input string is true / false, \nconvert to boolean value, otherwise use default decoder</p>\n",
                     "jsdoctags": [
                         {
@@ -5660,7 +5696,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 363
+                    "line": 364
                 },
                 {
                     "name": "convertToModel",
@@ -5673,7 +5709,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "{}",
                     "typeParameters": [],
-                    "line": 305,
+                    "line": 306,
                     "jsdoctags": [
                         {
                             "name": "filters",
@@ -5695,7 +5731,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "{}",
                     "typeParameters": [],
-                    "line": 282,
+                    "line": 283,
                     "jsdoctags": [
                         {
                             "name": "filters",
@@ -5721,7 +5757,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 229,
+                    "line": 230,
                     "description": "<p>Recursively iterate over each field as well as potential field groups of the field\nto find a field with the given key. Returns the field if found, otherwise returns null.</p>\n",
                     "modifierKind": [
                         112
@@ -5729,15 +5765,15 @@ const FORMLY = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 6771,
-                                "end": 6777,
+                                "pos": 6811,
+                                "end": 6817,
                                 "flags": 0,
                                 "escapedText": "fields"
                             },
                             "type": "FormlyFieldConfig[]",
                             "tagName": {
-                                "pos": 6765,
-                                "end": 6770,
+                                "pos": 6805,
+                                "end": 6810,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -5745,15 +5781,15 @@ const FORMLY = {
                         },
                         {
                             "name": {
-                                "pos": 6846,
-                                "end": 6849,
+                                "pos": 6886,
+                                "end": 6889,
                                 "flags": 0,
                                 "escapedText": "key"
                             },
                             "type": "any",
                             "tagName": {
-                                "pos": 6840,
-                                "end": 6845,
+                                "pos": 6880,
+                                "end": 6885,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -5776,7 +5812,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 401,
+                    "line": 402,
                     "description": "<p>Create chips to display for horizontal filters based on current model\nand formly field config</p>\n",
                     "modifierKind": [
                         112
@@ -5784,15 +5820,15 @@ const FORMLY = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 11325,
-                                "end": 11330,
+                                "pos": 11365,
+                                "end": 11370,
                                 "flags": 0,
                                 "escapedText": "model"
                             },
                             "type": "any",
                             "tagName": {
-                                "pos": 11319,
-                                "end": 11324,
+                                "pos": 11359,
+                                "end": 11364,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -5800,15 +5836,15 @@ const FORMLY = {
                         },
                         {
                             "name": {
-                                "pos": 11344,
-                                "end": 11350,
+                                "pos": 11384,
+                                "end": 11390,
                                 "flags": 0,
                                 "escapedText": "fields"
                             },
                             "type": "FormlyFieldConfig[]",
                             "tagName": {
-                                "pos": 11338,
-                                "end": 11343,
+                                "pos": 11378,
+                                "end": 11383,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -5827,7 +5863,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "{}",
                     "typeParameters": [],
-                    "line": 293,
+                    "line": 294,
                     "jsdoctags": [
                         {
                             "name": "queryString",
@@ -5849,7 +5885,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 331,
+                    "line": 332,
                     "jsdoctags": [
                         {
                             "name": "inactiveFilterValue",
@@ -5909,7 +5945,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 251,
+                    "line": 252,
                     "jsdoctags": [
                         {
                             "name": "change",
@@ -5926,7 +5962,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 255
+                    "line": 256
                 },
                 {
                     "name": "openDialog",
@@ -5934,7 +5970,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 338
+                    "line": 339
                 },
                 {
                     "name": "removeChip",
@@ -5947,20 +5983,20 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 453,
+                    "line": 454,
                     "description": "<p>Removing a certain chip from UI is the same as applying a change to the form, so\nthis should update the form control. We can find the field to update based on the chip&#39;s\nformly key and what values to update to based on values of existing chips with the same key</p>\n",
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 13071,
-                                "end": 13075,
+                                "pos": 13145,
+                                "end": 13149,
                                 "flags": 0,
                                 "escapedText": "chip"
                             },
                             "type": "ReadonlyDataType",
                             "tagName": {
-                                "pos": 13065,
-                                "end": 13070,
+                                "pos": 13139,
+                                "end": 13144,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -5968,8 +6004,8 @@ const FORMLY = {
                         },
                         {
                             "tagName": {
-                                "pos": 13083,
-                                "end": 13090,
+                                "pos": 13157,
+                                "end": 13164,
                                 "flags": 0,
                                 "escapedText": "returns"
                             },
@@ -5988,7 +6024,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 377,
+                    "line": 378,
                     "description": "<p>Converts all popover type fields to accordion and unhides any hidden fields\nso that they can be displayed in filter dialog during resposive mode for\nhorizontal filters</p>\n",
                     "modifierKind": [
                         112
@@ -5996,15 +6032,15 @@ const FORMLY = {
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 10739,
-                                "end": 10745,
+                                "pos": 10779,
+                                "end": 10785,
                                 "flags": 0,
                                 "escapedText": "fields"
                             },
                             "type": "FormlyFieldConfig[]",
                             "tagName": {
-                                "pos": 10733,
-                                "end": 10738,
+                                "pos": 10773,
+                                "end": 10778,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -6023,7 +6059,7 @@ const FORMLY = {
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 266,
+                    "line": 267,
                     "jsdoctags": [
                         {
                             "name": "change",
@@ -6040,7 +6076,7 @@ const FORMLY = {
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import {\n  Component,\n  Input,\n  Output,\n  EventEmitter,\n  Optional,\n  OnInit,\n  ChangeDetectorRef,\n  OnChanges,\n  SimpleChanges,\n  ViewChild,\n  TemplateRef,\n} from '@angular/core';\n\nimport { FormGroup } from '@angular/forms';\nimport { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';\nimport * as qs from 'qs';\nimport { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';\nimport { SDSFormlyUpdateModelService } from './service/sds-filter-model-update.service';\n\nimport { takeUntil } from 'rxjs/operators';\nimport { Subject } from 'rxjs';\nimport { FormlyUtilsService, ReadonlyDataType } from '../formly/services/formly-utils.service';\nimport { SdsFormlyTypes } from '../formly/models/formly-types';\nimport { SdsDialogRef, SdsDialogService, SDS_DIALOG_DATA } from '@gsa-sam/components';\nimport { cloneDeep } from 'lodash-es';\nimport { FormlyValueChangeEvent } from '@ngx-formly/core/lib/components/formly.field.config';\n@Component({\n  selector: 'sds-filters',\n  templateUrl: './sds-filters.component.html',\n})\nexport class SdsFiltersComponent implements OnInit, OnChanges {\n\n  @ViewChild('horizontalFiltersDialog') horizontalFiltersDialogTemplate: TemplateRef<any>;\n\n  /**\n   * Pass in a Form Group for ReactiveForms Support\n   */\n  @Input() public form: FormGroup;\n\n  /**\n   *  Fields are used to configure the UI components\n   */\n  @Input() public fields: FormlyFieldConfig[];\n\n  /**\n   *  Model used to display the filter values.\n   */\n  @Input() public model: any;\n\n  /**\n   *    Options for the form.\n   */\n  @Input() public options: FormlyFormOptions = {};\n\n  /**\n   *  Emit results when model updated\n   * To enable History Tracking\n   *  If advanced filters dialog should be displayed -- defaults to false\n   */\n  @Input() advancedFilters: boolean = false;\n\n  /**\n   * Sort the filters by alphabetical order\n   */\n  @Input() sortMoreFilterBy = '';\n\n  /**\n   * Show option to include inactive filter values\n   */\n  @Input() isInactiveValueFieldShown: boolean = false;\n\n  /**\n   * Timer id for the timer awaiting the service call for more typeing\n   */\n  @Input() public isHistoryEnable: boolean = false;\n\n  /**\n   * To get clean model without null and empty\n   */\n  @Input() public getCleanModel: boolean = false;\n\n  /**\n   * Default values to reset form to when reset is done\n   * If not passed in, then default values will be values\n   * assigned to the model input during component init\n   * or defaultValue provided in formly config\n   */\n  @Input() defaultModel: any;\n\n  /**\n   * Toggle layout for filters - when horizontal is toggled,\n   * the reset and more filters are placed in top right corner\n   */\n  @Input() horizontal = false;\n\n  /**\n   * Toggle displaying chips for selected filter values. By default this is toggled off\n   * in normal situations. When horizontal setting is turned on, then chip display is\n   * also toggled on by default\n   */\n  @Input() displayChips: boolean;\n\n  /**\n   * Switch to show/hide the reset all button\n   * @default true\n   */\n  @Input() showReset: boolean = true;\n  /**\n   *  Emit results when model updated\n   */\n  // TODO: check type -- Formly models are typically objects\n  @Output() filterChange = new EventEmitter<object>();\n  @Output() showInactiveFiltersChange = new EventEmitter<boolean>();\n  @Output() resetClicked = new EventEmitter();\n\n  chips: ReadonlyDataType[] = [];\n  dialogRef: SdsDialogRef<any>;\n\n  // Snapshot of model before filter dialog opens during horizontal responsive format\n  _modelSnapshot: any;\n\n  unsubscribe$ = new Subject<void>();\n  _isObj = (obj: any): boolean => typeof obj === 'object' && obj !== null;\n  _isEmpty = (obj: any): boolean => Object.keys(obj).length === 0;\n  overwrite = (baseObj: any, newObj: any) => {\n    const result = {};\n    const mergedObj = { ...baseObj, ...newObj };\n    for (const key in mergedObj) {\n      if (Array.isArray(baseObj[key])) {\n        result[key] = newObj[key] || null;\n      } else if (baseObj[key] instanceof Date) {\n        result[key] = newObj[key] === undefined ? null : new Date(newObj[key]);\n      } else if (this._isObj(baseObj[key])) {\n        result[key] = this.overwrite(baseObj[key], newObj[key] || {});\n      } else {\n        result[key] = newObj[key] || null;\n      }\n    }\n    return result;\n  };\n\n\n  constructor(\n    @Optional()\n    public formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,\n    private formlyDialogService: SdsDialogService,\n    private cdr: ChangeDetectorRef,\n    @Optional()\n    private filterUpdateModelService: SDSFormlyUpdateModelService\n  ) { }\n  ngOnDestroy() {\n    this.unsubscribe$.next();\n    this.unsubscribe$.complete();\n  }\n\n  ngOnInit(): void {\n    // keep display chips to defined value if defined, otherwise, default to false, unless hoirzontal is turned on\n    this.displayChips = this.displayChips != undefined ? this.displayChips : this.horizontal;\n\n    if (this.filterUpdateModelService) {\n      this.filterUpdateModelService.filterModel\n        .pipe(takeUntil(this.unsubscribe$))\n        .subscribe((filter) => {\n          if (filter) {\n            const updatedFormValue = this.overwrite(\n              this.form.getRawValue(),\n              filter\n            );\n            // Shallow copy to not trigger onChanges from formly side\n            Object.keys(updatedFormValue).forEach((key) => {\n              this.model[key] = updatedFormValue[key];\n            });\n\n            setTimeout(() => {\n              this.form.patchValue(updatedFormValue);\n            });\n            this.checkForHide();\n          }\n        });\n        this.cdr.detectChanges();\n    }\n  }\n\n  ngOnChanges(changes: SimpleChanges) {\n    if (\n      changes.model &&\n      changes.model.currentValue != changes.model.previousValue\n    ) {\n      this.checkForHide();\n    }\n  }\n\n  /**\n   * This is for getting the model which has a value.\n   */\n  checkForHide() {\n    let fieldWithValue = this.convertToParam(this.model);\n    let keys = [];\n    Object.keys(fieldWithValue).map((key) => {\n      keys.push(key.replace(/\\[/g, '.').replace(/\\]/g, ''));\n    });\n    keys.forEach((key) => {\n      const [lastKey] = key.split('.').slice(-1);\n      this.fields.forEach((field) => {\n        if (key.includes(field.key)) {\n          if (field.fieldGroup) {\n            const fieldExists = this.findFieldInFieldGroup(\n              field.fieldGroup,\n              lastKey\n            );\n            if (fieldExists) {\n              field.hide = false;\n            }\n          } else {\n            field.hide = false;\n          }\n        }\n      });\n    });\n  }\n\n  /**\n   * Recursively iterate over each field as well as potential field groups of the field\n   * to find a field with the given key. Returns the field if found, otherwise returns null.\n   * @param fields - The list of formly fields to search for the given key\n   * @param key - The key of the formly field config to search for\n   */\n  private findFieldInFieldGroup(fields: FormlyFieldConfig[], key: any) {\n    let matchingField: FormlyFieldConfig = null;\n\n    for (let i = 0; i < fields.length; i++) {\n      const field = fields[i];\n\n      if (field.key === key) {\n        matchingField = field;\n      } else if (field.fieldGroup) {\n        matchingField = this.findFieldInFieldGroup(field.fieldGroup, key);\n      } else if (field.fieldArray) {\n        matchingField = this.findFieldInFieldGroup([field.fieldArray], key);\n      }\n\n      if (matchingField) {\n        break;\n      }\n    }\n\n    return matchingField;\n  }\n\n  onModelChange(change: any) {\n    this.updateChange(change);\n  }\n\n  onResetClicked() {\n    const fieldChangeEvent: FormlyValueChangeEvent = {\n      field: undefined,\n      type: 'resetAll',\n      value: undefined\n    };\n\n    this.options.fieldChanges.next(fieldChangeEvent);\n    this.resetClicked.emit();\n  }\n\n  updateChange(change) {\n    const updatedModel = this.getCleanModel\n      ? this.convertToModel(change)\n      : change;\n    this.filterChange.emit(updatedModel);\n    if (this.formlyUpdateComunicationService) {\n      this.formlyUpdateComunicationService.updateFilter(updatedModel);\n    }\n\n    if (this.displayChips) {\n      this.generateChips(change, this.fields);\n    }\n\n    this.cdr.detectChanges();\n  }\n\n  convertToParam(filters) {\n    const encodedValues = qs.stringify(filters, {\n      skipNulls: true,\n      encode: false,\n    });\n    if (encodedValues) {\n      return this.getUrlParams(encodedValues);\n    } else {\n      return '';\n    }\n  }\n  getUrlParams(queryString) {\n    const target = {};\n    queryString.split('&').forEach((pair) => {\n      if (pair !== '') {\n        const splitpair = pair.split('=');\n        target[splitpair[0]] =\n          splitpair[1] === '' || splitpair[1] === 'false' ? null : splitpair[1];\n      }\n    });\n    return target;\n  }\n\n  convertToModel(filters) {\n    let obj = {};\n    const encodedValues = qs.stringify(filters, {\n      skipNulls: true,\n      encode: false,\n    });\n    obj = qs.parse(encodedValues, { decoder: this.cleanModelParser });\n    return obj;\n  }\n\n  /**\n   * Parser for qs.parse - if input string is true / false, \n   * convert to boolean value, otherwise use default decoder\n   */\n  cleanModelParser(str: string, decoder: qs.defaultDecoder, charset: string, type: 'key' | 'value') {\n    if (type === 'key') {\n      return decoder(str, decoder, charset);\n    }\n\n    if (str === 'true' || str === 'false') {\n      return str === 'true' ? true : false;\n    }\n\n    return decoder(str, decoder, charset);\n  }\n\n  handleInactiveFilterChange(inactiveFilterValue: boolean) {\n    if (this.displayChips) {\n      this.generateChips(this.model, this.fields);\n    }\n    this.showInactiveFiltersChange.emit(inactiveFilterValue);\n  }\n\n  openDialog() {\n    const clonedFields = cloneDeep(this.fields);\n    this._modelSnapshot = cloneDeep(this.model);\n    this.removePopoverGroup(clonedFields);\n    this.dialogRef = this.formlyDialogService.open(this.horizontalFiltersDialogTemplate, {\n      data: { fields: clonedFields, options: {} },\n      height: '100vh',\n      width: '100vw',\n      maxWidth: '100vw',\n      maxHeight: '100vh',\n      hasBackdrop: false,\n      displayCloseBtn: false,\n      panelClass: ['sds-dialog--full']\n    });\n\n    this.dialogRef.afterClosed().toPromise().then((result) => {\n      if (result) {\n        this.onModelChange(result);\n      } else {\n        Object.assign(this.model, this._modelSnapshot);\n      }\n      this.dialogRef = null;\n    })\n  }\n\n  close() {\n    this.dialogRef.close();\n  }\n\n  applyDialogFilters() {\n    this.dialogRef.close(this.model);\n  }\n\n  /**\n   * Converts all popover type fields to accordion and unhides any hidden fields\n   * so that they can be displayed in filter dialog during resposive mode for\n   * horizontal filters\n   * @param fields \n   */\n  private removePopoverGroup(fields: FormlyFieldConfig[]) {\n    fields.forEach(field => {\n      if (field.templateOptions && field.templateOptions.group === 'popover') {\n        field.templateOptions.group = 'accordion';\n      }\n\n      if (field.fieldGroup) {\n        this.removePopoverGroup(field.fieldGroup);\n      }\n\n      if (field.fieldArray) {\n        this.removePopoverGroup([field.fieldArray]);\n      }\n\n      field.hide = false;\n    })\n  }\n\n  /**\n   * Create chips to display for horizontal filters based on current model\n   * and formly field config\n   * @param model \n   * @param fields \n   */\n  private generateChips(model: any, fields: FormlyFieldConfig[]) {\n    const readonlyData = FormlyUtilsService.formlyConfigToReadonlyData(fields, model);\n    const chipsWithValue = readonlyData.filter(data => data.value);\n    let allChips = [];\n    chipsWithValue.forEach(chip => {\n      if (typeof chip.value != 'object') {\n        allChips.push(chip);\n        return;\n      }\n\n      if (Array.isArray(chip.value)) {\n        const newChips = chip.value.map(chipValue => {\n          return { ...chip, value: [chipValue] };\n        });\n        allChips = allChips.concat(newChips);\n        return;\n      }\n\n      if (chip.formlyType === SdsFormlyTypes.DATERANGEPICKER || chip.formlyType === SdsFormlyTypes.DATERANGEPICKERV2) {\n        const fromDateValue = chip.value[chip.readonlyOptions.daterangepickerOptions.fromDateKey];\n        const toDateValue = chip.value[chip.readonlyOptions.daterangepickerOptions.toDateKey];\n\n        if (fromDateValue || toDateValue) {\n          allChips.push(chip);\n        }\n\n        return;\n      }\n\n      Object.keys(chip.value).forEach(key => {\n        const value = chip.value[key];\n\n        // Ignore falsey or empty string values\n        if (!value || (typeof (value.length) === 'string' && !value.length)) {\n          return;\n        }\n\n        const newChip = { ...chip, value: { [key]: value } };\n        allChips.push(newChip);\n      })\n    })\n\n    this.chips = allChips;\n  }\n\n  /**\n   * Removing a certain chip from UI is the same as applying a change to the form, so\n   * this should update the form control. We can find the field to update based on the chip's\n   * formly key and what values to update to based on values of existing chips with the same key\n   * @param chip \n   * @returns \n   */\n  removeChip(chip: ReadonlyDataType) {\n    const field = this.findFieldInFieldGroup(this.fields, chip.formlyKey);\n\n    if (!field) {\n      throw new Error('Error: unable to find field to remove chip')\n    }\n\n    // If the form control is not complex, then we can simply reset\n    if (typeof field.formControl.value != 'object') {\n      field.formControl.reset();\n      return;\n    }\n\n    if (chip.formlyType === SdsFormlyTypes.DATERANGEPICKER || chip.formlyType === SdsFormlyTypes.DATERANGEPICKERV2) {\n\n      const fromDateControl = field.fieldGroup[0].formControl;\n      const toDateControl = field.fieldGroup[1].formControl;\n      fromDateControl.reset();\n      toDateControl.reset();\n      return;\n    }\n\n    // If the form control contains complex values, such as an object or array, we need to determine what the new\n    // value of the form will be after this chip has been removed, and update the form control accordingly\n    const chipsWithSameKey = this.chips.filter(exisingChip => chip != exisingChip && chip.formlyKey === exisingChip.formlyKey);\n    const existingValues = chipsWithSameKey.map(chipWithSameKey => chipWithSameKey.value);\n\n    if (Array.isArray(field.formControl.value)) {\n      let updatedValue = [];\n      existingValues.forEach(value => {\n        updatedValue = updatedValue.concat(value)\n      });\n      field.formControl.setValue(updatedValue);\n      return;\n    }\n\n    const objectValue = {}\n    Object.assign(objectValue, ...existingValues)\n    field.formControl.setValue(objectValue);\n  }\n}\n",
+            "sourceCode": "import {\n  Component,\n  Input,\n  Output,\n  EventEmitter,\n  Optional,\n  OnInit,\n  ChangeDetectorRef,\n  OnChanges,\n  SimpleChanges,\n  ViewChild,\n  TemplateRef,\n} from '@angular/core';\n\nimport { FormGroup } from '@angular/forms';\nimport { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';\nimport * as qs from 'qs';\nimport { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';\nimport { SDSFormlyUpdateModelService } from './service/sds-filter-model-update.service';\n\nimport { takeUntil } from 'rxjs/operators';\nimport { Subject } from 'rxjs';\nimport { FormlyUtilsService, ReadonlyDataType } from '../formly/services/formly-utils.service';\nimport { SdsFormlyTypes } from '../formly/models/formly-types';\nimport { SdsDialogRef, SdsDialogService, SDS_DIALOG_DATA } from '@gsa-sam/components';\nimport { cloneDeep } from 'lodash-es';\nimport { FormlyValueChangeEvent } from '@ngx-formly/core/lib/components/formly.field.config';\n@Component({\n  selector: 'sds-filters',\n  templateUrl: './sds-filters.component.html',\n})\nexport class SdsFiltersComponent implements OnInit, OnChanges {\n\n  @ViewChild('horizontalFiltersDialog') horizontalFiltersDialogTemplate: TemplateRef<any>;\n\n  /**\n   * Pass in a Form Group for ReactiveForms Support\n   */\n  @Input() public form: FormGroup;\n\n  /**\n   *  Fields are used to configure the UI components\n   */\n  @Input() public fields: FormlyFieldConfig[];\n\n  /**\n   *  Model used to display the filter values.\n   */\n  @Input() public model: any;\n\n  /**\n   *    Options for the form.\n   */\n  @Input() public options: FormlyFormOptions = {};\n\n  /**\n   *  Emit results when model updated\n   * To enable History Tracking\n   *  If advanced filters dialog should be displayed -- defaults to false\n   */\n  @Input() advancedFilters: boolean = false;\n\n  /**\n   * Sort the filters by alphabetical order\n   */\n  @Input() sortMoreFilterBy = '';\n\n  /**\n   * Show option to include inactive filter values\n   */\n  @Input() isInactiveValueFieldShown: boolean = false;\n\n  /**\n   * Timer id for the timer awaiting the service call for more typeing\n   */\n  @Input() public isHistoryEnable: boolean = false;\n\n  /**\n   * To get clean model without null and empty\n   */\n  @Input() public getCleanModel: boolean = false;\n\n  /**\n   * Default values to reset form to when reset is done\n   * If not passed in, then default values will be values\n   * assigned to the model input during component init\n   * or defaultValue provided in formly config\n   */\n  @Input() defaultModel: any;\n\n  /**\n   * Toggle layout for filters - when horizontal is toggled,\n   * the reset and more filters are placed in top right corner\n   */\n  @Input() horizontal = false;\n\n  /**\n   * Toggle displaying chips for selected filter values. By default this is toggled off\n   * in normal situations. When horizontal setting is turned on, then chip display is\n   * also toggled on by default\n   */\n  @Input() displayChips: boolean;\n\n  /**\n   * Switch to show/hide the reset all button\n   * @default true\n   */\n  @Input() showReset: boolean = true;\n  /**\n   *  Emit results when model updated\n   */\n  // TODO: check type -- Formly models are typically objects\n  @Output() filterChange = new EventEmitter<object>();\n  @Output() showInactiveFiltersChange = new EventEmitter<boolean>();\n  @Output() resetClicked = new EventEmitter();\n\n  chips: ReadonlyDataType[] = [];\n  dialogRef: SdsDialogRef<any>;\n\n  // Snapshot of model before filter dialog opens during horizontal responsive format\n  _modelSnapshot: any;\n\n  unsubscribe$ = new Subject<void>();\n  _isObj = (obj: any): boolean => typeof obj === 'object' && obj !== null;\n  _isEmpty = (obj: any): boolean => Object.keys(obj).length === 0;\n  overwrite = (baseObj: any, newObj: any) => {\n    const result = {};\n    const mergedObj = { ...baseObj, ...newObj };\n    for (const key in mergedObj) {\n      if (Array.isArray(baseObj[key])) {\n        result[key] = newObj[key] || null;\n      } else if (baseObj[key] instanceof Date) {\n        result[key] = newObj[key] === undefined ? null : new Date(newObj[key]);\n      } else if (this._isObj(baseObj[key])) {\n        result[key] = this.overwrite(baseObj[key], newObj[key] || {});\n      } else {\n        result[key] = newObj[key] || null;\n      }\n    }\n    return result;\n  };\n\n\n  constructor(\n    @Optional()\n    public formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,\n    private formlyDialogService: SdsDialogService,\n    private cdr: ChangeDetectorRef,\n    @Optional()\n    private filterUpdateModelService: SDSFormlyUpdateModelService\n  ) { }\n  ngOnDestroy() {\n    this.unsubscribe$.next();\n    this.unsubscribe$.complete();\n  }\n\n  ngOnInit(): void {\n    // keep display chips to defined value if defined, otherwise, default to false, unless hoirzontal is turned on\n    this.displayChips = this.displayChips != undefined ? this.displayChips : this.horizontal;\n\n    if (this.filterUpdateModelService) {\n      this.filterUpdateModelService.filterModel\n        .pipe(takeUntil(this.unsubscribe$))\n        .subscribe((filter) => {\n          if (filter) {\n            const updatedFormValue = this.overwrite(\n              this.form.getRawValue(),\n              filter\n            );\n            // Shallow copy to not trigger onChanges from formly side\n            Object.keys(updatedFormValue).forEach((key) => {\n              this.model[key] = updatedFormValue[key];\n            });\n\n            setTimeout(() => {\n              this.form.patchValue(updatedFormValue);\n            });\n            this.checkForHide();\n          }\n        });\n        this.cdr.detectChanges();\n    }\n  }\n\n  ngOnChanges(changes: SimpleChanges) {\n    if (\n      changes.model &&\n      changes.model.currentValue != changes.model.previousValue\n    ) {\n      this.checkForHide();\n    }\n  }\n\n  /**\n   * This is for getting the model which has a value.\n   */\n  checkForHide() {\n    let fieldWithValue = this.convertToParam(this.model);\n    let keys = [];\n    Object.keys(fieldWithValue).map((key) => {\n      keys.push(key.replace(/\\[/g, '.').replace(/\\]/g, ''));\n    });\n    keys.forEach((key) => {\n      const [lastKey] = key.split('.').slice(-1);\n      this.fields.forEach((field) => {\n        if (key.includes(field.key)) {\n          if (field.fieldGroup) {\n            const fieldExists = this.findFieldInFieldGroup(\n              field.fieldGroup,\n              lastKey\n            );\n            if (fieldExists) {\n              field.hide = false;\n              fieldExists.hide = false;\n            }\n          } else {\n            field.hide = false;\n          }\n        }\n      });\n    });\n  }\n\n  /**\n   * Recursively iterate over each field as well as potential field groups of the field\n   * to find a field with the given key. Returns the field if found, otherwise returns null.\n   * @param fields - The list of formly fields to search for the given key\n   * @param key - The key of the formly field config to search for\n   */\n  private findFieldInFieldGroup(fields: FormlyFieldConfig[], key: any) {\n    let matchingField: FormlyFieldConfig = null;\n\n    for (let i = 0; i < fields.length; i++) {\n      const field = fields[i];\n\n      if (field.key === key) {\n        matchingField = field;\n      } else if (field.fieldGroup) {\n        matchingField = this.findFieldInFieldGroup(field.fieldGroup, key);\n      } else if (field.fieldArray) {\n        matchingField = this.findFieldInFieldGroup([field.fieldArray], key);\n      }\n\n      if (matchingField) {\n        break;\n      }\n    }\n\n    return matchingField;\n  }\n\n  onModelChange(change: any) {\n    this.updateChange(change);\n  }\n\n  onResetClicked() {\n    const fieldChangeEvent: FormlyValueChangeEvent = {\n      field: undefined,\n      type: 'resetAll',\n      value: undefined\n    };\n\n    this.options.fieldChanges.next(fieldChangeEvent);\n    this.resetClicked.emit();\n  }\n\n  updateChange(change) {\n    const updatedModel = this.getCleanModel\n      ? this.convertToModel(change)\n      : change;\n    this.filterChange.emit(updatedModel);\n    if (this.formlyUpdateComunicationService) {\n      this.formlyUpdateComunicationService.updateFilter(updatedModel);\n    }\n\n    if (this.displayChips) {\n      this.generateChips(change, this.fields);\n    }\n\n    this.cdr.detectChanges();\n  }\n\n  convertToParam(filters) {\n    const encodedValues = qs.stringify(filters, {\n      skipNulls: true,\n      encode: false,\n    });\n    if (encodedValues) {\n      return this.getUrlParams(encodedValues);\n    } else {\n      return '';\n    }\n  }\n  getUrlParams(queryString) {\n    const target = {};\n    queryString.split('&').forEach((pair) => {\n      if (pair !== '') {\n        const splitpair = pair.split('=');\n        target[splitpair[0]] =\n          splitpair[1] === '' || splitpair[1] === 'false' ? null : splitpair[1];\n      }\n    });\n    return target;\n  }\n\n  convertToModel(filters) {\n    let obj = {};\n    const encodedValues = qs.stringify(filters, {\n      skipNulls: true,\n      encode: false,\n    });\n    obj = qs.parse(encodedValues, { decoder: this.cleanModelParser });\n    return obj;\n  }\n\n  /**\n   * Parser for qs.parse - if input string is true / false, \n   * convert to boolean value, otherwise use default decoder\n   */\n  cleanModelParser(str: string, decoder: qs.defaultDecoder, charset: string, type: 'key' | 'value') {\n    if (type === 'key') {\n      return decoder(str, decoder, charset);\n    }\n\n    if (str === 'true' || str === 'false') {\n      return str === 'true' ? true : false;\n    }\n\n    return decoder(str, decoder, charset);\n  }\n\n  handleInactiveFilterChange(inactiveFilterValue: boolean) {\n    if (this.displayChips) {\n      this.generateChips(this.model, this.fields);\n    }\n    this.showInactiveFiltersChange.emit(inactiveFilterValue);\n  }\n\n  openDialog() {\n    const clonedFields = cloneDeep(this.fields);\n    this._modelSnapshot = cloneDeep(this.model);\n    this.removePopoverGroup(clonedFields);\n    this.dialogRef = this.formlyDialogService.open(this.horizontalFiltersDialogTemplate, {\n      data: { fields: clonedFields, options: {} },\n      height: '100vh',\n      width: '100vw',\n      maxWidth: '100vw',\n      maxHeight: '100vh',\n      hasBackdrop: false,\n      displayCloseBtn: false,\n      panelClass: ['sds-dialog--full']\n    });\n\n    this.dialogRef.afterClosed().toPromise().then((result) => {\n      if (result) {\n        this.onModelChange(result);\n      } else {\n        Object.assign(this.model, this._modelSnapshot);\n      }\n      this.dialogRef = null;\n    })\n  }\n\n  close() {\n    this.dialogRef.close();\n  }\n\n  applyDialogFilters() {\n    this.dialogRef.close(this.model);\n  }\n\n  /**\n   * Converts all popover type fields to accordion and unhides any hidden fields\n   * so that they can be displayed in filter dialog during resposive mode for\n   * horizontal filters\n   * @param fields \n   */\n  private removePopoverGroup(fields: FormlyFieldConfig[]) {\n    fields.forEach(field => {\n      if (field.templateOptions && field.templateOptions.group === 'popover') {\n        field.templateOptions.group = 'accordion';\n      }\n\n      if (field.fieldGroup) {\n        this.removePopoverGroup(field.fieldGroup);\n      }\n\n      if (field.fieldArray) {\n        this.removePopoverGroup([field.fieldArray]);\n      }\n\n      field.hide = false;\n    })\n  }\n\n  /**\n   * Create chips to display for horizontal filters based on current model\n   * and formly field config\n   * @param model \n   * @param fields \n   */\n  private generateChips(model: any, fields: FormlyFieldConfig[]) {\n    const readonlyData = FormlyUtilsService.formlyConfigToReadonlyData(fields, model);\n    const chipsWithValue = readonlyData.filter(data => data.value);\n    let allChips = [];\n    chipsWithValue.forEach(chip => {\n      if (typeof chip.value != 'object') {\n        allChips.push(chip);\n        return;\n      }\n\n      if (Array.isArray(chip.value)) {\n        const newChips = chip.value.map(chipValue => {\n          return { ...chip, value: [chipValue] , srValue: chipValue};\n        });\n        allChips = allChips.concat(newChips);\n        return;\n      }\n\n      if (chip.formlyType === SdsFormlyTypes.DATERANGEPICKER || chip.formlyType === SdsFormlyTypes.DATERANGEPICKERV2) {\n        const fromDateValue = chip.value[chip.readonlyOptions.daterangepickerOptions.fromDateKey];\n        const toDateValue = chip.value[chip.readonlyOptions.daterangepickerOptions.toDateKey];\n\n        if (fromDateValue || toDateValue) {\n          allChips.push(chip);\n        }\n\n        return;\n      }\n\n      Object.keys(chip.value).forEach(key => {\n        const value = chip.value[key];\n\n        // Ignore falsey or empty string values\n        if (!value || (typeof (value.length) === 'string' && !value.length)) {\n          return;\n        }\n\n        const newChip = { ...chip, value: { [key]: value } , srValue: key};\n        allChips.push(newChip);\n      })\n    })\n\n    this.chips = allChips;\n  }\n\n  /**\n   * Removing a certain chip from UI is the same as applying a change to the form, so\n   * this should update the form control. We can find the field to update based on the chip's\n   * formly key and what values to update to based on values of existing chips with the same key\n   * @param chip \n   * @returns \n   */\n  removeChip(chip: ReadonlyDataType) {\n    const field = this.findFieldInFieldGroup(this.fields, chip.formlyKey);\n\n    if (!field) {\n      throw new Error('Error: unable to find field to remove chip')\n    }\n\n    // If the form control is not complex, then we can simply reset\n    if (typeof field.formControl.value != 'object') {\n      field.formControl.reset();\n      return;\n    }\n\n    if (chip.formlyType === SdsFormlyTypes.DATERANGEPICKER || chip.formlyType === SdsFormlyTypes.DATERANGEPICKERV2) {\n\n      const fromDateControl = field.fieldGroup[0].formControl;\n      const toDateControl = field.fieldGroup[1].formControl;\n      fromDateControl.reset();\n      toDateControl.reset();\n      return;\n    }\n\n    // If the form control contains complex values, such as an object or array, we need to determine what the new\n    // value of the form will be after this chip has been removed, and update the form control accordingly\n    const chipsWithSameKey = this.chips.filter(exisingChip => chip != exisingChip && chip.formlyKey === exisingChip.formlyKey);\n    const existingValues = chipsWithSameKey.map(chipWithSameKey => chipWithSameKey.value);\n\n    if (Array.isArray(field.formControl.value)) {\n      let updatedValue = [];\n      existingValues.forEach(value => {\n        updatedValue = updatedValue.concat(value)\n      });\n      field.formControl.setValue(updatedValue);\n      return;\n    }\n\n    const objectValue = {}\n    Object.assign(objectValue, ...existingValues)\n    field.formControl.setValue(objectValue);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -6101,7 +6137,7 @@ const FORMLY = {
                 "OnInit",
                 "OnChanges"
             ],
-            "templateData": "<!-- Vertical Filters -->\n<div *ngIf=\"!horizontal\">\n  <formly-form [form]=\"form\" [fields]=\"fields\" [options]=\"options\" [model]=\"model\" (modelChange)=\"onModelChange($event)\">\n  </formly-form>\n  <div class=\"grid-row margin-top-2\">\n    <div *ngIf=\"advancedFilters\" class=\"grid-col\">\n      <sds-advanced-filters [form]=\"form\" [sortMoreFilterBy]=\"sortMoreFilterBy\" [fields]=\"fields\" [options]=\"options\"\n        [model]=\"model\" (showInactiveFiltersChange)=\"showInactiveFiltersChange.next($event)\" [isInactiveValueFieldShown]=isInactiveValueFieldShown>\n      </sds-advanced-filters>\n    </div>\n    <div class=\"grid-col text-right\">\n      <sds-formly-reset [options]=\"options\" [defaultModel]=\"defaultModel\" (resetClicked)=\"onResetClicked()\"></sds-formly-reset>\n    </div>\n  </div>\n</div>\n\n<!-- Horizontal Filters -->\n<div *ngIf=\"horizontal\" class=\"sds-filters--horizontal\">\n  <div class=\"horizontal-filters grid-row\">\n    <formly-form *ngIf=\"!dialogRef\" [form]=\"form\" [fields]=\"fields\" [options]=\"options\" [model]=\"model\" (modelChange)=\"onModelChange($event)\">\n    </formly-form>\n    <div *ngIf=\"advancedFilters\">\n      <sds-advanced-filters [form]=\"form\" [sortMoreFilterBy]=\"sortMoreFilterBy\" [fields]=\"fields\" \n        [options]=\"options\" [model]=\"model\" [isInactiveValueFieldShown]=\"isInactiveValueFieldShown\"\n        [enablePopover]=\"horizontal\"\n        (showInactiveFiltersChange)=\"handleInactiveFilterChange($event)\" >\n      </sds-advanced-filters>\n    </div>\n  </div>\n\n\n  <div class=\"search-input\">\n    <ng-content select=\"sds-search\"></ng-content>\n  </div>\n\n  <div class=\"filters-modal margin-left-2\">\n    <button type=\"button\" (click)=\"openDialog()\" class=\"usa-button usa-button--unstyled\">\n      Filter By\n      <usa-icon [icon]=\"'filter'\" class=\"icon-filter\" [size]=\"'sm'\"></usa-icon>\n    </button>\n  </div>\n\n  <div *ngIf=\"showReset\" class=\"horizontal-reset margin-left-2 text-right\">\n    <sds-formly-reset [options]=\"options\" [defaultModel]=\"{}\" (resetClicked)=\"resetClicked.emit()\"></sds-formly-reset>\n  </div>\n</div>\n\n<!-- Chip Display -->\n<ng-container *ngIf=\"displayChips\">\n  <div *ngFor=\"let chip of chips\" class=\"width-auto sds-tag sds-tag--chip sds-tag--input margin-right-2 \">\n    <div class=\"sds--tag__item\">\n      <sds-readonly-container\n        [label]=\"chip.label\"\n        [value]=\"chip.value\"\n        [additionalConfig]=\"chip.readonlyOptions\"\n        [formlyType]=\"chip.formlyType\"\n      >\n        <ng-container *sdsReadonlyLabel><span class=\"margin-right-1 text-bold\">{{chip.label}}:</span></ng-container>\n        <ng-container *sdsReadonlyValue=\"let value\"><span class=\"margin-right-1\">{{value}}</span></ng-container>\n      </sds-readonly-container>\n    </div>\n    <button [attr.aria-label]=\"'Remove Item ' + chip.label + ' ' + chip.value\"\n      aria-hidden=\"false\" class=\"sds-tag__close position-static\"\n      (click)=\"removeChip(chip)\"\n      (keyup.enter)=\"removeChip(chip)\">\n      <usa-icon [icon]=\"'x'\" size=\"lg\"></usa-icon>\n    </button>\n  </div>\n</ng-container>\n\n<ng-template #horizontalFiltersDialog let-data>\n  <div class=\"bg-accent-cool-lighter height-full\">\n    <div class=\"grid-row shadow-4 padding-1\">\n      <button id=\"cancelButton\" class=\"sds-button sds-button--circular sds-button--white\"\n        (click)=\"close()\" aria-label=\"Cancel Filter By\">\n        <usa-icon [icon]=\"'chevron-left'\"></usa-icon>\n      </button>\n      <div class=\"margin-x-auto\">\n        <h2 class=\"usa-card__heading margin-top-1 margin-left-neg-2\">Filter By</h2>\n      </div>\n    </div>\n  \n    <div class=\"padding-1\">\n      <formly-form [fields]=\"data.fields\" [options]=\"data.options\" [model]=\"model\">\n      </formly-form>\n      <div class=\"grid-row margin-top-2\">\n        <div class=\"grid-col text-right\">\n          <sds-formly-reset [options]=\"data.options\" [defaultModel]=\"{}\" (resetClicked)=\"resetClicked.emit()\"></sds-formly-reset>\n        </div>\n      </div>\n    </div>\n    <div class=\"padding-1 shadow-4\">\n      <button class=\"usa-button width-full\" (click)=\"applyDialogFilters()\">Apply</button>\n    </div>\n  </div>\n\n</ng-template>\n"
+            "templateData": "<!-- Vertical Filters -->\n<div *ngIf=\"!horizontal\">\n    <formly-form [form]=\"form\" [fields]=\"fields\" [options]=\"options\" [model]=\"model\" (modelChange)=\"onModelChange($event)\">\n    </formly-form>\n    <div class=\"grid-row margin-top-2\">\n        <div *ngIf=\"advancedFilters\" class=\"grid-col\">\n            <sds-advanced-filters [form]=\"form\" [sortMoreFilterBy]=\"sortMoreFilterBy\" [fields]=\"fields\" [options]=\"options\" [model]=\"model\" (showInactiveFiltersChange)=\"showInactiveFiltersChange.next($event)\" [isInactiveValueFieldShown]=isInactiveValueFieldShown>\n            </sds-advanced-filters>\n        </div>\n        <div class=\"grid-col text-right\">\n            <sds-formly-reset [options]=\"options\" [defaultModel]=\"defaultModel\" (resetClicked)=\"onResetClicked()\"></sds-formly-reset>\n        </div>\n    </div>\n</div>\n\n<!-- Horizontal Filters -->\n<div *ngIf=\"horizontal\" class=\"sds-filters--horizontal\">\n    <div class=\"horizontal-filters grid-row\">\n        <formly-form *ngIf=\"!dialogRef\" [form]=\"form\" [fields]=\"fields\" [options]=\"options\" [model]=\"model\" (modelChange)=\"onModelChange($event)\">\n        </formly-form>\n        <div *ngIf=\"advancedFilters\">\n            <sds-advanced-filters [form]=\"form\" [sortMoreFilterBy]=\"sortMoreFilterBy\" [fields]=\"fields\" [options]=\"options\" [model]=\"model\" [isInactiveValueFieldShown]=\"isInactiveValueFieldShown\" [enablePopover]=\"horizontal\" (showInactiveFiltersChange)=\"handleInactiveFilterChange($event)\">\n            </sds-advanced-filters>\n        </div>\n    </div>\n\n\n    <div class=\"search-input\">\n        <ng-content select=\"sds-search\"></ng-content>\n    </div>\n\n    <div class=\"filters-modal margin-left-2\">\n        <button type=\"button\" (click)=\"openDialog()\" class=\"usa-button usa-button--unstyled\">\n      Filter By\n      <usa-icon [icon]=\"'filter'\" class=\"icon-filter\" [size]=\"'sm'\"></usa-icon>\n    </button>\n    </div>\n\n    <div *ngIf=\"showReset\" class=\"horizontal-reset margin-left-2 text-right\">\n        <sds-formly-reset [options]=\"options\" [defaultModel]=\"{}\" (resetClicked)=\"resetClicked.emit()\"></sds-formly-reset>\n    </div>\n</div>\n\n<!-- Chip Display -->\n<ng-container *ngIf=\"displayChips\">\n    <div *ngFor=\"let chip of chips\" class=\"width-auto sds-tag sds-tag--chip sds-tag--input margin-right-2 \">\n        <div class=\"sds--tag__item\">\n            <sds-readonly-container [label]=\"chip.label\" [value]=\"chip.value\" [additionalConfig]=\"chip.readonlyOptions\" [formlyType]=\"chip.formlyType\">\n                <ng-container *sdsReadonlyLabel><span class=\"margin-right-1 text-bold\" [attr.aria-label]=\"chip.label\">{{chip.label}}:</span></ng-container>\n                <ng-container *sdsReadonlyValue=\"let value\"><span class=\"margin-right-1\" [attr.aria-label]=\"chip.value\">{{value}}</span></ng-container>\n            </sds-readonly-container>\n        </div>\n\n        <button [attr.aria-label]=\"'Remove Item ' + chip.label + ' ' + chip.srValue\" aria-hidden=\"false\" class=\"sds-tag__close position-static\" (click)=\"removeChip(chip)\" (keyup.enter)=\"removeChip(chip)\">\n      <usa-icon [icon]=\"'x'\" size=\"lg\"></usa-icon>\n    </button>\n    </div>\n</ng-container>\n\n<ng-template #horizontalFiltersDialog let-data>\n    <div class=\"bg-accent-cool-lighter height-full\">\n        <div class=\"grid-row shadow-4 padding-1\">\n            <button id=\"cancelButton\" class=\"sds-button sds-button--circular sds-button--white\" (click)=\"close()\" aria-label=\"Cancel Filter By\">\n        <usa-icon [icon]=\"'chevron-left'\"></usa-icon>\n      </button>\n            <div class=\"margin-x-auto\">\n                <h2 class=\"usa-card__heading margin-top-1 margin-left-neg-2\">Filter By</h2>\n            </div>\n        </div>\n\n        <div class=\"padding-1\">\n            <formly-form [fields]=\"data.fields\" [options]=\"data.options\" [model]=\"model\">\n            </formly-form>\n            <div class=\"grid-row margin-top-2\">\n                <div class=\"grid-col text-right\">\n                    <sds-formly-reset [options]=\"data.options\" [defaultModel]=\"{}\" (resetClicked)=\"resetClicked.emit()\"></sds-formly-reset>\n                </div>\n            </div>\n        </div>\n        <div class=\"padding-1 shadow-4\">\n            <button class=\"usa-button width-full\" (click)=\"applyDialogFilters()\">Apply</button>\n        </div>\n    </div>\n\n</ng-template>"
         },
         {
             "name": "SdsFormlyDialogComponent",
