@@ -3,7 +3,7 @@ import { FieldType } from '@ngx-formly/core';
 
 @Component({
   selector: 'sds-formly-field-radio',
-  templateUrl: './radio.html',
+  templateUrl: './radio.html'
 })
 export class FormlyFieldRadioComponent extends FieldType implements AfterViewInit{
 
