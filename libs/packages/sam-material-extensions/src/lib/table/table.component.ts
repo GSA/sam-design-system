@@ -201,6 +201,9 @@ export class SdsTableComponent
   @Output()
   expansionClicked = new EventEmitter<any>();
 
+  @Output()
+  rowClicked = new EventEmitter<number>();
+
   dataSource: MatTableDataSource<any>;
   expandedElement: any;
 
