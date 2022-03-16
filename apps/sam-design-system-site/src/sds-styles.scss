@@ -2,7 +2,11 @@
 
 //global styles below
 
-$theme-image-path: '~@gsa-sam/sam-styles/src/img';
-$theme-font-path: '~@gsa-sam/sam-styles/src/fonts';
+$theme-image-path: '~/@gsa-sam/sam-styles/src/img';
+$theme-font-path: '~/@gsa-sam/sam-styles/src/fonts';
 
-@import '~@gsa-sam/sam-styles/src/stylesheets/sam';
+// @import '~@gsa-sam/sam-styles/src/stylesheets/sam';
+
+// @import 'node_modules/@gsa-sam/sam-styles/src/stylesheets/sam';
+
+@import 'node_modules/uswds/dist/css/uswds';
