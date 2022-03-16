@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SdsDialogConfig, SelectionPanelModel, NavigationLink } from '@gsa-sam/components';
-import { SearchListConfiguration } from '@gsa-sam/layouts';
 import { SdsFiltersComponent } from '@gsa-sam/sam-formly';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { DataService } from 'libs/documentation/src/lib/pages/layout/data.service';
@@ -11,7 +10,7 @@ import { navigationConfig } from './navigation.config';
 
 @Component({
   selector: 'filter-side-navigation',
-  templateUrl: './filter-side-navigation.component.html'
+  templateUrl: './filter-side-navigation.component.html',
 })
 export class FilterSideNavigationComponent implements OnInit, AfterViewInit {
   @ViewChild('filters') filterComponent: SdsFiltersComponent;

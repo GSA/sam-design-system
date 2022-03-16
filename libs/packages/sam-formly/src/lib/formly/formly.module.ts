@@ -26,7 +26,7 @@ import {
   SdsCollapseModule,
   SdsTooltipModule,
   SdsTabsModule,
-  SdsPopoverModule
+  SdsPopoverModule,
 } from '@gsa-sam/components';
 
 import { FIELD_TYPE_COMPONENTS, FORMLY_CONFIG } from './formly.config';
@@ -38,13 +38,21 @@ import {
 import { AnimationWrapperComponent } from './wrappers/form-field.animation';
 import { SdsReadonlyModule } from './readonly/readonly.module';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { NgxBootstrapIconsModule, caretDownFill, caretUpFill, filter, arrowClockwise, chevronDown, infoCircleFill } from 'ngx-bootstrap-icons';
+import {
+  NgxBootstrapIconsModule,
+  caretDownFill,
+  caretUpFill,
+  filter,
+  arrowClockwise,
+  chevronDown,
+  infoCircleFill,
+} from 'ngx-bootstrap-icons';
 import { UsaAccordionModule, UsaFileInputModule } from '@gsa-sam/ngx-uswds';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 // Validate the min length of the character
 export function minlengthValidationMessage(err, field) {
-  return `Should have atleast ${field.templateOptions.minLength} characters`;
+  return `Should have at least ${field.templateOptions.minLength} characters`;
 }
 
 // Validate the max length of the character
@@ -185,7 +193,14 @@ export const DATE_FORMAT: MatDateFormats = {
     SdsTableModule,
     SdsTabsModule,
     SdsPopoverModule,
-    NgxBootstrapIconsModule.pick({ caretDownFill, caretUpFill, filter, arrowClockwise, chevronDown, infoCircleFill }),
+    NgxBootstrapIconsModule.pick({
+      caretDownFill,
+      caretUpFill,
+      filter,
+      arrowClockwise,
+      chevronDown,
+      infoCircleFill,
+    }),
     FormlyModule.forChild(FORMLY_CONFIG),
     FormlyModule.forRoot({
       validationMessages: [

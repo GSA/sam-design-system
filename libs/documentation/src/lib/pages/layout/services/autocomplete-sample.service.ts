@@ -7,7 +7,9 @@ import { map } from 'rxjs/operators';
 import { SampleAutocompleteData } from './autocomplete-sample.data';
 
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class AutocompleteSampleDataService implements SDSAutocompleteServiceInterface {
 
     private loadedData;

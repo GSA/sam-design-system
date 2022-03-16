@@ -7,12 +7,13 @@ import { FieldWrapper } from '@ngx-formly/core';
 @Component({
   template: `
     <div>
-      <small
+      <div
         *ngIf="to.description"
-        class="form-text text-muted"
+        class="usa-label--description"
         [id]="id + '-description'"
-        >{{ to.description }}</small
       >
+        {{ to.description }}
+      </div>
       <ng-container #fieldComponent></ng-container>
     </div>
   `,

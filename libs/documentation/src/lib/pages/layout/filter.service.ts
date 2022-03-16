@@ -10,7 +10,9 @@ import { Injectable } from '@angular/core';
 import { SdsFormlyTypes } from '@gsa-sam/sam-formly';
 import { Subject } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class FilterService {
   public settings = new SDSAutocompletelConfiguration();
   public autocompleteModel = new SDSSelectedItemModel();

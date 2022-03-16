@@ -211,6 +211,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
             );
             if (fieldExists) {
               field.hide = false;
+              fieldExists.hide = false;
             }
           } else {
             field.hide = false;
@@ -410,7 +411,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
 
       if (Array.isArray(chip.value)) {
         const newChips = chip.value.map(chipValue => {
-          return { ...chip, value: [chipValue] };
+          return { ...chip, value: [chipValue] , srValue: chipValue};
         });
         allChips = allChips.concat(newChips);
         return;
@@ -435,7 +436,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
           return;
         }
 
-        const newChip = { ...chip, value: { [key]: value } };
+        const newChip = { ...chip, value: { [key]: value } , srValue: key};
         allChips.push(newChip);
       })
     })

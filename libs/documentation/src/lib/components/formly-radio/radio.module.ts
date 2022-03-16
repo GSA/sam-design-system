@@ -10,6 +10,10 @@ import { ComponentWrapperComponent } from '../../shared/component-wrapper/compon
 import { RadioBasicModule } from './demos/basic/radio-basic.module';
 import { RadioAdvancedComponent } from './demos/advanced/radio-advanced.component';
 import { RadioAdvancedModule } from './demos/advanced/radio-advanced.module';
+import { RadioTemplateComponent } from './demos/template/radio-template.component';
+import { RadioTemplateModule } from './demos/template/radio-template.module';
+import { RadioHorizontalComponent } from './demos/horizontal/radio-horizontal.component';
+import { RadioHorizontalModule } from './demos/horizontal/radio-horizontal.module';
 
 declare var require: any;
 const DEMOS = {
@@ -26,7 +30,21 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/advanced/radio-advanced.component'),
     markup: require('!!raw-loader!./demos/advanced/radio-advanced.component.html'),
     path: 'libs/documentation/src/lib/components/formly-radio/demos/advanced'
-  }
+  },
+  template: {
+    title: 'Template Form Radio',
+    type: RadioTemplateComponent,
+    code: require('!!raw-loader!./demos/template/radio-template.component'),
+    markup: require('!!raw-loader!./demos/template/radio-template.component.html'),
+    path: 'libs/documentation/src/lib/components/formly-radio/demos/template'
+  },
+  horizontal: {
+    title: 'Horizontal Form Radio',
+    type: RadioHorizontalComponent,
+    code: require('!!raw-loader!./demos/horizontal/radio-horizontal.component'),
+    markup: require('!!raw-loader!./demos/horizontal/radio-horizontal.component.html'),
+    path: 'libs/documentation/src/lib/components/formly-radio/demos/horizontal'
+  },
 };
 
 export const ROUTES = [
@@ -59,6 +77,8 @@ export const ROUTES = [
     DocumentationComponentsSharedModule,
     RadioBasicModule,
     RadioAdvancedModule,
+    RadioTemplateModule,
+    RadioHorizontalModule
   ]
 })
 export class RadioModule {

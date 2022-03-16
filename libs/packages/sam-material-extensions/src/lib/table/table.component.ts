@@ -100,9 +100,9 @@ export class SdsTableFooterCellDirective {}
   `,
 })
 export class SdsTableColumnDefComponent implements AfterContentInit {
-  @ViewChild('columnHeaderCell') columnHeaderCell: TemplateRef<any>;
-  @ViewChild('columnCell') columnCell: TemplateRef<any>;
-  @ViewChild('columnFooterCell') columnFooterCell: TemplateRef<any>;
+  @ViewChild('columnHeaderCell', {static: true}) columnHeaderCell: TemplateRef<any>;
+  @ViewChild('columnCell', {static: true}) columnCell: TemplateRef<any>;
+  @ViewChild('columnFooterCell', {static: true}) columnFooterCell: TemplateRef<any>;
 
   @ContentChild('sdsHeaderCell', { read: TemplateRef })
   headerCellTemplate!: TemplateRef<any>;
@@ -200,6 +200,9 @@ export class SdsTableComponent
 
   @Output()
   expansionClicked = new EventEmitter<any>();
+
+  @Output()
+  rowClicked = new EventEmitter<number>();
 
   dataSource: MatTableDataSource<any>;
   expandedElement: any;
@@ -319,7 +322,7 @@ export class SdsTableComponent
   }
 
   updateSdsPagination() {
-    if (this.page) {
+    if (this.page && this.dataSource?.paginator) {
       this.dataSource.paginator.pageIndex = this.page.pageNumber - 1;
       this.dataSource.paginator._changePageSize(this.page.pageSize);
       this.page.totalPages = Math.ceil(
