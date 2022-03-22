@@ -51,7 +51,7 @@
     "@compodoc/compodoc": "1.1.11",
     "@gsa-sam/ngx-uswds": "12.0.0-beta.7",
     "@gsa-sam/ngx-uswds-icons": "12.0.0-beta.2",
-    "@gsa-sam/sam-styles": "0.0.132",
+    "@gsa-sam/sam-styles": "0.0.133",
     "@gsa-sam/components": "12.0.0-beta.7",
     "@gsa-sam/sam-formly": "12.0.0-beta.7",
     "@gsa-sam/layouts": "12.0.1",
