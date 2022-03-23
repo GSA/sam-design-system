@@ -1,16 +1,20 @@
 <b>Inputs</b>
-<p><code>minHeight:</code>number <i>(Optional)</i> - Minimum height in rems
+<p><code>templateOptions.minHeight:</code>number <i>(Optional)</i> - Minimum height in rems
   that the editor can be. If text entered by the user expands beyond the bottom
   of the editor, the editor will expand to display all text. This value is
   expected to be an positive integer or zero. The minimum value is 0 which will
   provide enough room for a single paragraph line to appear. The maximum value is
   <b>X</b> which is large enough to allow for 10 lines of h1 text.</p>
-<p><code>maxHeight:</code>number <i>(Optional)</i> - Some Text</p>
+
+
+<p><code>templateOptions.maxHeight:</code>number <i>(Optional)</i> - Some Text</p>
 
 <p>The rich text editor component can be passed a formControl for use in
   reactive forms. Subscribing to <code>valueChanges</code> allows developers
   to get updates as users change value of the rich text editor. </p>
 
-<sds-rich-text [formControl]="fc"></sds-rich-text>
+<form [formGroup]="form">
+  <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
+</form>
 
-<p>Rich Text Editor Value: {{fc.value}}</p>
+<p>Rich Text Editor Value: {{model.editor | json}}</p>

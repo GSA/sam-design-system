@@ -18,6 +18,7 @@ export enum SdsFormlyTypes {
   SEARCH = 'search',
   FILEINPUT = 'fileinput',
   TABS = 'tabs',
+  RICHTEXTEDITOR = 'rich-text-editor',
 
   /**
    * This formly type should generally be used with another formly type in order

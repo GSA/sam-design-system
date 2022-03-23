@@ -13,7 +13,6 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
         multi: true,
     },
   ],
-  // host: { class: this.minHeight }
 })
 export class SdsRichTextComponent implements ControlValueAccessor {
 
