@@ -10,13 +10,103 @@ export class UswdsStepperComponent {
 
 
   stepOne: FormlyFieldConfig = {
-    key: 'eitityOne',
+    key: 'enitityOne',
     fieldGroup: [
       {
         key: 'name',
         type: 'input',
         templateOptions: {
           label: 'Entity Name',
+          placeholder: 'eg: Acme Corporation',
+          description: 'Enter the name of your entity.',
+          required: true,
+        },
+        modelOptions: {
+          updateOn: 'blur'
+        }
+      },
+      {
+          className: "desktop:grid-col-12 tablet:grid-col-12",
+          type: "input",
+          key: "title",
+
+          templateOptions: {
+            label: "Program or Project Title",
+            required: true,
+            showError: false,
+          }
+      },
+    ]
+  };
+
+  stepOnePointTwoFive: FormlyFieldConfig = {
+    key: 'enitityOnePointTwoFive',
+    fieldGroup: [
+      {
+        key: 'name',
+        type: 'input',
+        templateOptions: {
+          label: 'Entity Name - PointTwoFive',
+          placeholder: 'eg: Acme Corporation',
+          description: 'Enter the name of your entity.',
+          required: true,
+        },
+        modelOptions: {
+          updateOn: 'blur'
+        }
+      },
+      {
+          className: "desktop:grid-col-12 tablet:grid-col-12",
+          type: "input",
+          key: "title",
+
+          templateOptions: {
+            label: "Program or Project Title",
+            required: true,
+            showError: false,
+          }
+      },
+    ]
+  };
+
+  stepOnePointFive: FormlyFieldConfig = {
+    key: 'enitityOnePointFive',
+    fieldGroup: [
+      {
+        key: 'name',
+        type: 'input',
+        templateOptions: {
+          label: 'Entity Name - PointFive',
+          placeholder: 'eg: Acme Corporation',
+          description: 'Enter the name of your entity.',
+          required: true,
+        },
+        modelOptions: {
+          updateOn: 'blur'
+        }
+      },
+      {
+          className: "desktop:grid-col-12 tablet:grid-col-12",
+          type: "input",
+          key: "title",
+
+          templateOptions: {
+            label: "Program or Project Title",
+            required: true,
+            showError: false,
+          }
+      },
+    ]
+  };
+
+  stepOnePointSevenFive: FormlyFieldConfig = {
+    key: 'enitityOnePointSevenFive',
+    fieldGroup: [
+      {
+        key: 'name',
+        type: 'input',
+        templateOptions: {
+          label: 'Entity Name - PointSevenFive',
           placeholder: 'eg: Acme Corporation',
           description: 'Enter the name of your entity.',
           required: true,

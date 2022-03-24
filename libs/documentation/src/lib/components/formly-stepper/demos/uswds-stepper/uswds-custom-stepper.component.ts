@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, OnInit } from "@angular/core";
+import { AfterContentInit, Component} from "@angular/core";
 import { SdsStepper } from "@gsa-sam/sam-formly";
 
 
@@ -24,4 +24,34 @@ export class USWDSCustomStepperComponent extends SdsStepper implements AfterCont
       return {...stepTemplate, label: stepTemplate.text};
     });
   }
+  async changeStep(stepId: string, incrementor?: 1 | -1) {
+    await super.changeStep(stepId, incrementor);
+
+    let mainStepIndex = (this.stepTemplates.toArray() as Array<any>).findIndex(step => step === this.selectedStep);
+    if(mainStepIndex === -1){
+      let childIndex = -1;
+      (this.stepTemplates.toArray() as Array<any>).forEach((mainStep, index) => {
+        const tempIndex = mainStep.children.toArray().findIndex(child => {
+          return child === this.selectedStep;
+        });
+        const selectedStepIsChild = tempIndex !== -1;
+        if(selectedStepIsChild){
+          mainStepIndex = index;
+          childIndex = tempIndex;
+        }
+      } );
+
+      this.stepLabels[mainStepIndex].completionPercent = Math.round(
+        (
+          (childIndex + 1) /
+          (this.stepTemplates.get(mainStepIndex).children.length + 1)
+        ) * 100
+      );
+    } else {
+      this.stepLabels[mainStepIndex].completionPercent = 0;
+    }
+    this.currentStepIndex = mainStepIndex;
+  }
+
+
 }
