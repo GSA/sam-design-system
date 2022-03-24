@@ -1,25 +1,17 @@
-@function getHeight($height) {
-  @return $height;
-}
+@for $i from 4 through 31 {
 
-@mixin starting-height {}
-
-@for $i from 0 through 27 {
-
-  $height: $i + 4;
-  .height-#{$i} {
+  .min-height-#{$i} {
     ::ng-deep {
       .ck-editor__editable_inline {
-        min-height: $height * 1rem;
+        min-height: $i * 1rem;
+      }
+    }
+  }
+  .max-height-#{$i} {
+    ::ng-deep {
+      .ck-editor__editable_inline {
+        max-height: $i * 1rem;
       }
     }
   }
 }
-
-// 492px 10 rows @h1 31rem
-// 70px 1 row@ h1 5rem
-// 52px 1row@p 4rem
-// 89px 2row@p 6rem
-
-
-//4rem min, increment at 1rem to max of 31rem
