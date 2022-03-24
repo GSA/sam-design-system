@@ -4,7 +4,7 @@ import {
   flush,
   inject,
   TestBed,
-  tick
+  tick,
 } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { By } from '@angular/platform-browser';
@@ -15,7 +15,7 @@ import {
   ViewChildren,
   QueryList,
   Type,
-  Provider
+  Provider,
 } from '@angular/core';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { ESCAPE, DOWN_ARROW, HOME, END } from '@angular/cdk/keycodes';
@@ -24,7 +24,7 @@ import { SdsMenuModule } from './menu.module';
 import {
   SdsMenuComponent,
   MenuPositionX,
-  MenuPositionY
+  MenuPositionY,
 } from './menu.component';
 import { SdsMenuItemComponent } from './menu-item.component';
 import { SdsMenuTriggerForDirective } from './menu-trigger.directive';
@@ -32,7 +32,7 @@ import {
   dispatchFakeEvent,
   dispatchEvent,
   dispatchMouseEvent,
-  dispatchKeyboardEvent
+  dispatchKeyboardEvent,
 } from '../testing/dispatch-events';
 import { createKeyboardEvent } from '../testing/event-objects';
 import { patchElementFocus } from '../testing/element-focus';
@@ -50,7 +50,7 @@ describe('SdsMenu', () => {
     TestBed.configureTestingModule({
       imports: [SdsMenuModule, NoopAnimationsModule],
       declarations: [component, ...declarations],
-      providers
+      providers,
     }).compileComponents();
 
     inject(
@@ -105,9 +105,7 @@ describe('SdsMenu', () => {
     triggerEl.click();
     fixture.detectChanges();
 
-    expect(
-      overlayContainerElement.querySelector('.sds-overlay')
-    ).toBeTruthy();
+    expect(overlayContainerElement.querySelector('.sds-overlay')).toBeTruthy();
 
     fixture.componentInstance.trigger.closeMenu();
     fixture.detectChanges();
@@ -129,9 +127,7 @@ describe('SdsMenu', () => {
     triggerEl.click();
     fixture.detectChanges();
 
-    expect(
-      overlayContainerElement.querySelector('.sds-overlay')
-    ).toBeTruthy();
+    expect(overlayContainerElement.querySelector('.sds-overlay')).toBeTruthy();
 
     fixture.componentInstance.trigger.closeMenu();
     fixture.detectChanges();
@@ -153,9 +149,7 @@ describe('SdsMenu', () => {
     triggerEl.click();
     fixture.detectChanges();
 
-    expect(
-      overlayContainerElement.querySelector('.sds-overlay')
-    ).toBeTruthy();
+    expect(overlayContainerElement.querySelector('.sds-overlay')).toBeTruthy();
 
     fixture.componentInstance.trigger.closeMenu();
     fixture.detectChanges();
@@ -263,9 +257,9 @@ describe('SdsMenu', () => {
     );
 
     expect(items.length).toBeGreaterThan(0);
-    expect(items.every(item => item.getAttribute('role') === 'menuitem')).toBe(
-      true
-    );
+    expect(
+      items.every((item) => item.getAttribute('role') === 'menuitem')
+    ).toBe(true);
   });
 
   it('should not throw an error on destroy', () => {
@@ -335,13 +329,13 @@ describe('SdsMenu', () => {
       panel.querySelectorAll('.sds-overlay [sds-menu-item]')
     );
 
-    items.forEach(item => patchElementFocus(item));
+    items.forEach((item) => patchElementFocus(item));
 
     tick(500);
     tick();
     fixture.detectChanges();
     expect(
-      items.some(item => item.classList.contains('cdk-keyboard-focused'))
+      items.some((item) => item.classList.contains('cdk-keyboard-focused'))
     ).toBe(false);
 
     dispatchKeyboardEvent(panel, 'keydown', DOWN_ARROW);
@@ -351,8 +345,9 @@ describe('SdsMenu', () => {
     flush();
 
     // We skip to the third item, because the second one is disabled.
-    expect(items[2].classList).toContain('cdk-focused');
-    expect(items[2].classList).toContain('cdk-keyboard-focused');
+
+    expect(items[1].classList).toContain('cdk-focused');
+    expect(items[1].classList).toContain('cdk-keyboard-focused');
   }));
 
   it('should toggle the aria-expanded attribute on the trigger', () => {
@@ -406,7 +401,6 @@ describe('SdsMenu', () => {
     const event = dispatchKeyboardEvent(panel, 'keydown', HOME);
     fixture.detectChanges();
 
-    console.log(document.activeElement);
     expect(items[0]).toEqual(document.activeElement as any);
     expect(event.defaultPrevented).toBe(true);
     flush();
@@ -569,10 +563,11 @@ describe('SdsMenu', () => {
       </button>
       <button *ngFor="let item of extraItems" sds-menu-item>{{ item }}</button>
     </sds-menu>
-  `
+  `,
 })
 class SimpleMenuComponent {
-  @ViewChild(SdsMenuTriggerForDirective, { static: false }) trigger: SdsMenuTriggerForDirective;
+  @ViewChild(SdsMenuTriggerForDirective, { static: false })
+  trigger: SdsMenuTriggerForDirective;
   @ViewChild('triggerEl', { static: false }) triggerEl: ElementRef<HTMLElement>;
   @ViewChild(SdsMenuComponent, { static: false }) menu: SdsMenuComponent;
   @ViewChildren(SdsMenuItemComponent) items: QueryList<SdsMenuItemComponent>;
@@ -583,9 +578,9 @@ class SimpleMenuComponent {
 
 @Component({
   selector: 'sds-fake-icon',
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
 })
-class FakeIconComponent { }
+class FakeIconComponent {}
 
 @Component({
   template: `
@@ -593,10 +588,11 @@ class FakeIconComponent { }
     <sds-menu [xPosition]="xPosition" [yPosition]="yPosition" #menu="sdsMenu">
       <button sds-menu-item>Positioned Content</button>
     </sds-menu>
-  `
+  `,
 })
 class PositionedMenuComponent {
-  @ViewChild(SdsMenuTriggerForDirective, { static: false }) trigger: SdsMenuTriggerForDirective;
+  @ViewChild(SdsMenuTriggerForDirective, { static: false })
+  trigger: SdsMenuTriggerForDirective;
   @ViewChild('triggerEl', { static: false }) triggerEl: ElementRef<HTMLElement>;
   xPosition: MenuPositionX = 'before';
   yPosition: MenuPositionY = 'above';

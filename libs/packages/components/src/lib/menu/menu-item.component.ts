@@ -7,7 +7,7 @@ import {
   HostBinding,
   ChangeDetectionStrategy,
   ViewEncapsulation,
-  Optional
+  Optional,
 } from '@angular/core';
 import { FocusableOption, FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
@@ -19,7 +19,7 @@ import { SdsMenuHeaderComponent } from './menu-header.component';
   selector: '[sds-menu-item]',
   template: '<ng-content></ng-content>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class SdsMenuItemComponent implements FocusableOption, OnDestroy {
   /** Menu item class */
@@ -29,19 +29,19 @@ export class SdsMenuItemComponent implements FocusableOption, OnDestroy {
   @HostBinding('attr.role') @Input() role: 'menuitem' = 'menuitem';
 
   /** Menu item tab index */
-  @HostBinding('attr.tabIndex') tabIndex = this.disabled ? '-1' : '0';
+  @HostBinding('attr.tabIndex') tabIndex = '0';
 
   /** Holds the disable status value */
   private _disabled = false;
 
   /** Whether the menu item should be disabled */
-  @Input()
-  get disabled() {
-    return this._disabled;
-  }
-  set disabled(value: any) {
-    this._disabled = coerceBooleanProperty(value);
-  }
+  // @Input()
+  // get disabled() {
+  //   return this._disabled;
+  // }
+  // set disabled(value: any) {
+  //   this._disabled = coerceBooleanProperty(value);
+  // }
 
   constructor(
     private _elementRef: ElementRef<HTMLElement>,
