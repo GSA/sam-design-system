@@ -11,6 +11,8 @@ import {
 } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { ActionsBasicModule } from './demos/basic/actions-basic.module';
+import { ActionsMenuActionMode } from './demos/action-mode/actions-action-mode.component';
+import { ActionsMenuActionModeModule } from './demos/action-mode/actions-action-mode.module';
 
 declare var require: any;
 const DEMOS = {
@@ -21,6 +23,14 @@ const DEMOS = {
     markup: require('!!raw-loader!./demos/basic/actions-basic.component.html'),
     module: require('!!raw-loader!./demos/basic/actions-basic.module'),
     path: 'libs/documentation/src/lib/components/actions/demos/basic',
+  },
+  mode: {
+    title: 'Actions Menu Dropdown with mode',
+    type: ActionsMenuActionMode,
+    code: require('!!raw-loader!./demos/action-mode/actions-action-mode.component'),
+    markup: require('!!raw-loader!./demos/action-mode/actions-action-mode.component.html'),
+    module: require('!!raw-loader!./demos/action-mode/actions-action-mode.module'),
+    path: 'libs/documentation/src/lib/components/actions/demos/action-mode',
   },
 };
 
@@ -52,6 +62,7 @@ export const ROUTES = [
     CommonModule,
     DocumentationComponentsSharedModule,
     ActionsBasicModule,
+    ActionsMenuActionModeModule,
   ],
 })
 export class ActionsModule {

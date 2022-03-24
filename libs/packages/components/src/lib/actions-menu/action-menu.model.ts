@@ -1,0 +1,21 @@
+export enum ActionMenuMode {
+  SHOWN,
+  DISABLED,
+  HIDDEN,
+}
+
+export interface TriggerTypeModel {
+  type: string;
+  shadow: boolean;
+}
+
+export interface ActionMenuActions {
+  id: string;
+  text: string;
+  mode?: ActionMenuMode;
+}
+
+export interface ActionMenModel {
+  trigger: TriggerTypeModel;
+  actions: ActionMenuActions[];
+}
