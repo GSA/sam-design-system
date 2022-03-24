@@ -19,6 +19,13 @@ export class SdsRichTextComponent implements ControlValueAccessor {
   @Input() minHeight: number;
   @Input() maxHeight: number;
 
+  get minHeightClass(): string{
+    return this.minHeight ? `min-height-${this.minHeight}`: '';
+  }
+  get maxHeightClass(): string{
+    return this.maxHeight ? `max-height-${this.maxHeight}`: '';
+  }
+
   _onChange = (_: any) => { };
   _onTouched = (_: any) => { };
 
