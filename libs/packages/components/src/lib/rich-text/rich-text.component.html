@@ -2,6 +2,6 @@
   [(ngModel)]="model"
   [editor]="editor"
   (change)=_onChange(model)
-  (blur)=_onTouched()
+  (blur)=_onTouched(model)
   class="{{minHeightClass}} {{maxHeightClass}}"
 ></ckeditor>
