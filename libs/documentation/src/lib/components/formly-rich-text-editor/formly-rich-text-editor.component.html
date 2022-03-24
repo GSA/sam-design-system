@@ -1,17 +1,18 @@
 <b>Inputs</b>
-<p><code>templateOptions.minHeight:</code>number <i>(Optional)</i> - Minimum height in rems
+<p><code>minHeight:</code>number <i>(Optional)</i> - Minimum height in rems
   that the editor can be. If text entered by the user expands beyond the bottom
   of the editor, the editor will expand to display all text. This value is
-  expected to be an positive integer or zero. The minimum value is 0 which will
+  expected to be an positive integer. The minimum value is 4 which will
   provide enough room for a single paragraph line to appear. The maximum value is
-  <b>X</b> which is large enough to allow for 10 lines of h1 text.</p>
+  31 which is large enough to allow for 10 lines of h1 text.</p>
 
-
-<p><code>templateOptions.maxHeight:</code>number <i>(Optional)</i> - Some Text</p>
-
-<p>The rich text editor component can be passed a formControl for use in
-  reactive forms. Subscribing to <code>valueChanges</code> allows developers
-  to get updates as users change value of the rich text editor. </p>
+<p><code>maxHeight:</code>number <i>(Optional)</i> - Maximum height in rems
+  that the editor can be. If text entered by the user expands beyond the bottom
+  of the editor, the editor will not expand further and a scrolling within the
+  editor will be enabled. This value is expected to be an positive integer. The
+  minimum value is 4 which will provide enough room for a single paragraph line
+  to appear. The maximum value is 31 which is large enough to allow for 10 lines
+  of h1 text.</p>
 
 <form [formGroup]="form">
   <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
