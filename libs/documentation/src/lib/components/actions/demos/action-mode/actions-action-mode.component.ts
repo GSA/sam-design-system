@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { ActionMenModel, ActionMenuMode } from '@gsa-sam/components';
+import { ActionMenuModel, ActionMenuMode } from '@gsa-sam/components';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 
 @Component({
@@ -28,7 +28,7 @@ export class ActionsMenuActionMode {
     },
   ];
 
-  menu: ActionMenModel = {
+  menu: ActionMenuModel = {
     trigger: {
       type: 'plain', // plain | primary
       shadow: true,

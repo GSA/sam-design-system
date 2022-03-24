@@ -15,7 +15,7 @@ export interface ActionMenuActions {
   mode?: ActionMenuMode;
 }
 
-export interface ActionMenModel {
+export interface ActionMenuModel {
   trigger: TriggerTypeModel;
   actions: ActionMenuActions[];
 }

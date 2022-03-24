@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { ActionMenModel, ActionMenuMode } from './action-menu.model';
+import { ActionMenuModel, ActionMenuMode } from './action-menu.model';
 
 @Component({
   selector: 'sds-actions-menu',
@@ -7,7 +7,7 @@ import { ActionMenModel, ActionMenuMode } from './action-menu.model';
 })
 export class SdsActionsMenuComponent {
   actionModes = ActionMenuMode;
-  @Input() model: ActionMenModel;
+  @Input() model: ActionMenuModel;
   @Input() size: string;
   @Output() clicks = new EventEmitter<string>();
   constructor() {}
