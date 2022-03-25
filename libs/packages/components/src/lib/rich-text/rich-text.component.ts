@@ -6,13 +6,13 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
   selector: 'sds-rich-text',
   templateUrl: './rich-text.component.html',
   styleUrls: ['./rich-text.component.scss'],
-  // providers: [
-  //   {
-  //       provide: NG_VALUE_ACCESSOR,
-  //       useExisting: forwardRef(() => SdsRichTextComponent),
-  //       multi: true,
-  //   },
-  // ],
+  providers: [
+    {
+        provide: NG_VALUE_ACCESSOR,
+        useExisting: forwardRef(() => SdsRichTextComponent),
+        multi: true,
+    },
+  ],
 })
 export class SdsRichTextComponent{
 
@@ -26,20 +26,20 @@ export class SdsRichTextComponent{
     return this.maxHeight ? `max-height-${this.maxHeight}`: '';
   }
 
-  // _onChange = (_: any) => { };
-  // _onTouched = (_: any) => { };
+  _onChange = (_: any) => { };
+  _onTouched = (_: any) => { };
 
-  // writeValue(value: any): void {
-  //   this.model = value;
-  // }
-  // registerOnChange(fn: any): void {
-  //   this._onChange = fn;
-  // }
-  // registerOnTouched(fn: any) {
-  //   this._onTouched = fn;
-  // }
-  // public editor = ClassicEditor;
+  writeValue(value: any): void {
+    this.model = value;
+  }
+  registerOnChange(fn: any): void {
+    this._onChange = fn;
+  }
+  registerOnTouched(fn: any) {
+    this._onTouched = fn;
+  }
+  public editor = ClassicEditor;
 
-  // model = "";
+  model = "";
 }
 
