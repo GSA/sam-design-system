@@ -2,7 +2,7 @@
   <div class="maxw-mobile-lg position-relative">
     <div [attr.id]="configuration.id + '-container'">
       <input role="combobox" [attr.aria-expanded]="showResults" cdkOverlayOrigin #trigger="cdkOverlayOrigin"
-        [attr.aria-owns]="showResults ? configuration.id + '-listbox' : undefined" aria-haspopup="listbox"
+        [attr.aria-owns]="showResults ? configuration.id + '-listbox' : ''" aria-haspopup="listbox"
         [disabled]="disabled" (keypress)="onkeypress($event)" (input)="textChange($event)"
         class="usa-input padding-right-3" [ngClass]="getClass()" #input
         [attr.aria-label]="configuration.ariaLabelText ? configuration.ariaLabelText : configuration.labelText"
@@ -13,7 +13,7 @@
             ? configuration.id + '-resultItem-' + highlightedIndex
             : ''
         " [attr.aria-controls]="
-          showResults ? configuration.id + '-listbox' : undefined
+          showResults ? configuration.id + '-listbox' : ''
         " autocomplete="off" />
     </div>
     <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="showResults"
@@ -157,10 +157,10 @@
     <ng-container *ngIf="!input.disabled">
       <span class="position-absolute right-105 top-1 cursor-pointer bg-white">
         <span *ngIf="isClearIconVisible()" role="button" aria-label="Clear input" (click)="clearInput()"
-          (keyup.enter)="clearInput()" tabindex="0">
+          (keyup.enter)="clearInput()" tabindex="0" class="icon-container">
           <usa-icon [icon]="'x'" size="lg" class="font-sans-xs"></usa-icon>
         </span>
-        <span *ngIf="!configuration.isTagModeEnabled" class="margin-left-1 margin-top-05">
+        <span *ngIf="!configuration.isTagModeEnabled" class="margin-left-1 margin-top-05 icon-container">
           <usa-icon role="button" aria-label="Display Options" tabindex="0" *ngIf="!showResults && !disabled"
             (click)="openOptions()" class="font-sans-xs" (keyup.enter)="openOptions()" [icon]="'caret-down-fill'"
             size="1x">

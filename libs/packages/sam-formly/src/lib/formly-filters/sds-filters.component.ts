@@ -20,9 +20,16 @@ import { SDSFormlyUpdateModelService } from './service/sds-filter-model-update.s
 
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { FormlyUtilsService, ReadonlyDataType } from '../formly/services/formly-utils.service';
+import {
+  FormlyUtilsService,
+  ReadonlyDataType,
+} from '../formly/services/formly-utils.service';
 import { SdsFormlyTypes } from '../formly/models/formly-types';
-import { SdsDialogRef, SdsDialogService, SDS_DIALOG_DATA } from '@gsa-sam/components';
+import {
+  SdsDialogRef,
+  SdsDialogService,
+  SDS_DIALOG_DATA,
+} from '@gsa-sam/components';
 import { cloneDeep } from 'lodash-es';
 import { FormlyValueChangeEvent } from '@ngx-formly/core/lib/components/formly.field.config';
 @Component({
@@ -30,8 +37,8 @@ import { FormlyValueChangeEvent } from '@ngx-formly/core/lib/components/formly.f
   templateUrl: './sds-filters.component.html',
 })
 export class SdsFiltersComponent implements OnInit, OnChanges {
-
-  @ViewChild('horizontalFiltersDialog') horizontalFiltersDialogTemplate: TemplateRef<any>;
+  @ViewChild('horizontalFiltersDialog')
+  horizontalFiltersDialogTemplate: TemplateRef<any>;
 
   /**
    * Pass in a Form Group for ReactiveForms Support
@@ -140,7 +147,6 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     return result;
   };
 
-
   constructor(
     @Optional()
     public formlyUpdateComunicationService: SDSFormlyUpdateComunicationService,
@@ -148,7 +154,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     private cdr: ChangeDetectorRef,
     @Optional()
     private filterUpdateModelService: SDSFormlyUpdateModelService
-  ) { }
+  ) {}
   ngOnDestroy() {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
@@ -156,7 +162,8 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     // keep display chips to defined value if defined, otherwise, default to false, unless hoirzontal is turned on
-    this.displayChips = this.displayChips != undefined ? this.displayChips : this.horizontal;
+    this.displayChips =
+      this.displayChips != undefined ? this.displayChips : this.horizontal;
 
     if (this.filterUpdateModelService) {
       this.filterUpdateModelService.filterModel
@@ -178,7 +185,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
             this.checkForHide();
           }
         });
-        this.cdr.detectChanges();
+      this.cdr.detectChanges();
     }
   }
 
@@ -257,7 +264,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     const fieldChangeEvent: FormlyValueChangeEvent = {
       field: undefined,
       type: 'resetAll',
-      value: undefined
+      value: undefined,
     };
 
     this.options.fieldChanges.next(fieldChangeEvent);
@@ -314,10 +321,15 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
   }
 
   /**
-   * Parser for qs.parse - if input string is true / false, 
+   * Parser for qs.parse - if input string is true / false,
    * convert to boolean value, otherwise use default decoder
    */
-  cleanModelParser(str: string, decoder: qs.defaultDecoder, charset: string, type: 'key' | 'value') {
+  cleanModelParser(
+    str: string,
+    decoder: qs.defaultDecoder,
+    charset: string,
+    type: 'key' | 'value'
+  ) {
     if (type === 'key') {
       return decoder(str, decoder, charset);
     }
@@ -340,25 +352,31 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     const clonedFields = cloneDeep(this.fields);
     this._modelSnapshot = cloneDeep(this.model);
     this.removePopoverGroup(clonedFields);
-    this.dialogRef = this.formlyDialogService.open(this.horizontalFiltersDialogTemplate, {
-      data: { fields: clonedFields, options: {} },
-      height: '100vh',
-      width: '100vw',
-      maxWidth: '100vw',
-      maxHeight: '100vh',
-      hasBackdrop: false,
-      displayCloseBtn: false,
-      panelClass: ['sds-dialog--full']
-    });
-
-    this.dialogRef.afterClosed().toPromise().then((result) => {
-      if (result) {
-        this.onModelChange(result);
-      } else {
-        Object.assign(this.model, this._modelSnapshot);
+    this.dialogRef = this.formlyDialogService.open(
+      this.horizontalFiltersDialogTemplate,
+      {
+        data: { fields: clonedFields, options: {} },
+        height: '100vh',
+        width: '100vw',
+        maxWidth: '100vw',
+        maxHeight: '100vh',
+        hasBackdrop: false,
+        displayCloseBtn: false,
+        panelClass: ['sds-dialog--full'],
       }
-      this.dialogRef = null;
-    })
+    );
+
+    this.dialogRef
+      .afterClosed()
+      .toPromise()
+      .then((result) => {
+        if (result) {
+          this.onModelChange(result);
+        } else {
+          Object.assign(this.model, this._modelSnapshot);
+        }
+        this.dialogRef = null;
+      });
   }
 
   close() {
@@ -373,10 +391,10 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
    * Converts all popover type fields to accordion and unhides any hidden fields
    * so that they can be displayed in filter dialog during resposive mode for
    * horizontal filters
-   * @param fields 
+   * @param fields
    */
   private removePopoverGroup(fields: FormlyFieldConfig[]) {
-    fields.forEach(field => {
+    fields.forEach((field) => {
       if (field.templateOptions && field.templateOptions.group === 'popover') {
         field.templateOptions.group = 'accordion';
       }
@@ -390,36 +408,45 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
       }
 
       field.hide = false;
-    })
+    });
   }
 
   /**
    * Create chips to display for horizontal filters based on current model
    * and formly field config
-   * @param model 
-   * @param fields 
+   * @param model
+   * @param fields
    */
   private generateChips(model: any, fields: FormlyFieldConfig[]) {
-    const readonlyData = FormlyUtilsService.formlyConfigToReadonlyData(fields, model);
-    const chipsWithValue = readonlyData.filter(data => data.value);
+    const readonlyData = FormlyUtilsService.formlyConfigToReadonlyData(
+      fields,
+      model
+    );
+    const chipsWithValue = readonlyData.filter((data) => data.value);
     let allChips = [];
-    chipsWithValue.forEach(chip => {
+    chipsWithValue.forEach((chip) => {
       if (typeof chip.value != 'object') {
+        chip['srValue'] = chip.value;
         allChips.push(chip);
         return;
       }
 
       if (Array.isArray(chip.value)) {
-        const newChips = chip.value.map(chipValue => {
-          return { ...chip, value: [chipValue] , srValue: chipValue};
+        const newChips = chip.value.map((chipValue) => {
+          return { ...chip, value: [chipValue], srValue: chipValue };
         });
         allChips = allChips.concat(newChips);
         return;
       }
 
-      if (chip.formlyType === SdsFormlyTypes.DATERANGEPICKER || chip.formlyType === SdsFormlyTypes.DATERANGEPICKERV2) {
-        const fromDateValue = chip.value[chip.readonlyOptions.daterangepickerOptions.fromDateKey];
-        const toDateValue = chip.value[chip.readonlyOptions.daterangepickerOptions.toDateKey];
+      if (
+        chip.formlyType === SdsFormlyTypes.DATERANGEPICKER ||
+        chip.formlyType === SdsFormlyTypes.DATERANGEPICKERV2
+      ) {
+        const fromDateValue =
+          chip.value[chip.readonlyOptions.daterangepickerOptions.fromDateKey];
+        const toDateValue =
+          chip.value[chip.readonlyOptions.daterangepickerOptions.toDateKey];
 
         if (fromDateValue || toDateValue) {
           allChips.push(chip);
@@ -428,18 +455,18 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
         return;
       }
 
-      Object.keys(chip.value).forEach(key => {
+      Object.keys(chip.value).forEach((key) => {
         const value = chip.value[key];
 
         // Ignore falsey or empty string values
-        if (!value || (typeof (value.length) === 'string' && !value.length)) {
+        if (!value || (typeof value.length === 'string' && !value.length)) {
           return;
         }
 
-        const newChip = { ...chip, value: { [key]: value } , srValue: key};
+        const newChip = { ...chip, value: { [key]: value }, srValue: key };
         allChips.push(newChip);
-      })
-    })
+      });
+    });
 
     this.chips = allChips;
   }
@@ -448,14 +475,14 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
    * Removing a certain chip from UI is the same as applying a change to the form, so
    * this should update the form control. We can find the field to update based on the chip's
    * formly key and what values to update to based on values of existing chips with the same key
-   * @param chip 
-   * @returns 
+   * @param chip
+   * @returns
    */
   removeChip(chip: ReadonlyDataType) {
     const field = this.findFieldInFieldGroup(this.fields, chip.formlyKey);
 
     if (!field) {
-      throw new Error('Error: unable to find field to remove chip')
+      throw new Error('Error: unable to find field to remove chip');
     }
 
     // If the form control is not complex, then we can simply reset
@@ -464,8 +491,10 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
       return;
     }
 
-    if (chip.formlyType === SdsFormlyTypes.DATERANGEPICKER || chip.formlyType === SdsFormlyTypes.DATERANGEPICKERV2) {
-
+    if (
+      chip.formlyType === SdsFormlyTypes.DATERANGEPICKER ||
+      chip.formlyType === SdsFormlyTypes.DATERANGEPICKERV2
+    ) {
       const fromDateControl = field.fieldGroup[0].formControl;
       const toDateControl = field.fieldGroup[1].formControl;
       fromDateControl.reset();
@@ -475,20 +504,25 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
 
     // If the form control contains complex values, such as an object or array, we need to determine what the new
     // value of the form will be after this chip has been removed, and update the form control accordingly
-    const chipsWithSameKey = this.chips.filter(exisingChip => chip != exisingChip && chip.formlyKey === exisingChip.formlyKey);
-    const existingValues = chipsWithSameKey.map(chipWithSameKey => chipWithSameKey.value);
+    const chipsWithSameKey = this.chips.filter(
+      (exisingChip) =>
+        chip != exisingChip && chip.formlyKey === exisingChip.formlyKey
+    );
+    const existingValues = chipsWithSameKey.map(
+      (chipWithSameKey) => chipWithSameKey.value
+    );
 
     if (Array.isArray(field.formControl.value)) {
       let updatedValue = [];
-      existingValues.forEach(value => {
-        updatedValue = updatedValue.concat(value)
+      existingValues.forEach((value) => {
+        updatedValue = updatedValue.concat(value);
       });
       field.formControl.setValue(updatedValue);
       return;
     }
 
-    const objectValue = {}
-    Object.assign(objectValue, ...existingValues)
+    const objectValue = {};
+    Object.assign(objectValue, ...existingValues);
     field.formControl.setValue(objectValue);
   }
 }

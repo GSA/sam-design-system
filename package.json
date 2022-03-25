@@ -1,6 +1,6 @@
 {
   "name": "sam-design-system",
-  "version": "11.0.23",
+  "version": "11.0.26",
   "license": "MIT",
   "scripts": {
     "start": "ng serve",
@@ -54,10 +54,10 @@
     "@gsa-sam/components": "11.0.16",
     "@gsa-sam/layouts": "11.0.16",
     "@gsa-sam/ngx-uswds": "0.0.18",
-    "@gsa-sam/ngx-uswds-icons": "0.0.7",
+    "@gsa-sam/ngx-uswds-icons": "^11.0.1",
     "@gsa-sam/sam-formly": "11.0.16",
     "@gsa-sam/sam-material-extensions": "11.0.16",
-    "@gsa-sam/sam-styles": "0.0.128",
+    "@gsa-sam/sam-styles": "0.0.133",
     "@ngx-formly/core": "^5.10.22",
     "@ngx-formly/schematics": "^5.10.22",
     "@types/qs": "^6.9.5",

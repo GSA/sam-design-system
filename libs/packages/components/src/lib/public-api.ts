@@ -4,7 +4,8 @@ export * from './accordion/accordion-item-content.directive';
 export * from './accordion/accordion-item-header.component';
 export * from './accordion/accordion-item.component';
 export * from './actions-menu/actions-menu.component';
-export * from './actions-menu/actions-menu.module'
+export * from './actions-menu/actions-menu.module';
+export * from './actions-menu/action-menu.model';
 export * from './page/page.module';
 export * from './page/page.component';
 export * from './pagination/pagination.module';
@@ -82,10 +83,10 @@ export * from './tabs/tabs.module';
 export * from './tabs/tabs.component';
 export * from './tabs/tab-panel.component';
 
-export * from './date/sds-date.module'
-export * from './date/sds-date.pipe'
+export * from './date/sds-date.module';
+export * from './date/sds-date.pipe';
 
-export * from './editor/editor.component'
+export * from './editor/editor.component';
 export * from './editor/editor.module';
 
 export * from './tree-table/tree-table.module';
