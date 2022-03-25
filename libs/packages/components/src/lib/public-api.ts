@@ -68,8 +68,8 @@ export * from './text/child.component';
 export * from './search/search.component';
 export * from './toast/toast-single.component';
 export * from './toast/toast.module';
-export * from './rich-text/rich-text.component';
-export * from './rich-text/rich-text.module';
+// export * from './rich-text/rich-text.component';
+// export * from './rich-text/rich-text.module';
 
 export * from './top-banner/top-banner.component';
 export * from './top-banner/top-banner.module';
