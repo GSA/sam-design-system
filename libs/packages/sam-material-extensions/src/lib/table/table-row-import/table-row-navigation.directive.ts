@@ -10,8 +10,6 @@ export class TableRowNavigationDirective {
 
   @Input()
   highlightOnHover = false;
-  @Input()
-  navigateToOnClick: string;
 
   constructor(private el: ElementRef, private renderer: Renderer2, private router: Router) {
   }
@@ -25,12 +23,6 @@ export class TableRowNavigationDirective {
   @HostListener('mouseleave') onMouseLeave() {
     if(this.highlightOnHover){
       this.removeHoverClass();
-    }
-  }
-
-  @HostListener('click') onClick(){
-    if(this.navigateToOnClick){
-      this.router.navigateByUrl(this.navigateToOnClick);
     }
   }
 

@@ -58,7 +58,7 @@
       class="sds-table__row"
       [ngClass]="{ 'cursor-pointer': rowConfig.expandOnClick, 'sds-table__row--expanded': expandedElement == row }"
       (click)="rowConfig.expandOnClick ? (expandedElement = expandedElement === row ? null : row) : false; rowClicked.emit(i)"
-      sdsTableRowNavigation [highlightOnHover]=rowConfig.highlightOnHover [navigateToOnClick]=rowConfig.rowClickNavigate
+      sdsTableRowNavigation [highlightOnHover]=rowConfig.highlightOnHover
     ></tr>
 
     <ng-container *ngIf="expansion">

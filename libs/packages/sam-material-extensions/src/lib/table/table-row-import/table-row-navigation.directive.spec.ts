@@ -1,8 +1,6 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, DebugElement, ElementRef, Renderer2 } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { Router } from '@angular/router';
-import { SdsTableComponent } from '../table.component';
 import { TableRowNavigationDirective } from './table-row-navigation.directive';
 import { RouterTestingModule } from '@angular/router/testing'
 
@@ -11,7 +9,6 @@ import { RouterTestingModule } from '@angular/router/testing'
     <tr mat-row
         sdsTableRowNavigation
         [highlightOnHover]=true
-        [navigateToOnClick]="'some/link/to/link/to'"
     ></tr>
   `
 })
@@ -53,12 +50,6 @@ describe('TableRowNavigationDirective', () => {
     expect(trEl.nativeElement.classList.contains('sds-table__row--hovered')).toBeTruthy();
     trEl.triggerEventHandler('mouseleave', null);
     expect(trEl.nativeElement.classList.contains('sds-table__row--hovered')).toBeFalsy();
-  })
-  it('should call navigateByUrl method when clicked', () => {
-    const router = trEl.injector.get(Router) as Router;
-    let spy = spyOn(router, 'navigateByUrl').and.returnValue(Promise.resolve(true));
-    trEl.triggerEventHandler('click', null);
-    expect(spy).toHaveBeenCalled();
   })
 
 
