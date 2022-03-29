@@ -195,7 +195,14 @@ export const DATE_FORMAT: MatDateFormats = {
     SdsTabsModule,
     SdsPopoverModule,
     SdsRichTextModule,
-    NgxBootstrapIconsModule.pick({ caretDownFill, caretUpFill, filter, arrowClockwise, chevronDown, infoCircleFill }),
+    NgxBootstrapIconsModule.pick({
+      caretDownFill,
+      caretUpFill,
+      filter,
+      arrowClockwise,
+      chevronDown,
+      infoCircleFill
+    }),
     FormlyModule.forChild(FORMLY_CONFIG),
     FormlyModule.forRoot({
       validationMessages: [
