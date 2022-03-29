@@ -14,7 +14,7 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
     },
   ],
 })
-export class SdsRichTextComponent{
+export class SdsRichTextComponent implements ControlValueAccessor{
 
   @Input() minHeight: number;
   @Input() maxHeight: number;
