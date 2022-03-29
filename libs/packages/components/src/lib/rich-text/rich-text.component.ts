@@ -5,7 +5,6 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 @Component({
   selector: 'sds-rich-text',
   templateUrl: './rich-text.component.html',
-  styleUrls: ['./rich-text.component.scss'],
   providers: [
     {
         provide: NG_VALUE_ACCESSOR,
