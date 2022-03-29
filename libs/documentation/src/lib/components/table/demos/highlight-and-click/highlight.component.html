@@ -1,4 +1,4 @@
-<sds-table [data]="data" [tableName]="'basicTable'">
+<sds-table [data]="data" [tableName]="'highlightTable'" (rowClicked)="handleClicked($event)">
 
   <sds-table-column sdsColumnName="id">
     <ng-template #sdsHeaderCell>ID</ng-template>
@@ -26,7 +26,7 @@
   </sds-table-column>
 
   <sds-header-row [displayedColumns]="displayedColumns"></sds-header-row>
-  <sds-row [displayedColumns]="displayedColumns"></sds-row>
+  <sds-row [displayedColumns]="displayedColumns" [highlightOnHover]=true></sds-row>
 
 </sds-table>
 
