@@ -22,14 +22,7 @@ export class FormlyRichTextEditorComponent {
 
       modelOptions: {
         updateOn: 'change',
-      },
-      lifecycle: {
-        onChanges: function (form, field) {
-          field.formControl.valueChanges.subscribe((v) => {
-            console.log(form['controls']['entity']);
-          });
-        },
-      },
+      }
     },
   ];
 }

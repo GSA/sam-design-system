@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FieldType } from '@ngx-formly/core';
+import { AbstractSdsFormly } from '../sds-formly';
 
 @Component({
   selector: 'sds-formly-rich-text-editor',
@@ -7,9 +7,10 @@ import { FieldType } from '@ngx-formly/core';
   <sds-rich-text
     [formControl]="formControl"
     [minHeight]="to.minHeight"
-    [maxHeight]="to.maxHeight">
+    [maxHeight]="to.maxHeight"
+    >
   </sds-rich-text>
   `,
 })
-export class FormlyFieldRichTextEditorComponent extends FieldType {
+export class FormlyFieldRichTextEditorComponent extends AbstractSdsFormly {
 }
