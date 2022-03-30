@@ -41,6 +41,7 @@
     </span>
     <button *ngIf="!searchSettings.isSuffixSearchIcon" #buttonEl class="usa-button" type="submit"
       [attr.aria-label]="searchSettings.ariaLabel ? searchSettings.ariaLabel : 'Search'" (click)="handleClick($event)">
+      <usa-icon [icon]="'search'"></usa-icon>
     </button>
   </div>
 
