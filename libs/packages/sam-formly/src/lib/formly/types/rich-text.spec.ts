@@ -1,10 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { ReactiveFormsModule, FormsModule, FormGroup } from "@angular/forms";
-import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
+import { SdsRichTextModule } from '@gsa-sam/components';
 import { FormlyForm, FormlyModule } from "@ngx-formly/core";
-import { FormlySelectModule } from "@ngx-formly/core/select";
 import { FormlyFieldRichTextEditorComponent } from "./rich-text";
 
 const createTestComponent = (html: string) =>
@@ -17,17 +16,7 @@ export function createGenericTestComponent<T>(html: string, type: { new(...args:
   return fixture as ComponentFixture<T>;
 }
 
-let testComponentInputs;
-
-@Component({ selector: 'formly-form-test', template: '', entryComponents: [] })
-class TestComponent {
-  @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;
-
-  fields = testComponentInputs.fields;
-  form: FormGroup = testComponentInputs.form;
-  model = testComponentInputs.model || {};
-  options = testComponentInputs.options;
-}
+let testRTEComponent;
 
 describe('Formly Field Rich Text Editor Component', () => {
   beforeEach(() => {
@@ -36,8 +25,8 @@ describe('Formly Field Rich Text Editor Component', () => {
       imports: [
         NoopAnimationsModule,
         ReactiveFormsModule,
-        FormlySelectModule,
         FormsModule,
+        SdsRichTextModule,
         FormlyModule.forRoot({
           types: [
             {
@@ -52,15 +41,33 @@ describe('Formly Field Rich Text Editor Component', () => {
 
   describe('', () => {
     beforeEach(() => {
-      testComponentInputs = {
+      testRTEComponent = {
         form: new FormGroup({}),
         options: {},
         model: {},
       };
     })
 
-    fit('should render editor in component', () => {
-      testComponentInputs.fields = [
+    it('should render editor in component', () => {
+      testRTEComponent.fields = [
+        {
+          key: 'editor',
+          type: 'rich-text',
+
+          modelOptions: {
+            updateOn: 'change',
+          }
+        },
+      ];
+      const fixture = createTestComponent('<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'),
+      trigger = fixture.debugElement.nativeElement.querySelector('ckeditor')
+
+
+      fixture.detectChanges()
+      expect(trigger).toBeTruthy();
+    });
+    it('template options should apply expected classes', () => {
+      testRTEComponent.fields = [
         {
           key: 'editor',
           type: 'rich-text',
@@ -78,15 +85,23 @@ describe('Formly Field Rich Text Editor Component', () => {
       trigger = fixture.debugElement.nativeElement.querySelector('ckeditor')
 
 
-      fixture.detectChanges();
-      const expectedValue = fixture.debugElement.query(By.css('.usa-radio')).componentInstance.field;
-
-      expect(expectedValue.templateOptions.options.length).toEqual(4);
+      fixture.detectChanges()
+      expect(trigger.classList).toContain('min-height-10');
+      expect(trigger.classList).toContain('max-height-31');
     });
-    it('editor should be hooked into formly model', () => {});
   })
 
 
 
 
 })
+
+@Component({ selector: 'formly-form-test', template: '', entryComponents: [] })
+class TestComponent {
+  @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;
+
+  fields = testRTEComponent.fields;
+  form: FormGroup = testRTEComponent.form;
+  model = testRTEComponent.model || {};
+  options = testRTEComponent.options;
+}
