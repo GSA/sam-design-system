@@ -2,7 +2,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TestBed, ComponentFixture, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, TemplateRef, ViewChild } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule, FormlyForm } from '@ngx-formly/core';
 import { FormlySelectModule } from '@ngx-formly/core/select';
@@ -20,7 +20,7 @@ export function createGenericTestComponent<T>(html: string, type: { new(...args:
 }
 
 
-let testComponentInputs;
+let testComponent, customTemplate;
 
 describe('Formly Field checkbox Component', () => {
     beforeEach(() => {
@@ -44,7 +44,7 @@ describe('Formly Field checkbox Component', () => {
 
     describe('options', () => {
         beforeEach(() => {
-            testComponentInputs = {
+            testComponent = {
                 form: new FormGroup({}),
                 options: {},
                 model: {},
@@ -52,7 +52,7 @@ describe('Formly Field checkbox Component', () => {
         });
 
         it('should correctly bind to a static array of data', () => {
-            testComponentInputs.fields = [{
+            testComponent.fields = [{
 
                 key: 'textcheckbox',
                 type: 'checkbox',
@@ -74,14 +74,55 @@ describe('Formly Field checkbox Component', () => {
 
     });
 
+    describe('custom template', () => {
+      beforeEach(() => {
+        testComponent = {
+            form: new FormGroup({}),
+            options: {},
+            model: {},
+        };
+    });
+      fit('should display the template if provided', () => {
+        testComponent.fields = [{
+
+          key: 'textcheckbox',
+          type: 'checkbox',
+          templateOptions: {
+              label: 'Formly Checkbox',
+              option: { label: 'Option A', value: 'a' }
+          }
+
+      }];
+
+      const fixture = createTestComponent(`
+        <formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>
+        <ng-template #custom><i>custom text</i></ng-template>
+      `)
+      const component = fixture.componentInstance;
+      // testComponent.fields[0].templateOptions.tempalte = component.customTemplate;
+
+      fixture.detectChanges();
+      const customContent = fixture.debugElement.nativeElement
+      console.log('html', customContent)
+      // console.log('form', component.formlyForm.model)
+      expect(component.customTemplate).toBeTruthy();
+      // expect(customContent).toBeTruthy();
+      })
+    })
+
 });
 
 @Component({ selector: 'formly-form-test', template: '', entryComponents: [] })
-class TestComponent {
+class TestComponent implements AfterViewInit{
     @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;
+    @ViewChild('custom') customTemplate: TemplateRef<any>;
 
-    fields = testComponentInputs.fields;
-    form: FormGroup = testComponentInputs.form;
-    model = testComponentInputs.model || {};
-    options = testComponentInputs.options;
+    fields = testComponent.fields;
+    form: FormGroup = testComponent.form;
+    model = testComponent.model || {};
+    options = testComponent.options;
+
+    ngAfterViewInit(){
+      this.fields[0].templateOptions.template = this.customTemplate;
+    }
 }
