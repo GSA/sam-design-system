@@ -38,7 +38,8 @@ export const FIELD_TYPE_COMPONENTS = [
   FormlyFieldFileInputComponent,
   FormlyTabsWrapperComponent,
   FormlyFieldTableComponent,
-  FormlyFieldEditorComponent
+  FormlyFieldEditorComponent,
+  FormlyFieldRichTextEditorComponent
 ];
 import {
   dateRangeValidator,
@@ -59,6 +60,7 @@ import { FormlyFieldFileInputComponent } from './types/file-input';
 import { FormlyTabsWrapperComponent } from './wrappers/tabs.wrapper';
 import { FormlyFieldTableComponent } from './types/table';
 import { FormlyFieldEditorComponent } from './types/editor';
+import { FormlyFieldRichTextEditorComponent } from './types/rich-text';
 
 export const FORMLY_WRAPPERS: any = [
   {
@@ -272,6 +274,11 @@ export const FORMLY_CONFIG: ConfigOption = {
     {
       name: SdsFormlyTypes.TABLE,
       component: FormlyFieldTableComponent
+    },
+    {
+      name: SdsFormlyTypes.RICHTEXTEDITOR,
+      component: FormlyFieldRichTextEditorComponent,
+      wrappers: sdsWrappers,
     },
   ],
   wrappers: [

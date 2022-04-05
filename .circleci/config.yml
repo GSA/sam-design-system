@@ -7,7 +7,7 @@ jobs:
   build:
     working_directory: ~/project/sam-design-system
     docker:
-      - image: circleci/node:14.16.0-browsers
+      - image: circleci/node:12.22.7-browsers
     steps:
       - checkout
       - run: npm install
