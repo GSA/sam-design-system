@@ -53,7 +53,7 @@
     "@gsa-sam/ngx-uswds-icons": "12.0.0-beta.2",
     "@gsa-sam/sam-styles": "0.0.134",
     "@gsa-sam/components": "12.0.0",
-    "@gsa-sam/sam-formly": "12.0.0",
+    "@gsa-sam/sam-formly": "12.0.1",
     "@gsa-sam/layouts": "12.0.0",
     "@gsa-sam/sam-material-extensions": "12.0.0",
     "@ngx-formly/core": "^5.10.22",
