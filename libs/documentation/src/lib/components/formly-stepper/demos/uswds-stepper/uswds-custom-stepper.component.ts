@@ -1,5 +1,5 @@
-import { AfterContentInit, Component} from "@angular/core";
-import { SdsStepper } from "@gsa-sam/sam-formly";
+import { AfterContentInit, Component, Input} from "@angular/core";
+import { SdsStepComponent, SdsStepper } from "../../../../../../../packages/sam-formly/src/lib/formly-stepper/sds-stepper";
 
 
 @Component({
@@ -24,23 +24,23 @@ export class USWDSCustomStepperComponent extends SdsStepper implements AfterCont
       return {...stepTemplate, label: stepTemplate.text};
     });
   }
-  async changeStep(stepId: string, incrementor?: 1 | -1) {
-    await super.changeStep(stepId, incrementor);
+  async changeStep(stepId: string, direction?: 1 | -1) {
+    let stepsToAdvance: number = this.incrementationRules(stepId, direction);
+    await super.changeStep(stepId, stepsToAdvance);
 
-    // Need to know what major step to highlight.
-    // Even if substep, major step needs to be highlighted and partially filled
+    //NOTE: After this point, this.selectedStep is the step that is being rendered for the user, i.e. the next/prev step
+
+    // Afterwards, update the indicator at the top to show the expected completion percent
     let mainStepIndex = (this.stepTemplates.toArray() as Array<any>).findIndex(step => step === this.selectedStep);
     // If sub-step
     if(mainStepIndex === -1){
-      let childIndex = -1;
+      let subStepIndex = -1;
       this.stepTemplates.toArray().forEach((mainStep, index) => {
-        const tempIndex = mainStep.children.toArray().findIndex(child => {
-          return child === this.selectedStep;
-        });
+        const tempIndex = this.getSubStepIndex(mainStep);
         const selectedStepIsChild = tempIndex !== -1;
         if(selectedStepIsChild){
           mainStepIndex = index;
-          childIndex = tempIndex;
+          subStepIndex = tempIndex;
         }
       } );
 
@@ -54,7 +54,7 @@ export class USWDSCustomStepperComponent extends SdsStepper implements AfterCont
        */
       this.stepLabels[mainStepIndex].completionPercent = Math.round(
         (
-          (childIndex + 1) /
+          (subStepIndex + 1) /
           (this.stepTemplates.get(mainStepIndex).children.length + 1)
         ) * 100
       );
@@ -63,6 +63,29 @@ export class USWDSCustomStepperComponent extends SdsStepper implements AfterCont
       this.stepLabels[mainStepIndex].completionPercent = 0;
     }
     this.currentStepIndex = mainStepIndex;
+  }
+
+  /**
+   * Returns the index of the selected step within the given mainStep's children
+   */
+  getSubStepIndex(mainStep: SdsStepComponent): number {
+    return mainStep.children.toArray().indexOf(this.selectedStep);
+  }
+
+  calculateStepProgress(mainStep: number, childIndex: number): number{
+    const totalSubsteps = this.stepTemplates.get(mainStep).children.length;
+    return Math.round(((childIndex + 1) / (totalSubsteps + 1)) * 100);
+  }
+
+  /**
+   * Returns the number of steps to advance based on criteria defined in this function.
+   * If moving to last/next step, returns -1/1. If skipping step, calculation will occur here and be returned to main function to execute actual advancement.
+   */
+  incrementationRules(currentStep: string, incrementor: number): number{
+    if(incrementor === undefined){
+      return 0;
+    }
+    return incrementor;
   }
 
 
