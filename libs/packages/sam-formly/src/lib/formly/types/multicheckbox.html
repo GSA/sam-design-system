@@ -31,32 +31,45 @@
       [ngClass]="{'margin-left-4 margin-top-0': to.selectAllOption}">
       <ul class="sds-list--no-bullets">
         <li class="grid-row" *ngFor="let option of (to.options | formlySelectOptions: field | async); let i = index">
-          <div>
-            <input class="usa-checkbox__input" [id]="id + '_' + i" type="checkbox" [name]="id + '_name_' + i"
-              [disabled]="option.disabled" [value]="option.value" [formlyAttributes]="field"
-              (change)="onChange(option.value, $event.target.checked)" [checked]="isChecked(option)" />
-            <label class="usa-checkbox__label" [for]="id + '_' + i">
-              <!-- 
+          <div *ngIf="option.group">
+            <label class="usa-label" style="margin-top: 1.5rem; font-weight: bold;">{{option.label}}</label>
+        <li class="grid-row" *ngFor="let opt of option.group; let j = index">
+          <input class="usa-checkbox__input" [id]="id + '_' + i + j" type="checkbox" [name]="id + '_name_' + i + j"
+            [disabled]="opt.disabled" [value]="opt.value" [formlyAttributes]="field"
+            (change)="onChange(opt.value, $event.target.checked)" [checked]="isChecked(opt)" />
+          <label class="usa-checkbox__label" [for]="id + '_' + i + j">
+            <span [innerHtml]="opt.label"></span>
+          </label>
+        </li>
+        </div>
+
+        <div *ngIf="!option.group">
+          <input class="usa-checkbox__input" [id]="id + '_' + i" type="checkbox" [name]="id + '_name_' + i"
+            [disabled]="option.disabled" [value]="option.value" [formlyAttributes]="field"
+            (change)="onChange(option.value, $event.target.checked)" [checked]="isChecked(option)" />
+          <label class="usa-checkbox__label" [for]="id + '_' + i">
+            <!-- 
                 The reference of options array through index is done intentionally here rather 
                 than using local variable option because the formlySelectOptions pipe transforms 
                 each option such that they lose all properties except label, value, and disabled 
             -->
-              <span *ngIf="to.options[i].tagText" class="usa-tag"
-                [ngClass]="to.options[i].tagClass ? to.options[i].tagClass : 'sds-tag--info-white'">
-                {{to.options[i].tagText}}
-              </span>
-              <span [innerHtml]="option.label"></span>
-            </label>
-          </div>
+            <!-- <span *ngIf="to.options[i].group"> {{to.options[i] | json}}</span> -->
+            <span *ngIf="to.options[i].tagText" class="usa-tag"
+              [ngClass]="to.options[i].tagClass ? to.options[i].tagClass : 'sds-tag--info-white'">
+              {{to.options[i].tagText}}
+            </span>
+            <span [innerHtml]="option.label"></span>
+          </label>
+        </div>
 
-          <div *ngIf="to.options[i].tooltipText" class="margin-top-1 margin-left-1">
-            <p #tipContent [ngClass]="to.options[i].tooltipClass" class="margin-1"
-              [innerHTML]="to.options[i].tooltipText"></p>
-            <usa-icon [position]="to.options[i].tooltipPosition ? to.options[i].tooltipPosition :'right'"
-              [sdsTooltip]="tipContent" [size]="'lg'" [icon]="'info-circle'"></usa-icon>
-          </div>
-        </li>
-      </ul>
+        <div *ngIf="to.options[i].tooltipText" class="margin-top-1 margin-left-1">
+          <p #tipContent [ngClass]="to.options[i].tooltipClass" class="margin-1"
+            [innerHTML]="to.options[i].tooltipText"></p>
+          <usa-icon [position]="to.options[i].tooltipPosition ? to.options[i].tooltipPosition :'right'"
+            [sdsTooltip]="tipContent" [size]="'lg'" [icon]="'info-circle'"></usa-icon>
+        </div>
     </li>
+  </ul>
+  </li>
   </ul>
 </fieldset>

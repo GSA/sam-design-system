@@ -49,7 +49,7 @@
     "@angular/platform-browser-dynamic": "^12.2.15",
     "@angular/router": "^12.2.15",
     "@compodoc/compodoc": "1.1.11",
-    "@gsa-sam/ngx-uswds": "12.0.0-beta.7",
+    "@gsa-sam/ngx-uswds": "12.0.0",
     "@gsa-sam/ngx-uswds-icons": "12.0.0-beta.2",
     "@gsa-sam/sam-styles": "0.0.134",
     "@gsa-sam/components": "12.0.0",
