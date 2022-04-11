@@ -20,34 +20,34 @@ export class MultiCheckboxGroup {
         label: 'Grouped multi-checkbox',
         options: [
           {
-            key: 'AL1',
-            value: 'Alabama1',
+            key: 'POR',
+            value: 'Purpose of Registration',
             group: 'Entities',
           },
 
           {
-            key: 'AL3',
-            value: 'Alabama3',
+            key: 'RD',
+            value: 'Report Data',
             group: 'Contract Opportunities',
           },
           {
-            key: 'AL4',
-            value: 'Alabama4',
+            key: 'DE1',
+            value: 'Data entry',
             group: 'Contract Opportunities',
           },
           {
-            key: 'AL5',
-            value: 'Alabama5',
+            key: 'LD',
+            value: 'Listing Data',
             group: 'Assistance Listings',
           },
           {
-            key: 'AL2',
-            value: 'Alabama2',
+            key: 'LBN',
+            value: 'Legal Business Name',
             group: 'Entities',
           },
           {
-            key: 'AL6',
-            value: 'Alabama6',
+            key: 'LF',
+            value: 'Listing File',
             group: 'Assistance Listings',
           },
         ],
