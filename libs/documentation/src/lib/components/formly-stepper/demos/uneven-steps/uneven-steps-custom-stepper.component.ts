@@ -1,15 +1,15 @@
-import { AfterContentInit, Component, Input} from "@angular/core";
-import { SdsStepComponent, SdsStepper } from "../../../../../../../packages/sam-formly/src/lib/formly-stepper/sds-stepper";
+import { AfterContentInit, Component, OnInit } from "@angular/core";
+import { SdsStepComponent, SdsStepper } from "@gsa-sam/sam-formly";
 
 
 @Component({
-  selector: `uswds-custom-stepper-demo`,
-  templateUrl: './uswds-custom-stepper.component.html',
+  selector: `uneven-steps-custom-stepper-demo`,
+  templateUrl: './uneven-steps-custom-stepper.component.html',
   providers: [
-    {provide: SdsStepper, useExisting: USWDSCustomStepperComponent}
+    {provide: SdsStepper, useExisting: UnevenStepsCustomStepperComponent}
   ]
 })
-export class USWDSCustomStepperComponent extends SdsStepper implements AfterContentInit {
+export class UnevenStepsCustomStepperComponent extends SdsStepper implements AfterContentInit {
 
   stepLabels = [];
   currentStepIndex = 0;
@@ -24,9 +24,10 @@ export class USWDSCustomStepperComponent extends SdsStepper implements AfterCont
       return {...stepTemplate, label: stepTemplate.text};
     });
   }
-  async changeStep(stepId: string, incrementor?: 1 | -1) {
-    await super.changeStep(stepId, incrementor);
 
+  async changeStep(stepId: string, incrementor?: 1 | -1) {
+    const startingStep: SdsStepComponent = this.flatSteps.find(step => step.id === stepId)
+    await super.changeStep(stepId, incrementor);
     //NOTE: After this point, this.selectedStep is the step that is being rendered for the user, i.e. the next/prev step
 
     // Afterwards, update the indicator at the top to show the expected completion percent
@@ -43,20 +44,13 @@ export class USWDSCustomStepperComponent extends SdsStepper implements AfterCont
         }
       } );
 
-      /**
-       * With index of first child being 0, need to increment both the child's
-       * index and total length to ensure getting a valid percent.
-       *
-       * For example, with one sub-step step indicator should show 50% completion
-       * Without incrementing input values you'd get 0 / 1 = 0%
-       * With incrementing you'd get 1 / 2 = 50%
-       */
-      this.stepLabels[mainStepIndex].completionPercent = Math.round(
-        (
-          (subStepIndex + 1) /
-          (this.stepTemplates.get(mainStepIndex).children.length + 1)
-        ) * 100
-      );
+      if(incrementor === 1){
+        this.stepLabels[mainStepIndex].completionPercent = startingStep.fieldConfig.templateOptions.completedValue ?? 0;
+      } else {
+        // Need to get previous step to know what it's completedValue is.
+        const currentFlatStepsIndex = this.flatSteps.findIndex(step => step.id === this.selectedStep.id);
+        this.stepLabels[mainStepIndex].completionPercent = this.flatSteps[currentFlatStepsIndex - 1].fieldConfig.templateOptions.completedValue ?? 0;
+      }
     // If main step
     } else {
       this.stepLabels[mainStepIndex].completionPercent = 0;
@@ -70,6 +64,4 @@ export class USWDSCustomStepperComponent extends SdsStepper implements AfterCont
   getSubStepIndex(mainStep: SdsStepComponent): number {
     return mainStep.children.toArray().indexOf(this.selectedStep);
   }
-
-
 }

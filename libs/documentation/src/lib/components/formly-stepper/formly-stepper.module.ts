@@ -10,21 +10,21 @@ import { StepperAdvancedDemoComponent } from './demos/advanced/stepper-advanced.
 import { StepperAdvancedModule } from './demos/advanced/stepper-advanced.module';
 import { UswdsStepperComponent } from './demos/uswds-stepper/uswds-stepper.component';
 import { UswdsStepperModule } from './demos/uswds-stepper/uswds-stepper.module';
-import { OptionalStepsComponent } from './demos/optional-steps/optional-steps.component';
-import { OptionalStepsModule } from './demos/optional-steps/optional-steps.module';
+import { UnevenStepsStepperComponent } from './demos/uneven-steps/uneven-steps-stepper.component'
+import { UnevenStepsStepperModule } from './demos/uneven-steps/uneven-steps-stepper.module'
 
 declare var require: any;
 const DEMOS = {
-  optionalStepsStepper: {
-    title: 'USWDS Step Indicator - Optional Steps',
-    type: OptionalStepsComponent,
-    code: require('!!raw-loader!./demos/optional-steps/optional-steps.component'),
-    markup: require('!!raw-loader!./demos/optional-steps/optional-steps.component.html'),
-    module: require('!!raw-loader!./demos/optional-steps/optional-steps.module.ts'),
-    path: 'libs/documentation/src/lib/components/formly-stepper/demos/optional-steps',
+  unevenStepsStepper: {
+    title: 'USWDS Step Indicator - Uneven Steps',
+    type: UnevenStepsStepperComponent,
+    code: require('!!raw-loader!./demos/uneven-steps/uneven-steps-stepper.component'),
+    markup: require('!!raw-loader!./demos/uneven-steps/uneven-steps-stepper.component.html'),
+    module: require('!!raw-loader!./demos/uneven-steps/uneven-steps-stepper.module.ts'),
+    path: 'libs/documentation/src/lib/components/formly-stepper/demos/uneven-steps',
     files: [
-      {name: 'optional-steps-custom-stepper.component.ts', source: require('!!raw-loader!./demos/optional-steps/optional-steps-custom-stepper.component')},
-      {name: 'optional-steps-custom-stepper.component.html', source: require('!!raw-loader!./demos/optional-steps/optional-steps-custom-stepper.component.html')}
+      {name: 'uneven-steps-custom-stepper.component.ts', source: require('!!raw-loader!./demos/uneven-steps/uneven-steps-custom-stepper.component')},
+      {name: 'uneven-steps-custom-stepper.component.html', source: require('!!raw-loader!./demos/uneven-steps/uneven-steps-custom-stepper.component.html')}
     ]
   },
   advanced: {
@@ -86,7 +86,7 @@ export const ROUTES = [
     DocumentationComponentsSharedModule,
     StepperAdvancedModule,
     UswdsStepperModule,
-    OptionalStepsModule
+    UnevenStepsStepperModule
   ]
 })
 export class StepperModule {
