@@ -2,7 +2,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TestBed, ComponentFixture, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { AfterViewInit, Component, TemplateRef, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule, FormlyForm } from '@ngx-formly/core';
 import { FormlySelectModule } from '@ngx-formly/core/select';
@@ -20,7 +20,7 @@ export function createGenericTestComponent<T>(html: string, type: { new(...args:
 }
 
 
-let testComponent, customTemplate;
+let testComponentInputs;
 
 describe('Formly Field checkbox Component', () => {
     beforeEach(() => {
@@ -44,7 +44,7 @@ describe('Formly Field checkbox Component', () => {
 
     describe('options', () => {
         beforeEach(() => {
-            testComponent = {
+            testComponentInputs = {
                 form: new FormGroup({}),
                 options: {},
                 model: {},
@@ -52,7 +52,7 @@ describe('Formly Field checkbox Component', () => {
         });
 
         it('should correctly bind to a static array of data', () => {
-            testComponent.fields = [{
+            testComponentInputs.fields = [{
 
                 key: 'textcheckbox',
                 type: 'checkbox',
@@ -77,16 +77,11 @@ describe('Formly Field checkbox Component', () => {
 });
 
 @Component({ selector: 'formly-form-test', template: '', entryComponents: [] })
-class TestComponent implements AfterViewInit{
+class TestComponent{
     @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;
-    @ViewChild('custom') customTemplate: TemplateRef<any>;
 
-    fields = testComponent.fields;
-    form: FormGroup = testComponent.form;
-    model = testComponent.model || {};
-    options = testComponent.options;
-
-    ngAfterViewInit(){
-      this.fields[0].templateOptions.template = this.customTemplate;
-    }
+    fields = testComponentInputs.fields;
+    form: FormGroup = testComponentInputs.form;
+    model = testComponentInputs.model || {};
+    options = testComponentInputs.options;
 }
