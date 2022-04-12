@@ -74,42 +74,6 @@ describe('Formly Field checkbox Component', () => {
 
     });
 
-    describe('custom template', () => {
-      beforeEach(() => {
-        testComponent = {
-            form: new FormGroup({}),
-            options: {},
-            model: {},
-        };
-    });
-      fit('should display the template if provided', () => {
-        testComponent.fields = [{
-
-          key: 'textcheckbox',
-          type: 'checkbox',
-          templateOptions: {
-              label: 'Formly Checkbox',
-              option: { label: 'Option A', value: 'a' }
-          }
-
-      }];
-
-      const fixture = createTestComponent(`
-        <formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>
-        <ng-template #custom><i>custom text</i></ng-template>
-      `)
-      const component = fixture.componentInstance;
-      // testComponent.fields[0].templateOptions.tempalte = component.customTemplate;
-
-      fixture.detectChanges();
-      const customContent = fixture.debugElement.nativeElement
-      console.log('html', customContent)
-      // console.log('form', component.formlyForm.model)
-      expect(component.customTemplate).toBeTruthy();
-      // expect(customContent).toBeTruthy();
-      })
-    })
-
 });
 
 @Component({ selector: 'formly-form-test', template: '', entryComponents: [] })

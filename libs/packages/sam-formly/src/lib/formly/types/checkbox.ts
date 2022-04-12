@@ -20,7 +20,6 @@ export class FormlyFieldCheckboxComponent extends FieldType implements AfterView
     const passedIn = this.to.template;
     setTimeout(()=>{
       this.displayedTemplate = passedIn ? passedIn : this.defaultTemplate;
-      console.log(this.defaultTemplate.elementRef)
     })
   }
 }

@@ -9,7 +9,6 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 export class CheckboxTemplate implements AfterViewInit{
   constructor(){
-    // console.log(this.checkboxTemplate.elementRef)
   }
 
   @ViewChild('checkboxTemplate') checkboxTemplate : TemplateRef<any>
