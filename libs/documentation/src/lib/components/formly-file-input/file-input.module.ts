@@ -12,6 +12,8 @@ import { TableFileInputModule } from './demos/table-file-input/table-file-input.
 import { TableFileInputComponent } from './demos/table-file-input/table-file-input.component';
 import { FileInputApiComponent } from './demos/file-input-api/file-input-api.component';
 import { FileInputApiModule } from './demos/file-input-api/file-input-api.module';
+import { FileInputValidationComponent } from './demos/file-input-validation/file-input-validation.component';
+import { FileInputValidationModule } from './demos/file-input-validation/file-input-validation.module';
 
 declare var require: any;
 const DEMOS = {
@@ -38,6 +40,14 @@ const DEMOS = {
     markup: require('!!raw-loader!./demos/file-input-api/file-input-api.component.html'),
     module: require('!!raw-loader!./demos/file-input-api/file-input-api.module.ts'),
     path: 'libs/documentation/src/lib/components/formly-file-input/demos/file-input-api',
+  },
+  validations: {
+    title: 'File Input Validations',
+    type: FileInputValidationComponent,
+    code: require('!!raw-loader!./demos/file-input-validation/file-input-validation.component'),
+    markup: require('!!raw-loader!./demos/file-input-validation/file-input-validation.component.html'),
+    module: require('!!raw-loader!./demos/file-input-validation/file-input-validation.module.ts'),
+    path: 'libs/documentation/src/lib/components/formly-file-input/demos/file-input-validation',
   }
 };
 
@@ -72,6 +82,7 @@ export const ROUTES = [
     BasicFileInputModule,
     TableFileInputModule,
     FileInputApiModule,
+    FileInputValidationModule
   ]
 })
 export class FileInputModule {

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { AbstractControl } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { SdsFormlyTypes } from '@gsa-sam/sam-formly';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
@@ -17,14 +17,6 @@ export class BasicFileInputComponent {
         label: 'Basic File Input',
         description: 'Accepts single file',
         hideOptional: true,
-      },
-      validation: {
-        messages: {
-          fileSizeLimit: 'File must be below 100 kb'
-        }
-      },
-      validators: {
-        fileSizeLimit: this.fileSizeLimitValidator
       }
     },
     {
@@ -50,22 +42,10 @@ export class BasicFileInputComponent {
     }
   ];
 
+  form = new FormGroup({});
+  model: any = {};
+
   onModelChange($event: any) {
     console.log('model', $event);
-  }
-
-  fileSizeLimitValidator(control: AbstractControl) {
-    if (!control.value) {
-      return true;
-    }
-
-    let isValid = true;
-    (control.value as File[]).forEach(file => {
-      if (file.size > 100000) {
-        isValid = false;
-      }
-    });
-
-    return isValid;
   }
 }
