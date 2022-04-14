@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { AbstractControl, FormGroup } from '@angular/forms';
 import { SdsFormlyTypes } from '@gsa-sam/sam-formly';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
@@ -21,6 +21,16 @@ export class TableFileInputComponent {
         clearFilesOnAdd: false,
         tableDisplay: true,
         displayFileInfo: false,
+        required: true,
+        acceptFileType: '.bmp,.gif,.jpeg,.jpg,.tex,.xls,.xlsx,.doc,.docx,.docx,.odt,.txt,.pdf,.png,.pptx,.ppt,.rtf,.AVI,.mov,.mpg,.mpeg,.mp4,.wmv,.flv,.f4v'
+      },
+      validation: {
+        messages: {
+          fileSizeLimit: 'File must be below 1 kb'
+        }
+      },
+      validators: {
+        fileSizeLimit: this.fileSizeLimitValidator,
       },
       fieldArray: {
         type: SdsFormlyTypes.TABLE,
@@ -59,8 +69,27 @@ export class TableFileInputComponent {
   }
 
   removeFile(file: File, field: FormlyFieldConfig) {
-    const tableFormControl = field.formControl;
-    const newFiles = tableFormControl.value.filter((value: File) => value != file);
-    tableFormControl.setValue(newFiles);
+    const tableFormGroup = field.formControl;
+    const newFiles = tableFormGroup.value['tableFilesInput'].filter((value: File) => value != file);
+    tableFormGroup.get('tableFilesInput').setValue(newFiles);
+  }
+
+  submit() {
+    return;
+  }
+
+  fileSizeLimitValidator(control: AbstractControl) {
+    if (!control.value) {
+      return true;
+    }
+
+    let isValid = true;
+    (control.value as File[]).forEach(file => {
+      if (file.size > 1000) {
+        isValid = false;
+      }
+    });
+
+    return isValid;
   }
 }

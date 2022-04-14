@@ -1,2 +1,5 @@
-<formly-form [fields]="fields" [form]="form" (modelChange)="onModelChange($event)"></formly-form>
+<form [formGroup]=form (ngSubmit)=submit()>
+  <formly-form [fields]="fields" [form]="form" (modelChange)="onModelChange($event)"></formly-form>
+  <button type="submit">Submit</button>
+</form>
 
