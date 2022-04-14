@@ -29,8 +29,8 @@ import { IconModule } from '@gsa-sam/ngx-uswds-icons';
     RouterModule.forRoot(ROUTES, { scrollPositionRestoration: 'enabled', relativeLinkResolution: 'legacy', anchorScrolling: 'enabled' }),
     FormsModule,
     MarkdownModule.forRoot(),
+    IconModule,
     NgxBootstrapIconsModule.pick({github}),
-    IconModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: PathLocationStrategy },

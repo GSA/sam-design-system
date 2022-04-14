@@ -1,5 +1,6 @@
 @import "~@gsa-sam/sam-styles/src/stylesheets/theme/_styles";
-@import "~uswds/src/stylesheets/packages/_required";
+@import "node_modules/uswds/src/stylesheets/packages/_required.scss";
+
 ::ng-deep {
     sds-accordion-next {
         sds-accordion-title {
