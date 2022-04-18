@@ -18,7 +18,7 @@ export interface AlertData {
   templateUrl: './alert-template.html',
 })
 export class AlertComponent {
-  constructor(@Inject(SDS_DIALOG_DATA) public data: AlertData) { }
+  constructor(@Inject(SDS_DIALOG_DATA) public data: AlertData) {}
 }
 
 /*
@@ -101,7 +101,7 @@ export class DialogAlert {
     },
   ];
 
-  constructor(public dialog: SdsDialogService) { }
+  constructor(public dialog: SdsDialogService) {}
 
   openAlert(title, content, alert, size) {
     this.dialog.open(AlertComponent, {

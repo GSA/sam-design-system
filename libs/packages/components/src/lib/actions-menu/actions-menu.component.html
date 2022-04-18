@@ -11,7 +11,13 @@
   <!-- Menu header (optional) -->
   <sds-menu-header>Actions</sds-menu-header>
   <!-- Menu items -->
-  <button *ngFor="let button of model.actions" (click)="clicks.emit(button.id)" sds-menu-item>
-    {{ button.text }}
-  </button>
+  <ng-container *ngFor="let button of model.actions">
+    <button *ngIf="button.mode !== actionModes.HIDDEN" [disabled]="button.mode === actionModes.DISABLED"
+      [ngClass]="{'usa-button--disabled': button.mode === actionModes.DISABLED}" (click)="clicks.emit(button.id)"
+      sds-menu-item>
+      {{ button.text }}
+    </button>
+  </ng-container>
+
+
 </sds-menu>

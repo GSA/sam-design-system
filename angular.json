@@ -150,12 +150,12 @@
             "styles": [
               {
                 "input": "apps/sam-design-system-site/src/uswds-styles.scss",
-                "inject": true,
+                "inject": false,
                 "bundleName": "uswds"
               },
               {
                 "input": "apps/sam-design-system-site/src/sds-styles.scss",
-                "inject": true,
+                "inject": false,
                 "bundleName": "sds"
               },
               "node_modules/highlight.js/styles/vs.css"
@@ -164,7 +164,14 @@
               "node_modules/marked/lib/marked.js",
               "node_modules/accessible-html5-video-player/js/px-video.js",
               "node_modules/accessible-html5-video-player/js/strings.js"
-            ]
+            ],
+            "aot": false,
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -190,7 +197,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",

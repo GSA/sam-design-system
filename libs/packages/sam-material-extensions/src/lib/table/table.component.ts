@@ -31,6 +31,8 @@ import { BehaviorSubject } from 'rxjs';
 export interface SdsRowConfig {
   displayedColumns?: string[];
   expandOnClick?: boolean;
+  highlightOnHover?: boolean;
+  rowClickNavigate?: string;
 }
 
 export interface SdsHeaderRowConfig extends SdsRowConfig {
@@ -48,6 +50,8 @@ export interface SdsFooterRowConfig extends SdsRowConfig {
 export class SdsTableRowComponent {
   @Input() displayedColumns: Array<string>;
   @Input() expandOnClick = false;
+  @Input() highlightOnHover = false;
+  @Input() rowClickNavigate: string;
 }
 
 @Component({
@@ -262,6 +266,8 @@ export class SdsTableComponent
   ngAfterContentInit() {
     this.rowConfig.displayedColumns = this.sdsTableRowComponent.displayedColumns;
     this.rowConfig.expandOnClick = this.sdsTableRowComponent.expandOnClick;
+    this.rowConfig.highlightOnHover = this.sdsTableRowComponent.highlightOnHover;
+    this.rowConfig.rowClickNavigate = this.sdsTableRowComponent.rowClickNavigate;
 
     if (this.sdsTableHeaderRowComponent) {
       this.headerRowConfig.displayedColumns = this.sdsTableHeaderRowComponent.displayedColumns;

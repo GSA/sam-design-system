@@ -159,6 +159,11 @@ import {
 } from './components/formly-tabs/formly-tabs.module';
 
 import {
+  ROUTES as FORMLY_RICH_TEXT_EDITOR_ROUTES,
+  FormlyRichTextEditorModule,
+} from './components/formly-rich-text-editor/formly-rich-text-editor.module';
+
+import {
   ROUTES as TOASTS_ROUTES,
   ToastsModule,
 } from './components/toasts/toasts.module';
@@ -235,6 +240,11 @@ import {
   ExpiresModule
 } from './components/expires/expires.module';
 
+import {
+  ROUTES as RICH_TEXT_ROUTES,
+  RichTextModule
+} from './components/rich-text/rich-text.module';
+
 import { DocumentationSharedModule } from './shared';
 import { OverviewComponent } from './pages/overview/overview.component';
 import { FormlyFormsModule } from './pages/formly-forms/formly-forms.module';
@@ -277,6 +287,7 @@ export const ROUTES: Routes = [
   { path: 'components/tree-table', children: TREE_TABLE_ROUTES },
   { path: 'components/slide-out', children: SLIDE_OUT_ROUTES },
   { path: 'components/expires', children: EXPIRES_ROUTES},
+  { path: 'components/rich-text', children: RICH_TEXT_ROUTES},
 
   // Formly
   { path: 'components/formly-input', children: INPUT_ROUTES },
@@ -284,6 +295,7 @@ export const ROUTES: Routes = [
   { path: 'components/formly-checkbox', children: CHECKBOX_ROUTES },
   { path: 'components/formly-multicheckbox', children: MULTI_CHECKBOX_ROUTES },
   { path: 'components/formly-radio', children: RADIO_ROUTES },
+  { path: 'components/formly-rich-text-editor', children: FORMLY_RICH_TEXT_EDITOR_ROUTES },
   { path: 'components/formly-select', children: SELECT_ROUTES },
   { path: 'components/formly-stepper', children: FORMLY_STEPPER_ROUTES },
 
@@ -383,6 +395,8 @@ export const ROUTES: Routes = [
     FormlyTabsModule,
     TreeTableModule,
     ExpiresModule,
+    RichTextModule,
+    FormlyRichTextEditorModule,
     NgxBootstrapIconsModule.pick(
       Object.assign(
         _.cloneDeep(allIcons),

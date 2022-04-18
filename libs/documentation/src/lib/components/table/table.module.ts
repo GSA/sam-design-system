@@ -22,6 +22,8 @@ import { TableFullComponent } from './demos/full/full.component';
 import { TableFullModule } from './demos/full/full.module';
 import { TablePaginationComponent } from './demos/pagination/pagination.component';
 import { TablePaginationModule } from './demos/pagination/pagination.module';
+import { TableHighlightComponent } from './demos/highlight-and-click/highlight.component';
+import { TableHighlightModule } from './demos/highlight-and-click/highlight.module';
 
 export declare var require: any;
 
@@ -74,6 +76,14 @@ const DEMOS = {
     markup: require('!!raw-loader!./demos/full/full.component.html'), // Template Tab Content
     path: 'libs/documentation/src/lib/components/table/demos/full', // Path to demo for the Github link
   },
+  highlight: {
+    title: 'Highlighting and click event', // Title
+    type: TableHighlightComponent, // Component
+    code: require('!!raw-loader!./demos/highlight-and-click/highlight.component'), // Source Tab Content
+    module: require('!!raw-loader!./demos/highlight-and-click/highlight.module'), // Module Tab Content
+    markup: require('!!raw-loader!./demos/highlight-and-click/highlight.component.html'), // Template Tab Content
+    path: 'libs/documentation/src/lib/components/table/demos/highlight-and-click', // Path to demo for the Github link
+  },
 };
 
 export const ROUTES = [
@@ -113,6 +123,7 @@ export const ROUTES = [
     TableStickyModule,
     TableFullModule,
     TablePaginationModule,
+    TableHighlightModule
   ],
 })
 export class TableModule {
