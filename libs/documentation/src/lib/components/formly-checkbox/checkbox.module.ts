@@ -8,6 +8,8 @@ import { DocumentationTemplatePage } from '../shared/template-page/template.comp
 import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { CheckboxBasicModule } from './demos/basic/checkbox-basic.module';
+import { CheckboxTemplate } from './demos/template/checkbox-template.component';
+import { CheckboxTemplateModule } from './demos/template/checkbox-template.module';
 
 declare var require: any;
 const DEMOS = {
@@ -17,6 +19,13 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/basic/checkbox-basic.component'),
     markup: require('!!raw-loader!./demos/basic/checkbox-basic.component.html'),
     path: 'libs/documentation/src/lib/components/formly-checkbox/demos/basic'
+  },
+  template: {
+    title: 'Template Form Checkbox',
+    type: CheckboxTemplate,
+    code: require('!!raw-loader!./demos/template/checkbox-template.component'),
+    markup: require('!!raw-loader!./demos/template/checkbox-template.component.html'),
+    path: 'libs/documentation/src/lib/components/formly-checkbox/demos/template'
   }
 };
 
@@ -48,7 +57,8 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    CheckboxBasicModule
+    CheckboxBasicModule,
+    CheckboxTemplateModule
   ]
 })
 export class CheckboxModule {
