@@ -4,13 +4,13 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
   selector: 'gsa-sam-uswds-stepper',
-  templateUrl: './uswds-stepper.component.html',
+  templateUrl: './uneven-steps-stepper.component.html',
 })
-export class UswdsStepperComponent {
+export class UnevenStepsStepperComponent {
 
 
   stepOne: FormlyFieldConfig = {
-    key: 'enitityOne',
+    key: 'entityOne',
     fieldGroup: [
       {
         key: 'name',
@@ -36,17 +36,19 @@ export class UswdsStepperComponent {
             showError: false,
           }
       },
-    ]
+    ],
+    templateOptions: {
+      completedValue: 75
+    }
   };
-
-  stepOnePointTwoFive: FormlyFieldConfig = {
-    key: 'enitityOnePointTwoFive',
+  stepOneSubstepOne: FormlyFieldConfig = {
+    key: 'entityOneSubstepOne',
     fieldGroup: [
       {
         key: 'name',
         type: 'input',
         templateOptions: {
-          label: 'Entity Name - PointTwoFive',
+          label: 'Entity Name - Substep One',
           placeholder: 'eg: Acme Corporation',
           description: 'Enter the name of your entity.',
           required: true,
@@ -66,17 +68,19 @@ export class UswdsStepperComponent {
             showError: false,
           }
       },
-    ]
+    ],
+    templateOptions: {
+      completedValue: 85
+    }
   };
-
-  stepOnePointFive: FormlyFieldConfig = {
-    key: 'enitityOnePointFive',
+  stepOneSubstepTwo: FormlyFieldConfig = {
+    key: 'entityOneSubstepTwo',
     fieldGroup: [
       {
         key: 'name',
         type: 'input',
         templateOptions: {
-          label: 'Entity Name - PointFive',
+          label: 'Entity Name - Substep Two',
           placeholder: 'eg: Acme Corporation',
           description: 'Enter the name of your entity.',
           required: true,
@@ -96,37 +100,10 @@ export class UswdsStepperComponent {
             showError: false,
           }
       },
-    ]
-  };
-
-  stepOnePointSevenFive: FormlyFieldConfig = {
-    key: 'enitityOnePointSevenFive',
-    fieldGroup: [
-      {
-        key: 'name',
-        type: 'input',
-        templateOptions: {
-          label: 'Entity Name - PointSevenFive',
-          placeholder: 'eg: Acme Corporation',
-          description: 'Enter the name of your entity.',
-          required: true,
-        },
-        modelOptions: {
-          updateOn: 'blur'
-        }
-      },
-      {
-          className: "desktop:grid-col-12 tablet:grid-col-12",
-          type: "input",
-          key: "title",
-
-          templateOptions: {
-            label: "Program or Project Title",
-            required: true,
-            showError: false,
-          }
-      },
-    ]
+    ],
+    templateOptions: {
+      completedValue: 100
+    }
   };
 
   stepTwo =  {

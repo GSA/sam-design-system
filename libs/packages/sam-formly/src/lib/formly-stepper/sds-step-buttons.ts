@@ -172,13 +172,8 @@ export class SdsStepperUSWDSNavDirective implements OnInit, OnDestroy {
       this._stepper.changeStep(nextStep.id);
     });
 
-    const sdsStepChange = this._stepper.stepChange.subscribe(newStep => {
-      const stepIndex = this._el.steps.findIndex(usaStep => usaStep.label === newStep.text);
-      this._el.currentStep = stepIndex;
-    });
 
     this.stepChangeSubscriptions.add(usaStepChange);
-    this.stepChangeSubscriptions.add(sdsStepChange);
   }
 
   ngOnDestroy() {
