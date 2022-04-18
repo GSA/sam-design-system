@@ -1,5 +1,5 @@
 import { AfterContentInit, Component, Input} from "@angular/core";
-import { SdsStepComponent, SdsStepper } from "../../../../../../../packages/sam-formly/src/lib/formly-stepper/sds-stepper";
+import { SdsStepComponent, SdsStepper } from '@gsa-sam/sam-formly';
 
 
 @Component({
