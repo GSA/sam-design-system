@@ -1,17 +1,22 @@
 <button class="usa-button margin-bottom-3" (click)="toggleLinearMode()">Toggle Linear Mode</button>
 
-<custom-stepper-demo #stepper [queryParamKey]="'sdsAdvancedStepper'" [model]="model"
-  [stepValidityMap]="stepValidityMap" (stepChange)="onStepChange($event)"
-  [linear]="linear"
-  (saveData)="onSaveData($event)"
->
+<custom-stepper-demo #stepper [queryParamKey]="'sdsAdvancedStepper'" [model]="model" [stepValidityMap]="stepValidityMap"
+  (stepChange)="onStepChange($event)" [linear]="linear" (saveData)="onSaveData($event)">
 
-  <sds-step id="welcome" text="Welcome" 
-    [stepTemplate]="gatherInformation"
+  <sds-step id="welcome" text="Welcome" [stepTemplate]="gatherInformation"
     [stepValidationFn]="stepMap.welcome.validationFn">
   </sds-step>
 
+
   <sds-step id="entityDetails" text="Entity Details" [editable]="false">
+
+    <sds-step id="persission" text="persission" [fieldConfig]="stepMap.persission.fieldConfig">
+      <h1 sdsStepHeader class="margin-top-0">
+        persission
+        <hr>
+      </h1>
+    </sds-step>
+
     <sds-step id="registrationPurpose" text="Purpose of Registration"
       [fieldConfig]="stepMap.registrationPurpose.fieldConfig">
       <h1 sdsStepHeader class="margin-top-0">
@@ -20,26 +25,23 @@
       </h1>
     </sds-step>
 
-    <sds-step id="entityInformation" text="Entity Information"
-      [fieldConfig]="stepMap.enitityInformation.fieldConfig">
+    <sds-step id="entityInformation" text="Entity Information" [fieldConfig]="stepMap.enitityInformation.fieldConfig">
       <h1 sdsStepHeader class="margin-top-0">
         Enter Entity Information
         <hr>
       </h1>
     </sds-step>
 
-    <sds-step id="reportDetails" text="Report Details"
-    [fieldConfig]="stepMap.reportDetails.fieldConfig">
-    <h1 sdsStepHeader class="margin-top-0">
-      Report Details
-      <hr>
-    </h1>
-  </sds-step>
+    <sds-step id="reportDetails" text="Report Details" [fieldConfig]="stepMap.reportDetails.fieldConfig">
+      <h1 sdsStepHeader class="margin-top-0">
+        Report Details
+        <hr>
+      </h1>
+    </sds-step>
   </sds-step>
 
 
-  <sds-step id="taxPayerInfoForm" text="Taxpayer Details"
-    [fieldConfig]="stepMap.taxpayerInformation.fieldConfig">
+  <sds-step id="taxPayerInfoForm" text="Taxpayer Details" [fieldConfig]="stepMap.taxpayerInformation.fieldConfig">
     <h1 sdsStepHeader class="margin-top-0">
       Enter Taxpayer Details
       <hr>
@@ -47,14 +49,11 @@
   </sds-step>
 
 
-  <sds-step id="addSubawardee" text="Add Subawardee"
-    [stepTemplate]="subawardeeStep" 
+  <sds-step id="addSubawardee" text="Add Subawardee" [stepTemplate]="subawardeeStep"
     [stepValidationFn]="stepMap.subawardee.validationFn">
   </sds-step>
 
-  <sds-step id="review" text="Review and Submit"
-    [isReview]="true"
-    [stepTemplate]="reviewTemplate" 
+  <sds-step id="review" text="Review and Submit" [isReview]="true" [stepTemplate]="reviewTemplate"
     [stepValidationFn]="stepMap.review.validationFn">
   </sds-step>
 

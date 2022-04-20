@@ -22,6 +22,9 @@ export class StepperAdvancedDemoComponent {
     welcome: {
       validationFn: () => true,
     },
+    persission: {
+      fieldConfig: this.stepperAdvancedService.getPermission()
+    },
     registrationPurpose: {
       fieldConfig: this.stepperAdvancedService.getRegistrationPurpose(),
     },
@@ -59,7 +62,7 @@ export class StepperAdvancedDemoComponent {
   reinitializeComponents = false;
   constructor(
     private stepperAdvancedService: StepperAdvancedService,
-  ) {}
+  ) { }
 
   onStepChange($event) {
     this.currentStepId = $event.id;
@@ -69,7 +72,7 @@ export class StepperAdvancedDemoComponent {
     }
   }
 
-  onSaveData(data: {model: any, metadata: any}) {
+  onSaveData(data: { model: any, metadata: any }) {
     console.log(data);
   }
 

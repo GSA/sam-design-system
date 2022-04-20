@@ -6,6 +6,50 @@ import { FormlyFieldConfig } from "@ngx-formly/core";
 @Injectable()
 export class StepperAdvancedService {
 
+
+  getPermission(): FormlyFieldConfig {
+    return {
+      key: 'permission',
+      fieldGroupClassName: 'grid-row',
+      fieldGroup: [
+        {
+          key: 'permission',
+          //template: 'what'
+          template: '<br /><h4><b>what permission</b></h4></br> Select the specfific'
+        },
+        {
+          key: 'contractOpp',
+          type: 'multicheckbox',
+          className: 'desktop: grid-col-12 tablet: grid-col-12',
+          templateOptions: {
+            label: 'contract opp',
+            group: 'panel',
+
+            options: [
+              {
+                key: 'read-public',
+                value: 'Read Public'
+              },
+              {
+                key: 'sensitive',
+                value: 'sensitive'
+              },
+              {
+                key: 'write',
+                value: 'write public'
+              },
+              {
+                key: 'write-sens',
+                value: 'w-sens'
+              }
+
+            ]
+          }
+        }
+      ]
+    }
+  }
+
   getRegistrationPurpose(): FormlyFieldConfig {
     return {
       key: 'purposeOfRegistration',
