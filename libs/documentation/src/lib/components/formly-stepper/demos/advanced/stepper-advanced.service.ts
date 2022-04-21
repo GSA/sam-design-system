@@ -61,16 +61,16 @@ export class StepperAdvancedService {
                 value: 'Read Public'
               },
               {
-                key: 'sensitive',
-                value: 'sensitive'
+                key: 'read-sensitive',
+                value: 'Read sensitive'
               },
               {
                 key: 'write',
-                value: 'write public'
+                value: 'Write public'
               },
               {
-                key: 'write-sens',
-                value: 'w-sens'
+                key: 'write-sensitive',
+                value: 'Write sensitive'
               }
 
             ]

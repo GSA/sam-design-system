@@ -1,6 +1,6 @@
 <fieldset class="usa-fieldset">
   <legend class="usa-sr-only">{{ to.label }}</legend>
-  <ul class="sds-list--no-bullets">
+  <ul class="sds-list--no-bullets" [ngClass]="to.labelClass ? to.labelClass : ''">
     <li class="grid-row" *ngIf="to.selectAllOption">
       <div>
         <input [id]="id + '_Select'" type="checkbox" class="usa-checkbox__input" value="value" [checked]="allComplete"
