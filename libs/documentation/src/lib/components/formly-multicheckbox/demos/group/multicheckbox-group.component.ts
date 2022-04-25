@@ -14,43 +14,35 @@ export class MultiCheckboxGroup {
 
   fields = [
     {
-      key: 'group',
+      key: 'entity',
       type: 'multicheckbox',
       templateOptions: {
         label: 'Grouped multi-checkbox',
-        options: [
-          {
-            key: 'POR',
-            value: 'Purpose of Registration',
-            group: 'Entities',
-          },
-
-          {
-            key: 'RD',
-            value: 'Report Data',
-            group: 'Contract Opportunities',
-          },
-          {
-            key: 'DE1',
-            value: 'Data entry',
-            group: 'Contract Opportunities',
-          },
-          {
-            key: 'LD',
-            value: 'Listing Data',
-            group: 'Assistance Listings',
-          },
-          {
-            key: 'LBN',
-            value: 'Legal Business Name',
-            group: 'Entities',
-          },
-          {
-            key: 'LF',
-            value: 'Listing File',
-            group: 'Assistance Listings',
-          },
-        ],
+        groupOptions: {
+          'Contract Opportunities': [
+            {
+              key: 'DE1',
+              value: 'Data entry',
+              tagText: 'Tag',
+            },
+            {
+              key: 'LD',
+              value: 'Listing Data',
+            },
+          ],
+          Entities: [
+            {
+              key: 'POR',
+              value: 'Purpose of Registration',
+            },
+            {
+              key: 'LBN',
+              value: 'Legal Business Name',
+              tooltipText:
+                '<b>Assistance Listing</b><u>Tool tip with style</u>',
+            },
+          ],
+        },
       },
     },
   ];
