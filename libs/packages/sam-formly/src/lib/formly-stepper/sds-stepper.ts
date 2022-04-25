@@ -378,13 +378,17 @@ export class SdsStepper {
    *  given. When a value of -1 is provided, then the selected step will be the step
    *  previous to the provided step
    */
-  async changeStep(stepId: string, incrementor?: 1 | -1) {
+  async changeStep(stepId: string, incrementor?: number) {
+
     this.flatSteps = this.getFlatSteps(this.stepTemplates);
     let stepIndex = this.flatSteps.findIndex(step => step.id === stepId);
     stepIndex = stepIndex === -1 ? 0 : stepIndex;
 
     if (incrementor) {
       stepIndex = stepIndex + incrementor;
+      if(stepIndex > this.flatSteps.length){
+        throw Error(`StepIndex of ${stepIndex} is greater than the number of steps. Check that you are passing in a sensible incrementor.)`)
+      }
     }
 
     const step = this.flatSteps[stepIndex];

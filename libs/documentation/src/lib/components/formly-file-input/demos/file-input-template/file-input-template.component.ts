@@ -1,38 +1,31 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { AbstractControl, FormGroup } from '@angular/forms';
 import { SdsFormlyTypes } from '@gsa-sam/sam-formly';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-  selector: 'gsa-sam-table-file-input',
-  templateUrl: './table-file-input.component.html',
+  selector: 'gsa-sam-file-input-template',
+  templateUrl: './file-input-template.component.html',
 })
-export class TableFileInputComponent {
-
+export class FileInputTemplateComponent implements AfterViewInit {
+  @ViewChild('replacementTemplate') replacementTemplate: TemplateRef<any>;
   fields: FormlyFieldConfig[] = [
     {
-      key: 'tableFilesInput',
+      key: 'custonTableFilesInput',
       type: SdsFormlyTypes.FILEINPUT, // Enum maps to 'fileinput' string
       templateOptions: {
-        label: 'Table File Input',
+        label: 'Custom Table File Input',
         description: 'Accepts multiple files and displays in table',
         multiple: true,
         hideOptional: true,
         clearFilesOnAdd: false,
         tableDisplay: true,
         displayFileInfo: false,
-        required: true,
         acceptFileType: '.bmp,.gif,.jpeg,.jpg,.tex,.xls,.xlsx,.doc,.docx,.docx,.odt,.txt,.pdf,.png,.pptx,.ppt,.rtf,.AVI,.mov,.mpg,.mpeg,.mp4,.wmv,.flv,.f4v',
-      },
-      validation: {
-        messages: {
-          fileSizeLimit: 'File must be below 1 kb'
-        }
-      },
-      validators: {
-        fileSizeLimit: this.fileSizeLimitValidator,
+        template: null
       },
       fieldArray: {
+        type: SdsFormlyTypes.TABLE,
         templateOptions: {
           name: 'Demo Table',
           noDataText: 'No Attachments',
@@ -45,7 +38,7 @@ export class TableFileInputComponent {
         }
       }
     },
-  ];
+  ]
 
   form = new FormGroup({});
 
@@ -70,9 +63,14 @@ export class TableFileInputComponent {
   removeFile(file: File, field: FormlyFieldConfig) {
     const tableFormGroup = field.formControl;
     // Needed because passing form into formly-form a second time strips that object and returns just the array
-    const fileArray = tableFormGroup.value['tableFilesInput'];
+    const fileArray = Array.isArray(tableFormGroup.value) ? tableFormGroup.value : tableFormGroup.value['tableFilesInput'];
     const newFiles = fileArray.filter((value: File) => value != file);
-    let fc: AbstractControl = tableFormGroup.get('tableFilesInput');;
+    let fc: AbstractControl;
+    if(tableFormGroup instanceof FormGroup){
+      fc = tableFormGroup.get('tableFilesInput');
+    } else {
+      fc = tableFormGroup;
+    }
     fc.setValue(newFiles);
   }
 
@@ -94,4 +92,9 @@ export class TableFileInputComponent {
 
     return isValid;
   }
+
+  ngAfterViewInit(){
+    this.fields[0].templateOptions.template = this.replacementTemplate;
+  }
+
 }
