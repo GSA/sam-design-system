@@ -8,7 +8,9 @@
         *ngFor="let option of (to.groupOptions | keyvalue); let i = index"
       >
         <div>
-          <legend>{{ option.key }}</legend>
+          <legend>
+            <span class="text-bold display-block">{{option.key}}</span>
+          </legend>
           <li
             class="grid-row"
             *ngFor="let opt of option.value | formlySelectOptions: field | async; let j = index"

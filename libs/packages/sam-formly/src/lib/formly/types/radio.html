@@ -24,7 +24,81 @@
     </ng-container>
   </div>
 
-  <div *ngIf="to.groupOptions"></div>
+  <div *ngIf="to.groupOptions">
+    <fieldset class="usa-fieldset">
+      <ul class="sds-list--no-bullets">
+        <li
+          class="grid-row"
+          *ngFor="let option of (to.groupOptions | keyvalue); let i = index"
+        >
+          <div>
+            <legend>
+              <span class="text-bold display-block">{{option.key}}</span>
+            </legend>
+
+            <li
+              class="grid-row"
+              *ngFor="let opt of option.value | formlySelectOptions: field | async; let j = index"
+            >
+              <div
+                class="grid-row"
+                [ngClass]="{'horizontal-option': to.horizontal}"
+              >
+                <div>
+                  <input
+                    class="usa-radio__input"
+                    [ngClass]="{'usa-radio__input--tile': to.tile, 'usa-input--error': !showError}"
+                    [formlyAttributes]="field"
+                    [id]="id + '_' + i+ '_'+ j"
+                    type="radio"
+                    [name]="id"
+                    checked="checked"
+                    [formControl]="formControl"
+                    [value]="opt.value"
+                  />
+
+                  <label
+                    class="usa-radio__label"
+                    [ngClass]="to.optionsClass ? to.optionsClass : ''"
+                    [for]="id + '_' + i+ '_'+ j"
+                  >
+                    <span [innerHtml]="opt.label"></span>
+                    <ng-container
+                      *ngIf="option.value[j].description && option.value[j].description.length"
+                    >
+                      <div class="usa-checkbox__label-description">
+                        <span
+                          class="display-block"
+                          *ngFor="let description of option.value[j].description"
+                          [innerHtml]="description"
+                        ></span>
+                      </div>
+                    </ng-container>
+                  </label>
+                </div>
+
+                <div *ngIf="option.value[j].tooltipText">
+                  <p
+                    #tipContent
+                    [ngClass]="option.value[j].tooltipClass"
+                    class="margin-1"
+                    [innerHTML]="option.value[j].tooltipText"
+                  ></p>
+                  <usa-icon
+                    class="padding-top-105 margin-left-1"
+                    [position]="option.value[j].tooltipPosition ? option.value[j].tooltipPosition :'right'"
+                    [sdsTooltip]="tipContent"
+                    [size]="'lg'"
+                    [icon]="'info-circle'"
+                  ></usa-icon>
+                </div>
+              </div>
+            </li>
+          </div>
+        </li>
+      </ul>
+    </fieldset>
+  </div>
 </form>
 
 <ng-template let-option let-i="i" let-to="to" #defaultTemplate>
