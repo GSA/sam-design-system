@@ -9,7 +9,10 @@
       >
         <div>
           <legend>{{ option.key }}</legend>
-          <li class="grid-row" *ngFor="let opt of option.value; let j = index">
+          <li
+            class="grid-row"
+            *ngFor="let opt of option.value | formlySelectOptions: field | async; let j = index"
+          >
             <input
               class="usa-checkbox__input"
               [id]="id + '_' + i + j"
@@ -29,7 +32,7 @@
               >
                 {{opt.tagText}}
               </span>
-              <span [innerHtml]="opt.value"></span>
+              <span [innerHtml]="opt.label"></span>
             </label>
             <div *ngIf="opt.tooltipText" class="margin-top-1 margin-left-1">
               <p
