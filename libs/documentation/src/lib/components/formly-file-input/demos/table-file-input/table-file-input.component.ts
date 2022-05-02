@@ -2,13 +2,15 @@ import { Component } from '@angular/core';
 import { AbstractControl, FormGroup } from '@angular/forms';
 import { SdsFormlyTypes } from '@gsa-sam/sam-formly';
 import { FormlyFieldConfig } from '@ngx-formly/core';
+import { of } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'gsa-sam-table-file-input',
   templateUrl: './table-file-input.component.html',
 })
 export class TableFileInputComponent {
-
   fields: FormlyFieldConfig[] = [
     {
       key: 'tableFilesInput',
@@ -22,12 +24,14 @@ export class TableFileInputComponent {
         tableDisplay: true,
         displayFileInfo: false,
         required: true,
-        acceptFileType: '.bmp,.gif,.jpeg,.jpg,.tex,.xls,.xlsx,.doc,.docx,.docx,.odt,.txt,.pdf,.png,.pptx,.ppt,.rtf,.AVI,.mov,.mpg,.mpeg,.mp4,.wmv,.flv,.f4v',
+        acceptFileType:
+          '.bmp,.gif,.jpeg,.jpg,.tex,.xls,.xlsx,.doc,.docx,.docx,.odt,.txt,.pdf,.png,.pptx,.ppt,.rtf,.AVI,.mov,.mpg,.mpeg,.mp4,.wmv,.flv,.f4v',
+        uploadRequest: this.uploadRequest,
       },
       validation: {
         messages: {
-          fileSizeLimit: 'File must be below 1 kb'
-        }
+          fileSizeLimit: 'File must be below 1 kb',
+        },
       },
       validators: {
         fileSizeLimit: this.fileSizeLimitValidator,
@@ -36,35 +40,48 @@ export class TableFileInputComponent {
         templateOptions: {
           name: 'Demo Table',
           noDataText: 'No Attachments',
+          showProgress: true,
+
           tableColumns: [
-            {label: 'Attachment Name', columnName:'name', property: 'name'},
-            {label: 'File Size (kB)', columnName:'size', textFn: (file: File) => (file.size / 1000)},
-            {label: 'Virus Scan', columnName:'scan', property: 'scan'},
-            {label: 'Action', columnName:'action', text: 'Remove', onClick: this.removeFile.bind(this)}
+            {
+              label: 'Attachment Name',
+              columnName: 'name',
+              property: 'name',
+              whileUpload: {
+                disableText: true,
+                appendString: ' loading...',
+              },
+            },
+            {
+              label: 'File Size (kB)',
+              columnName: 'size',
+              textFn: (file: File) => file.size / 1000,
+              whileUpload: {
+                disableText: true,
+              },
+            },
+            { label: 'Virus Scan', columnName: 'scan', property: 'scan' },
+            {
+              label: 'Action',
+              columnName: 'action',
+              text: 'Remove',
+              onClick: this.removeFile.bind(this),
+              whileUpload: {
+                displayText: 'Cancel',
+              },
+            },
           ],
-        }
-      }
+        },
+      },
     },
   ];
 
   form = new FormGroup({});
 
-  onModelChange($event: {tableFilesInput: File[]}) {
+  onModelChange($event: { tableFilesInput: File[] }) {
     // The 'scan' property here must match the property in
     // {label: 'Virus Scan', columnName:'scan', property: 'scan'} in templateOptions' tableColumns
-    const newFiles = $event.tableFilesInput.filter(file => !file['scan']);
-    this.scanFiles(newFiles);
     console.log('model', $event);
-  }
-
-  scanFiles(newFiles: File[]) {
-    newFiles.forEach(file => file['scan'] = 'Please Wait');
-
-    // Mock API call to scan file
-    setTimeout(() => {
-      // You can choose to then either remove the file or apply different text
-      newFiles.forEach(file => file['scan'] = 'Ready');
-    }, 2000);
   }
 
   removeFile(file: File, field: FormlyFieldConfig) {
@@ -72,7 +89,7 @@ export class TableFileInputComponent {
     // Needed because passing form into formly-form a second time strips that object and returns just the array
     const fileArray = tableFormGroup.value['tableFilesInput'];
     const newFiles = fileArray.filter((value: File) => value != file);
-    let fc: AbstractControl = tableFormGroup.get('tableFilesInput');;
+    let fc: AbstractControl = tableFormGroup.get('tableFilesInput');
     fc.setValue(newFiles);
   }
 
@@ -86,12 +103,29 @@ export class TableFileInputComponent {
     }
 
     let isValid = true;
-    (control.value as File[]).forEach(file => {
+    (control.value as File[]).forEach((file) => {
       if (file.size > 1000) {
         isValid = false;
       }
     });
 
     return isValid;
+  }
+
+  uploadRequest(file) {
+    file['uploading'] = true;
+    return of(true).pipe(
+      map(() => {
+        file['scan'] = 'Please Wait';
+      }),
+      delay(3000), // Upload delay
+      map(() => {
+        file['uploading'] = false;
+      }),
+      delay(3000), // Scan delay
+      map(() => {
+        file['scan'] = 'Ready';
+      })
+    );
   }
 }
