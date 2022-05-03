@@ -29,24 +29,27 @@
               />
               <label class="usa-checkbox__label" [for]="id + '_' + i + j">
                 <span
-                  *ngIf="opt.tagText"
+                  *ngIf="option.value[j].tagText"
                   class="usa-tag"
-                  [ngClass]="opt.tagClass ? opt.tagClass : 'sds-tag--info-white'"
+                  [ngClass]="option.value[j].tagClass ? option.value[j].tagClass : 'sds-tag--info-white'"
                 >
-                  {{opt.tagText}}
+                  {{option.value[j].tagText}}
                 </span>
                 <span [innerHtml]="opt.label"></span>
               </label>
             </div>
-            <div *ngIf="opt.tooltipText" class="margin-top-1 margin-left-1">
+            <div
+              *ngIf="option.value[j].tooltipText"
+              class="margin-top-3 margin-left-1"
+            >
               <p
                 #tipContent
-                [ngClass]="opt.tooltipClass"
+                [ngClass]="option.value[j].tooltipClass"
                 class="margin-1"
-                [innerHTML]="opt.tooltipText"
+                [innerHTML]="option.value[j].tooltipText"
               ></p>
               <usa-icon
-                [position]="opt.tooltipPosition ? opt.tooltipPosition :'right'"
+                [position]="option.value[j].tooltipPosition ? option.value[j].tooltipPosition :'right'"
                 [sdsTooltip]="tipContent"
                 [size]="'lg'"
                 [icon]="'info-circle'"
@@ -152,7 +155,7 @@
           </div>
           <div
             *ngIf="to.options[i].tooltipText"
-            class="margin-top-1 margin-left-1"
+            class="margin-top-2 margin-left-1"
           >
             <p
               #tipContent
