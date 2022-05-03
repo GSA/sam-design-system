@@ -21,6 +21,17 @@
 
   <sds-step id="entityDetails" text="Entity Details" [editable]="false">
     <sds-step
+      id="permission"
+      text="permission"
+      [fieldConfig]="stepMap.permission.fieldConfig"
+    >
+      <h1 sdsStepHeader class="margin-top-0">
+        permission
+        <hr />
+      </h1>
+    </sds-step>
+
+    <sds-step
       id="registrationPurpose"
       text="Purpose of Registration"
       [fieldConfig]="stepMap.registrationPurpose.fieldConfig"
