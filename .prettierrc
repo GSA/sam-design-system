@@ -1,6 +1,6 @@
 {
   "singleQuote": true,
-  "max_line_length": 80,
+  "max_line_length": 120,
   "tabWidth": 2,
   "useTabs": false,
   "semi": true,
