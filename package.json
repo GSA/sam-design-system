@@ -9,6 +9,7 @@
     "test:components": "ng test components -- --no-watch --no-progress --code-coverage --browsers=ChromeHeadlessCI --source-map=false",
     "test:material-extensions": "ng test sam-material-extensions -- --no-watch --no-progress --code-coverage --browsers=ChromeHeadlessCI --source-map=false",
     "test:sam-formly": "ng test sam-formly -- --no-watch --no-progress --code-coverage --browsers=ChromeHeadlessCI --source-map=false",
+    "test:prettier": "npx prettier -c \"libs\" \"apps\"",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "update": "ng update",
