@@ -14,12 +14,7 @@ import {
 import { DOCUMENT } from '@angular/common';
 import { AnimationEvent } from '@angular/animations';
 import { sdsDialogAnimations } from './dialog-animations';
-import {
-  BasePortalOutlet,
-  ComponentPortal,
-  CdkPortalOutlet,
-  TemplatePortal
-} from '@angular/cdk/portal';
+import { BasePortalOutlet, ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
 import { FocusTrap, FocusTrapFactory } from '@angular/cdk/a11y';
 import { SdsDialogConfig, SlideOutConfig } from './dialog-config';
 /**
@@ -45,22 +40,21 @@ export function throwSdsDialogContentAlreadyAttachedError() {
   animations: [sdsDialogAnimations.dialogContainer],
   // tslint:disable-next-line: use-host-property-decorator
   host: {
-    'class': 'sds-dialog__container',
+    class: 'sds-dialog__container',
     '[class.sds-dialog--alert]': '_config.alert',
     '[class.sds-dialog--alert-error]': '_config.alert === "error"',
     '[class.sds-dialog--alert-warning]': '_config.alert === "warning"',
     '[class.sds-dialog--alert-info]': '_config.alert === "info"',
     '[class.sds-dialog--alert-success]': '_config.alert === "success"',
     '[class.dialog-slide-out]': '_config.slideOut',
-    'tabindex': '-1',
+    tabindex: '-1',
     'aria-modal': 'true',
     '[attr.id]': '_id',
     '[attr.role]': '_config.role',
     '[attr.aria-labelledby]': '_config.ariaLabel ? null : _ariaLabelledBy',
     '[attr.aria-label]': '_config.ariaLabel',
     '[attr.aria-describedby]': '_config.ariaDescribedBy || null',
-    '[style.width]':
-      '_config.slideOut && isSlideOutConfig(_config.slideOut) ? _config.slideOut.width : null',
+    '[style.width]': '_config.slideOut && isSlideOutConfig(_config.slideOut) ? _config.slideOut.width : null',
     '[@dialogContainer]':
       '{ value: _state, params: _config.slideOut && isSlideOutConfig(_config.slideOut) ? { width: _config.slideOut.width || "15rem", time: _config.slideOut.time || "1s" } : { width: "15rem", time: "1s" } }',
     '(@dialogContainer.start)': '_onAnimationStart($event)',
@@ -68,7 +62,6 @@ export function throwSdsDialogContentAlreadyAttachedError() {
   },
 })
 export class SdsDialogContainerComponent extends BasePortalOutlet {
-
   /** The portal outlet inside of this container into which the dialog content will be loaded. */
   @ViewChild(CdkPortalOutlet, { static: true }) _portalOutlet: CdkPortalOutlet;
 
@@ -96,9 +89,9 @@ export class SdsDialogContainerComponent extends BasePortalOutlet {
     private _changeDetectorRef: ChangeDetectorRef,
     @Optional() @Inject(DOCUMENT) private _document: any,
     /** The dialog configuration. */
-    public _config: SdsDialogConfig) {
+    public _config: SdsDialogConfig
+  ) {
     super();
-
   }
 
   /**
@@ -198,9 +191,6 @@ export class SdsDialogContainerComponent extends BasePortalOutlet {
   /** Checks if the value is a Slide Out panel configuration or a boolean. */
   /** A configuration indicates that a user wants a custom Slide Out Panel */
   isSlideOutConfig(val: boolean | SlideOutConfig): val is SlideOutConfig {
-    return (
-      (val as SlideOutConfig).width !== undefined ||
-      (val as SlideOutConfig).time !== undefined
-    );
+    return (val as SlideOutConfig).width !== undefined || (val as SlideOutConfig).time !== undefined;
   }
 }

@@ -1,12 +1,4 @@
-import {
-  AfterViewInit,
-  Directive,
-  ElementRef,
-  HostListener,
-  Input,
-  Renderer2,
-  TemplateRef,
-} from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, HostListener, Input, Renderer2, TemplateRef } from '@angular/core';
 import { debounce } from './debounce.decorator';
 
 @Directive({
@@ -46,10 +38,7 @@ export class SdsPopoverDirective implements AfterViewInit {
    * Adding listener for keyup.enter to ensure that user can activate popover with keyboard
    */
   @HostListener('keyup.enter', ['$event']) onKeyUp($event: KeyboardEvent) {
-    if (
-      !this.closeOnContentClick &&
-      this.sdsPopoverDiv.contains($event.target as any)
-    ) {
+    if (!this.closeOnContentClick && this.sdsPopoverDiv.contains($event.target as any)) {
       return;
     }
     this.clickEvent();
@@ -59,10 +48,7 @@ export class SdsPopoverDirective implements AfterViewInit {
    * Adding listener for keydown.space to ensure that user can activate popover with keyboard
    */
   @HostListener('keydown.Space', ['$event']) onKeySpace($event: KeyboardEvent) {
-    if (
-      !this.closeOnContentClick &&
-      this.sdsPopoverDiv.contains($event.target as any)
-    ) {
+    if (!this.closeOnContentClick && this.sdsPopoverDiv.contains($event.target as any)) {
       return;
     }
     this.clickEvent();
@@ -92,11 +78,7 @@ export class SdsPopoverDirective implements AfterViewInit {
     this.renderer.addClass(this.sdsPopoverDiv, 'sds-popover__content');
     this.renderer.addClass(this.sdsPopoverDiv, 'tooltip');
     this.renderer.addClass(this.sdsPopoverDiv, 'out');
-    this.renderer.setAttribute(
-      this.sdsPopoverDiv,
-      'data-position',
-      this.position
-    );
+    this.renderer.setAttribute(this.sdsPopoverDiv, 'data-position', this.position);
     this.renderer.setAttribute(this.sdsPopoverDiv, 'aria-hidden', 'true');
     this.renderer.addClass(this.sdsPopoverDiv, this.position);
 
@@ -113,11 +95,7 @@ export class SdsPopoverDirective implements AfterViewInit {
 
     this.renderer.setAttribute(this.el.nativeElement, 'role', 'button');
     this.renderer.setAttribute(this.el.nativeElement, 'aria-expanded', 'false');
-    this.renderer.setAttribute(
-      this.el.nativeElement,
-      'aria-haspopup',
-      'dialog'
-    );
+    this.renderer.setAttribute(this.el.nativeElement, 'aria-haspopup', 'dialog');
 
     this.renderer.appendChild(this.el.nativeElement, this.sdsPopoverDiv);
   }
@@ -166,26 +144,14 @@ export class SdsPopoverDirective implements AfterViewInit {
     if (this.popoverVisible) {
       this.renderer.addClass(this.sdsPopoverDiv, 'sds-popover__shown');
       this.renderer.setAttribute(this.sdsPopoverDiv, 'aria-hidden', 'false');
-      this.renderer.setAttribute(
-        this.el.nativeElement,
-        'aria-describedby',
-        this.popoverDivId
-      );
-      this.renderer.setAttribute(
-        this.el.nativeElement,
-        'aria-expanded',
-        'true'
-      );
+      this.renderer.setAttribute(this.el.nativeElement, 'aria-describedby', this.popoverDivId);
+      this.renderer.setAttribute(this.el.nativeElement, 'aria-expanded', 'true');
       this.renderer.setAttribute(this.el.nativeElement, 'role', 'none');
       this.renderer.removeClass(this.sdsPopoverDiv, 'sds-popover__hidden');
     } else {
       this.renderer.addClass(this.sdsPopoverDiv, 'sds-popover__hidden');
       this.renderer.setAttribute(this.sdsPopoverDiv, 'aria-hidden', 'true');
-      this.renderer.setAttribute(
-        this.el.nativeElement,
-        'aria-expanded',
-        'false'
-      );
+      this.renderer.setAttribute(this.el.nativeElement, 'aria-expanded', 'false');
       this.renderer.setAttribute(this.el.nativeElement, 'role', 'button');
 
       this.renderer.removeClass(this.sdsPopoverDiv, 'sds-popover__shown');

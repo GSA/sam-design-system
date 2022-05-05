@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   selector: `sds-tooltip-basic-demo`,
 })
 export class TooltipBasic {
-  clicked(){
-    console.log('clicked')
+  clicked() {
+    console.log('clicked');
   }
 }

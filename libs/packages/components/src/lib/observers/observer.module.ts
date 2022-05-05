@@ -8,4 +8,4 @@ import { SdsObserveWidthDirective } from './observe-width.directive';
   declarations: [SdsObserveWidthDirective],
   providers: [],
 })
-export class SdsObserversModule { }
+export class SdsObserversModule {}

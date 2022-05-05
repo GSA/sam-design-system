@@ -48,7 +48,7 @@ const DEMOS = {
     markup: require('!!raw-loader!./demos/file-input-api/file-input-api.component.html'),
     module: require('!!raw-loader!./demos/file-input-api/file-input-api.module.ts'),
     path: 'libs/documentation/src/lib/components/formly-file-input/demos/file-input-api',
-  }
+  },
 };
 
 export const ROUTES = [
@@ -62,8 +62,8 @@ export const ROUTES = [
           type: 'components',
           name: 'FormlyFieldFileInput',
           formType: 'fileinput',
-        }
-      ]
+        },
+      ],
     },
     component: ComponentWrapperComponent,
     children: [
@@ -71,8 +71,8 @@ export const ROUTES = [
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
       { path: 'template', component: DocumentationTemplatePage },
-    ]
-  }
+    ],
+  },
 ];
 
 @NgModule({
@@ -82,8 +82,8 @@ export const ROUTES = [
     BasicFileInputModule,
     TableFileInputModule,
     FileInputApiModule,
-    FileInputTemplateModule
-  ]
+    FileInputTemplateModule,
+  ],
 })
 export class FileInputModule {
   constructor(demoList: DocumentationDemoList) {

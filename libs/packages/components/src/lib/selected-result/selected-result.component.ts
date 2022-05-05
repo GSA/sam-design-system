@@ -7,21 +7,19 @@ import { SDSSelectedItemModelHelper } from './models/sds-selected-item-model-hel
 const SDS_SelectedResult_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => SDSSelectedResultComponent),
-  multi: true
+  multi: true,
 };
 
 @Component({
   selector: 'sds-selected-result',
   templateUrl: './selected-result.component.html',
   styleUrls: ['./selected-result.component.scss'],
-  providers: [SDS_SelectedResult_VALUE_ACCESSOR]
+  providers: [SDS_SelectedResult_VALUE_ACCESSOR],
 })
 export class SDSSelectedResultComponent implements ControlValueAccessor {
-  
-
   /**
-  * Allow to insert a customized template for suggestions to use
-  */
+   * Allow to insert a customized template for suggestions to use
+   */
   @Input() itemTemplate: TemplateRef<any>;
 
   /**
@@ -29,10 +27,9 @@ export class SDSSelectedResultComponent implements ControlValueAccessor {
    */
   public model: SDSSelectedItemModel;
 
-
   /**
-  * Configuration for the Selected Results control 
-  */
+   * Configuration for the Selected Results control
+   */
   @Input()
   public configuration: SDSSelectedResultConfiguration;
 
@@ -51,7 +48,7 @@ export class SDSSelectedResultComponent implements ControlValueAccessor {
 
   /**
    * Removes item from the model
-   * @param item 
+   * @param item
    */
   removeItem(item: object) {
     if (!this.disabled) {
@@ -79,10 +76,9 @@ export class SDSSelectedResultComponent implements ControlValueAccessor {
     this.disabled = isDisabled;
   }
 
-
   /**
    * Gets the string value from the specifed properties of an object
-   * @param object 
+   * @param object
    * @param propertyFields comma seperated list with periods depth of object
    * @param index - the index location of the value in model's item list
    */
@@ -106,7 +102,8 @@ export class SDSSelectedResultComponent implements ControlValueAccessor {
       current = object;
     }
 
-    return this.configuration.displayModifierFn ? this.configuration.displayModifierFn(value.trim(), index) : value.trim();
+    return this.configuration.displayModifierFn
+      ? this.configuration.displayModifierFn(value.trim(), index)
+      : value.trim();
   }
-
 }

@@ -4,10 +4,7 @@ import { DocumentationExamplesPage } from '../shared/examples-page/examples.comp
 import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
-import {
-  DocumentationComponentsSharedModule,
-  DocumentationDemoList,
-} from '../shared/index';
+import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { FiltersOptional } from './demos/optional/filters-optional.component';
 import { FiltersOptionalModule } from './demos/optional/filters-optional.module';
@@ -48,8 +45,7 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/horizontal-layout/horizontal-layout.component'),
     markup: require('!!raw-loader!./demos/horizontal-layout/horizontal-layout.component.html'),
     module: require('!!raw-loader!./demos/horizontal-layout/horizontal-layout.module'),
-    path:
-      'libs/documentation/src/lib/components/filters/demos/horizontal-layout',
+    path: 'libs/documentation/src/lib/components/filters/demos/horizontal-layout',
   },
 
   horizontalFilters: {
@@ -58,8 +54,7 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/horizontal-filter/horizontal-filter.component'),
     markup: require('!!raw-loader!./demos/horizontal-filter/horizontal-filter.component.html'),
     module: require('!!raw-loader!./demos/horizontal-filter/horizontal-filter.module'),
-    path:
-      'libs/documentation/src/lib/components/filters/demos/horizontal-filter',
+    path: 'libs/documentation/src/lib/components/filters/demos/horizontal-filter',
   },
   hideexpression: {
     title: 'Filters Hide expression',
@@ -75,8 +70,7 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/showInactiveFilterValues/filters-showInactiveFilterValues.component'),
     markup: require('!!raw-loader!./demos/showInactiveFilterValues/filters-showInactiveFilterValues.component.html'),
     module: require('!!raw-loader!./demos/showInactiveFilterValues/filters-showInactiveFilterValues.module'),
-    path:
-      'libs/documentation/src/lib/components/filters/demos/showInactiveFilterValues',
+    path: 'libs/documentation/src/lib/components/filters/demos/showInactiveFilterValues',
   },
   defaultValues: {
     title: 'DeaultModel',
@@ -84,9 +78,8 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/defaultValues/filters-default-value.component'),
     markup: require('!!raw-loader!./demos/defaultValues/filters-default-value.component.html'),
     module: require('!!raw-loader!./demos/defaultValues/filters-default-value.module'),
-    path:
-      'libs/documentation/src/lib/components/filters/demos/defaultValues',
-  }
+    path: 'libs/documentation/src/lib/components/filters/demos/defaultValues',
+  },
 };
 
 export const ROUTES = [

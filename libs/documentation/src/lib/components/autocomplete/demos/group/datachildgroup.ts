@@ -110,8 +110,7 @@ export let GroupAutocompleteData = [
         elements: null,
         description: null,
         element_id: '0003004',
-        value:
-          'Project Grants (Capacity Building and Complaint Processing, Training)',
+        value: 'Project Grants (Capacity Building and Complaint Processing, Training)',
       },
       {
         code: 'B',
@@ -153,16 +152,14 @@ export let GroupAutocompleteData = [
         elements: null,
         description: null,
         element_id: '0003010',
-        value:
-          'Project Grants (for administration projects authorized under Section',
+        value: 'Project Grants (for administration projects authorized under Section',
       },
       {
         code: 'B',
         elements: null,
         description: null,
         element_id: '0003011',
-        value:
-          'Project Grants (for collaborative design of curriculum, production of',
+        value: 'Project Grants (for collaborative design of curriculum, production of',
       },
       {
         code: 'B',
@@ -190,8 +187,7 @@ export let GroupAutocompleteData = [
         elements: null,
         description: null,
         element_id: '0003015',
-        value:
-          'Project Grants (Rehabilitation of existing indoor and outdoor recreat',
+        value: 'Project Grants (Rehabilitation of existing indoor and outdoor recreat',
       },
       {
         code: 'B',
@@ -290,16 +286,14 @@ export let GroupAutocompleteData = [
         elements: null,
         description: null,
         element_id: '0011002',
-        value:
-          'Guaranteed/Insured Loans (including Guaranty Participation Loans)',
+        value: 'Guaranteed/Insured Loans (including Guaranty Participation Loans)',
       },
       {
         code: 'F',
         elements: null,
         description: null,
         element_id: '0011003',
-        value:
-          'Guaranteed/Insured Loans (including Immediate Participation Loans)',
+        value: 'Guaranteed/Insured Loans (including Immediate Participation Loans)',
       },
       {
         code: 'F',

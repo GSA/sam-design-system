@@ -7,13 +7,7 @@ import { NgxBootstrapIconsModule, arrowClockwise } from 'ngx-bootstrap-icons';
 
 @NgModule({
   declarations: [SdsFormlyResetComponent],
-  imports: [
-    CommonModule,
-    IconModule,
-    NgxBootstrapIconsModule.pick({arrowClockwise})
-  ],
-  exports: [
-    SdsFormlyResetComponent
-  ]
+  imports: [CommonModule, IconModule, NgxBootstrapIconsModule.pick({ arrowClockwise })],
+  exports: [SdsFormlyResetComponent],
 })
-export class SdsFormlyResetModule { }
+export class SdsFormlyResetModule {}

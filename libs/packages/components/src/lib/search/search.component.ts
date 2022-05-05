@@ -51,9 +51,7 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
   buttonEl: ElementRef;
 
   @Input() searchSettings: SearchSettings = new SearchSettings();
-  @Output() submit: EventEmitter<{ searchText: string }> = new EventEmitter(
-    null
-  );
+  @Output() submit: EventEmitter<{ searchText: string }> = new EventEmitter(null);
 
   model: any = {};
   inputState = {
@@ -101,9 +99,7 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
   }
 
   writeValueToModel() {
-    this.model.searchText = this.inputEl
-      ? this.inputEl.nativeElement.value
-      : '';
+    this.model.searchText = this.inputEl ? this.inputEl.nativeElement.value : '';
     if (this.selectEl && this.selectEl.nativeElement.value) {
       this.model.searchCategory = this.selectEl.nativeElement.value;
     }
@@ -127,25 +123,15 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
   }
 
   isInputVisible(): boolean {
-    return this.inputEl.nativeElement.getBoundingClientRect().width
-      ? true
-      : false;
+    return this.inputEl.nativeElement.getBoundingClientRect().width ? true : false;
   }
 
   setInputVisibleStyles() {
     const inputWidth = this.calculateInputWidth();
-    this.inputEl.nativeElement.style.setProperty(
-      'display',
-      'block',
-      'important'
-    );
+    this.inputEl.nativeElement.style.setProperty('display', 'block', 'important');
     this.inputEl.nativeElement.style.position = 'absolute';
     this.inputEl.nativeElement.style.left = `-${inputWidth}px`;
-    this.inputEl.nativeElement.style.setProperty(
-      'width',
-      `${inputWidth}px`,
-      'important'
-    );
+    this.inputEl.nativeElement.style.setProperty('width', `${inputWidth}px`, 'important');
     this.inputState.visible = true;
   }
 
@@ -169,20 +155,13 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
     const inputElement = this.inputEl.nativeElement;
     const rightPosition = buttonElement.getBoundingClientRect().left;
     const leftPosition = this.searchSettings.parentSelector
-      ? inputElement
-          .closest(this.searchSettings.parentSelector)
-          .getBoundingClientRect().left
+      ? inputElement.closest(this.searchSettings.parentSelector).getBoundingClientRect().left
       : 0;
     return Math.floor(rightPosition - leftPosition - leftPadding);
   }
   getClass() {
-    const cls =
-      this.searchSettings && this.searchSettings.size === 'large'
-        ? 'usa-search--big'
-        : 'usa-search--small';
-    return this.searchSettings.dropdown && this.searchSettings.dropdown.inverse
-      ? `${cls} sds-inverse`
-      : cls;
+    const cls = this.searchSettings && this.searchSettings.size === 'large' ? 'usa-search--big' : 'usa-search--small';
+    return this.searchSettings.dropdown && this.searchSettings.dropdown.inverse ? `${cls} sds-inverse` : cls;
   }
   clearInput(ev) {
     this.inputEl.nativeElement.value = '';

@@ -6,11 +6,10 @@ import { NgxBootstrapIconsModule, threeDotsVertical, x } from 'ngx-bootstrap-ico
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 import { SdsMenuModule } from '../menu/menu.module';
 
-
 @NgModule({
-  imports: [CommonModule, IconModule, SdsMenuModule, NgxBootstrapIconsModule.pick({threeDotsVertical, x})],
+  imports: [CommonModule, IconModule, SdsMenuModule, NgxBootstrapIconsModule.pick({ threeDotsVertical, x })],
   exports: [SdsActionsMenuComponent],
   declarations: [SdsActionsMenuComponent],
-  providers: []
+  providers: [],
 })
 export class SdsActionsMenuModule {}

@@ -18,7 +18,7 @@ const DEMOS = {
     type: FormlyRichTextEditorComponent,
     code: require('!!raw-loader!./formly-rich-text-editor.component'),
     markup: require('!!raw-loader!./formly-rich-text-editor.component.html'),
-    path: 'libs/documentation/src/lib/components/formly-rich-text-editor'
+    path: 'libs/documentation/src/lib/components/formly-rich-text-editor',
   },
 };
 
@@ -32,9 +32,9 @@ export const ROUTES = [
           pkg: 'formly',
           type: 'components',
           name: 'FormlyRichTextEditorComponent',
-          formType: 'rich-text-editor'
-        }
-      ]
+          formType: 'rich-text-editor',
+        },
+      ],
     },
     component: ComponentWrapperComponent,
     children: [
@@ -42,8 +42,8 @@ export const ROUTES = [
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
       { path: 'template', component: DocumentationTemplatePage },
-    ]
-  }
+    ],
+  },
 ];
 
 @NgModule({
@@ -51,9 +51,12 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot()
+    ReactiveFormsModule,
+    SdsFormlyModule,
+    FormsModule,
+    FormlyModule.forRoot(),
   ],
-  exports: [FormlyRichTextEditorComponent]
+  exports: [FormlyRichTextEditorComponent],
 })
 export class FormlyRichTextEditorModule {
   constructor(demoList: DocumentationDemoList) {

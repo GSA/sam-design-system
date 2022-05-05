@@ -5,12 +5,8 @@ import { UsaAccordionModule } from '@gsa-sam/ngx-uswds';
 
 @NgModule({
   declarations: [AccordionBasic],
-  imports: [
-    CommonModule,
-    UsaAccordionModule,
-  ],
+  imports: [CommonModule, UsaAccordionModule],
   exports: [AccordionBasic],
-  bootstrap: [AccordionBasic]
+  bootstrap: [AccordionBasic],
 })
 export class AccordionBasicModule {}
-

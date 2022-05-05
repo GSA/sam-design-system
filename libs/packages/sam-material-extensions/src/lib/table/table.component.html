@@ -1,25 +1,56 @@
 <div class="margin-y-05" *ngIf="pagination && showPagination">
-  <sds-pagination [displayMode]="'results'" [paginationConfiguration]="top" [(page)]="page" [totalItems]="totalItems"></sds-pagination>
+  <sds-pagination
+    [displayMode]="'results'"
+    [paginationConfiguration]="top"
+    [(page)]="page"
+    [totalItems]="totalItems"
+  ></sds-pagination>
 </div>
 
 <div class="sds-table__container" [ngClass]="{ 'sds-table__container--borderless': borderless }">
-  <table mat-table [dataSource]="dataSource" class="sds-table width-full mat-elevation-z8" matSort multiTemplateDataRows [ngClass]="{ 'sds-table--expansion': expansion }">
-
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    class="sds-table width-full mat-elevation-z8"
+    matSort
+    multiTemplateDataRows
+    [ngClass]="{ 'sds-table--expansion': expansion }"
+  >
     <ng-container *ngFor="let sdsColumnItem of sdsColumnItems">
-      <ng-container *ngIf="!sdsColumnItem.sdsExpandedTemplate" matColumnDef="{{sdsColumnItem.sdsColumnName}}" [sticky]="sdsColumnItem.sticky" [stickyEnd]="sdsColumnItem.stickyEnd">
-        <ng-container *ngIf="(sort==='true' || sort==='') || ((typeOf(sort) === 'object') && isArray(sort) && sort.includes(sdsColumnItem.sdsColumnName)) else basicColumn">
-          <th mat-header-cell *matHeaderCellDef scope="col" mat-sort-header><ng-container *ngTemplateOutlet="sdsColumnItem.columnHeaderCell"></ng-container></th>
+      <ng-container
+        *ngIf="!sdsColumnItem.sdsExpandedTemplate"
+        matColumnDef="{{ sdsColumnItem.sdsColumnName }}"
+        [sticky]="sdsColumnItem.sticky"
+        [stickyEnd]="sdsColumnItem.stickyEnd"
+      >
+        <ng-container
+          *ngIf="
+            sort === 'true' ||
+              sort === '' ||
+              (typeOf(sort) === 'object' && isArray(sort) && sort.includes(sdsColumnItem.sdsColumnName));
+            else basicColumn
+          "
+        >
+          <th mat-header-cell *matHeaderCellDef scope="col" mat-sort-header>
+            <ng-container *ngTemplateOutlet="sdsColumnItem.columnHeaderCell"></ng-container>
+          </th>
         </ng-container>
         <ng-template #basicColumn>
           <ng-container>
-            <th mat-header-cell *matHeaderCellDef scope="col"><ng-container *ngTemplateOutlet="sdsColumnItem.columnHeaderCell"></ng-container></th>
+            <th mat-header-cell *matHeaderCellDef scope="col">
+              <ng-container *ngTemplateOutlet="sdsColumnItem.columnHeaderCell"></ng-container>
+            </th>
           </ng-container>
         </ng-template>
-        <td mat-cell *matCellDef="let element"><ng-container *ngTemplateOutlet="sdsColumnItem.columnCell; context: {element : element}"></ng-container></td>
-        <ng-container *ngIf="sdsColumnItem.footerCellTemplate" >
-          <th mat-footer-cell *matFooterCellDef scope="col"><ng-container *ngTemplateOutlet="sdsColumnItem.columnFooterCell"></ng-container></th>
+        <td mat-cell *matCellDef="let element">
+          <ng-container *ngTemplateOutlet="sdsColumnItem.columnCell; context: { element: element }"></ng-container>
+        </td>
+        <ng-container *ngIf="sdsColumnItem.footerCellTemplate">
+          <th mat-footer-cell *matFooterCellDef scope="col">
+            <ng-container *ngTemplateOutlet="sdsColumnItem.columnFooterCell"></ng-container>
+          </th>
         </ng-container>
-        <ng-container *ngIf="!sdsColumnItem.footerCellTemplate" >
+        <ng-container *ngIf="!sdsColumnItem.footerCellTemplate">
           <td mat-footer-cell *matFooterCellDef scope="col"></td>
         </ng-container>
       </ng-container>
@@ -28,10 +59,18 @@
     <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
     <ng-container *ngIf="expansion">
       <ng-container *ngFor="let sdsColumnItem of sdsColumnItems">
-        <ng-container *ngIf="sdsColumnItem.sdsExpandedTemplate"  matColumnDef="{{sdsColumnItem.sdsColumnName}}">
-          <td mat-cell *matCellDef="let element" [attr.colspan]="rowConfig.displayedColumns.length" class="sds-table__cell--detail">
-            <div class="sds-table__cell__expanded-wrapper" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-              <ng-container *ngTemplateOutlet="sdsColumnItem.columnCell; context: {element : element}"></ng-container>
+        <ng-container *ngIf="sdsColumnItem.sdsExpandedTemplate" matColumnDef="{{ sdsColumnItem.sdsColumnName }}">
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [attr.colspan]="rowConfig.displayedColumns.length"
+            class="sds-table__cell--detail"
+          >
+            <div
+              class="sds-table__cell__expanded-wrapper"
+              [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'"
+            >
+              <ng-container *ngTemplateOutlet="sdsColumnItem.columnCell; context: { element: element }"></ng-container>
             </div>
           </td>
         </ng-container>
@@ -40,10 +79,7 @@
 
     <ng-container *ngIf="expansion" matColumnDef="expandedIndicator">
       <td mat-header-cell *matHeaderCellDef></td>
-      <td mat-cell *matCellDef="let element"
-        class="cursor-pointer"
-        (click)="onExpansionClicked(element)"
-      >
+      <td mat-cell *matCellDef="let element" class="cursor-pointer" (click)="onExpansionClicked(element)">
         <usa-icon *ngIf="element == expandedElement" [icon]="'chevron-up'" size="sm"></usa-icon>
         <usa-icon *ngIf="element != expandedElement" [icon]="'chevron-down'" size="sm"></usa-icon>
       </td>
@@ -54,11 +90,16 @@
       <tr mat-header-row *matHeaderRowDef="headerRowConfig.displayedColumns; sticky: headerRowConfig.sticky"></tr>
     </ng-container>
 
-    <tr mat-row *matRowDef="let row; columns: rowConfig.displayedColumns; let i = dataIndex"
+    <tr
+      mat-row
+      *matRowDef="let row; columns: rowConfig.displayedColumns; let i = dataIndex"
       class="sds-table__row"
       [ngClass]="{ 'cursor-pointer': rowConfig.expandOnClick, 'sds-table__row--expanded': expandedElement == row }"
-      (click)="rowConfig.expandOnClick ? (expandedElement = expandedElement === row ? null : row) : false; rowClicked.emit(i)"
-      sdsTableRowNavigation [highlightOnHover]=rowConfig.highlightOnHover
+      (click)="
+        rowConfig.expandOnClick ? (expandedElement = expandedElement === row ? null : row) : false; rowClicked.emit(i)
+      "
+      sdsTableRowNavigation
+      [highlightOnHover]="rowConfig.highlightOnHover"
     ></tr>
 
     <ng-container *ngIf="expansion">
@@ -68,7 +109,6 @@
     <ng-container *ngIf="footerRowConfig && footerRowConfig.displayedColumns">
       <tr mat-footer-row *matFooterRowDef="footerRowConfig.displayedColumns; sticky: footerRowConfig.sticky"></tr>
     </ng-container>
-
   </table>
 
   <div [hidden]="true">
@@ -79,6 +119,10 @@
 </div>
 
 <div *ngIf="pagination && showPagination">
-  <sds-pagination [paginationConfiguration]="bottom" [(page)]="page" (pageChange)="pageChange.next($event)" (initialized)="pageChange.next($event)"></sds-pagination>
+  <sds-pagination
+    [paginationConfiguration]="bottom"
+    [(page)]="page"
+    (pageChange)="pageChange.next($event)"
+    (initialized)="pageChange.next($event)"
+  ></sds-pagination>
 </div>
-

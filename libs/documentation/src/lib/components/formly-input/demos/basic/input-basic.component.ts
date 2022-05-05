@@ -7,7 +7,6 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
   styleUrls: ['./input-basic.component.scss'],
   selector: `sds-formly-input-basic-demo`,
 })
-
 export class InputBasic {
   form = new FormGroup({});
   model: any = {};
@@ -20,7 +19,7 @@ export class InputBasic {
         label: 'Entity Name',
         placeholder: 'eg: Acme Corporation',
         description: 'Enter the name of your entity.',
-        required: true
+        required: true,
       },
     },
     {
@@ -30,7 +29,8 @@ export class InputBasic {
         label: 'Profit',
         placeholder: 'eg: 1234',
         description: 'nonprofit.',
-        tooltipText: '<b>Corporate Entity,</b> Tax Exempt (Firm does not pay U.S. Federal Income Taxes nor U.S. Possession Income Taxes) ',
+        tooltipText:
+          '<b>Corporate Entity,</b> Tax Exempt (Firm does not pay U.S. Federal Income Taxes nor U.S. Possession Income Taxes) ',
       },
     },
   ];

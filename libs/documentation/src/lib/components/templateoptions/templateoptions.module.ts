@@ -5,10 +5,7 @@ import { DocumentationExamplesPage } from '../shared/examples-page/examples.comp
 import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
-import {
-  DocumentationComponentsSharedModule,
-  DocumentationDemoList,
-} from '../shared/index';
+import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { TemplateOptionsBasicModule } from './demos/basic/templateoptions-basic.module';
 import { TemplateOptionsTags } from './demos/tags/templateoption-tags.component';
@@ -38,8 +35,7 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/updateoninheritance/update-on-inheritance.component'),
     module: require('!!raw-loader!./demos/updateoninheritance/update-on-inheritance.module'),
     markup: require('!!raw-loader!./demos/updateoninheritance/update-on-inheritance.component.html'),
-    path:
-      'libs/documentation/src/lib/components/templateoptions/demos/updateoninheritance',
+    path: 'libs/documentation/src/lib/components/templateoptions/demos/updateoninheritance',
   },
   tags: {
     title: 'Template Options for tags',
@@ -55,8 +51,7 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/hideOptional/templateoption-hideOptional.component'),
     module: require('!!raw-loader!./demos/hideOptional/templateoption-hideOptional.module'),
     markup: require('!!raw-loader!./demos/hideOptional/templateoption-hideOptional.component.html'),
-    path:
-      'libs/documentation/src/lib/components/templateoptions/demos/hideOptional',
+    path: 'libs/documentation/src/lib/components/templateoptions/demos/hideOptional',
   },
   expand: {
     title: 'Template Options for expand',
@@ -72,8 +67,7 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/announceLabel/templateoption-announceLabel.component'),
     module: require('!!raw-loader!./demos/announceLabel/templateoption-announceLabel.module'),
     markup: require('!!raw-loader!./demos/announceLabel/templateoption-announceLabel.component.html'),
-    path:
-      'libs/documentation/src/lib/components/templateoptions/demos/announceLabel',
+    path: 'libs/documentation/src/lib/components/templateoptions/demos/announceLabel',
   },
 };
 

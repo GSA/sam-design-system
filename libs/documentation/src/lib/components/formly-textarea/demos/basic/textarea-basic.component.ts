@@ -7,7 +7,6 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
   styleUrls: ['./textarea-basic.component.scss'],
   selector: `sds-formly-textarea-basic-demo`,
 })
-
 export class TextAreaBasic {
   form = new FormGroup({});
   model: any = {};

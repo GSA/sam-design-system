@@ -7,10 +7,9 @@ import { NavigationLink, SideNavigationModel } from '../..//side-navigation/mode
   styleUrls: ['./selection-mode.component.scss'],
 })
 export class SdsSelectionPanelSelectionModeComponent {
-
   @Input()
   model: SideNavigationModel;
-  
+
   @Input() currentSelection: NavigationLink;
 
   @Output() panelSelected = new EventEmitter<NavigationLink>();

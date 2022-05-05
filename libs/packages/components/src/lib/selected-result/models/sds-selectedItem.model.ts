@@ -7,5 +7,4 @@ export class SDSSelectedItemModel {
   constructor(items?: object[]) {
     this.items = items ? [...items] : [];
   }
-
 }

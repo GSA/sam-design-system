@@ -7,8 +7,9 @@
   <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
 </form>
 
-<button class="usa-button usa-button--base margin-top-2" (click)="
-    openAlert( model.alert.title, model.alert.message, model.alert.type, model.alert.size)
-  ">
+<button
+  class="usa-button usa-button--base margin-top-2"
+  (click)="openAlert(model.alert.title, model.alert.message, model.alert.type, model.alert.size)"
+>
   Open alert modal
 </button>

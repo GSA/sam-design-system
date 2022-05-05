@@ -15,9 +15,8 @@ export class TemplateOptionAnnounceLabel {
       type: 'input',
       templateOptions: {
         label: 'Entity',
-        announceLabel: true
-     
-      }
-    }
+        announceLabel: true,
+      },
+    },
   ];
 }

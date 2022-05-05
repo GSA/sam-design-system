@@ -6,17 +6,10 @@ import { TableFullComponent } from './full.component';
 import { HttpClientModule } from '@angular/common/http';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
-
 @NgModule({
   declarations: [TableFullComponent],
-  imports: [
-    CommonModule,
-    SdsTableModule,
-    IconModule,
-    HttpClientModule
-  ],
+  imports: [CommonModule, SdsTableModule, IconModule, HttpClientModule],
   exports: [TableFullComponent],
-  bootstrap: [TableFullComponent]
+  bootstrap: [TableFullComponent],
 })
-
-export class TableFullModule { }
+export class TableFullModule {}

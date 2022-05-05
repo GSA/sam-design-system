@@ -1,20 +1,9 @@
-import {
-  Component,
-  Input,
-  ViewChild,
-  TemplateRef,
-  ElementRef,
-  forwardRef,
-  ChangeDetectorRef,
-} from '@angular/core';
+import { Component, Input, ViewChild, TemplateRef, ElementRef, forwardRef, ChangeDetectorRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { SDSAutocompleteServiceInterface } from './models/SDSAutocompleteServiceInterface';
 import { KeyHelper, KEYS } from '../key-helper/key-helper';
 import { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';
-import {
-  SelectionMode,
-  SDSSelectedItemModelHelper,
-} from '../selected-result/models/sds-selected-item-model-helper';
+import { SelectionMode, SDSSelectedItemModelHelper } from '../selected-result/models/sds-selected-item-model-helper';
 
 import { SDSAutocompleteSearchConfiguration } from './models/SDSAutocompleteConfiguration';
 
@@ -211,10 +200,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     if (this.configuration) {
       if (this.configuration.selectionMode === SelectionMode.SINGLE) {
         if (this.model.items.length > 0) {
-          this.inputValue = this.getObjectValue(
-            this.model.items[0],
-            this.configuration.primaryTextField
-          );
+          this.inputValue = this.getObjectValue(this.model.items[0], this.configuration.primaryTextField);
         }
       } else {
         this.inputValue = '';
@@ -240,12 +226,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     }
   }
   isClearIconVisible(): boolean {
-    if (
-      this.model &&
-      this.model.items.length > 0 &&
-      this.configuration.hideCloseIcon
-    )
-      return false;
+    if (this.model && this.model.items.length > 0 && this.configuration.hideCloseIcon) return false;
 
     return this.inputValue && !this.disabled;
   }
@@ -257,9 +238,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     if (!this.configuration.isTagModeEnabled) {
       if (this.configuration.focusInSearch) {
         this.highlightedIndex = 0;
-        this.highlightedChildIndex = this.configuration.isSelectableGroup
-          ? 0
-          : null;
+        this.highlightedChildIndex = this.configuration.isSelectableGroup ? 0 : null;
         this.getResults(this.inputValue || '');
       }
       this.onTouchedCallback();
@@ -322,13 +301,10 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   public selectItem(item: object): void {
     let filterItem = {};
     if (this.essentialModelFields) {
-      filterItem[this.configuration.primaryKeyField] =
-        item[this.configuration.primaryKeyField];
-      filterItem[this.configuration.primaryTextField] =
-        item[this.configuration.primaryTextField];
+      filterItem[this.configuration.primaryKeyField] = item[this.configuration.primaryKeyField];
+      filterItem[this.configuration.primaryTextField] = item[this.configuration.primaryTextField];
       if (this.configuration.secondaryTextField) {
-        filterItem[this.configuration.secondaryTextField] =
-          item[this.configuration.secondaryTextField];
+        filterItem[this.configuration.secondaryTextField] = item[this.configuration.secondaryTextField];
       }
     } else {
       filterItem = item;
@@ -340,10 +316,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       this.model
     );
     this.propogateChange(this.model);
-    let message = this.getObjectValue(
-      item,
-      this.configuration.primaryTextField
-    );
+    let message = this.getObjectValue(item, this.configuration.primaryTextField);
     this.inputValue = message;
     this.focusRemoved();
     this.showResults = false;
@@ -369,10 +342,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       for (let i in array) {
         const item = array[i];
         flat.push(item);
-        if (
-          item[this.configuration.groupByChild] &&
-          item[this.configuration.groupByChild].length
-        ) {
+        if (item[this.configuration.groupByChild] && item[this.configuration.groupByChild].length) {
           flatten(item[this.configuration.groupByChild]);
         }
       }
@@ -388,16 +358,11 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     if (this.highlightedIndex >= 0) {
       this._changeDetectorRef.detectChanges();
       const dom = this.resultsListElement.nativeElement;
-      const selectedChild = dom.querySelector(
-        '.sds-autocomplete__item--highlighted'
-      );
+      const selectedChild = dom.querySelector('.sds-autocomplete__item--highlighted');
       if (selectedChild) {
         // Manually set scroll top rather than invoke scroll functions for browser compatibility
-        const containerCenter =
-          this.resultsListElement.nativeElement.getBoundingClientRect().height /
-          2;
-        this.resultsListElement.nativeElement.scrollTop =
-          selectedChild.offsetTop - containerCenter;
+        const containerCenter = this.resultsListElement.nativeElement.getBoundingClientRect().height / 2;
+        this.resultsListElement.nativeElement.scrollTop = selectedChild.offsetTop - containerCenter;
       }
     }
   }
@@ -437,15 +402,13 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
           if (this.results) {
             for (var i = 0; i < this.results.length && !foundItem; i++) {
               let item = this.results[i];
-              foundItem =
-                item[this.configuration.primaryTextField] === this.inputValue;
+              foundItem = item[this.configuration.primaryTextField] === this.inputValue;
             }
           }
           if (this.model.items.length > 0 && !foundItem) {
             for (var i = 0; i < this.model.items.length && !foundItem; i++) {
               let item = this.model.items[i];
-              foundItem =
-                item[this.configuration.primaryTextField] === this.inputValue;
+              foundItem = item[this.configuration.primaryTextField] === this.inputValue;
             }
           }
 
@@ -473,9 +436,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    */
   checkItemSelected(result: any) {
     const selectedItem = this.model.items.filter(
-      (item) =>
-        item[this.configuration.primaryKeyField] ===
-        result[this.configuration.primaryKeyField]
+      (item) => item[this.configuration.primaryKeyField] === result[this.configuration.primaryKeyField]
     );
     return selectedItem.length > 0 ? true : false;
   }
@@ -499,17 +460,12 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
             this.showLoad = false;
             this.maxResults = result.totalItems;
 
-            this.highlightedIndex =
-              this.configuration.isFreeTextEnabled || this.maxResults == 0
-                ? -1
-                : 0;
+            this.highlightedIndex = this.configuration.isFreeTextEnabled || this.maxResults == 0 ? -1 : 0;
             if (!this.configuration.isFreeTextEnabled) {
               this.setHighlightedItem(this.results[this.highlightedIndex]);
             }
             this.showResults = true;
-            this.addScreenReaderMessage(
-              this.maxResults + ' ' + this.resultsAvailableMessage
-            );
+            this.addScreenReaderMessage(this.maxResults + ' ' + this.resultsAvailableMessage);
             this._changeDetectorRef.markForCheck();
           });
         }, this.configuration.debounceTime);
@@ -531,8 +487,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     if (this.maxResults > this.results.length) {
       let scrollAreaHeight = this.resultsListElement.nativeElement.offsetHeight;
       let scrollTopPos = this.resultsListElement.nativeElement.scrollTop;
-      let scrollAreaMaxHeight = this.resultsListElement.nativeElement
-        .scrollHeight;
+      let scrollAreaMaxHeight = this.resultsListElement.nativeElement.scrollHeight;
       if (scrollTopPos + scrollAreaHeight * 2 >= scrollAreaMaxHeight) {
         this.getAdditionalResults();
       }
@@ -544,15 +499,13 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    */
   private getAdditionalResults() {
     this.showLoad = true;
-    this.service
-      .getDataByText(this.results.length, this.searchString)
-      .subscribe((result) => {
-        for (let i = 0; i < result.items.length; i++) {
-          this.addResult(result.items[i]);
-        }
-        this.showLoad = false;
-        this.maxResults = result.totalItems;
-      });
+    this.service.getDataByText(this.results.length, this.searchString).subscribe((result) => {
+      for (let i = 0; i < result.items.length; i++) {
+        this.addResult(result.items[i]);
+      }
+      this.showLoad = false;
+      this.maxResults = result.totalItems;
+    });
   }
 
   /**
@@ -578,10 +531,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
         this.highlightedItem = item;
         this.highlightedItem[this.HighlightedPropertyName] = true;
         message = item[this.configuration.primaryTextField];
-        if (
-          this.configuration.secondaryTextField &&
-          item[this.configuration.secondaryTextField]
-        ) {
+        if (this.configuration.secondaryTextField && item[this.configuration.secondaryTextField]) {
           message += ': ' + item[this.configuration.secondaryTextField];
         }
       } else {
@@ -606,23 +556,15 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       this._changeDetectorRef.markForCheck();
       if (this.model.items.length === 0) {
         this.inputValue = '';
-      } else if (
-        this.configuration &&
-        this.configuration.selectionMode === SelectionMode.SINGLE
-      ) {
-        this.inputValue = this.getObjectValue(
-          this.model.items[0],
-          this.configuration.primaryTextField
-        );
+      } else if (this.configuration && this.configuration.selectionMode === SelectionMode.SINGLE) {
+        this.inputValue = this.getObjectValue(this.model.items[0], this.configuration.primaryTextField);
       }
     }
   }
 
   addListener() {
     const autocompleteElement = document.getElementById(this.configuration.id);
-    const dialogContainer = document.getElementsByClassName(
-      'sds-dialog-content'
-    );
+    const dialogContainer = document.getElementsByClassName('sds-dialog-content');
     const resultsDropdown = document.getElementsByClassName('sds-autocomplete');
 
     let inputHeight = autocompleteElement.getBoundingClientRect().height;
@@ -634,8 +576,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
         let listHeight = resultsDropdown[0].getBoundingClientRect().height;
         let element = resultsDropdown[0].parentElement;
         if (element && element.style.bottom) {
-          element.style.bottom =
-            inputBottomValue + listHeight - inputHeight + 30 + 'px';
+          element.style.bottom = inputBottomValue + listHeight - inputHeight + 30 + 'px';
         } else {
           element.style.top = inputTopValue + inputHeight + 'px';
         }

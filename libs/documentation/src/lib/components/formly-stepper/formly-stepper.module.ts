@@ -10,8 +10,8 @@ import { StepperAdvancedDemoComponent } from './demos/advanced/stepper-advanced.
 import { StepperAdvancedModule } from './demos/advanced/stepper-advanced.module';
 import { UswdsStepperComponent } from './demos/uswds-stepper/uswds-stepper.component';
 import { UswdsStepperModule } from './demos/uswds-stepper/uswds-stepper.module';
-import { UnevenStepsStepperComponent } from './demos/uneven-steps/uneven-steps-stepper.component'
-import { UnevenStepsStepperModule } from './demos/uneven-steps/uneven-steps-stepper.module'
+import { UnevenStepsStepperComponent } from './demos/uneven-steps/uneven-steps-stepper.component';
+import { UnevenStepsStepperModule } from './demos/uneven-steps/uneven-steps-stepper.module';
 
 declare var require: any;
 const DEMOS = {
@@ -23,9 +23,15 @@ const DEMOS = {
     module: require('!!raw-loader!./demos/uneven-steps/uneven-steps-stepper.module.ts'),
     path: 'libs/documentation/src/lib/components/formly-stepper/demos/uneven-steps',
     files: [
-      {name: 'uneven-steps-custom-stepper.component.ts', source: require('!!raw-loader!./demos/uneven-steps/uneven-steps-custom-stepper.component')},
-      {name: 'uneven-steps-custom-stepper.component.html', source: require('!!raw-loader!./demos/uneven-steps/uneven-steps-custom-stepper.component.html')}
-    ]
+      {
+        name: 'uneven-steps-custom-stepper.component.ts',
+        source: require('!!raw-loader!./demos/uneven-steps/uneven-steps-custom-stepper.component'),
+      },
+      {
+        name: 'uneven-steps-custom-stepper.component.html',
+        source: require('!!raw-loader!./demos/uneven-steps/uneven-steps-custom-stepper.component.html'),
+      },
+    ],
   },
   advanced: {
     title: 'Complex Formly Stepper',
@@ -35,12 +41,21 @@ const DEMOS = {
     module: require('!!raw-loader!./demos/advanced/stepper-advanced.module.ts'),
     path: 'libs/documentation/src/lib/components/formly-stepper/demos/advanced',
     files: [
-      {name: 'stepper-advanced.service.ts', source: require('!!raw-loader!./demos/advanced/stepper-advanced.service')},
-      {name: 'custom-stepper-component.ts', source: require('!!raw-loader!./demos/advanced/custom-stepper.component')},
-      {name: 'custom-stepper.component.html', source: require('!!raw-loader!./demos/advanced/custom-stepper.component.html')},
-      {name: 'subawardee.component.ts', source: require('!!raw-loader!./demos/advanced/subawardee.component')},
-      {name: 'subawardee.component.html', source: require('!!raw-loader!./demos/advanced/subawardee.component.html')},
-    ]
+      {
+        name: 'stepper-advanced.service.ts',
+        source: require('!!raw-loader!./demos/advanced/stepper-advanced.service'),
+      },
+      {
+        name: 'custom-stepper-component.ts',
+        source: require('!!raw-loader!./demos/advanced/custom-stepper.component'),
+      },
+      {
+        name: 'custom-stepper.component.html',
+        source: require('!!raw-loader!./demos/advanced/custom-stepper.component.html'),
+      },
+      { name: 'subawardee.component.ts', source: require('!!raw-loader!./demos/advanced/subawardee.component') },
+      { name: 'subawardee.component.html', source: require('!!raw-loader!./demos/advanced/subawardee.component.html') },
+    ],
   },
   uswdsStepper: {
     title: 'USWDS Step Indicator',
@@ -50,10 +65,16 @@ const DEMOS = {
     module: require('!!raw-loader!./demos/uswds-stepper/uswds-stepper.module.ts'),
     path: 'libs/documentation/src/lib/components/formly-stepper/demos/uswds-stepper',
     files: [
-      {name: 'uswds-custom-stepper.component.ts', source: require('!!raw-loader!./demos/uswds-stepper/uswds-custom-stepper.component')},
-      {name: 'uswds-custom-stepper.component.html', source: require('!!raw-loader!./demos/uswds-stepper/uswds-custom-stepper.component.html')}
-    ]
-  }
+      {
+        name: 'uswds-custom-stepper.component.ts',
+        source: require('!!raw-loader!./demos/uswds-stepper/uswds-custom-stepper.component'),
+      },
+      {
+        name: 'uswds-custom-stepper.component.html',
+        source: require('!!raw-loader!./demos/uswds-stepper/uswds-custom-stepper.component.html'),
+      },
+    ],
+  },
 };
 
 export const ROUTES = [
@@ -66,9 +87,9 @@ export const ROUTES = [
           pkg: 'formly',
           type: 'components',
           name: 'SdsStepperComponent',
-          formType: 'stepper'
-        }
-      ]
+          formType: 'stepper',
+        },
+      ],
     },
     component: ComponentWrapperComponent,
     children: [
@@ -76,8 +97,8 @@ export const ROUTES = [
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
       { path: 'template', component: DocumentationTemplatePage },
-    ]
-  }
+    ],
+  },
 ];
 
 @NgModule({
@@ -86,8 +107,8 @@ export const ROUTES = [
     DocumentationComponentsSharedModule,
     StepperAdvancedModule,
     UswdsStepperModule,
-    UnevenStepsStepperModule
-  ]
+    UnevenStepsStepperModule,
+  ],
 })
 export class StepperModule {
   constructor(demoList: DocumentationDemoList) {

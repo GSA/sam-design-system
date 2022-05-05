@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {dispatchFakeEvent} from './dispatch-events';
+import { dispatchFakeEvent } from './dispatch-events';
 
 /**
  * Patches an elements focus and blur methods to emit events consistently and predictably.

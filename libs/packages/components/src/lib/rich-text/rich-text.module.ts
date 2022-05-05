@@ -9,6 +9,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [CommonModule, CKEditorModule, ReactiveFormsModule, FormsModule],
   exports: [SdsRichTextComponent],
   declarations: [SdsRichTextComponent],
-  providers: []
+  providers: [],
 })
 export class SdsRichTextModule {}

@@ -16,8 +16,8 @@ const DEMOS = {
     type: FormlyTabsBasicComponent,
     code: require('!!raw-loader!./demos/basic/formly-tabs-basic.component'),
     markup: require('!!raw-loader!./demos/basic/formly-tabs-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/formly-tabs/demos/basic'
-  }
+    path: 'libs/documentation/src/lib/components/formly-tabs/demos/basic',
+  },
 };
 
 export const ROUTES = [
@@ -30,9 +30,9 @@ export const ROUTES = [
           pkg: 'formly',
           type: 'components',
           name: 'FormlyFieldTabsComponent',
-          formType: 'tabs'
-        }
-      ]
+          formType: 'tabs',
+        },
+      ],
     },
     component: ComponentWrapperComponent,
     children: [
@@ -40,16 +40,12 @@ export const ROUTES = [
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
       { path: 'template', component: DocumentationTemplatePage },
-    ]
-  }
+    ],
+  },
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    DocumentationComponentsSharedModule,
-    FormlyTabsBasicModule,
-  ]
+  imports: [CommonModule, DocumentationComponentsSharedModule, FormlyTabsBasicModule],
 })
 export class FormlyTabsModule {
   constructor(demoList: DocumentationDemoList) {

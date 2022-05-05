@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  SDSAutocompletelConfiguration,
-  SDSSelectedItemModel,
-  SelectionMode,
-} from '@gsa-sam/components';
+import { SDSAutocompletelConfiguration, SDSSelectedItemModel, SelectionMode } from '@gsa-sam/components';
 
 import { AutocompleteSampleDataService } from '../services/autocomplete-sample.service';
 

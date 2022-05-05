@@ -1,4 +1,3 @@
-
 import { FormlyModule } from '@ngx-formly/core';
 import { NgModule } from '@angular/core';
 import { RadioBasic } from './radio-basic.component';
@@ -10,6 +9,6 @@ import { SdsFormlyModule } from '@gsa-sam/sam-formly';
   imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot()],
   declarations: [RadioBasic],
   exports: [RadioBasic],
-  bootstrap: [RadioBasic]
+  bootstrap: [RadioBasic],
 })
 export class RadioBasicModule {}

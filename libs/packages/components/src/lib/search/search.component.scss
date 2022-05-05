@@ -7,7 +7,7 @@ input::-ms-clear {
     display: none;
   }
 
-  .postfix~input {
+  .postfix ~ input {
     width: 80%;
     width: calc(100% - 8rem);
     margin-left: 0px;
@@ -19,8 +19,8 @@ input::-ms-clear {
     position: absolute;
     right: 15px;
     font-size: 2rem;
-    -webkit-transition: color .2s;
-    transition: color .2s;
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
   }
 
   .close-icon {
@@ -28,12 +28,12 @@ input::-ms-clear {
     top: 4px;
   }
 }
-.no-drop{
+.no-drop {
   width: 100%;
 }
 
-@media only screen and (min-width: 480px){
+@media only screen and (min-width: 480px) {
   .usa-form.usa-search select {
-      max-width: unset;
+    max-width: unset;
   }
 }

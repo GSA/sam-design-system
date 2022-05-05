@@ -3,15 +3,11 @@ import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { BehaviorSubject } from 'rxjs';
 import { AutocompleteSampleDataService } from './autocomplete-sample.service';
-import {
-  SDSAutocompletelConfiguration,
-  SDSSelectedItemModel,
-  SelectionMode
-} from '@gsa-sam/components';
+import { SDSAutocompletelConfiguration, SDSSelectedItemModel, SelectionMode } from '@gsa-sam/components';
 @Component({
   templateUrl: './autocomplete-validation.component.html',
   selector: `sds-formly-validation-demo`,
-  providers: [AutocompleteSampleDataService]
+  providers: [AutocompleteSampleDataService],
 })
 export class FormlyAutocompleteValidation {
   results: any;
@@ -19,8 +15,8 @@ export class FormlyAutocompleteValidation {
   model = {
     filters: {
       agency: [],
-      items: []
-    }
+      items: [],
+    },
   };
   options: FormlyFormOptions = {};
   public settings = new SDSAutocompletelConfiguration();
@@ -41,8 +37,8 @@ export class FormlyAutocompleteValidation {
             service: this.service,
             required: true,
             configuration: this.settings,
-            model: this.autocompleteModel
-          }
+            model: this.autocompleteModel,
+          },
         },
         {
           key: 'agency',
@@ -52,11 +48,11 @@ export class FormlyAutocompleteValidation {
             service: this.service,
             required: true,
             configuration: this.multipleSettings,
-            model: this.autocompleteModel
-          }
-        }
-      ]
-    }
+            model: this.autocompleteModel,
+          },
+        },
+      ],
+    },
   ];
 
   constructor(public service: AutocompleteSampleDataService) {

@@ -1,11 +1,4 @@
-import {
-  Directive,
-  Output,
-  EventEmitter,
-  ElementRef,
-  OnInit,
-  OnDestroy
-} from '@angular/core';
+import { Directive, Output, EventEmitter, ElementRef, OnInit, OnDestroy } from '@angular/core';
 import { ViewportRuler } from '@angular/cdk/overlay';
 import { startWith } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
@@ -22,10 +15,7 @@ export class SdsObserveWidthDirective implements OnInit, OnDestroy {
   /** Subscription to window resize stream */
   windowResize$: Subscription;
 
-  constructor(
-    private _elementRef: ElementRef<HTMLElement>,
-    private viewportRuler: ViewportRuler
-  ) {}
+  constructor(private _elementRef: ElementRef<HTMLElement>, private viewportRuler: ViewportRuler) {}
 
   ngOnInit() {
     this.windowResize$ = this.viewportRuler

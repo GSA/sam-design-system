@@ -1,10 +1,16 @@
-<form class="usa-radio" [id]="id" [attr.aria-label]="to.ariaLabel? to.ariaLabel : to.label"
-  [attr.aria-describedby]="to.description ? id + '_description' : undefined" [ngClass]="{'horizontal': to.horizontal, 'grid-row': to.horizontal}">
-  <ng-container *ngFor="
+<form
+  class="usa-radio"
+  [id]="id"
+  [attr.aria-label]="to.ariaLabel? to.ariaLabel : to.label"
+  [attr.aria-describedby]="to.description ? id + '_description' : undefined"
+  [ngClass]="{'horizontal': to.horizontal, 'grid-row': to.horizontal}"
+>
+  <ng-container
+    *ngFor="
   let option of to.options | formlySelectOptions: field | async;
   let i = index"
-  [ngTemplateOutlet]="(to.template ? to.template : defaultTemplate)"
-  [ngTemplateOutletContext]="{
+    [ngTemplateOutlet]="(to.template ? to.template : defaultTemplate)"
+    [ngTemplateOutletContext]="{
     $implicit: option,
     i: i,
     to:to,
@@ -12,36 +18,54 @@
     id: id,
     showError: showError,
     formControl: formControl
-  }">
+  }"
+  >
   </ng-container>
 </form>
 
 <ng-template let-option let-i="i" let-to="to" #defaultTemplate>
   <div class="grid-row" [ngClass]="{'horizontal-option': to.horizontal}">
     <div>
-      <input class="usa-radio__input"
-        [ngClass]="{'usa-radio__input--tile': to.tile, 'usa-input--error': !showError}" [formlyAttributes]="field"
-        [id]="id + '_' + i" type="radio" [name]="id" checked="checked" [formControl]="formControl"
-        [value]="option.value">
+      <input
+        class="usa-radio__input"
+        [ngClass]="{'usa-radio__input--tile': to.tile, 'usa-input--error': !showError}"
+        [formlyAttributes]="field"
+        [id]="id + '_' + i"
+        type="radio"
+        [name]="id"
+        checked="checked"
+        [formControl]="formControl"
+        [value]="option.value"
+      />
 
       <label class="usa-radio__label" [ngClass]="to.optionsClass ? to.optionsClass : ''" [for]="id + '_' + i">
         <span [innerHtml]="option.label"></span>
         <ng-container *ngIf="to.options[i].description && to.options[i].description.length">
           <div class="usa-checkbox__label-description">
-            <span class="display-block" *ngFor="let description of to.options[i].description"
-              [innerHtml]="description"></span>
+            <span
+              class="display-block"
+              *ngFor="let description of to.options[i].description"
+              [innerHtml]="description"
+            ></span>
           </div>
         </ng-container>
       </label>
     </div>
 
     <div *ngIf="to.options[i].tooltipText">
-      <p #tipContent [ngClass]="to.options[i].tooltipClass" class="margin-1"
-        [innerHTML]="to.options[i].tooltipText">
-      </p>
-      <usa-icon class="padding-top-105 margin-left-1"
+      <p
+        #tipContent
+        [ngClass]="to.options[i].tooltipClass"
+        class="margin-1"
+        [innerHTML]="to.options[i].tooltipText"
+      ></p>
+      <usa-icon
+        class="padding-top-105 margin-left-1"
         [position]="to.options[i].tooltipPosition ? to.options[i].tooltipPosition :'right'"
-        [sdsTooltip]="tipContent" [size]="'lg'" [icon]="'info-circle'"></usa-icon>
+        [sdsTooltip]="tipContent"
+        [size]="'lg'"
+        [icon]="'info-circle'"
+      ></usa-icon>
     </div>
   </div>
 </ng-template>

@@ -9,10 +9,7 @@ import { FieldWrapper } from '@ngx-formly/core';
   selector: 'sam-formly-filter-wrapper-form-field',
   template: `
     <div class="wrapper-body">
-      <div
-        class="sds-accordion__trigger header-label"
-        [attr.aria-hidden]="to.ariaHidden ? 'false' : 'true'"
-      >
+      <div class="sds-accordion__trigger header-label" [attr.aria-hidden]="to.ariaHidden ? 'false' : 'true'">
         {{ to.label }}
       </div>
       <ng-container #fieldComponent></ng-container>

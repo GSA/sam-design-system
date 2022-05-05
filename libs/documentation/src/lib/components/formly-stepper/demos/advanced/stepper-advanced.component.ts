@@ -1,19 +1,15 @@
-import { Component } from "@angular/core";
-import { FormlyUtilsService, SdsStepper } from "@gsa-sam/sam-formly";
-import { StepperAdvancedService } from "./stepper-advanced.service";
+import { Component } from '@angular/core';
+import { FormlyUtilsService, SdsStepper } from '@gsa-sam/sam-formly';
+import { StepperAdvancedService } from './stepper-advanced.service';
 
 @Component({
   selector: `stepper-advanced-demo`,
   templateUrl: `./stepper-advanced.component.html`,
-  providers: [
-    StepperAdvancedService,
-    SdsStepper
-  ]
+  providers: [StepperAdvancedService, SdsStepper],
 })
 export class StepperAdvancedDemoComponent {
-
   model = {
-    subawardee: []
+    subawardee: [],
   };
 
   showLoading = false;
@@ -46,20 +42,18 @@ export class StepperAdvancedDemoComponent {
           this.stepperAdvancedService.getEntityInformation(),
           this.stepperAdvancedService.getReportDetails(),
           this.stepperAdvancedService.getTaxpayerForm(),
-        ]
+        ],
       },
       validationFn: () => true,
-    }
-  }
+    },
+  };
 
   currentStepId: string;
   stepValidityMap = {};
 
   linear = false;
   reinitializeComponents = false;
-  constructor(
-    private stepperAdvancedService: StepperAdvancedService,
-  ) {}
+  constructor(private stepperAdvancedService: StepperAdvancedService) {}
 
   onStepChange($event) {
     this.currentStepId = $event.id;
@@ -69,7 +63,7 @@ export class StepperAdvancedDemoComponent {
     }
   }
 
-  onSaveData(data: {model: any, metadata: any}) {
+  onSaveData(data: { model: any; metadata: any }) {
     console.log(data);
   }
 

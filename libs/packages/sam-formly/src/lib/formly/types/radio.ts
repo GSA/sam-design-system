@@ -1,12 +1,11 @@
-import { AfterViewInit, Component, TemplateRef, ViewChild} from '@angular/core';
+import { AfterViewInit, Component, TemplateRef, ViewChild } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 
 @Component({
   selector: 'sds-formly-field-radio',
-  templateUrl: './radio.html'
+  templateUrl: './radio.html',
 })
-export class FormlyFieldRadioComponent extends FieldType implements AfterViewInit{
-
+export class FormlyFieldRadioComponent extends FieldType implements AfterViewInit {
   @ViewChild('defaultTemplate') defaultTemplate: TemplateRef<any>;
   public displayedTemplate = null;
 
@@ -15,10 +14,10 @@ export class FormlyFieldRadioComponent extends FieldType implements AfterViewIni
       options: [],
     },
   };
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     const passedIn = this.to.template;
-    setTimeout(()=>{
+    setTimeout(() => {
       this.displayedTemplate = passedIn ? passedIn : this.defaultTemplate;
-    })
+    });
   }
 }

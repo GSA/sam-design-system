@@ -20,7 +20,13 @@ import {
 } from './dialog-content.directives';
 
 @NgModule({
-  imports: [CommonModule, OverlayModule, PortalModule, IconModule, NgxBootstrapIconsModule.pick({x, alertError, infoCircle, exclamationTriangle})],
+  imports: [
+    CommonModule,
+    OverlayModule,
+    PortalModule,
+    IconModule,
+    NgxBootstrapIconsModule.pick({ x, alertError, infoCircle, exclamationTriangle }),
+  ],
   exports: [
     SdsDialogContainerComponent,
     SdsDialogCloseDirective,
@@ -37,11 +43,7 @@ import {
     SdsDialogActionsDirective,
     SdsDialogContentDirective,
   ],
-  providers: [
-    SdsDialogService,
-    SDS_DIALOG_SCROLL_STRATEGY_PROVIDER,
-    SDS_SLIDE_OUT_SCROLL_STRATEGY_PROVIDER,
-  ],
+  providers: [SdsDialogService, SDS_DIALOG_SCROLL_STRATEGY_PROVIDER, SDS_SLIDE_OUT_SCROLL_STRATEGY_PROVIDER],
   entryComponents: [SdsDialogContainerComponent],
 })
 export class SdsDialogModule {}

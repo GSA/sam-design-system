@@ -13,14 +13,11 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": [
-    "@typescript-eslint"
-  ],
+  "plugins": ["@typescript-eslint"],
   "rules": {
     // "no-console": ["error", {
     //   "allow": ["warn", "error"]
     // }]
-
   },
   "ignorePatterns": ["*.spec.ts", "*test.ts"]
 }

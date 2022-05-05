@@ -64,11 +64,8 @@ export class SdsMenuItemComponent implements FocusableOption, OnDestroy {
 
   /** Get item class */
   _getClass(): string {
-    const headerButtonSmall =
-      this._parentMenu.size === 'sm' ? 'sds-button--small' : '';
-    return this._parentMenuHeader
-      ? `sds-button sds-button--circular ${headerButtonSmall}`
-      : 'sds-menu__item';
+    const headerButtonSmall = this._parentMenu.size === 'sm' ? 'sds-button--small' : '';
+    return this._parentMenuHeader ? `sds-button sds-button--circular ${headerButtonSmall}` : 'sds-menu__item';
   }
 
   /** Focuses the menu item. */

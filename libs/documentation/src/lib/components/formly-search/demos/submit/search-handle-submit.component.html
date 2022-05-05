@@ -1,20 +1,24 @@
 <p>
-  Search has been updated to keep the model up to date with each character entered
-by a user. As a result, <code>(modelChange)</code> can no longer be used to
-detect that a user has clicked the submit button.
+  Search has been updated to keep the model up to date with each character entered by a user. As a result,
+  <code>(modelChange)</code> can no longer be used to detect that a user has clicked the submit button.
 </p>
 <p>
-  An output <code>(submit)</code> has been added to search which emits when the
-  user clicks submit. The value of the event contains the current state of the
-  model when the user clicks submit.
+  An output <code>(submit)</code> has been added to search which emits when the user clicks submit. The value of the
+  event contains the current state of the model when the user clicks submit.
 </p>
 <p>
-  To supply a function which handles the <code>(submit)</code> output, pass a
-  function to the <code>submitHandler</code> field in <code>templateOptions</code>
+  To supply a function which handles the <code>(submit)</code> output, pass a function to the
+  <code>submitHandler</code> field in <code>templateOptions</code>
 </p>
 
 <form [formGroup]="form">
-  <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form" (modelChange)="handleOnModelChange($event)"></formly-form>
+  <formly-form
+    [model]="model"
+    [fields]="fields"
+    [options]="options"
+    [form]="form"
+    (modelChange)="handleOnModelChange($event)"
+  ></formly-form>
 </form>
 
-{{model |json}}
+{{ model | json }}

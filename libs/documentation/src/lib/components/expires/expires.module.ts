@@ -1,10 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
-import {
-  DocumentationComponentsSharedModule,
-  DocumentationDemoList,
-} from '../shared';
+import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../shared';
 import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationExamplesPage } from '../shared/examples-page/examples.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
@@ -47,11 +44,7 @@ export const ROUTES = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    DocumentationComponentsSharedModule,
-    ExpiresBasicModule,
-  ],
+  imports: [CommonModule, DocumentationComponentsSharedModule, ExpiresBasicModule],
 })
 export class ExpiresModule {
   constructor(demoList: DocumentationDemoList) {

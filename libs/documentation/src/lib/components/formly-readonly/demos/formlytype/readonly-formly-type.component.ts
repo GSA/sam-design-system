@@ -8,7 +8,6 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
   templateUrl: './readonly-formly-type.component.html',
 })
 export class ReadonlyFormlyTypeComponent {
-
   isReadOnlyMode = false;
 
   form = new FormGroup({});
@@ -16,7 +15,7 @@ export class ReadonlyFormlyTypeComponent {
     {
       template: `<span class="text-error sds-small text-italic">
         *Due to techinical difficulties, we are currently only allowing payment through credit
-        </span>`
+        </span>`,
     },
     {
       type: SdsFormlyTypes.READONLY,
@@ -50,13 +49,13 @@ export class ReadonlyFormlyTypeComponent {
         label: 'Zip Code',
         placeholder: '12345',
         required: true,
-        maxLength: 5
+        maxLength: 5,
       },
     },
-  ]
+  ];
 
   toggleReadonlyMode() {
-    this.isReadOnlyMode = !this.isReadOnlyMode
+    this.isReadOnlyMode = !this.isReadOnlyMode;
     FormlyUtilsService.setReadonlyMode(this.isReadOnlyMode, this.fields);
   }
 }
