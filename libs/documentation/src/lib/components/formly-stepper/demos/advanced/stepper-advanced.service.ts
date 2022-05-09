@@ -4,6 +4,78 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 
 @Injectable()
 export class StepperAdvancedService {
+  getPermission(): FormlyFieldConfig {
+    return {
+      key: 'permissions',
+      fieldGroupClassName: 'grid-row',
+      fieldGroup: [
+        {
+          key: 'permissionsNeeded',
+          template: '<br/><h4><b>what permission</b></h4></br> Select the specfific <br>',
+        },
+        {
+          key: 'typeOfEntity',
+          className: 'desktop: grid-col-12 tablet: grid-col-12',
+          type: SdsFormlyTypes.RADIO,
+          templateOptions: {
+            label: 'What type of entity are you registering?',
+            hideOptions: true,
+            options: [
+              {
+                label: 'Business Or Organization',
+                value: 'business',
+              },
+              {
+                label: 'U.S. State Government',
+                value: 'stateGovt',
+              },
+              {
+                label: 'U.S. Local Government',
+                value: 'localGovt',
+              },
+              {
+                label: 'Tribal Government',
+                value: 'tribal',
+              },
+              {
+                label: 'Foreign Government',
+                value: 'foreign',
+              },
+            ],
+          },
+        },
+        {
+          key: 'contractOpp',
+          type: SdsFormlyTypes.MULTICHECKBOX,
+          className: 'desktop: grid-col-12 tablet: grid-col-12',
+          templateOptions: {
+            label: 'Contract Opportunities',
+            labelClass: 'margin-top-neg-205',
+            group: 'panel',
+            options: [
+              {
+                key: 'read-public',
+                value: 'Read Public',
+              },
+              {
+                key: 'read-sensitive',
+                value: 'Read sensitive',
+              },
+              {
+                key: 'write',
+                value: 'Write public',
+              },
+              {
+                key: 'write-sensitive',
+                value: 'Write sensitive',
+              },
+            ],
+          },
+        },
+      ],
+    };
+  }
+
   getRegistrationPurpose(): FormlyFieldConfig {
     return {
       key: 'purposeOfRegistration',
@@ -46,7 +118,7 @@ export class StepperAdvancedService {
             label: 'Why are you registering this entity to do business with the U.S. government?',
             options: [
               {
-                label: `I want to be able to bid on federal contracts or other procurement opportunities. 
+                label: `I want to be able to bid on federal contracts or other procurement opportunities.
                         I also want to be able to apply for financial assistance programs`,
                 value: 'bidContracts',
               },

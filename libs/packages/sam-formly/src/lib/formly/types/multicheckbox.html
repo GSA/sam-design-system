@@ -1,8 +1,60 @@
 <fieldset class="usa-fieldset">
   <legend class="usa-sr-only">{{ to.label }}</legend>
-  <ul class="sds-list--no-bullets">
+
+  <fieldset *ngIf="to.groupOptions" class="usa-fieldset">
+    <ul class="sds-list--no-bullets">
+      <li class="grid-row" *ngFor="let option of (to.groupOptions | keyvalue); let i = index">
+        <div>
+          <legend>
+            <span class="text-bold display-block">{{option.key}}</span>
+          </legend>
+          <li class="grid-row" *ngFor="let opt of option.value | formlySelectOptions: field | async; let j = index">
+            <div class="usa-checkbox" [class.text-align-end]="to.textAlignEnd">
+              <input
+                class="usa-checkbox__input"
+                [id]="id + '_' + i + j"
+                type="checkbox"
+                [name]="id + '_name_' + i + j"
+                [disabled]="opt.disabled"
+                [value]="opt.value"
+                [formlyAttributes]="field"
+                (change)="onChange(opt.value, $event.target.checked)"
+                [checked]="isChecked(opt)"
+              />
+              <label class="usa-checkbox__label" [for]="id + '_' + i + j">
+                <span
+                  *ngIf="option.value[j].tagText"
+                  class="usa-tag"
+                  [ngClass]="option.value[j].tagClass ? option.value[j].tagClass : 'sds-tag--info-white'"
+                >
+                  {{option.value[j].tagText}}
+                </span>
+                <span [innerHtml]="opt.label"></span>
+              </label>
+            </div>
+            <div *ngIf="option.value[j].tooltipText" class="margin-top-3 margin-left-1">
+              <p
+                #tipContent
+                [ngClass]="option.value[j].tooltipClass"
+                class="margin-1"
+                [innerHTML]="option.value[j].tooltipText"
+              ></p>
+              <usa-icon
+                [position]="option.value[j].tooltipPosition ? option.value[j].tooltipPosition :'right'"
+                [sdsTooltip]="tipContent"
+                [size]="'lg'"
+                [icon]="'info-circle'"
+              ></usa-icon>
+            </div>
+          </li>
+        </div>
+      </li>
+    </ul>
+  </fieldset>
+
+  <ul *ngIf="to.options" class="sds-list--no-bullets">
     <li class="grid-row" *ngIf="to.selectAllOption">
-      <div>
+      <div class="usa-checkbox" [class.text-align-end]="to.textAlignEnd">
         <input
           [id]="id + '_Select'"
           type="checkbox"
@@ -47,7 +99,7 @@
     >
       <ul class="sds-list--no-bullets">
         <li class="grid-row" *ngFor="let option of (to.options | formlySelectOptions: field | async); let i = index">
-          <div>
+          <div class="usa-checkbox" [class.text-align-end]="to.textAlignEnd">
             <input
               class="usa-checkbox__input"
               [id]="id + '_' + i"
@@ -60,10 +112,10 @@
               [checked]="isChecked(option)"
             />
             <label class="usa-checkbox__label" [for]="id + '_' + i">
-              <!-- 
-                The reference of options array through index is done intentionally here rather 
-                than using local variable option because the formlySelectOptions pipe transforms 
-                each option such that they lose all properties except label, value, and disabled 
+              <!--
+                The reference of options array through index is done intentionally here rather
+                than using local variable option because the formlySelectOptions pipe transforms
+                each option such that they lose all properties except label, value, and disabled
             -->
               <span
                 *ngIf="to.options[i].tagText"
@@ -75,8 +127,7 @@
               <span [innerHtml]="option.label"></span>
             </label>
           </div>
-
-          <div *ngIf="to.options[i].tooltipText" class="margin-top-1 margin-left-1">
+          <div *ngIf="to.options[i].tooltipText" class="margin-top-2 margin-left-1">
             <p
               #tipContent
               [ngClass]="to.options[i].tooltipClass"

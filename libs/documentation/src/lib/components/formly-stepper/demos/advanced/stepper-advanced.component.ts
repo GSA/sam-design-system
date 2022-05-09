@@ -18,6 +18,9 @@ export class StepperAdvancedDemoComponent {
     welcome: {
       validationFn: () => true,
     },
+    permission: {
+      fieldConfig: this.stepperAdvancedService.getPermission(),
+    },
     registrationPurpose: {
       fieldConfig: this.stepperAdvancedService.getRegistrationPurpose(),
     },

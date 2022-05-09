@@ -12,6 +12,8 @@ import { MultiCheckboxSelectAll } from './demos/selectall/multicheckbox-selectal
 import { MultiCheckboxSelectAllModule } from './demos/selectall/multicheckbox-selectall.module';
 import { MultiCheckboxExpandableModule } from './demos/expandable/multicheckbox-expandable.module';
 import { MultiCheckboxExpandable } from './demos/expandable/multicheckbox-expandable.component';
+import { MultiCheckboxGroupModule } from './demos/group/multicheckbox-group.module';
+import { MultiCheckboxGroup } from './demos/group/multicheckbox-group.component';
 
 declare var require: any;
 const DEMOS = {
@@ -35,6 +37,14 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/expandable/multicheckbox-expandable.component'),
     markup: require('!!raw-loader!./demos/expandable/multicheckbox-expandable.component.html'),
     path: 'libs/documentation/src/lib/components/formly-multicheckbox/demos/expandable',
+  },
+
+  group: {
+    title: 'Multi checkbox with group',
+    type: MultiCheckboxGroup,
+    code: require('!!raw-loader!./demos/group/multicheckbox-group.component'),
+    markup: require('!!raw-loader!./demos/group/multicheckbox-group.component.html'),
+    path: 'libs/documentation/src/lib/components/formly-multicheckbox/demos/group',
   },
 };
 
@@ -69,6 +79,7 @@ export const ROUTES = [
     MultiCheckboxBasicModule,
     MultiCheckboxSelectAllModule,
     MultiCheckboxExpandableModule,
+    MultiCheckboxGroupModule,
   ],
 })
 export class MultiCheckboxModule {

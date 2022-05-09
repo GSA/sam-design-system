@@ -1,4 +1,6 @@
-<button class="usa-button margin-bottom-3" (click)="toggleLinearMode()">Toggle Linear Mode</button>
+<button class="usa-button margin-bottom-3" (click)="toggleLinearMode()">
+  Toggle Linear Mode
+</button>
 
 <custom-stepper-demo
   #stepper
@@ -18,6 +20,13 @@
   </sds-step>
 
   <sds-step id="entityDetails" text="Entity Details" [editable]="false">
+    <sds-step id="permission" text="permission" [fieldConfig]="stepMap.permission.fieldConfig">
+      <h1 sdsStepHeader class="margin-top-0">
+        permission
+        <hr />
+      </h1>
+    </sds-step>
+
     <sds-step
       id="registrationPurpose"
       text="Purpose of Registration"
@@ -143,6 +152,10 @@
     Review and Submit
     <hr />
   </h1>
+  <<<<<<< HEAD <formly-form [fields]="[stepMap.review.fieldConfig]" [model]="model"> </formly-form>
+  <subawardee-demo [displayInput]="false" [subawardees]="model.subawardee"></subawardee-demo>
+  =======
   <formly-form [fields]="[stepMap.review.fieldConfig]" [model]="model"></formly-form>
   <subawardee-demo [displayInput]="false" [subawardees]="model.subawardee"></subawardee-demo>
+  >>>>>>> 901d9f71d6d371c90119ddbcd8916c5b9b3a569d
 </ng-template>
