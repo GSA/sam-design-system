@@ -14,7 +14,7 @@ import { filter } from 'rxjs/operators';
   selector: 'sam-formly-accordian-form-field',
   template: `
     <usa-accordion #groupAccordion [singleSelect]="!multi" class="sds-accordion--filters">
-      <usa-accordion-item [expanded]="modelHasValue()"]>
+      <usa-accordion-item [expanded]="modelHasValue()" ]>
         <ng-template UsaAccordionHeader>
           <span [attr.class]="to.labelClass">{{ to.label }}</span>
         </ng-template>
@@ -44,8 +44,8 @@ export class FormlyAccordianFormFieldComponent extends FieldWrapper implements A
       return;
     }
 
-    this.resetAllSubscription = this.field.options.fieldChanges.pipe(
-      filter(({ type }) => type === 'resetAll' && this.accordionItem.expanded))
+    this.resetAllSubscription = this.field.options.fieldChanges
+      .pipe(filter(({ type }) => type === 'resetAll' && this.accordionItem.expanded))
       .subscribe(() => {
         if (!this.modelHasValue()) {
           this.accordion.collapse(this.accordionItem.id);

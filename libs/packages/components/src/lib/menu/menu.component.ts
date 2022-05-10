@@ -11,17 +11,10 @@ import {
   TemplateRef,
   ViewChild,
   ViewEncapsulation,
-  OnInit
+  OnInit,
 } from '@angular/core';
 import { AnimationEvent } from '@angular/animations';
-import {
-  ESCAPE,
-  DOWN_ARROW,
-  UP_ARROW,
-  HOME,
-  END,
-  hasModifierKey
-} from '@angular/cdk/keycodes';
+import { ESCAPE, DOWN_ARROW, UP_ARROW, HOME, END, hasModifierKey } from '@angular/cdk/keycodes';
 import { FocusKeyManager, FocusOrigin } from '@angular/cdk/a11y';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Subscription } from 'rxjs';
@@ -37,9 +30,7 @@ export type MenuPositionY = 'above' | 'below';
 export type MenuSizes = 'sm';
 
 /** Injection token used to provide the parent menu to menu items. */
-export const SDS_MENU_TOKEN = new InjectionToken<SdsMenuInterface>(
-  'SDS_MENU_TOKEN'
-);
+export const SDS_MENU_TOKEN = new InjectionToken<SdsMenuInterface>('SDS_MENU_TOKEN');
 
 /** Menu Interface */
 export interface SdsMenuInterface<T = any> {
@@ -64,16 +55,9 @@ export interface SdsMenuInterface<T = any> {
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   animations: [sdsMenuAnimations.transformMenu],
-  providers: [
-    { provide: SDS_MENU_TOKEN, useExisting: SdsMenuComponent }
-  ]
+  providers: [{ provide: SDS_MENU_TOKEN, useExisting: SdsMenuComponent }],
 })
-export class SdsMenuComponent
-  implements
-  OnInit,
-  AfterContentInit,
-  OnDestroy,
-  SdsMenuInterface<SdsMenuItemComponent> {
+export class SdsMenuComponent implements OnInit, AfterContentInit, OnDestroy, SdsMenuInterface<SdsMenuItemComponent> {
   /** After | Before the menu triger element */
   private _xPosition: MenuPositionX = 'after';
 
@@ -165,19 +149,15 @@ export class SdsMenuComponent
   /** Event emitted when the menu is closed. */
   @Output() closed = new EventEmitter<void | 'click' | 'keydown' | 'tab'>();
 
-  constructor(private _elementRef: ElementRef<HTMLElement>) { }
+  constructor(private _elementRef: ElementRef<HTMLElement>) {}
 
   ngOnInit() {
     this.setPositionClasses();
   }
 
   ngAfterContentInit() {
-    this._keyManager = new FocusKeyManager<SdsMenuItemComponent>(
-      this._items
-    ).withWrap();
-    this._tabSubscription = this._keyManager.tabOut.subscribe(() =>
-      this.closed.emit('tab')
-    );
+    this._keyManager = new FocusKeyManager<SdsMenuItemComponent>(this._items).withWrap();
+    this._tabSubscription = this._keyManager.tabOut.subscribe(() => this.closed.emit('tab'));
   }
 
   ngOnDestroy() {
@@ -191,10 +171,7 @@ export class SdsMenuComponent
   }
 
   /** Adds classes to the menu panel based on its position */
-  setPositionClasses(
-    posX: MenuPositionX = this.xPosition,
-    posY: MenuPositionY = this.yPosition
-  ) {
+  setPositionClasses(posX: MenuPositionX = this.xPosition, posY: MenuPositionY = this.yPosition) {
     const classes = this._classList;
     classes['sds-menu-before'] = posX === 'before';
     classes['sds-menu-after'] = posX === 'after';
@@ -237,9 +214,7 @@ export class SdsMenuComponent
       case HOME:
       case END:
         if (!hasModifierKey(event)) {
-          keyCode === HOME
-            ? manager.setFirstItemActive()
-            : manager.setLastItemActive();
+          keyCode === HOME ? manager.setFirstItemActive() : manager.setLastItemActive();
           event.preventDefault();
         }
         break;
@@ -258,7 +233,7 @@ export class SdsMenuComponent
   }
 
   /** Callback that is invoked when the panel animation completes. */
-  _onAnimationDone(event: AnimationEvent) { }
+  _onAnimationDone(event: AnimationEvent) {}
 
   /** Resets the panel animation to its initial state. */
   _resetAnimation() {

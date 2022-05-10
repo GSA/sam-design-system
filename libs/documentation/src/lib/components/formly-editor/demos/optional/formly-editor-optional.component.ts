@@ -7,7 +7,6 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
   selector: `sds-formly-editor-optional-demo`,
 })
 export class EditorOptional {
-
   form = new FormGroup({});
   modelOnBlur = {};
   blurFields: FormlyFieldConfig[] = [
@@ -19,9 +18,8 @@ export class EditorOptional {
         hideOptional: true,
         placeholder: 'eg: type text..',
         regex: /hello/gm,
-        validateOnBlur: true
-
-      }
-    }
+        validateOnBlur: true,
+      },
+    },
   ];
 }

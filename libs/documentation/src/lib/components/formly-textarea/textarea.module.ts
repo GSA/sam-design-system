@@ -16,8 +16,8 @@ const DEMOS = {
     type: TextAreaBasic,
     code: require('!!raw-loader!./demos/basic/textarea-basic.component'),
     markup: require('!!raw-loader!./demos/basic/textarea-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/formly-textarea/demos/basic'
-  }
+    path: 'libs/documentation/src/lib/components/formly-textarea/demos/basic',
+  },
 };
 
 export const ROUTES = [
@@ -30,9 +30,9 @@ export const ROUTES = [
           pkg: 'formly',
           type: 'components',
           name: 'FormlyFieldTextAreaComponent',
-          formType: 'textarea'
-        }
-      ]
+          formType: 'textarea',
+        },
+      ],
     },
     component: ComponentWrapperComponent,
     children: [
@@ -40,16 +40,12 @@ export const ROUTES = [
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
       { path: 'template', component: DocumentationTemplatePage },
-    ]
-  }
+    ],
+  },
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    DocumentationComponentsSharedModule,
-    TextAreaBasicModule
-  ]
+  imports: [CommonModule, DocumentationComponentsSharedModule, TextAreaBasicModule],
 })
 export class TextAreaModule {
   constructor(demoList: DocumentationDemoList) {

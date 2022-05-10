@@ -28,10 +28,10 @@ export class FilterSideNavigationComponent implements OnInit, AfterViewInit {
   };
 
   public filterChange$ = new BehaviorSubject<object>([]);
-  
+
   public navigationModel: SelectionPanelModel = {
     navigationLinks: navigationConfig.navigationLinks,
-    selectionMode: 'SELECTION'
+    selectionMode: 'SELECTION',
   };
 
   public filterPanelConfig;
@@ -42,8 +42,8 @@ export class FilterSideNavigationComponent implements OnInit, AfterViewInit {
     public service: DataService,
     public filterService: FilterService,
     private router: Router,
-    private activatedRoute: ActivatedRoute,
-  ) { }
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.fields = this.filterService.fields;
@@ -63,7 +63,7 @@ export class FilterSideNavigationComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.filterChange$.subscribe((res) => {
-      console.log('filter has changed')
+      console.log('filter has changed');
     });
   }
 
@@ -72,18 +72,19 @@ export class FilterSideNavigationComponent implements OnInit, AfterViewInit {
     this.domainsExpanded = false;
     this.filtersExpanded = true;
     console.log('Selected Domain', $event);
-    this.router.navigate(
-      [],
-      { queryParams: $event.queryParams, relativeTo: this.activatedRoute, queryParamsHandling: 'merge' }
-    );
+    this.router.navigate([], {
+      queryParams: $event.queryParams,
+      relativeTo: this.activatedRoute,
+      queryParamsHandling: 'merge',
+    });
   }
 
   onSubPanelClicked($event: NavigationLink) {
     console.log('Sub Domain selected', $event);
-    this.router.navigate(
-      [],
-      { queryParams: $event.queryParams, relativeTo: this.activatedRoute, queryParamsHandling: 'merge' }
-    );
+    this.router.navigate([], {
+      queryParams: $event.queryParams,
+      relativeTo: this.activatedRoute,
+      queryParamsHandling: 'merge',
+    });
   }
-
 }

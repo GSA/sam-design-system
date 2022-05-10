@@ -5,6 +5,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./icons-scaling.component.scss'],
   selector: `usa-icon-scaling-demo`,
 })
-export class IconsScaling {
-
-}
+export class IconsScaling {}

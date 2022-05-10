@@ -3,9 +3,8 @@
     Search has been updated to keep the model up to date with each character entered by a user.
   </p>
   <p>
-    An output <code>(submit)</code> has been added to search which emits when the
-    user clicks submit. The value of the event contains the current state of the
-    model when the user clicks submit.
+    An output <code>(submit)</code> has been added to search which emits when the user clicks submit. The value of the
+    event contains the current state of the model when the user clicks submit.
   </p>
   <div class="settings-documentation">
     Search Settings:
@@ -34,8 +33,10 @@
 
   <h4>SDS Search with suffix icon</h4>
   <p><code>isSuffixSearchIcon: true</code> is used for suffix the search icon.</p>
-  <sds-search [(ngModel)]="suffixmodel" (ngModelChange)="onsearchModelChanges()"
-    [searchSettings]="suffixSearchIconSettings"></sds-search>
+  <sds-search
+    [(ngModel)]="suffixmodel"
+    (ngModelChange)="onsearchModelChanges()"
+    [searchSettings]="suffixSearchIconSettings"
+  ></sds-search>
   Model: {{ suffixmodel | json }}
-
 </div>

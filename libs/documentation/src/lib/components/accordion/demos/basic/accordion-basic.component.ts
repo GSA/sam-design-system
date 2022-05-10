@@ -3,10 +3,9 @@ import { UsaAccordionComponent, UsaAccordionItem } from '@gsa-sam/ngx-uswds';
 
 @Component({
   templateUrl: 'accordion-basic.component.html',
-  selector: `sds-accordion-basic-demo`
+  selector: `sds-accordion-basic-demo`,
 })
 export class AccordionBasic {
-
   @ViewChild(UsaAccordionComponent) sdsAccordionDemo: UsaAccordionComponent;
   @ViewChildren(UsaAccordionItem) usaAccordionItems: QueryList<UsaAccordionItem>;
 
@@ -39,5 +38,4 @@ export class AccordionBasic {
   toggleMulti(): void {
     this.singleSelect = !this.singleSelect;
   }
-
 }

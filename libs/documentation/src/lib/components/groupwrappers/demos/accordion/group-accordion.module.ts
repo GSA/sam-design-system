@@ -9,6 +9,6 @@ import { SdsFormlyModule } from '@gsa-sam/sam-formly';
   imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot()],
   declarations: [GroupAccordion],
   exports: [GroupAccordion],
-  bootstrap: [GroupAccordion]
+  bootstrap: [GroupAccordion],
 })
 export class GroupAccordionModule {}

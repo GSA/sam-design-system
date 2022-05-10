@@ -1,33 +1,21 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "types": [
-      "jasmine",
-      "node"
-    ],
-    "typeRoots": [
-      "node_modules/@types"
-    ],
+    "types": ["jasmine", "node"],
+    "typeRoots": ["node_modules/@types"],
     "paths": {
-      "@gsa-sam/components": [
-        "dist/libs/components",
-        "libs/packages/components/src/index.ts"
-      ],
-      "@gsa-sam/sam-formly": [
-        "dist/libs/sam-formly",
-        "libs/packages/sam-formly/src/index.ts"
-      ],
+      "@gsa-sam/components": ["dist/libs/components", "libs/packages/components/src/index.ts"],
+      "@gsa-sam/sam-formly": ["dist/libs/sam-formly", "libs/packages/sam-formly/src/index.ts"],
       "@gsa-sam/sam-material-extensions": [
         "dist/libs/sam-material-extensions",
         "libs/packages/sam-material-extensions/src/index.ts"
       ],
-      "@gsa-sam/documentation": [
-        "libs/documentation/src/index.ts"
-      ]
+      "@gsa-sam/documentation": ["libs/documentation/src/index.ts"]
     },
-    "module": "esnext",
+    "module": "esnext"
   },
-  "references": [{
+  "references": [
+    {
       "path": "libs/packages/components"
     },
     {
@@ -37,7 +25,5 @@
       "path": "libs/packages/sam-formly"
     }
   ],
-  "include": [
-    "**/*.ts"
-  ]
+  "include": ["**/*.ts"]
 }

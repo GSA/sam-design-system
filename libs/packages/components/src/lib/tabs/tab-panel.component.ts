@@ -1,11 +1,10 @@
-import { Component, Input, TemplateRef } from "@angular/core";
+import { Component, Input, TemplateRef } from '@angular/core';
 
 @Component({
   selector: `sds-tab-panel`,
-  templateUrl: `./tab-panel.component.html`
+  templateUrl: `./tab-panel.component.html`,
 })
 export class TabPanelComponent {
-
   /**
    * The associated id of this tab panel
    */
@@ -31,5 +30,4 @@ export class TabPanelComponent {
    * Whether this tab panel is disabled for selection
    */
   @Input() disabled: boolean;
-
 }

@@ -6,7 +6,6 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
   templateUrl: './group-accordion.component.html',
   selector: `sds-groupwrappers-accordion-demo`,
 })
-
 export class GroupAccordion {
   form = new FormGroup({});
   model: any = {};
@@ -25,13 +24,13 @@ export class GroupAccordion {
     },
   ];
 
-  multipleFormGroupModel:any ={};
+  multipleFormGroupModel: any = {};
   multipleFormGroupFields: FormlyFieldConfig[] = [
     {
       key: 'filters',
       templateOptions: {
         label: 'Entity Information',
-        group: 'accordion'
+        group: 'accordion',
       },
       fieldGroup: [
         {
@@ -47,9 +46,9 @@ export class GroupAccordion {
               { label: 'Assistance Listings', value: 'al' },
               { label: 'Contract Data', value: 'cd' },
               { label: 'Federal Hierarchy', value: 'fh' },
-              { label: 'Wage Determination', value: 'wd' }
-            ]
-          }
+              { label: 'Wage Determination', value: 'wd' },
+            ],
+          },
         },
         {
           key: 'multiple.default.entity.title',
@@ -58,10 +57,10 @@ export class GroupAccordion {
             label: 'Entity Name',
             placeholder: 'eg: Acme Corporation',
             description: 'Enter the name of your entity.',
-            required: true
-          }
-        }
-      ]
-    }
+            required: true,
+          },
+        },
+      ],
+    },
   ];
 }

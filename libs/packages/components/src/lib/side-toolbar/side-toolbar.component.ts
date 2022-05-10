@@ -33,8 +33,7 @@ export class SdsSideToolbarComponent implements OnInit, OnDestroy {
   // Aria label to apply to back button. If not provided, will default to "Cancel + ${dialogTitleText}"
   @Input() backButtonAria: string;
 
-
-  @Input() responsiveDialogOptions: SdsDialogConfig
+  @Input() responsiveDialogOptions: SdsDialogConfig;
 
   // default value is size of mobile view in px
   @Input() responsiveSize = 480;
@@ -56,7 +55,9 @@ export class SdsSideToolbarComponent implements OnInit, OnDestroy {
     private sdsDialogService: SdsDialogService,
     private breakpointObserver: BreakpointObserver // Will watch for changes between mobile and non-mobile screen size
   ) {
-    console.warn('The side toolbar you are currently using is deprecated. Please instead import SdsSideToolbarModule from @gsa-sam/components')
+    console.warn(
+      'The side toolbar you are currently using is deprecated. Please instead import SdsSideToolbarModule from @gsa-sam/components'
+    );
   }
 
   ngOnInit() {
@@ -65,10 +66,9 @@ export class SdsSideToolbarComponent implements OnInit, OnDestroy {
       this.dialogTitleText = this.responsiveButtonText;
     }
     if (this.backButtonAria === undefined) {
-      this.backButtonAria = `Cancel ${this.dialogTitleText}`
+      this.backButtonAria = `Cancel ${this.dialogTitleText}`;
     }
   }
-
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
@@ -82,10 +82,12 @@ export class SdsSideToolbarComponent implements OnInit, OnDestroy {
       maxHeight: '100vh',
       hasBackdrop: false,
       displayCloseBtn: false,
-      panelClass: ['sds-dialog--full']
+      panelClass: ['sds-dialog--full'],
     };
 
-    let allOptions = this.responsiveDialogOptions ? { ...dialogOptions, ...this.responsiveDialogOptions } : dialogOptions;
+    let allOptions = this.responsiveDialogOptions
+      ? { ...dialogOptions, ...this.responsiveDialogOptions }
+      : dialogOptions;
 
     this.openResponsiveDialog = this.sdsDialogService.open(this.mobile, allOptions);
 
@@ -93,7 +95,7 @@ export class SdsSideToolbarComponent implements OnInit, OnDestroy {
 
     this.openResponsiveDialog.afterClosed().subscribe(() => {
       this.openResponsiveDialog = undefined;
-    })
+    });
   }
 
   private observeViewChange() {

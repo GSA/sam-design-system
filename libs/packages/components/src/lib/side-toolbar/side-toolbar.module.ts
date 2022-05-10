@@ -6,10 +6,7 @@ import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
   declarations: [SdsSideToolbarComponent],
-  imports: [
-    CommonModule, 
-    SdsDialogModule,
-    IconModule,
-  ], exports: [SdsSideToolbarComponent],
+  imports: [CommonModule, SdsDialogModule, IconModule],
+  exports: [SdsSideToolbarComponent],
 })
-export class SdsSideToolbarModule { }
+export class SdsSideToolbarModule {}

@@ -6,10 +6,9 @@ import { NavigationHelper } from '../common-navigation/navigation-helper';
 @Component({
   selector: 'sds-side-navigation',
   templateUrl: './side-navigation.component.html',
-  styleUrls: ['./side-navigation.component.scss']
+  styleUrls: ['./side-navigation.component.scss'],
 })
 export class SdsSideNavigationComponent {
-
   /**
    * Reference to the the Template used for internal links
    */
@@ -23,7 +22,7 @@ export class SdsSideNavigationComponent {
   private sideNavLabelLinkTemplate: TemplateRef<any>;
 
   /**
-   * Reference to the the Template used for external href 
+   * Reference to the the Template used for external href
    */
   @ViewChild('sideNavHREFLinkTemplate', { static: false })
   private sideNavHREFLinkTemplate: TemplateRef<any>;
@@ -35,7 +34,7 @@ export class SdsSideNavigationComponent {
   private sideNavEVENTLinkTemplate: TemplateRef<any>;
 
   /**
-   * A brief description of the purpose of the navigation, omitting the term "navigation", 
+   * A brief description of the purpose of the navigation, omitting the term "navigation",
    * as the screen reader will read both the role and the contents of the label
    */
   @Input() ariaLabel: string;
@@ -72,13 +71,13 @@ export class SdsSideNavigationComponent {
   navigationHelper = new NavigationHelper();
 
   /**
-   * Model used for the different display portions of the side navigation 
+   * Model used for the different display portions of the side navigation
    */
   @Input() model: SideNavigationModel;
 
   /**
    * Selects new item and parents and deselects previous
-   * @param id 
+   * @param id
    */
   select(id: string) {
     this.deselect();
@@ -90,9 +89,9 @@ export class SdsSideNavigationComponent {
 
   /**
    * Selects item if matches passed in id and will select parent
-   * @param id 
-   * @param item 
-   * @param parent 
+   * @param id
+   * @param item
+   * @param parent
    */
   private selectItem(id: string, item: NavigationLink, parent: NavigationLink) {
     if (item.id === id) {
@@ -114,7 +113,6 @@ export class SdsSideNavigationComponent {
       }
     }
   }
-
 
   /**
    * Deselects all the items in the side navigation model
@@ -151,7 +149,7 @@ export class SdsSideNavigationComponent {
 
   /**
    * Link clicked and emits the link data into an event
-   * @param link 
+   * @param link
    */
   linkClickEvent(link: INavigationLink) {
     this.linkEvent.emit(link);
@@ -160,7 +158,7 @@ export class SdsSideNavigationComponent {
 
   /**
    * creates url from provided route and query params
-   * @param item 
+   * @param item
    */
   urlBuilder(item: NavigationLink) {
     let url = item.route;
@@ -179,7 +177,7 @@ export class SdsSideNavigationComponent {
 
   /**
    * creates query string
-   * @param item 
+   * @param item
    */
   private queryStringBuilder(item: NavigationLink) {
     const ret = [];

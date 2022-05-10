@@ -16,8 +16,8 @@ const DEMOS = {
     type: SelectBasic,
     code: require('!!raw-loader!./demos/basic/select-basic.component'),
     markup: require('!!raw-loader!./demos/basic/select-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/formly-select/demos/basic'
-  }
+    path: 'libs/documentation/src/lib/components/formly-select/demos/basic',
+  },
 };
 
 export const ROUTES = [
@@ -30,9 +30,9 @@ export const ROUTES = [
           pkg: 'formly',
           type: 'components',
           name: 'FormlyFieldSelectComponent',
-          formType: 'select'
-        }
-      ]
+          formType: 'select',
+        },
+      ],
     },
     component: ComponentWrapperComponent,
     children: [
@@ -40,16 +40,12 @@ export const ROUTES = [
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
       { path: 'template', component: DocumentationTemplatePage },
-    ]
-  }
+    ],
+  },
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    DocumentationComponentsSharedModule,
-    SelectBasicModule
-  ]
+  imports: [CommonModule, DocumentationComponentsSharedModule, SelectBasicModule],
 })
 export class SelectModule {
   constructor(demoList: DocumentationDemoList) {

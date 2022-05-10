@@ -1,5 +1,4 @@
 <sds-table [data]="data" borderless [tableName]="'borderlessTable'">
-
   <sds-table-column sdsColumnName="id">
     <ng-template #sdsHeaderCell>ID</ng-template>
     <ng-template #sdsCell let-element="element">{{ element.id }}</ng-template>
@@ -14,7 +13,11 @@
   </sds-table-column>
   <sds-table-column sdsColumnName="email">
     <ng-template #sdsHeaderCell>Email</ng-template>
-    <ng-template #sdsCell let-element="element"><a href="https://beta.sam.gov" (click)="$event.stopPropagation()" class="usa-link">{{ element.email }}</a></ng-template>
+    <ng-template #sdsCell let-element="element"
+      ><a href="https://beta.sam.gov" (click)="$event.stopPropagation()" class="usa-link">{{
+        element.email
+      }}</a></ng-template
+    >
   </sds-table-column>
   <sds-table-column sdsColumnName="requests">
     <ng-template #sdsHeaderCell>Requests</ng-template>
@@ -27,6 +30,4 @@
 
   <sds-header-row [displayedColumns]="displayedColumns"></sds-header-row>
   <sds-row [displayedColumns]="displayedColumns"></sds-row>
-
 </sds-table>
-

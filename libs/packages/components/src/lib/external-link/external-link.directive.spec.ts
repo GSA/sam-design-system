@@ -10,14 +10,14 @@ import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/t
     <a id="test" href="google.com">Google </a>
     <a id="test2" [hideIcon]="true" href="google.com" aria-label="test aria label - opens in a new window">Google </a>
     <a id="test3">Not Google </a>
-    <a id="test4" href="{{name}}/settings/test123" aria-label="Test label">Google </a>
+    <a id="test4" href="{{ name }}/settings/test123" aria-label="Test label">Google </a>
     <a id="test5" [hideIcon]="true" href="google.com" aria-label="test aria label with no keywords">Google </a>
     <a id="test6" [hideIcon]="true" href="google.com">Google <span>test element</span></a>
     <a id="test7" href="mailto:google.com">Email Google</a>
-  `
+  `,
 })
 class TestComponent {
-  constructor() { }
+  constructor() {}
   public name = location.hostname;
 }
 
@@ -32,9 +32,9 @@ describe('Sam External Link Directive', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TestComponent, ExternalLinkDirective]
+      declarations: [TestComponent, ExternalLinkDirective],
     }).overrideModule(BrowserDynamicTestingModule, {
-      set: { entryComponents: [] }
+      set: { entryComponents: [] },
     });
 
     fixture = TestBed.createComponent(TestComponent);
@@ -56,7 +56,7 @@ describe('Sam External Link Directive', () => {
     expect(icons.length).toEqual(1);
   });
 
-  it ('Should add aria label attribute to external links using inner text if one does not exist', () => {
+  it('Should add aria label attribute to external links using inner text if one does not exist', () => {
     const testElementWithoutAriaLabel = fixture.debugElement.query(By.css('#test'));
     expect(testElementWithoutAriaLabel.attributes['aria-label']).toEqual('Open Google in a new window');
   });
@@ -73,15 +73,17 @@ describe('Sam External Link Directive', () => {
 
   it('Should update aria label to external link if existing aria label does not indicate opening in new window', () => {
     const testElementWithoutAriaLabel = fixture.debugElement.query(By.css('#test5'));
-    expect(testElementWithoutAriaLabel.nativeElement.getAttribute('aria-label')).toEqual('test aria label with no keywords - opens in a new window');
+    expect(testElementWithoutAriaLabel.nativeElement.getAttribute('aria-label')).toEqual(
+      'test aria label with no keywords - opens in a new window'
+    );
   });
 
-  it ('Should add aria label attribute to external links using href if one does not exist', () => {
+  it('Should add aria label attribute to external links using href if one does not exist', () => {
     const testElementWithoutAriaLabel = fixture.debugElement.query(By.css('#test6'));
     expect(testElementWithoutAriaLabel.attributes['aria-label']).toEqual('Open google.com in a new window');
   });
 
-  it ('Should treat links that start with mailto as internal links', () => {
+  it('Should treat links that start with mailto as internal links', () => {
     const mailToLink = fixture.debugElement.query(By.css('#test7'));
     const externalLinkIcon = mailToLink.nativeElement.querySelector('usa-link--external');
     expect(externalLinkIcon).toBeNull();

@@ -6,11 +6,8 @@ import { SdsTruncatedTextContainerComponent } from './truncate-text-container.co
 @NgModule({
   imports: [],
   exports: [SdsTruncateTextByLineDirective],
-  declarations: [
-    SdsTruncateTextByLineDirective,
-    SdsTruncatedTextContainerComponent
-  ],
+  declarations: [SdsTruncateTextByLineDirective, SdsTruncatedTextContainerComponent],
   providers: [],
-  entryComponents: [SdsTruncatedTextContainerComponent]
+  entryComponents: [SdsTruncatedTextContainerComponent],
 })
 export class SdsTruncateModule {}

@@ -4,22 +4,24 @@ import { FieldType } from '@ngx-formly/core';
 @Component({
   selector: 'sds-formly-field-textarea',
   template: `
-    <div [ngClass]="{'usa-character-count': to.maxLength}">
-      <textarea [formControl]="formControl" [cols]="to.cols"
-        [rows]="to.rows" class="usa-textarea minw-15" [class.usa-input--error]="showError"
+    <div [ngClass]="{ 'usa-character-count': to.maxLength }">
+      <textarea
+        [formControl]="formControl"
+        [cols]="to.cols"
+        [rows]="to.rows"
+        class="usa-textarea minw-15"
+        [class.usa-input--error]="showError"
         [placeholder]="to.placeholder"
         [formlyAttributes]="field"
         [maxlength]="to.maxLength"
         (ngModelChange)="valueChange($event)"
       >
       </textarea>
-      <span [attr.id]="id + '-character-count'" 
-        class="usa-hint"
-        aria-live="polite">
+      <span [attr.id]="id + '-character-count'" class="usa-hint" aria-live="polite">
         <span *ngIf="to.maxLength">
-        {{charactersRemaining}} 
-        {{charactersRemaining === 1 ? 'character' : 'characters'}} 
-        {{charactersRemaining === to.maxLength ? 'allowed' : 'left'}}
+          {{ charactersRemaining }}
+          {{ charactersRemaining === 1 ? 'character' : 'characters' }}
+          {{ charactersRemaining === to.maxLength ? 'allowed' : 'left' }}
         </span>
       </span>
     </div>
@@ -69,5 +71,4 @@ export class FormlyFieldTextAreaComponent extends FieldType implements OnInit {
       this.charactersRemaining = Math.max(0, this.to.maxLength - value.length);
     }
   }
-
 }

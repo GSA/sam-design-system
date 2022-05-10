@@ -17,18 +17,10 @@ import { FieldWrapper } from '@ngx-formly/core';
   selector: 'sds-formly-wrapper-form-field',
   template: `
     <div class="usa-form-group" [class.usa-form-group--error]="showError">
-      <label
-        class="usa-label"
-        *ngIf="to.label && to.hideLabel !== true"
-        [attr.for]="id"
-        [ngClass]="to.labelClass"
-      >
-        <span
-          *ngIf="to.tagText"
-          class="usa-tag"
-          [ngClass]="to.tagClass ? to.tagClass : 'sds-tag--info-white'"
-          >{{ to.tagText }}</span
-        >
+      <label class="usa-label" *ngIf="to.label && to.hideLabel !== true" [attr.for]="id" [ngClass]="to.labelClass">
+        <span *ngIf="to.tagText" class="usa-tag" [ngClass]="to.tagClass ? to.tagClass : 'sds-tag--info-white'">{{
+          to.tagText
+        }}</span>
         <span>{{ to.label }}</span>
         <span *ngIf="!to.required && !to.hideOptional"> (Optional)</span>
       </label>
@@ -36,11 +28,7 @@ import { FieldWrapper } from '@ngx-formly/core';
         {{ to.description }}
       </div>
       <ng-template #fieldComponent></ng-template>
-      <div
-        *ngIf="showError"
-        class="usa-error-message"
-        [style.display]="'block'"
-      >
+      <div *ngIf="showError" class="usa-error-message" [style.display]="'block'">
         <formly-validation-message [field]="field"></formly-validation-message>
       </div>
     </div>

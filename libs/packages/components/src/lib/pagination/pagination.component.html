@@ -1,23 +1,39 @@
 <div class="sds-pagination" *ngIf="displayMode === 'default'">
   <div class="sds-pagination__controls">
-    <button [attr.id]="paginationConfiguration.id +'-previousPage'" (click)="previousPage()">Previous Page</button>
-    <label class="usa-label font-sans-3xs margin-top-1 text-italic text-base usa-sr-only"
-      [attr.for]="paginationConfiguration.id + '-currentPage'">Current Page</label>
-    <input [attr.id]="paginationConfiguration.id +'-currentPage'"
-      class="usa-input usa-input--small font-sans-3xs text-center border-base-light" #currentPage
+    <button [attr.id]="paginationConfiguration.id + '-previousPage'" (click)="previousPage()">Previous Page</button>
+    <label
+      class="usa-label font-sans-3xs margin-top-1 text-italic text-base usa-sr-only"
+      [attr.for]="paginationConfiguration.id + '-currentPage'"
+      >Current Page</label
+    >
+    <input
+      [attr.id]="paginationConfiguration.id + '-currentPage'"
+      class="usa-input usa-input--small font-sans-3xs text-center border-base-light"
+      #currentPage
       [attr.aria-label]="'Page ' + page.pageNumber + ' of ' + page.totalPages"
-      (ngModelChange)="valuechange($event)" [(ngModel)]="page.pageNumber" type="number" min="1"
-      [(attr.max)]="page.totalPages" (focusout)="currentPageFocusOut()" [ngStyle]="{'width': (20 + page.totalPages.toString().length * 10) +'px'}" />
+      (ngModelChange)="valuechange($event)"
+      [(ngModel)]="page.pageNumber"
+      type="number"
+      min="1"
+      [(attr.max)]="page.totalPages"
+      (focusout)="currentPageFocusOut()"
+      [ngStyle]="{ width: 20 + page.totalPages.toString().length * 10 + 'px' }"
+    />
     <span class="sds-pagination__total">
       of <strong>{{ page.totalPages }}</strong>
     </span>
-    <button [attr.id]="paginationConfiguration.id +'-nextPage'" (click)="nextPage()">Next Page</button>
+    <button [attr.id]="paginationConfiguration.id + '-nextPage'" (click)="nextPage()">Next Page</button>
   </div>
   <div class="sds-pagination__results">
-    <label class="usa-label font-sans-3xs text-italic text-base"
-      [attr.for]="paginationConfiguration.id + '-select'">Results per page</label>
-    <select class="usa-select usa-select--small border-base-light" [attr.id]="paginationConfiguration.id + '-select'"
-      (change)="onSelectChange()" [(ngModel)]="page.pageSize">
+    <label class="usa-label font-sans-3xs text-italic text-base" [attr.for]="paginationConfiguration.id + '-select'"
+      >Results per page</label
+    >
+    <select
+      class="usa-select usa-select--small border-base-light"
+      [attr.id]="paginationConfiguration.id + '-select'"
+      (change)="onSelectChange()"
+      [(ngModel)]="page.pageSize"
+    >
       <option *ngFor="let item of options" [ngValue]="item.value">
         {{ item.label }}
       </option>
@@ -28,8 +44,13 @@
 <div aria-live="polite">
   <div class="sds-pagination" *ngIf="totalItems && displayMode === 'results'">
     <div class="text-semibold font-sans-3xs">
-      Showing {{(page.pageNumber-1)*page.pageSize+1 | number:'1.0':'en-US'}} - {{((page.pageNumber-1)*page.pageSize+page.pageSize) > totalItems ? (totalItems | number:'1.0':'en-US') : ((page.pageNumber-1)*page.pageSize+page.pageSize | number:'1.0':'en-US') }} of {{totalItems | number:'1.0':'en-US'}} results
+      Showing {{ (page.pageNumber - 1) * page.pageSize + 1 | number: '1.0':'en-US' }} -
+      {{
+        (page.pageNumber - 1) * page.pageSize + page.pageSize > totalItems
+          ? (totalItems | number: '1.0':'en-US')
+          : ((page.pageNumber - 1) * page.pageSize + page.pageSize | number: '1.0':'en-US')
+      }}
+      of {{ totalItems | number: '1.0':'en-US' }} results
     </div>
   </div>
 </div>
-

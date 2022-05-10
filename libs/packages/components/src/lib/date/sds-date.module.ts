@@ -2,13 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { SdsDatePipe } from './sds-date.pipe';
 
-
 @NgModule({
   declarations: [SdsDatePipe],
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   exports: [SdsDatePipe],
-  providers: [DatePipe]
+  providers: [DatePipe],
 })
-export class SdsDateModule { }
+export class SdsDateModule {}

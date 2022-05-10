@@ -3,10 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SDSTabOutsideDirective } from './taboutside.directive';
 @NgModule({
-  imports: [
-    CommonModule, FormsModule
-  ],
+  imports: [CommonModule, FormsModule],
   declarations: [SDSTabOutsideDirective],
-  exports: [SDSTabOutsideDirective]
+  exports: [SDSTabOutsideDirective],
 })
-export class SdsTabOutsideModule { }
+export class SdsTabOutsideModule {}

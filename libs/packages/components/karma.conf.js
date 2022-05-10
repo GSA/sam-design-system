@@ -4,16 +4,14 @@
 const { join } = require('path');
 const getBaseKarmaConfig = require('../../../karma.conf');
 
-module.exports = function(config) {
+module.exports = function (config) {
   const baseConfig = getBaseKarmaConfig();
   config.set({
     ...baseConfig,
     coverageIstanbulReporter: {
       ...baseConfig.coverageIstanbulReporter,
-      dir: join(__dirname, '../../../coverage/libs/components')
+      dir: join(__dirname, '../../../coverage/libs/components'),
     },
-    files: [
-      "../../../node_modules/@angular/cdk/overlay-prebuilt.css"
-    ]
+    files: ['../../../node_modules/@angular/cdk/overlay-prebuilt.css'],
   });
 };

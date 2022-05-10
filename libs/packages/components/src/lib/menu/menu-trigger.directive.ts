@@ -9,31 +9,22 @@ import {
   HostBinding,
   HostListener,
 } from '@angular/core';
-import {
-  FocusMonitor,
-  FocusOrigin,
-  isFakeMousedownFromScreenReader
-} from '@angular/cdk/a11y';
+import { FocusMonitor, FocusOrigin, isFakeMousedownFromScreenReader } from '@angular/cdk/a11y';
 import {
   FlexibleConnectedPositionStrategy,
   HorizontalConnectionPos,
   Overlay,
   OverlayConfig,
   OverlayRef,
-  VerticalConnectionPos
+  VerticalConnectionPos,
 } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { normalizePassiveListenerOptions } from '@angular/cdk/platform';
 import { merge, Subscription } from 'rxjs';
-import {
-  SdsMenuInterface,
-  SdsMenuComponent,
-  MenuPositionX,
-  MenuPositionY
-} from './menu.component';
+import { SdsMenuInterface, SdsMenuComponent, MenuPositionX, MenuPositionY } from './menu.component';
 
 @Directive({
-  selector: '[sdsMenuTriggerFor]'
+  selector: '[sdsMenuTriggerFor]',
 })
 export class SdsMenuTriggerForDirective implements OnDestroy {
   /** ARIA haspopup for the menu trigger. */
@@ -141,13 +132,9 @@ export class SdsMenuTriggerForDirective implements OnDestroy {
     }
     const overlayRef = this._createOverlay();
     const overlayConfig = overlayRef.getConfig();
-    this._setPosition(
-      overlayConfig.positionStrategy as FlexibleConnectedPositionStrategy
-    );
+    this._setPosition(overlayConfig.positionStrategy as FlexibleConnectedPositionStrategy);
     overlayRef.attach(this._getPortal());
-    this._closingActionsSubscription = this._menuClosingActions().subscribe(
-      () => this.closeMenu()
-    );
+    this._closingActionsSubscription = this._menuClosingActions().subscribe(() => this.closeMenu());
     this._initMenu();
     if (this.menu instanceof SdsMenuComponent) {
       this.menu._startAnimation();
@@ -206,7 +193,6 @@ export class SdsMenuTriggerForDirective implements OnDestroy {
       this.menu._resetAnimation();
       this._resetMenu();
     }
-    
   }
 
   /**
@@ -216,9 +202,7 @@ export class SdsMenuTriggerForDirective implements OnDestroy {
   private _createOverlay(): OverlayRef {
     if (!this._overlayRef) {
       const config = this._getOverlayConfig();
-      this._subscribeToPositions(
-        config.positionStrategy as FlexibleConnectedPositionStrategy
-      );
+      this._subscribeToPositions(config.positionStrategy as FlexibleConnectedPositionStrategy);
       this._overlayRef = this._overlay.create(config);
       this._overlayRef.keydownEvents().subscribe();
     }
@@ -238,7 +222,7 @@ export class SdsMenuTriggerForDirective implements OnDestroy {
         .withTransformOriginOn('.sds-overlay'),
       hasBackdrop: true,
       backdropClass: 'cdk-overlay-transparent-backdrop',
-      scrollStrategy: this._overlay.scrollStrategies.reposition()
+      scrollStrategy: this._overlay.scrollStrategies.reposition(),
     });
   }
 
@@ -246,14 +230,10 @@ export class SdsMenuTriggerForDirective implements OnDestroy {
    * Listens to changes in the position of the overlay and sets the correct classes
    * on the menu based on the new position.
    */
-  private _subscribeToPositions(
-    position: FlexibleConnectedPositionStrategy
-  ): void {
-    position.positionChanges.subscribe(change => {
-      const posX: MenuPositionX =
-        change.connectionPair.overlayX === 'start' ? 'after' : 'before';
-      const posY: MenuPositionY =
-        change.connectionPair.overlayY === 'top' ? 'below' : 'above';
+  private _subscribeToPositions(position: FlexibleConnectedPositionStrategy): void {
+    position.positionChanges.subscribe((change) => {
+      const posX: MenuPositionX = change.connectionPair.overlayX === 'start' ? 'after' : 'before';
+      const posY: MenuPositionY = change.connectionPair.overlayY === 'top' ? 'below' : 'above';
 
       this.menu.setPositionClasses(posX, posY);
     });
@@ -287,22 +267,22 @@ export class SdsMenuTriggerForDirective implements OnDestroy {
         originY,
         overlayX: overlayFallbackX,
         overlayY,
-        offsetY
+        offsetY,
       },
       {
         originX,
         originY: originFallbackY,
         overlayX,
         overlayY: overlayFallbackY,
-        offsetY: -offsetY
+        offsetY: -offsetY,
       },
       {
         originX: originFallbackX,
         originY: originFallbackY,
         overlayX: overlayFallbackX,
         overlayY: overlayFallbackY,
-        offsetY: -offsetY
-      }
+        offsetY: -offsetY,
+      },
     ]);
   }
 
@@ -316,10 +296,7 @@ export class SdsMenuTriggerForDirective implements OnDestroy {
   /** Gets the portal that should be attached to the overlay. */
   private _getPortal(): TemplatePortal {
     if (!this._portal || this._portal.templateRef !== this.menu.templateRef) {
-      this._portal = new TemplatePortal(
-        this.menu.templateRef,
-        this._viewContainerRef
-      );
+      this._portal = new TemplatePortal(this.menu.templateRef, this._viewContainerRef);
     }
     return this._portal;
   }

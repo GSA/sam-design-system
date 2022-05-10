@@ -16,7 +16,6 @@ import { FieldType } from '@ngx-formly/core';
       [type]="to.inputType ? to.inputType : 'text'"
       [formControl]="formControl"
     />
-
   `,
 })
-export class FormlyFieldInputComponent extends FieldType { }
+export class FormlyFieldInputComponent extends FieldType {}

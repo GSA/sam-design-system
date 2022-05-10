@@ -3,10 +3,8 @@ import { CommonModule } from '@angular/common';
 import { CollapseDirective } from './collapse.directive';
 
 @NgModule({
-  declarations: [ CollapseDirective],
-  imports: [
-    CommonModule
-  ],
-  exports: [CollapseDirective]
+  declarations: [CollapseDirective],
+  imports: [CommonModule],
+  exports: [CollapseDirective],
 })
-export class SdsCollapseModule { }
+export class SdsCollapseModule {}

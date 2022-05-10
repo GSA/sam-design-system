@@ -2,9 +2,13 @@
   <ng-container *ngIf="stepTemplate; else formlyField" [ngTemplateOutlet]="stepTemplate"></ng-container>
   <ng-template #formlyField>
     <ng-content select="[sdsStepHeader]"></ng-content>
-    <formly-form *ngIf="fieldConfig"
-      [model]="model" [fields]="[fieldConfig]"
-      [options]="options" (modelChange)="onModelChange($event)">
+    <formly-form
+      *ngIf="fieldConfig"
+      [model]="model"
+      [fields]="[fieldConfig]"
+      [options]="options"
+      (modelChange)="onModelChange($event)"
+    >
     </formly-form>
     <ng-content select="[sdsStepFooter]"></ng-content>
   </ng-template>

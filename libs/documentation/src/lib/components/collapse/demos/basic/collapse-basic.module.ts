@@ -5,11 +5,8 @@ import { SdsCollapseModule } from '@gsa-sam/components';
 
 @NgModule({
   declarations: [CollapseBasic],
-  imports: [
-    CommonModule,
-    SdsCollapseModule
-  ],
+  imports: [CommonModule, SdsCollapseModule],
   exports: [CollapseBasic],
-  bootstrap: [CollapseBasic]
+  bootstrap: [CollapseBasic],
 })
 export class CollapseBasicModule {}

@@ -6,7 +6,6 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
   templateUrl: './labelwrapper-basic.component.html',
   selector: `sds-labelwrapper-basic-demo`,
 })
-
 export class LabelWrapperBasic {
   form = new FormGroup({});
   model: any = {};
@@ -18,7 +17,7 @@ export class LabelWrapperBasic {
       type: 'input',
       templateOptions: {
         label: 'Input',
-        placeholder: 'eg: Acme Corporation'
+        placeholder: 'eg: Acme Corporation',
       },
     },
   ];

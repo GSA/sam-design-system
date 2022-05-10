@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  SDSAutocompletelConfiguration,
-  SDSSelectedItemModel,
-  SelectionMode,
-} from '@gsa-sam/components';
+import { SDSAutocompletelConfiguration, SDSSelectedItemModel, SelectionMode } from '@gsa-sam/components';
 import { SampleAutocompleteData } from '../services/autocomplete-sample.data';
 import { AutocompleteSampleDataService } from '../services/autocomplete-sample.service';
 
@@ -29,7 +25,7 @@ export class AutocompleteBasic implements OnInit {
     console.log(value);
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   setup() {
     this.settings.id = 'autocompleteBasic';

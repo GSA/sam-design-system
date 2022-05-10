@@ -3,15 +3,11 @@ import { FieldType } from '@ngx-formly/core';
 
 @Directive()
 export abstract class AbstractSdsFormly extends FieldType implements OnInit {
-
   public cdr: ChangeDetectorRef;
   public template: any;
 
   public ngOnInit() {
-    this.setProperties(
-      this.template,
-      (<any>this).field.templateOptions
-    );
+    this.setProperties(this.template, (<any>this).field.templateOptions);
   }
 
   public setProperties(component: any, configuration: any) {

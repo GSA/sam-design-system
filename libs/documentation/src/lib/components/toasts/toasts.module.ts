@@ -3,10 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DocumentationExamplesPage } from '../shared/examples-page/examples.component';
 import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
-import {
-  DocumentationComponentsSharedModule,
-  DocumentationDemoList,
-} from '../shared/index';
+import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { ToastsBasicModule } from './demos/basic/toasts-basic.module';
 import { ToastsBasic } from './demos/basic/toasts-basic.component';
@@ -48,11 +45,7 @@ export const ROUTES = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    DocumentationComponentsSharedModule,
-    ToastsBasicModule,
-  ],
+  imports: [CommonModule, DocumentationComponentsSharedModule, ToastsBasicModule],
 })
 export class ToastsModule {
   constructor(demoList: DocumentationDemoList) {

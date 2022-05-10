@@ -13,7 +13,7 @@ const ChromeFirefoxMocks = {
     key: 'ArrowUp',
     keyCode: 38,
     keyIdentifier: undefined,
-    which: 38
+    which: 38,
   },
   down: {
     charCode: 0,
@@ -21,7 +21,7 @@ const ChromeFirefoxMocks = {
     key: 'ArrowDown',
     keyCode: 40,
     keyIdentifier: undefined,
-    which: 40
+    which: 40,
   },
   left: {
     charCode: 0,
@@ -29,7 +29,7 @@ const ChromeFirefoxMocks = {
     key: 'ArrowLeft',
     keyCode: 37,
     keyIdentifier: undefined,
-    which: 37
+    which: 37,
   },
   right: {
     charCode: 0,
@@ -37,7 +37,7 @@ const ChromeFirefoxMocks = {
     key: 'ArrowRight',
     keyCode: 39,
     keyIdentifier: undefined,
-    which: 39
+    which: 39,
   },
   tab: {
     charCode: 0,
@@ -45,7 +45,7 @@ const ChromeFirefoxMocks = {
     key: 'Tab',
     keyCode: 9,
     keyIdentifier: undefined,
-    which: 9
+    which: 9,
   },
   esc: {
     charCode: 0,
@@ -53,7 +53,7 @@ const ChromeFirefoxMocks = {
     key: 'Escape',
     keyCode: 27,
     keyIdentifier: undefined,
-    which: 27
+    which: 27,
   },
   space: {
     charCode: 0,
@@ -61,7 +61,7 @@ const ChromeFirefoxMocks = {
     key: ' ',
     keyCode: 32,
     keyIdentifier: undefined,
-    which: 32
+    which: 32,
   },
   shift: {
     charCode: 0,
@@ -69,7 +69,7 @@ const ChromeFirefoxMocks = {
     key: 'Shift',
     keyCode: 16,
     keyIdentifier: undefined,
-    which: 16
+    which: 16,
   },
   backspace: {
     charCode: 0,
@@ -77,7 +77,7 @@ const ChromeFirefoxMocks = {
     key: 'Backspace',
     keyCode: 8,
     keyIdentifier: undefined,
-    which: 8
+    which: 8,
   },
   delete: {
     charCode: 0,
@@ -85,7 +85,7 @@ const ChromeFirefoxMocks = {
     key: 'Delete',
     keyCode: 46,
     keyIdentifier: undefined,
-    which: 46
+    which: 46,
   },
   0: {
     charCode: 0,
@@ -93,7 +93,7 @@ const ChromeFirefoxMocks = {
     key: 0,
     keyCode: 48,
     keyIdentifier: 'U+0030',
-    which: 48
+    which: 48,
   },
   1: {
     charCode: 0,
@@ -101,7 +101,7 @@ const ChromeFirefoxMocks = {
     key: 1,
     keyCode: 49,
     keyIdentifier: 'U+0031',
-    which: 49
+    which: 49,
   },
   2: {
     charCode: 0,
@@ -109,7 +109,7 @@ const ChromeFirefoxMocks = {
     key: 2,
     keyCode: 50,
     keyIdentifier: 'U+0032',
-    which: 50
+    which: 50,
   },
   3: {
     charCode: 0,
@@ -117,7 +117,7 @@ const ChromeFirefoxMocks = {
     key: 3,
     keyCode: 51,
     keyIdentifier: 'U+0033',
-    which: 51
+    which: 51,
   },
   4: {
     charCode: 0,
@@ -125,7 +125,7 @@ const ChromeFirefoxMocks = {
     key: 4,
     keyCode: 52,
     keyIdentifier: 'U+0034',
-    which: 52
+    which: 52,
   },
   5: {
     charCode: 0,
@@ -133,7 +133,7 @@ const ChromeFirefoxMocks = {
     key: 5,
     keyCode: 53,
     keyIdentifier: 'U+0035',
-    which: 53
+    which: 53,
   },
   6: {
     charCode: 0,
@@ -141,7 +141,7 @@ const ChromeFirefoxMocks = {
     key: 6,
     keyCode: 54,
     keyIdentifier: 'U+0036',
-    which: 54
+    which: 54,
   },
   7: {
     charCode: 0,
@@ -149,7 +149,7 @@ const ChromeFirefoxMocks = {
     key: 7,
     keyCode: 55,
     keyIdentifier: 'U+0037',
-    which: 55
+    which: 55,
   },
   8: {
     charCode: 0,
@@ -157,7 +157,7 @@ const ChromeFirefoxMocks = {
     key: 8,
     keyCode: 56,
     keyIdentifier: 'U+0038',
-    which: 56
+    which: 56,
   },
   9: {
     charCode: 0,
@@ -165,8 +165,8 @@ const ChromeFirefoxMocks = {
     key: 9,
     keyCode: 57,
     keyIdentifier: 'U+0039',
-    which: 57
-  }
+    which: 57,
+  },
 };
 
 const SafariMocks = {
@@ -176,7 +176,7 @@ const SafariMocks = {
     key: 'Enter',
     keyCode: 13,
     keyIdentifier: 'Enter',
-    which: 13
+    which: 13,
   },
   up: {
     charCode: 0,
@@ -184,7 +184,7 @@ const SafariMocks = {
     key: 'ArrowUp',
     keyCode: 38,
     keyIdentifier: 'Up',
-    which: 38
+    which: 38,
   },
   down: {
     charCode: 0,
@@ -192,7 +192,7 @@ const SafariMocks = {
     key: 'ArrowDown',
     keyCode: 40,
     keyIdentifier: 'Down',
-    which: 40
+    which: 40,
   },
   left: {
     charCode: 0,
@@ -200,7 +200,7 @@ const SafariMocks = {
     key: 'ArrowLeft',
     keyCode: 37,
     keyIdentifier: 'Left',
-    which: 37
+    which: 37,
   },
   right: {
     charCode: 0,
@@ -208,7 +208,7 @@ const SafariMocks = {
     key: 'ArrowRight',
     keyCode: 39,
     keyIdentifier: 'Right',
-    which: 39
+    which: 39,
   },
   tab: {
     charCode: 0,
@@ -216,7 +216,7 @@ const SafariMocks = {
     key: 'Tab',
     keyCode: 9,
     keyIdentifier: 'U+0009',
-    which: 9
+    which: 9,
   },
   esc: {
     charCode: 0,
@@ -224,7 +224,7 @@ const SafariMocks = {
     key: 'Escape',
     keyCode: 27,
     keyIdentifier: 'U+001B',
-    which: 27
+    which: 27,
   },
   space: {
     charCode: 0,
@@ -232,7 +232,7 @@ const SafariMocks = {
     key: ' ',
     keyCode: 32,
     keyIdentifier: 'U+0020',
-    which: 32
+    which: 32,
   },
   shift: {
     charCode: 0,
@@ -240,7 +240,7 @@ const SafariMocks = {
     key: 'Shift',
     keyCode: 16,
     keyIdentifier: 'Shift',
-    which: 16
+    which: 16,
   },
   backspace: {
     charCode: 0,
@@ -248,7 +248,7 @@ const SafariMocks = {
     key: 'Backspace',
     keyCode: 8,
     keyIdentifier: 'U+0008',
-    which: 8
+    which: 8,
   },
   delete: {
     charCode: 0,
@@ -256,7 +256,7 @@ const SafariMocks = {
     key: 'Delete',
     keyCode: 46,
     keyIdentifier: 'U+007F',
-    which: 46
+    which: 46,
   },
   0: {
     charCode: 0,
@@ -264,7 +264,7 @@ const SafariMocks = {
     key: 0,
     keyCode: 48,
     keyIdentifier: 'U+0030',
-    which: 48
+    which: 48,
   },
   1: {
     charCode: 0,
@@ -272,7 +272,7 @@ const SafariMocks = {
     key: 1,
     keyCode: 49,
     keyIdentifier: 'U+0031',
-    which: 49
+    which: 49,
   },
   2: {
     charCode: 0,
@@ -280,7 +280,7 @@ const SafariMocks = {
     key: 2,
     keyCode: 50,
     keyIdentifier: 'U+0032',
-    which: 50
+    which: 50,
   },
   3: {
     charCode: 0,
@@ -288,7 +288,7 @@ const SafariMocks = {
     key: 3,
     keyCode: 51,
     keyIdentifier: 'U+0033',
-    which: 51
+    which: 51,
   },
   4: {
     charCode: 0,
@@ -296,7 +296,7 @@ const SafariMocks = {
     key: 4,
     keyCode: 52,
     keyIdentifier: 'U+0034',
-    which: 52
+    which: 52,
   },
   5: {
     charCode: 0,
@@ -304,7 +304,7 @@ const SafariMocks = {
     key: 5,
     keyCode: 53,
     keyIdentifier: 'U+0035',
-    which: 53
+    which: 53,
   },
   6: {
     charCode: 0,
@@ -312,7 +312,7 @@ const SafariMocks = {
     key: 6,
     keyCode: 54,
     keyIdentifier: 'U+0036',
-    which: 54
+    which: 54,
   },
   7: {
     charCode: 0,
@@ -320,7 +320,7 @@ const SafariMocks = {
     key: 7,
     keyCode: 55,
     keyIdentifier: 'U+0037',
-    which: 55
+    which: 55,
   },
   8: {
     charCode: 0,
@@ -328,7 +328,7 @@ const SafariMocks = {
     key: 8,
     keyCode: 56,
     keyIdentifier: 'U+0038',
-    which: 56
+    which: 56,
   },
   9: {
     charCode: 0,
@@ -336,8 +336,8 @@ const SafariMocks = {
     key: 9,
     keyCode: 57,
     keyIdentifier: 'U+0039',
-    which: 57
-  }
+    which: 57,
+  },
 };
 
 const EdgeMocks = {
@@ -347,7 +347,7 @@ const EdgeMocks = {
     key: 'Enter',
     keyCode: 13,
     keyIdentifier: undefined,
-    which: 13
+    which: 13,
   },
   up: {
     charCode: 0,
@@ -355,7 +355,7 @@ const EdgeMocks = {
     key: 'Up',
     keyCode: 38,
     keyIdentifier: undefined,
-    which: 38
+    which: 38,
   },
   down: {
     charCode: 0,
@@ -363,7 +363,7 @@ const EdgeMocks = {
     key: 'Down',
     keyCode: 40,
     keyIdentifier: undefined,
-    which: 40
+    which: 40,
   },
   left: {
     charCode: 0,
@@ -371,7 +371,7 @@ const EdgeMocks = {
     key: 'Left',
     keyCode: 37,
     keyIdentifier: undefined,
-    which: 37
+    which: 37,
   },
   right: {
     charCode: 0,
@@ -379,7 +379,7 @@ const EdgeMocks = {
     key: 'Right',
     keyCode: 39,
     keyIdentifier: undefined,
-    which: 39
+    which: 39,
   },
   tab: {
     charCode: 0,
@@ -387,7 +387,7 @@ const EdgeMocks = {
     key: 'Tab',
     keyCode: 9,
     keyIdentifier: undefined,
-    which: 9
+    which: 9,
   },
   esc: {
     charCode: 0,
@@ -395,7 +395,7 @@ const EdgeMocks = {
     key: 'Esc',
     keyCode: 27,
     keyIdentifier: undefined,
-    which: 27
+    which: 27,
   },
   space: {
     charCode: 0,
@@ -403,7 +403,7 @@ const EdgeMocks = {
     key: ' ',
     keyCode: 32,
     keyIdentifier: undefined,
-    which: 32
+    which: 32,
   },
   shift: {
     charCode: 0,
@@ -411,7 +411,7 @@ const EdgeMocks = {
     key: 'Shift',
     keyCode: 16,
     keyIdentifier: undefined,
-    which: 16
+    which: 16,
   },
   backspace: {
     charCode: 0,
@@ -419,7 +419,7 @@ const EdgeMocks = {
     key: 'Backspace',
     keyCode: 8,
     keyIdentifier: undefined,
-    which: 8
+    which: 8,
   },
   delete: {
     charCode: 0,
@@ -427,7 +427,7 @@ const EdgeMocks = {
     key: 'Delete',
     keyCode: 46,
     keyIdentifier: undefined,
-    which: 46
+    which: 46,
   },
   0: {
     charCode: 0,
@@ -435,7 +435,7 @@ const EdgeMocks = {
     key: 0,
     keyCode: 48,
     keyIdentifier: 'U+0030',
-    which: 48
+    which: 48,
   },
   1: {
     charCode: 0,
@@ -443,7 +443,7 @@ const EdgeMocks = {
     key: 1,
     keyCode: 49,
     keyIdentifier: 'U+0031',
-    which: 49
+    which: 49,
   },
   2: {
     charCode: 0,
@@ -451,7 +451,7 @@ const EdgeMocks = {
     key: 2,
     keyCode: 50,
     keyIdentifier: 'U+0032',
-    which: 50
+    which: 50,
   },
   3: {
     charCode: 0,
@@ -459,7 +459,7 @@ const EdgeMocks = {
     key: 3,
     keyCode: 51,
     keyIdentifier: 'U+0033',
-    which: 51
+    which: 51,
   },
   4: {
     charCode: 0,
@@ -467,7 +467,7 @@ const EdgeMocks = {
     key: 4,
     keyCode: 52,
     keyIdentifier: 'U+0034',
-    which: 52
+    which: 52,
   },
   5: {
     charCode: 0,
@@ -475,7 +475,7 @@ const EdgeMocks = {
     key: 5,
     keyCode: 53,
     keyIdentifier: 'U+0035',
-    which: 53
+    which: 53,
   },
   6: {
     charCode: 0,
@@ -483,7 +483,7 @@ const EdgeMocks = {
     key: 6,
     keyCode: 54,
     keyIdentifier: 'U+0036',
-    which: 54
+    which: 54,
   },
   7: {
     charCode: 0,
@@ -491,7 +491,7 @@ const EdgeMocks = {
     key: 7,
     keyCode: 55,
     keyIdentifier: 'U+0037',
-    which: 55
+    which: 55,
   },
   8: {
     charCode: 0,
@@ -499,7 +499,7 @@ const EdgeMocks = {
     key: 8,
     keyCode: 56,
     keyIdentifier: 'U+0038',
-    which: 56
+    which: 56,
   },
   9: {
     charCode: 0,
@@ -507,8 +507,8 @@ const EdgeMocks = {
     key: 9,
     keyCode: 57,
     keyIdentifier: 'U+0039',
-    which: 57
-  }
+    which: 57,
+  },
 };
 
 const IEMocks = {
@@ -518,7 +518,7 @@ const IEMocks = {
     key: 'Enter',
     keyCode: 13,
     keyIdentifier: undefined,
-    which: 13
+    which: 13,
   },
   up: {
     charCode: 0,
@@ -526,7 +526,7 @@ const IEMocks = {
     key: 'Up',
     keyCode: 38,
     keyIdentifier: undefined,
-    which: 38
+    which: 38,
   },
   down: {
     charCode: 0,
@@ -534,7 +534,7 @@ const IEMocks = {
     key: 'Down',
     keyCode: 40,
     keyIdentifier: undefined,
-    which: 40
+    which: 40,
   },
   left: {
     charCode: 0,
@@ -542,7 +542,7 @@ const IEMocks = {
     key: 'Left',
     keyCode: 37,
     keyIdentifier: undefined,
-    which: 37
+    which: 37,
   },
   right: {
     charCode: 0,
@@ -550,7 +550,7 @@ const IEMocks = {
     key: 'Right',
     keyCode: 39,
     keyIdentifier: undefined,
-    which: 39
+    which: 39,
   },
   tab: {
     charCode: 0,
@@ -558,7 +558,7 @@ const IEMocks = {
     key: 'Tab',
     keyCode: 9,
     keyIdentifier: undefined,
-    which: 9
+    which: 9,
   },
   esc: {
     charCode: 0,
@@ -566,7 +566,7 @@ const IEMocks = {
     key: 'Esc',
     keyCode: 27,
     keyIdentifier: undefined,
-    which: 27
+    which: 27,
   },
   space: {
     charCode: 0,
@@ -574,7 +574,7 @@ const IEMocks = {
     key: 'Spacebar',
     keyCode: 32,
     keyIdentifier: undefined,
-    which: 32
+    which: 32,
   },
   shift: {
     charCode: 0,
@@ -582,7 +582,7 @@ const IEMocks = {
     key: 'Shift',
     keyCode: 16,
     keyIdentifier: undefined,
-    which: 16
+    which: 16,
   },
   backspace: {
     charCode: 0,
@@ -590,7 +590,7 @@ const IEMocks = {
     key: 'Backspace',
     keyCode: 8,
     keyIdentifier: undefined,
-    which: 8
+    which: 8,
   },
   delete: {
     charCode: 0,
@@ -598,7 +598,7 @@ const IEMocks = {
     key: 'Delete',
     keyCode: 46,
     keyIdentifier: undefined,
-    which: 46
+    which: 46,
   },
   0: {
     charCode: 0,
@@ -606,7 +606,7 @@ const IEMocks = {
     key: 0,
     keyCode: 48,
     keyIdentifier: 'U+0030',
-    which: 48
+    which: 48,
   },
   1: {
     charCode: 0,
@@ -614,7 +614,7 @@ const IEMocks = {
     key: 1,
     keyCode: 49,
     keyIdentifier: 'U+0031',
-    which: 49
+    which: 49,
   },
   2: {
     charCode: 0,
@@ -622,7 +622,7 @@ const IEMocks = {
     key: 2,
     keyCode: 50,
     keyIdentifier: 'U+0032',
-    which: 50
+    which: 50,
   },
   3: {
     charCode: 0,
@@ -630,7 +630,7 @@ const IEMocks = {
     key: 3,
     keyCode: 51,
     keyIdentifier: 'U+0033',
-    which: 51
+    which: 51,
   },
   4: {
     charCode: 0,
@@ -638,7 +638,7 @@ const IEMocks = {
     key: 4,
     keyCode: 52,
     keyIdentifier: 'U+0034',
-    which: 52
+    which: 52,
   },
   5: {
     charCode: 0,
@@ -646,7 +646,7 @@ const IEMocks = {
     key: 5,
     keyCode: 53,
     keyIdentifier: 'U+0035',
-    which: 53
+    which: 53,
   },
   6: {
     charCode: 0,
@@ -654,7 +654,7 @@ const IEMocks = {
     key: 6,
     keyCode: 54,
     keyIdentifier: 'U+0036',
-    which: 54
+    which: 54,
   },
   7: {
     charCode: 0,
@@ -662,7 +662,7 @@ const IEMocks = {
     key: 7,
     keyCode: 55,
     keyIdentifier: 'U+0037',
-    which: 55
+    which: 55,
   },
   8: {
     charCode: 0,
@@ -670,7 +670,7 @@ const IEMocks = {
     key: 8,
     keyCode: 56,
     keyIdentifier: 'U+0038',
-    which: 56
+    which: 56,
   },
   9: {
     charCode: 0,
@@ -678,13 +678,13 @@ const IEMocks = {
     key: 9,
     keyCode: 57,
     keyIdentifier: 'U+0039',
-    which: 57
-  }
+    which: 57,
+  },
 };
 
 export const mocks = {
   ie: IEMocks,
   edge: EdgeMocks,
   default: ChromeFirefoxMocks,
-  safari: SafariMocks
-}
+  safari: SafariMocks,
+};

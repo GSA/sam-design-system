@@ -10,5 +10,5 @@ export interface SdsFormlyDialogData {
   submit?: string;
   subtitle?: string;
   title?: string;
-  disableSubmitButtonEnabled?: boolean
+  disableSubmitButtonEnabled?: boolean;
 }

@@ -62,10 +62,7 @@ export class StepperAdvancedDemoComponent {
     this.currentStepId = $event.id;
 
     if (this.currentStepId === 'review') {
-      FormlyUtilsService.setReadonlyMode(
-        true,
-        this.stepMap.review.fieldConfig.fieldGroup as any
-      );
+      FormlyUtilsService.setReadonlyMode(true, this.stepMap.review.fieldConfig.fieldGroup as any);
     }
   }
 

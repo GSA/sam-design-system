@@ -5,7 +5,6 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
   templateUrl: './update-on-inheritance.component.html',
   selector: `sds-update-on-inheritance-demo`,
 })
-
 export class UpdateOnInheritanceComponent {
   form = new FormGroup({});
   model: any = {};
@@ -14,7 +13,7 @@ export class UpdateOnInheritanceComponent {
     {
       key: 'grandParent',
       modelOptions: {
-        updateOn: 'blur'
+        updateOn: 'blur',
       },
       fieldGroup: [
         {
@@ -26,22 +25,22 @@ export class UpdateOnInheritanceComponent {
               templateOptions: {
                 label: 'Parent 1 No UpdateOn Specified',
                 description: 'No updateOn specified, inherits from ancestors, will update onBlur',
-                required: true
-              }
+                required: true,
+              },
             },
             {
               key: 'updateOnChange',
               type: 'input',
               modelOptions: {
-                updateOn: 'change'
+                updateOn: 'change',
               },
               templateOptions: {
-                label: 'updateOn: \'change\'',
+                label: "updateOn: 'change'",
                 description: 'change specified as updateOn option, will ignore updateOn of ancestors',
-                required: true
-              }
-            }
-          ]
+                required: true,
+              },
+            },
+          ],
         },
         {
           key: 'parent2',
@@ -52,28 +51,28 @@ export class UpdateOnInheritanceComponent {
               templateOptions: {
                 label: 'Parent 2 No UpdateOn Specified',
                 description: 'No updateOn specified, inherits from ancestors, will update onBlur',
-                required: true
-              }
+                required: true,
+              },
             },
             {
               key: 'updateOnSubmit',
               type: 'input',
               modelOptions: {
-                updateOn: 'submit'
+                updateOn: 'submit',
               },
               templateOptions: {
-                label: 'updateOn: \'submit\'',
+                label: "updateOn: 'submit'",
                 description: 'submit specified as updateOn option, will ignore updateOn of ancestors',
-                required: true
-              }
-            }
-          ]
-        }
-      ]
-    }
+                required: true,
+              },
+            },
+          ],
+        },
+      ],
+    },
   ];
 
-  submit(){
-    console.log('form submitted')
+  submit() {
+    console.log('form submitted');
   }
 }

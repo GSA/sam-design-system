@@ -1,9 +1,7 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
   selector: `sds-accordion-cardlist-demo`,
-  templateUrl: './accordion-cardlist.component.html'
+  templateUrl: './accordion-cardlist.component.html',
 })
-export class AccordionCardlist {
-  
-}
+export class AccordionCardlist {}

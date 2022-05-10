@@ -6,7 +6,6 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
   templateUrl: './validationwrapper-basic.component.html',
   selector: `sds-validationwrapper-basic-demo`,
 })
-
 export class ValidationWrapperBasic {
   form = new FormGroup({});
   model: any = {};
@@ -18,7 +17,7 @@ export class ValidationWrapperBasic {
       type: 'input',
       templateOptions: {
         required: true,
-        placeholder: 'eg: Acme Corporation'
+        placeholder: 'eg: Acme Corporation',
       },
     },
   ];

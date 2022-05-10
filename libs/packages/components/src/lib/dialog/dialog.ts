@@ -1,13 +1,7 @@
-import {Directionality} from '@angular/cdk/bidi';
-import {
-  Overlay,
-  OverlayConfig,
-  OverlayContainer,
-  OverlayRef,
-  ScrollStrategy,
-} from '@angular/cdk/overlay';
-import {ComponentPortal, ComponentType, PortalInjector, TemplatePortal} from '@angular/cdk/portal';
-import {Location} from '@angular/common';
+import { Directionality } from '@angular/cdk/bidi';
+import { Overlay, OverlayConfig, OverlayContainer, OverlayRef, ScrollStrategy } from '@angular/cdk/overlay';
+import { ComponentPortal, ComponentType, PortalInjector, TemplatePortal } from '@angular/cdk/portal';
+import { Location } from '@angular/common';
 import {
   Inject,
   Injectable,
@@ -18,26 +12,22 @@ import {
   SkipSelf,
   TemplateRef,
 } from '@angular/core';
-import {defer, Observable, of as observableOf, Subject} from 'rxjs';
-import {startWith} from 'rxjs/operators';
-import {SdsDialogConfig} from './dialog-config';
-import {SdsDialogContainerComponent} from './dialog-container.component';
-import {SdsDialogRef} from './dialog-ref';
-
+import { defer, Observable, of as observableOf, Subject } from 'rxjs';
+import { startWith } from 'rxjs/operators';
+import { SdsDialogConfig } from './dialog-config';
+import { SdsDialogContainerComponent } from './dialog-container.component';
+import { SdsDialogRef } from './dialog-ref';
 
 /** Injection token that can be used to access the data that was passed in to a dialog. */
 export const SDS_DIALOG_DATA = new InjectionToken<any>('SdsDialogData');
 
 /** Injection token that can be used to specify default dialog options. */
-export const SDS_DIALOG_DEFAULT_OPTIONS =
-    new InjectionToken<SdsDialogConfig>('sds-dialog-default-options');
+export const SDS_DIALOG_DEFAULT_OPTIONS = new InjectionToken<SdsDialogConfig>('sds-dialog-default-options');
 
 /** Injection token that determines the scroll handling while the dialog is open. */
-export const SDS_DIALOG_SCROLL_STRATEGY =
-    new InjectionToken<() => ScrollStrategy>('sds-dialog-scroll-strategy');
+export const SDS_DIALOG_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>('sds-dialog-scroll-strategy');
 
-export const SDS_SLIDE_OUT_SCROLL_STRATEGY =
-  new InjectionToken<() => ScrollStrategy>('sds-slide-out-scroll-strategy');
+export const SDS_SLIDE_OUT_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>('sds-slide-out-scroll-strategy');
 
 /** @docs-private */
 export function SDS_DIALOG_SCROLL_STRATEGY_FACTORY(overlay: Overlay): () => ScrollStrategy {
@@ -45,14 +35,12 @@ export function SDS_DIALOG_SCROLL_STRATEGY_FACTORY(overlay: Overlay): () => Scro
 }
 
 /** @docs-private */
-export function SDS_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY(overlay: Overlay):
-  () => ScrollStrategy {
+export function SDS_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY(overlay: Overlay): () => ScrollStrategy {
   return () => overlay.scrollStrategies.block();
 }
 
 /** @docs-private */
-export function SDS_SLIDE_OUT_SCROLL_STRATEGY_PROVIDER_FACTORY(overlay: Overlay):
-  () => ScrollStrategy {
+export function SDS_SLIDE_OUT_SCROLL_STRATEGY_PROVIDER_FACTORY(overlay: Overlay): () => ScrollStrategy {
   return () => overlay.scrollStrategies.reposition();
 }
 
@@ -69,7 +57,6 @@ export const SDS_SLIDE_OUT_SCROLL_STRATEGY_PROVIDER = {
   useFactory: SDS_SLIDE_OUT_SCROLL_STRATEGY_PROVIDER_FACTORY,
 };
 
-
 /**
  * Service to open modal dialogs.
  */
@@ -78,7 +65,7 @@ export class SdsDialogService implements OnDestroy {
   private _openDialogsAtThisLevel: SdsDialogRef<any>[] = [];
   private readonly _afterAllClosedAtThisLevel = new Subject<void>();
   private readonly _afterOpenedAtThisLevel = new Subject<SdsDialogRef<any>>();
-  private _ariaHiddenElements = new Map<Element, string|null>();
+  private _ariaHiddenElements = new Map<Element, string | null>();
   private _scrollStrategy: () => ScrollStrategy;
   private _slideOutScrollStrategy: () => ScrollStrategy;
 
@@ -101,19 +88,20 @@ export class SdsDialogService implements OnDestroy {
    * Stream that emits when all open dialog have finished closing.
    * Will emit on subscribe if there are no open dialogs to begin with.
    */
-  readonly afterAllClosed: Observable<void> = defer<void>(() => this.openDialogs.length ?
-      this._afterAllClosed :
-      this._afterAllClosed.pipe(startWith(undefined)));
+  readonly afterAllClosed: Observable<void> = defer<void>(() =>
+    this.openDialogs.length ? this._afterAllClosed : this._afterAllClosed.pipe(startWith(undefined))
+  );
 
   constructor(
-      private _overlay: Overlay,
-      private _injector: Injector,
-      @Optional() private _location: Location,
-      @Optional() @Inject(SDS_DIALOG_DEFAULT_OPTIONS) private _defaultOptions: SdsDialogConfig,
-      @Inject(SDS_DIALOG_SCROLL_STRATEGY) scrollStrategy: any,
-      @Inject(SDS_SLIDE_OUT_SCROLL_STRATEGY) slideOutScrollStrategy: any,
-      @Optional() @SkipSelf() private _parentDialog: SdsDialogService,
-      private _overlayContainer: OverlayContainer) {
+    private _overlay: Overlay,
+    private _injector: Injector,
+    @Optional() private _location: Location,
+    @Optional() @Inject(SDS_DIALOG_DEFAULT_OPTIONS) private _defaultOptions: SdsDialogConfig,
+    @Inject(SDS_DIALOG_SCROLL_STRATEGY) scrollStrategy: any,
+    @Inject(SDS_SLIDE_OUT_SCROLL_STRATEGY) slideOutScrollStrategy: any,
+    @Optional() @SkipSelf() private _parentDialog: SdsDialogService,
+    private _overlayContainer: OverlayContainer
+  ) {
     this._scrollStrategy = scrollStrategy;
     this._slideOutScrollStrategy = slideOutScrollStrategy;
   }
@@ -125,9 +113,10 @@ export class SdsDialogService implements OnDestroy {
    * @param config Extra configuration options.
    * @returns Reference to the newly-opened dialog.
    */
-  open<T, D = any, R = any>(componentOrTemplateRef: ComponentType<T> | TemplateRef<T>,
-          config?: SdsDialogConfig<D>): SdsDialogRef<T, R> {
-
+  open<T, D = any, R = any>(
+    componentOrTemplateRef: ComponentType<T> | TemplateRef<T>,
+    config?: SdsDialogConfig<D>
+  ): SdsDialogRef<T, R> {
     // Convenience widths names: small | medium | large
     // added to help with standardization
     if (config && config.width) {
@@ -158,10 +147,7 @@ export class SdsDialogService implements OnDestroy {
 
     const overlayRef = this._createOverlay(config);
     const dialogContainer = this._attachDialogContainer(overlayRef, config);
-    const dialogRef = this._attachDialogContent<T, R>(componentOrTemplateRef,
-                                                      dialogContainer,
-                                                      overlayRef,
-                                                      config);
+    const dialogRef = this._attachDialogContent<T, R>(componentOrTemplateRef, dialogContainer, overlayRef, config);
 
     // If this is the first dialog that we're opening, hide all the non-overlay content.
     if (!this.openDialogs.length) {
@@ -187,7 +173,7 @@ export class SdsDialogService implements OnDestroy {
    * @param id ID to use when looking up the dialog.
    */
   getDialogById(id: string): SdsDialogRef<any> | undefined {
-    return this.openDialogs.find(dialog => dialog.id === id);
+    return this.openDialogs.find((dialog) => dialog.id === id);
   }
 
   ngOnDestroy() {
@@ -216,7 +202,9 @@ export class SdsDialogService implements OnDestroy {
   private _getOverlayConfig(dialogConfig: SdsDialogConfig): OverlayConfig {
     const state = new OverlayConfig({
       positionStrategy: this._overlay.position().global(),
-      scrollStrategy: dialogConfig.scrollStrategy || (dialogConfig.slideOut ? this._slideOutScrollStrategy() : this._scrollStrategy()),
+      scrollStrategy:
+        dialogConfig.scrollStrategy ||
+        (dialogConfig.slideOut ? this._slideOutScrollStrategy() : this._scrollStrategy()),
       panelClass: dialogConfig.panelClass,
       hasBackdrop: dialogConfig.hasBackdrop,
       direction: dialogConfig.direction,
@@ -224,7 +212,7 @@ export class SdsDialogService implements OnDestroy {
       minHeight: dialogConfig.minHeight,
       maxWidth: dialogConfig.maxWidth,
       maxHeight: dialogConfig.maxHeight,
-      disposeOnNavigation: dialogConfig.closeOnNavigation
+      disposeOnNavigation: dialogConfig.closeOnNavigation,
     });
 
     if (dialogConfig.backdropClass) {
@@ -242,11 +230,8 @@ export class SdsDialogService implements OnDestroy {
    */
   private _attachDialogContainer(overlay: OverlayRef, config: SdsDialogConfig): SdsDialogContainerComponent {
     const userInjector = config && config.viewContainerRef && config.viewContainerRef.injector;
-    const injector = new PortalInjector(userInjector || this._injector, new WeakMap([
-      [SdsDialogConfig, config]
-    ]));
-    const containerPortal =
-        new ComponentPortal(SdsDialogContainerComponent, config.viewContainerRef, injector);
+    const injector = new PortalInjector(userInjector || this._injector, new WeakMap([[SdsDialogConfig, config]]));
+    const containerPortal = new ComponentPortal(SdsDialogContainerComponent, config.viewContainerRef, injector);
     const containerRef = overlay.attach<SdsDialogContainerComponent>(containerPortal);
 
     return containerRef.instance;
@@ -262,15 +247,14 @@ export class SdsDialogService implements OnDestroy {
    * @returns A promise resolving to the SdsDialogRef that should be returned to the user.
    */
   private _attachDialogContent<T, R>(
-      componentOrTemplateRef: ComponentType<T> | TemplateRef<T>,
-      dialogContainer: SdsDialogContainerComponent,
-      overlayRef: OverlayRef,
-      config: SdsDialogConfig): SdsDialogRef<T, R> {
-
+    componentOrTemplateRef: ComponentType<T> | TemplateRef<T>,
+    dialogContainer: SdsDialogContainerComponent,
+    overlayRef: OverlayRef,
+    config: SdsDialogConfig
+  ): SdsDialogRef<T, R> {
     // Create a reference to the dialog we're creating in order to give the user a handle
     // to modify and close it.
-    const dialogRef =
-        new SdsDialogRef<T, R>(overlayRef, dialogContainer, this._location, config.id);
+    const dialogRef = new SdsDialogRef<T, R>(overlayRef, dialogContainer, this._location, config.id);
 
     // When the dialog backdrop is clicked, we want to close it.
     if (config.hasBackdrop) {
@@ -283,18 +267,17 @@ export class SdsDialogService implements OnDestroy {
 
     if (componentOrTemplateRef instanceof TemplateRef) {
       dialogContainer.attachTemplatePortal(
-        new TemplatePortal<T>(componentOrTemplateRef, null!,
-          <any>{ $implicit: config.data, dialogRef }));
+        new TemplatePortal<T>(componentOrTemplateRef, null!, <any>{ $implicit: config.data, dialogRef })
+      );
     } else {
       const injector = this._createInjector<T>(config, dialogRef, dialogContainer);
       const contentRef = dialogContainer.attachComponentPortal<T>(
-          new ComponentPortal(componentOrTemplateRef, undefined, injector));
+        new ComponentPortal(componentOrTemplateRef, undefined, injector)
+      );
       dialogRef.componentInstance = contentRef.instance;
     }
 
-    dialogRef
-      .updateSize(config.width, config.height)
-      .updatePosition(config.position);
+    dialogRef.updateSize(config.width, config.height).updatePosition(config.position);
 
     return dialogRef;
   }
@@ -308,10 +291,10 @@ export class SdsDialogService implements OnDestroy {
    * @returns The custom injector that can be used inside the dialog.
    */
   private _createInjector<T>(
-      config: SdsDialogConfig,
-      dialogRef: SdsDialogRef<T>,
-      dialogContainer: SdsDialogContainerComponent): PortalInjector {
-
+    config: SdsDialogConfig,
+    dialogRef: SdsDialogRef<T>,
+    dialogContainer: SdsDialogContainerComponent
+  ): PortalInjector {
     const userInjector = config && config.viewContainerRef && config.viewContainerRef.injector;
 
     // The SdsDialogContainerComponent is injected in the portal as the SdsDialogContainerComponent and the dialog's
@@ -321,14 +304,13 @@ export class SdsDialogService implements OnDestroy {
     const injectionTokens = new WeakMap<any, any>([
       [SdsDialogContainerComponent, dialogContainer],
       [SDS_DIALOG_DATA, config.data],
-      [SdsDialogRef, dialogRef]
+      [SdsDialogRef, dialogRef],
     ]);
 
-    if (config.direction &&
-        (!userInjector || !userInjector.get<Directionality | null>(Directionality, null))) {
+    if (config.direction && (!userInjector || !userInjector.get<Directionality | null>(Directionality, null))) {
       injectionTokens.set(Directionality, {
         value: config.direction,
-        change: observableOf()
+        change: observableOf(),
       });
     }
 
@@ -375,11 +357,12 @@ export class SdsDialogService implements OnDestroy {
       for (let i = siblings.length - 1; i > -1; i--) {
         const sibling = siblings[i];
 
-        if (sibling !== overlayContainer &&
+        if (
+          sibling !== overlayContainer &&
           sibling.nodeName !== 'SCRIPT' &&
           sibling.nodeName !== 'STYLE' &&
-          !sibling.hasAttribute('aria-live')) {
-
+          !sibling.hasAttribute('aria-live')
+        ) {
           this._ariaHiddenElements.set(sibling, sibling.getAttribute('aria-hidden'));
           sibling.setAttribute('aria-hidden', 'true');
         }
@@ -399,7 +382,6 @@ export class SdsDialogService implements OnDestroy {
       dialogs[i].close();
     }
   }
-
 }
 
 /**
@@ -408,7 +390,6 @@ export class SdsDialogService implements OnDestroy {
  * @param defaultOptions Default options provided.
  * @returns The new configuration object.
  */
-function _applyConfigDefaults(
-    config?: SdsDialogConfig, defaultOptions?: SdsDialogConfig): SdsDialogConfig {
-  return {...defaultOptions, ...config};
+function _applyConfigDefaults(config?: SdsDialogConfig, defaultOptions?: SdsDialogConfig): SdsDialogConfig {
+  return { ...defaultOptions, ...config };
 }

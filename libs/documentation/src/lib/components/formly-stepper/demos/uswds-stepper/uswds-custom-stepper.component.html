@@ -10,8 +10,11 @@
 
 <div class="grid-row grid-gap flex-justify-center margin-top-4">
   <div class="margin-right-1">
-    <button class="usa-button sds-button--circle usa-button--base usa-button--big" sdsStepperPrevious
-      [attr.id]="id + '-prevBtn'">
+    <button
+      class="usa-button sds-button--circle usa-button--base usa-button--big"
+      sdsStepperPrevious
+      [attr.id]="id + '-prevBtn'"
+    >
       <usa-icon [icon]="'chevron-left'"></usa-icon>
     </button>
 
@@ -20,10 +23,12 @@
     </label>
   </div>
 
-
   <div class="margin-right-1">
-    <button class="usa-button sds-button--circle usa-button--big usa-button--base" sdsStepperSave
-      [attr.id]="id + '-saveBtn'">
+    <button
+      class="usa-button sds-button--circle usa-button--big usa-button--base"
+      sdsStepperSave
+      [attr.id]="id + '-saveBtn'"
+    >
       <usa-icon [icon]="'save'"></usa-icon>
     </button>
     <label [attr.for]="id + '-saveBtn'" class="text-center usa-link cursor-pointer display-block margin-top-2">
@@ -32,9 +37,12 @@
   </div>
 
   <div class="margin-right-1">
-    <button #saveAndContinueBtn
+    <button
+      #saveAndContinueBtn
       class="usa-button sds-button--circle usa-button--base usa-button--big usa-button--active"
-      sdsStepperNext [attr.id]="id + '-nextBtn'">
+      sdsStepperNext
+      [attr.id]="id + '-nextBtn'"
+    >
       <usa-icon [icon]="'chevron-right'"></usa-icon>
     </button>
     <label [attr.for]="id + '-nextBtn'" class="text-left usa-link cursor-pointer display-block margin-top-2">

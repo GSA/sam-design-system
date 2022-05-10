@@ -47,9 +47,7 @@ export class DocumentationWidgetDemoComponent {
 
   getStackblitzLink() {
     if (!this.path) {
-      throw new Error(
-        `Demo component ${this.component} is missing path value in module setup`
-      );
+      throw new Error(`Demo component ${this.component} is missing path value in module setup`);
     }
 
     // example: path = libs/documentation/src/lib/components/search/demos/optional

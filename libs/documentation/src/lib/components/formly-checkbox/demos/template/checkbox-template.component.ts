@@ -6,12 +6,10 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
   templateUrl: './checkbox-template.component.html',
   selector: `sds-formly-checkbox-template-demo`,
 })
+export class CheckboxTemplate implements AfterViewInit {
+  constructor() {}
 
-export class CheckboxTemplate implements AfterViewInit{
-  constructor(){
-  }
-
-  @ViewChild('checkboxTemplate') checkboxTemplate : TemplateRef<any>
+  @ViewChild('checkboxTemplate') checkboxTemplate: TemplateRef<any>;
 
   form = new FormGroup({});
   model: any = {};
@@ -27,8 +25,7 @@ export class CheckboxTemplate implements AfterViewInit{
     },
   ];
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     this.fields[0].templateOptions.template = this.checkboxTemplate;
-
   }
 }

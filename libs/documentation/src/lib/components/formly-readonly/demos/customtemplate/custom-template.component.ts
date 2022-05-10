@@ -8,11 +8,10 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
   templateUrl: './custom-template.component.html',
 })
 export class CustomTemplateComponent {
-
   isReadonlyMode = false;
   form = new FormGroup({});
   model = {};
-  fields: FormlyFieldConfig[] =  [
+  fields: FormlyFieldConfig[] = [
     {
       type: SdsFormlyTypes.READONLY,
       templateOptions: {
@@ -25,9 +24,9 @@ export class CustomTemplateComponent {
               ${field.model.extension ? ' +' + field.model.extension : ''}
             </span>
           `;
-        }
+        },
       },
-      hideExpression: () => !this.isReadonlyMode
+      hideExpression: () => !this.isReadonlyMode,
     },
     {
       fieldGroupClassName: 'grid-row grid-gap-2',
@@ -62,8 +61,8 @@ export class CustomTemplateComponent {
           },
           hideExpression: () => this.isReadonlyMode,
         },
-      ]
-    }
+      ],
+    },
   ];
 
   toggleReadonlyMode() {

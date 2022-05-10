@@ -17,8 +17,7 @@ export class RadioGroupComponent {
 
       templateOptions: {
         label: 'Tax Filing Structure',
-        description:
-          'Select how your business or organization is defined by the IRS.',
+        description: 'Select how your business or organization is defined by the IRS.',
         required: true,
         groupOptions: {
           Entity: [

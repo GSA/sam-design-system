@@ -70,9 +70,7 @@ export class SdsAccordionItemComponent {
 export class SdsAccordionComponent {
   @ViewChild(MatAccordion) accordion: MatAccordion;
 
-  @ContentChildren(SdsAccordionItemComponent) accordionItems!: QueryList<
-    SdsAccordionItemComponent
-  >;
+  @ContentChildren(SdsAccordionItemComponent) accordionItems!: QueryList<SdsAccordionItemComponent>;
 
   @Input() multi = false;
 

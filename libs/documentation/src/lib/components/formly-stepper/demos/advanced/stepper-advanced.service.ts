@@ -11,8 +11,7 @@ export class StepperAdvancedService {
       fieldGroup: [
         {
           key: 'permissionsNeeded',
-          template:
-            '<br/><h4><b>what permission</b></h4></br> Select the specfific <br>',
+          template: '<br/><h4><b>what permission</b></h4></br> Select the specfific <br>',
         },
         {
           key: 'typeOfEntity',
@@ -116,11 +115,10 @@ export class StepperAdvancedService {
           type: SdsFormlyTypes.RADIO,
           templateOptions: {
             hideOptions: true,
-            label:
-              'Why are you registering this entity to do business with the U.S. government?',
+            label: 'Why are you registering this entity to do business with the U.S. government?',
             options: [
               {
-                label: `I want to be able to bid on federal contracts or other procurement opportunities. 
+                label: `I want to be able to bid on federal contracts or other procurement opportunities.
                         I also want to be able to apply for financial assistance programs`,
                 value: 'bidContracts',
               },

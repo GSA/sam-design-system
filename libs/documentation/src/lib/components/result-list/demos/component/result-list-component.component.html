@@ -2,7 +2,7 @@
   <sds-search-result-list [model]="items">
     <ng-template #resultContent let-item>
       <item-sample [model]="item">
-          <child-item-sample *ngIf="item.hasNewerData"></child-item-sample>
+        <child-item-sample *ngIf="item.hasNewerData"></child-item-sample>
       </item-sample>
     </ng-template>
   </sds-search-result-list>
