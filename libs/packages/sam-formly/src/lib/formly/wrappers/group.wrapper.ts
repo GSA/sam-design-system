@@ -20,7 +20,7 @@ import { filter } from 'rxjs/operators';
           <usa-accordion #groupAccordion [singleSelect]="!multi" class="sds-accordion--filters">
             <usa-accordion-item [expanded]="modelHasValue()">
               <ng-template UsaAccordionHeader>
-                <span [attr.class]="to.labelClass">{{ to.label }} </span>
+                <span [attr.class]="to.labelClass">{{ to.label }}</span>
               </ng-template>
               <ng-template UsaAccordionContent>
                 <ng-container #fieldComponent></ng-container>
