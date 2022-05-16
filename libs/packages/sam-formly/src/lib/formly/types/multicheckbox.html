@@ -1,8 +1,8 @@
-<fieldset class="usa-fieldset">
+<fieldset class="usa-fieldset" [ngClass]="{ 'margin-top-3': to.description }">
   <legend class="usa-sr-only">{{ to.label }}</legend>
 
   <fieldset *ngIf="to.groupOptions" class="usa-fieldset">
-    <ul class="sds-list--no-bullets">
+    <ul class="sds-list--no-bullets margin-top-neg-3">
       <li class="grid-row" *ngFor="let option of (to.groupOptions | keyvalue); let i = index">
         <div>
           <legend>
@@ -52,7 +52,7 @@
     </ul>
   </fieldset>
 
-  <ul *ngIf="to.options" class="sds-list--no-bullets">
+  <ul *ngIf="to.options" class="sds-list--no-bullets margin-top-neg-3">
     <li class="grid-row" *ngIf="to.selectAllOption">
       <div class="usa-checkbox" [class.text-align-end]="to.textAlignEnd">
         <input
@@ -65,7 +65,7 @@
           (change)="setAll($event)"
         />
         <label class="usa-checkbox__label" [attr.aria-checked]="ariaChecked" [for]="id + '_Select'">
-          <span [innerHtml]="to.label"></span>
+          <span [innerHtml]="to.label"></span> <span> test</span>
         </label>
       </div>
       <div *ngIf="to.selectTooltipText">

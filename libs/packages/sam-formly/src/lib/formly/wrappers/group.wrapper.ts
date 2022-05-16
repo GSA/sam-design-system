@@ -20,7 +20,7 @@ import { filter } from 'rxjs/operators';
           <usa-accordion #groupAccordion [singleSelect]="!multi" class="sds-accordion--filters">
             <usa-accordion-item [expanded]="modelHasValue()">
               <ng-template UsaAccordionHeader>
-                <span [attr.class]="to.labelClass">{{ to.label }}</span>
+                <span [attr.class]="to.labelClass">{{ to.label }} </span>
               </ng-template>
               <ng-template UsaAccordionContent>
                 <ng-container #fieldComponent></ng-container>
@@ -31,7 +31,7 @@ import { filter } from 'rxjs/operators';
         <ng-container *ngSwitchCase="'panel'">
           <div class="sds-panel" [ngClass]="{ 'sds-panel--multiple': field?.fieldGroup?.length }">
             <div
-              class="sds-panel__header"
+              class="sds-panel__header padding-top-1"
               *ngIf="!to.hideLabel"
               [attr.aria-hidden]="!to.announceLabel ? undefined : 'true'"
             >
