@@ -1,4 +1,4 @@
-<fieldset class="usa-fieldset" [ngClass]="{ 'margin-top-3': to.description }">
+<fieldset class="usa-fieldset" [ngClass]="{ 'margin-top-': to.description }">
   <legend class="usa-sr-only">{{ to.label }}</legend>
 
   <fieldset *ngIf="to.groupOptions" class="usa-fieldset">
@@ -32,7 +32,7 @@
                 <span [innerHtml]="opt.label"></span>
               </label>
             </div>
-            <div *ngIf="option.value[j].tooltipText" class="margin-top-3 margin-left-1">
+            <div *ngIf="option.value[j].tooltipText" class="margin-left-1">
               <p
                 #tipContent
                 [ngClass]="option.value[j].tooltipClass"
@@ -42,7 +42,7 @@
               <usa-icon
                 [position]="option.value[j].tooltipPosition ? option.value[j].tooltipPosition :'right'"
                 [sdsTooltip]="tipContent"
-                [size]="'lg'"
+                [size]="'sm'"
                 [icon]="'info-circle'"
               ></usa-icon>
             </div>
@@ -71,10 +71,10 @@
       <div *ngIf="to.selectTooltipText">
         <p #tipContent1 [ngClass]="to.tooltipClass" class="margin-1" [innerHTML]="to.selectTooltipText"></p>
         <usa-icon
-          class="padding-top-105 margin-left-1"
+          class="margin-left-1"
           [position]="to.selecttooltipPosition ? to.selecttooltipPosition :'right'"
           [sdsTooltip]="tipContent1"
-          [size]="'lg'"
+          [size]="'sm'"
           [icon]="'info-circle'"
         ></usa-icon>
       </div>
@@ -127,7 +127,7 @@
               <span [innerHtml]="option.label"></span>
             </label>
           </div>
-          <div *ngIf="to.options[i].tooltipText" class="margin-top-2 margin-left-1">
+          <div *ngIf="to.options[i].tooltipText" class="margin-left-1">
             <p
               #tipContent
               [ngClass]="to.options[i].tooltipClass"
@@ -137,7 +137,7 @@
             <usa-icon
               [position]="to.options[i].tooltipPosition ? to.options[i].tooltipPosition :'right'"
               [sdsTooltip]="tipContent"
-              [size]="'lg'"
+              [size]="'sm'"
               [icon]="'info-circle'"
             ></usa-icon>
           </div>
