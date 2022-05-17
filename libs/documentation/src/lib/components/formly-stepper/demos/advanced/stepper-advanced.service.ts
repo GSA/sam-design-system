@@ -50,7 +50,6 @@ export class StepperAdvancedService {
           className: 'desktop: grid-col-12 tablet: grid-col-12',
           templateOptions: {
             label: 'Contract Opportunities',
-            labelClass: 'margin-top-neg-205',
             group: 'panel',
             options: [
               {

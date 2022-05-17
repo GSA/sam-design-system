@@ -1,8 +1,8 @@
-<fieldset class="usa-fieldset">
+<fieldset class="usa-fieldset" [ngClass]="{ 'margin-top-': to.description }">
   <legend class="usa-sr-only">{{ to.label }}</legend>
 
   <fieldset *ngIf="to.groupOptions" class="usa-fieldset">
-    <ul class="sds-list--no-bullets">
+    <ul class="sds-list sds-list--no-bullets margin-y-0">
       <li class="grid-row" *ngFor="let option of (to.groupOptions | keyvalue); let i = index">
         <div>
           <legend>
@@ -21,7 +21,7 @@
                 (change)="onChange(opt.value, $event.target.checked)"
                 [checked]="isChecked(opt)"
               />
-              <label class="usa-checkbox__label" [for]="id + '_' + i + j">
+              <label class="usa-checkbox__label margin-y-2px" [for]="id + '_' + i + j">
                 <span
                   *ngIf="option.value[j].tagText"
                   class="usa-tag"
@@ -32,7 +32,7 @@
                 <span [innerHtml]="opt.label"></span>
               </label>
             </div>
-            <div *ngIf="option.value[j].tooltipText" class="margin-top-3 margin-left-1">
+            <div *ngIf="option.value[j].tooltipText" class="margin-left-1">
               <p
                 #tipContent
                 [ngClass]="option.value[j].tooltipClass"
@@ -42,7 +42,7 @@
               <usa-icon
                 [position]="option.value[j].tooltipPosition ? option.value[j].tooltipPosition :'right'"
                 [sdsTooltip]="tipContent"
-                [size]="'lg'"
+                [size]="'sm'"
                 [icon]="'info-circle'"
               ></usa-icon>
             </div>
@@ -52,7 +52,7 @@
     </ul>
   </fieldset>
 
-  <ul *ngIf="to.options" class="sds-list--no-bullets">
+  <ul *ngIf="to.options" class="sds-list sds-list--no-bullets margin-y-0">
     <li class="grid-row" *ngIf="to.selectAllOption">
       <div class="usa-checkbox" [class.text-align-end]="to.textAlignEnd">
         <input
@@ -64,17 +64,17 @@
           [attr.aria-checked]="ariaChecked"
           (change)="setAll($event)"
         />
-        <label class="usa-checkbox__label" [attr.aria-checked]="ariaChecked" [for]="id + '_Select'">
+        <label class="usa-checkbox__label margin-y-2px" [attr.aria-checked]="ariaChecked" [for]="id + '_Select'">
           <span [innerHtml]="to.label"></span>
         </label>
       </div>
       <div *ngIf="to.selectTooltipText">
         <p #tipContent1 [ngClass]="to.tooltipClass" class="margin-1" [innerHTML]="to.selectTooltipText"></p>
         <usa-icon
-          class="padding-top-105 margin-left-1"
+          class="margin-left-1"
           [position]="to.selecttooltipPosition ? to.selecttooltipPosition :'right'"
           [sdsTooltip]="tipContent1"
-          [size]="'lg'"
+          [size]="'sm'"
           [icon]="'info-circle'"
         ></usa-icon>
       </div>
@@ -97,7 +97,7 @@
       [sdsCollapse]="to.expandedOptions"
       [ngClass]="{'margin-left-4 margin-top-0': to.selectAllOption}"
     >
-      <ul class="sds-list--no-bullets">
+      <ul class="sds-list sds-list--no-bullets margin-y-0">
         <li class="grid-row" *ngFor="let option of (to.options | formlySelectOptions: field | async); let i = index">
           <div class="usa-checkbox" [class.text-align-end]="to.textAlignEnd">
             <input
@@ -111,7 +111,7 @@
               (change)="onChange(option.value, $event.target.checked)"
               [checked]="isChecked(option)"
             />
-            <label class="usa-checkbox__label" [for]="id + '_' + i">
+            <label class="usa-checkbox__label margin-y-2px" [for]="id + '_' + i">
               <!--
                 The reference of options array through index is done intentionally here rather
                 than using local variable option because the formlySelectOptions pipe transforms
@@ -127,7 +127,7 @@
               <span [innerHtml]="option.label"></span>
             </label>
           </div>
-          <div *ngIf="to.options[i].tooltipText" class="margin-top-2 margin-left-1">
+          <div *ngIf="to.options[i].tooltipText" class="margin-left-1">
             <p
               #tipContent
               [ngClass]="to.options[i].tooltipClass"
@@ -137,7 +137,7 @@
             <usa-icon
               [position]="to.options[i].tooltipPosition ? to.options[i].tooltipPosition :'right'"
               [sdsTooltip]="tipContent"
-              [size]="'lg'"
+              [size]="'sm'"
               [icon]="'info-circle'"
             ></usa-icon>
           </div>

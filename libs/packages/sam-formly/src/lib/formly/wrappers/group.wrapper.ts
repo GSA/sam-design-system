@@ -31,7 +31,7 @@ import { filter } from 'rxjs/operators';
         <ng-container *ngSwitchCase="'panel'">
           <div class="sds-panel" [ngClass]="{ 'sds-panel--multiple': field?.fieldGroup?.length }">
             <div
-              class="sds-panel__header"
+              class="sds-panel__header padding-top-1"
               *ngIf="!to.hideLabel"
               [attr.aria-hidden]="!to.announceLabel ? undefined : 'true'"
             >
