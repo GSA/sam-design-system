@@ -80,9 +80,8 @@
     <ng-container *ngIf="expansion" matColumnDef="expandedIndicator">
       <td mat-header-cell *matHeaderCellDef></td>
       <td mat-cell *matCellDef="let element" class="cursor-pointer" (click)="onExpansionClicked(element)">
-        {{ expandedElement | json }}
-        <usa-icon *ngIf="element == expandedElement" [icon]="'dash'" size="sm"></usa-icon>
-        <usa-icon *ngIf="element !== null || element === ''" [icon]="'add'" size="sm"></usa-icon>
+        <usa-icon *ngIf="element == expandedElement" [icon]="'dash'" size="lg"></usa-icon>
+        <usa-icon *ngIf="element != expandedElement" [icon]="'uswds-add'" size="lg"></usa-icon>
       </td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
