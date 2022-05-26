@@ -5,7 +5,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   template: ` <button
     type="button"
     (click)="onClick.emit($event)"
-    [ngClass]="classes"
+    [ngClass]="classes" 
     [ngStyle]="{ 'background-color': backgroundColor }"
   >
     {{ label }}

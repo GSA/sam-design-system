@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   templateUrl: './collapse-basic.component.html',
@@ -6,6 +6,15 @@ import { Component } from '@angular/core';
   selector: `sds-collapse-basic-demo`,
 })
 export class CollapseBasic {
-  public isCollapsedContent = true;
+  @Input()
+  isCollapsedContent = false;
 
+  @Output()
+  onClick = new EventEmitter<Event>();
+
+  public get classes(): string[] {
+    const mode = this.isCollapsedContent ? 'storybook-collapse--active' : 'storybook-collapse--hidden';
+
+    return ['storybook-collapse', mode];
+  }
 }
