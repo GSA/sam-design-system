@@ -5,10 +5,7 @@ import { DocumentationExamplesPage } from '../shared/examples-page/examples.comp
 import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
-import {
-  DocumentationComponentsSharedModule,
-  DocumentationDemoList,
-} from '../shared/index';
+import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { FilterWrapperBasicModule } from './demos/basic/filterwrapper-basic.module';
 
@@ -50,11 +47,7 @@ export const ROUTES = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    DocumentationComponentsSharedModule,
-    FilterWrapperBasicModule,
-  ],
+  imports: [CommonModule, DocumentationComponentsSharedModule, FilterWrapperBasicModule],
 })
 export class FilterWrapperModule {
   constructor(demoList: DocumentationDemoList) {

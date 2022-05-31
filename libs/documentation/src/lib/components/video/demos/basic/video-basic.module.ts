@@ -5,11 +5,8 @@ import { SdsVideoPlayerModule } from '@gsa-sam/components';
 
 @NgModule({
   declarations: [VideoBasic],
-  imports: [
-    CommonModule,
-    SdsVideoPlayerModule
-  ],
+  imports: [CommonModule, SdsVideoPlayerModule],
   exports: [VideoBasic],
-  bootstrap: [VideoBasic]
+  bootstrap: [VideoBasic],
 })
 export class VideoBasicModule {}

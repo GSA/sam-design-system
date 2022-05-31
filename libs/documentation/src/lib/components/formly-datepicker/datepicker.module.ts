@@ -23,29 +23,29 @@ const DEMOS = {
     type: FormlyDatepickerBasic,
     code: require('!!raw-loader!./demos/basic/datepicker-basic.component'),
     markup: require('!!raw-loader!./demos/basic/datepicker-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/formly-datepicker/demos/basic'
+    path: 'libs/documentation/src/lib/components/formly-datepicker/demos/basic',
   },
   daterange: {
     title: 'Date Range picker with min,max values',
     type: FormlyDatepickerDateRange,
     code: require('!!raw-loader!./demos/daterange/datepicker-daterange.component'),
     markup: require('!!raw-loader!./demos/daterange/datepicker-daterange.component.html'),
-    path: 'libs/documentation/src/lib/components/formly-datepicker/demos/daterange'
+    path: 'libs/documentation/src/lib/components/formly-datepicker/demos/daterange',
   },
   daterangev2: {
     title: 'Date Range picker for Angular 10+',
     type: FormlyDatepickerDateRangeV2,
     code: require('!!raw-loader!./demos/daterangev2/datepicker-daterangev2.component'),
     markup: require('!!raw-loader!./demos/daterangev2/datepicker-daterangev2.component.html'),
-    path: 'libs/documentation/src/lib/components/formly-datepicker/demos/daterangev2'
+    path: 'libs/documentation/src/lib/components/formly-datepicker/demos/daterangev2',
   },
   validation: {
     title: 'Date picker with validation',
     type: FormlyDatepickerValidation,
     code: require('!!raw-loader!./demos/daterange/datepicker-daterange.component'),
     markup: require('!!raw-loader!./demos/daterange/datepicker-daterange.component.html'),
-    path: 'libs/documentation/src/lib/components/formly-datepicker/demos/daterange'
-  }
+    path: 'libs/documentation/src/lib/components/formly-datepicker/demos/daterange',
+  },
 };
 
 export const ROUTES = [
@@ -62,9 +62,9 @@ export const ROUTES = [
           pkg: 'formly',
           type: 'components',
           name: 'FormlyFieldDatePickerComponent',
-          formType: 'datepicker'
-        }
-      ]
+          formType: 'datepicker',
+        },
+      ],
     },
     component: ComponentWrapperComponent,
     children: [
@@ -72,8 +72,8 @@ export const ROUTES = [
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
       { path: 'template', component: DocumentationTemplatePage },
-    ]
-  }
+    ],
+  },
 ];
 
 @NgModule({
@@ -83,8 +83,8 @@ export const ROUTES = [
     FormlyDatepickerBasicModule,
     FormlyDatepickerDateRangeModule,
     FormlyDatepickerDateRangeV2Module,
-    FormlyDatepickerValidationModule
-  ]
+    FormlyDatepickerValidationModule,
+  ],
 })
 export class FormlyDatepickerModule {
   constructor(demoList: DocumentationDemoList) {

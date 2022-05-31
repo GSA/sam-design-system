@@ -7,15 +7,15 @@
     padding-left: 1rem;
     padding-bottom: 0.5rem;
   }
-  .content{
+  .content {
     margin-top: 1rem;
     padding: 0 1rem;
 
-    .list{
+    .list {
       list-style-type: none;
-      .result > a{
+      .result > a {
         text-decoration: none;
-        &:hover{
+        &:hover {
           text-decoration: underline;
           color: #3f57a6;
           cursor: pointer;
@@ -23,5 +23,4 @@
       }
     }
   }
-
 }

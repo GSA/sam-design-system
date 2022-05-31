@@ -1,8 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import {
-  Component, Output,
-  ViewChild, EventEmitter
-} from '@angular/core';
+import { Component, Output, ViewChild, EventEmitter } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
 // Load the implementations that should be tested
@@ -12,14 +9,14 @@ import { SDSClickOutsideDirective } from './click-outside.directive';
   selector: 'test-cmp',
   template: `
     <div #var sds-click-outside (clickOutside)="clickOutsideHandler()">
-    <p class="test">
-      test content
-    </p>
+      <p class="test">
+        test content
+      </p>
     </div>
     <p class="test2">
       click outside target content
     </p>
-  `
+  `,
 })
 class TestComponent {
   @Output() action: EventEmitter<any> = new EventEmitter<any>();
@@ -35,21 +32,15 @@ describe('The Sam Click Outside directive', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        SDSClickOutsideDirective,
-        TestComponent
-      ],
+      declarations: [SDSClickOutsideDirective, TestComponent],
     });
 
     fixture = TestBed.createComponent(TestComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    directive =
-      fixture.debugElement
-        .query(
-          By.directive(SDSClickOutsideDirective)
-        )
-        .injector.get(SDSClickOutsideDirective);
+    directive = fixture.debugElement
+      .query(By.directive(SDSClickOutsideDirective))
+      .injector.get(SDSClickOutsideDirective);
   });
 
   it('should compile', () => {
@@ -57,7 +48,7 @@ describe('The Sam Click Outside directive', () => {
   });
 
   it('should check for click outside', () => {
-    component.action.subscribe(val => {
+    component.action.subscribe((val) => {
       expect(val).toBe(true);
     });
     const el = fixture.debugElement.query(By.css('.test'));

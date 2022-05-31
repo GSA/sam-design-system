@@ -5,20 +5,10 @@ import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
 
-
 @NgModule({
   declarations: [BasicFileInputComponent],
-  imports: [
-    CommonModule,
-    SdsFormlyModule,
-    ReactiveFormsModule,
-    FormlyModule.forRoot(),
-  ],
-  exports: [
-    BasicFileInputComponent
-  ],
-  bootstrap: [
-    BasicFileInputComponent
-  ]
+  imports: [CommonModule, SdsFormlyModule, ReactiveFormsModule, FormlyModule.forRoot()],
+  exports: [BasicFileInputComponent],
+  bootstrap: [BasicFileInputComponent],
 })
-export class BasicFileInputModule { }
+export class BasicFileInputModule {}

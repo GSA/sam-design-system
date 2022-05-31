@@ -19,10 +19,7 @@ describe('Formly Utility Service', () => {
       key3: { id: 1, name: 'Jane' },
     };
 
-    const parsedData = FormlyUtilsService.formlyConfigToReadonlyData(
-      formlyFields,
-      demoModel
-    );
+    const parsedData = FormlyUtilsService.formlyConfigToReadonlyData(formlyFields, demoModel);
     expect(parsedData[0].label).toEqual('Input Type');
     expect(parsedData[0].value).toEqual('test');
 

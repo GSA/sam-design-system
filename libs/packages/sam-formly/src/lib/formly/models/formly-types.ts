@@ -23,17 +23,17 @@ export enum SdsFormlyTypes {
   /**
    * This formly type should generally be used with another formly type in order
    * to render the values of that formly type in a table.
-   * 
+   *
    * Template Options:
-   * 
+   *
    * tableColumns - An array of SdsTableColumn objects
-   * 
+   *
    * name - The accessible name for this table
-   * 
+   *
    * noDataText - Text to render when no data is available for the table
    */
   TABLE = 'table',
-};
+}
 
 export enum SdsReadonlyTypes {
   INPUT = 'input',
@@ -49,4 +49,4 @@ export enum SdsReadonlyTypes {
   DATERANGEPICKERV2 = 'daterangepickerv2',
   FILEINFO = 'fileinfo',
   SEARCH = 'search',
-};
+}

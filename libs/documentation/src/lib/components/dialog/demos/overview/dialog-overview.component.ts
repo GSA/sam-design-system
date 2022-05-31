@@ -1,9 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import {
-  SdsDialogService,
-  SdsDialogRef,
-  SDS_DIALOG_DATA,
-} from '@gsa-sam/components';
+import { SdsDialogService, SdsDialogRef, SDS_DIALOG_DATA } from '@gsa-sam/components';
 
 export interface DialogData {
   animal: string;

@@ -1,4 +1,3 @@
-
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TestBed, ComponentFixture, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -14,18 +13,18 @@ let testComponentInputs;
 
 @Component({ selector: 'formly-form-input', template: '', entryComponents: [] })
 class TestComponent {
-    @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;
+  @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;
 
-    fields = testComponentInputs.fields;
-    form: FormGroup = testComponentInputs.form;
-    model = testComponentInputs.model || {};
-    options = testComponentInputs.options;
+  fields = testComponentInputs.fields;
+  form: FormGroup = testComponentInputs.form;
+  model = testComponentInputs.model || {};
+  options = testComponentInputs.options;
 }
 
-const createTestComponent = (html: string) => 
+const createTestComponent = (html: string) =>
   createGenericTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;
 
-export function createGenericTestComponent<T>(html: string, type: { new(...args: any[]): T }): ComponentFixture<T> {
+export function createGenericTestComponent<T>(html: string, type: { new (...args: any[]): T }): ComponentFixture<T> {
   TestBed.overrideComponent(type, { set: { template: html } });
   const fixture = TestBed.createComponent(type);
   fixture.detectChanges();
@@ -48,7 +47,7 @@ const getTabsFieldConfig = (): FormlyFieldConfig[] => {
           // tab 1
           {
             templateOptions: {
-              tabHeader: 'Simple Search'
+              tabHeader: 'Simple Search',
             },
             fieldGroup: [
               {
@@ -60,18 +59,18 @@ const getTabsFieldConfig = (): FormlyFieldConfig[] => {
                   options: [
                     {
                       label: 'Any Words',
-                      value: 'anyWords'
+                      value: 'anyWords',
                     },
                     {
                       label: 'All Words',
-                      value: 'allWords'
+                      value: 'allWords',
                     },
                     {
                       label: 'Exact Match',
-                      value: 'exactMatch'
-                    }
-                  ]
-                }
+                      value: 'exactMatch',
+                    },
+                  ],
+                },
               },
               {
                 key: 'keywordTags',
@@ -79,16 +78,17 @@ const getTabsFieldConfig = (): FormlyFieldConfig[] => {
                 templateOptions: {
                   expand: false,
                   configuration: {
-                    id: "keyword",
-                    primaryKeyField: "key",
-                    primaryTextField: "text",
-                    labelText: "Search Keyword",
+                    id: 'keyword',
+                    primaryKeyField: 'key',
+                    primaryTextField: 'text',
+                    labelText: 'Search Keyword',
                     selectionMode: SelectionMode.MULTIPLE,
-                    autocompletePlaceHolderText: "",
+                    autocompletePlaceHolderText: '',
                     isTagModeEnabled: true,
-                  }
-                }
-              }]
+                  },
+                },
+              },
+            ],
           },
           //tab 2
           {
@@ -104,7 +104,7 @@ const getTabsFieldConfig = (): FormlyFieldConfig[] => {
                 templateOptions: {
                   placeholder: 'e.g. ((rental AND property) OR (lease and property) AND NOT ( "short term"))',
                   required: true,
-                }
+                },
               },
               {
                 type: SdsFormlyTypes.BUTTON,
@@ -113,14 +113,15 @@ const getTabsFieldConfig = (): FormlyFieldConfig[] => {
                 templateOptions: {
                   text: 'Search',
                   type: 'submit',
-                }
-              }
-            ]
-          }
-        ]
+                },
+              },
+            ],
+          },
+        ],
       },
-    }];
-}
+    },
+  ];
+};
 
 /**
  * UNIT TESTS START HERE
@@ -130,15 +131,8 @@ describe('Tabs Formly Field Component', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TestComponent, FormlyTabsWrapperComponent ],
-      imports: [
-        NoopAnimationsModule,
-        FormsModule,
-        ReactiveFormsModule,
-        SdsTabsModule,
-        SdsFormlyModule,
-        FormlyModule,
-      ],
+      declarations: [TestComponent, FormlyTabsWrapperComponent],
+      imports: [NoopAnimationsModule, FormsModule, ReactiveFormsModule, SdsTabsModule, SdsFormlyModule, FormlyModule],
     });
 
     testComponentInputs = {
@@ -148,28 +142,33 @@ describe('Tabs Formly Field Component', () => {
       fields: getTabsFieldConfig(),
     };
 
-    fixture = createTestComponent('<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>');
+    fixture = createTestComponent(
+      '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'
+    );
   });
 
-  it('should properly trigger filter change on model update', waitForAsync(() => {
-    const subscription = fixture.componentInstance.formlyForm.modelChange.subscribe((change) => {
-      expect(change.keyword.keywordRadio === 'allWords');
-      subscription.unsubscribe();
-    })
-    const secondRadioOption: HTMLFormElement = fixture.debugElement.query(By.css('#keywordRadioTest_1')).nativeElement;
-    secondRadioOption.click();
-    fixture.detectChanges();
-  }));
-
-  it ('Should switch tabs on tab click', () => {
-      const tabsElements: DebugElement[] = fixture.debugElement.queryAll(By.css('.sds-tabs__item'));
-      expect(tabsElements.length).toEqual(2);
-      expect(tabsElements[0].attributes['aria-selected']).toEqual('true');
-      const secondTabButton: HTMLButtonElement = tabsElements[1].nativeElement;
-      secondTabButton.click();
+  it(
+    'should properly trigger filter change on model update',
+    waitForAsync(() => {
+      const subscription = fixture.componentInstance.formlyForm.modelChange.subscribe((change) => {
+        expect(change.keyword.keywordRadio === 'allWords');
+        subscription.unsubscribe();
+      });
+      const secondRadioOption: HTMLFormElement = fixture.debugElement.query(By.css('#keywordRadioTest_1'))
+        .nativeElement;
+      secondRadioOption.click();
       fixture.detectChanges();
-      expect(tabsElements[0].attributes['aria-selected']).toEqual('false');
-      expect(tabsElements[1].attributes['aria-selected']).toEqual('true');
-  });
+    })
+  );
 
-})
+  it('Should switch tabs on tab click', () => {
+    const tabsElements: DebugElement[] = fixture.debugElement.queryAll(By.css('.sds-tabs__item'));
+    expect(tabsElements.length).toEqual(2);
+    expect(tabsElements[0].attributes['aria-selected']).toEqual('true');
+    const secondTabButton: HTMLButtonElement = tabsElements[1].nativeElement;
+    secondTabButton.click();
+    fixture.detectChanges();
+    expect(tabsElements[0].attributes['aria-selected']).toEqual('false');
+    expect(tabsElements[1].attributes['aria-selected']).toEqual('true');
+  });
+});

@@ -7,20 +7,12 @@ import { SdsFormlyTypes } from '../models/formly-types';
 @Component({
   template: `
     <div
-      *ngIf="
-        field.type === sdsFormlyTypes.READONLY || to.readonlyMode;
-        else passThrough
-      "
+      *ngIf="field.type === sdsFormlyTypes.READONLY || to.readonlyMode; else passThrough"
       [ngClass]="to.readonlyClass"
     >
-      <span
-        *ngIf="to.readonlyTemplate; else defaultTemplate"
-        [innerHTML]="to.readonlyTemplate(field)"
-      ></span>
+      <span *ngIf="to.readonlyTemplate; else defaultTemplate" [innerHTML]="to.readonlyTemplate(field)"></span>
       <ng-template #defaultTemplate>
-        <sds-readonly-container
-          [formlyFieldConfig]="field"
-        ></sds-readonly-container>
+        <sds-readonly-container [formlyFieldConfig]="field"></sds-readonly-container>
       </ng-template>
     </div>
     <ng-template #passThrough>

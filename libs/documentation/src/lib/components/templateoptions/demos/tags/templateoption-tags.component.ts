@@ -15,9 +15,9 @@ export class TemplateOptionsTags {
       type: 'input',
       templateOptions: {
         label: 'Entity',
-        tagText: 'SAM'
-      }
-    }
+        tagText: 'SAM',
+      },
+    },
   ];
 
   fieldsTagsColor: FormlyFieldConfig[] = [
@@ -27,8 +27,8 @@ export class TemplateOptionsTags {
       templateOptions: {
         label: 'Entity',
         tagText: 'DUNS',
-       tagClass: 'sds-tag--info-purple'
-      }
-    }
+        tagClass: 'sds-tag--info-purple',
+      },
+    },
   ];
 }

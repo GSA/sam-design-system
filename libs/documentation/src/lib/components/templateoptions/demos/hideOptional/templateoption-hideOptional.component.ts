@@ -15,9 +15,8 @@ export class TemplateOptionHideOptional {
       type: 'input',
       templateOptions: {
         label: 'Entity',
-       hideOptional: true
-     
-      }
-    }
+        hideOptional: true,
+      },
+    },
   ];
 }

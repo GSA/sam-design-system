@@ -1,4 +1,3 @@
-
 import { FormlyModule } from '@ngx-formly/core';
 import { NgModule } from '@angular/core';
 import { SearchBasic } from './search-basic.component';
@@ -10,6 +9,6 @@ import { SdsFormlyModule } from '@gsa-sam/sam-formly';
   imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot()],
   declarations: [SearchBasic],
   exports: [SearchBasic],
-  bootstrap: [SearchBasic]
+  bootstrap: [SearchBasic],
 })
 export class SearchBasicModule {}

@@ -1,10 +1,9 @@
-import { TemplateRef } from "@angular/core";
-import { NavigationMode } from "@gsa-sam/components";
-import { FormlyFieldConfig, FormlyFormOptions } from "@ngx-formly/core";
+import { TemplateRef } from '@angular/core';
+import { NavigationMode } from '@gsa-sam/components';
+import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 
 export interface StepModel {
   children: StepModel[];
-
 
   /**
    * Template reference to display for the step if using custom template
@@ -53,7 +52,7 @@ export interface StepModel {
   model?: any;
 
   /**
-   * Whether this step is valid or not. Invalid steps will be indeicated through a 
+   * Whether this step is valid or not. Invalid steps will be indeicated through a
    * cross icon in the side navigation
    */
   valid?: boolean;
@@ -73,7 +72,7 @@ export interface StepModel {
    * Whether this step is a review step - Review steps are disabled until all other steps
    * are valid
    */
-  isReview?: boolean
+  isReview?: boolean;
 
   /**
    * Users have two options for NavigationMode

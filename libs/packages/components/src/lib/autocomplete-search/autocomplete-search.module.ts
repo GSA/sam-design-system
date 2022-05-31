@@ -16,9 +16,9 @@ import { IconModule } from '@gsa-sam/ngx-uswds-icons';
     SdsTabOutsideModule,
     OverlayModule,
     IconModule,
-    NgxBootstrapIconsModule.pick({ x, caretDownFill, caretUpFill })
+    NgxBootstrapIconsModule.pick({ x, caretDownFill, caretUpFill }),
   ],
   declarations: [SDSAutocompleteSearchComponent],
   exports: [SDSAutocompleteSearchComponent],
 })
-export class SdsAutocompleteSearchModule { }
+export class SdsAutocompleteSearchModule {}

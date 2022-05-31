@@ -1,16 +1,18 @@
-import { Component, Input, OnChanges, OnInit, TemplateRef } from "@angular/core";
+import { Component, Input, OnChanges, OnInit, TemplateRef } from '@angular/core';
 
 @Component({
   selector: `sds-readonly-fileinfo`,
   template: `
-    <ng-container *ngIf="valueTemplate; else defaultValue" 
-    [ngTemplateOutlet]="valueTemplate" 
-    [ngTemplateOutletContext]="{$implicit: displayValue}">
+    <ng-container
+      *ngIf="valueTemplate; else defaultValue"
+      [ngTemplateOutlet]="valueTemplate"
+      [ngTemplateOutletContext]="{ $implicit: displayValue }"
+    >
     </ng-container>
     <ng-template #defaultValue>
-      <span class="text-bold">{{displayValue}}</span>
+      <span class="text-bold">{{ displayValue }}</span>
     </ng-template>
-  `
+  `,
 })
 export class ReadonlyFileinfoComponent implements OnInit, OnChanges {
   @Input() value: any;
@@ -30,9 +32,9 @@ export class ReadonlyFileinfoComponent implements OnInit, OnChanges {
       return;
     }
 
-    const selectedOption = this.fileInfoOptions.find(option => option.value === this.value);
+    const selectedOption = this.fileInfoOptions.find((option) => option.value === this.value);
     if (!selectedOption) {
-      this.displayValue = '&mdash;'
+      this.displayValue = '&mdash;';
     }
     this.displayValue = selectedOption.label + ' - ' + selectedOption.value;
   }

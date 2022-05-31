@@ -4,10 +4,9 @@ import { FormlyFormOptions } from '@ngx-formly/core';
 @Component({
   selector: 'sds-formly-reset',
   templateUrl: './formly-reset.component.html',
-  styleUrls: ['./formly-reset.component.scss']
+  styleUrls: ['./formly-reset.component.scss'],
 })
 export class SdsFormlyResetComponent {
-
   /**
    * Formly form options
    */
@@ -23,7 +22,6 @@ export class SdsFormlyResetComponent {
   @Output() resetClicked = new EventEmitter();
 
   resetAll() {
-
     if (this.defaultModel) {
       this.options.resetModel(this.defaultModel);
     } else {
@@ -31,5 +29,4 @@ export class SdsFormlyResetComponent {
     }
     this.resetClicked.emit();
   }
-
 }

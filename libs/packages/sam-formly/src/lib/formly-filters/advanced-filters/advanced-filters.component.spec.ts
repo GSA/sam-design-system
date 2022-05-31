@@ -7,34 +7,32 @@ import { SdsAdvancedFiltersService } from './sds-advanced-filters.service';
 import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 import { IconModule, allIcons as sdsAllIcons } from '@gsa-sam/ngx-uswds-icons';
 
-
 describe('Advanced Filteres Component', () => {
   let component: AdvancedFiltersComponent;
   let fixture: ComponentFixture<AdvancedFiltersComponent>;
   let modalServiceSpy: jasmine.SpyObj<SdsDialogService>;
   let dialogRefSpyObj = jasmine.createSpyObj({
-    afterClosed: of({})
+    afterClosed: of({}),
   });
   let advancedFiltersService: SdsAdvancedFiltersService;
 
-  beforeEach(waitForAsync(() => {
-    modalServiceSpy = jasmine.createSpyObj('modalService', ['open']);
-    const advancedFiltersServiceSpy = jasmine.createSpyObj(
-      'SdsAdvancedFiltersService',
-      ['convertToCheckboxes']
-    );
-    TestBed.configureTestingModule({
-      declarations: [AdvancedFiltersComponent],
-      imports: [IconModule, NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))],
-      providers: [
-        { provide: SdsDialogService, useValue: modalServiceSpy },
-        {
-          provide: SdsAdvancedFiltersService,
-          useValue: advancedFiltersServiceSpy
-        }
-      ]
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      modalServiceSpy = jasmine.createSpyObj('modalService', ['open']);
+      const advancedFiltersServiceSpy = jasmine.createSpyObj('SdsAdvancedFiltersService', ['convertToCheckboxes']);
+      TestBed.configureTestingModule({
+        declarations: [AdvancedFiltersComponent],
+        imports: [IconModule, NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))],
+        providers: [
+          { provide: SdsDialogService, useValue: modalServiceSpy },
+          {
+            provide: SdsAdvancedFiltersService,
+            useValue: advancedFiltersServiceSpy,
+          },
+        ],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AdvancedFiltersComponent);

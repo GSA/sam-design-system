@@ -24,7 +24,7 @@ export class FormlyTabsBasicComponent {
           // tab 1
           {
             templateOptions: {
-              tabHeader: 'Simple Search'
+              tabHeader: 'Simple Search',
             },
             id: 'Tab1',
             fieldGroup: [
@@ -36,18 +36,18 @@ export class FormlyTabsBasicComponent {
                   options: [
                     {
                       label: 'Any Words',
-                      value: 'anyWords'
+                      value: 'anyWords',
                     },
                     {
                       label: 'All Words',
-                      value: 'allWords'
+                      value: 'allWords',
                     },
                     {
                       label: 'Exact Match',
-                      value: 'exactMatch'
-                    }
-                  ]
-                }
+                      value: 'exactMatch',
+                    },
+                  ],
+                },
               },
               {
                 key: 'keywordTags',
@@ -55,16 +55,17 @@ export class FormlyTabsBasicComponent {
                 templateOptions: {
                   expand: false,
                   configuration: {
-                    id: "keyword",
-                    primaryKeyField: "key",
-                    primaryTextField: "text",
-                    labelText: "Search Keyword",
+                    id: 'keyword',
+                    primaryKeyField: 'key',
+                    primaryTextField: 'text',
+                    labelText: 'Search Keyword',
                     selectionMode: SelectionMode.MULTIPLE,
-                    autocompletePlaceHolderText: "",
+                    autocompletePlaceHolderText: '',
                     isTagModeEnabled: true,
-                  }
-                }
-              }]
+                  },
+                },
+              },
+            ],
           },
           //tab 2
           {
@@ -81,7 +82,7 @@ export class FormlyTabsBasicComponent {
                 templateOptions: {
                   placeholder: 'e.g. ((rental AND property) OR (lease and property) AND NOT ( "short term"))',
                   required: true,
-                }
+                },
               },
               {
                 type: SdsFormlyTypes.BUTTON,
@@ -90,11 +91,12 @@ export class FormlyTabsBasicComponent {
                 templateOptions: {
                   text: 'Search',
                   type: 'submit',
-                }
-              }
-            ]
-          }
-        ]
+                },
+              },
+            ],
+          },
+        ],
       },
-    }];
+    },
+  ];
 }

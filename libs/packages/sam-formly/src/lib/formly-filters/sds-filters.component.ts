@@ -20,16 +20,9 @@ import { SDSFormlyUpdateModelService } from './service/sds-filter-model-update.s
 
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import {
-  FormlyUtilsService,
-  ReadonlyDataType,
-} from '../formly/services/formly-utils.service';
+import { FormlyUtilsService, ReadonlyDataType } from '../formly/services/formly-utils.service';
 import { SdsFormlyTypes } from '../formly/models/formly-types';
-import {
-  SdsDialogRef,
-  SdsDialogService,
-  SDS_DIALOG_DATA,
-} from '@gsa-sam/components';
+import { SdsDialogRef, SdsDialogService, SDS_DIALOG_DATA } from '@gsa-sam/components';
 import { cloneDeep } from 'lodash-es';
 import { FormlyValueChangeEvent } from '@ngx-formly/core/lib/components/formly.field.config';
 @Component({
@@ -162,38 +155,29 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     // keep display chips to defined value if defined, otherwise, default to false, unless hoirzontal is turned on
-    this.displayChips =
-      this.displayChips != undefined ? this.displayChips : this.horizontal;
+    this.displayChips = this.displayChips != undefined ? this.displayChips : this.horizontal;
 
     if (this.filterUpdateModelService) {
-      this.filterUpdateModelService.filterModel
-        .pipe(takeUntil(this.unsubscribe$))
-        .subscribe((filter) => {
-          if (filter) {
-            const updatedFormValue = this.overwrite(
-              this.form.getRawValue(),
-              filter
-            );
-            // Shallow copy to not trigger onChanges from formly side
-            Object.keys(updatedFormValue).forEach((key) => {
-              this.model[key] = updatedFormValue[key];
-            });
+      this.filterUpdateModelService.filterModel.pipe(takeUntil(this.unsubscribe$)).subscribe((filter) => {
+        if (filter) {
+          const updatedFormValue = this.overwrite(this.form.getRawValue(), filter);
+          // Shallow copy to not trigger onChanges from formly side
+          Object.keys(updatedFormValue).forEach((key) => {
+            this.model[key] = updatedFormValue[key];
+          });
 
-            setTimeout(() => {
-              this.form.patchValue(updatedFormValue);
-            });
-            this.checkForHide();
-          }
-        });
+          setTimeout(() => {
+            this.form.patchValue(updatedFormValue);
+          });
+          this.checkForHide();
+        }
+      });
       this.cdr.detectChanges();
     }
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (
-      changes.model &&
-      changes.model.currentValue != changes.model.previousValue
-    ) {
+    if (changes.model && changes.model.currentValue != changes.model.previousValue) {
       this.checkForHide();
     }
   }
@@ -212,10 +196,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
       this.fields.forEach((field) => {
         if (key.includes(field.key)) {
           if (field.fieldGroup) {
-            const fieldExists = this.findFieldInFieldGroup(
-              field.fieldGroup,
-              lastKey
-            );
+            const fieldExists = this.findFieldInFieldGroup(field.fieldGroup, lastKey);
             if (fieldExists) {
               field.hide = false;
               fieldExists.hide = false;
@@ -272,9 +253,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
   }
 
   updateChange(change) {
-    const updatedModel = this.getCleanModel
-      ? this.convertToModel(change)
-      : change;
+    const updatedModel = this.getCleanModel ? this.convertToModel(change) : change;
     this.filterChange.emit(updatedModel);
     if (this.formlyUpdateComunicationService) {
       this.formlyUpdateComunicationService.updateFilter(updatedModel);
@@ -303,8 +282,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     queryString.split('&').forEach((pair) => {
       if (pair !== '') {
         const splitpair = pair.split('=');
-        target[splitpair[0]] =
-          splitpair[1] === '' || splitpair[1] === 'false' ? null : splitpair[1];
+        target[splitpair[0]] = splitpair[1] === '' || splitpair[1] === 'false' ? null : splitpair[1];
       }
     });
     return target;
@@ -324,12 +302,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
    * Parser for qs.parse - if input string is true / false,
    * convert to boolean value, otherwise use default decoder
    */
-  cleanModelParser(
-    str: string,
-    decoder: qs.defaultDecoder,
-    charset: string,
-    type: 'key' | 'value'
-  ) {
+  cleanModelParser(str: string, decoder: qs.defaultDecoder, charset: string, type: 'key' | 'value') {
     if (type === 'key') {
       return decoder(str, decoder, charset);
     }
@@ -352,19 +325,16 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     const clonedFields = cloneDeep(this.fields);
     this._modelSnapshot = cloneDeep(this.model);
     this.removePopoverGroup(clonedFields);
-    this.dialogRef = this.formlyDialogService.open(
-      this.horizontalFiltersDialogTemplate,
-      {
-        data: { fields: clonedFields, options: {} },
-        height: '100vh',
-        width: '100vw',
-        maxWidth: '100vw',
-        maxHeight: '100vh',
-        hasBackdrop: false,
-        displayCloseBtn: false,
-        panelClass: ['sds-dialog--full'],
-      }
-    );
+    this.dialogRef = this.formlyDialogService.open(this.horizontalFiltersDialogTemplate, {
+      data: { fields: clonedFields, options: {} },
+      height: '100vh',
+      width: '100vw',
+      maxWidth: '100vw',
+      maxHeight: '100vh',
+      hasBackdrop: false,
+      displayCloseBtn: false,
+      panelClass: ['sds-dialog--full'],
+    });
 
     this.dialogRef
       .afterClosed()
@@ -418,10 +388,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
    * @param fields
    */
   private generateChips(model: any, fields: FormlyFieldConfig[]) {
-    const readonlyData = FormlyUtilsService.formlyConfigToReadonlyData(
-      fields,
-      model
-    );
+    const readonlyData = FormlyUtilsService.formlyConfigToReadonlyData(fields, model);
     const chipsWithValue = readonlyData.filter((data) => data.value);
     let allChips = [];
     chipsWithValue.forEach((chip) => {
@@ -439,14 +406,9 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
         return;
       }
 
-      if (
-        chip.formlyType === SdsFormlyTypes.DATERANGEPICKER ||
-        chip.formlyType === SdsFormlyTypes.DATERANGEPICKERV2
-      ) {
-        const fromDateValue =
-          chip.value[chip.readonlyOptions.daterangepickerOptions.fromDateKey];
-        const toDateValue =
-          chip.value[chip.readonlyOptions.daterangepickerOptions.toDateKey];
+      if (chip.formlyType === SdsFormlyTypes.DATERANGEPICKER || chip.formlyType === SdsFormlyTypes.DATERANGEPICKERV2) {
+        const fromDateValue = chip.value[chip.readonlyOptions.daterangepickerOptions.fromDateKey];
+        const toDateValue = chip.value[chip.readonlyOptions.daterangepickerOptions.toDateKey];
 
         if (fromDateValue || toDateValue) {
           allChips.push(chip);
@@ -491,10 +453,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
       return;
     }
 
-    if (
-      chip.formlyType === SdsFormlyTypes.DATERANGEPICKER ||
-      chip.formlyType === SdsFormlyTypes.DATERANGEPICKERV2
-    ) {
+    if (chip.formlyType === SdsFormlyTypes.DATERANGEPICKER || chip.formlyType === SdsFormlyTypes.DATERANGEPICKERV2) {
       const fromDateControl = field.fieldGroup[0].formControl;
       const toDateControl = field.fieldGroup[1].formControl;
       fromDateControl.reset();
@@ -505,12 +464,9 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     // If the form control contains complex values, such as an object or array, we need to determine what the new
     // value of the form will be after this chip has been removed, and update the form control accordingly
     const chipsWithSameKey = this.chips.filter(
-      (exisingChip) =>
-        chip != exisingChip && chip.formlyKey === exisingChip.formlyKey
+      (exisingChip) => chip != exisingChip && chip.formlyKey === exisingChip.formlyKey
     );
-    const existingValues = chipsWithSameKey.map(
-      (chipWithSameKey) => chipWithSameKey.value
-    );
+    const existingValues = chipsWithSameKey.map((chipWithSameKey) => chipWithSameKey.value);
 
     if (Array.isArray(field.formControl.value)) {
       let updatedValue = [];

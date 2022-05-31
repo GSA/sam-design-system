@@ -4,7 +4,7 @@ import { FiltersHideExpression } from './filters-hideexpression.component';
 import { SdsFiltersModule, SdsFormlyDialogModule } from '@gsa-sam/sam-formly';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
-import {  SdsDialogModule } from '@gsa-sam/components';
+import { SdsDialogModule } from '@gsa-sam/components';
 import { SdsAccordionModule } from '@gsa-sam/sam-material-extensions';
 
 @NgModule({
@@ -20,6 +20,6 @@ import { SdsAccordionModule } from '@gsa-sam/sam-material-extensions';
     SdsFormlyDialogModule,
   ],
   exports: [FiltersHideExpression],
-  bootstrap: [FiltersHideExpression]
+  bootstrap: [FiltersHideExpression],
 })
 export class FiltersHideExpressionModule {}

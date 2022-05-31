@@ -2,7 +2,6 @@ import { Observable } from 'rxjs';
 import { SelectionMode } from './sds-selected-item-model-helper';
 
 export class SDSSelectedResultConfiguration {
-
   /**
    * Used to describe the drop down (Text should match the label that will be supplied)
    */
@@ -28,7 +27,7 @@ export class SDSSelectedResultConfiguration {
    */
   public selectionMode: SelectionMode = SelectionMode.SINGLE;
 
-  /** 
+  /**
    * Modifiier function to change display of how primary text field is shown
    * Allows adding prefix / suffix values when displaying tags
    */

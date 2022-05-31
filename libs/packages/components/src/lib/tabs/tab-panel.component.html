@@ -1,8 +1,8 @@
-<div 
+<div
   [attr.aria-hidden]="!selected"
-  [attr.id]="id" 
+  [attr.id]="id"
   role="tabpanel"
-  [ngClass]="{'display-none': !selected, 'display-block': selected}"
-  >
+  [ngClass]="{ 'display-none': !selected, 'display-block': selected }"
+>
   <ng-content></ng-content>
 </div>

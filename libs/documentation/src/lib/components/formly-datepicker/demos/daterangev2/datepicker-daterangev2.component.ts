@@ -7,7 +7,6 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
   selector: `sds-formly-daterangev2-demo`,
 })
 export class FormlyDatepickerDateRangeV2 {
-
   results: any = {};
   form = new FormGroup({});
   model: any = {};
@@ -21,7 +20,7 @@ export class FormlyDatepickerDateRangeV2 {
         label: 'Expiration Date Range',
         minDate: new Date(2019, 9, 5),
         maxDate: new Date(2020, 11, 15),
-      }
-    }
+      },
+    },
   ];
 }

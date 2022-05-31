@@ -5,10 +5,7 @@ import { DocumentationExamplesPage } from '../shared/examples-page/examples.comp
 import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
-import {
-  DocumentationComponentsSharedModule,
-  DocumentationDemoList,
-} from '../shared/index';
+import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { SearchBasicModule } from './demos/basic/search-basic.module';
 import { SearchBasic } from './demos/basic/search-basic.component';
@@ -59,12 +56,7 @@ export const ROUTES = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    DocumentationComponentsSharedModule,
-    SearchBasicModule,
-    SearchOptionalModule,
-  ],
+  imports: [CommonModule, DocumentationComponentsSharedModule, SearchBasicModule, SearchOptionalModule],
 })
 export class SearchModule {
   constructor(demoList: DocumentationDemoList) {

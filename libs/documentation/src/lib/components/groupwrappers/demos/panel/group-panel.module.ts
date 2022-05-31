@@ -9,6 +9,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot()],
   declarations: [GroupPanel],
   exports: [GroupPanel],
-  bootstrap: [GroupPanel]
+  bootstrap: [GroupPanel],
 })
 export class GroupPanelModule {}

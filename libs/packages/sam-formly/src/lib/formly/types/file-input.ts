@@ -18,8 +18,7 @@ import { delay, map } from 'rxjs/operators';
   selector: `sds-formly-field-file-input`,
   templateUrl: './file-input.html',
 })
-export class FormlyFieldFileInputComponent extends AbstractSdsFormly
-  implements OnInit {
+export class FormlyFieldFileInputComponent extends AbstractSdsFormly implements OnInit {
   @ViewChild(UsaFileInputComponent, { static: true })
   public template: UsaFileInputComponent;
   @Output() modelChange: EventEmitter<any> = new EventEmitter();
@@ -47,9 +46,7 @@ export class FormlyFieldFileInputComponent extends AbstractSdsFormly
     this.showUploadApperance = this.to.enableUploadAppearance ?? false;
 
     if (this.field && this.field.fieldArray) {
-      this.displayedColumns = this.field.fieldArray.templateOptions.tableColumns.map(
-        (column) => column.columnName
-      );
+      this.displayedColumns = this.field.fieldArray.templateOptions.tableColumns.map((column) => column.columnName);
       this.parentFieldConfig = this.field.parent;
     }
   }

@@ -3,10 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DocumentationExamplesPage } from '../shared/examples-page/examples.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
-import {
-  DocumentationComponentsSharedModule,
-  DocumentationDemoList,
-} from './../shared/index';
+import { DocumentationComponentsSharedModule, DocumentationDemoList } from './../shared/index';
 import { ComponentWrapperComponent } from './../../shared/component-wrapper/component-wrapper.component';
 import { SlideOutBasicComponent } from './demos/basic/slide-out-basic.component';
 import { SlideOutBasicModule } from './demos/basic/slide-out-basic.module';
@@ -30,7 +27,7 @@ const DEMOS = {
     module: require('!!raw-loader!./demos/template-ref/slide-out-template-ref.module'),
     markup: require('!!raw-loader!./demos/template-ref/slide-out-template-ref.component.html'),
     path: 'libs/documentation/src/lib/components/slide-out/demos/template-ref',
-  }
+  },
 };
 
 export const ROUTES = [
@@ -56,12 +53,7 @@ export const ROUTES = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    DocumentationComponentsSharedModule,
-    SlideOutBasicModule,
-    SlideOutTemplateRefModule
-  ],
+  imports: [CommonModule, DocumentationComponentsSharedModule, SlideOutBasicModule, SlideOutTemplateRefModule],
 })
 export class SlideOutModule {
   constructor(demoList: DocumentationDemoList) {

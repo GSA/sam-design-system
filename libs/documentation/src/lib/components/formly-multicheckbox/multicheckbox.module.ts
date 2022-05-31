@@ -12,6 +12,8 @@ import { MultiCheckboxSelectAll } from './demos/selectall/multicheckbox-selectal
 import { MultiCheckboxSelectAllModule } from './demos/selectall/multicheckbox-selectall.module';
 import { MultiCheckboxExpandableModule } from './demos/expandable/multicheckbox-expandable.module';
 import { MultiCheckboxExpandable } from './demos/expandable/multicheckbox-expandable.component';
+import { MultiCheckboxGroupModule } from './demos/group/multicheckbox-group.module';
+import { MultiCheckboxGroup } from './demos/group/multicheckbox-group.component';
 
 declare var require: any;
 const DEMOS = {
@@ -20,25 +22,30 @@ const DEMOS = {
     type: MultiCheckboxBasic,
     code: require('!!raw-loader!./demos/basic/multicheckbox-basic.component'),
     markup: require('!!raw-loader!./demos/basic/multicheckbox-basic.component.html'),
-    path:
-      'libs/documentation/src/lib/components/formly-multicheckbox/demos/basic'
+    path: 'libs/documentation/src/lib/components/formly-multicheckbox/demos/basic',
   },
   selectall: {
     title: 'Multi Checkbox with nesting',
     type: MultiCheckboxSelectAll,
     code: require('!!raw-loader!./demos/selectall/multicheckbox-selectall.component'),
     markup: require('!!raw-loader!./demos/selectall/multicheckbox-selectall.component.html'),
-    path:
-      'libs/documentation/src/lib/components/formly-multicheckbox/demos/selectall'
+    path: 'libs/documentation/src/lib/components/formly-multicheckbox/demos/selectall',
   },
   expandable: {
     title: 'Multi Checkbox with Select All expandable options',
     type: MultiCheckboxExpandable,
     code: require('!!raw-loader!./demos/expandable/multicheckbox-expandable.component'),
     markup: require('!!raw-loader!./demos/expandable/multicheckbox-expandable.component.html'),
-    path:
-      'libs/documentation/src/lib/components/formly-multicheckbox/demos/expandable'
-  }
+    path: 'libs/documentation/src/lib/components/formly-multicheckbox/demos/expandable',
+  },
+
+  group: {
+    title: 'Multi checkbox with group',
+    type: MultiCheckboxGroup,
+    code: require('!!raw-loader!./demos/group/multicheckbox-group.component'),
+    markup: require('!!raw-loader!./demos/group/multicheckbox-group.component.html'),
+    path: 'libs/documentation/src/lib/components/formly-multicheckbox/demos/group',
+  },
 };
 
 export const ROUTES = [
@@ -51,18 +58,18 @@ export const ROUTES = [
           pkg: 'formly',
           type: 'components',
           name: 'FormlyFieldMultiCheckboxComponent',
-          formType: 'multicheckbox'
-        }
-      ]
+          formType: 'multicheckbox',
+        },
+      ],
     },
     component: ComponentWrapperComponent,
     children: [
       { path: 'examples', component: DocumentationExamplesPage },
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
-      { path: 'template', component: DocumentationTemplatePage }
-    ]
-  }
+      { path: 'template', component: DocumentationTemplatePage },
+    ],
+  },
 ];
 
 @NgModule({
@@ -71,8 +78,9 @@ export const ROUTES = [
     DocumentationComponentsSharedModule,
     MultiCheckboxBasicModule,
     MultiCheckboxSelectAllModule,
-    MultiCheckboxExpandableModule
-  ]
+    MultiCheckboxExpandableModule,
+    MultiCheckboxGroupModule,
+  ],
 })
 export class MultiCheckboxModule {
   constructor(demoList: DocumentationDemoList) {

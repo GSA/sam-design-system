@@ -1,14 +1,6 @@
-import {
-  Directive,
-  Input,
-  OnChanges,
-  OnInit,
-  Optional,
-  SimpleChanges,
-  ElementRef,
-} from '@angular/core';
-import {SdsDialogService} from './dialog';
-import {SdsDialogRef} from './dialog-ref';
+import { Directive, Input, OnChanges, OnInit, Optional, SimpleChanges, ElementRef } from '@angular/core';
+import { SdsDialogService } from './dialog';
+import { SdsDialogRef } from './dialog-ref';
 
 /** Counter used to generate unique IDs for dialog elements. */
 let dialogElementUid = 0;
@@ -23,8 +15,8 @@ let dialogElementUid = 0;
   host: {
     '(click)': 'dialogRef.close(dialogResult)',
     '[attr.aria-label]': 'ariaLabel || null',
-    'type': 'button', // Prevents accidental form submits.
-  }
+    type: 'button', // Prevents accidental form submits.
+  },
 })
 export class SdsDialogCloseDirective implements OnInit, OnChanges {
   /** Screenreader label for the button. */
@@ -38,7 +30,8 @@ export class SdsDialogCloseDirective implements OnInit, OnChanges {
   constructor(
     @Optional() public dialogRef: SdsDialogRef<any>,
     private _elementRef: ElementRef<HTMLElement>,
-    private _dialog: SdsDialogService) {}
+    private _dialog: SdsDialogService
+  ) {}
 
   ngOnInit() {
     if (!this.dialogRef) {
@@ -78,7 +71,8 @@ export class SdsDialogTitleDirective implements OnInit {
   constructor(
     @Optional() private _dialogRef: SdsDialogRef<any>,
     private _elementRef: ElementRef<HTMLElement>,
-    private _dialog: SdsDialogService) {}
+    private _dialog: SdsDialogService
+  ) {}
 
   ngOnInit() {
     if (!this._dialogRef) {
@@ -103,10 +97,9 @@ export class SdsDialogTitleDirective implements OnInit {
 @Directive({
   selector: `[sds-dialog-subtitle], sds-dialog-subtitle, [sdsDialogSubtitle]`,
   // tslint:disable-next-line: use-host-property-decorator
-  host: {'[class.sds-dialog-subtitle]': 'true'}
+  host: { '[class.sds-dialog-subtitle]': 'true' },
 })
 export class SdsDialogSubtitleDirective {}
-
 
 /**
  * Scrollable content container of a dialog.
@@ -114,10 +107,9 @@ export class SdsDialogSubtitleDirective {}
 @Directive({
   selector: `[sds-dialog-content], sds-dialog-content, [sdsDialogContent]`,
   // tslint:disable-next-line: use-host-property-decorator
-  host: {'[class.sds-dialog-content]': 'true'}
+  host: { '[class.sds-dialog-content]': 'true' },
 })
 export class SdsDialogContentDirective {}
-
 
 /**
  * Container for the bottom action buttons in a dialog.
@@ -126,10 +118,9 @@ export class SdsDialogContentDirective {}
 @Directive({
   selector: `[sds-dialog-actions], sds-dialog-actions, [sdsDialogActions]`,
   // tslint:disable-next-line: use-host-property-decorator
-  host: {'[class.sds-dialog-actions]': 'true'}
+  host: { '[class.sds-dialog-actions]': 'true' },
 })
 export class SdsDialogActionsDirective {}
-
 
 /**
  * Finds the closest SdsDialogRef to an element by looking at the DOM.
@@ -143,5 +134,5 @@ function getClosestDialog(element: ElementRef<HTMLElement>, openDialogs: SdsDial
     parent = parent.parentElement;
   }
 
-  return parent ? openDialogs.find(dialog => dialog.id === parent!.id) : null;
+  return parent ? openDialogs.find((dialog) => dialog.id === parent!.id) : null;
 }

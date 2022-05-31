@@ -4,238 +4,238 @@
 export let SampleAutocompleteData = [
   {
     name: 'Alabama',
-    id: 'AL'
+    id: 'AL',
   },
   {
     name: 'Alaska',
-    id: 'AK'
+    id: 'AK',
   },
   {
     name: 'American Samoa',
-    id: 'AS'
+    id: 'AS',
   },
   {
     name: 'Arizona',
-    id: 'AZ'
+    id: 'AZ',
   },
   {
     name: 'Arkansas',
-    id: 'AR'
+    id: 'AR',
   },
   {
     name: 'California',
-    id: 'CA'
+    id: 'CA',
   },
   {
     name: 'Colorado',
-    id: 'CO'
+    id: 'CO',
   },
   {
     name: 'Connecticut',
-    id: 'CT'
+    id: 'CT',
   },
   {
     name: 'Delaware',
-    id: 'DE'
+    id: 'DE',
   },
   {
     name: 'District Of Columbia',
-    id: 'DC'
+    id: 'DC',
   },
   {
     name: 'Federated States Of Micronesia',
-    id: 'FM'
+    id: 'FM',
   },
   {
     name: 'Florida',
-    id: 'FL'
+    id: 'FL',
   },
   {
     name: 'Georgia',
-    id: 'GA'
+    id: 'GA',
   },
   {
     name: 'Guam Gu',
-    id: 'GU'
+    id: 'GU',
   },
   {
     name: 'Hawaii',
-    id: 'HI'
+    id: 'HI',
   },
   {
     name: 'Idaho',
-    id: 'ID'
+    id: 'ID',
   },
   {
     name: 'Illinois',
-    id: 'IL'
+    id: 'IL',
   },
   {
     name: 'Indiana',
-    id: 'IN'
+    id: 'IN',
   },
   {
     name: 'Iowa',
-    id: 'IA'
+    id: 'IA',
   },
   {
     name: 'Kansas',
-    id: 'KS'
+    id: 'KS',
   },
   {
     name: 'Kentucky',
-    id: 'KY'
+    id: 'KY',
   },
   {
     name: 'Louisiana',
-    id: 'LA'
+    id: 'LA',
   },
   {
     name: 'Maine',
-    id: 'ME'
+    id: 'ME',
   },
   {
     name: 'Marshall Islands',
-    id: 'MH'
+    id: 'MH',
   },
   {
     name: 'Maryland',
-    id: 'MD'
+    id: 'MD',
   },
   {
     name: 'Massachusetts',
-    id: 'MA'
+    id: 'MA',
   },
   {
     name: 'Michigan',
-    id: 'MI'
+    id: 'MI',
   },
   {
     name: 'Minnesota',
-    id: 'MN'
+    id: 'MN',
   },
   {
     name: 'Mississippi',
-    id: 'MS'
+    id: 'MS',
   },
   {
     name: 'Missouri',
-    id: 'MO'
+    id: 'MO',
   },
   {
     name: 'Montana',
-    id: 'MT'
+    id: 'MT',
   },
   {
     name: 'Nebraska',
-    id: 'NE'
+    id: 'NE',
   },
   {
     name: 'Nevada',
-    id: 'NV'
+    id: 'NV',
   },
   {
     name: 'New Hampshire',
-    id: 'NH'
+    id: 'NH',
   },
   {
     name: 'New Jersey',
-    id: 'NJ'
+    id: 'NJ',
   },
   {
     name: 'New Mexico',
-    id: 'NM'
+    id: 'NM',
   },
   {
     name: 'New York',
-    id: 'NY'
+    id: 'NY',
   },
   {
     name: 'North Carolina',
-    id: 'NC'
+    id: 'NC',
   },
   {
     name: 'North Dakota',
-    id: 'ND'
+    id: 'ND',
   },
   {
     name: 'Northern Mariana Islands',
-    id: 'MP'
+    id: 'MP',
   },
   {
     name: 'Ohio',
-    id: 'OH'
+    id: 'OH',
   },
   {
     name: 'Oklahoma',
-    id: 'OK'
+    id: 'OK',
   },
   {
     name: 'Oregon',
-    id: 'OR'
+    id: 'OR',
   },
   {
     name: 'Palau',
-    id: 'PW'
+    id: 'PW',
   },
   {
     name: 'Pennsylvania',
-    id: 'PA'
+    id: 'PA',
   },
   {
     name: 'Puerto Rico',
-    id: 'PR'
+    id: 'PR',
   },
   {
     name: 'Rhode Island',
-    id: 'RI'
+    id: 'RI',
   },
   {
     name: 'South Carolina',
-    id: 'SC'
+    id: 'SC',
   },
   {
     name: 'South Dakota',
-    id: 'SD'
+    id: 'SD',
   },
   {
     name: 'Tennessee',
-    id: 'TN'
+    id: 'TN',
   },
   {
     name: 'Texas',
-    id: 'TX'
+    id: 'TX',
   },
   {
     name: 'Utah',
-    id: 'UT'
+    id: 'UT',
   },
   {
     name: 'Vermont',
-    id: 'VT'
+    id: 'VT',
   },
   {
     name: 'Virgin Islands',
-    id: 'VI'
+    id: 'VI',
   },
   {
     name: 'Virginia',
-    id: 'VA'
+    id: 'VA',
   },
   {
     name: 'Washington',
-    id: 'WA'
+    id: 'WA',
   },
   {
     name: 'West Virginia',
-    id: 'WV'
+    id: 'WV',
   },
   {
     name: 'Wisconsin',
-    id: 'WI'
+    id: 'WI',
   },
   {
     name: 'Wyoming',
-    id: 'WY'
-  }
+    id: 'WY',
+  },
 ];

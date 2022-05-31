@@ -9,7 +9,6 @@ import { SelectionPanelModel } from '../model/selection-panel.model';
   styleUrls: ['./navigation-mode.component.scss'],
 })
 export class SdsSelectionPanelNavigationModeComponent implements OnChanges {
-
   @Input() model: SelectionPanelModel;
 
   @Input() navigateOnClick = true;
@@ -18,10 +17,7 @@ export class SdsSelectionPanelNavigationModeComponent implements OnChanges {
 
   @Output() panelSelected = new EventEmitter<NavigationLink>();
 
-  constructor(
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-  ) { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (this.model && this.currentSelection && changes.currentSelection) {
@@ -36,7 +32,7 @@ export class SdsSelectionPanelNavigationModeComponent implements OnChanges {
   onPanelItemClick(panelItem: NavigationLink) {
     this.selectPanel(panelItem);
     this.currentSelection = panelItem;
-    
+
     if (this.navigateOnClick) {
       this.navigateToSelectedItem(panelItem);
     }
@@ -47,8 +43,8 @@ export class SdsSelectionPanelNavigationModeComponent implements OnChanges {
   navigateToSelectedItem(selectedPanel: NavigationLink) {
     const navigationExtras: NavigationExtras = {
       queryParams: selectedPanel.queryParams,
-      relativeTo: this.activatedRoute
-    }
+      relativeTo: this.activatedRoute,
+    };
 
     this.router.navigateByUrl(selectedPanel.route, navigationExtras);
   }
@@ -60,11 +56,11 @@ export class SdsSelectionPanelNavigationModeComponent implements OnChanges {
   }
 
   /**
- * Deselects any previously selected sidenav item
- * @param sidenavItems
- */
+   * Deselects any previously selected sidenav item
+   * @param sidenavItems
+   */
   private deselectSideNav(sidenavItems: NavigationLink[]): void {
-    sidenavItems.forEach(sideNavItem => {
+    sidenavItems.forEach((sideNavItem) => {
       if (sideNavItem.children) {
         this.deselectSideNav(sideNavItem.children);
       }
@@ -92,5 +88,4 @@ export class SdsSelectionPanelNavigationModeComponent implements OnChanges {
     }
     return false;
   }
-
 }

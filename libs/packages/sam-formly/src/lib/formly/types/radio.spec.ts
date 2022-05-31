@@ -11,7 +11,7 @@ import { of as observableOf } from 'rxjs';
 const createTestComponent = (html: string) =>
   createGenericTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;
 
-export function createGenericTestComponent<T>(html: string, type: { new(...args: any[]): T }): ComponentFixture<T> {
+export function createGenericTestComponent<T>(html: string, type: { new (...args: any[]): T }): ComponentFixture<T> {
   TestBed.overrideComponent(type, { set: { template: html } });
   const fixture = TestBed.createComponent(type);
   fixture.detectChanges();
@@ -51,32 +51,33 @@ describe('Formly Field Radio Component', () => {
     });
 
     it('should correctly bind to a static array of data', () => {
-      testComponentInputs.fields = [{
-        key: 'radio-test',
-        type: 'radio',
-        templateOptions: {
-          label: 'Formly Radio button',
-          options: [
-            { label: 'Option A', value: 'a' },
-            { label: 'Option B', value: 'b' },
-            { label: 'Option C', value: 'c' },
-            { label: 'Option C', value: 'd' },
-          ],
+      testComponentInputs.fields = [
+        {
+          key: 'radio-test',
+          type: 'radio',
+          templateOptions: {
+            label: 'Formly Radio button',
+            options: [
+              { label: 'Option A', value: 'a' },
+              { label: 'Option B', value: 'b' },
+              { label: 'Option C', value: 'c' },
+              { label: 'Option C', value: 'd' },
+            ],
+          },
         },
-      },];
+      ];
 
-      const fixture = createTestComponent('<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'),
-        trigger = fixture.debugElement.queryAll(By.css('.usa-radio'))
-
+      const fixture = createTestComponent(
+          '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'
+        ),
+        trigger = fixture.debugElement.queryAll(By.css('.usa-radio'));
 
       fixture.detectChanges();
       const expectedValue = fixture.debugElement.query(By.css('.usa-radio')).componentInstance.field;
 
       expect(expectedValue.templateOptions.options.length).toEqual(4);
     });
-
   });
-
 });
 
 @Component({ selector: 'formly-form-test', template: '', entryComponents: [] })

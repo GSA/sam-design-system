@@ -18,9 +18,9 @@ import { IconModule } from '@gsa-sam/ngx-uswds-icons';
     SdsPageModule,
     SdsSearchResultListModule,
     SdsActionsMenuModule,
-    NgxBootstrapIconsModule.pick({book})
+    NgxBootstrapIconsModule.pick({ book }),
   ],
   exports: [ResultListBasic],
-  bootstrap: [ResultListBasic]
+  bootstrap: [ResultListBasic],
 })
 export class ResultListBasicModule {}

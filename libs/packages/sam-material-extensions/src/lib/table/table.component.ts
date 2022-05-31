@@ -17,13 +17,7 @@ import {
 } from '@angular/core';
 import { AfterViewInit } from '@angular/core';
 import { MatTableDataSource, MatTable } from '@angular/material/table';
-import {
-  animate,
-  state,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { BehaviorSubject } from 'rxjs';
@@ -85,34 +79,26 @@ export class SdsTableFooterCellDirective {}
   selector: 'sds-table-column',
   template: `
     <ng-template #columnHeaderCell let-element="element">
-      <ng-container
-        *ngTemplateOutlet="headerCellTemplate; context: { element: element }"
-      ></ng-container>
+      <ng-container *ngTemplateOutlet="headerCellTemplate; context: { element: element }"></ng-container>
     </ng-template>
 
     <ng-template #columnCell let-element="element">
-      <ng-container
-        *ngTemplateOutlet="cellTemplate; context: { element: element }"
-      ></ng-container>
+      <ng-container *ngTemplateOutlet="cellTemplate; context: { element: element }"></ng-container>
     </ng-template>
 
     <ng-template #columnFooterCell let-element="element">
-      <ng-container
-        *ngTemplateOutlet="footerCellTemplate; context: { element: element }"
-      ></ng-container>
+      <ng-container *ngTemplateOutlet="footerCellTemplate; context: { element: element }"></ng-container>
     </ng-template>
   `,
 })
 export class SdsTableColumnDefComponent implements AfterContentInit {
-  @ViewChild('columnHeaderCell', {static: true}) columnHeaderCell: TemplateRef<any>;
-  @ViewChild('columnCell', {static: true}) columnCell: TemplateRef<any>;
-  @ViewChild('columnFooterCell', {static: true}) columnFooterCell: TemplateRef<any>;
+  @ViewChild('columnHeaderCell', { static: true }) columnHeaderCell: TemplateRef<any>;
+  @ViewChild('columnCell', { static: true }) columnCell: TemplateRef<any>;
+  @ViewChild('columnFooterCell', { static: true }) columnFooterCell: TemplateRef<any>;
 
   @ContentChild('sdsHeaderCell', { read: TemplateRef })
   headerCellTemplate!: TemplateRef<any>;
-  @ContentChild('sdsCell', { read: TemplateRef }) cellTemplate!: TemplateRef<
-    any
-  >;
+  @ContentChild('sdsCell', { read: TemplateRef }) cellTemplate!: TemplateRef<any>;
   @ContentChild('sdsFooterCell', { read: TemplateRef })
   footerCellTemplate!: TemplateRef<any>;
 
@@ -135,15 +121,11 @@ export class SdsTableColumnDefComponent implements AfterContentInit {
     trigger('detailExpand', [
       state('collapsed', style({ height: '0px', minHeight: '0' })),
       state('expanded', style({ height: '*' })),
-      transition(
-        'expanded <=> collapsed',
-        animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')
-      ),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
     ]),
   ],
 })
-export class SdsTableComponent
-  implements OnInit, AfterContentInit, AfterViewInit, OnChanges {
+export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewInit, OnChanges {
   /**
    * Data for table
    */
@@ -242,9 +224,7 @@ export class SdsTableComponent
     if (changes.data.currentValue) {
       this.dataSource = new MatTableDataSource(changes.data.currentValue);
       if (this.sort === 'true' || this.sort === '' || this.isArray(this.sort)) {
-        this.dataSource.sortingDataAccessor = this.sortFn
-          ? this.sortFn
-          : this.defaultSort;
+        this.dataSource.sortingDataAccessor = this.sortFn ? this.sortFn : this.defaultSort;
         this.dataSource.sort = this.matSort;
       }
       if (this.pagination) {
@@ -281,10 +261,7 @@ export class SdsTableComponent
 
     if (this.expansion) {
       const expandedIndicator = 'expandedIndicator';
-      if (
-        this.rowConfig.displayedColumns &&
-        !this.rowConfig.displayedColumns.includes(expandedIndicator)
-      ) {
+      if (this.rowConfig.displayedColumns && !this.rowConfig.displayedColumns.includes(expandedIndicator)) {
         this.rowConfig.displayedColumns.push('expandedIndicator');
       }
     }
@@ -292,9 +269,7 @@ export class SdsTableComponent
 
   ngAfterViewInit() {
     if (this.sort === 'true' || this.sort === '' || this.isArray(this.sort)) {
-      this.dataSource.sortingDataAccessor = this.sortFn
-        ? this.sortFn
-        : this.defaultSort;
+      this.dataSource.sortingDataAccessor = this.sortFn ? this.sortFn : this.defaultSort;
       this.dataSource.sort = this.matSort;
     }
     if (this.pagination) {
@@ -331,9 +306,7 @@ export class SdsTableComponent
     if (this.page && this.dataSource?.paginator) {
       this.dataSource.paginator.pageIndex = this.page.pageNumber - 1;
       this.dataSource.paginator._changePageSize(this.page.pageSize);
-      this.page.totalPages = Math.ceil(
-        this.dataSource.data.length / this.page.pageSize
-      );
+      this.page.totalPages = Math.ceil(this.dataSource.data.length / this.page.pageSize);
       this.totalItems = this.dataSource.data.length;
       this.changeDetectorRef.detectChanges();
     }
@@ -348,10 +321,7 @@ export class SdsTableComponent
   }
 
   onExpansionClicked(element: any) {
-    !this.rowConfig.expandOnClick
-      ? (this.expandedElement =
-          this.expandedElement === element ? null : element)
-      : false;
+    !this.rowConfig.expandOnClick ? (this.expandedElement = this.expandedElement === element ? null : element) : false;
     this.expansionClicked.emit(this.expandedElement);
   }
 }

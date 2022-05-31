@@ -15,7 +15,7 @@ import { SdsReadonlyModule } from '../formly/readonly/readonly.module';
 import { SdsPopoverModule } from '@gsa-sam/components';
 
 @NgModule({
-  declarations: [SdsFiltersComponent, AdvancedFiltersComponent ],
+  declarations: [SdsFiltersComponent, AdvancedFiltersComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -27,9 +27,9 @@ import { SdsPopoverModule } from '@gsa-sam/components';
     FormlyModule,
     SdsReadonlyModule,
     SdsPopoverModule,
-    NgxBootstrapIconsModule.pick({filter, x, chevronLeft})
+    NgxBootstrapIconsModule.pick({ filter, x, chevronLeft }),
   ],
-  exports: [SdsFiltersComponent ],
+  exports: [SdsFiltersComponent],
   providers: [SDSFormlyUpdateModelService],
 })
 export class SdsFiltersModule {}

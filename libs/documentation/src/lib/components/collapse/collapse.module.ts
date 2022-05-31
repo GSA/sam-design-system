@@ -4,10 +4,7 @@ import { CollapseBasic } from './demos/basic/collapse-basic.component';
 import { DocumentationExamplesPage } from '../shared/examples-page/examples.component';
 import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
-import {
-  DocumentationComponentsSharedModule,
-  DocumentationDemoList,
-} from '../shared/index';
+import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { CollapseBasicModule } from './demos/basic/collapse-basic.module';
 
@@ -46,11 +43,7 @@ export const ROUTES = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    DocumentationComponentsSharedModule,
-    CollapseBasicModule,
-  ],
+  imports: [CommonModule, DocumentationComponentsSharedModule, CollapseBasicModule],
 })
 export class CollapseModule {
   constructor(demoList: DocumentationDemoList) {

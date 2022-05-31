@@ -5,8 +5,7 @@ import { FieldType } from '@ngx-formly/core';
   selector: 'sds-formly-field-multicheckbox',
   templateUrl: './multicheckbox.html',
 })
-export class FormlyFieldMultiCheckboxComponent extends FieldType
-  implements OnInit {
+export class FormlyFieldMultiCheckboxComponent extends FieldType implements OnInit {
   defaultOptions = {
     templateOptions: {
       options: [],
@@ -23,8 +22,7 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType
 
   ngOnInit() {
     this.formControl.valueChanges.subscribe((values) => {
-      const isChecked =
-        (Array.isArray(values) && values.length) > 0 ? true : false;
+      const isChecked = (Array.isArray(values) && values.length) > 0 ? true : false;
       this.ariaChecked = isChecked.toString();
       this.allComplete = isChecked;
       if (!this.cdr['destroyed']) {
@@ -57,14 +55,9 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType
     }
 
     if (this.to.type === 'array') {
-      return (
-        this.formControl.value.includes(option.value) && option.value != 'false'
-      );
+      return this.formControl.value.includes(option.value) && option.value != 'false';
     } else if (this.formControl.value[option.value]) {
-      return (
-        this.formControl.value[option.value] &&
-        this.formControl.value[option.value] != 'false'
-      );
+      return this.formControl.value[option.value] && this.formControl.value[option.value] != 'false';
     }
   }
 
@@ -72,9 +65,7 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType
     let value;
     if (this.formControl && this.formControl.value) {
       if (!Array.isArray(this.formControl.value)) {
-        let values = Object.keys(this.formControl.value).map(
-          (item) => this.formControl.value[item]
-        );
+        let values = Object.keys(this.formControl.value).map((item) => this.formControl.value[item]);
         value = values.filter((x) => x === true).length;
       } else {
         value = this.formControl.value.length;
@@ -96,8 +87,7 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType
 
   _getAriaChecked(value) {
     if (Array.isArray(this.field.templateOptions.options)) {
-      this.allComplete =
-        value === this.field.templateOptions.options.length ? true : false;
+      this.allComplete = value === this.field.templateOptions.options.length ? true : false;
     }
     if (value === 0) {
       this.ariaChecked = 'false';

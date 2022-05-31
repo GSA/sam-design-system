@@ -1,0 +1,29 @@
+<form [formGroup]="form">
+  <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
+</form>
+
+<ng-template
+  #checkboxTemplate
+  let-to
+  let-showError="showError"
+  let-formControl="formControl"
+  let-field="field"
+  let-id="id"
+>
+  <div class="usa-checkbox" [class.text-align-end]="to.textAlignEnd">
+    <input
+      class="usa-checkbox__input"
+      type="checkbox"
+      [class.is-invalid]="showError"
+      [indeterminate]="to.indeterminate && formControl.value === null"
+      [formControl]="formControl"
+      [formlyAttributes]="field"
+    />
+    <label class="usa-checkbox__label" [for]="id">
+      <b [innerHtml]="to.label"></b>
+    </label>
+  </div>
+  <div class="padding-left-3">
+    <usa-icon [icon]="'question-octagon'" [size]="'5x'"></usa-icon>
+  </div>
+</ng-template>

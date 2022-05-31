@@ -14,6 +14,8 @@ import { RadioTemplateComponent } from './demos/template/radio-template.componen
 import { RadioTemplateModule } from './demos/template/radio-template.module';
 import { RadioHorizontalComponent } from './demos/horizontal/radio-horizontal.component';
 import { RadioHorizontalModule } from './demos/horizontal/radio-horizontal.module';
+import { RadioGroupComponent } from './demos/group/radio-group.component';
+import { RadioGroupModule } from './demos/group/radio-group.module';
 
 declare var require: any;
 const DEMOS = {
@@ -22,28 +24,36 @@ const DEMOS = {
     type: RadioBasic,
     code: require('!!raw-loader!./demos/basic/radio-basic.component'),
     markup: require('!!raw-loader!./demos/basic/radio-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/formly-radio/demos/basic'
+    path: 'libs/documentation/src/lib/components/formly-radio/demos/basic',
   },
   advanced: {
     title: 'Advanced Form Radio',
     type: RadioAdvancedComponent,
     code: require('!!raw-loader!./demos/advanced/radio-advanced.component'),
     markup: require('!!raw-loader!./demos/advanced/radio-advanced.component.html'),
-    path: 'libs/documentation/src/lib/components/formly-radio/demos/advanced'
+    path: 'libs/documentation/src/lib/components/formly-radio/demos/advanced',
   },
   template: {
     title: 'Template Form Radio',
     type: RadioTemplateComponent,
     code: require('!!raw-loader!./demos/template/radio-template.component'),
     markup: require('!!raw-loader!./demos/template/radio-template.component.html'),
-    path: 'libs/documentation/src/lib/components/formly-radio/demos/template'
+    path: 'libs/documentation/src/lib/components/formly-radio/demos/template',
   },
+  group: {
+    title: 'Group Radio',
+    type: RadioGroupComponent,
+    code: require('!!raw-loader!./demos/group/radio-group.component'),
+    markup: require('!!raw-loader!./demos/group/radio-group.component.html'),
+    path: 'libs/documentation/src/lib/components/formly-radio/demos/group',
+  },
+
   horizontal: {
     title: 'Horizontal Form Radio',
     type: RadioHorizontalComponent,
     code: require('!!raw-loader!./demos/horizontal/radio-horizontal.component'),
     markup: require('!!raw-loader!./demos/horizontal/radio-horizontal.component.html'),
-    path: 'libs/documentation/src/lib/components/formly-radio/demos/horizontal'
+    path: 'libs/documentation/src/lib/components/formly-radio/demos/horizontal',
   },
 };
 
@@ -57,9 +67,9 @@ export const ROUTES = [
           pkg: 'formly',
           type: 'components',
           name: 'FormlyFieldRadioComponent',
-          formType: 'radio'
-        }
-      ]
+          formType: 'radio',
+        },
+      ],
     },
     component: ComponentWrapperComponent,
     children: [
@@ -67,8 +77,8 @@ export const ROUTES = [
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
       { path: 'template', component: DocumentationTemplatePage },
-    ]
-  }
+    ],
+  },
 ];
 
 @NgModule({
@@ -78,8 +88,9 @@ export const ROUTES = [
     RadioBasicModule,
     RadioAdvancedModule,
     RadioTemplateModule,
-    RadioHorizontalModule
-  ]
+    RadioHorizontalModule,
+    RadioGroupModule,
+  ],
 })
 export class RadioModule {
   constructor(demoList: DocumentationDemoList) {

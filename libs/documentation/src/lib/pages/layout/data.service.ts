@@ -14,18 +14,13 @@ export class DataService {
         if (search.filter.keyword && search.filter.keyword.keywordTags) {
           filterText = search.filter.keyword.keywordTags[0].text;
         } else if (search.filter.keyword && search.filter.keyword.keywordTextarea) {
-          filterText =  search.filter.keyword.keywordTextarea;
+          filterText = search.filter.keyword.keywordTextarea;
         }
         if (search.filter.keyword || search.filter.location) {
           const toReturn = [];
           for (let i = 0; i < this.data.length; i++) {
             const item = this.data[i];
-            if (
-              search.filter.keyword &&
-              item.title
-                .toLowerCase()
-                .indexOf(filterText.toLowerCase()) !== -1
-            ) {
+            if (search.filter.keyword && item.title.toLowerCase().indexOf(filterText.toLowerCase()) !== -1) {
               toReturn.push(item);
             } else if (search.filter.location) {
               const location = search.filter.location;
@@ -33,37 +28,26 @@ export class DataService {
               if (
                 location.country &&
                 item.address.country &&
-                item.address.country
-                  .toLowerCase()
-                  .indexOf(location.country.toLowerCase()) > -1
+                item.address.country.toLowerCase().indexOf(location.country.toLowerCase()) > -1
               ) {
                 toReturn.push(item);
               } else if (
                 location.state &&
                 location.state.length &&
                 item.address.state &&
-                location.state.find(
-                  (state) =>
-                    item.address.state
-                      .toLowerCase()
-                      .indexOf(state.id.toLowerCase()) > -1
-                )
+                location.state.find((state) => item.address.state.toLowerCase().indexOf(state.id.toLowerCase()) > -1)
               ) {
                 toReturn.push(item);
               } else if (
                 location.city &&
                 item.address.city &&
-                item.address.city
-                  .toLowerCase()
-                  .indexOf(location.city.toLowerCase()) > -1
+                item.address.city.toLowerCase().indexOf(location.city.toLowerCase()) > -1
               ) {
                 toReturn.push(item);
               } else if (
                 location.zipCode &&
                 item.address.zip &&
-                item.address.zip
-                  .toLowerCase()
-                  .indexOf(location.city.toLowerCase()) > -1
+                item.address.zip.toLowerCase().indexOf(location.city.toLowerCase()) > -1
               ) {
                 toReturn.push(item);
               }
@@ -72,8 +56,7 @@ export class DataService {
           this.data = toReturn;
         }
       }
-      const start =
-        search.page.pageNumber * search.page.pageSize - search.page.pageSize;
+      const start = search.page.pageNumber * search.page.pageSize - search.page.pageSize;
       const end = start + search.page.pageSize;
       return of({
         items: this.data.slice(start, end),

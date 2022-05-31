@@ -38,8 +38,7 @@ declare class InitPxVideo {
   styleUrls: ['./css/px-video.css'],
   encapsulation: ViewEncapsulation.None,
 })
-export class SdsVideoPlayerComponent
-  implements AfterViewInit, OnChanges, OnInit, OnDestroy {
+export class SdsVideoPlayerComponent implements AfterViewInit, OnChanges, OnInit, OnDestroy {
   @Input() VPConfiguration: VPInterface;
   @ViewChild('video') video: ElementRef;
   private config: InitPxVideoConfig;
@@ -80,21 +79,12 @@ export class SdsVideoPlayerComponent
     };
 
     const video = new InitPxVideo(this.config);
-    this.video.nativeElement.setAttribute(
-      'style',
-      'width:' + this.VPConfiguration.width + ';'
-    );
+    this.video.nativeElement.setAttribute('style', 'width:' + this.VPConfiguration.width + ';');
 
-    const progressElement: HTMLProgressElement = this.elementRef.nativeElement.querySelector(
-      'progress'
-    );
-    
+    const progressElement: HTMLProgressElement = this.elementRef.nativeElement.querySelector('progress');
+
     if (progressElement) {
-      this.renderer2.setAttribute(
-        progressElement,
-        'aria-label',
-        this.VPConfiguration.description + ' progress bar'
-      );
+      this.renderer2.setAttribute(progressElement, 'aria-label', this.VPConfiguration.description + ' progress bar');
     }
 
     if (this.VPConfiguration.preload === 'none') {
@@ -117,15 +107,9 @@ export class SdsVideoPlayerComponent
    * on play or restart button of the video.
    */
   private _loadVideoSourceOnDemand() {
-    const playButton: HTMLButtonElement = this.elementRef.nativeElement.querySelector(
-      '.px-video-play'
-    );
-    const restartButton: HTMLButtonElement = this.elementRef.nativeElement.querySelector(
-      '.px-video-restart'
-    );
-    const video: HTMLVideoElement = this.elementRef.nativeElement.querySelector(
-      '#videoPlayer'
-    );
+    const playButton: HTMLButtonElement = this.elementRef.nativeElement.querySelector('.px-video-play');
+    const restartButton: HTMLButtonElement = this.elementRef.nativeElement.querySelector('.px-video-restart');
+    const video: HTMLVideoElement = this.elementRef.nativeElement.querySelector('#videoPlayer');
 
     const loadVideo = ($event) => {
       if (this.loadVideoSource) {

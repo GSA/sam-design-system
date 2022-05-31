@@ -4,9 +4,7 @@ import { SelectionMode } from '../../selected-result/models/sds-selected-item-mo
 import { Observable } from 'rxjs';
 
 export class SDSAutocompletelConfiguration
-  implements
-  SDSSelectedResultConfiguration,
-  SDSAutocompleteSearchConfiguration {
+  implements SDSSelectedResultConfiguration, SDSAutocompleteSearchConfiguration {
   /**
    * sets the default debounce time to 250 milliseconds
    */
@@ -112,7 +110,7 @@ export class SDSAutocompletelConfiguration
    */
   public hideChips: boolean = false;
 
-  /** 
+  /**
    * Modifiier function to change display of how primary text field is shown
    * Allows adding prefix / suffix values when displaying tags
    */

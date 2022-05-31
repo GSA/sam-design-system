@@ -7,7 +7,8 @@
 
   <usa-accordion-item header="Grants.gov Learning Center" [id]="'active-accordion'">
     <ng-template UsaAccordionContent>
-      Learn and navigate the step-by-step process of the <a class="usa-link" href="javascript:void(0);">grants lifecycle</a>, from online application through post-award.
+      Learn and navigate the step-by-step process of the
+      <a class="usa-link" href="javascript:void(0);">grants lifecycle</a>, from online application through post-award.
     </ng-template>
   </usa-accordion-item>
 
@@ -27,8 +28,6 @@
   </usa-accordion-item>
 </usa-accordion>
 
-
-
 <hr class="margin-top-4" />
 <h3>Accordion Item Controls:</h3>
 <button (click)="open()" class="usa-button usa-button--base">Open First Item</button>
@@ -37,8 +36,9 @@
 <button (click)="toggleDisabled()" class="usa-button usa-button--base">Toggle Disabled Item</button>
 
 <h3>Accordion Controls:</h3>
-<p>To expand or collapse all accordion items, multi must be set to true. <code>multi: {{!singleSelect}}</code></p>
+<p>
+  To expand or collapse all accordion items, multi must be set to true. <code>multi: {{ !singleSelect }}</code>
+</p>
 <button (click)="toggleMulti()" class="usa-button usa-button--base">Toggle Multi Mode</button>
 <button (click)="openAll()" class="usa-button usa-button--base" [disabled]="singleSelect">Open All Items</button>
 <button (click)="closeAll()" class="usa-button usa-button--base" [disabled]="singleSelect">Close All Items</button>
-

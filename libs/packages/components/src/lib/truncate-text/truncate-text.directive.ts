@@ -7,16 +7,10 @@ import {
   AfterViewInit,
   HostListener,
   Injector,
-  ViewContainerRef
+  ViewContainerRef,
 } from '@angular/core';
 import { coerceNumberProperty } from '@angular/cdk/coercion';
-import {
-  ViewportRuler,
-  OverlayConfig,
-  Overlay,
-  OverlayRef,
-  ConnectedPosition
-} from '@angular/cdk/overlay';
+import { ViewportRuler, OverlayConfig, Overlay, OverlayRef, ConnectedPosition } from '@angular/cdk/overlay';
 import { Subscription, merge } from 'rxjs';
 import { startWith } from 'rxjs/operators';
 import { PortalInjector, ComponentPortal } from '@angular/cdk/portal';
@@ -24,8 +18,7 @@ import { SdsTruncatedTextContainerComponent } from './truncate-text-container.co
 import { SDS_TRUNCATED_TEXT_DATA } from './truncates-text-base';
 
 @Directive({ selector: '[sdsTruncateTextByLine]' })
-export class SdsTruncateTextByLineDirective
-  implements OnInit, OnDestroy, AfterViewInit {
+export class SdsTruncateTextByLineDirective implements OnInit, OnDestroy, AfterViewInit {
   /** Maximum lines of text limit */
   @Input('sdsTruncateTextByLine')
   get textLinesLimit(): any {
@@ -107,7 +100,7 @@ export class SdsTruncateTextByLineDirective
       originX: 'start',
       originY: 'bottom',
       overlayX: 'start',
-      overlayY: 'top'
+      overlayY: 'top',
     };
     const config = new OverlayConfig({
       positionStrategy: this._overlay
@@ -118,7 +111,7 @@ export class SdsTruncateTextByLineDirective
         .withTransformOriginOn('.sds-overlay'),
       hasBackdrop: true,
       backdropClass: 'cdk-overlay-transparent-backdrop',
-      scrollStrategy: this._overlay.scrollStrategies.close()
+      scrollStrategy: this._overlay.scrollStrategies.close(),
     });
     return this._overlay.create(config);
   }
@@ -129,11 +122,7 @@ export class SdsTruncateTextByLineDirective
       this._injector,
       new WeakMap([[SDS_TRUNCATED_TEXT_DATA, { text: this.initialText }]])
     );
-    const containerPortal = new ComponentPortal(
-      SdsTruncatedTextContainerComponent,
-      this._viewContainerRef,
-      injector
-    );
+    const containerPortal = new ComponentPortal(SdsTruncatedTextContainerComponent, this._viewContainerRef, injector);
     const containerRef = overlay.attach(containerPortal);
 
     return containerRef.instance;
@@ -153,10 +142,7 @@ export class SdsTruncateTextByLineDirective
 
   /** Approximated number of characters that are visible in the container */
   private _getVisibleCharacters(): number {
-    return Math.floor(
-      (this._getHostWidth() / this.approximatedCharacterWidth) *
-        this.textLinesLimit
-    );
+    return Math.floor((this._getHostWidth() / this.approximatedCharacterWidth) * this.textLinesLimit);
   }
 
   private _isNotLongEnough(): boolean {
@@ -170,9 +156,7 @@ export class SdsTruncateTextByLineDirective
 
     this._overlayRef = this._createOverlay();
     const container = this._attachContainer(this._overlayRef);
-    this._closingActionsSubscription = this._overlayClosingActions().subscribe(
-      () => this.closeOverlay()
-    );
+    this._closingActionsSubscription = this._overlayClosingActions().subscribe(() => this.closeOverlay());
     // Wait for the next event loop tick to start the animation
     setTimeout(() => {
       container.startAnimation();

@@ -6,16 +6,8 @@ import { FormlyModule } from '@ngx-formly/core';
 import { SdsTableModule } from '@gsa-sam/sam-material-extensions';
 import { FileInputTemplateComponent } from './file-input-template.component';
 
-
-
 @NgModule({
   declarations: [FileInputTemplateComponent],
-  imports: [
-    CommonModule,
-    SdsFormlyModule,
-    ReactiveFormsModule,
-    FormlyModule.forRoot(),
-    SdsTableModule,
-  ]
+  imports: [CommonModule, SdsFormlyModule, ReactiveFormsModule, FormlyModule.forRoot(), SdsTableModule],
 })
-export class FileInputTemplateModule { }
+export class FileInputTemplateModule {}

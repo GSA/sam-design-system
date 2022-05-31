@@ -1,15 +1,18 @@
 <mat-accordion [displayMode]="displayMode" [multi]="multi">
-    <ng-container *ngFor="let accordionItem of accordionItems">
-        <mat-expansion-panel [(expanded)]="accordionItem.expanded" [disabled]="accordionItem.disabled">
-            <mat-expansion-panel-header [collapsedHeight]="collapsedHeight" [expandedHeight]="expandedHeight">
-                <mat-panel-title>
-                    <span class="sds-expansion-indicator" [ngClass]="{'sds-expansion-indicator--expanded' : accordionItem.expanded}"></span>
-                    <ng-container *ngTemplateOutlet="accordionItem.itemTitleTemplate"></ng-container>
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <span [ngClass]="{'display-none': !accordionItem.expanded}">
-                <ng-container *ngTemplateOutlet="accordionItem.itemContentTemplate"></ng-container>
-            </span>
-        </mat-expansion-panel>
-    </ng-container>
+  <ng-container *ngFor="let accordionItem of accordionItems">
+    <mat-expansion-panel [(expanded)]="accordionItem.expanded" [disabled]="accordionItem.disabled">
+      <mat-expansion-panel-header [collapsedHeight]="collapsedHeight" [expandedHeight]="expandedHeight">
+        <mat-panel-title>
+          <span
+            class="sds-expansion-indicator"
+            [ngClass]="{ 'sds-expansion-indicator--expanded': accordionItem.expanded }"
+          ></span>
+          <ng-container *ngTemplateOutlet="accordionItem.itemTitleTemplate"></ng-container>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <span [ngClass]="{ 'display-none': !accordionItem.expanded }">
+        <ng-container *ngTemplateOutlet="accordionItem.itemContentTemplate"></ng-container>
+      </span>
+    </mat-expansion-panel>
+  </ng-container>
 </mat-accordion>

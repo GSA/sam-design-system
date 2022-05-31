@@ -3,8 +3,6 @@ import { Component, ViewChild, DebugElement, ChangeDetectionStrategy, ChangeDete
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
-
 import {
   SdsTableComponent,
   SdsTableRowComponent,
@@ -13,7 +11,7 @@ import {
   SdsTableColumnDefComponent,
   SdsTableCellDirective,
   SdsTableHeaderCellDirective,
-  SdsTableFooterCellDirective
+  SdsTableFooterCellDirective,
 } from './table.component';
 import { PaginationModule } from '@gsa-sam/components';
 import { MatTableModule } from '@angular/material/table';
@@ -32,7 +30,7 @@ const MOCK_DATA = [
     jobTitle: 'Software Test Engineer IV',
     requests: 1,
     date: '2020-07-23',
-    tags: [{ className: 'text-info-dark', label: 'Normal' }]
+    tags: [{ className: 'text-info-dark', label: 'Normal' }],
   },
   {
     id: 2,
@@ -46,8 +44,8 @@ const MOCK_DATA = [
     date: '2020-04-11',
     tags: [
       { className: 'text-error', label: 'Expired' },
-      { className: 'text-warning-darker', label: 'Inactive' }
-    ]
+      { className: 'text-warning-darker', label: 'Inactive' },
+    ],
   },
   {
     id: 3,
@@ -59,7 +57,7 @@ const MOCK_DATA = [
     jobTitle: 'Media Manager IV',
     requests: 0,
     date: '2020-04-22',
-    tags: [{ className: 'text-info', label: 'Draft' }]
+    tags: [{ className: 'text-info', label: 'Draft' }],
   },
   {
     id: 4,
@@ -71,7 +69,7 @@ const MOCK_DATA = [
     jobTitle: 'Account Coordinator',
     requests: 2,
     date: '2019-11-02',
-    tags: [{ className: 'text-success', label: 'Active' }]
+    tags: [{ className: 'text-success', label: 'Active' }],
   },
   {
     id: 5,
@@ -83,7 +81,7 @@ const MOCK_DATA = [
     jobTitle: 'Financial Analyst',
     requests: 6,
     date: '2020-04-15',
-    tags: [{ className: 'text-default', label: 'Default' }]
+    tags: [{ className: 'text-default', label: 'Default' }],
   },
   {
     id: 6,
@@ -95,7 +93,7 @@ const MOCK_DATA = [
     jobTitle: 'Clinical Specialist',
     requests: 11,
     date: '2020-04-17',
-    tags: [{ className: 'text-error', label: 'Expired' }]
+    tags: [{ className: 'text-error', label: 'Expired' }],
   },
   {
     id: 7,
@@ -109,8 +107,8 @@ const MOCK_DATA = [
     date: '2019-11-13',
     tags: [
       { className: 'text-info', label: 'Draft' },
-      { className: 'text-warning-light', label: 'Expiring' }
-    ]
+      { className: 'text-warning-light', label: 'Expiring' },
+    ],
   },
   {
     id: 8,
@@ -122,7 +120,7 @@ const MOCK_DATA = [
     jobTitle: 'Engineer II',
     requests: 1,
     date: '2020-01-09',
-    tags: [{ className: 'text-success', label: 'Active' }]
+    tags: [{ className: 'text-success', label: 'Active' }],
   },
   {
     id: 9,
@@ -134,7 +132,7 @@ const MOCK_DATA = [
     jobTitle: 'Associate Professor',
     requests: 5,
     date: '2020-02-20',
-    tags: [{ className: 'text-info', label: 'Draft' }]
+    tags: [{ className: 'text-info', label: 'Draft' }],
   },
   {
     id: 10,
@@ -146,8 +144,8 @@ const MOCK_DATA = [
     jobTitle: 'Safety Technician II',
     requests: 2,
     date: '2019-12-13',
-    tags: [{ className: 'text-error', label: 'Expired' }]
-  }
+    tags: [{ className: 'text-error', label: 'Expired' }],
+  },
 ];
 
 @Component({
@@ -155,48 +153,35 @@ const MOCK_DATA = [
     <sds-table [data]="data">
       <sds-table-column sdsColumnName="id">
         <ng-template #sdsHeaderCell>ID</ng-template>
-        <ng-template #sdsCell let-element="element">{{
-          element.id
-        }}</ng-template>
+        <ng-template #sdsCell let-element="element">{{ element.id }}</ng-template>
       </sds-table-column>
       <sds-table-column sdsColumnName="firstName">
         <ng-template #sdsHeaderCell>First</ng-template>
-        <ng-template #sdsCell let-element="element">{{
-          element.firstName
-        }}</ng-template>
+        <ng-template #sdsCell let-element="element">{{ element.firstName }}</ng-template>
       </sds-table-column>
       <sds-table-column sdsColumnName="lastName">
         <ng-template #sdsHeaderCell>Last</ng-template>
-        <ng-template #sdsCell let-element="element">{{
-          element.lastName
-        }}</ng-template>
+        <ng-template #sdsCell let-element="element">{{ element.lastName }}</ng-template>
       </sds-table-column>
       <sds-table-column sdsColumnName="email">
         <ng-template #sdsHeaderCell>Email</ng-template>
         <ng-template #sdsCell let-element="element"
-          ><a
-            href="https://beta.sam.gov"
-            (click)="$event.stopPropagation()"
-            class="usa-link"
-            >{{ element.email }}</a
-          ></ng-template
+          ><a href="https://beta.sam.gov" (click)="$event.stopPropagation()" class="usa-link">{{
+            element.email
+          }}</a></ng-template
         >
       </sds-table-column>
       <sds-table-column sdsColumnName="requests">
         <ng-template #sdsHeaderCell>Requests</ng-template>
-        <ng-template #sdsCell let-element="element">{{
-          element.requests
-        }}</ng-template>
+        <ng-template #sdsCell let-element="element">{{ element.requests }}</ng-template>
       </sds-table-column>
       <sds-table-column sdsColumnName="date">
         <ng-template #sdsHeaderCell>Date</ng-template>
-        <ng-template #sdsCell let-element="element">{{
-          element.date | date
-        }}</ng-template>
+        <ng-template #sdsCell let-element="element">{{ element.date | date }}</ng-template>
       </sds-table-column>
 
-      <sds-row [displayedColumns]="displayedColumns"></sds-row>
-    </sds-table>,
+      <sds-row [displayedColumns]="displayedColumns"></sds-row> </sds-table
+    >,
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -207,18 +192,9 @@ class WrapperComponent {
   @ViewChild(SdsTableHeaderRowComponent)
   sdsTableHeaderRowComponent: SdsTableHeaderRowComponent;
 
-  constructor(
-    public cdr: ChangeDetectorRef,
-  ) {}
+  constructor(public cdr: ChangeDetectorRef) {}
 
-  displayedColumns: string[] = [
-    'id',
-    'firstName',
-    'lastName',
-    'email',
-    'requests',
-    'date'
-  ];
+  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'requests', 'date'];
 
   data = MOCK_DATA;
 
@@ -233,30 +209,32 @@ describe('SdsTableComponent Basic', () => {
   let tableDe: DebugElement;
   let wrapper: WrapperComponent;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [
-        SdsTableComponent,
-        SdsTableRowComponent,
-        SdsTableHeaderRowComponent,
-        SdsTableFooterRowComponent,
-        SdsTableColumnDefComponent,
-        SdsTableCellDirective,
-        SdsTableHeaderCellDirective,
-        SdsTableFooterCellDirective,
-        WrapperComponent
-      ],
-      imports: [
-        MatTableModule,
-        IconModule,
-        MatSortModule,
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [
+          SdsTableComponent,
+          SdsTableRowComponent,
+          SdsTableHeaderRowComponent,
+          SdsTableFooterRowComponent,
+          SdsTableColumnDefComponent,
+          SdsTableCellDirective,
+          SdsTableHeaderCellDirective,
+          SdsTableFooterCellDirective,
+          WrapperComponent,
+        ],
+        imports: [
+          MatTableModule,
+          IconModule,
+          MatSortModule,
 
-        MatPaginatorModule,
-        BrowserAnimationsModule,
-        PaginationModule
-      ]
-    }).compileComponents();
-  }));
+          MatPaginatorModule,
+          BrowserAnimationsModule,
+          PaginationModule,
+        ],
+      }).compileComponents();
+    })
+  );
 
   describe('Table Component', () => {
     beforeEach(() => {
@@ -270,8 +248,11 @@ describe('SdsTableComponent Basic', () => {
       fixture.detectChanges();
     });
 
-    it('should create', waitForAsync(() => {
-      expect(component).toBeTruthy();
-    }));
+    it(
+      'should create',
+      waitForAsync(() => {
+        expect(component).toBeTruthy();
+      })
+    );
   });
 });

@@ -7,10 +7,8 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
   templateUrl: './uswds-stepper.component.html',
 })
 export class UswdsStepperComponent {
-
-
   stepOne: FormlyFieldConfig = {
-    key: 'eitityOne',
+    key: 'enitityOne',
     fieldGroup: [
       {
         key: 'name',
@@ -22,24 +20,114 @@ export class UswdsStepperComponent {
           required: true,
         },
         modelOptions: {
-          updateOn: 'blur'
-        }
+          updateOn: 'blur',
+        },
       },
       {
-          className: "desktop:grid-col-12 tablet:grid-col-12",
-          type: "input",
-          key: "title",
+        className: 'desktop:grid-col-12 tablet:grid-col-12',
+        type: 'input',
+        key: 'title',
 
-          templateOptions: {
-            label: "Program or Project Title",
-            required: true,
-            showError: false,
-          }
+        templateOptions: {
+          label: 'Program or Project Title',
+          required: true,
+          showError: false,
+        },
       },
-    ]
+    ],
   };
 
-  stepTwo =  {
+  stepOnePointTwoFive: FormlyFieldConfig = {
+    key: 'enitityOnePointTwoFive',
+    fieldGroup: [
+      {
+        key: 'name',
+        type: 'input',
+        templateOptions: {
+          label: 'Entity Name - PointTwoFive',
+          placeholder: 'eg: Acme Corporation',
+          description: 'Enter the name of your entity.',
+          required: true,
+        },
+        modelOptions: {
+          updateOn: 'blur',
+        },
+      },
+      {
+        className: 'desktop:grid-col-12 tablet:grid-col-12',
+        type: 'input',
+        key: 'title',
+
+        templateOptions: {
+          label: 'Program or Project Title',
+          required: true,
+          showError: false,
+        },
+      },
+    ],
+  };
+
+  stepOnePointFive: FormlyFieldConfig = {
+    key: 'enitityOnePointFive',
+    fieldGroup: [
+      {
+        key: 'name',
+        type: 'input',
+        templateOptions: {
+          label: 'Entity Name - PointFive',
+          placeholder: 'eg: Acme Corporation',
+          description: 'Enter the name of your entity.',
+          required: true,
+        },
+        modelOptions: {
+          updateOn: 'blur',
+        },
+      },
+      {
+        className: 'desktop:grid-col-12 tablet:grid-col-12',
+        type: 'input',
+        key: 'title',
+
+        templateOptions: {
+          label: 'Program or Project Title',
+          required: true,
+          showError: false,
+        },
+      },
+    ],
+  };
+
+  stepOnePointSevenFive: FormlyFieldConfig = {
+    key: 'enitityOnePointSevenFive',
+    fieldGroup: [
+      {
+        key: 'name',
+        type: 'input',
+        templateOptions: {
+          label: 'Entity Name - PointSevenFive',
+          placeholder: 'eg: Acme Corporation',
+          description: 'Enter the name of your entity.',
+          required: true,
+        },
+        modelOptions: {
+          updateOn: 'blur',
+        },
+      },
+      {
+        className: 'desktop:grid-col-12 tablet:grid-col-12',
+        type: 'input',
+        key: 'title',
+
+        templateOptions: {
+          label: 'Program or Project Title',
+          required: true,
+          showError: false,
+        },
+      },
+    ],
+  };
+
+  stepTwo = {
     key: 'purposeOfRegistration',
     fieldGroup: [
       {
@@ -51,26 +139,26 @@ export class UswdsStepperComponent {
           options: [
             {
               label: 'Business Or Organization',
-              value: 'business'
+              value: 'business',
             },
             {
               label: 'U.S. State Government',
-              value: 'stateGovt'
+              value: 'stateGovt',
             },
             {
               label: 'U.S. Local Government',
-              value: 'localGovt'
+              value: 'localGovt',
             },
             {
               label: 'Tribal Government',
-              value: 'tribal'
+              value: 'tribal',
             },
             {
               label: 'Foreign Government',
-              value: 'foreign'
-            }
-          ]
-        }
+              value: 'foreign',
+            },
+          ],
+        },
       },
       {
         key: 'purposeOfRegistration',
@@ -81,19 +169,19 @@ export class UswdsStepperComponent {
           options: [
             {
               label: `Bid on federal contracts or other procurement opportunities.`,
-              value: 'bidContracts'
+              value: 'bidContracts',
             },
             {
               label: 'Apply for federal assistance opportunities.',
-              value: 'assistanceOpportunities'
-            }
-          ]
-        }
-      }
-    ]
+              value: 'assistanceOpportunities',
+            },
+          ],
+        },
+      },
+    ],
   };
 
-  stepThree =  {
+  stepThree = {
     key: 'taxpayerDetails',
     fieldGroup: [
       {
@@ -101,26 +189,26 @@ export class UswdsStepperComponent {
           <span>
             Please refer to your taxpayer documnets from IRS to find your taxpayer information
           </span>
-        `
+        `,
       },
       {
-        type: "input",
-        key: "taxpayerName",
+        type: 'input',
+        key: 'taxpayerName',
         templateOptions: {
-          label: "Taxpayer Name",
+          label: 'Taxpayer Name',
           hideOptional: true,
         },
       },
       {
-        type: "input",
-        key: "tinNumber",
+        type: 'input',
+        key: 'tinNumber',
         templateOptions: {
-          label: "TIN Number",
+          label: 'TIN Number',
           hideOptional: true,
         },
-      }
-    ]
-  }
+      },
+    ],
+  };
 
   model = {};
   stepValidityMap = {};
