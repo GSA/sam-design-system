@@ -1,12 +1,15 @@
-<usa-file-input #fileInput [formControl]="formControl" [id]="id">
-</usa-file-input>
+<usa-file-input #fileInput [formControl]="formControl" [id]="id"> </usa-file-input>
 
-<ng-container *ngIf="field.fieldArray" [ngTemplateOutlet]="(to.template ? to.template : defaultTemplate)" [ngTemplateOutletContext]="{
+<ng-container
+  *ngIf="field.fieldArray"
+  [ngTemplateOutlet]="(to.template ? to.template : defaultTemplate)"
+  [ngTemplateOutletContext]="{
         fields: [field.fieldArray],
         form: formControl,
         model: model,
         modelChange: modelChange
-      }">
+      }"
+>
 </ng-container>
 
 <ng-template let-fields="fields[0]" let-form="form" let-model="model" let-modelChange="modelChange" #defaultTemplate>
@@ -15,12 +18,22 @@
     <sds-table-column *ngFor="let column of fields.templateOptions.tableColumns" [sdsColumnName]="column.columnName">
       <ng-template #sdsHeaderCell>{{column.label}}</ng-template>
       <ng-template #sdsCell let-element="element">
-        <button class="usa-button usa-button--unstyled text-secondary-dark" *ngIf="column.onClick; else noClick" (click)="column.onClick(element, parentFieldConfig)">
-          <ng-container [ngTemplateOutlet]="tableCellTemplates" [ngTemplateOutletContext]="{$implicit: element, column: column, progress: fields.templateOptions.showProgress }">
+        <button
+          class="usa-button usa-button--unstyled text-secondary-dark"
+          *ngIf="column.onClick; else noClick"
+          (click)="column.onClick(element, parentFieldConfig)"
+        >
+          <ng-container
+            [ngTemplateOutlet]="tableCellTemplates"
+            [ngTemplateOutletContext]="{$implicit: element, column: column, progress: fields.templateOptions.showProgress }"
+          >
           </ng-container>
         </button>
         <ng-template #noClick>
-          <ng-container [ngTemplateOutlet]="tableCellTemplates" [ngTemplateOutletContext]="{$implicit: element, column: column, progress: fields.templateOptions.showProgress }">
+          <ng-container
+            [ngTemplateOutlet]="tableCellTemplates"
+            [ngTemplateOutletContext]="{$implicit: element, column: column, progress: fields.templateOptions.showProgress }"
+          >
           </ng-container>
         </ng-template>
       </ng-template>
@@ -29,19 +42,34 @@
     <sds-row [displayedColumns]="displayedColumns"></sds-row>
   </sds-table>
   <div *ngIf="!form.value || !form.value.length" class="border border-base-light text-center padding-1">
-    {{fields.templateOptions.noDataText}}</div>
+    {{fields.templateOptions.noDataText}}
+  </div>
 
   <ng-template #tableCellTemplates let-element let-column="column" let-progress="progress" let-fileIcon="fileIcon">
     <div *ngIf="column.property && column.property === 'name'" style="display: flex; align-items: center;">
-      <img usaFilePreview [attr.id]="element.imageId" [file]="element" [uploadRequest]="uploadRequest" class="usa-file-input__preview-image" *ngIf="progress">
+      <img
+        usaFilePreview
+        [attr.id]="element.imageId"
+        [file]="element"
+        [uploadRequest]="uploadRequest"
+        class="usa-file-input__preview-image"
+        *ngIf="progress"
+      />
       <span [ngClass]="{'text-disabled': element.uploading && column.whileUpload?.disableText}">
         {{element[column.property]}} {{element.uploading ? column.whileUpload?.appendString : ''}}
       </span>
     </div>
-    <span *ngIf="column.property && column.property !== 'name'" [ngClass]="{'text-disabled': column.whileUpload?.disableText}">{{element[column.property]}}
-      {{column.whileUpload?.appendString}}</span>
-    <span *ngIf="column.text" [ngClass]="{'text-disabled': column.whileUpload?.disableText}">{{(column.whileUpload?.displayText && element.uploading) ? column.whileUpload?.displayText : column.text}}
-      {{column.whileUpload?.appendString}}</span>
-    <span *ngIf="column.textFn" [ngClass]="{'text-disabled': element.uploading && column.whileUpload?.disableText}">{{column.textFn(element)}}</span>
+    <span
+      *ngIf="column.property && column.property !== 'name'"
+      [ngClass]="{'text-disabled': column.whileUpload?.disableText}"
+      >{{element[column.property]}} {{column.whileUpload?.appendString}}</span
+    >
+    <span *ngIf="column.text" [ngClass]="{'text-disabled': column.whileUpload?.disableText}"
+      >{{(column.whileUpload?.displayText && element.uploading) ? column.whileUpload?.displayText : column.text}}
+      {{column.whileUpload?.appendString}}</span
+    >
+    <span *ngIf="column.textFn" [ngClass]="{'text-disabled': element.uploading && column.whileUpload?.disableText}"
+      >{{column.textFn(element)}}</span
+    >
   </ng-template>
 </ng-template>
