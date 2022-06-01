@@ -25,14 +25,6 @@ import { TableHighlightModule } from './demos/highlight-and-click/highlight.modu
 export declare var require: any;
 
 const DEMOS = {
-  full: {
-    title: 'Kitchen Sink', // Title
-    type: TableFullComponent, // Component
-    code: require('!!raw-loader!./demos/full/full.component'), // Source Tab Content
-    module: require('!!raw-loader!./demos/full/full.module'), // Module Tab Content
-    markup: require('!!raw-loader!./demos/full/full.component.html'), // Template Tab Content
-    path: 'libs/documentation/src/lib/components/table/demos/full', // Path to demo for the Github link
-  },
   basic: {
     title: 'Basic', // Title
     type: TableBasicComponent, // Component
@@ -81,6 +73,14 @@ const DEMOS = {
     module: require('!!raw-loader!./demos/highlight-and-click/highlight.module'), // Module Tab Content
     markup: require('!!raw-loader!./demos/highlight-and-click/highlight.component.html'), // Template Tab Content
     path: 'libs/documentation/src/lib/components/table/demos/highlight-and-click', // Path to demo for the Github link
+  },
+  full: {
+    title: 'Kitchen Sink', // Title
+    type: TableFullComponent, // Component
+    code: require('!!raw-loader!./demos/full/full.component'), // Source Tab Content
+    module: require('!!raw-loader!./demos/full/full.module'), // Module Tab Content
+    markup: require('!!raw-loader!./demos/full/full.component.html'), // Template Tab Content
+    path: 'libs/documentation/src/lib/components/table/demos/full', // Path to demo for the Github link
   },
 };
 
