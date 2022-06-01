@@ -1,10 +1,6 @@
 <div class="margin-y-05" *ngIf="pagination && showPagination">
-  <sds-pagination
-    [displayMode]="'results'"
-    [paginationConfiguration]="top"
-    [(page)]="page"
-    [totalItems]="totalItems"
-  ></sds-pagination>
+  <sds-pagination [displayMode]="'results'" [paginationConfiguration]="top" [(page)]="page" [totalItems]="totalItems">
+  </sds-pagination>
 </div>
 
 <div class="sds-table__container" [ngClass]="{ 'sds-table__container--borderless': borderless }">
