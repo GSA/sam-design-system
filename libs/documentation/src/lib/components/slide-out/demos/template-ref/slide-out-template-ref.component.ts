@@ -20,6 +20,7 @@ export class SlideOutTemplateRefComponent {
         height: '100%',
         position: { right: 'true' },
         slideOut: true,
+        displayCloseBtn: false,
       });
     } else {
       this.openedDialogRef.close();
