@@ -27,4 +27,8 @@ export class SlideOutTemplateRefComponent {
       this.openedDialogRef = null;
     }
   }
+
+  onCloseSlideOut() {
+    this.openedDialogRef.close();
+  }
 }

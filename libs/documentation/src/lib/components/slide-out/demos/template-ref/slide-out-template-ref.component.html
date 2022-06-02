@@ -4,7 +4,7 @@
   <div class="container" role="dialog" aria-labelledby="slide-out-title" cdkTrapFocus>
     <div class="header-temp-ref">
       <h1 id="slide-out-title">Header</h1>
-      <button sds-dialog-close class="close-btn padding-bottom-1" aria-label="Close Modal">
+      <button sds-dialog-close (click)="onCloseSlideOut()" class="close-btn padding-bottom-1" aria-label="Close Modal">
         <usa-icon class="text-base-lightest" size="lg" [icon]="'x'"></usa-icon>
       </button>
     </div>
