@@ -184,6 +184,7 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
   }
   private _expansion = false;
 
+  @Input() expansionPosition: string = 'right';
   @Output()
   expansionClicked = new EventEmitter<any>();
 
@@ -262,7 +263,11 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
     if (this.expansion) {
       const expandedIndicator = 'expandedIndicator';
       if (this.rowConfig.displayedColumns && !this.rowConfig.displayedColumns.includes(expandedIndicator)) {
-        this.rowConfig.displayedColumns.push('expandedIndicator');
+        if (this.expansionPosition === 'left') {
+          this.rowConfig.displayedColumns.unshift('expandedIndicator');
+        } else {
+          this.rowConfig.displayedColumns.push('expandedIndicator');
+        }
       }
     }
   }
