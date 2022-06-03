@@ -81,13 +81,19 @@
       <th
         mat-header-cell
         *matHeaderCellDef
-        [ngClass]="{ 'padding-left-0': expansionPosition === 'right', 'padding-right-0': expansionPosition === 'left' }"
+        [ngClass]="{
+          'padding-left-0': expansionPosition === expansionMode.RIGHT,
+          'padding-right-0': expansionPosition === expansionMode.LEFT
+        }"
         class="maxw-205"
       ></th>
       <td
         mat-cell
         *matCellDef="let element"
-        [ngClass]="{ 'padding-left-0': expansionPosition === 'right', 'padding-right-0': expansionPosition === 'left' }"
+        [ngClass]="{
+          'padding-left-0': expansionPosition === expansionMode.RIGHT,
+          'padding-right-0': expansionPosition === expansionMode.LEFT
+        }"
         class="cursor-pointer maxw-205"
         (click)="onExpansionClicked(element)"
       >
