@@ -2,12 +2,12 @@ import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { SdsDialogRef, SdsDialogService } from '@gsa-sam/components';
 
 @Component({
-  templateUrl: './slide-out-template-ref.component.html',
-  selector: `sds-slide-out-template-ref-demo`,
+  templateUrl: './custom-header.component.html',
+  selector: `sds-slide-out-custom-header`,
   styleUrls: ['../basic/slide-out-template.scss'],
 })
-export class SlideOutTemplateRefComponent {
-  @ViewChild('templateRef') ref: TemplateRef<any>;
+export class SlideOutCustomHeaderComponent {
+  @ViewChild('templateRefCustom') ref: TemplateRef<any>;
 
   openedDialogRef: SdsDialogRef<any>;
 
@@ -20,10 +20,15 @@ export class SlideOutTemplateRefComponent {
         height: '100%',
         position: { right: 'true' },
         slideOut: true,
+        displayCloseBtn: false,
       });
     } else {
       this.openedDialogRef.close();
       this.openedDialogRef = null;
     }
+  }
+
+  onCloseSlideOut() {
+    this.openedDialogRef.close();
   }
 }

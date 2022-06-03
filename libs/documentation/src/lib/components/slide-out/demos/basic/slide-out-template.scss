@@ -1,10 +1,11 @@
 .container {
-  .header-temp-ref {
+  .header-custom-header {
     display: flex;
     justify-content: space-between;
     border-bottom: black 1px solid;
     background-color: blue;
     color: white !important;
+    padding: 5px;
 
     h1 {
       color: white;
