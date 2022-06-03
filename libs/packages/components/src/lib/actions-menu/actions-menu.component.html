@@ -1,11 +1,6 @@
 <!-- Button that triggers menu (sdsMenuTriggerFor) -->
-<button
-  class="sds-button sds-button--circular"
-  [class.sds-button--primary]="model.trigger.type === 'primary'"
-  [class.sds-button--shadow]="model.trigger.shadow"
-  [class.sds-button--small]="size === 'sm'"
-  [sdsMenuTriggerFor]="menu"
->
+<button class="sds-button--actions"
+[sdsMenuTriggerFor]="menu">
   <usa-icon [icon]="'three-dots-vertical'" [size]="'1x'"></usa-icon>
   <span class="usa-sr-only">Toggle Actions</span>
 </button>
