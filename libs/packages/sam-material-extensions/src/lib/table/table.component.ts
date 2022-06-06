@@ -184,7 +184,6 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
   }
   private _expansion = false;
 
-  // @Input() expansionPosition = this.expansionMode.RIGHT;
   @Output()
   expansionClicked = new EventEmitter<any>();
 
