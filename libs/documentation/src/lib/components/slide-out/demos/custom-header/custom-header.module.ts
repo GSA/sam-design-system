@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SlideOutTemplateRefComponent } from './slide-out-template-ref.component';
+import { SlideOutCustomHeaderComponent } from './custom-header.component';
 
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 import { NgxBootstrapIconsModule, x } from 'ngx-bootstrap-icons';
 
 @NgModule({
   imports: [CommonModule, IconModule, NgxBootstrapIconsModule.pick({ x })],
-  declarations: [SlideOutTemplateRefComponent],
-  exports: [SlideOutTemplateRefComponent],
-  bootstrap: [SlideOutTemplateRefComponent],
+  declarations: [SlideOutCustomHeaderComponent],
+  exports: [SlideOutCustomHeaderComponent],
+  bootstrap: [SlideOutCustomHeaderComponent],
 })
-export class SlideOutTemplateRefModule {}
+export class SlideOutCustomHeaderModule {}
