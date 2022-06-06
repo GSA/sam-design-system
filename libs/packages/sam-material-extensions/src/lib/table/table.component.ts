@@ -29,11 +29,6 @@ export interface SdsRowConfig {
   rowClickNavigate?: string;
 }
 
-export enum ExpansionMode {
-  LEFT,
-  RIGHT,
-}
-
 export interface SdsHeaderRowConfig extends SdsRowConfig {
   sticky?: boolean;
 }
@@ -188,9 +183,8 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
     return this._expansion;
   }
   private _expansion = false;
-  expansionMode = ExpansionMode;
 
-  @Input() expansionPosition = this.expansionMode.RIGHT;
+  // @Input() expansionPosition = this.expansionMode.RIGHT;
   @Output()
   expansionClicked = new EventEmitter<any>();
 
@@ -269,11 +263,7 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
     if (this.expansion) {
       const expandedIndicator = 'expandedIndicator';
       if (this.rowConfig.displayedColumns && !this.rowConfig.displayedColumns.includes(expandedIndicator)) {
-        if (this.expansionPosition === this.expansionMode.LEFT) {
-          this.rowConfig.displayedColumns.unshift('expandedIndicator');
-        } else {
-          this.rowConfig.displayedColumns.push('expandedIndicator');
-        }
+        this.rowConfig.displayedColumns.unshift('expandedIndicator');
       }
     }
   }

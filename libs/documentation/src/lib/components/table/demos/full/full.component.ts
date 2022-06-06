@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import tableDataFull from './data';
 import { HttpClient } from '@angular/common/http';
-import { ExpansionMode } from '@gsa-sam/sam-material-extensions';
 
 @Component({
   templateUrl: './full.component.html',
@@ -12,7 +11,6 @@ export class TableFullComponent {
   constructor(private http: HttpClient) {
     this.sliceData(0, 10);
   }
-  expansionMode = ExpansionMode;
   rowEdit: any;
 
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'requests', 'date', 'tags', 'actions'];
