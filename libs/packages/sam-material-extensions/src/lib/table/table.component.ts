@@ -262,7 +262,7 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
     if (this.expansion) {
       const expandedIndicator = 'expandedIndicator';
       if (this.rowConfig.displayedColumns && !this.rowConfig.displayedColumns.includes(expandedIndicator)) {
-        this.rowConfig.displayedColumns.push('expandedIndicator');
+        this.rowConfig.displayedColumns.unshift('expandedIndicator');
       }
     }
   }

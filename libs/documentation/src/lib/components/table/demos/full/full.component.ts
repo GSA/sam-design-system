@@ -11,7 +11,6 @@ export class TableFullComponent {
   constructor(private http: HttpClient) {
     this.sliceData(0, 10);
   }
-
   rowEdit: any;
 
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'requests', 'date', 'tags', 'actions'];
