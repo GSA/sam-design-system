@@ -2,7 +2,7 @@
   <div class="px-video-img-captions-container">
     <div class="px-video-captions hide" aria-hidden="true"></div>
     <video
-      id="videoPlayer"
+      [id]="'videoPlayer' + VPConfiguration.id"
       [style.width]="VPConfiguration.width"
       [style.height]="VPConfiguration.height"
       poster="{{ VPConfiguration.poster }}"
