@@ -1,32 +1,53 @@
-.step-arrow {
-  width: 42px;
+div.step-arrow {
+  margin-right: 30px;
+}
+ol > li {
+  display: table-cell;
   height: 30px;
-  background-color: #e3f5e1;
-  // color: #;
   position: relative;
+  padding: 0px;
+  margin: 0px;
+  background-color: #e3f5e1;
   text-align: center;
-  padding-top: 8px;
   border: 1px solid #70e17b;
-  border-right: none;
 }
-
-.step-arrow.right:after {
-  content: ' ';
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background-color: #e3f5e1;
-  border-width: 1px;
-  border-style: solid;
-  border-color: transparent #70e17b #70e17b transparent;
-  transform: rotate(320deg);
-  margin-left: 8px;
-  margin-top: -5px;
-}
-
-#pointer {
-  width: 50px;
-  height: 40px;
+ol > li > div {
   position: relative;
-  background: #e3f5e1;
+  line-height: 30px; /* equal to the list item's height */
+  width: 50px;
+}
+
+ol {
+  display: table;
+  width: 50px;
+  padding: 0px;
+  margin: 0px;
+  position: relative;
+}
+ol > li > div:after,
+ol > li > div:before {
+  content: '';
+  display: inline-block;
+  border-width: 16px;
+  border-style: solid;
+  width: 0px;
+  height: 0px;
+  left: 100%;
+  top: -1px;
+  position: absolute;
+
+  z-index: 1;
+}
+
+ol > li > div:after,
+ol > div:before {
+  border-color: transparent transparent transparent #70e17b;
+}
+ol > li > div:before {
+  border-width: 14px;
+  display: block;
+
+  border-color: transparent transparent transparent #e3f5e1;
+  z-index: 2;
+  top: 1px;
 }
