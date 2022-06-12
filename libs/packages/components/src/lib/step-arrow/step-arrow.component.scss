@@ -1,0 +1,32 @@
+.step-arrow {
+  width: 42px;
+  height: 30px;
+  background-color: #e3f5e1;
+  // color: #;
+  position: relative;
+  text-align: center;
+  padding-top: 8px;
+  border: 1px solid #70e17b;
+  border-right: none;
+}
+
+.step-arrow.right:after {
+  content: ' ';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #e3f5e1;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent #70e17b #70e17b transparent;
+  transform: rotate(320deg);
+  margin-left: 8px;
+  margin-top: -5px;
+}
+
+#pointer {
+  width: 50px;
+  height: 40px;
+  position: relative;
+  background: #e3f5e1;
+}
