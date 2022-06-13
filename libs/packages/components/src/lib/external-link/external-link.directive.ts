@@ -101,11 +101,7 @@ export class ExternalLinkDirective implements OnChanges {
   }
   private createIcon() {
     // tslint:disable-next-line:no-unused-expression
-    this.vc.constructor.name === 'ViewContainerRef_';
-    const spanElement = document.createElement('span');
-    spanElement.classList.add('margin-left-1px');
-    spanElement.classList.add('usa-link--external');
-    spanElement.classList.add('font-body-md');
-    this.el.nativeElement.appendChild(spanElement);
+    this.el.nativeElement.classList.add('usa-link--external');
+    this.el.nativeElement.classList.add('display-inline-block');
   }
 }
