@@ -8,6 +8,8 @@ import { DocumentationTemplatePage } from '../shared/template-page/template.comp
 import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { DescriptionWrapperBasicModule } from './demos/basic/descriptionwrapper-basic.module';
+import { DescriptionWrapperCustomTextModule } from './demos/custom-text/descriptionwrapper-custom-text.module';
+import { DescriptionWrapperCustomText } from './demos/custom-text/descriptionwrapper-custom-text.component';
 
 declare var require: any;
 const DEMOS = {
@@ -18,6 +20,14 @@ const DEMOS = {
     module: require('!!raw-loader!./demos/basic/descriptionwrapper-basic.module'),
     markup: require('!!raw-loader!./demos/basic/descriptionwrapper-basic.component.html'),
     path: 'libs/documentation/src/lib/components/descriptionwrapper/demos/basic',
+  },
+  customText: {
+    title: 'Custom HTML text Description Wrapper',
+    type: DescriptionWrapperCustomText,
+    code: require('!!raw-loader!./demos/custom-text/descriptionwrapper-custom-text.component'),
+    module: require('!!raw-loader!./demos/custom-text/descriptionwrapper-custom-text.module'),
+    markup: require('!!raw-loader!./demos/custom-text/descriptionwrapper-custom-text.component.html'),
+    path: 'libs/documentation/src/lib/components/descriptionwrapper/demos/custom-text',
   },
 };
 
@@ -47,7 +57,12 @@ export const ROUTES = [
 ];
 
 @NgModule({
-  imports: [CommonModule, DocumentationComponentsSharedModule, DescriptionWrapperBasicModule],
+  imports: [
+    CommonModule,
+    DocumentationComponentsSharedModule,
+    DescriptionWrapperBasicModule,
+    DescriptionWrapperCustomTextModule,
+  ],
 })
 export class DescriptionWrapperModule {
   constructor(demoList: DocumentationDemoList) {
