@@ -21,7 +21,7 @@
                 (change)="onChange(opt.value, $event.target.checked)"
                 [checked]="isChecked(opt)"
               />
-              <label class="usa-checkbox__label margin-y-2px" [for]="id + '_' + i + j">
+              <label class="usa-checkbox__label margin-top-0 margin-bottom-1" [for]="id + '_' + i + j">
                 <span
                   *ngIf="option.value[j].tagText"
                   class="usa-tag"
@@ -64,7 +64,11 @@
           [attr.aria-checked]="ariaChecked"
           (change)="setAll($event)"
         />
-        <label class="usa-checkbox__label margin-y-2px" [attr.aria-checked]="ariaChecked" [for]="id + '_Select'">
+        <label
+          class="usa-checkbox__label margin-top-0 margin-bottom-1"
+          [attr.aria-checked]="ariaChecked"
+          [for]="id + '_Select'"
+        >
           <span [innerHtml]="to.label"></span>
         </label>
       </div>
@@ -111,7 +115,7 @@
               (change)="onChange(option.value, $event.target.checked)"
               [checked]="isChecked(option)"
             />
-            <label class="usa-checkbox__label margin-y-2px" [for]="id + '_' + i">
+            <label class="usa-checkbox__label margin-top-0 margin-bottom-1" [for]="id + '_' + i">
               <!--
                 The reference of options array through index is done intentionally here rather
                 than using local variable option because the formlySelectOptions pipe transforms
