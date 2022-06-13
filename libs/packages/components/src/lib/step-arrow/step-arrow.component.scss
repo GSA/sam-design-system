@@ -1,53 +1,54 @@
-div.step-arrow {
+.step-arrow {
   margin-right: 30px;
-}
-ol > li {
-  display: table-cell;
-  height: 30px;
-  position: relative;
-  padding: 0px;
-  margin: 0px;
-  background-color: #e3f5e1;
-  text-align: center;
-  border: 1px solid #70e17b;
-}
-ol > li > div {
-  position: relative;
-  line-height: 30px; /* equal to the list item's height */
-  width: 50px;
-}
 
-ol {
-  display: table;
-  width: 50px;
-  padding: 0px;
-  margin: 0px;
-  position: relative;
-}
-ol > li > div:after,
-ol > li > div:before {
-  content: '';
-  display: inline-block;
-  border-width: 16px;
-  border-style: solid;
-  width: 0px;
-  height: 0px;
-  left: 100%;
-  top: -1px;
-  position: absolute;
+  ol > li {
+    display: table-cell;
+    height: 30px;
+    position: relative;
+    padding: 0px;
+    margin: 0px;
+    background-color: #e3f5e1;
+    text-align: center;
+    border: 1px solid #70e17b;
+  }
+  ol > li > div {
+    position: relative;
+    line-height: 30px; /* equal to the list item's height */
+    width: 50px;
+  }
 
-  z-index: 1;
-}
+  ol {
+    display: table;
+    width: 50px;
+    padding: 0px;
+    margin: 0px;
+    position: relative;
+  }
+  ol > li > div:after,
+  ol > li > div:before {
+    content: '';
+    display: inline-block;
+    border-width: 16px;
+    border-style: solid;
+    width: 0px;
+    height: 0px;
+    left: 100%;
+    top: -1px;
+    position: absolute;
 
-ol > li > div:after,
-ol > div:before {
-  border-color: transparent transparent transparent #70e17b;
-}
-ol > li > div:before {
-  border-width: 14px;
-  display: block;
+    z-index: 1;
+  }
 
-  border-color: transparent transparent transparent #e3f5e1;
-  z-index: 2;
-  top: 1px;
+  ol > li > div:after,
+  ol > div:before {
+    border-color: transparent transparent transparent #70e17b;
+  }
+  ol > li > div:before {
+    border-width: 14px;
+    display: block;
+
+    border-color: transparent transparent transparent #e3f5e1;
+    z-index: 2;
+    top: 1px;
+  }
 }
