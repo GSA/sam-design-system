@@ -15,6 +15,24 @@ import { UnevenStepsStepperModule } from './demos/uneven-steps/uneven-steps-step
 
 declare var require: any;
 const DEMOS = {
+  uswdsStepper: {
+    title: 'USWDS Step Indicator',
+    type: UswdsStepperComponent,
+    code: require('!!raw-loader!./demos/uswds-stepper/uswds-stepper.component'),
+    markup: require('!!raw-loader!./demos/uswds-stepper/uswds-stepper.component.html'),
+    module: require('!!raw-loader!./demos/uswds-stepper/uswds-stepper.module.ts'),
+    path: 'libs/documentation/src/lib/components/formly-stepper/demos/uswds-stepper',
+    files: [
+      {
+        name: 'uswds-custom-stepper.component.ts',
+        source: require('!!raw-loader!./demos/uswds-stepper/uswds-custom-stepper.component'),
+      },
+      {
+        name: 'uswds-custom-stepper.component.html',
+        source: require('!!raw-loader!./demos/uswds-stepper/uswds-custom-stepper.component.html'),
+      },
+    ],
+  },
   unevenStepsStepper: {
     title: 'USWDS Step Indicator - Uneven Steps',
     type: UnevenStepsStepperComponent,
@@ -55,24 +73,6 @@ const DEMOS = {
       },
       { name: 'subawardee.component.ts', source: require('!!raw-loader!./demos/advanced/subawardee.component') },
       { name: 'subawardee.component.html', source: require('!!raw-loader!./demos/advanced/subawardee.component.html') },
-    ],
-  },
-  uswdsStepper: {
-    title: 'USWDS Step Indicator',
-    type: UswdsStepperComponent,
-    code: require('!!raw-loader!./demos/uswds-stepper/uswds-stepper.component'),
-    markup: require('!!raw-loader!./demos/uswds-stepper/uswds-stepper.component.html'),
-    module: require('!!raw-loader!./demos/uswds-stepper/uswds-stepper.module.ts'),
-    path: 'libs/documentation/src/lib/components/formly-stepper/demos/uswds-stepper',
-    files: [
-      {
-        name: 'uswds-custom-stepper.component.ts',
-        source: require('!!raw-loader!./demos/uswds-stepper/uswds-custom-stepper.component'),
-      },
-      {
-        name: 'uswds-custom-stepper.component.html',
-        source: require('!!raw-loader!./demos/uswds-stepper/uswds-custom-stepper.component.html'),
-      },
     ],
   },
 };
