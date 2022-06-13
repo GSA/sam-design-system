@@ -11,7 +11,7 @@
     text-align: center;
     border: 1px solid #70e17b;
   }
-  ol > li > div {
+  ol > li {
     position: relative;
     line-height: 30px; /* equal to the list item's height */
     width: 50px;
@@ -24,8 +24,8 @@
     margin: 0px;
     position: relative;
   }
-  ol > li > div:after,
-  ol > li > div:before {
+  ol > li:after,
+  ol > li:before {
     content: '';
     display: inline-block;
     border-width: 16px;
@@ -39,11 +39,11 @@
     z-index: 1;
   }
 
-  ol > li > div:after,
-  ol > div:before {
+  ol > li:after,
+  ol:before {
     border-color: transparent transparent transparent #70e17b;
   }
-  ol > li > div:before {
+  ol > li:before {
     border-width: 14px;
     display: block;
 
