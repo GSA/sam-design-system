@@ -1,5 +1,6 @@
 .step-arrow {
   margin-right: 30px;
+  display: flex;
 
   ol > li {
     display: table-cell;
@@ -7,44 +8,50 @@
     position: relative;
     padding: 0px;
     margin: 0px;
-    background-color: #e3f5e1;
     text-align: center;
     border: 1px solid #70e17b;
     width: 50px;
   }
 
-  ol {
-    display: table;
-    width: 50px;
-    padding: 0px;
-    margin: 0px;
-    position: relative;
+  li.active {
+    background-color: #21c834;
+    border: 1px solid #21c834;
   }
+
+  li.notActive {
+    background-color: #e3f5e1;
+  }
+
   ol > li:after,
   ol > li:before {
     content: '';
     display: inline-block;
-    border-width: 16px;
+    border-width: 15.5px;
     border-style: solid;
     width: 0px;
     height: 0px;
     left: 100%;
-    top: -1px;
     position: absolute;
-
     z-index: 1;
   }
 
-  ol > li:after,
-  ol:before {
+  ol > li:after {
+    top: -1.2px;
     border-color: transparent transparent transparent #70e17b;
   }
+
   ol > li:before {
     border-width: 14px;
     display: block;
-
-    border-color: transparent transparent transparent #e3f5e1;
     z-index: 2;
-    top: 1px;
+    top: 0px;
+  }
+
+  ol > li.active:before {
+    border-color: transparent transparent transparent #21c834;
+  }
+
+  ol > li.notActive:before {
+    border-color: transparent transparent transparent #e3f5e1;
   }
 }
