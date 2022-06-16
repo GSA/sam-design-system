@@ -1,13 +1,13 @@
 <div class="step-arrow">
   <ol>
-    <li class="active">
+    <li class="active" [ngClass]="{ active: status === 'active', inactive: status === 'inactive' }">
       {{ number }}
     </li>
   </ol>
 
-  <ol>
-    <li class="notActive">
+  <!-- <ol>
+    <li class="inactive">
       {{ number }}
     </li>
-  </ol>
+  </ol> -->
 </div>
