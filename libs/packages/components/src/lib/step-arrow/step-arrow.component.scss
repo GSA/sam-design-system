@@ -4,23 +4,24 @@
 
   ol > li {
     display: table-cell;
-    height: 30px;
+    height: 24px;
     position: relative;
-    padding-top: 5px;
+
     padding-left: 5px;
-    // margin: 0px;
+    font-size: 16px;
+    font-weight: bold;
     text-align: center;
-    border: 1px solid #70e17b;
-    width: 50px;
-  }
-  ol > li.active {
-    border: 1px solid #21c834;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #21c834 transparent #21c834 #21c834;
+    width: 64px;
   }
   li.active {
     background-color: #21c834;
   }
 
   li.inactive {
+    padding-top: 5px;
     background-color: #e3f5e1;
   }
 
@@ -28,35 +29,30 @@
   ol > li:before {
     content: '';
     display: inline-block;
-    border-width: 15.5px;
+    border-width: 15px;
     border-style: solid;
     width: 0px;
     height: 0px;
-    left: 100%;
+    left: 60px;
     position: absolute;
-    z-index: 1;
   }
 
-  // ol > li:after {
-  //   top: -1.2px;
-  //   border-color: transparent transparent transparent #70e17b;
-  // }
-
   ol > li.inactive:after {
-    top: -1.2px;
-    border-color: transparent transparent transparent #70e17b;
+    top: -1px;
+    border-color: transparent transparent transparent #21c834;
   }
 
   ol > li.active:after {
-    top: -1.2px;
+    top: -1px;
     border-color: transparent transparent transparent #21c834;
   }
 
   ol > li:before {
     border-width: 14px;
     display: block;
+    border-color: #21c834;
     z-index: 2;
-    top: 0px;
+    top: 1px;
   }
 
   ol > li.active:before {
