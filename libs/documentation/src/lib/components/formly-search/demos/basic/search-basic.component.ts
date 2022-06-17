@@ -8,7 +8,7 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 })
 export class SearchBasic {
   form = new FormGroup({});
-  model: any = {};
+  model: any = {}; 
   options: FormlyFormOptions = {};
 
   fields: FormlyFieldConfig[] = [
