@@ -6,7 +6,6 @@
     display: table-cell;
     height: 24px;
     position: relative;
-
     padding-left: 5px;
     font-size: 16px;
     font-weight: bold;
@@ -17,6 +16,7 @@
     width: 64px;
   }
   li.active {
+    padding-top: 5px;
     background-color: #21c834;
   }
 
@@ -25,39 +25,41 @@
     background-color: #e3f5e1;
   }
 
-  ol > li:after,
-  ol > li:before {
+  ol > li.active:after,
+  ol > li.inactive:before,
+  ol > li.inactive:after {
     content: '';
     display: inline-block;
-    border-width: 15px;
+    border-width: 16px;
     border-style: solid;
     width: 0px;
     height: 0px;
-    left: 60px;
+    left: 61px;
     position: absolute;
   }
 
   ol > li.inactive:after {
-    top: -1px;
+    top: -4px;
     border-color: transparent transparent transparent #21c834;
+    border-width: 17px;
   }
 
   ol > li.active:after {
-    top: -1px;
+    top: -3px;
     border-color: transparent transparent transparent #21c834;
   }
 
-  ol > li:before {
+  ol > li.inactive:before {
     border-width: 14px;
     display: block;
     border-color: #21c834;
     z-index: 2;
-    top: 1px;
+    top: -1px;
   }
 
-  ol > li.active:before {
-    border-color: transparent transparent transparent #21c834;
-  }
+  // ol > li.active:before {
+  //   border-color: transparent transparent transparent #21c834;
+  // }
 
   ol > li.inactive:before {
     border-color: transparent transparent transparent #e3f5e1;
