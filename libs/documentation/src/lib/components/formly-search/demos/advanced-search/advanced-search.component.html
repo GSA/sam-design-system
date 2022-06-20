@@ -1,8 +1,8 @@
-<form [formGroup]="form" (ngSubmit)="chooseAdvancedSearch(model)" class="advanced-search-container">
-  <a class ="float-right advanced-search-link" href={{this.advancedSearchUrl}}><strong>{{this.model.advancedSearch}}</strong></a>
-  <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form">  
-    <button class="advanced-search-btn" type="submit">Advanced Search</button>
+<div class="advanced-search-container">
+<a class ="float-right advanced-search-link" href={{this.advancedSearchUrl}}><strong>{{this.model.advanceSearch}}</strong></a> 
+<form [formGroup]="form">
+  <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"> 
   </formly-form>
 </form>
-
+</div>
   
