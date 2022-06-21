@@ -284,7 +284,7 @@ export const FORMLY_CONFIG: ConfigOption = {
       component: FormlyFieldRichTextEditorComponent,
       wrappers: sdsWrappers,
     },
-    { name: 'step-arrow', component: FormlyFieldStepArrowComponent, wrappers: sdsWrappers },
+    { name: SdsFormlyTypes.STEPARROW, component: FormlyFieldStepArrowComponent, wrappers: sdsWrappers },
   ],
   wrappers: [
     { name: 'label', component: FormlyLabelWrapperComponent },

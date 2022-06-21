@@ -19,6 +19,7 @@ export enum SdsFormlyTypes {
   FILEINPUT = 'fileinput',
   TABS = 'tabs',
   RICHTEXTEDITOR = 'rich-text-editor',
+  STEPARROW = 'step-arrow',
 
   /**
    * This formly type should generally be used with another formly type in order
