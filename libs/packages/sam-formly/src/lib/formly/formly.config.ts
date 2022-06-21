@@ -40,6 +40,7 @@ export const FIELD_TYPE_COMPONENTS = [
   FormlyFieldTableComponent,
   FormlyFieldEditorComponent,
   FormlyFieldRichTextEditorComponent,
+  FormlyFieldStepArrowComponent,
 ];
 import { dateRangeValidator, maxDateValidator, minDateValidator } from './formly.validators';
 import { sdsWrappers, sdsGroupWrapper } from './sds-formly-options';
@@ -57,6 +58,7 @@ import { FormlyTabsWrapperComponent } from './wrappers/tabs.wrapper';
 import { FormlyFieldTableComponent } from './types/table';
 import { FormlyFieldEditorComponent } from './types/editor';
 import { FormlyFieldRichTextEditorComponent } from './types/rich-text';
+import { FormlyFieldStepArrowComponent } from './types/step-arrow';
 
 export const FORMLY_WRAPPERS: any = [
   {
@@ -282,6 +284,7 @@ export const FORMLY_CONFIG: ConfigOption = {
       component: FormlyFieldRichTextEditorComponent,
       wrappers: sdsWrappers,
     },
+    { name: 'step-arrow', component: FormlyFieldStepArrowComponent, wrappers: sdsWrappers },
   ],
   wrappers: [
     { name: 'label', component: FormlyLabelWrapperComponent },

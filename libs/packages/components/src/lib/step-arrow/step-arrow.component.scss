@@ -7,7 +7,7 @@
     height: 24px;
     position: relative;
     padding-left: 5px;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
     text-align: center;
     border-width: 2px;
@@ -16,12 +16,12 @@
     width: 64px;
   }
   li.active {
-    padding-top: 5px;
+    // padding-top: 5px;
     background-color: #21c834;
   }
 
   li.inactive {
-    padding-top: 5px;
+    // padding-top: 5px;
     background-color: #e3f5e1;
   }
 
