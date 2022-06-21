@@ -8,8 +8,8 @@
   }
 }
 .text-color {
-  fill: white;
-  &.inactive {
-    fill: #162e51;
-  }
+  font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans;
+  font-size: 2rem;
+  line-height: 1.1;
+  font-weight: 700;
 }
