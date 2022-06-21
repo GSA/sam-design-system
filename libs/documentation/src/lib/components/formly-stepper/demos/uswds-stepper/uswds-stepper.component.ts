@@ -16,7 +16,7 @@ export class UswdsStepperComponent {
         templateOptions: {
           number: 1,
           stepTitle: 'Entity Step one',
-          status: 'inactive',
+          status: 'active',
         },
       },
       {
@@ -55,7 +55,7 @@ export class UswdsStepperComponent {
         templateOptions: {
           number: 2,
           stepTitle: 'Entity Step two',
-          status: 'active',
+          status: 'inactive',
         },
       },
       {

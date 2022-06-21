@@ -7,7 +7,7 @@ import { SdsStepArrowComponent } from '@gsa-sam/components';
   template: `
     <div class="grid-row">
       <sds-step-arrow [number]="to.number" [status]="to.status"></sds-step-arrow>
-      <h3 class="margin-top-205">{{ to.stepTitle }}</h3>
+      <h3 class="margin-top-0">{{ to.stepTitle }}</h3>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
