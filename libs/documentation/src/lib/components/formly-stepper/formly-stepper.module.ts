@@ -15,24 +15,24 @@ import { UnevenStepsStepperModule } from './demos/uneven-steps/uneven-steps-step
 
 declare var require: any;
 const DEMOS = {
-  unevenStepsStepper: {
-    title: 'USWDS Step Indicator - Uneven Steps',
-    type: UnevenStepsStepperComponent,
-    code: require('!!raw-loader!./demos/uneven-steps/uneven-steps-stepper.component'),
-    markup: require('!!raw-loader!./demos/uneven-steps/uneven-steps-stepper.component.html'),
-    module: require('!!raw-loader!./demos/uneven-steps/uneven-steps-stepper.module.ts'),
-    path: 'libs/documentation/src/lib/components/formly-stepper/demos/uneven-steps',
-    files: [
-      {
-        name: 'uneven-steps-custom-stepper.component.ts',
-        source: require('!!raw-loader!./demos/uneven-steps/uneven-steps-custom-stepper.component'),
-      },
-      {
-        name: 'uneven-steps-custom-stepper.component.html',
-        source: require('!!raw-loader!./demos/uneven-steps/uneven-steps-custom-stepper.component.html'),
-      },
-    ],
-  },
+  // unevenStepsStepper: {
+  //   title: 'USWDS Step Indicator - Uneven Steps',
+  //   type: UnevenStepsStepperComponent,
+  //   code: require('!!raw-loader!./demos/uneven-steps/uneven-steps-stepper.component'),
+  //   markup: require('!!raw-loader!./demos/uneven-steps/uneven-steps-stepper.component.html'),
+  //   module: require('!!raw-loader!./demos/uneven-steps/uneven-steps-stepper.module.ts'),
+  //   path: 'libs/documentation/src/lib/components/formly-stepper/demos/uneven-steps',
+  //   files: [
+  //     {
+  //       name: 'uneven-steps-custom-stepper.component.ts',
+  //       source: require('!!raw-loader!./demos/uneven-steps/uneven-steps-custom-stepper.component'),
+  //     },
+  //     {
+  //       name: 'uneven-steps-custom-stepper.component.html',
+  //       source: require('!!raw-loader!./demos/uneven-steps/uneven-steps-custom-stepper.component.html'),
+  //     },
+  //   ],
+  // },
   uswdsStepper: {
     title: 'USWDS Step Indicator',
     type: UswdsStepperComponent,

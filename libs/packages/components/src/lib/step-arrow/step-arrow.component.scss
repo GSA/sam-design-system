@@ -7,3 +7,9 @@
     fill: #e3f5e1;
   }
 }
+.text-color {
+  fill: white;
+  &.inactive {
+    fill: #162e51;
+  }
+}
