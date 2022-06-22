@@ -1,0 +1,24 @@
+.step-arrow {
+  stroke: #21c834;
+  &.active {
+    fill: #21c834;
+  }
+  &.inactive {
+    fill: #e3f5e1;
+  }
+}
+.wrap-layer {
+  position: relative;
+}
+.text-layer {
+  font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans;
+  font-size: 1.5rem;
+  text-align: center;
+  line-height: 1.1;
+  font-weight: 700;
+  position: absolute;
+  width: 100%;
+  height: auto;
+
+  /* non-critical styles left out */
+}

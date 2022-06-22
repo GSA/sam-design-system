@@ -92,3 +92,6 @@ export * from './editor/editor.module';
 export * from './tree-table/tree-table.module';
 export * from './tree-table/tree-table.component';
 export * from './tree-table/tree-table.model';
+
+export * from './step-arrow/step-arrow.component';
+export * from './step-arrow/step-arrow.module';

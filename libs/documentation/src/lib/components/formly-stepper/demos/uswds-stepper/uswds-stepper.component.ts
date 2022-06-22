@@ -11,6 +11,15 @@ export class UswdsStepperComponent {
     key: 'enitityOne',
     fieldGroup: [
       {
+        key: 'stepIndicator',
+        type: 'step-arrow',
+        templateOptions: {
+          number: 1,
+          stepTitle: 'Entity Step one',
+          status: 'active',
+        },
+      },
+      {
         key: 'name',
         type: 'input',
         templateOptions: {
@@ -40,6 +49,15 @@ export class UswdsStepperComponent {
   stepOnePointTwoFive: FormlyFieldConfig = {
     key: 'enitityOnePointTwoFive',
     fieldGroup: [
+      {
+        key: 'stepIndicator2',
+        type: 'step-arrow',
+        templateOptions: {
+          number: 2,
+          stepTitle: 'Entity Step two',
+          status: 'inactive',
+        },
+      },
       {
         key: 'name',
         type: 'input',

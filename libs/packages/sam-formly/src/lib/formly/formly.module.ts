@@ -19,6 +19,7 @@ import {
   SdsTabsModule,
   SdsPopoverModule,
   SdsRichTextModule,
+  SdsStepArrowModule,
 } from '@gsa-sam/components';
 
 import { FIELD_TYPE_COMPONENTS, FORMLY_CONFIG } from './formly.config';
@@ -162,6 +163,7 @@ export const DATE_FORMAT: MatDateFormats = {
     SdsTabsModule,
     SdsPopoverModule,
     SdsRichTextModule,
+    SdsStepArrowModule,
     NgxBootstrapIconsModule.pick({
       caretDownFill,
       caretUpFill,
