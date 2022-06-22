@@ -9,8 +9,8 @@ import {
   DocumentationDemoList,
 } from './../shared/index';
 import { ComponentWrapperComponent } from './../../shared/component-wrapper/component-wrapper.component';
-import { ButtonGroupBasic } from './demos/basic/button-group-basic.component';
-import { ButtonGroupBasicModule } from './demos/basic/button-group-basic.module';
+import { ButtonGroupBasic } from './demos/button-group-basic/button-group-basic.component';
+import { ButtonGroupBasicModule } from './demos/button-group-basic/button-group-basic.module';
 import { ButtonGroupDifferingLengths } from './demos/differinglengths/button-group-differing-lengths.component';
 import { ButtonGroupDifferingLengthsModule } from './demos/differinglengths/button-group-differing-lengths.module';
 
@@ -19,10 +19,11 @@ const DEMOS = {
   basic: {
     title: 'Button Groups',
     type: ButtonGroupBasic,
-    code: require('!!raw-loader!./demos/basic/button-group-basic.component'),
-    markup: require('!!raw-loader!./demos/basic/button-group-basic.component.html'),
-    module: require('!!raw-loader!./demos/basic/button-group-basic.module'),
-    path: 'libs/documentation/src/lib/components/button-group/demos/basic',
+    code: require('!!raw-loader!./demos/button-group-basic/button-group-basic.component'),
+    markup: require('!!raw-loader!./demos/button-group-basic/button-group-basic.component.html'),
+    module: require('!!raw-loader!./demos/button-group-basic/button-group-basic.module'),
+    path:
+      'libs/documentation/src/lib/components/button-group/demos/button-group-basic',
   },
   differinglengths: {
     title: 'Differing Lengths',
