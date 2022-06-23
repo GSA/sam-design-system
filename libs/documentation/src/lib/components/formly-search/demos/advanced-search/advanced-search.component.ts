@@ -10,13 +10,12 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 export class AdvancedSearch {
 
   form = new FormGroup({});
-  model: any = {advanceSearch: "Advanced Search"}; 
+  model: any = {}; 
   options: FormlyFormOptions = {};
-  advancedSearchUrl = "/documentation/components/formly-search/examples";
  
   fields: FormlyFieldConfig[] = [
     {
-      key: 'advanced search',
+      key: 'advancedsearch',
       templateOptions: {
         label: 'Keyword (with label)',
         ariaHidden: true,
@@ -28,7 +27,7 @@ export class AdvancedSearch {
           templateOptions: {
             label: 'Search with dropdown',
             hideLabel: true,
-            description: this.model.AdvancedSearch,
+            description: '<a href="#" class="float-right usa-link">Advanced Search</a>',
             hideDescription: true,
             searchSettings: {
               id: 'search',
