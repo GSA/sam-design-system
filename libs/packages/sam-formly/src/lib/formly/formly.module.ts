@@ -57,13 +57,13 @@ export function minValidationMessage(err, field: FormlyFieldConfig) {
 export function minDateValidationMessage(err, field: FormlyFieldConfig) {
   const dt = field.templateOptions.minDate;
   const dateFormat = dt.getMonth() + 1 + '/' + dt.getDate() + '/' + dt.getFullYear();
-  return `Date must be after ${dateFormat}`;
+  return `Date must be on or after ${dateFormat}`;
 }
 
 export function maxDateValidationMessage(err, field: FormlyFieldConfig) {
   const dt = field.templateOptions.maxDate;
   const dateFormat = dt.getMonth() + 1 + '/' + dt.getDate() + '/' + dt.getFullYear();
-  return `Date must be before ${dateFormat}`;
+  return `Date must be on or before ${dateFormat}`;
 }
 
 export function betweenDateValidationMessage(err, field: FormlyFieldConfig) {
@@ -88,7 +88,7 @@ export function matDatepickerMinValidationMessage(err, field: FormlyFieldConfig)
 }
 
 export function matDatepickerMaxValidationMessage(err, field: FormlyFieldConfig) {
-  const fieldWithMaxDate = field.templateOptions.minDate ? field : field.parent;
+  const fieldWithMaxDate = field.templateOptions.maxDate ? field : field.parent;
   if (!fieldWithMaxDate) {
     return `Please enter a valid date`;
   }

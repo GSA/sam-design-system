@@ -42,9 +42,9 @@ const DEMOS = {
   validation: {
     title: 'Date picker with validation',
     type: FormlyDatepickerValidation,
-    code: require('!!raw-loader!./demos/daterange/datepicker-daterange.component'),
-    markup: require('!!raw-loader!./demos/daterange/datepicker-daterange.component.html'),
-    path: 'libs/documentation/src/lib/components/formly-datepicker/demos/daterange',
+    code: require('!!raw-loader!./demos/validation/datepicker-validation.component'),
+    markup: require('!!raw-loader!./demos/validation/datepicker-validation.component.html'),
+    path: 'libs/documentation/src/lib/components/formly-datepicker/demos/validation',
   },
 };
 
