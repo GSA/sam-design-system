@@ -14,7 +14,6 @@ import { FormlyDialogModule } from './demos/formlymodal/formly-modal.module';
 import { FormlyCurvyDialog } from './demos/formlymodal-curvy/formlymodal-curvy.component';
 import { FormlyCurvyDialogModule } from './demos/formlymodal-curvy/formlymodal-curvy.module';
 
-
 declare var require: any;
 const DEMOS = {
   formlymodalcurvy: {
@@ -67,9 +66,14 @@ export const ROUTES = [
 ];
 
 @NgModule({
-  imports: [CommonModule, DocumentationComponentsSharedModule, DownloadBasicModule, FormlyDialogModule, FormlyCurvyDialogModule],
-  declarations: [
+  imports: [
+    CommonModule,
+    DocumentationComponentsSharedModule,
+    DownloadBasicModule,
+    FormlyDialogModule,
+    FormlyCurvyDialogModule,
   ],
+  declarations: [],
 })
 export class DownloadModule {
   constructor(demoList: DocumentationDemoList) {
