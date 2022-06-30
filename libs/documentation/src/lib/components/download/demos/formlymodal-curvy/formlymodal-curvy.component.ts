@@ -12,7 +12,6 @@ import { AutocompleteSampleDataService } from '../formlymodal/autocomplete-sampl
 @Component({
   selector: 'gsa-sam-formlymodal-curvy',
   templateUrl: './formlymodal-curvy.component.html',
-  styleUrls: ['./formlymodal-curvy.component.css'],
   providers: [AutocompleteSampleDataService],
 })
 export class FormlyCurvyDialog {
@@ -33,7 +32,6 @@ export class FormlyCurvyDialog {
           templateOptions: {
             label: 'Select how often you would like to receive notifications.',
             description: '<a href="usa-link">When do my saved searches run?</a>',
-            hideDescription: true,
             service: this.service,
             configuration: this.settings,
             model: this.autocompleteModel,

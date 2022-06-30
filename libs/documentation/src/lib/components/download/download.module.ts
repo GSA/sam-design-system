@@ -18,7 +18,7 @@ import { FormlyCurvyDialogModule } from './demos/formlymodal-curvy/formlymodal-c
 declare var require: any;
 const DEMOS = {
   formlymodalcurvy: {
-    title: 'Curvy Modal Dialog with Formly',
+    title: 'Link Modal Dialog with Formly',
     type: FormlyCurvyDialog,
     code: require('!!raw-loader!./demos/formlymodal-curvy/formlymodal-curvy.component'),
     module: require('!!raw-loader!./demos/formlymodal-curvy/formlymodal-curvy.module'),
