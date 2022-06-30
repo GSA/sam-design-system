@@ -11,9 +11,20 @@ import { DownloadComponent } from './demos/download/download.component';
 import { DownloadBasicModule } from './demos/download/download.module';
 import { FormlyDialog } from './demos/formlymodal/formly-modal.component';
 import { FormlyDialogModule } from './demos/formlymodal/formly-modal.module';
+import { FormlyCurvyDialog } from './demos/formlymodal-curvy/formlymodal-curvy.component';
+import { FormlyCurvyDialogModule } from './demos/formlymodal-curvy/formlymodal-curvy.module';
+
 
 declare var require: any;
 const DEMOS = {
+  formlymodalcurvy: {
+    title: 'Curvy Modal Dialog with Formly',
+    type: FormlyCurvyDialog,
+    code: require('!!raw-loader!./demos/formlymodal-curvy/formlymodal-curvy.component'),
+    module: require('!!raw-loader!./demos/formlymodal-curvy/formlymodal-curvy.module'),
+    markup: require('!!raw-loader!./demos/formlymodal-curvy/formlymodal-curvy.component.html'),
+    path: 'libs/documentation/src/lib/components/download/demos/formlymodal-curvy',
+  },
   formlymodal: {
     title: 'Modal Dialog with Formly',
     type: FormlyDialog,
@@ -56,7 +67,9 @@ export const ROUTES = [
 ];
 
 @NgModule({
-  imports: [CommonModule, DocumentationComponentsSharedModule, DownloadBasicModule, FormlyDialogModule],
+  imports: [CommonModule, DocumentationComponentsSharedModule, DownloadBasicModule, FormlyDialogModule, FormlyCurvyDialogModule],
+  declarations: [
+  ],
 })
 export class DownloadModule {
   constructor(demoList: DocumentationDemoList) {
