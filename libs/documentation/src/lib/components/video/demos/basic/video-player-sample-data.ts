@@ -5,7 +5,7 @@ export let VideoPlayerSampleData = {
   width: '100%',
   caption: 'assets/video/gsa-sample.vtt',
   poster: 'https://github.com/GSA/sam-static-content/raw/master/assets/images/gsa-sample.jpg',
-  id: 'smapleId1',
+  id: 'sampleId1',
   seekInterval: 20,
   debug: true,
   preload: 'none',

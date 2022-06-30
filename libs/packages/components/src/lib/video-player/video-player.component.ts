@@ -46,6 +46,8 @@ export class SdsVideoPlayerComponent implements AfterViewInit, OnChanges, OnInit
 
   loadVideoSource = false;
 
+  playerId: string;
+
   constructor(
     private elementRef: ElementRef,
     private renderer2: Renderer2,
@@ -63,11 +65,12 @@ export class SdsVideoPlayerComponent implements AfterViewInit, OnChanges, OnInit
     if (this.VPConfiguration.preload != 'none') {
       this.loadVideoSource = true;
     }
+    this.playerId = 'videoPlayer' + this.VPConfiguration.id;
   }
 
   ngAfterViewInit() {
     if (this.crossorigin) {
-      const id = this.elementRef.nativeElement.querySelector('#videoPlayer');
+      const id = this.elementRef.nativeElement.querySelector(`#${this.playerId}`);
       id.setAttribute('crossorigin', this.crossorigin);
     }
     this.config = {
@@ -94,7 +97,7 @@ export class SdsVideoPlayerComponent implements AfterViewInit, OnChanges, OnInit
 
   ngOnChanges(changes) {
     if (changes && changes.crossorigin) {
-      const id = this.elementRef.nativeElement.querySelector('#videoPlayer');
+      const id = this.elementRef.nativeElement.querySelector(`#${this.playerId}`);
       if (id) {
         id.setAttribute('crossorigin', this.crossorigin);
       }
@@ -109,7 +112,7 @@ export class SdsVideoPlayerComponent implements AfterViewInit, OnChanges, OnInit
   private _loadVideoSourceOnDemand() {
     const playButton: HTMLButtonElement = this.elementRef.nativeElement.querySelector('.px-video-play');
     const restartButton: HTMLButtonElement = this.elementRef.nativeElement.querySelector('.px-video-restart');
-    const video: HTMLVideoElement = this.elementRef.nativeElement.querySelector('#videoPlayer');
+    const video: HTMLVideoElement = this.elementRef.nativeElement.querySelector(`#${this.playerId}`);
 
     const loadVideo = ($event) => {
       if (this.loadVideoSource) {
