@@ -78,10 +78,9 @@ export const ROUTES = [
     SearchBasicModule,
     SearchOptionalModule,
     SearchHandleSubmitModule,
-    AdvancedSearchModule
+    AdvancedSearchModule,
   ],
-  declarations: [
-  ],
+  declarations: [],
 })
 export class FormlySearchModule {
   constructor(demoList: DocumentationDemoList) {

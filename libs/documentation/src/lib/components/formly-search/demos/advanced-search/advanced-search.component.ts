@@ -5,14 +5,13 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 @Component({
   selector: 'gsa-sam-advanced-search',
   templateUrl: './advanced-search.component.html',
-  styleUrls: ['./advanced-search.component.scss']
+  styleUrls: ['./advanced-search.component.scss'],
 })
 export class AdvancedSearch {
-
   form = new FormGroup({});
-  model: any = {}; 
+  model: any = {};
   options: FormlyFormOptions = {};
- 
+
   fields: FormlyFieldConfig[] = [
     {
       key: 'advancedsearch',
