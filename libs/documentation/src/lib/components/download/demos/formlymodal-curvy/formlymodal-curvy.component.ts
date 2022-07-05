@@ -31,7 +31,7 @@ export class FormlyCurvyDialog {
           type: 'autocomplete',
           templateOptions: {
             label: 'Select how often you would like to receive notifications.',
-            description: '<a href="usa-link">When do my saved searches run?</a>',
+            description: '<a href="#" class="usa-link">When do my saved searches run?</a>',
             service: this.service,
             configuration: this.settings,
             model: this.autocompleteModel,
