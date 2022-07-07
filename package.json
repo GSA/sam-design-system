@@ -35,7 +35,7 @@
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
     "storybook": "npm run docs:json && start-storybook -p 6006 --no-open",
     "build-storybook": "npm run docs:json && build-storybook",
-    "ghpages": "npm run build-storybook && touch storybook-static/.nojekyll && npx angular-cli-ghpages --dir=storybook-static",
+    "ghpages": "npm run build-storybook && touch storybook-static/.nojekyll && npx angular-cli-ghpages --dir=storybook-static"
   },
   "private": true,
   "dependencies": {
