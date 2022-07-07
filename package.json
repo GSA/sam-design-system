@@ -34,8 +34,7 @@
     "demo:stackblitzes-federalist": "ts-node --project misc/tsconfig.json misc/generate-stackblitzes.ts --federalist",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
     "storybook": "npm run docs:json && start-storybook -p 6006 --no-open",
-    "build-storybook": "npm run docs:json && build-storybook",
-    "ghpages": "npm run build-storybook && touch storybook-static/.nojekyll && npx angular-cli-ghpages --dir=storybook-static"
+    "build-storybook": "npm run docs:json && build-storybook"
   },
   "private": true,
   "dependencies": {
