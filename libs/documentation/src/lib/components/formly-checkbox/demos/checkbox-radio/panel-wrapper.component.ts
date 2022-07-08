@@ -6,19 +6,19 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 @Component({
   selector: 'formly-wrapper-panel',
   template: `
-   <form [formGroup]="form">
-        <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
-        <div class="card-body">
-            <ng-container #fieldComponent></ng-container>
-        </div>
+    <form [formGroup]="form">
+      <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
+      <div class="card-body">
+        <ng-container #fieldComponent></ng-container>
+      </div>
     </form>
   `,
 })
 export class PanelWrapperComponent extends FieldWrapper {
-    form = new FormGroup({});
-    model: any = {};
-    options: FormlyFormOptions = {};
-    fields: FormlyFieldConfig[] = [
+  form = new FormGroup({});
+  model: any = {};
+  options: FormlyFormOptions = {};
+  fields: FormlyFieldConfig[] = [
     {
       key: 'entity.downloadableLink',
       type: 'checkbox',
@@ -29,5 +29,3 @@ export class PanelWrapperComponent extends FieldWrapper {
     },
   ];
 }
-
-
