@@ -13,11 +13,7 @@ import { generateConfig } from 'libs/documentation/src/sandbox/sandbox-utils';
 declare var require: any;
 
 const modesDemoTemplate = require('!!raw-loader!./demos/modes/button-group-modes.component.html');
-
-const actionsData = {
-  firstGroupChange: action('firstGroupChange'),
-  secondGroupChange: action('secondGroupChange'),
-};
+const checkedDemoTemplate = require('!!raw-loader!./demos/checked/button-group-checked.component.html');
 
 // More on default export: https://storybook.js.org/docs/angular/writing-stories/introduction#default-export
 export default {
@@ -82,6 +78,20 @@ export const Modes: Story = (args) => ({
   },
 });
 Modes.parameters = {
+  controls: {
+    disabled: true,
+    hideNoControlsWarning: true,
+  },
+  actions: { disabled: true },
+};
+
+export const Checked: Story = (args) => ({
+  template: checkedDemoTemplate,
+  props: {
+    ...args,
+  },
+});
+Checked.parameters = {
   controls: {
     disabled: true,
     hideNoControlsWarning: true,
