@@ -60,8 +60,8 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
     initial: { visible: undefined },
     visible: undefined,
   };
-  onChange: (_: any) => void = (_: any) => {};
-  onTouched: () => void = () => {};
+  onChange = (_: any) => {};
+  onTouched = () => {};
 
   constructor(
     private cd: ChangeDetectorRef,
