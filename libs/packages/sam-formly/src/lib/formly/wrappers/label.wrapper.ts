@@ -26,7 +26,12 @@ import { FieldWrapper } from '@ngx-formly/core';
           <span *ngIf="to.tagText" class="usa-tag" [ngClass]="to.tagClass ? to.tagClass : 'sds-tag--info-white'">{{
             to.tagText
           }}</span>
-          <span [attr.class]="to.labelClass">{{ to.label }}</span>
+
+          <ng-container *ngIf="to.labelTemplate" [ngTemplateOutlet]="to.labelTemplate"> </ng-container>
+          <ng-container *ngIf="!to.labelTemplate">
+            <span [attr.class]="to.labelClass">{{ to.label }}</span>
+          </ng-container>
+
           <span *ngIf="!to.required && !to.hideOptional"> (Optional)</span>
         </label>
 
@@ -40,7 +45,9 @@ import { FieldWrapper } from '@ngx-formly/core';
           ></usa-icon>
         </span>
       </div>
-      <ng-container #fieldComponent></ng-container>
+      <div [ngClass]="to.labelContentClass">
+        <ng-container #fieldComponent></ng-container>
+      </div>
     </div>
   `,
 })
