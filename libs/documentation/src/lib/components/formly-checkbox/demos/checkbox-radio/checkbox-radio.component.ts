@@ -12,31 +12,34 @@ export class CheckboxRadio {
   model: any = {};
   options: FormlyFormOptions = {};
   fields: FormlyFieldConfig[] = [
-    {
-      wrappers: ['panel'],
-      fieldGroupClassName: 'grid-row',
-      fieldGroup: [
+    { 
+      fieldGroup: [    
         {
-          className: 'margin-left-4',
-          key: 'entity.file',
+          key: 'entity.downloadableLink',
+          type: 'checkbox',
+          templateOptions: {
+            label: 'Send me a link to a downloadable file with updated search results',
+            required: true,
+          }, 
+        },
+        {
+          wrappers: ['panel'], 
+          key: 'entity.linkOptions',
           type: 'radio',
           templateOptions: {
-            required: true,
             options: [
               {
-                key: 'CSV',
-                tooltipText: 'CSV',
                 value: 'CSV',
+                label: 'CSV'
               },
               {
-                key: 'PDF',
-                tooltipText: 'PDF',
                 value: 'PDF',
-              },
-            ],
-          },
-        },
-      ],
-    },
-  ];
+                label: 'PDF'
+              }
+            ]
+          }
+        }
+      ]
+    }, 
+  ] 
 }
