@@ -8,21 +8,19 @@ import { action } from '@storybook/addon-actions';
 declare var require: any;
 
 const overviewTemplate = require('!!raw-loader!./search-overview.html');
-const basicDemoTemplate = require('!!raw-loader!./demos/basic/search-basic.component.html');
-const optinalDemoTemplate = require('!!raw-loader!./demos/optional/search-optional.component.html');
+const sizeDemoTemplate = require('!!raw-loader!./demos/size/search-size.component.html');
+const placeholderDemoTemplate = require('!!raw-loader!./demos/placeholder/search-placeholder.component.html');
+const dropdownDemoTemplate = require('!!raw-loader!./demos/dropdown/search-dropdown.component.html');
 
 const actionsData = {
   onsearchModelChanges: action('onsearchModelChanges'),
-  // secondGroupChange: action('secondGroupChange'),
+  onSubmit: action('onSubmit'),
 };
 
 // More on default export: https://storybook.js.org/docs/angular/writing-stories/introduction#default-export
 export default {
   title: 'Example/Search',
   component: SdsSearchComponent,
-  // parameters: {
-  //   docs: false,
-  // },
   decorators: [
     moduleMetadata({
       declarations: [],
@@ -52,16 +50,6 @@ export default {
         disable: true,
       },
     },
-    // _onChange: {
-    //   table: {
-    //     disable: true,
-    //   },
-    // },
-    // _onTouched: {
-    //   table: {
-    //     disable: true,
-    //   },
-    // },
   },
 } as Meta;
 
@@ -73,11 +61,17 @@ Overview.parameters = { options: { showPanel: false } };
 // More on component templates: https://storybook.js.org/docs/angular/writing-stories/introduction#using-args
 const Template: Story<SdsSearchComponent> = (args: SdsSearchComponent) => ({
   template: `
-  <sds-search [(ngModel)]="model"
+  <sds-search [(ngModel)]="model" (submit)="onSubmit($event)" (ngModelChange)="modelChange($event)" [searchSettings]="searchSettings"
   ></sds-search>
     <p>Model: {{model | json}}</p>
   `,
-  props: { ...args },
+  props: {
+    // Must do as destructive args leads to props such as onChange not being found.
+    onSubmit: args['onSubmit'],
+    modelChange: args['modelChange'],
+    searchSettings: args['searchSettings'],
+    model: args['model'],
+  },
 });
 
 export const Configurable = Template.bind({});
@@ -92,46 +86,36 @@ Configurable.args = {
     id: 'searchBasic',
     ariaLabel: 'Basic Search',
   },
-  // Fix initial state, storybook trying to parse as string. Leading to errors
-  inputState: {
-    initial: { visible: undefined },
-    visible: undefined,
-  },
+  model: {},
 };
 
-export const BasicSearch: Story = (args) => ({
-  template: basicDemoTemplate,
+export const Size: Story = (args) => ({
+  template: sizeDemoTemplate,
   props: {
     searchSettings: {
-      id: 'searchBasic',
-      ariaLabel: 'Basic Search',
-      placeholder: 'eg: Acme Corporation',
+      size: 'small',
     },
-    bigSearchSettings: {
+    largeSearchSettings: {
       size: 'large',
-      id: 'bigSearchBasic',
-      ariaLabel: 'Big Search',
-      placeholder: 'eg: Acme Corporation',
     },
-    suffixSearchIconSettings: {
-      isSuffixSearchIcon: true,
-      placeholder: 'eg: Acme Corporation',
-      id: 'searchSuffix',
-      ariaLabel: 'Suffix Search',
-    },
-    onsearchModelChanges: actionsData.onsearchModelChanges,
-    ...args,
+    onSubmit: actionsData.onSubmit,
   },
-  args: {},
 });
-BasicSearch.parameters = { options: { showPanel: false } };
 
-export const OptionalSearch: Story = (args) => ({
-  template: optinalDemoTemplate,
+export const Placeholder: Story = (args) => ({
+  template: placeholderDemoTemplate,
   props: {
-    ddSearchSettings: {
-      id: 'ddSearch',
-      placeholder: 'eg: Acme Corporation',
+    searchSettings: {
+      placeholder: 'Custom Placeholder',
+    },
+    onSubmit: actionsData.onSubmit,
+  },
+});
+
+export const Dropdown: Story = (args) => ({
+  template: dropdownDemoTemplate,
+  props: {
+    searchSettings: {
       dropdown: {
         id: 'ddSearchOptions',
         options: [
@@ -142,52 +126,6 @@ export const OptionalSearch: Story = (args) => ({
         ],
       },
     },
-    invDDSearchSettings: {
-      placeholder: 'eg: Acme Corporation',
-      id: 'invDDSearch',
-      dropdown: {
-        id: 'invDDSearchOptions',
-        options: [
-          { value: '-', label: '--Select--' },
-          { value: '1', label: 'One' },
-          { value: '2', label: 'Two' },
-          { value: '3', label: 'Three' },
-        ],
-        inverse: true,
-      },
-    },
-    bigddSearchSettings: {
-      placeholder: 'eg: Acme Corporation',
-      id: 'bigssSearch',
-      size: 'large',
-      dropdown: {
-        id: 'bigddSearchOptions',
-
-        options: [
-          { value: '-', label: '--Select--' },
-          { value: '1', label: 'One' },
-          { value: '2', label: 'Two' },
-          { value: '3', label: 'Three' },
-        ],
-      },
-    },
-    biginvDDSearchSettings: {
-      placeholder: 'eg: Acme Corporation',
-      id: 'biginvDDSearch',
-      dropdown: {
-        id: 'bigInvDDSearchOptions',
-        options: [
-          { value: '1', label: 'One' },
-          { value: '2', label: 'Two' },
-          { value: '3', label: 'Three' },
-        ],
-        inverse: true,
-      },
-      size: 'large',
-    },
-    // onsearchModelChanges: actionsData.onsearchModelChanges,
-    ...args,
+    onSubmit: actionsData.onSubmit,
   },
-  args: {},
 });
-OptionalSearch.parameters = { options: { showPanel: false } };
