@@ -7,13 +7,19 @@ import { FieldWrapper } from '@ngx-formly/core';
 @Component({
   template: `
     <div>
-      <div
-        *ngIf="to.description"
-        class="usa-label--description"
-        [id]="id + '-description'"
-        [innerHtml]="to.description"
-      ></div>
-      <ng-container #fieldComponent></ng-container>
+      <ng-container *ngIf="to.descriptionTemplate" [ngTemplateOutlet]="to.descriptionTemplate"> </ng-container>
+      <ng-container *ngIf="!to.descriptionTemplate">
+        <div
+          *ngIf="to.description"
+          class="usa-label--description"
+          [id]="id + '-description'"
+          [innerHtml]="to.description"
+        ></div>
+      </ng-container>
+
+      <div [ngClass]="to.descriptionContentClass">
+        <ng-container #fieldComponent></ng-container>
+      </div>
     </div>
   `,
 })

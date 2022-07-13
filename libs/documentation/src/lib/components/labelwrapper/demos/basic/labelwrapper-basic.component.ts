@@ -17,11 +17,12 @@ export class LabelWrapperBasic {
   ngAfterViewInit() {
     this.fields = [
       {
-        wrappers: ['label'],
+        wrappers: ['label', 'description'],
         key: 'Input',
         type: 'input',
         templateOptions: {
           label: 'Input',
+          description: 'testing desc',
           labelTemplate: this.labelTemplate,
           hideOptional: true,
           labelContentClass: 'margin-left-10',

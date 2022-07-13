@@ -27,12 +27,7 @@ import { FieldWrapper } from '@ngx-formly/core';
             to.tagText
           }}</span>
 
-          <ng-container
-            *ngIf="to.labelTemplate"
-            [ngTemplateOutlet]="to.labelTemplate"
-            [ngTemplateOutletContext]="{ $implicit: result }"
-          >
-          </ng-container>
+          <ng-container *ngIf="to.labelTemplate" [ngTemplateOutlet]="to.labelTemplate"> </ng-container>
           <ng-container *ngIf="!to.labelTemplate">
             <span [attr.class]="to.labelClass">{{ to.label }}</span>
           </ng-container>
