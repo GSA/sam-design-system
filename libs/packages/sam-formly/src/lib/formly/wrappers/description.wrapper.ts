@@ -16,10 +16,7 @@ import { FieldWrapper } from '@ngx-formly/core';
           [innerHtml]="to.description"
         ></div>
       </ng-container>
-
-      <div [ngClass]="to.descriptionContentClass">
-        <ng-container #fieldComponent></ng-container>
-      </div>
+      <ng-container #fieldComponent></ng-container>
     </div>
   `,
 })
