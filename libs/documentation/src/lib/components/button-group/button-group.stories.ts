@@ -12,7 +12,7 @@ import { generateConfig } from 'libs/documentation/src/sandbox/sandbox-utils';
 
 declare var require: any;
 
-const basicDemoTemplate = require('!!raw-loader!./demos/button-group-basic/button-group-basic.component.html');
+const modesDemoTemplate = require('!!raw-loader!./demos/modes/button-group-modes.component.html');
 
 const actionsData = {
   firstGroupChange: action('firstGroupChange'),
@@ -76,17 +76,18 @@ Configurable.args = {
 };
 
 export const Modes: Story = (args) => ({
-  template: basicDemoTemplate,
+  template: modesDemoTemplate,
   props: {
-    firstGroupChange: actionsData.firstGroupChange,
-    secondGroupChange: actionsData.secondGroupChange,
-    extraClasses: 'sds-button-group--secondary',
-    optionTexts: ['Reports', 'Subscriptions', 'History'],
-    // mode: 'checkbox',
     ...args,
   },
-  args: {},
 });
+Modes.parameters = {
+  controls: {
+    disabled: true,
+    hideNoControlsWarning: true,
+  },
+  actions: { disabled: true },
+};
 
 // Modes.parameters = {
 //   preview: generateConfig(
