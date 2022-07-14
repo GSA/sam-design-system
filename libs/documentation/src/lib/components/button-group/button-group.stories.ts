@@ -6,13 +6,11 @@ import {
   SdsButtonGroupOptionComponent,
 } from '@gsa-sam/sam-material-extensions';
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
-import { action } from '@storybook/addon-actions';
-import { ButtonGroupBasic } from './demos/button-group-basic/button-group-basic.component';
 import { generateConfig } from 'libs/documentation/src/sandbox/sandbox-utils';
+import { ButtonGroupModesModule } from './demos/button-group-modes/button-group-modes.module';
 
 declare var require: any;
 
-const modesDemoTemplate = require('!!raw-loader!./demos/modes/button-group-modes.component.html');
 const checkedDemoTemplate = require('!!raw-loader!./demos/checked/button-group-checked.component.html');
 
 // More on default export: https://storybook.js.org/docs/angular/writing-stories/introduction#default-export
@@ -24,8 +22,12 @@ export default {
   },
   decorators: [
     moduleMetadata({
-      declarations: [ButtonGroupBasic],
-      imports: [CommonModule, MatButtonToggleModule, SdsButtonGroupModule],
+      imports: [
+        CommonModule,
+        MatButtonToggleModule,
+        SdsButtonGroupModule,
+        ButtonGroupModesModule,
+      ],
     }),
   ],
   argTypes: {
@@ -72,10 +74,8 @@ Configurable.args = {
 };
 
 export const Modes: Story = (args) => ({
-  template: modesDemoTemplate,
-  props: {
-    ...args,
-  },
+  template: `<sds-button-group-modes></sds-button-group-modes>`,
+  props: args,
 });
 Modes.parameters = {
   controls: {
@@ -83,6 +83,11 @@ Modes.parameters = {
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
+  preview: generateConfig(
+    'components/button-group/demos/button-group-modes',
+    'ButtonGroupBasicModule',
+    'sds-button-group-demo'
+  ),
 };
 
 export const Checked: Story = (args) => ({
@@ -98,11 +103,3 @@ Checked.parameters = {
   },
   actions: { disabled: true },
 };
-
-// Modes.parameters = {
-//   preview: generateConfig(
-//     'components/button-group/demos/button-group-basic',
-//     'ButtonGroupBasicModule',
-//     'sds-button-group-demo'
-//   ),
-// };

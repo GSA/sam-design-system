@@ -14,12 +14,12 @@ export function generateConfig(
     'packages/sam-material-extensions/src/lib/button-group';
 
   const tsFileName = `${fileName}.component.ts`;
-  // const templateFileName = `${fileName}.component.html`;
-  // const moduleFileName = `${fileName}.module.ts`;
+  const templateFileName = `${fileName}.component.html`;
+  const moduleFileName = `${fileName}.module.ts`;
 
-  // const component = require(`!!raw-loader!libs/${buttonGroupPath}/${tsFileName}`);
-  // const template = require(`!!raw-loader!src/app/${filePath}/${templateFileName}`);
-  // const module = require(`!!raw-loader!src/app/${filePath}/${moduleFileName}`);
+  const component = require(`!!raw-loader!libs/documentation/src/lib/${filePath}/${fileName}.component.ts`);
+  const template = require(`!!raw-loader!libs/documentation/src/lib/${filePath}/${fileName}.component.html`);
+  const module = require(`!!raw-loader!libs/documentation/src/lib/${filePath}/${fileName}.module.ts`);
 
   // const files = {};
   // files[tsFileName] = component.default,
@@ -34,26 +34,26 @@ export function generateConfig(
 
   const preview = [
     {
-      // tab: tsFileName,
-      // template: component.default,
-      // language: 'ts',
-      // copy: true,
-      //   codesandbox: ANGULAR_CODESANDBOX(sandboxConfig.files, sandboxConfig.moduleName, sandboxConfig.selector),
+      tab: tsFileName,
+      template: component,
+      language: 'ts',
+      copy: true,
+      // codesandbox: ANGULAR_CODESANDBOX(sandboxConfig.files, sandboxConfig.moduleName, sandboxConfig.selector),
     },
-    // {
-    //     tab: templateFileName,
-    //     template: template.default,
-    //     language: "html",
-    //     copy: true,
-    //     codesandbox: ANGULAR_CODESANDBOX(sandboxConfig.files, sandboxConfig.moduleName, sandboxConfig.selector),
-    // },
-    // {
-    //   tab: moduleFileName,
-    //   template: module.default,
-    //   language: "ts",
-    //   copy: true,
-    //   codesandbox: ANGULAR_CODESANDBOX(sandboxConfig.files, sandboxConfig.moduleName, sandboxConfig.selector),
-    // },
+    {
+      tab: templateFileName,
+      template: template,
+      language: 'html',
+      copy: true,
+      // codesandbox: ANGULAR_CODESANDBOX(sandboxConfig.files, sandboxConfig.moduleName, sandboxConfig.selector),
+    },
+    {
+      tab: moduleFileName,
+      template: module,
+      language: 'ts',
+      copy: true,
+      // codesandbox: ANGULAR_CODESANDBOX(sandboxConfig.files, sandboxConfig.moduleName, sandboxConfig.selector),
+    },
   ];
 
   return preview;
