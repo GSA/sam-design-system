@@ -3,21 +3,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SdsSearchComponent, SdsSearchModule } from '@gsa-sam/components';
 // also exported from '@storybook/angular' if you can deal with breaking changes in 6.1
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
-import { action } from '@storybook/addon-actions';
+import { SearchSizeModule } from './demos/search-size/search-size.module';
+import { SearchPlaceholderModule } from './demos/search-placeholder/search-placeholder.module';
+import { generateConfig } from 'libs/documentation/src/sandbox/sandbox-utils';
+import { SearchDropdownModule } from './demos/search-dropdown/search-dropdown.module';
 
 declare var require: any;
 
 const overviewTemplate = require('!!raw-loader!./search-overview.html');
-const sizeDemoTemplate = require('!!raw-loader!./demos/size/search-size.component.html');
-const placeholderDemoTemplate = require('!!raw-loader!./demos/placeholder/search-placeholder.component.html');
-const dropdownDemoTemplate = require('!!raw-loader!./demos/dropdown/search-dropdown.component.html');
 
-const actionsData = {
-  onsearchModelChanges: action('onsearchModelChanges'),
-  onSubmit: action('onSubmit'),
-};
-
-// More on default export: https://storybook.js.org/docs/angular/writing-stories/introduction#default-export
 export default {
   title: 'Example/Search',
   component: SdsSearchComponent,
@@ -29,6 +23,9 @@ export default {
         SdsSearchModule,
         FormsModule,
         ReactiveFormsModule,
+        SearchSizeModule,
+        SearchPlaceholderModule,
+        SearchDropdownModule,
       ],
     }),
   ],
@@ -88,44 +85,57 @@ Configurable.args = {
   },
   model: {},
 };
+Configurable.parameters = {
+  preview: { disabled: true },
+};
 
 export const Size: Story = (args) => ({
-  template: sizeDemoTemplate,
-  props: {
-    searchSettings: {
-      size: 'small',
-    },
-    largeSearchSettings: {
-      size: 'large',
-    },
-    onSubmit: actionsData.onSubmit,
-  },
+  template: `<sds-search-size></sds-search-size>`,
+  props: args,
 });
+Size.parameters = {
+  controls: {
+    disabled: true,
+    hideNoControlsWarning: true,
+  },
+  actions: { disabled: true },
+  preview: generateConfig(
+    'components/search/demos/search-size',
+    'ButtonGroupBasicModule',
+    'sds-button-group-demo'
+  ),
+};
 
 export const Placeholder: Story = (args) => ({
-  template: placeholderDemoTemplate,
-  props: {
-    searchSettings: {
-      placeholder: 'Custom Placeholder',
-    },
-    onSubmit: actionsData.onSubmit,
-  },
+  template: `<sds-search-placeholder></sds-search-placeholder>`,
+  props: args,
 });
+Placeholder.parameters = {
+  controls: {
+    disabled: true,
+    hideNoControlsWarning: true,
+  },
+  actions: { disabled: true },
+  preview: generateConfig(
+    'components/search/demos/search-placeholder',
+    'ButtonGroupBasicModule',
+    'sds-button-group-demo'
+  ),
+};
 
 export const Dropdown: Story = (args) => ({
-  template: dropdownDemoTemplate,
-  props: {
-    searchSettings: {
-      dropdown: {
-        id: 'ddSearchOptions',
-        options: [
-          { value: '-', label: '--Select--' },
-          { value: '1', label: 'One With Long Text' },
-          { value: '2', label: 'Two' },
-          { value: '3', label: 'Three' },
-        ],
-      },
-    },
-    onSubmit: actionsData.onSubmit,
-  },
+  template: `<sds-search-dropdown></sds-search-dropdown>`,
+  props: args,
 });
+Dropdown.parameters = {
+  controls: {
+    disabled: true,
+    hideNoControlsWarning: true,
+  },
+  actions: { disabled: true },
+  preview: generateConfig(
+    'components/search/demos/search-dropdown',
+    'ButtonGroupBasicModule',
+    'sds-button-group-demo'
+  ),
+};
