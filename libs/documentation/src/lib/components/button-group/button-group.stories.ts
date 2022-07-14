@@ -6,11 +6,13 @@ import {
   SdsButtonGroupOptionComponent,
 } from '@gsa-sam/sam-material-extensions';
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
-import { generateConfig } from '.storybook/sandbox/sandbox-utils';
-import { ButtonGroupModesModule } from './demos/button-group-modes/button-group-modes.module';
+import { action } from '@storybook/addon-actions';
+import { ButtonGroupBasic } from './demos/button-group-basic/button-group-basic.component';
+import { generateConfig } from 'libs/documentation/src/sandbox/sandbox-utils';
 
 declare var require: any;
 
+const modesDemoTemplate = require('!!raw-loader!./demos/modes/button-group-modes.component.html');
 const checkedDemoTemplate = require('!!raw-loader!./demos/checked/button-group-checked.component.html');
 
 // More on default export: https://storybook.js.org/docs/angular/writing-stories/introduction#default-export
@@ -22,12 +24,8 @@ export default {
   },
   decorators: [
     moduleMetadata({
-      imports: [
-        CommonModule,
-        MatButtonToggleModule,
-        SdsButtonGroupModule,
-        ButtonGroupModesModule,
-      ],
+      declarations: [ButtonGroupBasic],
+      imports: [CommonModule, MatButtonToggleModule, SdsButtonGroupModule],
     }),
   ],
   argTypes: {
@@ -74,8 +72,10 @@ Configurable.args = {
 };
 
 export const Modes: Story = (args) => ({
-  template: `<sds-button-group-modes></sds-button-group-modes>`,
-  props: args,
+  template: modesDemoTemplate,
+  props: {
+    ...args,
+  },
 });
 Modes.parameters = {
   controls: {
@@ -99,10 +99,10 @@ Checked.parameters = {
   actions: { disabled: true },
 };
 
-Modes.parameters = {
-  preview: generateConfig(
-    'components/button-group/demos/button-group-modes',
-    'ButtonGroupBasicModule',
-    'sds-button-group-demo'
-  ),
-};
+// Modes.parameters = {
+//   preview: generateConfig(
+//     'components/button-group/demos/button-group-basic',
+//     'ButtonGroupBasicModule',
+//     'sds-button-group-demo'
+//   ),
+// };
