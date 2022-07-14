@@ -5,20 +5,23 @@ import {
 } from '@gsa-sam/components';
 // also exported from '@storybook/angular' if you can deal with breaking changes in 6.1
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
-import { ExternalLinkModule } from './external-link.module';
+import { generateConfig } from 'libs/documentation/src/sandbox/sandbox-utils';
+import { ExternalLinkHideIconModule } from './demos/external-link-hide-icon/external-link-hide-icon.module';
+import { ExternalLinkTargetModule } from './demos/external-link-target/external-link-target.module';
 
 declare var require: any;
-
-const hrefDemoTemplate = require('!!raw-loader!./demos/href/external-link-href.component.html');
-const targetDemoTemplate = require('!!raw-loader!./demos/target/external-link-target.component.html');
-const hideIconDemoTemplate = require('!!raw-loader!./demos/hide-icon/external-link-hide-icon.component.html');
 
 export default {
   title: 'Example/External Link',
   component: ExternalLinkDirective,
   decorators: [
     moduleMetadata({
-      imports: [CommonModule, SdsExternalLinkDirectivesModule],
+      imports: [
+        CommonModule,
+        SdsExternalLinkDirectivesModule,
+        ExternalLinkTargetModule,
+        ExternalLinkHideIconModule,
+      ],
     }),
   ],
   args: {
@@ -52,19 +55,9 @@ Configurable.args = {
   hideIcon: false,
 };
 
-export const Href: Story = (args) => ({
-  template: hrefDemoTemplate,
-});
-Href.parameters = {
-  controls: {
-    disabled: true,
-    hideNoControlsWarning: true,
-  },
-  actions: { disabled: true },
-};
-
 export const Target: Story = (args) => ({
-  template: targetDemoTemplate,
+  template: `<sds-external-link-target></sds-external-link-target>`,
+  props: args,
 });
 Target.parameters = {
   controls: {
@@ -72,10 +65,16 @@ Target.parameters = {
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
+  preview: generateConfig(
+    'components/external-link/demos/external-link-target',
+    'ButtonGroupBasicModule',
+    'sds-button-group-demo'
+  ),
 };
 
 export const HideIcon: Story = (args) => ({
-  template: hideIconDemoTemplate,
+  template: `<sds-external-link-hide-icon></sds-external-link-hide-icon>`,
+  props: args,
 });
 HideIcon.parameters = {
   controls: {
@@ -83,4 +82,9 @@ HideIcon.parameters = {
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
+  preview: generateConfig(
+    'components/external-link/demos/external-link-hide-icon',
+    'ButtonGroupBasicModule',
+    'sds-button-group-demo'
+  ),
 };
