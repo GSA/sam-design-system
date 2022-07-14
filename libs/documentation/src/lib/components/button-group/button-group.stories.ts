@@ -7,11 +7,12 @@ import {
 } from '@gsa-sam/sam-material-extensions';
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
 import { generateConfig } from 'libs/documentation/src/sandbox/sandbox-utils';
+import { ButtonGroupCheckedModule } from './demos/button-group-checked/button-group-checked.module';
 import { ButtonGroupModesModule } from './demos/button-group-modes/button-group-modes.module';
 
 declare var require: any;
 
-const checkedDemoTemplate = require('!!raw-loader!./demos/checked/button-group-checked.component.html');
+// const checkedDemoTemplate = require('!!raw-loader!./demos/checked/button-group-checked.component.html');
 
 // More on default export: https://storybook.js.org/docs/angular/writing-stories/introduction#default-export
 export default {
@@ -27,25 +28,26 @@ export default {
         MatButtonToggleModule,
         SdsButtonGroupModule,
         ButtonGroupModesModule,
+        ButtonGroupCheckedModule,
       ],
     }),
   ],
   argTypes: {
-    classesToApply: {
-      table: {
-        disable: true,
-      },
-    },
-    buttonOptions: {
-      table: {
-        disable: true,
-      },
-    },
-    change: {
-      table: {
-        disable: true,
-      },
-    },
+    // classesToApply: {
+    //   table: {
+    //     disable: true,
+    //   },
+    // },
+    // buttonOptions: {
+    //   table: {
+    //     disable: true,
+    //   },
+    // },
+    // change: {
+    //   table: {
+    //     disable: true,
+    //   },
+    // },
     buttonGroupChanged: {
       action: 'buttonGroupChanged',
       table: {
@@ -63,7 +65,7 @@ const Template: Story<SdsButtonGroupComponent> = (args) => ({
     <sds-button-group-option *ngFor="let optionText of optionTexts" value="{{optionText}}">{{optionText}}</sds-button-group-option>
   </sds-button-group>
   `,
-  props: { ...args },
+  props: args,
 });
 
 export const Configurable = Template.bind({});
@@ -71,6 +73,9 @@ Configurable.args = {
   extraClasses: 'sds-button-group--secondary',
   optionTexts: ['Reports', 'Subscriptions', 'History'],
   mode: 'checkbox',
+};
+Configurable.parameters = {
+  preview: { disabled: true },
 };
 
 export const Modes: Story = (args) => ({
@@ -91,7 +96,7 @@ Modes.parameters = {
 };
 
 export const Checked: Story = (args) => ({
-  template: checkedDemoTemplate,
+  template: `<sds-button-group-checked></sds-button-group-checked>`,
   props: {
     ...args,
   },
@@ -102,4 +107,9 @@ Checked.parameters = {
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
+  preview: generateConfig(
+    'components/button-group/demos/button-group-checked',
+    'ButtonGroupBasicModule',
+    'sds-button-group-demo'
+  ),
 };
