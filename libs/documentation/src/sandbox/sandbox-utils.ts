@@ -10,9 +10,6 @@ export function generateConfig(
   const splitPath = filePath.split('/');
   const fileName = splitPath[splitPath.length - 1];
 
-  const buttonGroupPath =
-    'packages/sam-material-extensions/src/lib/button-group';
-
   const tsFileName = `${fileName}.component.ts`;
   const templateFileName = `${fileName}.component.html`;
   const moduleFileName = `${fileName}.module.ts`;
