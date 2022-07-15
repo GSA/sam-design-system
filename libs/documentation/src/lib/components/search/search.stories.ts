@@ -50,11 +50,6 @@ export default {
   },
 } as Meta;
 
-export const Overview = () => ({
-  template: overviewTemplate,
-});
-Overview.parameters = { options: { showPanel: false } };
-
 // More on component templates: https://storybook.js.org/docs/angular/writing-stories/introduction#using-args
 const Template: Story<SdsSearchComponent> = (args: SdsSearchComponent) => ({
   template: `
@@ -139,3 +134,8 @@ Dropdown.parameters = {
     'sds-button-group-demo'
   ),
 };
+
+export const Overview = () => ({
+  template: overviewTemplate,
+});
+Overview.parameters = { options: { showPanel: false } };
