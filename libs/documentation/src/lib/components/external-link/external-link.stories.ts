@@ -38,8 +38,8 @@ export const Configurable = Template.bind({});
 // More on args: https://storybook.js.org/docs/angular/writing-stories/args
 Configurable.args = {
   href: 'https://Acquisition.gov',
-  target: '',
-  hideIcon: true,
+  target: '_blank',
+  hideIcon: false,
 };
 Configurable.parameters = {
   actions: { disabled: true },
