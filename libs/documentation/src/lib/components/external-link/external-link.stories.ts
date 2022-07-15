@@ -24,35 +24,26 @@ export default {
       ],
     }),
   ],
-  args: {
-    // href: 'https://Acquisition.gov',
-    // target: '',
-    // hideIcon: false,
-  },
 } as Meta;
 
 // More on component templates: https://storybook.js.org/docs/angular/writing-stories/introduction#using-args
 const Template: Story<ExternalLinkDirective> = (
   args: ExternalLinkDirective
 ) => ({
-  template: `
-    <a class="usa-link" [attr.href]="'${args.href}'" [hideIcon]="hideIcon" [attr.target]="target">${args.href}</a>
-  `,
-  // props: args,
-  props: {
-    ...args,
-    // href: 'Acquisition.gov',
-    // target: '',
-    // hideIcon: false,
-  },
+  template: `<a *ngIf="href" class="usa-link" href="{{href}}" [hideIcon]="hideIcon" target="{{target}}">{{href}}</a>`,
+  props: args,
 });
 
-export const Configurable = Template.bind({ href: 'Acquisition.gov' });
+export const Configurable = Template.bind({});
 // More on args: https://storybook.js.org/docs/angular/writing-stories/args
 Configurable.args = {
-  href: 'Acquisition.gov',
+  href: 'https://Acquisition.gov',
   target: '',
-  hideIcon: false,
+  hideIcon: true,
+};
+Configurable.parameters = {
+  actions: { disabled: true },
+  preview: { disabled: true },
 };
 
 export const Target: Story = (args) => ({
