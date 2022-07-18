@@ -23,7 +23,7 @@ export class CheckboxRadio {
           },
         },
         {
-          wrappers: ['panel'],
+          className: 'grid-row margin-left-4',
           key: 'entity.linkOptions',
           type: 'radio',
           templateOptions: {
