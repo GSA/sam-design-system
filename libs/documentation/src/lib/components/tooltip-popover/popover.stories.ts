@@ -61,6 +61,7 @@ const Template: Story<SdsPopoverDirective> = (args: SdsPopoverDirective) => {
 export const Configurable = Template.bind({});
 Configurable.args = {
   sdsPopover: 'Default Body',
+  sdsPopoverTitle: '',
 };
 Configurable.parameters = {
   actions: { disabled: true },
