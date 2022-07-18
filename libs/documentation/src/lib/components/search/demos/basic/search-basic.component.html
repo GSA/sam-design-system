@@ -4,11 +4,11 @@ Model: {{ model | json }}
 
 <h4>SDS Search Big</h4>
 <p><code> size: 'large'</code> is used for selecting big search mode.</p>
-<sds-search [(ngModel)]="bigmodel" (ngModelChange)="onsearchModelChanges(bigmodel)" [searchSettings]="bigSearchSettings">
+<sds-search [(ngModel)]="bigmodel" (ngModelChange)="onsearchModelChanges()" [searchSettings]="bigSearchSettings">
 </sds-search>
 Big Model: {{ bigmodel | json }}
 
 <h4>SDS Search with suffix icon</h4>
 <p><code>isSuffixSearchIcon: true</code> is used for suffix the search icon.</p>
-<sds-search [(ngModel)]="suffixmodel" (ngModelChange)="onsearchModelChanges(bigmodel)" [searchSettings]="suffixSearchIconSettings"></sds-search>
+<sds-search [(ngModel)]="suffixmodel" (ngModelChange)="onsearchModelChanges()" [searchSettings]="suffixSearchIconSettings"></sds-search>
 Model: {{ suffixmodel | json }}
