@@ -1,30 +1,20 @@
-import { moduleMetadata, Story, Meta } from '@storybook/angular';
+import { moduleMetadata } from '@storybook/angular';
 import { CommonModule } from '@angular/common';
 // also exported from '@storybook/angular' if you can deal with breaking changes in 6.1
-// import { Story, Meta } from '@storybook/angular/types-6-0';
+import { Story, Meta } from '@storybook/angular/types-6-0';
 
 import { TabsAutoActivateComponent } from '../libs/documentation/src/lib/components/tabs/demos/auto-activate/tabs-auto-activate.component'
-import { TabsAutoActivateModule } from '../libs/documentation/src/lib/components/tabs/demos/auto-activate/tabs-auto-activate.module'
 import { TabsBasicComponent } from '../libs/documentation/src/lib/components/tabs/demos/basic/tabs-basic.component'
-import { TabsBasicModule } from '../libs/documentation/src/lib/components/tabs/demos/basic/tabs-basic.module'
 import { TabsDisabledComponent } from '../libs/documentation/src/lib/components/tabs/demos/disabled/tabs-disabled.component'
-import { TabsDisabledModule } from '../libs/documentation/src/lib/components/tabs/demos/disabled/tabs-disabled.module'
 import { DynamicTabsComponet } from '../libs/documentation/src/lib/components/tabs/demos/dynamic-tabs/dynamic-tabs.component'
-import { DynamicTabsModule } from '../libs/documentation/src/lib/components/tabs/demos/dynamic-tabs/dynamic-tabs.module'
 import { TabsStylingComponent } from '../libs/documentation/src/lib/components/tabs/demos/styling/tabs-styling.component'
-import { TabsStylingModule } from '../libs/documentation/src/lib/components/tabs/demos/styling/tabs-styling.module'
 import { TabsTemplateHeaderComponent } from '../libs/documentation/src/lib/components/tabs/demos/template-header/tabs-template-header.component'
-import { TabsTemplateHeaderModule } from '../libs/documentation/src/lib/components/tabs/demos/template-header/tabs-template-header.module'
+
+import { TabPanelComponent } from "@gsa-sam/components";
 
 export default {
   title: 'Example/Tabs',
-  component: TabsBasicComponent, TabsAutoActivateComponent, TabsDisabledComponent, DynamicTabsComponet, TabsStylingComponent, TabsTemplateHeaderComponent,
-  decorators: [
-    moduleMetadata({
-      declarations: [],
-      imports: [CommonModule, TabsAutoActivateModule, TabsBasicModule, TabsDisabledModule, DynamicTabsModule, TabsStylingModule, TabsTemplateHeaderModule],
-    }),
-  ],  
+  component: TabsBasicComponent, TabsAutoActivateComponent, TabsDisabledComponent, DynamicTabsComponet, TabsTemplateHeaderComponent  
 } as Meta;
 
 const TabsBasicTemplate: Story<TabsBasicComponent> = (args: TabsBasicComponent) => ({
@@ -65,23 +55,23 @@ export const Basic = TabsBasicTemplate.bind({});
 Basic.args = {
 };
 
-export const AutomaticActivated = TabsAutoActivateTemplate.bind({});
-AutomaticActivated.args = {
+export const AutoActivate = TabsAutoActivateTemplate.bind({});
+AutoActivate.args = {
 };
 
 export const Disabled = TabsDisabledTemplate.bind({});
 Disabled.args = {
 };
 
-export const DynamicallyGenerate = TabsDynamicTemplate.bind({});
-DynamicallyGenerate.args = {
+export const Dynamic = TabsDynamicTemplate.bind({});
+Dynamic.args = {
 };
 
-export const CustomStyling = TabsStylingTemplate.bind({});
-CustomStyling.args = {
+export const Styling = TabsStylingTemplate.bind({});
+Styling.args = {
 };
 
-export const CustomHeader = TabsTemplateHeaderTemplate.bind({});
-CustomHeader.args = {
+export const TemplateHeader = TabsTemplateHeaderTemplate.bind({});
+TemplateHeader.args = {
 };
 
