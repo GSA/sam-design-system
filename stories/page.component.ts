@@ -75,3 +75,4 @@ export default class PageComponent {
     this.user = { name: 'Jane Doe' };
   }
 }
+ 
