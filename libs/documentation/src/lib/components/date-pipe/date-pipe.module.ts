@@ -20,7 +20,8 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/basic/date-pipe-basic/date-pipe-basic.component'),
     markup: require('!!raw-loader!./demos/basic/date-pipe-basic/date-pipe-basic.component.html'),
     module: require('!!raw-loader!./demos/basic/date-pipe-basic/date-pipe-basic.module'),
-    path: 'libs/documentation/src/lib/components/date-pipe/demos/basic/date-pipe-basic',
+    path:
+      'libs/documentation/src/lib/components/date-pipe/demos/basic/date-pipe-basic',
   },
 };
 
@@ -51,7 +52,7 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    DatePipeBasicModule
+    DatePipeBasicModule,
   ],
 })
 export class DatePipeModule {

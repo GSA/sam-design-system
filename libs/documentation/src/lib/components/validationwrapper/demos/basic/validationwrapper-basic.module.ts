@@ -6,9 +6,15 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot()],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    SdsFormlyModule,
+    FormsModule,
+    FormlyModule.forRoot(),
+  ],
   declarations: [ValidationWrapperBasic],
   exports: [ValidationWrapperBasic],
-  bootstrap: [ValidationWrapperBasic]
+  bootstrap: [ValidationWrapperBasic],
 })
 export class ValidationWrapperBasicModule {}

@@ -7,9 +7,13 @@ import { SdsSelectedResultsModule } from '../selected-result/selected-result.mod
 import { SdsAutocompleteSearchModule } from '../autocomplete-search/autocomplete-search.module';
 @NgModule({
   imports: [
-    CommonModule, FormsModule, RouterModule, SdsSelectedResultsModule, SdsAutocompleteSearchModule
+    CommonModule,
+    FormsModule,
+    RouterModule,
+    SdsSelectedResultsModule,
+    SdsAutocompleteSearchModule,
   ],
   declarations: [SDSAutocompleteComponent],
-  exports: [SDSAutocompleteComponent]
+  exports: [SDSAutocompleteComponent],
 })
-export class SdsAutocompleteModule { }
+export class SdsAutocompleteModule {}

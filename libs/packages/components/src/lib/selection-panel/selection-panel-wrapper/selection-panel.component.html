@@ -1,17 +1,24 @@
-<ng-container *ngIf="model.selectionMode && model.selectionMode === 'SELECTION'; else selectionMode">
-  <sds-selection-panel-selection-mode 
-  [model]="model" 
-  [currentSelection]="currentSelection"
-  (panelSelected)="panelSelected.emit($event)">
+<ng-container
+  *ngIf="
+    model.selectionMode && model.selectionMode === 'SELECTION';
+    else selectionMode
+  "
+>
+  <sds-selection-panel-selection-mode
+    [model]="model"
+    [currentSelection]="currentSelection"
+    (panelSelected)="panelSelected.emit($event)"
+  >
   </sds-selection-panel-selection-mode>
 </ng-container>
 
 <!-- Default mode if no selectionMode is passed in -->
 <ng-template #selectionMode>
-  <sds-selection-panel-navigation-mode 
-  [model]="model" 
-  [navigateOnClick]="navigateOnClick" 
-  [currentSelection]="currentSelection"
-  (panelSelected)="panelSelected.emit($event)">
+  <sds-selection-panel-navigation-mode
+    [model]="model"
+    [navigateOnClick]="navigateOnClick"
+    [currentSelection]="currentSelection"
+    (panelSelected)="panelSelected.emit($event)"
+  >
   </sds-selection-panel-navigation-mode>
 </ng-template>

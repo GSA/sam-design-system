@@ -25,20 +25,22 @@ export class FiltersHideExpression {
           { label: 'India', value: 'IND' },
           { label: 'Mexico', value: 'MX' },
           { label: 'United Kingdom', value: 'UK' },
-          { label: 'Australia', value: 'AUS' }
-        ]
+          { label: 'Australia', value: 'AUS' },
+        ],
       },
       lifecycle: {
-        onChanges: function(form, field) {
-          field.formControl.valueChanges.subscribe(v => {
-            Object.keys(form['controls'].location['controls']).forEach(key => {
-              if (key !== 'country') {
-                form['controls'].location['controls'][key].setValue('');
+        onChanges: function (form, field) {
+          field.formControl.valueChanges.subscribe((v) => {
+            Object.keys(form['controls'].location['controls']).forEach(
+              (key) => {
+                if (key !== 'country') {
+                  form['controls'].location['controls'][key].setValue('');
+                }
               }
-            });
+            );
           });
-        }
-      }
+        },
+      },
     },
     {
       key: 'location.province',
@@ -58,15 +60,15 @@ export class FiltersHideExpression {
           { label: 'Saskatchewan', value: 'SK' },
           { label: 'Alberta', value: 'AB' },
           { label: 'Yukon', value: 'YT' },
-          { label: 'Nunavut', value: 'NU' }
-        ]
+          { label: 'Nunavut', value: 'NU' },
+        ],
       },
       hideExpression: () => {
         if (this.model && this.model.location && this.model.location.country) {
           return this.model.location.country !== 'CA';
         }
         return true;
-      }
+      },
     },
     {
       key: 'location.state',
@@ -81,7 +83,7 @@ export class FiltersHideExpression {
           return this.model.location.country === 'CA';
         }
         return true;
-      }
+      },
     },
     {
       key: 'location.city',
@@ -89,7 +91,7 @@ export class FiltersHideExpression {
       templateOptions: {
         label: 'City',
         description: 'City',
-        placeholder: 'Chicago'
+        placeholder: 'Chicago',
       },
       hideExpression: () => {
         return !(
@@ -100,7 +102,7 @@ export class FiltersHideExpression {
             (this.model.location.province &&
               this.model.location.country === 'CA'))
         );
-      }
+      },
     },
     {
       key: 'location.street',
@@ -108,7 +110,7 @@ export class FiltersHideExpression {
       templateOptions: {
         label: 'Street',
         hideOptional: true,
-        description: 'Street'
+        description: 'Street',
       },
       hideExpression: () => {
         return !(
@@ -120,8 +122,8 @@ export class FiltersHideExpression {
               this.model.location.country === 'CA')) &&
           this.model.location.city
         );
-      }
-    }
+      },
+    },
   ];
   updateModel() {
     this.model = {
@@ -133,8 +135,8 @@ export class FiltersHideExpression {
         country:
           this.model && this.model.location && this.model.location.country
             ? this.model.location.country
-            : ''
-      }
+            : '',
+      },
     };
   }
 }

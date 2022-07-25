@@ -12,18 +12,31 @@ import { DocumentationWidgetDemoComponent } from './examples-page/demo.component
 import { SdsTabsModule } from '@gsa-sam/components';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
-
 export * from './demo-list';
 
 @NgModule({
-  imports: [DocumentationSharedModule,  MarkdownModule, HighlightModule, IconModule, SdsTabsModule,],
+  imports: [
+    DocumentationSharedModule,
+    MarkdownModule,
+    HighlightModule,
+    IconModule,
+    SdsTabsModule,
+  ],
   declarations: [
-    DocumentationExamplesPage, DocumentationAPIPage, DocumentationAPIComponent, DocumentationTemplatePage, DocumentationSourcePage, DocumentationWidgetDemoComponent
+    DocumentationExamplesPage,
+    DocumentationAPIPage,
+    DocumentationAPIComponent,
+    DocumentationTemplatePage,
+    DocumentationSourcePage,
+    DocumentationWidgetDemoComponent,
   ],
   exports: [
-    DocumentationExamplesPage, DocumentationAPIPage, DocumentationAPIComponent, DocumentationTemplatePage, DocumentationSourcePage, DocumentationWidgetDemoComponent
-  ]
+    DocumentationExamplesPage,
+    DocumentationAPIPage,
+    DocumentationAPIComponent,
+    DocumentationTemplatePage,
+    DocumentationSourcePage,
+    DocumentationWidgetDemoComponent,
+  ],
 })
-export class DocumentationComponentsSharedModule {
-
-}
+export class DocumentationComponentsSharedModule {}

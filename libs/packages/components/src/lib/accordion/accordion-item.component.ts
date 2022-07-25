@@ -1,5 +1,5 @@
 import { AnimationEvent } from '@angular/animations';
-import { CdkAccordionItem } from "@angular/cdk/accordion";
+import { CdkAccordionItem } from '@angular/cdk/accordion';
 import { UniqueSelectionDispatcher } from '@angular/cdk/collections';
 import { TemplatePortal } from '@angular/cdk/portal';
 import {
@@ -19,8 +19,8 @@ import {
   SkipSelf,
   ViewContainerRef,
   ViewEncapsulation,
-  ViewChild
-} from "@angular/core";
+  ViewChild,
+} from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { ANIMATION_MODULE_TYPE } from '@angular/platform-browser/animations';
 import { Subject } from 'rxjs';
@@ -36,19 +36,19 @@ export type SdsAccordionItemState = 'expanded' | 'collapsed';
 let uniqueId = 0;
 
 @Component({
-  selector: "sds-accordion-item",
-  exportAs: "sdsAccordionItem",
-  templateUrl: "accordion-item.component.html",
+  selector: 'sds-accordion-item',
+  exportAs: 'sdsAccordionItem',
+  templateUrl: 'accordion-item.component.html',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   inputs: ['disabled', 'expanded'],
   outputs: ['opened', 'closed', 'expandedChange'],
   animations: [sdsExpansionAnimations.bodyExpansion],
   host: {
-    'class': 'sds-accordion__item',
+    class: 'sds-accordion__item',
     '[class.sds-accordion__item--expanded]': 'expanded',
-    '[class._sds-animation-noopable]': '_animationMode === "NoopAnimations"'
-  }
+    '[class._sds-animation-noopable]': '_animationMode === "NoopAnimations"',
+  },
 })
 export class SdsAccordionItemComponent extends CdkAccordionItem
   implements AfterContentInit, OnChanges, OnDestroy {
@@ -67,7 +67,8 @@ export class SdsAccordionItemComponent extends CdkAccordionItem
   accordion: SdsAccordionBase;
 
   /** Content that will be rendered lazily. */
-  @ContentChild(SdsAccordionItemContentDirective) _lazyContent: SdsAccordionItemContentDirective;
+  @ContentChild(SdsAccordionItemContentDirective)
+  _lazyContent: SdsAccordionItemContentDirective;
 
   /** Element containing the accordion item's user-provided content. */
   // @ViewChild('body') _body: ElementRef<HTMLElement>;
@@ -82,29 +83,35 @@ export class SdsAccordionItemComponent extends CdkAccordionItem
   /** Stream of body animation done events. */
   _bodyAnimationDone = new Subject<AnimationEvent>();
 
-  constructor(@Optional() @SkipSelf() @Inject(SDS_ACCORDION) accordion: SdsAccordionBase,
+  constructor(
+    @Optional() @SkipSelf() @Inject(SDS_ACCORDION) accordion: SdsAccordionBase,
     _changeDetectorRef: ChangeDetectorRef,
     _uniqueSelectionDispatcher: UniqueSelectionDispatcher,
     private _viewContainerRef: ViewContainerRef,
     @Inject(DOCUMENT) _document: any,
-    @Optional() @Inject(ANIMATION_MODULE_TYPE) public _animationMode: string) {
+    @Optional() @Inject(ANIMATION_MODULE_TYPE) public _animationMode: string
+  ) {
     super(accordion, _changeDetectorRef, _uniqueSelectionDispatcher);
     this.accordion = accordion;
     this._document = _document;
 
     // We need a Subject with distinctUntilChanged, because the `done` event
     // fires twice on some browsers. See https://github.com/angular/angular/issues/24084
-    this._bodyAnimationDone.pipe(distinctUntilChanged((x, y) => {
-      return x.fromState === y.fromState && x.toState === y.toState;
-    })).subscribe(event => {
-      if (event.fromState !== 'void') {
-        if (event.toState === 'expanded') {
-          this.afterExpand.emit();
-        } else if (event.toState === 'collapsed') {
-          this.afterCollapse.emit();
+    this._bodyAnimationDone
+      .pipe(
+        distinctUntilChanged((x, y) => {
+          return x.fromState === y.fromState && x.toState === y.toState;
+        })
+      )
+      .subscribe((event) => {
+        if (event.fromState !== 'void') {
+          if (event.toState === 'expanded') {
+            this.afterExpand.emit();
+          } else if (event.toState === 'collapsed') {
+            this.afterCollapse.emit();
+          }
         }
-      }
-    });
+      });
 
     console.warn(`This is a deprectaed version of accordion component, and will be removed in future versions. 
       Please switch to using usa-accordion from @gsa-sam/ngx-uswds (https://github.com/GSA/ngx-uswds)`);
@@ -118,13 +125,18 @@ export class SdsAccordionItemComponent extends CdkAccordionItem
   ngAfterContentInit() {
     if (this._lazyContent) {
       // Render the content as soon as the accordion item becomes open.
-      this.opened.pipe(
-        startWith(null!),
-        filter(() => this.expanded && !this._portal),
-        take(1)
-      ).subscribe(() => {
-        this._portal = new TemplatePortal(this._lazyContent._template, this._viewContainerRef);
-      });
+      this.opened
+        .pipe(
+          startWith(null!),
+          filter(() => this.expanded && !this._portal),
+          take(1)
+        )
+        .subscribe(() => {
+          this._portal = new TemplatePortal(
+            this._lazyContent._template,
+            this._viewContainerRef
+          );
+        });
     }
   }
 
@@ -143,7 +155,9 @@ export class SdsAccordionItemComponent extends CdkAccordionItem
     if (this._body) {
       const focusedElement = this._document.activeElement;
       const bodyElement = this._body.nativeElement;
-      return focusedElement === bodyElement || bodyElement.contains(focusedElement);
+      return (
+        focusedElement === bodyElement || bodyElement.contains(focusedElement)
+      );
     }
 
     return false;

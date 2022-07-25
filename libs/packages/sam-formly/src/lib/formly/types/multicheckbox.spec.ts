@@ -1,9 +1,5 @@
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  TestBed,
-  ComponentFixture,
-
-} from '@angular/core/testing';
+import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { Component, ViewChild, DebugElement } from '@angular/core';
@@ -21,7 +17,7 @@ const createTestComponent = (html: string) =>
 
 export function createGenericTestComponent<T>(
   html: string,
-  type: { new(...args: any[]): T }
+  type: { new (...args: any[]): T }
 ): ComponentFixture<T> {
   TestBed.overrideComponent(type, { set: { template: html } });
   const fixture = TestBed.createComponent(type);
@@ -45,11 +41,11 @@ describe('Formly Field multicheckbox Component', () => {
           types: [
             {
               name: 'multicheckbox',
-              component: FormlyFieldMultiCheckboxComponent
-            }
-          ]
-        })
-      ]
+              component: FormlyFieldMultiCheckboxComponent,
+            },
+          ],
+        }),
+      ],
     });
   });
 
@@ -58,7 +54,7 @@ describe('Formly Field multicheckbox Component', () => {
       testComponentInputs = {
         form: new FormGroup({}),
         options: {},
-        model: {}
+        model: {},
       };
     });
 
@@ -72,24 +68,24 @@ describe('Formly Field multicheckbox Component', () => {
             options: [
               {
                 key: 'sports',
-                value: 'Sports'
+                value: 'Sports',
               },
               {
                 key: 'movies',
-                value: 'Movies'
+                value: 'Movies',
               },
               {
                 key: 'others',
-                value: 'Others'
-              }
-            ]
-          }
-        }
+                value: 'Others',
+              },
+            ],
+          },
+        },
       ];
 
       const fixture = createTestComponent(
-        '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'
-      ),
+          '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'
+        ),
         trigger = fixture.nativeElement.querySelector('usa-fieldset');
       const expectedValue = fixture.debugElement.query(By.css('.usa-fieldset'))
         .componentInstance.field;
@@ -108,24 +104,24 @@ describe('Formly Field multicheckbox Component', () => {
             options: [
               {
                 key: 'sports',
-                value: 'Sports'
+                value: 'Sports',
               },
               {
                 key: 'movies',
-                value: 'Movies'
+                value: 'Movies',
               },
               {
                 key: 'others',
-                value: 'Others'
-              }
-            ]
-          }
-        }
+                value: 'Others',
+              },
+            ],
+          },
+        },
       ];
 
       const fixture = createTestComponent(
-        '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'
-      ),
+          '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'
+        ),
         trigger = fixture.nativeElement.querySelector('usa-fieldset');
       const expectedValue = fixture.debugElement.query(By.css('.usa-fieldset'))
         .componentInstance.field;
@@ -151,24 +147,24 @@ describe('Formly Field multicheckbox Component', () => {
             options: [
               {
                 key: 'sports',
-                value: 'Sports'
+                value: 'Sports',
               },
               {
                 key: 'movies',
-                value: 'Movies'
+                value: 'Movies',
               },
               {
                 key: 'others',
-                value: 'Others'
-              }
-            ]
-          }
-        }
+                value: 'Others',
+              },
+            ],
+          },
+        },
       ];
 
       const fixture = createTestComponent(
-        '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'
-      ),
+          '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'
+        ),
         trigger = fixture.nativeElement.querySelector('usa-fieldset');
       const expectedValue = fixture.debugElement.query(By.css('.usa-fieldset'))
         .componentInstance.field;
@@ -198,24 +194,24 @@ describe('Formly Field multicheckbox Component', () => {
             options: [
               {
                 key: 'sports',
-                value: 'Sports'
+                value: 'Sports',
               },
               {
                 key: 'movies',
-                value: 'Movies'
+                value: 'Movies',
               },
               {
                 key: 'others',
-                value: 'Others'
-              }
-            ]
-          }
-        }
+                value: 'Others',
+              },
+            ],
+          },
+        },
       ];
 
       const fixture = createTestComponent(
-        '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'
-      ),
+          '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'
+        ),
         trigger = fixture.nativeElement.querySelector('usa-fieldset');
       const expectedValue = fixture.debugElement.query(By.css('.usa-fieldset'))
         .componentInstance.field;
@@ -237,7 +233,7 @@ describe('Formly Field multicheckbox Component', () => {
 @Component({
   selector: 'formly-form-multicheckbox',
   template: '',
-  entryComponents: []
+  entryComponents: [],
 })
 class TestComponent {
   @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;

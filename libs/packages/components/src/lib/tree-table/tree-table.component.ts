@@ -1,14 +1,23 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, 
-  ContentChild, Directive, ElementRef, EventEmitter, Input, NgZone, Output, TemplateRef } from "@angular/core";
-import { SdsTreeTableData } from "./tree-table.model";
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ContentChild,
+  Directive,
+  ElementRef,
+  EventEmitter,
+  Input,
+  NgZone,
+  Output,
+  TemplateRef,
+} from '@angular/core';
+import { SdsTreeTableData } from './tree-table.model';
 
 @Directive({
-  selector: `[sdsTreeTableRow]`
+  selector: `[sdsTreeTableRow]`,
 })
 export class SdsTreeTableRow {
-  constructor(
-    public templateRef: TemplateRef<any>
-  ) {}
+  constructor(public templateRef: TemplateRef<any>) {}
 }
 
 @Component({
@@ -23,7 +32,7 @@ export class SdsTreeTableComponent {
   /** Column header text */
   @Input() displayColumns: string[];
 
-  /** 
+  /**
    * Defines maximum number of children to show to the user
    * IE - if a row has 20 children available, and childrenLimit
    * value is 10, then the amount of children displayed to the
@@ -37,20 +46,20 @@ export class SdsTreeTableComponent {
   /**
    * Number of children to Display to users if a row's children length
    * exceeds childrenLimit. This should be less than or equal to childrenLimit
-   * 
+   *
    * General Cases:
    * If numChildrenToDisplay is 5, childrenLimit is 10, and row has 20 children
    *  5 children will be shown and the remaining can be displayed through View All button
-   * 
+   *
    * If numChildrenToDisplay is 5, childrenLimit is 10, and row has 10 children
    *  All 10 children will be displayed because the row's children does not exceed childrenLimit
-   * 
+   *
    * If numChildren is 5, childrenLimit is 10, and row has 4 children
    *  All 4 children will be displayed because row's children does not exceed childrenLimit
-   * 
+   *
    * @default - Number.MAX_SAFE_INTEGER
    */
-  @Input() numChildrenToDisplay: number = this.childrenLimit
+  @Input() numChildrenToDisplay: number = this.childrenLimit;
 
   /**
    * Reference for content projection. User defined values for how to
@@ -70,9 +79,8 @@ export class SdsTreeTableComponent {
   constructor(
     private elementRef: ElementRef,
     public cdr: ChangeDetectorRef,
-    private ngZone: NgZone,
+    private ngZone: NgZone
   ) {}
-
 
   /**
    * Public Interface - close all opened children
@@ -90,9 +98,9 @@ export class SdsTreeTableComponent {
     this.cdr.detectChanges();
   }
 
-  /** 
-   * Public interface - expand a single row given an ID. 
-   * The row's predecessors will also be expanded 
+  /**
+   * Public interface - expand a single row given an ID.
+   * The row's predecessors will also be expanded
    * @param rowId - id of row to expand
    */
   public expandRow(rowId: string) {
@@ -115,8 +123,11 @@ export class SdsTreeTableComponent {
     this.cdr.detectChanges();
   }
 
-  viewAllClicked(row: SdsTreeTableData, currentRow: HTMLTableRowElement, tableRow: HTMLTableRowElement) {
-    
+  viewAllClicked(
+    row: SdsTreeTableData,
+    currentRow: HTMLTableRowElement,
+    tableRow: HTMLTableRowElement
+  ) {
     currentRow.setAttribute('tabindex', undefined);
     tableRow.setAttribute('tabindex', '0');
     row.viewAllChildren = true;
@@ -127,7 +138,7 @@ export class SdsTreeTableComponent {
   }
 
   private toggleAllHelper(data: any[], expanded: boolean) {
-    data.forEach(data => {
+    data.forEach((data) => {
       if (data.children) {
         this.toggleAllHelper(data.children, expanded);
         data.expanded = expanded;
@@ -172,23 +183,26 @@ export class SdsTreeTableComponent {
     row.expanded = false;
     row.viewAllChildren = false;
     if (row.children) {
-      row.children.forEach(child => this.collapseRowHelper(child));
+      row.children.forEach((child) => this.collapseRowHelper(child));
     }
   }
 
   /** Sets height of vertical border on the tree table view */
-  setHeight(row: HTMLTableRowElement, parentRow: HTMLTableRowElement, border: HTMLSpanElement) {
+  setHeight(
+    row: HTMLTableRowElement,
+    parentRow: HTMLTableRowElement,
+    border: HTMLSpanElement
+  ) {
     if (!row || !parentRow) {
       return;
     }
 
-    /** 
+    /**
      * We run outside ngZone because we don't want the setTimeout to trigger change detection,
      * which would re-run changes on template, and re-evalute this function, causing infinite loop
      */
     this.ngZone.runOutsideAngular(() => {
-
-      /** 
+      /**
        * We do set timeout to let the table rows finish rendering. If a row was
        * expanded / collapsed, then the height of the vertical border will need to
        * be re-evaluated based on new distance from child to parent. We let the
@@ -200,24 +214,28 @@ export class SdsTreeTableComponent {
       setTimeout(() => {
         const firstRect = parentRow.getBoundingClientRect();
         const rowRect = row.getBoundingClientRect();
-        
+
         const yFirstRect = firstRect.top + firstRect.height / 2;
         const yRowRect = rowRect.top + rowRect.height / 2;
 
         const height = yRowRect - yFirstRect - 20;
         border.style.height = `${height}px`;
         border.style.bottom = `${rowRect.height / 2}px`;
-      })
-    })
+      });
+    });
   }
 
-  /** 
+  /**
    * Defines whether or not to display vertical border from this row. Vertical borders generally
    * start from the last child and extend to the parent. However, if we are truncating the number
    * of children displayed, then the vertical border would need to start from the child we
    * truncate at.
    * */
-  displayVerticalBorder(parentRow: SdsTreeTableData, index: number, siblingRows: SdsTreeTableRow[]): boolean {
+  displayVerticalBorder(
+    parentRow: SdsTreeTableData,
+    index: number,
+    siblingRows: SdsTreeTableRow[]
+  ): boolean {
     if (!siblingRows) return false;
 
     // Decide whether last child displayed is last child in row's children index or is at numChildrenToDisplay
@@ -228,7 +246,14 @@ export class SdsTreeTableComponent {
     }
   }
 
-  getTemplateContext(parent: any, row: any, index: number, level: number, parentSelected?: boolean, parentRow?: HTMLTableRowElement) {
+  getTemplateContext(
+    parent: any,
+    row: any,
+    index: number,
+    level: number,
+    parentSelected?: boolean,
+    parentRow?: HTMLTableRowElement
+  ) {
     const updatedLevel = level + 1;
     const posinset = index + 1;
     return {
@@ -239,8 +264,8 @@ export class SdsTreeTableComponent {
       rows: parent.children,
       parentSelected: parentSelected,
       parent: parent,
-      parentRow: parentRow
-    }
+      parentRow: parentRow,
+    };
   }
 
   onRowClicked(row: SdsTreeTableData, tableRow: HTMLTableRowElement) {
@@ -266,13 +291,17 @@ export class SdsTreeTableComponent {
     let siblingRow: HTMLTableRowElement;
 
     if ($event.key === 'ArrowUp') {
-      siblingRow = ($event.target as HTMLTableRowElement).previousElementSibling as HTMLTableRowElement;
+      siblingRow = ($event.target as HTMLTableRowElement)
+        .previousElementSibling as HTMLTableRowElement;
     } else if ($event.key === 'ArrowDown') {
-      siblingRow = ($event.target as HTMLTableRowElement).nextElementSibling as HTMLTableRowElement;
+      siblingRow = ($event.target as HTMLTableRowElement)
+        .nextElementSibling as HTMLTableRowElement;
     } else if ($event.key === 'Home') {
       siblingRow = this.elementRef.nativeElement.querySelector('tbody tr');
     } else if ($event.key === 'End') {
-      siblingRow = this.elementRef.nativeElement.querySelector('tbody tr:last-child');
+      siblingRow = this.elementRef.nativeElement.querySelector(
+        'tbody tr:last-child'
+      );
     }
 
     if (!siblingRow) return;
@@ -289,14 +318,14 @@ export class SdsTreeTableComponent {
       if (allRows[i] === row) {
         retRow = allRows[i];
         break;
-      } else if(allRows[i].children) {
+      } else if (allRows[i].children) {
         const isChildRow = this.getParentOfRow(allRows[i].children, row);
         if (isChildRow) {
           retRow = allRows[i];
         }
       }
     }
-    
+
     return retRow;
   }
 }

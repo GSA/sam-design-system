@@ -1,14 +1,29 @@
 <h6>API reference for SDS Dialog</h6>
-<p><code>import &#123; SdsDialogModule &#125; from '@gsa-sam/components';</code></p>
+<p>
+  <code>import &#123; SdsDialogModule &#125; from '@gsa-sam/components';</code>
+</p>
 
 <h3>Alerts with different Title, Message, Type, Size</h3>
 
 <form [formGroup]="form">
-  <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
+  <formly-form
+    [model]="model"
+    [fields]="fields"
+    [options]="options"
+    [form]="form"
+  ></formly-form>
 </form>
 
-<button class="usa-button usa-button--base margin-top-2" (click)="
-    openAlert( model.alert.title, model.alert.message, model.alert.type, model.alert.size)
-  ">
+<button
+  class="usa-button usa-button--base margin-top-2"
+  (click)="
+    openAlert(
+      model.alert.title,
+      model.alert.message,
+      model.alert.type,
+      model.alert.size
+    )
+  "
+>
   Open alert modal
 </button>

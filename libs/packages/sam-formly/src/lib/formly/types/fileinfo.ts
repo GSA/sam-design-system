@@ -7,7 +7,7 @@ import { FieldType } from '@ngx-formly/core';
     <div class="grid-row grid-gap margin-top-1">
       <div
         *ngFor="
-          let option of (to.options | formlySelectOptions: field | async);
+          let option of to.options | formlySelectOptions: field | async;
           let i = index
         "
       >
@@ -51,15 +51,15 @@ import { FieldType } from '@ngx-formly/core';
         border-color: #2672de !important;
         border-width: 2px !important;
       }
-    `
-  ]
+    `,
+  ],
 })
 export class FormlyFieldFileInfoComponent extends FieldType {
   isSelected: boolean = false;
   description: string = '';
   defaultOptions = {
     templateOptions: {
-      options: []
-    }
+      options: [],
+    },
   };
 }

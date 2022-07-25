@@ -88,7 +88,7 @@ export class SdsVideoPlayerComponent
     const progressElement: HTMLProgressElement = this.elementRef.nativeElement.querySelector(
       'progress'
     );
-    
+
     if (progressElement) {
       this.renderer2.setAttribute(
         progressElement,

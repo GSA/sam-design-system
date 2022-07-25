@@ -4,7 +4,7 @@ import {
   EventEmitter,
   ElementRef,
   OnInit,
-  OnDestroy
+  OnDestroy,
 } from '@angular/core';
 import { ViewportRuler } from '@angular/cdk/overlay';
 import { startWith } from 'rxjs/operators';

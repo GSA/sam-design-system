@@ -13,26 +13,32 @@ import {
   circle,
   question,
   save,
-  x
-} from "ngx-bootstrap-icons";
+  x,
+} from 'ngx-bootstrap-icons';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
-  declarations: [UnevenStepsCustomStepperComponent, UnevenStepsStepperComponent],
+  declarations: [
+    UnevenStepsCustomStepperComponent,
+    UnevenStepsStepperComponent,
+  ],
   imports: [
     CommonModule,
     UsaStepIndicatorModule,
     SdsStepperModule,
-    NgxBootstrapIconsModule.pick({ chevronLeft, chevronRight, circle, slashCircleFill, checkCircleFill, question, save, x }),
+    NgxBootstrapIconsModule.pick({
+      chevronLeft,
+      chevronRight,
+      circle,
+      slashCircleFill,
+      checkCircleFill,
+      question,
+      save,
+      x,
+    }),
     IconModule,
   ],
-  exports: [
-    UnevenStepsCustomStepperComponent,
-    UnevenStepsStepperComponent,
-  ],
-  bootstrap: [
-    UnevenStepsCustomStepperComponent,
-    UnevenStepsStepperComponent,
-  ],
+  exports: [UnevenStepsCustomStepperComponent, UnevenStepsStepperComponent],
+  bootstrap: [UnevenStepsCustomStepperComponent, UnevenStepsStepperComponent],
 })
-export class UnevenStepsStepperModule { }
+export class UnevenStepsStepperModule {}

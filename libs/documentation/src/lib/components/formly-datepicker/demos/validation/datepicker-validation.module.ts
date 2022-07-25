@@ -15,6 +15,6 @@ import { SdsFormlyModule } from '@gsa-sam/sam-formly';
   ],
   declarations: [FormlyDatepickerValidation],
   exports: [FormlyDatepickerValidation],
-  bootstrap: [FormlyDatepickerValidation]
+  bootstrap: [FormlyDatepickerValidation],
 })
 export class FormlyDatepickerValidationModule {}

@@ -1,9 +1,19 @@
-<p><code> modelOptions: {{ '{' }}
-  updateOn: 'blur'
-  {{ '}' }}</code> is used to update the model on blur.</p>  
+<p>
+  <code>
+    modelOptions: {{ '{' }}
+    updateOn: 'blur'
+    {{ '}' }}</code
+  >
+  is used to update the model on blur.
+</p>
 
 <form [formGroup]="form">
-  <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
+  <formly-form
+    [model]="model"
+    [fields]="fields"
+    [options]="options"
+    [form]="form"
+  ></formly-form>
 </form>
 
-{{model |json}}
+{{ model | json }}

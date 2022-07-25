@@ -11,10 +11,10 @@ import { SdsFormlyModule } from '@gsa-sam/sam-formly';
     ReactiveFormsModule,
     SdsFormlyModule,
     FormsModule,
-    FormlyModule.forRoot()
+    FormlyModule.forRoot(),
   ],
   declarations: [MultiCheckboxExpandable],
   exports: [MultiCheckboxExpandable],
-  bootstrap: [MultiCheckboxExpandable]
+  bootstrap: [MultiCheckboxExpandable],
 })
 export class MultiCheckboxExpandableModule {}

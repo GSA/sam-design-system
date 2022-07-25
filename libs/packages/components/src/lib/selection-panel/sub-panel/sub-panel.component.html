@@ -1,22 +1,31 @@
-
 <ul class="usa-sidenav sds-subpanel sds-list">
   <li *ngFor="let panelItem of model" class="usa-sidenav__item">
-    <ng-container [ngTemplateOutlet]="subPanelTemplate" [ngTemplateOutletContext]="{$implicit:panelItem}">
+    <ng-container
+      [ngTemplateOutlet]="subPanelTemplate"
+      [ngTemplateOutletContext]="{ $implicit: panelItem }"
+    >
     </ng-container>
   </li>
 </ul>
 
 <ng-template #subPanelTemplate let-panelItem>
-  <a href="javascript:void(0);"
-  class="usa-link margin-right-neg-2" 
-  [ngClass]="{
-    'usa-link--active': currentSelection && panelItem.id === currentSelection.id
-  }"
-  (click)="onSubPanelItemClicked(panelItem)">
-  {{panelItem.text}}</a>
+  <a
+    href="javascript:void(0);"
+    class="usa-link margin-right-neg-2"
+    [ngClass]="{
+      'usa-link--active':
+        currentSelection && panelItem.id === currentSelection.id
+    }"
+    (click)="onSubPanelItemClicked(panelItem)"
+  >
+    {{ panelItem.text }}</a
+  >
   <ul *ngIf="panelItem.children" class="usa-sidenav__sublist">
     <li *ngFor="let panelItem of panelItem.children" class="sidenav__item">
-      <ng-container [ngTemplateOutlet]="subPanelTemplate" [ngTemplateOutletContext]="{$implicit:panelItem}">
+      <ng-container
+        [ngTemplateOutlet]="subPanelTemplate"
+        [ngTemplateOutletContext]="{ $implicit: panelItem }"
+      >
       </ng-container>
     </li>
   </ul>

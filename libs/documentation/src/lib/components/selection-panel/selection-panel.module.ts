@@ -34,7 +34,8 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/default-selection/default-selection-panel.component'),
     module: require('!!raw-loader!./demos/default-selection/default-selection-panel.module'),
     markup: require('!!raw-loader!./demos/default-selection/default-selection-panel.component.html'),
-    path: 'libs/documentation/src/lib/components/selection-panel/demos/default-selection',
+    path:
+      'libs/documentation/src/lib/components/selection-panel/demos/default-selection',
   },
   selectionMode: {
     title: 'Selection Panel With Selection Mode',
@@ -42,7 +43,8 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/selection-mode/selection-mode.component'),
     module: require('!!raw-loader!./demos/selection-mode/selection-mode.module'),
     markup: require('!!raw-loader!./demos/selection-mode/selection-mode.component.html'),
-    path: 'libs/documentation/src/lib/components/selection-panel/demos/selection-mode',
+    path:
+      'libs/documentation/src/lib/components/selection-panel/demos/selection-mode',
   },
   collapsiblePanel: {
     title: 'Selection Panel Collapsible Card',
@@ -50,7 +52,8 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/collapsible-panel/collapsible-panel.component'),
     module: require('!!raw-loader!./demos/collapsible-panel/collapsible-panel.module'),
     markup: require('!!raw-loader!./demos/collapsible-panel/collapsible-panel.component.html'),
-    path: 'libs/documentation/src/lib/components/selection-panel/demos/collapsible-panel',
+    path:
+      'libs/documentation/src/lib/components/selection-panel/demos/collapsible-panel',
   },
 };
 

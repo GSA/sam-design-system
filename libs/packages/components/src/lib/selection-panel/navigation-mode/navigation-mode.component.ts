@@ -1,6 +1,18 @@
-import { Component, ElementRef, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { NavigationLink, SideNavigationModel } from '../../side-navigation/model/side-navigation-model';
+import {
+  NavigationLink,
+  SideNavigationModel,
+} from '../../side-navigation/model/side-navigation-model';
 import { SelectionPanelModel } from '../model/selection-panel.model';
 
 @Component({
@@ -9,7 +21,6 @@ import { SelectionPanelModel } from '../model/selection-panel.model';
   styleUrls: ['./navigation-mode.component.scss'],
 })
 export class SdsSelectionPanelNavigationModeComponent implements OnChanges {
-
   @Input() model: SelectionPanelModel;
 
   @Input() navigateOnClick = true;
@@ -18,10 +29,7 @@ export class SdsSelectionPanelNavigationModeComponent implements OnChanges {
 
   @Output() panelSelected = new EventEmitter<NavigationLink>();
 
-  constructor(
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-  ) { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (this.model && this.currentSelection && changes.currentSelection) {
@@ -36,7 +44,7 @@ export class SdsSelectionPanelNavigationModeComponent implements OnChanges {
   onPanelItemClick(panelItem: NavigationLink) {
     this.selectPanel(panelItem);
     this.currentSelection = panelItem;
-    
+
     if (this.navigateOnClick) {
       this.navigateToSelectedItem(panelItem);
     }
@@ -47,8 +55,8 @@ export class SdsSelectionPanelNavigationModeComponent implements OnChanges {
   navigateToSelectedItem(selectedPanel: NavigationLink) {
     const navigationExtras: NavigationExtras = {
       queryParams: selectedPanel.queryParams,
-      relativeTo: this.activatedRoute
-    }
+      relativeTo: this.activatedRoute,
+    };
 
     this.router.navigateByUrl(selectedPanel.route, navigationExtras);
   }
@@ -60,11 +68,11 @@ export class SdsSelectionPanelNavigationModeComponent implements OnChanges {
   }
 
   /**
- * Deselects any previously selected sidenav item
- * @param sidenavItems
- */
+   * Deselects any previously selected sidenav item
+   * @param sidenavItems
+   */
   private deselectSideNav(sidenavItems: NavigationLink[]): void {
-    sidenavItems.forEach(sideNavItem => {
+    sidenavItems.forEach((sideNavItem) => {
       if (sideNavItem.children) {
         this.deselectSideNav(sideNavItem.children);
       }
@@ -77,7 +85,10 @@ export class SdsSelectionPanelNavigationModeComponent implements OnChanges {
    * @param selectedItem
    * @param allNavItems
    */
-  private selectSideNav(selectedItem: NavigationLink, allNavItems: NavigationLink[]): boolean {
+  private selectSideNav(
+    selectedItem: NavigationLink,
+    allNavItems: NavigationLink[]
+  ): boolean {
     for (const item of allNavItems) {
       if (item === selectedItem) {
         item.selected = true;
@@ -92,5 +103,4 @@ export class SdsSelectionPanelNavigationModeComponent implements OnChanges {
     }
     return false;
   }
-
 }

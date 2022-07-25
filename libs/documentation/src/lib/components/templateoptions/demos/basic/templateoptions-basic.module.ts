@@ -15,6 +15,6 @@ import { SdsFormlyModule } from '@gsa-sam/sam-formly';
   ],
   declarations: [TemplateOptionsBasic],
   exports: [TemplateOptionsBasic],
-  bootstrap: [TemplateOptionsBasic]
+  bootstrap: [TemplateOptionsBasic],
 })
 export class TemplateOptionsBasicModule {}

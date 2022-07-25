@@ -7,7 +7,6 @@ import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
   templateUrl: './radio-advanced.component.html',
 })
 export class RadioAdvancedComponent {
-
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
@@ -29,8 +28,8 @@ export class RadioAdvancedComponent {
               'Corporate Entity, Not Tax Exempt (Firm pays U.S. Federal Income Taxes or U.S. Possession Income Taxes)',
             description: [
               '13240 GREENBURY CIRCUIT SUITE 200',
-              'Sterling, VA 20165 United States'
-            ]
+              'Sterling, VA 20165 United States',
+            ],
           },
           {
             value: 'nonprofit',
@@ -38,8 +37,8 @@ export class RadioAdvancedComponent {
               'Corporate Entity, Tax Exempt (Firm does not pay U.S. Federal Income Taxes nor U.S. Possession Income Taxes)',
             description: [
               '13240 GREENBURY CIRCUIT SUITE 200',
-              'Sterling, VA 20165 United States'
-            ]
+              'Sterling, VA 20165 United States',
+            ],
           },
           {
             value: 'partnerllc',
@@ -54,24 +53,24 @@ export class RadioAdvancedComponent {
             label: 'Sole Proprietorship',
             description: [
               '13240 GREENBURY CIRCUIT SUITE 200',
-              'Sterling, VA 20165 United States'
-            ]
+              'Sterling, VA 20165 United States',
+            ],
           },
           {
             value: 'international',
             label: 'International Organization',
             description: [
               '13240 GREENBURY CIRCUIT SUITE 200',
-              'Sterling, VA 20165 United States'
-            ]
+              'Sterling, VA 20165 United States',
+            ],
           },
           {
             value: 'other',
             label: 'Other',
             description: [
               '13240 GREENBURY CIRCUIT SUITE 200',
-              'Sterling, VA 20165 United States'
-            ]
+              'Sterling, VA 20165 United States',
+            ],
           },
         ],
       },

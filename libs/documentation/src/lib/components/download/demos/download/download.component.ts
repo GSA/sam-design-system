@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import {
   SdsFormlyDialogData,
-  SdsFormlyDialogComponent
+  SdsFormlyDialogComponent,
 } from '@gsa-sam/sam-formly';
 import { SdsDialogService } from '@gsa-sam/components';
 
@@ -27,14 +27,14 @@ export class DownloadComponent {
         options: [
           {
             value: 'Single Details',
-            key: 'sd'
+            key: 'sd',
           },
           {
             value: 'Contract Family Details',
-            key: 'cfd'
-          }
-        ]
-      }
+            key: 'cfd',
+          },
+        ],
+      },
     },
     {
       key: 'mode',
@@ -46,9 +46,9 @@ export class DownloadComponent {
         options: [
           {
             value: 'Modifications',
-            key: 'mod'
-          }
-        ]
+            key: 'mod',
+          },
+        ],
       },
       hideExpression: () => {
         return !(
@@ -56,7 +56,7 @@ export class DownloadComponent {
           this.model.download &&
           this.model.download == 'cfd'
         );
-      }
+      },
     },
     {
       key: 'fileType',
@@ -68,17 +68,17 @@ export class DownloadComponent {
           { value: 'Default', key: 'CSV', description: '-Limited to 5000' },
           { value: 'Full', key: 'ZIP', description: '-Limited to 10,000' },
           { value: 'Case', key: 'PDF', description: '-Limited to 8000' },
-          { value: 'All', key: 'XLS', description: '-Limited to 45000' }
-        ]
-      }
+          { value: 'All', key: 'XLS', description: '-Limited to 45000' },
+        ],
+      },
     },
     {
       key: 'fileName',
       type: 'input',
       templateOptions: {
         label: 'Name',
-        required: true
-      }
+        required: true,
+      },
     },
     {
       key: 'additionalOptions',
@@ -87,13 +87,13 @@ export class DownloadComponent {
         options: [
           {
             value: 'Add to my saved search',
-            key: 'saved'
-          }
-        ]
-      }
-    }
+            key: 'saved',
+          },
+        ],
+      },
+    },
   ];
-  constructor(public dialog: SdsDialogService) { }
+  constructor(public dialog: SdsDialogService) {}
   openDialog() {
     const data: any = {
       fields: this.fields,
@@ -103,19 +103,18 @@ export class DownloadComponent {
       options: this.options,
       disableSubmitButtonEnabled: true,
       subtitle:
-        'Choose from the following download option.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt'
+        'Choose from the following download option.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt',
     };
 
     const dialogRef: any = this.dialog.open(SdsFormlyDialogComponent, {
       width: 'medium',
-      data: data
+      data: data,
     });
 
     dialogRef.componentInstance.submitFn.subscribe((res) => {
       this.updatedModel = res;
       dialogRef.close();
-    }
-    );
+    });
 
     dialogRef.componentInstance.cancelFn.subscribe((res) => {
       this.updatedModel = res;

@@ -4,13 +4,15 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SdsAccordionModule } from './accordion.module';
 
 describe('SdsAccordionItem', () => {
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      imports: [SdsAccordionModule, NoopAnimationsModule],
-      declarations: [AccordionItem]
-    });
-    TestBed.compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [SdsAccordionModule, NoopAnimationsModule],
+        declarations: [AccordionItem],
+      });
+      TestBed.compileComponents();
+    })
+  );
 
   it('should expand and collapse the accordion item', fakeAsync(() => {
     const fixture = TestBed.createComponent(AccordionItem);
@@ -39,9 +41,13 @@ describe('SdsAccordionItem', () => {
 
   it('should create a unique panel id for each accordion item', () => {
     const fixtureOne = TestBed.createComponent(AccordionItem);
-    const headerElOne = fixtureOne.nativeElement.querySelector('.sds-accordion__trigger');
+    const headerElOne = fixtureOne.nativeElement.querySelector(
+      '.sds-accordion__trigger'
+    );
     const fixtureTwo = TestBed.createComponent(AccordionItem);
-    const headerElTwo = fixtureTwo.nativeElement.querySelector('.sds-accordion__trigger');
+    const headerElTwo = fixtureTwo.nativeElement.querySelector(
+      '.sds-accordion__trigger'
+    );
     fixtureOne.detectChanges();
     fixtureTwo.detectChanges();
 
@@ -52,11 +58,12 @@ describe('SdsAccordionItem', () => {
 
   it('should set the proper role on the content element', () => {
     const fixture = TestBed.createComponent(AccordionItem);
-    const contentEl = fixture.nativeElement.querySelector('.sam-accordion__panel');
+    const contentEl = fixture.nativeElement.querySelector(
+      '.sam-accordion__panel'
+    );
 
     expect(contentEl.getAttribute('role')).toBe('region');
   });
-
 });
 
 @Component({
@@ -70,7 +77,7 @@ describe('SdsAccordionItem', () => {
       <sds-accordion-item-header>Accordion Title</sds-accordion-item-header>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </sds-accordion-item>
-  `
+  `,
 })
 class AccordionItem {
   expanded = false;

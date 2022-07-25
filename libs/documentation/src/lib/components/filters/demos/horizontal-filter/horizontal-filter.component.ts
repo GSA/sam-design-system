@@ -1,5 +1,5 @@
-import { Component } from "@angular/core";
-import { FormlyFieldConfig, FormlyFormOptions } from "@ngx-formly/core";
+import { Component } from '@angular/core';
+import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 @Component({
   selector: `horizontal-filter-demo`,
   templateUrl: `horizontal-filter.component.html`,
@@ -7,8 +7,8 @@ import { FormlyFieldConfig, FormlyFormOptions } from "@ngx-formly/core";
 export class HorizontalFilterDemo {
   options: FormlyFormOptions = {};
   model = {};
-   // Default Multiple Controls
-   fields: FormlyFieldConfig[] = [
+  // Default Multiple Controls
+  fields: FormlyFieldConfig[] = [
     {
       key: 'status',
       type: 'multicheckbox',
@@ -18,17 +18,17 @@ export class HorizontalFilterDemo {
         options: [
           {
             key: 'active',
-            value: 'Active'
+            value: 'Active',
           },
           {
             key: 'inactive',
-            value: 'Inactive'
+            value: 'Inactive',
           },
           {
             key: 'all',
-            value: 'All'
-          }
-        ]
+            value: 'All',
+          },
+        ],
       },
     },
     {
@@ -40,17 +40,17 @@ export class HorizontalFilterDemo {
         options: [
           {
             key: 'vet',
-            value: 'Veteran Owned'
+            value: 'Veteran Owned',
           },
           {
             key: 'women',
-            value: 'Women Owned'
+            value: 'Women Owned',
           },
           {
             key: 'minority',
-            value: 'Minority Owned'
-          }
-        ]
+            value: 'Minority Owned',
+          },
+        ],
       },
     },
     {
@@ -68,13 +68,13 @@ export class HorizontalFilterDemo {
           templateOptions: {
             label: 'Select Date',
             options: [
-              {label: 'Anytime', value: 'anytime'},
-              {label: 'Past day', value: 'pastDay'},
-              {label: 'Past Week', value: 'pastWeek'},
-              {label: 'Custom Dates', value: 'customDate'}
+              { label: 'Anytime', value: 'anytime' },
+              { label: 'Past day', value: 'pastDay' },
+              { label: 'Past Week', value: 'pastWeek' },
+              { label: 'Custom Dates', value: 'customDate' },
             ],
             hideOptional: true,
-          }
+          },
         },
         {
           key: 'createdDate',
@@ -84,16 +84,22 @@ export class HorizontalFilterDemo {
             label: 'Created Date',
             minDate: new Date(2019, 9, 5),
             maxDate: new Date(2020, 11, 15),
-            placeholder: 'eg: ' + new Date().toLocaleString('en-US', {
-              month: 'short',
-              day: 'numeric',
-              year: 'numeric'
-            }),
+            placeholder:
+              'eg: ' +
+              new Date().toLocaleString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric',
+              }),
             hideOptional: true,
           },
           hideExpression: (model) => {
-            return !model || !model['dateRangeSelect'] || model['dateRangeSelect'] != 'customDate';
-          }
+            return (
+              !model ||
+              !model['dateRangeSelect'] ||
+              model['dateRangeSelect'] != 'customDate'
+            );
+          },
         },
         {
           key: 'expirationDate',
@@ -103,18 +109,24 @@ export class HorizontalFilterDemo {
             label: 'Expires Date',
             minDate: new Date(2019, 9, 5),
             maxDate: new Date(2020, 11, 15),
-            placeholder: 'eg: ' + new Date().toLocaleString('en-US', {
-              month: 'short',
-              day: 'numeric',
-              year: 'numeric'
-            }),
+            placeholder:
+              'eg: ' +
+              new Date().toLocaleString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric',
+              }),
             hideOptional: true,
           },
           hideExpression: (model) => {
-            return !model || !model['dateRangeSelect'] || model['dateRangeSelect'] != 'customDate';
-          }
-        }
-      ]
+            return (
+              !model ||
+              !model['dateRangeSelect'] ||
+              model['dateRangeSelect'] != 'customDate'
+            );
+          },
+        },
+      ],
     },
     {
       key: 'expirationDateRangeEx',
@@ -125,11 +137,13 @@ export class HorizontalFilterDemo {
         label: 'Expiration Date Range',
         minDate: new Date(2019, 9, 5),
         maxDate: new Date(2020, 11, 15),
-        placeholder: 'eg: ' + new Date().toLocaleString('en-US', {
-          month: 'short',
-          day: 'numeric',
-          year: 'numeric'
-        }),
+        placeholder:
+          'eg: ' +
+          new Date().toLocaleString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric',
+          }),
         hideOptional: true,
       },
     },

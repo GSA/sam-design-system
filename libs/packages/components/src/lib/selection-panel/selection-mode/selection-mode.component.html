@@ -1,6 +1,13 @@
 <ul class="usa-sidenav usa-sidenav--styled">
-  <li *ngFor="let panelItem of model.navigationLinks" class="usa-sidenav__item"
-    [ngClass]="{'usa-current': currentSelection && panelItem.id === currentSelection.id}">
-    <a href="javascript:void(0);" (click)="onPanelItemClick(panelItem)">{{panelItem.text}}</a>
+  <li
+    *ngFor="let panelItem of model.navigationLinks"
+    class="usa-sidenav__item"
+    [ngClass]="{
+      'usa-current': currentSelection && panelItem.id === currentSelection.id
+    }"
+  >
+    <a href="javascript:void(0);" (click)="onPanelItemClick(panelItem)">{{
+      panelItem.text
+    }}</a>
   </li>
 </ul>

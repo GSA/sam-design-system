@@ -9,19 +9,24 @@ import { NgxBootstrapIconsModule, x } from 'ngx-bootstrap-icons';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
-  imports: [CommonModule, OverlayModule, IconModule, NgxBootstrapIconsModule.pick({x})],
+  imports: [
+    CommonModule,
+    OverlayModule,
+    IconModule,
+    NgxBootstrapIconsModule.pick({ x }),
+  ],
   exports: [
     SdsMenuComponent,
     SdsMenuItemComponent,
     SdsMenuTriggerForDirective,
-    SdsMenuHeaderComponent
+    SdsMenuHeaderComponent,
   ],
   declarations: [
     SdsMenuComponent,
     SdsMenuItemComponent,
     SdsMenuTriggerForDirective,
-    SdsMenuHeaderComponent
+    SdsMenuHeaderComponent,
   ],
-  providers: []
+  providers: [],
 })
 export class SdsMenuModule {}

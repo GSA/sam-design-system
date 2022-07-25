@@ -6,14 +6,14 @@ import { AutocompleteSampleDataService } from './autocomplete-sample.service';
 import {
   SDSAutocompletelConfiguration,
   SDSSelectedItemModel,
-  SelectionMode
+  SelectionMode,
 } from '@gsa-sam/components';
 import { SampleAutocompleteData } from './autocomplete-sample.data';
 
 @Component({
   templateUrl: './autocomplete-disable.component.html',
   selector: `sds-formly-autocomplete-disable-demo`,
-  providers: [AutocompleteSampleDataService]
+  providers: [AutocompleteSampleDataService],
 })
 export class FormlyAutocompleteDisable {
   results: any;
@@ -22,8 +22,8 @@ export class FormlyAutocompleteDisable {
     filters: {
       agency: [],
       items1: [],
-      items2: []
-    }
+      items2: [],
+    },
   };
   options: FormlyFormOptions = {};
   public settings = new SDSAutocompletelConfiguration();
@@ -48,27 +48,30 @@ export class FormlyAutocompleteDisable {
             configuration: this.settings,
           },
           lifecycle: {
-            onChanges: function(form: FormGroup, field) {
+            onChanges: function (form: FormGroup, field) {
               form.controls.items1.valueChanges.subscribe((value: any[]) => {
                 if (!value || !value.length) {
                   form.controls.items2.reset();
                 }
-              })
-            }
-          }
+              });
+            },
+          },
         },
         {
           key: 'items2',
           type: 'autocomplete',
 
           templateOptions: {
-            label: 'Auto Complete disabled using Expression properties until Previous Autocomplete is selected',
+            label:
+              'Auto Complete disabled using Expression properties until Previous Autocomplete is selected',
             service: this.service,
             configuration: this.settings2,
           },
           expressionProperties: {
-            'templateOptions.disabled': () => !this.model.filters.items1 || this.model.filters.items1.length === 0
-          }
+            'templateOptions.disabled': () =>
+              !this.model.filters.items1 ||
+              this.model.filters.items1.length === 0,
+          },
         },
         {
           key: 'agency',
@@ -78,11 +81,11 @@ export class FormlyAutocompleteDisable {
             disabled: true,
             service: this.service,
             configuration: this.multipleSettings,
-            model: this.autocompleteMultipleModel
-          }
-        }
-      ]
-    }
+            model: this.autocompleteMultipleModel,
+          },
+        },
+      ],
+    },
   ];
 
   constructor(public service: AutocompleteSampleDataService) {

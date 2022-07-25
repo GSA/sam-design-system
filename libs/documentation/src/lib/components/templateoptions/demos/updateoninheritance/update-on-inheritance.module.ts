@@ -15,6 +15,6 @@ import { SdsFormlyModule } from '@gsa-sam/sam-formly';
   ],
   declarations: [UpdateOnInheritanceComponent],
   exports: [UpdateOnInheritanceComponent],
-  bootstrap: [UpdateOnInheritanceComponent]
+  bootstrap: [UpdateOnInheritanceComponent],
 })
 export class UpdateOnInheritanceModule {}

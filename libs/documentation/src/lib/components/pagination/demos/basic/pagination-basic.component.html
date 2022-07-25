@@ -1,9 +1,17 @@
 <div>
-    <sds-pagination [paginationConfiguration]="top" [(page)]="page" (pageChange)="pageChange.next($event)">
-    </sds-pagination>
+  <sds-pagination
+    [paginationConfiguration]="top"
+    [(page)]="page"
+    (pageChange)="pageChange.next($event)"
+  >
+  </sds-pagination>
 </div>
 <div>Page Content</div>
 <div>
-    <sds-pagination [paginationConfiguration]="bottom" [(page)]="page" (pageChange)="pageChange.next($event)">
-    </sds-pagination>
+  <sds-pagination
+    [paginationConfiguration]="bottom"
+    [(page)]="page"
+    (pageChange)="pageChange.next($event)"
+  >
+  </sds-pagination>
 </div>

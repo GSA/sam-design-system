@@ -44,7 +44,7 @@ export class ResultListBasic {
               id: 'backward',
               text: 'Go back',
               action: this.gobackbutton,
-              ariaLabel: 'Go Back'
+              ariaLabel: 'Go Back',
             },
           ],
         },

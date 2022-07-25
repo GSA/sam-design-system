@@ -4,7 +4,7 @@
 const { join } = require('path');
 const getBaseKarmaConfig = require('../../../karma.conf');
 
-module.exports = function(config) {
+module.exports = function (config) {
   const baseConfig = getBaseKarmaConfig();
   config.set({
     ...baseConfig,
@@ -14,12 +14,7 @@ module.exports = function(config) {
         __dirname,
         '../../../coverage/libs/packages/sam-material-extensions'
       ),
-      files: [
-        "../../../node_modules/@angular/cdk/overlay-prebuilt.css"
-      ]
-    }
+      files: ['../../../node_modules/@angular/cdk/overlay-prebuilt.css'],
+    },
   });
 };
-
-
-

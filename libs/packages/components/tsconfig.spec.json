@@ -8,7 +8,7 @@
         "dist/libs/components",
         "libs/packages/components/src/index.ts"
       ]
-    },
+    }
   },
   "files": ["src/test.ts"],
   "include": ["**/*.spec.ts", "**/*.d.ts"]

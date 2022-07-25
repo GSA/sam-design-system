@@ -1,7 +1,12 @@
-<p><code> hideOptional: true</code> is used to hide the (optional) text.</p>  
+<p><code> hideOptional: true</code> is used to hide the (optional) text.</p>
 
 <form [formGroup]="form">
-  <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
+  <formly-form
+    [model]="model"
+    [fields]="fields"
+    [options]="options"
+    [form]="form"
+  ></formly-form>
 </form>
 
-<pre>{{model ? (model |json) : ''}}</pre>
+<pre>{{ model ? (model | json) : '' }}</pre>

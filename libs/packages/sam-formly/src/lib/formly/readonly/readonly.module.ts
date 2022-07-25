@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from "@angular/core";
+import { NgModule } from '@angular/core';
 import { ReadonlyInputComponent } from './readonly-types/readonly-input';
 import { ReadonlyDatepickerComponent } from './readonly-types/readonly-datepicker';
 import { ReadonlySelectComponent } from './readonly-types/readonly-select';
@@ -10,13 +10,14 @@ import { ReadonlyCheckboxComponent } from './readonly-types/readonly-checkbox';
 import { ReadonlyMulticheckboxComponent } from './readonly-types/readonly-multicheckbox';
 import { ReadonlyDaterangeComponent } from './readonly-types/readonly-daterange';
 import { ReadonlyFileinfoComponent } from './readonly-types/readonly-fileinfo';
-import { ReadonlyContainerComponent, ReadonlyLabelDirective, ReadonlyValueDirective } from './readonly-container.component';
+import {
+  ReadonlyContainerComponent,
+  ReadonlyLabelDirective,
+  ReadonlyValueDirective,
+} from './readonly-container.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormlySelectModule,
-  ],
+  imports: [CommonModule, FormlySelectModule],
   declarations: [
     ReadonlyInputComponent,
     ReadonlyDatepickerComponent,
@@ -44,7 +45,6 @@ import { ReadonlyContainerComponent, ReadonlyLabelDirective, ReadonlyValueDirect
     ReadonlyContainerComponent,
     ReadonlyLabelDirective,
     ReadonlyValueDirective,
-  ]
-
+  ],
 })
 export class SdsReadonlyModule {}

@@ -14,7 +14,7 @@ xdescribe('VideoPlayerComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [SdsVideoPlayerComponent],
-      providers: [{ provide: InitPxVideo, useClass: new IntiPxVideoObj() }]
+      providers: [{ provide: InitPxVideo, useClass: new IntiPxVideoObj() }],
     }).compileComponents();
   });
 
@@ -32,7 +32,7 @@ xdescribe('VideoPlayerComponent', () => {
       id: 'smapleId1',
       seekInterval: 20,
       debug: true,
-      preload: 'none'
+      preload: 'none',
     };
     fixture.detectChanges();
   });

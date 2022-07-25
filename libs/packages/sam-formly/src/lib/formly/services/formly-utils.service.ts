@@ -62,7 +62,11 @@ export class FormlyUtilsService {
       });
     }
 
-    if (field.templateOptions && field.type && Object.values(SdsFormlyTypes).includes(field.type as any)) {
+    if (
+      field.templateOptions &&
+      field.type &&
+      Object.values(SdsFormlyTypes).includes(field.type as any)
+    ) {
       field.templateOptions.readonlyMode = readonlyMode;
     }
   }
@@ -90,10 +94,13 @@ export class FormlyUtilsService {
         label,
         value,
         readonlyOptions,
-        formlyKey: field.key
+        formlyKey: field.key,
       });
 
-      if (field.type === SdsFormlyTypes.DATERANGEPICKER || field.type === SdsFormlyTypes.DATERANGEPICKERV2) {
+      if (
+        field.type === SdsFormlyTypes.DATERANGEPICKER ||
+        field.type === SdsFormlyTypes.DATERANGEPICKERV2
+      ) {
         readonlyOptions.daterangepickerOptions = {
           fromDateKey: field.fieldGroup[0].key as string,
           toDateKey: field.fieldGroup[1].key as string,

@@ -4,7 +4,10 @@ import { DocumentationExamplesPage } from '../shared/examples-page/examples.comp
 import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
-import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../shared/index';
+import {
+  DocumentationComponentsSharedModule,
+  DocumentationDemoList,
+} from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { BasicFileInputComponent } from './demos/basic-file-input/basic-file-input.component';
 import { BasicFileInputModule } from './demos/basic-file-input/basic-file-input.module';
@@ -23,7 +26,8 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/basic-file-input/basic-file-input.component'),
     markup: require('!!raw-loader!./demos/basic-file-input/basic-file-input.component.html'),
     module: require('!!raw-loader!./demos/basic-file-input/basic-file-input.module.ts'),
-    path: 'libs/documentation/src/lib/components/formly-file-input/demos/basic-file-input',
+    path:
+      'libs/documentation/src/lib/components/formly-file-input/demos/basic-file-input',
   },
   table: {
     title: 'File Input Example with Table Display',
@@ -31,7 +35,8 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/table-file-input/table-file-input.component'),
     markup: require('!!raw-loader!./demos/table-file-input/table-file-input.component.html'),
     module: require('!!raw-loader!./demos/table-file-input/table-file-input.module.ts'),
-    path: 'libs/documentation/src/lib/components/formly-file-input/demos/table-file-input',
+    path:
+      'libs/documentation/src/lib/components/formly-file-input/demos/table-file-input',
   },
   template: {
     title: 'File Input Example with Custom Template',
@@ -39,7 +44,8 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/table-file-input/table-file-input.component'),
     markup: require('!!raw-loader!./demos/table-file-input/table-file-input.component.html'),
     module: require('!!raw-loader!./demos/table-file-input/table-file-input.module.ts'),
-    path: 'libs/documentation/src/lib/components/formly-file-input/demos/table-file-input',
+    path:
+      'libs/documentation/src/lib/components/formly-file-input/demos/table-file-input',
   },
   templateOptions: {
     title: 'File Input Template Options',
@@ -47,8 +53,9 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/file-input-api/file-input-api.component'),
     markup: require('!!raw-loader!./demos/file-input-api/file-input-api.component.html'),
     module: require('!!raw-loader!./demos/file-input-api/file-input-api.module.ts'),
-    path: 'libs/documentation/src/lib/components/formly-file-input/demos/file-input-api',
-  }
+    path:
+      'libs/documentation/src/lib/components/formly-file-input/demos/file-input-api',
+  },
 };
 
 export const ROUTES = [
@@ -62,8 +69,8 @@ export const ROUTES = [
           type: 'components',
           name: 'FormlyFieldFileInput',
           formType: 'fileinput',
-        }
-      ]
+        },
+      ],
     },
     component: ComponentWrapperComponent,
     children: [
@@ -71,8 +78,8 @@ export const ROUTES = [
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
       { path: 'template', component: DocumentationTemplatePage },
-    ]
-  }
+    ],
+  },
 ];
 
 @NgModule({
@@ -82,8 +89,8 @@ export const ROUTES = [
     BasicFileInputModule,
     TableFileInputModule,
     FileInputApiModule,
-    FileInputTemplateModule
-  ]
+    FileInputTemplateModule,
+  ],
 })
 export class FileInputModule {
   constructor(demoList: DocumentationDemoList) {

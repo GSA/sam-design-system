@@ -1,10 +1,11 @@
 <p>
-  You can enable a formly form to display in a readonly mode by switching the form's
-  <code>templateOption.readonlyMode</code> to true. In most cases, your form might
-  contain multiple formly fields, and would want to switch readonlyMode of all fields
-  on or off at the same time. This can be done through the 
-  <code>setReadonlyMode</code> method in <code>FormlyUtilsService</code> 
-  from <code>sam-formly</code> library.
+  You can enable a formly form to display in a readonly mode by switching the
+  form's
+  <code>templateOption.readonlyMode</code> to true. In most cases, your form
+  might contain multiple formly fields, and would want to switch readonlyMode of
+  all fields on or off at the same time. This can be done through the
+  <code>setReadonlyMode</code> method in <code>FormlyUtilsService</code> from
+  <code>sam-formly</code> library.
 </p>
 
 <form [formGroup]="inpuyTypeform">
@@ -12,27 +13,45 @@
 </form>
 
 <form [formGroup]="textareaTypeForm" class="margin-top-3">
-  <formly-form [fields]="textareaTypeFields" [form]="textareaTypeForm"></formly-form>
+  <formly-form
+    [fields]="textareaTypeFields"
+    [form]="textareaTypeForm"
+  ></formly-form>
 </form>
 
 <form [formGroup]="checkboxTypeForm" class="margin-top-3">
-  <formly-form [fields]="checkboxTypeFields" [form]="checkboxTypeForm"></formly-form>
+  <formly-form
+    [fields]="checkboxTypeFields"
+    [form]="checkboxTypeForm"
+  ></formly-form>
 </form>
 
 <form [formGroup]="datepickerTypeForm" class="margin-top-3">
-  <formly-form [fields]="datepickerTypeFields" [form]="datepickerTypeForm"></formly-form>
+  <formly-form
+    [fields]="datepickerTypeFields"
+    [form]="datepickerTypeForm"
+  ></formly-form>
 </form>
 
 <form [formGroup]="daterangePickerTypeForm" class="margin-top-3">
-  <formly-form [fields]="daterangePickerTypeFields" [form]="daterangePickerTypeForm"></formly-form>
+  <formly-form
+    [fields]="daterangePickerTypeFields"
+    [form]="daterangePickerTypeForm"
+  ></formly-form>
 </form>
 
 <form [formGroup]="fileinfoTypeForm" class="margin-top-3">
-  <formly-form [fields]="fileinfoTypeFields" [form]="fileinfoTypeForm"></formly-form>
+  <formly-form
+    [fields]="fileinfoTypeFields"
+    [form]="fileinfoTypeForm"
+  ></formly-form>
 </form>
 
 <form [formGroup]="multicheckboxTypeForm" class="margin-top-3">
-  <formly-form [fields]="multicheckboxTypeFields" [form]="multicheckboxTypeForm"></formly-form>
+  <formly-form
+    [fields]="multicheckboxTypeFields"
+    [form]="multicheckboxTypeForm"
+  ></formly-form>
 </form>
 
 <form [formGroup]="radioTypeForm" class="margin-top-3">
@@ -40,13 +59,22 @@
 </form>
 
 <form [formGroup]="selectTypeForm" class="margin-top-3">
-  <formly-form [fields]="selectTypeFields" [form]="selectTypeForm"></formly-form>
+  <formly-form
+    [fields]="selectTypeFields"
+    [form]="selectTypeForm"
+  ></formly-form>
 </form>
 
 <form [formGroup]="autocompleteSingleSelectForm" class="margin-top-3">
-  <formly-form [fields]="autocompleteSingleSelectFields" [form]="autocompleteSingleSelectForm"></formly-form>
+  <formly-form
+    [fields]="autocompleteSingleSelectFields"
+    [form]="autocompleteSingleSelectForm"
+  ></formly-form>
 </form>
 
 <form [formGroup]="autocompleteMultiSelectForm" class="margin-top-3">
-  <formly-form [fields]="autocompleteMultiSelectFields" [form]="autocompleteMultiSelectForm"></formly-form>
+  <formly-form
+    [fields]="autocompleteMultiSelectFields"
+    [form]="autocompleteMultiSelectForm"
+  ></formly-form>
 </form>

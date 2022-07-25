@@ -104,9 +104,11 @@ export class SdsTableFooterCellDirective {}
   `,
 })
 export class SdsTableColumnDefComponent implements AfterContentInit {
-  @ViewChild('columnHeaderCell', {static: true}) columnHeaderCell: TemplateRef<any>;
-  @ViewChild('columnCell', {static: true}) columnCell: TemplateRef<any>;
-  @ViewChild('columnFooterCell', {static: true}) columnFooterCell: TemplateRef<any>;
+  @ViewChild('columnHeaderCell', { static: true })
+  columnHeaderCell: TemplateRef<any>;
+  @ViewChild('columnCell', { static: true }) columnCell: TemplateRef<any>;
+  @ViewChild('columnFooterCell', { static: true })
+  columnFooterCell: TemplateRef<any>;
 
   @ContentChild('sdsHeaderCell', { read: TemplateRef })
   headerCellTemplate!: TemplateRef<any>;

@@ -12,7 +12,6 @@ import { ComponentWrapperComponent } from '../../shared/component-wrapper/compon
 import { BasicRichTextModule } from './demos/basic/basic-rich-text.module';
 import { BasicRichTextComponent } from './demos/basic/basic-rich-text.component';
 
-
 declare var require: any;
 const DEMOS = {
   basic: {
@@ -52,7 +51,7 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    BasicRichTextModule
+    BasicRichTextModule,
   ],
 })
 export class RichTextModule {

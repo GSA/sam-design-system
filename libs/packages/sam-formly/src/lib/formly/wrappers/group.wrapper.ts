@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, OnDestroy, ViewChild, ViewContainerRef } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  OnDestroy,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
 import { FieldWrapper } from '@ngx-formly/core';
 import * as qs from 'qs';
 import { Subscription } from 'rxjs';
@@ -17,7 +23,11 @@ import { filter } from 'rxjs/operators';
     <ng-container *ngIf="!to.readonlyMode; else defaultTemplate">
       <ng-container [ngSwitch]="to.group">
         <ng-container *ngSwitchCase="'accordion'">
-          <usa-accordion #groupAccordion [singleSelect]="!multi" class="sds-accordion--filters">
+          <usa-accordion
+            #groupAccordion
+            [singleSelect]="!multi"
+            class="sds-accordion--filters"
+          >
             <usa-accordion-item [expanded]="modelHasValue()">
               <ng-template UsaAccordionHeader>
                 <span [attr.class]="to.labelClass">{{ to.label }}</span>
@@ -46,16 +56,29 @@ import { filter } from 'rxjs/operators';
           </div>
         </ng-container>
         <ng-container *ngSwitchCase="'popover'">
-        <div #popoverContent class="padding-1 text-left sds-width-max-content">
-          <ng-container #fieldComponent></ng-container>
-        </div>
+          <div
+            #popoverContent
+            class="padding-1 text-left sds-width-max-content"
+          >
+            <ng-container #fieldComponent></ng-container>
+          </div>
           <div
             [sdsPopover]="popoverContent"
-              [position]="'bottom'"
-              [closeOnContentClick]="to.closeOnContentClick != undefined ? to.closeOnContentClick : false"
-              [closeOnClickOutside]="to.closeOnClickOutside != undefined ? to.closeOnClickOutside : true"
-              tabindex="0" [attr.aria-label]="to.label">
-            {{to.label}}
+            [position]="'bottom'"
+            [closeOnContentClick]="
+              to.closeOnContentClick != undefined
+                ? to.closeOnContentClick
+                : false
+            "
+            [closeOnClickOutside]="
+              to.closeOnClickOutside != undefined
+                ? to.closeOnClickOutside
+                : true
+            "
+            tabindex="0"
+            [attr.aria-label]="to.label"
+          >
+            {{ to.label }}
             <usa-icon [icon]="'chevron-down'" [size]="'sm'"></usa-icon>
           </div>
         </ng-container>
@@ -69,8 +92,10 @@ import { filter } from 'rxjs/operators';
     </ng-template>
   `,
 })
-export class FormlyGroupWrapperComponent extends FieldWrapper implements AfterViewInit, OnDestroy {
-  @ViewChild('fieldComponent', { read: ViewContainerRef }) fieldComponent: ViewContainerRef;
+export class FormlyGroupWrapperComponent extends FieldWrapper
+  implements AfterViewInit, OnDestroy {
+  @ViewChild('fieldComponent', { read: ViewContainerRef })
+  fieldComponent: ViewContainerRef;
 
   @ViewChild('groupAccordion') accordion: UsaAccordionComponent;
   @ViewChild(UsaAccordionItem) accordionItem: UsaAccordionItem;
@@ -88,8 +113,10 @@ export class FormlyGroupWrapperComponent extends FieldWrapper implements AfterVi
       return;
     }
 
-    this.resetAllSubscription = this.field.options.fieldChanges.pipe(
-      filter(({ type }) => type === 'resetAll' && this.accordionItem.expanded))
+    this.resetAllSubscription = this.field.options.fieldChanges
+      .pipe(
+        filter(({ type }) => type === 'resetAll' && this.accordionItem.expanded)
+      )
       .subscribe(() => {
         if (!this.modelHasValue()) {
           this.accordion.collapse(this.accordionItem.id);

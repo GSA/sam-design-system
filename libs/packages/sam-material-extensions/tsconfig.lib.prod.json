@@ -6,8 +6,8 @@
       "@gsa-sam/components": [
         "dist/libs/components",
         "libs/packages/components/src/index.ts"
-      ],
-    },
+      ]
+    }
   },
   "angularCompilerOptions": {
     "enableIvy": true

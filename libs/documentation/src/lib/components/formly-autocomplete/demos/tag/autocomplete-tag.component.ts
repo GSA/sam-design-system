@@ -5,15 +5,15 @@ import { AutocompleteSampleDataService } from './autocomplete-sample.service';
 import {
   SDSAutocompletelConfiguration,
   SDSSelectedItemModel,
-  SelectionMode
+  SelectionMode,
 } from '@gsa-sam/components';
 
 @Component({
   templateUrl: './autocomplete-tag.component.html',
   selector: `sds-formly-tag-demo`,
-  providers: [AutocompleteSampleDataService]
+  providers: [AutocompleteSampleDataService],
 })
-export class FormlyAutocompleteTag  {
+export class FormlyAutocompleteTag {
   results: any;
   form = new FormGroup({});
   model = {};
@@ -34,11 +34,11 @@ export class FormlyAutocompleteTag  {
             hideLabel: true,
             service: this.service,
             configuration: this.settings,
-            model: this.autocompleteModel
-          }
-        }
-      ]
-    }
+            model: this.autocompleteModel,
+          },
+        },
+      ],
+    },
   ];
 
   constructor(public service: AutocompleteSampleDataService) {
@@ -56,5 +56,4 @@ export class FormlyAutocompleteTag  {
     this.settings.debounceTime = 250;
     this.settings.isTagModeEnabled = true;
   }
-
 }

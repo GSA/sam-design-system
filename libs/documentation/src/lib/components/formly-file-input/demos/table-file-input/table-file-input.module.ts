@@ -6,8 +6,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
 import { SdsTableModule } from '@gsa-sam/sam-material-extensions';
 
-
-
 @NgModule({
   declarations: [TableFileInputComponent],
   imports: [
@@ -16,6 +14,6 @@ import { SdsTableModule } from '@gsa-sam/sam-material-extensions';
     ReactiveFormsModule,
     FormlyModule.forRoot(),
     SdsTableModule,
-  ]
+  ],
 })
-export class TableFileInputModule { }
+export class TableFileInputModule {}

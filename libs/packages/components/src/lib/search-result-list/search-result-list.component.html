@@ -1,14 +1,18 @@
 <ng-container *ngIf="updateModel?.results?.length">
   <div *ngFor="let item of updateModel.results">
     <hr *ngIf="divider" class="fine" />
-    <ng-container *ngTemplateOutlet="resultContentTemplate,
-                   context: { $implicit: item }"></ng-container>
+    <ng-container
+      *ngTemplateOutlet="resultContentTemplate; context: { $implicit: item }"
+    ></ng-container>
   </div>
   <hr *ngIf="divider && updateModel?.results?.length" class="fine" />
 </ng-container>
 
-<ng-container *ngIf="(customResultsTemplate && !(updateModel?.results?.length))"
-  [ngTemplateOutlet]="customResultsTemplate" [ngTemplateOutletContext]="{$implicit:updateModel}">
+<ng-container
+  *ngIf="customResultsTemplate && !updateModel?.results?.length"
+  [ngTemplateOutlet]="customResultsTemplate"
+  [ngTemplateOutletContext]="{ $implicit: updateModel }"
+>
 </ng-container>
 
 <!-- <ng-container *ngIf="(!updateModel?.metadata?.messages && updateModel?.results?.length === 0)">
@@ -19,14 +23,27 @@
 <div aria-live="polite" aria-atomic="true">
   <ng-container *ngIf="!customResultsTemplate">
     <ng-container
-      *ngIf="(updateModel == null || (!updateModel?.metadata?.messages && updateModel?.results?.length === 0))">
+      *ngIf="
+        updateModel == null ||
+        (!updateModel?.metadata?.messages && updateModel?.results?.length === 0)
+      "
+    >
       <ng-container *ngIf="!isDefaultModel">
-        <div class="sds-card sds-card--vertical sds-card--shadowed sds-card--bordered bg-base-lightest">
+        <div
+          class="sds-card sds-card--vertical sds-card--shadowed sds-card--bordered bg-base-lightest"
+        >
           <div class="sds-card__header padding-3">
             <usa-stacked-icon [size]="'2x'" aria-label="search results">
-
-              <usa-icon class="usa-stack-icon" [size]="'3x'" [icon]="'circle'"></usa-icon>
-              <usa-icon class="usa-stack-icon" [size]="'2x'" [icon]="'search'"></usa-icon>
+              <usa-icon
+                class="usa-stack-icon"
+                [size]="'3x'"
+                [icon]="'circle'"
+              ></usa-icon>
+              <usa-icon
+                class="usa-stack-icon"
+                [size]="'2x'"
+                [icon]="'search'"
+              ></usa-icon>
             </usa-stacked-icon>
           </div>
           <div class="sds-card__body margin-2">
@@ -34,15 +51,22 @@
             <p>We couldn't find a match for your search criteria.</p>
             <p>Please try another search or go back to previous results.</p>
             <div class="margin-top-3">
-              <button class="usa-button usa-button--outline" (click)="goBack()">Go Back</button>
+              <button class="usa-button usa-button--outline" (click)="goBack()">
+                Go Back
+              </button>
             </div>
           </div>
         </div>
       </ng-container>
       <ng-container *ngIf="isDefaultModel">
-        <div class="sds-card sds-card--vertical sds-card--shadowed sds-card--bordered bg-base-lightest">
+        <div
+          class="sds-card sds-card--vertical sds-card--shadowed sds-card--bordered bg-base-lightest"
+        >
           <div class="sds-card__header">
-            <usa-icon [icon]="'arrow-left-circle-fill'" [size]="'5x'"></usa-icon>
+            <usa-icon
+              [icon]="'arrow-left-circle-fill'"
+              [size]="'5x'"
+            ></usa-icon>
           </div>
           <div class="sds-card__body margin-2">
             <h1 class="sds-card__title">Select Criteria</h1>
@@ -52,28 +76,51 @@
       </ng-container>
     </ng-container>
 
-
     <ng-container *ngIf="updateModel?.metadata?.messages">
       <ng-container *ngIf="!isTemplate()">
-        <ng-container *ngTemplateOutlet="updateModel?.metadata?.messages"></ng-container>
+        <ng-container
+          *ngTemplateOutlet="updateModel?.metadata?.messages"
+        ></ng-container>
       </ng-container>
       <ng-container *ngIf="isTemplate()">
-        <div *ngFor="let msg of updateModel.metadata.messages" class="sds-card sds-card--shadowed sds-card--bordered"
-          [ngClass]="[(msg.type !== 'loading') ? 'sds-card--vertical': '', msg.classes ? msg.classes : '']">
-          <ng-container *ngIf="msg.type !== 'loading' else loading">
+        <div
+          *ngFor="let msg of updateModel.metadata.messages"
+          class="sds-card sds-card--shadowed sds-card--bordered"
+          [ngClass]="[
+            msg.type !== 'loading' ? 'sds-card--vertical' : '',
+            msg.classes ? msg.classes : ''
+          ]"
+        >
+          <ng-container *ngIf="msg.type !== 'loading'; else loading">
             <div class="sds-card__header">
               <usa-icon
-                [icon]="(msg.type ==='error') ?  ['sds', 'alert-error'] :( (msg.type ==='info') ? 'info-circle' :( (msg.type ==='initial') ? 'arrow-left-circle-fill': 'search'))"
-                [size]="'5x'">
+                [icon]="
+                  msg.type === 'error'
+                    ? ['sds', 'alert-error']
+                    : msg.type === 'info'
+                    ? 'info-circle'
+                    : msg.type === 'initial'
+                    ? 'arrow-left-circle-fill'
+                    : 'search'
+                "
+                [size]="'5x'"
+              >
               </usa-icon>
             </div>
             <div class="sds-card__body margin-2">
-              <h1 class="sds-card__title">{{msg.title}}</h1>
+              <h1 class="sds-card__title">{{ msg.title }}</h1>
               <p [innerHTML]="msg.message"></p>
               <div class="sds-card__buttons">
-                <button *ngFor="let button of msg.buttons" class="usa-button" [attr.aria-label]="button.ariaLabel"
-                  [ngClass]="button.classes ? button.classes : 'usa-button--outline'" (click)="button.action()">
-                  {{button.text}}
+                <button
+                  *ngFor="let button of msg.buttons"
+                  class="usa-button"
+                  [attr.aria-label]="button.ariaLabel"
+                  [ngClass]="
+                    button.classes ? button.classes : 'usa-button--outline'
+                  "
+                  (click)="button.action()"
+                >
+                  {{ button.text }}
                 </button>
               </div>
             </div>

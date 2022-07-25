@@ -7,7 +7,7 @@ import { DocumentationSourcePage } from '../shared/source-page/source.component'
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 import {
   DocumentationComponentsSharedModule,
-  DocumentationDemoList
+  DocumentationDemoList,
 } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { LabelWrapperBasicModule } from './demos/basic/labelwrapper-basic.module';
@@ -19,8 +19,8 @@ const DEMOS = {
     type: LabelWrapperBasic,
     code: require('!!raw-loader!./demos/basic/labelwrapper-basic.component'),
     markup: require('!!raw-loader!./demos/basic/labelwrapper-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/labelwrapper/demos/basic'
-  }
+    path: 'libs/documentation/src/lib/components/labelwrapper/demos/basic',
+  },
 };
 
 export const ROUTES = [
@@ -29,31 +29,31 @@ export const ROUTES = [
     path: '',
     component: ComponentWrapperComponent,
     data: {
-      title: "Label Wrapper",
+      title: 'Label Wrapper',
       items: [
         {
           pkg: 'formly',
           type: 'components',
           name: 'FormlyLabelWrapperComponent',
-          wrappers: ['label']
-        }
-      ]
+          wrappers: ['label'],
+        },
+      ],
     },
     children: [
       { path: 'examples', component: DocumentationExamplesPage },
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
-      { path: 'template', component: DocumentationTemplatePage }
-    ]
-  }
+      { path: 'template', component: DocumentationTemplatePage },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    LabelWrapperBasicModule
-  ]
+    LabelWrapperBasicModule,
+  ],
 })
 export class LabelWrapperModule {
   constructor(demoList: DocumentationDemoList) {

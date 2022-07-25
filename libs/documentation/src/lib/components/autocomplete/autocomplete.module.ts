@@ -116,8 +116,7 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/aria-label/autocomplete-aria-label.component'),
     module: require('!!raw-loader!./demos/aria-label/autocomplete-aria-label.module'),
     markup: require('!!raw-loader!./demos/aria-label/autocomplete-aria-label.component.html'),
-    path:
-      'libs/documentation/src/lib/components/autocomplete/demos/aria-label',
+    path: 'libs/documentation/src/lib/components/autocomplete/demos/aria-label',
   },
 };
 

@@ -1,44 +1,45 @@
 import { Observable } from 'rxjs';
 export interface SDSAutocompleteServiceInterface {
-    /**
-     * 
-     * @param searchValue 
-     */
-    getDataByText(currentItems: number, searchValue?: string): Observable<SDSHiercarchicalServiceResult>;
+  /**
+   *
+   * @param searchValue
+   */
+  getDataByText(
+    currentItems: number,
+    searchValue?: string
+  ): Observable<SDSHiercarchicalServiceResult>;
 }
 
 export interface SDSHiercarchicalServiceResult {
-    /**
-     * 
-     */
-    items: object[];
+  /**
+   *
+   */
+  items: object[];
 
-    /**
-     * 
-     */
-    totalItems: number;
+  /**
+   *
+   */
+  totalItems: number;
 }
 
 export class SDSHiercarchicalServiceSearchItem {
+  /**
+   *
+   */
+  id: string;
 
-    /**
-     * 
-     */
-    id: string;
+  /**
+   *
+   */
+  searchValue: string;
 
-    /**
-     * 
-     */
-    searchValue: string;
+  /**
+   *
+   */
+  // sort: Sort;
 
-    /**
-     * 
-     */
-    // sort: Sort;
-
-    /**
-     * 
-     */
-    currentItemCount: number;
+  /**
+   *
+   */
+  currentItemCount: number;
 }
-

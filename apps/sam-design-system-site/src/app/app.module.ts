@@ -13,7 +13,7 @@ import { ToastrModule } from 'ngx-toastr';
 import {
   SdsToastComponent,
   SdsToastModule,
-  SdsToastSettings
+  SdsToastSettings,
 } from '@gsa-sam/components';
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { NgxBootstrapIconsModule, github } from 'ngx-bootstrap-icons';
@@ -26,11 +26,15 @@ import { IconModule } from '@gsa-sam/ngx-uswds-icons';
     BrowserAnimationsModule,
     SdsToastModule,
     ToastrModule.forRoot(SdsToastSettings),
-    RouterModule.forRoot(ROUTES, { scrollPositionRestoration: 'enabled', relativeLinkResolution: 'legacy', anchorScrolling: 'enabled' }),
+    RouterModule.forRoot(ROUTES, {
+      scrollPositionRestoration: 'enabled',
+      relativeLinkResolution: 'legacy',
+      anchorScrolling: 'enabled',
+    }),
     FormsModule,
     MarkdownModule.forRoot(),
     IconModule,
-    NgxBootstrapIconsModule.pick({github}),
+    NgxBootstrapIconsModule.pick({ github }),
   ],
   providers: [
     { provide: LocationStrategy, useClass: PathLocationStrategy },
@@ -42,13 +46,11 @@ import { IconModule } from '@gsa-sam/ngx-uswds-icons';
           xml: () => import('highlight.js/lib/languages/xml'),
           typescript: () => import('highlight.js/lib/languages/typescript'),
           scss: () => import('highlight.js/lib/languages/scss'),
-        }
+        },
       },
     },
   ],
   entryComponents: [SdsToastComponent],
   bootstrap: [AppComponent],
 })
-export class AppModule {
-
-}
+export class AppModule {}

@@ -6,7 +6,7 @@ import {
   transition,
   query,
   group,
-  AnimationTriggerMetadata
+  AnimationTriggerMetadata,
 } from '@angular/animations';
 
 export const sdsTruncateTextAnimations: {
@@ -17,7 +17,7 @@ export const sdsTruncateTextAnimations: {
       'void',
       style({
         opacity: 0,
-        transform: 'scale(0.8)'
+        transform: 'scale(0.8)',
       })
     ),
     transition(
@@ -28,16 +28,19 @@ export const sdsTruncateTextAnimations: {
           animate(
             '100ms linear',
             style({
-              opacity: 1
+              opacity: 1,
             })
           )
         ),
         animate(
           '120ms cubic-bezier(0, 0, 0.2, 1)',
           style({ transform: 'scale(1)' })
-        )
+        ),
       ])
     ),
-    transition('* => void', animate('100ms 25ms linear', style({ opacity: 0 })))
-  ])
+    transition(
+      '* => void',
+      animate('100ms 25ms linear', style({ opacity: 0 }))
+    ),
+  ]),
 };

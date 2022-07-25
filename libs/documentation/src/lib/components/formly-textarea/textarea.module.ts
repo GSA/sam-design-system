@@ -5,7 +5,10 @@ import { DocumentationExamplesPage } from '../shared/examples-page/examples.comp
 import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
-import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../shared/index';
+import {
+  DocumentationComponentsSharedModule,
+  DocumentationDemoList,
+} from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { TextAreaBasicModule } from './demos/basic/textarea-basic.module';
 
@@ -16,8 +19,8 @@ const DEMOS = {
     type: TextAreaBasic,
     code: require('!!raw-loader!./demos/basic/textarea-basic.component'),
     markup: require('!!raw-loader!./demos/basic/textarea-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/formly-textarea/demos/basic'
-  }
+    path: 'libs/documentation/src/lib/components/formly-textarea/demos/basic',
+  },
 };
 
 export const ROUTES = [
@@ -30,9 +33,9 @@ export const ROUTES = [
           pkg: 'formly',
           type: 'components',
           name: 'FormlyFieldTextAreaComponent',
-          formType: 'textarea'
-        }
-      ]
+          formType: 'textarea',
+        },
+      ],
     },
     component: ComponentWrapperComponent,
     children: [
@@ -40,16 +43,16 @@ export const ROUTES = [
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
       { path: 'template', component: DocumentationTemplatePage },
-    ]
-  }
+    ],
+  },
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
-    TextAreaBasicModule
-  ]
+    TextAreaBasicModule,
+  ],
 })
 export class TextAreaModule {
   constructor(demoList: DocumentationDemoList) {

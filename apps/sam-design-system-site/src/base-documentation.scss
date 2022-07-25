@@ -8,23 +8,30 @@ $cdk-overlay-dark-backdrop-background: rgba(14, 52, 88, 0.7);
 // Demo pages only
 // DO NOT REUSE
 
-.usa-table--full-borderless tr, .usa-table--full-borderless td, .usa-table--full-borderless th {
+.usa-table--full-borderless tr,
+.usa-table--full-borderless td,
+.usa-table--full-borderless th {
   border: 0;
 }
 
-.usa-table--row-borders--thin tr, .usa-table--row-borders--thin td, .usa-table--row-borders--thin th {
+.usa-table--row-borders--thin tr,
+.usa-table--row-borders--thin td,
+.usa-table--row-borders--thin th {
   border-bottom: solid 1px #d9e8f6;
 }
 .usa-table--row-borders--thin th {
   border-top: solid 1px #d9e8f6;
 }
 
-.usa-table--thin tr, .usa-table--thin td, .usa-table--thin th {
-  padding:0;
-  margin:0;
+.usa-table--thin tr,
+.usa-table--thin td,
+.usa-table--thin th {
+  padding: 0;
+  margin: 0;
 }
 
-code::before, code::after {
+code::before,
+code::after {
   content: '';
 }
 
@@ -48,9 +55,9 @@ code::before, code::after {
 
 // Fixes for Docs
 
-pre[class*="highlight"] {
+pre[class*='highlight'] {
   padding: 1em;
-  margin: .5em 0;
+  margin: 0.5em 0;
   overflow: auto;
   border: 1px solid #dddddd;
   background-color: white;
@@ -62,7 +69,7 @@ pre[class*="highlight"] {
 
 documentation-widget-demo sds-page {
   min-height: auto !important;
-  margin-bottom:0 !important;
+  margin-bottom: 0 !important;
 }
 
 .sds-tabs .usa-button {
@@ -71,10 +78,9 @@ documentation-widget-demo sds-page {
 }
 /* Fixes to look at in Sam-Styles */
 
-.sds-tag[class*="sds-tag--outline"] {
+.sds-tag[class*='sds-tag--outline'] {
   width: auto !important;
-
 }
- code {
-   color: #e02b70;
- }
+code {
+  color: #e02b70;
+}

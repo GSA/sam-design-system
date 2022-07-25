@@ -2,7 +2,7 @@
 import { Observable, of } from 'rxjs';
 import {
   SDSAutocompleteServiceInterface,
-  SDSHiercarchicalServiceResult
+  SDSHiercarchicalServiceResult,
 } from './models/SDSAutocompleteServiceInterface';
 import { map } from 'rxjs/operators';
 import { GropupSampleAutocompleteData } from './autocomplete-sample.data';
@@ -14,7 +14,7 @@ export class AutoCompleteSampleDataService
     const data = GropupSampleAutocompleteData;
     for (let i = 0; i < data.length; i++) {
       let item = data[i];
-      let results = data.filter(it => it.element_id === item.element_id);
+      let results = data.filter((it) => it.element_id === item.element_id);
       item['childCount'] = results.length;
     }
     this.loadedData = data;
@@ -30,8 +30,8 @@ export class AutoCompleteSampleDataService
 
     if (searchValue) {
       const filteredData = [];
-      this.loadedData.forEach(item => {
-        const elements = item.elements.filter(i =>
+      this.loadedData.forEach((item) => {
+        const elements = item.elements.filter((i) =>
           i.value.includes(searchValue)
         );
         if (item.value.includes(searchValue) || elements.length > 0) {
@@ -55,14 +55,14 @@ export class AutoCompleteSampleDataService
 
     let returnItem = {
       items: subItemsitems,
-      totalItems: totalItemCount
+      totalItems: totalItemCount,
     };
     return of(returnItem);
   }
 
   private itemsListOutofObservable(itemsOb: any) {
     let items: object[];
-    itemsOb.subscribe(result => {
+    itemsOb.subscribe((result) => {
       items = result;
     });
     return items;

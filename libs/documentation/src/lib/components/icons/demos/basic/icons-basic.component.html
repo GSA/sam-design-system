@@ -3,32 +3,36 @@
   module which declares the component where you wish to display the icon.
 </p>
 <p>
-  To select an icon you wish you use, you must first import the icon from
-  either ngx-bootstrap-icons or @gsa-sam/ngx-uswds-icons into the module which
-  declares your component.
+  To select an icon you wish you use, you must first import the icon from either
+  ngx-bootstrap-icons or @gsa-sam/ngx-uswds-icons into the module which declares
+  your component.
 </p>
-<code>import &#123; NgxBootstrapIconsModule, square &#125; from 'ngx-bootstrap-icons';</code><br>
-<code>import &#123; add, IconModule &#125; from '@gsa-sam/ngx-uswds-icons';</code>
+<code
+  >import &#123; NgxBootstrapIconsModule, square &#125; from
+  'ngx-bootstrap-icons';</code
+><br />
+<code
+  >import &#123; add, IconModule &#125; from '@gsa-sam/ngx-uswds-icons';</code
+>
 <p>
   Next you must add NgxBootstrapIconsModule to your imports and call it's
-  <code>pick</code> function. As an input to this function you should
-  provide an object which contains all of the icons you imported in the
-  previous step
+  <code>pick</code> function. As an input to this function you should provide an
+  object which contains all of the icons you imported in the previous step
 </p>
 <code>
-  @NgModule(&#123;<br>
-  &emsp;imports: [<br>
-  &emsp;&emsp;CommonModule,<br>
-  &emsp;&emsp;IconModule,<br>
-  &emsp;&emsp;NgxBootstrapIconsModule.pick(&#123;add, square&#125;)<br>
-  &emsp;],<br>
-  &emsp;declarations: [YourComponent],<br>
-  &emsp;exports: [YourComponent]<br>
-    &#125;)
+  @NgModule(&#123;<br />
+  &emsp;imports: [<br />
+  &emsp;&emsp;CommonModule,<br />
+  &emsp;&emsp;IconModule,<br />
+  &emsp;&emsp;NgxBootstrapIconsModule.pick(&#123;add, square&#125;)<br />
+  &emsp;],<br />
+  &emsp;declarations: [YourComponent],<br />
+  &emsp;exports: [YourComponent]<br />
+  &#125;)
 </code>
 <p>
   Finally in your template you can include usa-icon and set the value of the
-  <code>icon</code> input  to be one of the icons you just selected.
+  <code>icon</code> input to be one of the icons you just selected.
 </p>
 <p>
   <code>
@@ -37,7 +41,10 @@
 </p>
 <div class="display-inline-flex flex-wrap">
   <ng-container *ngFor="let item of sdsIcons; let i = index">
-    <span class="display-flex flex-column flex-align-center height-10.5 width-15" *ngIf="item">
+    <span
+      class="display-flex flex-column flex-align-center height-10.5 width-15"
+      *ngIf="item"
+    >
       <usa-icon [icon]="item" [size]="'2x'"></usa-icon>
       <p class="font-sans-3xs margin-y-auto">{{ displayName[i] }}</p>
     </span>

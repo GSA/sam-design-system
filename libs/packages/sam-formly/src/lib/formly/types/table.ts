@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import { FieldType, FormlyFieldConfig } from "@ngx-formly/core";
+import { Component, OnInit } from '@angular/core';
+import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
 
 /**
  * Data model for table formly types' tableColumns template option
@@ -18,7 +18,7 @@ export interface SdsTableColumn {
   /**
    * refers to which property of the data to render for the given column
    */
-  property?: string
+  property?: string;
 
   /**
    * refers to static text to render for the column
@@ -26,7 +26,7 @@ export interface SdsTableColumn {
   text?: string;
 
   /**
-   * refers to a function that should return a string to render for the column. 
+   * refers to a function that should return a string to render for the column.
    * The function takes in a single data element of the table
    */
   textFn?: (data: any) => string;
@@ -34,7 +34,7 @@ export interface SdsTableColumn {
   /**
    * If the displayed value should be clickable, provide an onClick method
    */
-  onClick?: (data: any, field: FormlyFieldConfig) => void
+  onClick?: (data: any, field: FormlyFieldConfig) => void;
 }
 
 @Component({
@@ -48,7 +48,9 @@ export class FormlyFieldTableComponent extends FieldType implements OnInit {
   displayedColumns: string[] = [];
 
   ngOnInit() {
-    this.displayedColumns = this.to.tableColumns.map(column => column.columnName);
+    this.displayedColumns = this.to.tableColumns.map(
+      (column) => column.columnName
+    );
     this.parentFieldConfig = this.field.parent;
   }
 }

@@ -4,7 +4,10 @@ import { DocumentationExamplesPage } from '../shared/examples-page/examples.comp
 import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
-import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../shared/index';
+import {
+  DocumentationComponentsSharedModule,
+  DocumentationDemoList,
+} from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { FormlyTabsBasicModule } from './demos/basic/formly-tabs-basic.module';
 import { FormlyTabsBasicComponent } from './demos/basic/formly-tabs-basic.component';
@@ -16,8 +19,8 @@ const DEMOS = {
     type: FormlyTabsBasicComponent,
     code: require('!!raw-loader!./demos/basic/formly-tabs-basic.component'),
     markup: require('!!raw-loader!./demos/basic/formly-tabs-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/formly-tabs/demos/basic'
-  }
+    path: 'libs/documentation/src/lib/components/formly-tabs/demos/basic',
+  },
 };
 
 export const ROUTES = [
@@ -30,9 +33,9 @@ export const ROUTES = [
           pkg: 'formly',
           type: 'components',
           name: 'FormlyFieldTabsComponent',
-          formType: 'tabs'
-        }
-      ]
+          formType: 'tabs',
+        },
+      ],
     },
     component: ComponentWrapperComponent,
     children: [
@@ -40,8 +43,8 @@ export const ROUTES = [
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
       { path: 'template', component: DocumentationTemplatePage },
-    ]
-  }
+    ],
+  },
 ];
 
 @NgModule({
@@ -49,7 +52,7 @@ export const ROUTES = [
     CommonModule,
     DocumentationComponentsSharedModule,
     FormlyTabsBasicModule,
-  ]
+  ],
 })
 export class FormlyTabsModule {
   constructor(demoList: DocumentationDemoList) {

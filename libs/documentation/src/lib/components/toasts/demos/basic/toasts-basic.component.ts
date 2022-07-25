@@ -1,15 +1,14 @@
-import { Component ,ViewEncapsulation } from '@angular/core';
-import { ToastrService,GlobalConfig } from 'ngx-toastr';
+import { Component, ViewEncapsulation } from '@angular/core';
+import { ToastrService, GlobalConfig } from 'ngx-toastr';
 
 @Component({
   templateUrl: './toasts-basic.component.html',
   styleUrls: ['./toasts-basic.component.scss'],
   selector: `sds-toasts-basic-demo`,
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class ToastsBasic {
   options: GlobalConfig;
-
 
   constructor(private toastr: ToastrService) {
     this.options = this.toastr.toastrConfig;
@@ -21,21 +20,23 @@ export class ToastsBasic {
     };
     this.options.closeButton = true;
   }
- 
+
   showInfo() {
-    
-    this.toastr.info('Your information will be saved before leaving editor view', "");
+    this.toastr.info(
+      'Your information will be saved before leaving editor view',
+      ''
+    );
   }
   showSuccess() {
-    this.toastr.success('Account request successfully submitted', "");
+    this.toastr.success('Account request successfully submitted', '');
   }
   showWarning() {
-    this.toastr.warning('Something requires your attention', "");
+    this.toastr.warning('Something requires your attention', '');
   }
   showError() {
-    this.toastr.error('Something went wrong', "");
+    this.toastr.error('Something went wrong', '');
   }
-  clear(){
+  clear() {
     this.toastr.clear();
   }
   fixNumber(field: keyof GlobalConfig): void {

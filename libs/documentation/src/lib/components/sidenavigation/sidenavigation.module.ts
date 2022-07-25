@@ -22,7 +22,8 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/links-side-navigation/links-side-navigation.component'),
     module: require('!!raw-loader!./demos/links-side-navigation/links-side-navigation.module'),
     markup: require('!!raw-loader!./demos/links-side-navigation/links-side-navigation.component.html'),
-    path: 'libs/documentation/src/lib/components/sidenavigation/demos/links-side-navigation',
+    path:
+      'libs/documentation/src/lib/components/sidenavigation/demos/links-side-navigation',
   },
   filter: {
     title: 'Filter Sidenav',
@@ -30,8 +31,9 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/filter-side-navigation/filter-side-navigation.component'),
     module: require('!!raw-loader!./demos/filter-side-navigation/filter-side-navigation.module'),
     markup: require('!!raw-loader!./demos/filter-side-navigation/filter-side-navigation.component.html'),
-    path: 'libs/documentation/src/lib/components/sidenavigation/demos/filter-side-navigation',
-  }
+    path:
+      'libs/documentation/src/lib/components/sidenavigation/demos/filter-side-navigation',
+  },
 };
 
 export const ROUTES = [
@@ -62,7 +64,7 @@ export const ROUTES = [
     CommonModule,
     DocumentationComponentsSharedModule,
     LinksSideNavigationModule,
-    FilterSideNavigationModule
+    FilterSideNavigationModule,
   ],
 })
 export class SideNavigationModule {

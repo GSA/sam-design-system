@@ -6,13 +6,13 @@ import { FormlyFormsComponent } from './formly-forms.component';
 import { SdsFiltersModule } from '@gsa-sam/sam-formly';
 
 @NgModule({
-    declarations: [FormlyFormsComponent],
-    imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        SdsFiltersModule,
-        FormsModule,
-        FormlyModule.forRoot()
-    ]
+  declarations: [FormlyFormsComponent],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    SdsFiltersModule,
+    FormsModule,
+    FormlyModule.forRoot(),
+  ],
 })
-export class FormlyFormsModule { }
+export class FormlyFormsModule {}

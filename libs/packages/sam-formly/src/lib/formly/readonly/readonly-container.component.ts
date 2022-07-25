@@ -1,24 +1,28 @@
-import { AfterContentInit, Component, ContentChild, Directive, Input, OnInit, TemplateRef } from "@angular/core";
+import {
+  AfterContentInit,
+  Component,
+  ContentChild,
+  Directive,
+  Input,
+  OnInit,
+  TemplateRef,
+} from '@angular/core';
 import { FormlyFieldConfig } from '@ngx-formly/core';
-import { SdsFormlyTypes } from "../models/formly-types";
+import { SdsFormlyTypes } from '../models/formly-types';
 import { ReadonlyOptions } from './readonly-options.model';
 
 @Directive({
-  selector: '[sdsReadonlyLabel]'
+  selector: '[sdsReadonlyLabel]',
 })
 export class ReadonlyLabelDirective {
-  constructor(
-    public templateRef: TemplateRef<any>
-  ) {}
+  constructor(public templateRef: TemplateRef<any>) {}
 }
 
 @Directive({
-  selector: '[sdsReadonlyValue]'
+  selector: '[sdsReadonlyValue]',
 })
 export class ReadonlyValueDirective {
-  constructor(
-    public templateRef: TemplateRef<any>
-  ) {}
+  constructor(public templateRef: TemplateRef<any>) {}
 }
 
 /**
@@ -29,7 +33,6 @@ export class ReadonlyValueDirective {
   templateUrl: './readonly-container.component.html',
 })
 export class ReadonlyContainerComponent implements OnInit {
-
   @ContentChild(ReadonlyLabelDirective) labelTemplate: ReadonlyLabelDirective;
   @ContentChild(ReadonlyValueDirective) valueTemplate: ReadonlyValueDirective;
 
@@ -60,7 +63,6 @@ export class ReadonlyContainerComponent implements OnInit {
    */
   @Input() additionalConfig: ReadonlyOptions = {};
 
-
   sdsFormlyTypes = SdsFormlyTypes;
 
   ngOnInit() {
@@ -82,13 +84,13 @@ export class ReadonlyContainerComponent implements OnInit {
       this.additionalConfig.autocompleteOptions = this.formlyFieldConfig.templateOptions.configuration;
     }
 
-    // We do array access from field config for daterangepicker, which can be undefined for other types, 
+    // We do array access from field config for daterangepicker, which can be undefined for other types,
     // hence this is sectioned off in a conditional
     if (this.formlyFieldConfig.type === this.sdsFormlyTypes.DATERANGEPICKER) {
       this.additionalConfig.daterangepickerOptions = {
         fromDateKey: this.formlyFieldConfig.fieldGroup[0].key as any,
         toDateKey: this.formlyFieldConfig.fieldGroup[1].key as any,
-      }
+      };
     }
   }
-} 
+}

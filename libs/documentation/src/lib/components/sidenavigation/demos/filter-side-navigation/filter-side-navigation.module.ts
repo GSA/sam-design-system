@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import {
   SdsSideToolbarModule,
-  SdsSideNavigationModule, SdsSelectionPanelModule
+  SdsSideNavigationModule,
+  SdsSelectionPanelModule,
 } from '@gsa-sam/components';
 
 import { CommonModule } from '@angular/common';
@@ -23,10 +24,10 @@ import { UsaAccordionModule } from '@gsa-sam/ngx-uswds';
     FormsModule,
     SdsSideToolbarModule,
     SdsFiltersModule,
-    FormlyModule.forRoot()
+    FormlyModule.forRoot(),
   ],
   exports: [FilterSideNavigationComponent],
   declarations: [FilterSideNavigationComponent],
-  bootstrap: [FilterSideNavigationComponent]
+  bootstrap: [FilterSideNavigationComponent],
 })
 export class FilterSideNavigationModule {}

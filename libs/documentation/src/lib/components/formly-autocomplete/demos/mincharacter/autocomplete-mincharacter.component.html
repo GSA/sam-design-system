@@ -1,9 +1,16 @@
 <h4>Autocomplete with Minimum Character inside formly</h4>
-<p> <code>this.settings.minimumCharacterCountSearch = 3</code>  is used to enable the minimum character count. </p>
+<p>
+  <code>this.settings.minimumCharacterCountSearch = 3</code> is used to enable
+  the minimum character count.
+</p>
 <form [formGroup]="form">
-  <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
+  <formly-form
+    [model]="model"
+    [fields]="fields"
+    [options]="options"
+    [form]="form"
+  ></formly-form>
 </form>
 
 <h4>Formly Model</h4>
-<pre>{{model |json}}</pre>
-
+<pre>{{ model | json }}</pre>

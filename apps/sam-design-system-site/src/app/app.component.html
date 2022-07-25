@@ -1,12 +1,17 @@
 <a class="usa-skipnav" href="#main-content">Skip to main content</a>
 
-<header class="usa-header usa-header--basic border-base-light border-bottom-1px">
+<header
+  class="usa-header usa-header--basic border-base-light border-bottom-1px"
+>
   <div class="grid-row">
     <div class="grid-col flex-11">
       <div class="usa-logo float-left margin-left-2">
-        <a href="/" title="Home" aria-label="Home"><img alt="Beta.sam logo" src="assets/img/logo-sam.svg"
-            width="140" /></a>
-        <a href="/" title="Home" aria-label="Home" class="title-text">Design System Components</a>
+        <a href="/" title="Home" aria-label="Home"
+          ><img alt="Beta.sam logo" src="assets/img/logo-sam.svg" width="140"
+        /></a>
+        <a href="/" title="Home" aria-label="Home" class="title-text"
+          >Design System Components</a
+        >
       </div>
       <!-- <div class="theme-switcher">
         <span>Switch Theme: </span>
@@ -20,7 +25,11 @@
       <nav class="float-right" aria-label="Github Page Navigation">
         <ul class="usa-nav__primary usa-accordion">
           <li class="usa-nav__primary-item">
-            <a target="_blank" href="https://github.com/GSA/sam-design-system" aria-label="Open new window in Github">
+            <a
+              target="_blank"
+              href="https://github.com/GSA/sam-design-system"
+              aria-label="Open new window in Github"
+            >
               <usa-icon [icon]="'github'"></usa-icon>
             </a>
           </li>
@@ -33,125 +42,198 @@
 <div id="main-content" class="grid-container margin-x-0 padding-x-0">
   <div class="grid-row grid-gap">
     <aside class="desktop:grid-col-3 border-base-light border-right-1px">
-      <nav class="margin-bottom-2 margin-top-3" aria-label="Components Demo Navigation">
+      <nav
+        class="margin-bottom-2 margin-top-3"
+        aria-label="Components Demo Navigation"
+      >
         <ul class="usa-list usa-list--unstyled padding-y-05">
           <li>
-            <a class="usa-link font-sans-sm" [routerLink]="['documentation/overview']"
-              routerLinkActive="usa-current">Overview</a>
+            <a
+              class="usa-link font-sans-sm"
+              [routerLink]="['documentation/overview']"
+              routerLinkActive="usa-current"
+              >Overview</a
+            >
           </li>
           <li>
-            <a class="usa-link font-sans-sm" [routerLink]="['documentation/introduction']"
-              routerLinkActive="usa-current">Getting Started</a>
+            <a
+              class="usa-link font-sans-sm"
+              [routerLink]="['documentation/introduction']"
+              routerLinkActive="usa-current"
+              >Getting Started</a
+            >
           </li>
           <li>
-            <a class="usa-link font-sans-sm" [routerLink]="['documentation/roadmap']"
-              routerLinkActive="usa-current">Roadmap</a>
+            <a
+              class="usa-link font-sans-sm"
+              [routerLink]="['documentation/roadmap']"
+              routerLinkActive="usa-current"
+              >Roadmap</a
+            >
           </li>
           <li class="margin-y-2">
             <a class="nav-heading">Components</a>
             <ul class="usa-sidenav">
-
-
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/accordion']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/accordion']"
+                  routerLinkActive="usa-current"
+                >
                   Accordion
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/actions']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/actions']"
+                  routerLinkActive="usa-current"
+                >
                   Actions (dropdown)
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/autocomplete']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/autocomplete']"
+                  routerLinkActive="usa-current"
+                >
                   Autocomplete
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/button-group']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/button-group']"
+                  routerLinkActive="usa-current"
+                >
                   Button Group
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/collapse']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/collapse']"
+                  routerLinkActive="usa-current"
+                >
                   Collapse
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/date-pipe']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/date-pipe']"
+                  routerLinkActive="usa-current"
+                >
                   Date Pipe
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/expires']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/expires']"
+                  routerLinkActive="usa-current"
+                >
                   Expires
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/external-link']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/external-link']"
+                  routerLinkActive="usa-current"
+                >
                   External Link
                 </a>
               </li>
 
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/pagination']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/pagination']"
+                  routerLinkActive="usa-current"
+                >
                   Pagination
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/tooltip-popover']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/tooltip-popover']"
+                  routerLinkActive="usa-current"
+                >
                   Popover / Tooltip
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/result-list']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/result-list']"
+                  routerLinkActive="usa-current"
+                >
                   Result List
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/rich-text']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/rich-text']"
+                  routerLinkActive="usa-current"
+                >
                   Rich Text
                 </a>
               </li>
 
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/search']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/search']"
+                  routerLinkActive="usa-current"
+                >
                   Search
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/selection-panel']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/selection-panel']"
+                  routerLinkActive="usa-current"
+                >
                   Selection Panel
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/sidenavigation']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/sidenavigation']"
+                  routerLinkActive="usa-current"
+                >
                   Side Navigation
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/slide-out']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/slide-out']"
+                  routerLinkActive="usa-current"
+                >
                   Slide Out
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/tabs']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/tabs']"
+                  routerLinkActive="usa-current"
+                >
                   Tabs
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/tree-table']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/tree-table']"
+                  routerLinkActive="usa-current"
+                >
                   Tree Table
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/toasts']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/toasts']"
+                  routerLinkActive="usa-current"
+                >
                   Toasts
                 </a>
               </li>
 
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/video']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/video']"
+                  routerLinkActive="usa-current"
+                >
                   Video Player
                 </a>
               </li>
@@ -161,12 +243,18 @@
             <a class="nav-heading">Material Extension Examples</a>
             <ul class="usa-sidenav">
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/dialog']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/dialog']"
+                  routerLinkActive="usa-current"
+                >
                   Modal Dialog
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/table']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/table']"
+                  routerLinkActive="usa-current"
+                >
                   Table
                 </a>
               </li>
@@ -176,21 +264,34 @@
             <a class="nav-heading">Formly</a>
             <ul class="usa-sidenav">
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/filters']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/filters']"
+                  routerLinkActive="usa-current"
+                >
                   Filters
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/download']" routerLinkActive="usa-current">
-                  Formly Dialog</a>
+                <a
+                  [routerLink]="['documentation/components/download']"
+                  routerLinkActive="usa-current"
+                >
+                  Formly Dialog</a
+                >
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/formly-tabs']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/formly-tabs']"
+                  routerLinkActive="usa-current"
+                >
                   Formly Tabs
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/formly-stepper']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/formly-stepper']"
+                  routerLinkActive="usa-current"
+                >
                   Stepper
                 </a>
               </li>
@@ -199,82 +300,115 @@
           <li class="margin-y-2">
             <a class="nav-heading">Form Controls</a>
             <ul class="usa-sidenav">
-
               <li class="usa-sidenav__item">
-                <a [routerLink]="[
-                      'documentation/components/formly-autocomplete'
-                    ]" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="[
+                    'documentation/components/formly-autocomplete'
+                  ]"
+                  routerLinkActive="usa-current"
+                >
                   Autocomplete
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/formly-checkbox']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/formly-checkbox']"
+                  routerLinkActive="usa-current"
+                >
                   Checkbox
                 </a>
               </li>
 
               <li class="usa-sidenav__item">
-                <a [routerLink]="[
-                      'documentation/components/formly-datepicker'
-                    ]" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/formly-datepicker']"
+                  routerLinkActive="usa-current"
+                >
                   Datepicker
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/editor']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/editor']"
+                  routerLinkActive="usa-current"
+                >
                   Editor
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="[
-                      'documentation/components/formly-fileinfo'
-                    ]" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/formly-fileinfo']"
+                  routerLinkActive="usa-current"
+                >
                   File Info
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/formly-file-input']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/formly-file-input']"
+                  routerLinkActive="usa-current"
+                >
                   File Input
                 </a>
               </li>
 
-
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/formly-input']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/formly-input']"
+                  routerLinkActive="usa-current"
+                >
                   Input
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/formly-multicheckbox']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="[
+                    'documentation/components/formly-multicheckbox'
+                  ]"
+                  routerLinkActive="usa-current"
+                >
                   Multi Checkbox
                 </a>
               </li>
 
-
-
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/formly-radio']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/formly-radio']"
+                  routerLinkActive="usa-current"
+                >
                   Radio
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/formly-select']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/formly-select']"
+                  routerLinkActive="usa-current"
+                >
                   Select
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/formly-search']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/formly-search']"
+                  routerLinkActive="usa-current"
+                >
                   Search
                 </a>
               </li>
 
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/text']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/text']"
+                  routerLinkActive="usa-current"
+                >
                   Text
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/formly-textarea']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/formly-textarea']"
+                  routerLinkActive="usa-current"
+                >
                   Text Area
                 </a>
               </li>
@@ -284,53 +418,85 @@
             <a class="nav-heading">Form Wrappers</a>
             <ul class="usa-sidenav">
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/accordionwrapper']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/accordionwrapper']"
+                  routerLinkActive="usa-current"
+                >
                   Accordion
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/descriptionwrapper']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/descriptionwrapper']"
+                  routerLinkActive="usa-current"
+                >
                   Description
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/filterwrapper']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/filterwrapper']"
+                  routerLinkActive="usa-current"
+                >
                   Filter
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/form-field']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/form-field']"
+                  routerLinkActive="usa-current"
+                >
                   Form Field
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/groupwrappers']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/groupwrappers']"
+                  routerLinkActive="usa-current"
+                >
                   Group
                 </a>
               </li>
 
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/labelwrapper']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/labelwrapper']"
+                  routerLinkActive="usa-current"
+                >
                   Label
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/formly-readonly']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/formly-readonly']"
+                  routerLinkActive="usa-current"
+                >
                   Readonly
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/formly-rich-text-editor']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="[
+                    'documentation/components/formly-rich-text-editor'
+                  ]"
+                  routerLinkActive="usa-current"
+                >
                   Rich Text Editor
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/templateoptions']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/templateoptions']"
+                  routerLinkActive="usa-current"
+                >
                   Template Options
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/validationwrapper']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/validationwrapper']"
+                  routerLinkActive="usa-current"
+                >
                   Validation
                 </a>
               </li>
@@ -341,7 +507,10 @@
             <a class="nav-heading">Utilities</a>
             <ul class="usa-sidenav">
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/components/icons']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/components/icons']"
+                  routerLinkActive="usa-current"
+                >
                   Icons
                 </a>
               </li>
@@ -351,12 +520,18 @@
             <a class="nav-heading">Form Examples</a>
             <ul class="usa-sidenav">
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/pages/formly-conditional']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/pages/formly-conditional']"
+                  routerLinkActive="usa-current"
+                >
                   Formly Conditional
                 </a>
               </li>
               <li class="usa-sidenav__item">
-                <a [routerLink]="['documentation/pages/formly-form']" routerLinkActive="usa-current">
+                <a
+                  [routerLink]="['documentation/pages/formly-form']"
+                  routerLinkActive="usa-current"
+                >
                   Formly Forms
                 </a>
               </li>

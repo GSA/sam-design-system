@@ -6,7 +6,7 @@ import { FormlyModule } from '@ngx-formly/core';
 import { SdsSearchModule } from '@gsa-sam/components';
 import { HorizontalFilterDemo } from './horizontal-filter.component';
 @NgModule({
-  declarations: [ HorizontalFilterDemo ],
+  declarations: [HorizontalFilterDemo],
   imports: [
     CommonModule,
     FormsModule,
@@ -15,7 +15,7 @@ import { HorizontalFilterDemo } from './horizontal-filter.component';
     ReactiveFormsModule,
     SdsSearchModule,
   ],
-  exports: [ HorizontalFilterDemo ],
-  bootstrap: [ HorizontalFilterDemo ],
+  exports: [HorizontalFilterDemo],
+  bootstrap: [HorizontalFilterDemo],
 })
 export class HorizontalFilterModule {}

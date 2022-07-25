@@ -2,7 +2,7 @@ import {
   Component,
   ChangeDetectionStrategy,
   ViewChild,
-  ChangeDetectorRef
+  ChangeDetectorRef,
 } from '@angular/core';
 import { AbstractSdsFormly } from '../sds-formly';
 import { SdsSearchComponent } from '@gsa-sam/components';
@@ -15,10 +15,11 @@ import { SdsSearchComponent } from '@gsa-sam/components';
       (submit)="to.submitHandler && to.submitHandler($event)"
     ></sds-search>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormlyFieldSearchComponent extends AbstractSdsFormly {
-  @ViewChild(SdsSearchComponent, { static: true }) public template: SdsSearchComponent;
+  @ViewChild(SdsSearchComponent, { static: true })
+  public template: SdsSearchComponent;
 
   constructor(_cdr: ChangeDetectorRef) {
     super();

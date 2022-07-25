@@ -12,7 +12,7 @@ import {
 import {
   FocusMonitor,
   FocusOrigin,
-  isFakeMousedownFromScreenReader
+  isFakeMousedownFromScreenReader,
 } from '@angular/cdk/a11y';
 import {
   FlexibleConnectedPositionStrategy,
@@ -20,7 +20,7 @@ import {
   Overlay,
   OverlayConfig,
   OverlayRef,
-  VerticalConnectionPos
+  VerticalConnectionPos,
 } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { normalizePassiveListenerOptions } from '@angular/cdk/platform';
@@ -29,11 +29,11 @@ import {
   SdsMenuInterface,
   SdsMenuComponent,
   MenuPositionX,
-  MenuPositionY
+  MenuPositionY,
 } from './menu.component';
 
 @Directive({
-  selector: '[sdsMenuTriggerFor]'
+  selector: '[sdsMenuTriggerFor]',
 })
 export class SdsMenuTriggerForDirective implements OnDestroy {
   /** ARIA haspopup for the menu trigger. */
@@ -206,7 +206,6 @@ export class SdsMenuTriggerForDirective implements OnDestroy {
       this.menu._resetAnimation();
       this._resetMenu();
     }
-    
   }
 
   /**
@@ -238,7 +237,7 @@ export class SdsMenuTriggerForDirective implements OnDestroy {
         .withTransformOriginOn('.sds-overlay'),
       hasBackdrop: true,
       backdropClass: 'cdk-overlay-transparent-backdrop',
-      scrollStrategy: this._overlay.scrollStrategies.reposition()
+      scrollStrategy: this._overlay.scrollStrategies.reposition(),
     });
   }
 
@@ -249,7 +248,7 @@ export class SdsMenuTriggerForDirective implements OnDestroy {
   private _subscribeToPositions(
     position: FlexibleConnectedPositionStrategy
   ): void {
-    position.positionChanges.subscribe(change => {
+    position.positionChanges.subscribe((change) => {
       const posX: MenuPositionX =
         change.connectionPair.overlayX === 'start' ? 'after' : 'before';
       const posY: MenuPositionY =
@@ -287,22 +286,22 @@ export class SdsMenuTriggerForDirective implements OnDestroy {
         originY,
         overlayX: overlayFallbackX,
         overlayY,
-        offsetY
+        offsetY,
       },
       {
         originX,
         originY: originFallbackY,
         overlayX,
         overlayY: overlayFallbackY,
-        offsetY: -offsetY
+        offsetY: -offsetY,
       },
       {
         originX: originFallbackX,
         originY: originFallbackY,
         overlayX: overlayFallbackX,
         overlayY: overlayFallbackY,
-        offsetY: -offsetY
-      }
+        offsetY: -offsetY,
+      },
     ]);
   }
 

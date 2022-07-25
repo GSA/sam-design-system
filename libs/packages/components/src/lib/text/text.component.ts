@@ -1,12 +1,27 @@
-import { Component, forwardRef, ChangeDetectionStrategy, ChangeDetectorRef, Input } from '@angular/core';
+import {
+  Component,
+  forwardRef,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Input,
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'sds-text',
   template: `
     <div>
-      <input #searchInput class="usa-input display-inline-block" [attr.aria-label]="label"/>
-      <button class="usa-button margin-left-05 display-inline-block" (click)="addItem(searchInput.value); searchInput.value=''">Add Item</button>
+      <input
+        #searchInput
+        class="usa-input display-inline-block"
+        [attr.aria-label]="label"
+      />
+      <button
+        class="usa-button margin-left-05 display-inline-block"
+        (click)="addItem(searchInput.value); searchInput.value = ''"
+      >
+        Add Item
+      </button>
     </div>
 
     <h4>Component Items</h4>
@@ -15,28 +30,30 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     <hr />
 
     <h4>Child Component Items <small>(click to remove)</small></h4>
-    <sds-text-child [(items)]="items" (itemsChange)="updateItems($event)"></sds-text-child>
+    <sds-text-child
+      [(items)]="items"
+      (itemsChange)="updateItems($event)"
+    ></sds-text-child>
   `,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => SdsTextComponent),
-      multi: true
-    }
+      multi: true,
+    },
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SdsTextComponent implements ControlValueAccessor {
-
   items = [];
   multiple = true;
 
   @Input() label: string;
 
-  private _onChange = (_: any) => { };
-  private _onTouched = () => { };
+  private _onChange = (_: any) => {};
+  private _onTouched = () => {};
 
-  constructor(private cd: ChangeDetectorRef) { }
+  constructor(private cd: ChangeDetectorRef) {}
 
   // Helper method to programatically add a value to the existing items array
   addItem(val) {

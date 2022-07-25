@@ -7,8 +7,8 @@ import {
   SimpleChanges,
   ElementRef,
 } from '@angular/core';
-import {SdsDialogService} from './dialog';
-import {SdsDialogRef} from './dialog-ref';
+import { SdsDialogService } from './dialog';
+import { SdsDialogRef } from './dialog-ref';
 
 /** Counter used to generate unique IDs for dialog elements. */
 let dialogElementUid = 0;
@@ -23,8 +23,8 @@ let dialogElementUid = 0;
   host: {
     '(click)': 'dialogRef.close(dialogResult)',
     '[attr.aria-label]': 'ariaLabel || null',
-    'type': 'button', // Prevents accidental form submits.
-  }
+    type: 'button', // Prevents accidental form submits.
+  },
 })
 export class SdsDialogCloseDirective implements OnInit, OnChanges {
   /** Screenreader label for the button. */
@@ -38,7 +38,8 @@ export class SdsDialogCloseDirective implements OnInit, OnChanges {
   constructor(
     @Optional() public dialogRef: SdsDialogRef<any>,
     private _elementRef: ElementRef<HTMLElement>,
-    private _dialog: SdsDialogService) {}
+    private _dialog: SdsDialogService
+  ) {}
 
   ngOnInit() {
     if (!this.dialogRef) {
@@ -47,12 +48,16 @@ export class SdsDialogCloseDirective implements OnInit, OnChanges {
       // views cannot be given a custom injector. Instead, we look up the DialogRef by
       // ID. This must occur in `onInit`, as the ID binding for the dialog container won't
       // be resolved at constructor time.
-      this.dialogRef = getClosestDialog(this._elementRef, this._dialog.openDialogs)!;
+      this.dialogRef = getClosestDialog(
+        this._elementRef,
+        this._dialog.openDialogs
+      )!;
     }
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    const proxiedChange = changes['_sdsDialogClose'] || changes['_sdsDialogCloseResult'];
+    const proxiedChange =
+      changes['_sdsDialogClose'] || changes['_sdsDialogCloseResult'];
 
     if (proxiedChange) {
       this.dialogResult = proxiedChange.currentValue;
@@ -78,11 +83,15 @@ export class SdsDialogTitleDirective implements OnInit {
   constructor(
     @Optional() private _dialogRef: SdsDialogRef<any>,
     private _elementRef: ElementRef<HTMLElement>,
-    private _dialog: SdsDialogService) {}
+    private _dialog: SdsDialogService
+  ) {}
 
   ngOnInit() {
     if (!this._dialogRef) {
-      this._dialogRef = getClosestDialog(this._elementRef, this._dialog.openDialogs)!;
+      this._dialogRef = getClosestDialog(
+        this._elementRef,
+        this._dialog.openDialogs
+      )!;
     }
 
     if (this._dialogRef) {
@@ -103,10 +112,9 @@ export class SdsDialogTitleDirective implements OnInit {
 @Directive({
   selector: `[sds-dialog-subtitle], sds-dialog-subtitle, [sdsDialogSubtitle]`,
   // tslint:disable-next-line: use-host-property-decorator
-  host: {'[class.sds-dialog-subtitle]': 'true'}
+  host: { '[class.sds-dialog-subtitle]': 'true' },
 })
 export class SdsDialogSubtitleDirective {}
-
 
 /**
  * Scrollable content container of a dialog.
@@ -114,10 +122,9 @@ export class SdsDialogSubtitleDirective {}
 @Directive({
   selector: `[sds-dialog-content], sds-dialog-content, [sdsDialogContent]`,
   // tslint:disable-next-line: use-host-property-decorator
-  host: {'[class.sds-dialog-content]': 'true'}
+  host: { '[class.sds-dialog-content]': 'true' },
 })
 export class SdsDialogContentDirective {}
-
 
 /**
  * Container for the bottom action buttons in a dialog.
@@ -126,22 +133,24 @@ export class SdsDialogContentDirective {}
 @Directive({
   selector: `[sds-dialog-actions], sds-dialog-actions, [sdsDialogActions]`,
   // tslint:disable-next-line: use-host-property-decorator
-  host: {'[class.sds-dialog-actions]': 'true'}
+  host: { '[class.sds-dialog-actions]': 'true' },
 })
 export class SdsDialogActionsDirective {}
-
 
 /**
  * Finds the closest SdsDialogRef to an element by looking at the DOM.
  * @param element Element relative to which to look for a dialog.
  * @param openDialogs References to the currently-open dialogs.
  */
-function getClosestDialog(element: ElementRef<HTMLElement>, openDialogs: SdsDialogRef<any>[]) {
+function getClosestDialog(
+  element: ElementRef<HTMLElement>,
+  openDialogs: SdsDialogRef<any>[]
+) {
   let parent: HTMLElement | null = element.nativeElement.parentElement;
 
   while (parent && !parent.classList.contains('sds-dialog__container')) {
     parent = parent.parentElement;
   }
 
-  return parent ? openDialogs.find(dialog => dialog.id === parent!.id) : null;
+  return parent ? openDialogs.find((dialog) => dialog.id === parent!.id) : null;
 }

@@ -53,7 +53,7 @@
 
 /* time */
 .px-video-time {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   float: right;
   margin-top: 2px;
   font-size: 14px;
@@ -83,7 +83,7 @@
   width: 25px;
   height: 20px;
   overflow: hidden;
-  background: no-repeat url("./px-video-sprite.svg");
+  background: no-repeat url('./px-video-sprite.svg');
 }
 
 .px-video-controls button {
@@ -146,32 +146,34 @@
   width: 25px;
   height: 20px;
   margin-left: 10px;
-  background: no-repeat url("./px-video-sprite.svg");
+  background: no-repeat url('./px-video-sprite.svg');
   background-position: -6px -907px;
 }
 
-.px-video-fullscreen-btn-container input[type="checkbox"]:focus+label {
+.px-video-fullscreen-btn-container input[type='checkbox']:focus + label {
   outline: 0.25rem solid #2491ff;
   outline-offset: 0;
   background-position: -6px -943px;
 }
 
-.px-video-fullscreen-btn-container input[type="checkbox"]:hover+label {
+.px-video-fullscreen-btn-container input[type='checkbox']:hover + label {
   background-position: -6px -943px;
   cursor: pointer;
 }
 
-.px-video-fullscreen-btn-container input[type="checkbox"]:focus+label {
+.px-video-fullscreen-btn-container input[type='checkbox']:focus + label {
   outline: 0.25rem solid #2491ff;
   outline-offset: 0;
   background-position: -6px -943px;
 }
 
-.px-video-fullscreen-btn-container input[type="checkbox"]:checked+label {
+.px-video-fullscreen-btn-container input[type='checkbox']:checked + label {
   background-position: -6px -979px;
 }
 
-.px-video-fullscreen-btn-container input[type="checkbox"]:checked:hover+label {
+.px-video-fullscreen-btn-container
+  input[type='checkbox']:checked:hover
+  + label {
   background-position: -6px -1015px;
 }
 
@@ -181,28 +183,28 @@
   width: 25px;
   height: 20px;
   margin-left: 10px;
-  background: no-repeat url("./px-video-sprite.svg");
+  background: no-repeat url('./px-video-sprite.svg');
   background-position: -6px -835px;
 }
 
-.px-video-captions-btn-container input[type="checkbox"]:focus+label {
+.px-video-captions-btn-container input[type='checkbox']:focus + label {
   outline: 0.25rem solid #2491ff;
   outline-offset: 0;
   background-position: -6px -799px;
 }
 
-.px-video-captions-btn-container input[type="checkbox"]:hover+label {
+.px-video-captions-btn-container input[type='checkbox']:hover + label {
   background-position: -6px -799px;
   cursor: pointer;
 }
 
-.px-video-captions-btn-container input[type="checkbox"]:focus+label {
+.px-video-captions-btn-container input[type='checkbox']:focus + label {
   outline: 0.25rem solid #2491ff;
   outline-offset: 0;
   background-position: -6px -799px;
 }
 
-.px-video-captions-btn-container input[type="checkbox"]:checked+label {
+.px-video-captions-btn-container input[type='checkbox']:checked + label {
   background-position: -6px -871px;
 }
 
@@ -213,39 +215,39 @@
   height: 20px;
   margin-left: 240px;
   margin-top: 2px;
-  background: no-repeat url("./px-video-sprite.svg");
+  background: no-repeat url('./px-video-sprite.svg');
   background-position: -6px -476px;
 }
 
-.px-video-mute-btn-container input[type="checkbox"]:focus+label {
+.px-video-mute-btn-container input[type='checkbox']:focus + label {
   outline: 0.25rem solid #2491ff;
   outline-offset: 0;
   background-position: -6px -440px;
 }
 
-.px-video-mute-btn-container input[type="checkbox"]:hover+label {
+.px-video-mute-btn-container input[type='checkbox']:hover + label {
   background-position: -6px -440px;
   cursor: pointer;
 }
 
-.px-video-mute-btn-container input[type="checkbox"]:focus+label {
+.px-video-mute-btn-container input[type='checkbox']:focus + label {
   outline: 0.25rem solid #2491ff;
   outline-offset: 0;
   background-position: -6px -440px;
 }
 
 /* checked state of mute button */
-.px-video-mute-btn-container input[type="checkbox"]:checked+label {
+.px-video-mute-btn-container input[type='checkbox']:checked + label {
   background-position: -6px -692px;
 }
 
-.px-video-mute-btn-container input[type="checkbox"]:checked:hover+label,
-.px-video-mute-btn-container input[type="checkbox"]:checked:focus+label {
+.px-video-mute-btn-container input[type='checkbox']:checked:hover + label,
+.px-video-mute-btn-container input[type='checkbox']:checked:focus + label {
   background-position: -6px -656px;
 }
 
 /* volume range input */
-.px-video-controls input[type="range"] {
+.px-video-controls input[type='range'] {
   -webkit-appearance: none;
   height: 6px;
   width: 100px;
@@ -254,35 +256,34 @@
   outline: none;
 }
 
-.px-video-controls input[type="range"]:focus::-webkit-slider-thumb {
+.px-video-controls input[type='range']:focus::-webkit-slider-thumb {
   outline: 0.25rem solid #2491ff;
   outline-offset: 0;
 }
 
-.px-video-controls input[type="range"]::-moz-range-track {
+.px-video-controls input[type='range']::-moz-range-track {
   -moz-appearance: none;
   height: 6px;
   background-color: #e6e6e6;
   border: none;
 }
 
-.px-video-controls input[type="range"]::-webkit-slider-thumb {
+.px-video-controls input[type='range']::-webkit-slider-thumb {
   -webkit-appearance: none !important;
   height: 10px;
   width: 6px;
   background-color: #666;
 }
 
-.px-video-controls input[type="range"]::-moz-range-thumb {
+.px-video-controls input[type='range']::-moz-range-thumb {
   height: 12px;
   width: 8px;
   background-color: #666;
 }
 
 /* fixing display for IE10+ */
-@media screen and (-ms-high-contrast: active),
-(-ms-high-contrast: none) {
-  .px-video-controls input[type="range"] {
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .px-video-controls input[type='range'] {
     position: relative;
     padding: 0;
     height: 8px;
@@ -336,7 +337,7 @@
 
 .px-timetip {
   padding: 5px 10px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 14px;
   background: rgba(0, 0, 0, 0.83);
   border-radius: 3px;
@@ -349,7 +350,7 @@
   top: 100%;
   left: 50%;
   border: solid transparent;
-  content: " ";
+  content: ' ';
   height: 0;
   width: 0;
   position: absolute;

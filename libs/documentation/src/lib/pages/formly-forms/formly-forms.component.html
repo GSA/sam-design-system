@@ -1,8 +1,13 @@
 <div class="grid-container">
   <div class="grid-row grip-gap bg-accent-cool-lighter flex-justify-center">
-      <div class="tablet:grid-col-9 grid-col-12 padding-x-4 margin-y-2 bg-white">
+    <div class="tablet:grid-col-9 grid-col-12 padding-x-4 margin-y-2 bg-white">
       <form [formGroup]="form" (ngSubmit)="submit()">
-        <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
+        <formly-form
+          [model]="model"
+          [fields]="fields"
+          [options]="options"
+          [form]="form"
+        ></formly-form>
       </form>
       <div class="sam-example-pagination">
         <h4>Filter Model:</h4>

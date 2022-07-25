@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import {
   SDSAutocompleteServiceInterface,
-  SDSHiercarchicalServiceResult
+  SDSHiercarchicalServiceResult,
 } from '@gsa-sam/components';
 import { map } from 'rxjs/operators';
 import { SampleAutocompleteData } from './autocomplete-sample.data';
@@ -15,7 +15,7 @@ export class AutocompleteSampleDataService
     const data = SampleAutocompleteData;
     for (let i = 0; i < data.length; i++) {
       const item = data[i];
-      const results = data.filter(it => it.parentId === item.id);
+      const results = data.filter((it) => it.parentId === item.id);
       item['childCount'] = results.length;
     }
     this.loadedData = data;
@@ -30,9 +30,9 @@ export class AutocompleteSampleDataService
     let itemsOb: Observable<Object[]>;
     if (searchValue) {
       itemsOb = data.pipe(
-        map(list =>
+        map((list) =>
           list.filter(
-            itm =>
+            (itm) =>
               itm.name.indexOf(searchValue) !== -1 ||
               itm.subtext.indexOf(searchValue) !== -1
           )
@@ -42,7 +42,7 @@ export class AutocompleteSampleDataService
       itemsOb = data;
     }
     let items: object[];
-    itemsOb.subscribe(result => {
+    itemsOb.subscribe((result) => {
       items = result;
     });
     const totalItemCount = items.length;
@@ -53,7 +53,7 @@ export class AutocompleteSampleDataService
     const selectedtems = items.slice(currentItems, maxSectionPosition);
     const returnItem = {
       items: selectedtems,
-      totalItems: totalItemCount
+      totalItems: totalItemCount,
     };
     return of(returnItem);
   }

@@ -16,7 +16,7 @@ describe('SdsAdvancedFiltersService', () => {
       defaultValue: true,
       key: 'searchKeyword',
       templateOptions: { hideOptional: true, label: 'Keyword' },
-      type: 'checkbox'
+      type: 'checkbox',
     },
     {
       key: 'searchEntity',
@@ -26,11 +26,21 @@ describe('SdsAdvancedFiltersService', () => {
         type: 'array',
         selectAllOption: true,
         options: [
-          { key: 'legalBusinessName', value: 'Entity Name', tagText: undefined, tagClass: undefined },
-          { key: 'uniqueEntityIdSam', value: 'Unique Entity ID (SAM)', tagText: 'SAM', tagClass: undefined}
-        ]
+          {
+            key: 'legalBusinessName',
+            value: 'Entity Name',
+            tagText: undefined,
+            tagClass: undefined,
+          },
+          {
+            key: 'uniqueEntityIdSam',
+            value: 'Unique Entity ID (SAM)',
+            tagText: 'SAM',
+            tagClass: undefined,
+          },
+        ],
       },
-      type: 'multicheckbox'
+      type: 'multicheckbox',
     },
     {
       key: 'hideGroup',
@@ -41,16 +51,26 @@ describe('SdsAdvancedFiltersService', () => {
         type: 'array',
         selectAllOption: true,
         options: [
-          { key: 'hideField1', value: null, tagText: undefined, tagClass: undefined },
-          { key: 'hideField2', value: null, tagText: undefined, tagClass: undefined }
-        ]
-      }
-    }
+          {
+            key: 'hideField1',
+            value: null,
+            tagText: undefined,
+            tagClass: undefined,
+          },
+          {
+            key: 'hideField2',
+            value: null,
+            tagText: undefined,
+            tagClass: undefined,
+          },
+        ],
+      },
+    },
   ];
 
   const model = {
     searchEntity: {},
-    hideGroup: {}
+    hideGroup: {},
   };
 
   const advancedFilterModel = {
@@ -61,10 +81,10 @@ describe('SdsAdvancedFiltersService', () => {
         {
           searchKeyword: false,
           searchEntity: ['uniqueEntityIdSam', 'cageNcge', 'uniqueEntityIdDuns'],
-          hideGroup: []
-        }
-      ]
-    }
+          hideGroup: [],
+        },
+      ],
+    },
   };
 
   const updatedFields: FormlyFieldConfig[] = [
@@ -75,8 +95,8 @@ describe('SdsAdvancedFiltersService', () => {
       hide: true,
       templateOptions: {
         label: 'Keyword',
-        required: false
-      }
+        required: false,
+      },
     },
     {
       key: 'searchEntity',
@@ -92,8 +112,8 @@ describe('SdsAdvancedFiltersService', () => {
             required: false,
             label: 'Entity Name',
             placeholder: '',
-            inputType: 'text'
-          }
+            inputType: 'text',
+          },
         },
         {
           key: 'uniqueEntityIdSam',
@@ -107,10 +127,10 @@ describe('SdsAdvancedFiltersService', () => {
             inputType: 'number',
             inputStyle: 'error',
             required: false,
-            tagText: 'SAM'
-          }
-        }
-      ]
+            tagText: 'SAM',
+          },
+        },
+      ],
     },
     {
       key: 'hideGroup',
@@ -123,8 +143,8 @@ describe('SdsAdvancedFiltersService', () => {
           hide: true,
           templateOptions: {
             inputType: 'text',
-            required: false
-          }
+            required: false,
+          },
         },
         {
           key: 'hideField2',
@@ -132,11 +152,11 @@ describe('SdsAdvancedFiltersService', () => {
           hide: true,
           templateOptions: {
             inputType: 'text',
-            required: false
-          }
-        }
-      ]
-    }
+            required: false,
+          },
+        },
+      ],
+    },
   ];
 
   it('should be created', () => {
@@ -153,19 +173,19 @@ describe('SdsAdvancedFiltersService', () => {
       fields: updatedFields,
       model: {
         searchEntity: {
-            legalBusinessName: null,
-            uniqueEntityIdSam: null
+          legalBusinessName: null,
+          uniqueEntityIdSam: null,
         },
         hideGroup: {
-            hideField1: null,
-            hideField2: null
+          hideField1: null,
+          hideField2: null,
         },
-        searchKeyword: null
-    }
+        searchKeyword: null,
+      },
     };
-    expect(service.updateFields(advancedFilterModel, getFields(), model)).toEqual(
-      results
-    );
+    expect(
+      service.updateFields(advancedFilterModel, getFields(), model)
+    ).toEqual(results);
   });
 
   function getFields() {
@@ -174,7 +194,7 @@ describe('SdsAdvancedFiltersService', () => {
         key: 'searchKeyword',
         wrappers: ['filterwrapper'],
         templateOptions: { label: 'Keyword' },
-        type: 'input'
+        type: 'input',
       },
       {
         key: 'searchEntity',
@@ -189,8 +209,8 @@ describe('SdsAdvancedFiltersService', () => {
             templateOptions: {
               label: 'Entity Name',
               placeholder: '',
-              inputType: 'text'
-            }
+              inputType: 'text',
+            },
           },
           {
             key: 'uniqueEntityIdSam',
@@ -203,10 +223,10 @@ describe('SdsAdvancedFiltersService', () => {
               max: 40,
               inputType: 'number',
               inputStyle: 'error',
-              tagText: 'SAM'
-            }
-          }
-        ]
+              tagText: 'SAM',
+            },
+          },
+        ],
       },
       {
         key: 'hideGroup',
@@ -216,18 +236,18 @@ describe('SdsAdvancedFiltersService', () => {
             key: 'hideField1',
             type: 'input',
             templateOptions: {
-              inputType: 'text'
-            }
+              inputType: 'text',
+            },
           },
           {
             key: 'hideField2',
             type: 'input',
             templateOptions: {
-              inputType: 'text'
-            }
-          }
-        ]
-      }
+              inputType: 'text',
+            },
+          },
+        ],
+      },
     ];
   }
 });

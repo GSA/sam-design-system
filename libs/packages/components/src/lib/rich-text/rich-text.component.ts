@@ -1,4 +1,10 @@
-import { Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  forwardRef,
+  Input,
+  Output,
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
@@ -7,26 +13,25 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
   templateUrl: './rich-text.component.html',
   providers: [
     {
-        provide: NG_VALUE_ACCESSOR,
-        useExisting: forwardRef(() => SdsRichTextComponent),
-        multi: true,
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => SdsRichTextComponent),
+      multi: true,
     },
   ],
 })
-export class SdsRichTextComponent implements ControlValueAccessor{
-
+export class SdsRichTextComponent implements ControlValueAccessor {
   @Input() minHeight: number;
   @Input() maxHeight: number;
 
-  get minHeightClass(): string{
-    return this.minHeight ? `min-height-${this.minHeight}`: '';
+  get minHeightClass(): string {
+    return this.minHeight ? `min-height-${this.minHeight}` : '';
   }
-  get maxHeightClass(): string{
-    return this.maxHeight ? `max-height-${this.maxHeight}`: '';
+  get maxHeightClass(): string {
+    return this.maxHeight ? `max-height-${this.maxHeight}` : '';
   }
 
-  _onChange = (_: any) => { };
-  _onTouched = (_: any) => { };
+  _onChange = (_: any) => {};
+  _onTouched = (_: any) => {};
 
   writeValue(value: any): void {
     this.model = value;
@@ -39,6 +44,5 @@ export class SdsRichTextComponent implements ControlValueAccessor{
   }
   public editor = ClassicEditor;
 
-  model = "";
+  model = '';
 }
-

@@ -84,9 +84,8 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/defaultValues/filters-default-value.component'),
     markup: require('!!raw-loader!./demos/defaultValues/filters-default-value.component.html'),
     module: require('!!raw-loader!./demos/defaultValues/filters-default-value.module'),
-    path:
-      'libs/documentation/src/lib/components/filters/demos/defaultValues',
-  }
+    path: 'libs/documentation/src/lib/components/filters/demos/defaultValues',
+  },
 };
 
 export const ROUTES = [

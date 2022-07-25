@@ -23,24 +23,27 @@ export class FiltersShowInactiveFilterValues {
           { label: 'India', value: 'IND' },
           { label: 'Mexico', value: 'MX' },
           { label: 'United Kingdom', value: 'UK' },
-          { label: 'Australia', value: 'AUS' }
-        ]
-      }
-    }
+          { label: 'Australia', value: 'AUS' },
+        ],
+      },
+    },
   ];
   showInactiveFilterValues = false;
 
-  showInactiveFiltersUpdate(value){
-    console.log('Show Inactive Filter Values has changed')
-    if(value !== this.showInactiveFilterValues){
+  showInactiveFiltersUpdate(value) {
+    console.log('Show Inactive Filter Values has changed');
+    if (value !== this.showInactiveFilterValues) {
       this.showInactiveFilterValues = value;
       const temp = JSON.parse(JSON.stringify(this.sdsSelect));
-      if(value){
-        (temp[0].templateOptions.options as Array<any>).push({ label: 'New Zealand *', value: 'NZ' });
+      if (value) {
+        (temp[0].templateOptions.options as Array<any>).push({
+          label: 'New Zealand *',
+          value: 'NZ',
+        });
       } else {
         (temp[0].templateOptions.options as Array<any>).pop();
       }
-      this.sdsSelect = temp
+      this.sdsSelect = temp;
     }
   }
 }

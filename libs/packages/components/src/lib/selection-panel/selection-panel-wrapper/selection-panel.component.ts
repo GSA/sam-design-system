@@ -7,13 +7,12 @@ import { SelectionPanelModel } from '../model/selection-panel.model';
   templateUrl: './selection-panel.component.html',
 })
 export class SdsSelectionPanelComponent {
-
   /**
    * Model containing navigation links as well as a selection mode property.
    * Navigation mode is implied if no selection mode is passed in
    */
   @Input() model: SelectionPanelModel;
-  
+
   /**
    * True if users would prefer to navigate on panel selection, false otherwise.
    * Navigation feature is not supported on SELECTION mode. On NAVIGATION mode,

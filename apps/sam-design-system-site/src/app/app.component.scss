@@ -7,7 +7,7 @@
 .usa-logo {
   align-items: center;
   display: flex;
-  margin-top:0.5em;
+  margin-top: 0.5em;
 }
 
 .usa-logo a img {
@@ -17,10 +17,9 @@
 
 .usa-logo a.title-text {
   font-size: 20px;
-  margin-top:12px;
+  margin-top: 12px;
   margin-left: 8px;
 }
-
 
 aside {
   padding-right: 0 !important;
@@ -43,13 +42,12 @@ nav ul li a {
   margin-left: 1em;
 }
 
-.theme-switcher{
+.theme-switcher {
   display: flex;
   align-items: center;
   height: 100%;
   float: right;
-  .usa-button{
+  .usa-button {
     padding-left: 4px;
   }
-
 }

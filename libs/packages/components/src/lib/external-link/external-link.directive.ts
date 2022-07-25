@@ -36,7 +36,7 @@ export class ExternalLinkDirective implements OnChanges {
     @Inject(PLATFORM_ID) private platformId: string,
     private el: ElementRef,
     private vc: ViewContainerRef
-  ) { }
+  ) {}
 
   public ngOnChanges() {
     this.hrefAttr = this.href;
@@ -50,7 +50,10 @@ export class ExternalLinkDirective implements OnChanges {
     this.targetAttr = '_blank';
 
     const ariaLabel = this._getAriaLabel();
-    (this.el.nativeElement as HTMLAnchorElement).setAttribute('aria-label', ariaLabel);
+    (this.el.nativeElement as HTMLAnchorElement).setAttribute(
+      'aria-label',
+      ariaLabel
+    );
 
     if (!this.hideIcon) {
       this.createIcon();
@@ -67,15 +70,16 @@ export class ExternalLinkDirective implements OnChanges {
    *  be kept as is
    */
   private _getAriaLabel(): string {
-
-    const anchorElement = this.el.nativeElement as HTMLAnchorElement
+    const anchorElement = this.el.nativeElement as HTMLAnchorElement;
     const currentAriaLabel: string = anchorElement.getAttribute('aria-label');
 
     /** No aria label, attach a default one using inner text if anchor does not contain additional
-     * html element as children. If anchor does contain additional html element as children, then use href 
+     * html element as children. If anchor does contain additional html element as children, then use href
      */
     if (!currentAriaLabel || currentAriaLabel.length === 0) {
-      let label = anchorElement.firstElementChild ? this.href : anchorElement.innerText;
+      let label = anchorElement.firstElementChild
+        ? this.href
+        : anchorElement.innerText;
       label = label.trim();
       return `Open ${label} in a new window`;
     }
@@ -83,7 +87,10 @@ export class ExternalLinkDirective implements OnChanges {
     const lowerCaseAriaLabel = currentAriaLabel.toLowerCase();
 
     /** Aria label already indicates link will open in a new window, set to defined aria label */
-    if (lowerCaseAriaLabel.indexOf('new') != -1 && lowerCaseAriaLabel.indexOf('window') != -1) {
+    if (
+      lowerCaseAriaLabel.indexOf('new') != -1 &&
+      lowerCaseAriaLabel.indexOf('window') != -1
+    ) {
       return currentAriaLabel;
     }
 
@@ -100,7 +107,7 @@ export class ExternalLinkDirective implements OnChanges {
     return (
       isPlatformBrowser(this.platformId) &&
       !link.includes(location.hostname) &&
-      link.indexOf(this.emailLinkKeyword) !== 0  &&
+      link.indexOf(this.emailLinkKeyword) !== 0 &&
       !this.internalLinks.includes(link)
     );
   }

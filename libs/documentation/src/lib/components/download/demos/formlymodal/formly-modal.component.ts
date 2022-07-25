@@ -24,7 +24,6 @@ export class FormlyDialog {
   public autocompleteModel = new SDSSelectedItemModel();
   options: FormlyFormOptions;
   fields: FormlyFieldConfig[] = [
-
     {
       key: 'entity.name',
       type: 'input',
@@ -40,7 +39,6 @@ export class FormlyDialog {
       type: 'input',
       templateOptions: {
         label: 'Unique Entity ID',
-
       },
     },
     {
@@ -48,7 +46,6 @@ export class FormlyDialog {
       type: 'input',
       templateOptions: {
         label: 'Unique Entity ID',
-
       },
     },
     {
@@ -56,7 +53,6 @@ export class FormlyDialog {
       type: 'input',
       templateOptions: {
         label: 'CAGE / NCAGE',
-
       },
     },
     {
@@ -83,7 +79,6 @@ export class FormlyDialog {
       type: 'input',
       templateOptions: {
         label: 'NAICS Code',
-
       },
     },
 
@@ -97,8 +92,6 @@ export class FormlyDialog {
         required: true,
       },
     },
-
-
   ];
   constructor(
     public service: AutocompleteSampleDataService,
@@ -119,7 +112,6 @@ export class FormlyDialog {
     this.settings.selectionMode = SelectionMode.SINGLE;
     this.settings.autocompletePlaceHolderText = 'Enter text';
     this.settings.debounceTime = 350;
-
   }
 
   openDialog() {
@@ -140,8 +132,7 @@ export class FormlyDialog {
     dialogRef.componentInstance.submitFn.subscribe((res) => {
       this.updatedModel = res;
       dialogRef.close();
-    }
-    );
+    });
 
     dialogRef.componentInstance.cancelFn.subscribe((res) => {
       this.updatedModel = res;

@@ -59,7 +59,12 @@ export const ROUTES = [
 ];
 
 @NgModule({
-  imports: [CommonModule, DocumentationComponentsSharedModule, EditorBasicModule, EditorOptionalModule],
+  imports: [
+    CommonModule,
+    DocumentationComponentsSharedModule,
+    EditorBasicModule,
+    EditorOptionalModule,
+  ],
 })
 export class EditorModule {
   constructor(demoList: DocumentationDemoList) {

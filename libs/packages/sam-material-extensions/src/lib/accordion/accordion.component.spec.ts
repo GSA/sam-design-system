@@ -4,7 +4,7 @@ import {
   ViewChild,
   DebugElement,
   ChangeDetectionStrategy,
-  ChangeDetectorRef
+  ChangeDetectorRef,
 } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -14,7 +14,7 @@ import {
   SdsAccordionComponent,
   SdsAccordionItemComponent,
   SdsAccordionTitleDirective,
-  SdsAccordionContentDirective
+  SdsAccordionContentDirective,
 } from './accordion.component';
 
 // detail rows
@@ -56,16 +56,14 @@ import {
       </sds-accordion-item>
     </sds-accordion-next>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class WrapperComponent {
   @ViewChild(SdsAccordionComponent)
   accordionComponentRef: SdsAccordionComponent;
   @ViewChild('first') firstItem;
 
-  constructor(
-    public cdr: ChangeDetectorRef,
-  ) {}
+  constructor(public cdr: ChangeDetectorRef) {}
 
   multi = false;
 }
@@ -76,18 +74,20 @@ describe('SdsAccordionComponent', () => {
   let fixture: ComponentFixture<WrapperComponent>;
   let accordionDe: DebugElement;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [
-        SdsAccordionComponent,
-        SdsAccordionItemComponent,
-        SdsAccordionTitleDirective,
-        SdsAccordionContentDirective,
-        WrapperComponent
-      ],
-      imports: [CommonModule, MatExpansionModule, BrowserAnimationsModule]
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [
+          SdsAccordionComponent,
+          SdsAccordionItemComponent,
+          SdsAccordionTitleDirective,
+          SdsAccordionContentDirective,
+          WrapperComponent,
+        ],
+        imports: [CommonModule, MatExpansionModule, BrowserAnimationsModule],
+      }).compileComponents();
+    })
+  );
 
   // expandable rows
   describe('Accordion', () => {
@@ -101,9 +101,12 @@ describe('SdsAccordionComponent', () => {
       wrapper = wrapperComponent;
     });
 
-    it('should create', waitForAsync(() => {
-      expect(component).toBeTruthy();
-    }));
+    it(
+      'should create',
+      waitForAsync(() => {
+        expect(component).toBeTruthy();
+      })
+    );
 
     it('should have 4 items', () => {
       expect(component.accordionItems.length).toEqual(4);

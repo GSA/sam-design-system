@@ -8,14 +8,27 @@ import { SdsActionsMenuModule } from '@gsa-sam/components';
 import { ResultListCardComponent } from './result-list-card-component.component';
 import { ResultListCardItemSampleComponent } from './card-item.component';
 import { ResultListCardItemChildSampleComponent } from './child-card-item.component';
-import { NgxBootstrapIconsModule, question, check, threeDots, book, download } from 'ngx-bootstrap-icons';
-import { IconModule, bars, newVersion, comment, bell } from '@gsa-sam/ngx-uswds-icons';
+import {
+  NgxBootstrapIconsModule,
+  question,
+  check,
+  threeDots,
+  book,
+  download,
+} from 'ngx-bootstrap-icons';
+import {
+  IconModule,
+  bars,
+  newVersion,
+  comment,
+  bell,
+} from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
   declarations: [
     ResultListCardComponent,
     ResultListCardItemSampleComponent,
-    ResultListCardItemChildSampleComponent
+    ResultListCardItemChildSampleComponent,
   ],
   imports: [
     IconModule,
@@ -24,9 +37,19 @@ import { IconModule, bars, newVersion, comment, bell } from '@gsa-sam/ngx-uswds-
     SdsPageModule,
     SdsSearchResultListModule,
     SdsActionsMenuModule,
-    NgxBootstrapIconsModule.pick({question, bars, newVersion, check, threeDots, book, comment, bell, download})
+    NgxBootstrapIconsModule.pick({
+      question,
+      bars,
+      newVersion,
+      check,
+      threeDots,
+      book,
+      comment,
+      bell,
+      download,
+    }),
   ],
   exports: [ResultListCardComponent],
-  bootstrap: [ResultListCardComponent]
+  bootstrap: [ResultListCardComponent],
 })
 export class ResultListCardComponentModule {}

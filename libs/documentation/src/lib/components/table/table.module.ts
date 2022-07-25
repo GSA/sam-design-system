@@ -82,7 +82,8 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/highlight-and-click/highlight.component'), // Source Tab Content
     module: require('!!raw-loader!./demos/highlight-and-click/highlight.module'), // Module Tab Content
     markup: require('!!raw-loader!./demos/highlight-and-click/highlight.component.html'), // Template Tab Content
-    path: 'libs/documentation/src/lib/components/table/demos/highlight-and-click', // Path to demo for the Github link
+    path:
+      'libs/documentation/src/lib/components/table/demos/highlight-and-click', // Path to demo for the Github link
   },
 };
 
@@ -123,7 +124,7 @@ export const ROUTES = [
     TableStickyModule,
     TableFullModule,
     TablePaginationModule,
-    TableHighlightModule
+    TableHighlightModule,
   ],
 })
 export class TableModule {

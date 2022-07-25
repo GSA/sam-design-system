@@ -2,7 +2,7 @@ import {
   TestBed,
   ComponentFixture,
   fakeAsync,
-  tick
+  tick,
 } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
 import { FormGroup, FormControl } from '@angular/forms';
@@ -16,7 +16,7 @@ import { DebugElement } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
-import { allIcons as sdsAllIcons } from '@gsa-sam/ngx-uswds-icons'
+import { allIcons as sdsAllIcons } from '@gsa-sam/ngx-uswds-icons';
 import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 
 describe('The Sam Filters Component', () => {
@@ -34,9 +34,9 @@ describe('The Sam Filters Component', () => {
           RouterTestingModule.withRoutes([]),
           SdsFormlyModule,
           SdsFiltersModule,
-          NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))
+          NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons)),
         ],
-        providers: [SDSFormlyUpdateComunicationService]
+        providers: [SDSFormlyUpdateComunicationService],
       });
       router = TestBed.get(Router);
       location = TestBed.get(Location);
@@ -62,14 +62,14 @@ describe('The Sam Filters Component', () => {
                 maxLength: 4,
                 inputType: 'number',
                 inputStyle: 'error',
-                errorMessage: 'Helpful error message'
+                errorMessage: 'Helpful error message',
               },
               validation: {
-                show: true
-              }
-            }
-          ]
-        }
+                show: true,
+              },
+            },
+          ],
+        },
       ];
       component.form = new FormGroup({});
     });
@@ -94,8 +94,8 @@ describe('The Sam Filters Component', () => {
     it('should not change the route when history set to false', fakeAsync(() => {
       component.model = {
         filter: {
-          entityType: '30'
-        }
+          entityType: '30',
+        },
       };
       component.fields = [
         {
@@ -111,12 +111,12 @@ describe('The Sam Filters Component', () => {
                 options: [
                   { label: '30 Days', value: '30' },
                   { label: '60 Days', value: '60' },
-                  { label: '90 Days', value: '90' }
-                ]
-              }
-            }
-          ]
-        }
+                  { label: '90 Days', value: '90' },
+                ],
+              },
+            },
+          ],
+        },
       ];
       fixture.detectChanges();
       component.isHistoryEnable = false;
@@ -128,8 +128,8 @@ describe('The Sam Filters Component', () => {
     it('should call coominication service', () => {
       component.model = {
         filter: {
-          entityType: '30'
-        }
+          entityType: '30',
+        },
       };
       component.fields = [
         {
@@ -145,12 +145,12 @@ describe('The Sam Filters Component', () => {
                 options: [
                   { label: '30 Days', value: '30' },
                   { label: '60 Days', value: '60' },
-                  { label: '90 Days', value: '90' }
-                ]
-              }
-            }
-          ]
-        }
+                  { label: '90 Days', value: '90' },
+                ],
+              },
+            },
+          ],
+        },
       ];
       const service = fixture.debugElement.injector.get(
         SDSFormlyUpdateComunicationService
@@ -165,17 +165,17 @@ describe('The Sam Filters Component', () => {
       component.form = new FormGroup({
         test: new FormControl(''),
         filters: new FormControl(''),
-        searchEntity: new FormControl('')
+        searchEntity: new FormControl(''),
       });
       component.form.controls['filters'].setValue([
         { uniqueId: 1 },
-        { uniqueId: 1 }
+        { uniqueId: 1 },
       ]);
       const updateFormValue = { test: 'abc', filters: { uniqueId: 2 } };
       const expectedOutput = {
         test: 'abc',
         filters: { uniqueId: 2 },
-        searchEntity: null
+        searchEntity: null,
       };
       const result = component.overwrite(
         component.form.getRawValue(),
@@ -197,8 +197,8 @@ describe('The Sam Filters Component', () => {
           RouterTestingModule.withRoutes([]),
           SdsFormlyModule,
           SdsFiltersModule,
-          NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))
-        ]
+          NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons)),
+        ],
       });
 
       fixture = TestBed.createComponent(SdsFiltersComponent);
@@ -206,7 +206,7 @@ describe('The Sam Filters Component', () => {
       component.fields = [
         {
           key: 'filters',
-          templateOptions: { label: 'Entity Name/UEI'},
+          templateOptions: { label: 'Entity Name/UEI' },
           fieldGroup: [
             {
               key: 'uniqueId',
@@ -218,14 +218,14 @@ describe('The Sam Filters Component', () => {
                 placeholder: 'eg: Acme Corporation',
                 minLength: 2,
                 maxLength: 4,
-                inputType: 'number'
+                inputType: 'number',
               },
               validation: {
-                show: true
-              }
-            }
-          ]
-        }
+                show: true,
+              },
+            },
+          ],
+        },
       ];
       component.form = new FormGroup({});
     });
@@ -270,14 +270,14 @@ describe('The Sam Filters Component', () => {
                 placeholder: 'eg: Acme Corporation',
                 minLength: 2,
                 maxLength: 4,
-                inputType: 'number'
+                inputType: 'number',
               },
               validation: {
-                show: true
-              }
-            }
-          ]
-        }
+                show: true,
+              },
+            },
+          ],
+        },
       ];
       component.model = { test: null, filters: { uniqueId: '45466' } };
       fixture.detectChanges();
@@ -291,9 +291,9 @@ describe('The Sam Filters Component', () => {
           hide: true,
           templateOptions: {
             label: 'State',
-            description: 'State'
-          }
-        }
+            description: 'State',
+          },
+        },
       ];
       component.model = { filters: '45466' };
       fixture.detectChanges();
@@ -308,21 +308,20 @@ describe('The Sam Filters Component', () => {
           hide: true,
           templateOptions: {
             label: 'State',
-            description: 'State'
-          }
-        }
+            description: 'State',
+          },
+        },
       ];
 
-      component.model = {filters: '12345'};
-      component.defaultModel = {filters: '67890'};
+      component.model = { filters: '12345' };
+      component.defaultModel = { filters: '67890' };
 
       fixture.detectChanges();
 
       const resetAllButton = fixture.debugElement.query(By.css('button'));
       resetAllButton.triggerEventHandler('click', null);
       fixture.detectChanges();
-      expect(component.model).toEqual({filters: '67890'});
-
-    })
+      expect(component.model).toEqual({ filters: '67890' });
+    });
   });
 });

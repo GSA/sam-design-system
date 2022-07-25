@@ -6,14 +6,14 @@ import { AutocompleteSampleDataService } from './autocomplete-sample.service';
 import {
   SDSAutocompletelConfiguration,
   SDSSelectedItemModel,
-  SelectionMode
+  SelectionMode,
 } from '@gsa-sam/components';
 
 @Component({
   templateUrl: './autocomplete-basic.component.html',
   styleUrls: ['./autocomplete-basic.component.scss'],
   selector: `sds-formly-autocomplete-basic-demo`,
-  providers: [AutocompleteSampleDataService]
+  providers: [AutocompleteSampleDataService],
 })
 export class FormlyAutocompleteBasic implements OnInit {
   results: any;
@@ -38,11 +38,11 @@ export class FormlyAutocompleteBasic implements OnInit {
             service: this.service,
             configuration: this.settings,
             model: this.autocompleteModel,
-            modelChange: this.changes
-          }
-        }
-      ]
-    }
+            modelChange: this.changes,
+          },
+        },
+      ],
+    },
   ];
 
   constructor(public service: AutocompleteSampleDataService) {
@@ -67,8 +67,8 @@ export class FormlyAutocompleteBasic implements OnInit {
 
   onModelChange() {
     // To changes the close icon on modal change
-    if (this.model.filters.firstName[0].id !== "1") {
-      this.settings.hideCloseIcon = false
+    if (this.model.filters.firstName[0].id !== '1') {
+      this.settings.hideCloseIcon = false;
     } else {
       this.settings.hideCloseIcon = true;
     }
@@ -80,7 +80,7 @@ export class FormlyAutocompleteBasic implements OnInit {
 
   // To display the selected model values
   public ngOnInit() {
-    this.filterChange$.subscribe(res => (this.results = res));
+    this.filterChange$.subscribe((res) => (this.results = res));
   }
 
   // Method to programatically set the FormControl value which gets converted to the items array through the writeValue method
@@ -93,8 +93,8 @@ export class FormlyAutocompleteBasic implements OnInit {
         subtext: 'id 3',
         type: 'Level 3',
         childCount: 2,
-        highlighted: true
-      }
+        highlighted: true,
+      },
     ]);
   }
 
@@ -108,7 +108,7 @@ export class FormlyAutocompleteBasic implements OnInit {
         subtext: 'id 3',
         type: 'Level 3',
         childCount: 2,
-        highlighted: true
+        highlighted: true,
       },
       {
         id: '42',
@@ -117,8 +117,8 @@ export class FormlyAutocompleteBasic implements OnInit {
         subtext: 'id 42',
         type: 'Level 6',
         childCount: 3,
-        highlighted: true
-      }
+        highlighted: true,
+      },
     ];
 
     const newObjModel = new SDSSelectedItemModel(newModel);

@@ -16,9 +16,8 @@ export class TemplateOptionExpand {
       templateOptions: {
         label: 'Entity',
         expand: true,
-        group:'accordion'
-      
-      }
-    }
+        group: 'accordion',
+      },
+    },
   ];
 }

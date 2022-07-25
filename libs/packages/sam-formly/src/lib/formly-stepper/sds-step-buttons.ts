@@ -1,19 +1,25 @@
-import { Directive, forwardRef, HostListener, Inject, Input, OnDestroy, OnInit } from "@angular/core";
-import { UsaStepIndicatorComponent } from "@gsa-sam/ngx-uswds";
-import { Subscription } from "rxjs";
-import { SdsStepComponent, SdsStepper } from "./sds-stepper";
+import {
+  Directive,
+  forwardRef,
+  HostListener,
+  Inject,
+  Input,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
+import { UsaStepIndicatorComponent } from '@gsa-sam/ngx-uswds';
+import { Subscription } from 'rxjs';
+import { SdsStepComponent, SdsStepper } from './sds-stepper';
 
 /** Button that moves to the next step in a stepper workflow. */
 @Directive({
   selector: `[sdsStepperNext]`,
   host: {
-    '[attr.disabled]': '_disabled()'
-  }
+    '[attr.disabled]': '_disabled()',
+  },
 })
 export class SdsStepperNextDirective {
-  constructor(
-    public _stepper: SdsStepper,
-  ) {}
+  constructor(public _stepper: SdsStepper) {}
 
   // We have to use a `HostListener` here in order to support both Ivy and ViewEngine.
   // In Ivy the `host` bindings will be merged when this class is extended, whereas in
@@ -39,16 +45,20 @@ export class SdsStepperNextDirective {
       return true;
     }
 
-    /** 
-    * For linear mode, enable the next step, on click, current step will be validated,
-    * and if valid, user will automatically progress to next step
-    */
+    /**
+     * For linear mode, enable the next step, on click, current step will be validated,
+     * and if valid, user will automatically progress to next step
+     */
     if (this._stepper.linear) {
       return;
     }
-    
+
     /** Otherwise, if next step is disabled or next step is review step and review step is disabled, disable next step */
-    if (flatSteps[nextIndex].disabled || (flatSteps[nextIndex].isReview && this._stepper._isReviewAndSubmitDisabled)) {
+    if (
+      flatSteps[nextIndex].disabled ||
+      (flatSteps[nextIndex].isReview &&
+        this._stepper._isReviewAndSubmitDisabled)
+    ) {
       return true;
     }
 
@@ -60,13 +70,11 @@ export class SdsStepperNextDirective {
 @Directive({
   selector: `[sdsStepperPrevious]`,
   host: {
-    '[attr.disabled]': '_stepper.selectedStepIndex === 0 ? true : undefined'
-  }
+    '[attr.disabled]': '_stepper.selectedStepIndex === 0 ? true : undefined',
+  },
 })
 export class SdsStepperPreviousDirective {
-  constructor(
-    public _stepper: SdsStepper
-  ) {}
+  constructor(public _stepper: SdsStepper) {}
 
   // We have to use a `HostListener` here in order to support both Ivy and ViewEngine.
   // In Ivy the `host` bindings will be merged when this class is extended, whereas in
@@ -90,7 +98,11 @@ export class SdsStepperPreviousDirective {
       return true;
     }
 
-    if (flatSteps[previousStep].disabled || (flatSteps[previousStep].isReview && this._stepper._isReviewAndSubmitDisabled)) {
+    if (
+      flatSteps[previousStep].disabled ||
+      (flatSteps[previousStep].isReview &&
+        this._stepper._isReviewAndSubmitDisabled)
+    ) {
       return true;
     }
 
@@ -103,9 +115,7 @@ export class SdsStepperPreviousDirective {
   selector: `[sdsStepperSave]`,
 })
 export class SdsStepperSaveDirective {
-  constructor(
-    public _stepper: SdsStepper
-  ) {}
+  constructor(public _stepper: SdsStepper) {}
 
   // We have to use a `HostListener` here in order to support both Ivy and ViewEngine.
   // In Ivy the `host` bindings will be merged when this class is extended, whereas in
@@ -122,16 +132,13 @@ export class SdsStepperSaveDirective {
 @Directive({
   selector: `[sdsStepperNav]`,
   host: {
-    '[attr.disabled]': 'sdsStepperNav.disabled'
-  }
+    '[attr.disabled]': 'sdsStepperNav.disabled',
+  },
 })
 export class SdsStepperNavDirective {
-
   @Input() sdsStepperNav: SdsStepComponent;
 
-  constructor(
-    public _stepper: SdsStepper
-  ) {}
+  constructor(public _stepper: SdsStepper) {}
 
   // We have to use a `HostListener` here in order to support both Ivy and ViewEngine.
   // In Ivy the `host` bindings will be merged when this class is extended, whereas in
@@ -149,29 +156,30 @@ export class SdsStepperNavDirective {
  * with sds stepper. This directive manages internal sync of usa-step-indicator
  * and sds stepper steps such that when a step changes in one component, it is
  * accurately reflected on the other
- * 
- * usage example: 
- * Inside the template of a component that extends SdsStepper - 
+ *
+ * usage example:
+ * Inside the template of a component that extends SdsStepper -
  *  <usa-step-indicator sdsStepperUSWDSNav> </usa-step-indicator>
  */
 @Directive({
-  selector: `usa-step-indicator [sdsStepperUSWDSNav]`
+  selector: `usa-step-indicator [sdsStepperUSWDSNav]`,
 })
 export class SdsStepperUSWDSNavDirective implements OnInit, OnDestroy {
   constructor(
     @Inject(forwardRef(() => SdsStepper)) public _stepper: SdsStepper,
-    private _el: UsaStepIndicatorComponent,
+    private _el: UsaStepIndicatorComponent
   ) {}
 
   stepChangeSubscriptions: Subscription = new Subscription();
-  
+
   ngOnInit() {
-    const usaStepChange = this._el.currentStepChange.subscribe(stepIndex => {
+    const usaStepChange = this._el.currentStepChange.subscribe((stepIndex) => {
       const step = this._el.steps[stepIndex];
-      const nextStep = this._stepper.flatSteps.find(flatStep => flatStep.text === step.label);
+      const nextStep = this._stepper.flatSteps.find(
+        (flatStep) => flatStep.text === step.label
+      );
       this._stepper.changeStep(nextStep.id);
     });
-
 
     this.stepChangeSubscriptions.add(usaStepChange);
   }

@@ -1,6 +1,5 @@
-
-import {InjectionToken} from '@angular/core';
-import {CdkAccordion} from '@angular/cdk/accordion';
+import { InjectionToken } from '@angular/core';
+import { CdkAccordion } from '@angular/cdk/accordion';
 
 /** Accordion's display modes. */
 export type SdsAccordionDisplayMode = 'default' | 'basic';
@@ -19,9 +18,10 @@ export interface SdsAccordionBase extends CdkAccordion {
   _handleHeaderFocus: (header: any) => void;
 }
 
-
 /**
  * Token used to provide a `SdsAccordion` to `SdsAccordionItem`.
  * Used primarily to avoid circular imports between `SdsAccordion` and `SdsAccordionItem`.
  */
-export const SDS_ACCORDION = new InjectionToken<SdsAccordionBase>('SDS_ACCORDION');
+export const SDS_ACCORDION = new InjectionToken<SdsAccordionBase>(
+  'SDS_ACCORDION'
+);

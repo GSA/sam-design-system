@@ -1,18 +1,34 @@
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { TestBed, ComponentFixture, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
+import {
+  TestBed,
+  ComponentFixture,
+  fakeAsync,
+  tick,
+  waitForAsync,
+} from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Component, ViewChild, DebugElement } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule, FormlyForm } from '@ngx-formly/core';
 import { FormlyFieldAutoCompleteComponent } from './autocomplete';
 import { of as observableOf } from 'rxjs';
-import { SDSAutocompletelConfiguration, SDSSelectedItemModel, SelectionMode, SdsAutocompleteModule } from '@gsa-sam/components';
+import {
+  SDSAutocompletelConfiguration,
+  SDSSelectedItemModel,
+  SelectionMode,
+  SdsAutocompleteModule,
+} from '@gsa-sam/components';
 import { AutocompleteSampleDataService } from '../services/autocomplete-sample.service';
 
 const createTestComponent = (html: string) =>
-  createGenericTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;
+  createGenericTestComponent(html, TestComponent) as ComponentFixture<
+    TestComponent
+  >;
 
-export function createGenericTestComponent<T>(html: string, type: { new(...args: any[]): T }): ComponentFixture<T> {
+export function createGenericTestComponent<T>(
+  html: string,
+  type: { new (...args: any[]): T }
+): ComponentFixture<T> {
   TestBed.overrideComponent(type, { set: { template: html } });
   const fixture = TestBed.createComponent(type);
   fixture.detectChanges();
@@ -46,24 +62,23 @@ describe('Formly Field Select Component', () => {
       testAutocompleteComponent = {
         form: new FormGroup({}),
         model: {
-          "firstName": {
-            "items": [
+          firstName: {
+            items: [
               {
-                "id": "1",
-                "parentId": null,
-                "name": "Level 1",
-                "subtext": "id 1",
-                "type": "Level 1",
-                "childCount": 2,
-                "highlighted": true
-              }
-            ]
-          }
+                id: '1',
+                parentId: null,
+                name: 'Level 1',
+                subtext: 'id 1',
+                type: 'Level 1',
+                childCount: 2,
+                highlighted: true,
+              },
+            ],
+          },
         },
         settings: new SDSAutocompletelConfiguration(),
         autocompleteModel: new SDSSelectedItemModel(),
-        service: new AutocompleteSampleDataService()
-
+        service: new AutocompleteSampleDataService(),
       };
       testAutocompleteComponent.settings.id = 'autocomplete1';
       testAutocompleteComponent.settings.primaryKeyField = 'id';
@@ -71,30 +86,32 @@ describe('Formly Field Select Component', () => {
       testAutocompleteComponent.settings.secondaryTextField = 'subtext';
       testAutocompleteComponent.settings.labelText = 'Autocomplete 1';
       testAutocompleteComponent.settings.selectionMode = SelectionMode.MULTIPLE;
-      testAutocompleteComponent.settings.autocompletePlaceHolderText = 'Enter text';
+      testAutocompleteComponent.settings.autocompletePlaceHolderText =
+        'Enter text';
       testAutocompleteComponent.settings.debounceTime = 0;
-
     });
 
     xit('should correctly bind to a static array of data', () => {
-      testAutocompleteComponent.fields = [{
-        key: 'firstName',
-        type: 'autocomplete',
-        templateOptions: {
-          label: 'Auto Complete Test',
-          service: testAutocompleteComponent.service,
-          configuration: testAutocompleteComponent.settings,
-          model: testAutocompleteComponent.autocompleteModel,
-          modelChange: testAutocompleteComponent.changes
-        }
-      }];
-      const fixture = createTestComponent('<formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>');
+      testAutocompleteComponent.fields = [
+        {
+          key: 'firstName',
+          type: 'autocomplete',
+          templateOptions: {
+            label: 'Auto Complete Test',
+            service: testAutocompleteComponent.service,
+            configuration: testAutocompleteComponent.settings,
+            model: testAutocompleteComponent.autocompleteModel,
+            modelChange: testAutocompleteComponent.changes,
+          },
+        },
+      ];
+      const fixture = createTestComponent(
+        '<formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>'
+      );
       fixture.detectChanges();
       expect(fixture).toBeTruthy();
     });
-
   });
-
 });
 
 @Component({ selector: 'formly-form-test', template: '', entryComponents: [] })

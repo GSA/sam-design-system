@@ -9,13 +9,13 @@ import {
   ChangeDetectorRef,
   ChangeDetectionStrategy,
   OnInit,
-  OnDestroy
+  OnDestroy,
 } from '@angular/core';
 
 import {
   NG_VALUE_ACCESSOR,
   ControlValueAccessor,
-  FormControl
+  FormControl,
 } from '@angular/forms';
 import { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';
 import { SDSAutocompleteServiceInterface } from '../autocomplete-search/models/SDSAutocompleteServiceInterface';
@@ -27,7 +27,7 @@ import { Subscription } from 'rxjs';
 const Autocomplete_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => SDSAutocompleteComponent),
-  multi: true
+  multi: true,
 };
 
 @Component({
@@ -35,9 +35,10 @@ const Autocomplete_VALUE_ACCESSOR: any = {
   templateUrl: './autocomplete.component.html',
   styleUrls: ['./autocomplete.component.scss'],
   providers: [Autocomplete_VALUE_ACCESSOR],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SDSAutocompleteComponent implements ControlValueAccessor, OnInit, OnDestroy {
+export class SDSAutocompleteComponent
+  implements ControlValueAccessor, OnInit, OnDestroy {
   /**
    * Allow to insert a customized template for suggestions results
    */
@@ -75,17 +76,20 @@ export class SDSAutocompleteComponent implements ControlValueAccessor, OnInit, O
 
   _subscriptions = new Subscription();
 
-  @ViewChild('autocompleteSearch', { static: true }) autocompleteSearch: SDSAutocompleteSearchComponent;
-  constructor(private cd: ChangeDetectorRef) {  }
+  @ViewChild('autocompleteSearch', { static: true })
+  autocompleteSearch: SDSAutocompleteSearchComponent;
+  constructor(private cd: ChangeDetectorRef) {}
 
   ngOnInit() {
     if (!this.configuration.registerChanges$) {
       return;
     }
 
-    const changesSubscription = this.configuration.registerChanges$.subscribe(() => {
-      this.cd.detectChanges();
-    });
+    const changesSubscription = this.configuration.registerChanges$.subscribe(
+      () => {
+        this.cd.detectChanges();
+      }
+    );
 
     this._subscriptions.add(changesSubscription);
   }
@@ -98,22 +102,25 @@ export class SDSAutocompleteComponent implements ControlValueAccessor, OnInit, O
    * Stored Event for ControlValueAccessor
    */
   @HostListener('focusout')
-  public onTouched = () => { };
+  public onTouched = () => {};
 
   /**
    * Stored Event for ControlValueAccessor
    */
-  public onChange = (_: any) => { };
+  public onChange = (_: any) => {};
 
   // ControlValueAccessor (and Formly) is trying to update the value of the FormControl (our custom component) programatically
   // If there is a value we will just overwrite items
   // If there is no value we reset the items array to be empty
   writeValue(value: any) {
-    if (value instanceof SDSSelectedItemModel && value.items && value.items.length) {
+    if (
+      value instanceof SDSSelectedItemModel &&
+      value.items &&
+      value.items.length
+    ) {
       this.model.items = [...value.items];
       this.cd.markForCheck();
-    }
-    else if (value && value.length) {
+    } else if (value && value.length) {
       this.model.items = value;
       this.cd.markForCheck();
     } else {
@@ -170,8 +177,8 @@ export class SDSAutocompleteComponent implements ControlValueAccessor, OnInit, O
   }
 
   addItems(list: object[]) {
-    list.forEach(item => {
+    list.forEach((item) => {
       this.addItem(item);
-    })
+    });
   }
 }

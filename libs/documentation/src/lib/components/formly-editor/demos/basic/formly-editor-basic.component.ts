@@ -18,8 +18,8 @@ export class EditorBasic {
       templateOptions: {
         label: 'Search',
         placeholder: 'eg: type here',
-        regex: /hello/gm
-      }
-    }
+        regex: /hello/gm,
+      },
+    },
   ];
 }

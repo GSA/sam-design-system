@@ -1,22 +1,37 @@
 <sds-table [data]="form.value" [tableName]="to.name" #fileTable>
-  <sds-table-column *ngFor="let column of to.tableColumns" [sdsColumnName]="column.columnName">
+  <sds-table-column
+    *ngFor="let column of to.tableColumns"
+    [sdsColumnName]="column.columnName"
+  >
     <ng-template #sdsHeaderCell>{{column.label}}</ng-template>
     <ng-template #sdsCell let-element="element">
-      <button class="usa-button usa-button--unstyled text-secondary-dark" *ngIf="column.onClick; else noClick" 
-        (click)="column.onClick(element, parentFieldConfig)">
-        <ng-container [ngTemplateOutlet]="tableCellTemplates" 
-          [ngTemplateOutletContext]="{$implicit: element, column: column}"></ng-container>
+      <button
+        class="usa-button usa-button--unstyled text-secondary-dark"
+        *ngIf="column.onClick; else noClick"
+        (click)="column.onClick(element, parentFieldConfig)"
+      >
+        <ng-container
+          [ngTemplateOutlet]="tableCellTemplates"
+          [ngTemplateOutletContext]="{$implicit: element, column: column}"
+        ></ng-container>
       </button>
       <ng-template #noClick>
-        <ng-container [ngTemplateOutlet]="tableCellTemplates" 
-          [ngTemplateOutletContext]="{$implicit: element, column: column}"></ng-container>
+        <ng-container
+          [ngTemplateOutlet]="tableCellTemplates"
+          [ngTemplateOutletContext]="{$implicit: element, column: column}"
+        ></ng-container>
       </ng-template>
     </ng-template>
-  </sds-table-column>  
+  </sds-table-column>
   <sds-header-row [displayedColumns]="displayedColumns"></sds-header-row>
   <sds-row [displayedColumns]="displayedColumns"></sds-row>
 </sds-table>
-<div *ngIf="!form.value || !form.value.length" class="border border-base-light text-center padding-1">{{to.noDataText}}</div>
+<div
+  *ngIf="!form.value || !form.value.length"
+  class="border border-base-light text-center padding-1"
+>
+  {{to.noDataText}}
+</div>
 
 <ng-template #tableCellTemplates let-element let-column="column">
   <span *ngIf="column.property">{{element[column.property]}}</span>

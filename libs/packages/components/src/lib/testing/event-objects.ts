@@ -10,21 +10,23 @@
 export function createMouseEvent(type: string, x = 0, y = 0, button = 0) {
   const event = document.createEvent('MouseEvent');
 
-  event.initMouseEvent(type,
-    true, /* canBubble */
-    false, /* cancelable */
-    window, /* view */
-    0, /* detail */
-    x, /* screenX */
-    y, /* screenY */
-    x, /* clientX */
-    y, /* clientY */
-    false, /* ctrlKey */
-    false, /* altKey */
-    false, /* shiftKey */
-    false, /* metaKey */
-    button, /* button */
-    null /* relatedTarget */);
+  event.initMouseEvent(
+    type,
+    true /* canBubble */,
+    false /* cancelable */,
+    window /* view */,
+    0 /* detail */,
+    x /* screenX */,
+    y /* screenY */,
+    x /* clientX */,
+    y /* clientY */,
+    false /* ctrlKey */,
+    false /* altKey */,
+    false /* shiftKey */,
+    false /* metaKey */,
+    button /* button */,
+    null /* relatedTarget */
+  );
 
   // `initMouseEvent` doesn't allow us to pass the `buttons` and
   // defaults it to 0 which looks like a fake event.
@@ -47,14 +49,19 @@ export function createTouchEvent(type: string, pageX = 0, pageY = 0) {
   Object.defineProperties(event, {
     touches: { value: [touchDetails] },
     targetTouches: { value: [touchDetails] },
-    changedTouches: { value: [touchDetails] }
+    changedTouches: { value: [touchDetails] },
   });
 
   return event;
 }
 
 /** Dispatches a keydown event from an element. */
-export function createKeyboardEvent(type: string, keyCode: number, target?: Element, key?: string) {
+export function createKeyboardEvent(
+  type: string,
+  keyCode: number,
+  target?: Element,
+  key?: string
+) {
   let event = document.createEvent('KeyboardEvent') as any;
   let originalPreventDefault = event.preventDefault;
 
@@ -70,7 +77,7 @@ export function createKeyboardEvent(type: string, keyCode: number, target?: Elem
   Object.defineProperties(event, {
     keyCode: { get: () => keyCode },
     key: { get: () => key },
-    target: { get: () => target }
+    target: { get: () => target },
   });
 
   // IE won't set `defaultPrevented` on synthetic events so we need to do it manually.
@@ -83,7 +90,11 @@ export function createKeyboardEvent(type: string, keyCode: number, target?: Elem
 }
 
 /** Creates a fake event object with any desired event type. */
-export function createFakeEvent(type: string, canBubble = false, cancelable = true) {
+export function createFakeEvent(
+  type: string,
+  canBubble = false,
+  cancelable = true
+) {
   const event = document.createEvent('Event');
   event.initEvent(type, canBubble, cancelable);
   return event;

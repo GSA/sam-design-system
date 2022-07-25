@@ -1,11 +1,13 @@
 import {
-  Directive, ElementRef, Output,
-  EventEmitter, HostListener
+  Directive,
+  ElementRef,
+  Output,
+  EventEmitter,
+  HostListener,
 } from '@angular/core';
 
-
 @Directive({
-  selector: '[sds-tab-outside]'
+  selector: '[sds-tab-outside]',
 })
 export class SDSTabOutsideDirective {
   /**
@@ -13,7 +15,7 @@ export class SDSTabOutsideDirective {
    */
   @Output() tabOutside: EventEmitter<any> = new EventEmitter();
 
-  constructor(private _elementRef: ElementRef) { }
+  constructor(private _elementRef: ElementRef) {}
 
   @HostListener('document:keyup', ['$event.target'])
   public hasFocusChanged(target) {

@@ -23,8 +23,8 @@ import { IconsStackingComponent } from './demos/stacking/icons-stacking.componen
 import { IconsStackingModule } from './demos/stacking/icons-stacking.module';
 import { IconSkewingComponent } from './demos/icon-skewing/icon-skewing.component';
 import { IconSkewingModule } from './demos/icon-skewing/icon-skewing.module';
-import { IconsUswdsModule } from './demos/uswds/icons-uswds.module'
-import { IconsUswds } from './demos/uswds/icons-uswds.component'
+import { IconsUswdsModule } from './demos/uswds/icons-uswds.module';
+import { IconsUswds } from './demos/uswds/icons-uswds.component';
 
 declare var require: any;
 const DEMOS = {
@@ -128,7 +128,7 @@ export const ROUTES = [
     IconsRotationModule,
     IconsStackingModule,
     IconSkewingModule,
-    IconsUswdsModule
+    IconsUswdsModule,
   ],
 })
 export class IconsModule {

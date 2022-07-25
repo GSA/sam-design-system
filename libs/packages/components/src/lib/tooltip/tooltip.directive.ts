@@ -1,11 +1,18 @@
-import { AfterViewInit, Directive, ElementRef, HostListener, Input, Renderer2, TemplateRef } from '@angular/core';
+import {
+  AfterViewInit,
+  Directive,
+  ElementRef,
+  HostListener,
+  Input,
+  Renderer2,
+  TemplateRef,
+} from '@angular/core';
 
 @Directive({
   selector: '[sdsTooltip]',
-  exportAs: 'sdsTooltip'
+  exportAs: 'sdsTooltip',
 })
 export class SdsTooltipDirective implements AfterViewInit {
-
   private _sdsTooltip: string | TemplateRef<any> | HTMLDivElement;
   sdsTooltipDiv: HTMLElement;
 
@@ -13,16 +20,15 @@ export class SdsTooltipDirective implements AfterViewInit {
   position: string = 'top';
 
   @HostListener('focus') onFocus() {
-    this.renderer.setAttribute(this.sdsTooltipDiv, 'aria-hidden', 'false')
+    this.renderer.setAttribute(this.sdsTooltipDiv, 'aria-hidden', 'false');
   }
   @HostListener('blur') onBlur() {
-    this.renderer.setAttribute(this.sdsTooltipDiv, 'aria-hidden', 'true')
+    this.renderer.setAttribute(this.sdsTooltipDiv, 'aria-hidden', 'true');
   }
-
 
   constructor(private el: ElementRef, private renderer: Renderer2) {
     this.renderer.addClass(this.el.nativeElement, 'sds-tooltip');
-    this.renderer.setAttribute(this.el.nativeElement, 'tabindex', '0')
+    this.renderer.setAttribute(this.el.nativeElement, 'tabindex', '0');
 
     this.sdsTooltipDiv = document.createElement('div');
 
@@ -30,7 +36,11 @@ export class SdsTooltipDirective implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.renderer.setAttribute(this.sdsTooltipDiv, 'data-position', this.position)
+    this.renderer.setAttribute(
+      this.sdsTooltipDiv,
+      'data-position',
+      this.position
+    );
     if (this.position && this.sdsTooltip) {
       this.renderer.addClass(this.sdsTooltipDiv, this.position);
       this.renderer.appendChild(this.sdsTooltipDiv, this.sdsTooltip);
@@ -48,12 +58,11 @@ export class SdsTooltipDirective implements AfterViewInit {
     }
 
     if (this._sdsTooltip) {
-      this.renderer.addClass(this._sdsTooltip, 'tooltip')
+      this.renderer.addClass(this._sdsTooltip, 'tooltip');
     }
   }
 
   get sdsTooltip(): string | TemplateRef<any> | HTMLDivElement {
     return this._sdsTooltip;
   }
-
 }

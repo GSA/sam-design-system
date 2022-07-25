@@ -1,14 +1,27 @@
 <h3>Single Form Control Accordion Group</h3>
-<p> <code> group: 'accordion'</code>  is used to set the group (wrapper) for your fields. </p>
+<p>
+  <code> group: 'accordion'</code> is used to set the group (wrapper) for your
+  fields.
+</p>
 <form [formGroup]="form">
-  <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
+  <formly-form
+    [model]="model"
+    [fields]="fields"
+    [options]="options"
+    [form]="form"
+  ></formly-form>
 </form>
 
 <h3 class="padding-top-5">Multiple Form Controls Accordion Group</h3>
-<p> <code> group: 'accordion'</code>  is used to set the group (wrapper) for your fields using fieldgroup. </p>
+<p>
+  <code> group: 'accordion'</code> is used to set the group (wrapper) for your
+  fields using fieldgroup.
+</p>
 <form [formGroup]="form">
-  <formly-form [model]="multipleFormGroupModel" [fields]="multipleFormGroupFields" [options]="options" [form]="form"></formly-form>
+  <formly-form
+    [model]="multipleFormGroupModel"
+    [fields]="multipleFormGroupFields"
+    [options]="options"
+    [form]="form"
+  ></formly-form>
 </form>
-
-
-

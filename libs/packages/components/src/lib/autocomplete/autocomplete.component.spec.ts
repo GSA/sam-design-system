@@ -1,5 +1,11 @@
 /* tslint:disable */
-import { ComponentFixture, TestBed, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  TestBed,
+  fakeAsync,
+  tick,
+  waitForAsync,
+} from '@angular/core/testing';
 import { SDSAutocompleteComponent } from './autocomplete.component';
 import { AutoCompleteSampleDataService } from '../autocomplete-search/autocomplete-seach-test-service.spec';
 import { SDSAutocompletelConfiguration } from './models/SDSAutocompletelConfiguration.model';
@@ -8,21 +14,26 @@ import { FormsModule } from '@angular/forms';
 import { SelectionMode } from '../selected-result/models/sds-selected-item-model-helper';
 import { SdsSelectedResultsModule } from '../selected-result/selected-result.module';
 import { SdsAutocompleteSearchModule } from '../autocomplete-search/autocomplete-search.module';
-import {allIcons as sdsAllIcons} from '@gsa-sam/ngx-uswds-icons'
+import { allIcons as sdsAllIcons } from '@gsa-sam/ngx-uswds-icons';
 import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
-
 
 describe('SDSAutocompleteComponent', () => {
   let component: SDSAutocompleteComponent;
   let fixture: ComponentFixture<SDSAutocompleteComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [SDSAutocompleteComponent],
-      imports: [FormsModule, SdsSelectedResultsModule, SdsAutocompleteSearchModule, NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [SDSAutocompleteComponent],
+        imports: [
+          FormsModule,
+          SdsSelectedResultsModule,
+          SdsAutocompleteSearchModule,
+          NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons)),
+        ],
+      }).compileComponents();
     })
-      .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SDSAutocompleteComponent);
@@ -44,7 +55,6 @@ describe('SDSAutocompleteComponent', () => {
     expect(component).toBeTruthy();
   });
 
-
   it('should handle modes', () => {
     expect(component.isSingleMode()).toBeTruthy();
     component.configuration.selectionMode = SelectionMode.MULTIPLE;
@@ -54,7 +64,6 @@ describe('SDSAutocompleteComponent', () => {
   });
 
   it('should handle writeValue', () => {
-
     // Set by Array
     const myItems = { test: '123' };
     component.writeValue([myItems]);
@@ -79,7 +88,7 @@ describe('SDSAutocompleteComponent', () => {
     expect(component.model.items).toEqual([]);
 
     // Pass empty string
-    component.writeValue("");
+    component.writeValue('');
     expect(component.model.items).toEqual([]);
   });
 
@@ -90,8 +99,6 @@ describe('SDSAutocompleteComponent', () => {
     component.setDisabledState(false);
     expect(component.disabled).toBeFalsy();
   });
-
-
 
   it('should handle registerOnChange', () => {
     let item = {};
@@ -104,5 +111,4 @@ describe('SDSAutocompleteComponent', () => {
     component.registerOnTouched(item);
     expect(component.onTouched).toBe(item);
   });
-
 });

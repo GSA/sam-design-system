@@ -62,7 +62,7 @@ export const ROUTES = [
     CommonModule,
     DocumentationComponentsSharedModule,
     AccordionBasicModule,
-    AccordionCardlistModule
+    AccordionCardlistModule,
   ],
 })
 export class AccordionModule {

@@ -3,11 +3,15 @@
   (change)="firstGroupChange($event)"
   class="sds-button-group"
 >
-  <sds-button-group-option value="reports" [aria-label]="'reports'" [checked]=true>
+  <sds-button-group-option
+    value="reports"
+    [aria-label]="'reports'"
+    [checked]="true"
+  >
     Reports
   </sds-button-group-option>
   <sds-button-group-option value="subscriptions" [aria-label]="'subscriptions'">
-      Subscriptions
+    Subscriptions
   </sds-button-group-option>
   <sds-button-group-option value="history">
     History

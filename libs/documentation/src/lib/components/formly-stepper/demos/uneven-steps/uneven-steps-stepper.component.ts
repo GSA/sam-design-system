@@ -7,8 +7,6 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
   templateUrl: './uneven-steps-stepper.component.html',
 })
 export class UnevenStepsStepperComponent {
-
-
   stepOne: FormlyFieldConfig = {
     key: 'entityOne',
     fieldGroup: [
@@ -22,24 +20,24 @@ export class UnevenStepsStepperComponent {
           required: true,
         },
         modelOptions: {
-          updateOn: 'blur'
-        }
+          updateOn: 'blur',
+        },
       },
       {
-          className: "desktop:grid-col-12 tablet:grid-col-12",
-          type: "input",
-          key: "title",
+        className: 'desktop:grid-col-12 tablet:grid-col-12',
+        type: 'input',
+        key: 'title',
 
-          templateOptions: {
-            label: "Program or Project Title",
-            required: true,
-            showError: false,
-          }
+        templateOptions: {
+          label: 'Program or Project Title',
+          required: true,
+          showError: false,
+        },
       },
     ],
     templateOptions: {
-      completedValue: 75
-    }
+      completedValue: 75,
+    },
   };
   stepOneSubstepOne: FormlyFieldConfig = {
     key: 'entityOneSubstepOne',
@@ -54,24 +52,24 @@ export class UnevenStepsStepperComponent {
           required: true,
         },
         modelOptions: {
-          updateOn: 'blur'
-        }
+          updateOn: 'blur',
+        },
       },
       {
-          className: "desktop:grid-col-12 tablet:grid-col-12",
-          type: "input",
-          key: "title",
+        className: 'desktop:grid-col-12 tablet:grid-col-12',
+        type: 'input',
+        key: 'title',
 
-          templateOptions: {
-            label: "Program or Project Title",
-            required: true,
-            showError: false,
-          }
+        templateOptions: {
+          label: 'Program or Project Title',
+          required: true,
+          showError: false,
+        },
       },
     ],
     templateOptions: {
-      completedValue: 85
-    }
+      completedValue: 85,
+    },
   };
   stepOneSubstepTwo: FormlyFieldConfig = {
     key: 'entityOneSubstepTwo',
@@ -86,27 +84,27 @@ export class UnevenStepsStepperComponent {
           required: true,
         },
         modelOptions: {
-          updateOn: 'blur'
-        }
+          updateOn: 'blur',
+        },
       },
       {
-          className: "desktop:grid-col-12 tablet:grid-col-12",
-          type: "input",
-          key: "title",
+        className: 'desktop:grid-col-12 tablet:grid-col-12',
+        type: 'input',
+        key: 'title',
 
-          templateOptions: {
-            label: "Program or Project Title",
-            required: true,
-            showError: false,
-          }
+        templateOptions: {
+          label: 'Program or Project Title',
+          required: true,
+          showError: false,
+        },
       },
     ],
     templateOptions: {
-      completedValue: 100
-    }
+      completedValue: 100,
+    },
   };
 
-  stepTwo =  {
+  stepTwo = {
     key: 'purposeOfRegistration',
     fieldGroup: [
       {
@@ -118,49 +116,50 @@ export class UnevenStepsStepperComponent {
           options: [
             {
               label: 'Business Or Organization',
-              value: 'business'
+              value: 'business',
             },
             {
               label: 'U.S. State Government',
-              value: 'stateGovt'
+              value: 'stateGovt',
             },
             {
               label: 'U.S. Local Government',
-              value: 'localGovt'
+              value: 'localGovt',
             },
             {
               label: 'Tribal Government',
-              value: 'tribal'
+              value: 'tribal',
             },
             {
               label: 'Foreign Government',
-              value: 'foreign'
-            }
-          ]
-        }
+              value: 'foreign',
+            },
+          ],
+        },
       },
       {
         key: 'purposeOfRegistration',
         type: SdsFormlyTypes.RADIO,
         templateOptions: {
           hideOptions: true,
-          label: 'Why are you registering this entity to do business with the U.S. government?',
+          label:
+            'Why are you registering this entity to do business with the U.S. government?',
           options: [
             {
               label: `Bid on federal contracts or other procurement opportunities.`,
-              value: 'bidContracts'
+              value: 'bidContracts',
             },
             {
               label: 'Apply for federal assistance opportunities.',
-              value: 'assistanceOpportunities'
-            }
-          ]
-        }
-      }
-    ]
+              value: 'assistanceOpportunities',
+            },
+          ],
+        },
+      },
+    ],
   };
 
-  stepThree =  {
+  stepThree = {
     key: 'taxpayerDetails',
     fieldGroup: [
       {
@@ -168,26 +167,26 @@ export class UnevenStepsStepperComponent {
           <span>
             Please refer to your taxpayer documnets from IRS to find your taxpayer information
           </span>
-        `
+        `,
       },
       {
-        type: "input",
-        key: "taxpayerName",
+        type: 'input',
+        key: 'taxpayerName',
         templateOptions: {
-          label: "Taxpayer Name",
+          label: 'Taxpayer Name',
           hideOptional: true,
         },
       },
       {
-        type: "input",
-        key: "tinNumber",
+        type: 'input',
+        key: 'tinNumber',
         templateOptions: {
-          label: "TIN Number",
+          label: 'TIN Number',
           hideOptional: true,
         },
-      }
-    ]
-  }
+      },
+    ],
+  };
 
   model = {};
   stepValidityMap = {};

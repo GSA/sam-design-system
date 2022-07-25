@@ -1,4 +1,4 @@
-import { CommonModule } from "@angular/common";
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { IntroductionComponent } from './introduction.component';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
@@ -7,6 +7,6 @@ import { IconModule } from '@gsa-sam/ngx-uswds-icons';
   imports: [CommonModule, IconModule],
   exports: [IntroductionComponent],
   declarations: [IntroductionComponent],
-  providers: []
+  providers: [],
 })
 export class IntroductionModule {}

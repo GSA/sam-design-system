@@ -5,7 +5,10 @@ import { DocumentationExamplesPage } from '../shared/examples-page/examples.comp
 import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
-import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../shared/index';
+import {
+  DocumentationComponentsSharedModule,
+  DocumentationDemoList,
+} from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { InputBasicModule } from './demos/basic/input-basic.module';
 import { InputOptionalModule } from './demos/optional/input-optional.module';
@@ -18,15 +21,15 @@ const DEMOS = {
     type: InputBasic,
     code: require('!!raw-loader!./demos/basic/input-basic.component'),
     markup: require('!!raw-loader!./demos/basic/input-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/formly-input/demos/basic'
+    path: 'libs/documentation/src/lib/components/formly-input/demos/basic',
   },
   optional: {
     title: 'Optional Form Input',
     type: InputOptional,
     code: require('!!raw-loader!./demos/optional/input-optional.component'),
     markup: require('!!raw-loader!./demos/optional/input-optional.component.html'),
-    path: 'libs/documentation/src/lib/components/formly-input/demos/optional'
-  }
+    path: 'libs/documentation/src/lib/components/formly-input/demos/optional',
+  },
 };
 
 export const ROUTES = [
@@ -39,9 +42,9 @@ export const ROUTES = [
           pkg: 'formly',
           type: 'components',
           name: 'FormlyFieldInputComponent',
-          formType: 'input'
-        }
-      ]
+          formType: 'input',
+        },
+      ],
     },
     component: ComponentWrapperComponent,
     children: [
@@ -49,8 +52,8 @@ export const ROUTES = [
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
       { path: 'template', component: DocumentationTemplatePage },
-    ]
-  }
+    ],
+  },
 ];
 
 @NgModule({
@@ -58,8 +61,8 @@ export const ROUTES = [
     CommonModule,
     DocumentationComponentsSharedModule,
     InputBasicModule,
-    InputOptionalModule
-  ]
+    InputOptionalModule,
+  ],
 })
 export class InputModule {
   constructor(demoList: DocumentationDemoList) {

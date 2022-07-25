@@ -9,14 +9,18 @@ export interface SdsTruncateTextData {
 @Component({
   selector: 'sds-truncated-text-container',
   template: `
-    <div class="sds-overlay maxw-mobile radius-overlay padding-2">{{ data.text }}</div>
+    <div class="sds-overlay maxw-mobile radius-overlay padding-2">
+      {{ data.text }}
+    </div>
   `,
-  animations: [sdsTruncateTextAnimations.container]
+  animations: [sdsTruncateTextAnimations.container],
 })
 export class SdsTruncatedTextContainerComponent {
   @HostBinding('@container') _animationState = 'void';
 
-  constructor(@Inject(SDS_TRUNCATED_TEXT_DATA) public data: SdsTruncateTextData) {}
+  constructor(
+    @Inject(SDS_TRUNCATED_TEXT_DATA) public data: SdsTruncateTextData
+  ) {}
 
   /** Starts the animation. */
   startAnimation() {

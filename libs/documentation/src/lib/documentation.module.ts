@@ -237,12 +237,12 @@ import {
 
 import {
   ROUTES as EXPIRES_ROUTES,
-  ExpiresModule
+  ExpiresModule,
 } from './components/expires/expires.module';
 
 import {
   ROUTES as RICH_TEXT_ROUTES,
-  RichTextModule
+  RichTextModule,
 } from './components/rich-text/rich-text.module';
 
 import { DocumentationSharedModule } from './shared';
@@ -286,8 +286,8 @@ export const ROUTES: Routes = [
   { path: 'components/date-pipe', children: DATE_PIPE_ROUTES },
   { path: 'components/tree-table', children: TREE_TABLE_ROUTES },
   { path: 'components/slide-out', children: SLIDE_OUT_ROUTES },
-  { path: 'components/expires', children: EXPIRES_ROUTES},
-  { path: 'components/rich-text', children: RICH_TEXT_ROUTES},
+  { path: 'components/expires', children: EXPIRES_ROUTES },
+  { path: 'components/rich-text', children: RICH_TEXT_ROUTES },
 
   // Formly
   { path: 'components/formly-input', children: INPUT_ROUTES },
@@ -295,7 +295,10 @@ export const ROUTES: Routes = [
   { path: 'components/formly-checkbox', children: CHECKBOX_ROUTES },
   { path: 'components/formly-multicheckbox', children: MULTI_CHECKBOX_ROUTES },
   { path: 'components/formly-radio', children: RADIO_ROUTES },
-  { path: 'components/formly-rich-text-editor', children: FORMLY_RICH_TEXT_EDITOR_ROUTES },
+  {
+    path: 'components/formly-rich-text-editor',
+    children: FORMLY_RICH_TEXT_EDITOR_ROUTES,
+  },
   { path: 'components/formly-select', children: SELECT_ROUTES },
   { path: 'components/formly-stepper', children: FORMLY_STEPPER_ROUTES },
 

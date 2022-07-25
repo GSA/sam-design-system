@@ -29,7 +29,7 @@ export class AutocompleteBasic implements OnInit {
     console.log(value);
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   setup() {
     this.settings.id = 'autocompleteBasic';

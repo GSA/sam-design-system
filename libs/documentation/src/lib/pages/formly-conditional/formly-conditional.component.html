@@ -2,15 +2,25 @@
   <div class="grid-row">
     <div class="desktop:grid-col-6 tablet:grid-col-8 mobile:grid-col-12">
       <form [formGroup]="form" (ngSubmit)="submit()">
-        <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
+        <formly-form
+          [model]="model"
+          [fields]="fields"
+          [options]="options"
+          [form]="form"
+        ></formly-form>
       </form>
       <div class="button-label">
-      <button class="sds-button sds-button--primary" (click)="options.resetModel()"> Reset </button>
+        <button
+          class="sds-button sds-button--primary"
+          (click)="options.resetModel()"
+        >
+          Reset
+        </button>
       </div>
     </div>
   </div>
-  <div class="sam-example-pagination" >
+  <div class="sam-example-pagination">
     <h4>Filter Model:</h4>
-    <pre>{{model ? (model |json) : ''}}</pre>
+    <pre>{{ model ? (model | json) : '' }}</pre>
   </div>
 </div>

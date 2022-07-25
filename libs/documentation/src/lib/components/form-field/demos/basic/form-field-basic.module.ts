@@ -6,9 +6,15 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot()],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    SdsFormlyModule,
+    FormsModule,
+    FormlyModule.forRoot(),
+  ],
   declarations: [FormFieldBasic],
   exports: [FormFieldBasic],
-  bootstrap: [FormFieldBasic]
+  bootstrap: [FormFieldBasic],
 })
 export class FormFieldBasicModule {}

@@ -18,9 +18,9 @@ export class TextBasic {
       templateOptions: {
         label: 'Entity Name',
         placeholder: 'eg: Acme Corporation',
-        description: 'Enter the name of your entity.'
-      }
-    }
+        description: 'Enter the name of your entity.',
+      },
+    },
   ];
 
   // Method to programatically set the FormControl value which gets converted to the items array through the writeValue method

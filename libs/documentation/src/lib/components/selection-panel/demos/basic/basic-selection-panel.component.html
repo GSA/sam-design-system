@@ -1,24 +1,29 @@
 <div class="margin-bottom-2">
   <p>
-    The base input requirements for a selection panel component is a <code>[model]</code> of type <code>SelectionPanelModel</code>.
-    This model extends off of SideNavigationModel and contains an additional property called <code>selectionMode</code>,
-    which can either be 'SELECTION' or 'NAVIGATION' ('NAVIGATION' is default mode). On 'SELECTION' mode, the children of navigation links will not be shown while
-    on 'NAVIGATION' mode they will. By default, 'NAVIGATION' mode allows internal route navigation on selection, while 'SELECTION' mode
-    does not
+    The base input requirements for a selection panel component is a
+    <code>[model]</code> of type <code>SelectionPanelModel</code>. This model
+    extends off of SideNavigationModel and contains an additional property
+    called <code>selectionMode</code>, which can either be 'SELECTION' or
+    'NAVIGATION' ('NAVIGATION' is default mode). On 'SELECTION' mode, the
+    children of navigation links will not be shown while on 'NAVIGATION' mode
+    they will. By default, 'NAVIGATION' mode allows internal route navigation on
+    selection, while 'SELECTION' mode does not
   </p>
   <p>
-    The input <code>[navigateOnClick]</code> is of type <code>boolean</code> and can be used to toggle on/off route navigation
-    when a panel item is selected.
+    The input <code>[navigateOnClick]</code> is of type <code>boolean</code> and
+    can be used to toggle on/off route navigation when a panel item is selected.
   </p>
   <p>
-    An output event <code>(panelSelected)</code> is fired anytime a navigation item is selected with the selected <code>NavigationLink</code>
+    An output event <code>(panelSelected)</code> is fired anytime a navigation
+    item is selected with the selected <code>NavigationLink</code>
   </p>
 </div>
 
-<sds-selection-panel 
+<sds-selection-panel
   [model]="selectionPanelModel"
   [navigateOnClick]="true"
-  (panelSelected)="onPanelSelection($event)">
+  (panelSelected)="onPanelSelection($event)"
+>
 </sds-selection-panel>
 
 <div class="margin-top-5 height-card" id="contractOpp">

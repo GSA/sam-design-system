@@ -1,9 +1,12 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { NavigationLink, SideNavigationModel } from "../../side-navigation/model/side-navigation-model";
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  NavigationLink,
+  SideNavigationModel,
+} from '../../side-navigation/model/side-navigation-model';
 
 @Component({
   selector: `sds-sub-panel`,
-  templateUrl: './sub-panel.component.html'
+  templateUrl: './sub-panel.component.html',
 })
 export class SdsSubPanelComponent {
   @Input() model: NavigationLink[];
@@ -16,5 +19,4 @@ export class SdsSubPanelComponent {
     this.currentSelection = item;
     this.subPanelClicked.emit(item);
   }
-
 }

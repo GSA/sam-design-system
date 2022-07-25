@@ -2,14 +2,27 @@
 <p><code> tagText: 'SAM'</code> is used to add the tag with default color</p>
 
 <form [formGroup]="form">
-  <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
+  <formly-form
+    [model]="model"
+    [fields]="fields"
+    [options]="options"
+    [form]="form"
+  ></formly-form>
 </form>
 
-<h4>Template option for tag and tag class </h4>
-<p><code> tagText: 'DUNS', tagClass: 'sds-tag--info-purple'</code> are used to add the tag with custom class for color</p>
+<h4>Template option for tag and tag class</h4>
+<p>
+  <code> tagText: 'DUNS', tagClass: 'sds-tag--info-purple'</code> are used to
+  add the tag with custom class for color
+</p>
 
 <form [formGroup]="form">
-  <formly-form [model]="model" [fields]="fieldsTagsColor" [options]="options" [form]="form"></formly-form>
+  <formly-form
+    [model]="model"
+    [fields]="fieldsTagsColor"
+    [options]="options"
+    [form]="form"
+  ></formly-form>
 </form>
 
-<pre>{{model ? (model |json) : ''}}</pre>
+<pre>{{ model ? (model | json) : '' }}</pre>

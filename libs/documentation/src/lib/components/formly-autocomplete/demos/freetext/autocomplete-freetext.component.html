@@ -1,10 +1,17 @@
 <h4>Autocomplete with Free text inside formly</h4>
-<p> <code>this.settings.isFreeTextEnabled = true</code> is used to enable the free text mode. </p>
+<p>
+  <code>this.settings.isFreeTextEnabled = true</code> is used to enable the free
+  text mode.
+</p>
 <form [formGroup]="form">
-  <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
+  <formly-form
+    [model]="model"
+    [fields]="fields"
+    [options]="options"
+    [form]="form"
+  ></formly-form>
 </form>
 <br />
 
 <h4>Formly Model</h4>
-<pre>{{model |json}}</pre>
-
+<pre>{{ model | json }}</pre>

@@ -1,15 +1,19 @@
-
 <button class="usa-button" (click)="buttonClicked()">Show Slide Out</button>
 
 <ng-template #templateRef>
-  <div class="container" role="dialog" aria-labelledby="slide-out-title" cdkTrapFocus>
+  <div
+    class="container"
+    role="dialog"
+    aria-labelledby="slide-out-title"
+    cdkTrapFocus
+  >
     <div class="header">
       <h1 id="slide-out-title">Header</h1>
     </div>
     <div class="content">
       <div>
         <h2>B</h2>
-        <hr>
+        <hr />
         <ul class="list">
           <li class="result">
             <a>Baby</a>
@@ -27,5 +31,4 @@
       </div>
     </div>
   </div>
-
 </ng-template>

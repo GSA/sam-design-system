@@ -8,18 +8,15 @@ describe('SideToolbarComponent', () => {
   let component: SdsSideToolbarComponent;
   let fixture: ComponentFixture<SdsSideToolbarComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        SdsDialogModule,
-      ],
-      declarations: [ SdsSideToolbarComponent ],
-      providers: [
-        SdsDialogService
-      ]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [SdsDialogModule],
+        declarations: [SdsSideToolbarComponent],
+        providers: [SdsDialogService],
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SdsSideToolbarComponent);
@@ -32,13 +29,17 @@ describe('SideToolbarComponent', () => {
   });
 
   it('Should display advanced search button when mobile view is enabled', () => {
-    let responsiveViewButton = fixture.debugElement.query(By.css('#responsiveViewButton'));
+    let responsiveViewButton = fixture.debugElement.query(
+      By.css('#responsiveViewButton')
+    );
     expect(responsiveViewButton).toBeNull();
 
     component.isResponsiveView = true;
     fixture.detectChanges();
 
-    responsiveViewButton = fixture.debugElement.query(By.css('#responsiveViewButton'));
+    responsiveViewButton = fixture.debugElement.query(
+      By.css('#responsiveViewButton')
+    );
     expect(responsiveViewButton).toBeDefined();
   });
 });

@@ -1,10 +1,10 @@
-import {ESCAPE} from '@angular/cdk/keycodes';
-import {GlobalPositionStrategy, OverlayRef} from '@angular/cdk/overlay';
-import {Location} from '@angular/common';
-import {Observable, Subject} from 'rxjs';
-import {filter, take} from 'rxjs/operators';
-import {DialogPosition} from './dialog-config';
-import {SdsDialogContainerComponent} from './dialog-container.component';
+import { ESCAPE } from '@angular/cdk/keycodes';
+import { GlobalPositionStrategy, OverlayRef } from '@angular/cdk/overlay';
+import { Location } from '@angular/common';
+import { Observable, Subject } from 'rxjs';
+import { filter, take } from 'rxjs/operators';
+import { DialogPosition } from './dialog-config';
+import { SdsDialogContainerComponent } from './dialog-container.component';
 
 // Counter for unique dialog ids.
 let uniqueId = 0;
@@ -17,7 +17,8 @@ export class SdsDialogRef<T, R = any> {
   componentInstance: T;
 
   /** Whether the user is allowed to close the dialog. */
-  disableClose: boolean | undefined = this._containerInstance._config.disableClose;
+  disableClose: boolean | undefined = this._containerInstance._config
+    .disableClose;
 
   /** Subject for notifying the user that the dialog has finished opening. */
   private readonly _afterOpened = new Subject<void>();
@@ -35,26 +36,37 @@ export class SdsDialogRef<T, R = any> {
     private _overlayRef: OverlayRef,
     public _containerInstance: SdsDialogContainerComponent,
     _location?: Location,
-    readonly id: string = `sds-dialog-${uniqueId++}`) {
-
+    readonly id: string = `sds-dialog-${uniqueId++}`
+  ) {
     // Pass the id along to the container.
     _containerInstance._id = id;
 
     // Emit when opening animation completes
-    _containerInstance._animationStateChanged.pipe(
-      filter(event => event.phaseName === 'done' && (event.toState === 'enter' || event.toState === 'slideEnter')),
-      take(1)
-    )
-    .subscribe(() => {
-      this._afterOpened.next();
-      this._afterOpened.complete();
-    });
+    _containerInstance._animationStateChanged
+      .pipe(
+        filter(
+          (event) =>
+            event.phaseName === 'done' &&
+            (event.toState === 'enter' || event.toState === 'slideEnter')
+        ),
+        take(1)
+      )
+      .subscribe(() => {
+        this._afterOpened.next();
+        this._afterOpened.complete();
+      });
 
     // Dispose overlay when closing animation is complete
-    _containerInstance._animationStateChanged.pipe(
-      filter(event => event.phaseName === 'done' && (event.toState === 'exit' || event.toState === 'slideExit')),
-      take(1)
-    ).subscribe(() => this._overlayRef.dispose());
+    _containerInstance._animationStateChanged
+      .pipe(
+        filter(
+          (event) =>
+            event.phaseName === 'done' &&
+            (event.toState === 'exit' || event.toState === 'slideExit')
+        ),
+        take(1)
+      )
+      .subscribe(() => this._overlayRef.dispose());
 
     _overlayRef.detachments().subscribe(() => {
       this._beforeClosed.next(this._result);
@@ -65,8 +77,9 @@ export class SdsDialogRef<T, R = any> {
       this._overlayRef.dispose();
     });
 
-    _overlayRef.keydownEvents()
-      .pipe(filter(event => event.keyCode === ESCAPE && !this.disableClose))
+    _overlayRef
+      .keydownEvents()
+      .pipe(filter((event) => event.keyCode === ESCAPE && !this.disableClose))
       .subscribe(() => this.close());
   }
 
@@ -78,15 +91,16 @@ export class SdsDialogRef<T, R = any> {
     this._result = dialogResult;
 
     // Transition the backdrop in parallel to the dialog.
-    this._containerInstance._animationStateChanged.pipe(
-      filter(event => event.phaseName === 'start'),
-      take(1)
-    )
-    .subscribe(() => {
-      this._beforeClosed.next(dialogResult);
-      this._beforeClosed.complete();
-      this._overlayRef.detachBackdrop();
-    });
+    this._containerInstance._animationStateChanged
+      .pipe(
+        filter((event) => event.phaseName === 'start'),
+        take(1)
+      )
+      .subscribe(() => {
+        this._beforeClosed.next(dialogResult);
+        this._beforeClosed.complete();
+        this._overlayRef.detachBackdrop();
+      });
 
     this._containerInstance._startExitAnimation();
   }
@@ -134,13 +148,17 @@ export class SdsDialogRef<T, R = any> {
     const strategy = this._getPositionStrategy();
 
     if (position && (position.left || position.right)) {
-      position.left ? strategy.left(position.left) : strategy.right(position.right);
+      position.left
+        ? strategy.left(position.left)
+        : strategy.right(position.right);
     } else {
       strategy.centerHorizontally();
     }
 
     if (position && (position.top || position.bottom)) {
-      position.top ? strategy.top(position.top) : strategy.bottom(position.bottom);
+      position.top
+        ? strategy.top(position.top)
+        : strategy.bottom(position.bottom);
     } else {
       strategy.centerVertically();
     }
@@ -175,6 +193,7 @@ export class SdsDialogRef<T, R = any> {
 
   /** Fetches the position strategy object from the overlay ref. */
   private _getPositionStrategy(): GlobalPositionStrategy {
-    return this._overlayRef.getConfig().positionStrategy as GlobalPositionStrategy;
+    return this._overlayRef.getConfig()
+      .positionStrategy as GlobalPositionStrategy;
   }
 }

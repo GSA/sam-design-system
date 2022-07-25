@@ -1,23 +1,29 @@
 <b>Inputs</b>
-<p><code>minHeight:</code>number <i>(Optional)</i> - Minimum height in rems
-  that the editor can be. If text entered by the user expands beyond the bottom
-  of the editor, the editor will expand to display all text. This value is
-  expected to be an positive integer. The minimum value is 4 which will
-  provide enough room for a single paragraph line to appear. The maximum value is
-  31 which is large enough to allow for 10 lines of h1 text.</p>
+<p>
+  <code>minHeight:</code>number <i>(Optional)</i> - Minimum height in rems that
+  the editor can be. If text entered by the user expands beyond the bottom of
+  the editor, the editor will expand to display all text. This value is expected
+  to be an positive integer. The minimum value is 4 which will provide enough
+  room for a single paragraph line to appear. The maximum value is 31 which is
+  large enough to allow for 10 lines of h1 text.
+</p>
 
-<p><code>maxHeight:</code>number <i>(Optional)</i> - Maximum height in rems
-  that the editor can be. If text entered by the user expands beyond the bottom
-  of the editor, the editor will not expand further and a scrolling within the
+<p>
+  <code>maxHeight:</code>number <i>(Optional)</i> - Maximum height in rems that
+  the editor can be. If text entered by the user expands beyond the bottom of
+  the editor, the editor will not expand further and a scrolling within the
   editor will be enabled. This value is expected to be an positive integer. The
   minimum value is 4 which will provide enough room for a single paragraph line
   to appear. The maximum value is 31 which is large enough to allow for 10 lines
-  of h1 text.</p>
+  of h1 text.
+</p>
 
-<p>The rich text editor component can be passed a formControl for use in
-  reactive forms. Subscribing to <code>valueChanges</code> allows developers
-  to get updates as users change value of the rich text editor. </p>
+<p>
+  The rich text editor component can be passed a formControl for use in reactive
+  forms. Subscribing to <code>valueChanges</code> allows developers to get
+  updates as users change value of the rich text editor.
+</p>
 
 <sds-rich-text [formControl]="fc"></sds-rich-text>
 
-<p>Rich Text Editor Value: {{fc.value}}</p>
+<p>Rich Text Editor Value: {{ fc.value }}</p>

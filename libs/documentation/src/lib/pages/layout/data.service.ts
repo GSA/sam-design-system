@@ -13,8 +13,11 @@ export class DataService {
         let filterText = '';
         if (search.filter.keyword && search.filter.keyword.keywordTags) {
           filterText = search.filter.keyword.keywordTags[0].text;
-        } else if (search.filter.keyword && search.filter.keyword.keywordTextarea) {
-          filterText =  search.filter.keyword.keywordTextarea;
+        } else if (
+          search.filter.keyword &&
+          search.filter.keyword.keywordTextarea
+        ) {
+          filterText = search.filter.keyword.keywordTextarea;
         }
         if (search.filter.keyword || search.filter.location) {
           const toReturn = [];
@@ -22,9 +25,7 @@ export class DataService {
             const item = this.data[i];
             if (
               search.filter.keyword &&
-              item.title
-                .toLowerCase()
-                .indexOf(filterText.toLowerCase()) !== -1
+              item.title.toLowerCase().indexOf(filterText.toLowerCase()) !== -1
             ) {
               toReturn.push(item);
             } else if (search.filter.location) {

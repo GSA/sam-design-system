@@ -1,15 +1,28 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <div *ngIf="data.title" sds-dialog-title>{{data.title}}</div>
-  <div *ngIf="data.subtitle" sds-dialog-subtitle>{{data.subtitle}}</div>
+  <div *ngIf="data.title" sds-dialog-title>{{ data.title }}</div>
+  <div *ngIf="data.subtitle" sds-dialog-subtitle>{{ data.subtitle }}</div>
   <div sds-dialog-content>
-    <formly-form [form]="form" [fields]="fields" [options]="options" [model]="model"></formly-form>
+    <formly-form
+      [form]="form"
+      [fields]="fields"
+      [options]="options"
+      [model]="model"
+    ></formly-form>
   </div>
   <div sds-dialog-actions>
-    <button class="usa-button usa-button--base" (click)="onCancel()" type="button">
-      {{cancel}}
+    <button
+      class="usa-button usa-button--base"
+      (click)="onCancel()"
+      type="button"
+    >
+      {{ cancel }}
     </button>
-    <button class="usa-button" [disabled]="disableSubmitButton ? !form.valid  : disableSubmitButton" type="submit">
-      {{submit}}
+    <button
+      class="usa-button"
+      [disabled]="disableSubmitButton ? !form.valid : disableSubmitButton"
+      type="submit"
+    >
+      {{ submit }}
     </button>
   </div>
 </form>

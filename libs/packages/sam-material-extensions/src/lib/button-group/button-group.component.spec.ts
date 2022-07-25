@@ -1,20 +1,26 @@
-import { ChangeDetectionStrategy, Component, DebugElement, ViewChild } from '@angular/core';
-import { async, ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DebugElement,
+  ViewChild,
+} from '@angular/core';
+import {
+  async,
+  ComponentFixture,
+  TestBed,
+  waitForAsync,
+} from '@angular/core/testing';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { By } from '@angular/platform-browser';
 
 import {
   SdsButtonGroupComponent,
-  SdsButtonGroupOptionComponent
+  SdsButtonGroupOptionComponent,
 } from './button-group.component';
 
 @Component({
   template: `
-    <sds-button-group
-      #buttonGroup
-      [mode]="'radio'"
-      class="sds-button-group"
-    >
+    <sds-button-group #buttonGroup [mode]="'radio'" class="sds-button-group">
       <sds-button-group-option value="reports">
         Reports
       </sds-button-group-option>
@@ -69,12 +75,11 @@ describe('ButtonGroupComponent', () => {
         RadioWrapperComponent,
         CheckboxWrapperComponent,
       ],
-      imports: [MatButtonToggleModule]
+      imports: [MatButtonToggleModule],
     }).compileComponents();
   });
 
   describe('RadioWrapper', () => {
-
     beforeEach(() => {
       fixture = TestBed.createComponent(RadioWrapperComponent);
       component = fixture.componentInstance;
@@ -85,13 +90,13 @@ describe('ButtonGroupComponent', () => {
     it('should create', () => {
       expect(component).toBeTruthy();
     });
-  
+
     it('should show 3 buttons', () => {
       const nativeEl = buttonGroupEl.nativeElement;
       const buttonsDisplayed = nativeEl.querySelectorAll('.usa-button');
       expect(buttonsDisplayed.length).toEqual(3);
     });
-  
+
     it('clicking two buttons should cause only second button to have outline classes removed', () => {
       const nativeEl = buttonGroupEl.nativeElement;
       const buttonsDisplayed = nativeEl.querySelectorAll('.usa-button');
@@ -106,18 +111,17 @@ describe('ButtonGroupComponent', () => {
   });
 
   describe('Checkbox Wrapper', () => {
-
     beforeEach(() => {
       fixture = TestBed.createComponent(CheckboxWrapperComponent);
       component = fixture.componentInstance;
       buttonGroupEl = fixture.debugElement;
       fixture.detectChanges();
     });
-  
+
     it('should create', () => {
       expect(component).toBeTruthy();
     });
-  
+
     it('clicking two buttons should cause both to have outline classes removed', () => {
       const nativeEl = buttonGroupEl.nativeElement;
       const buttonsDisplayed = nativeEl.querySelectorAll('.usa-button');
@@ -129,6 +133,5 @@ describe('ButtonGroupComponent', () => {
       expect(usaButtonsDe[1].classes['usa-button--outline']).toBeFalsy();
       expect(usaButtonsDe[2].classes['usa-button--outline']).toBeTruthy();
     });
-  })
-
+  });
 });

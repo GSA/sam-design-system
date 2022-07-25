@@ -15,6 +15,6 @@ import { SdsFormlyModule } from '@gsa-sam/sam-formly';
   ],
   declarations: [FormlyAutocompleteTag],
   exports: [FormlyAutocompleteTag],
-  bootstrap: [FormlyAutocompleteTag]
+  bootstrap: [FormlyAutocompleteTag],
 })
 export class FormlyAutocompleteTagModule {}

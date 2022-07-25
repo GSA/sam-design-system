@@ -1,5 +1,5 @@
-import { FocusMonitor, FocusableOption, FocusOrigin } from "@angular/cdk/a11y";
-import { ENTER, SPACE, hasModifierKey } from "@angular/cdk/keycodes";
+import { FocusMonitor, FocusableOption, FocusOrigin } from '@angular/cdk/a11y';
+import { ENTER, SPACE, hasModifierKey } from '@angular/cdk/keycodes';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -7,31 +7,32 @@ import {
   ElementRef,
   Host,
   OnDestroy,
-  ViewEncapsulation
-} from "@angular/core";
-import { merge, Subscription } from "rxjs";
-import { filter } from "rxjs/operators";
-import { SdsAccordionItemComponent } from "./accordion-item.component";
+  ViewEncapsulation,
+} from '@angular/core';
+import { merge, Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
+import { SdsAccordionItemComponent } from './accordion-item.component';
 
 @Component({
-  selector: "sds-accordion-item-header",
-  templateUrl: "./accordion-item-header.component.html",
-  styleUrls:['./accordion-item-header.component.scss'],
+  selector: 'sds-accordion-item-header',
+  templateUrl: './accordion-item-header.component.html',
+  styleUrls: ['./accordion-item-header.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    class: "sds-accordion__trigger",
-    role: "button",
-    "[attr.id]": "accordionItem._headerId",
-    "[attr.tabindex]": "disabled ? -1 : 0",
-    "[attr.aria-controls]": "_getAccordionItemId()",
-    "[attr.aria-expanded]": "_isExpanded()",
-    "[attr.aria-disabled]": "accordionItem.disabled",
-    "(click)": "_toggle()",
-    "(keydown)": "_keydown($event)"
-  }
+    class: 'sds-accordion__trigger',
+    role: 'button',
+    '[attr.id]': 'accordionItem._headerId',
+    '[attr.tabindex]': 'disabled ? -1 : 0',
+    '[attr.aria-controls]': '_getAccordionItemId()',
+    '[attr.aria-expanded]': '_isExpanded()',
+    '[attr.aria-disabled]': 'accordionItem.disabled',
+    '(click)': '_toggle()',
+    '(keydown)': '_keydown($event)',
+  },
 })
-export class SdsAccordionItemHeaderComponent implements OnDestroy, FocusableOption {
+export class SdsAccordionItemHeaderComponent
+  implements OnDestroy, FocusableOption {
   private _parentChangeSubscription = Subscription.EMPTY;
   constructor(
     @Host() public accordionItem: SdsAccordionItemComponent,
@@ -39,27 +40,25 @@ export class SdsAccordionItemHeaderComponent implements OnDestroy, FocusableOpti
     private _focusMonitor: FocusMonitor,
     private _changeDetectorRef: ChangeDetectorRef
   ) {
-
     // Since the toggle state depends on an @Input on the accordion item, we
     // need to subscribe and trigger change detection manually.
     this._parentChangeSubscription = merge(
       accordionItem.opened,
       accordionItem.closed,
       accordionItem._inputChanges.pipe(
-        filter(changes => !!(changes["disabled"]))
+        filter((changes) => !!changes['disabled'])
       )
     ).subscribe(() => this._changeDetectorRef.markForCheck());
 
-    _focusMonitor.monitor(_element).subscribe(origin => {
+    _focusMonitor.monitor(_element).subscribe((origin) => {
       if (origin && accordionItem.accordion) {
         accordionItem.accordion._handleHeaderFocus(this);
       }
     });
-
   }
 
   /**
-   * Whether the associated accordion item is disabled. 
+   * Whether the associated accordion item is disabled.
    * Implemented as a part of `FocusableOption`.
    */
   get disabled() {
@@ -107,7 +106,7 @@ export class SdsAccordionItemHeaderComponent implements OnDestroy, FocusableOpti
    * @param origin Origin of the action that triggered the focus.
    * @docs-private
    */
-  focus(origin: FocusOrigin = "program") {
+  focus(origin: FocusOrigin = 'program') {
     this._focusMonitor.focusVia(this._element, origin);
   }
 

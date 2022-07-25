@@ -15,6 +15,6 @@ import { SdsFormlyModule } from '@gsa-sam/sam-formly';
   ],
   declarations: [TemplateOptionAnnounceLabel],
   exports: [TemplateOptionAnnounceLabel],
-  bootstrap: [TemplateOptionAnnounceLabel]
+  bootstrap: [TemplateOptionAnnounceLabel],
 })
 export class TemplateOptionsAnnounceLabelModule {}

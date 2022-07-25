@@ -7,7 +7,7 @@ import {
   AfterViewInit,
   HostListener,
   Injector,
-  ViewContainerRef
+  ViewContainerRef,
 } from '@angular/core';
 import { coerceNumberProperty } from '@angular/cdk/coercion';
 import {
@@ -15,7 +15,7 @@ import {
   OverlayConfig,
   Overlay,
   OverlayRef,
-  ConnectedPosition
+  ConnectedPosition,
 } from '@angular/cdk/overlay';
 import { Subscription, merge } from 'rxjs';
 import { startWith } from 'rxjs/operators';
@@ -107,7 +107,7 @@ export class SdsTruncateTextByLineDirective
       originX: 'start',
       originY: 'bottom',
       overlayX: 'start',
-      overlayY: 'top'
+      overlayY: 'top',
     };
     const config = new OverlayConfig({
       positionStrategy: this._overlay
@@ -118,7 +118,7 @@ export class SdsTruncateTextByLineDirective
         .withTransformOriginOn('.sds-overlay'),
       hasBackdrop: true,
       backdropClass: 'cdk-overlay-transparent-backdrop',
-      scrollStrategy: this._overlay.scrollStrategies.close()
+      scrollStrategy: this._overlay.scrollStrategies.close(),
     });
     return this._overlay.create(config);
   }

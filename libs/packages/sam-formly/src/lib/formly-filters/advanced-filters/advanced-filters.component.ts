@@ -1,4 +1,11 @@
-import { Component, Input, ChangeDetectorRef, Output, EventEmitter, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  ChangeDetectorRef,
+  Output,
+  EventEmitter,
+  OnInit,
+} from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { SdsDialogService } from '@gsa-sam/components';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
@@ -11,7 +18,7 @@ import { tap, startWith } from 'rxjs/operators';
 @Component({
   selector: 'sds-advanced-filters',
   templateUrl: './advanced-filters.component.html',
-  styleUrls: ['./advanced-filters.component.scss']
+  styleUrls: ['./advanced-filters.component.scss'],
 })
 export class AdvancedFiltersComponent implements OnInit {
   /**
@@ -50,7 +57,9 @@ export class AdvancedFiltersComponent implements OnInit {
    */
   @Input() enablePopover = false;
 
-  @Output() showInactiveFiltersChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() showInactiveFiltersChange: EventEmitter<boolean> = new EventEmitter<
+    boolean
+  >();
 
   selectAll = false;
   showInactiveOnOpen = false;
@@ -63,7 +72,7 @@ export class AdvancedFiltersComponent implements OnInit {
     public dialog: SdsDialogService,
     private advancedFiltersService: SdsAdvancedFiltersService,
     private cdr: ChangeDetectorRef
-  ) { }
+  ) {}
 
   ngOnInit() {
     if (!this.enablePopover) {
@@ -76,28 +85,42 @@ export class AdvancedFiltersComponent implements OnInit {
     const modalFields: FormlyFieldConfig[] = this.advancedFiltersService.convertToCheckboxes(
       this.fields
     );
-    const keys = Object.keys(selectedform.get(this.filtersFieldGroupKey).controls);
+    const keys = Object.keys(
+      selectedform.get(this.filtersFieldGroupKey).controls
+    );
     if (!isOnload) {
       this.selectAll = selectAllValue;
-      keys.forEach(key => {
+      keys.forEach((key) => {
         if (key !== 'selectAll' && key !== 'showInactive') {
-          let currentField = modalFields.find(item => item.key === key);
+          let currentField = modalFields.find((item) => item.key === key);
           if (currentField.key === key && currentField.type === 'checkbox') {
-            selectedform.get(this.filtersFieldGroupKey).get(key).setValue(this.selectAll);
+            selectedform
+              .get(this.filtersFieldGroupKey)
+              .get(key)
+              .setValue(this.selectAll);
           } else if (currentField.type === 'multicheckbox') {
             const array = [];
             if (this.selectAll) {
               currentField.templateOptions.options.forEach((option: any) => {
                 array.push(option.key);
               });
-              selectedform.get(this.filtersFieldGroupKey).get(key).setValue(array);
+              selectedform
+                .get(this.filtersFieldGroupKey)
+                .get(key)
+                .setValue(array);
 
               this.cdr.detectChanges();
             } else {
               if (this.enablePopover) {
-                selectedform.get(this.filtersFieldGroupKey).get(key).setValue(false);
+                selectedform
+                  .get(this.filtersFieldGroupKey)
+                  .get(key)
+                  .setValue(false);
               } else {
-                selectedform.get(this.filtersFieldGroupKey).get(key).setValue([]);
+                selectedform
+                  .get(this.filtersFieldGroupKey)
+                  .get(key)
+                  .setValue([]);
               }
             }
           }
@@ -105,12 +128,20 @@ export class AdvancedFiltersComponent implements OnInit {
       });
     } else {
       const allValues = [];
-      keys.forEach(key => {
+      keys.forEach((key) => {
         if (key !== 'selectAll') {
-          let currentField = modalFields.find(item => item.key === key);
+          let currentField = modalFields.find((item) => item.key === key);
           let val;
-          if (Array.isArray(selectedform.get(this.filtersFieldGroupKey).get(key).value)) {
-            val = selectedform.get(this.filtersFieldGroupKey).get(key).value.length > 0 ? true : false;
+          if (
+            Array.isArray(
+              selectedform.get(this.filtersFieldGroupKey).get(key).value
+            )
+          ) {
+            val =
+              selectedform.get(this.filtersFieldGroupKey).get(key).value
+                .length > 0
+                ? true
+                : false;
           } else {
             val = selectedform.get(this.filtersFieldGroupKey).get(key).value;
           }
@@ -136,12 +167,12 @@ export class AdvancedFiltersComponent implements OnInit {
     const data: SdsFormlyDialogData = {
       fields: checkboxFieldConfigs,
       submit: 'Update',
-      title: 'More Filters'
+      title: 'More Filters',
     };
 
     const dialogRef: any = this.dialog.open(SdsFormlyDialogComponent, {
       width: 'medium',
-      data: data
+      data: data,
     });
 
     dialogRef.componentInstance.submitFn.subscribe((result) => {
@@ -149,13 +180,11 @@ export class AdvancedFiltersComponent implements OnInit {
         this.updateSelectedFields(result);
       }
       dialogRef.close();
-    }
-    );
+    });
 
     dialogRef.componentInstance.cancelFn.subscribe(() => {
       dialogRef.close();
     });
-
   }
 
   updateSelectedFields(result: any) {
@@ -176,29 +205,35 @@ export class AdvancedFiltersComponent implements OnInit {
 
   getCheckboxFieldConfigs(hideChildrenGroups = false) {
     const modalFields: FormlyFieldConfig[] = this.advancedFiltersService.convertToCheckboxes(
-      this.fields, hideChildrenGroups
+      this.fields,
+      hideChildrenGroups
     );
     if (this.sortMoreFilterBy) {
       modalFields.sort((a: FormlyFieldConfig, b: FormlyFieldConfig) =>
         a.templateOptions && b.templateOptions
           ? a.templateOptions[this.sortMoreFilterBy].localeCompare(
-            b.templateOptions[this.sortMoreFilterBy]
-          )
+              b.templateOptions[this.sortMoreFilterBy]
+            )
           : 0
       );
     }
     const filedGroup: FormlyFieldConfig[] = this.filedGroup;
     const showInactiveGroup: FormlyFieldConfig[] = this.showInactiveGroup;
 
-    let updateField: FormlyFieldConfig[] = [{
-      key: 'filterToggle',
-      fieldGroup: [...filedGroup, {
-        key: this.filtersFieldGroupKey,
-        fieldGroup: [...modalFields]
-      }]
-    }];
+    let updateField: FormlyFieldConfig[] = [
+      {
+        key: 'filterToggle',
+        fieldGroup: [
+          ...filedGroup,
+          {
+            key: this.filtersFieldGroupKey,
+            fieldGroup: [...modalFields],
+          },
+        ],
+      },
+    ];
     if (this.isInactiveValueFieldShown) {
-      updateField.push(...showInactiveGroup)
+      updateField.push(...showInactiveGroup);
     }
 
     return updateField;
@@ -215,17 +250,17 @@ export class AdvancedFiltersComponent implements OnInit {
             templateOptions: {
               label: 'Select All',
               hideOptional: true,
-              id: 'moreFilterSelectAll'
+              id: 'moreFilterSelectAll',
             },
             hooks: {
-              onInit: field => {
+              onInit: (field) => {
                 let isOnload = true;
                 const form = field.parent.formControl;
                 form
                   .get('selectAll')
                   .valueChanges.pipe(
                     startWith(form.get('selectAll').value),
-                    tap(selectAllValue => {
+                    tap((selectAllValue) => {
                       this.onSelectAllChange(
                         selectAllValue,
                         form,
@@ -236,21 +271,21 @@ export class AdvancedFiltersComponent implements OnInit {
                     })
                   )
                   .subscribe();
-              }
-            }
+              },
+            },
           },
           {
-            template: '<hr/>'
-          }
-        ]
-      }
+            template: '<hr/>',
+          },
+        ],
+      },
     ];
   }
 
   get showInactiveGroup(): FormlyFieldConfig[] {
     return [
       {
-        template: '<hr/>'
+        template: '<hr/>',
       },
       {
         fieldGroup: [
@@ -262,27 +297,27 @@ export class AdvancedFiltersComponent implements OnInit {
               label: 'Show Inactive Filter Values (Indicated by *)',
               hideOptional: true,
               id: 'moreFilterSelectAll',
-              textAlignEnd: true
+              textAlignEnd: true,
             },
             hooks: {
-              onInit: field => {
+              onInit: (field) => {
                 let isOnload = true;
                 const form = field.parent.formControl;
                 form
                   .get('showInactive')
                   .valueChanges.pipe(
                     startWith(form.get('showInactive').value),
-                    tap(showInactiveValue => {
+                    tap((showInactiveValue) => {
                       this.showInactive = showInactiveValue;
                       isOnload = false;
                     })
                   )
                   .subscribe();
-              }
-            }
-          }
-        ]
-      }
+              },
+            },
+          },
+        ],
+      },
     ];
   }
 }

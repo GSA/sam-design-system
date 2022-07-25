@@ -3,10 +3,15 @@
 <p><code>import SdsFormlyModule from '@gsa-sam/sam-formly';</code></p>
 
 <div class="margin-bottom-2">
-  The input of <code>[defaultModel]</code> allows you to define what values to reset the form to
-  when 'Reset All' is clicked. If this is not provided, then the value used will be either the initial
-  model values during formly's init or the defaultValue property in formly's config - in that order of
-  priority.
+  The input of <code>[defaultModel]</code> allows you to define what values to
+  reset the form to when 'Reset All' is clicked. If this is not provided, then
+  the value used will be either the initial model values during formly's init or
+  the defaultValue property in formly's config - in that order of priority.
 </div>
 
-<sds-filters [form]="form" [fields]="fields" [model]="model" [defaultModel]="defaultModel"></sds-filters>
+<sds-filters
+  [form]="form"
+  [fields]="fields"
+  [model]="model"
+  [defaultModel]="defaultModel"
+></sds-filters>

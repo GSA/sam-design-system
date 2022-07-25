@@ -30,7 +30,7 @@ const DEMOS = {
     module: require('!!raw-loader!./demos/template-ref/slide-out-template-ref.module'),
     markup: require('!!raw-loader!./demos/template-ref/slide-out-template-ref.component.html'),
     path: 'libs/documentation/src/lib/components/slide-out/demos/template-ref',
-  }
+  },
 };
 
 export const ROUTES = [
@@ -60,7 +60,7 @@ export const ROUTES = [
     CommonModule,
     DocumentationComponentsSharedModule,
     SlideOutBasicModule,
-    SlideOutTemplateRefModule
+    SlideOutTemplateRefModule,
   ],
 })
 export class SlideOutModule {

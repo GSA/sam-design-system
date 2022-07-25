@@ -7,16 +7,14 @@ import { SDSTabOutsideDirective } from './taboutside.directive';
 
 @Component({
   selector: 'test-cmp',
-  template: `
-<div #var sds-tab-outside
-(tabOutside)="tabOutsideHandler()">
-<p class="test">
-test content
-</p>
-</div>
-<p class="test2">
-click outside target content
-</p>`
+  template: ` <div #var sds-tab-outside (tabOutside)="tabOutsideHandler()">
+      <p class="test">
+        test content
+      </p>
+    </div>
+    <p class="test2">
+      click outside target content
+    </p>`,
 })
 class TestComponent {
   @Output() action: EventEmitter<any> = new EventEmitter<any>();
@@ -39,9 +37,7 @@ describe('The Sam Tab Outside directive', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
     directive = fixture.debugElement
-      .query(
-        By.directive(SDSTabOutsideDirective)
-      )
+      .query(By.directive(SDSTabOutsideDirective))
       .injector.get(SDSTabOutsideDirective);
   });
 
@@ -50,7 +46,7 @@ describe('The Sam Tab Outside directive', () => {
   });
 
   it('should check for tab outside', () => {
-    component.action.subscribe(val => {
+    component.action.subscribe((val) => {
       expect(val).toBe(true);
     });
     const el = fixture.debugElement.query(By.css('.test'));

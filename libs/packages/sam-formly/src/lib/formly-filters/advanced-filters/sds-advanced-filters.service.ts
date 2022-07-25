@@ -7,10 +7,17 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 export class SdsAdvancedFiltersService {
   constructor() {}
 
-  convertToCheckboxes(origFields: FormlyFieldConfig[], hideChildrenGroups = false): FormlyFieldConfig[] {
+  convertToCheckboxes(
+    origFields: FormlyFieldConfig[],
+    hideChildrenGroups = false
+  ): FormlyFieldConfig[] {
     const fields: FormlyFieldConfig[] = [];
     origFields.forEach((origField) => {
-      if (origField.fieldGroup && origField.fieldGroup.length > 1 && !hideChildrenGroups) {
+      if (
+        origField.fieldGroup &&
+        origField.fieldGroup.length > 1 &&
+        !hideChildrenGroups
+      ) {
         const field = this.createMulticheckbox(origField);
         fields.push(field);
       } else {
@@ -98,12 +105,17 @@ export class SdsAdvancedFiltersService {
     selectedFields: any,
     model: object
   ) {
-    if (selectedFields && (selectedFields.length || typeof(selectedFields) === 'boolean')) {
+    if (
+      selectedFields &&
+      (selectedFields.length || typeof selectedFields === 'boolean')
+    ) {
       parentField.hide = false;
       if (selectedFields === true || selectedFields.length) {
         parentField.fieldGroup.forEach((field) => {
           const key = field.key;
-          const fieldSelected = selectedFields.length ? selectedFields.includes(key) : field;
+          const fieldSelected = selectedFields.length
+            ? selectedFields.includes(key)
+            : field;
           this.updateSingleField(field, fieldSelected, model);
         });
       }

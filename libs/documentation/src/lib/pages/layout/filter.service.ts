@@ -11,7 +11,7 @@ import { SdsFormlyTypes } from '@gsa-sam/sam-formly';
 import { Subject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FilterService {
   public settings = new SDSAutocompletelConfiguration();
@@ -37,7 +37,7 @@ export class FilterService {
           // tab 1
           {
             templateOptions: {
-              tabHeader: 'Simple Search'
+              tabHeader: 'Simple Search',
             },
             fieldGroupClassName: 'grid-row',
             fieldGroup: [
@@ -50,11 +50,11 @@ export class FilterService {
                   options: [
                     {
                       label: 'Any Words',
-                      value: 'anyWords'
+                      value: 'anyWords',
                     },
                     {
                       label: 'All Words',
-                      value: 'allWords'
+                      value: 'allWords',
                     },
                   ],
                 },
@@ -66,7 +66,7 @@ export class FilterService {
                 templateOptions: {
                   label: 'Exact Phrase',
                   hideOptional: true,
-                }
+                },
               },
               {
                 key: 'keywordTags',
@@ -75,20 +75,21 @@ export class FilterService {
                 templateOptions: {
                   expand: false,
                   configuration: {
-                    id: "keyword",
-                    primaryKeyField: "key",
-                    primaryTextField: "text",
-                    labelText: "Search Keyword",
+                    id: 'keyword',
+                    primaryKeyField: 'key',
+                    primaryTextField: 'text',
+                    labelText: 'Search Keyword',
                     selectionMode: SelectionMode.MULTIPLE,
-                    autocompletePlaceHolderText: "",
+                    autocompletePlaceHolderText: '',
                     isTagModeEnabled: true,
                     // Bind context of this service so we have access to radio button value
                     displayModifierFn: this.displayModifierFn.bind(this),
                     // Add observable so that we can tell autocomplete to run change detection later when radio option changes
                     registerChanges$: this.keywordChangeSubject.asObservable(),
-                  }
-                }
-              }]
+                  },
+                },
+              },
+            ],
           },
           //tab 2
           {
@@ -102,22 +103,24 @@ export class FilterService {
                 type: SdsFormlyTypes.TEXTAREA,
                 className: 'display-block padding-left-2 padding-right-2',
                 templateOptions: {
-                  placeholder: 'e.g. ((rental AND property) OR (lease and property) AND NOT ( "short term"))',
+                  placeholder:
+                    'e.g. ((rental AND property) OR (lease and property) AND NOT ( "short term"))',
                   required: true,
-                }
+                },
               },
               {
                 type: SdsFormlyTypes.BUTTON,
                 id: 'booleanSearchSubmit',
-                className: 'display-block margin-top-1 padding-left-2 padding-right-2',
+                className:
+                  'display-block margin-top-1 padding-left-2 padding-right-2',
                 templateOptions: {
                   text: 'Search',
                   type: 'submit',
-                }
-              }
-            ]
-          }
-        ]
+                },
+              },
+            ],
+          },
+        ],
       },
     },
     {
@@ -215,7 +218,7 @@ export class FilterService {
       type: 'input',
       templateOptions: {
         label: 'Socio-Economic Status',
-        group: 'accordion'
+        group: 'accordion',
       },
     },
     {

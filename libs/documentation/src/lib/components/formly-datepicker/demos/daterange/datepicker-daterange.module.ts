@@ -15,6 +15,6 @@ import { SdsFormlyModule } from '@gsa-sam/sam-formly';
   ],
   declarations: [FormlyDatepickerDateRange],
   exports: [FormlyDatepickerDateRange],
-  bootstrap: [FormlyDatepickerDateRange]
+  bootstrap: [FormlyDatepickerDateRange],
 })
 export class FormlyDatepickerDateRangeModule {}

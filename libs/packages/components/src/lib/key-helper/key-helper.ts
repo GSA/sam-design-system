@@ -1,48 +1,59 @@
 export class KeyHelper {
-
   private _allowedKeys: string[] = [];
 
   private _currentlySupported = [
-    'alt','enter','up','down','left','right','tab','esc','space',
-    'shift','backspace','1','2','3','4','5','6','7','8',
-    '9','0', 'delete'
+    'alt',
+    'enter',
+    'up',
+    'down',
+    'left',
+    'right',
+    'tab',
+    'esc',
+    'space',
+    'shift',
+    'backspace',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '0',
+    'delete',
   ];
 
-  constructor (...keys) {
+  constructor(...keys) {
     this._setAllowedKeys(...keys);
   }
 
-  public isAllowed (event): boolean {
-    const val = this._allowedKeys
-      .reduce(
-        (val, key) => {
-          return KeyHelper.is(key, event) || val;
-        },
-        false
-      );
+  public isAllowed(event): boolean {
+    const val = this._allowedKeys.reduce((val, key) => {
+      return KeyHelper.is(key, event) || val;
+    }, false);
     return val;
   }
 
   private _setAllowedKeys(...keys) {
-    keys.forEach(
-      key => {
-        if (this._currentlySupported.indexOf(key) !== -1) {
-          this._allowedKeys.push(key);
-        } else {
-          const ok = this._allowedToString();
-          const msg = `Only supports ${ok} at this time`;
-          throw new TypeError(msg);
-        }
+    keys.forEach((key) => {
+      if (this._currentlySupported.indexOf(key) !== -1) {
+        this._allowedKeys.push(key);
+      } else {
+        const ok = this._allowedToString();
+        const msg = `Only supports ${ok} at this time`;
+        throw new TypeError(msg);
       }
-    );
+    });
   }
 
-  private _allowedToString (): string {
+  private _allowedToString(): string {
     return this._allowedKeys.join(', ');
   }
 
-  public static getKeyCode (event: any): string {
-
+  public static getKeyCode(event: any): string {
     if (!event) {
       return undefined;
     } else if (event.key) {
@@ -54,32 +65,31 @@ export class KeyHelper {
     } else {
       return undefined;
     }
-
   }
 
-  public static getNumberFromKey (event): number {
+  public static getNumberFromKey(event): number {
     const tests = [
-      KeyHelper._zero, KeyHelper._one, KeyHelper._two,
-      KeyHelper._three, KeyHelper._four, KeyHelper._five,
-      KeyHelper._six, KeyHelper._seven, KeyHelper._eight,
-      KeyHelper._nine
+      KeyHelper._zero,
+      KeyHelper._one,
+      KeyHelper._two,
+      KeyHelper._three,
+      KeyHelper._four,
+      KeyHelper._five,
+      KeyHelper._six,
+      KeyHelper._seven,
+      KeyHelper._eight,
+      KeyHelper._nine,
     ];
 
-    return tests.reduce(
-      (val: number | undefined, test: Function) => {
-        return val !== undefined
-          ? val
-          : test(event);
-      }, undefined
-    );
+    return tests.reduce((val: number | undefined, test: Function) => {
+      return val !== undefined ? val : test(event);
+    }, undefined);
   }
 
-  public static is (
-    validKeyParam: string,
-    event: KeyboardEvent | any): boolean {
+  public static is(validKeyParam: string, event: KeyboardEvent | any): boolean {
     let lowercased = validKeyParam.toLowerCase();
     switch (lowercased) {
-      case 'alt'  :
+      case 'alt':
         return this._isAltKey(event);
       case 'enter':
         return this._isEnter(event);
@@ -128,303 +138,344 @@ export class KeyHelper {
     }
   }
 
-  private static _isEnter (e: KeyboardEvent | any) {
-    if (e.code === 'Enter'
-      || e.key === 'Enter'
-      || e.keyIdentifier === 'Enter'
-      || e.which === 13
-      || e.charCode === 13
-      || e.keyCode === 13) {
+  private static _isEnter(e: KeyboardEvent | any) {
+    if (
+      e.code === 'Enter' ||
+      e.key === 'Enter' ||
+      e.keyIdentifier === 'Enter' ||
+      e.which === 13 ||
+      e.charCode === 13 ||
+      e.keyCode === 13
+    ) {
       return true;
     } else {
       return false;
     }
   }
-  private static _isAltKey (e: KeyboardEvent | any) {
-    if (e.code === 'Alt'
-      || e.key === 'Alt'
-      || e.keyIdentifier === 'Alt'
-      || e.which === 18
-      || e.charCode === 18
-      || e.keyCode === 18) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-
-  private static _isArrowUp (e: KeyboardEvent | any) {
-    if (e.code === 'ArrowUp'
-      || e.key === 'ArrowUp'
-      || e.key === 'Up'
-      || e.keyIdentifier === 'Up'
-      || e.which === 38
-      || e.keyCode === 38) {
+  private static _isAltKey(e: KeyboardEvent | any) {
+    if (
+      e.code === 'Alt' ||
+      e.key === 'Alt' ||
+      e.keyIdentifier === 'Alt' ||
+      e.which === 18 ||
+      e.charCode === 18 ||
+      e.keyCode === 18
+    ) {
       return true;
     } else {
       return false;
     }
   }
 
-  private static _isArrowDown (e: KeyboardEvent | any) {
-    if (e.code === 'ArrowDown'
-      || e.key === 'ArrowDown'
-      || e.key === 'Down'
-      || e.keyIdentifier === 'Down'
-      || e.which === 40
-      || e.keyCode === 40) {
+  private static _isArrowUp(e: KeyboardEvent | any) {
+    if (
+      e.code === 'ArrowUp' ||
+      e.key === 'ArrowUp' ||
+      e.key === 'Up' ||
+      e.keyIdentifier === 'Up' ||
+      e.which === 38 ||
+      e.keyCode === 38
+    ) {
       return true;
     } else {
       return false;
     }
   }
 
-  private static _isArrowLeft (e: KeyboardEvent | any) {
-    if (e.code === 'ArrowLeft'
-      || e.key === 'ArrowLeft'
-      || e.key === 'Left'
-      || e.keyIdentifier === 'Left'
-      || e.which === 37
-      || e.keyCode === 37) {
+  private static _isArrowDown(e: KeyboardEvent | any) {
+    if (
+      e.code === 'ArrowDown' ||
+      e.key === 'ArrowDown' ||
+      e.key === 'Down' ||
+      e.keyIdentifier === 'Down' ||
+      e.which === 40 ||
+      e.keyCode === 40
+    ) {
       return true;
     } else {
       return false;
     }
   }
 
-  private static _isArrowRight (e: KeyboardEvent | any) {
-    if (e.code === 'ArrowRight'
-      || e.key === 'ArrowRight'
-      || e.key === 'Right'
-      || e.keyIdentifier === 'Right'
-      || e.which === 39
-      || e.keyCode === 39) {
+  private static _isArrowLeft(e: KeyboardEvent | any) {
+    if (
+      e.code === 'ArrowLeft' ||
+      e.key === 'ArrowLeft' ||
+      e.key === 'Left' ||
+      e.keyIdentifier === 'Left' ||
+      e.which === 37 ||
+      e.keyCode === 37
+    ) {
       return true;
     } else {
       return false;
     }
   }
 
-  private static _isTab (e: KeyboardEvent | any) {
-    if (e.code === 'Tab'
-      || e.key === 'Tab'
-      || e.keyIdentifier === 'U+0009'
-      || e.which === 9
-      || e.keyCode === 9) {
+  private static _isArrowRight(e: KeyboardEvent | any) {
+    if (
+      e.code === 'ArrowRight' ||
+      e.key === 'ArrowRight' ||
+      e.key === 'Right' ||
+      e.keyIdentifier === 'Right' ||
+      e.which === 39 ||
+      e.keyCode === 39
+    ) {
       return true;
     } else {
       return false;
     }
   }
 
-  private static _isEscape (e: KeyboardEvent | any) {
-    if (e.code === 'Escape'
-      || e.key === 'Escape'
-      || e.key === 'Esc'
-      || e.keyIdentifier === 'U+001B'
-      || e.which === 27
-      || e.keyCode === 27) {
+  private static _isTab(e: KeyboardEvent | any) {
+    if (
+      e.code === 'Tab' ||
+      e.key === 'Tab' ||
+      e.keyIdentifier === 'U+0009' ||
+      e.which === 9 ||
+      e.keyCode === 9
+    ) {
       return true;
     } else {
       return false;
     }
   }
 
-  private static _isSpace (e: KeyboardEvent | any) {
-    if (e.code === 'Space'
-      || e.key === ' '
-      || e.key === 'Spacebar'
-      || e.keyIdentifier === 'U+0020'
-      || e.which === 32
-      || e.keyCode === 32) {
+  private static _isEscape(e: KeyboardEvent | any) {
+    if (
+      e.code === 'Escape' ||
+      e.key === 'Escape' ||
+      e.key === 'Esc' ||
+      e.keyIdentifier === 'U+001B' ||
+      e.which === 27 ||
+      e.keyCode === 27
+    ) {
       return true;
     } else {
       return false;
     }
   }
 
-  private static _isShift (e: KeyboardEvent | any) {
-    if (e.code === 'ShiftLeft'
-      || e.code === 'ShiftRight'
-      || e.key === 'Shift'
-      || e.keyIdentifier === 'Shift'
-      || e.which === 16
-      || e.keyCode === 16) {
+  private static _isSpace(e: KeyboardEvent | any) {
+    if (
+      e.code === 'Space' ||
+      e.key === ' ' ||
+      e.key === 'Spacebar' ||
+      e.keyIdentifier === 'U+0020' ||
+      e.which === 32 ||
+      e.keyCode === 32
+    ) {
       return true;
     } else {
       return false;
     }
   }
 
-  private static _isBackspace (e: KeyboardEvent | any) {
-    if (e.code === 'Backspace'
-      || e.key === 'Backspace'
-      || e.keyIdentifier === 'U+0008'
-      || e.which === 8
-      || e.keyCode === 8) {
+  private static _isShift(e: KeyboardEvent | any) {
+    if (
+      e.code === 'ShiftLeft' ||
+      e.code === 'ShiftRight' ||
+      e.key === 'Shift' ||
+      e.keyIdentifier === 'Shift' ||
+      e.which === 16 ||
+      e.keyCode === 16
+    ) {
       return true;
     } else {
       return false;
     }
   }
 
-  private static _isDelete (e: KeyboardEvent | any) {
-    if (e.code === 'Delete'
-      || e.key === 'Delete'
-      || e.keyIdentifier === 'U+007F'
-      || e.which === 46
-      || e.keyCode === 46) {
+  private static _isBackspace(e: KeyboardEvent | any) {
+    if (
+      e.code === 'Backspace' ||
+      e.key === 'Backspace' ||
+      e.keyIdentifier === 'U+0008' ||
+      e.which === 8 ||
+      e.keyCode === 8
+    ) {
       return true;
     } else {
       return false;
     }
   }
 
-  private static _zero (e): number {
-    if (e.code === 'Digit0'
-      || e.code === 'Numpad0'
-      || e.key === 0
-      || e.keyCode === 48
-      || e.keyCode === 96
-      || e.keyIdentifier === 'U+0030'
-      || e.which === 48) {
+  private static _isDelete(e: KeyboardEvent | any) {
+    if (
+      e.code === 'Delete' ||
+      e.key === 'Delete' ||
+      e.keyIdentifier === 'U+007F' ||
+      e.which === 46 ||
+      e.keyCode === 46
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  private static _zero(e): number {
+    if (
+      e.code === 'Digit0' ||
+      e.code === 'Numpad0' ||
+      e.key === 0 ||
+      e.keyCode === 48 ||
+      e.keyCode === 96 ||
+      e.keyIdentifier === 'U+0030' ||
+      e.which === 48
+    ) {
       return 0;
     } else {
       return undefined;
     }
   }
 
-  private static _one (e): number {
-    if (e.code === 'Digit1'
-      || e.code === 'Numpad1'
-      || e.key === 1
-      || e.keyCode === 49
-      || e.keyCode === 97
-      || e.keyIdentifier === 'U+0031'
-      || e.which === 49) {
+  private static _one(e): number {
+    if (
+      e.code === 'Digit1' ||
+      e.code === 'Numpad1' ||
+      e.key === 1 ||
+      e.keyCode === 49 ||
+      e.keyCode === 97 ||
+      e.keyIdentifier === 'U+0031' ||
+      e.which === 49
+    ) {
       return 1;
     } else {
       return undefined;
     }
   }
 
-  private static _two (e): number {
-    if (e.code === 'Digit2'
-      || e.code === 'Numpad2'
-      || e.key === 2
-      || e.keyCode === 50
-      || e.keyCode === 98
-      || e.keyIdentifier === 'U+0032'
-      || e.which === 50) {
+  private static _two(e): number {
+    if (
+      e.code === 'Digit2' ||
+      e.code === 'Numpad2' ||
+      e.key === 2 ||
+      e.keyCode === 50 ||
+      e.keyCode === 98 ||
+      e.keyIdentifier === 'U+0032' ||
+      e.which === 50
+    ) {
       return 2;
     } else {
       return undefined;
     }
   }
 
-  private static _three (e): number {
-    if (e.code === 'Digit3'
-      || e.code === 'Numpad3'
-      || e.key === 3
-      || e.keyCode === 51
-      || e.keyCode === 99
-      || e.keyIdentifier === 'U+0033'
-      || e.which === 51) {
+  private static _three(e): number {
+    if (
+      e.code === 'Digit3' ||
+      e.code === 'Numpad3' ||
+      e.key === 3 ||
+      e.keyCode === 51 ||
+      e.keyCode === 99 ||
+      e.keyIdentifier === 'U+0033' ||
+      e.which === 51
+    ) {
       return 3;
     } else {
       return undefined;
     }
   }
 
-  private static _four (e): number {
-    if (e.code === 'Digit4'
-      || e.code === 'Numpad4'
-      || e.key === 4
-      || e.keyCode === 52
-      || e.keyCode === 100
-      || e.keyIdentifier === 'U+0034'
-      || e.which === 52) {
+  private static _four(e): number {
+    if (
+      e.code === 'Digit4' ||
+      e.code === 'Numpad4' ||
+      e.key === 4 ||
+      e.keyCode === 52 ||
+      e.keyCode === 100 ||
+      e.keyIdentifier === 'U+0034' ||
+      e.which === 52
+    ) {
       return 4;
     } else {
       return undefined;
     }
   }
-  private static _five (e): number {
-    if (e.code === 'Digit5'
-      || e.code === 'Numpad5'
-      || e.key === 5
-      || e.keyCode === 53
-      || e.keyCode === 101
-      || e.keyIdentifier === 'U+0035'
-      || e.which === 53) {
+  private static _five(e): number {
+    if (
+      e.code === 'Digit5' ||
+      e.code === 'Numpad5' ||
+      e.key === 5 ||
+      e.keyCode === 53 ||
+      e.keyCode === 101 ||
+      e.keyIdentifier === 'U+0035' ||
+      e.which === 53
+    ) {
       return 5;
     } else {
       return undefined;
     }
   }
 
-  private static _six (e): number {
-    if (e.code === 'Digit6'
-      || e.code === 'Numpad6'
-      || e.key === 6
-      || e.keyCode === 54
-      || e.keyCode === 102
-      || e.keyIdentifier === 'U+0036'
-      || e.which === 54) {
+  private static _six(e): number {
+    if (
+      e.code === 'Digit6' ||
+      e.code === 'Numpad6' ||
+      e.key === 6 ||
+      e.keyCode === 54 ||
+      e.keyCode === 102 ||
+      e.keyIdentifier === 'U+0036' ||
+      e.which === 54
+    ) {
       return 6;
     } else {
       return undefined;
     }
   }
 
-  private static _seven (e): number {
-    if (e.code === 'Digit7'
-      || e.code === 'Numpad7'
-      || e.key === 7
-      || e.keyCode === 55
-      || e.keyCode === 103
-      || e.keyIdentifier === 'U+0037'
-      || e.which === 55) {
+  private static _seven(e): number {
+    if (
+      e.code === 'Digit7' ||
+      e.code === 'Numpad7' ||
+      e.key === 7 ||
+      e.keyCode === 55 ||
+      e.keyCode === 103 ||
+      e.keyIdentifier === 'U+0037' ||
+      e.which === 55
+    ) {
       return 7;
     } else {
       return undefined;
     }
   }
 
-  private static _eight (e): number {
-    if (e.code === 'Digit8'
-      || e.code === 'Numpad8'
-      || e.key === 8
-      || e.keyCode === 56
-      || e.keyCode === 104
-      || e.keyIdentifier === 'U+0038'
-      || e.which === 56) {
+  private static _eight(e): number {
+    if (
+      e.code === 'Digit8' ||
+      e.code === 'Numpad8' ||
+      e.key === 8 ||
+      e.keyCode === 56 ||
+      e.keyCode === 104 ||
+      e.keyIdentifier === 'U+0038' ||
+      e.which === 56
+    ) {
       return 8;
     } else {
       return undefined;
     }
   }
 
-  private static _nine (e): number {
-    if (e.code === 'Digit9'
-      || e.code === 'Numpad9'
-      || e.key === 9
-      || e.keyCode === 57
-      || e.keyCode === 105
-      || e.keyIdentifier === 'U+0039'
-      || e.which === 57) {
+  private static _nine(e): number {
+    if (
+      e.code === 'Digit9' ||
+      e.code === 'Numpad9' ||
+      e.key === 9 ||
+      e.keyCode === 57 ||
+      e.keyCode === 105 ||
+      e.keyIdentifier === 'U+0039' ||
+      e.which === 57
+    ) {
       return 9;
     } else {
       return undefined;
     }
   }
 
-  private static _isExpectedNumber (expected, event)
-    : boolean {
+  private static _isExpectedNumber(expected, event): boolean {
     return expected === KeyHelper.getNumberFromKey(event);
   }
-
 }
 
 export enum KEYS {
@@ -449,6 +500,5 @@ export enum KEYS {
   'EIGHT' = '8',
   'NINE' = '9',
   'ZERO' = '0',
-  'DELETE' = 'delete'
+  'DELETE' = 'delete',
 }
-

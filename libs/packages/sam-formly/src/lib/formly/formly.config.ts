@@ -39,12 +39,12 @@ export const FIELD_TYPE_COMPONENTS = [
   FormlyTabsWrapperComponent,
   FormlyFieldTableComponent,
   FormlyFieldEditorComponent,
-  FormlyFieldRichTextEditorComponent
+  FormlyFieldRichTextEditorComponent,
 ];
 import {
   dateRangeValidator,
   maxDateValidator,
-  minDateValidator
+  minDateValidator,
 } from './formly.validators';
 import { sdsWrappers, sdsGroupWrapper } from './sds-formly-options';
 import { FormlyLabelWrapperComponent } from './wrappers/label.wrapper';
@@ -66,115 +66,115 @@ export const FORMLY_WRAPPERS: any = [
   {
     name: 'form-field',
     component: FormlyWrapperFormFieldComponent,
-    componentName: 'FormlyWrapperFormFieldComponent'
+    componentName: 'FormlyWrapperFormFieldComponent',
   },
   {
     name: 'accordionwrapper',
     component: FormlyAccordianFormFieldComponent,
-    componentName: 'FormlyAccordianFormFieldComponent'
+    componentName: 'FormlyAccordianFormFieldComponent',
   },
   {
     name: 'filterwrapper',
     component: FormlyFormFieldFilterWrapperComponent,
-    componentName: 'FormlyFormFieldFilterWrapperComponent'
+    componentName: 'FormlyFormFieldFilterWrapperComponent',
   },
 
   {
     name: 'label',
     component: FormlyLabelWrapperComponent,
-    componentName: 'FormlyLabelWrapperComponent'
+    componentName: 'FormlyLabelWrapperComponent',
   },
   {
     name: 'description',
     component: FormlyDescriptionWrapperComponent,
-    componentName: 'FormlyDescriptionWrapperComponent'
+    componentName: 'FormlyDescriptionWrapperComponent',
   },
   {
     name: 'validation',
     component: FormlyValidationWrapperComponent,
-    componentName: 'FormlyValidationWrapperComponent'
+    componentName: 'FormlyValidationWrapperComponent',
   },
   {
     name: 'group',
     component: FormlyGroupWrapperComponent,
-    componentName: 'FormlyGroupWrapperComponent'
+    componentName: 'FormlyGroupWrapperComponent',
   },
   {
     name: 'readonly',
     component: FormlyReadonlyWrapperComponent,
-    componentName: 'FormlyReadonlyWrapperComponent'
+    componentName: 'FormlyReadonlyWrapperComponent',
   },
   {
     name: 'tabs',
     component: FormlyTabsWrapperComponent,
-    componentName: 'FormlyTabsWrapperComponent'
-  }
+    componentName: 'FormlyTabsWrapperComponent',
+  },
 ];
 
 export const FORMLY_CONFIG: ConfigOption = {
   types: [
     {
       name: SdsFormlyTypes.FORMLYGROUP,
-      wrappers: sdsGroupWrapper
+      wrappers: sdsGroupWrapper,
     },
     {
       name: SdsFormlyTypes.READONLY,
       wrappers: sdsGroupWrapper,
-      component: FormlyReadonlyWrapperComponent
+      component: FormlyReadonlyWrapperComponent,
     },
     {
       name: SdsFormlyTypes.BUTTON,
-      component: FormlyFieldButtonComponent
+      component: FormlyFieldButtonComponent,
     },
     {
       name: SdsFormlyTypes.CUSTOMTEXT,
       component: FormlyFieldTextComponent,
-      wrappers: sdsWrappers
+      wrappers: sdsWrappers,
     },
     {
       name: SdsFormlyTypes.EDITOR,
       component: FormlyFieldEditorComponent,
-      wrappers: sdsWrappers
+      wrappers: sdsWrappers,
     },
     {
       name: SdsFormlyTypes.INPUT,
       component: FormlyFieldInputComponent,
-      wrappers: sdsWrappers
+      wrappers: sdsWrappers,
     },
     {
       name: SdsFormlyTypes.CHECKBOX,
       component: FormlyFieldCheckboxComponent,
-      wrappers: sdsWrappers
+      wrappers: sdsWrappers,
     },
     {
       name: SdsFormlyTypes.FILEINFO,
       component: FormlyFieldFileInfoComponent,
-      wrappers: sdsWrappers
+      wrappers: sdsWrappers,
     },
     {
       name: SdsFormlyTypes.RADIO,
       component: FormlyFieldRadioComponent,
-      wrappers: sdsWrappers
+      wrappers: sdsWrappers,
     },
     {
       name: SdsFormlyTypes.SELECT,
       component: FormlyFieldSelectComponent,
-      wrappers: sdsWrappers
+      wrappers: sdsWrappers,
     },
     {
       name: SdsFormlyTypes.TEXTAREA,
       component: FormlyFieldTextAreaComponent,
-      wrappers: sdsWrappers
+      wrappers: sdsWrappers,
     },
     {
       name: SdsFormlyTypes.MULTICHECKBOX,
       component: FormlyFieldMultiCheckboxComponent,
-      wrappers: sdsWrappers
+      wrappers: sdsWrappers,
     },
     {
       name: SdsFormlyTypes.AUTOCOMPLETE,
       component: FormlyFieldAutoCompleteComponent,
-      wrappers: sdsWrappers
+      wrappers: sdsWrappers,
     },
     {
       name: SdsFormlyTypes.DATEPICKER,
@@ -182,9 +182,9 @@ export const FORMLY_CONFIG: ConfigOption = {
       wrappers: sdsWrappers,
       defaultOptions: {
         validators: {
-          validation: [maxDateValidator, minDateValidator]
-        }
-      }
+          validation: [maxDateValidator, minDateValidator],
+        },
+      },
     },
     {
       name: SdsFormlyTypes.DATERANGEPICKER,
@@ -197,37 +197,41 @@ export const FORMLY_CONFIG: ConfigOption = {
             key: 'fromDate',
             templateOptions: {
               label: 'From',
-              placeholder: 'eg: ' + new Date().toLocaleString('en-US', {
-                month: 'short',
-                day: 'numeric',
-                year: 'numeric'
-              }),
+              placeholder:
+                'eg: ' +
+                new Date().toLocaleString('en-US', {
+                  month: 'short',
+                  day: 'numeric',
+                  year: 'numeric',
+                }),
             },
             expressionProperties: {
               'templateOptions.minDate': minDateFromDateRangePicker,
               'templateOptions.maxDate': maxDateFromDateRangePicker,
               'templateOptions.hideOptional': getParentHideOptional,
-            }
+            },
           },
           {
             type: SdsFormlyTypes.DATEPICKER,
             key: 'toDate',
             templateOptions: {
               label: 'To',
-              placeholder: 'eg: ' + new Date().toLocaleString('en-US', {
-                month: 'short',
-                day: 'numeric',
-                year: 'numeric'
-              })
+              placeholder:
+                'eg: ' +
+                new Date().toLocaleString('en-US', {
+                  month: 'short',
+                  day: 'numeric',
+                  year: 'numeric',
+                }),
             },
             expressionProperties: {
               'templateOptions.minDate': minDateToDateRangePicker,
               'templateOptions.maxDate': maxDateToDateRangePicker,
               'templateOptions.hideOptional': getParentHideOptional,
-            }
-          }
-        ]
-      }
+            },
+          },
+        ],
+      },
     },
     {
       name: 'daterangepickerv2',
@@ -235,18 +239,20 @@ export const FORMLY_CONFIG: ConfigOption = {
       wrappers: sdsWrappers,
       defaultOptions: {
         validators: {
-          validation: [dateRangeValidator]
+          validation: [dateRangeValidator],
         },
         fieldGroup: [
           {
             key: 'fromDate',
             templateOptions: {
-              placeholder: 'eg: ' + new Date().toLocaleString('en-US', {
-                month: 'short',
-                day: 'numeric',
-                year: 'numeric'
-              })
-            }
+              placeholder:
+                'eg: ' +
+                new Date().toLocaleString('en-US', {
+                  month: 'short',
+                  day: 'numeric',
+                  year: 'numeric',
+                }),
+            },
           },
           {
             key: 'toDate',
@@ -254,17 +260,17 @@ export const FORMLY_CONFIG: ConfigOption = {
               placeholder: new Date().toLocaleString('en-US', {
                 month: 'short',
                 day: 'numeric',
-                year: 'numeric'
-              })
-            }
-          }
-        ]
-      }
+                year: 'numeric',
+              }),
+            },
+          },
+        ],
+      },
     },
     {
       name: SdsFormlyTypes.SEARCH,
       component: FormlyFieldSearchComponent,
-      wrappers: sdsWrappers
+      wrappers: sdsWrappers,
     },
     {
       name: SdsFormlyTypes.FILEINPUT,
@@ -273,7 +279,7 @@ export const FORMLY_CONFIG: ConfigOption = {
     },
     {
       name: SdsFormlyTypes.TABLE,
-      component: FormlyFieldTableComponent
+      component: FormlyFieldTableComponent,
     },
     {
       name: SdsFormlyTypes.RICHTEXTEDITOR,
@@ -291,7 +297,7 @@ export const FORMLY_CONFIG: ConfigOption = {
     { name: 'filterwrapper', component: FormlyFormFieldFilterWrapperComponent },
     { name: 'readonly', component: FormlyReadonlyWrapperComponent },
     { name: 'tabs', component: FormlyTabsWrapperComponent },
-  ]
+  ],
 };
 
 export function minDateToDateRangePicker(
@@ -362,7 +368,6 @@ export function getParentHideOptional(
   formState: any,
   field: FormlyFieldConfig
 ) {
-
   if (field.parent && field.parent.templateOptions) {
     return field.parent.templateOptions.hideOptional;
   }
