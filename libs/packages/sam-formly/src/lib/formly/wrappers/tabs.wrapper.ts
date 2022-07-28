@@ -7,7 +7,12 @@ import { FieldWrapper, FormlyFieldConfig } from '@ngx-formly/core';
     <p [innerHTML]="to.description"></p>
     <div class="sds-filter-keywords">
       <ng-container *ngIf="field.fieldArray?.fieldGroup?.length > 1; else singleField">
-        <sds-tabs [tabClass]="to.tabClass ? to.tabClass : 'sds-tabs--formly'">
+        <sds-tabs
+          [tabClass]="to.tabClass ? to.tabClass : 'sds-tabs--formly'"
+          [interceptTabChange]="to.interceptTabChange"
+          (preTabChange)="to.preTabChange ? to.preTabChange($event) : null"
+          [(selectedTab)]="to.selectedTab"
+        >
           <sds-tab-panel
             *ngFor="let fieldConfig of field.fieldArray.fieldGroup"
             [tabHeader]="fieldConfig.templateOptions?.tabHeader"

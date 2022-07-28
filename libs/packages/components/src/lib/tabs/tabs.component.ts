@@ -48,6 +48,8 @@ export class TabsComponent implements OnInit, OnChanges, AfterContentInit {
    */
   @Input() tabClass: string = 'sds-tabs--default';
 
+  @Input() interceptTabChange: boolean = false;
+
   /**
    * Emits an event whenever a tab is selected by the user containing the selected
    * TabPanelComponent. Please note that because this output contains `Change` suffix
@@ -55,6 +57,9 @@ export class TabsComponent implements OnInit, OnChanges, AfterContentInit {
    */
   @Output()
   selectedTabChange: EventEmitter<TabPanelComponent> = new EventEmitter<TabPanelComponent>();
+
+  @Output()
+  preTabChange: EventEmitter<TabPanelComponent> = new EventEmitter<TabPanelComponent>();
 
   @ContentChildren(TabPanelComponent) tabPanels: QueryList<TabPanelComponent>;
 
@@ -147,6 +152,10 @@ export class TabsComponent implements OnInit, OnChanges, AfterContentInit {
    * @param newTabPanel
    */
   private changeSelectedTabPanel(newTabPanel: TabPanelComponent) {
+    this.preTabChange.emit(newTabPanel);
+    if (this.interceptTabChange) {
+      return;
+    }
     this.selectedTab.selected = false;
     newTabPanel.selected = true;
     this.selectedTab = newTabPanel;

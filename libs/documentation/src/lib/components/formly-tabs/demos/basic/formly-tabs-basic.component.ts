@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SelectionMode } from '@gsa-sam/components';
+import { SelectionMode, TabPanelComponent } from '@gsa-sam/components';
 import { SdsFormlyTypes } from '@gsa-sam/sam-formly';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
@@ -8,6 +8,7 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
   templateUrl: './formly-tabs-basic.component.html',
 })
 export class FormlyTabsBasicComponent {
+  selectedTab: TabPanelComponent = null;
   model = {};
   fields: FormlyFieldConfig[] = [
     {
@@ -18,6 +19,9 @@ export class FormlyTabsBasicComponent {
         description: `For more information on how to use our keyword search, visit our <a href="#"> help guide </a>`,
         hideOptional: true,
         tabClass: 'sds-tabs--formly',
+        interceptTabChange: false,
+        selectedTab: this.selectedTab,
+        preTabChange: this.preTabChange,
       },
       fieldArray: {
         fieldGroup: [
@@ -99,4 +103,13 @@ export class FormlyTabsBasicComponent {
       },
     },
   ];
+
+  preTabChange(destinationTab: TabPanelComponent) {
+    console.log('pretab change', destinationTab);
+    const tabToGoTo: TabPanelComponent = destinationTab;
+    const response = confirm('Proceed?');
+    if (response == true) {
+      this.selectedTab = tabToGoTo;
+    }
+  }
 }
