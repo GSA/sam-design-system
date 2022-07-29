@@ -12,6 +12,8 @@ import { SearchOptionalModule } from './demos/optional/search-optional.module';
 import { SearchOptional } from './demos/optional/search-optional.component';
 import { SearchHandleSubmitModule } from './demos/submit/search-handle-submit.module';
 import { SearchHandleSubmit } from './demos/submit/search-handle-submit.component';
+import { AdvancedSearchModule } from './demos/advanced-search/advanced-search.module';
+import { AdvancedSearch } from './demos/advanced-search/advanced-search.component';
 
 declare var require: any;
 const DEMOS = {
@@ -35,6 +37,13 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/submit/search-handle-submit.component'),
     markup: require('!!raw-loader!./demos/submit/search-handle-submit.component.html'),
     path: 'libs/documentation/src/lib/components/formly-search/demos/submit',
+  },
+  advancedSearch: {
+    title: 'Advanced Search',
+    type: AdvancedSearch,
+    code: require('!!raw-loader!./demos/advanced-search/advanced-search.component'),
+    markup: require('!!raw-loader!./demos/advanced-search/advanced-search.component.html'),
+    path: 'libs/documentation/src/lib/components/formly-search/demos/advanced-search',
   },
 };
 
@@ -69,7 +78,9 @@ export const ROUTES = [
     SearchBasicModule,
     SearchOptionalModule,
     SearchHandleSubmitModule,
+    AdvancedSearchModule,
   ],
+  declarations: [],
 })
 export class FormlySearchModule {
   constructor(demoList: DocumentationDemoList) {
