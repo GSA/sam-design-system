@@ -9,7 +9,7 @@ import { StepperAdvancedService } from './stepper-advanced.service';
 })
 export class StepperAdvancedDemoComponent {
   model = { subawardee: [], reportDetails: { report: { month: '03', year: '03' } } };
-
+  validateStepsOnInit = true;
   showLoading = false;
 
   stepMap = {
