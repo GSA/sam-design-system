@@ -14,6 +14,8 @@ import { TabsDisabledComponent } from './demos/disabled/tabs-disabled.component'
 import { TabsDisabledModule } from './demos/disabled/tabs-disabled.module';
 import { DynamicTabsComponet } from './demos/dynamic-tabs/dynamic-tabs.component';
 import { DynamicTabsModule } from './demos/dynamic-tabs/dynamic-tabs.module';
+import { TabsInterceptComponent } from './demos/intercept/tabs-intercept.component';
+import { TabsInterceptModule } from './demos/intercept/tabs-intercept.module';
 import { TabsStylingComponent } from './demos/styling/tabs-styling.component';
 import { TabsStylingModule } from './demos/styling/tabs-styling.module';
 import { TabsTemplateHeaderComponent } from './demos/template-header/tabs-template-header.component';
@@ -69,6 +71,14 @@ const DEMOS = {
     module: require('!!raw-loader!./demos/styling/tabs-styling.module.ts'),
     path: 'libs/documentation/src/lib/components/tabs/demos/styling',
   },
+  interceptTabChange: {
+    title: 'Intercept Tab Change',
+    type: TabsInterceptComponent,
+    code: require('!!raw-loader!./demos/intercept/tabs-intercept.component'),
+    markup: require('!!raw-loader!./demos/intercept/tabs-intercept.component.html'),
+    module: require('!!raw-loader!./demos/intercept/tabs-intercept.module.ts'),
+    path: 'libs/documentation/src/lib/components/tabs/demos/intercept',
+  },
 };
 
 export const ROUTES = [
@@ -104,6 +114,7 @@ export const ROUTES = [
     TabsAutoActivateModule,
     DynamicTabsModule,
     TabsStylingModule,
+    TabsInterceptModule,
   ],
 })
 export class TabsModule {
