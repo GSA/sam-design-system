@@ -46,8 +46,6 @@ export class SdsVideoPlayerComponent implements AfterViewInit, OnChanges, OnInit
 
   loadVideoSource = false;
 
-  playerId: string;
-
   constructor(
     private elementRef: ElementRef,
     private renderer2: Renderer2,
@@ -65,12 +63,11 @@ export class SdsVideoPlayerComponent implements AfterViewInit, OnChanges, OnInit
     if (this.VPConfiguration.preload != 'none') {
       this.loadVideoSource = true;
     }
-    this.playerId = 'videoPlayer' + this.VPConfiguration.id;
   }
 
   ngAfterViewInit() {
     if (this.crossorigin) {
-      const id = this.elementRef.nativeElement.querySelector(`#${this.playerId}`);
+      const id = this.video.nativeElement;
       id.setAttribute('crossorigin', this.crossorigin);
     }
     this.config = {
@@ -81,7 +78,6 @@ export class SdsVideoPlayerComponent implements AfterViewInit, OnChanges, OnInit
       debug: this.VPConfiguration.debug,
     };
 
-    const video = new InitPxVideo(this.config);
     this.video.nativeElement.setAttribute('style', 'width:' + this.VPConfiguration.width + ';');
 
     const progressElement: HTMLProgressElement = this.elementRef.nativeElement.querySelector('progress');
@@ -97,7 +93,7 @@ export class SdsVideoPlayerComponent implements AfterViewInit, OnChanges, OnInit
 
   ngOnChanges(changes) {
     if (changes && changes.crossorigin) {
-      const id = this.elementRef.nativeElement.querySelector(`#${this.playerId}`);
+      const id = this.video.nativeElement;
       if (id) {
         id.setAttribute('crossorigin', this.crossorigin);
       }
@@ -112,7 +108,7 @@ export class SdsVideoPlayerComponent implements AfterViewInit, OnChanges, OnInit
   private _loadVideoSourceOnDemand() {
     const playButton: HTMLButtonElement = this.elementRef.nativeElement.querySelector('.px-video-play');
     const restartButton: HTMLButtonElement = this.elementRef.nativeElement.querySelector('.px-video-restart');
-    const video: HTMLVideoElement = this.elementRef.nativeElement.querySelector(`#${this.playerId}`);
+    const video: HTMLVideoElement = this.video.nativeElement;
 
     const loadVideo = ($event) => {
       if (this.loadVideoSource) {
