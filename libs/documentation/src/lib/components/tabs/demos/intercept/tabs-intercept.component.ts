@@ -8,9 +8,6 @@ import { TabPanelComponent } from '@gsa-sam/components';
 export class TabsInterceptComponent {
   selectedTab: TabPanelComponent;
 
-  selectTab(tab: TabPanelComponent) {
-    this.selectedTab = tab;
-  }
   handlePreTabCheck(destinationTab: TabPanelComponent) {
     console.log('pretab change', destinationTab);
     const tabToGoTo: TabPanelComponent = destinationTab;
