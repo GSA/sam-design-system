@@ -8,10 +8,8 @@ import { StepperAdvancedService } from './stepper-advanced.service';
   providers: [StepperAdvancedService, SdsStepper],
 })
 export class StepperAdvancedDemoComponent {
-  model = {
-    subawardee: [],
-  };
-
+  model = { subawardee: [], reportDetails: { report: { month: '03', year: '03' } } };
+  validateStepsOnInit = true;
   showLoading = false;
 
   stepMap = {

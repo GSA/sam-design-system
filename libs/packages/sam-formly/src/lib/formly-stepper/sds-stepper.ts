@@ -223,6 +223,8 @@ export class SdsStepper {
    */
   @Input() isRouteEnabled = true;
 
+  @Input() validateStepsOnInit = true;
+
   /**
    * Output event - emitted when save button is clicked
    */
@@ -315,6 +317,24 @@ export class SdsStepper {
       this.flatSteps.forEach((step) => {
         step.valid = this.stepValidityMap[step.id];
       });
+    }
+  }
+  ngAfterViewInit() {
+    if (this.validateStepsOnInit) {
+      const currentStep = this.selectedStep;
+      const isRouteEnabled = this.isRouteEnabled;
+      this.flatSteps = this.getFlatSteps(this.stepTemplates);
+      this.isRouteEnabled = false;
+      this.flatSteps.forEach((step) => {
+        setTimeout(() => {
+          this.changeStep(step.id);
+        }, 0);
+      });
+
+      setTimeout(() => {
+        this.changeStep(currentStep.id);
+        this.isRouteEnabled = isRouteEnabled;
+      }, 0);
     }
   }
 
