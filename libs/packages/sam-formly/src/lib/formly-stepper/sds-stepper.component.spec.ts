@@ -270,25 +270,6 @@ describe('SdsStepperComponent', () => {
     })
   );
 
-  xit(
-    'Should go back to previous step when back is clicked',
-    waitForAsync(() => {
-      const sidenavLinks = fixture.debugElement.queryAll(By.css('li a'));
-      sidenavLinks[2].triggerEventHandler('click', null);
-      fixture.detectChanges();
-
-      fixture.whenStable().then(() => {
-        const backButton = fixture.debugElement.query(By.css('#stepperTestId-prevBtn'));
-        backButton.triggerEventHandler('click', null);
-        fixture.detectChanges();
-
-        fixture.whenStable().then(() => {
-          expect(stepper.currentStepId).toEqual('step2Child1');
-        });
-      });
-    })
-  );
-
   it('Should prepopulate with correct model and validity when provided', () => {
     component.model = {
       step1Input: 'test',
