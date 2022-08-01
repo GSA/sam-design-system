@@ -15,7 +15,7 @@ input::-ms-clear {
   }
 
   .postfix {
-    color: #3f57a6;
+    color: #3f57a6 !important;
     position: absolute;
     right: 15px;
     font-size: 2rem;
@@ -31,6 +31,11 @@ input::-ms-clear {
 .no-drop {
   width: 100%;
 }
+
+// .usa-icon {
+//   @extend .text-white;
+//   color: #3f57a6 !important;
+// }
 
 @media only screen and (min-width: 480px) {
   .usa-form.usa-search select {
