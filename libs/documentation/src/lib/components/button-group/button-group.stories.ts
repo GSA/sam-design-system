@@ -10,11 +10,6 @@ import { generateConfig } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { ButtonGroupCheckedModule } from './demos/button-group-checked/button-group-checked.module';
 import { ButtonGroupModesModule } from './demos/button-group-modes/button-group-modes.module';
 
-declare var require: any;
-
-// const checkedDemoTemplate = require('!!raw-loader!./demos/checked/button-group-checked.component.html');
-
-// More on default export: https://storybook.js.org/docs/angular/writing-stories/introduction#default-export
 export default {
   title: 'Example/Button-Group',
   component: SdsButtonGroupComponent,
@@ -33,21 +28,6 @@ export default {
     }),
   ],
   argTypes: {
-    // classesToApply: {
-    //   table: {
-    //     disable: true,
-    //   },
-    // },
-    // buttonOptions: {
-    //   table: {
-    //     disable: true,
-    //   },
-    // },
-    // change: {
-    //   table: {
-    //     disable: true,
-    //   },
-    // },
     buttonGroupChanged: {
       action: 'buttonGroupChanged',
       table: {
@@ -55,10 +35,8 @@ export default {
       },
     },
   },
-  // More on argTypes: https://storybook.js.org/docs/angular/api/argtypes
 } as Meta;
 
-// More on component templates: https://storybook.js.org/docs/angular/writing-stories/introduction#using-args
 const Template: Story<SdsButtonGroupComponent> = (args) => ({
   template: `
   <sds-button-group class="sds-button-group" [ngClass]="[extraClasses]" [mode]="mode" (change)="buttonGroupChanged({source: 'originalEmitter: MatButtonToggle', value: $event.value})">

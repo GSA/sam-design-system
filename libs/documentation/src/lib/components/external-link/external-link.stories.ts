@@ -3,13 +3,10 @@ import {
   ExternalLinkDirective,
   SdsExternalLinkDirectivesModule,
 } from '@gsa-sam/components';
-// also exported from '@storybook/angular' if you can deal with breaking changes in 6.1
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
 import { generateConfig } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { ExternalLinkHideIconModule } from './demos/external-link-hide-icon/external-link-hide-icon.module';
 import { ExternalLinkTargetModule } from './demos/external-link-target/external-link-target.module';
-
-declare var require: any;
 
 export default {
   title: 'Example/External Link',
@@ -26,7 +23,6 @@ export default {
   ],
 } as Meta;
 
-// More on component templates: https://storybook.js.org/docs/angular/writing-stories/introduction#using-args
 const Template: Story<ExternalLinkDirective> = (
   args: ExternalLinkDirective
 ) => ({
@@ -35,7 +31,6 @@ const Template: Story<ExternalLinkDirective> = (
 });
 
 export const Configurable = Template.bind({});
-// More on args: https://storybook.js.org/docs/angular/writing-stories/args
 Configurable.args = {
   href: 'https://Acquisition.gov',
   target: '_blank',

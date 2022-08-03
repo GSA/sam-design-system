@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SdsSearchComponent, SdsSearchModule } from '@gsa-sam/components';
-// also exported from '@storybook/angular' if you can deal with breaking changes in 6.1
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
 import { SearchSizeModule } from './demos/search-size/search-size.module';
 import { SearchPlaceholderModule } from './demos/search-placeholder/search-placeholder.module';
@@ -50,7 +49,6 @@ export default {
   },
 } as Meta;
 
-// More on component templates: https://storybook.js.org/docs/angular/writing-stories/introduction#using-args
 const Template: Story<SdsSearchComponent> = (args: SdsSearchComponent) => ({
   template: `
   <sds-search [(ngModel)]="model" (submit)="onSubmit($event)" (ngModelChange)="modelChange($event)" [searchSettings]="searchSettings"
@@ -67,7 +65,6 @@ const Template: Story<SdsSearchComponent> = (args: SdsSearchComponent) => ({
 });
 
 export const Configurable = Template.bind({});
-// More on args: https://storybook.js.org/docs/angular/writing-stories/args
 Configurable.args = {
   searchSettings: {
     placeholder: 'eg: Acme Corporation',

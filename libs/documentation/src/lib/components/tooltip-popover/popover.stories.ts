@@ -2,19 +2,14 @@ import { CommonModule } from '@angular/common';
 import {
   SdsPopoverDirective,
   SdsPopoverModule,
-  SdsTooltipModule,
 } from '@gsa-sam/components';
-// also exported from '@storybook/angular' if you can deal with breaking changes in 6.1
-import { moduleMetadata, Meta, Story, forceReRender } from '@storybook/angular';
+import { moduleMetadata, Meta, Story } from '@storybook/angular';
 import { generateConfig } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { PopoverCloseOnClickOutsideModule } from './demos/popover-close-on-click-outside/popover-close-on-click-outside.module';
 import { PopoverCloseOnContentClickModule } from './demos/popover-close-on-content-click/popover-close-on-content-click.module';
 import { PopoverPositionModule } from './demos/popover-position/popover-position.module';
 import { PopoverSdsPopoverTitleModule } from './demos/popover-sds-popover-title/popover-sds-popover-title.module';
 
-declare var require: any;
-
-// More on default export: https://storybook.js.org/docs/angular/writing-stories/introduction#default-export
 export default {
   title: 'Example/Popover',
   component: SdsPopoverDirective,
@@ -38,7 +33,6 @@ export default {
   },
 } as Meta;
 
-// More on component templates: https://storybook.js.org/docs/angular/writing-stories/introduction#using-args
 const Template: Story<SdsPopoverDirective> = (args: SdsPopoverDirective) => {
   return {
     template: `
