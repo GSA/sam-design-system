@@ -32,11 +32,6 @@ input::-ms-clear {
   width: 100%;
 }
 
-// .usa-icon {
-//   @extend .text-white;
-//   color: #3f57a6 !important;
-// }
-
 @media only screen and (min-width: 480px) {
   .usa-form.usa-search select {
     max-width: unset;
