@@ -6,7 +6,7 @@ import {
   Output,
   QueryList,
   TemplateRef,
-  ViewChild
+  ViewChild,
 } from '@angular/core';
 import { MatButtonToggleChange } from '@angular/material/button-toggle';
 
@@ -17,7 +17,7 @@ import { MatButtonToggleChange } from '@angular/material/button-toggle';
     <ng-template #buttonGroupTemplate>
       <ng-content #content></ng-content>
     </ng-template>
-  `
+  `,
 })
 export class SdsButtonGroupOptionComponent {
   @ViewChild('buttonGroupTemplate') buttonGroupTemplate: TemplateRef<any>;
@@ -30,7 +30,7 @@ export class SdsButtonGroupOptionComponent {
   selector: 'sds-button-group',
   templateUrl: './button-group.component.html',
   styleUrls: ['./button-group.component.scss'],
-  host: { class: 'sds-button-group--segmented' }
+  host: { class: 'sds-button-group--segmented' },
 })
 export class SdsButtonGroupComponent {
   @ContentChildren(SdsButtonGroupOptionComponent) buttonOptions!: QueryList<
@@ -41,6 +41,9 @@ export class SdsButtonGroupComponent {
   /**
    * 'checkbox' || 'radio'
    */
-  @Input() mode: string = 'radio';
-  @Output() change: EventEmitter<MatButtonToggleChange> = new EventEmitter();
+  @Input()
+  mode: 'checkbox' | 'radio' = 'radio';
+
+  @Output()
+  change = new EventEmitter<MatButtonToggleChange>();
 }

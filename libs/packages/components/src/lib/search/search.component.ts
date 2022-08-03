@@ -60,8 +60,8 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
     initial: { visible: undefined },
     visible: undefined,
   };
-  private _onChange = (_: any) => {};
-  private _onTouched = () => {};
+  onChange = (_: any) => {};
+  onTouched = () => {};
 
   constructor(
     private cd: ChangeDetectorRef,
@@ -107,7 +107,7 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
     if (this.selectEl && this.selectEl.nativeElement.value) {
       this.model.searchCategory = this.selectEl.nativeElement.value;
     }
-    this._onChange(Object.assign({}, this.model));
+    this.onChange(Object.assign({}, this.model));
   }
 
   writeValue(value: any) {
@@ -120,10 +120,10 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
     }
   }
   registerOnTouched(fn: any) {
-    this._onTouched = fn;
+    this.onTouched = fn;
   }
   registerOnChange(fn: any): void {
-    this._onChange = fn;
+    this.onChange = fn;
   }
 
   isInputVisible(): boolean {
