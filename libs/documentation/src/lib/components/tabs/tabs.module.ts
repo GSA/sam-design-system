@@ -74,10 +74,10 @@ const DEMOS = {
   interceptTabChange: {
     title: 'Intercept Tab Change',
     type: TabsInterceptComponent,
-    code: require('!!raw-loader!./demos/intercept/tabs-intercept.component'),
-    markup: require('!!raw-loader!./demos/intercept/tabs-intercept.component.html'),
-    module: require('!!raw-loader!./demos/intercept/tabs-intercept.module.ts'),
-    path: 'libs/documentation/src/lib/components/tabs/demos/intercept',
+    code: require('!!raw-loader!./demos/tabs-intercept/tabs-intercept.component'),
+    markup: require('!!raw-loader!./demos/tabs-intercept/tabs-intercept.component.html'),
+    module: require('!!raw-loader!./demos/tabs-intercept/tabs-intercept.module.ts'),
+    path: 'libs/documentation/src/lib/components/tabs/demos/tabs-intercept',
   },
 };
 
