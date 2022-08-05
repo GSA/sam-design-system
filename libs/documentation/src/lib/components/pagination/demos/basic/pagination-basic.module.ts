@@ -5,11 +5,8 @@ import { PaginationModule } from '@gsa-sam/components';
 
 @NgModule({
   declarations: [PaginationBasic],
-  imports: [
-    CommonModule,
-    PaginationModule
-  ],
+  imports: [CommonModule, PaginationModule],
   exports: [PaginationBasic],
-  bootstrap: [PaginationBasic]
+  bootstrap: [PaginationBasic],
 })
 export class PaginationBasicModule {}

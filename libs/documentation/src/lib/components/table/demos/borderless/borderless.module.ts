@@ -5,16 +5,10 @@ import { SdsTableModule } from '@gsa-sam/sam-material-extensions';
 import { TableBorderlessComponent } from './borderless.component';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
-
 @NgModule({
   declarations: [TableBorderlessComponent],
-  imports: [
-    CommonModule,
-    SdsTableModule,
-    IconModule
-  ],
+  imports: [CommonModule, SdsTableModule, IconModule],
   exports: [TableBorderlessComponent],
-  bootstrap: [TableBorderlessComponent]
+  bootstrap: [TableBorderlessComponent],
 })
-
-export class TableBorderlessModule { }
+export class TableBorderlessModule {}

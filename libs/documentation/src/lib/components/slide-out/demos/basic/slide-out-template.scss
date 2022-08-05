@@ -1,4 +1,18 @@
 .container {
+  min-width: 600px;
+  .header-custom-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: black 1px solid;
+    background-color: #2672de;
+    color: white !important;
+    padding: 24px 8px 24px 8px;
+
+    h2 {
+      color: white;
+    }
+  }
+
   .header {
     display: flex;
     justify-content: space-between;
@@ -7,15 +21,15 @@
     padding-left: 1rem;
     padding-bottom: 0.5rem;
   }
-  .content{
+  .content {
     margin-top: 1rem;
     padding: 0 1rem;
 
-    .list{
+    .list {
       list-style-type: none;
-      .result > a{
+      .result > a {
         text-decoration: none;
-        &:hover{
+        &:hover {
           text-decoration: underline;
           color: #3f57a6;
           cursor: pointer;
@@ -23,5 +37,4 @@
       }
     }
   }
-
 }

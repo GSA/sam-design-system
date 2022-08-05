@@ -9,6 +9,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot()],
   declarations: [FormFieldBasic],
   exports: [FormFieldBasic],
-  bootstrap: [FormFieldBasic]
+  bootstrap: [FormFieldBasic],
 })
 export class FormFieldBasicModule {}

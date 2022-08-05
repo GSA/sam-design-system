@@ -19,9 +19,9 @@ export class GroupPanel {
         group: 'panel',
         placeholder: 'eg: Acme Corporation',
         description: 'Description',
-        required: true
-      }
-    }
+        required: true,
+      },
+    },
   ];
 
   multipleFormGroupModel: any = {};
@@ -30,7 +30,7 @@ export class GroupPanel {
       key: 'filters',
       templateOptions: {
         label: 'Entity Information',
-        group: 'panel'
+        group: 'panel',
       },
       fieldGroup: [
         {
@@ -46,9 +46,9 @@ export class GroupPanel {
               { label: 'Assistance Listings', value: 'al' },
               { label: 'Contract Data', value: 'cd' },
               { label: 'Federal Hierarchy', value: 'fh' },
-              { label: 'Wage Determination', value: 'wd' }
-            ]
-          }
+              { label: 'Wage Determination', value: 'wd' },
+            ],
+          },
         },
         {
           key: 'multiple.default.entity.title',
@@ -57,10 +57,10 @@ export class GroupPanel {
             label: 'Entity Name',
             placeholder: 'eg: Acme Corporation',
             description: 'Enter the name of your entity.',
-            required: true
-          }
-        }
-      ]
-    }
+            required: true,
+          },
+        },
+      ],
+    },
   ];
 }

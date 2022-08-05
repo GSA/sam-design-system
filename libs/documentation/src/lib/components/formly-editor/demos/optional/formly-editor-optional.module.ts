@@ -6,18 +6,18 @@ import { SdsEditorModule } from '@gsa-sam/components';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
 
-
 @NgModule({
   declarations: [EditorOptional],
-  imports: [CommonModule,
+  imports: [
+    CommonModule,
     FormsModule,
     SdsEditorModule,
     ReactiveFormsModule,
     SdsFormlyModule,
     FormsModule,
-    FormlyModule.forRoot()
+    FormlyModule.forRoot(),
   ],
   exports: [EditorOptional],
-  bootstrap: [EditorOptional]
+  bootstrap: [EditorOptional],
 })
-export class EditorOptionalModule { }
+export class EditorOptionalModule {}

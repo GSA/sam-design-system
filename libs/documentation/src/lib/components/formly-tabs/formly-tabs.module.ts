@@ -8,6 +8,8 @@ import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../s
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { FormlyTabsBasicModule } from './demos/basic/formly-tabs-basic.module';
 import { FormlyTabsBasicComponent } from './demos/basic/formly-tabs-basic.component';
+import { FormlyTabsInterceptComponent } from './demos/intercept/formly-tabs-intercept.component';
+import { FormlyTabsInterceptModule } from './demos/intercept/formly-tabs-intercept.module';
 
 declare var require: any;
 const DEMOS = {
@@ -16,8 +18,15 @@ const DEMOS = {
     type: FormlyTabsBasicComponent,
     code: require('!!raw-loader!./demos/basic/formly-tabs-basic.component'),
     markup: require('!!raw-loader!./demos/basic/formly-tabs-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/formly-tabs/demos/basic'
-  }
+    path: 'libs/documentation/src/lib/components/formly-tabs/demos/basic',
+  },
+  interrupt: {
+    title: 'interceptTabChange',
+    type: FormlyTabsInterceptComponent,
+    code: require('!!raw-loader!./demos/intercept/formly-tabs-intercept.component'),
+    markup: require('!!raw-loader!./demos/intercept/formly-tabs-intercept.component.html'),
+    path: 'libs/documentation/src/lib/components/formly-tabs/demos/intercept',
+  },
 };
 
 export const ROUTES = [
@@ -30,9 +39,9 @@ export const ROUTES = [
           pkg: 'formly',
           type: 'components',
           name: 'FormlyFieldTabsComponent',
-          formType: 'tabs'
-        }
-      ]
+          formType: 'tabs',
+        },
+      ],
     },
     component: ComponentWrapperComponent,
     children: [
@@ -40,16 +49,12 @@ export const ROUTES = [
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
       { path: 'template', component: DocumentationTemplatePage },
-    ]
-  }
+    ],
+  },
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    DocumentationComponentsSharedModule,
-    FormlyTabsBasicModule,
-  ]
+  imports: [CommonModule, DocumentationComponentsSharedModule, FormlyTabsBasicModule, FormlyTabsInterceptModule],
 })
 export class FormlyTabsModule {
   constructor(demoList: DocumentationDemoList) {

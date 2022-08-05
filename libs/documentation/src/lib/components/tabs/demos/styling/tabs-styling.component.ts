@@ -1,5 +1,4 @@
-import { Component, ViewEncapsulation } from "@angular/core";
-
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: `sds-tabs-styling-demo`,

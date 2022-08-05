@@ -1,4 +1,13 @@
-import { Component, OnInit, Input, EventEmitter, Output, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  EventEmitter,
+  Output,
+  ChangeDetectorRef,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 import { PaginationConfigurationModel, PaginationModel } from './model/paginationModel';
 
 /** pagination display modes. */
@@ -7,16 +16,14 @@ export type PaginationDisplayMode = 'default' | 'results';
 @Component({
   selector: 'sds-pagination',
   templateUrl: './pagination.component.html',
-  styleUrls: ['./pagination.component.scss']
+  styleUrls: ['./pagination.component.scss'],
 })
 export class PaginationComponent implements OnInit {
-
   ngOnInit(): void {
     this.maintainPreviousValue();
   }
 
-  constructor(private change: ChangeDetectorRef) { }
-
+  constructor(private change: ChangeDetectorRef) {}
 
   /**
    * Stores the previous number. Used when focus out if field empty
@@ -55,12 +62,10 @@ export class PaginationComponent implements OnInit {
   displayMode: PaginationDisplayMode = 'default';
 
   /**
- * totalItems for display on results view;
- */
+   * totalItems for display on results view;
+   */
   @Input()
   totalItems?: number = 0;
-
-
 
   /**
    * debounce time for current page input
@@ -83,7 +88,7 @@ export class PaginationComponent implements OnInit {
   public options = [
     { label: '25', value: 25 },
     { label: '50', value: 50 },
-    { label: '100', value: 100 }
+    { label: '100', value: 100 },
   ];
 
   /**
@@ -124,7 +129,6 @@ export class PaginationComponent implements OnInit {
           this.change.detectChanges();
         }
       } else {
-
         if (this.page.pageNumber) {
           this.maintainPreviousValue();
         }
@@ -140,8 +144,7 @@ export class PaginationComponent implements OnInit {
     if (newValue < 1) {
       newValue = 1;
       this.currentPageField.nativeElement.value = newValue;
-    }
-    else if (newValue > this.page.totalPages) {
+    } else if (newValue > this.page.totalPages) {
       newValue = this.page.totalPages;
       this.currentPageField.nativeElement.value = newValue;
     }

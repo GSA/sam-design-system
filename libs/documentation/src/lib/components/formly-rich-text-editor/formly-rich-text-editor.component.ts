@@ -5,7 +5,7 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 @Component({
   selector: 'gsa-sam-formly-rich-text-editor',
   templateUrl: './formly-rich-text-editor.component.html',
-  styleUrls: ['./formly-rich-text-editor.component.scss']
+  styleUrls: ['./formly-rich-text-editor.component.scss'],
 })
 export class FormlyRichTextEditorComponent {
   form = new FormGroup({});
@@ -17,12 +17,12 @@ export class FormlyRichTextEditorComponent {
       type: 'rich-text-editor',
       templateOptions: {
         minHeight: 10,
-        maxHeight: 31
+        maxHeight: 31,
       },
 
       modelOptions: {
         updateOn: 'change',
-      }
+      },
     },
   ];
 }

@@ -5,5 +5,4 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./button-group-differing-lengths.component.scss'],
   selector: `sds-button-group-differing-lengths-demo`,
 })
-export class ButtonGroupDifferingLengths {
-}
+export class ButtonGroupDifferingLengths {}

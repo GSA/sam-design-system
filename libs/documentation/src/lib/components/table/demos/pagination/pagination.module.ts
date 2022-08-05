@@ -5,16 +5,10 @@ import { SdsTableModule } from '@gsa-sam/sam-material-extensions';
 import { TablePaginationComponent } from './pagination.component';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
-
 @NgModule({
   declarations: [TablePaginationComponent],
-  imports: [
-    CommonModule,
-    SdsTableModule,
-    IconModule
-  ],
+  imports: [CommonModule, SdsTableModule, IconModule],
   exports: [TablePaginationComponent],
-  bootstrap: [TablePaginationComponent]
+  bootstrap: [TablePaginationComponent],
 })
-
-export class TablePaginationModule { }
+export class TablePaginationModule {}

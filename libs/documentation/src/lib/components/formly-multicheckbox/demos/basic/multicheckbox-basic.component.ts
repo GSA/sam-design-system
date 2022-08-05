@@ -7,7 +7,6 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
   styleUrls: ['./multicheckbox-basic.component.scss'],
   selector: `sds-formly-multicheckbox-basic-demo`,
 })
-
 export class MultiCheckboxBasic {
   form = new FormGroup({});
   model: any = {};
@@ -24,7 +23,7 @@ export class MultiCheckboxBasic {
           {
             key: 'vet',
             value: 'Veteran Owned',
-            tagText: 'Tag'
+            tagText: 'Tag',
           },
           {
             key: 'women',
@@ -32,9 +31,9 @@ export class MultiCheckboxBasic {
           },
           {
             key: 'minority',
-            value: 'Minority Owned'
-          }
-        ]
+            value: 'Minority Owned',
+          },
+        ],
       },
     },
   ];

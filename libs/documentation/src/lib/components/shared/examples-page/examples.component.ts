@@ -26,8 +26,7 @@ export class DocumentationExamplesPage {
   demos = [];
 
   constructor(route: ActivatedRoute, demoList: DocumentationDemoList) {
-    const componentName = (this.component =
-      route.parent.parent.snapshot.url[1].path);
+    const componentName = (this.component = route.parent.parent.snapshot.url[1].path);
     if (componentName) {
       const demos = demoList.getDemos(componentName);
       if (demos) {

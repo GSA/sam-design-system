@@ -33,9 +33,7 @@ export class SdsButtonGroupOptionComponent {
   host: { class: 'sds-button-group--segmented' },
 })
 export class SdsButtonGroupComponent {
-  @ContentChildren(SdsButtonGroupOptionComponent) buttonOptions!: QueryList<
-    SdsButtonGroupOptionComponent
-  >;
+  @ContentChildren(SdsButtonGroupOptionComponent) buttonOptions!: QueryList<SdsButtonGroupOptionComponent>;
   classesToApply: Object = {};
 
   /**

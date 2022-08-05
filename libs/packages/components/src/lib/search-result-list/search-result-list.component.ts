@@ -1,10 +1,4 @@
-import {
-  Component,
-  Input,
-  ContentChild,
-  TemplateRef,
-  OnInit,
-} from '@angular/core';
+import { Component, Input, ContentChild, TemplateRef, OnInit } from '@angular/core';
 import { SearchModel } from './model/search-results.model';
 import { Location } from '@angular/common';
 @Component({

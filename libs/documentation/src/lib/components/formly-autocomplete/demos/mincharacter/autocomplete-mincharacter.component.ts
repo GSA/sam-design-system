@@ -2,17 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { AutocompleteSampleDataService } from './autocomplete-sample.service';
-import {
-  SDSAutocompletelConfiguration,
-  SDSSelectedItemModel,
-  SelectionMode
-} from '@gsa-sam/components';
+import { SDSAutocompletelConfiguration, SDSSelectedItemModel, SelectionMode } from '@gsa-sam/components';
 @Component({
   templateUrl: './autocomplete-mincharacter.component.html',
   selector: `sds-formly-mincharacter-demo`,
-  providers: [AutocompleteSampleDataService]
+  providers: [AutocompleteSampleDataService],
 })
-export class FormlyAutocompleteMinCharacter  {
+export class FormlyAutocompleteMinCharacter {
   results: any;
   form = new FormGroup({});
   model = {};
@@ -34,11 +30,11 @@ export class FormlyAutocompleteMinCharacter  {
             hideLabel: true,
             service: this.service,
             configuration: this.settings,
-            model: this.autocompleteModel
-          }
-        }
-      ]
-    }
+            model: this.autocompleteModel,
+          },
+        },
+      ],
+    },
   ];
 
   constructor(public service: AutocompleteSampleDataService) {
@@ -56,5 +52,4 @@ export class FormlyAutocompleteMinCharacter  {
     this.settings.debounceTime = 250;
     this.settings.minimumCharacterCountSearch = 3;
   }
-
 }

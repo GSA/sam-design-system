@@ -6,7 +6,6 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
   selector: `sds-search-submit-demo`,
   templateUrl: './search-handle-submit.component.html',
 })
-
 export class SearchHandleSubmit {
   form = new FormGroup({});
   model: any = {};
@@ -17,7 +16,7 @@ export class SearchHandleSubmit {
       key: 'filter',
       templateOptions: {
         label: 'Keyword (with label)',
-        ariaHidden: true
+        ariaHidden: true,
       },
       fieldGroup: [
         {
@@ -42,15 +41,15 @@ export class SearchHandleSubmit {
               id: 'ddSearchSubmit',
               dropdown: {
                 options: [
-                  {value: '-', label: '--Select--'},
+                  { value: '-', label: '--Select--' },
                   { label: '30 Days', value: '30' },
                   { label: '60 Days', value: '60' },
-                  { label: '90 Days', value: '90' }
-                ]
+                  { label: '90 Days', value: '90' },
+                ],
               },
               placeholder: 'eg: Acme Corporation',
-            }
-          }
+            },
+          },
         },
 
         {
@@ -64,24 +63,24 @@ export class SearchHandleSubmit {
               dropdown: {
                 inverse: true,
                 options: [
-                  {value: '-', label: '--Select--'},
+                  { value: '-', label: '--Select--' },
                   { label: '30 Days', value: '30' },
                   { label: '60 Days', value: '60' },
-                  { label: '90 Days', value: '90' }
-                ]
+                  { label: '90 Days', value: '90' },
+                ],
               },
               placeholder: 'eg: Acme Corporation',
-            }
-          }
-        }
-      ]
-    }
+            },
+          },
+        },
+      ],
+    },
   ];
 
-  handleOnModelChange(value){
-    console.log(value)
+  handleOnModelChange(value) {
+    console.log(value);
   }
-  handleSubmit(value){
-    console.log('submitted', value)
+  handleSubmit(value) {
+    console.log('submitted', value);
   }
 }

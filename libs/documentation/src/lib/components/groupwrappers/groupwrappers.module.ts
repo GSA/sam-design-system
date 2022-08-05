@@ -4,10 +4,7 @@ import { DocumentationExamplesPage } from '../shared/examples-page/examples.comp
 import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
-import {
-  DocumentationComponentsSharedModule,
-  DocumentationDemoList
-} from '../shared/index';
+import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { GroupPanelModule } from './demos/panel/group-panel.module';
 import { GroupAccordionModule } from './demos/accordion/group-accordion.module';
@@ -21,15 +18,15 @@ const DEMOS = {
     type: GroupPanel,
     code: require('!!raw-loader!./demos/panel/group-panel.component'),
     markup: require('!!raw-loader!./demos/panel/group-panel.component.html'),
-    path: 'libs/documentation/src/lib/components/groupwrappers/demos/panel'
+    path: 'libs/documentation/src/lib/components/groupwrappers/demos/panel',
   },
   accordion: {
     title: 'Group with Accordion',
     type: GroupAccordion,
     code: require('!!raw-loader!./demos/accordion/group-accordion.component'),
     markup: require('!!raw-loader!./demos/accordion/group-accordion.component.html'),
-    path: 'libs/documentation/src/lib/components/groupwrappers/demos/accordion'
-  }
+    path: 'libs/documentation/src/lib/components/groupwrappers/demos/accordion',
+  },
 };
 
 export const ROUTES = [
@@ -38,32 +35,27 @@ export const ROUTES = [
     path: '',
     component: ComponentWrapperComponent,
     data: {
-      title: "Group",
+      title: 'Group',
       items: [
         {
           pkg: 'formly',
           type: 'components',
           name: 'FormlyGroupWrapperComponent',
-          wrappers: ['group']
-        }
-      ]
+          wrappers: ['group'],
+        },
+      ],
     },
     children: [
       { path: 'examples', component: DocumentationExamplesPage },
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
-      { path: 'template', component: DocumentationTemplatePage }
-    ]
-  }
+      { path: 'template', component: DocumentationTemplatePage },
+    ],
+  },
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    DocumentationComponentsSharedModule,
-    GroupPanelModule,
-    GroupAccordionModule
-  ]
+  imports: [CommonModule, DocumentationComponentsSharedModule, GroupPanelModule, GroupAccordionModule],
 })
 export class GroupWrappersModule {
   constructor(demoList: DocumentationDemoList) {

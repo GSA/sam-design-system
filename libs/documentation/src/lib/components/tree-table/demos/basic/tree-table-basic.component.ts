@@ -1,11 +1,10 @@
-import { Component, ViewChild } from "@angular/core";
-import { TableDataSource } from "@gsa-sam/ngx-uswds";
-import { SdsTreeTableComponent } from "libs/packages/components/src/lib/public-api";
-
+import { Component, ViewChild } from '@angular/core';
+import { TableDataSource } from '@gsa-sam/ngx-uswds';
+import { SdsTreeTableComponent } from 'libs/packages/components/src/lib/public-api';
 
 @Component({
   selector: `tree-table-basic`,
-  templateUrl: `./tree-table-basic.component.html`
+  templateUrl: `./tree-table-basic.component.html`,
 })
 export class TreeTableBasicComponent {
   @ViewChild(SdsTreeTableComponent) treeTable: SdsTreeTableComponent;
@@ -23,46 +22,52 @@ export class TreeTableBasicComponent {
           title: 'Bill of Rights',
           description: 'The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.',
           year: 1791,
-          id: 'row2'
+          id: 'row2',
         },
         {
           title: 'Declaration of Sentiments',
-          description: 'A document written during the Seneca Falls Convention outlining the rights that American women should be entitled to as citizens.',
+          description:
+            'A document written during the Seneca Falls Convention outlining the rights that American women should be entitled to as citizens.',
           year: 1848,
           id: 'row3',
           totalChildren: 42,
           children: [
             {
               title: 'Declaration of Sentiments',
-              description: 'A document written during the Seneca Falls Convention outlining the rights that American women should be entitled to as citizens.',
+              description:
+                'A document written during the Seneca Falls Convention outlining the rights that American women should be entitled to as citizens.',
               year: 1848,
               id: 'row4',
             },
             {
               title: 'Declaration of Sentiments',
-              description: 'A document written during the Seneca Falls Convention outlining the rights that American women should be entitled to as citizens.',
+              description:
+                'A document written during the Seneca Falls Convention outlining the rights that American women should be entitled to as citizens.',
               year: 1848,
               id: 'row5',
             },
             {
               title: 'Declaration of Sentiments',
-              description: 'A document written during the Seneca Falls Convention outlining the rights that American women should be entitled to as citizens.',
+              description:
+                'A document written during the Seneca Falls Convention outlining the rights that American women should be entitled to as citizens.',
               year: 1848,
               id: 'row6',
             },
             {
               title: 'Declaration of Sentiments',
-              description: 'A document written during the Seneca Falls Convention outlining the rights that American women should be entitled to as citizens.',
+              description:
+                'A document written during the Seneca Falls Convention outlining the rights that American women should be entitled to as citizens.',
               year: 1848,
               id: 'row7',
             },
             {
               title: 'Declaration of Sentiments2',
-              description: 'A document written during the Seneca Falls Convention outlining the rights that American women should be entitled to as citizens.',
+              description:
+                'A document written during the Seneca Falls Convention outlining the rights that American women should be entitled to as citizens.',
               year: 1848,
               id: 'row8',
             },
-          ]
+          ],
         },
         {
           title: 'Emancipation Proclamation',
@@ -74,11 +79,12 @@ export class TreeTableBasicComponent {
               title: 'Bill of Rights',
               description: 'The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.',
               year: 1791,
-              id: 'row2'
+              id: 'row2',
             },
             {
               title: 'Declaration of Sentiments',
-              description: 'A document written during the Seneca Falls Convention outlining the rights that American women should be entitled to as citizens.',
+              description:
+                'A document written during the Seneca Falls Convention outlining the rights that American women should be entitled to as citizens.',
               year: 1848,
               id: 'row10',
               children: [
@@ -86,7 +92,7 @@ export class TreeTableBasicComponent {
                   title: 'Bill of Rights',
                   description: 'The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.',
                   year: 1791,
-                  id: 'row2'
+                  id: 'row2',
                 },
                 {
                   title: 'Emancipation Proclamation',
@@ -96,21 +102,24 @@ export class TreeTableBasicComponent {
                   children: [
                     {
                       title: 'Bill of Rights',
-                      description: 'The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.',
+                      description:
+                        'The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.',
                       year: 1791,
-                      id: 'row2'
+                      id: 'row2',
                     },
                     {
                       title: 'Declaration of Sentiments',
-                      description: 'A document written during the Seneca Falls Convention outlining the rights that American women should be entitled to as citizens.',
+                      description:
+                        'A document written during the Seneca Falls Convention outlining the rights that American women should be entitled to as citizens.',
                       year: 1848,
                       id: 'row10',
                       children: [
                         {
                           title: 'Bill of Rights',
-                          description: 'The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.',
+                          description:
+                            'The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.',
                           year: 1791,
-                          id: 'row2'
+                          id: 'row2',
                         },
                         {
                           title: 'Emancipation Proclamation',
@@ -120,58 +129,61 @@ export class TreeTableBasicComponent {
                           children: [
                             {
                               title: 'Bill of Rights',
-                              description: 'The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.',
+                              description:
+                                'The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.',
                               year: 1791,
-                              id: 'row2'
+                              id: 'row2',
                             },
                             {
                               title: 'Declaration of Sentiments',
-                              description: 'A document written during the Seneca Falls Convention outlining the rights that American women should be entitled to as citizens.',
+                              description:
+                                'A document written during the Seneca Falls Convention outlining the rights that American women should be entitled to as citizens.',
                               year: 1848,
                               id: 'row10',
                             },
-                          ]
+                          ],
                         },
                         {
                           title: 'Bill of Rights',
-                          description: 'The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.',
+                          description:
+                            'The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.',
                           year: 1791,
-                          id: 'row2'
+                          id: 'row2',
                         },
-                      ]
+                      ],
                     },
                     {
                       title: 'Bill of Rights',
-                      description: 'The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.',
+                      description:
+                        'The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.',
                       year: 1791,
-                      id: 'row2'
+                      id: 'row2',
                     },
-                  ]
+                  ],
                 },
                 {
                   title: 'Bill of Rights',
                   description: 'The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.',
                   year: 1791,
-                  id: 'row2'
+                  id: 'row2',
                 },
-              ]
-              
+              ],
             },
             {
               title: 'Bill of Rights',
               description: 'The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.',
               year: 1791,
-              id: 'row2'
+              id: 'row2',
             },
-          ]
+          ],
         },
         {
           title: 'Bill of Rights',
           description: 'The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.',
           year: 1791,
-          id: 'row2'
+          id: 'row2',
         },
-      ]
+      ],
     },
     {
       description: 'Statement adopted by the Continental Congress declaring independence from the British Empire.',
@@ -183,7 +195,7 @@ export class TreeTableBasicComponent {
           title: 'Bill of Rights',
           description: 'The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.',
           year: 1791,
-          id: 'row2'
+          id: 'row2',
         },
         {
           title: 'Emancipation Proclamation',
@@ -195,7 +207,7 @@ export class TreeTableBasicComponent {
           title: 'Bill of Rights',
           description: 'The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.',
           year: 1791,
-          id: 'row2'
+          id: 'row2',
         },
         {
           title: 'Emancipation Proclamation',
@@ -207,7 +219,7 @@ export class TreeTableBasicComponent {
           title: 'Bill of Rights',
           description: 'The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.',
           year: 1791,
-          id: 'row2'
+          id: 'row2',
         },
         {
           title: 'Emancipation Proclamation',
@@ -219,7 +231,7 @@ export class TreeTableBasicComponent {
           title: 'Bill of Rights',
           description: 'The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.',
           year: 1791,
-          id: 'row2'
+          id: 'row2',
         },
         {
           title: 'Emancipation Proclamation',
@@ -227,7 +239,7 @@ export class TreeTableBasicComponent {
           year: 1863,
           id: 'row9',
         },
-      ]
+      ],
     },
     {
       description: 'Statement adopted by the Continental Congress declaring independence from the British Empire.',
@@ -239,7 +251,7 @@ export class TreeTableBasicComponent {
           title: 'Bill of Rights',
           description: 'The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.',
           year: 1791,
-          id: 'row2'
+          id: 'row2',
         },
         {
           title: 'Emancipation Proclamation',
@@ -251,7 +263,7 @@ export class TreeTableBasicComponent {
           title: 'Bill of Rights',
           description: 'The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.',
           year: 1791,
-          id: 'row2'
+          id: 'row2',
         },
         {
           title: 'Emancipation Proclamation',
@@ -263,7 +275,7 @@ export class TreeTableBasicComponent {
           title: 'Bill of Rights',
           description: 'The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.',
           year: 1791,
-          id: 'row2'
+          id: 'row2',
         },
         {
           title: 'Emancipation Proclamation',
@@ -275,7 +287,7 @@ export class TreeTableBasicComponent {
           title: 'Bill of Rights',
           description: 'The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.',
           year: 1791,
-          id: 'row2'
+          id: 'row2',
         },
         {
           title: 'Emancipation Proclamation',
@@ -287,7 +299,7 @@ export class TreeTableBasicComponent {
           title: 'Bill of Rights',
           description: 'The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.',
           year: 1791,
-          id: 'row2'
+          id: 'row2',
         },
         {
           title: 'Emancipation Proclamation',
@@ -299,7 +311,7 @@ export class TreeTableBasicComponent {
           title: 'Bill of Rights',
           description: 'The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.',
           year: 1791,
-          id: 'row2'
+          id: 'row2',
         },
         {
           title: 'Emancipation Proclamation',
@@ -307,7 +319,7 @@ export class TreeTableBasicComponent {
           year: 1863,
           id: 'row9',
         },
-      ]
+      ],
     },
   ];
 
@@ -337,7 +349,7 @@ export class TreeTableBasicComponent {
     const additions = [];
 
     for (let i = 0; i < childrenToAdd; i++) {
-      additions.push({...billOfRights});
+      additions.push({ ...billOfRights });
     }
 
     $event.children = [...$event.children, ...additions];

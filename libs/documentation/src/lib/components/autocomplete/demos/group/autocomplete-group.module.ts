@@ -8,6 +8,6 @@ import { AutocompleteGroup } from './autocomplete-group.component';
   declarations: [AutocompleteGroup],
   imports: [CommonModule, FormsModule, SdsAutocompleteModule],
   exports: [AutocompleteGroup],
-  bootstrap: [AutocompleteGroup]
+  bootstrap: [AutocompleteGroup],
 })
 export class AutocompleteGroupModule {}

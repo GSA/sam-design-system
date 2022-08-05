@@ -2,12 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
-import {SdsDialogModule } from '@gsa-sam/components';
+import { SdsDialogModule } from '@gsa-sam/components';
 
 import { SdsFormlyModule } from '../formly/formly.module';
 import { SdsFormlyDialogComponent } from './formly-dialog.component';
 import { SdsFiltersModule } from '../formly-filters/sds-filters.module';
-
 
 @NgModule({
   declarations: [SdsFormlyDialogComponent],
@@ -18,9 +17,9 @@ import { SdsFiltersModule } from '../formly-filters/sds-filters.module';
     ReactiveFormsModule,
     SdsFormlyModule,
     FormlyModule,
-    FormsModule
+    FormsModule,
   ],
   entryComponents: [SdsFormlyDialogComponent],
-  exports: [SdsFormlyDialogComponent]
+  exports: [SdsFormlyDialogComponent],
 })
 export class SdsFormlyDialogModule {}

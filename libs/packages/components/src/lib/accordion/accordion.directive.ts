@@ -1,44 +1,33 @@
-import {
-  Directive,
-  Input,
-  ContentChildren,
-  QueryList,
-  AfterContentInit
-} from "@angular/core";
+import { Directive, Input, ContentChildren, QueryList, AfterContentInit } from '@angular/core';
 
-import { CdkAccordion } from "@angular/cdk/accordion";
-import { FocusKeyManager } from "@angular/cdk/a11y";
-import { HOME, END } from "@angular/cdk/keycodes";
-import {
-  SDS_ACCORDION,
-  SdsAccordionBase,
-  SdsAccordionDisplayMode
-} from "./accordion-base";
-import { SdsAccordionItemHeaderComponent } from "./accordion-item-header.component";
+import { CdkAccordion } from '@angular/cdk/accordion';
+import { FocusKeyManager } from '@angular/cdk/a11y';
+import { HOME, END } from '@angular/cdk/keycodes';
+import { SDS_ACCORDION, SdsAccordionBase, SdsAccordionDisplayMode } from './accordion-base';
+import { SdsAccordionItemHeaderComponent } from './accordion-item-header.component';
 
 @Directive({
-  selector: "sds-accordion",
-  exportAs: "sdsAccordion",
-  inputs: ["multi"],
+  selector: 'sds-accordion',
+  exportAs: 'sdsAccordion',
+  inputs: ['multi'],
   providers: [
     {
       provide: SDS_ACCORDION,
-      useExisting: SdsAccordionDirective
-    }
+      useExisting: SdsAccordionDirective,
+    },
   ],
   host: {
-    'class': 'sds-accordion',
+    class: 'sds-accordion',
     '[class.sds-accordion--basic]': 'displayMode === "basic"',
-  }
+  },
 })
-export class SdsAccordionDirective extends CdkAccordion
-  implements SdsAccordionBase, AfterContentInit {
+export class SdsAccordionDirective extends CdkAccordion implements SdsAccordionBase, AfterContentInit {
   private _keyManager: FocusKeyManager<SdsAccordionItemHeaderComponent>;
 
   @ContentChildren(SdsAccordionItemHeaderComponent, { descendants: true })
   _headers: QueryList<SdsAccordionItemHeaderComponent>;
 
-  @Input() displayMode: SdsAccordionDisplayMode = "default";
+  @Input() displayMode: SdsAccordionDisplayMode = 'default';
 
   ngAfterContentInit() {
     this._keyManager = new FocusKeyManager(this._headers).withWrap();

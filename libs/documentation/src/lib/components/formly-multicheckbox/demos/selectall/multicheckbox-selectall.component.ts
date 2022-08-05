@@ -6,7 +6,6 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
   templateUrl: './multicheckbox-selectall.component.html',
   selector: `sds-formly-multicheckbox-selectall-demo`,
 })
-
 export class MultiCheckboxSelectAll {
   form = new FormGroup({});
   model: any = {};
@@ -28,27 +27,26 @@ export class MultiCheckboxSelectAll {
             value: 'Assistance Listing',
             tooltipPosition: 'bottom',
             tooltipText: '<b>Assistance Listing</b><u>Tool tip with style</u>',
-
           },
           {
             key: 'opp',
             value: 'Contract Opportunities',
             tooltipPosition: 'bottom',
             tooltipText: 'Contract Opportunities',
-
           },
           {
             key: 'ei',
-            value: 'Entity Information'
-          }, {
+            value: 'Entity Information',
+          },
+          {
             key: 'fh',
-            value: 'Federal Hierarchy'
+            value: 'Federal Hierarchy',
           },
           {
             key: 'wd',
-            value: 'Wage Determinations'
-          }
-        ]
+            value: 'Wage Determinations',
+          },
+        ],
       },
     },
   ];

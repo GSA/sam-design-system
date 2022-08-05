@@ -4,10 +4,7 @@ import { DocumentationExamplesPage } from '../shared/examples-page/examples.comp
 import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
-import {
-  DocumentationComponentsSharedModule,
-  DocumentationDemoList,
-} from './../shared/index';
+import { DocumentationComponentsSharedModule, DocumentationDemoList } from './../shared/index';
 import { ComponentWrapperComponent } from './../../shared/component-wrapper/component-wrapper.component';
 import { ButtonGroupBasic } from './demos/button-group-basic/button-group-basic.component';
 import { ButtonGroupBasicModule } from './demos/button-group-basic/button-group-basic.module';
@@ -31,8 +28,7 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/differinglengths/button-group-differing-lengths.component'),
     module: require('!!raw-loader!./demos/differinglengths/button-group-differing-lengths.module'),
     markup: require('!!raw-loader!./demos/differinglengths/button-group-differing-lengths.component.html'),
-    path:
-      'libs/documentation/src/lib/components/button-group/demos/differinglengths',
+    path: 'libs/documentation/src/lib/components/button-group/demos/differinglengths',
   },
 };
 

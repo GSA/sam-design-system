@@ -4,9 +4,7 @@ import { Component } from '@angular/core';
   templateUrl: './highlight.component.html',
   selector: `sds-table-highlight-demo`,
 })
-
 export class TableHighlightComponent {
-
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'requests', 'date'];
 
   data = [
@@ -20,9 +18,7 @@ export class TableHighlightComponent {
       jobTitle: 'Software Test Engineer IV',
       requests: 1,
       date: '2020-07-23',
-      tags: [
-        { className: "text-info-dark", label: "Normal" }
-      ]
+      tags: [{ className: 'text-info-dark', label: 'Normal' }],
     },
     {
       id: 2,
@@ -35,9 +31,9 @@ export class TableHighlightComponent {
       requests: 3,
       date: '2020-04-11',
       tags: [
-        { className: "text-error", label: "Expired" },
-        { className: "text-warning-darker", label: "Inactive" }
-      ]
+        { className: 'text-error', label: 'Expired' },
+        { className: 'text-warning-darker', label: 'Inactive' },
+      ],
     },
     {
       id: 3,
@@ -49,9 +45,7 @@ export class TableHighlightComponent {
       jobTitle: 'Media Manager IV',
       requests: 0,
       date: '2020-04-22',
-      tags: [
-        { className: "text-info", label: "Draft" }
-      ]
+      tags: [{ className: 'text-info', label: 'Draft' }],
     },
     {
       id: 4,
@@ -63,9 +57,7 @@ export class TableHighlightComponent {
       jobTitle: 'Account Coordinator',
       requests: 2,
       date: '2019-11-02',
-      tags: [
-        { className: "text-success", label: "Active" }
-      ]
+      tags: [{ className: 'text-success', label: 'Active' }],
     },
     {
       id: 5,
@@ -77,16 +69,13 @@ export class TableHighlightComponent {
       jobTitle: 'Financial Analyst',
       requests: 6,
       date: '2020-04-15',
-      tags: [
-        { className: "text-default", label: "Default" }
-      ]
-    }
+      tags: [{ className: 'text-default', label: 'Default' }],
+    },
   ];
 
-  handleClicked(rowIndex: number){
-    console.log(`row index #${rowIndex} was just clicked`)
-    console.log('clicked row\'s data:')
-    console.log(this.data[rowIndex])
+  handleClicked(rowIndex: number) {
+    console.log(`row index #${rowIndex} was just clicked`);
+    console.log("clicked row's data:");
+    console.log(this.data[rowIndex]);
   }
-
 }

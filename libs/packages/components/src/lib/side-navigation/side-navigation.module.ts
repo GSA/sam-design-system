@@ -5,10 +5,8 @@ import { SdsSideNavigationComponent } from './side-navigation.component';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-  imports: [
-    CommonModule, FormsModule, RouterModule
-  ],
+  imports: [CommonModule, FormsModule, RouterModule],
   declarations: [SdsSideNavigationComponent],
-  exports: [SdsSideNavigationComponent]
+  exports: [SdsSideNavigationComponent],
 })
-export class SdsSideNavigationModule { }
+export class SdsSideNavigationModule {}

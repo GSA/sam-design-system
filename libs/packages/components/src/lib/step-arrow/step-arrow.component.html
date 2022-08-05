@@ -1,0 +1,17 @@
+<div class="grid-row">
+  <div class="wrap-layer">
+    <div class="text-layer">
+      <p>{{ number }}</p>
+    </div>
+    <div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="80" height="40" viewBox="105 90 5 50">
+        <polygon
+          class="step-arrow"
+          [ngClass]="{ active: status === 'active', inactive: status === 'inactive' }"
+          stroke-width="2"
+          points="120,95 60,95 60,130 120,130 140,112"
+        />
+      </svg>
+    </div>
+  </div>
+</div>

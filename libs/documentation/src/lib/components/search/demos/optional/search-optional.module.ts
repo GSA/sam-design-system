@@ -6,12 +6,8 @@ import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [SearchOptional],
-  imports: [
-    CommonModule,
-    SdsSearchModule,
-    FormsModule
-  ],
+  imports: [CommonModule, SdsSearchModule, FormsModule],
   exports: [SearchOptional],
-  bootstrap: [SearchOptional]
+  bootstrap: [SearchOptional],
 })
 export class SearchOptionalModule {}

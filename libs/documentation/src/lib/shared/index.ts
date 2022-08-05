@@ -7,19 +7,9 @@ import { MarkdownModule } from 'ngx-markdown';
 import { HighlightModule } from 'ngx-highlightjs';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule,
-    MarkdownModule,
-    HighlightModule
-  ],
-  exports: [
-    CommonModule,
-    RouterModule,
-    ComponentWrapperComponent,
-    HighlightComponent
-  ],
+  imports: [CommonModule, RouterModule, MarkdownModule, HighlightModule],
+  exports: [CommonModule, RouterModule, ComponentWrapperComponent, HighlightComponent],
   declarations: [ComponentWrapperComponent, HighlightComponent],
-  providers: []
+  providers: [],
 })
 export class DocumentationSharedModule {}

@@ -19,9 +19,8 @@ import { SdsAccordionModule } from '@gsa-sam/sam-material-extensions';
     SdsDialogModule,
     SdsFormlyModule,
     SdsFormlyDialogModule,
-    
   ],
   exports: [FiltersShowInactiveFilterValues],
-  bootstrap: [FiltersShowInactiveFilterValues]
+  bootstrap: [FiltersShowInactiveFilterValues],
 })
 export class FiltersShowInactiveFilterValuesModule {}

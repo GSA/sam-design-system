@@ -4,10 +4,7 @@ import { DocumentationExamplesPage } from '../shared/examples-page/examples.comp
 import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
-import {
-  DocumentationComponentsSharedModule,
-  DocumentationDemoList,
-} from '../shared/index';
+import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { LinksSideNavigationComponent } from './demos/links-side-navigation/links-side-navigation.component';
 import { LinksSideNavigationModule } from './demos/links-side-navigation/links-side-navigation.module';
@@ -31,7 +28,7 @@ const DEMOS = {
     module: require('!!raw-loader!./demos/filter-side-navigation/filter-side-navigation.module'),
     markup: require('!!raw-loader!./demos/filter-side-navigation/filter-side-navigation.component.html'),
     path: 'libs/documentation/src/lib/components/sidenavigation/demos/filter-side-navigation',
-  }
+  },
 };
 
 export const ROUTES = [
@@ -58,12 +55,7 @@ export const ROUTES = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    DocumentationComponentsSharedModule,
-    LinksSideNavigationModule,
-    FilterSideNavigationModule
-  ],
+  imports: [CommonModule, DocumentationComponentsSharedModule, LinksSideNavigationModule, FilterSideNavigationModule],
 })
 export class SideNavigationModule {
   constructor(demoList: DocumentationDemoList) {

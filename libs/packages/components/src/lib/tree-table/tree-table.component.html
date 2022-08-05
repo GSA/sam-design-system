@@ -3,89 +3,102 @@
     <thead>
       <tr>
         <th scope="col">Related</th>
-        <th scope="col" *ngFor="let col of displayColumns">{{col}}</th>
+        <th scope="col" *ngFor="let col of displayColumns">{{ col }}</th>
       </tr>
     </thead>
     <tbody>
-      <ng-container *ngFor="let data of dataSource; index as i" 
-        [ngTemplateOutlet]="treeTablePanel" 
-        [ngTemplateOutletContext]="getTemplateContext(dataSource, data, i, 0, data === _selectedRowParent)">
+      <ng-container
+        *ngFor="let data of dataSource; index as i"
+        [ngTemplateOutlet]="treeTablePanel"
+        [ngTemplateOutletContext]="getTemplateContext(dataSource, data, i, 0, data === _selectedRowParent)"
+      >
       </ng-container>
     </tbody>
   </table>
 </div>
 
 <!-- TODO: Extract this into separate component -->
-<ng-template #treeTablePanel 
-  let-row="row" 
-  let-level="level" 
-  let-index="index" 
-  let-size="size" 
+<ng-template
+  #treeTablePanel
+  let-row="row"
+  let-level="level"
+  let-index="index"
+  let-size="size"
   let-rows="rows"
   let-parentSelected="parentSelected"
   let-parent="parent"
   let-parentRow="parentRow"
 >
-  <tr role="row"
+  <tr
+    role="row"
     #tableRow
     [attr.id]="row.id"
-    [attr.aria-level]="level" 
-    [attr.aria-posinset]="index" 
+    [attr.aria-level]="level"
+    [attr.aria-posinset]="index"
     [attr.aria-setsize]="size"
-    [attr.aria-expanded]="row.children ? row.expanded ? true : false: undefined"
+    [attr.aria-expanded]="row.children ? (row.expanded ? true : false) : undefined"
     [attr.tabindex]="level === 1 && index === 1 && !_selectedRow ? 0 : row === _selectedRow ? 0 : undefined"
     (keydown.enter)="onRowClicked(row, tableRow)"
     (keydown)="onKeyDown($event, tableRow)"
-    [ngClass]="{'sds-tree-table__row--selected': row === _selectedRow, 'sds-tree-table__row--highlight-border': parentSelected}"
-    >
+    [ngClass]="{
+      'sds-tree-table__row--selected': row === _selectedRow,
+      'sds-tree-table__row--highlight-border': parentSelected
+    }"
+  >
     <td>
-      <span *ngIf="displayVerticalBorder(parent, index - 1, rows)" 
-        #border class="vertical-border">
+      <span *ngIf="displayVerticalBorder(parent, index - 1, rows)" #border class="vertical-border">
         <!-- Programitcally set height of vertical border because we won't know the height until view finishes rendering -->
-        {{setHeight(tableRow, parentRow, border)}}
+        {{ setHeight(tableRow, parentRow, border) }}
       </span>
       <span class="horizontal-border"></span>
-      <button class="usa-button sds-button--circle border-0 bg-white" *ngIf="row.children || row.totalChildren > 0"
-        [attr.tabindex]="row === _selectedRow ? 1 : -1" (click)="onRowClicked(row, tableRow)">
+      <button
+        class="usa-button sds-button--circle border-0 bg-white"
+        *ngIf="row.children || row.totalChildren > 0"
+        [attr.tabindex]="row === _selectedRow ? 1 : -1"
+        (click)="onRowClicked(row, tableRow)"
+      >
         <span class="usa-sr-only">Expand / Collapse current row</span>
-        <usa-icon 
-          [icon]="row.expanded ? 'dash-circle-fill' : 'plus-circle-fill'"
-          [size]="'2x'">
-        </usa-icon>
+        <usa-icon [icon]="row.expanded ? 'dash-circle-fill' : 'plus-circle-fill'" [size]="'2x'"> </usa-icon>
       </button>
     </td>
-    <ng-container [ngTemplateOutlet]="treetableRow.templateRef" 
-      [ngTemplateOutletContext]="{$implicit: row, index: index - 1}">
+    <ng-container
+      [ngTemplateOutlet]="treetableRow.templateRef"
+      [ngTemplateOutletContext]="{ $implicit: row, index: index - 1 }"
+    >
     </ng-container>
   </tr>
 
   <ng-container *ngIf="row.expanded">
     <ng-container *ngFor="let data of row.children; index as i">
-      <ng-container 
-        *ngIf="row.children.length <= childrenLimit || 
-          row.viewAllChildren || 
-          i  < numChildrenToDisplay"
-        [ngTemplateOutlet]="treeTablePanel" 
-        [ngTemplateOutletContext]="getTemplateContext(row, data, i, level, parentSelected, tableRow)">
+      <ng-container
+        *ngIf="row.children.length <= childrenLimit || row.viewAllChildren || i < numChildrenToDisplay"
+        [ngTemplateOutlet]="treeTablePanel"
+        [ngTemplateOutletContext]="getTemplateContext(row, data, i, level, parentSelected, tableRow)"
+      >
       </ng-container>
-    </ng-container> 
+    </ng-container>
   </ng-container>
 
-  <tr class="text-center" 
+  <tr
+    class="text-center"
     #viewAllRow
-    *ngIf="row.expanded && !row.viewAllChildren && (row.totalChildren > row.children?.length || row.children?.length > childrenLimit)" 
+    *ngIf="
+      row.expanded &&
+      !row.viewAllChildren &&
+      (row.totalChildren > row.children?.length || row.children?.length > childrenLimit)
+    "
     (keydown.enter)="viewAllClicked(row, viewAllRow, tableRow)"
     (keydown)="onKeyDown($event, viewAllRow)"
   >
     <td></td>
     <td class="width-100">
       <button class="usa-button usa-button--base" (click)="viewAllClicked(row, viewAllRow, tableRow)">
-        View All ( 
-          <span *ngIf="row.totalChildren && row.totalChildren > row.children?.length; else childrenLength">
-            {{row.totalChildren}}
-          </span>
+        View All (
+        <span *ngIf="row.totalChildren && row.totalChildren > row.children?.length; else childrenLength">
+          {{ row.totalChildren }}
+        </span>
         )
-          <ng-template #childrenLength>{{row.children?.length}}</ng-template>
+        <ng-template #childrenLength>{{ row.children?.length }}</ng-template>
       </button>
     </td>
   </tr>

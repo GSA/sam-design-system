@@ -8,13 +8,8 @@ import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
   declarations: [TooltipBasic],
-  imports: [
-    CommonModule,
-    IconModule,
-    SdsTooltipModule,
-    NgxBootstrapIconsModule.pick({exclamationCircle})
-  ],
+  imports: [CommonModule, IconModule, SdsTooltipModule, NgxBootstrapIconsModule.pick({ exclamationCircle })],
   exports: [TooltipBasic],
-  bootstrap: [TooltipBasic]
+  bootstrap: [TooltipBasic],
 })
 export class TooltipBasicModule {}

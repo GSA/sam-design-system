@@ -3,7 +3,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 @Component({
   selector: 'sds-roadmap',
   templateUrl: './roadmap.component.html',
-  styleUrls: ['roadmap.component.scss']
+  styleUrls: ['roadmap.component.scss'],
 })
 export class RoadmapComponent {
   readonly DONE = 'DONE';
@@ -32,8 +32,8 @@ export class RoadmapComponent {
         { label: 'Button Group', status: this.DONE },
         { label: 'Selection Panel', status: this.DONE },
         { label: 'Icons', status: this.DONE },
-        { label: 'Table', status: this.DONE }
-      ]
+        { label: 'Table', status: this.DONE },
+      ],
     },
     {
       sectionLabel: 'Form Controls',
@@ -59,7 +59,7 @@ export class RoadmapComponent {
         { label: 'Group', status: this.DONE },
         { label: 'Template Options', status: this.DONE },
         { label: 'Readonly', status: this.DONE },
-      ]
+      ],
     },
     {
       sectionLabel: 'Layout',
@@ -70,8 +70,8 @@ export class RoadmapComponent {
         { label: 'Results Layout', status: this.DONE },
         { label: 'Responsive Layout', status: this.DONE },
         { label: 'System Alerts', status: this.DONE },
-      ]
-    }
+      ],
+    },
   ];
 
   constructor() {}

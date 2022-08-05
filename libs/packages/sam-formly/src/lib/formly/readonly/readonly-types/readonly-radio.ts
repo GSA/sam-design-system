@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, TemplateRef } from "@angular/core";
+import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 
 @Component({
   selector: `sds-readonly-radio`,
@@ -6,14 +6,16 @@ import { Component, Input, OnInit, TemplateRef } from "@angular/core";
     <span *ngIf="!value; else definedValues" class="text-bold">&mdash;</span>
 
     <ng-template #definedValues>
-    <span *ngFor="let option of radioOptions | formlySelectOptions | async">
+      <span *ngFor="let option of radioOptions | formlySelectOptions | async">
         <span *ngIf="option.value === value">
-          <ng-container *ngIf="valueTemplate; else defaultValue" 
-          [ngTemplateOutlet]="valueTemplate" 
-          [ngTemplateOutletContext]="{$implicit: option.label}">
+          <ng-container
+            *ngIf="valueTemplate; else defaultValue"
+            [ngTemplateOutlet]="valueTemplate"
+            [ngTemplateOutletContext]="{ $implicit: option.label }"
+          >
           </ng-container>
           <ng-template #defaultValue>
-            <span class="text-bold display-block">{{option.label}}</span>
+            <span class="text-bold display-block">{{ option.label }}</span>
           </ng-template>
         </span>
       </span>

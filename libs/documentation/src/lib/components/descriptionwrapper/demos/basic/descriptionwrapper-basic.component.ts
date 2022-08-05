@@ -6,7 +6,6 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
   templateUrl: './descriptionwrapper-basic.component.html',
   selector: `sds-descriptionwrapper-demo`,
 })
-
 export class DescriptionWrapperBasic {
   form = new FormGroup({});
   model: any = {};
@@ -18,8 +17,8 @@ export class DescriptionWrapperBasic {
       type: 'input',
       templateOptions: {
         description: 'Input description',
-        placeholder: 'eg: Acme Corporation'
+        placeholder: 'eg: Acme Corporation',
       },
-    }
+    },
   ];
 }

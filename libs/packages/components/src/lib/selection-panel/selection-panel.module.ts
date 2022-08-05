@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -8,18 +7,13 @@ import { SdsSelectionPanelSelectionModeComponent } from './selection-mode/select
 import { SdsSelectionPanelNavigationModeComponent } from './navigation-mode/navigation-mode.component';
 
 @NgModule({
-  imports: [
-    CommonModule, RouterModule
-  ],
-  declarations: [ 
-    SdsSelectionPanelComponent , 
-    SdsSubPanelComponent, 
-    SdsSelectionPanelSelectionModeComponent, 
-    SdsSelectionPanelNavigationModeComponent
-  ],
-  exports: [
+  imports: [CommonModule, RouterModule],
+  declarations: [
     SdsSelectionPanelComponent,
     SdsSubPanelComponent,
-  ]
+    SdsSelectionPanelSelectionModeComponent,
+    SdsSelectionPanelNavigationModeComponent,
+  ],
+  exports: [SdsSelectionPanelComponent, SdsSubPanelComponent],
 })
-export class SdsSelectionPanelModule { }
+export class SdsSelectionPanelModule {}

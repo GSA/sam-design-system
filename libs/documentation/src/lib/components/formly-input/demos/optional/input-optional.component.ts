@@ -18,8 +18,7 @@ export class InputOptional {
       templateOptions: {
         label: 'Reference Number',
         placeholder: 'A123456',
-        description:
-          'If you have your own reference number you can add it here.',
+        description: 'If you have your own reference number you can add it here.',
       },
     },
     {

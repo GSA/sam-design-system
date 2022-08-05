@@ -4,11 +4,8 @@
     "outDir": "../../../dist/out-tsc",
     "types": ["jasmine", "node"],
     "paths": {
-      "@gsa-sam/components": [
-        "dist/libs/components",
-        "libs/packages/components/src/index.ts"
-      ]
-    },
+      "@gsa-sam/components": ["dist/libs/components", "libs/packages/components/src/index.ts"]
+    }
   },
   "files": ["src/test.ts"],
   "include": ["**/*.spec.ts", "**/*.d.ts"]

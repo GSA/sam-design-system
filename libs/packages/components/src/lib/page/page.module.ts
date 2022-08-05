@@ -8,4 +8,4 @@ import { SdsPageComponent, SdsPageOptionsComponent } from './page.component';
   declarations: [SdsPageComponent, SdsPageOptionsComponent],
   providers: [],
 })
-export class SdsPageModule { }
+export class SdsPageModule {}

@@ -12,11 +12,7 @@ import { NgxBootstrapIconsModule, question, check, threeDots, book, download } f
 import { IconModule, bars, newVersion, comment, bell } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
-  declarations: [
-    ResultListCardComponent,
-    ResultListCardItemSampleComponent,
-    ResultListCardItemChildSampleComponent
-  ],
+  declarations: [ResultListCardComponent, ResultListCardItemSampleComponent, ResultListCardItemChildSampleComponent],
   imports: [
     IconModule,
     CommonModule,
@@ -24,9 +20,9 @@ import { IconModule, bars, newVersion, comment, bell } from '@gsa-sam/ngx-uswds-
     SdsPageModule,
     SdsSearchResultListModule,
     SdsActionsMenuModule,
-    NgxBootstrapIconsModule.pick({question, bars, newVersion, check, threeDots, book, comment, bell, download})
+    NgxBootstrapIconsModule.pick({ question, bars, newVersion, check, threeDots, book, comment, bell, download }),
   ],
   exports: [ResultListCardComponent],
-  bootstrap: [ResultListCardComponent]
+  bootstrap: [ResultListCardComponent],
 })
 export class ResultListCardComponentModule {}

@@ -6,13 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [BasicRichTextComponent],
-  imports: [
-    CommonModule,
-    SdsRichTextModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
+  imports: [CommonModule, SdsRichTextModule, FormsModule, ReactiveFormsModule],
   exports: [BasicRichTextComponent],
-  bootstrap: [BasicRichTextComponent]
+  bootstrap: [BasicRichTextComponent],
 })
 export class BasicRichTextModule {}

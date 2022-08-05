@@ -1,5 +1,4 @@
 <div class="sds-card sds-card--shadowed sds-card--bordered sds-card--vertical sds-result-item">
-
   <div class="sds-card__header">
     <div class="sds-card__icon">
       <usa-icon [icon]="model.icon" size="sm"></usa-icon>
@@ -7,15 +6,12 @@
   </div>
 
   <div class="sds-card__body">
-
     <!-- Item Heading -->
     <div class="grid-row grid-gap">
       <div class="grid-col">
         <h3 class="font-sans-xs margin-y-0">
           <!-- title -->
-          <a class="usa-link" href="#">
-            {{model.text}} Entity: {{model.id}}
-          </a>
+          <a class="usa-link" href="#"> {{ model.text }} Entity: {{ model.id }} </a>
         </h3>
       </div>
     </div>
@@ -32,7 +28,7 @@
           </div>
           <!-- Key/Value Wrapper -->
           <div class="grid-col">
-            <div class="sds-field ">
+            <div class="sds-field">
               <div class="sds-field__name has-usa-tag">Unique Entity ID:</div>
               <div class="sds-field__value left-align">902930291</div>
             </div>
@@ -46,7 +42,7 @@
           </div>
           <!-- Key/Value Wrapper -->
           <div class="grid-col">
-            <div class="sds-field ">
+            <div class="sds-field">
               <div class="sds-field__name has-usa-tag">Unique Entity ID:</div>
               <div class="sds-field__value left-align">1A23B45C67D89E</div>
             </div>
@@ -59,7 +55,7 @@
             </div>
             <!-- Key/Value Wrapper -->
             <div class="grid-col">
-              <div class="sds-field ">
+              <div class="sds-field">
                 <div class="sds-field__name">Unique Entity ID:</div>
                 <div class="sds-field__value">1A23B45C67D89E</div>
               </div>
@@ -77,7 +73,7 @@
             </div>
             <!-- Key/Value Wrapper -->
             <div class="grid-col">
-              <div class="sds-field ">
+              <div class="sds-field">
                 <div class="sds-field__name">CAGE/NCAGE:</div>
                 <div class="sds-field__value">0D203</div>
               </div>
@@ -88,13 +84,13 @@
         <div class="grid-col-12 tablet:grid-col-4">
           <!-- Field Width -->
           <div class="grid-row margin-y-1">
-            <div class="sds-field sds-field--stacked ">
+            <div class="sds-field sds-field--stacked">
               <div class="sds-field__name">Purpose of Registration:</div>
               <div class="sds-field__value">Federal Assistance Awards &amp; IGT</div>
             </div>
           </div>
           <div class="grid-row margin-y-1">
-            <div class="sds-field sds-field--stacked ">
+            <div class="sds-field sds-field--stacked">
               <div class="sds-field__name">Physical Address:</div>
               <div class="sds-field__value">
                 <div>123456 George Washington Boulevard, Suite 4a</div>
@@ -109,20 +105,22 @@
           <div class="grid-row grid-gap-05">
             <!-- Key/Value Wrapper -->
             <div class="grid-col-4 tablet:grid-col-6">
-              <div class="sds-field sds-field--stacked  sds-field--featured">
+              <div class="sds-field sds-field--stacked sds-field--featured">
                 <div class="sds-field__name">Status</div>
                 <div class="sds-field__value">
                   <span class="sds-tag sds-tag--outline">
-                    <i class="sds-status sds-status--sm sds-status--green"></i>Active</span>
+                    <i class="sds-status sds-status--sm sds-status--green"></i>Active</span
+                  >
                 </div>
               </div>
             </div>
             <!-- Key/Value Wrapper -->
             <div class="grid-col-4 tablet:grid-col-6">
-              <div class="sds-field sds-field--stacked  sds-field--featured">
+              <div class="sds-field sds-field--stacked sds-field--featured">
                 <div class="sds-field__name">Expiration Date</div>
                 <div class="sds-field__value">
-                  <span class="sds-tag sds-tag--outline flex-justify-center">Feb 20, 2019</span></div>
+                  <span class="sds-tag sds-tag--outline flex-justify-center">Feb 20, 2019</span>
+                </div>
               </div>
             </div>
           </div>
@@ -141,3 +139,4 @@
       <ng-content></ng-content>
     </div>
   </div>
+</div>

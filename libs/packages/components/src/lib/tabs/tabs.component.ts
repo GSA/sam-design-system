@@ -1,5 +1,19 @@
-import { AfterContentInit, AfterViewInit, ChangeDetectorRef, Component, ContentChildren, EventEmitter, Input, OnChanges, OnInit, Output, QueryList, SimpleChanges, TemplateRef } from "@angular/core";
-import { TabPanelComponent } from "./tab-panel.component";
+import {
+  AfterContentInit,
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  ContentChildren,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  QueryList,
+  SimpleChanges,
+  TemplateRef,
+} from '@angular/core';
+import { TabPanelComponent } from './tab-panel.component';
 
 /** CONSTANTS
  * Adding in the constant values for keycodes
@@ -13,11 +27,10 @@ const RIGHT_ARROW = 39;
   templateUrl: `./tabs.component.html`,
 })
 export class TabsComponent implements OnInit, OnChanges, AfterContentInit {
-
   /**
    * Currently selected tab for display.
    */
-  @Input() 
+  @Input()
   selectedTab: TabPanelComponent;
 
   /**
@@ -35,6 +48,8 @@ export class TabsComponent implements OnInit, OnChanges, AfterContentInit {
    */
   @Input() tabClass: string = 'sds-tabs--default';
 
+  @Input() interceptTabChange: boolean = false;
+
   /**
    * Emits an event whenever a tab is selected by the user containing the selected
    * TabPanelComponent. Please note that because this output contains `Change` suffix
@@ -43,6 +58,9 @@ export class TabsComponent implements OnInit, OnChanges, AfterContentInit {
   @Output()
   selectedTabChange: EventEmitter<TabPanelComponent> = new EventEmitter<TabPanelComponent>();
 
+  @Output()
+  preTabChange: EventEmitter<TabPanelComponent> = new EventEmitter<TabPanelComponent>();
+
   @ContentChildren(TabPanelComponent) tabPanels: QueryList<TabPanelComponent>;
 
   /**
@@ -50,12 +68,11 @@ export class TabsComponent implements OnInit, OnChanges, AfterContentInit {
    */
   private focusedTab: TabPanelComponent;
 
-
   /**
    * Assigns selected tab value was given. Otherwise, the first
    * tab panel in the list will be selected after content has initialized.
    */
-  ngOnInit () {
+  ngOnInit() {
     if (this.selectedTab) {
       this.selectedTab.selected = true;
       this.focusedTab = this.selectedTab;
@@ -69,7 +86,7 @@ export class TabsComponent implements OnInit, OnChanges, AfterContentInit {
    */
   ngOnChanges(changes: SimpleChanges) {
     if (changes.selectedTab && changes.selectedTab.currentValue) {
-      this.tabPanels.forEach(tab => tab.selected = false);
+      this.tabPanels.forEach((tab) => (tab.selected = false));
       changes.selectedTab.currentValue.selected = true;
       this.focusedTab = this.selectedTab;
     }
@@ -86,7 +103,7 @@ export class TabsComponent implements OnInit, OnChanges, AfterContentInit {
       this.focusedTab = this.selectedTab;
     }
   }
-  
+
   onTabClicked(clickEvent: MouseEvent, tabPanel: TabPanelComponent) {
     this.changeSelectedTabPanel(tabPanel);
   }
@@ -100,7 +117,7 @@ export class TabsComponent implements OnInit, OnChanges, AfterContentInit {
     const tabPanelArray = this.tabPanels.toArray();
     let selectedTabIndex = tabPanelArray.findIndex((tabPanel) => tabPanel === this.focusedTab);
 
-    switch($event.keyCode) {
+    switch ($event.keyCode) {
       case LEFT_ARROW:
         selectedTabIndex = this.getNextTabLeft(tabPanelArray, selectedTabIndex);
         break;
@@ -119,9 +136,9 @@ export class TabsComponent implements OnInit, OnChanges, AfterContentInit {
   }
 
   isObj(obj: any) {
-    if (typeof(obj) === 'object' && (obj as TemplateRef<any>).elementRef) {
+    if (typeof obj === 'object' && (obj as TemplateRef<any>).elementRef) {
       return true;
-    } else if (typeof(obj) === 'string') {
+    } else if (typeof obj === 'string') {
       return false;
     } else {
       throw new Error('Tab header must be either a string or a template reference');
@@ -132,9 +149,13 @@ export class TabsComponent implements OnInit, OnChanges, AfterContentInit {
    * Internal method to change currently selected tab panel and display another panel
    * to the user. External components should not use this method, but rather
    * two-way bind the selectedTab input and modify that value.
-   * @param newTabPanel 
+   * @param newTabPanel
    */
   private changeSelectedTabPanel(newTabPanel: TabPanelComponent) {
+    this.preTabChange.emit(newTabPanel);
+    if (this.interceptTabChange) {
+      return;
+    }
     this.selectedTab.selected = false;
     newTabPanel.selected = true;
     this.selectedTab = newTabPanel;
@@ -149,7 +170,6 @@ export class TabsComponent implements OnInit, OnChanges, AfterContentInit {
    * @param startIndex - Current index of focused tab panel
    */
   private getNextTabLeft(tabPanels: TabPanelComponent[], startIndex: number) {
-
     for (let i = 0; i < tabPanels.length; i++) {
       startIndex = startIndex == 0 ? tabPanels.length - 1 : (startIndex - 1) % tabPanels.length;
       if (!tabPanels[startIndex].disabled) {

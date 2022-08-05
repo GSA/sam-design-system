@@ -9,12 +9,13 @@
     [attr.aria-label]="tabPanel.ariaLabel"
     [disabled]="tabPanel.disabled"
     (click)="onTabClicked($event, tabPanel)"
-    (keydown)="onKeyDown($event)">
+    (keydown)="onKeyDown($event)"
+  >
     <ng-container *ngIf="isObj(tabPanel.tabHeader); else textHeader">
       <ng-template *ngTemplateOutlet="tabPanel.tabHeader"></ng-template>
     </ng-container>
     <ng-template #textHeader>
-      {{tabPanel.tabHeader}}
+      {{ tabPanel.tabHeader }}
     </ng-template>
   </button>
 </div>

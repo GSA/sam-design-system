@@ -1,23 +1,25 @@
-import { CommonModule } from "@angular/common";
-import { NgModule } from "@angular/core";
-import { ComponentWrapperComponent } from "../../shared/component-wrapper/component-wrapper.component";
-import { DocumentationComponentsSharedModule, DocumentationDemoList } from "../shared";
-import { DocumentationAPIPage } from "../shared/api-page/docs-api.component";
-import { DocumentationExamplesPage } from "../shared/examples-page/examples.component";
-import { DocumentationSourcePage } from "../shared/source-page/source.component";
-import { DocumentationTemplatePage } from "../shared/template-page/template.component";
-import { TabsAutoActivateComponent } from "./demos/auto-activate/tabs-auto-activate.component";
-import { TabsAutoActivateModule } from "./demos/auto-activate/tabs-auto-activate.module";
-import { TabsBasicComponent } from "./demos/basic/tabs-basic.component";
-import { TabsBasicModule } from "./demos/basic/tabs-basic.module";
-import { TabsDisabledComponent } from "./demos/disabled/tabs-disabled.component";
-import { TabsDisabledModule } from "./demos/disabled/tabs-disabled.module";
-import { DynamicTabsComponet } from "./demos/dynamic-tabs/dynamic-tabs.component";
-import { DynamicTabsModule } from "./demos/dynamic-tabs/dynamic-tabs.module";
-import { TabsStylingComponent } from "./demos/styling/tabs-styling.component";
-import { TabsStylingModule } from "./demos/styling/tabs-styling.module";
-import { TabsTemplateHeaderComponent } from "./demos/template-header/tabs-template-header.component";
-import { TabsTemplateHeaderModule } from "./demos/template-header/tabs-template-header.module";
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
+import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../shared';
+import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
+import { DocumentationExamplesPage } from '../shared/examples-page/examples.component';
+import { DocumentationSourcePage } from '../shared/source-page/source.component';
+import { DocumentationTemplatePage } from '../shared/template-page/template.component';
+import { TabsAutoActivateComponent } from './demos/auto-activate/tabs-auto-activate.component';
+import { TabsAutoActivateModule } from './demos/auto-activate/tabs-auto-activate.module';
+import { TabsBasicComponent } from './demos/basic/tabs-basic.component';
+import { TabsBasicModule } from './demos/basic/tabs-basic.module';
+import { TabsDisabledComponent } from './demos/disabled/tabs-disabled.component';
+import { TabsDisabledModule } from './demos/disabled/tabs-disabled.module';
+import { DynamicTabsComponet } from './demos/dynamic-tabs/dynamic-tabs.component';
+import { DynamicTabsModule } from './demos/dynamic-tabs/dynamic-tabs.module';
+import { TabsInterceptComponent } from './demos/intercept/tabs-intercept.component';
+import { TabsInterceptModule } from './demos/intercept/tabs-intercept.module';
+import { TabsStylingComponent } from './demos/styling/tabs-styling.component';
+import { TabsStylingModule } from './demos/styling/tabs-styling.module';
+import { TabsTemplateHeaderComponent } from './demos/template-header/tabs-template-header.component';
+import { TabsTemplateHeaderModule } from './demos/template-header/tabs-template-header.module';
 
 declare var require: any;
 const DEMOS = {
@@ -68,7 +70,15 @@ const DEMOS = {
     markup: require('!!raw-loader!./demos/styling/tabs-styling.component.html'),
     module: require('!!raw-loader!./demos/styling/tabs-styling.module.ts'),
     path: 'libs/documentation/src/lib/components/tabs/demos/styling',
-  }
+  },
+  interceptTabChange: {
+    title: 'Intercept Tab Change',
+    type: TabsInterceptComponent,
+    code: require('!!raw-loader!./demos/intercept/tabs-intercept.component'),
+    markup: require('!!raw-loader!./demos/intercept/tabs-intercept.component.html'),
+    module: require('!!raw-loader!./demos/intercept/tabs-intercept.module.ts'),
+    path: 'libs/documentation/src/lib/components/tabs/demos/intercept',
+  },
 };
 
 export const ROUTES = [
@@ -81,8 +91,8 @@ export const ROUTES = [
           pkg: 'components',
           type: 'components',
           name: 'SdsTabsComponent',
-        }
-      ]
+        },
+      ],
     },
     component: ComponentWrapperComponent,
     children: [
@@ -90,8 +100,8 @@ export const ROUTES = [
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
       { path: 'template', component: DocumentationTemplatePage },
-    ]
-  }
+    ],
+  },
 ];
 
 @NgModule({
@@ -104,7 +114,8 @@ export const ROUTES = [
     TabsAutoActivateModule,
     DynamicTabsModule,
     TabsStylingModule,
-  ]
+    TabsInterceptModule,
+  ],
 })
 export class TabsModule {
   constructor(demoList: DocumentationDemoList) {
