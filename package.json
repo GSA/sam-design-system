@@ -35,7 +35,9 @@
     "demo:stackblitzes-federalist": "ts-node --project misc/tsconfig.json misc/generate-stackblitzes.ts --federalist",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
     "storybook": "npm run docs:json && start-storybook -p 6006 --no-open",
-    "build-storybook": "npm run docs:json && build-storybook"
+    "build-storybook": "npm run docs:json && build-storybook",
+    "check-prettier": "npx prettier -c \"libs\" \"apps\"",
+    "fix-prettier": "npx prettier --write \"libs\" \"apps\""
   },
   "private": true,
   "dependencies": {
