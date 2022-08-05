@@ -1,4 +1,13 @@
-import { AfterViewInit, Directive, ElementRef, HostListener, Input, Renderer2, TemplateRef } from '@angular/core';
+import {
+  AfterViewInit,
+  Directive,
+  ElementRef,
+  HostListener,
+  Input,
+  Renderer2,
+  TemplateRef,
+  OnChanges,
+} from '@angular/core';
 import { debounce } from './debounce.decorator';
 
 @Directive({
