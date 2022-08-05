@@ -1,8 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  SdsPopoverDirective,
-  SdsPopoverModule,
-} from '@gsa-sam/components';
+import { SdsPopoverDirective, SdsPopoverModule } from '@gsa-sam/components';
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
 import { generateConfig } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { PopoverCloseOnClickOutsideModule } from './demos/popover-close-on-click-outside/popover-close-on-click-outside.module';

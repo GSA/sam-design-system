@@ -19,8 +19,7 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/button-group-basic/button-group-basic.component'),
     markup: require('!!raw-loader!./demos/button-group-basic/button-group-basic.component.html'),
     module: require('!!raw-loader!./demos/button-group-basic/button-group-basic.module'),
-    path:
-      'libs/documentation/src/lib/components/button-group/demos/button-group-basic',
+    path: 'libs/documentation/src/lib/components/button-group/demos/button-group-basic',
   },
   differinglengths: {
     title: 'Differing Lengths',

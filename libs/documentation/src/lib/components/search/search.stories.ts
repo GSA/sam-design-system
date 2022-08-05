@@ -91,11 +91,7 @@ Size.parameters = {
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
-  preview: generateConfig(
-    'components/search/demos/search-size',
-    'ButtonGroupBasicModule',
-    'sds-button-group-demo'
-  ),
+  preview: generateConfig('components/search/demos/search-size', 'ButtonGroupBasicModule', 'sds-button-group-demo'),
 };
 
 export const Placeholder: Story = (args) => ({
@@ -125,11 +121,7 @@ Dropdown.parameters = {
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
-  preview: generateConfig(
-    'components/search/demos/search-dropdown',
-    'ButtonGroupBasicModule',
-    'sds-button-group-demo'
-  ),
+  preview: generateConfig('components/search/demos/search-dropdown', 'ButtonGroupBasicModule', 'sds-button-group-demo'),
 };
 
 export const Overview = () => ({
