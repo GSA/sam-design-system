@@ -1,9 +1,0 @@
-<sds-page class="sds-page condensed">
-  <sds-search-result-list [model]="items" [divider]=false>
-    <ng-template #resultContent let-item>
-      <card-item-sample [model]="item">
-          <child-card-item-sample *ngIf="item.hasNewerData"></child-card-item-sample>
-      </card-item-sample>
-    </ng-template>
-  </sds-search-result-list>
-</sds-page>
