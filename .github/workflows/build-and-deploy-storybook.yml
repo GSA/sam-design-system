@@ -1,0 +1,26 @@
+name: Deploy to Github Pages
+on:
+  push:
+    branches:
+      - storybook
+jobs:
+  Build-And-Deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: Install Node Packages
+        run: npm i
+      - name: Build Storybook Assets
+        run: npm run build-storybook
+      - name: Add .nojekyll file to allow for node_modules to be included in bundle
+        run: touch storybook-static/.nojekyll
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.2.3
+        with:
+          branch: gh-pages
+          folder: storybook-static
