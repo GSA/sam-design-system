@@ -1,6 +1,6 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormlyModule, FormlyFieldConfig, ConfigOption } from '@ngx-formly/core';
 import { FormlySelectModule } from '@ngx-formly/core/select';
 import { MatInputModule } from '@angular/material/input';
@@ -204,6 +204,7 @@ export const DATE_FORMAT: MatDateFormats = {
         { name: 'minDate', validation: minDateValidator },
         { name: 'maxDate', validation: maxDateValidator },
         { name: 'dateRangeValidator', validation: dateRangeValidator },
+        { name: 'requiredTrue', validation: Validators.requiredTrue },
       ],
       wrappers: [{ name: 'animation', component: AnimationWrapperComponent }],
       extensions: [{ name: 'animation', extension: { onPopulate: animationExtension } }],
