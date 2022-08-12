@@ -105,3 +105,4 @@ InterceptTabChange.parameters = {
   },
   actions: { disabled: true },
   preview: generateConfig('components/tabs/demos/tabs-intercept', 'TabsInterceptModule', 'sds-tabs-intercept-demo')
+};
