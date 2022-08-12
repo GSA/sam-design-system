@@ -24,3 +24,4 @@ export class SdsActionsMenuComponent {
     return (mode = this.actionModes.DISABLED) ? true : false;
   }
 }
+ 

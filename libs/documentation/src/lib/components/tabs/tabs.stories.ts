@@ -8,18 +8,18 @@ import {
     SdsTabsModule,
 } from '@gsa-sam/components';
 import { generateConfig } from 'libs/documentation/src/sandbox/sandbox-utils';
-import { TabsAutoActivateComponent } from './demos/auto-activate/tabs-auto-activate.component'
-import { TabsAutoActivateModule } from './demos/auto-activate/tabs-auto-activate.module'
-import { TabsBasicComponent } from './demos/basic/tabs-basic.component'
-import { TabsBasicModule } from './demos/basic/tabs-basic.module'
-import { TabsDisabledComponent } from './demos/disabled/tabs-disabled.component'
-import { TabsDisabledModule } from './demos/disabled/tabs-disabled.module'
+import { TabsAutoActivateComponent } from './demos/tabs-auto-activate/tabs-auto-activate.component'
+import { TabsAutoActivateModule } from './demos/tabs-auto-activate/tabs-auto-activate.module'
+import { TabsBasicComponent } from './demos/tabs-basic/tabs-basic.component'
+import { TabsBasicModule } from './demos/tabs-basic/tabs-basic.module'
+import { TabsDisabledComponent } from './demos/tabs-disabled/tabs-disabled.component'
+import { TabsDisabledModule } from './demos/tabs-disabled/tabs-disabled.module'
 import { DynamicTabsComponet } from './demos/dynamic-tabs/dynamic-tabs.component'
 import { DynamicTabsModule } from './demos/dynamic-tabs/dynamic-tabs.module'
-import { TabsStylingComponent } from './demos/styling/tabs-styling.component'
-import { TabsStylingModule } from './demos/styling/tabs-styling.module'
-import { TabsTemplateHeaderComponent } from './demos/template-header/tabs-template-header.component'
-import { TabsTemplateHeaderModule } from './demos/template-header/tabs-template-header.module'
+import { TabsStylingComponent } from './demos/tabs-styling/tabs-styling.component'
+import { TabsStylingModule } from './demos/tabs-styling/tabs-styling.module'
+import { TabsTemplateHeaderComponent } from './demos/tabs-template-header/tabs-template-header.component'
+import { TabsTemplateHeaderModule } from './demos/tabs-template-header/tabs-template-header.module'
 //import { TabPanelComponent } from '../../../../../packages/components/src/lib/tabs/tab-panel.component'
 //import { SdsTabsModule } from '../../../../../../libs/packages/components/src/lib/tabs/tabs.module'
 
@@ -90,10 +90,10 @@ Configurable.args = {
         },
     },
     automaticActivation: true, 
-    selectedTab: TabPanelComponent,
 };
 Configurable.parameters = {
     controls: { exclude: ['tabTables', 'selectTab'] },
+    actions: { disabled: true },
     preview: { disabled: true },
 };
 
@@ -109,11 +109,11 @@ Basic.parameters = {
         disabled: true,
         hideNoControlsWarning: true,
       },
-    actions: { disabled: false },
+    actions: { disabled: true },
     preview: generateConfig(
-        'components/tooltip-popover/demos/popover-position',
-        'ButtonGroupBasicModule',
-        'sds-button-group-demo'
+        'components/tabs/demos/tabs-basic',
+        'TabsBasicModule',
+        'sds-tabs-basic-demo'
     ),
 };
 
@@ -131,9 +131,9 @@ AutomaticActivated.parameters = {
       },
     actions: { disabled: true },
     preview: generateConfig(
-        'components/tooltip-popover/demos/popover-position',
-        'ButtonGroupBasicModule',
-        'sds-button-group-demo'
+        'components/tabs/demos/tabs-auto-activate',
+        'TabsAutoActivateModule',
+        'sds-tabs-auto-activate-demo'
     ),
 };
 
@@ -151,9 +151,9 @@ Disabled.parameters = {
       },
     actions: { disabled: true },
     preview: generateConfig(
-        'components/tooltip-popover/demos/popover-position',
-        'ButtonGroupBasicModule',
-        'sds-button-group-demo'
+        'components/tabs/demos/tabs-disabled',
+        'TabsDisabledModule',
+        'sds-tabs-disabled-demo'
     ),
 };
 
@@ -171,9 +171,9 @@ DynamicallyGenerate.parameters = {
       },
     actions: { disabled: true },
     preview: generateConfig(
-        'components/tooltip-popover/demos/popover-position',
-        'ButtonGroupBasicModule',
-        'sds-button-group-demo'
+        'components/tabs/demos/dynamic-tabs',
+        'DynamicTabsModule',
+        'sds-dynamic-tabs-demo'
     ),
 };
 
@@ -191,9 +191,9 @@ CustomStyling.parameters = {
       },
     actions: { disabled: true },
     preview: generateConfig(
-        'components/tooltip-popover/demos/popover-position',
-        'ButtonGroupBasicModule',
-        'sds-button-group-demo'
+        'components/tabs/demos/tabs-styling',
+        'TabsStylingModule',
+        'sds-tabs-styling-demo'
     ),
 };
 
@@ -211,9 +211,9 @@ CustomHeader.parameters = {
       },
     actions: { disabled: true },
     preview: generateConfig(
-        'components/tooltip-popover/demos/popover-position',
-        'ButtonGroupBasicModule',
-        'sds-button-group-demo'
+        'components/tabs/demos/tabs-template-header',
+        'TabsTemplateHeaderModule',
+        'sds-tabs-template-header-demo'
     ),
 };
 
