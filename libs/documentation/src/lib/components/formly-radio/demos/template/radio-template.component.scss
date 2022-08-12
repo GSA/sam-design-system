@@ -1,24 +1,22 @@
-.icon-radio-option{
+.icon-radio-option {
   border-radius: 1.25rem;
   margin-bottom: 3rem;
-  .sds-card__body{
+  .sds-card__body {
     display: flex;
     justify-content: space-between;
-    .radio-label-text{
+    .radio-label-text {
       padding-left: 2rem;
     }
-    .sub-text-list{
-      margin-left: 3.2rem
+    .sub-text-list {
+      margin-left: 3.2rem;
     }
-    .radio-link{
+    .radio-link {
       margin-left: 3.8rem;
     }
-    .radio-icon{
+    .radio-icon {
       margin-right: 4rem;
       display: flex;
       align-items: center;
     }
-
   }
-
 }

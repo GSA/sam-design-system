@@ -6,10 +6,7 @@ import { DocumentationExamplesPage } from '../shared/examples-page/examples.comp
 import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
-import {
-  DocumentationComponentsSharedModule,
-  DocumentationDemoList,
-} from '../shared';
+import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../shared';
 import { TableBasicComponent } from './demos/basic/basic.component';
 import { TableBasicModule } from './demos/basic/basic.module';
 import { TableBorderlessComponent } from './demos/borderless/borderless.component';
@@ -123,7 +120,7 @@ export const ROUTES = [
     TableStickyModule,
     TableFullModule,
     TablePaginationModule,
-    TableHighlightModule
+    TableHighlightModule,
   ],
 })
 export class TableModule {

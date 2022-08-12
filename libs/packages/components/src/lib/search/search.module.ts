@@ -8,7 +8,7 @@ import { NgxBootstrapIconsModule, x, search } from 'ngx-bootstrap-icons';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
-  imports: [CommonModule, A11yModule, FormsModule, IconModule, NgxBootstrapIconsModule.pick({x, search})],
+  imports: [CommonModule, A11yModule, FormsModule, IconModule, NgxBootstrapIconsModule.pick({ x, search })],
   exports: [SdsSearchComponent],
   declarations: [SdsSearchComponent],
   providers: [],

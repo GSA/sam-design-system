@@ -11,40 +11,51 @@ describe('SdsSideNavigationComponent', () => {
   let fixture: ComponentFixture<SdsSideNavigationComponent>;
 
   let model: SideNavigationModel = {
-    navigationLinks: [{
-      text: 'Parent 1', id: 'linkp1', route: '/', mode: NavigationMode.INTERNAL, children: [
-        { text: 'Child 1 of Parent 1', route: '/', mode: NavigationMode.INTERNAL, id: 'linkc1p1' },
-        {
-          text: 'Child 2 of Parent 1', route: '/', mode: NavigationMode.INTERNAL, id: 'linkc2p1'
-          , children: [
-            { text: 'Grandchild 1 of Child 2 of Parent 1', route: '/', mode: NavigationMode.INTERNAL, id: 'linkgc1c2p1' }
-          ]
-        }
-      ]
-    }
-    ]
+    navigationLinks: [
+      {
+        text: 'Parent 1',
+        id: 'linkp1',
+        route: '/',
+        mode: NavigationMode.INTERNAL,
+        children: [
+          { text: 'Child 1 of Parent 1', route: '/', mode: NavigationMode.INTERNAL, id: 'linkc1p1' },
+          {
+            text: 'Child 2 of Parent 1',
+            route: '/',
+            mode: NavigationMode.INTERNAL,
+            id: 'linkc2p1',
+            children: [
+              {
+                text: 'Grandchild 1 of Child 2 of Parent 1',
+                route: '/',
+                mode: NavigationMode.INTERNAL,
+                id: 'linkgc1c2p1',
+              },
+            ],
+          },
+        ],
+      },
+    ],
   };
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [SdsSideNavigationComponent],
-      imports: [RouterTestingModule, SdsAccordionModule, BrowserAnimationsModule]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [SdsSideNavigationComponent],
+        imports: [RouterTestingModule, SdsAccordionModule, BrowserAnimationsModule],
+      }).compileComponents();
     })
-      .compileComponents();
-
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SdsSideNavigationComponent);
     component = fixture.componentInstance;
     component.model = model;
-
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
 
   it('Select and deselect Item: Top Parent', () => {
     //Parent
@@ -106,7 +117,6 @@ describe('SdsSideNavigationComponent', () => {
     expect(component.model.navigationLinks[0].children[1].children[0].selected).toBeFalsy();
   });
 
-
   it('Select and deselect Item: Second child with  children', () => {
     //Parent
     expect(component.model.navigationLinks[0].selected).toBeFalsy();
@@ -136,8 +146,6 @@ describe('SdsSideNavigationComponent', () => {
     //GrandChild
     expect(component.model.navigationLinks[0].children[1].children[0].selected).toBeFalsy();
   });
-
-
 
   it('Select and deselect Item: Grandchild', () => {
     //Parent
@@ -187,19 +195,18 @@ describe('SdsSideNavigationComponent', () => {
     expect(component.getItemTemplate(link)).not.toBeNull();
     link.mode = NavigationMode.LABEL;
     expect(component.getItemTemplate(link)).not.toBeNull();
-
   });
 
   it('url builder', () => {
     let link = new NavigationLink();
     link.route = 'test';
     expect(component.urlBuilder(link)).toBe(link.route);
-    link.queryParams = { 'item': '1' };
+    link.queryParams = { item: '1' };
     expect(component.urlBuilder(link)).toBe(link.route + '?item=1');
-    link.queryParams = { 'item': '1', 'item2': '2' };
+    link.queryParams = { item: '1', item2: '2' };
     expect(component.urlBuilder(link)).toBe(link.route + '?item=1&item2=2');
     link.route = 'test?';
-    link.queryParams = { 'item': '1', 'item2': '2', 'item3': '3' };
+    link.queryParams = { item: '1', item2: '2', item3: '3' };
     expect(component.urlBuilder(link)).toBe(link.route + 'item=1&item2=2&item3=3');
     link.route = 'test?x=r';
     expect(component.urlBuilder(link)).toBe(link.route + '&item=1&item2=2&item3=3');
@@ -207,7 +214,4 @@ describe('SdsSideNavigationComponent', () => {
     link.queryParams = { 'item space': '1 space' };
     expect(component.urlBuilder(link)).toBe(link.route + '?item%20space=1%20space');
   });
-
-
 });
-

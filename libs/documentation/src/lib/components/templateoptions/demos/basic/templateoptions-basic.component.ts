@@ -5,7 +5,6 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
   templateUrl: './templateoptions-basic.component.html',
   selector: `sds-templateoptions-basic-demo`,
 })
-
 export class TemplateOptionsBasic {
   form = new FormGroup({});
   model: any = {};

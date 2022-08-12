@@ -1,31 +1,12 @@
-import {
-  ComponentFixture,
-  fakeAsync,
-  flush,
-  inject,
-  TestBed,
-  tick,
-} from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { By } from '@angular/platform-browser';
-import {
-  Component,
-  ElementRef,
-  ViewChild,
-  ViewChildren,
-  QueryList,
-  Type,
-  Provider,
-} from '@angular/core';
+import { Component, ElementRef, ViewChild, ViewChildren, QueryList, Type, Provider } from '@angular/core';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { ESCAPE, DOWN_ARROW, HOME, END } from '@angular/cdk/keycodes';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { SdsMenuModule } from './menu.module';
-import {
-  SdsMenuComponent,
-  MenuPositionX,
-  MenuPositionY,
-} from './menu.component';
+import { SdsMenuComponent, MenuPositionX, MenuPositionY } from './menu.component';
 import { SdsMenuItemComponent } from './menu-item.component';
 import { SdsMenuTriggerForDirective } from './menu-trigger.directive';
 import {
@@ -53,38 +34,26 @@ describe('SdsMenu', () => {
       providers,
     }).compileComponents();
 
-    inject(
-      [OverlayContainer, FocusMonitor],
-      (oc: OverlayContainer, fm: FocusMonitor) => {
-        overlayContainer = oc;
-        overlayContainerElement = oc.getContainerElement();
-        focusMonitor = fm;
-      }
-    )();
+    inject([OverlayContainer, FocusMonitor], (oc: OverlayContainer, fm: FocusMonitor) => {
+      overlayContainer = oc;
+      overlayContainerElement = oc.getContainerElement();
+      focusMonitor = fm;
+    })();
 
     return TestBed.createComponent<T>(component);
   }
 
-  afterEach(inject(
-    [OverlayContainer],
-    (currentOverlayContainer: OverlayContainer) => {
-      currentOverlayContainer.ngOnDestroy();
-      overlayContainer.ngOnDestroy();
-    }
-  ));
+  afterEach(inject([OverlayContainer], (currentOverlayContainer: OverlayContainer) => {
+    currentOverlayContainer.ngOnDestroy();
+    overlayContainer.ngOnDestroy();
+  }));
 
   it('should close the menu when a click occurs outside the menu', fakeAsync(() => {
-    const fixture = createComponent(
-      SimpleMenuComponent,
-      [],
-      [FakeIconComponent]
-    );
+    const fixture = createComponent(SimpleMenuComponent, [], [FakeIconComponent]);
     fixture.detectChanges();
     fixture.componentInstance.trigger.openMenu();
 
-    const backdrop = <HTMLElement>(
-      overlayContainerElement.querySelector('.cdk-overlay-backdrop')
-    );
+    const backdrop = <HTMLElement>overlayContainerElement.querySelector('.cdk-overlay-backdrop');
     backdrop.click();
     fixture.detectChanges();
     tick(500);
@@ -93,11 +62,7 @@ describe('SdsMenu', () => {
   }));
 
   it('should restore focus to the trigger when the menu was opened by keyboard', fakeAsync(() => {
-    const fixture = createComponent(
-      SimpleMenuComponent,
-      [],
-      [FakeIconComponent]
-    );
+    const fixture = createComponent(SimpleMenuComponent, [], [FakeIconComponent]);
     fixture.detectChanges();
     const triggerEl = fixture.componentInstance.triggerEl.nativeElement;
 
@@ -115,11 +80,7 @@ describe('SdsMenu', () => {
   }));
 
   it('should restore focus to the root trigger when the menu was opened by mouse', fakeAsync(() => {
-    const fixture = createComponent(
-      SimpleMenuComponent,
-      [],
-      [FakeIconComponent]
-    );
+    const fixture = createComponent(SimpleMenuComponent, [], [FakeIconComponent]);
     fixture.detectChanges();
 
     const triggerEl = fixture.componentInstance.triggerEl.nativeElement;
@@ -137,11 +98,7 @@ describe('SdsMenu', () => {
   }));
 
   it('should restore focus to the root trigger when the menu was opened by touch', fakeAsync(() => {
-    const fixture = createComponent(
-      SimpleMenuComponent,
-      [],
-      [FakeIconComponent]
-    );
+    const fixture = createComponent(SimpleMenuComponent, [], [FakeIconComponent]);
     fixture.detectChanges();
 
     const triggerEl = fixture.componentInstance.triggerEl.nativeElement;
@@ -159,11 +116,7 @@ describe('SdsMenu', () => {
   }));
 
   it('should scroll the panel to the top on open, when it is scrollable', fakeAsync(() => {
-    const fixture = createComponent(
-      SimpleMenuComponent,
-      [],
-      [FakeIconComponent]
-    );
+    const fixture = createComponent(SimpleMenuComponent, [], [FakeIconComponent]);
     fixture.detectChanges();
 
     // Add 50 items to make the menu scrollable
@@ -178,17 +131,11 @@ describe('SdsMenu', () => {
     // Flush due to the additional tick that is necessary for the FocusMonitor.
     flush();
 
-    expect(
-      overlayContainerElement.querySelector('.sds-overlay').scrollTop
-    ).toBe(0);
+    expect(overlayContainerElement.querySelector('.sds-overlay').scrollTop).toBe(0);
   }));
 
   it('should close the menu when pressing ESCAPE', fakeAsync(() => {
-    const fixture = createComponent(
-      SimpleMenuComponent,
-      [],
-      [FakeIconComponent]
-    );
+    const fixture = createComponent(SimpleMenuComponent, [], [FakeIconComponent]);
     fixture.detectChanges();
     fixture.componentInstance.trigger.openMenu();
 
@@ -203,11 +150,7 @@ describe('SdsMenu', () => {
   }));
 
   it('should transfer any custom classes from the host to the overlay', () => {
-    const fixture = createComponent(
-      SimpleMenuComponent,
-      [],
-      [FakeIconComponent]
-    );
+    const fixture = createComponent(SimpleMenuComponent, [], [FakeIconComponent]);
 
     fixture.componentInstance.panelClass = 'custom-one custom-two';
     fixture.detectChanges();
@@ -225,11 +168,7 @@ describe('SdsMenu', () => {
   });
 
   it('should set the "menu" role on the overlay panel', () => {
-    const fixture = createComponent(
-      SimpleMenuComponent,
-      [],
-      [FakeIconComponent]
-    );
+    const fixture = createComponent(SimpleMenuComponent, [], [FakeIconComponent]);
     fixture.detectChanges();
     fixture.componentInstance.trigger.openMenu();
     fixture.detectChanges();
@@ -243,40 +182,24 @@ describe('SdsMenu', () => {
   });
 
   it('should set the "menuitem" role on the items by default', () => {
-    const fixture = createComponent(
-      SimpleMenuComponent,
-      [],
-      [FakeIconComponent]
-    );
+    const fixture = createComponent(SimpleMenuComponent, [], [FakeIconComponent]);
     fixture.detectChanges();
     fixture.componentInstance.trigger.openMenu();
     fixture.detectChanges();
 
-    const items = Array.from(
-      overlayContainerElement.querySelectorAll('.sds-menu__item')
-    );
+    const items = Array.from(overlayContainerElement.querySelectorAll('.sds-menu__item'));
 
     expect(items.length).toBeGreaterThan(0);
-    expect(
-      items.every((item) => item.getAttribute('role') === 'menuitem')
-    ).toBe(true);
+    expect(items.every((item) => item.getAttribute('role') === 'menuitem')).toBe(true);
   });
 
   it('should not throw an error on destroy', () => {
-    const fixture = createComponent(
-      SimpleMenuComponent,
-      [],
-      [FakeIconComponent]
-    );
+    const fixture = createComponent(SimpleMenuComponent, [], [FakeIconComponent]);
     expect(fixture.destroy.bind(fixture)).not.toThrow();
   });
 
   it('should set the proper focus origin when opening by mouse', fakeAsync(() => {
-    const fixture = createComponent(
-      SimpleMenuComponent,
-      [],
-      [FakeIconComponent]
-    );
+    const fixture = createComponent(SimpleMenuComponent, [], [FakeIconComponent]);
     fixture.detectChanges();
     spyOn(fixture.componentInstance.items.first, 'focus').and.callThrough();
 
@@ -287,17 +210,11 @@ describe('SdsMenu', () => {
     fixture.detectChanges();
     tick(500);
 
-    expect(fixture.componentInstance.items.first.focus).toHaveBeenCalledWith(
-      'mouse'
-    );
+    expect(fixture.componentInstance.items.first.focus).toHaveBeenCalledWith('mouse');
   }));
 
   it('should set the proper focus origin when opening by touch', fakeAsync(() => {
-    const fixture = createComponent(
-      SimpleMenuComponent,
-      [],
-      [FakeIconComponent]
-    );
+    const fixture = createComponent(SimpleMenuComponent, [], [FakeIconComponent]);
     fixture.detectChanges();
     spyOn(fixture.componentInstance.items.first, 'focus').and.callThrough();
 
@@ -308,35 +225,25 @@ describe('SdsMenu', () => {
     fixture.detectChanges();
     flush();
 
-    expect(fixture.componentInstance.items.first.focus).toHaveBeenCalledWith(
-      'touch'
-    );
+    expect(fixture.componentInstance.items.first.focus).toHaveBeenCalledWith('touch');
   }));
 
   it('should switch to keyboard focus when using the keyboard after opening using the mouse', fakeAsync(() => {
-    const fixture = createComponent(
-      SimpleMenuComponent,
-      [],
-      [FakeIconComponent]
-    );
+    const fixture = createComponent(SimpleMenuComponent, [], [FakeIconComponent]);
 
     fixture.detectChanges();
     fixture.componentInstance.triggerEl.nativeElement.click();
     fixture.detectChanges();
 
     const panel = document.querySelector('.sds-overlay') as HTMLElement;
-    const items: HTMLElement[] = Array.from(
-      panel.querySelectorAll('.sds-overlay [sds-menu-item]')
-    );
+    const items: HTMLElement[] = Array.from(panel.querySelectorAll('.sds-overlay [sds-menu-item]'));
 
     items.forEach((item) => patchElementFocus(item));
 
     tick(500);
     tick();
     fixture.detectChanges();
-    expect(
-      items.some((item) => item.classList.contains('cdk-keyboard-focused'))
-    ).toBe(false);
+    expect(items.some((item) => item.classList.contains('cdk-keyboard-focused'))).toBe(false);
 
     dispatchKeyboardEvent(panel, 'keydown', DOWN_ARROW);
     fixture.detectChanges();
@@ -376,20 +283,14 @@ describe('SdsMenu', () => {
   });
 
   it('should focus the first item when pressing home', fakeAsync(() => {
-    const fixture = createComponent(
-      SimpleMenuComponent,
-      [],
-      [FakeIconComponent]
-    );
+    const fixture = createComponent(SimpleMenuComponent, [], [FakeIconComponent]);
     fixture.detectChanges();
 
     fixture.componentInstance.trigger.openMenu();
     fixture.detectChanges();
 
     const panel = overlayContainerElement.querySelector('.sds-overlay')!;
-    const items = Array.from(
-      panel.querySelectorAll('.sds-menu__item')
-    ) as HTMLElement[];
+    const items = Array.from(panel.querySelectorAll('.sds-menu__item')) as HTMLElement[];
     items.forEach(patchElementFocus);
 
     // Focus the last item since focus starts from the first one.
@@ -407,20 +308,14 @@ describe('SdsMenu', () => {
   }));
 
   it('should focus the last item when pressing end', fakeAsync(() => {
-    const fixture = createComponent(
-      SimpleMenuComponent,
-      [],
-      [FakeIconComponent]
-    );
+    const fixture = createComponent(SimpleMenuComponent, [], [FakeIconComponent]);
     fixture.detectChanges();
 
     fixture.componentInstance.trigger.openMenu();
     fixture.detectChanges();
 
     const panel = overlayContainerElement.querySelector('.sds-overlay')!;
-    const items = Array.from(
-      panel.querySelectorAll('.sds-menu__item')
-    ) as HTMLElement[];
+    const items = Array.from(panel.querySelectorAll('.sds-menu__item')) as HTMLElement[];
     items.forEach(patchElementFocus);
 
     spyOn(items[items.length - 1], 'focus').and.callThrough();
@@ -455,9 +350,7 @@ describe('SdsMenu', () => {
       fixture.componentInstance.trigger.openMenu();
       fixture.detectChanges();
 
-      const panel = overlayContainerElement.querySelector(
-        '.sds-overlay'
-      ) as HTMLElement;
+      const panel = overlayContainerElement.querySelector('.sds-overlay') as HTMLElement;
       expect(panel.classList).toContain('sds-menu-before');
       expect(panel.classList).not.toContain('sds-menu-after');
 
@@ -472,9 +365,7 @@ describe('SdsMenu', () => {
       fixture.componentInstance.trigger.openMenu();
       fixture.detectChanges();
 
-      const panel = overlayContainerElement.querySelector(
-        '.sds-overlay'
-      ) as HTMLElement;
+      const panel = overlayContainerElement.querySelector('.sds-overlay') as HTMLElement;
 
       expect(panel.classList).toContain('sds-menu-above');
       expect(panel.classList).not.toContain('sds-menu-below');
@@ -491,18 +382,12 @@ describe('SdsMenu', () => {
       fixture.destroy();
       TestBed.resetTestingModule();
 
-      const newFixture = createComponent(
-        SimpleMenuComponent,
-        [],
-        [FakeIconComponent]
-      );
+      const newFixture = createComponent(SimpleMenuComponent, [], [FakeIconComponent]);
 
       newFixture.detectChanges();
       newFixture.componentInstance.trigger.openMenu();
       newFixture.detectChanges();
-      const panel = overlayContainerElement.querySelector(
-        '.sds-overlay'
-      ) as HTMLElement;
+      const panel = overlayContainerElement.querySelector('.sds-overlay') as HTMLElement;
 
       expect(panel.classList).toContain('sds-menu-below');
       expect(panel.classList).toContain('sds-menu-after');
@@ -518,9 +403,7 @@ describe('SdsMenu', () => {
       fixture.componentInstance.trigger.openMenu();
       fixture.detectChanges();
 
-      let panel = overlayContainerElement.querySelector(
-        '.sds-overlay'
-      ) as HTMLElement;
+      let panel = overlayContainerElement.querySelector('.sds-overlay') as HTMLElement;
       fixture.detectChanges();
       expect(Math.floor(panel.getBoundingClientRect().bottom)).toBe(
         Math.floor(trigger.getBoundingClientRect().top),
@@ -535,9 +418,7 @@ describe('SdsMenu', () => {
 
       fixture.componentInstance.trigger.openMenu();
       fixture.detectChanges();
-      panel = overlayContainerElement.querySelector(
-        '.sds-overlay'
-      ) as HTMLElement;
+      panel = overlayContainerElement.querySelector('.sds-overlay') as HTMLElement;
 
       expect(Math.floor(panel.getBoundingClientRect().top)).toBe(
         Math.floor(trigger.getBoundingClientRect().bottom),
@@ -550,11 +431,7 @@ describe('SdsMenu', () => {
 @Component({
   template: `
     <button [sdsMenuTriggerFor]="menu" #triggerEl>Toggle menu</button>
-    <sds-menu
-      #menu="sdsMenu"
-      [class]="panelClass"
-      (closed)="closeCallback($event)"
-    >
+    <sds-menu #menu="sdsMenu" [class]="panelClass" (closed)="closeCallback($event)">
       <button sds-menu-item>Item</button>
       <button sds-menu-item disabled>Disabled</button>
       <button sds-menu-item>

@@ -3,11 +3,8 @@
   "compilerOptions": {
     "declarationMap": false,
     "paths": {
-      "@gsa-sam/components": [
-        "dist/libs/components",
-        "libs/packages/components/src/index.ts"
-      ],
-    },
+      "@gsa-sam/components": ["dist/libs/components", "libs/packages/components/src/index.ts"]
+    }
   },
   "angularCompilerOptions": {
     "enableIvy": true

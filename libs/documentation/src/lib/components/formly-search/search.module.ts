@@ -12,6 +12,8 @@ import { SearchOptionalModule } from './demos/optional/search-optional.module';
 import { SearchOptional } from './demos/optional/search-optional.component';
 import { SearchHandleSubmitModule } from './demos/submit/search-handle-submit.module';
 import { SearchHandleSubmit } from './demos/submit/search-handle-submit.component';
+import { AdvancedSearchModule } from './demos/advanced-search/advanced-search.module';
+import { AdvancedSearch } from './demos/advanced-search/advanced-search.component';
 
 declare var require: any;
 const DEMOS = {
@@ -20,22 +22,29 @@ const DEMOS = {
     type: SearchBasic,
     code: require('!!raw-loader!./demos/basic/search-basic.component'),
     markup: require('!!raw-loader!./demos/basic/search-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/formly-search/demos/basic'
+    path: 'libs/documentation/src/lib/components/formly-search/demos/basic',
   },
   optional: {
     title: 'Optional Form Search',
     type: SearchOptional,
     code: require('!!raw-loader!./demos/optional/search-optional.component'),
     markup: require('!!raw-loader!./demos/optional/search-optional.component.html'),
-    path: 'libs/documentation/src/lib/components/formly-search/demos/optional'
+    path: 'libs/documentation/src/lib/components/formly-search/demos/optional',
   },
   handleSubmit: {
     title: 'Handling Submit',
     type: SearchHandleSubmit,
     code: require('!!raw-loader!./demos/submit/search-handle-submit.component'),
     markup: require('!!raw-loader!./demos/submit/search-handle-submit.component.html'),
-    path: 'libs/documentation/src/lib/components/formly-search/demos/submit'
-  }
+    path: 'libs/documentation/src/lib/components/formly-search/demos/submit',
+  },
+  advancedSearch: {
+    title: 'Advanced Search',
+    type: AdvancedSearch,
+    code: require('!!raw-loader!./demos/advanced-search/advanced-search.component'),
+    markup: require('!!raw-loader!./demos/advanced-search/advanced-search.component.html'),
+    path: 'libs/documentation/src/lib/components/formly-search/demos/advanced-search',
+  },
 };
 
 export const ROUTES = [
@@ -48,9 +57,9 @@ export const ROUTES = [
           pkg: 'formly',
           type: 'components',
           name: 'FormlyFieldSearchComponent',
-          formType: 'search'
-        }
-      ]
+          formType: 'search',
+        },
+      ],
     },
     component: ComponentWrapperComponent,
     children: [
@@ -58,8 +67,8 @@ export const ROUTES = [
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
       { path: 'template', component: DocumentationTemplatePage },
-    ]
-  }
+    ],
+  },
 ];
 
 @NgModule({
@@ -68,8 +77,10 @@ export const ROUTES = [
     DocumentationComponentsSharedModule,
     SearchBasicModule,
     SearchOptionalModule,
-    SearchHandleSubmitModule
-  ]
+    SearchHandleSubmitModule,
+    AdvancedSearchModule,
+  ],
+  declarations: [],
 })
 export class FormlySearchModule {
   constructor(demoList: DocumentationDemoList) {

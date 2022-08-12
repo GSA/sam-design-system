@@ -32,11 +32,7 @@ export class ExternalLinkDirective implements OnChanges {
 
   private readonly emailLinkKeyword = 'mailto';
 
-  constructor(
-    @Inject(PLATFORM_ID) private platformId: string,
-    private el: ElementRef,
-    private vc: ViewContainerRef
-  ) { }
+  constructor(@Inject(PLATFORM_ID) private platformId: string, private el: ElementRef, private vc: ViewContainerRef) {}
 
   public ngOnChanges() {
     this.hrefAttr = this.href;
@@ -67,12 +63,11 @@ export class ExternalLinkDirective implements OnChanges {
    *  be kept as is
    */
   private _getAriaLabel(): string {
-
-    const anchorElement = this.el.nativeElement as HTMLAnchorElement
+    const anchorElement = this.el.nativeElement as HTMLAnchorElement;
     const currentAriaLabel: string = anchorElement.getAttribute('aria-label');
 
     /** No aria label, attach a default one using inner text if anchor does not contain additional
-     * html element as children. If anchor does contain additional html element as children, then use href 
+     * html element as children. If anchor does contain additional html element as children, then use href
      */
     if (!currentAriaLabel || currentAriaLabel.length === 0) {
       let label = anchorElement.firstElementChild ? this.href : anchorElement.innerText;
@@ -100,17 +95,13 @@ export class ExternalLinkDirective implements OnChanges {
     return (
       isPlatformBrowser(this.platformId) &&
       !link.includes(location.hostname) &&
-      link.indexOf(this.emailLinkKeyword) !== 0  &&
+      link.indexOf(this.emailLinkKeyword) !== 0 &&
       !this.internalLinks.includes(link)
     );
   }
   private createIcon() {
     // tslint:disable-next-line:no-unused-expression
-    this.vc.constructor.name === 'ViewContainerRef_';
-    const spanElement = document.createElement('span');
-    spanElement.classList.add('margin-left-1px');
-    spanElement.classList.add('usa-link--external');
-    spanElement.classList.add('font-body-md');
-    this.el.nativeElement.appendChild(spanElement);
+    this.el.nativeElement.classList.add('usa-link--external');
+    this.el.nativeElement.classList.add('display-inline-block');
   }
 }

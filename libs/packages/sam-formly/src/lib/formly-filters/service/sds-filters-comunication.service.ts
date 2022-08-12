@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class SDSFormlyUpdateComunicationService {
-
   private updateFilterSource = new Subject<any>();
 
   /**

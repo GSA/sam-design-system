@@ -39,10 +39,7 @@ export class SdsAdvancedFiltersService {
     const options = [];
     const defaultValue = [];
     origField.fieldGroup.forEach((field) => {
-      const label =
-        field.templateOptions && field.templateOptions.label
-          ? field.templateOptions.label
-          : null;
+      const label = field.templateOptions && field.templateOptions.label ? field.templateOptions.label : null;
       const option = {
         key: field.key,
         value: label,
@@ -93,12 +90,8 @@ export class SdsAdvancedFiltersService {
     };
   }
 
-  updateFieldGroup(
-    parentField: FormlyFieldConfig,
-    selectedFields: any,
-    model: object
-  ) {
-    if (selectedFields && (selectedFields.length || typeof(selectedFields) === 'boolean')) {
+  updateFieldGroup(parentField: FormlyFieldConfig, selectedFields: any, model: object) {
+    if (selectedFields && (selectedFields.length || typeof selectedFields === 'boolean')) {
       parentField.hide = false;
       if (selectedFields === true || selectedFields.length) {
         parentField.fieldGroup.forEach((field) => {

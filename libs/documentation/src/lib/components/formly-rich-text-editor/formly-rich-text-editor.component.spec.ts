@@ -8,9 +8,8 @@ describe('FormlyRichTextEditorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormlyRichTextEditorComponent ]
-    })
-    .compileComponents();
+      declarations: [FormlyRichTextEditorComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

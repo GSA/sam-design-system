@@ -1,11 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import {
-  Component,
-  ViewChild,
-  DebugElement,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef
-} from '@angular/core';
+import { Component, ViewChild, DebugElement, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
@@ -14,7 +8,7 @@ import {
   SdsAccordionComponent,
   SdsAccordionItemComponent,
   SdsAccordionTitleDirective,
-  SdsAccordionContentDirective
+  SdsAccordionContentDirective,
 } from './accordion.component';
 
 // detail rows
@@ -22,50 +16,43 @@ import {
   template: `
     <sds-accordion-next [multi]="multi" #sdsAccordionDemo>
       <sds-accordion-item #first>
-        <sds-accordion-title
-          >Chief Financial Officers Council Grants Training</sds-accordion-title
-        >
+        <sds-accordion-title>Chief Financial Officers Council Grants Training</sds-accordion-title>
         <sds-accordion-content
-          >Basic knowledge training modules on grants and cooperative agreements
-          for Federal officials.</sds-accordion-content
+          >Basic knowledge training modules on grants and cooperative agreements for Federal
+          officials.</sds-accordion-content
         >
       </sds-accordion-item>
       <sds-accordion-item #second>
         <sds-accordion-title>Grants.gov Learning Center</sds-accordion-title>
         <sds-accordion-content
           >Learn and navigate the step-by-step process of the
-          <a class="usa-link" href="javascript:none;">grants lifecycle</a>, from
-          online application through post-award.</sds-accordion-content
+          <a class="usa-link" href="javascript:none;">grants lifecycle</a>, from online application through
+          post-award.</sds-accordion-content
         >
       </sds-accordion-item>
       <sds-accordion-item #third>
         <sds-accordion-title>Benefits.gov Benefit Finder</sds-accordion-title>
         <sds-accordion-content
-          >Connect to this benefits.gov tool to find government benefit
-          information and determine your eligibility.</sds-accordion-content
+          >Connect to this benefits.gov tool to find government benefit information and determine your
+          eligibility.</sds-accordion-content
         >
       </sds-accordion-item>
       <sds-accordion-item #fourth>
-        <sds-accordion-title
-          >USA.gov Government Benefits, Grants, and Loans</sds-accordion-title
-        >
+        <sds-accordion-title>USA.gov Government Benefits, Grants, and Loans</sds-accordion-title>
         <sds-accordion-content
-          >All you need to know about affordable housing, grants, and loans on
-          USA.gov.</sds-accordion-content
+          >All you need to know about affordable housing, grants, and loans on USA.gov.</sds-accordion-content
         >
       </sds-accordion-item>
     </sds-accordion-next>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class WrapperComponent {
   @ViewChild(SdsAccordionComponent)
   accordionComponentRef: SdsAccordionComponent;
   @ViewChild('first') firstItem;
 
-  constructor(
-    public cdr: ChangeDetectorRef,
-  ) {}
+  constructor(public cdr: ChangeDetectorRef) {}
 
   multi = false;
 }
@@ -76,18 +63,20 @@ describe('SdsAccordionComponent', () => {
   let fixture: ComponentFixture<WrapperComponent>;
   let accordionDe: DebugElement;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [
-        SdsAccordionComponent,
-        SdsAccordionItemComponent,
-        SdsAccordionTitleDirective,
-        SdsAccordionContentDirective,
-        WrapperComponent
-      ],
-      imports: [CommonModule, MatExpansionModule, BrowserAnimationsModule]
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [
+          SdsAccordionComponent,
+          SdsAccordionItemComponent,
+          SdsAccordionTitleDirective,
+          SdsAccordionContentDirective,
+          WrapperComponent,
+        ],
+        imports: [CommonModule, MatExpansionModule, BrowserAnimationsModule],
+      }).compileComponents();
+    })
+  );
 
   // expandable rows
   describe('Accordion', () => {
@@ -101,9 +90,12 @@ describe('SdsAccordionComponent', () => {
       wrapper = wrapperComponent;
     });
 
-    it('should create', waitForAsync(() => {
-      expect(component).toBeTruthy();
-    }));
+    it(
+      'should create',
+      waitForAsync(() => {
+        expect(component).toBeTruthy();
+      })
+    );
 
     it('should have 4 items', () => {
       expect(component.accordionItems.length).toEqual(4);

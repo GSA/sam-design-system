@@ -3,12 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SdsPopoverModule } from '@gsa-sam/components';
 import { PopoverSdsPopoverTitleComponent } from './popover-sds-popover-title.component';
 import { IconModule, StackedIconModule } from '@gsa-sam/ngx-uswds-icons';
-import {
-  NgxBootstrapIconsModule,
-  caretDownSquare,
-  squareFill,
-  handThumbsDown,
-} from 'ngx-bootstrap-icons';
+import { NgxBootstrapIconsModule, caretDownSquare, squareFill, handThumbsDown } from 'ngx-bootstrap-icons';
 
 @NgModule({
   imports: [

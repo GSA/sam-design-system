@@ -10,6 +10,8 @@ import { ComponentWrapperComponent } from '../../shared/component-wrapper/compon
 import { CheckboxBasicModule } from './demos/basic/checkbox-basic.module';
 import { CheckboxTemplate } from './demos/template/checkbox-template.component';
 import { CheckboxTemplateModule } from './demos/template/checkbox-template.module';
+import { CheckboxRadio } from './demos/checkbox-radio/checkbox-radio.component';
+import { CheckboxRadioModule } from './demos/checkbox-radio/checkbox-radio.module';
 
 declare var require: any;
 const DEMOS = {
@@ -18,15 +20,22 @@ const DEMOS = {
     type: CheckboxBasic,
     code: require('!!raw-loader!./demos/basic/checkbox-basic.component'),
     markup: require('!!raw-loader!./demos/basic/checkbox-basic.component.html'),
-    path: 'libs/documentation/src/lib/components/formly-checkbox/demos/basic'
+    path: 'libs/documentation/src/lib/components/formly-checkbox/demos/basic',
+  },
+  checkboxradio: {
+    title: 'Nested Radio Form Checkbox',
+    type: CheckboxRadio,
+    code: require('!!raw-loader!./demos/checkbox-radio/checkbox-radio.component'),
+    markup: require('!!raw-loader!./demos/checkbox-radio/checkbox-radio.component.html'),
+    path: 'libs/documentation/src/lib/components/formly-checkbox/demos/checkbox-radio',
   },
   template: {
     title: 'Template Form Checkbox',
     type: CheckboxTemplate,
     code: require('!!raw-loader!./demos/template/checkbox-template.component'),
     markup: require('!!raw-loader!./demos/template/checkbox-template.component.html'),
-    path: 'libs/documentation/src/lib/components/formly-checkbox/demos/template'
-  }
+    path: 'libs/documentation/src/lib/components/formly-checkbox/demos/template',
+  },
 };
 
 export const ROUTES = [
@@ -40,8 +49,8 @@ export const ROUTES = [
           type: 'components',
           name: 'FormlyFieldCheckboxComponent',
           formType: 'checkbox',
-        }
-      ]
+        },
+      ],
     },
     component: ComponentWrapperComponent,
     children: [
@@ -49,8 +58,8 @@ export const ROUTES = [
       { path: 'api', component: DocumentationAPIPage },
       { path: 'source', component: DocumentationSourcePage },
       { path: 'template', component: DocumentationTemplatePage },
-    ]
-  }
+    ],
+  },
 ];
 
 @NgModule({
@@ -58,8 +67,10 @@ export const ROUTES = [
     CommonModule,
     DocumentationComponentsSharedModule,
     CheckboxBasicModule,
-    CheckboxTemplateModule
-  ]
+    CheckboxRadioModule,
+    CheckboxTemplateModule,
+  ],
+  declarations: [],
 })
 export class CheckboxModule {
   constructor(demoList: DocumentationDemoList) {

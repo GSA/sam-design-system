@@ -4,9 +4,9 @@ import {
   ElementRef,
   HostListener,
   Input,
-  OnChanges,
   Renderer2,
   TemplateRef,
+  OnChanges,
 } from '@angular/core';
 import { debounce } from './debounce.decorator';
 
@@ -47,10 +47,7 @@ export class SdsPopoverDirective implements AfterViewInit, OnChanges {
    * Adding listener for keyup.enter to ensure that user can activate popover with keyboard
    */
   @HostListener('keyup.enter', ['$event']) onKeyUp($event: KeyboardEvent) {
-    if (
-      !this.closeOnContentClick &&
-      this.sdsPopoverDiv.contains($event.target as any)
-    ) {
+    if (!this.closeOnContentClick && this.sdsPopoverDiv.contains($event.target as any)) {
       return;
     }
     this.clickEvent();
@@ -60,10 +57,7 @@ export class SdsPopoverDirective implements AfterViewInit, OnChanges {
    * Adding listener for keydown.space to ensure that user can activate popover with keyboard
    */
   @HostListener('keydown.Space', ['$event']) onKeySpace($event: KeyboardEvent) {
-    if (
-      !this.closeOnContentClick &&
-      this.sdsPopoverDiv.contains($event.target as any)
-    ) {
+    if (!this.closeOnContentClick && this.sdsPopoverDiv.contains($event.target as any)) {
       return;
     }
     this.clickEvent();
@@ -106,21 +100,13 @@ export class SdsPopoverDirective implements AfterViewInit, OnChanges {
 
     this.renderer.setAttribute(this.el.nativeElement, 'role', 'button');
     this.renderer.setAttribute(this.el.nativeElement, 'aria-expanded', 'false');
-    this.renderer.setAttribute(
-      this.el.nativeElement,
-      'aria-haspopup',
-      'dialog'
-    );
+    this.renderer.setAttribute(this.el.nativeElement, 'aria-haspopup', 'dialog');
 
     this.renderer.appendChild(this.el.nativeElement, this.sdsPopoverDiv);
   }
 
   handlePosition() {
-    this.renderer.setAttribute(
-      this.sdsPopoverDiv,
-      'data-position',
-      this.position
-    );
+    this.renderer.setAttribute(this.sdsPopoverDiv, 'data-position', this.position);
 
     this.renderer.addClass(this.sdsPopoverDiv, this.position);
   }
@@ -181,26 +167,14 @@ export class SdsPopoverDirective implements AfterViewInit, OnChanges {
     if (this.popoverVisible) {
       this.renderer.addClass(this.sdsPopoverDiv, 'sds-popover__shown');
       this.renderer.setAttribute(this.sdsPopoverDiv, 'aria-hidden', 'false');
-      this.renderer.setAttribute(
-        this.el.nativeElement,
-        'aria-describedby',
-        this.popoverDivId
-      );
-      this.renderer.setAttribute(
-        this.el.nativeElement,
-        'aria-expanded',
-        'true'
-      );
+      this.renderer.setAttribute(this.el.nativeElement, 'aria-describedby', this.popoverDivId);
+      this.renderer.setAttribute(this.el.nativeElement, 'aria-expanded', 'true');
       this.renderer.setAttribute(this.el.nativeElement, 'role', 'none');
       this.renderer.removeClass(this.sdsPopoverDiv, 'sds-popover__hidden');
     } else {
       this.renderer.addClass(this.sdsPopoverDiv, 'sds-popover__hidden');
       this.renderer.setAttribute(this.sdsPopoverDiv, 'aria-hidden', 'true');
-      this.renderer.setAttribute(
-        this.el.nativeElement,
-        'aria-expanded',
-        'false'
-      );
+      this.renderer.setAttribute(this.el.nativeElement, 'aria-expanded', 'false');
       this.renderer.setAttribute(this.el.nativeElement, 'role', 'button');
 
       this.renderer.removeClass(this.sdsPopoverDiv, 'sds-popover__shown');
@@ -218,11 +192,7 @@ export class SdsPopoverDirective implements AfterViewInit, OnChanges {
     const possibleDirections = ['top', 'bottom', 'left', 'right'];
     this.sdsPopoverDiv.classList.remove(...possibleDirections);
 
-    this.renderer.setAttribute(
-      this.sdsPopoverDiv,
-      'data-position',
-      this.position
-    );
+    this.renderer.setAttribute(this.sdsPopoverDiv, 'data-position', this.position);
 
     this.renderer.addClass(this.sdsPopoverDiv, this.position);
   }

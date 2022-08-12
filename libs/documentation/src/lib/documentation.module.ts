@@ -6,16 +6,9 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 import * as _ from 'lodash-es';
-import {
-  IconModule,
-  allIcons as sdsAllIcons,
-  uswdsAllIcons,
-} from '@gsa-sam/ngx-uswds-icons';
+import { IconModule, allIcons as sdsAllIcons, uswdsAllIcons } from '@gsa-sam/ngx-uswds-icons';
 
-export const appendPrefix = (
-  iconsObject: { [key: string]: string },
-  prefix: string
-): { [key: string]: string } => {
+export const appendPrefix = (iconsObject: { [key: string]: string }, prefix: string): { [key: string]: string } => {
   const prefixedIconsObject = {};
   Object.keys(iconsObject).forEach((key) => {
     prefixedIconsObject[`${prefix}${_.upperFirst(key)}`] = iconsObject[key];
@@ -25,170 +18,77 @@ export const appendPrefix = (
 
 /* Layout / Components */
 
-import {
-  ROUTES as DIALOG_ROUTES,
-  DialogModule,
-} from './components/dialog/dialog.module';
-import {
-  ROUTES as ACCORDION_ROUTES,
-  AccordionModule,
-} from './components/accordion/accordion.module';
-import {
-  ROUTES as DOWNLOAD_ROUTES,
-  DownloadModule,
-} from './components/download/download.module';
-import {
-  ROUTES as COLLAPSE_ROUTES,
-  CollapseModule,
-} from './components/collapse/collapse.module';
-import {
-  ROUTES as ACTIONS_ROUTES,
-  ActionsModule,
-} from './components/actions/actions.module';
-import {
-  ROUTES as PAGINATION_ROUTES,
-  PaginationModule,
-} from './components/pagination/pagination.module';
+import { ROUTES as DIALOG_ROUTES, DialogModule } from './components/dialog/dialog.module';
+import { ROUTES as ACCORDION_ROUTES, AccordionModule } from './components/accordion/accordion.module';
+import { ROUTES as DOWNLOAD_ROUTES, DownloadModule } from './components/download/download.module';
+import { ROUTES as COLLAPSE_ROUTES, CollapseModule } from './components/collapse/collapse.module';
+import { ROUTES as ACTIONS_ROUTES, ActionsModule } from './components/actions/actions.module';
+import { ROUTES as PAGINATION_ROUTES, PaginationModule } from './components/pagination/pagination.module';
 import {
   ROUTES as SIDE_NAVIGATION_ROUTES,
   SideNavigationModule,
 } from './components/sidenavigation/sidenavigation.module';
-import {
-  ROUTES as RESULT_LIST_ROUTES,
-  ResultListModule,
-} from './components/result-list/result-list.module';
-import {
-  ROUTES as SEARCH_ROUTES,
-  SearchModule,
-} from './components/search/search.module';
-import {
-  ROUTES as AUTOCOMPLETE_ROUTES,
-  AutocompleteModule,
-} from './components/autocomplete/autocomplete.module';
-import {
-  ROUTES as VIDEO_ROUTES,
-  VideoModule,
-} from './components/video/video.module';
-import {
-  ROUTES as POPUP_ROUTES,
-  PopupModule,
-} from './components/tooltip-popover/tooltip-popover.module';
-import {
-  ROUTES as FILTERS_ROUTES,
-  FiltersModule,
-} from './components/filters/filters.module';
+import { ROUTES as RESULT_LIST_ROUTES, ResultListModule } from './components/result-list/result-list.module';
+import { ROUTES as SEARCH_ROUTES, SearchModule } from './components/search/search.module';
+import { ROUTES as AUTOCOMPLETE_ROUTES, AutocompleteModule } from './components/autocomplete/autocomplete.module';
+import { ROUTES as VIDEO_ROUTES, VideoModule } from './components/video/video.module';
+import { ROUTES as POPUP_ROUTES, PopupModule } from './components/tooltip-popover/tooltip-popover.module';
+import { ROUTES as FILTERS_ROUTES, FiltersModule } from './components/filters/filters.module';
 
 import {
   ROUTES as SELECTION_PANEL_ROUTES,
   SelectionPanelModule,
 } from './components/selection-panel/selection-panel.module';
-import {
-  ROUTES as SLIDE_OUT_ROUTES,
-  SlideOutModule,
-} from './components/slide-out/slide-out.module';
+import { ROUTES as SLIDE_OUT_ROUTES, SlideOutModule } from './components/slide-out/slide-out.module';
 
-import {
-  ROUTES as TABS_ROUTES,
-  TabsModule,
-} from './components/tabs/tabs.module';
+import { ROUTES as TABS_ROUTES, TabsModule } from './components/tabs/tabs.module';
 
-import {
-  ROUTES as TREE_TABLE_ROUTES,
-  TreeTableModule,
-} from './components/tree-table/tree-table.module';
+import { ROUTES as TREE_TABLE_ROUTES, TreeTableModule } from './components/tree-table/tree-table.module';
 
 /* Form Types */
-import {
-  ROUTES as INPUT_ROUTES,
-  InputModule,
-} from './components/formly-input/input.module';
-import {
-  ROUTES as TEXT_AREA_ROUTES,
-  TextAreaModule,
-} from './components/formly-textarea/textarea.module';
-import {
-  ROUTES as CHECKBOX_ROUTES,
-  CheckboxModule,
-} from './components/formly-checkbox/checkbox.module';
+import { ROUTES as INPUT_ROUTES, InputModule } from './components/formly-input/input.module';
+import { ROUTES as TEXT_AREA_ROUTES, TextAreaModule } from './components/formly-textarea/textarea.module';
+import { ROUTES as CHECKBOX_ROUTES, CheckboxModule } from './components/formly-checkbox/checkbox.module';
 import {
   ROUTES as MULTI_CHECKBOX_ROUTES,
   MultiCheckboxModule,
 } from './components/formly-multicheckbox/multicheckbox.module';
-import {
-  ROUTES as RADIO_ROUTES,
-  RadioModule,
-} from './components/formly-radio/radio.module';
-import {
-  ROUTES as SELECT_ROUTES,
-  SelectModule,
-} from './components/formly-select/select.module';
+import { ROUTES as RADIO_ROUTES, RadioModule } from './components/formly-radio/radio.module';
+import { ROUTES as SELECT_ROUTES, SelectModule } from './components/formly-select/select.module';
 import {
   ROUTES as FORMLY_AUTOCOMPLETE_ROUTES,
   FormlyAutocompleteModule,
 } from './components/formly-autocomplete/autocomplete.module';
-import {
-  ROUTES as FORMLY_FILEINFO_ROUTES,
-  FormlyFileInfoModule,
-} from './components/formly-fileinfo/fileinfo.module';
+import { ROUTES as FORMLY_FILEINFO_ROUTES, FormlyFileInfoModule } from './components/formly-fileinfo/fileinfo.module';
 import {
   ROUTES as FORMLY_DATEPICKER_ROUTES,
   FormlyDatepickerModule,
 } from './components/formly-datepicker/datepicker.module';
-import {
-  ROUTES as TEXT_ROUTES,
-  TextModule,
-} from './components/text/text.module';
-import {
-  ROUTES as SEARCH_FORMLY_ROUTES,
-  FormlySearchModule,
-} from './components/formly-search/search.module';
+import { ROUTES as TEXT_ROUTES, TextModule } from './components/text/text.module';
+import { ROUTES as SEARCH_FORMLY_ROUTES, FormlySearchModule } from './components/formly-search/search.module';
 
-import {
-  ROUTES as FORMLY_STEPPER_ROUTES,
-  StepperModule,
-} from './components/formly-stepper/formly-stepper.module';
+import { ROUTES as FORMLY_STEPPER_ROUTES, StepperModule } from './components/formly-stepper/formly-stepper.module';
 
-import {
-  ROUTES as FORMLY_FILE_INPUT_ROUTES,
-  FileInputModule,
-} from './components/formly-file-input/file-input.module';
+import { ROUTES as FORMLY_FILE_INPUT_ROUTES, FileInputModule } from './components/formly-file-input/file-input.module';
 
-import {
-  ROUTES as FORMLY_TABS_ROUTES,
-  FormlyTabsModule,
-} from './components/formly-tabs/formly-tabs.module';
+import { ROUTES as FORMLY_TABS_ROUTES, FormlyTabsModule } from './components/formly-tabs/formly-tabs.module';
 
 import {
   ROUTES as FORMLY_RICH_TEXT_EDITOR_ROUTES,
   FormlyRichTextEditorModule,
 } from './components/formly-rich-text-editor/formly-rich-text-editor.module';
 
-import {
-  ROUTES as TOASTS_ROUTES,
-  ToastsModule,
-} from './components/toasts/toasts.module';
+import { ROUTES as TOASTS_ROUTES, ToastsModule } from './components/toasts/toasts.module';
 /* Form Wrappers */
 
-import {
-  ROUTES as FORM_FIELD_ROUTES,
-  FormFieldModule,
-} from './components/form-field/form-field.module';
-import {
-  ROUTES as FILTER_WRAPPER_ROUTES,
-  FilterWrapperModule,
-} from './components/filterwrapper/filterwrapper.module';
+import { ROUTES as FORM_FIELD_ROUTES, FormFieldModule } from './components/form-field/form-field.module';
+import { ROUTES as FILTER_WRAPPER_ROUTES, FilterWrapperModule } from './components/filterwrapper/filterwrapper.module';
 import {
   ROUTES as ACCORDION_WRAPPER_ROUTES,
   AccordionWrapperModule,
 } from './components/accordionwrapper/accordionwrapper.module';
-import {
-  ROUTES as GROUP_ROUTES,
-  GroupWrappersModule,
-} from './components/groupwrappers/groupwrappers.module';
-import {
-  ROUTES as LABEL_ROUTES,
-  LabelWrapperModule,
-} from './components/labelwrapper/labelwrapper.module';
+import { ROUTES as GROUP_ROUTES, GroupWrappersModule } from './components/groupwrappers/groupwrappers.module';
+import { ROUTES as LABEL_ROUTES, LabelWrapperModule } from './components/labelwrapper/labelwrapper.module';
 import {
   ROUTES as DESCRIPTION_ROUTES,
   DescriptionWrapperModule,
@@ -201,49 +101,22 @@ import {
   ROUTES as TEMPLATEOPTIONS_ROUTES,
   TemplateOptionsModule,
 } from './components/templateoptions/templateoptions.module';
-import {
-  ROUTES as TABLE_ROUTES,
-  TableModule,
-} from './components/table/table.module';
-import {
-  ROUTES as BUTTON_GROUP_ROUTES,
-  ButtonGroupModule,
-} from './components/button-group/button-group.module';
-import {
-  ROUTES as READONLY_ROUTES,
-  ReadonlyModule,
-} from './components/formly-readonly/readonly.module';
+import { ROUTES as TABLE_ROUTES, TableModule } from './components/table/table.module';
+import { ROUTES as BUTTON_GROUP_ROUTES, ButtonGroupModule } from './components/button-group/button-group.module';
+import { ROUTES as READONLY_ROUTES, ReadonlyModule } from './components/formly-readonly/readonly.module';
 
 /* Utilities */
-import {
-  ROUTES as ICONS_ROUTES,
-  IconsModule,
-} from './components/icons/icons.module';
+import { ROUTES as ICONS_ROUTES, IconsModule } from './components/icons/icons.module';
 
-import {
-  ROUTES as EXTERNA_LINK_ROUTES,
-  ExternalLinkModule,
-} from './components/external-link/external-link.module';
+import { ROUTES as EXTERNA_LINK_ROUTES, ExternalLinkModule } from './components/external-link/external-link.module';
 
-import {
-  ROUTES as EDITOR_ROUTES,
-  EditorModule,
-} from './components/formly-editor/formly-editor.module';
+import { ROUTES as EDITOR_ROUTES, EditorModule } from './components/formly-editor/formly-editor.module';
 
-import {
-  ROUTES as DATE_PIPE_ROUTES,
-  DatePipeModule,
-} from './components/date-pipe/date-pipe.module';
+import { ROUTES as DATE_PIPE_ROUTES, DatePipeModule } from './components/date-pipe/date-pipe.module';
 
-import {
-  ROUTES as EXPIRES_ROUTES,
-  ExpiresModule
-} from './components/expires/expires.module';
+import { ROUTES as EXPIRES_ROUTES, ExpiresModule } from './components/expires/expires.module';
 
-import {
-  ROUTES as RICH_TEXT_ROUTES,
-  RichTextModule
-} from './components/rich-text/rich-text.module';
+import { ROUTES as RICH_TEXT_ROUTES, RichTextModule } from './components/rich-text/rich-text.module';
 
 import { DocumentationSharedModule } from './shared';
 import { OverviewComponent } from './pages/overview/overview.component';
@@ -286,8 +159,8 @@ export const ROUTES: Routes = [
   { path: 'components/date-pipe', children: DATE_PIPE_ROUTES },
   { path: 'components/tree-table', children: TREE_TABLE_ROUTES },
   { path: 'components/slide-out', children: SLIDE_OUT_ROUTES },
-  { path: 'components/expires', children: EXPIRES_ROUTES},
-  { path: 'components/rich-text', children: RICH_TEXT_ROUTES},
+  { path: 'components/expires', children: EXPIRES_ROUTES },
+  { path: 'components/rich-text', children: RICH_TEXT_ROUTES },
 
   // Formly
   { path: 'components/formly-input', children: INPUT_ROUTES },
@@ -398,11 +271,7 @@ export const ROUTES: Routes = [
     RichTextModule,
     FormlyRichTextEditorModule,
     NgxBootstrapIconsModule.pick(
-      Object.assign(
-        _.cloneDeep(allIcons),
-        appendPrefix(_.cloneDeep(sdsAllIcons), 'sds'),
-        _.cloneDeep(uswdsAllIcons)
-      )
+      Object.assign(_.cloneDeep(allIcons), appendPrefix(_.cloneDeep(sdsAllIcons), 'sds'), _.cloneDeep(uswdsAllIcons))
     ),
     IconModule,
   ],

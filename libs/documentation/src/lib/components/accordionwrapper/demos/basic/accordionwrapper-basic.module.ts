@@ -9,6 +9,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot()],
   declarations: [AccordionWrapperBasic],
   exports: [AccordionWrapperBasic],
-  bootstrap: [AccordionWrapperBasic]
+  bootstrap: [AccordionWrapperBasic],
 })
 export class AccordionWrapperBasicModule {}

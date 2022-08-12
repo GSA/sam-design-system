@@ -3,7 +3,7 @@ import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ToastPackage, ToastRef, ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { IconModule, allIcons as sdsAllIcons} from '@gsa-sam/ngx-uswds-icons'
+import { IconModule, allIcons as sdsAllIcons } from '@gsa-sam/ngx-uswds-icons';
 import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 
 describe('Component: SdsToastComponent', () => {
@@ -27,9 +27,9 @@ describe('Component: SdsToastComponent', () => {
         IconModule,
         ToastrModule.forRoot(),
         BrowserAnimationsModule,
-        NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))
+        NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons)),
       ],
-      providers: [{ provide: ToastPackage, useValue: toastPackageMock }]
+      providers: [{ provide: ToastPackage, useValue: toastPackageMock }],
     });
 
     fixture = TestBed.createComponent(SdsToastComponent);
@@ -47,15 +47,11 @@ describe('Component: SdsToastComponent', () => {
   });
 
   it('should get right icon class via method', () => {
-    expect(component.getIcon(component.toastPackage.toastType)).toEqual(
-      'check2-circle'
-    );
+    expect(component.getIcon(component.toastPackage.toastType)).toEqual('check2-circle');
   });
 
   it('should have the right message in the DOM', () => {
-    const textWrapper = fixture.debugElement.query(
-      By.css('.sds-toast__content__text')
-    ).nativeElement;
+    const textWrapper = fixture.debugElement.query(By.css('.sds-toast__content__text')).nativeElement;
     expect(textWrapper.innerHTML).toContain('test message');
   });
 
@@ -67,7 +63,7 @@ describe('Component: SdsToastComponent', () => {
       config: { toastClass: 'custom-toast' },
       message: 'test message',
       title: 'test title',
-      toastRef: new ToastRef(null)
+      toastRef: new ToastRef(null),
     };
   }
 });

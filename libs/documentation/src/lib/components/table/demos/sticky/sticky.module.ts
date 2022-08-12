@@ -5,16 +5,10 @@ import { SdsTableModule } from '@gsa-sam/sam-material-extensions';
 import { TableStickyComponent } from './sticky.component';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
-
 @NgModule({
   declarations: [TableStickyComponent],
-  imports: [
-    CommonModule,
-    SdsTableModule,
-    IconModule
-  ],
+  imports: [CommonModule, SdsTableModule, IconModule],
   exports: [TableStickyComponent],
-  bootstrap: [TableStickyComponent]
+  bootstrap: [TableStickyComponent],
 })
-
-export class TableStickyModule { }
+export class TableStickyModule {}

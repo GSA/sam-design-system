@@ -6,18 +6,18 @@ import { SdsTextModule } from '@gsa-sam/components';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
 
-
 @NgModule({
   declarations: [TextBasic],
-  imports: [CommonModule,
+  imports: [
+    CommonModule,
     FormsModule,
     SdsTextModule,
     ReactiveFormsModule,
     SdsFormlyModule,
     FormsModule,
-    FormlyModule.forRoot()
-],
+    FormlyModule.forRoot(),
+  ],
   exports: [TextBasic],
-  bootstrap: [TextBasic]
+  bootstrap: [TextBasic],
 })
 export class TextBasicModule {}

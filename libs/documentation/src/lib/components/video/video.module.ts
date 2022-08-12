@@ -4,10 +4,7 @@ import { DocumentationExamplesPage } from '../shared/examples-page/examples.comp
 import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
-import {
-  DocumentationComponentsSharedModule,
-  DocumentationDemoList,
-} from '../shared/index';
+import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { VideoBasicModule } from './demos/basic/video-basic.module';
 import { VideoBasic } from './demos/basic/video-basic.component';
@@ -52,11 +49,7 @@ export const ROUTES = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    DocumentationComponentsSharedModule,
-    VideoBasicModule,
-  ],
+  imports: [CommonModule, DocumentationComponentsSharedModule, VideoBasicModule],
 })
 export class VideoModule {
   constructor(demoList: DocumentationDemoList) {

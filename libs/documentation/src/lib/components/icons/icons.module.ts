@@ -1,10 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DocumentationExamplesPage } from '../shared/examples-page/examples.component';
-import {
-  DocumentationComponentsSharedModule,
-  DocumentationDemoList,
-} from './../shared/index';
+import { DocumentationComponentsSharedModule, DocumentationDemoList } from './../shared/index';
 import { ComponentWrapperComponent } from './../../shared/component-wrapper/component-wrapper.component';
 import { IconsBasicModule } from './demos/basic/icons-basic.module';
 import { IconsBasic } from './demos/basic/icons-basic.component';
@@ -23,8 +20,8 @@ import { IconsStackingComponent } from './demos/stacking/icons-stacking.componen
 import { IconsStackingModule } from './demos/stacking/icons-stacking.module';
 import { IconSkewingComponent } from './demos/icon-skewing/icon-skewing.component';
 import { IconSkewingModule } from './demos/icon-skewing/icon-skewing.module';
-import { IconsUswdsModule } from './demos/uswds/icons-uswds.module'
-import { IconsUswds } from './demos/uswds/icons-uswds.component'
+import { IconsUswdsModule } from './demos/uswds/icons-uswds.module';
+import { IconsUswds } from './demos/uswds/icons-uswds.component';
 
 declare var require: any;
 const DEMOS = {
@@ -128,7 +125,7 @@ export const ROUTES = [
     IconsRotationModule,
     IconsStackingModule,
     IconSkewingModule,
-    IconsUswdsModule
+    IconsUswdsModule,
   ],
 })
 export class IconsModule {

@@ -4,13 +4,9 @@ import { Component, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
 @Component({
-  template: '<div [sdsPopup] position="bottom-center" placement="out"></div>'
+  template: '<div [sdsPopup] position="bottom-center" placement="out"></div>',
 })
-
-class TestPopupSampleComponent {
-
-}
-
+class TestPopupSampleComponent {}
 
 describe('PopupDirective', () => {
   let component: TestPopupSampleComponent;
@@ -20,18 +16,15 @@ describe('PopupDirective', () => {
   beforeEach(async () => {
     component = new TestPopupSampleComponent();
     TestBed.configureTestingModule({
-      declarations: [SdsPopupDirective,
-        TestPopupSampleComponent
-      ]
-    })
-      .compileComponents();
+      declarations: [SdsPopupDirective, TestPopupSampleComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TestPopupSampleComponent);
     component = fixture.componentInstance;
     de = fixture.debugElement.query(By.css('div'));
-  })
+  });
 
   // Check the class for sds-popup
   it('should must has sds popup class', () => {
@@ -51,5 +44,4 @@ describe('PopupDirective', () => {
     const sdsPopupDire = fixture.debugElement.query(By.directive(SdsPopupDirective));
     expect(placeValueEl).toBe(sdsPopupDire.attributes.placement);
   });
-
 });

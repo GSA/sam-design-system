@@ -9,6 +9,7 @@
   [stepValidityMap]="stepValidityMap"
   (stepChange)="onStepChange($event)"
   [linear]="linear"
+  [validateStepsOnInit]="validateStepsOnInit"
   (saveData)="onSaveData($event)"
 >
   <sds-step
@@ -20,11 +21,7 @@
   </sds-step>
 
   <sds-step id="entityDetails" text="Entity Details" [editable]="false">
-    <sds-step
-      id="permission"
-      text="permission"
-      [fieldConfig]="stepMap.permission.fieldConfig"
-    >
+    <sds-step id="permission" text="permission" [fieldConfig]="stepMap.permission.fieldConfig">
       <h1 sdsStepHeader class="margin-top-0">
         permission
         <hr />
@@ -42,22 +39,14 @@
       </h1>
     </sds-step>
 
-    <sds-step
-      id="entityInformation"
-      text="Entity Information"
-      [fieldConfig]="stepMap.enitityInformation.fieldConfig"
-    >
+    <sds-step id="entityInformation" text="Entity Information" [fieldConfig]="stepMap.enitityInformation.fieldConfig">
       <h1 sdsStepHeader class="margin-top-0">
         Enter Entity Information
         <hr />
       </h1>
     </sds-step>
 
-    <sds-step
-      id="reportDetails"
-      text="Report Details"
-      [fieldConfig]="stepMap.reportDetails.fieldConfig"
-    >
+    <sds-step id="reportDetails" text="Report Details" [fieldConfig]="stepMap.reportDetails.fieldConfig">
       <h1 sdsStepHeader class="margin-top-0">
         Report Details
         <hr />
@@ -65,11 +54,7 @@
     </sds-step>
   </sds-step>
 
-  <sds-step
-    id="taxPayerInfoForm"
-    text="Taxpayer Details"
-    [fieldConfig]="stepMap.taxpayerInformation.fieldConfig"
-  >
+  <sds-step id="taxPayerInfoForm" text="Taxpayer Details" [fieldConfig]="stepMap.taxpayerInformation.fieldConfig">
     <h1 sdsStepHeader class="margin-top-0">
       Enter Taxpayer Details
       <hr />
@@ -122,8 +107,7 @@
             <li>Taxpayer Name</li>
           </ul>
           <span class="display-block text-small">
-            Review your tax documents from the IRS (such as a 1099 or w2 form)
-            to find your Taxpayer information.
+            Review your tax documents from the IRS (such as a 1099 or w2 form) to find your Taxpayer information.
           </span>
         </li>
         <li class="margin-bottom-4">
@@ -133,8 +117,7 @@
             <li>Account Number</li>
           </ul>
           <span class="display-block text-small">
-            Account type (checking or savings) to set up Electronic Funds
-            Transfer (ETF)
+            Account type (checking or savings) to set up Electronic Funds Transfer (ETF)
           </span>
         </li>
       </ul>
@@ -148,10 +131,7 @@
       Subawardee Data
       <hr />
     </h1>
-    <subawardee-demo
-      (subawardeeUpdate)="updateSubawardee($event)"
-      [subawardees]="model.subawardee"
-    ></subawardee-demo>
+    <subawardee-demo (subawardeeUpdate)="updateSubawardee($event)" [subawardees]="model.subawardee"></subawardee-demo>
   </ng-container>
   <ng-template #loading>
     <div class="grid-container padding-left-0">
@@ -173,12 +153,7 @@
     Review and Submit
     <hr />
   </h1>
-  <formly-form
-    [fields]="[stepMap.review.fieldConfig]"
-    [model]="model"
-  ></formly-form>
-  <subawardee-demo
-    [displayInput]="false"
-    [subawardees]="model.subawardee"
-  ></subawardee-demo>
+
+  <formly-form [fields]="[stepMap.review.fieldConfig]" [model]="model"></formly-form>
+  <subawardee-demo [displayInput]="false" [subawardees]="model.subawardee"></subawardee-demo>
 </ng-template>

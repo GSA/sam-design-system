@@ -5,11 +5,9 @@ import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 @Component({
   selector: 'gsa-sam-radio-horizontal',
   templateUrl: './radio-horizontal.component.html',
-  styleUrls: ['./radio-horizontal.component.scss']
+  styleUrls: ['./radio-horizontal.component.scss'],
 })
-export class RadioHorizontalComponent{
-
-
+export class RadioHorizontalComponent {
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
@@ -20,8 +18,7 @@ export class RadioHorizontalComponent{
 
       templateOptions: {
         label: 'Are you registering an entity?',
-        description:
-          'Sed ut perspiciatis unde omnis iste natus error sit voluptatem',
+        description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem',
         required: true,
         options: [
           {
@@ -31,9 +28,9 @@ export class RadioHorizontalComponent{
           {
             key: 'no',
             value: 'No',
-          }
+          },
         ],
-        horizontal: true
+        horizontal: true,
       },
       modelOptions: {
         updateOn: 'blur',

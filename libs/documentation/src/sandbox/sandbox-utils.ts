@@ -2,11 +2,7 @@
 
 declare var require;
 
-export function generateConfig(
-  filePath: string,
-  moduleName: string,
-  selector: string
-) {
+export function generateConfig(filePath: string, moduleName: string, selector: string) {
   const splitPath = filePath.split('/');
   const fileName = splitPath[splitPath.length - 1];
 

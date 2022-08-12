@@ -8,7 +8,6 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
   templateUrl: './basic-file-input.component.html',
 })
 export class BasicFileInputComponent {
-
   fields: FormlyFieldConfig[] = [
     {
       key: 'basicFileInput',
@@ -20,12 +19,12 @@ export class BasicFileInputComponent {
       },
       validation: {
         messages: {
-          fileSizeLimit: 'File must be below 100 kb'
-        }
+          fileSizeLimit: 'File must be below 100 kb',
+        },
       },
       validators: {
-        fileSizeLimit: this.fileSizeLimitValidator
-      }
+        fileSizeLimit: this.fileSizeLimitValidator,
+      },
     },
     {
       key: 'multipleFilesInput',
@@ -45,9 +44,9 @@ export class BasicFileInputComponent {
         description: 'Only PDF, CSV, or any image format files are allowed',
         multiple: true,
         hideOptional: true,
-        acceptFileType: '.pdf,.csv,image/*'
+        acceptFileType: '.pdf,.csv,image/*',
       },
-    }
+    },
   ];
 
   onModelChange($event: any) {
@@ -60,7 +59,7 @@ export class BasicFileInputComponent {
     }
 
     let isValid = true;
-    (control.value as File[]).forEach(file => {
+    (control.value as File[]).forEach((file) => {
       if (file.size > 100000) {
         isValid = false;
       }

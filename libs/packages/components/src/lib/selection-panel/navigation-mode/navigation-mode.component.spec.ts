@@ -1,27 +1,38 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing"
-import { By } from "@angular/platform-browser";
-import { RouterTestingModule } from "@angular/router/testing";
-import { NavigationMode } from "../../common-navigation/common-navigation-model";
-import { SelectionPanelModel } from "../model/selection-panel.model";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { RouterTestingModule } from '@angular/router/testing';
+import { NavigationMode } from '../../common-navigation/common-navigation-model';
+import { SelectionPanelModel } from '../model/selection-panel.model';
 import { SdsSelectionPanelNavigationModeComponent } from './navigation-mode.component';
 
 describe('Selection Panel Navigation Mode Component', () => {
-
   let model: SelectionPanelModel = {
     navigationLinks: [
       {
-        text: 'Parent 1', id: 'linkp1', route: '/', mode: NavigationMode.INTERNAL, children: [
+        text: 'Parent 1',
+        id: 'linkp1',
+        route: '/',
+        mode: NavigationMode.INTERNAL,
+        children: [
           { text: 'Child 1 of Parent 1', route: '/', mode: NavigationMode.INTERNAL, id: 'linkc1p1' },
           {
-            text: 'Child 2 of Parent 1', route: '/', mode: NavigationMode.INTERNAL, id: 'linkc2p1'
-            , children: [
-              { text: 'Grandchild 1 of Child 2 of Parent 1', route: '/', mode: NavigationMode.INTERNAL, id: 'linkgc1c2p1' }
-            ]
-          }
-        ]
-      }
+            text: 'Child 2 of Parent 1',
+            route: '/',
+            mode: NavigationMode.INTERNAL,
+            id: 'linkc2p1',
+            children: [
+              {
+                text: 'Grandchild 1 of Child 2 of Parent 1',
+                route: '/',
+                mode: NavigationMode.INTERNAL,
+                id: 'linkgc1c2p1',
+              },
+            ],
+          },
+        ],
+      },
     ],
-    selectionMode: 'NAVIGATION'
+    selectionMode: 'NAVIGATION',
   };
 
   let fixture: ComponentFixture<SdsSelectionPanelNavigationModeComponent>;
@@ -29,12 +40,8 @@ describe('Selection Panel Navigation Mode Component', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        SdsSelectionPanelNavigationModeComponent
-      ]
+      imports: [RouterTestingModule],
+      declarations: [SdsSelectionPanelNavigationModeComponent],
     }).compileComponents();
     fixture = TestBed.createComponent(SdsSelectionPanelNavigationModeComponent);
     component = fixture.componentInstance;
@@ -55,5 +62,5 @@ describe('Selection Panel Navigation Mode Component', () => {
     anchorElement.triggerEventHandler('click', null);
     fixture.detectChanges();
     expect(panelSelectedEventSpy).toHaveBeenCalled();
-  })
-})
+  });
+});

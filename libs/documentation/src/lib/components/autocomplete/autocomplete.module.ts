@@ -5,10 +5,7 @@ import { DocumentationExamplesPage } from '../shared/examples-page/examples.comp
 import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
-import {
-  DocumentationComponentsSharedModule,
-  DocumentationDemoList,
-} from '../shared/index';
+import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { AutocompleteBasicModule } from './demos/basic/autocomplete-basic.module';
 import { AutocompleteBasic } from './demos/basic/autocomplete-basic.component';
@@ -55,8 +52,7 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/selectgroup/autocomplete-selectgroup.component'),
     markup: require('!!raw-loader!./demos/selectgroup/autocomplete-selectgroup.component.html'),
     module: require('!!raw-loader!./demos/selectgroup/autocomplete-selectgroup.module'),
-    path:
-      'libs/documentation/src/lib/components/autocomplete/demos/selectgroup',
+    path: 'libs/documentation/src/lib/components/autocomplete/demos/selectgroup',
   },
   tagmode: {
     title: 'Tagmode enabled on Autocomplete',
@@ -72,8 +68,7 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/mincharacter/autocomplete-mincharacter.component'),
     module: require('!!raw-loader!./demos/mincharacter/autocomplete-mincharacter.module'),
     markup: require('!!raw-loader!./demos/mincharacter/autocomplete-mincharacter.component.html'),
-    path:
-      'libs/documentation/src/lib/components/autocomplete/demos/mincharacter',
+    path: 'libs/documentation/src/lib/components/autocomplete/demos/mincharacter',
   },
   inputreadonly: {
     title: 'Autocomplete with input read only mode',
@@ -81,8 +76,7 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/inputreadonly/autocomplete-inputreadonly.component'),
     module: require('!!raw-loader!./demos/inputreadonly/autocomplete-inputreadonly.module'),
     markup: require('!!raw-loader!./demos/inputreadonly/autocomplete-inputreadonly.component.html'),
-    path:
-      'libs/documentation/src/lib/components/autocomplete/demos/inputreadonly',
+    path: 'libs/documentation/src/lib/components/autocomplete/demos/inputreadonly',
   },
 
   freetext: {
@@ -107,8 +101,7 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/customtemplate/autocomplete-customtemplate.component'),
     module: require('!!raw-loader!./demos/customtemplate/autocomplete-customtemplate.module'),
     markup: require('!!raw-loader!./demos/customtemplate/autocomplete-customtemplate.component.html'),
-    path:
-      'libs/documentation/src/lib/components/autocomplete/demos/customtemplate',
+    path: 'libs/documentation/src/lib/components/autocomplete/demos/customtemplate',
   },
   ariaLabel: {
     title: 'Aria Label Autocomplete',
@@ -116,8 +109,7 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/aria-label/autocomplete-aria-label.component'),
     module: require('!!raw-loader!./demos/aria-label/autocomplete-aria-label.module'),
     markup: require('!!raw-loader!./demos/aria-label/autocomplete-aria-label.component.html'),
-    path:
-      'libs/documentation/src/lib/components/autocomplete/demos/aria-label',
+    path: 'libs/documentation/src/lib/components/autocomplete/demos/aria-label',
   },
 };
 

@@ -26,49 +26,48 @@ export class MultiCheckboxExpandable {
           {
             key: 'AL',
             value: 'Alabama',
-            tagText: 'AL'
+            tagText: 'AL',
           },
           {
             key: 'AK',
             value: 'Alaska',
-            tagText: 'AK'
-
+            tagText: 'AK',
           },
           {
             key: 'AZ',
             value: 'Arizona',
-            tagText: 'AZ'
+            tagText: 'AZ',
           },
           {
             key: 'AR',
             value: 'Arkansas',
-            tagText: 'AR'
+            tagText: 'AR',
           },
           {
             key: 'CA',
             value: 'California',
-            tagText: 'CA'
+            tagText: 'CA',
           },
           {
             key: 'CO',
             value: 'Colorado',
-            tagText: 'CO'
+            tagText: 'CO',
           },
           {
             key: 'CT',
             value: 'Connecticut',
-            tagText: 'CT'
+            tagText: 'CT',
           },
           {
             key: 'DE',
             value: 'Delaware',
-            tagText: 'DE'
+            tagText: 'DE',
           },
           {
             key: 'DC',
             value: 'District Of Columbia',
             tagText: 'DC',
-            tagClass: 'sds-tag--info-purple'
+            tagClass: 'sds-tag--info-purple',
           },
           {
             key: 'FL',
@@ -99,10 +98,10 @@ export class MultiCheckboxExpandable {
             key: 'IN',
             value: 'Indiana',
             tagText: 'IN',
-          }
-        ]
-      }
-    }
+          },
+        ],
+      },
+    },
   ];
   onChange(ev) {
     this.isexpandedOptions = !this.isexpandedOptions;

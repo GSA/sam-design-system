@@ -7,26 +7,25 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
   styleUrls: ['./datepicker-basic.component.scss'],
   selector: `sds-formly-datepicker-basic-demo`,
 })
-
-export class FormlyDatepickerBasic  {
+export class FormlyDatepickerBasic {
   results: any = {};
   form = new FormGroup({});
-  model:any = {};
+  model: any = {};
   options: FormlyFormOptions = {};
   fields: FormlyFieldConfig[] = [
-
     {
       key: 'expirationDateOpen',
       type: 'datepicker',
       templateOptions: {
         label: 'Expiration Date (no validation)',
-        placeholder: 'eg: ' + new Date().toLocaleString('en-US', {
-          month: 'short',
-          day: 'numeric',
-          year: 'numeric'
-        }),
-      }
-    }
+        placeholder:
+          'eg: ' +
+          new Date().toLocaleString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric',
+          }),
+      },
+    },
   ];
-
 }

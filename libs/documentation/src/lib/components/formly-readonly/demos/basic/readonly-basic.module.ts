@@ -9,6 +9,6 @@ import { SdsFormlyModule } from '@gsa-sam/sam-formly';
   imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot()],
   declarations: [ReadonlyBasicComponent],
   exports: [ReadonlyBasicComponent],
-  bootstrap: [ReadonlyBasicComponent]
+  bootstrap: [ReadonlyBasicComponent],
 })
-export class ReadonlyBasicModule {} 
+export class ReadonlyBasicModule {}

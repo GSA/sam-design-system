@@ -4,10 +4,7 @@ import { DocumentationExamplesPage } from '../shared/examples-page/examples.comp
 import { DocumentationAPIPage } from '../shared/api-page/docs-api.component';
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
-import {
-  DocumentationComponentsSharedModule,
-  DocumentationDemoList,
-} from '../shared/index';
+import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { FormlyFileInfoBasic } from './demos/basic/fileinfo-basic.component';
 import { FormlyFileInfoBasicModule } from './demos/basic/fileinfo-basic.module';
@@ -50,11 +47,7 @@ export const ROUTES = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    DocumentationComponentsSharedModule,
-    FormlyFileInfoBasicModule,
-  ],
+  imports: [CommonModule, DocumentationComponentsSharedModule, FormlyFileInfoBasicModule],
 })
 export class FormlyFileInfoModule {
   constructor(demoList: DocumentationDemoList) {

@@ -3,14 +3,10 @@ import { CommonModule } from '@angular/common';
 import { ActionsBasic } from './actions-basic.component';
 import { SdsActionsMenuModule } from '@gsa-sam/components';
 
-
 @NgModule({
   declarations: [ActionsBasic],
-  imports: [
-    CommonModule,
-    SdsActionsMenuModule
-  ],
+  imports: [CommonModule, SdsActionsMenuModule],
   exports: [ActionsBasic],
-  bootstrap: [ActionsBasic]
+  bootstrap: [ActionsBasic],
 })
 export class ActionsBasicModule {}

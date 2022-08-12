@@ -7,7 +7,6 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
   styleUrls: ['./checkbox-basic.component.scss'],
   selector: `sds-formly-checkbox-demo`,
 })
-
 export class CheckboxBasic {
   form = new FormGroup({});
   model: any = {};
@@ -21,7 +20,7 @@ export class CheckboxBasic {
         description: 'By checking the box below you agree to the terms and conditions of the site.',
         required: true,
         tooltipText: 'By checking the box below you agree to the terms and conditions',
-        tooltipPosition: 'bottom'
+        tooltipPosition: 'bottom',
       },
     },
   ];

@@ -29,12 +29,9 @@ import { filter } from 'rxjs/operators';
           </usa-accordion>
         </ng-container>
         <ng-container *ngSwitchCase="'panel'">
-          <div
-            class="sds-panel"
-            [ngClass]="{ 'sds-panel--multiple': field?.fieldGroup?.length }"
-          >
+          <div class="sds-panel" [ngClass]="{ 'sds-panel--multiple': field?.fieldGroup?.length }">
             <div
-              class="sds-panel__header"
+              class="sds-panel__header padding-top-1"
               *ngIf="!to.hideLabel"
               [attr.aria-hidden]="!to.announceLabel ? undefined : 'true'"
             >
@@ -46,16 +43,18 @@ import { filter } from 'rxjs/operators';
           </div>
         </ng-container>
         <ng-container *ngSwitchCase="'popover'">
-        <div #popoverContent class="padding-1 text-left sds-width-max-content">
-          <ng-container #fieldComponent></ng-container>
-        </div>
+          <div #popoverContent class="padding-1 text-left sds-width-max-content">
+            <ng-container #fieldComponent></ng-container>
+          </div>
           <div
             [sdsPopover]="popoverContent"
-              [position]="'bottom'"
-              [closeOnContentClick]="to.closeOnContentClick != undefined ? to.closeOnContentClick : false"
-              [closeOnClickOutside]="to.closeOnClickOutside != undefined ? to.closeOnClickOutside : true"
-              tabindex="0" [attr.aria-label]="to.label">
-            {{to.label}}
+            [position]="'bottom'"
+            [closeOnContentClick]="to.closeOnContentClick != undefined ? to.closeOnContentClick : false"
+            [closeOnClickOutside]="to.closeOnClickOutside != undefined ? to.closeOnClickOutside : true"
+            tabindex="0"
+            [attr.aria-label]="to.label"
+          >
+            {{ to.label }}
             <usa-icon [icon]="'chevron-down'" [size]="'sm'"></usa-icon>
           </div>
         </ng-container>
@@ -88,8 +87,8 @@ export class FormlyGroupWrapperComponent extends FieldWrapper implements AfterVi
       return;
     }
 
-    this.resetAllSubscription = this.field.options.fieldChanges.pipe(
-      filter(({ type }) => type === 'resetAll' && this.accordionItem.expanded))
+    this.resetAllSubscription = this.field.options.fieldChanges
+      .pipe(filter(({ type }) => type === 'resetAll' && this.accordionItem.expanded))
       .subscribe(() => {
         if (!this.modelHasValue()) {
           this.accordion.collapse(this.accordionItem.id);

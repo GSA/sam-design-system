@@ -1,8 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  ExternalLinkDirective,
-  SdsExternalLinkDirectivesModule,
-} from '@gsa-sam/components';
+import { ExternalLinkDirective, SdsExternalLinkDirectivesModule } from '@gsa-sam/components';
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
 import { generateConfig } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { ExternalLinkHideIconModule } from './demos/external-link-hide-icon/external-link-hide-icon.module';
@@ -13,19 +10,12 @@ export default {
   component: ExternalLinkDirective,
   decorators: [
     moduleMetadata({
-      imports: [
-        CommonModule,
-        SdsExternalLinkDirectivesModule,
-        ExternalLinkTargetModule,
-        ExternalLinkHideIconModule,
-      ],
+      imports: [CommonModule, SdsExternalLinkDirectivesModule, ExternalLinkTargetModule, ExternalLinkHideIconModule],
     }),
   ],
 } as Meta;
 
-const Template: Story<ExternalLinkDirective> = (
-  args: ExternalLinkDirective
-) => ({
+const Template: Story<ExternalLinkDirective> = (args: ExternalLinkDirective) => ({
   template: `<a *ngIf="href" class="usa-link" href="{{href}}" [hideIcon]="hideIcon" target="{{target}}">{{href}}</a>`,
   props: args,
 });

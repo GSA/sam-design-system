@@ -1,7 +1,11 @@
 <div class="margin-bottom-3">
   <h4 id="autoOptional1Label">Autocomplete with free text Enabled</h4>
-  <p> <code>this.settings.isFreeTextEnabled = true</code> is used to enable the free text mode. </p>
-  <sds-autocomplete [service]="service" (ngModelChange)="changes($event)" [(ngModel)]="model"
-    [configuration]="settings">
+  <p><code>this.settings.isFreeTextEnabled = true</code> is used to enable the free text mode.</p>
+  <sds-autocomplete
+    [service]="service"
+    (ngModelChange)="changes($event)"
+    [(ngModel)]="model"
+    [configuration]="settings"
+  >
   </sds-autocomplete>
 </div>

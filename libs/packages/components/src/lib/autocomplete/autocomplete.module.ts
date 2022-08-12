@@ -6,10 +6,8 @@ import { RouterModule } from '@angular/router';
 import { SdsSelectedResultsModule } from '../selected-result/selected-result.module';
 import { SdsAutocompleteSearchModule } from '../autocomplete-search/autocomplete-search.module';
 @NgModule({
-  imports: [
-    CommonModule, FormsModule, RouterModule, SdsSelectedResultsModule, SdsAutocompleteSearchModule
-  ],
+  imports: [CommonModule, FormsModule, RouterModule, SdsSelectedResultsModule, SdsAutocompleteSearchModule],
   declarations: [SDSAutocompleteComponent],
-  exports: [SDSAutocompleteComponent]
+  exports: [SDSAutocompleteComponent],
 })
-export class SdsAutocompleteModule { }
+export class SdsAutocompleteModule {}

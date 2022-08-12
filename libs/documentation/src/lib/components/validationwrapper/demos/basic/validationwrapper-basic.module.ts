@@ -9,6 +9,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot()],
   declarations: [ValidationWrapperBasic],
   exports: [ValidationWrapperBasic],
-  bootstrap: [ValidationWrapperBasic]
+  bootstrap: [ValidationWrapperBasic],
 })
 export class ValidationWrapperBasicModule {}

@@ -7,11 +7,18 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
   templateUrl: './uswds-stepper.component.html',
 })
 export class UswdsStepperComponent {
-
-
   stepOne: FormlyFieldConfig = {
     key: 'enitityOne',
     fieldGroup: [
+      {
+        key: 'stepIndicator',
+        type: 'step-arrow',
+        templateOptions: {
+          number: 1,
+          stepTitle: 'Entity Step one',
+          status: 'active',
+        },
+      },
       {
         key: 'name',
         type: 'input',
@@ -22,26 +29,35 @@ export class UswdsStepperComponent {
           required: true,
         },
         modelOptions: {
-          updateOn: 'blur'
-        }
+          updateOn: 'blur',
+        },
       },
       {
-          className: "desktop:grid-col-12 tablet:grid-col-12",
-          type: "input",
-          key: "title",
+        className: 'desktop:grid-col-12 tablet:grid-col-12',
+        type: 'input',
+        key: 'title',
 
-          templateOptions: {
-            label: "Program or Project Title",
-            required: true,
-            showError: false,
-          }
+        templateOptions: {
+          label: 'Program or Project Title',
+          required: true,
+          showError: false,
+        },
       },
-    ]
+    ],
   };
 
   stepOnePointTwoFive: FormlyFieldConfig = {
     key: 'enitityOnePointTwoFive',
     fieldGroup: [
+      {
+        key: 'stepIndicator2',
+        type: 'step-arrow',
+        templateOptions: {
+          number: 2,
+          stepTitle: 'Entity Step two',
+          status: 'inactive',
+        },
+      },
       {
         key: 'name',
         type: 'input',
@@ -52,21 +68,21 @@ export class UswdsStepperComponent {
           required: true,
         },
         modelOptions: {
-          updateOn: 'blur'
-        }
+          updateOn: 'blur',
+        },
       },
       {
-          className: "desktop:grid-col-12 tablet:grid-col-12",
-          type: "input",
-          key: "title",
+        className: 'desktop:grid-col-12 tablet:grid-col-12',
+        type: 'input',
+        key: 'title',
 
-          templateOptions: {
-            label: "Program or Project Title",
-            required: true,
-            showError: false,
-          }
+        templateOptions: {
+          label: 'Program or Project Title',
+          required: true,
+          showError: false,
+        },
       },
-    ]
+    ],
   };
 
   stepOnePointFive: FormlyFieldConfig = {
@@ -82,21 +98,21 @@ export class UswdsStepperComponent {
           required: true,
         },
         modelOptions: {
-          updateOn: 'blur'
-        }
+          updateOn: 'blur',
+        },
       },
       {
-          className: "desktop:grid-col-12 tablet:grid-col-12",
-          type: "input",
-          key: "title",
+        className: 'desktop:grid-col-12 tablet:grid-col-12',
+        type: 'input',
+        key: 'title',
 
-          templateOptions: {
-            label: "Program or Project Title",
-            required: true,
-            showError: false,
-          }
+        templateOptions: {
+          label: 'Program or Project Title',
+          required: true,
+          showError: false,
+        },
       },
-    ]
+    ],
   };
 
   stepOnePointSevenFive: FormlyFieldConfig = {
@@ -112,24 +128,24 @@ export class UswdsStepperComponent {
           required: true,
         },
         modelOptions: {
-          updateOn: 'blur'
-        }
+          updateOn: 'blur',
+        },
       },
       {
-          className: "desktop:grid-col-12 tablet:grid-col-12",
-          type: "input",
-          key: "title",
+        className: 'desktop:grid-col-12 tablet:grid-col-12',
+        type: 'input',
+        key: 'title',
 
-          templateOptions: {
-            label: "Program or Project Title",
-            required: true,
-            showError: false,
-          }
+        templateOptions: {
+          label: 'Program or Project Title',
+          required: true,
+          showError: false,
+        },
       },
-    ]
+    ],
   };
 
-  stepTwo =  {
+  stepTwo = {
     key: 'purposeOfRegistration',
     fieldGroup: [
       {
@@ -141,26 +157,26 @@ export class UswdsStepperComponent {
           options: [
             {
               label: 'Business Or Organization',
-              value: 'business'
+              value: 'business',
             },
             {
               label: 'U.S. State Government',
-              value: 'stateGovt'
+              value: 'stateGovt',
             },
             {
               label: 'U.S. Local Government',
-              value: 'localGovt'
+              value: 'localGovt',
             },
             {
               label: 'Tribal Government',
-              value: 'tribal'
+              value: 'tribal',
             },
             {
               label: 'Foreign Government',
-              value: 'foreign'
-            }
-          ]
-        }
+              value: 'foreign',
+            },
+          ],
+        },
       },
       {
         key: 'purposeOfRegistration',
@@ -171,19 +187,19 @@ export class UswdsStepperComponent {
           options: [
             {
               label: `Bid on federal contracts or other procurement opportunities.`,
-              value: 'bidContracts'
+              value: 'bidContracts',
             },
             {
               label: 'Apply for federal assistance opportunities.',
-              value: 'assistanceOpportunities'
-            }
-          ]
-        }
-      }
-    ]
+              value: 'assistanceOpportunities',
+            },
+          ],
+        },
+      },
+    ],
   };
 
-  stepThree =  {
+  stepThree = {
     key: 'taxpayerDetails',
     fieldGroup: [
       {
@@ -191,26 +207,26 @@ export class UswdsStepperComponent {
           <span>
             Please refer to your taxpayer documnets from IRS to find your taxpayer information
           </span>
-        `
+        `,
       },
       {
-        type: "input",
-        key: "taxpayerName",
+        type: 'input',
+        key: 'taxpayerName',
         templateOptions: {
-          label: "Taxpayer Name",
+          label: 'Taxpayer Name',
           hideOptional: true,
         },
       },
       {
-        type: "input",
-        key: "tinNumber",
+        type: 'input',
+        key: 'tinNumber',
         templateOptions: {
-          label: "TIN Number",
+          label: 'TIN Number',
           hideOptional: true,
         },
-      }
-    ]
-  }
+      },
+    ],
+  };
 
   model = {};
   stepValidityMap = {};

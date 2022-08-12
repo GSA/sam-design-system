@@ -1,32 +1,46 @@
-<p>In order to stack two or more icons, <code>StackedIconModule</code> must be imported into the module where you wish to use a stacked icon.</p>
+<p>
+  In order to stack two or more icons, <code>StackedIconModule</code> must be imported into the module where you wish to
+  use a stacked icon.
+</p>
 <p style="max-width: unset;">
-  <code>import &#123; NgxBootstrapIconsModule, square &#125; from 'ngx-bootstrap-icons';</code><br>
+  <code>import &#123; NgxBootstrapIconsModule, square &#125; from 'ngx-bootstrap-icons';</code><br />
   <code>import &#123; add, IconModule, StackedIconModule &#125; from '@gsa-sam/ngx-uswds-icons';</code>
 </p>
 <!-- <p>test</p> -->
 <p>
-  <code>@NgModule(&#123;<br>
-    &emsp;imports: [<br>
-    &emsp;&emsp;CommonModule,<br>
-    &emsp;&emsp;IconModule,<br>
-    &emsp;&emsp;StackedIconModule,<br>
-    &emsp;&emsp;NgxBootstrapIconsModule.pick(&#123;add, square&#125;)<br>
-    &emsp;],<br>
-    &emsp;declarations: [YourComponent],<br>
-    &emsp;exports: [YourComponent]<br>
-      &#125;)
+  <code
+    >@NgModule(&#123;<br />
+    &emsp;imports: [<br />
+    &emsp;&emsp;CommonModule,<br />
+    &emsp;&emsp;IconModule,<br />
+    &emsp;&emsp;StackedIconModule,<br />
+    &emsp;&emsp;NgxBootstrapIconsModule.pick(&#123;add, square&#125;)<br />
+    &emsp;],<br />
+    &emsp;declarations: [YourComponent],<br />
+    &emsp;exports: [YourComponent]<br />
+    &#125;)
   </code>
 </p>
-<p>After importing the module you can update your template to include <code>&#060;usa-stacked-icon&#062;</code>. The only input for this component is <code>size</code> which can be used to scale the stacked icon using the same values as those used to modify the size of individual icons.</p>
-<p>The icons you want to appear stacked should then be inserted as children of <code>&#060;usa-stacked-icon&#062;</code>. In order for the stacking css to work, make sure that the class <code>usa-stack-icon</code> is applied to the icons you are stacking.</p>
+<p>
+  After importing the module you can update your template to include <code>&#060;usa-stacked-icon&#062;</code>. The only
+  input for this component is <code>size</code> which can be used to scale the stacked icon using the same values as
+  those used to modify the size of individual icons.
+</p>
+<p>
+  The icons you want to appear stacked should then be inserted as children of <code>&#060;usa-stacked-icon&#062;</code>.
+  In order for the stacking css to work, make sure that the class <code>usa-stack-icon</code> is applied to the icons
+  you are stacking.
+</p>
 <p style="max-width: unset;">
-  <code>&#060;usa-stacked-icon [size]="'sm'"&#062;<br>
-    &emsp;&#060;usa-icon class="usa-stack-icon" [size]="'2x'" [icon]="'square-fill'"&#062;&#060;/usa-icon&#062;<br>
-    &emsp;&#060;usa-icon class="usa-stack-icon text-base-lightest" [size]="'lg'" [icon]="'hand-thumbs-down'"&#062;&#060;/usa-icon&#062;<br>
+  <code
+    >&#060;usa-stacked-icon [size]="'sm'"&#062;<br />
+    &emsp;&#060;usa-icon class="usa-stack-icon" [size]="'2x'" [icon]="'square-fill'"&#062;&#060;/usa-icon&#062;<br />
+    &emsp;&#060;usa-icon class="usa-stack-icon text-base-lightest" [size]="'lg'"
+    [icon]="'hand-thumbs-down'"&#062;&#060;/usa-icon&#062;<br />
     &#060;/usa-stacked-icon&#062;
   </code>
 </p>
-<div style="display: flex; align-items: flex-end">
+<div style="display: flex; align-items: flex-end;">
   <div style="padding-right: 1em; text-align: center;">
     <usa-stacked-icon [size]="'sm'">
       <usa-icon class="usa-stack-icon" [size]="'2x'" [icon]="'square-fill'"></usa-icon>

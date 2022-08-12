@@ -1,6 +1,5 @@
-
-import {InjectionToken} from '@angular/core';
-import {CdkAccordion} from '@angular/cdk/accordion';
+import { InjectionToken } from '@angular/core';
+import { CdkAccordion } from '@angular/cdk/accordion';
 
 /** Accordion's display modes. */
 export type SdsAccordionDisplayMode = 'default' | 'basic';
@@ -18,7 +17,6 @@ export interface SdsAccordionBase extends CdkAccordion {
   /** Handles focus events on the item headers. */
   _handleHeaderFocus: (header: any) => void;
 }
-
 
 /**
  * Token used to provide a `SdsAccordion` to `SdsAccordionItem`.

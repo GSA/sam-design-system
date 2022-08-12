@@ -4,10 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { SDSClickOutsideDirective } from './click-outside.directive';
 
 @NgModule({
-  imports: [
-    CommonModule, FormsModule
-  ],
+  imports: [CommonModule, FormsModule],
   declarations: [SDSClickOutsideDirective],
-  exports: [SDSClickOutsideDirective]
+  exports: [SDSClickOutsideDirective],
 })
-export class SDSClickOutsideModule { }
+export class SDSClickOutsideModule {}

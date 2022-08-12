@@ -38,8 +38,7 @@ export class MultiCheckboxGroup {
             {
               key: 'LBN',
               value: 'Legal Business Name',
-              tooltipText:
-                '<b>Assistance Listing</b><u>Tool tip with style</u>',
+              tooltipText: '<b>Assistance Listing</b><u>Tool tip with style</u>',
             },
           ],
         },

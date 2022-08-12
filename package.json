@@ -1,6 +1,6 @@
 {
   "name": "sam-design-system",
-  "version": "12.0.3",
+  "version": "12.0.8",
   "license": "MIT",
   "scripts": {
     "start": "ng serve",
@@ -9,6 +9,7 @@
     "test:components": "ng test components -- --no-watch --no-progress --code-coverage --browsers=ChromeHeadlessCI --source-map=false",
     "test:material-extensions": "ng test sam-material-extensions -- --no-watch --no-progress --code-coverage --browsers=ChromeHeadlessCI --source-map=false",
     "test:sam-formly": "ng test sam-formly -- --no-watch --no-progress --code-coverage --browsers=ChromeHeadlessCI --source-map=false",
+    "test:prettier": "npx prettier -c \"libs\" \"apps\"",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "update": "ng update",
@@ -34,7 +35,9 @@
     "demo:stackblitzes-federalist": "ts-node --project misc/tsconfig.json misc/generate-stackblitzes.ts --federalist",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
     "storybook": "npm run docs:json && start-storybook -p 6006 --no-open",
-    "build-storybook": "npm run docs:json && build-storybook"
+    "build-storybook": "npm run docs:json && build-storybook",
+    "check-prettier": "npx prettier -c \"libs\" \"apps\"",
+    "fix-prettier": "npx prettier --write \"libs\" \"apps\""
   },
   "private": true,
   "dependencies": {
@@ -60,7 +63,7 @@
     "@gsa-sam/ngx-uswds-icons": "12.0.0-beta.2",
     "@gsa-sam/sam-formly": "12.0.2",
     "@gsa-sam/sam-material-extensions": "12.0.2",
-    "@gsa-sam/sam-styles": "0.0.135",
+    "@gsa-sam/sam-styles": "0.0.139",
     "@ngx-formly/core": "^5.10.22",
     "@ngx-formly/schematics": "^5.10.22",
     "@types/qs": "^6.9.5",
@@ -102,11 +105,15 @@
     "@types/jest": "^23.0.0",
     "@types/node": "^14.0.4",
     "babel-loader": "^8.2.5",
+    "@typescript-eslint/eslint-plugin": "^5.20.0",
+    "@typescript-eslint/parser": "^5.20.0",
     "codelyzer": "^6.0.0",
     "css-loader": "^6.2.0",
     "dotenv": "6.2.0",
     "ejs": "3.1.5",
-    "eslint": "6.8.0",
+    "eslint": "^8.13.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
     "github-release-notes": "^0.17.0",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
