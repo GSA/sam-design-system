@@ -16,6 +16,8 @@ import { FieldType } from '@ngx-formly/core';
       [formlyAttributes]="field"
       [type]="to.inputType ? to.inputType : 'text'"
       [formControl]="formControl"
+      [prefix]=to.prefix
+      [suffix]=to.suffix 
     />
   `,
 })

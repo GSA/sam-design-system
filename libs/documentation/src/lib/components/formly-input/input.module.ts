@@ -10,6 +10,8 @@ import { ComponentWrapperComponent } from '../../shared/component-wrapper/compon
 import { InputBasicModule } from './demos/basic/input-basic.module';
 import { InputOptionalModule } from './demos/optional/input-optional.module';
 import { InputOptional } from './demos/optional/input-optional.component';
+import { InputPrefixSuffix } from './demos/prefix-suffix/prefix-suffix.component';
+import { InputPrefixSuffixModule } from './demos/prefix-suffix/prefix-suffix.module';
 
 declare var require: any;
 const DEMOS = {
@@ -26,6 +28,13 @@ const DEMOS = {
     code: require('!!raw-loader!./demos/optional/input-optional.component'),
     markup: require('!!raw-loader!./demos/optional/input-optional.component.html'),
     path: 'libs/documentation/src/lib/components/formly-input/demos/optional',
+  },
+  prefixsuffix: {
+    title: 'Prefix/Suffix Form Input',
+    type: InputPrefixSuffix,
+    code: require('!!raw-loader!./demos/prefix-suffix/prefix-suffix.component'),
+    markup: require('!!raw-loader!./demos/prefix-suffix/prefix-suffix.component.html'),
+    path: 'libs/documentation/src/lib/components/formly-input/demos/prefix-suffix',
   },
 };
 
@@ -54,7 +63,7 @@ export const ROUTES = [
 ];
 
 @NgModule({
-  imports: [CommonModule, DocumentationComponentsSharedModule, InputBasicModule, InputOptionalModule],
+  imports: [CommonModule, DocumentationComponentsSharedModule, InputBasicModule, InputOptionalModule, InputPrefixSuffixModule],
 })
 export class InputModule {
   constructor(demoList: DocumentationDemoList) {

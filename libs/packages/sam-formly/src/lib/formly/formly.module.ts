@@ -36,7 +36,7 @@ import {
   chevronDown,
   infoCircleFill,
 } from 'ngx-bootstrap-icons';
-import { UsaAccordionModule, UsaFileInputModule } from '@gsa-sam/ngx-uswds';
+import { UsaAccordionModule, UsaAffixModule, UsaFileInputModule } from '@gsa-sam/ngx-uswds';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 // Validate the min length of the character
@@ -140,6 +140,7 @@ export const DATE_FORMAT: MatDateFormats = {
   declarations: [FIELD_TYPE_COMPONENTS, AnimationWrapperComponent],
   imports: [
     CommonModule,
+    UsaAffixModule,
     UsaAccordionModule,
     MatExpansionModule,
     SdsAutocompleteModule,
