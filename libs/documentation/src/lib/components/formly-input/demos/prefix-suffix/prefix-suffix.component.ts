@@ -9,6 +9,7 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 export class InputPrefixSuffix {
   prefix: string = '$';
   suffix: string = 'lbs.';
+  
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
