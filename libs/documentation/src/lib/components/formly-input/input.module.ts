@@ -63,7 +63,13 @@ export const ROUTES = [
 ];
 
 @NgModule({
-  imports: [CommonModule, DocumentationComponentsSharedModule, InputBasicModule, InputOptionalModule, InputPrefixSuffixModule],
+  imports: [
+    CommonModule,
+    DocumentationComponentsSharedModule,
+    InputBasicModule,
+    InputOptionalModule,
+    InputPrefixSuffixModule,
+  ],
 })
 export class InputModule {
   constructor(demoList: DocumentationDemoList) {

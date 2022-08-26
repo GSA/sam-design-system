@@ -6,14 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 
 @NgModule({
-  imports: [
-    CommonModule, 
-    ReactiveFormsModule, 
-    SdsFormlyModule, 
-    FormsModule,
-    FormlyModule.forRoot(),
-  ],
-declarations: [InputPrefixSuffix],
+  imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot()],
+  declarations: [InputPrefixSuffix],
   exports: [InputPrefixSuffix],
   bootstrap: [InputPrefixSuffix],
 })

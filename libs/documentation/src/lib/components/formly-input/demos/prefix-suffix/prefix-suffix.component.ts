@@ -5,7 +5,6 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 @Component({
   selector: 'sds-formly-input-prefix-suffix-demo',
   templateUrl: './prefix-suffix.component.html',
-  styleUrls: ['./prefix-suffix.component.css']
 })
 export class InputPrefixSuffix {
   prefix: string = '$';
@@ -25,5 +24,4 @@ export class InputPrefixSuffix {
       },
     },
   ];
-
 }
