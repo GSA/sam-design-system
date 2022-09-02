@@ -44,6 +44,10 @@ export class SdsPopoverDirective implements AfterViewInit {
     this.clickEvent();
   }
 
+  @HostListener('keyup.escape', ['$event']) onEscape($event: KeyboardEvent) {
+    this.hidePopover();
+  }
+
   /**
    * Adding listener for keydown.space to ensure that user can activate popover with keyboard
    */
@@ -149,13 +153,18 @@ export class SdsPopoverDirective implements AfterViewInit {
       this.renderer.setAttribute(this.el.nativeElement, 'role', 'none');
       this.renderer.removeClass(this.sdsPopoverDiv, 'sds-popover__hidden');
     } else {
-      this.renderer.addClass(this.sdsPopoverDiv, 'sds-popover__hidden');
-      this.renderer.setAttribute(this.sdsPopoverDiv, 'aria-hidden', 'true');
-      this.renderer.setAttribute(this.el.nativeElement, 'aria-expanded', 'false');
-      this.renderer.setAttribute(this.el.nativeElement, 'role', 'button');
-
-      this.renderer.removeClass(this.sdsPopoverDiv, 'sds-popover__shown');
-      this.renderer.removeAttribute(this.el.nativeElement, 'aria-describedby');
+      this.hidePopover();
     }
+  }
+
+  hidePopover() {
+    this.popoverVisible = false;
+    this.renderer.addClass(this.sdsPopoverDiv, 'sds-popover__hidden');
+    this.renderer.setAttribute(this.sdsPopoverDiv, 'aria-hidden', 'true');
+    this.renderer.setAttribute(this.el.nativeElement, 'aria-expanded', 'false');
+    this.renderer.setAttribute(this.el.nativeElement, 'role', 'button');
+
+    this.renderer.removeClass(this.sdsPopoverDiv, 'sds-popover__shown');
+    this.renderer.removeAttribute(this.el.nativeElement, 'aria-describedby');
   }
 }
