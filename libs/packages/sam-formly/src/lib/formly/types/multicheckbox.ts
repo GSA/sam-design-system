@@ -21,14 +21,15 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType implements OnIn
   }
 
   ngOnInit() {
-    this.formControl.valueChanges.subscribe((values) => {
-      const isChecked = (Array.isArray(values) && values.length) > 0 ? true : false;
-      this.ariaChecked = isChecked.toString();
-      this.allComplete = isChecked;
-      if (!this.cdr['destroyed']) {
-        this.cdr.detectChanges();
-      }
-    });
+    // this.formControl.valueChanges.subscribe((values) => {
+    //   const isChecked = (Array.isArray(values) && values.length) > 0 ? true : false;
+    //   console.log(isChecked, 'value is');
+    //   this.ariaChecked = isChecked.toString();
+    //   this.allComplete = isChecked;
+    //   if (!this.cdr['destroyed']) {
+    //     this.cdr.detectChanges();
+    //   }
+    // });
     this.someComplete();
   }
 
@@ -55,7 +56,7 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType implements OnIn
     }
 
     if (this.to.type === 'array') {
-      return this.formControl.value.includes(option.value) && option.value != 'false';
+      return this.formControl.value.includes(option.key) && option.value != 'false';
     } else if (this.formControl.value[option.value]) {
       return this.formControl.value[option.value] && this.formControl.value[option.value] != 'false';
     }
@@ -74,6 +75,21 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType implements OnIn
     this._getAriaChecked(value);
   }
 
+  setAllSubList(ev, subList) {
+    // this.ariaChecked = 'true';
+    // this.allComplete = ev.target.checked;
+    if (Array.isArray(subList.templateOptions.options)) {
+      // this.formControl.setValue([]);
+      this.field.templateOptions.options.forEach((subOption) => {
+        if (subOption['key'] === subList.key) {
+          subOption['templateOptions'].options.map((item) => {
+            this.onChange(item.key, ev.target.checked);
+          });
+        }
+      });
+    }
+  }
+
   setAll(ev) {
     this.ariaChecked = 'true';
     this.allComplete = ev.target.checked;
@@ -81,6 +97,9 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType implements OnIn
       this.formControl.setValue([]);
       this.field.templateOptions.options.map((option) => {
         this.onChange(option.key, ev.target.checked);
+        if (option.templateOptions) {
+          this.setAllSubList(ev, option);
+        }
       });
     }
   }
