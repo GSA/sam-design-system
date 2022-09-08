@@ -249,14 +249,15 @@
         <li class="grid-row" class="margin-left-4">
           <div class="usa-checkbox" [class.text-align-end]="to.textAlignEnd">
             <input
-              [id]="option.value + '_' + i"
+              [id]="id + '_' + i"
               type="checkbox"
               class="usa-checkbox__input"
-              value="option.label"
+              [name]="id + '_name_' + i"
+              [value]="option.templateOptions.label"
               [checked]="isChecked(option)"
               (change)="setAllSubList($event, option)"
             />
-            <label class="usa-checkbox__label margin-top-0 margin-bottom-1" [for]="option.value + '_' + i">
+            <label class="usa-checkbox__label margin-top-0 margin-bottom-1" [for]="id + '_' + i">
               <span [innerHtml]="option.templateOptions.label"></span>
             </label>
           </div>
@@ -270,16 +271,16 @@
             <div class="usa-checkbox" [class.text-align-end]="to.textAlignEnd">
               <input
                 class="usa-checkbox__input"
-                [id]="subOption.value + '_' + j"
+                [id]="id + '_' + i + '_' + j"
                 type="checkbox"
-                [name]="subOption.value + '_name_' + j"
+                [name]="id + '_' + i + '_name_' + j"
                 [disabled]="subOption.disabled"
                 [value]="subOption.value"
                 [formlyAttributes]="field"
                 (change)="onChange(subOption.value, $event.target.checked)"
                 [checked]="isChecked(subOption)"
               />
-              <label class="usa-checkbox__label margin-top-0 margin-bottom-1" [for]="subOption.value + '_' + j">
+              <label class="usa-checkbox__label margin-top-0 margin-bottom-1" [for]="id + '_' + i + '_' + j">
                 <span
                   *ngIf="subOption.tagText"
                   class="usa-tag"
