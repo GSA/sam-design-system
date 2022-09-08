@@ -380,6 +380,7 @@ export const filterFields = [
     fieldGroup: [
       {
         key: 'awardeeIdentification',
+        templateOptions: { label: 'legal Awardee' },
         fieldGroup: [
           {
             key: 'legalBusinessName',
@@ -397,6 +398,7 @@ export const filterFields = [
       },
       {
         key: 'ultimateParent',
+        templateOptions: { label: 'Ultimate Awardee' },
         fieldGroup: [
           {
             key: 'legalBusinessName',
@@ -408,6 +410,7 @@ export const filterFields = [
       },
       {
         key: 'awardeeBusinessCategory',
+        templateOptions: { label: 'Business Awardee' },
         fieldGroup: [
           {
             key: 'organizationType',
@@ -458,6 +461,7 @@ export const filterFields = [
       },
       {
         key: 'awardeeSizeSelection',
+        templateOptions: { label: 'Size Awardee' },
         fieldGroup: [
           {
             key: 'contractingOfficerBusiessSizeSelection',
@@ -488,6 +492,7 @@ export const filterFields = [
       },
       {
         key: 'awardeeOtherDetails',
+        templateOptions: { label: 'Other Awardee' },
         fieldGroup: [
           {
             key: 'domesticOrForeignEntity',
@@ -523,6 +528,7 @@ export const filterFields = [
       },
       {
         key: 'awardIdentification',
+        templateOptions: { label: 'Identification Awardee' },
         fieldGroup: [
           { key: 'piid', hide: false, type: 'input', templateOptions: { label: 'PIID', hideOptional: true } },
           {

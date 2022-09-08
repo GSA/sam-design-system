@@ -6,94 +6,55 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 })
 export class SdsAdvancedFiltersService {
   constructor() {}
-  fields: FormlyFieldConfig[] = [];
 
   convertToCheckboxes(origFields: FormlyFieldConfig[], hideChildrenGroups = false): FormlyFieldConfig[] {
+    const fields: FormlyFieldConfig[] = [];
     origFields.forEach((origField) => {
       if (origField.fieldGroup?.length && !hideChildrenGroups) {
         const field = this.createMulticheckbox(origField);
-        this.fields.push(field);
+        fields.push(field);
         // this.convertToCheckboxes(origField.fieldGroup, hideChildrenGroups);
       } else {
-        this.createSingleField(origField);
+        if (origField.key) {
+          const field: FormlyFieldConfig = {
+            type: 'checkbox',
+            key: origField.key,
+            defaultValue: !origField.hide,
+            templateOptions: {
+              hideOptional: true,
+            },
+          };
+
+          if (origField.templateOptions && origField.templateOptions.label) {
+            field.templateOptions.label = origField.templateOptions.label;
+          }
+          fields.push(field);
+        }
       }
     });
-    console.log(this.fields);
-    return this.fields;
+    return fields;
   }
-
-  createSingleField(origField: FormlyFieldConfig) {
-    if (origField.key) {
-      const field: FormlyFieldConfig = {
-        type: 'checkbox',
-        key: origField.key,
-        defaultValue: !origField.hide,
-        templateOptions: {
-          hideOptional: true,
-        },
-      };
-
-      if (origField.templateOptions && origField.templateOptions.label) {
-        field.templateOptions.label = origField.templateOptions.label;
-      }
-      this.fields.push(field);
-    }
-  }
-  // convertToCheckboxes(origFields: FormlyFieldConfig[], hideChildrenGroups = false): FormlyFieldConfig[] {
-  //   // const fields: FormlyFieldConfig[] = [];
-  //   let test: FormlyFieldConfig[] = [];
-  //   origFields.forEach((origField) => {
-  //     if (origField.fieldGroup && origField.fieldGroup.length > 1 && !hideChildrenGroups) {
-  //       test = origField.fieldGroup;
-  //       const field = this.createMulticheckbox(origField);
-  //       this.fields.push(field);
-  //       test.forEach(element => {
-  //         if(element.fieldGroup && element.fieldGroup.length > 1 && !hideChildrenGroups) {
-  //           this.convertToCheckboxes(element.fieldGroup);
-  //         }
-  //       });
-  //     } else {
-  //       if (origField.key) {
-  //         const field: FormlyFieldConfig = {
-  //           type: 'checkbox',
-  //           key: origField.key,
-  //           defaultValue: !origField.hide,
-  //           templateOptions: {
-  //             hideOptional: true,
-  //           },
-  //         };
-
-  //         if (origField.templateOptions && origField.templateOptions.label) {
-  //           field.templateOptions.label = origField.templateOptions.label;
-  //         }
-  //         this.fields.push(field);
-  //       }
-  //     }
-  //   });
-  //   return this.fields;
-  // }
 
   // TODO: Should be changed so option has label field instead of key but multicheckbox field type must be updated so default value still works
   createMulticheckbox(origField: FormlyFieldConfig): FormlyFieldConfig {
-    console.log(origField.key);
     const options = [];
     const defaultValue = [];
-    // let result: FormlyFieldConfig ;
     if (origField.fieldGroup?.length) {
       origField.fieldGroup.forEach((field) => {
-        const label = field.templateOptions && field.templateOptions.label ? field.templateOptions.label : null;
-        const option = {
-          key: field.key,
-          value: label,
-          tagText: field.templateOptions.tagText,
-          tagClass: field.templateOptions.tagClass,
-        };
-        options.push(option);
-        if (!field.hide && !field.hide) {
-          defaultValue.push(field.key);
-        }
         if (field.fieldGroup?.length) {
           options.push(this.createMulticheckbox(field));
+        } else {
+          const label = field.templateOptions && field.templateOptions.label ? field.templateOptions.label : null;
+          const option = {
+            key: field.key,
+            value: label,
+            tagText: field.templateOptions.tagText,
+            tagClass: field.templateOptions.tagClass,
+          };
+          options.push(option);
+          if (!field.hide && !field.hide) {
+            defaultValue.push(field.key);
+          }
         }
       });
     }
@@ -116,7 +77,6 @@ export class SdsAdvancedFiltersService {
     if (!origField.hide) {
       field.defaultValue = defaultValue;
     }
-    // console.log(field);
     return field;
   }
 
