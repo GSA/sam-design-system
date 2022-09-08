@@ -12,7 +12,6 @@ import { FieldType } from '@ngx-formly/core';
       class="usa-input"
       [placeholder]="to.placeholder"
       name="input-success"
-      [attr.aria-describedby]="to.description ? to.description : undefined"
       [formlyAttributes]="field"
       [type]="to.inputType ? to.inputType : 'text'"
       [formControl]="formControl"
