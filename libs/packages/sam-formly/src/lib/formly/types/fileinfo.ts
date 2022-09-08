@@ -4,10 +4,11 @@ import { FieldType } from '@ngx-formly/core';
 @Component({
   selector: 'sds-formly-field-file',
   template: `
-    <div class="grid-row grid-gap margin-top-1">
+    <div class="sds-card__container grid-row grid-gap margin-top-1">
       <div *ngFor="let option of to.options | formlySelectOptions: field | async; let i = index">
+      <h3 class="sds-card__title--file">{{ option.label }}</h3>
         <div
-          class="sds-card mobile-lg:grid-col"
+          class="sds-card__file mobile-lg:grid-col"
           [ngClass]="{ 'sds-card-selected': formControl.value == option.value }"
           tabindex="0"
           (keyup.enter)="formControl.setValue(option.value)"
@@ -27,10 +28,10 @@ import { FieldType } from '@ngx-formly/core';
           />
           <label [for]="id + '_' + i">
             <div class="sds-card__header sds-card__header--center">
-              <h3 class="sds-card__title ">{{ option.label }}</h3>
+            <usa-icon [icon]="'filetype-csv'"></usa-icon>
             </div>
-            <div class="sds-card__body sds-card__header--center ">
-              <span class="bg-base-light padding-1 padding-left-2 padding-right-2">{{ option.value }}</span>
+            <div class="sds-card__body sds-card__header--center padding-top-1 padding-bottom-1">
+              <span class="bg-base-light margin-bottom-1 padding-1 padding-left-4 padding-right-4">{{ option.value }}</span>
             </div>
           </label>
         </div>
