@@ -28,7 +28,7 @@ import { FieldType } from '@ngx-formly/core';
           />
           <label [for]="id + '_' + i">
             <div class="sds-card__header sds-card__header--center">
-            <usa-icon [icon]="'filetype-csv'"></usa-icon>
+            <usa-icon [icon]="'filetype-' + option.value.toString().toLowerCase()" [size]="'2x'"></usa-icon>
             </div>
             <div class="sds-card__body sds-card__header--center padding-top-1 padding-bottom-1">
               <span class="bg-base-light margin-bottom-1 padding-1 padding-left-4 padding-right-4">{{ option.value }}</span>
