@@ -5,9 +5,9 @@ import { SdsDialogModule } from '@gsa-sam/components';
 import { DialogOverView, DialogOverviewExampleDialog } from './dialog-overview.component';
 
 @NgModule({
-    imports: [CommonModule, FormsModule, SdsDialogModule],
-    exports: [DialogOverView],
-    bootstrap: [DialogOverView],
-    declarations: [DialogOverView, DialogOverviewExampleDialog]
+  imports: [CommonModule, FormsModule, SdsDialogModule],
+  exports: [DialogOverView],
+  bootstrap: [DialogOverView],
+  declarations: [DialogOverView, DialogOverviewExampleDialog],
 })
 export class DialogOverViewModule {}

@@ -1508,8 +1508,8 @@ const TEST_DIRECTIVES = [
 ];
 
 @NgModule({
-    imports: [SdsDialogModule, NoopAnimationsModule],
-    exports: TEST_DIRECTIVES,
-    declarations: TEST_DIRECTIVES
+  imports: [SdsDialogModule, NoopAnimationsModule],
+  exports: TEST_DIRECTIVES,
+  declarations: TEST_DIRECTIVES,
 })
 class DialogTestModule {}
