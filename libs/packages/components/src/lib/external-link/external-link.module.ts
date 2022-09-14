@@ -4,9 +4,8 @@ import { ExternalLinkDirective } from './external-link.directive';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
-  declarations: [ExternalLinkDirective],
-  imports: [CommonModule, IconModule],
-  entryComponents: [],
-  exports: [ExternalLinkDirective],
+    declarations: [ExternalLinkDirective],
+    imports: [CommonModule, IconModule],
+    exports: [ExternalLinkDirective]
 })
 export class SdsExternalLinkDirectivesModule {}

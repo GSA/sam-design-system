@@ -91,7 +91,7 @@ describe('Formly Field Datepicker Component', () => {
   });
 });
 
-@Component({ selector: 'formly-form-test', template: '', entryComponents: [] })
+@Component({ selector: 'formly-form-test', template: '' })
 class TestComponent {
   @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;
 

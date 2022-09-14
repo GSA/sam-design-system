@@ -7,10 +7,9 @@ import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
 
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot(), SdsDialogModule],
-  exports: [DialogAlert],
-  bootstrap: [DialogAlert],
-  declarations: [DialogAlert, AlertComponent],
-  entryComponents: [AlertComponent],
+    imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot(), SdsDialogModule],
+    exports: [DialogAlert],
+    bootstrap: [DialogAlert],
+    declarations: [DialogAlert, AlertComponent]
 })
 export class DialogAlertModule {}

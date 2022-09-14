@@ -11,7 +11,7 @@ import { FormlyTabsWrapperComponent } from './tabs.wrapper';
 
 let testComponentInputs;
 
-@Component({ selector: 'formly-form-input', template: '', entryComponents: [] })
+@Component({ selector: 'formly-form-input', template: '' })
 class TestComponent {
   @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;
 

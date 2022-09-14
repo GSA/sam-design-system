@@ -19,14 +19,13 @@ export let SdsToastSettings = {
 };
 
 @NgModule({
-  imports: [
-    CommonModule,
-    IconModule,
-    NgxBootstrapIconsModule.pick({ check2Circle, infoCircle, exclamationTriangle, slashCircle, x }),
-  ],
-  exports: [SdsToastComponent],
-  declarations: [SdsToastComponent],
-  entryComponents: [],
-  providers: [],
+    imports: [
+        CommonModule,
+        IconModule,
+        NgxBootstrapIconsModule.pick({ check2Circle, infoCircle, exclamationTriangle, slashCircle, x }),
+    ],
+    exports: [SdsToastComponent],
+    declarations: [SdsToastComponent],
+    providers: []
 })
 export class SdsToastModule {}
