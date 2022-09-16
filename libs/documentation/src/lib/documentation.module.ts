@@ -275,5 +275,7 @@ export const ROUTES: Routes = [
     ),
     IconModule,
   ],
+  declarations: [
+  ],
 })
 export class DocumentationModule {}

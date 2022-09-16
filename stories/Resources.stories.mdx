@@ -1,0 +1,111 @@
+import { Meta } from '@storybook/addon-docs';
+import Code from './assets/code-brackets.svg';
+import Colors from './assets/colors.svg';
+import Comments from './assets/comments.svg';
+import Direction from './assets/direction.svg';
+import Flow from './assets/flow.svg';
+import Plugin from './assets/plugin.svg';
+import Repo from './assets/repo.svg';
+import StackAlt from './assets/stackalt.svg';
+
+<Meta title="Resources/Links"/>
+
+<style>{`
+  .link-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 10px;
+  }
+
+  @media (min-width: 620px) {
+    .link-list {
+      row-gap: 20px;
+      column-gap: 20px;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media all and (-ms-high-contrast:none) {
+  .link-list {
+      display: -ms-grid;
+      -ms-grid-columns: 1fr 1fr;
+      -ms-grid-rows: 1fr 1fr;
+    }
+  }
+
+  .link-item {
+    display: block;
+    padding: 20px 30px 20px 15px;
+    border: 1px solid #00000010;
+    border-radius: 5px;
+    transition: background 150ms ease-out, border 150ms ease-out, transform 150ms ease-out;
+    color: #333333;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .link-item:hover {
+    border-color: #1EA7FD50;
+    transform: translate3d(0, -3px, 0);
+    box-shadow: rgba(0, 0, 0, 0.08) 0 3px 10px 0;
+  }
+
+  .link-item:active {
+    border-color: #1EA7FD;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .link-item strong {
+    font-weight: 700;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .link-item span {
+    font-size: 14px;
+    line-height: 20px;
+  }
+`}</style>
+
+<div className="link-list">
+  <a
+    className="link-item"
+    href="https://cg-fa19003e-5296-4960-ac2e-caccfeb620ac.app.cloud.gov/site/gsa/sam-design-system"
+    target="_blank"
+  >
+    <span>
+      <strong>Sam Design System</strong>
+    </span>
+  </a>
+  <a
+    className="link-item"
+    href="https://federalist-0ad5a602-ca98-4a7e-8d6e-d9ece7bc4cf8.app.cloud.gov/site/gsa/sam-styles"
+    target="_blank"
+  >
+    <span>
+      <strong>Sam Styles</strong>
+    </span>
+  </a>
+  <a
+    className="link-item"
+    href="https://gsa.github.io/ngx-uswds"
+    target="_blank"
+  >
+    <span>
+      <strong>NgxUSDWS</strong>
+    </span>
+  </a>
+   <a
+    className="link-item"
+    href="https://designsystem.digital.gov"
+    target="_blank"
+  >
+    <span>
+      <strong>USDWS</strong>
+    </span>
+  </a>
+</div>
+
+
+
