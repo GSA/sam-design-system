@@ -401,7 +401,7 @@ export const filterFields = [
         templateOptions: { label: 'Ultimate Awardee' },
         fieldGroup: [
           {
-            key: 'legalBusinessName',
+            key: 'legalBusinessName1',
             hide: false,
             type: 'input',
             templateOptions: { label: 'Legal Business Name', hideOptional: true },

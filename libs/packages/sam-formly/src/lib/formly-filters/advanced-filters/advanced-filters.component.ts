@@ -73,14 +73,10 @@ export class AdvancedFiltersComponent implements OnInit {
   }
 
   onSelectAllChange(selectAllValue, selectedform, isOnload, selectAllField) {
-    console.log('selecting all');
     const modalFields: FormlyFieldConfig[] = this.advancedFiltersService.convertToCheckboxes(this.fields);
-    console.log(modalFields);
     const keys = Object.keys(selectedform.get(this.filtersFieldGroupKey).controls);
-    console.log(keys);
     if (!isOnload) {
       this.selectAll = selectAllValue;
-      // console.log(this.selectAll);
       keys.forEach((key) => {
         if (key !== 'selectAll' && key !== 'showInactive') {
           let currentField = modalFields.find((item) => item.key === key);

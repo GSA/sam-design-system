@@ -165,19 +165,16 @@
     <li class="grid-row" *ngIf="to.selectAllOption">
       <div class="usa-checkbox" [class.text-align-end]="to.textAlignEnd">
         <input
-          [id]="id + '_Select'"
+          [id]="id"
           type="checkbox"
           class="usa-checkbox__input"
-          value="value"
-          [checked]="allComplete"
-          [attr.aria-checked]="ariaChecked"
+          [name]="id + '_name_' + 'Select'"
+          [value]="to.label"
+          [checked]="mainOptionComplete[getIndex(id)]"
+          [attr.aria-checked]="mainOptionAriaChecked[getIndex(id)]"
           (change)="setAll($event)"
         />
-        <label
-          class="usa-checkbox__label margin-top-0 margin-bottom-1"
-          [attr.aria-checked]="ariaChecked"
-          [for]="id + '_Select'"
-        >
+        <label class="usa-checkbox__label margin-top-0 margin-bottom-1" [for]="id">
           <span [innerHtml]="to.label"></span>
         </label>
       </div>
@@ -220,7 +217,7 @@
             [disabled]="option.disabled"
             [value]="option.value"
             [formlyAttributes]="field"
-            (change)="onChange(option.value, $event.target.checked)"
+            (change)="onMainOptionChange(option.key, $event.target.checked, to.options, id)"
             [checked]="isChecked(option)"
           />
           <label class="usa-checkbox__label margin-top-0 margin-bottom-1" [for]="id + '_' + i">
@@ -254,9 +251,11 @@
               class="usa-checkbox__input"
               [name]="id + '_name_' + i"
               [value]="option.templateOptions.label"
-              [checked]="isChecked(option)"
-              (change)="setAllSubList($event, option)"
+              [checked]="subOptionComplete[i]"
+              [attr.aria-checked]="subOptionariaChecked[i]"
+              (change)="onMainOptionChange(option.key, $event.target.checked, to.options, id)"
             />
+            <!-- setAllSubList($event, option, i)" /> -->
             <label class="usa-checkbox__label margin-top-0 margin-bottom-1" [for]="id + '_' + i">
               <span [innerHtml]="option.templateOptions.label"></span>
             </label>
@@ -277,7 +276,7 @@
                 [disabled]="subOption.disabled"
                 [value]="subOption.value"
                 [formlyAttributes]="field"
-                (change)="onChange(subOption.value, $event.target.checked)"
+                (change)="onSubOptionChange(subOption, $event.target.checked, option.templateOptions.options, i)"
                 [checked]="isChecked(subOption)"
               />
               <label class="usa-checkbox__label margin-top-0 margin-bottom-1" [for]="id + '_' + i + '_' + j">
