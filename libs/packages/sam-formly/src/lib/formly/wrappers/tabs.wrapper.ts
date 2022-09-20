@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { FieldWrapper, FormlyFieldConfig } from '@ngx-formly/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   template: `
@@ -36,8 +37,10 @@ import { FieldWrapper, FormlyFieldConfig } from '@ngx-formly/core';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyTabsWrapperComponent extends FieldWrapper implements OnInit {
+export class FormlyTabsWrapperComponent extends FieldWrapper implements OnInit, OnDestroy {
   _initialModel: any;
+
+  toDestroy: Subscription = new Subscription();
 
   ngOnInit() {
     if (!this.field.fieldArray || !this.field.fieldArray.fieldGroup) {
@@ -50,6 +53,15 @@ export class FormlyTabsWrapperComponent extends FieldWrapper implements OnInit {
         this.updateFieldConfig(fieldConfig);
       });
     }
+
+    const valueChangeSub = this.formControl.valueChanges.subscribe((newValue) => {
+      this._initialModel = newValue;
+    });
+    this.toDestroy.add(valueChangeSub);
+  }
+
+  ngOnDestroy() {
+    this.toDestroy.unsubscribe();
   }
 
   /**

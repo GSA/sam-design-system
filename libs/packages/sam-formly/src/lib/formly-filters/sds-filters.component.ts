@@ -166,9 +166,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
             this.model[key] = updatedFormValue[key];
           });
 
-          setTimeout(() => {
-            this.form.patchValue(updatedFormValue);
-          });
+          this.form.patchValue(updatedFormValue);
           this.checkForHide();
         }
       });
