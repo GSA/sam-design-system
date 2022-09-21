@@ -9,9 +9,10 @@ export class SdsAdvancedFiltersService {
 
   convertToCheckboxes(origFields: FormlyFieldConfig[], hideChildrenGroups = false): FormlyFieldConfig[] {
     const fields: FormlyFieldConfig[] = [];
+    const defaultValue = [];
     origFields.forEach((origField) => {
       if (origField.fieldGroup?.length && !hideChildrenGroups) {
-        const field = this.createMulticheckbox(origField);
+        const field = this.createMulticheckbox(origField, defaultValue);
         fields.push(field);
         // this.convertToCheckboxes(origField.fieldGroup, hideChildrenGroups);
       } else {
@@ -36,13 +37,12 @@ export class SdsAdvancedFiltersService {
   }
 
   // TODO: Should be changed so option has label field instead of key but multicheckbox field type must be updated so default value still works
-  createMulticheckbox(origField: FormlyFieldConfig): FormlyFieldConfig {
+  createMulticheckbox(origField: FormlyFieldConfig, defaultValue: any[]): FormlyFieldConfig {
     const options = [];
-    const defaultValue = [];
     if (origField.fieldGroup?.length) {
       origField.fieldGroup.forEach((field) => {
         if (field.fieldGroup?.length) {
-          options.push(this.createMulticheckbox(field));
+          options.push(this.createMulticheckbox(field, defaultValue));
         } else {
           const label = field.templateOptions && field.templateOptions.label ? field.templateOptions.label : null;
           const option = {
@@ -52,8 +52,9 @@ export class SdsAdvancedFiltersService {
             tagClass: field.templateOptions.tagClass,
           };
           options.push(option);
-          if (!field.hide && !field.hide) {
+          if (!origField.hide && !field.hide) {
             defaultValue.push(field.key);
+            defaultValue.push(origField.key);
           }
         }
       });

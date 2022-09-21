@@ -149,6 +149,7 @@ export class AdvancedFiltersComponent implements OnInit {
 
     dialogRef.componentInstance.submitFn.subscribe((result) => {
       if (result) {
+        console.log(result);
         this.updateSelectedFields(result);
       }
       dialogRef.close();

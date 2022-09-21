@@ -170,7 +170,7 @@
           class="usa-checkbox__input"
           [name]="id + '_name_' + 'Select'"
           [value]="to.label"
-          [checked]="mainOptionComplete[getIndex(id)]"
+          [checked]="checkMainOption(id, to.options)"
           [attr.aria-checked]="mainOptionAriaChecked[getIndex(id)]"
           (change)="setAll($event)"
         />
@@ -251,7 +251,7 @@
               class="usa-checkbox__input"
               [name]="id + '_name_' + i"
               [value]="option.templateOptions.label"
-              [checked]="subOptionComplete[i]"
+              [checked]="checkSubOption(option.templateOptions.options, i)"
               [attr.aria-checked]="subOptionariaChecked[i]"
               (change)="onMainOptionChange(option.key, $event.target.checked, to.options, id)"
             />
