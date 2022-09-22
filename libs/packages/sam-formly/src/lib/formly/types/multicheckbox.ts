@@ -15,9 +15,7 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType implements OnIn
   };
   allComplete: boolean;
   ariaChecked = '';
-  mainOptionComplete: boolean[] = [];
   mainOptionAriaChecked: string[] = [];
-  subOptionComplete: boolean[] = [];
   subOptionariaChecked: string[] = [];
 
   constructor(private cdr: ChangeDetectorRef) {
@@ -25,20 +23,52 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType implements OnIn
   }
 
   ngOnInit() {
-    // this.formControl.valueChanges.subscribe((values) => {
-    //   const isChecked = (Array.isArray(values) && values.length) > 0 ? true : false;
-    //   console.log(isChecked, 'value is');
-    //   this.ariaChecked = isChecked.toString();
-    //   this.allComplete = isChecked;
-    //   if (!this.cdr['destroyed']) {
-    //     this.cdr.detectChanges();
-    //   }
-    // });
     this.someComplete();
-    this.subOptionComplete.fill(false);
     this.subOptionariaChecked.fill('false');
-    this.mainOptionComplete.fill(false);
     this.mainOptionAriaChecked.fill('false');
+  }
+
+  checkSubOption(allSubOptions, index) {
+    let allKeys = allSubOptions.map((opt) => opt.key);
+    const uniqValues = {};
+    if (this.formControl.value) {
+      this.formControl.value.forEach((i) => (uniqValues[i] = true));
+      if (allKeys.every((val) => uniqValues[val])) {
+        this.subOptionariaChecked[index] = 'true';
+        return true;
+      } else if (allKeys.some((val) => uniqValues[val])) {
+        this.subOptionariaChecked[index] = 'mixed';
+        return true;
+      } else {
+        this.subOptionariaChecked[index] = 'false';
+        return false;
+      }
+    }
+  }
+
+  checkMainOption(id, allSubOptions) {
+    let index = this.getIndex(id);
+    let allKeys: string[] = [];
+    allSubOptions.map((opt) => {
+      allKeys.push(opt.key);
+      if (opt.templateOptions && opt.templateOptions.options) {
+        opt.templateOptions.options.map((subOpt) => allKeys.push(subOpt.key));
+      }
+    });
+    const uniqValues = {};
+    if (this.formControl.value) {
+      this.formControl.value.forEach((i) => (uniqValues[i] = true));
+      if (allKeys.every((val) => uniqValues[val])) {
+        this.mainOptionAriaChecked[index] = 'true';
+        return true;
+      } else if (allKeys.some((val) => uniqValues[val])) {
+        this.mainOptionAriaChecked[index] = 'mixed';
+        return true;
+      } else {
+        this.mainOptionAriaChecked[index] = 'false';
+        return false;
+      }
+    }
   }
 
   onSubOptionChange(subOption: any, checked: boolean, allSubOptions: any, index: number) {
@@ -48,7 +78,7 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType implements OnIn
       checkedValues.push(this.isChecked(subOpt));
     });
     if (checkedValues.every((val, i, arr) => val === arr[0])) {
-      this.subOptionComplete[index] = checkedValues[0] ? true : false;
+      // this.subOptionComplete[index] = checkedValues[0] ? true : false;
       this.subOptionariaChecked[index] = checkedValues[0] ? 'true' : 'false';
     } else {
       this.subOptionariaChecked[index] = 'mixed';
@@ -69,7 +99,6 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType implements OnIn
       }
     });
     if (checkedValues.every((val, _i, arr) => val === arr[0])) {
-      this.mainOptionComplete[i] = checkedValues[0] ? true : false;
       this.mainOptionAriaChecked[i] = checkedValues[0] ? 'true' : 'false';
     } else {
       this.mainOptionAriaChecked[i] = 'mixed';
@@ -119,7 +148,7 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType implements OnIn
   }
 
   setAllSubList(checked, subList, index) {
-    this.subOptionComplete[index] = checked;
+    // this.subOptionComplete[index] = checked;
     this.subOptionariaChecked[index] = checked ? 'true' : 'false';
     if (Array.isArray(subList.templateOptions.options)) {
       // this.formControl.setValue([]);
@@ -141,9 +170,6 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType implements OnIn
     let id = ev.target.id;
     let i = this.getIndex(id);
     this.mainOptionAriaChecked[i] = ev.target.checked;
-    this.mainOptionComplete[i] = ev.target.checked;
-    // this.ariaChecked = 'true';
-    // this.allComplete = ev.target.checked;
     if (Array.isArray(this.field.templateOptions.options)) {
       this.formControl.setValue([]);
       this.field.templateOptions.options.map((option, index) => {
