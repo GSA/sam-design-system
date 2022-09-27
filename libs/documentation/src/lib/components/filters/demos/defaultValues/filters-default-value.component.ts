@@ -19,16 +19,4 @@ export class FiltersDefaultValueComponent {
   };
 
   fields = filterFields;
-  // fields: FormlyFieldConfig[] = [
-  //   {
-  //     key: 'title',
-  //     type: 'input',
-  //     templateOptions: {
-  //       label: 'Entity Name',
-  //       placeholder: 'eg: Acme Corporation',
-  //       description: 'Enter the name of your entity.',
-  //       required: true,
-  //     },
-  //   },
-  // ];
 }
