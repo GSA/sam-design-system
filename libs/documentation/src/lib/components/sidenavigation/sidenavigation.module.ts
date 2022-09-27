@@ -10,6 +10,8 @@ import { LinksSideNavigationComponent } from './demos/links-side-navigation/link
 import { LinksSideNavigationModule } from './demos/links-side-navigation/links-side-navigation.module';
 import { FilterSideNavigationComponent } from './demos/filter-side-navigation/filter-side-navigation.component';
 import { FilterSideNavigationModule } from './demos/filter-side-navigation/filter-side-navigation.module';
+import { DropdownSideNavigationComponent } from './demos/dropdown-side-navigation/dropdown-side-navigation.component';
+import { DropdownSideNavigationModule } from './demos/dropdown-side-navigation/dropdown-side-navigation.module';
 
 declare var require: any;
 const DEMOS = {
@@ -28,6 +30,14 @@ const DEMOS = {
     module: require('!!raw-loader!./demos/filter-side-navigation/filter-side-navigation.module'),
     markup: require('!!raw-loader!./demos/filter-side-navigation/filter-side-navigation.component.html'),
     path: 'libs/documentation/src/lib/components/sidenavigation/demos/filter-side-navigation',
+  },
+  dropdown: {
+    title: 'Dropdown Sidenav',
+    type: DropdownSideNavigationComponent,
+    code: require('!!raw-loader!./demos/dropdown-side-navigation/dropdown-side-navigation.component'),
+    module: require('!!raw-loader!./demos/dropdown-side-navigation/dropdown-side-navigation.module'),
+    markup: require('!!raw-loader!./demos/dropdown-side-navigation/dropdown-side-navigation.component.html'),
+    path: 'libs/documentation/src/lib/components/sidenavigation/demos/dropdown-side-navigation',
   },
 };
 
@@ -55,7 +65,8 @@ export const ROUTES = [
 ];
 
 @NgModule({
-  imports: [CommonModule, DocumentationComponentsSharedModule, LinksSideNavigationModule, FilterSideNavigationModule],
+  imports: [CommonModule, DocumentationComponentsSharedModule, LinksSideNavigationModule, FilterSideNavigationModule, DropdownSideNavigationModule],
+  declarations: [],
 })
 export class SideNavigationModule {
   constructor(demoList: DocumentationDemoList) {

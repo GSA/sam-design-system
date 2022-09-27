@@ -1,0 +1,34 @@
+<div class="desktop:grid-col-4 tablet-lg:grid-col-12 mobile-lg:grid-col-12 margin-bottom-3">
+    <sds-side-toolbar
+      [responsiveButtonText]="'Advanced Search'"
+      [responsiveDialogOptions]="responsiveDialogOptions"
+      [showApply]="true"
+      [dialogTitleText]="'Advanced Search'"
+      [backButtonAria]="'Close Advanced Search'"
+    >
+        <ng-template #toolbarContent>
+            <div class="sds-card">
+                <div class="sds-card__body sds-card__body--accent-cool" id="panelBody">
+                    <sds-selection-panel
+                    [model]="navigationModel"
+                    [currentSelection]="selectedPanel"
+                    (panelSelected)="onPanelSelection($event)"
+                    >
+                    </sds-selection-panel>
+                </div>
+            </div>
+    
+            <div
+            class="sds-card"
+            *ngIf="selectedPanel && selectedPanel.children"
+            [ngClass]="{ 'display-none': domainsExpanded }"
+            >
+                <div class="sds-card__body sds-card__body--accent-cool">
+                    <sds-sub-panel [model]="selectedPanel.children" (subPanelClicked)="onSubPanelClicked($event)">
+                    </sds-sub-panel>
+                </div>
+            </div>
+        </ng-template>
+    </sds-side-toolbar>
+  </div>
+  
