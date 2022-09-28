@@ -1,29 +1,21 @@
-import { NgModule } from '@angular/core';
-import { SdsSideToolbarModule, SdsSideNavigationModule, SdsSelectionPanelModule } from '@gsa-sam/components';
-
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
-import { SdsFiltersModule } from '@gsa-sam/sam-formly';
-import { FormlyModule } from '@ngx-formly/core';
+import { NgModule } from '@angular/core';
+import { UsaSidenavModule } from '@gsa-sam/ngx-uswds';
+import { SdsSideToolbarModule } from '@gsa-sam/components';
 import { DropdownSideNavigationComponent } from './dropdown-side-navigation.component';
-import { UsaAccordionModule } from '@gsa-sam/ngx-uswds';
+
 
 @NgModule({
   imports: [
-    SdsSideNavigationModule,
     CommonModule,
-    SdsSelectionPanelModule,
-    SdsSideNavigationModule,
-    UsaAccordionModule,
-    CommonModule,
-    FormsModule,
-    SdsSideToolbarModule,
-    SdsFiltersModule,
-    FormlyModule.forRoot(),
+    UsaSidenavModule,
+    SdsSideToolbarModule
   ],
-  exports: [DropdownSideNavigationComponent],
-  declarations: [DropdownSideNavigationComponent],
-  bootstrap: [DropdownSideNavigationComponent],
+  declarations: [
+    DropdownSideNavigationComponent
+  ],
+  exports: [
+    DropdownSideNavigationComponent
+  ]
 })
-export class DropdownSideNavigationModule {}
+export class DropdownSideNavigationModule { }

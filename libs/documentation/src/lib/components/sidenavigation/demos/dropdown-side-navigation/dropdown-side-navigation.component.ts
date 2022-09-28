@@ -1,91 +1,83 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { SdsDialogConfig, SelectionPanelModel, NavigationLink } from '@gsa-sam/components';
-import { SdsFiltersComponent } from '@gsa-sam/sam-formly';
-import { FormlyFieldConfig } from '@ngx-formly/core';
-import { DataService } from 'libs/documentation/src/lib/pages/layout/data.service';
-import { FilterService } from 'libs/documentation/src/lib/pages/layout/filter.service';
-import { BehaviorSubject } from 'rxjs';
-import { dropdownNavigationConfig } from './dropdown-navigation.config';
+import { Component, Input } from '@angular/core';
+import { UsaNavigationMode, SidenavModel } from '@gsa-sam/ngx-uswds';
+import { SdsDialogConfig } from '@gsa-sam/components';
 
 @Component({
   selector: 'dropdown-side-navigation',
-  templateUrl: './dropdown-side-navigation.component.html',
+  templateUrl: './dropdown-side-navigation.component.html'
 })
-export class DropdownSideNavigationComponent implements OnInit, AfterViewInit {
-  @ViewChild('filters') filterComponent: SdsFiltersComponent;
+export class DropdownSideNavigationComponent {
 
-  isMobileMode: boolean;
-
-  fields: FormlyFieldConfig[] = [];
-  form;
-  filterModel = {};
-  options;
-  filtersExpanded: boolean = false;
-  domainsExpanded: boolean = true;
   responsiveDialogOptions: SdsDialogConfig = {
-    ariaLabel: 'Search Filters',
+    ariaLabel: 'Search Dropdowns',
   };
 
-  public filterChange$ = new BehaviorSubject<object>([]);
+  @Input() sidenavContent: SidenavModel[] = [
+    {
+      mode: UsaNavigationMode.EXTERNAL,
+      text: 'Entity Registration',
+      path: 'javascript:void(0)',
+      id: '1',
+      children: [
+        {
+          mode: UsaNavigationMode.EXTERNAL,
+          text: 'Core Data',
+          path: 'javascript:void(0)',
+          id: '100',
+        },
+        {
+          mode: UsaNavigationMode.EXTERNAL,
+          text: 'Assertions',
+          path: 'javascript:void(0)',
+          id: '100',
+          children: [
+            {
+              mode: UsaNavigationMode.EXTERNAL,
+              text: 'Service Classifications',
+              path: 'javascript:void(0)',
+              id: '1000'
+            },
+            {
+              mode: UsaNavigationMode.EXTERNAL,
+              text: 'Disaster Response',
+              path: 'javascript:void(0)',
+              id: '1000'
+            }
+          ]
+        },
+        {
+          mode: UsaNavigationMode.EXTERNAL,
+          text: 'Reps and Certs',
+          path: 'javascript:void(0)',
+          id: '200',
+        },
+      ]
+    },
+    {
+      mode: UsaNavigationMode.EVENT,
+      text: 'Exclusions',
+      path: 'exclusions',
+      id: '3'
+    },
+    {
+      mode: UsaNavigationMode.EVENT,
+      text: 'Responsibility/Qualification',
+      path: 'responsibility/qualification',
+      id: '4'
+    },
+    {
+      mode: UsaNavigationMode.EVENT,
+      text: 'Entity Reporting',
+      path: 'entityreporting',
+      id: '5'
+    }
+  ];
 
-  public navigationModel: SelectionPanelModel = {
-    navigationLinks: dropdownNavigationConfig.navigationLinks,
-    selectionMode: 'SELECTION',
-  };
-
-  public filterPanelConfig;
-
-  selectedPanel: NavigationLink = this.navigationModel.navigationLinks[1];
-
-  constructor(
-    public service: DataService,
-    public filterService: FilterService,
-    private router: Router,
-    private activatedRoute: ActivatedRoute
-  ) {}
-
-  ngOnInit(): void {
-    this.fields = this.filterService.fields;
-    this.filterModel = this.filterService.model;
-    this.form = this.filterService.form;
-    this.options = this.filterService.options;
-
-    this.filterPanelConfig = {
-      title: 'Filter By',
-      fields: this.fields,
-      model: this.filterModel,
-      form: this.form,
-      options: this.options,
-      isHistoryEnabled: true,
-    };
-  }
-
-  ngAfterViewInit() {
-    this.filterChange$.subscribe((res) => {
-      console.log('filter has changed');
-    });
-  }
-
-  onPanelSelection($event: NavigationLink) {
-    this.selectedPanel = $event;
-    this.domainsExpanded = false;
-    this.filtersExpanded = true;
-    console.log('Selected Domain', $event);
-    this.router.navigate([], {
-      queryParams: $event.queryParams,
-      relativeTo: this.activatedRoute,
-      queryParamsHandling: 'merge',
-    });
-  }
-
-  onSubPanelClicked($event: NavigationLink) {
-    console.log('Sub Domain selected', $event);
-    this.router.navigate([], {
-      queryParams: $event.queryParams,
-      relativeTo: this.activatedRoute,
-      queryParamsHandling: 'merge',
-    });
+  @Input() expandType: 'single' | 'multiple' = 'single';
+  @Input() enableLabelCollapse: boolean = false;
+  @Input() autoCollapseLabels: boolean = false;
+  @Input() selectFirstLabelChild: boolean = true;
+  @Input() sidenavClicked: Function = ($event) => {
+    console.log($event);
   }
 }
-
