@@ -78,7 +78,6 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType implements OnIn
       checkedValues.push(this.isChecked(subOpt));
     });
     if (checkedValues.every((val, i, arr) => val === arr[0])) {
-      // this.subOptionComplete[index] = checkedValues[0] ? true : false;
       this.subOptionariaChecked[index] = checkedValues[0] ? 'true' : 'false';
     } else {
       this.subOptionariaChecked[index] = 'mixed';
@@ -148,10 +147,8 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType implements OnIn
   }
 
   setAllSubList(checked, subList, index) {
-    // this.subOptionComplete[index] = checked;
     this.subOptionariaChecked[index] = checked ? 'true' : 'false';
     if (Array.isArray(subList.templateOptions.options)) {
-      // this.formControl.setValue([]);
       this.field.templateOptions.options.forEach((subOption) => {
         if (subOption['key'] === subList.key) {
           subOption['templateOptions'].options.map((item) => {
