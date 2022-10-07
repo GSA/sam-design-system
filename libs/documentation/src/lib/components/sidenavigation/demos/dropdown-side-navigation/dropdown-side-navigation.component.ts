@@ -1,83 +1,55 @@
-import { Component, Input } from '@angular/core';
-import { UsaNavigationMode, SidenavModel } from '@gsa-sam/ngx-uswds';
-import { SdsDialogConfig } from '@gsa-sam/components';
+import { AfterViewInit, Component, TemplateRef, ViewChild } from '@angular/core';
+import { SdsDialogConfig, SideNavigationModel, SdsSideNavigationComponent, SdsDialogRef } from '@gsa-sam/components';
+import { dropdownSideNavigationConfig } from './dropdown-side-navigation.config';
 
 @Component({
   selector: 'dropdown-side-navigation',
-  templateUrl: './dropdown-side-navigation.component.html'
+  templateUrl: './dropdown-side-navigation.component.html',
 })
-export class DropdownSideNavigationComponent {
+export class DropdownSideNavigationComponent implements AfterViewInit {
+  @ViewChild('sideNavigation') sideNavigation: SdsSideNavigationComponent;
 
   responsiveDialogOptions: SdsDialogConfig = {
-    ariaLabel: 'Search Dropdowns',
+    ariaLabel: 'Navigation Links',
   };
 
-  @Input() sidenavContent: SidenavModel[] = [
-    {
-      mode: UsaNavigationMode.EXTERNAL,
-      text: 'Entity Registration',
-      path: 'javascript:void(0)',
-      id: '1',
-      children: [
-        {
-          mode: UsaNavigationMode.EXTERNAL,
-          text: 'Core Data',
-          path: 'javascript:void(0)',
-          id: '100',
-        },
-        {
-          mode: UsaNavigationMode.EXTERNAL,
-          text: 'Assertions',
-          path: 'javascript:void(0)',
-          id: '100',
-          children: [
-            {
-              mode: UsaNavigationMode.EXTERNAL,
-              text: 'Service Classifications',
-              path: 'javascript:void(0)',
-              id: '1000'
-            },
-            {
-              mode: UsaNavigationMode.EXTERNAL,
-              text: 'Disaster Response',
-              path: 'javascript:void(0)',
-              id: '1000'
-            }
-          ]
-        },
-        {
-          mode: UsaNavigationMode.EXTERNAL,
-          text: 'Reps and Certs',
-          path: 'javascript:void(0)',
-          id: '200',
-        },
-      ]
-    },
-    {
-      mode: UsaNavigationMode.EVENT,
-      text: 'Exclusions',
-      path: 'exclusions',
-      id: '3'
-    },
-    {
-      mode: UsaNavigationMode.EVENT,
-      text: 'Responsibility/Qualification',
-      path: 'responsibility/qualification',
-      id: '4'
-    },
-    {
-      mode: UsaNavigationMode.EVENT,
-      text: 'Entity Reporting',
-      path: 'entityreporting',
-      id: '5'
-    }
-  ];
+  public navigationModel: SideNavigationModel =  dropdownSideNavigationConfig;
 
-  @Input() expandType: 'single' | 'multiple' = 'single';
-  @Input() enableLabelCollapse: boolean = false;
-  @Input() autoCollapseLabels: boolean = false;
-  @Input() selectFirstLabelChild: boolean = true;
-  @Input() sidenavClicked: Function = ($event) => {
-    console.log($event);
+  /**
+   * Pre-select first sidenav item if sidenav is defined during initialization phase.
+   * We do AfterViewInit rather than OnInit because non-static view child references
+   * are not defined until AfterViewInit
+   * On mobile view, due to sds-side-toolbar, the sidenav does not exist until user
+   * opens the sidenav through modal. See onSidenavDialogOpen for listening for the
+   * modal to popup and pre-selecting a sidenav link
+   */
+  ngAfterViewInit() {
+    if (!this.sideNavigation) return;
+    this.sideNavigation.select( dropdownSideNavigationConfig.navigationLinks[0].id);
+  }
+
+  onSideNavItemClicked($event) {
+    this.sideNavigation.select($event.id);
+  }
+
+  /**
+   * Execute event after user clicks to open sidenav dialog in mobile view
+   * On mobile view, sidenav will only be defined after user chooses to open the dialog.
+   *  We listen for that dialog open event,
+   * @param $event
+   */
+  onSidenavDialogOpen($event: SdsDialogRef<TemplateRef<any>>) {
+    /**
+     * We need to wait for dialog to finish opening before we can reference components
+     * inside the dialog
+     * */
+
+    $event
+      .afterOpened()
+      .toPromise()
+      .then(() => {
+        // Once the sidenav is completely initialized, select the first item
+        this.sideNavigation.select( dropdownSideNavigationConfig.navigationLinks[0].id);
+      });
   }
 }

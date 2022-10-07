@@ -1,5 +1,5 @@
 <nav [attr.aria-label]="ariaLabel">
-  <ul class="usa-sidenav">
+  <ul class="usa-sidenav whitebg">
     <li *ngFor="let link of model.navigationLinks" class="sidenav__item">
       <ng-container [ngTemplateOutlet]="sideNavLinkTemplate" [ngTemplateOutletContext]="{ $implicit: link }">
       </ng-container>

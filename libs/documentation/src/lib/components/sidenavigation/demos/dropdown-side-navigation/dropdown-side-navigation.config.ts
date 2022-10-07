@@ -1,6 +1,6 @@
 import { SideNavigationModel, NavigationMode } from '@gsa-sam/components';
 
-export let dropdownNavigationConfig: SideNavigationModel = {
+export let dropdownSideNavigationConfig: SideNavigationModel = {
   navigationLinks: [
     {
         id: 'wageDeterminations',

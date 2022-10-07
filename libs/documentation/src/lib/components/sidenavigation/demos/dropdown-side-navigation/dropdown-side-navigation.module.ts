@@ -1,21 +1,12 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { UsaSidenavModule } from '@gsa-sam/ngx-uswds';
-import { SdsSideToolbarModule } from '@gsa-sam/components';
+import { SdsSideNavigationModule, SdsSideToolbarModule } from '@gsa-sam/components';
+
+import { CommonModule } from '@angular/common';
 import { DropdownSideNavigationComponent } from './dropdown-side-navigation.component';
-
-
 @NgModule({
-  imports: [
-    CommonModule,
-    UsaSidenavModule,
-    SdsSideToolbarModule
-  ],
-  declarations: [
-    DropdownSideNavigationComponent
-  ],
-  exports: [
-    DropdownSideNavigationComponent
-  ]
+  imports: [SdsSideNavigationModule, SdsSideToolbarModule, CommonModule],
+  exports: [DropdownSideNavigationComponent],
+  declarations: [DropdownSideNavigationComponent],
+  bootstrap: [DropdownSideNavigationComponent],
 })
-export class DropdownSideNavigationModule { }
+export class DropdownSideNavigationModule {}
