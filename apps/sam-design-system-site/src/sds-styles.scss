@@ -6,3 +6,11 @@ $theme-image-path: '~@gsa-sam/sam-styles/src/img';
 $theme-font-path: '~@gsa-sam/sam-styles/src/fonts';
 
 @import '~@gsa-sam/sam-styles/src/stylesheets/sam';
+
+formly-group formly-field {
+  display: block;
+  margin-top: 1.5rem;
+}
+formly-form .usa-form-group {
+  margin-top: 0 !important;
+}
