@@ -34,7 +34,7 @@ describe('SdsAdvancedFiltersService', () => {
     },
     {
       key: 'hideGroup',
-      defaultValue: ['hideField1', 'hideField2'],
+      defaultValue: ['hideField1', 'hideGroup', 'hideField2', 'hideGroup'],
       type: 'multicheckbox',
       templateOptions: {
         hideOptional: true,
@@ -145,6 +145,7 @@ describe('SdsAdvancedFiltersService', () => {
 
   it('should be able to convert a Formly form fields to checkboxes', () => {
     const checkBoxConverted = service.convertToCheckboxes(getFields());
+    console.log(checkBoxConverted[2]);
     expect(checkBoxConverted).toEqual(checkboxFields);
   });
 
