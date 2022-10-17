@@ -56,7 +56,7 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType implements OnIn
       }
     });
     const uniqValues = {};
-    if (this.formControl.value) {
+    if (this.formControl.value && Array.isArray(this.formControl.value)) {
       this.formControl.value.forEach((i) => (uniqValues[i] = true));
       if (allKeys.every((val) => uniqValues[val])) {
         this.mainOptionAriaChecked[index] = 'true';
