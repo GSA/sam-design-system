@@ -6,6 +6,7 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule, FormlyForm } from '@ngx-formly/core';
 import { FormlySelectModule } from '@ngx-formly/core/select';
 import { FormlyFieldInputComponent } from './input';
+import { UsaAffixModule } from '@gsa-sam/ngx-uswds';
 
 const createTestComponent = (html: string) =>
   createGenericTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;
@@ -24,6 +25,7 @@ describe('Formly Field input Component', () => {
     TestBed.configureTestingModule({
       declarations: [TestComponent, FormlyFieldInputComponent],
       imports: [
+        UsaAffixModule,
         NoopAnimationsModule,
         ReactiveFormsModule,
         FormlySelectModule,
@@ -56,6 +58,7 @@ describe('Formly Field input Component', () => {
           templateOptions: {
             label: 'Formly Input',
             required: true,
+            prefix: 'test',
           },
         },
       ];
