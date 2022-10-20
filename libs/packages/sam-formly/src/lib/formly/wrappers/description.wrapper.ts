@@ -13,6 +13,7 @@ import { FieldWrapper } from '@ngx-formly/core';
           *ngIf="to.description"
           [attr.aria-label]="to.description ? to.description : undefined"
           class="usa-label--description"
+          [attr.aria-label]="to.description"
           [id]="id + '-description'"
           [innerHtml]="to.description"
         ></div>

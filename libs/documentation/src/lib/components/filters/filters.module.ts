@@ -73,7 +73,7 @@ const DEMOS = {
     path: 'libs/documentation/src/lib/components/filters/demos/showInactiveFilterValues',
   },
   defaultValues: {
-    title: 'DeaultModel',
+    title: 'Nested More Filters',
     type: FiltersDefaultValueComponent,
     code: require('!!raw-loader!./demos/defaultValues/filters-default-value.component'),
     markup: require('!!raw-loader!./demos/defaultValues/filters-default-value.component.html'),
