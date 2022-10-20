@@ -54,11 +54,7 @@ export class SdsSideToolbarComponent implements OnInit, OnDestroy {
   constructor(
     private sdsDialogService: SdsDialogService,
     private breakpointObserver: BreakpointObserver // Will watch for changes between mobile and non-mobile screen size
-  ) {
-    console.warn(
-      'The side toolbar you are currently using is deprecated. Please instead import SdsSideToolbarModule from @gsa-sam/components'
-    );
-  }
+  ) {}
 
   ngOnInit() {
     this.observeViewChange();
