@@ -36,10 +36,11 @@ export class FilterService {
               tabHeader: 'Simple Search',
             },
             fieldGroupClassName: 'grid-row',
+            className: ' margin-top-0',
             fieldGroup: [
               {
                 key: 'keywordRadio',
-                className: 'grid-col-5',
+                className: 'grid-col-5 margin-top-0',
                 type: 'radio',
                 defaultValue: 'anyWords',
                 templateOptions: {
@@ -93,11 +94,12 @@ export class FilterService {
               tabHeader: 'Search Editor',
               submitButtonId: 'booleanSearchSubmit',
             },
+            className: ' margin-top-0',
             fieldGroup: [
               {
                 key: 'keywordTextarea',
                 type: SdsFormlyTypes.TEXTAREA,
-                className: 'display-block padding-left-2 padding-right-2',
+                className: 'display-block padding-left-2 padding-right-2 ',
                 templateOptions: {
                   placeholder: 'e.g. ((rental AND property) OR (lease and property) AND NOT ( "short term"))',
                   required: true,
@@ -119,11 +121,13 @@ export class FilterService {
     },
     {
       key: 'searchEntity',
+      className: 'margin-top-0',
       templateOptions: { label: 'Entity', group: 'accordion' },
       fieldGroup: [
         {
           key: 'legalBusinessName',
           type: 'input',
+
           templateOptions: {
             type: 'text',
             hideOptional: true,
@@ -194,7 +198,7 @@ export class FilterService {
       key: 'startDate',
       type: 'datepicker',
       templateOptions: {
-        group: 'accordion',
+        group: 'panel',
         hideOptional: true,
         label: 'Date',
       },
@@ -217,7 +221,6 @@ export class FilterService {
     },
     {
       key: 'serviceClassifications',
-
       templateOptions: {
         label: 'NAICS and Product Service Codes',
         group: 'accordion',
@@ -226,6 +229,7 @@ export class FilterService {
         {
           key: 'naicsCode',
           type: 'input',
+          className: 'margin-top-0',
           templateOptions: {
             type: 'text',
             hideOptional: true,
@@ -247,6 +251,7 @@ export class FilterService {
     {
       key: 'location',
       templateOptions: { label: 'Location', group: 'accordion' },
+      className: ' margin-top-0',
       fieldGroup: [
         {
           key: 'country',
@@ -301,10 +306,11 @@ export class FilterService {
     {
       key: 'status',
       templateOptions: { label: 'Status', group: 'accordion' },
+      className: ' margin-top-0',
       fieldGroup: [
         {
           key: 'registrationStatus',
-          type: 'multicheckbox',
+          type: 'radio',
           templateOptions: {
             options: [
               {
