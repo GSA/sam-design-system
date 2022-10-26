@@ -56,19 +56,16 @@
     <li class="grid-row" *ngIf="to.selectAllOption">
       <div class="usa-checkbox" [class.text-align-end]="to.textAlignEnd">
         <input
-          [id]="id + '_Select'"
+          [id]="id"
           type="checkbox"
           class="usa-checkbox__input"
-          value="value"
-          [checked]="allComplete"
-          [attr.aria-checked]="ariaChecked"
+          [name]="id + '_name_' + 'Select'"
+          [value]="to.label"
+          [checked]="checkMainOption(id, to.options)"
+          [attr.aria-checked]="mainOptionAriaChecked[getIndex(id)]"
           (change)="setAll($event)"
         />
-        <label
-          class="usa-checkbox__label margin-top-0 margin-bottom-1"
-          [attr.aria-checked]="ariaChecked"
-          [for]="id + '_Select'"
-        >
+        <label class="usa-checkbox__label margin-top-0 margin-bottom-1" [for]="id">
           <span [innerHtml]="to.label"></span>
         </label>
       </div>
@@ -96,57 +93,111 @@
         </button>
       </div>
     </li>
-    <li
-      [id]="id+ 'collapseID'"
-      [sdsCollapse]="to.expandedOptions"
-      [ngClass]="{'margin-left-4 margin-top-0': to.selectAllOption}"
-    >
-      <ul class="sds-list sds-list--no-bullets margin-y-0">
-        <li class="grid-row" *ngFor="let option of (to.options | formlySelectOptions: field | async); let i = index">
+    <ng-container *ngFor="let option of to.options; let i = index">
+      <li
+        *ngIf="!option.templateOptions"
+        class="sds-list sds-list--no-bullets margin-y-0 grid-row"
+        [ngClass]="{'margin-left-4 margin-top-0': to.selectAllOption}"
+      >
+        <div class="usa-checkbox" [class.text-align-end]="to.textAlignEnd">
+          <input
+            class="usa-checkbox__input"
+            [id]="id + '_' + i"
+            type="checkbox"
+            [name]="id + '_name_' + i"
+            [disabled]="option.disabled"
+            [value]="option.value"
+            [formlyAttributes]="field"
+            (change)="onMainOptionChange(option.key, $event.target.checked, to.options, id)"
+            [checked]="isChecked(option)"
+          />
+          <label class="usa-checkbox__label margin-top-0 margin-bottom-1" [for]="id + '_' + i">
+            <span
+              *ngIf="option.tagText"
+              class="usa-tag"
+              [ngClass]="option.tagClass ? option.tagClass : 'sds-tag--info-white'"
+            >
+              {{option.tagText}}
+            </span>
+            <span [innerHtml]="option.value"></span>
+          </label>
+        </div>
+        <div *ngIf="option.tooltipText" class="margin-left-1">
+          <p #tipContent [ngClass]="option.tooltipClass" class="margin-1" [innerHTML]="option.tooltipText"></p>
+          <usa-icon
+            [position]="option.tooltipPosition ? option.tooltipPosition :'right'"
+            [sdsTooltip]="tipContent"
+            [size]="'sm'"
+            [icon]="'info-circle'"
+          ></usa-icon>
+        </div>
+      </li>
+
+      <ng-container *ngIf="option.templateOptions">
+        <li class="grid-row" class="margin-left-4">
           <div class="usa-checkbox" [class.text-align-end]="to.textAlignEnd">
             <input
-              class="usa-checkbox__input"
               [id]="id + '_' + i"
               type="checkbox"
+              class="usa-checkbox__input"
               [name]="id + '_name_' + i"
-              [disabled]="option.disabled"
-              [value]="option.value"
-              [formlyAttributes]="field"
-              (change)="onChange(option.value, $event.target.checked)"
-              [checked]="isChecked(option)"
+              [value]="option.templateOptions.label"
+              [checked]="checkSubOption(option.templateOptions.options, i)"
+              [attr.aria-checked]="subOptionariaChecked[i]"
+              (change)="onMainOptionChange(option.key, $event.target.checked, to.options, id)"
             />
+            <!-- setAllSubList($event, option, i)" /> -->
             <label class="usa-checkbox__label margin-top-0 margin-bottom-1" [for]="id + '_' + i">
-              <!--
-                The reference of options array through index is done intentionally here rather
-                than using local variable option because the formlySelectOptions pipe transforms
-                each option such that they lose all properties except label, value, and disabled
-            -->
-              <span
-                *ngIf="to.options[i].tagText"
-                class="usa-tag"
-                [ngClass]="to.options[i].tagClass ? to.options[i].tagClass : 'sds-tag--info-white'"
-              >
-                {{to.options[i].tagText}}
-              </span>
-              <span [innerHtml]="option.label"></span>
+              <span [innerHtml]="option.templateOptions.label"></span>
             </label>
           </div>
-          <div *ngIf="to.options[i].tooltipText" class="margin-left-1">
-            <p
-              #tipContent
-              [ngClass]="to.options[i].tooltipClass"
-              class="margin-1"
-              [innerHTML]="to.options[i].tooltipText"
-            ></p>
-            <usa-icon
-              [position]="to.options[i].tooltipPosition ? to.options[i].tooltipPosition :'right'"
-              [sdsTooltip]="tipContent"
-              [size]="'sm'"
-              [icon]="'info-circle'"
-            ></usa-icon>
-          </div>
         </li>
-      </ul>
-    </li>
+        <ul
+          [id]="'collapseID'"
+          [sdsCollapse]="to.expandedOptions"
+          [ngClass]="{'margin-left-6 margin-top-0': to.selectAllOption}"
+        >
+          <li class="grid-row" *ngFor="let subOption of (option.templateOptions.options); let j = index">
+            <div class="usa-checkbox" [class.text-align-end]="to.textAlignEnd">
+              <input
+                class="usa-checkbox__input"
+                [id]="id + '_' + i + '_' + j"
+                type="checkbox"
+                [name]="id + '_' + i + '_name_' + j"
+                [disabled]="subOption.disabled"
+                [value]="subOption.value"
+                [formlyAttributes]="field"
+                (change)="onSubOptionChange(subOption, $event.target.checked, option.templateOptions.options, i)"
+                [checked]="isChecked(subOption)"
+              />
+              <label class="usa-checkbox__label margin-top-0 margin-bottom-1" [for]="id + '_' + i + '_' + j">
+                <span
+                  *ngIf="subOption.tagText"
+                  class="usa-tag"
+                  [ngClass]="subOption.tagClass ? subOption.tagClass : 'sds-tag--info-white'"
+                >
+                  {{option.tagText}}
+                </span>
+                <span [innerHtml]="subOption.value"></span>
+              </label>
+            </div>
+            <div *ngIf="subOption.tooltipText" class="margin-left-1">
+              <p
+                #tipContent
+                [ngClass]="subOption.tooltipClass"
+                class="margin-1"
+                [innerHTML]="subOption.tooltipText"
+              ></p>
+              <usa-icon
+                [position]="subOption.tooltipPosition ? subOption.tooltipPosition :'right'"
+                [sdsTooltip]="tipContent"
+                [size]="'sm'"
+                [icon]="'info-circle'"
+              ></usa-icon>
+            </div>
+          </li>
+        </ul>
+      </ng-container>
+    </ng-container>
   </ul>
 </fieldset>

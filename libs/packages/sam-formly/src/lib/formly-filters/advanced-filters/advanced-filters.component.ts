@@ -87,6 +87,11 @@ export class AdvancedFiltersComponent implements OnInit {
             if (this.selectAll) {
               currentField.templateOptions.options.forEach((option: any) => {
                 array.push(option.key);
+                if (option.type === 'multicheckbox') {
+                  option.templateOptions.options.forEach((option: any) => {
+                    array.push(option.key);
+                  });
+                }
               });
               selectedform.get(this.filtersFieldGroupKey).get(key).setValue(array);
 
