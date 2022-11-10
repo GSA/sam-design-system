@@ -83,7 +83,7 @@ export class FormlyGroupWrapperComponent extends FieldWrapper implements AfterVi
   }
 
   ngAfterViewInit() {
-    if (this.to.group === 'accordion' || this.to.group === 'panel') {
+    if (this.to.group === 'accordion' || this.to.group === 'panel' || this.field.fieldGroup) {
       this.field.className = this.field.className ? this.field.className : 'margin-top-0';
     }
 
