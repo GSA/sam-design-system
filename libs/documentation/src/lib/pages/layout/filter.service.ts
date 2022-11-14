@@ -306,7 +306,7 @@ export class FilterService {
     {
       key: 'status',
       templateOptions: { label: 'Status', group: 'accordion' },
-      className: ' margin-top-0',
+
       fieldGroup: [
         {
           key: 'registrationStatus',
@@ -320,6 +320,46 @@ export class FilterService {
               {
                 key: 'Inactive',
                 value: 'Inactive',
+              },
+            ],
+          },
+        },
+      ],
+    },
+    {
+      key: 'status',
+
+      templateOptions: { label: 'Entity Status', group: 'accordion' },
+      fieldGroup: [
+        {
+          key: 'statusId',
+          id: 'status',
+          type: 'multicheckbox',
+          className: 'margin-top-1',
+          templateOptions: {
+            label: 'Entity Status',
+            labelClass: 'usa-sr-only',
+            hideOptional: true,
+            options: [
+              {
+                key: '1,2',
+                value: 'Work in Progress Registration',
+              },
+              {
+                key: '3',
+                value: 'Submitted Registration',
+              },
+              {
+                key: '4',
+                value: 'Active Registration',
+              },
+              {
+                key: '7',
+                value: 'Inactive Registration',
+              },
+              {
+                key: '12',
+                value: 'ID Assigned',
               },
             ],
           },
