@@ -3,18 +3,11 @@
   <usa-icon [icon]="'filter'" class="icon-filter" [size]="'sm'"></usa-icon>
 </button>
 
-<div
-  *ngIf="enablePopover"
-  [sdsPopover]="content"
-  [position]="'bottom'"
-  [closeOnContentClick]="false"
-  [closeOnClickOutside]="true"
-  tabindex="0"
-  aria-label="More Filters"
->
+<div *ngIf="enablePopover" [sdsPopover]="content" [position]="'bottom'" [closeOnContentClick]="false"
+  [closeOnClickOutside]="true" tabindex="0" aria-label="More Filters">
   More Filters
   <usa-icon [icon]="'chevron-down'" [size]="'sm'"></usa-icon>
-  <p #content class="padding-2">
+  <p #content class="padding-2 text-left minw-card-lg">
     <formly-form [fields]="popoverContent" (modelChange)="updateSelectedFields($event)"></formly-form>
   </p>
 </div>
