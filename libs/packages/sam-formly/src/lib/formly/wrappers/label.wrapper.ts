@@ -45,7 +45,14 @@ import { FieldWrapper } from '@ngx-formly/core';
           ></usa-icon>
         </span>
       </div>
-      <div [ngClass]="to.labelContentClass">
+      <div
+        [ngClass]="{
+'{{to.labelContentClass}}': to.labelContentClass,
+            'single-form-control':
+             
+              ((to.group === 'panel' || to.group === 'accordion') && field?.parent?.type !== 'formly-group')
+          }"
+      >
         <ng-container #fieldComponent></ng-container>
       </div>
     </div>

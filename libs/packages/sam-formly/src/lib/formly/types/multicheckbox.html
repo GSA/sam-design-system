@@ -1,14 +1,17 @@
-<fieldset class="usa-fieldset">
+<fieldset class="usa-fieldset" [ngClass]="{ 'margin-top-1': to.description }">
   <legend class="usa-sr-only">{{ to.label }}</legend>
 
   <fieldset *ngIf="to.groupOptions" class="usa-fieldset">
     <ul class="sds-list sds-list--no-bullets margin-y-0">
-      <li class="grid-row" *ngFor="let option of (to.groupOptions | keyvalue); let i = index">
+      <li class="grid-row" *ngFor=" let option of (to.groupOptions | keyvalue); let i=index">
         <div>
           <legend>
             <span class="text-bold display-block">{{option.key}}</span>
           </legend>
-          <li class="grid-row" *ngFor="let opt of option.value | formlySelectOptions: field | async; let j = index">
+          <li
+            class="grid-row margin-bottom-0"
+            *ngFor="let opt of option.value | formlySelectOptions: field | async; let j = index"
+          >
             <div class="usa-checkbox" [class.text-align-end]="to.textAlignEnd">
               <input
                 class="usa-checkbox__input"
@@ -21,7 +24,7 @@
                 (change)="onChange(opt.value, $event.target.checked)"
                 [checked]="isChecked(opt)"
               />
-              <label class="usa-checkbox__label margin-top-05 margin-bottom-1" [for]="id + '_' + i + j">
+              <label class="usa-checkbox__label" [for]="id + '_' + i + j">
                 <span
                   *ngIf="option.value[j].tagText"
                   class="usa-tag"
@@ -65,7 +68,7 @@
           [attr.aria-checked]="mainOptionAriaChecked[getIndex(id)]"
           (change)="setAll($event)"
         />
-        <label class="usa-checkbox__label margin-top-05" [for]="id">
+        <label class="usa-checkbox__label" [for]="id">
           <span [innerHtml]="to.label"></span>
         </label>
       </div>
@@ -83,7 +86,7 @@
       <div *ngIf="to.expandableOptions">
         <button
           type="button"
-          class="sds-button padding-y-0"
+          class="sds-button padding-top-0"
           [attr.aria-expanded]="!to.expandedOptions"
           [attr.aria-controls]="id + 'collapseID'"
           (click)="to.expandedOptions = !to.expandedOptions"
@@ -96,8 +99,8 @@
     <ng-container *ngFor="let option of to.options; let i = index">
       <li
         *ngIf="!option.templateOptions"
-        class="sds-list sds-list--no-bullets margin-y-0 grid-row"
-        [ngClass]="{'margin-left-4 margin-top-05': to.selectAllOption}"
+        class="margin-y-0 grid-row"
+        [ngClass]="{'margin-left-4 ': to.selectAllOption}"
       >
         <div class="usa-checkbox" [class.text-align-end]="to.textAlignEnd">
           <input
@@ -111,7 +114,7 @@
             (change)="onMainOptionChange(option.key, $event.target.checked, to.options, id)"
             [checked]="isChecked(option)"
           />
-          <label class="usa-checkbox__label margin-top-05 margin-bottom-1" [for]="id + '_' + i">
+          <label class="usa-checkbox__label" [ngClass]="{'margin-top-0': i==0}" [for]="id + '_' + i">
             <span
               *ngIf="option.tagText"
               class="usa-tag"
@@ -147,16 +150,12 @@
               (change)="onMainOptionChange(option.key, $event.target.checked, to.options, id)"
             />
             <!-- setAllSubList($event, option, i)" /> -->
-            <label class="usa-checkbox__label margin-top-05 margin-bottom-1" [for]="id + '_' + i">
+            <label class="usa-checkbox__label" [for]="id + '_' + i">
               <span [innerHtml]="option.templateOptions.label"></span>
             </label>
           </div>
         </li>
-        <ul
-          [id]="'collapseID'"
-          [sdsCollapse]="to.expandedOptions"
-          [ngClass]="{'margin-left-6 margin-top-05': to.selectAllOption}"
-        >
+        <ul [id]="'collapseID'" [sdsCollapse]="to.expandedOptions" [ngClass]="{'margin-left-6 ': to.selectAllOption}">
           <li class="grid-row" *ngFor="let subOption of (option.templateOptions.options); let j = index">
             <div class="usa-checkbox" [class.text-align-end]="to.textAlignEnd">
               <input
@@ -170,7 +169,7 @@
                 (change)="onSubOptionChange(subOption, $event.target.checked, option.templateOptions.options, i)"
                 [checked]="isChecked(subOption)"
               />
-              <label class="usa-checkbox__label margin-top-05 margin-bottom-1" [for]="id + '_' + i + '_' + j">
+              <label class="usa-checkbox__label" [for]="id + '_' + i + '_' + j">
                 <span
                   *ngIf="subOption.tagText"
                   class="usa-tag"

@@ -213,7 +213,7 @@ export class FilterService {
     },
     {
       key: 'socioEconomicStatus',
-      type: 'input',
+      type: 'select',
       templateOptions: {
         label: 'Socio-Economic Status',
         group: 'accordion',
