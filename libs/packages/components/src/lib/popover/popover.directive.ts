@@ -99,7 +99,7 @@ export class SdsPopoverDirective implements AfterViewInit {
 
     this.renderer.setAttribute(this.el.nativeElement, 'role', 'button');
     this.renderer.setAttribute(this.el.nativeElement, 'aria-expanded', 'false');
-    this.renderer.setAttribute(this.el.nativeElement, 'aria-haspopup', 'dialog');
+    // this.renderer.setAttribute(this.el.nativeElement, 'aria-haspopup', 'dialog');
 
     this.renderer.appendChild(this.el.nativeElement, this.sdsPopoverDiv);
   }
