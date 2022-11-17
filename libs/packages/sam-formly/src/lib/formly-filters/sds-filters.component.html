@@ -73,7 +73,7 @@
 
 <!-- Chip Display -->
 <ng-container *ngIf="displayChips">
-  <p class="usa-sr-only" id="chip-status-announce">{{chipStatusText}}</p>
+  <p class="usa-sr-only" id="chip-status-announce" aria-live="polite">{{chipStatusText}}</p>
   <div *ngFor="let chip of chips" class="width-auto sds-tag sds-tag--chip sds-tag--input margin-right-2">
     <div class="sds--tag__item">
       <sds-readonly-container
