@@ -48,6 +48,7 @@ import { FieldWrapper } from '@ngx-formly/core';
       <div
         [ngClass]="{
 '{{to.labelContentClass}}': to.labelContentClass,
+'margin-top-1':this.field?.templateOptions?.label && this.field?.parent?.fieldGroup?.length === 1,
             'single-form-control':
              
               ((to.group === 'panel' || to.group === 'accordion') && field?.parent?.type !== 'formly-group')
