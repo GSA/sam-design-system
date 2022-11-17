@@ -9,6 +9,7 @@ export interface ReadonlyDataType {
   value: any;
   readonlyOptions: ReadonlyOptions;
   formlyKey: string;
+  srValue: string;
 }
 @Injectable()
 export class FormlyUtilsService {
