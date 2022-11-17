@@ -150,7 +150,7 @@ export class SdsPopoverDirective implements AfterViewInit {
       this.renderer.setAttribute(this.sdsPopoverDiv, 'aria-hidden', 'false');
       this.renderer.setAttribute(this.el.nativeElement, 'aria-describedby', this.popoverDivId);
       this.renderer.setAttribute(this.el.nativeElement, 'aria-expanded', 'true');
-      // this.renderer.setAttribute(this.el.nativeElement, 'role', 'none'); 
+
       this.renderer.removeClass(this.sdsPopoverDiv, 'sds-popover__hidden');
     } else {
       this.hidePopover();
@@ -162,7 +162,6 @@ export class SdsPopoverDirective implements AfterViewInit {
     this.renderer.addClass(this.sdsPopoverDiv, 'sds-popover__hidden');
     this.renderer.setAttribute(this.sdsPopoverDiv, 'aria-hidden', 'true');
     this.renderer.setAttribute(this.el.nativeElement, 'aria-expanded', 'false');
-    // this.renderer.setAttribute(this.el.nativeElement, 'role', 'button');
 
     this.renderer.removeClass(this.sdsPopoverDiv, 'sds-popover__shown');
     this.renderer.removeAttribute(this.el.nativeElement, 'aria-describedby');
