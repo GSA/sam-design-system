@@ -23,9 +23,10 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType implements OnIn
   }
 
   ngOnInit() {
-    this.someComplete();
     this.subOptionariaChecked.fill('false');
     this.mainOptionAriaChecked.fill('false');
+    this.someComplete();
+    // this.checkMainOption(this.id, this.to.options);
   }
 
   checkSubOption(allSubOptions, index) {
@@ -128,8 +129,8 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType implements OnIn
 
     if (this.to.type === 'array') {
       return this.formControl.value.includes(option.key) && option.value != 'false';
-    } else if (this.formControl.value[option.value]) {
-      return this.formControl.value[option.value] && this.formControl.value[option.value] != 'false';
+    } else if (this.formControl.value[option.key]) {
+      return this.formControl.value[option.key] && this.formControl.value[option.key] != 'false';
     }
   }
 
@@ -179,13 +180,15 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType implements OnIn
   }
 
   _getAriaChecked(value) {
+    console.log(value, 'val');
+    let i = this.getIndex(this.id);
     if (Array.isArray(this.field.templateOptions.options)) {
       this.allComplete = value === this.field.templateOptions.options.length ? true : false;
     }
     if (value === 0) {
-      this.ariaChecked = 'false';
+      this.mainOptionAriaChecked[i] = 'false';
     } else {
-      this.ariaChecked = value > 0 && !this.allComplete ? 'mixed' : 'true';
+      this.mainOptionAriaChecked[i] = value > 0 && !this.allComplete ? 'mixed' : 'true';
     }
   }
 }
