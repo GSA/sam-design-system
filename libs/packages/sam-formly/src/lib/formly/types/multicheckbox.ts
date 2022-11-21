@@ -23,10 +23,9 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType implements OnIn
   }
 
   ngOnInit() {
+    this.someComplete();
     this.subOptionariaChecked.fill('false');
     this.mainOptionAriaChecked.fill('false');
-    this.someComplete();
-    // this.checkMainOption(this.id, this.to.options);
   }
 
   checkSubOption(allSubOptions, index) {
@@ -180,7 +179,6 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType implements OnIn
   }
 
   _getAriaChecked(value) {
-    console.log(value, 'val');
     let i = this.getIndex(this.id);
     if (Array.isArray(this.field.templateOptions.options)) {
       this.allComplete = value === this.field.templateOptions.options.length ? true : false;
