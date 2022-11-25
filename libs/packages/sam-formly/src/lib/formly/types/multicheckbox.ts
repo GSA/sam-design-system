@@ -120,6 +120,7 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType implements OnIn
     }
 
     this.formControl.markAsTouched();
+    this.cdr.detectChanges();
   }
 
   isChecked(option) {
@@ -129,6 +130,8 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType implements OnIn
 
     if (this.to.type === 'array') {
       return this.formControl.value.includes(option.key) && option.value != 'false';
+    } else if (this.to.groupOptions && this.formControl.value[option.value]) {
+      return this.formControl.value[option.value] && this.formControl.value[option.value] != 'false';
     } else if (this.formControl.value[option.key]) {
       return this.formControl.value[option.key] && this.formControl.value[option.key] != 'false';
     }
