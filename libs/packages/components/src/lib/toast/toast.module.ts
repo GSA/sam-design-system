@@ -26,7 +26,6 @@ export let SdsToastSettings = {
   ],
   exports: [SdsToastComponent],
   declarations: [SdsToastComponent],
-  entryComponents: [],
   providers: [],
 })
 export class SdsToastModule {}

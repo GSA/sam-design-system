@@ -7,7 +7,6 @@ import { SdsStepArrowComponent } from './step-arrow.component';
   imports: [CommonModule],
   exports: [SdsStepArrowComponent],
   declarations: [SdsStepArrowComponent],
-  entryComponents: [],
   providers: [],
 })
 export class SdsStepArrowModule {}

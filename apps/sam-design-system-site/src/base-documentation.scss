@@ -1,7 +1,7 @@
 @import './material.theme';
 
 //CDK Overlay
-@import '~@angular/cdk/overlay';
+@import 'node_modules/@angular/cdk/overlay';
 $cdk-overlay-dark-backdrop-background: rgba(14, 52, 88, 0.7);
 @include cdk-overlay;
 
