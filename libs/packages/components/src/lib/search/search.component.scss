@@ -25,8 +25,8 @@ input::-ms-clear {
   }
 
   .close-icon {
-    width: 3.5rem;
-    top: 2px;
+    width: 3rem;
+    top: -1px;
   }
 }
 .no-drop {
@@ -38,6 +38,4 @@ input::-ms-clear {
     max-width: unset;
   }
 }
-.text-ink {
-  color: 27221f;
-}
+
