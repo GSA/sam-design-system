@@ -229,7 +229,7 @@ export class FilterService {
         {
           key: 'naicsCode',
           type: 'input',
-          className: 'margin-top-0',
+
           templateOptions: {
             type: 'text',
             hideOptional: true,
@@ -251,7 +251,7 @@ export class FilterService {
     {
       key: 'location',
       templateOptions: { label: 'Location', group: 'accordion' },
-      className: ' margin-top-0',
+
       fieldGroup: [
         {
           key: 'country',
@@ -335,7 +335,7 @@ export class FilterService {
           key: 'statusId',
           id: 'status',
           type: 'multicheckbox',
-          className: 'margin-top-1',
+
           templateOptions: {
             label: 'Entity Status',
             labelClass: 'usa-sr-only',
@@ -361,6 +361,60 @@ export class FilterService {
                 key: '12',
                 value: 'ID Assigned',
               },
+            ],
+          },
+        },
+      ],
+    },
+    {
+      key: 'requestTypesOptions',
+
+      templateOptions: { group: 'panel' },
+      fieldGroup: [
+        {
+          key: 'requestType',
+          id: 'requestType',
+          type: 'radio',
+          className: 'margin-top-0',
+          defaultValue: 'myexclusions',
+          templateOptions: {
+            label: 'Exclusions Type',
+            hideOptional: true,
+            options: [
+              {
+                label: 'Agency Exclusions',
+                value: 'myagencyexclusions',
+                tooltipText: 'Search results will contain all Agency Exclusions.',
+              },
+              {
+                label: 'My Exclusions',
+                value: 'myexclusions',
+                tooltipText: 'Search results will contain all your Exclusions.',
+              },
+            ],
+          },
+        },
+      ],
+    },
+    {
+      key: 'expirationDate',
+      templateOptions: { label: 'Expiration Date', group: 'accordion' },
+      fieldGroup: [
+        {
+          key: 'expirationDays',
+          id: 'exp',
+          type: 'radio',
+          templateOptions: {
+            label: 'Expiration Date',
+
+            labelClass: 'margin-bottom-1',
+            hideOptional: true,
+            defaultValue: null,
+            options: [
+              { label: '30 Days', value: '30' },
+              { label: '60 Days', value: '60' },
+              { label: '90 Days', value: '90' },
+              { label: 'All Registrations', value: null },
             ],
           },
         },

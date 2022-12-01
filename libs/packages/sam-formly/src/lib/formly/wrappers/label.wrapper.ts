@@ -18,6 +18,10 @@ import { FieldWrapper } from '@ngx-formly/core';
           *ngIf="hasLabel()"
           [attr.for]="id"
           [ngClass]="{
+            'margin-bottom-1':
+              this.field?.templateOptions?.label &&
+              !this.field?.templateOptions?.hideLabel &&
+              this.field?.parent?.fieldGroup?.length === 1,
             'usa-sr-only':
               to.hideLabel ||
               ((to.group === 'panel' || to.group === 'accordion') && field?.parent?.type !== 'formly-group')
@@ -48,8 +52,7 @@ import { FieldWrapper } from '@ngx-formly/core';
       <div
         [ngClass]="{
 '{{to.labelContentClass}}': to.labelContentClass,
-            'single-form-control':
-             
+         'single-form-control':
               ((to.group === 'panel' || to.group === 'accordion') && field?.parent?.type !== 'formly-group')
           }"
       >
