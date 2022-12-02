@@ -1,0 +1,12 @@
+
+<div class="margin-bottom-4">
+    <p>Group with selectable group names</p>
+    <sds-autocomplete [service]="service" [(ngModel)]="model" [configuration]="settings"> </sds-autocomplete>
+</div>
+{{ model | json }}
+
+<div class="margin-bottom-4">
+    <p>Group with group names as a label</p>
+    <sds-autocomplete [service]="service" [(ngModel)]="model2" [configuration]="settings2"> </sds-autocomplete>
+</div>
+{{ model2 | json }}

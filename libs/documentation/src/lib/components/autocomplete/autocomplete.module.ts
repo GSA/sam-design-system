@@ -9,8 +9,8 @@ import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../s
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { AutocompleteBasicModule } from './demos/basic/autocomplete-basic.module';
 import { AutocompleteBasic } from './demos/basic/autocomplete-basic.component';
-import { AutocompleteGroup } from './demos/group/autocomplete-group.component';
-import { AutocompleteGroupModule } from './demos/group/autocomplete-group.module';
+import { AutocompleteGroup } from './demos/autocomplete-group/autocomplete-group.component';
+import { AutocompleteGroupModule } from './demos/autocomplete-group/autocomplete-group.module';
 import { AutocompleteSelectGroup } from './demos/selectgroup/autocomplete-selectgroup.component';
 import { AutocompleteSelectGroupModule } from './demos/selectgroup/autocomplete-selectgroup.module';
 import { AutocompleteTagmode } from './demos/tagmode/autocomplete-tagmode.component';
