@@ -53,7 +53,8 @@ const Template: Story<SdsSearchComponent> = (args: SdsSearchComponent) => ({
   template: `
   <sds-search [(ngModel)]="model" (submit)="onSubmit($event)" (ngModelChange)="modelChange($event)" [searchSettings]="searchSettings"
   ></sds-search>
-    <p>Model: {{model | json}}</p>
+    <p>Model:</p>
+    <pre>{{model | json}}</pre>
   `,
   props: {
     // Must do as destructive args leads to props such as onChange not being found.
