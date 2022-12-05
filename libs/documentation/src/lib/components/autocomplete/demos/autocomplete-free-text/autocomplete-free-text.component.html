@@ -2,9 +2,13 @@
     <p>tagMode</p>
     <sds-autocomplete [service]="service" [(ngModel)]="model" [configuration]="settings"> </sds-autocomplete>
 </div>
+<pre>
 {{ model | json }}
+</pre>
 <div class="margin-bottom-4">
     <p>free text</p>
     <sds-autocomplete [service]="service" [(ngModel)]="model2" [configuration]="settings2"> </sds-autocomplete>
 </div>
+<pre>
 {{ model2 | json }}
+</pre>
