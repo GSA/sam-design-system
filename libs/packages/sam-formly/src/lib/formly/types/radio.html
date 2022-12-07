@@ -65,7 +65,7 @@
                       ></span>
                     </div>
                   </ng-container>
-                  <div *ngIf="option.value[j].tooltipText" style="display: inline;">
+                  <div *ngIf="option.value[j].tooltipText" class="usa-radio__tooltip">>
                     <p
                       #tipContent
                       [ngClass]="option.value[j].tooltipClass"
@@ -116,7 +116,7 @@
             ></span>
           </div>
         </ng-container>
-        <div *ngIf="to.options[i].tooltipText" style="display: inline;">
+        <div *ngIf="to.options[i].tooltipText" class="usa-radio__tooltip">
           <p
             #tipContent
             [ngClass]="to.options[i].tooltipClass"
