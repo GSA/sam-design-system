@@ -4,9 +4,6 @@ import { Component } from '@angular/core';
   templateUrl: './autocomplete-redirect.component.html',
   selector: `sds-autocomplete-redirect-demo`,
 })
-export class AutocompleteRedirect{
-  
-  constructor() {
-  }
-
+export class AutocompleteRedirect {
+  constructor() {}
 }

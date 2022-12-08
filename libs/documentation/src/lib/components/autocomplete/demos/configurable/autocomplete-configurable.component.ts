@@ -20,8 +20,7 @@ export class AutocompleteConfigurable implements OnInit {
 
   public model = new SDSSelectedItemModel();
 
-  constructor(public service: AutocompleteSampleDataService) {
-  }
+  constructor(public service: AutocompleteSampleDataService) {}
 
   changes(value) {
     console.log(value);

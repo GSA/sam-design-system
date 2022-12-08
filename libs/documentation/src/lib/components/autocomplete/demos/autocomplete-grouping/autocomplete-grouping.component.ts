@@ -34,7 +34,7 @@ export class AutocompleteGrouping implements OnInit {
     this.settings.selectionMode = SelectionMode.MULTIPLE;
     this.settings.autocompletePlaceHolderText = 'eg: Formula Grants';
     this.settings.isGroupingEnabled = true;
-    this.settings.groupByChild = 'elements'
+    this.settings.groupByChild = 'elements';
 
     this.settings2.id = 'autocompleteSelectGroup';
     this.settings2.primaryKeyField = 'element_id';

@@ -46,11 +46,7 @@ export const ROUTES = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    DocumentationComponentsSharedModule,
-    AutocompleteRedirectModule
-  ],
+  imports: [CommonModule, DocumentationComponentsSharedModule, AutocompleteRedirectModule],
 })
 export class AutocompleteModule {
   constructor(demoList: DocumentationDemoList) {

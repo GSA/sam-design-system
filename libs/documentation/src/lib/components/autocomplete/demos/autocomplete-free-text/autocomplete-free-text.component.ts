@@ -35,7 +35,7 @@ export class AutocompleteFreeText implements OnInit {
     this.settings.selectionMode = SelectionMode.MULTIPLE;
     this.settings.autocompletePlaceHolderText = 'eg: Level 1';
     this.settings.isFreeTextEnabled = true;
-    this.settings.isTagModeEnabled = true
+    this.settings.isTagModeEnabled = true;
 
     this.settings2.id = 'autocompleteOptional';
     this.settings2.primaryKeyField = 'id';
