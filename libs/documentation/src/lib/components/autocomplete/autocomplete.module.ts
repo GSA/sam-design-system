@@ -7,9 +7,19 @@ import { DocumentationSourcePage } from '../shared/source-page/source.component'
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
+import { AutocompleteRedirectModule } from './demos/redirect/autocomplete-redirect.module';
+import { AutocompleteRedirect } from './demos/redirect/autocomplete-redirect.component';
 
 declare var require: any;
 const DEMOS = {
+  redirect: {
+    title: 'New Documentation',
+    type: AutocompleteRedirect,
+    code: require('!!raw-loader!./demos/redirect/autocomplete-redirect.component'),
+    markup: require('!!raw-loader!./demos/redirect/autocomplete-redirect.component.html'),
+    module: require('!!raw-loader!./demos/redirect/autocomplete-redirect.module'),
+    path: 'libs/documentation/src/lib/components/autocomplete/demos/redirect',
+  },
 };
 
 export const ROUTES = [
@@ -39,6 +49,7 @@ export const ROUTES = [
   imports: [
     CommonModule,
     DocumentationComponentsSharedModule,
+    AutocompleteRedirectModule
   ],
 })
 export class AutocompleteModule {
