@@ -10,6 +10,12 @@ import { generateConfig } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { ButtonGroupCheckedModule } from './demos/button-group-checked/button-group-checked.module';
 import { ButtonGroupModesModule } from './demos/button-group-modes/button-group-modes.module';
 
+const disable = {
+  table: {
+    disable: true,
+  },
+};
+
 export default {
   title: 'Components/Button-Group',
   component: SdsButtonGroupComponent,
@@ -34,6 +40,9 @@ export default {
         disable: true,
       },
     },
+    change: disable,
+    buttonOptions: disable,
+    classesToApply: disable,
   },
 } as Meta;
 
@@ -91,3 +100,10 @@ Checked.parameters = {
     'sds-button-group-demo'
   ),
 };
+
+
+export const __namedExportsOrder = [
+  'Configurable',
+  'Checked',
+  'Modes',
+];

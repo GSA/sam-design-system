@@ -11,6 +11,12 @@ declare var require: any;
 
 const overviewTemplate = require('!!raw-loader!./search-overview.html');
 
+const disable = {
+  table: {
+    disable: true,
+  },
+};
+
 export default {
   title: 'Components/Search',
   component: SdsSearchComponent,
@@ -41,11 +47,28 @@ export default {
         disable: true,
       },
     },
-    inputState: {
-      table: {
-        disable: true,
-      },
-    },
+    inputState: disable,
+    model: disable,
+    onChange: disable,
+    onTouched: disable,
+    submit: disable,
+    calculateInputWidth: disable,
+    clearInput: disable,
+    focusChange: disable,
+    getClass: disable,
+    handleClick: disable,
+    hasDropdown: disable,
+    isInputVisible: disable,
+    ngAfterViewInit: disable,
+    registerOnChange: disable,
+    registerOnTouched: disable,
+    removeInputVisibleStyles: disable,
+    setInputVisibleStyles: disable,
+    writeValue: disable,
+    writeValueToModel: disable,
+    buttonEl: disable,
+    inputEl: disable,
+    selectEl: disable,
   },
 } as Meta;
 
@@ -128,3 +151,11 @@ export const Overview = () => ({
   template: overviewTemplate,
 });
 Overview.parameters = { options: { showPanel: false } };
+
+export const __namedExportsOrder = [
+  'Overview',
+  'Configurable',
+  'Dropdown',
+  'Placeholder',
+  'Size',
+];

@@ -7,6 +7,11 @@ import { PopoverCloseOnContentClickModule } from './demos/popover-close-on-conte
 import { PopoverPositionModule } from './demos/popover-position/popover-position.module';
 import { PopoverSdsPopoverTitleModule } from './demos/popover-sds-popover-title/popover-sds-popover-title.module';
 
+const disable = {
+  table: {
+    disable: true,
+  }
+};
 export default {
   title: 'Components/Popover',
   component: SdsPopoverDirective,
@@ -27,8 +32,31 @@ export default {
       options: ['top', 'bottom', 'left', 'right'],
       control: { type: 'radio' },
     },
+    _sdsPopoverContent: disable,
+    _sdsPopoverTitle: disable,
+    popoverDivId: disable,
+    popoverVisible: disable,
+    sdsPopoverDiv: disable,
+    clickEvent: disable,
+    clickout: disable,
+    handlePopoverContent: disable,
+    handlePopoverSection: disable,
+    handlePopoverTitle: disable,
+    handlePosition: disable,
+    hidePopover: disable,
+    ngAfterViewInit: disable,
+    ngOnChanges: disable,
+    onChangesPositionUpdate: disable,
+    onChangesSdsPopoverTitleUpdate: disable,
+    onChangesSdsPopoverUpdate: disable,
+    onClick: disable,
+    onEscape: disable,
+    onKeySpace: disable,
+    onKeyUp: disable,
   },
 } as Meta;
+
+const exportedStories = {};
 
 const Template: Story<SdsPopoverDirective> = (args: SdsPopoverDirective) => {
   return {
@@ -71,8 +99,8 @@ Position.parameters = {
   actions: { disabled: true },
   preview: generateConfig(
     'components/tooltip-popover/demos/popover-position',
-    'ButtonGroupBasicModule',
-    'sds-button-group-demo'
+    'PopoverPositionModule',
+    'sds-popover-position'
   ),
 };
 
@@ -88,8 +116,8 @@ Title.parameters = {
   actions: { disabled: true },
   preview: generateConfig(
     'components/tooltip-popover/demos/popover-sds-popover-title',
-    'ButtonGroupBasicModule',
-    'sds-button-group-demo'
+    'PopoverSdsPopoverTitleModule',
+    'sds-popover-sds-popover-title'
   ),
 };
 
@@ -105,8 +133,8 @@ CloseOnContentClicked.parameters = {
   actions: { disabled: true },
   preview: generateConfig(
     'components/tooltip-popover/demos/popover-close-on-content-click',
-    'ButtonGroupBasicModule',
-    'sds-button-group-demo'
+    'PopoverCloseOnContentClickModule',
+    'sds-popover-close-on-content-click'
   ),
 };
 
@@ -122,7 +150,15 @@ CloseOnClickOutside.parameters = {
   actions: { disabled: true },
   preview: generateConfig(
     'components/tooltip-popover/demos/popover-close-on-click-outside',
-    'ButtonGroupBasicModule',
-    'sds-button-group-demo'
+    'PopoverCloseOnClickOutsideModule',
+    'sds-popover-close-on-click-outside'
   ),
 };
+
+export const __namedExportsOrder = [
+  'Configurable',
+  'CloseOnClickOutside',
+  'CloseOnContentClicked',
+  'Title',
+  'Position',
+];

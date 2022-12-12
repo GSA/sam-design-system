@@ -18,6 +18,6 @@ export const parameters = {
     inlineStories: true
   },
   options: {
-    showPanel: true
+    showPanel: true,
   }
 }

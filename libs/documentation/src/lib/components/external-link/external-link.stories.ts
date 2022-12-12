@@ -5,6 +5,12 @@ import { generateConfig } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { ExternalLinkHideIconModule } from './demos/external-link-hide-icon/external-link-hide-icon.module';
 import { ExternalLinkTargetModule } from './demos/external-link-target/external-link-target.module';
 
+const disable = {
+  table: {
+    disable: true,
+  },
+};
+
 export default {
   title: 'Components/External Link',
   component: ExternalLinkDirective,
@@ -13,6 +19,16 @@ export default {
       imports: [CommonModule, SdsExternalLinkDirectivesModule, ExternalLinkTargetModule, ExternalLinkHideIconModule],
     }),
   ],
+  argTypes: {
+    emailLinkKeyword: disable,
+    hrefAttr: disable,
+    internalLinks: disable,
+    relAttr: disable,
+    targetAttr: disable,
+    _getAriaLabel: disable,
+    createIcon: disable,
+    ngOnChanges: disable,
+  },
 } as Meta;
 
 const Template: Story<ExternalLinkDirective> = (args: ExternalLinkDirective) => ({
@@ -64,3 +80,9 @@ HideIcon.parameters = {
     'sds-button-group-demo'
   ),
 };
+
+export const __namedExportsOrder = [
+  'Configurable',
+  'HideIcon',
+  'Target',
+];
