@@ -8,7 +8,7 @@ import { PopoverPositionModule } from './demos/popover-position/popover-position
 import { PopoverSdsPopoverTitleModule } from './demos/popover-sds-popover-title/popover-sds-popover-title.module';
 
 export default {
-  title: 'Example/Popover',
+  title: 'Components/Popover',
   component: SdsPopoverDirective,
   decorators: [
     moduleMetadata({

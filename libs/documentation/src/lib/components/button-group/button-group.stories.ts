@@ -11,7 +11,7 @@ import { ButtonGroupCheckedModule } from './demos/button-group-checked/button-gr
 import { ButtonGroupModesModule } from './demos/button-group-modes/button-group-modes.module';
 
 export default {
-  title: 'Example/Button-Group',
+  title: 'Components/Button-Group',
   component: SdsButtonGroupComponent,
   subcomponents: {
     SdsButtonGroupOptionComponent,

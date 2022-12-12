@@ -12,7 +12,7 @@ declare var require: any;
 const overviewTemplate = require('!!raw-loader!./search-overview.html');
 
 export default {
-  title: 'Example/Search',
+  title: 'Components/Search',
   component: SdsSearchComponent,
   decorators: [
     moduleMetadata({

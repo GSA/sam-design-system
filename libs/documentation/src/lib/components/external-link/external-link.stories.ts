@@ -6,7 +6,7 @@ import { ExternalLinkHideIconModule } from './demos/external-link-hide-icon/exte
 import { ExternalLinkTargetModule } from './demos/external-link-target/external-link-target.module';
 
 export default {
-  title: 'Example/External Link',
+  title: 'Components/External Link',
   component: ExternalLinkDirective,
   decorators: [
     moduleMetadata({
