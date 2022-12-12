@@ -8,14 +8,17 @@
   },
   "exclude": [
     "../src/test.ts",
-    "../src/**/*.spec.ts",
-    "../projects/**/*.spec.ts"
+    "../apps/**/*.spec.ts",
+    "../apps/**/*.e2e-spec.ts",
+    "../libs/**/*.spec.ts",
   ],
   "include": [
-    "../src/**/*",
-    "../projects/**/*"
+    "../apps/**/*",
+    "../libs/**/*",
+    "../stories/**/*",
   ],
   "files": [
-    "./typings.d.ts"
+    "./typings.d.ts",
+    "../apps/sam-design-system-site/src/polyfills.ts"
   ]
 }

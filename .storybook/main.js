@@ -7,12 +7,11 @@ module.exports = {
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
-    // '@storybook/addon-interactions',
     '@storybook/addon-actions',
     'storybook-addon-preview/register',
   ],
   framework: '@storybook/angular',
   core: {
-    builder: '@storybook/builder-webpack5',
+    builder: 'webpack5',
   },
 };
