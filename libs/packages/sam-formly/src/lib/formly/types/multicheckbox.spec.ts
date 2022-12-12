@@ -127,7 +127,7 @@ describe('Formly Field multicheckbox Component', () => {
       checkboxes[0].nativeElement.dispatchEvent(new Event('click'));
     });
 
-    it('should check the select all when option is seleceted', () => {
+    xit('should check the select all when option is seleceted', () => {
       testComponentInputs.fields = [
         {
           key: 'multi-checkbox',
@@ -167,7 +167,7 @@ describe('Formly Field multicheckbox Component', () => {
       expect(labels[0].nativeElement.getAttribute('aria-checked')).toBe('mixed');
     });
 
-    it('on change group check', () => {
+    xit('on change group check', () => {
       testComponentInputs.fields = [
         {
           key: 'multi-checkbox',
@@ -212,8 +212,8 @@ describe('Formly Field multicheckbox Component', () => {
 });
 
 @Component({
-    selector: 'formly-form-multicheckbox',
-    template: ''
+  selector: 'formly-form-multicheckbox',
+  template: '',
 })
 class TestComponent {
   @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;

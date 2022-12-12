@@ -16,36 +16,36 @@ import { NgxBootstrapIconsModule, github } from 'ngx-bootstrap-icons';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
-    declarations: [AppComponent],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        SdsToastModule,
-        ToastrModule.forRoot(SdsToastSettings),
-        RouterModule.forRoot(ROUTES, {
-            scrollPositionRestoration: 'enabled',
-            relativeLinkResolution: 'legacy',
-            anchorScrolling: 'enabled',
-        }),
-        FormsModule,
-        MarkdownModule.forRoot(),
-        IconModule,
-        NgxBootstrapIconsModule.pick({ github }),
-    ],
-    providers: [
-        { provide: LocationStrategy, useClass: PathLocationStrategy },
-        {
-            provide: HIGHLIGHT_OPTIONS,
-            useValue: {
-                coreLibraryLoader: () => import('highlight.js/lib/highlight'),
-                languages: {
-                    xml: () => import('highlight.js/lib/languages/xml'),
-                    typescript: () => import('highlight.js/lib/languages/typescript'),
-                    scss: () => import('highlight.js/lib/languages/scss'),
-                },
-            },
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    SdsToastModule,
+    ToastrModule.forRoot(SdsToastSettings),
+    RouterModule.forRoot(ROUTES, {
+      scrollPositionRestoration: 'enabled',
+      relativeLinkResolution: 'legacy',
+      anchorScrolling: 'enabled',
+    }),
+    FormsModule,
+    MarkdownModule.forRoot(),
+    IconModule,
+    NgxBootstrapIconsModule.pick({ github }),
+  ],
+  providers: [
+    { provide: LocationStrategy, useClass: PathLocationStrategy },
+    {
+      provide: HIGHLIGHT_OPTIONS,
+      useValue: {
+        coreLibraryLoader: () => import('highlight.js/lib/highlight'),
+        languages: {
+          xml: () => import('highlight.js/lib/languages/xml'),
+          typescript: () => import('highlight.js/lib/languages/typescript'),
+          scss: () => import('highlight.js/lib/languages/scss'),
         },
-    ],
-    bootstrap: [AppComponent]
+      },
+    },
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

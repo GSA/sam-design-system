@@ -4,9 +4,9 @@ import { CommonModule } from '@angular/common';
 import { SdsStepArrowComponent } from './step-arrow.component';
 
 @NgModule({
-    imports: [CommonModule],
-    exports: [SdsStepArrowComponent],
-    declarations: [SdsStepArrowComponent],
-    providers: []
+  imports: [CommonModule],
+  exports: [SdsStepArrowComponent],
+  declarations: [SdsStepArrowComponent],
+  providers: [],
 })
 export class SdsStepArrowModule {}

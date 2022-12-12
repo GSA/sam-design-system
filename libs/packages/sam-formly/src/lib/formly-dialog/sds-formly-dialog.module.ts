@@ -9,16 +9,16 @@ import { SdsFormlyDialogComponent } from './formly-dialog.component';
 import { SdsFiltersModule } from '../formly-filters/sds-filters.module';
 
 @NgModule({
-    declarations: [SdsFormlyDialogComponent],
-    imports: [
-        CommonModule,
-        SdsFiltersModule,
-        SdsDialogModule,
-        ReactiveFormsModule,
-        SdsFormlyModule,
-        FormlyModule,
-        FormsModule,
-    ],
-    exports: [SdsFormlyDialogComponent]
+  declarations: [SdsFormlyDialogComponent],
+  imports: [
+    CommonModule,
+    SdsFiltersModule,
+    SdsDialogModule,
+    ReactiveFormsModule,
+    SdsFormlyModule,
+    FormlyModule,
+    FormsModule,
+  ],
+  exports: [SdsFormlyDialogComponent],
 })
 export class SdsFormlyDialogModule {}

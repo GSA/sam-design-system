@@ -5,9 +5,9 @@ import { SdsDialogModule } from '@gsa-sam/components';
 import { DialogNested, DialogOverviewExampleDialog, NestedDialogComponent } from './dialog-nested.component';
 
 @NgModule({
-    imports: [CommonModule, FormsModule, SdsDialogModule],
-    exports: [DialogNested],
-    bootstrap: [DialogNested],
-    declarations: [DialogNested, DialogOverviewExampleDialog, NestedDialogComponent]
+  imports: [CommonModule, FormsModule, SdsDialogModule],
+  exports: [DialogNested],
+  bootstrap: [DialogNested],
+  declarations: [DialogNested, DialogOverviewExampleDialog, NestedDialogComponent],
 })
 export class DialogNestedModule {}

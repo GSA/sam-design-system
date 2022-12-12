@@ -36,10 +36,11 @@ export class FilterService {
               tabHeader: 'Simple Search',
             },
             fieldGroupClassName: 'grid-row',
+            className: ' margin-top-0',
             fieldGroup: [
               {
                 key: 'keywordRadio',
-                className: 'grid-col-5',
+                className: 'grid-col-5 margin-top-0',
                 type: 'radio',
                 defaultValue: 'anyWords',
                 templateOptions: {
@@ -93,11 +94,12 @@ export class FilterService {
               tabHeader: 'Search Editor',
               submitButtonId: 'booleanSearchSubmit',
             },
+            className: ' margin-top-0',
             fieldGroup: [
               {
                 key: 'keywordTextarea',
                 type: SdsFormlyTypes.TEXTAREA,
-                className: 'display-block padding-left-2 padding-right-2',
+                className: 'display-block padding-left-2 padding-right-2 ',
                 templateOptions: {
                   placeholder: 'e.g. ((rental AND property) OR (lease and property) AND NOT ( "short term"))',
                   required: true,
@@ -119,11 +121,13 @@ export class FilterService {
     },
     {
       key: 'searchEntity',
+      className: 'margin-top-0',
       templateOptions: { label: 'Entity', group: 'accordion' },
       fieldGroup: [
         {
           key: 'legalBusinessName',
           type: 'input',
+
           templateOptions: {
             type: 'text',
             hideOptional: true,
@@ -194,7 +198,7 @@ export class FilterService {
       key: 'startDate',
       type: 'datepicker',
       templateOptions: {
-        group: 'accordion',
+        group: 'panel',
         hideOptional: true,
         label: 'Date',
       },
@@ -209,7 +213,7 @@ export class FilterService {
     },
     {
       key: 'socioEconomicStatus',
-      type: 'input',
+      type: 'select',
       templateOptions: {
         label: 'Socio-Economic Status',
         group: 'accordion',
@@ -217,7 +221,6 @@ export class FilterService {
     },
     {
       key: 'serviceClassifications',
-
       templateOptions: {
         label: 'NAICS and Product Service Codes',
         group: 'accordion',
@@ -226,6 +229,7 @@ export class FilterService {
         {
           key: 'naicsCode',
           type: 'input',
+
           templateOptions: {
             type: 'text',
             hideOptional: true,
@@ -247,6 +251,7 @@ export class FilterService {
     {
       key: 'location',
       templateOptions: { label: 'Location', group: 'accordion' },
+
       fieldGroup: [
         {
           key: 'country',
@@ -301,10 +306,11 @@ export class FilterService {
     {
       key: 'status',
       templateOptions: { label: 'Status', group: 'accordion' },
+
       fieldGroup: [
         {
           key: 'registrationStatus',
-          type: 'multicheckbox',
+          type: 'radio',
           templateOptions: {
             options: [
               {
@@ -315,6 +321,100 @@ export class FilterService {
                 key: 'Inactive',
                 value: 'Inactive',
               },
+            ],
+          },
+        },
+      ],
+    },
+    {
+      key: 'status',
+
+      templateOptions: { label: 'Entity Status', group: 'accordion' },
+      fieldGroup: [
+        {
+          key: 'statusId',
+          id: 'status',
+          type: 'multicheckbox',
+
+          templateOptions: {
+            label: 'Entity Status',
+            labelClass: 'usa-sr-only',
+            hideOptional: true,
+            options: [
+              {
+                key: '1,2',
+                value: 'Work in Progress Registration',
+              },
+              {
+                key: '3',
+                value: 'Submitted Registration',
+              },
+              {
+                key: '4',
+                value: 'Active Registration',
+              },
+              {
+                key: '7',
+                value: 'Inactive Registration',
+              },
+              {
+                key: '12',
+                value: 'ID Assigned',
+              },
+            ],
+          },
+        },
+      ],
+    },
+    {
+      key: 'requestTypesOptions',
+
+      templateOptions: { group: 'panel' },
+      fieldGroup: [
+        {
+          key: 'requestType',
+          id: 'requestType',
+          type: 'radio',
+          className: 'margin-top-0',
+          defaultValue: 'myexclusions',
+          templateOptions: {
+            label: 'Exclusions Type',
+            hideOptional: true,
+            options: [
+              {
+                label: 'Agency Exclusions',
+                value: 'myagencyexclusions',
+                tooltipText: 'Search results will contain all Agency Exclusions.',
+              },
+              {
+                label: 'My Exclusions',
+                value: 'myexclusions',
+                tooltipText: 'Search results will contain all your Exclusions.',
+              },
+            ],
+          },
+        },
+      ],
+    },
+    {
+      key: 'expirationDate',
+      templateOptions: { label: 'Expiration Date', group: 'accordion' },
+      fieldGroup: [
+        {
+          key: 'expirationDays',
+          id: 'exp',
+          type: 'radio',
+          templateOptions: {
+            label: 'Expiration Date',
+
+            labelClass: 'margin-bottom-1',
+            hideOptional: true,
+            defaultValue: null,
+            options: [
+              { label: '30 Days', value: '30' },
+              { label: '60 Days', value: '60' },
+              { label: '90 Days', value: '90' },
+              { label: 'All Registrations', value: null },
             ],
           },
         },
