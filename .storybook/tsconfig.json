@@ -15,7 +15,6 @@
   "include": [
     "../apps/**/*",
     "../libs/**/*",
-    "../stories/**/*",
   ],
   "files": [
     "./typings.d.ts",
