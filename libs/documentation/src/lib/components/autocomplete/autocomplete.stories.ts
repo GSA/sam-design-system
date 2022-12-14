@@ -25,7 +25,7 @@ const disabled = {
 };
 
 export default {
-  title: 'Example/Autocomplete',
+  title: 'Components/Autocomplete',
   component: SDSAutocompleteComponent,
   decorators: [
     moduleMetadata({
