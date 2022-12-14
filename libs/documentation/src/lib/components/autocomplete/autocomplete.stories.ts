@@ -73,122 +73,122 @@ export default {
       },
       description: 'Mode of the model either allows a single item or multiple items',
       table: {
-        category: 'configuration'
+        category: 'configuration',
       },
     },
     primaryKeyField: {
       description: 'This is the primary field used to identify each object in the results',
       table: {
-        category: 'configuration'
+        category: 'configuration',
       },
     },
     id: {
       description: 'Used for the Id of the control',
       table: {
-        category: 'configuration'
+        category: 'configuration',
       },
     },
     primaryTextField: {
       description: 'Property from supplied model used for the top part of the basic template',
       table: {
-        category: 'configuration'
+        category: 'configuration',
       },
     },
     secondaryTextField: {
       description: 'Property from supplied model used for the bottom part of the basic template',
       table: {
-        category: 'configuration'
+        category: 'configuration',
       },
     },
     labelText: {
       description: 'Used to describe the drop down (Text should match the label that will be supplied)',
       table: {
-        category: 'configuration'
+        category: 'configuration',
       },
     },
     autocompletePlaceHolderText: {
       description: 'Place holder text for autocomplete input',
       table: {
-        category: 'configuration'
+        category: 'configuration',
       },
     },
     debounceTime: {
       description: 'Sets the time waited for addional key actions Default is 250 milliseconds',
       table: {
-        category: 'configuration'
+        category: 'configuration',
       },
     },
     minimumCharacterCountSearch: {
       description: 'Mininumn Characters for search',
       table: {
-        category: 'configuration'
+        category: 'configuration',
       },
     },
     isFreeTextEnabled: {
       description: 'Allows option to allow user text not in the standard results',
       table: {
-        category: 'configuration'
+        category: 'configuration',
       },
     },
     freeTextSubtext: {
       description: 'Text appeneded ad the end of free text',
       table: {
-        category: 'configuration'
+        category: 'configuration',
       },
     },
     focusInSearch: {
       description: 'Focus into autocomplete search',
       table: {
-        category: 'configuration'
+        category: 'configuration',
       },
     },
     ariaLabelText: {
       description: 'The aria-label for the auto-complete',
       table: {
-        category: 'configuration'
+        category: 'configuration',
       },
     },
     isTagModeEnabled: {
       description: 'To enable the tag mode',
       table: {
-        category: 'configuration'
+        category: 'configuration',
       },
     },
     inputReadOnly: {
       description: 'To make input readonly',
       table: {
-        category: 'configuration'
+        category: 'configuration',
       },
     },
     groupByChild: {
       description: 'Name of the children filed',
       table: {
-        category: 'configuration'
+        category: 'configuration',
       },
     },
     isGroupingEnabled: {
       description: 'To enable the Grouping mode',
       table: {
-        category: 'configuration'
+        category: 'configuration',
       },
     },
     isSelectableGroup: {
       description: 'To enable the Group item selectable',
       table: {
-        category: 'configuration'
+        category: 'configuration',
       },
     },
     hideChips: {
       description:
         'Toggle whether or not to display chips. This can be useful if some custom UI is used for rendering autocomplete values in multi-select mode',
-        table: {
-          category: 'configuration'
-        },
+      table: {
+        category: 'configuration',
+      },
     },
     hideCloseIcon: {
       description: '',
       table: {
-        category: 'configuration'
+        category: 'configuration',
       },
     },
   },
