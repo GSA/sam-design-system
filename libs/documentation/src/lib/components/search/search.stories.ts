@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SdsSearchComponent, SdsSearchModule } from '@gsa-sam/components';
+import { SdsSearchComponent, SdsSearchModule, SearchSettings } from '@gsa-sam/components';
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
 import { SearchSizeModule } from './demos/search-size/search-size.module';
 import { SearchPlaceholderModule } from './demos/search-placeholder/search-placeholder.module';
@@ -69,23 +69,112 @@ export default {
     buttonEl: disable,
     inputEl: disable,
     selectEl: disable,
+    searchSettings: disable,
+    placeholder: {
+      description: '',
+      table: {
+        category: 'searchSettings'
+      }
+    },
+    isSuffixSearchIcon: {
+      description: '',
+      table: {
+        category: 'searchSettings'
+      }
+    },
+    size: {
+      control: {
+        options: ['small', 'large'],
+        type: 'select', // Type 'select' is automatically inferred when 'options' is defined
+      },
+      description: '',
+      table: {
+        category: 'searchSettings'
+      }
+    },
+    inputClass: {
+      description: '',
+      table: {
+        category: 'searchSettings'
+      }
+    },
+    parentSelector: {
+      description: '',
+      table: {
+        category: 'searchSettings'
+      }
+    },
+    id: {
+      description: '',
+      table: {
+        category: 'searchSettings'
+      }
+    },
+    ariaLabel: {
+      description: '',
+      table: {
+        category: 'searchSettings'
+      }
+    },
   },
 } as Meta;
 
-const Template: Story<SdsSearchComponent> = (args: SdsSearchComponent) => ({
+const searchSettingsFunction = (
+  placeholder?: string,
+  isSuffixSearchIcon?: boolean,
+  size?: string,
+  inputClass?: string,
+  parentSelector?: string,
+  id?: string,
+  ariaLabel?: string
+) => {
+  const toReturn = new SearchSettings();
+  toReturn.placeholder = placeholder ?? 'Search';
+  toReturn.isSuffixSearchIcon = isSuffixSearchIcon ?? false;
+  toReturn.size = size;
+  toReturn.inputClass = inputClass;
+  toReturn.parentSelector = parentSelector;
+  toReturn.id = id;
+  toReturn.ariaLabel = ariaLabel ?? 'Search';
+  return toReturn;
+};
+
+const Template: Story<SearchSettings> = (args: SearchSettings) => {
+  const {
+    placeholder,
+    isSuffixSearchIcon,
+    size,
+    inputClass,
+    parentSelector,
+    id,
+    ariaLabel
+  } = args;
+  const settings = searchSettingsFunction(
+    placeholder,
+    isSuffixSearchIcon,
+    size,
+    inputClass,
+    parentSelector,
+    id,
+    ariaLabel
+  );
+  return {
   template: `
-  <sds-search [(ngModel)]="model" (submit)="onSubmit($event)" (ngModelChange)="modelChange($event)" [searchSettings]="searchSettings"
+    <sds-search [(ngModel)]="model" (submit)="onSubmit($event)" (ngModelChange)="modelChange($event)" [searchSettings]="settings"
   ></sds-search>
     <p>Model: {{model | json}}</p>
   `,
   props: {
+    // ...args
     // Must do as destructive args leads to props such as onChange not being found.
     onSubmit: args['onSubmit'],
     modelChange: args['modelChange'],
     searchSettings: args['searchSettings'],
     model: args['model'],
+    settings: settings,
   },
-});
+  }
+}
 
 export const Configurable = Template.bind({});
 Configurable.args = {
@@ -98,6 +187,13 @@ Configurable.args = {
     id: 'searchBasic',
     ariaLabel: 'Basic Search',
   },
+  placeholder: '',
+  isSuffixSearchIcon: false,
+  size: '',
+  inputClass: '',
+  parentSelector: '',
+  id: '',
+  ariaLabel: '',
   model: {},
 };
 Configurable.parameters = {
