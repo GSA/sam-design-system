@@ -101,9 +101,4 @@ Checked.parameters = {
   ),
 };
 
-
-export const __namedExportsOrder = [
-  'Configurable',
-  'Checked',
-  'Modes',
-];
+export const __namedExportsOrder = ['Configurable', 'Checked', 'Modes'];

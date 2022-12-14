@@ -10,7 +10,7 @@ import { PopoverSdsPopoverTitleModule } from './demos/popover-sds-popover-title/
 const disable = {
   table: {
     disable: true,
-  }
+  },
 };
 export default {
   title: 'Components/Popover',

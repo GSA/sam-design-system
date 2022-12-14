@@ -73,14 +73,14 @@ export default {
     placeholder: {
       description: '',
       table: {
-        category: 'searchSettings'
-      }
+        category: 'searchSettings',
+      },
     },
     isSuffixSearchIcon: {
       description: '',
       table: {
-        category: 'searchSettings'
-      }
+        category: 'searchSettings',
+      },
     },
     size: {
       control: {
@@ -89,32 +89,32 @@ export default {
       },
       description: '',
       table: {
-        category: 'searchSettings'
-      }
+        category: 'searchSettings',
+      },
     },
     inputClass: {
       description: '',
       table: {
-        category: 'searchSettings'
-      }
+        category: 'searchSettings',
+      },
     },
     parentSelector: {
       description: '',
       table: {
-        category: 'searchSettings'
-      }
+        category: 'searchSettings',
+      },
     },
     id: {
       description: '',
       table: {
-        category: 'searchSettings'
-      }
+        category: 'searchSettings',
+      },
     },
     ariaLabel: {
       description: '',
       table: {
-        category: 'searchSettings'
-      }
+        category: 'searchSettings',
+      },
     },
   },
 } as Meta;
@@ -140,15 +140,7 @@ const searchSettingsFunction = (
 };
 
 const Template: Story<SearchSettings> = (args: SearchSettings) => {
-  const {
-    placeholder,
-    isSuffixSearchIcon,
-    size,
-    inputClass,
-    parentSelector,
-    id,
-    ariaLabel
-  } = args;
+  const { placeholder, isSuffixSearchIcon, size, inputClass, parentSelector, id, ariaLabel } = args;
   const settings = searchSettingsFunction(
     placeholder,
     isSuffixSearchIcon,
@@ -159,22 +151,22 @@ const Template: Story<SearchSettings> = (args: SearchSettings) => {
     ariaLabel
   );
   return {
-  template: `
+    template: `
     <sds-search [(ngModel)]="model" (submit)="onSubmit($event)" (ngModelChange)="modelChange($event)" [searchSettings]="settings"
   ></sds-search>
     <p>Model: {{model | json}}</p>
   `,
-  props: {
-    // ...args
-    // Must do as destructive args leads to props such as onChange not being found.
-    onSubmit: args['onSubmit'],
-    modelChange: args['modelChange'],
-    searchSettings: args['searchSettings'],
-    model: args['model'],
-    settings: settings,
-  },
-  }
-}
+    props: {
+      // ...args
+      // Must do as destructive args leads to props such as onChange not being found.
+      onSubmit: args['onSubmit'],
+      modelChange: args['modelChange'],
+      searchSettings: args['searchSettings'],
+      model: args['model'],
+      settings: settings,
+    },
+  };
+};
 
 export const Configurable = Template.bind({});
 Configurable.args = {
@@ -248,10 +240,4 @@ export const Overview = () => ({
 });
 Overview.parameters = { options: { showPanel: false } };
 
-export const __namedExportsOrder = [
-  'Overview',
-  'Configurable',
-  'Dropdown',
-  'Placeholder',
-  'Size',
-];
+export const __namedExportsOrder = ['Overview', 'Configurable', 'Dropdown', 'Placeholder', 'Size'];

@@ -81,8 +81,4 @@ HideIcon.parameters = {
   ),
 };
 
-export const __namedExportsOrder = [
-  'Configurable',
-  'HideIcon',
-  'Target',
-];
+export const __namedExportsOrder = ['Configurable', 'HideIcon', 'Target'];
