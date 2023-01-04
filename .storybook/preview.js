@@ -1,3 +1,4 @@
+import { stackblitzLink } from './decorators/stackblitz-link';
 import {
   setCompodocJson
 } from "@storybook/addon-docs/angular";
@@ -21,3 +22,7 @@ export const parameters = {
     showPanel: true,
   }
 }
+
+export const decorators = [
+  stackblitzLink
+];

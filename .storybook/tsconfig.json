@@ -11,6 +11,7 @@
     "../apps/**/*.spec.ts",
     "../apps/**/*.e2e-spec.ts",
     "../libs/**/*.spec.ts",
+    "../libs/documentation/src/sandbox/templates/*"
   ],
   "include": [
     "../apps/**/*",
