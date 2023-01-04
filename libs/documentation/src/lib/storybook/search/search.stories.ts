@@ -203,7 +203,7 @@ Size.parameters = {
   },
   actions: { disabled: true },
   preview: generateConfig('storybook/search/search-size', 'ButtonGroupBasicModule', 'sds-button-group-demo'),
-  stackblitzLink: generateStackblitzLink('search', 'search-size')
+  stackblitzLink: generateStackblitzLink('search', 'search-size'),
 };
 
 export const Placeholder: Story = (args) => ({
@@ -216,12 +216,8 @@ Placeholder.parameters = {
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
-  preview: generateConfig(
-    'storybook/search/search-placeholder',
-    'ButtonGroupBasicModule',
-    'sds-button-group-demo'
-  ),
-  stackblitzLink: generateStackblitzLink('search', 'search-placeholder')
+  preview: generateConfig('storybook/search/search-placeholder', 'ButtonGroupBasicModule', 'sds-button-group-demo'),
+  stackblitzLink: generateStackblitzLink('search', 'search-placeholder'),
 };
 
 export const Dropdown: Story = (args) => ({
@@ -235,7 +231,7 @@ Dropdown.parameters = {
   },
   actions: { disabled: true },
   preview: generateConfig('storybook/search/search-dropdown', 'ButtonGroupBasicModule', 'sds-button-group-demo'),
-  stackblitzLink: generateStackblitzLink('search', 'search-dropdown')
+  stackblitzLink: generateStackblitzLink('search', 'search-dropdown'),
 };
 
 export const Overview = () => ({

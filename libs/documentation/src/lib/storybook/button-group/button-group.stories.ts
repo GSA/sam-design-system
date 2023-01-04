@@ -80,7 +80,7 @@ Modes.parameters = {
     'ButtonGroupModesModule',
     'sds-button-group-modes'
   ),
-  stackblitzLink: generateStackblitzLink('button-group', 'modes')
+  stackblitzLink: generateStackblitzLink('button-group', 'modes'),
 };
 
 export const Checked: Story = (args) => ({
@@ -100,7 +100,7 @@ Checked.parameters = {
     'ButtonGroupBasicModule',
     'sds-button-group-checked'
   ),
-  stackblitzLink: generateStackblitzLink('button-group', 'checked')
+  stackblitzLink: generateStackblitzLink('button-group', 'checked'),
 };
 
 export const __namedExportsOrder = ['Configurable', 'Checked', 'Modes'];

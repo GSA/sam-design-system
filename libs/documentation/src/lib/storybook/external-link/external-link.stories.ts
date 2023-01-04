@@ -62,7 +62,7 @@ Target.parameters = {
     'ButtonGroupBasicModule',
     'sds-button-group-demo'
   ),
-  stackblitzLink: generateStackblitzLink('external-link', 'external-link-target')
+  stackblitzLink: generateStackblitzLink('external-link', 'external-link-target'),
 };
 
 export const HideIcon: Story = (args) => ({
@@ -80,7 +80,7 @@ HideIcon.parameters = {
     'ButtonGroupBasicModule',
     'sds-button-group-demo'
   ),
-  stackblitzLink: generateStackblitzLink('external-link', 'external-link-hide-icon')
+  stackblitzLink: generateStackblitzLink('external-link', 'external-link-hide-icon'),
 };
 
 export const __namedExportsOrder = ['Configurable', 'HideIcon', 'Target'];
