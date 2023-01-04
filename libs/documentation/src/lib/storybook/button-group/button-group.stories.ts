@@ -6,9 +6,9 @@ import {
   SdsButtonGroupOptionComponent,
 } from '@gsa-sam/sam-material-extensions';
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
-import { generateConfig } from 'libs/documentation/src/sandbox/sandbox-utils';
-import { ButtonGroupCheckedModule } from './demos/button-group-checked/button-group-checked.module';
-import { ButtonGroupModesModule } from './demos/button-group-modes/button-group-modes.module';
+import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
+import { ButtonGroupCheckedModule } from './button-group-checked/button-group-checked.module';
+import { ButtonGroupModesModule } from './button-group-modes/button-group-modes.module';
 
 const disable = {
   table: {
@@ -76,10 +76,11 @@ Modes.parameters = {
   },
   actions: { disabled: true },
   preview: generateConfig(
-    'components/button-group/demos/button-group-modes',
-    'ButtonGroupBasicModule',
-    'sds-button-group-demo'
+    'storybook/button-group/button-group-modes',
+    'ButtonGroupModesModule',
+    'sds-button-group-modes'
   ),
+  stackblitzLink: generateStackblitzLink('button-group', 'modes')
 };
 
 export const Checked: Story = (args) => ({
@@ -95,10 +96,11 @@ Checked.parameters = {
   },
   actions: { disabled: true },
   preview: generateConfig(
-    'components/button-group/demos/button-group-checked',
+    'storybook/button-group/button-group-checked',
     'ButtonGroupBasicModule',
-    'sds-button-group-demo'
+    'sds-button-group-checked'
   ),
+  stackblitzLink: generateStackblitzLink('button-group', 'checked')
 };
 
 export const __namedExportsOrder = ['Configurable', 'Checked', 'Modes'];

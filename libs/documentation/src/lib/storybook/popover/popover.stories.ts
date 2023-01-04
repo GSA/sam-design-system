@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { SdsPopoverDirective, SdsPopoverModule } from '@gsa-sam/components';
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
-import { generateConfig } from 'libs/documentation/src/sandbox/sandbox-utils';
-import { PopoverCloseOnClickOutsideModule } from './demos/popover-close-on-click-outside/popover-close-on-click-outside.module';
-import { PopoverCloseOnContentClickModule } from './demos/popover-close-on-content-click/popover-close-on-content-click.module';
-import { PopoverPositionModule } from './demos/popover-position/popover-position.module';
-import { PopoverSdsPopoverTitleModule } from './demos/popover-sds-popover-title/popover-sds-popover-title.module';
+import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
+import { PopoverCloseOnClickOutsideModule } from './popover-close-on-click-outside/popover-close-on-click-outside.module';
+import { PopoverCloseOnContentClickModule } from './popover-close-on-content-click/popover-close-on-content-click.module';
+import { PopoverPositionModule } from './popover-position/popover-position.module';
+import { PopoverTitleModule } from './popover-title/popover-title.module';
 
 const disable = {
   table: {
@@ -23,7 +23,7 @@ export default {
         PopoverCloseOnClickOutsideModule,
         PopoverPositionModule,
         PopoverCloseOnContentClickModule,
-        PopoverSdsPopoverTitleModule,
+        PopoverTitleModule,
       ],
     }),
   ],
@@ -98,14 +98,15 @@ Position.parameters = {
   },
   actions: { disabled: true },
   preview: generateConfig(
-    'components/tooltip-popover/demos/popover-position',
+    'storybook/popover/popover-position',
     'PopoverPositionModule',
     'sds-popover-position'
   ),
+  stackblitzLink: generateStackblitzLink('tooltip-popover', 'popover-position')
 };
 
 export const Title: Story = (args) => ({
-  template: `<sds-popover-sds-popover-title></sds-popover-sds-popover-title>`,
+  template: `<popover-title></popover-title>`,
   props: args,
 });
 Title.parameters = {
@@ -115,10 +116,11 @@ Title.parameters = {
   },
   actions: { disabled: true },
   preview: generateConfig(
-    'components/tooltip-popover/demos/popover-sds-popover-title',
+    'storybook/popover/popover-title',
     'PopoverSdsPopoverTitleModule',
     'sds-popover-sds-popover-title'
   ),
+  stackblitzLink: generateStackblitzLink('tooltip-popover', 'popover-title')
 };
 
 export const CloseOnContentClicked: Story = (args) => ({
@@ -132,10 +134,11 @@ CloseOnContentClicked.parameters = {
   },
   actions: { disabled: true },
   preview: generateConfig(
-    'components/tooltip-popover/demos/popover-close-on-content-click',
+    'storybook/popover/popover-close-on-content-click',
     'PopoverCloseOnContentClickModule',
     'sds-popover-close-on-content-click'
   ),
+  stackblitzLink: generateStackblitzLink('tooltip-popover', 'popover-close-on-content-click')
 };
 
 export const CloseOnClickOutside: Story = (args) => ({
@@ -149,10 +152,11 @@ CloseOnClickOutside.parameters = {
   },
   actions: { disabled: true },
   preview: generateConfig(
-    'components/tooltip-popover/demos/popover-close-on-click-outside',
+    'storybook/popover/popover-close-on-click-outside',
     'PopoverCloseOnClickOutsideModule',
     'sds-popover-close-on-click-outside'
   ),
+  stackblitzLink: generateStackblitzLink('tooltip-popover', 'popover-close-on-click-outside')
 };
 
 export const __namedExportsOrder = [

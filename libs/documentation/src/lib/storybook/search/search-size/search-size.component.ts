@@ -6,9 +6,11 @@ import { Component } from '@angular/core';
 })
 export class SearchSizeComponent {
   searchSettings = {
+    placeholder: 'eg: Acme Corporation',
     size: 'small',
   };
   largeSearchSettings = {
+    placeholder: 'eg: Acme Corporation',
     size: 'large',
   };
 }

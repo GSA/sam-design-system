@@ -2,10 +2,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SdsSearchComponent, SdsSearchModule, SearchSettings } from '@gsa-sam/components';
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
-import { SearchSizeModule } from './demos/search-size/search-size.module';
-import { SearchPlaceholderModule } from './demos/search-placeholder/search-placeholder.module';
-import { generateConfig } from 'libs/documentation/src/sandbox/sandbox-utils';
-import { SearchDropdownModule } from './demos/search-dropdown/search-dropdown.module';
+import { SearchSizeModule } from './search-size/search-size.module';
+import { SearchPlaceholderModule } from './search-placeholder/search-placeholder.module';
+import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
+import { SearchDropdownModule } from './search-dropdown/search-dropdown.module';
 
 declare var require: any;
 
@@ -154,7 +154,7 @@ const Template: Story<SearchSettings> = (args: SearchSettings) => {
     template: `
     <sds-search [(ngModel)]="model" (submit)="onSubmit($event)" (ngModelChange)="modelChange($event)" [searchSettings]="settings"
   ></sds-search>
-    <p>Model: {{model | json}}</p>
+    <pre>Model: {{model | json}}</pre>
   `,
     props: {
       // ...args
@@ -202,7 +202,8 @@ Size.parameters = {
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
-  preview: generateConfig('components/search/demos/search-size', 'ButtonGroupBasicModule', 'sds-button-group-demo'),
+  preview: generateConfig('storybook/search/search-size', 'ButtonGroupBasicModule', 'sds-button-group-demo'),
+  stackblitzLink: generateStackblitzLink('search', 'search-size')
 };
 
 export const Placeholder: Story = (args) => ({
@@ -216,10 +217,11 @@ Placeholder.parameters = {
   },
   actions: { disabled: true },
   preview: generateConfig(
-    'components/search/demos/search-placeholder',
+    'storybook/search/search-placeholder',
     'ButtonGroupBasicModule',
     'sds-button-group-demo'
   ),
+  stackblitzLink: generateStackblitzLink('search', 'search-placeholder')
 };
 
 export const Dropdown: Story = (args) => ({
@@ -232,7 +234,8 @@ Dropdown.parameters = {
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
-  preview: generateConfig('components/search/demos/search-dropdown', 'ButtonGroupBasicModule', 'sds-button-group-demo'),
+  preview: generateConfig('storybook/search/search-dropdown', 'ButtonGroupBasicModule', 'sds-button-group-demo'),
+  stackblitzLink: generateStackblitzLink('search', 'search-dropdown')
 };
 
 export const Overview = () => ({

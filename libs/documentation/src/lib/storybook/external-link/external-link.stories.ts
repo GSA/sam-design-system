@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ExternalLinkDirective, SdsExternalLinkDirectivesModule } from '@gsa-sam/components';
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
-import { generateConfig } from 'libs/documentation/src/sandbox/sandbox-utils';
-import { ExternalLinkHideIconModule } from './demos/external-link-hide-icon/external-link-hide-icon.module';
-import { ExternalLinkTargetModule } from './demos/external-link-target/external-link-target.module';
+import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
+import { ExternalLinkHideIconModule } from './external-link-hide-icon/external-link-hide-icon.module';
+import { ExternalLinkTargetModule } from './external-link-target/external-link-target.module';
 
 const disable = {
   table: {
@@ -58,10 +58,11 @@ Target.parameters = {
   },
   actions: { disabled: true },
   preview: generateConfig(
-    'components/external-link/demos/external-link-target',
+    'storybook/external-link/external-link-target',
     'ButtonGroupBasicModule',
     'sds-button-group-demo'
   ),
+  stackblitzLink: generateStackblitzLink('external-link', 'external-link-target')
 };
 
 export const HideIcon: Story = (args) => ({
@@ -75,10 +76,11 @@ HideIcon.parameters = {
   },
   actions: { disabled: true },
   preview: generateConfig(
-    'components/external-link/demos/external-link-hide-icon',
+    'storybook/external-link/external-link-hide-icon',
     'ButtonGroupBasicModule',
     'sds-button-group-demo'
   ),
+  stackblitzLink: generateStackblitzLink('external-link', 'external-link-hide-icon')
 };
 
 export const __namedExportsOrder = ['Configurable', 'HideIcon', 'Target'];

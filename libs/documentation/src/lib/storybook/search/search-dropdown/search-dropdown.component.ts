@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
 })
 export class SearchDropdownComponent {
   searchSettings = {
+    placeholder: 'eg: Acme Corporation',
     dropdown: {
       id: 'ddSearchOptions',
       options: [

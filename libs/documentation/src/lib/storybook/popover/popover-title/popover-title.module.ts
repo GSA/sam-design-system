@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SdsPopoverModule } from '@gsa-sam/components';
-import { PopoverSdsPopoverTitleComponent } from './popover-sds-popover-title.component';
+import { PopoverTitleComponent } from './popover-title.component';
 import { IconModule, StackedIconModule } from '@gsa-sam/ngx-uswds-icons';
 import { NgxBootstrapIconsModule, caretDownSquare, squareFill, handThumbsDown } from 'ngx-bootstrap-icons';
 
@@ -17,8 +17,8 @@ import { NgxBootstrapIconsModule, caretDownSquare, squareFill, handThumbsDown } 
       handThumbsDown,
     }),
   ],
-  declarations: [PopoverSdsPopoverTitleComponent],
-  exports: [PopoverSdsPopoverTitleComponent],
-  bootstrap: [PopoverSdsPopoverTitleComponent],
+  declarations: [PopoverTitleComponent],
+  exports: [PopoverTitleComponent],
+  bootstrap: [PopoverTitleComponent],
 })
-export class PopoverSdsPopoverTitleModule {}
+export class PopoverTitleModule {}
