@@ -11,12 +11,5 @@ module.exports = {
   framework: '@storybook/angular',
   core: {
     builder: 'webpack5',
-  },
-  // refs: {
-  //   'ngx-uswds': {
-  //     title: "NGX-USWDS",
-  //     url: "https://gsa.github.io/ngx-uswds",
-  //     // expanded: false // optional, true by default
-  //   }
-  //  }
+  }
 };
