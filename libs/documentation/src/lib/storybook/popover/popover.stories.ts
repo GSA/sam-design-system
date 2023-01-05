@@ -98,7 +98,7 @@ Position.parameters = {
   },
   actions: { disabled: true },
   preview: generateConfig('storybook/popover/popover-position', 'PopoverPositionModule', 'sds-popover-position'),
-  stackblitzLink: generateStackblitzLink('tooltip-popover', 'popover-position'),
+  stackblitzLink: generateStackblitzLink('popover', 'position'),
 };
 
 export const Title: Story = (args) => ({
@@ -116,7 +116,7 @@ Title.parameters = {
     'PopoverSdsPopoverTitleModule',
     'sds-popover-sds-popover-title'
   ),
-  stackblitzLink: generateStackblitzLink('tooltip-popover', 'popover-title'),
+  stackblitzLink: generateStackblitzLink('popover', 'title'),
 };
 
 export const CloseOnContentClicked: Story = (args) => ({
@@ -134,7 +134,7 @@ CloseOnContentClicked.parameters = {
     'PopoverCloseOnContentClickModule',
     'sds-popover-close-on-content-click'
   ),
-  stackblitzLink: generateStackblitzLink('tooltip-popover', 'popover-close-on-content-click'),
+  stackblitzLink: generateStackblitzLink('popover', 'close-on-content-click'),
 };
 
 export const CloseOnClickOutside: Story = (args) => ({
@@ -152,7 +152,7 @@ CloseOnClickOutside.parameters = {
     'PopoverCloseOnClickOutsideModule',
     'sds-popover-close-on-click-outside'
   ),
-  stackblitzLink: generateStackblitzLink('tooltip-popover', 'popover-close-on-click-outside'),
+  stackblitzLink: generateStackblitzLink('popover', 'close-on-click-outside'),
 };
 
 export const __namedExportsOrder = [
