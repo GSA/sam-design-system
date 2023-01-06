@@ -5,13 +5,9 @@ import { SdsAutocompleteModule } from '@gsa-sam/components';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    SdsAutocompleteModule
-  ],
+  imports: [CommonModule, FormsModule, SdsAutocompleteModule],
   exports: [AutocompleteGrouping],
   declarations: [AutocompleteGrouping],
   bootstrap: [AutocompleteGrouping],
 })
-export class AutocompleteGroupingModule { }
+export class AutocompleteGroupingModule {}

@@ -35,7 +35,7 @@ export default {
         AutocompleteGroupingModule,
         AutocompleteFreeTextModule,
         AutocompleteSelectionModeModule,
-        AutocompleteConfigurableModule
+        AutocompleteConfigurableModule,
       ],
     }),
   ],
