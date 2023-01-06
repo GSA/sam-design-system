@@ -286,7 +286,6 @@ const Template: Story<SDSAutocompletelConfiguration> = (args) => {
     hideChips,
     hideCloseIcon
   );
-  console.log('combined', combined);
   return {
     template: `
         <sds-autocomplete-configurable-demo
