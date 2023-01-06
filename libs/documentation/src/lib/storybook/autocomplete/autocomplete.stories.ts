@@ -393,3 +393,5 @@ FreeText.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('autocomplete', 'free-text'),
 };
+
+export const __namedExportsOrder = ['Configurable', 'FreeText', 'Grouping', 'SelectionMode'];
