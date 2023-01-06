@@ -21,11 +21,12 @@ input::-ms-clear {
     font-size: 2rem;
     -webkit-transition: color 0.2s;
     transition: color 0.2s;
+    margin-bottom: 2px;
   }
 
   .close-icon {
-    width: 4rem;
-    top: 4px;
+    width: 3rem;
+    top: -1px;
   }
 }
 .no-drop {

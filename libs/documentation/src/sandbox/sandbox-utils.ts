@@ -51,3 +51,7 @@ export function generateConfig(filePath: string, moduleName: string, selector: s
 
   return preview;
 }
+
+export function generateStackblitzLink(componentName: string, demoName: string) {
+  return `/assets/stackblitzes/${componentName}/${componentName}-${demoName}/stackblitz.html`;
+}

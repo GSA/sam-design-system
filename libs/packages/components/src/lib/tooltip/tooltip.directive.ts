@@ -11,11 +11,39 @@ export class SdsTooltipDirective implements AfterViewInit {
   @Input()
   position: string = 'top';
 
+  private _tooltipShowing = false;
+
+  /**
+   * Handling  hover, focus & blur here to allow the tooltip to be removed when "esc" pressed.
+   */
+  @HostListener('mouseenter') onMouseEnter() {
+    this.showTooltip();
+  }
+  @HostListener('mouseleave') onMouseLeave() {
+    this.hideTooltip();
+  }
   @HostListener('focus') onFocus() {
-    this.renderer.setAttribute(this.sdsTooltipDiv, 'aria-hidden', 'false');
+    this.showTooltip();
   }
   @HostListener('blur') onBlur() {
+    this.hideTooltip();
+  }
+
+  @HostListener('window:keyup.escape', ['$event']) onKeyUp($event: KeyboardEvent) {
+    if (this._tooltipShowing) {
+      this.hideTooltip();
+    }
+  }
+
+  showTooltip() {
+    this.renderer.setAttribute(this.sdsTooltipDiv, 'aria-hidden', 'false');
+    this.renderer.addClass(this.sdsTooltipDiv, 'tooltip-expanded');
+    this._tooltipShowing = true;
+  }
+  hideTooltip() {
     this.renderer.setAttribute(this.sdsTooltipDiv, 'aria-hidden', 'true');
+    this.renderer.removeClass(this.sdsTooltipDiv, 'tooltip-expanded');
+    this._tooltipShowing = false;
   }
 
   constructor(private el: ElementRef, private renderer: Renderer2) {

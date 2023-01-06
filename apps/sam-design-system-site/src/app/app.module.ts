@@ -46,7 +46,6 @@ import { IconModule } from '@gsa-sam/ngx-uswds-icons';
       },
     },
   ],
-  entryComponents: [SdsToastComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

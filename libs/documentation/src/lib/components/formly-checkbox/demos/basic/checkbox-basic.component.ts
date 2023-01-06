@@ -15,6 +15,9 @@ export class CheckboxBasic {
     {
       key: 'entity.userAgreement',
       type: 'checkbox',
+      validators: {
+        validation: ['requiredTrue'],
+      },
       templateOptions: {
         label: 'I agree',
         description: 'By checking the box below you agree to the terms and conditions of the site.',

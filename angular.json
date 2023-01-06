@@ -33,19 +33,6 @@
               "node_modules/accessible-html5-video-player/js/strings.js"
             ]
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/packages/components/tsconfig.lib.json",
-              "libs/packages/components/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/packages/sam-material-extensions/**/*"
-            ]
-          }
         }
       }
     },
@@ -74,16 +61,6 @@
             "main": "libs/packages/sam-material-extensions/src/test.ts",
             "tsConfig": "libs/packages/sam-material-extensions/tsconfig.spec.json",
             "karmaConfig": "libs/packages/sam-material-extensions/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/packages/sam-material-extensions/tsconfig.lib.json",
-              "libs/packages/sam-material-extensions/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/packages/components/**/*"]
           }
         }
       }
@@ -114,17 +91,6 @@
             "tsConfig": "libs/packages/sam-formly/tsconfig.spec.json",
             "karmaConfig": "libs/packages/sam-formly/karma.conf.js"
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "outputs": ["dist/libs/sam-formly"],
-          "options": {
-            "tsConfig": [
-              "libs/packages/sam-formly/tsconfig.lib.json",
-              "libs/packages/sam-formly/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/packages/sam-formly/**/*"]
-          }
         }
       }
     },
@@ -145,7 +111,8 @@
             "tsConfig": "apps/sam-design-system-site/tsconfig.app.json",
             "assets": [
               "apps/sam-design-system-site/src/favicon.ico",
-              "apps/sam-design-system-site/src/assets"
+              "apps/sam-design-system-site/src/assets",
+              "apps/sam-design-system-site/src/sds-styles.scss"
             ],
             "styles": [
               {
@@ -155,9 +122,10 @@
               },
               {
                 "input": "apps/sam-design-system-site/src/sds-styles.scss",
-                "inject": false,
+                "inject": true,
                 "bundleName": "sds"
               },
+              "apps/sam-design-system-site/src/sds-styles.scss",
               "node_modules/highlight.js/styles/vs.css"
             ],
             "scripts": [
@@ -193,7 +161,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "maximumError": "6mb"
                 }
               ]
             }
@@ -224,7 +192,6 @@
             "polyfills": "apps/sam-design-system-site/src/polyfills.ts",
             "tsConfig": "apps/sam-design-system-site/tsconfig.spec.json",
             "karmaConfig": "apps/sam-design-system-site/karma.conf.js",
-            "styles": ["apps/sam-design-system-site/src/styles.scss"],
             "scripts": [],
             "assets": [
               "apps/sam-design-system-site/src/favicon.ico",
@@ -232,17 +199,11 @@
             ]
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+        "storybook": {
+          "builder": "@storybook/angular:start-storybook",
           "options": {
-            "tsConfig": [
-              "apps/sam-design-system-site/tsconfig.app.json",
-              "apps/sam-design-system-site/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/sam-design-system-site/**/*"
-            ]
+            "browserTarget": "sam-design-system-site:build",
+            "port": 6006
           }
         }
       }
@@ -263,16 +224,6 @@
               "devServerTarget": "sam-design-system-site:serve:production"
             }
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "apps/sam-design-system-site-e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/sam-design-system-site-e2e/**/*"
-            ]
-          }
         }
       }
     },
@@ -288,16 +239,6 @@
             "main": "libs/documentation/src/test.ts",
             "tsConfig": "libs/documentation/tsconfig.spec.json",
             "karmaConfig": "libs/documentation/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/documentation/tsconfig.lib.json",
-              "libs/documentation/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/documentation/**/*"]
           }
         }
       }

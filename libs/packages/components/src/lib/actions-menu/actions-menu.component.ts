@@ -9,6 +9,7 @@ export class SdsActionsMenuComponent {
   actionModes = ActionMenuMode;
   @Input() model: ActionMenuModel;
   @Input() size: string;
+  @Input() screenReaderText: string = 'Toggle Actions';
   @Output() clicks = new EventEmitter<string>();
   constructor() {}
 
