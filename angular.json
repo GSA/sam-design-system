@@ -205,6 +205,12 @@
             "browserTarget": "sam-design-system-site:build",
             "port": 6006
           }
+        },
+        "build-storybook": {
+          "builder": "@storybook/angular:build-storybook",
+          "options": {
+            "browserTarget": "sam-design-system-site:build"
+          }
         }
       }
     },
