@@ -122,7 +122,7 @@
               },
               {
                 "input": "apps/sam-design-system-site/src/sds-styles.scss",
-                "inject": true,
+                "inject": false,
                 "bundleName": "sds"
               },
               "apps/sam-design-system-site/src/sds-styles.scss",
