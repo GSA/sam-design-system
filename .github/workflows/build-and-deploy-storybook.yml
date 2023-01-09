@@ -15,8 +15,10 @@ jobs:
           node-version: '14.x'
       - name: Install Node Packages
         run: npm i
+      - name: Build Stackblitz HTMLs
+        run: npm run demo:stackblitzes
       - name: Build Storybook Assets
-        run: ng run sam-design-system-site:build-storybook
+        run: npm run build-storybook-ng
       - name: Add .nojekyll file to allow for node_modules to be included in bundle
         run: touch storybook-static/.nojekyll
       - name: Deploy 🚀
