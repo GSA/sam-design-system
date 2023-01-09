@@ -16,7 +16,7 @@ jobs:
       - name: Install Node Packages
         run: npm i
       - name: Build Storybook Assets
-        run: npm run build-storybook
+        run: ng run sam-design-system-site:build-storybook
       - name: Add .nojekyll file to allow for node_modules to be included in bundle
         run: touch storybook-static/.nojekyll
       - name: Deploy 🚀
