@@ -27,6 +27,9 @@ export default {
   ],
   argTypes: {
     transform: disable,
+    today: {
+      control: 'date'
+    }
   },
 } as Meta;
 
