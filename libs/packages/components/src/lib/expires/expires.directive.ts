@@ -1,4 +1,4 @@
-import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
+import { Directive, Input, OnChanges, OnDestroy, SimpleChanges, TemplateRef, ViewContainerRef } from '@angular/core';
 
 /**
  * Define expiration date for a given element. If current date is
@@ -27,12 +27,18 @@ export class SdsExpiresDirective {
 
     const isExpired = expirationDate.valueOf() < today.valueOf();
 
+    if (this.initialized) {
+      this.viewContainer.clear();
+    }
     if (isExpired) {
       this.viewContainer.clear();
     } else {
       this.viewContainer.createEmbeddedView(this.templateRef);
     }
+    this.initialized = true;
   }
+  // Track to allow expires to be updated without creating multiple instances of expiring element
+  private initialized = false;
 
   constructor(private templateRef: TemplateRef<any>, private viewContainer: ViewContainerRef) {}
 }
