@@ -21,10 +21,10 @@ const samMaterialExtensions = fs.readJsonSync(
 let dependencies = packageJson.dependencies;
 // Locking version at 11.0.3 - issue with stackblitz is that it does not pick up newly released npm modules for weeks
 const samDependencies = {
-  '@gsa-sam/layouts': '12.0.0',
-  '@gsa-sam/components': '13.0.3',
-  '@gsa-sam/sam-formly': '13.0.3',
-  '@gsa-sam/sam-material-extensions': '13.0.3',
+  '@gsa-sam/layouts': '11.0.3',
+  '@gsa-sam/components': '11.0.3',
+  '@gsa-sam/sam-formly': '11.0.3',
+  '@gsa-sam/sam-material-extensions': '11.0.3',
 };
 
 dependencies = { ...dependencies, ...samDependencies };
@@ -122,11 +122,9 @@ modulesInfo.forEach((value, demoModule) => {
   const demoFiles = glob.sync(path.join(demoFolder, '*'), {});
   demoFolder = path.relative(root, path.resolve(demoFolder));
 
-  const splitDemoFolder = demoFolder
+  const [, componentName, , demoName] = demoFolder
     .replace(root, '')
     .split(path.sep);
-  const componentName = splitDemoFolder[1];
-  const demoName = splitDemoFolder[demoFolder.startsWith('storybook')?2:3];
   const modulePath = path.basename(demoModule, '.ts');
 
   const moduleInfo = modulesInfo.get(demoModule);

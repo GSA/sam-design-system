@@ -39,9 +39,6 @@ export class SdsButtonGroupComponent {
   /**
    * 'checkbox' || 'radio'
    */
-  @Input()
-  mode: 'checkbox' | 'radio' = 'radio';
-
-  @Output()
-  change = new EventEmitter<MatButtonToggleChange>();
+  @Input() mode: string = 'radio';
+  @Output() change: EventEmitter<MatButtonToggleChange> = new EventEmitter();
 }

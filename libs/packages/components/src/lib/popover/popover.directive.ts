@@ -1,20 +1,11 @@
-import {
-  AfterViewInit,
-  Directive,
-  ElementRef,
-  HostListener,
-  Input,
-  Renderer2,
-  TemplateRef,
-  OnChanges,
-} from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, HostListener, Input, Renderer2, TemplateRef } from '@angular/core';
 import { debounce } from './debounce.decorator';
 
 @Directive({
   selector: '[sdsPopover]',
   exportAs: 'sdsPopover',
 })
-export class SdsPopoverDirective implements AfterViewInit, OnChanges {
+export class SdsPopoverDirective implements AfterViewInit {
   private _sdsPopoverContent: string | TemplateRef<any> | HTMLParagraphElement;
   private _sdsPopoverTitle: string | TemplateRef<any> | HTMLParagraphElement;
 
@@ -91,40 +82,26 @@ export class SdsPopoverDirective implements AfterViewInit, OnChanges {
     this.renderer.addClass(this.sdsPopoverDiv, 'sds-popover__content');
     this.renderer.addClass(this.sdsPopoverDiv, 'tooltip');
     this.renderer.addClass(this.sdsPopoverDiv, 'out');
-    this.handlePosition();
-
+    this.renderer.setAttribute(this.sdsPopoverDiv, 'data-position', this.position);
     this.renderer.setAttribute(this.sdsPopoverDiv, 'aria-hidden', 'true');
+    this.renderer.addClass(this.sdsPopoverDiv, this.position);
 
     // Add title section and divider if title included
     if (this._sdsPopoverTitle) {
-      this.handlePopoverTitle();
+      this.renderer.appendChild(this.sdsPopoverDiv, this._sdsPopoverTitle);
+
+      const divider = document.createElement('hr');
+      this.renderer.addClass(divider, 'divider');
+      this.renderer.appendChild(this.sdsPopoverDiv, divider);
     }
 
-    this.handlePopoverContent();
+    this.renderer.appendChild(this.sdsPopoverDiv, this._sdsPopoverContent);
 
     this.renderer.setAttribute(this.el.nativeElement, 'role', 'button');
     this.renderer.setAttribute(this.el.nativeElement, 'aria-expanded', 'false');
     this.renderer.setAttribute(this.el.nativeElement, 'aria-haspopup', 'dialog');
 
     this.renderer.appendChild(this.el.nativeElement, this.sdsPopoverDiv);
-  }
-
-  handlePosition() {
-    this.renderer.setAttribute(this.sdsPopoverDiv, 'data-position', this.position);
-
-    this.renderer.addClass(this.sdsPopoverDiv, this.position);
-  }
-
-  handlePopoverTitle() {
-    this.renderer.appendChild(this.sdsPopoverDiv, this._sdsPopoverTitle);
-
-    const divider = document.createElement('hr');
-    this.renderer.addClass(divider, 'divider');
-    this.renderer.appendChild(this.sdsPopoverDiv, divider);
-  }
-
-  handlePopoverContent() {
-    this.renderer.appendChild(this.sdsPopoverDiv, this._sdsPopoverContent);
   }
 
   @Input()
@@ -189,37 +166,5 @@ export class SdsPopoverDirective implements AfterViewInit, OnChanges {
 
     this.renderer.removeClass(this.sdsPopoverDiv, 'sds-popover__shown');
     this.renderer.removeAttribute(this.el.nativeElement, 'aria-describedby');
-  }
-  ngOnChanges(): void {
-    this.onChangesPositionUpdate();
-    this.onChangesSdsPopoverTitleUpdate();
-    this.onChangesSdsPopoverUpdate();
-  }
-
-  onChangesPositionUpdate() {
-    const possibleDirections = ['top', 'bottom', 'left', 'right'];
-    this.sdsPopoverDiv.classList.remove(...possibleDirections);
-
-    this.renderer.setAttribute(this.sdsPopoverDiv, 'data-position', this.position);
-
-    this.renderer.addClass(this.sdsPopoverDiv, this.position);
-  }
-
-  onChangesSdsPopoverUpdate() {
-    const contentToRemove = this.sdsPopoverDiv.querySelector('.content');
-    if (contentToRemove) {
-      this.renderer.removeChild(contentToRemove.parentNode, contentToRemove);
-      this.handlePopoverContent();
-    }
-  }
-
-  onChangesSdsPopoverTitleUpdate() {
-    const titleToRemove = this.sdsPopoverDiv.querySelector('.title');
-    const dividerToRemove = this.sdsPopoverDiv.querySelector('.divider');
-    if (titleToRemove) {
-      this.renderer.removeChild(titleToRemove.parentNode, dividerToRemove);
-      this.renderer.removeChild(titleToRemove.parentNode, titleToRemove);
-      this.handlePopoverTitle();
-    }
   }
 }
