@@ -1,0 +1,27 @@
+<div class="margin-bottom-4">
+  <p>Single Selection Mode</p>
+  <sds-autocomplete
+    [service]="service"
+    (ngModelChange)="changes($event)"
+    [(ngModel)]="model"
+    [configuration]="settings"
+  >
+  </sds-autocomplete>
+</div>
+<pre>
+  {{ model | json }}
+</pre>
+
+<div class="margin-bottom-4">
+  <p>Multiple Selection Mode</p>
+  <sds-autocomplete
+    [service]="service"
+    (ngModelChange)="changes($event)"
+    [(ngModel)]="model3"
+    [configuration]="settings3"
+  ></sds-autocomplete>
+</div>
+
+<pre>
+  {{ model3 | json }}
+</pre>

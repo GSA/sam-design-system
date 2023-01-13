@@ -29,7 +29,7 @@
       <ng-container class="grid-row" *ngFor="let option of (to.groupOptions | keyvalue); let i = index">
         <div>
           <legend>
-            <span class="text-bold display-block">{{option.key}}</span>
+            <span class="text-bold display-block margin-top-1 margin-bottom-05">{{option.key}}</span>
           </legend>
 
           <ng-container
@@ -52,7 +52,9 @@
 
                 <label
                   class="usa-radio__label"
-                  [ngClass]="to.optionsClass ? to.optionsClass : ''"
+                  [ngClass]="{
+              'margin-top-0': j==0 ,
+'{{to.optionsClass}}': to.optionsClass}"
                   [for]="id + '_' + i+ '_'+ j"
                 >
                   <span [innerHtml]="opt.label"></span>
@@ -65,23 +67,23 @@
                       ></span>
                     </div>
                   </ng-container>
-                  <div *ngIf="option.value[j].tooltipText" class="usa-radio__tooltip">
-                    >
-                    <p
-                      #tipContent
-                      [ngClass]="option.value[j].tooltipClass"
-                      class="margin-1"
-                      [innerHTML]="option.value[j].tooltipText"
-                    ></p>
-                    <usa-icon
-                      class="margin-left-1"
-                      [position]="option.value[j].tooltipPosition ? option.value[j].tooltipPosition :'right'"
-                      [sdsTooltip]="tipContent"
-                      [size]="'sm'"
-                      [icon]="'info-circle'"
-                    ></usa-icon>
-                  </div>
                 </label>
+              </div>
+
+              <div *ngIf="option.value[j].tooltipText">
+                <p
+                  #tipContent
+                  [ngClass]="option.value[j].tooltipClass"
+                  class="margin-1"
+                  [innerHTML]="option.value[j].tooltipText"
+                ></p>
+                <usa-icon
+                  class="padding-top-105 margin-left-1"
+                  [position]="option.value[j].tooltipPosition ? option.value[j].tooltipPosition :'right'"
+                  [sdsTooltip]="tipContent"
+                  [size]="'sm'"
+                  [icon]="'info-circle'"
+                ></usa-icon>
               </div>
             </div>
           </ng-container>
@@ -92,7 +94,7 @@
 </form>
 
 <ng-template let-option let-i="i" let-to="to" #defaultTemplate>
-  <div class="grid-row" [ngClass]="{'horizontal-option': to.horizontal}">
+  <div class="grid-row" [ngClass]="{'horizontal-option': to.horizontal ,'margin-top-1': to.description && i==0 }">
     <div>
       <input
         class="usa-radio__input"
@@ -106,7 +108,13 @@
         [value]="option.value"
       />
 
-      <label class="usa-radio__label" [ngClass]="to.optionsClass ? to.optionsClass : ''" [for]="id + '_' + i">
+      <label
+        class="usa-radio__label"
+        [ngClass]="{
+              'margin-top-0': i==0 ,
+'{{to.optionsClass}}': to.optionsClass}"
+        [for]="id + '_' + i"
+      >
         <span [innerHtml]="option.label"></span>
         <ng-container *ngIf="to.options[i].description && to.options[i].description.length">
           <div class="usa-checkbox__label-description">
@@ -117,22 +125,23 @@
             ></span>
           </div>
         </ng-container>
-        <div *ngIf="to.options[i].tooltipText" class="usa-radio__tooltip">
-          <p
-            #tipContent
-            [ngClass]="to.options[i].tooltipClass"
-            class="margin-1"
-            [innerHTML]="to.options[i].tooltipText"
-          ></p>
-          <usa-icon
-            class="margin-left-1"
-            [position]="to.options[i].tooltipPosition ? to.options[i].tooltipPosition :'right'"
-            [sdsTooltip]="tipContent"
-            [size]="'sm'"
-            [icon]="'info-circle'"
-          ></usa-icon>
-        </div>
       </label>
+    </div>
+
+    <div *ngIf="to.options[i].tooltipText">
+      <p
+        #tipContent
+        [ngClass]="to.options[i].tooltipClass"
+        class="margin-1"
+        [innerHTML]="to.options[i].tooltipText"
+      ></p>
+      <usa-icon
+        class="padding-top-105 margin-left-1"
+        [position]="to.options[i].tooltipPosition ? to.options[i].tooltipPosition :'right'"
+        [sdsTooltip]="tipContent"
+        [size]="'sm'"
+        [icon]="'info-circle'"
+      ></usa-icon>
     </div>
   </div>
 </ng-template>
