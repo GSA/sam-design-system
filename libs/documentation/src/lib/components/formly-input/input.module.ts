@@ -68,7 +68,7 @@ export const ROUTES = [
     DocumentationComponentsSharedModule,
     InputBasicModule,
     InputOptionalModule,
-    FormlyInputLinkToSbModule
+    FormlyInputLinkToSbModule,
   ],
 })
 export class InputModule {

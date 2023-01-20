@@ -7,7 +7,6 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
   templateUrl: './formly-input-required.component.html',
 })
 export class FormlyInputRequiredComponent {
-
   orm = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
@@ -17,9 +16,8 @@ export class FormlyInputRequiredComponent {
       type: 'input',
       templateOptions: {
         label: 'Entity Name',
-        required: true
+        required: true,
       },
     },
   ];
-
 }

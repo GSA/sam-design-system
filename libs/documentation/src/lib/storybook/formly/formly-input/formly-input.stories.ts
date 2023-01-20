@@ -2,8 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
-import {
-} from '@gsa-sam/sam-material-extensions';
+import {} from '@gsa-sam/sam-material-extensions';
 import { FormlyModule } from '@ngx-formly/core';
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
@@ -24,7 +23,7 @@ const templateOptions = {
   table: {
     category: 'template-options',
   },
-}
+};
 
 export default {
   title: 'Formly/Input',
@@ -46,17 +45,17 @@ export default {
         FormlyInputTooltipTextModule,
         FormlyInputRequiredModule,
         FormlyInputPlaceholderModule,
-        FormlyInputIntroductionModule
+        FormlyInputIntroductionModule,
       ],
     }),
   ],
   argTypes: {
-    label:templateOptions,
-    placeholder:templateOptions,
-    description:templateOptions,
-    required:templateOptions,
-    disabled:templateOptions,
-    tooltipText:templateOptions,
+    label: templateOptions,
+    placeholder: templateOptions,
+    description: templateOptions,
+    required: templateOptions,
+    disabled: templateOptions,
+    tooltipText: templateOptions,
   },
 } as Meta;
 
@@ -66,7 +65,7 @@ const formlyConfigFunction = (
   description: string,
   required: boolean,
   disabled: boolean,
-  tooltipText: string,
+  tooltipText: string
 ) => {
   return {
     label: label ?? '',
@@ -78,45 +77,31 @@ const formlyConfigFunction = (
   };
 };
 const Template: Story = (args) => {
-  const {
-    label,
-    placeholder,
-    description,
-    required,
-    disabled,
-    tooltipText
-  } = args;
-  let config = formlyConfigFunction(
-    label,
-    placeholder,
-    description,
-    required,
-    disabled,
-    tooltipText
-  )
+  const { label, placeholder, description, required, disabled, tooltipText } = args;
+  let config = formlyConfigFunction(label, placeholder, description, required, disabled, tooltipText);
   return {
     template: '<sds-formly-input-configurable [config]="configObj"></sds-formly-input-configurable>',
     props: {
       configObj: config,
-      ...args
+      ...args,
     },
-  }
+  };
 };
 
 export const Introduction: Story = (args) => ({
   template: '<sds-formly-input-introduction></sds-formly-input-introduction>',
-  props: args
+  props: args,
 });
-Introduction.parameters = {options: {showPanel: false}};
+Introduction.parameters = { options: { showPanel: false } };
 
 export const Configurable = Template.bind({});
 Configurable.args = {
-  label:'Label',
-  placeholder:'Placeholder',
-  description:'Description',
-  required:false,
-  disabled:false,
-  tooltipText:'',
+  label: 'Label',
+  placeholder: 'Placeholder',
+  description: 'Description',
+  required: false,
+  disabled: false,
+  tooltipText: '',
 };
 Configurable.parameters = {
   preview: { disabled: true },
@@ -124,7 +109,7 @@ Configurable.parameters = {
 
 export const Label: Story = (args) => ({
   template: '<sds-formly-input-label></sds-formly-input-label>',
-  props: args
+  props: args,
 });
 Label.parameters = {
   controls: {
@@ -138,10 +123,10 @@ Label.parameters = {
     'sds-formly-input-label'
   ),
   stackblitzLink: generateStackblitzLink('formly-input', 'input-label'),
-}
+};
 export const TooltipText: Story = (args) => ({
   template: '<sds-formly-input-tooltip-text></sds-formly-input-tooltip-text>',
-  props: args
+  props: args,
 });
 TooltipText.parameters = {
   controls: {
@@ -155,10 +140,10 @@ TooltipText.parameters = {
     'sds-formly-input-tooltip-text'
   ),
   stackblitzLink: generateStackblitzLink('formly-input', 'tooltip-text'),
-}
+};
 export const Description: Story = (args) => ({
   template: '<sds-formly-input-description></sds-formly-input-description>',
-  props: args
+  props: args,
 });
 Description.parameters = {
   controls: {
@@ -172,11 +157,11 @@ Description.parameters = {
     'sds-formly-input-description'
   ),
   stackblitzLink: generateStackblitzLink('formly-input', 'description'),
-}
+};
 
 export const Disabled: Story = (args) => ({
   template: '<sds-formly-input-disabled></sds-formly-input-disabled>',
-  props: args
+  props: args,
 });
 Disabled.parameters = {
   controls: {
@@ -190,11 +175,11 @@ Disabled.parameters = {
     'sds-formly-input-disabled'
   ),
   stackblitzLink: generateStackblitzLink('formly-input', 'disabled'),
-}
+};
 
 export const Required: Story = (args) => ({
   template: '<sds-formly-input-required></sds-formly-input-required>',
-  props: args
+  props: args,
 });
 Required.parameters = {
   controls: {
@@ -208,11 +193,11 @@ Required.parameters = {
     'sds-formly-input-required'
   ),
   stackblitzLink: generateStackblitzLink('formly-input', 'required'),
-}
+};
 
 export const Placeholder: Story = (args) => ({
   template: '<sds-formly-input-placeholder></sds-formly-input-placeholder>',
-  props: args
+  props: args,
 });
 Placeholder.parameters = {
   controls: {
@@ -226,8 +211,7 @@ Placeholder.parameters = {
     'sds-formly-input-placeholder'
   ),
   stackblitzLink: generateStackblitzLink('formly-input', 'placeholder'),
-}
-
+};
 
 export const __namedExportsOrder = [
   'Introduction',

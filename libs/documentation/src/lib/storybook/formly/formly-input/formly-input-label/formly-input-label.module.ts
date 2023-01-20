@@ -6,15 +6,9 @@ import { FormlyModule } from '@ngx-formly/core';
 import { FormlyInputLabelComponent } from './formly-input-label.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    SdsFormlyModule,
-    FormsModule,
-    FormlyModule.forRoot(),
-  ],
+  imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot()],
   declarations: [FormlyInputLabelComponent],
   exports: [FormlyInputLabelComponent],
   bootstrap: [FormlyInputLabelComponent],
 })
-export class FormlyInputLabelModule { }
+export class FormlyInputLabelModule {}

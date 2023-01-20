@@ -7,7 +7,6 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
   templateUrl: './formly-input-placeholder.component.html',
 })
 export class FormlyInputPlaceholderComponent {
-
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
@@ -17,9 +16,8 @@ export class FormlyInputPlaceholderComponent {
       type: 'input',
       templateOptions: {
         label: 'Entity Name',
-        placeholder: 'Placeholder'
+        placeholder: 'Placeholder',
       },
     },
   ];
-
 }

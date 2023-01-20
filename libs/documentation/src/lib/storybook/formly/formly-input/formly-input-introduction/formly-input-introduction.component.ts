@@ -5,7 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './formly-input-introduction.component.html',
 })
 export class FormlyInputIntroductionComponent {
-
-  constructor() { }
-
+  constructor() {}
 }

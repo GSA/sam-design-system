@@ -5,7 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './formly-input-link-to-sb.component.html',
 })
 export class FormlyInputLinkToSbComponent {
-
-  constructor() { }
-
+  constructor() {}
 }

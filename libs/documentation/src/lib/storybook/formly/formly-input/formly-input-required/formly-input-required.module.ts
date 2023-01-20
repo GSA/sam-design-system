@@ -6,15 +6,9 @@ import { FormlyModule } from '@ngx-formly/core';
 import { FormlyInputRequiredComponent } from './formly-input-required.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    SdsFormlyModule,
-    FormsModule,
-    FormlyModule.forRoot(),
-  ],
+  imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot()],
   declarations: [FormlyInputRequiredComponent],
   exports: [FormlyInputRequiredComponent],
   bootstrap: [FormlyInputRequiredComponent],
 })
-export class FormlyInputRequiredModule { }
+export class FormlyInputRequiredModule {}

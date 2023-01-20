@@ -6,11 +6,10 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
   selector: 'sds-formly-input-configurable',
   templateUrl: './formly-input-configurable.component.html',
 })
-export class FormlyInputConfigurableComponent{
-
+export class FormlyInputConfigurableComponent {
   @Input('config')
   set config(config: object) {
-    const temp = this.fields[0]
+    const temp = this.fields[0];
     temp['templateOptions'] = config;
     this.fields = [temp];
   }
@@ -30,5 +29,4 @@ export class FormlyInputConfigurableComponent{
       },
     },
   ];
-
 }

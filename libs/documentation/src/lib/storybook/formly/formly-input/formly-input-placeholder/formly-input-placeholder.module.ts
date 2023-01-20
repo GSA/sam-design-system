@@ -6,15 +6,9 @@ import { FormlyModule } from '@ngx-formly/core';
 import { FormlyInputPlaceholderComponent } from './formly-input-placeholder.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    SdsFormlyModule,
-    FormsModule,
-    FormlyModule.forRoot(),
-  ],
+  imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot()],
   declarations: [FormlyInputPlaceholderComponent],
   exports: [FormlyInputPlaceholderComponent],
   bootstrap: [FormlyInputPlaceholderComponent],
 })
-export class FormlyInputPlaceholderModule { }
+export class FormlyInputPlaceholderModule {}

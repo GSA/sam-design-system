@@ -5,10 +5,8 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 @Component({
   selector: 'sds-formly-input-disabled',
   templateUrl: './formly-input-disabled.component.html',
-
 })
-export class FormlyInputDisabledComponent{
-
+export class FormlyInputDisabledComponent {
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
@@ -18,9 +16,8 @@ export class FormlyInputDisabledComponent{
       type: 'input',
       templateOptions: {
         label: 'Entity Name',
-        disabled: true
+        disabled: true,
       },
     },
   ];
-
 }

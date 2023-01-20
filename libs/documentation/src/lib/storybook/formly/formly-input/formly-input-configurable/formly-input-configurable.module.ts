@@ -6,15 +6,9 @@ import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    SdsFormlyModule,
-    FormsModule,
-    FormlyModule.forRoot(),
-  ],
+  imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot()],
   declarations: [FormlyInputConfigurableComponent],
   exports: [FormlyInputConfigurableComponent],
   bootstrap: [FormlyInputConfigurableComponent],
 })
-export class FormlyInputConfigurableModule { }
+export class FormlyInputConfigurableModule {}

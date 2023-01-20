@@ -6,15 +6,9 @@ import { FormlyModule } from '@ngx-formly/core';
 import { FormlyInputDescriptionComponent } from './formly-input-description.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    SdsFormlyModule,
-    FormsModule,
-    FormlyModule.forRoot(),
-  ],
+  imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot()],
   declarations: [FormlyInputDescriptionComponent],
   exports: [FormlyInputDescriptionComponent],
   bootstrap: [FormlyInputDescriptionComponent],
 })
-export class FormlyInputDescriptionModule { }
+export class FormlyInputDescriptionModule {}

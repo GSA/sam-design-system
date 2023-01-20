@@ -6,15 +6,9 @@ import { FormlyModule } from '@ngx-formly/core';
 import { FormlyInputTooltipTextComponent } from './formly-input-tooltip-text.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    SdsFormlyModule,
-    FormsModule,
-    FormlyModule.forRoot(),
-  ],
+  imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot()],
   declarations: [FormlyInputTooltipTextComponent],
   exports: [FormlyInputTooltipTextComponent],
   bootstrap: [FormlyInputTooltipTextComponent],
 })
-export class FormlyInputTooltipTextModule { }
+export class FormlyInputTooltipTextModule {}

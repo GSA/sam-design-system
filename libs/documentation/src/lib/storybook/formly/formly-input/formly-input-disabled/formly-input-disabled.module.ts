@@ -6,15 +6,9 @@ import { FormlyModule } from '@ngx-formly/core';
 import { FormlyInputDisabledComponent } from './formly-input-disabled.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    SdsFormlyModule,
-    FormsModule,
-    FormlyModule.forRoot(),
-  ],
+  imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot()],
   declarations: [FormlyInputDisabledComponent],
   bootstrap: [FormlyInputDisabledComponent],
   exports: [FormlyInputDisabledComponent],
 })
-export class FormlyInputDisabledModule { }
+export class FormlyInputDisabledModule {}
