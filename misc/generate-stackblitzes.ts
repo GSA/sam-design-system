@@ -123,10 +123,11 @@ modulesInfo.forEach((value, demoModule) => {
   demoFolder = path.relative(root, path.resolve(demoFolder));
 
   const splitDemoFolder = demoFolder
-    .replace(root, '')
-    .split(path.sep);
-  const componentName = splitDemoFolder[1];
-  const demoName = splitDemoFolder[demoFolder.startsWith('storybook')?2:3];
+  .replace(root, '')
+  .split(path.sep);
+  const isStorybookDemo = demoFolder.startsWith('storybook');
+  const componentName = splitDemoFolder[splitDemoFolder.length - (isStorybookDemo ? 2 : 3)];
+  const demoName = splitDemoFolder[splitDemoFolder.length - 1];
   const modulePath = path.basename(demoModule, '.ts');
 
   const moduleInfo = modulesInfo.get(demoModule);
