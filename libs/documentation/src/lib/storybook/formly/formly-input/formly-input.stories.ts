@@ -45,7 +45,8 @@ export default {
         FormlyInputDisabledModule,
         FormlyInputTooltipTextModule,
         FormlyInputRequiredModule,
-        FormlyInputPlaceholderModule
+        FormlyInputPlaceholderModule,
+        FormlyInputIntroductionModule
       ],
     }),
   ],
@@ -102,6 +103,11 @@ const Template: Story = (args) => {
   }
 };
 
+export const Introduction: Story = (args) => ({
+  template: '<sds-formly-input-introduction></sds-formly-input-introduction>',
+  props: args
+});
+Introduction.parameters = {options: {showPanel: false}};
 
 export const Configurable = Template.bind({});
 Configurable.args = {
