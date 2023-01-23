@@ -5,7 +5,5 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './popover-link-to-sb.component.html',
 })
 export class PopoverLinkToSbComponent {
-
-  constructor() { }
-
+  constructor() {}
 }

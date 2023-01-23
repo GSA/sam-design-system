@@ -63,7 +63,13 @@ export const ROUTES = [
 ];
 
 @NgModule({
-  imports: [CommonModule, DocumentationComponentsSharedModule, PopupBasicModule, TooltipBasicModule, PopoverLinkToSbModule],
+  imports: [
+    CommonModule,
+    DocumentationComponentsSharedModule,
+    PopupBasicModule,
+    TooltipBasicModule,
+    PopoverLinkToSbModule,
+  ],
 })
 export class PopupModule {
   constructor(demoList: DocumentationDemoList) {

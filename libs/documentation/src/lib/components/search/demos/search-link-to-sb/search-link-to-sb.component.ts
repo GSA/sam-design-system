@@ -5,7 +5,5 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './search-link-to-sb.component.html',
 })
 export class SearchLinkToSbComponent {
-
-  constructor() { }
-
+  constructor() {}
 }

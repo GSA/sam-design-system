@@ -65,7 +65,13 @@ export const ROUTES = [
 ];
 
 @NgModule({
-  imports: [CommonModule, DocumentationComponentsSharedModule, AccordionBasicModule, AccordionCardlistModule, AccordionLinkToSbModule],
+  imports: [
+    CommonModule,
+    DocumentationComponentsSharedModule,
+    AccordionBasicModule,
+    AccordionCardlistModule,
+    AccordionLinkToSbModule,
+  ],
 })
 export class AccordionModule {
   constructor(demoList: DocumentationDemoList) {

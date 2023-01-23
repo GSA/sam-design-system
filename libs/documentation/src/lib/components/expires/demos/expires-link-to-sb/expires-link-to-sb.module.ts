@@ -3,11 +3,9 @@ import { CommonModule } from '@angular/common';
 import { ExpiresLinkToSbComponent } from './expires-link-to-sb.component';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   declarations: [ExpiresLinkToSbComponent],
   exports: [ExpiresLinkToSbComponent],
   bootstrap: [ExpiresLinkToSbComponent],
 })
-export class ExpiresLinkToSbModule { }
+export class ExpiresLinkToSbModule {}

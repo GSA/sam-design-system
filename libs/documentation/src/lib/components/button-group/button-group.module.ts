@@ -70,7 +70,7 @@ export const ROUTES = [
     DocumentationComponentsSharedModule,
     ButtonGroupBasicModule,
     ButtonGroupDifferingLengthsModule,
-    ButtonGroupLinkToSbModule
+    ButtonGroupLinkToSbModule,
   ],
 })
 export class ButtonGroupModule {

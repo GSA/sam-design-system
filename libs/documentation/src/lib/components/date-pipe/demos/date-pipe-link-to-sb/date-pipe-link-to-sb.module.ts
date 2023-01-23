@@ -3,11 +3,9 @@ import { CommonModule } from '@angular/common';
 import { DatePipeLinkToSbComponent } from './date-pipe-link-to-sb.component';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   declarations: [DatePipeLinkToSbComponent],
   exports: [DatePipeLinkToSbComponent],
   bootstrap: [DatePipeLinkToSbComponent],
 })
-export class DatePipeLinkToSbModule { }
+export class DatePipeLinkToSbModule {}

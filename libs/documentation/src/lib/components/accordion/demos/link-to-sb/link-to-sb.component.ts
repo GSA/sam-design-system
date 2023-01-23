@@ -5,7 +5,5 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './link-to-sb.component.html',
 })
 export class AccordionLinkToSbComponent {
-
-  constructor() { }
-
+  constructor() {}
 }

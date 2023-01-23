@@ -66,7 +66,13 @@ export const ROUTES = [
 ];
 
 @NgModule({
-  imports: [CommonModule, DocumentationComponentsSharedModule, SearchBasicModule, SearchOptionalModule, SearchLinkToSbModule],
+  imports: [
+    CommonModule,
+    DocumentationComponentsSharedModule,
+    SearchBasicModule,
+    SearchOptionalModule,
+    SearchLinkToSbModule,
+  ],
 })
 export class SearchModule {
   constructor(demoList: DocumentationDemoList) {

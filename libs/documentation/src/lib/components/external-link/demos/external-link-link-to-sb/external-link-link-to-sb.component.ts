@@ -5,7 +5,5 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './external-link-link-to-sb.component.html',
 })
 export class ExternalLinkLinkToSbComponent {
-
-  constructor() { }
-
+  constructor() {}
 }

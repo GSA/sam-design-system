@@ -5,7 +5,5 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './button-group-link-to-sb.component.html',
 })
 export class ButtonGroupLinkToSbComponent {
-
-  constructor() { }
-
+  constructor() {}
 }
