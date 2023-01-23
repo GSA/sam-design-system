@@ -9,9 +9,19 @@ import { PopupBasicModule } from './demos/basic/popup-basic.module';
 import { PopupBasic } from './demos/basic/popup-basic.component';
 import { TooltipBasic } from './demos/tooltip/tooltip-basic.component';
 import { TooltipBasicModule } from './demos/tooltip/tooltip-basic.module';
+import { PopoverLinkToSbComponent } from './demos/popover-link-to-sb/popover-link-to-sb.component';
+import { PopoverLinkToSbModule } from './demos/popover-link-to-sb/popover-link-to-sb.module';
 
 declare var require: any;
 const DEMOS = {
+  linkToSb: {
+    title: 'New Popover Demos',
+    type: PopoverLinkToSbComponent,
+    code: require('!!raw-loader!./demos/popover-link-to-sb/popover-link-to-sb.component'),
+    module: require('!!raw-loader!./demos/popover-link-to-sb/popover-link-to-sb.module'),
+    markup: require('!!raw-loader!./demos/popover-link-to-sb/popover-link-to-sb.component.html'),
+    path: 'libs/documentation/src/lib/components/popup/demos/popover-link-to-sb',
+  },
   tooltip: {
     title: 'Tooltip',
     type: TooltipBasic,
@@ -53,7 +63,7 @@ export const ROUTES = [
 ];
 
 @NgModule({
-  imports: [CommonModule, DocumentationComponentsSharedModule, PopupBasicModule, TooltipBasicModule],
+  imports: [CommonModule, DocumentationComponentsSharedModule, PopupBasicModule, TooltipBasicModule, PopoverLinkToSbModule],
 })
 export class PopupModule {
   constructor(demoList: DocumentationDemoList) {

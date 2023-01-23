@@ -7,10 +7,20 @@ import { DocumentationExamplesPage } from '../shared/examples-page/examples.comp
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
 import { ExternalLinkBasicComponent } from './demos/basic/external-link-basic.component';
 import { ExternalLinkBasicModule } from './demos/basic/external-link-basic.module';
+import { ExternalLinkLinkToSbComponent } from './demos/external-link-link-to-sb/external-link-link-to-sb.component';
+import { ExternalLinkLinkToSbModule } from './demos/external-link-link-to-sb/external-link-link-to-sb.module';
 
 export declare var require: any;
 
 const DEMOS = {
+  linkToSb: {
+    title: 'New Demos',
+    type: ExternalLinkLinkToSbComponent,
+    code: require('!!raw-loader!./demos/external-link-link-to-sb/external-link-link-to-sb.component'),
+    module: require('!!raw-loader!./demos/external-link-link-to-sb/external-link-link-to-sb.module'),
+    markup: require('!!raw-loader!./demos/external-link-link-to-sb/external-link-link-to-sb.component.html'),
+    path: 'libs/documentation/src/lib/components/external-link/demos/external-link-link-to-sb',
+  },
   basic: {
     title: 'External Link',
     type: ExternalLinkBasicComponent,
@@ -44,7 +54,7 @@ export const ROUTES = [
 ];
 
 @NgModule({
-  imports: [CommonModule, DocumentationComponentsSharedModule, ExternalLinkBasicModule],
+  imports: [CommonModule, DocumentationComponentsSharedModule, ExternalLinkBasicModule, ExternalLinkLinkToSbModule],
 })
 export class ExternalLinkModule {
   constructor(demoList: DocumentationDemoList) {

@@ -7,10 +7,20 @@ import { DocumentationExamplesPage } from '../shared/examples-page/examples.comp
 import { DocumentationSourcePage } from '../shared/source-page/source.component';
 import { ExpiresBasicComponent } from './demos/basic/expires-basic.component';
 import { ExpiresBasicModule } from './demos/basic/expires-basic.module';
+import { ExpiresLinkToSbComponent } from './demos/expires-link-to-sb/expires-link-to-sb.component';
+import { ExpiresLinkToSbModule } from './demos/expires-link-to-sb/expires-link-to-sb.module';
 
 export declare var require: any;
 
 const DEMOS = {
+  linkToSb: {
+    title: 'New Demos',
+    type: ExpiresLinkToSbComponent,
+    code: require('!!raw-loader!./demos/expires-link-to-sb/expires-link-to-sb.component'),
+    module: require('!!raw-loader!./demos/expires-link-to-sb/expires-link-to-sb.module'),
+    markup: require('!!raw-loader!./demos/expires-link-to-sb/expires-link-to-sb.component.html'),
+    path: 'libs/documentation/src/lib/components/expires/demos/expires-link-to-sb',
+  },
   basic: {
     title: 'Expires Directive',
     type: ExpiresBasicComponent,
@@ -44,7 +54,7 @@ export const ROUTES = [
 ];
 
 @NgModule({
-  imports: [CommonModule, DocumentationComponentsSharedModule, ExpiresBasicModule],
+  imports: [CommonModule, DocumentationComponentsSharedModule, ExpiresBasicModule, ExpiresLinkToSbModule],
 })
 export class ExpiresModule {
   constructor(demoList: DocumentationDemoList) {
