@@ -10,9 +10,19 @@ import { ComponentWrapperComponent } from '../../shared/component-wrapper/compon
 import { AccordionBasicModule } from './demos/basic/accordion-basic.module';
 import { AccordionCardlistModule } from './demos/cardlist/accordion-cardlist.module';
 import { AccordionCardlist } from './demos/cardlist/accordion-cardlist.component';
+import { AccordionLinkToSbComponent } from './demos/link-to-sb/link-to-sb.component';
+import { AccordionLinkToSbModule } from './demos/link-to-sb/link-to-sb.module';
 
 declare var require: any;
 const DEMOS = {
+  linkToStorybook: {
+    title: 'New Demos',
+    type: AccordionLinkToSbComponent,
+    code: require('!!raw-loader!./demos/link-to-sb/link-to-sb.component'),
+    markup: require('!!raw-loader!./demos/link-to-sb/link-to-sb.component.html'),
+    module: require('!!raw-loader!./demos/link-to-sb/link-to-sb.module'),
+    path: 'libs/documentation/src/lib/components/accordion/demos/link-to-sb',
+  },
   basic: {
     title: 'Accordion',
     type: AccordionBasic,
@@ -55,7 +65,13 @@ export const ROUTES = [
 ];
 
 @NgModule({
-  imports: [CommonModule, DocumentationComponentsSharedModule, AccordionBasicModule, AccordionCardlistModule],
+  imports: [
+    CommonModule,
+    DocumentationComponentsSharedModule,
+    AccordionBasicModule,
+    AccordionCardlistModule,
+    AccordionLinkToSbModule,
+  ],
 })
 export class AccordionModule {
   constructor(demoList: DocumentationDemoList) {

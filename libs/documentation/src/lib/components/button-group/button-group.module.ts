@@ -10,9 +10,19 @@ import { ButtonGroupBasic } from './demos/button-group-basic/button-group-basic.
 import { ButtonGroupBasicModule } from './demos/button-group-basic/button-group-basic.module';
 import { ButtonGroupDifferingLengths } from './demos/differinglengths/button-group-differing-lengths.component';
 import { ButtonGroupDifferingLengthsModule } from './demos/differinglengths/button-group-differing-lengths.module';
+import { ButtonGroupLinkToSbComponent } from './demos/button-group-link-to-sb/button-group-link-to-sb.component';
+import { ButtonGroupLinkToSbModule } from './demos/button-group-link-to-sb/button-group-link-to-sb.module';
 
 declare var require: any;
 const DEMOS = {
+  linkToStackblitz: {
+    title: 'New Demos',
+    type: ButtonGroupLinkToSbComponent,
+    code: require('!!raw-loader!./demos/button-group-link-to-sb/button-group-link-to-sb.component'),
+    markup: require('!!raw-loader!./demos/button-group-link-to-sb/button-group-link-to-sb.component.html'),
+    module: require('!!raw-loader!./demos/button-group-link-to-sb/button-group-link-to-sb.module'),
+    path: 'libs/documentation/src/lib/components/button-group/demos/button-group-link-to-sb',
+  },
   basic: {
     title: 'Button Groups',
     type: ButtonGroupBasic,
@@ -60,6 +70,7 @@ export const ROUTES = [
     DocumentationComponentsSharedModule,
     ButtonGroupBasicModule,
     ButtonGroupDifferingLengthsModule,
+    ButtonGroupLinkToSbModule,
   ],
 })
 export class ButtonGroupModule {

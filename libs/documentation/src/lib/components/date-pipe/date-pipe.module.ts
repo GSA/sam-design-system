@@ -8,9 +8,19 @@ import { DocumentationComponentsSharedModule, DocumentationDemoList } from './..
 import { ComponentWrapperComponent } from './../../shared/component-wrapper/component-wrapper.component';
 import { DatePipeBasicComponent } from './demos/basic/date-pipe-basic/date-pipe-basic.component';
 import { DatePipeBasicModule } from './demos/basic/date-pipe-basic/date-pipe-basic.module';
+import { DatePipeLinkToSbModule } from './demos/date-pipe-link-to-sb/date-pipe-link-to-sb.module';
+import { DatePipeLinkToSbComponent } from './demos/date-pipe-link-to-sb/date-pipe-link-to-sb.component';
 
 declare var require: any;
 const DEMOS = {
+  linkToSb: {
+    title: 'New Demos',
+    type: DatePipeLinkToSbComponent,
+    code: require('!!raw-loader!./demos/date-pipe-link-to-sb/date-pipe-link-to-sb.component'),
+    markup: require('!!raw-loader!./demos/date-pipe-link-to-sb/date-pipe-link-to-sb.component.html'),
+    module: require('!!raw-loader!./demos/date-pipe-link-to-sb/date-pipe-link-to-sb.module'),
+    path: 'libs/documentation/src/lib/components/date-pipe/demos/date-pipe-link-to-sb',
+  },
   basic: {
     title: 'Date Pipe',
     type: DatePipeBasicComponent,
@@ -45,7 +55,7 @@ export const ROUTES = [
 ];
 
 @NgModule({
-  imports: [CommonModule, DocumentationComponentsSharedModule, DatePipeBasicModule],
+  imports: [CommonModule, DocumentationComponentsSharedModule, DatePipeBasicModule, DatePipeLinkToSbModule],
 })
 export class DatePipeModule {
   constructor(demoList: DocumentationDemoList) {
