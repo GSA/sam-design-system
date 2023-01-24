@@ -4,6 +4,7 @@ import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { DatePipeCurrentDayModule } from './date-pipe-current-day/date-pipe-current-day.module';
 import { DatePipeCurrentYearModule } from './date-pipe-current-year/date-pipe-current-year.module';
+import { DatePipeIntroductionModule } from './date-pipe-introduction/date-pipe-introduction.module';
 import { DatePipeNonCurrentYearModule } from './date-pipe-non-current-year/date-pipe-non-current-year.module';
 
 const disable = {
@@ -22,6 +23,7 @@ export default {
         DatePipeCurrentDayModule,
         DatePipeCurrentYearModule,
         DatePipeNonCurrentYearModule,
+        DatePipeIntroductionModule,
       ],
     }),
   ],
@@ -96,3 +98,19 @@ NonCurrentYear.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('date-pipe', 'non-current-year'),
 };
+
+export const Introduction: Story = (args) => ({
+  template: '<sds-date-pipe-introduction></sds-date-pipe-introduction>',
+  props: args,
+});
+Introduction.parameters = {
+  options: { showPanel: false },
+  controls: {
+    disabled: true,
+    hideNoControlsWarning: true,
+  },
+  actions: { disabled: true },
+  preview: { disabled: true },
+};
+
+export const __namedExportsOrder = ['Introduction', 'Configurable', 'CurrentDay', 'CurrentYear', 'NonCurrentYear'];

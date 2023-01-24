@@ -4,6 +4,7 @@ import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { ExpiresConfigurableModule } from './expires-configurable/expires-configurable.module';
 import { ExpiresExpiresModule } from './expires-expires/expires-expires.module';
+import { ExpiresIntroductionModule } from './expires-introduction/expires-introduction.module';
 
 const disable = {
   table: {
@@ -15,7 +16,13 @@ export default {
   component: SdsExpiresDirective,
   decorators: [
     moduleMetadata({
-      imports: [CommonModule, SdsExpiresModule, ExpiresConfigurableModule, ExpiresExpiresModule],
+      imports: [
+        CommonModule,
+        SdsExpiresModule,
+        ExpiresConfigurableModule,
+        ExpiresExpiresModule,
+        ExpiresIntroductionModule,
+      ],
     }),
   ],
   argTypes: {
@@ -51,3 +58,19 @@ Expires.parameters = {
   preview: generateConfig('storybook/expires/expires-expires', 'ExpiresExpiresModule', 'expires-expires'),
   stackblitzLink: generateStackblitzLink('expires', 'expires'),
 };
+
+export const Introduction: Story = (args) => ({
+  template: '<sds-expires-introduction></sds-expires-introduction>',
+  props: args,
+});
+Introduction.parameters = {
+  options: { showPanel: false },
+  controls: {
+    disabled: true,
+    hideNoControlsWarning: true,
+  },
+  actions: { disabled: true },
+  preview: { disabled: true },
+};
+
+export const __namedExportsOrder = ['Introduction', 'Configurable', 'Expires'];
