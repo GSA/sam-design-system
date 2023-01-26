@@ -129,7 +129,7 @@
               "node_modules/highlight.js/styles/vs.css"
             ],
             "scripts": [
-              "node_modules/marked/lib/marked.cjs",
+              "node_modules/marked/marked.min.js",
               "node_modules/accessible-html5-video-player/js/px-video.js",
               "node_modules/accessible-html5-video-player/js/strings.js"
             ],
