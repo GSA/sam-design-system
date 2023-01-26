@@ -94,7 +94,7 @@ export class SdsVideoPlayerComponent implements AfterViewInit, OnChanges, OnInit
   }
 
   ngOnChanges(changes) {
-    if (changes && changes.crossorigin) {
+    if (this.video && changes && changes.crossorigin) {
       const id = this.video.nativeElement;
       if (id) {
         id.setAttribute('crossorigin', this.crossorigin);
