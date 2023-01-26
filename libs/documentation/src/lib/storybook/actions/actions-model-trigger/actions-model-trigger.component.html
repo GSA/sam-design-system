@@ -1,0 +1,53 @@
+<div class="display-flex">
+  <div>
+    <p>
+      <code
+        >menu.trigger.type = 'primary'<br />
+        menu.trigger.shadow = true
+      </code>
+    </p>
+    <sds-actions-menu
+      [model]="primaryTriggerWithShadow"
+      [screenReaderText]="'Open Default Actions Menu'"
+    ></sds-actions-menu>
+  </div>
+  <div class="padding-left-2">
+    <p>
+      <code
+        >menu.trigger.type = 'primary'<br />
+        menu.trigger.shadow = false
+      </code>
+    </p>
+    <sds-actions-menu
+      [model]="primaryTriggerWithoutShadow"
+      [screenReaderText]="'Open Default Actions Menu'"
+    ></sds-actions-menu>
+  </div>
+</div>
+
+<div class="display-flex padding-top-4">
+  <div>
+    <p>
+      <code
+        >menu.trigger.type = ''<br />
+        menu.trigger.shadow = true
+      </code>
+    </p>
+    <sds-actions-menu
+      [model]="plainTriggerWithShadow"
+      [screenReaderText]="'Open Default Actions Menu'"
+    ></sds-actions-menu>
+  </div>
+  <div class="padding-left-2">
+    <p>
+      <code
+        >menu.trigger.type = ''<br />
+        menu.trigger.shadow = false
+      </code>
+    </p>
+    <sds-actions-menu
+      [model]="plainTriggerWithoutShadow"
+      [screenReaderText]="'Open Default Actions Menu'"
+    ></sds-actions-menu>
+  </div>
+</div>
