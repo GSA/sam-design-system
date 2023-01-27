@@ -322,19 +322,22 @@ export class SdsStepper {
   ngAfterViewInit() {
     if (this.validateStepsOnInit) {
       const currentStep = this.selectedStep;
-      const isRouteEnabled = this.isRouteEnabled;
-      this.flatSteps = this.getFlatSteps(this.stepTemplates);
-      this.isRouteEnabled = false;
-      this.flatSteps.forEach((step) => {
-        setTimeout(() => {
-          this.changeStep(step.id);
-        }, 0);
-      });
+      if (!this.linear) {
+        const isRouteEnabled = this.isRouteEnabled;
+        this.flatSteps = this.getFlatSteps(this.stepTemplates);
+        this.isRouteEnabled = false;
 
-      setTimeout(() => {
-        this.changeStep(currentStep.id);
-        this.isRouteEnabled = isRouteEnabled;
-      }, 0);
+        this.flatSteps.forEach((step) => {
+          setTimeout(() => {
+            this.changeStep(step.id);
+          }, 0);
+        });
+
+        setTimeout(() => {
+          this.changeStep(currentStep.id);
+          this.isRouteEnabled = isRouteEnabled;
+        }, 0);
+      }
     }
   }
 
@@ -404,6 +407,7 @@ export class SdsStepper {
    *  previous to the provided step
    */
   async changeStep(stepId: string, incrementor?: number) {
+    console.log(stepId, 'GYHGJYHJKKJKLJLKL');
     this.flatSteps = this.getFlatSteps(this.stepTemplates);
     let stepIndex = this.flatSteps.findIndex((step) => step.id === stepId);
     stepIndex = stepIndex === -1 ? 0 : stepIndex;
