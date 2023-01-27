@@ -6,6 +6,7 @@ import { SearchSizeModule } from './search-size/search-size.module';
 import { SearchPlaceholderModule } from './search-placeholder/search-placeholder.module';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { SearchDropdownModule } from './search-dropdown/search-dropdown.module';
+import { SearchIntroductionModule } from './search-introduction/search-introduction.module';
 
 declare var require: any;
 
@@ -31,6 +32,7 @@ export default {
         SearchSizeModule,
         SearchPlaceholderModule,
         SearchDropdownModule,
+        SearchIntroductionModule,
       ],
     }),
   ],
@@ -239,4 +241,18 @@ export const Overview = () => ({
 });
 Overview.parameters = { options: { showPanel: false } };
 
-export const __namedExportsOrder = ['Overview', 'Configurable', 'Dropdown', 'Placeholder', 'Size'];
+export const Introduction: Story = (args) => ({
+  template: '<sds-search-introduction></sds-search-introduction>',
+  props: args,
+});
+Introduction.parameters = {
+  options: { showPanel: false },
+  controls: {
+    disabled: true,
+    hideNoControlsWarning: true,
+  },
+  actions: { disabled: true },
+  preview: { disabled: true },
+};
+
+export const __namedExportsOrder = ['Introduction', 'Overview', 'Configurable', 'Dropdown', 'Placeholder', 'Size'];

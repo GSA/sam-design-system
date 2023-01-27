@@ -3,6 +3,7 @@ import { ExternalLinkDirective, SdsExternalLinkDirectivesModule } from '@gsa-sam
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { ExternalLinkHideIconModule } from './external-link-hide-icon/external-link-hide-icon.module';
+import { ExternalLinkIntroductionModule } from './external-link-introduction/external-link-introduction.module';
 import { ExternalLinkTargetModule } from './external-link-target/external-link-target.module';
 
 const disable = {
@@ -16,7 +17,13 @@ export default {
   component: ExternalLinkDirective,
   decorators: [
     moduleMetadata({
-      imports: [CommonModule, SdsExternalLinkDirectivesModule, ExternalLinkTargetModule, ExternalLinkHideIconModule],
+      imports: [
+        CommonModule,
+        SdsExternalLinkDirectivesModule,
+        ExternalLinkTargetModule,
+        ExternalLinkHideIconModule,
+        ExternalLinkIntroductionModule,
+      ],
     }),
   ],
   argTypes: {
@@ -83,4 +90,18 @@ HideIcon.parameters = {
   stackblitzLink: generateStackblitzLink('external-link', 'external-link-hide-icon'),
 };
 
-export const __namedExportsOrder = ['Configurable', 'HideIcon', 'Target'];
+export const Introduction: Story = (args) => ({
+  template: '<sds-external-link-introduction></sds-external-link-introduction>',
+  props: args,
+});
+Introduction.parameters = {
+  options: { showPanel: false },
+  controls: {
+    disabled: true,
+    hideNoControlsWarning: true,
+  },
+  actions: { disabled: true },
+  preview: { disabled: true },
+};
+
+export const __namedExportsOrder = ['Introduction', 'Configurable', 'HideIcon', 'Target'];

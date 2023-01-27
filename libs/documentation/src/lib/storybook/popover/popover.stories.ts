@@ -4,6 +4,7 @@ import { moduleMetadata, Meta, Story } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { PopoverCloseOnClickOutsideModule } from './popover-close-on-click-outside/popover-close-on-click-outside.module';
 import { PopoverCloseOnContentClickModule } from './popover-close-on-content-click/popover-close-on-content-click.module';
+import { PopoverIntroductionModule } from './popover-introduction/popover-introduction.module';
 import { PopoverPositionModule } from './popover-position/popover-position.module';
 import { PopoverTitleModule } from './popover-title/popover-title.module';
 
@@ -24,6 +25,7 @@ export default {
         PopoverPositionModule,
         PopoverCloseOnContentClickModule,
         PopoverTitleModule,
+        PopoverIntroductionModule,
       ],
     }),
   ],
@@ -154,8 +156,22 @@ CloseOnClickOutside.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('popover', 'close-on-click-outside'),
 };
+export const Introduction: Story = (args) => ({
+  template: '<sds-popover-introduction></sds-popover-introduction>',
+  props: args,
+});
+Introduction.parameters = {
+  options: { showPanel: false },
+  controls: {
+    disabled: true,
+    hideNoControlsWarning: true,
+  },
+  actions: { disabled: true },
+  preview: { disabled: true },
+};
 
 export const __namedExportsOrder = [
+  'Introduction',
   'Configurable',
   'CloseOnClickOutside',
   'CloseOnContentClicked',

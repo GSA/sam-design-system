@@ -1,21 +1,16 @@
 import { CommonModule } from '@angular/common';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import {
   SDSAutocompleteComponent,
   SDSAutocompletelConfiguration,
   SdsAutocompleteModule,
   SelectionMode as SDSSelectionMode,
 } from '@gsa-sam/components';
-import {
-  SdsButtonGroupComponent,
-  SdsButtonGroupModule,
-  SdsButtonGroupOptionComponent,
-} from '@gsa-sam/sam-material-extensions';
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { AutocompleteConfigurableModule } from './autocomplete-configurable/autocomplete-configurable.module';
 import { AutocompleteFreeTextModule } from './autocomplete-free-text/autocomplete-free-text.module';
 import { AutocompleteGroupingModule } from './autocomplete-grouping/autocomplete-grouping.module';
+import { AutocompleteIntroductionModule } from './autocomplete-introduction/autocomplete-introduction.module';
 import { AutocompleteSelectionModeModule } from './autocomplete-selection-mode/autocomplete-selection-mode.module';
 
 const disabled = {
@@ -36,6 +31,7 @@ export default {
         AutocompleteFreeTextModule,
         AutocompleteSelectionModeModule,
         AutocompleteConfigurableModule,
+        AutocompleteIntroductionModule,
       ],
     }),
   ],
@@ -393,4 +389,18 @@ FreeText.parameters = {
   stackblitzLink: generateStackblitzLink('autocomplete', 'free-text'),
 };
 
-export const __namedExportsOrder = ['Configurable', 'FreeText', 'Grouping', 'SelectionMode'];
+export const Introduction: Story = (args) => ({
+  template: '<sds-autocomplete-introduction></sds-autocomplete-introduction>',
+  props: args,
+});
+Introduction.parameters = {
+  options: { showPanel: false },
+  controls: {
+    disabled: true,
+    hideNoControlsWarning: true,
+  },
+  actions: { disabled: true },
+  preview: { disabled: true },
+};
+
+export const __namedExportsOrder = ['Introduction', 'Configurable', 'FreeText', 'Grouping', 'SelectionMode'];

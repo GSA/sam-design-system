@@ -8,6 +8,7 @@ import {
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { ButtonGroupCheckedModule } from './button-group-checked/button-group-checked.module';
+import { ButtonGroupIntroductionModule } from './button-group-introduction/button-group-introduction.module';
 import { ButtonGroupModesModule } from './button-group-modes/button-group-modes.module';
 
 const disable = {
@@ -30,6 +31,7 @@ export default {
         SdsButtonGroupModule,
         ButtonGroupModesModule,
         ButtonGroupCheckedModule,
+        ButtonGroupIntroductionModule,
       ],
     }),
   ],
@@ -103,4 +105,18 @@ Checked.parameters = {
   stackblitzLink: generateStackblitzLink('button-group', 'checked'),
 };
 
-export const __namedExportsOrder = ['Configurable', 'Checked', 'Modes'];
+export const Introduction: Story = (args) => ({
+  template: '<sds-button-group-introduction></sds-button-group-introduction>',
+  props: args,
+});
+Introduction.parameters = {
+  options: { showPanel: false },
+  controls: {
+    disabled: true,
+    hideNoControlsWarning: true,
+  },
+  actions: { disabled: true },
+  preview: { disabled: true },
+};
+
+export const __namedExportsOrder = ['Introduction', 'Configurable', 'Checked', 'Modes'];
