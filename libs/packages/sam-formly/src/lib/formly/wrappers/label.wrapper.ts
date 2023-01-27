@@ -36,7 +36,7 @@ import { FieldWrapper } from '@ngx-formly/core';
             <span [attr.class]="to.labelClass">{{ to.label }}</span>
           </ng-container>
 
-          <span *ngIf="!to.required && !to.hideOptional"> (Optional)</span>
+          <span class="text-normal" *ngIf="!to.required && !to.hideOptional"> (Optional)</span>
         </label>
 
         <span *ngIf="to.tooltipText && field.type !== 'checkbox'" class="margin-top-3 margin-left-1">
