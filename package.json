@@ -51,7 +51,7 @@
     "@angular/compiler-cli": "^13.3.12",
     "@angular/core": "^13.3.12",
     "@angular/forms": "^13.3.12",
-    "@angular/material": "^12.2.13",
+    "@angular/material": "^13.3.9",
     "@angular/platform-browser": "^13.3.12",
     "@angular/platform-browser-dynamic": "^13.3.12",
     "@angular/router": "^13.3.12",

@@ -10,9 +10,18 @@ import { ComponentWrapperComponent } from '../../shared/component-wrapper/compon
 import { InputBasicModule } from './demos/basic/input-basic.module';
 import { InputOptionalModule } from './demos/optional/input-optional.module';
 import { InputOptional } from './demos/optional/input-optional.component';
+import { FormlyInputLinkToSbComponent } from './demos/formly-input-link-to-sb/formly-input-link-to-sb.component';
+import { FormlyInputLinkToSbModule } from './demos/formly-input-link-to-sb/formly-input-link-to-sb.module';
 
 declare var require: any;
 const DEMOS = {
+  linkToSb: {
+    title: 'New Demos',
+    type: FormlyInputLinkToSbComponent,
+    code: require('!!raw-loader!./demos/formly-input-link-to-sb/formly-input-link-to-sb.component'),
+    markup: require('!!raw-loader!./demos/formly-input-link-to-sb/formly-input-link-to-sb.component.html'),
+    path: 'libs/documentation/src/lib/components/formly-input/demos/formly-input-link-to-sb',
+  },
   basic: {
     title: 'Basic Form Input',
     type: InputBasic,
@@ -54,7 +63,13 @@ export const ROUTES = [
 ];
 
 @NgModule({
-  imports: [CommonModule, DocumentationComponentsSharedModule, InputBasicModule, InputOptionalModule],
+  imports: [
+    CommonModule,
+    DocumentationComponentsSharedModule,
+    InputBasicModule,
+    InputOptionalModule,
+    FormlyInputLinkToSbModule,
+  ],
 })
 export class InputModule {
   constructor(demoList: DocumentationDemoList) {
