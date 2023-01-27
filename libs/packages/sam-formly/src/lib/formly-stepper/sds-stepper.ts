@@ -407,7 +407,6 @@ export class SdsStepper {
    *  previous to the provided step
    */
   async changeStep(stepId: string, incrementor?: number) {
-    console.log(stepId, 'GYHGJYHJKKJKLJLKL');
     this.flatSteps = this.getFlatSteps(this.stepTemplates);
     let stepIndex = this.flatSteps.findIndex((step) => step.id === stepId);
     stepIndex = stepIndex === -1 ? 0 : stepIndex;
