@@ -10,9 +10,19 @@ import { ComponentWrapperComponent } from '../../shared/component-wrapper/compon
 import { ActionsBasicModule } from './demos/basic/actions-basic.module';
 import { ActionsMenuActionMode } from './demos/action-mode/actions-action-mode.component';
 import { ActionsMenuActionModeModule } from './demos/action-mode/actions-action-mode.module';
+import { ActionsLinkToSbComponent } from './demos/actions-link-to-sb/actions-link-to-sb.component';
+import { ActionsLinkToSbModule } from './demos/actions-link-to-sb/actions-link-to-sb.module';
 
 declare var require: any;
 const DEMOS = {
+  linkToSb: {
+    title: 'New Demos',
+    type: ActionsLinkToSbComponent,
+    code: require('!!raw-loader!./demos/actions-link-to-sb/actions-link-to-sb.component'),
+    markup: require('!!raw-loader!./demos/actions-link-to-sb/actions-link-to-sb.component.html'),
+    module: require('!!raw-loader!./demos/actions-link-to-sb/actions-link-to-sb.module'),
+    path: 'libs/documentation/src/lib/components/actions/demos/actions-link-to-sb',
+  },
   basic: {
     title: 'Actions Menu Dropdown',
     type: ActionsBasic,
@@ -55,7 +65,13 @@ export const ROUTES = [
 ];
 
 @NgModule({
-  imports: [CommonModule, DocumentationComponentsSharedModule, ActionsBasicModule, ActionsMenuActionModeModule],
+  imports: [
+    CommonModule,
+    DocumentationComponentsSharedModule,
+    ActionsBasicModule,
+    ActionsMenuActionModeModule,
+    ActionsLinkToSbModule,
+  ],
 })
 export class ActionsModule {
   constructor(demoList: DocumentationDemoList) {
