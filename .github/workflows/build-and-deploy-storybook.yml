@@ -18,6 +18,8 @@ jobs:
       - name: Build Stackblitz HTMLs
         run: npm run demo:stackblitzes
       - name: Build Storybook Assets
+        env:
+          NODE_OPTIONS: "--max_old_space_size=4096"
         run: npm run build-storybook-ng
       - name: Add .nojekyll file to allow for node_modules to be included in bundle
         run: touch storybook-static/.nojekyll
