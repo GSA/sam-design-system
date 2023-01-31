@@ -74,9 +74,9 @@ const actionsMenuModalFunction = (type, shadow, actions) => {
       shadow: shadow ?? true,
     },
     actions: actions ?? [
-      { "id": "DownloadBtn", "text": "Download" },
-      { "id": "FollowBtn", "text": "Follow" },
-      { "id": "ShareBtn", "text": "Share" },
+      /* prettier-ignore */ { "id": "DownloadBtn", "text": "Download" },
+      /* prettier-ignore */ { "id": "FollowBtn", "text": "Follow" },
+      /* prettier-ignore */ { "id": "ShareBtn", "text": "Share" },
     ],
   };
   return toReturn;
@@ -103,10 +103,10 @@ export const Configurable = Template.bind({});
 Configurable.args = {
   model: {},
   actions: [
-    { "id": "DownloadBtn", "text": "Download" },
-    { "id": "FollowBtn", "text": "Follow" },
-    { "id": "ShareBtn", "text": "Share" },
-  ]
+    /* prettier-ignore */ { "id": "DownloadBtn", "text": "Download" },
+    /* prettier-ignore */ { "id": "FollowBtn", "text": "Follow" },
+    /* prettier-ignore */ { "id": "ShareBtn", "text": "Share" },
+  ],
 };
 Configurable.parameters = {
   preview: { disabled: true },
