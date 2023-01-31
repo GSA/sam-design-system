@@ -60,7 +60,7 @@ export default {
       },
     },
     actions: {
-      control: 'object',
+      control: 'array',
       table: {
         category: 'ActionMenuModel/actions',
       },
@@ -73,10 +73,10 @@ const actionsMenuModalFunction = (type, shadow, actions) => {
       type: type ?? 'plain',
       shadow: shadow ?? true,
     },
-    actions: [
-      { id: 'DownloadBtn', text: 'Download' },
-      { id: 'FollowBtn', text: 'Follow' },
-      { id: 'ShareBtn', text: 'Share' },
+    actions: actions ?? [
+      { "id": "DownloadBtn", "text": "Download" },
+      { "id": "FollowBtn", "text": "Follow" },
+      { "id": "ShareBtn", "text": "Share" },
     ],
   };
   return toReturn;
@@ -102,6 +102,11 @@ const Template = ({ type, shadow, actions, size, ...rest }) => {
 export const Configurable = Template.bind({});
 Configurable.args = {
   model: {},
+  actions: [
+    { "id": "DownloadBtn", "text": "Download" },
+    { "id": "FollowBtn", "text": "Follow" },
+    { "id": "ShareBtn", "text": "Share" },
+  ]
 };
 Configurable.parameters = {
   preview: { disabled: true },
