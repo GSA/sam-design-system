@@ -8,23 +8,17 @@ import { parseDemo } from './parse-demo';
 
 const stackblitzUrl = 'https://stackblitz.com/run';
 const packageJson = fs.readJsonSync('package.json');
-const samComponentsPackage = fs.readJsonSync(
-  'libs/packages/components/package.json'
-);
-const samFormlyPackage = fs.readJsonSync(
-  'libs/packages/sam-formly/package.json'
-);
-const samMaterialExtensions = fs.readJsonSync(
-  'libs/packages/sam-material-extensions/package.json'
-);
+const samComponentsPackage = fs.readJsonSync('libs/packages/components/package.json');
+const samFormlyPackage = fs.readJsonSync('libs/packages/sam-formly/package.json');
+const samMaterialExtensions = fs.readJsonSync('libs/packages/sam-material-extensions/package.json');
 
 let dependencies = packageJson.dependencies;
 // Locking version at 11.0.3 - issue with stackblitz is that it does not pick up newly released npm modules for weeks
 const samDependencies = {
   '@gsa-sam/layouts': '12.0.0',
-  '@gsa-sam/components': '13.0.4',
-  '@gsa-sam/sam-formly': '13.0.4',
-  '@gsa-sam/sam-material-extensions': '13.0.4',
+  '@gsa-sam/components': '13.0.5',
+  '@gsa-sam/sam-formly': '13.0.5',
+  '@gsa-sam/sam-material-extensions': '13.0.5',
 };
 
 dependencies = { ...dependencies, ...samDependencies };
@@ -42,21 +36,11 @@ function fileContent(...parts: string[]) {
  * resulting html files to the public folder of the demo application
  */
 
-const indexFile = ejs.compile(
-  fileContent('misc', 'stackblitzes-templates', 'index.html.ejs')
-);
-const mainFile = ejs.compile(
-  fileContent('misc', 'stackblitzes-templates', 'main.ts.ejs')
-);
-const stackblitzFile = ejs.compile(
-  fileContent('misc', 'stackblitzes-templates', 'stackblitz.html.ejs')
-);
-const appComponent = ejs.compile(
-  fileContent('misc', 'stackblitzes-templates', 'app.component.ejs')
-);
-const appModule = ejs.compile(
-  fileContent('misc', 'stackblitzes-templates', 'app.module.ejs')
-);
+const indexFile = ejs.compile(fileContent('misc', 'stackblitzes-templates', 'index.html.ejs'));
+const mainFile = ejs.compile(fileContent('misc', 'stackblitzes-templates', 'main.ts.ejs'));
+const stackblitzFile = ejs.compile(fileContent('misc', 'stackblitzes-templates', 'stackblitz.html.ejs'));
+const appComponent = ejs.compile(fileContent('misc', 'stackblitzes-templates', 'app.component.ejs'));
+const appModule = ejs.compile(fileContent('misc', 'stackblitzes-templates', 'app.module.ejs'));
 
 const isFederalistBuild = parseArgs(process.argv.slice(2))['federalist'];
 
@@ -64,26 +48,12 @@ let styles;
 let base;
 
 if (isFederalistBuild) {
-  const stylesPaths = glob.sync(
-    path.join('dist', 'apps', 'sam-design-system-site', 'sds.css').toString()
-  );
+  const stylesPaths = glob.sync(path.join('dist', 'apps', 'sam-design-system-site', 'sds.css').toString());
   styles = fileContent(...stylesPaths);
-  base = path.join(
-    'dist',
-    'apps',
-    'sam-design-system-site',
-    'assets',
-    'stackblitzes'
-  );
+  base = path.join('dist', 'apps', 'sam-design-system-site', 'assets', 'stackblitzes');
 } else {
   styles = fileContent('misc', 'stackblitzes-templates', 'styles.css');
-  base = path.join(
-    'apps',
-    'sam-design-system-site',
-    'src',
-    'assets',
-    'stackblitzes'
-  );
+  base = path.join('apps', 'sam-design-system-site', 'src', 'assets', 'stackblitzes');
 }
 
 const root = path.join('libs', 'documentation', 'src', 'lib');
@@ -122,9 +92,7 @@ modulesInfo.forEach((value, demoModule) => {
   const demoFiles = glob.sync(path.join(demoFolder, '*'), {});
   demoFolder = path.relative(root, path.resolve(demoFolder));
 
-  const splitDemoFolder = demoFolder
-  .replace(root, '')
-  .split(path.sep);
+  const splitDemoFolder = demoFolder.replace(root, '').split(path.sep);
   const isStorybookDemo = demoFolder.startsWith('storybook');
   const componentName = splitDemoFolder[splitDemoFolder.length - (isStorybookDemo ? 2 : 3)];
   const demoName = splitDemoFolder[splitDemoFolder.length - 1];
@@ -175,9 +143,7 @@ modulesInfo.forEach((value, demoModule) => {
     }
 
     // Look for service folders and add those in as well to the demo
-    const serviceFolder = path.normalize(
-      root + '/' + demoFolder + '/../services'
-    );
+    const serviceFolder = path.normalize(root + '/' + demoFolder + '/../services');
     if (fs.existsSync(serviceFolder)) {
       const serviceFiles = glob.sync(path.join(serviceFolder, '*'), {});
       for (const serviceFile of serviceFiles) {
@@ -190,10 +156,7 @@ modulesInfo.forEach((value, demoModule) => {
     }
   }
   fs.ensureDirSync(destinationFolder);
-  fs.writeFileSync(
-    path.join(destinationFolder, 'stackblitz.html'),
-    stackblitzFile(stackblitzData)
-  );
+  fs.writeFileSync(path.join(destinationFolder, 'stackblitz.html'), stackblitzFile(stackblitzData));
 });
 
 console.log(`generated ${modulesInfo.size} stackblitze(s) from demo sources.`);
