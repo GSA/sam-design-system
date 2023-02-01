@@ -56,21 +56,23 @@ export function minValidationMessage(err, field: FormlyFieldConfig) {
 
 export function minDateValidationMessage(err, field: FormlyFieldConfig) {
   const dt = field.templateOptions.minDate;
-  const dateFormat = dt.getMonth() + 1 + '/' + dt.getDate() + '/' + dt.getFullYear();
+  const dateFormat = dt.toLocaleString('en-US', { month: 'short' }) + ', ' + dt.getDate() + ', ' + dt.getFullYear();
   return `Date must be on or after ${dateFormat}`;
 }
 
 export function maxDateValidationMessage(err, field: FormlyFieldConfig) {
   const dt = field.templateOptions.maxDate;
-  const dateFormat = dt.getMonth() + 1 + '/' + dt.getDate() + '/' + dt.getFullYear();
+  const dateFormat = dt.toLocaleString('en-US', { month: 'short' }) + ' ' + dt.getDate() + ', ' + dt.getFullYear();
   return `Date must be on or before ${dateFormat}`;
 }
 
 export function betweenDateValidationMessage(err, field: FormlyFieldConfig) {
   const dtnmax = field.templateOptions.maxDate;
-  const dateMaxFormat = dtnmax.getMonth() + 1 + '/' + dtnmax.getDate() + '/' + dtnmax.getFullYear();
+  const dateMaxFormat =
+    dtnmax.toLocaleString('en-US', { month: 'short' }) + ' ' + dtnmax.getDate() + ', ' + dtnmax.getFullYear();
   const dtmin = field.templateOptions.minDate;
-  const dateMinFormat = dtmin.getMonth() + 1 + '/' + dtmin.getDate() + '/' + dtmin.getFullYear();
+  const dateMinFormat =
+    dtmin.toLocaleString('en-US', { month: 'short' }) + ' ' + dtmin.getDate() + ', ' + dtmin.getFullYear();
   return `Date must be between ${dateMinFormat} and ${dateMaxFormat} `;
 }
 
