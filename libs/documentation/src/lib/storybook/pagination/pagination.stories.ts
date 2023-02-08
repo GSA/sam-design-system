@@ -14,6 +14,7 @@ const disable = {
   },
 };
 
+
 export default {
   title: 'Components/Pagination',
   component: PaginationComponent,
