@@ -49,6 +49,25 @@ export function autocompleteRequired(control: FormControl): ValidationErrors {
 }
 
 /**
+ * Usage:
+ *  Override the required validator to allow multicheckbox to behave more like required atleast one item is selected
+ *  the other inputs regarding error messages
+ *
+ // In the formly config
+ {
+      type: 'multicheckbox',
+      templateOptions: {
+        required: true,
+      },
+      validators: {
+        required: multiCheckboxRequired
+      },
+ */
+export function multiCheckboxRequired(control: FormControl): ValidationErrors {
+  const hasTrueKeys = Object.keys(control.value).some((k) => control.value[k]);
+  return hasTrueKeys ? { required: true } : null;
+}
+/**
  *
  * @param control
  * @param field

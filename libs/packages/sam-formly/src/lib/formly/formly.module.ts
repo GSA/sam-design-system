@@ -124,7 +124,7 @@ export function animationExtension(field: FormlyFieldConfig) {
 
   field.wrappers = ['animation', ...(field.wrappers || [])];
 }
-export { maxDateValidator, minDateValidator, dateRangeValidator } from './formly.validators';
+export { maxDateValidator, minDateValidator, dateRangeValidator, multiCheckboxRequired } from './formly.validators';
 
 export const DATE_FORMAT: MatDateFormats = {
   ...MAT_NATIVE_DATE_FORMATS,
