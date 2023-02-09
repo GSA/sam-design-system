@@ -5,7 +5,6 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
   templateUrl: './result-list-configurable.component.html',
 })
 export class ResultListConfigurableComponent {
-
   @Input('configuration')
   configuration: any;
 
