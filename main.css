@@ -115741,6 +115741,10 @@ sds-filters usa-accordion formly-field:first-child {
 .usa-radio {
   background-color: transparent !important;
 }
+.usa-checkbox__tooltip,
+.usa-radio__tooltip {
+  display: inline;
+}
 .usa-checkbox .usa-checkbox__input:checked + .usa-checkbox__label::before,
 .usa-checkbox .usa-radio__input:checked + .usa-radio__label::before,
 .usa-radio .usa-checkbox__input:checked + .usa-checkbox__label::before,
@@ -116497,6 +116501,18 @@ section h1 + *, section h2 + *, section h3 + *, section h4 + *, section h5 + *, 
 }
 .minw-card-lg {
   min-width: 240px;
+}
+.sds-measure-7 {
+  max-width: 96ex !important;
+}
+.sds-measure-8 {
+  max-width: 104ex !important;
+}
+.sds-measure-9 {
+  max-width: 120ex !important;
+}
+.sds-measure-10 {
+  max-width: 136ex !important;
 }
 .usa-accordion:not(.sds-accordion--filters):not(.usa-nav__primary) {
   padding-left: 0.5rem;
@@ -117358,7 +117374,12 @@ section h1 + *, section h2 + *, section h3 + *, section h4 + *, section h5 + *, 
   vertical-align: bottom;
 }
 .sds-card__header--stacked, .sds-card__header--center {
-  text-align: center;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
 }
 .sds-card__header--action {
   display: -ms-flexbox;
@@ -118301,10 +118322,13 @@ ul.sds-history .sds-history__bullet--success-darker {
 ul.sds-history .sds-history__bullet--disabled {
   background-color: #c9c9c9;
 }
+.sds-list {
+  max-width: 88ex;
+}
 .sds-list li {
   line-height: 1.5;
   margin-bottom: 0.5rem;
-  max-width: 88ex;
+  max-width: none;
 }
 .sds-list svg {
   margin-right: 0.5rem;
@@ -119050,6 +119074,7 @@ Navigation close button
   padding-top: 0.25rem;
   font-weight: normal;
   margin: 1px;
+  position: fixed;
   min-width: 300px;
   max-width: 500px;
   text-indent: 0 !important;
@@ -119265,6 +119290,7 @@ Navigation close button
   box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
   border-width: 0;
   border-style: solid;
+  color: white;
 }
 .usa-search [type=search] {
   height: 2.5rem;
@@ -119304,6 +119330,7 @@ Navigation close button
 .usa-search.usa-search--big [type=submit] {
   min-width: 4.5rem;
   background-size: 0 0;
+  color: white;
 }
 .usa-search.usa-search--big [type=submit] > img {
   display: block;
