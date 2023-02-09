@@ -11,6 +11,8 @@ import { TooltipBasic } from './demos/tooltip/tooltip-basic.component';
 import { TooltipBasicModule } from './demos/tooltip/tooltip-basic.module';
 import { PopoverLinkToSbComponent } from './demos/popover-link-to-sb/popover-link-to-sb.component';
 import { PopoverLinkToSbModule } from './demos/popover-link-to-sb/popover-link-to-sb.module';
+import { TooltipLinkToSbComponent } from './demos/tooltip-link-to-sb/tooltip-link-to-sb.component';
+import { TooltipLinkToSbModule } from './demos/tooltip-link-to-sb/tooltip-link-to-sb.module';
 
 declare var require: any;
 const DEMOS = {
@@ -21,6 +23,14 @@ const DEMOS = {
     module: require('!!raw-loader!./demos/popover-link-to-sb/popover-link-to-sb.module'),
     markup: require('!!raw-loader!./demos/popover-link-to-sb/popover-link-to-sb.component.html'),
     path: 'libs/documentation/src/lib/components/popup/demos/popover-link-to-sb',
+  },
+  tooltipLinkToSb: {
+    title: 'New Tooltip Demos',
+    type: TooltipLinkToSbComponent,
+    code: require('!!raw-loader!./demos/tooltip-link-to-sb/tooltip-link-to-sb.component'),
+    module: require('!!raw-loader!./demos/tooltip-link-to-sb/tooltip-link-to-sb.module'),
+    markup: require('!!raw-loader!./demos/tooltip-link-to-sb/tooltip-link-to-sb.component.html'),
+    path: 'libs/documentation/src/lib/components/popup/demos/tooltip-link-to-sb',
   },
   tooltip: {
     title: 'Tooltip',
@@ -69,6 +79,7 @@ export const ROUTES = [
     PopupBasicModule,
     TooltipBasicModule,
     PopoverLinkToSbModule,
+    TooltipLinkToSbModule,
   ],
 })
 export class PopupModule {
