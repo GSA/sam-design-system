@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
+import { multiCheckboxRequired } from '@gsa-sam/sam-formly';
 
 @Component({
   templateUrl: './multicheckbox-basic.component.html',
@@ -15,6 +16,9 @@ export class MultiCheckboxBasic {
     {
       key: 'entity.socioeconomic',
       type: 'multicheckbox',
+      validators: {
+        required: multiCheckboxRequired,
+      },
       templateOptions: {
         label: 'Socio-Economic Status',
         description: 'Select any socio-economic categories which reflect the current status of your entity',
