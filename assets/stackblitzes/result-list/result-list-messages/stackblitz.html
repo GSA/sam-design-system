@@ -322,7 +322,34 @@ export class AppModule {}
 export class AppComponent {}
 ">
     
-    <input type="hidden" name="project[files][src/app/result-list-messages.component.html]" value="&lt;div style=&#34;width: 90%;&#34;&gt;
+    <input type="hidden" name="project[files][src/app/optional-classes.ts]" value="import { TemplateRef } from &#39;@angular/core&#39;;
+export class OptionalButton {
+  id?: string;
+  text?: string;
+  classes?: string;
+  action?: any;
+  ariaLabel?: string;
+}
+export class OptionalMessage {
+  type?: string;
+  title?: string;
+  message?: string;
+  classes?: string;
+  buttons?: OptionalButton[];
+}
+
+export class OptionalSearchModel {
+  results?: any[];
+  metadata?: {
+    messages?: OptionalMessage[] | TemplateRef&lt;any&gt;;
+  };
+}
+">
+    
+    <input type="hidden" name="project[files][src/app/result-list-messages.component.html]" value="&lt;form [formGroup]=&#34;form&#34;&gt;
+  &lt;formly-form [model]=&#34;model&#34; [fields]=&#34;fields&#34; [options]=&#34;options&#34; [form]=&#34;form&#34;&gt;&lt;/formly-form&gt;
+&lt;/form&gt;
+&lt;div style=&#34;width: 90%;&#34;&gt;
   &lt;sds-page class=&#34;sds-page condensed margin-bottom-0&#34;&gt;
     &lt;sds-search-result-list [model]=&#34;items&#34;&gt;
       &lt;ng-template #resultContent let-item&gt;
@@ -336,18 +363,83 @@ export class AppComponent {}
 ">
     
     <input type="hidden" name="project[files][src/app/result-list-messages.component.ts]" value="import { Component } from &#39;@angular/core&#39;;
+import { FormGroup } from &#39;@angular/forms&#39;;
+import { FormlyFormOptions, FormlyFieldConfig } from &#39;@ngx-formly/core&#39;;
+import { OptionalSearchModel } from &#39;./optional-classes&#39;;
 
 @Component({
   selector: &#39;sds-result-list-messages&#39;,
   templateUrl: &#39;./result-list-messages.component.html&#39;,
 })
 export class ResultListMessagesComponent {
-  constructor() {}
+  constructor() {
+    this.form.valueChanges.subscribe((changes) =&gt; {
+      switch (changes.messageType) {
+        case &#39;error&#39;:
+          this.items = this.errorModel;
+          break;
+        case &#39;info&#39;:
+          this.items = this.infoModel;
+          break;
+        case &#39;empty&#39;:
+          this.items = this.emptyModel;
+          break;
+        case &#39;loading&#39;:
+          this.items = this.loadingModel;
+          break;
+        case &#39;initial&#39;:
+          this.items = this.initialModel;
+          break;
+      }
+    });
+  }
 
-  itemsDefault = [];
+  form = new FormGroup({});
+  model: any = {
+    messageType: &#39;initial&#39;,
+  };
+  options: FormlyFormOptions = {};
+  fields: FormlyFieldConfig[] = [
+    {
+      key: &#39;messageType&#39;,
+      type: &#39;select&#39;,
+      templateOptions: {
+        label: &#39;Message Type&#39;,
+        required: true,
+        options: [
+          { label: &#39;Error&#39;, value: &#39;error&#39; },
+          { label: &#39;Info&#39;, value: &#39;info&#39; },
+          { label: &#39;Empty&#39;, value: &#39;empty&#39; },
+          { label: &#39;Loading&#39;, value: &#39;loading&#39; },
+          { label: &#39;Initial&#39;, value: &#39;initial&#39; },
+        ],
+      },
+    },
+  ];
 
-  items = {
-    results: this.itemsDefault,
+  errorModel = {
+    results: [],
+    metadata: {
+      messages: [
+        {
+          type: &#39;error&#39;,
+          title: &#39;Error during the api&#39;,
+          message: `Error Search criteria. Please try again
+                      If you continue to have this problem, please contact the &lt;a href=&#39;https://www.fsd.gov/&#39;&gt;Federal Service Desk.&lt;/a&gt;`,
+          buttons: [
+            {
+              id: &#39;backward&#39;,
+              text: &#39;Go back&#39;,
+              action: this.goBackButton,
+              ariaLabel: &#39;Go Back&#39;,
+            },
+          ],
+        },
+      ],
+    },
+  };
+  infoModel = {
+    results: [],
     metadata: {
       messages: [
         {
@@ -361,21 +453,71 @@ export class ResultListMessagesComponent {
               id: &#39;backward&#39;,
               text: &#39;Go back&#39;,
               classes: &#39;usa-button--secondary&#39;,
-              action: this.gobackbutton,
+              action: this.goBackButton,
             },
             {
               id: &#39;forward&#39;,
               text: &#39;Go forward&#39;,
               classes: &#39;usa-button usa-button--secondary width-card margin-y-2&#39;,
+              action: this.goForwardButton,
             },
           ],
         },
       ],
     },
   };
+  emptyModel = {
+    metadata: {
+      messages: [
+        {
+          type: &#39;empty&#39;,
+          title: &#39;No Search results&#39;,
+          message: `We couldn&#39;t find a match for your search criteria.`,
+          classes: &#39;usa-custom&#39;,
+          buttons: [
+            {
+              id: &#39;backward&#39;,
+              text: &#39;Go back&#39;,
+              classes: &#39;usa-button--secondary&#39;,
+              action: this.goBackButton,
+            },
+          ],
+        },
+      ],
+    },
+    results: [],
+  };
+  loadingModel = {
+    metadata: {
+      messages: [
+        {
+          type: &#39;loading&#39;,
+        },
+      ],
+    },
+    results: [],
+  };
+  initialModel = {
+    metadata: {
+      messages: [
+        {
+          type: &#39;initial&#39;,
+          title: &#39;Search Criteria&#39;,
+          message: `Choose your filter to run report`,
+          classes: &#39;usa-custom&#39;,
+        },
+      ],
+    },
+    results: [],
+  };
 
-  gobackbutton() {
+  items: OptionalSearchModel = this.initialModel;
+
+  goBackButton() {
     console.log(&#39;back button click&#39;);
+  }
+  goForwardButton() {
+    console.log(&#39;forward button click&#39;);
   }
 }
 ">
@@ -384,9 +526,22 @@ export class ResultListMessagesComponent {
 import { CommonModule } from &#39;@angular/common&#39;;
 import { ResultListMessagesComponent } from &#39;./result-list-messages.component&#39;;
 import { SdsSearchResultListModule, SdsPageModule } from &#39;@gsa-sam/components&#39;;
+import { ReactiveFormsModule, FormsModule } from &#39;@angular/forms&#39;;
+import { SdsFormlyModule } from &#39;@gsa-sam/sam-formly&#39;;
+import { FormlyModule } from &#39;@ngx-formly/core&#39;;
+import { NoopAnimationsModule } from &#39;@angular/platform-browser/animations&#39;;
 
 @NgModule({
-  imports: [CommonModule, SdsSearchResultListModule, SdsPageModule],
+  imports: [
+    CommonModule,
+    SdsSearchResultListModule,
+    SdsPageModule,
+    ReactiveFormsModule,
+    SdsFormlyModule,
+    FormsModule,
+    FormlyModule.forRoot(),
+    NoopAnimationsModule,
+  ],
   declarations: [ResultListMessagesComponent],
   bootstrap: [ResultListMessagesComponent],
   exports: [ResultListMessagesComponent],

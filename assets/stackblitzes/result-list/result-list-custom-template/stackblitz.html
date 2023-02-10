@@ -324,23 +324,16 @@ export class AppComponent {}
     
     <input type="hidden" name="project[files][src/app/result-list-custom-template.component.html]" value="&lt;div style=&#34;width: 90%;&#34;&gt;
   &lt;sds-page class=&#34;sds-page condensed margin-bottom-0&#34;&gt;
-    &lt;sds-search-result-list [model]=&#34;items&#34; [customResultsTemplate]=&#34;temp&#34;&gt;
-      &lt;ng-template #resultContent let-item&gt;
-        &lt;ul class=&#34;usa-list usa-list--unstyled&#34;&gt;
-          &lt;li&gt;ID {{ item.id }} - {{ item.title }}&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/ng-template&gt;
-    &lt;/sds-search-result-list&gt;
+    &lt;sds-search-result-list [model]=&#34;items&#34; [customResultsTemplate]=&#34;temp&#34;&gt; &lt;/sds-search-result-list&gt;
   &lt;/sds-page&gt;
 &lt;/div&gt;
 
 &lt;ng-template #temp let-item&gt;
   &lt;div class=&#34;sds-card sds-card--bordered&#34;&gt;
-    &lt;div class=&#34;sds-card__header sds-card__header--center&#34;&gt;
-      &lt;div class=&#34;sds-card__icon margin-left-2&#34;&gt;&lt;/div&gt;
-      &lt;h2 class=&#34;sds-card__title padding-left-2&#34;&gt;{{ item.title }}&lt;/h2&gt;
-    &lt;/div&gt;
     &lt;div class=&#34;sds-card__body&#34;&gt;
+      &lt;p&gt;
+        {{ item.title }}
+      &lt;/p&gt;
       &lt;p&gt;
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. Sed augue lacus viverra vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -360,17 +353,9 @@ export class AppComponent {}
 export class ResultListCustomTemplateComponent {
   constructor() {}
 
-  itemsDefault = [
-    { title: &#39;First&#39;, id: 1 },
-    { title: &#39;Second&#39;, id: 2 },
-    { title: &#39;Third&#39;, id: 3 },
-    { title: &#39;Fourth&#39;, id: 4 },
-    { title: &#39;Fifth&#39;, id: 5 },
-  ];
-
   items = {
     results: [],
-    title: &#39;No results found&#39;,
+    title: &#39;Test Title&#39;,
   };
 }
 ">
