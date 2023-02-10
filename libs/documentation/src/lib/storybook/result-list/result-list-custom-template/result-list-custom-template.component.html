@@ -1,22 +1,15 @@
 <div style="width: 90%;">
   <sds-page class="sds-page condensed margin-bottom-0">
-    <sds-search-result-list [model]="items" [customResultsTemplate]="temp">
-      <ng-template #resultContent let-item>
-        <ul class="usa-list usa-list--unstyled">
-          <li>ID {{ item.id }} - {{ item.title }}</li>
-        </ul>
-      </ng-template>
-    </sds-search-result-list>
+    <sds-search-result-list [model]="items" [customResultsTemplate]="temp"> </sds-search-result-list>
   </sds-page>
 </div>
 
 <ng-template #temp let-item>
   <div class="sds-card sds-card--bordered">
-    <div class="sds-card__header sds-card__header--center">
-      <div class="sds-card__icon margin-left-2"></div>
-      <h2 class="sds-card__title padding-left-2">{{ item.title }}</h2>
-    </div>
     <div class="sds-card__body">
+      <p>
+        {{ item.title }}
+      </p>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. Sed augue lacus viverra vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
