@@ -1,0 +1,11 @@
+<div style="width: 90%;">
+  <sds-page class="sds-page condensed margin-bottom-0">
+    <sds-search-result-list [model]="items">
+      <ng-template #resultContent let-item>
+        <ul class="usa-list usa-list--unstyled">
+          <li>ID {{ item.id }} - {{ item.title }}</li>
+        </ul>
+      </ng-template>
+    </sds-search-result-list>
+  </sds-page>
+</div>
