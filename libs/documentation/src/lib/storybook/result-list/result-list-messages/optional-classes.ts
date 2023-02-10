@@ -14,7 +14,7 @@ export class OptionalMessage {
   buttons?: OptionalButton[];
 }
 
-export class OptionalSearchModel{
+export class OptionalSearchModel {
   results?: any[];
   metadata?: {
     messages?: OptionalMessage[] | TemplateRef<any>;

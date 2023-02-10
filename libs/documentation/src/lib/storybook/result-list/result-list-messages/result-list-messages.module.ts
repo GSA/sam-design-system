@@ -8,7 +8,16 @@ import { FormlyModule } from '@ngx-formly/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  imports: [CommonModule, SdsSearchResultListModule, SdsPageModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot(), NoopAnimationsModule,],
+  imports: [
+    CommonModule,
+    SdsSearchResultListModule,
+    SdsPageModule,
+    ReactiveFormsModule,
+    SdsFormlyModule,
+    FormsModule,
+    FormlyModule.forRoot(),
+    NoopAnimationsModule,
+  ],
   declarations: [ResultListMessagesComponent],
   bootstrap: [ResultListMessagesComponent],
   exports: [ResultListMessagesComponent],

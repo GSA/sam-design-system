@@ -1,8 +1,7 @@
-import { Component, } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
-import { OptionalSearchModel } from './optional-classes'
-
+import { OptionalSearchModel } from './optional-classes';
 
 @Component({
   selector: 'sds-result-list-messages',
@@ -10,8 +9,8 @@ import { OptionalSearchModel } from './optional-classes'
 })
 export class ResultListMessagesComponent {
   constructor() {
-    this.form.valueChanges.subscribe(changes => {
-      switch(changes.messageType){
+    this.form.valueChanges.subscribe((changes) => {
+      switch (changes.messageType) {
         case 'error':
           this.items = this.errorModel;
           break;
@@ -33,7 +32,7 @@ export class ResultListMessagesComponent {
 
   form = new FormGroup({});
   model: any = {
-    messageType: 'initial'
+    messageType: 'initial',
   };
   options: FormlyFormOptions = {};
   fields: FormlyFieldConfig[] = [
