@@ -17,5 +17,7 @@ export interface ActionMenuActions {
 
 export interface ActionMenuModel {
   trigger: TriggerTypeModel;
+  label?: string;
+  isIconMenu?: boolean;
   actions: ActionMenuActions[];
 }
