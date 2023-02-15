@@ -1,5 +1,5 @@
 <!-- Button that triggers menu (sdsMenuTriggerFor) -->
-<button [ngClass]="{'usa-button  usa-button--secondary usa-button--outline text-secondary-dark':!model.isIconMenu ,
+<button [ngClass]="{'usa-button  usa-button--secondary-dark usa-button--outline text-secondary-dark':!model.isIconMenu ,
 'sds-button sds-button--circular':model.isIconMenu
 }" [class.sds-button--primary]="model.trigger.type === 'primary'" [class.sds-button--shadow]="model.trigger.shadow"
   [class.sds-button--small]="size === 'sm'" [sdsMenuTriggerFor]="menu">
