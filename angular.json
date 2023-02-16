@@ -126,7 +126,8 @@
                 "bundleName": "sds"
               },
               "apps/sam-design-system-site/src/sds-styles.scss",
-              "node_modules/highlight.js/styles/vs.css"
+              "node_modules/highlight.js/styles/vs.css",
+              "./node_modules/@uswds/uswds/packages"
             ],
             "scripts": [
               "node_modules/marked/marked.min.js",
@@ -193,10 +194,7 @@
             "tsConfig": "apps/sam-design-system-site/tsconfig.spec.json",
             "karmaConfig": "apps/sam-design-system-site/karma.conf.js",
             "scripts": [],
-            "assets": [
-              "apps/sam-design-system-site/src/favicon.ico",
-              "apps/sam-design-system-site/src/assets"
-            ]
+            "assets": ["apps/sam-design-system-site/src/favicon.ico", "apps/sam-design-system-site/src/assets"]
           }
         },
         "storybook": {
