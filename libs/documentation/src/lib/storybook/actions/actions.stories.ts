@@ -4,6 +4,7 @@ import { ActionMenuModel, SdsActionsMenuComponent, SdsActionsMenuModule, SdsMenu
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { ActionsIntroductionModule } from './actions-introduction/actions-introduction.module';
+import { ActionsLabelModule } from './actions-label/actions-label.module';
 import { ActionsModelTriggerModule } from './actions-model-trigger/actions-model-trigger.module';
 import { ActionsSizeModule } from './actions-size/actions-size.module';
 
@@ -23,6 +24,7 @@ export default {
         BrowserAnimationsModule,
         SdsMenuModule,
         ActionsSizeModule,
+        ActionsLabelModule,
         ActionsModelTriggerModule,
         ActionsIntroductionModule,
       ],
@@ -59,6 +61,15 @@ export default {
         category: 'ActionMenuModel/trigger',
       },
     },
+    label: {
+      control: {
+        type: 'text',
+      },
+
+      table: {
+        category: 'ActionMenuModel/actions',
+      },
+    },
     actions: {
       control: 'array',
       table: {
@@ -67,8 +78,10 @@ export default {
     },
   },
 } as Meta;
-const actionsMenuModalFunction = (type, shadow, actions) => {
+
+const actionsMenuModalFunction = (type, shadow, actions, label) => {
   const toReturn: ActionMenuModel = {
+    label: label ?? '',
     trigger: {
       type: type ?? 'plain',
       shadow: shadow ?? true,
@@ -81,8 +94,8 @@ const actionsMenuModalFunction = (type, shadow, actions) => {
   };
   return toReturn;
 };
-const Template = ({ type, shadow, actions, size, ...rest }) => {
-  const menu = actionsMenuModalFunction(type, shadow, actions);
+const Template = ({ type, shadow, actions, size, label, ...rest }) => {
+  const menu = actionsMenuModalFunction(type, shadow, actions, label);
   return {
     template: `
       <sds-actions-menu
@@ -127,6 +140,20 @@ Size.parameters = {
   stackblitzLink: generateStackblitzLink('actions', 'size'),
 };
 
+export const Label: Story = (args) => ({
+  template: '<sds-actions-label></sds-actions-label>',
+  props: args,
+});
+Label.parameters = {
+  controls: {
+    disabled: true,
+    hideNoControlsWarning: true,
+  },
+  actions: { disabled: true },
+  preview: generateConfig('storybook/actions/actions-label', 'ActionsLabelModule', 'sds-actions-label'),
+  stackblitzLink: generateStackblitzLink('actions', 'label'),
+};
+
 export const ModelTrigger: Story = (args) => ({
   template: '<sds-actions-model-trigger></sds-actions-model-trigger>',
   props: args,
@@ -151,4 +178,4 @@ export const Introduction: Story = (args) => ({
 });
 Introduction.parameters = { options: { showPanel: false } };
 
-export const __namedExportsOrder = ['Introduction', 'Configurable', 'ModelTrigger', 'Size'];
+export const __namedExportsOrder = ['Introduction', 'Configurable', 'ModelTrigger', 'Size', 'Label'];
