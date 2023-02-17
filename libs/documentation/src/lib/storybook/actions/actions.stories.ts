@@ -178,4 +178,4 @@ export const Introduction: Story = (args) => ({
 });
 Introduction.parameters = { options: { showPanel: false } };
 
-export const __namedExportsOrder = ['Introduction', 'Configurable', 'ModelTrigger', 'Size', 'Label'];
+export const __namedExportsOrder = ['Introduction', 'Configurable', 'Label', 'ModelTrigger', 'Size'];
