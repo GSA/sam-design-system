@@ -11,6 +11,7 @@ export class SdsActionsMenuComponent {
   @Input() size: string;
   @Input() screenReaderText: string = 'Toggle Actions';
   @Output() clicks = new EventEmitter<string>();
+
   constructor() {}
 
   ngOnInit() {
@@ -19,7 +20,6 @@ export class SdsActionsMenuComponent {
         if (!menuItem.mode) menuItem.mode = this.actionModes.SHOWN;
       });
     }
-    this.model.isIconMenu = this.model.label ? false : true;
   }
 
   getDisabled(mode) {
