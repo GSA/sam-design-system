@@ -1,10 +1,14 @@
 <!-- Button that triggers menu (sdsMenuTriggerFor) -->
-<button [ngClass]="{
+<button
+  [ngClass]="{
     'usa-button usa-button--secondary-dark usa-button--outline text-secondary-dark sds-button--menu': model.label,
     'sds-button sds-button--circular': !model.label
-  }" [class.sds-button--primary]="(model.trigger.type === 'primary' && !model.label)"
-  [class.sds-button--shadow]="model.trigger.shadow" [class.sds-button--small]="size === 'sm'"
-  [sdsMenuTriggerFor]="menu">
+  }"
+  [class.sds-button--primary]="model.trigger.type === 'primary' && !model.label"
+  [class.sds-button--shadow]="model.trigger.shadow"
+  [class.sds-button--small]="size === 'sm'"
+  [sdsMenuTriggerFor]="menu"
+>
   <span *ngIf="model.label">{{ model.label }}</span>
   <usa-icon [icon]="'three-dots-vertical'" [size]="'1x'"></usa-icon>
   <span class="usa-sr-only">{{ screenReaderText }}</span>
@@ -16,9 +20,13 @@
   <sds-menu-header>Actions</sds-menu-header>
   <!-- Menu items -->
   <ng-container *ngFor="let button of model.actions">
-    <button *ngIf="button.mode !== actionModes.HIDDEN" [disabled]="button.mode === actionModes.DISABLED"
-      [ngClass]="{ 'usa-button--disabled': button.mode === actionModes.DISABLED }" (click)="clicks.emit(button.id)"
-      sds-menu-item>
+    <button
+      *ngIf="button.mode !== actionModes.HIDDEN"
+      [disabled]="button.mode === actionModes.DISABLED"
+      [ngClass]="{ 'usa-button--disabled': button.mode === actionModes.DISABLED }"
+      (click)="clicks.emit(button.id)"
+      sds-menu-item
+    >
       {{ button.text }}
     </button>
   </ng-container>
