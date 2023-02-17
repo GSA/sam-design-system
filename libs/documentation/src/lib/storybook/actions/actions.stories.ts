@@ -67,7 +67,7 @@ export default {
       },
 
       table: {
-        category: 'ActionMenuModel/actions',
+        category: 'ActionMenuModel',
       },
     },
     actions: {
