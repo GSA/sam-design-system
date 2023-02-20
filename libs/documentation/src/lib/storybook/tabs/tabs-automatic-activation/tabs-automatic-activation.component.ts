@@ -5,7 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './tabs-automatic-activation.component.html',
 })
 export class TabsAutomaticActivationComponent {
-
-  constructor() { }
-
+  constructor() {}
 }

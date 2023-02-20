@@ -7,7 +7,6 @@ import { TabPanelComponent } from '@gsa-sam/components';
   encapsulation: ViewEncapsulation.None,
 })
 export class TabsConfigurableComponent {
-
   @ViewChild('tab1')
   tab1: TabPanelComponent;
 
@@ -17,12 +16,12 @@ export class TabsConfigurableComponent {
   _selectedTab: TabPanelComponent;
 
   @Input()
-  set selectedTab(tab: string){
-    switch(tab){
+  set selectedTab(tab: string) {
+    switch (tab) {
       case 'Tab 1':
         this._selectedTab = this.tab1;
         break;
-        case 'Tab 2':
+      case 'Tab 2':
         this._selectedTab = this.tab2;
         break;
     }
@@ -37,8 +36,8 @@ export class TabsConfigurableComponent {
   @Input()
   interceptTabChange: boolean;
 
-  handlePreTabCheck(destinationTab: TabPanelComponent){
-    if(this.interceptTabChange){
+  handlePreTabCheck(destinationTab: TabPanelComponent) {
+    if (this.interceptTabChange) {
       const response = confirm('Proceed?');
       if (response == true) {
         this._selectedTab = destinationTab;
@@ -46,8 +45,5 @@ export class TabsConfigurableComponent {
     }
   }
 
-
-
-  constructor() { }
-
+  constructor() {}
 }

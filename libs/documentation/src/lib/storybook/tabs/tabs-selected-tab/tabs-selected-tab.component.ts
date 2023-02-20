@@ -5,12 +5,10 @@ import { TabPanelComponent } from '@gsa-sam/components';
   selector: 'sds-tabs-selected-tab',
   templateUrl: './tabs-selected-tab.component.html',
 })
-export class TabsSelectedTabComponent{
-
+export class TabsSelectedTabComponent {
   selectedTab: TabPanelComponent;
 
   selectTab(tab: TabPanelComponent) {
     this.selectedTab = tab;
   }
-
 }

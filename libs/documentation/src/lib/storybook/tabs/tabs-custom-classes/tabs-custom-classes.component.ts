@@ -7,7 +7,5 @@ import { Component, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None,
 })
 export class TabsCustomClassesComponent {
-
-  constructor() { }
-
+  constructor() {}
 }

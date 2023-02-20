@@ -125,7 +125,7 @@ export const ROUTES = [
     DynamicTabsModule,
     TabsStylingModule,
     TabsInterceptModule,
-    TabsLinkToSbModule
+    TabsLinkToSbModule,
   ],
 })
 export class TabsModule {

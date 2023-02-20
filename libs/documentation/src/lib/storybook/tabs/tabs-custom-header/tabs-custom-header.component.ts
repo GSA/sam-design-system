@@ -6,9 +6,7 @@ import { TabPanelComponent } from '@gsa-sam/components';
   templateUrl: './tabs-custom-header.component.html',
 })
 export class TabsCustomHeaderComponent {
-
   selectedTab: TabPanelComponent;
 
-  constructor() { }
-
+  constructor() {}
 }

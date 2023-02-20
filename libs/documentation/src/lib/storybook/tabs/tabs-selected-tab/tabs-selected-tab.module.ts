@@ -4,12 +4,9 @@ import { TabsSelectedTabComponent } from './tabs-selected-tab.component';
 import { SdsTabsModule } from '@gsa-sam/components';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SdsTabsModule
-  ],
+  imports: [CommonModule, SdsTabsModule],
   declarations: [TabsSelectedTabComponent],
   exports: [TabsSelectedTabComponent],
   bootstrap: [TabsSelectedTabComponent],
 })
-export class TabsSelectedTabModule { }
+export class TabsSelectedTabModule {}

@@ -6,14 +6,12 @@ import { TabPanelComponent } from '@gsa-sam/components';
   templateUrl: './tabs-pre-change-event.component.html',
 })
 export class TabsPreChangeEventComponent {
-
   selectedTab: TabPanelComponent;
 
-  constructor() { }
+  constructor() {}
 
-  handlePreTabChange(destinationTab: TabPanelComponent){
-    console.log('preTabChange object:', destinationTab)
+  handlePreTabChange(destinationTab: TabPanelComponent) {
+    console.log('preTabChange object:', destinationTab);
     this.selectedTab = destinationTab;
   }
-
 }

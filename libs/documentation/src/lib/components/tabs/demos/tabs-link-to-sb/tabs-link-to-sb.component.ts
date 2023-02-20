@@ -5,7 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './tabs-link-to-sb.component.html',
 })
 export class TabsLinkToSbComponent {
-
-  constructor() { }
-
+  constructor() {}
 }

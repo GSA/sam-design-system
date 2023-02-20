@@ -4,12 +4,9 @@ import { TabsAutomaticActivationComponent } from './tabs-automatic-activation.co
 import { SdsTabsModule } from '@gsa-sam/components';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SdsTabsModule
-  ],
+  imports: [CommonModule, SdsTabsModule],
   declarations: [TabsAutomaticActivationComponent],
   exports: [TabsAutomaticActivationComponent],
   bootstrap: [TabsAutomaticActivationComponent],
 })
-export class TabsAutomaticActivationModule { }
+export class TabsAutomaticActivationModule {}

@@ -4,12 +4,9 @@ import { TabsDisabledComponent } from './tabs-disabled.component';
 import { SdsTabsModule } from '@gsa-sam/components';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SdsTabsModule
-  ],
+  imports: [CommonModule, SdsTabsModule],
   declarations: [TabsDisabledComponent],
   exports: [TabsDisabledComponent],
   bootstrap: [TabsDisabledComponent],
 })
-export class TabsDisabledModule { }
+export class TabsDisabledModule {}

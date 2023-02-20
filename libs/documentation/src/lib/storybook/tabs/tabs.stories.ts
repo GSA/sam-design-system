@@ -1,16 +1,16 @@
-import { CommonModule } from "@angular/common";
-import { QueryList } from "@angular/core";
-import { TabsComponent } from "@gsa-sam/components";
-import { Meta, moduleMetadata, Story } from "@storybook/angular";
-import { generateConfig, generateStackblitzLink } from "libs/documentation/src/sandbox/sandbox-utils";
-import { TabsAutomaticActivationModule } from "./tabs-automatic-activation/tabs-automatic-activation.module";
+import { CommonModule } from '@angular/common';
+import { QueryList } from '@angular/core';
+import { TabsComponent } from '@gsa-sam/components';
+import { Meta, moduleMetadata, Story } from '@storybook/angular';
+import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
+import { TabsAutomaticActivationModule } from './tabs-automatic-activation/tabs-automatic-activation.module';
 import { TabsConfigurableModule } from './tabs-configurable/tabs-configurable.module';
-import { TabsCustomClassesModule } from "./tabs-custom-classes/tabs-custom-classes.module";
-import { TabsCustomHeaderModule } from "./tabs-custom-header/tabs-custom-header.module";
-import { TabsDisabledModule } from "./tabs-disabled/tabs-disabled.module";
+import { TabsCustomClassesModule } from './tabs-custom-classes/tabs-custom-classes.module';
+import { TabsCustomHeaderModule } from './tabs-custom-header/tabs-custom-header.module';
+import { TabsDisabledModule } from './tabs-disabled/tabs-disabled.module';
 import { TabsIntroductionModule } from './tabs-introduction/tabs-introduction.module';
-import { TabsPreChangeEventModule } from "./tabs-pre-change-event/tabs-pre-change-event.module";
-import { TabsSelectedTabModule } from "./tabs-selected-tab/tabs-selected-tab.module";
+import { TabsPreChangeEventModule } from './tabs-pre-change-event/tabs-pre-change-event.module';
+import { TabsSelectedTabModule } from './tabs-selected-tab/tabs-selected-tab.module';
 const disable = {
   table: {
     disable: true,
@@ -30,7 +30,7 @@ export default {
         TabsCustomHeaderModule,
         TabsAutomaticActivationModule,
         TabsCustomClassesModule,
-        TabsSelectedTabModule
+        TabsSelectedTabModule,
       ],
     }),
   ],
@@ -50,7 +50,7 @@ export default {
     focusedTab: disable,
     selectedTab: {
       options: ['Tab 1', 'Tab 2'],
-      control: { type: 'select'}
+      control: { type: 'select' },
     },
   },
 } as Meta;
@@ -70,7 +70,6 @@ Introduction.parameters = {
   actions: { disabled: true },
   preview: { disabled: true },
 };
-
 
 export const Configurable: Story = (args) => ({
   template: `<sds-tabs-configurable
@@ -120,11 +119,7 @@ CustomHeader.parameters = {
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
-  preview: generateConfig(
-    'storybook/tabs/tabs-custom-header',
-    'TabsCustomHeaderModule',
-    'sds-tabs-custom-header'
-  ),
+  preview: generateConfig('storybook/tabs/tabs-custom-header', 'TabsCustomHeaderModule', 'sds-tabs-custom-header'),
   stackblitzLink: generateStackblitzLink('tabs', 'custom-header'),
 };
 
@@ -140,11 +135,7 @@ Disabled.parameters = {
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
-  preview: generateConfig(
-    'storybook/tabs/tabs-disabled',
-    'TabsDisabledModule',
-    'sds-tabs-disabled'
-  ),
+  preview: generateConfig('storybook/tabs/tabs-disabled', 'TabsDisabledModule', 'sds-tabs-disabled'),
   stackblitzLink: generateStackblitzLink('tabs', 'disabled'),
 };
 
@@ -180,11 +171,7 @@ CustomClasses.parameters = {
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
-  preview: generateConfig(
-    'storybook/tabs/tabs-custom-classes',
-    'TabsCustomClassesModule',
-    'sds-tabs-custom-classes'
-  ),
+  preview: generateConfig('storybook/tabs/tabs-custom-classes', 'TabsCustomClassesModule', 'sds-tabs-custom-classes'),
   stackblitzLink: generateStackblitzLink('tabs', 'custom-classes'),
 };
 
@@ -200,11 +187,7 @@ SelectedTab.parameters = {
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
-  preview: generateConfig(
-    'storybook/tabs/tabs-selected-tab',
-    'TabsSelectedTabModule',
-    'sds-tabs-selected-tab'
-  ),
+  preview: generateConfig('storybook/tabs/tabs-selected-tab', 'TabsSelectedTabModule', 'sds-tabs-selected-tab'),
   stackblitzLink: generateStackblitzLink('tabs', 'selected-tab'),
 };
 

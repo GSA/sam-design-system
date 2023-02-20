@@ -4,12 +4,9 @@ import { TabsCustomClassesComponent } from './tabs-custom-classes.component';
 import { SdsTabsModule } from '@gsa-sam/components';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SdsTabsModule
-  ],
+  imports: [CommonModule, SdsTabsModule],
   declarations: [TabsCustomClassesComponent],
   exports: [TabsCustomClassesComponent],
   bootstrap: [TabsCustomClassesComponent],
 })
-export class TabsCustomClassesModule { }
+export class TabsCustomClassesModule {}

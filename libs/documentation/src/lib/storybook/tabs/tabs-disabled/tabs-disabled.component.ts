@@ -5,7 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './tabs-disabled.component.html',
 })
 export class TabsDisabledComponent {
-
-  constructor() { }
-
+  constructor() {}
 }
