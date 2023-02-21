@@ -4,6 +4,7 @@ import { TabPanelComponent } from '@gsa-sam/components';
 @Component({
   selector: 'sds-tabs-configurable',
   templateUrl: './tabs-configurable.component.html',
+  styleUrls: ['./tabs-configurable.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
 export class TabsConfigurableComponent {
