@@ -4,7 +4,7 @@ import { TabPanelComponent } from '@gsa-sam/components';
 @Component({
   selector: 'sds-tabs-selected-tab',
   templateUrl: './tabs-selected-tab.component.html',
-  styleUrls: ['./tabs-selected-tab.component.scss']
+  styleUrls: ['./tabs-selected-tab.component.scss'],
 })
 export class TabsSelectedTabComponent {
   selectedTab: TabPanelComponent;
