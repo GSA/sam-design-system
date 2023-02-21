@@ -127,7 +127,7 @@
               },
               "apps/sam-design-system-site/src/sds-styles.scss",
               "node_modules/highlight.js/styles/vs.css",
-              "./node_modules/@uswds/uswds/packages"
+              "node_modules/@uswds/uswds/dist/scss/stylesheets/uswds.scss"
             ],
             "scripts": [
               "node_modules/marked/marked.min.js",

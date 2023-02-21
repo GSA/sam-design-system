@@ -1,7 +1,7 @@
-@import './material.theme';
+@forward './material.theme';
 
 //CDK Overlay
-@import 'node_modules/@angular/cdk/overlay';
+@forward 'node_modules/@angular/cdk/overlay';
 $cdk-overlay-dark-backdrop-background: rgba(14, 52, 88, 0.7);
 @include cdk-overlay;
 
@@ -19,6 +19,7 @@ $cdk-overlay-dark-backdrop-background: rgba(14, 52, 88, 0.7);
 .usa-table--row-borders--thin th {
   border-bottom: solid 1px #d9e8f6;
 }
+
 .usa-table--row-borders--thin th {
   border-top: solid 1px #d9e8f6;
 }
@@ -76,11 +77,13 @@ documentation-widget-demo sds-page {
   margin-bottom: -2px;
   margin-top: 0;
 }
+
 /* Fixes to look at in Sam-Styles */
 
 .sds-tag[class*='sds-tag--outline'] {
   width: auto !important;
 }
+
 code {
   color: #e02b70;
 }
