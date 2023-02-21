@@ -323,14 +323,14 @@ export class AppComponent {}
 ">
     
     <input type="hidden" name="project[files][src/app/actions-basic.component.html]" value="&lt;h4&gt;Default&lt;/h4&gt;
-&lt;sds-actions-menu
-  [model]=&#34;menu&#34;
-  [screenReaderText]=&#34;&#39;Open Default Actions Menu&#39;&#34;
-  (clicks)=&#34;log($event)&#34;
-&gt;&lt;/sds-actions-menu&gt;
+&lt;sds-actions-menu [model]=&#34;menu&#34; [screenReaderText]=&#34;&#39;Open Default Actions Menu&#39;&#34; (clicks)=&#34;log($event)&#34;&gt;
+&lt;/sds-actions-menu&gt;
 
 &lt;h4&gt;Small&lt;/h4&gt;
 &lt;sds-actions-menu size=&#34;sm&#34; [model]=&#34;menu&#34; (clicks)=&#34;log($event)&#34;&gt;&lt;/sds-actions-menu&gt;
+
+&lt;h4 class=&#34;padding-bottom-1&#34;&gt;Action Menu with button text&lt;/h4&gt;
+&lt;sds-actions-menu [model]=&#34;textmenu&#34; (clicks)=&#34;log($event)&#34;&gt;&lt;/sds-actions-menu&gt;
 ">
     
     <input type="hidden" name="project[files][src/app/actions-basic.component.scss]" value="">
@@ -345,6 +345,19 @@ export class ActionsBasic {
   constructor() {}
 
   menu = {
+    trigger: {
+      type: &#39;plain&#39;, // plain | primary
+      shadow: true,
+    },
+    actions: [
+      { id: &#39;DownloadBtn&#39;, text: &#39;Download&#39; },
+      { id: &#39;FollowBtn&#39;, text: &#39;Follow&#39; },
+      { id: &#39;ShareBtn&#39;, text: &#39;Share&#39; },
+    ],
+  };
+
+  textmenu = {
+    label: &#39;Action&#39;,
     trigger: {
       type: &#39;plain&#39;, // plain | primary
       shadow: true,
