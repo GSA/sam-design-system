@@ -11,6 +11,7 @@ export class SdsActionsMenuComponent {
   @Input() size: string;
   @Input() screenReaderText: string = 'Toggle Actions';
   @Output() clicks = new EventEmitter<string>();
+
   constructor() {}
 
   ngOnInit() {
