@@ -3,11 +3,13 @@ import { QueryList } from '@angular/core';
 import { TabsComponent } from '@gsa-sam/components';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
+import { TabsAriaModule } from './tabs-aria/tabs-aria.module';
 import { TabsAutomaticActivationModule } from './tabs-automatic-activation/tabs-automatic-activation.module';
 import { TabsConfigurableModule } from './tabs-configurable/tabs-configurable.module';
 import { TabsCustomClassesModule } from './tabs-custom-classes/tabs-custom-classes.module';
 import { TabsCustomHeaderModule } from './tabs-custom-header/tabs-custom-header.module';
 import { TabsDisabledModule } from './tabs-disabled/tabs-disabled.module';
+import { TabsDynamicGenerationModule } from './tabs-dynamic-generation/tabs-dynamic-generation.module';
 import { TabsIntroductionModule } from './tabs-introduction/tabs-introduction.module';
 import { TabsPreChangeEventModule } from './tabs-pre-change-event/tabs-pre-change-event.module';
 import { TabsSelectedTabModule } from './tabs-selected-tab/tabs-selected-tab.module';
@@ -31,6 +33,8 @@ export default {
         TabsAutomaticActivationModule,
         TabsCustomClassesModule,
         TabsSelectedTabModule,
+        TabsAriaModule,
+        TabsDynamicGenerationModule,
       ],
     }),
   ],
@@ -87,6 +91,22 @@ Configurable.parameters = {
   actions: { disabled: true },
 };
 
+export const Aria: Story = (args) => ({
+  template: `<sds-tabs-aria></sds-tabs-aria>`,
+  props: {
+    ...args,
+  },
+});
+Aria.parameters = {
+  controls: {
+    disabled: true,
+    hideNoControlsWarning: true,
+  },
+  actions: { disabled: true },
+  preview: generateConfig('storybook/tabs/tabs-aria', 'TabsAriaModule', 'sds-tabs-aria'),
+  stackblitzLink: generateStackblitzLink('tabs', 'aria'),
+};
+
 export const AutomaticActivation: Story = (args) => ({
   template: `<sds-tabs-automatic-activation></sds-tabs-automatic-activation>`,
   props: {
@@ -137,6 +157,26 @@ Disabled.parameters = {
   actions: { disabled: true },
   preview: generateConfig('storybook/tabs/tabs-disabled', 'TabsDisabledModule', 'sds-tabs-disabled'),
   stackblitzLink: generateStackblitzLink('tabs', 'disabled'),
+};
+
+export const DynamicGeneration: Story = (args) => ({
+  template: `<sds-tabs-dynamic-generation></sds-tabs-dynamic-generation>`,
+  props: {
+    ...args,
+  },
+});
+DynamicGeneration.parameters = {
+  controls: {
+    disabled: true,
+    hideNoControlsWarning: true,
+  },
+  actions: { disabled: true },
+  preview: generateConfig(
+    'storybook/tabs/tabs-dynamic-generation',
+    'TabsDynamicGenerationModule',
+    'sds-tabs-dynamic-generation'
+  ),
+  stackblitzLink: generateStackblitzLink('tabs', 'dynamic-generation'),
 };
 
 export const PreChangeEvent: Story = (args) => ({
@@ -194,10 +234,12 @@ SelectedTab.parameters = {
 export const __namedExportsOrder = [
   'Introduction',
   'Configurable',
+  'Aria',
   'AutomaticActivation',
   'CustomClasses',
   'CustomHeader',
   'Disabled',
+  'DynamicGeneration',
   'PreChangeEvent',
   'SelectedTab',
 ];
