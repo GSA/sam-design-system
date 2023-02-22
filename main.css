@@ -116518,6 +116518,9 @@ section h1 + *, section h2 + *, section h3 + *, section h4 + *, section h5 + *, 
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
+.usa-accordion:not(.sds-accordion--filters):not(.usa-nav__primary).usa-accordion--accent_cool .usa-accordion__button:not(.usa-banner__button) {
+  background-color: #eff6fb;
+}
 .usa-accordion:not(.sds-accordion--filters):not(.usa-nav__primary) .usa-accordion__button:not(.usa-banner__button) {
   background-color: white;
   padding-right: 1.25rem;
@@ -118569,6 +118572,40 @@ ul.sds-history .sds-history__bullet--disabled {
     height: 1.25em;
   }
 }
+.sds-button--menu {
+  color: #1a4480 !important;
+}
+.sds-button--menu usa-icon {
+  font-size: 1.25rem;
+}
+.sds-button--menu.usa-button {
+  border-color: #1a4480 !important;
+  background-color: white;
+}
+.sds-button--menu.usa-button:visited {
+  color: #1a4480 !important;
+  box-shadow: none;
+}
+.sds-button--menu.usa-button.usa-button--hover, .sds-button--menu.usa-button:hover {
+  background-color: #1a4480 !important;
+  color: white !important;
+  border-color: #1a4480 !important;
+  box-shadow: none;
+}
+.sds-button--menu.usa-button.usa-button--active, .sds-button--menu.usa-button:active {
+  background-color: #1a4480 !important;
+  color: white;
+  border-color: #1a4480 !important;
+  box-shadow: none;
+}
+@media only screen and (min-width: 400px) and (max-width: 800px) {
+  .sds-button--menu {
+    padding: 1em 0.5em;
+  }
+  .sds-button--menu span {
+    display: none !important;
+  }
+}
 .sds-navbar {
   min-height: 3rem;
   background-color: #f9f9f7;
@@ -119074,7 +119111,6 @@ Navigation close button
   padding-top: 0.25rem;
   font-weight: normal;
   margin: 1px;
-  position: fixed;
   min-width: 300px;
   max-width: 500px;
   text-indent: 0 !important;
