@@ -20,9 +20,19 @@ import { TabsStylingComponent } from './demos/styling/tabs-styling.component';
 import { TabsStylingModule } from './demos/styling/tabs-styling.module';
 import { TabsTemplateHeaderComponent } from './demos/template-header/tabs-template-header.component';
 import { TabsTemplateHeaderModule } from './demos/template-header/tabs-template-header.module';
+import { TabsLinkToSbComponent } from './demos/tabs-link-to-sb/tabs-link-to-sb.component';
+import { TabsLinkToSbModule } from './demos/tabs-link-to-sb/tabs-link-to-sb.module';
 
 declare var require: any;
 const DEMOS = {
+  linkToSb: {
+    title: 'New Demos',
+    type: TabsLinkToSbComponent,
+    code: require('!!raw-loader!./demos/tabs-link-to-sb/tabs-link-to-sb.component'),
+    markup: require('!!raw-loader!./demos/tabs-link-to-sb/tabs-link-to-sb.component.html'),
+    module: require('!!raw-loader!./demos/tabs-link-to-sb/tabs-link-to-sb.module.ts'),
+    path: 'libs/documentation/src/lib/components/tabs/demos/tabs-link-to-sb',
+  },
   basic: {
     title: 'Tabs',
     type: TabsBasicComponent,
@@ -115,6 +125,7 @@ export const ROUTES = [
     DynamicTabsModule,
     TabsStylingModule,
     TabsInterceptModule,
+    TabsLinkToSbModule,
   ],
 })
 export class TabsModule {
