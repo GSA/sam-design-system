@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormGroup } from '@angular/forms';
+import { AbstractControl, UntypedFormGroup } from '@angular/forms';
 import { SdsFormlyTypes } from '@gsa-sam/sam-formly';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
@@ -47,7 +47,7 @@ export class TableFileInputComponent {
     },
   ];
 
-  form = new FormGroup({});
+  form = new UntypedFormGroup({});
 
   onModelChange($event: { tableFilesInput: File[] }) {
     // The 'scan' property here must match the property in

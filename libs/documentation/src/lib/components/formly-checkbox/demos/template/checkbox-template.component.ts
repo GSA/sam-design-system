@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, TemplateRef, ViewChild } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
@@ -11,7 +11,7 @@ export class CheckboxTemplate implements AfterViewInit {
 
   @ViewChild('checkboxTemplate') checkboxTemplate: TemplateRef<any>;
 
-  form = new FormGroup({});
+  form = new UntypedFormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
   fields: FormlyFieldConfig[] = [

@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 @Component({
   templateUrl: './update-on-inheritance.component.html',
   selector: `sds-update-on-inheritance-demo`,
 })
 export class UpdateOnInheritanceComponent {
-  form = new FormGroup({});
+  form = new UntypedFormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
   fields: FormlyFieldConfig[] = [

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
@@ -7,7 +7,7 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
   selector: `sds-groupwrappers-panel-demo`,
 })
 export class GroupPanel {
-  form = new FormGroup({});
+  form = new UntypedFormGroup({});
   panelModel: any = {};
   options: FormlyFormOptions = {};
   panelFields: FormlyFieldConfig[] = [

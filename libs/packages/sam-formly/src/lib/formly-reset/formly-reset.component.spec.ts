@@ -1,6 +1,6 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { Component, ViewChild } from '@angular/core';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule, FormlyForm } from '@ngx-formly/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '../formly/formly.module';
@@ -121,7 +121,7 @@ describe('SDS Formly Reset', () => {
 })
 class TestComponent {
   @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;
-  form = new FormGroup({});
+  form = new UntypedFormGroup({});
   options = {};
   fields = [
     {

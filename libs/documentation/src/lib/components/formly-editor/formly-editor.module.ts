@@ -11,6 +11,7 @@ import { EditorBasicModule } from './demos/basic/formly-editor-basic.module';
 import { EditorBasic } from './demos/basic/formly-editor-basic.component';
 import { EditorOptional } from './demos/optional/formly-editor-optional.component';
 import { EditorOptionalModule } from './demos/optional/formly-editor-optional.module';
+import { Routes } from "@angular/router";
 
 declare var require: any;
 const DEMOS = {
@@ -32,7 +33,7 @@ const DEMOS = {
   },
 };
 
-export const ROUTES = [
+export const ROUTES: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'examples' },
   {
     path: '',

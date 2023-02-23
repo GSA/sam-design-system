@@ -1,6 +1,6 @@
 import { TestBed, ComponentFixture, fakeAsync, tick } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
-import { FormGroup, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SdsFiltersModule } from './sds-filters.module';
@@ -66,7 +66,7 @@ describe('The Sam Filters Component', () => {
           ],
         },
       ];
-      component.form = new FormGroup({});
+      component.form = new UntypedFormGroup({});
     });
 
     it('input type should be text', () => {
@@ -155,10 +155,10 @@ describe('The Sam Filters Component', () => {
       expect(service.updateFilter).toHaveBeenCalled();
     });
     it('should return new Object with some properties as null based on base Object', () => {
-      component.form = new FormGroup({
-        test: new FormControl(''),
-        filters: new FormControl(''),
-        searchEntity: new FormControl(''),
+      component.form = new UntypedFormGroup({
+        test: new UntypedFormControl(''),
+        filters: new UntypedFormControl(''),
+        searchEntity: new UntypedFormControl(''),
       });
       component.form.controls['filters'].setValue([{ uniqueId: 1 }, { uniqueId: 1 }]);
       const updateFormValue = { test: 'abc', filters: { uniqueId: 2 } };
@@ -214,7 +214,7 @@ describe('The Sam Filters Component', () => {
           ],
         },
       ];
-      component.form = new FormGroup({});
+      component.form = new UntypedFormGroup({});
     });
     it('validation value length should be between min length and max length', () => {
       component.model = { filters: { uniqueId: '4' } };

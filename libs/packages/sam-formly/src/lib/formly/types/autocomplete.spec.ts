@@ -2,7 +2,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TestBed, ComponentFixture, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Component, ViewChild, DebugElement } from '@angular/core';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule, FormlyForm } from '@ngx-formly/core';
 import { FormlyFieldAutoCompleteComponent } from './autocomplete';
 import { of as observableOf } from 'rxjs';
@@ -49,7 +49,7 @@ describe('Formly Field Select Component', () => {
   describe('auto complete', () => {
     beforeEach(() => {
       testAutocompleteComponent = {
-        form: new FormGroup({}),
+        form: new UntypedFormGroup({}),
         model: {
           firstName: {
             items: [
@@ -107,6 +107,6 @@ class TestComponent {
   @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;
 
   fields = testAutocompleteComponent.fields;
-  form: FormGroup = testAutocompleteComponent.form;
+  form: UntypedFormGroup = testAutocompleteComponent.form;
   model = testAutocompleteComponent.model || {};
 }

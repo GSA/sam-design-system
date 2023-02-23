@@ -1,4 +1,4 @@
-import { FormControl, ValidationErrors } from '@angular/forms';
+import { UntypedFormControl, ValidationErrors } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
 /**
@@ -6,7 +6,7 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
  * @param control
  * @param field
  */
-export function minDateValidator(control: FormControl, field: FormlyFieldConfig): ValidationErrors {
+export function minDateValidator(control: UntypedFormControl, field: FormlyFieldConfig): ValidationErrors {
   let toReturn = null;
   let minDateField = field.templateOptions.minDate;
   let value = control.value;
@@ -44,7 +44,7 @@ export function minDateValidator(control: FormControl, field: FormlyFieldConfig)
         required: autocompleteRequired
       },
  */
-export function autocompleteRequired(control: FormControl): ValidationErrors {
+export function autocompleteRequired(control: UntypedFormControl): ValidationErrors {
   return control.value && control.value.items && control.value.length ? { required: true } : null;
 }
 
@@ -63,7 +63,7 @@ export function autocompleteRequired(control: FormControl): ValidationErrors {
         required: multiCheckboxRequired
       },
  */
-export function multiCheckboxRequired(control: FormControl): ValidationErrors {
+export function multiCheckboxRequired(control: UntypedFormControl): ValidationErrors {
   const hasTrueKeys = Object.keys(control.value).some((k) => control.value[k]);
   return hasTrueKeys ? { required: true } : null;
 }
@@ -72,7 +72,7 @@ export function multiCheckboxRequired(control: FormControl): ValidationErrors {
  * @param control
  * @param field
  */
-export function maxDateValidator(control: FormControl, field: FormlyFieldConfig): ValidationErrors {
+export function maxDateValidator(control: UntypedFormControl, field: FormlyFieldConfig): ValidationErrors {
   let toReturn = null;
   let maxDateField = field.templateOptions.maxDate;
   let value = control.value;
@@ -94,7 +94,7 @@ export function maxDateValidator(control: FormControl, field: FormlyFieldConfig)
   return toReturn;
 }
 
-export function dateRangeValidator(control: FormControl, field: FormlyFieldConfig): ValidationErrors {
+export function dateRangeValidator(control: UntypedFormControl, field: FormlyFieldConfig): ValidationErrors {
   if (field.formControl.invalid && field.formControl.errors) {
     return field.formControl.errors;
   }

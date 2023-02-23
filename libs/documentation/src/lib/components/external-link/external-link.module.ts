@@ -9,6 +9,7 @@ import { ExternalLinkBasicComponent } from './demos/basic/external-link-basic.co
 import { ExternalLinkBasicModule } from './demos/basic/external-link-basic.module';
 import { ExternalLinkLinkToSbComponent } from './demos/external-link-link-to-sb/external-link-link-to-sb.component';
 import { ExternalLinkLinkToSbModule } from './demos/external-link-link-to-sb/external-link-link-to-sb.module';
+import { Routes } from "@angular/router";
 
 export declare var require: any;
 
@@ -31,7 +32,7 @@ const DEMOS = {
   },
 };
 
-export const ROUTES = [
+export const ROUTES: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'examples' },
   {
     path: '',

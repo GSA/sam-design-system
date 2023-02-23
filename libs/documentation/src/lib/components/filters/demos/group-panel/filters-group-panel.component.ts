@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -11,7 +11,7 @@ export class FiltersGroupPanel implements OnInit {
   constructor() {}
 
   results: any = {};
-  form = new FormGroup({});
+  form = new UntypedFormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
   public filterChange$ = new BehaviorSubject<object>(null);

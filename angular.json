@@ -255,6 +255,5 @@
       "versionMismatch": false
     },
     "packageManager": "npm"
-  },
-  "defaultProject": "sam-design-system-site"
+  }
 }

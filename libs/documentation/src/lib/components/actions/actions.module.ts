@@ -12,6 +12,7 @@ import { ActionsMenuActionMode } from './demos/action-mode/actions-action-mode.c
 import { ActionsMenuActionModeModule } from './demos/action-mode/actions-action-mode.module';
 import { ActionsLinkToSbComponent } from './demos/actions-link-to-sb/actions-link-to-sb.component';
 import { ActionsLinkToSbModule } from './demos/actions-link-to-sb/actions-link-to-sb.module';
+import { Routes } from "@angular/router";
 
 declare var require: any;
 const DEMOS = {
@@ -41,7 +42,7 @@ const DEMOS = {
   },
 };
 
-export const ROUTES = [
+export const ROUTES: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'examples' },
   {
     path: '',

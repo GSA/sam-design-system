@@ -10,6 +10,7 @@ import { GroupPanelModule } from './demos/panel/group-panel.module';
 import { GroupAccordionModule } from './demos/accordion/group-accordion.module';
 import { GroupAccordion } from './demos/accordion/group-accordion.component';
 import { GroupPanel } from './demos/panel/group-panel.component';
+import { Routes } from "@angular/router";
 
 declare var require: any;
 const DEMOS = {
@@ -29,7 +30,7 @@ const DEMOS = {
   },
 };
 
-export const ROUTES = [
+export const ROUTES: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'examples' },
   {
     path: '',

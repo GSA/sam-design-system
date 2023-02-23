@@ -22,6 +22,7 @@ import { IconSkewingComponent } from './demos/icon-skewing/icon-skewing.componen
 import { IconSkewingModule } from './demos/icon-skewing/icon-skewing.module';
 import { IconsUswdsModule } from './demos/uswds/icons-uswds.module';
 import { IconsUswds } from './demos/uswds/icons-uswds.component';
+import { Routes } from "@angular/router";
 
 declare var require: any;
 const DEMOS = {
@@ -91,7 +92,7 @@ const DEMOS = {
   },
 };
 
-export const ROUTES = [
+export const ROUTES: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'examples' },
   {
     path: '',

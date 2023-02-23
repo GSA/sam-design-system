@@ -12,6 +12,7 @@ import { AccordionCardlistModule } from './demos/cardlist/accordion-cardlist.mod
 import { AccordionCardlist } from './demos/cardlist/accordion-cardlist.component';
 import { AccordionLinkToSbComponent } from './demos/link-to-sb/link-to-sb.component';
 import { AccordionLinkToSbModule } from './demos/link-to-sb/link-to-sb.module';
+import { Routes } from "@angular/router";
 
 declare var require: any;
 const DEMOS = {
@@ -41,7 +42,7 @@ const DEMOS = {
   },
 };
 
-export const ROUTES = [
+export const ROUTES: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'examples' },
   {
     path: '',

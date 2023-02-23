@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { AutocompleteSampleDataService } from './autocomplete-sample.service';
 import { SDSAutocompletelConfiguration, SDSSelectedItemModel, SelectionMode } from '@gsa-sam/components';
@@ -10,7 +10,7 @@ import { SDSAutocompletelConfiguration, SDSSelectedItemModel, SelectionMode } fr
 })
 export class FormlyAutocompleteMinCharacter {
   results: any;
-  form = new FormGroup({});
+  form = new UntypedFormGroup({});
   model = {};
   options: FormlyFormOptions = {};
   public settings = new SDSAutocompletelConfiguration();

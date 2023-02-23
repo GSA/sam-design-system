@@ -1,10 +1,10 @@
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 
 export interface SdsFormlyDialogData {
   fields: FormlyFieldConfig[];
   cancel?: string;
-  form?: FormGroup;
+  form?: UntypedFormGroup;
   model?: object;
   options?: FormlyFormOptions;
   submit?: string;

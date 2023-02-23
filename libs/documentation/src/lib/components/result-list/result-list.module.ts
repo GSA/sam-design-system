@@ -17,6 +17,7 @@ import { ResultListTemplate } from './demos/template/result-list-template.compon
 import { ResultListTemplateModule } from './demos/template/result-list-template.module';
 import { ResultListLinkToSbComponent } from './demos/result-list-link-to-sb/result-list-link-to-sb.component';
 import { ResultListLinkToSbModule } from './demos/result-list-link-to-sb/result-list-link-to-sb.module';
+import { Routes } from "@angular/router";
 
 declare var require: any;
 const DEMOS = {
@@ -62,7 +63,7 @@ const DEMOS = {
   },
 };
 
-export const ROUTES = [
+export const ROUTES: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'examples' },
   {
     path: '',

@@ -3,7 +3,7 @@ import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { Component, ViewChild, DebugElement } from '@angular/core';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule, FormlyForm } from '@ngx-formly/core';
 import { FormlySelectModule } from '@ngx-formly/core/select';
 import { FormlyFieldMultiCheckboxComponent } from './multicheckbox';
@@ -47,7 +47,7 @@ describe('Formly Field multicheckbox Component', () => {
   describe('options', () => {
     beforeEach(() => {
       testComponentInputs = {
-        form: new FormGroup({}),
+        form: new UntypedFormGroup({}),
         options: {},
         model: {},
       };
@@ -219,7 +219,7 @@ class TestComponent {
   @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;
 
   fields = testComponentInputs.fields;
-  form: FormGroup = testComponentInputs.form;
+  form: UntypedFormGroup = testComponentInputs.form;
   model = testComponentInputs.model || {};
   options = testComponentInputs.options;
 }

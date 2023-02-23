@@ -2,7 +2,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TestBed, ComponentFixture, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Component, ViewChild, DebugElement } from '@angular/core';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule, FormlyForm } from '@ngx-formly/core';
 import { FormlyFieldSearchComponent } from './search';
 import { of as observableOf } from 'rxjs';
@@ -43,7 +43,7 @@ describe('Formly Field Select Component', () => {
   describe('search', () => {
     beforeEach(() => {
       testSearchComponent = {
-        form: new FormGroup({}),
+        form: new UntypedFormGroup({}),
         model: {
           firstName: {
             searchText: 'test',
@@ -76,6 +76,6 @@ class TestComponent {
   @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;
 
   fields = testSearchComponent.fields;
-  form: FormGroup = testSearchComponent.form;
+  form: UntypedFormGroup = testSearchComponent.form;
   model = testSearchComponent.model || {};
 }

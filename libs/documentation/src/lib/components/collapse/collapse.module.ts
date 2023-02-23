@@ -9,6 +9,7 @@ import { ComponentWrapperComponent } from '../../shared/component-wrapper/compon
 import { CollapseBasicModule } from './demos/basic/collapse-basic.module';
 import { CollapseLinkToSbComponent } from './demos/collapse-link-to-sb/collapse-link-to-sb.component';
 import { CollapseLinkToSbModule } from './demos/collapse-link-to-sb/collapse-link-to-sb.module';
+import { Routes } from "@angular/router";
 
 declare var require: any;
 const DEMOS = {
@@ -30,7 +31,7 @@ const DEMOS = {
   },
 };
 
-export const ROUTES = [
+export const ROUTES: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'examples' },
   {
     path: '',

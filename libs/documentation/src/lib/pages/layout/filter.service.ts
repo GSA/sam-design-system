@@ -1,5 +1,5 @@
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { AutocompleteSampleDataService } from './services/autocomplete-sample.service';
 import { SelectionMode, SDSSelectedItemModel, SDSAutocompletelConfiguration } from '@gsa-sam/components';
 import { Injectable } from '@angular/core';
@@ -14,7 +14,7 @@ export class FilterService {
   public autocompleteModel = new SDSSelectedItemModel();
 
   public model = {};
-  public form = new FormGroup({});
+  public form = new UntypedFormGroup({});
   options: FormlyFormOptions = {};
 
   public keywordChangeSubject = new Subject();

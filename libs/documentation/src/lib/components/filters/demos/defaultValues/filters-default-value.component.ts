@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { filterFields } from './fields';
 
@@ -8,7 +8,7 @@ import { filterFields } from './fields';
   templateUrl: './filters-default-value.component.html',
 })
 export class FiltersDefaultValueComponent {
-  form = new FormGroup({});
+  form = new UntypedFormGroup({});
   model: any = {
     title: 'Acme Corporation',
   };

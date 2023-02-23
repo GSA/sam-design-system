@@ -10,6 +10,7 @@ import { ComponentWrapperComponent } from '../../shared/component-wrapper/compon
 import { DescriptionWrapperBasicModule } from './demos/basic/descriptionwrapper-basic.module';
 import { DescriptionWrapperCustomTextModule } from './demos/custom-text/descriptionwrapper-custom-text.module';
 import { DescriptionWrapperCustomText } from './demos/custom-text/descriptionwrapper-custom-text.component';
+import { Routes } from "@angular/router";
 
 declare var require: any;
 const DEMOS = {
@@ -31,7 +32,7 @@ const DEMOS = {
   },
 };
 
-export const ROUTES = [
+export const ROUTES: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'examples' },
   {
     path: '',

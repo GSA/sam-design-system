@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { multiCheckboxRequired } from '@gsa-sam/sam-formly';
 
@@ -9,7 +9,7 @@ import { multiCheckboxRequired } from '@gsa-sam/sam-formly';
   selector: `sds-formly-multicheckbox-basic-demo`,
 })
 export class MultiCheckboxBasic {
-  form = new FormGroup({});
+  form = new UntypedFormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
   fields: FormlyFieldConfig[] = [

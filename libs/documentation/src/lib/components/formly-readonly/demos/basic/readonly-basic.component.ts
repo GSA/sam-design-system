@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { SDSAutocompletelConfiguration, SDSSelectedItemModel, SelectionMode } from '@gsa-sam/components';
 import { FormlyUtilsService, SdsFormlyTypes } from '@gsa-sam/sam-formly';
 import { FormlyFieldConfig } from '@ngx-formly/core';
@@ -33,7 +33,7 @@ export class ReadonlyBasicComponent implements OnInit {
   /**
    * INPUT DEMO
    */
-  inpuyTypeform = new FormGroup({});
+  inpuyTypeform = new UntypedFormGroup({});
   inputTypefields: FormlyFieldConfig[] = [
     {
       className: 'grid-col-7 display-inline-block',
@@ -63,7 +63,7 @@ export class ReadonlyBasicComponent implements OnInit {
   /**
    * TEXTAREA DEMO
    */
-  textareaTypeForm = new FormGroup({});
+  textareaTypeForm = new UntypedFormGroup({});
   textareaTypeFields: FormlyFieldConfig[] = [
     {
       className: 'grid-col-7 display-inline-block',
@@ -98,7 +98,7 @@ export class ReadonlyBasicComponent implements OnInit {
   /**
    * CHECKBOX DEMO
    */
-  checkboxTypeForm = new FormGroup({});
+  checkboxTypeForm = new UntypedFormGroup({});
   checkboxTypeFields: FormlyFieldConfig[] = [
     {
       className: 'grid-col-7 display-inline-block',
@@ -127,7 +127,7 @@ export class ReadonlyBasicComponent implements OnInit {
   /**
    * Datepicker Type
    */
-  datepickerTypeForm = new FormGroup({});
+  datepickerTypeForm = new UntypedFormGroup({});
   datepickerTypeFields: FormlyFieldConfig[] = [
     {
       className: 'grid-col-7 display-inline-block',
@@ -156,7 +156,7 @@ export class ReadonlyBasicComponent implements OnInit {
   /**
    * Datepicker Type
    */
-  daterangePickerTypeForm = new FormGroup({});
+  daterangePickerTypeForm = new UntypedFormGroup({});
   daterangePickerTypeFields: FormlyFieldConfig[] = [
     {
       className: 'grid-col-7 display-inline-block',
@@ -185,7 +185,7 @@ export class ReadonlyBasicComponent implements OnInit {
   /**
    * Fileinfo Type Demo
    */
-  fileinfoTypeForm = new FormGroup({});
+  fileinfoTypeForm = new UntypedFormGroup({});
   fileinfoTypeFields: FormlyFieldConfig[] = [
     {
       className: 'grid-col-7 display-inline-block',
@@ -218,7 +218,7 @@ export class ReadonlyBasicComponent implements OnInit {
   /**
    * Multicheckbox demo
    */
-  multicheckboxTypeForm = new FormGroup({});
+  multicheckboxTypeForm = new UntypedFormGroup({});
   multicheckboxTypeFields: FormlyFieldConfig[] = [
     {
       className: 'grid-col-7 display-inline-block',
@@ -252,7 +252,7 @@ export class ReadonlyBasicComponent implements OnInit {
   /**
    * Radio Demo
    */
-  radioTypeForm = new FormGroup({});
+  radioTypeForm = new UntypedFormGroup({});
   radioTypeFields: FormlyFieldConfig[] = [
     {
       className: 'grid-col-7 display-inline-block',
@@ -285,7 +285,7 @@ export class ReadonlyBasicComponent implements OnInit {
   /**
    * Select Demo
    */
-  selectTypeForm = new FormGroup({});
+  selectTypeForm = new UntypedFormGroup({});
   selectTypeFields: FormlyFieldConfig[] = [
     {
       className: 'grid-col-7 display-inline-block',
@@ -322,7 +322,7 @@ export class ReadonlyBasicComponent implements OnInit {
   /**
    * Autocomplete Single Select Demo
    */
-  autocompleteSingleSelectForm = new FormGroup({});
+  autocompleteSingleSelectForm = new UntypedFormGroup({});
   autocompleteSingleSelectFields: FormlyFieldConfig[] = [
     {
       className: 'grid-col-7 display-inline-block',
@@ -356,7 +356,7 @@ export class ReadonlyBasicComponent implements OnInit {
   /**
    * Autocomplete Multi-Select Demo
    */
-  autocompleteMultiSelectForm = new FormGroup({});
+  autocompleteMultiSelectForm = new UntypedFormGroup({});
   autocompleteMultiSelectFields: FormlyFieldConfig[] = [
     {
       className: 'grid-col-7 display-inline-block',

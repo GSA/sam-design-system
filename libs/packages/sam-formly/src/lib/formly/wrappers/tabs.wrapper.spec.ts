@@ -2,7 +2,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TestBed, ComponentFixture, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Component, DebugElement, ViewChild } from '@angular/core';
-import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule, FormlyForm, FormlyFieldConfig } from '@ngx-formly/core';
 import { SdsTabsModule, SelectionMode } from 'libs/packages/components/src/lib/public-api';
 import { SdsFormlyTypes } from '../models/formly-types';
@@ -16,7 +16,7 @@ class TestComponent {
   @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;
 
   fields = testComponentInputs.fields;
-  form: FormGroup = testComponentInputs.form;
+  form: UntypedFormGroup = testComponentInputs.form;
   model = testComponentInputs.model || {};
   options = testComponentInputs.options;
 }
@@ -136,7 +136,7 @@ describe('Tabs Formly Field Component', () => {
     });
 
     testComponentInputs = {
-      form: new FormGroup({}),
+      form: new UntypedFormGroup({}),
       options: {},
       model: {},
       fields: getTabsFieldConfig(),

@@ -8,6 +8,7 @@ import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../s
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { TreeTableBasicModule } from './demos/basic/tree-table-basic.module';
 import { TreeTableBasicComponent } from './demos/basic/tree-table-basic.component';
+import { Routes } from "@angular/router";
 
 declare var require: any;
 
@@ -22,7 +23,7 @@ const DEMOS = {
   },
 };
 
-export const ROUTES = [
+export const ROUTES: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'examples' },
   {
     path: '',

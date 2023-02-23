@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, TemplateRef, ViewChild } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 
 @Component({
@@ -10,7 +10,7 @@ import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 export class RadioTemplateComponent implements AfterViewInit {
   @ViewChild('radioTemplate') radioTemplate: TemplateRef<any>;
 
-  form = new FormGroup({});
+  form = new UntypedFormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
   fields: FormlyFieldConfig[] = [

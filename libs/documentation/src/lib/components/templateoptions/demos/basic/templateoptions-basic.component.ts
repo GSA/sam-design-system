@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 @Component({
   templateUrl: './templateoptions-basic.component.html',
   selector: `sds-templateoptions-basic-demo`,
 })
 export class TemplateOptionsBasic {
-  form = new FormGroup({});
+  form = new UntypedFormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
   fields: FormlyFieldConfig[] = [

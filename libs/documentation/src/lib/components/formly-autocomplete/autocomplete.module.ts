@@ -20,6 +20,7 @@ import { FormlyAutocompleteDisable } from './demos/disable/autocomplete-disable.
 import { FormlyAutocompleteDisableModule } from './demos/disable/autocomplete-disable.module';
 import { FormlyAutocompleteValidationModule } from './demos/validation/autocomplete-validation.module';
 import { FormlyAutocompleteValidation } from './demos/validation/autocomplete-validation.component';
+import { Routes } from "@angular/router";
 
 declare var require: any;
 const DEMOS = {
@@ -74,7 +75,7 @@ const DEMOS = {
   },
 };
 
-export const ROUTES = [
+export const ROUTES: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'examples' },
   {
     path: '',

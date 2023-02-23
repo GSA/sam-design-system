@@ -10,6 +10,7 @@ import { DatePipeBasicComponent } from './demos/basic/date-pipe-basic/date-pipe-
 import { DatePipeBasicModule } from './demos/basic/date-pipe-basic/date-pipe-basic.module';
 import { DatePipeLinkToSbModule } from './demos/date-pipe-link-to-sb/date-pipe-link-to-sb.module';
 import { DatePipeLinkToSbComponent } from './demos/date-pipe-link-to-sb/date-pipe-link-to-sb.component';
+import { Routes } from "@angular/router";
 
 declare var require: any;
 const DEMOS = {
@@ -31,7 +32,7 @@ const DEMOS = {
   },
 };
 
-export const ROUTES = [
+export const ROUTES: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'examples' },
   {
     path: '',

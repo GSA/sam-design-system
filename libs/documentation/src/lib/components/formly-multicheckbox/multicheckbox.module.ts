@@ -14,6 +14,7 @@ import { MultiCheckboxExpandableModule } from './demos/expandable/multicheckbox-
 import { MultiCheckboxExpandable } from './demos/expandable/multicheckbox-expandable.component';
 import { MultiCheckboxGroupModule } from './demos/group/multicheckbox-group.module';
 import { MultiCheckboxGroup } from './demos/group/multicheckbox-group.component';
+import { Routes } from "@angular/router";
 
 declare var require: any;
 const DEMOS = {
@@ -48,7 +49,7 @@ const DEMOS = {
   },
 };
 
-export const ROUTES = [
+export const ROUTES: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'examples' },
   {
     path: '',

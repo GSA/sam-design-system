@@ -1,5 +1,5 @@
 import { Component, TemplateRef } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { TabPanelComponent } from '@gsa-sam/components';
 
 @Component({
@@ -9,9 +9,9 @@ import { TabPanelComponent } from '@gsa-sam/components';
 export class DynamicTabsComponet {
   additionalTabs: { header: string | TemplateRef<any>; content: string | TemplateRef<any> }[] = [];
 
-  tabFormGroup = new FormGroup({
-    tabHeader: new FormControl(''),
-    tabContent: new FormControl(''),
+  tabFormGroup = new UntypedFormGroup({
+    tabHeader: new UntypedFormControl(''),
+    tabContent: new UntypedFormControl(''),
   });
 
   createTab() {

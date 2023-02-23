@@ -12,6 +12,7 @@ import { CheckboxTemplate } from './demos/template/checkbox-template.component';
 import { CheckboxTemplateModule } from './demos/template/checkbox-template.module';
 import { CheckboxRadio } from './demos/checkbox-radio/checkbox-radio.component';
 import { CheckboxRadioModule } from './demos/checkbox-radio/checkbox-radio.module';
+import { Routes } from "@angular/router";
 
 declare var require: any;
 const DEMOS = {
@@ -38,7 +39,7 @@ const DEMOS = {
   },
 };
 
-export const ROUTES = [
+export const ROUTES: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'examples' },
   {
     path: '',

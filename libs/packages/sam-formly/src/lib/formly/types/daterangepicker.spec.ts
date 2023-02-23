@@ -2,7 +2,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 
 import { Component, ViewChild } from '@angular/core';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule, FormlyForm } from '@ngx-formly/core';
 
 import { MatNativeDateModule } from '@angular/material/core';
@@ -65,7 +65,7 @@ describe('Formly Field DateRangePicker Component', () => {
     });
 
     testComponentInputs = {
-      form: new FormGroup({}),
+      form: new UntypedFormGroup({}),
       options: {},
       model: {
         expirationDate: {
@@ -168,7 +168,7 @@ class TestComponent {
   @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;
 
   fields = testComponentInputs.fields;
-  form: FormGroup = testComponentInputs.form;
+  form: UntypedFormGroup = testComponentInputs.form;
   model = testComponentInputs.model || {};
   options = testComponentInputs.options;
 }

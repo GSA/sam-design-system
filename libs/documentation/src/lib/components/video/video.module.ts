@@ -8,6 +8,7 @@ import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../s
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { VideoBasicModule } from './demos/basic/video-basic.module';
 import { VideoBasic } from './demos/basic/video-basic.component';
+import { Routes } from "@angular/router";
 
 declare var require: any;
 export const closing = require('!!raw-loader!./closing.md');
@@ -22,7 +23,7 @@ const DEMOS = {
   },
 };
 
-export const ROUTES = [
+export const ROUTES: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'examples' },
   {
     path: '',

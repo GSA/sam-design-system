@@ -16,6 +16,7 @@ import { RadioHorizontalComponent } from './demos/horizontal/radio-horizontal.co
 import { RadioHorizontalModule } from './demos/horizontal/radio-horizontal.module';
 import { RadioGroupComponent } from './demos/group/radio-group.component';
 import { RadioGroupModule } from './demos/group/radio-group.module';
+import { Routes } from "@angular/router";
 
 declare var require: any;
 const DEMOS = {
@@ -57,7 +58,7 @@ const DEMOS = {
   },
 };
 
-export const ROUTES = [
+export const ROUTES: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'examples' },
   {
     path: '',

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { BehaviorSubject } from 'rxjs';
 import { AutocompleteSampleDataService } from './autocomplete-sample.service';
@@ -13,7 +13,7 @@ import { SampleAutocompleteData } from './autocomplete-sample.data';
 })
 export class FormlyAutocompleteDisable {
   results: any;
-  form = new FormGroup({});
+  form = new UntypedFormGroup({});
   model = {
     filters: {
       agency: [],
@@ -44,7 +44,7 @@ export class FormlyAutocompleteDisable {
             configuration: this.settings,
           },
           lifecycle: {
-            onChanges: function (form: FormGroup, field) {
+            onChanges: function (form: UntypedFormGroup, field) {
               form.controls.items1.valueChanges.subscribe((value: any[]) => {
                 if (!value || !value.length) {
                   form.controls.items2.reset();

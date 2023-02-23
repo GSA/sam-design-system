@@ -8,6 +8,7 @@ import { ComponentWrapperComponent } from '../../shared/component-wrapper/compon
 import { ToastsBasicModule } from './demos/basic/toasts-basic.module';
 import { ToastsBasic } from './demos/basic/toasts-basic.component';
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
+import { Routes } from "@angular/router";
 
 declare var require: any;
 const DEMOS = {
@@ -21,7 +22,7 @@ const DEMOS = {
   },
 };
 
-export const ROUTES = [
+export const ROUTES: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'examples' },
   {
     path: '',

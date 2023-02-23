@@ -9,6 +9,7 @@ import { ExpiresBasicComponent } from './demos/basic/expires-basic.component';
 import { ExpiresBasicModule } from './demos/basic/expires-basic.module';
 import { ExpiresLinkToSbComponent } from './demos/expires-link-to-sb/expires-link-to-sb.component';
 import { ExpiresLinkToSbModule } from './demos/expires-link-to-sb/expires-link-to-sb.module';
+import { Routes } from "@angular/router";
 
 export declare var require: any;
 
@@ -31,7 +32,7 @@ const DEMOS = {
   },
 };
 
-export const ROUTES = [
+export const ROUTES: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'examples' },
   {
     path: '',
