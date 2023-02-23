@@ -64,6 +64,8 @@ export default {
     viewAllClicked: disable,
     treetableRow: disable,
     dataSource: disable,
+    moreChildrenThanInitialLimit: disable,
+    moreChildrenThanShowing: disable,
   },
 } as Meta;
 
