@@ -61,7 +61,8 @@ export function generateConfig(
 export function createCodePreviewTabData(
   relativePath: string,
   language: 'ts' | 'html',
-  copy: boolean
+  copy: boolean,
+  tabTitle?: string
 ): CodePreviewTabData {
   const splitPath = relativePath.split('/');
   const folderPath = splitPath.slice(0, splitPath.length - 1).join('/');
@@ -84,7 +85,7 @@ export function createCodePreviewTabData(
   }
 
   return {
-    tab: fileName,
+    tab: tabTitle ?? fileName,
     template: fileData,
     language: language,
     copy,
