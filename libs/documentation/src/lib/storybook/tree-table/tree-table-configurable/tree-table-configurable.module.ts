@@ -4,12 +4,9 @@ import { TreeTableConfigurableComponent } from './tree-table-configurable.compon
 import { SdsTreeTableModule } from '@gsa-sam/components';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SdsTreeTableModule
-  ],
+  imports: [CommonModule, SdsTreeTableModule],
   declarations: [TreeTableConfigurableComponent],
   exports: [TreeTableConfigurableComponent],
   bootstrap: [TreeTableConfigurableComponent],
 })
-export class TreeTableConfigurableModule { }
+export class TreeTableConfigurableModule {}

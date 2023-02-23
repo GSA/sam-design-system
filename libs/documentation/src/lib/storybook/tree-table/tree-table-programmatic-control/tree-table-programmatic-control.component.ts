@@ -1,21 +1,19 @@
 import { Component, ViewChild } from '@angular/core';
 import { SdsTreeTableComponent } from '@gsa-sam/components';
-import { data } from '../services/TreeTableData'
+import { data } from '../services/TreeTableData';
 
 @Component({
   selector: 'sds-tree-table-programmatic-control',
   templateUrl: './tree-table-programmatic-control.component.html',
 })
 export class TreeTableProgrammaticControlComponent {
-
   @ViewChild(SdsTreeTableComponent) treeTable: SdsTreeTableComponent;
 
-
-  constructor() { }
+  constructor() {}
 
   displayedData: any[] = data;
 
-  displayColumns = ['Title', 'Description', 'Year']
+  displayColumns = ['Title', 'Description', 'Year'];
 
   expandAll() {
     this.treeTable.expandAll();
@@ -32,5 +30,4 @@ export class TreeTableProgrammaticControlComponent {
   collapseRow() {
     this.treeTable.collapseRow('row1');
   }
-
 }

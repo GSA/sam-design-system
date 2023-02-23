@@ -4,12 +4,9 @@ import { TreeTableProgrammaticControlComponent } from './tree-table-programmatic
 import { SdsTreeTableModule } from '@gsa-sam/components';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SdsTreeTableModule
-  ],
+  imports: [CommonModule, SdsTreeTableModule],
   declarations: [TreeTableProgrammaticControlComponent],
   bootstrap: [TreeTableProgrammaticControlComponent],
   exports: [TreeTableProgrammaticControlComponent],
 })
-export class TreeTableProgrammaticControlModule { }
+export class TreeTableProgrammaticControlModule {}

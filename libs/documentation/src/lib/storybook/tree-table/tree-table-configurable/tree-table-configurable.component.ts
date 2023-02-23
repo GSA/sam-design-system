@@ -1,13 +1,12 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { SdsTreeTableComponent } from '@gsa-sam/components';
-import { data } from '../services/TreeTableData'
+import { data } from '../services/TreeTableData';
 
 @Component({
   selector: 'sds-tree-table-configurable',
   templateUrl: './tree-table-configurable.component.html',
 })
 export class TreeTableConfigurableComponent {
-
   @ViewChild(SdsTreeTableComponent) treeTable: SdsTreeTableComponent;
 
   @Input()
@@ -25,13 +24,13 @@ export class TreeTableConfigurableComponent {
 
   displayedData: any[] = data;
 
-  constructor() { }
+  constructor() {}
 
-  onViewAll(row){
+  onViewAll(row) {
     this.viewAll.emit(row);
   }
 
-  onRowToggled(row){
+  onRowToggled(row) {
     this.rowExpanded.emit(row);
   }
 
@@ -42,7 +41,4 @@ export class TreeTableConfigurableComponent {
   collapseAll() {
     this.treeTable.collapseAll();
   }
-
-
-
 }

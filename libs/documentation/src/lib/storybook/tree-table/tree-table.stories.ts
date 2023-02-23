@@ -1,11 +1,15 @@
-import { CommonModule } from "@angular/common";
-import { SdsTreeTableComponent } from "@gsa-sam/components";
+import { CommonModule } from '@angular/common';
+import { SdsTreeTableComponent } from '@gsa-sam/components';
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
-import { createCodePreviewTabData, generateConfig, generateStackblitzLink } from "libs/documentation/src/sandbox/sandbox-utils";
-import { TreeTableBasicModule } from "./tree-table-basic/tree-table-basic.module";
-import { TreeTableConfigurableModule } from "./tree-table-configurable/tree-table-configurable.module";
-import { TreeTableIntroductionModule } from "./tree-table-introduction/tree-table-introduction.module";
-import { TreeTableProgrammaticControlModule } from "./tree-table-programmatic-control/tree-table-programmatic-control.module";
+import {
+  createCodePreviewTabData,
+  generateConfig,
+  generateStackblitzLink,
+} from 'libs/documentation/src/sandbox/sandbox-utils';
+import { TreeTableBasicModule } from './tree-table-basic/tree-table-basic.module';
+import { TreeTableConfigurableModule } from './tree-table-configurable/tree-table-configurable.module';
+import { TreeTableIntroductionModule } from './tree-table-introduction/tree-table-introduction.module';
+import { TreeTableProgrammaticControlModule } from './tree-table-programmatic-control/tree-table-programmatic-control.module';
 
 const disable = {
   table: {
@@ -23,7 +27,7 @@ export default {
         TreeTableProgrammaticControlModule,
         TreeTableIntroductionModule,
         TreeTableConfigurableModule,
-        TreeTableBasicModule
+        TreeTableBasicModule,
       ],
     }),
   ],
@@ -87,8 +91,8 @@ Configurable.parameters = {
 Configurable.args = {
   childrenLimit: 10,
   numChildrenToDisplay: 5,
-  displayColumns: ['Title', 'Description', 'Year']
-}
+  displayColumns: ['Title', 'Description', 'Year'],
+};
 
 export const Basic: Story = (args) => ({
   template: `<sds-tree-table-basic
@@ -102,12 +106,9 @@ Basic.parameters = {
     disabled: true,
     hideNoControlsWarning: true,
   },
-  preview: generateConfig(
-    'storybook/tree-table/tree-table-basic',
-    'TreeTableBasicModule',
-    'sds-tree-table-modes',
-    [createCodePreviewTabData('storybook/tree-table/services/TreeTableData.ts', 'ts', false)]
-  ),
+  preview: generateConfig('storybook/tree-table/tree-table-basic', 'TreeTableBasicModule', 'sds-tree-table-modes', [
+    createCodePreviewTabData('storybook/tree-table/services/TreeTableData.ts', 'ts', false),
+  ]),
   stackblitzLink: generateStackblitzLink('tree-table', 'basic'),
 };
 

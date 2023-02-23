@@ -5,7 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './tree-table-link-to-sb.component.html',
 })
 export class TreeTableLinkToSbComponent {
-
-  constructor() { }
-
+  constructor() {}
 }

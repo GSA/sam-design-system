@@ -4,12 +4,9 @@ import { TreeTableBasicComponent } from './tree-table-basic.component';
 import { SdsTreeTableModule } from '@gsa-sam/components';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SdsTreeTableModule
-  ],
+  imports: [CommonModule, SdsTreeTableModule],
   declarations: [TreeTableBasicComponent],
   exports: [TreeTableBasicComponent],
   bootstrap: [TreeTableBasicComponent],
 })
-export class TreeTableBasicModule { }
+export class TreeTableBasicModule {}

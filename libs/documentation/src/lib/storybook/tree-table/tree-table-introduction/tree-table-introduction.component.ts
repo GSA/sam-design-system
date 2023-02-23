@@ -5,7 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './tree-table-introduction.component.html',
 })
 export class TreeTableIntroductionComponent {
-
-  constructor() { }
-
+  constructor() {}
 }

@@ -89,8 +89,7 @@ export const data = [
                 children: [
                   {
                     title: 'Bill of Rights',
-                    description:
-                      'The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.',
+                    description: 'The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.',
                     year: 1791,
                     id: 'row2',
                   },
@@ -141,8 +140,7 @@ export const data = [
                   },
                   {
                     title: 'Bill of Rights',
-                    description:
-                      'The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.',
+                    description: 'The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.',
                     year: 1791,
                     id: 'row2',
                   },
@@ -308,4 +306,4 @@ export const data = [
       },
     ],
   },
-]
+];
