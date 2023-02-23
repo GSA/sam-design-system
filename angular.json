@@ -104,31 +104,22 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "node_modules",
+                "node_modules/@uswds/uswds/packages",
+                "node_modules/@uswds",
+                "node_modules/@uswds/uswds",
+                "node_modules/@gsa-sam/sam-styles/src/packages"
+              ]
+            },
             "outputPath": "dist/apps/sam-design-system-site",
             "index": "apps/sam-design-system-site/src/index.html",
             "main": "apps/sam-design-system-site/src/main.ts",
             "polyfills": "apps/sam-design-system-site/src/polyfills.ts",
             "tsConfig": "apps/sam-design-system-site/tsconfig.app.json",
-            "assets": [
-              "apps/sam-design-system-site/src/favicon.ico",
-              "apps/sam-design-system-site/src/assets",
-              "apps/sam-design-system-site/src/sds-styles.scss"
-            ],
-            "styles": [
-              {
-                "input": "apps/sam-design-system-site/src/uswds-styles.scss",
-                "inject": false,
-                "bundleName": "uswds"
-              },
-              {
-                "input": "apps/sam-design-system-site/src/sds-styles.scss",
-                "inject": false,
-                "bundleName": "sds"
-              },
-              "apps/sam-design-system-site/src/sds-styles.scss",
-              "node_modules/highlight.js/styles/vs.css",
-              "node_modules/@uswds/uswds/dist/scss/stylesheets/uswds.scss"
-            ],
+            "assets": ["apps/sam-design-system-site/src/favicon.ico", "apps/sam-design-system-site/src/assets"],
+            "styles": ["node_modules/@gsa-sam/sam-styles/src/index.scss"],
             "scripts": [
               "node_modules/marked/marked.min.js",
               "node_modules/accessible-html5-video-player/js/px-video.js",
