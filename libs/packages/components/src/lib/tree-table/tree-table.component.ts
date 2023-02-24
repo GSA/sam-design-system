@@ -124,9 +124,23 @@ export class SdsTreeTableComponent {
     tableRow.setAttribute('tabindex', '0');
     row.viewAllChildren = true;
     setTimeout(() => tableRow.focus());
-    if (row.totalChildren && row.totalChildren > row.children.length) {
+    if (!row.children && !row.totalChildren) {
+      return;
+    }
+    if (
+      (row.totalChildren && this.moreChildrenThanShowing(row)) ||
+      (row.children && this.moreChildrenThanInitialLimit(row))
+    ) {
       this.viewAll.emit(row);
     }
+  }
+
+  private moreChildrenThanShowing(row: SdsTreeTableData): boolean {
+    return row.totalChildren > row.children?.length;
+  }
+
+  private moreChildrenThanInitialLimit(row): boolean {
+    return row.children.length > this.childrenLimit;
   }
 
   private toggleAllHelper(data: any[], expanded: boolean) {
