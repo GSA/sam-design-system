@@ -1,12 +1,13 @@
-/* autoprefixer grid: autoplace */
+@use "@angular/material" as mat;
+$dark-primary-text: rgba(black, 0.87);
+ //@forward '@angular/material/theming';
+// // Plus imports for other components in your app.
 
-@forward '@angular/material/theming';
-// Plus imports for other components in your app.
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-@include mat-core();
+// // Include the common styles for Angular Material. We include this here so that you only
+// // have to load a single css file for Angular Material in your app.
+// // Be sure that you only ever include this mixin once!
+ //@include mat-core();
+@include mat.core();
 
 $mat-sds-green: (
   50: #ecf3ec,
@@ -33,22 +34,22 @@ $mat-sds-green: (
   A200: #69f0ae,
   A400: #00e676,
   A700: #00c853,
-  contrast: (
-    50: $dark-primary-text,
-    100: $dark-primary-text,
-    200: $dark-primary-text,
-    300: $dark-primary-text,
-    400: $dark-primary-text,
-    500: $dark-primary-text,
-    600: $light-primary-text,
-    700: $light-primary-text,
-    800: $light-primary-text,
-    900: $light-primary-text,
-    A100: $dark-primary-text,
-    A200: $dark-primary-text,
-    A400: $dark-primary-text,
-    A700: $dark-primary-text,
-  ),
+   contrast: (
+    50:rgba(black, 0.87),
+    100:rgba(black, 0.87),
+    200:rgba(black, 0.87),
+    300:rgba(black, 0.87),
+    400:rgba(black, 0.87),
+    500:rgba(black, 0.87),
+    600: rgba(black, 0.87),
+    700: rgba(black, 0.87),
+    800: rgba(black, 0.87),
+    900: rgba(black, 0.87),
+    A100:rgba(black, 0.87),
+    A200:rgba(black, 0.87),
+    A400:rgba(black, 0.87),
+    A700:rgba(black, 0.87),
+   ),
 );
 
 $mat-sds-blue: (
@@ -76,22 +77,21 @@ $mat-sds-blue: (
   A200: #69def0,
   A400: #0095e6,
   A700: #0061c8,
-  contrast: (
-    50: $dark-primary-text,
-    100: $dark-primary-text,
-    200: $dark-primary-text,
-    300: $dark-primary-text,
-    400: $dark-primary-text,
-    500: $dark-primary-text,
-    600: $light-primary-text,
-    700: $light-primary-text,
-    800: $light-primary-text,
-    900: $light-primary-text,
-    A100: $dark-primary-text,
-    A200: $dark-primary-text,
-    A400: $dark-primary-text,
-    A700: $dark-primary-text,
-  ),
+contrast: (
+ 50: rgba(black, 0.87),
+   100: rgba(black, 0.87),
+   200: rgba(black, 0.87),
+    300:rgba(black, 0.87),
+    400:rgba(black, 0.87),
+    500:rgba(black, 0.87),
+    600: rgba(black, 0.87),
+    700: rgba(black, 0.87),
+    800: rgba(black, 0.87),
+    900: rgba(black, 0.87),
+    A100:rgba(black, 0.87),
+    A200:rgba(black, 0.87),
+    A400:rgba(black, 0.87),
+    A700:rgba(black, 0.87),)
 );
 
 $mat-sds-red: (
@@ -120,39 +120,39 @@ $mat-sds-red: (
   A400: #e60000,
   A700: #c80000,
   contrast: (
-    50: $dark-primary-text,
-    100: $dark-primary-text,
-    200: $dark-primary-text,
-    300: $dark-primary-text,
-    400: $dark-primary-text,
-    500: $dark-primary-text,
-    600: $light-primary-text,
-    700: $light-primary-text,
-    800: $light-primary-text,
-    900: $light-primary-text,
-    A100: $dark-primary-text,
-    A200: $dark-primary-text,
-    A400: $dark-primary-text,
-    A700: $dark-primary-text,
+    50: rgba(black, 0.87),
+   100: rgba(black, 0.87),
+   200: rgba(black, 0.87),
+    300:rgba(black, 0.87),
+    400:rgba(black, 0.87),
+    500:rgba(black, 0.87),
+    600: rgba(black, 0.87),
+    700: rgba(black, 0.87),
+    800: rgba(black, 0.87),
+    900: rgba(black, 0.87),
+    A100:rgba(black, 0.87),
+    A200:rgba(black, 0.87),
+    A400:rgba(black, 0.87),
+    A700:rgba(black, 0.87),
   ),
-);
+ );
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$sds-mat-app-primary: mat-palette($mat-sds-green);
-$sds-mat-app-accent: mat-palette($mat-sds-blue, A200, A100, A400);
+// // Define the palettes for your theme using the Material Design palettes available in palette.scss
+// // (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// // hue. Available color palettes: https://material.io/design/color/
+$sds-mat-app-primary: mat.define-palette($mat-sds-green);
+$sds-mat-app-accent: mat.define-palette($mat-sds-blue, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$sds-mat-app-warn: mat-palette($mat-sds-red);
+$sds-mat-app-warn: mat.define-palette($mat-sds-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$sds-mat-app-theme: mat-light-theme($sds-mat-app-primary, $sds-mat-app-accent, $sds-mat-app-warn);
+$sds-mat-app-theme: mat.define-light-theme($sds-mat-app-primary, $sds-mat-app-accent, $sds-mat-app-warn);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include angular-material-theme($sds-mat-app-theme);
+@include mat.all-component-themes($sds-mat-app-theme);
 
 .mat-calendar-table-header {
   color: black !important;
@@ -165,3 +165,5 @@ $sds-mat-app-theme: mat-light-theme($sds-mat-app-primary, $sds-mat-app-accent, $
 input.mat-input-element {
   margin-top: 0.5rem !important;
 }
+
+

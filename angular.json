@@ -110,7 +110,10 @@
                 "node_modules/@uswds/uswds/packages",
                 "node_modules/@uswds",
                 "node_modules/@uswds/uswds",
-                "node_modules/@gsa-sam/sam-styles/src/packages"
+"node_modules/@uswds/uswds/dist/fonts",
+"node_modules/@uswds/uswds/dist/img",
+                "node_modules/@gsa-sam/sam-styles/src/packages",
+                "node_modules/@gsa-sam/sam-styles/src"
               ]
             },
             "outputPath": "dist/apps/sam-design-system-site",
@@ -119,7 +122,10 @@
             "polyfills": "apps/sam-design-system-site/src/polyfills.ts",
             "tsConfig": "apps/sam-design-system-site/tsconfig.app.json",
             "assets": ["apps/sam-design-system-site/src/favicon.ico", "apps/sam-design-system-site/src/assets"],
-            "styles": ["node_modules/@gsa-sam/sam-styles/src/index.scss"],
+            "styles": ["node_modules/@gsa-sam/sam-styles/src/index.scss",
+
+"apps/sam-design-system-site/src/base-documentation.scss"
+],
             "scripts": [
               "node_modules/marked/marked.min.js",
               "node_modules/accessible-html5-video-player/js/px-video.js",
