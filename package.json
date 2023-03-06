@@ -14,7 +14,7 @@
     "e2e": "ng e2e",
     "update": "ng update",
     "update:check": "ng update",
-    "federalist": "npm install --only=dev && npm run demo:docs && ng build --project=sam-design-system-site --prod --base-href=$BASEURL/ && npm run demo:stackblitzes-federalist && npm run build:docs",
+    "federalist": "npm install --only=dev && npm run demo:docs && ng build --project=sam-design-system-site --configuration production --base-href=$BASEURL/ && npm run demo:stackblitzes-federalist && npm run build:docs",
     "version": "node ./tools/scripts/update-libs-version.js && git add .",
     "postversion": "git push && git push --tags",
     "changelog": "gren changelog --override && git add . && git commit -m \"Add changelog\" && git push",
