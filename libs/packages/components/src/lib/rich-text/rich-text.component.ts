@@ -36,7 +36,7 @@ export class SdsRichTextComponent implements ControlValueAccessor {
   registerOnTouched(fn: any) {
     this._onTouched = fn;
   }
-  public editor = ClassicEditor;
+  public editor = ClassicEditor.default ?? ClassicEditor;
 
   model = '';
 }
