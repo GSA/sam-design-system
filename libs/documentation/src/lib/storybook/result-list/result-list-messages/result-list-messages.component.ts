@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { OptionalSearchModel } from './optional-classes';
 
@@ -30,7 +30,7 @@ export class ResultListMessagesComponent {
     });
   }
 
-  form = new FormGroup({});
+  form = new FormGroup<{messageType: AbstractControl<string>}>({messageType: new FormControl('')});
   model: any = {
     messageType: 'initial',
   };

@@ -7,7 +7,7 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
   templateUrl: './formly-input-required.component.html',
 })
 export class FormlyInputRequiredComponent {
-  orm = new FormGroup({});
+  form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
   fields: FormlyFieldConfig[] = [
