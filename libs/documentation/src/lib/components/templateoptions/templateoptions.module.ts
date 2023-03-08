@@ -18,7 +18,7 @@ import { TemplateOptionAnnounceLabel } from './demos/announceLabel/templateoptio
 import { TemplateOptionsAnnounceLabelModule } from './demos/announceLabel/templateoption-announceLabel.module';
 import { UpdateOnInheritanceModule } from './demos/updateoninheritance/update-on-inheritance.module';
 import { UpdateOnInheritanceComponent } from './demos/updateoninheritance/update-on-inheritance.component';
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 
 declare var require: any;
 const DEMOS = {

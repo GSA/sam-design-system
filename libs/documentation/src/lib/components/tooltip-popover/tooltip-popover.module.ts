@@ -13,7 +13,7 @@ import { PopoverLinkToSbComponent } from './demos/popover-link-to-sb/popover-lin
 import { PopoverLinkToSbModule } from './demos/popover-link-to-sb/popover-link-to-sb.module';
 import { TooltipLinkToSbComponent } from './demos/tooltip-link-to-sb/tooltip-link-to-sb.component';
 import { TooltipLinkToSbModule } from './demos/tooltip-link-to-sb/tooltip-link-to-sb.module';
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 
 declare var require: any;
 const DEMOS = {

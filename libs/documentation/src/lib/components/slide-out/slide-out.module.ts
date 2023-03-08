@@ -11,7 +11,7 @@ import { SlideOutTemplateRefComponent } from './demos/template-ref/slide-out-tem
 import { SlideOutTemplateRefModule } from './demos/template-ref/slide-out-template-ref.module';
 import { SlideOutCustomHeaderModule } from './demos/custom-header/custom-header.module';
 import { SlideOutCustomHeaderComponent } from './demos/custom-header/custom-header.component';
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 
 declare var require: any;
 const DEMOS = {

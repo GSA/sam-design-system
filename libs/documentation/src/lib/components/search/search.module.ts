@@ -13,7 +13,7 @@ import { SearchOptional } from './demos/optional/search-optional.component';
 import { SearchOptionalModule } from './demos/optional/search-optional.module';
 import { SearchLinkToSbComponent } from './demos/search-link-to-sb/search-link-to-sb.component';
 import { SearchLinkToSbModule } from './demos/search-link-to-sb/search-link-to-sb.module';
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 
 declare var require: any;
 const DEMOS = {

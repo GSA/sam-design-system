@@ -14,7 +14,7 @@ import { FileInputApiComponent } from './demos/file-input-api/file-input-api.com
 import { FileInputApiModule } from './demos/file-input-api/file-input-api.module';
 import { FileInputTemplateComponent } from './demos/file-input-template/file-input-template.component';
 import { FileInputTemplateModule } from './demos/file-input-template/file-input-template.module';
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 
 declare var require: any;
 const DEMOS = {

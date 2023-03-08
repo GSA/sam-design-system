@@ -27,7 +27,7 @@ import { AutocompleteCustomTemplate } from './demos/customtemplate/autocomplete-
 import { AutocompleteCustomTemplateModule } from './demos/customtemplate/autocomplete-customtemplate.module';
 import { AutocompleteAriaLabelComponent } from './demos/aria-label/autocomplete-aria-label.component';
 import { AutocompleteAriaLabelModule } from './demos/aria-label/autocomplete-aria-label.module';
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 
 declare var require: any;
 const DEMOS = {

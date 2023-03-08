@@ -8,7 +8,7 @@ import { DocumentationTemplatePage } from '../shared/template-page/template.comp
 import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { FilterWrapperBasicModule } from './demos/basic/filterwrapper-basic.module';
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 
 declare var require: any;
 const DEMOS = {

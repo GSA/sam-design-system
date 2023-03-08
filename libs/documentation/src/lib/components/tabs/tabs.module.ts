@@ -22,7 +22,7 @@ import { TabsTemplateHeaderComponent } from './demos/template-header/tabs-templa
 import { TabsTemplateHeaderModule } from './demos/template-header/tabs-template-header.module';
 import { TabsLinkToSbComponent } from './demos/tabs-link-to-sb/tabs-link-to-sb.component';
 import { TabsLinkToSbModule } from './demos/tabs-link-to-sb/tabs-link-to-sb.module';
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 
 declare var require: any;
 const DEMOS = {

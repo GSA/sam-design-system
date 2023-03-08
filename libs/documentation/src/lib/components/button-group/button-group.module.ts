@@ -12,7 +12,7 @@ import { ButtonGroupDifferingLengths } from './demos/differinglengths/button-gro
 import { ButtonGroupDifferingLengthsModule } from './demos/differinglengths/button-group-differing-lengths.module';
 import { ButtonGroupLinkToSbComponent } from './demos/button-group-link-to-sb/button-group-link-to-sb.component';
 import { ButtonGroupLinkToSbModule } from './demos/button-group-link-to-sb/button-group-link-to-sb.module';
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 
 declare var require: any;
 const DEMOS = {

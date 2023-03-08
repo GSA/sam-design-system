@@ -12,7 +12,7 @@ import { InputOptionalModule } from './demos/optional/input-optional.module';
 import { InputOptional } from './demos/optional/input-optional.component';
 import { FormlyInputLinkToSbComponent } from './demos/formly-input-link-to-sb/formly-input-link-to-sb.component';
 import { FormlyInputLinkToSbModule } from './demos/formly-input-link-to-sb/formly-input-link-to-sb.module';
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 
 declare var require: any;
 const DEMOS = {

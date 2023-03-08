@@ -30,7 +30,7 @@ export class ResultListMessagesComponent {
     });
   }
 
-  form = new FormGroup<{messageType: AbstractControl<string>}>({messageType: new FormControl('')});
+  form = new FormGroup<{ messageType: AbstractControl<string> }>({ messageType: new FormControl('') });
   model: any = {
     messageType: 'initial',
   };

@@ -9,7 +9,7 @@ import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../s
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { TextBasicModule } from './demos/basic/text-basic.module';
 import { TextBasic } from './demos/basic/text-basic.component';
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 
 declare var require: any;
 const DEMOS = {

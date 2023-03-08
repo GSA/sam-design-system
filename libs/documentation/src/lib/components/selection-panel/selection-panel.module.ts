@@ -14,7 +14,7 @@ import { DefaultSelectionPanelComponent } from './demos/default-selection/defaul
 import { DefaultSelectionPanelModule } from './demos/default-selection/default-selection-panel.module';
 import { SelectionModeComponent } from './demos/selection-mode/selection-mode.component';
 import { SelectionModeSelectionPanelModule } from './demos/selection-mode/selection-mode.module';
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 
 declare var require: any;
 const DEMOS = {

@@ -15,7 +15,7 @@ import { DialogNested } from './demos/nested/dialog-nested.component';
 import { DialogNestedModule } from './demos/nested/dialog-nested.module';
 import { DialogOfficial } from './demos/official/dialog-official.component';
 import { DialogOfficialModule } from './demos/official/dialog-official.module';
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 
 declare var require: any;
 const DEMOS = {

@@ -9,7 +9,7 @@ import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../s
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { PaginationBasicModule } from './demos/basic/pagination-basic.module';
 import { PaginationLinkToSbComponent } from './demos/pagination-link-to-sb/pagination-link-to-sb.component';
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 
 declare var require: any;
 const DEMOS = {

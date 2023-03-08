@@ -12,7 +12,7 @@ import { AccordionCardlistModule } from './demos/cardlist/accordion-cardlist.mod
 import { AccordionCardlist } from './demos/cardlist/accordion-cardlist.component';
 import { AccordionLinkToSbComponent } from './demos/link-to-sb/link-to-sb.component';
 import { AccordionLinkToSbModule } from './demos/link-to-sb/link-to-sb.module';
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 
 declare var require: any;
 const DEMOS = {

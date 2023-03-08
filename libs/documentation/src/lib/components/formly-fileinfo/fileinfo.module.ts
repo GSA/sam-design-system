@@ -8,7 +8,7 @@ import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../s
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { FormlyFileInfoBasic } from './demos/basic/fileinfo-basic.component';
 import { FormlyFileInfoBasicModule } from './demos/basic/fileinfo-basic.module';
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 
 declare var require: any;
 const DEMOS = {

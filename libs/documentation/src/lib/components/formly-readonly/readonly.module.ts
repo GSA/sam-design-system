@@ -14,7 +14,7 @@ import { ReadonlyFormlyTypeModule } from './demos/formlytype/readonly-formly.mod
 import { ReadonlyFormlyTypeComponent } from './demos/formlytype/readonly-formly-type.component';
 import { CustomTemplateComponent } from './demos/customtemplate/custom-template.component';
 import { CustomTemplateModule } from './demos/customtemplate/custom-template.module';
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 
 declare var require: any;
 const DEMOS = {

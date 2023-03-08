@@ -14,7 +14,7 @@ import { FormlyDatepickerValidation } from './demos/validation/datepicker-valida
 import { FormlyDatepickerValidationModule } from './demos/validation/datepicker-validation.module';
 import { FormlyDatepickerDateRangeV2 } from './demos/daterangev2/datepicker-daterangev2.component';
 import { FormlyDatepickerDateRangeV2Module } from './demos/daterangev2/datepicker-daterangev2.module';
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 
 declare var require: any;
 export const closing = require('!!raw-loader!./closing.md');

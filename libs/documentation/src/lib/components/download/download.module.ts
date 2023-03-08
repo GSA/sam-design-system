@@ -13,7 +13,7 @@ import { FormlyDialog } from './demos/formlymodal/formly-modal.component';
 import { FormlyDialogModule } from './demos/formlymodal/formly-modal.module';
 import { FormlyCurvyDialog } from './demos/formlymodal-curvy/formlymodal-curvy.component';
 import { FormlyCurvyDialogModule } from './demos/formlymodal-curvy/formlymodal-curvy.module';
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 
 declare var require: any;
 const DEMOS = {

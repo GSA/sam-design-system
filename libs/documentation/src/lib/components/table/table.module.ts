@@ -21,7 +21,7 @@ import { TablePaginationComponent } from './demos/pagination/pagination.componen
 import { TablePaginationModule } from './demos/pagination/pagination.module';
 import { TableHighlightComponent } from './demos/highlight-and-click/highlight.component';
 import { TableHighlightModule } from './demos/highlight-and-click/highlight.module';
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 
 export declare var require: any;
 

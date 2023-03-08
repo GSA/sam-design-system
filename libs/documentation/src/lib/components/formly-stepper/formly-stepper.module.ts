@@ -12,7 +12,7 @@ import { UswdsStepperComponent } from './demos/uswds-stepper/uswds-stepper.compo
 import { UswdsStepperModule } from './demos/uswds-stepper/uswds-stepper.module';
 import { UnevenStepsStepperComponent } from './demos/uneven-steps/uneven-steps-stepper.component';
 import { UnevenStepsStepperModule } from './demos/uneven-steps/uneven-steps-stepper.module';
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 
 declare var require: any;
 const DEMOS = {

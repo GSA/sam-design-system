@@ -14,7 +14,7 @@ import { SearchHandleSubmitModule } from './demos/submit/search-handle-submit.mo
 import { SearchHandleSubmit } from './demos/submit/search-handle-submit.component';
 import { AdvancedSearchModule } from './demos/advanced-search/advanced-search.module';
 import { AdvancedSearch } from './demos/advanced-search/advanced-search.component';
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 
 declare var require: any;
 const DEMOS = {

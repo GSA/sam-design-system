@@ -9,7 +9,7 @@ import { ComponentWrapperComponent } from '../../shared/component-wrapper/compon
 import { CollapseBasicModule } from './demos/basic/collapse-basic.module';
 import { CollapseLinkToSbComponent } from './demos/collapse-link-to-sb/collapse-link-to-sb.component';
 import { CollapseLinkToSbModule } from './demos/collapse-link-to-sb/collapse-link-to-sb.module';
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 
 declare var require: any;
 const DEMOS = {

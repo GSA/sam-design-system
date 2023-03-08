@@ -10,7 +10,7 @@ import { FormlyTabsBasicModule } from './demos/basic/formly-tabs-basic.module';
 import { FormlyTabsBasicComponent } from './demos/basic/formly-tabs-basic.component';
 import { FormlyTabsInterceptComponent } from './demos/intercept/formly-tabs-intercept.component';
 import { FormlyTabsInterceptModule } from './demos/intercept/formly-tabs-intercept.module';
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 
 declare var require: any;
 const DEMOS = {
