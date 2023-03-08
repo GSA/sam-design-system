@@ -38,3 +38,4 @@ apps/sam-design-system-site/src/assets/stackblitzes
 .DS_Store
 Thumbs.db
 .angular/cache/
+documentation.json
