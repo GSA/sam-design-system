@@ -1,7 +1,7 @@
-@use "uswds-core" with (
-    $theme-font-path: "../../../node_modules/@uswds/uswds/dist/fonts/",
-    $theme-image-path: "../../../node_modules/@uswds/uswds/dist/img",
-);
+// @use "uswds-core" with (
+//     $theme-font-path: "../../../node_modules/@uswds/uswds/dist/fonts/",
+//     $theme-image-path: "../../../node_modules/@uswds/uswds/dist/img",
+// );
 
 @use "@angular/material" as mat;
 $dark-primary-text: rgba(black, 0.87);
