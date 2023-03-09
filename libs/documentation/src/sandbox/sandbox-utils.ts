@@ -1,8 +1,18 @@
-// import { ANGULAR_CODESANDBOX } from './angular-dependencies';
-
 declare var require;
 
-export function generateConfig(filePath: string, moduleName: string, selector: string) {
+export interface CodePreviewTabData {
+  tab: string;
+  template: string;
+  language: string;
+  copy: boolean;
+}
+
+export function generateConfig(
+  filePath: string,
+  moduleName: string,
+  selector: string,
+  additionalFiles?: Array<CodePreviewTabData>
+) {
   const splitPath = filePath.split('/');
   const fileName = splitPath[splitPath.length - 1];
 
@@ -14,42 +24,72 @@ export function generateConfig(filePath: string, moduleName: string, selector: s
   const template = require(`!!raw-loader!libs/documentation/src/lib/${filePath}/${fileName}.component.html`);
   const module = require(`!!raw-loader!libs/documentation/src/lib/${filePath}/${fileName}.module.ts`);
 
-  // const files = {};
-  // files[tsFileName] = component.default,
-  // files[templateFileName] = template.default;
-  // files[moduleFileName] = module.default;
-
-  // const sandboxConfig = {
-  //   files,
-  //   moduleName,
-  //   selector
-  // };
-
-  const preview = [
+  let preview = [
     {
       tab: tsFileName,
       template: component,
       language: 'ts',
       copy: true,
-      // codesandbox: ANGULAR_CODESANDBOX(sandboxConfig.files, sandboxConfig.moduleName, sandboxConfig.selector),
     },
     {
       tab: templateFileName,
       template: template,
       language: 'html',
       copy: true,
-      // codesandbox: ANGULAR_CODESANDBOX(sandboxConfig.files, sandboxConfig.moduleName, sandboxConfig.selector),
     },
     {
       tab: moduleFileName,
       template: module,
       language: 'ts',
       copy: true,
-      // codesandbox: ANGULAR_CODESANDBOX(sandboxConfig.files, sandboxConfig.moduleName, sandboxConfig.selector),
     },
   ];
+  if (additionalFiles) {
+    additionalFiles.forEach((extraFile) => preview.push(extraFile));
+  }
 
   return preview;
+}
+
+/**
+ *
+ * @param relativePath - Path relative to 'libs/documentation/src/lib'. This string should include the file name.
+ * @param language - language of the file.
+ * @param copy - Whether to provide button to allow users to easily copy this file. False does not prevent copying, just leaves off the button.
+ * @returns
+ */
+export function createCodePreviewTabData(
+  relativePath: string,
+  language: 'ts' | 'html',
+  copy: boolean,
+  tabTitle?: string
+): CodePreviewTabData {
+  const splitPath = relativePath.split('/');
+  const folderPath = splitPath.slice(0, splitPath.length - 1).join('/');
+  const fileName = splitPath[splitPath.length - 1];
+  const fileNameWithoutExtension = fileName
+    .split('.')
+    .splice(0, fileName.split('.').length - 1)
+    .join('.');
+
+  let fileData;
+
+  // File data MUST be loaded this way. If the string inside require() does not end with non-interpreted characters this section will error.
+  switch (language) {
+    case 'ts':
+      fileData = require(`!!raw-loader!libs/documentation/src/lib/${folderPath}/${fileNameWithoutExtension}.ts`);
+      break;
+    case 'html':
+      fileData = require(`!!raw-loader!libs/documentation/src/lib/${folderPath}/${fileNameWithoutExtension}.html`);
+      break;
+  }
+
+  return {
+    tab: tabTitle ?? fileName,
+    template: fileData,
+    language: language,
+    copy,
+  };
 }
 
 export function generateStackblitzLink(componentName: string, demoName: string) {
