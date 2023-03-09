@@ -20,7 +20,7 @@ export class ActionsBasic {
   };
 
   textmenu = {
-    label: 'Action',
+    label: 'More',
     trigger: {
       type: 'plain', // plain | primary
       shadow: true,
