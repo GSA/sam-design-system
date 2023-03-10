@@ -1,11 +1,15 @@
 <!-- Button that triggers menu (sdsMenuTriggerFor) -->
 <button
-  class="sds-button sds-button--circular"
-  [class.sds-button--primary]="model.trigger.type === 'primary'"
+  [ngClass]="{
+    'usa-button usa-button--secondary-dark usa-button--outline text-secondary-dark sds-button--menu padding-right-105': model.label,
+    'sds-button sds-button--circular': !model.label
+  }"
+  [class.sds-button--primary]="model.trigger.type === 'primary' && !model.label"
   [class.sds-button--shadow]="model.trigger.shadow"
   [class.sds-button--small]="size === 'sm'"
   [sdsMenuTriggerFor]="menu"
 >
+  <span *ngIf="model.label">{{ model.label }}</span>
   <usa-icon [icon]="'three-dots-vertical'" [size]="'1x'"></usa-icon>
   <span class="usa-sr-only">{{ screenReaderText }}</span>
 </button>

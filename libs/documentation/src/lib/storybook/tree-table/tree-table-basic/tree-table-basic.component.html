@@ -1,0 +1,29 @@
+<sds-tree-table
+  #treeTable
+  [dataSource]="displayedData"
+  [displayColumns]="displayColumns"
+  (viewAll)="onViewAll($event)"
+  (rowExpanded)="onRowToggle($event)"
+  [childrenLimit]="10"
+  [numChildrenToDisplay]="5"
+>
+  <ng-container *sdsTreeTableRow="let row; let level = level">
+    <td>
+      <div class="h4 margin-bottom-1">
+        <a *ngIf="row.children && row.children.length" href="javascript:void(0)"
+          ><span class="usa-sr-only"> Row Level {{ level }}</span> {{ row.title }}</a
+        >
+        <a *ngIf="!row.children || (row.children && !row.children.length)"
+          ><span class="usa-sr-only"> Row Level {{ level }}</span> {{ row.title }}</a
+        >
+      </div>
+      <span class="display-block font-mono-3xs"
+        ><span class="usa-sr-only">Address</span> 545 S 3rd St Ste 310, Louisville, KY 40404-1936 USA</span
+      >
+    </td>
+    <td>
+      {{ row.description }}
+    </td>
+    <td>{{ row.year }}</td>
+  </ng-container>
+</sds-tree-table>

@@ -19,6 +19,19 @@ export class ActionsBasic {
     ],
   };
 
+  textmenu = {
+    label: 'More',
+    trigger: {
+      type: 'plain', // plain | primary
+      shadow: true,
+    },
+    actions: [
+      { id: 'DownloadBtn', text: 'Download' },
+      { id: 'FollowBtn', text: 'Follow' },
+      { id: 'ShareBtn', text: 'Share' },
+    ],
+  };
+
   log(value) {
     console.log(`%cLog: ${value}`, 'color: blue; font-weight: bold');
   }
