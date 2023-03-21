@@ -22,6 +22,6 @@ export class ToastsPreventDuplicatesComponent {
   }
 
   showMessageWithoutDuplicates() {
-    this.toastr.show('This Message Will Not Duplicate', '');
+    this.toastr.info('This Message Will Not Duplicate', '');
   }
 }

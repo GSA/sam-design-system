@@ -30,7 +30,7 @@ export default {
   ],
   argTypes: {
     toastType: {
-      options: ['General', 'Success', 'Info', 'Warning', 'Error'],
+      options: ['Success', 'Info', 'Warning', 'Error'],
       control: { type: 'select' },
       table: {
         type: { summary: 'select' },

@@ -24,9 +24,9 @@ export class ToastsMessageComponent {
   }
 
   showPlainTextMessage() {
-    this.toastr.show('Plain Toast Message', '');
+    this.toastr.info('Plain Toast Message', '');
   }
   showHTMLMessage() {
-    this.toastr.show('<i>HTML Toast Message</i>', '');
+    this.toastr.info('<i>HTML Toast Message</i>', '');
   }
 }
