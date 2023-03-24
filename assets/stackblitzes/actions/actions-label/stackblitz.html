@@ -325,8 +325,12 @@ export class AppComponent {}
     <input type="hidden" name="project[files][src/app/actions-label.component.html]" value="&lt;p&gt;Normal Menu&lt;/p&gt;
 &lt;sds-actions-menu [model]=&#34;menu&#34; [screenReaderText]=&#34;&#39;Open Default Actions Menu&#39;&#34;&gt;&lt;/sds-actions-menu&gt;
 
-&lt;p&gt;Small Menu&lt;/p&gt;
-&lt;sds-actions-menu [model]=&#34;menu&#34; [size]=&#34;&#39;sm&#39;&#34; [screenReaderText]=&#34;&#39;Open Default Actions Menu&#39;&#34;&gt;&lt;/sds-actions-menu&gt;
+&lt;p&gt;Disable Action Menu&lt;/p&gt;
+&lt;sds-actions-menu
+  [model]=&#34;menu&#34;
+  [disabled]=&#34;&#39;true&#39;&#34;
+  [screenReaderText]=&#34;&#39;Open Default Actions Menu&#39;&#34;
+&gt;&lt;/sds-actions-menu&gt;
 ">
     
     <input type="hidden" name="project[files][src/app/actions-label.component.ts]" value="import { Component } from &#39;@angular/core&#39;;
