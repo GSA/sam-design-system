@@ -23,10 +23,10 @@ export class ToastsTimeoutComponent {
   showTwoSecondTimeoutMessage() {
     this.options.disableTimeOut = false;
     this.options.timeOut = 2000;
-    this.toastr.show('This Message Will Disappear In 2 Seconds', '');
+    this.toastr.info('This Message Will Disappear In 2 Seconds', '');
   }
   showNoTimeoutMessage() {
     this.options.disableTimeOut = true;
-    this.toastr.show('This Message Will Not Timeout', '');
+    this.toastr.info('This Message Will Not Timeout', '');
   }
 }

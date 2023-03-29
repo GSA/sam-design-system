@@ -19,10 +19,6 @@ export class ToastsTypeComponent {
 
     this.options.closeButton = true;
   }
-
-  showGeneralToast() {
-    this.toastr.show('A General Toast Message', '');
-  }
   showSuccessToast() {
     this.toastr.success('A Success Toast Message', '');
   }
