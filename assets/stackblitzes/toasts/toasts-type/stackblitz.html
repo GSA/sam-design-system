@@ -322,8 +322,7 @@ export class AppModule {}
 export class AppComponent {}
 ">
     
-    <input type="hidden" name="project[files][src/app/toasts-type.component.html]" value="&lt;button class=&#34;usa-button&#34; (click)=&#34;showGeneralToast()&#34;&gt;General Toast&lt;/button&gt;
-&lt;button class=&#34;usa-button&#34; (click)=&#34;showSuccessToast()&#34;&gt;Success Toast&lt;/button&gt;
+    <input type="hidden" name="project[files][src/app/toasts-type.component.html]" value="&lt;button class=&#34;usa-button&#34; (click)=&#34;showSuccessToast()&#34;&gt;Success Toast&lt;/button&gt;
 &lt;button class=&#34;usa-button&#34; (click)=&#34;showInfoToast()&#34;&gt;Info Toast&lt;/button&gt;
 &lt;button class=&#34;usa-button&#34; (click)=&#34;showWarningToast()&#34;&gt;Warning Toast&lt;/button&gt;
 &lt;button class=&#34;usa-button&#34; (click)=&#34;showErrorToast()&#34;&gt;Error Toast&lt;/button&gt;
@@ -349,10 +348,6 @@ export class ToastsTypeComponent {
     };
 
     this.options.closeButton = true;
-  }
-
-  showGeneralToast() {
-    this.toastr.show(&#39;A General Toast Message&#39;, &#39;&#39;);
   }
   showSuccessToast() {
     this.toastr.success(&#39;A Success Toast Message&#39;, &#39;&#39;);

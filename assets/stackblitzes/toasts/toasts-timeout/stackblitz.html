@@ -351,11 +351,11 @@ export class ToastsTimeoutComponent {
   showTwoSecondTimeoutMessage() {
     this.options.disableTimeOut = false;
     this.options.timeOut = 2000;
-    this.toastr.show(&#39;This Message Will Disappear In 2 Seconds&#39;, &#39;&#39;);
+    this.toastr.info(&#39;This Message Will Disappear In 2 Seconds&#39;, &#39;&#39;);
   }
   showNoTimeoutMessage() {
     this.options.disableTimeOut = true;
-    this.toastr.show(&#39;This Message Will Not Timeout&#39;, &#39;&#39;);
+    this.toastr.info(&#39;This Message Will Not Timeout&#39;, &#39;&#39;);
   }
 }
 ">

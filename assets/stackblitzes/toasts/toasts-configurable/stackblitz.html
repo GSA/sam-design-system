@@ -339,7 +339,7 @@ export class ToastsConfigurableComponent {
   toastMessage: string = &#39;Test Message&#39;;
 
   @Input()
-  toastType: &#39;General&#39; | &#39;Success&#39; | &#39;Info&#39; | &#39;Warning&#39; | &#39;Error&#39;;
+  toastType: &#39;Success&#39; | &#39;Info&#39; | &#39;Warning&#39; | &#39;Error&#39;;
 
   @Input()
   set toastTimeout(timeout: number) {
@@ -370,9 +370,6 @@ export class ToastsConfigurableComponent {
 
   showToast() {
     switch (this.toastType) {
-      case &#39;General&#39;:
-        this.toastr.show(this.toastMessage, &#39;&#39;);
-        break;
       case &#39;Success&#39;:
         this.toastr.success(this.toastMessage, &#39;&#39;);
         break;
