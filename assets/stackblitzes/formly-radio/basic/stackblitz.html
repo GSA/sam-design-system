@@ -384,16 +384,6 @@ export class RadioBasic {
           },
         ],
       },
-      modelOptions: {
-        updateOn: &#39;blur&#39;,
-      },
-      lifecycle: {
-        onChanges: function (form, field) {
-          field.formControl.valueChanges.subscribe((v) =&gt; {
-            console.log(form[&#39;controls&#39;][&#39;entity&#39;]);
-          });
-        },
-      },
     },
   ];
 }
