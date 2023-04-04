@@ -12,7 +12,12 @@ export function minDateValidator(control: FormControl, field: FormlyFieldConfig)
   let value = control.value;
   if (value && minDateField) {
     if (value instanceof Date && minDateField instanceof Date) {
-      if (value < minDateField) {
+
+      minDateField.setHours(0,0,0,0);
+
+
+      if (value.getTime() < minDateField.getTime() && value.getTime() === minDateField.getTime()) {
+
         if (!field.templateOptions.maxDate && !(field.templateOptions.maxDate instanceof Date)) {
           toReturn = {
             minDate: true,
@@ -76,9 +81,11 @@ export function maxDateValidator(control: FormControl, field: FormlyFieldConfig)
   let toReturn = null;
   let maxDateField = field.templateOptions.maxDate;
   let value = control.value;
+ maxDateField.setHours(0,0,0,0);
+
   if (value && maxDateField) {
     if (value instanceof Date && maxDateField instanceof Date) {
-      if (value > maxDateField) {
+      if (value.getTime() > maxDateField.getTime() && value.getTime() === maxDateField.getTime()) {
         if (!field.templateOptions.minDate && !(field.templateOptions.minDate instanceof Date)) {
           toReturn = {
             maxDate: true,
