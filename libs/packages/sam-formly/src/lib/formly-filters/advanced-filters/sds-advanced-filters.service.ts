@@ -9,10 +9,12 @@ export class SdsAdvancedFiltersService {
 
   convertToCheckboxes(origFields: FormlyFieldConfig[], hideChildrenGroups = false): FormlyFieldConfig[] {
     const fields: FormlyFieldConfig[] = [];
+    const defaultValue = [];
     origFields.forEach((origField) => {
-      if (origField.fieldGroup && origField.fieldGroup.length > 1 && !hideChildrenGroups) {
-        const field = this.createMulticheckbox(origField);
+      if (origField.fieldGroup?.length && !hideChildrenGroups) {
+        const field = this.createMulticheckbox(origField, defaultValue);
         fields.push(field);
+        // this.convertToCheckboxes(origField.fieldGroup, hideChildrenGroups);
       } else {
         if (origField.key) {
           const field: FormlyFieldConfig = {
@@ -35,22 +37,28 @@ export class SdsAdvancedFiltersService {
   }
 
   // TODO: Should be changed so option has label field instead of key but multicheckbox field type must be updated so default value still works
-  createMulticheckbox(origField: FormlyFieldConfig): FormlyFieldConfig {
+  createMulticheckbox(origField: FormlyFieldConfig, defaultValue: any[]): FormlyFieldConfig {
     const options = [];
-    const defaultValue = [];
-    origField.fieldGroup.forEach((field) => {
-      const label = field.templateOptions && field.templateOptions.label ? field.templateOptions.label : null;
-      const option = {
-        key: field.key,
-        value: label,
-        tagText: field.templateOptions.tagText,
-        tagClass: field.templateOptions.tagClass,
-      };
-      options.push(option);
-      if (!origField.hide && !field.hide) {
-        defaultValue.push(field.key);
-      }
-    });
+    if (origField.fieldGroup?.length) {
+      origField.fieldGroup.forEach((field) => {
+        if (field.fieldGroup?.length) {
+          options.push(this.createMulticheckbox(field, defaultValue));
+        } else {
+          const label = field.templateOptions && field.templateOptions.label ? field.templateOptions.label : null;
+          const option = {
+            key: field.key,
+            value: label,
+            tagText: field.templateOptions.tagText,
+            tagClass: field.templateOptions.tagClass,
+          };
+          options.push(option);
+          if (!origField.hide && !field.hide) {
+            defaultValue.push(field.key);
+            defaultValue.push(origField.key);
+          }
+        }
+      });
+    }
 
     const field: FormlyFieldConfig = {
       key: origField.key,
@@ -98,6 +106,9 @@ export class SdsAdvancedFiltersService {
           const key = field.key;
           const fieldSelected = selectedFields.length ? selectedFields.includes(key) : field;
           this.updateSingleField(field, fieldSelected, model);
+          if (field.fieldGroup && field.fieldGroup.length > 1) {
+            this.updateFieldGroup(field, selectedFields, model);
+          }
         });
       }
     } else {

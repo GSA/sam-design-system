@@ -12,7 +12,8 @@ export function minDateValidator(control: FormControl, field: FormlyFieldConfig)
   let value = control.value;
   if (value && minDateField) {
     if (value instanceof Date && minDateField instanceof Date) {
-      if (value < minDateField) {
+      minDateField.setHours(0, 0, 0, 0);
+      if (value.getTime() < minDateField.getTime() && value.getTime() === minDateField.getTime()) {
         if (!field.templateOptions.maxDate && !(field.templateOptions.maxDate instanceof Date)) {
           toReturn = {
             minDate: true,
@@ -49,6 +50,25 @@ export function autocompleteRequired(control: FormControl): ValidationErrors {
 }
 
 /**
+ * Usage:
+ *  Override the required validator to allow multicheckbox to behave more like required atleast one item is selected
+ *  the other inputs regarding error messages
+ *
+ // In the formly config
+ {
+      type: 'multicheckbox',
+      templateOptions: {
+        required: true,
+      },
+      validators: {
+        required: multiCheckboxRequired
+      },
+ */
+export function multiCheckboxRequired(control: FormControl): ValidationErrors {
+  const hasTrueKeys = Object.keys(control.value).some((k) => control.value[k]);
+  return hasTrueKeys ? { required: true } : null;
+}
+/**
  *
  * @param control
  * @param field
@@ -57,9 +77,12 @@ export function maxDateValidator(control: FormControl, field: FormlyFieldConfig)
   let toReturn = null;
   let maxDateField = field.templateOptions.maxDate;
   let value = control.value;
+
   if (value && maxDateField) {
     if (value instanceof Date && maxDateField instanceof Date) {
-      if (value > maxDateField) {
+      maxDateField.setHours(0, 0, 0, 0);
+
+      if (value.getTime() > maxDateField.getTime() && value.getTime() === maxDateField.getTime()) {
         if (!field.templateOptions.minDate && !(field.templateOptions.minDate instanceof Date)) {
           toReturn = {
             maxDate: true,

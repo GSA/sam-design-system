@@ -1,6 +1,6 @@
 {
   "name": "@gsa-sam/sam-formly",
-  "version": "12.0.12",
+  "version": "13.0.7",
   "repository": {
     "type": "git",
     "url": "https://github.com/GSA/sam-design-system.git"
@@ -10,12 +10,12 @@
     "tslib": "^2.0.0"
   },
   "peerDependencies": {
-    "@angular/common": "^12.2.15",
-    "@angular/core": "^12.2.15",
+    "@angular/common": "^13.3.11",
+    "@angular/core": "^13.3.11",
+    "ngx-bootstrap-icons": "^1.7.2",
     "@ngx-formly/core": "^5.10.22",
-    "@gsa-sam/components": ">=12.0.0",
-    "@gsa-sam/sam-material-extensions": ">=12.0.0",
-    "@gsa-sam/ngx-uswds": ">=12.0.0",
-    "ngx-bootstrap-icons": "^1.4.0"
+    "@gsa-sam/components": ">=13.0.0-beta.1",
+    "@gsa-sam/sam-material-extensions": ">=13.0.0-beta.1",
+    "@gsa-sam/ngx-uswds": ">=13.0.0-beta.1"
   }
 }

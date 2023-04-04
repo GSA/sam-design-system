@@ -6,5 +6,6 @@
     "typeRoots": ["node_modules/@types"]
   },
   "files": ["src/main.ts", "src/polyfills.ts"],
-  "include": ["**/*.d.ts", "../../libs/documentation/src/index.ts"]
+  "include": ["**/*.d.ts", "../../libs/documentation/src/index.ts"],
+  "exclude": ["**/*.stories.*"]
 }

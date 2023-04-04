@@ -1,0 +1,10 @@
+<p>Content displayed in a tooltip can be a string.</p>
+<button [sdsTooltip]="'Content'" [position]="'bottom'" class="usa-button usa-button--base" tabindex="0">
+  String binding
+</button>
+
+<p>Content displayed in a tooltip can also be HTML elements</p>
+<p #tipContent>Hello, <b>World</b>!</p>
+<button [sdsTooltip]="tipContent" [position]="'bottom'" class="usa-button usa-button--base" tabindex="0">
+  HTML binding
+</button>

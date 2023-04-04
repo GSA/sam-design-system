@@ -78,6 +78,8 @@ export class SdsVideoPlayerComponent implements AfterViewInit, OnChanges, OnInit
       debug: this.VPConfiguration.debug,
     };
 
+    const video = new InitPxVideo(this.config); // Required to ensure that browser controls are replaced with custom controls
+
     this.video.nativeElement.setAttribute('style', 'width:' + this.VPConfiguration.width + ';');
 
     const progressElement: HTMLProgressElement = this.elementRef.nativeElement.querySelector('progress');
@@ -92,7 +94,7 @@ export class SdsVideoPlayerComponent implements AfterViewInit, OnChanges, OnInit
   }
 
   ngOnChanges(changes) {
-    if (changes && changes.crossorigin) {
+    if (this.video && changes && changes.crossorigin) {
       const id = this.video.nativeElement;
       if (id) {
         id.setAttribute('crossorigin', this.crossorigin);

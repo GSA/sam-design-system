@@ -15,9 +15,19 @@ import { ResultListCardComponentModule } from './demos/card/result-list-card-com
 import { ResultListCardComponent } from './demos/card/result-list-card-component.component';
 import { ResultListTemplate } from './demos/template/result-list-template.component';
 import { ResultListTemplateModule } from './demos/template/result-list-template.module';
+import { ResultListLinkToSbComponent } from './demos/result-list-link-to-sb/result-list-link-to-sb.component';
+import { ResultListLinkToSbModule } from './demos/result-list-link-to-sb/result-list-link-to-sb.module';
 
 declare var require: any;
 const DEMOS = {
+  linkToSb: {
+    title: 'New Demos',
+    type: ResultListLinkToSbComponent,
+    code: require('!!raw-loader!./demos/result-list-link-to-sb/result-list-link-to-sb.component'),
+    module: require('!!raw-loader!./demos/result-list-link-to-sb/result-list-link-to-sb.module'),
+    markup: require('!!raw-loader!./demos/result-list-link-to-sb/result-list-link-to-sb.component.html'),
+    path: 'libs/documentation/src/lib/components/result-list/demos/result-list-link-to-sb',
+  },
   basic: {
     title: 'Result List',
     type: ResultListBasic,
@@ -83,6 +93,7 @@ export const ROUTES = [
     ResultListTemplateModule,
     ResultListComponentModule,
     ResultListCardComponentModule,
+    ResultListLinkToSbModule,
   ],
 })
 export class ResultListModule {

@@ -19,7 +19,6 @@ import { SdsFiltersModule } from '../formly-filters/sds-filters.module';
     FormlyModule,
     FormsModule,
   ],
-  entryComponents: [SdsFormlyDialogComponent],
   exports: [SdsFormlyDialogComponent],
 })
 export class SdsFormlyDialogModule {}

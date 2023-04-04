@@ -1,10 +1,20 @@
-import { AfterViewInit, Directive, ElementRef, HostListener, Input, Renderer2, TemplateRef } from '@angular/core';
+import {
+  AfterViewInit,
+  Directive,
+  ElementRef,
+  HostListener,
+  Input,
+  OnChanges,
+  Renderer2,
+  SimpleChanges,
+  TemplateRef,
+} from '@angular/core';
 
 @Directive({
   selector: '[sdsTooltip]',
   exportAs: 'sdsTooltip',
 })
-export class SdsTooltipDirective implements AfterViewInit {
+export class SdsTooltipDirective implements AfterViewInit, OnChanges {
   private _sdsTooltip: string | TemplateRef<any> | HTMLDivElement;
   sdsTooltipDiv: HTMLElement;
 
@@ -80,5 +90,28 @@ export class SdsTooltipDirective implements AfterViewInit {
 
   get sdsTooltip(): string | TemplateRef<any> | HTMLDivElement {
     return this._sdsTooltip;
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.position) {
+      this.clearAndReplacePosition(changes.position.currentValue, changes.position.previousValue);
+    }
+    if (changes.sdsTooltip && !changes.sdsTooltip.firstChange) {
+      this.clearAndReplaceTooltipContent(this.sdsTooltip);
+    }
+  }
+
+  clearAndReplacePosition(newPosition: string, oldPosition?: string) {
+    if (oldPosition) {
+      this.renderer.removeClass(this.sdsTooltipDiv, oldPosition);
+    }
+    this.renderer.setAttribute(this.sdsTooltipDiv, 'data-position', newPosition);
+    this.renderer.addClass(this.sdsTooltipDiv, newPosition);
+  }
+
+  clearAndReplaceTooltipContent(newContent) {
+    const toRemove = this.sdsTooltipDiv.querySelector('.tooltip');
+    this.renderer.removeChild(toRemove.parentNode, toRemove);
+    this.renderer.appendChild(this.sdsTooltipDiv, newContent);
   }
 }

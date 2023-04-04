@@ -3,7 +3,8 @@
   <div class="sds-toast__content__icon">
     <usa-icon [icon]="getIcon(toastPackage.toastType)" size="2x"></usa-icon>
   </div>
-  <span class="sds-toast__content__text">{{ message }}</span>
+  <span *ngIf="message && options.enableHtml" class="sds-toast__content__text" [innerHTML]="message"></span>
+  <span *ngIf="message && !options.enableHtml" class="sds-toast__content__text">{{ message }}</span>
   <div *ngIf="options.closeButton" class="sds-toast__content__close" (click)="remove()">
     <usa-icon [icon]="'x'"></usa-icon>
   </div>

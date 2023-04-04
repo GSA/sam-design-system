@@ -9,6 +9,5 @@ import { DialogNested, DialogOverviewExampleDialog, NestedDialogComponent } from
   exports: [DialogNested],
   bootstrap: [DialogNested],
   declarations: [DialogNested, DialogOverviewExampleDialog, NestedDialogComponent],
-  entryComponents: [DialogOverviewExampleDialog, NestedDialogComponent],
 })
 export class DialogNestedModule {}

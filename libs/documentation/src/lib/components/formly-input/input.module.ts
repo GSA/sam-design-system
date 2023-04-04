@@ -12,9 +12,18 @@ import { InputOptionalModule } from './demos/optional/input-optional.module';
 import { InputOptional } from './demos/optional/input-optional.component';
 import { InputPrefixSuffix } from './demos/prefix-suffix/prefix-suffix.component';
 import { InputPrefixSuffixModule } from './demos/prefix-suffix/prefix-suffix.module';
+import { FormlyInputLinkToSbComponent } from './demos/formly-input-link-to-sb/formly-input-link-to-sb.component';
+import { FormlyInputLinkToSbModule } from './demos/formly-input-link-to-sb/formly-input-link-to-sb.module';
 
 declare var require: any;
 const DEMOS = {
+  linkToSb: {
+    title: 'New Demos',
+    type: FormlyInputLinkToSbComponent,
+    code: require('!!raw-loader!./demos/formly-input-link-to-sb/formly-input-link-to-sb.component'),
+    markup: require('!!raw-loader!./demos/formly-input-link-to-sb/formly-input-link-to-sb.component.html'),
+    path: 'libs/documentation/src/lib/components/formly-input/demos/formly-input-link-to-sb',
+  },
   basic: {
     title: 'Basic Form Input',
     type: InputBasic,
@@ -69,6 +78,7 @@ export const ROUTES = [
     InputBasicModule,
     InputOptionalModule,
     InputPrefixSuffixModule,
+    FormlyInputLinkToSbModule,
   ],
 })
 export class InputModule {

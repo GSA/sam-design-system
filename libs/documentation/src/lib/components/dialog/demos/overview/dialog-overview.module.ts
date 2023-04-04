@@ -9,6 +9,5 @@ import { DialogOverView, DialogOverviewExampleDialog } from './dialog-overview.c
   exports: [DialogOverView],
   bootstrap: [DialogOverView],
   declarations: [DialogOverView, DialogOverviewExampleDialog],
-  entryComponents: [DialogOverviewExampleDialog],
 })
 export class DialogOverViewModule {}

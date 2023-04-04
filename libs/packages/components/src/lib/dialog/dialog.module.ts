@@ -44,6 +44,5 @@ import {
     SdsDialogContentDirective,
   ],
   providers: [SdsDialogService, SDS_DIALOG_SCROLL_STRATEGY_PROVIDER, SDS_SLIDE_OUT_SCROLL_STRATEGY_PROVIDER],
-  entryComponents: [SdsDialogContainerComponent],
 })
 export class SdsDialogModule {}

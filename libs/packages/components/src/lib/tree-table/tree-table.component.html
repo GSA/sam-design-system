@@ -1,12 +1,12 @@
 <div class="sds-tree-table--scrollable">
-  <table id="treegrid" role="treegrid" aria-label="Inbox" class="usa-table sds-tree-table padding-x-1">
-    <thead>
-      <tr>
-        <th scope="col">Related</th>
-        <th scope="col" *ngFor="let col of displayColumns">{{ col }}</th>
+  <table role="grid" class="usa-table sds-tree-table padding-x-1">
+    <thead role="rowgroup">
+      <tr role="row">
+        <th>Related</th>
+        <th *ngFor="let col of displayColumns">{{ col }}</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody role="rowgroup">
       <ng-container
         *ngFor="let data of dataSource; index as i"
         [ngTemplateOutlet]="treeTablePanel"
@@ -57,13 +57,13 @@
         [attr.tabindex]="row === _selectedRow ? 1 : -1"
         (click)="onRowClicked(row, tableRow)"
       >
-        <span class="usa-sr-only">Expand / Collapse current row</span>
+        <span class="usa-sr-only">{{ row.expanded ? 'Collapse' : 'Expand' }} current row</span>
         <usa-icon [icon]="row.expanded ? 'dash-circle-fill' : 'plus-circle-fill'" [size]="'2x'"> </usa-icon>
       </button>
     </td>
     <ng-container
       [ngTemplateOutlet]="treetableRow.templateRef"
-      [ngTemplateOutletContext]="{ $implicit: row, index: index - 1 }"
+      [ngTemplateOutletContext]="{ $implicit: row, index: index - 1, level: level }"
     >
     </ng-container>
   </tr>
@@ -80,6 +80,7 @@
   </ng-container>
 
   <tr
+    role="row"
     class="text-center"
     #viewAllRow
     *ngIf="

@@ -1,0 +1,13 @@
+<div class="margin-bottom-4">
+  <sds-autocomplete
+    [service]="service"
+    (ngModelChange)="changes($event)"
+    [(ngModel)]="model"
+    [configuration]="settings"
+    [disabled]="disabled"
+  >
+  </sds-autocomplete>
+</div>
+<pre
+  >{{ model | json }}
+</pre>

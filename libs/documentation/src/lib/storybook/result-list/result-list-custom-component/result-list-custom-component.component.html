@@ -1,0 +1,9 @@
+<div style="width: 90%;">
+  <sds-page class="sds-page condensed margin-bottom-0">
+    <sds-search-result-list [model]="items">
+      <ng-template #resultContent let-item>
+        <sds-list-component [item]="item"></sds-list-component>
+      </ng-template>
+    </sds-search-result-list>
+  </sds-page>
+</div>

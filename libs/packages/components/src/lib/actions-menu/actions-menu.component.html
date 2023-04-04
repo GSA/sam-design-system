@@ -1,13 +1,20 @@
 <!-- Button that triggers menu (sdsMenuTriggerFor) -->
 <button
-  class="sds-button sds-button--circular"
-  [class.sds-button--primary]="model.trigger.type === 'primary'"
+  [disabled]="disabled"
+  [ngClass]="{
+    'usa-button--secondary-dark  text-secondary-dark sds-button--menu': model.label && !disabled,
+    'sds-button sds-button--circular': !model.label,
+    'usa-button--disabled': disabled,
+    'usa-button': model.label
+  }"
+  [class.sds-button--primary]="model.trigger.type === 'primary' && !model.label"
   [class.sds-button--shadow]="model.trigger.shadow"
   [class.sds-button--small]="size === 'sm'"
   [sdsMenuTriggerFor]="menu"
 >
+  <span *ngIf="model.label">{{ model.label }}</span>
   <usa-icon [icon]="'three-dots-vertical'" [size]="'1x'"></usa-icon>
-  <span class="usa-sr-only">Toggle Actions</span>
+  <span class="usa-sr-only">{{ screenReaderText }}</span>
 </button>
 
 <!-- Menu content -->

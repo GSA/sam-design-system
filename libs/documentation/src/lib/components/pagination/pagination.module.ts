@@ -8,9 +8,18 @@ import { DocumentationTemplatePage } from '../shared/template-page/template.comp
 import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
 import { PaginationBasicModule } from './demos/basic/pagination-basic.module';
+import { PaginationLinkToSbComponent } from './demos/pagination-link-to-sb/pagination-link-to-sb.component';
 
 declare var require: any;
 const DEMOS = {
+  linkToSb: {
+    title: 'New Demos',
+    type: PaginationLinkToSbComponent,
+    code: require('!!raw-loader!./demos/pagination-link-to-sb/pagination-link-to-sb.component'),
+    module: require('!!raw-loader!./demos/pagination-link-to-sb/pagination-link-to-sb.module'),
+    markup: require('!!raw-loader!./demos/pagination-link-to-sb/pagination-link-to-sb.component.html'),
+    path: 'libs/documentation/src/lib/components/pagination/demos/pagination-link-to-sb',
+  },
   basic: {
     title: 'Pagination',
     type: PaginationBasic,

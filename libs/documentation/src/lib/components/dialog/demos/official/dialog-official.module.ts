@@ -9,6 +9,5 @@ import { DialogOfficial, OfficialComponent } from './dialog-official.component';
   exports: [DialogOfficial],
   bootstrap: [DialogOfficial],
   declarations: [DialogOfficial, OfficialComponent],
-  entryComponents: [OfficialComponent],
 })
 export class DialogOfficialModule {}

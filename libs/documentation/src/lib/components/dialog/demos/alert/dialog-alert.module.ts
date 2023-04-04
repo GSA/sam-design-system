@@ -11,6 +11,5 @@ import { FormlyModule } from '@ngx-formly/core';
   exports: [DialogAlert],
   bootstrap: [DialogAlert],
   declarations: [DialogAlert, AlertComponent],
-  entryComponents: [AlertComponent],
 })
 export class DialogAlertModule {}

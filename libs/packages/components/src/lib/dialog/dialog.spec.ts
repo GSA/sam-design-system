@@ -1511,13 +1511,5 @@ const TEST_DIRECTIVES = [
   imports: [SdsDialogModule, NoopAnimationsModule],
   exports: TEST_DIRECTIVES,
   declarations: TEST_DIRECTIVES,
-  entryComponents: [
-    ComponentWithChildViewContainer,
-    ComponentWithTemplateRef,
-    PizzaMsg,
-    ContentElementDialog,
-    DialogWithInjectedData,
-    DialogWithoutFocusableElements,
-  ],
 })
 class DialogTestModule {}

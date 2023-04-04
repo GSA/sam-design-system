@@ -1,0 +1,20 @@
+<div style="width: 90%;">
+  <sds-page class="sds-page condensed margin-bottom-0">
+    <sds-search-result-list [model]="items" [customResultsTemplate]="temp"> </sds-search-result-list>
+  </sds-page>
+</div>
+
+<ng-template #temp let-item>
+  <div class="sds-card sds-card--bordered">
+    <div class="sds-card__body">
+      <p>
+        {{ item.title }}
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Sed augue lacus viverra vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed augue lacus viverra vitae.
+      </p>
+    </div>
+  </div>
+</ng-template>

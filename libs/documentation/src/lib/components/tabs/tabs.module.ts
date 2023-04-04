@@ -14,15 +14,25 @@ import { TabsDisabledComponent } from './demos/disabled/tabs-disabled.component'
 import { TabsDisabledModule } from './demos/disabled/tabs-disabled.module';
 import { DynamicTabsComponet } from './demos/dynamic-tabs/dynamic-tabs.component';
 import { DynamicTabsModule } from './demos/dynamic-tabs/dynamic-tabs.module';
-import { TabsInterceptComponent } from './demos/intercept/tabs-intercept.component';
-import { TabsInterceptModule } from './demos/intercept/tabs-intercept.module';
+import { TabsInterceptComponent } from './demos/tabs-intercept/tabs-intercept.component';
+import { TabsInterceptModule } from './demos/tabs-intercept/tabs-intercept.module';
 import { TabsStylingComponent } from './demos/styling/tabs-styling.component';
 import { TabsStylingModule } from './demos/styling/tabs-styling.module';
 import { TabsTemplateHeaderComponent } from './demos/template-header/tabs-template-header.component';
 import { TabsTemplateHeaderModule } from './demos/template-header/tabs-template-header.module';
+import { TabsLinkToSbComponent } from './demos/tabs-link-to-sb/tabs-link-to-sb.component';
+import { TabsLinkToSbModule } from './demos/tabs-link-to-sb/tabs-link-to-sb.module';
 
 declare var require: any;
 const DEMOS = {
+  linkToSb: {
+    title: 'New Demos',
+    type: TabsLinkToSbComponent,
+    code: require('!!raw-loader!./demos/tabs-link-to-sb/tabs-link-to-sb.component'),
+    markup: require('!!raw-loader!./demos/tabs-link-to-sb/tabs-link-to-sb.component.html'),
+    module: require('!!raw-loader!./demos/tabs-link-to-sb/tabs-link-to-sb.module.ts'),
+    path: 'libs/documentation/src/lib/components/tabs/demos/tabs-link-to-sb',
+  },
   basic: {
     title: 'Tabs',
     type: TabsBasicComponent,
@@ -74,10 +84,10 @@ const DEMOS = {
   interceptTabChange: {
     title: 'Intercept Tab Change',
     type: TabsInterceptComponent,
-    code: require('!!raw-loader!./demos/intercept/tabs-intercept.component'),
-    markup: require('!!raw-loader!./demos/intercept/tabs-intercept.component.html'),
-    module: require('!!raw-loader!./demos/intercept/tabs-intercept.module.ts'),
-    path: 'libs/documentation/src/lib/components/tabs/demos/intercept',
+    code: require('!!raw-loader!./demos/tabs-intercept/tabs-intercept.component'),
+    markup: require('!!raw-loader!./demos/tabs-intercept/tabs-intercept.component.html'),
+    module: require('!!raw-loader!./demos/tabs-intercept/tabs-intercept.module.ts'),
+    path: 'libs/documentation/src/lib/components/tabs/demos/tabs-intercept',
   },
 };
 
@@ -115,6 +125,7 @@ export const ROUTES = [
     DynamicTabsModule,
     TabsStylingModule,
     TabsInterceptModule,
+    TabsLinkToSbModule,
   ],
 })
 export class TabsModule {
