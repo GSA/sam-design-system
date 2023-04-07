@@ -5,7 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './selection-panel-link-to-sb.component.html',
 })
 export class SelectionPanelLinkToSbComponent {
-
-  constructor() { }
-
+  constructor() {}
 }

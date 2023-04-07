@@ -92,7 +92,7 @@ export const ROUTES = [
     DefaultSelectionPanelModule,
     SelectionModeSelectionPanelModule,
     SelectionPanelCollapsibleModule,
-    SelectionPanelLinkToSbModule
+    SelectionPanelLinkToSbModule,
   ],
 })
 export class SelectionPanelModule {

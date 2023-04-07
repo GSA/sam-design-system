@@ -70,7 +70,7 @@ Configurable.args = {
       route: '/',
       id: 'linkc2p1',
       mode: NavigationMode.INTERNAL,
-      selected: true
+      selected: true,
     },
     {
       text: 'Federal Assistance',
@@ -78,9 +78,9 @@ Configurable.args = {
       queryParams: { item: 'Federal Assistance' },
       id: 'linkc3p1',
       mode: NavigationMode.INTERNAL,
-    }
-  ]
-}
+    },
+  ],
+};
 Configurable.parameters = {
   actions: { disabled: true },
   preview: { disabled: true },

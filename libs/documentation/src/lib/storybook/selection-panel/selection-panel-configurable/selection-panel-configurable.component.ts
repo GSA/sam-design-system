@@ -6,11 +6,11 @@ import { NavigationLink, SelectionPanelModel } from '@gsa-sam/components';
   templateUrl: './selection-panel-configurable.component.html',
 })
 export class SelectionPanelConfigurableComponent {
-  _config: SelectionPanelModel = {navigationLinks: []};
+  _config: SelectionPanelModel = { navigationLinks: [] };
 
   @Input()
-  set config(options: Array<NavigationLink>){
-    this._config = {navigationLinks: options}
+  set config(options: Array<NavigationLink>) {
+    this._config = { navigationLinks: options };
   }
 
   constructor() {}
