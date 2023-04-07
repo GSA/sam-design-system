@@ -322,7 +322,7 @@ export class AppModule {}
 export class AppComponent {}
 ">
     
-    <input type="hidden" name="project[files][src/app/selection-panel-selected.component.html]" value="&lt;div style=&#34;width: 90%;&#34;&gt;
+    <input type="hidden" name="project[files][src/app/selection-panel-selected.component.html]" value="&lt;div class=&#34;width-mobile&#34;&gt;
   &lt;sds-selection-panel [model]=&#34;selectionPanelModel&#34; [navigateOnClick]=&#34;true&#34;&gt; &lt;/sds-selection-panel&gt;
 &lt;/div&gt;
 ">
@@ -347,7 +347,7 @@ export class SelectionPanelSelectedComponent {
 export let selectionPanelConfig: SideNavigationModel = {
   navigationLinks: [
     {
-      text: &#39;Link 2&#39;,
+      text: &#39;Link 1&#39;,
       route: &#39;/&#39;,
       id: &#39;link1&#39;,
       mode: NavigationMode.INTERNAL,
@@ -359,7 +359,7 @@ export let selectionPanelConfig: SideNavigationModel = {
       mode: NavigationMode.INTERNAL,
     },
     {
-      text: &#39;Event Link&#39;,
+      text: &#39;Link 3&#39;,
       route: &#39;/&#39;,
       id: &#39;link3&#39;,
       mode: NavigationMode.INTERNAL,
