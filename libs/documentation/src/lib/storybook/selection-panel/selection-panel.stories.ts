@@ -166,3 +166,5 @@ Selected.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('selection-panel', 'selected'),
 };
+
+export const __namedExportsOrder = ['Introduction', 'Configurable', 'Children', 'Mode', 'Selected'];
