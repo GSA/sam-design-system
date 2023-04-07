@@ -12,6 +12,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { SelectionPanelSelectedModule } from './selection-panel-selected/selection-panel-selected.module';
 import { SelectionPanelModeModule } from './selection-panel-mode/selection-panel-mode.module';
 import { SelectionPanelChildrenModule } from './selection-panel-children/selection-panel-children.module';
+import { NavigationMode } from '@gsa-sam/components';
 
 export default {
   title: 'Components/Selection Panel',
@@ -48,7 +49,7 @@ Introduction.parameters = {
 };
 
 export const Configurable: Story = (args) => ({
-  template: `<sds-selection-panel-configurable></sds-selection-panel-configurable>`,
+  template: `<sds-selection-panel-configurable [config]=model></sds-selection-panel-configurable>`,
   props: {
     ...args,
   },
@@ -56,6 +57,30 @@ export const Configurable: Story = (args) => ({
     imports: [RouterTestingModule],
   },
 });
+Configurable.args = {
+  model: [
+    {
+      text: 'Contract Opportunities',
+      route: '/',
+      id: 'linkc1p1',
+      mode: NavigationMode.INTERNAL,
+    },
+    {
+      text: 'Contract Data',
+      route: '/',
+      id: 'linkc2p1',
+      mode: NavigationMode.INTERNAL,
+      selected: true
+    },
+    {
+      text: 'Federal Assistance',
+      route: '/',
+      queryParams: { item: 'Federal Assistance' },
+      id: 'linkc3p1',
+      mode: NavigationMode.INTERNAL,
+    }
+  ]
+}
 Configurable.parameters = {
   actions: { disabled: true },
   preview: { disabled: true },
