@@ -3,7 +3,7 @@ import { NavigationMode, SideNavigationModel } from '@gsa-sam/components';
 export let selectionPanelConfig: SideNavigationModel = {
   navigationLinks: [
     {
-      text: 'Link 2',
+      text: 'Link 1',
       route: '/',
       id: 'link1',
       mode: NavigationMode.INTERNAL,
@@ -15,7 +15,7 @@ export let selectionPanelConfig: SideNavigationModel = {
       mode: NavigationMode.INTERNAL,
     },
     {
-      text: 'Event Link',
+      text: 'Link 3',
       route: '/',
       id: 'link3',
       mode: NavigationMode.INTERNAL,
