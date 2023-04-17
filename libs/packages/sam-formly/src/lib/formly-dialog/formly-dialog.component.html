@@ -1,7 +1,7 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <div *ngIf="data.title" sds-dialog-title>{{ data.title }}</div>
   <div *ngIf="data.subtitle" sds-dialog-subtitle>{{ data.subtitle }}</div>
-  <div sds-dialog-content>
+  <div sds-dialog-content class="padding-bottom-1">
     <formly-form [form]="form" [fields]="fields" [options]="options" [model]="model"></formly-form>
   </div>
   <div sds-dialog-actions>

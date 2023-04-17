@@ -8,10 +8,20 @@ import { ComponentWrapperComponent } from '../../shared/component-wrapper/compon
 import { ToastsBasicModule } from './demos/basic/toasts-basic.module';
 import { ToastsBasic } from './demos/basic/toasts-basic.component';
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
+import { ToastsLinkToSbComponent } from './demos/toasts-link-to-sb/toasts-link-to-sb.component';
+import { ToastsLinkToSbModule } from './demos/toasts-link-to-sb/toasts-link-to-sb.module';
 import { Routes } from '@angular/router';
 
 declare var require: any;
 const DEMOS = {
+  linkToSb: {
+    title: 'New Demos',
+    type: ToastsLinkToSbComponent,
+    code: require('!!raw-loader!./demos/toasts-link-to-sb/toasts-link-to-sb.component'),
+    module: require('!!raw-loader!./demos/toasts-link-to-sb/toasts-link-to-sb.module'),
+    markup: require('!!raw-loader!./demos/toasts-link-to-sb/toasts-link-to-sb.component.html'),
+    path: 'libs/documentation/src/lib/components/toasts/demos/toasts-link-to-sb',
+  },
   basic: {
     title: 'Toasts',
     type: ToastsBasic,
@@ -46,7 +56,7 @@ export const ROUTES: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, DocumentationComponentsSharedModule, ToastsBasicModule],
+  imports: [CommonModule, DocumentationComponentsSharedModule, ToastsBasicModule, ToastsLinkToSbModule],
 })
 export class ToastsModule {
   constructor(demoList: DocumentationDemoList) {
