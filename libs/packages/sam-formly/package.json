@@ -10,10 +10,10 @@
     "tslib": "^2.0.0"
   },
   "peerDependencies": {
-    "@angular/common": "^14.2.12",
-    "@angular/core": "^14.2.12",
+    "@angular/common":">=14.2.12 <15.0.0",
+    "@angular/core": ">=14.2.12 <15.0.0",
     "ngx-bootstrap-icons": "^1.7.2",
-    "@ngx-formly/core": "^5.10.22",
+   "@ngx-formly/core": ">=5.10.23",
     "@gsa-sam/components": ">=14.0.0-beta.0",
     "@gsa-sam/sam-material-extensions": ">=14.0.0-beta.0",
     "@gsa-sam/ngx-uswds": ">=14.0.0-beta.0"
