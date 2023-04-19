@@ -5,6 +5,6 @@
 # the repo. Unless a later match takes precedence,
 # @global-owner1 and @global-owner2 will be requested for
 # review when someone opens a pull request.
-*       @davereed @christyhermansen @yerramshilpa @bibek-regmi @cwolf10 
-/libs/documentation @thomastighe @carlosvalle @davereed @christyhermansen @yerramshilpa @bibek-regmi @cwolf10
-/libs/packages/layout @thomastighe @carlosvalle @davereed @christyhermansen @yerramshilpa @bibek-regmi @cwolf10
+*       @davereed @christyhermansen @yerramshilpa @shayan-roshan @cwolf10 
+/libs/documentation @thomastighe @carlosvalle @davereed @christyhermansen @yerramshilpa @shayan-roshan @cwolf10
+/libs/packages/layout @thomastighe @carlosvalle @davereed @christyhermansen @yerramshilpa @shayan-roshan @cwolf10
