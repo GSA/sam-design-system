@@ -10,7 +10,7 @@
     "tslib": "^2.0.0"
   },
   "peerDependencies": {
-    "@angular/common":">=14.2.12 <15.0.0",
+    "@angular/common": ">=14.2.12 <15.0.0",
     "@angular/core": ">=14.2.12 <15.0.0",
     "ngx-bootstrap-icons": "^1.7.2",
    "@ngx-formly/core": ">=5.10.23",
