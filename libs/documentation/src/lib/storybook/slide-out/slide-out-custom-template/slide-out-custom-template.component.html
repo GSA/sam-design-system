@@ -1,0 +1,35 @@
+<button class="usa-button" (click)="buttonClicked()">Show/Hide Slide Out With Custom Template And Header</button>
+
+<ng-template #templateRefCustom>
+  <div class="container" role="dialog" aria-labelledby="slide-out-title" cdkTrapFocus>
+    <div class="header-custom-header">
+      <h2 id="slide-out-title">Custom Header</h2>
+      <button
+        sds-dialog-close
+        (click)="onCloseSlideOut()"
+        class="close-btn padding-bottom-1"
+        aria-label="Close Modal"
+      ></button>
+    </div>
+    <div class="content">
+      <div>
+        <p>B</p>
+        <hr />
+        <ul class="list">
+          <li class="result">
+            <a>Baby</a>
+          </li>
+          <li class="result">
+            <a>Backed</a>
+          </li>
+          <li class="result">
+            <a>Badger</a>
+          </li>
+          <li class="result">
+            <a>Bagpipes</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</ng-template>
