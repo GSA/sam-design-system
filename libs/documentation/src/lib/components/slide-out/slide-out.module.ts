@@ -12,9 +12,19 @@ import { SlideOutTemplateRefModule } from './demos/template-ref/slide-out-templa
 import { SlideOutCustomHeaderModule } from './demos/custom-header/custom-header.module';
 import { SlideOutCustomHeaderComponent } from './demos/custom-header/custom-header.component';
 import { Routes } from '@angular/router';
+import { SlideOutLinkToSbComponent } from './demos/slide-out-link-to-sb/slide-out-link-to-sb.component';
+import { SlideOutLinkToSbModule } from './demos/slide-out-link-to-sb/slide-out-link-to-sb.module';
 
 declare var require: any;
 const DEMOS = {
+  linkToSb: {
+    title: 'New Demos',
+    type: SlideOutLinkToSbComponent,
+    code: require('!!raw-loader!./demos/slide-out-link-to-sb/slide-out-link-to-sb.component'),
+    module: require('!!raw-loader!./demos/slide-out-link-to-sb/slide-out-link-to-sb.module'),
+    markup: require('!!raw-loader!./demos/slide-out-link-to-sb/slide-out-link-to-sb.component.html'),
+    path: 'libs/documentation/src/lib/components/slide-out/demos/slide-out-link-to-sb',
+  },
   basic: {
     title: 'Slide Out',
     type: SlideOutBasicComponent,
@@ -71,6 +81,7 @@ export const ROUTES: Routes = [
     SlideOutBasicModule,
     SlideOutTemplateRefModule,
     SlideOutCustomHeaderModule,
+    SlideOutLinkToSbModule,
   ],
 })
 export class SlideOutModule {
