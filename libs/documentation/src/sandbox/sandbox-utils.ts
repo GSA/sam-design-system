@@ -60,7 +60,7 @@ export function generateConfig(
  */
 export function createCodePreviewTabData(
   relativePath: string,
-  language: 'ts' | 'html',
+  language: 'ts' | 'html' | 'scss',
   copy: boolean,
   tabTitle?: string
 ): CodePreviewTabData {
@@ -81,6 +81,9 @@ export function createCodePreviewTabData(
       break;
     case 'html':
       fileData = require(`!!raw-loader!libs/documentation/src/lib/${folderPath}/${fileNameWithoutExtension}.html`);
+      break;
+    case 'scss':
+      fileData = require(`!!raw-loader!libs/documentation/src/lib/${folderPath}/${fileNameWithoutExtension}.scss`);
       break;
   }
 
