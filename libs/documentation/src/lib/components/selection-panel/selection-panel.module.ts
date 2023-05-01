@@ -14,9 +14,19 @@ import { DefaultSelectionPanelComponent } from './demos/default-selection/defaul
 import { DefaultSelectionPanelModule } from './demos/default-selection/default-selection-panel.module';
 import { SelectionModeComponent } from './demos/selection-mode/selection-mode.component';
 import { SelectionModeSelectionPanelModule } from './demos/selection-mode/selection-mode.module';
+import { SelectionPanelLinkToSbComponent } from './demos/selection-panel-link-to-sb/selection-panel-link-to-sb.component';
+import { SelectionPanelLinkToSbModule } from './demos/selection-panel-link-to-sb/selection-panel-link-to-sb.module';
 
 declare var require: any;
 const DEMOS = {
+  linkToSb: {
+    title: 'New Demos',
+    type: SelectionPanelLinkToSbComponent,
+    code: require('!!raw-loader!./demos/selection-panel-link-to-sb/selection-panel-link-to-sb.component'),
+    markup: require('!!raw-loader!./demos/selection-panel-link-to-sb/selection-panel-link-to-sb.component.html'),
+    module: require('!!raw-loader!./demos/selection-panel-link-to-sb/selection-panel-link-to-sb.module.ts'),
+    path: 'libs/documentation/src/lib/components/selection-panel/demos/selection-panel-link-to-sb',
+  },
   basic: {
     title: 'Basic Selection Panel',
     type: BasicSelectionPanelComponent,
@@ -82,6 +92,7 @@ export const ROUTES = [
     DefaultSelectionPanelModule,
     SelectionModeSelectionPanelModule,
     SelectionPanelCollapsibleModule,
+    SelectionPanelLinkToSbModule,
   ],
 })
 export class SelectionPanelModule {
