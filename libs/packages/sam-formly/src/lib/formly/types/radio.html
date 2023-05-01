@@ -70,7 +70,7 @@
                 </label>
               </div>
 
-              <div *ngIf="option.value[j].tooltipText">
+              <div class="margin-left-1" *ngIf="option.value[j].tooltipText">
                 <p
                   #tipContent
                   [ngClass]="option.value[j].tooltipClass"
@@ -78,10 +78,9 @@
                   [innerHTML]="option.value[j].tooltipText"
                 ></p>
                 <usa-icon
-                  class="padding-top-105 margin-left-1"
                   [position]="option.value[j].tooltipPosition ? option.value[j].tooltipPosition :'right'"
                   [sdsTooltip]="tipContent"
-                  [size]="'sm'"
+                  [size]="'lg'"
                   [icon]="'info-circle'"
                 ></usa-icon>
               </div>
@@ -128,7 +127,7 @@
       </label>
     </div>
 
-    <div *ngIf="to.options[i].tooltipText">
+    <div class="margin-left-1" *ngIf="to.options[i].tooltipText">
       <p
         #tipContent
         [ngClass]="to.options[i].tooltipClass"
@@ -136,10 +135,9 @@
         [innerHTML]="to.options[i].tooltipText"
       ></p>
       <usa-icon
-        class="padding-top-105 margin-left-1"
         [position]="to.options[i].tooltipPosition ? to.options[i].tooltipPosition :'right'"
         [sdsTooltip]="tipContent"
-        [size]="'sm'"
+        [size]="'lg'"
         [icon]="'info-circle'"
       ></usa-icon>
     </div>
