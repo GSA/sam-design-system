@@ -7,7 +7,7 @@ import { FormlyModule } from '@ngx-formly/core';
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { FormlyFilterConfigurableModule } from './formly-filter-configurable/formly-filter-configurable.module';
-import { FormlyFilterDescriptionModule } from './formly-filter-description/formly-filter-description.module';
+import { FormlyFilterBasicModule } from './formly-filter-basic/formly-filter-basic.module';
 import { FormlyFilterDisabledModule } from './formly-filter-disabled/formly-filter-disabled.module';
 import { FormlyFilterIntroductionModule } from './formly-filter-introduction/formly-filter-introduction.module';
 import { FormlyFilterLabelModule } from './formly-filter-label/formly-filter-label.module';
@@ -40,7 +40,7 @@ export default {
         FormlyFilterConfigurableModule,
         NoopAnimationsModule,
         FormlyFilterLabelModule,
-        FormlyFilterDescriptionModule,
+        FormlyFilterBasicModule,
         FormlyFilterDisabledModule,
         FormlyFilterTooltipTextModule,
         FormlyFilterRequiredModule,
@@ -141,22 +141,22 @@ TooltipText.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('formly-filter', 'tooltip-text'),
 };
-export const Description: Story = (args) => ({
-  template: '<sds-formly-filter-description></sds-formly-filter-description>',
+export const Basic: Story = (args) => ({
+  template: '<sds-formly-filter-basic></sds-formly-filter-basic>',
   props: args,
 });
-Description.parameters = {
+Basic.parameters = {
   controls: {
     disabled: true,
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
   preview: generateConfig(
-    'storybook/formly/formly-filter/formly-filter-description',
-    'FormlyFilterDescriptionModule',
-    'sds-formly-filter-description'
+    'storybook/formly/formly-filter/formly-filter-basic',
+    'FormlyFilterBasicModule',
+    'sds-formly-filter-basic'
   ),
-  stackblitzLink: generateStackblitzLink('formly-filter', 'description'),
+  stackblitzLink: generateStackblitzLink('formly-filter', 'basic'),
 };
 
 export const Disabled: Story = (args) => ({
@@ -216,7 +216,7 @@ Placeholder.parameters = {
 export const __namedExportsOrder = [
   'Introduction',
   'Configurable',
-  'Description',
+  'Basic',
   'Disabled',
   'Label',
   'Placeholder',
