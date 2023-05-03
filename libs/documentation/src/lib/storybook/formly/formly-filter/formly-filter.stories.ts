@@ -8,9 +8,9 @@ import { moduleMetadata, Meta, Story } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { FormlyFilterConfigurableModule } from './formly-filter-configurable/formly-filter-configurable.module';
 import { FormlyFilterBasicModule } from './formly-filter-basic/formly-filter-basic.module';
-import { FormlyFilterDisabledModule } from './formly-filter-disabled/formly-filter-disabled.module';
+import { FormlyFilterSingleModule } from './formly-filter-single/formly-filter-single.module';
 import { FormlyFilterIntroductionModule } from './formly-filter-introduction/formly-filter-introduction.module';
-import { FormlyFilterLabelModule } from './formly-filter-label/formly-filter-label.module';
+import { FormlyFilterAccordionGroupModule } from './formly-filter-accordiongroup/formly-filter-accordiongroup.module';
 import { FormlyFilterPlaceholderModule } from './formly-filter-placeholder/formly-filter-placeholder.module';
 import { FormlyFilterRequiredModule } from './formly-filter-required/formly-filter-required.module';
 import { FormlyFilterTooltipTextModule } from './formly-filter-tooltip-text/formly-filter-tooltip-text.module';
@@ -39,9 +39,9 @@ export default {
         FormlyFilterIntroductionModule,
         FormlyFilterConfigurableModule,
         NoopAnimationsModule,
-        FormlyFilterLabelModule,
+        FormlyFilterAccordionGroupModule,
         FormlyFilterBasicModule,
-        FormlyFilterDisabledModule,
+        FormlyFilterSingleModule,
         FormlyFilterTooltipTextModule,
         FormlyFilterRequiredModule,
         FormlyFilterPlaceholderModule,
@@ -107,22 +107,22 @@ Configurable.parameters = {
   preview: { disabled: true },
 };
 
-export const Label: Story = (args) => ({
-  template: '<sds-formly-filter-label></sds-formly-filter-label>',
+export const AccordionGroup: Story = (args) => ({
+  template: '<sds-formly-filter-accordiongroup></sds-formly-filter-accordiongroup>',
   props: args,
 });
-Label.parameters = {
+AccordionGroup.parameters = {
   controls: {
     disabled: true,
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
   preview: generateConfig(
-    'storybook/formly/formly-filter/formly-filter-label',
-    'FormlyFilterLabelModule',
-    'sds-formly-filter-label'
+    'storybook/formly/formly-filter/formly-filter-accordiongroup',
+    'FormlyFilterAccordionGroupModule',
+    'sds-formly-filter-accordiongroup'
   ),
-  stackblitzLink: generateStackblitzLink('formly-filter', 'filter-label'),
+  stackblitzLink: generateStackblitzLink('formly-filter', 'filter-accordiongroup'),
 };
 export const TooltipText: Story = (args) => ({
   template: '<sds-formly-filter-tooltip-text></sds-formly-filter-tooltip-text>',
@@ -159,22 +159,22 @@ Basic.parameters = {
   stackblitzLink: generateStackblitzLink('formly-filter', 'basic'),
 };
 
-export const Disabled: Story = (args) => ({
-  template: '<sds-formly-filter-disabled></sds-formly-filter-disabled>',
+export const Single: Story = (args) => ({
+  template: '<sds-formly-filter-single></sds-formly-filter-single>',
   props: args,
 });
-Disabled.parameters = {
+Single.parameters = {
   controls: {
     disabled: true,
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
   preview: generateConfig(
-    'storybook/formly/formly-filter/formly-filter-disabled',
-    'FormlyFilterDisabledModule',
-    'sds-formly-filter-disabled'
+    'storybook/formly/formly-filter/formly-filter-single',
+    'FormlyFilterSingleModule',
+    'sds-formly-filter-single'
   ),
-  stackblitzLink: generateStackblitzLink('formly-filter', 'disabled'),
+  stackblitzLink: generateStackblitzLink('formly-filter', 'single'),
 };
 
 export const Required: Story = (args) => ({
@@ -217,8 +217,8 @@ export const __namedExportsOrder = [
   'Introduction',
   'Configurable',
   'Basic',
-  'Disabled',
-  'Label',
+  'Single',
+  'AccordionGroup',
   'Placeholder',
   'Required',
   'TooltipText',
