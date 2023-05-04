@@ -215,7 +215,7 @@ HideExpression.parameters = {
 
 export const __namedExportsOrder = [
   'Introduction',
-  //'Configurable',
+  //'Configurable', //TODO: Need to update the configurable documentation once regular demo's are done
   'Basic',
   'Single',
   'AccordionGroup',
