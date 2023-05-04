@@ -11,9 +11,18 @@ import { FormlyTabsBasicComponent } from './demos/basic/formly-tabs-basic.compon
 import { FormlyTabsInterceptComponent } from './demos/intercept/formly-tabs-intercept.component';
 import { FormlyTabsInterceptModule } from './demos/intercept/formly-tabs-intercept.module';
 import { Routes } from '@angular/router';
+import { FormlyTabsLinkToSbComponent } from './demos/formly-tabs-link-to-sb/formly-tabs-link-to-sb.component';
+import { FormlyTabsLinkToSbModule } from './demos/formly-tabs-link-to-sb/formly-tabs-link-to-sb.module';
 
 declare var require: any;
 const DEMOS = {
+linkToSb: {
+    title: 'New Demos',
+    type: FormlyTabsLinkToSbComponent,
+    code: require('!!raw-loader!./demos/formly-tabs-link-to-sb/formly-tabs-link-to-sb.component'),
+    markup: require('!!raw-loader!./demos/formly-tabs-link-to-sb/formly-tabs-link-to-sb.component.html'),
+    path: 'libs/documentation/src/lib/components/formly-tabs/demos/formly-tabs-link-to-sb',
+  },
   basic: {
     title: 'Basic Formly Tabs',
     type: FormlyTabsBasicComponent,
@@ -55,7 +64,7 @@ export const ROUTES: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, DocumentationComponentsSharedModule, FormlyTabsBasicModule, FormlyTabsInterceptModule],
+  imports: [CommonModule, DocumentationComponentsSharedModule, FormlyTabsBasicModule, FormlyTabsInterceptModule, FormlyTabsLinkToSbModule],
 })
 export class FormlyTabsModule {
   constructor(demoList: DocumentationDemoList) {
