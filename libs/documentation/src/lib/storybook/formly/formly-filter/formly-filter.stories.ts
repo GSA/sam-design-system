@@ -13,7 +13,7 @@ import { FormlyFilterIntroductionModule } from './formly-filter-introduction/for
 import { FormlyFilterAccordionGroupModule } from './formly-filter-accordiongroup/formly-filter-accordiongroup.module';
 import { FormlyFilterHideExpressionModule } from './formly-filter-hideexpression/formly-filter-hideexpression.module';
 import { FormlyFilterNestedModule } from './formly-filter-nested/formly-filter-nested.module';
-import { FormlyFilterTooltipTextModule } from './formly-filter-tooltip-text/formly-filter-tooltip-text.module';
+import { FormlyFilterHorizontalModule } from './formly-filter-horizontal/formly-filter-horizontal.module';
 const disable = {
   table: {
     disable: true,
@@ -42,7 +42,7 @@ export default {
         FormlyFilterAccordionGroupModule,
         FormlyFilterBasicModule,
         FormlyFilterSingleModule,
-        FormlyFilterTooltipTextModule,
+        FormlyFilterHorizontalModule,
         FormlyFilterNestedModule,
         FormlyFilterHideExpressionModule,
         FormlyFilterIntroductionModule,
@@ -124,22 +124,22 @@ AccordionGroup.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('formly-filter', 'filter-accordiongroup'),
 };
-export const TooltipText: Story = (args) => ({
-  template: '<sds-formly-filter-tooltip-text></sds-formly-filter-tooltip-text>',
+export const Horizontal: Story = (args) => ({
+  template: '<sds-formly-filter-horizontal></sds-formly-filter-horizontal>',
   props: args,
 });
-TooltipText.parameters = {
+Horizontal.parameters = {
   controls: {
     disabled: true,
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
   preview: generateConfig(
-    'storybook/formly/formly-filter/formly-filter-tooltip-text',
-    'FormlyFilterTooltipTextModule',
-    'sds-formly-filter-tooltip-text'
+    'storybook/formly/formly-filter/formly-filter-horizontal',
+    'FormlyFilterHorizontalModule',
+    'sds-formly-filter-horizontal'
   ),
-  stackblitzLink: generateStackblitzLink('formly-filter', 'tooltip-text'),
+  stackblitzLink: generateStackblitzLink('formly-filter', 'horizontal'),
 };
 export const Basic: Story = (args) => ({
   template: '<sds-formly-filter-basic></sds-formly-filter-basic>',
@@ -221,5 +221,5 @@ export const __namedExportsOrder = [
   'AccordionGroup',
   'HideExpression',
   'Nested',
-  //'TooltipText',
+  'Horizontal',
 ];
