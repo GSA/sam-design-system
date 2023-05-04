@@ -11,8 +11,8 @@ import { FormlyFilterBasicModule } from './formly-filter-basic/formly-filter-bas
 import { FormlyFilterSingleModule } from './formly-filter-single/formly-filter-single.module';
 import { FormlyFilterIntroductionModule } from './formly-filter-introduction/formly-filter-introduction.module';
 import { FormlyFilterAccordionGroupModule } from './formly-filter-accordiongroup/formly-filter-accordiongroup.module';
-import { FormlyFilterPlaceholderModule } from './formly-filter-placeholder/formly-filter-placeholder.module';
-import { FormlyFilterRequiredModule } from './formly-filter-required/formly-filter-required.module';
+import { FormlyFilterHideExpressionModule } from './formly-filter-hideexpression/formly-filter-hideexpression.module';
+import { FormlyFilterNestedModule } from './formly-filter-nested/formly-filter-nested.module';
 import { FormlyFilterTooltipTextModule } from './formly-filter-tooltip-text/formly-filter-tooltip-text.module';
 const disable = {
   table: {
@@ -43,8 +43,8 @@ export default {
         FormlyFilterBasicModule,
         FormlyFilterSingleModule,
         FormlyFilterTooltipTextModule,
-        FormlyFilterRequiredModule,
-        FormlyFilterPlaceholderModule,
+        FormlyFilterNestedModule,
+        FormlyFilterHideExpressionModule,
         FormlyFilterIntroductionModule,
       ],
     }),
@@ -177,49 +177,49 @@ Single.parameters = {
   stackblitzLink: generateStackblitzLink('formly-filter', 'single'),
 };
 
-export const Required: Story = (args) => ({
-  template: '<sds-formly-filter-required></sds-formly-filter-required>',
+export const Nested: Story = (args) => ({
+  template: '<sds-formly-filter-nested></sds-formly-filter-nested>',
   props: args,
 });
-Required.parameters = {
+Nested.parameters = {
   controls: {
     disabled: true,
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
   preview: generateConfig(
-    'storybook/formly/formly-filter/formly-filter-required',
-    'FormlyFilterRequiredModule',
-    'sds-formly-filter-required'
+    'storybook/formly/formly-filter/formly-filter-nested',
+    'FormlyFilterNestedModule',
+    'sds-formly-filter-nested'
   ),
-  stackblitzLink: generateStackblitzLink('formly-filter', 'required'),
+  stackblitzLink: generateStackblitzLink('formly-filter', 'nested'),
 };
 
-export const Placeholder: Story = (args) => ({
-  template: '<sds-formly-filter-placeholder></sds-formly-filter-placeholder>',
+export const HideExpression: Story = (args) => ({
+  template: '<sds-formly-filter-hideexpression></sds-formly-filter-hideexpression>',
   props: args,
 });
-Placeholder.parameters = {
+HideExpression.parameters = {
   controls: {
     disabled: true,
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
   preview: generateConfig(
-    'storybook/formly/formly-filter/formly-filter-placeholder',
-    'FormlyFilterPlaceholderModule',
-    'sds-formly-filter-placeholder'
+    'storybook/formly/formly-filter/formly-filter-hideexpression',
+    'FormlyFilterHideExpressionModule',
+    'sds-formly-filter-hideexpression'
   ),
-  stackblitzLink: generateStackblitzLink('formly-filter', 'placeholder'),
+  stackblitzLink: generateStackblitzLink('formly-filter', 'hideexpression'),
 };
 
 export const __namedExportsOrder = [
   'Introduction',
-  'Configurable',
+  //'Configurable',
   'Basic',
   'Single',
   'AccordionGroup',
-  'Placeholder',
-  'Required',
-  'TooltipText',
+  'HideExpression',
+  'Nested',
+  //'TooltipText',
 ];
