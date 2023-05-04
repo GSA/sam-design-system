@@ -21,9 +21,18 @@ import { HorizontalFilterModule } from './demos/horizontal-filter/horizontal-fil
 import { HorizontalLayoutComponent } from './demos/horizontal-layout/horizontal-layout.component';
 import { HorizontalLayoutModule } from './demos/horizontal-layout/horizontal-layout.module';
 import { Routes } from '@angular/router';
+import { FormlyFilterLinkToSbComponent } from './demos/formly-filter-link-to-sb/formly-filter-link-to-sb.component';
+import { FormlyFilterLinkToSbModule } from './demos/formly-filter-link-to-sb/formly-filter-link-to-sb.module';
 
 declare var require: any;
 const DEMOS = {
+  linkToSb: {
+    title: 'New Demos',
+    type: FormlyFilterLinkToSbComponent,
+    code: require('!!raw-loader!./demos/formly-filter-link-to-sb/formly-filter-link-to-sb.component'),
+    markup: require('!!raw-loader!./demos/formly-filter-link-to-sb/formly-filter-link-to-sb.component.html'),
+    path: 'libs/documentation/src/lib/components/formly-filter/demos/formly-filter-link-to-sb',
+  },
   groupPanel: {
     title: 'Filters with Panel Group',
     type: FiltersGroupPanel,
@@ -117,6 +126,7 @@ export const ROUTES: Routes = [
     FiltersDefaultValueModule,
     HorizontalFilterModule,
     HorizontalLayoutModule,
+    FormlyFilterLinkToSbModule,
   ],
 })
 export class FiltersModule {
