@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import tableDataFull from './data';
 import { HttpClient } from '@angular/common/http';
+import { DataService } from './data.service';
 
 @Component({
   templateUrl: './full.component.html',
@@ -8,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
   selector: `sds-table-full-demo`,
 })
 export class TableFullComponent {
-  constructor(private http: HttpClient) {
+  constructor(private dataService: DataService) {
     this.sliceData(0, 10);
   }
   rowEdit: any;
@@ -22,7 +23,7 @@ export class TableFullComponent {
   }
 
   getAsyncData() {
-    this.http.get<any>('https://my.api.mockaroo.com/table_data?key=824f5960').subscribe((response) => {
+    this.dataService.getData().subscribe((response) => {
       this.data = response;
     });
   }
