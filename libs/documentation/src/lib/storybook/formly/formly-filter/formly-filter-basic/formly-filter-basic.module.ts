@@ -6,7 +6,7 @@ import { FormlyModule } from '@ngx-formly/core';
 import { FormlyFilterBasicComponent } from './formly-filter-basic.component';
 
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, SdsFiltersModule ,FormsModule, FormlyModule.forRoot()],
+  imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, SdsFiltersModule, FormsModule, FormlyModule.forRoot()],
   declarations: [FormlyFilterBasicComponent],
   exports: [FormlyFilterBasicComponent],
   bootstrap: [FormlyFilterBasicComponent],

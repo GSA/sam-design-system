@@ -155,7 +155,7 @@ export class FormlyFilterHorizontalComponent {
       },
     },
   ];
- searchModel = {};
+  searchModel = {};
 
   handleSubmit($event) {
     console.log($event);

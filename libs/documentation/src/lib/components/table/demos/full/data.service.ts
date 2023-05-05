@@ -1,16 +1,14 @@
-
-import { Injectable } from '@angular/core'
-import { Observable, of } from 'rxjs'
+import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import asyncData from './async-data';
 
 @Injectable({
- providedIn: 'root'
+  providedIn: 'root',
 })
 export class DataService {
+  constructor() {}
 
- constructor () {}
-
- getData (): Observable<any> {
-   return of(asyncData)
- }
+  getData(): Observable<any> {
+    return of(asyncData);
+  }
 }

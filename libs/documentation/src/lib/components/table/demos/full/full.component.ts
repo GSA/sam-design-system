@@ -24,12 +24,15 @@ export class TableFullComponent {
   }
 
   getAsyncData() {
-    this.dataService.getData().pipe(
-        tap(val => console.log("Before " + val)),
+    this.dataService
+      .getData()
+      .pipe(
+        tap((val) => console.log('Before ' + val)),
         delay(1000)
-      ).subscribe((response) => {
-      this.data = response;
-    });
+      )
+      .subscribe((response) => {
+        this.data = response;
+      });
   }
 
   getTotalRequests() {

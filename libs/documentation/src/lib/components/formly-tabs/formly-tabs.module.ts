@@ -16,7 +16,7 @@ import { FormlyTabsLinkToSbModule } from './demos/formly-tabs-link-to-sb/formly-
 
 declare var require: any;
 const DEMOS = {
-linkToSb: {
+  linkToSb: {
     title: 'New Demos',
     type: FormlyTabsLinkToSbComponent,
     code: require('!!raw-loader!./demos/formly-tabs-link-to-sb/formly-tabs-link-to-sb.component'),
@@ -64,7 +64,13 @@ export const ROUTES: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, DocumentationComponentsSharedModule, FormlyTabsBasicModule, FormlyTabsInterceptModule, FormlyTabsLinkToSbModule],
+  imports: [
+    CommonModule,
+    DocumentationComponentsSharedModule,
+    FormlyTabsBasicModule,
+    FormlyTabsInterceptModule,
+    FormlyTabsLinkToSbModule,
+  ],
 })
 export class FormlyTabsModule {
   constructor(demoList: DocumentationDemoList) {
