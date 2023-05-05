@@ -6,7 +6,6 @@ import {} from '@gsa-sam/sam-material-extensions';
 import { FormlyModule } from '@ngx-formly/core';
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
-import { FormlyFilterConfigurableModule } from './formly-filter-configurable/formly-filter-configurable.module';
 import { FormlyFilterBasicModule } from './formly-filter-basic/formly-filter-basic.module';
 import { FormlyFilterSingleModule } from './formly-filter-single/formly-filter-single.module';
 import { FormlyFilterIntroductionModule } from './formly-filter-introduction/formly-filter-introduction.module';
@@ -14,11 +13,6 @@ import { FormlyFilterAccordionGroupModule } from './formly-filter-accordiongroup
 import { FormlyFilterHideExpressionModule } from './formly-filter-hideexpression/formly-filter-hideexpression.module';
 import { FormlyFilterNestedModule } from './formly-filter-nested/formly-filter-nested.module';
 import { FormlyFilterHorizontalModule } from './formly-filter-horizontal/formly-filter-horizontal.module';
-const disable = {
-  table: {
-    disable: true,
-  },
-};
 const templateOptions = {
   table: {
     category: 'template-options',
@@ -37,7 +31,6 @@ export default {
         FormsModule,
         FormlyModule.forRoot(),
         FormlyFilterIntroductionModule,
-        FormlyFilterConfigurableModule,
         NoopAnimationsModule,
         FormlyFilterAccordionGroupModule,
         FormlyFilterBasicModule,
@@ -59,53 +52,11 @@ export default {
   },
 } as Meta;
 
-const formlyConfigFunction = (
-  label: string,
-  placeholder: string,
-  description: string,
-  required: boolean,
-  disabled: boolean,
-  tooltipText: string
-) => {
-  return {
-    label: label ?? '',
-    placeholder: placeholder ?? '',
-    description: description ?? '',
-    required: required ?? false,
-    disabled: disabled ?? false,
-    tooltipText: tooltipText ?? '',
-  };
-};
-const Template: Story = (args) => {
-  const { label, placeholder, description, required, disabled, tooltipText } = args;
-  let config = formlyConfigFunction(label, placeholder, description, required, disabled, tooltipText);
-  return {
-    template: '<sds-formly-filter-configurable [config]="configObj"></sds-formly-filter-configurable>',
-    props: {
-      configObj: config,
-      ...args,
-    },
-  };
-};
-
 export const Introduction: Story = (args) => ({
   template: '<sds-formly-filter-introduction></sds-formly-filter-introduction>',
   props: args,
 });
 Introduction.parameters = { options: { showPanel: false } };
-
-export const Configurable = Template.bind({});
-Configurable.args = {
-  label: 'Label',
-  placeholder: 'Placeholder',
-  description: 'Description',
-  required: false,
-  disabled: false,
-  tooltipText: '',
-};
-Configurable.parameters = {
-  preview: { disabled: true },
-};
 
 export const AccordionGroup: Story = (args) => ({
   template: '<sds-formly-filter-accordiongroup></sds-formly-filter-accordiongroup>',
@@ -215,7 +166,6 @@ HideExpression.parameters = {
 
 export const __namedExportsOrder = [
   'Introduction',
-  //'Configurable', //TODO: Need to update the configurable documentation once regular demo's are done
   'Basic',
   'Single',
   'AccordionGroup',
