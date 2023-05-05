@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import tableDataFull from './data';
 import { HttpClient } from '@angular/common/http';
 import { DataService } from './data.service';
+import { delay, tap } from 'rxjs/operators';
 
 @Component({
   templateUrl: './full.component.html',
@@ -23,7 +24,10 @@ export class TableFullComponent {
   }
 
   getAsyncData() {
-    this.dataService.getData().subscribe((response) => {
+    this.dataService.getData().pipe(
+        tap(val => console.log("Before " + val)),
+        delay(1000)
+      ).subscribe((response) => {
       this.data = response;
     });
   }
