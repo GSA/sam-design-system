@@ -7,7 +7,6 @@ import {
   ViewEncapsulation,
   Renderer2,
   OnChanges,
-  AfterContentInit,
   OnInit,
   ChangeDetectorRef,
   OnDestroy,
@@ -40,7 +39,8 @@ declare class InitPxVideo {
 })
 export class SdsVideoPlayerComponent implements AfterViewInit, OnChanges, OnInit, OnDestroy {
   @Input() VPConfiguration: VPInterface;
-  @ViewChild('video') video: ElementRef;
+  @ViewChild('videoWrapper', { static: false }) videoWrapper: ElementRef;
+  @ViewChild('video', { static: false }) video: ElementRef;
   private config: InitPxVideoConfig;
   @Input() crossorigin = '';
 
@@ -56,7 +56,7 @@ export class SdsVideoPlayerComponent implements AfterViewInit, OnChanges, OnInit
   ngOnDestroy() {
     let element = this.document.getElementById('px-video-aria-announce');
     if (element) {
-      this.renderer2.removeChild(this.elementRef, element);
+      element.remove();
     }
   }
   ngOnInit() {
@@ -80,7 +80,7 @@ export class SdsVideoPlayerComponent implements AfterViewInit, OnChanges, OnInit
 
     const video = new InitPxVideo(this.config); // Required to ensure that browser controls are replaced with custom controls
 
-    this.video.nativeElement.setAttribute('style', 'width:' + this.VPConfiguration.width + ';');
+    this.videoWrapper.nativeElement.setAttribute('style', 'width:' + this.VPConfiguration.width + ';');
 
     const progressElement: HTMLProgressElement = this.elementRef.nativeElement.querySelector('progress');
 
@@ -110,7 +110,7 @@ export class SdsVideoPlayerComponent implements AfterViewInit, OnChanges, OnInit
   private _loadVideoSourceOnDemand() {
     const playButton: HTMLButtonElement = this.elementRef.nativeElement.querySelector('.px-video-play');
     const restartButton: HTMLButtonElement = this.elementRef.nativeElement.querySelector('.px-video-restart');
-    const video: HTMLVideoElement = this.video.nativeElement;
+    const video: HTMLVideoElement = this.videoWrapper.nativeElement;
 
     const loadVideo = ($event) => {
       if (this.loadVideoSource) {
