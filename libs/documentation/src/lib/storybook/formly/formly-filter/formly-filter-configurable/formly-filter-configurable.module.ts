@@ -6,7 +6,7 @@ import { SdsFiltersModule, SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
 
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule,SdsFiltersModule, FormlyModule.forRoot()],
+  imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, SdsFiltersModule, FormlyModule.forRoot()],
   declarations: [FormlyFilterConfigurableComponent],
   exports: [FormlyFilterConfigurableComponent],
   bootstrap: [FormlyFilterConfigurableComponent],

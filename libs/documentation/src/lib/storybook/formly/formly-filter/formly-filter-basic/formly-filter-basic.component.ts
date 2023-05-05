@@ -10,7 +10,7 @@ export class FormlyFilterBasicComponent {
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
- fields: FormlyFieldConfig[] = [
+  fields: FormlyFieldConfig[] = [
     {
       key: 'filters',
       templateOptions: {

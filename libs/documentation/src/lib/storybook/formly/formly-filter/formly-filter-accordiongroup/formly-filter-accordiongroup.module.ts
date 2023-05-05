@@ -6,7 +6,7 @@ import { FormlyModule } from '@ngx-formly/core';
 import { FormlyFilterAccordionGroupComponent } from './formly-filter-accordiongroup.component';
 
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule,SdsFiltersModule, FormsModule, FormlyModule.forRoot()],
+  imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, SdsFiltersModule, FormsModule, FormlyModule.forRoot()],
   declarations: [FormlyFilterAccordionGroupComponent],
   exports: [FormlyFilterAccordionGroupComponent],
   bootstrap: [FormlyFilterAccordionGroupComponent],

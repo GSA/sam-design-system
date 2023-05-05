@@ -6,7 +6,7 @@ import { FormlyModule } from '@ngx-formly/core';
 import { FormlyFilterNestedComponent } from './formly-filter-nested.component';
 
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule,SdsFiltersModule, FormsModule, FormlyModule.forRoot()],
+  imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, SdsFiltersModule, FormsModule, FormlyModule.forRoot()],
   declarations: [FormlyFilterNestedComponent],
   exports: [FormlyFilterNestedComponent],
   bootstrap: [FormlyFilterNestedComponent],
