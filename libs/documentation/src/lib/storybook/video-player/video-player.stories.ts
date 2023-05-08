@@ -11,12 +11,6 @@ import { VideoPlayerPreloadModule } from './video-player-preload/video-player-pr
 import { VideoPlayerCrossOriginModule } from './video-player-cross-origin/video-player-cross-origin.module';
 import { VideoPlayerIntroductionModule } from './video-player-introduction/video-player-introduction.module';
 
-const disable = {
-  table: {
-    disable: true,
-  },
-};
-
 export default {
   title: 'Components/Video Player',
   decorators: [
@@ -24,15 +18,15 @@ export default {
       declarations: [],
       imports: [
         CommonModule,
-        VideoPlayerConfigurableModule,
         VideoPlayerCaptionModule,
+        VideoPlayerConfigurableModule,
+        VideoPlayerCrossOriginModule,
         VideoPlayerDebugModule,
         VideoPlayerDescriptionModule,
-        VideoPlayerSeekIntervalModule,
+        VideoPlayerIntroductionModule,
         VideoPlayerPosterModule,
         VideoPlayerPreloadModule,
-        VideoPlayerCrossOriginModule,
-        VideoPlayerIntroductionModule,
+        VideoPlayerSeekIntervalModule,
       ],
     }),
   ],
