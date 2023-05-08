@@ -9,6 +9,7 @@ import { VideoPlayerSeekIntervalModule } from './video-player-seek-interval/vide
 import { VideoPlayerPosterModule } from './video-player-poster/video-player-poster.module';
 import { VideoPlayerPreloadModule } from './video-player-preload/video-player-preload.module';
 import { VideoPlayerCrossOriginModule } from './video-player-cross-origin/video-player-cross-origin.module';
+import { VideoPlayerIntroductionModule } from './video-player-introduction/video-player-introduction.module';
 
 const disable = {
   table: {
@@ -31,6 +32,7 @@ export default {
         VideoPlayerPosterModule,
         VideoPlayerPreloadModule,
         VideoPlayerCrossOriginModule,
+        VideoPlayerIntroductionModule,
       ],
     }),
   ],
@@ -89,7 +91,7 @@ const Template: Story = (args) => {
 };
 
 export const Introduction: Story = (args) => ({
-  template: `<sds-test></sds-test>`,
+  template: `<sds-video-player-introduction></sds-video-player-introduction>`,
   props: {
     ...args,
   },
