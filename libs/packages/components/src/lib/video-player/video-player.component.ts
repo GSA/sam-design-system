@@ -110,7 +110,7 @@ export class SdsVideoPlayerComponent implements AfterViewInit, OnChanges, OnInit
   private _loadVideoSourceOnDemand() {
     const playButton: HTMLButtonElement = this.elementRef.nativeElement.querySelector('.px-video-play');
     const restartButton: HTMLButtonElement = this.elementRef.nativeElement.querySelector('.px-video-restart');
-    const video: HTMLVideoElement = this.videoWrapper.nativeElement;
+    const video: HTMLVideoElement = this.video.nativeElement;
 
     const loadVideo = ($event) => {
       if (this.loadVideoSource) {
