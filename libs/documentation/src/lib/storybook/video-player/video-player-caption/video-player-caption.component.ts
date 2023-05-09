@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+  import { Component } from '@angular/core';
 
 @Component({
   selector: 'sds-video-player-caption',
@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
 })
 export class VideoPlayerCaptionComponent {
   videoPlayerConfiguration = {
+    sourceWebm: '',
     sourceMp4: 'https://github.com/GSA/sam-static-content/raw/master/assets/video/gsa-sample.mp4',
     id: 'sampleId1',
     width: '100%',
