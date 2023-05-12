@@ -12,4 +12,4 @@ import { FormlyTextAreaLabelComponent } from './formly-text-area-label.component
   exports: [FormlyTextAreaLabelComponent],
   bootstrap: [FormlyTextAreaLabelComponent],
 })
-export class FormlyTextAreaLabelModule {}
+export class FormlyTextAreaLabelModule { }

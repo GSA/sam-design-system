@@ -12,4 +12,4 @@ import { FormlyTextAreaRequiredComponent } from './formly-text-area-required.com
   exports: [FormlyTextAreaRequiredComponent],
   bootstrap: [FormlyTextAreaRequiredComponent],
 })
-export class FormlyTextAreaRequiredModule {}
+export class FormlyTextAreaRequiredModule { }

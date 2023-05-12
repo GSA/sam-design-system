@@ -12,4 +12,4 @@ import { FormlyTextAreaMaxlengthComponent } from './formly-text-area-maxlength.c
   exports: [FormlyTextAreaMaxlengthComponent],
   bootstrap: [FormlyTextAreaMaxlengthComponent],
 })
-export class FormlyTextAreaMaxlengthModule {}
+export class FormlyTextAreaMaxlengthModule { }

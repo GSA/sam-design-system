@@ -12,4 +12,4 @@ import { FormlyTextAreaPlaceholderComponent } from './formly-text-area-placehold
   exports: [FormlyTextAreaPlaceholderComponent],
   bootstrap: [FormlyTextAreaPlaceholderComponent],
 })
-export class FormlyTextAreaPlaceholderModule {}
+export class FormlyTextAreaPlaceholderModule { }

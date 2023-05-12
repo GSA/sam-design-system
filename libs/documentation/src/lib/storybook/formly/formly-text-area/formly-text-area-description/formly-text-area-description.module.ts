@@ -12,4 +12,4 @@ import { FormlyTextAreaDescriptionComponent } from './formly-text-area-descripti
   exports: [FormlyTextAreaDescriptionComponent],
   bootstrap: [FormlyTextAreaDescriptionComponent],
 })
-export class FormlyTextAreaDescriptionModule {}
+export class FormlyTextAreaDescriptionModule { }
