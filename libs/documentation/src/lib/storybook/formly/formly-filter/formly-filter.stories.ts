@@ -2,10 +2,9 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
-import {} from '@gsa-sam/sam-material-extensions';
 import { FormlyModule } from '@ngx-formly/core';
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
-import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
+import { createCodePreviewTabData, generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { FormlyFilterBasicModule } from './formly-filter-basic/formly-filter-basic.module';
 import { FormlyFilterSingleModule } from './formly-filter-single/formly-filter-single.module';
 import { FormlyFilterIntroductionModule } from './formly-filter-introduction/formly-filter-introduction.module';
@@ -22,7 +21,6 @@ const templateOptions = {
 
 export default {
   title: 'Formly/Filter',
-  // component: SdsButtonGroupComponent,
   decorators: [
     moduleMetadata({
       imports: [
@@ -142,7 +140,10 @@ Nested.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-filter/formly-filter-nested',
     'FormlyFilterNestedModule',
-    'sds-formly-filter-nested'
+    'sds-formly-filter-nested',
+[
+    createCodePreviewTabData('storybook/formly/formly-filter/formly-filter-nested/fields.ts', 'ts', false),
+  ]
   ),
   stackblitzLink: generateStackblitzLink('formly-filter', 'nested'),
 };
