@@ -8,4 +8,4 @@ import { FormlyTextAreaIntroductionComponent } from './formly-text-area-introduc
   exports: [FormlyTextAreaIntroductionComponent],
   bootstrap: [FormlyTextAreaIntroductionComponent],
 })
-export class FormlyTextAreaIntroductionModule { }
+export class FormlyTextAreaIntroductionModule {}

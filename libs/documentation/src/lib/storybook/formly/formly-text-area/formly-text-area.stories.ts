@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
-import { } from '@gsa-sam/sam-material-extensions';
+import {} from '@gsa-sam/sam-material-extensions';
 import { FormlyModule } from '@ngx-formly/core';
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
@@ -13,7 +13,6 @@ import { FormlyTextAreaLabelModule } from './formly-text-area-label/formly-text-
 import { FormlyTextAreaPlaceholderModule } from './formly-text-area-placeholder/formly-text-area-placeholder.module';
 import { FormlyTextAreaRequiredModule } from './formly-text-area-required/formly-text-area-required.module';
 import { FormlyTextAreaMaxlengthModule } from './formly-text-area-maxlength/formly-text-area-maxlength.module';
-
 
 const disable = {
   table: {
@@ -63,7 +62,7 @@ const formlyConfigFunction = (
   placeholder: string,
   description: string,
   required: boolean,
-  maxLength: number,
+  maxLength: number
   //disabled: boolean,
   //tooltipText: string
 ) => {

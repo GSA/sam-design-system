@@ -5,11 +5,10 @@ import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyTextAreaPlaceholderComponent } from './formly-text-area-placeholder.component';
 
-
 @NgModule({
   imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot()],
   declarations: [FormlyTextAreaPlaceholderComponent],
   exports: [FormlyTextAreaPlaceholderComponent],
   bootstrap: [FormlyTextAreaPlaceholderComponent],
 })
-export class FormlyTextAreaPlaceholderModule { }
+export class FormlyTextAreaPlaceholderModule {}

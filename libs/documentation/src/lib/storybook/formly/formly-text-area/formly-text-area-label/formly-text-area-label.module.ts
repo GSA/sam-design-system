@@ -5,11 +5,10 @@ import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyTextAreaLabelComponent } from './formly-text-area-label.component';
 
-
 @NgModule({
   imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot()],
   declarations: [FormlyTextAreaLabelComponent],
   exports: [FormlyTextAreaLabelComponent],
   bootstrap: [FormlyTextAreaLabelComponent],
 })
-export class FormlyTextAreaLabelModule { }
+export class FormlyTextAreaLabelModule {}

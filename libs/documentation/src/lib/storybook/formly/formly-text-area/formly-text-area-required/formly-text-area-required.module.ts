@@ -5,11 +5,10 @@ import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyTextAreaRequiredComponent } from './formly-text-area-required.component';
 
-
 @NgModule({
   imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot()],
   declarations: [FormlyTextAreaRequiredComponent],
   exports: [FormlyTextAreaRequiredComponent],
   bootstrap: [FormlyTextAreaRequiredComponent],
 })
-export class FormlyTextAreaRequiredModule { }
+export class FormlyTextAreaRequiredModule {}
