@@ -52,8 +52,6 @@ export default {
     description: templateOptions,
     required: templateOptions,
     maxLength: templateOptions,
-    //disabled: templateOptions,
-    //tooltipText: templateOptions,
   },
 } as Meta;
 
@@ -63,8 +61,6 @@ const formlyConfigFunction = (
   description: string,
   required: boolean,
   maxLength: number
-  //disabled: boolean,
-  //tooltipText: string
 ) => {
   return {
     label: label ?? '',
@@ -102,6 +98,7 @@ Configurable.args = {
 };
 Configurable.parameters = {
   preview: { disabled: true },
+  actions: { disabled: true },
 };
 
 export const Description: Story = (args) => ({

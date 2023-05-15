@@ -7,13 +7,6 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
   templateUrl: './formly-text-area-required.component.html',
 })
 export class FormlyTextAreaRequiredComponent {
-  @Input('config')
-  set config(config: object) {
-    const temp = this.fields[0];
-    temp['templateOptions'] = config;
-    this.fields = [temp];
-  }
-
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
@@ -27,8 +20,4 @@ export class FormlyTextAreaRequiredComponent {
       },
     },
   ];
-
-  onModelChange($event) {
-    console.log($event);
-  }
 }
