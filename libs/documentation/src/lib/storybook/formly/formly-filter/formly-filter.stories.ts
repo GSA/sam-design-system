@@ -4,7 +4,11 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
-import { createCodePreviewTabData, generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
+import {
+  createCodePreviewTabData,
+  generateConfig,
+  generateStackblitzLink,
+} from 'libs/documentation/src/sandbox/sandbox-utils';
 import { FormlyFilterBasicModule } from './formly-filter-basic/formly-filter-basic.module';
 import { FormlyFilterSingleModule } from './formly-filter-single/formly-filter-single.module';
 import { FormlyFilterIntroductionModule } from './formly-filter-introduction/formly-filter-introduction.module';
@@ -141,9 +145,7 @@ Nested.parameters = {
     'storybook/formly/formly-filter/formly-filter-nested',
     'FormlyFilterNestedModule',
     'sds-formly-filter-nested',
-[
-    createCodePreviewTabData('storybook/formly/formly-filter/formly-filter-nested/fields.ts', 'ts', false),
-  ]
+    [createCodePreviewTabData('storybook/formly/formly-filter/formly-filter-nested/fields.ts', 'ts', false)]
   ),
   stackblitzLink: generateStackblitzLink('formly-filter', 'nested'),
 };
