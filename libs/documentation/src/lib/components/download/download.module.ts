@@ -13,9 +13,18 @@ import { FormlyDialog } from './demos/formlymodal/formly-modal.component';
 import { FormlyDialogModule } from './demos/formlymodal/formly-modal.module';
 import { FormlyCurvyDialog } from './demos/formlymodal-curvy/formlymodal-curvy.component';
 import { FormlyCurvyDialogModule } from './demos/formlymodal-curvy/formlymodal-curvy.module';
+import { FormlyDialogLinkToSbComponent } from './demos/formly-dialog-link-to-sb/formly-dialog-link-to-sb.component';
+import { FormlyDialogLinkToSbModule } from './demos/formly-dialog-link-to-sb/formly-dialog-link-to-sb.module';
 
 declare var require: any;
 const DEMOS = {
+  linkToSb: {
+    title: 'New Demos',
+    type: FormlyDialogLinkToSbComponent,
+    code: require('!!raw-loader!./demos/formly-dialog-link-to-sb/formly-dialog-link-to-sb.component'),
+    markup: require('!!raw-loader!./demos/formly-dialog-link-to-sb/formly-dialog-link-to-sb.component.html'),
+    path: 'libs/documentation/src/lib/components/formly-dialog/demos/formly-dialog-link-to-sb',
+  },
   formlymodalcurvy: {
     title: 'Link Modal Dialog with Formly',
     type: FormlyCurvyDialog,
@@ -72,6 +81,7 @@ export const ROUTES = [
     DownloadBasicModule,
     FormlyDialogModule,
     FormlyCurvyDialogModule,
+    FormlyDialogLinkToSbModule,
   ],
   declarations: [],
 })
