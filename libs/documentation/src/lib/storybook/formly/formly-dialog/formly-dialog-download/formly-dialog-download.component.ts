@@ -10,7 +10,6 @@ import {
 import { SdsFormlyDialogComponent, SdsFormlyTypes } from '@gsa-sam/sam-formly';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { AutocompleteSampleDataService } from './autocomplete-sample.service';
-// import { AutocompleteSampleDataService } from '../../../autocomplete/services/autocomplete-sample.service';
 
 @Component({
   selector: 'sds-formly-dialog-download',
