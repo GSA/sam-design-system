@@ -14,11 +14,7 @@ import { FormlyDialogIntroductionModule } from './formly-dialog-introduction/for
 
 import { FormlyDialogBasicModule } from './formly-dialog-basic/formly-dialog-basic.module';
 import { FormlyDialogDownloadModule } from './formly-dialog-download/formly-dialog-download.module';
-const disable = {
-  table: {
-    disable: true,
-  },
-};
+
 const templateOptions = {
   table: {
     category: 'template-options',
