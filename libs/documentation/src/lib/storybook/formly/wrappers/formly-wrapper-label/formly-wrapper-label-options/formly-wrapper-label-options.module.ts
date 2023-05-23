@@ -6,12 +6,14 @@ import { FormlyModule } from '@ngx-formly/core';
 import { FormlyWrapperLabelOptionsComponent } from './formly-wrapper-label-options.component';
 import { SdsStepArrowModule } from '@gsa-sam/components';
 @NgModule({
-  imports: [CommonModule,
+  imports: [
+    CommonModule,
     ReactiveFormsModule,
     SdsStepArrowModule,
     SdsFormlyModule,
     FormsModule,
-    FormlyModule.forRoot(),],
+    FormlyModule.forRoot(),
+  ],
   declarations: [FormlyWrapperLabelOptionsComponent],
   exports: [FormlyWrapperLabelOptionsComponent],
   bootstrap: [FormlyWrapperLabelOptionsComponent],
