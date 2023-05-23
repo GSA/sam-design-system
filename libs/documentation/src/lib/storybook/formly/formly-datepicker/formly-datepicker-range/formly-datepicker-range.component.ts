@@ -7,7 +7,7 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
   templateUrl: './formly-datepicker-range.component.html',
 })
 export class FormlyDatepickerRangeComponent {
-   form = new FormGroup({});
+  form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
 

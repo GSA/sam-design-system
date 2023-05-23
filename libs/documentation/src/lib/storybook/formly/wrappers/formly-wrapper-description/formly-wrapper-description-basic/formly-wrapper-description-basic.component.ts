@@ -7,7 +7,7 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
   templateUrl: './formly-wrapper-description-basic.component.html',
 })
 export class FormlyWrapperDescriptionBasicComponent {
- form = new FormGroup({});
+  form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
   fields: FormlyFieldConfig[] = [
