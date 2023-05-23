@@ -1,105 +1,237 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { SelectionMode } from '@gsa-sam/components';
 import { SdsFormlyTypes } from '@gsa-sam/sam-formly';
-import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
+import { FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
   selector: 'sds-formly-stepper-basic',
   templateUrl: './formly-stepper-basic.component.html',
 })
 export class FormlyStepperBasicComponent {
-  form = new FormGroup({});
-  model: any = {};
-  options: FormlyFormOptions = {};
-  fields: FormlyFieldConfig[] = [
-    {
-      key: 'keyword',
-      wrappers: ['tabs'],
-      templateOptions: {
-        label: 'Keyword Search',
-        description: `For more information on how to use our keyword search, visit our <a href="#"> help guide </a>`,
-        hideOptional: true,
-        tabClass: 'sds-tabs--formly',
+  stepOne: FormlyFieldConfig = {
+    key: 'enitityOne',
+    fieldGroup: [
+      {
+        key: 'stepIndicator',
+        type: 'step-arrow',
+        templateOptions: {
+          number: 1,
+          stepTitle: 'Entity Step one',
+          status: 'active',
+        },
       },
-      fieldArray: {
-        fieldGroup: [
-          // tab 1
-          {
-            templateOptions: {
-              tabHeader: 'Simple Search',
-            },
-            id: 'Tab1',
-            fieldGroup: [
-              {
-                key: 'keywordRadio',
-                type: 'radio',
-                defaultValue: 'anyWords',
-                templateOptions: {
-                  options: [
-                    {
-                      label: 'Any Words',
-                      value: 'anyWords',
-                    },
-                    {
-                      label: 'All Words',
-                      value: 'allWords',
-                    },
-                    {
-                      label: 'Exact Match',
-                      value: 'exactMatch',
-                    },
-                  ],
-                },
-              },
-              {
-                key: 'keywordTags',
-                type: 'autocomplete',
-                templateOptions: {
-                  expand: false,
-                  configuration: {
-                    id: 'keyword',
-                    primaryKeyField: 'key',
-                    primaryTextField: 'text',
-                    labelText: 'Search Keyword',
-                    selectionMode: SelectionMode.MULTIPLE,
-                    autocompletePlaceHolderText: '',
-                    isTagModeEnabled: true,
-                  },
-                },
-              },
-            ],
-          },
-          //tab 2
-          {
-            id: 'Tab2',
-            templateOptions: {
-              tabHeader: 'Search Editor',
-              submitButtonId: 'booleanSearchSubmit',
-            },
-            fieldGroup: [
-              {
-                key: 'keywordTextarea',
-                type: SdsFormlyTypes.TEXTAREA,
-                className: 'display-block padding-left-2 padding-right-2',
-                templateOptions: {
-                  placeholder: 'e.g. ((rental AND property) OR (lease and property) AND NOT ( "short term"))',
-                  required: true,
-                },
-              },
-              {
-                type: SdsFormlyTypes.BUTTON,
-                id: 'booleanSearchSubmit',
-                className: 'display-block margin-top-1 padding-left-2 padding-right-2',
-                templateOptions: {
-                  text: 'Search',
-                  type: 'submit',
-                },
-              },
-            ],
-          },
-        ],
+      {
+        key: 'name',
+        type: 'input',
+        templateOptions: {
+          label: 'Entity Name',
+          placeholder: 'eg: Acme Corporation',
+          description: 'Enter the name of your entity.',
+          required: true,
+        },
+        modelOptions: {
+          updateOn: 'blur',
+        },
       },
-    },
-  ];
+      {
+        className: 'desktop:grid-col-12 tablet:grid-col-12',
+        type: 'input',
+        key: 'title',
+
+        templateOptions: {
+          label: 'Program or Project Title',
+          required: true,
+          showError: false,
+        },
+      },
+    ],
+  };
+
+  stepOnePointTwoFive: FormlyFieldConfig = {
+    key: 'enitityOnePointTwoFive',
+    fieldGroup: [
+      {
+        key: 'stepIndicator2',
+        type: 'step-arrow',
+        templateOptions: {
+          number: 2,
+          stepTitle: 'Entity Step two',
+          status: 'inactive',
+        },
+      },
+      {
+        key: 'name',
+        type: 'input',
+        templateOptions: {
+          label: 'Entity Name - PointTwoFive',
+          placeholder: 'eg: Acme Corporation',
+          description: 'Enter the name of your entity.',
+          required: true,
+        },
+        modelOptions: {
+          updateOn: 'blur',
+        },
+      },
+      {
+        className: 'desktop:grid-col-12 tablet:grid-col-12',
+        type: 'input',
+        key: 'title',
+
+        templateOptions: {
+          label: 'Program or Project Title',
+          required: true,
+          showError: false,
+        },
+      },
+    ],
+  };
+
+  stepOnePointFive: FormlyFieldConfig = {
+    key: 'enitityOnePointFive',
+    fieldGroup: [
+      {
+        key: 'name',
+        type: 'input',
+        templateOptions: {
+          label: 'Entity Name - PointFive',
+          placeholder: 'eg: Acme Corporation',
+          description: 'Enter the name of your entity.',
+          required: true,
+        },
+        modelOptions: {
+          updateOn: 'blur',
+        },
+      },
+      {
+        className: 'desktop:grid-col-12 tablet:grid-col-12',
+        type: 'input',
+        key: 'title',
+
+        templateOptions: {
+          label: 'Program or Project Title',
+          required: true,
+          showError: false,
+        },
+      },
+    ],
+  };
+
+  stepOnePointSevenFive: FormlyFieldConfig = {
+    key: 'enitityOnePointSevenFive',
+    fieldGroup: [
+      {
+        key: 'name',
+        type: 'input',
+        templateOptions: {
+          label: 'Entity Name - PointSevenFive',
+          placeholder: 'eg: Acme Corporation',
+          description: 'Enter the name of your entity.',
+          required: true,
+        },
+        modelOptions: {
+          updateOn: 'blur',
+        },
+      },
+      {
+        className: 'desktop:grid-col-12 tablet:grid-col-12',
+        type: 'input',
+        key: 'title',
+
+        templateOptions: {
+          label: 'Program or Project Title',
+          required: true,
+          showError: false,
+        },
+      },
+    ],
+  };
+
+  stepTwo = {
+    key: 'purposeOfRegistration',
+    fieldGroup: [
+      {
+        key: 'typeOfEntity',
+        type: SdsFormlyTypes.RADIO,
+        templateOptions: {
+          label: 'What type of entity are you registering?',
+          hideOptions: true,
+          options: [
+            {
+              label: 'Business Or Organization',
+              value: 'business',
+            },
+            {
+              label: 'U.S. State Government',
+              value: 'stateGovt',
+            },
+            {
+              label: 'U.S. Local Government',
+              value: 'localGovt',
+            },
+            {
+              label: 'Tribal Government',
+              value: 'tribal',
+            },
+            {
+              label: 'Foreign Government',
+              value: 'foreign',
+            },
+          ],
+        },
+      },
+      {
+        key: 'purposeOfRegistration',
+        type: SdsFormlyTypes.RADIO,
+        templateOptions: {
+          hideOptions: true,
+          label: 'Why are you registering this entity to do business with the U.S. government?',
+          options: [
+            {
+              label: `Bid on federal contracts or other procurement opportunities.`,
+              value: 'bidContracts',
+            },
+            {
+              label: 'Apply for federal assistance opportunities.',
+              value: 'assistanceOpportunities',
+            },
+          ],
+        },
+      },
+    ],
+  };
+
+  stepThree = {
+    key: 'taxpayerDetails',
+    fieldGroup: [
+      {
+        template: `
+          <span>
+            Please refer to your taxpayer documnets from IRS to find your taxpayer information
+          </span>
+        `,
+      },
+      {
+        type: 'input',
+        key: 'taxpayerName',
+        templateOptions: {
+          label: 'Taxpayer Name',
+          hideOptional: true,
+        },
+      },
+      {
+        type: 'input',
+        key: 'tinNumber',
+        templateOptions: {
+          label: 'TIN Number',
+          hideOptional: true,
+        },
+      },
+    ],
+  };
+
+  model = {};
+  stepValidityMap = {};
+
+  onSaveData($event) {
+    console.log($event);
+  }
 }

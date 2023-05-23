@@ -6,12 +6,8 @@ import {} from '@gsa-sam/sam-material-extensions';
 import { FormlyModule } from '@ngx-formly/core';
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
-
 import { FormlyStepperIntroductionModule } from './formly-stepper-introduction/formly-stepper-introduction.module';
-
 import { FormlyStepperBasicModule } from './formly-stepper-basic/formly-stepper-basic.module';
-import { FormlyStepperStepIndicatorModule } from './formly-stepper-stepindicator/formly-stepper-stepindicator.module';
-
 const templateOptions = {
   table: {
     category: 'template-options',
@@ -29,10 +25,7 @@ export default {
         FormsModule,
         FormlyModule.forRoot(),
         FormlyStepperIntroductionModule,
-
         NoopAnimationsModule,
-
-        FormlyStepperStepIndicatorModule,
         FormlyStepperBasicModule,
         FormlyStepperIntroductionModule,
       ],
@@ -54,24 +47,6 @@ export const Introduction: Story = (args) => ({
 });
 Introduction.parameters = { options: { showPanel: false } };
 
-export const StepIndicator: Story = (args) => ({
-  template: '<sds-formly-stepper-stepindicator></sds-formly-stepper-stepindicator>',
-  props: args,
-});
-StepIndicator.parameters = {
-  controls: {
-    disabled: true,
-    hideNoControlsWarning: true,
-  },
-  actions: { disabled: true },
-  preview: generateConfig(
-    'storybook/formly/formly-stepper/formly-stepper-stepindicator',
-    'FormlyStepperStepIndicatorModule',
-    'sds-formly-stepper-stepindicator'
-  ),
-  stackblitzLink: generateStackblitzLink('formly-stepper', 'stepindicator'),
-};
-
 export const Basic: Story = (args) => ({
   template: '<sds-formly-stepper-basic></sds-formly-stepper-basic>',
   props: args,
@@ -90,4 +65,4 @@ Basic.parameters = {
   stackblitzLink: generateStackblitzLink('formly-stepper', 'basic'),
 };
 
-export const __namedExportsOrder = ['Introduction', 'Basic', 'StepIndicator'];
+export const __namedExportsOrder = ['Introduction', 'Basic'];
