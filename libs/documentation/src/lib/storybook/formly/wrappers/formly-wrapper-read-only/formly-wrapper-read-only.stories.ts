@@ -26,7 +26,7 @@ export default {
         FormlyWrapperReadOnlyBasicModule,
         FormlyWrapperReadOnlyOptionsModule,
         FormlyWrapperReadOnlyCustomTemplateModule,
-FormlyWrapperReadOnlyContainerModule,
+        FormlyWrapperReadOnlyContainerModule,
       ],
     }),
   ],

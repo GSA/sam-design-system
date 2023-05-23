@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {  SdsFormlyTypes } from '@gsa-sam/sam-formly';
+import { SdsFormlyTypes } from '@gsa-sam/sam-formly';
 
 @Component({
   selector: 'sds-formly-wrapper-read-only-container',
