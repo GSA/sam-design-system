@@ -7,17 +7,17 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
   templateUrl: './formly-editor-regex.component.html',
 })
 export class FormlyEditorRegexComponent {
-    textModel = 'test';
-    form = new FormGroup({});
-    model: any = {};
-    options: FormlyFormOptions = {};
-    fields: FormlyFieldConfig[] = [
-      {
-        key: 'searchkey',
-        type: 'editor',
-        templateOptions: {
-          regex: /hello/gm,
-        },
+  textModel = 'test';
+  form = new FormGroup({});
+  model: any = {};
+  options: FormlyFormOptions = {};
+  fields: FormlyFieldConfig[] = [
+    {
+      key: 'searchkey',
+      type: 'editor',
+      templateOptions: {
+        regex: /hello/gm,
       },
-    ];
+    },
+  ];
 }
