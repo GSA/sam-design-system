@@ -1,3 +1,10 @@
 <form [formGroup]="form">
   <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
 </form>
+
+<ng-template #labelTemplate>
+  <div class="grid-row">
+    <sds-step-arrow [number]="2" [status]="'inactive'"></sds-step-arrow>
+    <span class="margin-top-1">Entity Registration</span>
+  </div>
+</ng-template>
