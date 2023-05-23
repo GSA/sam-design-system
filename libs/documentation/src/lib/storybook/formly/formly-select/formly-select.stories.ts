@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
-import {} from '@gsa-sam/sam-material-extensions';
 import { FormlyModule } from '@ngx-formly/core';
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
@@ -13,11 +12,6 @@ import { FormlySelectDescriptionModule } from './formly-select-description/forml
 import { FormlySelectRequiredModule } from './formly-select-required/formly-select-required.module';
 import { FormlySelectOptionsModule } from './formly-select-options/formly-select-options.module';
 
-const disable = {
-  table: {
-    disable: true,
-  },
-};
 const templateOptions = {
   table: {
     category: 'template-options',
@@ -33,10 +27,10 @@ export default {
         ReactiveFormsModule,
         SdsFormlyModule,
         FormsModule,
+        NoopAnimationsModule,
         FormlyModule.forRoot(),
         FormlySelectIntroductionModule,
         FormlySelectConfigurableModule,
-        NoopAnimationsModule,
         FormlySelectLabelModule,
         FormlySelectDescriptionModule,
         FormlySelectRequiredModule,
