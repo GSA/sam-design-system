@@ -6,7 +6,6 @@ import { FormlyModule } from '@ngx-formly/core';
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { FormlyWrapperValidationIntroductionModule } from './formly-wrapper-validation-introduction/formly-wrapper-validation-introduction.module';
-import { FormlyWrapperValidationOptionsModule } from './formly-wrapper-validation-options/formly-wrapper-validation-options.module';
 import { FormlyWrapperValidationBasicModule } from './formly-wrapper-validation-basic/formly-wrapper-validation-basic.module';
 
 export default {
@@ -22,7 +21,6 @@ export default {
         FormlyModule.forRoot(),
         FormlyWrapperValidationIntroductionModule,
         FormlyWrapperValidationBasicModule,
-        FormlyWrapperValidationOptionsModule,
       ],
     }),
   ],
