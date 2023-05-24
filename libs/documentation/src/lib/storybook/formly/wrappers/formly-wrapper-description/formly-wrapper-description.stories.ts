@@ -10,7 +10,7 @@ import { FormlyWrapperDescriptionOptionsModule } from './formly-wrapper-descript
 import { FormlyWrapperDescriptionBasicModule } from './formly-wrapper-description-basic/formly-wrapper-description-basic.module';
 
 export default {
-  title: 'Formly/Wrapper/Description Wrapper',
+  title: 'Formly/Wrapper/Description',
   decorators: [
     moduleMetadata({
       imports: [
