@@ -3,11 +3,9 @@ import { CommonModule } from '@angular/common';
 import { DialogIntroductionComponent } from './dialog-introduction.component';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   declarations: [DialogIntroductionComponent],
   exports: [DialogIntroductionComponent],
   bootstrap: [DialogIntroductionComponent],
 })
-export class DialogIntroductionModule { }
+export class DialogIntroductionModule {}

@@ -7,7 +7,6 @@ import { DialogConfigurableTemplateComponent } from './dialog-configurable-templ
   templateUrl: './dialog-configurable.component.html',
 })
 export class DialogConfigurableComponent {
-
   @Input()
   alert: 'error' | 'warning' | 'info' | 'success';
 
@@ -16,11 +15,10 @@ export class DialogConfigurableComponent {
 
   constructor(public dialog: SdsDialogService) {}
 
-  openDialog(){
+  openDialog() {
     this.dialog.open(DialogConfigurableTemplateComponent, {
       width: this.width,
-      alert: this.alert
+      alert: this.alert,
     });
   }
-
 }

@@ -6,8 +6,7 @@ import { DialogAlertTypeTemplate } from './dialog-template.component';
   selector: 'sds-dialog-alert-type',
   templateUrl: './dialog-alert-type.component.html',
 })
-export class DialogAlertTypeComponent  {
-
+export class DialogAlertTypeComponent {
   constructor(public dialog: SdsDialogService) {}
 
   openWarningDialog(): void {
@@ -34,5 +33,4 @@ export class DialogAlertTypeComponent  {
       alert: 'error',
     });
   }
-
 }

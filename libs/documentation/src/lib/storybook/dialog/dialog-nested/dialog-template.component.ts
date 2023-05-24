@@ -4,10 +4,9 @@ import { SecondNestedDialogComponent } from './second-nested-dialog.component';
 
 @Component({
   selector: 'sds-dialog-nested-template',
-  templateUrl: './dialog-template.component.html'
+  templateUrl: './dialog-template.component.html',
 })
 export class DialogNestedComponent {
-
   constructor(public dialog: SdsDialogService) {}
 
   openDialog(): void {
@@ -15,5 +14,4 @@ export class DialogNestedComponent {
       width: 'small',
     });
   }
-
 }

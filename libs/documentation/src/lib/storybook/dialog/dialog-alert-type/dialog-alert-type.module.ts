@@ -8,12 +8,9 @@ import { FormlyModule } from '@ngx-formly/core';
 import { DialogAlertTypeTemplate } from './dialog-template.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot(), SdsDialogModule
-  ],
+  imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot(), SdsDialogModule],
   declarations: [DialogAlertTypeComponent, DialogAlertTypeTemplate],
   exports: [DialogAlertTypeComponent],
   bootstrap: [DialogAlertTypeComponent],
 })
-export class DialogAlertTypeModule { }
+export class DialogAlertTypeModule {}

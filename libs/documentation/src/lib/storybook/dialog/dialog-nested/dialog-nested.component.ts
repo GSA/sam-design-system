@@ -7,13 +7,11 @@ import { DialogNestedComponent } from './dialog-template.component';
   templateUrl: './dialog-nested.component.html',
 })
 export class DialogNestedBaseComponent {
-
   constructor(public dialog: SdsDialogService) {}
 
   openDialog(): void {
     this.dialog.open(DialogNestedComponent, {
-      width: 'large'
+      width: 'large',
     });
   }
-
 }

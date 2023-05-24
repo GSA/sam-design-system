@@ -1,12 +1,16 @@
-import { CommonModule } from "@angular/common";
-import { moduleMetadata, Meta, Story } from "@storybook/angular";
-import { DialogAlertTypeModule } from "./dialog-alert-type/dialog-alert-type.module";
-import { DialogWidthModule } from "./dialog-width/dialog-width.module";
-import { DialogNestedModule } from "./dialog-nested/dialog-nested.module";
-import { DialogDataReturnModule } from "./dialog-data-return/dialog-data-return.module";
-import { createCodePreviewTabData, generateConfig, generateStackblitzLink } from "libs/documentation/src/sandbox/sandbox-utils";
-import { DialogIntroductionModule } from "./dialog-introduction/dialog-introduction.module";
-import { DialogConfigurableModule } from "./dialog-configurable/dialog-configurable.module";
+import { CommonModule } from '@angular/common';
+import { moduleMetadata, Meta, Story } from '@storybook/angular';
+import { DialogAlertTypeModule } from './dialog-alert-type/dialog-alert-type.module';
+import { DialogWidthModule } from './dialog-width/dialog-width.module';
+import { DialogNestedModule } from './dialog-nested/dialog-nested.module';
+import { DialogDataReturnModule } from './dialog-data-return/dialog-data-return.module';
+import {
+  createCodePreviewTabData,
+  generateConfig,
+  generateStackblitzLink,
+} from 'libs/documentation/src/sandbox/sandbox-utils';
+import { DialogIntroductionModule } from './dialog-introduction/dialog-introduction.module';
+import { DialogConfigurableModule } from './dialog-configurable/dialog-configurable.module';
 
 export default {
   title: 'Components/Dialog',
@@ -20,13 +24,13 @@ export default {
         DialogNestedModule,
         DialogDataReturnModule,
         DialogIntroductionModule,
-        DialogConfigurableModule
+        DialogConfigurableModule,
       ],
     }),
   ],
   argTypes: {
     width: { control: 'select', options: ['small', 'medium', 'large'] },
-    alert: { control: 'select', options: ['', 'error', 'warning', 'info', 'success'] }
+    alert: { control: 'select', options: ['', 'error', 'warning', 'info', 'success'] },
   },
 } as Meta;
 
@@ -39,18 +43,9 @@ AlertType.parameters = {
     disabled: true,
   },
   actions: { disabled: true },
-  preview: generateConfig('storybook/dialog/dialog-alert-type', 'DialogAlertTypeModule', 'sds-dialog-alert-type',
-  [
-    createCodePreviewTabData(
-      'storybook/dialog/dialog-alert-type/dialog-template.component.ts',
-      'ts',
-      false
-    ),
-    createCodePreviewTabData(
-      'storybook/dialog/dialog-alert-type/dialog-template.component.html',
-      'html',
-      false
-    )
+  preview: generateConfig('storybook/dialog/dialog-alert-type', 'DialogAlertTypeModule', 'sds-dialog-alert-type', [
+    createCodePreviewTabData('storybook/dialog/dialog-alert-type/dialog-template.component.ts', 'ts', false),
+    createCodePreviewTabData('storybook/dialog/dialog-alert-type/dialog-template.component.html', 'html', false),
   ]),
   stackblitzLink: generateStackblitzLink('dialog', 'alert-type'),
 };
@@ -63,28 +58,11 @@ Nested.parameters = {
     disabled: true,
   },
   actions: { disabled: true },
-  preview: generateConfig('storybook/dialog/dialog-nested', 'DialogNestedModule', 'sds-dialog-nested',
-  [
-    createCodePreviewTabData(
-      'storybook/dialog/dialog-nested/dialog-template.component.ts',
-      'ts',
-      false
-    ),
-    createCodePreviewTabData(
-      'storybook/dialog/dialog-nested/dialog-template.component.html',
-      'html',
-      false
-    ),
-    createCodePreviewTabData(
-      'storybook/dialog/dialog-nested/second-nested-dialog.component.ts',
-      'ts',
-      false
-    ),
-    createCodePreviewTabData(
-      'storybook/dialog/dialog-nested/second-nested-dialog.component.html',
-      'html',
-      false
-    )
+  preview: generateConfig('storybook/dialog/dialog-nested', 'DialogNestedModule', 'sds-dialog-nested', [
+    createCodePreviewTabData('storybook/dialog/dialog-nested/dialog-template.component.ts', 'ts', false),
+    createCodePreviewTabData('storybook/dialog/dialog-nested/dialog-template.component.html', 'html', false),
+    createCodePreviewTabData('storybook/dialog/dialog-nested/second-nested-dialog.component.ts', 'ts', false),
+    createCodePreviewTabData('storybook/dialog/dialog-nested/second-nested-dialog.component.html', 'html', false),
   ]),
   stackblitzLink: generateStackblitzLink('dialog', 'nested'),
 };
@@ -97,20 +75,10 @@ Width.parameters = {
     disabled: true,
   },
   actions: { disabled: true },
-  preview: generateConfig('storybook/dialog/dialog-width', 'DialogWidthModule', 'sds-dialog-width',
-    [
-      createCodePreviewTabData(
-        'storybook/dialog/dialog-width/dialog-template.component.ts',
-        'ts',
-        false
-      ),
-      createCodePreviewTabData(
-        'storybook/dialog/dialog-width/dialog-template.component.html',
-        'html',
-        false
-      ),
-    ]
-  ),
+  preview: generateConfig('storybook/dialog/dialog-width', 'DialogWidthModule', 'sds-dialog-width', [
+    createCodePreviewTabData('storybook/dialog/dialog-width/dialog-template.component.ts', 'ts', false),
+    createCodePreviewTabData('storybook/dialog/dialog-width/dialog-template.component.html', 'html', false),
+  ]),
   stackblitzLink: generateStackblitzLink('dialog', 'width'),
 };
 export const DataReturn: Story = (args) => ({
@@ -122,22 +90,12 @@ DataReturn.parameters = {
     disabled: true,
   },
   actions: { disabled: true },
-  preview: generateConfig('storybook/dialog/dialog-data-return', 'DialogDataReturnModule', 'sds-dialog-data-return',
-  [
-    createCodePreviewTabData(
-      'storybook/dialog/dialog-data-return/dialog-template.component.ts',
-      'ts',
-      false
-      ),
-      createCodePreviewTabData(
-        'storybook/dialog/dialog-data-return/dialog-template.component.html',
-        'html',
-        false
-        ),
-      ]
-      ),
-      stackblitzLink: generateStackblitzLink('dialog', 'data-return'),
-    };
+  preview: generateConfig('storybook/dialog/dialog-data-return', 'DialogDataReturnModule', 'sds-dialog-data-return', [
+    createCodePreviewTabData('storybook/dialog/dialog-data-return/dialog-template.component.ts', 'ts', false),
+    createCodePreviewTabData('storybook/dialog/dialog-data-return/dialog-template.component.html', 'html', false),
+  ]),
+  stackblitzLink: generateStackblitzLink('dialog', 'data-return'),
+};
 
 export const Introduction: Story = (args) => ({
   template: '<sds-dialog-introduction></sds-dialog-introduction>',
@@ -152,7 +110,7 @@ Introduction.parameters = {
   },
   actions: { disabled: true },
   preview: { disabled: true },
-}
+};
 
 export const Configurable: Story = (args) => ({
   template: `<sds-dialog-configurable [alert]="alert" [width]="width"></sds-dialog-configurable>`,
@@ -162,17 +120,10 @@ export const Configurable: Story = (args) => ({
 Configurable.parameters = {
   actions: { disabled: true },
   preview: { disabled: true },
-}
+};
 
 Configurable.args = {
-  width: 'small'
-}
+  width: 'small',
+};
 
-export const __namedExportsOrder = [
-  'Introduction',
-  'Configurable',
-  'AlertType',
-  'DataReturn',
-  'Nested',
-  'Width',
-];
+export const __namedExportsOrder = ['Introduction', 'Configurable', 'AlertType', 'DataReturn', 'Nested', 'Width'];

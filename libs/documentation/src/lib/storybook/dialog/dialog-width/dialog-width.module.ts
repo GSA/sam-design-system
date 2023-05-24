@@ -6,13 +6,9 @@ import { SdsDialogModule } from '@gsa-sam/components';
 import { DialogWidthTypeTemplate } from './dialog-template.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SdsDialogModule,
-    BrowserAnimationsModule
-  ],
+  imports: [CommonModule, SdsDialogModule, BrowserAnimationsModule],
   declarations: [DialogWidthComponent, DialogWidthTypeTemplate],
   bootstrap: [DialogWidthComponent],
   exports: [DialogWidthComponent],
 })
-export class DialogWidthModule { }
+export class DialogWidthModule {}

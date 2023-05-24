@@ -2,9 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'sds-dialog-width',
-  templateUrl: './second-nested-dialog.component.html'
+  templateUrl: './second-nested-dialog.component.html',
 })
-export class SecondNestedDialogComponent {
-
-
-}
+export class SecondNestedDialogComponent {}

@@ -6,13 +6,9 @@ import { SdsDialogModule } from '@gsa-sam/components';
 import { DialogDataReturnTemplateComponent } from './dialog-template.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SdsDialogModule,
-    BrowserAnimationsModule
-  ],
+  imports: [CommonModule, SdsDialogModule, BrowserAnimationsModule],
   declarations: [DialogDataReturnComponent, DialogDataReturnTemplateComponent],
   bootstrap: [DialogDataReturnComponent],
   exports: [DialogDataReturnComponent],
 })
-export class DialogDataReturnModule { }
+export class DialogDataReturnModule {}

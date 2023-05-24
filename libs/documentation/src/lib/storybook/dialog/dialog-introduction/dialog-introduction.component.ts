@@ -5,7 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './dialog-introduction.component.html',
 })
 export class DialogIntroductionComponent {
-
-  constructor() { }
-
+  constructor() {}
 }
