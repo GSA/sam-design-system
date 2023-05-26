@@ -7,7 +7,7 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
   templateUrl: './formly-wrapper-template-options-announce-label.component.html',
 })
 export class FormlyWrapperTemplateOptionsAnnounceLabelComponent {
-   form = new FormGroup({});
+  form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
   fields: FormlyFieldConfig[] = [

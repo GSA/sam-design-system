@@ -28,8 +28,8 @@ export default {
         FormlyWrapperTemplateOptionsUpdateonModule,
         FormlyWrapperTemplateOptionsTagsModule,
         FormlyWrapperTemplateOptionsHideOptionalModule,
-       
-FormlyWrapperTemplateOptionsAnnounceLabelModule
+
+        FormlyWrapperTemplateOptionsAnnounceLabelModule,
       ],
     }),
   ],
