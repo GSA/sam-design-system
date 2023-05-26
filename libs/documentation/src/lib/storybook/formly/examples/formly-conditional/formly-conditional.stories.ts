@@ -34,7 +34,11 @@ Conditional.parameters = {
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
-  preview: generateConfig('storybook/formly/examples/formly-conditional', 'FormlyConditionalModule', 'sds-formly-conditional'),
+  preview: generateConfig(
+    'storybook/formly/examples/formly-conditional',
+    'FormlyConditionalModule',
+    'sds-formly-conditional'
+  ),
 };
 
 export const __namedExportsOrder = ['Conditional'];
