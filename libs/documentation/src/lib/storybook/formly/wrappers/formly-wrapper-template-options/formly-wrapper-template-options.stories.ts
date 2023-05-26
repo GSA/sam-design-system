@@ -6,6 +6,7 @@ import { FormlyModule } from '@ngx-formly/core';
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { FormlyWrapperTemplateOptionsBlurModule } from './formly-wrapper-template-options-blur/formly-wrapper-template-options-blur.module';
+import { FormlyWrapperTemplateOptionsAnnounceLabelModule } from './formly-wrapper-template-options-announce-label/formly-wrapper-template-options-announce-label.module';
 import { FormlyWrapperTemplateOptionsHideOptionalModule } from './formly-wrapper-template-options-hideoptional/formly-wrapper-template-options-hideoptional.module';
 import { FormlyWrapperTemplateOptionsIntroductionModule } from './formly-wrapper-template-options-introduction/formly-wrapper-template-options-introduction.module';
 import { FormlyWrapperTemplateOptionsTagsModule } from './formly-wrapper-template-options-tags/formly-wrapper-template-options-tags.module';
@@ -26,7 +27,9 @@ export default {
         FormlyWrapperTemplateOptionsBlurModule,
         FormlyWrapperTemplateOptionsUpdateonModule,
         FormlyWrapperTemplateOptionsTagsModule,
-FormlyWrapperTemplateOptionsHideOptionalModule
+        FormlyWrapperTemplateOptionsHideOptionalModule,
+       
+FormlyWrapperTemplateOptionsAnnounceLabelModule
       ],
     }),
   ],
@@ -92,4 +95,22 @@ Hideoptional.parameters = {
   stackblitzLink: generateStackblitzLink('formly-wrapper-template-options', 'hideoptional'),
 };
 
-export const __namedExportsOrder = ['Introduction', 'Blur', 'UpdateOn', 'Tags', 'Hideoptional'];
+export const AnnounceLabel: Story = (args) => ({
+  template: '<sds-formly-wrapper-template-options-announce-label></sds-formly-wrapper-template-options-announce-label>',
+  props: args,
+});
+AnnounceLabel.parameters = {
+  controls: {
+    disabled: true,
+    hideNoControlsWarning: true,
+  },
+  actions: { disabled: true },
+  preview: generateConfig(
+    'storybook/formly/wrappers/formly-wrapper-template-options/formly-wrapper-template-options-announce-label',
+    'FormlyWrapperTemplateOptionsAnnounceLabelModule',
+    'sds-formly-wrapper-template-options-announce-label'
+  ),
+  stackblitzLink: generateStackblitzLink('formly-wrapper-template-options', 'announc-label'),
+};
+
+export const __namedExportsOrder = ['Introduction', 'Blur', 'UpdateOn', 'Tags', 'Hideoptional', 'AnnounceLabel'];
