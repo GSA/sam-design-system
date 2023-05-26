@@ -10,7 +10,7 @@ import { FormlyWrapperLabelIntroductionModule } from './formly-wrapper-label-int
 import { FormlyWrapperLabelOptionsModule } from './formly-wrapper-label-options/formly-wrapper-label-options.module';
 
 export default {
-  title: 'Formly/Wrapper/Label',
+  title: 'Formly/WRAPPERS/Label',
   decorators: [
     moduleMetadata({
       imports: [

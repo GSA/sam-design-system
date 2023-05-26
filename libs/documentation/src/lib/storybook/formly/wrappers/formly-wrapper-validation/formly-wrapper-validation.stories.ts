@@ -9,7 +9,7 @@ import { FormlyWrapperValidationIntroductionModule } from './formly-wrapper-vali
 import { FormlyWrapperValidationBasicModule } from './formly-wrapper-validation-basic/formly-wrapper-validation-basic.module';
 
 export default {
-  title: 'Formly/Wrapper/Validation',
+  title: 'Formly/WRAPPERS/Validation',
   decorators: [
     moduleMetadata({
       imports: [

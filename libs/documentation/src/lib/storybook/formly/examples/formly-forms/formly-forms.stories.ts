@@ -8,7 +8,7 @@ import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/s
 import { FormlyFormsModule } from './formly-forms.module';
 
 export default {
-  title: 'Formly/Examples/Forms',
+  title: 'Formly/EXAMPLES/Forms',
   decorators: [
     moduleMetadata({
       imports: [

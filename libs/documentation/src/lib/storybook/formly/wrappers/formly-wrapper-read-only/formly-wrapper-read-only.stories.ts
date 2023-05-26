@@ -12,7 +12,7 @@ import { FormlyWrapperReadOnlyIntroductionModule } from './formly-wrapper-read-o
 import { FormlyWrapperReadOnlyOptionsModule } from './formly-wrapper-read-only-options/formly-wrapper-read-only-options.module';
 
 export default {
-  title: 'Formly/Wrapper/Read Only',
+  title: 'Formly/WRAPPERS/Read Only',
   decorators: [
     moduleMetadata({
       imports: [

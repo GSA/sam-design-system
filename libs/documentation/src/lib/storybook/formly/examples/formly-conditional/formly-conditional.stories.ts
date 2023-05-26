@@ -8,7 +8,7 @@ import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/s
 import { FormlyConditionalModule } from './formly-conditional.module';
 
 export default {
-  title: 'Formly/Examples/Conditional ',
+  title: 'Formly/EXAMPLES/Conditional ',
   decorators: [
     moduleMetadata({
       imports: [

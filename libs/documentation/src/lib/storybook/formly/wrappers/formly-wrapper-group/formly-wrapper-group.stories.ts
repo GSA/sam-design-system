@@ -10,7 +10,7 @@ import { FormlyWrapperGroupIntroductionModule } from './formly-wrapper-group-int
 import { FormlyWrapperGroupOptionsModule } from './formly-wrapper-group-options/formly-wrapper-group-options.module';
 
 export default {
-  title: 'Formly/Wrapper/Group',
+  title: 'Formly/WRAPPERS/Group',
   decorators: [
     moduleMetadata({
       imports: [

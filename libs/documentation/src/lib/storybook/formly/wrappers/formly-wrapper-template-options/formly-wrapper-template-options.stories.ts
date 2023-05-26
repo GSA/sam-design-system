@@ -13,7 +13,7 @@ import { FormlyWrapperTemplateOptionsTagsModule } from './formly-wrapper-templat
 import { FormlyWrapperTemplateOptionsUpdateonModule } from './formly-wrapper-template-options-updateon/formly-wrapper-template-options-updateon.module';
 
 export default {
-  title: 'Formly/Wrapper/Template Options',
+  title: 'Formly/WRAPPERS/Template Options',
   decorators: [
     moduleMetadata({
       imports: [
