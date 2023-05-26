@@ -6,9 +6,10 @@ import { FormlyModule } from '@ngx-formly/core';
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { FormlyWrapperTemplateOptionsBlurModule } from './formly-wrapper-template-options-blur/formly-wrapper-template-options-blur.module';
+import { FormlyWrapperTemplateOptionsHideOptionalModule } from './formly-wrapper-template-options-hideoptional/formly-wrapper-template-options-hideoptional.module';
 import { FormlyWrapperTemplateOptionsIntroductionModule } from './formly-wrapper-template-options-introduction/formly-wrapper-template-options-introduction.module';
 import { FormlyWrapperTemplateOptionsTagsModule } from './formly-wrapper-template-options-tags/formly-wrapper-template-options-tags.module';
-import { FormlyWrapperTemplateOptionsOptionsModule } from './formly-wrapper-template-options-updateon/formly-wrapper-template-options-updateon.module';
+import { FormlyWrapperTemplateOptionsUpdateonModule } from './formly-wrapper-template-options-updateon/formly-wrapper-template-options-updateon.module';
 
 export default {
   title: 'Formly/Wrapper/Template Options',
@@ -23,8 +24,9 @@ export default {
         FormlyModule.forRoot(),
         FormlyWrapperTemplateOptionsIntroductionModule,
         FormlyWrapperTemplateOptionsBlurModule,
-        FormlyWrapperTemplateOptionsOptionsModule,
+        FormlyWrapperTemplateOptionsUpdateonModule,
         FormlyWrapperTemplateOptionsTagsModule,
+FormlyWrapperTemplateOptionsHideOptionalModule
       ],
     }),
   ],
@@ -72,22 +74,22 @@ UpdateOn.parameters = {
   stackblitzLink: generateStackblitzLink('formly-wrapper-template-options', 'updateon'),
 };
 
-export const Tags: Story = (args) => ({
-  template: '<sds-formly-wrapper-template-options-tags></sds-formly-wrapper-template-options-tags>',
+export const Hideoptional: Story = (args) => ({
+  template: '<sds-formly-wrapper-template-options-hideoptional></sds-formly-wrapper-template-options-hideoptional>',
   props: args,
 });
-Tags.parameters = {
+Hideoptional.parameters = {
   controls: {
     disabled: true,
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
   preview: generateConfig(
-    'storybook/formly/wrappers/formly-wrapper-template-options/formly-wrapper-template-options-tags',
-    'FormlyWrapperTemplateOptionsTagsModule',
-    'sds-formly-wrapper-template-options-tags'
+    'storybook/formly/wrappers/formly-wrapper-template-options/formly-wrapper-template-options-hideoptional',
+    'FormlyWrapperTemplateOptionsHideoptionalModule',
+    'sds-formly-wrapper-template-options-hideoptional'
   ),
-  stackblitzLink: generateStackblitzLink('formly-wrapper-template-options', 'tags'),
+  stackblitzLink: generateStackblitzLink('formly-wrapper-template-options', 'hideoptional'),
 };
 
-export const __namedExportsOrder = ['Introduction', 'Blur', 'UpdateOn', 'Tags'];
+export const __namedExportsOrder = ['Introduction', 'Blur', 'UpdateOn', 'Tags', 'Hideoptional'];

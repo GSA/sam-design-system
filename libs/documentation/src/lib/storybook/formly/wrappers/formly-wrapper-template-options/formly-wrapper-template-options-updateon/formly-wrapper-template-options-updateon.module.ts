@@ -11,4 +11,4 @@ import { FormlyWrapperTemplateOptionsUpdateonComponent } from './formly-wrapper-
   exports: [FormlyWrapperTemplateOptionsUpdateonComponent],
   bootstrap: [FormlyWrapperTemplateOptionsUpdateonComponent],
 })
-export class FormlyWrapperTemplateOptionsOptionsModule {}
+export class FormlyWrapperTemplateOptionsUpdateonModule {}
