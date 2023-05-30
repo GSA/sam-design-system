@@ -13,24 +13,36 @@ export class DialogAlertTypeComponent {
     this.dialog.open(DialogAlertTypeTemplate, {
       width: 'medium',
       alert: 'warning',
+      data: {
+        type: 'Warning'
+      }
     });
   }
   openInfoDialog(): void {
     this.dialog.open(DialogAlertTypeTemplate, {
       width: 'medium',
       alert: 'info',
+      data: {
+        type: 'Info'
+      }
     });
   }
   openSuccessDialog(): void {
     this.dialog.open(DialogAlertTypeTemplate, {
       width: 'medium',
       alert: 'success',
+      data: {
+        type: 'Success'
+      }
     });
   }
   openErrorDialog(): void {
     this.dialog.open(DialogAlertTypeTemplate, {
       width: 'medium',
       alert: 'error',
+      data: {
+        type: 'Error'
+      }
     });
   }
 }
