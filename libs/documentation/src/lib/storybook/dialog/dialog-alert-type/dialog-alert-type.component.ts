@@ -14,8 +14,8 @@ export class DialogAlertTypeComponent {
       width: 'medium',
       alert: 'warning',
       data: {
-        type: 'Warning'
-      }
+        type: 'Warning',
+      },
     });
   }
   openInfoDialog(): void {
@@ -23,8 +23,8 @@ export class DialogAlertTypeComponent {
       width: 'medium',
       alert: 'info',
       data: {
-        type: 'Info'
-      }
+        type: 'Info',
+      },
     });
   }
   openSuccessDialog(): void {
@@ -32,8 +32,8 @@ export class DialogAlertTypeComponent {
       width: 'medium',
       alert: 'success',
       data: {
-        type: 'Success'
-      }
+        type: 'Success',
+      },
     });
   }
   openErrorDialog(): void {
@@ -41,8 +41,8 @@ export class DialogAlertTypeComponent {
       width: 'medium',
       alert: 'error',
       data: {
-        type: 'Error'
-      }
+        type: 'Error',
+      },
     });
   }
 }
