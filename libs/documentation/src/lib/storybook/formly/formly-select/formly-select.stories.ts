@@ -56,8 +56,8 @@ const formlyConfigFunction = (label: string, description: string, required: bool
 };
 
 const Template: Story = (args) => {
-  const { label, placeholder, description, options } = args;
-  let config = formlyConfigFunction(label, placeholder, description, options);
+  const { label, description, required, options } = args;
+  let config = formlyConfigFunction(label, description, required, options);
   return {
     template: '<sds-formly-select-configurable [config]="configObj"></sds-formly-select-configurable>',
     props: {
