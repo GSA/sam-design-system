@@ -38,12 +38,6 @@ export default {
     }),
   ],
 } as Meta;
-/*
-export const Introduction: Story = (args) => ({
-  template: '<sds-formly-file-info-introduction></sds-formly-file-info-introduction>',
-  props: args,
-});
-Introduction.parameters = { options: { showPanel: false } };*/
 
 export const Coloring: Story = (args) => ({
   template: '<usa-icon-coloring-demo></usa-icon-coloring-demo>',
@@ -59,32 +53,32 @@ Coloring.parameters = {
   stackblitzLink: generateStackblitzLink('icons-coloring', 'coloring'),
 };
 
-export const Rotation: Story = (args) => ({
+export const Rotating: Story = (args) => ({
   template: '<usa-icon-rotation-demo></usa-icon-rotation-demo>',
   props: args,
 });
-Rotation.parameters = {
+Rotating.parameters = {
   controls: {
     disabled: true,
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
   preview: generateConfig('storybook/utilities/icons/icons-rotation', 'IconsRotationModule', 'usa-icon-rotation-demo'),
-  stackblitzLink: generateStackblitzLink('icons-rotation', 'rotation'),
+  stackblitzLink: generateStackblitzLink('icons-rotation', 'rotating'),
 };
 
-export const Scaling: Story = (args) => ({
+export const Sizing: Story = (args) => ({
   template: '<usa-icon-scaling-demo></usa-icon-scaling-demo>',
   props: args,
 });
-Scaling.parameters = {
+Sizing.parameters = {
   controls: {
     disabled: true,
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
   preview: generateConfig('storybook/utilities/icons/icons-scaling', 'IconsScalingModule', 'usa-icon-scaling-demo'),
-  stackblitzLink: generateStackblitzLink('icons-scaling', 'scaling'),
+  stackblitzLink: generateStackblitzLink('icons-scaling', 'Sizing'),
 };
 
 export const Skewing: Story = (args) => ({
@@ -115,18 +109,18 @@ Stacking.parameters = {
   stackblitzLink: generateStackblitzLink('icons-stacking', 'stacking'),
 };
 
-export const Basic: Story = (args) => ({
+export const Custom: Story = (args) => ({
   template: '<sds-icons-basic-demo></sds-icons-basic-demo>',
   props: args,
 });
-Basic.parameters = {
+Custom.parameters = {
   controls: {
     disabled: true,
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
   preview: generateConfig('storybook/utilities/icons/icons-basic', 'IconsBasicModule', 'sds-icons-basic-demo'),
-  stackblitzLink: generateStackblitzLink('icons-basic', 'basic'),
+  stackblitzLink: generateStackblitzLink('icons-basic', 'custom'),
 };
 
 export const Bootstrap: Story = (args) => ({
@@ -160,4 +154,4 @@ Uswds.parameters = {
   preview: generateConfig('storybook/utilities/icons/icons-uswds', 'IconsUswdsModule', 'usa-icon-icons-demo'),
   stackblitzLink: generateStackblitzLink('icons-uswds', 'uswds'),
 };
-/*export const __namedExportsOrder = ['Introduction', 'Basic', 'Options']; */
+export const __namedExportsOrder = ['Coloring', 'Rotating', 'Sizing', 'Skewing', 'Custom', 'Bootstrap', 'Uswds'];
