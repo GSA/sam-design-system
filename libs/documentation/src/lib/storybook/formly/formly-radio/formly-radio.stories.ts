@@ -141,11 +141,4 @@ Horizontal.parameters = {
   stackblitzLink: generateStackblitzLink('formly-radio', 'horizontal'),
 };
 
-export const __namedExportsOrder = [
-  'Introduction',
-  'Basic',
-  'Advanced',
-  'Template',
-  'Group',
-  'Horizontal',
-];
+export const __namedExportsOrder = ['Introduction', 'Basic', 'Advanced', 'Template', 'Group', 'Horizontal'];
