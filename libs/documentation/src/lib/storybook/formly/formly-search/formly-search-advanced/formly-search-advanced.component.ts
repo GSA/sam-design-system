@@ -25,7 +25,7 @@ export class FormlySearchAdvancedComponent {
           templateOptions: {
             label: 'Search with dropdown',
             hideLabel: true,
-            description: '<a href="#" class="usa-link">Advanced Search</a>',
+            description: '<a href="#" class="float-right margin-right-205 usa-link">Advanced Search</a>',
             hideDescription: true,
             searchSettings: {
               id: 'search',
