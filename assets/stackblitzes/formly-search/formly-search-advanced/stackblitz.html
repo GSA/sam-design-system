@@ -322,11 +322,18 @@ export class AppModule {}
 export class AppComponent {}
 ">
     
-    <input type="hidden" name="project[files][src/app/formly-search-advanced.component.html]" value="&lt;form [formGroup]=&#34;form&#34;&gt;
-  &lt;formly-form [model]=&#34;model&#34; [fields]=&#34;fields&#34; [options]=&#34;options&#34; [form]=&#34;form&#34;&gt;&lt;/formly-form&gt;
-&lt;/form&gt;
+    <input type="hidden" name="project[files][src/app/formly-search-advanced.component.html]" value="&lt;div class=&#34;advanced-search-container&#34;&gt;
+  &lt;form [formGroup]=&#34;form&#34;&gt;
+    &lt;formly-form [model]=&#34;model&#34; [fields]=&#34;fields&#34; [options]=&#34;options&#34; [form]=&#34;form&#34;&gt;&lt;/formly-form&gt;
+  &lt;/form&gt;
+&lt;/div&gt;
 
 {{ model | json }}
+">
+    
+    <input type="hidden" name="project[files][src/app/formly-search-advanced.component.scss]" value=".advanced-search-container {
+  max-width: 45rem;
+}
 ">
     
     <input type="hidden" name="project[files][src/app/formly-search-advanced.component.ts]" value="import { Component } from &#39;@angular/core&#39;;
@@ -335,6 +342,7 @@ import { FormlyFormOptions, FormlyFieldConfig } from &#39;@ngx-formly/core&#39;;
 
 @Component({
   selector: &#39;sds-formly-search-advanced&#39;,
+  styleUrls: [&#39;./formly-search-advanced.component.scss&#39;],
   templateUrl: &#39;./formly-search-advanced.component.html&#39;,
 })
 export class FormlySearchAdvancedComponent {
@@ -356,7 +364,7 @@ export class FormlySearchAdvancedComponent {
           templateOptions: {
             label: &#39;Search with dropdown&#39;,
             hideLabel: true,
-            description: &#39;&lt;a href=&#34;#&#34; class=&#34;usa-link&#34;&gt;Advanced Search&lt;/a&gt;&#39;,
+            description: &#39;&lt;a href=&#34;#&#34; class=&#34;float-right usa-link&#34;&gt;Advanced Search&lt;/a&gt;&#39;,
             hideDescription: true,
             searchSettings: {
               id: &#39;search&#39;,
