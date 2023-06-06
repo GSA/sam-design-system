@@ -4,6 +4,7 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
   selector: 'sds-formly-search-advanced',
+  styleUrls: ['./formly-search-advanced.component.scss'],
   templateUrl: './formly-search-advanced.component.html',
 })
 export class FormlySearchAdvancedComponent {
@@ -25,7 +26,7 @@ export class FormlySearchAdvancedComponent {
           templateOptions: {
             label: 'Search with dropdown',
             hideLabel: true,
-            description: '<a href="#" class="usa-link">Advanced Search</a>',
+            description: '<a href="#" class="float-right usa-link">Advanced Search</a>',
             hideDescription: true,
             searchSettings: {
               id: 'search',
