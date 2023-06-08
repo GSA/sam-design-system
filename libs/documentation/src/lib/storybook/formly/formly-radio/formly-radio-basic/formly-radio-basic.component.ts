@@ -42,7 +42,6 @@ export class FormlyRadioBasicComponent {
           {
             key: 'international',
             value: 'International Organization',
-            tooltipText: 'International Organization',
           },
           {
             key: 'other',
