@@ -45,7 +45,6 @@ export class FormlyRadioGroupComponent {
             {
               key: 'international',
               value: 'International Organization',
-              tooltipText: 'International Organization',
             },
           ],
           Other: [
