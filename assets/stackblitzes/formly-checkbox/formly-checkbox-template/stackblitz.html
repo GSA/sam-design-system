@@ -342,9 +342,7 @@ export class AppComponent {}
       [formControl]=&#34;formControl&#34;
       [formlyAttributes]=&#34;field&#34;
     /&gt;
-    &lt;label class=&#34;usa-checkbox__label&#34; [for]=&#34;id&#34;&gt;
-      &lt;b [innerHtml]=&#34;to.label&#34;&gt;&lt;/b&gt;
-    &lt;/label&gt;
+    &lt;label class=&#34;usa-checkbox__label text-bold&#34; [for]=&#34;id&#34; [innerHtml]=&#34;to.label&#34;&gt; &lt;/label&gt;
   &lt;/div&gt;
   &lt;div class=&#34;padding-left-3&#34;&gt;
     &lt;usa-icon [icon]=&#34;&#39;question-octagon&#39;&#34; [size]=&#34;&#39;5x&#39;&#34;&gt;&lt;/usa-icon&gt;
@@ -391,9 +389,29 @@ import { ReactiveFormsModule, FormsModule } from &#39;@angular/forms&#39;;
 import { SdsFormlyModule } from &#39;@gsa-sam/sam-formly&#39;;
 import { FormlyModule } from &#39;@ngx-formly/core&#39;;
 import { FormlyCheckboxTemplateComponent } from &#39;./formly-checkbox-template.component&#39;;
+import { allIcons, NgxBootstrapIconsModule } from &#39;ngx-bootstrap-icons&#39;;
+import { IconModule, allIcons as sdsAllIcons, uswdsAllIcons } from &#39;@gsa-sam/ngx-uswds-icons&#39;;
+import * as _ from &#39;lodash-es&#39;;
 
+export const appendPrefix = (iconsObject: { [key: string]: string }, prefix: string): { [key: string]: string } =&gt; {
+  const prefixedIconsObject = {};
+  Object.keys(iconsObject).forEach((key) =&gt; {
+    prefixedIconsObject[`${prefix}${_.upperFirst(key)}`] = iconsObject[key];
+  });
+  return prefixedIconsObject;
+};
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot()],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    SdsFormlyModule,
+    FormsModule,
+    FormlyModule.forRoot(),
+    IconModule,
+    NgxBootstrapIconsModule.pick(
+      Object.assign(_.cloneDeep(allIcons), appendPrefix(_.cloneDeep(sdsAllIcons), &#39;sds&#39;), _.cloneDeep(uswdsAllIcons))
+    ),
+  ],
   declarations: [FormlyCheckboxTemplateComponent],
   exports: [FormlyCheckboxTemplateComponent],
   bootstrap: [FormlyCheckboxTemplateComponent],
