@@ -22,7 +22,6 @@ export class FormlyCheckboxBasicComponent {
         description: 'By checking the box below you agree to the terms and conditions of the site.',
         required: true,
         tooltipText: 'By checking the box you agree to the terms and conditions',
-        tooltipPosition: 'bottom',
       },
     },
   ];

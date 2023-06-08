@@ -16,7 +16,6 @@ export class FormlyCheckboxTooltipComponent {
       type: 'checkbox',
       templateOptions: {
         tooltipText: 'By checking the box you agree to the terms and conditions',
-        tooltipPosition: 'bottom',
       },
     },
   ];
