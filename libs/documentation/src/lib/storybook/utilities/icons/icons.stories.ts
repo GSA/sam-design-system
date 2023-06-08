@@ -154,4 +154,13 @@ Uswds.parameters = {
   preview: generateConfig('storybook/utilities/icons/icons-uswds', 'IconsUswdsModule', 'usa-icon-icons-demo'),
   stackblitzLink: generateStackblitzLink('icons-uswds', 'uswds'),
 };
-export const __namedExportsOrder = ['Coloring', 'Rotating', 'Sizing', 'Skewing', 'Custom', 'Bootstrap', 'Uswds'];
+export const __namedExportsOrder = [
+  'Coloring',
+  'Rotating',
+  'Sizing',
+  'Stacking',
+  'Skewing',
+  'Custom',
+  'Bootstrap',
+  'Uswds',
+];
