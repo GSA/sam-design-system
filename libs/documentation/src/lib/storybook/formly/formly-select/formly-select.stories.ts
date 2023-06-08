@@ -76,7 +76,7 @@ Introduction.parameters = { options: { showPanel: false } };
 export const Configurable = Template.bind({});
 Configurable.args = {
   label: 'Entity Type',
-  description: 'Select the entinty type.',
+  description: 'Select the entity type.',
   required: true,
   options: [
     'Contract Opportunities',
