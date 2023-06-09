@@ -43,6 +43,7 @@
                 [innerHTML]="option.value[j].tooltipText"
               ></p>
               <usa-icon
+                class="text-secondary"
                 [position]="option.value[j].tooltipPosition ? option.value[j].tooltipPosition :'right'"
                 [sdsTooltip]="tipContent"
                 [size]="'sm'"
@@ -75,6 +76,7 @@
       <div *ngIf="to.selectTooltipText">
         <p #tipContent1 [ngClass]="to.tooltipClass" class="margin-1" [innerHTML]="to.selectTooltipText"></p>
         <usa-icon
+          class="text-secondary"
           class="margin-left-1"
           [position]="to.selecttooltipPosition ? to.selecttooltipPosition :'right'"
           [sdsTooltip]="tipContent1"
@@ -128,6 +130,7 @@
         <div *ngIf="option.tooltipText" class="margin-left-1">
           <p #tipContent [ngClass]="option.tooltipClass" class="margin-1" [innerHTML]="option.tooltipText"></p>
           <usa-icon
+            class="text-secondary"
             [position]="option.tooltipPosition ? option.tooltipPosition :'right'"
             [sdsTooltip]="tipContent"
             [size]="'sm'"
@@ -188,6 +191,7 @@
                 [innerHTML]="subOption.tooltipText"
               ></p>
               <usa-icon
+                class="text-secondary"
                 [position]="subOption.tooltipPosition ? subOption.tooltipPosition :'right'"
                 [sdsTooltip]="tipContent"
                 [size]="'sm'"
