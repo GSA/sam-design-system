@@ -5,7 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './table-row-clicked.component.html',
 })
 export class TableRowClickedComponent {
-
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'requests', 'date'];
 
   data = [
@@ -79,5 +78,4 @@ export class TableRowClickedComponent {
     console.log("clicked row's data:");
     console.log(this.data[rowIndex]);
   }
-
 }

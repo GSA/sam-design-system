@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'sds-table-sticky-column',
-  templateUrl: './table-sticky-column.component.html'
+  templateUrl: './table-sticky-column.component.html',
 })
 export class TableStickyColumnComponent {
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'requests', 'jobTitle', 'date'];

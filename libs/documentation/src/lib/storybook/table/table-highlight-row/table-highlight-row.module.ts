@@ -4,11 +4,8 @@ import { TableHighlightRowComponent } from './table-highlight-row.component';
 import { SdsTableModule } from '@gsa-sam/sam-material-extensions';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SdsTableModule,
-  ],
+  imports: [CommonModule, SdsTableModule],
   declarations: [TableHighlightRowComponent],
   exports: [TableHighlightRowComponent],
 })
-export class TableHighlightRowModule { }
+export class TableHighlightRowModule {}

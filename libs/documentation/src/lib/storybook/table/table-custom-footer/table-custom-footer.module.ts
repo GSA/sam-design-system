@@ -4,11 +4,8 @@ import { TableCustomFooterComponent } from './table-custom-footer.component';
 import { SdsTableModule } from '@gsa-sam/sam-material-extensions';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SdsTableModule,
-  ],
+  imports: [CommonModule, SdsTableModule],
   declarations: [TableCustomFooterComponent],
   exports: [TableCustomFooterComponent],
 })
-export class TableCustomFooterModule { }
+export class TableCustomFooterModule {}

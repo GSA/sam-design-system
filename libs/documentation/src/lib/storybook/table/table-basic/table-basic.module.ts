@@ -4,12 +4,9 @@ import { TableBasicComponent } from './table-basic.component';
 import { SdsTableModule } from '@gsa-sam/sam-material-extensions';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SdsTableModule
-  ],
+  imports: [CommonModule, SdsTableModule],
   declarations: [TableBasicComponent],
   exports: [TableBasicComponent],
   bootstrap: [TableBasicComponent],
 })
-export class TableBasicModule { }
+export class TableBasicModule {}

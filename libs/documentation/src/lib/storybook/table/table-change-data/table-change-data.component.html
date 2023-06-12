@@ -1,8 +1,4 @@
-<sds-table
-  [data]="tableData"
-  [tableName]="'basicTable'"
-  [pagination]="true"
-  >
+<sds-table [data]="tableData" [tableName]="'basicTable'" [pagination]="true">
   <sds-table-column sdsColumnName="id">
     <ng-template #sdsHeaderCell>ID</ng-template>
     <ng-template #sdsCell let-element="element">{{ element.id }}</ng-template>

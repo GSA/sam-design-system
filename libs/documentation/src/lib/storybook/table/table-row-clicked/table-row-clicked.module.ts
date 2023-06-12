@@ -4,11 +4,8 @@ import { TableRowClickedComponent } from './table-row-clicked.component';
 import { SdsTableModule } from '@gsa-sam/sam-material-extensions';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SdsTableModule,
-  ],
+  imports: [CommonModule, SdsTableModule],
   declarations: [TableRowClickedComponent],
   exports: [TableRowClickedComponent],
 })
-export class TableRowClickedModule { }
+export class TableRowClickedModule {}

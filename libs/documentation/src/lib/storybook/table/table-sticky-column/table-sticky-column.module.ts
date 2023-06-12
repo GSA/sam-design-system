@@ -4,11 +4,8 @@ import { TableStickyColumnComponent } from './table-sticky-column.component';
 import { SdsTableModule } from '@gsa-sam/sam-material-extensions';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SdsTableModule
-  ],
+  imports: [CommonModule, SdsTableModule],
   declarations: [TableStickyColumnComponent],
   exports: [TableStickyColumnComponent],
 })
-export class TableStickyColumnModule { }
+export class TableStickyColumnModule {}

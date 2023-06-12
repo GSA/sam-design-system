@@ -5,7 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './table-basic.component.html',
 })
 export class TableBasicComponent {
-
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'requests', 'date'];
 
   data = [
@@ -73,5 +72,4 @@ export class TableBasicComponent {
       tags: [{ className: 'text-default', label: 'Default' }],
     },
   ];
-
 }

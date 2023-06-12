@@ -4,11 +4,8 @@ import { TableStickyFooterComponent } from './table-sticky-footer.component';
 import { SdsTableModule } from '@gsa-sam/sam-material-extensions';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SdsTableModule
-  ],
+  imports: [CommonModule, SdsTableModule],
   declarations: [TableStickyFooterComponent],
   exports: [TableStickyFooterComponent],
 })
-export class TableStickyFooterModule { }
+export class TableStickyFooterModule {}

@@ -2705,5 +2705,5 @@ const tableDataFull = [
       { className: 'text-default', label: 'Expired' },
     ],
   },
-]
+];
 export default tableDataFull;

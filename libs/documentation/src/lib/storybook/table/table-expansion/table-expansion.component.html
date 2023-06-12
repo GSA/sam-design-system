@@ -1,9 +1,4 @@
-<sds-table
-  [data]="data"
-  [tableName]="'basicTable'"
-  [expansion]="true"
-  (expansionClicked)="onExpansionClicked($event)"
-  >
+<sds-table [data]="data" [tableName]="'basicTable'" [expansion]="true" (expansionClicked)="onExpansionClicked($event)">
   <sds-table-column sdsColumnName="id">
     <ng-template #sdsHeaderCell>ID</ng-template>
     <ng-template #sdsCell let-element="element">{{ element.id }}</ng-template>

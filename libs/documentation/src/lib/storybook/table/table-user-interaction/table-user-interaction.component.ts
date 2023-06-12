@@ -5,8 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './table-user-interaction.component.html',
 })
 export class TableUserInteractionComponent {
-
-
   rowEdit: any;
 
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'requests', 'date', 'actions'];
@@ -81,5 +79,4 @@ export class TableUserInteractionComponent {
     console.log(element, 'Called actions with element: ');
     this.rowEdit = element;
   }
-
 }

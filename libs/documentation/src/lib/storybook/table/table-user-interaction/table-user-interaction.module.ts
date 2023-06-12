@@ -4,11 +4,8 @@ import { TableUserInteractionComponent } from './table-user-interaction.componen
 import { SdsTableModule } from '@gsa-sam/sam-material-extensions';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SdsTableModule,
-  ],
+  imports: [CommonModule, SdsTableModule],
   declarations: [TableUserInteractionComponent],
-  exports: [TableUserInteractionComponent]
+  exports: [TableUserInteractionComponent],
 })
-export class TableUserInteractionModule { }
+export class TableUserInteractionModule {}

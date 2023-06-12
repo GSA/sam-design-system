@@ -31,7 +31,7 @@ export default {
         CommonModule,
         RouterTestingModule,
         NoopAnimationsModule,
-        NgxBootstrapIconsModule.pick({uswdsAdd, dash}),
+        NgxBootstrapIconsModule.pick({ uswdsAdd, dash }),
         TableBasicModule,
         TableSortingModule,
         TablePaginationModule,
@@ -172,7 +172,11 @@ UserInteraction.parameters = {
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
-  preview: generateConfig('storybook/table/table-user-interaction', 'TableUserInteractionModule', 'sds-table-user-interaction'),
+  preview: generateConfig(
+    'storybook/table/table-user-interaction',
+    'TableUserInteractionModule',
+    'sds-table-user-interaction'
+  ),
   stackblitzLink: generateStackblitzLink('table', 'user-interaction'),
 };
 

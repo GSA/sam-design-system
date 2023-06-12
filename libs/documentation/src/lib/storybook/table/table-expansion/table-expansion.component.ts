@@ -2,10 +2,9 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'sds-table-expansion',
-  templateUrl: './table-expansion.component.html'
+  templateUrl: './table-expansion.component.html',
 })
 export class TableExpansionComponent {
-
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'requests', 'date'];
 
   sortColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'date'];
@@ -79,5 +78,4 @@ export class TableExpansionComponent {
   onExpansionClicked(element: any) {
     console.log('Expansion Clicked', element);
   }
-
 }

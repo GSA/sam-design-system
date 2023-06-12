@@ -5,7 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './table-sorting.component.html',
 })
 export class TableSortingComponent {
-
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'requests', 'date'];
 
   sortColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'date'];
@@ -75,5 +74,4 @@ export class TableSortingComponent {
       tags: [{ className: 'text-default', label: 'Default' }],
     },
   ];
-
 }

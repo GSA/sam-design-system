@@ -5,7 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './table-highlight-row.component.html',
 })
 export class TableHighlightRowComponent {
-
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'requests', 'date'];
 
   data = [
@@ -73,5 +72,4 @@ export class TableHighlightRowComponent {
       tags: [{ className: 'text-default', label: 'Default' }],
     },
   ];
-
 }

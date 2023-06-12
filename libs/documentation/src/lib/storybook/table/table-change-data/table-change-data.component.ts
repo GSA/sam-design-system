@@ -2,10 +2,9 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'sds-table-change-data',
-  templateUrl: './table-change-data.component.html'
+  templateUrl: './table-change-data.component.html',
 })
 export class TableChangeDataComponent {
-
   rowEdit: any;
 
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'requests', 'date'];
@@ -79,12 +78,12 @@ export class TableChangeDataComponent {
   fullData: any;
   tableData: any;
 
-  constructor(){
+  constructor() {
     this.fullData = this.expandData();
-    this.sliceData(0,5);
+    this.sliceData(0, 5);
   }
 
-  expandData(){
+  expandData() {
     return [
       ...this.updateIds(this.partialData, 0),
       ...this.updateIds(this.partialData, 5),
@@ -97,10 +96,10 @@ export class TableChangeDataComponent {
       ...this.updateIds(this.partialData, 40),
       ...this.updateIds(this.partialData, 45),
       ...this.updateIds(this.partialData, 50),
-    ]
+    ];
   }
 
-  updateIds(partialData: Array<any>, startingID: number){
+  updateIds(partialData: Array<any>, startingID: number) {
     const partialDataCopy = JSON.parse(JSON.stringify(partialData));
     const updatedData = partialDataCopy.map((element, index) => {
       element.id = startingID + index;
@@ -117,5 +116,4 @@ export class TableChangeDataComponent {
   sliceData(start, end) {
     this.tableData = this.fullData.slice(start, end);
   }
-
 }

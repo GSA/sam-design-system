@@ -3,10 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'sds-table-custom-footer',
   templateUrl: './table-custom-footer.component.html',
-
 })
 export class TableCustomFooterComponent {
-
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'requests', 'date'];
 
   data = [
@@ -78,5 +76,4 @@ export class TableCustomFooterComponent {
   getTotalRequests() {
     return this.data.map((t) => t.requests).reduce((acc, value) => acc + value, 0);
   }
-
 }
