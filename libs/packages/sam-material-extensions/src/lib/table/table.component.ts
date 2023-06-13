@@ -221,7 +221,7 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
   constructor(private changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.data.currentValue) {
+    if (changes.data?.currentValue) {
       this.dataSource = new MatTableDataSource(changes.data.currentValue);
       if (this.sort === 'true' || this.sort === '' || this.isArray(this.sort)) {
         this.dataSource.sortingDataAccessor = this.sortFn ? this.sortFn : this.defaultSort;

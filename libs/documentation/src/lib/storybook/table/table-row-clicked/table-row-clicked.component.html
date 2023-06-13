@@ -1,4 +1,4 @@
-<sds-table [data]="data" [tableName]="'basicTable'" (rowClicked)="handleClicked($event)">
+<sds-table [data]="data" [tableName]="'rowClickedTable'" (rowClicked)="handleClicked($event)">
   <sds-table-column sdsColumnName="id">
     <ng-template #sdsHeaderCell>ID</ng-template>
     <ng-template #sdsCell let-element="element">{{ element.id }}</ng-template>
