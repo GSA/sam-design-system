@@ -35,7 +35,7 @@ import {
   arrowClockwise,
   chevronDown,
   infoCircleFill,
-  calendar
+  calendar,
 } from 'ngx-bootstrap-icons';
 import { UsaAccordionModule, UsaFileInputModule } from '@gsa-sam/ngx-uswds';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
