@@ -1,6 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
-import { createCodePreviewTabData, generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
+import {
+  createCodePreviewTabData,
+  generateConfig,
+  generateStackblitzLink,
+} from 'libs/documentation/src/sandbox/sandbox-utils';
 import { TableBasicModule } from './table-basic/table-basic.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,7 +21,6 @@ import { TableUserInteractionModule } from './table-user-interaction/table-user-
 import { TableChangeDataModule } from './table-change-data/table-change-data.module';
 import { TableHighlightRowModule } from './table-highlight-row/table-highlight-row.module';
 import { TableRowClickedModule } from './table-row-clicked/table-row-clicked.module';
-import { TableConfigurableModule } from './table-configurable/table-configurable.module';
 
 export default {
   title: 'Components/Table',
@@ -41,7 +44,6 @@ export default {
         TableChangeDataModule,
         TableHighlightRowModule,
         TableRowClickedModule,
-        TableConfigurableModule,
       ],
     }),
   ],
@@ -86,15 +88,9 @@ Pagination.parameters = {
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
-  preview: generateConfig('storybook/table/table-pagination', 'TablePaginationModule', 'sds-table-pagination',
-    [
-      createCodePreviewTabData(
-        'storybook/table/table-pagination/data.ts',
-        'ts',
-        false
-      )
-    ]
-  ),
+  preview: generateConfig('storybook/table/table-pagination', 'TablePaginationModule', 'sds-table-pagination', [
+    createCodePreviewTabData('storybook/table/table-pagination/data.ts', 'ts', false),
+  ]),
   stackblitzLink: generateStackblitzLink('table', 'pagination'),
 };
 
