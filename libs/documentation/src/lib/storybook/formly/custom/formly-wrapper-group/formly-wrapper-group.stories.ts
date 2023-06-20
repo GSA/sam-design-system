@@ -5,12 +5,12 @@ import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
-import { FormlyWrapperLabelBasicModule } from './formly-wrapper-label-basic/formly-wrapper-label-basic.module';
-import { FormlyWrapperLabelIntroductionModule } from './formly-wrapper-label-introduction/formly-wrapper-label-introduction.module';
-import { FormlyWrapperLabelOptionsModule } from './formly-wrapper-label-options/formly-wrapper-label-options.module';
+import { FormlyWrapperGroupBasicModule } from './formly-wrapper-group-basic/formly-wrapper-group-basic.module';
+import { FormlyWrapperGroupIntroductionModule } from './formly-wrapper-group-introduction/formly-wrapper-group-introduction.module';
+import { FormlyWrapperGroupOptionsModule } from './formly-wrapper-group-options/formly-wrapper-group-options.module';
 
 export default {
-  title: 'Formly/WRAPPERS/Label',
+  title: 'Formly Examples/Group Wrapper',
   decorators: [
     moduleMetadata({
       imports: [
@@ -20,22 +20,22 @@ export default {
         FormsModule,
         NoopAnimationsModule,
         FormlyModule.forRoot(),
-        FormlyWrapperLabelIntroductionModule,
-        FormlyWrapperLabelBasicModule,
-        FormlyWrapperLabelOptionsModule,
+        FormlyWrapperGroupIntroductionModule,
+        FormlyWrapperGroupBasicModule,
+        FormlyWrapperGroupOptionsModule,
       ],
     }),
   ],
 } as Meta;
 
 export const Introduction: Story = (args) => ({
-  template: '<sds-formly-wrapper-label-introduction></sds-formly-wrapper-label-introduction>',
+  template: '<sds-formly-wrapper-group-introduction></sds-formly-wrapper-group-introduction>',
   props: args,
 });
 Introduction.parameters = { options: { showPanel: false } };
 
 export const Basic: Story = (args) => ({
-  template: '<sds-formly-wrapper-label-basic></sds-formly-wrapper-label-basic>',
+  template: '<sds-formly-wrapper-group-basic></sds-formly-wrapper-group-basic>',
   props: args,
 });
 Basic.parameters = {
@@ -45,15 +45,15 @@ Basic.parameters = {
   },
   actions: { disabled: true },
   preview: generateConfig(
-    'storybook/formly/wrappers/formly-wrapper-label/formly-wrapper-label-basic',
-    'FormlyWrapperLabelBasicModule',
-    'sds-formly-wrapper-label-basic'
+    'storybook/formly/custom/formly-wrapper-group/formly-wrapper-group-basic',
+    'FormlyWrapperGroupBasicModule',
+    'sds-formly-wrapper-group-basic'
   ),
-  stackblitzLink: generateStackblitzLink('formly-wrapper-label', 'basic'),
+  stackblitzLink: generateStackblitzLink('formly-wrapper-group', 'basic'),
 };
 
 export const Options: Story = (args) => ({
-  template: '<sds-formly-wrapper-label-options></sds-formly-wrapper-label-options>',
+  template: '<sds-formly-wrapper-group-options></sds-formly-wrapper-group-options>',
   props: args,
 });
 Options.parameters = {
@@ -63,11 +63,11 @@ Options.parameters = {
   },
   actions: { disabled: true },
   preview: generateConfig(
-    'storybook/formly/wrappers/formly-wrapper-label/formly-wrapper-label-options',
-    'FormlyWrapperLabelOptionsModule',
-    'sds-formly-wrapper-label-template'
+    'storybook/formly/custom/formly-wrapper-group/formly-wrapper-group-options',
+    'FormlyWrapperGroupOptionsModule',
+    'sds-formly-wrapper-group-template'
   ),
-  stackblitzLink: generateStackblitzLink('formly-wrapper-label', 'options'),
+  stackblitzLink: generateStackblitzLink('formly-wrapper-group', 'options'),
 };
 
 export const __namedExportsOrder = ['Introduction', 'Basic', 'Options'];

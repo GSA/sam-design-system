@@ -21,7 +21,6 @@ export class FormlyAutocompleteBasicComponent implements OnInit {
   fields: FormlyFieldConfig[] = [
     {
       key: 'filters',
-      wrappers: ['filterwrapper'],
       templateOptions: { label: 'Keyword' },
       fieldGroup: [
         {

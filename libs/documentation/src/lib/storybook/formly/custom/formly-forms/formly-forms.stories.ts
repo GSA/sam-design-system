@@ -8,7 +8,7 @@ import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/s
 import { FormlyFormsModule } from './formly-forms.module';
 
 export default {
-  title: 'Formly/EXAMPLES/Forms',
+  title: 'Formly Examples/Address Form',
   decorators: [
     moduleMetadata({
       imports: [
@@ -24,17 +24,17 @@ export default {
   ],
 } as Meta;
 
-export const Forms: Story = (args) => ({
+export const AddressForm: Story = (args) => ({
   template: '<sds-formly-forms></sds-formly-forms>',
   props: args,
 });
-Forms.parameters = {
+AddressForm.parameters = {
   controls: {
     disabled: true,
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
-  preview: generateConfig('storybook/formly/examples/formly-forms', 'FormlyFormsModule', 'sds-formly-forms'),
+  preview: generateConfig('storybook/formly/custom/formly-forms', 'FormlyFormsModule', 'sds-formly-forms'),
 };
 
-export const __namedExportsOrder = ['Forms'];
+export const __namedExportsOrder = ['AddressForm'];

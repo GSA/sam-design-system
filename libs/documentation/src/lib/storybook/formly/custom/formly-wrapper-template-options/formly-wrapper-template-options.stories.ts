@@ -13,7 +13,7 @@ import { FormlyWrapperTemplateOptionsTagsModule } from './formly-wrapper-templat
 import { FormlyWrapperTemplateOptionsUpdateonModule } from './formly-wrapper-template-options-updateon/formly-wrapper-template-options-updateon.module';
 
 export default {
-  title: 'Formly/WRAPPERS/Template Options',
+  title: 'Formly Examples/Template Options',
   decorators: [
     moduleMetadata({
       imports: [
@@ -52,7 +52,7 @@ Blur.parameters = {
   },
   actions: { disabled: true },
   preview: generateConfig(
-    'storybook/formly/wrappers/formly-wrapper-template-options/formly-wrapper-template-options-blur',
+    'storybook/formly/custom/formly-wrapper-template-options/formly-wrapper-template-options-blur',
     'FormlyWrapperTemplateOptionsBlurModule',
     'sds-formly-wrapper-template-options-blur'
   ),
@@ -70,7 +70,7 @@ UpdateOn.parameters = {
   },
   actions: { disabled: true },
   preview: generateConfig(
-    'storybook/formly/wrappers/formly-wrapper-template-options/formly-wrapper-template-options-updateon',
+    'storybook/formly/custom/formly-wrapper-template-options/formly-wrapper-template-options-updateon',
     'FormlyWrapperTemplateOptionsUpdateonModule',
     'sds-formly-wrapper-template-options-template'
   ),
@@ -88,7 +88,7 @@ Hideoptional.parameters = {
   },
   actions: { disabled: true },
   preview: generateConfig(
-    'storybook/formly/wrappers/formly-wrapper-template-options/formly-wrapper-template-options-hideoptional',
+    'storybook/formly/custom/formly-wrapper-template-options/formly-wrapper-template-options-hideoptional',
     'FormlyWrapperTemplateOptionsHideoptionalModule',
     'sds-formly-wrapper-template-options-hideoptional'
   ),
@@ -106,7 +106,7 @@ AnnounceLabel.parameters = {
   },
   actions: { disabled: true },
   preview: generateConfig(
-    'storybook/formly/wrappers/formly-wrapper-template-options/formly-wrapper-template-options-announce-label',
+    'storybook/formly/custom/formly-wrapper-template-options/formly-wrapper-template-options-announce-label',
     'FormlyWrapperTemplateOptionsAnnounceLabelModule',
     'sds-formly-wrapper-template-options-announce-label'
   ),

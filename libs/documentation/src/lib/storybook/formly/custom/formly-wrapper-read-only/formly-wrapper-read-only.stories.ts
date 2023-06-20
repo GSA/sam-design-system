@@ -12,7 +12,7 @@ import { FormlyWrapperReadOnlyIntroductionModule } from './formly-wrapper-read-o
 import { FormlyWrapperReadOnlyOptionsModule } from './formly-wrapper-read-only-options/formly-wrapper-read-only-options.module';
 
 export default {
-  title: 'Formly/WRAPPERS/Read Only',
+  title: 'Formly Examples/Read Only',
   decorators: [
     moduleMetadata({
       imports: [
@@ -49,7 +49,7 @@ Basic.parameters = {
   },
   actions: { disabled: true },
   preview: generateConfig(
-    'storybook/formly/wrappers/formly-wrapper-read-only/formly-wrapper-read-only-basic',
+    'storybook/formly/custom/formly-wrapper-read-only/formly-wrapper-read-only-basic',
     'FormlyWrapperReadOnlyBasicModule',
     'sds-formly-wrapper-read-only-basic'
   ),
@@ -67,7 +67,7 @@ FormlyType.parameters = {
   },
   actions: { disabled: true },
   preview: generateConfig(
-    'storybook/formly/wrappers/formly-wrapper-read-only/formly-wrapper-read-only-options',
+    'storybook/formly/custom/formly-wrapper-read-only/formly-wrapper-read-only-options',
     'FormlyWrapperReadOnlyOptionsModule',
     'sds-formly-wrapper-read-only-options'
   ),
@@ -84,7 +84,7 @@ CustomTemplate.parameters = {
   },
   actions: { disabled: true },
   preview: generateConfig(
-    'storybook/formly/wrappers/formly-wrapper-read-only/formly-wrapper-read-only-custom-template',
+    'storybook/formly/custom/formly-wrapper-read-only/formly-wrapper-read-only-custom-template',
     'FormlyWrapperReadOnlyCustomTemplateModule',
     'sds-formly-wrapper-read-only-custom-template'
   ),
@@ -102,7 +102,7 @@ ContainerWithoutFormly.parameters = {
   },
   actions: { disabled: true },
   preview: generateConfig(
-    'storybook/formly/wrappers/formly-wrapper-read-only/formly-wrapper-read-only-container',
+    'storybook/formly/custom/formly-wrapper-read-only/formly-wrapper-read-only-container',
     'FormlyWrapperReadOnlyContainerModule',
     'sds-formly-wrapper-read-only-container'
   ),
