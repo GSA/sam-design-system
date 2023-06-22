@@ -5,9 +5,9 @@ import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
-import { FormlyWrapperGroupBasicModule } from './formly-wrapper-group-basic/formly-wrapper-group-basic.module';
+import { FormlyWrapperGroupPanelModule } from './formly-wrapper-group-panel/formly-wrapper-group-panel.module';
 import { FormlyWrapperGroupIntroductionModule } from './formly-wrapper-group-introduction/formly-wrapper-group-introduction.module';
-import { FormlyWrapperGroupOptionsModule } from './formly-wrapper-group-options/formly-wrapper-group-options.module';
+import { FormlyWrapperGroupAccordionModule } from './formly-wrapper-group-accordion/formly-wrapper-group-accordion.module';
 
 export default {
   title: 'Formly Examples/Group Wrapper',
@@ -21,8 +21,8 @@ export default {
         NoopAnimationsModule,
         FormlyModule.forRoot(),
         FormlyWrapperGroupIntroductionModule,
-        FormlyWrapperGroupBasicModule,
-        FormlyWrapperGroupOptionsModule,
+        FormlyWrapperGroupPanelModule,
+        FormlyWrapperGroupAccordionModule,
       ],
     }),
   ],
@@ -34,40 +34,40 @@ export const Introduction: Story = (args) => ({
 });
 Introduction.parameters = { options: { showPanel: false } };
 
-export const Basic: Story = (args) => ({
-  template: '<sds-formly-wrapper-group-basic></sds-formly-wrapper-group-basic>',
+export const Panel: Story = (args) => ({
+  template: '<sds-formly-wrapper-group-panel></sds-formly-wrapper-group-panel>',
   props: args,
 });
-Basic.parameters = {
+Panel.parameters = {
   controls: {
     disabled: true,
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
   preview: generateConfig(
-    'storybook/formly/custom/formly-wrapper-group/formly-wrapper-group-basic',
-    'FormlyWrapperGroupBasicModule',
-    'sds-formly-wrapper-group-basic'
+    'storybook/formly/custom/formly-wrapper-group/formly-wrapper-group-panel',
+    'FormlyWrapperGroupPanelModule',
+    'sds-formly-wrapper-group-panel'
   ),
-  stackblitzLink: generateStackblitzLink('formly-wrapper-group', 'basic'),
+  stackblitzLink: generateStackblitzLink('formly-wrapper-group', 'panel'),
 };
 
-export const Options: Story = (args) => ({
-  template: '<sds-formly-wrapper-group-options></sds-formly-wrapper-group-options>',
+export const Accordion: Story = (args) => ({
+  template: '<sds-formly-wrapper-group-accordion></sds-formly-wrapper-group-accordion>',
   props: args,
 });
-Options.parameters = {
+Accordion.parameters = {
   controls: {
     disabled: true,
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
   preview: generateConfig(
-    'storybook/formly/custom/formly-wrapper-group/formly-wrapper-group-options',
-    'FormlyWrapperGroupOptionsModule',
+    'storybook/formly/custom/formly-wrapper-group/formly-wrapper-group-accordion',
+    'FormlyWrapperGroupAccordionModule',
     'sds-formly-wrapper-group-template'
   ),
-  stackblitzLink: generateStackblitzLink('formly-wrapper-group', 'options'),
+  stackblitzLink: generateStackblitzLink('formly-wrapper-group', 'accordion'),
 };
 
-export const __namedExportsOrder = ['Introduction', 'Basic', 'Options'];
+export const __namedExportsOrder = ['Introduction', 'Panel', 'Accordion'];

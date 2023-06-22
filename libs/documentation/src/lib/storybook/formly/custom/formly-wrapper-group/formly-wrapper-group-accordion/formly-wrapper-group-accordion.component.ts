@@ -3,10 +3,10 @@ import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-  selector: 'sds-formly-wrapper-group-options',
-  templateUrl: './formly-wrapper-group-options.component.html',
+  selector: 'sds-formly-wrapper-group-accordion',
+  templateUrl: './formly-wrapper-group-accordion.component.html',
 })
-export class FormlyWrapperGroupOptionsComponent {
+export class FormlyWrapperGroupAccordionComponent {
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
