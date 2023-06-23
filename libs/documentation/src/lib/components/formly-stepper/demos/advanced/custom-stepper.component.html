@@ -45,6 +45,7 @@
   </div>
 
   <div class="flex-justify-end ">
+    <button *ngIf="selectedStep.isReview" class="usa-button bg-primary-lighter radius-pill">Submit</button>
     <button *ngIf="selectedStep.isReview" class="usa-button bg-primary-lighter radius-pill">Review</button>
     <button sdsStepperPrevious class="usa-button bg-primary-lighter radius-pill">
       <usa-icon size="md" [icon]="'chevron-left'"></usa-icon> Previous
