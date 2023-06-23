@@ -4,8 +4,12 @@
       <ng-template #toolbarContent>
         <div class="sds-card" *ngIf="!!responseDialog">
           <div class="sds-card__header sds-card__header--accent-cool grid-row">
-            <button id="cancelButton" class="sds-button sds-button--circular sds-button--white"
-              (click)="onCancelClicked()" aria-label="Cancel Select Step">
+            <button
+              id="cancelButton"
+              class="sds-button sds-button--circular sds-button--white"
+              (click)="onCancelClicked()"
+              aria-label="Cancel Select Step"
+            >
               <usa-icon [icon]="'chevron-left'"></usa-icon>
             </button>
             <div class="margin-x-auto">
@@ -17,9 +21,13 @@
         <div class="sds-card">
           <div class="sds-card__body sds-card__body--accent-cool">
             <ul class="usa-sidenav usa-sidenav--styled">
-              <li *ngFor="let step of stepTemplates; let i = index" class="usa-sidenav__item" [ngClass]="{
+              <li
+                *ngFor="let step of stepTemplates; let i = index"
+                class="usa-sidenav__item"
+                [ngClass]="{
                   'usa-current': selectedStep?.id === step.id
-                }">
+                }"
+              >
                 <ng-container [ngTemplateOutlet]="sidenavItem" [ngTemplateOutletContext]="{ $implicit: step }">
                 </ng-container>
                 <ng-container [ngTemplateOutlet]="subPanelTemplate" [ngTemplateOutletContext]="{ $implicit: step }">
@@ -36,7 +44,7 @@
     <div [ngTemplateOutlet]="selectedStep ? selectedStep.content : null"></div>
   </div>
 </div>
-<hr style="width:100%" class="fine" />
+<hr style="width: 100%;" class="fine" />
 <div class="grid-row grid-gap margin-top-4">
   <div class="flex-10 flex-justify-start">
     <button class="usa-button usa-button--base usa-button--outline radius-pill">
@@ -44,17 +52,17 @@
     </button>
   </div>
 
-  <div class="flex-justify-end ">
+  <div class="flex-justify-end">
     <button *ngIf="selectedStep.isReview" class="usa-button bg-primary-lighter radius-pill">Submit</button>
     <button *ngIf="selectedStep.isReview" class="usa-button bg-primary-lighter radius-pill">Review</button>
     <button sdsStepperPrevious class="usa-button bg-primary-lighter radius-pill">
       <usa-icon size="md" [icon]="'chevron-left'"></usa-icon> Previous
     </button>
-    <button sdsStepperNext [attr.id]="id + '-nextBtn'" class="usa-button radius-pill">Next <usa-icon size="md"
-        [icon]="'chevron-right'"></usa-icon></button>
+    <button sdsStepperNext [attr.id]="id + '-nextBtn'" class="usa-button radius-pill">
+      Next <usa-icon size="md" [icon]="'chevron-right'"></usa-icon>
+    </button>
   </div>
 </div>
-
 
 <ng-template #subPanelTemplate let-panelItem>
   <div *ngFor="let pItem of getDisplayedSteps(panelItem.children); let i = index">
@@ -73,9 +81,14 @@
         {{ step.text }}
       </span>
     </span>
-    <a *ngSwitchDefault href="javascript:void(0);" [sdsStepperNav]="step" (click)="onSideNavClick()"
+    <a
+      *ngSwitchDefault
+      href="javascript:void(0);"
+      [sdsStepperNav]="step"
+      (click)="onSideNavClick()"
       class="display-flex justify-content-space-between"
-      [ngClass]="{ 'usa-sidenav__item--disabled': step.disabled || (step.isReview && _isReviewAndSubmitDisabled) }">
+      [ngClass]="{ 'usa-sidenav__item--disabled': step.disabled || (step.isReview && _isReviewAndSubmitDisabled) }"
+    >
       <span>
         {{ step.text }}
       </span>

@@ -75,6 +75,4 @@ export class StepperAdvancedDemoComponent {
   toggleLinearMode() {
     this.linear = !this.linear;
   }
-
-
 }
