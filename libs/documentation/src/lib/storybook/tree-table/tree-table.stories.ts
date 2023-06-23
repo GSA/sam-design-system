@@ -108,7 +108,7 @@ Basic.parameters = {
     disabled: true,
     hideNoControlsWarning: true,
   },
-  preview: generateConfig('storybook/tree-table/tree-table-basic', 'TreeTableBasicModule', 'sds-tree-table-modes', [
+  preview: generateConfig('storybook/tree-table/tree-table-basic', 'TreeTableBasicModule', 'sds-tree-table-basic', [
     createCodePreviewTabData('storybook/tree-table/services/TreeTableData.ts', 'ts', false),
   ]),
   stackblitzLink: generateStackblitzLink('tree-table', 'basic'),
