@@ -508,26 +508,28 @@ export class SdsStepper {
    * and toggles error display. Emits saveData event.
    */
   async onSaveClicked() {
-    this.flatSteps = this.getFlatSteps(this.stepTemplates);
-    this.selectedStepIndex = this.flatSteps.findIndex((step) => step.id === this.selectedStep.id);
+    console.warn(`This is a deprectaed version of sdsStepperSave directive, and will be removed in future versions. 
+      Please switch to using sdsStepperPrevious/sdsStepperNext`);
+    // this.flatSteps = this.getFlatSteps(this.stepTemplates);
+    // this.selectedStepIndex = this.flatSteps.findIndex((step) => step.id === this.selectedStep.id);
 
-    await this.updateValidation(this.selectedStep);
-    this.checkReviewAndSubmit();
-    if (this.linear) {
-      this.evaluateIncompleteForms();
-    }
+    // await this.updateValidation(this.selectedStep);
+    // this.checkReviewAndSubmit();
+    // if (this.linear) {
+    //   this.evaluateIncompleteForms();
+    // }
 
-    if (!this.customErrorHandling && this.stepValidityMap[this.currentStepId] === false) {
-      this.selectedStep.options.showError = (field) => !field.formControl.valid;
-    }
+    // if (!this.customErrorHandling && this.stepValidityMap[this.currentStepId] === false) {
+    //   this.selectedStep.options.showError = (field) => !field.formControl.valid;
+    // }
 
-    this.saveData.emit({
-      model: this.model,
-      metadata: {
-        stepId: this.selectedStep.id,
-        stepValidityMap: this.stepValidityMap,
-      },
-    });
+    // this.saveData.emit({
+    //   model: this.model,
+    //   metadata: {
+    //     stepId: this.selectedStep.id,
+    //     stepValidityMap: this.stepValidityMap,
+    //   },
+    // });
   }
 
   /**
