@@ -19,7 +19,6 @@ export class FormlyAutocompleteInputComponent {
   fields: FormlyFieldConfig[] = [
     {
       key: 'filters',
-      wrappers: ['filterwrapper'],
       templateOptions: { label: 'Keyword' },
       fieldGroup: [
         {
