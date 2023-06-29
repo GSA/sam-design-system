@@ -96,7 +96,7 @@ export const Count: Story = (args) => ({
   props: args,
 });
 Count.parameters = {
-  template: {
+  controls: {
     disabled: true,
     hideNoControlsWarning: true,
   },
