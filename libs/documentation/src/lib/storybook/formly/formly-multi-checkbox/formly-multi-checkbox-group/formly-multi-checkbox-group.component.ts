@@ -37,7 +37,6 @@ export class FormlyMultiCheckboxGroupComponent {
             {
               key: 'LBN',
               value: 'Legal Business Name',
-              tooltipText: '<b>Assistance Listing</b><u>Tool tip with style</u>',
             },
           ],
         },

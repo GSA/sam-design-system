@@ -20,7 +20,6 @@ export class FormlyMultiCheckboxNestedComponent {
         description: 'Select any socio-economic categories which reflect the current status of your entity',
         required: true,
         selectAllOption: true,
-        selectTooltipText: ' you agree to the terms and conditions ',
         options: [
           {
             key: 'cfda',
@@ -32,7 +31,6 @@ export class FormlyMultiCheckboxNestedComponent {
             key: 'opp',
             value: 'Contract Opportunities',
             tooltipPosition: 'bottom',
-            tooltipText: 'Contract Opportunities',
           },
           {
             key: 'ei',
