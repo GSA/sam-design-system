@@ -2,12 +2,20 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
-import {} from '@gsa-sam/sam-material-extensions';
 import { FormlyModule } from '@ngx-formly/core';
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
-import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
+import {
+  createCodePreviewTabData,
+  generateConfig,
+  generateStackblitzLink,
+} from 'libs/documentation/src/sandbox/sandbox-utils';
 import { FormlyStepperIntroductionModule } from './formly-stepper-introduction/formly-stepper-introduction.module';
 import { FormlyStepperBasicModule } from './formly-stepper-basic/formly-stepper-basic.module';
+import { StepperAdvancedModule } from './formly-stepper-advanced/stepper-advanced.module';
+import { UswdsStepperModule } from './formly-stepper-uswds/uswds-stepper.module';
+import { SdsStepper } from '@gsa-sam/sam-formly';
+import { RouterTestingModule } from '@angular/router/testing';
+
 const templateOptions = {
   table: {
     category: 'template-options',
@@ -28,7 +36,11 @@ export default {
         NoopAnimationsModule,
         FormlyStepperBasicModule,
         FormlyStepperIntroductionModule,
+        RouterTestingModule,
+        StepperAdvancedModule,
+        UswdsStepperModule,
       ],
+      providers: [SdsStepper],
     }),
   ],
   argTypes: {
@@ -47,11 +59,11 @@ export const Introduction: Story = (args) => ({
 });
 Introduction.parameters = { options: { showPanel: false } };
 
-export const Basic: Story = (args) => ({
+export const Uneven: Story = (args) => ({
   template: '<sds-formly-stepper-basic></sds-formly-stepper-basic>',
   props: args,
 });
-Basic.parameters = {
+Uneven.parameters = {
   controls: {
     disabled: true,
     hideNoControlsWarning: true,
@@ -62,7 +74,43 @@ Basic.parameters = {
     'FormlyStepperBasicModule',
     'sds-formly-stepper-basic'
   ),
-  stackblitzLink: generateStackblitzLink('formly-stepper', 'basic'),
+  stackblitzLink: generateStackblitzLink('formly-stepper', 'uneven'),
 };
 
-export const __namedExportsOrder = ['Introduction', 'Basic'];
+export const USWDS: Story = (args) => ({
+  template: '<gsa-sam-uswds-stepper></gsa-sam-uswds-stepper>',
+  props: args,
+});
+USWDS.parameters = {
+  controls: {
+    disabled: true,
+    hideNoControlsWarning: true,
+  },
+  actions: { disabled: true },
+  preview: generateConfig(
+    'storybook/formly/formly-stepper/formly-stepper-basic',
+    'FormlyStepperBasicModule',
+    'sds-formly-stepper-basic'
+  ),
+  stackblitzLink: generateStackblitzLink('formly-stepper', 'uswds'),
+};
+
+export const Advanced: Story = (args) => ({
+  template: '<stepper-advanced-demo></stepper-advanced-demo>',
+  props: args,
+});
+Advanced.parameters = {
+  controls: {
+    disabled: true,
+    hideNoControlsWarning: true,
+  },
+  actions: { disabled: true },
+  preview: generateConfig(
+    'storybook/formly/formly-stepper/formly-stepper-basic',
+    'FormlyStepperBasicModule',
+    'sds-formly-stepper-basic'
+  ),
+  stackblitzLink: generateStackblitzLink('formly-stepper', 'advanced'),
+};
+
+export const __namedExportsOrder = ['Introduction', 'Uneven', 'USWDS', 'Advanced'];

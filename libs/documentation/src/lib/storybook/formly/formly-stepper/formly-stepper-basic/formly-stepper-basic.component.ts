@@ -8,17 +8,8 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 })
 export class FormlyStepperBasicComponent {
   stepOne: FormlyFieldConfig = {
-    key: 'enitityOne',
+    key: 'entityOne',
     fieldGroup: [
-      {
-        key: 'stepIndicator',
-        type: 'step-arrow',
-        templateOptions: {
-          number: 1,
-          stepTitle: 'Entity Step one',
-          status: 'active',
-        },
-      },
       {
         key: 'name',
         type: 'input',
@@ -44,25 +35,18 @@ export class FormlyStepperBasicComponent {
         },
       },
     ],
+    templateOptions: {
+      completedValue: 75,
+    },
   };
-
-  stepOnePointTwoFive: FormlyFieldConfig = {
-    key: 'enitityOnePointTwoFive',
+  stepOneSubstepOne: FormlyFieldConfig = {
+    key: 'entityOneSubstepOne',
     fieldGroup: [
-      {
-        key: 'stepIndicator2',
-        type: 'step-arrow',
-        templateOptions: {
-          number: 2,
-          stepTitle: 'Entity Step two',
-          status: 'inactive',
-        },
-      },
       {
         key: 'name',
         type: 'input',
         templateOptions: {
-          label: 'Entity Name - PointTwoFive',
+          label: 'Entity Name - Substep One',
           placeholder: 'eg: Acme Corporation',
           description: 'Enter the name of your entity.',
           required: true,
@@ -83,16 +67,18 @@ export class FormlyStepperBasicComponent {
         },
       },
     ],
+    templateOptions: {
+      completedValue: 85,
+    },
   };
-
-  stepOnePointFive: FormlyFieldConfig = {
-    key: 'enitityOnePointFive',
+  stepOneSubstepTwo: FormlyFieldConfig = {
+    key: 'entityOneSubstepTwo',
     fieldGroup: [
       {
         key: 'name',
         type: 'input',
         templateOptions: {
-          label: 'Entity Name - PointFive',
+          label: 'Entity Name - Substep Two',
           placeholder: 'eg: Acme Corporation',
           description: 'Enter the name of your entity.',
           required: true,
@@ -113,36 +99,9 @@ export class FormlyStepperBasicComponent {
         },
       },
     ],
-  };
-
-  stepOnePointSevenFive: FormlyFieldConfig = {
-    key: 'enitityOnePointSevenFive',
-    fieldGroup: [
-      {
-        key: 'name',
-        type: 'input',
-        templateOptions: {
-          label: 'Entity Name - PointSevenFive',
-          placeholder: 'eg: Acme Corporation',
-          description: 'Enter the name of your entity.',
-          required: true,
-        },
-        modelOptions: {
-          updateOn: 'blur',
-        },
-      },
-      {
-        className: 'desktop:grid-col-12 tablet:grid-col-12',
-        type: 'input',
-        key: 'title',
-
-        templateOptions: {
-          label: 'Program or Project Title',
-          required: true,
-          showError: false,
-        },
-      },
-    ],
+    templateOptions: {
+      completedValue: 100,
+    },
   };
 
   stepTwo = {

@@ -1,15 +1,18 @@
 <div class="display-flex flex-justify-center">
- <uswds-custom-stepper-demo [model]="model" [stepValidityMap]="stepValidityMap" (saveData)="onSaveData($event)">
-    <sds-step id="stepOne" text="Entity Title" [fieldConfig]="stepOne">
-      <sds-step id="stepOnePointTwoFive" text="Entity Title - Quarter" [fieldConfig]="stepOnePointTwoFive"></sds-step>
-      <sds-step id="stepOnePointFive" text="Entity Title - Half" [fieldConfig]="stepOnePointFive"></sds-step>
+  <sds-formly-stepper-basic-uneven [model]="model" [stepValidityMap]="stepValidityMap" (saveData)="onSaveData($event)">
+    <sds-step id="unevenStepsStepOne" text="Entity Title" [fieldConfig]="stepOne">
       <sds-step
-        id="stepOnePointSevenFive"
-        text="Entity Title - Three Quarter"
-        [fieldConfig]="stepOnePointSevenFive"
+        id="unevenStepsStepOneSubstepOne"
+        text="Entity Title - Substep One"
+        [fieldConfig]="stepOneSubstepOne"
+      ></sds-step>
+      <sds-step
+        id="unevenStepsStepOneSubstepTwo"
+        text="Entity Title - Substep Two"
+        [fieldConfig]="stepOneSubstepTwo"
       ></sds-step>
     </sds-step>
-    <sds-step id="stepTwo" text="Purpose of Registration" [fieldConfig]="stepTwo"></sds-step>
-    <sds-step id="stepThree" text="Taxpayer Details" [fieldConfig]="stepThree"></sds-step>
-  </uswds-custom-stepper-demo> 
+    <sds-step id="unevenStepsStepTwo" text="Purpose of Registration" [fieldConfig]="stepTwo"></sds-step>
+    <sds-step id="unevenStepsStepThree" text="Taxpayer Details" [fieldConfig]="stepThree"></sds-step>
+  </sds-formly-stepper-basic-uneven>
 </div>

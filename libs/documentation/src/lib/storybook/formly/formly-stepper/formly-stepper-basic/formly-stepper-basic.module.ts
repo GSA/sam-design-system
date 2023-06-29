@@ -16,18 +16,16 @@ import {
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 import { SdsStepArrowModule } from '@gsa-sam/components';
 import { FormlyStepperBasicComponent } from './formly-stepper-basic.component';
-import { USWDSCustomStepperComponent } from './uswds-custom-stepper.component';
-import { RouterModule } from '@angular/router';
-import { BrowserModule } from '@angular/platform-browser';
+import { USWDSCustomStepperComponent } from './formly-stepper-basic-uneven.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+
 @NgModule({
-  
   imports: [
     CommonModule,
     UsaStepIndicatorModule,
     SdsStepperModule,
-
     NgxBootstrapIconsModule.pick({
       chevronLeft,
       chevronRight,
@@ -40,13 +38,12 @@ import { FormsModule } from '@angular/forms';
     }),
     IconModule,
     SdsStepArrowModule,
- BrowserModule,
+    BrowserModule,
     HttpClientModule,
     FormsModule,
   ],
-
   declarations: [FormlyStepperBasicComponent, USWDSCustomStepperComponent],
- bootstrap: [FormlyStepperBasicComponent, USWDSCustomStepperComponent],
-  exports: [FormlyStepperBasicComponent],
+  bootstrap: [FormlyStepperBasicComponent, USWDSCustomStepperComponent],
+  exports: [FormlyStepperBasicComponent, USWDSCustomStepperComponent],
 })
 export class FormlyStepperBasicModule {}
