@@ -110,7 +110,7 @@ Count.parameters = {
 };
 
 export const Freetext: Story = (args) => ({
-  template: '<sds-formly-autocomplete-free-text></sds-formly-autocomplete-free-text>',
+  template: '<sds-formly-autocomplete-freetext></sds-formly-autocomplete-freetext>',
   props: args,
 });
 Freetext.parameters = {
@@ -184,10 +184,10 @@ Validation.parameters = {
 export const __namedExportsOrder = [
   'Introduction',
   'Basic',
-  'Validation',
+  'Freetext',
   'Tag',
-  'Free-text',
   'Input',
-  'Disable',
   'Count',
+  'Disable',
+  'Validation',
 ];
