@@ -7,5 +7,6 @@ import { SdsTableModule } from '@gsa-sam/sam-material-extensions';
   imports: [CommonModule, SdsTableModule],
   declarations: [TableHighlightRowComponent],
   exports: [TableHighlightRowComponent],
+  bootstrap: [TableHighlightRowComponent],
 })
 export class TableHighlightRowModule {}

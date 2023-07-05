@@ -21,6 +21,7 @@ import { TableUserInteractionModule } from './table-user-interaction/table-user-
 import { TableChangeDataModule } from './table-change-data/table-change-data.module';
 import { TableHighlightRowModule } from './table-highlight-row/table-highlight-row.module';
 import { TableRowClickedModule } from './table-row-clicked/table-row-clicked.module';
+import { TableIntroductionModule } from './table-introduction/table-introduction.module';
 
 export default {
   title: 'Components/Table',
@@ -44,6 +45,7 @@ export default {
         TableChangeDataModule,
         TableHighlightRowModule,
         TableRowClickedModule,
+        TableIntroductionModule,
       ],
     }),
   ],
@@ -223,3 +225,33 @@ RowClicked.parameters = {
   preview: generateConfig('storybook/table/table-row-clicked', 'TableRowClickedModule', 'sds-table-row-clicked'),
   stackblitzLink: generateStackblitzLink('table', 'row-clicked'),
 };
+
+export const Introduction: Story = (args) => ({
+  template: `<sds-table-introduction></sds-table-introduction>`,
+  props: args,
+});
+Introduction.parameters = {
+  options: { showPanel: false },
+  controls: {
+    disabled: true,
+    hideNoControlsWarning: true,
+  },
+  actions: { disabled: true },
+  preview: { disabled: true },
+};
+
+export const __namedExportsOrder = [
+  'Introduction',
+  'Basic',
+  'ChangeData',
+  'CustomFooter',
+  'Expansion',
+  'HighlightRow',
+  'Pagination',
+  'RowClicked',
+  'Sorting',
+  'StickyColumn',
+  'StickyFooter',
+  'StickyHeader',
+  'UserInteraction',
+];

@@ -12,5 +12,6 @@ export class VideoPlayerSeekIntervalComponent {
     width: '100%',
     height: 'auto',
     seekInterval: 20,
+    poster: 'https://github.com/GSA/sam-static-content/raw/master/assets/images/gsa-sample.jpg',
   };
 }

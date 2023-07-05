@@ -12,5 +12,6 @@ export class VideoPlayerCaptionComponent {
     width: '100%',
     height: 'auto',
     caption: 'assets/video/gsa-sample.vtt',
+    poster: 'https://github.com/GSA/sam-static-content/raw/master/assets/images/gsa-sample.jpg',
   };
 }
