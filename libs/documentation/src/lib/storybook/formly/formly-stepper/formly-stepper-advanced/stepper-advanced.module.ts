@@ -42,4 +42,4 @@ import { IconModule } from '@gsa-sam/ngx-uswds-icons';
   exports: [StepperAdvancedDemoComponent, SubawardeeDemoComponent, AddSubawardeeDialogDemo, CustomStepperDemo],
   bootstrap: [StepperAdvancedDemoComponent, SubawardeeDemoComponent, AddSubawardeeDialogDemo, CustomStepperDemo],
 })
-export class StepperAdvancedModule {}
+export class FormlyStepperAdvancedModule {}

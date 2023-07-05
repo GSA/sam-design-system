@@ -11,7 +11,7 @@ import {
 } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { FormlyStepperIntroductionModule } from './formly-stepper-introduction/formly-stepper-introduction.module';
 import { FormlyStepperBasicModule } from './formly-stepper-basic/formly-stepper-basic.module';
-import { StepperAdvancedModule } from './formly-stepper-advanced/stepper-advanced.module';
+import { FormlyStepperAdvancedModule } from './formly-stepper-advanced/stepper-advanced.module';
 import { UswdsStepperModule } from './formly-stepper-uswds/uswds-stepper.module';
 import { SdsStepper } from '@gsa-sam/sam-formly';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -37,7 +37,7 @@ export default {
         FormlyStepperBasicModule,
         FormlyStepperIntroductionModule,
         RouterTestingModule,
-        StepperAdvancedModule,
+        FormlyStepperAdvancedModule,
         UswdsStepperModule,
       ],
       providers: [SdsStepper],
@@ -72,7 +72,11 @@ Uneven.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-stepper/formly-stepper-basic',
     'FormlyStepperBasicModule',
-    'sds-formly-stepper-basic'
+    'sds-formly-stepper-basic',
+    [
+      createCodePreviewTabData('storybook/formly/formly-stepper/formly-stepper-basic/formly-stepper-basic-uneven.component.ts', 'ts', false),
+      createCodePreviewTabData('storybook/formly/formly-stepper/formly-stepper-basic/formly-stepper-basic-uneven.component.html', 'html', false),
+    ]
   ),
   stackblitzLink: generateStackblitzLink('formly-stepper', 'uneven'),
 };
@@ -90,7 +94,11 @@ USWDS.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-stepper/formly-stepper-basic',
     'FormlyStepperBasicModule',
-    'sds-formly-stepper-basic'
+    'sds-formly-stepper-basic',
+    [
+      createCodePreviewTabData('storybook/formly/formly-stepper/formly-stepper-uswds/uswds-custom-stepper.component.ts', 'ts', false),
+      createCodePreviewTabData('storybook/formly/formly-stepper/formly-stepper-uswds/uswds-custom-stepper.component.html', 'html', false),
+    ]
   ),
   stackblitzLink: generateStackblitzLink('formly-stepper', 'uswds'),
 };
@@ -107,10 +115,16 @@ Advanced.parameters = {
   actions: { disabled: true },
   preview: generateConfig(
     'storybook/formly/formly-stepper/formly-stepper-basic',
-    'FormlyStepperBasicModule',
-    'sds-formly-stepper-basic'
+    'FormlyStepperAdvancedModule',
+    'stepper-advanced-demo',
+    [
+      createCodePreviewTabData('storybook/formly/formly-stepper/formly-stepper-advanced/custom-stepper.component.ts', 'ts', false),
+      createCodePreviewTabData('storybook/formly/formly-stepper/formly-stepper-advanced/custom-stepper.component.html', 'html', false),
+      createCodePreviewTabData('storybook/formly/formly-stepper/formly-stepper-advanced/subawardee.component.ts', 'ts', false),
+      createCodePreviewTabData('storybook/formly/formly-stepper/formly-stepper-advanced/subawardee.component.html', 'html', false),
+    ]
   ),
-  stackblitzLink: generateStackblitzLink('formly-stepper', 'advanced'),
+  stackblitzLink: generateStackblitzLink('formly-stepper', 'Advanced'),
 };
 
 export const __namedExportsOrder = ['Introduction', 'Uneven', 'USWDS', 'Advanced'];
