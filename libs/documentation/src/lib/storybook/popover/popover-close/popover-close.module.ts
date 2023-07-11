@@ -4,12 +4,9 @@ import { PopoverCloseComponent } from './popover-close.component';
 import { NgxPopperjsModule } from 'ngx-popperjs';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    NgxPopperjsModule
-  ],
+  imports: [CommonModule, NgxPopperjsModule],
   declarations: [PopoverCloseComponent],
   exports: [PopoverCloseComponent],
   bootstrap: [PopoverCloseComponent],
 })
-export class PopoverCloseModule { }
+export class PopoverCloseModule {}

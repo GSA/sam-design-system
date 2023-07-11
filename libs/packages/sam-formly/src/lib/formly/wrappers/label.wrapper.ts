@@ -1,7 +1,7 @@
 import { Component, ViewChild, ViewContainerRef, OnInit } from '@angular/core';
 import { FieldWrapper } from '@ngx-formly/core';
 import { NgxPopperjsTriggers } from 'ngx-popperjs';
-import { getPosition  } from '../services/utils';
+import { getPosition } from '../services/utils';
 
 /**
  * @param string [to.tagClass] Class to be added to the tag (default: sds-tag--info-white)
@@ -68,7 +68,6 @@ import { getPosition  } from '../services/utils';
   `,
 })
 export class FormlyLabelWrapperComponent extends FieldWrapper {
-
   hover = NgxPopperjsTriggers.click;
   getPosition = getPosition;
 

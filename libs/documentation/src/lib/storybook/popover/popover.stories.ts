@@ -19,7 +19,7 @@ export default {
         PopoverIntroductionModule,
         PopoverCloseModule,
         PopoverConfigurableModule,
-        PopoverContentModule
+        PopoverContentModule,
       ],
     }),
   ],
@@ -46,7 +46,7 @@ export const Configurable = Template.bind({});
 Configurable.args = {
   popper: 'Popover Content',
   placement: 'top',
-  hideOnClickOutside: false
+  hideOnClickOutside: false,
 };
 Configurable.parameters = {
   actions: { disabled: true },
@@ -77,11 +77,7 @@ Close.parameters = {
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
-  preview: generateConfig(
-    'storybook/popover/popover-close',
-    'PopoverClose',
-    'sds-popover-close'
-  ),
+  preview: generateConfig('storybook/popover/popover-close', 'PopoverClose', 'sds-popover-close'),
   stackblitzLink: generateStackblitzLink('popover', 'close'),
 };
 
@@ -95,11 +91,7 @@ Content.parameters = {
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
-  preview: generateConfig(
-    'storybook/popover/popover-content',
-    'PopoverContent',
-    'sds-popover-content'
-  ),
+  preview: generateConfig('storybook/popover/popover-content', 'PopoverContent', 'sds-popover-content'),
   stackblitzLink: generateStackblitzLink('popover', 'content'),
 };
 export const Introduction: Story = (args) => ({
@@ -116,11 +108,4 @@ Introduction.parameters = {
   preview: { disabled: true },
 };
 
-export const __namedExportsOrder = [
-  'Introduction',
-  'Configurable',
-  'Close',
-  'Content',
-  'Position',
-  'Title',
-];
+export const __namedExportsOrder = ['Introduction', 'Configurable', 'Close', 'Content', 'Position', 'Title'];

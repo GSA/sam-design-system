@@ -1,4 +1,4 @@
-import { NgxPopperjsPlacements } from "ngx-popperjs";
+import { NgxPopperjsPlacements } from 'ngx-popperjs';
 
 /**
  * Given an object, create a deep copy such that no references in the two objects
@@ -41,8 +41,8 @@ export function deepCopy(obj: any) {
   throw new Error("Unable to copy obj! Its type isn't supported.");
 }
 
-export function getPosition(position: string): NgxPopperjsPlacements{
-  switch(position){
+export function getPosition(position: string): NgxPopperjsPlacements {
+  switch (position) {
     case 'top':
       return NgxPopperjsPlacements.TOP;
     case 'left':
@@ -52,6 +52,6 @@ export function getPosition(position: string): NgxPopperjsPlacements{
     case 'bottom':
       return NgxPopperjsPlacements.BOTTOM;
     default:
-      return NgxPopperjsPlacements.RIGHT
+      return NgxPopperjsPlacements.RIGHT;
   }
 }

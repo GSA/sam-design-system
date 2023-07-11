@@ -6,8 +6,6 @@ import { NgxPopperjsPlacements, NgxPopperjsTriggers } from 'ngx-popperjs';
   templateUrl: './popover-content.component.html',
 })
 export class PopoverContentComponent {
-
   click = NgxPopperjsTriggers.click;
   bottom = NgxPopperjsPlacements.BOTTOM;
-
 }

@@ -80,7 +80,9 @@ export class SdsPopoverDirective implements AfterViewInit, OnChanges {
 
     this.sdsPopoverDiv = document.createElement('div');
 
-    console.warn('sdsPopover is depricated. Update all usages of sdsPopover to use ngx-popperjs instead. Please check popover demos for how to display popover with ngx-popperjs.')
+    console.warn(
+      'sdsPopover is depricated. Update all usages of sdsPopover to use ngx-popperjs instead. Please check popover demos for how to display popover with ngx-popperjs.'
+    );
   }
 
   ngAfterViewInit() {

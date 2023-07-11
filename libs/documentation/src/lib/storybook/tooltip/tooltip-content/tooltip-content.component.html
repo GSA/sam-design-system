@@ -1,11 +1,13 @@
 <p>Content displayed in a tooltip can be a string.</p>
 <div>
-  <button class="usa-button usa-button--base"
+  <button
+    class="usa-button usa-button--base"
     popper="String Content"
     [popperTrigger]="hover"
     [popperPlacement]="bottom"
     [popperApplyClass]="'ngx-tooltip'"
-    [popperPositionFixed]="true">
+    [popperPositionFixed]="true"
+  >
     String Tooltip
   </button>
 </div>
@@ -15,12 +17,14 @@
   <p>Hello, <b>World</b>!</p>
 </popper-content>
 <div>
-  <button class="usa-button usa-button--base"
+  <button
+    class="usa-button usa-button--base"
     [popper]="tooltipContent"
     [popperTrigger]="hover"
     [popperPlacement]="bottom"
     [popperApplyClass]="'ngx-tooltip'"
-    [popperPositionFixed]="true">
+    [popperPositionFixed]="true"
+  >
     HTML binding
   </button>
 </div>

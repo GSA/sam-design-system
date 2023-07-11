@@ -10,8 +10,8 @@ export class TooltipConfigurableComponent {
   trigger = NgxPopperjsTriggers.hover;
 
   @Input('placement')
-  set position(position: 'top' | 'bottom' | 'right' | 'left'){
-    switch(position){
+  set position(position: 'top' | 'bottom' | 'right' | 'left') {
+    switch (position) {
       case 'top':
         this._placement = NgxPopperjsPlacements.TOP;
         break;

@@ -1,11 +1,13 @@
 <p>Content displayed in a tooltip can be a string.</p>
 <div>
-  <button class="usa-button usa-button--base"
+  <button
+    class="usa-button usa-button--base"
     popper="String Content"
     [popperTrigger]="click"
     [popperPlacement]="bottom"
     [popperApplyClass]="'ngx-popover'"
-    [popperPositionFixed]="true">
+    [popperPositionFixed]="true"
+  >
     String Popover
   </button>
 </div>
@@ -15,12 +17,14 @@
   <p>Hello, <b>World</b>!</p>
 </popper-content>
 <div>
-  <button class="usa-button usa-button--base"
+  <button
+    class="usa-button usa-button--base"
     [popper]="popoverContent"
     [popperTrigger]="click"
     [popperPlacement]="bottom"
     [popperApplyClass]="'ngx-popover'"
-    [popperPositionFixed]="true">
+    [popperPositionFixed]="true"
+  >
     HTML binding
   </button>
 </div>

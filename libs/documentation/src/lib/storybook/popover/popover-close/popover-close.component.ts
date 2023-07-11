@@ -7,5 +7,4 @@ import { NgxPopperjsTriggers } from 'ngx-popperjs';
 })
 export class PopoverCloseComponent {
   click = NgxPopperjsTriggers.click;
-
 }

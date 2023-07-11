@@ -4,14 +4,13 @@ import { NgxPopperjsPlacements, NgxPopperjsTriggers } from 'ngx-popperjs';
 @Component({
   selector: 'sds-tooltip-position',
   templateUrl: './tooltip-position.component.html',
+  styleUrls: ['./tooltip-position.component.scss'],
 })
 export class TooltipPositionComponent {
-
-
   hover = NgxPopperjsTriggers.hover;
 
-  getPlacement(placement: string): NgxPopperjsPlacements{
-    switch(placement){
+  getPlacement(placement: string): NgxPopperjsPlacements {
+    switch (placement) {
       case 'top':
         return NgxPopperjsPlacements.TOP;
       case 'left':
@@ -24,7 +23,6 @@ export class TooltipPositionComponent {
         return NgxPopperjsPlacements.RIGHT;
     }
   }
-
 
   constructor() {}
 }

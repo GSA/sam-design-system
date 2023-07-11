@@ -4,12 +4,9 @@ import { TooltipContentComponent } from './tooltip-content.component';
 import { NgxPopperjsModule } from 'ngx-popperjs';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    NgxPopperjsModule
-  ],
+  imports: [CommonModule, NgxPopperjsModule],
   declarations: [TooltipContentComponent],
   exports: [TooltipContentComponent],
   bootstrap: [TooltipContentComponent],
 })
-export class TooltipContentModule { }
+export class TooltipContentModule {}

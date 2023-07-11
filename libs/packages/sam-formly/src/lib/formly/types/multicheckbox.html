@@ -37,10 +37,7 @@
             </div>
             <div *ngIf="option.value[j].tooltipText" class="margin-left-1">
               <popper-content #tooltipContent>
-                <p
-                  [ngClass]="option.value[j].tooltipClass"
-                  [innerHTML]="option.value[j].tooltipText"
-                ></p>
+                <p [ngClass]="option.value[j].tooltipClass" [innerHTML]="option.value[j].tooltipText"></p>
               </popper-content>
               <usa-icon
                 [popper]="tooltipContent"
@@ -192,10 +189,7 @@
             </div>
             <div *ngIf="subOption.tooltipText" class="margin-left-1">
               <popper-content #tooltipContent3>
-                <p
-                  [ngClass]="subOption.tooltipClass"
-                  [innerHTML]="subOption.tooltipText"
-                ></p>
+                <p [ngClass]="subOption.tooltipClass" [innerHTML]="subOption.tooltipText"></p>
               </popper-content>
               <usa-icon
                 [popper]="tooltipContent3"

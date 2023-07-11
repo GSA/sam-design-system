@@ -4,13 +4,13 @@ import { NgxPopperjsPlacements, NgxPopperjsTriggers } from 'ngx-popperjs';
 @Component({
   templateUrl: './popover-position.component.html',
   selector: `sds-popover-position`,
-  styleUrls: ['./popover-position.component.scss']
+  styleUrls: ['./popover-position.component.scss'],
 })
 export class PopoverPositionComponent {
   click = NgxPopperjsTriggers.click;
 
-  getPlacement(placement: string): NgxPopperjsPlacements{
-    switch(placement){
+  getPlacement(placement: string): NgxPopperjsPlacements {
+    switch (placement) {
       case 'top':
         return NgxPopperjsPlacements.TOP;
       case 'left':
