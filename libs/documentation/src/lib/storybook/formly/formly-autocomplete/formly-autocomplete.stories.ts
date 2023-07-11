@@ -184,10 +184,10 @@ Validation.parameters = {
 export const __namedExportsOrder = [
   'Introduction',
   'Basic',
-  'Freetext',
-  'Tag',
-  'Input',
   'Count',
   'Disable',
+  'Freetext',
+  'Input',
+  'Tag',
   'Validation',
 ];
