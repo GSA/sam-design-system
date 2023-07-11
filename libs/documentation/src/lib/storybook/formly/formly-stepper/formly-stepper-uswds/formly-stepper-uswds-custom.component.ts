@@ -3,7 +3,7 @@ import { SdsStepComponent, SdsStepper } from '@gsa-sam/sam-formly';
 
 @Component({
   selector: `uswds-custom-stepper-demo`,
-  templateUrl: './uswds-custom-stepper.component.html',
+  templateUrl: './formly-stepper-uswds-custom.component.html',
   providers: [{ provide: SdsStepper, useExisting: USWDSCustomStepperComponent }],
 })
 export class USWDSCustomStepperComponent extends SdsStepper implements AfterContentInit {

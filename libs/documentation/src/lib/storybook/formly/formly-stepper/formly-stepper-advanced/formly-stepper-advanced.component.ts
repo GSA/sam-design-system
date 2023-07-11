@@ -4,7 +4,7 @@ import { StepperAdvancedService } from './stepper-advanced.service';
 
 @Component({
   selector: `stepper-advanced-demo`,
-  templateUrl: `./stepper-advanced.component.html`,
+  templateUrl: `./formly-stepper-advanced.component.html`,
   providers: [StepperAdvancedService, SdsStepper],
 })
 export class StepperAdvancedDemoComponent {

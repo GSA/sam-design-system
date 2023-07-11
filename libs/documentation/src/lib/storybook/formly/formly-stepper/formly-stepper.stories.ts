@@ -11,8 +11,8 @@ import {
 } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { FormlyStepperIntroductionModule } from './formly-stepper-introduction/formly-stepper-introduction.module';
 import { FormlyStepperBasicModule } from './formly-stepper-basic/formly-stepper-basic.module';
-import { FormlyStepperAdvancedModule } from './formly-stepper-advanced/stepper-advanced.module';
-import { UswdsStepperModule } from './formly-stepper-uswds/uswds-stepper.module';
+import { FormlyStepperAdvancedModule } from './formly-stepper-advanced/formly-stepper-advanced.module';
+import { UswdsStepperModule } from './formly-stepper-uswds/formly-stepper-uswds.module';
 import { SdsStepper } from '@gsa-sam/sam-formly';
 import { RouterTestingModule } from '@angular/router/testing';
 
@@ -92,12 +92,12 @@ USWDS.parameters = {
   },
   actions: { disabled: true },
   preview: generateConfig(
-    'storybook/formly/formly-stepper/formly-stepper-basic',
-    'FormlyStepperBasicModule',
-    'sds-formly-stepper-basic',
+    'storybook/formly/formly-stepper/formly-stepper-uswds',
+    'UswdsStepperModule',
+    'gsa-sam-uswds-stepper',
     [
-      createCodePreviewTabData('storybook/formly/formly-stepper/formly-stepper-uswds/uswds-custom-stepper.component.ts', 'ts', false),
-      createCodePreviewTabData('storybook/formly/formly-stepper/formly-stepper-uswds/uswds-custom-stepper.component.html', 'html', false),
+      createCodePreviewTabData('storybook/formly/formly-stepper/formly-stepper-uswds/formly-stepper-uswds-custom.component.ts', 'ts', false),
+      createCodePreviewTabData('storybook/formly/formly-stepper/formly-stepper-uswds/formly-stepper-uswds-custom.component.html', 'html', false),
     ]
   ),
   stackblitzLink: generateStackblitzLink('formly-stepper', 'uswds'),
@@ -114,7 +114,7 @@ Advanced.parameters = {
   },
   actions: { disabled: true },
   preview: generateConfig(
-    'storybook/formly/formly-stepper/formly-stepper-basic',
+    'storybook/formly/formly-stepper/formly-stepper-advanced',
     'FormlyStepperAdvancedModule',
     'stepper-advanced-demo',
     [

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UswdsStepperComponent } from './uswds-stepper.component';
-import { USWDSCustomStepperComponent } from './uswds-custom-stepper.component';
+import { UswdsStepperComponent } from './formly-stepper-uswds.component';
+import { USWDSCustomStepperComponent } from './formly-stepper-uswds-custom.component';
 import { UsaStepIndicatorModule } from '@gsa-sam/ngx-uswds';
 import { SdsStepperModule } from '@gsa-sam/sam-formly';
 import {
