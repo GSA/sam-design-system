@@ -1,0 +1,36 @@
+<button
+    class="usa-button usa-button--base"
+    [popper]="closeAnywhereContent"
+    [popperTrigger]="click"
+    [popperHideOnClickOutside]="true"
+    [popperApplyClass]="'ngx-popover'"
+    [popperPositionFixed]="true"
+  >Click to Show Close Anywhere Example
+</button>
+<popper-content #closeAnywhereContent (click)="closeAnywhereContent.hide()">
+  <p>Close by Clicking Anywhere</p>
+</popper-content>
+<button
+    class="usa-button usa-button--base"
+    [popper]="closeWithButtonOrPopoverContent"
+    [popperTrigger]="click"
+    [popperHideOnClickOutside]="false"
+    [popperApplyClass]="'ngx-popover'"
+    [popperPositionFixed]="true"
+  >Click to Show Close With Button Or Content Example
+</button>
+<popper-content #closeWithButtonOrPopoverContent (click)="closeWithButtonOrPopoverContent.hide()">
+  <p>Close by Clicking Button or Content</p>
+</popper-content>
+<button
+    class="usa-button usa-button--base"
+    [popper]="closeWithButtonContent"
+    [popperTrigger]="click"
+    [popperHideOnClickOutside]="false"
+    [popperApplyClass]="'ngx-popover'"
+    [popperPositionFixed]="true"
+  >Click to Show Close With Button Example
+</button>
+<popper-content #closeWithButtonContent>
+  <p>Close by Clicking Button</p>
+</popper-content>

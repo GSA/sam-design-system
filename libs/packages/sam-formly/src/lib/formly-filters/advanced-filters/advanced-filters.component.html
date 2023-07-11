@@ -5,16 +5,19 @@
 
 <div
   *ngIf="enablePopover"
-  [sdsPopover]="content"
-  [position]="'bottom'"
-  [closeOnContentClick]="false"
-  [closeOnClickOutside]="true"
+  [popper]="popoverContent"
+  [popperTrigger]="click"
+  [popperPlacement]="getPosition('bottom')"
+  [popperPositionFixed]="true"
+  [popperHideOnClickOutside]="true"
   tabindex="0"
   aria-label="More Filters"
 >
   More Filters
   <usa-icon [icon]="'chevron-down'" [size]="'sm'"></usa-icon>
-  <p #content class="padding-2 text-left minw-card-lg">
-    <formly-form [fields]="popoverContent" (modelChange)="updateSelectedFields($event)"></formly-form>
-  </p>
+  <popper-content #popoverContent>
+    <p class="padding-2 text-left minw-card-lg">
+      <formly-form [fields]="popoverContent" (modelChange)="updateSelectedFields($event)"></formly-form>
+    </p>
+  </popper-content>
 </div>

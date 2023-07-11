@@ -1,11 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { SdsTooltipDirective } from '@gsa-sam/components';
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { TooltipConfigurableModule } from './tooltip-configurable/tooltip-configurable.module';
 import { TooltipIntroductionModule } from './tooltip-introduction/tooltip-introduction.module';
 import { TooltipPositionModule } from './tooltip-position/tooltip-position.module';
-import { TooltipSdsTooltipModule } from './tooltip-sdsTooltip/tooltip-sdsTooltip.module';
+import { TooltipContentModule } from './tooltip-content/tooltip-content.module';
 
 const disable = {
   table: {
@@ -15,34 +14,19 @@ const disable = {
 
 export default {
   title: 'Components/Tooltip',
-  component: SdsTooltipDirective,
   decorators: [
     moduleMetadata({
       imports: [
         CommonModule,
         TooltipIntroductionModule,
         TooltipConfigurableModule,
-        TooltipSdsTooltipModule,
+        TooltipContentModule,
         TooltipPositionModule,
       ],
     }),
   ],
   argTypes: {
-    _sdsTooltip: disable,
-    _tooltipShowing: disable,
-    sdsTooltipDiv: disable,
-    hideTooltip: disable,
-    ngAfterViewInit: disable,
-    onBlur: disable,
-    onFocus: disable,
-    onKeyUp: disable,
-    onMouseEnter: disable,
-    onMouseLeave: disable,
-    showTooltip: disable,
-    clearAndReplacePosition: disable,
-    clearAndReplaceTooltipContent: disable,
-    ngOnChanges: disable,
-    position: {
+    placement: {
       options: ['top', 'bottom', 'left', 'right'],
       control: { type: 'select' },
     },
@@ -64,11 +48,11 @@ Introduction.parameters = {
 };
 
 export const Configurable: Story = (args) => ({
-  template: '<sds-tooltip-configurable [position]=position [tooltipContent]=sdsTooltip></sds-tooltip-configurable>',
+  template: '<sds-tooltip-configurable [placement]=placement [popper]=popper></sds-tooltip-configurable>',
   props: args,
 });
 Configurable.args = {
-  sdsTooltip: 'tooltip content',
+  popper: 'tooltip content',
 };
 Configurable.parameters = {
   actions: { disabled: true },
@@ -89,18 +73,18 @@ Position.parameters = {
   stackblitzLink: generateStackblitzLink('tooltip', 'position'),
 };
 
-export const SdsTooltip: Story = (args) => ({
-  template: `<sds-tooltip-sdsTooltip></sds-tooltip-sdsTooltip>`,
+export const Content: Story = (args) => ({
+  template: `<sds-tooltip-content></sds-tooltip-content>`,
   props: args,
 });
-SdsTooltip.parameters = {
+Content.parameters = {
   controls: {
     disabled: true,
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
-  preview: generateConfig('storybook/tooltip/tooltip-sdsTooltip', 'TooltipSdsTooltipModule', 'sds-tooltip-sdsTooltip'),
-  stackblitzLink: generateStackblitzLink('tooltip', 'sdsTooltip'),
+  preview: generateConfig('storybook/tooltip/tooltip-content', 'TooltipContentModule', 'sds-tooltip-content'),
+  stackblitzLink: generateStackblitzLink('tooltip', 'content'),
 };
 
-export const __namedExportsOrder = ['Introduction', 'Configurable', 'Position', 'SdsTooltip'];
+export const __namedExportsOrder = ['Introduction', 'Configurable', 'Content', 'Position'];

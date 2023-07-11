@@ -63,6 +63,8 @@ export class SdsTooltipDirective implements AfterViewInit, OnChanges {
     this.sdsTooltipDiv = document.createElement('div');
 
     this.renderer.addClass(this.sdsTooltipDiv, 'sds-tooltip__content');
+
+    console.warn('sdsTooltip is depricated. Update all usages of sdsTooltip to use ngx-popperjs instead. Please check tooltip demos for how to display tooltip with ngx-popperjs.')
   }
 
   ngAfterViewInit() {

@@ -1,5 +1,7 @@
 import { Component, ViewChild, ViewContainerRef, OnInit } from '@angular/core';
 import { FieldWrapper } from '@ngx-formly/core';
+import { NgxPopperjsTriggers } from 'ngx-popperjs';
+import { getPosition  } from '../services/utils';
 
 /**
  * @param string [to.tagClass] Class to be added to the tag (default: sds-tag--info-white)
@@ -40,10 +42,14 @@ import { FieldWrapper } from '@ngx-formly/core';
         </label>
 
         <span *ngIf="to.tooltipText && field.type !== 'checkbox'" class="margin-left-1">
-          <p #tipContent [ngClass]="to.tooltipClass" class="margin-1" [innerHTML]="to.tooltipText"></p>
+          <popper-content #tooltipContent>
+            <p [ngClass]="to.tooltipClass" [innerHTML]="to.tooltipText"></p>
+          </popper-content>
           <usa-icon
-            [position]="to.tooltipPosition ? to.tooltipPosition : 'right'"
-            [sdsTooltip]="tipContent"
+            [popper]="tooltipContent"
+            [popperTrigger]="hover"
+            [popperPlacement]="getPosition(to.tooltipPosition)"
+            [popperPositionFixed]="true"
             [size]="'lg'"
             [icon]="'info-circle'"
           ></usa-icon>
@@ -62,6 +68,10 @@ import { FieldWrapper } from '@ngx-formly/core';
   `,
 })
 export class FormlyLabelWrapperComponent extends FieldWrapper {
+
+  hover = NgxPopperjsTriggers.click;
+  getPosition = getPosition;
+
   @ViewChild('fieldComponent', { read: ViewContainerRef })
   fieldComponent: ViewContainerRef;
   hasLabel() {

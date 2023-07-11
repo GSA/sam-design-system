@@ -38,6 +38,7 @@ import {
 } from 'ngx-bootstrap-icons';
 import { UsaAccordionModule, UsaFileInputModule } from '@gsa-sam/ngx-uswds';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
+import { NgxPopperjsModule } from 'ngx-popperjs';
 
 // Validate the min length of the character
 export function minlengthValidationMessage(err, field) {
@@ -174,6 +175,7 @@ export const DATE_FORMAT: MatDateFormats = {
       chevronDown,
       infoCircleFill,
     }),
+    NgxPopperjsModule,
     FormlyModule.forChild(FORMLY_CONFIG),
     FormlyModule.forRoot({
       validationMessages: [

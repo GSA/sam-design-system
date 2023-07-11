@@ -16,6 +16,8 @@
     "@ngx-formly/core": ">=5.10.23",
     "@gsa-sam/components": ">=14.0.0-beta.1",
     "@gsa-sam/sam-material-extensions": ">=14.0.0-beta.1",
-    "@gsa-sam/ngx-uswds": ">=14.0.0-beta.1"
+    "@gsa-sam/ngx-uswds": ">=14.0.0-beta.1",
+    "@popperjs/core": "^2.11.8",
+    "ngx-popperjs": ">=14.1.0"
   }
 }

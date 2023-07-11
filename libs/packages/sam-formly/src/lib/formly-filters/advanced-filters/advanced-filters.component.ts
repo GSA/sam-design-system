@@ -7,6 +7,8 @@ import { SdsAdvancedFiltersService } from './sds-advanced-filters.service';
 import { SdsFormlyDialogData } from '../../formly-dialog/formly-dialog-data.model';
 import { SdsFormlyDialogComponent } from '../../formly-dialog/formly-dialog.component';
 import { tap, startWith } from 'rxjs/operators';
+import { NgxPopperjsTriggers } from 'ngx-popperjs';
+import { getPosition } from '../../formly/services/utils';
 
 @Component({
   selector: 'sds-advanced-filters',
@@ -58,6 +60,9 @@ export class AdvancedFiltersComponent implements OnInit {
   popoverContent: FormlyFieldConfig[];
 
   readonly filtersFieldGroupKey = 'filters';
+
+  click = NgxPopperjsTriggers.click;
+  getPosition = getPosition;
 
   constructor(
     public dialog: SdsDialogService,

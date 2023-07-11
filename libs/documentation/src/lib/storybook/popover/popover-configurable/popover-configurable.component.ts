@@ -2,12 +2,13 @@ import { Component, Input } from '@angular/core';
 import { NgxPopperjsPlacements, NgxPopperjsTriggers } from 'ngx-popperjs';
 
 @Component({
-  selector: 'sds-tooltip-configurable',
-  templateUrl: './tooltip-configurable.component.html',
+  selector: 'sds-popover-configurable',
+  templateUrl: './popover-configurable.component.html',
+  styleUrls: ['./popover-configurable.component.scss']
 })
-export class TooltipConfigurableComponent {
+export class PopoverConfigurableComponent {
   _placement = NgxPopperjsPlacements.TOP;
-  trigger = NgxPopperjsTriggers.hover;
+  trigger = NgxPopperjsTriggers.click;
 
   @Input('placement')
   set position(position: 'top' | 'bottom' | 'right' | 'left'){
@@ -32,5 +33,7 @@ export class TooltipConfigurableComponent {
   @Input('popper')
   popper: string;
 
-  constructor() {}
+  @Input('hideOnClickOutside')
+  hideOnClickOutside: boolean;
+
 }

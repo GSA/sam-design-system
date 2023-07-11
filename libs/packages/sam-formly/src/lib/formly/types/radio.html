@@ -71,15 +71,17 @@
               </div>
 
               <div class="margin-left-1" *ngIf="option.value[j].tooltipText">
-                <p
-                  #tipContent
-                  [ngClass]="option.value[j].tooltipClass"
-                  class="margin-1"
-                  [innerHTML]="option.value[j].tooltipText"
-                ></p>
+                <popper-content #tooltipContent>
+                  <p
+                    [ngClass]="option.value[j].tooltipClass"
+                    [innerHTML]="option.value[j].tooltipText"
+                  ></p>
+                </popper-content>
                 <usa-icon
-                  [position]="option.value[j].tooltipPosition ? option.value[j].tooltipPosition :'right'"
-                  [sdsTooltip]="tipContent"
+                  [popper]="tooltipContent"
+                  [popperTrigger]="hover"
+                  [popperPlacement]="getPosition(option.value[j].tooltipPosition)"
+                  [popperPositionFixed]="true"
                   [size]="'lg'"
                   [icon]="'info-circle'"
                 ></usa-icon>
@@ -128,15 +130,17 @@
     </div>
 
     <div class="margin-left-1" *ngIf="to.options[i].tooltipText">
-      <p
-        #tipContent
-        [ngClass]="to.options[i].tooltipClass"
-        class="margin-1"
-        [innerHTML]="to.options[i].tooltipText"
-      ></p>
+      <popper-content #tooltipContent>
+        <p
+          [ngClass]="to.options[i].tooltipClass"
+          [innerHTML]="to.options[i].tooltipText"
+        ></p>
+      </popper-content>
       <usa-icon
-        [position]="to.options[i].tooltipPosition ? to.options[i].tooltipPosition :'right'"
-        [sdsTooltip]="tipContent"
+        [popper]="tooltipContent"
+        [popperTrigger]="hover"
+        [popperPlacement]="getPosition(option.value[i].tooltipPosition)"
+        [popperPositionFixed]="true"
         [size]="'lg'"
         [icon]="'info-circle'"
       ></usa-icon>

@@ -13,6 +13,7 @@ import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 import { NgxBootstrapIconsModule, filter, x, chevronLeft } from 'ngx-bootstrap-icons';
 import { SdsReadonlyModule } from '../formly/readonly/readonly.module';
 import { SdsPopoverModule } from '@gsa-sam/components';
+import { NgxPopperjsModule } from 'ngx-popperjs';
 
 @NgModule({
   declarations: [SdsFiltersComponent, AdvancedFiltersComponent],
@@ -28,6 +29,7 @@ import { SdsPopoverModule } from '@gsa-sam/components';
     SdsReadonlyModule,
     SdsPopoverModule,
     NgxBootstrapIconsModule.pick({ filter, x, chevronLeft }),
+    NgxPopperjsModule,
   ],
   exports: [SdsFiltersComponent],
   providers: [SDSFormlyUpdateModelService],

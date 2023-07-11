@@ -1,14 +1,43 @@
-<div style="margin: 1rem; margin-left: 15rem;">
-  <button class="usa-button usa-button--base" [sdsTooltip]="'Tooltip on left'" [position]="'left'">
-    Tooltip on left
-  </button>
-  <button class="usa-button usa-button--base" [sdsTooltip]="'Tooltip on top'" [position]="'top'">
-    Tooltip on top
-  </button>
-  <button class="usa-button usa-button--base" [sdsTooltip]="'Tooltip on bottom'" [position]="'bottom'">
-    Tooltip on bottom
-  </button>
-  <button class="usa-button usa-button--base" [sdsTooltip]="'Tooltip on right'" [position]="'right'">
-    Tooltip on right
-  </button>
+<div class="container">
+  <div>
+    <button class="usa-button usa-button--base"
+      popper="Tooltip on the left"
+      [popperShowOnStart]="false"
+      [popperTrigger]="hover"
+      [popperPlacement]="getPlacement('left')"
+      [popperApplyClass]="'ngx-tooltip'">
+      Tooltip on left
+    </button>
+  </div>
+  <div>
+    <button class="usa-button usa-button--base"
+      popper="Tooltip on the top"
+      [popperShowOnStart]="false"
+      [popperTrigger]="hover"
+      [popperPlacement]="getPlacement('top')"
+      [popperApplyClass]="'ngx-tooltip'">
+      Tooltip on top
+    </button>
+  </div>
+  <div>
+    <button class="usa-button usa-button--base"
+      popper="Tooltop on the bottom"
+      [popperShowOnStart]="false"
+      [popperTrigger]="hover"
+      [popperPlacement]="getPlacement('bottom')"
+      [popperApplyClass]="'ngx-tooltip'">
+      Tooltip on bottom
+    </button>
+  </div>
+  <div>
+    <button class="usa-button usa-button--base"
+      popper="Tooltip on the right"
+      [popperShowOnStart]="false"
+      [popperTrigger]="hover"
+      [popperPlacement]="getPlacement('right')"
+      [popperApplyClass]="'ngx-tooltip'"
+      [popperPositionFixed]="true">
+      Tooltip on right
+    </button>
+  </div>
 </div>

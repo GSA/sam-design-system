@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TooltipConfigurableComponent } from './tooltip-configurable.component';
-import { SdsTooltipModule } from '@gsa-sam/components';
+import { NgxPopperjsModule } from 'ngx-popperjs';
 
 @NgModule({
-  imports: [CommonModule, SdsTooltipModule],
+  imports: [CommonModule, NgxPopperjsModule],
   declarations: [TooltipConfigurableComponent],
   exports: [TooltipConfigurableComponent],
   bootstrap: [TooltipConfigurableComponent],

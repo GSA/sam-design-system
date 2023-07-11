@@ -1,5 +1,11 @@
-<div style="margin: 2rem;">
-  <button class="usa-button usa-button--base" [sdsTooltip]="tooltipContent" [position]="position">
+<div style="margin-top: 4rem; margin-left: 10rem;">
+  <button
+    class="usa-button usa-button--base"
+      [popper]="popper"
+      [popperTrigger]="trigger"
+      [popperPlacement]="_placement"
+      [popperApplyClass]="'ngx-tooltip'"
+      [popperPositionFixed]="true">
     Hover to Show Tooltip
   </button>
 </div>

@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SdsPopoverModule } from '@gsa-sam/components';
 import { PopoverPositionComponent } from './popover-position.component';
+import { NgxPopperjsModule } from 'ngx-popperjs';
 
 @NgModule({
-  imports: [CommonModule, SdsPopoverModule],
+  imports: [CommonModule, NgxPopperjsModule],
   declarations: [PopoverPositionComponent],
   exports: [PopoverPositionComponent],
   bootstrap: [PopoverPositionComponent],

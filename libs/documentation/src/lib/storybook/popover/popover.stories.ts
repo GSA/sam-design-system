@@ -2,87 +2,51 @@ import { CommonModule } from '@angular/common';
 import { SdsPopoverDirective, SdsPopoverModule } from '@gsa-sam/components';
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
-import { PopoverCloseOnClickOutsideModule } from './popover-close-on-click-outside/popover-close-on-click-outside.module';
-import { PopoverCloseOnContentClickModule } from './popover-close-on-content-click/popover-close-on-content-click.module';
 import { PopoverIntroductionModule } from './popover-introduction/popover-introduction.module';
 import { PopoverPositionModule } from './popover-position/popover-position.module';
-import { PopoverTitleModule } from './popover-title/popover-title.module';
+import { PopoverCloseModule } from './popover-close/popover-close.module';
+import { PopoverConfigurableModule } from './popover-configurable/popover-configurable.module';
+import { PopoverContentModule } from './popover-content/popover-content.module';
 
-const disable = {
-  table: {
-    disable: true,
-  },
-};
 export default {
   title: 'Components/Popover',
-  component: SdsPopoverDirective,
   decorators: [
     moduleMetadata({
       imports: [
         CommonModule,
         SdsPopoverModule,
-        PopoverCloseOnClickOutsideModule,
         PopoverPositionModule,
-        PopoverCloseOnContentClickModule,
-        PopoverTitleModule,
         PopoverIntroductionModule,
+        PopoverCloseModule,
+        PopoverConfigurableModule,
+        PopoverContentModule
       ],
     }),
   ],
   argTypes: {
-    position: {
+    placement: {
       options: ['top', 'bottom', 'left', 'right'],
       control: { type: 'radio' },
     },
-    _sdsPopoverContent: disable,
-    _sdsPopoverTitle: disable,
-    popoverDivId: disable,
-    popoverVisible: disable,
-    sdsPopoverDiv: disable,
-    clickEvent: disable,
-    clickout: disable,
-    handlePopoverContent: disable,
-    handlePopoverSection: disable,
-    handlePopoverTitle: disable,
-    handlePosition: disable,
-    hidePopover: disable,
-    ngAfterViewInit: disable,
-    ngOnChanges: disable,
-    onChangesPositionUpdate: disable,
-    onChangesSdsPopoverTitleUpdate: disable,
-    onChangesSdsPopoverUpdate: disable,
-    onClick: disable,
-    onEscape: disable,
-    onKeySpace: disable,
-    onKeyUp: disable,
   },
 } as Meta;
 
-const exportedStories = {};
-
 const Template: Story<SdsPopoverDirective> = (args: SdsPopoverDirective) => {
   return {
-    template: `
-      <div class="padding-4" *ngIf="sdsPopover">
-      <button class="usa-button usa-button--base"
-        [sdsPopover]="sdsPopover"
-        [sdsPopoverTitle]="sdsPopoverTitle"
-        [position]="position"
-        [closeOnContentClick]=closeOnContentClick
-        [closeOnClickOutside]=closeOnClickOutside
-      >
-        I'm a popover!
-      </button>
-      </div>
-    `,
+    template: `<sds-popover-configurable
+      [placement]=placement
+      [popper]=popper
+      [hideOnClickOutside]=hideOnClickOutside
+      ></sds-popover-configurable>`,
     props: args,
   };
 };
 
 export const Configurable = Template.bind({});
 Configurable.args = {
-  sdsPopover: 'Default Body',
-  sdsPopoverTitle: '',
+  popper: 'Popover Content',
+  placement: 'top',
+  hideOnClickOutside: false
 };
 Configurable.parameters = {
   actions: { disabled: true },
@@ -103,58 +67,40 @@ Position.parameters = {
   stackblitzLink: generateStackblitzLink('popover', 'position'),
 };
 
-export const Title: Story = (args) => ({
-  template: `<popover-title></popover-title>`,
+export const Close: Story = (args) => ({
+  template: `<sds-popover-close></sds-popover-close>`,
   props: args,
 });
-Title.parameters = {
+Close.parameters = {
   controls: {
     disabled: true,
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
   preview: generateConfig(
-    'storybook/popover/popover-title',
-    'PopoverSdsPopoverTitleModule',
-    'sds-popover-sds-popover-title'
+    'storybook/popover/popover-close',
+    'PopoverClose',
+    'sds-popover-close'
   ),
-  stackblitzLink: generateStackblitzLink('popover', 'title'),
+  stackblitzLink: generateStackblitzLink('popover', 'close'),
 };
 
-export const CloseOnContentClicked: Story = (args) => ({
-  template: `<sds-popover-close-on-content-click></sds-popover-close-on-content-click>`,
+export const Content: Story = (args) => ({
+  template: `<sds-popover-content></sds-popover-content>`,
   props: args,
 });
-CloseOnContentClicked.parameters = {
+Content.parameters = {
   controls: {
     disabled: true,
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
   preview: generateConfig(
-    'storybook/popover/popover-close-on-content-click',
-    'PopoverCloseOnContentClickModule',
-    'sds-popover-close-on-content-click'
+    'storybook/popover/popover-content',
+    'PopoverContent',
+    'sds-popover-content'
   ),
-  stackblitzLink: generateStackblitzLink('popover', 'close-on-content-click'),
-};
-
-export const CloseOnClickOutside: Story = (args) => ({
-  template: `<sds-popover-close-on-click-outside></sds-popover-close-on-click-outside>`,
-  props: args,
-});
-CloseOnClickOutside.parameters = {
-  controls: {
-    disabled: true,
-    hideNoControlsWarning: true,
-  },
-  actions: { disabled: true },
-  preview: generateConfig(
-    'storybook/popover/popover-close-on-click-outside',
-    'PopoverCloseOnClickOutsideModule',
-    'sds-popover-close-on-click-outside'
-  ),
-  stackblitzLink: generateStackblitzLink('popover', 'close-on-click-outside'),
+  stackblitzLink: generateStackblitzLink('popover', 'content'),
 };
 export const Introduction: Story = (args) => ({
   template: '<sds-popover-introduction></sds-popover-introduction>',
@@ -173,8 +119,8 @@ Introduction.parameters = {
 export const __namedExportsOrder = [
   'Introduction',
   'Configurable',
-  'CloseOnClickOutside',
-  'CloseOnContentClicked',
-  'Title',
+  'Close',
+  'Content',
   'Position',
+  'Title',
 ];

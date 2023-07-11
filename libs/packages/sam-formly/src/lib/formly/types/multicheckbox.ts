@@ -1,5 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
+import { NgxPopperjsTriggers } from 'ngx-popperjs';
+import { getPosition } from '../services/utils';
 
 @Component({
   selector: 'sds-formly-field-multicheckbox',
@@ -17,6 +19,9 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType implements OnIn
   ariaChecked = '';
   mainOptionAriaChecked: string[] = [];
   subOptionAriaChecked: string[] = [];
+
+  hover = NgxPopperjsTriggers.click;
+  getPosition = getPosition;
 
   constructor(private cdr: ChangeDetectorRef) {
     super();
