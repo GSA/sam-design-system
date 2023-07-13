@@ -3033,39 +3033,41 @@ export class AppComponent {}
 export default tableDataFull;
 ">
     
-    <input type="hidden" name="project[files][src/app/table-pagination.component.html]" value="&lt;sds-table [data]=&#34;data&#34; [tableName]=&#34;&#39;paginationTable&#39;&#34; [pagination]=&#34;true&#34;&gt;
-  &lt;sds-table-column sdsColumnName=&#34;id&#34;&gt;
-    &lt;ng-template #sdsHeaderCell&gt;ID&lt;/ng-template&gt;
-    &lt;ng-template #sdsCell let-element=&#34;element&#34;&gt;{{ element.id }}&lt;/ng-template&gt;
-  &lt;/sds-table-column&gt;
-  &lt;sds-table-column sdsColumnName=&#34;firstName&#34;&gt;
-    &lt;ng-template #sdsHeaderCell&gt;First&lt;/ng-template&gt;
-    &lt;ng-template #sdsCell let-element=&#34;element&#34;&gt;{{ element.firstName }}&lt;/ng-template&gt;
-  &lt;/sds-table-column&gt;
-  &lt;sds-table-column sdsColumnName=&#34;lastName&#34;&gt;
-    &lt;ng-template #sdsHeaderCell&gt;Last&lt;/ng-template&gt;
-    &lt;ng-template #sdsCell let-element=&#34;element&#34;&gt;{{ element.lastName }}&lt;/ng-template&gt;
-  &lt;/sds-table-column&gt;
-  &lt;sds-table-column sdsColumnName=&#34;email&#34;&gt;
-    &lt;ng-template #sdsHeaderCell&gt;Email&lt;/ng-template&gt;
-    &lt;ng-template #sdsCell let-element=&#34;element&#34;
-      &gt;&lt;a href=&#34;https://beta.sam.gov&#34; (click)=&#34;$event.stopPropagation()&#34; class=&#34;usa-link&#34;&gt;{{
-        element.email
-      }}&lt;/a&gt;&lt;/ng-template
-    &gt;
-  &lt;/sds-table-column&gt;
-  &lt;sds-table-column sdsColumnName=&#34;requests&#34;&gt;
-    &lt;ng-template #sdsHeaderCell&gt;Requests&lt;/ng-template&gt;
-    &lt;ng-template #sdsCell let-element=&#34;element&#34;&gt;{{ element.requests }}&lt;/ng-template&gt;
-  &lt;/sds-table-column&gt;
-  &lt;sds-table-column sdsColumnName=&#34;date&#34;&gt;
-    &lt;ng-template #sdsHeaderCell&gt;Date&lt;/ng-template&gt;
-    &lt;ng-template #sdsCell let-element=&#34;element&#34;&gt;{{ element.date | date }}&lt;/ng-template&gt;
-  &lt;/sds-table-column&gt;
+    <input type="hidden" name="project[files][src/app/table-pagination.component.html]" value="&lt;div style=&#34;width: 90%;&#34;&gt;
+  &lt;sds-table [data]=&#34;data&#34; [tableName]=&#34;&#39;paginationTable&#39;&#34; [pagination]=&#34;true&#34;&gt;
+    &lt;sds-table-column sdsColumnName=&#34;id&#34;&gt;
+      &lt;ng-template #sdsHeaderCell&gt;ID&lt;/ng-template&gt;
+      &lt;ng-template #sdsCell let-element=&#34;element&#34;&gt;{{ element.id }}&lt;/ng-template&gt;
+    &lt;/sds-table-column&gt;
+    &lt;sds-table-column sdsColumnName=&#34;firstName&#34;&gt;
+      &lt;ng-template #sdsHeaderCell&gt;First&lt;/ng-template&gt;
+      &lt;ng-template #sdsCell let-element=&#34;element&#34;&gt;{{ element.firstName }}&lt;/ng-template&gt;
+    &lt;/sds-table-column&gt;
+    &lt;sds-table-column sdsColumnName=&#34;lastName&#34;&gt;
+      &lt;ng-template #sdsHeaderCell&gt;Last&lt;/ng-template&gt;
+      &lt;ng-template #sdsCell let-element=&#34;element&#34;&gt;{{ element.lastName }}&lt;/ng-template&gt;
+    &lt;/sds-table-column&gt;
+    &lt;sds-table-column sdsColumnName=&#34;email&#34;&gt;
+      &lt;ng-template #sdsHeaderCell&gt;Email&lt;/ng-template&gt;
+      &lt;ng-template #sdsCell let-element=&#34;element&#34;
+        &gt;&lt;a href=&#34;https://beta.sam.gov&#34; (click)=&#34;$event.stopPropagation()&#34; class=&#34;usa-link&#34;&gt;{{
+          element.email
+        }}&lt;/a&gt;&lt;/ng-template
+      &gt;
+    &lt;/sds-table-column&gt;
+    &lt;sds-table-column sdsColumnName=&#34;requests&#34;&gt;
+      &lt;ng-template #sdsHeaderCell&gt;Requests&lt;/ng-template&gt;
+      &lt;ng-template #sdsCell let-element=&#34;element&#34;&gt;{{ element.requests }}&lt;/ng-template&gt;
+    &lt;/sds-table-column&gt;
+    &lt;sds-table-column sdsColumnName=&#34;date&#34;&gt;
+      &lt;ng-template #sdsHeaderCell&gt;Date&lt;/ng-template&gt;
+      &lt;ng-template #sdsCell let-element=&#34;element&#34;&gt;{{ element.date | date }}&lt;/ng-template&gt;
+    &lt;/sds-table-column&gt;
 
-  &lt;sds-header-row [displayedColumns]=&#34;displayedColumns&#34;&gt;&lt;/sds-header-row&gt;
-  &lt;sds-row [displayedColumns]=&#34;displayedColumns&#34;&gt;&lt;/sds-row&gt;
-&lt;/sds-table&gt;
+    &lt;sds-header-row [displayedColumns]=&#34;displayedColumns&#34;&gt;&lt;/sds-header-row&gt;
+    &lt;sds-row [displayedColumns]=&#34;displayedColumns&#34;&gt;&lt;/sds-row&gt;
+  &lt;/sds-table&gt;
+&lt;/div&gt;
 ">
     
     <input type="hidden" name="project[files][src/app/table-pagination.component.ts]" value="import { Component } from &#39;@angular/core&#39;;
