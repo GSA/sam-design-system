@@ -11,5 +11,6 @@ export class VideoPlayerPreloadComponent {
     width: '100%',
     height: 'auto',
     preload: 'none',
+    poster: 'https://github.com/GSA/sam-static-content/raw/master/assets/images/gsa-sample.jpg',
   };
 }

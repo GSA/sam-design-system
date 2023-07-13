@@ -6,7 +6,6 @@ import { VideoPlayerCaptionModule } from './video-player-caption/video-player-ca
 import { VideoPlayerDebugModule } from './video-player-debug/video-player-debug.module';
 import { VideoPlayerDescriptionModule } from './video-player-description/video-player-description.module';
 import { VideoPlayerSeekIntervalModule } from './video-player-seek-interval/video-player-seek-interval.module';
-import { VideoPlayerPosterModule } from './video-player-poster/video-player-poster.module';
 import { VideoPlayerPreloadModule } from './video-player-preload/video-player-preload.module';
 import { VideoPlayerCrossOriginModule } from './video-player-cross-origin/video-player-cross-origin.module';
 import { VideoPlayerIntroductionModule } from './video-player-introduction/video-player-introduction.module';
@@ -24,7 +23,6 @@ export default {
         VideoPlayerDebugModule,
         VideoPlayerDescriptionModule,
         VideoPlayerIntroductionModule,
-        VideoPlayerPosterModule,
         VideoPlayerPreloadModule,
         VideoPlayerSeekIntervalModule,
       ],
@@ -182,27 +180,6 @@ Description.parameters = {
   stackblitzLink: generateStackblitzLink('video-player', 'description'),
 };
 
-export const Poster: Story = (args) => ({
-  template: `<sds-video-player-poster></sds-video-player-poster>`,
-  props: {
-    ...args,
-  },
-});
-Poster.parameters = {
-  controls: {
-    disabled: true,
-    hideNoControlsWarning: true,
-  },
-  actions: { disabled: true },
-  preview: generateConfig(
-    'storybook/video-player/video-player-poster',
-    'VideoPlayerPosterModule',
-    'sds-video-player-poster',
-    []
-  ),
-  stackblitzLink: generateStackblitzLink('video-player', 'poster'),
-};
-
 export const PreLoad: Story = (args) => ({
   template: `<sds-video-player-preload></sds-video-player-preload>`,
   props: {
@@ -273,7 +250,6 @@ export const __namedExportsOrder = [
   'CrossOrigin',
   'Debug',
   'Description',
-  'Poster',
   'PreLoad',
   'SeekInterval',
 ];

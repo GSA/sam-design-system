@@ -7,5 +7,6 @@ import { SdsTableModule } from '@gsa-sam/sam-material-extensions';
   imports: [CommonModule, SdsTableModule],
   declarations: [TableChangeDataComponent],
   exports: [TableChangeDataComponent],
+  bootstrap: [TableChangeDataComponent],
 })
 export class TableChangeDataModule {}

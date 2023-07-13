@@ -8,5 +8,6 @@ import { SdsTableModule } from '@gsa-sam/sam-material-extensions';
   imports: [CommonModule, SdsTableModule, IconModule],
   declarations: [TableExpansionComponent],
   exports: [TableExpansionComponent],
+  bootstrap: [TableExpansionComponent],
 })
 export class TableExpansionModule {}

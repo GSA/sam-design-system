@@ -12,5 +12,6 @@ export class VideoPlayerDescriptionComponent {
     description: 'GSA example video',
     width: '100%',
     height: 'auto',
+    poster: 'https://github.com/GSA/sam-static-content/raw/master/assets/images/gsa-sample.jpg',
   };
 }

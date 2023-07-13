@@ -7,5 +7,6 @@ import { SdsTableModule } from '@gsa-sam/sam-material-extensions';
   imports: [CommonModule, SdsTableModule],
   declarations: [TableStickyColumnComponent],
   exports: [TableStickyColumnComponent],
+  bootstrap: [TableStickyColumnComponent],
 })
 export class TableStickyColumnModule {}

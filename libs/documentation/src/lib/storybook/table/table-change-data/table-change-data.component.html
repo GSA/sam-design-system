@@ -1,47 +1,49 @@
-<sds-table [data]="tableData" [tableName]="'changeDataTable'" [pagination]="true">
-  <sds-table-column sdsColumnName="id">
-    <ng-template #sdsHeaderCell>ID</ng-template>
-    <ng-template #sdsCell let-element="element">{{ element.id }}</ng-template>
-  </sds-table-column>
-  <sds-table-column sdsColumnName="firstName">
-    <ng-template #sdsHeaderCell>First</ng-template>
-    <ng-template #sdsCell let-element="element">{{ element.firstName }}</ng-template>
-  </sds-table-column>
-  <sds-table-column sdsColumnName="lastName">
-    <ng-template #sdsHeaderCell>Last</ng-template>
-    <ng-template #sdsCell let-element="element">{{ element.lastName }}</ng-template>
-  </sds-table-column>
-  <sds-table-column sdsColumnName="email">
-    <ng-template #sdsHeaderCell>Email</ng-template>
-    <ng-template #sdsCell let-element="element"
-      ><a href="https://beta.sam.gov" (click)="$event.stopPropagation()" class="usa-link">{{
-        element.email
-      }}</a></ng-template
-    >
-  </sds-table-column>
-  <sds-table-column sdsColumnName="requests">
-    <ng-template #sdsHeaderCell>Requests</ng-template>
-    <ng-template #sdsCell let-element="element">{{ element.requests }}</ng-template>
-  </sds-table-column>
-  <sds-table-column sdsColumnName="date">
-    <ng-template #sdsHeaderCell>Date</ng-template>
-    <ng-template #sdsCell let-element="element">{{ element.date | date }}</ng-template>
-  </sds-table-column>
+<div style="width: 90%;">
+  <sds-table [data]="tableData" [tableName]="'changeDataTable'" [pagination]="true">
+    <sds-table-column sdsColumnName="id">
+      <ng-template #sdsHeaderCell>ID</ng-template>
+      <ng-template #sdsCell let-element="element">{{ element.id }}</ng-template>
+    </sds-table-column>
+    <sds-table-column sdsColumnName="firstName">
+      <ng-template #sdsHeaderCell>First</ng-template>
+      <ng-template #sdsCell let-element="element">{{ element.firstName }}</ng-template>
+    </sds-table-column>
+    <sds-table-column sdsColumnName="lastName">
+      <ng-template #sdsHeaderCell>Last</ng-template>
+      <ng-template #sdsCell let-element="element">{{ element.lastName }}</ng-template>
+    </sds-table-column>
+    <sds-table-column sdsColumnName="email">
+      <ng-template #sdsHeaderCell>Email</ng-template>
+      <ng-template #sdsCell let-element="element"
+        ><a href="https://beta.sam.gov" (click)="$event.stopPropagation()" class="usa-link">{{
+          element.email
+        }}</a></ng-template
+      >
+    </sds-table-column>
+    <sds-table-column sdsColumnName="requests">
+      <ng-template #sdsHeaderCell>Requests</ng-template>
+      <ng-template #sdsCell let-element="element">{{ element.requests }}</ng-template>
+    </sds-table-column>
+    <sds-table-column sdsColumnName="date">
+      <ng-template #sdsHeaderCell>Date</ng-template>
+      <ng-template #sdsCell let-element="element">{{ element.date | date }}</ng-template>
+    </sds-table-column>
 
-  <sds-header-row [displayedColumns]="displayedColumns"></sds-header-row>
-  <sds-row [displayedColumns]="displayedColumns"></sds-row>
-</sds-table>
+    <sds-header-row [displayedColumns]="displayedColumns"></sds-header-row>
+    <sds-row [displayedColumns]="displayedColumns"></sds-row>
+  </sds-table>
 
-<div>
-  <hr class="margin-top-4" />
-  <p>Change number of rows:</p>
-  <button (click)="sliceData(0, 5)" class="usa-button usa-button--base">
-    5 rows
-  </button>
-  <button (click)="sliceData(0, 25)" class="usa-button usa-button--base">
-    25 rows
-  </button>
-  <button (click)="sliceData(0, 50)" class="usa-button usa-button--base">
-    50 rows
-  </button>
+  <div>
+    <hr class="margin-top-4" />
+    <p>Change number of rows:</p>
+    <button (click)="sliceData(0, 5)" class="usa-button usa-button--base">
+      5 rows
+    </button>
+    <button (click)="sliceData(0, 25)" class="usa-button usa-button--base">
+      25 rows
+    </button>
+    <button (click)="sliceData(0, 50)" class="usa-button usa-button--base">
+      50 rows
+    </button>
+  </div>
 </div>

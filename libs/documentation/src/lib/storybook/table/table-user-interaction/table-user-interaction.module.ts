@@ -7,5 +7,6 @@ import { SdsTableModule } from '@gsa-sam/sam-material-extensions';
   imports: [CommonModule, SdsTableModule],
   declarations: [TableUserInteractionComponent],
   exports: [TableUserInteractionComponent],
+  bootstrap: [TableUserInteractionComponent],
 })
 export class TableUserInteractionModule {}
