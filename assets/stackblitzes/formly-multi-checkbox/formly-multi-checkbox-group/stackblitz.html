@@ -326,7 +326,9 @@ export class AppComponent {}
   &lt;formly-form [model]=&#34;model&#34; [fields]=&#34;fields&#34; [options]=&#34;options&#34; [form]=&#34;form&#34;&gt;&lt;/formly-form&gt;
 &lt;/form&gt;
 
-{{ model | json }}
+&lt;pre
+  &gt;{{ model | json }}
+&lt;/pre&gt;
 ">
     
     <input type="hidden" name="project[files][src/app/formly-multi-checkbox-group.component.ts]" value="import { Component } from &#39;@angular/core&#39;;
@@ -368,7 +370,6 @@ export class FormlyMultiCheckboxGroupComponent {
             {
               key: &#39;LBN&#39;,
               value: &#39;Legal Business Name&#39;,
-              tooltipText: &#39;&lt;b&gt;Assistance Listing&lt;/b&gt;&lt;u&gt;Tool tip with style&lt;/u&gt;&#39;,
             },
           ],
         },
