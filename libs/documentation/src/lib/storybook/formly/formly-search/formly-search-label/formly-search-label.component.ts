@@ -13,11 +13,6 @@ export class FormlySearchLabelComponent {
 
   fields: FormlyFieldConfig[] = [
     {
-      key: 'filter',
-      templateOptions: {
-        label: 'Keyword (with label)',
-        ariaHidden: true,
-      },
       fieldGroup: [
         {
           key: 'searchmodel',
