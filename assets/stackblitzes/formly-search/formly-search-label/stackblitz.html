@@ -326,7 +326,9 @@ export class AppComponent {}
   &lt;formly-form [model]=&#34;model&#34; [fields]=&#34;fields&#34; [options]=&#34;options&#34; [form]=&#34;form&#34;&gt;&lt;/formly-form&gt;
 &lt;/form&gt;
 
-{{ model | json }}
+&lt;pre&gt;
+  {{ model | json }}
+&lt;/pre&gt;
 ">
     
     <input type="hidden" name="project[files][src/app/formly-search-label.component.ts]" value="import { Component } from &#39;@angular/core&#39;;
@@ -344,11 +346,6 @@ export class FormlySearchLabelComponent {
 
   fields: FormlyFieldConfig[] = [
     {
-      key: &#39;filter&#39;,
-      templateOptions: {
-        label: &#39;Keyword (with label)&#39;,
-        ariaHidden: true,
-      },
       fieldGroup: [
         {
           key: &#39;searchmodel&#39;,
