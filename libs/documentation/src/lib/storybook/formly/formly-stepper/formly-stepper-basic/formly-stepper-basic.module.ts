@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UsaStepIndicatorModule } from '@gsa-sam/ngx-uswds';
 import { SdsStepperModule } from '@gsa-sam/sam-formly';
+import { RouterTestingModule } from '@angular/router/testing';
 import {
   NgxBootstrapIconsModule,
   chevronLeft,
@@ -41,9 +42,10 @@ import { BrowserModule } from '@angular/platform-browser';
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    RouterTestingModule,
   ],
   declarations: [FormlyStepperBasicComponent, USWDSCustomStepperComponent],
-  bootstrap: [FormlyStepperBasicComponent, USWDSCustomStepperComponent],
+  bootstrap: [FormlyStepperBasicComponent],
   exports: [FormlyStepperBasicComponent, USWDSCustomStepperComponent],
 })
 export class FormlyStepperBasicModule {}

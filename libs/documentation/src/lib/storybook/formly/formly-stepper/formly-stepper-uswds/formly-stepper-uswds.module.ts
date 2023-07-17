@@ -38,6 +38,6 @@ import { SdsStepArrowModule } from '@gsa-sam/components';
     SdsStepArrowModule,
   ],
   exports: [UswdsStepperComponent, USWDSCustomStepperComponent],
-  bootstrap: [UswdsStepperComponent, USWDSCustomStepperComponent],
+  bootstrap: [UswdsStepperComponent],
 })
 export class UswdsStepperModule {}

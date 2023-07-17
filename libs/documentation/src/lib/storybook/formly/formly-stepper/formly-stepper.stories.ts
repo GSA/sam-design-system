@@ -74,11 +74,19 @@ Uneven.parameters = {
     'FormlyStepperBasicModule',
     'sds-formly-stepper-basic',
     [
-      createCodePreviewTabData('storybook/formly/formly-stepper/formly-stepper-basic/formly-stepper-basic-uneven.component.ts', 'ts', false),
-      createCodePreviewTabData('storybook/formly/formly-stepper/formly-stepper-basic/formly-stepper-basic-uneven.component.html', 'html', false),
+      createCodePreviewTabData(
+        'storybook/formly/formly-stepper/formly-stepper-basic/formly-stepper-basic-uneven.component.ts',
+        'ts',
+        false
+      ),
+      createCodePreviewTabData(
+        'storybook/formly/formly-stepper/formly-stepper-basic/formly-stepper-basic-uneven.component.html',
+        'html',
+        false
+      ),
     ]
   ),
-  stackblitzLink: generateStackblitzLink('formly-stepper', 'uneven'),
+  stackblitzLink: generateStackblitzLink('formly-stepper', 'basic'),
 };
 
 export const USWDS: Story = (args) => ({
@@ -96,8 +104,16 @@ USWDS.parameters = {
     'UswdsStepperModule',
     'gsa-sam-uswds-stepper',
     [
-      createCodePreviewTabData('storybook/formly/formly-stepper/formly-stepper-uswds/formly-stepper-uswds-custom.component.ts', 'ts', false),
-      createCodePreviewTabData('storybook/formly/formly-stepper/formly-stepper-uswds/formly-stepper-uswds-custom.component.html', 'html', false),
+      createCodePreviewTabData(
+        'storybook/formly/formly-stepper/formly-stepper-uswds/formly-stepper-uswds-custom.component.ts',
+        'ts',
+        false
+      ),
+      createCodePreviewTabData(
+        'storybook/formly/formly-stepper/formly-stepper-uswds/formly-stepper-uswds-custom.component.html',
+        'html',
+        false
+      ),
     ]
   ),
   stackblitzLink: generateStackblitzLink('formly-stepper', 'uswds'),
@@ -118,13 +134,29 @@ Advanced.parameters = {
     'FormlyStepperAdvancedModule',
     'stepper-advanced-demo',
     [
-      createCodePreviewTabData('storybook/formly/formly-stepper/formly-stepper-advanced/custom-stepper.component.ts', 'ts', false),
-      createCodePreviewTabData('storybook/formly/formly-stepper/formly-stepper-advanced/custom-stepper.component.html', 'html', false),
-      createCodePreviewTabData('storybook/formly/formly-stepper/formly-stepper-advanced/subawardee.component.ts', 'ts', false),
-      createCodePreviewTabData('storybook/formly/formly-stepper/formly-stepper-advanced/subawardee.component.html', 'html', false),
+      createCodePreviewTabData(
+        'storybook/formly/formly-stepper/formly-stepper-advanced/custom-stepper.component.ts',
+        'ts',
+        false
+      ),
+      createCodePreviewTabData(
+        'storybook/formly/formly-stepper/formly-stepper-advanced/custom-stepper.component.html',
+        'html',
+        false
+      ),
+      createCodePreviewTabData(
+        'storybook/formly/formly-stepper/formly-stepper-advanced/subawardee.component.ts',
+        'ts',
+        false
+      ),
+      createCodePreviewTabData(
+        'storybook/formly/formly-stepper/formly-stepper-advanced/subawardee.component.html',
+        'html',
+        false
+      ),
     ]
   ),
-  stackblitzLink: generateStackblitzLink('formly-stepper', 'Advanced'),
+  stackblitzLink: generateStackblitzLink('formly-stepper', 'advanced'),
 };
 
 export const __namedExportsOrder = ['Introduction', 'Uneven', 'USWDS', 'Advanced'];
