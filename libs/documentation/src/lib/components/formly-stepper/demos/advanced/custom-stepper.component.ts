@@ -51,7 +51,7 @@ export class CustomStepperDemo extends SdsStepper {
     return isLastStep && this.selectedStep.isReview;
   }
 
-  showNextButton(){
+  showNextButton() {
     return !this.showReviewButton() && !this.showSubmitButton();
   }
 
