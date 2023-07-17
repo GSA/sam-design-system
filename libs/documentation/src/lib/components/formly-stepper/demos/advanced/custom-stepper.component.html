@@ -53,12 +53,19 @@
   </div>
 
   <div class="flex-justify-end">
-    <button *ngIf="selectedStep.isReview" class="usa-button bg-primary-lighter radius-pill">Submit</button>
-    <button *ngIf="selectedStep.isReview" class="usa-button bg-primary-lighter radius-pill">Review</button>
     <button sdsStepperPrevious class="usa-button bg-primary-lighter radius-pill">
       <usa-icon size="md" [icon]="'chevron-left'"></usa-icon> Previous
     </button>
-    <button sdsStepperNext [attr.id]="id + '-nextBtn'" class="usa-button radius-pill">
+    <button *ngIf="showSubmitButton()" class="usa-button bg-primary-lighter radius-pill" (click)="submitClicked()">
+      Submit
+    </button>
+    <button *ngIf="showReviewButton()" sdsStepperNext class="usa-button bg-primary-lighter radius-pill">Review<usa-icon size="md" [icon]="'chevron-right'"></usa-icon></button>
+    <button
+      *ngIf="showNextButton()"
+      sdsStepperNext
+      [attr.id]="id + '-nextBtn'"
+      class="usa-button radius-pill"
+    >
       Next <usa-icon size="md" [icon]="'chevron-right'"></usa-icon>
     </button>
   </div>

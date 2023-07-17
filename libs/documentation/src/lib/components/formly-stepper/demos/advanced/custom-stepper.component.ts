@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { SdsDialogRef } from '@gsa-sam/components';
 import { SdsStepper } from '@gsa-sam/sam-formly';
+import { FormlyForm } from '@ngx-formly/core';
 
 @Component({
   selector: `custom-stepper-demo`,
@@ -12,6 +13,9 @@ import { SdsStepper } from '@gsa-sam/sam-formly';
   ],
 })
 export class CustomStepperDemo extends SdsStepper {
+  @Output()
+  submittedData = new EventEmitter<FormlyForm>();
+
   responseDialog: SdsDialogRef<any>;
 
   onDialogOpen($event) {
@@ -29,5 +33,29 @@ export class CustomStepperDemo extends SdsStepper {
     }
     this.responseDialog.close();
     this.responseDialog = undefined;
+  }
+
+  showReviewButton() {
+    const lastStepIndex = this.flatSteps.length - 1;
+    const secondToLastStepIndex = lastStepIndex - 1;
+    const isSecondToLastStep = this.selectedStepIndex == secondToLastStepIndex;
+    const nextStep = this.flatSteps[this.selectedStepIndex + 1];
+
+    return isSecondToLastStep && nextStep.isReview;
+  }
+
+  showSubmitButton() {
+    const lastStepIndex = this.flatSteps.length - 1;
+    const isLastStep = this.selectedStepIndex == lastStepIndex;
+
+    return isLastStep && this.selectedStep.isReview;
+  }
+
+  showNextButton(){
+    return !this.showReviewButton() && !this.showSubmitButton();
+  }
+
+  submitClicked() {
+    this.submittedData.emit(this.model);
   }
 }
