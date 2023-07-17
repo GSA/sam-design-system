@@ -36,19 +36,16 @@ export class CustomStepperDemo extends SdsStepper {
   }
 
   showReviewButton() {
-    const lastStepIndex = this.flatSteps.length - 1;
-    const secondToLastStepIndex = lastStepIndex - 1;
-    const isSecondToLastStep = this.selectedStepIndex == secondToLastStepIndex;
     const nextStep = this.flatSteps[this.selectedStepIndex + 1];
 
-    return isSecondToLastStep && nextStep.isReview;
+    return nextStep && nextStep.isReview;
   }
 
   showSubmitButton() {
     const lastStepIndex = this.flatSteps.length - 1;
     const isLastStep = this.selectedStepIndex == lastStepIndex;
 
-    return isLastStep && this.selectedStep.isReview;
+    return isLastStep;
   }
 
   showNextButton() {
