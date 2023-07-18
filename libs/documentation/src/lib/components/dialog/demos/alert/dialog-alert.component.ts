@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { SdsDialogService, SDS_DIALOG_DATA } from '@gsa-sam/components';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 
@@ -30,7 +30,7 @@ export class AlertComponent {
   templateUrl: './dialog-alert.component.html',
 })
 export class DialogAlert {
-  form = new FormGroup({});
+  form = new UntypedFormGroup({});
   model: any = {
     alert: {
       title: 'Open Link?',

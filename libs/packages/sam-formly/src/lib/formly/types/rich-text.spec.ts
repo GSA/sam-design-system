@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule, FormsModule, FormGroup } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule, UntypedFormGroup } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SdsRichTextModule } from '@gsa-sam/components';
 import { FormlyForm, FormlyModule } from '@ngx-formly/core';
@@ -42,7 +42,7 @@ describe('Formly Field Rich Text Editor Component', () => {
   describe('', () => {
     beforeEach(() => {
       testRTEComponent = {
-        form: new FormGroup({}),
+        form: new UntypedFormGroup({}),
         options: {},
         model: {},
       };
@@ -99,7 +99,7 @@ class TestComponent {
   @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;
 
   fields = testRTEComponent.fields;
-  form: FormGroup = testRTEComponent.form;
+  form: UntypedFormGroup = testRTEComponent.form;
   model = testRTEComponent.model || {};
   options = testRTEComponent.options;
 }

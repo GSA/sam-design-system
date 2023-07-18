@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { FormlyUtilsService, SdsFormlyTypes } from '@gsa-sam/sam-formly';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
@@ -10,7 +10,7 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 export class ReadonlyFormlyTypeComponent {
   isReadOnlyMode = false;
 
-  form = new FormGroup({});
+  form = new UntypedFormGroup({});
   fields: FormlyFieldConfig[] = [
     {
       template: `<span class="text-error sds-small text-italic">

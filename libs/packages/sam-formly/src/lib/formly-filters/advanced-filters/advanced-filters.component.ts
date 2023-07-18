@@ -1,5 +1,5 @@
 import { Component, Input, ChangeDetectorRef, Output, EventEmitter, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { SdsDialogService } from '@gsa-sam/components';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 
@@ -17,7 +17,7 @@ export class AdvancedFiltersComponent implements OnInit {
   /**
    * Pass in a Form Group for ReactiveForms Support
    */
-  @Input() public form: FormGroup;
+  @Input() public form: UntypedFormGroup;
 
   /**
    *  Fields are used to configure the UI components

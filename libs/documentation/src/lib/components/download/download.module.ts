@@ -15,6 +15,7 @@ import { FormlyCurvyDialog } from './demos/formlymodal-curvy/formlymodal-curvy.c
 import { FormlyCurvyDialogModule } from './demos/formlymodal-curvy/formlymodal-curvy.module';
 import { FormlyDialogLinkToSbComponent } from './demos/formly-dialog-link-to-sb/formly-dialog-link-to-sb.component';
 import { FormlyDialogLinkToSbModule } from './demos/formly-dialog-link-to-sb/formly-dialog-link-to-sb.module';
+import { Routes } from '@angular/router';
 
 declare var require: any;
 const DEMOS = {
@@ -51,7 +52,7 @@ const DEMOS = {
   },
 };
 
-export const ROUTES = [
+export const ROUTES: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'examples' },
   {
     path: '',

@@ -202,7 +202,7 @@ describe('SdsDialog', () => {
         dialogRef.beforeClosed().subscribe(beforeCloseCallback);
         dialogRef.afterClosed().subscribe(afterCloseCallback);
 
-        scrolledSubject.next();
+        scrolledSubject.next(null);
         viewContainerFixture.detectChanges();
         flush();
 

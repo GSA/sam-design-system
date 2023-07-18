@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { AbstractControl, FormGroup } from '@angular/forms';
+import { AbstractControl, UntypedFormGroup } from '@angular/forms';
 import { SdsFormlyTypes } from '@gsa-sam/sam-formly';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
@@ -41,7 +41,7 @@ export class FileInputTemplateComponent implements AfterViewInit {
     },
   ];
 
-  form = new FormGroup({});
+  form = new UntypedFormGroup({});
 
   onModelChange($event: { tableFilesInput: File[] }) {
     // The 'scan' property here must match the property in
@@ -69,7 +69,7 @@ export class FileInputTemplateComponent implements AfterViewInit {
       : tableFormGroup.value['tableFilesInput'];
     const newFiles = fileArray.filter((value: File) => value != file);
     let fc: AbstractControl;
-    if (tableFormGroup instanceof FormGroup) {
+    if (tableFormGroup instanceof UntypedFormGroup) {
       fc = tableFormGroup.get('tableFilesInput');
     } else {
       fc = tableFormGroup;
