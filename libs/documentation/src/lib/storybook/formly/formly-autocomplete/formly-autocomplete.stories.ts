@@ -96,7 +96,7 @@ export const Count: Story = (args) => ({
   props: args,
 });
 Count.parameters = {
-  template: {
+  controls: {
     disabled: true,
     hideNoControlsWarning: true,
   },
@@ -110,7 +110,7 @@ Count.parameters = {
 };
 
 export const Freetext: Story = (args) => ({
-  template: '<sds-formly-autocomplete-free-text></sds-formly-autocomplete-free-text>',
+  template: '<sds-formly-autocomplete-freetext></sds-formly-autocomplete-freetext>',
   props: args,
 });
 Freetext.parameters = {
@@ -122,7 +122,7 @@ Freetext.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-autocomplete/formly-autocomplete-free-text',
     'FormlyAutocompleteFreetextModule',
-    'sds-formly-autocomplete-free-text'
+    'sds-formly-autocomplete-freetext'
   ),
   stackblitzLink: generateStackblitzLink('formly-autocomplete', 'free-text'),
 };
@@ -184,10 +184,10 @@ Validation.parameters = {
 export const __namedExportsOrder = [
   'Introduction',
   'Basic',
-  'Validation',
-  'Tag',
-  'Free-text',
-  'Input',
-  'Disable',
   'Count',
+  'Disable',
+  'Freetext',
+  'Input',
+  'Tag',
+  'Validation',
 ];
