@@ -122,7 +122,7 @@ Freetext.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-autocomplete/formly-autocomplete-free-text',
     'FormlyAutocompleteFreetextModule',
-    'sds-formly-autocomplete-free-text'
+    'sds-formly-autocomplete-freetext'
   ),
   stackblitzLink: generateStackblitzLink('formly-autocomplete', 'free-text'),
 };
