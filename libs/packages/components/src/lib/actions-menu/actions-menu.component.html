@@ -11,6 +11,7 @@
   [class.sds-button--shadow]="model.trigger.shadow"
   [class.sds-button--small]="size === 'sm'"
   [sdsMenuTriggerFor]="menu"
+  role="button"
 >
   <span *ngIf="model.label">{{ model.label }}</span>
   <usa-icon [icon]="'three-dots-vertical'" [size]="'1x'"></usa-icon>

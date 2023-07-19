@@ -22,7 +22,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { FormlyUtilsService, ReadonlyDataType } from '../formly/services/formly-utils.service';
 import { SdsFormlyTypes } from '../formly/models/formly-types';
-import { SdsDialogRef, SdsDialogService, SDS_DIALOG_DATA } from '@gsa-sam/components';
+import { SdsDialogRef, SdsDialogService } from '@gsa-sam/components';
 import { cloneDeep } from 'lodash-es';
 import { FormlyValueChangeEvent } from '@ngx-formly/core/lib/components/formly.field.config';
 @Component({
@@ -116,6 +116,8 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
 
   chips: ReadonlyDataType[] = [];
   dialogRef: SdsDialogRef<any>;
+
+  chipStatusText = '';
 
   // Snapshot of model before filter dialog opens during horizontal responsive format
   _modelSnapshot: any;
@@ -428,6 +430,9 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
       });
     });
 
+    const { added, deleted } = this.findChipDifferences(this.chips, allChips);
+    this.chipAdded(added);
+    this.chipRemoved(deleted);
     this.chips = allChips;
   }
 
@@ -478,5 +483,57 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     const objectValue = {};
     Object.assign(objectValue, ...existingValues);
     field.formControl.setValue(objectValue);
+  }
+
+  chipAdded(added: ReadonlyDataType | ReadonlyDataType[]): void {
+    if (!this.displayChips) {
+      return;
+    }
+    let statusText = '';
+    if (Array.isArray(added)) {
+      if (added.length === 0) {
+        return;
+      }
+      for (let i = 0; i < added.length; i++) {
+        statusText = statusText.concat(`Filter ${added[i].label} ${added[i].srValue} added.`);
+      }
+    } else {
+      statusText = `Filter ${added.label} ${added.srValue} added.`;
+    }
+    this.chipStatusText = statusText;
+  }
+  chipRemoved(removed: ReadonlyDataType | ReadonlyDataType[]): void {
+    if (!this.displayChips) {
+      return;
+    }
+    let statusText = '';
+    if (Array.isArray(removed)) {
+      if (removed.length === 0) {
+        return;
+      }
+      for (let i = 0; i < removed.length; i++) {
+        statusText = statusText.concat(`Filter ${removed[i].label} ${removed[i].srValue} removed.`);
+      }
+    } else {
+      statusText = `Filter ${removed.label} ${removed.srValue} removed.`;
+    }
+    this.chipStatusText = statusText;
+  }
+  findChipDifferences(
+    oldChips: ReadonlyDataType[],
+    newChips: ReadonlyDataType[]
+  ): {
+    added: ReadonlyDataType[];
+    deleted: ReadonlyDataType[];
+  } {
+    const deleted = oldChips.filter(
+      (oldChip) => newChips.findIndex((newChip) => this.sameChip(newChip, oldChip)) === -1
+    );
+    const added = newChips.filter((newChip) => oldChips.findIndex((oldChip) => this.sameChip(newChip, oldChip)) === -1);
+    return { added, deleted };
+  }
+
+  sameChip(chipA: ReadonlyDataType, chipB: ReadonlyDataType): boolean {
+    return chipA.srValue === chipB.srValue;
   }
 }
