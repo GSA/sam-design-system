@@ -5,7 +5,7 @@
     <formly-form [form]="form" [fields]="fields" [options]="options" [model]="model"></formly-form>
   </div>
   <div sds-dialog-actions>
-    <button class="usa-button usa-button--base" (click)="onCancel()" type="button">
+    <button class="usa-button usa-button--base bg-base-lighter" (click)="onCancel()" type="button">
       {{ cancel }}
     </button>
     <button class="usa-button" [disabled]="disableSubmitButton ? !form.valid : disableSubmitButton" type="submit">
