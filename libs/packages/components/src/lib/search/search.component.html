@@ -26,7 +26,8 @@
         [value]="item.value"
         [selected]="model.searchCategory == item.value"
         [disabled]="item.disabled"
-        >{{ item.label }}</option>
+        >{{ item.label }}</option
+      >
     </ng-container>
   </select>
   <ng-container [ngTemplateOutlet]="inputTemplate"></ng-container>
