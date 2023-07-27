@@ -16,7 +16,7 @@
         <a *ngIf="row.children && row.children.length" href="javascript:void(0)"
           ><span class="usa-sr-only"> Row Level {{ level }}</span> {{ row.title }}</a
         >
-        <a *ngIf="!row.children || (row.children && !row.children.length)"
+        <a *ngIf="!row.children || (row.children && !row.children.length)" href="javascript:void(0)"
           ><span class="usa-sr-only"> Row Level {{ level }}</span> {{ row.title }}</a
         >
       </div>
