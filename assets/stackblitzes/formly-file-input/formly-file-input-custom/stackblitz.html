@@ -323,25 +323,37 @@ export class AppComponent {}
 ">
     
     <input type="hidden" name="project[files][src/app/formly-file-input-custom.component.html]" value="&lt;p&gt;
-  To configure file input to render a table where the uploaded files can be displayed, provide a
-  &lt;code&gt;fieldArray&lt;/code&gt; field similar to what is provided in this demo. By default, the file-input component will take
-  those configurations and render them in a sds-table. If a custom table implementation is desired, see the
-  &lt;b&gt;File Input Example with Custom Template&lt;/b&gt; example. &lt;code&gt;type&lt;/code&gt; field has not effect on the table that is
-  rendered in this example, so it has been removed from the configuration.
+  To configure file input to render a custom template, provide a
+  &lt;code&gt;ng-template&lt;/code&gt;, get the reference via ViewChild and pass that template in as a templateOption.template in
+  &lt;code&gt;ngAfterViewInit&lt;/code&gt;.
 &lt;/p&gt;
-
 &lt;p&gt;
-  In this example you can see both a size and required validators being applied to the files that are provided. By not
-  providing any file and clicking submit, the required validation can be triggered. Uploading any file over 1kB will
-  trigger the size validation.
+  The template being built can expect to receive:
+&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The contents of fieldArray in fields&lt;/li&gt;
+  &lt;li&gt;The form variable of the file-input&lt;/li&gt;
+  &lt;li&gt;The model of the file-input&lt;/li&gt;
+  &lt;li&gt;An eventEmitter modelChanges that can be linked to formly&#39;s modelChange event&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+  A note about providing a formly-form as the custom template: Within the file-input formly type, the form that is
+  provided to the custom template is also used by file-input component. Passing this form into a second formly-form
+  causes validation to be stripped from the AbstractControl, both in the provided template and in the file-input
+  component.
 &lt;/p&gt;
 &lt;form [formGroup]=&#34;form&#34; (ngSubmit)=&#34;submit()&#34;&gt;
   &lt;formly-form [fields]=&#34;fields&#34; [form]=&#34;form&#34; (modelChange)=&#34;onModelChange($event)&#34;&gt;&lt;/formly-form&gt;
   &lt;button type=&#34;submit&#34;&gt;Submit&lt;/button&gt;
 &lt;/form&gt;
+
+&lt;ng-template #replacementTemplate let-fields=&#34;fields&#34; let-form=&#34;form&#34; let-model=&#34;model&#34; let-modelChange=&#34;modelChange&#34;&gt;
+  &lt;p&gt;Custom&lt;/p&gt;
+  &lt;formly-form [fields]=&#34;fields&#34; [form]=&#34;form&#34; (modelChange)=&#34;onModelChange($event)&#34;&gt;&lt;/formly-form&gt;
+&lt;/ng-template&gt;
 ">
     
-    <input type="hidden" name="project[files][src/app/formly-file-input-custom.component.ts]" value="import { Component } from &#39;@angular/core&#39;;
+    <input type="hidden" name="project[files][src/app/formly-file-input-custom.component.ts]" value="import { AfterViewInit, Component, TemplateRef, ViewChild } from &#39;@angular/core&#39;;
 import { AbstractControl, FormGroup } from &#39;@angular/forms&#39;;
 import { SdsFormlyTypes } from &#39;@gsa-sam/sam-formly&#39;;
 import { FormlyFieldConfig } from &#39;@ngx-formly/core&#39;;
@@ -350,32 +362,26 @@ import { FormlyFieldConfig } from &#39;@ngx-formly/core&#39;;
   selector: &#39;sds-formly-file-input-custom&#39;,
   templateUrl: &#39;./formly-file-input-custom.component.html&#39;,
 })
-export class TableFileInputComponent {
+export class TableFileInputComponent implements AfterViewInit {
+  @ViewChild(&#39;replacementTemplate&#39;) replacementTemplate: TemplateRef&lt;any&gt;;
   fields: FormlyFieldConfig[] = [
     {
-      key: &#39;tableFilesInput&#39;,
+      key: &#39;customTableFilesInput&#39;,
       type: SdsFormlyTypes.FILEINPUT, // Enum maps to &#39;fileinput&#39; string
       templateOptions: {
-        label: &#39;Table File Input&#39;,
+        label: &#39;Custom Table File Input&#39;,
         description: &#39;Accepts multiple files and displays in table&#39;,
         multiple: true,
         hideOptional: true,
         clearFilesOnAdd: false,
         tableDisplay: true,
         displayFileInfo: false,
-        required: true,
         acceptFileType:
           &#39;.bmp,.gif,.jpeg,.jpg,.tex,.xls,.xlsx,.doc,.docx,.docx,.odt,.txt,.pdf,.png,.pptx,.ppt,.rtf,.AVI,.mov,.mpg,.mpeg,.mp4,.wmv,.flv,.f4v&#39;,
-      },
-      validation: {
-        messages: {
-          fileSizeLimit: &#39;File must be below 1 kb&#39;,
-        },
-      },
-      validators: {
-        fileSizeLimit: this.fileSizeLimitValidator,
+        template: null,
       },
       fieldArray: {
+        type: SdsFormlyTypes.TABLE,
         templateOptions: {
           name: &#39;Demo Table&#39;,
           noDataText: &#39;No Attachments&#39;,
@@ -392,10 +398,10 @@ export class TableFileInputComponent {
 
   form = new FormGroup({});
 
-  onModelChange($event: { tableFilesInput: File[] }) {
+  onModelChange($event: { customTableFilesInput: File[] }) {
     // The &#39;scan&#39; property here must match the property in
     // {label: &#39;Virus Scan&#39;, columnName:&#39;scan&#39;, property: &#39;scan&#39;} in templateOptions&#39; tableColumns
-    const newFiles = $event.tableFilesInput.filter((file) =&gt; !file[&#39;scan&#39;]);
+    const newFiles = $event.customTableFilesInput.filter((file) =&gt; !file[&#39;scan&#39;]);
     this.scanFiles(newFiles);
     console.log(&#39;model&#39;, $event);
   }
@@ -413,9 +419,16 @@ export class TableFileInputComponent {
   removeFile(file: File, field: FormlyFieldConfig) {
     const tableFormGroup = field.formControl;
     // Needed because passing form into formly-form a second time strips that object and returns just the array
-    const fileArray = tableFormGroup.value[&#39;tableFilesInput&#39;];
+    const fileArray = Array.isArray(tableFormGroup.value)
+      ? tableFormGroup.value
+      : tableFormGroup.value[&#39;tableFilesInput&#39;];
     const newFiles = fileArray.filter((value: File) =&gt; value != file);
-    let fc: AbstractControl = tableFormGroup.get(&#39;tableFilesInput&#39;);
+    let fc: AbstractControl;
+    if (tableFormGroup instanceof FormGroup) {
+      fc = tableFormGroup.get(&#39;tableFilesInput&#39;);
+    } else {
+      fc = tableFormGroup;
+    }
     fc.setValue(newFiles);
   }
 
@@ -437,6 +450,10 @@ export class TableFileInputComponent {
 
     return isValid;
   }
+
+  ngAfterViewInit() {
+    this.fields[0].templateOptions.template = this.replacementTemplate;
+  }
 }
 ">
     
@@ -447,10 +464,18 @@ import { SdsFormlyModule } from &#39;@gsa-sam/sam-formly&#39;;
 import { ReactiveFormsModule } from &#39;@angular/forms&#39;;
 import { FormlyModule } from &#39;@ngx-formly/core&#39;;
 import { SdsTableModule } from &#39;@gsa-sam/sam-material-extensions&#39;;
+import { RouterTestingModule } from &#39;@angular/router/testing&#39;;
 
 @NgModule({
   declarations: [TableFileInputComponent],
-  imports: [CommonModule, SdsFormlyModule, ReactiveFormsModule, FormlyModule.forRoot(), SdsTableModule],
+  imports: [
+    CommonModule,
+    SdsFormlyModule,
+    ReactiveFormsModule,
+    FormlyModule.forRoot(),
+    SdsTableModule,
+    RouterTestingModule,
+  ],
   exports: [TableFileInputComponent],
   bootstrap: [TableFileInputComponent],
 })
