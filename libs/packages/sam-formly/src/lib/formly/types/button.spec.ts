@@ -1,5 +1,5 @@
 import { FormlyModule, FormlyForm } from '@ngx-formly/core';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormlyFieldButtonComponent } from './button';
 import { Component, ViewChild } from '@angular/core';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
@@ -42,7 +42,7 @@ describe('Formly Field button Component', () => {
   describe('button', () => {
     beforeEach(() => {
       testComponentButtons = {
-        form: new FormGroup({}),
+        form: new UntypedFormGroup({}),
         options: {},
         model: {},
       };
@@ -105,7 +105,7 @@ class TestComponent {
   @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;
 
   fields = testComponentButtons.fields;
-  form: FormGroup = testComponentButtons.form;
+  form: UntypedFormGroup = testComponentButtons.form;
   model = testComponentButtons.model || {};
   options = testComponentButtons.options;
 }

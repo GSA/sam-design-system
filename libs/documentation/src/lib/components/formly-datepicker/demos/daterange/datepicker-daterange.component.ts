@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
@@ -8,7 +8,7 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 })
 export class FormlyDatepickerDateRange {
   results: any = {};
-  form = new FormGroup({});
+  form = new UntypedFormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
 
@@ -33,7 +33,7 @@ export class FormlyDatepickerDateRange {
   ];
 
   results2: any = {};
-  form2 = new FormGroup({});
+  form2 = new UntypedFormGroup({});
   model2: any = {};
   options2: FormlyFormOptions = {};
 

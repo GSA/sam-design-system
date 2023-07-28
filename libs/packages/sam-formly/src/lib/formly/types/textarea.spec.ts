@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FormlyFieldConfig, FormlyModule, FormlyFormOptions } from '@ngx-formly/core';
@@ -11,7 +11,7 @@ import { FormlyFieldTextAreaComponent } from './textarea';
   template: ` <formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form> `,
 })
 class FormlyTextAreaComponent {
-  form = new FormGroup({});
+  form = new UntypedFormGroup({});
   fields: FormlyFieldConfig[];
   model: any;
   options: FormlyFormOptions;

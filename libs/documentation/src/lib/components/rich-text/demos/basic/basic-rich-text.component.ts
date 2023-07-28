@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 
 @Component({
   selector: 'basic-rich-text',
@@ -8,7 +8,7 @@ import { FormControl } from '@angular/forms';
 })
 export class BasicRichTextComponent implements OnInit {
   public data = '';
-  fc: FormControl = new FormControl('<p>this is a test</p>');
+  fc: UntypedFormControl = new UntypedFormControl('<p>this is a test</p>');
 
   ngOnInit() {}
 }

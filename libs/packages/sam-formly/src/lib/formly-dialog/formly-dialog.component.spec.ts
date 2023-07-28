@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
-import { FormGroup, ReactiveFormsModule, FormControl } from '@angular/forms';
+import { UntypedFormGroup, ReactiveFormsModule, UntypedFormControl } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
 import { SdsDialogRef, SDS_DIALOG_DATA, SdsDialogService } from '@gsa-sam/components';
 
@@ -46,8 +46,8 @@ describe('SdsFormlyDialogComponent', () => {
   });
 
   it('should inherit form, model, options, cancel and submit from data if available', () => {
-    const initForm: FormGroup = new FormGroup({
-      testControl: new FormControl(''),
+    const initForm: UntypedFormGroup = new UntypedFormGroup({
+      testControl: new UntypedFormControl(''),
     });
     const initModel = { testControl: '' };
     const initData = {
@@ -86,7 +86,7 @@ describe('SdsFormlyDialogComponent', () => {
     component.data = initData;
     component.ngOnInit();
 
-    const form = new FormGroup({});
+    const form = new UntypedFormGroup({});
     expect(component.form.getRawValue()).toEqual(form.getRawValue());
     expect(component.model).toEqual({});
     expect(component.options).toEqual({});

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { map, startWith, tap } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
@@ -19,7 +19,7 @@ export class FormlyConditionalComponent implements OnInit {
   results: any;
   public settings = new SDSAutocompletelConfiguration();
   public autocompleteModel = new SDSSelectedItemModel();
-  form = new FormGroup({});
+  form = new UntypedFormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
   //model: Partial<Model> = { sport: '1' };
