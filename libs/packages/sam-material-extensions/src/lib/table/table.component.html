@@ -100,9 +100,7 @@
       *matRowDef="let row; columns: rowConfig.displayedColumns; let i = dataIndex"
       class="sds-table__row"
       [ngClass]="{ 'cursor-pointer': rowConfig.expandOnClick, 'sds-table__row--expanded': expandedElement == row }"
-      (click)="
-        rowConfig.expandOnClick ? (expandedElement = expandedElement === row ? null : row) : false;
-      "
+      (click)="rowConfig.expandOnClick ? (expandedElement = expandedElement === row ? null : row) : false"
       sdsTableRowClick
       [emitOnRowClick]="rowConfig.emitOnRowClick"
       [highlightOnHover]="rowConfig.highlightOnHover"
