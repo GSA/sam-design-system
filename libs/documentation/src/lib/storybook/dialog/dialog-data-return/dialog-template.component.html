@@ -1,2 +1,8 @@
-<button class="usa-button" [sds-dialog-close]="'ABCDE'">Return ABCDE</button>
-<button class="usa-button" [sds-dialog-close]="'FGHIJ'">Return FGHIJ</button>
+<p sds-dialog-title>Return Data</p>
+<div sds-dialog-content class="content">
+  <p>Enter some data to return to the main component.</p>
+  <input class="usa-input" type="text" [(ngModel)]="returnData" />
+</div>
+<div sds-dialog-actions>
+  <button class="usa-button" [sds-dialog-close]="returnData">Return Data</button>
+</div>

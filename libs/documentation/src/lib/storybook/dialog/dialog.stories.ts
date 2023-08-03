@@ -11,6 +11,7 @@ import {
 } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { DialogIntroductionModule } from './dialog-introduction/dialog-introduction.module';
 import { DialogConfigurableModule } from './dialog-configurable/dialog-configurable.module';
+import { DialogPolicyModule } from './dialog-policy/dialog-policy.module';
 
 export default {
   title: 'Components/Dialog',
@@ -25,6 +26,7 @@ export default {
         DialogDataReturnModule,
         DialogIntroductionModule,
         DialogConfigurableModule,
+        DialogPolicyModule
       ],
     }),
   ],
@@ -96,6 +98,21 @@ DataReturn.parameters = {
   ]),
   stackblitzLink: generateStackblitzLink('dialog', 'data-return'),
 };
+export const Policy: Story = (args) => ({
+  template: '<sds-dialog-policy></sds-dialog-policy>',
+  props: args,
+});
+Policy.parameters = {
+  controls: {
+    disabled: true,
+  },
+  actions: { disabled: true },
+  preview: generateConfig('storybook/dialog/dialog-policy', 'DialogDataReturnModule', 'sds-dialog-policy', [
+    createCodePreviewTabData('storybook/dialog/dialog-policy/official-template.component.ts', 'ts', false),
+    createCodePreviewTabData('storybook/dialog/dialog-policy/official-template.component.html', 'html', false),
+  ]),
+  stackblitzLink: generateStackblitzLink('dialog', 'policy'),
+};
 
 export const Introduction: Story = (args) => ({
   template: '<sds-dialog-introduction></sds-dialog-introduction>',
@@ -126,4 +143,4 @@ Configurable.args = {
   width: 'small',
 };
 
-export const __namedExportsOrder = ['Introduction', 'Configurable', 'AlertType', 'DataReturn', 'Nested', 'Width'];
+export const __namedExportsOrder = ['Introduction', 'Configurable', 'AlertType', 'DataReturn', 'Nested', 'Policy', 'Width'];
