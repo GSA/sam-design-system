@@ -1,7 +1,7 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, DebugElement, ElementRef, Renderer2 } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { TableRowNavigationDirective } from './table-row-click.directive';
+import { TableRowClickDirective } from './table-row-click.directive';
 import { RouterTestingModule } from '@angular/router/testing';
 
 @Component({
@@ -9,14 +9,14 @@ import { RouterTestingModule } from '@angular/router/testing';
 })
 class TestHoverFocusComponent {}
 
-describe('TableRowNavigationDirective', () => {
+describe('TableRowClickDirective', () => {
   let component: TestHoverFocusComponent;
   let fixture: ComponentFixture<TestHoverFocusComponent>;
   let trEl: DebugElement;
 
   beforeEach(() => {
     fixture = TestBed.configureTestingModule({
-      declarations: [TestHoverFocusComponent, TableRowNavigationDirective],
+      declarations: [TestHoverFocusComponent, TableRowClickDirective],
       imports: [RouterTestingModule],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).createComponent(TestHoverFocusComponent);
