@@ -5,12 +5,9 @@ import { SdsDialogModule } from '@gsa-sam/components';
 import { DialogTemplateComponent } from './official-template.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SdsDialogModule
-  ],
+  imports: [CommonModule, SdsDialogModule],
   declarations: [DialogPolicyComponent, DialogTemplateComponent],
   exports: [DialogPolicyComponent],
   bootstrap: [DialogPolicyComponent],
 })
-export class DialogPolicyModule { }
+export class DialogPolicyModule {}

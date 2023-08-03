@@ -5,7 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './official-template.component.html',
 })
 export class DialogTemplateComponent {
-
   constructor() {}
-
 }

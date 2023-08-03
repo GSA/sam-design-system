@@ -26,7 +26,7 @@ export default {
         DialogDataReturnModule,
         DialogIntroductionModule,
         DialogConfigurableModule,
-        DialogPolicyModule
+        DialogPolicyModule,
       ],
     }),
   ],
@@ -143,4 +143,12 @@ Configurable.args = {
   width: 'small',
 };
 
-export const __namedExportsOrder = ['Introduction', 'Configurable', 'AlertType', 'DataReturn', 'Nested', 'Policy', 'Width'];
+export const __namedExportsOrder = [
+  'Introduction',
+  'Configurable',
+  'AlertType',
+  'DataReturn',
+  'Nested',
+  'Policy',
+  'Width',
+];
