@@ -5,7 +5,7 @@ import { TableRowClickDirective } from './table-row-click.directive';
 import { RouterTestingModule } from '@angular/router/testing';
 
 @Component({
-  template: ` <tr mat-row sdsTableRowNavigation [highlightOnHover]="true"></tr> `,
+  template: ` <tr mat-row sdsTableRowClick [highlightOnHover]="true"></tr> `,
 })
 class TestHoverFocusComponent {}
 
