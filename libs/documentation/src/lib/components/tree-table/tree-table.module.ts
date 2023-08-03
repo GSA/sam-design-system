@@ -10,6 +10,7 @@ import { TreeTableBasicModule } from './demos/basic/tree-table-basic.module';
 import { TreeTableBasicComponent } from './demos/basic/tree-table-basic.component';
 import { TreeTableLinkToSbComponent } from './demos/tree-table-link-to-sb/tree-table-link-to-sb.component';
 import { TreeTableLinkToSbModule } from './demos/tree-table-link-to-sb/tree-table-link-to-sb.module';
+import { Routes } from '@angular/router';
 
 declare var require: any;
 
@@ -32,7 +33,7 @@ const DEMOS = {
   },
 };
 
-export const ROUTES = [
+export const ROUTES: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'examples' },
   {
     path: '',

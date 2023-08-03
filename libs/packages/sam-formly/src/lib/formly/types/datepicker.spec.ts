@@ -3,7 +3,7 @@ import { TestBed, ComponentFixture, fakeAsync, tick, waitForAsync } from '@angul
 import { By } from '@angular/platform-browser';
 
 import { Component, ViewChild } from '@angular/core';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule, FormlyForm } from '@ngx-formly/core';
 
 import { FormlyFieldDatePickerComponent } from './datepicker';
@@ -50,7 +50,7 @@ describe('Formly Field Datepicker Component', () => {
   describe('options', () => {
     beforeEach(() => {
       testComponentInputs = {
-        form: new FormGroup({}),
+        form: new UntypedFormGroup({}),
         options: {},
         model: {},
       };
@@ -96,7 +96,7 @@ class TestComponent {
   @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;
 
   fields = testComponentInputs.fields;
-  form: FormGroup = testComponentInputs.form;
+  form: UntypedFormGroup = testComponentInputs.form;
   model = testComponentInputs.model || {};
   options = testComponentInputs.options;
 }

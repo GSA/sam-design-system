@@ -22,6 +22,7 @@ import { HorizontalLayoutComponent } from './demos/horizontal-layout/horizontal-
 import { HorizontalLayoutModule } from './demos/horizontal-layout/horizontal-layout.module';
 import { FormlyFilterLinkToSbComponent } from './demos/formly-filter-link-to-sb/formly-filter-link-to-sb.component';
 import { FormlyFilterLinkToSbModule } from './demos/formly-filter-link-to-sb/formly-filter-link-to-sb.module';
+import { Routes } from '@angular/router';
 
 declare var require: any;
 const DEMOS = {
@@ -91,7 +92,7 @@ const DEMOS = {
   },
 };
 
-export const ROUTES = [
+export const ROUTES: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'examples' },
   {
     path: '',

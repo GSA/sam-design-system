@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { AbstractControl, FormGroup } from '@angular/forms';
+import { AbstractControl, UntypedFormGroup } from '@angular/forms';
 import { SdsFormlyTypes } from '@gsa-sam/sam-formly';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
@@ -11,7 +11,7 @@ export class FileInputTemplateComponent implements AfterViewInit {
   @ViewChild('replacementTemplate') replacementTemplate: TemplateRef<any>;
   fields: FormlyFieldConfig[] = [
     {
-      key: 'custonTableFilesInput',
+      key: 'customTableFilesInput',
       type: SdsFormlyTypes.FILEINPUT, // Enum maps to 'fileinput' string
       templateOptions: {
         label: 'Custom Table File Input',
@@ -41,12 +41,12 @@ export class FileInputTemplateComponent implements AfterViewInit {
     },
   ];
 
-  form = new FormGroup({});
+  form = new UntypedFormGroup({});
 
-  onModelChange($event: { tableFilesInput: File[] }) {
+  onModelChange($event: { customTableFilesInput: File[] }) {
     // The 'scan' property here must match the property in
     // {label: 'Virus Scan', columnName:'scan', property: 'scan'} in templateOptions' tableColumns
-    const newFiles = $event.tableFilesInput.filter((file) => !file['scan']);
+    const newFiles = $event.customTableFilesInput.filter((file) => !file['scan']);
     this.scanFiles(newFiles);
     console.log('model', $event);
   }
@@ -69,7 +69,7 @@ export class FileInputTemplateComponent implements AfterViewInit {
       : tableFormGroup.value['tableFilesInput'];
     const newFiles = fileArray.filter((value: File) => value != file);
     let fc: AbstractControl;
-    if (tableFormGroup instanceof FormGroup) {
+    if (tableFormGroup instanceof UntypedFormGroup) {
       fc = tableFormGroup.get('tableFilesInput');
     } else {
       fc = tableFormGroup;

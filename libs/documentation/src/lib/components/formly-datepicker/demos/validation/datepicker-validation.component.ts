@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
@@ -8,7 +8,7 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 })
 export class FormlyDatepickerValidation {
   results: any = {};
-  form = new FormGroup({});
+  form = new UntypedFormGroup({});
   minDateModel: any = {};
   maxDateModel: any = {};
   minmaxDateModel: any = {};

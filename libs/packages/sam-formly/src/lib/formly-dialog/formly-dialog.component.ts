@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { SdsDialogRef, SDS_DIALOG_DATA } from '@gsa-sam/components';
 
 import { SdsFormlyDialogData } from './formly-dialog-data.model';
@@ -11,7 +11,7 @@ import { SdsAdvancedFiltersService } from '../formly-filters/advanced-filters/sd
   templateUrl: './formly-dialog.component.html',
 })
 export class SdsFormlyDialogComponent implements OnInit {
-  form: FormGroup;
+  form: UntypedFormGroup;
   model: any;
   options: FormlyFormOptions;
   fields: FormlyFieldConfig[];
@@ -31,7 +31,7 @@ export class SdsFormlyDialogComponent implements OnInit {
 
   public ngOnInit() {
     this.fields = this.data.fields;
-    this.form = this.data.form ? this.data.form : new FormGroup({});
+    this.form = this.data.form ? this.data.form : new UntypedFormGroup({});
     this.model = this.data.model ? this.data.model : {};
     this.options = this.data.options ? this.data.options : {};
     this.cancel = this.data.cancel ? this.data.cancel : 'Cancel';
