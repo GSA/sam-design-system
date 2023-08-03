@@ -1,7 +1,7 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, DebugElement, ElementRef, Renderer2 } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { TableRowNavigationDirective } from './table-row-navigation.directive';
+import { TableRowNavigationDirective } from './table-row-click.directive';
 import { RouterTestingModule } from '@angular/router/testing';
 
 @Component({

@@ -103,7 +103,7 @@
       (click)="
         rowConfig.expandOnClick ? (expandedElement = expandedElement === row ? null : row) : false;
       "
-      sdsTableRowNavigation
+      sdsTableRowClick
       [emitOnRowClick]="rowConfig.emitOnRowClick"
       [highlightOnHover]="rowConfig.highlightOnHover"
       (rowClicked)="rowClicked.emit(i)"

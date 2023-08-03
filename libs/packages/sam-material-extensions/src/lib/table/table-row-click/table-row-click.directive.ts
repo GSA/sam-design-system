@@ -2,9 +2,9 @@ import { Directive, ElementRef, EventEmitter, HostListener, Input, Output, Rende
 import { Router } from '@angular/router';
 
 @Directive({
-  selector: 'tr[mat-row][sdsTableRowNavigation]',
+  selector: 'tr[mat-row][sdsTableRowClick]',
 })
-export class TableRowNavigationDirective {
+export class TableRowClickDirective {
   private readonly hoverClass = 'sds-table__row--hovered';
 
   @Input()
