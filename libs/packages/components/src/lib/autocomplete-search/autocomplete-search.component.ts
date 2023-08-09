@@ -199,7 +199,14 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   private focusRemoved() {
     if (this.configuration) {
       if (this.configuration.selectionMode === SelectionMode.SINGLE) {
-        if (this.model.items.length > 0) {
+        if (this.configuration.isFreeTextEnabled || this.configuration.isTagModeEnabled) {
+          if (this.model.items.length > 0) {
+            SDSSelectedItemModelHelper.clearItems(this.model.items);
+            this.propogateChange(this.model);
+          }
+          const val = this.createFreeTextItem();
+          this.selectItem(val);
+        } else if (this.model.items.length > 0) {
           this.inputValue = this.getObjectValue(this.model.items[0], this.configuration.primaryTextField);
         }
       } else {
@@ -318,7 +325,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     this.propogateChange(this.model);
     let message = this.getObjectValue(item, this.configuration.primaryTextField);
     this.inputValue = message;
-    this.focusRemoved();
     this.showResults = false;
   }
 
