@@ -322,7 +322,11 @@ export class AppModule {}
 export class AppComponent {}
 ">
     
-    <input type="hidden" name="project[files][src/app/dialog-configurable-template.component.html]" value="&lt;p&gt;This is a dialog&lt;/p&gt;
+    <input type="hidden" name="project[files][src/app/dialog-configurable-template.component.html]" value="&lt;p sds-dialog-title&gt;Sample Dialog&lt;/p&gt;
+&lt;p sds-dialog-content&gt;This is an example dialog with content&lt;/p&gt;
+&lt;div sds-dialog-actions&gt;
+  &lt;button class=&#34;usa-button&#34; sds-dialog-close&gt;Close&lt;/button&gt;
+&lt;/div&gt;
 ">
     
     <input type="hidden" name="project[files][src/app/dialog-configurable-template.component.ts]" value="import { Component } from &#39;@angular/core&#39;;
@@ -367,9 +371,10 @@ export class DialogConfigurableComponent {
 import { CommonModule } from &#39;@angular/common&#39;;
 import { DialogConfigurableComponent } from &#39;./dialog-configurable.component&#39;;
 import { DialogConfigurableTemplateComponent } from &#39;./dialog-configurable-template.component&#39;;
+import { SdsDialogModule } from &#39;@gsa-sam/components&#39;;
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [CommonModule, SdsDialogModule],
   declarations: [DialogConfigurableComponent, DialogConfigurableTemplateComponent],
   exports: [DialogConfigurableComponent],
   bootstrap: [DialogConfigurableComponent],

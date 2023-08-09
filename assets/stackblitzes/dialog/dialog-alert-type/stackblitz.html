@@ -394,7 +394,12 @@ import { DialogAlertTypeTemplate } from &#39;./dialog-template.component&#39;;
 export class DialogAlertTypeModule {}
 ">
     
-    <input type="hidden" name="project[files][src/app/dialog-template.component.html]" value="This is a sample dialog
+    <input type="hidden" name="project[files][src/app/dialog-template.component.html]" value="&lt;div sds-dialog-title&gt;Open Link?&lt;/div&gt;
+&lt;div sds-dialog-content&gt;Unknown links can direct you to malicious webpages.&lt;/div&gt;
+&lt;div sds-dialog-actions&gt;
+  &lt;button class=&#34;usa-button usa-button--base&#34; sds-dialog-close&gt;Cancel&lt;/button&gt;
+  &lt;button cdkFocusInitial class=&#34;usa-button&#34; sds-dialog-close&gt;Continue&lt;/button&gt;
+&lt;/div&gt;
 ">
     
     <input type="hidden" name="project[files][src/app/dialog-template.component.ts]" value="import { Component, Inject } from &#39;@angular/core&#39;;

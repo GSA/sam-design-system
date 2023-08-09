@@ -322,9 +322,13 @@ export class AppModule {}
 export class AppComponent {}
 ">
     
-    <input type="hidden" name="project[files][src/app/dialog-template.component.html]" value="&lt;p&gt;
+    <input type="hidden" name="project[files][src/app/dialog-template.component.html]" value="&lt;p sds-dialog-title&gt;Sample Dialog&lt;/p&gt;
+&lt;p sds-dialog-content&gt;
   This dialog is a {{ data }} width dialog. Here is some long text to fill in at least the first line or two of text.
 &lt;/p&gt;
+&lt;div sds-dialog-actions&gt;
+  &lt;button cdkFocusInitial class=&#34;usa-button&#34; sds-dialog-close&gt;Close&lt;/button&gt;
+&lt;/div&gt;
 ">
     
     <input type="hidden" name="project[files][src/app/dialog-template.component.ts]" value="import { Component, Inject } from &#39;@angular/core&#39;;

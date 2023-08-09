@@ -356,9 +356,10 @@ import { DialogDataReturnComponent } from &#39;./dialog-data-return.component&#3
 import { BrowserAnimationsModule } from &#39;@angular/platform-browser/animations&#39;;
 import { SdsDialogModule } from &#39;@gsa-sam/components&#39;;
 import { DialogDataReturnTemplateComponent } from &#39;./dialog-template.component&#39;;
+import { FormsModule } from &#39;@angular/forms&#39;;
 
 @NgModule({
-  imports: [CommonModule, SdsDialogModule, BrowserAnimationsModule],
+  imports: [CommonModule, SdsDialogModule, BrowserAnimationsModule, FormsModule],
   declarations: [DialogDataReturnComponent, DialogDataReturnTemplateComponent],
   bootstrap: [DialogDataReturnComponent],
   exports: [DialogDataReturnComponent],
@@ -366,8 +367,21 @@ import { DialogDataReturnTemplateComponent } from &#39;./dialog-template.compone
 export class DialogDataReturnModule {}
 ">
     
-    <input type="hidden" name="project[files][src/app/dialog-template.component.html]" value="&lt;button class=&#34;usa-button&#34; [sds-dialog-close]=&#34;&#39;ABCDE&#39;&#34;&gt;Return ABCDE&lt;/button&gt;
-&lt;button class=&#34;usa-button&#34; [sds-dialog-close]=&#34;&#39;FGHIJ&#39;&#34;&gt;Return FGHIJ&lt;/button&gt;
+    <input type="hidden" name="project[files][src/app/dialog-template.component.html]" value="&lt;p sds-dialog-title&gt;Return Data&lt;/p&gt;
+&lt;div sds-dialog-content class=&#34;content&#34;&gt;
+  &lt;p&gt;Enter some data to return to the main component.&lt;/p&gt;
+  &lt;input class=&#34;usa-input&#34; type=&#34;text&#34; [(ngModel)]=&#34;returnData&#34; /&gt;
+&lt;/div&gt;
+&lt;div sds-dialog-actions&gt;
+  &lt;button class=&#34;usa-button&#34; [sds-dialog-close]=&#34;returnData&#34;&gt;Return Data&lt;/button&gt;
+&lt;/div&gt;
+">
+    
+    <input type="hidden" name="project[files][src/app/dialog-template.component.scss]" value=".content {
+  input {
+    margin-block: 1rem;
+  }
+}
 ">
     
     <input type="hidden" name="project[files][src/app/dialog-template.component.ts]" value="import { Component } from &#39;@angular/core&#39;;
@@ -376,9 +390,12 @@ import { SdsDialogService } from &#39;@gsa-sam/components&#39;;
 @Component({
   selector: &#39;sds-dialog-data-return-template&#39;,
   templateUrl: &#39;./dialog-template.component.html&#39;,
+  styleUrls: [&#39;dialog-template.component.scss&#39;],
 })
 export class DialogDataReturnTemplateComponent {
   constructor(public dialog: SdsDialogService) {}
+
+  returnData: string = &#39;&#39;;
 }
 ">
     

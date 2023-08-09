@@ -322,7 +322,7 @@ export class AppModule {}
 export class AppComponent {}
 ">
     
-    <input type="hidden" name="project[files][src/app/dialog-nested.component.html]" value="&lt;button class=&#34;usa-button&#34; (click)=&#34;openDialog()&#34;&gt;Open Dialog&lt;/button&gt;
+    <input type="hidden" name="project[files][src/app/dialog-nested.component.html]" value="&lt;button class=&#34;usa-button&#34; (click)=&#34;openDialog()&#34;&gt;Add Entity&lt;/button&gt;
 ">
     
     <input type="hidden" name="project[files][src/app/dialog-nested.component.ts]" value="import { Component } from &#39;@angular/core&#39;;
@@ -360,7 +360,18 @@ import { SdsDialogModule } from &#39;@gsa-sam/components&#39;;
 export class DialogNestedModule {}
 ">
     
-    <input type="hidden" name="project[files][src/app/dialog-template.component.html]" value="&lt;button class=&#34;usa-button usa-button--base&#34; (click)=&#34;openDialog()&#34;&gt;Open Second Dialog&lt;/button&gt;
+    <input type="hidden" name="project[files][src/app/dialog-template.component.html]" value="&lt;p sds-dialog-title&gt;Add Entity&lt;/p&gt;
+&lt;div sds-dialog-content class=&#34;content&#34;&gt;
+  &lt;label class=&#34;usa-label&#34; for=&#34;name&#34;&gt;Name&lt;/label&gt;
+  &lt;input class=&#34;usa-input&#34; type=&#34;text&#34; id=&#34;name&#34; /&gt;
+
+  &lt;label class=&#34;usa-label&#34; for=&#34;address&#34;&gt;Address&lt;/label&gt;
+  &lt;input class=&#34;usa-input&#34; type=&#34;text&#34; id=&#34;address&#34; /&gt;
+&lt;/div&gt;
+&lt;div sds-dialog-actions&gt;
+  &lt;button class=&#34;usa-button usa-button--base&#34; (click)=&#34;openDialog()&#34;&gt;Add Owner&lt;/button&gt;
+  &lt;button class=&#34;usa-button usa-button--primary&#34; sds-dialog-close&gt;Submit&lt;/button&gt;
+&lt;/div&gt;
 ">
     
     <input type="hidden" name="project[files][src/app/dialog-template.component.ts]" value="import { Component } from &#39;@angular/core&#39;;
@@ -382,7 +393,14 @@ export class DialogNestedComponent {
 }
 ">
     
-    <input type="hidden" name="project[files][src/app/second-nested-dialog.component.html]" value="&lt;p&gt;This dialog was launched from another dialog.&lt;/p&gt;
+    <input type="hidden" name="project[files][src/app/second-nested-dialog.component.html]" value="&lt;p sds-dialog-title&gt;Add Owner&lt;/p&gt;
+&lt;div sds-dialog-content class=&#34;content&#34;&gt;
+  &lt;label class=&#34;usa-label&#34; for=&#34;name&#34;&gt;Name&lt;/label&gt;
+  &lt;input class=&#34;usa-input&#34; type=&#34;text&#34; id=&#34;name&#34; /&gt;
+&lt;/div&gt;
+&lt;div sds-dialog-actions&gt;
+  &lt;button class=&#34;usa-button usa-button--primary margin-top-4&#34; sds-dialog-close&gt;Add Owner&lt;/button&gt;
+&lt;/div&gt;
 ">
     
     <input type="hidden" name="project[files][src/app/second-nested-dialog.component.ts]" value="import { Component } from &#39;@angular/core&#39;;
