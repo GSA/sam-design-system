@@ -4,9 +4,10 @@ import { DialogDataReturnComponent } from './dialog-data-return.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SdsDialogModule } from '@gsa-sam/components';
 import { DialogDataReturnTemplateComponent } from './dialog-template.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [CommonModule, SdsDialogModule, BrowserAnimationsModule],
+  imports: [CommonModule, SdsDialogModule, BrowserAnimationsModule, FormsModule],
   declarations: [DialogDataReturnComponent, DialogDataReturnTemplateComponent],
   bootstrap: [DialogDataReturnComponent],
   exports: [DialogDataReturnComponent],
