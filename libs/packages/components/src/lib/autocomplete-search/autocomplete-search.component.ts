@@ -286,7 +286,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
         const val = this.createFreeTextItem();
         this.selectItem(val);
       } else {
-        this.selectItem(this.results[this.highlightedIndex]);
+        this.selectItem(this.highlightedItem);
       }
     } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex < 0) {
       if (this.configuration.isFreeTextEnabled && this.inputValue.length > 0) {
