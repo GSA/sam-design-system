@@ -1,5 +1,5 @@
 <div class="sds-tree-table--scrollable">
-  <table role="grid" class="usa-table sds-tree-table padding-x-1">
+  <table role="treegrid" class="usa-table sds-tree-table padding-x-1">
     <thead role="rowgroup">
       <tr role="row">
         <th>Related</th>
@@ -30,7 +30,8 @@
   let-parentRow="parentRow"
 >
   <tr
-    role="row"
+    role="treeitem"
+    aria-checked="false"
     #tableRow
     [attr.id]="row.id"
     [attr.aria-level]="level"
@@ -93,7 +94,7 @@
   >
     <td></td>
     <td class="width-100">
-      <button class="usa-button usa-button--base bg-base-lighter" (click)="viewAllClicked(row, viewAllRow, tableRow)">
+      <button class="usa-button usa-button--base" (click)="viewAllClicked(row, viewAllRow, tableRow)">
         View All (
         <span *ngIf="row.totalChildren && row.totalChildren > row.children?.length; else childrenLength">
           {{ row.totalChildren }}
