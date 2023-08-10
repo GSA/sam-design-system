@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormlyUtilsService, SdsStepper } from '@gsa-sam/sam-formly';
 import { StepperAdvancedService } from './stepper-advanced.service';
+import { FormlyForm } from '@ngx-formly/core';
 
 @Component({
   selector: `stepper-advanced-demo`,
@@ -74,5 +75,9 @@ export class StepperAdvancedDemoComponent {
 
   toggleLinearMode() {
     this.linear = !this.linear;
+  }
+
+  handleSubmit(form: FormlyForm) {
+    console.log(form);
   }
 }
