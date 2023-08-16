@@ -383,7 +383,7 @@ export class StepperAdvancedService {
             showError: false,
           },
           modelOptions: {
-            updateOn: 'blur',
+            updateOn: 'blur' as 'blur',
           },
         },
       ],

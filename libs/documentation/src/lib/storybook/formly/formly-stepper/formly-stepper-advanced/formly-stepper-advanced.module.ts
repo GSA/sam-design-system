@@ -18,6 +18,7 @@ import {
   x,
 } from 'ngx-bootstrap-icons';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
+import { RouterTestingModule } from '@angular/router/testing';
 
 @NgModule({
   imports: [
@@ -37,6 +38,7 @@ import { IconModule } from '@gsa-sam/ngx-uswds-icons';
       x,
     }),
     SdsSideToolbarModule,
+    RouterTestingModule,
   ],
   declarations: [StepperAdvancedDemoComponent, SubawardeeDemoComponent, AddSubawardeeDialogDemo, CustomStepperDemo],
   exports: [StepperAdvancedDemoComponent, SubawardeeDemoComponent, AddSubawardeeDialogDemo, CustomStepperDemo],

@@ -17,6 +17,7 @@ import {
 } from 'ngx-bootstrap-icons';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 import { SdsStepArrowModule } from '@gsa-sam/components';
+import { RouterTestingModule } from '@angular/router/testing';
 
 @NgModule({
   declarations: [UswdsStepperComponent, USWDSCustomStepperComponent],
@@ -36,6 +37,7 @@ import { SdsStepArrowModule } from '@gsa-sam/components';
     }),
     IconModule,
     SdsStepArrowModule,
+    RouterTestingModule,
   ],
   exports: [UswdsStepperComponent, USWDSCustomStepperComponent],
   bootstrap: [UswdsStepperComponent],
