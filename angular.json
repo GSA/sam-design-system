@@ -133,8 +133,7 @@
             },
             "styles": [
               "apps/sam-design-system-site/src/sds-styles.scss",
-              "apps/sam-design-system-site/src/material.theme.scss",
-              "node_modules/highlight.js/styles/vs.css"
+              "apps/sam-design-system-site/src/material.theme.scss"
             ],
             "scripts": [
               "node_modules/marked/marked.min.js",
