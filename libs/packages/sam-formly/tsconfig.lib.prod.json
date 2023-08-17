@@ -10,7 +10,4 @@
       ]
     }
   },
-  "angularCompilerOptions": {
-    "enableIvy": true
-  }
 }
