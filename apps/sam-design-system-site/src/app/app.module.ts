@@ -23,10 +23,9 @@ import { IconModule } from '@gsa-sam/ngx-uswds-icons';
     SdsToastModule,
     ToastrModule.forRoot(SdsToastSettings),
     RouterModule.forRoot(ROUTES, {
-      scrollPositionRestoration: 'enabled',
-      relativeLinkResolution: 'legacy',
-      anchorScrolling: 'enabled',
-    }),
+    scrollPositionRestoration: 'enabled',
+    anchorScrolling: 'enabled'
+}),
     FormsModule,
     MarkdownModule.forRoot(),
     IconModule,
