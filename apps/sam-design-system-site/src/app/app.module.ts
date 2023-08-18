@@ -31,9 +31,7 @@ import { IconModule } from '@gsa-sam/ngx-uswds-icons';
     IconModule,
     NgxBootstrapIconsModule.pick({ github }),
   ],
-  providers: [
-    { provide: LocationStrategy, useClass: PathLocationStrategy },
-  ],
+  providers: [{ provide: LocationStrategy, useClass: PathLocationStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
