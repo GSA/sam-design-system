@@ -50,6 +50,7 @@ import { getPosition } from '../services/utils';
             [popperTrigger]="hover"
             [popperPlacement]="getPosition(to.tooltipPosition)"
             [popperPositionFixed]="true"
+            class="text-secondary"
             [size]="'lg'"
             [icon]="'info-circle'"
           ></usa-icon>

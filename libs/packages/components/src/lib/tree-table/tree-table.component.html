@@ -93,7 +93,7 @@
   >
     <td></td>
     <td class="width-100">
-      <button class="usa-button usa-button--base" (click)="viewAllClicked(row, viewAllRow, tableRow)">
+      <button class="usa-button usa-button--base bg-base-lighter" (click)="viewAllClicked(row, viewAllRow, tableRow)">
         View All (
         <span *ngIf="row.totalChildren && row.totalChildren > row.children?.length; else childrenLength">
           {{ row.totalChildren }}

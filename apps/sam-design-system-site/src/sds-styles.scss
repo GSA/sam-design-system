@@ -1,8 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+@use 'sam-styles/packages/theme/settings' with (
+  $sam-uswds-font-path: '/assets/uswds/fonts',
+  $sam-uswds-image-path: '/assets/uswds/img'
+);
+@use 'sam-styles/packages/theme/variables' with (
+  $sam-image-path: '/assets/uswds/img'
+);
+@forward 'sam-styles';
+
 @import './base-documentation.scss';
-
-//global styles below
-
-$theme-image-path: '~@gsa-sam/sam-styles/src/img';
-$theme-font-path: '~@gsa-sam/sam-styles/src/fonts';
-
-@import '~@gsa-sam/sam-styles/src/stylesheets/sam';

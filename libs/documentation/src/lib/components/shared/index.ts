@@ -1,4 +1,3 @@
-import { HighlightModule } from 'ngx-highlightjs';
 import { MarkdownModule } from 'ngx-markdown';
 import { NgModule } from '@angular/core';
 import { DocumentationSourcePage } from './source-page/source.component';
@@ -15,7 +14,7 @@ import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 export * from './demo-list';
 
 @NgModule({
-  imports: [DocumentationSharedModule, MarkdownModule, HighlightModule, IconModule, SdsTabsModule],
+  imports: [DocumentationSharedModule, MarkdownModule, IconModule, SdsTabsModule],
   declarations: [
     DocumentationExamplesPage,
     DocumentationAPIPage,

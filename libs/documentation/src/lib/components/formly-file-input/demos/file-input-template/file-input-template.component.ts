@@ -11,7 +11,7 @@ export class FileInputTemplateComponent implements AfterViewInit {
   @ViewChild('replacementTemplate') replacementTemplate: TemplateRef<any>;
   fields: FormlyFieldConfig[] = [
     {
-      key: 'custonTableFilesInput',
+      key: 'customTableFilesInput',
       type: SdsFormlyTypes.FILEINPUT, // Enum maps to 'fileinput' string
       templateOptions: {
         label: 'Custom Table File Input',
@@ -43,10 +43,10 @@ export class FileInputTemplateComponent implements AfterViewInit {
 
   form = new UntypedFormGroup({});
 
-  onModelChange($event: { tableFilesInput: File[] }) {
+  onModelChange($event: { customTableFilesInput: File[] }) {
     // The 'scan' property here must match the property in
     // {label: 'Virus Scan', columnName:'scan', property: 'scan'} in templateOptions' tableColumns
-    const newFiles = $event.tableFilesInput.filter((file) => !file['scan']);
+    const newFiles = $event.customTableFilesInput.filter((file) => !file['scan']);
     this.scanFiles(newFiles);
     console.log('model', $event);
   }

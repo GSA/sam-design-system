@@ -112,21 +112,28 @@
             "assets": [
               "apps/sam-design-system-site/src/favicon.ico",
               "apps/sam-design-system-site/src/assets",
-              "apps/sam-design-system-site/src/sds-styles.scss"
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@uswds/uswds/dist/fonts/",
+                "output": "/assets/uswds/fonts/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@uswds/uswds/dist/img/",
+                "output": "/assets/uswds/img/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@gsa-sam/sam-styles/sam-styles/packages/images",
+                "output": "/assets/uswds/img/"
+              }
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["./node_modules/@uswds/uswds/packages", "./node_modules/@gsa-sam/sam-styles"]
+            },
             "styles": [
-              {
-                "input": "apps/sam-design-system-site/src/uswds-styles.scss",
-                "inject": false,
-                "bundleName": "uswds"
-              },
-              {
-                "input": "apps/sam-design-system-site/src/sds-styles.scss",
-                "inject": false,
-                "bundleName": "sds"
-              },
               "apps/sam-design-system-site/src/sds-styles.scss",
-              "node_modules/highlight.js/styles/vs.css"
+              "apps/sam-design-system-site/src/material.theme.scss"
             ],
             "scripts": [
               "node_modules/marked/marked.min.js",
@@ -192,10 +199,7 @@
             "tsConfig": "apps/sam-design-system-site/tsconfig.spec.json",
             "karmaConfig": "apps/sam-design-system-site/karma.conf.js",
             "scripts": [],
-            "assets": [
-              "apps/sam-design-system-site/src/favicon.ico",
-              "apps/sam-design-system-site/src/assets"
-            ]
+            "assets": ["apps/sam-design-system-site/src/favicon.ico", "apps/sam-design-system-site/src/assets"]
           }
         },
         "storybook": {
