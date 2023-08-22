@@ -9,14 +9,14 @@ import { FormlyModule, FormlyForm } from '@ngx-formly/core';
 import { FormlyFieldDatePickerComponent } from './datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
+import { MatInputModule } from '@angular/material/input';
 
 import { of as observableOf } from 'rxjs';
 
 const createTestComponent = (html: string) =>
   createGenericTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;
 
-export function createGenericTestComponent<T>(html: string, type: { new (...args: any[]): T }): ComponentFixture<T> {
+export function createGenericTestComponent<T>(html: string, type: { new(...args: any[]): T }): ComponentFixture<T> {
   TestBed.overrideComponent(type, { set: { template: html } });
   const fixture = TestBed.createComponent(type);
   fixture.detectChanges();
@@ -77,7 +77,7 @@ describe('Formly Field Datepicker Component', () => {
       expect(fixture).toBeTruthy();
 
       //Clicks open date modal
-      let dateOpen = fixture.nativeElement.querySelector('.mat-icon-button');
+      let dateOpen = fixture.nativeElement.querySelector('.mdc-icon-button');
       dateOpen.click();
       fixture.detectChanges();
 

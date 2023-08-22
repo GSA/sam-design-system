@@ -27,13 +27,13 @@ import { Observable } from 'rxjs';
   selector: `[sdsStepHeader]`,
   template: `<ng-content></ng-content>`,
 })
-export class SdsStepHeaderComponent {}
+export class SdsStepHeaderComponent { }
 
 @Component({
   selector: `[sdsStepFooter]`,
   template: '<ng-content></ng-content>',
 })
-export class SdsStepFooterComponent {}
+export class SdsStepFooterComponent { }
 
 let nextId = 0;
 
@@ -47,7 +47,7 @@ export class SdsStepComponent {
   /**
    * References to Any children this step might contain
    */
-  @ContentChildren(SdsStepComponent) children: QueryList<SdsStepComponent>;
+  @ContentChildren('SdsStepComponent') children: QueryList<SdsStepComponent>;
 
   /**
    * Content of step - either a formly field or custome template
@@ -142,7 +142,7 @@ export class SdsStepComponent {
     @Inject(forwardRef(() => SdsStepper)) public _stepper: SdsStepper,
     private _el: ElementRef,
     @Inject(DOCUMENT) private _document
-  ) {}
+  ) { }
 
   /**
    * Dispatch a custom event for parent stepper component to listen for on model change
@@ -278,7 +278,7 @@ export class SdsStepper {
     this.modelChange.emit($event.detail);
   }
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, public cdr: ChangeDetectorRef) {}
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, public cdr: ChangeDetectorRef) { }
 
   ngOnChanges(changes: SimpleChanges) {
     if (!this.selectedStep) {
