@@ -76,7 +76,7 @@
     "minimist": "^1.2.5",
     "ngx-bootstrap-icons": "^1.7.2",
     "ngx-highlightjs": "^4.1.1",
-    "ngx-markdown": "12.1.0",
+    "ngx-markdown": "^15.0.0",
     "ngx-toastr": "^13.2.0",
     "qs": "^6.9.6",
     "raw-loader": "1.0.0",
