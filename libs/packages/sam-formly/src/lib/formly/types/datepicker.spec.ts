@@ -9,7 +9,7 @@ import { FormlyModule, FormlyForm } from '@ngx-formly/core';
 import { FormlyFieldDatePickerComponent } from './datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatInputModule } from '@angular/material/input';
+import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
 
 import { of as observableOf } from 'rxjs';
 

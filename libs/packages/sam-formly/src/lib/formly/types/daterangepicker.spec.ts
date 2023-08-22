@@ -7,7 +7,7 @@ import { FormlyModule, FormlyForm } from '@ngx-formly/core';
 
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatInputModule } from '@angular/material/input';
+import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
 import { FormlyFieldDateRangePickerComponent } from './daterangepicker';
 import { dateRangeValidator } from '../formly.validators';
 import { TypeOption } from '@ngx-formly/core/lib/services/formly.config';

@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, TemplateRef, ElementRef, forwardRef, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, ViewChild, TemplateRef, ElementRef, forwardRef, ChangeDetectorRef, ViewEncapsulation } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { SDSAutocompleteServiceInterface } from './models/SDSAutocompleteServiceInterface';
 import { KeyHelper, KEYS } from '../key-helper/key-helper';
@@ -16,6 +16,7 @@ const Autocomplete_Autocomplete_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'sds-search-autocomplete',
   templateUrl: './autocomplete-search.component.html',
+  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./autocomplete-search.component.scss'],
   providers: [Autocomplete_Autocomplete_VALUE_ACCESSOR],
 })
