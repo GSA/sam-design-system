@@ -16,7 +16,10 @@ import {
   EventEmitter,
 } from '@angular/core';
 import { AfterViewInit } from '@angular/core';
-import { MatLegacyTableDataSource as MatTableDataSource, MatLegacyTable as MatTable } from '@angular/material/legacy-table';
+import {
+  MatLegacyTableDataSource as MatTableDataSource,
+  MatLegacyTable as MatTable,
+} from '@angular/material/legacy-table';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { MatSort } from '@angular/material/sort';
 import { MatLegacyPaginator as MatPaginator, LegacyPageEvent as PageEvent } from '@angular/material/legacy-paginator';
