@@ -7,6 +7,8 @@
     [popperPlacement]="bottom"
     [popperApplyClass]="'ngx-tooltip'"
     [popperPositionFixed]="true"
+    [popperAriaDescribeBy]="'test-id'"
+    [popperAriaRole]="'tooltip'"
   >
     String Tooltip
   </button>
@@ -14,7 +16,9 @@
 
 <p>Content displayed in a tooltip can also be HTML elements</p>
 <popper-content #tooltipContent>
-  <p>Hello, <b>World</b>!</p>
+  <div id="tooltip-1">
+    <p>Hello, <b>World</b>!</p>
+  </div>
 </popper-content>
 <div>
   <button
@@ -24,6 +28,8 @@
     [popperPlacement]="bottom"
     [popperApplyClass]="'ngx-tooltip'"
     [popperPositionFixed]="true"
+    [popperAriaRole]="'tooltip'"
+    aria-describedby="tooltip-1"
   >
     HTML binding
   </button>

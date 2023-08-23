@@ -1,4 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+@use "../../../node_modules/ngx-popperjs/scss/theme" as popperBaseTheme;
+
+
+
 @use 'sam-styles/packages/theme/settings' with (
   $sam-uswds-font-path: '/assets/uswds/fonts',
   $sam-uswds-image-path: '/assets/uswds/img'
@@ -9,3 +13,49 @@
 @forward 'sam-styles';
 
 @import './base-documentation.scss';
+
+.ngxp__container {
+  background: #454540;
+  border: 1px solid #2e2e2a;
+  z-index: 1000;
+  display: block!important;
+
+  &[aria-hidden="true"] {
+    visibility: hidden;
+  }
+
+  &.ngx-popover {
+    background-color: white;
+    .ngxp__inner {
+      p {
+        color: #2e2e2a;
+        // color: #f9f9f7;
+        // font-weight: normal;
+        // padding: 2px 4px;
+        // margin: 1px;
+        // text-indent: 0 !important;
+        // font-family: Source Sans Pro Web,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif!important;
+        // font-size: .87rem!important;
+      }
+    }
+  }
+  &.ngx-tooltip {
+    .ngxp__inner {
+      color: #f9f9f7;
+      font-weight: normal;
+      padding: 2px 4px;
+      margin: 1px;
+      text-indent: 0 !important;
+      font-family: Source Sans Pro Web, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif !important;
+      font-size: 0.87rem !important;
+      p {
+        color: white;
+      }
+    }
+  }
+
+  & > .ngxp__arrow:before {
+    background-color: #454540 !important;
+    // border: black 1px solid;
+  }
+}
