@@ -19,7 +19,10 @@
           </a>
         </div>
         <div>
-          <a *ngIf="row.children && row.children.length || !row.children || (row.children && !row.children.length)" href="javascript:void(0)">
+          <a
+            *ngIf="(row.children && row.children.length) || !row.children || (row.children && !row.children.length)"
+            href="javascript:void(0)"
+          >
             {{ row.title }}
           </a>
         </div>
