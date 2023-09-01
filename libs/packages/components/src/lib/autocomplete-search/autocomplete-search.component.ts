@@ -25,7 +25,6 @@ const Autocomplete_Autocomplete_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'sds-search-autocomplete',
   templateUrl: './autocomplete-search.component.html',
-  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./autocomplete-search.component.scss'],
   providers: [Autocomplete_Autocomplete_VALUE_ACCESSOR],
 })
