@@ -7,7 +7,7 @@ jobs:
   build:
     working_directory: ~/project/sam-design-system
     docker:
-      - image: circleci/node:18.17.1-bullseye-browsers
+      - image: circleci/node:14.20.2-bullseye-browsers
     steps:
       - checkout
       - run: npm install
