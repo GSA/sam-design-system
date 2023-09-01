@@ -258,7 +258,7 @@ describe('SdsStepperComponent', () => {
     expect(stepper.stepValidityMap['step1']).toEqual(false);
   });
 
-  xit(
+  it(
     'Should jump to step 1 when clicking from side navigation',
     waitForAsync(() => {
       const sidenavLinks = fixture.debugElement.queryAll(By.css('li a'));
