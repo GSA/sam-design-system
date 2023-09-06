@@ -10,6 +10,7 @@
     "../src/test.ts",
     "../apps/**/*.spec.ts",
     "../apps/**/*.e2e-spec.ts",
+    "../apps/**/*.po.ts",
     "../libs/**/*.spec.ts",
     "../libs/documentation/src/sandbox/templates/*"
   ],

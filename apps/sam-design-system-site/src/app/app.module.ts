@@ -11,7 +11,6 @@ import { MarkdownModule } from 'ngx-markdown';
 
 import { ToastrModule } from 'ngx-toastr';
 import { SdsToastComponent, SdsToastModule, SdsToastSettings } from '@gsa-sam/components';
-import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { NgxBootstrapIconsModule, github } from 'ngx-bootstrap-icons';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
@@ -31,20 +30,7 @@ import { IconModule } from '@gsa-sam/ngx-uswds-icons';
     IconModule,
     NgxBootstrapIconsModule.pick({ github }),
   ],
-  providers: [
-    { provide: LocationStrategy, useClass: PathLocationStrategy },
-    {
-      provide: HIGHLIGHT_OPTIONS,
-      useValue: {
-        coreLibraryLoader: () => import('highlight.js/lib/highlight'),
-        languages: {
-          xml: () => import('highlight.js/lib/languages/xml'),
-          typescript: () => import('highlight.js/lib/languages/typescript'),
-          scss: () => import('highlight.js/lib/languages/scss'),
-        },
-      },
-    },
-  ],
+  providers: [{ provide: LocationStrategy, useClass: PathLocationStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

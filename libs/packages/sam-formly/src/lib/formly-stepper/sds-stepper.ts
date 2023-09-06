@@ -508,6 +508,8 @@ export class SdsStepper {
    * and toggles error display. Emits saveData event.
    */
   async onSaveClicked() {
+    console.warn(`This is a deprectaed version of sdsStepperSave directive, and will be removed in future versions.
+      Please switch to using sdsStepperPrevious/sdsStepperNext`);
     this.flatSteps = this.getFlatSteps(this.stepTemplates);
     this.selectedStepIndex = this.flatSteps.findIndex((step) => step.id === this.selectedStep.id);
 
