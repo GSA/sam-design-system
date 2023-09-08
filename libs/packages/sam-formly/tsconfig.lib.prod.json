@@ -9,8 +9,5 @@
         "libs/packages/sam-material-extensions/src/index.ts"
       ]
     }
-  },
-  "angularCompilerOptions": {
-    "enableIvy": true
   }
 }

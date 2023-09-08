@@ -16,10 +16,13 @@ import {
   EventEmitter,
 } from '@angular/core';
 import { AfterViewInit } from '@angular/core';
-import { MatTableDataSource, MatTable } from '@angular/material/table';
+import {
+  MatLegacyTableDataSource as MatTableDataSource,
+  MatLegacyTable as MatTable,
+} from '@angular/material/legacy-table';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { MatSort } from '@angular/material/sort';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatLegacyPaginator as MatPaginator, LegacyPageEvent as PageEvent } from '@angular/material/legacy-paginator';
 import { BehaviorSubject } from 'rxjs';
 
 export interface SdsRowConfig {

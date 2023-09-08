@@ -77,7 +77,7 @@ describe('Formly Field Datepicker Component', () => {
       expect(fixture).toBeTruthy();
 
       //Clicks open date modal
-      let dateOpen = fixture.nativeElement.querySelector('.mat-icon-button');
+      let dateOpen = fixture.nativeElement.querySelector('.mdc-icon-button');
       dateOpen.click();
       fixture.detectChanges();
 
