@@ -49713,7 +49713,6 @@ h6, .h6 {
   border-color: #70e17b;
   border-style: solid;
   border-width: 2px;
-  min-width: 7.5rem;
 }
 .usa-button.usa-button--hover, .usa-button:hover {
   background-color: #b7f5bd;
@@ -50547,6 +50546,7 @@ h6, .h6 {
   display: flex;
   align-items: center;
   justify-content: center;
+  min-width: 7.5rem;
 }
 .usa-button-pill svg {
   width: 16px;
@@ -50554,33 +50554,35 @@ h6, .h6 {
   fill: currentColor;
   stroke-width: 1px;
   stroke: #162e51;
-}
-.usa-button-pill--next svg {
-  margin-left: 0.5rem;
   margin-top: 3px;
 }
-.usa-button-pill--next.usa-button:active svg, .usa-button-pill--next.usa-button:disabled svg, .usa-button-pill--next.usa-button--active svg {
+.usa-button-pill.usa-button:active svg, .usa-button-pill.usa-button:disabled svg, .usa-button-pill.usa-button--active svg {
   stroke: white;
 }
-.usa-button-pill--previous svg {
-  margin-right: 0.5rem;
+.usa-button-pill.bg-primary-lighter svg {
   margin-top: 2px;
 }
-.usa-button-pill--previous.usa-button--active svg {
+.usa-button-pill.bg-primary-lighter:active svg, .usa-button-pill.bg-primary-lighter.usa-button--active svg {
   stroke: #162e51;
 }
-.usa-button-pill--previous:disabled svg {
+.usa-button-pill.bg-primary-lighter:disabled svg {
   stroke: #76766a;
 }
-.usa-button-pill--cancel svg {
-  margin-right: 0.5rem;
+.usa-button-pill.usa-button--base svg {
   margin-top: 2px;
   height: 14px !important;
   width: 14px !important;
   stroke: #2e2e2a;
 }
-.usa-button-pill--cancel:disabled svg {
+.usa-button-pill.usa-button--base:active svg {
+  stroke: #2e2e2a;
+}
+.usa-button-pill.usa-button--base:disabled svg {
   stroke: #76766a;
+}
+
+.space-x-1 > * + * {
+  margin-left: 8px;
 }
 
 /*
@@ -59749,13 +59751,15 @@ sds-icon.external-link > * > * {
   line-height: 1.5;
   font-size: 17px;
   border-color: #1a4480 !important;
-  background-color: white;
+  background-color: white !important;
+  padding: 0.5rem !important;
+  min-width: 6.25rem !important;
 }
 .sds-button--menu.usa-button:visited {
   color: #1a4480 !important;
   box-shadow: none;
 }
-.sds-button--menu.usa-button.usa-button--hover, .sds-button--menu.usa-button:hover {
+.sds-button--menu.usa-button.usa-button--hover, .sds-button--menu.usa-button:not(.usa-button--disabled):hover {
   background-color: #1a4480 !important;
   color: white !important;
   border-color: #1a4480 !important;
@@ -59766,6 +59770,16 @@ sds-icon.external-link > * > * {
   color: white;
   border-color: #1a4480 !important;
   box-shadow: none;
+}
+.sds-button--menu.usa-button--disabled {
+  box-shadow: none;
+  border-width: 2px !important;
+  border-style: solid !important;
+  border-color: #cac9c0;
+  border-style: solid;
+  background-color: white !important;
+  color: #76766a !important;
+  cursor: unset !important;
 }
 
 @media only screen and (min-width: 400px) and (max-width: 800px) {
