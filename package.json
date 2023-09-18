@@ -63,7 +63,7 @@
     "@gsa-sam/ngx-uswds-icons": "^15.0.0",
     "@gsa-sam/sam-formly": "^15.0.0",
     "@gsa-sam/sam-material-extensions": "^15.0.0",
-    "@gsa-sam/sam-styles": "^3.0.8",
+    "@gsa-sam/sam-styles": "^3.0.11",
     "@ngx-formly/core": "^5.10.22",
     "@ngx-formly/schematics": "^5.10.22",
     "@types/qs": "^6.9.5",
