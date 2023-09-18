@@ -49713,6 +49713,7 @@ h6, .h6 {
   border-color: #70e17b;
   border-style: solid;
   border-width: 2px;
+  min-width: 7.5rem;
 }
 .usa-button.usa-button--hover, .usa-button:hover {
   background-color: #b7f5bd;
@@ -50119,6 +50120,7 @@ h6, .h6 {
   border-radius: 50%;
   height: 2rem;
   width: 2rem;
+  min-width: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -50546,7 +50548,6 @@ h6, .h6 {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 7.5rem;
 }
 .usa-button-pill svg {
   width: 16px;
@@ -59750,7 +59751,7 @@ sds-icon.external-link > * > * {
 .sds-button--menu.usa-button {
   line-height: 1.5;
   font-size: 17px;
-  border-color: #1a4480 !important;
+  border-color: #1a4480;
   background-color: white !important;
   padding: 0.5rem !important;
   min-width: 6.25rem !important;
@@ -59775,8 +59776,7 @@ sds-icon.external-link > * > * {
   box-shadow: none;
   border-width: 2px !important;
   border-style: solid !important;
-  border-color: #cac9c0;
-  border-style: solid;
+  border-color: #76766a !important;
   background-color: white !important;
   color: #76766a !important;
   cursor: unset !important;
