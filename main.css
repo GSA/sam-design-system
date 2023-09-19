@@ -59766,7 +59766,7 @@ sds-icon.external-link > * > * {
   border-color: #1a4480 !important;
   box-shadow: none;
 }
-.sds-button--menu.usa-button.usa-button--active, .sds-button--menu.usa-button:active {
+.sds-button--menu.usa-button.usa-button--active, .sds-button--menu.usa-button:not(.usa-button--disabled):active {
   background-color: #1a4480 !important;
   color: white;
   border-color: #1a4480 !important;
