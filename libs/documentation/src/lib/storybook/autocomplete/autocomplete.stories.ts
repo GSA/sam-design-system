@@ -12,6 +12,7 @@ import { AutocompleteFreeTextModule } from './autocomplete-free-text/autocomplet
 import { AutocompleteGroupingModule } from './autocomplete-grouping/autocomplete-grouping.module';
 import { AutocompleteIntroductionModule } from './autocomplete-introduction/autocomplete-introduction.module';
 import { AutocompleteSelectionModeModule } from './autocomplete-selection-mode/autocomplete-selection-mode.module';
+import { AutocompleteMultiSelectModule } from './autocomplete-multi-select/autocomplete-multi-select.module';
 
 const disabled = {
   table: {
@@ -32,6 +33,7 @@ export default {
         AutocompleteSelectionModeModule,
         AutocompleteConfigurableModule,
         AutocompleteIntroductionModule,
+        AutocompleteMultiSelectModule,
       ],
     }),
   ],
@@ -187,6 +189,12 @@ export default {
         category: 'configuration',
       },
     },
+    useCheckBoxes: {
+      escription: 'enables checkbox feature',
+      table: {
+        category: 'configuration',
+      },
+    },
   },
 } as Meta;
 
@@ -210,7 +218,8 @@ const autocompleteSettingsFunction = (
   isGroupingEnabled,
   isSelectableGroup,
   hideChips,
-  hideCloseIcon
+  hideCloseIcon,
+  useCheckBoxes,
 ): SDSAutocompletelConfiguration => {
   const base = new SDSAutocompletelConfiguration();
   base.primaryKeyField = primaryKeyField ?? 'id';
@@ -233,6 +242,7 @@ const autocompleteSettingsFunction = (
   base.isSelectableGroup = isSelectableGroup ?? true;
   base.hideChips = hideChips ?? false;
   base.hideCloseIcon = hideCloseIcon ?? false;
+  base.useCheckBoxes = useCheckBoxes ?? false;
 
   return base;
 };
@@ -259,6 +269,7 @@ const Template: Story<SDSAutocompletelConfiguration> = (args) => {
     isSelectableGroup,
     hideChips,
     hideCloseIcon,
+    useCheckBoxes,
   } = args;
   const combined = autocompleteSettingsFunction(
     primaryKeyField,
@@ -280,7 +291,8 @@ const Template: Story<SDSAutocompletelConfiguration> = (args) => {
     isGroupingEnabled,
     isSelectableGroup,
     hideChips,
-    hideCloseIcon
+    hideCloseIcon,
+    useCheckBoxes,
   );
   return {
     template: `
@@ -323,6 +335,7 @@ Configurable.args = {
   hideChips: false,
   hideCloseIcon: false,
   disabled: false,
+  useCheckBoxes: false, 
 };
 Configurable.parameters = {
   preview: { disabled: true },
@@ -389,6 +402,26 @@ FreeText.parameters = {
   stackblitzLink: generateStackblitzLink('autocomplete', 'free-text'),
 };
 
+export const MultiSelect: Story = (args) => ({
+  template: `<sds-autocomplete-multi-select-demo></sds-autocomplete-multi-select-demo>`,
+  props: {
+    ...args,
+  },
+});
+MultiSelect.parameters = {
+  controls: {
+    disabled: true,
+    hideNoControlsWarning: true,
+  },
+  actions: { disabled: true },
+  preview: generateConfig(
+    'storybook/autocomplete/autocomplete-multi-select',
+    'AutocompleteMultiSelectModule',
+    'sds-autocomplete-Multi-Select-demo'
+  ),
+  stackblitzLink: generateStackblitzLink('autocomplete', 'multi-select'),
+};
+
 export const Introduction: Story = (args) => ({
   template: '<sds-autocomplete-introduction></sds-autocomplete-introduction>',
   props: args,
@@ -403,4 +436,4 @@ Introduction.parameters = {
   preview: { disabled: true },
 };
 
-export const __namedExportsOrder = ['Introduction', 'Configurable', 'FreeText', 'Grouping', 'SelectionMode'];
+export const __namedExportsOrder = ['Introduction', 'Configurable', 'FreeText', 'Grouping', 'MultiSelect' ,'SelectionMode'];

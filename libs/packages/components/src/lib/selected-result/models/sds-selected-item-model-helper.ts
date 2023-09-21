@@ -103,4 +103,5 @@ export class SDSSelectedItemModelHelper {
 export enum SelectionMode {
   SINGLE,
   MULTIPLE,
+  MULTICHECKBOX,
 }
