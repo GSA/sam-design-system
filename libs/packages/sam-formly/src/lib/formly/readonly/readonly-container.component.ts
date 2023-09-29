@@ -61,7 +61,7 @@ export class ReadonlyContainerComponent implements OnInit {
     if (this.formlyFieldConfig) {
       this.label = this.formlyFieldConfig.templateOptions.label;
       this.value = this.formlyFieldConfig.formControl.value;
-      this.formlyType = this.formlyFieldConfig.type;
+      this.formlyType = this.formlyFieldConfig.type.toString();
       this.assignAdditionalConfig();
     }
   }

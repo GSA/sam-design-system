@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FieldType } from '@ngx-formly/core';
+import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 @Component({
   selector: 'sds-formly-field-textarea',
@@ -27,7 +27,7 @@ import { FieldType } from '@ngx-formly/core';
     </div>
   `,
 })
-export class FormlyFieldTextAreaComponent extends FieldType implements OnInit {
+export class FormlyFieldTextAreaComponent extends FieldType<FieldTypeConfig> implements OnInit {
   defaultOptions = {
     templateOptions: {
       cols: 1,

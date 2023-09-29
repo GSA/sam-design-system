@@ -180,8 +180,8 @@ export const DATE_FORMAT: MatDateFormats = {
     FormlyModule.forRoot({
       validationMessages: [
         { name: 'required', message: 'This field is required' },
-        { name: 'minlength', message: minlengthValidationMessage },
-        { name: 'maxlength', message: maxlengthValidationMessage },
+        { name: 'minLength', message: minlengthValidationMessage },
+        { name: 'maxLength', message: maxlengthValidationMessage },
         { name: 'min', message: minValidationMessage },
         { name: 'max', message: maxValidationMessage },
         { name: 'minDate', message: minDateValidationMessage },
@@ -212,6 +212,10 @@ export const DATE_FORMAT: MatDateFormats = {
       ],
       wrappers: [{ name: 'animation', component: AnimationWrapperComponent }],
       extensions: [{ name: 'animation', extension: { onPopulate: animationExtension } }],
+      extras: {
+        resetFieldOnHide: false,
+ immutable: true,
+      },
     }),
   ],
   providers: [{ provide: MAT_DATE_FORMATS, useValue: DATE_FORMAT }],

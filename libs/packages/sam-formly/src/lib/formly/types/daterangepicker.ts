@@ -1,5 +1,5 @@
-import { Component, ViewEncapsulation } from '@angular/core';
-import { FieldType } from '@ngx-formly/core';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 @Component({
   selector: 'sds-formly-field-daterangepicker',
@@ -50,5 +50,6 @@ import { FieldType } from '@ngx-formly/core';
     'table.mat-calendar-table td, table.mat-calendar-table th {border-style: none; background-color: unset; }',
   ],
   encapsulation: ViewEncapsulation.None,
+changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldDateRangePickerComponent extends FieldType {}
+export class FormlyFieldDateRangePickerComponent extends FieldType<FieldTypeConfig>{}

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FieldType } from '@ngx-formly/core';
+import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 @Component({
   selector: 'sds-formly-field-file',
@@ -46,7 +46,7 @@ import { FieldType } from '@ngx-formly/core';
     `,
   ],
 })
-export class FormlyFieldFileInfoComponent extends FieldType {
+export class FormlyFieldFileInfoComponent extends FieldType<FieldTypeConfig> {
   isSelected: boolean = false;
   description: string = '';
   defaultOptions = {
