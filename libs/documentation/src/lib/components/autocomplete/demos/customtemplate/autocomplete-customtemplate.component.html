@@ -12,9 +12,17 @@
   </sds-autocomplete>
 </div>
 
+<pre>{{ customTemplateModel | json }}</pre>
+
 <ng-template #temp let-item>
-  <span>
-    <span>Template</span>
-    {{ item['name'] + ': ' + item['subtext'] }}
-  </span>
+  <div class="usa-checkbox">
+    <input
+      class="usa-checkbox__input"
+      type="checkbox"
+      checked="checked"
+    />
+    <label class="usa-checkbox__label" [for]="item['name']">
+      <span [innerHTML]="'Template' + item['name'] + ': ' + item['subtext']"></span>
+    </label>
+  </div>
 </ng-template>

@@ -32,5 +32,6 @@ export class AutocompleteCustomTemplate {
     this.customTemplateSettings.secondaryTextField = 'subtext';
     this.customTemplateSettings.autocompletePlaceHolderText = 'eg: Level 1';
     this.customTemplateSettings.selectionMode = SelectionMode.MULTIPLE;
+    this.customTemplateSettings.hideChips = true;
   }
 }
