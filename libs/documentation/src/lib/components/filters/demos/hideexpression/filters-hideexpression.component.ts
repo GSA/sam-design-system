@@ -28,12 +28,12 @@ export class FiltersHideExpression {
           { label: 'Australia', value: 'AUS' },
         ],
       },
-      lifecycle: {
-        onChanges: function (form, field) {
+      hooks: {
+        onChanges: (field) => {
           field.formControl.valueChanges.subscribe((v) => {
-            Object.keys(form['controls'].location['controls']).forEach((key) => {
+            Object.keys(field.form['controls']['location']['controls']).forEach((key) => {
               if (key !== 'country') {
-                form['controls'].location['controls'][key].setValue('');
+                field.form['controls']['location']['controls'][key].setValue('');
               }
             });
           });

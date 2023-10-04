@@ -10,8 +10,7 @@ import {
 } from '@angular/core';
 import { AbstractSdsFormly } from '../sds-formly';
 import { UsaFileInputComponent } from '@gsa-sam/ngx-uswds';
-import { FormlyFieldConfig } from '@ngx-formly/core';
-
+import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 @Component({
   selector: `sds-formly-field-file-input`,
   templateUrl: './file-input.html',
@@ -36,7 +35,7 @@ export class FormlyFieldFileInputComponent extends AbstractSdsFormly implements 
     super.ngOnInit();
 
     if (this.field && this.field.fieldArray) {
-      this.displayedColumns = this.field.fieldArray.templateOptions.tableColumns.map((column) => column.columnName);
+     // this.displayedColumns = this.field.fieldArray.props.tableColumns.map((column) => column.columnName);
       this.parentFieldConfig = this.field.parent;
     }
   }

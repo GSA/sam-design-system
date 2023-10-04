@@ -57,12 +57,11 @@ export class RadioTemplateComponent implements AfterViewInit {
       modelOptions: {
         updateOn: 'blur',
       },
-      lifecycle: {
-        onChanges: function (form, field) {
-          field.formControl.valueChanges.subscribe((v) => {
-            console.log(form['controls']['entity']);
-          });
-        },
+      hooks: {
+        onChanges: (field) =>
+          field.formControl.valueChanges.subscribe((value) => {
+            console.log(field);
+          }),
       },
     },
   ];
