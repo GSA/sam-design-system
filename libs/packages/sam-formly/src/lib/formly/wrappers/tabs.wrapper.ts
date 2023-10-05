@@ -4,36 +4,36 @@ import { Subscription } from 'rxjs';
 
 @Component({
   template: `
-   <label [attr.for]="id" class="usa-label text-bold text-base-dark">{{ to.label }}</label>
-    <p [innerHTML]="to.description"></p>
- <div class="sds-filter-keywords">
-      <ng-container *ngIf="field.fieldGroup?.length > 1; else singleField">
- <sds-tabs
-          [tabClass]="to.tabClass ? to.tabClass : 'sds-tabs--formly'"
-          [interceptTabChange]="to.interceptTabChange"
-          (preTabChange)="to.preTabChange ? to.preTabChange($event) : null"
-          [(selectedTab)]="to.selectedTab"
+  <label [attr.for]="id" class="usa-label text-bold text-base-dark">{{ to.label }}</label>
+  <p [innerHTML]="to.description"></p>
+  <div class="sds-filter-keywords">
+    <ng-container *ngIf="fieldList.length > 1; else singleField">
+      <sds-tabs
+        [tabClass]="to.tabClass ? to.tabClass : 'sds-tabs--formly'"
+        [interceptTabChange]="to.interceptTabChange"
+        (preTabChange)="to.preTabChange ? to.preTabChange($event) : null"
+        [(selectedTab)]="to.selectedTab"
+      >
+        <sds-tab-panel
+          *ngFor="let fieldConfig of fieldList"
+          [tabHeader]="fieldConfig.templateOptions?.tabHeader"
         >
-          <sds-tab-panel
-            *ngFor="let fieldConfig of field.fieldGroup"
-            [tabHeader]="fieldConfig.templateOptions?.tabHeader"
-          >
-            <formly-form [fields]="[fieldConfig]" [model]="_initialModel" (modelChange)="onModelChange(fieldConfig)">
-            </formly-form>
-          </sds-tab-panel>
-        </sds-tabs>
-   </ng-container>
-<ng-template #singleField>
-        <div class="padding-left-2 padding-right-2 padding-bottom-1">
-          <formly-form
-            [fields]="field.fieldGroup"
-            [model]="_initialModel"
-            (modelChange)="onModelChange(field.fieldGroup[0])"
-          ></formly-form>
-        </div>
-      </ng-template>
-</div>
- 
+          <formly-form [fields]="[fieldConfig]" [model]="_initialModel" (modelChange)="onModelChange(fieldConfig)">
+          </formly-form>
+        </sds-tab-panel>
+      </sds-tabs>
+    </ng-container>
+
+    <ng-template #singleField>
+      <div class="padding-left-2 padding-right-2 padding-bottom-1">
+        <formly-form
+          [fields]="fieldList"
+          [model]="_initialModel"
+          (modelChange)="onModelChange(fieldList[0])"
+        ></formly-form>
+      </div>
+    </ng-template>
+  </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -41,15 +41,17 @@ export class FormlyTabsWrapperComponent extends FieldWrapper implements OnInit, 
   _initialModel: any;
 
   toDestroy: Subscription = new Subscription();
+  fieldList = [];
 
   ngOnInit() {
-    if (!this.field.fieldArray || !this.field.fieldGroup) {
+    if (!this.field.fieldArray || !this.field.fieldArray['fieldGroup']) {
       throw new Error('Please define contents of keywords through a fieldGroup within the fieldArray property');
     }
 
     this._initialModel = this.model && this.model[this.key as string] ? { ...this.model[this.key as string] } : {};
-    if (this.field.fieldArray && this.field.fieldGroup) {
-      this.field.fieldGroup.forEach((fieldConfig: FormlyFieldConfig) => {
+    if (this.field.fieldArray && this.field.fieldArray['fieldGroup']) {
+      this.fieldList = this.field.fieldArray['fieldGroup'];
+      this.field.fieldArray['fieldGroup'].forEach((fieldConfig: FormlyFieldConfig) => {
         this.updateFieldConfig(fieldConfig);
       });
     }
@@ -57,7 +59,7 @@ export class FormlyTabsWrapperComponent extends FieldWrapper implements OnInit, 
     const valueChangeSub = this.formControl.valueChanges.subscribe((newValue) => {
       this._initialModel = newValue;
     });
-   this.toDestroy.add(valueChangeSub);
+    this.toDestroy.add(valueChangeSub);
   }
 
   ngOnDestroy() {
@@ -111,6 +113,6 @@ export class FormlyTabsWrapperComponent extends FieldWrapper implements OnInit, 
   }
 
   onModelChange(fieldConfig: FormlyFieldConfig) {
-   // this.form.get(this.key as string).setValue(fieldConfig.form.value);
+    this.form.get(this.key as string).setValue(fieldConfig.form.value);
   }
 }
