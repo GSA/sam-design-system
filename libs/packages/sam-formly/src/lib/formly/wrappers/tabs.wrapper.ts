@@ -4,36 +4,33 @@ import { Subscription } from 'rxjs';
 
 @Component({
   template: `
-  <label [attr.for]="id" class="usa-label text-bold text-base-dark">{{ to.label }}</label>
-  <p [innerHTML]="to.description"></p>
-  <div class="sds-filter-keywords">
-    <ng-container *ngIf="fieldList.length > 1; else singleField">
-      <sds-tabs
-        [tabClass]="to.tabClass ? to.tabClass : 'sds-tabs--formly'"
-        [interceptTabChange]="to.interceptTabChange"
-        (preTabChange)="to.preTabChange ? to.preTabChange($event) : null"
-        [(selectedTab)]="to.selectedTab"
-      >
-        <sds-tab-panel
-          *ngFor="let fieldConfig of fieldList"
-          [tabHeader]="fieldConfig.templateOptions?.tabHeader"
+    <label [attr.for]="id" class="usa-label text-bold text-base-dark">{{ to.label }}</label>
+    <p [innerHTML]="to.description"></p>
+    <div class="sds-filter-keywords">
+      <ng-container *ngIf="fieldList.length > 1; else singleField">
+        <sds-tabs
+          [tabClass]="to.tabClass ? to.tabClass : 'sds-tabs--formly'"
+          [interceptTabChange]="to.interceptTabChange"
+          (preTabChange)="to.preTabChange ? to.preTabChange($event) : null"
+          [(selectedTab)]="to.selectedTab"
         >
-          <formly-form [fields]="[fieldConfig]" [model]="_initialModel" (modelChange)="onModelChange(fieldConfig)">
-          </formly-form>
-        </sds-tab-panel>
-      </sds-tabs>
-    </ng-container>
+          <sds-tab-panel *ngFor="let fieldConfig of fieldList" [tabHeader]="fieldConfig.templateOptions?.tabHeader">
+            <formly-form [fields]="[fieldConfig]" [model]="_initialModel" (modelChange)="onModelChange(fieldConfig)">
+            </formly-form>
+          </sds-tab-panel>
+        </sds-tabs>
+      </ng-container>
 
-    <ng-template #singleField>
-      <div class="padding-left-2 padding-right-2 padding-bottom-1">
-        <formly-form
-          [fields]="fieldList"
-          [model]="_initialModel"
-          (modelChange)="onModelChange(fieldList[0])"
-        ></formly-form>
-      </div>
-    </ng-template>
-  </div>
+      <ng-template #singleField>
+        <div class="padding-left-2 padding-right-2 padding-bottom-1">
+          <formly-form
+            [fields]="fieldList"
+            [model]="_initialModel"
+            (modelChange)="onModelChange(fieldList[0])"
+          ></formly-form>
+        </div>
+      </ng-template>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

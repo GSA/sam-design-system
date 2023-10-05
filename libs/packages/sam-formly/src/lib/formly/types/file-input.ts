@@ -35,7 +35,7 @@ export class FormlyFieldFileInputComponent extends AbstractSdsFormly implements 
     super.ngOnInit();
 
     if (this.field && this.field.fieldArray) {
-     // this.displayedColumns = this.field.fieldArray.props.tableColumns.map((column) => column.columnName);
+      // this.displayedColumns = this.field.fieldArray.props.tableColumns.map((column) => column.columnName);
       this.parentFieldConfig = this.field.parent;
     }
   }

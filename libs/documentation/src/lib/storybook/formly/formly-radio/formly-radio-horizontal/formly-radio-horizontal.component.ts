@@ -35,7 +35,7 @@ export class FormlyRadioHorizontalComponent {
         updateOn: 'blur',
       },
       hooks: {
-       onChanges: (field) => {
+        onChanges: (field) => {
           field.formControl.valueChanges.subscribe((v) => {
             console.log(field.form['controls']['entity']);
           });

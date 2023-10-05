@@ -8,7 +8,7 @@ import { FieldType } from '@ngx-formly/core';
       {{ to.text }}
     </button>
   `,
-changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormlyFieldButtonComponent extends FieldType {
   onClick($event) {

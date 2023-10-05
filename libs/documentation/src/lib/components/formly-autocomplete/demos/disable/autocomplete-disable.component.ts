@@ -44,8 +44,8 @@ export class FormlyAutocompleteDisable {
             configuration: this.settings,
           },
           hooks: {
-            onChanges: (field)  => {
-           field.form.controls[0].valueChanges.subscribe((value: any[]) => {
+            onChanges: (field) => {
+              field.form.controls[0].valueChanges.subscribe((value: any[]) => {
                 if (!value || !value.length) {
                   field.form.controls[0].reset();
                 }
