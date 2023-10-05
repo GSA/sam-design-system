@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Directive, OnInit } from '@angular/core';
 import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 @Directive()
-export abstract class AbstractSdsFormly extends FieldType<FieldTypeConfig> implements OnInit {
+export abstract class AbstractSdsFormly extends FieldType implements OnInit {
   public cdr: ChangeDetectorRef;
   public template: any;
 

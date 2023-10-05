@@ -42,13 +42,12 @@ export class FormlyAutocompleteDisableComponent {
             service: this.service,
             configuration: this.settings,
           },
-          lifecycle: {
-            onChanges: function (form: FormGroup, field) {
-              form.controls.items1.valueChanges.subscribe((value: any[]) => {
-                if (!value || !value.length) {
-                  form.controls.items2.reset();
-                }
-              });
+          hooks: {
+            onChanges: (field) => {
+          field.formControl.valueChanges.subscribe((v) => {
+            console.log(field.form['controls']['entity']);
+          });
+             
             },
           },
         },

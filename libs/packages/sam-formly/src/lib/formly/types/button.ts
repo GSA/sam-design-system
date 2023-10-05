@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
+import { FieldType } from '@ngx-formly/core';
 
 @Component({
   selector: 'sds-formly-field-button',
@@ -10,7 +10,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
   `,
 changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldButtonComponent extends FieldType<FieldTypeConfig> {
+export class FormlyFieldButtonComponent extends FieldType {
   onClick($event) {
     if (this.to.onClick) {
       this.to.onClick($event);

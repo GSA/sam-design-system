@@ -41,7 +41,7 @@ export interface SdsTableColumn {
   selector: `sds-formly-field-table`,
   templateUrl: './table.html',
 })
-export class FormlyFieldTableComponent extends FieldType<FieldTypeConfig> implements OnInit {
+export class FormlyFieldTableComponent extends FieldType implements OnInit {
   // Referenced in html
   parentFieldConfig: FormlyFieldConfig;
 

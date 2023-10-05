@@ -28,4 +28,4 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
   styles: ['table.mat-calendar-table td, table.mat-calendar-table th {border-style: none; background-color: unset; }'],
   encapsulation: ViewEncapsulation.None,
 })
-export class FormlyFieldDatePickerComponent extends FieldType<FieldTypeConfig> {}
+export class FormlyFieldDatePickerComponent extends FieldType {}

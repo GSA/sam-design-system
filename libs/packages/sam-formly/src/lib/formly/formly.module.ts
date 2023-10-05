@@ -214,7 +214,7 @@ export const DATE_FORMAT: MatDateFormats = {
       extensions: [{ name: 'animation', extension: { onPopulate: animationExtension } }],
       extras: {
         resetFieldOnHide: false,
- immutable: true,
+        immutable: true,
       },
     }),
   ],

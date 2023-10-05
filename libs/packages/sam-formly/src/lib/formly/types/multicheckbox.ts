@@ -5,7 +5,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
   selector: 'sds-formly-field-multicheckbox',
   templateUrl: './multicheckbox.html',
 })
-export class FormlyFieldMultiCheckboxComponent extends FieldType<FieldTypeConfig> implements OnInit {
+export class FormlyFieldMultiCheckboxComponent extends FieldType implements OnInit {
   defaultOptions = {
     templateOptions: {
       options: [],

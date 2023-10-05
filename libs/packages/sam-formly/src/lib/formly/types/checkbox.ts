@@ -1,12 +1,12 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, TemplateRef, ViewChild } from '@angular/core';
-import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
+import { FieldType } from '@ngx-formly/core';
 
 @Component({
   selector: 'sds-formly-field-checkbox',
   templateUrl: './checkbox.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldCheckboxComponent extends FieldType<FieldTypeConfig> implements AfterViewInit {
+export class FormlyFieldCheckboxComponent extends FieldType implements AfterViewInit {
   @ViewChild('defaultTemplate') defaultTemplate: TemplateRef<any>;
   public displayedTemplate = null;
 
