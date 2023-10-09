@@ -10,7 +10,7 @@ export class FormlyInputConfigurableComponent {
   @Input('config')
   set config(config: object) {
     const temp = this.fields[0];
-    temp['templateOptions'] = config;
+    temp['props'] = config;
     this.fields = [temp];
   }
 
@@ -21,7 +21,7 @@ export class FormlyInputConfigurableComponent {
     {
       key: 'title',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Entity Name',
         placeholder: 'eg: Acme Corporation',
         description: 'Enter the name of your entity.',

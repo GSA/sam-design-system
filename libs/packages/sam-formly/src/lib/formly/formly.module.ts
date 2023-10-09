@@ -42,36 +42,36 @@ import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 // Validate the min length of the character
 export function minlengthValidationMessage(err, field) {
-  return `Should have at least ${field.templateOptions.minLength} characters`;
+  return `Should have at least ${field.props.minLength} characters`;
 }
 
 // Validate the max length of the character
 export function maxlengthValidationMessage(err, field) {
-  return `This value should be less than ${field.templateOptions.maxLength} characters`;
+  return `This value should be less than ${field.props.maxLength} characters`;
 }
 
 // Validate the min value of the character
 export function minValidationMessage(err, field: FormlyFieldConfig) {
-  return `This value should be more than ${field.templateOptions.min}`;
+  return `This value should be more than ${field.props.min}`;
 }
 
 export function minDateValidationMessage(err, field: FormlyFieldConfig) {
-  const dt = field.templateOptions.minDate;
+  const dt = field.props.minDate;
   const dateFormat = dt.toLocaleString('en-US', { month: 'short' }) + ', ' + dt.getDate() + ', ' + dt.getFullYear();
   return `Date must be on or after ${dateFormat}`;
 }
 
 export function maxDateValidationMessage(err, field: FormlyFieldConfig) {
-  const dt = field.templateOptions.maxDate;
+  const dt = field.props.maxDate;
   const dateFormat = dt.toLocaleString('en-US', { month: 'short' }) + ' ' + dt.getDate() + ', ' + dt.getFullYear();
   return `Date must be on or before ${dateFormat}`;
 }
 
 export function betweenDateValidationMessage(err, field: FormlyFieldConfig) {
-  const dtnmax = field.templateOptions.maxDate;
+  const dtnmax = field.props.maxDate;
   const dateMaxFormat =
     dtnmax.toLocaleString('en-US', { month: 'short' }) + ' ' + dtnmax.getDate() + ', ' + dtnmax.getFullYear();
-  const dtmin = field.templateOptions.minDate;
+  const dtmin = field.props.minDate;
   const dateMinFormat =
     dtmin.toLocaleString('en-US', { month: 'short' }) + ' ' + dtmin.getDate() + ', ' + dtmin.getFullYear();
   return `Date must be between ${dateMinFormat} and ${dateMaxFormat} `;
@@ -82,7 +82,7 @@ export function invalidDateFormatValidationMessage(err, field: FormlyFieldConfig
 }
 
 export function matDatepickerMinValidationMessage(err, field: FormlyFieldConfig) {
-  const fieldWithMinDate = field.templateOptions.minDate ? field : field.parent;
+  const fieldWithMinDate = field.props.minDate ? field : field.parent;
   if (!fieldWithMinDate) {
     return `Please enter a valid date`;
   }
@@ -91,7 +91,7 @@ export function matDatepickerMinValidationMessage(err, field: FormlyFieldConfig)
 }
 
 export function matDatepickerMaxValidationMessage(err, field: FormlyFieldConfig) {
-  const fieldWithMaxDate = field.templateOptions.maxDate ? field : field.parent;
+  const fieldWithMaxDate = field.props.maxDate ? field : field.parent;
   if (!fieldWithMaxDate) {
     return `Please enter a valid date`;
   }
@@ -100,8 +100,8 @@ export function matDatepickerMaxValidationMessage(err, field: FormlyFieldConfig)
 }
 
 export function matDateInBetweenValidationMessage(err, field: FormlyFieldConfig) {
-  const fieldWithMinDate = field.templateOptions.minDate ? field : field.parent;
-  const fieldWithMaxDate = field.templateOptions.maxDate ? field : field.parent;
+  const fieldWithMinDate = field.props.minDate ? field : field.parent;
+  const fieldWithMaxDate = field.props.maxDate ? field : field.parent;
 
   if (fieldWithMinDate && !fieldWithMaxDate) {
     return minDateValidationMessage(err, fieldWithMinDate);
@@ -116,7 +116,7 @@ export function matDateInBetweenValidationMessage(err, field: FormlyFieldConfig)
 
 // Validate the max value of the character
 export function maxValidationMessage(err, field) {
-  return `This value should be less than ${field.templateOptions.max}`;
+  return `This value should be less than ${field.props.max}`;
 }
 export function animationExtension(field: FormlyFieldConfig) {
   if (field.wrappers && field.wrappers.includes('animation')) {

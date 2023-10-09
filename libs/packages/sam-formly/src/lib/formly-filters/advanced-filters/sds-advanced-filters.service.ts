@@ -21,13 +21,13 @@ export class SdsAdvancedFiltersService {
             type: 'checkbox',
             key: origField.key,
             defaultValue: !origField.hide,
-            templateOptions: {
+            props: {
               hideOptional: true,
             },
           };
 
-          if (origField.templateOptions && origField.templateOptions.label) {
-            field.templateOptions.label = origField.templateOptions.label;
+          if (origField.props && origField.props.label) {
+            field.props.label = origField.props.label;
           }
           fields.push(field);
         }
@@ -44,12 +44,12 @@ export class SdsAdvancedFiltersService {
         if (field.fieldGroup?.length) {
           options.push(this.createMulticheckbox(field, defaultValue));
         } else {
-          const label = field.templateOptions && field.templateOptions.label ? field.templateOptions.label : null;
+          const label = field.props && field.props.label ? field.props.label : null;
           const option = {
             key: field.key,
             value: label,
-            tagText: field.templateOptions.tagText,
-            tagClass: field.templateOptions.tagClass,
+            tagText: field.props.tagText,
+            tagClass: field.props.tagClass,
           };
           options.push(option);
           if (!origField.hide && !field.hide) {
@@ -63,7 +63,7 @@ export class SdsAdvancedFiltersService {
     const field: FormlyFieldConfig = {
       key: origField.key,
       type: 'multicheckbox',
-      templateOptions: {
+      props: {
         hideOptional: true,
         selectAllOption: true,
         type: 'array',
@@ -71,8 +71,8 @@ export class SdsAdvancedFiltersService {
       },
     };
 
-    if (origField.templateOptions && origField.templateOptions.label) {
-      field.templateOptions.label = origField.templateOptions.label;
+    if (origField.props && origField.props.label) {
+      field.props.label = origField.props.label;
     }
 
     if (!origField.hide) {
@@ -124,7 +124,7 @@ export class SdsAdvancedFiltersService {
       field.hide = false;
     } else {
       field.hide = true;
-      field.templateOptions['required'] = false;
+      field.props['required'] = false;
       if (field.formControl) {
         field.formControl.reset();
       } else {

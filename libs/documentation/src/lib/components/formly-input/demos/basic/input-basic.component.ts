@@ -15,7 +15,7 @@ export class InputBasic {
     {
       key: 'entity.title',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Entity Name',
         placeholder: 'eg: Acme Corporation',
         description: 'Enter the name of your entity.',
@@ -25,7 +25,7 @@ export class InputBasic {
     {
       key: 'entity.id',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Profit',
         placeholder: 'eg: 1234',
         description: 'nonprofit.',

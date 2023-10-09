@@ -14,7 +14,7 @@ export class FormlyTextAreaMaxlengthComponent {
     {
       key: 'entity',
       type: 'textarea',
-      templateOptions: {
+      props: {
         label: 'Entity Description',
         maxLength: 50,
       },

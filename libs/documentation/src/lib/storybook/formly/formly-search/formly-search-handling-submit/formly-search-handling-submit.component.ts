@@ -14,7 +14,7 @@ export class FormlySearchHandlingSubmitComponent {
   fields: FormlyFieldConfig[] = [
     {
       key: 'filter',
-      templateOptions: {
+      props: {
         label: 'Keyword (with label)',
         ariaHidden: true,
       },
@@ -22,7 +22,7 @@ export class FormlySearchHandlingSubmitComponent {
         {
           key: 'searchmodel',
           type: 'search',
-          templateOptions: {
+          props: {
             label: 'Search',
             submitHandler: this.handleSubmit,
             searchSettings: {

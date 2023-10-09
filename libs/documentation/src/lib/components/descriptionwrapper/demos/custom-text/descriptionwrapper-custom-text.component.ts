@@ -15,7 +15,7 @@ export class DescriptionWrapperCustomText {
       wrappers: ['description'],
       key: 'Description',
       type: 'input',
-      templateOptions: {
+      props: {
         description:
           'Please describe your specific situation. <ul><li>my current registration</li><li>My legal business name has been changed</li></ul>',
         placeholder: 'eg: Acme Corporation',

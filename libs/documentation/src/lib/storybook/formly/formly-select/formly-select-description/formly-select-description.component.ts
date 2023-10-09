@@ -14,7 +14,7 @@ export class FormlySelectDescriptionComponent {
     {
       key: 'entity.type',
       type: 'select',
-      templateOptions: {
+      props: {
         label: 'Entity Type',
         description: 'Select the entity type.',
         options: [

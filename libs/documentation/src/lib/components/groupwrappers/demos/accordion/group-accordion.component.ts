@@ -14,7 +14,7 @@ export class GroupAccordion {
     {
       key: 'Input',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Input',
         group: 'accordion',
         placeholder: 'eg: Acme Corporation',
@@ -28,7 +28,7 @@ export class GroupAccordion {
   multipleFormGroupFields: FormlyFieldConfig[] = [
     {
       key: 'filters',
-      templateOptions: {
+      props: {
         label: 'Entity Information',
         group: 'accordion',
       },
@@ -36,7 +36,7 @@ export class GroupAccordion {
         {
           key: 'entity.type',
           type: 'select',
-          templateOptions: {
+          props: {
             label: 'Entity Type',
             description: 'Select the entity type.',
             required: true,
@@ -53,7 +53,7 @@ export class GroupAccordion {
         {
           key: 'multiple.default.entity.title',
           type: 'input',
-          templateOptions: {
+          props: {
             label: 'Entity Name',
             placeholder: 'eg: Acme Corporation',
             description: 'Enter the name of your entity.',

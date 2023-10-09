@@ -17,7 +17,7 @@ export class FormlyCheckboxBasicComponent {
       validators: {
         validation: ['requiredTrue'],
       },
-      templateOptions: {
+      props: {
         label: 'I agree',
         description: 'By checking the box below you agree to the terms and conditions of the site.',
         required: true,

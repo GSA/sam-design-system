@@ -19,8 +19,8 @@ import { FieldWrapper } from '@ngx-formly/core';
           [attr.for]="id"
           [ngClass]="{
             'margin-bottom-1':
-              this.field?.templateOptions?.label &&
-              !this.field?.templateOptions?.hideLabel &&
+              this.field?.props?.label &&
+              !this.field?.props?.hideLabel &&
               this.field?.parent?.fieldGroup?.length === 1,
             'usa-sr-only':
               to.hideLabel ||

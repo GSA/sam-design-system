@@ -15,7 +15,7 @@ export class FormlyEditorBasicComponent {
     {
       key: 'searchkey',
       type: 'editor',
-      templateOptions: {
+      props: {
         label: 'Search',
         placeholder: 'eg: type here',
         regex: /hello/gm,

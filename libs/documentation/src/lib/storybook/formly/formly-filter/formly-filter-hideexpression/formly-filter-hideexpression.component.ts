@@ -14,7 +14,7 @@ export class FormlyFilterHideExpressionComponent {
     {
       key: 'location.country',
       type: 'select',
-      templateOptions: {
+      props: {
         label: 'Select Country',
         description: 'Select country.',
         required: true,
@@ -42,7 +42,7 @@ export class FormlyFilterHideExpressionComponent {
     {
       key: 'location.province',
       type: 'select',
-      templateOptions: {
+      props: {
         label: 'Select province',
         description: 'Select province.',
         required: true,
@@ -70,7 +70,7 @@ export class FormlyFilterHideExpressionComponent {
     {
       key: 'location.state',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'State',
         description: 'State',
         placeholder: 'Illinois',
@@ -85,7 +85,7 @@ export class FormlyFilterHideExpressionComponent {
     {
       key: 'location.city',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'City',
         description: 'City',
         placeholder: 'Chicago',
@@ -102,7 +102,7 @@ export class FormlyFilterHideExpressionComponent {
     {
       key: 'location.street',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Street',
         hideOptional: true,
         description: 'Street',

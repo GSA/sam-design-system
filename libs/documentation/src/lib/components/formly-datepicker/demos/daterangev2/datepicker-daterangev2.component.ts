@@ -16,7 +16,7 @@ export class FormlyDatepickerDateRangeV2 {
     {
       key: 'expirationDateRangeEx',
       type: 'daterangepickerv2',
-      templateOptions: {
+      props: {
         label: 'Expiration Date Range',
         minDate: new Date(2019, 9, 5),
         maxDate: new Date(2020, 11, 15),

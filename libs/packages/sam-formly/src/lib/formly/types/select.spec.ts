@@ -54,7 +54,7 @@ describe('Formly Field Select Component', () => {
         {
           key: 'sportId',
           type: 'select',
-          templateOptions: {
+          props: {
             options: [
               { id: '1', name: 'Soccer' },
               { id: '2', name: 'Basketball' },
@@ -89,7 +89,7 @@ describe('Formly Field Select Component', () => {
           {
             key: 'sportId',
             type: 'select',
-            templateOptions: {
+            props: {
               options: sports$,
               valueProp: 'id',
               labelProp: 'name',

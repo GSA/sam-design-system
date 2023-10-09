@@ -85,10 +85,10 @@ export class AdvancedFiltersComponent implements OnInit {
           } else if (currentField.type === 'multicheckbox') {
             const array = [];
             if (this.selectAll) {
-              currentField.templateOptions.options.forEach((option: any) => {
+              currentField.props.options.forEach((option: any) => {
                 array.push(option.key);
                 if (option.type === 'multicheckbox') {
-                  option.templateOptions.options.forEach((option: any) => {
+                  option.props.options.forEach((option: any) => {
                     array.push(option.key);
                   });
                 }
@@ -178,8 +178,8 @@ export class AdvancedFiltersComponent implements OnInit {
     );
     if (this.sortMoreFilterBy) {
       modalFields.sort((a: FormlyFieldConfig, b: FormlyFieldConfig) =>
-        a.templateOptions && b.templateOptions
-          ? a.templateOptions[this.sortMoreFilterBy].localeCompare(b.templateOptions[this.sortMoreFilterBy])
+        a.props && b.props
+          ? a.props[this.sortMoreFilterBy].localeCompare(b.props[this.sortMoreFilterBy])
           : 0
       );
     }
@@ -208,12 +208,12 @@ export class AdvancedFiltersComponent implements OnInit {
   get filedGroup(): FormlyFieldConfig[] {
     return [
       {
-        templateOptions: { label: 'test' },
+        props: { label: 'test' },
         fieldGroup: [
           {
             key: 'selectAll',
             type: 'checkbox',
-            templateOptions: {
+            props: {
               label: 'Select All',
               hideOptional: true,
               id: 'moreFilterSelectAll',
@@ -254,7 +254,7 @@ export class AdvancedFiltersComponent implements OnInit {
             key: 'showInactive',
             type: 'checkbox',
             defaultValue: this.showInactive,
-            templateOptions: {
+            props: {
               label: 'Show Inactive Filter Values (Indicated by *)',
               hideOptional: true,
               id: 'moreFilterSelectAll',

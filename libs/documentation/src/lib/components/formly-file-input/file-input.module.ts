@@ -42,7 +42,7 @@ const DEMOS = {
     module: require('!!raw-loader!./demos/table-file-input/table-file-input.module.ts'),
     path: 'libs/documentation/src/lib/components/formly-file-input/demos/table-file-input',
   },
-  templateOptions: {
+  props: {
     title: 'File Input Template Options',
     type: FileInputApiComponent,
     code: require('!!raw-loader!./demos/file-input-api/file-input-api.component'),

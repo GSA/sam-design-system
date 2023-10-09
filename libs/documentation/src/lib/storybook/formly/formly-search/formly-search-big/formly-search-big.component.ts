@@ -13,7 +13,7 @@ export class FormlySearchBigComponent {
   fields: FormlyFieldConfig[] = [
     {
       key: 'filter',
-      templateOptions: {
+      props: {
         label: 'Keyword (with label)',
         ariaHidden: true,
       },
@@ -21,7 +21,7 @@ export class FormlySearchBigComponent {
         {
           key: 'searchmodel',
           type: 'search',
-          templateOptions: {
+          props: {
             id: 'search',
             label: 'Big Search',
             searchSettings: {

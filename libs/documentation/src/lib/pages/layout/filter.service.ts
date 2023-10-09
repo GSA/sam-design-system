@@ -23,7 +23,7 @@ export class FilterService {
     {
       key: 'keyword',
       wrappers: ['tabs'],
-      templateOptions: {
+      props: {
         label: 'Keyword Search',
         description: `For more information on how to use our keyword search, visit our <a href="#"> help guide </a>`,
         hideOptional: true,
@@ -32,7 +32,7 @@ export class FilterService {
         fieldGroup: [
           // tab 1
           {
-            templateOptions: {
+            props: {
               tabHeader: 'Simple Search',
             },
             fieldGroupClassName: 'grid-row',
@@ -43,7 +43,7 @@ export class FilterService {
                 className: 'grid-col-5 margin-top-0',
                 type: 'radio',
                 defaultValue: 'anyWords',
-                templateOptions: {
+                props: {
                   options: [
                     {
                       label: 'Any Words',
@@ -60,7 +60,7 @@ export class FilterService {
                 className: 'grid-col-6 margin-top-auto margin-left-auto',
                 key: 'keywordExactPhrase',
                 type: 'checkbox',
-                templateOptions: {
+                props: {
                   label: 'Exact Phrase',
                   hideOptional: true,
                 },
@@ -69,7 +69,7 @@ export class FilterService {
                 key: 'keywordTags',
                 type: 'autocomplete',
                 className: 'grid-col-12',
-                templateOptions: {
+                props: {
                   expand: false,
                   configuration: {
                     id: 'keyword',
@@ -90,7 +90,7 @@ export class FilterService {
           },
           //tab 2
           {
-            templateOptions: {
+            props: {
               tabHeader: 'Search Editor',
               submitButtonId: 'booleanSearchSubmit',
             },
@@ -100,7 +100,7 @@ export class FilterService {
                 key: 'keywordTextarea',
                 type: SdsFormlyTypes.TEXTAREA,
                 className: 'display-block padding-left-2 padding-right-2 ',
-                templateOptions: {
+                props: {
                   placeholder: 'e.g. ((rental AND property) OR (lease and property) AND NOT ( "short term"))',
                   required: true,
                 },
@@ -109,7 +109,7 @@ export class FilterService {
                 type: SdsFormlyTypes.BUTTON,
                 id: 'booleanSearchSubmit',
                 className: 'display-block margin-top-1 padding-left-2 padding-right-2',
-                templateOptions: {
+                props: {
                   text: 'Search',
                   type: 'submit',
                 },
@@ -122,13 +122,13 @@ export class FilterService {
     {
       key: 'searchEntity',
       className: 'margin-top-0',
-      templateOptions: { label: 'Entity', group: 'accordion' },
+      props: { label: 'Entity', group: 'accordion' },
       fieldGroup: [
         {
           key: 'legalBusinessName',
           type: 'input',
 
-          templateOptions: {
+          props: {
             type: 'text',
             hideOptional: true,
             label: 'Entity Name',
@@ -137,7 +137,7 @@ export class FilterService {
         {
           key: 'uniqueEntityIdDuns',
           type: 'input',
-          templateOptions: {
+          props: {
             tagText: 'DUNS',
             tagClass: 'sds-tag--info-purple',
             label: 'Unique Entity ID',
@@ -152,7 +152,7 @@ export class FilterService {
         {
           key: 'uniqueEntityIdSam',
           type: 'input',
-          templateOptions: {
+          props: {
             tagText: 'SAM',
             label: 'Unique Entity ID',
             hideOptional: true,
@@ -163,7 +163,7 @@ export class FilterService {
         {
           key: 'cageCode',
           type: 'input',
-          templateOptions: {
+          props: {
             type: 'text',
             hideOptional: true,
             label: 'CAGE / NCAGE',
@@ -175,7 +175,7 @@ export class FilterService {
       key: 'purposeOfRegistration',
       hide: true,
       type: 'multicheckbox',
-      templateOptions: {
+      props: {
         label: 'Purpose of Registration',
         group: 'accordion',
         options: [
@@ -197,7 +197,7 @@ export class FilterService {
     {
       key: 'startDate',
       type: 'datepicker',
-      templateOptions: {
+      props: {
         group: 'panel',
         hideOptional: true,
         label: 'Date',
@@ -206,7 +206,7 @@ export class FilterService {
     {
       key: 'entityType',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Entity Type',
         group: 'accordion',
       },
@@ -214,14 +214,14 @@ export class FilterService {
     {
       key: 'socioEconomicStatus',
       type: 'select',
-      templateOptions: {
+      props: {
         label: 'Socio-Economic Status',
         group: 'accordion',
       },
     },
     {
       key: 'serviceClassifications',
-      templateOptions: {
+      props: {
         label: 'NAICS and Product Service Codes',
         group: 'accordion',
       },
@@ -230,7 +230,7 @@ export class FilterService {
           key: 'naicsCode',
           type: 'input',
 
-          templateOptions: {
+          props: {
             type: 'text',
             hideOptional: true,
             label: 'NAICS Code',
@@ -240,7 +240,7 @@ export class FilterService {
         {
           key: 'productServiceCode',
           type: 'input',
-          templateOptions: {
+          props: {
             label: 'Product Service Code',
             hideOptional: true,
             placeholder: 'Ex: 3320 or L019',
@@ -250,13 +250,13 @@ export class FilterService {
     },
     {
       key: 'location',
-      templateOptions: { label: 'Location', group: 'accordion' },
+      props: { label: 'Location', group: 'accordion' },
 
       fieldGroup: [
         {
           key: 'country',
           type: 'input',
-          templateOptions: {
+          props: {
             type: 'text',
             hideOptional: true,
             label: 'Country',
@@ -265,7 +265,7 @@ export class FilterService {
         {
           key: 'zipCode',
           type: 'input',
-          templateOptions: {
+          props: {
             type: 'text',
             hideOptional: true,
             label: 'Zip Code',
@@ -274,7 +274,7 @@ export class FilterService {
         {
           key: 'state',
           type: 'autocomplete',
-          templateOptions: {
+          props: {
             label: 'State / Province',
             hideOptional: true,
             service: this.service,
@@ -286,7 +286,7 @@ export class FilterService {
         {
           key: 'city',
           type: 'input',
-          templateOptions: {
+          props: {
             type: 'text',
             hideOptional: true,
             label: 'City',
@@ -295,7 +295,7 @@ export class FilterService {
         {
           key: 'congressionalDistrict',
           type: 'input',
-          templateOptions: {
+          props: {
             type: 'text',
             hideOptional: true,
             label: 'Congressional District',
@@ -305,13 +305,13 @@ export class FilterService {
     },
     {
       key: 'status',
-      templateOptions: { label: 'Status', group: 'accordion' },
+      props: { label: 'Status', group: 'accordion' },
 
       fieldGroup: [
         {
           key: 'registrationStatus',
           type: 'radio',
-          templateOptions: {
+          props: {
             options: [
               {
                 key: 'Active',
@@ -329,14 +329,14 @@ export class FilterService {
     {
       key: 'status',
 
-      templateOptions: { label: 'Entity Status', group: 'accordion' },
+      props: { label: 'Entity Status', group: 'accordion' },
       fieldGroup: [
         {
           key: 'statusId',
           id: 'status',
           type: 'multicheckbox',
 
-          templateOptions: {
+          props: {
             label: 'Entity Status',
             labelClass: 'usa-sr-only',
             hideOptional: true,
@@ -369,7 +369,7 @@ export class FilterService {
     {
       key: 'requestTypesOptions',
 
-      templateOptions: { group: 'panel' },
+      props: { group: 'panel' },
       fieldGroup: [
         {
           key: 'requestType',
@@ -377,7 +377,7 @@ export class FilterService {
           type: 'radio',
           className: 'margin-top-0',
           defaultValue: 'myexclusions',
-          templateOptions: {
+          props: {
             label: 'Exclusions Type',
             hideOptional: true,
             options: [
@@ -398,13 +398,13 @@ export class FilterService {
     },
     {
       key: 'expirationDate',
-      templateOptions: { label: 'Expiration Date', group: 'accordion' },
+      props: { label: 'Expiration Date', group: 'accordion' },
       fieldGroup: [
         {
           key: 'expirationDays',
           id: 'exp',
           type: 'radio',
-          templateOptions: {
+          props: {
             label: 'Expiration Date',
 
             labelClass: 'margin-bottom-1',

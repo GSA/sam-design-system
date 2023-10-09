@@ -14,7 +14,7 @@ export class FormlyInputDescriptionComponent {
     {
       key: 'title',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Entity Name',
         description: 'Description',
       },

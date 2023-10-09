@@ -61,7 +61,7 @@ describe('Formly Field Datepicker Component', () => {
         {
           key: 'entityDate',
           type: 'datepicker',
-          templateOptions: {
+          props: {
             label: 'Expiration Date',
             startDate: new Date(2019, 11, 25),
             minDate: new Date(2019, 8, 15),

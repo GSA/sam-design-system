@@ -15,7 +15,7 @@ export class DescriptionWrapperBasic {
       wrappers: ['description'],
       key: 'Description',
       type: 'input',
-      templateOptions: {
+      props: {
         description: 'Input description',
         placeholder: 'eg: Acme Corporation',
       },

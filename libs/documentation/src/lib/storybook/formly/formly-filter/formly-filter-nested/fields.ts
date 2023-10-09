@@ -2,7 +2,7 @@ export const filterFields = [
   {
     key: 'simpleSearch',
     type: 'input',
-    templateOptions: {
+    props: {
       label: 'Keyword Search',
       description:
         'For more information on how to use our keyword search, visit our <a class="usa-link" aria-label="www.fsd.gov - opens in a new window" href="https://www.fsd.gov/gsafsd_sp?id=kb_article_view&sysparm_article=KB0045403" target="_blank"> help guide <span class="margin-left-1px usa-link--external font-body-md"></span></a>',
@@ -12,13 +12,13 @@ export const filterFields = [
 
   {
     key: 'otherDetails',
-    templateOptions: { label: 'Type of Contract', group: 'accordion' },
+    props: { label: 'Type of Contract', group: 'accordion' },
     fieldGroup: [
       {
         key: 'typeOfContract',
         hide: false,
         type: 'select',
-        templateOptions: {
+        props: {
           label: '',
           hideOptional: true,
           options: [
@@ -50,7 +50,7 @@ export const filterFields = [
 
   {
     key: 'referencedAwardIdentification',
-    templateOptions: {
+    props: {
       label: 'Referenced Award Identification',
       group: 'accordion',
     },
@@ -59,29 +59,29 @@ export const filterFields = [
         key: 'piid',
         hide: false,
         type: 'input',
-        templateOptions: { label: 'PIID', hideOptional: true },
+        props: { label: 'PIID', hideOptional: true },
       },
       {
         key: 'modificationNumber',
         hide: false,
         type: 'input',
-        templateOptions: { label: 'Modification Number', hideOptional: true },
+        props: { label: 'Modification Number', hideOptional: true },
       },
     ],
   },
   {
     key: 'awardee',
-    templateOptions: { label: 'Awardee', group: 'accordion' },
+    props: { label: 'Awardee', group: 'accordion' },
     fieldGroup: [
       {
         key: 'awardeeIdentification',
-        templateOptions: { label: 'legal Awardee' },
+        props: { label: 'legal Awardee' },
         fieldGroup: [
           {
             key: 'legalBusinessName',
             hide: false,
             type: 'input',
-            templateOptions: {
+            props: {
               label: 'Legal Business Name',
               hideOptional: true,
             },
@@ -90,7 +90,7 @@ export const filterFields = [
             key: 'doingBusinessAsName',
             hide: false,
             type: 'input',
-            templateOptions: {
+            props: {
               label: 'Doing Business As Name',
               hideOptional: true,
             },
@@ -99,13 +99,13 @@ export const filterFields = [
       },
       {
         key: 'ultimateParent',
-        templateOptions: { label: 'Ultimate Awardee' },
+        props: { label: 'Ultimate Awardee' },
         fieldGroup: [
           {
             key: 'legalBusinessName1',
             hide: false,
             type: 'input',
-            templateOptions: {
+            props: {
               label: 'Legal Business Name',
               hideOptional: true,
             },
@@ -114,25 +114,25 @@ export const filterFields = [
       },
       {
         key: 'awardeeBusinessCategory',
-        templateOptions: { label: 'Business Awardee' },
+        props: { label: 'Business Awardee' },
         fieldGroup: [
           {
             key: 'organizationType',
             hide: true,
             type: 'input',
-            templateOptions: { label: 'Organization Type', hideOptional: true },
+            props: { label: 'Organization Type', hideOptional: true },
           },
           {
             key: 'businessType',
             hide: true,
             type: 'input',
-            templateOptions: { label: 'Business Type', hideOptional: true },
+            props: { label: 'Business Type', hideOptional: true },
           },
           {
             key: 'organizationFactors',
             hide: true,
             type: 'input',
-            templateOptions: {
+            props: {
               label: 'Organization Factors',
               hideOptional: true,
             },
@@ -141,13 +141,13 @@ export const filterFields = [
             key: 'lineOfBusiness',
             hide: true,
             type: 'input',
-            templateOptions: { label: 'Line of Business', hideOptional: true },
+            props: { label: 'Line of Business', hideOptional: true },
           },
           {
             key: 'relationships',
             hide: true,
             type: 'input',
-            templateOptions: {
+            props: {
               label: 'Relationships with Federal Government (Purpose of Registration)',
               hideOptional: true,
             },
@@ -156,7 +156,7 @@ export const filterFields = [
             key: 'state',
             hide: true,
             type: 'input',
-            templateOptions: {
+            props: {
               label: 'State of incorporation',
               hideOptional: true,
             },
@@ -165,7 +165,7 @@ export const filterFields = [
             key: 'country',
             hide: true,
             type: 'input',
-            templateOptions: {
+            props: {
               label: 'Country of incorporation',
               hideOptional: true,
             },
@@ -174,13 +174,13 @@ export const filterFields = [
       },
       {
         key: 'awardeeSizeSelection',
-        templateOptions: { label: 'Size Awardee' },
+        props: { label: 'Size Awardee' },
         fieldGroup: [
           {
             key: 'contractingOfficerBusiessSizeSelection',
             hide: true,
             type: 'select',
-            templateOptions: {
+            props: {
               label: "Contracting Officer's Business Size Determination",
               hideOptional: true,
               options: [
@@ -193,7 +193,7 @@ export const filterFields = [
             key: 'reasonNotAwardToSmallBusiness',
             hide: true,
             type: 'input',
-            templateOptions: {
+            props: {
               label: 'Reason Not Award to Small Business',
               hideOptional: true,
             },
@@ -202,7 +202,7 @@ export const filterFields = [
             key: 'reasonNotToAwardToSmallDisadvantagedBusiness',
             hide: true,
             type: 'input',
-            templateOptions: {
+            props: {
               label: 'Reason Not Award to Small Disadvantaged Business',
               hideOptional: true,
             },
@@ -211,13 +211,13 @@ export const filterFields = [
       },
       {
         key: 'awardeeOtherDetails',
-        templateOptions: { label: 'Other Awardee' },
+        props: { label: 'Other Awardee' },
         fieldGroup: [
           {
             key: 'domesticOrForeignEntity',
             hide: true,
             type: 'select',
-            templateOptions: {
+            props: {
               label: 'Domestic or Foreign Entity',
               hideOptional: true,
               options: [
@@ -245,7 +245,7 @@ export const filterFields = [
             key: 'seaTransportation',
             hide: true,
             type: 'select',
-            templateOptions: {
+            props: {
               label: 'Sea Transportation',
               hideOptional: true,
               options: [
@@ -259,19 +259,19 @@ export const filterFields = [
       },
       {
         key: 'awardIdentification',
-        templateOptions: { label: 'Identification Awardee' },
+        props: { label: 'Identification Awardee' },
         fieldGroup: [
           {
             key: 'piid',
             hide: false,
             type: 'input',
-            templateOptions: { label: 'PIID', hideOptional: true },
+            props: { label: 'PIID', hideOptional: true },
           },
           {
             key: 'modificationNumber',
             hide: false,
             type: 'input',
-            templateOptions: {
+            props: {
               label: 'Modification Number',
               hideOptional: true,
             },
@@ -283,12 +283,12 @@ export const filterFields = [
 
   {
     key: 'financialFunding',
-    templateOptions: { label: 'Financial/Funding', group: 'accordion' },
+    props: { label: 'Financial/Funding', group: 'accordion' },
     fieldGroup: [
       {
         key: 'financialFederalOrganizations',
         type: 'input',
-        templateOptions: {
+        props: {
           label: 'Federal Organizations',
           hideOptional: true,
           selectionType: 'checkbox',
@@ -302,13 +302,13 @@ export const filterFields = [
         key: 'actionObligations',
         group: 'panel',
         hide: false,
-        templateOptions: { label: 'Action Obligations' },
+        props: { label: 'Action Obligations' },
         fieldGroup: [
           {
             key: 'actionObligationsSelect',
             type: 'select',
             group: 'panel',
-            templateOptions: {
+            props: {
               label: 'Action Obligations',
               placeholder: 'Any amount',
               hideOptional: true,
@@ -326,13 +326,13 @@ export const filterFields = [
             key: 'actionObligationsMin',
             type: 'input',
             modelOptions: { debounce: { default: 2000 } },
-            templateOptions: { label: 'Min', hideOptional: true },
+            props: { label: 'Min', hideOptional: true },
           },
           {
             key: 'actionObligationsMax',
             type: 'input',
             modelOptions: { debounce: { default: 2000 } },
-            templateOptions: {
+            props: {
               label: 'Max',
               required: false,
               hideOptional: true,
@@ -344,7 +344,7 @@ export const filterFields = [
         key: 'baseAndAllOptionsValue',
         hide: true,
         type: 'input',
-        templateOptions: {
+        props: {
           label: 'Base and All Options Value',
           hideOptional: true,
         },
@@ -353,7 +353,7 @@ export const filterFields = [
         key: 'totalEstimatedOrderValue',
         hide: true,
         type: 'input',
-        templateOptions: {
+        props: {
           label: 'Total Estimated Order Value',
           hideOptional: true,
         },
@@ -362,7 +362,7 @@ export const filterFields = [
         key: 'costOrPricingData',
         hide: true,
         type: 'select',
-        templateOptions: {
+        props: {
           label: 'Cost Or Pricing Data',
           hideOptional: true,
           options: [
@@ -376,7 +376,7 @@ export const filterFields = [
         key: 'purchaseCardUsedAsPaymentMethod',
         hide: true,
         type: 'select',
-        templateOptions: {
+        props: {
           label: 'Purchase Card Used As Payment Method',
           hideOptional: true,
           options: [
@@ -389,7 +389,7 @@ export const filterFields = [
         key: 'contractFinancing',
         hide: true,
         type: 'select',
-        templateOptions: {
+        props: {
           label: 'Contract Financing',
           hideOptional: true,
           options: [
@@ -409,7 +409,7 @@ export const filterFields = [
         key: 'costAccountingStandardsClause',
         hide: true,
         type: 'select',
-        templateOptions: {
+        props: {
           label: 'Cost Accounting Standards Clause',
           hideOptional: true,
           options: [
@@ -423,7 +423,7 @@ export const filterFields = [
         key: 'foreignFunding',
         hide: true,
         type: 'select',
-        templateOptions: {
+        props: {
           label: 'Foreign Funding',
           hideOptional: true,
           options: [
@@ -444,18 +444,18 @@ export const filterFields = [
 
   {
     key: 'keyDates',
-    templateOptions: { label: 'Dates', group: 'accordion' },
+    props: { label: 'Dates', group: 'accordion' },
     fieldGroup: [
       {
         key: 'dateSigned',
         hide: false,
         group: 'panel',
-        templateOptions: { label: 'Date Signed' },
+        props: { label: 'Date Signed' },
         fieldGroup: [
           {
             key: 'dateSignedSelect',
             type: 'select',
-            templateOptions: {
+            props: {
               hideOptional: true,
               placeholder: 'Anytime',
               options: [
@@ -474,14 +474,14 @@ export const filterFields = [
           {
             key: 'dateSignedFrom',
             type: 'datepicker',
-            templateOptions: { hideOptional: true, label: 'From' },
+            props: { hideOptional: true, label: 'From' },
 
             autoClear: true,
           },
           {
             key: 'dateSignedTo',
             type: 'datepicker',
-            templateOptions: { hideOptional: true, label: 'To' },
+            props: { hideOptional: true, label: 'To' },
           },
         ],
       },
@@ -489,12 +489,12 @@ export const filterFields = [
         key: 'completionDate',
         hide: false,
         group: 'panel',
-        templateOptions: { label: 'Completion Date' },
+        props: { label: 'Completion Date' },
         fieldGroup: [
           {
             key: 'completionDateSelect',
             type: 'select',
-            templateOptions: {
+            props: {
               hideOptional: true,
               placeholder: 'Anytime',
               options: [
@@ -513,12 +513,12 @@ export const filterFields = [
           {
             key: 'completionDateFrom',
             type: 'datepicker',
-            templateOptions: { hideOptional: true, label: 'From' },
+            props: { hideOptional: true, label: 'From' },
           },
           {
             key: 'completionDateTo',
             type: 'datepicker',
-            templateOptions: { hideOptional: true, label: 'To' },
+            props: { hideOptional: true, label: 'To' },
           },
         ],
       },
@@ -526,12 +526,12 @@ export const filterFields = [
         key: 'estimatedUltimateCompletionDate',
         hide: false,
         group: 'panel',
-        templateOptions: { label: 'Estimated Ultimate Completion Date' },
+        props: { label: 'Estimated Ultimate Completion Date' },
         fieldGroup: [
           {
             key: 'estimatedUltimateCompletionDateSelect',
             type: 'select',
-            templateOptions: {
+            props: {
               hideOptional: true,
               placeholder: 'Anytime',
               options: [
@@ -550,12 +550,12 @@ export const filterFields = [
           {
             key: 'estimatedUltimateCompletionDateFrom',
             type: 'datepicker',
-            templateOptions: { hideOptional: true, label: 'From' },
+            props: { hideOptional: true, label: 'From' },
           },
           {
             key: 'estimatedUltimateCompletionDateTo',
             type: 'datepicker',
-            templateOptions: { hideOptional: true, label: 'To' },
+            props: { hideOptional: true, label: 'To' },
           },
         ],
       },

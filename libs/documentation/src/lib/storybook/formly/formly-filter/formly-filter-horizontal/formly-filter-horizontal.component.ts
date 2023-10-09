@@ -15,7 +15,7 @@ export class FormlyFilterHorizontalComponent {
     {
       key: 'status',
       type: 'multicheckbox',
-      templateOptions: {
+      props: {
         label: 'Status',
         group: 'popover',
         options: [
@@ -37,7 +37,7 @@ export class FormlyFilterHorizontalComponent {
     {
       key: 'socioeconomic2',
       type: 'multicheckbox',
-      templateOptions: {
+      props: {
         label: 'Socio-Economic Status',
         group: 'popover',
         options: [
@@ -58,7 +58,7 @@ export class FormlyFilterHorizontalComponent {
     },
     {
       key: 'dateRange',
-      templateOptions: {
+      props: {
         label: 'Date Range',
         group: 'popover',
         closeOnClickOutside: false,
@@ -68,7 +68,7 @@ export class FormlyFilterHorizontalComponent {
           key: 'dateRangeSelect',
           type: 'select',
           className: 'display-block',
-          templateOptions: {
+          props: {
             label: 'Select Date',
             options: [
               { label: 'Anytime', value: 'anytime' },
@@ -83,7 +83,7 @@ export class FormlyFilterHorizontalComponent {
           key: 'createdDate',
           type: 'datepicker',
           className: 'display-block',
-          templateOptions: {
+          props: {
             label: 'Created Date',
             minDate: new Date(2019, 9, 5),
             maxDate: new Date(2020, 11, 15),
@@ -104,7 +104,7 @@ export class FormlyFilterHorizontalComponent {
           key: 'expirationDate',
           type: 'datepicker',
           className: 'display-block',
-          templateOptions: {
+          props: {
             label: 'Expires Date',
             minDate: new Date(2019, 9, 5),
             maxDate: new Date(2020, 11, 15),
@@ -127,7 +127,7 @@ export class FormlyFilterHorizontalComponent {
       key: 'expirationDateRangeEx',
       type: 'daterangepickerv2',
       hide: true,
-      templateOptions: {
+      props: {
         group: 'popover',
         label: 'Expiration Date Range',
         minDate: new Date(2019, 9, 5),
@@ -146,7 +146,7 @@ export class FormlyFilterHorizontalComponent {
       key: 'entity',
       type: 'input',
       hide: true,
-      templateOptions: {
+      props: {
         group: 'popover',
         label: 'Entity Name',
         placeholder: 'eg: Acme Corporation',

@@ -14,7 +14,7 @@ export class FormlyRadioAdvancedComponent {
     {
       key: 'taxFilingStatus',
       type: 'radio',
-      templateOptions: {
+      props: {
         label: 'Tax Filing Structure',
         tile: true,
         description: 'Select how your business or organization is defined by the IRS.',

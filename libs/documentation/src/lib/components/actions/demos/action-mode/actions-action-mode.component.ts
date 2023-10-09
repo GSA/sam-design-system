@@ -17,7 +17,7 @@ export class ActionsMenuActionMode {
     {
       key: 'mode',
       type: 'select',
-      templateOptions: {
+      props: {
         label: 'Choose Action menu mode ',
         options: [
           { label: 'Hide', value: ActionMenuMode.HIDDEN },

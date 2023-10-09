@@ -24,7 +24,7 @@ export class FormlyDialogBasicComponent {
     {
       key: 'entity.name',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Entity Name',
         placeholder: 'eg: Acme Corporation',
         description: 'Enter the name of your entity.',
@@ -34,33 +34,33 @@ export class FormlyDialogBasicComponent {
     {
       key: 'entity.samuei',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Unique Entity ID',
       },
     },
     {
       key: 'entity.dunuei',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Unique Entity ID',
       },
     },
     {
       key: 'entity.cage',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'CAGE / NCAGE',
       },
     },
     {
       key: 'filters',
 
-      templateOptions: { label: 'Keyword' },
+      props: { label: 'Keyword' },
       fieldGroup: [
         {
           key: 'firstName',
           type: 'autocomplete',
-          templateOptions: {
+          props: {
             label: 'Auto Complete',
             hideLabel: true,
             service: this.service,
@@ -74,7 +74,7 @@ export class FormlyDialogBasicComponent {
     {
       key: 'entity.naics',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'NAICS Code',
       },
     },
@@ -82,7 +82,7 @@ export class FormlyDialogBasicComponent {
     {
       key: 'entity.psc',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Product Service Code',
         placeholder: 'eg: Acme Corporation',
         description: 'Enter the name of your entity.',

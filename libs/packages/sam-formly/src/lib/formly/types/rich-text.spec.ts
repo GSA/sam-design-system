@@ -72,7 +72,7 @@ describe('Formly Field Rich Text Editor Component', () => {
         {
           key: 'editor',
           type: 'rich-text',
-          templateOptions: {
+          props: {
             minHeight: 10,
             maxHeight: 31,
           },
