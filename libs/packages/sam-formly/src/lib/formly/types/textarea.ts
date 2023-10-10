@@ -4,24 +4,24 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 @Component({
   selector: 'sds-formly-field-textarea',
   template: `
-    <div [ngClass]="{ 'usa-character-count': to.maxLength }">
+    <div [ngClass]="{ 'usa-character-count': props.maxLength }">
       <textarea
         [formControl]="formControl"
-        [cols]="to.cols"
-        [rows]="to.rows"
+        [cols]="props.cols"
+        [rows]="props.rows"
         class="usa-textarea minw-15"
         [class.usa-input--error]="showError"
-        [placeholder]="to.placeholder"
+        [placeholder]="props.placeholder"
         [formlyAttributes]="field"
-        [maxlength]="to.maxLength"
+        [maxlength]="props.maxLength"
         (ngModelChange)="valueChange($event)"
       >
       </textarea>
       <span [attr.id]="id + '-character-count'" class="usa-hint" aria-live="polite">
-        <span *ngIf="to.maxLength">
+        <span *ngIf="props.maxLength">
           {{ charactersRemaining }}
           {{ charactersRemaining === 1 ? 'character' : 'characters' }}
-          {{ charactersRemaining === to.maxLength ? 'allowed' : 'left' }}
+          {{ charactersRemaining === props.maxLength ? 'allowed' : 'left' }}
         </span>
       </span>
     </div>
@@ -38,37 +38,37 @@ export class FormlyFieldTextAreaComponent extends FieldType implements OnInit {
   charactersRemaining: number;
 
   ngOnInit() {
-    if (!this.to.maxLength) {
+    if (!this.props.maxLength) {
       return;
     }
     const initialValue: string = this.field.formControl.value;
 
     if (!initialValue) {
-      this.charactersRemaining = this.to.maxLength;
+      this.charactersRemaining = this.props.maxLength;
       return;
     }
 
-    if (initialValue && initialValue.length <= this.to.maxLength) {
-      this.charactersRemaining = this.to.maxLength - initialValue.length;
+    if (initialValue && initialValue.length <= this.props.maxLength) {
+      this.charactersRemaining = this.props.maxLength - initialValue.length;
       return;
     }
 
     // Contains initial value that is over max length limit, so we truncate text to be at max length
-    const truncatedValue = initialValue.substring(0, this.to.maxLength);
+    const truncatedValue = initialValue.substring(0, this.props.maxLength);
     this.formControl.setValue(truncatedValue);
-    this.charactersRemaining = this.to.maxLength - truncatedValue.length;
+    this.charactersRemaining = this.props.maxLength - truncatedValue.length;
   }
 
   valueChange(value: string) {
-    if (!this.to.maxLength) {
+    if (!this.props.maxLength) {
       return;
     }
 
-    if (value.length > this.to.maxLength) {
-      const newValue = value.substring(0, this.to.maxLength);
+    if (value.length > this.props.maxLength) {
+      const newValue = value.substring(0, this.props.maxLength);
       this.formControl.setValue(newValue);
     } else {
-      this.charactersRemaining = Math.max(0, this.to.maxLength - value.length);
+      this.charactersRemaining = Math.max(0, this.props.maxLength - value.length);
     }
   }
 }

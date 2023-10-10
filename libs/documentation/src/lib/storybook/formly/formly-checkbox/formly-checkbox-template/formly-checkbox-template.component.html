@@ -9,16 +9,16 @@
   let-field="field"
   let-id="id"
 >
-  <div class="usa-checkbox" [class.text-align-end]="to.textAlignEnd">
+  <div class="usa-checkbox" [class.text-align-end]="props.textAlignEnd">
     <input
       class="usa-checkbox__input"
       type="checkbox"
       [class.is-invalid]="showError"
-      [indeterminate]="to.indeterminate && formControl.value === null"
+      [indeterminate]="props.indeterminate && formControl.value === null"
       [formControl]="formControl"
       [formlyAttributes]="field"
     />
-    <label class="usa-checkbox__label text-bold" [for]="id" [innerHtml]="to.label"> </label>
+    <label class="usa-checkbox__label text-bold" [for]="id" [innerHtml]="props.label"> </label>
   </div>
   <div class="padding-left-3">
     <usa-icon [icon]="'question-octagon'" [size]="'5x'"></usa-icon>

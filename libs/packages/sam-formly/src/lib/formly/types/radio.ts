@@ -15,7 +15,7 @@ export class FormlyFieldRadioComponent extends FieldType implements AfterViewIni
     },
   };
   ngAfterViewInit() {
-    const passedIn = this.to.template;
+    const passedIn = this.props.template;
     setTimeout(() => {
       this.displayedTemplate = passedIn ? passedIn : this.defaultTemplate;
     });

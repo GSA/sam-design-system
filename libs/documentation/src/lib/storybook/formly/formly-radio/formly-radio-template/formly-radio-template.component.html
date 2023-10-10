@@ -17,7 +17,7 @@
       <div>
         <input
           class="usa-radio__input"
-          [ngClass]="{ 'usa-radio__input--tile': to.tile, 'usa-input--error': !showError }"
+          [ngClass]="{ 'usa-radio__input--tile': props.tile, 'usa-input--error': !showError }"
           [formlyAttributes]="field"
           [id]="id + '_' + i"
           type="radio"
@@ -27,27 +27,27 @@
           [value]="option.value"
         />
 
-        <label class="usa-radio__label" [ngClass]="to.optionsClass ? to.optionsClass : ''" [for]="id + '_' + i">
+        <label class="usa-radio__label" [ngClass]="props.optionsClass ? props.optionsClass : ''" [for]="id + '_' + i">
           <span [innerHtml]="option.label" class="radio-label-text"></span>
         </label>
-        <ng-container *ngIf="to.options[i].subText">
+        <ng-container *ngIf="props.options[i].subText">
           <ul class="sub-text-list">
-            <ng-container *ngFor="let subText of to.options[i].subText">
+            <ng-container *ngFor="let subText of props.options[i].subText">
               <li>{{ subText }}</li>
             </ng-container>
           </ul>
         </ng-container>
-        <ng-container *ngIf="to.options[i].linkText">
-          <a class="radio-link">{{ to.options[i].linkText }}</a>
+        <ng-container *ngIf="props.options[i].linkText">
+          <a class="radio-link">{{ props.options[i].linkText }}</a>
         </ng-container>
       </div>
-      <ng-container *ngIf="to.options[i].icon">
+      <ng-container *ngIf="props.options[i].icon">
         <div class="radio-icon">
           <usa-icon
-            [icon]="to.options[i].icon"
+            [icon]="props.options[i].icon"
             [size]="'5x'"
             class="icon-display-block"
-            ngClass="{{ to.options[i].iconClass }}"
+            ngClass="{{ props.options[i].iconClass }}"
           ></usa-icon>
         </div>
       </ng-container>

@@ -4,15 +4,15 @@ import { Subscription } from 'rxjs';
 
 @Component({
   template: `
-    <label [attr.for]="id" class="usa-label text-bold text-base-dark">{{ to.label }}</label>
-    <p [innerHTML]="to.description"></p>
+    <label [attr.for]="id" class="usa-label text-bold text-base-dark">{{ props.label }}</label>
+    <p [innerHTML]="props.description"></p>
     <div class="sds-filter-keywords">
       <ng-container *ngIf="fieldList.length > 1; else singleField">
         <sds-tabs
-          [tabClass]="to.tabClass ? to.tabClass : 'sds-tabs--formly'"
-          [interceptTabChange]="to.interceptTabChange"
-          (preTabChange)="to.preTabChange ? to.preTabChange($event) : null"
-          [(selectedTab)]="to.selectedTab"
+          [tabClass]="props.tabClass ? props.tabClass : 'sds-tabs--formly'"
+          [interceptTabChange]="props.interceptTabChange"
+          (preTabChange)="props.preTabChange ? props.preTabChange($event) : null"
+          [(selectedTab)]="props.selectedTab"
         >
           <sds-tab-panel *ngFor="let fieldConfig of fieldList" [tabHeader]="fieldConfig.props?.tabHeader">
             <formly-form [fields]="[fieldConfig]" [model]="_initialModel" (modelChange)="onModelChange(fieldConfig)">

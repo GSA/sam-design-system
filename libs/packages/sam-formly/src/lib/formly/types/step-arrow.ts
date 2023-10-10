@@ -6,8 +6,8 @@ import { SdsStepArrowComponent } from '@gsa-sam/components';
   selector: 'sds-formly-field-autocomplete',
   template: `
     <div class="grid-row">
-      <sds-step-arrow [number]="to.number" [status]="to.status"></sds-step-arrow>
-      <h3 class="margin-top-1">{{ to.stepTitle }}</h3>
+      <sds-step-arrow [number]="props.number" [status]="props.status"></sds-step-arrow>
+      <h3 class="margin-top-1">{{ props.stepTitle }}</h3>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

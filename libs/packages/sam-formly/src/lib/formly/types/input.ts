@@ -6,14 +6,14 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
   template: `
     <input
       [ngClass]="{
-        'usa-input--disabled': to.disabled,
+        'usa-input--disabled': props.disabled,
         'usa-input--error': showError
       }"
       class="usa-input"
-      [placeholder]="to.placeholder"
+      [placeholder]="props.placeholder"
       name="input-success"
       [formlyAttributes]="field"
-      [type]="to.inputType ? to.inputType : 'text'"
+      [type]="props.inputType ? props.inputType : 'text'"
       [formControl]="formControl"
     />
   `,
