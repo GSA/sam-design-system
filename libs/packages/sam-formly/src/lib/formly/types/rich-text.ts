@@ -8,7 +8,9 @@ import { SdsRichTextComponent } from '@gsa-sam/components';
 })
 export class FormlyFieldRichTextEditorComponent extends AbstractSdsFormly {
   @ViewChild(SdsRichTextComponent, { static: true }) public template: SdsRichTextComponent;
-
+ defaultOptions = {
+    defaultValue: {},
+  };
   constructor(_cdr: ChangeDetectorRef) {
     super();
     this.cdr = _cdr;

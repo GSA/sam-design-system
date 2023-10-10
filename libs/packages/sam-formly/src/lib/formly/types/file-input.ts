@@ -21,6 +21,9 @@ export class FormlyFieldFileInputComponent extends AbstractSdsFormly implements 
 
   @ViewChild('defaultTemplate') defaultTemplate: TemplateRef<any>;
   public displayedTemplate = null;
+ defaultOptions = {
+    defaultValue: {},
+  };
 
   parentFieldConfig: FormlyFieldConfig;
 

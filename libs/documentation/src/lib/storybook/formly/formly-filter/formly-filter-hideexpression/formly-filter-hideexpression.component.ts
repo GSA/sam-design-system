@@ -60,12 +60,13 @@ export class FormlyFilterHideExpressionComponent {
           { label: 'Nunavut', value: 'NU' },
         ],
       },
-      hideExpression: () => {
+      expressions:{
+          hide:  () => {
         if (this.model && this.model.location && this.model.location.country) {
           return this.model.location.country !== 'CA';
         }
         return true;
-      },
+      },}
     },
     {
       key: 'location.state',
@@ -75,12 +76,14 @@ export class FormlyFilterHideExpressionComponent {
         description: 'State',
         placeholder: 'Illinois',
       },
-      hideExpression: () => {
+      expressions:{
+          hide:  () => {
         if (this.model && this.model.location && this.model.location.country) {
           return this.model.location.country === 'CA';
         }
         return true;
       },
+      }
     },
     {
       key: 'location.city',
@@ -90,13 +93,15 @@ export class FormlyFilterHideExpressionComponent {
         description: 'City',
         placeholder: 'Chicago',
       },
-      hideExpression: () => {
+      expressions:{
+          hide:  () => {
         return !(
           this.model &&
           this.model.location &&
           this.model.location.country &&
           (this.model.location.state || (this.model.location.province && this.model.location.country === 'CA'))
         );
+          }
       },
     },
     {
@@ -107,7 +112,8 @@ export class FormlyFilterHideExpressionComponent {
         hideOptional: true,
         description: 'Street',
       },
-      hideExpression: () => {
+      expressions:{
+          hide:  () => {
         return !(
           this.model &&
           this.model.location &&
@@ -115,6 +121,7 @@ export class FormlyFilterHideExpressionComponent {
           (this.model.location.state || (this.model.location.province && this.model.location.country === 'CA')) &&
           this.model.location.city
         );
+          }
       },
     },
   ];

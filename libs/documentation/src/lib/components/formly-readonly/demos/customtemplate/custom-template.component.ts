@@ -26,7 +26,9 @@ export class CustomTemplateComponent {
           `;
         },
       },
-      hideExpression: () => !this.isReadonlyMode,
+expressions: {
+      hide: () => !this.isReadonlyMode,
+}
     },
     {
       fieldGroupClassName: 'grid-row grid-gap-2',
@@ -39,7 +41,9 @@ export class CustomTemplateComponent {
             label: 'Country Code',
             hideOptional: true,
           },
-          hideExpression: () => this.isReadonlyMode,
+expressions :{
+      hide: () =>   this.isReadonlyMode,
+}
         },
         {
           className: 'grid-col-5',
@@ -49,7 +53,10 @@ export class CustomTemplateComponent {
             label: 'Phone',
             hideOptional: true,
           },
-          hideExpression: () => this.isReadonlyMode,
+          expressions :{
+      hide: () =>   this.isReadonlyMode,
+}
+        
         },
         {
           className: 'grid-col-3',
@@ -59,7 +66,10 @@ export class CustomTemplateComponent {
             label: 'Extension Number',
             hideOptional: true,
           },
-          hideExpression: () => this.isReadonlyMode,
+          expressions :{
+      hide: () =>   this.isReadonlyMode,
+}
+        
         },
       ],
     },

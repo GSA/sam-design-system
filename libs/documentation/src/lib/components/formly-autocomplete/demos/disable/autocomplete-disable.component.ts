@@ -62,7 +62,7 @@ export class FormlyAutocompleteDisable {
             service: this.service,
             configuration: this.settings2,
           },
-          expressionProperties: {
+          expressions: {
             'props.disabled': () => !this.model.filters.items1 || this.model.filters.items1.length === 0,
           },
         },

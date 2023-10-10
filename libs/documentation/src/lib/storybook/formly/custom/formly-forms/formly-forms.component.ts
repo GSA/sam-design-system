@@ -73,7 +73,8 @@ export class FormlyFormsComponent {
           className: 'grid-col-4',
           type: 'input',
           key: 'zip',
-          hideExpression: (model) => this.model.country === 'canada',
+          expressions:{
+          hide: (model) => this.model.country === 'canada',},
           props: {
             required: true,
             type: 'number',
@@ -92,7 +93,8 @@ export class FormlyFormsComponent {
           className: 'grid-col-4',
           type: 'input',
           key: 'postal',
-          hideExpression: (model) => this.model.country === 'united_states',
+          expressions:{
+          hide: (model) => this.model.country === 'united_states',},
           props: {
             required: true,
             label: 'Postal Code',
@@ -120,7 +122,8 @@ export class FormlyFormsComponent {
           key: 'state',
           type: 'select',
           defaultValue: 'None',
-          hideExpression: (model) => this.model.country === 'canada',
+        expressions:{
+          hide:  (model) => this.model.country === 'canada',},
           props: {
             label: 'State',
             required: true,
@@ -184,7 +187,8 @@ export class FormlyFormsComponent {
           className: 'grid-col-4',
           type: 'select',
           key: 'province',
-          hideExpression: (model) => this.model.country === 'united_states',
+          expressions:{
+          hide: (model) => this.model.country === 'united_states',},
           props: {
             label: 'State/Province',
             required: true,
@@ -211,7 +215,8 @@ export class FormlyFormsComponent {
           className: 'grid-col-4',
           type: 'input',
           key: 'congressional_district',
-          hideExpression: (model) => this.model.country === 'canada',
+          expressions:{
+          hide: (model) => this.model.country === 'canada',},
           props: {
             required: true,
             label: 'Congressional District',
@@ -270,7 +275,8 @@ export class FormlyFormsComponent {
     {
       className: ' margin-top-(-1) grid-col-8 display-block desktop:display-none',
       type: 'button',
-      hideExpression: (model) => this.model.showExtension,
+      expressions:{
+          hide: (model) => this.model.showExtension,},
       props: {
         type: 'button',
         text: 'Show Extension',
@@ -286,7 +292,8 @@ export class FormlyFormsComponent {
       className: 'margin-top-(-1) grid-col-8 display-block desktop:display-none',
       type: 'input',
       key: 'extension1',
-      hideExpression: (model) => !this.model.showExtension,
+      expressions:{
+          hide: (model) => !this.model.showExtension,},
       props: {
         label: 'Extension',
         type: 'number',

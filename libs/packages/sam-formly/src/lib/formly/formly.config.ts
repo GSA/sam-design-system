@@ -244,10 +244,10 @@ export const FORMLY_CONFIG: ConfigOption = {
                   year: 'numeric',
                 }),
             },
-            expressionProperties: {
-              'props.minDate': minDateFromDateRangePicker,
-              'props.maxDate': maxDateFromDateRangePicker,
-              'props.hideOptional': getParentHideOptional,
+            expressions: {
+              'props.mindate': minDateFromDateRangePicker.toString(),
+              'props.maxDate': maxDateFromDateRangePicker.toString(),
+              'props.hideOptional': getParentHideOptional.toString(),
             },
           },
           {
@@ -263,10 +263,11 @@ export const FORMLY_CONFIG: ConfigOption = {
                   year: 'numeric',
                 }),
             },
-            expressionProperties: {
-              'props.minDate': minDateToDateRangePicker,
-              'props.maxDate': maxDateToDateRangePicker,
-              'props.hideOptional': getParentHideOptional,
+
+            expressions: {
+              'props.minDate': minDateToDateRangePicker.toString(),
+              'props.maxDate': maxDateToDateRangePicker.toString(),
+              'props.hideOptional': getParentHideOptional.toString(),
             },
           },
         ],

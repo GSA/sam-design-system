@@ -51,7 +51,9 @@ export class FormlyConditionalComponent implements OnInit {
         {
           key: 'secondInput',
           type: 'input',
-          hideExpression: (model) => !this.model.firstInput,
+expressions:{
+          hide: (model) => !this.model.firstInput,
+},
           props: {
             label: 'Second Input',
             options: [
@@ -87,7 +89,8 @@ export class FormlyConditionalComponent implements OnInit {
         {
           key: 'red',
           type: 'radio',
-          hideExpression: (model) => this.model.check !== 'red',
+          expressions:{
+          hide:  (model) => this.model.check !== 'red',},
           props: {
             options: [{ label: 'Red', value: 'radio' }],
           },
@@ -95,7 +98,8 @@ export class FormlyConditionalComponent implements OnInit {
         {
           key: 'green',
           type: 'radio',
-          hideExpression: (model) => this.model.check !== 'green',
+          expressions:{
+          hide: (model) => this.model.check !== 'green',},
           props: {
             options: [{ label: 'Green', value: 'radio' }],
           },
@@ -125,7 +129,8 @@ export class FormlyConditionalComponent implements OnInit {
         {
           key: 'agree',
           type: 'multicheckbox',
-          hideExpression: (model) => this.model.checkbox !== 'agree',
+       expressions:{
+          hide: (model) => this.model.checkbox !== 'agree',},
           props: {
             options: [
               {
@@ -138,7 +143,8 @@ export class FormlyConditionalComponent implements OnInit {
         {
           key: 'disagree',
           type: 'multicheckbox',
-          hideExpression: (model) => this.model.checkbox !== 'disagree',
+          expressions:{
+          hide: (model) => this.model.checkbox !== 'disagree',},
           props: {
             options: [
               {
@@ -160,7 +166,8 @@ export class FormlyConditionalComponent implements OnInit {
         {
           key: 'inputField',
           type: 'input',
-          hideExpression: (model) => this.model.firstField,
+          expressions:{
+          hide:  (model) => this.model.firstField,},
           props: {
             placeholder: 'selection of checkbox below will hide this input field.',
           },
@@ -200,7 +207,7 @@ export class FormlyConditionalComponent implements OnInit {
             label: 'Last Name',
             placeholder: 'This one is disabled if there is no text in the other input',
           },
-          expressionProperties: {
+          expressions: {
             'props.disabled': '!model.hideExistingFirstName',
           },
         },

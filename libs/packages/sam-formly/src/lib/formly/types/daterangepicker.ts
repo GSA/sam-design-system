@@ -52,4 +52,8 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldDateRangePickerComponent extends FieldType {}
+export class FormlyFieldDateRangePickerComponent extends FieldType {
+ defaultOptions = {
+    defaultValue: {},
+  };
+}

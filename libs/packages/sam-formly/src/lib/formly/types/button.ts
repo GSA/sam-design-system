@@ -11,6 +11,9 @@ import { FieldType } from '@ngx-formly/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormlyFieldButtonComponent extends FieldType {
+ defaultOptions = {
+    defaultValue: {},
+  };
   onClick($event) {
     if (this.props.onClick) {
       this.props.onClick($event);

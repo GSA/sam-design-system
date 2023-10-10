@@ -96,9 +96,11 @@ export class FormlyFilterHorizontalComponent {
               }),
             hideOptional: true,
           },
-          hideExpression: (model) => {
+          expressions:{
+          hide: (model) => {
             return !model || !model['dateRangeSelect'] || model['dateRangeSelect'] != 'customDate';
           },
+          }
         },
         {
           key: 'expirationDate',
@@ -117,9 +119,11 @@ export class FormlyFilterHorizontalComponent {
               }),
             hideOptional: true,
           },
-          hideExpression: (model) => {
+          expressions:{
+          hide:  (model) => {
             return !model || !model['dateRangeSelect'] || model['dateRangeSelect'] != 'customDate';
           },
+          }
         },
       ],
     },

@@ -71,9 +71,11 @@ export class FormlyDialogDownloadComponent {
           },
         ],
       },
-      hideExpression: () => {
+     expressions:{
+          hide: () => {
         return !(this.model && this.model.download && this.model.download == 'cfd');
       },
+     }
     },
     {
       key: 'fileType',

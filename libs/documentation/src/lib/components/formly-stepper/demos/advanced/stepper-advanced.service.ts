@@ -206,7 +206,9 @@ export class StepperAdvancedService {
           className: 'grid-col-4',
           key: 'state',
           type: 'select',
-          hideExpression: (model) => model.country === 'canada',
+          expressions: {
+            hide: () => (model) => model.country === 'canada',
+          },
           props: {
             label: 'State',
             hideOptional: true,

@@ -26,7 +26,8 @@ export class FormlyWrapperReadOnlyCustomTemplateComponent {
           `;
         },
       },
-      hideExpression: () => !this.isReadonlyMode,
+    expressions:{
+          hide: () => !this.isReadonlyMode,},
     },
     {
       fieldGroupClassName: 'grid-row grid-gap-2',
@@ -39,7 +40,8 @@ export class FormlyWrapperReadOnlyCustomTemplateComponent {
             label: 'Country Code',
             hideOptional: true,
           },
-          hideExpression: () => this.isReadonlyMode,
+       expressions:{
+          hide: () => this.isReadonlyMode,},
         },
         {
           className: 'grid-col-5',
@@ -49,7 +51,9 @@ export class FormlyWrapperReadOnlyCustomTemplateComponent {
             label: 'Phone',
             hideOptional: true,
           },
-          hideExpression: () => this.isReadonlyMode,
+        expressions:{
+          hide: () => this.isReadonlyMode,
+        }
         },
         {
           className: 'grid-col-3',
@@ -59,7 +63,8 @@ export class FormlyWrapperReadOnlyCustomTemplateComponent {
             label: 'Extension Number',
             hideOptional: true,
           },
-          hideExpression: () => this.isReadonlyMode,
+          expressions:{
+          hide:  () => this.isReadonlyMode,},
         },
       ],
     },

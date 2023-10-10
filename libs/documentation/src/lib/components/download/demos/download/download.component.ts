@@ -47,9 +47,11 @@ export class DownloadComponent {
           },
         ],
       },
-      hideExpression: () => {
+expressions :{
+      hide: () => {
         return !(this.model && this.model.download && this.model.download == 'cfd');
       },
+      }
     },
     {
       key: 'fileType',
