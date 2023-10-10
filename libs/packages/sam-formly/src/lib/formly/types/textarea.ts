@@ -29,7 +29,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 })
 export class FormlyFieldTextAreaComponent extends FieldType implements OnInit {
   defaultOptions = {
-    templateOptions: {
+    props: {
       cols: 1,
       rows: 1,
     },

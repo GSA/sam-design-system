@@ -14,7 +14,7 @@ import { Subscription } from 'rxjs';
           (preTabChange)="to.preTabChange ? to.preTabChange($event) : null"
           [(selectedTab)]="to.selectedTab"
         >
-          <sds-tab-panel *ngFor="let fieldConfig of fieldList" [tabHeader]="fieldConfig.templateOptions?.tabHeader">
+          <sds-tab-panel *ngFor="let fieldConfig of fieldList" [tabHeader]="fieldConfig.props?.tabHeader">
             <formly-form [fields]="[fieldConfig]" [model]="_initialModel" (modelChange)="onModelChange(fieldConfig)">
             </formly-form>
           </sds-tab-panel>
@@ -72,7 +72,7 @@ export class FormlyTabsWrapperComponent extends FieldWrapper implements OnInit, 
    * @param fieldConfig - the FormlyFieldConfig to transform into an array
    */
   updateFieldConfig(fieldConfig: FormlyFieldConfig) {
-    const submitButtonId = fieldConfig.templateOptions?.submitButtonId;
+    const submitButtonId = fieldConfig.props?.submitButtonId;
     if (!submitButtonId) {
       return;
     }
@@ -80,8 +80,8 @@ export class FormlyTabsWrapperComponent extends FieldWrapper implements OnInit, 
     // If submit button is present, manually add logic to update the form when the button is clicked
     fieldConfig.fieldGroup.forEach((field) => {
       if (field.id === submitButtonId) {
-        field.templateOptions = field.templateOptions ? field.templateOptions : {};
-        field.templateOptions.onClick = () => {
+        field.props = field.props ? field.props : {};
+        field.props.onClick = () => {
           this.updateFieldModel(fieldConfig);
         };
       }

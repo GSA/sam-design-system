@@ -15,7 +15,7 @@ export class FormlyFileinfoOptionsComponent {
     {
       key: 'fileType',
       type: 'fileinfo',
-      templateOptions: {
+      props: {
         options: [
           { value: 'Default', key: 'CSV', description: '-Limited to 5000' },
           { value: 'Full', key: 'ZIP', description: '-Limited to 10,000' },

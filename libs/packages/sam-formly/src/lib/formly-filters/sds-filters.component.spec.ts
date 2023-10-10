@@ -42,12 +42,12 @@ describe('The Sam Filters Component', () => {
       component.fields = [
         {
           key: 'filters',
-          templateOptions: { label: 'Entity Name/UEI' },
+          props: { label: 'Entity Name/UEI' },
           fieldGroup: [
             {
               key: 'uniqueId',
               type: 'input',
-              templateOptions: {
+              props: {
                 required: true,
                 label: 'Formly input type number',
                 placeholder: 'eg: Acme Corporation',
@@ -96,12 +96,12 @@ describe('The Sam Filters Component', () => {
         {
           key: 'filter',
           wrappers: ['filterwrapper'],
-          templateOptions: { label: 'Entity Types' },
+          props: { label: 'Entity Types' },
           fieldGroup: [
             {
               key: 'entityType',
               type: 'radio',
-              templateOptions: {
+              props: {
                 label: 'Expiration Date',
                 options: [
                   { label: '30 Days', value: '30' },
@@ -130,12 +130,12 @@ describe('The Sam Filters Component', () => {
         {
           key: 'filter',
           wrappers: ['filterwrapper'],
-          templateOptions: { label: 'Entity Types' },
+          props: { label: 'Entity Types' },
           fieldGroup: [
             {
               key: 'entityType',
               type: 'radio',
-              templateOptions: {
+              props: {
                 label: 'Expiration Date',
                 options: [
                   { label: '30 Days', value: '30' },
@@ -193,13 +193,13 @@ describe('The Sam Filters Component', () => {
       component.fields = [
         {
           key: 'filters',
-          templateOptions: { label: 'Entity Name/UEI' },
+          props: { label: 'Entity Name/UEI' },
           fieldGroup: [
             {
               key: 'uniqueId',
               type: 'input',
 
-              templateOptions: {
+              props: {
                 required: true,
                 label: 'Formly input type number',
                 placeholder: 'eg: Acme Corporation',
@@ -241,13 +241,13 @@ describe('The Sam Filters Component', () => {
       component.fields = [
         {
           key: 'filters',
-          templateOptions: { label: 'Entity Name/UEI' },
+          props: { label: 'Entity Name/UEI' },
           fieldGroup: [
             {
               key: 'uniqueId',
               type: 'input',
               hide: true,
-              templateOptions: {
+              props: {
                 required: true,
                 label: 'Formly input type number',
                 placeholder: 'eg: Acme Corporation',
@@ -272,7 +272,7 @@ describe('The Sam Filters Component', () => {
           key: 'filters',
           type: 'input',
           hide: true,
-          templateOptions: {
+          props: {
             label: 'State',
             description: 'State',
           },
@@ -289,7 +289,7 @@ describe('The Sam Filters Component', () => {
           key: 'filters',
           type: 'input',
           hide: true,
-          templateOptions: {
+          props: {
             label: 'State',
             description: 'State',
           },

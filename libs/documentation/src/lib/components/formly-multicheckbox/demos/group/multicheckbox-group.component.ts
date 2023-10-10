@@ -16,7 +16,7 @@ export class MultiCheckboxGroup {
     {
       key: 'entity',
       type: 'multicheckbox',
-      templateOptions: {
+      props: {
         label: 'Grouped multi-checkbox',
         groupOptions: {
           'Contract Opportunities': [

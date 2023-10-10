@@ -59,7 +59,7 @@ export class ReadonlyContainerComponent implements OnInit {
 
   ngOnInit() {
     if (this.formlyFieldConfig) {
-      this.label = this.formlyFieldConfig.templateOptions.label;
+      this.label = this.formlyFieldConfig.props.label;
       this.value = this.formlyFieldConfig.formControl.value;
       this.formlyType = this.formlyFieldConfig.type.toString();
       this.assignAdditionalConfig();
@@ -67,13 +67,13 @@ export class ReadonlyContainerComponent implements OnInit {
   }
 
   private assignAdditionalConfig() {
-    const options = this.formlyFieldConfig.templateOptions.options as any;
+    const options = this.formlyFieldConfig.props.options as any;
     this.additionalConfig = {
       providedOptions: options,
     };
 
     if (this.formlyFieldConfig.type === this.sdsFormlyTypes.AUTOCOMPLETE) {
-      this.additionalConfig.autocompleteOptions = this.formlyFieldConfig.templateOptions.configuration;
+      this.additionalConfig.autocompleteOptions = this.formlyFieldConfig.props.configuration;
     }
 
     // We do array access from field config for daterangepicker, which can be undefined for other types,

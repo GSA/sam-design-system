@@ -13,7 +13,7 @@ export class TemplateOptionsTags {
     {
       key: 'entity',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Entity',
         tagText: 'SAM',
       },
@@ -24,7 +24,7 @@ export class TemplateOptionsTags {
     {
       key: 'entitytag',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Entity',
         tagText: 'DUNS',
         tagClass: 'sds-tag--info-purple',

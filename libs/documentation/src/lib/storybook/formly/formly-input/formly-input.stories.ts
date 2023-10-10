@@ -19,7 +19,7 @@ const disable = {
     disable: true,
   },
 };
-const templateOptions = {
+const props = {
   table: {
     category: 'template-options',
   },
@@ -50,12 +50,12 @@ export default {
     }),
   ],
   argTypes: {
-    label: templateOptions,
-    placeholder: templateOptions,
-    description: templateOptions,
-    required: templateOptions,
-    disabled: templateOptions,
-    tooltipText: templateOptions,
+    label: props,
+    placeholder: props,
+    description: props,
+    required: props,
+    disabled: props,
+    tooltipText: props,
   },
 } as Meta;
 

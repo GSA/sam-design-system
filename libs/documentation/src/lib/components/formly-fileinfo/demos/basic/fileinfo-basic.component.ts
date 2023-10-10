@@ -15,7 +15,7 @@ export class FormlyFileInfoBasic {
     {
       key: 'fileType',
       type: 'fileinfo',
-      templateOptions: {
+      props: {
         label: 'Select file type',
         hideOptional: true,
         options: [

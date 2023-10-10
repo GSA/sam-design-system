@@ -234,7 +234,7 @@ export const FORMLY_CONFIG: ConfigOption = {
           {
             type: SdsFormlyTypes.DATEPICKER,
             key: 'fromDate',
-            templateOptions: {
+            props: {
               label: 'From',
               placeholder:
                 'eg: ' +
@@ -245,15 +245,15 @@ export const FORMLY_CONFIG: ConfigOption = {
                 }),
             },
             expressionProperties: {
-              'templateOptions.minDate': minDateFromDateRangePicker,
-              'templateOptions.maxDate': maxDateFromDateRangePicker,
-              'templateOptions.hideOptional': getParentHideOptional,
+              'props.minDate': minDateFromDateRangePicker,
+              'props.maxDate': maxDateFromDateRangePicker,
+              'props.hideOptional': getParentHideOptional,
             },
           },
           {
             type: SdsFormlyTypes.DATEPICKER,
             key: 'toDate',
-            templateOptions: {
+            props: {
               label: 'To',
               placeholder:
                 'eg: ' +
@@ -264,9 +264,9 @@ export const FORMLY_CONFIG: ConfigOption = {
                 }),
             },
             expressionProperties: {
-              'templateOptions.minDate': minDateToDateRangePicker,
-              'templateOptions.maxDate': maxDateToDateRangePicker,
-              'templateOptions.hideOptional': getParentHideOptional,
+              'props.minDate': minDateToDateRangePicker,
+              'props.maxDate': maxDateToDateRangePicker,
+              'props.hideOptional': getParentHideOptional,
             },
           },
         ],
@@ -284,7 +284,7 @@ export const FORMLY_CONFIG: ConfigOption = {
         fieldGroup: [
           {
             key: 'fromDate',
-            templateOptions: {
+            props: {
               placeholder:
                 'eg: ' +
                 new Date().toLocaleString('en-US', {
@@ -296,7 +296,7 @@ export const FORMLY_CONFIG: ConfigOption = {
           },
           {
             key: 'toDate',
-            templateOptions: {
+            props: {
               placeholder: new Date().toLocaleString('en-US', {
                 month: 'short',
                 day: 'numeric',
@@ -369,8 +369,8 @@ export const FORMLY_CONFIG: ConfigOption = {
 export function minDateToDateRangePicker(model: any, formState: any, field: FormlyFieldConfig) {
   let date = null;
   //Setting a minumn date for the date range picker
-  if (field.parent.templateOptions.minDate) {
-    date = new Date(field.parent.templateOptions.minDate.getTime());
+  if (field.parent.props.minDate) {
+    date = new Date(field.parent.props.minDate.getTime());
   }
   if (model) {
     if (model.fromDate) {
@@ -384,8 +384,8 @@ export function minDateToDateRangePicker(model: any, formState: any, field: Form
 export function minDateFromDateRangePicker(model: any, formState: any, field: FormlyFieldConfig) {
   let date = null;
   //Setting a minumn date for the date range picker
-  if (field.parent.templateOptions.minDate) {
-    date = new Date(field.parent.templateOptions.minDate.getTime());
+  if (field.parent.props.minDate) {
+    date = new Date(field.parent.props.minDate.getTime());
   }
   return date;
 }
@@ -393,8 +393,8 @@ export function minDateFromDateRangePicker(model: any, formState: any, field: Fo
 export function maxDateToDateRangePicker(model: any, formState: any, field: FormlyFieldConfig) {
   let date = null;
   //Setting a max date for the date range picker
-  if (field.parent.templateOptions.maxDate) {
-    date = new Date(field.parent.templateOptions.maxDate.getTime());
+  if (field.parent.props.maxDate) {
+    date = new Date(field.parent.props.maxDate.getTime());
   }
   return date;
 }
@@ -402,8 +402,8 @@ export function maxDateToDateRangePicker(model: any, formState: any, field: Form
 export function maxDateFromDateRangePicker(model: any, formState: any, field: FormlyFieldConfig) {
   let date = null;
   //Setting a max date for the date range picker
-  if (field.parent.templateOptions.maxDate) {
-    date = new Date(field.parent.templateOptions.maxDate);
+  if (field.parent.props.maxDate) {
+    date = new Date(field.parent.props.maxDate);
   }
   if (model) {
     if (model.toDate) {
@@ -414,8 +414,8 @@ export function maxDateFromDateRangePicker(model: any, formState: any, field: Fo
 }
 
 export function getParentHideOptional(model: any, formState: any, field: FormlyFieldConfig) {
-  if (field.parent && field.parent.templateOptions) {
-    return field.parent.templateOptions.hideOptional;
+  if (field.parent && field.parent.props) {
+    return field.parent.props.hideOptional;
   }
   return false;
 }

@@ -51,7 +51,7 @@ export class HorizontalLayoutComponent {
           key: 'userRole',
           type: 'select',
           className: 'tablet:grid-col-5 mobile-lg:grid-col-12', // Set up column space for input based on screensize
-          templateOptions: {
+          props: {
             label: 'I am a...',
             labelClass: 'text-bold', // Add bold style to label
             hideOptional: true,
@@ -66,7 +66,7 @@ export class HorizontalLayoutComponent {
           key: 'userPurpose',
           type: 'autocomplete',
           className: 'tablet:grid-col-5 mobile-lg:grid-col-12', // Set up column space for input based on screensize
-          templateOptions: {
+          props: {
             label: 'I am interested in...',
             labelClass: 'text-bold', // Add bold style to label
             hideOptional: true,

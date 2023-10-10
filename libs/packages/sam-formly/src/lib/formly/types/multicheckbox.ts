@@ -7,7 +7,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 })
 export class FormlyFieldMultiCheckboxComponent extends FieldType implements OnInit {
   defaultOptions = {
-    templateOptions: {
+    props: {
       options: [],
       expandableOptions: false,
       expandedOptions: false,
@@ -50,8 +50,8 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType implements OnIn
     let allKeys: string[] = [];
     allSubOptions.map((opt) => {
       allKeys.push(opt.key);
-      if (opt.templateOptions && opt.templateOptions.options) {
-        opt.templateOptions.options.map((subOpt) => allKeys.push(subOpt.key));
+      if (opt.props && opt.props.options) {
+        opt.props.options.map((subOpt) => allKeys.push(subOpt.key));
       }
     });
     let uniqValues = {};
@@ -91,8 +91,8 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType implements OnIn
     let i = this.getIndex(id);
     mainOptions.forEach((mainOpt) => {
       checkedValues.push(this.isChecked(mainOpt));
-      if (mainOpt.templateOptions) {
-        mainOpt.templateOptions.options.forEach((subOpt) => {
+      if (mainOpt.props) {
+        mainOpt.props.options.forEach((subOpt) => {
           checkedValues.push(this.isChecked(subOpt));
         });
         if (mainOpt.key === value) this.setAllSubList(checked, mainOpt, i);
@@ -139,10 +139,10 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType implements OnIn
 
   setAllSubList(checked, subList, index) {
     this.subOptionAriaChecked[index] = checked ? 'true' : 'false';
-    if (Array.isArray(subList.templateOptions.options)) {
-      this.field.templateOptions.options.forEach((subOption) => {
+    if (Array.isArray(subList.props.options)) {
+      this.field.props.options.forEach((subOption) => {
         if (subOption['key'] === subList.key) {
-          subOption['templateOptions'].options.map((item) => {
+          subOption['props'].options.map((item) => {
             this.onChange(item.key, checked);
           });
         }
@@ -158,11 +158,11 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType implements OnIn
     let id = ev.target.id;
     let i = this.getIndex(id);
     this.mainOptionAriaChecked[i] = ev.target.checked;
-    if (Array.isArray(this.field.templateOptions.options)) {
+    if (Array.isArray(this.field.props.options)) {
       this.formControl.setValue([]);
-      this.field.templateOptions.options.map((option, index) => {
+      this.field.props.options.map((option, index) => {
         this.onChange(option.key, ev.target.checked);
-        if (option.templateOptions) {
+        if (option.props) {
           this.setAllSubList(ev.target.checked, option, index);
         }
       });
@@ -171,8 +171,8 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType implements OnIn
 
   _getAriaChecked(value) {
     let i = this.getIndex(this.id);
-    if (Array.isArray(this.field.templateOptions.options)) {
-      this.allComplete = value === this.field.templateOptions.options.length ? true : false;
+    if (Array.isArray(this.field.props.options)) {
+      this.allComplete = value === this.field.props.options.length ? true : false;
     }
     if (value === 0) {
       this.mainOptionAriaChecked[i] = 'false';

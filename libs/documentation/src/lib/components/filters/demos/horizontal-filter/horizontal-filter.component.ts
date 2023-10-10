@@ -12,7 +12,7 @@ export class HorizontalFilterDemo {
     {
       key: 'status',
       type: 'multicheckbox',
-      templateOptions: {
+      props: {
         label: 'Status',
         group: 'popover',
         options: [
@@ -34,7 +34,7 @@ export class HorizontalFilterDemo {
     {
       key: 'socioeconomic2',
       type: 'multicheckbox',
-      templateOptions: {
+      props: {
         label: 'Socio-Economic Status',
         group: 'popover',
         options: [
@@ -55,7 +55,7 @@ export class HorizontalFilterDemo {
     },
     {
       key: 'dateRange',
-      templateOptions: {
+      props: {
         label: 'Date Range',
         group: 'popover',
         closeOnClickOutside: false,
@@ -65,7 +65,7 @@ export class HorizontalFilterDemo {
           key: 'dateRangeSelect',
           type: 'select',
           className: 'display-block',
-          templateOptions: {
+          props: {
             label: 'Select Date',
             options: [
               { label: 'Anytime', value: 'anytime' },
@@ -80,7 +80,7 @@ export class HorizontalFilterDemo {
           key: 'createdDate',
           type: 'datepicker',
           className: 'display-block',
-          templateOptions: {
+          props: {
             label: 'Created Date',
             minDate: new Date(2019, 9, 5),
             maxDate: new Date(2020, 11, 15),
@@ -101,7 +101,7 @@ export class HorizontalFilterDemo {
           key: 'expirationDate',
           type: 'datepicker',
           className: 'display-block',
-          templateOptions: {
+          props: {
             label: 'Expires Date',
             minDate: new Date(2019, 9, 5),
             maxDate: new Date(2020, 11, 15),
@@ -124,7 +124,7 @@ export class HorizontalFilterDemo {
       key: 'expirationDateRangeEx',
       type: 'daterangepickerv2',
       hide: true,
-      templateOptions: {
+      props: {
         group: 'popover',
         label: 'Expiration Date Range',
         minDate: new Date(2019, 9, 5),
@@ -143,7 +143,7 @@ export class HorizontalFilterDemo {
       key: 'entity',
       type: 'input',
       hide: true,
-      templateOptions: {
+      props: {
         group: 'popover',
         label: 'Entity Name',
         placeholder: 'eg: Acme Corporation',

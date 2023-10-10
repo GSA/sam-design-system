@@ -16,7 +16,7 @@ export class RadioHorizontalComponent {
       key: 'entity.taxFilingStatus',
       type: 'radio',
 
-      templateOptions: {
+      props: {
         label: 'Are you registering an entity?',
         description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem',
         required: true,

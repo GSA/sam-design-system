@@ -15,7 +15,7 @@ export class FormlyRichTextEditorComponent {
     {
       key: 'editor',
       type: 'rich-text-editor',
-      templateOptions: {
+      props: {
         minHeight: 10,
         maxHeight: 31,
       },

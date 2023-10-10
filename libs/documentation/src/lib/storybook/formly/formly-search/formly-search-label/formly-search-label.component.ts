@@ -17,7 +17,7 @@ export class FormlySearchLabelComponent {
         {
           key: 'searchmodel',
           type: 'search',
-          templateOptions: {
+          props: {
             label: 'Search',
           },
         },

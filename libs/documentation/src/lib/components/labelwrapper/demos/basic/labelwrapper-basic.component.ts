@@ -20,7 +20,7 @@ export class LabelWrapperBasic {
         wrappers: ['label', 'description'],
         key: 'Input',
         type: 'input',
-        templateOptions: {
+        props: {
           label: 'Input',
           description: 'testing desc',
           labelTemplate: this.labelTemplate,

@@ -36,7 +36,7 @@ const getTabsFieldConfig = (): FormlyFieldConfig[] => {
     {
       key: 'keyword',
       wrappers: ['tabs'],
-      templateOptions: {
+      props: {
         label: 'Keyword Search',
         description: `For more information on how to use our keyword search, visit our <a href="#"> help guide </a>`,
         hideOptional: true,
@@ -46,7 +46,7 @@ const getTabsFieldConfig = (): FormlyFieldConfig[] => {
         fieldGroup: [
           // tab 1
           {
-            templateOptions: {
+            props: {
               tabHeader: 'Simple Search',
             },
             fieldGroup: [
@@ -55,7 +55,7 @@ const getTabsFieldConfig = (): FormlyFieldConfig[] => {
                 type: 'radio',
                 defaultValue: 'anyWords',
                 id: 'keywordRadioTest',
-                templateOptions: {
+                props: {
                   options: [
                     {
                       label: 'Any Words',
@@ -75,7 +75,7 @@ const getTabsFieldConfig = (): FormlyFieldConfig[] => {
               {
                 key: 'keywordTags',
                 type: 'autocomplete',
-                templateOptions: {
+                props: {
                   expand: false,
                   configuration: {
                     id: 'keyword',
@@ -92,7 +92,7 @@ const getTabsFieldConfig = (): FormlyFieldConfig[] => {
           },
           //tab 2
           {
-            templateOptions: {
+            props: {
               tabHeader: 'Search Editor',
               submitButtonId: 'booleanSearchSubmit',
             },
@@ -101,7 +101,7 @@ const getTabsFieldConfig = (): FormlyFieldConfig[] => {
                 key: 'keywordTextarea',
                 type: SdsFormlyTypes.TEXTAREA,
                 className: 'display-block padding-left-2 padding-right-2',
-                templateOptions: {
+                props: {
                   placeholder: 'e.g. ((rental AND property) OR (lease and property) AND NOT ( "short term"))',
                   required: true,
                 },
@@ -110,7 +110,7 @@ const getTabsFieldConfig = (): FormlyFieldConfig[] => {
                 type: SdsFormlyTypes.BUTTON,
                 id: 'booleanSearchSubmit',
                 className: 'display-block margin-top-1 padding-left-2 padding-right-2',
-                templateOptions: {
+                props: {
                   text: 'Search',
                   type: 'submit',
                 },

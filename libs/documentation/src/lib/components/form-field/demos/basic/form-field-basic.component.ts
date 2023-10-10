@@ -16,7 +16,7 @@ export class FormFieldBasic {
       wrappers: ['form-field'],
       key: 'Input',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Input',
         placeholder: 'eg: Acme Corporation',
         description: 'Description',

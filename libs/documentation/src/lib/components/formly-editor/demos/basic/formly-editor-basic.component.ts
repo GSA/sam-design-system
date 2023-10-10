@@ -15,7 +15,7 @@ export class EditorBasic {
     {
       key: 'searchkey',
       type: 'editor',
-      templateOptions: {
+      props: {
         label: 'Search',
         placeholder: 'eg: type here',
         regex: /hello/gm,

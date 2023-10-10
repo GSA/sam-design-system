@@ -15,7 +15,7 @@ export class InputOptional {
     {
       key: 'referenceNumber',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Reference Number',
         placeholder: 'A123456',
         description: 'If you have your own reference number you can add it here.',
@@ -24,7 +24,7 @@ export class InputOptional {
     {
       key: 'search',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Search',
         placeholder: 'A123456',
         disabled: true,

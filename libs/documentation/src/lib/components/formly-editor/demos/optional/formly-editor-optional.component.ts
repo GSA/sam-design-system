@@ -13,7 +13,7 @@ export class EditorOptional {
     {
       key: 'searchText',
       type: 'editor',
-      templateOptions: {
+      props: {
         label: 'Search Text',
         hideOptional: true,
         placeholder: 'eg: type text..',

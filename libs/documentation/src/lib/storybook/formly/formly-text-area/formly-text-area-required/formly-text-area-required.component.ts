@@ -14,7 +14,7 @@ export class FormlyTextAreaRequiredComponent {
     {
       key: 'entity',
       type: 'textarea',
-      templateOptions: {
+      props: {
         label: 'Entity Description',
         required: true,
       },

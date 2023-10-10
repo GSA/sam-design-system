@@ -18,7 +18,7 @@ export class FormlyDatepickerValidation {
     {
       key: 'expirationDateMin',
       type: 'datepicker',
-      templateOptions: {
+      props: {
         label: 'Expiration Date (Min only Validation)',
         minDate: new Date(2019, 6, 5),
         placeholder:
@@ -36,7 +36,7 @@ export class FormlyDatepickerValidation {
     {
       key: 'expirationDateMax',
       type: 'datepicker',
-      templateOptions: {
+      props: {
         label: 'Expiration Date (Max only Validation)',
         required: true,
         maxDate: new Date(2020, 11, 25),
@@ -55,7 +55,7 @@ export class FormlyDatepickerValidation {
     {
       key: 'expirationDateMinmax',
       type: 'datepicker',
-      templateOptions: {
+      props: {
         label: 'Expiration Date (Min & Max only Validation)',
         minDate: new Date(2019, 9, 5),
         maxDate: new Date(2020, 10, 15),

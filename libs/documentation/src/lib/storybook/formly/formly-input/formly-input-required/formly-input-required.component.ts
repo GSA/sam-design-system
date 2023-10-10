@@ -14,7 +14,7 @@ export class FormlyInputRequiredComponent {
     {
       key: 'title',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Entity Name',
         required: true,
       },

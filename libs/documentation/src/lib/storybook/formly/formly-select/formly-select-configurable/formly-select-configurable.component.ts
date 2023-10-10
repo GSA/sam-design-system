@@ -10,9 +10,9 @@ export class FormlySelectConfigurableComponent {
   @Input('config')
   set config(config: any) {
     const temp = this.fields[0];
-    temp['templateOptions'] = { ...temp['templateOptions'], ...config };
+    temp['props'] = { ...temp['props'], ...config };
     if (config.options && Array.isArray(config.options)) {
-      temp['templateOptions'].options = config.options.map((option) => ({ label: option, value: option }));
+      temp['props'].options = config.options.map((option) => ({ label: option, value: option }));
     }
     this.fields = [temp];
   }
@@ -23,7 +23,7 @@ export class FormlySelectConfigurableComponent {
     {
       key: 'entity.type',
       type: 'select',
-      templateOptions: {
+      props: {
         label: 'Entity Type',
         description: 'Select the entity type.',
         required: true,

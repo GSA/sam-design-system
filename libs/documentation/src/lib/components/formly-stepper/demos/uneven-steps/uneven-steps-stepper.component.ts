@@ -13,7 +13,7 @@ export class UnevenStepsStepperComponent {
       {
         key: 'name',
         type: 'input',
-        templateOptions: {
+        props: {
           label: 'Entity Name',
           placeholder: 'eg: Acme Corporation',
           description: 'Enter the name of your entity.',
@@ -28,14 +28,14 @@ export class UnevenStepsStepperComponent {
         type: 'input',
         key: 'title',
 
-        templateOptions: {
+        props: {
           label: 'Program or Project Title',
           required: true,
           showError: false,
         },
       },
     ],
-    templateOptions: {
+    props: {
       completedValue: 75,
     },
   };
@@ -45,7 +45,7 @@ export class UnevenStepsStepperComponent {
       {
         key: 'name',
         type: 'input',
-        templateOptions: {
+        props: {
           label: 'Entity Name - Substep One',
           placeholder: 'eg: Acme Corporation',
           description: 'Enter the name of your entity.',
@@ -60,14 +60,14 @@ export class UnevenStepsStepperComponent {
         type: 'input',
         key: 'title',
 
-        templateOptions: {
+        props: {
           label: 'Program or Project Title',
           required: true,
           showError: false,
         },
       },
     ],
-    templateOptions: {
+    props: {
       completedValue: 85,
     },
   };
@@ -77,7 +77,7 @@ export class UnevenStepsStepperComponent {
       {
         key: 'name',
         type: 'input',
-        templateOptions: {
+        props: {
           label: 'Entity Name - Substep Two',
           placeholder: 'eg: Acme Corporation',
           description: 'Enter the name of your entity.',
@@ -92,14 +92,14 @@ export class UnevenStepsStepperComponent {
         type: 'input',
         key: 'title',
 
-        templateOptions: {
+        props: {
           label: 'Program or Project Title',
           required: true,
           showError: false,
         },
       },
     ],
-    templateOptions: {
+    props: {
       completedValue: 100,
     },
   };
@@ -110,7 +110,7 @@ export class UnevenStepsStepperComponent {
       {
         key: 'typeOfEntity',
         type: SdsFormlyTypes.RADIO,
-        templateOptions: {
+        props: {
           label: 'What type of entity are you registering?',
           hideOptions: true,
           options: [
@@ -140,7 +140,7 @@ export class UnevenStepsStepperComponent {
       {
         key: 'purposeOfRegistration',
         type: SdsFormlyTypes.RADIO,
-        templateOptions: {
+        props: {
           hideOptions: true,
           label: 'Why are you registering this entity to do business with the U.S. government?',
           options: [
@@ -171,7 +171,7 @@ export class UnevenStepsStepperComponent {
       {
         type: 'input',
         key: 'taxpayerName',
-        templateOptions: {
+        props: {
           label: 'Taxpayer Name',
           hideOptional: true,
         },
@@ -179,7 +179,7 @@ export class UnevenStepsStepperComponent {
       {
         type: 'input',
         key: 'tinNumber',
-        templateOptions: {
+        props: {
           label: 'TIN Number',
           hideOptional: true,
         },

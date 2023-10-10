@@ -13,7 +13,7 @@ export class TemplateOptionExpand {
     {
       key: 'entity',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Entity',
         expand: true,
         group: 'accordion',

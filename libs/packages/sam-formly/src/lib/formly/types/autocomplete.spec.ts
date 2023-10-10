@@ -84,7 +84,7 @@ describe('Formly Field Select Component', () => {
         {
           key: 'firstName',
           type: 'autocomplete',
-          templateOptions: {
+          props: {
             label: 'Auto Complete Test',
             service: testAutocompleteComponent.service,
             configuration: testAutocompleteComponent.settings,

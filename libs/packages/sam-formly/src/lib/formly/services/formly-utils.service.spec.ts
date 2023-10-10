@@ -7,7 +7,7 @@ describe('Formly Utility Service', () => {
     const formlyFields = getDefaultFormlyFields();
     FormlyUtilsService.setReadonlyMode(true, formlyFields);
     formlyFields.forEach((field) => {
-      expect(field.templateOptions.readonlyMode).toBeTruthy();
+      expect(field.props.readonlyMode).toBeTruthy();
     });
   });
 
@@ -37,14 +37,14 @@ describe('Formly Utility Service', () => {
       {
         key: 'key1',
         type: SdsFormlyTypes.INPUT,
-        templateOptions: {
+        props: {
           label: 'Input Type',
         },
       },
       {
         key: 'key2',
         type: SdsFormlyTypes.SELECT,
-        templateOptions: {
+        props: {
           label: 'Select Type',
           options: [
             { label: 'Select 1', value: 'select1' },
@@ -56,7 +56,7 @@ describe('Formly Utility Service', () => {
       {
         key: 'key3',
         type: SdsFormlyTypes.AUTOCOMPLETE,
-        templateOptions: {
+        props: {
           label: 'Autocomplete Type',
           configuration: {
             primaryTextField: 'name',

@@ -14,7 +14,7 @@ export class FormlySearchDropdownComponent {
   fields: FormlyFieldConfig[] = [
     {
       key: 'filter',
-      templateOptions: {
+      props: {
         label: 'Keyword (with label)',
         ariaHidden: true,
       },
@@ -22,7 +22,7 @@ export class FormlySearchDropdownComponent {
         {
           key: 'ddsearchmodel',
           type: 'search',
-          templateOptions: {
+          props: {
             label: 'Search with dropdown',
             searchSettings: {
               id: 'ddsearch',
@@ -42,7 +42,7 @@ export class FormlySearchDropdownComponent {
         {
           key: 'invsearchmodel',
           type: 'search',
-          templateOptions: {
+          props: {
             label: 'Search with dropdown inverse',
             searchSettings: {
               id: 'invSearch',

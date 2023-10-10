@@ -14,7 +14,7 @@ export class FormlySelectRequiredComponent {
     {
       key: 'entity.type',
       type: 'select',
-      templateOptions: {
+      props: {
         required: true,
         options: [
           { label: 'Contract Opportunities', value: 'co' },

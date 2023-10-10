@@ -14,7 +14,7 @@ export class FormlyInputPlaceholderComponent {
     {
       key: 'title',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Entity Name',
         placeholder: 'Placeholder',
       },

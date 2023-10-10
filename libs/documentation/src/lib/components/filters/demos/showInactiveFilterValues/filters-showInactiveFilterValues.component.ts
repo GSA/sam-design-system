@@ -15,7 +15,7 @@ export class FiltersShowInactiveFilterValues {
     {
       key: 'country',
       type: 'select',
-      templateOptions: {
+      props: {
         label: 'Select Country',
         options: [
           { label: 'United States of America', value: 'USA' },
@@ -36,9 +36,9 @@ export class FiltersShowInactiveFilterValues {
       this.showInactiveFilterValues = value;
       const temp = JSON.parse(JSON.stringify(this.sdsSelect));
       if (value) {
-        (temp[0].templateOptions.options as Array<any>).push({ label: 'New Zealand *', value: 'NZ' });
+        (temp[0].props.options as Array<any>).push({ label: 'New Zealand *', value: 'NZ' });
       } else {
-        (temp[0].templateOptions.options as Array<any>).pop();
+        (temp[0].props.options as Array<any>).pop();
       }
       this.sdsSelect = temp;
     }

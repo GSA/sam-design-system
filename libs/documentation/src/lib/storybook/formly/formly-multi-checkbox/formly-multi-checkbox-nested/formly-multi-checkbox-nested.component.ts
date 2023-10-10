@@ -15,7 +15,7 @@ export class FormlyMultiCheckboxNestedComponent {
       key: 'domains',
       type: 'multicheckbox',
       defaultValue: { cfda: true, opp: true, fh: false },
-      templateOptions: {
+      props: {
         label: 'Domains',
         description: 'Select any socio-economic categories which reflect the current status of your entity',
         required: true,

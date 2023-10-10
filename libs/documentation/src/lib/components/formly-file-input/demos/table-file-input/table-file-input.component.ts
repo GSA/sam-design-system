@@ -12,7 +12,7 @@ export class TableFileInputComponent {
     {
       key: 'tableFilesInput',
       type: SdsFormlyTypes.FILEINPUT, // Enum maps to 'fileinput' string
-      templateOptions: {
+      props: {
         label: 'Table File Input',
         description: 'Accepts multiple files and displays in table',
         multiple: true,
@@ -33,7 +33,7 @@ export class TableFileInputComponent {
         fileSizeLimit: this.fileSizeLimitValidator,
       },
       fieldArray: {
-        templateOptions: {
+        props: {
           name: 'Demo Table',
           noDataText: 'No Attachments',
           tableColumns: [
@@ -51,7 +51,7 @@ export class TableFileInputComponent {
 
   onModelChange($event: { tableFilesInput: File[] }) {
     // The 'scan' property here must match the property in
-    // {label: 'Virus Scan', columnName:'scan', property: 'scan'} in templateOptions' tableColumns
+    // {label: 'Virus Scan', columnName:'scan', property: 'scan'} in props' tableColumns
     const newFiles = $event.tableFilesInput.filter((file) => !file['scan']);
     this.scanFiles(newFiles);
     console.log('model', $event);
