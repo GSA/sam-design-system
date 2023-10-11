@@ -10,9 +10,7 @@ import { SdsEditorComponent } from '@gsa-sam/components';
 })
 export class FormlyFieldEditorComponent extends AbstractSdsFormly {
   @ViewChild(SdsEditorComponent, { static: true }) public template: SdsEditorComponent;
- defaultOptions = {
-    defaultValue: {},
-  };
+
   constructor(_cdr: ChangeDetectorRef) {
     super(); /* istanbul ignore next */
     this.cdr = _cdr;

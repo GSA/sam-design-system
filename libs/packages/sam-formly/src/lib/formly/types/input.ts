@@ -19,7 +19,5 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
   `,
 })
 export class FormlyFieldInputComponent extends FieldType {
- defaultOptions = {
-    defaultValue: {},
-  };
+
 }

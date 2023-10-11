@@ -53,7 +53,5 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormlyFieldDateRangePickerComponent extends FieldType {
- defaultOptions = {
-    defaultValue: {},
-  };
+
 }

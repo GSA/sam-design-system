@@ -29,7 +29,4 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
   encapsulation: ViewEncapsulation.None,
 })
 export class FormlyFieldDatePickerComponent extends FieldType {
- defaultOptions = {
-    defaultValue: {},
-  };
 }
