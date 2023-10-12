@@ -15,7 +15,7 @@ export class TextBasic {
     {
       key: 'title',
       type: 'customtext',
-      templateOptions: {
+      props: {
         label: 'Entity Name',
         placeholder: 'eg: Acme Corporation',
         description: 'Enter the name of your entity.',

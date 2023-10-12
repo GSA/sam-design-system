@@ -50,7 +50,7 @@ export class FormlyFieldFileInfoComponent extends FieldType {
   isSelected: boolean = false;
   description: string = '';
   defaultOptions = {
-    templateOptions: {
+    props: {
       options: [],
     },
   };

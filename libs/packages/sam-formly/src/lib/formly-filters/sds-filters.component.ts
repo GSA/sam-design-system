@@ -363,8 +363,8 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
    */
   private removePopoverGroup(fields: FormlyFieldConfig[]) {
     fields.forEach((field) => {
-      if (field.templateOptions && field.templateOptions.group === 'popover') {
-        field.templateOptions.group = 'accordion';
+      if (field.props && field.props.group === 'popover') {
+        field.props.group = 'accordion';
       }
 
       if (field.fieldGroup) {

@@ -14,8 +14,8 @@
 
 <ng-template let-fields="fields[0]" let-form="form" let-model="model" let-modelChange="modelChange" #defaultTemplate>
   <div class="margin-top-2"></div>
-  <sds-table [data]="form.value" [tableName]="fields.templateOptions.name" #fileTable>
-    <sds-table-column *ngFor="let column of fields.templateOptions.tableColumns" [sdsColumnName]="column.columnName">
+  <sds-table [data]="form.value" [tableName]="fields.props.name" #fileTable>
+    <sds-table-column *ngFor="let column of fields.props.tableColumns" [sdsColumnName]="column.columnName">
       <ng-template #sdsHeaderCell>{{column.label}}</ng-template>
       <ng-template #sdsCell let-element="element">
         <button
@@ -40,7 +40,7 @@
     <sds-row [displayedColumns]="displayedColumns"></sds-row>
   </sds-table>
   <div *ngIf="!form.value || !form.value.length" class="border border-base-light text-center padding-1">
-    {{fields.templateOptions.noDataText}}
+    {{fields.props.noDataText}}
   </div>
 
   <ng-template #tableCellTemplates let-element let-column="column">

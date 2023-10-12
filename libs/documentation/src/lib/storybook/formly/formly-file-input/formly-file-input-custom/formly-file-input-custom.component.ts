@@ -13,7 +13,7 @@ export class TableFileInputComponent implements AfterViewInit {
     {
       key: 'customTableFilesInput',
       type: SdsFormlyTypes.FILEINPUT, // Enum maps to 'fileinput' string
-      templateOptions: {
+      props: {
         label: 'Custom Table File Input',
         description: 'Accepts multiple files and displays in table',
         multiple: true,
@@ -27,7 +27,7 @@ export class TableFileInputComponent implements AfterViewInit {
       },
       fieldArray: {
         type: SdsFormlyTypes.TABLE,
-        templateOptions: {
+        props: {
           name: 'Demo Table',
           noDataText: 'No Attachments',
           tableColumns: [
@@ -45,7 +45,7 @@ export class TableFileInputComponent implements AfterViewInit {
 
   onModelChange($event: { customTableFilesInput: File[] }) {
     // The 'scan' property here must match the property in
-    // {label: 'Virus Scan', columnName:'scan', property: 'scan'} in templateOptions' tableColumns
+    // {label: 'Virus Scan', columnName:'scan', property: 'scan'} in props' tableColumns
     const newFiles = $event.customTableFilesInput.filter((file) => !file['scan']);
     this.scanFiles(newFiles);
     console.log('model', $event);
@@ -97,6 +97,6 @@ export class TableFileInputComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.fields[0].templateOptions.template = this.replacementTemplate;
+    this.fields[0].props.template = this.replacementTemplate;
   }
 }

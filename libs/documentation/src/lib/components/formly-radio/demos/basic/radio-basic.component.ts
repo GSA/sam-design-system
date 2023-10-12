@@ -16,7 +16,7 @@ export class RadioBasic {
       key: 'entity.taxFilingStatus',
       type: 'radio',
 
-      templateOptions: {
+      props: {
         label: 'Tax Filing Structure',
         description: 'Select how your business or organization is defined by the IRS.',
         required: true,

@@ -157,7 +157,7 @@ class StepperTestComponent {
   fieldConfigStep1: FormlyFieldConfig = {
     key: 'step1Input',
     type: 'input',
-    templateOptions: {
+    props: {
       label: 'Step 1',
       required: true,
       minLength: 5,
@@ -167,7 +167,7 @@ class StepperTestComponent {
   fieldConfigStep2Child1: FormlyFieldConfig = {
     key: 'step2Child1Input',
     type: 'input',
-    templateOptions: {
+    props: {
       label: 'Step 2 Child 1',
     },
   };

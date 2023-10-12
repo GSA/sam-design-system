@@ -14,7 +14,7 @@ export class FormlyTextAreaPlaceholderComponent {
     {
       key: 'entity',
       type: 'textarea',
-      templateOptions: {
+      props: {
         label: 'Entity Description',
         placeholder: 'eg: Acme Corporation is a federal contractor.',
       },

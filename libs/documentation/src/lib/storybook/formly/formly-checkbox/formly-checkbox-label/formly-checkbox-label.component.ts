@@ -14,7 +14,7 @@ export class FormlyCheckboxLabelComponent {
     {
       key: 'entity.userAgreement',
       type: 'checkbox',
-      templateOptions: {
+      props: {
         label: 'I agree',
       },
     },

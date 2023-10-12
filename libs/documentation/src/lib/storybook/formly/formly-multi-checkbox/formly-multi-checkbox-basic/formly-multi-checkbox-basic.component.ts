@@ -18,7 +18,7 @@ export class FormlyMultiCheckboxBasicComponent {
       validators: {
         required: multiCheckboxRequired,
       },
-      templateOptions: {
+      props: {
         label: 'Socio-Economic Status',
         description: 'Select any socio-economic categories which reflect the current status of your entity',
         required: true,

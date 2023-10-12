@@ -14,7 +14,7 @@ export class FormlyTextAreaDescriptionComponent {
     {
       key: 'entity',
       type: 'textarea',
-      templateOptions: {
+      props: {
         label: 'Entity Description',
         description: 'Enter the description for your entity.',
       },

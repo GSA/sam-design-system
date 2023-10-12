@@ -8,13 +8,13 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
  */
 export function minDateValidator(control: UntypedFormControl, field: FormlyFieldConfig): ValidationErrors {
   let toReturn = null;
-  let minDateField = field.templateOptions.minDate;
+  let minDateField = field.props.minDate;
   let value = control.value;
   if (value && minDateField) {
     if (value instanceof Date && minDateField instanceof Date) {
       minDateField.setHours(0, 0, 0, 0);
       if (value.getTime() < minDateField.getTime() && value.getTime() === minDateField.getTime()) {
-        if (!field.templateOptions.maxDate && !(field.templateOptions.maxDate instanceof Date)) {
+        if (!field.props.maxDate && !(field.props.maxDate instanceof Date)) {
           toReturn = {
             minDate: true,
           };
@@ -38,7 +38,7 @@ export function minDateValidator(control: UntypedFormControl, field: FormlyField
  // In the formly config
  {
       type: 'autocomplete',
-      templateOptions: {
+      props: {
         required: true,
       },
       validators: {
@@ -57,7 +57,7 @@ export function autocompleteRequired(control: UntypedFormControl): ValidationErr
  // In the formly config
  {
       type: 'multicheckbox',
-      templateOptions: {
+      props: {
         required: true,
       },
       validators: {
@@ -75,7 +75,7 @@ export function multiCheckboxRequired(control: UntypedFormControl): ValidationEr
  */
 export function maxDateValidator(control: UntypedFormControl, field: FormlyFieldConfig): ValidationErrors {
   let toReturn = null;
-  let maxDateField = field.templateOptions.maxDate;
+  let maxDateField = field.props.maxDate;
   let value = control.value;
 
   if (value && maxDateField) {
@@ -83,7 +83,7 @@ export function maxDateValidator(control: UntypedFormControl, field: FormlyField
       maxDateField.setHours(0, 0, 0, 0);
 
       if (value.getTime() > maxDateField.getTime() && value.getTime() === maxDateField.getTime()) {
-        if (!field.templateOptions.minDate && !(field.templateOptions.minDate instanceof Date)) {
+        if (!field.props.minDate && !(field.props.minDate instanceof Date)) {
           toReturn = {
             maxDate: true,
           };

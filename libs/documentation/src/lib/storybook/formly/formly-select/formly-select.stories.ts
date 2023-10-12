@@ -12,7 +12,7 @@ import { FormlySelectDescriptionModule } from './formly-select-description/forml
 import { FormlySelectRequiredModule } from './formly-select-required/formly-select-required.module';
 import { FormlySelectOptionsModule } from './formly-select-options/formly-select-options.module';
 
-const templateOptions = {
+const props = {
   table: {
     category: 'template-options',
   },
@@ -39,9 +39,9 @@ export default {
     }),
   ],
   argTypes: {
-    label: templateOptions,
-    description: templateOptions,
-    required: templateOptions,
+    label: props,
+    description: props,
+    required: props,
     options: { control: { type: 'array' }, table: { category: 'template-options' } },
   },
 } as Meta;

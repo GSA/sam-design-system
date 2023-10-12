@@ -1,19 +1,19 @@
 <ng-container
   *ngIf="labelTemplate; else defaultLabel"
   [ngTemplateOutlet]="labelTemplate.templateRef"
-  [ngTemplateOutletContext]="{ $implicit: formlyFieldConfig?.templateOptions }"
+  [ngTemplateOutletContext]="{ $implicit: formlyFieldConfig?.props }"
 >
 </ng-container>
 
 <ng-template #defaultLabel>
   <label class="usa-label">
     <span
-      *ngIf="formlyFieldConfig?.templateOptions?.tagText"
+      *ngIf="formlyFieldConfig?.props?.tagText"
       class="usa-tag"
       [ngClass]="
-        formlyFieldConfig.templateOptions.tagClass ? formlyFieldConfig.templateOptions.tagClass : 'sds-tag--info-white'
+        formlyFieldConfig.props.tagClass ? formlyFieldConfig.props.tagClass : 'sds-tag--info-white'
       "
-      >{{ formlyFieldConfig.templateOptions.tagText }}</span
+      >{{ formlyFieldConfig.props.tagText }}</span
     >
     {{ label }}
   </label>

@@ -29,7 +29,7 @@ export class FormlyConditionalComponent implements OnInit {
       // key: 'conditionalFilters',
 
       wrappers: ['filterwrapper'],
-      templateOptions: { label: 'Conditional Filters' },
+      props: { label: 'Conditional Filters' },
       fieldGroup: [
         {
           template:
@@ -38,7 +38,7 @@ export class FormlyConditionalComponent implements OnInit {
         {
           key: 'firstInput',
           type: 'input',
-          templateOptions: {
+          props: {
             label: 'First Input',
             options: [
               {
@@ -52,7 +52,7 @@ export class FormlyConditionalComponent implements OnInit {
           key: 'secondInput',
           type: 'input',
           hideExpression: (model) => !this.model.firstInput,
-          templateOptions: {
+          props: {
             label: 'Second Input',
             options: [
               {
@@ -74,7 +74,7 @@ export class FormlyConditionalComponent implements OnInit {
           key: 'check',
           type: 'select',
           defaultValue: 'select',
-          templateOptions: {
+          props: {
             hideOptional: true,
             label: 'Dropdown Radio',
             options: [
@@ -88,7 +88,7 @@ export class FormlyConditionalComponent implements OnInit {
           key: 'red',
           type: 'radio',
           hideExpression: (model) => this.model.check !== 'red',
-          templateOptions: {
+          props: {
             options: [{ label: 'Red', value: 'radio' }],
           },
         },
@@ -96,7 +96,7 @@ export class FormlyConditionalComponent implements OnInit {
           key: 'green',
           type: 'radio',
           hideExpression: (model) => this.model.check !== 'green',
-          templateOptions: {
+          props: {
             options: [{ label: 'Green', value: 'radio' }],
           },
         },
@@ -113,7 +113,7 @@ export class FormlyConditionalComponent implements OnInit {
           key: 'checkbox',
           type: 'select',
           defaultValue: 'select',
-          templateOptions: {
+          props: {
             label: 'Checkbox Dropdown',
             options: [
               { label: '- Select -', value: 'select' },
@@ -126,7 +126,7 @@ export class FormlyConditionalComponent implements OnInit {
           key: 'agree',
           type: 'multicheckbox',
           hideExpression: (model) => this.model.checkbox !== 'agree',
-          templateOptions: {
+          props: {
             options: [
               {
                 label: 'I agree',
@@ -139,7 +139,7 @@ export class FormlyConditionalComponent implements OnInit {
           key: 'disagree',
           type: 'multicheckbox',
           hideExpression: (model) => this.model.checkbox !== 'disagree',
-          templateOptions: {
+          props: {
             options: [
               {
                 label: 'I disagree',
@@ -161,14 +161,14 @@ export class FormlyConditionalComponent implements OnInit {
           key: 'inputField',
           type: 'input',
           hideExpression: (model) => this.model.firstField,
-          templateOptions: {
+          props: {
             placeholder: 'selection of checkbox below will hide this input field.',
           },
         },
         {
           key: 'firstField',
           type: 'multicheckbox',
-          templateOptions: {
+          props: {
             options: [
               {
                 label: 'Hide Above Input Field',
@@ -188,7 +188,7 @@ export class FormlyConditionalComponent implements OnInit {
         {
           key: 'hideExistingFirstName',
           type: 'input',
-          templateOptions: {
+          props: {
             label: 'Frist Name',
             placeholder: 'Type here to see the other field become enabled...',
           },
@@ -196,12 +196,12 @@ export class FormlyConditionalComponent implements OnInit {
         {
           key: 'text2',
           type: 'input',
-          templateOptions: {
+          props: {
             label: 'Last Name',
             placeholder: 'This one is disabled if there is no text in the other input',
           },
           expressionProperties: {
-            'templateOptions.disabled': '!model.hideExistingFirstName',
+            'props.disabled': '!model.hideExistingFirstName',
           },
         },
       ],
@@ -216,7 +216,7 @@ export class FormlyConditionalComponent implements OnInit {
         {
           key: 'sport',
           type: 'select',
-          templateOptions: {
+          props: {
             label: 'First Select',
             options: [
               { id: '1', name: 'Option1' },
@@ -232,7 +232,7 @@ export class FormlyConditionalComponent implements OnInit {
         {
           key: 'team',
           type: 'select',
-          templateOptions: {
+          props: {
             label: 'Second Select',
             options: [],
             valueProp: 'id',
@@ -247,7 +247,7 @@ export class FormlyConditionalComponent implements OnInit {
                 { id: '4', name: 'Option2 (FirstSelect- Option2)', sportId: '2' },
               ];
               const sportControl = this.form.get('sport');
-              field.templateOptions.options = sportControl.valueChanges.pipe(
+              field.props.options = sportControl.valueChanges.pipe(
                 startWith(sportControl.value),
                 map((sportId) => teams.filter((team) => team.sportId === sportId)),
                 tap(() => field.formControl.setValue(null))
@@ -258,7 +258,7 @@ export class FormlyConditionalComponent implements OnInit {
         {
           key: 'player',
           type: 'select',
-          templateOptions: {
+          props: {
             label: 'Third Select',
             options: [],
             valueProp: 'id',
@@ -277,7 +277,7 @@ export class FormlyConditionalComponent implements OnInit {
                 { id: '8', name: 'Option2 (Option2 (FirstSelect- Option2))', teamId: '4' },
               ];
               const teamControl = this.form.get('team');
-              field.templateOptions.options = teamControl.valueChanges.pipe(
+              field.props.options = teamControl.valueChanges.pipe(
                 startWith(teamControl.value),
                 map((teamId) => players.filter((player) => player.teamId === teamId)),
                 tap(() => field.formControl.setValue(null))

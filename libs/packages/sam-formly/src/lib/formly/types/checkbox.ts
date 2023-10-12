@@ -10,7 +10,7 @@ export class FormlyFieldCheckboxComponent extends FieldType implements AfterView
   public displayedTemplate = null;
 
   defaultOptions = {
-    templateOptions: {
+    props: {
       indeterminate: true,
       hideLabel: true,
     },

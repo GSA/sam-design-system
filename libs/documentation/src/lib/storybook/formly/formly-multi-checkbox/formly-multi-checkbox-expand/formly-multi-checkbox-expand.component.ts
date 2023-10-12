@@ -15,7 +15,7 @@ export class FormlyMultiCheckboxExpandComponent {
     {
       key: 'entity.socioeconomic',
       type: 'multicheckbox',
-      templateOptions: {
+      props: {
         label: 'States',
         description: 'Select any state',
         required: true,
@@ -105,6 +105,6 @@ export class FormlyMultiCheckboxExpandComponent {
   ];
   onChange(ev) {
     this.isexpandedOptions = !this.isexpandedOptions;
-    this.fields[0].templateOptions.expandedOptions = this.isexpandedOptions;
+    this.fields[0].props.expandedOptions = this.isexpandedOptions;
   }
 }

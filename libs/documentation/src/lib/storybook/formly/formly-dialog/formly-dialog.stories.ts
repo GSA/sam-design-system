@@ -15,7 +15,7 @@ import { FormlyDialogIntroductionModule } from './formly-dialog-introduction/for
 import { FormlyDialogBasicModule } from './formly-dialog-basic/formly-dialog-basic.module';
 import { FormlyDialogDownloadModule } from './formly-dialog-download/formly-dialog-download.module';
 
-const templateOptions = {
+const props = {
   table: {
     category: 'template-options',
   },
@@ -40,12 +40,12 @@ export default {
     }),
   ],
   argTypes: {
-    label: templateOptions,
-    placeholder: templateOptions,
-    description: templateOptions,
-    required: templateOptions,
-    disabled: templateOptions,
-    tooltipText: templateOptions,
+    label: props,
+    placeholder: props,
+    description: props,
+    required: props,
+    disabled: props,
+    tooltipText: props,
   },
 } as Meta;
 

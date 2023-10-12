@@ -15,7 +15,7 @@ export class FormlyEditorLabelComponent {
     {
       key: 'searchkey',
       type: 'editor',
-      templateOptions: {
+      props: {
         label: 'Search',
       },
     },

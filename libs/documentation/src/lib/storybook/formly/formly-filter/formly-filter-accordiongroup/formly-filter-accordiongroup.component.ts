@@ -13,7 +13,7 @@ export class FormlyFilterAccordionGroupComponent {
   sdsGroupAccordionMultipleControls: FormlyFieldConfig[] = [
     {
       key: 'filters',
-      templateOptions: {
+      props: {
         label: 'Entity Information',
         group: 'accordion',
       },
@@ -21,7 +21,7 @@ export class FormlyFilterAccordionGroupComponent {
         {
           key: 'keyword',
           type: 'input',
-          templateOptions: {
+          props: {
             type: 'text',
             label: 'Unique Entity ID',
             tagText: 'DUNS',
@@ -32,7 +32,7 @@ export class FormlyFilterAccordionGroupComponent {
         {
           key: 'multiple.accordion.entity.title',
           type: 'input',
-          templateOptions: {
+          props: {
             label: 'Entity Name',
             placeholder: 'eg: Acme Corporation',
             description: 'Enter the name of your entity.',
@@ -48,7 +48,7 @@ export class FormlyFilterAccordionGroupComponent {
     {
       key: 'single.accordion.entity.title',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Entity Name',
         group: 'accordion',
         placeholder: 'eg: Acme Corporation',

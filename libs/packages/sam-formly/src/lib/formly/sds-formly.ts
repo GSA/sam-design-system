@@ -7,7 +7,7 @@ export abstract class AbstractSdsFormly extends FieldType implements OnInit {
   public template: any;
 
   public ngOnInit() {
-    this.setProperties(this.template, (<any>this).field.templateOptions);
+    this.setProperties(this.template, (<any>this).field.props);
   }
 
   public setProperties(component: any, configuration: any) {

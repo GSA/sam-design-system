@@ -13,7 +13,7 @@ export class UswdsStepperComponent {
       {
         key: 'stepIndicator',
         type: 'step-arrow',
-        templateOptions: {
+        props: {
           number: 1,
           stepTitle: 'Entity Step one',
           status: 'active',
@@ -22,7 +22,7 @@ export class UswdsStepperComponent {
       {
         key: 'name',
         type: 'input',
-        templateOptions: {
+        props: {
           label: 'Entity Name',
           placeholder: 'eg: Acme Corporation',
           description: 'Enter the name of your entity.',
@@ -37,7 +37,7 @@ export class UswdsStepperComponent {
         type: 'input',
         key: 'title',
 
-        templateOptions: {
+        props: {
           label: 'Program or Project Title',
           required: true,
           showError: false,
@@ -52,7 +52,7 @@ export class UswdsStepperComponent {
       {
         key: 'stepIndicator2',
         type: 'step-arrow',
-        templateOptions: {
+        props: {
           number: 2,
           stepTitle: 'Entity Step two',
           status: 'inactive',
@@ -61,7 +61,7 @@ export class UswdsStepperComponent {
       {
         key: 'name',
         type: 'input',
-        templateOptions: {
+        props: {
           label: 'Entity Name - PointTwoFive',
           placeholder: 'eg: Acme Corporation',
           description: 'Enter the name of your entity.',
@@ -76,7 +76,7 @@ export class UswdsStepperComponent {
         type: 'input',
         key: 'title',
 
-        templateOptions: {
+        props: {
           label: 'Program or Project Title',
           required: true,
           showError: false,
@@ -91,7 +91,7 @@ export class UswdsStepperComponent {
       {
         key: 'name',
         type: 'input',
-        templateOptions: {
+        props: {
           label: 'Entity Name - PointFive',
           placeholder: 'eg: Acme Corporation',
           description: 'Enter the name of your entity.',
@@ -106,7 +106,7 @@ export class UswdsStepperComponent {
         type: 'input',
         key: 'title',
 
-        templateOptions: {
+        props: {
           label: 'Program or Project Title',
           required: true,
           showError: false,
@@ -121,7 +121,7 @@ export class UswdsStepperComponent {
       {
         key: 'name',
         type: 'input',
-        templateOptions: {
+        props: {
           label: 'Entity Name - PointSevenFive',
           placeholder: 'eg: Acme Corporation',
           description: 'Enter the name of your entity.',
@@ -136,7 +136,7 @@ export class UswdsStepperComponent {
         type: 'input',
         key: 'title',
 
-        templateOptions: {
+        props: {
           label: 'Program or Project Title',
           required: true,
           showError: false,
@@ -151,7 +151,7 @@ export class UswdsStepperComponent {
       {
         key: 'typeOfEntity',
         type: SdsFormlyTypes.RADIO,
-        templateOptions: {
+        props: {
           label: 'What type of entity are you registering?',
           hideOptions: true,
           options: [
@@ -181,7 +181,7 @@ export class UswdsStepperComponent {
       {
         key: 'purposeOfRegistration',
         type: SdsFormlyTypes.RADIO,
-        templateOptions: {
+        props: {
           hideOptions: true,
           label: 'Why are you registering this entity to do business with the U.S. government?',
           options: [
@@ -212,7 +212,7 @@ export class UswdsStepperComponent {
       {
         type: 'input',
         key: 'taxpayerName',
-        templateOptions: {
+        props: {
           label: 'Taxpayer Name',
           hideOptional: true,
         },
@@ -220,7 +220,7 @@ export class UswdsStepperComponent {
       {
         type: 'input',
         key: 'tinNumber',
-        templateOptions: {
+        props: {
           label: 'TIN Number',
           hideOptional: true,
         },

@@ -26,12 +26,12 @@ export class FormlyAutocompleteValidationComponent {
   fields: FormlyFieldConfig[] = [
     {
       key: 'filters',
-      templateOptions: { label: 'Keyword' },
+      props: { label: 'Keyword' },
       fieldGroup: [
         {
           key: 'items',
           type: 'autocomplete',
-          templateOptions: {
+          props: {
             label: 'Auto Complete validation with single selection mode',
             service: this.service,
             required: true,
@@ -42,7 +42,7 @@ export class FormlyAutocompleteValidationComponent {
         {
           key: 'agency',
           type: 'autocomplete',
-          templateOptions: {
+          props: {
             label: 'Auto Complete validation with multiple selection mode',
             service: this.service,
             required: true,

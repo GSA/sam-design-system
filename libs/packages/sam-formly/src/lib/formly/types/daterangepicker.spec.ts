@@ -34,13 +34,13 @@ let dateRangePickerType: TypeOption = {
     fieldGroup: [
       {
         key: 'fromDate',
-        templateOptions: {
+        props: {
           placeholder: 'Start Date',
         },
       },
       {
         key: 'toDate',
-        templateOptions: {
+        props: {
           placeholder: 'End Date',
         },
       },
@@ -77,7 +77,7 @@ describe('Formly Field DateRangePicker Component', () => {
         {
           key: 'expirationDate',
           type: 'daterangepickerv2',
-          templateOptions: {
+          props: {
             label: 'Expiration Date',
             startDate: new Date(2019, 11, 25),
             minDate: new Date(2019, 8, 15),
@@ -111,7 +111,7 @@ describe('Formly Field DateRangePicker Component', () => {
   });
 
   it('Should display validation error if date is below minimum date', () => {
-    testComponentInputs.fields[0].templateOptions.minDate = new Date(2019, 8, 15);
+    testComponentInputs.fields[0].props.minDate = new Date(2019, 8, 15);
 
     const fixture = createTestComponent(
       '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'
@@ -129,7 +129,7 @@ describe('Formly Field DateRangePicker Component', () => {
   });
 
   it('Should display validation error if date is above maximum date', () => {
-    testComponentInputs.fields[0].templateOptions.maxDate = new Date(2020, 0, 1);
+    testComponentInputs.fields[0].props.maxDate = new Date(2020, 0, 1);
 
     const fixture = createTestComponent(
       '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'

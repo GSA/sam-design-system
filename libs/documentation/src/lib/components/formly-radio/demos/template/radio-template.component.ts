@@ -18,7 +18,7 @@ export class RadioTemplateComponent implements AfterViewInit {
       key: 'entity.taxFilingStatus',
       type: 'radio',
 
-      templateOptions: {
+      props: {
         required: true,
         options: [
           {
@@ -71,6 +71,6 @@ export class RadioTemplateComponent implements AfterViewInit {
     console.log($event);
   }
   ngAfterViewInit() {
-    this.fields[0].templateOptions.template = this.radioTemplate;
+    this.fields[0].props.template = this.radioTemplate;
   }
 }

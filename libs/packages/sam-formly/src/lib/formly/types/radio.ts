@@ -10,7 +10,7 @@ export class FormlyFieldRadioComponent extends FieldType implements AfterViewIni
   public displayedTemplate = null;
 
   defaultOptions = {
-    templateOptions: {
+    props: {
       options: [],
     },
   };

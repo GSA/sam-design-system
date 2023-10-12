@@ -14,7 +14,7 @@ export class FormlyWrapperTemplateOptionsAnnounceLabelComponent {
     {
       key: 'Keyword',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Entity',
         announceLabel: true,
       },
