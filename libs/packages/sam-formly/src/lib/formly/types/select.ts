@@ -5,14 +5,14 @@ import { FieldType } from '@ngx-formly/core';
   selector: 'sds-formly-field-select',
   template: `
     <select
-      *ngIf="to.multiple; else singleSelect"
+      *ngIf="props.multiple; else singleSelect"
       multiple
-      [class.custom-select]="to.customSelect"
+      [class.custom-select]="props.customSelect"
       [formControl]="formControl"
       [class.is-invalid]="showError"
       [formlyAttributes]="field"
     >
-      <ng-container *ngFor="let item of to.options | formlySelectOptions: field | async">
+      <ng-container *ngFor="let item of props.options | formlySelectOptions: field | async">
         <optgroup *ngIf="item.group" label="{{ item.label }}">
           <option *ngFor="let child of item.group" [ngValue]="child.value" [disabled]="child.disabled">
             {{ child.label }}
@@ -25,12 +25,12 @@ import { FieldType } from '@ngx-formly/core';
       <select
         class="usa-select"
         [formControl]="formControl"
-        [class.custom-select]="to.customSelect"
+        [class.custom-select]="props.customSelect"
         [class.is-invalid]="showError"
         [formlyAttributes]="field"
       >
-        <option *ngIf="to.placeholder" [ngValue]="null">{{ to.placeholder }}</option>
-        <ng-container *ngFor="let item of to.options | formlySelectOptions: field | async">
+        <option *ngIf="props.placeholder" [ngValue]="null">{{ props.placeholder }}</option>
+        <ng-container *ngFor="let item of props.options | formlySelectOptions: field | async">
           <optgroup *ngIf="item.group" label="{{ item.label }}">
             <option *ngFor="let child of item.group" [ngValue]="child.value" [disabled]="child.disabled">
               {{ child.label }}

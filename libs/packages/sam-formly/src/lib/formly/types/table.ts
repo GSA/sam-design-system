@@ -48,7 +48,7 @@ export class FormlyFieldTableComponent extends FieldType implements OnInit {
   displayedColumns: string[] = [];
 
   ngOnInit() {
-    this.displayedColumns = this.to.tableColumns.map((column) => column.columnName);
+    this.displayedColumns = this.props.tableColumns.map((column) => column.columnName);
     this.parentFieldConfig = this.field.parent;
   }
 }

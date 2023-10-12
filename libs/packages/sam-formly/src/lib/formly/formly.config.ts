@@ -1,4 +1,4 @@
-import { ConfigOption, Field, FormlyFieldConfig } from '@ngx-formly/core';
+import { ConfigOption, FormlyFieldConfig } from '@ngx-formly/core';
 import { FormlyWrapperFormFieldComponent } from './wrappers/form-field.wrapper';
 import { FormlyAccordianFormFieldComponent } from './wrappers/form-field.accordian';
 import { FormlyFormFieldFilterWrapperComponent } from './wrappers/form-field.filterwrapper';

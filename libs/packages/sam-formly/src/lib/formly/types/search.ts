@@ -5,7 +5,7 @@ import { SdsSearchComponent } from '@gsa-sam/components';
 @Component({
   selector: 'sds-formly-field-search',
   template: `
-    <sds-search [formControl]="formControl" (submit)="to.submitHandler && to.submitHandler($event)"></sds-search>
+    <sds-search [formControl]="formControl" (submit)="props.submitHandler && props.submitHandler($event)"></sds-search>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

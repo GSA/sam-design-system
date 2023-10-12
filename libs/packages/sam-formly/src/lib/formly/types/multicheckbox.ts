@@ -106,7 +106,7 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType implements OnIn
   }
 
   onChange(value: any, checked: boolean) {
-    if (this.to.type === 'array') {
+    if (this.props.type === 'array') {
       this.formControl.patchValue(
         checked
           ? [...(this.formControl.value || []), value]
@@ -128,9 +128,9 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType implements OnIn
       return false;
     }
 
-    if (this.to.type === 'array') {
+    if (this.props.type === 'array') {
       return this.formControl.value.includes(option.key) && option.value != 'false';
-    } else if (this.to.groupOptions && this.formControl.value[option.value]) {
+    } else if (this.props.groupOptions && this.formControl.value[option.value]) {
       return this.formControl.value[option.value] && this.formControl.value[option.value] != 'false';
     } else if (this.formControl.value[option.key]) {
       return this.formControl.value[option.key] && this.formControl.value[option.key] != 'false';

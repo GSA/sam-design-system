@@ -2,7 +2,7 @@
 
 <ng-container
   *ngIf="field.fieldArray"
-  [ngTemplateOutlet]="(to.template ? to.template : defaultTemplate)"
+  [ngTemplateOutlet]="(props.template ? props.template : defaultTemplate)"
   [ngTemplateOutletContext]="{
         fields: [field.fieldArray],
         form: formControl,

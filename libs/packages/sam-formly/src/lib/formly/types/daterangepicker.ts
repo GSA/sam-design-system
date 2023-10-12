@@ -8,8 +8,8 @@ import { FieldType } from '@ngx-formly/core';
       <mat-date-range-input
         [formGroup]="formControl"
         [rangePicker]="picker"
-        [min]="to.minDate"
-        [max]="to.maxDate"
+        [min]="props.minDate"
+        [max]="props.maxDate"
         [id]="id"
         class="usa-input display-inline-block margin-top-3"
         [formlyAttributes]="field"
@@ -41,7 +41,7 @@ import { FieldType } from '@ngx-formly/core';
         />
       </mat-date-range-input>
       <mat-datepicker-toggle class="padding-top-3" matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-date-range-picker [startAt]="to.startDate" #picker></mat-date-range-picker>
+      <mat-date-range-picker [startAt]="props.startDate" #picker></mat-date-range-picker>
     </div>
   `,
   styles: [

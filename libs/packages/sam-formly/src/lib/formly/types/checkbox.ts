@@ -17,7 +17,7 @@ export class FormlyFieldCheckboxComponent extends FieldType implements AfterView
   };
 
   ngAfterViewInit() {
-    const passedIn = this.to.template;
+    const passedIn = this.props.template;
     setTimeout(() => {
       this.displayedTemplate = passedIn ? passedIn : this.defaultTemplate;
     });

@@ -24,7 +24,8 @@ import { FormlyUtilsService, ReadonlyDataType } from '../formly/services/formly-
 import { SdsFormlyTypes } from '../formly/models/formly-types';
 import { SdsDialogRef, SdsDialogService, SDS_DIALOG_DATA } from '@gsa-sam/components';
 import { cloneDeep } from 'lodash-es';
-import { FormlyValueChangeEvent } from '@ngx-formly/core/lib/components/formly.field.config';
+import { FormlyValueChangeEvent } from '@ngx-formly/core/lib/models/fieldconfig';
+
 @Component({
   selector: 'sds-filters',
   templateUrl: './sds-filters.component.html',
@@ -224,7 +225,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
       } else if (field.fieldGroup) {
         matchingField = this.findFieldInFieldGroup(field.fieldGroup, key);
       } else if (field.fieldArray) {
-        matchingField = this.findFieldInFieldGroup([field.fieldArray], key);
+        matchingField = this.findFieldInFieldGroup([field.fieldArray] as any, key);
       }
 
       if (matchingField) {
@@ -372,7 +373,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
       }
 
       if (field.fieldArray) {
-        this.removePopoverGroup([field.fieldArray]);
+        this.removePopoverGroup([field.fieldArray] as any);
       }
 
       field.hide = false;
