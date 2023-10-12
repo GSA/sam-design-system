@@ -26,8 +26,8 @@ describe('SdsAdvancedFiltersService', () => {
         type: 'array',
         selectAllOption: true,
         options: [
-          { key: 'legalBusinessName', value: 'Entity Name', tagText: undefined, tagClass: undefined },
-          { key: 'uniqueEntityIdSam', value: 'Unique Entity ID (SAM)', tagText: 'SAM', tagClass: undefined },
+          { value: 'legalBusinessName', label: 'Entity Name', tagText: undefined, tagClass: undefined },
+          { value: 'uniqueEntityIdSam', label: 'Unique Entity ID (SAM)', tagText: 'SAM', tagClass: undefined },
         ],
       },
       type: 'multicheckbox',
@@ -41,8 +41,8 @@ describe('SdsAdvancedFiltersService', () => {
         type: 'array',
         selectAllOption: true,
         options: [
-          { key: 'hideField1', value: null, tagText: undefined, tagClass: undefined },
-          { key: 'hideField2', value: null, tagText: undefined, tagClass: undefined },
+          { value: 'hideField1', label: null, tagText: undefined, tagClass: undefined },
+          { value: 'hideField2', label: null, tagText: undefined, tagClass: undefined },
         ],
       },
     },

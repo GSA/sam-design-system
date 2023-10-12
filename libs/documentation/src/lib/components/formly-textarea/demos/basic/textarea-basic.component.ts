@@ -20,7 +20,7 @@ export class TextAreaBasic {
         placeholder: 'eg: Acme Corporation is a federal contractor.',
         description: 'Enter the description for your entity.',
         required: true,
-        maxLength: 50,
+        maxlength: 50,
       },
     },
   ];

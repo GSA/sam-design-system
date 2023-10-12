@@ -72,7 +72,7 @@ describe('Formly Input Component', () => {
         props: {
           label: 'Formly input type textarea',
           placeholder: 'placeholder for text area',
-          maxLength: 50,
+          maxlength: 50,
         },
       },
     ];
@@ -93,7 +93,7 @@ describe('Formly Input Component', () => {
         props: {
           label: 'Formly input type textarea',
           placeholder: 'placeholder for text area',
-          maxLength: 50,
+          maxlength: 50,
         },
       },
     ];
@@ -119,7 +119,7 @@ describe('Formly Input Component', () => {
         props: {
           label: 'Formly input type textarea',
           placeholder: 'placeholder for text area',
-          maxLength: 5,
+          maxlength: 5,
         },
       },
     ];

@@ -51,7 +51,7 @@ export default {
     placeholder: props,
     description: props,
     required: props,
-    maxLength: props,
+    maxlength: props,
   },
 } as Meta;
 
@@ -60,19 +60,19 @@ const formlyConfigFunction = (
   placeholder: string,
   description: string,
   required: boolean,
-  maxLength: number
+  maxlength: number
 ) => {
   return {
     label: label ?? '',
     placeholder: placeholder ?? '',
     description: description ?? '',
     required: required ?? false,
-    maxLength: maxLength ?? '',
+    maxlength: maxlength ?? '',
   };
 };
 const Template: Story = (args) => {
-  const { label, placeholder, description, required, maxLength } = args;
-  let config = formlyConfigFunction(label, placeholder, description, required, maxLength);
+  const { label, placeholder, description, required, maxlength } = args;
+  let config = formlyConfigFunction(label, placeholder, description, required, maxlength);
   return {
     template: '<sds-formly-text-area-configurable [config]="configObj"></sds-formly-text-area-configurable>',
     props: {
@@ -94,7 +94,7 @@ Configurable.args = {
   placeholder: 'eg: Acme Corporation is a federal contractor.',
   description: 'Enter the description for your entity.',
   required: true,
-  maxLength: 50,
+  maxlength: 50,
 };
 Configurable.parameters = {
   preview: { disabled: true },

@@ -26,10 +26,10 @@
 
   <div *ngIf="props.groupOptions">
     <fieldset class="usa-fieldset">
-      <ng-container class="grid-row" *ngFor="let option of (props.groupOptions | keyvalue); let i = index">
+      <ng-container class="grid-row" *ngFor="let option of (props.groupOptions |  formlySelectOptions : field |); let i = index">
         <div>
           <legend>
-            <span class="text-bold display-block margin-top-1 margin-bottom-05">{{option.key}}</span>
+            <span class="text-bold display-block margin-top-1 margin-bottom-05">{{option.value}}</span>
           </legend>
 
           <ng-container
@@ -44,7 +44,7 @@
                   [formlyAttributes]="field"
                   [id]="id + '_' + i+ '_'+ j"
                   type="radio"
-                  [name]="option.key"
+                  [name]="option.value"
                   checked="checked"
                   [formControl]="formControl"
                   [value]="opt.value"

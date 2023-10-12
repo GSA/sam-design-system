@@ -42,12 +42,12 @@ import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 // Validate the min length of the character
 export function minlengthValidationMessage(err, field) {
-  return `Should have at least ${field.props.minLength} characters`;
+  return `Should have at least ${field.props.minlength} characters`;
 }
 
 // Validate the max length of the character
 export function maxlengthValidationMessage(err, field) {
-  return `This value should be less than ${field.props.maxLength} characters`;
+  return `This value should be less than ${field.props.maxlength} characters`;
 }
 
 // Validate the min value of the character
