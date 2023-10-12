@@ -49,7 +49,8 @@
               'sds-autocomplete__group': configuration.isGroupingEnabled,
               'sds-autocomplete__item': !configuration.isGroupingEnabled,
               'sds-autocomplete__item--highlighted': result['highlighted'] && !configuration.isGroupingEnabled,
-              'sds-autocomplete__item--selected': checkItemSelected(result) && !configuration.isGroupingEnabled
+              'sds-autocomplete__item--selected': checkItemSelected(result) && !configuration.isGroupingEnabled,
+              'sds-autocomplete__checkbox': checkItemSelected(result) && configuration.useCheckBoxes
             }"
             *ngFor="let result of results; let i = index"
             (click)="!configuration.isSelectableGroup ? '' : selectItem(result)"

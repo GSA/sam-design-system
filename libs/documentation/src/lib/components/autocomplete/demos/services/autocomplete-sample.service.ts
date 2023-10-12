@@ -10,9 +10,10 @@ import { SampleAutocompleteData } from './autocomplete-sample.data';
 export class AutocompleteSampleDataService implements SDSAutocompleteServiceInterface {
   private loadedData;
   constructor() {
-    const data = SampleAutocompleteData;
+    const data: (typeof SampleAutocompleteData[0] & { index?: number })[] = SampleAutocompleteData; // Here we extend the type with index
     for (let i = 0; i < data.length; i++) {
       let item = data[i];
+      item.index = i; // assign the original index
       let results = data.filter((it) => it.parentId === item.id);
       item['childCount'] = results.length;
     }
@@ -38,6 +39,18 @@ export class AutocompleteSampleDataService implements SDSAutocompleteServiceInte
     itemsOb.subscribe((result) => {
       items = result;
     });
+
+    items.sort((a: any, b: any) => {
+      if (a.checked && !b.checked) {
+        return -1;
+      }
+      if (!a.checked && b.checked) {
+        return 1;
+      }
+      // if neither a nor b are checked, or both are checked, sort based on original index
+      return (a.index || 0) - (b.index || 0);
+    });
+
     let totalItemCount = items.length;
 
     let maxSectionPosition = currentItems + itemIncrease;

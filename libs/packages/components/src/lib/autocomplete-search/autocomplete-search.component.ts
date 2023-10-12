@@ -291,6 +291,9 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       event.preventDefault();
       this.onArrowGroupUp();
     } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex >= 0) {
+      if (this.configuration.useCheckBoxes) {
+        (this.highlightedItem as any).checked = !(this.highlightedItem as any).checked;
+      }
       if (this.configuration.isTagModeEnabled && this.inputValue.length > 0) {
         const val = this.createFreeTextItem();
         this.selectItem(val);
@@ -337,6 +340,11 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     let message = this.getObjectValue(item, this.configuration.primaryTextField);
     this.inputValue = message;
     this.showResults = false;
+
+    if (this.configuration.useCheckBoxes && !(item as any).checked) {
+      SDSSelectedItemModelHelper.removeItem(item, this.configuration.primaryKeyField, this.model);
+      this.propogateChange(this.model);
+    }
   }
 
   /**
