@@ -67,8 +67,6 @@ const Template: Story = (args: any) => {
         [sdsPopover]="sdsPopover"
         [sdsPopoverTitle]="sdsPopoverTitle"
         [position]="position"
-        [closeOnContentClick]=closeOnContentClick
-        [closeOnClickOutside]=closeOnClickOutside
       >
         I'm a popover!
       </button>
@@ -82,6 +80,7 @@ export const Configurable = Template.bind({});
 Configurable.args = {
   sdsPopover: 'Default Body',
   sdsPopoverTitle: '',
+  position: 'bottom'
 };
 Configurable.parameters = {
   actions: { disabled: true },
