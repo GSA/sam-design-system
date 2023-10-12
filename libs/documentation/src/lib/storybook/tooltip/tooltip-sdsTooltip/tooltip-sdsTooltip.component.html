@@ -5,7 +5,15 @@
 
 <p>Content displayed in a tooltip can also be HTML elements</p>
 
-<ng-template #tipContent><p>Hello, <b>World</b>!</p></ng-template>
-<button [sdsTooltip]="tipContent" [position]="'bottom'" class="usa-button usa-button--base" tabindex="0" triggers="hover:blur">
+<ng-template #tipContent
+  ><p>Hello, <b>World</b>!</p></ng-template
+>
+<button
+  [sdsTooltip]="tipContent"
+  [position]="'bottom'"
+  class="usa-button usa-button--base"
+  tabindex="0"
+  triggers="hover:blur"
+>
   HTML binding
 </button>

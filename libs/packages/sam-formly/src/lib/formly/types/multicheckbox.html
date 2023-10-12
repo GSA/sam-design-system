@@ -190,11 +190,7 @@
             </div>
             <div *ngIf="subOption.tooltipText" class="margin-left-1">
               <ng-template #tipContent>
-                <p
-                [ngClass]="subOption.tooltipClass"
-                class="margin-1"
-                [innerHTML]="subOption.tooltipText"
-              ></p>
+                <p [ngClass]="subOption.tooltipClass" class="margin-1" [innerHTML]="subOption.tooltipText"></p>
               </ng-template>
               <usa-icon
                 class="text-secondary"

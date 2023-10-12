@@ -80,7 +80,7 @@ export const Configurable = Template.bind({});
 Configurable.args = {
   sdsPopover: 'Default Body',
   sdsPopoverTitle: '',
-  position: 'bottom'
+  position: 'bottom',
 };
 Configurable.parameters = {
   actions: { disabled: true },

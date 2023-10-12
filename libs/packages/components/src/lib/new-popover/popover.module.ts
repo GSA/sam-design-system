@@ -7,7 +7,7 @@ export { SdsPopoverConfig } from './popover-config';
 export { Placement } from '../util/positioning';
 
 @NgModule({
-	imports: [SdsPopover],
-	exports: [SdsPopover],
+  imports: [SdsPopover],
+  exports: [SdsPopover],
 })
 export class SdsPopoverModule {}

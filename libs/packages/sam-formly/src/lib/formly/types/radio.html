@@ -73,10 +73,10 @@
               <div class="margin-left-1" *ngIf="option.value[j].tooltipText">
                 <ng-template #tipContent>
                   <p
-                  [ngClass]="option.value[j].tooltipClass"
-                  class="margin-1"
-                  [innerHTML]="option.value[j].tooltipText"
-                ></p>
+                    [ngClass]="option.value[j].tooltipClass"
+                    class="margin-1"
+                    [innerHTML]="option.value[j].tooltipText"
+                  ></p>
                 </ng-template>
                 <usa-icon
                   class="text-secondary"
@@ -131,11 +131,7 @@
 
     <div class="margin-left-1" *ngIf="to.options[i].tooltipText">
       <ng-template #tipContent>
-        <p
-        [ngClass]="to.options[i].tooltipClass"
-        class="margin-1"
-        [innerHTML]="to.options[i].tooltipText"
-      ></p>
+        <p [ngClass]="to.options[i].tooltipClass" class="margin-1" [innerHTML]="to.options[i].tooltipText"></p>
       </ng-template>
       <usa-icon
         class="text-secondary"

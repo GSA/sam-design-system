@@ -10,24 +10,24 @@ import { Options } from '@popperjs/core';
  */
 @Injectable({ providedIn: 'root' })
 export class SdsTooltipConfig {
-	autoClose: boolean | 'inside' | 'outside' = true;
-	placement: PlacementArray = 'auto';
-	popperOptions = (options: Partial<Options>) => options;
-	triggers = 'hover focus';
-	container: string;
-	disableTooltip = false;
-	tooltipClass: string;
-	openDelay = 0;
-	closeDelay = 0;
+  autoClose: boolean | 'inside' | 'outside' = true;
+  placement: PlacementArray = 'auto';
+  popperOptions = (options: Partial<Options>) => options;
+  triggers = 'hover focus';
+  container: string;
+  disableTooltip = false;
+  tooltipClass: string;
+  openDelay = 0;
+  closeDelay = 0;
 
-	private _animation: boolean;
+  private _animation: boolean;
 
-	constructor() {}
+  constructor() {}
 
-	get animation(): boolean {
-		return this._animation === undefined ? false : this._animation;
-	}
-	set animation(animation: boolean) {
-		this._animation = animation;
-	}
+  get animation(): boolean {
+    return this._animation === undefined ? false : this._animation;
+  }
+  set animation(animation: boolean) {
+    this._animation = animation;
+  }
 }

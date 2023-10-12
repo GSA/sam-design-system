@@ -10,24 +10,24 @@ import { Options } from '@popperjs/core';
  */
 @Injectable({ providedIn: 'root' })
 export class SdsPopoverConfig {
-	autoClose: boolean | 'inside' | 'outside' = true;
-	placement: PlacementArray = 'auto';
-	popperOptions = (options: Partial<Options>) => options;
-	triggers = 'click';
-	container: string;
-	disablePopover = false;
-	popoverClass: string;
-	openDelay = 0;
-	closeDelay = 0;
+  autoClose: boolean | 'inside' | 'outside' = true;
+  placement: PlacementArray = 'auto';
+  popperOptions = (options: Partial<Options>) => options;
+  triggers = 'click';
+  container: string;
+  disablePopover = false;
+  popoverClass: string;
+  openDelay = 0;
+  closeDelay = 0;
 
-	private _animation: boolean;
+  private _animation: boolean;
 
-	constructor() {}
+  constructor() {}
 
-	get animation(): boolean {
-		return this._animation === undefined ? false : this._animation;
-	}
-	set animation(animation: boolean) {
-		this._animation = animation;
-	}
+  get animation(): boolean {
+    return this._animation === undefined ? false : this._animation;
+  }
+  set animation(animation: boolean) {
+    this._animation = animation;
+  }
 }

@@ -3,13 +3,13 @@ import { DOCUMENT } from '@angular/common';
 
 @Injectable({ providedIn: 'root' })
 export class NgbRTL {
-	private _element: HTMLHtmlElement;
+  private _element: HTMLHtmlElement;
 
-	constructor(@Inject(DOCUMENT) document: any) {
-		this._element = document.documentElement;
-	}
+  constructor(@Inject(DOCUMENT) document: any) {
+    this._element = document.documentElement;
+  }
 
-	isRTL() {
-		return (this._element.getAttribute('dir') || '').toLowerCase() === 'rtl';
-	}
+  isRTL() {
+    return (this._element.getAttribute('dir') || '').toLowerCase() === 'rtl';
+  }
 }
