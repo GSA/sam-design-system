@@ -181,6 +181,7 @@ export const DATE_FORMAT: MatDateFormats = {
       extras: {
         checkExpressionOn: 'changeDetectionCheck',
         lazyRender: false,
+        resetFieldOnHide: false,
       },
 
       validationMessages: [

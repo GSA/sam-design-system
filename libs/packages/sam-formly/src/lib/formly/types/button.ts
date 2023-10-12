@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FieldType } from '@ngx-formly/core';
+import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 @Component({
   selector: 'sds-formly-field-button',
@@ -14,7 +14,7 @@ import { FieldType } from '@ngx-formly/core';
     </button>
   `,
 })
-export class FormlyFieldButtonComponent extends FieldType {
+export class FormlyFieldButtonComponent extends FieldType<FieldTypeConfig> {
   onClick($event) {
     if (this.props.onClick) {
       this.props.onClick($event);

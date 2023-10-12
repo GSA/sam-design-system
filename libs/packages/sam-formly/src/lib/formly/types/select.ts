@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FieldType } from '@ngx-formly/core';
+import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 @Component({
   selector: 'sds-formly-field-select',
@@ -42,7 +42,7 @@ import { FieldType } from '@ngx-formly/core';
     </ng-template>
   `,
 })
-export class FormlyFieldSelectComponent extends FieldType {
+export class FormlyFieldSelectComponent extends FieldType<FieldTypeConfig> {
   defaultOptions = {
     props: { options: [] },
   };

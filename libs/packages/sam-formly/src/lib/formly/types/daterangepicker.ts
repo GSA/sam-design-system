@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { FieldType } from '@ngx-formly/core';
+import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 @Component({
   selector: 'sds-formly-field-daterangepicker',
@@ -47,4 +47,4 @@ import { FieldType } from '@ngx-formly/core';
   ],
   encapsulation: ViewEncapsulation.None,
 })
-export class FormlyFieldDateRangePickerComponent extends FieldType {}
+export class FormlyFieldDateRangePickerComponent extends FieldType<FieldTypeConfig> {}

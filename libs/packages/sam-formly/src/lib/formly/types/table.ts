@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FieldType, FormlyFieldConfig } from '@ngx-formly/core';
+import { FieldType, FieldTypeConfig, FormlyFieldConfig } from '@ngx-formly/core';
 
 /**
  * Data model for table formly types' tableColumns template option
@@ -41,7 +41,7 @@ export interface SdsTableColumn {
   selector: `sds-formly-field-table`,
   templateUrl: './table.html',
 })
-export class FormlyFieldTableComponent extends FieldType implements OnInit {
+export class FormlyFieldTableComponent extends FieldType<FieldTypeConfig> implements OnInit {
   // Referenced in html
   parentFieldConfig: FormlyFieldConfig;
 

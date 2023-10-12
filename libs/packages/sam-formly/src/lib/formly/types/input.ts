@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FieldType } from '@ngx-formly/core';
+import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 @Component({
   selector: 'sds-formly-field-input',
@@ -18,4 +18,4 @@ import { FieldType } from '@ngx-formly/core';
     />
   `,
 })
-export class FormlyFieldInputComponent extends FieldType {}
+export class FormlyFieldInputComponent extends FieldType<FieldTypeConfig> {}
