@@ -114,84 +114,111 @@ export const FORMLY_CONFIG: ConfigOption = {
     {
       name: SdsFormlyTypes.FORMLYGROUP,
       wrappers: sdsGroupWrapper,
-      
+      defaultOptions: {
+        defaultValue: {},
+      },
     },
     {
       name: SdsFormlyTypes.READONLY,
       wrappers: sdsGroupWrapper,
       component: FormlyReadonlyWrapperComponent,
-     
+      defaultOptions: {
+        defaultValue: {},
+      },
     },
     {
       name: SdsFormlyTypes.BUTTON,
       component: FormlyFieldButtonComponent,
-     
+      defaultOptions: {
+        defaultValue: {},
+      },
     },
     {
       name: SdsFormlyTypes.CUSTOMTEXT,
       component: FormlyFieldTextComponent,
       wrappers: sdsWrappers,
-     
+      defaultOptions: {
+        defaultValue: {},
+      },
     },
     {
       name: SdsFormlyTypes.EDITOR,
       component: FormlyFieldEditorComponent,
       wrappers: sdsWrappers,
-      
+      defaultOptions: {
+        defaultValue: {},
+      },
     },
     {
       name: SdsFormlyTypes.INPUT,
       component: FormlyFieldInputComponent,
       wrappers: sdsWrappers,
-      
+      defaultOptions: {
+        defaultValue: null
+      },
     },
     {
       name: SdsFormlyTypes.CHECKBOX,
       component: FormlyFieldCheckboxComponent,
       wrappers: sdsWrappers,
-      
+      defaultOptions: {
+        defaultValue: {},
+      },
     },
     {
       name: SdsFormlyTypes.FILEINFO,
       component: FormlyFieldFileInfoComponent,
       wrappers: sdsWrappers,
-     
+      defaultOptions: {
+        defaultValue: {},
+      },
     },
     {
       name: SdsFormlyTypes.RADIO,
       component: FormlyFieldRadioComponent,
       wrappers: sdsWrappers,
-      
+      defaultOptions: {
+        defaultValue: {},
+      },
     },
     {
       name: SdsFormlyTypes.SELECT,
       component: FormlyFieldSelectComponent,
       wrappers: sdsWrappers,
-     
+      defaultOptions: {
+        defaultValue: {},
+      },
     },
     {
       name: SdsFormlyTypes.TEXTAREA,
       component: FormlyFieldTextAreaComponent,
       wrappers: sdsWrappers,
-     
+      defaultOptions: {
+        defaultValue: null,
+      },
     },
     {
       name: SdsFormlyTypes.MULTICHECKBOX,
       component: FormlyFieldMultiCheckboxComponent,
       wrappers: sdsWrappers,
-     
+      defaultOptions: {
+        defaultValue: {},
+      },
     },
     {
       name: SdsFormlyTypes.AUTOCOMPLETE,
       component: FormlyFieldAutoCompleteComponent,
       wrappers: sdsWrappers,
-      
+      defaultOptions: {
+        defaultValue: {},
+      },
     },
     {
       name: SdsFormlyTypes.DATEPICKER,
       component: FormlyFieldDatePickerComponent,
       wrappers: sdsWrappers,
       defaultOptions: {
+        defaultValue: {},
         validators: {
           validation: [maxDateValidator, minDateValidator],
         },
@@ -202,7 +229,7 @@ export const FORMLY_CONFIG: ConfigOption = {
       extends: SdsFormlyTypes.FORMLYGROUP,
       wrappers: sdsWrappers,
       defaultOptions: {
-        
+        defaultValue: {},
         fieldGroup: [
           {
             type: SdsFormlyTypes.DATEPICKER,
@@ -251,6 +278,7 @@ export const FORMLY_CONFIG: ConfigOption = {
       component: FormlyFieldDateRangePickerComponent,
       wrappers: sdsWrappers,
       defaultOptions: {
+        defaultValue: {},
         validators: {
           validation: [dateRangeValidator],
         },
@@ -284,32 +312,44 @@ export const FORMLY_CONFIG: ConfigOption = {
       name: SdsFormlyTypes.SEARCH,
       component: FormlyFieldSearchComponent,
       wrappers: sdsWrappers,
-      
+      defaultOptions: {
+        defaultValue: {},
+      },
     },
     {
       name: SdsFormlyTypes.FILEINPUT,
       component: FormlyFieldFileInputComponent,
       wrappers: sdsWrappers,
-     
+      defaultOptions: {
+        defaultValue: null,
+      },
     },
     {
       name: SdsFormlyTypes.TABLE,
       component: FormlyFieldTableComponent,
-      
+      defaultOptions: {
+        defaultValue: {},
+      },
     },
     {
       name: SdsFormlyTypes.RICHTEXTEDITOR,
       component: FormlyFieldRichTextEditorComponent,
       wrappers: sdsWrappers,
-      
+      defaultOptions: {
+        defaultValue: {},
+      },
     },
     {
       name: 'formly-group',
-     
+      defaultOptions: {
+        defaultValue: {},
+      },
     },
     {
       name: 'formly-array',
-      
+      defaultOptions: {
+        defaultValue: {},
+      },
     },
 
     { name: SdsFormlyTypes.STEPARROW, component: FormlyFieldStepArrowComponent, wrappers: sdsWrappers },
