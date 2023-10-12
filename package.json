@@ -66,6 +66,7 @@
     "@gsa-sam/sam-styles": "^3.0.8",
     "@ngx-formly/core": "^5.10.22",
     "@ngx-formly/schematics": "^5.10.22",
+    "@popperjs/core": "^2.11.8",
     "@types/qs": "^6.9.5",
     "accessible-html5-video-player": "^1.0.6",
     "core-js": "^3.22.4",

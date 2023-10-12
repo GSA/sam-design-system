@@ -40,7 +40,9 @@ import { FieldWrapper } from '@ngx-formly/core';
         </label>
 
         <span *ngIf="to.tooltipText && field.type !== 'checkbox'" class="margin-left-1">
-          <p #tipContent [ngClass]="to.tooltipClass" class="margin-1" [innerHTML]="to.tooltipText"></p>
+          <ng-template #tipContent>
+            <p [ngClass]="to.tooltipClass" class="margin-1" [innerHTML]="to.tooltipText"></p>
+          </ng-template>
           <usa-icon
             class="text-secondary"
             [position]="to.tooltipPosition ? to.tooltipPosition : 'right'"
