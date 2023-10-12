@@ -17,10 +17,18 @@ import { FieldWrapper } from '@ngx-formly/core';
   selector: 'sds-formly-wrapper-form-field',
   template: `
     <div class="usa-form-group" [class.usa-form-group--error]="showError">
-      <label class="usa-label" *ngIf="props.label && props.hideLabel !== true" [attr.for]="id" [ngClass]="props.labelClass">
-        <span *ngIf="props.tagText" class="usa-tag" [ngClass]="props.tagClass ? props.tagClass : 'sds-tag--info-white'">{{
-          props.tagText
-        }}</span>
+      <label
+        class="usa-label"
+        *ngIf="props.label && props.hideLabel !== true"
+        [attr.for]="id"
+        [ngClass]="props.labelClass"
+      >
+        <span
+          *ngIf="props.tagText"
+          class="usa-tag"
+          [ngClass]="props.tagClass ? props.tagClass : 'sds-tag--info-white'"
+          >{{ props.tagText }}</span
+        >
         <span>{{ props.label }}</span>
         <span *ngIf="!props.required && !props.hideOptional"> (Optional)</span>
       </label>

@@ -178,9 +178,7 @@ export class AdvancedFiltersComponent implements OnInit {
     );
     if (this.sortMoreFilterBy) {
       modalFields.sort((a: FormlyFieldConfig, b: FormlyFieldConfig) =>
-        a.props && b.props
-          ? a.props[this.sortMoreFilterBy].localeCompare(b.props[this.sortMoreFilterBy])
-          : 0
+        a.props && b.props ? a.props[this.sortMoreFilterBy].localeCompare(b.props[this.sortMoreFilterBy]) : 0
       );
     }
     const filedGroup: FormlyFieldConfig[] = this.filedGroup;

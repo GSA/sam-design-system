@@ -22,9 +22,7 @@ import { FieldType } from '@ngx-formly/core';
           [placeholder]="field.fieldGroup[0]?.props?.placeholder || 'mmm-dd-yyyy'"
           [formControlName]="field.fieldGroup[0].key"
           (ngModelChange)="
-            field.fieldGroup[0]?.props?.change
-              ? field.fieldGroup[0].props.change(field.fieldGroup[0])
-              : ''
+            field.fieldGroup[0]?.props?.change ? field.fieldGroup[0].props.change(field.fieldGroup[0]) : ''
           "
         />
         <input
@@ -34,9 +32,7 @@ import { FieldType } from '@ngx-formly/core';
           [placeholder]="field.fieldGroup[1]?.props?.placeholder || 'mmm-dd-yyyy'"
           [formControlName]="field.fieldGroup[1].key"
           (ngModelChange)="
-            field.fieldGroup[1]?.props?.change
-              ? field.fieldGroup[1].props.change(field.fieldGroup[1])
-              : ''
+            field.fieldGroup[1]?.props?.change ? field.fieldGroup[1].props.change(field.fieldGroup[1]) : ''
           "
         />
       </mat-date-range-input>

@@ -35,7 +35,7 @@ export class RadioHorizontalComponent {
       modelOptions: {
         updateOn: 'blur',
       },
-     hooks: {
+      hooks: {
         onChanges: (field) => {
           field.formControl.valueChanges.subscribe((v) => {
             console.log(field.form['controls']['entity']);

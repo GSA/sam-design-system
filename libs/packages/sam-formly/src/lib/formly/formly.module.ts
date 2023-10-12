@@ -180,8 +180,7 @@ export const DATE_FORMAT: MatDateFormats = {
     FormlyModule.forRoot({
       extras: {
         checkExpressionOn: 'changeDetectionCheck',
-lazyRender: false,
-
+        lazyRender: false,
       },
 
       validationMessages: [

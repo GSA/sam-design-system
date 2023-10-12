@@ -28,7 +28,7 @@ export class FiltersHideExpression {
           { label: 'Australia', value: 'AUS' },
         ],
       },
-     hooks: {
+      hooks: {
         onChanges: (field) => {
           field.formControl.valueChanges.subscribe((v) => {
             Object.keys(field.form['controls']['location']['controls']).forEach((key) => {

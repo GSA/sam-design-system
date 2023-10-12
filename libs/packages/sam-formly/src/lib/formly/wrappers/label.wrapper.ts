@@ -19,17 +19,18 @@ import { FieldWrapper } from '@ngx-formly/core';
           [attr.for]="id"
           [ngClass]="{
             'margin-bottom-1':
-              this.field?.props?.label &&
-              !this.field?.props?.hideLabel &&
-              this.field?.parent?.fieldGroup?.length === 1,
+              this.field?.props?.label && !this.field?.props?.hideLabel && this.field?.parent?.fieldGroup?.length === 1,
             'usa-sr-only':
               props.hideLabel ||
               ((props.group === 'panel' || props.group === 'accordion') && field?.parent?.type !== 'formly-group')
           }"
         >
-          <span *ngIf="props.tagText" class="usa-tag" [ngClass]="props.tagClass ? props.tagClass : 'sds-tag--info-white'">{{
-            props.tagText
-          }}</span>
+          <span
+            *ngIf="props.tagText"
+            class="usa-tag"
+            [ngClass]="props.tagClass ? props.tagClass : 'sds-tag--info-white'"
+            >{{ props.tagText }}</span
+          >
 
           <ng-container *ngIf="props.labelTemplate" [ngTemplateOutlet]="props.labelTemplate"> </ng-container>
           <ng-container *ngIf="!props.labelTemplate">

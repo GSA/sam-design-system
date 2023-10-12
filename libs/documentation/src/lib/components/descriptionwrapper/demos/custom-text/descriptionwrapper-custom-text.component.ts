@@ -14,7 +14,7 @@ export class DescriptionWrapperCustomText {
     {
       wrappers: ['description'],
       key: 'Description',
-  defaultValue: null,
+      defaultValue: null,
       type: 'input',
       props: {
         description:

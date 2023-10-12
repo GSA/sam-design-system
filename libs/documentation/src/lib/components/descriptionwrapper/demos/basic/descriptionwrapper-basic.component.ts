@@ -14,7 +14,7 @@ export class DescriptionWrapperBasic {
     {
       wrappers: ['description'],
       key: 'Description',
-  defaultValue: null,
+      defaultValue: null,
       type: 'input',
       props: {
         description: 'Input description',

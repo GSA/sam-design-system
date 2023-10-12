@@ -16,7 +16,7 @@ export class AccordionWrapperBasic {
       wrappers: ['accordionwrapper'],
       key: 'Input',
       type: 'input',
-     defaultValue: null,
+      defaultValue: null,
       props: {
         label: 'Input',
         placeholder: 'eg: Acme Corporation',

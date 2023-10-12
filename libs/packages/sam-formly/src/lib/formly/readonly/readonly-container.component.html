@@ -10,9 +10,7 @@
     <span
       *ngIf="formlyFieldConfig?.props?.tagText"
       class="usa-tag"
-      [ngClass]="
-        formlyFieldConfig.props.tagClass ? formlyFieldConfig.props.tagClass : 'sds-tag--info-white'
-      "
+      [ngClass]="formlyFieldConfig.props.tagClass ? formlyFieldConfig.props.tagClass : 'sds-tag--info-white'"
       >{{ formlyFieldConfig.props.tagText }}</span
     >
     {{ label }}

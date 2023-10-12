@@ -99,11 +99,7 @@
       </div>
     </li>
     <ng-container *ngFor="let option of props.options; let i = index">
-      <li
-        *ngIf="!option.props"
-        class="margin-y-0 grid-row"
-        [ngClass]="{'margin-left-4 ': props.selectAllOption}"
-      >
+      <li *ngIf="!option.props" class="margin-y-0 grid-row" [ngClass]="{'margin-left-4 ': props.selectAllOption}">
         <div class="usa-checkbox" [class.text-align-end]="props.textAlignEnd">
           <input
             class="usa-checkbox__input"
@@ -158,7 +154,11 @@
             </label>
           </div>
         </li>
-        <ul [id]="'collapseID'" [sdsCollapse]="props.expandedOptions" [ngClass]="{'margin-left-6 ': props.selectAllOption}">
+        <ul
+          [id]="'collapseID'"
+          [sdsCollapse]="props.expandedOptions"
+          [ngClass]="{'margin-left-6 ': props.selectAllOption}"
+        >
           <li class="grid-row" *ngFor="let subOption of (option.props.options); let j = index">
             <div class="usa-checkbox" [class.text-align-end]="props.textAlignEnd">
               <input

@@ -17,7 +17,7 @@ export class ActionsMenuActionMode {
     {
       key: 'mode',
       type: 'select',
-  defaultValue: null,
+      defaultValue: null,
       props: {
         label: 'Choose Action menu mode ',
         options: [
