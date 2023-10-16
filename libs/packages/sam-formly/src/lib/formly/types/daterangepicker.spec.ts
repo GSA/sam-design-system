@@ -10,7 +10,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
 import { FormlyFieldDateRangePickerComponent } from './daterangepicker';
 import { dateRangeValidator } from '../formly.validators';
-import { TypeOption } from '@ngx-formly/core/lib/services/formly.config';
+import { TypeOption } from '@ngx-formly/core/lib/models';
 
 const createTestComponent = (html: string) =>
   createGenericTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;
