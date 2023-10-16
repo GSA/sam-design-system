@@ -30,7 +30,6 @@
     "build:docs:formly": "npx compodoc -p libs/packages/sam-formly/tsconfig.lib.json -n \"SAM.Gov Design System - Formly\" --hideGenerator --disableCoverage -d dist/apps/sam-design-system-site/compodoc/formly",
     "build:docs": "npm run build:docs:components && npm run build:docs:formly",
     "compodocs": "npx compodoc -p libs/packages/components/tsconfig.lib.json -s --minimal",
-    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
     "demo:stackblitzes": "ts-node --project misc/tsconfig.json misc/generate-stackblitzes.ts",
     "demo:stackblitzes-federalist": "ts-node --project misc/tsconfig.json misc/generate-stackblitzes.ts --federalist",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
@@ -81,9 +80,9 @@
     "rxjs": ">=7.5.0",
     "tsickle": "0.39.1",
     "tslib": "^2.0.0",
-    "typescript": "^4.8.2",
+    "typescript": "^4.9.3",
     "uswds": "2.13.1",
-    "zone.js": "^0.11.3"
+    "zone.js": "^0.13.1"
   },
   "devDependencies": {
     "@angular/language-service": "^15.2.9",
