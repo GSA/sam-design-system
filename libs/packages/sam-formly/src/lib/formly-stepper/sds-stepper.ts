@@ -47,7 +47,7 @@ export class SdsStepComponent {
   /**
    * References to Any children this step might contain
    */
-  @ContentChildren('SdsStepComponent') children: QueryList<SdsStepComponent>;
+  @ContentChildren(SdsStepComponent) children: QueryList<SdsStepComponent>;
 
   /**
    * Content of step - either a formly field or custome template
