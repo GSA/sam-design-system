@@ -46,8 +46,8 @@ export class SdsAdvancedFiltersService {
         } else {
           const label = field.props && field.props.label ? field.props.label : null;
           const option = {
-            key: field.key,
-            value: label,
+            value: field.key,
+            label: label,
             tagText: field.props.tagText,
             tagClass: field.props.tagClass,
           };

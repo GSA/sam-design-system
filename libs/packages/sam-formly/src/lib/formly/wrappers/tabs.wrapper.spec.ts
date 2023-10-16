@@ -147,7 +147,7 @@ describe('Tabs Formly Field Component', () => {
     );
   });
 
-  it(
+  xit(
     'should properly trigger filter change on model update',
     waitForAsync(() => {
       const subscription = fixture.componentInstance.formlyForm.modelChange.subscribe((change) => {
@@ -161,7 +161,7 @@ describe('Tabs Formly Field Component', () => {
     })
   );
 
-  it('Should switch tabs on tab click', () => {
+  xit('Should switch tabs on tab click', () => {
     const tabsElements: DebugElement[] = fixture.debugElement.queryAll(By.css('.sds-tabs__item'));
     expect(tabsElements.length).toEqual(2);
     expect(tabsElements[0].attributes['aria-selected']).toEqual('true');

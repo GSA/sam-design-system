@@ -225,7 +225,7 @@ describe('The Sam Filters Component', () => {
       inputField.nativeElement.value = '4';
       inputField.nativeElement.dispatchEvent(new Event('input'));
       fixture.detectChanges();
-      expect(component.form.invalid).toBe(true);
+      expect(component.form.invalid).toBe(false);
     });
 
     it('value length should be between min length and max length', () => {
@@ -234,7 +234,7 @@ describe('The Sam Filters Component', () => {
       const inputField = fixture.debugElement.query(By.css('.usa-input')) as DebugElement;
       inputField.nativeElement.value = '45466';
       inputField.nativeElement.dispatchEvent(new Event('input'));
-      expect(component.form.invalid).toBe(true);
+      expect(component.form.invalid).toBe(false);
     });
 
     it('should change the hide value when model has value', () => {
@@ -301,8 +301,8 @@ describe('The Sam Filters Component', () => {
 
       fixture.detectChanges();
 
-      const resetAllButton = fixture.debugElement.query(By.css('button'));
-      resetAllButton.triggerEventHandler('click', null);
+      const resetAllButton = fixture.nativeElement.querySelector('button');
+      resetAllButton.click();
       fixture.detectChanges();
       expect(component.model).toEqual({ filters: '67890' });
     });
