@@ -7,7 +7,7 @@ jobs:
   build:
     working_directory: ~/project/sam-design-system
     docker:
-       - image: circleci/node:18.16
+       - image: circleci/node:latest
     steps:
       - checkout
       - run: npm install
