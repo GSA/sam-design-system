@@ -34,10 +34,10 @@ export class FormlyRadioHorizontalComponent {
       modelOptions: {
         updateOn: 'blur',
       },
-      lifecycle: {
-        onChanges: function (form, field) {
+      hooks: {
+        onChanges: (field) => {
           field.formControl.valueChanges.subscribe((v) => {
-            console.log(form['controls']['entity']);
+            console.log(this.form['controls']['entity']);
           });
         },
       },

@@ -27,12 +27,12 @@ export class FormlyFilterHideExpressionComponent {
           { label: 'Australia', value: 'AUS' },
         ],
       },
-      lifecycle: {
-        onChanges: function (form, field) {
-          field.formControl.valueChanges.subscribe((v) => {
-            Object.keys(form['controls'].location['controls']).forEach((key) => {
+      hooks: {
+        onChanges: (field) => {
+          field.form.controls['items1'].valueChanges.subscribe((value: any[]) => {
+            Object.keys(this.form['controls']['location']['controls']).forEach((key) => {
               if (key !== 'country') {
-                form['controls'].location['controls'][key].setValue('');
+                this.form['controls']['location']['controls'][key].setValue('');
               }
             });
           });
