@@ -16,9 +16,12 @@
 
 <ng-template #temp let-item>
   <div class="usa-checkbox">
-    <input class="usa-checkbox__input" type="checkbox" [id]="item['id']" [(ngModel)]="item.checked"/>
-    <label class="usa-checkbox__label" [for]="item['id']" (click)="item.checked = !item.checked">
+    <input class="usa-checkbox__input" type="checkbox" [id]="item['id']" />
+    <label class="usa-checkbox__label" [for]="item['id']" >
       <span [innerHTML]="item['name'] + ': ' + item['subtext']"></span>
     </label>
+  </div>
+  <div>
+    <pre>{{ customTemplateModel | json }}</pre>
   </div>
 </ng-template>

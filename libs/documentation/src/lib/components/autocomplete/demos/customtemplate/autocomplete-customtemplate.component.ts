@@ -21,7 +21,7 @@ export class AutocompleteCustomTemplate {
   }
 
   changes(value) {
-    console.log(value);
+    //console.log(value);
   }
 
   setup() {
@@ -34,5 +34,11 @@ export class AutocompleteCustomTemplate {
     this.customTemplateSettings.selectionMode = SelectionMode.MULTIPLE;
     this.customTemplateSettings.hideChips = true;
     this.customTemplateSettings.useCheckBoxes = true;
+  }
+
+  isSelected(item) {
+    const index = this.customTemplateModel?.items?.findIndex (x => (x as any).id === item.id)
+    console.log(index, 'test');
+    return index >= 0? true : false; 
   }
 }
