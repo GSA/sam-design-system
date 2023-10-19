@@ -18,7 +18,7 @@ import { FieldType } from '@ngx-formly/core';
         [placeholder]="to.placeholder ? to.placeholder : ''"
         (ngModelChange)="to.change ? to.change(field) : ''"
       />
-      <mat-datepicker-toggle class="padding-left-1" matSuffix [for]="picker" >
+      <mat-datepicker-toggle class="padding-left-1" matSuffix [for]="picker">
         <usa-icon [icon]="'calendar'" matDatepickerToggleIcon [size]="'sm'"></usa-icon>
       </mat-datepicker-toggle>
       <mat-datepicker [startAt]="to.startDate" #picker></mat-datepicker>
