@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { moduleMetadata, Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, Story, applicationConfig } from '@storybook/angular';
 import { DialogAlertTypeModule } from './dialog-alert-type/dialog-alert-type.module';
 import { DialogWidthModule } from './dialog-width/dialog-width.module';
 import { DialogNestedModule } from './dialog-nested/dialog-nested.module';
@@ -12,6 +12,8 @@ import {
 import { DialogIntroductionModule } from './dialog-introduction/dialog-introduction.module';
 import { DialogConfigurableModule } from './dialog-configurable/dialog-configurable.module';
 import { DialogPolicyModule } from './dialog-policy/dialog-policy.module';
+import { importProvidersFrom } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export default {
   title: 'Components/Dialog',
@@ -28,6 +30,9 @@ export default {
         DialogConfigurableModule,
         DialogPolicyModule,
       ],
+    }),
+    applicationConfig({
+      providers: [importProvidersFrom(BrowserAnimationsModule)],
     }),
   ],
   argTypes: {
