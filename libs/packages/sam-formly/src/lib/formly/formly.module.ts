@@ -36,6 +36,7 @@ import {
   chevronDown,
   infoCircleFill,
   calendar,
+  x,
 } from 'ngx-bootstrap-icons';
 import { UsaAccordionModule, UsaFileInputModule } from '@gsa-sam/ngx-uswds';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
@@ -175,6 +176,7 @@ export const DATE_FORMAT: MatDateFormats = {
       chevronDown,
       infoCircleFill,
       calendar,
+      x,
     }),
     FormlyModule.forChild(FORMLY_CONFIG),
     FormlyModule.forRoot({
