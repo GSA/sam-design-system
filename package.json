@@ -1,6 +1,6 @@
 {
   "name": "sam-design-system",
-  "version": "16.0.0",
+  "version": "16.0.1",
   "license": "MIT",
   "scripts": {
     "start": "ng serve",
@@ -65,7 +65,6 @@
     "@gsa-sam/sam-styles": "^3.0.13",
     "@ngx-formly/core": "^6.2.1",
     "@ngx-formly/schematics": "^6.2.1",
-  
     "@types/qs": "^6.9.5",
     "accessible-html5-video-player": "^1.0.6",
     "core-js": "^3.22.4",
@@ -107,7 +106,6 @@
     "css-loader": "^6.2.0",
     "dotenv": "6.2.0",
     "ejs": "3.1.7",
-  
     "eslint": "^8.13.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
