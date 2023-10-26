@@ -27,7 +27,10 @@ export class SdsAdvancedFiltersService {
           };
 
           if (origField.props && origField.props.label) {
-            field.props.label = origField.props.label;
+            field.props = {
+              ...field.props,
+              label: origField.props.label,
+            };
           }
           fields.push(field);
         }
@@ -46,10 +49,10 @@ export class SdsAdvancedFiltersService {
         } else {
           const label = field.props && field.props.label ? field.props.label : null;
           const option = {
-            value: field.key,
-            label: label,
+            key: field.key,
+            value: label,
             tagText: field.props.tagText,
-            tagClass: field.props.tagClass,
+            tagClass: field.props.tagClass,        
           };
           options.push(option);
           if (!origField.hide && !field.hide) {
@@ -72,7 +75,10 @@ export class SdsAdvancedFiltersService {
     };
 
     if (origField.props && origField.props.label) {
-      field.props.label = origField.props.label;
+      field.props = {
+        ...field.props,
+        label: origField.props.label,
+      };
     }
 
     if (!origField.hide) {
@@ -87,9 +93,9 @@ export class SdsAdvancedFiltersService {
       const selectedField = selectedFields['filterToggle']['filters'][key];
       if (field.fieldGroup && field.fieldGroup.length > 1) {
         const fieldModel = model[key];
-        this.updateFieldGroup(field, selectedField, fieldModel);
+        this.updateFieldGroup(field, selectedField, fieldModel, fields);
       } else {
-        this.updateSingleField(field, selectedField, model);
+        this.updateSingleField(field, selectedField, model, fields);
       }
     });
     return {
@@ -98,38 +104,52 @@ export class SdsAdvancedFiltersService {
     };
   }
 
-  updateFieldGroup(parentField: FormlyFieldConfig, selectedFields: any, model: object) {
+  updateFieldGroup(
+    parentField: FormlyFieldConfig,
+    selectedFields: any,
+    model: object,
+    originalfields: FormlyFieldConfig[]
+  ) {
     if (selectedFields && (selectedFields.length || typeof selectedFields === 'boolean')) {
       parentField.hide = false;
       if (selectedFields === true || selectedFields.length) {
         parentField.fieldGroup.forEach((field) => {
           const key = field.key;
           const fieldSelected = selectedFields.length ? selectedFields.includes(key) : field;
-          this.updateSingleField(field, fieldSelected, model);
+          this.updateSingleField(field, fieldSelected, model, originalfields);
           if (field.fieldGroup && field.fieldGroup.length > 1) {
-            this.updateFieldGroup(field, selectedFields, model);
+            this.updateFieldGroup(field, selectedFields, model, originalfields);
           }
         });
       }
     } else {
       parentField.hide = true;
       parentField.fieldGroup.forEach((field) => {
-        this.updateSingleField(field, false, model);
+        this.updateSingleField(field, false, model, originalfields);
       });
     }
   }
 
-  updateSingleField(field: any, fieldSelected: boolean, model: any) {
+  updateSingleField(field: FormlyFieldConfig, fieldSelected: boolean, model: any, originalfields: FormlyFieldConfig[]) {
     if (fieldSelected) {
+      // field.expressions = {
+      //   hide: 'false',
+      // };
       field.hide = false;
     } else {
+      // field.expressions = {
+      //   hide: 'true',
+      // },
       field.hide = true;
-      field.props['required'] = false;
-      if (field.formControl) {
-        field.formControl.reset();
-      } else {
-        model[field.key] = null;
-      }
+      field.props = {
+        ...field.props,
+        required: false,
+      };
+      // if (field.formControl) {
+      //  // field.options.resetModel();
+      // } else {
+      //   model[field.key.toString()] = null;
+      // }
     }
   }
 }
